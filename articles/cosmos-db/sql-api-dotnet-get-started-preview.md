@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: dech
-ms.openlocfilehash: a942f91dfa03eea2d9dc14b4b44e2ef5ee57c1ba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 39e0932288b513aa1579945396dff1a7d2df77b3
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60686811"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786237"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account-sdk-version-3-preview"></a>Tworzenie aplikacji konsolowej .NET do zarządzania danymi na koncie interfejsu API SQL usługi Azure Cosmos DB (zestaw SDK w wersji 3 — wersja zapoznawcza)
 
@@ -60,7 +60,7 @@ Utwórzmy konto usługi Azure Cosmos DB. Jeśli masz już konto, którego chcesz
 ## <a id="SetupVS"></a>Krok 2. Konfigurowanie projektu programu Visual Studio
 1. Otwórz program **Visual Studio 2017** na komputerze.
 1. W menu **Plik** wybierz polecenie **Nowy**, a następnie wybierz pozycję **Projekt**.
-1. W oknie dialogowym **Nowy projekt** wybierz pozycję **Visual C#** / **Aplikacja konsolowa (.NET Framework)**, podaj nazwę projektu, a następnie kliknij przycisk **OK**.
+1. W oknie dialogowym **Nowy projekt** wybierz pozycję **Visual C#**  / **Aplikacja konsolowa (.NET Framework)** , podaj nazwę projektu, a następnie kliknij przycisk **OK**.
     ![Zrzut ekranu przedstawiający okno nowy projekt](./media/sql-api-get-started/dotnet-tutorial-visual-studio-new-project.png)
 1. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy nową aplikację konsolową, która znajduje się w ramach rozwiązania Visual Studio, a następnie kliknij pozycję **Zarządzaj pakietami NuGet...**
     
@@ -174,7 +174,7 @@ Wspaniale! Teraz, po zakończeniu konfigurowania, zacznijmy pisanie kodu. Ukońc
 Gratulacje! Pomyślnie nawiązano połączenie z kontem usługi Azure Cosmos DB. 
 
 ## <a name="step-4-create-a-database"></a>Krok 4. Tworzenie bazy danych
-Bazę danych można utworzyć przy użyciu funkcji [**CreateDatabaseIfNotExistsAsync**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosdatabases) lub [**CreateDatabaseAsync**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosdatabases) klasy ``CosmosDatabases``. Baza danych jest logicznym kontenerem elementów podzielonym na partycje w kontenerach.
+Bazę danych można utworzyć przy użyciu funkcji [**CreateDatabaseIfNotExistsAsync**](/dotnet/api/microsoft.azure.cosmos.cosmosclient.createdatabaseifnotexistsasync) lub [**CreateDatabaseAsync**](/dotnet/api/microsoft.azure.cosmos.cosmosclient.createdatabaseasync) klasy ``CosmosDatabases``. Baza danych jest logicznym kontenerem elementów podzielonym na partycje w kontenerach.
     
 1. Skopiuj metodę **CreateDatabase** i wklej ją pod metodą **GetStartedDemoAsync**. Funkcja **CreateDatabase** utworzy nową bazę danych ``FamilyDatabase`` o identyfikatorze podanym w polu ``databaseId`` (jeśli jeszcze jej nie ma). 
 
@@ -291,7 +291,7 @@ Gratulacje! Pomyślnie utworzono bazę danych usługi Azure Cosmos DB.
 > 
 > 
 
-Kontener można utworzyć przy użyciu funkcji [**CreateContainerIfNotExistsAsync**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmoscontainers) lub [**CreateContainerAsync**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmoscontainers) klasy **CosmosContainers**. Kontener składa się z elementów (w przypadku interfejsu API SQL są to dokumenty JSON) i skojarzonej logiki aplikacji JavaScript po stronie serwera, np. procedur składowanych, funkcji zdefiniowanych przez użytkownika i wyzwalaczy.
+Kontener można utworzyć przy użyciu funkcji [**CreateContainerIfNotExistsAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync) lub [**CreateContainerAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerasync) klasy **CosmosContainers**. Kontener składa się z elementów (w przypadku interfejsu API SQL są to dokumenty JSON) i skojarzonej logiki aplikacji JavaScript po stronie serwera, np. procedur składowanych, funkcji zdefiniowanych przez użytkownika i wyzwalaczy.
 
 1. Skopiuj metodę **CreateContainer** i wklej ją pod metodą **CreateDatabase**. Funkcja **CreateContainer** utworzy nowy kontener ``FamilyContainer`` o identyfikatorze podanym w polu ``containerId`` (jeśli jeszcze go nie ma). 
 
@@ -326,7 +326,7 @@ Kontener można utworzyć przy użyciu funkcji [**CreateContainerIfNotExistsAsyn
 Gratulacje! Pomyślnie utworzono kontener usługi Azure Cosmos DB.  
 
 ## <a id="CreateDoc"></a>Krok 6. Dodawanie elementów do kontenera
-Element można utworzyć za pomocą funkcji [**CreateItemAsync**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmositems) klasy **CosmosItems**. Podczas korzystania z interfejsu API SQL elementy są przekazywane jako dokumenty, które stanowią zdefiniowaną przez użytkownika (dowolną) zawartość JSON. Teraz można wstawić element do kontenera usługi Azure Cosmos DB.
+Element można utworzyć za pomocą funkcji [**CreateItemAsync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync) klasy **CosmosItems**. Podczas korzystania z interfejsu API SQL elementy są przekazywane jako dokumenty, które stanowią zdefiniowaną przez użytkownika (dowolną) zawartość JSON. Teraz można wstawić element do kontenera usługi Azure Cosmos DB.
 
 Najpierw należy utworzyć klasę **Family**, która będzie reprezentowała obiekty przechowywane w usłudze Azure Cosmos DB w tym przykładzie. Zostaną również utworzone podklasy **Parent**, **Child**, **Pet** i **Address**, które są używane w ramach klasy **Family**. Należy pamiętać, że dokumenty muszą mieć właściwość **Id** serializowaną jako **id** w formacie JSON. 
 1. Naciśnij klawisze **Ctrl+Shift+A**, aby otworzyć okno dialogowe **Dodaj nowy element**. Dodaj do projektu nową klasę **Family.cs**. 
@@ -723,7 +723,7 @@ Jeśli nie masz czasu na ukończenie tego samouczka lub po prostu chcesz pobrać
 Aby skompilować rozwiązanie GetStarted, niezbędne są następujące elementy:
 
 * Aktywne konto platformy Azure. Jeśli go nie masz, możesz zarejestrować się w celu [utworzenia bezpłatnego konta](https://azure.microsoft.com/free/).
-* [Konto usługi Azure Cosmos DB][cosmos-db-create-account].
+* [Konta usługi Azure Cosmos DB][cosmos-db-create-account].
 * Rozwiązanie [GetStarted](https://github.com/Azure-Samples/cosmos-dotnet-getting-started) dostępne w witrynie GitHub.
 
 Aby przywrócić odwołania do zestawu SDK dla platformy .NET usługi Azure Cosmos DB w programie Visual Studio, kliknij prawym przyciskiem myszy rozwiązanie **GetStarted** w Eksploratorze rozwiązań, a następnie kliknij polecenie **Przywróć pakiety Nuget**. Następnie w pliku App.config zaktualizuj wartości EndPointUri i PrimaryKey zgodnie z opisem w kroku [Łączenie się z kontem usługi Azure Cosmos DB](#Connect).

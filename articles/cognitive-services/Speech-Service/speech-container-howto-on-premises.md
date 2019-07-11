@@ -1,38 +1,37 @@
 ---
 title: Użyj rozwiązania Kubernetes w środowisku lokalnym
 titleSuffix: Azure Cognitive Services
-description: Przy użyciu rozwiązania Kubernetes (K8s) i Helm do definiowania obrazów kontenerów mowy na tekst i zamiany tekstu na mowę, utworzymy pakiet dla platformy Kubernetes. Ten pakiet zostanie wdrożony do rozwiązania Kubernetes klastra w środowisku lokalnym.
+description: Za pomocą platformy Kubernetes i Helm do definiowania obrazów kontenerów mowy na tekst i zamiany tekstu na mowę, utworzymy pakiet dla platformy Kubernetes. Ten pakiet zostanie wdrożony do rozwiązania Kubernetes klastra w środowisku lokalnym.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/03/2019
+ms.date: 7/10/2019
 ms.author: dapine
-ms.openlocfilehash: 1e3afc80abad5f5c1f9b4d57c52ca75449eeb755
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 33d9de956a6d43145fc68f4ec46b09b8e8bf0188
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711484"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786256"
 ---
 # <a name="use-kubernetes-on-premises"></a>Użyj rozwiązania Kubernetes w środowisku lokalnym
 
-Przy użyciu rozwiązania Kubernetes (K8s) i Helm do definiowania obrazów kontenerów mowy na tekst i zamiany tekstu na mowę, utworzymy pakiet dla platformy Kubernetes. Ten pakiet zostanie wdrożony do rozwiązania Kubernetes klastra w środowisku lokalnym. Ponadto pokażemy, jak przetestować różne opcje konfiguracji i wdrożonych usług.
+Za pomocą platformy Kubernetes i Helm do definiowania obrazów kontenerów mowy na tekst i zamiany tekstu na mowę, utworzymy pakiet dla platformy Kubernetes. Ten pakiet zostanie wdrożony do rozwiązania Kubernetes klastra w środowisku lokalnym. Ponadto pokażemy, jak przetestować różne opcje konfiguracji i wdrożonych usług.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ta procedura wymaga kilku narzędzi, które musi być zainstalowany i uruchamiane lokalnie.
+Przed użyciem mowy kontenerów w środowisku lokalnym, musi spełniać następujące wymagania wstępne:
 
-* Korzystanie z subskrypcji platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto][free-azure-account].
-* Zainstaluj [wiersza polecenia platformy Azure][azure-cli] (az).
-* Zainstaluj [interfejsu wiersza polecenia Kubernetes][kubernetes-cli] (kubectl).
-* Zainstaluj [Helm][helm-install] klienta, Menedżer pakietów platformy Kubernetes.
-    * Instalowanie serwera narzędzia Helm [Tiller][tiller-install].
-* Zasób platformy Azure z warstwą cenową poprawne. Nie wszystkie warstwy cenowe pracy przy użyciu tych obrazów kontenera:
-    * **Mowy** zasobu o F0 lub standardowej ceny warstwy tylko.
-    * **Usługi cognitive Services** warstwa cenowa zasobu z S0.
+|Wymagane|Cel|
+|--|--|
+| Azure Account | Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto][free-azure-account]. |
+| Dostęp do rejestru kontenerów | Aby Kubernetes do ściągania obrazów platformy docker do klastra będzie musiała dostępu do rejestru kontenerów. Musisz [żądanie dostępu do rejestru kontenerów][speech-preview-access] pierwszy. |
+| Interfejs wiersza polecenia usługi Kubernetes | [Interfejsu wiersza polecenia Kubernetes][kubernetes-cli] jest wymagana do zarządzania poświadczeń udostępnionych z rejestru kontenerów. Kubernetes jest również potrzebne przed Helm, czyli Menedżer pakietów platformy Kubernetes. |
+| Interfejs wiersza polecenia narzędzia Helm | Jako część [interfejsu wiersza polecenia narzędzia Helm][helm-install] install, you'll also need to initialize Helm which will install [Tiller][tiller-install]. |
+|Zasób mowy |Aby można było używać tych kontenerów, musisz mieć:<br><br>A _mowy_ zasobów platformy Azure, aby uzyskać skojarzonego klucza rozliczenia i rozliczeń identyfikator URI punktu końcowego. Obie wartości są dostępne w witrynie Azure portal **mowy** strony Przegląd i klucze i są wymagane do uruchomienia kontenera.<br><br>**{API_KEY}** : klucz zasobu<br><br>**{ENDPOINT_URI}** : przykład identyfikatora URI punktu końcowego: `https://westus.api.cognitive.microsoft.com/sts/v1.0`|
 
 ## <a name="the-recommended-host-computer-configuration"></a>Konfiguracja komputera zalecany host
 
@@ -43,19 +42,13 @@ Zapoznaj się [komputer-host kontenera usługi mowy][speech-container-host-compu
 | **Zamiany mowy na tekst** | jeden dekoder wymaga co najmniej 1,150 millicores. Jeśli `optimizedForAudioFile` jest włączona, a następnie 1,950 millicores są wymagane. (domyślne: dwa dekodery) | Wymagane: 2 GB<br>Ograniczone:  4 GB |
 | **Zamiana tekstu na mowę** | jedno żądanie współbieżnych wymaga co najmniej 500 millicores. Jeśli `optimizeForTurboMode` jest włączona, 1000 millicores są wymagane. (domyślne: dwóch jednoczesnych żądań) | Wymagane: 1 GB<br> Ograniczone: 2 GB |
 
-## <a name="request-access-to-the-container-registry"></a>Żądanie dostępu do rejestru kontenerów
-
-Prześlij [formularz wniosku kontenery mowy w usłudze Cognitive Services][speech-preview-access] Aby zażądać dostępu do kontenera. 
-
-[!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
-
 ## <a name="connect-to-the-kubernetes-cluster"></a>Nawiąż połączenie z klastrem Kubernetes
 
 Komputer-host jest powinny mieć dostępne klastra Kubernetes. Zobacz w tym samouczku na [wdrażaniu klastra Kubernetes](../../aks/tutorial-kubernetes-deploy-cluster.md) dla pojęć dotyczących wdrażania klastra Kubernetes do komputera-hosta.
 
 ### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>Udostępnianie poświadczenia platformy Docker z klastrem Kubernetes
 
-Aby umożliwić klastra Kubernetes do `docker pull` skonfigurowane obrazy z `containerpreview.azurecr.io` rejestru kontenerów, musisz przenieść poświadczenia platformy docker do klastra. Wykonaj [ `kubectl create` ][kubectl-create] poniższe polecenie, aby utworzyć *klucz tajny rejestru platformy docker* oparte na poświadczenia podane z kontenera [dostęp do rejestru](#request-access-to-the-container-registry) sekcji.
+Aby umożliwić klastra Kubernetes do `docker pull` skonfigurowane obrazy z `containerpreview.azurecr.io` rejestru kontenerów, musisz przenieść poświadczenia platformy docker do klastra. Wykonaj [ `kubectl create` ][kubectl-create] poniższe polecenie, aby utworzyć *klucz tajny rejestru platformy docker* oparte na poświadczeniach dostarczane z wstępnie wymaganego składnika dostępu do rejestru kontenerów.
 
 Z poziomu interfejsu wiersza polecenia, wyboru, uruchom następujące polecenie. Koniecznie Zastąp `<username>`, `<password>`, i `<email-address>` przy użyciu poświadczeń rejestru kontenerów.
 

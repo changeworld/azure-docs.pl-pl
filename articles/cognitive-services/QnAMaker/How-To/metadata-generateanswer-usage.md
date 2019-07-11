@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 06/27/2019
 ms.author: diberry
-ms.openlocfilehash: b691d447f51165ea3cb56410da9cd2d4d00ce913
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 6bfcb531d0e4e8073a5553f7bc84a25e4f8a92a9
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490203"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785683"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Uzyskaj odpowiedzi za pomocą interfejsu API GenerateAnswer i metadane
 
@@ -96,7 +96,7 @@ Przykładowy kod JSON wygląda następująco:
 
 ## <a name="generateanswer-response-properties"></a>Właściwości odpowiedzi GenerateAnswer
 
-[Odpowiedzi](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#successful_query) jest obiektem JSON oraz wszystkie informacje potrzebne do wyświetlania odpowiedzi, a następnie włącz konwersacji, jeśli jest dostępny.
+[Odpowiedzi](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#successful-query) jest obiektem JSON oraz wszystkie informacje potrzebne do wyświetlania odpowiedzi, a następnie włącz konwersacji, jeśli jest dostępny.
 
 ```json
 {
@@ -229,7 +229,7 @@ Możesz wyszukać opublikowanych kb, za pomocą `isTest=false`, lub za pomocą t
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 **Publikuj** strona zawiera również informacje potrzebne do generowania odpowiedzi za pomocą [Postman](../Quickstarts/get-answer-from-kb-using-postman.md) i [cURL](../Quickstarts/get-answer-from-kb-using-curl.md). 
 
