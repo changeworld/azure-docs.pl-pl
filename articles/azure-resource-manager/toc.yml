@@ -130,6 +130,28 @@
           href: vs-resource-groups-project-devops-pipelines.md
     - name: Eksportowanie szablonu
       href: export-template-portal.md
+    - name: Move
+      items:
+        - name: Przenoszenie zasobów
+          href: resource-group-move-resources.md
+        - name: Pomoc techniczna dla zasobów
+          href: move-support-resources.md
+        - name: Rozwiązywanie problemów z przenoszeniem
+          href: troubleshoot-move.md
+        - name: Wskazówki dotyczące przenoszenia dla usług
+          items:
+            - name: App Service
+              href: ./move-limitations/app-service-move-limitations.md
+            - name: Azure DevOps
+              href: /azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json
+            - name: Wdrożenie klasyczne
+              href: ./move-limitations/classic-model-move-limitations.md
+            - name: Recovery Services
+              href: ../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Maszyny wirtualne
+              href: ./move-limitations/virtual-machines-move-limitations.md
+            - name: Sieci wirtualne
+              href: ./move-limitations/virtual-network-move-limitations.md
     - name: Zarządzanie
       items:
         - name: Zarządzanie grupami zasobów
@@ -154,8 +176,6 @@
             - name: Korzystanie z programu Azure PowerShell
               displayName: 'open,delete,deploy,move,lock,tag'
               href: manage-resources-powershell.md
-        - name: Przenoszenie zasobów
-          href: resource-group-move-resources.md
         - name: Organizowanie zasobów
           displayName: tags
           href: resource-group-using-tags.md
@@ -235,8 +255,6 @@
       items:
         - name: Usuwanie w trybie pełnym
           href: complete-mode-deletion.md
-        - name: Obsługa przenoszenia
-          href: move-support-resources.md
         - name: Pomoc techniczna dla tagów
           href: tag-support.md
     - name: Dostawcy zasobów według usługi

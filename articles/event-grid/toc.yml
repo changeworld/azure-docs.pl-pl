@@ -168,6 +168,8 @@
           href: event-schema-azure-maps.md
         - name: Konfiguracja aplikacji
           href: event-schema-app-configuration.md
+        - name: Azure SignalR
+          href: event-schema-azure-signalr.md
     - name: Zasoby szablonu
       items:
         - name: Subskrypcje zdarzeń

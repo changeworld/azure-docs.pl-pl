@@ -797,6 +797,8 @@
       href: 'https://azure.microsoft.com/try/cosmosdb/'
     - name: Cennik
       href: 'https://azure.microsoft.com/pricing/details/cosmos-db/'
+    - name: Korzyści z wielowzorcowości
+      href: multi-master-benefits.md
     - name: Przypadki zastosowań
       items:
         - name: Typowe przypadki użycia

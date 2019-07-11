@@ -142,6 +142,9 @@
         - name: Lista kontrolna zabezpieczeń
           displayName: 'identity, active directory, password'
           href: azure-ad-secure-steps.md
+        - name: Wybieranie logowania bez hasła
+          displayName: 'identity, active directory, passwordless'
+          href: azure-ad-passwordless.md
         - name: Najlepsze praktyki
           displayName: 'password, identity, active directory'
           href: azure-security-identity-management-best-practices.md

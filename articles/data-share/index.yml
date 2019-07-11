@@ -1,0 +1,51 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentacja usługi Azure Data Share (wersja zapoznawcza)
+metadata:
+  title: Dokumentacja usługi Azure Data Share — samouczki i przewodniki z instrukcjami
+  description: Usługa Azure Data Share (wersja zapoznawcza) to bezpieczna usługa do udostępniania danych organizacjom zewnętrznym.
+  author: joannapea
+  ms.author: joanpo
+  ms.service: data-share
+  ms.topic: landing-page
+  ms.date: 07/10/2019
+abstract:
+  description: '<p>Usługa Azure Data Share (wersja zapoznawcza) to bezpieczna usługa do udostępniania danych organizacjom zewnętrznym. Wybierz zestawy danych, które chcesz udostępnić, dodaj odbiorców i rozpocznij udostępnianie danych z możliwością nadzorowania, monitorowania i kontrolowania relacji udostępniania danych. </p><p>Dowiedz się z naszych samouczków, jak korzystać z usługi Azure Data Share.</p>'
+  aside:
+    image:
+      alt: null
+      height: 110
+      src: media/azure-friday.png
+      width: 250
+    title: Usługa Azure Data Share w witrynie Azure Friday’s
+    href: 'https://channel9.msdn.com/Shows/Azure-Friday/Share-data-simply-and-securely-using-Azure-Data-Share/player?format=ny'
+    width: 250
+sections:
+  - title: Przewodniki z instrukcjami
+    items:
+      - type: paragraph
+        text: 'Dowiedz się, jak monitorować udział danych, skonfigurować mapowania zestawu danych, dodać adresatów i nie tylko, zapoznając się z jednym z następujących przewodników z instrukcjami:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/data-share/media/index/portal.svg
+            text: Monitorowanie usługi Azure Data Share
+            href: /azure/data-share/how-to-monitor
+          - image:
+              src: /azure/data-share/media/index/portal.svg
+            text: Konfigurowanie mapowania zestawu danych
+            href: /azure/data-share/how-to-configure-mapping
+          - image:
+              src: /azure/data-share/media/index/portal.svg
+            text: Rozwiązywanie problemów z usługą Azure Data Share
+            href: /azure/data-share/data-share-troubleshoot
+  - title: Samouczki krok po kroku
+    items:
+      - type: paragraph
+        text: 'Dowiedz się, jak rozpocząć udostępnianie danych przy użyciu usługi Azure Data Share'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="share-your-data">Udostępnianie danych przy użyciu usługi Azure Data Share</a>
+          - html: <a href="subscribe-to-data-share">Akceptowanie i odbieranie danych przy użyciu usługi Azure Data Share</a>

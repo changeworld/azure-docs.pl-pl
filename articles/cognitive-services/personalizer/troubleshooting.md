@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów
+title: Rozwiązywanie problemów — Personalizer
 titleSuffix: Azure Cognitive Services
 description: Rozwiązywanie problemów z pytania dotyczące Personalizer znajdują się w tym artykule.
 author: edjez
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: article
 ms.date: 06/15/2019
 ms.author: edjez
-ms.openlocfilehash: 5136bd295c12c4439a894b4dcf0b868d32ce43ca
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: be6119d96b89622f45db1099a47e858a5893c2cb
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67313144"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722252"
 ---
 # <a name="personalizer-troubleshooting"></a>Rozwiązywanie problemów z personalizer
 
@@ -29,6 +29,6 @@ Pętli learning wymaga kilku tysięcy wywołań za wynagrodzeniem przed rangi wy
 
 Jeśli wiesz, jak obecnie zachowuje się pętlę metodyki uczenia, uruchom [oceny w trybie offline](concepts-offline-evaluation.md)i Zastosuj zasady poprawiony uczenia. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Skonfiguruj częstotliwość aktualizacji modelu](how-to-settings.md#model-update-frequency)
