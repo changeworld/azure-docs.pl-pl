@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: 41a57d1ad5d216797fc60ea13acff346734fdef8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 7885b03e9f92fc8e8c5b2c78049760cbed8d4dc7
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67433644"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703961"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Dostosowywanie klastrów usługi Azure HDInsight przy użyciu akcji skryptu
 
@@ -173,12 +173,12 @@ W tej sekcji opisano różne sposoby, można użyć akcji skryptu, podczas tworz
 
     W poniższej tabeli opisano elementy na formularzu:
 
-    | Właściwość | Wartość |
+    | Właściwość | Value |
     | --- | --- |
     | Wybierz skrypt | Aby użyć własnego skryptu, wybierz __niestandardowe__. W przeciwnym razie wybierz dostarczone skrypty. |
     | Name (Nazwa) |Określ nazwę dla akcji skryptu. |
     | Identyfikator URI skryptu powłoki systemowej |Określ identyfikator URI skryptu. |
-    | Head/Worker/Zookeeper |Określ węzły, na których jest uruchamiany skrypt: **Head**, **Worker**, lub **ZooKeeper**. |
+    | Proces roboczy/główne/dozorcy |Określ węzły, na których jest uruchamiany skrypt: **HEAD**, **procesu roboczego**, lub **dozorcy**. |
     | Parametry |Określ parametry, jeśli jest to wymagane przez skrypt. |
 
     Użyj __Utrwal tę akcję skryptu__ wpis, aby upewnić się, że skrypt jest stosowana podczas operacji skalowania.
@@ -468,7 +468,7 @@ Jeśli tworzenie klastra kończy się niepowodzeniem z powodu błędu skryptu, d
 
 * Istnieje możliwość, wielokrotne Tworzenie klastra akcji skryptu o takiej samej nazwie. W takim przypadku można odróżnić odpowiednie dzienniki na podstawie **data** nazwę folderu. Na przykład struktura folderów dla klastra, **mycluster**utworzony w różnych terminach wygląda podobnie do następujących wpisy dziennika:
 
-    `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-04` `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-05`
+    `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-04``\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-05`
 
 * Jeśli tworzysz klaster akcji skryptu o takiej samej nazwie w tym samym dniu umożliwia unikatowy prefiks zidentyfikować odpowiednich plików dziennika.
 
@@ -514,7 +514,7 @@ Istnieją jednak dwa wyjątki:
 
     Nie nowe akcje skryptów można uruchomić w tym klastrze z powodu konfliktu nazw skryptu w istniejących skryptów. Nazwy skryptu, podane podczas tworzenia klastra muszą być unikatowe. Istniejące skrypty są uruchamiane przy zmianie rozmiaru.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Tworzenie skryptów Akcja skryptu dla HDInsight](hdinsight-hadoop-script-actions-linux.md)
 * [Instalowanie i używanie Apache Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install-linux.md)

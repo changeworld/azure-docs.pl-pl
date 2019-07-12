@@ -2,17 +2,17 @@
 title: Najlepsze rozwiązania dla usługi Azure Kubernetes Service (AKS)
 description: Zbiór klastra operatora i deweloperów najlepszych rozwiązań do tworzenia aplikacji i zarządzanie nimi w usłudze Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 12/07/2018
-ms.author: iainfou
-ms.openlocfilehash: 20922f0fb6932191b8e522e4640b1ba4fecd5ca4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 7127894b364ac8f0fe1d87e13150d5522f5473e2
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66514558"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615960"
 ---
 # <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Operator klastra i dla deweloperów najważniejsze wskazówki dotyczące tworzenia aplikacji i zarządzanie nimi w usłudze Azure Kubernetes Service (AKS)
 
@@ -76,6 +76,6 @@ Aby ułatwić zrozumienie niektórych funkcji i składników tych najlepszych ro
 * [Opcje magazynu](concepts-storage.md)
 * [Opcje skalowania](concepts-scale.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Jeśli potrzebujesz zacząć korzystać z usługi AKS, wykonaj jedną z przewodników Szybki Start do wdrożenia klastra Azure Kubernetes Service (AKS) przy użyciu [wiersza polecenia platformy Azure](kubernetes-walkthrough.md) lub [witryny Azure portal](kubernetes-walkthrough-portal.md).

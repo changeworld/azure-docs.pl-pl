@@ -2,17 +2,17 @@
 title: Wyświetlanie dzienników kontrolera Azure Kubernetes Service (AKS)
 description: Dowiedz się, jak włączanie i wyświetlanie dzienników dla węzła głównego Kubernetes w usłudze Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
-ms.author: iainfou
-ms.openlocfilehash: 256101cce5588f56a8094a7a9a98e5fe69e6ec73
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: ef77b991461c5d9640cbab9d53f8393540f47c9b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66497249"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67613918"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Włączyć i przejrzeć Kubernetes węzła głównego dzienników w usłudze Azure Kubernetes Service (AKS)
 
@@ -20,11 +20,11 @@ Za pomocą usługi Azure Kubernetes Service (AKS), podstawowe składniki, takie 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Ten artykuł wymaga istniejącego klastra AKS uruchomiony na Twoim koncie platformy Azure. Jeśli nie masz już klaster AKS, utwórz ją przy użyciu [wiersza polecenia platformy Azure] [ cli-quickstart] lub [witryny Azure portal][portal-quickstart]. Usługa Azure Monitor dzienniki działa z obu RBAC i innych RBAC włączone klastrów usługi AKS.
+Ten artykuł wymaga istniejącego klastra AKS uruchomiony na Twoim koncie platformy Azure. Jeśli nie masz już klaster AKS, utwórz ją przy użyciu [wiersza polecenia platformy Azure][cli-quickstart] or [Azure portal][portal-quickstart]. Usługa Azure Monitor dzienniki działa z obu RBAC i innych RBAC włączone klastrów usługi AKS.
 
 ## <a name="enable-diagnostics-logs"></a>Włączanie dzienników diagnostycznych
 
-Aby zebrać i przejrzeć dane z wielu źródeł, dzienniki usługi Azure Monitor udostępnia zapytania języka i aparat analityczny, które dają wgląd w danym środowisku. Obszar roboczy jest używana do sortowania i analizować dane i można integrować z innymi usługami platformy Azure, takich jak usługa Application Insights i Centrum zabezpieczeń. Aby użyć innej platformy do analizy dzienników, możesz zamiast tego Wyślij dzienniki diagnostyczne do Centrum konta lub zdarzenia usługi Azure storage. Aby uzyskać więcej informacji, zobacz [co to jest dzienniki usługi Azure Monitor?] [log-analytics-overview].
+Aby zebrać i przejrzeć dane z wielu źródeł, dzienniki usługi Azure Monitor udostępnia zapytania języka i aparat analityczny, które dają wgląd w danym środowisku. Obszar roboczy jest używana do sortowania i analizować dane i można integrować z innymi usługami platformy Azure, takich jak usługa Application Insights i Centrum zabezpieczeń. Aby użyć innej platformy do analizy dzienników, możesz zamiast tego Wyślij dzienniki diagnostyczne do Centrum konta lub zdarzenia usługi Azure storage. Aby uzyskać więcej informacji, zobacz [co to jest dzienniki usługi Azure Monitor?][log-analytics-overview].
 
 Dzienniki platformy Azure Monitor są włączone i zarządzane w witrynie Azure portal. Aby włączyć zbieranie dzienników dla składniki klastra AKS rozwiązania Kubernetes, otwórz Azure portal w przeglądarce sieci web, a następnie wykonaj następujące czynności:
 
@@ -37,15 +37,15 @@ Dzienniki platformy Azure Monitor są włączone i zarządzane w witrynie Azure 
 1. Gdy wszystko będzie gotowe, wybierz **Zapisz** Aby włączyć zbieranie dzienników wybrane.
 
 > [!NOTE]
-> AKS przechwytuje tylko dzienniki inspekcji dla klastrów, które są tworzone lub uaktualniony po włączeniu flagi funkcji w ramach Twojej subskrypcji. Aby zarejestrować *AKSAuditLog* flagę funkcji, należy użyć [az feature register] [ az-feature-register] polecenia, jak pokazano w poniższym przykładzie:
+> AKS przechwytuje tylko dzienniki inspekcji dla klastrów, które są tworzone lub uaktualniony po włączeniu flagi funkcji w ramach Twojej subskrypcji. Aby zarejestrować *AKSAuditLog* flagę funkcji, należy użyć [az feature register][az-feature-register] polecenia, jak pokazano w poniższym przykładzie:
 >
 > `az feature register --name AKSAuditLog --namespace Microsoft.ContainerService`
 >
-> Poczekaj, aż stan pokazać *zarejestrowanej*. Można sprawdzić stan rejestracji przy użyciu [lista funkcji az] [ az-feature-list] polecenia:
+> Poczekaj, aż stan pokazać *zarejestrowanej*. Można sprawdzić stan rejestracji przy użyciu [lista funkcji az][az-feature-list] polecenia:
 >
 > `az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSAuditLog')].{Name:name,State:properties.state}"`
 >
-> Gdy wszystko będzie gotowe, Odśwież rejestracji dostawcy zasobów usługi AKS przy użyciu [az provider register] [ az-provider-register] polecenia:
+> Gdy wszystko będzie gotowe, Odśwież rejestracji dostawcy zasobów usługi AKS przy użyciu [az provider register][az-provider-register] polecenia:
 >
 > `az provider register --namespace Microsoft.ContainerService`
 
@@ -77,7 +77,7 @@ spec:
     - containerPort: 80
 ```
 
-Utwórz zasobnik za pomocą [tworzenie kubectl] [ kubectl-create] polecenia i określić pliku YAML, jak pokazano w poniższym przykładzie:
+Utwórz zasobnik za pomocą [tworzenie kubectl][kubectl-create] polecenia i określić pliku YAML, jak pokazano w poniższym przykładzie:
 
 ```
 $ kubectl create -f nginx.yaml
@@ -131,9 +131,9 @@ Aby ułatwić analizowanie danych dzienników, w poniższej tabeli przedstawiono
 | *properties.pod*         | Nazwa zasobnika dziennik pochodzi z |
 | *properties.containerID* | Identyfikator kontenera platformy docker, z którego pochodzi ten dziennik |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule przedstawiono sposób włączyć i przejrzeć dzienniki Aby uzyskać składniki klastra AKS rozwiązania Kubernetes. Monitorowanie i rozwiązywanie problemów z dalszych, możesz również [wyświetlanie dzienników agenta Kubelet] [ kubelet-logs] i [włączyć dostęp do węzła SSH][aks-ssh].
+W tym artykule przedstawiono sposób włączyć i przejrzeć dzienniki Aby uzyskać składniki klastra AKS rozwiązania Kubernetes. Monitorowanie i rozwiązywanie problemów z dalszych, możesz również [wyświetlanie dzienników agenta Kubelet][kubelet-logs] and [enable SSH node access][aks-ssh].
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create

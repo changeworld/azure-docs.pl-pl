@@ -3,15 +3,15 @@ title: Programowanie lokalnie za pomocą emulatora usługi Azure Cosmos
 description: Przy użyciu emulatora usługi Azure Cosmos, można tworzyć i testować aplikację lokalnie bezpłatnie, bez tworzenia subskrypcji platformy Azure.
 ms.service: cosmos-db
 ms.topic: tutorial
-author: deborahc
-ms.author: dech
-ms.date: 06/21/2019
-ms.openlocfilehash: d7d9d62525161e6871cafd65cf5cd2c403cf0579
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+author: markjbrown
+ms.author: mjbrown
+ms.date: 07/09/2019
+ms.openlocfilehash: 9649c53f9fc11795449afd78b12fda691239bb18
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331775"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797323"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Na użytek emulatora usługi Azure Cosmos lokalne programowanie i testowanie
 
@@ -232,7 +232,7 @@ Z lokalizacji instalacji służy wiersza polecenia do uruchamiania i zatrzymywan
 
 ### <a name="command-line-syntax"></a>Składnia wiersza polecenia
 
-    CosmosDB.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort] [/DirectPorts] [/Key] [/EnableRateLimiting] [/DisableRateLimiting] [/NoUI] [/NoExplorer] [/?]
+    CosmosDB.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort] [/DirectPorts] [/Key] [/EnableRateLimiting] [/DisableRateLimiting] [/NoUI] [/NoExplorer] [/EnableMongoDbEndpoint] [/?]
 
 Aby wyświetlić listę opcji, wpisz ciąg `CosmosDB.Emulator.exe /?` w wierszu polecenia.
 
@@ -244,18 +244,19 @@ Aby wyświetlić listę opcji, wpisz ciąg `CosmosDB.Emulator.exe /?` w wierszu 
 | Shutdown| Zamyka emulatora usługi Azure Cosmos.| CosmosDB.Emulator.exe /Shutdown | |
 |DataPath | Określa ścieżkę przechowywania plików danych. Wartość domyślna to % LocalAppdata%\CosmosDBEmulator. | CosmosDB.Emulator.exe /DataPath=\<ścieżka_do_danych\> | \<ścieżka_do_danych\>: dostępna ścieżka |
 |Port | Określa numer portu używanego przez emulatora. Wartość domyślna to 8081. |CosmosDB.Emulator.exe /Port=\<port\> | \<port\>: numer pojedynczego portu |
-| MongoPort | Określa numer portu używanego w celu zapewnienia zgodności z interfejsem API usługi MongoDB. Wartość domyślna to 10255. |CosmosDB.Emulator.exe /MongoPort= \<mongoport\>|\<port_mongo\>: numer pojedynczego portu|
-| CassandraPort | Określa numer portu do użycia dla punktu końcowego bazy danych Cassandra. Wartość domyślna to 10350. | CosmosDB.Emulator.exe /CassandraPort = \<cassandraport\> | \<cassandraport\>: numer pojedynczego portu |
 | ComputePort | Określony numer portu do użycia dla usługa Compute bramy międzyoperacyjności. Port sondy punktu końcowego HTTP bramy jest obliczana jako ComputePort + 79. Dzięki temu ComputePort i ComputePort + 79 musi być otwarty i dostępny. Wartości domyślne są 8900, 8979. | CosmosDB.Emulator.exe /ComputePort = \<computeport\> | \<computeport\>: numer pojedynczego portu |
+| EnableMongoDbEndpoint | Zapewnia interfejs API usługi MongoDB | CosmosDB.Emulator.exe /EnableMongoDbEndpoint | |
+| MongoPort | Określa numer portu używanego w celu zapewnienia zgodności z interfejsem API usługi MongoDB. Wartość domyślna to 10255. |CosmosDB.Emulator.exe /MongoPort= \<mongoport\>|\<port_mongo\>: numer pojedynczego portu|
 | EnableCassandraEndpoint | Włącza interfejsu API rozwiązania Cassandra | CosmosDB.Emulator.exe /EnableCassandraEndpoint | |
+| CassandraPort | Określa numer portu do użycia dla punktu końcowego bazy danych Cassandra. Wartość domyślna to 10350. | CosmosDB.Emulator.exe /CassandraPort = \<cassandraport\> | \<cassandraport\>: numer pojedynczego portu |
 | EnableGremlinEndpoint | Zapewnia interfejs API języka Gremlin | CosmosDB.Emulator.exe /EnableGremlinEndpoint | |
 | GremlinPort | Numer portu używany dla punktu końcowego języka Gremlin. Wartość domyślna to 8901. | CosmosDB.Emulator.exe /GremlinPort=\<port\> | \<port\>: numer pojedynczego portu |
+|EnableTableEndpoint | Umożliwia usłudze Azure Table API | CosmosDB.Emulator.exe /EnableTableEndpoint | |
 |TablePort | Numer portu używany dla punktu końcowego z tabeli platformy Azure. Wartość domyślna to 8902. | CosmosDB.Emulator.exe /TablePort=\<port\> | \<port\>: numer pojedynczego portu|
 | KeyFile | Odczyt klucza autoryzacji z określonego pliku. Użyj opcji /GenKeyFile do wygenerowania pliku klucza | CosmosDB.Emulator.exe /KeyFile=\<file_name\> | \<nazwa_pliku\>: Ścieżka do pliku |
 | ResetDataPath | Rekursywnie usuwa wszystkie pliki w określonej ścieżce. Jeśli nie określisz ścieżki, jego wartość domyślna to %LOCALAPPDATA%\CosmosDbEmulator | CosmosDB.Emulator.exe /ResetDataPath [=\<path >] | \<path\>: Ścieżka pliku  |
 | StartTraces  |  Rozpoczęcie zbierania dzienników śledzenia debugowania. | CosmosDB.Emulator.exe /StartTraces | |
 | StopTraces     | Zatrzymaj zbieranie dzienników śledzenia debugowania. | CosmosDB.Emulator.exe /StopTraces  | |
-|EnableTableEndpoint | Umożliwia usłudze Azure Table API | CosmosDB.Emulator.exe /EnableTableEndpoint | |
 |FailOnSslCertificateNameMismatch | Domyślnie Emulator generuje ponownie podpisany certyfikat SSL, jeśli certyfikat SAN nie obejmuje hostów emulatora nazwy domeny, lokalne IPv4 adresu, "localhost" i "127.0.0.1". Po wybraniu tej opcji emulator zakończy się niepowodzeniem przy uruchamianiu zamiast tego. Należy następnie użyć opcji /GenCert, aby utworzyć i zainstalować nowy certyfikat SSL z podpisem własnym. | CosmosDB.Emulator.exe /FailOnSslCertificateNameMismatch  | |
 | GenCert | Wygeneruj i zainstaluj nowy certyfikat SSL z podpisem własnym. Opcjonalnie łącznie z rozdzielaną przecinkami listą dodatkowe nazwy DNS do uzyskiwania dostępu do emulatora za pośrednictwem sieci. | CosmosDB.Emulator.exe /GenCert [ \<rozdzielaną przecinkami listę dodatkowe nazwy dns\>] | |
 | DirectPorts |Określa porty używane przez połączenia bezpośrednie. Wartość domyślna to 10251,10252,10253,10254. | CosmosDB.Emulator.exe /DirectPorts:\<porty_bezpośrednie\> | \<porty_bezpośrednie\>: lista rozdzielana przecinkami zawierająca cztery porty |
@@ -276,11 +277,11 @@ Aby wyświetlić listę opcji, wpisz ciąg `CosmosDB.Emulator.exe /?` w wierszu 
 
 Domyślnie można utworzyć maksymalnie 25 kontenery o stałym rozmiarze (obsługiwana tylko przy użyciu zestawów SDK usługi Azure Cosmos DB) lub 5 nieograniczone kontenery przy użyciu emulatora usługi Azure Cosmos. Modyfikując **liczba partycji** wartości, można utworzyć maksymalnie 250 kontenery o stałym rozmiarze lub 50 nieograniczone kontenery lub dowolną kombinację dwóch, które nie może przekraczać 250 kontenery o stałym rozmiarze (gdzie jednego nieograniczonego kontenera = 5 o stałym rozmiarze kontenery). Jednak nie zaleca się skonfigurować emulator, aby uruchomić program z ponad 200 kontenery o stałym rozmiarze. Ze względu na obciążenie, które dodaje do operacje We/Wy dysku, który powodować nieprzewidywalne przekroczeń limitu czasu podczas przy użyciu punktu końcowego interfejsów API.
 
-
 Jeśli spróbujesz utworzyć kontener po bieżąca liczba partycji została przekroczona, emulator zgłasza wyjątek ServiceUnavailable, następujący komunikat o błędzie.
 
 "Niestety, mamy obecnie występuje duże zapotrzebowanie w tym regionie i nie można wykonać żądania w tej chwili. Firma Microsoft stale do dostosowania coraz więcej pojemności online oraz zalecamy, aby spróbować ponownie.
-Prosimy do poczty e-mail askcosmosdb@microsoft.com w dowolnym momencie i z dowolnego powodu. ActivityId: 12345678-1234-1234-1234-123456789abc"
+Prosimy do poczty e-mail askcosmosdb@microsoft.com w dowolnym momencie i z dowolnego powodu.
+ActivityId: 12345678-1234-1234-1234-123456789abc"
 
 Aby zmienić liczbę kontenerów, które są dostępne w emulatora usługi Azure Cosmos, wykonaj następujące kroki:
 
@@ -505,7 +506,7 @@ Aby zebrać dane śledzenia debugowania, uruchom następujące polecenia w wiers
 3. Przewiń listę aplikacji, wybierz pozycję **Emulator usługi Azure Cosmos DB**, kliknij przycisk **Odinstaluj**, potwierdź i ponownie kliknij przycisk **Odinstaluj**.
 4. Gdy aplikacja zostanie odinstalowana, przejdź do katalogu `%LOCALAPPDATA%\CosmosDBEmulator` i usuń folder.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku opisaliśmy sposób użycia lokalnego emulatora do bezpłatnego programowania w środowisku lokalnym. Teraz możesz przejść do następnego samouczka, aby dowiedzieć się, jak wyeksportować certyfikaty SSL emulatora.
 

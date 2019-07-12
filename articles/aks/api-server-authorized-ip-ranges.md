@@ -2,17 +2,17 @@
 title: Serwera interfejsu API autoryzowane zakresy adresów IP w usłudze Azure Kubernetes Service (AKS)
 description: Dowiedz się, jak zabezpieczyć klaster przy użyciu zakresu adresów IP, aby uzyskać dostęp do serwera interfejsu API w usłudze Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.author: iainfou
-ms.openlocfilehash: d425fc3e037b43321a278fb16781e86dfafef15c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: mlearned
+ms.openlocfilehash: 6516bbcb4ea879279812d61d9fe31f1ea4268280
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441525"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616255"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>(Wersja zapoznawcza) — bezpieczny dostęp do serwera interfejsu API przy użyciu autoryzowane zakresy adresów IP w usłudze Azure Kubernetes Service (AKS)
 

@@ -4,7 +4,7 @@ description: Przekazywanie uogólnionego wirtualnego dysku twardego do systemu A
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: cynthn
-ms.openlocfilehash: ee2fe91d915faf7e09dee004891edfc6bef38d6f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9846bf7b28f1205f98eb59671553d309fe754d30
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64685416"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707936"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Przekazywanie uogólnionego wirtualnego dysku twardego i użyć go do utworzenia nowych maszyn wirtualnych na platformie Azure
 
@@ -109,7 +109,7 @@ Możesz również przekazać dysku VHD do konta magazynu przy użyciu jednej z n
     Import/Export może służyć do skopiowania do konta magazynu w warstwie standardowa. Należy skopiować z magazynu standard storage do konta usługi premium storage przy użyciu narzędzia, takiego jak narzędzie AzCopy.
 
 > [!IMPORTANT]
-> Jeśli przekazywanie wirtualnego dysku twardego do systemu Azure przy użyciu narzędzia AzCopy upewnij się, zostało ustawione [ **/BlobType:page** ](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy#blobtypeblock--page--append) przed uruchomieniem skryptu przekazywania. Jeśli obiektem docelowym jest obiekt blob, a ta opcja nie jest określona, narzędzie AzCopy domyślnie tworzy blokowych obiektów blob.
+> Jeśli przekazywanie wirtualnego dysku twardego do systemu Azure przy użyciu narzędzia AzCopy upewnij się, zostało ustawione [ **/BlobType:page** ](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs#upload-a-file) przed uruchomieniem skryptu przekazywania. Jeśli obiektem docelowym jest obiekt blob, a ta opcja nie jest określona, narzędzie AzCopy domyślnie tworzy blokowych obiektów blob.
 > 
 > 
 
@@ -164,7 +164,7 @@ New-AzVm `
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Zaloguj się do swojej nowej maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [jak połączyć i zaloguj się na maszynie wirtualnej platformy Azure, systemem Windows](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 

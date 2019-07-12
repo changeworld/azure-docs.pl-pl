@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 13eb1a8fcea2f74cda5921a51b8c2e8816be975f
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: e8e6276a38f06b5c6ebb24c89f3733b9fd7220f7
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303711"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612840"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics-workspace-in-azure-monitor"></a>Dzienniki diagnostyczne usługi Azure Stream do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor
 
@@ -58,7 +58,7 @@ Obszar roboczy usługi Log Analytics nie musi znajdować się w tej samej subskr
 
    ![Dodaj ustawienie diagnostyczne — istniejące ustawienia](media/diagnostic-logs-stream-log-store/diagnostic-settings-configure.png)
 
-4. Kliknij pozycję **Zapisz**.
+4. Kliknij polecenie **Zapisz**.
 
 Po kilku chwilach nowe ustawienie jest wyświetlane na liście ustawień dla tego zasobu, i jak tylko nowe dane zdarzenia są generowane dzienniki diagnostyczne są przesyłane strumieniowo do tego obszaru roboczego. Może to być między podczas zdarzenia są emitowane i, gdy pojawia się w usłudze Log Analytics do 15 minut.
 
@@ -99,6 +99,30 @@ Dodatkowe kategorie można dodawać do dzienników diagnostycznych, dodając sł
 
 W bloku dzienników w portalu usługi Azure Monitor jako część z rozwiązaniem zarządzanie dziennikiem pod tabelą AzureDiagnostics można badać dzienników diagnostycznych. Dostępne są także [kilka rozwiązań do monitorowania zasobów platformy Azure](../../azure-monitor/insights/solutions.md) można zainstalować na uzyskiwanie natychmiastowego wglądu w dane dziennika są wysyłane do usługi Azure Monitor.
 
+### <a name="examples"></a>Przykłady
+
+```Kusto
+// Resources that collect diagnostic logs into this Log Analytics workspace, using Diagnostic Settings
+AzureDiagnostics
+| distinct _ResourceId
+```
+```Kusto
+// Resource providers collecting diagnostic logs into this Log Analytics worksapce, with log volume per category
+AzureDiagnostics
+| summarize count() by ResourceProvider, Category
+```
+```Kusto
+// Resource types collecting diagnostic logs into this Log Analytics workspace, with number of resources onboarded
+AzureDiagnostics
+| summarize ResourcesOnboarded=dcount(_ResourceId) by ResourceType
+```
+```Kusto
+// Operations logged by specific resource provider, in this example - KeyVault
+AzureDiagnostics
+| where ResourceProvider == "MICROSOFT.KEYVAULT"
+| distinct OperationName
+```
+
 ## <a name="azure-diagnostics-vs-resource-specific"></a>Azure Diagnostics a specyficznych dla zasobów  
 Po włączeniu docelowej usługi Log Analytics w konfiguracji usługi Diagnostyka Azure istnieją dwa odrębne sposoby, które dane będą widoczne w obszarze roboczym:  
 - **Diagnostyka Azure** — jest to metoda starszych używanych obecnie przez większość usług platformy Azure. W tym trybie wszystkie dane z dowolnego ustawienia diagnostyczne wskazywał danego obszaru roboczego będzie znajdą się w _AzureDiagnostics_ tabeli. 
@@ -109,7 +133,7 @@ Po włączeniu docelowej usługi Log Analytics w konfiguracji usługi Diagnostyk
 
     Tabela AzureDiagnostics będzie wyglądać następująco, z pewnymi przykładowymi danymi:  
 
-    | ResourceProvider | Category | A | B | C | D | E | F | G | H | I |
+    | ResourceProvider | Kategoria | A | B | C | D | E | F | G | H | I |
     | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
     | Microsoft.Resource1 | AuditLogs | x1 | y1 | z1 |
     | Microsoft.Resource2 | Przesłano | | | | q1 | w1 | e1 |
@@ -124,7 +148,7 @@ Po włączeniu docelowej usługi Log Analytics w konfiguracji usługi Diagnostyk
     W powyższym przykładzie spowodowałoby to w trzech tabelach tworzona: 
     - Tabela _AuditLogs_ w następujący sposób:
 
-        | ResourceProvider | Category | A | B | C |
+        | ResourceProvider | Kategoria | A | B | C |
         | -- | -- | -- | -- | -- |
         | Microsoft.Resource1 | AuditLogs | x1 | y1 | z1 |
         | Microsoft.Resource1 | AuditLogs | x5 | y5 | z5 |
@@ -132,7 +156,7 @@ Po włączeniu docelowej usługi Log Analytics w konfiguracji usługi Diagnostyk
 
     - Tabela _przesłano_ w następujący sposób:  
 
-        | ResourceProvider | Category | D | E | F |
+        | ResourceProvider | Kategoria | D | E | F |
         | -- | -- | -- | -- | -- | 
         | Microsoft.Resource2 | Przesłano | q1 | w1 | e1 |
         | Microsoft.Resource2 | Przesłano | q2 | w2 | e2 |
@@ -140,7 +164,7 @@ Po włączeniu docelowej usługi Log Analytics w konfiguracji usługi Diagnostyk
 
     - Tabela _DataFlowLogs_ w następujący sposób:  
 
-        | ResourceProvider | Category | G | H | I |
+        | ResourceProvider | Kategoria | G | H | I |
         | -- | -- | -- | -- | -- | 
         | Microsoft.Resource3 | DataFlowLogs | j1 | k1 | l1|
         | Microsoft.Resource3 | DataFlowLogs | j3 | k3 | l3|
@@ -176,7 +200,7 @@ Rozwiązaniem krótkoterminowym, dopóki wszystkie usługi systemu Azure są wł
 Dłuższy okres diagnostyki platformy Azure będzie na drodze do wszystkich usług platformy Azure, Obsługa trybu specyficznych dla zasobów. Zalecamy przejście do tego trybu tak szybko, jak to możliwe, aby zmniejszyć potencjał wpływa ten limit 500 kolumny.  
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Dowiedz się więcej o dziennikach diagnostycznych platformy Azure](diagnostic-logs-overview.md)
 

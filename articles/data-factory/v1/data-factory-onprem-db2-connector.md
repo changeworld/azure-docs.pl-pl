@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 72c88ef10bf1df217ec6e24ac744d0b30386b4a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e473858ed02afce89313c0bfeffd95c785120d40
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60824018"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839033"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Przenoszenie danych z bazy danych DB2 za pomocą działania kopiowania w fabryce danych Azure
 > [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
@@ -64,7 +64,7 @@ Brama zarządzania danymi udostępnia wbudowanego sterownika bazy danych DB2, wi
 Utworzysz potok z działaniem kopiowania do przenoszenia danych z magazynu danych programu DB2 lokalnie przy użyciu różnych narzędzi i interfejsów API: 
 
 - Najprostszym sposobem utworzenia potoku jest używanie kreatora kopiowania usługi Azure Data Factory. Szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania, zobacz [samouczka: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md). 
-- Umożliwia także narzędzia do tworzenia potoku, w tym witryny Azure portal, programu Visual Studio, programu Azure PowerShell, szablonu usługi Azure Resource Manager, interfejsu API platformy .NET i interfejsu API REST. Aby uzyskać instrukcje krok po kroku utworzysz potok z działaniem kopiowania, zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
+- Umożliwia także narzędzia do tworzenia potoku, w tym Visual Studio, programu Azure PowerShell, szablonu usługi Azure Resource Manager, interfejsu API platformy .NET i interfejsu API REST. Aby uzyskać instrukcje krok po kroku utworzysz potok z działaniem kopiowania, zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
 
 Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródłowych do magazynu danych ujścia:
 
@@ -83,9 +83,9 @@ W poniższej tabeli wymieniono właściwości kodu JSON, które są specyficzne 
 | --- | --- | --- |
 | **type** |Ta właściwość musi być równa **OnPremisesDb2**. |Yes |
 | **server** |Nazwa serwera bazy danych DB2. |Tak |
-| **database** |Nazwa bazy danych DB2. |Yes |
+| **database** |Nazwa bazy danych DB2. |Tak |
 | **schema** |Nazwa schematu w bazie danych DB2. Ta właściwość jest rozróżniana wielkość liter. |Nie |
-| **authenticationType** |Typ uwierzytelniania, który służy do łączenia z bazą danych DB2. Możliwe wartości to: Anonimowe, podstawowe i Windows. |Tak |
+| **authenticationType** |Typ uwierzytelniania, który służy do łączenia z bazą danych DB2. Możliwe wartości to: Anonimowe, podstawowe i Windows. |Yes |
 | **Nazwa użytkownika** |Nazwa konta użytkownika, jeśli używasz uwierzytelniania podstawowe lub Windows. |Nie |
 | **Hasło** |Hasło dla konta użytkownika. |Nie |
 | **gatewayName** |Nazwa bramy, do którego usługa Data Factory powinna używać do łączenia z bazą danych DB2 w środowisku lokalnym. |Yes |
@@ -112,7 +112,7 @@ Działanie kopiowania, gdy źródłem jest typu **RelationalSource** (w tym bazy
 > Nazwy schematu i tabeli jest rozróżniana wielkość liter. W instrukcji zapytania, ujmij nazwy właściwości przy użyciu "" (podwójne cudzysłowy).
 
 ## <a name="json-example-copy-data-from-db2-to-azure-blob-storage"></a>Przykład kodu JSON: Kopiowanie danych z bazy danych DB2 w usłudze Azure Blob storage
-W poniższym przykładzie przedstawiono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [witryny Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). W przykładzie pokazano, jak skopiować dane z bazy danych DB2 do magazynu obiektów Blob. Jednakże, można skopiować danych do [typ ujścia magazynu wszelkie obsługiwane dane](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w fabryce danych Azure.
+W poniższym przykładzie przedstawiono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). W przykładzie pokazano, jak skopiować dane z bazy danych DB2 do magazynu obiektów Blob. Jednakże, można skopiować danych do [typ ujścia magazynu wszelkie obsługiwane dane](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w fabryce danych Azure.
 
 Przykład obejmuje następujących jednostek usługi Data Factory:
 
@@ -309,7 +309,7 @@ Następujące mapowania są używane podczas działania kopiowania konwertuje da
 | Typ bazy danych DB2 | Typ .NET framework |
 | --- | --- |
 | SmallInt |Int16 |
-| Integer |Int32 |
+| Liczba całkowita |Int32 |
 | BigInt |Int64 |
 | Real |Single |
 | Double |Double |
@@ -317,25 +317,25 @@ Następujące mapowania są używane podczas działania kopiowania konwertuje da
 | Dziesiętna |Decimal |
 | DecimalFloat |Decimal |
 | Numeric |Decimal |
-| Date |DateTime |
+| Date |Datetime |
 | Time |TimeSpan |
-| Timestamp |DateTime |
+| Timestamp |Datetime |
 | Xml |Byte[] |
 | Char |String |
 | VarChar |String |
 | LongVarChar |String |
 | DB2DynArray |String |
-| Binarny |Byte[] |
+| Binary |Byte[] |
 | VarBinary |Byte[] |
 | LongVarBinary |Byte[] |
 | Graphic |String |
 | VarGraphic |String |
-| LongVarGraphic |String |
+| LongVarGraphic |Ciąg |
 | Clob |String |
-| Obiekt blob |Byte[] |
-| DbClob |String |
+| Blob |Byte[] |
+| DbClob |Ciąg |
 | SmallInt |Int16 |
-| Integer |Int32 |
+| Liczba całkowita |Int32 |
 | BigInt |Int64 |
 | Real |Single |
 | Double |Double |
@@ -343,9 +343,9 @@ Następujące mapowania są używane podczas działania kopiowania konwertuje da
 | Dziesiętna |Decimal |
 | DecimalFloat |Decimal |
 | Numeric |Decimal |
-| Date |DateTime |
+| Date |Datetime |
 | Time |TimeSpan |
-| Timestamp |DateTime |
+| Timestamp |Datetime |
 | Xml |Byte[] |
 | Char |String |
 
