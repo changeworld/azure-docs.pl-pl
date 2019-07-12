@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 6911e06dc023027ab32b99387b9f7d3f5e708f86
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: fe4ecc237b56575f99844d3ec074225fadb69d3c
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67182910"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673452"
 ---
 ## <a name="configure-your-application-to-access-azure-storage"></a>Konfigurowanie aplikacji dostępu do magazynu Azure
 Istnieją dwa sposoby uwierzytelniania aplikacji na dostęp do usług magazynu:
@@ -38,11 +38,11 @@ Oto przykład parametrów połączenia przy użyciu uwierzytelniania klucza wsp�
 
 ### <a name="shared-access-signatures-sas"></a>Sygnatury dostępu współdzielonego (SAS)
 W przypadku aplikacji mobilnych zalecaną metodą uwierzytelnić żądania przez klienta usługi Azure Storage jest przy użyciu sygnatury dostępu współdzielonego (SAS). Sygnatury dostępu Współdzielonego umożliwia udzielenie dostępu klienta do zasobu w określonym przedziale czasu, z określonym zestawem uprawnień.
-Jako właściciel konta magazynu należy wygenerować sygnaturę dostępu Współdzielonego dla klientów mobilnych korzystać. Aby wygenerować sygnaturę dostępu Współdzielonego, prawdopodobnie należy zapisać osobną usługą, która generuje sygnaturę dostępu Współdzielonego do dystrybucji do klientów. Do celów testowych możesz użyć [Microsoft Azure Storage Explorer](http://storageexplorer.com) lub [witryny Azure Portal](https://portal.azure.com) aby wygenerować sygnaturę dostępu Współdzielonego. Podczas tworzenia sygnatury dostępu Współdzielonego, można określić interwał czasu, przez który sygnatura dostępu Współdzielonego jest prawidłowy oraz uprawnienia, które sygnatury dostępu Współdzielonego nadaje się do klienta.
+Jako właściciel konta magazynu należy wygenerować sygnaturę dostępu Współdzielonego dla klientów mobilnych korzystać. Aby wygenerować sygnaturę dostępu Współdzielonego, prawdopodobnie należy zapisać osobną usługą, która generuje sygnaturę dostępu Współdzielonego do dystrybucji do klientów. Do celów testowych możesz użyć [Microsoft Azure Storage Explorer](https://storageexplorer.com) lub [witryny Azure Portal](https://portal.azure.com) aby wygenerować sygnaturę dostępu Współdzielonego. Podczas tworzenia sygnatury dostępu Współdzielonego, można określić interwał czasu, przez który sygnatura dostępu Współdzielonego jest prawidłowy oraz uprawnienia, które sygnatury dostępu Współdzielonego nadaje się do klienta.
 
 Poniższy przykład pokazuje, jak wygenerować sygnaturę dostępu Współdzielonego za pomocą Eksploratora usługi Microsoft Azure Storage.
 
-1. Jeśli jeszcze nie, [Zainstaluj oprogramowanie Microsoft Azure Storage Explorer](http://storageexplorer.com)
+1. Jeśli jeszcze nie, [Zainstaluj oprogramowanie Microsoft Azure Storage Explorer](https://storageexplorer.com)
 2. Nawiąż połączenie ze swoją subskrypcją.
 3. Kliknij na swoim koncie magazynu, a następnie kliknij kartę "Akcje" w lewym dolnym rogu. Kliknij przycisk "Uzyskaj sygnaturę dostępu współdzielonego" w celu wygenerowania ciąg"połączenia" dla Twojego sygnatury dostępu Współdzielonego.
 4. Oto przykład parametrów połączenia sygnatury dostępu Współdzielonego, przyznaje uprawnienia odczytu i zapisu na poziomie usługi, kontenerów i obiektów usługi obiektów blob konta magazynu.

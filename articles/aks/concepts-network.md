@@ -2,17 +2,17 @@
 title: Pojęcia — sieć w usługach Azure Kubernetes (AKS)
 description: Informacje dotyczące sieci w usłudze Azure Kubernetes Service (AKS), m.in. wtyczki kubenet i wtyczki Azure CNI sieci kontrolery transferu danych przychodzących, moduły równoważenia obciążenia i statycznych adresów IP.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.author: iainfou
-ms.openlocfilehash: afb7acda67eb5818ace8169dc4e98fb86bdbeaa7
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: mlearned
+ms.openlocfilehash: 459c11448280b63bafdfd54c13a6cad5983ef1b5
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442000"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615891"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Koncepcji sieci dla aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -97,7 +97,7 @@ Wtyczki kubenet i wtyczki Azure CNI zapewniają łączność z siecią dla klast
 
 Oto zachowanie różnice między wtyczki kubenet i wtyczki Azure CNI:
 
-| Możliwości                                                                                   | Kubenet   | Azure CNI |
+| Możliwość                                                                                   | Kubenet   | Azure CNI |
 |----------------------------------------------------------------------------------------------|-----------|-----------|
 | Wdrażanie klastra w istniejącej lub nowej sieci wirtualnej                                            | Obsługiwane — stosowane ręcznie tras zdefiniowanych przez użytkownika | Obsługiwane |
 | Zasobnik zasobnika łączności                                                                         | Obsługiwane | Obsługiwane |

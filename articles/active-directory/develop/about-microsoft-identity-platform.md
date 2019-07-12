@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58136aba278097e9778cc1361ed77a4512e3d51b
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 0dc4c29d3a12902b3ce01f9505cba5ac02e921eb
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66751920"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625344"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Ewolucja platformy tożsamości firmy Microsoft
 
@@ -50,7 +50,7 @@ Na poniższym diagramie przedstawiono ogólnie środowisko obsługi tożsamości
 
 ### <a name="app-registration-experience"></a>Proces rejestracji aplikacji
 
-Witryna Azure portal **[rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908)** środowisko jest w jednym środowisku portalu do zarządzania wszystkich aplikacji, które zostały zintegrowane z platformą Microsoft identity. Jeśli masz doświadczenie z portalu rejestracji aplikacji, uruchamianie, zamiast proces rejestracji aplikacji portalu platformy Azure.
+Witryna Azure portal **[rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908)** środowisko jest w jednym środowisku portalu do zarządzania wszystkich aplikacji, które zostały zintegrowane z platformą Microsoft identity. Jeśli masz doświadczenie z portalu rejestracji aplikacji, należy uruchomić, zamiast proces rejestracji aplikacji portalu platformy Azure.
 
 Integracja z usługą Azure AD B2C (podczas uwierzytelniania tożsamości społecznościowych lub lokalne) należy zarejestrować aplikację w dzierżawie B2C. To środowisko jest również częścią witryny Azure portal.
 
@@ -68,7 +68,7 @@ Po stronie serwera biblioteki do tworzenia interfejsów API sieci web i aplikacj
 
 Punkt końcowy platformy (w wersji 2.0) tożsamości firmy Microsoft jest teraz certyfikowane OIDC. Działa z bibliotek uwierzytelniania firmy Microsoft (MSAL) lub inne biblioteki zgodnych ze standardami. Implementuje ludzi można odczytać zakresów, zgodnie ze standardami branżowymi.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej na temat wersji 1.0 i 2.0.
 

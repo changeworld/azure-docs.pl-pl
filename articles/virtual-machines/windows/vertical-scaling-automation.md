@@ -4,7 +4,7 @@ description: Skalowanie w pionie maszyna wirtualna Windows w odpowiedzi na monit
 services: virtual-machines-windows
 documentationcenter: ''
 author: singhkays
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 4f964713-fb67-4bcc-8246-3431452ddf7d
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/18/2019
 ms.author: kasing
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 581471bb20b0774625dda8a5fa1fdd27d571a5b5
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: a7cccd36c619e58b8dedb9a52e70c478dc7b857c
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483878"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707921"
 ---
 # <a name="vertically-scale-windows-vms-with-azure-automation"></a>Skalowanie w pionie maszyn Windows za pomocą usługi Azure Automation
 
@@ -101,9 +101,9 @@ Możesz skalować między następujące pary rozmiarów:
 | Standardowa_DS11 | Standardowa_DS12 |
 | Standardowa_DS12 | Standardowa_DS13 |
 | Standardowa_DS13 | Standardowa_DS14 |
-| Standardowa_D1_v2 | Standardowa_D2_v2 |
-| Standardowa_D2_v2 | Standardowa_D3_v2 |
-| Standardowa_D3_v2 | Standardowa_D4_v2 |
+| Standardowa_D1_v2 | Maszyna wirtualna Standard_D2_v2 |
+| Maszyna wirtualna Standard_D2_v2 | Maszyna wirtualna Standard_D3_v2 |
+| Maszyna wirtualna Standard_D3_v2 | Standardowa_D4_v2 |
 | Standardowa_D4_v2 | Standardowa_D5_v2 |
 | Standardowa_D11_v2 | Standardowa_D12_v2 |
 | Standardowa_D12_v2 | Standardowa_D13_v2 |
@@ -115,13 +115,13 @@ Możesz skalować między następujące pary rozmiarów:
 | Standardowa_DS11_v2 | Standardowa_DS12_v2 |
 | Standardowa_DS12_v2 | Standardowa_DS13_v2 |
 | Standardowa_DS13_v2 | Standardowa_DS14_v2 |
-| Standardowa_D2_v3 | Standardowa_D4_v3 |
-| Standardowa_D4_v3 | Standardowa_D8_v3 |
+| Maszyna wirtualna Standard_D2_v3 | Maszyna wirtualna Standard_D4_v3 |
+| Maszyna wirtualna Standard_D4_v3 | Standardowa_D8_v3 |
 | Standardowa_D8_v3 | Standardowa_D16_v3 |
 | Standardowa_D16_v3 | Standard_D32_v3 |
 | Standard_D32_v3 | Standard_D64_v3 |
-| Standardowa_D2s_v3 | Standardowa_D4s_v3 |
-| Standardowa_D4s_v3 | Standardowa_D8s_v3 |
+| Standard_D2s_v3 | Standard_D4s_v3 |
+| Standard_D4s_v3 | Standardowa_D8s_v3 |
 | Standardowa_D8s_v3 | Standardowa_D16s_v3 |
 | Standardowa_D16s_v3 | Standard_D32s_v3 |
 | Standard_D32s_v3 | Standard_D64s_v3 |

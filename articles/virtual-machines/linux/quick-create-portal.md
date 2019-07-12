@@ -4,7 +4,7 @@ description: Z tego przewodnika Szybki start dowiesz się, jak utworzyć maszyn�
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 10/12/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 693f9144d1cb454b0a9dd98b5ae63938abd7d26d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f491a160e0f4f72f072dc43c46571f96dd19a297
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61473850"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671040"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Szybki start: Utwórz maszynę wirtualną systemu Linux w witrynie Azure portal
 
@@ -73,7 +73,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
     ![Konto administratora](./media/quick-create-portal/administrator-account.png)
 
-1. W obszarze **Reguły portów wejściowych** > **Publiczne porty wejściowe** wybierz opcję **Zezwalaj na wybranych portach**, a następnie wybierz z listy rozwijanej pozycje **SSH (22)** i **HTTP (80)**. 
+1. W obszarze **Reguły portów wejściowych** > **Publiczne porty wejściowe** wybierz opcję **Zezwalaj na wybranych portach**, a następnie wybierz z listy rozwijanej pozycje **SSH (22)** i **HTTP (80)** . 
 
     ![Otwieranie portów dla protokołów RDP i HTTP](./media/quick-create-portal/inbound-port-rules.png)
 
@@ -122,7 +122,7 @@ Użyj wybranej przeglądarki internetowej, aby wyświetlić domyślną strona po
 
 Gdy grupa zasobów, maszyna wirtualna i wszystkie pokrewne zasoby nie będą już potrzebne, można je usunąć. Aby to zrobić, wybierz grupę zasobów maszyny wirtualnej, wybierz opcję **Usuń**, a następnie potwierdź nazwę grupy zasobów, którą chcesz usunąć.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start wdrożono prostą maszynę wirtualną, utworzono sieciową grupę zabezpieczeń i regułę oraz zainstalowano podstawowy serwer internetowy. Aby dowiedzieć się więcej o maszynach wirtualnych platformy Azure, przejdź do samouczka dla maszyn wirtualnych z systemem Linux.
 

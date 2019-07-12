@@ -4,7 +4,7 @@ description: Dowiedz się, jak rozszerzyć wirtualnych dysków twardych na Maszy
 services: virtual-machines-linux
 documentationcenter: ''
 author: roygara
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 4113d582647b5bea86980824714936d24dafc870
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cc61ad7fb6fb741c03fe8395b4cd460c3bd33c53
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65511145"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667823"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Rozwiń wirtualnych dysków twardych na Maszynę wirtualną systemu Linux przy użyciu wiersza polecenia platformy Azure
 
@@ -148,6 +148,6 @@ Aby użyć zwiększony rozmiar dysku, rozwiń węzeł partycji podstawowej oraz 
     /dev/sdc1        197G   60M   187G   1% /datadrive
     ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Jeśli potrzebujesz dodatkowego miejsca do magazynowania, możesz również [dodawanie dysków danych do maszyny Wirtualnej z systemem Linux](add-disk.md). 
 * Aby uzyskać więcej informacji o szyfrowaniu dysku, zobacz [szyfrowania dysków na Maszynę wirtualną systemu Linux przy użyciu wiersza polecenia platformy Azure](encrypt-disks.md).

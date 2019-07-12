@@ -14,20 +14,19 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d83b659cc04218fad66ea95216e69682b265dc83
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6b5698d94a09096d58b316ca3b23bead5b1a39a7
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66151615"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839407"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>Samouczek: korzystanie z interfejsu API REST w celu utworzenia potoku usługi Azure Data Factory do kopiowania danych 
 > [!div class="op_single_selector"]
 > * [Przegląd i wymagania wstępne](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Kreator kopiowania](data-factory-copy-data-wizard-tutorial.md)
-> * [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
-> * [Program Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
-> * [Program PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+> * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+> * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Szablon usługi Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [Interfejs API REST](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [Interfejs API programu .NET](data-factory-copy-activity-tutorial-using-dotnet-api.md)
@@ -186,7 +185,7 @@ Poniższa tabela zawiera opis właściwości kodu JSON użytych w tym fragmencie
 | folderPath | Określa **kontener** obiektów blob oraz **folder**, który zawiera wejściowe obiekty blob. W tym samouczku kontenerem obiektów blob jest adftutorial, a folderem — katalog główny. | 
 | fileName | Ta właściwość jest opcjonalna. Jeśli pominiesz tę właściwość, zostaną wybrane wszystkie pliki z folderu folderPath. W tym samouczku dla fileName określono plik **emp.txt**, więc tylko on zostanie wybrany do przetwarzania. |
 | format -> type |Plik wejściowy jest w formacie tekstowym, więc należy użyć właściwości **TextFormat**. |
-| columnDelimiter | Kolumny w pliku wejściowym są rozdzielane **przecinkami (`,`)**. |
+| columnDelimiter | Kolumny w pliku wejściowym są rozdzielane **przecinkami (`,`)** . |
 | frequency/interval | Właściwość frequency (częstotliwość) jest ustawiona na wartość **Hour** (Godzina), a wartość interwału wynosi **1**, co oznacza, że wycinki wejściowe są dostępne **co godzinę**. Innymi słowy, usługa Data Factory szuka danych wejściowych co godzinę w folderze głównym określonego kontenera obiektów blob (**adftutorial**). Wyszukuje dane między godzinami rozpoczęcia i zakończenia potoku, a nie przed nimi ani po nich.  |
 | external | Ta właściwość ma wartość **true** (prawda), jeśli dane nie są generowane przez ten potok. Dane wejściowe w tym samouczku znajdują się w pliku emp.txt, który nie jest generowany w tym potoku, więc możemy ustawić tę właściwość na true. |
 
@@ -224,7 +223,7 @@ Poniższa tabela zawiera opis właściwości kodu JSON użytych w tym fragmencie
 
 | Właściwość | Opis |
 |:--- |:--- |
-| type | Właściwość typu jest ustawiona na **AzureSqlTable**, ponieważ dane są kopiowane do tabeli w bazie danych Azure SQL Database. |
+| — typ | Właściwość typu jest ustawiona na **AzureSqlTable**, ponieważ dane są kopiowane do tabeli w bazie danych Azure SQL Database. |
 | linkedServiceName | Odnosi się do utworzonego wcześniej elementu **AzureSqlLinkedService**. |
 | tableName | Określa **tabelę** , do której są kopiowane dane. | 
 | frequency/interval | Właściwość frequency (częstotliwość) jest ustawiona na wartość **Hour** (Godzina), a wartość interwału wynosi **1**, co oznacza, że wycinki wyjściowe są tworzone **co godzinę** między godziną rozpoczęcia i zakończenia potoku, a nie przed tą godziną lub po niej.  |
@@ -287,7 +286,7 @@ Pamiętaj o następujących kwestiach:
  
 Zastąp wartość właściwości **start** datą bieżącą, a wartość **end** datą jutrzejszą. Możesz określić tylko część daty i pominąć część godziny parametru data/godzina. Na przykład „2017-02-03” jest odpowiednikiem „2017-02-03T00:00:00Z”.
  
-Zarówno data/godzina rozpoczęcia, jak i data/godzina zakończenia muszą być w [formacie ISO](https://en.wikipedia.org/wiki/ISO_8601). Na przykład: 2016-10-14T16:32:41Z. Czas **end** jest opcjonalny, ale w tym samouczku zostanie użyty. 
+Zarówno data/godzina rozpoczęcia, jak i data/godzina zakończenia muszą być w [formacie ISO](https://en.wikipedia.org/wiki/ISO_8601). Przykład: 2016-10-14T16:32:41Z. Czas **end** jest opcjonalny, ale w tym samouczku zostanie użyty. 
  
 Jeśli nie określisz wartości dla właściwości **end**, zostanie ona obliczona jako „**czas rozpoczęcia + 48 godzin**”. Aby uruchomić potok bezterminowo, określ **9999-09-09** jako wartość właściwości **end**.
  

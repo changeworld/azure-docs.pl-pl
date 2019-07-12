@@ -5,14 +5,14 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: aa27eb34753e18fa46c2ac9345a7c206f34fd110
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dc3a393d3cc3bea9412dfbc33ed21630de352e13
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66481807"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67619591"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Migracji kont z portalu Cloud Partner do Centrum partnerskiego
 
@@ -46,6 +46,6 @@ Migracja kont musi mieć miejsce tylko raz dla danego konta. Po ukończeniu migr
 1. Po zakończeniu migracji konta, żółty transparentu na stronie profilu wydawcy pojawia się dla użytkowników należących do roli właściciel CPP dla danego konta, prosząc ich o zarządzać ich ustawieniami konta w Centrum partnerskim. 
 1. Strony ustawień konta w CPP jest następnie konwertowana do trybu tylko do odczytu. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Zarządzanie kontem komercyjnych Marketplace Centrum partnerskiego](./manage-account.md) 

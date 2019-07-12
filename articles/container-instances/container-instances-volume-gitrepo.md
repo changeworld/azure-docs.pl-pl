@@ -7,19 +7,19 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: danlep
-ms.openlocfilehash: 70593bffbf30b3a0c0978e56c2af1a856a22f2ec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 86f8c099061cd3b75b77330c567f34dea2b34928
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60563023"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657601"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Zainstalować woluminu gitRepo w usłudze Azure Container Instances
 
 Dowiedz się, jak zainstalować *gitRepo* woluminu, aby sklonować repozytorium Git do wystąpienia kontenera.
 
 > [!NOTE]
-> Instalowanie *gitRepo* wolumin jest obecnie ograniczone do kontenerów systemu Linux. Podczas gdy pracujemy, aby udostępnić wszystkie funkcje na potrzeby kontenerów systemu Windows, bieżące różnice dotyczące platform możesz znaleźć w temacie [Limity przydziałów i dostępność regionów dla usługi Azure Container Instances](container-instances-quotas.md).
+> Instalowanie *gitRepo* wolumin jest obecnie ograniczone do kontenerów systemu Linux. Podczas gdy pracujemy, aby udostępnić wszystkie funkcje dostępne w kontenerach Windows, można znaleźć bieżące różnice dotyczące platform w [Przegląd](container-instances-overview.md#linux-and-windows-containers).
 
 ## <a name="gitrepo-volume"></a>wolumin gitRepo
 
@@ -35,9 +35,9 @@ Podczas instalowania *gitRepo* woluminu, można ustawić trzy właściwości, ab
 
 ## <a name="mount-gitrepo-volume-azure-cli"></a>Wolumin gitRepo instalacji: Interfejs wiersza polecenia platformy Azure
 
-Aby zainstalować wolumin gitRepo podczas wdrażania wystąpień kontenera za pomocą [wiersza polecenia platformy Azure](/cli/azure), dostarczają `--gitrepo-url` i `--gitrepo-mount-path` parametry [utworzyć kontener az] [ az-container-create] polecenia. Opcjonalnie można określić katalog, w obrębie woluminu, aby sklonować do (`--gitrepo-dir`) oraz skrót zatwierdzenia poprawki do sklonowania (`--gitrepo-revision`).
+Aby zainstalować wolumin gitRepo podczas wdrażania wystąpień kontenera za pomocą [wiersza polecenia platformy Azure](/cli/azure), dostarczają `--gitrepo-url` i `--gitrepo-mount-path` parametry [utworzyć kontener az][az-container-create] polecenia. Opcjonalnie można określić katalog, w obrębie woluminu, aby sklonować do (`--gitrepo-dir`) oraz skrót zatwierdzenia poprawki do sklonowania (`--gitrepo-revision`).
 
-To przykładowe polecenie klonuje Microsoft [aci-helloworld] [ aci-helloworld] przykładowej aplikacji do `/mnt/aci-helloworld` w wystąpieniu kontenera:
+To przykładowe polecenie klonuje Microsoft [aci-helloworld][aci-helloworld] przykładowej aplikacji do `/mnt/aci-helloworld` w wystąpieniu kontenera:
 
 ```azurecli-interactive
 az container create \
@@ -50,7 +50,7 @@ az container create \
     --gitrepo-mount-path /mnt/aci-helloworld
 ```
 
-Aby sprawdzić, czy wolumin gitRepo został zainstalowany, uruchom powłokę w kontenerze za pomocą [az container exec] [ az-container-exec] i wyświetlanie listy katalogu:
+Aby sprawdzić, czy wolumin gitRepo został zainstalowany, uruchom powłokę w kontenerze za pomocą [az container exec][az-container-exec] i wyświetlanie listy katalogu:
 
 ```console
 $ az container exec --resource-group myResourceGroup --name hellogitrepo --exec-command /bin/sh

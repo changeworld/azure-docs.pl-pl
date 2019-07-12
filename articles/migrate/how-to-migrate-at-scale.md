@@ -6,16 +6,16 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: snehaa
-ms.openlocfilehash: f90140e9464ee72e9ceae8ca140bd060c51aade8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b45a158569b3be8250728293c1bf73c1a860a0f6
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60597113"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67808025"
 ---
 # <a name="scale-migration-of-vms-using-azure-site-recovery"></a>Skala migracji maszyn wirtualnych przy użyciu usługi Azure Site Recovery
 
-Ten artykuł pomoże Ci zrozumieć proces migracji dużej liczby maszyn wirtualnych przy użyciu usługi Azure Site Recovery za pomocą skryptów. Te skrypty są dostępne dla pobierania [przykłady programu Azure PowerShell](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) repozytorium w witrynie GitHub. Skrypty może służyć do migracji programu VMware, AWS, GCP maszyn wirtualnych i serwerów fizycznych do platformy Azure i Obsługa migracji do usługi managed disks. Te skrypty umożliwia również Migrowanie maszyn wirtualnych funkcji Hyper-V, jeśli migrujesz maszyny wirtualne jako serwery fizyczne. Skrypty korzystać z platformy Azure: witryny programu PowerShell odzyskiwania udokumentowane [tutaj](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell).
+Ten artykuł pomoże Ci zrozumieć, jak za pomocą skryptów migracji dużej liczby maszyn wirtualnych przy użyciu usługi Azure Site Recovery. Te skrypty są dostępne dla pobierania [przykłady programu Azure PowerShell](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) repozytorium w witrynie GitHub. Skrypty może służyć do migracji z programu VMware, AWS, GCP maszyn wirtualnych i serwerów fizycznych do usługi managed disks na platformie Azure. Te skrypty umożliwia również Migrowanie maszyn wirtualnych funkcji Hyper-V, jeśli migrujesz maszyny wirtualne jako serwery fizyczne. Skrypty, korzystających z programu PowerShell odzyskiwania lokacji platformy Azure są udokumentowane [tutaj](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell).
 
 ## <a name="current-limitations"></a>Bieżące ograniczenia:
 - Obsługuje określania statycznego adresu IP tylko dla podstawowego interfejsu Sieciowego docelowej maszyny Wirtualnej

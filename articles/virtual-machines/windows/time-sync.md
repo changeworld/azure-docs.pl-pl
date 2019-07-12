@@ -4,7 +4,7 @@ description: Synchronizacja czasu dla maszyn wirtualnych Windows.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: aac0a3ab14cc2543fe3b60f4c52e14e3cb0ee743
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d413fe73735f526444aea76d68f44163065578a0
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991713"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710232"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Synchronizacja czasu dla maszyn wirtualnych Windows na platformie Azure
 
@@ -33,7 +33,7 @@ Azure jest teraz objęta infrastruktury z systemem Windows Server 2016. System W
 >
 > Aby uzyskać więcej informacji, zobacz [dokładnego czasu systemu Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time). 
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Dokładność zegara komputera jest pomiarowym na blisko zegara komputera jest standardowy czas uniwersalny czas koordynowany (UTC). UTC jest definiowany przez wielonarodowych próbka dokładne zegary niepodzielność, które może być tylko wyłączyć jedną sekundę lat 300. Jednak bezpośrednio do czytania UTC wymaga specjalistycznego sprzętu. Zamiast tego należy serwery czasu UTC są synchronizowane i są dostępne z innych komputerów w celu zapewnienia skalowalności i niezawodności. Każdy komputer ma czas Usługa synchronizacji jest uruchomiona, wie, jakie serwery czasu, należy użyć i okresowo sprawdza, czy zegar komputera ma zostać poprawione i dostosowuje czas, w razie potrzeby. 
 

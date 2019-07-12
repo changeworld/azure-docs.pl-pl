@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 01/19/2018
-ms.author: mscurrell
+ms.author: markscu
 ms.custom: mvc
-ms.openlocfilehash: e3fcc8be68282f6ce491ff49f0dc5059d79fa98f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1dbd31b3c666857765b8b20a11d4d0c7ea8ea37b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60550130"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704764"
 ---
 # <a name="what-is-azure-batch"></a>Co to jest Azure Batch?
 
@@ -88,7 +88,7 @@ Pamiętaj, że jest to tylko jeden sposób korzystania z usługi Batch, a w tym 
 
 Zobacz [Omówienie usługi Batch dla deweloperów](batch-api-basics.md), aby zapoznać się z bardziej szczegółowymi informacjami o pulach, węzłach, zadaniach i zadaniach podrzędnych oraz wielu funkcjach API, których można używać podczas tworzenia aplikacji usługi Batch. Zobacz też najnowsze [aktualizacje usługi Batch](https://azure.microsoft.com/updates/?product=batch).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Rozpocznij pracę z usługą Azure Batch, korzystając z jednego z tych przewodników Szybki start:
 * [Uruchamianie pierwszego zadania usługi Batch za pomocą interfejsu wiersza polecenia platformy Azure](quick-create-cli.md)

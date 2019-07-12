@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/01/2019
-ms.openlocfilehash: a9c9f4d827d21c374bebba9d39e33b0bcad8a83e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cb59fa0fe9094943dfc942d1d6e664891996c9e3
+ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60826802"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67569283"
 ---
 # <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>Monitorowanie wydajności, kondycji i użycia za pomocą metryk Eksplorator danych platformy Azure
 
@@ -42,13 +42,13 @@ W okienku metryki:
 
     **Metryka** | **Unit** | **Agregacja** | **Opis metryki**
     |---|---|---|---|
-    | Wykorzystanie pamięci podręcznej | Procent | Avg, Max, Min | Wartość procentową zasobów przydzielonych pamięci podręcznej, obecnie w użyciu przez klaster. Pamięć podręczna odnosi się do rozmiaru dysków SSD przydzielone dla działań użytkownika, zgodnie z zasadami pamięci podręcznej zdefiniowane. Wykorzystanie pamięci podręcznej, 80% lub mniej jest trwały stan dla klastra. Jeśli wykorzystanie pamięci podręcznej przekracza 80%, klaster powinien być [skalowany w górę](manage-cluster-scale-up.md) do magazynu zoptymalizowane pod kątem warstwy cenowej lub [skalowana w poziomie](manage-cluster-scale-out.md) do większej liczby wystąpień. Alternatywnie można dostosować zasady pamięci podręcznej (mniejszą liczbę dni w pamięci podręcznej). Jeśli wykorzystanie pamięci podręcznej wynosi ponad 100%, rozmiar danych w pamięci podręcznej, zgodnie z zasadami pamięci podręcznej jest większy, całkowity rozmiar pamięci podręcznej w klastrze. |
-    | Procesor CPU | Procent | Avg, Max, Min | Procent zasoby obliczeniowe przydzielone aktualnie w użyciu przez komputery w klastrze. Średnie użycie procesora CPU 80% lub mniej jest trwały dla klastra. Wartość maksymalna procesora CPU wynosi 100%, co oznacza, że nie ma żadnych dodatkowe zasoby obliczeniowe do przetwarzania danych. Gdy klaster nie działa prawidłowo, sprawdź wartość maksymalna procesora CPU, aby ustalić, czy określonych procesorów CPU, które są blokowane. |
+    | Wykorzystanie pamięci podręcznej | Percent | Avg, Max, Min | Wartość procentową zasobów przydzielonych pamięci podręcznej, obecnie w użyciu przez klaster. Pamięć podręczna odnosi się do rozmiaru dysków SSD przydzielone dla działań użytkownika, zgodnie z zasadami pamięci podręcznej zdefiniowane. Wykorzystanie pamięci podręcznej, 80% lub mniej jest trwały stan dla klastra. Jeśli wykorzystanie pamięci podręcznej przekracza 80%, klaster powinien być [skalowany w górę](manage-cluster-vertical-scaling.md) do magazynu zoptymalizowane pod kątem warstwy cenowej lub [skalowana w poziomie](manage-cluster-horizontal-scaling.md) do większej liczby wystąpień. Alternatywnie można dostosować zasady pamięci podręcznej (mniejszą liczbę dni w pamięci podręcznej). Jeśli wykorzystanie pamięci podręcznej wynosi ponad 100%, rozmiar danych w pamięci podręcznej, zgodnie z zasadami pamięci podręcznej jest większy, całkowity rozmiar pamięci podręcznej w klastrze. |
+    | Procesor CPU | Percent | Avg, Max, Min | Procent zasoby obliczeniowe przydzielone aktualnie w użyciu przez komputery w klastrze. Średnie użycie procesora CPU 80% lub mniej jest trwały dla klastra. Wartość maksymalna procesora CPU wynosi 100%, co oznacza, że nie ma żadnych dodatkowe zasoby obliczeniowe do przetwarzania danych. Gdy klaster nie działa prawidłowo, sprawdź wartość maksymalna procesora CPU, aby ustalić, czy określonych procesorów CPU, które są blokowane. |
     | Zdarzenia przetwarzane (dla usługi Event Hubs) | Count | Suma Max, Min, | Łączna liczba zdarzeń odczytu z usługi event hubs i przetwarzane przez klaster. Zdarzenia są dzielone na zdarzenia odrzucone i zaakceptowane przez aparat klastra. |
     | Opóźnienia w pozyskiwaniu danych | Sekundy | Avg, Max, Min | Opóźnienie danych pozyskanych od chwili, gdy otrzymano dane w klastrze, dopóki nie jest gotowa do zapytania. Pozyskiwanie czasu oczekiwania zależy od scenariusza wprowadzania. |
     | Wynik pozyskiwania | Count | Count | Łączna liczba operacji pozyskiwania, które nie powiodło się i zakończyło się pomyślnie. Użyj **zastosować podział** tworzenie zasobników sukces i niepowodzenie wyniki oraz analizowanie wymiary (**wartość** > **stan**).|
-    | Wykorzystanie pozyskiwania | Procent | Avg, Max, Min | Wartość procentowa rzeczywiste używanych pozyskiwać dane z łącznych zasobów przydzielonych w zasadach pojemności, przeprowadzić pozyskiwanie zasobów. Domyślne zasady pojemności jest nie więcej niż 512 operacje współbieżne pozyskiwania lub 75% zainwestowały w pozyskiwanie zasoby klastra. Pozyskiwanie średnie wykorzystanie 80% lub mniej jest trwały stan dla klastra. Maksymalna wartość wykorzystania pozyskiwania wynosi 100%, co oznacza, że wszystkie możliwości pozyskiwania klastra jest używany i może spowodować kolejki pozyskiwania. |
-    | Pozyskiwanie woluminu (w MB) | Licznik | Suma Max, Min, | Całkowity rozmiar danych pozyskanych do klastra (w MB) przed kompresją. |
+    | Wykorzystanie pozyskiwania | Percent | Avg, Max, Min | Wartość procentowa rzeczywiste używanych pozyskiwać dane z łącznych zasobów przydzielonych w zasadach pojemności, przeprowadzić pozyskiwanie zasobów. Domyślne zasady pojemności jest nie więcej niż 512 operacje współbieżne pozyskiwania lub 75% zainwestowały w pozyskiwanie zasoby klastra. Pozyskiwanie średnie wykorzystanie 80% lub mniej jest trwały stan dla klastra. Maksymalna wartość wykorzystania pozyskiwania wynosi 100%, co oznacza, że wszystkie możliwości pozyskiwania klastra jest używany i może spowodować kolejki pozyskiwania. |
+    | Pozyskiwanie woluminu (w MB) | Count | Suma Max, Min, | Całkowity rozmiar danych pozyskanych do klastra (w MB) przed kompresją. |
     | Podtrzymanie | Count | Średni | Śledzi czas reakcji klastra. Klaster w pełni interaktywne, zwraca wartość 1, i zwraca wartość 0, zablokowanych lub odłączonych klastra. |
     | Czas trwania zapytania | Sekundy | Liczba, Avg, Min, Max, Sum | Łączny czas otrzymanie wyników zapytania (nie obejmuje opóźnienia sieci). |
     | | | |

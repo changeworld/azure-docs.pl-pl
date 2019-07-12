@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 06/28/2019
+ms.date: 07/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 3972f9f93cc6323601102f1a54bb067a8995d9e4
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: bc6b9662a5d67f6ed315c33444bcb061115fe6d4
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67484754"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701474"
 ---
 # <a name="what-is-azure-data-box-edge"></a>Co to jest usługa Azure Data Box Edge? 
 
@@ -34,7 +34,7 @@ Azure Data Box Edge to brzegowe urządzenie do przetwarzania danych z włączon�
     - Dzielenie na podzestawy i transferowanie danych potrzebnych do głębszej analizy w chmurze.
     - Analizowanie zdarzeń IoT i reagowanie na nie. 
 
-- **Usługa Azure Machine Learning z wnioskowaniem** — rozwiązanie Data Box Edge umożliwia uruchamianie modeli uczenia maszynowego (Machine Learning, ML) w celu szybkiego uzyskania wyników, na których można pracować przed wysłaniem danych do chmury. Pełny zestaw danych można przenieść w dalszym ciągu wytrenujesz i zwiększyć swoje modele uczenia Maszynowego. Aby uzyskać więcej informacji na temat sposobu korzystania z funkcji sprzętu uczenie Maszynowe Azure jej jako przyspieszonej modele na urządzeniu usługi Databox Edge, zobacz [wdrożenia usługi Azure ML przyspieszane modele na urządzeniach brzegowych Databox](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
+- **Usługa Azure Machine Learning z wnioskowaniem** — rozwiązanie Data Box Edge umożliwia uruchamianie modeli uczenia maszynowego (Machine Learning, ML) w celu szybkiego uzyskania wyników, na których można pracować przed wysłaniem danych do chmury. Pełny zestaw danych można przenieść w dalszym ciągu wytrenujesz i zwiększyć swoje modele uczenia Maszynowego. Aby uzyskać więcej informacji na temat sposobu korzystania z funkcji sprzętu uczenie Maszynowe Azure jej jako przyspieszonej modele na urządzeniu krawędź pola danych, zobacz [wdrożenia usługi Azure ML przyspieszane modele na krawędzi pola danych](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
 
 - **Transfer danych za pośrednictwem sieci na platformę Azure** — za pomocą rozwiązania Data Box Edge można szybko i łatwo transferować dane na platformę Azure, aby umożliwić ich dalsze przetwarzanie i analizę lub archiwizację. 
 
@@ -52,7 +52,7 @@ Rozwiązanie Data Box Edge oferuje następujące korzyści:
 
 Rozwiązanie Data Box Edge oferuje następujące możliwości:
 
-|Możliwości |Opis  |
+|Możliwość |Opis  |
 |---------|---------|
 |Wysoka wydajność     | W pełni zautomatyzowany i w wysokim stopniu zoptymalizowany transfer danych oraz wysoka przepustowość.|
 |Obsługiwane protokoły     | Obsługa standardowych protokołów SMB i NFS do pozyskiwania danych. <br> Aby uzyskać więcej informacji na temat obsługiwanych wersji, zapoznaj się z [wymaganiami systemowymi rozwiązania Data Box Edge](data-box-edge-system-requirements.md).|
@@ -88,19 +88,12 @@ Rozwiązanie Data Box Edge składa się z zasobu rozwiązania Data Box Edge, urz
 
 Urządzenie fizyczne Data Box Edge, zasób platformy Azure i docelowe konto magazynu, do którego są transferowane dane, nie muszą znajdować się w tym samym regionie.
 
-- **Dostępność zasobu** — w tej wersji zasób rozwiązania Data Box Edge jest dostępny w następujących regionach:
-    - **Stany Zjednoczone** — wschodnie stany USA
-    - **Unia Europejska** — Europa Zachodnia
-    - **Azja i Pacyfik** — Azja Południowo-Wschodnia
+- **Dostępność zasobów** — Aby uzyskać listę wszystkich regionów, w której zasób krawędź pola danych jest dostępna, przejdź do [Azure dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Krawędź pola danych można wdrożyć w taki sposób, w chmurze Azure Government. Aby uzyskać więcej informacji, zobacz [co to jest platforma Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
     
-    Krawędź pola danych można wdrożyć w taki sposób, w chmurze Azure Government. Aby uzyskać więcej informacji, zobacz [co to jest platforma Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
-    
-- **Docelowe konta magazynu** — konta magazynu, w których są przechowywane dane, są dostępne we wszystkich regionach platformy Azure. 
-
-    Regiony, w których znajdują się konta magazynu zawierające dane przesłane za pomocą rozwiązania Data Box, powinny mieścić się blisko lokalizacji urządzenia, aby zapewnić optymalną wydajność. Duża odległość konta magazynu od urządzenia powoduje długie opóźnienia i mniejszą wydajność. 
+- **Docelowe konta magazynu** — konta magazynu, w których są przechowywane dane, są dostępne we wszystkich regionach platformy Azure. Regiony, w którym kont magazynu przechowywania danych krawędź pola danych powinien znajdować się w pobliżu gdzie znajduje się urządzenie dla uzyskania optymalnej wydajności. Duża odległość konta magazynu od urządzenia powoduje długie opóźnienia i mniejszą wydajność. 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Przejrzyj [wymagania systemowe rozwiązania Data Box Edge](data-box-edge-system-requirements.md).
 - Zapoznaj się z [limitami rozwiązania Data Box Edge](data-box-edge-limits.md).

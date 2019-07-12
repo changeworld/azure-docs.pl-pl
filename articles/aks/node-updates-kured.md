@@ -2,17 +2,17 @@
 title: Aktualizowanie i ponowne uruchomienie węzłów systemu Linux przy użyciu kured w usłudze Azure Kubernetes Service (AKS)
 description: Dowiedz się, jak zaktualizować węzłów systemu Linux i Automatyczny ponowny rozruch je za pomocą kured w usłudze Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 02/28/2019
-ms.author: iainfou
-ms.openlocfilehash: aee793dcfc5040b4a5f0f29fdae3247a5647e257
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mlearned
+ms.openlocfilehash: 580d1316c2bfc6514a148ed6fba78a8e77bd880e
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055637"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614903"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Stosowanie zabezpieczeń i aktualizacji jądra do węzłów systemu Linux w usłudze Azure Kubernetes Service (AKS)
 
@@ -20,16 +20,16 @@ Aby chronić klastrów, aktualizacje zabezpieczeń są automatycznie stosowane d
 
 Proces aktualizowania węzłów systemu Windows Server (obecnie dostępna w wersji zapoznawczej w usłudze AKS) jest nieco inny. Węzły systemu Windows Server nie otrzymasz codzienne aktualizacje. Zamiast tego należy wykonać uaktualnienie AKS, która wdraża nowe węzły za pomocą najnowszego podstawowego obrazu Windows Server i poprawki. W przypadku klastrów usługi AKS, które używają węzłów systemu Windows Server, zobacz [uaktualnienia pulę węzłów w usłudze AKS][nodepool-upgrade].
 
-W tym artykule dowiesz się, jak używać typu open-source [kured (KUbernetes ponownie uruchomić demona)] [ kured] obejrzeć dla węzłów systemu Linux, które wymagają ponownego uruchomienia komputera, następnie automatycznie obsługiwać ponowne uruchomienia zasobników i języka node ponowne uruchomienie procesu.
+W tym artykule dowiesz się, jak używać typu open-source [kured (KUbernetes ponownie uruchomić demona)][kured] obejrzeć dla węzłów systemu Linux, które wymagają ponownego uruchomienia, a następnie automatycznie obsługiwać ponowne uruchomienia zasobników i języka node, ponowne uruchomienie procesu.
 
 > [!NOTE]
 > `Kured` to projekt typu open source przez Weaveworks. Pomoc techniczna dla tego projektu w usłudze AKS jest świadczona na zasadzie największej staranności. Dodatkowej pomocy technicznej można znaleźć w kanale usługi slack #weave społeczności instytucji rządowych.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W tym artykule założono, że masz istniejący klaster usługi AKS. Jeśli potrzebujesz klastra AKS, zobacz Przewodnik Szybki Start usługi AKS [przy użyciu wiersza polecenia platformy Azure] [ aks-quickstart-cli] lub [przy użyciu witryny Azure portal][aks-quickstart-portal].
+W tym artykule założono, że masz istniejący klaster usługi AKS. Jeśli potrzebujesz klastra AKS, zobacz Przewodnik Szybki Start usługi AKS [przy użyciu wiersza polecenia platformy Azure][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
 
-Możesz również muszą wiersza polecenia platformy Azure w wersji 2.0.59 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie przeprowadzenie instalacji lub uaktualnienia, zobacz  [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
+Możesz również muszą wiersza polecenia platformy Azure w wersji 2.0.59 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli potrzebujesz instalacja lub uaktualnienie, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj][install-azure-cli].
 
 ## <a name="understand-the-aks-node-update-experience"></a>Zrozumieć działanie aktualizacji węzłów AKS
 
@@ -39,7 +39,7 @@ W klastrze AKS węzły rozwiązania Kubernetes, Uruchom jako maszyn wirtualnych 
 
 Niektóre aktualizacje zabezpieczeń, takich jak aktualizacji jądra wymaga ponownego uruchomienia węzła, aby zakończyć proces. Węzeł systemu Linux, który wymaga ponownego uruchomienia, tworzy plik o nazwie */var/run/reboot-required*. Ten proces ponownego rozruchu nie jest realizowane automatycznie.
 
-Można użyć własnych przepływów pracy i procesów do obsługi ponownego uruchomienia węzła, lub użyj `kured` do organizowania procesu. Za pomocą `kured`, [DaemonSet] [ DaemonSet] wdrożeniu, które jest uruchamiane zasobnik w każdym węźle klastra systemu Linux. Te zasobniki w element DaemonSet poszukaj istnienie */var/run/reboot-required* pliku, a następnie inicjuje proces ponownego uruchomienia w węzłach.
+Można użyć własnych przepływów pracy i procesów do obsługi ponownego uruchomienia węzła, lub użyj `kured` do organizowania procesu. Za pomocą `kured`, [DaemonSet][DaemonSet] wdrożeniu, które jest uruchamiane zasobnik w każdym węźle klastra systemu Linux. Te zasobniki w element DaemonSet poszukaj istnienie */var/run/reboot-required* pliku, a następnie inicjuje proces ponownego uruchomienia w węzłach.
 
 ### <a name="node-upgrades"></a>Uaktualnienia węzła
 
@@ -76,14 +76,14 @@ Jeśli aktualizacje zostały zastosowane, które wymagają ponownego uruchomieni
 
 Po jednej z replik w element DaemonSet wykrył, że wymagany jest ponowny rozruch węzła, blokady jest umieszczany w węźle za pomocą interfejsu API rozwiązania Kubernetes. Ta blokada uniemożliwia dodatkowe zasobniki zaplanowane w węźle. Blokada wskazuje również, że tylko jeden węzeł powinien zostać przeprowadzony ponowny rozruch w danym momencie. Z węzłem odizolowywane zasobników uruchomione są opróżniane z węzła, a węzeł został ponownie uruchomiony.
 
-Możesz monitorować stan węzłów przy użyciu [kubectl get-węzły] [ kubectl-get-nodes] polecenia. Następujące przykładowe dane wyjściowe pokazuje węzła ze stanem *SchedulingDisabled* jako węzeł przygotowuje się do procesu rozruchu:
+Możesz monitorować stan węzłów przy użyciu [kubectl get-węzły][kubectl-get-nodes] polecenia. Następujące przykładowe dane wyjściowe pokazuje węzła ze stanem *SchedulingDisabled* jako węzeł przygotowuje się do procesu rozruchu:
 
 ```
 NAME                       STATUS                     ROLES     AGE       VERSION
 aks-nodepool1-28993262-0   Ready,SchedulingDisabled   agent     1h        v1.11.7
 ```
 
-Po zakończeniu procesu aktualizacji można wyświetlić stan węzłów przy użyciu [kubectl get-węzły] [ kubectl-get-nodes] polecenia `--output wide` parametru. Te dodatkowe dane wyjściowe pozwala zobaczyć różnicę w *wersja jądra* z jego węzłów podrzędnych, jak pokazano w następujących przykładowych danych wyjściowych. *Aks-nodepool1-28993262-0* został zaktualizowany w poprzednim kroku oraz wersja jądra pokazuje *4.15.0-1039-azure*. Węzeł *aks-nodepool1-28993262-1* który nie został zaktualizowany przedstawiono wersja jądra *4.15.0-1037-azure*.
+Po zakończeniu procesu aktualizacji można wyświetlić stan węzłów przy użyciu [kubectl get-węzły][kubectl-get-nodes] polecenia `--output wide` parametru. Te dodatkowe dane wyjściowe pozwala zobaczyć różnicę w *wersja jądra* z jego węzłów podrzędnych, jak pokazano w następujących przykładowych danych wyjściowych. *Aks-nodepool1-28993262-0* został zaktualizowany w poprzednim kroku oraz wersja jądra pokazuje *4.15.0-1039-azure*. Węzeł *aks-nodepool1-28993262-1* który nie został zaktualizowany przedstawiono wersja jądra *4.15.0-1037-azure*.
 
 ```
 NAME                       STATUS    ROLES     AGE       VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
@@ -91,7 +91,7 @@ aks-nodepool1-28993262-0   Ready     agent     1h        v1.11.7   10.240.0.4   
 aks-nodepool1-28993262-1   Ready     agent     1h        v1.11.7   10.240.0.5    <none>        Ubuntu 16.04.6 LTS   4.15.0-1037-azure   docker://3.0.4
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym artykule szczegółowo sposób użycia `kured` do węzłów systemu Linux do automatycznego ponownego rozruchu jako część procesu aktualizacji zabezpieczeń. Aby przeprowadzić uaktualnienie do najnowszej wersji platformy Kubernetes, możesz [Uaktualnianie klastra usługi AKS][aks-upgrade].
 

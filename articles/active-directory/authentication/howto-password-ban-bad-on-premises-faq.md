@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bd117b79c2d103225e8f1f29b63eb6ae341031d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3b4879093ed80a554219b053cc5a2bc895126725
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64917658"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702890"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Azure AD ochrony hasłem lokalnych — często zadawane pytania
 
@@ -26,7 +26,7 @@ ms.locfileid: "64917658"
 
 Firmy Microsoft Bieżące wskazówki na ten temat można znaleźć pod następujący link:
 
-[Wskazówki dotyczące hasła Microsoft](https://www.microsoft.com/en-us/research/publication/password-guidance)
+[Wskazówki dotyczące hasła Microsoft](https://www.microsoft.com/research/publication/password-guidance)
 
 **Pyt.: Czy w środowisku lokalnym ochrony haseł usługi Azure AD w chmurach bez publicznego obsługiwane?**
 
@@ -43,6 +43,10 @@ Zmiana hasła jest, gdy użytkownik wybierze nowe hasło po potwierdzające, że
 Ustawianie hasła (nazywanych dalej "Resetowanie hasła") jest, gdy administrator zastępuje hasło do konta przy użyciu nowego hasła, na przykład za pomocą narzędzia zarządzania użytkownicy usługi Active Directory i komputery. Ta operacja wymaga wysokim poziomem uprawnień (zwykle administrator domeny), a osoba wykonująca operację zwykle nie ma wiedzy na temat stare hasło. Scenariusze pomocy technicznej często to zrobić, na przykład gdy wspomaganie użytkownik zapomniał hasła. Zobaczysz również, że hasło ustawione zdarzenia w przypadku nowego konta użytkownika jest tworzona po raz pierwszy przy użyciu hasła.
 
 Sprawdzanie poprawności hasła zachowuje się takie same, niezależnie od tego, czy zmiany hasła lub zestaw jest wykonywana. Usługę agenta ochrony kontrolera domeny haseł usługi Azure AD rejestrowanie różnych zdarzeń informujące, czy zmiany hasła lub przeprowadzono operacji set.  Zobacz [ochrony haseł usługi Azure AD, monitorowanie i rejestrowanie](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor).
+
+**Pyt.: Dlaczego używasz zduplikowane hasło o odrzuceniu zdarzenia rejestrowane, gdy trwa próba skonfigurowania słabym hasłem użytkownicy usługi Active Directory i komputerów w przystawce zarządzania**
+
+Użytkownicy usługi Active Directory i komputerów w przystawce zarządzania próbują używać najpierw ustawić nowe hasło przy użyciu protokołu Kerberos. W przypadku awarii przystawki spowoduje, że drugi próba ustawienia hasła, przy użyciu starszej wersji protokołu (SAM RPC) (określonych protokołów używanych nie są ważne). Jeśli nowe hasło jest uznawany za słabe przez ochrony haseł usługi Azure AD, spowoduje to dwa zestawy rejestrowane zdarzenia odrzucenia resetowania hasła.
 
 **Pyt.: Instalowanie ochrony haseł usługi Azure AD równolegle z innymi produktami na podstawie filtru haseł jest obsługiwane?**
 
@@ -128,7 +132,7 @@ Następujące łącza nie są częścią podstawowej dokumentacji ochrony haseł
 
 Jeśli interesuje Cię Dowiedz się więcej na temat ochrony haseł usługi Azure AD i wdrażania jej w środowisku, możesz korzystać z zalet usługi proaktywne firmy Microsoft dostępnych do klientów korzystających z umowę pomocy technicznej Premier lub Unified. Usługa jest wywoływana w usłudze Azure Active Directory: Ochrona za pomocą hasła. Aby uzyskać więcej informacji, skontaktuj się z menedżerem technicznych.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Jeśli masz pytanie ochrony haseł usługi Azure AD w środowisku lokalnym, który nie ma tutaj odpowiedzi, Prześlij elementu opinii poniżej. Dziękujemy!
 

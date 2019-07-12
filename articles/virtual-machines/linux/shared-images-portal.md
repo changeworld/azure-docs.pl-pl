@@ -4,7 +4,7 @@ description: Dowiedz się, jak tworzyć i udostępniać obrazów maszyn wirtualn
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 06/27/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: e5518d019800d2d194369225a060b9b728e21520
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: ea0a5961aff5935efea3eb98fd53904ce864ec2c
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67465447"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708913"
 ---
 # <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>Utwórz galerię udostępnionego obrazu przy użyciu witryny Azure portal
 
@@ -79,7 +79,7 @@ Gdy grupa zasobów, maszyna wirtualna i wszystkie pokrewne zasoby nie będą ju�
 
 Jeśli chcesz usunąć poszczególne zasoby, należy usunąć je w odwrotnej kolejności. Na przykład aby usunąć definicję obrazu, należy usunąć wszystkie wersje obrazu utworzonego na podstawie tego obrazu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Można również utworzyć zasób galerii obrazów udostępnione za pomocą szablonów. Dostępnych jest kilka szablonów szybkiego startu platformy Azure: 
 

@@ -4,7 +4,7 @@ description: Dowiedz się tworzyć i zarządzać nimi maszyny Wirtualnej z syste
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
-ms.openlocfilehash: 748bc08e003d398e96ef55493e4f3b0bf6b7da28
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 21b423aa900d4d47c1ae1239b6197280be8cada2
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61034760"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67719888"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Tworzenie i zarządzanie nimi Windows maszyn wirtualnych na platformie Azure przy użyciu języka Python
 
@@ -571,7 +571,7 @@ Ponieważ opłaty są naliczane za zasoby używane w systemie Azure, zawsze jest
     Aby zakończyć powinno zająć około pięciu minut, zanim ta aplikacja konsoli uruchomić zupełnie od początku. Może upłynąć kilka minut po aplikacji została ukończona przed wszystkie zasoby i grupy zasobów zostaną usunięte.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Jeśli wystąpiły problemy dotyczące wdrożenia, następnym krokiem powinno być zapoznanie się z artykułem [Troubleshooting resource group deployments with Azure Portal](../../resource-manager-troubleshoot-deployments-portal.md) (Rozwiązywanie problemów z wdrożeniami grup zasobów za pomocą witryny Azure Portal).
 - Dowiedz się więcej o [biblioteki Python platformy Azure](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)

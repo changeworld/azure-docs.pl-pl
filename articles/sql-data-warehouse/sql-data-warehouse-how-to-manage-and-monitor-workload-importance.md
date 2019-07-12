@@ -5,17 +5,17 @@ services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
-ms.subservice: workload management
+ms.subservice: workload-management
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: fbdab724e737b9bc223672c41ee9dde51e6cd99c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 30afe1805748012b0a137c865c799580f79d31d8
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165504"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67588638"
 ---
 # <a name="manage-and-monitor-workload-importance-in-azure-sql-data-warehouse"></a>Zarządzanie i monitorowanie obciążenia znaczenie w usłudze Azure SQL Data Warehouse
 
@@ -67,7 +67,7 @@ IF EXISTS (SELECT 1 FROM sys.workload_management_workload_classifiers WHERE name
 GO
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - Aby uzyskać więcej informacji na temat klasyfikacji, zobacz [klasyfikacji obciążenia](sql-data-warehouse-workload-classification.md).
 - Aby uzyskać więcej informacji na temat znaczenia, zobacz [znaczenie obciążenia](sql-data-warehouse-workload-importance.md)
 

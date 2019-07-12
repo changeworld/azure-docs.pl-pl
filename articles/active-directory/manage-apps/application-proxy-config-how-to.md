@@ -16,18 +16,18 @@ ms.date: 05/18/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc9287aac567c8989564094564b92b82662e603f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7aaf2eb282bc3fd0b9f3853ce493c479a3d3c3a9
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65825929"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807857"
 ---
 # <a name="how-to-configure-an-application-proxy-application"></a>Jak skonfigurować aplikację serwera Proxy aplikacji
 
 Ten artykuł pomaga zrozumieć, jak skonfigurować aplikację serwera Proxy aplikacji w usłudze Azure AD do udostępnienia aplikacji lokalnych do chmury.
 
-## <a name="recommended-documents"></a>Zalecane dokumenty 
+## <a name="recommended-documents"></a>Zalecane dokumenty
 
 Aby dowiedzieć się więcej o konfiguracji początkowej i tworzenie aplikacji serwera Proxy aplikacji za pośrednictwem portalu administracyjnego, postępuj zgodnie z [publikowania aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-add-on-premises-application.md).
 
@@ -39,19 +39,15 @@ Aby uzyskać informacji na temat przekazywania certyfikatów i używania domen n
 
 Jeśli postępujesz zgodnie z instrukcjami w [publikowania aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-add-on-premises-application.md) dokumentacji i czy występuje błąd tworzenia aplikacji, zobacz szczegóły błędu, aby uzyskać informacje i sugestie dotyczące sposobu rozwiązania aplikacja. Większość komunikaty o błędach obejmują sugerowanej poprawki. Aby uniknąć typowych błędów, należy zweryfikować:
 
--   Administratorzy z uprawnieniami do tworzenia aplikacji serwera Proxy aplikacji
-
--   Wewnętrzny adres URL jest unikatowa
-
--   Zewnętrzny adres URL jest unikatowa
-
--   Adresy URL, uruchom za pomocą protokołu http lub https, a kończyć się znakiem "/"
-
--   Adres URL powinien być nazwy domeny, a nie adresu IP
+- Administratorzy z uprawnieniami do tworzenia aplikacji serwera Proxy aplikacji
+- Wewnętrzny adres URL jest unikatowa
+- Zewnętrzny adres URL jest unikatowa
+- Adresy URL, uruchom za pomocą protokołu http lub https, a kończyć się znakiem "/"
+- Adres URL powinien być nazwy domeny, a nie adresu IP
 
 Komunikat o błędzie powinien być wyświetlany w prawym górnym rogu, podczas tworzenia aplikacji. Można również wybrać ikonę powiadomienia, aby wyświetlić komunikaty o błędach.
 
-   ![Wiersz powiadomień](./media/application-proxy-config-how-to/error-message.png)
+![Pokazuje, gdzie można znaleźć wiersza powiadomienia w witrynie Azure portal](./media/application-proxy-config-how-to/error-message.png)
 
 ## <a name="configure-connectorsconnector-groups"></a>Konfigurowanie grup łączników/łącznika
 
@@ -61,19 +57,16 @@ Jeśli łączniki nie są aktywne, oznacza to, że są w stanie uzyskać dostęp
 
 ## <a name="upload-certificates-for-custom-domains"></a>Przekaż certyfikaty dla domen niestandardowych
 
-Domen niestandardowych umożliwiają określenie domeny usługi zewnętrzne adresy URL. Aby Użyj domen niestandardowych, musisz przekazać certyfikat dla tej domeny. Aby uzyskać informacje na temat używania domen niestandardowych i certyfikatów, zobacz [Praca z domenami niestandardowymi na serwerze Proxy aplikacji usługi Azure AD](application-proxy-configure-custom-domain.md). 
+Domen niestandardowych umożliwiają określenie domeny usługi zewnętrzne adresy URL. Aby Użyj domen niestandardowych, musisz przekazać certyfikat dla tej domeny. Aby uzyskać informacje na temat używania domen niestandardowych i certyfikatów, zobacz [Praca z domenami niestandardowymi na serwerze Proxy aplikacji usługi Azure AD](application-proxy-configure-custom-domain.md).
 
 Jeśli napotkasz problemy z przekazywania certyfikatu poszukaj komunikatów o błędach w portalu, aby uzyskać dodatkowe informacje na temat problemu z certyfikatem. Typowe problemy z certyfikatem obejmują:
 
--   Wygaśnięcie certyfikatu
-
--   Certyfikat ma podpis własny
-
--   Brak klucza prywatnego certyfikatu
+- Wygaśnięcie certyfikatu
+- Certyfikat ma podpis własny
+- Brak klucza prywatnego certyfikatu
 
 Komunikat o błędzie jest wyświetlane w prawym górnym rogu, przy próbie przekazania certyfikatu. Można również wybrać ikonę powiadomienia, aby wyświetlić komunikaty o błędach.
 
-   ![Wiersz powiadomień](./media/application-proxy-config-how-to/error-message2.png)
+## <a name="next-steps"></a>Następne kroki
 
-## <a name="next-steps"></a>Kolejne kroki
 [Publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-add-on-premises-application.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: tomsh
-ms.openlocfilehash: 38054d6ee3799296887726954ef1f096945aeaeb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ca9feb226a077484ba43bef7cd14d962ea95b37a
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60586853"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653423"
 ---
 # <a name="azure-operational-security-overview"></a>Omówienie kwestii bezpieczeństwa działania platformy Azure
 
@@ -47,7 +47,7 @@ Można skonsolidować dane z różnych źródeł i połączyć dane z usług pla
 
 Usługa Azure Backup oferuje składniki, które możesz pobrać i wdrożyć na odpowiednim komputerze lub serwerze lub w chmurze. Wdrażany składnik lub agent zależy od tego, co ma być chronione. Wszystkie składniki usługi Azure Backup (zarówno w przypadku ochrony danych w sieci lokalnej lub w chmurze) może służyć do tworzenia kopii zapasowych w magazynie usług odzyskiwania Azure na platformie Azure. 
 
-Aby uzyskać więcej informacji, zobacz [tabeli składników usługi Azure Backup](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup#which-azure-backup-components-should-i-use).
+Aby uzyskać więcej informacji, zobacz [tabeli składników usługi Azure Backup](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup#which-backup-agent-should-i-use).
 
 ### <a name="site-recovery"></a>Site Recovery
 
@@ -184,7 +184,7 @@ Dojrzała badaczy DevOps przyjąć kilka z następujących wskazówek. Praktyki 
 - [Infrastruktura jako kod (IaC)](https://www.visualstudio.com/learn/what-is-infrastructure-as-code/) jest praktyka, która umożliwia automatyzację i weryfikację tworzenia i usuwania sieci oraz maszyn wirtualnych, aby pomóc w dostarczaniu bezpieczne i stabilne platformy hostowania aplikacji.
 - [Mikrousługi](https://www.visualstudio.com/learn/what-are-microservices/) architektury jest używane do izolowania przypadków użycia biznesowego usług wielokrotnego użytku.  Ona w uzyskaniu skalowalności i wydajności.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się więcej na temat rozwiązania zabezpieczenia i inspekcja, zobacz następujące artykuły:
 

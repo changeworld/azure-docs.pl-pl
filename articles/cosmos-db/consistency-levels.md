@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2019
-ms.openlocfilehash: dcd51756a9c5a5a24a082862bb911cc2d2605d61
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f9de37c04e5e791445659de0ab667b51f44a4024
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65954363"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839835"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Poziomy spójności w usłudze Azure Cosmos DB
 
@@ -48,7 +48,7 @@ Semantyka poziomów spójności pięć są opisane poniżej:
 
   Powiązana nieaktualność oferty całkowitej globalnej kolejności z wyjątkiem w ramach "okno nieaktualność." Istnieje monotoniczny gwarancje odczytu w regionie wewnątrz lub na zewnątrz okna nieaktualność. Wysoki poziom spójności ma tą samą semantyką jako jeden oferowany przez powiązana nieaktualność. Okno nieaktualność jest równa zero. Powiązana nieaktualność jest również określany jako atomowych opóźnione czasu. Gdy klient wykonuje operacje odczytu w regionie, który akceptuje zapisy, gwarancji spójności powiązana nieaktualność są identyczne z tych gwarancji, wysoki poziom spójności.
 
-- **Sesja**: Operacje odczytu mają gwarancję respektować spójny prefiks (przy założeniu sesji jednego elementu "zapisującego"), monotoniczne odczyty, zapisy monotoniczny, gwarancje odczytu swoich zapisów i write poniżej — operacje odczytu. Spójność sesji jest ograniczony do sesji klienta.
+- **Sesja**:  W ramach sesji pojedynczego klienta operacje odczytu mają gwarancję respektować spójny prefiks (przy założeniu sesji jednego elementu "zapisującego"), monotoniczne odczyty, zapisy monotoniczny, gwarancje odczytu swoich zapisów i write poniżej — operacje odczytu. Klienci poza sesją wykonywania operacji zapisu, zostanie wyświetlony ze spójnością ostateczną.
 
 - **Spójny prefiks**: Aktualizacje, które są zwracane zawierają pewne prefiksy ze wszystkich aktualizacji, bez przerw. Poziom spójności spójny prefiks gwarantuje, że odczyty nigdy nie zobaczy zapisów poza kolejnością.
 

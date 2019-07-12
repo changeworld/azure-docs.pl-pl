@@ -4,7 +4,7 @@ description: Zmień rozmiar maszyny wirtualnej Windows utworzone w modelu wdraż
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 057ff274-6dad-415e-891c-58f8eea9ed78
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 3dc6ea7419e3ee1f24d19447a7a33e5556ffc70f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 353bc3499f93eca72dd325c2114cd364145986c6
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64688719"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722899"
 ---
 # <a name="resize-a-windows-vm"></a>Zmień rozmiar Windows maszyny Wirtualnej
 
@@ -123,7 +123,7 @@ $vmIds = $as.VirtualMachinesReferences
     }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dla uzyskania dodatkowej skalowalności uruchomić wiele wystąpień maszyny Wirtualnej, a następnie skalować w poziomie. Aby uzyskać więcej informacji, zobacz [automatyczne skalowanie maszyn Windows w zestawie skalowania maszyn wirtualnych](../../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md).
 

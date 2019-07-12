@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 433a8b2f9fb1f4c4599afbb807e9270992a98a52
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e7a84d74e1bda6de8549c79dab1bec8c2515e213
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60824188"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839059"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Przenoszenie danych z bazy danych MongoDB przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
@@ -49,7 +49,7 @@ Utworzysz potok z działaniem kopiowania, które przenosi dane z magazynu danych
 
 Najprostszym sposobem utworzenia potoku jest użycie **kreatora kopiowania**. Zobacz [samouczka: Tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych.
 
-Aby utworzyć potok umożliwia także następujących narzędzi: **Witryna Azure portal**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**i  **Interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
+Aby utworzyć potok umożliwia także następujących narzędzi: **Program Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**, i **interfejsu API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
 
 Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródłowych do magazynu danych ujścia:
 
@@ -66,16 +66,16 @@ Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla **
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| type |Właściwość type musi być równa: **OnPremisesMongoDb** |Yes |
+| type |Właściwość type musi być równa: **OnPremisesMongoDb** |Tak |
 | server |Adres IP lub hosta nazwę serwera bazy danych MongoDB. |Yes |
 | port |Port TCP używany przez serwer bazy danych MongoDB do nasłuchiwania połączeń klientów. |Opcjonalne, wartość domyślna: 27017 |
-| authenticationType |Podstawowe, lub anonimowe. |Yes |
+| authenticationType |Podstawowe, lub anonimowe. |Tak |
 | username |Konto użytkownika, aby dostęp do bazy danych MongoDB. |Tak (jeśli jest używane uwierzytelnianie podstawowe). |
 | password |Hasło użytkownika. |Tak (jeśli jest używane uwierzytelnianie podstawowe). |
 | authSource |Nazwa bazy danych MongoDB, który chcesz użyć, aby sprawdzić swoje poświadczenia dla uwierzytelniania. |Opcjonalnie (Jeśli używane jest uwierzytelnianie podstawowe). domyślne: korzysta z konta administratora i baza danych określona za pomocą właściwości databaseName. |
 | databaseName |Nazwa bazy danych MongoDB, który chcesz uzyskać dostęp. |Yes |
-| gatewayName |Nazwa bramy, który uzyskuje dostęp do magazynu danych. |Yes |
-| encryptedCredential |Poświadczenie szyfrowane przez bramę. |Optional (Opcjonalność) |
+| gatewayName |Nazwa bramy, który uzyskuje dostęp do magazynu danych. |Tak |
+| encryptedCredential |Poświadczenie szyfrowane przez bramę. |Optional |
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 Aby uzyskać pełną listę sekcje & właściwości dostępne Definiowanie zestawów danych, zobacz [tworzenie zestawów danych](data-factory-create-datasets.md) artykułu. Sekcje, takie jak struktury, dostępność i zasady zestawem danych JSON są podobne dla wszystkich typów na zestaw danych (Azure SQL, obiektów blob platformy Azure, usługa Azure table itp.).
@@ -100,7 +100,7 @@ Jeśli źródło jest typu **MongoDbSource** w sekcji typeProperties dostępne s
 
 
 ## <a name="json-example-copy-data-from-mongodb-to-azure-blob"></a>Przykład kodu JSON: Kopiowanie danych z bazy danych MongoDB do obiektów Blob platformy Azure
-W poniższym przykładzie przedstawiono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [witryny Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) lub [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Prezentuje sposób kopiowania danych z bazy danych MongoDB w środowisku lokalnym, do usługi Azure Blob Storage. Jednakże, można skopiować danych do dowolnego ujścia, o których wspomniano [tutaj](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.
+W poniższym przykładzie przedstawiono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Prezentuje sposób kopiowania danych z bazy danych MongoDB w środowisku lokalnym, do usługi Azure Blob Storage. Jednakże, można skopiować danych do dowolnego ujścia, o których wspomniano [tutaj](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.
 
 Przykład obejmuje następujących jednostek fabryki danych:
 
@@ -295,14 +295,14 @@ Podczas przenoszenia danych do bazy danych MongoDB następujące mapowania są u
 
 | Typ bazy danych MongoDB | Typ .NET framework |
 | --- | --- |
-| Binarny |Byte[] |
+| Binary |Byte[] |
 | Boolean |Boolean |
-| Date |DateTime |
+| Date |Datetime |
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
-| ObjectID |String |
-| Ciąg |String |
+| ObjectID |Ciąg |
+| String |String |
 | UUID |Guid |
 | Object |Renormalized do spłaszczenia kolumn z "_" jako separatora zagnieżdżonych |
 

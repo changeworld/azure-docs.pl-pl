@@ -5,17 +5,16 @@ services: data-factory
 author: abnarain
 manager: craigg
 ms.service: data-factory
-ms.topic: troubleshoot
-ms.subservice: troubleshoot
+ms.topic: troubleshooting
 ms.date: 6/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 8d6ab565098e1ea40ede5c650f05e670a1edc7f6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d220730bb2e93e32d00e56ed98f4962ad89eda5a
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67452685"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626326"
 ---
 # <a name="troubleshooting-azure-data-factory"></a>Rozwiązywanie problemów z usługi Azure Data Factory
 W tym artykule wymieniono typowe pytania dotyczące rozwiązywania problemów.
@@ -81,7 +80,7 @@ W tym artykule wymieniono typowe pytania dotyczące rozwiązywania problemów.
 | 2505         | Nie można utworzyć sygnaturę dostępu współdzielonego, chyba że używane są poświadczenia klucza konta. | Działania niestandardowe obsługują tylko kont magazynu, które używają klucza dostępu. | Zobacz opis                                            |
 | 2507         | Ścieżka folderu nie istnieje lub jest pusty:...            | Brak plików na koncie magazynu w określonej ścieżce.       | FolderPath musi zawierać pliki wykonywalne, które chcesz uruchomić. |
 | 2508         | Istnieją zduplikowane pliki w folderze zasobów.               | Istnieje wiele plików o takiej samej nazwie w różnych podfolderach folderPath. | Działania niestandardowe, spłaszczenie strukturę folderów w obszarze folderPath.  Jeśli struktura folderów musi zostać zachowane, pliki zip i wyodrębnić je w usłudze Azure Batch przy użyciu polecenia unzip, na przykład: powershell.exe - nologo - noprofile — polecenie "& {Add-Type - 'System.IO.Compression.FileSystem';   [IO.Compression.ZipFile]::ExtractToDirectory ($zipFile, $folder); }" ;   $folder\yourProgram.exe |
-| 2509         | Adres url usługi Batch... jest nieprawidłowa, musi być w formacie identyfikatora Uri.         | Adresy URL usługi Batch musi mieć postać podobną do https://mybatchaccount.eastus.batch.azure.com | Zobacz opis                                            |
+| 2509         | Adres url usługi Batch... jest nieprawidłowa, musi być w formacie identyfikatora Uri.         | Adresy URL usługi Batch musi mieć postać podobną do protokołu https:\//mybatchaccount.eastus.batch.azure.com | Zobacz opis                                            |
 | 2510         | Wystąpił błąd podczas wysyłania żądania.               | Adres URL usługi Batch jest nieprawidłowa                                         | Sprawdź adres URL usługi batch.                                            |
 
 ## <a name="hdinsight-spark-hive-mapreduce-pig-hadoop-streaming"></a>HDInsight (Spark, Hive, MapReduce, Pig, przesyłanie strumieniowe usługi Hadoop)
@@ -92,7 +91,7 @@ W tym artykule wymieniono typowe pytania dotyczące rozwiązywania problemów.
 | 2300         | Przesyłanie zadań Hadoop nie powiodło się. Zadanie:..., klaster:... /. Błąd: Zadanie zostało anulowane. | Przekroczono limit czasu przesyłania zadania.                         | Może to być problem z łącznością ogólne HDInsight lub problem z łącznością sieciową. Najpierw upewnij się, że interfejsu użytkownika Ambari HDInsight jest dostępna za pomocą dowolnej przeglądarki i poświadczenia są prawidłowe. Pamiętaj to zrobić z poziomu maszyny Wirtualnej/machine gdy własne środowisko IR jest zainstalowany, jeśli za pomocą Self-Hosted IR A następnie spróbuj ponownie przesłać zadanie usługi ADF. Jeśli nadal nie, skontaktuj się z usługi ADF zespołu pomocy technicznej. |
 | 2300         | Brak autoryzacji:   Nazwa użytkownika Ambari lub hasło są niepoprawne  <br/><br/>Brak autoryzacji:   Administrator użytkownika jest zablokowane w Ambari   <br/><br/>403 — Dostęp zabroniony: Odmowa dostępu | Dostarczone poświadczenia dla HDInsight są nieprawidłowe lub wygasłe | Popraw je i ponownie wdrożyć połączoną usługę. Upewnij się, że poświadczenia pracować nad HDInsight najpierw, otwierając identyfikator URI klastra w dowolnej przeglądarce i próby logowania. Jeśli nie działają, można zresetować je z witryny Azure Portal. |
 | 2300,   2310 | 502 — Serwer sieci web odebrał nieprawidłową odpowiedź, działając jako brama lub serwer proxy       <br/>Zła brama | Błąd pochodzi z HDInsight                               | Ten błąd jest pochodzące z klastrem HDInsight. Zapoznaj się [HDInsight narzędzia do rozwiązywania problemów](https://hdinsight.github.io/ambari/ambari-ui-502-error.html) przy użyciu typowych błędów.    <br/>W przypadku klastrów Spark on może być także spowodowane ze względu na [to](https://hdinsight.github.io/spark/spark-thriftserver-errors.html). <br/><br/>[Dodatkowe łącze](https://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502) |
-| 2300         | Przesyłanie zadań Hadoop nie powiodło się. Zadanie:..., klaster:... Błąd: {\"błąd\":\"nie można zrealizować żądania zadania przesyłania, ponieważ usługa templeton jest zajęty ze zbyt dużą liczbą żądań zadania przesyłania. Zaczekaj przez pewien czas przed ponowieniem próby wykonania operacji. Zapoznaj się templeton.parallellism.job.submit konfiguracji do konfigurowania jednoczesnych żądań. \  <br/><br/>Przesyłanie zadań Hadoop nie powiodło się. Zadanie: 161da5d4-6fa8-4ef4-a240-6b6428c5ae2f, klaster: https://abc-analytics-prod-hdi-hd-trax-prod01.azurehdinsight.net/.   Error: {\"error\":\"java.io.IOException:   org.apache.hadoop.yarn.exceptions.YarnException: Nie można przesłać application_1561147195099_3730 do YARN: org.apache.hadoop.security.AccessControlException: Kolejka root.joblauncher już ma 500 aplikacji, nie może akceptować przesyłania aplikacji: application_1561147195099_3730\ | Zbyt wiele zadań są przesyłane do HDInsight w tym samym czasie | Należy rozważyć ograniczenie liczby równoczesnych zadań, które są przesyłane do usługi HDI. Zapoznaj się concurrency działania usługi ADF, jeśli są przesyłane przez tego samego działania. Zmień wyzwalacze, aby uruchomienia równoczesnych potoku są rozproszone wraz z upływem czasu. Także zapoznać się w witrynie docs HDInsight w celu dostosowanie "templeton.parallellism.job.submit", ponieważ sugeruje błąd. |
+| 2300         | Przesyłanie zadań Hadoop nie powiodło się. Zadanie:..., klaster:... Błąd: {\"błąd\":\"nie można zrealizować żądania zadania przesyłania, ponieważ usługa templeton jest zajęty ze zbyt dużą liczbą żądań zadania przesyłania. Zaczekaj przez pewien czas przed ponowieniem próby wykonania operacji. Zapoznaj się templeton.parallellism.job.submit konfiguracji do konfigurowania jednoczesnych żądań. \  <br/><br/>Przesyłanie zadań Hadoop nie powiodło się. Zadanie: 161da5d4-6fa8-4ef4-a240-6b6428c5ae2f, klaster: https: \/ /abc-analytics-prod-hdi-hd-trax-prod01.azurehdinsight.net/.   Error: {\"error\":\"java.io.IOException:   org.apache.hadoop.yarn.exceptions.YarnException: Nie można przesłać application_1561147195099_3730 do YARN: org.apache.hadoop.security.AccessControlException: Kolejka root.joblauncher już ma 500 aplikacji, nie może akceptować przesyłania aplikacji: application_1561147195099_3730\ | Zbyt wiele zadań są przesyłane do HDInsight w tym samym czasie | Należy rozważyć ograniczenie liczby równoczesnych zadań, które są przesyłane do usługi HDI. Zapoznaj się concurrency działania usługi ADF, jeśli są przesyłane przez tego samego działania. Zmień wyzwalacze, aby uruchomienia równoczesnych potoku są rozproszone wraz z upływem czasu. Także zapoznać się w witrynie docs HDInsight w celu dostosowanie "templeton.parallellism.job.submit", ponieważ sugeruje błąd. |
 | 2303,   2347 | Zadanie Hadoop nie powiodło się z kodem zakończenia "5". Zobacz "wasbs://adfjobs@adftrialrun.blob.core.windows.net/StreamingJobs/da4afc6d-7836-444e-bbd5-635fce315997/18_06_2019_05_36_05_050/stderr" Aby uzyskać więcej informacji.  <br/><br/>Wykonanie programu hive nie powiodło się z kodem błędu "UserErrorHiveOdbcCommandExecutionFailure".   Zobacz "wasbs://adfjobs@eclsupplychainblobd.blob.core.windows.net/HiveQueryJobs/16439742-edd5-4efe-adf6-9b8ff5770beb/18_06_2019_07_37_50_477/Status/hive.out" Aby uzyskać więcej informacji | Zadanie zostało przesłane do HDInsight, a nie powiodła się HDInsight | Zadanie zostało pomyślnie przesłane do HDInsight. Nie powiodło się w klastrze. Można otworzyć zadania w interfejsie użytkownika Ambari HDInsight i otwórz dzienniki istnieje albo otwórz plik z magazynu jako punkty komunikat o błędzie się. Szczegóły błędu będą w tym pliku. |
 | 2328         | Wystąpił błąd wewnętrzny serwera podczas przetwarzania żądania. Ponów próbę żądania lub skontaktuj się z działem pomocy technicznej | Odbywa się na HDInsight na żądanie.                              | Ten błąd pochodzi z usługi HDInsight podczas inicjowania obsługi HDInsight zakończy się niepowodzeniem. Skontaktuj się z zespołem HDInsight i podaj nazwę klastra na żądanie. |
 | 2310         | java.lang.NullPointerException                               | Wystąpił błąd podczas przesyłania zadania do klastra Spark      | Ten wyjątek pochodzi z HDInsight i jest ukrywaniu rzeczywistego problemu.   Skontaktuj się z zespołem HDInsight, pomocy technicznej i zapewnić ich nazwy klastra i uruchomienie zakres czasu działania. |
@@ -150,7 +149,7 @@ W tym artykule wymieniono typowe pytania dotyczące rozwiązywania problemów.
 
 Więcej informacji na temat programu Fiddler [tutaj](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureFiddler)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać pomoc w znalezieniu rozwiązania problemu poniżej przedstawiono niektóre zasoby, które można wypróbować.
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: cc657e079949b8217031906efeb84049217d6493
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bf90ec8987ec419131ba21137972a0905e33f19
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510246"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654139"
 ---
 # <a name="set-up-sign-in-with-a-twitter-account-by-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurowanie polecenie Zaloguj się przy użyciu konta w serwisie Twitter przy użyciu zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -48,17 +48,17 @@ Chcesz przechować klucz tajny, który wcześniej zapisaną w dzierżawie usług
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. Upewnij się, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C. Wybierz **filtr katalogów i subskrypcji** w górnym menu i wybierz katalog, który zawiera Twojej dzierżawy.
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
-4. Na stronie Przegląd wybierz **struktura środowiska tożsamości — wersja ZAPOZNAWCZA**.
+4. Na stronie Przegląd wybierz **struktura środowiska tożsamości**.
 5. Wybierz **klucze zasad** , a następnie wybierz **Dodaj**.
 6. Aby uzyskać **opcje**, wybierz `Manual`.
 7. Wprowadź **nazwa** klucza zasad. Na przykład `TwitterSecret`. Prefiks `B2C_1A_` jest automatycznie dodawany do nazwy klucza.
 8. W **klucz tajny**, wprowadź klucz tajny klienta, który wcześniej zarejestrowane.
 9. Aby uzyskać **użycie klucza**, wybierz opcję `Encryption`.
-10. Kliknij pozycję **Utwórz**.
+10. Kliknij przycisk **Utwórz**.
 
 ## <a name="add-a-claims-provider"></a>Dodawanie dostawcy oświadczeń
 
-Użytkownikom na logowanie przy użyciu konta w serwisie Twitter, należy zdefiniować konto jako dostawcy oświadczeń, które usługi Azure AD B2C mogą się komunikować za pośrednictwem punktu końcowego. Punkt końcowy zawiera zestaw oświadczeń, które są używane przez usługę Azure AD B2C, aby sprawdzić, czy określony użytkownik jest uwierzytelniony. 
+Użytkownikom na logowanie przy użyciu konta w serwisie Twitter, należy zdefiniować konto jako dostawcy oświadczeń, które usługi Azure AD B2C mogą się komunikować za pośrednictwem punktu końcowego. Punkt końcowy zawiera zestaw oświadczeń, które są używane przez usługę Azure AD B2C, aby sprawdzić, czy określony użytkownik jest uwierzytelniony.
 
 Można zdefiniować konta w serwisie Twitter jako dostawcy oświadczeń, przez dodanie jej do **ClaimsProviders** elementu w pliku rozszerzenie zasad.
 
@@ -147,7 +147,7 @@ Teraz, gdy przycisk w miejscu, należy połączyć akcji. Akcja, w tym przypadku
     ```XML
     <ClaimsExchange Id="TwitterExchange" TechnicalProfileReferenceId="Twitter-OAUTH1" />
     ```
-    
+
     Zaktualizuj wartość **TechnicalProfileReferenceId** identyfikator profilu technicznego została utworzona wcześniej. Na przykład `Twitter-OAUTH1`.
 
 3. Zapisz *TrustFrameworkExtensions.xml* plik i ponownie przekazać go do weryfikacji.
@@ -162,7 +162,7 @@ Za pomocą usługi Azure AD B2c odbywa się przy użyciu aplikacji utworzonej w 
 4. Wybierz pozycję **Aplikacje**, a następnie wybierz polecenie **Dodaj**.
 5. Wprowadź nazwę aplikacji, na przykład *testapp1*.
 6. Dla **aplikacji sieci Web / interfejs API sieci Web**, wybierz opcję `Yes`, a następnie wprowadź `https://jwt.ms` dla **adres URL odpowiedzi**.
-7. Kliknij pozycję **Utwórz**.
+7. Kliknij przycisk **Utwórz**.
 
 ## <a name="update-and-test-the-relying-party-file"></a>Aktualizowanie i przetestować go jednostki uzależnionej ze stron
 

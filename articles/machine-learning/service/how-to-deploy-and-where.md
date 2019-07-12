@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 05/31/2019
+ms.date: 07/08/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: dcb90eb8ee25b8b0c780006f3555a5a9b815ffdd
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: fb23e61142a639420d74c08e5a9a41324acab18b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514280"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706283"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Wdrażaj modele za pomocą usługi Azure Machine Learning
 
@@ -332,12 +332,9 @@ Poniższa tabela zawiera przykład tworzenia konfiguracji wdrażania dla każdeg
 Poniższe sekcje pokazują, jak utworzyć konfigurację wdrożenia, a następnie używania jej do wdrażania usługi sieci web.
 
 ### <a name="optional-profile-your-model"></a>Opcjonalnie: Profil modelu
-Przed wdrożeniem modelu w postaci usługi, możesz go do ustalenia optymalnej procesora CPU i wymagania dotyczące pamięci profilu. Możesz wykonać profilu modelu przy użyciu zestawu SDK lub interfejsu wiersza polecenia.
+Przed wdrożeniem modelu w postaci usługi, można profilować go do ustalenia optymalnej procesora CPU i wymagania dotyczące pamięci przy użyciu zestawu SDK lub interfejsu wiersza polecenia.  Model wyniki profilowania są emitowane jako `Run` obiektu. Pełne szczegóły [schematu modelu profilu można znaleźć w dokumentacji interfejsu API](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py)
 
-Aby uzyskać więcej informacji możesz zapoznać się z naszą dokumentację zestawu SDK: https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-
-
-Model wyniki profilowania są emitowane jako obiekt przebiegu.
-Szczegółowe informacje dotyczące schematu modelu profilu można znaleźć tutaj: https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py
+Dowiedz się więcej o [jak profil modelu przy użyciu zestawu SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-)
 
 ## <a name="deploy-to-target"></a>Wdrażanie na docelowych
 
@@ -356,9 +353,27 @@ Aby wdrożyć lokalnie, musisz mieć **zainstalowana platforma Docker** na kompu
 
 + **Przy użyciu interfejsu wiersza polecenia**
 
+    Aby wdrożyć przy użyciu interfejsu wiersza polecenia, użyj następującego polecenia. Zastąp `mymodel:1` o nazwie i wersji zarejestrowany modelu:
+
   ```azurecli-interactive
-  az ml model deploy -m sklearn_mnist:1 -ic inferenceconfig.json -dc deploymentconfig.json
+  az ml model deploy -m mymodel:1 -ic inferenceconfig.json -dc deploymentconfig.json
   ```
+
+    Wpisy w `deploymentconfig.json` planu dokumentu do parametrów [LocalWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservicedeploymentconfiguration?view=azure-ml-py). W poniższej tabeli opisano mapowanie między jednostkami w dokumencie JSON i parametrów dla metody:
+
+    | Jednostki JSON | Parametr metody | Opis |
+    | ----- | ----- | ----- |
+    | `computeType` | Nie dotyczy | Docelowy zasób obliczeniowy. Dla wartości lokalnych, wartość musi być `local`. |
+    | `port` | `port` | Port lokalny, na którym chcesz udostępnić punktu końcowego HTTP usługi. |
+
+    Następujący kod JSON jest przykładowa Konfiguracja wdrożenia do użycia przy użyciu interfejsu wiersza polecenia:
+
+    ```json
+    {
+        "computeType": "local",
+        "port": 32267
+    }
+    ```
 
 ### <a id="aci"></a> Usługa Azure Container Instances (DEVTEST)
 
@@ -379,10 +394,44 @@ Aby wyświetlić przydziału i regionu dostępność usługi ACI, zobacz [limity
 
 + **Przy użyciu interfejsu wiersza polecenia**
 
-  ```azurecli-interactive
-  az ml model deploy -m sklearn_mnist:1 -n aciservice -ic inferenceconfig.json -dc deploymentconfig.json
-  ```
+    Aby wdrożyć przy użyciu interfejsu wiersza polecenia, użyj następującego polecenia. Zastąp `mymodel:1` z nazwą i wersją zarejestrowanego modelu. Zastąp `myservice` o nazwie, aby zapewnić tę usługę:
 
+    ```azurecli-interactive
+    az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
+    ```
+
+    Wpisy w `deploymentconfig.json` planu dokumentu do parametrów [AciWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration?view=azure-ml-py). W poniższej tabeli opisano mapowanie między jednostkami w dokumencie JSON i parametrów dla metody:
+
+    | Jednostki JSON | Parametr metody | Opis |
+    | ----- | ----- | ----- |
+    | `computeType` | Nie dotyczy | Docelowy zasób obliczeniowy. Dla usługi ACI, wartość musi być `ACI`. |
+    | `containerResourceRequirements` | Nie dotyczy | Zawiera elementy konfiguracji dla procesora CPU i pamięci przydzielonej dla kontenera. |
+    | &emsp;&emsp;`cpu` | `cpu_cores` | Liczba rdzeni procesora CPU do przydzielenia dla tej usługi sieci web. Ustawienia domyślne, `0.1` |
+    | &emsp;&emsp;`memoryInGB` | `memory_gb` | Ilość pamięci (w GB) do przydzielenia dla tej usługi sieci web. Domyślnie `0.5` |
+    | `location` | `location` | Region platformy Azure do wdrożenia tej usługi internetowej, aby. Jeśli nie określono obszaru roboczego, lokalizacja będzie używana. Szczegółowe informacje na temat dostępnych regionów można znaleźć tutaj: [Regiony usługi ACI](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=container-instances) |
+    | `authEnabled` | `auth_enabled` | Czy należy włączyć uwierzytelnianie dla tej usługi internetowej. Wartość domyślna to False |
+    | `sslEnabled` | `ssl_enabled` | Czy należy włączyć protokół SSL dla tej usługi internetowej. Wartość domyślna to False. |
+    | `appInsightsEnabled` | `enable_app_insights` | Czy należy włączyć usługi Application Insights dla tej usługi internetowej. Wartość domyślna to False |
+    | `sslCertificate` | `ssl_cert_pem_file` | Plik certyfikatu, wymagane, jeśli jest włączony protokół SSL |
+    | `sslKey` | `ssl_key_pem_file` | Plik klucza, wymagane, jeśli jest włączony protokół SSL |
+    | `cname` | `ssl_cname` | Rekord cname dla Jeśli jest włączony protokół SSL |
+    | `dnsNameLabel` | `dns_name_label` | Etykieta nazwy dns dla punktu końcowego oceniania. Jeśli nie określono etykietę nazwy dns unikatowych zostanie wygenerowany dla punktu końcowego oceniania. |
+
+    Następujący kod JSON jest przykładowa Konfiguracja wdrożenia do użycia przy użyciu interfejsu wiersza polecenia:
+
+    ```json
+    {
+        "computeType": "aci",
+        "containerResourceRequirements":
+        {
+            "cpu": 0.5,
+            "memoryInGB": 1.0
+        },
+        "authEnabled": true,
+        "sslEnabled": false,
+        "appInsightsEnabled": false
+    }
+    ```
 
 + **Za pomocą programu VS Code**
 
@@ -414,9 +463,71 @@ Jeśli masz już klaster AKS, dołączony, można wdrożyć do niego. Jeśli jes
 
 + **Przy użyciu interfejsu wiersza polecenia**
 
+    Aby wdrożyć przy użyciu interfejsu wiersza polecenia, użyj następującego polecenia. Zastąp `myaks` o nazwie AKS obliczeniowego elementu docelowego. Zastąp `mymodel:1` z nazwą i wersją zarejestrowanego modelu. Zastąp `myservice` o nazwie, aby zapewnić tę usługę:
+
   ```azurecli-interactive
-  az ml model deploy -ct myaks -m mymodel:1 -n aksservice -ic inferenceconfig.json -dc deploymentconfig.json
+  az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
   ```
+
+    Wpisy w `deploymentconfig.json` planu dokumentu do parametrów [AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py). W poniższej tabeli opisano mapowanie między jednostkami w dokumencie JSON i parametrów dla metody:
+
+    | Jednostki JSON | Parametr metody | Opis |
+    | ----- | ----- | ----- |
+    | `computeType` | Nie dotyczy | Docelowy zasób obliczeniowy. Dla usługi AKS, wartość musi być `aks`. |
+    | `autoScaler` | Nie dotyczy | Zawiera elementy konfiguracji dotyczące automatycznego skalowania. Zobacz tabelę skalowania automatycznego. |
+    | &emsp;&emsp;`autoscaleEnabled` | `autoscale_enabled` | Czy należy włączyć Skalowanie automatyczne usługi sieci web. Jeśli `numReplicas`  =  `0`, `True`; w przeciwnym razie `False`. |
+    | &emsp;&emsp;`minReplicas` | `autoscale_min_replicas` | Minimalna liczba kontenerów do użycia podczas automatycznego skalowania tej usługi sieci web. Domyślnie, `1`. |
+    | &emsp;&emsp;`maxReplicas` | `autoscale_max_replicas` | Maksymalną liczbę kontenerów do użycia podczas automatycznego skalowania tej usługi sieci web. Domyślnie, `10`. |
+    | &emsp;&emsp;`refreshPeriodInSeconds` | `autoscale_refresh_seconds` | Jak często skalowania automatycznego próby skalowania tej usługi sieci web. Domyślnie, `1`. |
+    | &emsp;&emsp;`targetUtilization` | `autoscale_target_utilization` | Wykorzystanie docelowe (w procentach 100), skalowania automatycznego ma podejmować próbę zachowania tej usługi sieci web. Domyślnie, `70`. |
+    | `dataCollection` | Nie dotyczy | Zawiera elementy konfiguracji do zbierania danych. |
+    | &emsp;&emsp;`storageEnabled` | `collect_model_data` | Czy należy włączyć zbieranie danych modelu dla usługi sieci web. Domyślnie, `False`. |
+    | `authEnabled` | `auth_enabled` | Czy należy włączyć uwierzytelnianie usługi sieci web. Domyślnie, `True`. |
+    | `containerResourceRequirements` | Nie dotyczy | Zawiera elementy konfiguracji dla procesora CPU i pamięci przydzielonej dla kontenera. |
+    | &emsp;&emsp;`cpu` | `cpu_cores` | Liczba rdzeni procesora CPU do przydzielenia dla tej usługi sieci web. Ustawienia domyślne, `0.1` |
+    | &emsp;&emsp;`memoryInGB` | `memory_gb` | Ilość pamięci (w GB) do przydzielenia dla tej usługi sieci web. Domyślnie `0.5` |
+    | `appInsightsEnabled` | `enable_app_insights` | Czy należy włączyć rejestrowanie usługi Application Insights dla usługi sieci web. Domyślnie, `False`. |
+    | `scoringTimeoutMs` | `scoring_timeout_ms` | Wartość limitu czasu wymuszenia do oceniania wywołania usługi sieci web. Domyślnie, `60000`. |
+    | `maxConcurrentRequestsPerContainer` | `replica_max_concurrent_requests` | Maksymalna liczba równoczesnych żądań na węzeł dla tej usługi sieci web. Domyślnie, `1`. |
+    | `maxQueueWaitMs` | `max_request_wait_time` | Maksymalny czas żądania, pozostanie na te kolejki (w milisekundach) przed 503 zwracany jest błąd. Domyślnie, `500`. |
+    | `numReplicas` | `num_replicas` | Liczba kontenerów można przydzielić dla tej usługi sieci web. Brak wartości domyślnej. Jeśli ten parametr nie jest ustawiona, skalowania automatycznego jest domyślnie włączona. |
+    | `keys` | Nie dotyczy | Zawiera elementy konfiguracji dla kluczy. |
+    | &emsp;&emsp;`primaryKey` | `primary_key` | Klucz uwierzytelniania podstawowego dla tej usługi internetowej |
+    | &emsp;&emsp;`secondaryKey` | `secondary_key` | Klucz uwierzytelniania pomocniczego na potrzeby tej usługi internetowej |
+    | `gpuCores` | `gpu_cores` | Liczba rdzeni procesora GPU, aby przydzielić dla tej usługi internetowej. Domyślna wartość wynosi 1. |
+    | `livenessProbeRequirements` | Nie dotyczy | Zawiera elementy konfiguracji dla wymagań sondy żywotności. |
+    | &emsp;&emsp;`periodSeconds` | `period_seconds` | Jak często (w sekundach) do wykonywania sondy żywotności. Domyślnie to 10 sekund. Minimalna wartość to 1. |
+    | &emsp;&emsp;`initialDelaySeconds` | `initial_delay_seconds` | Liczba sekund po rozpoczęciu kontenera, zanim sondy żywotności są inicjowane. Wartość domyślna to 310 |
+    | &emsp;&emsp;`timeoutSeconds` | `timeout_seconds` | Liczba sekund, po upływie których sondy żywotności upłynie limit czasu. Wartość domyślna to 2 sekundy. Minimalna wartość to 1 |
+    | &emsp;&emsp;`successThreshold` | `success_threshold` | Minimalna kolejnych sukcesów dla sondy żywotności zostały uznane za pomyślne po o nie powiodło się. Wartość domyślna to 1. Minimalna wartość to 1. |
+    | &emsp;&emsp;`failureThreshold` | `failure_threshold` | Po uruchomieniu zasobnik sonda żywotności nie powiedzie się, Kubernetes podejmie próbę failureThreshold czasy przed rezygnacją. Wartość domyślna to 3. Minimalna wartość to 1. |
+    | `namespace` | `namespace` | Przestrzeń nazw platformy Kubernetes, usługi sieci Web jest wdrażany w. Do 63 małe znaki alfanumeryczne ("" – "z", "0" — "9") i łącznik ("-") znaków. Pierwszy i ostatni znak nie może mieć łączników. |
+
+    Następujący kod JSON jest przykładowa Konfiguracja wdrożenia do użycia przy użyciu interfejsu wiersza polecenia:
+
+    ```json
+    {
+        "computeType": "aks",
+        "autoScaler":
+        {
+            "autoscaleEnabled": true,
+            "minReplicas": 1,
+            "maxReplicas": 3,
+            "refreshPeriodInSeconds": 1,
+            "targetUtilization": 70
+        },
+        "dataCollection":
+        {
+            "storageEnabled": true
+        },
+        "authEnabled": true,
+        "containerResourceRequirements":
+        {
+            "cpu": 0.5,
+            "memoryInGB": 1.0
+        }
+    }
+    ```
 
 + **Za pomocą programu VS Code**
 
@@ -600,7 +711,7 @@ Aby usunąć zarejestrowanego modelu, użyj `model.delete()`.
 
 Aby uzyskać więcej informacji, zobacz dokumentację referencyjną [WebService.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--), i [Model.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Jak wdrożyć model przy użyciu niestandardowego obrazu platformy Docker](how-to-deploy-custom-docker-image.md)
 * [Rozwiązywanie problemów z wdrożenia](how-to-troubleshoot-deployment.md)
 * [Zabezpieczania usług sieci web Azure Machine Learning przy użyciu protokołu SSL](how-to-secure-web-service.md)

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0a3adbd082c68121e762fd03c2221a0c800f0bc5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5b098aaf2df5e04983aa53563d5e0203f3287b42
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60823984"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839944"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Przenoszenie danych z bazy danych Cassandra w środowisku lokalnym za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
@@ -49,7 +49,7 @@ Po zainstalowaniu bramy, automatycznie instaluje sterownik Microsoft Cassandra O
 Utworzysz potok z działaniem kopiowania, które przenosi dane z lokalnego magazynu danych Cassandra przy użyciu różnych narzędzi/interfejsów API.
 
 - Najprostszym sposobem utworzenia potoku jest użycie **kreatora kopiowania**. Zobacz [samouczka: Tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych.
-- Aby utworzyć potok umożliwia także następujących narzędzi: **Witryna Azure portal**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**i  **Interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
+- Aby utworzyć potok umożliwia także następujących narzędzi: **Program Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**, i **interfejsu API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
 
 Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródłowych do magazynu danych ujścia:
 
@@ -69,7 +69,7 @@ Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla ro
 | type |Właściwość type musi być równa: **OnPremisesCassandra** |Tak |
 | host |Jeden lub więcej adresów IP lub nazw hostów serwerów bazy danych Cassandra.<br/><br/>Określ rozdzielaną przecinkami listę adresów IP lub nazw hostów, połączyć się z wszystkich serwerów jednocześnie. |Yes |
 | port |Port TCP, którego serwer Cassandra korzysta do nasłuchiwania połączeń klientów. |Nie, wartość domyślna: 9042 |
-| authenticationType |Podstawowe lub anonimowe |Tak |
+| authenticationType |Podstawowe lub anonimowe |Yes |
 | username |Określ nazwę użytkownika dla konta użytkownika. |Tak, jeśli element authenticationType ustawiany jest podstawowy. |
 | password |Określ hasło dla konta użytkownika. |Tak, jeśli element authenticationType ustawiany jest podstawowy. |
 | gatewayName |Nazwa bramy, która służy do łączenia z bazą danych Cassandra w środowisku lokalnym. |Tak |
@@ -101,7 +101,7 @@ Jeśli źródło jest typu **CassandraSource**, w sekcji typeProperties dostępn
 | consistencyLevel |Poziom spójności Określa, jak wiele replik musi odpowiadać na żądania odczytu przed zwróceniem danych do aplikacji klienckiej. Bazy danych Cassandra sprawdza określoną liczbę replik dla danych do spełnienia żądania odczytu. |JEDEN, DWA, TRZY, KWORUM, WSZYSTKIE, LOCAL_QUORUM EACH_QUORUM, LOCAL_ONE. Zobacz [Konfigurowanie spójności danych](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) Aby uzyskać szczegółowe informacje. |Nie. Wartość domyślna to jeden. |
 
 ## <a name="json-example-copy-data-from-cassandra-to-azure-blob"></a>Przykład kodu JSON: Kopiowanie danych z bazy danych Cassandra do obiektów Blob platformy Azure
-W poniższym przykładzie przedstawiono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [witryny Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) lub [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Widoczny jest sposób skopiować dane z lokalnej bazy danych Cassandra do usługi Azure Blob Storage. Jednakże, można skopiować danych do dowolnego ujścia, o których wspomniano [tutaj](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.
+W poniższym przykładzie przedstawiono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Widoczny jest sposób skopiować dane z lokalnej bazy danych Cassandra do usługi Azure Blob Storage. Jednakże, można skopiować danych do dowolnego ujścia, o których wspomniano [tutaj](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.
 
 > [!IMPORTANT]
 > W tym przykładzie przedstawiono fragmenty kodu JSON. Nie obejmuje instrukcje krok po kroku dotyczące tworzenia fabryki danych. Zobacz [przenoszenia danych między lokalizacjami lokalnymi i chmurą](data-factory-move-data-between-onprem-and-cloud.md) artykuł, aby uzyskać instrukcje krok po kroku.
@@ -271,8 +271,8 @@ Zobacz [właściwości typu RelationalSource](#copy-activity-properties) listy w
 | FLOAT |Single |
 | INET |String |
 | INT |Int32 |
-| TEXT |String |
-| TIMESTAMP |DateTime |
+| TEXT |Ciąg |
+| TIMESTAMP |Datetime |
 | TIMEUUID |Guid |
 | UUID |Guid |
 | VARCHAR |String |
@@ -309,7 +309,7 @@ Sterownik wygeneruje wiele tabel wirtualnego do reprezentowania jednej tabeli. K
 
 Pierwsza tabela wirtualnego jest tabela bazowa o nazwie "ExampleTable" przedstawiono w poniższej tabeli. Tabela podstawowa zawiera te same dane, co oryginalnej tabeli bazy danych, z wyjątkiem kolekcji, które są pomijane w tej tabeli i rozwinięty w innych tabelach wirtualnych.
 
-| pk_int | Wartość |
+| pk_int | Value |
 | --- | --- |
 | 1 |"przykład: wartość 1" |
 | 3 |"przykład value 3" |

@@ -14,18 +14,20 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 9cbdfe957587977b01bc46b46818856f789f46d8
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 78c64786f523aa424e8a9816e42db70e2a2997c2
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393614"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798467"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Samouczek: Używanie dynamicznej konfiguracji w aplikacji platformy ASP.NET Core
 
-Platforma ASP.NET Core ma system podłączanych konfiguracji, który może odczytać dane konfiguracyjne z różnych źródeł. Może obsługiwać zmiany na bieżąco bez powodowania ponowne uruchomienie aplikacji. Platforma ASP.NET Core obsługuje wiązania ustawienia konfiguracji do silnie typizowanej klasy .NET. Jego wprowadza je w kodzie za pomocą różnych `IOptions<T>` wzorców. Jedną z tych wzorców w szczególności `IOptionsSnapshot<T>`powoduje automatyczne ponowne załadowanie konfiguracji aplikacji, po zmianie danych bazowych.
+Platforma ASP.NET Core ma system podłączanych konfiguracji, który może odczytać dane konfiguracyjne z różnych źródeł. Może obsługiwać zmiany na bieżąco bez powodowania ponowne uruchomienie aplikacji. Platforma ASP.NET Core obsługuje wiązania ustawienia konfiguracji do silnie typizowanej klasy .NET. Jego wprowadza je w kodzie za pomocą różnych `IOptions<T>` wzorców. Jedną z tych wzorców w szczególności `IOptionsSnapshot<T>`powoduje automatyczne ponowne załadowanie konfiguracji aplikacji, po zmianie danych bazowych. Wzorzec `IOptionsSnapshot<T>` możesz wprowadzać do kontrolerów w aplikacji, aby uzyskiwać dostęp do najnowszej konfiguracji przechowywanej w usłudze Azure App Configuration.
 
-Wzorzec `IOptionsSnapshot<T>` możesz wprowadzać do kontrolerów w aplikacji, aby uzyskiwać dostęp do najnowszej konfiguracji przechowywanej w usłudze Azure App Configuration. Możesz również skonfigurować biblioteki klienta aplikacji konfiguracji platformy ASP.NET Core, stale monitorować i pobrać wszelkie zmiany w konfiguracji sklepu z aplikacjami. Należy zdefiniować okresowe interwał sondowania.
+Możesz też skonfigurować biblioteki klienta aplikacji konfiguracji platformy ASP.NET Core można odświeżyć zestaw ustawień konfiguracji dynamicznie za pomocą oprogramowania pośredniczącego. Tak długo, jak aplikacja sieci web w dalszym ciągu otrzymywać żądania, ustawienia konfiguracji w dalszym ciągu zostaje zaktualizowana za pomocą magazynu konfiguracji.
+
+Aby zachować ustawienia zostały zaktualizowane i unikaj zbyt wielu wywołań do magazynu konfiguracji, pamięć podręczna jest używana dla każdego ustawienia. Dopóki wartość ustawienia w pamięci podręcznej wygasł, operacja odświeżania nie aktualizuje wartości, nawet wtedy, gdy wartość została zmieniona w magazynie konfiguracji. Domyślny czas wygaśnięcia dla każdego żądania jest 30 sekund, ale może zostać zastąpiona, jeśli jest to wymagane.
 
 W tym samouczku pokazano, jak zaimplementować dynamiczne aktualizacje konfiguracji w swoim kodzie. Opiera się on na aplikacji internetowej wprowadzonej w przewodnikach Szybki start. Przed kontynuowaniem należy zakończyć [tworzenie aplikacji platformy ASP.NET Core z konfiguracji aplikacji](./quickstart-aspnet-core-app.md) pierwszy.
 
@@ -45,7 +47,7 @@ Aby skorzystać z tego samouczka, należy zainstalować [zestawu .NET Core SDK](
 
 ## <a name="reload-data-from-app-configuration"></a>Ponowne ładowanie danych z usługi App Configuration
 
-1. Otwórz *Program.cs*i zaktualizuj `CreateWebHostBuilder` metody, dodając `config.AddAzureAppConfiguration()` metody.
+1. Otwórz *Program.cs*i zaktualizuj `CreateWebHostBuilder` metody w celu dodania `config.AddAzureAppConfiguration()` metody.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -53,19 +55,22 @@ Aby skorzystać z tego samouczka, należy zainstalować [zestawu .NET Core SDK](
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 var settings = config.Build();
+
                 config.AddAzureAppConfiguration(options =>
+                {
                     options.Connect(settings["ConnectionStrings:AppConfig"])
-                           .Watch("TestApp:Settings:BackgroundColor")
-                           .Watch("TestApp:Settings:FontColor")
-                           .Watch("TestApp:Settings:Message"));
+                           .ConfigureRefresh(refresh =>
+                           {
+                               refresh.Register("TestApp:Settings:BackgroundColor")
+                                      .Register("TestApp:Settings:FontColor")
+                                      .Register("TestApp:Settings:Message")
+                           });
+                }
             })
             .UseStartup<Startup>();
     ```
 
-    Drugi parametr w `.Watch` metodą jest interwał sondowania, jaką Biblioteka klienta ASP.NET zapytania konfiguracji sklepu z aplikacjami. Biblioteka klienta sprawdza, czy ustawienie określonej konfiguracji, aby zobaczyć, czy każda zmiana wystąpił.
-    
-    > [!NOTE]
-    > Interwał sondowania domyślne `Watch` — metoda rozszerzenia jest 30 sekund, jeśli nie zostanie określony.
+    `ConfigureRefresh` Metoda jest używana do określenia ustawień, używane do aktualizowania danych konfiguracji z magazynu konfiguracji aplikacji, po wyzwoleniu operacji odświeżania. Aby rzeczywiście zainicjuje operację odświeżania, oprogramowanie pośredniczące odświeżania musi zostać skonfigurowany dla aplikacji odświeżyć dane konfiguracji, po wystąpieniu wszelkie zmiany.
 
 2. Dodaj plik *Settings.cs*, który definiuje i implementuje nową klasę `Settings`.
 
@@ -98,6 +103,21 @@ Aby skorzystać z tego samouczka, należy zainstalować [zestawu .NET Core SDK](
         services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
     }
     ```
+
+4. Aktualizacja `Configure` metody w celu dodania oprogramowaniu pośredniczącym, aby umożliwić ustawienia konfiguracji zarejestrowany dla Odśwież, aby być aktualizowane, gdy aplikacja internetowa ASP.NET Core w dalszym ciągu otrzymywać żądania.
+
+    ```csharp
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    {
+        app.UseAzureAppConfiguration();
+        app.UseMvc();
+    }
+    ```
+    
+    Oprogramowanie pośredniczące korzysta z konfiguracji odświeżanie określony w `AddAzureAppConfiguration` method in Class metoda `Program.cs` wyzwalanie odświeżania dla każdego żądania odebranego przez aplikację internetową platformy ASP.NET Core. Dla każdego żądania jest wyzwalany, operacja odświeżania i biblioteki klienckiej sprawdza, jeśli wartość w pamięci podręcznej dla ustawień konfiguracji zarejestrowanych wygasły. Dla pamięci podręcznej wartości, które wygasły wartości ustawień są aktualizowane przy użyciu magazynu konfiguracji aplikacji, a pozostałe wartości pozostają niezmienione.
+    
+    > [!NOTE]
+    > Domyślny czas wygaśnięcia pamięci podręcznej ustawienie konfiguracji to 30 sekund, ale może być zastąpiona przez wywołanie metody `SetCacheExpiration` metody w inicjatorze opcje przekazywany jako argument do `ConfigureRefresh` metody.
 
 ## <a name="use-the-latest-configuration-data"></a>Używanie najnowszych danych konfiguracji
 
@@ -177,9 +197,12 @@ Aby skorzystać z tego samouczka, należy zainstalować [zestawu .NET Core SDK](
     | TestAppSettings:FontColor | lightGray |
     | TestAppSettings:Message | Dane z usługi Azure App Configuration — teraz z aktualizacjami na żywo! |
 
-6. Odśwież stronę przeglądarki, aby zobaczyć nowe ustawienia konfiguracji.
+6. Odśwież stronę przeglądarki, aby zobaczyć nowe ustawienia konfiguracji. Więcej niż jednego odświeżenia strony przeglądarki może wymagać zmiany zostaną odzwierciedlone.
 
     ![Lokalne odświeżanie aplikacji z przewodnika Szybki start](./media/quickstarts/aspnet-core-app-launch-local-after.png)
+    
+    > [!NOTE]
+    > Ponieważ ustawienia konfiguracji są buforowane, domyślny czas wygaśnięcia równej 30 sekund, wszelkie zmiany wprowadzone do ustawienia w konfiguracji sklepu byłyby tylko widoczne w aplikacji sieci web po pamięci podręcznej wygasł.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

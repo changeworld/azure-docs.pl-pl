@@ -4,16 +4,19 @@ description: Ponowne hostowanie za pomocą programowania fokus Micro obciążeń
 services: virtual-machines-linux
 documentationcenter: ''
 author: njray
+ms.author: edprice
 manager: edprice
 editor: edprice
+ms.topic: conceptual
+ms.date: 05/29/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 45d6f8606c665d78783f987c2f2b49a77801639c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: de4bdcb14aa1b5aa1f757da7be4db7d93dd13ff0
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304615"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620299"
 ---
 # <a name="install-micro-focus-enterprise-server-40-and-enterprise-developer-40-on-azure"></a>Instalowanie Micro Focus Enterprise Server w wersji 4.0 i Enterprise, Developer 4.0 na platformie Azure
 
@@ -116,7 +119,7 @@ Po zakończeniu instalacji upewnij się sprawdzić, czy są dodatkowych aktualiz
 
 Po załadowaniu Enterprise Developer, zakończeniu wdrożenia środowiska deweloperskie i testowe Micro skoncentrować się na platformie Azure!
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Konfigurowanie aplikacji pokazowej Bank](./demo.md)
 - [Uruchom serwer przedsiębiorstwa w kontenerach platformy Docker](./run-enterprise-server-container.md)

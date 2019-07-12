@@ -2,24 +2,25 @@
 title: Wdrażanie usługi Azure Security Center dla modułu usługi IoT Edge | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej o sposobie wdrażania usługi Azure Security Center dla agenta zabezpieczeń IoT w usłudze IoT Edge.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: 32a9564d-16fd-4b0d-9618-7d78d614ce76
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/1/2019
 ms.author: mlottner
-ms.openlocfilehash: 85e342f08e5402e50e5b0dfd1fe2df90337f29ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 49ed4c6515f8fb63c3331b05e1bb29b13985e6b3
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66254294"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618317"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Wdrażanie modułu zabezpieczeń, na urządzeniu usługi IoT Edge
 
@@ -103,7 +104,7 @@ Istnieją trzy kroki, aby utworzyć wdrożenie usługi IoT Edge dla Centrum zabe
       }
       ```
 
-1. Kliknij pozycję **Zapisz**.
+1. Kliknij polecenie **Zapisz**.
 1. Przewiń w dół kartę, a następnie wybierz pozycję **skonfiguruj zaawansowane ustawienia środowiska uruchomieniowego Edge**.
    
    >[!Note]
@@ -130,7 +131,7 @@ Istnieją trzy kroki, aby utworzyć wdrożenie usługi IoT Edge dla Centrum zabe
     }
     ```
       
-1. Kliknij pozycję **Zapisz**.
+1. Kliknij polecenie **Zapisz**.
    
 1. Kliknij przycisk **Dalej**.
 

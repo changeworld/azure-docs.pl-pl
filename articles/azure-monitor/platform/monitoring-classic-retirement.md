@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: fb7821b07e68459cb3d76812a12e85387b9f0f52
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 28dba8af059e24040abb254dd4ecd8e336d8221d
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295099"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594299"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Ujednolicone alerty i monitorowanie w usłudze Azure Monitor zastępuje klasycznego alerty i monitorowanie
 
@@ -40,7 +40,7 @@ Nowe ujednolicone monitorowanie i alerty dla usługi Application Insights będzi
 - **Application Insights platformy metryki** — która generuje dane pomiarowe popularnych wstępnie utworzone z produktu usługi Application Insights. Aby uzyskać więcej informacji znajduje się w artykule na temat korzystania z [platformy metryki dla usługi Application Insights na nowej usługi Azure Monitor](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics).
 - **Test sieci Web i Application Insights dostępności** — które zapewnia możliwość oceny czasu odpowiedzi i dostępność aplikacji sieci web lub serwera. Aby uzyskać więcej informacji znajduje się w artykule na temat korzystania z [testy dostępności oraz alerty dotyczące usługi Application Insights na nowej usługi Azure Monitor](../../azure-monitor/app/monitor-web-app-availability.md).
 - **Metryki niestandardowe Insights aplikacji** — które pozwala określić i wyemituj własnych metryk monitorowania i alertów. Aby uzyskać więcej informacji znajduje się w artykule na temat korzystania z [metryki niestandardowe dla usługi Application Insights na nowej usługi Azure Monitor](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation).
-- **Application Insights anomalie w zakresie błędów (część wykrywania inteligentnego)** — które automatycznie powiadamia, w czasie zbliżonym do rzeczywistego Jeśli nietypowy wzrost liczba nieudanych żądań HTTP lub wywołania zależności aplikacji sieci web. Application Insights anomalie w zakresie błędów (część wykrywania inteligentnego) jako część nowej usługi Azure Monitor będzie wkrótce dostępna, a następnie zaktualizujemy ten dokument wraz z łączami w następnej iteracji zgodnie z jego jest przedstawiana w poziomie w najbliższych miesiącach.
+- **Application Insights anomalie w zakresie błędów (część wykrywania inteligentnego)** — które automatycznie powiadamia, w czasie zbliżonym do rzeczywistego Jeśli nietypowy wzrost liczba nieudanych żądań HTTP lub wywołania zależności aplikacji sieci web. Aby uzyskać więcej informacji znajduje się w artykule na temat korzystania z [wykrywanie inteligentne — anomalie w zakresie błędów](https://docs.microsoft.com/azure/azure-monitor/app/proactive-failure-diagnostics).
 
 ## <a name="unified-metrics-and-alerts-for-other-azure-resources"></a>Ujednolicone metryki i alerty dotyczące innych zasobów platformy Azure
 
@@ -84,7 +84,7 @@ Ponadto następujące będą naliczane w ramach mieszczący [cennik usługi Azur
 Ten artykuł będzie stale aktualizowana przy użyciu łącza i szczegóły dotyczące nowa platforma Azure monitorowanie i alerty, funkcje, jak również dostępność narzędzia do świadczenia użytkownikom pomocy w przyjmowaniu na nową platformę Azure Monitor.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się więcej o [nowe, ujednolicone usługi Azure Monitor](../../azure-monitor/overview.md).
 * Dowiedz się więcej o nowym [Azure Alerts](../../azure-monitor/platform/alerts-overview.md).

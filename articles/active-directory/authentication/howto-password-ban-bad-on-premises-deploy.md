@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 134ab2a5f0b1b1569cdf4747f5bbe3f895ba4e8f
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 8487f82b123b42f9d6a6f0fbd6d6cbb240bf9fdc
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67293014"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785526"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Wdrażanie ochrony haseł w usłudze Azure AD
 
@@ -44,7 +44,7 @@ Po ta funkcja działa w trybie inspekcji odpowiednim czasie, można przełącza�
    > Wdrożenie usługi serwera proxy jest wymagane do wdrażania ochrona za pomocą hasła usługi Azure AD, nawet jeśli kontroler domeny może mieć wychodzących bezpośrednie połączenie z Internetem. 
    >
 * Wszystkie komputery z zainstalowaną usługę serwera Proxy ochrony haseł usługi Azure AD musi mieć zainstalowane programu .NET 4.7.
-  .NET 4.7 powinno być już zainstalowane na serwerze systemu Windows w pełni zaktualizowany. Jeśli nie jest tak, Pobierz i uruchom Instalator znalazł w [Instalator w trybie offline programu .NET Framework 4.7 dla Windows](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
+  .NET 4.7 powinno być już zainstalowane na serwerze systemu Windows w pełni zaktualizowany. Jeśli nie jest tak, Pobierz i uruchom Instalator znalazł w [Instalator w trybie offline programu .NET Framework 4.7 dla Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
 * Wszystkie maszyny, tym przez kontrolery domen, które zawierają zainstalowania składników ochrony haseł usługi Azure AD musi mieć zainstalowane uniwersalnego środowiska uruchomieniowego C. Środowisko uruchomieniowe można uzyskać, upewniając się, że masz wszystkie aktualizacje z witryny Windows Update. Lub możesz pobrać go w pakiecie aktualizacji specyficznych dla systemu operacyjnego. Aby uzyskać więcej informacji, zobacz [aktualizacji dla uniwersalnego środowiska uruchomieniowego c. w Windows](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows).
 * Sieci musi istnieć łączność między co najmniej jeden kontroler domeny w każdej domenie i co najmniej jeden serwer hostujący usługę serwera proxy ochrony hasłem. To połączenie musi zezwalać na kontrolerze domeny, aby uzyskiwać dostęp do punktu końcowego usługi RPC, mapowania portu 135 protokołów i port serwera RPC na usługę serwera proxy. Domyślnie przez port serwera RPC jest dynamicznego portu RPC, ale mogą być konfigurowane do [korzystanie z portu statycznego](#static).
 * Wszystkie komputery obsługujące usługę serwera proxy musi mieć dostęp do następujących punktów końcowych sieci:

@@ -2,17 +2,17 @@
 title: Tworzenie woluminu statyczne zasobników w usłudze Azure Kubernetes Service (AKS)
 description: Dowiedz się, jak ręcznie utworzyć wolumin z dyskami platformy Azure do użytku z programem zasobnik w usłudze Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.author: iainfou
-ms.openlocfilehash: b166f70186b063782fb2c2245e351d6dfca6f978
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 9017c8cf721fbb9c493dc18da769b9d6e83ddf05
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072155"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616136"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Ręcznie utworzyć i korzystać z woluminu z dyskami platformy Azure w usłudze Azure Kubernetes Service (AKS)
 
@@ -25,15 +25,15 @@ Aby uzyskać więcej informacji na woluminach Kubernetes, zobacz [opcji magazynu
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W tym artykule założono, że masz istniejący klaster usługi AKS. Jeśli potrzebujesz klastra AKS, zobacz Przewodnik Szybki Start usługi AKS [przy użyciu wiersza polecenia platformy Azure] [ aks-quickstart-cli] lub [przy użyciu witryny Azure portal][aks-quickstart-portal].
+W tym artykule założono, że masz istniejący klaster usługi AKS. Jeśli potrzebujesz klastra AKS, zobacz Przewodnik Szybki Start usługi AKS [przy użyciu wiersza polecenia platformy Azure][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
 
-Możesz również muszą wiersza polecenia platformy Azure w wersji 2.0.59 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie przeprowadzenie instalacji lub uaktualnienia, zobacz  [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
+Możesz również muszą wiersza polecenia platformy Azure w wersji 2.0.59 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli potrzebujesz instalacja lub uaktualnienie, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj][install-azure-cli].
 
 ## <a name="create-an-azure-disk"></a>Tworzenie dysku platformy Azure
 
 Podczas tworzenia dysku platformy Azure do użycia za pomocą usługi AKS, można utworzyć zasobu dysku w **węzła** grupy zasobów. Takie podejście umożliwia klastra AKS dostępu i zarządzanie zasobu dysku. Jeśli zamiast tego utworzyć dysk w oddzielnej grupie zasobów, należy udzielić uprawnień jednostki usługi Azure Kubernetes Service (AKS) dla klastra `Contributor` roli do grupy zasobów na dysku.
 
-W tym artykule należy utworzyć dysku w węźle grupy zasobów. Najpierw Uzyskaj nazwę grupy zasobów za pomocą [az aks show] [ az-aks-show] polecenie i Dodaj `--query nodeResourceGroup` parametr zapytania. Poniższy przykład pobiera węzeł grupy zasobów dla nazwy klastra AKS *myAKSCluster* w polu Nazwa grupy zasobów *myResourceGroup*:
+W tym artykule należy utworzyć dysku w węźle grupy zasobów. Najpierw Uzyskaj nazwę grupy zasobów za pomocą [az aks show][az-aks-show] polecenie i Dodaj `--query nodeResourceGroup` parametr zapytania. Poniższy przykład pobiera węzeł grupy zasobów dla nazwy klastra AKS *myAKSCluster* w polu Nazwa grupy zasobów *myResourceGroup*:
 
 ```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -41,7 +41,7 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-Teraz Utwórz dysk za pomocą [tworzenia dysku az] [ az-disk-create] polecenia. Określ nazwę grupy zasobów węzła, takich jak uzyskane w poprzednim poleceniu, a następnie nazwę zasobu dyskowego *myAKSDisk*. Poniższy przykład tworzy *20*GiB dysku i dane wyjściowe identyfikator dysku, po utworzeniu. Jeśli musisz utworzyć dysku do użycia z kontenerami systemu Windows Server (obecnie dostępna w wersji zapoznawczej w usłudze AKS), należy dodać `--os-type windows` parametru, aby poprawnie sformatować dysk.
+Teraz Utwórz dysk za pomocą [tworzenia dysku az][az-disk-create] polecenia. Określ nazwę grupy zasobów węzła, takich jak uzyskane w poprzednim poleceniu, a następnie nazwę zasobu dyskowego *myAKSDisk*. Poniższy przykład tworzy *20*GiB dysku i dane wyjściowe identyfikator dysku, po utworzeniu. Jeśli musisz utworzyć dysku do użycia z kontenerami systemu Windows Server (obecnie dostępna w wersji zapoznawczej w usłudze AKS), należy dodać `--os-type windows` parametru, aby poprawnie sformatować dysk.
 
 ```azurecli-interactive
 az disk create \
@@ -124,7 +124,7 @@ Events:
 [...]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Najlepsze rozwiązania dotyczące skojarzone, zobacz [najlepsze rozwiązania dotyczące magazynu i kopii zapasowych w usłudze AKS][operator-best-practices-storage].
 

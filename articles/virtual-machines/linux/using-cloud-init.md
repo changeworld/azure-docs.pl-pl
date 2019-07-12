@@ -4,7 +4,7 @@ description: Omówienie funkcji pakietu cloud-init w systemie Microsoft Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: rickstercdn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 195c22cd-4629-4582-9ee3-9749493f1d72
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 377ad49ae3a5ae0f61cd0fd93b68dd817d617397
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 057f7c42c037dac4cb2be686df09287de7113f0d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050822"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67695384"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Pakiet cloud-init obsługę maszyn wirtualnych na platformie Azure
 W tym artykule opisano obsługę, która istnieje dla [pakietu cloud-init](https://cloudinit.readthedocs.io) Aby skonfigurować maszynę wirtualną (VM) lub maszyn wirtualnych zestawów skalowania (zestawu skalowania maszyn wirtualnych) na inicjowanie obsługi administracyjnej czas na platformie Azure. Skrypty te pakietu cloud-init są uruchamiane podczas pierwszego rozruchu po zasoby zostały udostępnione przez platformę Azure.  
@@ -94,7 +94,7 @@ Gdy maszyna wirtualna została aprowizowana, pakietu cloud-init zostanie uruchom
 
 Aby uzyskać więcej szczegółów dotyczących rejestrowania pakietu cloud-init, dotyczą [dokumentacji pakietu cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/logging.html) 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Przykłady pakietu cloud-init zmian konfiguracji na ten temat można znaleźć w następujących dokumentach:
  
 - [Dodaj dodatkowe użytkownika w systemie Linux do maszyny Wirtualnej](cloudinit-add-user.md)

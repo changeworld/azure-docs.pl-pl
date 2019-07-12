@@ -4,7 +4,7 @@ description: Dowiedz się, jak otworzyć port / utworzyć punkt końcowy do masz
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: f7cf0319-5ee7-435e-8f94-c484bf5ee6f1
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: cac17403425f53593d4f48692b4216a92c8624e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf85bfd8be146cb599ced61eaa2126ee9e12538b
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61481755"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723076"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Jak otworzyć porty do maszyny wirtualnej w witrynie Azure portal
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -82,7 +82,7 @@ Polecenie opisane w tym artykule umożliwiają szybkie rozpoczęcie ruch przepł
 
 Dla aplikacji sieci web o wysokiej dostępności należy rozważyć umieszczenie maszyny wirtualne za modułem równoważenia obciążenia platformy Azure. Moduł równoważenia obciążenia dystrybuuje ruch do maszyn wirtualnych z sieciową grupą zabezpieczeń, która pozwala na filtrowanie ruchu sieciowego. Aby uzyskać więcej informacji, zobacz [Równoważenie obciążenia maszyn wirtualnych Windows na platformie Azure do utworzenia aplikacji o wysokiej dostępności](tutorial-load-balancer.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym artykule utworzono sieciową grupę zabezpieczeń, utworzyć regułę ruchu przychodzącego, która zezwala na ruch HTTP na porcie 80, a następnie skojarzone z tą regułą z podsiecią. 
 
 Można znaleźć informacje dotyczące tworzenia środowisk bardziej szczegółowe w następujących artykułach:

@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 9b7bc043c748000f03a98a28f856299527015388
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e7a049c8def0a5014aeb8a0e7a16aaa8def28009
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66397825"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705695"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Użyj odwołania do usługi Key Vault dla usługi App Service i Azure Functions (wersja zapoznawcza)
 
@@ -38,6 +38,8 @@ Aby przeczytać wpisy tajne z magazynu Key Vault, musisz mieć utworzony magazyn
    > Usługa Key Vault odwołuje się do aktualnie tylko przypisana przez system obsługi tożsamości zarządzanej. Nie można używać tożsamości przypisanych przez użytkownika.
 
 1. Tworzenie [zasady w usłudze Key Vault dostępu](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) tożsamości aplikacji została utworzona wcześniej. Włącz uprawnienie wpisu tajnego "Get" te zasady. Nie należy konfigurować "uprawnienia aplikacji" lub `applicationId` ustawienia, ponieważ nie jest zgodny z tożsamości zarządzanej.
+
+    Udzielanie dostępu do aplikacji tożsamości w usłudze key vault jest to jednorazowa operacja i pozostaną takie same dla wszystkich subskrypcji platformy Azure. Służy on do wdrożenia dowolną liczbę certyfikatów, jak chcesz. 
 
 ## <a name="reference-syntax"></a>Składnia odwołania
 

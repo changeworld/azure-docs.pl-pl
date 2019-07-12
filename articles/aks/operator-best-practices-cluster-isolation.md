@@ -2,17 +2,17 @@
 title: Operator najlepsze rozwiązania — izolacja klastra usługi Kubernetes w usłudze Azure (AKS)
 description: Poznaj klastra operator najlepsze rozwiązania dotyczące izolacji w usłudze Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: iainfou
-ms.openlocfilehash: 94aaa72497a8a5f171d6b42f59a3c5b507c71492
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mlearned
+ms.openlocfilehash: 8150e184f0c7533d5a6e7e4847bf126206f5e6c6
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60465310"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614929"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące izolacji klastra w usłudze Azure Kubernetes Service (AKS)
 
@@ -26,7 +26,7 @@ Najlepsze rozwiązania dotyczące tej koncentruje się na izolację operatorów 
 
 ## <a name="design-clusters-for-multi-tenancy"></a>Klastry projektu dla wielu dzierżawców
 
-Kubernetes zapewnia funkcje, które pozwalają logicznie izolowania zespołów i obciążeń w tym samym klastrze. Celem powinno być zapewnienie najmniejszej liczby uprawnień, zakres zasobów, każdy zespół potrzebuje. A [Namespace] [ k8s-namespaces] w usłudze Kubernetes tworzy granicę izolacji logicznej. Funkcje dodatkowe usługi kubernetes i zagadnienia dotyczące izolacji i wielodostępność obejmują następujące obszary:
+Kubernetes zapewnia funkcje, które pozwalają logicznie izolowania zespołów i obciążeń w tym samym klastrze. Celem powinno być zapewnienie najmniejszej liczby uprawnień, zakres zasobów, każdy zespół potrzebuje. A [Namespace][k8s-namespaces] w usłudze Kubernetes tworzy granicę izolacji logicznej. Funkcje dodatkowe usługi kubernetes i zagadnienia dotyczące izolacji i wielodostępność obejmują następujące obszary:
 
 * **Planowanie** obejmuje korzystanie z podstawowych funkcji takich jak limity przydziałów zasobów i budżetu przerw w działaniu zasobników. Aby uzyskać więcej informacji o tych funkcjach, zobacz [najlepsze rozwiązania dotyczące harmonogramu podstawowe funkcje w usłudze AKS][aks-best-practices-scheduler].
   * Bardziej zaawansowane funkcje usługi scheduler obejmują, nasłonecznieniem i tolerations, selektory węzła i koligacji węzła i zasobnika lub konfiguracji zapobiegającej koligacji. Aby uzyskać więcej informacji o tych funkcjach, zobacz [najlepsze rozwiązania dotyczące harmonogramu zaawansowanych funkcji w usłudze AKS][aks-best-practices-advanced-scheduler].
@@ -38,7 +38,7 @@ Kubernetes zapewnia funkcje, które pozwalają logicznie izolowania zespołów i
 
 **Najważniejsze wskazówki** — stosowana jest izolacja logiczna do oddzielenia zespołów i projektów. Należy zminimalizować liczbę fizycznych klastrów AKS wdrażanie do izolowania aplikacji lub zespołów.
 
-Za pomocą izolacji logicznej pojedynczy klaster AKS może służyć do wielu obciążeń, zespoły lub środowisk. Kubernetes [przestrzenie nazw] [ k8s-namespaces] stanowią granicę izolacji logicznej, w przypadku obciążeń i zasobów.
+Za pomocą izolacji logicznej pojedynczy klaster AKS może służyć do wielu obciążeń, zespoły lub środowisk. Kubernetes [przestrzenie nazw][k8s-namespaces] stanowią granicę izolacji logicznej, w przypadku obciążeń i zasobów.
 
 ![Izolacji logicznej klastra Kubernetes w usłudze AKS](media/operator-best-practices-cluster-isolation/logical-isolation.png)
 
@@ -56,7 +56,7 @@ Typowym rozwiązaniem w przypadku izolacji klastra ma używać fizycznie oddziel
 
 Fizycznie oddzielnymi klastrami zazwyczaj ma pod niskiej gęstości. Każdy zespół lub Obciążenie ma swoje własne klastra AKS, klaster często jest nadmiernie aprowizowane przy użyciu zasobów obliczeniowych. Często niewielka liczba zasobników jest zaplanowane w ramach tych węzłów. Nieużywane miejsce na węzłach nie można używać dla aplikacji lub usług w rozwoju przez inne zespoły. Te zasoby nadmiarowe przyczyniają się do dodatkowych kosztów w fizycznie oddzielnymi klastrami.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Ten artykuł koncentruje się na izolację klastra. Aby uzyskać więcej informacji na temat operacji klastra w usłudze AKS zobacz poniższe najlepsze rozwiązania:
 

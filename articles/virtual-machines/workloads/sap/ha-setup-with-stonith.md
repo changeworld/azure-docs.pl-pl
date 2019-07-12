@@ -4,7 +4,7 @@ description: Nawiązania wysokiej dostępności dla oprogramowania SAP HANA na p
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3ef1656a7e8a66092de3050a8f14c5b38e0e2e6c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c7cbec63cb04075977c167d8b21bf3128e91434f
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62123573"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710056"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Wysoka dostępność skonfigurowane w systemie SUSE przy użyciu pomocą metody STONITH
 Ten dokument zawiera szczegółowe instrukcje krok po kroku, aby skonfigurować wysoką dostępność w systemie SUSE działających za pomocą urządzenia pomocą metody STONITH.

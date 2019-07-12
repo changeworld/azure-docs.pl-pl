@@ -4,7 +4,7 @@ description: Architektura wysokiej dostępności i scenariusze SAP NetWeaver na 
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 01/21/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 37f5040585681a53743fb3426b7f7ffac36de51c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f6c329a2b50c946e873391db431c1cd5ff30ab4f
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60936275"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709083"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Architektura wysokiej dostępności i scenariusze SAP NetWeaver
 
@@ -250,11 +250,11 @@ SAP wysokiej dostępności na platformie Azure można podzielić na trzy typy:
 
 * **Wysoka dostępność aplikacji SAP**: 
 
-    Aby osiągnąć pełną SAP system wysokiej dostępności, należy włączyć ochronę wszystkich krytycznych składników systemu SAP. Na przykład:
+    Aby osiągnąć pełną SAP system wysokiej dostępności, należy włączyć ochronę wszystkich krytycznych składników systemu SAP. Przykład:
     * Nadmiarowe serwery aplikacji SAP.
     * Unikatowe składniki. Przykładem może być pojedynczym punktem awarii (SPOF) składnika, takiego jak wystąpienie SAP ASCS/SCS lub system zarządzania bazy danych (DBMS).
 
-SAP wysokiej dostępności na platformie Azure różni się od SAP wysokiej dostępności w lokalnym środowisku fizycznym lub wirtualnym. Poniższy dokument [oprogramowanie SAP NetWeaver wysoką dostępność i ciągłość działania w środowiskach wirtualnych programu VMware i funkcji Hyper-V w systemie Microsoft Windows] [ sap-ha-bc-virtual-env-hyperv-vmware-white-paper] w tym artykule opisano standardowy SAP o wysokiej dostępności konfiguracje w środowiskach zwirtualizowanych na Windows.
+SAP wysokiej dostępności na platformie Azure różni się od SAP wysokiej dostępności w lokalnym środowisku fizycznym lub wirtualnym. Poniższy dokument [oprogramowanie SAP NetWeaver wysoką dostępność i ciągłość działania w środowiskach wirtualnych programu VMware i funkcji Hyper-V w systemie Microsoft Windows][sap-ha-bc-virtual-env-hyperv-vmware-white-paper] w tym artykule opisano standardowe konfiguracje wysokiej dostępności rozwiązań SAP w zwirtualizowanych środowiska na Windows.
 
 Brak konfiguracji o wysokiej dostępności SAP zintegrowane sapinst dla systemu Linux, ponieważ ma dla Windows. Aby uzyskać informacji na temat SAP o wysokiej dostępności w środowisku lokalnym dla systemu Linux, zobacz [informacji o partnerze wysokiej dostępności][sap-ha-partner-information].
 
@@ -359,7 +359,7 @@ Należy umieścić wszystkie maszyny wirtualne, które ustawione wystąpień ser
 * Wszystkie maszyny wirtualne są częścią tej samej domenie aktualizacji.  
     Domena aktualizacji gwarantuje, że maszyny wirtualne nie zostaną zaktualizowane w tym samym czasie podczas planowanej konserwacji przestojów.
 
-    Podstawowe funkcje, która opiera się na różnych aktualizacji i domen błędów w jednostce skalowania na platformie Azure, już została wprowadzona w systemie [domeny aktualizacji] [ planning-guide-3.2.2] sekcji.
+    Podstawowe funkcje, która opiera się na różnych aktualizacji i domen błędów w jednostce skalowania na platformie Azure, już została wprowadzona w systemie [domeny aktualizacji][planning-guide-3.2.2] sekcji.
 
 * Wszystkie maszyny wirtualne są częścią tej samej domenie błędów.  
     Domena błędów gwarantuje, że maszyny wirtualne są wdrażane tak, aby żadnego pojedynczego punktu awarii wpływa na dostępność maszyn wirtualnych.
@@ -373,7 +373,7 @@ Jeśli wdrożono kilka wystąpień serwera aplikacji SAP w ich dedykowanych masz
 
 Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępnością maszyn wirtualnych Windows na platformie Azure][azure-virtual-machines-manage-availability].
 
-Aby uzyskać więcej informacji, zobacz [zestawami dostępności platformy Azure] [ planning-guide-3.2.3] części maszyn wirtualnych platformy Azure planowania i implementacji dla oprogramowania SAP NetWeaver dokumentu.
+Aby uzyskać więcej informacji, zobacz [zestawami dostępności platformy Azure][planning-guide-3.2.3] części maszyn wirtualnych platformy Azure planowania i implementacji dla oprogramowania SAP NetWeaver dokumentu.
 
 **Tylko dyski niezarządzane:** Ponieważ konto usługi Azure storage jest potencjalnym pojedynczym punktem awarii, należy mieć co najmniej dwa konta magazynu platformy Azure, w których co najmniej dwie maszyny wirtualne są rozproszone. W idealnym konfiguracji dysków w każdej maszyny wirtualnej, na którym jest uruchomione wystąpienie okna dialogowego SAP będzie można wdrożyć w innego konta magazynu.
 
@@ -396,7 +396,7 @@ Aby chronić wystąpienie SAP ASCS/SCS, można użyć rozwiązania usługi WSFC.
 
 > ![Linux][Logo_Linux] Linux
 > 
-> Aby uzyskać więcej informacji na temat klastrów wystąpienia SAP ASCS/SCS przy użyciu struktury klastra z systemem SLES zobacz [wysoką dostępność środowiska SAP NetWeaver na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server dla aplikacji SAP] [ sap-suse-ascs-ha]. Alternatywne architektury wysokiej dostępności w systemie SLES, który nie wymaga o wysokiej dostępności systemu plików NFS, zobacz [przewodnika o wysokiej dostępności dla oprogramowania SAP NetWeaver w systemie SUSE Linux Enterprise Server za pomocą usługi Azure Files NetApp dla aplikacji SAP] [ sap-suse-ascs-ha-anf].
+> Aby uzyskać więcej informacji na temat klastrów wystąpienia SAP ASCS/SCS przy użyciu struktury klastra z systemem SLES zobacz [wysoką dostępność środowiska SAP NetWeaver na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server dla aplikacji SAP][sap-suse-ascs-ha]. For alternative HA architecture on SLES, which doesn't require highly available NFS see [High-availability guide for SAP NetWeaver on SUSE Linux Enterprise Server with Azure NetApp Files for SAP applications][sap-suse-ascs-ha-anf].
 
 Aby uzyskać więcej informacji o klastrach wystąpienia SAP ASCS/SCS przy użyciu struktury klastra firmy Red Hat, zobacz [wysoką dostępność maszyn wirtualnych platformy Azure dla oprogramowania SAP NetWeaver w systemie Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)
 

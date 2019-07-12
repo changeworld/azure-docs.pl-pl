@@ -8,19 +8,19 @@ writer: zhchia
 manager: beatrizd-msft
 ms.assetid: na
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
-ms.author: v-ant
-ms.openlocfilehash: 4e028429ca8a22915eff2b90ca63c6d05a67741b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: jeedes
+ms.openlocfilehash: f168e2746afa278880ad7ceb21f78666151d5aa1
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64692235"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672704"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie chmury Atlassian dla automatycznej aprowizacji użytkowników
 
@@ -123,7 +123,7 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
 
     ![Atlassian aprowizacji w chmurze](./media/atlassian-cloud-provisioning-tutorial/notification.png)
 
-9. Kliknij pozycję **Zapisz**.
+9. Kliknij polecenie **Zapisz**.
 
 10. W obszarze **mapowania** zaznacz **synchronizacji Azure użytkownicy usługi Active Directory w chmurze Atlassian**.
 
@@ -170,7 +170,7 @@ Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienn
 * [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Dowiedz się, jak przeglądać dzienniki i Uzyskaj raporty dotyczące inicjowania obsługi administracyjnej działania](../manage-apps/check-status-user-account-provisioning.md)
 

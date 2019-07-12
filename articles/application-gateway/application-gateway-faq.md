@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 6/1/2019
 ms.author: victorh
-ms.openlocfilehash: 25779cd62f70df41a7734d2f8097504923dcb3a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 71f1beb68171613fe926ba4d87a13ef58cac1edf
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66430873"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655271"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Często zadawane pytania na temat usługi Application Gateway
 
@@ -45,7 +45,7 @@ Zobacz [Obsługa protokołu HTTP/2](https://docs.microsoft.com/azure/application
 
 ### <a name="what-resources-are-supported-as-part-of-a-backend-pool"></a>Jakie zasoby są obsługiwane w ramach puli wewnętrznej bazy danych?
 
-Zobacz [obsługiwanych zasobów zaplecza](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#backend-pool).
+Zobacz [obsługiwanych zasobów zaplecza](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#backend-pools).
 
 ### <a name="in-what-regions-is-application-gateway-available"></a>W jakich regionach jest dostępna usługa Application Gateway?
 
@@ -362,6 +362,6 @@ Można również użyć szablonu usługi Resource Manager, która jest instalowa
 
 Zazwyczaj zobaczysz nieznany stan podczas dostępu do wewnętrznej bazy danych jest blokowany przez sieciową grupę zabezpieczeń (NSG), niestandardowe DNS lub routingu zdefiniowanego przez użytkownika (UDR) w podsieci bramy aplikacji. Aby uzyskać więcej informacji, zobacz [zaplecza kondycji, rejestrowanie diagnostyczne i metryki dla usługi Application Gateway](application-gateway-diagnostics.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się więcej na temat usługi Application Gateway, zobacz [co to jest Azure Application Gateway?](overview.md).

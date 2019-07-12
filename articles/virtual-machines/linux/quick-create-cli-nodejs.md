@@ -4,7 +4,7 @@ description: Tworzenie maszyny Wirtualnej z systemem Linux na platformie Azure p
 services: virtual-machines-linux
 documentationcenter: ''
 author: vlivech
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: facb1115-2b4e-4ef3-9905-330e42beb686
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2016
 ms.author: v-livech
-ms.openlocfilehash: 569e90c7908ce435689a80f7917b20275703f537
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a757e156d48eb27a9e4d9b38cb08d5417f1e35b6
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61473743"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671072"
 ---
 # <a name="create-a-linux-vm-using-the-azure-classic-cli"></a>Tworzenie maszyny Wirtualnej systemu Linux przy użyciu platformy Azure klasyczny interfejs wiersza polecenia
 

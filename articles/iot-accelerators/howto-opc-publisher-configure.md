@@ -5,15 +5,15 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 06/10/2019
 ms.topic: overview
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: d262c83b0ae886806b8c4bce2375ffc10ad22c75
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: bccab4dde5e17ec30a0b8c5e36dd78bdd1bdff93
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450758"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605722"
 ---
 # <a name="configure-opc-publisher"></a>Konfigurowanie wydawcy OPC
 
@@ -378,6 +378,6 @@ Składnia plik konfiguracji jest w następujący sposób:
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Teraz wyjaśniono sposób konfigurowania wydawca OPC, sugerowane następnym krokiem jest Dowiedz się, jak [Uruchom wydawca OPC](howto-opc-publisher-run.md).

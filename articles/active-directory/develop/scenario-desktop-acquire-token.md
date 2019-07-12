@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecf5b874345a94e8fd3d3a0783f8e48c7484377d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d84801d6368bcc29f08145f190c2a07c64050ced
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111258"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795101"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Aplikacja klasyczna, która wywołuje interfejsy API — w sieci web uzyskać token
 
@@ -293,8 +293,9 @@ Można również uzyskać token, podając nazwę użytkownika i hasło. Ten prze
 
 Ten przepływ jest **niezalecane** ponieważ monitowania użytkownika o ich hasła aplikacji nie jest bezpieczne. Aby uzyskać więcej informacji na temat tego problemu, zobacz [w tym artykule](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). Preferowany przepływ w celu uzyskania tokenu w trybie dyskretnym na komputerach przyłączonych do domeny Windows jest [zintegrowane uwierzytelnianie Windows](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication). W przeciwnym razie możesz również użyć [przepływ kodu urządzenia](https://aka.ms/msal-net-device-code-flow)
 
+> [!NOTE] 
 > Mimo że jest to przydatne w niektórych przypadkach (scenariuszy DevOps), jeśli chcesz użyć nazwy użytkownika i hasła w interakcyjnych scenariuszy, w którym udostępniać swoje onw interfejsu użytkownika, należy tak naprawdę rozważać jak przenieść poza. Przy użyciu nazwy użytkownika i hasła możesz są zapewniając telefoniczny kilka rzeczy:
-
+>
 > - podstawowe dzierżaw nowoczesnych tożsamości: hasło pobiera połowy, odtworzyć. Ponieważ mamy tę koncepcję udziału klucz tajny, który może zostać przechwycona.
 > Jest to niezgodne z bez hasła.
 > - Użytkownicy, którzy muszą przeprowadzić uwierzytelnianie wieloskładnikowe nie będzie mógł zalogować (zgodnie z nie zachodzi żadna interakcja)
@@ -651,7 +652,7 @@ Klasy i interfejsy, zaangażowany w pamięci podręcznej tokenu serializacji są
 > [!IMPORTANT]
 > Platformy MSAL.NET tworzy token pamięci podręczne i zapewnia `IToken` pamięci podręcznej podczas wywoływania aplikacji `GetUserTokenCache` i `GetAppTokenCache` metody. Nie powinien implementować interfejs samodzielnie. Odpowiedzialność, podczas implementowania serializacji niestandardowej pamięci podręcznej tokenu, jest:
 >
-> - Reagowanie na `BeforeAccess` i `AfterAccess` "miara events". `BeforeAccess` Delegat jest odpowiedzialna deserializować pamięci podręcznej, natomiast `AfterAccess` jeden jest odpowiedzialny za serializacji w pamięci podręcznej.
+> - Reagowanie na `BeforeAccess` i `AfterAccess` "miara events" (lub ich *Async* odpowiednika). `BeforeAccess` Delegat jest odpowiedzialna deserializować pamięci podręcznej, natomiast `AfterAccess` jeden jest odpowiedzialny za serializacji w pamięci podręcznej.
 > - Części te zdarzenia magazynu lub obiektów blob, które są przekazywane za pośrednictwem argumentu zdarzenia można niezależnie od magazynu, które chcesz załadować.
 
 Strategie różnią się w zależności od Jeśli piszesz serializacji pamięci podręcznej tokenu dla aplikacji klienckiej publiczny (wersja klasyczna) lub aplikacji poufne klienta (sieci web/sieci web aplikacji interfejsu API, aplikacji demona).
@@ -724,6 +725,7 @@ static class TokenCacheHelper
 
 Podgląd produktu jakości tokenu pamięć podręczną opartą na plikach serializatora dla aplikacji klienckich publicznej (dla aplikacji klasycznych, systemem Windows, Mac i linux) jest dostępny z [Microsoft.Identity.Client.Extensions.Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal) Biblioteka typu open source. Można dołączyć go w swoich aplikacjach z następujący pakiet nuget: [Microsoft.Identity.Client.Extensions.Msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/).
 
+> [!NOTE]
 > Wykluczenie. Biblioteka Microsoft.Identity.Client.Extensions.Msal jest rozszerzeniem za pośrednictwem platformy MSAL.NET. Klasy w tych bibliotek mogą przedostają się do platformy MSAL.NET w przyszłości, bez zmian lub z ostatniej zmiany.
 
 ### <a name="dual-token-cache-serialization-msal-unified-cache--adal-v3"></a>Podwójna pamięci podręcznej tokenu serializacji (pamięć podręczną biblioteki MSAL unified + biblioteki ADAL V3)
@@ -875,7 +877,7 @@ namespace CommonCacheMsalV3
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Wywoływanie interfejsu web API z aplikacji klasycznej](scenario-desktop-call-api.md)

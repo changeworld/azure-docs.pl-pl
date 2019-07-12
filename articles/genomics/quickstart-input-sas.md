@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
-ms.openlocfilehash: 7c51a0934457a2fcc03f9be1535712e97ac91a1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 833067f53f53f347ce091a64702d44a78cde836f
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60781214"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657098"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>Przesyłanie przepływu pracy do usługi Microsoft Genomics przy użyciu sygnatury dostępu współdzielonego zamiast klucza konta magazynu 
 
@@ -58,7 +58,7 @@ Zakres sygnatury dostępu współdzielonego dla plików wejściowych powinien by
 
 ### <a name="set-up-create-a-sas-programmatically"></a>Konfiguracja: Programistyczne tworzenie sygnatury dostępu Współdzielonego
 
-Aby utworzyć sygnaturę dostępu współdzielonego przy użyciu zestawu SDK usługi Azure Storage, zapoznaj się z istniejącą dokumentacją w kilku językach, w tym [.NET](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2#generate-a-shared-access-signature-uri-for-a-blob), [Python](https://docs.microsoft.com/azure/storage/blobs/storage-python-how-to-use-blob-storage) i [Node.js](https://docs.microsoft.com/azure/storage/blobs/storage-nodejs-how-to-use-blob-storage). 
+Aby utworzyć sygnaturę dostępu współdzielonego przy użyciu zestawu SDK usługi Azure Storage, zapoznaj się z istniejącą dokumentacją w kilku językach, w tym [.NET](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1), [Python](https://docs.microsoft.com/azure/storage/blobs/storage-python-how-to-use-blob-storage) i [Node.js](https://docs.microsoft.com/azure/storage/blobs/storage-nodejs-how-to-use-blob-storage). 
 
 Aby utworzyć sygnaturę dostępu współdzielonego bez używania zestawu SDK, ciąg zapytania sygnatury dostępu współdzielonego może zostać bezpośrednio utworzony i zawierać wszystkie informacje wymagane do uwierzytelniania takiej sygnatury. W tych [instrukcjach](https://docs.microsoft.com/rest/api/storageservices/constructing-a-service-sas) szczegółowo opisano składniki ciągu zapytania sygnatury dostępu współdzielonego oraz sposób jego tworzenia. Wymagana sygnatura dostępu współdzielonego jest tworzona przez generowanie elementu HMAC przy użyciu informacji o uwierzytelnianiu obiektu blob/kontenera w sposób opisany w ramach tych [instrukcji](https://docs.microsoft.com/rest/api/storageservices/service-sas-examples).
 
@@ -85,5 +85,5 @@ W tym przypadku użyj klienta języka Python usługi Microsoft Genomics, aby prz
 msgen submit -f [full path to your config file] 
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym artykule użyto tokenów sygnatur dostępu współdzielonego zamiast kluczy magazynu do przesłania przepływu pracy do usługi Microsoft Genomics za pośrednictwem klienta języka Python `msgen`. Aby uzyskać dodatkowe informacje o przesyłaniu przepływów pracy i innych poleceniach, których możesz użyć wraz z usługą Microsoft Genomics, zobacz [często zadawane pytania](frequently-asked-questions-genomics.md). 

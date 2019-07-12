@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: f60236163cd88822c384bd356a1770d616639174
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d52e0e1093668a65e76bd6600329619240aee182
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596629"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612588"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Przekazywanie plików z urządzenia do chmury za pomocą usługi IoT Hub
 
@@ -22,16 +22,16 @@ ms.locfileid: "65596629"
 
 Ten samouczek opiera się na kodzie w [wysyłanie komunikatów z chmury do urządzeń z usługą IoT Hub](iot-hub-node-node-c2d.md) samouczka, aby dowiesz się, jak używać [pliku przekazywania możliwościami usługi IoT Hub](iot-hub-devguide-file-upload.md) można przekazać pliku do [obiektów blob platformy Azure Magazyn](../storage/index.yml). Ten samouczek przedstawia sposób wykonania następujących czynności:
 
-- Bezpiecznie przekazać urządzenia z systemem Azure identyfikator URI obiektu blob przekazywania pliku.
-- 
-- Powiadomienia przekazywania pliku usługi IoT Hub umożliwia wyzwalanie przetwarzania pliku w aplikacji zaplecza.
+* Bezpiecznie przekazać urządzenia z systemem Azure identyfikator URI obiektu blob przekazywania pliku.
 
-[Rozpoczynanie pracy z usługą IoT Hub](quickstart-send-telemetry-node.md) samouczku przedstawiono podstawowe funkcje obsługi komunikatów urządzenia do chmury usługi IoT Hub. Jednak w niektórych scenariuszach nie pozwala na łatwe mapowanie danych wysyłanych przez urządzenia do stosunkowo mały wiadomości urządzenia do chmury, które akceptuje usługi IoT Hub. Na przykład:
+* Powiadomienia przekazywania pliku usługi IoT Hub umożliwia wyzwalanie przetwarzania pliku w aplikacji zaplecza.
 
-*  Duże pliki, które zawierają obrazy
-*  Filmy wideo
-*  Wibracje danych próbkowania o wysokiej częstotliwości
-*  Pewnego rodzaju wstępnie przetworzone dane.
+[Wysyłanie danych telemetrycznych z urządzenia do usługi IoT hub](quickstart-send-telemetry-node.md) Przewodnik Szybki Start przedstawia podstawowe funkcje obsługi komunikatów urządzenia do chmury usługi IoT Hub. Jednak w niektórych scenariuszach nie pozwala na łatwe mapowanie danych wysyłanych przez urządzenia do stosunkowo mały wiadomości urządzenia do chmury, które akceptuje usługi IoT Hub. Na przykład:
+
+* Duże pliki, które zawierają obrazy
+* Wideo
+* Wibracje danych próbkowania o wysokiej częstotliwości
+* Pewnego rodzaju wstępnie przetworzone dane.
 
 Te pliki to typowo wsadowego przetwarzania w chmurze przy użyciu narzędzi takich jak [usługi Azure Data Factory](../data-factory/introduction.md) lub [Hadoop](../hdinsight/index.yml) stosu. Gdy zachodzi potrzeba wyżynne plików z urządzenia, można nadal używać zabezpieczeń i niezawodności usługi IoT Hub.
 
@@ -212,10 +212,12 @@ Aby wyświetlić przekazany plik w kontenerze magazynu, które zostały skonfigu
 
 ![Przekazany plik](./media/iot-hub-node-node-file-upload/uploaded-file.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono sposób użycia funkcji przekazywania plików usługi IoT Hub można uproszczenie przekazywania plików z urządzeń. Możesz kontynuować poznawanie funkcji Centrum IoT i scenariusze z następujących artykułów:
 
-*  [Programistyczne tworzenie Centrum IoT hub](iot-hub-rm-template-powershell.md)
-*  [Wprowadzenie do zestawu SDK języka C](iot-hub-device-sdk-c-intro.md)
-*  [Zestawy SDK usługi Azure IoT](iot-hub-devguide-sdks.md)
+* [Programistyczne tworzenie Centrum IoT hub](iot-hub-rm-template-powershell.md)
+
+* [Wprowadzenie do zestawu SDK języka C](iot-hub-device-sdk-c-intro.md)
+
+* [Zestawy SDK usługi Azure IoT](iot-hub-devguide-sdks.md)

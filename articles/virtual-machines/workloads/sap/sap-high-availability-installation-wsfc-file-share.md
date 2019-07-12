@@ -4,7 +4,7 @@ description: SAP NetWeaver instalacji o wysokiej dostępności na Windows trybu 
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 95cde28bc4789346aabd58b5f7b543e1bbc989c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0efb1ec30430a69563c61de667ad2568f2679a1b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357692"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708976"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Zainstaluj oprogramowanie SAP NetWeaver wysokiej dostępności na Windows trybu failover klastra i udział plików dla wystąpień SAP ASCS/SCS na platformie Azure
 
@@ -291,7 +291,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 ## <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance"></a>Utwórz nazwę hosta wirtualnego klastrowanego wystąpienia SAP ASCS/SCS
 
-Tworzenie nazwy sieciowej klastra SAP ASCS/SCS (na przykład **pr1-ascs [10.0.6.7]** ), zgodnie z opisem w [Utwórz nazwę hosta wirtualnego klastrowanego wystąpienia SAP ASCS/SCS] [ sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host] .
+Tworzenie nazwy sieciowej klastra SAP ASCS/SCS (na przykład **pr1-ascs [10.0.6.7]** ), zgodnie z opisem w [Utwórz nazwę hosta wirtualnego klastrowanego wystąpienia SAP ASCS/SCS][sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host].
 
 
 ## <a name="install-an-ascsscs-and-ers-instances-in-the-cluster"></a>Instalowanie wystąpienia ASCS/SCS i Wywołujących w klastrze
@@ -333,7 +333,7 @@ Zakończ instalację systemu SAP, instalując:
 * Podstawowy serwer aplikacji SAP.
 * Dodatkowy serwer aplikacji SAP.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Instalowanie wystąpienia ASCS/SCS w klastrze trybu failover z dysków — oficjalny SAP wytyczne dotyczące udziału plików o wysokiej dostępności][sap-official-ha-file-share-document]
 

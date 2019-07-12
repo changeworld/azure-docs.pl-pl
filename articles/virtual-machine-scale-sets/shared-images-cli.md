@@ -14,14 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/06/2019
-ms.author: akjosh; cynthn
+ms.author: akjosh
+ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: c002e7c107c4dcbcd7eeff9579fae6893483392e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 166e859f8ddd080ec8e44cf9647e1c8687b12b2c
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66156162"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621501"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-cli-20"></a>Tworzenie i używanie udostępnianych obrazów dla zestawów skalowania maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0
 
@@ -59,7 +60,7 @@ az group delete --name myResourceGroup --no-wait --yes
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Można również utworzyć zasób galerii obrazów udostępnione za pomocą szablonów. Dostępnych jest kilka szablonów szybkiego startu platformy Azure: 
 

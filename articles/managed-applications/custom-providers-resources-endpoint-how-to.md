@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
-ms.openlocfilehash: b94d59b55a62797e142768dc84ec499d714bd067
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: a3cd1fe69a0d99f9faf3a451f76a3a420d713711
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67479020"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795217"
 ---
 # <a name="adding-custom-resources-to-azure-rest-api"></a>Dodawanie zasobów niestandardowych do interfejsu API REST platformy Azure
 
@@ -185,7 +185,8 @@ customResourceName | *Tak* | Nazwa zasobu niestandardowego.
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Omówienie usługi Azure Resource niestandardowych dostawców](./custom-providers-overview.md)
-- [Samouczek: Tworzenie niestandardowego dostawcy zasobów platformy Azure i wdrażanie zasobów niestandardowych](./create-custom-provider.md)
+- [Szybki start: Tworzenie niestandardowego dostawcy zasobów platformy Azure i wdrażanie zasobów niestandardowych](./create-custom-provider.md)
+- [Samouczek: Tworzenie akcji niestandardowych i zasobów na platformie Azure](./tutorial-custom-providers-101.md)
 - [Instrukcje: Dodawanie akcji niestandardowych do interfejsu API REST platformy Azure](./custom-providers-action-endpoint-how-to.md)
 - [Odwołanie: Odwołanie do zasobu niestandardowego serwera Proxy](./custom-providers-proxy-resource-endpoint-reference.md)
 - [Odwołanie: Odwołanie do pamięci podręcznej zasobów niestandardowych](./custom-providers-proxy-cache-resource-endpoint-reference.md)

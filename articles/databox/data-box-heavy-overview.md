@@ -5,28 +5,27 @@ services: databox
 documentationcenter: NA
 author: alkohli
 ms.service: databox
-ms.subservice: pod
+ms.subservice: heavy
 ms.topic: overview
-ms.date: 06/19/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 94ba0040b1de7e1f03825f1cd2ef2a6536343d96
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 0f4657cdd71a104ca111f62a6e9757b5a33b46e8
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67271746"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592300"
 ---
-# <a name="what-is-azure-data-box-heavy-preview"></a>Czym jest Azure Data Box Heavy? (wersja zapoznawcza)
+# <a name="what-is-azure-data-box-heavy"></a>Czym jest Azure Data Box Heavy?
 
 Duże pole danych platformy Azure pozwala na wysyłanie setki terabajtów danych na platformę Azure w szybki, niedrogi i niezawodny sposób. Dane są przesyłane do platformy Azure przez wysyłanie duże pole danych urządzenia z pojemnością magazynu 1 PB, wypełnij ze swoimi danymi i wysłać do firmy Microsoft. Urządzenie ma rugged wielkości liter do ochrony i zabezpieczanie danych podczas przesyłania.
 
-Duże pole danych jest obecnie w wersji zapoznawczej. Zarejestruj się, aby poprosić o dodanie do urządzenia za pośrednictwem witryny Azure portal. Gdy urządzenia są odbierane w centrum danych, skonfigurować go przy użyciu lokalnego Interfejsu w przeglądarce. Skopiuj dane z serwerów na urządzenie, a następnie wyślij urządzenie z powrotem do centrum danych platformy Azure. W centrum danych platformy Azure Twoje dane są przekazywane do kont usługi Azure Storage. Możesz śledzić cały proces end-to-end w witrynie Azure portal.
+Gdy urządzenia są odbierane w centrum danych, skonfigurować go przy użyciu lokalnego Interfejsu w przeglądarce. Skopiuj dane z serwerów na urządzenie, a następnie wyślij urządzenie z powrotem do centrum danych platformy Azure. W centrum danych platformy Azure Twoje dane są przekazywane do kont usługi Azure Storage. Możesz śledzić cały proces end-to-end w witrynie Azure portal.
 
 
 > [!IMPORTANT]
-> - Rozwiązanie Data Box Heavy jest dostępne w wersji zapoznawczej. Przed wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-> - Aby zamówić urządzenie, zarejestruj się w [portalu w wersji zapoznawczej](https://aka.ms/azuredatabox).
-> - W okresie obowiązywania wersji zapoznawczej rozwiązanie Data Box Heavy może być wysyłane do klientów w Stanach Zjednoczonych i Unii Europejskiej. Aby uzyskać więcej informacji, przejdź do tematu [Dostępność regionalna](#region-availability).
+> - Aby zażądać urządzenia, zarejestruj się w [witryny Azure portal](https://portal.azure.com).
+
 
 ## <a name="use-cases"></a>Przypadki zastosowań
 
@@ -115,25 +114,14 @@ Aby uzyskać najbardziej aktualne informacje na temat dostępności region dla d
 
 ## <a name="sign-up"></a>Rejestrowanie
 
-Rozwiązanie Data Box Heavy jest dostępne w wersji zapoznawczej po wcześniejszym zarejestrowaniu się. Wykonaj poniższe kroki, aby zasubskrybować duże pole danych:
+Wykonaj poniższe kroki, aby zasubskrybować duże pole danych:
 
-1. Zaloguj się do witryny Azure Portal pod adresem https://aka.ms/azuredatabox.
+1. Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 2. Kliknij przycisk **+ Utwórz zasób** do utworzenia nowego zasobu. Wyszukaj **Azure Data Box**. Wybierz usługę **Azure Data Box**.
-
-    <!--![The Data Box Heavy sign up 1]()-->
-
-3. Kliknij pozycję **Utwórz**.
-
-    <!--![The Data Box Heavy sign up 2]()-->
-
-4. Wybierz subskrypcję, w ramach której chcesz używać rozwiązania Data Box Heavy w wersji zapoznawczej. Wybierz region, w którym chcesz wdrożyć zasób rozwiązania Data Box Heavy. W opcji **Data Box Heavy** kliknij pozycję **Zarejestruj się**.
-
-   <!--![The Data Box Heavy sign up 3]()-->
-
+3. Kliknij przycisk **Utwórz**.
+4. Wybierz subskrypcję, dla której chcesz użyć dla dużych pola danych. Wybierz region, w którym chcesz wdrożyć zasób rozwiązania Data Box Heavy. W opcji **Data Box Heavy** kliknij pozycję **Zarejestruj się**.
 5. Odpowiedzi na pytania dotyczące danych częstotliwość transferu docelowej przedziału czasu, kraj/region, w miejscu zamieszkania użytkownika Usługa transferu danych, przepustowość sieci i danych. Przejrzyj zasady ochrony prywatności i warunki i zaznacz pole wyboru obok pozycji Firma Microsoft może używać Twojego adresu e-mail do kontaktu.
 
-    <!--![The Data Box Heavy sign up 4]()-->
-
-Gdy jesteś zarejestrowana i włączona dla wersji zapoznawczej, może zamówić łączność obejmującą duże pole danych.
+Po zarejestrowaniu, może zamówić łączność obejmującą duże pole danych.
 
     

@@ -9,13 +9,14 @@ ms.service: azure-functions
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.author: tyleonha, glenga
-ms.openlocfilehash: 489c94f37b6c88db001dee437cc6ed89383e6053
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: tyleonha
+ms.reviewer: glenga
+ms.openlocfilehash: a75bdaf0e26193a5b2792b52923c085eff89b83f
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442180"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706396"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Przewodnik dewelopera usługi Azure PowerShell funkcji
 
@@ -81,11 +82,11 @@ param($MyFirstInputBinding, $MySecondInputBinding, $TriggerMetadata)
 $TriggerMetadata.sys
 ```
 
-| Właściwość   | Opis                                     | Typ     |
+| Właściwość   | Opis                                     | Type     |
 |------------|-------------------------------------------------|----------|
-| utcNow     | Gdy w formacie UTC, funkcja została wyzwolona        | DateTime |
-| MethodName | Nazwa funkcji, która została wyzwolona     | string   |
-| RandGuid   | Unikatowy identyfikator guid do wykonywania tej funkcji | string   |
+| utcNow     | Gdy w formacie UTC, funkcja została wyzwolona        | Datetime |
+| MethodName | Nazwa funkcji, która została wyzwolona     | ciąg   |
+| RandGuid   | Unikatowy identyfikator guid do wykonywania tej funkcji | ciąg   |
 
 Każdy typ wyzwalacza ma inny zestaw metadanych. Na przykład `$TriggerMetadata` dla `QueueTrigger` zawiera `InsertionTime`, `Id`, `DequeueCount`, między innymi. Aby uzyskać więcej informacji na temat metadanych wyzwalacz kolejki, przejdź do [dokumentacji oficjalnego Usługa wyzwalaczy kolejkowania](functions-bindings-storage-queue.md#trigger---message-metadata). Zapoznaj się z dokumentacją na [wyzwalaczy](functions-triggers-bindings.md) pracujesz z, aby zobaczyć, co teraz wewnątrz metadanych wyzwalacza.
 
@@ -133,9 +134,9 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 Poniżej przedstawiono prawidłowe parametry w celu wywoływania `Push-OutputBinding`:
 
-| Name (Nazwa) | Typ | Pozycja | Opis |
+| Name (Nazwa) | Type | Pozycja | Opis |
 | ---- | ---- |  -------- | ----------- |
-| **`-Name`** | String | 1 | Nazwa powiązania danych wyjściowych chcesz ustawić. |
+| **`-Name`** | Ciąg | 1 | Nazwa powiązania danych wyjściowych chcesz ustawić. |
 | **`-Value`** | Object | 2 | Wartość powiązania danych wyjściowych należy ustawić, który jest akceptowany z potoku ByValue. |
 | **`-Clobber`** | SwitchParameter | o nazwie | (Opcjonalnie) Jeśli zostanie określony, wymusza wartość do ustawienia dla powiązania określonym produktem wyjściowym. | 
 
@@ -283,7 +284,7 @@ Liczba wyzwalaczy i powiązań są dostępne za pomocą aplikacji funkcji. Pełn
 Wszystkich wyzwalaczy i powiązań są reprezentowane jako kilka typów rzeczywiste dane w kodzie:
 
 * Tablica skrótów
-* string
+* ciąg
 * byte[]
 * int
 * double
@@ -302,14 +303,14 @@ HTTP i wyzwalaczy elementu webhook protokołu HTTP wyjściowe i powiązania repr
 
 Obiekt odpowiedzi, który jest przekazywany do skryptu jest typu `HttpRequestContext`, który ma następujące właściwości:
 
-| Właściwość  | Opis                                                    | Typ                      |
+| Właściwość  | Opis                                                    | Type                      |
 |-----------|----------------------------------------------------------------|---------------------------|
 | **`Body`**    | Obiekt, który zawiera treść żądania. `Body` jest serializowany w najlepszy typ na podstawie danych. Na przykład jeśli dane JSON, jest przekazywany w tablicy skrótów. Jeśli danych jest ciągiem, jest przekazywany w postaci ciągu. | object |
 | **`Headers`** | Słownik zawierający nagłówki żądania.                | Dictionary < string, string ><sup>*</sup> |
-| **`Method`** | Metoda HTTP żądania.                                | string                    |
+| **`Method`** | Metoda HTTP żądania.                                | ciąg                    |
 | **`Params`**  | Obiekt zawierający parametry routingu żądania. | Dictionary < string, string ><sup>*</sup> |
 | **`Query`** | Obiekt zawierający parametry zapytania.                  | Dictionary < string, string ><sup>*</sup> |
-| **`Url`** | Adres URL żądania.                                        | string                    |
+| **`Url`** | Adres URL żądania.                                        | ciąg                    |
 
 <sup>*</sup> Wszystkie `Dictionary<string,string>` kluczy jest rozróżniana wielkość liter.
 
@@ -317,10 +318,10 @@ Obiekt odpowiedzi, który jest przekazywany do skryptu jest typu `HttpRequestCon
 
 Obiekt odpowiedzi, który należy wysłać ponownie jest typu `HttpResponseContext`, który ma następujące właściwości:
 
-| Właściwość      | Opis                                                 | Typ                      |
+| Właściwość      | Opis                                                 | Type                      |
 |---------------|-------------------------------------------------------------|---------------------------|
 | **`Body`**  | Obiekt, który zawiera treści odpowiedzi.           | object                    |
-| **`ContentType`** | Krótkie dostępne ustawienia Typ zawartości odpowiedzi. | string                    |
+| **`ContentType`** | Krótkie dostępne ustawienia Typ zawartości odpowiedzi. | ciąg                    |
 | **`Headers`** | Obiekt, który zawiera nagłówki odpowiedzi.               | Słownik lub tablicy skrótów   |
 | **`StatusCode`**  | Kod stanu HTTP odpowiedzi.                       | ciąg lub int             |
 
@@ -602,7 +603,7 @@ Skrypt jest uruchamiany na każdego wywołania. Unikaj używania `Install-Module
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Więcej informacji zawierają następujące zasoby:
+Aby uzyskać więcej informacji, zobacz następujące zasoby:
 
 * [Najlepsze rozwiązania dotyczące usługi Azure Functions](functions-best-practices.md)
 * [Dokumentacja usługi Azure Functions dla deweloperów](functions-reference.md)

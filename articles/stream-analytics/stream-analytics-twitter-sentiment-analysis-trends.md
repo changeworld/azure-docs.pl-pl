@@ -9,12 +9,12 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/29/2017
-ms.openlocfilehash: abb2a89f41340e8e2e26fa36cc20b790341618d0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f24ad348c681609392f83af894bf774dbee226bc
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60763361"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620836"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Analiza tonacji w czasie rzeczywistym usługi Twitter w usłudze Azure Stream Analytics
 
@@ -67,7 +67,7 @@ W tej procedurze należy najpierw utworzyć przestrzeń nazw Centrum zdarzeń, a
 
     ![Blok do tworzenia nowego Centrum zdarzeń](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub.png)
  
-7. Kliknij pozycję **Utwórz**.
+7. Kliknij przycisk **Utwórz**.
 
 
 ### <a name="grant-access-to-the-event-hub"></a>Udzielanie dostępu do Centrum zdarzeń
@@ -85,7 +85,7 @@ Zanim proces może wysyłać dane do Centrum zdarzeń, Centrum zdarzeń musi mie
 
     ![Blok do tworzenia nowych zasad dostępu do Centrum zdarzeń](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-shared-access-policy-manage.png)
  
-4.  Kliknij pozycję **Utwórz**.
+4.  Kliknij przycisk **Utwórz**.
 
 5.  Po wdrożeniu zasad kliknij je na liście zasad dostępu współdzielonego.
 
@@ -206,7 +206,7 @@ Teraz, gdy tweet zdarzenia są przesyłania strumieniowego w czasie rzeczywistym
 
     ![Tworzenie nowego zadania usługi Stream Analytics](./media/stream-analytics-twitter-sentiment-analysis-trends/newjob.png)
 
-3. Kliknij pozycję **Utwórz**.
+3. Kliknij przycisk **Utwórz**.
 
     Zadanie jest tworzone i portalu są wyświetlane szczegóły zadania.
 
@@ -227,14 +227,14 @@ Teraz, gdy tweet zdarzenia są przesyłania strumieniowego w czasie rzeczywistym
 
      ![Utwórz nowe dane wejściowe dla zadania usługi Stream Analytics](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-new-input.png)
 
-3. Kliknij pozycję **Utwórz**.
+3. Kliknij przycisk **Utwórz**.
 
 
 ## <a name="specify-the-job-query"></a>Określ zapytanie zadania
 
-Stream Analytics obsługuje prosty, deklaratywny model zapytań opisujący przekształcenia. Aby dowiedzieć się więcej na temat języka, zobacz [dokumentacja języka zapytań usługi Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn834998.aspx).  Ten samouczek ułatwia tworzenie i testowanie kilka zapytań na danych z usługi Twitter.
+Stream Analytics obsługuje prosty, deklaratywny model zapytań opisujący przekształcenia. Aby dowiedzieć się więcej na temat języka, zobacz [dokumentacja języka zapytań usługi Azure Stream Analytics](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference).  Ten samouczek ułatwia tworzenie i testowanie kilka zapytań na danych z usługi Twitter.
 
-Aby porównać liczbę wzmianki między tematami, można użyć [okno wirowania](https://msdn.microsoft.com/library/azure/dn835055.aspx) można pobrać liczby wzmianki według tematu co pięć sekund.
+Aby porównać liczbę wzmianki między tematami, można użyć [okno wirowania](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) można pobrać liczby wzmianki według tematu co pięć sekund.
 
 1. Zamknij **dane wejściowe** bloku, jeśli jeszcze go.
 
@@ -266,13 +266,13 @@ Aby porównać liczbę wzmianki między tematami, można użyć [okno wirowania]
 
     Jeśli został użyty przez Ciebie `TwitterStream` jako alias dla danych wejściowych, Zastąp aliasu dla `TwitterStream` w zapytaniu.  
 
-    To zapytanie używa **TIMESTAMP BY** — słowo kluczowe, aby określić pole znacznika czasu w ładunku ma być używany do obliczenia danych czasowych. Jeśli to pole nie jest określony, operacja obsługi okien odbywa się na podstawie czasu, który każde zdarzenie dotarła do Centrum zdarzeń. Dowiedz się więcej, zobacz sekcję "Czas nadejścia vs czas aplikacji" [dokumentacja zapytań usługi Stream Analytics](https://msdn.microsoft.com/library/azure/dn834998.aspx).
+    To zapytanie używa **TIMESTAMP BY** — słowo kluczowe, aby określić pole znacznika czasu w ładunku ma być używany do obliczenia danych czasowych. Jeśli to pole nie jest określony, operacja obsługi okien odbywa się na podstawie czasu, który każde zdarzenie dotarła do Centrum zdarzeń. Dowiedz się więcej, zobacz sekcję "Czas nadejścia vs czas aplikacji" [dokumentacja zapytań usługi Stream Analytics](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference).
 
     To zapytanie również uzyskuje dostęp do sygnatury czasowej do końca każdego okna przy użyciu **System.Timestamp** właściwości.
 
 5. Kliknij przycisk **testu**. Uruchamia zapytania względem danych, który pobrano.
     
-6. Kliknij pozycję **Zapisz**. Spowoduje to zapisanie zapytania jako część zadania usługi Stream Analytics. (Nie zostanie on zapisany przykładowych danych).
+6. Kliknij polecenie **Zapisz**. Spowoduje to zapisanie zapytania jako część zadania usługi Stream Analytics. (Nie zostanie on zapisany przykładowych danych).
 
 
 ## <a name="experiment-using-different-fields-from-the-stream"></a>Eksperymentu przy użyciu różnych pól ze strumienia 
@@ -312,7 +312,7 @@ W tym samouczku piszesz zdarzenia zagregowane tweet z zapytania zadania do usłu
     
      ![Blok "Nowe dane wyjściowe" zadania usługi Stream Analytics](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-output-blob-storage.png)
     
-4. Kliknij pozycję **Utwórz**. 
+4. Kliknij przycisk **Utwórz**. 
 
     Platforma Azure utworzy konto magazynu i automatycznie generuje klucz. 
 
@@ -348,7 +348,7 @@ Można użyć narzędzia, takiego jak [Eksploratora usługi Azure Storage](https
 
 ## <a name="create-another-query-to-identify-trending-topics"></a>Utwórz inne zapytanie w celu zidentyfikowania trendów tematów
 
-Inne zapytanie, można użyć, aby zrozumieć opinii w serwisie Twitter jest oparty na [oknie kroczącym](https://msdn.microsoft.com/library/azure/dn835051.aspx). Aby zidentyfikować popularne tematy, możesz wyszukiwać tematy, które przekraczają wartość progową wzmianki w określonym czasie.
+Inne zapytanie, można użyć, aby zrozumieć opinii w serwisie Twitter jest oparty na [oknie kroczącym](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics). Aby zidentyfikować popularne tematy, możesz wyszukiwać tematy, które przekraczają wartość progową wzmianki w określonym czasie.
 
 Do celów tego samouczka możesz sprawdzić tematów, które są wymienione ponad 20 razy w ciągu ostatnich 5 sekund.
 
@@ -365,7 +365,7 @@ Do celów tego samouczka możesz sprawdzić tematów, które są wymienione pona
     HAVING COUNT(*) > 20
     ```
 
-4. Kliknij pozycję **Zapisz**.
+4. Kliknij polecenie **Zapisz**.
 
 5. Upewnij się, że aplikacja TwitterWpfClient jest uruchomiona. 
 
@@ -379,5 +379,5 @@ Aby uzyskać dalszą pomoc, Wypróbuj nasz [forum usługi Azure Stream Analytics
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)
 * [Scale Azure Stream Analytics jobs (Skalowanie zadań usługi Azure Stream Analytics)](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics Query Language Reference (Dokumentacja dotycząca języka zapytań usługi Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure Stream Analytics Query Language Reference (Dokumentacja dotycząca języka zapytań usługi Azure Stream Analytics)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics Management REST API Reference (Dokumentacja interfejsu API REST zarządzania usługą Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn835031.aspx)

@@ -4,7 +4,7 @@ description: Tworzenie i przekazywanie wirtualnego dysku twardego (VHD) na platf
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: a8c7818f-eb65-409e-aa91-ce5ae975c564
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 368fec658dd1f063c45f3d00d42a4549ca9dfd83
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9614614782179f9160aebdc4deca88f067778060
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60771162"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708373"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Przekazywanie i tworzenie maszyny Wirtualnej z systemem Linux z niestandardowego dysku przy użyciu wiersza polecenia platformy Azure
 
@@ -101,7 +101,7 @@ Upewnij się, że masz najnowszy [wiersza polecenia platformy Azure](/cli/azure/
 
 W poniższych przykładach należy zastąpić własnymi wartościami przykładowe nazwy parametru. Przykładowe nazwy parametru uwzględnione `myResourceGroup`, `mystorageaccount`, i `mydisks`.
 
-<a id="prepimage"> </a>
+<a id="prepimage"></a>
 
 ## <a name="prepare-the-disk-to-be-uploaded"></a>Przygotuj dysk do przekazania
 Platforma Azure obsługuje różne dystrybucje systemu Linux (zobacz [dystrybucje zatwierdzone dla](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). Następujące artykuły przeprowadzą Cię przez proces przygotować różne dystrybucje systemu Linux, które są obsługiwane na platformie Azure:
@@ -241,6 +241,6 @@ az group deployment create --resource-group myNewResourceGroup \
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Po przygotować i przekazać niestandardowe wirtualnego dysku, możesz przeczytać więcej na temat [przy użyciu usługi Resource Manager i szablonów](../../azure-resource-manager/resource-group-overview.md). Możesz również chcieć [Dodaj dysk danych](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) do nowych maszyn wirtualnych. Jeśli masz aplikacje uruchomione na maszynach wirtualnych, które chcesz uzyskać dostęp, należy koniecznie [otworzyć porty i punkty końcowe](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bccaa28d34ebff47c7de73a4d9b3d8296ae9fef
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: b01ff1e2d0c9bc926d54bd54716e0579ef395ec0
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476120"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655993"
 ---
 # <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>Sposobu wypełniania określonych pól dla aplikacji niestandardowej
 
@@ -43,7 +43,7 @@ Ten artykuł zawiera krótki opis dostępnych pól w formularzu rejestracji apli
 |------------------|------------------------------------------------------------------------------------------|
 | Name (Nazwa)             | Nazwa aplikacji. Powinien mieć co najmniej cztery znaki.                |
 | Obsługiwane typy konta| Wybierz pozycję konta, które chcesz aplikacji do obsługi: kont w tym katalogu organizacji tylko kont w dowolnym katalogu organizacji i kont w dowolnym katalogu organizacji i osobistych kont Microsoft.  |
-| (Opcjonalnie) identyfikator URI przekierowania | Wybierz typ aplikacji, którą tworzysz **Web** lub **klientem publicznym (mobilnych i klasycznych)** , a następnie wprowadź identyfikator URI przekierowania (lub adres URL odpowiedzi) dla aplikacji. W przypadku aplikacji internetowej podaj podstawowy adres URL aplikacji. Na przykład ciąg http://localhost:31544 może być adresem URL aplikacji internetowej uruchomionej na komputerze lokalnym. Użytkownicy mogą użyć tego adresu URL, aby zalogować się do aplikacji klienta internetowego. W przypadku publicznych aplikacji klienckich podaj identyfikator URI używany przez usługę Azure AD do zwracania odpowiedzi tokenu. Wprowadź wartość specyficzną do aplikacji, takich jak myapp://auth. Aby zobaczyć konkretne przykłady dotyczące aplikacji internetowych lub natywnych, zapoznaj się z [przewodnikami Szybki start](https://docs.microsoft.com/azure/active-directory/develop/#quickstarts).|
+| (Opcjonalnie) identyfikator URI przekierowania | Wybierz typ aplikacji, którą tworzysz **Web** lub **klientem publicznym (mobilnych i klasycznych)** , a następnie wprowadź identyfikator URI przekierowania (lub adres URL odpowiedzi) dla aplikacji. W przypadku aplikacji internetowej podaj podstawowy adres URL aplikacji. Na przykład ciąg http://localhost:31544 może być adresem URL aplikacji internetowej uruchomionej na komputerze lokalnym. Użytkownicy mogą użyć tego adresu URL, aby zalogować się do aplikacji klienta internetowego. W przypadku publicznych aplikacji klienckich podaj identyfikator URI używany przez usługę Azure AD do zwracania odpowiedzi tokenu. Wprowadź wartość specyficzną do aplikacji, takich jak myapp://auth. Aby zobaczyć konkretne przykłady dotyczące aplikacji internetowych lub natywnych, zapoznaj się z [przewodnikami Szybki start](https://docs.microsoft.com/azure/active-directory/develop).|
 
 Po wypełnieniu pól powyżej, aplikacja jest zarejestrowana w witrynie Azure portal, a następnie nastąpi przekierowanie do strony Przegląd aplikacji. Ze strony ustawień w okienku po lewej stronie w obszarze **Zarządzaj** mają więcej pól, którą można dostosować aplikację. W poniższych tabelach opisano wszystkie pola. Byłaby widoczna tylko podzbiór tych pól, w zależności od tego, utworzyć aplikację sieci web lub klientem publicznym.
 

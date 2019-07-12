@@ -4,7 +4,7 @@ description: Przenieś Maszynę wirtualną systemu Linux do innego systemu Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: d635f0a5-4458-4b95-a5f8-eed4f41eb4d4
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: d2d3f36c9b4ee0557f9e060bec762877a94ea637
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c22fe8beea894bccb311a63a1be70c972188e59
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61473952"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667285"
 ---
 # <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>Przenieś Maszynę wirtualną systemu Linux do innej subskrypcji lub grupy zasobów
 W tym artykule przedstawiono sposób przenoszenia maszyny wirtualnej systemu Linux (VM) między grupami zasobów lub subskrypcji. Przenoszenie maszyny Wirtualnej między subskrypcjami może być przydatna, jeśli maszyna wirtualna została utworzona w ramach subskrypcji osobistych i teraz chcesz przenieść je do subskrypcji Twojej firmy.
@@ -71,6 +71,6 @@ Gdy zostanie wyświetlony monit upewnij się, że chcesz przenieść określonyc
 
 [!INCLUDE [virtual-machines-common-move-vm](../../../includes/virtual-machines-common-move-vm.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Wiele różnych typów zasobów można przenosić między grupami zasobów i subskrypcji. Aby uzyskać więcej informacji, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../../resource-group-move-resources.md).    
 

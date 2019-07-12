@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 4ca26c7b8fbfebbce8cfcb9915a7db12e5ad2352
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 82d1114451b677880b0b02234546d9cdb2e743e2
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60337412"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593046"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Omówienie certyfikatów usług Azure Cloud Services
 Certyfikaty są używane na platformie Azure dla usług w chmurze ([usługi certyfikatów](#what-are-service-certificates)) i uwierzytelniania za pomocą interfejsu API zarządzania ([certyfikaty zarządzania](#what-are-management-certificates)). Ten temat zawiera ogólne omówienie oba typy certyfikatów, jak do [tworzenie](#create) i wdrażać je na platformie Azure.
@@ -39,7 +39,7 @@ Możesz przekazać certyfikaty usług na platformie Azure za pomocą witryny Azu
 Certyfikaty usługi może być zarządzany oddzielnie od usług i mogą być zarządzane przez inne osoby. Na przykład deweloper może przekazać pakiet usługi, która odwołuje się do certyfikatu, który jest Menedżer wcześniej został przekazany na platformę Azure. Menedżer IT, można zarządzać i odnawiania certyfikatu (zmienianie konfiguracji usługi) bez konieczności przekazywania nowego pakietu usługi. Aktualizowanie bez nowego pakietu usługi jest możliwe, ponieważ nazwa logiczna nazwa magazynu i lokalizację certyfikatu znajduje się w pliku definicji usługi, i gdy odcisk palca certyfikatu jest określona w pliku konfiguracji usługi. Aby zaktualizować certyfikat, jest tylko niezbędne do przekazania nowego certyfikatu, a następnie zmień wartość odcisku palca w pliku konfiguracji usługi.
 
 >[!Note]
->[Usług w chmurze często zadawane pytania](cloud-services-faq.md) artykuł zawiera pewne przydatne informacje dotyczące certyfikatów.
+>[Cloud Services — często zadawane pytania — Konfiguracja i zarządzanie nim](cloud-services-configuration-and-management-faq.md) artykuł zawiera pewne przydatne informacje dotyczące certyfikatów.
 
 ## <a name="what-are-management-certificates"></a>Co to są certyfikaty zarządzania?
 Certyfikaty zarządzania umożliwiają uwierzytelnianie przy użyciu klasycznego modelu wdrażania. Wiele programów i narzędzi (takich jak Visual Studio lub zestawu SDK platformy Azure) Automatyzuj Konfigurowanie i wdrażanie różnych usług platformy Azure przy użyciu funkcji tych certyfikatów. Te nie są naprawdę związane z usługami w chmurze. 

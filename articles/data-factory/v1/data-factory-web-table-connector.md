@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 81b7bf7c230c66087bf286ebd9369d992e93be90
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5b84e49bac35ef8fc9a6c8c7ca90bfd6048dc1c4
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61250581"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839589"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Przenoszenie danych ze źródła tabeli w sieci Web przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
@@ -56,7 +56,7 @@ Aby użyć tego łącznika Tabela sieci Web, musisz skonfigurować własne środ
 Utworzysz potok z działaniem kopiowania, które przenosi dane z lokalnego magazynu danych Cassandra przy użyciu różnych narzędzi/interfejsów API. 
 
 - Najprostszym sposobem utworzenia potoku jest użycie **kreatora kopiowania**. Zobacz [samouczka: Tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych. 
-- Aby utworzyć potok umożliwia także następujących narzędzi: **Witryna Azure portal**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**i  **Interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. 
+- Aby utworzyć potok umożliwia także następujących narzędzi: **Program Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**, i **interfejsu API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. 
 
 Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródłowych do magazynu danych ujścia:
 
@@ -73,9 +73,9 @@ Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla po
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| type |Właściwość type musi być równa: **Sieć Web** |Tak |
-| Adres URL |Adres URL źródła w sieci Web |Tak |
-| authenticationType |Anonimowe. |Yes |
+| — typ |Właściwość type musi być równa: **Sieć Web** |Tak |
+| url |Adres URL źródła w sieci Web |Tak |
+| authenticationType |Anonimowe. |Tak |
 
 ### <a name="using-anonymous-authentication"></a>Przy użyciu uwierzytelniania anonimowego
 
@@ -101,7 +101,7 @@ Aby uzyskać pełną listę sekcje & właściwości dostępne Definiowanie zesta
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type |Typ zestawu danych. musi być równa **WebTable** |Tak |
+| type |Typ zestawu danych. musi być równa **WebTable** |Yes |
 | path |Względny adres URL do zasobu, który zawiera tabelę. |Nie. Jeśli ścieżka nie zostanie określona, używana jest tylko adres URL, które są określone w definicji połączonej usługi. |
 | index |Indeks tabeli w zasobie. Zobacz [Get indeksu tabeli na stronie HTML](#get-index-of-a-table-in-an-html-page) sekcji instrukcje pobierania indeksu tabeli na stronie HTML. |Yes |
 

@@ -4,7 +4,7 @@ description: Rozmiarów dostępnymi dla maszyn wirtualnych Windows na platformie
 services: virtual-machines-windows
 documentationcenter: ''
 author: jonbeck7
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/11/2019
 ms.author: jonbeck
-ms.openlocfilehash: 57a19b11d7aead6f67f411b75b046a9238cf7c12
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 86725fccba810284677aeb3324839a52c91c3021
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055238"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710199"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>Rozmiarów maszyn wirtualnych zoptymalizowanych pod kątem procesora GPU
 
@@ -44,6 +44,6 @@ Jeśli zdecydujesz się zainstalować sterowniki procesora GPU NVIDIA ręcznie, 
 - [Optymalizacja pod kątem magazynu](sizes-storage.md)
 - [Poprzednie generacje](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Dowiedz się więcej o tym, jak [usługi Azure compute jednostki (ACU)](acu.md) pozwalają porównać wydajności obliczeń w jednostkach SKU platformy Azure.
 

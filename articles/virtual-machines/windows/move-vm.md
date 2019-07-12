@@ -4,7 +4,7 @@ description: Przenieś maszyny Wirtualnej z systemem Windows do innego systemu A
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 4e383427-4aff-4bf3-a0f4-dbff5c6f0c81
@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 07/03/2019
 ms.author: cynthn
-ms.openlocfilehash: d67f9e9ad99ccd6267de9dbb9fd0c64adb41f0cb
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 6b189c4bfcc61084ed197649d376cae8fdf2eb56
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565555"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723091"
 ---
 # <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>Przenoszenie maszyny Wirtualnej z systemem Windows do innego systemu Azure subskrypcji lub grupy zasobów
 W tym artykule przedstawiono sposób przenoszenia Windows maszyny wirtualnej (VM) między grupami zasobów lub subskrypcji. Przenoszenie między subskrypcjami może być przydatna, jeśli pierwotnie utworzono Maszynę wirtualną w ramach subskrypcji osobistych i teraz chcesz przenieść je do subskrypcji w firmie, aby kontynuować pracę. Nie trzeba Uruchom maszynę Wirtualną, aby przenieść go i powinno ono nadal działa podczas przenoszenia.
@@ -56,6 +56,6 @@ Move-AzResource -DestinationSubscriptionId "<myDestinationSubscriptionID>" `
 
 Gdy zostanie wyświetlony monit upewnij się, że chcesz przenieść określonych zasobów, należy wprowadzić **Y** o potwierdzenie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Wiele różnych typów zasobów można przenosić między grupami zasobów i subskrypcji. Aby uzyskać więcej informacji, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../../resource-group-move-resources.md).    
 

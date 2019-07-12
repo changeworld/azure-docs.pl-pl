@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: anroth
-ms.openlocfilehash: fd5e46f47169705b9d19397a6b91770beab229dd
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 28ea62ffa7a2b163b984c089649c1cd99d5e4556
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604072"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827550"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-net-sdk"></a>Szybki start: tworzenie projektu klasyfikacji obrazów przy użyciu zestawu Custom Vision .NET SDK
 
@@ -71,6 +71,7 @@ Obrazy dla tego projektu są dołączone. Są one przywoływane w metodzie **Loa
 Ten kod tworzy pierwszą iteracją w projekcie, a następnie publikuje tej iteracji do endpoint prognoz. Nazwa nadana opublikowanych iteracji może służyć do wysyłania żądań do prognozowania. Iteracji nie jest dostępna w punkcie końcowym prognozowania, dopóki zostanie opublikowany.
 
 ```csharp
+var iteration = trainingApi.TrainProject(project.Id);
 // The returned iteration will be in progress, and can be queried periodically to see when it has completed
 while (iteration.Status == "Training")
 {
@@ -135,7 +136,7 @@ Następnie możesz sprawdzić, czy obraz testowy (znajdujący się w folderze **
 
 [!INCLUDE [clean-ic-project](includes/clean-ic-project.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Teraz wiesz już, jak wykonać każdy krok procesu klasyfikacji obrazów przy użyciu kodu. W tym przykładzie jest wykonywana jedna iteracja szkolenia, ale często trzeba szkolić i testować model wiele razy, aby zwiększyć jego dokładność.
 

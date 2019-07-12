@@ -4,7 +4,7 @@ description: Wdrażanie Windows maszyny wirtualnej rozwiązywania problemów z w
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 4e383427-4aff-4bf3-a0f4-dbff5c6f0c81
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 5752731f08a7dc9ae8661e698aef9655837c6220
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 76841484595b0a8809b8ab10db3199fc8cd28b04
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60593261"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710435"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Rozwiązywanie wdrażanie Windows maszyny wirtualnej na platformie Azure
 
@@ -63,7 +63,7 @@ Dla umowy Enterprise agreement:
 
 • Przekazać niestandardową maszynę Wirtualną i wdrażanie jej za pomocą szablonu usługi Resource Manager lub programu Azure PowerShell.
 
-Więcej informacji zawierają następujące zasoby:
+Aby uzyskać więcej informacji, zobacz następujące zasoby:
 
  - [Omówienie korzyści z używania hybrydowej platformy Azure](https://azure.microsoft.com/pricing/hybrid-use-benefit/)
 
@@ -119,7 +119,7 @@ Wybierz rozmiar, który jest obsługiwany na zestaw dostępności klastra. Zalec
 Tak. Możesz dodać istniejące klasycznej maszyny Wirtualnej do nowego lub istniejącego zestawu dostępności. Aby uzyskać więcej informacji, zobacz [Dodaj istniejącą maszynę wirtualną do zestawu dostępności](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine).
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Jeśli potrzebujesz dodatkowej pomocy w dowolnym momencie, w tym artykule, możesz skontaktować się ze ekspertów platformy Azure na [forów platformy Azure z subskrypcją MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/).
 
 Alternatywnie mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz **uzyskiwanie pomocy technicznej**.

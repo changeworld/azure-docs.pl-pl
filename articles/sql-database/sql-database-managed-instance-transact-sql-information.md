@@ -10,14 +10,14 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 manager: craigg
-ms.date: 03/13/2019
+ms.date: 07/07/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 2ca2e4e98f56f7df5e81217bcda00179f05ff69e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6b0e10ce48088853090958dca9d8c1fad20780e7
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070353"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723261"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Różnice w usługi Azure SQL Database zarządzane wystąpienia języka T-SQL z programu SQL Server
 
@@ -293,13 +293,13 @@ Aby uzyskać więcej informacji, zobacz [ALTER DATABASE](https://docs.microsoft.
   - SQL Server Analysis Services nie są obsługiwane.
 - Powiadomienia są obsługiwane częściowo.
 - Powiadomienie e-mail jest obsługiwany, mimo że wymaga, aby skonfigurować profil poczty bazy danych. Agent programu SQL Server można użyć tylko jeden profil poczty bazy danych, a musi być wywołana `AzureManagedInstance_dbmail_profile`. 
-  - Pagera nie jest obsługiwane. 
+  - Pagera nie jest obsługiwane.
   - NetSend nie jest obsługiwane.
   - Alerty nie są jeszcze obsługiwane.
-  - Serwery proxy nie są obsługiwane. 
+  - Serwery proxy nie są obsługiwane.
 - Dziennik zdarzeń nie jest obsługiwane.
 
-Obecnie następujące funkcje nie są obsługiwane, ale zostaną włączone w przyszłości:
+Obecnie nie są obsługiwane następujące funkcje programu SQL Agent:
 
 - Serwery proxy
 - Planowanie zadań w stanie bezczynności procesora CPU
@@ -398,7 +398,13 @@ Zewnętrzne tabel, które odwołują, plików w systemie plików HDFS lub Azure 
 
 ### <a name="replication"></a>Replikacja
 
-Replikacja jest dostępna w publicznej wersji zapoznawczej dla wystąpienia zarządzanego. Aby uzyskać informacji o replikacji, zobacz [replikacji programu SQL Server](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance).
+[Replikacja transakcyjna](sql-database-managed-instance-transactional-replication.md) jest dostępna w publicznej wersji zapoznawczej na wystąpieniu zarządzanym z pewnymi ograniczeniami:
+- Typy Al uczestników replikacji (wydawcy, dystrybutora, subskrybenta ściągania i wypychania subskrybenta) można umieścić na wystąpieniu zarządzanym, ale wydawcy i dystrybutora nie może być umieszczona w innych wystąpieniach.
+- Typy replikacji transakcji, migawki i dwukierunkowych są obsługiwane. Replikacji scalającej Peer-to-peer i aktualizowalne subskrypcje nie są obsługiwane.
+- Wystąpienie zarządzane mogą komunikować się przy użyciu najnowszych wersjach programu SQL Server. Zobacz obsługiwane wersje [tutaj](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems).
+- Replikacja transakcyjna ma kilka [dodatkowe wymagania sieciowe](sql-database-managed-instance-transactional-replication.md#requirements).
+
+Aby uzyskać informacje dotyczące konfigurowania replikacji, zobacz [samouczek replikacji](replication-with-sql-database-managed-instance.md).
 
 ### <a name="restore-statement"></a>Przywracanie — instrukcja 
 
@@ -459,7 +465,7 @@ Broker usług dla wielu wystąpień nie jest obsługiwane:
 
 ## <a name="Environment"></a>Ograniczenia środowiska
 
-### <a name="subnet"></a>Podsieć
+### <a name="subnet"></a>Subnet
 - W podsieci, zarezerwowane wystąpienia zarządzanego nie można umieścić inne zasoby (na przykład maszyny wirtualne). Umieszczenie tych zasobów w innych podsieciach.
 - Podsieć musi mieć wystarczającą liczbę dostępnych [adresów IP](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Minimalna to 16, chociaż zaleca się mieć co najmniej 32 adresów IP w podsieci.
 - [Punkty końcowe usługi nie może być skojarzony z podsieci wystąpienia zarządzanego](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Upewnij się, wyłączenia opcji punktów końcowych usługi podczas tworzenia sieci wirtualnej.
@@ -486,7 +492,7 @@ Następujące zmienne, funkcje i widoki zwracają różne wyniki:
 
 ### <a name="tempdb-size"></a>Rozmiar bazy danych TEMPDB
 
-Maksymalny rozmiar pliku wynoszący `tempdb` nie może być większa niż 24 GB na każdy rdzeń w warstwie ogólnego przeznaczenia. Maksymalna `tempdb` rozmiar w warstwie krytyczne dla działania firmy jest ograniczone i rozmiar magazynu wystąpienia. `tempdb` Bazy danych zawsze zostanie podzielona na 12 danych plików. Nie można zmienić ten maksymalny rozmiar każdego pliku i nie można dodać nowe pliki do `tempdb`. Niektóre zapytania może zwrócić błąd, gdy potrzebują więcej niż 24 GB na rdzeń procesora w `tempdb`. `tempdb` jest zawsze ponownie tworzona jako pusta baza danych start wystąpienia lub pracy awaryjnej i wszystkie zmiany dokonane w `tempdb` nie zostaną zachowane. 
+Maksymalny rozmiar pliku wynoszący `tempdb` nie może być większa niż 24 GB na każdy rdzeń w warstwie ogólnego przeznaczenia. Maksymalna `tempdb` rozmiar w warstwie krytyczne dla działania firmy jest ograniczone i rozmiar magazynu wystąpienia. `tempdb` rozmiar pliku dziennika jest ograniczona do 120 GB na ogólnego przeznaczenia i krytyczne dla działania firmy warstw. `tempdb` Bazy danych zawsze zostanie podzielona na 12 danych plików. Nie można zmienić ten maksymalny rozmiar każdego pliku i nie można dodać nowe pliki do `tempdb`. Niektóre zapytania może zwrócić błąd, gdy potrzebują więcej niż 24 GB na rdzeń procesora w `tempdb` czy produkują ponad 120 GB dziennika. `tempdb` zawsze jest tworzony ponownie w pustej bazy danych podczas uruchamiania wystąpienia lub pracy awaryjnej i wszystkie zmiany dokonane w `tempdb` nie zostaną zachowane. 
 
 ### <a name="cant-restore-contained-database"></a>Nie można przywrócić zawartej bazy danych
 
@@ -585,6 +591,11 @@ Moduły środowiska CLR, umieszczone w wystąpienia zarządzanego i połączone 
 Nie można wykonać `BACKUP DATABASE ... WITH COPY_ONLY` w bazie danych, która jest szyfrowany przy użyciu zarządzanego przez usługę przezroczystego szyfrowania danych (TDE). Zarządzane przez usługę TDE wymusza szyfrowania z kluczem wewnętrznym TDE kopii zapasowych. Nie można wyeksportować klucza, więc nie można przywrócić kopii zapasowej.
 
 **Obejście:** Użyj automatycznych kopii zapasowych i przywracania w momencie lub [zarządzanych przez klienta (BYOK) TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key) zamiast tego. Można również wyłączyć szyfrowania bazy danych.
+
+### <a name="point-in-time-restore-follows-time-by-the-time-zone-set-on-the-source-instance"></a>W momencie przywracania następuje czasu przez strefy czasowej ustawiony w wystąpieniu źródłowym
+
+W momencie przywracania obecnie interpretuje czasu przywrócić przez następujące strefę czasową w wystąpieniu źródłowym zamiast tego następujące UTC.
+Sprawdź [znane problemy dotyczące strefy czasowej wystąpienia zarządzanego](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone#known-issues) Aby uzyskać więcej informacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

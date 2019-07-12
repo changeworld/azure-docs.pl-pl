@@ -5,19 +5,19 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 07/10/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: fb9dc5116ba23d57c7f2fe543e734759e8bbcc7b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e598cc03a1b7b4999719152540866c7168130e03
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60367651"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807478"
 ---
 # <a name="about-expressroute-direct"></a>Informacje o usłudze ExpressRoute Direct
 
-Bezpośrednio z usługi ExpressRoute zapewnia możliwość łączenia bezpośrednio do globalnej sieci firmy Microsoft w lokalizacji komunikacji równorzędnej, strategicznie rozproszonych na całym świecie. Bezpośrednie ExpressRoute zapewnia łączność podwójną 100 GB, obsługująca łączność aktywny/aktywny na dużą skalę.
+Bezpośrednio z usługi ExpressRoute zapewnia możliwość łączenia bezpośrednio do globalnej sieci firmy Microsoft w lokalizacji komunikacji równorzędnej, strategicznie rozproszonych na całym świecie. Bezpośrednie usługi ExpressRoute zapewnia podwójne 100 GB/s i 10 GB/s łączności, obsługująca łączność aktywny/aktywny na dużą skalę.
 
 Najważniejsze funkcje, które zapewnia usługi ExpressRoute bezpośrednio obejmują, ale nie są ograniczone do:
 
@@ -38,9 +38,9 @@ Przed rozpoczęciem korzystania z usługi ExpressRoute bezpośrednio, musisz zar
 
 | **Przy użyciu dostawcy usługi ExpressRoute** | **Bezpośrednie usługi ExpressRoute** | 
 | --- | --- |
-| Korzysta z dostawców usługi, aby włączyć szybkie dołączania i połączeń z istniejącą infrastrukturą | Wymaga infrastruktury 100-GB/s i pełnego zarządzania wszystkie warstwy
+| Korzysta z dostawców usługi, aby włączyć szybkie dołączania i połączeń z istniejącą infrastrukturą | Wymaga 100 GB/s/10 GB/s, infrastruktury i pełnego zarządzania wszystkie warstwy
 | Integruje się z setkami dostawców sieci Ethernet i MPLS | Bezpośrednie/dedykowana pojemność branżach regulowanych prawnie i pozyskiwania duża ilość danych |
-| Jednostki SKU obwodów z 50 MB/s do 10 GB/s | Klient może wybrać kombinację następujących jednostek SKU obwodu: 5 GB/s, 10 GB/s, 40 GB/s, 100 GB/s - ograniczoną do 200 GB/s łącznie
+| Jednostki SKU obwodów z 50 MB/s do 10 GB/s | Odbiorcy mogą wybrać kombinację obwodu następujących jednostek SKU na 100 GB/s usługi ExpressRoute bezpośrednie: <ul><li>5 Gb/s</li><li>10 Gb/s</li><li>40 GB/s</li><li>100 GB/s</li></ul> Odbiorcy mogą wybrać kombinację obwodu następujących jednostek SKU w ramach 10 GB/s usługi ExpressRoute bezpośrednie:<ul><li>1 Gb/s</li><li>2 Gb/s</li><li>5 Gb/s</li><li>10 Gb/s</li></ul>
 | Zoptymalizowane pod kątem pojedynczej dzierżawy | Zoptymalizowane pod kątem dla dostawców usług w jednej dzierżawy/w chmurze / wielu jednostkach biznesowych
 
 ## <a name="expressroute-direct-circuits"></a>Obwody usługi ExpressRoute bezpośrednio
@@ -53,7 +53,28 @@ Funkcje, które w większości przypadków jest odpowiednikiem obwodów, które 
 
 ## <a name="circuit-skus"></a>Jednostki SKU obwodu
 
-Bezpośrednie ExpressRoute obsługuje scenariuszy pozyskiwania duża ilość danych do usługi Azure storage i innych usług danych big data. Usługi ExpressRoute circuits na bezpośrednio z usługi ExpressRoute teraz również obsługę **40 GB/s** i **100 GB/s** circuit jednostki SKU. Pary fizycznego portu są **100 GB/s** tylko i może zawierać wiele obwodów wirtualnych przy użyciu przepustowości 5 GB/s, 10 GB/s, 40 GB/s, 100 GB/s — maksymalnie 200 GB/s w dowolnej kombinacji. 
+Bezpośrednie ExpressRoute obsługuje scenariuszy pozyskiwania duża ilość danych do usługi Azure storage i innych usług danych big data. Obwody usługi ExpressRoute na 100 GB/s ExpressRoute bezpośrednie teraz obsługują także **40 GB/s** i **100 GB/s** circuit jednostki SKU. Pary fizycznego portu są **100 lub 10 GB/s** tylko i może mieć wiele obwodów wirtualnych. Rozmiary obwodu:
+
+| **100 Gbps ExpressRoute Direct** | **10 Gbps ExpressRoute Direct** | 
+| --- | --- |
+| **Zasubskrybowano przepustowości**: 200 GB/s | **Zasubskrybowano przepustowości**: 20 GB/s |
+| <ul><li>5 Gb/s</li><li>10 Gb/s</li><li>40 GB/s</li><li>100 GB/s</li></ul> | <ul><li>1 Gb/s</li><li>2 Gb/s</li><li>5 Gb/s</li><li>10 Gb/s</li></ul>
+
+## <a name="technical-requirements"></a>Wymagania techniczne
+
+* Interfejsy routera (MSEE) krawędź firmy Microsoft dla przedsiębiorstw:
+    * Podwójnych portów sieci Gigabit Ethernet 10 lub 100 przez parę routera
+    * Pojedynczy Fiber LR tryb łączności
+    * IPv4 i IPv6
+    * IP rozmiar jednostki MTU 1500 bajtów
+
+* Przełącznik/routerem łączność 2/warstwy 3 warstwy:
+    * Musi obsługiwać 1 802.1Q (Dot1Q) tagu lub tagu dwóch (QinQ) 802.1Q tag hermetyzacji
+    * Ethertype = 0x8100
+    * Należy dodać zewnętrzne tagu sieci VLAN (STAG) na podstawie Identyfikatora sieci VLAN, określone przez firmę Microsoft - *dotyczy tylko QinQ*
+    * Musi obsługiwać wiele sesji protokołu BGP (VLAN) na port i urządzenia
+    * Łączność z protokołem IPv4 i IPv6. *W przypadku protokołu IPv6 bez dodatkowych podrzędnych interfejsu zostanie utworzony. Adres IPv6, które zostaną dodane do istniejącego interfejsu podrzędnych*. 
+    * Opcjonalnie: [Dwukierunkowe przesyłanie dalej wykrywania (BFD)](https://docs.microsoft.com/azure/expressroute/expressroute-bfd) pomocy technicznej, które jest skonfigurowane domyślnie na wszystkich prywatnej komunikacji równorzędnej dla obwodów usługi ExpressRoute
 
 ## <a name="vlan-tagging"></a>Znakowanie sieci VLAN
 

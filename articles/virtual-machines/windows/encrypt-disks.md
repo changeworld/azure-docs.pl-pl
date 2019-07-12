@@ -4,7 +4,7 @@ description: Szyfrowanie dysków wirtualnych na maszynie Wirtualnej Windows w ce
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 4ef485bb91fe52e138b805f347e729fc4097fc7c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fadbb4668dbaed46cc30841d2b04a92ea41cd5a1
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66431093"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718670"
 ---
 # <a name="encrypt-virtual-disks-on-a-windows-vm"></a>Szyfrowanie dysków wirtualnych w maszyny Wirtualnej z systemem Windows
 Rozszerzone maszynę wirtualną (VM), zabezpieczeń i zgodności mogą być szyfrowane dyski wirtualne na platformie Azure. Dyski są szyfrowane przy użyciu kluczy kryptograficznych, które są zabezpieczone w usłudze Azure Key Vault. Możesz kontrolować klucze kryptograficzne i przeprowadzać ich inspekcje ich użycie. W tym artykule opisano sposób szyfrowania dysków wirtualnych w maszyny Wirtualnej z systemem Windows przy użyciu programu Azure PowerShell. Możesz również [szyfrowania maszyny Wirtualnej z systemem Linux przy użyciu wiersza polecenia platformy Azure](../linux/encrypt-disks.md).

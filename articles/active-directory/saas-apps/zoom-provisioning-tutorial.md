@@ -8,19 +8,19 @@ writer: zchia
 manager: beatrizd
 ms.assetid: na
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
-ms.author: zchia
-ms.openlocfilehash: ca79b3901e3933e25c5be92673e0c5bcc464782d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.author: jeedes
+ms.openlocfilehash: 0a21a35e6d4a938d41e8bc11cebc1be5738d893e
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67167858"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671001"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie powiększenia do automatycznej aprowizacji użytkowników
 
@@ -130,7 +130,7 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
 
     ![Wiadomość E-mail z powiadomieniem](common/provisioning-notification-email.png)
 
-9. Kliknij pozycję **Zapisz**.
+9. Kliknij polecenie **Zapisz**.
 
 10. W obszarze **mapowania** zaznacz **synchronizacji Azure użytkownicy usługi Active Directory do powiększania**.
 
@@ -167,6 +167,6 @@ Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienn
 * [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Dowiedz się, jak przeglądać dzienniki i Uzyskaj raporty dotyczące inicjowania obsługi administracyjnej działania](../manage-apps/check-status-user-account-provisioning.md)

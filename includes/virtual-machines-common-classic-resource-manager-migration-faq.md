@@ -2,18 +2,18 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: virtual-machines
-author: jpconnock
+author: singhkays
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 05/18/2018
-ms.author: jeconnoc
+ms.author: kasing
 ms.custom: include file
-ms.openlocfilehash: 74496cd3d4cd01be326baae870b075eb923983af
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: c4f9334a91e99c92e74af060d84308a8aaccc6e7
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183206"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671275"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>Często zadawane pytania dotyczące migracji z modelu klasycznego do modelu opartego na usłudze Azure Resource Manager
 
@@ -82,7 +82,7 @@ Problemy i pytania dotyczące migracji można publikować na naszym [forum maszy
 
 ## <a name="what-if-i-dont-like-the-names-of-the-resources-that-the-platform-chose-during-migration"></a>Co zrobić, jeśli nie podobają mi się nazwy zasobów wybrane przez platformę podczas migracji? 
 
-Wszystkie zasoby z nazwami jawnie podanymi w klasycznym modelu wdrażania zostaną zachowane podczas migracji. W niektórych przypadkach zostaną utworzone nowe zasoby. Na przykład dla każdej maszyny wirtualnej zostanie utworzony interfejs sieciowy. Obecnie nie obsługujemy możliwości kontrolowania nazw nowych zasobów tworzonych podczas migracji. Zagłosuj na tę funkcję na [forum opinii platformy Azure](http://feedback.azure.com).
+Wszystkie zasoby z nazwami jawnie podanymi w klasycznym modelu wdrażania zostaną zachowane podczas migracji. W niektórych przypadkach zostaną utworzone nowe zasoby. Na przykład dla każdej maszyny wirtualnej zostanie utworzony interfejs sieciowy. Obecnie nie obsługujemy możliwości kontrolowania nazw nowych zasobów tworzonych podczas migracji. Zagłosuj na tę funkcję na [forum opinii platformy Azure](https://feedback.azure.com).
 
 ## <a name="can-i-migrate-expressroute-circuits-used-across-subscriptions-with-authorization-links"></a>Czy mogę zmigrować obwody usługi ExpressRoute używane w subskrypcjach wraz z łączami autoryzacji? 
 

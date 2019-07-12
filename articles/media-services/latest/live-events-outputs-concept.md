@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/19/2019
 ms.author: juliako
-ms.openlocfilehash: f26467a250314fa8a6fe401f4ec1d6a999b6bb4d
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: a951ebd46335ad4639b8499283ddd30f13edd64e
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296209"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605652"
 ---
 # <a name="live-events-and-live-outputs"></a>Wydarzenia i dane wyjściowe na żywo
 
@@ -142,7 +142,7 @@ Możesz użyć znaczących lub nieznaczących adresów URL.
 
 ## <a name="live-event-preview-url"></a>Adres URL Podglądu zdarzeń na żywo
 
-Gdy **wydarzenie na żywo** rozpoczyna odbieranie wkład źródła danych, można użyć punktu końcowego (wersja zapoznawcza) do wyświetlania podglądu i weryfikowania, przed opublikowaniem Dodatkowo otrzymujesz transmisji strumieniowej na żywo. Po sprawdzeniu, że Podgląd strumienia jest dobra, można użyć wydarzenie na żywo, aby udostępnić transmisji strumieniowej na żywo do dostarczania za pomocą co najmniej jeden (wstępnie utworzone) **punkty końcowe przesyłania strumieniowego**. Aby to osiągnąć, należy utworzyć nową [na żywo dane wyjściowe](https://docs.microsoft.com/rest/api/media/liveoutputs) na **wydarzenie na żywo**. 
+Po uruchomieniu wydarzenie na żywo otrzymujących wkład źródła danych można użyć punktu końcowego (wersja zapoznawcza) do wyświetlania podglądu i weryfikowania, przed opublikowaniem Dodatkowo otrzymujesz transmisji strumieniowej na żywo. Po sprawdzeniu, że Podgląd strumienia jest dobra, można użyć wydarzenie na żywo, aby udostępnić transmisji strumieniowej na żywo do dostarczania za pomocą co najmniej jeden (wstępnie utworzone) punkty końcowe przesyłania strumieniowego. Aby to osiągnąć, należy utworzyć nową [na żywo dane wyjściowe](https://docs.microsoft.com/rest/api/media/liveoutputs) na wydarzenie na żywo. 
 
 > [!IMPORTANT]
 > Upewnij się, że wideo będą przepływać do adresu URL w wersji zapoznawczej przed kontynuowaniem.
@@ -158,11 +158,11 @@ Po przesłaniu strumienia do wydarzenie na żywo, można rozpocząć zdarzenie p
 > [!NOTE]
 > Dane wyjściowe na żywo są uruchamiane w momencie utworzenia i zatrzymywane podczas usuwania. Usunięcie danych wyjściowych na żywo nie powoduje usunięcia bazowego zasobu ani znajdującej się w nim zawartości. 
 
-Relacja między **wydarzenie na żywo** i jego **na żywo dane wyjściowe** jest podobny do tradycyjnego emisji telewizyjnych, według której kanał (**wydarzenie na żywo**) reprezentuje stałą strumień i nagranie wideo (**na żywo dane wyjściowe**) obejmuje zasięgiem segmencie określony czas (na przykład wieczorami wiadomości od 18:30:00 do 19:00:00). Program telewizyjny można rejestrować za pomocą cyfrowego rejestratora wideo (DVR) — równoważna funkcja dla zdarzeń na żywo jest zarządzana za pośrednictwem właściwości **ArchiveWindowLength**. Nadszedł czas przedział czasu ISO 8601 (na przykład PTHH:MM:SS) Określa pojemność DVR, która może być równa z co najmniej 3 minuty maksymalnie 25 godzin.
+Relacja między **wydarzenie na żywo** i jego **na żywo dane wyjściowe** przypomina tradycyjne telewizyjnych, zgodnie z którą kanału (zdarzenie na żywo) reprezentuje stały strumień nagrywanie (na żywo i wideo Dane wyjściowe) obejmuje segment określony czas (na przykład wieczorami wiadomości od 18:30:00 do 19:00:00). Można rejestrować za pomocą cyfrowego rejestratora wideo (DVR) telewizyjnych — funkcji równoważnej zdarzeń na żywo jest zarządzana za pośrednictwem **archiveWindowLength** właściwości. Nadszedł czas przedział czasu ISO 8601 (na przykład PTHH:MM:SS) Określa pojemność DVR, która może być równa z co najmniej 3 minuty maksymalnie 25 godzin.
 
-**Na żywo dane wyjściowe** obiektu przypomina rejestratora taśm, który będzie przechwytywać i zarejestruj transmisji strumieniowej na żywo do elementu zawartości w ramach konta usługi Media Services. Zarejestrowana zawartość zostaną utrwalone do konta magazynu platformy Azure dołączonych do konta, do kontenera, zdefiniowane przez zasób trwały. **Na żywo dane wyjściowe** również pozwala na kontrolowanie niektórych właściwości wychodzącej transmisji strumieniowej na żywo, takie jak ilość strumienia jest przechowywana w nagraniu archiwum (na przykład pojemność funkcji DVR w chmurze) i czy można uruchomić przeglądarki Obserwowanie transmisji strumieniowej na żywo. Archiwum na dysku jest cykliczna archiwum "okno" zawiera tylko ilość zawartości, który jest określony w **archiveWindowLength** właściwość **na żywo dane wyjściowe**. Zawartość, która wykracza poza tym oknem jest automatycznie odrzucane z kontenera magazynu, a nie jest możliwe do odzyskania. Możesz tworzyć wiele **na żywo dane wyjściowe** (maksymalnie trzy maksymalna) na **wydarzenie na żywo** archiwum różne długości i ustawień.  
+Obiekt danych wyjściowych z Live przypomina rejestratora taśmy, która będzie przechwytywać i rejestrowanie strumienia na żywo do elementu zawartości w ramach konta usługi Media Services. Zarejestrowana zawartość zostaną utrwalone do konta magazynu platformy Azure dołączonych do konta, do kontenera, zdefiniowane przez zasób trwały. Dane wyjściowe na żywo umożliwia również kontrolować niektóre właściwości wychodzącej transmisji strumieniowej na żywo, takie jak ilość strumienia jest przechowywana w nagraniu archiwum (na przykład pojemność funkcji DVR w chmurze) i czy osoby oglądające można uruchomić, oglądając transmisji strumieniowej na żywo. Archiwum na dysku jest cykliczna archiwum "okno" zawiera tylko ilość zawartości, który jest określony we właściwości archiveWindowLength dane wyjściowe na żywo. Zawartość, która wykracza poza tym oknem jest automatycznie odrzucane z kontenera magazynu, a nie jest możliwe do odzyskania. Zdarzenie na żywo za pomocą archiwum różne długości i ustawienia, można utworzyć wiele wyjść na żywo (maksymalnie trzy).  
 
-Po opublikowaniu **na żywo dane wyjściowe**firmy **zasobów** przy użyciu **lokalizatora przesyłania strumieniowego**, **wydarzenie na żywo** (maksymalna długość okna DVR) będzie nadal będą widoczne do czasu wygaśnięcia lub usunięcia lokalizatora przesyłania strumieniowego, osiągnięta jako pierwsza.
+Po opublikowaniu wyjściowego na żywo **zasobów** przy użyciu **lokalizatora przesyłania strumieniowego**, wydarzenie na żywo (maksymalna długość okna DVR) będzie w dalszym ciągu być widoczny do momentu wygaśnięcia lub usunięcia lokalizatora przesyłania strumieniowego osiągnięta jako pierwsza.
 
 Aby uzyskać więcej informacji, zobacz [przy użyciu funkcji DVR w chmurze](live-event-cloud-dvr.md).
 
@@ -170,6 +170,6 @@ Aby uzyskać więcej informacji, zobacz [przy użyciu funkcji DVR w chmurze](liv
 
 Zapoznaj się z [społeczności usługi Azure Media Services](media-services-community.md) artykuł, aby wyświetlić różne sposoby zadawaj pytania, Prześlij opinię i pobrać aktualizacje o usłudze Media Services.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Samouczek transmisji strumieniowej na żywo](stream-live-tutorial-with-api.md)

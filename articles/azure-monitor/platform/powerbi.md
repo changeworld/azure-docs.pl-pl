@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/01/219
+ms.date: 05/01/2019
 ms.author: bwren
-ms.openlocfilehash: 2db6ddf57802f6fcf38cfc3ad7094ed94eaca3d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b1627306f1a8e9d9285c72118bfebdcb53d369b
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65234201"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626115"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Importuj dane dziennika usługi Azure Monitor do usługi Power BI
 
@@ -27,13 +27,13 @@ ms.locfileid: "65234201"
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="overview"></a>Omówienie
-Aby zaimportować dane z [obszaru roboczego usługi Log Analytics](manage-access.md) w usłudze Azure Monitor do usługi Power BI, utworzysz zestaw danych w usłudze Power BI na podstawie [zapytanie dziennika](../log-query/log-query-overview.md) w usłudze Azure Monitor.  Zapytanie jest uruchamiane w każdym razem, gdy zestaw danych jest odświeżane.  Następnie można tworzyć raporty usługi Power BI, które używają danych z zestawu danych.  Aby utworzyć zestaw danych w usłudze Power BI, wyeksportować zapytanie z usługą Log Analytics do [języku Power Query (M)](https://msdn.microsoft.com/library/mt807488.aspx).  Użyj tego, aby utworzyć zapytanie w programie Power BI Desktop, a następnie opublikować go w usłudze Power BI jako zestaw danych.  Szczegóły tego procesu są opisane poniżej.
+## <a name="overview"></a>Przegląd
+Aby zaimportować dane z [obszaru roboczego usługi Log Analytics](manage-access.md) w usłudze Azure Monitor do usługi Power BI, utworzysz zestaw danych w usłudze Power BI na podstawie [zapytanie dziennika](../log-query/log-query-overview.md) w usłudze Azure Monitor.  Zapytanie jest uruchamiane w każdym razem, gdy zestaw danych jest odświeżane.  Następnie można tworzyć raporty usługi Power BI, które używają danych z zestawu danych.  Aby utworzyć zestaw danych w usłudze Power BI, wyeksportować zapytanie z usługą Log Analytics do [języku Power Query (M)](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification).  Użyj tego, aby utworzyć zapytanie w programie Power BI Desktop, a następnie opublikować go w usłudze Power BI jako zestaw danych.  Szczegóły tego procesu są opisane poniżej.
 
 ![Usługi log Analytics w usłudze Power BI](media/powerbi/overview.png)
 
 ## <a name="export-query"></a>Eksportowanie zapytania
-Rozpocznij od utworzenia [zapytanie dziennika](../log-query/log-query-overview.md) zwracającego dane, które chcesz wypełnić zestaw danych usługi Power BI.  Następnie wyeksportować zapytanie do [języku Power Query (M)](https://msdn.microsoft.com/library/mt807488.aspx) których można używać w programie Power BI Desktop.
+Rozpocznij od utworzenia [zapytanie dziennika](../log-query/log-query-overview.md) zwracającego dane, które chcesz wypełnić zestaw danych usługi Power BI.  Następnie wyeksportować zapytanie do [języku Power Query (M)](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification) których można używać w programie Power BI Desktop.
 
 1. [Utwórz zapytanie dziennika w usłudze Log Analytics](../log-query/get-started-portal.md) do wyodrębniania danych dla zestawu danych.
 2. Wybierz **wyeksportować** > **usługi Power BI zapytania (M)** .  Zapytanie zostanie wyeksportowany do pliku tekstowego o nazwie **PowerBIQuery.txt**. 
@@ -85,6 +85,6 @@ Zestaw danych utworzony w usłudze Power BI mają te same dane, który wcześnie
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Dowiedz się więcej o [dziennikach](../log-query/log-query-overview.md) do kompilowania zapytań, które można eksportować do usługi Power BI.
 * Dowiedz się więcej o [usługi Power BI](https://powerbi.microsoft.com) do tworzenia wizualizacji w oparciu o usługi Azure Monitor dziennika eksportu.

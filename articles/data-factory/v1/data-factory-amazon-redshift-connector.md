@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: dc72ec9bf2e7e7c5c77685368167357a0108f2d3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3a1497211cc42c702537cbbdfea32ff71a400c7c
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60335445"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836687"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Przenoszenie danych z usługi Amazon Redshift przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
@@ -44,7 +44,7 @@ Utworzysz potok z działaniem kopiowania, aby przenieść dane ze źródła usł
 
 Najprostszym sposobem utworzenia potoku jest używanie kreatora kopiowania usługi Azure Data Factory. Szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania, zobacz [samouczka: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md).
 
-Można również utworzyć potok za pomocą witryny Azure portal, programu Visual Studio, programu Azure PowerShell lub innych narzędzi. Szablony usługi Azure Resource Manager, interfejsu API platformy .NET lub interfejsu API REST można również utworzyć potok. Aby uzyskać instrukcje krok po kroku utworzysz potok z działaniem kopiowania, zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+Można również utworzyć potok za pomocą programu Visual Studio, programu Azure PowerShell lub innych narzędzi. Szablony usługi Azure Resource Manager, interfejsu API platformy .NET lub interfejsu API REST można również utworzyć potok. Aby uzyskać instrukcje krok po kroku utworzysz potok z działaniem kopiowania, zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródłowych do magazynu danych ujścia:
 
@@ -63,11 +63,11 @@ Poniższa tabela zawiera opisy elementów JSON, które są specyficzne dla usłu
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | **type** |Ta właściwość musi być równa **AmazonRedshift**. |Tak |
-| **server** |Adres IP lub hosta nazwę serwera usługi Amazon Redshift. |Yes |
+| **server** |Adres IP lub hosta nazwę serwera usługi Amazon Redshift. |Tak |
 | **port** |Numer portu TCP używanego przez serwer usługi Amazon Redshift do nasłuchiwania połączeń klientów. |Nie (wartość domyślna to 5439) |
 | **database** |Nazwa bazy danych usługi Amazon Redshift. |Tak |
 | **Nazwa użytkownika** |Nazwa użytkownika, który ma dostęp do bazy danych. |Tak |
-| **Hasło** |Hasło dla konta użytkownika. |Tak |
+| **Hasło** |Hasło dla konta użytkownika. |Yes |
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
@@ -339,9 +339,9 @@ Następujące mapowania są używane podczas działania kopiowania konwertuje da
 | BOOLEAN |String |
 | CHAR |String |
 | VARCHAR |String |
-| DATE |DateTime |
-| TIMESTAMP |DateTime |
-| TEXT |String |
+| DATE |Datetime |
+| TIMESTAMP |Datetime |
+| TEXT |Ciąg |
 
 ## <a name="map-source-to-sink-columns"></a>Mapy źródła do ujścia kolumn
 Aby dowiedzieć się, jak mapowania kolumn w zestawie danych źródłowych do kolumn w zestawie danych ujścia, zobacz [mapowanie kolumny zestawu danych w usłudze Azure Data Factory](data-factory-map-columns.md).

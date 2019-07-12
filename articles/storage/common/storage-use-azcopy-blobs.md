@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: f95af348eb11abee5a46a89e08da5bf4eb873c42
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 83e32a1e8f77604330a9f3aba0e011a0a0851e2f
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566143"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625603"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Transferowanie danych za pomocą narzędzia AzCopy i Blob storage
 
 AzCopy to narzędzie wiersza polecenia, który służy do kopiowania danych do z lub między kontami magazynu. Ten artykuł zawiera przykładowe polecenia, które działają z usługą Blob storage.
 
-## <a name="get-started"></a>Rozpoczęcie pracy
+## <a name="get-started"></a>Wprowadzenie
 
 Zobacz [Rozpoczynanie pracy za pomocą narzędzia AzCopy](storage-use-azcopy-v10.md) artykuł, aby pobrać narzędzia AzCopy i informacje o sposobach zapewniają poświadczenia autoryzacji do usługi storage.
 
@@ -162,7 +162,7 @@ Ta sekcja zawiera następujące przykłady:
 > * Skopiuj wszystkie kontenery, katalogi i pliki do innego konta magazynu
 
 > [!NOTE]
-> W bieżącej wersji, musisz dołączyć tokenu sygnatury dostępu Współdzielonego do poszczególnych źródłowy adres URL. Jeśli zostaną podane poświadczenia autoryzacji za pomocą usługi Azure Active Directory (AD), możesz pominąć tokenu sygnatury dostępu Współdzielonego tylko z docelowego adresu URL. 
+> W bieżącej wersji, musisz dołączyć tokenu sygnatury dostępu Współdzielonego do poszczególnych źródłowy adres URL. Jeśli zostaną podane poświadczenia autoryzacji za pomocą usługi Azure Active Directory (AD), można pominąć tokenu sygnatury dostępu Współdzielonego tylko z docelowego adresu URL. 
 
 ### <a name="copy-a-blob-to-another-storage-account"></a>Skopiuj obiekt blob do innego konta magazynu
 
@@ -225,7 +225,7 @@ W takim przypadku w lokalnym systemie plików jest miejscem docelowym, a kontene
 | **Przykład** | `azcopy sync "https://mystorageaccount.blob.core.windows.net/mycontainer" "C:\myDirectory" --recursive` |
 |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Znajdź więcej przykładów w dowolnym z następujących artykułów:
 

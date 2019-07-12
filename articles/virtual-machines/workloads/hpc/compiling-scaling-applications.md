@@ -4,7 +4,7 @@ description: Dowiedz się, jak skalować aplikacje HPC na maszynach wirtualnych 
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: e2e2476449f956361639e42e7c398e53e42d44ab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 00d5b86c8cae01d342d55b7ad20ec59c3f7530bd
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66810115"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707835"
 ---
 # <a name="scaling-hpc-applications"></a>Skalowanie aplikacji HPC
 
@@ -53,7 +53,7 @@ $ gfortran [gFortran flags]
 ```
    
 ### <a name="pgi-compiler"></a>PGI Compiler
-PGI Community Edition ver. Aby pracować z AMD EPYC potwierdza 17. Wersja kompilacji PGI strumienia dostarczanie przepustowości całej pamięci platformy. 18\.10 nowszej wersji Community (listopada 2018 r.) również powinny działać prawidłowo. Poniżej przedstawiono przykład interfejsu wiersza polecenia kompilatora optymalnie za pomocą kompilatora Intel:
+PGI Community Edition ver. Aby pracować z AMD EPYC potwierdza 17. Wersja kompilacji PGI strumienia dostarczanie przepustowości całej pamięci platformy. 18.10 nowszej wersji Community (listopada 2018 r.) również powinny działać prawidłowo. Poniżej przedstawiono przykład interfejsu wiersza polecenia kompilatora optymalnie za pomocą kompilatora Intel:
 
 ```bash
 pgcc $(OPTIMIZATIONS_PGI) $(STACK) -DSTREAM_ARRAY_SIZE=800000000 stream.c -o stream.pgi
@@ -84,6 +84,6 @@ Poniższe sugestie dotyczą aplikacji optymalne skalowanie efektywności, wydajn
 * Niektóre aplikacje dzięki wyjątkowej czułości przepustowość pamięci może korzystać z ograniczoną liczbę rdzeni na CCX. W przypadku tych aplikacji za pomocą 3 lub 2 rdzeni CCX może zmniejszyć rywalizację przepustowość pamięci i uzyskanie większej wydajności rzeczywistych i bardziej spójną skalowalności. W szczególności MPI Allreduce mogą korzystać z tego.
 * Znacznie większe skalowanie uruchomień zalecane jest użyj transportu RC + UD UD lub hybrydowe. Wiele bibliotek bibliotek/środowiska uruchomieniowego MPI w tym wewnętrznie (na przykład UCX lub MVAPICH2). Sprawdź konfiguracje transportu do uruchamiania na dużą skalę.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) na platformie Azure.

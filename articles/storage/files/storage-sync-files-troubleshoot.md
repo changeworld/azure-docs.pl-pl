@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 9cd1be26f6832fffb86dfefd0d93d9dbb393c0f0
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 68d0f4f85bc8879191784f038c74fafc40c422b7
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303876"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604682"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -254,7 +254,7 @@ Aby wyświetlić te błędy, uruchom **FileSyncErrorsReport.ps1** skrypt program
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Plik został zmieniony podczas synchronizacji, dlatego musi być synchronizowane z ponownie. | Nie jest wymagana żadna akcja. |
 
 #### <a name="handling-unsupported-characters"></a>Obsługa nieobsługiwane znaki
-Jeśli **FileSyncErrorsReport.ps1** skrypt programu PowerShell pokazuje błędy spowodowane nieobsługiwane znaki (kod błędu: 0x8007007b), należy usunąć lub zmienić znaków na pozycji błędu z nazwami odpowiednich plików. Program PowerShell prawdopodobnie zostanie wydrukowana te znaki jako znaki zapytania lub prostokąty pusty, ponieważ większość z tych znaków ma nie standardowych wizualnego kodowania. [Uruchamiania narzędzia oceny](storage-sync-files-planning.md#evaluation-tool) może służyć do identyfikowania znaków, które nie są obsługiwane.
+Jeśli **FileSyncErrorsReport.ps1** skrypt programu PowerShell pokazuje błędy spowodowane nieobsługiwane znaki (kod błędu: 0x8007007b), należy usunąć lub zmienić znaków na pozycji błędu z nazwami odpowiednich plików. Program PowerShell prawdopodobnie zostanie wydrukowana te znaki jako znaki zapytania lub prostokąty pusty, ponieważ większość z tych znaków ma nie standardowych wizualnego kodowania. [Uruchamiania narzędzia oceny](storage-sync-files-planning.md#evaluation-cmdlet) może służyć do identyfikowania znaków, które nie są obsługiwane.
 
 Poniższa tabela zawiera wszystkie znaki unicode, który nie obsługuje jeszcze usługi Azure File Sync.
 
@@ -318,7 +318,7 @@ Nie jest wymagana żadna akcja. W przypadku pliku lub udziału plikowego (punkt 
 | **HRESULT** | 0x80c8305f |
 | **HRESULT (dziesiętna)** | -2134364065 |
 | **Ciąg błędu** | ECS_E_CANNOT_ACCESS_EXTERNAL_STORAGE_ACCOUNT |
-| **Wymagana korekta** | Yes |
+| **Wymagana korekta** | Tak |
 
 Ten błąd występuje, ponieważ agent usługi Azure File Sync nie może uzyskać dostępu do udziału plików platformy Azure, która może być, ponieważ udział plików platformy Azure lub konto magazynu hostujące ona już nie istnieje. Ten błąd można rozwiązać, klikając pracy przez następujące kroki:
 
@@ -334,7 +334,7 @@ Ten błąd występuje, ponieważ agent usługi Azure File Sync nie może uzyska�
 | **HRESULT** | 0x80C83060 |
 | **HRESULT (dziesiętna)** | -2134364064 |
 | **Ciąg błędu** | ECS_E_STORAGE_ACCOUNT_NAME_UNRESOLVED |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 1. Sprawdź, że może rozpoznać nazwy DNS magazynu z serwera.
 
@@ -362,7 +362,7 @@ Ten błąd występuje, gdy występuje problem z wewnętrznej bazy danych używan
 | **HRESULT** | 0x80C8306B |
 | **HRESULT (dziesiętna)** | -2134364053 |
 | **Ciąg błędu** | ECS_E_AGENT_VERSION_BLOCKED |
-| **Wymagana korekta** | Yes |
+| **Wymagana korekta** | Tak |
 
 Ten błąd występuje, jeśli nie jest obsługiwana przez wersję agenta usługi Azure File Sync, które są zainstalowane na serwerze. Aby rozwiązać ten problem, [uaktualnienia]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#upgrade-paths) do [obsługiwana wersja agenta]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions).
 
@@ -373,7 +373,7 @@ Ten błąd występuje, jeśli nie jest obsługiwana przez wersję agenta usługi
 | **HRESULT** | 0x80c8603e |
 | **HRESULT (dziesiętna)** | -2134351810 |
 | **Ciąg błędu** | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 Ten błąd występuje, gdy limit magazynu udziału plików platformy Azure zostanie osiągnięty, która może się zdarzyć, jeśli zastosowano limit przydziału dla udziału plików platformy Azure lub jeśli użycie przekroczy limity dla udziału plików platformy Azure. Aby uzyskać więcej informacji, zobacz [aktualne limity dla udziału plików platformy Azure](storage-files-scale-targets.md).
 
@@ -399,7 +399,7 @@ Jeśli nie ustawiono limit przydziału udziału jest pełny, jeden sposób możl
 | **HRESULT** | 0x80c86030 |
 | **HRESULT (dziesiętna)** | -2134351824 |
 | **Ciąg błędu** | ECS_E_AZURE_FILE_SHARE_NOT_FOUND |
-| **Wymagana korekta** | Yes |
+| **Wymagana korekta** | Tak |
 
 Ten błąd występuje, gdy udział plików platformy Azure nie jest dostępny. Aby rozwiązać:
 
@@ -415,7 +415,7 @@ Jeśli usunięto udział plików platformy Azure, musisz utworzyć nowy udział 
 | **HRESULT** | 0x80C83076 |
 | **HRESULT (dziesiętna)** | -2134364042 |
 | **Ciąg błędu** | ECS_E_SYNC_BLOCKED_ON_SUSPENDED_SUBSCRIPTION |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 Ten błąd występuje zawieszenia subskrypcji platformy Azure. Synchronizacja zostanie reenabled, po przywróceniu subskrypcji platformy Azure. Zobacz [Dlaczego Moja subskrypcja platformy Azure jest wyłączona, i jak jest ponownej?](../../billing/billing-subscription-become-disable.md) Aby uzyskać więcej informacji.
 
@@ -426,7 +426,7 @@ Ten błąd występuje zawieszenia subskrypcji platformy Azure. Synchronizacja zo
 | **HRESULT** | 0x80c8306c |
 | **HRESULT (dziesiętna)** | -2134364052 |
 | **Ciąg błędu** | ECS_E_MGMT_STORAGEACLSNOTSUPPORTED |
-| **Wymagana korekta** | Yes |
+| **Wymagana korekta** | Tak |
 
 Ten błąd występuje, gdy udział plików platformy Azure jest niedostępny z powodu zapory konta magazynu, lub ponieważ konto magazynu należy do sieci wirtualnej. Usługa Azure File Sync nie ma jeszcze obsługi tej funkcji. Aby rozwiązać:
 
@@ -458,7 +458,7 @@ Jeśli ten błąd będzie się powtarzać dłużej niż kilka godzin, Utwórz ż
 | **HRESULT** | 0x800b0109 |
 | **HRESULT (dziesiętna)** | -2146762487 |
 | **Ciąg błędu** | CERT_E_UNTRUSTEDROOT |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 Ten błąd może wystąpić, jeśli Twoja organizacja używa serwera proxy protokołu SSL kończący lub zamierzających przechwytują dane komunikacji między serwerem i usługa Azure File Sync. Jeśli masz pewność, że jest to oczekiwane (ponieważ jest to Twoja organizacja korzysta z protokołu SSL, zakończenie serwera proxy), możesz pominąć weryfikację certyfikatu za pomocą zastąpienia rejestru.
 
@@ -483,7 +483,7 @@ Przez ustawienie tej wartości rejestru, agent usługi Azure File Sync będzie a
 | **HRESULT** | 0x80072ee2 |
 | **HRESULT (dziesiętna)** | -2147012894 |
 | **Ciąg błędu** | WININET_E_TIMEOUT |
-| **Wymagana korekta** | Yes |
+| **Wymagana korekta** | Tak |
 
 [!INCLUDE [storage-sync-files-bad-connection](../../../includes/storage-sync-files-bad-connection.md)]
 
@@ -550,12 +550,12 @@ Ten błąd występuje, ponieważ nie wprowadzono zmian w udziale plików platfor
 | **HRESULT** | 0x80c8023b |
 | **HRESULT (dziesiętna)** | -2134364145 |
 | **Ciąg błędu** | ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED |
-| **Wymagana korekta** | Yes |
+| **Wymagana korekta** | Tak |
 | | |
 | **HRESULT** | 0x80c8021c |
 | **HRESULT (dziesiętna)** | -2134375908 |
 | **Ciąg błędu** | ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED |
-| **Wymagana korekta** | Yes |
+| **Wymagana korekta** | Tak |
 | | |
 | **HRESULT** | 0x80c80253 |
 | **HRESULT (dziesiętna)** | -2134375853 |
@@ -620,7 +620,7 @@ Ten błąd występuje z powodu wewnętrznego problemu z bazy danych usługi sync
 4. Wybierz na połączonym koncie magazynu. Jeśli ten link nie powiedzie się, zostało usunięte konto magazynu do którego istnieje odwołanie.
     ![Zrzut ekranu przedstawiający okienko Szczegóły punktu końcowego chmury z linkiem do konta magazynu.](media/storage-sync-files-troubleshoot/file-share-inaccessible-1.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 ```powershell
 # Variables for you to populate based on your configuration
 $region = "<Az_Region>"
@@ -701,7 +701,7 @@ if ($storageAccount -eq $null) {
 2. Konto magazynu — wewnątrz **zezwolić na dostęp ze wszystkich sieci** należy wybrać przycisk radiowy.
     ![Zrzut ekranu przedstawiający reguły zapory i sieci konta magazynu wyłączone.](media/storage-sync-files-troubleshoot/file-share-inaccessible-2.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 ```powershell
 if ($storageAccount.NetworkRuleSet.DefaultAction -ne 
     [Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum]::Allow) {
@@ -717,7 +717,7 @@ if ($storageAccount.NetworkRuleSet.DefaultAction -ne
 2. Wybierz **pliki** do wyświetlania listy udziałów plików.
 3. Sprawdź udział plików, które odwołuje się punkt końcowy w chmurze pojawia się na liście udziałów plików (powinien mieć zanotowaną to w kroku 1 powyżej).
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 ```powershell
 $fileShare = Get-AzStorageShare -Context $storageAccount.Context | Where-Object {
     $_.Name -eq $cloudEndpoint.AzureFileShareName -and
@@ -740,11 +740,11 @@ if ($fileShare -eq $null) {
 
     Jeśli **usługi hybrydowe File Sync** nie jest wyświetlana na liście, należy wykonać następujące czynności:
 
-    - Kliknij pozycję **Add** (Dodaj).
+    - Kliknij przycisk **Dodaj**.
     - W **roli** pól, zaznacz **czytnik i dostęp do danych**.
     - W **wybierz** wpisz **usługi hybrydowe File Sync**, wybierz rolę i kliknij przycisk **Zapisz**.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 ```powershell    
 $role = Get-AzRoleAssignment -Scope $storageAccount.Id | Where-Object { $_.DisplayName -eq "Hybrid File Sync Service" }
 

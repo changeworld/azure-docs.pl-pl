@@ -4,7 +4,7 @@ description: Dowiedz się, jak utworzyć maszynę wirtualną z systemem Linux na
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 2b078cd769a9b4e5e66fe132fd4ef73ec4621efc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a7f624bc85d35048a8f9afa0f527ae592a24fbf1
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60391365"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667944"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Utwórz maszynę wirtualną systemu Linux, która korzysta z uwierzytelniania SSH przy użyciu interfejsu API REST
 
@@ -55,7 +55,7 @@ Wymagane są następujące nagłówki:
 | Nagłówek żądania   | Opis |
 |------------------|-----------------|
 | *Content-Type:*  | Wymagany. Ustaw `application/json`. |
-| *Authorization:* | Wymagany. Ustawić prawidłową `Bearer` [token dostępu](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
+| *Authorization:* | Wymagana. Ustawić prawidłową `Bearer` [token dostępu](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
 Aby uzyskać ogólne informacje na temat pracy z żądań interfejsu API REST, zobacz [składniki żądania/odpowiedzi interfejsu API REST](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
@@ -65,8 +65,8 @@ Następujące typowe definicje są używane do tworzenia treści żądania:
 
 | Name (Nazwa)                       | Wymagane | Typ                                                                                | Opis  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
-| location                   | True     | string                                                                              | Lokalizacja zasobu. |
-| name                       |          | string                                                                              | Nazwa maszyny wirtualnej. |
+| location                   | Prawda     | ciąg                                                                              | Lokalizacja zasobu. |
+| name                       |          | ciąg                                                                              | Nazwa maszyny wirtualnej. |
 | properties.hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Określa ustawienia sprzętu dla maszyny wirtualnej. |
 | properties.storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Określa ustawienia przechowywania dla dysków maszyny wirtualnej. |
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Określa ustawienia systemu operacyjnego dla maszyny wirtualnej. |

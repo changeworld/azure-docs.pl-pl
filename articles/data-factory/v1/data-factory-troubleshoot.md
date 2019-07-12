@@ -14,12 +14,12 @@ ms.author: gamal
 ms.reviewer: maghan
 manager: craigg
 robots: noindex
-ms.openlocfilehash: 5f2627932eb2fd427d934eba322230222b5e6958
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cc880885777cbca67d6fb39b90feadc889339f76
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002947"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836172"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Rozwiązywanie problemów z usługą Data Factory
 > [!NOTE]
@@ -119,14 +119,14 @@ Zobacz [debugowanie potoku za pomocą działania niestandardowego](data-factory-
 
 ## <a name="use-azure-portal-to-troubleshoot"></a>Rozwiązywanie problemów przy użyciu witryny Azure portal
 ### <a name="using-portal-blades"></a>Przy użyciu bloków w witrynie portal
-Zobacz [monitorowanie potoku](data-factory-build-your-first-pipeline-using-editor.md#monitor-a-pipeline) kroków.
+Zobacz [monitorowanie potoku](data-factory-monitor-manage-pipelines.md) kroków.
 
 ### <a name="using-monitor-and-manage-app"></a>Korzystanie z aplikacji Monitorowanie i zarządzanie
 Zobacz [monitorowanie i zarządzanie nimi potoki fabryki danych przy użyciu aplikacji monitorowanie i zarządzanie](data-factory-monitor-manage-app.md) Aby uzyskać szczegółowe informacje.
 
 ## <a name="use-azure-powershell-to-troubleshoot"></a>Rozwiązywanie problemów przy użyciu programu Azure PowerShell
 ### <a name="use-azure-powershell-to-troubleshoot-an-error"></a>Rozwiązywanie problemów z błędem za pomocą programu Azure PowerShell
-Zobacz [fabryki danych monitorowania potoków przy użyciu programu Azure PowerShell](data-factory-build-your-first-pipeline-using-powershell.md#monitor-pipeline) Aby uzyskać szczegółowe informacje.
+Zobacz [fabryki danych monitorowania potoków przy użyciu programu Azure PowerShell](data-factory-monitor-manage-pipelines.md) Aby uzyskać szczegółowe informacje.
 
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [use-custom-activities]: data-factory-use-custom-activities.md

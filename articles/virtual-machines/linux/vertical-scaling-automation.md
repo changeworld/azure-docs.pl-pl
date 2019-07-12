@@ -4,7 +4,7 @@ description: Jak skalowanie w pionie maszyny wirtualnej systemu Linux w odpowied
 services: virtual-machines-linux
 documentationcenter: ''
 author: singhkays
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: dcee199e-fa25-44d5-9b25-df564cee9b45
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/18/2019
 ms.author: kasing
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e7190f13f9d41afffcbbc1104f533b0d0586a0d6
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: e0317344fd8ee1eb415b61d4f5035219e649b18d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67486030"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67695476"
 ---
 # <a name="vertically-scale-azure-linux-virtual-machine-with-azure-automation"></a>Skalowanie w pionie maszyny wirtualnej systemu Linux platformy Azure z usługą Azure Automation
 Skalowanie w pionie polega na zwiększenie lub zmniejszenie zasoby maszyny w odpowiedzi na obciążenie. Na platformie Azure można to zrobić, zmieniając rozmiar maszyny wirtualnej. Może to pomóc w następujących scenariuszach
@@ -100,9 +100,9 @@ Możesz skalować między następujące pary rozmiarów:
 | Standardowa_DS11 | Standardowa_DS12 |
 | Standardowa_DS12 | Standardowa_DS13 |
 | Standardowa_DS13 | Standardowa_DS14 |
-| Standardowa_D1_v2 | Standardowa_D2_v2 |
-| Standardowa_D2_v2 | Standardowa_D3_v2 |
-| Standardowa_D3_v2 | Standardowa_D4_v2 |
+| Standardowa_D1_v2 | Maszyna wirtualna Standard_D2_v2 |
+| Maszyna wirtualna Standard_D2_v2 | Maszyna wirtualna Standard_D3_v2 |
+| Maszyna wirtualna Standard_D3_v2 | Standardowa_D4_v2 |
 | Standardowa_D4_v2 | Standardowa_D5_v2 |
 | Standardowa_D11_v2 | Standardowa_D12_v2 |
 | Standardowa_D12_v2 | Standardowa_D13_v2 |
@@ -114,13 +114,13 @@ Możesz skalować między następujące pary rozmiarów:
 | Standardowa_DS11_v2 | Standardowa_DS12_v2 |
 | Standardowa_DS12_v2 | Standardowa_DS13_v2 |
 | Standardowa_DS13_v2 | Standardowa_DS14_v2 |
-| Standardowa_D2_v3 | Standardowa_D4_v3 |
-| Standardowa_D4_v3 | Standardowa_D8_v3 |
+| Maszyna wirtualna Standard_D2_v3 | Maszyna wirtualna Standard_D4_v3 |
+| Maszyna wirtualna Standard_D4_v3 | Standardowa_D8_v3 |
 | Standardowa_D8_v3 | Standardowa_D16_v3 |
 | Standardowa_D16_v3 | Standard_D32_v3 |
 | Standard_D32_v3 | Standard_D64_v3 |
-| Standardowa_D2s_v3 | Standardowa_D4s_v3 |
-| Standardowa_D4s_v3 | Standardowa_D8s_v3 |
+| Standard_D2s_v3 | Standard_D4s_v3 |
+| Standard_D4s_v3 | Standardowa_D8s_v3 |
 | Standardowa_D8s_v3 | Standardowa_D16s_v3 |
 | Standardowa_D16s_v3 | Standard_D32s_v3 |
 | Standard_D32s_v3 | Standard_D64s_v3 |

@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/30/2019
-ms.author: aljo,suhuruli
+ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 1487c9e3e57a2fe4dcdcab04aa81cd81315decfd
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 5d0c8b458f11076ea87d74eae3eecd72fb37eb40
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66302304"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621523"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Szybki start: Wdrażanie kontenerów systemu Linux w usłudze Service Fabric
 
@@ -193,7 +193,7 @@ Po zakończeniu pracy z klastrem, możesz usunąć certyfikat ze swojego magazyn
 - Na komputerze Mac: Użyj aplikacji pęku kluczy.
 - W systemie Ubuntu: Wykonaj czynności, które zostały użyte do wyświetlenia certyfikatów, i usuń certyfikat.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start aplikacja kontenera systemu Linux została wdrożona w klastrze usługi Service Fabric na platformie Azure i przeniesiona do trybu failover oraz przeskalowano ją w klastrze. Aby dowiedzieć się więcej o pracy z kontenerami systemu Linux w usłudze Service Fabric, przejdź do samouczka dla aplikacji kontenera systemu Linux.
 

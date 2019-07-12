@@ -15,12 +15,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: bc5266bc37a0b58913feb08452e173949b64c112
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 129127a2a43cd9a86e0a1e1cf538358b62381257
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061600"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706229"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Wysyłanie powiadomień wypychanych przy użyciu usługi Azure Notification Hubs i środowiska Node.js
 
@@ -46,7 +46,7 @@ Usługa Azure Notification Hubs zapewnia łatwe w użyciu, wieloplatformową ska
 
 ## <a name="create-a-nodejs-application"></a>Tworzenie aplikacji Node.js
 
-Pierwszym krokiem w ramach tego samouczka jest utworzenie nowej pustej aplikacji Node.js. Instrukcje dotyczące tworzenia aplikacji w technologii Node.js można znaleźć [tworzenie i wdrażanie aplikacji Node.js do witryny sieci Web Azure][nodejswebsite], [Node.js usługi w chmurze] [ Node.js Cloud Service] przy użyciu programu Windows PowerShell, lub [witryny sieci Web za pomocą programu WebMatrix][webmatrix].
+Pierwszym krokiem w ramach tego samouczka jest utworzenie nowej pustej aplikacji Node.js. Aby uzyskać instrukcje dotyczące tworzenia aplikacji w technologii Node.js, zobacz [tworzenie i wdrażanie aplikacji Node.js do witryny sieci Web platformy Azure][nodejswebsite] , [Node.js Cloud Service][Node.js Cloud Service] przy użyciu programu Windows PowerShell, lub [witryny sieci Web za pomocą programu WebMatrix] [webmatrix].
 
 ## <a name="configure-your-application-to-use-notification-hubs"></a>Skonfiguruj aplikację, aby używać usługi Notification Hubs
 
@@ -106,7 +106,7 @@ Uzyskaj połączenie `connectionstring` wartość z [Azure Portal] , wykonując 
 - **Ładunek** -JSON lub nieprzetworzonego ciągu ładunek komunikatu.
 - **Wywołanie zwrotne** — funkcja wywołania zwrotnego.
 
-Aby uzyskać więcej informacji o formacie ładunek, zobacz **ładunku** części [Implementowanie serwera GCM](https://developers.google.com/cloud-messaging/) dokumentu.
+Aby uzyskać więcej informacji na temat formatu ładunku zobacz [dokumentacji ładunku](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload).
 
 Poniższy kod używa `GcmService` wystąpienia udostępnianych przez `NotificationHubService` do wysyłania powiadomień wypychanych do wszystkich zarejestrowanych klientów.
 

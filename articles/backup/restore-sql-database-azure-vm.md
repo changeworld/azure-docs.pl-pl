@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: raynew
-ms.openlocfilehash: d8ade598e4f1b6331367e8bd04ad59951ef5de8f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 856f45f448aa843e9dc04ec3b6a60841cfe33227
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242371"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704861"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Przywracanie bazy danych SQL Server na maszynach wirtualnych platformy Azure
 
@@ -156,7 +156,7 @@ Jeśli wybrano **pełna i różnicowa** jako typ przywracania, wykonaj następuj
 
 ### <a name="restore-databases-with-large-number-of-files"></a>Przywracanie baz danych z dużą liczbą plików
 
-Jeśli rozmiar ciągu łączna liczba plików w bazie danych jest większa niż [określonego limitu](backup-sql-server-azure-troubleshoot.md#files-size-limit-beyond-which-restore-happens-to-default-path), kopia zapasowa Azure przechowuje listę plików bazy danych w składniku pit różnych w taki sposób, że nie można ustawić ścieżki docelowej przywracania podczas przywracania Operacja. Zamiast tego pliki zostaną przywrócone do ścieżki domyślnej SQL.
+Jeśli rozmiar ciągu łączna liczba plików w bazie danych jest większa niż [określonego limitu](backup-sql-server-azure-troubleshoot.md#size-limit-for-files), kopia zapasowa Azure przechowuje listę plików bazy danych w składniku pit różnych w taki sposób, że nie można ustawić ścieżki docelowej przywracania podczas przywracania Operacja. Zamiast tego pliki zostaną przywrócone do ścieżki domyślnej SQL.
 
   ![Przywracanie bazy danych przy użyciu dużego pliku](./media/backup-azure-sql-database/restore-large-files.jpg)
 

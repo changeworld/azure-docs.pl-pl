@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 07/11/2019
 ms.author: magoedte
-ms.openlocfilehash: 39dbb504603544a468907d87d236338cb95e39a3
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a55a4b2f3045aac8dfe9e46a50074585ab3ef491
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441629"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827790"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Zarządzanie obszaru roboczego usługi Log Analytics przy użyciu szablonów usługi Azure Resource Manager
 
@@ -40,26 +40,19 @@ Możesz użyć [szablonów usługi Azure Resource Manager](../../azure-resource-
 Ten artykuł zawiera przykłady szablonów, które ilustrują niektórych elementów konfiguracji, które można wykonywać za pomocą szablonów.
 
 ## <a name="api-versions"></a>Wersje interfejsu API
+
 Poniższa tabela zawiera listę wersji interfejsu API dla zasobów używanych w tym przykładzie.
 
 | Resource | Typ zasobu | Wersja interfejsu API |
 |:---|:---|:---|
 | Obszar roboczy   | Obszary robocze    | 2017-03-15-preview |
-| Wyszukiwanie      | savedSearches | 2015-03-20 |
+| Wyszukaj      | savedSearches | 2015-03-20 |
 | Źródło danych | źródła danych   | 2015-11-01-preview |
 | Rozwiązanie    | rozwiązania     | 2015-11-01-preview |
 
 ## <a name="create-a-log-analytics-workspace"></a>Utwórz obszar roboczy usługi Log Analytics
-Poniższy przykład tworzy obszar roboczy przy użyciu szablonu z maszyny lokalnej. Szablon JSON jest skonfigurowany do tylko wyświetlenie monitu o nazwę obszaru roboczego i określenie wartości domyślnej dla innych parametrów, które prawdopodobnie będzie służyć jako standardowej konfiguracji w danym środowisku.  
 
-Następujące parametry ustawiona wartość domyślna:
-
-* Lokalizacja — wartość domyślna to wschodnie stany USA
-* Jednostka SKU — wartość domyślna to nowej warstwy cenowej na GB, wydana w kwietniu 2018 r., model cen
-
-> [!NOTE]
->W przypadku tworzenia lub konfigurowania obszaru roboczego usługi Log Analytics w ramach subskrypcji, który występował w nowych z kwietnia 2018 r modelu cen, jest prawidłowa tylko usługi Log Analytics warstwy cenowej **PerGB2018**.  
->Jeśli niektóre subskrypcje mogą mieć [modelu cen pre kwietnia 2018 r.](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs#new-pricing-model), można określić **autonomiczny** warstwa cenowa i to powiedzie się dla obu subskrypcji w modelu cenowym pre kwietnia 2018 r. i w przypadku subskrypcji w nowym ceny. W przypadku obszarów roboczych w ramach subskrypcji, które przyjęły nowy model proicing, warstwa cenowa zostanie ustawiony **PerGB2018**. 
+Poniższy przykład tworzy obszar roboczy przy użyciu szablonu z maszyny lokalnej. Szablon JSON jest skonfigurowany do wymagają tylko nazwę i lokalizację nowego obszaru roboczego (przy użyciu wartości domyślnych dla innych parametrów obszaru roboczego, np. warstwa cenowa i przechowywania).  
 
 ### <a name="create-and-deploy-template"></a>Tworzenie i wdrażanie szablonu
 
@@ -79,26 +72,35 @@ Następujące parametry ustawiona wartość domyślna:
         "location": {
             "type": "String",
             "allowedValues": [
-              "eastus",
-              "westus"
+              "australiacentral", 
+              "australiaeast", 
+              "australiasoutheast", 
+              "brazilsouth",
+              "canadacentral", 
+              "centralindia", 
+              "centralus", 
+              "eastasia", 
+              "eastus", 
+              "eastus2", 
+              "francecentral", 
+              "japaneast", 
+              "koreacentral", 
+              "northcentralus", 
+              "northeurope", 
+              "southafricanorth", 
+              "southcentralus", 
+              "southeastasia", 
+              "uksouth", 
+              "ukwest", 
+              "westcentralus", 
+              "westeurope", 
+              "westus", 
+              "westus2" 
             ],
-            "defaultValue": "eastus",
             "metadata": {
               "description": "Specifies the location in which to create the workspace."
             }
-        },
-        "sku": {
-            "type": "String",
-            "allowedValues": [
-              "Standalone",
-              "PerNode",
-              "PerGB2018"
-            ],
-            "defaultValue": "PerGB2018",
-            "metadata": {
-            "description": "Specifies the service tier of the workspace: Standalone, PerNode, Per-GB"
         }
-          }
     },
     "resources": [
         {
@@ -107,9 +109,6 @@ Następujące parametry ustawiona wartość domyślna:
             "apiVersion": "2015-11-01-preview",
             "location": "[parameters('location')]",
             "properties": {
-                "sku": {
-                    "Name": "[parameters('sku')]"
-                },
                 "features": {
                     "searchVersion": 1
                 }
@@ -118,26 +117,28 @@ Następujące parametry ustawiona wartość domyślna:
        ]
     }
     ```
-2. Edytuj szablon do własnych wymagań.  Przegląd [szablonu Microsoft.OperationalInsights/workspaces](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) odwołania, aby dowiedzieć się, jakie właściwości i wartości są obsługiwane. 
+
+2. Edytuj szablon do własnych wymagań. Przegląd [szablonu Microsoft.OperationalInsights/workspaces](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) odwołania, aby dowiedzieć się, jakie właściwości i wartości są obsługiwane. 
 3. Zapisz ten plik jako **deploylaworkspacetemplate.json** do folderu lokalnego.
-4. Wszystko jest teraz gotowe do wdrożenia tego szablonu. Używasz programu PowerShell lub wiersza polecenia do utworzenia obszaru roboczego.
+4. Wszystko jest teraz gotowe do wdrożenia tego szablonu. Używasz programu PowerShell lub wiersza polecenia do utworzenia obszaru roboczego, określając nazwę obszaru roboczego i lokalizację jako część polecenia.
 
    * Dla programu PowerShell Użyj następujących poleceń z folderu zawierającego szablon:
    
         ```powershell
-        New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json
+        New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json -workspaceName <workspace-name> -location <location>
         ```
 
    * W wierszu polecenia użyj następujących poleceń z folderu zawierającego szablon:
 
         ```cmd
         azure config mode arm
-        azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile deploylaworkspacetemplate.json
+        azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile deploylaworkspacetemplate.json --workspaceName <workspace-name> --location <location>
         ```
 
 Wdrożenie może potrwać kilka minut. Po zakończeniu zostanie wyświetlony komunikat podobny do poniższego, który zawiera wynik:<br><br> ![Przykład wyniku, gdy wdrożenie jest ukończone](./media/template-workspace-configuration/template-output-01.png)
 
 ## <a name="configure-a-log-analytics-workspace"></a>Konfigurowanie obszaru roboczego usługi Log Analytics
+
 W poniższym przykładzie szablon przedstawia sposób:
 
 1. Dodawanie rozwiązań do obszaru roboczego
@@ -161,19 +162,21 @@ W poniższym przykładzie szablon przedstawia sposób:
         "description": "Workspace name"
       }
     },
-    "serviceTier": {
+    "pricingTier": {
       "type": "string",
       "allowedValues": [
+        "PerGB2018",
         "Free",
         "Standalone",
         "PerNode",
-        "PerGB2018"
+        "Standard",
+        "Premium"
       ],
       "defaultValue": "PerGB2018",
       "metadata": {
-        "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone or PerNode) which are not available to all customers"
-    }
-      },
+        "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
+      }
+    },
     "dataRetention": {
       "type": "int",
       "defaultValue": 30,
@@ -187,17 +190,40 @@ W poniższym przykładzie szablon przedstawia sposób:
     "immediatePurgeDataOn30Days": {
       "type": "bool",
       "metadata": {
-        "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. This only applies when retention is being set to 30 days."
+        "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This only applies when retention is being set to 30 days."
       }
     },
     "location": {
       "type": "string",
       "allowedValues": [
-        "East US",
-        "West Europe",
-        "Southeast Asia",
-        "Australia Southeast"
-      ]
+        "australiacentral", 
+        "australiaeast", 
+        "australiasoutheast", 
+        "brazilsouth",
+        "canadacentral", 
+        "centralindia", 
+        "centralus", 
+        "eastasia", 
+        "eastus", 
+        "eastus2", 
+        "francecentral", 
+        "japaneast", 
+        "koreacentral", 
+        "northcentralus", 
+        "northeurope", 
+        "southafricanorth", 
+        "southcentralus", 
+        "southeastasia", 
+        "uksouth", 
+        "ukwest", 
+        "westcentralus", 
+        "westeurope", 
+        "westus", 
+        "westus2"
+      ],
+      "metadata": {
+        "description": "Specifies the location in which to create the workspace."
+      }
     },
     "applicationDiagnosticsStorageAccountName": {
         "type": "string",
@@ -235,7 +261,10 @@ W poniższym przykładzie szablon przedstawia sposób:
       "location": "[parameters('location')]",
       "properties": {
         "sku": {
-          "Name": "[parameters('serviceTier')]"
+          "name": "[parameters('pricingTier')]"
+          "features": {
+            "immediatePurgeDataOn30Days": "[parameters('immediatePurgeDataOn30Days')]"
+          }
         },
     "retentionInDays": "[parameters('dataRetention')]"
       },
@@ -494,6 +523,10 @@ W poniższym przykładzie szablon przedstawia sposób:
       "type": "int",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').retentionInDays]"
     },
+    "immediatePurgeDataOn30Days": {  
+      "type": "bool",
+      "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').features.immediatePurgeDataOn30Days]"
+    },
     "portalUrl": {
       "type": "string",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').portalUrl]"
@@ -503,6 +536,7 @@ W poniższym przykładzie szablon przedstawia sposób:
 
 ```
 ### <a name="deploying-the-sample-template"></a>Wdrażanie przykładowego szablonu
+
 Aby wdrożyć przykładowy szablon:
 
 1. Zapisz przykładowy dołączone w pliku, na przykład `azuredeploy.json` 
@@ -510,17 +544,20 @@ Aby wdrożyć przykładowy szablon:
 3. Użyj programu PowerShell lub wierszu polecenia, aby wdrożyć szablon
 
 #### <a name="powershell"></a>PowerShell
+
 ```powershell
 New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile azuredeploy.json
 ```
 
 #### <a name="command-line"></a>Wiersz polecenia
+
 ```cmd
 azure config mode arm
 azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile azuredeploy.json
 ```
 
 ## <a name="example-resource-manager-templates"></a>Szablony usługi Resource Manager dla przykładu
+
 Galeria szablonów szybkiego startu platformy Azure zawiera kilka szablonów dla usługi Log Analytics, w tym:
 
 * [Wdrażanie maszyny wirtualnej z systemem Windows za pomocą rozszerzenia maszyny Wirtualnej programu Log Analytics](https://azure.microsoft.com/documentation/templates/201-oms-extension-windows-vm/)
@@ -529,6 +566,8 @@ Galeria szablonów szybkiego startu platformy Azure zawiera kilka szablonów dla
 * [Monitorowanie aplikacji sieci Web platformy Azure przy użyciu istniejącego obszaru roboczego usługi Log Analytics](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
 * [Dodaj istniejące konto magazynu do usługi Log Analytics](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
+
 * [Wdrażanie agenta Windows na maszynach wirtualnych platformy Azure przy użyciu szablonu usługi Resource Manager](../../virtual-machines/extensions/oms-windows.md).
+
 * [Wdrażanie agenta systemu Linux na maszynach wirtualnych platformy Azure przy użyciu szablonu usługi Resource Manager](../../virtual-machines/extensions/oms-linux.md).

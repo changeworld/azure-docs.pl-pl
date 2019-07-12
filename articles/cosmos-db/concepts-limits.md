@@ -1,21 +1,21 @@
 ---
-title: Limity w usłudze Azure Cosmos DB
-description: W tym artykule opisano limity w usłudze Azure Cosmos DB.
+title: Przydziały usługi w usłudze Azure Cosmos DB
+description: Przydziały usługi w usłudze Azure Cosmos DB i domyślne limity w różnych typów zasobów.
 author: arramac
 ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2019
-ms.openlocfilehash: 28eb7c6a11f71fa87835bcfe78e635753965bac3
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.date: 07/10/2019
+ms.openlocfilehash: 74df0038676e8459028084890da569ed3b75a682
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561232"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797283"
 ---
-# <a name="limits-in-azure-cosmos-db"></a>Limity w usłudze Azure Cosmos DB
+# <a name="azure-cosmos-db-service-quotas"></a>Przydziały usługi w usłudze Azure Cosmos DB
 
-Ten artykuł zawiera omówienie limitów w usłudze Azure Cosmos DB.
+Ten artykuł zawiera omówienie domyślne limity przydziału oferowana na różnych zasobów w usłudze Azure Cosmos DB.
 
 ## <a name="storage-and-throughput"></a>Magazynu i przepływności
 

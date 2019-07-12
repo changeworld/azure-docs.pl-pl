@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2018
 ms.author: victorh
-ms.openlocfilehash: 9b3586080f1b0d42548ed9b0d676f357dd1e4e45
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 157f7fa0979da21584550e7669a20f670aca5219
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66729586"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785720"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Tworzenie bramy aplikacji za pomocą wewnętrznego przekierowania przy użyciu programu Azure PowerShell
 
@@ -298,7 +298,7 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ## <a name="test-the-application-gateway"></a>Testowanie bramy aplikacji
 
-Wpisz nazwę swojej domeny na pasku adresu przeglądarki. Na przykład http://www.contoso.com.
+Wpisz nazwę swojej domeny na pasku adresu przeglądarki. Takich jak http\:/ / www.contoso.com.
 
 ![Testowanie witryny contoso w bramie aplikacji](./media/tutorial-internal-site-redirect-powershell/application-gateway-iistest.png)
 

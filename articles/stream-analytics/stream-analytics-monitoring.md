@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 6/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 54ff94cad3034e3679e57e5596ca13f3430cbbb3
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: a4fc6db300a24d483e88efe668645d2cdb62496b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340556"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612272"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Omówienie monitorowania zadań usługi Stream Analytics oraz monitorowanie zapytań
 
@@ -66,5 +66,5 @@ Aby uzyskać dalszą pomoc, skorzystaj z naszego [forum usługi Azure Stream Ana
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)
 * [Scale Azure Stream Analytics jobs (Skalowanie zadań usługi Azure Stream Analytics)](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics Query Language Reference (Dokumentacja dotycząca języka zapytań usługi Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure Stream Analytics Query Language Reference (Dokumentacja dotycząca języka zapytań usługi Azure Stream Analytics)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics Management REST API Reference (Dokumentacja interfejsu API REST zarządzania usługą Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn835031.aspx)

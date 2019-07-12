@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 17b9d11b75e2677e22fa2e38c21a69f018a4bee8
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 8e3b6d0fbefb8e3d3437fd5e24f929e453c573df
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508341"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621011"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics na urządzeniach brzegowych IoT Edge
  
@@ -81,7 +81,7 @@ Kontener magazynu jest wymagane w celu eksportowania zapytania ASA skompilowane 
 4. Ustaw informacje o kontenerze magazynu w **ustawienia usługi IoT Edge** menu.
 
 5. Ustawienia opcjonalne
-    1. **Określanie kolejności zdarzeń**. W portalu, można skonfigurować zasady poza kolejnością. Dokumentacja jest dostępna [tutaj](https://msdn.microsoft.com/library/azure/mt674682.aspx?f=255&MSPPError=-2147217396).
+    1. **Określanie kolejności zdarzeń**. W portalu, można skonfigurować zasady poza kolejnością. Dokumentacja jest dostępna [tutaj](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
     2. **Ustawienia regionalne**. Ustaw internalization format.
 
 

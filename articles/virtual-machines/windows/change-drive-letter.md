@@ -4,7 +4,7 @@ description: 'Zawiera opis sposobu zmiany litery dysku dla maszyny Wirtualnej z 
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 0867a931-0055-4e31-8403-9b38a3eeb904
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
-ms.openlocfilehash: cfd46d5e9750a81d89ed6d3a79bcc9bffdc3d0dd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 12986068a761b92611c557a0dfcf08905283b8bd
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60844203"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67719241"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>Użycie dysku D: jako dysku danych na maszyny Wirtualnej z systemem Windows
 Jeśli Twoja aplikacja potrzebuje do skorzystania z dysku D do przechowywania danych, wykonaj te instrukcje, aby użyć innej litery dysku dla dysków tymczasowych. Nigdy nie należy używać dysku tymczasowego do przechowywania danych, który chcesz zachować.
@@ -60,9 +60,9 @@ Najpierw należy dołączyć dysk danych do maszyny wirtualnej. Aby to zrobić z
 5. W **pamięci wirtualnej** zaznacz **zmiany**.
 6. Wybierz dysk systemu operacyjnego **C** i kliknij przycisk **plik stronicowania nie** a następnie kliknij przycisk **ustaw**.
 7. Wybierz dysk magazynu tymczasowego **T** a następnie kliknij przycisk **System zarządzany rozmiar** a następnie kliknij przycisk **ustaw**.
-8. Kliknij przycisk **Zastosuj**. Zostanie wyświetlone ostrzeżenie, czy komputer wymaga ponownego uruchomienia, aby zmiany zostały wprowadzone.
+8. Kliknij przycisk **zastosować**. Zostanie wyświetlone ostrzeżenie, czy komputer wymaga ponownego uruchomienia, aby zmiany zostały wprowadzone.
 9. Uruchom ponownie maszynę wirtualną.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Możesz zwiększyć dostępny magazyn do maszyny wirtualnej przez [dołączanie dysku danych dodatkowych](attach-managed-disk-portal.md).
 

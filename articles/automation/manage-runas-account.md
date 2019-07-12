@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6fceee819762e10809a94f72d944e7625cb7e67c
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 49b8554f6064f036d4305cf7a5c1450c2f18c48d
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478566"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798476"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Zarządzanie kontami Uruchom jako usługi Azure Automation
 
@@ -45,7 +45,7 @@ Istnieją dwa typy kont Uruchom jako:
 
 Aby utworzyć lub zaktualizować konto Uruchom jako, musi mieć określone uprawnienia i uprawnienia. Administrator globalny usługi Azure Active Directory i właściciel subskrypcji może wykonanie wszystkich zadań. W sytuacji, w którym masz rozdzielenia obowiązków w poniższej tabeli przedstawiono listę zadań, równoważne polecenia cmdlet i wymagane uprawnienia:
 
-|Zadanie|Polecenie cmdlet  |Minimalny poziom uprawnień  |Gdzie można ustawić uprawnienia|
+|Zadanie|Polecenia cmdlet  |Minimalny poziom uprawnień  |Gdzie można ustawić uprawnienia|
 |---|---------|---------|---|
 |Tworzenie aplikacji usługi Azure AD|[New-AzureRmADApplication](/powershell/module/azurerm.resources/new-azurermadapplication)     | Rola dla deweloperów aplikacji<sup>1</sup>        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Strona główna > Usługa Azure Active Directory > Rejestracje aplikacji |
 |Dodawanie poświadczeń do aplikacji.|[New-AzureRmADAppCredential](/powershell/module/AzureRM.Resources/New-AzureRmADAppCredential)     | Administrator aplikacji lub administrator GLOBALNY<sup>1</sup>         |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Strona główna > Usługa Azure Active Directory > Rejestracje aplikacji|
@@ -104,7 +104,7 @@ Ten skrypt programu PowerShell obsługuje następujące konfiguracje:
 
 1. Zapisz na komputerze poniższy skrypt. W tym przykładzie zapisz plik pod nazwą *New-RunAsAccount.ps1*.
 
-   Skrypt używa wielu poleceń cmdlet usługi Azure Resource Manager do tworzenia zasobów. W poniższej tabeli przedstawiono polecenia cmdlet i ich uprawnienia potrzebne.
+   Skrypt używa wielu poleceń cmdlet usługi Azure Resource Manager do tworzenia zasobów. Poprzedni [uprawnienia](#permissions) tabeli przedstawiono polecenia cmdlet i ich uprawnienia potrzebne.
 
     ```powershell
     #Requires -RunAsAdministrator
@@ -370,13 +370,35 @@ Aby odnowić certyfikat, wykonaj następujące czynności:
 
 ## <a name="limiting-run-as-account-permissions"></a>Ograniczenie uprawnień konta — Uruchom jako
 
-Aby kontrolować, przeznaczone dla usługi Automation w odniesieniu do zasobów w usłudze Azure Automation, konto Uruchom jako, domyślnie otrzymuje uprawnienia współautora w subskrypcji. Jeśli musisz ograniczyć, co zrobić, Uruchom jako jednostki usługi, możesz usunąć konto z roli współautora do subskrypcji i dodać go jako współautora do grupy zasobów, które chcesz określić.
+Aby kontrolować, przeznaczone dla usługi Automation w odniesieniu do zasobów na platformie Azure, możesz uruchomić [AutomationRunAsAccountRoleAssignments.ps1 aktualizacji](https://aka.ms/AA5hug8) skryptu w galerii programu PowerShell, aby zmienić swoje istniejące konto Uruchom jako nazwę główną usługi do Tworzenie i używanie niestandardową definicję roli. Ta rola będzie miał uprawnienia do wszystkich zasobów, z wyjątkiem [usługi Key Vault](https://docs.microsoft.com/azure/key-vault/). 
 
-W witrynie Azure portal wybierz **subskrypcje** i wybierz subskrypcję, konta usługi Automation. Wybierz **kontrola dostępu (IAM)** , a następnie wybierz **przypisań ról** kartę. Wyszukiwania dla jednostki usługi dla konta usługi Automation (wygląda jak \<AutomationAccountName\>identyfikator _unique). Wybierz konto, a następnie kliknij przycisk **Usuń** usunąć go z subskrypcji.
+> [!IMPORTANT]
+> Po uruchomieniu `Update-AutomationRunAsAccountRoleAssignments.ps1` skryptu, elementy runbook, które dostęp do magazynu kluczy przy użyciu konta Uruchom jako nie będą już działać. Należy przejrzeć elementy runbook na Twoim koncie dla wywołań do magazynu kluczy Azure.
+>
+> Aby umożliwić dostęp do magazynu kluczy z poziomu elementów runbook usługi Azure Automation, konieczne będzie [dodać konto Uruchom jako do tego magazynu kluczy uprawnień](#add-permissions-to-key-vault).
 
-![Współautorzy subskrypcji](media/manage-runas-account/automation-account-remove-subscription.png)
+Jeśli musisz ograniczyć nazwy głównej usługi RunAs możliwościach dalsze, możesz dodać innych typów zasobów, aby `NotActions` definicji ról niestandardowych. Poniższy przykład ogranicza dostęp do `Microsoft.Compute`. Jeśli ten element, aby dodać **NotActions** definicji roli tej roli nie będzie dostępu do wszystkich zasobów obliczeniowych. Aby dowiedzieć się więcej na temat definicji ról, zobacz [poznać definicje ról na potrzeby zasobów platformy Azure](../role-based-access-control/role-definitions.md).
 
-Aby dodać nazwę główną usługi do grupy zasobów, wybierz grupę zasobów w witrynie Azure portal i wybierz pozycję **kontrola dostępu (IAM)** . Wybierz **Dodaj przypisanie roli**, spowoduje to otwarcie **Dodaj przypisanie roli** strony. Aby uzyskać **roli**, wybierz opcję **Współautor**. W **wybierz** tekstu wpisz nazwę jednostki usługi dla konta Uruchom jako i wybierz ją z listy. Kliknij przycisk **Zapisz**, aby zapisać zmiany. Wykonaj te kroki dla grupy zasobów, którą chcesz nadać usługi Automation Uruchom jako platformy Azure jednostce usługi dostępu do.
+```powershell
+$roleDefinition = Get-AzureRmRoleDefinition -Name 'Automation RunAs Contributor'
+$roleDefinition.NotActions.Add("Microsoft.Compute/*")
+$roleDefinition | Set-AzureRMRoleDefinition
+```
+
+Aby ustalić, czy jednostki usługi używany przez Twoje konto Uruchom jako w **Współautor** lub niestandardową definicję roli przejdź do konta usługi Automation, a w obszarze **ustawienia konta**, wybierz opcję **Uruchom jako konta** > **Azure konto Uruchom jako**. W obszarze **roli** można znaleźć definicji roli, który jest używany. 
+
+[![](media/manage-runas-account/verify-role.png "Sprawdź roli konta Uruchom jako")](media/manage-runas-account/verify-role-expanded.png#lightbox)
+
+Aby określić definicję roli używane przez konta Uruchom jako usługi Automation dla wielu kont usługi Automation lub subskrypcji, możesz użyć [AutomationRunAsAccountRoleAssignments.ps1 wyboru](https://aka.ms/AA5hug5) skryptu w galerii programu PowerShell.
+
+### <a name="add-permissions-to-key-vault"></a>Dodaj uprawnienia do usługi Key Vault
+
+Jeśli chcesz zezwolić usłudze Azure Automation do zarządzania usługi Key Vault i używa niestandardową definicję roli, musisz wykonać dodatkowe kroki, aby umożliwić takie zachowanie nazwy głównej usługi konta Uruchom jako:
+
+* Udziel uprawnień do usługi Key Vault
+* Ustawienie zasad dostępu
+
+Możesz użyć [AutomationRunAsAccountRoleAssignmentToKeyVault.ps1 Rozszerz](https://aka.ms/AA5hugb) skryptu w galerii programu PowerShell, aby udzielić uprawnień konta Uruchom jako do magazynu kluczy, lub odwiedź witrynę [udzielić aplikacji dostępu do magazynu kluczy ](../key-vault/key-vault-group-permissions-for-apps.md) więcej informacji na temat ustawień uprawnień do magazynu kluczy.
 
 ## <a name="misconfiguration"></a>Błąd konfiguracji
 
@@ -399,7 +421,7 @@ The Run As account is incomplete. Either one of these was deleted or not created
 
 Te problemy związane z kontem Uruchom jako można szybko rozwiązać, usuwając konto i tworząc je ponownie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby uzyskać więcej informacji na temat nazw głównych usług, zobacz [obiekty aplikacji i jednostki usługi](../active-directory/develop/app-objects-and-service-principals.md).
 * Aby uzyskać więcej informacji na temat certyfikatów i usług platformy Azure, zobacz [Omówienie certyfikatów usług Azure Cloud Services](../cloud-services/cloud-services-certs-create.md).

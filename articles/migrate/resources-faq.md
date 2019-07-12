@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: snehaa
-ms.openlocfilehash: 17cead93325da903161d95b315435d6e7b106dbb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 08a0312f12b3daab8b7f5e88da118b5bcbeb2f4c
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61292993"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807324"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Usługa Azure Migrate — często zadawane pytania (FAQ)
 
@@ -19,73 +19,43 @@ Ten artykuł zawiera często zadawane pytania dotyczące usługi Azure Migrate. 
 
 ## <a name="general"></a>Ogólne
 
-### <a name="does-azure-migrate-support-assessment-of-only-vmware-workloads"></a>Usługa Azure Migrate obsługuje oceny tylko obciążeń oprogramowania VMware?
+### <a name="which-azure-geographies-are-supported-by-azure-migrate"></a>Które lokalizacje geograficzne platformy Azure są obsługiwane przez usługę Azure Migrate?
+Usługa Azure Migrate obsługuje obecnie szereg różnych obszarach geograficznych, w których można utworzyć projekt usługi Azure Migrate. Mimo że projekty można tworzyć tylko w tych lokalizacjach geograficznych, możesz ocenić swoje maszyn do innych lokalizacji docelowej. Geograficzne projektu jest używana wyłącznie do przechowywania metadanych wykrytych.
 
-Tak, usługa Azure Migrate aktualnie obsługuje tylko oceny obciążeń oprogramowania VMware. Obsługa dla funkcji Hyper-V jest w wersji zapoznawczej, zarejestruj się [tutaj](https://aka.ms/migratefuture) uzyskać dostęp do korzystania z wersji zapoznawczej. W przyszłości zostanie włączona obsługa dla serwerów fizycznych.
-
-### <a name="does-azure-migrate-need-vcenter-server-to-discover-a-vmware-environment"></a>Czy usługa Azure Migrate potrzebuje programu vCenter Server, aby dowiedzieć się, w środowisku programu VMware?
-
-Tak, usługa Azure Migrate wymaga programu vCenter Server, aby dowiedzieć się, w środowisku VMware. Nie obsługuje odnajdywanie hostów ESXi, które nie są zarządzane przez program vCenter Server.
+**Lokalizacja geograficzna** | **lokalizacji magazynu metadanych** Azure dla instytucji rządowych | US Gov Wirginia Azja | Azja południowo-wschodnia i Azja Wschodnia, Europa | Południowo-Europa lub Europa Zachodnia Zjednoczonego Królestwa | Południowe Zjednoczone Królestwo lub Zjednoczone Królestwo zachodnie Stany Zjednoczone | Środkowe stany USA i zachodnie stany USA 2
 
 ### <a name="how-is-azure-migrate-different-from-azure-site-recovery"></a>Czym różni się usługa Azure Migrate z usługi Azure Site Recovery?
 
-Usługa Azure Migrate jest usługą ocenę, która ułatwia odnajdywanie obciążeń lokalnych i Zaplanuj migrację na platformę Azure. [Usługa Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure), oraz że rozwiązanie odzyskiwania po awarii, pomaga w migrowaniu obciążeń lokalnych do maszyn wirtualnych IaaS na platformie Azure.
+Usługa Azure Migrate udostępnia narzędzia, które ułatwiają odnajdowanie, ocenianie i Migrowanie maszyn i obciążeń na platformę Azure. [Usługa Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) jest rozwiązanie odzyskiwania po awarii. Obie te usługi udostępniania niektórych składników.
 
-### <a name="whats-the-difference-between-using-azure-migrate-for-assessments-and-the-map-toolkit"></a>Jaka jest różnica między za pomocą usługi Azure Migrate dla ocen i narzędzi?
+## <a name="azure-migrate-appliance-vmwarephysical-servers"></a>Urządzenie Azure Migrate (VMware/serwerów fizycznych)
 
-[Usługa Azure Migrate](migrate-overview.md) zapewnia ocenę migracji specjalnie, aby ułatwić przygotowanie do migracji i ocena obciążeń lokalnych na platformę Azure. [Microsoft Assessment i zestaw narzędzi do planowania (MAP)](https://www.microsoft.com/en-us/download/details.aspx?id=7826) ma inne funkcje, takie jak migracja planowanie nowsze wersje systemów operacyjnych klienta i serwera Windows i śledzenie użycia oprogramowania. W tych scenariuszach nadal używać narzędzi.
+### <a name="how-does-the-azure-migrate-appliance-connect-to-azure"></a>Jak usługa Azure Migrate urządzenia łączenie z platformą Azure?
 
+Połączenie może być za pośrednictwem Internetu lub za pomocą usługi ExpressRoute publicznej komunikacji równorzędnej.
 
-### <a name="how-is-azure-migrate-different-from-azure-site-recovery-deployment-planner"></a>Czym różni się usługa Azure Migrate z Planisty wdrożenia usługi Azure Site Recovery?
+### <a name="what-network-connectivity-requirements-are-needed-for-azure-migrate-server-assessment-and-migration"></a>Jakie wymagania łączności sieci są wymagane na potrzeby oceny Server migracji platformy Azure i migracji
 
-Usługa Azure Migrate jest migracji za pomocą narzędzia do planowania i planista wdrażania usługi Azure Site Recovery jest Odzyskiwanie po awarii (DR), narzędzia do planowania.
+Zapoznaj się z adresów URL i portów wymaganych przez usługę Azure Migrate do komunikowania się z platformą Azure, [VMWare](migrate-support-matrix-vmware.md) i [funkcji Hyper-V](migrate-support-matrix-hyper-v.md) obsługuje macierzy.
 
-**Migracja z programu VMware na platformę Azure**: Aby przeprowadzić migrację lokalnych obciążeń na platformę Azure, używać usługi Azure Migrate dotyczące planowania migracji. Usługa Azure Migrate ocenia obciążenia lokalne i zapewnia wskazówki, szczegółowe informacje i mechanizmy, aby pomóc w migracji do platformy Azure. Jeśli wszystko jest gotowe dla planu migracji, można użyć usług, takich jak Azure Site Recovery i Azure Database Migration Service, przeprowadzić migrację maszyn na platformę Azure.
+### <a name="can-i-harden-the-appliance-vmware-vm-i-set-up-with-the-ova-template"></a>Czy można zabezpieczyć urządzenie maszyny Wirtualnej VMware, które można skonfigurować za pomocą szablonu OVA?
 
-**Migracja z funkcji Hyper-V na platformę Azure**: Ogólnie dostępnej wersji usługa Azure migrate obsługuje obecnie oceny maszyn wirtualnych VMware do migracji na platformę Azure. Obsługa dla funkcji Hyper-V jest obecnie w wersji zapoznawczej w pomocy technicznej w środowisku produkcyjnym. Jeśli interesują Cię do wypróbowania wersji zapoznawczej, zarejestruj się [tutaj](https://aka.ms/migratefuture).
-
-**Odzyskiwanie po awarii z programu VMware/funkcji Hyper-V na platformę Azure**: Jeśli planujesz wykonać odzyskiwanie po awarii (DR) na platformie Azure przy użyciu usługi Azure Site Recovery (Usługa Site Recovery), na użytek planista wdrażania usługi Site Recovery planowania odzyskiwania po awarii. Planista wdrażania usługi Site Recovery wykonuje głęboką, specyficzne dla usługi ASR oceny środowiska lokalnego. Zapewnia zaleceń, które są wymagane przez usługę Site Recovery dla pomyślnego operacji odzyskiwania po awarii, takich jak replikacja, failover maszyn wirtualnych.  
-
-### <a name="which-azure-geographies-are-supported-by-azure-migrate"></a>Które lokalizacje geograficzne platformy Azure są obsługiwane przez usługę Azure Migrate?
-
-Usługa Azure Migrate obsługuje obecnie Europa, USA i Azure dla instytucji rządowych jako lokalizacje geograficzne projektu. Mimo, że projekty migracji można tworzyć tylko w tych lokalizacjach geograficznych, można nadal oceniać gotowość maszyn w celu [wielu lokalizacjach docelowych](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties). Geograficzne projektu jest używana wyłącznie do przechowywania metadanych wykrytych.
-
-**Lokalizacja geograficzna** | **Lokalizacja magazynu metadanych**
---- | ---
-Azure Government | Administracja USA — Wirginia
-Azja | Azja Południowo-Wschodnia
-Europa | Europa Północna lub Europa Zachodnia
-Stany Zjednoczone | Wschodnie stany USA lub Zachodnio-środkowe stany USA
-
-### <a name="how-does-the-on-premises-site-connect-to-azure-migrate"></a>Jak lokacją lokalną łączyć się z usługi Azure Migrate?
-
-Połączenie może być za pośrednictwem Internetu lub korzystać z usługi ExpressRoute w publicznej komunikacji równorzędnej.
-
-### <a name="what-network-connectivity-requirements-are-needed-for-azure-migrate"></a>Jakie wymagania łączności sieci są wymagane przez usługę Azure Migrate?
-
-Adresy URL i portów wymaganych przez usługę Azure Migrate do komunikowania się z platformą Azure, zobacz [adresy URL dla połączenia](https://docs.microsoft.com/azure/migrate/concepts-collector#urls-for-connectivity).
-
-### <a name="can-i-harden-the-vm-set-up-with-the-ova-template"></a>Czy można zabezpieczyć maszynę Wirtualną z szablonu OVA?
-
-Tak długo, jak komunikacji i reguł zapory wymagane dla usługi Azure Migrate urządzenia do pracy pozostało jest dodatkowych składników (na przykład oprogramowanie antywirusowe) można dodać do szablonu OVA.   
+Tak długo, jak komunikacja i reguł zapory wymagane dla urządzenia usługi Azure Migrate ponownie po lewej stronie, co jest dodatkowe składniki (na przykład oprogramowanie antywirusowe) można dodać do szablonu OVA.   
 
 ### <a name="to-harden-the-azure-migrate-appliance-what-are-the-recommended-antivirus-av-exclusions"></a>Utrwalanie urządzenia usługi Azure Migrate, jakie są zalecane wykluczenia programu antywirusowego (pliki audio i wideo)?
 
-Należy wykluczyć poniższe foldery w urządzenia do skanowania antywirusowego:
+Należy wyłączyć następujące foldery ze skanowania na urządzeniu:
 
-- Folder, który zawiera pliki binarne usługi migracji platformy Azure. Wyklucz wszystkie podfoldery.
-  %ProgramFiles%\ProfilerService  
+- Folder zawierający pliki binarne dla usługi Azure Migrate. Wyklucz wszystkie podfoldery.
+- %ProgramFiles%\ProfilerService  
 - Usługa Azure Migrate aplikacji sieci Web. Wyklucz wszystkie podfoldery.
-  %SystemDrive%\inetpub\wwwroot
-- Lokalnej pamięci podręcznej dla plików dziennika i bazy danych. Usługa Azure migrate usługa wymaga RW dostęp do tego folderu.
-  %SystemDrive%\Profiler
-
-## <a name="discovery"></a>Odnajdywanie
+- %SystemDrive%\inetpub\wwwroot
+- Lokalnej pamięci podręcznej dla plików dziennika i bazy danych. Usługa Azure Migrate potrzebuje odczyt/zapis dostęp do tego folderu.
+  - %SystemDrive%\Profiler
 
 ### <a name="what-data-is-collected-by-azure-migrate"></a>Jakie dane są zbierane przez usługę Azure Migrate?
 
-Usługa Azure Migrate obsługuje dwa rodzaje odnajdywania: oparte na urządzeniach i oparte na agentach.
-Odnajdywanie oparte na urządzeniu zbiera metadane dotyczące lokalnych maszyn wirtualnych, pełną listę metadane zbierane przez urządzenie znajduje się poniżej:
+Urządzenie Azure Migrate umożliwia zbieranie informacji o metadanych dla lokalnych maszyn wirtualnych, w tym:
 
 **Dane konfiguracji maszyny wirtualnej**
 - Nazwa wyświetlana maszyny Wirtualnej (na klawiaturze vCenter)
@@ -108,81 +78,109 @@ Odnajdywanie oparte na urządzeniu zbiera metadane dotyczące lokalnych maszyn w
   - Sieć — wejście
   - Sieć — wyjście
 
-Odnajdywanie oparte na agentach opcja jest dostępna na podstawie odnajdywania oparte na urządzeniu i pomaga klientom [wizualizacja zależności](how-to-create-group-machine-dependencies.md) z lokalnych maszyn wirtualnych. Agenci zależności zbierają informacje, takie jak nazwa FQDN, system operacyjny, adres IP, adres MAC, procesy uruchomione na maszynie wirtualnej oraz przychodzące/wychodzące połączenia TCP na maszynie wirtualnej. Odnajdywanie oparte na agentach jest opcjonalny, a użytkownik może nie zainstalować agentów, jeśli nie chcesz wizualizacja zależności maszyn wirtualnych.
+Dodanie tn, jeśli wdrożysz mapowanie zależności agenci mapowania zależności zbierać informacje, które zawiera nazwę FQDN komputera, systemu operacyjnego, adres IP, adres MAC procesów uruchomionych wewnątrz maszyny Wirtualnej i wychodzących/przychodzących połączeń TCP dla maszyny Wirtualnej. W wyniku tego odnajdywania jest opcjonalna używana tylko po włączeniu mapowania zależności do odnajdywania.
 
-### <a name="would-there-be-any-performance-impact-on-the-analyzed-esxi-host-environment"></a>Będzie mieć żadnego wpływu wydajności na przeanalizowany środowisko hosta ESXi?
+### <a name="is-there-any-performance-impact-on-the-analyzed-esxi-host-environment"></a>W środowisku przeanalizowany hosta ESXi jest wpływ na wydajność?
 
-Za pomocą ciągłego profilowania dane dotyczące wydajności, nie ma potrzeby można zmienić poziomu statystyk serwera, aby uzyskać ocenę na podstawie wydajności programu vCenter. Urządzenie modułu zbierającego będzie profilować maszyn lokalnych do mierzenia dane dotyczące wydajności maszyn wirtualnych. Będzie to miało bliski zeru negatywny wpływ na wydajność, na hostach ESXi, a także w programie vcenter Server.
+Za pomocą ciągłego profilowania dane dotyczące wydajności, profile urządzenia w usłudze Azure Migrate maszyn lokalnych do pomiaru danych wydajności maszyny Wirtualnej. Ma prawie zero negatywny wpływ na wydajność, na hostach ESXi, a także w programie vcenter Server.
 
 ### <a name="where-is-the-collected-data-stored-and-for-how-long"></a>Gdzie jest zebranych danych przechowywanych i na jak długo?
 
-Dane zebrane przez urządzenie modułu zbierającego znajduje się w lokalizacji platformy Azure, które należy określić podczas tworzenia projektu migracji. Dane są bezpiecznie przechowywane w ramach subskrypcji firmy Microsoft i zostanie usunięta, gdy użytkownik usuwa projekt usługi Azure Migrate.
+Dane zebrane przez usługę Azure Migrate urządzenie znajduje się w lokalizacji platformy Azure, która została określona podczas tworzenia projektu migracji. Dane są bezpiecznie przechowywane w ramach subskrypcji firmy Microsoft i zostanie usunięta po usunięciu projektu Azure Migrate.
 
-Dla wizualizacji zależności po zainstalowaniu agentów na maszynach wirtualnych, dane zbierane przez agentów zależności są przechowywane w Stanach Zjednoczonych, w obszarze roboczym usługi Log Analytics utworzonych w subskrypcji użytkownika. Usuwanie danych odbywa się podczas usuwania obszaru roboczego usługi Log Analytics w ramach subskrypcji. [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/concepts-dependency-visualization).
+Dla wizualizacji zależności po zainstalowaniu agentów na maszynach wirtualnych, dane zbierane przez agentów zależności są przechowywane w Stanach Zjednoczonych, w obszarze roboczym usługi Log Analytics utworzonych w subskrypcji platformy Azure. Usuwanie danych odbywa się podczas usuwania obszaru roboczego usługi Log Analytics w ramach subskrypcji. [Dowiedz się więcej](concepts-dependency-visualization.md).
 
-### <a name="what-is-the-volume-of-data-which-is-uploaded-by-azure-migrate-in-the-case-of-continuous-profiling"></a>Co to jest ilość danych, który jest przekazywany przez usługę Azure Migrate w przypadku ciągłego profilowania?
+### <a name="what-is-the-volume-of-data-uploaded-by-azure-migrate-during-continuous-profiling"></a>Co to jest ilość danych przekazanych przez usługę Azure Migrate podczas profilowania ciągły?
 
-Ilość danych, które są przesyłane do usługi Azure Migrate może zależeć od kilku parametrów. Aby dać liczbą orientacyjny, projektów, mające dziesięć maszyn, (każdy dysk i jedną kartą Sieciową), prześle około 50 MB dziennie. To jest przybliżona wartość i zmienić na podstawie liczby punktów danych dla kart sieciowych i dyskach (dane wysyłane jest inny niż liniowy Jeśli zwiększyć liczbę maszyn, kart sieciowych lub dysków).
+Ilość danych wysyłanych do usługi Azure Migrate zależy od kilku parametrów. Aby dać liczbą orientacyjny, projekt usługi Azure Migrate z 10 maszynami, (każdy z jednego dysku i jedną kartą Sieciową), wysyła około 50 MB dziennie. Jest to wartość przybliżona, które zmiany na podstawie liczby punktów danych dla kart sieciowych i dyskach (dane wysyłane jest inny niż liniowy Jeśli zwiększyć liczbę maszyn, kart sieciowych lub dysków).
 
-### <a name="is-the-data-encrypted-at-rest-and-while-in-transit"></a>Czy dane są szyfrowane podczas przechowywania i przesyłanych?
+### <a name="is-the-data-encrypted-at-rest-and-in-transit"></a>Jest w stanie spoczynku i przesyłane dane zaszyfrowane?
 
-Tak, zebrane dane są szyfrowane zarówno magazynowanych i przesyłanych. Metadane zbierane przez urządzenie są bezpiecznie wysyłane do usługi Azure Migrate za pośrednictwem sieci internet za pośrednictwem protokołu https. Zebrane metadane są przechowywane w [Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest) i [usługi Azure blob storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) w ramach subskrypcji firmy Microsoft i jest szyfrowane, gdy.
+Tak, dla obu. Metadane są bezpiecznie wysyłane do usługi Azure Migrate w Internecie za pośrednictwem protokołu https. Metadane są przechowywane w [Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest), a następnie w [usługi Azure blob storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) w ramach subskrypcji firmy Microsoft i szyfrowania magazynowanych.
 
-Dane zbierane przez agentów zależności jest również zaszyfrowane na tranzyt (https bezpiecznej channel) i są przechowywane w obszarze roboczym usługi Log Analytics w subskrypcji użytkownika. Jest ona również są szyfrowane w stanie spoczynku.
+Dane zbierane przez agentów zależności również są zaszyfrowane na tranzyt (bezpieczne HTTPS) i są przechowywane w obszarze roboczym usługi Log Analytics w ramach subskrypcji użytkownika. Jest to również szyfrowania magazynowanych.
 
-### <a name="how-does-the-collector-communicate-with-the-vcenter-server-and-the-azure-migrate-service"></a>Jak moduł zbierający komunikacji przy użyciu programu vCenter Server i usługi Azure Migrate?
+### <a name="how-does-the-azure-migrate-appliance-communicate-with-the-vcenter-server-and-the-azure-migrate-service"></a>Jak urządzenia usługi Azure Migrate komunikacji przy użyciu programu vCenter Server i usługi Azure Migrate?
 
-Urządzenie modułu zbierającego łączy się z serwerem vCenter (port 443) przy użyciu poświadczeń dostarczonych przez użytkownika na urządzeniu. Wysyła ono zapytanie do serwera vCenter przy użyciu programu VMware PowerCLI, aby zebrać metadane dotyczące maszyn wirtualnych zarządzanych przez serwer vCenter. Zbiera ono dane konfiguracji maszyn wirtualnych (rdzenie, pamięć, dyski, karty sieciowe itp.) oraz historię wydajności każdej maszyny wirtualnej z ostatniego miesiąca z programu vCenter Server. Zebrane metadane są następnie wysyłane do usługi Azure Migrate (za pośrednictwem Internetu przez protokół https) w celu przeprowadzenia oceny. [Dowiedz się więcej](concepts-collector.md)
+Urządzenie łączy z programem vCenter Server (port 443) przy użyciu poświadczeń dostarczonych podczas konfigurowania urządzenia. Wykonuje kwerendę w programie vCenter Server przy użyciu interfejs PowerCLI programu VMware, można zebrać metadanych informacje o maszynach wirtualnych zarządzanych przez program vCenter Server. Zbiera informacje o maszynach wirtualnych (rdzeni, pamięć, dyski, karta sieciowa itp.), zarówno dla danych konfiguracji oraz historii wydajności każdej maszyny wirtualnej w ostatnim miesiącu. Zebrane metadane są następnie wysyłane do migracji serwera oceny Azure (za pośrednictwem sieci internet za pośrednictwem protokołu HTTPS) dla oceny. 
 
-### <a name="can-i-connect-the-same-collector-appliance-to-multiple-vcenter-servers"></a>Czy można połączyć tego samego urządzenia modułu zbierającego, aby wiele serwerów vCenter?
+### <a name="can-i-connect-the-same-appliance-to-multiple-vcenter-servers"></a>Czy można połączyć tego samego urządzenia, aby wiele serwerów vCenter?
 
-Tak, jedno urządzenie modułu zbierającego może służyć do wykrywania wielu serwerów vCenter, ale nie jednocześnie. Odnajdywanie należy uruchamiać po kolei.
+Tak, z jednego urządzenia usługi Azure Migrate może służyć do odnajdywania vCenter wielu serwerów, ale nie jednocześnie. Musisz uruchomić odnajdywanie, jeden po drugim.
 
 ### <a name="is-the-ova-template-used-by-site-recovery-integrated-with-the-ova-used-by-azure-migrate"></a>Czy szablon OVA używany przez usługę Site Recovery jest zintegrowana z usługą OVA używane przez usługę Azure Migrate?
 
-Obecnie nie ma żadnych integracji. . Szablon OVA w usłudze Site Recovery jest używany do konfigurowania serwera konfiguracji Usługa Site Recovery w celu replikacji serwera fizycznego/VMware, maszyny Wirtualnej. . OVA używane przez usługę Azure Migrate służy do odnalezienia maszyn wirtualnych VMware, zarządzane przez serwer vCenter, na potrzeby oceny migracji.
+Obecnie nie ma żadnych integracji. . Szablon OVA w usłudze Site Recovery jest używany do konfigurowania serwera konfiguracji Usługa Site Recovery w celu replikacji serwera fizycznego/VMware, maszyny Wirtualnej. . OVA używane przez usługę Azure Migrate jest używana do wykrywania zarządzane przez serwer vCenter do celów oceny i migracji maszyn wirtualnych VMware.
 
-### <a name="i-changed-my-machine-size-can-i-rerun-the-assessment"></a>Czy mogę zmienić mój rozmiar maszyny. Czy można ponownie uruchomić ocenę?
-
-Jeśli zmienisz ustawienia na maszynie wirtualnej, którą chcesz ocenić, ponownie wyzwól odnajdywanie przy użyciu urządzenia modułu zbierającego. W tym celu w urządzeniu użyj opcji **Ponownie uruchom zbieranie**. Po zakończeniu zbierania wybierz opcję **Oblicz ponownie** dla oceny w portalu, aby pobrać zaktualizowane wyniki oceny.
+### <a name="i-changed-my-machine-size-can-i-rerun-an-assessment"></a>Czy mogę zmienić mój rozmiar maszyny. Czy można ponownie uruchomić ocenę?
+Urządzenie Azure Migrate stale zbiera informacje o środowisku lokalnym. Ocena jest jednak migawkę punktu w czasie lokalnych maszyn wirtualnych. Jeśli zmienisz ustawienia na maszynie Wirtualnej, którą chcesz ocenić, użyj opcji "Oblicz ponownie", można zaktualizować oceny z najnowszymi zmianami.
 
 ### <a name="how-can-i-discover-a-multi-tenant-environment-in-azure-migrate"></a>Jak można odnaleźć środowiska z wieloma dzierżawami w usłudze Azure Migrate?
 
-Jeśli masz środowisko, który jest współużytkowany przez dzierżawców i nie chcesz odnajdywanie maszyn wirtualnych z jednej dzierżawy w innej dzierżawie subskrypcji, można użyć pola zakresu w urządzenia modułu zbierającego do określania zakresu odnajdywania. Jeśli dzierżawy współużytkują hostów, Utwórz poświadczenie, które ma dostęp tylko do odczytu do tylko maszyny wirtualne należące do określonej dzierżawy, a następnie korzystać z poświadczenia urządzenia modułu zbierającego i określ zakres jako hosta w celu odnajdywania. Alternatywnie można także utworzyć foldery, w programie vCenter Server (Załóżmy, że folder1 dla tenant1 folder2 dla tenant2), w obszarze udostępnionego hosta, Przenieś maszyny wirtualne dla tenant1 do folder1 i tenant2 do folder2 i zakres odnajdywania w module zbierającym w związku z tym określając odpowiedni folder.
+Dla oprogramowania VMware Jeśli masz środowisko, który jest współużytkowany przez dzierżawców, a nie chcesz do odnalezienia maszyn wirtualnych z jednej dzierżawy w innej dzierżawie subskrypcji, Utwórz vCenter poświadczeniami serwera z dostępem tylko do tych maszyn wirtualnych, które chcesz odnajdywać. Następnie użyj poświadczeń podczas uruchamiania odnajdywania w programie urządzenia usługi Azure Migrate.
 
-### <a name="how-many-virtual-machines-can-be-discovered-in-a-single-migration-project"></a>Ile maszyn wirtualnych można znaleźć w projekcie migracji?
+Dla funkcji Hyper-V, odnajdywanie przy użyciu poświadczeń hosta funkcji Hyper-V, jeśli maszyny wirtualne mają tego samego hosta funkcji Hyper-V, obecnie nie ma możliwości do oddzielania odnajdywania.  
 
-Może odnajdywać 1500 maszyn wirtualnych w projekcie migracji. Jeśli masz więcej maszyn w środowisku lokalnych [więcej](how-to-scale-assessment.md) o jak odkryjesz dużym środowisku, w usłudze Azure Migrate.
+### <a name="how-many-vms-can-be-discovered-using-a-single-migration-appliance"></a>Ile maszyn wirtualnych mogą być wykrywane przez urządzenie jedną migrację?
+
+Można odnajdywać maksymalnie 10 000 maszyn wirtualnych VMware i maksymalnie 5000 maszyn wirtualnych funkcji Hyper-V, przy użyciu urządzenia jedną migrację.  Jeśli masz więcej maszyn w środowisku w środowisku lokalnym, Dowiedz się, jak skalować [funkcji Hyper-V](scale-hyper-v-assessment.md) i [VMware](scale-vmware-assessment.md) oceny.
 
 
-## <a name="assessment"></a>Ocena
+## <a name="azure-migrate-server-assessment"></a>Usługa Azure Migrate: Ocena serwera
 
-### <a name="does-azure-migrate-support-enterprise-agreement-ea-based-cost-estimation"></a>Usługa Azure Migrate wsparcia podmiotu trzeciego podstawie Enterprise Agreement (EA) kosztuje szacowania?
+### <a name="does-azure-migrate-server-assessment-support-assessment-of-physical-servers"></a>Usługa Azure Migrate: Ocena Server obsługuje oceny serwerów fizycznych?
 
-Usługa Azure Migrate nie obsługuje obecnie Szacowanie kosztów dla [oferty z umową Enterprise Agreement](https://azure.microsoft.com/offers/enterprise-agreement-support/). Obejście polega na określić płatność za rzeczywiste użycie jako oferty i ręcznie określania procent rabatu (dotyczy subskrypcji) w polu "Zniżka" we właściwościach oceny.
+Nie, usługa Azure Migrate aktualnie nie obsługuje oceny serwerów fizycznych. 
+
+### <a name="does-azure-migrate-need-vcenter-server-to-discover-a-vmware-environment"></a>Czy usługa Azure Migrate potrzebuje programu vCenter Server, aby dowiedzieć się, w środowisku programu VMware?
+
+Tak, Azure Migrate potrzebuje programu vCenter Server, aby dowiedzieć się, w środowisku VMware. Odnajdywanie hostów ESXi, które nie są zarządzane przez program vCenter Server nie jest obsługiwana.
+
+### <a name="whats-the-difference-between-using-azure-migrate-server-assessment-and-the-map-toolkit"></a>Jaka jest różnica między za pomocą usługi Azure Migrate: Ocena serwera i narzędzi?
+
+Usługa Azure Migrate: Ocena serwera zawiera oceny migracji, aby ułatwić przygotowanie do migracji i ocena obciążeń pod kątem migracji na platformę Azure. [Microsoft Assessment i zestaw narzędzi do planowania (MAP)](https://www.microsoft.com/download/details.aspx?id=7826) ma inne funkcje, takie jak migracja planowanie nowsze wersje systemów operacyjnych klienta i serwera Windows i śledzenie użycia oprogramowania. W tych scenariuszach nadal używać narzędzi.
+
+### <a name="how-is-azure-migrate-server-assessment-different-from-azure-site-recovery-deployment-planner"></a>Jak jest usługa Azure Migrate: Ocena serwera różni się od planista wdrażania usługi Azure Site Recovery?
+
+Usługa Azure Migrate: Ocena serwera jest migracji za pomocą narzędzia do planowania. Planista wdrażania usługi Azure Site Recovery jest narzędzia do planowania odzyskiwania po awarii.
+
+- **Migracja z programu VMware/funkcji Hyper-V na platformę Azure**: Aby przeprowadzić migrację usługi na serwerach lokalnych na platformę Azure, należy użyć usługi Azure Migrate: Narzędzie oceny serwera dotyczące planowania migracji. Narzędzie ocenia obciążenia lokalne i zapewnia wskazówki, szczegółowe informacje i mechanizmy, aby pomóc w migracji do platformy Azure. Jeśli wszystko jest gotowe dla planu migracji, można użyć narzędzi, takich jak usługa Azure Migrate: Migracja serwera przeprowadzić migrację maszyn na platformę Azure.
+- **Odzyskiwanie po awarii z programu VMware/funkcji Hyper-V na platformę Azure**: Do odzyskiwania po awarii na platformie Azure przy użyciu funkcji odzyskiwania lokacji na użytek planista wdrażania usługi Site Recovery planowania odzyskiwania po awarii. Planista wdrażania usługi Site Recovery wykonuje szczegółowej, oceny określonego odzyskiwania lokacji środowiska lokalnego. Zapewnia zaleceń zapewniających pomyślne odzyskiwanie po operacji, takich jak replikacji i trybu failover maszyn wirtualnych przez usługę Site Recovery. 
+
+### <a name="does-azure-migrate-support-enterprise-agreement-ea-based-cost-estimation"></a>Usługa Azure Migrate obsługuje szacowania kosztów na podstawie umowy Enterprise Agreement EA?
+
+Usługa Azure Migrate nie obsługuje obecnie Szacowanie kosztów dla [oferty z umową Enterprise Agreement](https://azure.microsoft.com/offers/enterprise-agreement-support/). Obejście polega na określić płatność za rzeczywiste użycie jako oferty i ręcznie określić procent rabatu (dotyczy subskrypcji) w polu "Rabat" we właściwościach oceny.
 
   ![Rabat](./media/resources-faq/discount.png)
 
-### <a name="what-is-the-difference-between-as-on-premises-sizing-and-performance-based-sizing"></a>Jaka jest różnica między ustalania rozmiaru jako — w środowisku lokalnym i ustalania rozmiaru na podstawie wydajności?
+### <a name="whats-the-difference-between-as-on-premises-sizing-and-performance-based-sizing"></a>Jaka jest różnica między ustalania rozmiaru jako — w środowisku lokalnym i ustalania rozmiaru na podstawie wydajności?
 
-Po określeniu kryterium ustalania rozmiaru jako jako on-premises zmiany rozmiaru, usługa Azure Migrate nie należy wziąć pod uwagę dane wydajności maszyn wirtualnych i rozmiarach maszyn wirtualnych na podstawie konfiguracji w środowisku lokalnym. Jeśli kryterium ustalania rozmiaru jest oparte na wydajności, zmiany rozmiaru odbywa się na podstawie danych użycia. Na przykład, jeśli istnieje lokalna maszyna wirtualna z 4 rdzenie i 8 GB pamięci RAM z 50% wykorzystania Procesora i wykorzystania pamięci 50%. Jeśli kryterium ustalania rozmiaru jest rozmiaru jednostki SKU maszyny Wirtualnej platformy Azure z 4 rdzenie lokalne i 8GB pamięci RAM zaleca się, jednak jeśli kryterium ustalania rozmiaru na podstawie wydajności jako jednostki SKU maszyny Wirtualnej 2 rdzeni i 4 GB mogłoby być zaleca się jako procent wykorzystania jest uznawana za podczas rekomendowanie rozmiar. Podobnie dysków, rozmiaru dysku zależy od dwóch właściwości oceny — zmiany rozmiaru typu kryterium i magazynu. Jeśli kryterium ustalania rozmiaru jest oparte na wydajności, a typ magazynu to Automatyczny, uwzględniane są wartości przepływności i liczby operacji we/wy na sekundę dysku w celu zidentyfikowania docelowego typu dysku (warstwa Standardowa lub Premium). Jeśli kryterium ustalania rozmiaru jest oparte na wydajności, a typ magazynu to Premium, zalecany jest dysk w warstwie Premium. Jednostka SKU dysku w warstwie Premium na platformie Azure jest wybierana na podstawie rozmiaru dysku lokalnego. Ta sama logika jest używana do ustalania rozmiaru dysków, gdy kryterium jest ustalanie rozmiaru jako lokalnego, a typ magazynu to warstwa Standardowa lub Premium.
+- W lokalne zmiany rozmiaru, usługa Azure Migrate nie bierze pod uwagę dane wydajności maszyn wirtualnych. Jego rozmiary maszyn wirtualnych na podstawie konfiguracji w środowisku lokalnym. -W ustalania rozmiaru na podstawie wydajności, zmiany rozmiaru jest oparta na danych użycia.
+- Na przykład jeśli lokalna maszyna wirtualna ma 4 rdzenie i 8 GB pamięci RAM z 50% użycia Procesora CPU i użycie pamięci przez program 50%, jako lokalne ustalanie rozmiaru zaleca jednostki SKU maszyny Wirtualnej platformy Azure z 4 rdzenie i 8GB pamięci RAM. Ustalanie rozmiaru na podstawie wydajności, jednak zaleca, jednostki SKU maszyny Wirtualnej 2 rdzeni i 4 GB, ponieważ przyjęto, że wartość procentowa użycia.
+- Podobnie zmiany rozmiaru dysku zależy od dwóch właściwości oceny — zmiany rozmiaru typu kryterium i magazynu.
+= Jeśli kryterium ustalania rozmiaru jest oparte na wydajności i magazynu jest uruchomiana automatycznie, wartości operacje We/Wy i przepływność dysku są uwzględniane przy identyfikowaniu typ dysku docelowego (standardowa / Premium).
+- Jeśli kryterium ustalania rozmiaru jest oparte na wydajności i typ magazynu jest premium, zaleca się dysku w warstwie premium. Dysku w warstwie premium, jednostka SKU jest wybierane na podstawie rozmiaru dysku w środowisku lokalnym. Ta sama logika jest używany do dysku zmiany rozmiaru, jeśli kryterium ustalania rozmiaru to lokalne zmiany rozmiaru, a typ magazynu to standardowa lub premium.
 
 ### <a name="what-impact-does-performance-history-and-percentile-utilization-have-on-the-size-recommendations"></a>Jaki wpływ wydajności historii i percentyl użycia ma na zaleceń dotyczących rozmiarów?
 
-Te właściwości dotyczą tylko ustalania rozmiaru na podstawie wydajności. Usługa Azure Migrate zbiera informacje o historii wydajności maszyn lokalnych i używa ich do określania zalecanych rozmiarów maszyn wirtualnych i typów dysków na platformie Azure. Urządzenie modułu zbierającego stale profiluje środowisko lokalne w celu zbierania danych użycia w czasie rzeczywistym co 20 sekund. Urządzenie podsumowuje 20-sekundowe próbki i tworzy jeden punkt danych co 15 minut. Aby utworzyć jeden punkt danych, urządzenie wybiera szczytową wartość z wszystkich 20-sekundowych próbek i wysyła ją do platformy Azure. Podczas tworzenia oceny na platformie Azure (na podstawie czasu trwania wydajności i wartości percentylu historii wydajności) usługa Azure Migrate oblicza wartość efektywnego użycia i na tej podstawie ustala rozmiar. Na przykład, jeśli zostały ustawione czas trwania wydajności za 1 dzień i percentyl wartości 95. percentyl, usługę Azure migrate przykładowe 15 min punktów wysyłane przez moduł zbierający dla ostatniego dnia, posortowane w kolejności rosnącej, a następnie wybiera wartość 95. percentyla jako skuteczne ut ilization. Wartość 95. percentyla gwarantuje, że ignorujesz jakiekolwiek elementy odstające, które mogą występować w przypadku wybrania 99. percentylu. Jeśli chcesz wybrać szczytowe użycie w danym okresie i nie pomijać żadnych elementów odstających, wybierz 99. percentyl.
+Te właściwości dotyczą tylko ustalania rozmiaru na podstawie wydajności.
 
-## <a name="dependency-visualization"></a>Wizualizacja zależności
+- Usługa Azure Migrate umożliwia zbieranie informacji o historii wydajności maszyn lokalnych i używa go w celu zaleca się typu dysk i rozmiar maszyny Wirtualnej na platformie Azure.
+- Urządzenie ciągle profile w lokalnym środowisku na potrzeby zbierania danych użycia w czasie rzeczywistym, co 20 sekund. Urządzenie podsumowuje 20-sekundowe próbki i tworzy jeden punkt danych co 15 minut. Aby utworzyć jeden punkt danych, urządzenie wybiera szczytową wartość z wszystkich 20-sekundowych próbek i wysyła ją do platformy Azure.
+- Po utworzeniu oceny na platformie Azure (oparte na czas trwania wydajności i wartość percentylu historii wydajności) usługi Azure Migrate oblicza wartość efektywne wykorzystanie i używa go na potrzeby zmiany rozmiaru.
+- Na przykład, jeśli ustawić czas trwania wydajności za jeden dzień, a wartość do 95. percentyl, usługa Azure Migrate używa 15 punktów minuty przykładowe wysyłanych przez moduł zbierający w ciągu ostatniego dnia, posortowane w kolejności rosnącej, a wybiera wartość 95. percentyla jako efektywne wykorzystanie.
+- Wartość 95. percentyla gwarantuje, że ignorujesz jakiekolwiek elementy odstające, które mogą wystąpić, jeśli używasz 99. percentylu. Jeśli chcesz wybrać szczytowe użycie w danym okresie i nie pomijać żadnych elementów odstających, wybierz 99. percentyl.
+
+### <a name="what-is-dependency-visualization"></a>Co to jest wizualizacji zależności?
+
+Wizualizacja zależności umożliwia ocenę grupy maszyn wirtualnych do migracji z większą pewnością. Jego kontroli zależności maszyny przed uruchomieniem oceny. Wizualizacja zależności pomaga upewnić się, że nic nie jest pozostawione i uniknąć awarii podczas migracji na platformę Azure. Usługa Azure Migrate korzysta z rozwiązania Service Map w dziennikach usługi Azure Monitor, aby umożliwić wizualizacji zależności.
 
 > [!NOTE]
 > Funkcja wizualizacji zależności nie jest dostępna na platformie Azure Government.
 
-### <a name="what-is-dependency-visualization"></a>Co to jest wizualizacji zależności?
-
-Wizualizacja zależności umożliwia ocenę grupy maszyn wirtualnych do migracji z większą pewnością przez krzyżowe sprawdzanie zależności maszyny, przed uruchomieniem oceny. Wizualizacja zależności pomaga upewnić się, że nic nie jest pozostawione, unikanie nieoczekiwanych awarii podczas migracji na platformę Azure. Usługa Azure Migrate korzysta z rozwiązania Service Map w dziennikach usługi Azure Monitor, aby umożliwić wizualizacji zależności.
-
 ### <a name="do-i-need-to-pay-to-use-the-dependency-visualization-feature"></a>Czy muszę płacić za używanie funkcji wizualizacji zależności?
 
-Nie. Więcej informacji o cenach usługi Azure Migrate można uzyskać [tutaj](https://azure.microsoft.com/pricing/details/azure-migrate/).
+Nie. [Uzyskaj więcej informacji](https://azure.microsoft.com/pricing/details/azure-migrate/) o cenach usługi Azure Migrate.
 
 ### <a name="do-i-need-to-install-anything-for-dependency-visualization"></a>Czy należy zainstalować żadnych wizualizacji zależności?
 
@@ -192,40 +190,42 @@ Aby użyć wizualizacji zależności, musisz pobrać i zainstalować agentów na
 - [Agenta zależności](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure) musi być zainstalowany na każdym komputerze.
 - Ponadto w przypadku maszyn bez łączności internetowej musisz pobrać i zainstalować bramę usługi Log Analytics na nich.
 
-Nie potrzebujesz tych agentów na komputerach, które chcesz ocenić, jeśli nie używasz wizualizacji zależności.
+Jeśli nie używasz wizualizacji zależności, nie potrzebujesz tych agentów.
 
 ### <a name="can-i-use-an-existing-workspace-for-dependency-visualization"></a>Czy można używać istniejącego obszaru roboczego w celu wizualizacji zależności?
 
-Tak, usługa Azure Migrate umożliwia teraz dołączenie istniejącego obszaru roboczego do projektu migracji i wykorzystaj je do wizualizacji zależności. [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/concepts-dependency-visualization#how-does-it-work).
+Tak, można dołączyć istniejącego obszaru roboczego do projektu migracji i korzystanie z jej na potrzeby wizualizacji zależności. [Dowiedz się więcej](concepts-dependency-visualization.md#how-does-it-work).
 
 ### <a name="can-i-export-the-dependency-visualization-report"></a>Czy mogę wyeksportować raport wizualizacji zależności?
 
-Nie. Nie można wyeksportować wizualizacji zależności. Jednakże, ponieważ usługa Azure Migrate rozwiązania Service map dla wizualizacji zależności, możesz użyć [interfejsów API REST usługi Service Map](https://docs.microsoft.com/rest/api/servicemap/machines/listconnections) można pobrać zależności w formacie json.
+Nie, nie można wyeksportować wizualizacji zależności. Jednakże, ponieważ usługa Azure Migrate rozwiązania Service map dla wizualizacji zależności, możesz użyć [interfejsów API REST usługi Service Map](https://docs.microsoft.com/rest/api/servicemap/machines/listconnections) można pobrać zależności w formacie json.
 
 ### <a name="how-can-i-automate-the-installation-of-microsoft-monitoring-agent-mma-and-dependency-agent"></a>Jak można zautomatyzować instalację programu Microsoft Monitoring Agent (MMA) i agenta zależności
 
-[W tym miejscu](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) to skrypt, który służy do instalowania agenta zależności. [W tym miejscu](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) znajdują się instrukcje na sposób instalowania programu MMA przy użyciu wiersza polecenia lub zautomatyzowanych metod. Dla programu MMA, można również korzystać z dostępnych skrypt [tutaj](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab) w witrynie Technet.
+[Użyj tego skryptu](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) instalacji agentów. [Wykonaj te instrukcje](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) do zainstalowania przy użyciu wiersza polecenia lub automatyzacji programu MMA. Agent MMA, można wykorzystać [ten skrypt](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
 
-Oprócz skryptów, możesz także korzystać z narzędzia wdrażania, takich jak System Center Configuration Manager (SCCM), [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) itp., aby wdrożyć agentów.
+Oprócz skryptów, można użyć narzędzia wdrażania, takich jak System Center Configuration Manager [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) itp., aby wdrożyć agentów.
 
-### <a name="what-are-the-operating-systems-supported-by-mma"></a>Co to są systemów operacyjnych obsługiwanych przez MMA?
+### <a name="what-operating-systems-are-supported-by-mma"></a>Jakie systemy operacyjne są obsługiwane przez MMA?
 
-Lista systemów operacyjnych Windows obsługiwanych przez MMA jest [tutaj](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems).
-Lista systemów operacyjnych Linux obsługiwane przez MMA jest [tutaj](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems).
+- [Przegląd](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems) listę systemów operacyjnych Windows obsługiwanych przez MMA.
+- [Przeglądu] https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems) listę systemów operacyjnych Linux obsługiwane przez MMA.
 
-### <a name="what-are-the-operating-systems-supported-by-dependency-agent"></a>Co to są systemy operacyjne obsługiwane przez agenta zależności?
+### <a name="what-are-the-operating-systems-supported-by-the-dependency-agent"></a>Co to są systemy operacyjne obsługiwane przez agenta zależności?
 
-Lista systemów operacyjnych Windows obsługiwanych przez agenta zależności jest [tutaj](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-windows-operating-systems).
-Lista systemów operacyjnych Linux obsługiwane przez agenta zależności jest [tutaj](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems).
+[Przegląd](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-windows-operating-systems) systemy operacyjne Windows, które są obsługiwane przez agenta zależności.
+[Przegląd](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems) listę systemów operacyjnych Linux obsługiwane przez agenta zależności.
 
-### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>Aby uzyskać więcej niż jedna godzina, czas trwania można zwizualizować zależności w usłudze Azure Migrate?
-Nie, usługa Azure Migrate umożliwia wizualizowanie zależności maksymalnie jedną godzinę czasu trwania. Usługa Azure Migrate umożliwia wróć do określonej daty w historii dla maksymalnie ostatni miesiąc, ale maksymalny czas trwania, dla którego można wizualizować zależności jest maksymalnie 1 godzinę. Na przykład można użyć funkcji okres czasu z mapy zależności, aby wyświetlić zależności dla wczoraj, ale tylko wtedy można wyświetlić okna jedną godzinę. Jednak można użyć usługi Azure Monitor dzienniki, aby [wykonywanie zapytań o dane zależności](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) przez dłuższy czas.
+### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-an-hour"></a>Czy mogę zwizualizować zależności w usłudze Azure Migrate na więcej niż godzinę?
+Nie można wizualizować zależności nawet przez godzinę. Możesz przejść z powrotem do określonej daty w historii, maksymalnie ostatni miesiąc, ale maksymalny czas trwania dla wizualizacji jest godzina. Na przykład można użyć czas trwania w mapowaniu zależności, aby wyświetlić zależności dla wczoraj, ale tylko wtedy można wyświetlić okna jedną godzinę. Jednak można użyć usługi Azure Monitor dzienniki, aby [wykonywanie zapytań o dane zależności](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) przez dłuższy czas.
 
-### <a name="is-dependency-visualization-supported-for-groups-with-more-than-10-vms"></a>Wizualizacji zależności jest obsługiwane dla grup za pomocą ponad 10 maszyn wirtualnych?
-Możesz [wizualizacja zależności dla grup](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) maksymalnie 10 maszyn wirtualnych, które mają. Jeśli istnieje grupa z ponad 10 maszyn wirtualnych, zalecamy wizualizowanie zależności i podzielić grupy w mniejszym grupom.
+### <a name="is-dependency-visualization-supported-for-groups-with-more-than-ten-vms"></a>Wizualizacji zależności jest obsługiwane dla grup za pomocą ponad dziesięć maszyn wirtualnych?
+Możesz [wizualizacja zależności dla grup](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) maksymalnie 10 maszyn wirtualnych. Jeśli istnieje grupa z więcej niż dziesięć maszyn wirtualnych, firma Microsoft zaleca, aby podzielić grupy w mniejszych grup, a następnie wizualizować zależności.
 
+## <a name="azure-migrate-server-migration"></a>Usługa Azure Migrate: Migracja serwera
 
+### <a name="how-is-azure-migrate-server-migration-different-from-azure-site-recovery"></a>Jak jest usługa Azure Migrate: Migracja serwera różni się od usługi Azure Site Recovery?
+
+Usługa Azure Migrate: Migracja serwera korzysta z aparatu replikacji usługa Site Recovery do migracji serwerów do platformy Azure opartej o agentów.
 ## <a name="next-steps"></a>Kolejne kroki
-
-- Odczyt [usługi Azure Migrate — Przegląd](migrate-overview.md)
-- Dowiedz się, jak [odnajdywanie i ocenianie](tutorial-assessment-vmware.md) środowisku programu VMware
+Odczyt [usługi Azure Migrate — Przegląd](migrate-services-overview.md)

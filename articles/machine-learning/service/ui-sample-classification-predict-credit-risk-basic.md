@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: f37c945758cfbd03889d79acf764e7f67022267a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6ec91ca83d7aa1bc5e6c290d35b573a60cc0ed19
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65789400"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605770"
 ---
 # <a name="sample-3---classification-predict-credit-risk"></a>Próba 3 — klasyfikacji: Przewidywanie ryzyka kredytowego
 
@@ -39,7 +39,7 @@ Oto wykres zakończone, w tym eksperymencie:
 
 [Przykład 4 - klasyfikacji: Prognozowanie ryzyka kredytowego (koszt wielkość liter)](ui-sample-classification-predict-credit-risk-cost-sensitive.md) zapewnia zaawansowane eksperymentu, która rozwiązuje ten sam problem co tego eksperymentu. Pokazuje, jak przeprowadzić _koszt poufnych_ Klasyfikacja za pomocą **wykonanie skryptu Python** modułu i Porównaj wydajność dwa algorytmy klasyfikacji binarnej. Jeśli chcesz dowiedzieć się więcej o tym, jak tworzyć eksperymenty klasyfikacji, odwołując się do niej.
 
-## <a name="data"></a>Dane
+## <a name="data"></a>Data
 
 Używamy zestawu danych karty kredytowej niemiecki z repozytorium Irvine Unikatowości.
 Zestaw danych zawiera 1000 próbek z funkcjami 20 i 1 etykiety. Poszczególne przykładowe aplikacje przedstawiają osoby. Funkcje obejmują funkcje numeryczne i podzielonych na kategorie. Zobacz [UCI witryny sieci Web](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29) znaczenie kategorii funkcji. Ostatnia kolumna jest etykiety, który wskazuje ryzyko kredytowe, a ma tylko dwa możliwe wartości: ryzyko kredytowe wysoki = 2 i niskie ryzyko kredytowe = 1.
@@ -70,7 +70,7 @@ Wyniki oceny widać to 0.776 AUC modelu. Na próg 0,5 dokładność jest 0.621 o
 
 [!INCLUDE [aml-ui-cleanup](../../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Zapoznaj się z innymi przykładami dostępne dla interfejsu wizualnego:
 
@@ -78,3 +78,4 @@ Zapoznaj się z innymi przykładami dostępne dla interfejsu wizualnego:
 - [Przykład 2 - regresji. Porównaj algorytmy Prognozowanie cen samochodów](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
 - [Przykład 4 - klasyfikacji: Prognozowanie ryzyka kredytowego (koszt poufnych)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
 - [Przykład 5 - klasyfikacji: Przewidywanie zmienności](ui-sample-classification-predict-churn.md)
+- [Przykład 6 - klasyfikacji: Prognozowanie opóźnień lotów](ui-sample-classification-predict-flight-delay.md)

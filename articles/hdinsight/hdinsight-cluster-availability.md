@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: tyfox
-ms.openlocfilehash: 459de569916af14b0efea0ff08b92e5c93ed2369
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 195999ba685828042fc958e8aed7e67bad694657
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64718918"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786559"
 ---
 # <a name="how-to-monitor-cluster-availability-with-ambari-and-azure-monitor-logs"></a>Jak monitorować dostępność klastra z dziennikami Ambari i usługi Azure Monitor
 
@@ -123,7 +123,7 @@ Na przykład uruchom **stawki dla wersji dostępnej** przykładowe zapytanie, kl
 > [!NOTE] 
 > Stawki dla wersji dostępnej jest mierzony w okresie 24-godzinnego, co klaster będzie musiał ją uruchomić co najmniej 24 godzin zanim zobaczysz stawek dokładne dostępności.
 
-W tej tabeli do udostępnionego pulpitu nawigacyjnego można przypiąć, klikając **numeru Pin** w prawym górnym rogu. Jeśli nie masz zapisywalny udostępnionych pulpitów nawigacyjnych, możesz dowiedzieć się, jak ją utworzyć w tym miejscu: [Tworzenie i udostępnianie pulpitów nawigacyjnych w witrynie Azure portal](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards#publish-a-dashboard-and-manage-access-control).
+W tej tabeli do udostępnionego pulpitu nawigacyjnego można przypiąć, klikając **numeru Pin** w prawym górnym rogu. Jeśli nie masz zapisywalny udostępnionych pulpitów nawigacyjnych, możesz dowiedzieć się, jak ją utworzyć w tym miejscu: [Tworzenie i udostępnianie pulpitów nawigacyjnych w witrynie Azure portal](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards#publish-and-share-a-dashboard).
 
 ### <a name="azure-monitor-alerts"></a>Alerty usługi Azure Monitor
 
@@ -192,5 +192,5 @@ Kliknięcie na grupowanie ważności (czyli **ważność 1,** jak podkreślono p
 
 ![Alerty usługi log Analytics obszaru roboczego ważność 1](media/hdinsight-cluster-availability/portal-alerts-sev-1.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - [Dostępność i niezawodność klastrów Apache Hadoop w HDInsight](hdinsight-high-availability-linux.md)

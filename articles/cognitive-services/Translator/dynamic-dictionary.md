@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 2ef1e474dd5d36f1967501ea7bdedc4736954a2b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a815434cb8797acf6b92a8fe4a4f1ff69508975d
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67436024"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839216"
 ---
 # <a name="how-to-use-a-dynamic-dictionary"></a>Jak używać dynamiczny słownik
 
@@ -24,6 +24,11 @@ Jeśli znasz już tłumaczeń, które mają zostać zastosowane do wyrazu lub fr
 **Składnia:**
 
 < tłumaczenia mstrans:dictionary = "tłumaczenia frazę" > frazy < / mstrans:dictionary >
+
+**Wymagania:**
+
+* `From` i `To` języków muszą się różnić. 
+* Musi zawierać `From` parametru w żądaniu interfejsu API tłumaczenia zamiast przy użyciu funkcji auto-detect. 
 
 **Przykład: en-de:**
 

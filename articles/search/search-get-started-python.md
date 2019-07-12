@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start języka Python: Tworzenie, obciążenia i zapytań indeksy przy użyciu usługi Azure Search REST API — usługi Azure Search'
 description: Wyjaśnia, jak utworzyć indeks, Załaduj dane i uruchamianie zapytań przy użyciu języka Python, notesy Jupyter i interfejsu API REST usługi Azure Search.
-ms.date: 06/20/2019
+ms.date: 07/11/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 613879abd4c5c09450b690b793500a99428cff29
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 123afa2452c3e492b85292514e64f84d3baec390
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485473"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67840284"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>Szybki start: Tworzenie indeksu usługi Azure Search w języku Python za pomocą notesów programu Jupyter
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "67485473"
 > * [Portal](search-create-index-portal.md)
 > 
 
-Tworzenie notesu programu Jupyter, który tworzy, ładuje i zapytania indeksu usługi Azure Search przy użyciu języka Python i [interfejsów API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/). W tym artykule opisano sposób tworzenia notesu krok po kroku, zaczynając od podstaw. Można również uruchomić Zakończono notesu. Aby pobrać kopię, przejdź do[repozytorium azure-search-python-samples](https://github.com/Azure-Samples/azure-search-python-samples).
+Tworzenie notesu programu Jupyter, który tworzy, ładuje i zapytania indeksu usługi Azure Search przy użyciu języka Python i [interfejsów API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/). W tym artykule opisano sposób tworzenia notesu krok po kroku. Możesz też [pobieranie i uruchamianie gotowego Notes Jupyter Python](https://github.com/Azure-Samples/azure-search-python-samples).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -295,26 +295,13 @@ W tym kroku przedstawiono sposób tworzenia zapytań względem indeksu przy uży
    searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince, Tags'
    ```
 
-## <a name="clean-up"></a>Czyszczenie 
+## <a name="clean-up"></a>Czyszczenie
 
-Jeśli nie są już potrzebne, należy usunąć indeks. Usługi w warstwie bezpłatna jest ograniczona do trzech indeksów. Należy usunąć wszystkie indeksy, których nie używasz aktywnie aby zwolnić miejsce dla innych samouczków.
+Podczas pracy w ramach własnej subskrypcji jest dobrym pomysłem na końcu projektu ustalić, czy nadal potrzebujesz zasoby utworzone. Po lewej stronie umożliwia uruchamianie zasobów kosztów pieniądze. Możesz usunąć zasoby pojedynczo lub usunąć grupę zasobów, aby usunąć cały zestaw zasobów.
 
-Najprostszym sposobem usuwania obiektów jest za pośrednictwem portalu, ale ponieważ jest to szybki start języka Python, następująca składnia daje ten sam wynik:
+Możesz znaleźć i zarządzanie zasobami w portalu przy użyciu **wszystkie zasoby** lub **grup zasobów** łącze w okienku nawigacji po lewej stronie.
 
-   ```python
-  url = endpoint + "indexes/hotels-quickstart" + api_version
-  response  = requests.delete(url, headers=headers)
-   ```
-
-Aby sprawdzić usunięcie indeksu, żądanie listy istniejące indeksy. Jeśli hotele — Szybki Start został usunięty, wiesz żądanie zakończyło się pomyślnie.
-
-```python
-url = endpoint + "indexes" + api_version + "&$select=name"
-
-response  = requests.get(url, headers=headers)
-index_list = response.json()
-pprint(index_list)
-```
+Jeśli używasz bezpłatnej usługi, należy pamiętać, że są ograniczone do trzech indeksów, indeksatorów i źródeł danych. Możesz usunąć poszczególne elementy w portalu w celu pozostania w ramach limitu. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -4,7 +4,7 @@ description: Dwukierunkowa konsoli szeregowej maszyny wirtualne platformy Azure 
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 4fb2fd9503dad4113609b35dbe66496a03272f85
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: f3fa646fcca99d5762f480b3fd12c5e249eabaf8
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137221"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710579"
 ---
 # <a name="azure-serial-console-for-linux"></a>Serial konsoli platformy Azure dla systemu Linux
 
@@ -248,7 +248,7 @@ A. Tak! Zobacz [konsoli szeregowej dla zestawów skalowania maszyn wirtualnych](
 
 A. Tak. Ponieważ konsoli szeregowej nie wymaga kluczy SSH, wystarczy ustawić kombinację nazwy użytkownika i hasła. Możesz to zrobić, wybierając **Resetuj hasło** w witrynie Azure portal i za pomocą tych poświadczeń do logowania do konsoli szeregowej.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Użyj konsoli szeregowej do [dostępu CHODNIKÓW i trybie jednego użytkownika](serial-console-grub-single-user-mode.md).
 * Użyj konsoli szeregowej dla [wywołania NMI i SysRq](serial-console-nmi-sysrq.md).
 * Dowiedz się, jak korzystać z konsoli szeregowej do [Włącz CHODNIKÓW w różnych dystrybucjach](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/).

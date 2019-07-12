@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 5/23/2018
-ms.author: aljo, anmola
-ms.openlocfilehash: caed77234646654d151b64d2c80b7231342f6d8c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: anmola
+ms.openlocfilehash: 1210b34590484379ae487ad1b87e76a433e4582a
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050474"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621817"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Konteneryzowanie Twojego usług usługi Service Fabric Reliable Services i Reliable Actors w Windows
 
@@ -147,6 +147,6 @@ Ten dokument zawiera wskazówki dotyczące usługi uruchomionej w kontenerze Win
 
 Teraz masz konteneryzowanych aplikacji usługi Service Fabric klaster uruchomiony.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Dowiedz się więcej o uruchamianiu [kontenerów w usłudze Service Fabric](service-fabric-get-started-containers.md).
 * Uzyskaj informacje o [cyklu życia aplikacji](service-fabric-application-lifecycle.md) usługi Service Fabric.

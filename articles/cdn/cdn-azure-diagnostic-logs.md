@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
-ms.openlocfilehash: a5fab3e2bf9908fa35cf5f5485df3116b7718d8c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 86696ed6715b4e43a9d02232c013eb64feb61f67
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66125908"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594207"
 ---
 # <a name="azure-diagnostic-logs"></a>Dzienniki diagnostyczne platformy Azure
 
@@ -189,7 +189,7 @@ Dzienniki analiz Core są generowane co godzinę, a dane są zbierane i przechow
 
 **Opis pola:**
 
-|Wartość|Opis|
+|Value|Opis|
 |-------|---------|
 |Identyfikator subskrypcji    |Identyfikator subskrypcji platformy Azure, w formacie identyfikatora Guid.|
 |Nazwa grupy zasobów |Nazwa grupy zasobów, do której należą zasoby usługi CDN.|
@@ -327,30 +327,30 @@ W poniższej tabeli przedstawiono listę dostępnych w obszarach podstawowych me
 |---------------------------|-------------|-----------|---------|--------|
 | RequestCountTotal         | Łączna liczba trafień żądania, w tym okresie. | Tak | Yes |Yes |
 | RequestCountHttpStatus2xx | Liczba wszystkich żądań, które wpłynęły na kod HTTP 2xx (na przykład 200, 202). | Tak | Yes |Tak |
-| RequestCountHttpStatus3xx | Liczba wszystkich żądań, które wpłynęły na kod HTTP 3xx (na przykład, 300, 302). | Yes | Yes |Yes |
-| RequestCountHttpStatus4xx | Liczba wszystkich żądań, które wpłynęły na kod HTTP 4xx (na przykład, 400, 404). | Tak | Yes |Yes |
+| RequestCountHttpStatus3xx | Liczba wszystkich żądań, które wpłynęły na kod HTTP 3xx (na przykład, 300, 302). | Yes | Yes |Tak |
+| RequestCountHttpStatus4xx | Liczba wszystkich żądań, które wpłynęły na kod HTTP 4xx (na przykład, 400, 404). | Yes | Yes |Tak |
 | RequestCountHttpStatus5xx | Liczba wszystkich żądań, które wpłynęły na kod HTTP 5xx (na przykład, 500, 504). | Tak | Yes |Tak |
-| RequestCountHttpStatusOthers | Liczba inne kody HTTP (poza 2xx-5xx). | Tak | Yes |Tak |
-| RequestCountHttpStatus200 | Liczba wszystkich żądań, które spowodowały 200 kod odpowiedzi HTTP. | Tak | Nie  |Tak |
-| RequestCountHttpStatus206 | Liczba wszystkich żądań, które spowodowały 206 kod odpowiedzi HTTP. | Tak | Nie  |Yes |
+| RequestCountHttpStatusOthers | Liczba inne kody HTTP (poza 2xx-5xx). | Tak | Yes |Yes |
+| RequestCountHttpStatus200 | Liczba wszystkich żądań, które spowodowały 200 kod odpowiedzi HTTP. | Yes | Nie  |Tak |
+| RequestCountHttpStatus206 | Liczba wszystkich żądań, które spowodowały 206 kod odpowiedzi HTTP. | Yes | Nie  |Yes |
 | RequestCountHttpStatus302 | Liczba wszystkich żądań, które wpłynęły na 302 kod odpowiedzi HTTP. | Tak | Nie  |Tak |
 | RequestCountHttpStatus304 | Liczba wszystkich żądań, które spowodowały 304 kod odpowiedzi HTTP. | Tak | Nie  |Tak |
 | RequestCountHttpStatus404 | Liczba wszystkich żądań, na które uzyskano odpowiedź kod HTTP 404. | Yes | Nie  |Yes |
-| RequestCountCacheHit | Liczba wszystkich żądań, na które uzyskano w pamięci podręcznej odwołań. Zasób był obsługiwany bezpośrednio w punkcie POP do klienta. | Yes | Yes | Nie  |
-| RequestCountCacheMiss | Liczba wszystkich żądań, które spowodowały Chybienie pamięci podręcznej. Trafienia pamięci podręcznej oznacza, że zasób nie został znaleziony na najbliższy do klienta punkt POP i dlatego został pobrany z punktu początkowego. | Yes | Yes | Nie |
-| RequestCountCacheNoCache | Liczba wszystkich żądań do elementu zawartości, które mają zablokowaną możliwość buforowania z powodu konfiguracji użytkownika na urządzeniach brzegowych. | Tak | Yes | Nie |
+| RequestCountCacheHit | Liczba wszystkich żądań, na które uzyskano w pamięci podręcznej odwołań. Zasób był obsługiwany bezpośrednio w punkcie POP do klienta. | Tak | Yes | Nie  |
+| RequestCountCacheMiss | Liczba wszystkich żądań, które spowodowały Chybienie pamięci podręcznej. Trafienia pamięci podręcznej oznacza, że zasób nie został znaleziony na najbliższy do klienta punkt POP i dlatego został pobrany z punktu początkowego. | Tak | Yes | Nie |
+| RequestCountCacheNoCache | Liczba wszystkich żądań do elementu zawartości, które mają zablokowaną możliwość buforowania z powodu konfiguracji użytkownika na urządzeniach brzegowych. | Yes | Yes | Nie |
 | RequestCountCacheUncacheable | Liczba wszystkich żądań do zasobów, które mają zablokowaną możliwość buforowania Cache-Control elementu zawartości i nagłówki wygasa, które wskazują, że go powinien nie być buforowany w menu Podręcznym przez klienta HTTP. | Tak | Yes | Nie |
 | RequestCountCacheOthers | Liczba wszystkich żądań ze stanem pamięci podręcznej nie pasuje do żadnego powyżej. | Nie | Yes | Nie  |
-| EgressTotal | Dodatkowy wychodzący transfer danych w GB | Tak |Yes |Tak |
-| EgressHttpStatus2xx | Dane wychodzące transferu * dla odpowiedzi z kodów stanu HTTP 2xx w GB. | Yes | Yes | Nie  |
-| EgressHttpStatus3xx | Transfer danych wychodzących dla odpowiedzi z kodów stanu HTTP 3xx w GB. | Tak | Yes | Nie  |
+| EgressTotal | Dodatkowy wychodzący transfer danych w GB | Tak |Yes |Yes |
+| EgressHttpStatus2xx | Dane wychodzące transferu * dla odpowiedzi z kodów stanu HTTP 2xx w GB. | Tak | Yes | Nie  |
+| EgressHttpStatus3xx | Transfer danych wychodzących dla odpowiedzi z kodów stanu HTTP 3xx w GB. | Yes | Yes | Nie  |
 | EgressHttpStatus4xx | Transfer danych wychodzących dla odpowiedzi z kodów stanu HTTP 4xx w GB. | Tak | Yes | Nie  |
 | EgressHttpStatus5xx | Transfer danych wychodzących dla odpowiedzi z kodów stanu HTTP 5xx w GB. | Tak | Yes | Nie |
-| EgressHttpStatusOthers | Transfer danych wychodzących dla odpowiedzi z innych kodach stanów HTTP w GB. | Yes | Yes | Nie  |
+| EgressHttpStatusOthers | Transfer danych wychodzących dla odpowiedzi z innych kodach stanów HTTP w GB. | Tak | Yes | Nie  |
 | EgressCacheHit | Transfer danych wychodzących dla odpowiedzi, które były dostarczane bezpośrednio z pamięci podręcznej usługi CDN CDN POP i krawędzi. | Tak | Yes | Nie |
-| EgressCacheMiss. | Transfer danych wychodzących dla odpowiedzi, które nie zostały znalezione na najbliższy serwer protokołu POP i pobierane z serwera pochodzenia. | Tak | Yes | Nie |
+| EgressCacheMiss. | Transfer danych wychodzących dla odpowiedzi, które nie zostały znalezione na najbliższy serwer protokołu POP i pobierane z serwera pochodzenia. | Yes | Yes | Nie |
 | EgressCacheNoCache | Wychodzący transfer danych dla zasobów, które mają zablokowaną możliwość buforowania z powodu konfiguracji użytkownika na urządzeniach brzegowych. | Tak | Yes | Nie |
-| EgressCacheUncacheable | Wychodzący transfer danych dla zasobów, które nie będą mogli buforowana przez Cache-Control i/lub Expires nagłówków zawartości. Wskazuje, czy jego powinien nie być buforowany w menu Podręcznym przez klienta HTTP. | Tak | Yes | Nie |
+| EgressCacheUncacheable | Wychodzący transfer danych dla zasobów, które nie będą mogli buforowana przez Cache-Control i/lub Expires nagłówków zawartości. Wskazuje, czy jego powinien nie być buforowany w menu Podręcznym przez klienta HTTP. | Yes | Yes | Nie |
 | EgressCacheOthers | Wychodzące transfery danych w innych sytuacjach pamięci podręcznej. | Nie | Yes | Nie |
 
 \* Dodatkowy wychodzący transfer danych odnosi się do ruchu dostarczane z serwerów POP sieci CDN do klienta.

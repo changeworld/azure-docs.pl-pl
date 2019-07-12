@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1823c2ec28b342d41371eb6677e0330d7f885087
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c928ad1fc9a8d6206c1b7e47591b17b6ae05ee4b
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61258662"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839881"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Przenoszenie danych z rozwiązania SAP Business Warehouse przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
@@ -47,7 +47,7 @@ Aby włączyć łączność z wystąpieniem programu SAP BW, należy zainstalowa
 Utworzysz potok z działaniem kopiowania, które przenosi dane z lokalnego magazynu danych Cassandra przy użyciu różnych narzędzi/interfejsów API. 
 
 - Najprostszym sposobem utworzenia potoku jest użycie **kreatora kopiowania**. Zobacz [samouczka: Tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych. 
-- Aby utworzyć potok umożliwia także następujących narzędzi: **Witryna Azure portal**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**i  **Interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. 
+- Aby utworzyć potok umożliwia także następujących narzędzi: **Program Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**, i **interfejsu API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. 
 
 Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródłowych do magazynu danych ujścia:
 
@@ -64,13 +64,13 @@ Poniższa tabela zawiera opis specyficzne dla usługi SAP Business Warehouse (BW
 
 Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
-server | Nazwa serwera, na którym znajduje się wystąpienie systemu SAP BW. | string | Tak
+server | Nazwa serwera, na którym znajduje się wystąpienie systemu SAP BW. | ciąg | Tak
 systemNumber | Numer systemu systemu SAP BW. | Liczba dziesiętna dwucyfrowy reprezentowane jako ciąg. | Tak
 clientId | Identyfikator klienta klienta w SAP W systemie. | Liczba dziesiętna trzycyfrowy reprezentowane jako ciąg. | Tak
-username | Nazwa użytkownika, który ma dostęp do serwera SAP | string | Tak
-password | Hasło użytkownika. | string | Tak
-gatewayName | Nazwa bramy, która powinna być używana w usłudze Data Factory, połączyć się z lokalnym wystąpieniem programu SAP BW. | string | Tak
-encryptedCredential | Ciąg zaszyfrowane poświadczenia. | string | Nie
+username | Nazwa użytkownika, który ma dostęp do serwera SAP | ciąg | Tak
+password | Hasło użytkownika. | ciąg | Tak
+gatewayName | Nazwa bramy, która powinna być używana w usłudze Data Factory, połączyć się z lokalnym wystąpieniem programu SAP BW. | ciąg | Tak
+encryptedCredential | Ciąg zaszyfrowane poświadczenia. | ciąg | Nie
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 Aby uzyskać pełną listę sekcje & właściwości dostępne Definiowanie zestawów danych, zobacz [tworzenie zestawów danych](data-factory-create-datasets.md) artykułu. Sekcje, takie jak struktury, dostępność i zasady zestawem danych JSON są podobne dla wszystkich typów na zestaw danych (Azure SQL, obiektów blob platformy Azure, usługa Azure table itp.).
@@ -87,11 +87,11 @@ Gdy źródłowego w działaniu kopiowania jest typu **RelationalSource** (w tym 
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| query | Określa zapytanie MDX, które można odczytać danych z wystąpienia systemu SAP BW. | Zapytanie MDX. | Tak |
+| query | Określa zapytanie MDX, które można odczytać danych z wystąpienia systemu SAP BW. | Zapytanie MDX. | Yes |
 
 
 ## <a name="json-example-copy-data-from-sap-business-warehouse-to-azure-blob"></a>Przykład kodu JSON: Kopiowanie danych z rozwiązania SAP Business Warehouse do obiektów Blob platformy Azure
-W poniższym przykładzie przedstawiono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [witryny Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) lub [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ten przykład pokazuje, jak skopiować dane z lokalnego rozwiązania SAP Business Warehouse do usługi Azure Blob Storage. Jednak dane mogą być kopiowane **bezpośrednio** do dowolnego ujścia, o których wspomniano [tutaj](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.  
+W poniższym przykładzie przedstawiono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ten przykład pokazuje, jak skopiować dane z lokalnego rozwiązania SAP Business Warehouse do usługi Azure Blob Storage. Jednak dane mogą być kopiowane **bezpośrednio** do dowolnego ujścia, o których wspomniano [tutaj](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.  
 
 > [!IMPORTANT]
 > W tym przykładzie przedstawiono fragmenty kodu JSON. Nie obejmuje instrukcje krok po kroku dotyczące tworzenia fabryki danych. Zobacz [przenoszenia danych między lokalizacjami lokalnymi i chmurą](data-factory-move-data-between-onprem-and-cloud.md) artykuł, aby uzyskać instrukcje krok po kroku.
@@ -312,7 +312,7 @@ STRING | String
 UNIT | String
 DATS | String
 NUMC | String
-TIMS | String
+TIMS | Ciąg
 
 > [!NOTE]
 > Aby zamapować kolumny z zestawu danych źródłowych do kolumn z zestawu danych ujścia, zobacz [mapowanie kolumny zestawu danych w usłudze Azure Data Factory](data-factory-map-columns.md).

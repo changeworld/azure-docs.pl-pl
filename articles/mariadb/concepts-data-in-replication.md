@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 0a1ead1580f6764fec7d1d18daa38bf093f242f2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/11/2019
+ms.openlocfilehash: c19ec06ce353d653086fa693dde975a55f51f823
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61364442"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839251"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>Replikuj dane do usługi Azure Database dla serwera MariaDB
 
@@ -37,7 +37,6 @@ Główne scenariusze, warto rozważyć użycie replikacji danych są następują
 
 ### <a name="other"></a>Inne
 - Replikacji danych jest tylko do ogólnie rzecz biorąc obsługiwana przeznaczenia i zoptymalizowana pod kątem pamięci, warstw cenowych.
-- Identyfikatory transakcji globalnej (GTID) nie są obsługiwane.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - Dowiedz się, jak [Konfigurowanie replikacji danych](howto-data-in-replication.md).

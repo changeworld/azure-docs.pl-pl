@@ -14,14 +14,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/21/2019
-ms.author: andret
+ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17aaff1a6da2c18e9b1d915f61844635b1ad130b
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: d0a5f9c14e04e9a0b5b8b48524a425ea94ebf3af
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66001441"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703002"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Szybki start: Dodawanie logowania przy użyciu konta Microsoft do aplikacji internetowej ASP.NET
 
@@ -32,7 +32,7 @@ W tym przewodniku Szybki Start dowiesz się, jak zaimplementować logowania z fi
 Na zakończenie tego przewodnika Szybki start aplikacja będzie akceptować logowania kont służbowych organizacji, które zostały zintegrowane z usługą Azure Active Directory (Azure AD).
 
 > [!NOTE]
-> Jeśli musisz włączyć logowania dla osobistych kont oprócz oraz do kont służbowych, możesz użyć  *[punktu końcowego platformy tożsamości firmy Microsoft](azure-ad-endpoint-comparison.md)*. Aby uzyskać więcej informacji, zobacz [w tym samouczku ASP.NET](tutorial-v2-asp-webapp.md) także [w tym artykule](active-directory-v2-limitations.md) wyjaśniających *punktu końcowego platformy tożsamości firmy Microsoft*.
+> Jeśli musisz włączyć logowania dla osobistych kont oprócz oraz do kont służbowych, możesz użyć  *[punktu końcowego platformy tożsamości firmy Microsoft](azure-ad-endpoint-comparison.md)* . Aby uzyskać więcej informacji, zobacz [w tym samouczku ASP.NET](tutorial-v2-asp-webapp.md) także [w tym artykule](active-directory-v2-limitations.md) wyjaśniających *punktu końcowego platformy tożsamości firmy Microsoft*.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -70,7 +70,7 @@ Aby zamiast tego pobrać ten przykładowy projekt programu Visual Studio, wykona
 ## <a name="step-2-create-your-aspnet-project"></a>Krok 2: tworzenie projektu ASP.NET
 
 1. W programie Visual Studio przejdź do polecenia **Plik > Nowy > Projekt**.
-2. Aby uzyskać **typ projektu**, wybierz opcję **sieci Web**, a następnie wybierz **aplikacji sieci Web platformy ASP.NET (.NET Framework)**.
+2. Aby uzyskać **typ projektu**, wybierz opcję **sieci Web**, a następnie wybierz **aplikacji sieci Web platformy ASP.NET (.NET Framework)** .
 3. Nadaj nazwę aplikacji, a następnie wybierz pozycję **Utwórz**.
 4. Wybierz **pusty** , a następnie wybierz **MVC** w obszarze **. Dodaj foldery i podstawowe odwołania** można dodać odwołań MVC.
 5. Wybierz pozycję **Utwórz**.
@@ -280,7 +280,7 @@ Gdy wszystko będzie gotowe do testowania, użyj konta służbowego (Azure AD), 
 
 #### <a name="expected-results"></a>Oczekiwane wyniki
 
-Gdy użytkownik się zaloguje, użytkownik jest przekierowywany na stronę główną witryny sieci web, czyli adres URL HTTPS, określone w aplikacji informacje rejestracyjne w portalu rejestracji aplikacji firmy Microsoft. Ta strona wyświetla obecnie komunikat *Witaj, {User}*, link do wylogowania oraz link pozwalający wyświetlić oświadczenia użytkownika — czyli link do utworzonego wcześniej kontrolera Authorize.
+Gdy użytkownik się zaloguje, użytkownik jest przekierowywany na stronę główną witryny sieci web, czyli adres URL HTTPS, określone w aplikacji informacje rejestracyjne w portalu rejestracji aplikacji firmy Microsoft. Ta strona wyświetla obecnie komunikat *Witaj, {User}* , link do wylogowania oraz link pozwalający wyświetlić oświadczenia użytkownika — czyli link do utworzonego wcześniej kontrolera Authorize.
 
 ### <a name="see-users-claims"></a>Wyświetlenie oświadczeń użytkownika
 
@@ -290,7 +290,7 @@ Wybierz hiperlink, aby wyświetlić oświadczenia użytkownika. Ta akcja prowadz
 
  Powinna zostać wyświetlona tabela zawierająca podstawowe właściwości zalogowanego użytkownika:
 
-| Właściwość | Wartość | Opis |
+| Właściwość | Value | Opis |
 |---|---|---|
 | Name (Nazwa) | {User Full Name} | Imię i nazwisko użytkownika |
 | Nazwa użytkownika | <span>user@domain.com</span> | Nazwa użytkownika używana do identyfikacji zalogowanego użytkownika |
@@ -309,7 +309,7 @@ Następnie wpisz w przeglądarce adres `http://localhost:{port}/claims`, aby uzy
 
 Powinien zostać wyświetlony monit wymagający od użytkownika uwierzytelnienia, aby wyświetlić widok.
 
-## <a name="additional-information"></a>Informacje dodatkowe
+## <a name="additional-information"></a>Dodatkowe informacje
 
 <!--start-collapse-->
 ### <a name="protect-your-entire-web-site"></a>Ochrona całej witryny internetowej

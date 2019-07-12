@@ -7,19 +7,19 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: danlep
-ms.openlocfilehash: 98a72123a05fa7d8dc16be7ddb787f2a2cf7e4d1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d91706da898e84effc6194a74dce69a66be0f4ac
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60563124"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657631"
 ---
 # <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>Zainstalować woluminu emptyDir w usłudze Azure Container Instances
 
 Dowiedz się, jak zainstalować *emptyDir* wolumin, aby udostępniać dane między kontenerów w grupie kontenerów w usłudze Azure Container Instances.
 
 > [!NOTE]
-> Instalowanie *emptyDir* wolumin jest obecnie ograniczone do kontenerów systemu Linux. Podczas gdy pracujemy, aby udostępnić wszystkie funkcje na potrzeby kontenerów systemu Windows, bieżące różnice dotyczące platform możesz znaleźć w temacie [Limity przydziałów i dostępność regionów dla usługi Azure Container Instances](container-instances-quotas.md).
+> Instalowanie *emptyDir* wolumin jest obecnie ograniczone do kontenerów systemu Linux. Podczas gdy pracujemy, aby udostępnić wszystkie funkcje dostępne w kontenerach Windows, można znaleźć bieżące różnice dotyczące platform w [Przegląd](container-instances-overview.md#linux-and-windows-containers).
 
 ## <a name="emptydir-volume"></a>wolumin emptyDir
 
@@ -46,7 +46,7 @@ Na przykład następujący szablon usługi Resource Manager tworzy grupę konten
 
 Aby zapoznać się z przykładem wdrażaniem wystąpienia kontenera za pomocą szablonu usługi Azure Resource Manager, zobacz [wdrażanie grup wielu kontenerów w usłudze Azure Container Instances](container-instances-multi-container-group.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się, jak zainstalować inne typy woluminu w usłudze Azure Container Instances:
 

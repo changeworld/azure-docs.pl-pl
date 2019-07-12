@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: raynew
-ms.openlocfilehash: a16ed7134fc9f3c159715f58f116de3fb30e8aca
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 1c5c38e9af58aa9468fb0e22491327d3a35f0dda
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481139"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656659"
 ---
 # <a name="back-up-an-sap-hana-database"></a>Tworzenie kopii zapasowej bazy danych SAP HANA
 
@@ -26,7 +26,7 @@ ms.locfileid: "67481139"
 
 **Pomoc techniczna** | **Szczegóły**
 --- | ---
-**Obsługiwane obszary geograficzne** | Australia Południowo-Wschodnia, Australia Wschodnia <br> Brazylia Południowa <br> Kanada Środkowa, Kanada Wschodnia <br> Azja południowo-wschodnia, Azja Wschodnia <br> Wschodnie stany USA, wschodnie stany USA 2, zachodnie środkowe stany USA, zachodnie stany USA, zachodnie stany USA 2, Północna środkowe stany USA, środkowe stany USA, południowo-środkowe stany USA<br> Indie środkowe, Indie Południowe <br> Japonia, część wschodnia; Japonia, część zachodnia<br> Korea Środkowa, Korea Południowa <br> Europa Północna, Europa Zachodnia <br> Południowe Zjednoczone Królestwo, zachodnie Zjednoczone Królestwo
+**Obsługiwane obszary geograficzne** | Australia Południowo-Wschodnia, Australia Wschodnia <br> Brazylia Południowa <br> Kanada Środkowa, Kanada Wschodnia <br> Azja południowo-wschodnia, Azja Wschodnia <br> Wschodnie stany USA, wschodnie stany USA 2, zachodnie środkowe stany USA, zachodnie stany USA, zachodnie stany USA 2, Północna środkowe stany USA, środkowe stany USA, południowo-środkowe stany USA<br> Indie środkowe, Indie Południowe <br> Japonia, część wschodnia; Japonia, część zachodnia<br> Korea Środkowa, Korea Południowa <br> Europa Północna, Europa Zachodnia <br> Południowe Zjednoczone Królestwo, zachodnie Zjednoczone Królestwo
 **Obsługiwane systemy operacyjne maszyny Wirtualnej** | SLES 12 z dodatkiem SP2 lub z dodatkiem SP3.
 **Obsługiwane wersje platformy HANA** | SDC na platformie HANA 1.x, MDC na platformie HANA 2.x < = SPS03
 

@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 474aad3b4b2019c9f79f8f1316dd88769e0fabbd
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: c84f336d11a512435e6d8eea814b41e9213eeb13
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66508197"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835697"
 ---
 # <a name="tutorial-enable-authentication-in-a-native-client-application-using-azure-active-directory-b2c"></a>Samouczek: włączanie uwierzytelniania w natywnej aplikacji klienckiej przy użyciu usługi Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [Tworzenie przepływów użytkownika](tutorial-create-user-flows.md), aby umieścić platformę użytkownika w Twojej aplikacji. 
+- [Tworzenie przepływów użytkownika](tutorial-create-user-flows.md), aby umieścić platformę użytkownika w Twojej aplikacji.
 - Zainstaluj [Visual Studio 2019](https://www.visualstudio.com/downloads/) z **programowanie aplikacji klasycznych dla platformy .NET** i **ASP.NET i tworzenie aplikacji internetowych** obciążeń.
 
 ## <a name="add-the-native-client-application"></a>Dodawanie natywnej aplikacji klienckiej
@@ -49,7 +49,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
     - **Unikatowość** — schemat identyfikatora URI przekierowania powinien być unikatowy dla każdej aplikacji. W przykładzie `com.onmicrosoft.contoso.appname://redirect/path` jest to schemat `com.onmicrosoft.contoso.appname`. Należy przestrzegać tego wzorca. Jeśli dwie aplikacje mają ten sam schemat, użytkownik ma możliwość wyboru aplikacji. Jeśli użytkownik dokona nieprawidłowego wyboru, logowanie nie powiedzie się.
     - **Kompletność** — identyfikator URI przekierowania musi mieć schemat i ścieżkę. Ścieżka musi zawierać co najmniej jeden ukośnik po nazwie domeny. Na przykład `//contoso/` działa a `//contoso` zakończy się niepowodzeniem. Upewnij się, że identyfikator URI przekierowania nie zawiera znaków specjalnych, takich jak podkreślenia.
 
-9. Kliknij pozycję **Utwórz**.
+9. Kliknij przycisk **Utwórz**.
 10. Na stronie właściwości należy zapisać identyfikator aplikacji, który będzie używany podczas konfigurowania przykładowej aplikacji.
 
 ## <a name="configure-the-sample"></a>Konfigurowanie przykładu
@@ -83,12 +83,12 @@ Naciśnij klawisz **F5**, aby skompilować i uruchomić przykładową aplikację
 ### <a name="sign-up-using-an-email-address"></a>Rejestrowanie się przy użyciu adresu e-mail
 
 1. Kliknij przycisk **Zaloguj**, aby zarejestrować się jako użytkownik. Jest tu używany przepływ użytkownika **B2C_1_signupsignin1**.
-2. Usługa Azure AD B2C wyświetli stronę logowania z linkiem rejestracji. Ponieważ nie masz jeszcze konta, kliknij link **Sign up now** (Zarejestruj się teraz). 
+2. Usługa Azure AD B2C wyświetli stronę logowania z linkiem rejestracji. Ponieważ nie masz jeszcze konta, kliknij link **Sign up now** (Zarejestruj się teraz).
 3. W przepływie pracy rejestracji jest wyświetlana strona do zbierania i weryfikowania tożsamości użytkownika przy użyciu adresu e-mail. Przepływ pracy rejestracji zbiera też hasło użytkownika i żądane atrybuty zdefiniowane w przepływie użytkownika.
 
-    Użyj prawidłowego adresu e-mail i przeprowadź weryfikację przy użyciu kodu weryfikacyjnego. Ustaw hasło. Wprowadź wartości żądanych atrybutów. 
+    Użyj prawidłowego adresu e-mail i przeprowadź weryfikację przy użyciu kodu weryfikacyjnego. Ustaw hasło. Wprowadź wartości żądanych atrybutów.
 
-    ![Przepływ pracy rejestracji](media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.png)
+    ![Strona rejestracji wyświetlane jako część sign-in/rejestracją przepływu pracy](media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.PNG)
 
 4. Kliknij pozycję **Utwórz**, aby utworzyć konto lokalne w dzierżawie usługi Azure AD B2C.
 
@@ -97,7 +97,7 @@ Teraz użytkownik może logować się i korzystać z aplikacji klasycznej, używ
 > [!NOTE]
 > Kliknięcie przycisku **Wywołaj interfejs API** spowoduje wyświetlenie błędu „Brak autoryzacji”. Ten błąd jest wyświetlany, ponieważ próbujesz uzyskać dostęp do zasobu z dzierżawy pokazowej. Ponieważ token dostępu jest prawidłowy tylko dla dzierżawy usługi Azure AD, wywołanie interfejsu API nie ma autoryzacji. Przejdź do następnego samouczka, aby utworzyć chroniony internetowy interfejs API.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

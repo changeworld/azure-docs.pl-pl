@@ -6,14 +6,14 @@ author: alkohli
 ms.service: storage
 ms.topic: article
 ms.date: 03/29/2018
-ms.author: alkohli;
+ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 42c8c9c89a69224b222aabe8e929d800d22162ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8361c32860d48b78c778ea5106ba04715fcc5f3c
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65604224"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621051"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>Otwórz bilet pomocy technicznej do zadania importu/eksportu
 
@@ -59,7 +59,7 @@ Wykonaj poniższe kroki, aby utworzyć żądanie pomocy technicznej:
 
    1. W **opcje kontaktu**, podaj preferowaną metodę kontaktu (telefonu lub adresu e-mail) i język. Czas odpowiedzi zostanie automatycznie wybrany w oparciu o plan subskrypcji.
    2. Informacje kontaktowe zawiera nazwę, adres e-mail, opcjonalny skontaktuj się z pomocą, kraj/region. Wybierz **Zapisz zmiany dotyczące kontaktu dla przyszłych żądań obsługi** pola wyboru.
-   3. Kliknij pozycję **Utwórz**.
+   3. Kliknij przycisk **Utwórz**.
    
        ![Informacje kontaktowe](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   
 
@@ -85,6 +85,6 @@ Po utworzeniu biletu pomocy technicznej możesz zarządzać jego cyklem życia z
     ![Zarządzaj żądaniami obsługi](./media/storage-import-export-contact-microsoft-support/manage-support-ticket3.png) 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się, jak [rozwiązywania problemów związanych z usługi Import/Export](storage-import-export-tool-troubleshooting-v1.md).

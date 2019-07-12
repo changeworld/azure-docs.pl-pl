@@ -4,7 +4,7 @@ description: Dowiedz się więcej o znakowaniu Windows maszyny wirtualnej utworz
 services: virtual-machines-windows
 documentationcenter: ''
 author: mmccrory
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 56d17f45-e4a7-4d84-8022-b40334ae49d2
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
-ms.openlocfilehash: eef4681626c5e0aa0c5d8a67dbd0d19bcfd7121e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 26ee777f7db05ca1850e2a01c1716810624906c0
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64694684"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709836"
 ---
 # <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>Jak oznaczyć maszynę wirtualną Windows na platformie Azure
 W tym artykule opisano różne sposoby, aby oznaczyć maszynę wirtualną Windows na platformie Azure za pomocą modelu wdrażania usługi Resource Manager. Tagi to pary klucz/wartość zdefiniowanych przez użytkownika, które mogą być umieszczone bezpośrednio na zasób lub grupa zasobów. Platforma Azure obsługuje obecnie maksymalnie 15 tagów na zasób i grupy zasobów. Znaczniki może być umieszczone na zasób w czasie tworzenia lub dodawane do istniejącego zasobu. Należy pamiętać, że tagi są obsługiwane w przypadku zasobów utworzonych za pomocą modelu wdrażania usługi Resource Manager tylko. Jeśli chcesz oznaczyć maszynę wirtualną systemu Linux, zobacz [jak oznaczyć maszynę wirtualną z systemem Linux na platformie Azure](../linux/tag.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -91,8 +91,8 @@ Aby dowiedzieć się więcej o znakowaniu za pomocą programu PowerShell, zapozn
 [!INCLUDE [virtual-machines-common-tag-usage](../../../includes/virtual-machines-common-tag-usage.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby dowiedzieć się więcej na temat tagowania zasobów platformy Azure, zobacz [Omówienie usługi Azure Resource Manager] [ Azure Resource Manager Overview] i [za pomocą tagów do organizowania zasobów platformy Azure] [ Using Tags to organize your Azure Resources].
-* Aby dowiedzieć się, jak tagi zarządzanie może ułatwić korzystanie z zasobów platformy Azure, zobacz [informacje o rachunku Azure] [ Understanding your Azure Bill] i [wgląd w użycie zasobów usługi Microsoft Azure] [Gain insights into your Microsoft Azure resource consumption].
+* Aby dowiedzieć się więcej na temat tagowania zasobów platformy Azure, zobacz [Omówienie usługi Azure Resource Manager][Azure Resource Manager Overview] and [Using Tags to organize your Azure Resources][Using Tags to organize your Azure Resources].
+* Aby dowiedzieć się, jak tagi zarządzanie może ułatwić korzystanie z zasobów platformy Azure, zobacz [informacje o rachunku Azure][Understanding your Azure Bill] and [Gain insights into your Microsoft Azure resource consumption][Gain insights into your Microsoft Azure resource consumption].
 
 [PowerShell environment with Azure Resource Manager]: ../../azure-resource-manager/manage-resources-powershell.md
 [Azure Resource Cmdlets]: https://docs.microsoft.com/powershell/module/az.resources/

@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: a241f66adecbab1d0b1462f379d3765d6c1de252
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a6f872880b61a5bd9510abda2f15e2edea16e940
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61466803"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703878"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Przekazywanie plików na konto usługi Media Services przy użyciu usługi REST
 
 W usłudze Media Services możesz przekazać pliki cyfrowe do kontenera obiektów blob, skojarzone z elementem zawartości. [Zasobów](https://docs.microsoft.com/rest/api/media/operations/asset) jednostki może zawierać wideo, audio, obrazy, kolekcje miniatur, tekst śledzi i napisów plików (i metadane dotyczące tych plików). Gdy pliki są przekazywane do kontenera elementu zawartości, zawartość jest bezpiecznie przechowywana w chmurze na potrzeby dalszego przetwarzania i przesyłania strumieniowego.
 
-W tym artykule pokazano, jak przekazanie pliku lokalnego suing REST.
+W tym artykule pokazano, jak przekazanie pliku lokalnego przy użyciu interfejsu REST.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -61,6 +61,6 @@ Zostanie wyświetlony **odpowiedzi** z użyciem informacji o adresach URL zasobu
 
 Za pomocą interfejsów API usługi Azure Storage lub zestawów SDK (na przykład [interfejsu API REST magazynu](../../storage/common/storage-rest-api-auth.md), [zestawu JAVA SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md), lub [zestawu .NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Samouczek: Kodowanie pliku zdalnego na podstawie adresu URL i przesyłanie strumieniowe wideo — REST](stream-files-tutorial-with-rest.md)

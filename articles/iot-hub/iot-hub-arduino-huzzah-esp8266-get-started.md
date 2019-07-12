@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: wesmc
-ms.openlocfilehash: 00d0e3a749c4af8faacfed5f725ce16e0492c399
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: de4029d7c454ed590fdf974771d5f55c52590c93
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65409082"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839050"
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>Zestaw Adafruit Feather HUZZAH ESP8266 nawiązać połączenie z usługi Azure IoT Hub w chmurze
 
@@ -65,10 +65,6 @@ Następujące elementy są opcjonalne, w przypadku, gdy nie ma czujnika. Istniej
 ## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
-
-### <a name="retrieve-connection-string-for-iot-hub"></a>Pobieranie parametrów połączenia dla centrum IoT
-
-[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
 
 ## <a name="register-a-new-device-in-the-iot-hub"></a>Rejestrowanie nowego urządzenia w usłudze IoT hub
 

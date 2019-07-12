@@ -6,14 +6,14 @@ author: kasinh
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 08/18/2017
+ms.date: 07/09/2019
 ms.author: kasinh
-ms.openlocfilehash: d1fb3434f0d3954a07980963866bcd7cce004379
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 770baeeacb5f3808eba05f9e262bcbca75c6baad
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60650901"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705225"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Odzyskiwanie danych z usługi Azure Backup Server
 Można użyć usługi Azure Backup Server, aby odzyskać dane, które zostały kopii zapasowej w magazynie usługi Recovery Services. Proces może więc jest zintegrowana z konsoli zarządzania usługi Azure Backup Server i jest podobna do przepływu pracy odzyskiwania dla innych składników usługi Azure Backup.
@@ -83,21 +83,13 @@ Aby odzyskać dane z usługi Azure Backup Server:
 | Nie. | Komunikat o błędzie | Kroki rozwiązywania problemów |
 |:---:|:--- |:--- |
 | 1. |Ten serwer nie jest zarejestrowany w magazynie określonym przez poświadczenia magazynu. |**Przyczyna:** Ten błąd jest wyświetlany, gdy plik poświadczeń magazynu, które są wybrane nie należy do magazynu usługi Recovery Services, skojarzone z usługi Azure Backup Server, na którym jest podejmowana próba odzyskania. <br> **Rozwiązanie:** Pobierz plik poświadczeń magazynu z magazynu usługi Recovery Services, w której jest zarejestrowana serwera usługi Azure Backup. |
-| 2. |Dane możliwe do odzyskania są niedostępne lub wybrany serwer nie jest serwerem DPM. |**Przyczyna:** Istnieją nie inne serwery kopia zapasowa Azure zarejestrowany w magazynie usługi Recovery Services lub serwery nie została jeszcze przesłana metadanych lub wybrany serwer nie jest usługi Azure Backup Server (alias systemu Windows Server lub klienta Windows). <br> **Rozwiązanie:** Jeśli istnieją inne serwery kopia zapasowa Azure zarejestrowanych w magazynie usługi Recovery Services, upewnij się, że zainstalowano najnowszą wersję agenta usługi Kopia zapasowa Azure. <br>Jeśli istnieją inne serwery kopia zapasowa Azure zarejestrowanych w magazynie usługi Recovery Services, poczekaj na dzień po zakończeniu instalacji, aby rozpocząć proces odzyskiwania. Nocne zadanie przekaże metadane dla wszystkich chronionych kopii zapasowych w chmurze. Dane będą dostępne do odzyskania. |
+| 2. |Dane możliwe do odzyskania są niedostępne lub wybrany serwer nie jest serwerem DPM. |**Przyczyna:** Istnieją nie inne serwery kopia zapasowa Azure zarejestrowany w magazynie usługi Recovery Services lub serwery nie została jeszcze przesłana metadanych lub wybrany serwer nie jest usługi Azure Backup Server (przy użyciu systemu Windows Server lub klienta Windows). <br> **Rozwiązanie:** Jeśli istnieją inne serwery kopia zapasowa Azure zarejestrowanych w magazynie usługi Recovery Services, upewnij się, że zainstalowano najnowszą wersję agenta usługi Kopia zapasowa Azure. <br>Jeśli istnieją inne serwery kopia zapasowa Azure zarejestrowanych w magazynie usługi Recovery Services, poczekaj na dzień po zakończeniu instalacji, aby rozpocząć proces odzyskiwania. Nocne zadanie przekaże metadane dla wszystkich chronionych kopii zapasowych w chmurze. Dane będą dostępne do odzyskania. |
 | 3. |Żaden inny serwer DPM jest zarejestrowany w tym magazynie. |**Przyczyna:** Nie ma żadnych innych serwerów kopia zapasowa Azure, zarejestrowanych w magazynie, z którego są podejmowane próby odzyskiwania.<br>**Rozwiązanie:** Jeśli istnieją inne serwery kopia zapasowa Azure zarejestrowanych w magazynie usługi Recovery Services, upewnij się, że zainstalowano najnowszą wersję agenta usługi Kopia zapasowa Azure.<br>Jeśli istnieją inne serwery kopia zapasowa Azure zarejestrowanych w magazynie usługi Recovery Services, poczekaj na dzień po zakończeniu instalacji, aby rozpocząć proces odzyskiwania. Nocne zadanie przekazuje metadane dla wszystkich chronionych kopii zapasowych w chmurze. Dane będą dostępne do odzyskania. |
 | 4. |Podane hasło szyfrowania jest niezgodny z hasłem skojarzonym z następującym serwerem:  **\<nazwa serwera >** |**Przyczyna:** Hasło szyfrowania używany przy wysyłaniu szyfrowania danych, dane serwera Azure Backup, który jest odzyskiwany jest niezgodna z podane hasło szyfrowania. Agent nie może odszyfrować danych. Dlatego odzyskiwanie zakończy się niepowodzeniem.<br>**Rozwiązanie:** Podaj dokładnie tego samego hasła szyfrowania skojarzone z usługi Azure Backup Server, którego dane są odzyskiwane. |
 
-## <a name="frequently-asked-questions"></a>Często zadawane pytania
+## <a name="next-steps"></a>Następne kroki
 
-### <a name="why-cant-i-add-an-external-dpm-server-after-installing-ur7-and-latest-azure-backup-agent"></a>Dlaczego nie można dodać zewnętrznego serwera programu DPM po zainstalowaniu pakietu zbiorczego aktualizacji 7 i najnowszą wersję agenta usługi Azure Backup?
+Przeczytaj inne — często zadawane pytania:
 
-Dla serwerów programu DPM ze źródłami danych, które są chronione w chmurze (przy użyciu pakietu zbiorczego aktualizacji starszych niż Update Rollup 7), należy poczekać co najmniej jeden dzień po zainstalowaniu pakietu zbiorczego aktualizacji 7 i najnowszą wersję agenta usługi Kopia zapasowa Azure, Rozpocznij **serwer Dodaj zewnętrzny program DPM**. Jeden dzień okresu jest potrzebny do przekazywania metadanych grup ochrony programu DPM na platformie Azure. Metadane grupy ochrony jest przekazywany za pośrednictwem nocne zadanie po raz pierwszy.
-
-### <a name="what-is-the-minimum-version-of-the-microsoft-azure-recovery-services-agent-needed"></a>Co to jest minimalna wersja agenta usług Microsoft Azure Recovery Services, potrzebne?
-
-Minimalna wersja agenta usług odzyskiwania Microsoft Azure lub agenta usługi Azure Backup, wymagane do włączenia tej funkcji to 2.0.8719.0.  Aby wyświetlić wersję agenta: Otwórz Panel sterowania **>** elementy Panelu sterowania wszystkich **>** programy i funkcje **>** Agent usług Microsoft Azure Recovery Services. Jeśli wersja jest mniejsza niż 2.0.8719.0, Pobierz i zainstaluj [najnowszą wersję agenta usługi Kopia zapasowa Azure](https://go.microsoft.com/fwLink/?LinkID=288905).
-
-![Wyczyść zewnętrzny program DPM](./media/backup-azure-alternate-dpm-server/external-dpm-azurebackupagentversion.png)
-
-## <a name="next-steps"></a>Następne kroki:
-• [Usługi azure Backup — często zadawane pytania](backup-azure-backup-faq.md)
+- [Często zadawane pytania dotyczące](backup-azure-vm-backup-faq.md) dotyczące kopii zapasowych maszyn wirtualnych platformy Azure
+- [Często zadawane pytania dotyczące](backup-azure-file-folder-backup-faq.md) dotyczące agenta usługi Azure Backup

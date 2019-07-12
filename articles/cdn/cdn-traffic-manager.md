@@ -7,7 +7,7 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: f7de7fe1c677d54c0fa3e6d3ca4730ef1083bc81
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 276fe9352d0c4ca7ec525b88d65689b56c0ba027
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273276"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593347"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Konfigurowanie trybu failover między wieloma punktami końcowymi usługi CDN Azure przy użyciu usługi Azure Traffic Manager
 
@@ -62,7 +62,7 @@ Po skonfigurowaniu profilów usługi Traffic Manager i CDN, wykonaj następując
 
     a. Pierwszy wpis CNAME mapowanie domeny niestandardowej, z poziomu poddomeny cdnverify do punktu końcowego usługi CDN. Ten wpis jest to krok wymagany do zarejestrowania domeny niestandardowej do punktu końcowego usługi CDN, dodanego do usługi Traffic Manager w kroku 2.
 
-      Na przykład: 
+      Przykład: 
 
       `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101akamai.azureedge.net`  
 
@@ -95,7 +95,7 @@ Po skonfigurowaniu profilów usługi Traffic Manager i CDN, wykonaj następując
  
 Po wykonaniu tych kroków, usługi CDN wielu, możliwości trybu failover jest skonfigurowany przy użyciu usługi Azure Traffic Manager. Będziesz mieć możliwość dostępu testu adresy URL z domeny niestandardowej. Aby przetestować funkcję, wyłącz podstawowego punktu końcowego usługi CDN i sprawdź, czy żądanie jest poprawnie przeniesieni do pomocniczego punktu końcowego usługi CDN. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Możesz także skonfigurować inne metody routingu, takich jak geograficzne, aby równoważyć obciążenie między różnych punktów końcowych usługi CDN. Aby uzyskać więcej informacji, zobacz [Konfigurowanie metody routingu geograficznego ruchu przy użyciu usługi Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-configure-geographic-routing-method).
 
 

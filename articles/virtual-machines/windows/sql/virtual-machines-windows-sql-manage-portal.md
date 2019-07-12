@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e2a807bbd6baeb2f14a6d36f5d98a28d48725449
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 59a85e855c9fab9f2a3437c83c867b8076f55049
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67082718"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607224"
 ---
 # <a name="manage-sql-server-vms-in-azure-using-the-azure-portal"></a>Zarządzanie maszyny wirtualne SQL Server na platformie Azure przy użyciu witryny Azure portal
 
@@ -33,7 +33,7 @@ Istnieje punkt dostępu do zarządzania maszyny Wirtualnej programu SQL Server n
 ## <a name="remarks"></a>Uwagi
 
 - **Maszyn wirtualnych SQL** zasób jest zalecaną metodą do wyświetlania i zarządzania maszynami wirtualnymi z serwera SQL. Jednakże, obecnie **maszyn wirtualnych SQL** zasób nie obsługuje zarządzania [wsparcie (EOS)](virtual-machines-windows-sql-server-2008-eos-extend-support.md) maszyny wirtualne SQL Server. Aby zarządzać ustawieniami dla maszyn wirtualnych EOS programu SQL Server, należy użyć przestarzałego [Karta Konfiguracja programu SQL Server](#access-sql-server-configuration-tab) zamiast tego. 
-- **Maszyn wirtualnych SQL** zasobów jest dostępna tylko dla maszyn wirtualnych serwera SQL, które mają [zarejestrowanego dostawcy zasobów maszyny Wirtualnej SQL](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-the-sql-vm-resource-provider). 
+- **Maszyn wirtualnych SQL** zasobów jest dostępna tylko dla maszyn wirtualnych serwera SQL, które mają [zarejestrowanego dostawcy zasobów maszyny Wirtualnej SQL](virtual-machines-windows-sql-register-with-resource-provider.md). 
 
 
 ## <a name="access-sql-virtual-machine-resource"></a>Dostęp do zasobu bazy danych maszyny wirtualnej SQL
@@ -60,7 +60,7 @@ Wybranie maszyny Wirtualnej programu SQL Server spowoduje otwarcie **maszyn wirt
   > **Maszyn wirtualnych SQL** zasób jest dedykowany ustawień programu SQL Server. Wybierz nazwę maszyny Wirtualnej w **maszyny wirtualnej** pola, aby przejść do ustawień, które są specyficzne dla maszyny Wirtualnej, ale nie wyłącznie dla programu SQL Server. 
 
 ## <a name="access-sql-server-configuration-tab"></a>Karta Konfiguracja programu SQL Server dostęp
-Na karcie Konfiguracja programu SQL Server jest przestarzała. W tej chwili jest jedyną metodą, aby zarządzać [wsparcie (EOS)](virtual-machines-windows-sql-server-2008-eos-extend-support.md) maszyny wirtualne SQL Server oraz maszyny wirtualne SQL Server, które nie zostały jeszcze [zarejestrowanego dostawcy zasobów maszyny Wirtualnej SQL](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-the-sql-vm-resource-provider).
+Na karcie Konfiguracja programu SQL Server jest przestarzała. W tej chwili jest jedyną metodą, aby zarządzać [wsparcie (EOS)](virtual-machines-windows-sql-server-2008-eos-extend-support.md) maszyny wirtualne SQL Server oraz maszyny wirtualne SQL Server, które nie zostały jeszcze [zarejestrowanego dostawcy zasobów maszyny Wirtualnej SQL](virtual-machines-windows-sql-register-with-resource-provider.md).
 
 Dostępu przestarzałe karta konfiguracji programu SQL server, musisz przejść do **maszyn wirtualnych** zasobów. Aby to zrobić, wykonaj następujące czynności:
 
@@ -77,7 +77,7 @@ Dostępu przestarzałe karta konfiguracji programu SQL server, musisz przejść 
 
 ![Konfiguracja programu SQL Server](media/virtual-machines-windows-sql-manage-portal/sql-vm-configuration.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji zobacz następujące artykuły: 
 

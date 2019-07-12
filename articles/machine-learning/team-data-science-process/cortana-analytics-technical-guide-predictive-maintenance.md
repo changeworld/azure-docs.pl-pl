@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: feccaea0451ae36d841aae95ed0baf54f90c2700
-ms.sourcegitcommit: 3107874d7559ea975e4d55ae33cdf45f4b5485e4
+ms.openlocfilehash: 37acd88dbfe8ed1790f1bfa68d5e9762a861ddc7
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67568259"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626407"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>Podręcznik techniczny do szablon rozwiązania Cortana Intelligence, pod kątem konserwacji predykcyjnej w lotnictwie i kosmonautyce
 
@@ -103,7 +103,7 @@ Zapytanie usługi Azure Stream Analytics można znaleźć przez:
   * ***ZAPYTANIE*** do wyświetlania samo zapytanie
   * ***Dane wyjściowe*** do wyświetlania różnych danych wyjściowych
 
-Informacje o budowa zapytania usługi Azure Stream Analytics można znaleźć w [dokumentacja zapytań usługi Stream Analytics](https://msdn.microsoft.com/library/azure/dn834998.aspx) w witrynie MSDN.
+Informacje o budowa zapytania usługi Azure Stream Analytics można znaleźć w [dokumentacja zapytań usługi Stream Analytics](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) w witrynie MSDN.
 
 W tym rozwiązaniu zapytań danych wyjściowych trzech zestawów danych za pomocą niemal analizy w czasie rzeczywistym informacje o przychodzącego strumienia danych do pulpitu nawigacyjnego usługi Power BI w ramach tego szablonu rozwiązania. Ponieważ istnieje niejawna wiedzę na temat formatu danych przychodzących, te zapytania musi być zmieniony zależnie od formatu danych.
 

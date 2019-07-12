@@ -6,7 +6,7 @@ documentationcenter: ''
 author: mdgattuso
 manager: danielgi
 editor: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 296f1df9175f4595274a57ed936282abb73da18b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: afd9599dd1e396dea6975c397688e4b97371fd6d
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60679580"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593934"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Tworzenie punktu końcowego usługi Azure CDN
 W tym artykule opisano wszystkie ustawienia dotyczące tworzenia [Azure Content Delivery Network (CDN)](cdn-overview.md) punktu końcowego w istniejący profil usługi CDN. Po utworzeniu profilu i punktu końcowego, można uruchomić dostarczania zawartości do klientów. Aby uzyskać szybki start dotyczące tworzenia profilu i punktu końcowego, zobacz [Szybki Start: tworzenie profilu i punktu końcowego usługi Azure CDN](cdn-create-new-endpoint.md).
@@ -104,7 +104,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) przy użyciu ko
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 Aby usunąć punkt końcowy, gdy nie jest już potrzebny, zaznacz go, a następnie wybierz pozycję **Usuń**. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej na temat domen niestandardowych, przejdź do samouczka dla dodawania domeny niestandardowej do punktu końcowego usługi CDN.
 
 > [!div class="nextstepaction"]

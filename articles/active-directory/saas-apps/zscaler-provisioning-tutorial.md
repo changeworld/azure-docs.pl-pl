@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
-ms.author: v-ant-msft
-ms.openlocfilehash: 3ea502477cc5b380c99a183d9270c2b2e94375a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: jeedes
+ms.openlocfilehash: dd8335442cd370e0478c029a927c71e26fe6ef1b
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67049308"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672853"
 ---
 # <a name="tutorial-configure-zscaler-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie rozwiązania Zscaler dla automatycznej aprowizacji użytkowników
 
@@ -124,7 +124,7 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
 
     ![Zscaler Provisioning](./media/zscaler-provisioning-tutorial/notification.png)
 
-9. Kliknij pozycję **Zapisz**.
+9. Kliknij polecenie **Zapisz**.
 
 10. W obszarze **mapowania** zaznacz **synchronizacji Azure użytkownicy usługi Active Directory do rozwiązania Zscaler**.
 
@@ -165,7 +165,7 @@ Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienn
 * [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Dowiedz się, jak przeglądać dzienniki i Uzyskaj raporty dotyczące inicjowania obsługi administracyjnej działania](../active-directory-saas-provisioning-reporting.md)
 

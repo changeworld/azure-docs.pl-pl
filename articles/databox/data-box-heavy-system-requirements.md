@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: b9e249885bd0e930773d4b374f85d72e60abdbdc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6097dba9193fce4c8158137b488080107881994a
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427742"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839777"
 ---
-# <a name="azure-data-box-heavy-system-requirements-preview"></a>Duże pole danych system wymagania dotyczące usługi Azure (wersja zapoznawcza)
+# <a name="azure-data-box-heavy-system-requirements"></a>Wymagania systemu duże pole danych platformy Azure
 
 W tym artykule opisano wymagania systemowe dla Twojego urządzenia Azure Data Box duże i klientów, połączono z urządzeniem. Zaleca się, że starannie Przejrzyj informacje przed wdrożeniem usługi duże pole danych i następnie wrócić do niego zgodnie z potrzebami podczas wdrażania i kolejna operacja.
 
@@ -52,6 +52,12 @@ Wymagania dotyczące oprogramowania zawierają informacje o obsługiwane systemy
 
 Twoje centrum danych musi mieć dostęp do szybkiej sieci. Najszybszy szybkości kopiowania dwa połączenia 40 GbE możesz wykorzystać równolegle (jednym w każdym węźle). Jeśli nie masz dostępnych 40 GbE, zaleca się, że masz co najmniej dwa połączenia 10 GbE (po jednej na węzeł).
 
-## <a name="next-steps"></a>Kolejne kroki
+### <a name="port-requirements"></a>Wymagania dotyczące portów
+
+Poniższa tabela zawiera listę portów, które muszą być otwarte w zaporze, aby umożliwić ruch SMB lub NFS. W tej tabeli *w* lub *dla ruchu przychodzącego* odnosi się do kierunku z które dostępu przychodzących żądań klienta do Twojego urządzenia. *Limit* lub *wychodzącego* Określa kierunek, w którym duże pole danych urządzenie wysyła zewnętrznie, dane poza wdrożenia: na przykład, ruch wychodzący do Internetu.
+
+[!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
+
+## <a name="next-steps"></a>Następne kroki
 
 * [Wdrażanie usługi Azure Data Box](data-box-deploy-ordered.md)

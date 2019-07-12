@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/19/2018
-ms.author: martincoetzer
+ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff59b93603af61fd8ea571966a3c43a06929ae04
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 831ba47ea4e999219a6d8cf34cb5fb0fdcd1ead8
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113488"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594957"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Tworzenie strategii zarządzania kontroli dostępu odporne na błędy przy użyciu usługi Azure Active Directory
 
@@ -123,7 +123,7 @@ Awaryjny zasady dostępu warunkowego są **zasady wyłączone** , pomija formant
 * Nadaj nazwę swoich zasad, aby upewnij się, że można łatwo je znaleźć podczas przerw w działaniu. W nazwie zasad, należy uwzględnić następujące elementy:
   * A *numer etykiety* zasad.
   * Tekst do wyświetlenia, ta zasada dotyczy tylko w nagłych wypadkach. Na przykład: **WŁĄCZ W AWARYJNEGO**
-  * *Przerw w działaniu* dotyczy. Na przykład: **Podczas przerw w działaniu usługi MFA**
+  * *Przerw w działaniu* dotyczy. Przykład: **Podczas przerw w działaniu usługi MFA**
   * A *numer sekwencyjny* wyświetlanych kolejność, musisz aktywować zasad.
   * *Aplikacje* dotyczy.
   * *Formantów* będzie stosowana.
@@ -143,7 +143,7 @@ Poniższy przykład: **Przykład A — zasady awaryjny urzędu certyfikacji do p
   * Nazwa: EM001 - WŁĄCZ W NAGŁYCH: Przerwy w działaniu usługi MFA [1/4] - wymiany SharePoint — wymagają dołączenie do hybrydowej usługi Azure AD
   * Użytkownicy i grupy: Obejmują ContingencyAccess. Wyklucz CoreAdmins i EmergencyAccess
   * Aplikacje w chmurze: Usługa Exchange Online i SharePoint Online
-  * Warunki: Dowolne
+  * Warunki: Any
   * Grant Control: Wymagają przyłączonych do domeny
   * Stan: Wyłączone
 * Zasady 2: Blok platform innych niż Windows
@@ -191,7 +191,7 @@ W następnym przykładzie **przykład B — zasady dostępu Warunkowego awaryjny
 * Zasady 2: Blokuj zespół ds. sprzedaży z dowolnej platformy inne niż mobile (w celu zmniejszenia obszaru powierzchni ataku)
   * Nazwa: EM002 - WŁĄCZ W NAGŁYCH: Przerwy w działaniu zgodności urządzenia [2/2] - Salesforce — Blokuj wszystkie platformy z wyjątkiem systemów iOS i Android
   * Użytkownicy i grupy: Obejmują SalesforceContingency. Wyklucz SalesAdmins
-  * Aplikacje w chmurze: Salesforce
+  * Aplikacje w chmurze: Usługi SalesForce
   * Warunki: Platforma obejmują wszystkie platformy urządzeń, Wyklucz systemów iOS i Android
   * Grant Control: Blokuj
   * Stan: Wyłączone

@@ -4,19 +4,19 @@ description: Jak włączyć wirtualizacji zagnieżdżonej na maszynach wirtualny
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 ms.author: cynthn
 ms.date: 10/09/2017
 ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: acb44a34eae84d8a5718ebcc0003d3cf50b9d43a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 843dfa64cdf0af3ad6cfd3a9f83c16f0ce85fcd0
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65510061"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67720214"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Jak włączyć wirtualizacji zagnieżdżonej na Maszynie wirtualnej platformy Azure
 
@@ -51,7 +51,7 @@ Utwórz połączenie pulpitu zdalnego z maszyną wirtualną.
 ## <a name="enable-the-hyper-v-feature-on-the-azure-vm"></a>Włącz funkcję Hyper-V na maszynie Wirtualnej platformy Azure
 Te ustawienia można skonfigurować ręcznie lub zostały zamieszczone, aby skrypt programu PowerShell, aby zautomatyzować konfigurację.
 
-### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>Opcja 1: Użyj skryptu programu PowerShell do konfigurowania wirtualizacji zagnieżdżonej
+### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>Option 1: Użyj skryptu programu PowerShell do konfigurowania wirtualizacji zagnieżdżonej
 Skrypt programu PowerShell, aby włączyć wirtualizacji zagnieżdżonej na hoście systemu Windows Server 2016 jest dostępny w [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested). Skrypt sprawdza wymagania wstępne, a następnie konfiguruje wirtualizacji zagnieżdżonej na maszynie Wirtualnej platformy Azure. Ponowne uruchomienie maszyny Wirtualnej platformy Azure jest niezbędne do ukończenia konfiguracji. Ten skrypt może działać w innych środowiskach, ale nie ma żadnej gwarancji. Sprawdź wpis w blogu platformy Azure przy użyciu pokaz wideo na żywo na wirtualizacji zagnieżdżonej na platformie Azure! https://aka.ms/AzureNVblog.
 
 ### <a name="option-2-configure-nested-virtualization-manually"></a>Opcja 2: Ręczne konfigurowanie wirtualizacji zagnieżdżonej
@@ -120,6 +120,10 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 
 ## <a name="create-the-guest-virtual-machine"></a>Tworzenie maszyny wirtualnej gościa
 
+>[!IMPORTANT] 
+>
+>Agent gościa platformy Azure nie jest obsługiwana na zagnieżdżonych maszynach wirtualnych i może spowodować problemy na zagnieżdżonych maszynach wirtualnych i hostów. Nie należy instalować agenta platformy Azure na zagnieżdżonych maszynach wirtualnych, a nie jest używany obraz do tworzenia zagnieżdżonych maszyn wirtualnych, które jest już zainstalowany agent gościa platformy Azure.
+
 1. Otwórz Menedżera funkcji Hyper-V i utworzenie nowej maszyny wirtualnej. Skonfiguruj maszynę wirtualną, aby użyć nowych sieci wewnętrznej, utworzony.
     
     ![NetworkConfig](./media/virtual-machines-nested-virtualization/configure-networking.png)
@@ -134,7 +138,7 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 
 Adres IP można przypisać do maszyny wirtualnej gościa, ręcznie ustawienie statycznego adresu IP na maszynie wirtualnej gościa lub konfigurowanie protokołu DHCP na maszynie Wirtualnej platformy Azure, aby dynamicznie przypisać adres IP.
 
-###  <a name="option-1-configure-dhcp-to-dynamically-assign-an-ip-address-to-the-guest-virtual-machine"></a>Opcja 1: Konfigurowanie serwera DHCP, aby dynamicznie przypisany adres IP maszyny wirtualnej gościa
+###  <a name="option-1-configure-dhcp-to-dynamically-assign-an-ip-address-to-the-guest-virtual-machine"></a>Option 1: Konfigurowanie serwera DHCP, aby dynamicznie przypisany adres IP maszyny wirtualnej gościa
 Wykonaj poniższe kroki, aby skonfigurować serwer DHCP na hosta maszyny wirtualnej w przypadku przypisywania adresów dynamicznych.
 
 #### <a name="install-dchp-server-on-the-azure-vm"></a>Zainstaluj serwer DHCP na maszynie Wirtualnej platformy Azure
@@ -145,7 +149,7 @@ Wykonaj poniższe kroki, aby skonfigurować serwer DHCP na hosta maszyny wirtual
   
 3. Kliknij, aby wybrać **serwera DHCP** pole wyboru, kliknij przycisk **Dodaj funkcje**, a następnie kliknij przycisk **dalej** aż kreator zakończy działanie.
   
-4. Kliknij pozycję **Zainstaluj**.
+4. Kliknij przycisk **Zainstaluj**.
 
 #### <a name="configure-a-new-dhcp-scope"></a>Konfigurowanie nowego zakresu DHCP
 

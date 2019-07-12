@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/09/2018
-ms.author: alkohli@microsoft.com
-ms.openlocfilehash: 564c121aa90746498a94022fd0fb8d8529142c91
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: alkohli
+ms.openlocfilehash: 7e488a1b2a63323361a597aaa6a438630fc09a05
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64698398"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621632"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Użyj programu Windows PowerShell dla usługi StorSimple do administrowania urządzeniem
 
@@ -68,13 +68,13 @@ Upewnij się, użyj następujących ustawień programu PuTTY nawiązać połącz
    | Włączanie funkcji dodatkowej klawiatury |Kontrolka Alt różni się od AltGr |
    
     ![Obsługiwane ustawienia programu Putty](./media/storsimple-windows-powershell-administration/IC740877.png)
-3. Kliknij przycisk **Zastosuj**.
+3. Kliknij przycisk **zastosować**.
 4. W **kategorii** okienku wybierz **tłumaczenia**.
 5. W **zestaw znaków zdalnego** pola listy, wybierz opcję **UTF-8**.
 6. W obszarze **obsługi znaków Rysowanie linii**, wybierz opcję **punkty kodowe Rysowanie linii Unicode użyj**. Poniższy zrzut ekranu przedstawia poprawny wybór programu PuTTY.
    
     ![Ustawienia programu Putty UTF](./media/storsimple-windows-powershell-administration/IC740878.png)
-7. Kliknij przycisk **Zastosuj**.
+7. Kliknij przycisk **zastosować**.
 
 Przy użyciu programu PuTTY można teraz nawiązać połączenie z konsolą szeregową urządzenia, wykonując następujące kroki.
 

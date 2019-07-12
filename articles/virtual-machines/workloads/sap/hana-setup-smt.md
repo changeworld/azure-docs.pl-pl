@@ -4,7 +4,7 @@ description: Jak skonfigurować serwer SMT platformy SAP HANA na platformie Azur
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 690f41e941f2d1db8fc92d225a54d07570299222
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 879bea079a5de6558b20edfc05ba432c98254c9b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60478110"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707383"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>Konfigurowanie serwera SMT dla systemu Linux SUSE
 Duże wystąpienia SAP HANA nie ma bezpośredniego połączenia z Internetem. Nie jest dość proste, aby zarejestrować takiej jednostki z dostawcą systemu operacyjnego i pobieranie i stosowanie aktualizacji. Rozwiązania dla systemu SUSE Linux jest konfigurowanie serwera SMT w maszynie wirtualnej platformy Azure. Hosta maszyny wirtualnej w sieci wirtualnej platformy Azure, który jest podłączony do dużych wystąpień HANA. Za pomocą takiego serwera SMT jednostki dużych wystąpień HANA można zarejestrować i pobierania aktualizacji. 
@@ -152,7 +152,7 @@ Jeśli wystąpi problem, który trzeba naprawić na podstawie kroków artykułu 
 
 Należy skonfigurować klienta SMT jednostki dużych wystąpień HANA, aby połączyć się z serwerem SMT, który został zainstalowany na maszynie wirtualnej platformy Azure. Teraz można wykonać "zypper się" lub "zypper w", aby zainstalować aktualizacje systemu operacyjnego do dużych wystąpień HANA lub zainstalować dodatkowe pakiety. Można pobierać tylko aktualizacje pobrane przed na serwerze SMT.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - [Instalacja oprogramowania HANA na HLI](hana-example-installation.md).
 
 

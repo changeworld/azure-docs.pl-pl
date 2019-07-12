@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 4fd862c2442d2637d799a1f690d5f0a091c80562
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5eba5601a50640261fa1b488d959f606d4514737
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449191"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612221"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Wykorzystywanie przetwarzania równoległego zapytań w usłudze Azure Stream Analytics
 W tym artykule pokazano, jak korzystać z zalet przetwarzania równoległego w usłudze Azure Stream Analytics. Dowiesz się, jak skalować zadania usługi Stream Analytics, konfigurując partycji danych wejściowych, a następnie dostosowując definicję zapytania usługi analytics.
@@ -312,7 +312,7 @@ Aby uzyskać dalszą pomoc, Wypróbuj nasz [forum usługi Azure Stream Analytics
 ## <a name="next-steps"></a>Kolejne kroki
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)
-* [Azure Stream Analytics Query Language Reference (Dokumentacja dotycząca języka zapytań usługi Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure Stream Analytics Query Language Reference (Dokumentacja dotycząca języka zapytań usługi Azure Stream Analytics)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics Management REST API Reference (Dokumentacja interfejsu API REST zarządzania usługą Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 <!--Image references-->

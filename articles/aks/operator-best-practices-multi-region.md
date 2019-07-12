@@ -6,13 +6,13 @@ author: lastcoolnameleft
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
-ms.author: lastcoolnameleft
-ms.openlocfilehash: 4afc1231e6c9fa49c04c7bf6dfe26ee5eb87cc31
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: thfalgou
+ms.openlocfilehash: 4d4535af1814ab1250bbd56c989b4849013adff6
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66475170"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614837"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące firm ciągłości działania i odzyskiwania po awarii w usłudze Azure Kubernetes Service (AKS)
 
@@ -124,7 +124,7 @@ Usługa Kubernetes zapewnia obecnie natywnej implementacji opartych na aplikacja
 
 ![Replikacja asynchroniczna opartych na aplikacji](media/operator-best-practices-bc-dr/aks-app-based-async-repl.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Ten artykuł koncentruje się na ciągłość biznesową i zagadnienia dotyczące odzyskiwania po awarii w przypadku klastrów usługi AKS. Aby uzyskać więcej informacji na temat operacji klastra w usłudze AKS zobacz następujące artykuły dotyczące najlepszych rozwiązań:
 

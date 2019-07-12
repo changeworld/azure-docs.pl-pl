@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 8461764a3f1f682ffb97420a4efdf2803f518872
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 26609e7b21af8804a4b43039c84c04597035721c
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64707137"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706205"
 ---
 # <a name="service-bus-faq"></a>Service Bus — często zadawane pytania
 
@@ -86,7 +86,7 @@ Jeśli używasz nadmiarowości strefy dla swojego obszaru nazw, należy wykonać
 
 ## <a name="best-practices"></a>Najlepsze praktyki
 ### <a name="what-are-some-azure-service-bus-best-practices"></a>Jakie są najlepsze rozwiązania usługi Azure Service Bus?
-Zobacz [najlepsze rozwiązania zwiększające wydajność przy użyciu usługi Service Bus] [ Best practices for performance improvements using Service Bus] — w tym artykule opisano sposób optymalizacji wydajności podczas wymiany komunikatów.
+Zobacz [najlepsze rozwiązania zwiększające wydajność przy użyciu usługi Service Bus][Best practices for performance improvements using Service Bus] — w tym artykule opisano sposób optymalizacji wydajności podczas wymiany komunikatów.
 
 ### <a name="what-should-i-know-before-creating-entities"></a>Co należy wiedzieć przed utworzeniem jednostki?
 Następujące właściwości kolejki i tematu są niezmienne. To ograniczenie podczas aprowizowania jednostek, wziąć pod uwagę te właściwości nie można zmodyfikować bez tworzenia nowego obiektu zastępczego.
@@ -134,7 +134,7 @@ Jeśli usuniesz przestrzeni nazw z subskrypcji, poczekaj przez 4 godziny przed o
 Aby uzyskać listę możliwych wyjątków usługi Service Bus, zobacz [Przegląd wyjątki][Exceptions overview].
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-support-generating-a-signature"></a>Co to jest sygnatura dostępu współdzielonego i języki obsługiwane przez Generowanie sygnatury?
-Udostępnione sygnatur dostępu to mechanizm uwierzytelniania, na podstawie bezpiecznego skróty SHA-256 lub identyfikatory URI. Aby uzyskać informacje dotyczące generowania własnych podpisów w technologii Node.js, PHP, Java i C\#, zobacz [sygnatur dostępu współdzielonego] [ Shared Access Signatures] artykułu.
+Udostępnione sygnatur dostępu to mechanizm uwierzytelniania, na podstawie bezpiecznego skróty SHA-256 lub identyfikatory URI. Aby uzyskać informacje dotyczące generowania własnych podpisów w technologii Node.js, PHP, Java i C\#, zobacz [sygnatur dostępu współdzielonego][Shared Access Signatures] artykułu.
 
 ## <a name="subscription-and-namespace-management"></a>Zarządzanie subskrypcją i przestrzeni nazw
 ### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>Jak migrować przestrzeni nazw do innej subskrypcji platformy Azure?
@@ -143,7 +143,7 @@ Można przenieść przestrzeni nazw z jedną subskrypcją platformy Azure do inn
 
 #### <a name="portal"></a>Portal
 
-Aby przeprowadzić migrację przestrzeni nazw usługi Service Bus do innej subskrypcji, należy użyć witryny Azure portal, wykonaj czynności podane [tutaj](../azure-resource-manager/resource-group-move-resources.md#use-portal). 
+Aby przeprowadzić migrację przestrzeni nazw usługi Service Bus do innej subskrypcji, należy użyć witryny Azure portal, wykonaj czynności podane [tutaj](../azure-resource-manager/resource-group-move-resources.md#use-the-portal). 
 
 #### <a name="powershell"></a>PowerShell
 
@@ -160,7 +160,7 @@ $res = Find-AzResource -ResourceNameContains mynamespace -ResourceType 'Microsof
 Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej na temat usługi Service Bus, zobacz następujące artykuły:
 
 * [Wprowadzenie do usługi Azure Service Bus w warstwie Premium (wpis na blogu)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)

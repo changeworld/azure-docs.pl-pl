@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 948594a43cec92aa62386b041ce8c96a0558995e
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 564f71c9d90a0fa2721389c09388445149d49787
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466912"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795503"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Tworzenie i uruchamianie potoku uczenia maszynowego przy użyciu zestawu SDK usługi Azure Machine Learning
 
@@ -188,6 +188,9 @@ except ComputeTargetException:
     
     databricks_compute.wait_for_completion(True)
 ```
+
+Aby uzyskać bardziej szczegółowym przykładem, zobacz [przykładzie Notes](https://aka.ms/pl-databricks) w witrynie GitHub.
+
 ### <a id="adla"></a>Azure Data Lake Analytics
 
 Usługa Azure Data Lake Analytics to platforma analiz danych big data w chmurze platformy Azure. Może służyć jako cel obliczenia z potoku usługi Azure Machine Learning.
@@ -232,6 +235,8 @@ except ComputeTargetException:
     
     adla_compute.wait_for_completion(True)
 ```
+
+Aby uzyskać bardziej szczegółowym przykładem, zobacz [przykładzie Notes](https://aka.ms/pl-adla) w witrynie GitHub.
 
 > [!TIP]
 > Potoki usługi Azure Machine Learning może pracować tylko z danych przechowywanych w magazynie danych domyślnego konta usługi Data Lake Analytics. Jeśli dane potrzebne do pracy z znajduje się w magazynie innych niż domyślne, można użyć [ `DataTransferStep` ](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) do kopiowania danych przed szkolenia.
@@ -395,7 +400,7 @@ step = PythonScriptStep(name="Hello World",
 ```
  
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - Użyj [tych aplikacji Jupyter notebooks w usłudze GitHub](https://aka.ms/aml-pipeline-readme) do eksplorowania dalsze potoków uczenia maszynowego.
 - Przeczytaj pomocy odwołanie do zestawu SDK dla [usługi Azure ml potoki rdzeni](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) pakietu i [kroki w przypadku potoków usługi Azure ml](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py) pakietu.
 

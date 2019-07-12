@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 928c943e21e7d00b87ac1e506b98d47107ac4348
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 904994134db28a8244f15ff42e0104e8565c68dd
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508553"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839797"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Wysoka dostępność dzięki usłudze Azure Cosmos DB
 
@@ -42,7 +42,7 @@ Jako globalnie rozproszonej bazy danych Cosmos DB zapewnia kompleksowe umowy SLA
 
 ## <a name="high-availability-with-cosmos-db-in-the-event-of-regional-outages"></a>Wysoka dostępność za pomocą usługi Cosmos DB w przypadku awarii regionalnej
 
-Regionalnej awarii nie są niczym niezwykłym, a usługi Azure Cosmos DB upewnia się, że baza danych jest zawsze o wysokiej dostępności. Poniższe szczegóły Przechwyć zachowanie usługi Cosmos DB podczas awarii, w zależności od konfiguracji konta usługi Cosmos:
+Awarie regionalne nie są niczym niezwykłym, a usługa Azure Cosmos DB zapewnia, że baza danych jest zawsze wysoko dostępna. Poniższe szczegóły Przechwyć zachowanie usługi Cosmos DB podczas awarii, w zależności od konfiguracji konta usługi Cosmos:
 
 - Za pomocą usługi Cosmos DB zanim operacji zapisu zostało potwierdzone, do klienta, danych jest trwałym zatwierdzeniu przez kworum replik w regionie, który akceptuje operacji zapisu.
 
@@ -93,7 +93,8 @@ Poniższa tabela zawiera podsumowanie możliwości wysokiej dostępności w ró�
 |Przepływność    |  Jedn. X aprowizowana przepływność      |  Jedn. X aprowizowana przepływność       |  2 x aprowizowanej przepływności jednostek RU/s <br/><br/> Ten tryb konfiguracji wymaga dwukrotność przepływność w porównaniu do jednego regionu, ze strefami dostępności występują, ponieważ istnieją dwa regiony.   |
 
 > [!NOTE] 
-> Aby włączyć obsługę strefy dostępności, konto usługi Azure Cosmos DB musi mieć wielu — główny/wielu-region zapisu włączone. 
+> Aby włączyć obsługę strefy dostępności dla regionu konta usługi Azure Cosmos multi, konto musi mieć wielu wzorców zapisów włączone.
+
 
 Podczas dodawania regionów do nowego lub istniejącego konta usługi Azure Cosmos można włączyć nadmiarowości strefy. Obecnie można włączyć tylko nadmiarowości strefy za pomocą usługi Azure portal, szablonów programu PowerShell i usługi Azure Resource Manager. Aby włączyć nadmiarowości strefy na Twoim koncie usługi Azure Cosmos, należy ustawić `isZoneRedundant` flaga `true` dla określonej lokalizacji. Możesz ustawić tę flagę w ramach właściwości lokalizacji. Na przykład poniższy fragment kodu programu powershell umożliwia nadmiarowości strefy dla regionu "Azja południowo-wschodnia":
 
@@ -118,7 +119,7 @@ Strefy dostępności można włączyć za pomocą witryny Azure portal podczas t
 
 - W środowisku globalnie rozproszona baza danych ma bezpośrednią relację między trwałości danych i na spójność obecności awarii całego regionu. Podczas opracowywania planem ciągłości biznesowej, należy zrozumieć maksymalnego dopuszczalnego czasu oczekiwania na pełne odzyskanie aplikacji po wystąpieniu zdarzenia powodującego zakłócenia. Czas wymagany do przeprowadzenia pełnego odzyskania aplikacji jest znany jako cel czasu odzyskiwania (RTO). Należy również zrozumieć maksymalny okres najnowszych aktualizacji danych, aplikacja może tolerować utraty podczas odzyskiwania po wystąpieniu zdarzenia powodującego zakłócenia. Okres aktualizacji, którego utrata może być tolerowana, jest określany jako cel punktu odzyskiwania (RPO, recovery point objective). Aby wyświetlić cel punktu odzyskiwania i cel czasu odzyskiwania dla usługi Azure Cosmos DB, zobacz [spójności poziomy i danych trwałości](consistency-levels-tradeoffs.md#rto)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Następnie można przeczytać następujące artykuły:
 

@@ -14,47 +14,50 @@ ms.date: 11/08/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d896a45931512b925491e05ff6e5eef8a856d83d
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 574ce6def407f302439f6c53356fe69259240b2e
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481324"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702482"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Publikuj aplikacje w oddzielnych sieciach i miejsc za pomocą grupy łączników
 
-Klientom korzystanie z serwera Proxy aplikacji usługi Azure AD dla coraz więcej scenariuszy i aplikacji. Dodaliśmy więc serwer Proxy aplikacji jeszcze bardziej elastyczne, należy włączyć więcej topologii. Można utworzyć grupy łączników serwera Proxy aplikacji, dzięki czemu możesz przypisać określone łączniki do obsługi określonych aplikacji. Ta funkcja udostępnia więcej kontroli i sposobów na optymalizację wdrożenia serwera Proxy aplikacji. 
+Klientom korzystanie z serwera Proxy aplikacji usługi Azure AD dla coraz więcej scenariuszy i aplikacji. Dodaliśmy więc serwer Proxy aplikacji jeszcze bardziej elastyczne, należy włączyć więcej topologii. Można utworzyć grupy łączników serwera Proxy aplikacji, dzięki czemu możesz przypisać określone łączniki do obsługi określonych aplikacji. Ta funkcja udostępnia więcej kontroli i sposobów na optymalizację wdrożenia serwera Proxy aplikacji.
 
-Każdy łącznik serwera Proxy aplikacji jest przypisany do grupy łączników. Wszystkie łączniki, które należą do tej samej grupie łącznik działa jako osobne jednostki o wysokiej dostępności i równoważenia obciążenia. Wszystkie łączniki należeć do grupy łączników. Jeśli nie utworzysz grupy, wszystkie łączniki są w grupie domyślnej. Administrator może tworzyć nowe grupy i przypisać im łączników w witrynie Azure portal. 
+Każdy łącznik serwera Proxy aplikacji jest przypisany do grupy łączników. Wszystkie łączniki, które należą do tej samej grupie łącznik działa jako osobne jednostki o wysokiej dostępności i równoważenia obciążenia. Wszystkie łączniki należeć do grupy łączników. Jeśli nie utworzysz grupy, wszystkie łączniki są w grupie domyślnej. Administrator może tworzyć nowe grupy i przypisać im łączników w witrynie Azure portal.
 
 Wszystkie aplikacje są przypisane do grupy łączników. Jeśli nie utworzysz grupy, wszystkie Twoje aplikacje są przypisane do domyślnej grupy. Ale organizujesz swoje łączniki do grup można ustawić każdej aplikacji do pracy z grupą określonego łącznika. W takim przypadku tylko łączników w tej grupie obsługiwać aplikacji na żądanie. Ta funkcja jest przydatna, jeśli aplikacje są hostowane w różnych lokalizacjach. Można utworzyć grupy łączników na podstawie lokalizacji, więc, że aplikacje są zawsze obsługiwane przez łączniki, które fizycznie znajdują się blisko ich.
 
->[!TIP] 
->W przypadku dużego wdrożenia serwera Proxy aplikacji nie przypisuj aplikacji do domyślnej grupy łączników. W ten sposób nowe łączniki nie otrzymasz żadnych aktywny ruch, dopóki nie zostanie przypisana do grupy łącznika usługi active. Ta konfiguracja umożliwia również umieścić łączników w trybie bezczynności, przenosząc je z powrotem do domyślnej grupy, dzięki czemu można wykonać konserwacji bez wywierania wpływu na użytkowników.
+> [!TIP]
+> W przypadku dużego wdrożenia serwera Proxy aplikacji nie przypisuj aplikacji do domyślnej grupy łączników. W ten sposób nowe łączniki nie otrzymasz żadnych aktywny ruch, dopóki nie zostanie przypisana do grupy łącznika usługi active. Ta konfiguracja umożliwia również umieścić łączników w trybie bezczynności, przenosząc je z powrotem do domyślnej grupy, dzięki czemu można wykonać konserwacji bez wywierania wpływu na użytkowników.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 Do grupy łączników, należy upewnić się, że [zainstalowano wiele łączników](application-proxy-add-on-premises-application.md). Po zainstalowaniu nowego łącznika, automatycznie dołączeniu **domyślne** grupy łączników.
 
 ## <a name="create-connector-groups"></a>Tworzenie grupy łączników
-Użyj tych kroków można utworzyć dowolną liczbę grup łącznika. 
+
+Użyj tych kroków można utworzyć dowolną liczbę grup łącznika.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Wybierz **usługi Azure Active Directory** > **aplikacje dla przedsiębiorstw** > **serwera proxy aplikacji**.
-2. Wybierz **Nowa grupa łączników**. Zostanie wyświetlony blok Nowa grupa łączników.
+1. Wybierz **Nowa grupa łączników**. Zostanie wyświetlony blok Nowa grupa łączników.
 
    ![Pokazuje ekran, aby wybrać Nowa grupa łączników](./media/application-proxy-connector-groups/new-group.png)
 
-3. Nadaj nazwę nowej grupy łączników, a następnie użyj menu rozwijanego, aby wybrać, które łączniki należą do tej grupy.
-4. Wybierz pozycję **Zapisz**.
+1. Nadaj nazwę nowej grupy łączników, a następnie użyj menu rozwijanego, aby wybrać, które łączniki należą do tej grupy.
+1. Wybierz pozycję **Zapisz**.
 
 ## <a name="assign-applications-to-your-connector-groups"></a>Przypisywanie aplikacji do grup łącznika
-Wykonaj następujące czynności dla każdej aplikacji, które zostały opublikowane za pomocą serwera Proxy aplikacji. Można przypisać aplikacji do grupy łączników, gdy najpierw opublikować lub można użyć następujące kroki, aby zmienić przypisanie zawsze wtedy, gdy chcesz.   
+
+Wykonaj następujące czynności dla każdej aplikacji, które zostały opublikowane za pomocą serwera Proxy aplikacji. Można przypisać aplikacji do grupy łączników, gdy najpierw opublikować lub można użyć następujące kroki, aby zmienić przypisanie zawsze wtedy, gdy chcesz.
 
 1. Na pulpicie nawigacyjnym zarządzania katalogiem, wybierz **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje** > aplikacji, którą chcesz przypisać do grupy łączników > **Serwera Proxy aplikacji**.
-2. Użyj **grupy łączników** menu rozwijane, aby wybrać grupę, która będzie używać aplikacja.
-3. Wybierz **Zapisz** do zastosowania zmiany.
+1. Użyj **grupy łączników** menu rozwijane, aby wybrać grupę, która będzie używać aplikacja.
+1. Wybierz **Zapisz** do zastosowania zmiany.
 
-## <a name="use-cases-for-connector-groups"></a>Zastosowań grupy łączników 
+## <a name="use-cases-for-connector-groups"></a>Zastosowań grupy łączników
 
 Grupy łączników są przydatne w przypadku różnych scenariuszy, w tym:
 
@@ -64,11 +67,11 @@ W wielu organizacjach liczba połączonych centrów danych. W tym przypadku chce
 
 ### <a name="applications-installed-on-isolated-networks"></a>Aplikacje zainstalowane w izolowanych sieciach
 
-Aplikacje mogą być hostowane w sieciach, które nie są częścią głównego sieci firmowej. Aby zainstalować łączniki dedykowanych w izolowanych sieciach też Izolowanie aplikacji sieci, można użyć grupy łączników. Dzieje się tak zazwyczaj, gdy dostawców przechowuje konkretnej aplikacji dla Twojej organizacji. 
+Aplikacje mogą być hostowane w sieciach, które nie są częścią głównego sieci firmowej. Aby zainstalować łączniki dedykowanych w izolowanych sieciach też Izolowanie aplikacji sieci, można użyć grupy łączników. Dzieje się tak zazwyczaj, gdy dostawców przechowuje konkretnej aplikacji dla Twojej organizacji.
 
 Grupy łączników umożliwić zainstalowanie dedykowanych łączników tych sieci, które publikują tylko konkretnych aplikacji, co umożliwia łatwiejsze i bezpieczniejsze w celu oddelegowania procesów zarządzania aplikacjami dla dostawców innych firm.
 
-### <a name="applications-installed-on-iaas"></a>Aplikacje zainstalowane w infrastrukturze IaaS 
+### <a name="applications-installed-on-iaas"></a>Aplikacje zainstalowane w infrastrukturze IaaS
 
 W przypadku aplikacji z zainstalowanym IaaS, aby uzyskać dostęp do chmury grupy łączników świadczyć usługę common bezpieczny dostęp do wszystkich aplikacji. Grupy łączników nie utworzyć dodatkowe zależności w sieci firmowej lub fragment środowisko aplikacji. Łączników można zainstalować na każdym centrum danych w chmurze i służą tylko te aplikacje, które znajdują się w tej sieci. Można zainstalować wiele łączników w celu uzyskania wysokiej dostępności.
 
@@ -95,7 +98,7 @@ Istnieją dwa różne podejścia, które można wykonać przy użyciu lokacji od
 
 ### <a name="serve-multiple-companies-from-a-single-tenant"></a>Obsłużyć wiele firm z pojedynczej dzierżawy
 
-Istnieje wiele różnych sposobów implementowania modelu, w którym dostawca pojedynczą usługę wdraża i obsługuje usługę Azure AD powiązane usługi dla wielu firm. Grupy łączników pomoc administratora oddzielenie czynności związanych z łączników i aplikacji w różnych grupach. Jednym ze sposobów, które jest odpowiednie dla małych firm, jest pojedynczej usłudze Azure AD dzierżawy podczas różnych firm mają własne nazwy domeny i sieci. Dotyczy to również M i scenariuszy i sytuacji jeśli pojedynczy dzielenia IT służy kilka przedsiębiorstw ze względów prawnych lub pracy. 
+Istnieje wiele różnych sposobów implementowania modelu, w którym dostawca pojedynczą usługę wdraża i obsługuje usługę Azure AD powiązane usługi dla wielu firm. Grupy łączników pomoc administratora oddzielenie czynności związanych z łączników i aplikacji w różnych grupach. Jednym ze sposobów, które jest odpowiednie dla małych firm, jest pojedynczej usłudze Azure AD dzierżawy podczas różnych firm mają własne nazwy domeny i sieci. Dotyczy to również M i scenariuszy i sytuacji jeśli pojedynczy dzielenia IT służy kilka przedsiębiorstw ze względów prawnych lub pracy.
 
 ## <a name="sample-configurations"></a>Przykładowe konfiguracje
 
@@ -113,7 +116,7 @@ Ta konfiguracja jest wystarczająca dla małych wdrożeń i testy. Może ona ró
 
 Ta konfiguracja jest unowocześnienia domyślna, w którym znajduje się określoną aplikację działającą w sieci izolowanej, takich jak sieć wirtualna IaaS:
 
-![Przykład usługi Azure AD nie grupy łączników](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
+![Grupy łączników nie przykład usługi Azure AD i sieci izolowanej](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
 
 ### <a name="recommended-configuration--several-specific-groups-and-a-default-group-for-idle"></a>Zalecana konfiguracja — kilku określonych grup i grupę domyślną bezczynności (%)
 
@@ -123,7 +126,7 @@ W poniższym przykładzie firma ma dwoma centrami danych, A i B, za pomocą dwa 
 
 ![Przykład firmy w 2 centrach danych i łączników 2](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Omówienie łączników serwera Proxy aplikacji usługi Azure AD](application-proxy-connectors.md)
 * [Włączanie logowania jednokrotnego](what-is-single-sign-on.md)

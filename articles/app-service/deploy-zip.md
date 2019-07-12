@@ -12,14 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
-ms.author: cephalin;sisirap
+ms.author: cephalin
+ms.reviewer: sisirap
 ms.custom: seodec18
-ms.openlocfilehash: aac60d3d4fd154847bdfae3dfb590b947e861e9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6cf46f96e84e8a00a478c3ad3edece10a36ce0bd
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978817"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67617003"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Wdrażanie aplikacji w usłudze Azure App Service przy użyciu pliku ZIP lub WAR
 
@@ -122,7 +123,7 @@ Invoke-RestMethod -Uri $apiUrl -Headers @{Authorization=("Basic {0}" -f $base64A
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dla bardziej zaawansowanych scenariuszy wdrażania, spróbuj [wdrażania na platformie Azure przy użyciu narzędzia Git](deploy-local-git.md). Wdrożenie oparte na usłudze Git na platformie Azure umożliwia kontrolę wersji, Przywracanie pakietu, program MSBuild i.
 

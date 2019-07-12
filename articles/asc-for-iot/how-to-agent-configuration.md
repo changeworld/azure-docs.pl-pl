@@ -2,24 +2,25 @@
 title: Konfigurowanie usługi Azure Security Center dla agenta IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak skonfigurować agentów do użycia z usługą Azure Security Center dla IoT.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: f95c445a-4f0d-4198-9c6c-d01446473bd0
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 311a867c863cbd72292d8e34b4f7abdb949b12c6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 39539bb14877208e5f6af957e735a136b077f16a
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65198440"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618281"
 ---
 # <a name="tutorial-configure-security-agents"></a>Samouczek: Konfigurowanie alertów zabezpieczeń
 
@@ -95,7 +96,7 @@ Aby użyć domyślnej wartości właściwości, należy usunąć właściwość 
     }, 
     ```
 
-1. Kliknij pozycję **Zapisz**.
+1. Kliknij polecenie **Zapisz**.
 
 ### <a name="using-a-default-value"></a>Przy użyciu wartości domyślnej
 
@@ -118,22 +119,22 @@ Wartości domyślne są dostępne w odpowiednich schemat w [Github](https://aka.
 
 ### <a name="supported-security-events"></a>Zdarzenia zabezpieczeń obsługiwane
 
-|Nazwa zdarzenia| PropertyName | Wartość domyślna| Zdarzenie migawki| Szczegóły stanu  |
+|Nazwa zdarzenia| PropertyName | Default Value| Zdarzenie migawki| Szczegóły stanu  |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |Zdarzenie diagnostyki|eventPriorityDiagnostic| Wyłączone| False| Agent powiązanych zdarzeń diagnostycznych. Aby uzyskać pełne rejestrowanie przy użyciu tego zdarzenia.| 
 |Błąd konfiguracji |eventPriorityConfigurationError |Małe |False |Nie można przeanalizować konfiguracji agenta. Sprawdź konfigurację względem schematu.| 
-|Statystyki porzuconych zdarzeń |eventPriorityDroppedEventsStatistics |Małe |True|Agent powiązanych Statystyka zdarzeń. |
-|Statystyki komunikatów|eventPriorityMessageStatistics |Małe |True |Agent powiązanych statystyki o komunikatach. |
-|Podłączonych urządzeń|eventPriorityConnectedHardware |Małe |True |Migawka całego sprzętu połączonych z urządzeniem.|
-|Porty nasłuchiwania|eventPriorityListeningPorts |Wysoka |True |Migawka wszystkie otwarte porty nasłuchiwania na urządzeniu.|
+|Statystyki porzuconych zdarzeń |eventPriorityDroppedEventsStatistics |Małe |Prawda|Agent powiązanych Statystyka zdarzeń. |
+|Statystyki komunikatów|eventPriorityMessageStatistics |Małe |Prawda |Agent powiązanych statystyki o komunikatach. |
+|Podłączonych urządzeń|eventPriorityConnectedHardware |Małe |Prawda |Migawka całego sprzętu połączonych z urządzeniem.|
+|Porty nasłuchiwania|eventPriorityListeningPorts |Wysoka |Prawda |Migawka wszystkie otwarte porty nasłuchiwania na urządzeniu.|
 |Tworzenie procesu |eventPriorityProcessCreate |Małe |False |Inspekcje przetworzyć tworzenia na urządzeniu.|
 |Zakończenie procesu|eventPriorityProcessTerminate |Małe |False |Inspekcje przetworzyć zakończenie na urządzeniu.| 
-|Informacje o systemie |eventPrioritySystemInformation |Małe |True |Migawka informacje o systemie (na przykład: System operacyjny lub procesor CPU).| 
-|Użytkownicy lokalni| eventPriorityLocalUsers |Wysoka |True|Migawkę zarejestrowanych użytkowników lokalnych skonfigurowanych w ramach systemu. |
+|Informacje o systemie |eventPrioritySystemInformation |Małe |Prawda |Migawka informacje o systemie (na przykład: System operacyjny lub procesor CPU).| 
+|Użytkownicy lokalni| eventPriorityLocalUsers |Wysoka |Prawda|Migawkę zarejestrowanych użytkowników lokalnych skonfigurowanych w ramach systemu. |
 |Login|  eventPriorityLogin |Wysoka|False|Przeprowadź inspekcję zdarzeń logowania na urządzeniu (logowania lokalnego i zdalnego).|
 |Tworzenie połączenia |eventPriorityConnectionCreate|Małe|False|Przeprowadza inspekcję połączeń TCP utworzone do i z urządzenia. |
-|Konfiguracja zapory| eventPriorityFirewallConfiguration|Małe|True|Migawki konfiguracji zapory urządzenia (reguły zapory). |
-|Punktem odniesienia systemu operacyjnego| eventPriorityOSBaseline| Małe|True|Sprawdź migawkę odniesienia systemu operacyjnego urządzenia.|
+|Konfiguracja zapory| eventPriorityFirewallConfiguration|Małe|Prawda|Migawki konfiguracji zapory urządzenia (reguły zapory). |
+|Punktem odniesienia systemu operacyjnego| eventPriorityOSBaseline| Małe|Prawda|Sprawdź migawkę odniesienia systemu operacyjnego urządzenia.|
  
 
 ## <a name="next-steps"></a>Kolejne kroki

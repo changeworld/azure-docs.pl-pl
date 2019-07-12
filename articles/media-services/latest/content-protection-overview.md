@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 140e6c338d12732d1e41ccd9dabef1de7d5cf8d8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ee65aa5753d9967022ca91a66433b11761b73a32
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068844"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835794"
 ---
 # <a name="content-protection-with-dynamic-encryption"></a>Ochrona zawartości dzięki dynamicznemu szyfrowaniu
 
@@ -73,7 +73,7 @@ Do pomyślnego ukończenia projektu systemu/aplikacji "content protection", nale
   
      Odtwarzacz można utworzyć za pomocą [interfejsu API usługi Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/). Użyj [interfejsu API usługi Azure Media Player ProtectionInfo](https://amp.azure.net/libs/amp/latest/docs/) do określenia technologii DRM na różnych platformach DRM.
 
-     Do testowania AES lub CENC (Widevine i/lub technologii PlayReady) zaszyfrowany zawartość, możesz użyć [usługi Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html). Upewnij się, kliknij pozycję "Opcje zaawansowane" i sprawdź opcje szyfrowania.
+     Do testowania AES lub CENC (Widevine i/lub technologii PlayReady) zaszyfrowany zawartość, możesz użyć [usługi Azure Media Player](http://aka.ms/azuremediaplayer). Upewnij się, kliknij pozycję "Opcje zaawansowane" i sprawdź opcje szyfrowania.
 
      Jeśli chcesz przetestować FairPlay zaszyfrowana zawartość, użyj [tego odtwarzacza testu](https://aka.ms/amtest). Odtwarzacz obsługuje Widevine, PlayReady, i protokołów technologii FairPlay DRM, a także AES-128 szyfrowania otwartym kluczem. 
     
@@ -136,7 +136,7 @@ Protokołu Smooth Streaming obsługuje następujące formaty kontenera i schemat
 
 Popularne przeglądarki obsługują następujących klientów DRM:
 
-|Przeglądarka|Szyfrowanie|
+|Browser|Szyfrowanie|
 |---|---|
 |Chrome|Widevine|
 |Edge, IE 11|PlayReady|
@@ -167,7 +167,7 @@ Jeśli chcesz określić inny klucz i licencji usługi dostarczania (nie Media S
 * StreamingPolicyWidevineConfiguration.CustomLicenseAcquisitionUrlTemplate - sam, jak powyżej, tylko w przypadku Widevine. 
 * StreamingPolicyFairPlayConfiguration.CustomLicenseAcquisitionUrlTemplate - sam, jak powyżej, tylko w przypadku technologii FairPlay.  
 
-Na przykład:
+Przykład:
 
 ```csharp
 streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://mykeyserver.hostname.com/envelopekey/{AlternativeMediaId}/{ContentKeyId}";

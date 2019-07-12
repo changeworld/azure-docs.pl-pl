@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/18/2019
 ms.author: junhan
-ms.openlocfilehash: f8799fcb06235474bb33cdaf0406300065208024
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 1289e9c8f8cfc9360c9b2325507b43bab3a69028
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543819"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67838508"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Narzędzia Azure IoT dla programu Visual Studio Code do wysyłania i odbierania komunikatów między urządzeniem i Centrum IoT Hub
 
@@ -56,7 +56,7 @@ Dowiesz się, jak używać usługi Azure IoT Tools for Visual Studio Code do mon
 5. Na liście będą wyświetlane w **Azure IoT Hub Devices** kartę w ciągu kilku sekund.
 
    > [!Note]
-   > Można również ukończyć konfigurację, wybierając pozycję **Ustaw parametry połączenia centrum IoT Hub**. Wprowadź parametry połączenia dla Centrum IoT, które urządzenia IoT, łączy w oknie podręcznym.
+   > Można również ukończyć konfigurację, wybierając pozycję **Ustaw parametry połączenia centrum IoT Hub**. Wprowadź **iothubowner** zasad parametry połączenia dla Centrum IoT, które urządzenia IoT, łączy w oknie podręcznym.
 
 ## <a name="monitor-device-to-cloud-messages"></a>Monitorowania komunikatów wysyłanych z urządzenia do chmury
 

@@ -5,7 +5,7 @@ keywords: ''
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: b7ec3a6919a27633fc36ba7fb1551ead10e06ffe
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 40fd91ed39731b95cf01a627e3178ab6cfaaa7d3
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60542717"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67670984"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>Limity przydziału procesorów wirtualnych maszyny wirtualnej
 
@@ -67,6 +67,6 @@ Zarezerwowane wystąpienia maszyn wirtualnych, które są ograniczone do pojedyn
 
 Jeśli zwiększenia limitu przydziału jest wymagana do albo zakupu wystąpień Zarezerwowanych na pojedynczej subskrypcji, możesz to zrobić [zażądać zwiększenia limitu przydziału](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) w ramach Twojej subskrypcji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat rozliczeń i przydziałów, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](https://docs.microsoft.com/azure/azure-subscription-service-limits?toc=/azure/billing/TOC.json).

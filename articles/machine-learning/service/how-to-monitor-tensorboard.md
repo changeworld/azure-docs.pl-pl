@@ -1,21 +1,20 @@
 ---
-title: Wizualizacja doświadczenia z usługą TensorBoard i Azure Machine Learning
+title: Wizualizowanie eksperymentów za pomocą rozwiązania TensorBoard
+titleSuffix: Azure Machine Learning service
 description: Uruchamianie narzędzia TensorBoard, aby zwizualizować historie uruchomienie eksperymentu i zidentyfikować potencjalne obszary hiperparametrycznego dostrajanie i ponownego trenowania.
 services: machine-learning
+ms.service: machine-learning
+ms.subservice: core
+ms.topic: article
 author: maxluk
 ms.author: maxluk
-ms.reviewer: nibaccam
-ms.service: machine-learning
-ms.component: core
-ms.workload: data-services
-ms.topic: article
 ms.date: 06/28/2019
-ms.openlocfilehash: babd4cdf8b7ed9e04b4bd975d840688b27439c4f
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: fde2b6d1d298e89227951c376d584452fbff2679
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560852"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707048"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>Wizualizuj przebiegów eksperymentu i metryk przy użyciu narzędzia TensorBoard i Azure Machine Learning
 
@@ -48,7 +47,7 @@ Jak uruchomić narzędzia TensorBoard z eksperymentów w usłudze Azure Machine 
           * Tworzenie obszaru roboczego i jego pliku konfiguracji (config.json)
   
 <a name="direct"></a>
-## <a name="option-1-directly-view-run-history-in-tensorboard"></a>Opcja 1: Bezpośrednio Widok historii uruchamiania w aplikacji TensorBoard
+## <a name="option-1-directly-view-run-history-in-tensorboard"></a>Option 1: Bezpośrednio Widok historii uruchamiania w aplikacji TensorBoard
 
 Ta opcja działa w przypadku eksperymentów, czy natywnie dane wyjściowe pliki dzienników są w użyciu przez narzędzia TensorBoard, takich jak PyTorch, Chainer i TensorFlow experiments. Jeśli to nie przypadek eksperymentu, użyj [ `export_to_tensorboard()` metoda](#export) zamiast tego.
 
@@ -283,7 +282,7 @@ Gdy wszystko będzie gotowe, upewnij się, że wywołanie [stop()](https://docs.
 tb.stop()
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym porad, utworzyliśmy dwa doświadczenia i przedstawiono sposób uruchamiania narzędzia TensorBoard przed ich uruchomień do identyfikacji obszarów potencjalnych dostosowywania i ponownego trenowania. 
 

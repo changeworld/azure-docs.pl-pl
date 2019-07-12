@@ -4,7 +4,7 @@ description: Znajdowanie i usuwanie kart sieciowych platformy Azure, które nie 
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: cynthn
-ms.openlocfilehash: d3fd807dcd920a951dcc5083022d4d264b5bdab7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dd4fcfe80818bd8e1e87851f4b5131aac73ceeb5
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60649404"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671521"
 ---
 # <a name="how-to-find-and-delete-unattached-network-interface-cards-nics-for-azure-vms"></a>Jak wykryć i usunąć interfejsu sieciowego niedołączonych kart (NIC) maszyn wirtualnych platformy Azure
 Jeśli usuniesz maszynę wirtualną (VM) na platformie Azure, kart interfejsu sieciowego (NIC) nie są usuwane domyślnie. Jeśli utworzysz i usuniesz wielu maszyn wirtualnych, nieużywanych kart sieciowych w dalszym ciągu używać wewnętrznego dzierżawy adresów IP. Jak utworzyć inne karty sieciowe maszyny Wirtualnej, może być nie można uzyskać dzierżawy adresów IP w przestrzeni adresowej podsieci. Ten artykuł pokazuje, jak Znajdowanie i usuwanie niedołączonych kart sieciowych.
@@ -51,6 +51,6 @@ do
 done
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat sposobu tworzenia i zarządzanie sieciami wirtualnymi na platformie Azure, zobacz [tworzenie i zarządzanie sieciami maszyn wirtualnych](tutorial-virtual-network.md).

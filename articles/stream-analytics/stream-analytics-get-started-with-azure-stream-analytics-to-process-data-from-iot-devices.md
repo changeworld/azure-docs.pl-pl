@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: 7172c1c4c31a47500eaba28ab6ed21e54674b80a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f6a1d5e5a15a2af7db5b6256a6a0c5f19f0e7cf5
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077708"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621000"
 ---
 # <a name="get-started-with-azure-stream-analytics-to-process-data-from-iot-devices"></a>Wprowadzenie do usługi Azure Stream Analytics służącej do przetwarzania danych z urządzeń IoT
 
@@ -102,14 +102,14 @@ Zwiększmy szczegółowość naszego zapytania. Dla każdego typu czujnika chcem
 
 ![Zapytanie z filtrowaniem co 30 sekund](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-10.png)
 
-Wyniki powinny teraz zawierać tylko 245 wierszy i nazwy czujników, w przypadku których średnia temperatura przekracza 100 stopni. W tym zapytaniu strumień zdarzeń został pogrupowany według wartości **dspl**, czyli nazwy czujnika, i wartości **Okno wirowania** równej 30 sekund. W zapytaniu dotyczącym danych czasowych należy określić sposób przyrastania czasu. Użyliśmy klauzuli **TIMESTAMP BY** i wybraliśmy kolumnę **OUTPUTTIME**, aby skojarzyć czasy ze wszystkimi obliczeniami danych czasowych. Aby uzyskać szczegółowe informacje, przeczytaj w witrynie MSDN artykuły dotyczące [zarządzania czasem](https://msdn.microsoft.com/library/azure/mt582045.aspx) i [funkcji obsługi okien](https://msdn.microsoft.com/library/azure/dn835019.aspx).
+Wyniki powinny teraz zawierać tylko 245 wierszy i nazwy czujników, w przypadku których średnia temperatura przekracza 100 stopni. W tym zapytaniu strumień zdarzeń został pogrupowany według wartości **dspl**, czyli nazwy czujnika, i wartości **Okno wirowania** równej 30 sekund. W zapytaniu dotyczącym danych czasowych należy określić sposób przyrastania czasu. Użyliśmy klauzuli **TIMESTAMP BY** i wybraliśmy kolumnę **OUTPUTTIME**, aby skojarzyć czasy ze wszystkimi obliczeniami danych czasowych. Aby uzyskać szczegółowe informacje, przeczytaj w witrynie MSDN artykuły dotyczące [zarządzania czasem](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics) i [funkcji obsługi okien](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics).
 
 ### <a name="query-detect-absence-of-events"></a>Zapytanie: Wykrywanie braku zdarzeń
 Jak napisać zapytanie w celu określenia braku zdarzeń wejściowych? Spróbujmy określić, kiedy ostatnio czujnik wysłał dane, a następnie przez kolejnych 5 sekund nie wysłał zdarzeń. Zapytanie znajduje się w pliku AbsenceOfEvent.txt.
 
 ![Wykrywanie braku zdarzeń](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-11.png)
 
-W tym przypadku zostanie użyte sprzężenie **LEFT OUTER** względem tego samego strumienia danych (samosprzężenie). W przypadku sprzężenia **INNER** wynik jest zwracany tylko wtedy, gdy zostanie znalezione dopasowanie.  Natomiast w przypadku sprzężenia **LEFT OUTER**, jeśli zdarzenie z lewej strony sprzężenia jest niedopasowane, dla wszystkich kolumn po prawej stronie wiersza jest zwracany wiersz z wartością NULL. Ta technika jest bardzo przydatna do wyszukiwania braku zdarzeń. Aby uzyskać więcej informacji na temat sprzężenia [JOIN](https://msdn.microsoft.com/library/azure/dn835026.aspx), zobacz dokumentację w witrynie MSDN.
+W tym przypadku zostanie użyte sprzężenie **LEFT OUTER** względem tego samego strumienia danych (samosprzężenie). W przypadku sprzężenia **INNER** wynik jest zwracany tylko wtedy, gdy zostanie znalezione dopasowanie.  Natomiast w przypadku sprzężenia **LEFT OUTER**, jeśli zdarzenie z lewej strony sprzężenia jest niedopasowane, dla wszystkich kolumn po prawej stronie wiersza jest zwracany wiersz z wartością NULL. Ta technika jest bardzo przydatna do wyszukiwania braku zdarzeń. Aby uzyskać więcej informacji na temat sprzężenia [JOIN](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics), zobacz dokumentację w witrynie MSDN.
 
 ## <a name="conclusion"></a>Podsumowanie
 Celem tego samouczka jest zademonstrowanie sposobu pisania różnych zapytań języka zapytań usługi Stream Analytics i wyświetlania wyników w przeglądarce. Jest to jednak tylko początek. Za pomocą usługi Stream Analytics można zrobić dużo więcej. Usługa Stream Analytics obsługuje różne dane wejściowe oraz wyjściowe i może nawet korzystać z funkcji w usłudze Azure Machine Learning, co czyni ją doskonałym narzędziem do analizowania strumieni danych. Jeśli chcesz dowiedzieć się więcej na temat usługi Stream Analytics, skorzystaj z naszej [mapy uczenia](https://docs.microsoft.com/azure/stream-analytics/). Aby uzyskać więcej informacji na temat sposobu pisania zapytań, przeczytaj artykuł dotyczący [typowych wzorców zapytań](stream-analytics-stream-analytics-query-patterns.md).

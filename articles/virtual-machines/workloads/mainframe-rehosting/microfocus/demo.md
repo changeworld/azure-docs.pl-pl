@@ -2,15 +2,16 @@
 title: Konfigurowanie Micro fokus CICS BankDemo Micro fokus Enterprise Developer 4.0 na maszynach wirtualnych platformy Azure
 description: Uruchom aplikację BankDemo fokus Micro w usłudze Azure Virtual Machines (VMs) i Dowiedz się, jak używać Micro fokus Enterprise Server i Enterprise Developer.
 author: sread
+ms.author: sread
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 7afe29cb98a294b2a30020ad48f8b27264386746
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4491fc137c2c85e2be605f5e58fde6fd422efbbe
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304704"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621332"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Konfigurowanie Micro fokus CICS BankDemo Micro fokus Enterprise Developer 4.0 na platformie Azure
 
@@ -266,7 +267,7 @@ Końcowe rzeczą, jaką należy wykonać to skonfigurować sesję 3270 przy uży
 
 Gratulacje! Teraz uruchamiasz CICS aplikację na platformie Azure przy użyciu Micro fokus Enterprise Server.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Uruchamianie serwera przedsiębiorstwa w kontenerach platformy Docker na platformie Azure](run-enterprise-server-container.md)
 - [Migracja komputera mainframe — Portal](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)

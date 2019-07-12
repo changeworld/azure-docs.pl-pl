@@ -1,6 +1,6 @@
 ---
-title: Przekazywanie i magazynu przy użyciu usługi Azure Media Services chmurze | Dokumentacja firmy Microsoft
-description: Ten artykuł chmury przekazywania i kwestie dotyczące magazynu.
+title: Konta usługi Azure Storage za pomocą kont usługi Azure Media Services | Dokumentacja firmy Microsoft
+description: Podczas tworzenia konta usługi Media Services musisz podać nazwę zasobu konta usługi Azure Storage. Podane konto magazynu jest dołączane do konta usługi Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,16 +9,16 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 06/25/2019
+ms.date: 07/01/2019
 ms.author: juliako
-ms.openlocfilehash: fc5bf052a7677d76c7128404a420f8c886cf3fe1
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5c5bfa224b87040f5142663e6adab01072c6e6ba
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439108"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67619296"
 ---
-# <a name="cloud-upload-and-storage"></a>Przekazywanie do chmury i magazynowanie w niej
+# <a name="azure-storage-accounts"></a>Konta usługi Azure Storage
 
 Aby rozpocząć zarządzanie, szyfrowanie, kodowanie, analizowanie i przesyłanie strumieniowe zawartości multimedialnej na platformie Azure, musisz utworzyć konto usługi Media Services. Podczas tworzenia konta usługi Media Services musisz podać nazwę zasobu konta usługi Azure Storage. Podane konto magazynu jest dołączane do konta usługi Media Services. 
 
@@ -63,6 +63,6 @@ Poniżej przedstawiono podstawowe scenariusze, które mogłyby spowodować, że 
 |Konto usługi Media Services lub dołączone konta magazynu zostały poddane migracji do oddzielnych subskrypcji. |Przeprowadź migrację kont magazynu lub konta usługi Media Services, aby wszystkie były w tej samej subskrypcji. |
 |Konto usługi Media Services używa dołączonego konta magazynu w innej subskrypcji, ponieważ było to wcześniejsze konto usługi Media Services, na którym było to obsługiwane. Wszystkie wcześniejsze konta usługi Media Services zostały przekonwertowane na nowoczesne konta platformy Azure Resource Manager (ARM) i są w stanie „odłączone”. |Przeprowadź migrację kont magazynu lub konta usługi Media Services, aby wszystkie były w tej samej subskrypcji.|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się, jak dołączyć konto magazynu do konta usługi Media Services, zobacz [Tworzenie konta usługi](create-account-cli-quickstart.md).

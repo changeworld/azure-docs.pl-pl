@@ -9,12 +9,12 @@ ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/23/2017
-ms.openlocfilehash: 9de5c7228944bd0448d9dfa833ef223140ccf0e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2a138801ba13c6008880e3d24c89d1c23323b853
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813842"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626215"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Wprowadzenie do języka U-SQL w usłudze Azure Data Lake Analytics
 U-SQL jest językiem, który łączy deklaratywne SQL za pomocą imperatywne C# umożliwia przetwarzanie danych w dowolnej skali. Za pomocą funkcji skalowalnych, rozproszonych zapytań U-SQL można efektywnie analizować dane w magazynach relacyjnych, takich jak Azure SQL Database. Przy użyciu języka U-SQL może przetwarzać dane bez określonej struktury, stosując schematu przy odczycie oraz Wstawianie niestandardowej logiki i funkcji zdefiniowanych przez użytkownika. Ponadto U-SQL zawiera rozszerzalności, który zapewnia precyzyjną kontrolę nad jak wykonać na dużą skalę. 
@@ -22,7 +22,7 @@ U-SQL jest językiem, który łączy deklaratywne SQL za pomocą imperatywne C# 
 ## <a name="learning-resources"></a>Zasoby szkoleniowe
 
 * [Samouczka języka U-SQL](https://aka.ms/usqltutorial) zawiera przewodnik krok po kroku większości języka U-SQL. Ten dokument jest zalecane dla wszystkich deweloperów, która chce dowiedzieć się więcej U-SQL do czytania.
-* Aby uzyskać szczegółowe informacje na temat **składni języka U-SQL**, zobacz [dokumentację języka U-SQL](https://go.microsoft.com/fwlink/p/?LinkId=691348).
+* Aby uzyskać szczegółowe informacje na temat **składni języka U-SQL**, zobacz [dokumentację języka U-SQL](https://docs.microsoft.com/u-sql/).
 * Aby zrozumieć **zasady projektowania klas języka U-SQL**, zobacz wpis w blogu programu Visual Studio [wprowadzenie do języka U-SQL — języka, który umożliwia łatwe przetwarzanie danych big data](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne

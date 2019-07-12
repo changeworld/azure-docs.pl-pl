@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 5da09d705246ffd5002a1a21daab2266525f579e
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: 3d478c2421066c8347622f9064c479bb8255b112
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357512"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621748"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-functions"></a>Skalować zadania usługi Stream Analytics przy użyciu funkcji Azure Machine Learning Studio
 
@@ -140,10 +140,10 @@ Aby skalować zadania usługi Stream Analytics, za pomocą funkcji usługi Machi
 
 W pełni podzielonym na partycje zapytań usługi Stream Analytics została użyta jako przykład. W razie potrzeby bardziej złożonego zapytania [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics) jest doskonałym zasobem w celu uzyskania dodatkowej pomocy od zespołu usługi Stream Analytics.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej na temat usługi Stream Analytics, zobacz:
 
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)
 * [Scale Azure Stream Analytics jobs (Skalowanie zadań usługi Azure Stream Analytics)](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics Query Language Reference (Dokumentacja dotycząca języka zapytań usługi Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure Stream Analytics Query Language Reference (Dokumentacja dotycząca języka zapytań usługi Azure Stream Analytics)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics Management REST API Reference (Dokumentacja interfejsu API REST zarządzania usługą Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn835031.aspx)

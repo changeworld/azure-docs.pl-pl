@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: 4ed18b5f83bdb052f2db6847a320c26a8e49f83e
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 1cb3260fa11354de963318a023fec912d082eae4
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147543"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653398"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>Rozwiązywanie typowych problemów indeksatora w usłudze Azure Search
 
@@ -45,7 +45,7 @@ Można znaleźć adres IP usługi wyszukiwania, wysyłając polecenie ping do na
 
 #### <a name="indexing-isnt-enabled"></a>Indeksowanie nie jest włączona
 
-Usługa Azure Search ma niejawne zależność indeksowania usługi Cosmos DB. Po wyłączeniu automatycznego indeksowania w usłudze Cosmos DB, Azure Search zwraca stan pomyślne, ale nie może zawartość kontenerów indeksu. Aby uzyskać instrukcje dotyczące Sprawdź ustawienia i włączyć indeksowanie, zobacz [zarządzania indeksowaniem w usłudze Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#manage-indexing-using-azure-portal).
+Usługa Azure Search ma niejawne zależność indeksowania usługi Cosmos DB. Po wyłączeniu automatycznego indeksowania w usłudze Cosmos DB, Azure Search zwraca stan pomyślne, ale nie może zawartość kontenerów indeksu. Aby uzyskać instrukcje dotyczące Sprawdź ustawienia i włączyć indeksowanie, zobacz [zarządzania indeksowaniem w usłudze Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-azure-portal).
 
 ## <a name="document-processing-errors"></a>Błędy przetwarzania dokumentu
 

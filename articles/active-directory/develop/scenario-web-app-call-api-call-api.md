@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd44dda06b2f6fc48538f2fb74c0bf8e04d0362b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3624f4e859081e53ee27b6f8415eb3f9b5a2a5fa
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074638"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785455"
 ---
 # <a name="web-app-that-calls-web-apis---call-a-web-api"></a>Aplikacja sieci Web, która wywołuje interfejsy API — w sieci web wywołania interfejsu API sieci web
 
@@ -28,7 +28,18 @@ Teraz, gdy masz token, można wywoływać chroniony internetowy interfejs API.
 
 ## <a name="aspnet-core"></a>ASP.NET Core
 
-Oto uproszczony kod akcji `HomeController`. Ten kod pobiera tokenu służącego do wywoływania programu Microsoft Graph. Tego kodu w czasie został dodany, przedstawiający sposób wywoływania programu Microsoft Graph jako interfejs API REST.
+Oto uproszczony kod akcji `HomeController`. Ten kod pobiera tokenu służącego do wywoływania programu Microsoft Graph. Tego kodu w czasie został dodany, przedstawiający sposób wywoływania programu Microsoft Graph jako interfejs API REST. Adres URL dla interfejsu API programu graph jest podawany jako `appsettings.json` plików i odczytywanie w zmiennej o nazwie `webOptions`:
+
+```JSon
+{
+  "AzureAd": {
+    "Instance": "https://login.microsoftonline.com/",
+    ...
+  },
+  ...
+  "GraphApiUrl": "https://graph.microsoft.com"
+}
+```
 
 ```CSharp
 public async Task<IActionResult> Profile()
@@ -76,7 +87,7 @@ public async Task<IActionResult> Profile()
 >
 > Najbardziej w usłudze Azure web API udostępniają zestaw SDK, który upraszcza wywoływaniu tego elementu. Jest to również w przypadku programu Microsoft Graph. W następnym artykule dowiesz się, gdzie można znaleźć samouczek pokazujący tych aspektów.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Przenoszenie do środowiska produkcyjnego](scenario-web-app-call-api-production.md)

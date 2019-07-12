@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/21/2018
+ms.date: 07/08/2019
 ms.author: raynew
-ms.openlocfilehash: f7d97866bb3ae895f83fff248ceec2e83dd60bf9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b447290a6910d144703bb796290908d0fc21b924
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66688901"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705135"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Monitorowanie magazynów usługi Recovery Services i zarządzanie nimi
 
@@ -100,8 +100,8 @@ Domyślnie wszystkie szczegółowe informacje, z wyjątkiem **godzina ostatniego
 * Alerty
 * Element kopii zapasowej
 * Chroniony serwer
-* Severity
-* Czas trwania
+* severity
+* Duration
 * Godzina utworzenia
 * Stan
 * Godzina ostatniego wystąpienia
@@ -261,21 +261,6 @@ Magazyn kopii zapasowych kafelka na pulpicie nawigacyjnym będą wyświetlane ma
 * Użycie magazynu GRS skojarzonego z magazynem w chmurze
 
 
-## <a name="frequently-asked-questions"></a>Często zadawane pytania
-
-### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Jak długo trwa aż stan zadania agenta usługi Azure backup to odzwierciedlone w portalu?
-Witryny Azure portal może potrwać do 15 minut podsumowująca stan zadania agenta usługi Azure backup.
-
-### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>Gdy zadanie tworzenia kopii zapasowej nie powiedzie się, jak długo trwa wywołania alertu?
-W ciągu 20 minutach niepowodzenia wykonywania kopii zapasowej platformy Azure zostanie zgłoszony alert.
-
-### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Jest przypadek, w których nie będzie wysyłana wiadomość e-mail że powiadomienia zostały skonfigurowane?
-Tak. W następujących sytuacjach nie są wysyłane powiadomienia.
-
-* Jeśli powiadomienia zostały skonfigurowane co godzinę, a alert jest wyświetlany i rozwiązywany w ciągu godziny
-* Kiedy zadanie zostanie anulowane
-* Jeśli drugie zadanie tworzenia kopii zapasowej nie powiedzie się, ponieważ oryginalne zadanie tworzenia kopii zapasowej jest w toku
-
 ## <a name="troubleshooting-monitoring-issues"></a>Rozwiązywanie problemów monitorowania
 
 **Problem:** Zadania i/lub alerty z agentem usługi Azure Backup nie są wyświetlane w portalu.
@@ -290,7 +275,7 @@ Tak. W następujących sytuacjach nie są wysyłane powiadomienia.
    `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*` Na przykład:<br/>
    `C:\Program Files\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider0.errlog`
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Przywracanie systemu Windows Server lub klienta Windows z platformy Azure](backup-azure-restore-windows-server.md)
 * Aby dowiedzieć się więcej o usłudze Azure Backup, zobacz [Azure Backup — omówienie](backup-introduction-to-azure-backup.md)
 * Odwiedź stronę [Forum usługi Azure Backup](https://go.microsoft.com/fwlink/p/?LinkId=290933)

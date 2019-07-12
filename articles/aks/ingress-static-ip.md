@@ -2,23 +2,23 @@
 title: Tworzenie kontrolera danych przychodzących HTTP za pomocą statycznego adresu IP w usłudze Azure Kubernetes Service (AKS)
 description: Informacje o sposobie instalowania i konfigurowania kontrolera danych przychodzących NGINX statyczny publiczny adres IP w klastrze usługi Azure Kubernetes Service (AKS).
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.author: iainfou
-ms.openlocfilehash: 94822c37d6f95bacd1aef36a72176c65c350383f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 5a4a46b8384da46a95ef148bc9989749535ec811
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66431011"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615333"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Tworzenie kontrolera danych przychodzących za pomocą statyczny publiczny adres IP w usłudze Azure Kubernetes Service (AKS)
 
 Kontroler ruchu przychodzącego to element oprogramowania dostarczający odwrotny serwer proxy, konfigurowalne trasowanie ruchu oraz zakończenie protokołu TLS dla usług Kubernetes. Zasoby ruchu przychodzącego usług Kubernetes są używane do skonfigurowania zasad ruchu przychodzącego oraz tras dla poszczególnych usług Kubernetes. Dzięki korzystaniu z kontrolera ruchu przychodzącego oraz zasad ruchu przychodzącego można użyć jednego adresu IP do trasowania ruchu w wielu usługach w klastrze Kubernetes.
 
-W tym artykule przedstawiono sposób wdrażania [kontrolera danych przychodzących NGINX] [ nginx-ingress] w klastrze usługi Azure Kubernetes Service (AKS). Kontroler danych przychodzących jest skonfigurowany z statyczny publiczny adres IP. [Menedżera certyfikatów] [ cert-manager] projekt jest używana do automatycznego generowania i skonfigurować [umożliwia szyfrowanie] [ lets-encrypt] certyfikatów. Na koniec dwie aplikacje są uruchamiane w klastrze AKS, z których każdy jest dostępny za pośrednictwem pojedynczego adresu IP.
+W tym artykule przedstawiono sposób wdrażania [kontrolera danych przychodzących NGINX][nginx-ingress] in an Azure Kubernetes Service (AKS) cluster. The ingress controller is configured with a static public IP address. The [cert-manager][cert-manager] projekt jest używana do automatycznego generowania i skonfigurować [umożliwia szyfrowanie][umożliwia szyfrowanie]certyfikatów. Na koniec dwie aplikacje są uruchamiane w klastrze AKS, z których każdy jest dostępny za pośrednictwem pojedynczego adresu IP.
 
 Możesz również wykonać następujące czynności:
 
@@ -29,9 +29,9 @@ Możesz również wykonać następujące czynności:
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W tym artykule założono, że masz istniejący klaster usługi AKS. Jeśli potrzebujesz klastra AKS, zobacz Przewodnik Szybki Start usługi AKS [przy użyciu wiersza polecenia platformy Azure] [ aks-quickstart-cli] lub [przy użyciu witryny Azure portal][aks-quickstart-portal].
+W tym artykule założono, że masz istniejący klaster usługi AKS. Jeśli potrzebujesz klastra AKS, zobacz Przewodnik Szybki Start usługi AKS [przy użyciu wiersza polecenia platformy Azure][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
 
-W tym artykule używa narzędzia Helm do zainstalowania serwera NGINX kontrolera danych przychodzących, Menedżer certyfikatów i przykładową aplikację sieci web. Musisz mieć narzędzia Helm inicjowane w obrębie klastra usługi AKS i przy użyciu konta usługi dla Tiller. Upewnij się, że używasz najnowszej wersji narzędzia Helm. Aby uzyskać instrukcje uaktualniania, zobacz [Helm zainstalować docs][helm-install]. Aby uzyskać więcej informacji na temat konfigurowania i używania narzędzia Helm, zobacz [instalowanie aplikacji za pomocą narzędzia Helm w usłudze Azure Kubernetes Service (AKS)][use-helm].
+W tym artykule używa narzędzia Helm do zainstalowania serwera NGINX kontrolera danych przychodzących, Menedżer certyfikatów i przykładową aplikację sieci web. Musisz mieć narzędzia Helm inicjowane w obrębie klastra usługi AKS i przy użyciu konta usługi dla Tiller. Upewnij się, że używasz najnowszej wersji narzędzia Helm. Aby uzyskać instrukcje uaktualniania, zobacz [Helm zainstalować docs][helm-install]. For more information on configuring and using Helm, see [Install applications with Helm in Azure Kubernetes Service (AKS)][use-helm].
 
 W tym artykule wymaga również, czy korzystasz z wiersza polecenia platformy Azure w wersji 2.0.64 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
 
@@ -39,13 +39,13 @@ W tym artykule wymaga również, czy korzystasz z wiersza polecenia platformy Az
 
 Domyślnie NGINX kontrolera danych przychodzących jest tworzony z publicznych przypisywania adresów IP. Ten publiczny adres IP ma wartość static tylko dla żywotności kontrolera danych przychodzących i zostaną utracone w przypadku kontrolera jest usunięta i utworzona ponownie. Typowym wymogiem konfiguracji ma na celu dostarczenie kontrolera danych przychodzących NGINX istniejącego statycznego publicznego adresu IP. Statyczny publiczny adres IP pozostanie usunięcie kontrolera danych przychodzących. Takie podejście umożliwia korzystanie z istniejących rekordów DNS i konfiguracji sieci w spójny sposób w całym cyklu życia aplikacji.
 
-Jeśli musisz utworzyć statyczny publiczny adres IP, najpierw uzyskać nazwę grupy zasobów klastra usługi AKS z [az aks show] [ az-aks-show] polecenia:
+Jeśli musisz utworzyć statyczny publiczny adres IP, najpierw uzyskać nazwę grupy zasobów klastra usługi AKS z [az aks show][az-aks-show] polecenia:
 
 ```azurecli-interactive
 az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
 ```
 
-Następnie utwórz publiczny adres IP z *statyczne* przy użyciu metody alokacji [tworzenie sieci az public-ip] [ az-network-public-ip-create] polecenia. Poniższy przykład tworzy publiczny adres IP o nazwie *myAKSPublicIP* w usłudze AKS klastra grupy zasobów uzyskane w poprzednim kroku:
+Następnie utwórz publiczny adres IP z *statyczne* przy użyciu metody alokacji [tworzenie sieci az public-ip][az-network-public-ip-create] polecenia. Poniższy przykład tworzy publiczny adres IP o nazwie *myAKSPublicIP* w usłudze AKS klastra grupy zasobów uzyskane w poprzednim kroku:
 
 ```azurecli-interactive
 az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --allocation-method static --query publicIp.ipAddress -o tsv
@@ -59,7 +59,7 @@ Kontroler danych przychodzących musi odbywać się w węźle systemu Linux. Wę
 > Poniższy przykład obejmuje tworzenie przestrzeni nazw Kubernetes, transferu danych przychodzących zasobów o nazwie *basic ruch przychodzący*. Określ obszar nazw dla Twojego środowiska, zgodnie z potrzebami. Jeśli klaster AKS nie jest włączone RBAC, Dodaj `--set rbac.create=false` polecenia narzędzia Helm.
 
 > [!TIP]
-> Jeśli chcesz umożliwić [klienta źródłowego adresu IP zachowania] [ client-source-ip] dla żądań kierowanych do kontenerów w klastrze, należy dodać `--set controller.service.externalTrafficPolicy=Local` do narzędzia Helm polecenie instalacji. Źródło klienta IP znajduje się w nagłówku żądania, w obszarze *X-Forwarded-dla*. Jeśli kontroler danych przychodzących z klienta zachowania IP dla źródła włączona, przekazywanego SSL nie będzie działać.
+> Jeśli chcesz umożliwić [klienta źródłowego adresu IP zachowania][client-source-ip] dla żądań kierowanych do kontenerów w klastrze, należy dodać `--set controller.service.externalTrafficPolicy=Local` do narzędzia Helm polecenie instalacji. Źródło klienta IP znajduje się w nagłówku żądania, w obszarze *X-Forwarded-dla*. Jeśli kontroler danych przychodzących z klienta zachowania IP dla źródła włączona, przekazywanego SSL nie będzie działać.
 
 ```console
 # Create a namespace for your ingress resources
@@ -110,7 +110,7 @@ Kontroler danych przychodzących jest teraz dostępna za pośrednictwem nazwy FQ
 
 ## <a name="install-cert-manager"></a>Zainstaluj Menedżera certyfikatów
 
-Kontroler danych przychodzących NGINX obsługuje kończenie żądań protokołu TLS. Istnieje kilka sposobów, aby pobrać i skonfigurować certyfikaty dla protokołu HTTPS. W tym artykule pokazano sposób użycia [Menedżera certyfikatów][cert-manager], która umożliwia automatyczne [umożliwia szyfrowanie] [ lets-encrypt] Generowanie certyfikatu i Funkcje zarządzania.
+Kontroler danych przychodzących NGINX obsługuje kończenie żądań protokołu TLS. Istnieje kilka sposobów, aby pobrać i skonfigurować certyfikaty dla protokołu HTTPS. W tym artykule pokazano sposób użycia [Menedżera certyfikatów][cert-manager] , which provides automatic [Lets Encrypt][lets-encrypt] certyfikatu generacji oraz funkcji zarządzania.
 
 > [!NOTE]
 > W tym artykule wykorzystano `staging` środowiska umożliwia szyfrowanie. W przypadku wdrożeń produkcyjnych, użyj `letsencrypt-prod` i `https://acme-v02.api.letsencrypt.org/directory` w definicjach zasobów, a podczas instalowania wykresu Helm.
@@ -145,7 +145,7 @@ Aby uzyskać więcej informacji na temat konfiguracji Menedżera certyfikatów, 
 
 ## <a name="create-a-ca-cluster-issuer"></a>Utwórz wystawcę klastra urzędu certyfikacji
 
-Zanim certyfikaty mogą być wystawiane, Menedżer certyfikatów wymaga [wystawcy] [ cert-manager-issuer] lub [ClusterIssuer] [ cert-manager-cluster-issuer] zasobów. Te zasoby platformy Kubernetes są identyczne w działaniu, jednak `Issuer` działa w jednej przestrzeni nazw i `ClusterIssuer` działa we wszystkich przestrzeni nazw. Aby uzyskać więcej informacji, zobacz [wystawcy certyfikatu Menedżera] [ cert-manager-issuer] dokumentacji.
+Zanim certyfikaty mogą być wystawiane, Menedżer certyfikatów wymaga [wystawcy][cert-manager-issuer] or [ClusterIssuer][cert-manager-cluster-issuer] zasobów. Te zasoby platformy Kubernetes są identyczne w działaniu, jednak `Issuer` działa w jednej przestrzeni nazw i `ClusterIssuer` działa we wszystkich przestrzeni nazw. Aby uzyskać więcej informacji, zobacz [wystawcy certyfikatu Menedżera][cert-manager-issuer] dokumentacji.
 
 Tworzenie klastra wystawcy, takich jak `cluster-issuer.yaml`, za pomocą następujących manifest przykładu. Przy użyciu prawidłowego adresu z Twojej organizacji, należy zaktualizować adres e-mail:
 
@@ -386,7 +386,7 @@ Na koniec usunąć statyczny publiczny adres IP utworzony dla kontrolera danych 
 az network public-ip delete --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym artykule uwzględnione niektóre składniki zewnętrzne w usłudze AKS. Aby dowiedzieć się więcej na temat tych składników, zobacz następujące strony projektu:
 

@@ -6,13 +6,13 @@ author: v-miclar
 ms.service: marketplace
 ms.topic: article
 ms.date: 08/27/2018
-ms.author: Ankit.Sud
-ms.openlocfilehash: 4a75d706d55512201786b2b74376047ff75380a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: ansud
+ms.openlocfilehash: e6099caf949d93abf8c665f61cd9b91d545dd0f4
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938118"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612551"
 ---
 # <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>Aktualizowanie istniejącej oferty maszyny Wirtualnej w portalu Azure Marketplace
 
@@ -128,7 +128,7 @@ Po opublikowaniu oferty zgodnie z rzeczywistym użyciem nie może bezpośrednio 
 
 4.  Jeśli ustawiono cenie w 1 x 1 graficznego interfejsu użytkownika, można zmienić cena bezpośrednio w interfejsie użytkownika. Jeśli ustawisz ceny za pośrednictwem importu/eksportu arkusza kalkulacyjnego, można zmniejszyć tylko ceny za pomocą funkcji importowania/eksportowania.
 
-3.  Kliknij pozycję **Zapisz**.
+3.  Kliknij polecenie **Zapisz**.
 
 4.  Kliknij pozycję **Publikuj** można uruchomić przepływu pracy, aby opublikować zmiany.
 

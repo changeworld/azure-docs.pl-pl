@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e236d3142ba4410b6942f9e8069e1429aae5378
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 734fd1d0c150cfb655279b7978a3dd1512923e49
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108422"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702248"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Zagadnienia dotyczące topologii sieci przy użyciu serwera Proxy usługi Azure Active Directory Application
 
@@ -32,8 +32,8 @@ W tym artykule opisano zagadnienia dotyczące topologii sieci, podczas publikowa
 Po opublikowaniu aplikacji za pośrednictwem serwera Proxy aplikacji usługi Azure AD ruchu użytkowników do aplikacji przechodzi przez trzy połączenia:
 
 1. Gdy użytkownik łączy się serwera Proxy aplikacji usługi Azure AD publiczny punkt końcowy usługi na platformie Azure
-2. Usługa serwera Proxy aplikacji nawiązanie połączenia z łącznika serwera Proxy aplikacji
-3. Łącznik serwera Proxy aplikacji łączy do aplikacji docelowej
+1. Usługa serwera Proxy aplikacji nawiązanie połączenia z łącznika serwera Proxy aplikacji
+1. Łącznik serwera Proxy aplikacji łączy do aplikacji docelowej
 
 ![Diagram przedstawiający przepływ ruchu z użytkownika do aplikacji docelowej](./media/application-proxy-network-topology/application-proxy-three-hops.png)
 
@@ -57,22 +57,22 @@ Serwer Proxy aplikacji wybiera lokalizację wystąpień dla Ciebie na podstawie 
 
 Podczas konfigurowania usługi Serwer Proxy aplikacji, należy odpowiedzieć na następujące pytania:
 
-* Gdzie znajduje się aplikacja
-* Gdzie znajdują się większość użytkowników, którzy dostępu do aplikacji
-* Gdzie znajduje się wystąpienie serwera Proxy aplikacji
-* Czy masz już połączenie dedykowana sieć centrów danych platformy Azure, konfigurowanie, takich jak usługi Azure ExpressRoute lub podobne sieci VPN?
+- Gdzie znajduje się aplikacja
+- Gdzie znajdują się większość użytkowników, którzy dostępu do aplikacji
+- Gdzie znajduje się wystąpienie serwera Proxy aplikacji
+- Czy masz już połączenie dedykowana sieć centrów danych platformy Azure, konfigurowanie, takich jak usługi Azure ExpressRoute lub podobne sieci VPN?
 
 Łącznik musi komunikować się z platformy Azure i aplikacji (kroki 2 i 3 w diagram przepływu ruchu), więc umieszczanie łącznika ma wpływ na opóźnienie te dwa połączenia. Podczas szacowania położenia łącznika, należy pamiętać następujące kwestie:
 
-* Jeśli chcesz użyć ograniczonego delegowania protokołu Kerberos (KCD) dla logowania jednokrotnego, łącznik musi linii wzroku do centrum danych. Ponadto serwer łącznika musi być przyłączony do domeny.  
-* W razie wątpliwości, należy zainstalować łącznik bliżej do aplikacji.
+- Jeśli chcesz użyć ograniczonego delegowania protokołu Kerberos (KCD) dla logowania jednokrotnego, łącznik musi linii wzroku do centrum danych. Ponadto serwer łącznika musi być przyłączony do domeny.  
+- W razie wątpliwości, należy zainstalować łącznik bliżej do aplikacji.
 
 ### <a name="general-approach-to-minimize-latency"></a>Ogólne podejście, aby zminimalizować czas oczekiwania
 
 Aby zminimalizować opóźnienie ruchu end-to-end, optymalizowanie każdego połączenia sieciowego. Każde połączenie można zoptymalizować poprzez:
 
-* Zmniejszenie odległość między po obu stronach przeskoku.
-* Wybieranie z odpowiednią siecią przechodzenia. Na przykład przechodzenie z sieci prywatnej, a nie z publicznego Internetu może być szybsze, ze względu na specjalne linki.
+- Zmniejszenie odległość między po obu stronach przeskoku.
+- Wybieranie z odpowiednią siecią przechodzenia. Na przykład przechodzenie z sieci prywatnej, a nie z publicznego Internetu może być szybsze, ze względu na specjalne linki.
 
 Jeśli masz dedykowanych VPN lub usługi ExpressRoute łącza między platformą Azure i siecią firmową, można używać go.
 
@@ -82,7 +82,7 @@ Jest niewiele, które można zrobić, aby kontrolować połączenia między uży
 
 ### <a name="pattern-1-put-the-connector-close-to-the-application"></a>Wzorzec 1: Umieszczanie łącznika blisko aplikacji
 
-W sieci klienta, należy umieścić łącznika blisko aplikacji docelowej. Ta konfiguracja minimalizuje kroku 3 na diagramie topografii, ponieważ Zamknij łączników i aplikacji. 
+W sieci klienta, należy umieścić łącznika blisko aplikacji docelowej. Ta konfiguracja minimalizuje kroku 3 na diagramie topografii, ponieważ Zamknij łączników i aplikacji.
 
 Jeśli Twój łącznik linii wzroku do kontrolera domeny, ten wzorzec jest korzystne. Większość naszych klientów Użyj tego wzorca, ponieważ działa dobrze w przypadku większości scenariuszy. Ten wzorzec można również łączyć z wzorcem 2, aby zoptymalizować ruch między usługą i łącznik.
 
@@ -104,7 +104,7 @@ Chociaż ten artykuł koncentruje się umieszczania łącznika, można również
 
 Coraz częściej organizacje są przenoszone ich sieci w środowiskach hostowanych. Umożliwia to umieścić swoje aplikacje w środowisku hostowanej, która jest również częścią sieci firmowej, a w dalszym ciągu w domenie. W tym przypadku wzorców omówione w poprzednich sekcjach można zastosować do nowej lokalizacji aplikacji. Jeśli rozważasz tej opcji, zobacz [usług domenowych Azure AD](../../active-directory-domain-services/overview.md).
 
-Ponadto należy wziąć pod uwagę organizowanie za pomocą łączników [grupy łączników](application-proxy-connector-groups.md) do aplikacji docelowej, które znajdują się w różnych lokalizacjach i sieci. 
+Ponadto należy wziąć pod uwagę organizowanie za pomocą łączników [grupy łączników](application-proxy-connector-groups.md) do aplikacji docelowej, które znajdują się w różnych lokalizacjach i sieci.
 
 ## <a name="common-use-cases"></a>Typowe przypadki użycia
 
@@ -124,17 +124,17 @@ Dla tych scenariuszy możemy wywołać każde połączenie "przeskok" i liczbę 
 
 Jest to prosty wzorzec. Optymalizuj się przeskoku 3, umieszczając łącznika obok aplikacji. Jest to również naturalny wybór, ponieważ łącznik jest zazwyczaj instalowany z linii wzroku do aplikacji i centrum danych do wykonywania operacji ograniczonego delegowania protokołu Kerberos.
 
-![Diagram przedstawiający, że użytkownicy, serwer proxy, łącznika i aplikacji są w Stanach Zjednoczonych](./media/application-proxy-network-topology/application-proxy-pattern1.png)
+![Diagram przedstawiający użytkowników, serwer proxy, łączników i aplikacji są w Stanach Zjednoczonych](./media/application-proxy-network-topology/application-proxy-pattern1.png)
 
 ### <a name="use-case-2"></a>Przypadek użycia 2
 
 **Scenariusz:** Aplikacja jest w sieci organizacji w Stanach Zjednoczonych, użytkownikom rozłożyć globalnie. Nie usługi ExpressRoute lub sieci VPN istnieje między centrum danych platformy Azure i siecią firmową.
 
-**Zalecenie:** Postępuj zgodnie z wzorcem 1, opisane w poprzedniej sekcji. 
+**Zalecenie:** Postępuj zgodnie z wzorcem 1, opisane w poprzedniej sekcji.
 
 Ponownie wspólny wzorzec do optymalizacji przeskoku 3, umieszcza się łącznika obok aplikacji. Przeskoku 3 nie jest zazwyczaj kosztowne, a jeśli w tym samym regionie. Jednak przeskok 1 może być bardziej kosztowne w zależności od tego, gdzie użytkownik jest, ponieważ użytkownicy na całym świecie muszą uzyskiwać dostęp do wystąpienia serwera Proxy aplikacji w Stanach Zjednoczonych. Warto zauważyć, że żadne rozwiązanie do serwera proxy ma podobne charakterystyki dotyczące użytkowników, które są rozmieszczone globalnie.
 
-![Diagram przedstawiający, że użytkownicy są dystrybuowane globalnie, ale serwer proxy, łączników i aplikacji znajdują się w Stanach Zjednoczonych](./media/application-proxy-network-topology/application-proxy-pattern2.png)
+![Użytkownicy są dystrybuowane globalnie, ale cała reszta będzie w Stanach Zjednoczonych](./media/application-proxy-network-topology/application-proxy-pattern2.png)
 
 ### <a name="use-case-3"></a>Przypadek użycia 3
 
@@ -142,7 +142,7 @@ Ponownie wspólny wzorzec do optymalizacji przeskoku 3, umieszcza się łącznik
 
 **Zalecenie:** Postępuj zgodnie z wzorców 1 i 2, opisane w poprzedniej sekcji.
 
-Po pierwsze umieść łącznika możliwie blisko aplikacji. Następnie system automatycznie korzysta z usługi ExpressRoute dla przeskoku 2. 
+Po pierwsze umieść łącznika możliwie blisko aplikacji. Następnie system automatycznie korzysta z usługi ExpressRoute dla przeskoku 2.
 
 Jeśli link usługi ExpressRoute używa komunikacji równorzędnej firmy Microsoft, ruch między serwera proxy i łącznik przepływy za pośrednictwem tego łącza. Przeskok 2 ma zoptymalizowane pod kątem opóźnień.
 
@@ -154,25 +154,25 @@ Jeśli link usługi ExpressRoute używa komunikacji równorzędnej firmy Microso
 
 **Zalecenie:** Postępuj zgodnie z wzorcem 3, opisane w poprzedniej sekcji.
 
-Łącznik należy umieścić w centrum danych platformy Azure, która jest połączona z siecią firmową za pośrednictwem prywatnej komunikacji równorzędnej usługi ExpressRoute. 
+Łącznik należy umieścić w centrum danych platformy Azure, która jest połączona z siecią firmową za pośrednictwem prywatnej komunikacji równorzędnej usługi ExpressRoute.
 
 Łącznik można umieścić w centrum danych platformy Azure. Ponieważ łącznik nadal ma linii wzroku do aplikacji i centrum danych za pośrednictwem sieci prywatnej, przeskoku 3 pozostaje zoptymalizowane. Ponadto przeskoku 2 jest dodatkowo zoptymalizowany.
 
-![Diagram przedstawiający łącznika w centrum danych platformy Azure i usługa ExpressRoute między łączników i aplikacji](./media/application-proxy-network-topology/application-proxy-pattern4.png)
+![Łącznik w centrum danych platformy Azure, usługi ExpressRoute między łączników i aplikacji](./media/application-proxy-network-topology/application-proxy-pattern4.png)
 
 ### <a name="use-case-5"></a>Przypadek użycia 5
 
 **Scenariusz:** Aplikacja jest w sieci organizacji w Unii Europejskiej, z wystąpieniem serwera Proxy aplikacji, a większość użytkowników w Stanach Zjednoczonych.
 
-**Zalecenie:** Umieść łącznika obok aplikacji. Ponieważ użytkownicy w Stanach Zjednoczonych, uzyskujesz dostęp do wystąpienia serwera Proxy aplikacji, który ma miejsce w tym samym regionie, przeskok 1 nie jest za drogi. Przeskoku 3 jest zoptymalizowany. Należy wziąć pod uwagę przy użyciu usługi ExpressRoute w celu zoptymalizowania przeskoku 2. 
+**Zalecenie:** Umieść łącznika obok aplikacji. Ponieważ użytkownicy w Stanach Zjednoczonych, uzyskujesz dostęp do wystąpienia serwera Proxy aplikacji, który ma miejsce w tym samym regionie, przeskok 1 nie jest za drogi. Przeskoku 3 jest zoptymalizowany. Należy wziąć pod uwagę przy użyciu usługi ExpressRoute w celu zoptymalizowania przeskoku 2.
 
-![Diagram przedstawiający użytkowników i serwera proxy w Stanach Zjednoczonych, przy użyciu łącznika i aplikacji na terenie UE](./media/application-proxy-network-topology/application-proxy-pattern5b.png)
+![Diagram przedstawia użytkowników i serwera proxy w Stanach Zjednoczonych, łączników i aplikacji na terenie UE](./media/application-proxy-network-topology/application-proxy-pattern5b.png)
 
 Można również rozważyć użycie jednego innych wariant w takiej sytuacji. W przypadku większości użytkowników w organizacji w Stanach Zjednoczonych, a następnie jest szansa, że sieci rozszerza także Stanów Zjednoczonych. Umieść łącznika w Stanach Zjednoczonych, a za pomocą wiersza dedykowanych wewnętrznej sieci firmowej do aplikacji na terenie UE. Przeskoki w ten sposób 2 i 3 są zoptymalizowane.
 
-![Diagram przedstawiający użytkowników, serwer proxy i łącznika w aplikacji na terenie UE w Stanach Zjednoczonych](./media/application-proxy-network-topology/application-proxy-pattern5c.png)
+![Diagram przedstawia użytkowników, serwer proxy i łącznika w aplikacji na terenie UE w Stanach Zjednoczonych](./media/application-proxy-network-topology/application-proxy-pattern5c.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Włącz serwer Proxy aplikacji](application-proxy-add-on-premises-application.md)
 - [Włączanie logowania jednokrotnego](application-proxy-configure-single-sign-on-with-kcd.md)

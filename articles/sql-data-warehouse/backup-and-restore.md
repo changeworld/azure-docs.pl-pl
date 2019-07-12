@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/30/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 914513bc19cc81da29efef12d50a6485233d169f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 84ad88ef738f798103a1d5bf8f9c8504433686a7
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65236578"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653209"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Kopia zapasowa i przywracanie usługi Azure SQL Data Warehouse
 
@@ -101,7 +101,7 @@ Jeśli trzeba przywrócić w bezpośrednio w subskrypcji, Zagłosuj na tę możl
 
 ## <a name="geo-redundant-restore"></a>Przywracanie magazynu geograficznie nadmiarowego
 
-Możesz [Przywracanie magazynu danych](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell#restore-from-an-azure-geographical-region) do dowolnego regionu obsługi usługa SQL Data Warehouse o takim samym poziomie wydajności wybrany.
+Możesz [Przywracanie magazynu danych](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell#restore-from-an-azure-geographical-region-using-powershell) do dowolnego regionu obsługi usługa SQL Data Warehouse o takim samym poziomie wydajności wybrany.
 
 > [!NOTE]
 > Do magazynu geograficznie nadmiarowego przywracania musi nie rezygnujesz z tej funkcji.

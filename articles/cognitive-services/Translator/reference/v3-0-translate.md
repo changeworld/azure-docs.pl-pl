@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: e63670504dedf426829778e154b2d5c2b69d98a0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2b08ddb4241a9af7aee31bb51d75dd82ff8255d2
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435066"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839633"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
 
@@ -42,7 +42,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>from</td>
-    <td><em>Opcjonalny parametr</em>.<br/>Określa język tekstu wejściowego. Dowiedz się, jakie języki są dostępne do tłumaczenia z przez wyszukanie <a href="./v3-0-languages.md">obsługiwane języki</a> przy użyciu <code>translation</code> zakresu. Jeśli <code>from</code> parametr nie zostanie określony, funkcja automatycznego wykrywania języka jest stosowane w celu określenia języka źródłowego.</td>
+    <td><em>Opcjonalny parametr</em>.<br/>Określa język tekstu wejściowego. Dowiedz się, jakie języki są dostępne do tłumaczenia z przez wyszukanie <a href="./v3-0-languages.md">obsługiwane języki</a> przy użyciu <code>translation</code> zakresu. Jeśli <code>from</code> parametr nie zostanie określony, funkcja automatycznego wykrywania języka jest stosowane w celu określenia języka źródłowego. <br/><br/>Należy użyć <code>from</code> zamiast automatycznego wykrywania, korzystając z parametru <a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">dynamiczny słownik</a> funkcji.</td>
   </tr>
   <tr>
     <td>na</td>
@@ -374,7 +374,7 @@ Jeśli chcesz uniknąć wulgaryzmów w tłumaczeniu, niezależnie od obecności 
 
 <table width="100%">
   <th width="20%">ProfanityAction</th>
-  <th>Akcja</th>
+  <th>Action</th>
   <tr>
     <td><code>NoAction</code></td>
     <td>To zachowanie domyślne. Wulgaryzmów zostaną spełnione ze źródła do docelowego.<br/><br/>
@@ -401,7 +401,7 @@ Aby uzyskać <code>ProfanityMarker=Tag</code>, obsceniczne wyrazy są ujęte w z
   </tr>
 </table> 
 
-Na przykład:
+Przykład:
 
 # <a name="curltabcurl"></a>[curl](#tab/curl)
 

@@ -4,7 +4,7 @@ description: Pobieranie wirtualnego dysku twardego Windows przy użyciu witryny 
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 3d44a4a723c39bf9780475a2ac3088da94285f6e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7128413e48fdeef9b9284bc6db11649016a06153
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61076331"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722818"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Pobierz Windows wirtualnego dysku twardego z platformy Azure
 
@@ -73,7 +73,7 @@ Aby pobrać plik wirtualnego dysku twardego, należy wygenerować [sygnatury dos
 
     ![Kliknij przycisk Zapisz w przeglądarce](./media/download-vhd/export-save.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak [przesłać plik VHD na platformie Azure](upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 - [Tworzenie dysków zarządzanych z dysków niezarządzanych na koncie magazynu](attach-disk-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

@@ -2,17 +2,17 @@
 title: Dynamiczne tworzenie woluminu plików dla wielu zasobnikach w usłudze Azure Kubernetes Service (AKS)
 description: Dowiedz się, jak dynamicznie utworzyć trwały wolumin za pomocą usługi Azure Files do użytku z wielu jednoczesnych zasobników w usłudze Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 03/01/2019
-ms.author: iainfou
-ms.openlocfilehash: ed9be9f3ecc7a14a0aa0210ee34f9323126be085
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/08/2019
+ms.author: mlearned
+ms.openlocfilehash: 580363973afd918351931edfb187a1a8d38d6985
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061100"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67665968"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamiczne tworzenie i trwały wolumin za pomocą usługi Azure Files w usłudze Azure Kubernetes Service (AKS)
 
@@ -22,13 +22,13 @@ Aby uzyskać więcej informacji na woluminach Kubernetes, zobacz [opcji magazynu
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W tym artykule założono, że masz istniejący klaster usługi AKS. Jeśli potrzebujesz klastra AKS, zobacz Przewodnik Szybki Start usługi AKS [przy użyciu wiersza polecenia platformy Azure] [ aks-quickstart-cli] lub [przy użyciu witryny Azure portal][aks-quickstart-portal].
+W tym artykule założono, że masz istniejący klaster usługi AKS. Jeśli potrzebujesz klastra AKS, zobacz Przewodnik Szybki Start usługi AKS [przy użyciu wiersza polecenia platformy Azure][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
 
-Możesz również muszą wiersza polecenia platformy Azure w wersji 2.0.59 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie przeprowadzenie instalacji lub uaktualnienia, zobacz  [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
+Możesz również muszą wiersza polecenia platformy Azure w wersji 2.0.59 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli potrzebujesz instalacja lub uaktualnienie, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj][install-azure-cli].
 
 ## <a name="create-a-storage-class"></a>Utwórz klasę magazynu
 
-Klasa magazynu jest używane do definiowania sposobu tworzenia udziału plików platformy Azure. Konto magazynu jest automatycznie tworzony w *_MC* grupy zasobów do użycia z klasą magazynu do przechowywania udziałów plików platformy Azure. Wybierz z następujących [nadmiarowości usługi Azure storage] [ storage-skus] dla *skuName*:
+Klasa magazynu jest używane do definiowania sposobu tworzenia udziału plików platformy Azure. Konto magazynu jest automatycznie tworzony w [grup zasobów dla węzłów][node-resource-group] for use with the storage class to hold the Azure file shares. Choose of the following [Azure storage redundancy][storage-skus] dla *skuName*:
 
 * *Standard_LRS* -standardowy magazyn lokalnie nadmiarowy (LRS)
 * *Standard_GRS* -standardowy magazyn geograficznie nadmiarowy (GRS)
@@ -39,7 +39,7 @@ Klasa magazynu jest używane do definiowania sposobu tworzenia udziału plików 
 
 Aby uzyskać więcej informacji na temat klasy magazynu w usłudze Kubernetes dla usługi Azure Files, zobacz [klasy magazynu w usłudze Kubernetes][kubernetes-storage-classes].
 
-Utwórz plik o nazwie `azure-file-sc.yaml` i skopiuj następujące manifest przykładu. Aby uzyskać więcej informacji na temat *mountOptions*, zobacz [opcje instalacji] [ mount-options] sekcji.
+Utwórz plik o nazwie `azure-file-sc.yaml` i skopiuj następujące manifest przykładu. Aby uzyskać więcej informacji na temat *mountOptions*, zobacz [opcje instalacji][mount-options] sekcji.
 
 ```yaml
 kind: StorageClass
@@ -56,7 +56,7 @@ parameters:
   skuName: Standard_LRS
 ```
 
-Utwórz klasę magazynu za pomocą [zastosować kubectl] [ kubectl-apply] polecenia:
+Utwórz klasę magazynu za pomocą [zastosować kubectl][kubectl-apply] polecenia:
 
 ```console
 kubectl apply -f azure-file-sc.yaml
@@ -93,7 +93,7 @@ subjects:
   namespace: kube-system
 ```
 
-Przypisywanie uprawnień za pomocą [zastosować kubectl] [ kubectl-apply] polecenia:
+Przypisywanie uprawnień za pomocą [zastosować kubectl][kubectl-apply] polecenia:
 
 ```console
 kubectl apply -f azure-pvc-roles.yaml
@@ -101,7 +101,7 @@ kubectl apply -f azure-pvc-roles.yaml
 
 ## <a name="create-a-persistent-volume-claim"></a>Tworzenie oświadczenia trwały wolumin
 
-Oświadczenie trwały wolumin (PVC) używa obiektu klasy magazynu, aby dynamicznie aprowizuj udziału plików platformy Azure. Poniższego kodu YAML może służyć do tworzenia oświadczeń trwały wolumin *5GB* w rozmiarze *ReadWriteMany* dostępu. Aby uzyskać więcej informacji na temat trybów dostępu, zobacz [trwały wolumin Kubernetes] [ access-modes] dokumentacji.
+Oświadczenie trwały wolumin (PVC) używa obiektu klasy magazynu, aby dynamicznie aprowizuj udziału plików platformy Azure. Poniższego kodu YAML może służyć do tworzenia oświadczeń trwały wolumin *5GB* w rozmiarze *ReadWriteMany* dostępu. Aby uzyskać więcej informacji na temat trybów dostępu, zobacz [trwały wolumin Kubernetes][access-modes] dokumentacji.
 
 Teraz Utwórz plik o nazwie `azure-file-pvc.yaml` i skopiuj do poniższego kodu YAML. Upewnij się, że *storageClassName* odpowiada klasę magazynu utworzone w poprzednim kroku:
 
@@ -119,13 +119,13 @@ spec:
       storage: 5Gi
 ```
 
-Tworzenie oświadczenia trwały wolumin z [zastosować kubectl] [ kubectl-apply] polecenia:
+Tworzenie oświadczenia trwały wolumin z [zastosować kubectl][kubectl-apply] polecenia:
 
 ```console
 kubectl apply -f azure-file-pvc.yaml
 ```
 
-Po zakończeniu zostanie utworzony udział plików. Wpisie tajnym rozwiązania Kubernetes jest tworzona zawierający informacje o połączeniu oraz poświadczenia. Możesz użyć [kubectl get-] [ kubectl-get] polecenie, aby wyświetlić stan PVC:
+Po zakończeniu zostanie utworzony udział plików. Wpisie tajnym rozwiązania Kubernetes jest tworzona zawierający informacje o połączeniu oraz poświadczenia. Możesz użyć [kubectl get-][kubectl-get] polecenie, aby wyświetlić stan PVC:
 
 ```console
 $ kubectl get pvc azurefile
@@ -165,7 +165,7 @@ spec:
         claimName: azurefile
 ```
 
-Utwórz zasobnik za pomocą [zastosować kubectl] [ kubectl-apply] polecenia.
+Utwórz zasobnik za pomocą [zastosować kubectl][kubectl-apply] polecenia.
 
 ```console
 kubectl apply -f azure-pvc-files.yaml
@@ -264,3 +264,4 @@ Dowiedz się więcej o woluminy trwałe Kubernetes za pomocą usługi Azure File
 [kubernetes-rbac]: concepts-identity.md#role-based-access-controls-rbac
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
+[node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks

@@ -4,7 +4,7 @@ description: Tworzenie magazynu, Maszynę wirtualną systemu Linux, sieci wirtua
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 4ba4060b-ce95-4747-a735-1d7c68597a1a
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: cynthn
-ms.openlocfilehash: 04c1d69fc46b9a918038e93c4fc56681f225d365
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5fbcbc63b3038151a7d45a70ce88eb7ca9829fe5
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60328718"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67668006"
 ---
 # <a name="create-a-complete-linux-environment-with-the-azure-classic-cli"></a>Tworzenie kompletnego środowiska systemu Linux za pomocą klasycznego wiersza polecenia platformy Azure
 W tym artykule firma Microsoft tworzy prostą sieć przy użyciu modułu równoważenia obciążenia i pary maszyn wirtualnych, które są przydatne do tworzenia i przetwarzania proste. Części omówimy proces polecenia przez polecenie, dopóki nie uzyskasz dwa działa, bezpieczne maszyn wirtualnych systemu Linux do których możesz połączyć z dowolnego miejsca w Internecie. Następnie możesz przejść do bardziej złożonych sieci i środowisk.

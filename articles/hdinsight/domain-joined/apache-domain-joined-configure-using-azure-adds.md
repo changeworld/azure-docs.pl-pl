@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: 8699533cd64e6b1778c5e78b8c51eb1efe518c75
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 81f14fa54303911a34b334f41b5f7f6b0f9f394b
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67126211"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67720626"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurowanie klastra usługi HDInsight z pakietem Enterprise Security przy użyciu usług Azure Active Directory Domain Services
 
@@ -34,6 +34,8 @@ W tym artykule dowiesz się, jak skonfigurować klaster HDInsight przy użyciu E
 Włączanie usługi Azure AD DS jest wymaganiem wstępnym, przed utworzeniem klastra HDInsight z ESP. Aby uzyskać więcej informacji, zobacz [włączyć usługi Azure Active Directory Domain Services w witrynie Azure portal](../../active-directory-domain-services/create-instance.md). 
 
 Po włączeniu usług AD DS Azure wszystkich użytkowników i obiekty rozpocząć synchronizowanie z usługi Azure Active Directory (AAD) do usługi Azure AD — DS domyślnie. Długość operacji synchronizacji jest zależna od liczby obiektów w usłudze Azure AD. Synchronizacja może potrwać kilka dni w setkach tysięcy obiektów. 
+
+Nazwa domeny, korzystających z usługi AD DS Azure musi być 39 znaków lub mniej, aby pracować z HDInsight.
 
 Można zsynchronizować tylko grupy, którzy potrzebują dostępu do klastrów HDInsight. Tej opcji tylko określone grupy synchronizacji jest nazywany *zakresu synchronizacji*. Zobacz [konfigurowania zakresu synchronizacji z usługi Azure AD do domeny zarządzanej](../../active-directory-domain-services/scoped-synchronization.md) instrukcje.
 
@@ -118,7 +120,7 @@ Tożsamość zarządzaną, który został utworzony można wybrać w z listy roz
 
 ![Konfiguracja usługi Azure HDInsight ESP Active Directory Domain Services](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-identity-managed-identity.png).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Konfigurowanie zasad usługi Hive i uruchamiania zapytań programu Hive, zobacz [zasady skonfiguruj Apache Hive HDInsight klastrów przy użyciu ESP](apache-domain-joined-run-hive.md).
 * Aby połączyć się z klastrami HDInsight przy użyciu ESP, przy użyciu protokołu SSH, zobacz [używanie protokołu SSH z opartą na systemie Linux platformą Apache Hadoop w HDInsight z systemów Linux, Unix lub OS X](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).

@@ -8,12 +8,12 @@ ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: c227abce5adcefd16a41c5590e3ff490d138c424
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8b8c200979b70e145fca64746547b37dee558848
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441450"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67720434"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>Użyj pakiet Enterprise Security w HDInsight
 
@@ -37,7 +37,7 @@ Następujące elementy są tworzone automatycznie:
 
 Aby podsumować, należy skonfigurować środowisko przy użyciu:
 
-- Domeny usługi Active Directory (zarządzane przez usługi Azure AD DS).
+- Domeny usługi Active Directory (zarządzane przez usługi Azure AD DS). **Nazwa domeny musi być 39 znaków lub mniej pracy przy użyciu usługi Azure HDInsight.**
 - Bezpiecznego protokołu LDAP (LDAPS) włączone w usłudze Azure AD DS.
 - Odpowiednie sieci łączność z siecią wirtualną HDInsight, do usługi Azure AD DS sieci wirtualnej, jeśli wybierzesz oddzielne sieci wirtualnej dla nich. Maszynę wirtualną w sieci wirtualnej HDInsight mają bezpośredni kontakt z usługą Azure AD DS za pomocą komunikacji równorzędnej sieci wirtualnej. Jeśli HDInsight i Azure AD DS są wdrożone w tej samej sieci wirtualnej, połączenie jest dostarczana automatycznie i nie trzeba wykonywać dalszych akcji.
 
@@ -109,7 +109,7 @@ Jeśli federacyjnej jest używana i skróty haseł są poprawnie synchronizowane
         -refObjectID $policy.ID
    ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Konfigurowanie klastrów HDInsight przy użyciu ESP](apache-domain-joined-configure-using-azure-adds.md)
 * [Konfigurowanie zasad usługi Apache Hive dla klastrów HDInsight przy użyciu ESP](apache-domain-joined-run-hive.md)

@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: bcbdd5fd8395cb0a47038595127e9b20118bdf1b
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 1c62fb466774a3599972d6a9cc340cca300eee59
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147685"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67696192"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Replikacja transakcyjna, za pomocą pojedynczej, puli i wystąpienie bazy danych w usłudze Azure SQL Database
 
@@ -50,12 +50,12 @@ Główne składniki replikacji transakcyjnej przedstawiono na poniższej ilustra
 
 **Subskrybenta** to wystąpienie lub serwerze, który odbiera zmiany wprowadzone na wydawcy. Subskrybenci mogą być albo pojedynczej, puli i wystąpienie bazy danych w bazach danych Azure SQL Database lub SQL Server. Subskrybent pojedyncze lub zbiorcze bazy danych musi być skonfigurowany jako subskrybenta wypychania. 
 
-| Rola | Jedno- i puli baz danych | Wystąpienie bazy danych |
+| Role | Jedno- i puli baz danych | Wystąpienie bazy danych |
 | :----| :------------- | :--------------- |
-| **Publisher** | Nie | Yes | 
-| **Dystrybutor** | Nie | Yes|
-| **Ściągnij subskrybenta** | Nie | Yes|
-| **Wypychanie subskrybenta**| Yes | Tak|
+| **Publisher** | Nie | Tak | 
+| **Dystrybutor** | Nie | Tak|
+| **Ściągnij subskrybenta** | Nie | Tak|
+| **Wypychanie subskrybenta**| Tak | Yes|
 | &nbsp; | &nbsp; | &nbsp; |
 
   >[!NOTE]
@@ -66,11 +66,11 @@ Istnieją różne [typy replikacji](https://docs.microsoft.com/sql/relational-da
 
 | Replikacja | Jedno- i puli baz danych | Wystąpienie bazy danych|
 | :----| :------------- | :--------------- |
-| [**Standardowa transakcyjne**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Tak (tylko jako subskrybenta) | Tak | 
-| [**Snapshot**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Tak (tylko jako subskrybenta) | Yes|
+| [**Standardowa transakcyjne**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Tak (tylko jako subskrybenta) | Yes | 
+| [**Snapshot**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Tak (tylko jako subskrybenta) | Tak|
 | [**Replikacja scalająca**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Nie | Nie|
 | [**Sieć równorzędna**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nie | Nie|
-| [**Dwukierunkowe**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nie | Tak|
+| [**Dwukierunkowe**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nie | Yes|
 | [**Aktualizowalne subskrypcje**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Nie | Nie|
 | &nbsp; | &nbsp; | &nbsp; |
 
@@ -92,7 +92,7 @@ Istnieją różne [typy replikacji](https://docs.microsoft.com/sql/relational-da
 
 ## <a name="requirements"></a>Wymagania
 
-- Połączenie korzysta z uwierzytelniania programu SQL między uczestnikami replikacji. 
+- Połączenie korzysta z uwierzytelniania SQL między uczestnikami replikacji. 
 - Udział konta usługi Azure Storage katalog roboczy używany przez funkcję replikacji. 
 - Port 445 (ruch wychodzący protokołu TCP) musi być otwarte w regułach zabezpieczeń w podsieci wystąpienia zarządzanego dostępu do udziału plików platformy Azure. 
 - Port 1433 (ruch wychodzący protokołu TCP) musi zostać otwarte w przypadku wydawcy/dystrybutora znajdują się na wystąpienie zarządzane, a subskrybent działa lokalnie.
@@ -139,7 +139,7 @@ W tej konfiguracji usługi Azure SQL Database (pojedyncze, puli i wystąpienia b
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-1. [Konfigurowanie replikacji transakcyjnej dla wystąpienia zarządzanego](replication-with-sql-database-managed-instance.md). 
+1. [Konfigurowanie replikacji między dwoma wystąpieniami zarządzanych](replication-with-sql-database-managed-instance.md). 
 1. [Utwórz publikację](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
 1. [Tworzenie subskrypcji wypychanej](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) przy użyciu nazwy serwera Azure SQL Database jako subskrybenta (na przykład `N'azuresqldbdns.database.windows.net` i nazwę bazy danych SQL Azure jako docelowej bazy danych (na przykład **Adventureworks**. )
 

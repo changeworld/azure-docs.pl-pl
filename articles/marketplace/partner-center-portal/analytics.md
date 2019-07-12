@@ -7,12 +7,12 @@ ms.author: shthota
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 0da95dbdca52232b4b24ad921bf2d9c78dc76d56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e467def33eb2980e58611d50c314a1206877e3b0
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66247727"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67619685"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analiza komercyjnych Marketplace Centrum partnerskiego
 
@@ -138,7 +138,7 @@ Klienci 50 pierwszych najwyższy numer zamówienia są wyświetlane na *liderów
 
 - **Rozliczane za pośrednictwem platformy Azure**: Firma Microsoft rozlicza klientów w imieniu użytkownika, gdy użytkownik chce [sprzedaży oferty firmy Microsoft](./create-new-saas-offer.md#sell-through-microsoft) przy użyciu tego typu licencji. Typy płatności to płatności przy użyciu karty kredytowej lub faktury za system Enterprise.
 - **Model dostarczania własnej licencji**: Firma Microsoft rozlicza klientów do ich użycia tego typu oferty w portalu marketplace. Na liście jako **[Pobierz teraz (bezpłatne)](./create-new-saas-offer.md#get-it-now-free)** w portalu marketplace.
-- **Bezpłatne**: Firma Microsoft rozlicza klientów do ich użycia tego typu oferty w portalu marketplace. Na liście jako **[bezpłatna wersja próbna](./create-new-saas-offer.md#free-trial)** w portalu marketplace.
+- **Bezpłatne**: Firma Microsoft rozlicza klientów do ich użycia tego typu oferty w portalu marketplace. Na liście jako **[bezpłatna wersja próbna](./create-new-saas-offer.md##free-trial-listing)** w portalu marketplace.
 - **Firmy Microsoft jako odsprzedawcy**: Reprezentuje sprzedawane przez odprzedawcy produktów firmy Microsoft jako część oferty  **[programu Cloud Solution Provider (CSP)](./create-new-saas-offer.md#csp-program-opt-in)** .
 
 ![Centrum partnerskie analizy zamówienia według typu licencji](./media/analyze-license-type.png)

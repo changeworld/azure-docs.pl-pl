@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 6824cc84c24b41fd82afd39ead3029a212173948
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 496cf801a44638af61306b43791abce9466e2cb2
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67624790"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835687"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c"></a>Samouczek: włączanie uwierzytelniania w aplikacji jednostronicowej przy użyciu usługi Azure Active Directory B2C
 
@@ -121,7 +121,7 @@ Przykładowa aplikacja obsługuje rejestrację, logowanie, edytowanie profilu i 
 
     Użyj prawidłowego adresu e-mail i przeprowadź weryfikację przy użyciu kodu weryfikacyjnego. Ustaw hasło. Wprowadź wartości żądanych atrybutów.
 
-    ![Przepływ pracy rejestracji](media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.png)
+    ![Strona rejestracji przedstawione przez przepływ logowania — w/rejestracją użytkownika](./media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.PNG)
 
 1. Kliknij pozycję **Utwórz**, aby utworzyć konto lokalne w katalogu usługi Azure AD B2C.
 
@@ -139,7 +139,7 @@ Ten błąd jest wyświetlany, ponieważ próbujesz uzyskać dostęp do zasobu z 
 
 Przejdź do następnego samouczka w serii (zobacz [następne kroki](#next-steps)) aby utworzyć chroniony internetowy interfejs API dla katalogu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym artykule zawarto informacje na temat wykonywania następujących czynności:
 

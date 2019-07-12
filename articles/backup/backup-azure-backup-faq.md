@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 07/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: c4e79d166d92a88934e5c5330ca852da8900c6f3
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: aecad4273493cd573935c78cae51bd0f59461e2e
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275549"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67806972"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Usługa Azure Backup — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Backup.
@@ -51,37 +51,6 @@ Nie. Magazyn usługi Recovery Services można zmienić tylko opcje magazynu, zan
 - Dla agenta umożliwia tworzenie kopii zapasowej foldery plików platformy Azure, przeczytaj ten artykuł [— często zadawane pytania](backup-azure-file-folder-backup-faq.md).
 
 
-## <a name="vmware-and-hyper-v-backup"></a>Kopia zapasowa VMware i funkcji Hyper-V
-
-### <a name="can-i-back-up-vmware-vcenter-servers-to-azure"></a>Czy można tworzyć kopie zapasowe serwerów VMware vCenter na platformie Azure?
-Tak. Usługi Azure Backup Server umożliwia tworzenie kopii zapasowej serwera VMware vCenter i hosty ESXi na platformie Azure.
-
-- [Dowiedz się więcej](backup-mabs-protection-matrix.md) o obsługiwanych wersjach.
-- [Wykonaj następujące kroki](backup-azure-backup-server-vmware.md) do tworzenia kopii zapasowej serwera VMware.
-
-### <a name="do-i-need-a-separate-license-to-recover-an-full-on-premises-vmwarehyper-v-cluster"></a>Czy muszę mieć oddzielnej licencji, aby odzyskać klaster VMware/funkcji Hyper-V pełnego w środowisku lokalnym?
-Nie potrzebujesz oddzielnych licencji na ochronę programu VMware/funkcji Hyper-V.
-
-- Jeśli jesteś klientem programu System Center, należy użyć System Center Data Protection Manager (DPM) do ochrony maszyn wirtualnych VMware.
-- Jeśli nie jesteś klientem programu System Center, można użyć usługi Azure Backup Server (płatność za rzeczywiste użycie) do ochrony maszyn wirtualnych VMware.
-
-## <a name="dpm-and-azure-backup-server-backup"></a>Kopia zapasowa programu DPM i Azure Backup Server
-
-### <a name="which-dpm-versions-are-supported"></a>Które wersje programu DPM są obsługiwane?
-Obsługiwane wersje programu DPM są podsumowane w [macierz obsługi](backup-azure-dpm-introduction.md#prerequisites-and-limitations). Zalecamy, aby zainstalować najnowsze aktualizacje programu DPM i uruchom [najnowszej wersji](https://aka.ms/azurebackup_agent) agenta usługi Azure Backup na serwerze programu DPM.
-
-### <a name="can-i-register-the-server-to-multiple-vaults"></a>Czy można zarejestrować serwer w wielu magazynach?
-Nie. Serwer programu DPM lub usługi Azure Backup można zarejestrować tylko w jednym magazynie.
-
-### <a name="can-i-use-azure-backup-server-to-create-a-bare-metal-recovery-bmr-backup-for-a-physical-server-br"></a>Czy można używać programu Azure Backup Server do tworzenia kopii zapasowej z odzyskiwaniem systemu od zera (BMR) serwera fizycznego? <br/>
-Tak.
-
-### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>Czy można użyć programu DPM, aby utworzyć kopię zapasową aplikacji w usłudze Azure Stack?
-Nie. Usługa Azure Backup umożliwia ochronę usługi Azure Stack, usługa Azure Backup nie obsługuje przy użyciu programu DPM, aby utworzyć kopię zapasową aplikacji w usłudze Azure Stack.
-
-### <a name="if-ive-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-back-up-on-premises-workloads-to-azure"></a>Jeśli został zainstalowany agent usługi Azure Backup, aby chronić pliki i foldery, można zainstalować programu System Center DPM do tworzenia kopii zapasowych obciążeń lokalnych do platformy Azure?
-Tak. Jednak należy najpierw skonfigurować program DPM, a następnie zainstaluj agenta usługi Azure Backup.  Instalowanie składników w tej kolejności zapewnia, że usługi Azure Backup agent działa przy użyciu programu DPM. Instalowanie agenta przed instalacją programu DPM nie jest zalecana lub jest obsługiwana.
-
 ## <a name="general-backup"></a>Ogólne kopii zapasowej
 
 ### <a name="are-there-limits-on-backup-scheduling"></a>Czy istnieją ograniczenia dotyczące planowania kopii zapasowych?
@@ -118,7 +87,7 @@ Kopii zapasowych maszyn wirtualnych platformy Azure w systemie Linux obsługuje 
 Limity rozmiarów są następujące:
 
 System operacyjny/machine | Limit rozmiaru źródła danych
---- | --- 
+--- | ---
 Windows 8 lub nowszy | 54 400 GB
 Windows 7 |1700 GB
 Windows Server 2012 lub nowszy | 54 400 GB
@@ -132,7 +101,7 @@ W poniższej tabeli opisano sposób ustalania rozmiaru dla każdego źródła da
 --- | ---
 Wolumin |Ilość danych kopii zapasowej z jednego woluminu tworzona kopia zapasowa maszyny Wirtualnej.
 Baza danych programu SQL Server |Rozmiar pojedynczego rozmiar bazy danych SQL Trwa wykonywanie kopii zapasowej.
-Sharepoint | Suma zawartości i konfiguracji bazy danych w farmie programu SharePoint, w których powstaje kopia zapasowa.
+Program SharePoint | Suma zawartości i konfiguracji bazy danych w farmie programu SharePoint, w których powstaje kopia zapasowa.
 Exchange |Suma wszystkich baz danych programu Exchange w serwerze programu Exchange, w których powstaje kopia zapasowa.
 Stan systemu/BMR |Każda pojedyncza kopia BMR lub stanu systemu komputera, w których powstaje kopia zapasowa.
 
@@ -185,7 +154,7 @@ Możesz utworzyć maksymalnie 9999 punktów odzyskiwania na każde pojedyncze ch
 - Dowiedz się więcej o [i przechowywania kopii zapasowych](./backup-overview.md#backup-and-retention).
 
 
-### <a name="how-many-times-can-i-recovery-data-thats-backed-up-to-azure"></a>Ile razy mogę dane odzyskiwania, która jest wykonywana kopia zapasowa na platformie Azure?
+### <a name="how-many-times-can-i-recover-data-thats-backed-up-to-azure"></a>Ile razy można odzyskać danych, która jest wykonywana kopia zapasowa na platformie Azure?
 Nie ma ograniczenia liczby operacji odzyskiwania z usługi Azure Backup.
 
 ### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure"></a>Czy podczas przywracania danych należy zapłacić za ruch wychodzący z platformy Azure?
@@ -216,7 +185,7 @@ Klucz szyfrowania powinien składać się z co najmniej 16 znaków, gdy używasz
 ### <a name="what-happens-if-i-misplace-the-encryption-key-can-i-recover-the-data-can-microsoft-recover-the-data"></a>Co się stanie, jeśli klucz szyfrowania zostanie zgubiony przez użytkownika? Czy można odzyskać dane? Microsoft może odzyskać dane?
 Klucz używany do szyfrowania danych kopii zapasowej jest obecna tylko w witrynie. Firma Microsoft nie przechowuje kopii klucza na platformie Azure i nie ma do niego dostępu. Jeśli użytkownik zostanie zgubiony przez użytkownika klucza, Microsoft nie może odzyskać danych kopii zapasowej.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Przeczytaj inne — często zadawane pytania:
 

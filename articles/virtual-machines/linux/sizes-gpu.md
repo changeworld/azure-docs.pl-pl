@@ -4,7 +4,7 @@ description: Rozmiarów dostępnymi dla maszyn wirtualnych systemu Linux na plat
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/11/2019
 ms.author: jonbeck
-ms.openlocfilehash: 3c59c73914a78374da0b8d2f9aeb18b9005e00ac
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 64cbcd375840d78916810abf9ccb8478ef9a1359
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070009"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708849"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>Rozmiarów maszyn wirtualnych zoptymalizowanych pod kątem procesora GPU
 
@@ -48,5 +48,5 @@ Jeśli zdecydujesz się zainstalować sterowniki procesora GPU NVIDIA ręcznie, 
 - [Obliczenia o wysokiej wydajności](sizes-hpc.md)
 - [Poprzednie generacje](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Dowiedz się więcej o tym, jak [usługi Azure compute jednostki (ACU)](acu.md) pozwalają porównać wydajności obliczeń w jednostkach SKU platformy Azure.

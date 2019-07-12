@@ -8,12 +8,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: 0f99042d91738c88a8b673444bb3d4a40602b012
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 85e65c36a0d636d94a9ef9070c21ab047542d8f4
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204169"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594260"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Macierz obsługi dla narzędzia Kopia zapasowa Microsoft Azure Backup Server lub programu System Center DPM
 
@@ -55,7 +55,7 @@ Informacje dodatkowe:
 
 **Scenariusz** | **Agent** | **Location**
 --- | --- | ---
-**Tworzenie kopii zapasowych obciążeń maszyn lokalnych** | Agent ochrony programu DPM/serwera usługi Mab działa na maszynach, które chcesz utworzyć kopię zapasową.<br/><br/> Agenta usług MARS na serwerze programu DPM/serwera usługi MAB. | Program DPM/serwera usługi Mab musi być uruchomiona w środowisku lokalnym.
+**Tworzenie kopii zapasowych obciążeń maszyn lokalnych** | Agent ochrony programu DPM/serwera usługi Mab działa na maszynach, które chcesz utworzyć kopię zapasową.<br/><br/> Agenta usług MARS na serwerze programu DPM/serwera usługi MAB.<br/> Minimalna wersja agenta usług odzyskiwania Microsoft Azure lub agenta usługi Azure Backup, wymagane do włączenia tej funkcji to 2.0.8719.0.  | Program DPM/serwera usługi Mab musi być uruchomiona w środowisku lokalnym.
 **Tworzenie kopii zapasowych maszyn wirtualnych/obciążeń platformy Azure** | Agent ochrony programu DPM/serwera usługi Mab na komputerze chronionym.<br/><br/> Agenta usług MARS na serwerze programu DPM/serwera usługi MAB. | Program DPM/serwera usługi Mab musi działać na Maszynie wirtualnej platformy Azure.
 
 ## <a name="supported-deployments"></a>Obsługiwane wdrożenia
@@ -152,7 +152,7 @@ Od wersji DPM 2016/serwera usługi Mab w wersji 2 (uruchomiony w systemie Window
 - MB kopie zapasowe są przechowywane na dysku systemu plików (ReFS).
 - MB używa klonowania szybsze wykonywanie kopii zapasowych i bardziej efektywnego wykorzystania miejsca do magazynowania bloków w systemie plików ReFS.
 - Po dodaniu woluminy lokalne puli magazynów programu DPM/serwera usługi Mab, można je skonfigurować za pomocą litery dysku. Następnie należy skonfigurować Magazyn obciążenia na różnych woluminach.
-- Podczas tworzenia grup ochrony w celu tworzenia kopii zapasowych danych programu DPM/serwera usługi Mab, należy wybrać dysk którego chcesz użyć. Na przykład przechowywać kopie zapasowe bazy danych SQL lub inne wysokiej dysku obciążeń o wysokiej wydajności operacji We/Wy, a przechowywania obciążeń, które są rzadziej kopie na niższym dysku wydajności.
+- Podczas tworzenia grup ochrony w celu tworzenia kopii zapasowych danych programu DPM/serwera usługi Mab, należy wybrać dysk którego chcesz użyć. Na przykład przechowywać kopie zapasowe bazy danych SQL lub inne wysokiego obciążenia operacji We/Wy na dysku o wysokiej wydajności, a przechowywania obciążeń, które są rzadziej kopie na niższym dysku wydajności.
 
 
 ## <a name="supported-backups-to-mabs"></a>Obsługiwane tworzenie kopii zapasowej serwera usługi Mab
@@ -206,12 +206,12 @@ W poniższej tabeli podsumowano, co może być kopii zapasowej program DPM z mas
 **Maszyny wirtualne programu VMware: vCenter/vSphere ESXi 5.5/6.0/6.5** | MABS v3, v2 <br/><br/> Program DPM 2012 R2 wymaga pakietu zbiorczego aktualizacji 1 dla System Center) <br/><br/>W środowisku lokalnym. | Utwórz kopię zapasową maszyn wirtualnych programu VMware w magazynie woluminów CSV, systemu plików NFS i siecią SAN.<br/><br/> Odzyskaj całą maszynę Wirtualną.<br/><br/> Kopia zapasowa systemu Windows/Linux.<br/><br/> Odzyskiwanie na poziomie elementu folderów/plików dla maszyn wirtualnych Windows tylko.<br/><br/> Oprogramowania vApps VMware nie są obsługiwane.<br/><br/> Odzyskiwanie maszyn wirtualnych systemu Linux jest dla całego komputera.
 
 
-- Należy pamiętać, że klastrowane obciążenia wspierana przez program DPM/serwera usługi Mab powinna być w tej samej domenie co program DPM/serwera usługi Mab lub w zaufanej/podrzędny domeny.
+- Wspierana przez program DPM/serwera usługi Mab obciążeń klastrowanych powinien być w tej samej domenie co program DPM/serwera usługi Mab lub w zaufanej/podrzędny domeny.
 - Aby utworzyć kopię zapasową danych w niezaufanych domenach lub grupach roboczych, można użyć uwierzytelniania NTLM/certyfikat.
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Dowiedz się więcej](backup-architecture.md#architecture-back-up-to-dpmmabs) o architekturze serwera usługi MAB.
 - [Przegląd](backup-support-matrix-mars-agent.md) co to jest obsługiwana w przypadku agenta usług MARS.

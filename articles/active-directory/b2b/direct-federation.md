@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4dadc68e78fbaa979751d5bcd04ef481c3ab886
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 1bc3c1325e8379082134e2cbec1586f7d338ee61
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67544350"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797937"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Bezpośrednie federacji z usług AD FS i dostawców innych firm dla użytkowników-gości (wersja zapoznawcza)
 |     |
@@ -62,7 +62,7 @@ Na przykład podczas konfigurowania bezpośrednich Federację dla **fabrikam.com
 ### <a name="signing-certificate-renewal"></a>Odnawianie certyfikatu podpisywania
 Jeśli określisz adres URL metadanych w ustawieniach dostawcy tożsamości usługi Azure AD będzie automatycznie odnawiana certyfikat podpisywania, po jego wygaśnięciu. Jednakże jeśli certyfikat jest obracana jakiegokolwiek powodu przed upływem czasu wygaśnięcia lub jeśli nie podasz adresu URL metadanych, usługi Azure AD będzie mógł go odnowić. W takim przypadku należy ręcznie zaktualizować certyfikat podpisywania.
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
-### <a name="can-i-set-up-direct-federation-with-an-unmanaged-email-verified-tenant"></a>Można skonfigurować bezpośrednie federacji z niezarządzanej dzierżawy (weryfikowany pocztą e-mail)? 
+### <a name="can-i-set-up-direct-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>Można skonfigurować bezpośrednie federacji z domeny, dla której istnieje niezarządzanej dzierżawy (weryfikowany pocztą e-mail)? 
 Tak. Jeśli nie zostało zweryfikowane domeny, a nie zostało poddane dzierżawy [przejęcia przez administratora](../users-groups-roles/domains-admin-takeover.md), można skonfigurować bezpośrednie federacji. Dzierżaw niezarządzanego lub weryfikowany pocztą e-mail są tworzone, gdy użytkownik umarza zaproszenie B2B lub wykonuje samoobsługowego tworzenia nowego konta usługi Azure AD przy użyciu domeny, która obecnie nie istnieje. Można skonfigurować bezpośrednie federacji z tych domen. Jeśli próbujesz skonfigurować bezpośrednie federacji z weryfikacji DNS domeny, w witrynie Azure portal lub za pośrednictwem programu PowerShell, zobaczysz błąd.
 ### <a name="if-direct-federation-and-email-one-time-passcode-authentication-are-both-enabled-which-method-takes-precedence"></a>Jeśli bezpośrednie federacyjnych i uwierzytelniania jednorazowy kod dostępu poczty e-mail są włączone, jakiej metody ma pierwszeństwo przed?
 W przypadku Federacji bezpośrednie jest nawiązywane z organizacji partnerskiej, ma pierwszeństwo przed uwierzytelniania jednorazowy kod dostępu poczty e-mail dla nowych użytkowników-gości z tej organizacji. Jeśli użytkownik-Gość zrealizować zaproszenia przy użyciu uwierzytelniania jednorazowy kod dostępu, przed rozpoczęciem konfigurowania Federacji bezpośrednich, będą one nadal korzystać z uwierzytelniania jednorazowy kod dostępu. 
@@ -96,7 +96,7 @@ Wymaganych atrybutów dla odpowiedzi SAML 2.0, od dostawcy tożsamości:
 
 Wymagane oświadczenia dla tokenu języka SAML 2.0, wystawiony przez dostawców tożsamości:
 
-|Atrybut  |Wartość  |
+|Atrybut  |Value  |
 |---------|---------|
 |Format identyfikatora NameID     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
@@ -121,7 +121,7 @@ Wymaganych atrybutów w wiadomości WS-Fed od dostawcy tożsamości:
 
 Wymagane oświadczenia dla tokenu usługi WS-Fed, wystawiony przez dostawców tożsamości:
 
-|Atrybut  |Wartość  |
+|Atrybut  |Value  |
 |---------|---------|
 |ImmutableID     |`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |

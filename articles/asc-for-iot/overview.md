@@ -2,24 +2,25 @@
 title: Co to jest Centrum zabezpieczeń Azure dla IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej o usłudze Azure Security Center dla funkcji IoT i usługi.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: 2cf6a49b-5d35-491f-abc3-63ec24eb4bc2
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/29/2019
 ms.author: mlottner
-ms.openlocfilehash: 7efe32039f926ea9b5be3c24fa967dede72cd081
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2e454d3be536d908003ad9163a44089eb3a5eb99
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65192506"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618060"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Wprowadzenie do Centrum zabezpieczeń Azure dla IoT
 
@@ -41,15 +42,15 @@ Usługa Azure Security Center (ASC) dla IoT ułatwia ochronę obciążeń hybryd
 
 ### <a name="unified-visibility-and-control"></a>Ujednolicony wgląd i kontrolę
 
-Uzyskaj ujednolicony widok zabezpieczeń dla wszystkich lokalnych i obciążeń, w tym rozwiązania Azure IoT w chmurze. Automatyczne odnajdowanie i dodawanie nowych urządzeń i stosowanie zasad zabezpieczeń różnych obciążeń (urządzenia liścia, urządzenia usługi Edge i IOT Hub) w celu zapewnienia zgodności ze standardami zabezpieczeń.
+Uzyskaj ujednolicony widok zabezpieczeń we wszystkich obciążeniach lokalnych i w chmurze, co obejmuje również Twoje rozwiązanie Azure IoT. Automatycznie wykrywaj i dołączaj nowe urządzenia oraz stosuj zasady zabezpieczeń względem własnych obciążeń (urządzenia liścia, urządzenia Edge, centrum IoT Hub) w celu zapewnienia zgodności ze standardami zabezpieczeń.
 
 ### <a name="adaptive-threat-prevention"></a>Zapobieganie adaptacyjne zagrożeń
 
-ASC IoT umożliwia ciągłe monitorowanie zabezpieczeń maszyn, sieci i usług platformy Azure, w tym rozwiązania Azure IoT z urządzeń brzegowych do aplikacji. Można użyć z setek wbudowanych ocen zabezpieczeń lub Utwórz swoje własne w centralnym ASC dla pulpitu nawigacyjnego usługi IoT Hub. Optymalizowanie ustawień zabezpieczeń i zwiększyć ocenę zabezpieczeń wraz z zaleceniami z możliwością wykonywania akcji na maszynach wirtualnych, sieci, aplikacji i danych. Nowo dodane możliwości urządzeń IoT można zmniejszyć obszar narażony na ataki rozwiązania Azure IoT i rozwiązywać problemy, zanim zostaną wykorzystane.
+ASC IoT umożliwia ciągłe monitorowanie zabezpieczeń maszyn, sieci i usług platformy Azure, w tym rozwiązania Azure IoT z urządzeń brzegowych do aplikacji. Można użyć z setek wbudowanych ocen zabezpieczeń lub Utwórz swoje własne w centralnym ASC dla pulpitu nawigacyjnego usługi IoT Hub. Zoptymalizuj swoje ustawienia zabezpieczeń i zwiększ wskaźnik bezpieczeństwa za pomocą rekomendacji z możliwością wykonywania akcji dostępnych w ramach maszyn wirtualnych, sieci, aplikacji i danych. Dzięki nowo dodanym funkcjom IoT możesz teraz zmniejszyć obszar narażony na ataki w ramach rozwiązań Azure IoT i usunąć problemy zanim zostaną wykorzystane do ataków.
 
 ### <a name="intelligent-threat-detection-and-response"></a>Inteligentne wykrywanie zagrożeń i odpowiedzi
 
-Użyj zaawansowanych analiz i usługi Microsoft Intelligent Security Graph, aby uzyskać przewagę nad ewoluującymi cyberatakami. Wbudowaną analizę behawioralną i uczenie maszynowe identyfikację ataków i wykorzystuje zero day. Monitoruj rozwiązania IoT dla przychodzące ataki i działania po naruszeniu. Usprawnij urządzeniu zbadania oraz skorygowania tych dzięki interaktywnym narzędziom i kontekstowej analizie zagrożeń.
+Użyj zaawansowanych analiz i usługi Microsoft Intelligent Security Graph, aby uzyskać przewagę nad ewoluującymi cyberatakami. Wbudowaną analizę behawioralną i uczenie maszynowe identyfikację ataków i wykorzystuje zero day. Monitoruj własne rozwiązanie IoT pod kątem nadchodzących ataków i działań po naruszeniu zabezpieczeń. Usprawnij urządzeniu zbadania oraz skorygowania tych dzięki interaktywnym narzędziom i kontekstowej analizie zagrożeń.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

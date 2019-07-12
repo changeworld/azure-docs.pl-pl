@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7c945f39218f9099d5c304739ca9b567ab9b3325
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 2d74488f60f21e3644a7a04579bfab7e70882b01
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164692"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621541"
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning-studio-preview"></a>Przeprowadzanie analizy tonacji przy użyciu usługi Azure Stream Analytics i Azure Machine Learning Studio (wersja zapoznawcza)
 W tym artykule opisano, jak szybko skonfigurować proste zadanie usługi Azure Stream Analytics, która integruje usługi Azure Machine Learning Studio. Używasz modelem analizy tonacji usługi Machine Learning w galerii Cortana Intelligence do analizowania danych przesyłanych strumieniowo tekstu i ustalić wyniku tonacji w czasie rzeczywistym. Przy użyciu pakietu Cortana Intelligence pozwala wykonać to zadanie, nie martwiąc się o niewymagającego tworzenia modelu analizy tonacji.
@@ -252,7 +252,7 @@ Możesz również wyświetlić metryki dotyczące funkcji usługi Azure Machine 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
-* [Azure Stream Analytics Query Language Reference (Dokumentacja dotycząca języka zapytań usługi Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure Stream Analytics Query Language Reference (Dokumentacja dotycząca języka zapytań usługi Azure Stream Analytics)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Integracja interfejsu API REST i uczenia maszynowego](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 * [Azure Stream Analytics Management REST API Reference (Dokumentacja interfejsu API REST zarządzania usługą Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

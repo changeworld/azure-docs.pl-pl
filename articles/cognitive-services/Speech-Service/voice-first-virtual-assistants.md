@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 4055b474938e38f653021b46f18200f8e39dd69d
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c9b85895e701ff74e025d6f7895bc32513bc29a1
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604756"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67806906"
 ---
 # <a name="about-custom-voice-first-virtual-assistants-preview"></a>O niestandardowych asystentów wirtualnego głosu pierwszy (wersja zapoznawcza)
 
@@ -29,7 +29,7 @@ Bezpośrednie mowy wiersza i jej funkcjami dla niestandardowych asystentów wirt
 
 ## <a name="core-features"></a>Podstawowe funkcje
 
-| Category | Funkcje |
+| Kategoria | Funkcje |
 |----------|----------|
 |[Niestandardowe słowo aktywujące](speech-devices-sdk-create-kws.md) | Można umożliwić użytkownikom rozpoczynać rozmowy Boty przy użyciu niestandardowych słów kluczowych, takich jak "Hey Contoso." To zadanie jest realizowane za pomocą niestandardowego aparatu programu word, w zestawie SDK rozpoznawania mowy, które można skonfigurować niestandardowe słowo aktywujące [mogący generować, w tym miejscu](speech-devices-sdk-create-kws.md). Kanał bezpośredniego mowy wiersz zawiera weryfikacji word wznawiania po stronie usługi, która zwiększa dokładność aktywacji word wznawiania, a samo urządzenie.
 |[Zamiana mowy na tekst](speech-to-text.md) | Kanał bezpośredniego mowy wiersz zawiera w czasie rzeczywistym transkrypcji audio do rozpoznany tekst przy użyciu [mowy na tekst](speech-to-text.md) z usług przetwarzania mowy platformy Azure. Ten tekst jest dostępna zarówno w przypadku bota, jak i aplikację kliencką, ponieważ jest on transkrybowanego.
@@ -43,6 +43,7 @@ Przykładowy kod do tworzenia Asystenta ustawień wirtualnego głosu pierwszy je
 * [Próbki głosu pierwszego wirtualnego Asystenta ustawień (SDK)](https://aka.ms/csspeech/samples)
 * [Szybki Start: głosu zdominowanym asystentów wirtualnego (C#)](quickstart-virtual-assistant-csharp-uwp.md)
 * [Szybki Start: pierwszy głosu wirtualnego asystentów (Java)](quickstart-virtual-assistant-java-jre.md)
+* [Bezpośrednie klienta mowy wiersza (C#, WPF)](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client)
 
 ## <a name="customization"></a>Dostosowywanie
 
@@ -56,9 +57,9 @@ Pierwszy głosu asystentów wirtualnych utworzonych przy użyciu usług przetwar
 * [Zestaw SDK rozpoznawania mowy](speech-sdk-reference.md)
 * [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Bezpłatnie Uzyskaj klucz subskrypcji usług przetwarzania mowy](get-started.md)
 * [Pobierz zestaw SDK funkcji rozpoznawania mowy](speech-sdk.md)
-* [Tworzenie i wdrażanie podstawowy bot](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+* [Tworzenie i wdrażanie podstawowego bota](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 * [Wirtualny Asystent rozwiązania i szablonu](https://github.com/Microsoft/AI)

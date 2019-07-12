@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: workload management
+ms.subservice: workload-management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3edae23183896651efcbf7f867204a618a10c85d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4988d284bed46a918f85eec8d7b4a5b89fc6549e
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236905"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67588490"
 ---
 # <a name="azure-sql-data-warehouse-workload-classification"></a>Klasyfikacji obciążenia w usłudze Azure SQL Data Warehouse
 
@@ -79,7 +79,7 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc','staticrc10','staticrc20','st
 sp_droprolemember ‘[Resource Class]’, membername
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby uzyskać więcej informacji na temat tworzenia klasyfikatora, zobacz [tworzenie KLASYFIKATORA obciążenia (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  
 - Zobacz samouczek Szybki Start dotyczące sposobu tworzenia klasyfikatora obciążenia [tworzenie klasyfikatora obciążenia](quickstart-create-a-workload-classifier-tsql.md).

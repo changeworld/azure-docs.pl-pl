@@ -2,17 +2,17 @@
 title: Pojęcia — zabezpieczeń w usługach Azure Kubernetes (AKS)
 description: Dowiedz się więcej na temat zabezpieczeń w usłudze Azure Kubernetes Service (AKS), tym komunikacji głównego i języka node, zasad sieciowych i wpisy tajne usługi Kubernetes.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.author: iainfou
-ms.openlocfilehash: 69ec3869f7bfd74b150db537a01e604cae87570f
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: mlearned
+ms.openlocfilehash: 1d100f17130594ace6169f5840915c88435cb9a8
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441998"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615770"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Pojęcia dotyczące zabezpieczeń dla aplikacji i klastrów w usłudze Azure Kubernetes Service (AKS)
 

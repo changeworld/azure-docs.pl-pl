@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: quickstart
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: e4b9f31425c5029cdeb991fbdcdb7ae4a5c749c9
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: a78df2d4d84487399da10ca722550639a92e71bf
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704744"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798138"
 ---
 # <a name="project-acoustics-unrealwwise-quickstart"></a>Szybki Start Unreal/Wwise Akustyka projektu
 W tym przewodniku Szybki Start będziesz eksperymentować z Akustyka projektu kontrolki projektu przy użyciu podanych przykładowych zawartości dla aparatu Unreal Engine i Wwise.
@@ -57,7 +57,9 @@ Projekt Akustyka Unreal wtyczka wymaga dodatkowych zachowanie ujawnianie z wtycz
 ### <a name="open-the-unreal-project"></a>Otwórz projekt unreal Engine. 
 Poprosi użytkownika o odbudować modułów; Kliknij przycisk Tak.
 
-Jeśli otwarcie projektu zakończy się niepowodzeniem na błędy kompilacji, sprawdź zainstalowaną wtyczkę Wwise Akustyka projektu do tej samej wersji Wwise używane w przykładowym projekcie Akustyka projektu.
+>Jeśli otwarcie projektu zakończy się niepowodzeniem na błędy kompilacji, sprawdź zainstalowaną wtyczkę Wwise Akustyka projektu do tej samej wersji Wwise używane w przykładowym projekcie Akustyka projektu.
+
+>Jeśli nie używa [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2018.1.6, konieczne będzie ponowne wygenerowanie dźwięku banki, zanim dźwięk będzie odtwarzany w przykładowym projekcie.
 
 ## <a name="experiment-with-project-acoustics-design-controls"></a>Eksperymentowanie z kontrolkami projektowania Akustyka projektu
 Posłuchaj, jak brzmi sceny, klikając przycisk odtwarzania w edytorze unreal Engine. Na komputerze stacjonarnym, należy użyć W, A, S, D i myszy, aby poruszać się. Aby wyświetlić skróty klawiaturowe zapewniające większą liczbę kontrolek, naciśnij klawisz **F1**. Poniżej przedstawiono niektóre działania projektu do wypróbowania:

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 5/06/2017
+ms.date: 05/06/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e981905854f6810581f081689694d28c034f2f72
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9090bb6fefd727595a3e2c05db5e86ec2df31c8c
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509904"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654094"
 ---
 # <a name="sign-up-and-sign-in-consumers-in-your-applications-using-custom-policies-in-azure-active-directory-b2c"></a>Zarejestruj się i logowanie użytkowników w aplikacjach za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ Zasady niestandardowe to pliki konfiguracji definiujące zachowanie Twojej dzier
 ## <a name="how-to-articles"></a>Instrukcje
 Informacje o sposobie korzystania z określonych funkcji usługi Azure Active Directory B2C:
 
-* [Rozpoczęcie pracy](active-directory-b2c-overview-custom.md)
+* [Wprowadzenie](active-directory-b2c-overview-custom.md)
 * Konfigurowanie dostawców uwierzytelniania OIDC, takich jak usługa [Azure AD](active-directory-b2c-setup-aad-custom.md).
 * Konfigurowanie dostawców uwierzytelniania SAML, takich jak usługa [Salesforce](active-directory-b2c-setup-sf-app-custom.md).
 * Integrowanie interfejsów API RESTful:

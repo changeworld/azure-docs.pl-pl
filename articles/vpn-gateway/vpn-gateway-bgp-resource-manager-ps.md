@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: yushwang
-ms.openlocfilehash: c65ea038fc39702affae93cb68b8cf644393c62e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d7a84bfda06b5db30afff6322c63a056a414357b
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66150218"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626574"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>Jak skonfigurować protokół BGP w bramach sieci VPN Azure przy użyciu programu PowerShell
 W tym artykule przedstawiono kroki, aby włączyć protokół BGP dla połączenia sieci VPN typu lokacja-lokacja (S2S) między środowiskami lokalnymi i połączenia sieć wirtualna-sieć wirtualna za pomocą modelu wdrażania usługi Resource Manager i programu PowerShell.
@@ -118,7 +118,7 @@ $gwipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName1 -Subnet $s
 Utwórz bramę sieci wirtualnej dla sieci TestVNet1. Protokół BGP wymaga bramy sieci VPN opartej na trasach, a także dodawanie parametru, - Asn, aby ustawić numer ASN (numer AS) dla sieci TestVNet1. Jeśli parametr numer ASN nie jest ustawiony, zostanie przypisany numer ASN 65515. Tworzenie bramy może potrwać co najmniej 30 minut.
 
 ```powershell
-New-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gwipconf1 -GatewayType Vpn -VpnType RouteBased -GatewaySku HighPerformance -Asn $VNet1ASN
+New-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gwipconf1 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -Asn $VNet1ASN
 ```
 
 #### <a name="3-obtain-the-azure-bgp-peer-ip-address"></a>3. Uzyskaj adres IP elementu równorzędnego protokołu BGP platformy Azure
@@ -282,7 +282,7 @@ $gwipconf2 = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName2 -Subnet $s
 Tworzenie bramy sieci VPN, z numerem AS. Konieczne jest przesłonięcie domyślny numer ASN na bram sieci VPN platformy Azure. Numery ASN dla połączonych sieci wirtualnych muszą być różne, aby włączyć protokół BGP i routing tranzytowy.
 
 ```powershell
-New-AzVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2 -Location $Location2 -IpConfigurations $gwipconf2 -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard -Asn $VNet2ASN
+New-AzVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2 -Location $Location2 -IpConfigurations $gwipconf2 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -Asn $VNet2ASN
 ```
 
 ### <a name="step-2---connect-the-testvnet1-and-testvnet2-gateways"></a>Krok 2 — połączenie bram sieci wirtualnej TestVNet1 i TestVNet2
@@ -319,6 +319,6 @@ Jeśli ukończono wszystkie trzy części tego ćwiczenia upewnieniu się, nast�
 
 ![Protokół BGP dla sieci wirtualnej między sieciami wirtualnymi](./media/vpn-gateway-bgp-resource-manager-ps/bgp-crosspremv2v.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Po zakończeniu procesu nawiązywania połączenia można dodać do sieci wirtualnych maszyny wirtualne. Kroki opisano w sekcji [Tworzenie maszyny wirtualnej](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

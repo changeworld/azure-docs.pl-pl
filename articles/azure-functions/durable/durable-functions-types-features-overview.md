@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 07/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 76b6f013333113d5a24b744bc962d36b1c0e21b3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: de5019e0f91c92829082aed962bb9633da52b4a9
+ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60731123"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67812843"
 ---
 # <a name="durable-functions-types-and-features-azure-functions"></a>Trwałe funkcje typy i funkcje (usługi Azure Functions)
 
@@ -27,7 +27,7 @@ Ten artykuł zawiera omówienie, jakiego rodzaju funkcje, których można używa
 
 ## <a name="types-of-durable-functions"></a>Typy trwałe funkcje
 
-Można użyć trzech typów trwałe funkcji w usłudze Azure Functions: działanie programu orchestrator i klienta.
+Można użyć czterech typów trwałe funkcji w usłudze Azure Functions: działanie programu orchestrator, jednostki i klienta.
 
 ### <a name="activity-functions"></a>Działanie funkcji
 
@@ -43,7 +43,7 @@ Aby uzyskać więcej informacji i przykładów, zobacz [działania funkcji](dura
 
 ### <a name="orchestrator-functions"></a>Funkcje programu orchestrator
 
-Funkcje programu orchestrator opisano, jak akcje są wykonywane i kolejność wykonywania działań. Funkcje programu orchestrator opisują aranżacji w kodzie (C# czy języka JavaScript) jak pokazano na [wzorce funkcje trwałe i zagadnienia techniczne](durable-functions-concepts.md). Organizacja może mieć wiele różnych rodzajów działań, w tym [działania funkcji](#activity-functions), [podrzędnych aranżacji](#sub-orchestrations), [oczekiwanie na zdarzenia zewnętrzne](#external-events)i [czasomierzy](#durable-timers). 
+Funkcje programu orchestrator opisano, jak akcje są wykonywane i kolejność wykonywania działań. Funkcje programu orchestrator opisują aranżacji w kodzie (C# czy języka JavaScript) jak pokazano na [wzorce funkcje trwałe i zagadnienia techniczne](durable-functions-concepts.md). Organizacja może mieć wiele różnych rodzajów działań, w tym [działania funkcji](#activity-functions), [podrzędnych aranżacji](#sub-orchestrations), [oczekiwanie na zdarzenia zewnętrzne](#external-events)i [czasomierzy](#durable-timers). Funkcje programu orchestrator może również współdziałać z [funkcje jednostki](#entity-functions).
 
 Funkcja orkiestratora musi zostać wyzwolone przez [wyzwalacza aranżacji](durable-functions-bindings.md#orchestration-triggers).
 
@@ -51,11 +51,18 @@ Program orchestrator jest uruchamiany przez [klienta orchestrator](#client-funct
 
 Aby uzyskać więcej informacji i przykładów, zobacz [wyzwalaczy aranżacji](durable-functions-bindings.md#orchestration-triggers).
 
+###  <a name="entity-functions"></a>Funkcje jednostki (wersja zapoznawcza)
+
+Funkcje jednostki zdefiniować operacje odczytywania i aktualizowania małych fragmentów stanu, znane jako *trwałe jednostek*. Podobnie jak funkcje programu orchestrator, funkcje jednostki mają funkcje z typem wyzwalacza specjalne *wyzwalacza jednostki*. W przeciwieństwie do funkcji programu orchestrator funkcje jednostki nie ma żadnych ograniczeń określonego kodu. Funkcje jednostki również zarządzanie stanem jawnie zamiast niejawnie reprezentujący stan za pośrednictwem przepływu sterowania.
+
+> [!NOTE]
+> Funkcje jednostki i pokrewne funkcje jest dostępna tylko w trwałych Functions 2.0 i nowszych.
+
+Aby uzyskać więcej informacji na temat funkcji jednostki, zobacz [funkcje jednostki](durable-functions-preview.md#entity-functions) dokumentacją dotyczącą funkcji w wersji zapoznawczej.
+
 ### <a name="client-functions"></a>Funkcje klienta
 
-Funkcje klienta są wyzwalane funkcji, służących do tworzenia nowych wystąpień aranżacji. Funkcje klienta są punkt wejścia dla tworzenia wystąpienia obiektu aranżacji funkcje trwałe. Możesz wyzwolić funkcję klienta z dowolnego źródła (HTTP, kolejki, strumienia zdarzeń). Można napisać funkcję klienta w dowolnym języku, który obsługuje aplikacja. 
-
-Funkcje klienta również mieć [klient orkiestracji](durable-functions-bindings.md#orchestration-client) powiązania. Funkcja klienta można użyć klient orkiestracji powiązania do tworzenia i zarządzania trwałego aranżacji. 
+Funkcje klienta są wyzwalane funkcje, które umożliwiają tworzenie i Zarządzanie wystąpieniami aranżacji i jednostek. Są one skutecznie punkt wejścia do interakcji z funkcje trwałe. Możesz wyzwolić funkcję klienta z dowolnego źródła (HTTP, kolejki, strumienia zdarzeń itd.). Funkcja klienta używa [klient orkiestracji powiązanie](durable-functions-bindings.md#orchestration-client) tworzenie i zarządzanie nimi aranżacji trwałe i jednostek.
 
 Przykład najbardziej podstawowa funkcja klienta jest funkcji wyzwalanej przez HTTP, który rozpoczyna się funkcja orkiestratora, a następnie zwraca odpowiedź dotycząca stanu wyboru. Aby uzyskać przykład, zobacz [Odnajdywanie adresu URL interfejsu API HTTP](durable-functions-http-api.md#http-api-url-discovery).
 
@@ -208,7 +215,7 @@ module.exports = async function(context, statusUrl) {
 };
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby rozpocząć pracę, należy utworzyć pierwszą funkcję trwałego w [ C# ](durable-functions-create-first-csharp.md) lub [JavaScript](quickstart-js-vscode.md).
 

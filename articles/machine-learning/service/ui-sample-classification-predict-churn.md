@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 42724f5fcb3101015cef0d218a3d548f349646be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d10d996febd0e31c9085bf5cb82324cce101c80
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65785822"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606144"
 ---
 # <a name="sample-5---classification-predict-churn-appetency-and-up-selling"></a>Przykład 5 - klasyfikacji: Przewidywanie zmienności appetency i sprzedaży w górę 
 
@@ -37,7 +37,7 @@ Oto wykres zakończone, w tym eksperymencie:
 
     ![Otwórz eksperyment](media/ui-sample-classification-predict-churn/open-sample5.png)
 
-## <a name="data"></a>Dane
+## <a name="data"></a>Data
 
 Dane, które służy do tego eksperymentu jest z zawodów KDD Cup 2009. Zestaw danych zawiera 50 000 wierszy i 230 kolumn funkcji. Zadanie jest przewidywanie zmienności appetency i proponując dla klientów, którzy korzystają z tych funkcji. Aby uzyskać więcej informacji na temat danych i zadania, zobacz [witryny sieci Web z zawodów KDD](https://www.kdd.org/kdd-cup/view/kdd-cup-2009).
 
@@ -79,3 +79,4 @@ Zapoznaj się z innymi przykładami dostępne dla interfejsu wizualnego:
 - [Przykład 2 - regresji. Porównaj algorytmy Prognozowanie cen samochodów](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
 - [Próba 3 — klasyfikacji: Prognozowanie ryzyka kredytowego](ui-sample-classification-predict-credit-risk-basic.md)
 - [Przykład 4 - klasyfikacji: Prognozowanie ryzyka kredytowego (koszt poufnych)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+- [Przykład 6 - klasyfikacji: Prognozowanie opóźnień lotów](ui-sample-classification-predict-flight-delay.md)

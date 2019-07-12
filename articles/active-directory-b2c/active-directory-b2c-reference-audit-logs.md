@@ -11,12 +11,12 @@ ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2c1bfd9e2659127ab77e9db661b54fde18a8d25c
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 216f5413ce3dae1f2d040643a30a4d7db4a879b8
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205363"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835416"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Uzyskiwanie dostępu do dzienników inspekcji usługi Azure AD B2C
 
@@ -33,8 +33,8 @@ Usługa Azure Active Directory B2C (Azure AD B2C), emituje dzienników inspekcji
 
 |Typ działania |Opis  |
 |---------|---------|
-|Autoryzacja |Działania dotyczące zezwolenia użytkownikowi dostęp do usługi B2C zasobów (na przykład administrator dostępu do listy zasad B2C)         |
-|Katalog |Działania związane z atrybutów katalogu pobierane, gdy administrator loguje się przy użyciu witryny Azure Portal |
+|Authorization |Działania dotyczące zezwolenia użytkownikowi dostęp do usługi B2C zasobów (na przykład administrator dostępu do listy zasad B2C)         |
+|Katalog |Działania związane z atrybutów katalogu pobierane, gdy administrator loguje się przy użyciu witryny Azure portal |
 |Aplikacja | Wykonywanie operacji CRUD na aplikacji B2C |
 |Klucz |Wykonywanie operacji CRUD na klucze przechowywane w kontenerze kluczy B2C |
 |Resource |Wykonywanie operacji CRUD na B2C zasoby (na przykład zasady i dostawcy tożsamości)
@@ -44,34 +44,34 @@ Usługa Azure Active Directory B2C (Azure AD B2C), emituje dzienników inspekcji
 > Działania CRUD obiektu użytkownika, można znaleźć **katalog podstawowy** kategorii.
 
 ## <a name="example-activity"></a>Przykład działania
-Poniższy przykład pokazuje dane przechwycone, gdy użytkownik loguje się przy użyciu zewnętrznego dostawcy tożsamości: ![Dzienniki inspekcji — przykład](./media/active-directory-b2c-reference-audit-logs/audit-logs-example.png)
+Poniższy przykład pokazuje dane przechwycone, gdy użytkownik loguje się przy użyciu zewnętrznego dostawcy tożsamości: ![Przykład strony szczegółów działania dziennika inspekcji w witrynie Azure portal](./media/active-directory-b2c-reference-audit-logs/audit-logs-example.png)
 
 Panel szczegółów działania zawiera następujące informacje:
 
 |`Section`|Pole|Opis|
 |-------|-----|-----------|
 | Działanie | Name (Nazwa) | Której działanie miało miejsce. Na przykład "wystawianie elementu id_token dla aplikacji" (które udzielają logowania rzeczywistego użytkownika). |
-| Zainicjowane przez (Aktor) | ObjectId | **Obiektu o identyfikatorze** aplikacji B2C, którą użytkownik loguje się do (ten identyfikator nie jest widoczna w witrynie Azure Portal, ale nie jest dostępny za pośrednictwem interfejsu API programu Graph na przykład). |
+| Zainicjowane przez (Aktor) | ObjectId | **Obiektu o identyfikatorze** aplikacji B2C, którą użytkownik loguje się do (ten identyfikator nie jest widoczna w witrynie Azure portal, ale nie jest dostępny za pośrednictwem interfejsu API programu Graph na przykład). |
 | Zainicjowane przez (Aktor) | Spn | **Identyfikator aplikacji** aplikacji B2C, którą użytkownik się loguje. |
 | Cele | ObjectId | **Obiektu o identyfikatorze** użytkownika, który loguje się. |
 | Dodatkowe szczegóły | Identyfikator dzierżawy | **Identyfikator dzierżawy** dzierżawy usługi Azure AD B2C. |
 | Dodatkowe szczegóły | `PolicyId` | **Identyfikator zasad** przepływu użytkownika (zasady) używane do logowania użytkownika. |
 | Dodatkowe szczegóły | ApplicationId | **Identyfikator aplikacji** aplikacji B2C, którą użytkownik się loguje. |
 
-## <a name="accessing-audit-logs-through-the-azure-portal"></a>Uzyskiwanie dostępu do dzienników inspekcji w portalu Azure
+## <a name="accessing-audit-logs-through-the-azure-portal"></a>Uzyskiwanie dostępu do dzienników inspekcji w witrynie Azure portal
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com). Upewnij się, że znajdują się w katalogu usługi B2C.
 2. Kliknij pozycję **usługi Azure Active Directory** na pasku po lewej stronie Ulubione
-    
-    ![Dzienniki inspekcji — przycisk usługi AAD](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-aad.png)
+
+    ![Usługa Azure Active Directory wyróżnionym w menu po lewej stronie portalu](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-aad.png)
 
 1. W obszarze **działania**, kliknij pozycję **dzienników inspekcji**
 
-    ![Dzienniki inspekcji — sekcja dzienników](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-section.png)
+    ![Przycisk Dzienniki inspekcji wyróżnione w sekcji działania menu](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-section.png)
 
 2. W **kategorii** dropbox, wybierz opcję **B2C**
 3. Kliknij pozycję **zastosowania**
 
-    ![Dzienniki inspekcji — kategoria](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-category.png)
+    ![Kategoria i Zastosuj wyróżnionym w filtrze dziennik inspekcji](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-category.png)
 
 Zostanie wyświetlona lista działań zarejestrowane w ciągu ostatnich siedmiu dni.
 - Użyj **typ zasobu działania** listę rozwijaną, aby filtrować według typów działań opisanych powyżej

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 6/1/2019
 ms.author: absha
-ms.openlocfilehash: c5cc39c2f2a7f2a79b8d6bc2bd95506ee5532a84
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 86b41bb2554dbefeaeb724e746bcaf757463f8ae
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67073980"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795917"
 ---
 # <a name="application-gateway-configuration-overview"></a>Omówienie konfiguracji bramy aplikacji
 
@@ -297,6 +297,7 @@ To ustawienie umożliwia skonfigurowanie ścieżki opcjonalne przekazywanie nies
   | / home/secondhome /          | /pathrule*      | /override/            | / zastępowanie/home/secondhome /   |
   | /pathrule/home /            | / elemencie pathrule/głównej * | /override/            | /override/                   |
   | / elemencie pathrule/home/secondhome / | / elemencie pathrule/głównej * | /override/            | / zastąpienia/secondhome /        |
+  | /pathrule/                 | /pathrule/      | /override/            | /override/                   |
 
 ### <a name="use-for-app-service"></a>Użyj usługi app service
 
@@ -343,7 +344,7 @@ Bramy aplikacji monitoruje kondycję wszystkich zasobów w swojej wewnętrznej d
 > [!NOTE]
 > Po utworzeniu sondę kondycji niestandardowe, należy ją skojarzyć z ustawienia HTTP zaplecza. Niestandardowe sondy nie będzie monitorować kondycję puli zaplecza, chyba że jawnie skojarzony odbiornik odpowiednie ustawienie protokołu HTTP.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Teraz, gdy wiesz o składniki bramy aplikacji możesz wykonywać następujące czynności:
 

@@ -4,7 +4,7 @@ description: Tworzenie nowej maszyny Wirtualnej przez dołączenie wyspecjalizow
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 3b7d3cd5-e3d7-4041-a2a7-0290447458ea
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: f2110a749c41f59b11a6d400faa2e42e751305fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8833ddf487c36446b5e5b4ce1d6cfc6363d3ceeb
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64693812"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710386"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Tworzenie maszyny Wirtualnej na podstawie wyspecjalizowanego wirtualnego dysku twardego w ramach konta magazynu
 
@@ -34,7 +34,7 @@ Dostępne są dwie opcje:
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 
-## <a name="option-1-upload-a-specialized-vhd"></a>Opcja 1: Przekazywanie wyspecjalizowanego wirtualnego dysku twardego
+## <a name="option-1-upload-a-specialized-vhd"></a>Option 1: Przekazywanie wyspecjalizowanego wirtualnego dysku twardego
 
 Możesz przekazać wirtualny dysk twardy z wyspecjalizowanej maszyny Wirtualnej utworzone za pomocą wirtualizacji narzędzia lokalnych, takich jak funkcji Hyper-V lub maszyny Wirtualnej wyeksportowane z innej chmury.
 
@@ -314,6 +314,6 @@ $vmList = Get-AzVM -ResourceGroupName $rgName
 $vmList.Name
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Zaloguj się do swojej nowej maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [jak połączyć i zaloguj się na maszynie wirtualnej platformy Azure, systemem Windows](connect-logon.md).
 

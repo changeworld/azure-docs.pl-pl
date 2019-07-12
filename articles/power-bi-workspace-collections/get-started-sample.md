@@ -2,18 +2,18 @@
 title: Rozpoczynanie pracy przy użyciu przykładu
 description: W tym artykule wprowadzimy należy do przykładu wprowadzenie get kolekcji obszarów roboczych usługi Power BI.
 services: power-bi-workspace-collections
-ms.service: power-bi-workspace-collections
+ms.service: power-bi-embedded
 author: rkarlin
 ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
-ms.openlocfilehash: 6cf78bf9c83df0a1255c14499bbd2036a2be5ed6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9b45dd6bcc9aa3abf2d5078b54e51531cae4ec5f
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64714504"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67669118"
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Rozpoczęcie pracy z przykładem kolekcji obszarów roboczych usługi Power BI
 
@@ -130,7 +130,7 @@ Parametry połączenia muszą być w następującym formacie:
 Data Source=tcp:MyServer.database.windows.net,1433;Initial Catalog=MyDatabase
 ```
 
-Za pomocą wspólnego serwera i bazy danych atrybutów kończyć się niepowodzeniem. Na przykład: Server=tcp:MyServer.database.windows.net,1433;Database=MyDatabase,
+Za pomocą wspólnego serwera i bazy danych atrybutów kończyć się niepowodzeniem. Przykład: Server=tcp:MyServer.database.windows.net,1433;Database=MyDatabase,
 
 ### <a name="view"></a>Widok
 
@@ -140,7 +140,7 @@ Za pomocą wspólnego serwera i bazy danych atrybutów kończyć się niepowodze
 
 | Część | Opis |
 | --- | --- |
-| Stanowisko |Nazwa raportu. |
+| Tytuł |Nazwa raportu. |
 | Ciąg zapytania |Link do raportu identyfikatora. |
 ```cshtml
 <div id="reports-nav" class="panel-collapse collapse">

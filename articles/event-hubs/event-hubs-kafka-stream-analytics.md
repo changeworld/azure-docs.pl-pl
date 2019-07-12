@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: spelluru
-ms.openlocfilehash: b6bba4ed45530ba66a1adde274022a80091cd199
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0c4beede2508104fc9af934d3f9a2bbcce791292
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60748141"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626184"
 ---
 # <a name="process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Przetwarzanie zdarzeń platformy Apache Kafka dla usługi Event Hubs za pomocą usługi Stream Analytics 
 W tym artykule przedstawiono sposób przesyłanie strumieniowe danych do komputerów z obsługą platformy Kafka z usługi Event Hubs i przetworzyć te dane za pomocą usługi Azure Stream Analytics. Przeprowadza użytkownika przez następujące kroki: 
@@ -163,7 +163,7 @@ Zapytanie zadania usługi Stream Analytics przechodzi przez dane bez przeprowadz
  
 
 ### <a name="define-a-query"></a>Definiowanie zapytania
-Po skonfigurowaniu zadania usługi Stream Analytics do odczytu przychodzącego strumienia danych następnym krokiem jest utworzenie przekształcenia, które analizuje dane w czasie rzeczywistym. Zapytanie przekształcenia należy zdefiniować przy użyciu [języka zapytań usługi Stream Analytics](https://msdn.microsoft.com/library/dn834998.aspx). W tym przewodniku należy zdefiniować zapytanie, które przechodzą przez dane bez przeprowadzania dowolnego przekształcenia.
+Po skonfigurowaniu zadania usługi Stream Analytics do odczytu przychodzącego strumienia danych następnym krokiem jest utworzenie przekształcenia, które analizuje dane w czasie rzeczywistym. Zapytanie przekształcenia należy zdefiniować przy użyciu [języka zapytań usługi Stream Analytics](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference). W tym przewodniku należy zdefiniować zapytanie, które przechodzą przez dane bez przeprowadzania dowolnego przekształcenia.
 
 1. Wybierz **zapytania**.
 2. W oknie zapytania Zastąp `[YourOutputAlias]` za pomocą aliasu danych wyjściowych, została utworzona wcześniej.

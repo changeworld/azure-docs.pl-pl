@@ -8,18 +8,19 @@ ms.topic: article
 ms.date: 02/20/2019
 ms.author: ganesr;cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 7594261fc8af4e7b392e2f229b28cfee36a52115
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 06f49dc00b83ee2190f6361ebb8e6f052384402a
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60366321"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657303"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>Tworzenie i modyfikowanie obwodu ExpressRoute za pomocą programu PowerShell
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [Program PowerShell](expressroute-howto-circuit-arm.md)
 > * [Interfejs wiersza polecenia platformy Azure](howto-circuit-cli.md)
+> * [Szablon usługi Azure Resource Manager](expressroute-howto-circuit-resource-manager-template.md)
 > * [Wideo — witryna Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (klasyczny)](expressroute-howto-circuit-classic.md)
 >
@@ -78,8 +79,8 @@ Upewnij się, że podajesz poprawne warstwa jednostki SKU i rodzina jednostek SK
 
 > [!IMPORTANT]
 > Obwód usługi ExpressRoute jest rozliczana w momencie utworzenia klucza usługi. Upewnij się, gdy dostawca połączenia jest gotowy do obsługi administracyjnej obwodu podczas wykonywania tej operacji.
-> 
-> 
+>
+>
 
 Odpowiedź zawiera klucz usługi. Szczegółowy opis wszystkich parametrów można uzyskać, uruchamiając następujące polecenie:
 
@@ -208,8 +209,8 @@ Aby uzyskać instrukcje krok po kroku, zobacz [obwód usługi ExpressRoute, konf
 
 > [!IMPORTANT]
 > Te instrukcje dotyczą tylko obwodów, które są utworzonych przy pomocy dostawców oferujących usługi łączności 2 warstwy. Jeśli używasz dostawcy usług, który oferuje zarządzane w warstwie 3 usługi (zazwyczaj IP sieci VPN, np. MPLS), dostawca połączenia skonfiguruje i zarządza routing.
-> 
-> 
+>
+>
 
 ### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8. Łączenie sieci wirtualnej z obwodem usługi ExpressRoute
 Następnie łączenie sieci wirtualnej na obwód usługi ExpressRoute. Użyj [łączenie sieci wirtualnych obwodów usługi ExpressRoute](expressroute-howto-linkvnet-arm.md) artykuł podczas pracy z modelem wdrażania usługi Resource Manager.
@@ -291,7 +292,7 @@ Można modyfikować niektórych właściwości obwodu usługi ExpressRoute, bez 
 Możesz wykonać następujące zadania bez przerw w dostępności:
 
 * Włącz lub Wyłącz dodatek ExpressRoute premium dla obwodu usługi ExpressRoute.
-* Zwiększyć przepustowość obwodu usługi ExpressRoute, pod warunkiem, że pojemność dostępna na porcie. Obniżenie przepustowości obwodu nie jest obsługiwane. 
+* Zwiększyć przepustowość obwodu usługi ExpressRoute, pod warunkiem, że pojemność dostępna na porcie. Obniżenie przepustowości obwodu nie jest obsługiwane.
 * Zmień plan zliczania z plan taryfowy z danymi na dane nieograniczone. Zmiana planu zliczania z danymi nieograniczonymi plan taryfowy z danymi nie jest obsługiwana.
 * Można włączać i wyłączać *Zezwalaj na klasyczne operacje*.
 
@@ -314,8 +315,8 @@ Obwód ma teraz funkcje dodatku premium usługi ExpressRoute, włączone. Zaczni
 ### <a name="to-disable-the-expressroute-premium-add-on"></a>Aby wyłączyć dodatek ExpressRoute premium
 > [!IMPORTANT]
 > Jeśli używasz zasobów, które są większe niż co to jest dozwolone w przypadku obwód standardowy, ta operacja może zakończyć się niepowodzeniem.
-> 
-> 
+>
+>
 
 Zanotuj następujące informacje:
 
@@ -341,7 +342,7 @@ Obsługiwane opcje przepustowości dla dostawcy, można sprawdzić [ExpressRoute
 > Może być konieczne odtworzenie obwód usługi ExpressRoute, jeśli istnieje niewystarczająca wydajność przy użyciu istniejącego portu. Nie można uaktualnić obwodu, jeśli w tej lokalizacji jest dostępna nie dodatkowej pojemności.
 >
 > Nie można zmniejszyć przepustowość obwodu usługi ExpressRoute bez przerw w działaniu. Obniżenie przepustowości wymaga anulować aprowizację obwodu usługi ExpressRoute, a następnie ponownie udostępnić nowego obwodu usługi ExpressRoute.
-> 
+>
 
 Po podjęciu decyzji rozmiar, jakiego potrzebujesz, użyj następującego polecenia, aby zmienić rozmiar obwodu:
 
@@ -369,7 +370,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 ### <a name="to-control-access-to-the-classic-and-resource-manager-environments"></a>Aby kontrolować dostęp do klasycznej sieci wirtualnej i środowiska usługi Resource Manager
-Zapoznaj się z instrukcjami wyświetlanymi w [obwodów ExpressRoute przenieść z klasycznego modelu wdrażania usługi Resource Manager](expressroute-howto-move-arm.md).  
+Zapoznaj się z instrukcjami wyświetlanymi w [obwodów ExpressRoute przenieść z klasycznego modelu wdrażania usługi Resource Manager](expressroute-howto-move-arm.md).
 
 ## <a name="delete"></a>Anulowanie aprowizacji i usuwanie obwodu usługi ExpressRoute
 Zanotuj następujące informacje:

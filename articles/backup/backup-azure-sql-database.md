@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: raynew
-ms.openlocfilehash: 5dbdeeba68ae75069b61bd6dc069279ec3c5e5de
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8e7e5d871fa1bb557de4e6fce22658115bf0fe94
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443011"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67806993"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informacje o kopii zapasowej programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -48,7 +48,7 @@ Przed rozpoczęciem należy sprawdzić poniżej:
 **Obsługiwane wdrożenia** | Obsługiwane są maszyny wirtualne SQL Marketplace Azure i maszyny wirtualne spoza witryny Marketplace (z ręcznie instalowanym programem SQL Server).
 **Obsługiwane obszary geograficzne** | Australia Południowo-Wschodnia (ASE), Australia Wschodnia (AE) <br> Brazylia Południowa (BRS)<br> Kanada Środkowa (CNC), Kanada Wschodnia (CE)<br> Azja południowo-wschodnia (SEA), Azja Wschodnia (EA) <br> Wschodnie stany USA (EUS), wschodnie stany USA 2 (EUS2) zachodnie środkowe stany USA (WCUS), zachodnie stany USA (WUS); Zachodnie stany USA 2 (WUS 2) Północna środkowe stany USA (NCUS) środkowe stany USA (CUS) południowo-środkowe stany USA (SCUS) <br> Indie środkowe (INC), Indie Południowe (INS) <br> Japonia, część wschodnia (JPE), Japonia, część Zachodnia (JPW) <br> Korea Środkowa (KRC), Korea Południowa (KRS) <br> Europa Północna (NE), Europa Zachodnia <br> Południowe Zjednoczone Królestwo (UKS), Zjednoczone Królestwo w zachodnie (UKW)
 **Obsługiwane systemy operacyjne** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012<br/><br/> System Linux nie jest obecnie obsługiwany.
-**Obsługiwane wersje programu SQL Server** | SQL Server 2017, SQL Server 2016, SQL Server 2014, SQL Server 2012.<br/><br/> Enterprise, Standard, Web, Developer, Express.
+**Obsługiwane wersje programu SQL Server** | Program SQL Server 2017, zgodnie z opisem [tutaj](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 i dodatki Service Pack, zgodnie z opisem [tutaj](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack), SQL Server 2014, SQL Server 2012.<br/><br/> Enterprise, Standard, Web, Developer, Express.
 **Obsługiwane wersje programu .NET** | .NET framework 4.5.2 i nowszej zainstalowany na maszynie Wirtualnej
 
 ### <a name="support-for-sql-server-2008-and-sql-server-2008-r2"></a>Obsługa programu SQL Server 2008 i SQL Server 2008 R2
@@ -231,7 +231,7 @@ catch
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Dowiedz się więcej o](backup-sql-server-database-azure-vms.md) tworzenia kopii zapasowych baz danych programu SQL Server.
 * [Dowiedz się więcej](restore-sql-database-azure-vm.md) o przywracaniu baz danych programu SQL Server z kopii zapasowych.

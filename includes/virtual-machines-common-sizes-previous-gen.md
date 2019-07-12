@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/16/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 464c7bcb510a2f6ab80fb11d722c241ec51a1b16
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bb945695e0525876e044117e26c239e21d66473f
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66391446"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673447"
 ---
 Ta sekcja zawiera informacje dotyczące poprzednie generacje rozmiarów maszyn wirtualnych. Nadal można korzystać z tych rozmiarów, ale są dostępne nowsze generacji. 
 
@@ -29,7 +29,7 @@ Magazyn w warstwie Premium:  Nieobsługiwane
 
 Buforowanie Premium Storage:  Nieobsługiwane
 
-| Rozmiar         | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna przepływność magazynu tymczasowego: Operacje We/Wy / odczyt MB/s / Zapis MB/s | Maksymalna liczba dysków danych / przepływność: Operacje wejścia/wyjścia | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
+| Size         | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna przepływność magazynu tymczasowego: Operacje We/Wy / odczyt MB/s / Zapis MB/s | Maksymalna liczba dysków danych / przepływność: Liczba operacji we/wy na sekundę | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standardowa_F1  | 1         | 2           | 16             | 3000 / 46 / 23                                           | 4 / 4 x 500                         | 2 / 750                 |
 | Standardowa_F2  | 2         | 4           | 32             | 6000 / 93 / 46                                           | 8 / 8 x 500                         | 2 / 1500                     |
@@ -47,7 +47,7 @@ Magazyn w warstwie Premium:  Obsługiwane
 
 Buforowanie Premium Storage:  Obsługiwane
 
-| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: Operacje We/Wy / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: IOPS / MB/s | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
+| Size | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: Operacje We/Wy / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: IOPS / MB/s | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standardowa_F1s |1 |2 |4 |4 |4000 / 32 (12) |3200 / 48 |2 / 750 |
 | Standardowa_F2s |2 |4 |8 |8 |8000 / 64 (24) |6400 / 96 |2 / 1500 |
@@ -61,7 +61,7 @@ MB/s = 10^6 bajtów na sekundę, GiB = 1024^3 bajtów.
 
 ## <a name="ls-series"></a>Seria Ls
 
-Maszyny wirtualne serii Ls oferują do 32 procesorów wirtualnych vCPU — procesor [Intel® Xeon® z rodziny E5 v3](http://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html). Wydajność procesora CPU dla serii Ls jest taka sama jak w przypadku maszyn wirtualnych serii G/GS. Na procesor wirtualny vCPU przypada pamięć o pojemności 8 GiB.
+Maszyny wirtualne serii Ls oferują do 32 procesorów wirtualnych vCPU — procesor [Intel® Xeon® z rodziny E5 v3](https://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html). Wydajność procesora CPU dla serii Ls jest taka sama jak w przypadku maszyn wirtualnych serii G/GS. Na procesor wirtualny vCPU przypada pamięć o pojemności 8 GiB.
 
 Seria Ls nie obsługuje tworzenia lokalnej pamięci podręcznej w celu zwiększenia operacje We/Wy osiągalna dysków danych trwałych. Wysoka przepływność i operacje We/Wy dysku lokalnego sprawia, że maszyny wirtualne z serii Ls idealnym rozwiązaniem dla magazynów NoSQL, takie jak bazy danych Apache Cassandra i bazy danych MongoDB, które replikowanie danych między wieloma maszynami wirtualnymi do osiągnięcia trwałości w przypadku awarii jednej maszyny Wirtualnej.
 
@@ -71,7 +71,7 @@ Magazyn w warstwie Premium:  Obsługiwane
 
 Buforowanie Premium Storage:  Nieobsługiwane
  
-| Rozmiar          | Procesor wirtualny | Pamięć (GiB) | Magazynu tymczasowego (GiB) | Maks. liczba dysków danych | Maksymalna przepływność magazynu tymczasowego (na SEKUNDĘ / MB/s) | Maksymalna przepływność niebuforowanych dysków (na SEKUNDĘ / MB/s) | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) | 
+| Size          | Procesor wirtualny | Pamięć (GiB) | Magazynu tymczasowego (GiB) | Maks. liczba dysków danych | Maksymalna przepływność magazynu tymczasowego (na SEKUNDĘ / MB/s) | Maksymalna przepływność niebuforowanych dysków (na SEKUNDĘ / MB/s) | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) | 
 |----------------|-----------|-------------|--------------------------|----------------|-------------------------------------------------------------|-------------------------------------------|------------------------------| 
 | Standardowa_L4s   | 4  | 32  | 678   | 16 | 20000 / 200 | 5000 / 125  | 2 / 4000  | 
 | Standardowa_L8s   | 8  | 64  | 1388 | 32 | 40000 / 400 | 10000 / 250 | 4 / 8000  | 
@@ -84,13 +84,13 @@ Maksymalna przepływność dysków możliwa przy użyciu maszyn wirtualnych seri
 
 ## <a name="nvv2-series-preview"></a>Seria NVv2 (wersja zapoznawcza)
 
-**Zalecenie dotyczące rozmiaru nowszej**: [Seria NVv3 (wersja zapoznawcza)](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nvv2-series-preview)
+**Zalecenie dotyczące rozmiaru nowszej**: [Seria NVv3 (wersja zapoznawcza)](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nvv3-series-preview-1)
 
-Maszyn wirtualnych z serii NVv2 są obsługiwane przez [procesory GPU NVIDIA Tesla M60](http://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) NVIDIA oraz technologii NVIDIA GRID technologię Intel Broadwell procesorów. Te maszyny wirtualne są przeznaczone dla procesora GPU accelerated aplikacji graficznych i pulpitów wirtualnych, których klienci chcą wizualizować swoje dane, symulowanie wyników, aby wyświetlić, pracować nad CAD lub renderowania i dane ze strumienia zawartości. Dodatkowo te maszyny wirtualne mogą uruchamiać obciążenia o pojedynczej precyzji, takie jak kodowanie i renderowanie. Maszyny wirtualne NVv2 obsługuje usługi Premium Storage i dołączone dwa razy pamięć systemową (RAM) w porównaniu z jego poprzednika, seria NV.  
+Maszyn wirtualnych z serii NVv2 są obsługiwane przez [procesory GPU NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) NVIDIA oraz technologii NVIDIA GRID technologię Intel Broadwell procesorów. Te maszyny wirtualne są przeznaczone dla procesora GPU accelerated aplikacji graficznych i pulpitów wirtualnych, których klienci chcą wizualizować swoje dane, symulowanie wyników, aby wyświetlić, pracować nad CAD lub renderowania i dane ze strumienia zawartości. Dodatkowo te maszyny wirtualne mogą uruchamiać obciążenia o pojedynczej precyzji, takie jak kodowanie i renderowanie. Maszyny wirtualne NVv2 obsługuje usługi Premium Storage i dołączone dwa razy pamięć systemową (RAM) w porównaniu z jego poprzednika, seria NV.  
 
 Każdy procesor GPU w NVv2 wystąpienia jest powiązana z licencją siatki. Ta licencja zapewnia elastyczność do korzystania z wystąpienia NV jako wirtualnej stacji roboczej dla jednego użytkownika lub 25 współbieżnych użytkownicy mogą łączyć się maszyna wirtualna dla scenariusza aplikacji wirtualnej.
 
-| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Procesory GPU | Pamięć procesora GPU: GiB | Maks. liczba dysków danych | Maksymalna liczba kart sieciowych | Wirtualne stacje robocze | Aplikacje wirtualne | 
+| Size | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Procesory GPU | Pamięć procesora GPU: GiB | Maks. liczba dysków danych | Maksymalna liczba kart sieciowych | Wirtualne stacje robocze | Aplikacje wirtualne | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_NV6s_v2 |6 |112 |320 | 1 | 8 | 12 | 4 | 1 | 25 |
 | Standard_NV12s_v2 |12 |224 |640 | 2 | 16 | 24 | 8 | 2 | 50 |
