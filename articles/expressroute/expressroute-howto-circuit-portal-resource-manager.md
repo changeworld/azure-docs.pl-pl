@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/20/2018
 ms.author: cherylmc;ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 16f3ad1aa037dca2e7b8c3e68ae952c27b952711
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ce6d64f1df7a91f68e4621189553c36b36709039
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60366555"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657224"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Tworzenie i modyfikowanie obwodu usługi ExpressRoute
 
@@ -21,6 +21,7 @@ ms.locfileid: "60366555"
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [Program PowerShell](expressroute-howto-circuit-arm.md)
 > * [Interfejs wiersza polecenia platformy Azure](howto-circuit-cli.md)
+> * [Szablon usługi Azure Resource Manager](expressroute-howto-circuit-resource-manager-template.md)
 > * [Wideo — witryna Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (klasyczny)](expressroute-howto-circuit-classic.md)
 >
@@ -84,19 +85,19 @@ Na tej stronie **stan dostawcy** zawiera informacje dotyczące bieżącego stanu
 Podczas tworzenia nowego obwodu usługi ExpressRoute obwód jest w następującym stanie:
 
 Stan dostawcy: Nie zainicjowano obsługi administracyjnej<BR>
-Stan obwodu: Enabled (Włączony)
+Stan obwodu: Włączono
 
 ![Zainicjuj proces aprowizacji](./media/expressroute-howto-circuit-portal-resource-manager/status.png)
 
 Po dostawcy połączenia Trwa włączanie go dla Ciebie, obwodu zmienia się w następującym stanie:
 
 Stan dostawcy: Inicjowanie obsługi<BR>
-Stan obwodu: Enabled (Włączony)
+Stan obwodu: Włączono
 
 Należy mieć możliwość użycia obwodu usługi ExpressRoute musi być w następującym stanie:
 
 Stan dostawcy: Zaaprowizowane<BR>
-Stan obwodu: Enabled (Włączony)
+Stan obwodu: Włączono
 
 ### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. Okresowo sprawdzać stan i stan klawisza obwodu
 
@@ -121,7 +122,7 @@ Możesz wyświetlić stan obwodu, wybierając ją i wyświetlanie na stronie Prz
 
 ## <a name="modify"></a>Modyfikowanie obwodu usługi ExpressRoute
 
-Można modyfikować niektórych właściwości obwodu usługi ExpressRoute, bez wywierania wpływu na łączność. Możesz zmodyfikować model rozliczeń za przepustowość, jednostki SKU i i Zezwalaj na klasyczne operacje na **konfiguracji** strony. Aby uzyskać informacje na temat limity i ograniczenia, zobacz [ExpressRoute — często zadawane pytania](expressroute-faqs.md). 
+Można modyfikować niektórych właściwości obwodu usługi ExpressRoute, bez wywierania wpływu na łączność. Możesz zmodyfikować model rozliczeń za przepustowość, jednostki SKU i i Zezwalaj na klasyczne operacje na **konfiguracji** strony. Aby uzyskać informacje na temat limity i ograniczenia, zobacz [ExpressRoute — często zadawane pytania](expressroute-faqs.md).
 
 Można wykonać poniższe zadania bez przerw w dostępności:
 
@@ -139,9 +140,9 @@ Można wykonać poniższe zadania bez przerw w dostępności:
 * Można włączać i wyłączać *Zezwalaj na klasyczne operacje*.
   > [!IMPORTANT]
   > Może być konieczne odtworzenie obwód usługi ExpressRoute, jeśli istnieje niewystarczająca wydajność przy użyciu istniejącego portu. Nie można uaktualnić obwodu, jeśli w tej lokalizacji jest dostępna nie dodatkowej pojemności.
-  > 
+  >
   > Mimo że można bezproblemowo przeprowadzić uaktualnienie przepustowości, nie można zmniejszyć przepustowość obwodu usługi ExpressRoute bez przerw w działaniu. Obniżenie przepustowości wymaga anulować aprowizację obwodu usługi ExpressRoute, a następnie ponownie udostępnić nowego obwodu usługi ExpressRoute.
-  > 
+  >
   > Wyłączanie operacji Dodatek Premium może zakończyć się niepowodzeniem, jeśli używasz zasobów, które są większe niż co to jest dozwolone w przypadku obwód standardowy.
 
 Aby zmodyfikować obwodu usługi ExpressRoute, kliknij **konfiguracji**.

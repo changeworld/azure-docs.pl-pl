@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: b637f547de06d9347a1c74ad7da560be97f16881
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 12b9793cabb261368c437bd2ae2dbb39cf078bef
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144440"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653285"
 ---
 # <a name="design-secure-applications-on-azure"></a>Projektowanie bezpiecznych aplikacji na platformie Azure
 W tym artykule, firma Microsoft przedstawia działania dotyczące zabezpieczeń i kontroli należy wziąć pod uwagę podczas projektowania aplikacji dla chmury. Szkolenia zasobów oraz pytania zabezpieczające i koncepcji, które należy wziąć pod uwagę podczas wymagań i projektowania fazy Microsoft [cykl projektowania zabezpieczeń (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) zostały uwzględnione. Celem jest pomagającym w zdefiniowaniu działań i usług platformy Azure, które służą do projektowania bardziej bezpiecznych aplikacji.
@@ -39,7 +39,7 @@ Użyj następujących zasobów na etapie szkolenia, aby zapoznać się z usługa
 
   - [Zestawy SDK i narzędzia](https://docs.microsoft.com/azure/index#pivot=sdkstools) opisano narzędzia, które są dostępne na platformie Azure.
 
-  - [Usługi Azure DevOps](https://docs.microsoft.com/azure/devops/?view=vsts#pivot=index&panel=indexA) umożliwia tworzenie narzędzi do współpracy. Narzędzia te obejmują potoki o wysokiej wydajności, bezpłatne repozytoria Git, konfigurowalne tablice Kanban i testowania obciążenia w rozbudowane automatycznych i w chmurze.
+  - [Usługi Azure DevOps](https://docs.microsoft.com/azure/devops/) umożliwia tworzenie narzędzi do współpracy. Narzędzia te obejmują potoki o wysokiej wydajności, bezpłatne repozytoria Git, konfigurowalne tablice Kanban i testowania obciążenia w rozbudowane automatycznych i w chmurze.
     [Centrum zasobów DevOps](https://docs.microsoft.com/azure/devops/learn/) łączy nasze zaawansowane zasoby do nauki DevOps wskazówki, narzędzia Git kontroli wersji, metody agile, jak pracujemy z metodyki DevOps w firmie Microsoft i jak można ocenić własny postęp operacji deweloperskich.
 
   - [5 najpopularniejszych zabezpieczeń elementów do uwzględnienia przed wypchnięciem do środowiska produkcyjnego](https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider/index?WT.mc_id=Learn-Blog-tajanca) pokazuje, jak pomóc w zabezpieczaniu aplikacji sieci web na platformie Azure i chronić aplikacje przed atakami najbardziej typowe i niebezpiecznych aplikacji sieci web.
@@ -157,7 +157,7 @@ Modelowanie projektu aplikacji i wyliczania [STRIDE](https://docs.google.com/vie
 | odrzucenie            | Niemożność wyparcia się       | Włączanie usługi Azure [monitorowania i diagnostyki](https://docs.microsoft.com/azure/architecture/best-practices/monitoring).|
 | Ujawnianie informacji | Poufność       | Szyfruj poufne dane [magazynowanych](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest) i [przesyłanych](https://docs.microsoft.com/azure/security/azure-security-data-encryption-best-practices#protect-data-in-transit). |
 | Odmowa usługi      | Dostępność          | Monitoruj metryki wydajności dla typu "odmowa potencjalnych" warunki usługi. Implementuje filtry połączenia. [Usługa Azure DDoS protection](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview#next-steps), w połączeniu z najlepsze rozwiązania dotyczące projektowania aplikacji, zapewnia ochronę przed atakami DDoS.|
-| Podniesienie uprawnień | Autoryzacja         | Za pomocą usługi Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure).|
+| Podniesienie uprawnień | Authorization         | Za pomocą usługi Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure).|
 
 ### <a name="reduce-your-attack-surface"></a>Zmniejszyć obszar ataków
 
@@ -315,7 +315,7 @@ Upewnij się, że nie Rejestruj wszystkie dane poufne, które użytkownik prześ
 
 Upewnij się, że aplikacja monitoruje zdarzeń zarządzania użytkownika, takich jak identyfikatory logowania użytkownika udane i nieudane, resetowania haseł, zmiany hasła, blokady konta i rejestracja użytkownika. Dla tych zdarzeń, ułatwia wykrywanie i reagowanie na potencjalnie podejrzanego zachowania. Umożliwia również zbieranie danych dotyczących operacji, takich jak kto uzyskuje dostęp do aplikacji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W następujących artykułach firma Microsoft zaleca środki kontroli bezpieczeństwa i działań, które mogą pomóc Ci tworzenie i wdrażanie bezpiecznych aplikacji.
 
 - [Tworzenie bezpiecznych aplikacji](secure-develop.md)

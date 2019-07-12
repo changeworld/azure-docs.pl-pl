@@ -7,20 +7,20 @@ ms.service: managed-applications
 ms.topic: tutorial
 ms.date: 05/01/2019
 ms.author: evanhi
-ms.openlocfilehash: e4196cf59537be5194ceb510a1b7b066c97de19a
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 41200139ef55fa1ae441192e2d81b5228cf29bad
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410217"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795311"
 ---
-# <a name="tutorial-create-custom-provider-and-deploy-custom-resources"></a>Samouczek: Tworzenie niestandardowego dostawcy i wdrażanie zasobów niestandardowych
+# <a name="quickstart-create-custom-provider-and-deploy-custom-resources"></a>Szybki start: Tworzenie niestandardowego dostawcy i wdrażanie zasobów niestandardowych
 
-W ramach tego samouczka możesz utworzyć własnego dostawcę zasobów i wdrażać niestandardowe typy zasobów dla tego dostawcy zasobów. Aby uzyskać więcej informacji na temat niestandardowych dostawców, zobacz [Azure niestandardowych dostawców (wersja zapoznawcza) — omówienie](custom-providers-overview.md).
+W tym przewodniku Szybki Start możesz utworzyć własnego dostawcę zasobów i wdrażać niestandardowe typy zasobów dla tego dostawcy zasobów. Aby uzyskać więcej informacji na temat niestandardowych dostawców, zobacz [Azure niestandardowych dostawców (wersja zapoznawcza) — omówienie](custom-providers-overview.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Wykonanie czynności opisanych w tym samouczku, musisz wywołać operacje REST. Istnieją [różne sposoby wysyłania żądania REST](/rest/api/azure/). Jeśli nie masz jeszcze narzędziem dla operacji REST, należy zainstalować [ARMClient](https://github.com/projectkudu/ARMClient). To narzędzie wiersza polecenia typu open source, które upraszcza wywoływanie interfejsu API usługi Azure Resource Manager.
+Aby wykonać kroki opisane w tym przewodniku Szybki Start, potrzebne do wywoływania operacji REST. Istnieją [różne sposoby wysyłania żądania REST](/rest/api/azure/). Jeśli nie masz jeszcze narzędziem dla operacji REST, należy zainstalować [ARMClient](https://github.com/projectkudu/ARMClient). To narzędzie wiersza polecenia typu open source, które upraszcza wywoływanie interfejsu API usługi Azure Resource Manager.
 
 ## <a name="deploy-custom-provider"></a>Wdrażanie niestandardowego dostawcy
 
@@ -122,7 +122,7 @@ Otrzymasz odpowiedzi:
 
 ## <a name="create-resource-type"></a>Utwórz typ zasobu
 
-Aby utworzyć niestandardowy typ zasobu, można wdrożyć zasobów w szablonie. To podejście jest wyświetlany w szablonie, wdrożonego w ramach tego samouczka. Można również wysłać żądanie PUT dla typu zasobu.
+Aby utworzyć niestandardowy typ zasobu, można wdrożyć zasobów w szablonie. To podejście jest wyświetlany w szablonie, wdrożone w tym przewodniku Szybki Start. Można również wysłać żądanie PUT dla typu zasobu.
 
 ```
 PUT https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.CustomProviders/resourceProviders/<provider-name>/users/<resource-name>?api-version=2018-09-01-preview

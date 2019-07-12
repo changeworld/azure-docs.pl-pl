@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.subservice: hybrid
-ms.author: martincoetzer
+ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96b5e8ab63c1784ff073c7ba38cd4a6319db43c5
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a20a1a1009949aa2e6de8586040e918ae15c8d39
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67452737"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655941"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Cztery kroki, które foundation silna tożsamość w usłudze Azure Active Directory
 
@@ -147,7 +147,7 @@ Podobnie [raportu samoobsługowego zarządzania hasłami](https://docs.microsoft
 
 ### <a name="self-service-app-management"></a>Zarządzanie aplikacjami samoobsługi
 
-Zanim użytkownicy mogą odnajdować samodzielnie aplikacje z panelu dostępu, musisz włączyć [samoobsługowego dostępu do aplikacji](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-manage-self-service-access) do dowolnych aplikacji, które użytkownicy mogą samodzielnie odnajdywanie i żądania dostępu do. Dostęp do aplikacji samoobsługowej to doskonały sposób, aby zezwolić użytkownikom na własnym odnajdywanie aplikacji, a następnie opcjonalnie zezwolić grupie biznesowej zatwierdzać dostęp do tych aplikacji. Możesz zezwolić grupie biznesowej do zarządzania poświadczeniami przypisane do tych użytkowników w celu [hasło logowania jednokrotnego w aplikacji](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery#configure-the-application-for-password-single-sign-on) bezpośrednio w swoich panelach dostępu.
+Zanim użytkownicy mogą odnajdować samodzielnie aplikacje z panelu dostępu, musisz włączyć [samoobsługowego dostępu do aplikacji](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-manage-self-service-access) do dowolnych aplikacji, które użytkownicy mogą samodzielnie odnajdywanie i żądania dostępu do. Dostęp do aplikacji samoobsługowej to doskonały sposób, aby zezwolić użytkownikom na własnym odnajdywanie aplikacji, a następnie opcjonalnie zezwolić grupie biznesowej zatwierdzać dostęp do tych aplikacji. Możesz zezwolić grupie biznesowej do zarządzania poświadczeniami przypisane do tych użytkowników w celu [hasło logowania jednokrotnego w aplikacji](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery#configure-password-sso-for-an-azure-ad-gallery-app) bezpośrednio w swoich panelach dostępu.
 
 ### <a name="self-service-group-management"></a>Samoobsługowe zarządzanie grupami
 
@@ -265,7 +265,7 @@ Firma Microsoft zaleca drukowania z poniższej listy kontrolnej odwołania, po r
 ||Monitorowanie użycia aplikacji, aby uzyskiwaniu wglądu w dane|
 ||Zrozumienie sterowniki wywołania pomocy technicznej|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się, jak można zwiększyć poziomu bezpiecznego przy użyciu funkcji usługi Azure Active Directory i ta lista kontrolna krok 5 — [pięć kroków do zabezpieczania infrastruktury tożsamości](https://aka.ms/securitysteps).
 

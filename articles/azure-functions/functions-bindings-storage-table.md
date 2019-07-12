@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 002ea00364056f0780146b79936a6bc04e289973
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: b815ce95da24b20ff18ea03d637ad85bfe72cb00
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480077"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654235"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Powiązania magazynu dla usługi Azure Functions dla tabeli platformy Azure
 
@@ -507,7 +507,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**tableName** | **TableName** | Nazwa tabeli.| 
 |**partitionKey** | **PartitionKey** |Opcjonalny. Klucz partycji jednostkę tabeli do odczytu. Zobacz [użycia](#input---usage) sekcji, aby uzyskać wskazówki dotyczące sposobu używania tej właściwości.| 
 |**rowKey** |**RowKey** | Opcjonalny. Klucz wiersza jednostki tabeli do odczytu. Zobacz [użycia](#input---usage) sekcji, aby uzyskać wskazówki dotyczące sposobu używania tej właściwości.| 
-|**Wypełnij** |**Take** | Opcjonalny. Maksymalna liczba jednostek do odczytu w języku JavaScript. Zobacz [użycia](#input---usage) sekcji, aby uzyskać wskazówki dotyczące sposobu używania tej właściwości.| 
+|**Wypełnij** |**Take** | Opcjonalna. Maksymalna liczba jednostek do odczytu w języku JavaScript. Zobacz [użycia](#input---usage) sekcji, aby uzyskać wskazówki dotyczące sposobu używania tej właściwości.| 
 |**Filtr** |**Filtr** | Opcjonalny. Wyrażenie filtru OData dla tabeli danych wejściowych w języku JavaScript. Zobacz [użycia](#input---usage) sekcji, aby uzyskać wskazówki dotyczące sposobu używania tej właściwości.| 
 |**połączenia** |**połączenia** | Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko pozostałą część nazwy w tym miejscu. Na przykład jeśli ustawisz `connection` do "Mój_magazyn", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia magazynu w ustawieniach aplikacji, który nosi nazwę `AzureWebJobsStorage`.|
 
@@ -537,7 +537,7 @@ Powiązania danych wejściowych magazyn tabel obsługuje następujące scenarius
 Użyj usługi Azure Table storage powiązania danych wyjściowych usługi można zapisać jednostki do tabeli na koncie usługi Azure Storage.
 
 > [!NOTE]
-> To powiązanie danych wyjściowych nie obsługuje ich aktualizowania istniejących jednostek. Użyj `TableOperation.Replace` operacji [z zestawu SDK usługi Azure Storage](https://docs.microsoft.com/azure/cosmos-db/table-storage-how-to-use-dotnet#replace-an-entity) do zaktualizowania istniejącej jednostki.   
+> To powiązanie danych wyjściowych nie obsługuje ich aktualizowania istniejących jednostek. Użyj `TableOperation.Replace` operacji [z zestawu SDK usługi Azure Storage](https://docs.microsoft.com/azure/cosmos-db/tutorial-develop-table-dotnet#delete-an-entity) do zaktualizowania istniejącej jednostki.   
 
 ## <a name="output---example"></a>Dane wyjściowe — przykład
 

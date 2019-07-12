@@ -3,16 +3,16 @@ title: Zastępowanie zachowania HTTP przy użyciu Azure CDN from Verizon — Pre
 description: Aparat reguł pozwala dostosować sposób obsługi żądań HTTP przez Azure CDN from Verizon — wersja Premium, takich jak blokowanie dostarczania określonych typów zawartości, definiowania zasad buforowania i modyfikowanie nagłówków HTTP.
 services: cdn
 author: mdgattuso
-ms.service: cdn
+ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: 81af3073d64e4379972568a57907a7fb2f82356d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fa08f59f3b69395d548649bb131e04c5071c053d
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66481732"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593175"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>Zastępowanie zachowania HTTP przy użyciu Azure CDN from Verizon — Premium aparatu reguł
 

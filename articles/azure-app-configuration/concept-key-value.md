@@ -12,12 +12,12 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: b25cc8c04aed8cd333ff4de5b12db6674323787d
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: c7a7e7994ef5e16640f59efdc672f6793bc4f18d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393603"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706470"
 ---
 # <a name="keys-and-values"></a>Klucze i wartości
 
@@ -86,7 +86,7 @@ Każda wartość klucza jest unikatowo identyfikowana przez jego klucza oraz ety
 
 Może zawierać również następujące wzorce etykiety:
 
-| Label | |
+| Etykieta | |
 |---|---|
 | Element `label` jest pomijany lub `label=*` | Dopasowuje wszelkie etykiety, która zawiera `null` |
 | `label=%00` | Dopasowuje `null` etykiety |
@@ -94,7 +94,7 @@ Może zawierać również następujące wzorce etykiety:
 | `label=1.0.*` | Pasuje do etykiet zaczynających się od **1.0.** |
 | `label=*.0.0` | Pasuje do etykiet kończących się na **.0.0** |
 | `label=*.0.*` | Pasuje do etykiet zawierających **.0.** |
-| `label=%00,1.0.0` | Pasuje do etykiety `null` lub **1.0.1**, maksymalnie pięć udostępnionych woluminów klastra |
+| `label=%00,1.0.0` | Pasuje do etykiety `null` lub **1.0.0**, maksymalnie pięć udostępnionych woluminów klastra |
 
 ## <a name="values"></a>Wartości
 
@@ -102,7 +102,7 @@ Wartości przypisane do kluczy są również ciągami Unicode. W przypadku warto
 
 Dane konfiguracji przechowywane w magazynie konfiguracji aplikacji, która zawiera wszystkie klucze i wartości, są szyfrowane podczas przechowywania i podczas przesyłania. Konfiguracja aplikacji nie jest rozwiązaniem zastąpienia dla usługi Azure Key Vault. Nie należy przechowywać w nim wpisów tajnych aplikacji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Migawkę punktu w czasie](./concept-point-time-snapshot.md)  
 * [Funkcja zarządzania](./concept-feature-management.md)  

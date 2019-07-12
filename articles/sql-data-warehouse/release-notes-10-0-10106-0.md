@@ -5,17 +5,17 @@ services: sql-data-warehouse
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 05/13/2019
+ms.date: 07/03/2019
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: 9e5f10c2b4c2108626db79ad9821a8b07e57a2e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ee01ebad9e03aaa34911db49ce344d51b6a756d8
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417700"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798700"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Informacje o wersji usługi Azure SQL Data Warehouse
 
@@ -25,20 +25,31 @@ Ten artykuł zawiera podsumowanie nowych funkcji i ulepszeń w najnowszych wersj
 
 Jak nowe funkcje są wdrażane do wszystkich regionów, sprawdź wersję wdrożone wystąpienie usługi i najnowsze informacje o wersji usługi Azure SQL data Warehouse dostępności funkcji. Aby sprawdzić swoją wersję usługi Azure SQL data Warehouse, należy nawiązać połączenie z magazynem danych za pośrednictwem programu SQL Server Management Studio (SSMS) i uruchom `SELECT @@VERSION AS 'SQL Data Warehouse';` zwracać bieżącą wersję usługi Azure SQL data Warehouse.
 
-Przykładowe dane wyjściowe: ![Wersja SQL Data Warehouse](./media/release-notes/sql_data_warehouse_version.png)
+Przykładowe dane wyjściowe:
+
+![Wersja SQL Data Warehouse](./media/release-notes/sql_data_warehouse_version.png)
 
 Użyj daty identyfikowane, aby upewnić się, której wersji zostały doliczone do usługi SQL data Warehouse platformy Azure.
+
+## <a name="july-2019"></a>2019 lipca
+
+| Udoskonalenia usługi | Szczegóły |
+| --- | --- |
+|**Zmaterializowany widok (wersja zapoznawcza)**|Zmaterializowanego widoku, utrzymuje danych zwróconych przez kwerendę definicji widoku i automatycznie zostanie zaktualizowany zgodnie ze zmianami danych w tabelach źródłowych. Go zwiększa wydajność kwerend złożonych (zazwyczaj zapytania przy użyciu sprzęgania i agregacji) jednocześnie oferując proste konserwacyjnych. Aby uzyskać więcej informacji, zobacz: </br> - [Utwórz MATERIALIZED VIEW AS SELECT &#40;języka Transact-SQL&#41;](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest)</br> - [ALTER MATERIALIZED VIEW &#40;języka Transact-SQL&#41;](/sql/t-sql/statements/alter-materialized-view-transact-sql?view=azure-sqldw-latest) </br> - [Instrukcje T-SQL obsługiwanych w usłudze Azure SQL Data Warehouse](/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-statements)|
+|**Dodatkową obsługę języka T-SQL**|Obszar powierzchni języka T-SQL dla usługi SQL Data Warehouse został rozszerzony o obsługę: </br> - [W STREFIE CZASOWEJ](/sql/t-sql/queries/at-time-zone-transact-sql?view=azure-sqldw-latest)</br> - [STRING_AGG](/sql/t-sql/functions/string-agg-transact-sql?view=azure-sqldw-latest)|
+|**Zestaw wyników buforowania (wersja zapoznawcza)**|Polecenia DBCC dodane do zarządzania wynik ogłaszaliśmy wcześniej ustawić pamięci podręcznej. Aby uzyskać więcej informacji, zobacz: </br> - [Polecenie DBCC DROPRESULTSETCACHE &#40;języka Transact-SQL&#41;](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest)  </br> - [Polecenie DBCC SHOWRESULTCACHESPACEUSED &#40;języka Transact-SQL&#41;](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?view=azure-sqldw-latest) </br></br> Zobacz też nową kolumnę result_set_cache w [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) czy pokazuje stosowania kwerenda jest wykonywany wynik ustawione pamięci podręcznej.|
+|**Uporządkowane klastrowanego indeksu magazynu kolumn (wersja zapoznawcza)**|Nowa kolumna, column_store_order_ordinal, dodane do [sys.index_columns](/sql/relational-databases/system-catalog-views/sys-index-columns-transact-sql?view=azure-sqldw-latest) do identyfikacji kolejności kolumn w uporządkowanej klastrowanego indeksu magazynu kolumn.|
 
 ## <a name="may-2019"></a>Maja 2019 r
 
 | Udoskonalenia usługi | Szczegóły |
 | --- | --- |
-|**Dane dynamiczne maskowanie (wersja zapoznawcza)**|Dynamiczne maskowanie danych (DDM) pozwala zapobiegać nieautoryzowanemu dostępowi do danych poufnych w magazynie danych, polega na zaciemnianiu ją na bieżąco w wynikach kwerendy na podstawie reguł maskowania, jaką zdefiniujesz. Aby uzyskać więcej informacji, zobacz [bazy danych SQL dynamiczne maskowanie danych](/azure/sql-database/sql-database-dynamic-data-masking-get-started).|
-|**Znaczenie obciążenie jest teraz ogólnie dostępna**|Obciążenie Zarządzanie klasyfikacji i znaczenie zapewniają możliwość wywierania wpływu na kolejność wykonywania zapytania. Aby uzyskać więcej informacji na temat znaczenia obciążenia, zobacz [klasyfikacji](sql-data-warehouse-workload-classification.md) i [znaczenie](sql-data-warehouse-workload-importance.md) Przegląd artykułów w dokumentacji. Zapoznaj się z [tworzenie KLASYFIKATORA obciążenia](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) także dokumentu.<br/><br/>Zobacz znaczenie obciążenia w akcji poniżej wideo:<br/> -[Obciążenie pojęć związanych z zarządzaniem](https://www.youtube.com/embed/QcCRBAhoXpM)<br/> -[Scenariusze zarządzania obciążenia](https://www.youtube.com/embed/_2rLMljOjw8)|
+|**Dane dynamiczne maskowanie (wersja zapoznawcza)**|Dynamiczne maskowanie danych (DDM, Dynamic Data Masking) zapobiega nieautoryzowanemu dostępowi do poufnych danych w Twoim magazynie danych przez zaciemnianie ich na bieżąco w wynikach zapytania na podstawie zdefiniowanych reguł maskowania. Aby uzyskać więcej informacji, zobacz [bazy danych SQL dynamiczne maskowanie danych](/azure/sql-database/sql-database-dynamic-data-masking-get-started).|
+|**Znaczenie obciążenie jest teraz ogólnie dostępna**|Ważność i klasyfikacja zarządzania obciążeniami zapewniają możliwość wpłynięcia na kolejność uruchamiania zapytań. Aby uzyskać więcej informacji na temat znaczenia obciążenia, zobacz [klasyfikacji](sql-data-warehouse-workload-classification.md) i [znaczenie](sql-data-warehouse-workload-importance.md) Przegląd artykułów w dokumentacji. Zapoznaj się z [tworzenie KLASYFIKATORA obciążenia](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) także dokumentu.<br/><br/>Zobacz znaczenie obciążenia w akcji poniżej wideo:<br/> -[Obciążenie pojęć związanych z zarządzaniem](https://www.youtube.com/embed/QcCRBAhoXpM)<br/> -[Scenariusze zarządzania obciążenia](https://www.youtube.com/embed/_2rLMljOjw8)|
 |**Dodatkową obsługę języka T-SQL**|Obszar powierzchni języka T-SQL dla usługi SQL Data Warehouse został rozszerzony o obsługę: </br> - [TRIM](/sql/t-sql/functions/trim-transact-sql?view=azure-sqldw-latest)|
 |**Funkcje JSON**|Analitycy biznesowi mogą teraz używać znanego języka T-SQL do wykonywania zapytań i manipulowania nimi dokumenty, które są sformatowane jako dane JSON w usłudze Azure Data Warehouse przy użyciu następujących nowych funkcji JSON:</br> - [ISJSON](/sql/t-sql/functions/isjson-transact-sql?view=azure-sqldw-latest)</br> - [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_MODIFY](/sql/t-sql/functions/json-modify-transact-sql?view=azure-sqldw-latest)</br> - [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest)|
 |**Zestaw wyników buforowania (wersja zapoznawcza)**|Zestaw wyników z pamięci podręcznej umożliwia błyskawicznych zapytań czasy reakcji przy jednoczesnym zmniejszeniu czasu do wglądu dla analityków biznesowych i raportowania użytkowników. Aby uzyskać więcej informacji, zobacz:</br> - [Instrukcja ALTER DATABASE (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest)</br> - [ALTER DATABASE — opcje SET (języka Transact SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)</br> - [Ustaw zestaw wyników BUFOROWANIA (Transact-SQL)](/sql/t-sql/statements/set-result-set-caching-transact-sql?view=azure-sqldw-latest)</br> - [SET — instrukcja (Transact-SQL)](/sql/t-sql/statements/set-statements-transact-sql)</br> - [sys.databases (Transact-SQL)](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?view=azure-sqldw-latest)|
-|**Uporządkowane klastrowanego indeksu magazynu kolumn (wersja zapoznawcza)**|Magazynu kolumn jest kluczowym elementem w odniesieniu do przechowywania i wydajnego wykonywania zapytań dużych ilości danych. Dla każdej tabeli do dzielenia danych przychodzących w grupy wierszy i każda kolumna formularzy grupę wierszy Segment na dysku.  Uporządkowane klastrowanego magazynu kolumn indeksów w dalszej optymalizacji wykonanie zapytania przez włączenie eliminacji wydajne segmentu.   Aby uzyskać więcej informacji, zobacz:</br> -  [Tworzenie tabeli (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest)</br> -  [CREATE COLUMNSTORE INDEX (Transact-SQL)](/sql/t-sql/statements/create-columnstore-index-transact-sql?view=azure-sqldw-latest).|
+|**Uporządkowane klastrowanego indeksu magazynu kolumn (wersja zapoznawcza)**|Magazyn kolumn to kluczowy element umożliwiający przechowywanie dużych ilości danych i wydajne wykonywanie zapytań. Dla każdej tabeli dzieli on przychodzące dane na grupy wierszy, a każda kolumna grupy wierszy tworzy segment na dysku.  Uporządkowane, klastrowane indeksy magazynu kolumn optymalizują wykonywanie zapytań, umożliwiając wydajną eliminację segmentów.   Aby uzyskać więcej informacji, zobacz:</br> -  [Tworzenie tabeli (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest)</br> -  [CREATE COLUMNSTORE INDEX (Transact-SQL)](/sql/t-sql/statements/create-columnstore-index-transact-sql?view=azure-sqldw-latest).|
 
 ## <a name="march-2019"></a>Marca 2019 r
 

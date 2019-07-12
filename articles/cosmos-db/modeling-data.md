@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: rimman
 ms.custom: rimman
-ms.openlocfilehash: 3cf075c2909b35bb08ca4cb24aaa3b99597f34c6
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 47d519523c7ffd1c0b6329d6b4eb12b052466b35
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203525"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657371"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Modelowanie danych w usłudze Azure Cosmos DB
 
@@ -43,7 +43,7 @@ Przeprowadzi lokalnego po normalizowanie danych do **uniknąć przechowywania na
     SELECT p.FirstName, p.LastName, a.City, cd.Detail
     FROM Person p
     JOIN ContactDetail cd ON cd.PersonId = p.Id
-    JOIN ContactDetailType on cdt ON cdt.Id = cd.TypeId
+    JOIN ContactDetailType cdt ON cdt.Id = cd.TypeId
     JOIN Address a ON a.PersonId = p.Id
 
 Aktualizowanie jedna osoba wraz z ich szczegółowe dane kontaktowe i adresami wymaga operacje zapisu na wiele poszczególnych tabel.
@@ -408,7 +408,7 @@ W niektórych scenariuszach możesz chcieć łączyć różnych typów dokument�
         "type": "review"
     }
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Największe wnioski z tego artykułu są Aby dowiedzieć się, że modelowania danych w świecie bez schematu jest ważniejsza niż kiedykolwiek wcześniej.
 

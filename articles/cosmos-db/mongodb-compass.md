@@ -7,14 +7,14 @@ ms.topic: overview
 ms.date: 06/24/2019
 author: roaror
 ms.author: roaror
-ms.openlocfilehash: ad302df3144787fd231166c7052ecfde268f4086
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 102d3fdc2e36f812e9a86286383a06f9930a1947
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67451038"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67665931"
 ---
-# <a name="use-compass-to-connect-to-your-cosmos-db-account"></a>Nawiązywanie połączenia z kontem usługi Cosmos DB za pomocą Compass
+# <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>Nawiązywanie połączenia z interfejsem API usługi Azure Cosmos DB dla bazy danych MongoDB za pomocą Compass bazy danych MongoDB 
 
 W tym samouczku przedstawiono sposób użycia [Compass bazy danych MongoDB](https://www.mongodb.com/products/compass) podczas przechowywania i/lub zarządzanie danymi w usłudze Cosmos DB. Używamy interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB na potrzeby tego przewodnika. Dla osób, nieznane Compass to graficzny interfejs użytkownika dla bazy danych MongoDB. Często służy do wizualizacji danych, uruchamianie zapytań ad hoc, oraz zarządzanie danymi. 
 
@@ -50,7 +50,7 @@ Aby połączyć konto usługi Cosmos DB Compass, wykonaj następujące czynnośc
 
 6. Kliknij pozycję **Connect** w dolnej części strony. Twoje konto usługi Cosmos DB i bazy danych powinno być teraz widoczny w obrębie Compass bazy danych MongoDB.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak [korzystać z programu Studio 3T](mongodb-mongochef.md) za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
 - Eksploruj [przykłady](mongodb-samples.md) bazy danych MongoDB za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.

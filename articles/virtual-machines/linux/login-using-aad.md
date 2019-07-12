@@ -4,7 +4,7 @@ description: W tym Porada dowiesz się, jak utworzyć i skonfigurować Maszynę 
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: d1db228f4c73cc00cd32ca6ae5b86056db68f05b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f8f00c49ced4e06eb634cbbfb1b786e6729783d2
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66155957"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667662"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Zaloguj się do maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu uwierzytelniania usługi Azure Active Directory (wersja zapoznawcza)
 
@@ -194,6 +194,6 @@ Jeśli pomyślnym ukończeniu kroku uwierzytelniania w przeglądarce sieci web, 
 
 Podziel się swoją opinią na temat tej wersji zapoznawczej funkcji lub raport problemów z korzystania z niego na [forum opinii w usłudze Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat usługi Azure Active Directory, zobacz [co to jest Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)

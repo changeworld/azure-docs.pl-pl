@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: f98f16e9996d90b0380f05885e4c2d74e1413f23
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: e17b68dfd63952d0c8c81415b090b047c5808e2e
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657662"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797800"
 ---
 # <a name="example-how-to-detect-sentiment-with-text-analytics"></a>Przykład: Jak wykryć tonację przy użyciu analizy tekstu
 
@@ -139,14 +139,14 @@ Poniższy przykład pokazuje odpowiedź dla kolekcji dokumentów w tym artykule.
 > * Format żądania v3 analizę tonacji i [limity danych](../overview.md#data-limits) jest taka sama jak poprzednia wersja.
 > * W tej chwili analiza tonacji w wersji 3: 
 >    * Obecnie obsługuje tylko język angielski.  
->    * Jest dostępna w następujących regionach: `Central US`, `Central Canada`, ` East Asia` 
+>    * Jest dostępna w następujących regionach: `Central US`, `Central Canada`, `East Asia` 
 
 |Cecha |Opis  |
 |---------|---------|
-|Polepszenia dokładności     | Znacznej poprawy wykrywania tonacji dodatnią, neutralne, ujemny i mieszanych w dokumenty tekstowe w porównaniu z poprzednimi wersjami.           |
-|Dokument i tonacji na poziomie pojedynczych zdań     | Wykryj tonację dokumentu i jej poszczególnych zdań. Jeśli dokument zawiera wiele zdania, każde zdanie jest również przypisany wyniku tonacji.         |
+|Polepszenia dokładności     | znacznie lepsze niż w poprzednich wersjach wykrywanie pozytywnej, neutralnej, negatywnej i mieszanej tonacji dokumentów tekstowych.           |
+|Dokument i tonacji na poziomie pojedynczych zdań     | wykrywanie tonacji zarówno dokumentu, jak i poszczególnych zdań. Jeśli dokument zawiera wiele zdań, wynik tonacji jest również przypisywany do każdego zdania.         |
 |Kategoria opinii i oceny     | Interfejs API zwraca teraz kategorie tonacji (`positive`, `negative`, `neutral` i `mixed`) dla tekstu, oprócz wyniku tonacji.        |
-| Ulepszone danych wyjściowych | Analiza tonacji teraz zwraca informacje dotyczące dokumentu cały tekst i jego poszczególnych zdań. |
+| Ulepszone danych wyjściowych | analiza tonacji zwraca teraz informacje zarówno dla całego dokumentu, jak i dla poszczególnych zdań. |
 
 ### <a name="sentiment-labeling"></a>Etykietowanie tonacji
 
@@ -273,7 +273,7 @@ W tym artykule przedstawiono pojęcia i przepływ pracy analizy tonacji za pomoc
  [Często zadawane pytania](../text-analytics-resource-faq.md)</br>
  [Strona produktu analizy tekstu](//go.microsoft.com/fwlink/?LinkID=759712) 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Wyodrębnianie kluczowych fraz](text-analytics-how-to-keyword-extraction.md)

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 31c6c1258b6d20eb2d2802cf23244cb59df682c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8ad5c4cb4d17443144febd716391803064ccdad1
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61428730"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626373"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformy i narzędzia dla projektów do nauki o danych
 
@@ -48,7 +48,7 @@ Obejmuje również **narzędzia do uczenia Maszynowego i sztucznej Inteligencji*
 
 Obecnie jest dostępna w DSVM **Windows** i **Linux CentOS** systemów operacyjnych. Wybierz rozmiar maszyny wirtualnej DSVM (liczba rdzeni procesora CPU) i ilość pamięci odpowiednio do potrzeb projektów do nauki o danych, które planujesz wykonać na nim. 
 
-Aby uzyskać więcej informacji na temat wersji Windows wersje maszyny wirtualnej, zobacz [maszyny wirtualnej do nauki o danych Microsoft](https://azure.microsoft.com/marketplace/partners/microsoft-ads/standard-data-science-vm/) w witrynie Azure marketplace. Dla wersji systemu Linux maszyny DSVM, zobacz [maszyny wirtualnej do nauki o danych dla systemu Linux](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/).
+Aby uzyskać więcej informacji na temat wersji Windows wersje maszyny wirtualnej, zobacz [maszyny wirtualnej do nauki o danych Microsoft](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) w witrynie Azure marketplace. Dla wersji systemu Linux maszyny DSVM, zobacz [maszyny wirtualnej do nauki o danych dla systemu Linux](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/).
 
 Aby dowiedzieć się, jak wykonywać niektóre typowe zadania wydobywania danych na maszyny DSVM wydajnie, zobacz [dziesięć rzeczy, które można wykonać na maszynie wirtualnej analizy danych](../data-science-virtual-machine/vm-do-ten-things.md)
 

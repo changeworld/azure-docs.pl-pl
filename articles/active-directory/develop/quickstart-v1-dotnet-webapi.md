@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e2eca253bc5d1495d26506e0e6f8a83762e8bc5
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 83f5b08e5fee17c0ea5577d4d56d4d3208a818e3
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66001104"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625303"
 ---
 # <a name="quickstart-build-a-net-web-api-that-integrates-with-azure-ad-for-authentication-and-authorization"></a>Szybki start: Tworzenie internetowego interfejsu API platformy .NET, który integruje się z usługą Azure AD w celu uwierzytelniania i autoryzacji
 
@@ -62,7 +62,7 @@ Aby ułatwić zabezpieczanie aplikacji, należy najpierw utworzyć aplikację w 
 5. Po wyświetleniu strony **Rejestrowanie aplikacji** wprowadź nazwę aplikacji.
 W obszarze **Obsługiwane typy kont** wybierz pozycję **Konta w dowolnym katalogu organizacyjnym i konta osobiste Microsoft**.
 6. Wybierz **Web** platformy w obszarze **identyfikator URI przekierowania** sekcji, a następnie ustaw wartość `https://localhost:44321/` (lokalizacja, do którego usługa Azure AD będzie zwracać tokeny).
-7. Po zakończeniu wybierz pozycję **Rejestruj**. Na stronie **Przegląd** aplikacji zanotuj wartość **Identyfikator aplikacji (klienta)**.
+7. Po zakończeniu wybierz pozycję **Rejestruj**. Na stronie **Przegląd** aplikacji zanotuj wartość **Identyfikator aplikacji (klienta)** .
 6. Wybierz **uwidaczniania interfejsu API**, zaktualizuj identyfikator URI Identyfikatora aplikacji, klikając **ustaw**. Wprowadź identyfikator specyficzny dla dzierżawy. Na przykład wprowadź wartość `https://contoso.onmicrosoft.com/TodoListService`.
 7. Zapisz konfigurację. Pozostaw portal otwarty, ponieważ wkrótce konieczne będzie również zarejestrowanie aplikacji klienckiej.
 
@@ -79,7 +79,7 @@ Aby zweryfikować przychodzące żądania i tokeny, należy skonfigurować aplik
 
 2. Dodaj klasę początkową OWIN do projektu TodoListService o nazwie `Startup.cs`.  Kliknij projekt prawym przyciskiem myszy, wybierz pozycję **Dodaj > Nowy element**, a następnie wyszukaj interfejs **OWIN**. Oprogramowanie pośredniczące OWIN wywoła metodę `Configuration(…)` podczas uruchamiania aplikacji.
 
-3. Zmień deklarację klasy na wartość `public partial class Startup`. Część tej klasy została już zaimplementowana dla Ciebie w innym pliku. W metodzie `Configuration(…)` utwórz wywołanie do metody `ConfgureAuth(…)`, aby skonfigurować uwierzytelnianie dla aplikacji internetowej.
+3. Zmień deklarację klasy na wartość `public partial class Startup`. Część tej klasy została już zaimplementowana dla Ciebie w innym pliku. W metodzie `Configuration(…)` utwórz wywołanie do metody `ConfigureAuth(…)`, aby skonfigurować uwierzytelnianie dla aplikacji internetowej.
 
     ```csharp
     public partial class Startup
@@ -161,6 +161,6 @@ Zanim usługa Lista zadań do wykonania zacznie działać, należy skonfigurowa�
 1. Jeśli jeszcze tego nie zrobiono, utwórz nowego użytkownika w ramach swojej dzierżawy z domeną *.onmicrosoft.com.
 1. Zaloguj się do klienta Lista zadań do wykonania za pomocą tego użytkownika, a następnie dodaj kilka zadań do listy zadań do wykonania użytkownika.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Na potrzeby referencyjne gotowy przykład (bez wartości konfiguracyjnych) jest dostępny w repozytorium [GitHub](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip). Możesz teraz przejść do innych scenariuszy dotyczących tożsamości.

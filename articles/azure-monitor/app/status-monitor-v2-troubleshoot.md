@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: f2115ee14b58030f695c9410870615f03d353cd2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df59766ce38ac81568570cd6544ee28808ff8249
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734965"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807025"
 ---
 # <a name="troubleshooting-status-monitor-v2"></a>Rozwiązywanie problemów dotyczących stan monitorowania v2
 
@@ -98,15 +98,16 @@ Jeśli moduł nie został załadowany do sesji programu PowerShell, można ręcz
 Uruchom polecenie `Get-Command -Module Az.ApplicationMonitor` można pobrać dostępnych poleceń:
 
 ```
-Command type     Name                                               Version    Source
+CommandType     Name                                               Version    Source
 -----------     ----                                               -------    ------
-Cmdlet          Disable-ApplicationInsightsMonitoring              0.2.1      Az.ApplicationMonitor
-Cmdlet          Disable-InstrumentationEngine                      0.2.1      Az.ApplicationMonitor
-Cmdlet          Enable-ApplicationInsightsMonitoring               0.2.1      Az.ApplicationMonitor
-Cmdlet          Enable-InstrumentationEngine                       0.2.1      Az.ApplicationMonitor
-Cmdlet          Get-ApplicationInsightsMonitoringConfig            0.2.1      Az.ApplicationMonitor
-Cmdlet          Get-ApplicationInsightsMonitoringStatus            0.2.1      Az.ApplicationMonitor
-Cmdlet          Set-ApplicationInsightsMonitoringConfig            0.2.1      Az.ApplicationMonitor
+Cmdlet          Disable-ApplicationInsightsMonitoring              0.4.0      Az.ApplicationMonitor
+Cmdlet          Disable-InstrumentationEngine                      0.4.0      Az.ApplicationMonitor
+Cmdlet          Enable-ApplicationInsightsMonitoring               0.4.0      Az.ApplicationMonitor
+Cmdlet          Enable-InstrumentationEngine                       0.4.0      Az.ApplicationMonitor
+Cmdlet          Get-ApplicationInsightsMonitoringConfig            0.4.0      Az.ApplicationMonitor
+Cmdlet          Get-ApplicationInsightsMonitoringStatus            0.4.0      Az.ApplicationMonitor
+Cmdlet          Set-ApplicationInsightsMonitoringConfig            0.4.0      Az.ApplicationMonitor
+Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az.ApplicationMonitor
 ```
 
 #### <a name="determine-the-current-version-of-the-status-monitor-v2-module"></a>Określić bieżącą wersję modułu Monitora stanu w wersji 2
@@ -152,7 +153,7 @@ Przegląd [dokumentacja interfejsu API](status-monitor-v2-api-get-status.md) szc
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Przegląd [dokumentacja interfejsu API](status-monitor-v2-overview.md#powershell-api-reference) Aby dowiedzieć się więcej na temat parametrów, które mogły zostać pominięte.
 - Jeśli trafisz na problem, który nie został tutaj wymieniony, możesz skontaktować się nam na [GitHub](https://github.com/Microsoft/ApplicationInsights-Home/issues).

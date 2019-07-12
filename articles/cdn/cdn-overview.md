@@ -7,7 +7,7 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: 866e0c30-1f33-43a5-91f0-d22f033b16c6
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 05/09/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 9692d495ada8a311fd5037a4f17f24ed6da9243a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6aaa98bea5e6cf1bdffc3dbe28e42e9545a626ea
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60627463"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593606"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Co to jest sieć dostarczania zawartości na platformie Azure?
 Sieć dostarczania zawartości (CDN, content delivery network) to rozproszona sieć serwerów, które pozwalają wydajnie dostarczać użytkownikom zawartość internetową. Sieci CDN umożliwiają przechowywanie buforowanej zawartości na serwerach brzegowych w lokalizacjach punktu obecności (POP, Point-of-Presence), które znajdują się blisko użytkowników końcowych, co pozwala zminimalizować opóźnienie. 
@@ -38,7 +38,7 @@ Aby wyświetlić listę bieżących lokalizacji węzłów usługi CDN, zobacz [L
 ## <a name="how-it-works"></a>Jak to działa
 ![Omówienie usługi CDN](./media/cdn-overview/cdn-overview.png)
 
-1. Użytkownik (Alice) żąda pliku (nazywanego również zasobem) przy użyciu adresu URL ze specjalną nazwą domeny, taką jak _&lt;nazwa punktu końcowego&gt;_.azureedge.net. Ta nazwa może być nazwą hosta punktu końcowego lub domeną niestandardową. System DNS kieruje żądanie do lokalizacji POP o najwyższej wydajności — zwykle jest to punkt POP znajdujący się geograficznie najbliżej użytkownika.
+1. Użytkownik (Alice) żąda pliku (nazywanego również zasobem) przy użyciu adresu URL ze specjalną nazwą domeny, taką jak _&lt;nazwa punktu końcowego&gt;_ .azureedge.net. Ta nazwa może być nazwą hosta punktu końcowego lub domeną niestandardową. System DNS kieruje żądanie do lokalizacji POP o najwyższej wydajności — zwykle jest to punkt POP znajdujący się geograficznie najbliżej użytkownika.
     
 2. Jeśli żaden serwer brzegowy w punkcie POP nie ma pliku w swojej pamięci podręcznej, punkt POP żąda pliku z serwera pochodzenia. Serwerem pochodzenia może być aplikacja internetowa platformy Azure, usługa Azure Cloud Service, konto usługi Azure Storage lub dowolny publicznie dostępny serwer internetowy.
    
@@ -73,7 +73,7 @@ Usługa Azure CDN oferuje następujące kluczowe funkcje:
 
 Aby uzyskać pełną listę funkcji obsługiwanych przez każdy produkt Azure CDN, zobacz [Porównanie funkcji produktów Azure CDN](cdn-features.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - Aby zacząć korzystać z usługi CDN, zobacz [Tworzenie punktu końcowego i profilu usługi Azure CDN](cdn-create-new-endpoint.md).
 - Zarządzaj punktami końcowymi usługi CDN za pomocą witryny [Microsoft Azure Portal](https://portal.azure.com) lub programu [PowerShell](cdn-manage-powershell.md).
 - Dowiedz się, jak zautomatyzować usługę Azure CDN przy użyciu platformy [.NET](cdn-app-dev-net.md) lub [Node.js](cdn-app-dev-node.md).

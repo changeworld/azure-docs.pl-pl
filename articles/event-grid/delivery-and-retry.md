@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: spelluru
-ms.openlocfilehash: b4bfdd3e9cdf99314dc55907ba163adc6cd39423
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0945b06f78ac34500f0b16a4a419cff12d1a4734
+ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952888"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67812923"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Dostarczanie komunikatów siatki zdarzeń, a następnie spróbuj ponownie
 
@@ -43,6 +43,12 @@ Deterministyczne zachowania, ustaw czas zdarzenia na żywo i w próby max dostar
 
 Domyślnie usługi Event Grid wygasa wszystkie zdarzenia, które nie są dostarczane w ciągu 24 godzin. Możesz [Dostosuj zasady ponawiania](manage-event-delivery.md) podczas tworzenia subskrypcji zdarzeń. Podaj maksymalną liczbę prób dostarczenia (wartość domyślna to 30) i zdarzenia time to live (wartość domyślna to 1440 minut).
 
+## <a name="delayed-delivery"></a>Dostarczenie opóźnione
+
+Jako punkt końcowy napotka błędy dostarczania, usługa Event Grid rozpocznie się opóźnienia, dostarczanie i ponawianie prób, zdarzeń do określonego punktu końcowego. Na przykład, jeśli pierwszych dziesięciu zdarzeń publikowanych do punktu końcowego kończą się niepowodzeniem, usługi Event Grid będzie założono, że punkt końcowy ma problemy i zostanie opóźnione, wszystkie kolejne próby *i nowe* dostaw przez pewien czas — w niektórych przypadkach do kilku godzin .
+
+Funkcjonalności opóźnione dostawy ma na celu ochronę punktów końcowych w złej kondycji, a także system usługi Event Grid. Bez wycofywania i Opóźnienie dostarczania do punktów końcowych w złej kondycji zasady ponawiania usługi Event Grid i możliwości woluminu może łatwo przeciążyć systemu.
+
 ## <a name="dead-letter-events"></a>Zdarzenia utraconych wiadomości
 
 Kiedy usługi Event Grid może dostarczyć zdarzenia, może wysłać zdarzenia niedostarczone do konta magazynu. Ten proces jest nazywany Obsługa utraconych komunikatów. Domyślnie obsługa utraconych komunikatów nie Włącz usługi Event Grid. Aby ją włączyć, należy określić konto magazynu do przechowywania zdarzeń niedostarczone podczas tworzenia subskrypcji zdarzeń. Możesz pobierać zdarzenia z tego konta magazynu, aby rozwiązać dostaw.
@@ -63,25 +69,29 @@ Usługa Event Grid używa kody odpowiedzi HTTP do otrzymanie zdarzenia.
 
 ### <a name="success-codes"></a>Kody operacji zakończonych powodzeniem
 
-Następujące kody odpowiedzi HTTP wskazują, że zdarzenia został pomyślnie dostarczony do usługi elementu webhook. Usługa Event Grid uwzględnia dostarczania ukończone.
+Uwzględnia usługi Event Grid **tylko** następujące kody odpowiedzi HTTP jako pomyślnych dostarczeń. Wszystkie inne stan kody są uważane za dostarczenie nie powiodło się i zostanie ponowiona lub deadlettered zgodnie z potrzebami. Po otrzymaniu kod stanu powodzenia, pełną dostarczania uwzględnia usługi Event Grid.
 
 - 200 OK
+- 201 utworzono
 - 202 zaakceptowano
+- 203 Informacje nieautorytatywne
+- 204 No Content
 
 ### <a name="failure-codes"></a>Kody błędów
 
-Następujące kody odpowiedzi HTTP wskazują, że próby dostarczenia zdarzeń nie powiodło się.
+Wszystkie kody w zestawie powyżej (200 204) nie są traktowane jako błędy i zostanie ponowiona. Niektóre z nich mają zasady ponawiania określone, powiązane z nimi opisane poniżej, wykonaj pozostałe wykładniczego wycofywania modelu standardowego. Należy pamiętać, że ze względu na charakter wysoce równoległe architektury usługi Event Grid, sposób ponawiania jest niedeterministyczny. 
 
-- 400 Niewłaściwe żądanie
-- 401 Brak autoryzacji
-- 404 — Nie odnaleziono
-- 408 Limit czasu żądania
-- Jednostka 413 żądania jest zbyt duża
-- Identyfikator URI 414 za długa
-- 429 zbyt wiele żądań
-- 500 Wewnętrzny błąd serwera
-- 503 — usługa niedostępna
-- 504 — limit czasu bramy
+| Kod stanu | Zachowanie przy ponowieniu próby |
+| ------------|----------------|
+| 400 Niewłaściwe żądanie | Spróbuj ponownie za 5 minut lub dłużej (utraconych natychmiast, jeśli Instalator utraconych wiadomości) |
+| 401 Brak autoryzacji | Spróbuj ponownie za 5 minut lub dłużej |
+| 403 Zabroniony | Spróbuj ponownie za 5 minut lub dłużej |
+| 404 — Nie odnaleziono | Spróbuj ponownie za 5 minut lub dłużej |
+| 408 — limit czasu żądania | Ponów próbę po 2 minuty lub więcej |
+| Jednostka 413 żądania jest zbyt duża | Ponów próbę po 10 sekund lub więcej (utraconych natychmiast, jeśli Instalator utraconych wiadomości) |
+| 503 — usługa niedostępna | Po 30 sekundach ponawiania próby lub więcej |
+| Wszystkie inne | Ponów próbę po 10 sekund lub więcej |
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

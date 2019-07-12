@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f61396d8fb0f02fe77f5ee35560f45a0c4698a10
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 87de721f596eb4148939c00bc4b4db270a87c24e
+ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65850765"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67724106"
 ---
 # <a name="change-the-profile-information-for-your-azure-account"></a>Zmień informacje o profilu dla Twojego konta platformy Azure
 
@@ -87,14 +87,20 @@ Aby zrezygnować z odbierające marketingowych wiadomości e-mail:
 1. Przejdź do [formularz żądania](https://account.microsoft.com/profile/permissions-link-request) można przesłać żądania przy użyciu adresu profilu poczty e-mail. Zostanie wyświetlony link pocztą e-mail, aby zaktualizować swoje preferencje.
 2. Wybierz łącze, aby otworzyć **zarządzać uprawnieniami komunikacji** strony. Ta strona zawiera typy informacji marketingowych otrzymywanych adres e-mail jest dostosowany do. Wyczyść wszystkie tematy, które chcesz zrezygnować z, a następnie wybierz **Zapisz**.
 
-
 ![Przykład strony zarządzania uprawnieniami komunikacji](./media/billing-how-to-change-azure-account-profile/manage-communication-permissions.png)
 
 Możesz zrezygnować z wiadomości marketingowe utworzone, możesz nadal otrzymywać powiadomień dotyczących usług, w oparciu o konto.
+
+## <a name="change-the-subscription-name"></a>Zmień nazwę subskrypcji
+
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com), wybierz opcję **subskrypcji** w okienku po lewej stronie, a następnie wybierz subskrypcję, dla której chcesz zmienić.
+1. Wybierz **Przegląd**, a następnie wybierz pozycję **Zmień nazwę** na pasku poleceń.
+    ![Przykład zmiany nazwy subskrypcji platformy Azure](./media/billing-how-to-change-azure-account-profile/rename-sub.png)
+1. Po zmianie nazwy, wybierz **Zapisz**.
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
 Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - [Wyświetl konta rozliczeniowego](billing-view-all-accounts.md)

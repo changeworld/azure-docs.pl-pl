@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
-ms.author: annahar
-ms.openlocfilehash: b1873b770a6b4280b7098c68ecb75cc1411fe453
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: anavin
+ms.openlocfilehash: fcb9cc817128bce9498312d3fb016761b6382634
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60746992"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612751"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Przypisywanie wielu adresów IP do maszyn wirtualnych przy użyciu witryny Azure portal
 
@@ -55,7 +55,7 @@ Wykonaj kroki opisane w sekcji, które należy wykonać, na podstawie typu adres
 Wykonaj poniższe kroki, aby dodać nowego prywatnego adresu IP:
 
 1. Wykonaj kroki [podstawowe kroki](#coreadd) dalszej części tego artykułu.
-2. Kliknij pozycję **Add** (Dodaj). W **konfiguracji Dodaj adres IP** okienko zostanie wyświetlone, Utwórz konfigurację adresu IP o nazwie *IPConfig 4* z *10.0.0.7* jako *statyczne* prywatny adres IP adres, a następnie kliknij przycisk **OK**.
+2. Kliknij przycisk **Dodaj**. W **konfiguracji Dodaj adres IP** okienko zostanie wyświetlone, Utwórz konfigurację adresu IP o nazwie *IPConfig 4* z *10.0.0.7* jako *statyczne* prywatny adres IP adres, a następnie kliknij przycisk **OK**.
 
     > [!NOTE]
     > Podczas dodawania statyczny adres IP, musisz określić adres nieużywany, prawidłowy w podsieci, z którą jest połączona karta sieciowa. Jeśli wybrany adres nie jest dostępna, portalu jest wyświetlany znak X dla adresu IP i musisz wybrać inne konto.
@@ -87,7 +87,7 @@ Publiczny adres IP to jedno z ustawień zasobu publicznego adresu IP. Jeśli mas
 #### <a name="associate-the-public-ip-address-resource-to-a-new-ip-configuration"></a>Skojarz zasób publicznego adresu IP do nowej konfiguracji adresu IP
 
 1. Wykonaj kroki [podstawowe kroki](#coreadd) dalszej części tego artykułu.
-2. Kliknij pozycję **Add** (Dodaj). W **konfiguracji Dodaj adres IP** okienko zostanie wyświetlone, Utwórz konfigurację adresu IP o nazwie *IPConfig 4*. Włącz **publiczny adres IP** i wybierz istniejący, dostępne zasób publicznego adresu IP z **wybierz publiczny adres IP** wyświetlonym okienku.
+2. Kliknij przycisk **Dodaj**. W **konfiguracji Dodaj adres IP** okienko zostanie wyświetlone, Utwórz konfigurację adresu IP o nazwie *IPConfig 4*. Włącz **publiczny adres IP** i wybierz istniejący, dostępne zasób publicznego adresu IP z **wybierz publiczny adres IP** wyświetlonym okienku.
 
     Po wybraniu zasobu publicznego adresu IP, kliknij przycisk **OK** i zamyka okienka. Jeśli nie masz istniejącego publicznego adresu IP, możesz utworzyć jeden, wykonując kroki opisane w [Utwórz zasób publicznego adresu IP](#create-public-ip) dalszej części tego artykułu. 
 

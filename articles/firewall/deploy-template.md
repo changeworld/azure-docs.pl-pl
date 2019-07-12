@@ -3,21 +3,20 @@ title: Wdrażanie zapory platformy Azure przy użyciu szablonu
 description: Wdrażanie zapory platformy Azure przy użyciu szablonu
 services: firewall
 author: vhorne
-manager: jpconnock
 ms.service: firewall
 ms.topic: article
-ms.date: 12/01/2018
+ms.date: 7/9/2018
 ms.author: victorh
-ms.openlocfilehash: e0fbec8b22993345114d8d6642e42095191d0b37
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b39174152e427e408e7dfbbc353baf5f96ec7c01
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66115687"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657088"
 ---
 # <a name="deploy-azure-firewall-using-a-template"></a>Wdrażanie zapory platformy Azure przy użyciu szablonu
 
-[Szablonu konfiguracji piaskownicy tworzenie AzureFirewall](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox) tworzy środowisko testowe sieci za pomocą zapory. Sieci ma jednej sieci wirtualnej (VNet) z trzema podsieciami: *AzureFirewallSubnet*, *ServersSubnet*, i *JumpboxSubnet*. *ServersSubnet* i *JumpboxSubnet* każda podsieć ma jednej, dwóch podstawowej maszyny wirtualnej systemu Windows Server.
+[Szablonu konfiguracji piaskownicy tworzenie AzureFirewall](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-with-zones-sandbox) tworzy środowisko testowe sieci za pomocą zapory. Sieci ma jednej sieci wirtualnej (VNet) z trzema podsieciami: *AzureFirewallSubnet*, *ServersSubnet*, i *JumpboxSubnet*. *ServersSubnet* i *JumpboxSubnet* każda podsieć ma jednej, dwóch podstawowej maszyny wirtualnej systemu Windows Server.
 
 Zapora jest w *AzureFirewallSubnet* podsieci, a kolekcja reguł aplikacji przy użyciu jednej reguły, które zezwalają na dostęp do *www.microsoft.com*.
 
@@ -34,7 +33,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 **Aby zainstalować i wdrożyć zapory platformy Azure przy użyciu szablonu:**
 
-1. Uzyskiwać dostęp do szablonu w [ https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox).
+1. Uzyskiwać dostęp do szablonu w [ https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-with-zones-sandbox ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-with-zones-sandbox).
    
 1. Przeczytaj wprowadzenie, a gdy wszystko będzie gotowe do wdrożenia, wybierz **Wdróż na platformie Azure**.
    
@@ -66,7 +65,7 @@ Remove-AzResourceGroup -Name MyResourceGroup
 ```
 Nie usuwaj grupy zasobów i zapory, jeśli planowane jest przejście do zapory samouczek monitorowania. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Następnie można monitorować dzienniki zapory platformy Azure:
 

@@ -3,15 +3,15 @@ title: Architektura łączności w usłudze Azure Database for PostgreSQL
 description: W tym artykule opisano architekturę łączności dla usługi Azure Database for postgresql w warstwie serwera.
 author: kummanish
 ms.author: manishku
-ms.service: PostgreSQL
+ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: 73c23c471cb12ca3a3a7df4380779b464b8d86d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0d91458c555c819c4bcf97215a712719ebc5eb71
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735739"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67588954"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Architektura łączności w usłudze Azure Database for PostgreSQL
 W tym artykule opisano usługi Azure Database for postgresql — architektura łączności również, jak ruch będzie kierowany do usługi Azure Database for postgresql w warstwie wystąpienie bazy danych z klientami zarówno wewnątrz jednej, jak i spoza platformy Azure.
@@ -64,7 +64,7 @@ W poniższej tabeli wymieniono podstawowe i pomocnicze adresy IP usługi Azure D
 > [!NOTE]
 > *Wschodnie stany USA 2* ma również trzeciorzędny adres IP `52.167.104.0`.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Tworzenie i zarządzanie nimi — Azure Database for postgresql w warstwie reguł zapory przy użyciu witryny Azure portal](./howto-manage-firewall-using-portal.md)
 * [Tworzenie i zarządzanie nimi — Azure Database for postgresql w warstwie reguł zapory przy użyciu wiersza polecenia platformy Azure](./howto-manage-firewall-using-cli.md)

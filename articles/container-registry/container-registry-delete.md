@@ -7,127 +7,26 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/17/2019
 ms.author: danlep
-ms.openlocfilehash: c544c8ed6fbfcb859ff1ff01e7bedf46cfb21418
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: c603afa61499a615a0882cef06f14fd3d080a9ef
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295134"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797769"
 ---
 # <a name="delete-container-images-in-azure-container-registry"></a>Usuwanie obrazów kontenerów w usłudze Azure Container Registry
 
 Aby zachować rozmiaru usługi Azure container registry, należy okresowo usuwać danych starych obrazów. Podczas gdy niektóre obrazy kontenera wdrażane w środowisku produkcyjnym mogą wymagać przechowywania długoterminowego przechowywania, inne zazwyczaj można usunąć szybciej. Na przykład w automatycznej kompilacji i w scenariuszu testu rejestru można szybko wypełnić przy użyciu obrazów, które nigdy nie mogą być wdrażane i mogą być czyszczone wkrótce po ukończeniu przebiegu kompilacji i testowania.
 
-Ponieważ dane obrazów można usunąć na kilka różnych sposobów, jest ważne, aby zrozumieć, jak każda operacja usuwania wpływa na użycie magazynu. W tym artykule najpierw przedstawiono składniki, do rejestru i kontenera obrazów platformy Docker, a następnie obejmuje kilka metod związanych z usuwaniem danych obrazu. Przykładowe skrypty znajdują się w celu automatyzacji operacji usuwania.
-
-## <a name="registry"></a>Rejestr
-
-Kontener *rejestru* to usługa, która przechowuje i rozpowszechnianie obrazów kontenerów. Usługa docker Hub jest publicznego rejestru kontenerów platformy Docker, a usługi Azure Container Registry zapewnia Docker prywatnych rejestrów kontenerów na platformie Azure.
-
-## <a name="repository"></a>Repozytorium
-
-Rejestry kontenerów, zarządzanie *repozytoriów*, kolekcje obrazy kontenera przy użyciu tej samej nazwie, ale różnych znaczników. Na przykład następujące trzy obrazy znajdują się w repozytorium "acr-helloworld":
-
-```
-acr-helloworld:latest
-acr-helloworld:v1
-acr-helloworld:v2
-```
-
-Nazwy repozytorium mogą również zawierać [przestrzenie nazw](container-registry-best-practices.md#repository-namespaces). Przestrzenie nazw umożliwiają grupę obrazów przy użyciu nazwy do przodu repozytorium rozdzielonych ukośnikiem, na przykład:
-
-```
-marketing/campaign10-18/web:v2
-marketing/campaign10-18/api:v3
-marketing/campaign10-18/email-sender:v2
-product-returns/web-submission:20180604
-product-returns/legacy-integrator:20180715
-```
-
-## <a name="components-of-an-image"></a>Składniki obrazu
-
-Obraz kontenera w rejestrze jest skojarzony z co najmniej jednego znacznika, ma jedną lub więcej warstw i jest identyfikowany przez manifestu. Zrozumienie, jak tych składników powiązane są ze sobą może pomóc określić najlepszą metodę dla zwalnianie miejsca w rejestrze.
-
-### <a name="tag"></a>Tag
-
-Obraz *tag* określa jego wersję. Pojedynczy obraz w repozytorium można przypisać jeden lub wiele tagów i mogą być również "nieoznakowany". Oznacza to możesz usunąć wszystkie tagi z obrazu, podczas gdy dane obrazu (warstwy) pozostaje w rejestrze.
-
-Repozytorium (lub repozytorium i przestrzeni nazw) oraz tag Określa nazwę obrazu. Można wypychanie i ściąganie obrazu, określając jej nazwę w operacji wypychania i ściągania.
-
-W rejestrze prywatnym, takich jak usługa Azure Container Registry nazwa obrazu zawiera w pełni kwalifikowaną nazwę hosta rejestru. Host rejestr obrazów ACR jest w formacie *acrname.azurecr.io* (tylko małe litery). Na przykład będzie pełna nazwa pierwszy obraz w przestrzeni nazw "marketing" w poprzedniej sekcji:
-
-```
-myregistry.azurecr.io/marketing/campaign10-18/web:v2
-```
-
-Do dyskusji na temat obrazów, tagowanie najlepszych rozwiązań, zobacz [znakowanie platformy Docker: Najlepsze rozwiązania dotyczące obrazów platformy docker przechowywanie wersji i tagowania][tagging-best-practices] wpis w blogu w witrynie MSDN.
-
-### <a name="layer"></a>Warstwa
-
-Obrazy składają się z co najmniej jeden *warstwy*, odpowiadający każdego wiersza w pliku Dockerfile, który definiuje obraz. Obrazów w rejestrze Udostępnij wspólnej warstwy, zwiększając wydajność magazynu. Na przykład kilka obrazów w różnych repozytoriach może współużytkować tę samą warstwę podstawowa Alpine Linux, ale tylko jedną kopię tej warstwy są przechowywane w rejestrze.
-
-Udostępnianie warstwy optymalizuje też dystrybucji warstwy do węzłów przy użyciu wielu obrazów udostępnianie wspólnej warstwy. Na przykład jeśli obraz już w węźle zawiera warstwę Alpine Linux jako jego podstawowy, kolejne ściąganie inny obraz, który odwołuje się do tej samej warstwie nie przenieść warstwę do węzła. Zamiast tego odwołuje się warstwy już istniejących w węźle.
-
-### <a name="manifest"></a>Manifest
-
-Każdy obraz kontenera, wypychany do rejestru kontenera jest skojarzony z *manifestu*. Manifest, generowane przez rejestr obrazu zostanie przypisany, unikatowo identyfikuje obraz i określa jej warstwy. Możesz wyświetlić listę manifesty dla repozytorium przy użyciu polecenia interfejsu wiersza polecenia Azure [az acr repozytorium show manifesty][az-acr-repository-show-manifests]:
-
-```azurecli
-az acr repository show-manifests --name <acrName> --repository <repositoryName>
-```
-
-Na przykład lista manifest skróty służące do repozytorium "acr-helloworld":
-
-```console
-$ az acr repository show-manifests --name myregistry --repository acr-helloworld
-[
-  {
-    "digest": "sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108",
-    "tags": [
-      "latest",
-      "v3"
-    ],
-    "timestamp": "2018-07-12T15:52:00.2075864Z"
-  },
-  {
-    "digest": "sha256:3168a21b98836dda7eb7a846b3d735286e09a32b0aa2401773da518e7eba3b57",
-    "tags": [
-      "v2"
-    ],
-    "timestamp": "2018-07-12T15:50:53.5372468Z"
-  },
-  {
-    "digest": "sha256:7ca0e0ae50c95155dbb0e380f37d7471e98d2232ed9e31eece9f9fb9078f2728",
-    "tags": [
-      "v1"
-    ],
-    "timestamp": "2018-07-11T21:38:35.9170967Z"
-  }
-]
-```
-
-### <a name="manifest-digest"></a>Podsumowanie manifestu
-
-Manifesty są identyfikowane przez unikatową Skrót SHA-256, lub *skrótu manifestu*. Każdy obraz — czy oznakowane lub nie — jest identyfikowane przez jego skrót. Wartość skrótu jest unikatowa, nawet jeśli dane warstw obrazów jest taka sama jak w przypadku innego obrazu. Ten mechanizm jest o tym, co pozwala na wielokrotne wypychanie identycznie oznakowane obrazów do rejestru. Na przykład możesz wielokrotnie wypchnąć `myimage:latest` do rejestru bez błędów, ponieważ każdy obraz jest identyfikowane przez jego unikatowy skrót.
-
-Można ściągnąć obraz z rejestru, określając jego skrót w operacji ściągania. Niektóre systemy może być skonfigurowany do ściągnięcia przez szyfrowane, ponieważ gwarantuje to wersja obrazu są pobierane, nawet wtedy, gdy identycznie TIFF jest następnie wypchnięte do rejestru.
-
-Na przykład ściąganie obrazów z repozytorium "acr-helloworld" przez skrót manifestu:
-
-```console
-$ docker pull myregistry.azurecr.io/acr-helloworld@sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108
-```
-
-> [!IMPORTANT]
-> W przypadku modyfikacji obrazów z tagami identyczny wielokrotnie wypchnięcia, możesz utworzyć oddzielone obrazy — obrazy, które są nieoznakowany, ale nadal zużywają miejsca w rejestrze. Nieoznakowany obrazy nie są wyświetlane w interfejsie wiersza polecenia platformy Azure lub w witrynie Azure portal po liście lub wyświetlanie obrazów według tagów. Jednak ich warstwy nadal istnieje i zajmować dużo miejsca w rejestrze. [Usunąć zdjęcia bez znaczników](#delete-untagged-images) dalszej części tego artykułu w tym artykule omówiono zwalnianie miejsca nieoznakowany obrazów.
-
-## <a name="delete-image-data"></a>Usuń obraz danych
-
-Dane obrazów można usunąć z rejestru kontenerów na kilka sposobów:
+Ponieważ dane obrazów można usunąć na kilka różnych sposobów, jest ważne, aby zrozumieć, jak każda operacja usuwania wpływa na użycie magazynu. W tym artykule opisano kilka metod związanych z usuwaniem danych obrazu:
 
 * Usuń [repozytorium](#delete-repository): Usuwa wszystkie obrazy i wszystkie warstwy unikatowy w repozytorium.
 * Usuń, [tag](#delete-by-tag): Usuwa obrazu, tag, wszystkie warstwy unikatowy odwołuje się obraz i wszystkie inne znaczniki skojarzone z obrazem.
 * Usuń, [skrótu manifestu](#delete-by-manifest-digest): Usuwa obraz, wszystkie warstwy unikatowy odwołuje się obraz i wszystkie znaczniki skojarzone z obrazem.
+
+Przykładowe skrypty znajdują się w celu automatyzacji operacji usuwania.
+
+Aby zapoznać się z wprowadzeniem do tych pojęć, zobacz [o rejestrów, repozytoriów i obrazów](container-registry-concepts.md).
 
 ## <a name="delete-repository"></a>Usuwanie repozytorium
 
@@ -154,11 +53,11 @@ Are you sure you want to continue? (y/n): y
 ```
 
 > [!TIP]
-> Usuwanie *według tagów* nie powinny być mylone z usuwanie tagu (zdejmowanie). Można usunąć tagu za pomocą polecenia interfejsu wiersza polecenia Azure [usunąć oznakowanie az acr repozytorium][az-acr-repository-untag]. Miejsce nie jest zwalniana, gdy oznaczenie obrazu, ponieważ jego [manifestu](#manifest) i dane warstw w rejestrze. Odwołanie tag, sama jest usuwany.
+> Usuwanie *według tagów* nie powinny być mylone z usuwanie tagu (zdejmowanie). Można usunąć tagu za pomocą polecenia interfejsu wiersza polecenia Azure [usunąć oznakowanie az acr repozytorium][az-acr-repository-untag]. Miejsce nie jest zwalniana, gdy oznaczenie obrazu, ponieważ jego [manifestu](container-registry-concepts.md#manifest) i dane warstw w rejestrze. Odwołanie tag, sama jest usuwany.
 
 ## <a name="delete-by-manifest-digest"></a>Usuń, szyfrowanego manifestu
 
-A [skrótu manifestu](#manifest-digest) może być skojarzony z jednym, none lub wiele tagów. Po usunięciu przez szyfrowane są usuwane wszystkie tagi, które odwołuje się do manifestu, zgodnie z warstwy danych dla dowolnej warstwy, które są unikatowe dla obrazu. Udostępniane warstwy, której dane nie są usuwane.
+A [skrótu manifestu](container-registry-concepts.md#manifest-digest) może być skojarzony z jednym, none lub wiele tagów. Po usunięciu przez szyfrowane są usuwane wszystkie tagi, które odwołuje się do manifestu, zgodnie z warstwy danych dla dowolnej warstwy, które są unikatowe dla obrazu. Udostępniane warstwy, której dane nie są usuwane.
 
 Aby usunąć skrót, pierwszej listy manifest skróty służące do repozytorium zawierające obrazy, które chcesz usunąć. Na przykład:
 
@@ -248,7 +147,7 @@ fi
 
 ## <a name="delete-untagged-images"></a>Usuwanie obrazów bez znaczników
 
-Jak wspomniano w [skrótu manifestu](#manifest-digest) sekcji wypychanie zmodyfikowany obraz za pomocą istniejącego tagu **untags** poprzednio włożonego obraz wynikowy obraz oddzielone (lub "delegujące"). Obraz poprzednio włożonego manifestu — i jego danych warstwy — pozostaje w rejestrze. Należy wziąć pod uwagę następująca sekwencja zdarzeń:
+Jak wspomniano w [skrótu manifestu](container-registry-concepts.md#manifest-digest) sekcji wypychanie zmodyfikowany obraz za pomocą istniejącego tagu **untags** poprzednio włożonego obraz wynikowy obraz oddzielone (lub "delegujące"). Obraz poprzednio włożonego manifestu — i jego danych warstwy — pozostaje w rejestrze. Należy wziąć pod uwagę następująca sekwencja zdarzeń:
 
 1. Wypchnij obraz *acr-helloworld* z tagiem **najnowsze**: `docker push myregistry.azurecr.io/acr-helloworld:latest`
 1. Sprawdź manifesty dla repozytorium *acr-helloworld*:

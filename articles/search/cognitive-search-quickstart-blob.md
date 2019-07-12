@@ -6,15 +6,15 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 07/09/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: cb029530d2c6cdac82fd0d257e10717386eebf0e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 8f3a1dadaddb423a83f4c3691a4b5747a5196d2a
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65022108"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795329"
 ---
 # <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-in-azure-search"></a>Szybki start: Tworzenie potoku indeksowania sztucznej Inteligencji w usłudze Azure Search przy użyciu umiejętności kognitywnych
 
@@ -63,7 +63,7 @@ Wróć do strony pulpitu nawigacyjnego usługi Azure Search i na pasku poleceń 
 
   ![Polecenie importu danych](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
 
-### <a name="step-1-create-a-data-source"></a>Krok 1: Tworzenie źródła danych
+### <a name="step-1-create-a-data-source"></a>Krok 1: Utwórz źródło danych
 
 W obszarze **Nawiązywanie połączenia z danymi** wybierz opcję **Magazyn obiektów blob Azure**, a następnie wybierz konto i utworzony kontener. Podaj nazwę źródła danych i użyj wartości domyślnych dla pozostałych ustawień. 
 
@@ -166,11 +166,13 @@ Innym ważnym pojęciem jest to, że umiejętności działają na polach danych 
 
 Wiesz już także, że wyświetlanie wyników jest osiągane przez wykonywanie zapytań względem indeksu. W rezultacie usługa Azure Search zapewnia indeks wyszukiwania, w którym można wykonywać zapytania przy użyciu [prostej](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) lub [w pełni rozszerzonej składni zapytania](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search). Indeks zawierający wzbogacone pola jest taki sam, jak każdy inny. Jeśli chcesz uwzględnić standardowe lub [niestandardowe analizatory](search-analyzers.md), [ocenianie profili](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [synonimy](search-synonyms.md), [filtry aspektowe](search-filters-facets.md), wyszukiwanie geograficzne lub dowolną inną funkcję usługi Azure Search, na pewno możesz to zrobić.
 
-## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+## <a name="clean-up"></a>Czyszczenie
 
-Po przeprowadzeniu eksploracji najszybszym sposobem wyczyszczenia środowiska jest usunięcie grupy zasobów zawierającej usługę Azure Search i usługę Azure Blob Service.  
+Podczas pracy w ramach własnej subskrypcji jest dobrym pomysłem na końcu projektu ustalić, czy nadal potrzebujesz zasoby utworzone. Po lewej stronie umożliwia uruchamianie zasobów kosztów pieniądze. Możesz usunąć zasoby pojedynczo lub usunąć grupę zasobów, aby usunąć cały zestaw zasobów.
 
-Zakładając, że obie te usługi są umieszczone w tej samej grupie, usuń teraz grupę zasobów, aby trwale usunąć wszystkie jej elementy, w tym usługi i przechowywaną zawartość utworzoną na potrzeby tego ćwiczenia. W portalu nazwa grupy zasobów znajduje się na stronie Przegląd każdej usługi.
+Możesz znaleźć i zarządzanie zasobami w portalu przy użyciu **wszystkie zasoby** lub **grup zasobów** łącze w okienku nawigacji po lewej stronie.
+
+Jeśli używasz bezpłatnej usługi, należy pamiętać, że są ograniczone do trzech indeksów, indeksatorów i źródeł danych. Możesz usunąć poszczególne elementy w portalu w celu pozostania w ramach limitu. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

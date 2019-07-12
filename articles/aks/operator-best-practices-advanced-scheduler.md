@@ -2,17 +2,17 @@
 title: Operator najlepsze rozwiązania — zaawansowane funkcje usługi scheduler w usłudze Azure Kubernetes usługi (AKS)
 description: Dowiedz się, operator klastra najlepsze rozwiązania dotyczące używania harmonogramu zaawansowane funkcje, takie jak nasłonecznieniem i tolerations, selektory węzła i koligacji lub koligację między pod i konfiguracji zapobiegającej koligacji w usłudze Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: iainfou
-ms.openlocfilehash: 5affcd5ee1e51ac754d8a9bb81560a6cc3626860
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mlearned
+ms.openlocfilehash: 4caa4219d2bf7558dbdf71e92e4993722c6e8f6a
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055615"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614871"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące harmonogramu zaawansowanych funkcji w usłudze Azure Kubernetes Service (AKS)
 
@@ -181,7 +181,7 @@ Dobrym przykładem jest aplikacja sieci web, która również korzysta z usługi
 
 W tym przykładzie jest bardziej złożonym wdrożeniu, niż w przypadku selektorów węzła lub koligacji węzłów. Umożliwia wdrożenie kontrolę nad jak Kubernetes planuje zasobników w węzłach i logicznie można izolować zasoby. Aby uzyskać pełny przykład tej aplikacji sieci web za pomocą usługi Azure Cache, na przykład pamięci podręcznej Redis, zobacz [kolokacja zasobników, w tym samym węźle][k8s-pod-affinity].
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Ten artykuł koncentruje się na zaawansowane funkcje usługi scheduler Kubernetes. Aby uzyskać więcej informacji na temat operacji klastra w usłudze AKS zobacz poniższe najlepsze rozwiązania:
 

@@ -5,45 +5,23 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/24/2018
+ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7a37c9d51541c279a6b820641b6eb46175aa8413
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 6cbda7d9be1617617e173c68c3d2a4a95c255ae0
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183202"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673449"
 ---
-# <a name="azure-premium-storage-design-for-high-performance"></a>Usługi Azure premium storage: Projektowanie pod kątem wysokiej wydajności
-
-Ten artykuł zawiera wskazówki dotyczące tworzenia aplikacji o wysokiej wydajności przy użyciu usługi Azure Premium Storage. Można użyć w instrukcjach podanych w tym dokumencie, w połączeniu z najlepsze rozwiązania w zakresie wydajności mające zastosowanie do technologii wykorzystywanych przez aplikację. Aby zilustrować wytycznych, użyliśmy SQL Server uruchomiony na usługę Premium Storage, na przykład w tym dokumencie.
-
-Gdy zajmujemy się scenariuszy wydajności dla warstwy magazynu, w tym artykule, należy zoptymalizować warstwy aplikacji. Na przykład jeśli hostujesz farmy programu SharePoint w usłudze Azure Premium Storage umożliwia przykładów programu SQL Server z tego artykułu zoptymalizować serwera bazy danych. Ponadto można zoptymalizować, serwer sieci Web farmy programu SharePoint i serwera aplikacji, aby uzyskać większość wydajność.
-
-Ten artykuł pomoże odpowiedzi następujące często zadawane pytania na temat optymalizowania wydajności aplikacji w magazynie Azure Premium Storage
-
-* Jak zmierzyć wydajność aplikacji?  
-* Dlaczego użytkownik nie ma oczekiwanego o wysokiej wydajności?  
-* Jakie czynniki mają wpływ na wydajność aplikacji w magazynie Premium Storage?  
-* Jak te czynniki mają wpływ wydajność aplikacji w magazynie Premium Storage?  
-* Jak można zoptymalizować operacje We/Wy, przepustowości i opóźnienia  
-
-Te wytyczne zostały zamieszczone specjalnie dla usługi Premium Storage, ponieważ obciążeń działających na usługę Premium Storage o wysokiej wydajności poufnych. Przykłady zostały zamieszczone, gdzie jest to odpowiednie. Można również zastosować niektóre z poniższych wskazówek do aplikacji działających na maszynach wirtualnych IaaS z dysków magazynu w warstwie standardowa.
-
-> [!NOTE]
-> Czasami prawdopodobnie problem z wydajnością dysku jest faktycznie wąskich gardeł. W takich sytuacjach należy zoptymalizować swoje [wydajność sieci](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md).
-> Jeśli maszyna wirtualna obsługuje przyspieszonej łączności sieciowej, należy się upewnić, że jest ono włączone. Jeśli nie jest włączone, możesz je włączyć na już wdrożone maszyny wirtualne zarówno [Windows](../articles/virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) i [Linux](../articles/virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms).
-
-Przed przystąpieniem do wykonywania, jeśli jesteś nowym użytkownikiem magazynu w warstwie Premium, najpierw przeczytać artykuł [wybierz typ dysku platformy Azure dla maszyn wirtualnych IaaS](../articles/virtual-machines/windows/disks-types.md) i [usługi Azure Storage dotyczące skalowalności i cele wydajności](../articles/storage/common/storage-scalability-targets.md) artykułów.
-
 ## <a name="application-performance-indicators"></a>Wskaźniki wydajności aplikacji
 
 Możemy ocenić, czy aplikacja działa dobrze lub nie korzysta z takich jak wskaźniki wydajności, jak szybko aplikacji przetwarza żądanie użytkownika, jak dużo danych aplikacji jest przetwarzanie na żądanie, jak wiele żądań przetwarza aplikacji w konkretnym okres czasu, jak długo użytkownik będzie musiał czekać na uzyskanie odpowiedzi po przesłaniu żądania. Pomoc ze wszystkimi postanowieniami dotyczącymi te wskaźniki wydajności są operacje We/Wy, przepustowości lub przepustowości i opóźnień.
 
 W tej sekcji omówiono typowe wskaźniki wydajności w ramach usługi Premium Storage. W poniższej sekcji wymagania aplikacji zbieranie, dowiesz się, jak mierzyć te wskaźniki wydajności aplikacji. Optymalizowanie wydajności aplikacji w dalszej części dowiesz się o czynniki wpływające na te wskaźniki wydajności i zalecenia dotyczące optymalizowania je.
 
-## <a name="iops"></a>Operacje wejścia/wyjścia
+## <a name="iops"></a>Liczba operacji we/wy na sekundę
 
 Operacje We/Wy lub we/wy operacji na sekundę, to liczba żądań, które aplikacja wysyła do dysków w magazynie w ciągu jednej sekundy. Operacji We/Wy może odczytać lub zapisu sekwencyjnego lub losowych. Online aplikacji przetwarzania transakcji (OLTP), takich jak witryny sieci Web detalicznego handlu online należy natychmiast przetwarza wiele równoczesnych żądań użytkowników. Żądania użytkowników są insert i zaktualizuj transakcji bazy danych, które aplikacja musi przetworzyć szybko. W związku z tym aplikacje OLTP wymagają bardzo wysokiej operacje We/Wy. Takie aplikacje obsługiwać miliony żądań We/Wy małe i losowe. Jeśli masz taką aplikację, należy zaprojektować infrastruktury aplikacji, aby zoptymalizować operacje We/Wy. W dalszej części *Optymalizowanie wydajności aplikacji*, omówimy szczegółowo wszystkich czynników, które należy wziąć pod uwagę uzyskać wysoki operacje We/Wy.
 
@@ -164,7 +142,7 @@ Rozmiar we/wy jest jednym z bardziej ważne czynniki. Rozmiar operacji We/Wy jes
 
 Niektóre aplikacje umożliwiają można zmieniać ich rozmiar operacji We/Wy, podczas gdy niektóre aplikacje nie obsługują. Na przykład SQL Server określa optymalny rozmiar operacji We/Wy, sama i nie udostępniać użytkownikom żadnych pokrętła, aby ją zmienić. Z drugiej strony, firma Oracle oferuje parametr o nazwie [DB\_BLOCK\_rozmiar](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) za pomocą którego można skonfigurować rozmiar żądania operacji We/Wy bazy danych.
 
-Jeśli używasz aplikacji, która nie zezwala na zmianę rozmiaru operacji We/Wy, zastosuj wskazówki w tym artykule w celu zoptymalizowania wydajności kluczowy wskaźnik wydajności, który jest najbardziej odpowiednie do Twojej aplikacji. Na przykład:
+Jeśli używasz aplikacji, która nie zezwala na zmianę rozmiaru operacji We/Wy, zastosuj wskazówki w tym artykule w celu zoptymalizowania wydajności kluczowy wskaźnik wydajności, który jest najbardziej odpowiednie do Twojej aplikacji. Na przykład
 
 * Aplikacja OLTP generuje miliony losowa i małych żądań We/Wy. Aby obsłużyć tego rodzaju żądań We/Wy, należy zaprojektować swoją infrastrukturę aplikacji, aby uzyskać wyższy operacje We/Wy.  
 * Aplikacja magazynowania danych generuje duże i kolejnych żądań We/Wy. Aby obsłużyć tego rodzaju żądań We/Wy, należy zaprojektować swoją infrastrukturę aplikacji, aby uzyskać wyższą przepustowość lub przepływności.
@@ -176,7 +154,7 @@ Jeśli używasz aplikacji, które umożliwia zmianę rozmiaru operacji We/Wy, na
 
 Poniżej przedstawiono przykład obliczenie operacje We/Wy i przepływność/przepustowość dla swojej aplikacji. Rozważmy aplikację przy użyciu dysku P30. Które operacje We/Wy i przepływność/przepustowości dysk P30, można osiągnąć maksymalną jest 5000 operacji We/Wy i 200 MB na sekundę odpowiednio. Teraz Jeśli aplikacja wymaga maksymalna operacje We/Wy dysku P30, a następnie użyć mniejszego rozmiaru operacji We/Wy, takich jak 8 KB, wynikowy przepustowości, będzie można uzyskać jest 40 MB na sekundę. Jednak jeśli aplikacja wymaga maksymalną przepływność/przepustowość między dysk P30, użycia, większego rozmiaru operacji We/Wy, takich jak 1024 KB IOPS wynikowy będzie mniej, 200 operacje We/Wy. W związku z tym Dostosowywanie rozmiaru operacji We/Wy w taki sposób, że spełnia on wymagania zarówno aplikacji operacje We/Wy i przepływność/przepustowość. Poniższa tabela zawiera podsumowanie różnych rozmiarów We/Wy i ich odpowiednie operacje We/Wy i przepływność na dysk P30.
 
-| Wymagania aplikacji | Rozmiar operacji We/Wy | Operacje wejścia/wyjścia | Przepustowość/przepływność |
+| Wymagania aplikacji | Rozmiar operacji We/Wy | Liczba operacji we/wy na sekundę | Przepustowość/przepływność |
 | --- | --- | --- | --- |
 | Maksymalna liczba operacji We/Wy |8 KB |5,000 |40 MB na sekundę |
 | Maksymalna przepływność |1024 KB |200 |200 MB na sekundę |
@@ -196,7 +174,7 @@ Podczas projektowania aplikacji, jedną z pierwszych czynności w celu jest, wyb
 
 Wysokiej skali maszyn wirtualnych są dostępne w różnych rozmiarach z różną liczbę rdzeni procesora CPU, pamięci, systemu operacyjnego i rozmiar dysku tymczasowego. Rozmiar każdej maszyny Wirtualnej ma również maksymalna liczba dysków z danymi, które można dołączyć do maszyny Wirtualnej. W związku z tym wybrany rozmiar maszyny Wirtualnej będzie miało wpływ na ile przetwarzania, pamięci i pojemność magazynu jest dostępny dla twojej aplikacji. Wpływa to również na zasoby obliczeniowe i kosztów magazynowania. Na przykład poniżej przedstawiono specyfikacji największy rozmiar maszyny Wirtualnej serii DS, DSv2 serii i serii GS:
 
-| Rozmiar maszyny wirtualnej | Rdzenie procesora CPU | Memory (Pamięć) | Rozmiary dysków maszyny Wirtualnej | Maksymalnie z Dyski z danymi | Rozmiar pamięci podręcznej | Operacje wejścia/wyjścia | Limity pamięci podręcznej operacji We/Wy przepustowości |
+| Rozmiar maszyny wirtualnej | Rdzenie procesora CPU | Memory (Pamięć) | Rozmiary dysków maszyny Wirtualnej | Maksymalnie z Dyski z danymi | Rozmiar pamięci podręcznej | Liczba operacji we/wy na sekundę | Limity pamięci podręcznej operacji We/Wy przepustowości |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standardowa_DS14 |16 |112 GB |SYSTEM OPERACYJNY = 1023 GB <br> Lokalny dysk SSD 224 GB = |32 |576 GB |50 000 OPERACJI WE/WY <br> 512 MB na sekundę |4000 operacje We/Wy i 33 MB na sekundę |
 | Standard_GS5 |32 |448 GB |SYSTEM OPERACYJNY = 1023 GB <br> Lokalny dysk SSD = 896 GB |64 |4224 GB |80 000 OPERACJI WE/WY <br> 2000 MB na sekundę |5000 operacji We/Wy i 50 MB na sekundę |
@@ -413,4 +391,4 @@ Dowiedz się więcej na temat typów dostępnego miejsca na dysku:
 Dla użytkowników programu SQL Server zapoznaj się z artykułami na najlepsze rozwiązania w zakresie wydajności dla programu SQL Server:
 
 * [Performance Best Practices for SQL Server na maszynach wirtualnych platformy Azure](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md)
-* [Usługa Azure Premium Storage zapewnia najwyższą wydajność programu SQL Server na maszynie Wirtualnej platformy Azure](http://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx)
+* [Usługa Azure Premium Storage zapewnia najwyższą wydajność programu SQL Server na maszynie Wirtualnej platformy Azure](https://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx)

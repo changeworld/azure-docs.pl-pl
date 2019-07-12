@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60ce66b079942944176540826c7f3e7a91b070d2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c024954053588537ac3363703876f716a38f41d9
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60358212"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702947"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Historia wersji agenta w usłudze Azure ochrona za pomocą hasła usługi AD
 
@@ -38,7 +38,7 @@ Data wydania: 3/13/2019
   * Wersja oprogramowania i danych dzierżawy platformy Azure są tylko dostępne dla agentów kontrolera domeny i serwery proxy wersją 1.2.116.0 lub nowszych.
   * Dane dzierżawy usługi Azure może nie być zgłaszany do czasu ponownej rejestracji (lub odnowienia) serwera proxy lub wystąpił lasu.
 * Usługa serwera Proxy teraz wymaga zainstalowania platformy .NET 4.7.
-  * .NET 4.7 powinno być już zainstalowane na serwerze systemu Windows w pełni zaktualizowany. Jeśli nie jest tak, Pobierz i uruchom Instalator znalazł w [Instalator w trybie offline programu .NET Framework 4.7 dla Windows](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
+  * .NET 4.7 powinno być już zainstalowane na serwerze systemu Windows w pełni zaktualizowany. Jeśli nie jest tak, Pobierz i uruchom Instalator znalazł w [Instalator w trybie offline programu .NET Framework 4.7 dla Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
   * W systemach Server Core może być konieczne do przekazania flagi/q Instalator programu .NET 4.7 w taki sposób, aby pobrać go zakończyło się sukcesem.
 * Usługa Serwer Proxy obsługuje teraz automatyczne uaktualnianie. Automatyczne uaktualnianie korzysta z usługi Microsoft Azure AD Connect Agent aktualizacji, która jest zainstalowanych obok siebie przy użyciu usługi Serwer Proxy. Automatyczne uaktualnianie jest domyślnie włączone.
 * Automatyczne uaktualnianie można włączyć lub wyłączyć za pomocą polecenia cmdlet Set-AzureADPasswordProtectionProxyConfiguration. Bieżące ustawienie może być odpytywany za pomocą polecenia cmdlet Get-AzureADPasswordProtectionProxyConfiguration.

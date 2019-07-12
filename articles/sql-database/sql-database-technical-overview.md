@@ -13,39 +13,27 @@ ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: ed05748a450d8d2082476aaba0831383e5fb60a0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 20fdd63939c91f8421048e4904b8a694849570ab
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441569"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67808055"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Co to jest usługa Azure SQL Database
 
-Usługa SQL Database jest zarządzaną usługą relacyjnej bazy danych ogólnego przeznaczenia na platformie Microsoft Azure, obsługującą struktury takie jak dane relacyjne, JSON, dane przestrzenne i XML. SQL Database oferuje dynamicznie skalowalną wydajność w dwóch różnych modeli zakupu: modelu zakupu opartego na rdzeniach wirtualnych i model zakupu jednostek DTU. Usługa SQL Database udostępnia również opcje, takie jak [indeksy magazynu kolumn](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview), używane w skomplikowanych analizach i raportowaniu, oraz [przetwarzanie OLTP danych w pamięci](sql-database-in-memory.md) na potrzeby ekstremalnego przetwarzania transakcyjnego. Firma Microsoft bezproblemowo obsługuje wprowadzanie poprawek i aktualizowanie bazy kodu SQL i ukrywa procesy zarządzania podstawową infrastrukturą.
+Usługa Azure SQL Database to usługa relacyjnej bazy danych ogólnego przeznaczenia zarządzana, która pozwala na tworzenie wysoko dostępnych i warstwa magazynowania danych o wysokiej wydajności dla aplikacji i rozwiązań w chmurze Microsoft Azure. Baza danych SQL może być dobrym wyborem dla różnych nowoczesnych aplikacji w chmurze, ponieważ pozwala na użytek zaawansowane funkcje przetwarzania zarówno dla danych relacyjnych i [nierelacyjnych struktury](sql-database-multi-model-features.md) takich jak wykresy, JSON, dane przestrzenne i XML. Jest on oparty na najnowsza stabilna wersja [aparatu bazy danych programu Microsoft SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json) i pozwala na użycie bogaty zestaw zaawansowanych zapytań przetwarzania funkcje, takie jak [o wysokiej wydajności w pamięci technologii](sql-database-in-memory.md)i [przetwarzania zapytań inteligentnych](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json). Zgodnie ze strategią firmy Microsoft skupiającej się na chmurze najnowsze funkcjonalności programu SQL Server są wydawane najpierw w usłudze SQL Database, a dopiero później w samym programie SQL Server. Podejście to umożliwia użytkownikom dostęp do najnowszych możliwości programu SQL Server bez potrzeby wdrażania poprawek lub wykonywania uaktualnień — a na dodatek funkcje te są już przetestowane w milionach baz danych. SQL Database pozwala na łatwe definiowanie i skalowanie wydajności w dwóch różnych modeli zakupu: [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) i [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md). SQL Database to w pełni zarządzana usługa, która ma wbudowaną wysoką dostępność podczas tworzenia kopii zapasowych i innych typowych operacji obsługi. Firma Microsoft obsługuje wprowadzanie poprawek i bezproblemowe aktualizowanie kodu SQL i systemu operacyjnego i ukrywa procesy zarządzania podstawową infrastrukturą.
 
 > [!NOTE]
 > Słownik terminów w usłudze Azure SQL Database, zobacz [słownik terminów bazy danych SQL](sql-database-glossary-terms.md)
 
 Usługa Azure SQL Database udostępnia następujące opcje wdrażania na potrzeby bazy danych Azure SQL Database:
 
-- Jako [pojedynczej bazy danych](sql-database-single-database.md) swój własny zestaw zasobów zarządzanych za pomocą serwera usługi SQL Database. Pojedyncza baza danych jest podobny do [zawartych baz danych](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) w programie SQL Server.
-- [Puli elastycznej](sql-database-elastic-pool.md), który stanowi kolekcję baz danych z współdzielonym zestawem zasobów zarządzanych za pomocą serwera usługi SQL Database. Pojedyncze bazy danych mogą być przenoszone do i z puli elastycznej.
-- [Wystąpienie zarządzane](sql-database-managed-instance.md), który stanowi kolekcję baz danych z systemu i użytkownika z współdzielonym zestawem zasobów. Wystąpienie zarządzane jest podobny do wystąpienia [aparatu bazy danych programu Microsoft SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation).
-
-Poniższa ilustracja przedstawia te opcje wdrażania:
-
 ![deployment-options](./media/sql-database-technical-overview/deployment-options.png)
 
-Usługa SQL Database współdzieli swój kod podstawowy z [aparatem bazy danych programu Microsoft SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation). Zgodnie ze strategią firmy Microsoft skupiającej się na chmurze najnowsze funkcjonalności programu SQL Server są wydawane najpierw w usłudze SQL Database, a dopiero później w samym programie SQL Server. Podejście to umożliwia użytkownikom dostęp do najnowszych możliwości programu SQL Server bez potrzeby wdrażania poprawek lub wykonywania uaktualnień — a na dodatek funkcje te są już przetestowane w milionach baz danych. Aby uzyskać informacje dotyczące nowych możliwości w miarę ich publikowania, zobacz:
-
-- **[Plan usługi Azure SQL Database](https://azure.microsoft.com/roadmap/?category=databases)** :
-
-  Miejsce, aby dowiedzieć się, co nowego i co będzie dalej.
-
-- **[Blog usługi Azure SQL Database](https://azure.microsoft.com/blog/topics/database)** :
-
-  Miejsce, gdzie blogu elementów członkowskich, temat wiadomości bazy danych SQL i funkcje zespołu produktu SQL Server.
+- [Pojedynczą bazę danych](sql-database-single-database.md) reprezentuje w pełni zarządzane odizolowane bazy danych, która jest doskonałym rozwiązaniem dla nowoczesnych aplikacji w chmurze i mikrousług, które wymagają pojedyncze wiarygodne źródło danych. Pojedyncza baza danych jest podobny do [zawartych baz danych](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases?toc=/azure/sql-database/toc.json) w [aparatu bazy danych programu Microsoft SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json).
+- [Wystąpienie zarządzane](sql-database-managed-instance.md) to w pełni zarządzane wystąpienie [aparatu bazy danych programu Microsoft SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json) zawierający zestaw baz danych, które mogą być używane razem. Jest doskonałym rozwiązaniem dla łatwą migrację lokalnych baz danych programu SQL Server do chmury platformy Azure i aplikacji, które muszą korzystać z funkcji zaawansowanych bazy danych, które zawiera aparat bazy danych programu SQL Server.
+- [Pula elastyczna](sql-database-elastic-pool.md) to zbiór [pojedyncze bazy danych](sql-database-single-database.md) z współdzielonym zestawem zasobów, takich jak procesor CPU lub pamięci. Pojedyncze bazy danych mogą być przenoszone do i z puli elastycznej.
 
 > [!IMPORTANT]
 > Aby poznać różnice funkcji SQL Database i programu SQL Server, a także różnice między różne opcje wdrażania usługi Azure SQL Database, zobacz [funkcje SQL](sql-database-features.md).
@@ -54,6 +42,7 @@ SQL Database oferuje przewidywalną wydajność z wielu typów zasobów, warstwy
 
 ## <a name="scalable-performance-and-pools"></a>Skalowalna wydajność i pule
 
+Wszystkie odmianami bazy danych SQL Database umożliwia zdefiniowanie ilości zasobów, które zostaną przypisane. 
 - Pojedyncze bazy danych każda baza danych jest odizolowana od innych i przenośna, z własną gwarantowaną ilość zasobów obliczeniowych, pamięci i magazynu. Usługa SQL Database udostępnia różnych zasobów obliczeniowych, pamięci i magazynu dla różnych potrzeb — i możliwość dynamicznego [skalowanie pojedynczej bazy danych zasobów](sql-database-single-database-scale.md) górę i w dół. [Warstwy usługi w hiperskali](sql-database-service-tier-hyperscale.md) dla pojedynczej bazy danych można skalować do 100 TB, przy użyciu szybkich kopii zapasowej i przywracanie możliwości.
 - Dzięki pulom elastycznym, można tworzyć nowe bazy danych lub Przenieś pojedynczych baz danych do puli zasobów do optymalnego wykorzystania zasobów i Zapisz pieniędzy — i możliwość dynamicznego [skalowanie elastycznej puli zasobów](sql-database-elastic-pool-scale.md) górę i w dół.
 - Za pomocą wystąpienia zarządzanego każdego wystąpienia zarządzanego jest odizolowana od innych wystąpień z gwarantowanymi zasobami. W ramach wystąpienia zarządzanego wystąpienia bazy danych mają zestaw zasoby — i możliwość dynamicznie [skalowanie wystąpienia zarządzanego zasobów](sql-database-managed-instance-resource-limits.md) górę i w dół.
@@ -65,11 +54,8 @@ Dynamiczna skalowalność różni się od skalowania automatycznego. O skalowani
 ### <a name="purchasing-models-service-tiers-compute-sizes-and-storage-amounts"></a>Zakup modeli, warstwy usług, rozmiarów wystąpień obliczeniowych i magazynu kwoty
 
 Usługa SQL Database oferuje dwa modele zakupu:
-
-- [Modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) oferuje blend obliczeniowych, pamięci, we/wy pozwalający w trzech warstwach usług do obsługi niewielkich obciążeń bazy danych. Obliczenia rozmiarów w każdej warstwie udostępniają różne kombinacje tych zasobów, do których można dodawać kolejne zasoby magazynu.
 - [Modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) pozwala wybrać liczbę rdzeni wirtualnych, ilość lub pamięć i wielkość i szybkość magazynu. Model zakupu opartego na rdzeniach wirtualnych pozwala również na używanie [korzyść użycia hybrydowego platformy Azure dla programu SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) uzyskanie oszczędności kosztów. Aby uzyskać więcej informacji na temat korzyści użycia hybrydowego platformy Azure, zobacz [— często zadawane pytania](#sql-database-frequently-asked-questions-faq).
-
-  
+- [Modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) oferuje blend obliczeniowych, pamięci, we/wy pozwalający w trzech warstwach usług do obsługi niewielkich obciążeń bazy danych. Obliczenia rozmiarów w każdej warstwie udostępniają różne kombinacje tych zasobów, do których można dodawać kolejne zasoby magazynu.
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Pule elastyczne umożliwiające zmaksymalizowanie wykorzystania zasobów
 
@@ -88,7 +74,7 @@ Skrypty mogą ułatwić monitorowanie i skalowanie elastycznych pul baz danych. 
 
 Możesz łączyć pojedyncze bazy danych z pulami elastycznymi i zmieniać warstwy usług pojedynczych baz danych i pul elastycznych, szybko i łatwo dostosować do swojej sytuacji. Korzystając z siły i zasięgu platformy Azure, możesz łączyć inne usługi Azure z usługą SQL Database i dopasowywać je do niej, aby zaspokoić potrzeby unikatowego projektu aplikacji, zwiększyć efektywność kosztową i poprawić wykorzystanie zasobów oraz otworzyć się na nowe możliwości biznesowe.
 
-### <a name="extensive-monitoring-and-alerting-capabilities"></a>Możliwości rozbudowanego monitorowania i zgłaszania alertów
+## <a name="extensive-monitoring-and-alerting-capabilities"></a>Możliwości rozbudowanego monitorowania i zgłaszania alertów
 
 Narzędzi [wbudowanego monitorowania wydajności](sql-database-performance.md) i [alertów](sql-database-insights-alerts-portal.md) możesz używać w połączeniu z ocenami wydajności. Za pomocą tych narzędzi możesz szybko ocenić wpływ skalowania w górę lub w dół na podstawie bieżących lub przewidywanych wymagań dotyczących wydajności. Ponadto usługa SQL Database może [tworzyć metryki i dzienniki diagnostyczne](sql-database-metrics-diag-logging.md), które ułatwiają monitorowanie. Usługę SQL Database można skonfigurować do przechowywania danych dotyczących użycia zasobów, pracowników i sesji oraz połączeń z jednym z następujących zasobów platformy Azure:
 
@@ -260,3 +246,8 @@ Baza danych SQL, klienci będą mogli korzystać następujące prawa, które są
 - Aby uzyskać zestaw przykładów interfejsu wiersza polecenia platformy Azure i programu PowerShell, zobacz:
   - [Przykłady interfejsu wiersza polecenia platformy Azure dla usługi SQL Database](sql-database-cli-samples.md)
   - [Przykłady programu Azure PowerShell dla usługi SQL Database](sql-database-powershell-samples.md)
+
+ - Aby uzyskać informacje o nowych możliwościach miarę ich publikowania, zobacz 
+   - **[Plan usługi Azure SQL Database](https://azure.microsoft.com/roadmap/?category=databases)**  — miejscu, aby dowiedzieć się, co nowego i co będzie dalej.
+  - **[Blog usługi Azure SQL Database](https://azure.microsoft.com/blog/topics/database)**  — miejscu, gdzie blogu elementów członkowskich, temat wiadomości bazy danych SQL i funkcje zespołu produktu SQL Server.
+

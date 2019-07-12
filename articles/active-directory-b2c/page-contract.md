@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f7098d805b0e3f1527587fc3411cd4c3b234b057
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: c3ee05096b0bfd071ea569105973097ce9727b07
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67540390"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604524"
 ---
 # <a name="select-a-page-contract-in-azure-active-directory-b2c-using-custom-policies"></a>Zaznacz kontrakt strony w usłudze Azure Active Directory B2C, za pomocą zasad niestandardowych
 
@@ -79,7 +79,7 @@ Strony umowy pakiety są okresowo aktualizowane w celu zawierać poprawki i udos
   - Pole wejściowe dla trwa obecnie tylko kod wprowadzać znaki maksymalnie sześć (6)
   - Strona automatycznie podejmie próbę sprawdzenia kodu, wprowadzony po wprowadzeniu 6-cyfrowy kod bez dowolnego przycisku konieczności można klikać
   - Jeśli kod jest nieprawidłowy, następnie pole wejściowe są automatycznie usuwane
-  - Po trzech (3) prób niepoprawny kod B2C wysyła informację o błędzie do usługi
+  - Po trzech (3) prób niepoprawny kod B2C wysyła informację o błędzie, wróć do jednostki uzależnionej
   - Poprawki dotyczące ułatwień dostępu
   - Domyślne CSS usunięte
 - Strona samodzielnie (selfasserted)

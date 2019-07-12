@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95b7cbcf4e485dc93d49b9559dcb7d0d4f597ebe
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: a72cb7bc7feeba984d568a0465d4f23a494496e8
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67550353"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807647"
 ---
 # <a name="configure-single-sign-on-to-non-gallery-applications-in-microsoft-identity-platform"></a>Konfigurowanie logowania jednokrotnego do aplikacji spoza galerii w platformie tożsamości firmy Microsoft
 
@@ -50,13 +50,14 @@ Do zarejestrowania aplikacji przy użyciu wszystkich pozostałych rodzajów [obs
 Łączenie aplikacji nieznajdujących się na liście przy użyciu szablonu usługi integracji aplikacji, wykonaj następujące kroki:
 
 1. Zaloguj się do [portalu Azure Active Directory](https://aad.portal.azure.com/) przy użyciu konta administratora usługi Microsoft platformy tożsamości.
-2. Wybierz **aplikacje dla przedsiębiorstw** > **nową aplikację**.
-3. (Opcjonalne, ale zalecane) W **Dodaj z galerii** polu wyszukiwania, wprowadź nazwę wyświetlaną aplikacji. Jeśli aplikacja zostanie wyświetlona w wynikach wyszukiwania, zaznacz ją i Pomiń pozostałą część tej procedury.
-4. Wybierz **aplikacji spoza galerii**. **Dodaj własną aplikację** zostanie wyświetlona strona.
+1. Wybierz **aplikacje dla przedsiębiorstw** > **nową aplikację**.
+1. (Opcjonalne, ale zalecane) W **Dodaj z galerii** polu wyszukiwania, wprowadź nazwę wyświetlaną aplikacji. Jeśli aplikacja zostanie wyświetlona w wynikach wyszukiwania, zaznacz ją i Pomiń pozostałą część tej procedury.
+1. Wybierz **aplikacji spoza galerii**. **Dodaj własną aplikację** zostanie wyświetlona strona.
 
-   ![Dodawanie aplikacji](./media/configure-single-sign-on-non-gallery-applications/add-your-own-application.png)
-5. Wprowadź nazwę wyświetlaną dla nowej aplikacji.
-6. Wybierz pozycję **Dodaj**.
+   ![Pokazuje Dodawanie strony aplikacji](./media/configure-single-sign-on-non-gallery-applications/add-your-own-application.png)
+
+1. Wprowadź nazwę wyświetlaną dla nowej aplikacji.
+1. Wybierz pozycję **Dodaj**.
 
 Dodawanie aplikacji w ten sposób, zapewnia podobne możliwości dostępne niż ten, który wstępnie zintegrowanych aplikacji. Najpierw wybierz **logowanie jednokrotne** z paska bocznego w aplikacji. Następnej strony (**wybierz jedną metodę logowania jednokrotnego**) przedstawia opcje dotyczące konfigurowania logowania jednokrotnego:
 
@@ -64,7 +65,7 @@ Dodawanie aplikacji w ten sposób, zapewnia podobne możliwości dostępne niż 
 - **Oparte na hasłach**
 - **Połączone**
 
-![Wybierz jedną metodę logowania jednokrotnego](./media/configure-single-sign-on-non-gallery-applications/select-a-single-sign-on-method.png)
+![Przedstawia Wybieranie strony metoda rejestracji jednokrotnej](./media/configure-single-sign-on-non-gallery-applications/select-a-single-sign-on-method.png)
 
 Aby uzyskać więcej informacji o tych opcjach zobacz następujące sekcje tego artykułu.
 
@@ -72,7 +73,7 @@ Aby uzyskać więcej informacji o tych opcjach zobacz następujące sekcje tego 
 
 Wybierz **SAML** opcję, aby skonfigurować uwierzytelnianie oparte na protokole SAML dla aplikacji. (Ta opcja wymaga, że aplikacja obsługuje SAML 2.0). **Ustaw się logowanie jednokrotne z SAML** zostanie wyświetlona strona.
 
-![Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML](./media/configure-single-sign-on-non-gallery-applications/set-up-single-sign-on-with-saml.png)
+![Pokazuje Konfigurowanie logowania jednokrotnego SAML strony](./media/configure-single-sign-on-non-gallery-applications/set-up-single-sign-on-with-saml.png)
 
 Ta strona zawiera pięć różnych nagłówki:
 
@@ -90,7 +91,7 @@ Teraz można zbierać informacje dotyczące sposobu używania funkcji SAML aplik
 
 Aby skonfigurować usługę Azure AD, przejdź do **podstawową konfigurację protokołu SAML** nagłówek i wybierz jego **Edytuj** ikonę (ołówka). Można ręcznie wprowadzić wartości lub Przekaż plik metadanych do wyodrębnienia wartości pól.
 
-![Podstawowa konfiguracja SAML](./media/configure-single-sign-on-non-gallery-applications/basic-saml-configuration.png)
+![Pokazuje, na stronie konfiguracji SAML podstawowe](./media/configure-single-sign-on-non-gallery-applications/basic-saml-configuration.png)
 
 Wymagane są następujące dwa pola:
 
@@ -141,7 +142,7 @@ Aby wyświetlić lub edytować oświadczenia wysyłane w tokenie języka SAML do
 
 - Przejdź do **atrybutów użytkowników i oświadczeń** nagłówek i wybierz **Edytuj** ikony. **Atrybutów użytkowników i oświadczeń** zostanie wyświetlona strona.
 
-![Atrybuty użytkowników i oświadczeń](./media/configure-single-sign-on-non-gallery-applications/user-attributes-and-claims.png)
+![Przedstawia stronę atrybutach i oświadczeniach użytkownika](./media/configure-single-sign-on-non-gallery-applications/user-attributes-and-claims.png)
 
 Może być konieczne edytowanie oświadczeń wystawionych w tokenie SAML dwóch powodów:
 
@@ -158,7 +159,7 @@ Z usługi Azure AD, możesz pobrać aktywnego certyfikatu w formacie Base64 lub 
 
 Aby wyświetlić, utworzyć lub pobrać certyfikaty (aktywne lub nieaktywne), przejdź do **certyfikat podpisywania SAML** nagłówek i wybierz **Edytuj** ikony. **Certyfikat podpisywania SAML** pojawia się.
 
-![Certyfikat podpisywania SAML](./media/configure-single-sign-on-non-gallery-applications/saml-signing-certificate.png)
+![Pokazuje strony certyfikat podpisywania SAML](./media/configure-single-sign-on-non-gallery-applications/saml-signing-certificate.png)
 
 Sprawdź, czy certyfikat ma:
 
@@ -182,13 +183,13 @@ Po skonfigurowaniu aplikacji do użycia usługi Azure AD jako dostawcy tożsamo�
 Aby przypisać nowego użytkownika lub grupy do aplikacji:
 
 1. Na pasku bocznym aplikacji wybierz **użytkowników i grup**. **\<Nazwa aplikacji >-Użytkownicy i grupy** zostanie wyświetlona strona, która pokazuje bieżącą listę przypisanych użytkowników i grup.
-2. Wybierz **dodawania użytkowników**. **Dodać przypisania** zostanie wyświetlona strona.
-3. Wybierz **użytkowników i grup (\<numer > wybrany)** . **Użytkowników i grup** zostanie wyświetlona strona, wyświetlanie listy dostępnych użytkowników i grup.
-4. Typ lub przewijania, aby znaleźć użytkownika lub grupę, którą chcesz przypisać z listy.
-5. Wybierz użytkowników lub grupy, którą chcesz dodać, a następnie wybierz **wybierz** przycisku. **Użytkowników i grup** strony zniknie.
-6. W **dodać przypisania** wybierz opcję **przypisać**. **\<Nazwa aplikacji >-Użytkownicy i grupy** innym użytkownikom wyświetlanych na liście zostanie wyświetlona strona.
+1. Wybierz **dodawania użytkowników**. **Dodać przypisania** zostanie wyświetlona strona.
+1. Wybierz **użytkowników i grup (\<numer > wybrany)** . **Użytkowników i grup** zostanie wyświetlona strona, wyświetlanie listy dostępnych użytkowników i grup.
+1. Typ lub przewijania, aby znaleźć użytkownika lub grupę, którą chcesz przypisać z listy.
+1. Wybierz użytkowników lub grupy, którą chcesz dodać, a następnie wybierz **wybierz** przycisku. **Użytkowników i grup** strony zniknie.
+1. W **dodać przypisania** wybierz opcję **przypisać**. **\<Nazwa aplikacji >-Użytkownicy i grupy** innym użytkownikom wyświetlanych na liście zostanie wyświetlona strona.
 
-   ![Użytkownicy aplikacji i grupy](./media/configure-single-sign-on-non-gallery-applications/application-users-and-groups.png)
+   ![Pokazuje stronę użytkownicy i grupy aplikacji](./media/configure-single-sign-on-non-gallery-applications/application-users-and-groups.png)
 
 Z tej listy możesz wykonywać następujące czynności:
 
@@ -213,26 +214,29 @@ Wybierz tę opcję, aby skonfigurować [opartego na hasłach logowania jednokrot
 
 Po wybraniu **opartego na hasłach**, zostanie wyświetlony monit wprowadź adres URL aplikacji sieci web stronę logowania.
 
-![Na podstawie hasła logowania jednokrotnego](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
+![Pokazuje strony adres URL logowania, aby wprowadzić adres URL logowania](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
 
 Następnie wykonaj następujące kroki:
 
 1. Wprowadź adres URL. Ten ciąg musi być stronie, która zawiera pole wprowadzania nazwy użytkownika.
-2. Wybierz pozycję **Zapisz**. Usługa Azure AD próbuje przetworzyć strony logowania wprowadź nazwę użytkownika i hasło z danych wejściowych.
-3. Usługi Azure AD przez analizowanie próba zakończy się niepowodzeniem, wybierz opcję **Konfiguruj \<Nazwa aplikacji > Ustawienia jednego hasła logowania** do wyświetlenia **Konfigurowanie logowania jednokrotnego** strony. (Jeśli próba zakończy się powodzeniem, można pominąć pozostałą część tej procedury).
-4. Wybierz **ręcznie Wykryj pola logowania**. Dodatkowe instrukcje ręczne wykrywanie pól logowania są wyświetlane.
+1. Wybierz pozycję **Zapisz**. Usługa Azure AD próbuje przetworzyć strony logowania wprowadź nazwę użytkownika i hasło z danych wejściowych.
+1. Usługi Azure AD przez analizowanie próba zakończy się niepowodzeniem, wybierz opcję **Konfiguruj \<Nazwa aplikacji > Ustawienia jednego hasła logowania** do wyświetlenia **Konfigurowanie logowania jednokrotnego** strony. (Jeśli próba zakończy się powodzeniem, można pominąć pozostałą część tej procedury).
+1. Wybierz **ręcznie Wykryj pola logowania**. Dodatkowe instrukcje ręczne wykrywanie pól logowania są wyświetlane.
 
    ![Ręczne konfigurowanie opartego na hasłach logowania jednokrotnego](./media/configure-single-sign-on-non-gallery-applications/password-configure-sign-on.png)
-5. Wybierz **Przechwyć pola logowania**. Zostanie otwarta strona stanu przechwytywania w nowej karcie, przedstawiający komunikat **Przechwytywanie metadanych jest obecnie w toku**.
-6. Jeśli **wymagany do rozszerzenia dostęp do panelu** pole pojawia się w nowej karcie, wybierz **Zainstaluj teraz** zainstalował **Moje zabezpieczenia aplikacji logowania rozszerzenia** rozszerzenia przeglądarki. (Wymaga rozszerzenia przeglądarki Microsoft Edge, Chrome lub Firefox.) Następnie zainstaluj, uruchomić, włącz rozszerzenie i Odśwież stronę Przechwytywanie stanu.
+
+1. Wybierz **Przechwyć pola logowania**. Zostanie otwarta strona stanu przechwytywania w nowej karcie, przedstawiający komunikat **Przechwytywanie metadanych jest obecnie w toku**.
+1. Jeśli **wymagany do rozszerzenia dostęp do panelu** pole pojawia się w nowej karcie, wybierz **Zainstaluj teraz** zainstalował **Moje zabezpieczenia aplikacji logowania rozszerzenia** rozszerzenia przeglądarki. (Wymaga rozszerzenia przeglądarki Microsoft Edge, Chrome lub Firefox.) Następnie zainstaluj, uruchomić, włącz rozszerzenie i Odśwież stronę Przechwytywanie stanu.
 
    Rozszerzenie przeglądarki następnie otworzy inną kartę, która wyświetla wprowadzony adres URL.
-7. Na karcie za pomocą wprowadzonego adresu URL przejść przez proces logowania. Wypełnij pola Nazwa użytkownika i hasło i spróbuj zalogować się. (Nie trzeba wprowadzić poprawne hasło).
+
+1. Na karcie za pomocą wprowadzonego adresu URL przejść przez proces logowania. Wypełnij pola Nazwa użytkownika i hasło i spróbuj zalogować się. (Nie trzeba wprowadzić poprawne hasło).
 
    Wyświetlony monit z pytaniem, monit o zapisanie przechwycone pola logowania.
-8. Kliknij przycisk **OK**. Zamknięcie karty, rozszerzenie przeglądarki aktualizacji na stronie stanu przechwytywania z komunikatem **metadane zostały zaktualizowane dla aplikacji**, a tej przeglądarki, na karcie również zostanie zamknięty.
-9. W usłudze Azure AD **Konfigurowanie logowania jednokrotnego** wybierz opcję **dobrze, udało mi się zaloguj się na aplikację pomyślnym**.
-10. Kliknij przycisk **OK**.
+
+1. Kliknij przycisk **OK**. Zamknięcie karty, rozszerzenie przeglądarki aktualizacji na stronie stanu przechwytywania z komunikatem **metadane zostały zaktualizowane dla aplikacji**, a tej przeglądarki, na karcie również zostanie zamknięty.
+1. W usłudze Azure AD **Konfigurowanie logowania jednokrotnego** wybierz opcję **dobrze, udało mi się zaloguj się na aplikację pomyślnym**.
+1. Kliknij przycisk **OK**.
 
 Po przechwytywania strony logowania, może przypisywać użytkowników i grup, a następnie możesz skonfigurować zasady poświadczeń, podobnie jak zwykłych [hasło logowania jednokrotnego aplikacji](what-is-single-sign-on.md).
 

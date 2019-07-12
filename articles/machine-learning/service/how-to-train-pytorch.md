@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: minxia
-author: mx-iao
+ms.author: maxluk
+author: maxluk
 ms.reviewer: peterlu
 ms.date: 06/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8def58eb003fcc817c21151416744cf391b5f38f
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d9c953eeecedf14a8f3fae43c5d4713252d58b4c
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443927"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67840085"
 ---
 # <a name="train-and-register-pytorch-models-at-scale-with-azure-machine-learning-service"></a>Szkolenie i zarejestruj PyTorch modeli na skalę przy użyciu usługi Azure Machine Learning
 
@@ -218,7 +218,7 @@ import horovod
 
 Aby zoptymalizować wnioskowania o [środowiska uruchomieniowego ONNX](concept-onnx.md), przekonwertować uczonego modelu PyTorch do formatu ONNX. Wnioskowanie lub oceniania modelu, jest faza użycia wdrożony model do przewidywania najczęściej w danych produkcyjnych. Zobacz [samouczek](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb) przykład.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym artykule przeszkolonych i zarejestrowany PyTorch modelu w usłudze Azure Machine Learning. Aby dowiedzieć się, jak wdrożyć model, przejdź do naszego artykułu wdrażania modelu.
 

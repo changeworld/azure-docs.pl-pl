@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: overview
 ms.date: 05/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 0d4bba41170408b640b4e8d3809c77b7a6443c6a
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: b4ad8697997a8c90a6548c66819bfe790c8235e3
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480038"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798994"
 ---
 # <a name="what-is-vpn-gateway"></a>Co to jest usługa VPN Gateway?
 
@@ -51,7 +51,7 @@ W poniższej tabeli znajdują się informacje pomocne podczas podejmowania decyz
 
 ## <a name="gwsku"></a>Jednostki SKU bramy
 
-Podczas tworzenia bramy sieci wirtualnej określa się jednostkę SKU bramy do użycia. Wybierz jednostkę SKU spełniającą Twoje wymagania na podstawie typów obciążeń, przepustowości, funkcji i umów SLA. Aby uzyskać więcej informacji o jednostkach SKU bramy, w tym obsługiwanych funkcjach, środowiskach produkcyjnych i do tworzenia/testowania oraz kroków konfiguracji, zobacz [Jednostki SKU bramy](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
+Podczas tworzenia bramy sieci wirtualnej określa się jednostkę SKU bramy do użycia. Wybierz jednostkę SKU spełniającą Twoje wymagania na podstawie typów obciążeń, przepustowości, funkcji i umów SLA. Aby uzyskać więcej informacji na temat bramy jednostki SKU, w tym obsługiwanych funkcji, produkcji i dewelopersko testowe i kroki konfiguracji, zobacz [ustawień usługi VPN Gateway - jednostki SKU bramy](vpn-gateway-about-vpn-gateway-settings.md#gwsku) artykułu. Aby uzyskać informacje o jednostkach SKU starszej wersji, zobacz [pracy przy użyciu starszej wersji jednostki SKU](vpn-gateway-about-skus-legacy.md).
 
 ### <a name="benchmark"></a>Jednostki SKU bramy według tunelowania, połączenia i przepływności
 

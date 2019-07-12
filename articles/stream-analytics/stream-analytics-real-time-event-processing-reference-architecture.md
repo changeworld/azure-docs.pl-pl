@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/24/2017
-ms.openlocfilehash: 7f9748a4e4f1c86362781aa80d8958237c97106a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab1ca89427f332151120420c3c087902584706f4
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60816967"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621778"
 ---
 # <a name="reference-architecture-real-time-event-processing-with-microsoft-azure-stream-analytics"></a>Architektura referencyjna: W czasie rzeczywistym do przetwarzania zdarzeń, za pomocą usługi Microsoft Azure Stream Analytics
 Architektura referencyjna dla zdarzeń w czasie rzeczywistym przetwarzania za pomocą usługi Azure Stream Analytics mają na celu dostarczenie ogólny plan wdrażania w czasie rzeczywistym platforma jako usługa (PaaS) rozwiązanie przetwarzanie strumienia z platformą Microsoft Azure.
@@ -34,7 +34,7 @@ Microsoft Azure oferuje rozbudowane katalogu technologii analitycznych, które o
   * Warstwa analizy w czasie rzeczywistym
   * Warstwa magazynu danych
   * Prezentacja / użycie warstw
-* Podsumowanie
+* Wniosek
 
 **Autor:** Centrum Insights danych Charles Feddersen, architekt rozwiązań, doskonałą funkcjonalność, Microsoft Corporation
 
@@ -51,6 +51,6 @@ Aby uzyskać dalszą pomoc, spróbuj [forum usługi Azure Stream Analytics](http
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)
 * [Scale Azure Stream Analytics jobs (Skalowanie zadań usługi Azure Stream Analytics)](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics Query Language Reference (Dokumentacja dotycząca języka zapytań usługi Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure Stream Analytics Query Language Reference (Dokumentacja dotycząca języka zapytań usługi Azure Stream Analytics)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics Management REST API Reference (Dokumentacja interfejsu API REST zarządzania usługą Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

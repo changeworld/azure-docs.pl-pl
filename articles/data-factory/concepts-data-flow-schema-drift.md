@@ -3,16 +3,15 @@ title: Mapowanie dryfu schemat przepływu danych w usłudze Azure Data Factory
 description: Twórz odporne na błędy przepływu danych w usłudze Azure Data Factory przy użyciu schematu odejściem od tego stanu
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: aadab68185347dc0a12e0802f675efe13ecea545
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6fd610afc0a21a97a8544b9e4b173f207f5fb50f
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61262163"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722883"
 ---
 # <a name="mapping-data-flow-schema-drift"></a>Mapowanie dryfu schemat przepływu danych
 
@@ -34,7 +33,7 @@ W celu ochrony przeciwko dryfu schematu, ważne jest zapewnienie urządzeń w na
 
 * Gdy ta opcja jest zaznaczona, wszystkie pola przychodzące będą odczytywane ze źródła przy każdym wykonaniu przepływu danych i zostaną przekazane za pośrednictwem całego przepływu do ujścia.
 
-* Upewnij się, że Użyj "Auto-Map", aby zamapować wszystkie nowe pola podczas przekształcania ujścia, tak aby wszystkie nowe pola Pobierz pobrane w górę i otwarta w lokalizacji docelowej:
+* Upewnij się, że Użyj "Auto-Map", aby zamapować wszystkie nowe pola podczas przekształcania ujścia, tak aby wszystkie nowe pola Pobierz pobrane w górę i otwarta w lokalizacji docelowej.
 
 <img src="media/data-flow/automap.png" width="400">
 
@@ -71,6 +70,6 @@ Możesz przetestować ten w poziomie przy użyciu przykładowy przepływ danych 
 
 Podczas generowania nowych kolumn z wzorcami kolumny, możesz uzyskać dostęp tych nowych kolumn w dalszej części przekształceń przepływu danych przy użyciu funkcji wyrażenia "byName".
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W [język wyrażeń przepływu danych](data-flow-expression-functions.md) znajdują się dodatkowe urządzenia do wzorców kolumny i dryfu schematu, w tym "byName" i "byPosition".

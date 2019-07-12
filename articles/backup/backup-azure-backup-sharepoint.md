@@ -6,14 +6,14 @@ author: kasinh
 manager: vvithal
 ms.service: backup
 ms.topic: conceptual
-ms.date: 01/30/2019
+ms.date: 07/09/2019
 ms.author: kasinh
-ms.openlocfilehash: 7e8043badbc0accd38ad618a7d455729ab6606b2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dd38ed8119e2879c4a1e4c6a52ad283043f067bf
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60644339"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705234"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>Tworzenie kopii zapasowych farmy programu SharePoint na platformie Azure
 Wykonywania kopii zapasowych farmy programu SharePoint w systemie Microsoft Azure za pomocą System Center Data Protection Manager (DPM) w podobny sposób, należy utworzyć kopię zapasową innych źródeł danych. Usługa Azure Backup zapewnia elastyczność harmonogram tworzenia kopii zapasowych, aby utworzyć codziennie, co tydzień, miesięczny lub roczny kopii zapasowej wskazuje i udostępnia opcje zasad przechowywania dla różnych punktów kopii zapasowej. Program DPM udostępnia możliwości, aby przechowywać kopie dysk lokalny na szybkie cele czasu odzyskiwania (RTO) i do przechowywania kopii na platformie Azure, ekonomiczne, długoterminowego przechowywania.
@@ -23,7 +23,7 @@ Usługa Azure Backup, program DPM obsługuje następujące scenariusze:
 
 | Obciążenie | Version | Wdrażanie programu SharePoint | Typ wdrożenia programu DPM | DPM — System Center 2012 R2 | Ochrona i odzyskiwanie |
 | --- | --- | --- | --- | --- | --- |
-| Sharepoint |SharePoint 2013, SharePoint 2010, SharePoint 2007, SharePoint 3.0 |Program SharePoint jest wdrożony jako serwer fizyczny lub maszyna wirtualna funkcji Hyper-V/VMware <br> -------------- <br> Funkcji SQL AlwaysOn |Serwer lub w środowisku lokalnym funkcji Hyper-V wirtualnych maszyny fizycznej |Obsługuje tworzenie kopii zapasowej na platformie Azure z pakietem zbiorczym aktualizacji 5 |Ochrona farmy programu SharePoint do odzyskania: Farmy odzyskiwania bazy danych i plik lub element listy z punktów odzyskiwania na dysku.  Farmy i odzyskiwanie bazy danych z punktów odzyskiwania platformy Azure. |
+| Program SharePoint |SharePoint 2013, SharePoint 2010, SharePoint 2007, SharePoint 3.0 |Program SharePoint jest wdrożony jako serwer fizyczny lub maszyna wirtualna funkcji Hyper-V/VMware <br> -------------- <br> Funkcji SQL AlwaysOn |Serwer lub w środowisku lokalnym funkcji Hyper-V wirtualnych maszyny fizycznej |Obsługuje tworzenie kopii zapasowej na platformie Azure z pakietem zbiorczym aktualizacji 5 |Ochrona farmy programu SharePoint do odzyskania: Farmy odzyskiwania bazy danych i plik lub element listy z punktów odzyskiwania na dysku.  Farmy i odzyskiwanie bazy danych z punktów odzyskiwania platformy Azure. |
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 Istnieje kilka kwestii, czego potrzebujesz, aby upewnić się, zanim wykona kopii zapasowej farmy programu SharePoint na platformie Azure.
@@ -228,18 +228,7 @@ W poniższym przykładzie *element odzyskiwanie programu SharePoint* został prz
     ![Program DPM SharePoint Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. W tym momencie wykonać kroki odzyskiwania, w tym artykule, aby odzyskać bazę danych zawartości programu SharePoint z dysku.
 
-## <a name="faqs"></a>Często zadawane pytania
-
-### <a name="which-versions-of-dpm-support-sql-server-2014-and-sql-2012-sp2"></a>Które wersje programu DPM obsługuje program SQL Server 2014 i SQL 2012 (SP2)?
-Program DPM 2012 R2 z pakietem zbiorczym aktualizacji 4 obsługuje obie.
-
-### <a name="can-i-recover-a-sharepoint-item-to-the-original-location-if-sharepoint-is-configured-by-using-sql-alwayson-with-protection-on-disk"></a>Czy można odzyskać element programu SharePoint do oryginalnej lokalizacji, jeśli program SharePoint jest skonfigurowany przy użyciu funkcji SQL AlwaysOn (Ochrona na dysku)?
-Tak, element można odzyskać do oryginalnej witryny programu SharePoint.
-
-### <a name="can-i-recover-a-sharepoint-database-to-the-original-location-if-sharepoint-is-configured-by-using-sql-alwayson"></a>Czy można odzyskać bazy danych programu SharePoint do oryginalnej lokalizacji, jeśli program SharePoint jest skonfigurowany przy użyciu funkcji SQL AlwaysOn?
-Bazy danych programu SharePoint są skonfigurowane w funkcji SQL AlwaysOn, nie można modyfikować, chyba że grupa dostępności zostanie usunięta. W rezultacie program DPM nie można przywrócić bazę danych do oryginalnej lokalizacji. Może odzyskać bazę danych programu SQL Server do innego wystąpienia programu SQL Server.
-
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Dowiedz się więcej na temat ochrony programu DPM z programu SharePoint — zobacz [seria wideo — program DPM ochronę programu SharePoint](https://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)
 * Przegląd [informacje o wersji programu System Center 2012 — Data Protection Manager](https://technet.microsoft.com/library/jj860415.aspx)
 * Przegląd [informacje o wersji programu Data Protection Manager w programie System Center 2012 SP1](https://technet.microsoft.com/library/jj860394.aspx)

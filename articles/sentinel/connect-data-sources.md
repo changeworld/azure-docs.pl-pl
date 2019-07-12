@@ -7,20 +7,21 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: a3b63cfa-b5fe-4aff-b105-b22b424c418a
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 07/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5d8d97aefa2efadae70c976b8a1876b2c7d8f1c1
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.openlocfilehash: 9f64497cdf27729cebc243deca1def9ff1e5c680
+ms.sourcegitcommit: 80aaf27e3ad2cc4a6599a3b6af0196c6239e6918
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65921926"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673870"
 ---
 # <a name="connect-data-sources"></a>Łączenie ze źródłami danych
 
@@ -32,7 +33,18 @@ ms.locfileid: "65921926"
 
 Aby dołączyć przez wartownika platformy Azure należy najpierw połączyć się ze źródłami danych. Azure wartownik dołączono wiele łączników dla rozwiązań firmy Microsoft, dostępne poza pole, a także w czasie rzeczywistym integracji, w tym rozwiązań do ochrony przed zagrożeniami firmy Microsoft i Microsoft 365 źródeł, takich jak usługi Office 365, Azure AD, Azure ATP i Microsoft Cloud App Security i nie tylko. Ponadto ma wbudowanych łączników szerszy ekosystemem zabezpieczenia dla rozwiązań firmy Microsoft. Można również użyć typowego formatu zdarzeń dziennika systemu lub interfejsu API REST, nawiązywanie połączeń ze źródłami danych z platformy Azure przez wartownika także.  
 
-![Moduły zbierające dane](./media/collect-data/collect-data-page.png)
+1. W menu, wybierz **łączników danych**. Ta strona pozwala zobaczyć pełną listę łączników, udostępnianych przez usługę Azure przez wartownika wraz z ich stanami. Wybierz łącznik, aby połączyć, a następnie wybierz pozycję **łącznika Otwórz stronę**. 
+
+   ![Moduły zbierające dane](./media/collect-data/collect-data-page.png)
+
+1. Upewnij się, zostały spełnione wszystkie wymagania wstępne i postępuj zgodnie z instrukcjami, aby nawiązać połączenie z danych usługi Azure przez wartownika na stronie określonego łącznika. Może upłynąć trochę czasu, dzienniki Aby uruchomić synchronizację za pomocą platformy Azure przez wartownika. Po nawiązaniu połączenia, zobacz podsumowanie danych w **odebrane dane** wykresu i stanu łączności typów danych.
+
+   ![Łączenie modułów zbierających dzienniki](./media/collect-data/opened-connector-page.png)
+  
+1. Kliknij przycisk **następne kroki** kartę, aby uzyskać listę zawartości poza pole przez wartownika Azure udostępnia dla typu danych specyficznych dla.
+
+   ![Moduły zbierające dane](./media/collect-data/data-insights.png)
+ 
 
 ## <a name="data-connection-methods"></a>Metody połączenia danych
 
@@ -80,7 +92,7 @@ Alternatywnie można wdrożyć agenta ręcznie na istniejącej Maszynie wirtualn
 ![CEF w środowisku lokalnym](./media/connect-cef/cef-syslog-onprem.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby rozpocząć korzystanie z platformy Azure przez wartownika, musisz mieć subskrypcji platformy Microsoft Azure. Jeśli nie masz subskrypcji, możesz zarejestrować się, aby uzyskać dostęp do [bezpłatnej wersji próbnej](https://azure.microsoft.com/free/).
 - Dowiedz się, jak [dołączyć dane do platformy Azure przez wartownika](quickstart-onboard.md), i [Uzyskaj wgląd w dane i potencjalne zagrożenia](quickstart-get-visibility.md).

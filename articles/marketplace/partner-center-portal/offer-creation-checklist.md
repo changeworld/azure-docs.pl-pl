@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 904058c2c98c8ded2ea9c91e8aa7ec595aa49b05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eb824eb67e84ec4bdb93bc355ac6a6afa844ceb9
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66481447"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701150"
 ---
 # <a name="offer-creation-checklist"></a>Lista kontrolna tworzenia oferty
 
@@ -38,12 +38,12 @@ Elementy, które jest wymagane do zapewnienia lub określ zostały podane poniż
 
 ## <a name="new-offer-modal"></a>Nowa oferta modalne 
 
-Pierwszy rodzajów informacji, które możesz może zostać poproszony o podanie są nazwa i identyfikator oferty. 
+Pierwszy rodzajów informacji, które możesz może zostać poproszony o podanie są identyfikator i alias dla oferty. 
 
 | **Nazwa pola**    | **Uwagi**   |  
 | :---------------- | :-----------| 
 | Identyfikator oferty  | Wymagane, nie można zmienić po utworzeniu. Maksymalnie 50 znaków i musi zawierać tylko znaków alfanumerycznych, małe litery, łączniki i podkreślenia. |
-| Nazwa oferty  | Wymagany. |
+| Alias oferty  | Wymagany. |
 
 ## <a name="offer-setup-page"></a>Strona Ustawienia oferty
 
@@ -51,7 +51,7 @@ Strony konfiguracji oferty to, gdzie użytkownik może zdecydować się na róż
 
 | **Nazwa pola**    | **Uwagi**   | 
 | :---------------- | :-----------|  
-| Czy chcesz sprzedawać za pośrednictwem firmy Microsoft?  | Wymagany. Wartość domyślna: Tak |
+| Czy chcesz sprzedawać za pośrednictwem firmy Microsoft?  | Wymagane. Wartość domyślna: Tak |
 | Jak chcesz potencjalnym klientom interakcję z ofertą wystawienie? (Wywołanie akcji)  | Wymagany, jeśli nie sprzedaży firmy Microsoft. Wartość domyślna: Bezpłatna wersja próbna, opcje: "Pobierz ją teraz", "Bezpłatna wersja próbna", "Kontakt ze mną." |
 | Adres URL w wersji próbnej  | Wymagane, jeśli wybrano opcję "Bezpłatna wersja próbna", jak klienci sposób powinny wchodzić w interakcje z listą oferty. |
 | Adres URL oferty  | Wymagane, jeśli "opcji Pobierz teraz" jest zaznaczone, jak klienci sposób powinny wchodzić w interakcje z listą oferty |
@@ -68,7 +68,7 @@ Na stronie właściwości jest, gdzie należy zdefiniować kategorie i branż, u
 | :---------------- | :-----------|  
 | Kategorii i podkategorii | Wymagane 3-1 lub maksymalnego rozmiaru. Wartość domyślna: Niczego nie wybrano. |
 | Branż i subindustries | Opcjonalny. maksymalnie 2 L1 branż i maksymalnie 2 subindustries w każdej branży L1 domyślne: Niczego nie wybrano |
-| Wersja aplikacji  | Opcjonalny. Wartość domyślna: Brak. |
+| Wersja aplikacji  | Opcjonalna. Wartość domyślna: Brak. |
 | Użyj standardowej umowy  | Opcjonalny. Wartość domyślna: nie wybrano.  | |
 | Warunki użytkowania  | Wymagane, jeśli nie wybrano standardowej umowy.  |
 
@@ -83,7 +83,7 @@ Na stronie listy jest określane tekstu i obrazów, spotykane przez klientów po
 | Opis  | Wymagane, maks 3000 znaki. |
 | Instrukcje z wprowadzeniem  | Wymagane, maks 3000 znaki. |
 | Instrukcje z wprowadzeniem  | Wymagane, maks 3000 znaki. |
-| Słowa kluczowe do wyszukania  | Opcjonalne, zalecane maksymalnie 3 słowa kluczowe. |
+| Wyszukaj słowa kluczowe  | Opcjonalne, zalecane maksymalnie 3 słowa kluczowe. |
 | Adres URL zasad ochrony prywatności  | Wymagany. |
 | URL materiały marketingowe Program dostawcy usług Kryptograficznych  | Opcjonalny. |
 | Przydatne linki, tytuł i adres URL  | Opcjonalny. |
@@ -92,7 +92,7 @@ Na stronie listy jest określane tekstu i obrazów, spotykane przez klientów po
 | Logo Store (małe, średnie, duże, sieci, element Hero)  | Mała liczba godzin (48 X 48) i dużym (216 X 216) wymagane; o innych rozmiarach opcjonalny, ale zalecane: Medium (90 x 90), Wide (255 x 115), Hero (815 x 290). Musi być w formacie PNG. |
 | Nazwa wideo + adres URL miniatury  | Opcjonalne, zalecane maksymalnie 4 filmy wideo. Miniatura musi być 1280 x 720 w formacie PNG. Wideo musi być hostowany w usłudze YouTube lub Vimeo. |
 | Kontakty (dostawcy usług Kryptograficznych programu, inżynierii, pomocy technicznej)  | Inżynieria i pomocy technicznej, skontaktuj się z pomocą wymagane (nazwa, adres e-mail i numer telefonu); CSP Program skontaktuj się z opcjonalny, ale zalecane. |
-| Adres URL pomocy technicznej  | Wymagany. |
+| Adres URL pomocy technicznej  | Wymagana. |
 
 ## <a name="preview-page"></a>Strona (wersja zapoznawcza)
 
@@ -137,7 +137,7 @@ Określa właściwości biznesowych, odbiorców i rynku dostępności w każdym 
 | **Nazwa pola**    | **Uwagi**   | 
 | :---------------- | :-----------| 
 | Dostępność na rynku  | Wymagane i min 1 i max 141. |
-| Model cen  | Wymagany. Wartość domyślna: Stosowana jest stała stawka. Opcje: Stosowana jest stała stawka za użytkownika. |
+| Model cen  | Wymagana. Wartość domyślna: Stosowana jest stała stawka. Opcje: Stosowana jest stała stawka za użytkownika. |
 | Minimalna i maksymalna liczba miejsc  | Opcjonalne, dostępną tylko, jeśli stanowisko model cen oparty wybrane. |
 | Termin rozliczeń  | Wymagany. Wartość domyślna: Miesięczne. Opcje: Miesięczne i roczne. |
 | Cena  | Wymagane USD na miesiąc, jeśli miesięczne rozliczenie warunku wybranego; lub USD rocznie, w przypadku rocznych rozliczeń wybrany okres. |
@@ -150,7 +150,7 @@ Dostępne tylko jeśli wybierzesz zaoferować wersję testową oferty. Zdefiniuj
 
 | **Nazwa pola**    | **Uwagi**   | 
 | :---------------- | :-----------| 
-| Opis  | Wymagany. |
+| Opis  | Wymagane. |
 | Ręczne nazwy użytkownika i plików  | Wymagane, maks doc 1. Musi być w formacie PDF. |
 | Nazwa klipu wideo, adres URL + miniatury  | Opcjonalne, zalecane. Miniatura musi być 533 x 324 w formacie JPGP lub PNG. Wideo musi być hostowany w usłudze YouTube lub Vimeo. |
 
@@ -160,6 +160,6 @@ Dostępne tylko jeśli wybierzesz zaoferować wersję testową oferty. Zdefiniuj
 | :---------------- | :-----------| 
 | Uwagi dotyczące certyfikacji  | Opcjonalny. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Tworzenie nowej oferty SaaS](./create-new-saas-offer.md)

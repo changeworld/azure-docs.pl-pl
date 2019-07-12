@@ -7,7 +7,7 @@ author: barbaraselden
 manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: 24429c5596494082b526b9648a1405bc397b9d2f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d40c0604f0947abe8d536eafe87545790476a98
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108481"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625545"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Planowanie wdrożenia serwera Proxy aplikacji usługi Azure AD
 
@@ -70,7 +70,8 @@ Aby skonfigurować i wdrożyć serwer Proxy aplikacji usługi Azure AD, muszą b
 
 * **Certyfikat publiczny**: Jeśli używasz niestandardowych nazw domen muszą nabywania publicznego certyfikatu wystawionego przez firmy innej niż Microsoft zaufanego urzędu certyfikacji. W zależności od wymagań organizacji uzyskiwanie certyfikatu może zająć trochę czasu, a firma Microsoft zaleca, począwszy od procesu, tak szybko, jak to możliwe. Serwer Proxy aplikacji platformy Azure obsługuje standard, [symboli wieloznacznych](application-proxy-wildcard.md), lub certyfikatów opartych na sieci SAN.
 
-* **Wymagania dotyczące domeny**: Logowanie jednokrotne do aplikacji opublikowanych przy użyciu delegowanie ograniczone protokołu Kerberos (KCD) wymaga hosta łącznika przyłączone do tej samej domeny usługi AD jako aplikacje, trwa publikowanie. Aby uzyskać szczegółowe informacje na temat, zobacz [ograniczonego delegowania protokołu Kerberos do logowania jednokrotnego](application-proxy-configure-single-sign-on-with-kcd.md) przy użyciu serwera Proxy aplikacji. Usługa łącznika jest uruchamiany w kontekście systemu lokalnego i nie powinno być skonfigurowane do korzystania z tożsamości niestandardowej.
+* **Wymagania dotyczące domeny**: Logowania jednokrotnego do opublikowanej aplikacji przy użyciu delegowanie ograniczone protokołu Kerberos (KCD) wymaga, że serwer z uruchomionym łącznikiem usługi i serwerze z uruchomioną aplikację są przyłączone do domeny i jest częścią tej samej domenie lub domenach ufających.
+Aby uzyskać szczegółowe informacje na temat, zobacz [ograniczonego delegowania protokołu Kerberos do logowania jednokrotnego](application-proxy-configure-single-sign-on-with-kcd.md) przy użyciu serwera Proxy aplikacji. Usługa łącznika jest uruchamiany w kontekście systemu lokalnego i nie powinno być skonfigurowane do korzystania z tożsamości niestandardowej.
 
 * **Rekordy DNS dla adresu URL**
 
@@ -92,7 +93,7 @@ Skompilować spis wszystkich aplikacji w zakresie, które są publikowane za po�
 
 | Typ informacji| Informacji do zebrania |
 |---|---|
-| Typ usługi| Na przykład: Program SharePoint, SAP, CRM, niestandardowej aplikacji sieci Web, interfejsów API |
+| Typ usługi| Przykład: Program SharePoint, SAP, CRM, niestandardowej aplikacji sieci Web, interfejsów API |
 | Platforma aplikacji | Na przykład: Windows usług IIS, Apache dla systemu Linux, Tomcat, serwera NGINX |
 | Członkostwo w domenie| Serwer sieci Web w pełni kwalifikowaną nazwę domeny (FQDN) |
 | Lokalizacja aplikacji | Gdzie znajduje się serwer sieci web lub farmy w infrastrukturze |

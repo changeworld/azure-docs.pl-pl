@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: danlep
-ms.openlocfilehash: 06e45127f940e01de5f3ceeefc354014a88014db
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: e6e0cdd73a5a2999f78599a06cc7ee397ecc3b4b
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514398"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67806587"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Ograniczanie dostępu do usługi Azure container registry przy użyciu sieci wirtualnej platformy Azure lub reguły zapory
 
@@ -39,6 +39,14 @@ W tym artykule przedstawiono dwa scenariusze, aby utworzyć reguły dostępu do 
 * Korzystanie z systemu Azure interfejsu wiersza polecenia kroki opisane w tym artykule, wiersza polecenia platformy Azure w wersji 2.0.58 lub nowszy jest wymagany. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli].
 
 * Jeśli nie masz jeszcze rejestru kontenerów, utworzyć (jednostki SKU Premium wymagane) i wypchnąć obraz przykładowe, takie jak `hello-world` z usługi Docker Hub. Na przykład użyć [witryny Azure portal][quickstart-portal] or the [Azure CLI][quickstart-cli] tworzenia rejestru. 
+
+* Jeśli chcesz ograniczyć dostęp do rejestru przy użyciu sieci wirtualnej w innej subskrypcji platformy Azure, musisz zarejestrować dostawcy zasobów usługi Azure Container Registry w tej subskrypcji. Na przykład:
+
+  ```azurecli
+  az account set --subscription <Name or ID of subscription of virtual network>
+
+  az provider register --namespace Microsoft.ContainerRegistry
+  ``` 
 
 ## <a name="about-network-rules-for-a-container-registry"></a>O regułach sieciowe dla rejestru kontenerów
 
@@ -326,7 +334,7 @@ Aby wyświetlić listę reguł sieci skonfigurowane dla rejestru, uruchom nastę
 az acr network-rule list--name mycontainerregistry 
 ```
 
-Dla każdej reguły, która jest skonfigurowana, uruchom [Usuń reguły sieciowej az acr][az-acr-network-rule-remove] polecenie, aby go usunąć. Na przykład:
+Dla każdej reguły, która jest skonfigurowana, uruchom [Usuń reguły sieciowej az acr][az-acr-network-rule-remove] polecenie, aby go usunąć. Przykład:
 
 ```azurecli
 # Remove a rule that allows access for a subnet. Substitute the subnet resource ID.

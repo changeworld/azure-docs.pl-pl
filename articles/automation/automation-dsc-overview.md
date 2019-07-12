@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b486c30827ee67b58cbdc0027c8221cceed02e51
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a5d4657f87b0a6cbae0699c5a2f95773ff55f633
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235942"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798451"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Omówienie konfiguracji stanu usługi Azure Automation
 
@@ -82,6 +82,10 @@ Jeśli węzły znajdują się w sieci prywatnej, są wymagane dla stanu Configur
 * Globalny adres URL Administracja USA — Wirginia: *.azure-automation.us
 * Usługa agenta: https://\<workspaceId\>.agentsvc.azure-automation.net
 
+Dzięki temu łącznością sieciową na potrzeby zarządzany węzeł do komunikowania się z usługą Azure Automation.
+Jeśli używasz zasobów DSC, które komunikują się między węzłami, takich jak [WaitFor * zasobów](https://docs.microsoft.com/powershell/dsc/reference/resources/windows/waitForAllResource), należy również zezwolić na ruch między węzłami.
+Zobacz dokumentację dla każdego zasobu DSC poznać wymagania dotyczące tych sieci.
+
 #### <a name="proxy-support"></a>Obsługa serwera proxy
 
 Obsługa serwera proxy dla agenta DSC jest dostępna w Windows w wersji 1809 i nowszych.
@@ -129,7 +133,7 @@ Wolisz obejrzeć film niż przeczytać artykuł? Poniższy klip wideo z maja 201
 
 > [!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3467/player]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby rozpocząć pracę, zobacz [wprowadzenie do usługi Azure Automation stanu konfiguracji](automation-dsc-getting-started.md)
 - Aby dowiedzieć się, jak dodawanie węzłów, zobacz [dołączanie maszyn w celu zarządzania usługi Azure Automation stanu konfiguracji](automation-dsc-onboarding.md)

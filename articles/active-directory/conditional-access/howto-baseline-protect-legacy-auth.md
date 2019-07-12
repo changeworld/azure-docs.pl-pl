@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8e9ea8956d87e2ec47cc65495e81d8a0f0ad8cb
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: d21b54c3bea98a9a1499dc75890f75f28f2f9dc0
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560922"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655722"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>Zasady punktu odniesienia: Blokuj starsze uwierzytelnianie (wersja zapoznawcza)
 
@@ -27,7 +27,7 @@ Aby dać użytkownikom łatwy dostęp do aplikacji w chmurze, Azure Active Direc
 
 Obecnie większość wszystkich uszczerbku prób logowania pochodzą z uwierzytelniania starszej wersji. Uwierzytelnianie starszych nie obsługuje uwierzytelnianie wieloskładnikowe (MFA). Nawet w przypadku zasad MFA włączone w Twoim katalogu, nieuprawnione można uwierzytelniać przy użyciu starszej wersji protokołu i Pomiń uwierzytelnianie wieloskładnikowe.
 
-Najlepszym sposobem, aby chronić swoje konto z żądań uwierzytelniania złośliwego przez starszych protokołów jest zablokować te próby wszystko ze sobą. Aby ułatwić zablokować wszystkie żądania logowania dokonanych przez starszych protokołów, utworzyliśmy zasady linii bazowej, które właśnie to robi.
+Najlepszym sposobem, aby chronić swoje konto z żądań uwierzytelniania złośliwego przez starszych protokołów jest całkowicie zablokować te próby. W celu ułatwienia bezpiecznego środowiska utworzyliśmy te zasady linii bazowej, uwierzytelnianie starszych bloku.
 
 **Blokuj starsze uwierzytelnianie** jest [bazowymi zasadami](concept-baseline-protection.md) , która blokuje wszystkie żądania uwierzytelniania starszych protokołów. Nowoczesnego uwierzytelniania musi być użyte do zalogowania się pomyślnie dla wszystkich użytkowników. Używany w połączeniu z innymi zasadami linii bazowej, wszystkie żądania pochodzące z starszych protokołów zostanie zablokowane, a wszyscy użytkownicy będą musieli usługi MFA w każdym przypadku, gdy wymagane. Ta zasada nie blokuje programu Exchange ActiveSync.
 
@@ -78,13 +78,13 @@ SharePoint Online jest włączony dla domyślnej nowoczesnego uwierzytelniania. 
 
 Aby zapobiec starsze uwierzytelnianie żądań przez program Skype dla firm, należy włączyć nowoczesne uwierzytelnianie dla usługi Skype dla firm Online. W przypadku katalogów utworzonych po 1 sierpnia 2017 r. nowoczesne uwierzytelnianie dla aplikacji Skype dla firm jest domyślnie włączona.
 
-Aby włączyć nowoczesnego uwierzytelniania w programie Skype dla firm, zalecamy przejście do Microsoft Teams, która domyślnie obsługuje nowoczesnego uwierzytelniania. Jednak nie jest możliwe do tr w tej chwili, należy włączyć nowoczesne uwierzytelnianie dla usługi Skype dla firm Online, Skype dla firm klientów uruchamia korzystających z nowoczesnego uwierzytelniania. Wykonaj następujące kroki w artykule [Skype dla firm topologie obsługiwane z nowoczesnym uwierzytelnianiem](https://docs.microsoft.com/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported), kroki włączyć nowoczesne uwierzytelnianie dla aplikacji Skype dla firm.
+Zalecamy przejście do Microsoft Teams, która domyślnie obsługuje nowoczesnego uwierzytelniania. Jednak jeśli nie można dokonać migracji w tej chwili należy włączyć nowoczesne uwierzytelnianie dla usługi Skype dla firm Online, aby rozpoczynały Skype dla firm klientów korzystających z nowoczesnego uwierzytelniania. Wykonaj kroki opisane w tym artykule [Skype dla firm topologie obsługiwane z nowoczesnym uwierzytelnianiem](https://docs.microsoft.com/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported), aby włączyć nowoczesne uwierzytelnianie dla aplikacji Skype dla firm.
 
-Oprócz Włączanie nowoczesnego uwierzytelniania dla usługi Skype dla firm Online, firma Microsoft zaleca nowoczesnego uwierzytelniania można włączyć dla usługi Exchange Online, gdy włączanie nowoczesnego uwierzytelniania dla usługi Skype dla firm. Ten proces ułatwi Synchronizuj stan nowoczesnego uwierzytelniania w usłudze Exchange Online i Skype dla firm online i uniemożliwi wielu monity o logowanie do usługi Skype dla firm klientów.
+Oprócz włączenia nowoczesne uwierzytelnianie dla usługi Skype dla firm Online, firma Microsoft zaleca włączenie nowoczesnego uwierzytelniania dla usługi Exchange Online, podczas włączania nowoczesne uwierzytelnianie dla aplikacji Skype dla firm. Ten proces ułatwi Synchronizuj stan nowoczesnego uwierzytelniania w usłudze Exchange Online i Skype dla firm online i uniemożliwi wielu monity o logowanie do usługi Skype dla firm klientów.
 
 ### <a name="step-5-using-mobile-devices"></a>Krok 5. Za pomocą urządzeń przenośnych
 
-Aplikacje na urządzeniu przenośnym należy zablokować starsze uwierzytelnianie także. Firma Microsoft zaleca używanie programu Outlook dla urządzeń przenośnych. Outlook Mobile domyślnie obsługuje nowoczesnego uwierzytelniania i będzie spełniać inne zasady ochrony linii bazowej MFA.
+Aplikacje na urządzeniu przenośnym należy zablokować starsze uwierzytelnianie także. Firma Microsoft zaleca używanie programu Outlook dla urządzeń przenośnych. Program Outlook dla urządzeń przenośnych domyślnie obsługuje nowoczesnego uwierzytelniania i będzie spełniać inne zasady ochrony linii bazowej MFA.
 
 Aby korzystać z klienta poczty e-mail natywnych dla systemów iOS, należy być uruchomiony system iOS w wersji 11.0 lub nowszej, aby upewnić się, że klient poczty został zaktualizowany, aby zablokować starsze uwierzytelnianie.
 
@@ -92,7 +92,8 @@ Aby korzystać z klienta poczty e-mail natywnych dla systemów iOS, należy być
 
 Jeśli jesteś klientem hybrydowy, za pomocą lokalnego programu Exchange Server i programu Skype dla firm w środowisku lokalnym, obie te usługi należy zaktualizować, aby włączyć nowoczesne uwierzytelnianie. Korzystając z nowoczesnego uwierzytelniania w środowisku hybrydowym, są nadal uwierzytelniania użytkowników w środowisku lokalnym. Historia autoryzowania dostępu do zasobów (plików lub wiadomości e-mail) zmiany.
 
-Zanim będzie można rozpocząć włączanie nowoczesnego uwierzytelniania w środowisku lokalnym, należy spełnić theIf spełniają wymagania, możesz teraz włączyć nowoczesne uwierzytelnianie w środowisku lokalnym.
+Zanim będzie można rozpocząć włączanie nowoczesnego uwierzytelniania w środowisku lokalnym, upewnij się, że zostały spełnione wymagania wstępne.
+Teraz możesz włączyć nowoczesne uwierzytelnianie w środowisku lokalnym.
 
 Procedurę włączania nowoczesnego uwierzytelniania można znaleźć w następujących artykułach:
 
@@ -105,13 +106,13 @@ Zasady **bazowymi zasadami: Blokuj starsze uwierzytelnianie (wersja zapoznawcza)
 
 Aby włączyć te zasady i chronić swoją organizację:
 
-1. Zaloguj się do **witryny Azure portal** jako administratora globalnego, administratora zabezpieczeń lub administrator dostępu warunkowego.
+1. Zaloguj się do **witryny Azure portal** jako administratora globalnego, administratora zabezpieczeń lub Administrator dostępu warunkowego.
 1. Przejdź do **usługi Azure Active Directory** > **dostępu warunkowego**.
 1. Na liście zasad wybierz **bazowymi zasadami: Blokuj starsze uwierzytelnianie (wersja zapoznawcza)** .
 1. Ustaw **Włącz zasady** do **Użyj zasad natychmiast**.
 1. Kliknij przycisk **Zapisz**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji, zobacz:
 

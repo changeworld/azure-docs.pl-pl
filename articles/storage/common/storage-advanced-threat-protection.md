@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: ed263fec271801ac9c46bbc3125c71ca15b9a330
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8cea4b3fb78f3430fdd92e40552d687501af4be8
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153970"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621974"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Usługa Advanced Threat Protection dla usługi Azure Storage
 
@@ -111,7 +111,7 @@ Alerty są generowane na podstawie nietypowe i potencjalnie szkodliwe próby uzy
 
 ### <a name="anomalous-access-pattern-alerts"></a>Dostęp z nietypowego wzorca alertów
 
-* **Dostęp z nietypowej lokalizacji**: Ten alert jest wyzwalany, gdy występuje w przypadku zmiany wzorca dostępu do konta magazynu. Na przykład, gdy ktoś uzyskał dostęp do konta magazynu z nietypowej lokalizacji geograficznej.
+* **Dostęp z nietypowej lokalizacji**: Ten alert jest wyzwalany, gdy ktoś uzyskał dostęp do konta magazynu z nietypowej lokalizacji geograficznej.
 Potencjalne przyczyny:
    * Atakujący ma dostęp do konta magazynu
    * Przez wiarygodnego użytkownika ma dostęp do konta magazynu z nowej lokalizacji
@@ -120,10 +120,16 @@ Potencjalne przyczyny:
    * Osoba atakująca ma dostęp do konta magazynu przy użyciu nowej aplikacji.
    * Przez wiarygodnego użytkownika został użyty Nowa aplikacja/przeglądarka dostępu do konta magazynu.
 
-* **Dostęp anonimowy**: Ten alert wskazuje, że występuje w przypadku zmiany wzorca dostępu do konta magazynu. Na przykład, to konto zostało uzyskiwać dostęp anonimowo (tzn. bez żadnego uwierzytelniania), co jest nieoczekiwany w porównaniu do ostatnich wzorzec dostępu do tego konta.
+* **Dostęp anonimowy**: Ten alert wskazuje na to, że to konto zostało uzyskiwać dostęp anonimowo (tzn. bez żadnego uwierzytelniania), co jest nieoczekiwany w porównaniu do ostatnich wzorzec dostępu do tego konta.
 Potencjalne przyczyny:
    * Osoba atakująca ma wykorzystać publicznego dostępu do odczytu do kontenera.
    * Wiarygodnego użytkownika lub aplikacji jest używany publiczny dostęp do odczytu do kontenera.
+
+* **Tor anomalii**: Ten alert wskazuje, czy to konto ma zostały pomyślnie uzyskał dostęp z adresu IP, który jest znany jako węzeł aktywnej zakończenia Tor (anonymizing proxy). Ważność tego alertu uwzględnia typ uwierzytelniania używany (jeśli istnieje) i czy jest to pierwszy przypadek takiego dostępu.
+Potencjalne przyczyny:
+   * Osoba atakująca ma dostęp do konta magazynu przy użyciu sieci Tor.
+   * Przez wiarygodnego użytkownika ma dostęp do konta magazynu przy użyciu sieci Tor.
+
 
 ### <a name="anomalous-extractupload-alerts"></a>Wyodrębnij nietypowe lub przekazywanie alertów
 
@@ -158,7 +164,7 @@ Potencjalne przyczyny:
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się więcej o [logowania na kontach magazynu Azure](/rest/api/storageservices/About-Storage-Analytics-Logging)
 
