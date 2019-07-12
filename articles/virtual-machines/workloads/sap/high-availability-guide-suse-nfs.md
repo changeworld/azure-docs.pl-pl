@@ -4,7 +4,7 @@ description: Wysoka dostępność systemu NFS na maszynach wirtualnych platformy
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: mssedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: ed92be0c1968d8f8a931d59d2dadefbbb12f2100
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 93644b9a3487906a27db70bfe82cceccdc7ab45c
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925739"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707226"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Wysoka dostępność systemu NFS na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server
 
@@ -52,7 +52,7 @@ ms.locfileid: "64925739"
 [sap-hana-ha]:sap-hana-high-availability.md
 
 W tym artykule opisano sposób wdrażania maszyn wirtualnych, konfigurowanie maszyn wirtualnych, zainstalować w ramach klastra i zainstalować serwer systemu plików NFS o wysokiej dostępności, który może służyć do przechowywania danych udostępnionych o wysokiej dostępności systemu SAP.
-Ten przewodnik opisuje sposób konfigurowania serwera systemu plików NFS o wysokiej dostępności, który jest używany przez dwa systemy SAP NW1 i NW2. Nazwy zasobów (na przykład maszyny wirtualne, sieci wirtualnych) w przykładzie założono użycie [szablonu serwera plików SAP] [ template-file-server] prefiksem zasobów **prod**.
+Ten przewodnik opisuje sposób konfigurowania serwera systemu plików NFS o wysokiej dostępności, który jest używany przez dwa systemy SAP NW1 i NW2. Nazwy zasobów (na przykład maszyny wirtualne, sieci wirtualnych) w przykładzie założono użycie [szablonu serwera plików SAP][template-file-server] prefiksem zasobów **prod**.
 
 Najpierw przeczytaj następujące uwagi SAP i dokumenty
 
@@ -110,7 +110,7 @@ Możesz użyć szablonu usługi Azure z usługi GitHub do wdrażania wszystkich 
 W portalu Azure Marketplace zawiera obraz dla SUSE Linux Enterprise Server 12 aplikacje SAP, który służy do wdrażania nowych maszyn wirtualnych.
 Można użyć jednego z szablonów szybkiego startu w usłudze GitHub do wdrażania wszystkich wymaganych zasobów. Szablon umożliwia wdrożenie maszyn wirtualnych, moduł równoważenia obciążenia, dostępności, ustaw itp. Wykonaj następujące kroki, aby wdrożyć szablon:
 
-1. Otwórz [szablonu serwera plików SAP] [ template-file-server] w witrynie Azure portal   
+1. Otwórz [szablonu serwera plików SAP][template-file-server] w witrynie Azure portal   
 1. Wprowadź następujące parametry
    1. Prefiks zasobów  
       Wprowadź prefiks, którego chcesz użyć. Wartość jest używana jako prefiks dla zasobów, które są wdrażane.

@@ -4,7 +4,7 @@ description: Przewodnik wysokiej dostępności dla oprogramowania SAP NetWeaver 
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eb7919c6f4ff1b3cf2480333273a98f2cca9a223
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cb468a735a9e1f5cca899090df0125013b9b8d4c
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65204937"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709316"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Azure maszyny wirtualne wysokiej dostępności dla oprogramowania SAP NetWeaver
 
@@ -159,7 +159,7 @@ Usługa Azure Virtual Machines to rozwiązanie dla organizacji, które potrzebuj
 
 W tym artykule omówione są kroki, które można wykonać w celu wdrażania systemów SAP o wysokiej dostępności na platformie Azure za pomocą modelu wdrażania usługi Azure Resource Manager. W jaki sposób można za pomocą tych głównych zadań:
 
-* Znajdź odpowiednie SAP Notes i przewodników po instalacji, na liście [zasobów] [ sap-ha-guide-2] sekcji. Ten artykuł stanowi uzupełnienie dokumentacji instalacji SAP i SAP Notes, które są podstawowe zasoby, które mogą pomóc Ci instalować i wdrażać oprogramowanie SAP na określonych platformach.
+* Znajdź odpowiednie SAP Notes i przewodników po instalacji, na liście [zasobów][sap-ha-guide-2] sekcji. Ten artykuł stanowi uzupełnienie dokumentacji instalacji SAP i SAP Notes, które są podstawowe zasoby, które mogą pomóc Ci instalować i wdrażać oprogramowanie SAP na określonych platformach.
 * Dowiedz się, różnice w modelu wdrażania usługi Azure Resource Manager i modelem klasycznym wdrożeniu platformy Azure.
 * Więcej informacji na temat trybów kworum klastra trybu Failover w systemie Windows Server, można wybrać model, który jest odpowiedni dla danego wdrożenia platformy Azure.
 * Więcej informacji na temat systemu Windows Server Failover Clustering udostępnionego magazynu z usługami platformy Azure.
@@ -170,7 +170,7 @@ W tym artykule omówione są kroki, które można wykonać w celu wdrażania sys
 Aby uprościć wdrażanie i konfigurację, w tym artykule używamy szablonów usługi Resource Manager SAP trójwarstwowej wysokiej dostępności. Szablony Automatyzowanie wdrażania całej infrastruktury niezbędnych do systemu SAP o wysokiej dostępności. Infrastruktura obsługuje również zmianę rozmiaru SAP aplikacji wydajności Standard (protokoły SAP) systemu SAP.
 
 ## <a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a> Wymagania wstępne
-Przed rozpoczęciem upewnij się, że spełniają wymagania wstępne, które są opisane w poniższych sekcjach. Ponadto należy koniecznie sprawdzić wszystkich zasobów wymienionych w [zasobów] [ sap-ha-guide-2] sekcji.
+Przed rozpoczęciem upewnij się, że spełniają wymagania wstępne, które są opisane w poniższych sekcjach. Ponadto należy koniecznie sprawdzić wszystkich zasobów wymienionych w [zasobów][sap-ha-guide-2] sekcji.
 
 W tym artykule używamy szablonów usługi Azure Resource Manager dla [trójwarstwowej oprogramowanie SAP NetWeaver przy użyciu dysków Managed Disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md/). Omówienie przydatne szablonów, zobacz [SAP usługi Azure Resource Manager](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/).
 
@@ -189,7 +189,7 @@ Artykuły te obejmują wdrożenia SAP na platformie Azure:
 
 Te informacje SAP są związane z tym tematem SAP na platformie Azure:
 
-| Numer | Stanowisko |
+| Numer | Tytuł |
 | --- | --- |
 | [1928533] |Aplikacje środowiska SAP na platformie Azure: Obsługiwane produkty i zmianę rozmiaru |
 | [2015553] |SAP na platformie Microsoft Azure: Wymagania wstępne dotyczące obsługi |
@@ -223,7 +223,7 @@ W usłudze Azure Resource Manager można zainstalować wiele systemu identyfikat
 Aby użyć modelu klasycznym wdrożeniu platformy Azure, wykonaj procedury opisane w temacie [oprogramowanie SAP NetWeaver na platformie Azure: Klastrowanie wystąpienia SAP ASCS/SCS przy użyciu systemu Windows Server Failover Clustering na platformie Azure przy użyciu oprogramowanie SIOS DataKeeper](https://go.microsoft.com/fwlink/?LinkId=613056).
 
 > [!IMPORTANT]
-> Zdecydowanie zalecamy użycie modelu wdrażania usługi Azure Resource Manager dla instalacji SAP. Oferuje wiele korzyści, które nie są dostępne w klasycznym modelu wdrażania. Dowiedz się więcej o usłudze Azure [modeli wdrażania][virtual-machines-azure-resource-manager-architecture-benefits-arm].   
+> Zdecydowanie zalecamy użycie modelu wdrażania usługi Azure Resource Manager dla instalacji SAP. Oferuje wiele korzyści, które nie są dostępne w klasycznym modelu wdrażania. Dowiedz się więcej o [modelach wdrażania][virtual-machines-azure-resource-manager-architecture-benefits-arm] platformy Azure.   
 >
 >
 
@@ -444,7 +444,7 @@ _**Rysunek 11:** Ustaw parametry programu SAP o wysokiej dostępności usługi A
 >
 
 ### <a name="c87a8d3f-b1dc-4d2f-b23c-da4b72977489"></a> Wdrażanie maszyn wirtualnych z połączeniem sieci firmowej (cross-premises) do użycia w środowisku produkcyjnym
-Dla systemów SAP w środowisku produkcyjnym, wdrażanie maszyn wirtualnych platformy Azure za pomocą [łączności sieci firmowej (cross-premises)] [ planning-guide-2.2] przy użyciu usługi Azure Site-to-Site VPN lub usługi Azure ExpressRoute.
+Dla systemów SAP w środowisku produkcyjnym, wdrażanie maszyn wirtualnych platformy Azure za pomocą [łączności sieci firmowej (cross-premises)][planning-guide-2.2] przy użyciu usługi Azure Site-to-Site VPN lub usługi Azure ExpressRoute.
 
 > [!NOTE]
 > Możesz użyć swojego wystąpienia usługi Azure Virtual Network. Sieć wirtualną i podsieć już zostały utworzone i przygotowane.
@@ -514,7 +514,7 @@ Poniższe sekcje mają więcej szczegółów na temat szablonów oraz parametry,
 
 Szablon ASCS/SCS umożliwia wdrożenie dwóch maszyn wirtualnych, które służą do tworzenia klastra trybu failover systemu Windows Server, który obsługuje wiele wystąpień ASCS/SCS.
 
-Aby skonfigurować szablon — wiele identyfikatorów SID ASCS/SCS, w [szablonu — wiele identyfikatorów SID ASCS/SCS] [ sap-templates-3-tier-multisid-xscs-marketplace-image] lub [ASCS/SCS — wiele identyfikatorów SID szablonu, za pomocą Managed Disks] [ sap-templates-3-tier-multisid-xscs-marketplace-image-md], wprowadź wartości dla następujących parametrów:
+Aby skonfigurować szablon — wiele identyfikatorów SID ASCS/SCS, w [szablonu — wiele identyfikatorów SID ASCS/SCS][sap-templates-3-tier-multisid-xscs-marketplace-image] or [ASCS/SCS multi-SID template using Managed Disks][sap-templates-3-tier-multisid-xscs-marketplace-image-md], wprowadź wartości dla następujących parametrów:
 
   - **Prefiks zasobów**.  Ustaw prefiks zasobu, który służy jako prefiks wszystkie zasoby, które są tworzone podczas wdrażania. Ponieważ zasoby, które nie należą do tylko jednego systemu SAP, prefiks zasobu nie jest identyfikator SID jednego systemu SAP.  Prefiks musi należeć do zakresu od **trzy do sześciu znaków**.
   - **Stos typu**. Wybierz typ stosu systemu SAP. W zależności od typu stosu usługi Azure Load Balancer ma jedną (ABAP lub tylko dla środowiska Java) lub dwóch (ABAP + Java) prywatnych adresów IP na systemie SAP.
@@ -549,7 +549,7 @@ Moduł równoważenia obciążenia jest skonfigurowany do używania następując
 
 Szablon bazy danych umożliwia wdrożenie co najmniej dwóch maszyn wirtualnych, które można użyć, aby zainstalować system zarządzania relacyjnymi bazami (danych RDBMS) dla jednego systemu SAP. Na przykład jeśli wdrożono szablon pięć systemów SAP ASCS/SCS, należy wdrożyć ten szablon pięć razy.
 
-Aby skonfigurować szablon — wiele identyfikatorów SID bazy danych, w [bazy danych — wiele identyfikatorów SID szablonu] [ sap-templates-3-tier-multisid-db-marketplace-image] lub [szablonu — wiele identyfikatorów SID bazy danych przy użyciu dysków Managed Disks] [ sap-templates-3-tier-multisid-db-marketplace-image-md], wprowadź wartości dla następujących parametrów:
+Aby skonfigurować szablon — wiele identyfikatorów SID bazy danych, w [bazy danych — wiele identyfikatorów SID szablonu][sap-templates-3-tier-multisid-db-marketplace-image] or [database multi-SID template using Managed Disks][sap-templates-3-tier-multisid-db-marketplace-image-md], wprowadź wartości dla następujących parametrów:
 
 - **Identyfikator systemu SAP**. Wprowadź identyfikator systemu SAP systemu SAP, w którym chcesz zainstalować. Identyfikator będzie służyć jako prefiks dla zasobów, które są wdrażane.
 - **Typ systemu operacyjnego**. Wybierz system operacyjny maszyn wirtualnych.
@@ -566,7 +566,7 @@ Aby skonfigurować szablon — wiele identyfikatorów SID bazy danych, w [bazy d
 
 Szablon serwerów aplikacji umożliwia wdrożenie co najmniej dwóch maszyn wirtualnych, które może służyć jako wystąpień serwera aplikacji SAP dla jednego systemu SAP. Na przykład jeśli wdrożono szablon pięć systemów SAP ASCS/SCS, należy wdrożyć ten szablon pięć razy.
 
-Aby skonfigurować szablon — wiele identyfikatorów SID serwerów aplikacji, w [szablon — wiele identyfikatorów SID serwerów aplikacji] [ sap-templates-3-tier-multisid-apps-marketplace-image] lub [szablon — wiele identyfikatorów SID serwerów aplikacji przy użyciu dysków Managed Disks] [ sap-templates-3-tier-multisid-apps-marketplace-image-md], wprowadź wartości dla następujących parametrów:
+Aby skonfigurować szablon — wiele identyfikatorów SID serwerów aplikacji, w [szablon — wiele identyfikatorów SID serwerów aplikacji][sap-templates-3-tier-multisid-apps-marketplace-image] or [application servers multi-SID template using Managed Disks][sap-templates-3-tier-multisid-apps-marketplace-image-md], wprowadź wartości dla następujących parametrów:
 
   -  **Identyfikator systemu SAP**. Wprowadź identyfikator systemu SAP systemu SAP, w którym chcesz zainstalować. Identyfikator będzie służyć jako prefiks dla zasobów, które są wdrażane.
   -  **Typ systemu operacyjnego**. Wybierz system operacyjny maszyn wirtualnych.
@@ -589,7 +589,7 @@ W naszym przykładzie przestrzeni adresowej sieci wirtualnej platformy Azure to 
 Aby ustawić wymagany adres IP DNS adresy, wykonaj następujące czynności.
 
 1. W witrynie Azure portal na **serwerów DNS** bloku, upewnij się, że Twoja sieć wirtualna **serwerów DNS** opcja jest ustawiona na **niestandardowych serwerów DNS**.
-2. Wybierz ustawienia, na podstawie typu sieci, do których masz. Więcej informacji zawierają następujące zasoby:
+2. Wybierz ustawienia, na podstawie typu sieci, do których masz. Aby uzyskać więcej informacji, zobacz następujące zasoby:
    * [Łączność sieci firmowej (cross-premises)][planning-guide-2.2]: Dodaj adresy IP serwerów DNS w środowisku lokalnym.  
    Możesz rozszerzyć lokalne serwery DNS do maszyn wirtualnych, które działają na platformie Azure. W tym scenariuszu można dodać adresy IP maszyn wirtualnych platformy Azure, na których uruchomiono usługę DNS.
    * W przypadku wdrożeń maszyn wirtualnych odizolowane na platformie Azure: Należy wdrożyć dodatkowe maszyny wirtualnej, w tym samym wystąpieniu sieci wirtualnej, która służy jako serwer DNS. Dodaj adresy IP maszyn wirtualnych platformy Azure, które zostały skonfigurowane do uruchamiania usługi DNS.
@@ -767,7 +767,7 @@ Usługa Azure Load Balancer ma wewnętrznego modułu równoważenia obciążenia
 
 Aby dodać wpisy rejestru na obu węzłach klastra wystąpienia SAP ASCS/SCS, najpierw dodaj te wpisy rejestru Windows na obu węzłach klastra Windows SAP ASCS/SCS programu:
 
-| Ścieżka | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| Path | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | Nazwa zmiennej |`KeepAliveTime` |
 | Typ zmiennej |REG_DWORD (Decimal) |
@@ -778,7 +778,7 @@ _**Tabela 3:** Zmień pierwszy parametr TCP/IP_
 
 Następnie należy dodać wpisy rejestru w tym Windows na obu węzłach klastra Windows SAP ASCS/SCS programu:
 
-| Ścieżka | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| Path | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | Nazwa zmiennej |`KeepAliveInterval` |
 | Typ zmiennej |REG_DWORD (Decimal) |

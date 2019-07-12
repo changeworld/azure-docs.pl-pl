@@ -3,17 +3,17 @@ title: Dostosowywanie widoków operatora w usłudze Azure IoT Central | Microsof
 description: Jako konstruktor możesz dostosować widoki operatora w aplikacji usługi Azure IoT Central.
 author: sandeeppujar
 ms.author: sandeepu
-ms.date: 03/26/2019
+ms.date: 07/09/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 7fc42b24090b5fc68176fea2c7b993643ea24200
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ced771002ca9f542f89dbf74ba4a4745ad2a0339
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60747276"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850174"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Samouczek: Dostosowywanie widoków operatora usługi Azure IoT Central
 
@@ -61,7 +61,7 @@ Jako konstruktor możesz zdefiniować informacje wyświetlane na pulpicie nawiga
     | Typ miary | Telemetria |
     | Miara | temperature |
     | Agregacja | Maksimum |
-    | Widoczność  | Enabled (Włączony) |
+    | Widoczność  | Włączono |
 
     ![Dodawanie wskaźnika KPI](media/tutorial-customize-operator/addkpi.png)
 
@@ -145,7 +145,7 @@ Aby pulpit nawigacyjny aplikacji jako operator w wersji zapoznawczej, wybierz po
 
 Możesz wybrać Kafelki linkiem i obrazem, aby przejść do adresów URL, Ustaw jako Konstruktor.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono sposób dostosowywania widoku operatora aplikacji.
 

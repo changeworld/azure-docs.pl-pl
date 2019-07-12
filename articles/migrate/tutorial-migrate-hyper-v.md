@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 0d4ab3225501c2573b07f27e40a8f42508a4df88
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 4a88e9dddd492d5c24698bcde8c3a1fd942eaf66
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67809540"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854195"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Migrowanie maszyn wirtualnych funkcji Hyper-V do platformy Azure 
 
@@ -30,7 +30,7 @@ Niniejszy samouczek jest trzeci odcinek serii, który demonstruje, jak ocenianie
 > * Konfigurowanie environmen docelowego...
 > * Włącz replikację.
 > * Uruchamianie migracji testowej, aby upewnić się, że wszystko działa zgodnie z oczekiwaniami.
-> * Uruchamianie pełnej migracji na platformę Azure.
+> * Wykonywanie pełnej migracji na platformę Azure.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -267,6 +267,6 @@ Po zweryfikowaniu, że migracja testowa działa zgodnie z oczekiwaniami, należy
 -  Rozważ wdrożenie usługi [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/overview), aby monitorować użycie zasobu i wydatki.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Badanie [podróży migracji do chmury](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/migrate) w ramach wdrażania chmury platformy Azure.

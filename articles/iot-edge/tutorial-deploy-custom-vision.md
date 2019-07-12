@@ -9,12 +9,12 @@ ms.date: 06/25/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 12b141f9aa75231adae9f64c57709f290883b420
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 629b484d27d863727d180bb3e2d01b605ca539a6
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67433936"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850133"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Samouczek: Wykonywanie klasyfikacji obrazów na urządzeniach brzegowych za pomocą usługi Custom Vision Service
 
@@ -69,7 +69,7 @@ Po utworzeniu i wyszkoleniu klasyfikatora obrazów możesz wyeksportować go w p
 
 4. Utwórz projekt z następującymi wartościami:
 
-   | Pole | Wartość |
+   | Pole | Value |
    | ----- | ----- |
    | Name (Nazwa) | Podaj nazwę dla projektu, na przykład **EdgeTreeClassifier**. |
    | Opis | Opcjonalny opis projektu. |
@@ -141,17 +141,9 @@ Rozwiązanie jest logicznym sposobem tworzenia i organizowania wielu modułów d
 
 1. W programie Visual Studio Code wybierz kolejno pozycje **Widok** > **Terminal**, aby otworzyć zintegrowany terminal programu VS Code.
 
-2. W zintegrowanym terminalu wprowadź następujące polecenie, aby zainstalować (lub zaktualizować) pakiet **cookiecutter** używany do tworzenia szablonu modułu języka Python usługi IoT Edge w programie VS Code:
+1. Wybierz kolejno opcje **Widok** > **Paleta poleceń**, aby otworzyć paletę poleceń programu VS Code. 
 
-    ```cmd/sh
-    pip install --upgrade --user cookiecutter
-    ```
-   >[!Note]
-   >Upewnij się, że katalog, w którym zostanie zainstalowany pakiet cookiecutter, znajduje się w ramach zmiennej `Path` w Twoim środowisku, aby możliwe było wywoływanie go z poziomu wiersza polecenia.
-
-3. Wybierz kolejno opcje **Widok** > **Paleta poleceń**, aby otworzyć paletę poleceń programu VS Code. 
-
-4. W palecie poleceń wprowadź i uruchom polecenie **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: nowe rozwiązanie usługi IoT Edge). W palecie poleceń podaj następujące informacje, aby utworzyć rozwiązanie: 
+1. W palecie poleceń wprowadź i uruchom polecenie **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: nowe rozwiązanie usługi IoT Edge). W palecie poleceń podaj następujące informacje, aby utworzyć rozwiązanie: 
 
    | Pole | Wartość |
    | ----- | ----- |
@@ -219,7 +211,7 @@ W tej sekcji dodasz nowy moduł do tego samego rozwiązania CustomVisionSolution
 
 1. W tym samym oknie programu Visual Studio Code użyj palety poleceń, aby uruchomić polecenie **Azure IoT Edge: Add IoT Edge Module** (Azure IoT Edge: dodawanie modułu usługi IoT Edge). W palecie poleceń podaj następujące informacje dotyczące nowego modułu: 
 
-   | Monit | Wartość | 
+   | Monit | Value | 
    | ------ | ----- |
    | Wybierz plik szablonu wdrożenia | Wybierz plik deployment.template.json w folderze CustomVisionSolution. |
    | Wybierz szablon modułu | Wybierz pozycję **Moduł Python** |
@@ -453,7 +445,7 @@ W przeciwnym razie można usunąć lokalnej konfiguracji i zasobów platformy Az
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku wyszkoliliśmy model usługi Custom Vision i wdrożyliśmy go jako moduł na urządzeniu usługi IoT Edge. Następnie skompilowaliśmy moduł, który może wysyłać zapytania do usługi klasyfikacji obrazów i raportować wyniki do usługi IoT Hub. 
 

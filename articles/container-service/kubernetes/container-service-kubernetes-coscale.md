@@ -20,7 +20,7 @@ ms.locfileid: "60713081"
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-W tym artykule pokazujemy, jak wdrożyć [pomocą usługi CoScale](https://web.archive.org/web/20180317071550/ https://www.coscale.com/) agenta, aby monitorować wszystkie węzły, jak i kontenery w klastrze Kubernetes w usłudze Azure Container Service. Wymagane jest konto, za pomocą usługi CoScale dla tej konfiguracji. 
+W tym artykule pokazujemy, jak wdrożyć [pomocą usługi CoScale](https://web.archive.org/web/20180317071550/https://www.coscale.com/) agenta, aby monitorować wszystkie węzły, jak i kontenery w klastrze Kubernetes w usłudze Azure Container Service. Wymagane jest konto, za pomocą usługi CoScale dla tej konfiguracji. 
 
 
 ## <a name="about-coscale"></a>Temat pomocą usługi CoScale 
@@ -34,7 +34,7 @@ Jak pokazano w tym artykule, można zainstalować agentów w klastrze Kubernetes
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Najpierw musisz [Utwórz konto pomocą usługi CoScale](https://web.archive.org/web/20170507123133/ https://www.coscale.com/free-trial).
+Najpierw musisz [Utwórz konto pomocą usługi CoScale](https://web.archive.org/web/20170507123133/https://www.coscale.com/free-trial).
 
 W tym przewodniku przyjęto założenie, iż [utworzone za pomocą usługi Azure Container Service klastra Kubernetes](container-service-kubernetes-walkthrough.md).
 
@@ -81,5 +81,5 @@ Agent pomocą usługi CoScale jest automatycznie wdrażane na nowych komputerach
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Zobacz [pomocą usługi CoScale dokumentacji](https://web.archive.org/web/20180415164304/ http://docs.coscale.com:80/) i [blogu](https://web.archive.org/web/20170501021344/ http://www.coscale.com:80/blog) Aby uzyskać więcej informacji na temat pomocą usługi CoScale rozwiązania do monitorowania. 
+Zobacz [pomocą usługi CoScale dokumentacji](https://web.archive.org/web/20180415164304/http://docs.coscale.com:80/) i [blogu](https://web.archive.org/web/20170501021344/http://www.coscale.com:80/blog) Aby uzyskać więcej informacji na temat pomocą usługi CoScale rozwiązania do monitorowania. 
 

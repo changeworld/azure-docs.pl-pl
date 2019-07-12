@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dabe0ad1a556ee43f3e6cae0e1cd421db5cde0fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1efb67df6c31a3b03fdc45fffc0564fb09e39faf
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60413964"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67853042"
 ---
 # <a name="tutorial-enabling-password-writeback"></a>Samouczek: włączanie zapisywania zwrotnego haseł
 
@@ -54,11 +54,11 @@ Włączenie funkcji zapisywania zwrotnego haseł w programie Azure AD Connect to
 2. Przejdź do usługi **Azure Active Directory**, kliknij pozycję **Resetowanie hasła**, następnie wybierz pozycję **Integracja lokalna**.
 3. Dla opcji **Zapisywać zwrotnie hasła do katalogu lokalnego?** ustaw wartość **Tak**.
 4. Dla opcji **Zezwolić użytkownikom na odblokowywanie kont bez resetowania hasła?** ustaw wartość **Tak**.
-5. Kliknij pozycję **Zapisz**
+5. Kliknij polecenie **Zapisz**.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku włączono funkcję zapisywania zwrotnego haseł dla samoobsługowego resetowania hasła. Pozostaw otwarte okno witryny Azure Portal i przejdź do następnego samouczka, aby skonfigurować dodatkowe ustawienia związane z samoobsługowym resetowaniem hasła przed wdrożeniem rozwiązania w pilotażu.
 
 > [!div class="nextstepaction"]
-> [Włączanie funkcji samoobsługowego resetowania hasła na ekranie logowania systemu Windows](tutorial-sspr-windows.md)
+> [Ocena ryzyka podczas logowania](tutorial-risk-based-sspr-mfa.md)

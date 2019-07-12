@@ -245,7 +245,7 @@
         - name: Uruchamianie prognoz partii
           displayName: score scoring asynchronous consume pipeline
           href: how-to-run-batch-predictions.md
-    - name: Monitorowanie usług internetowych
+    - name: Monitorowanie modeli
       items:
         - name: Zbieranie i ocenianie danych modelu
           displayName: track production
@@ -273,9 +273,6 @@
     - name: Zestaw SDK uczenia maszynowego
       displayName: api core package python data prep
       href: 'https://aka.ms/aml-sdk'
-    - name: Zestaw SDK do monitorowania
-      displayName: api package python monitor
-      href: 'https://aka.ms/aml-monitoring-sdk'
     - name: Interfejs wiersza polecenia uczenia maszynowego
       displayName: 'cli, extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md

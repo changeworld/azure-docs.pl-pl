@@ -4,7 +4,7 @@ description: Korzystanie z ponownego uruchamiania maszyny Wirtualnej infrastrukt
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cda0b1c0774ed33bf550e0edf329cc22a2807be3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d99f704d05dea88f7fa29afea99cbbdb00d09c24
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60825665"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709885"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>Korzystanie z ponownego uruchamiania maszyny Wirtualnej infrastruktury platformy Azure do osiągnięcia "wyższej dostępności" systemu SAP
 
@@ -239,13 +239,13 @@ Dla krytycznych składników SAP otrzymano poniżej do tej pory:
 
 * Wysoką dostępność serwerów aplikacji SAP
 
-    Wystąpień serwera aplikacji SAP są składnikom nadmiarowym. Każde wystąpienie serwera aplikacji SAP jest wdrażana na własnej maszynie Wirtualnej działa w różnych domenach błędów platformy Azure i domeny uaktualnień. Aby uzyskać więcej informacji, zobacz [domeny błędów] [ planning-guide-3.2.1] i [uaktualnień] [ planning-guide-3.2.2] sekcje. 
+    Wystąpień serwera aplikacji SAP są składnikom nadmiarowym. Każde wystąpienie serwera aplikacji SAP jest wdrażana na własnej maszynie Wirtualnej działa w różnych domenach błędów platformy Azure i domeny uaktualnień. Aby uzyskać więcej informacji, zobacz [domeny błędów][planning-guide-3.2.1] and [Upgrade domains][planning-guide-3.2.2] sekcje. 
 
-    Ta konfiguracja może upewnij się, korzystając z zestawami dostępności platformy Azure. Aby uzyskać więcej informacji, zobacz [zestawami dostępności platformy Azure] [ planning-guide-3.2.3] sekcji. 
+    Ta konfiguracja może upewnij się, korzystając z zestawami dostępności platformy Azure. Aby uzyskać więcej informacji, zobacz [zestawami dostępności platformy Azure][planning-guide-3.2.3] sekcji. 
 
     Potencjalne planowane lub nieplanowane niedostępność błędów platformy Azure lub domena uaktualnienia spowoduje, że niedostępność ograniczonej liczby maszyn wirtualnych z ich wystąpień serwera aplikacji SAP.
 
-    Każde wystąpienie serwera aplikacji SAP jest umieszczany w swoje własne konta magazynu platformy Azure. Potencjalne niedostępności jedno konto magazynu platformy Azure spowoduje niedostępność tylko jednej maszyny Wirtualnej z wystąpieniem serwera aplikacji SAP. Należy jednak pamiętać, że istnieje ograniczenie liczby kont usługi Azure storage w ramach jednej subskrypcji platformy Azure. Aby zapewnić automatyczne uruchamianie wystąpienia ASCS/SCS po ponownym uruchomieniu maszyny Wirtualnej, należy ustawić parametr automatyczne uruchamianie w profilu uruchamiania wystąpienia ASCS/SCS, który został opisany w [przy użyciu funkcji Autostart dla wystąpień SAP] [ planning-guide-11.5] sekcja.
+    Każde wystąpienie serwera aplikacji SAP jest umieszczany w swoje własne konta magazynu platformy Azure. Potencjalne niedostępności jedno konto magazynu platformy Azure spowoduje niedostępność tylko jednej maszyny Wirtualnej z wystąpieniem serwera aplikacji SAP. Należy jednak pamiętać, że istnieje ograniczenie liczby kont usługi Azure storage w ramach jednej subskrypcji platformy Azure. Aby zapewnić automatyczne uruchamianie wystąpienia ASCS/SCS po ponownym uruchomieniu maszyny Wirtualnej, należy ustawić parametr automatyczne uruchamianie w profilu uruchamiania wystąpienia ASCS/SCS, który został opisany w [przy użyciu funkcji Autostart dla wystąpień SAP][planning-guide-11.5] sekcji.
   
     Aby uzyskać więcej informacji, zobacz [wysokiej dostępności dla serwerów aplikacji SAP][planning-guide-11.4.1].
 
@@ -255,7 +255,7 @@ Dla krytycznych składników SAP otrzymano poniżej do tej pory:
 
     W tym scenariuszu wykorzystywać ponownego uruchomienia maszyny Wirtualnej platformy Azure, aby chronić maszynę Wirtualną za pomocą zainstalowanego wystąpienia SAP ASCS/SCS. W przypadku planowanych lub nieplanowanych przestojów serwerami platformy Azure maszyny wirtualne zostaną uruchomione ponownie na innym serwerze dostępne. Jak wspomniano wcześniej, ponowne uruchomienie maszyny Wirtualnej platformy Azure przede wszystkim chroni maszyny wirtualne i *nie* aplikacji, w tym przypadku wystąpienia ASCS/SCS. Za pomocą ponownego uruchamiania maszyny Wirtualnej pośrednio osiągnąć "wyższa dostępność" na wystąpienie SAP ASCS/SCS. 
 
-    Aby zapewnić automatyczne uruchamianie wystąpienia ASCS/SCS po ponownym uruchomieniu maszyny Wirtualnej, ustaw dla parametru automatyczne uruchamianie w profilu uruchamiania wystąpienia ASCS/SCS, zgodnie z opisem w [przy użyciu funkcji Autostart dla wystąpień SAP] [ planning-guide-11.5] sekcji . To ustawienie oznacza, że wystąpienie ASCS/SCS jako pojedynczy punkt awarii (SPOF), uruchomiony w jednej maszynie Wirtualnej określi dostępności całe środowisko SAP.
+    Aby zapewnić automatyczne uruchamianie wystąpienia ASCS/SCS po ponownym uruchomieniu maszyny Wirtualnej, ustaw dla parametru automatyczne uruchamianie w profilu uruchamiania wystąpienia ASCS/SCS, zgodnie z opisem w [przy użyciu funkcji Autostart dla wystąpień SAP][planning-guide-11.5] sekcji. To ustawienie oznacza, że wystąpienie ASCS/SCS jako pojedynczy punkt awarii (SPOF), uruchomiony w jednej maszynie Wirtualnej określi dostępności całe środowisko SAP.
 
 * *Wyższą dostępność* serwera systemu DBMS
 
@@ -282,6 +282,6 @@ Zakładając, że typowy scenariusz Azure jednego wystąpienia serwera aplikacji
   * [Uruchamianie i zatrzymywanie agentów zarządzania środowiska SAP NetWeaver](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm)
   * [Jak włączyć automatyczne uruchamianie bazy danych HANA](http://www.freehanatutorials.com/2012/10/how-to-enable-auto-start-of-hana.html)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać informacji na temat pełnego środowiska SAP NetWeaver wykrywaniem aplikacji wysokiej dostępności, zobacz [wysoka dostępność aplikacji SAP na platformie IaaS Azure][sap-high-availability-architecture-scenarios-sap-app-ha].

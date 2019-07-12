@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 03/14/2019
+ms.date: 07/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 2f0b01601dfb28b2b6b8ee8ca53398ec3dccb803
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7aef7eb2e3d88bef7d2700d9945b9ff343c17536
+ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65787282"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67812813"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Interfejsy API protokołu HTTP w funkcje trwałe (usługa Azure Functions)
 
@@ -45,12 +45,13 @@ Każdy z tych interfejsów API protokołu HTTP jest operacja elementu webhook st
 Te funkcje przykład generuje następujące dane JSON w odpowiedzi. Typ danych wszystkich pól jest `string`.
 
 | Pole                   |Opis                           |
-|-------------------------|--------------------------------------|
-| **`id`**                |Identyfikator wystąpienia aranżacji. |
-| **`statusQueryGetUri`** |Adres URL stanu wystąpienia aranżacji. |
-| **`sendEventPostUri`**  |"Zgłoś zdarzenie" adres URL wystąpienia aranżacji. |
-| **`terminatePostUri`**  |"Terminate" adres URL wystąpienia aranżacji. |
-| **`rewindPostUri`**     |"Przewijanie" adres URL wystąpienia aranżacji. |
+|-----------------------------|--------------------------------------|
+| **`id`**                    |Identyfikator wystąpienia aranżacji. |
+| **`statusQueryGetUri`**     |Adres URL stanu wystąpienia aranżacji. |
+| **`sendEventPostUri`**      |"Zgłoś zdarzenie" adres URL wystąpienia aranżacji. |
+| **`terminatePostUri`**      |"Terminate" adres URL wystąpienia aranżacji. |
+| **`purgeHistoryDeleteUri`** |"Przeczyścić historię" adres URL wystąpienia aranżacji. |
+| **`rewindPostUri`**         |(wersja zapoznawcza) "Przewijanie" adres URL wystąpienia aranżacji. |
 
 Poniżej przedstawiono przykładową odpowiedź:
 
@@ -65,6 +66,7 @@ Location: https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d84
     "statusQueryGetUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
     "sendEventPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
     "terminatePostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
+    "purgeHistoryDeleteUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
     "rewindPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/rewind?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
 }
 ```
@@ -134,7 +136,7 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}
 
 | Pole                   | Typ parametru  | Opis |
 |-------------------------|-----------------|-------------|
-| **`instanceId`**        | Adres URL             | Identyfikator wystąpienia aranżacji. |
+| **`instanceId`**        | URL             | Identyfikator wystąpienia aranżacji. |
 | **`showInput`**         | Ciąg zapytania    | Parametr opcjonalny. Jeśli ustawiono `false`, funkcja danych wejściowych nie zostaną uwzględnione w ładunku odpowiedzi.|
 | **`showHistory`**       | Ciąg zapytania    | Parametr opcjonalny. Jeśli ustawiono `true`, historię wykonywania aranżacji zostaną uwzględnione w ładunku odpowiedzi.|
 | **`showHistoryOutput`** | Ciąg zapytania    | Parametr opcjonalny. Jeśli ustawiono `true`, funkcja generuje zostaną uwzględnione w historii wykonywania aranżacji.|
@@ -156,12 +158,12 @@ Mogą być zwracane kilka wartości Kod stanu to możliwe.
 
 | Pole                 | Typ danych | Opis |
 |-----------------------|-----------|-------------|
-| **`runtimeStatus`**   | string    | Stan środowiska uruchomieniowego wystąpienia. Wartości to *systemem*, *oczekujące*, *anulowane*, *zwolniony*, *Ukończone*. |
+| **`runtimeStatus`**   | ciąg    | Stan środowiska uruchomieniowego wystąpienia. Wartości to *systemem*, *oczekujące*, *anulowane*, *zwolniony*, *Ukończone*. |
 | **`input`**           | JSON      | Dane JSON, używane do inicjowania wystąpienia. To pole jest `null` Jeśli `showInput` parametr ciągu zapytania jest równa `false`.|
 | **`customStatus`**    | JSON      | Dane JSON, używane na potrzeby stan niestandardowej aranżacji. To pole jest `null` Jeśli nie zostanie ustawiona. |
 | **`output`**          | JSON      | Dane wyjściowe JSON wystąpienia. To pole jest `null` Jeśli wystąpienie nie jest w stanie ukończone. |
-| **`createdTime`**     | string    | Podczas tworzenia tego wystąpienia. Używa ISO 8601 rozszerzone notacji. |
-| **`lastUpdatedTime`** | string    | Czas, jaką utrwalone ostatniego wystąpienia. Używa ISO 8601 rozszerzone notacji. |
+| **`createdTime`**     | ciąg    | Podczas tworzenia tego wystąpienia. Używa ISO 8601 rozszerzone notacji. |
+| **`lastUpdatedTime`** | ciąg    | Czas, jaką utrwalone ostatniego wystąpienia. Używa ISO 8601 rozszerzone notacji. |
 | **`historyEvents`**   | JSON      | Tablica JSON, zawierającą historię wykonywania aranżacji. To pole jest `null` chyba że `showHistory` parametr ciągu zapytania jest równa `true`. |
 
 Oto przykład ładunek odpowiedzi, tym aranżacji wykonywania historii i działania dane wyjściowe (sformatowane, aby zwiększyć czytelność):
@@ -262,7 +264,7 @@ GET /runtime/webhooks/durableTask/instances?
 
 | Pole                   | Typ parametru  | Opis |
 |-------------------------|-----------------|-------------|
-| **`instanceId`**        | Adres URL             | Identyfikator wystąpienia aranżacji. |
+| **`instanceId`**        | URL             | Identyfikator wystąpienia aranżacji. |
 | **`showInput`**         | Ciąg zapytania    | Parametr opcjonalny. Jeśli ustawiono `false`, funkcja danych wejściowych nie zostaną uwzględnione w ładunku odpowiedzi.|
 | **`showHistory`**       | Ciąg zapytania    | Parametr opcjonalny. Jeśli ustawiono `true`, historię wykonywania aranżacji zostaną uwzględnione w ładunku odpowiedzi.|
 | **`showHistoryOutput`** | Ciąg zapytania    | Parametr opcjonalny. Jeśli ustawiono `true`, funkcja generuje zostaną uwzględnione w historii wykonywania aranżacji.|
@@ -360,7 +362,7 @@ DELETE /runtime/webhooks/durabletask/instances/{instanceId}
 
 | Pole             | Typ parametru  | Opis |
 |-------------------|-----------------|-------------|
-| **`instanceId`**  | Adres URL             | Identyfikator wystąpienia aranżacji. |
+| **`instanceId`**  | URL             | Identyfikator wystąpienia aranżacji. |
 
 #### <a name="response"></a>Odpowiedź
 
@@ -373,7 +375,7 @@ Mogą być zwrócone następujące wartości Kod stanu HTTP.
 
 | Pole                  | Typ danych | Opis |
 |------------------------|-----------|-------------|
-| **`instancesDeleted`** | liczba całkowita   | Liczba wystąpień usunięte. W przypadku pojedynczego wystąpienia, ta wartość powinna zawsze być `1`. |
+| **`instancesDeleted`** | integer   | Liczba wystąpień usunięte. W przypadku pojedynczego wystąpienia, ta wartość powinna zawsze być `1`. |
 
 Poniżej przedstawiono przykładowy ładunek odpowiedzi, (sformatowane, aby zwiększyć czytelność):
 
@@ -435,7 +437,7 @@ Mogą być zwrócone następujące wartości Kod stanu HTTP.
 
 | Pole                   | Typ danych | Opis |
 |-------------------------|-----------|-------------|
-| **`instancesDeleted`**  | liczba całkowita   | Liczba wystąpień usunięte. |
+| **`instancesDeleted`**  | integer   | Liczba wystąpień usunięte. |
 
 Poniżej przedstawiono przykładowy ładunek odpowiedzi, (sformatowane, aby zwiększyć czytelność):
 
@@ -473,8 +475,8 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}
 
 | Pole             | Typ parametru  | Opis |
 |-------------------|-----------------|-------------|
-| **`instanceId`**  | Adres URL             | Identyfikator wystąpienia aranżacji. |
-| **`eventName`**   | Adres URL             | Nazwa zdarzenia, które czeka na wystąpienie docelowe aranżacji. |
+| **`instanceId`**  | URL             | Identyfikator wystąpienia aranżacji. |
+| **`eventName`**   | URL             | Nazwa zdarzenia, które czeka na wystąpienie docelowe aranżacji. |
 | **`{content}`**   | Zawartość żądania | Ładunek zdarzenia w formacie JSON. |
 
 #### <a name="response"></a>Odpowiedź
@@ -528,7 +530,7 @@ Parametry dla tego interfejsu API to domyślny zestaw wspomniano wcześniej, a t
 
 | Pole             | Typ parametru  | Opis |
 |-------------------|-----------------|-------------|
-| **`instanceId`**  | Adres URL             | Identyfikator wystąpienia aranżacji. |
+| **`instanceId`**  | URL             | Identyfikator wystąpienia aranżacji. |
 | **`reason`**      | Ciąg zapytania    | Opcjonalny. Przyczyna zakończenia wystąpienia aranżacji. |
 
 #### <a name="response"></a>Odpowiedź
@@ -547,11 +549,11 @@ POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7
 
 Odpowiedzi dla tego interfejsu API nie zawierają żadnej zawartości.
 
-## <a name="rewind-instance-preview"></a>Przewiń do tyłu wystąpienia (wersja zapoznawcza)
+### <a name="rewind-instance-preview"></a>Przewiń do tyłu wystąpienia (wersja zapoznawcza)
 
 Przywraca wystąpienia orchestration nie powiodło się, do stanu uruchomienia przez odtworzenie najnowszych operacje zakończone niepowodzeniem.
 
-### <a name="request"></a>Żądanie
+#### <a name="request"></a>Żądanie
 
 Dla wersji 1.x środowisko uruchomieniowe usługi Functions, żądanie jest sformatowany w następujący sposób (wiele wierszy są wyświetlane dla jasności):
 
@@ -577,10 +579,10 @@ Parametry dla tego interfejsu API to domyślny zestaw wspomniano wcześniej, a t
 
 | Pole             | Typ parametru  | Opis |
 |-------------------|-----------------|-------------|
-| **`instanceId`**  | Adres URL             | Identyfikator wystąpienia aranżacji. |
+| **`instanceId`**  | URL             | Identyfikator wystąpienia aranżacji. |
 | **`reason`**      | Ciąg zapytania    | Opcjonalny. Przyczyna przewijanie wystąpienia aranżacji. |
 
-### <a name="response"></a>Odpowiedź
+#### <a name="response"></a>Odpowiedź
 
 Mogą być zwracane kilka wartości Kod stanu to możliwe.
 
@@ -596,7 +598,90 @@ POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7
 
 Odpowiedzi dla tego interfejsu API nie zawierają żadnej zawartości.
 
-## <a name="next-steps"></a>Kolejne kroki
+### <a name="signal-entity-preview"></a>Sygnał jednostki (wersja zapoznawcza)
+
+Wysyła komunikat Operacja jednokierunkowa [trwałe jednostki](durable-functions-types-features-overview.md#entity-functions). Jeśli jednostka nie istnieje, zostanie automatycznie utworzony.
+
+#### <a name="request"></a>Żądanie
+
+Żądanie HTTP jest sformatowany w następujący sposób (wiele wierszy są wyświetlane dla jasności):
+
+```http
+POST /runtime/webhooks/durabletask/entities/{entityType}/{entityKey}
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+    &op={operationName}
+```
+
+Żądania, że parametry dla tego interfejsu API to domyślny zestaw wspomniano wcześniej, a także następujące parametry unikatowy:
+
+| Pole             | Typ parametru  | Opis |
+|-------------------|-----------------|-------------|
+| **`entityType`**  | URL             | Typ jednostki. |
+| **`entityKey`**   | URL             | Unikatowa nazwa jednostki. |
+| **`op`**          | Ciąg zapytania    | Opcjonalny. Nazwa operacji zdefiniowanych przez użytkownika do wywołania. |
+| **`{content}`**   | Zawartość żądania | Ładunek zdarzenia w formacie JSON. |
+
+Oto przykładowe żądanie, która wysyła komunikat "Add" zdefiniowanych przez użytkownika do `Counter` jednostki o nazwie `steps`. Zawartość komunikatu jest wartością `5`. Jeśli jednostka nie istnieje, zostanie utworzony przez to żądanie:
+
+```http
+POST /runtime/webhooks/durabletask/entities/Counter/steps?op=Add
+Content-Type: application/json
+
+5
+```
+
+#### <a name="response"></a>Odpowiedź
+
+Ta operacja ma kilka możliwych odpowiedzi:
+
+* **HTTP 202 (zaakceptowano)** : Operacja sygnału zostało zaakceptowane do przetwarzania asynchronicznego.
+* **HTTP 400 (złe żądanie)** : Zawartość żądania nie jest typu `application/json`, nie jest prawidłowym plikiem JSON lub miał nieprawidłowy `entityKey` wartość.
+* **HTTP 404 (nie znaleziono)** : Określony `entityType` nie został znaleziony.
+
+Pomyślne żądania HTTP nie zawiera żadnej zawartości w odpowiedzi. Nie powiodło się żądanie HTTP może zawierać informacje o błędzie w formacie JSON w treści odpowiedzi.
+
+### <a name="query-entity-preview"></a>Jednostka zapytania (wersja zapoznawcza)
+
+Pobiera stan określonej jednostki.
+
+#### <a name="request"></a>Żądanie
+
+Żądanie HTTP jest sformatowany w następujący sposób (wiele wierszy są wyświetlane dla jasności):
+
+```http
+GET /runtime/webhooks/durabletask/entities/{entityType}/{entityKey}
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+```
+
+#### <a name="response"></a>Odpowiedź
+
+Ta operacja ma dwa możliwe odpowiedzi:
+
+* **HTTP 200 (OK)** : Istnieje określonej jednostki.
+* **HTTP 404 (nie znaleziono)** : Nie znaleziono określonej jednostki.
+
+Odpowiedź oznaczająca Powodzenie zawiera stan serializacji JSON jednostki jako jego zawartości.
+
+#### <a name="example"></a>Przykład
+Oto przykład żądanie HTTP, która umożliwia pobieranie stanu do istniejącego `Counter` jednostki o nazwie `steps`:
+
+```http
+GET /runtime/webhooks/durabletask/entities/Counter/steps
+```
+
+Jeśli `Counter` jednostki zawarte wystarczy kilka kroków, zapisane w `currentValue` pola, zawartość odpowiedzi może wyglądać podobnie do następującej (sformatowane, aby zwiększyć czytelność):
+
+```json
+{
+    "currentValue": 5
+}
+```
+
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Informacje o sposobie obsługi błędów](durable-functions-error-handling.md)

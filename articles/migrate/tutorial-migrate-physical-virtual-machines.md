@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 8dc3b485d83f7bc55ca913e2c706164d4953ee61
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 006f7270570eba17fb44421b1c181d9ad68ad2ee
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67809603"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854178"
 ---
 # <a name="migrate-physical-or-virtualized-servers-to-azure"></a>Migrowanie serwerów fizyczne lub zwirtualizowane na platformie Azure 
 
@@ -38,7 +38,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Instalowanie usługi mobilności na maszynach, które mają zostać zmigrowane.
 > * Włącz replikację.
 > * Uruchamianie migracji testowej, aby upewnić się, że wszystko działa zgodnie z oczekiwaniami.
-> * Uruchamianie pełnej migracji na platformę Azure.
+> * Wykonywanie pełnej migracji na platformę Azure.
 
 > [!NOTE]
 > W samouczkach pokazano to najprostsza ścieżka wdrażania dla scenariusza, aby szybko skonfigurować się weryfikacji koncepcji. Samouczki użyj opcji domyślnych, jeśli jest to możliwe, a nie pokazuj wszystkich możliwych ustawień i ścieżki. Aby uzyskać szczegółowe instrukcje zapoznaj się z How-tos dla usługi Azure Migrate.
@@ -385,6 +385,6 @@ Po zweryfikowaniu, że migracja testowa działa zgodnie z oczekiwaniami, należy
     - Rozważ wdrożenie usługi [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/overview), aby monitorować użycie zasobu i wydatki.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Badanie [podróży migracji do chmury](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/migrate) w ramach wdrażania chmury platformy Azure.
