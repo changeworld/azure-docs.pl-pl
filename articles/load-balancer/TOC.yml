@@ -61,6 +61,8 @@
       href: load-balancer-standard-availability-zones.md
     - name: Metryki i diagnostyka usługi Load Balancer w warstwie Standardowa
       href: load-balancer-standard-diagnostics.md
+    - name: Atrybuty zabezpieczeń
+      href: load-balancer-security-attributes.md
 - name: Instrukcje
   items:
     - name: Tworzenie strefowo nadmiarowej publicznej usługi Load Balancer w warstwie Standardowa

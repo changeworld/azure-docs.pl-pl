@@ -43,7 +43,7 @@
       href: hybrid-azuread-join-plan.md
     - name: Kontrolowana walidacja przyłączenia do hybrydowej usługi Azure AD
       href: hybrid-azuread-join-control.md
-    - name: Zarządzanie tożsamością urządzenia
+    - name: Zarządzanie tożsamościami urządzeń
       href: device-management-azure-portal.md
     - name: Zarządzanie nieodświeżonymi urządzeniami
       href: manage-stale-devices.md

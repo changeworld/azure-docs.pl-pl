@@ -17,18 +17,6 @@
       href: quickstart-php.md
     - name: Tworzenie aplikacji Node.js
       href: quickstart-nodejs.md
-    - name: Tworzenie aplikacji Node.js przy użyciu platformy Docker i programu Visual Studio Code
-      items:
-        - name: Wprowadzenie
-          href: tutorial-javascript-vscode-get-started.md
-        - name: Tworzenie rejestru kontenerów
-          href: tutorial-javascript-vscode-create-registry.md
-        - name: Tworzenie obrazu
-          href: tutorial-javascript-vscode-containerize-app.md
-        - name: Wdrażanie obrazu
-          href: tutorial-javascript-vscode-deploy-container.md
-        - name: Wyświetlanie dzienników
-          href: tutorial-javascript-vscode-tail-logs.md
     - name: Tworzenie aplikacji Java
       href: quickstart-java.md
     - name: Tworzenie aplikacji Python

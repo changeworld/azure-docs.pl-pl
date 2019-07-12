@@ -254,7 +254,7 @@
         - name: Obsługa długotrwałych operacji
           href: media-services-dotnet-long-operations.md
         - name: Specyfikacja odbierania podzielonej zawartości na żywo w formacie MP4
-          href: media-services-fmp4-live-ingest-overview.md
+          href: ../media-services-fmp4-live-ingest-overview.md
         - name: Wprowadzenie
           href: media-services-azure-media-clipper-getting-started.md
         - name: Ładowanie wideo
@@ -458,11 +458,11 @@
     - name: Specyfikacje
       items:
         - name: Pozyskiwanie na żywo — specyfikacja pozyskiwania na żywo podzielonej zawartości w formacie MP4
-          href: media-services-fmp4-live-ingest-overview.md
+          href: ../media-services-fmp4-live-ingest-overview.md
         - name: Pozyskiwanie na żywo — sygnalizowanie metadanych czasowych w transmisji strumieniowej na żywo
-          href: media-services-specifications-live-timed-metadata.md
+          href: ../media-services-specifications-live-timed-metadata.md
         - name: Smooth Streaming — HEVC
-          href: media-services-specifications-ms-sstr-amendment-hevc.md
+          href: ../media-services-specifications-ms-sstr-amendment-hevc.md
 - name: Zasoby
   items:
     - name: Społeczność usługi Azure Media Services

@@ -156,6 +156,8 @@
           maintainContext: true
     - name: Zestaw skalowania — często zadawane pytania
       href: virtual-machine-scale-sets-faq.md
+    - name: Atrybuty zabezpieczeń
+      href: virtual-machine-scale-sets-security-attributes.md
 - name: Instrukcje
   items:
     - name: Planowanie i projektowanie

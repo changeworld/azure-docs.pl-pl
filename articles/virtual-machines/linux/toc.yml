@@ -137,6 +137,8 @@
           href: infrastructure-example.md
         - name: Limity przydziału procesorów wirtualnych
           href: quotas.md
+    - name: Atrybuty zabezpieczeń
+      href: virtual-machines-linux-security-attributes.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Tworzenie maszyn wirtualnych
