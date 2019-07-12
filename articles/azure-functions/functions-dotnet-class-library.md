@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 2a6d670ba9f2f496cc94d2790eb6f66d46305746
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 30c97eed5f28631bd2583cbda75df5755ffe2e34
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65872800"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626092"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Usługa Azure Functions dla deweloperów odwołanie w C#
 
@@ -50,7 +50,7 @@ Podczas kompilowania projektu strukturę folderów, która wygląda jak w poniż
  | - host.json
 ```
 
-Jest to katalog, co zostanie wdrożona do aplikacji funkcji na platformie Azure. Rozszerzenia powiązania wymagane w [wersji 2.x](functions-versions.md) funkcji środowiska uruchomieniowego są [dodane do projektu jako pakiety NuGet](./functions-bindings-register.md#c-class-library-with-visual-studio-2019).
+Jest to katalog, co zostanie wdrożona do aplikacji funkcji na platformie Azure. Rozszerzenia powiązania wymagane w [wersji 2.x](functions-versions.md) funkcji środowiska uruchomieniowego są [dodane do projektu jako pakiety NuGet](./functions-bindings-register.md#vs).
 
 > [!IMPORTANT]
 > Proces kompilacji tworzy *function.json* pliku dla każdej funkcji. To *function.json* pliku nie jest przeznaczona do można edytować bezpośrednio. Nie można zmienić konfiguracji powiązania lub wyłączyć tę funkcję, edytując ten plik. Aby dowiedzieć się, jak wyłączyć funkcję, zobacz [wyłączania funkcji](disable-function.md#functions-2x---c-class-libraries).
@@ -402,7 +402,7 @@ public static class IBinderExampleMultipleAttributes
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Dowiedz się więcej na temat wyzwalaczy i powiązań](functions-triggers-bindings.md)

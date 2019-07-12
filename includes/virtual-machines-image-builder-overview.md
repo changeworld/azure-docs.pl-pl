@@ -5,12 +5,12 @@ ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: 6eedc095f155a77cddf48211dbc4a677bf188112
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 55d73b2602a9a862375ca3e72dee4597c1d6f1d6
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509889"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67659875"
 ---
 Obrazy standardowych maszyn wirtualnych (VM) umożliwiają organizacjom migrację do chmury i zapewnia spójność we wdrożeniach. Obrazy obejmują zazwyczaj wstępnie zdefiniowanych ustawień zabezpieczeń i konfiguracji oraz niezbędne oprogramowanie. Konfigurowanie potoku przetwarzania obrazów wymaga czasu, infrastruktury i konfiguracji, ale za pomocą Kreatora obrazów maszyn wirtualnych platformy Azure, po prostu podać prostej konfiguracji opisujące obrazu, Prześlij go do usługi i wbudowany obraz i rozproszone.
  
@@ -55,7 +55,7 @@ AIB będzie obsługiwać RHEL obrazu ISO firmy jako źródło dla:
 - RHEL 7.4
 - RHEL W WERSJI 7.5
 
-RHEL 7.6 nie jest obsługiwana, ale poddawana testom.
+Obrazy systemu RHEL 7.6 ISO nie są obsługiwane, ale są testowane.
 
 ## <a name="how-it-works"></a>Jak to działa
 
@@ -103,7 +103,7 @@ Kreator obrazów maszyna wirtualna jest tworzona przy użyciu rozmiaru D1v2 masz
  
 Kreator obrazów platformy Azure będzie dystrybuować obraz wybrany regiony, które mogą zostać naliczone opłaty za ruch wychodzący w sieci.
  
-## <a name="next-steps"></a>Kolejne kroki 
+## <a name="next-steps"></a>Następne kroki 
  
 Aby wypróbować kreatora obrazów platformy Azure, zobacz artykuły dotyczące tworzenia [Linux](../articles/virtual-machines/linux/image-builder.md) lub [Windows](../articles/virtual-machines/windows/image-builder.md) obrazów.
  

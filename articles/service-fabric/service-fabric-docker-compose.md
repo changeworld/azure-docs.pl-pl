@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: aljo, subramar
-ms.openlocfilehash: da86ed9a3e6979bd1dc05aef6ef70c7b8533a8c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: subramar
+ms.openlocfilehash: 6e8cbf30044f95c2514a3a1af15cb58868957a16
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60948838"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620721"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Obsługa wdrażania Compose platformy docker w usłudze Azure Service Fabric (wersja zapoznawcza)
 
@@ -161,7 +161,7 @@ Na przykład klient element może mieć utworzone za pomocą typu 1.0 AppTypeA a
 
 Mimo że ten model zapewnia elastyczność, planujemy również obsługiwać model wdrożenia prostszy, oparta na wystąpieniach, gdzie typy są niejawne z pliku manifestu. W tym modelu poszczególne aplikacje uzyskują niezależnych manifest. Firma Microsoft udostępnia w wersji zapoznawczej ten nakład pracy, dodając obsługę platformy docker-compose.yml, czyli na format wdrożenie oparte na wystąpienie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Czytaj [modelu aplikacji usługi Service Fabric](service-fabric-application-model.md)
 * [Get started with Service Fabric CLI](service-fabric-cli.md) (Wprowadzenie do interfejsu wiersza polecenia usługi Service Fabric)

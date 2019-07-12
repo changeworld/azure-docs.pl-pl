@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: 91c870e5-2669-437f-9896-ee6c7fe1d51d
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 10dc31e21f20618450de6d99b3fce40d63272d31
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c88c157c5f37bb0bd1e82225bdacfbd60806bbf8
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65204368"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620639"
 ---
 # <a name="connect-data-from-azure-ad-identity-protection"></a>Połącz dane z usługi Azure AD Identity Protection
 
@@ -49,7 +50,7 @@ Jeśli wdrożono usługę Azure AD Identity Protection i pobieranie danych, dane
 
 6. Aby użyć odpowiednich schematu w usłudze Log Analytics dla alertów usługi Azure AD Identity Protection, możesz wyszukać **IdentityProtectionLogs_CL**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym dokumencie przedstawiono sposób nawiązać połączenie z usługi Azure AD Identity Protection przez wartownika platformy Azure. Aby dowiedzieć się więcej na temat platformy Azure przez wartownika, zobacz następujące artykuły:
 - Dowiedz się, jak [Uzyskaj wgląd w dane i potencjalne zagrożenia](quickstart-get-visibility.md).
 - Rozpoczynanie pracy [wykrywanie zagrożeń za pomocą platformy Azure przez wartownika](tutorial-detect-threats.md).

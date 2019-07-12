@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5b2c153646021aeb8ee0dbb787cfce41af19568d
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 4b250a5e14ab37553d93453d05f8ff388bf1ba84
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443677"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620519"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Tworzenie rozwiązania IoT przy użyciu usługi Stream Analytics
 
@@ -164,7 +164,7 @@ Istnieje kilka zasobów, które można łatwo wdrożyć w grupie zasobów, wraz 
 
    Aby paraphrase intencji zapytania, załóżmy, że trzeba liczbę pojazdów, które należy wprowadzić stoisku płatny. Ponieważ stoisku płatny Kalifornijskiej ma ciągłego strumienia pojazdów, są zdarzenia wejścia są analogiczne do strumienia, który nigdy nie zatrzymuje się. Określenie strumień, należy zdefiniować "okres czasu" do mierzenia za pośrednictwem. Spróbujmy uściślić pytanie w ramach dodatkowo "ile pojazdów wprowadzenia stoisku płatny co trzy minuty?" Jest to często nazywane liczba wirowania.
 
-   Jak widać, Azure Stream Analytics używa języka zapytań, takiego jak SQL i dodaje kilka rozszerzeń na potrzeby określania aspektów czas zapytania.  Aby uzyskać więcej informacji, przeczytaj o [zarządzanie czasem](https://msdn.microsoft.com/library/azure/mt582045.aspx) i [obsługi okien](https://msdn.microsoft.com/library/azure/dn835019.aspx) konstrukcji używanych w zapytaniu.
+   Jak widać, Azure Stream Analytics używa języka zapytań, takiego jak SQL i dodaje kilka rozszerzeń na potrzeby określania aspektów czas zapytania.  Aby uzyskać więcej informacji, przeczytaj o [zarządzanie czasem](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics) i [obsługi okien](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics) konstrukcji używanych w zapytaniu.
 
 3. Sprawdź dane wejściowe TollApp przykładowego zadania. Wartość wejściowa EntryStream jest używany w bieżącym zapytaniu.
    - **EntryStream** danych wejściowych jest połączenie z Centrum zdarzeń, która kolejkuje danych reprezentujący każdorazowo samochodu wprowadza budki na drogach. Utworzenie aplikacji sieci web, która jest część próbki zdarzeń i danych znajduje się w kolejce w tym Centrum zdarzeń. Należy pamiętać, że te dane wejściowe jest wysyłane zapytanie w klauzuli FROM zapytania przesyłania strumieniowego.

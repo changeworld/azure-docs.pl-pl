@@ -9,24 +9,23 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 06/04/2019
+ms.date: 07/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73ca740a4dcca3bdbb1951e55df4061364a5c646
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 623950131769f95b9b8442b2316b1c4fd1c3b831
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083920"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656450"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia roli administratora w usłudze Azure Active Directory
 
 Za pomocą usługi Azure Active Directory (Azure AD), można wyznaczyć ograniczone administratorów do zarządzania zadaniami tożsamości w mniej uprzywilejowane role. Administratorzy mogą być przypisane do celów takich jak dodawanie lub zmienianie użytkowników, przypisywanie ról administracyjnych, resetowanie haseł użytkowników, zarządzanie licencjami użytkowników i zarządzanie nazwami domen. Domyślne uprawnienia użytkowników można zmienić tylko w ustawieniach użytkownika w usłudze Azure AD.
 
 Administrator globalny ma dostęp do wszystkich funkcji administracyjnych. Domyślnie osoba, która zarejestruje się w subskrypcji platformy Azure przypisano rolę administratora globalnego dla katalogu. Tylko administratorzy globalni i Administratorzy ról uprzywilejowanych mogą delegować ról administratora. Aby zmniejszyć ryzyko dla Twojej firmy, zaleca się przypisania tej roli tylko kilku osobom w firmie.
-
 
 ## <a name="assign-or-remove-administrator-roles"></a>Przypisywanie lub usuwanie ról administratora
 
@@ -271,7 +270,7 @@ Ponadto użytkownik ma dostęp raporty związane z przyjęciem i użycie usługi
   |<p>Na wszystkich użytkowników w tym wszystkich administratorów</p>|<p>Zarządzanie licencjami</p><p>Zarządzanie wszystkich właściwości użytkownika, z wyjątkiem główna nazwa użytkownika</p>
   |Tylko na użytkowników, którzy są administratorami bez lub w jednym z następujących ograniczonych ról administratora:<ul><li>Odczytywanie katalogów<li>Osoba zapraszająca gości<li>Administrator pomocy technicznej<li>Czytnik Centrum wiadomości<li>Czytnik raportów<li>Administrator użytkowników|<p>Usuń i przywracania</p><p>Wyłącz i Włącz</p><p>Unieważnienie tokenów odświeżania</p><p>Zarządzanie wszystkich właściwości użytkownika, w tym nazwa główna użytkownika</p><p>Resetowanie hasła</p><p>Aktualizuj klucze urządzenia (FIDO)</p>
   
-  <b>Ważne</b>: Użytkownicy z tą rolą mogą zmienić hasła dla osób, które mogą uzyskiwać dostęp do informacje poufne lub prywatne lub krytyczne konfiguracji i spoza usługi Azure Active Directory. Zmiana hasła użytkownika może oznaczać, że możliwość przyjęcia tożsamości i uprawnienia tego użytkownika. Na przykład:
+  <b>Ważne</b>: Użytkownicy z tą rolą mogą zmienić hasła dla osób, które mogą uzyskiwać dostęp do informacje poufne lub prywatne lub krytyczne konfiguracji i spoza usługi Azure Active Directory. Zmiana hasła użytkownika może oznaczać, że możliwość przyjęcia tożsamości i uprawnienia tego użytkownika. Przykład:
   * Rejestrowanie aplikacji i aplikacji przedsiębiorstwa właścicieli, którzy mogą zarządzać poświadczeniami aplikacje, które są właścicielami. Te aplikacje mogą mają uprzywilejowany uprawnień w usłudze Azure AD i gdzie indziej nie przyznawać Administratorzy użytkowników. Za pomocą tej ścieżki, które Administrator użytkowników może przyjąć tożsamość właściciela aplikacji, a następnie dalej przyjąć tożsamość uprzywilejowanych aplikacji przez zaktualizowanie poświadczeń dla aplikacji.
   * Właścicieli subskrypcji platformy Azure, którzy mogą uzyskiwać dostęp do informacje poufne lub prywatne lub krytyczne konfiguracji na platformie Azure.
   * Grupy zabezpieczeń i grupy usługi Office 365 właścicieli, którzy mogą zarządzać członkostwem. Te grupy mogą udzielać dostępu do informacje poufne lub prywatne lub krytyczne konfiguracji w usłudze Azure AD i w innych miejscach.
@@ -853,7 +852,7 @@ Może zarządzać wszystkimi aspektami produktu Intune.
 Można zarządzać ustawieniami dla Microsoft Kaizala.  
 
   > [!NOTE]
-  > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >  
   
@@ -895,7 +894,7 @@ Może zarządzać wszystkimi aspektami produktu Skype dla firm.
 Może odczytywać Centrum wiadomości wpisy, wiadomości prywatności danych, grup, domeny i subskrypcje.
 
   > [!NOTE]
-  > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
 
@@ -1044,14 +1043,13 @@ Można odczytywać logowania i raporty inspekcji.
 | microsoft.aad.directory/auditLogs/allProperties/read | Odczyt wszystkich właściwości (w tym właściwości uprzywilejowanych) na auditLogs w usłudze Azure Active Directory. |
 | microsoft.aad.directory/signInReports/allProperties/read | Odczyt wszystkich właściwości (w tym właściwości uprzywilejowanych) na signInReports w usłudze Azure Active Directory. |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Przeczytaj i konfigurowanie usługi Azure Service Health. |
-| microsoft.office365.serviceHealth/allEntities/allTasks | Przeczytaj i skonfiguruj kondycji usługi Office 365. |
 | microsoft.office365.usageReports/allEntities/read | Raporty użycia odczytu Office 365. |
 
 ### <a name="search-administrator"></a>Administrator wyszukiwania
 Można tworzyć i zarządzać wszystkimi aspektami ustawienia Microsoft Search.
 
   > [!NOTE]
-  > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
 
@@ -1068,7 +1066,7 @@ Można tworzyć i zarządzać wszystkimi aspektami ustawienia Microsoft Search.
 Można tworzyć i zarządzać zawartości redakcyjnej, takimi jak zakładek, pytania i jako lokalizacje, rozkład pomieszczeń.
 
   > [!NOTE]
-  > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
 
@@ -1111,7 +1109,7 @@ Może odczytywać informacje o zabezpieczeniach i raporty oraz zarządzać konfi
 Tworzy i zarządza zdarzeń związanych z zabezpieczeniami.
 
   > [!NOTE]
-  > Ta rola ma uprawnienia dodatkowy poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
+  > Ta rola ma dodatkowe uprawnienia poza usługą Azure Active Directory. Aby uzyskać więcej informacji zobacz opis roli powyżej.
   >
   >
 
@@ -1366,7 +1364,7 @@ Nie można używać następujących ról. One są przestarzałe i zostaną usuni
 * Administrator skrzynki pocztowej
 * Dołączanie urządzeń
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby dowiedzieć się więcej na temat sposobu przypisywania użytkownika jako administratora subskrypcji platformy Azure, zobacz [zarządzanie dostępem przy użyciu RBAC i witryny Azure portal](../../role-based-access-control/role-assignments-portal.md)
 * Aby dowiedzieć się więcej o kontrolowaniu dostępu do zasobów na platformie Microsoft Azure, zobacz [Understanding resource access in Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md) (Opis dostępu do zasobów na platformie Azure).

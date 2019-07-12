@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ce07c6c19c19f134cc322309bb338b94ef11ea85
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d53c1de9678db497a20788d0cab7ee4f0e6f0c9c
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66393852"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607063"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Cennik wskazówki dotyczące maszyn wirtualnych programu SQL Server platformy Azure
 
@@ -110,7 +110,7 @@ Wprowadzenie własnych SQL licencjonowania dzięki funkcji przenośności licenc
 
 - **Obciążenia za pomocą znanych okres istnienia i skalowania**. Na przykład aplikacja, która jest wymagana przez cały rok i którym żądanie zostało prognozowanych.
 
-Aby użyć BYOL z maszyny Wirtualnej programu SQL Server, musi mieć licencję programu SQL Server Standard lub Enterprise i [pakietu Software Assurance](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default.aspx#tab=1), która opcja jest wymagana przez niektóre programy licencjonowania zbiorowego i opcjonalnie zakupu w innym osobom. Poziom cen, dostępne za pośrednictwem programów licencjonowania zbiorowego różni się w zależności od typu umowy oraz ilość i lub zobowiązania do programu SQL Server. Jednak jako ogólną regułę można przyjąć, użycie własnej licencji w przypadku ciągłych obciążeń produkcyjnych ma następujące zalety:
+Aby użyć BYOL z maszyny Wirtualnej programu SQL Server, musi mieć licencję programu SQL Server Standard lub Enterprise i [pakietu Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default.aspx#tab=1), która opcja jest wymagana przez niektóre programy licencjonowania zbiorowego i opcjonalnie zakupu w innym osobom. Poziom cen, dostępne za pośrednictwem programów licencjonowania zbiorowego różni się w zależności od typu umowy oraz ilość i lub zobowiązania do programu SQL Server. Jednak jako ogólną regułę można przyjąć, użycie własnej licencji w przypadku ciągłych obciążeń produkcyjnych ma następujące zalety:
 
 | Korzyści w ramach opcji BYOL | Opis |
 |-----|-----|
@@ -166,7 +166,7 @@ W przypadku innych przepływów pracy, należy wziąć pod uwagę zamykanie i po
 > [!IMPORTANT]
 > Zamykanie i cofanie przydziału maszyny Wirtualnej jest jedynym sposobem, aby uniknąć naliczania opłat. Po prostu zatrzymanie lub za pomocą opcji zasilania w celu zamknięcia maszyny Wirtualnej nadal spowoduje naliczenie opłaty za użycie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Na platformie Azure ogólne cenach wskazówki, zobacz [zapobieganie powstawaniu nieoczekiwanych kosztów za pomocą rozliczeń platformy Azure i zarządzania kosztami](../../../billing/billing-getting-started.md). Najnowsze maszyn wirtualnych cen, w tym program SQL Server, zobacz Azure maszyny Wirtualnej platformy Azure, cennik dla [maszyn wirtualnych Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) i [maszyn wirtualnych systemu Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 

@@ -10,13 +10,13 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 manager: craigg
-ms.date: 05/22/2019
-ms.openlocfilehash: 8499d99ab82fa89062d74c7dc5db5d7dd11e770c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/05/2019
+ms.openlocfilehash: 05ec49c98c5bcfe40346550f5570c03a8fb3f881
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66016389"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657989"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>Strefy czasowe w wystąpieniu zarządzanym usługi Azure SQL Database
 
@@ -30,7 +30,9 @@ Użyj [AT TIME ZONE](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-t
 
 ## <a name="supported-time-zones"></a>Obsługiwane stref czasowych
 
-Zestaw obsługiwanych stref czasowych są dziedziczone z system operacyjny wystąpienia zarządzanego. Jest regularnie aktualizowana, Pobierz nowe definicje strefy czasowej i uwzględnia zmiany w już istniejące. 
+Zestaw obsługiwanych stref czasowych są dziedziczone z system operacyjny wystąpienia zarządzanego. Jest regularnie aktualizowana, Pobierz nowe definicje strefy czasowej i uwzględnia zmiany w już istniejące.
+
+[Strefę czasu letniego/godzina zmiany zasad](https://aka.ms/time) gwarantuje dokładności historyczne z 2010 do przodu.
 
 Listę z nazwami obsługiwanych stref czasowych jest dostępna za pośrednictwem [sys.time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) widoku systemu.
 
@@ -43,7 +45,7 @@ Podczas tworzenia wystąpienia tylko można skonfigurować strefę czasową dla 
 
 ### <a name="set-the-time-zone-through-the-azure-portal"></a>Ustaw strefę czasową w witrynie Azure portal
 
-Po wprowadzeniu parametrów dla nowego wystąpienia, wybierz strefę czasową na liście obsługiwanych stref czasowych. 
+Po wprowadzeniu parametrów dla nowego wystąpienia, wybierz strefę czasową na liście obsługiwanych stref czasowych.
   
 ![Ustawienie strefy czasowej podczas tworzenia wystąpienia](media/sql-database-managed-instance-timezone/01-setting_timezone-during-instance-creation.png)
 
@@ -82,7 +84,10 @@ Można przywrócić pliku kopii zapasowej lub importowanie danych do wystąpieni
 
 ### <a name="point-in-time-restore"></a>Przywracanie do określonego momentu
 
-Podczas wykonywania przywracania w momencie czasu, aby przywrócić jest interpretowany jako czas UTC. To ustawienie pozwala uniknąć niejednoznaczności z powodu zmiany czasu i potencjalne zmiany.
+<del>Podczas wykonywania przywracania w momencie czasu, aby przywrócić jest interpretowany jako czas UTC. To ustawienie pozwala uniknąć niejednoznaczności z powodu zmiany czasu i potencjalne zmiany.<del>
+
+ >[!WARNING]
+  > Obecne zachowanie nie jest zgodne z powyższych instrukcji i czas do przywrócenia jest interpretowane zgodnie ze strefą czasową źródła wystąpienia zarządzanego, gdzie automatycznych kopiach zapasowych są pobierane z. Pracujemy nad poprawianie to zachowanie, aby zinterpretować danego punktu w czasie jako czas UTC. Zobacz [znane problemy dotyczące](sql-database-managed-instance-timezone.md#known-issues) Aby uzyskać więcej informacji.
 
 ### <a name="auto-failover-groups"></a>Grupy automatycznego trybu failover
 
@@ -95,6 +100,21 @@ Przy użyciu tej samej strefie czasowej dla podstawowego i pomocniczego wystąpi
 
 - Nie można zmienić strefę czasową istniejącego wystąpienia zarządzanego.
 - Zewnętrzne procesy uruchamiane z zadania agenta serwera SQL nie obowiązują strefy czasowej wystąpienia.
+
+## <a name="known-issues"></a>Znane problemy
+
+W momencie przywracania (Odzyskiwanie) operacja została wykonana, czas do przywrócenia jest interpretowane zgodnie z strefy czasowej ustawiony w wystąpieniu zarządzanym, gdzie automatycznych kopiach zapasowych są pobierane z, nawet jeśli strony portalu Odzyskiwanie sugeruje, że czas jest interpretowana jako czas UTC.
+
+Przykład:
+
+Załóżmy, że to wystąpienie, gdy automatyczne kopie zapasowe są pobierane z ma zestaw strefie czasowej wschodni czas standardowy (UTC-5).
+Strony portalu w momencie przywracania sugeruje, że podczas wybierania do przywrócenia jest czas UTC:
+
+![Odzyskiwanie przy użyciu czasu lokalnego przy użyciu portalu](media/sql-database-managed-instance-timezone/02-pitr-with-nonutc-timezone.png)
+
+Czas do przywrócenia jest w rzeczywistości interpretowany jako wschodni czas standardowy i w tym przykładzie określonej bazy danych zostanie przywrócony do stanu na 9 AM Wschodnia (czas standardowy), a nie czasu UTC.
+
+Jeśli chcesz wykonać przywracanie punktu w czasie do określonego punktu w czasie UTC, Oblicz odpowiedni czas w strefie czasowej w wystąpieniu źródłowym i użyć tego czasu, w portalu lub skrypt programu PowerShell/interfejsu wiersza polecenia.
 
 ## <a name="list-of-supported-time-zones"></a>Listę obsługiwanych stref czasowych
 

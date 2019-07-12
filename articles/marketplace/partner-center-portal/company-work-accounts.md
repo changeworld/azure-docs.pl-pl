@@ -5,14 +5,14 @@ author: mattwojo
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: df8ab370e8874e07f8985ecfb3a772848a2e2b21
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d9326cab6cb5ed4ca76c9a84654697f9f90bcfcd
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65806284"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67619543"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>Kontami służbowymi firmy i Centrum partnerskiego
 
@@ -52,6 +52,6 @@ Jeśli występują problemy z logowaniem do swojego konta służbowego (znany ta
 
 ![Diagram do rozwiązywania problemów logowania konta pracy](./media/onboarding-aad-flow.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Zarządzanie kontem komercyjnych Marketplace Centrum partnerskiego](./manage-account.md) 

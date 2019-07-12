@@ -16,12 +16,12 @@ ms.date: 05/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fafd853250ed76b49b66b86ffda9c91240c8ce48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b13b23e59595acf8c637a2ef58c8098256920bea
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67109153"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654056"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Program Azure AD Connect: Historia wersji
 Zespół usługi Azure Active Directory (Azure AD) regularnie aktualizuje program Azure AD Connect z nowych funkcji i funkcji. Nie wszystkie dodatki mają zastosowanie do wszystkich odbiorców.
@@ -50,8 +50,8 @@ Nie wszystkie wersje programu Azure AD Connect będzie dostępna dla uaktualnien
 > Aby rozwiązać problem należy zaimportować **AdSync** modułu, a następnie uruchom`Set-ADSyncDirSyncConfiguration` polecenia cmdlet programu powershell na serwerze programu Azure AD Connect.  Można użyć następujących czynności:
 >
 >1. Otwórz program Powershell w trybie administratora
->2. Uruchom polecenie `Import-Module "ADSync"`
->3. Uruchom polecenie `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""`
+>2. Uruchom `Import-Module "ADSync"`
+>3. Uruchom `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""`
  
 
 
@@ -408,18 +408,18 @@ Blokowanie dostępu do konta usługi AD DS, implementując następujące zmiany 
 *   Usuń wszystkie wpisy kontroli dostępu dla określonego obiektu, z wyjątkiem ACE specyficzne dla siebie. Chcemy zachować uprawnienia domyślne, jeśli chodzi o SAMODZIELNIE.
 *   Przypisz te określone uprawnienia:
 
-Typ     | Name (Nazwa)                          | Access               | Dotyczy
+Type     | Name (Nazwa)                          | Access               | Dotyczy
 ---------|-------------------------------|----------------------|--------------|
-Zezwalaj    | SYSTEM                        | Pełna kontrola         | Ten obiekt  |
-Zezwalaj    | Enterprise Admins             | Pełna kontrola         | Ten obiekt  |
-Zezwalaj    | Administratorzy domeny                 | Pełna kontrola         | Ten obiekt  |
-Zezwalaj    | Administratorzy                | Pełna kontrola         | Ten obiekt  |
-Zezwalaj    | Enterprise Domain Controllers | Wyświetl zawartość        | Ten obiekt  |
-Zezwalaj    | Enterprise Domain Controllers | Odczyt wszystkich właściwości  | Ten obiekt  |
-Zezwalaj    | Enterprise Domain Controllers | Uprawnienia do odczytu     | Ten obiekt  |
-Zezwalaj    | Uwierzytelnieni użytkownicy           | Wyświetl zawartość        | Ten obiekt  |
-Zezwalaj    | Uwierzytelnieni użytkownicy           | Odczyt wszystkich właściwości  | Ten obiekt  |
-Zezwalaj    | Uwierzytelnieni użytkownicy           | Uprawnienia do odczytu     | Ten obiekt  |
+Allow    | SYSTEM                        | Pełna kontrola         | Ten obiekt  |
+Allow    | Enterprise Admins             | Pełna kontrola         | Ten obiekt  |
+Allow    | Administratorzy domeny                 | Pełna kontrola         | Ten obiekt  |
+Allow    | Administratorzy                | Pełna kontrola         | Ten obiekt  |
+Allow    | Enterprise Domain Controllers | Wyświetl zawartość        | Ten obiekt  |
+Allow    | Enterprise Domain Controllers | Odczyt wszystkich właściwości  | Ten obiekt  |
+Allow    | Enterprise Domain Controllers | Uprawnienia do odczytu     | Ten obiekt  |
+Allow    | Uwierzytelnieni użytkownicy           | Wyświetl zawartość        | Ten obiekt  |
+Allow    | Uwierzytelnieni użytkownicy           | Odczyt wszystkich właściwości  | Ten obiekt  |
+Allow    | Uwierzytelnieni użytkownicy           | Uprawnienia do odczytu     | Ten obiekt  |
 
 Aby zwiększyć ustawień dla konta usług AD DS, należy uruchomić [ten skrypt programu PowerShell](https://gallery.technet.microsoft.com/Prepare-Active-Directory-ef20d978). Skrypt programu PowerShell spowoduje przypisanie uprawnień wymienionych powyżej konto usług AD DS.
 
@@ -889,7 +889,7 @@ Synchronizacja programu Azure AD Connect
 * Na dzierżawę usługi Azure AD jest konfiguracji usługi, która wskazuje, czy funkcji synchronizacji haseł jest włączone dla Twojej dzierżawy. Wcześniej jest łatwy w konfiguracji usługi i być niepoprawnie skonfigurowana przy użyciu usługi Azure AD Connect, jeśli masz aktywną i serwer przejściowy. Teraz program Azure AD Connect będzie próbował zachować konfigurację usługi zgodne z aktywnych tylko serwera usługi Azure AD Connect.
 * Program Azure AD Connect, kreator wykrywa teraz i zwraca ostrzeżenie, jeśli lokalne usługi AD nie ma Kosz usługi AD włączone.
 * Wcześniej wyeksportować limit czasu usługi Azure AD i kończy się niepowodzeniem, jeśli łączny rozmiar obiektów w zadaniu wsadowym przekroczy określony próg. Teraz Usługa synchronizacji spróbuje ponownie wysłać obiektów jest dzielona na oddzielne, mniejsze segmenty, jeśli problem występuje.
-* W Windows Start Menu usunięciu aplikacji Zarządzanie kluczami usługi synchronizacji. Zarządzanie klucz szyfrowania, będą w dalszym ciągu być obsługiwane za pomocą interfejsu wiersza polecenia przy użyciu miiskmu.exe. Informacji na temat zarządzania kluczem szyfrowania, można znaleźć w artykule [porzucenie klucza szyfrowania usługi Azure AD Connect Sync](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-change-serviceacct-pass#abandoning-the-azure-ad-connect-sync-encryption-key).
+* W Windows Start Menu usunięciu aplikacji Zarządzanie kluczami usługi synchronizacji. Zarządzanie klucz szyfrowania, będą w dalszym ciągu być obsługiwane za pomocą interfejsu wiersza polecenia przy użyciu miiskmu.exe. Informacji na temat zarządzania kluczem szyfrowania, można znaleźć w artykule [porzucenie klucza szyfrowania usługi Azure AD Connect Sync](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-change-serviceacct-pass#abandoning-the-adsync-service-account-encryption-key).
 * Wcześniej Jeśli zmienisz hasło do konta usługi Azure AD Connect sync, usługa synchronizacji nie będzie możliwe start poprawnie dopiero po przeprowadzeniu zostały porzucone klucza szyfrowania i ponownie zainicjować hasło do konta usługi Azure AD Connect sync. Teraz ten proces nie jest już wymagane.
 
 Usługa rejestracji Jednokrotnej w pulpitu

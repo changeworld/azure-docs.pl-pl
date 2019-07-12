@@ -11,16 +11,16 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: d0bc4620d0c55d6e94a3d99c39ab405dab2743e5
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 2f3ec9792a7af0398da770286b805be4d1f25589
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461648"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657978"
 ---
 # <a name="use-mlflow-with-azure-machine-learning-service-preview"></a>MLflow za pomocą usługi Azure Machine Learning (wersja zapoznawcza)
 
-W tym artykule przedstawiono sposób używania firmy MLflow śledzenia identyfikatora URI i rejestrowanie interfejsu API, zbiorczo znany także jako MLflow śledzenia, za pomocą usługi Azure Machine Learning do śledzenia i rejestrować swoich metryk eksperyment i artefakty w swojej [usługi Azure Machine Learning obszar roboczy usługi](https://docs.microsoft.com/azure/machine-learning/service/concept-azure-machine-learning-architecture#workspace). Jeśli używasz już MLflow śledzenia dla eksperymentów, obszar roboczy zawiera scentralizowanego, bezpieczne i skalowalne lokalizację do zapisania swoich metryk szkolenia i modeli.
+W tym artykule przedstawiono sposób używania firmy MLflow śledzenia identyfikatora URI i rejestrowanie interfejsu API, zbiorczo znany także jako MLflow śledzenia, za pomocą usługi Azure Machine Learning do śledzenia i rejestrować swoich metryk eksperyment i artefakty w swojej [usługi Azure Machine Learning obszar roboczy usługi](https://docs.microsoft.com/azure/machine-learning/service/concept-azure-machine-learning-architecture#workspaces). Jeśli używasz już MLflow śledzenia dla eksperymentów, obszar roboczy zawiera scentralizowanego, bezpieczne i skalowalne lokalizację do zapisania swoich metryk szkolenia i modeli.
 
 [MLflow](https://www.mlflow.org) to biblioteka typu open source do zarządzania cyklem życia eksperymentów uczenia maszynowego. [Śledzenie MLFlow](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api) jest składnikiem MLflow dzienników, która śledzi szkolenia uruchomić metryk i artefaktów do modelu, czy eksperymenty są uruchamiane lokalnie, na maszynie wirtualnej lub na zdalnym klastrze obliczeniowym.
 ![mlflow przy użyciu usługi azure machine learning diagramu](media/how-to-use-mlflow/mlflow-diagram.png)
@@ -147,6 +147,6 @@ Jeśli nie planujesz użyć zarejestrowanych metryk i artefakty w obszarze roboc
 
 [MLflow za pomocą notesów usługi Azure ML](https://aka.ms/azureml-mlflow-examples) pokazuje koncepcji w tym artykule.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Jak wdrożyć model](how-to-deploy-and-where.md).

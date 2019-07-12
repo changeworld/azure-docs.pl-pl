@@ -12,22 +12,22 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: f68f6c366571b8f0f04f8507606c1a4008ab0405
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f4add4bf07178aa616e86f8a64b313630466824f
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443255"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653262"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Tworzenie bezpiecznych aplikacji na platformie Azure
 W tym artykule, firma Microsoft przedstawia działania dotyczące zabezpieczeń i kontroli należy wziąć pod uwagę podczas opracowywania aplikacji dla chmury. Pytania zabezpieczające i koncepcji, które należy wziąć pod uwagę podczas fazy implementacji i weryfikacji firmy Microsoft [cykl projektowania zabezpieczeń (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) zostały uwzględnione. Celem jest pomagającym w zdefiniowaniu działań i usług platformy Azure służących do tworzenia bardziej bezpiecznych aplikacji.
 
 W tym artykule omówione są następujące fazy SDL:
 
-- Wdrażanie
+- Implementacja
 - Weryfikacja
 
-## <a name="implementation"></a>Wdrażanie
+## <a name="implementation"></a>Implementacja
 Fokus fazy wdrożenia jest ustanowienie najlepsze rozwiązania dotyczące zapobiegania wczesne i wykryć i usunąć problemy dotyczące zabezpieczeń z kodu.
 Załóżmy, że aplikacja będzie używane w sposób, że przypadkowo może być ona używana. Dzięki temu można zabezpieczyć się przed przypadkowym lub zamierzone niewłaściwe korzystanie z aplikacji.
 
@@ -88,7 +88,7 @@ Oznacza to, że mniej osoby mają dostęp do danych rzeczywistych, co zmniejsza 
 
 Obrony przed siłowych i oparte na słownik zgadywania, musisz zaimplementować zasady silnych haseł, aby upewnić się, że użytkownicy tworzyć złożone hasło (na przykład 12 znaków minimalnej długości i konieczności znakami alfanumerycznymi i specjalnymi).
 
-Platforma tożsamości umożliwia tworzenie i wymuszanie zasad haseł. Usługa Azure AD B2C umożliwia zarządzanie hasłami, zapewniając [wbudowane zasady](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies#create-a-password-reset-policy), [samoobsługowego resetowania haseł](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-sspr)i nie tylko.
+Platforma tożsamości umożliwia tworzenie i wymuszanie zasad haseł. Usługa Azure AD B2C umożliwia zarządzanie hasłami, zapewniając [wbudowane zasady](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows#create-a-password-reset-user-flow), [samoobsługowego resetowania haseł](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-sspr)i nie tylko.
 
 Do ochrony przed atakami na domyślnych kontach, sprawdź wszystkich kluczy i haseł są zastąpienia i są one generowane lub zastąpiona po zainstalowaniu zasobów.
 

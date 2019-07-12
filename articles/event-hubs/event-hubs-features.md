@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 5b2618807a39f20de041a78204dcc40793b22843
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: e0505960a413308283c4e67e33ec495eedd3b092
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275439"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827727"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funkcje i terminologią dotyczącą usługi Azure Event Hubs
 
@@ -66,30 +66,8 @@ Nie jest konieczne wcześniejsze tworzenie nazw wydawców, ale muszą one być z
 [Funkcja przechwytywania usługi Event Hubs](event-hubs-capture-overview.md) umożliwia automatyczne Przechwytywanie przesyłania strumieniowego danych w usłudze Event Hubs i zapisz go na wybór konta usługi Blob storage lub konto z usługą Azure Data Lake. Możesz włączyć funkcję przechwytywania w witrynie Azure portal i określ przedział czasu, aby wykonać przechwytywania i minimalnego rozmiaru. Korzystając z usługi Event Hubs Capture, określić własnego konta usługi Azure Blob Storage i kontener lub konto z usługą Azure Data Lake, jednym z nich jest używany do przechowywania przechwyconych danych. Przechwycone dane są zapisywane w formacie Apache Avro.
 
 ## <a name="partitions"></a>Partycje
+[!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
 
-Usługa Event Hubs udostępnia funkcję transmisji strumieniowej komunikatów za pośrednictwem partycjonowanego wzorca odbiorców, w ramach którego każdy odbiorca odczytuje tylko konkretny podzbiór (partycję) strumienia komunikatów. Ten wzorzec umożliwia skalowanie w poziomie przetwarzania zdarzeń oraz udostępnia inne funkcje dotyczące strumienia, które są niedostępne w przypadku kolejek i tematów.
-
-Partycja to uporządkowana sekwencja zdarzeń przechowywana w centrum zdarzeń. Po nadejściu nowszych zdarzeń są one dodawane na końcu sekwencji. Partycję można traktować jako „dziennik zatwierdzania”.
-
-![Event Hubs](./media/event-hubs-features/partition.png)
-
-Usługa Event Hubs przechowuje dane przez skonfigurowany czas przechowywania, stosowany do wszystkich partycji w Centrum zdarzeń. Zdarzenia wygasają czasowo — nie można ich jawnie usunąć. Ponieważ partycje są niezależne i zawierają własne sekwencje danych, często rosną z różną szybkością.
-
-![Event Hubs](./media/event-hubs-features/multiple_partitions.png)
-
-Liczba partycji jest określana podczas tworzenia i musi należeć do zakresu od 2 do 32. Liczby partycji nie można zmieniać, dlatego ustawiając liczbę partycji, trzeba planować długoterminowo. Partycje stanowią mechanizm organizacji danych powiązany z równoległością podrzędną wymaganą w aplikacjach korzystających z tych danych. Liczba partycji w centrum zdarzeń jest bezpośrednio związana z oczekiwaną liczbą jednoczesnych czytników. Możesz zwiększyć liczbę partycji ponad 32, kontaktując się z zespołem ds. usługi Event Hubs.
-
-Chociaż partycje są identyfikowalne i mogą być wysyłane bezpośrednio do, wysyłając bezpośrednio do partycji nie jest zalecane. Zamiast tego można użyć konstrukcji wyższego poziomu wprowadzonych w [wydawca zdarzeń](#event-publishers) i sekcje pojemności. 
-
-Partycje są wypełnione sekwencją danych zdarzenia, które obejmują treść zdarzenia, zdefiniowany przez użytkownika zbiór właściwości oraz metadane, takie jak jego przesunięcie w partycji i jego numer w sekwencji strumienia.
-
-Aby uzyskać więcej informacji na temat partycji i równowagi między dostępnością i niezawodnością, zobacz [Przewodnik dotyczący programowania w usłudze Event Hubs](event-hubs-programming-guide.md#partition-key) i artykuł [Availability and consistency in Event Hubs](event-hubs-availability-and-consistency.md) (Dostępność i spójność w usłudze Event Hubs).
-
-### <a name="partition-key"></a>Klucz partycji
-
-[Klucz partycji](event-hubs-programming-guide.md#partition-key) służy do mapowania danych zdarzeń przychodzących na określone partycje na potrzeby organizowania danych. Klucz partycji to wartość podawana przez nadawcę przekazywana do centrum zdarzeń. Jest on przetwarzany przez statyczną funkcję tworzenia skrótu, za pomocą której tworzone jest przypisanie partycji. Jeśli nie określisz klucza partycji podczas publikowania zdarzenia, używane jest przypisanie działania okrężnego.
-
-Wydawca zdarzeń ma informacje tylko o kluczu partycji, a nie partycji, na której publikowane są zdarzenia. To oddzielenie klucza od partycji powoduje, że nadawca nie musi wiedzieć zbyt dużo o przetwarzaniu podrzędnym. Unikatowa tożsamość urządzenia lub użytkownika stanowi dobry klucz partycji, ale inne atrybuty, takie jak lokalizacja geograficzna, mogą również zostać użyte do grupowania powiązanych zdarzeń w jedną partycję.
 
 ## <a name="sas-tokens"></a>Tokeny sygnatur dostępu współdzielonego
 

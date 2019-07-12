@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/04/2019
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: 46ade0ecb0e2e081585803a0b1bc7eab989e21e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 169e25aeb8503a11f768a2a3062022eef51a76b8
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735218"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67659867"
 ---
 **Ostatnie dokumentowanie aktualizacji**: 4 czerwca 2019 r 3:00 PM czasu Pacyficznego.
 
@@ -21,7 +21,7 @@ Ujawnienie [nową klasę luk w zabezpieczeniach procesora CPU](https://portal.ms
 
 Microsoft wdrożono środki zaradcze dla naszych usług w chmurze. Infrastrukturę, która działa na platformie Azure i izoluje obciążeń klientów od siebie nawzajem jest chroniony. Oznacza to, że potencjalnym osobom atakującym przy użyciu tej samej infrastruktury nie ataki swoją aplikację przy użyciu tych luk w zabezpieczeniach.
 
-Używa usługi Azure [pamięci zachowywanie konserwacji](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#maintenance-not-requiring-a-reboot) zawsze, gdy jest to możliwe zminimalizować wpływ na klientów i wyeliminować potrzebę ponownego uruchomienia. Platforma Azure będzie kontynuować korzystanie z tych metod, podczas wprowadzania aktualizacji ogólnosystemowe do hosta i ochrony jej klientów.
+Używa usługi Azure [pamięci zachowywanie konserwacji](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#maintenance-that-doesnt-require-a-reboot) zawsze, gdy jest to możliwe zminimalizować wpływ na klientów i wyeliminować potrzebę ponownego uruchomienia. Platforma Azure będzie kontynuować korzystanie z tych metod, podczas wprowadzania aktualizacji ogólnosystemowe do hosta i ochrony jej klientów.
 
 Więcej informacji na temat sposobu zabezpieczenia są zintegrowane w każdy aspekt platformy Azure jest dostępna na [dokumentacja zabezpieczeń platformy Azure](https://docs.microsoft.com/azure/security/) lokacji. 
 
@@ -160,7 +160,7 @@ Jeśli używasz maszyny Wirtualnej funkcji hyper Threading [skontaktuj się z dz
 
 Po utworzeniu maszyny Wirtualnej funkcji hyper Threading platforma Azure przydziela 2 wątków na każdy rdzeń — są to tak zwane procesorów wirtualnych. Po wyłączeniu funkcji hyper-threading Azure usuwa wątku i ujawniają się jednym wątków rdzeni (fizycznych). Stosunek procesorów wirtualnych do procesora CPU jest 2:1, więc jeden raz — Hiperwątkowość jest wyłączona, Procesor zliczania na maszynie wirtualnej zostanie wyświetlony jako spadły o połowę. Na przykład D8_v3 maszyny Wirtualnej jest maszyny Wirtualnej funkcji hyper Threading działającej na 8 wirtualnych procesorów CPU (2 wątków na podstawowe x 4 rdzeni).  Po wyłączeniu funkcji hyper-threading procesorów będzie się zmniejszać do 4 rdzeni fizycznych z 1 wątek na każdy rdzeń. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Ten artykuł zawiera wskazówki dotyczące poniżej związanego z wykonywaniem spekulatywnym kanału po stronie ataków, które wpływają na wiele procesorów nowoczesnych:
 

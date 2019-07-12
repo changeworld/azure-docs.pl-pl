@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: raynew
-ms.openlocfilehash: d850cb222b0028f862cdba302140ce12af8576db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 913140a51603429e003f04f860bca9b4ddb1c214
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66492741"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704878"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Zarządzanie i monitorowanie kopii zapasowej bazy danych programu SQL Server
 
@@ -145,8 +145,8 @@ Po wyłączeniu ochrony, ale przed usunięciem magazynu, należy wyrejestrować 
 
 Czasami rozszerzenia obciążeń na maszynie Wirtualnej może mieć wpływ na jedną z przyczyn lub innych. W takiej sytuacji wszystkie operacje, które są wyzwalane na maszynie Wirtualnej rozpocznie się nie powiedzie się. Następnie może być konieczne ponowne zarejestrowanie rozszerzenia na maszynie Wirtualnej. **Zarejestruj ponownie** operacji ponownie instaluje rozszerzenie kopii zapasowej obciążeń na maszynie Wirtualnej dla operacji kontynuować.  <br>
 
-Zaleca się użycie tej opcji z ostrożnością; Po wyzwoleniu na maszynie Wirtualnej z rozszerzeniem już w dobrej kondycji, ta operacja spowoduje, że rozszerzenie Aby uzyskać ponownego uruchomienia. Może to spowodować, że wszystkie zadania w toku, nie powiedzie się. Zajrzyj do co najmniej jeden z [objawy](backup-sql-server-azure-troubleshoot.md#symptoms) przed wyzwoleniem operacji ponownej rejestracji.
+Zaleca się użycie tej opcji z ostrożnością; Po wyzwoleniu na maszynie Wirtualnej z rozszerzeniem już w dobrej kondycji, ta operacja spowoduje, że rozszerzenie Aby uzyskać ponownego uruchomienia. Może to spowodować, że wszystkie zadania w toku, nie powiedzie się. Zajrzyj do co najmniej jeden z [objawy](backup-sql-server-azure-troubleshoot.md#re-registration-failures) przed wyzwoleniem operacji ponownej rejestracji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z kopiami zapasowymi w bazie danych programu SQL Server](backup-sql-server-azure-troubleshoot.md).

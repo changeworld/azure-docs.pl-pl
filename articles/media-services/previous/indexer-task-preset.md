@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: adsolank;juliako;
-ms.openlocfilehash: 8ce3ea3847e4c8c022f17375676d8415372dec85
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: adsolank
+ms.reviewer: juliako
+ms.openlocfilehash: 129694edacb390aa62c061941810b8c98be7e96c
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61466310"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67619162"
 ---
 # <a name="task-preset-for-azure-media-indexer"></a>Zadanie ustawienie wstępne dla usługi Azure Media Indexer 
 
@@ -62,7 +63,7 @@ W poniższej tabeli opisano elementy i atrybuty konfiguracji XML.
 </configuration>  
 ```
   
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Zobacz [indeksowaniu plików multimedialnych przy użyciu usługi Azure Media Indexer](media-services-index-content.md).
 

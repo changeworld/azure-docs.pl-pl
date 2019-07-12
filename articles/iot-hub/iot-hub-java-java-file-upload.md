@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 3658b57d003ddc5429c6857f88044376fe1aaa93
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 27cdada0bfbb4236e16d17c263aaba0f4f5c511f
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60399163"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620127"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Przekazywanie plików z urządzenia do chmury za pomocą usługi IoT Hub
 
@@ -26,10 +26,10 @@ Ten samouczek opiera się na kodzie w [wysyłanie komunikatów z chmury do urzą
 
 * Powiadomienia przekazywania pliku usługi IoT Hub umożliwia wyzwalanie przetwarzania pliku w aplikacji zaplecza.
 
-[Wysyłanie danych telemetrycznych do Centrum IoT Hub (Java)](quickstart-send-telemetry-java.md) i [wysyłanie komunikatów z chmury do urządzeń z usługą IoT Hub (Java)](iot-hub-java-java-c2d.md) samouczkach przedstawiono podstawowe funkcje obsługi komunikatów usługi IoT Hub urządzenia do chmury i z chmury do urządzeń. [Skonfigurować routing komunikatów usługi IoT Hub](tutorial-routing.md) samouczku opisano sposób niezawodnego przechowywania komunikatów z urządzenia do chmury w usłudze Azure blob storage. Jednak w niektórych scenariuszach nie pozwala na łatwe mapowanie danych wysyłanych przez urządzenia do stosunkowo mały wiadomości urządzenia do chmury, które akceptuje usługi IoT Hub. Na przykład:
+[Wysyłanie danych telemetrycznych z urządzenia do usługi IoT hub](quickstart-send-telemetry-java.md) Szybki Start i [wysyłanie komunikatów z chmury do urządzeń z usługą IoT Hub](iot-hub-java-java-c2d.md) samouczku pokazano podstawowe funkcje obsługi komunikatów urządzenia do chmury i z chmury do urządzeń iot Koncentrator. [Skonfigurować routing komunikatów usługi IoT Hub](tutorial-routing.md) samouczku opisano sposób niezawodnego przechowywania komunikatów z urządzenia do chmury w usłudze Azure blob storage. Jednak w niektórych scenariuszach nie pozwala na łatwe mapowanie danych wysyłanych przez urządzenia do stosunkowo mały wiadomości urządzenia do chmury, które akceptuje usługi IoT Hub. Na przykład:
 
 * Duże pliki, które zawierają obrazy
-* Filmy wideo
+* Wideo
 * Wibracje danych próbkowania o wysokiej częstotliwości
 * Pewnego rodzaju wstępnie przetworzonych danych.
 
@@ -37,7 +37,7 @@ Te pliki to typowo wsadowego przetwarzania w chmurze przy użyciu narzędzi taki
 
 Na końcu tego samouczka, możesz uruchomić dwie aplikacje konsolowe Java:
 
-* **Symulowane urządzenie**, zmodyfikowanej wersji aplikacji utworzonych w samouczku [komunikatów wysyłania chmury do urządzeń z usługą IoT Hub]. Ta aplikacja przekazuje plik do magazynu przy użyciu identyfikatora URI sygnatury dostępu Współdzielonego, dostarczone przez Centrum IoT hub.
+* **Symulowane urządzenie**, zmodyfikowanej wersji aplikacji utworzonych w samouczku [wysyłać wiadomości chmury do urządzenia z usługą IoT Hub]. Ta aplikacja przekazuje plik do magazynu przy użyciu identyfikatora URI sygnatury dostępu Współdzielonego, dostarczone przez Centrum IoT hub.
 
 * **Odczyt pliku-— powiadomienie o przekazywaniu**, która odbiera powiadomienia o przekazywania plików z usługi IoT hub.
 
@@ -265,7 +265,9 @@ Aby wyświetlić przekazany plik w kontenerze magazynu, które zostały skonfigu
 W tym samouczku przedstawiono sposób użycia funkcji przekazywania plików usługi IoT Hub można uproszczenie przekazywania plików z urządzeń. Możesz kontynuować poznawanie funkcji Centrum IoT i scenariusze z następujących artykułów:
 
 * [Programistyczne tworzenie Centrum IoT hub](iot-hub-rm-template-powershell.md)
+
 * [Wprowadzenie do zestawu SDK języka C](iot-hub-device-sdk-c-intro.md)
+
 * [Zestawy SDK usługi Azure IoT](iot-hub-devguide-sdks.md)
 
 Aby bliżej zapoznać się z możliwościami usługi IoT Hub, zobacz:

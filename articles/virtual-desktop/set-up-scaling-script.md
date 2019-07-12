@@ -4,15 +4,15 @@ description: W tym artykule opisano, jak skonfigurować automatyczne skalowanie 
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: e9f500e3ab965b9dbfc5e395a6572497c85f6f8f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3b98db361a8ec888eb8bf9e1bf3658a7e38111c6
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755134"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620416"
 ---
 # <a name="automatically-scale-session-hosts"></a>Automatyczne skalowanie hostów sesji
 
@@ -75,7 +75,7 @@ Następnie należy utworzyć bezpiecznie przechowywane poświadczenia:
     Na przykład **Set-Variable - KeyPath nazwa-zakresu globalnego — wartość "c:\\skalowanie HostPool1"**
 5. Uruchom **New StoredCredential - KeyPath \$KeyPath** polecenia cmdlet. Po wyświetleniu monitu wprowadź swoje poświadczenia pulpitu wirtualnego Windows z uprawnieniami do wykonywania zapytań w puli hosta (puli hosta jest określona w **pliku config.xml**).
     - Jeśli używasz standardowego konta lub jednostek innej usługi, uruchom **New StoredCredential - KeyPath \$KeyPath** polecenia cmdlet, gdy dla każdego konta utworzyć lokalne przechowywane poświadczenia.
-6. Uruchom **Get StoredCredentials-lista** aby upewnić się, poświadczenia zostały pomyślnie utworzone.
+6. Uruchom **Get StoredCredential-lista** aby upewnić się, poświadczenia zostały pomyślnie utworzone.
 
 ### <a name="configure-the-configxml-file"></a>Konfigurowanie pliku config.xml
 

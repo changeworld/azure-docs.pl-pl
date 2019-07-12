@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7a1e440a8dc8f518e272df9e126771df54390ed5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 586ddb237144daddf0cbfd19785fcba7658469a0
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60762484"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621473"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Rozwiązywanie problemów z zapytań usługi Azure Stream Analytics
 
@@ -25,11 +25,11 @@ W tym artykule opisano typowe problemy związane z tworzenia zapytań usługi St
     - Na **zapytania** zaznacz **testu**. Użyj pobranych przykładowych danych w celu [przetestować zapytanie](stream-analytics-test-query.md). Sprawdź błędy i ich skorygowania.   
     - Możesz również [przetestować zapytanie bezpośrednio na żywo dane wejściowe](stream-analytics-live-data-local-testing.md) przy użyciu narzędzia Stream Analytics tools for Visual Studio.
 
-2.  Jeśli używasz [ **Timestamp By**](https://msdn.microsoft.com/library/azure/mt573293.aspx), sprawdź, czy zdarzenia mają sygnatury czasowe późniejsze niż [czas rozpoczęcia zadania](stream-analytics-out-of-order-and-late-events.md).
+2.  Jeśli używasz [ **Timestamp By**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics), sprawdź, czy zdarzenia mają sygnatury czasowe późniejsze niż [czas rozpoczęcia zadania](stream-analytics-out-of-order-and-late-events.md).
 
 3.  Wyeliminuj typowych pułapek, takich jak:
-    - A [ **gdzie** ](https://msdn.microsoft.com/library/azure/dn835048.aspx) klauzuli w zapytaniu odfiltrowała wszystkie zdarzenia, w uniemożliwia generowany żadnych danych wyjściowych.
-    - A [ **RZUTOWANIA** ](https://msdn.microsoft.com/azure/stream-analytics/reference/cast-azure-stream-analytics) funkcja kończy się niepowodzeniem, co powoduje niepowodzenie zadania. Aby uniknąć błędów rzutowanie typu, należy użyć [ **TRY_CAST** ](https://msdn.microsoft.com/azure/stream-analytics/reference/try-cast-azure-stream-analytics) zamiast tego.
+    - A [ **gdzie** ](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) klauzuli w zapytaniu odfiltrowała wszystkie zdarzenia, w uniemożliwia generowany żadnych danych wyjściowych.
+    - A [ **RZUTOWANIA** ](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics) funkcja kończy się niepowodzeniem, co powoduje niepowodzenie zadania. Aby uniknąć błędów rzutowanie typu, należy użyć [ **TRY_CAST** ](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics) zamiast tego.
     - Podczas korzystania z funkcji okna, odczekanie przez czas całe okno wyświetlić dane wyjściowe z zapytania.
     - Sygnatura czasowa zdarzeń przed godziną rozpoczęcia zadania, a w związku z tym, zdarzenia są porzucane.
 
@@ -99,5 +99,5 @@ Aby uzyskać dalszą pomoc, Wypróbuj nasz [forum usługi Azure Stream Analytics
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)
 * [Scale Azure Stream Analytics jobs (Skalowanie zadań usługi Azure Stream Analytics)](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics Query Language Reference (Dokumentacja dotycząca języka zapytań usługi Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure Stream Analytics Query Language Reference (Dokumentacja dotycząca języka zapytań usługi Azure Stream Analytics)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics Management REST API Reference (Dokumentacja interfejsu API REST zarządzania usługą Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn835031.aspx)

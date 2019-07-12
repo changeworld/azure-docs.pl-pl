@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8676ad48bc4fab6149db00d778349ac1acd7223d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4b5d198506473c598f058c881f781a06e191df88
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67062389"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653437"
 ---
 # <a name="filters-in-azure-search"></a>Filtry w usłudze Azure Search 
 
@@ -97,7 +97,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 ## <a name="filter-usage-patterns"></a>Filtruj wzorców użycia
 
-Poniższe przykłady ilustrują kilka wzorców użycia dla scenariuszy filtru. Aby uzyskać więcej pomysłów, zobacz [składnia wyrażenia OData > przykłady](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples).
+Poniższe przykłady ilustrują kilka wzorców użycia dla scenariuszy filtru. Aby uzyskać więcej pomysłów, zobacz [składnia wyrażenia OData > przykłady](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
 
 + Autonomiczny **$filter**, bez ciągu zapytania, przydatne, gdy wyrażenie filtru jest w stanie do pełnej kwalifikacji dokumentów zainteresowania. Bez ciąg zapytania ma żadnej analizy leksykalne lub językową, nie oceniania i nie klasyfikacji. Należy zauważyć, że ciąg wyszukiwania jest po prostu gwiazdkę, co oznacza "odpowiada wszystkie dokumenty".
 
@@ -195,7 +195,7 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=city gt 'Seattle'
 ```
 
-Aby pracować z innymi przykładami, zobacz [składnia wyrażeń filtru OData > przykłady](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples).
+Aby pracować z innymi przykładami, zobacz [składnia wyrażeń filtru OData > przykłady](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
 
 ## <a name="see-also"></a>Zobacz także
 

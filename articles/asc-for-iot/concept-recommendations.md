@@ -2,24 +2,25 @@
 title: Omówienie usługi Azure Security Center dla zalecenia dotyczące zabezpieczeń IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej na temat koncepcji zalecenia dotyczące zabezpieczeń i jak są one używane w Centrum zabezpieczeń Azure dla IoT.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: 02ced504-d3aa-4770-9d10-b79f80af366c
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: 122a1585abf43d1aedc7f329cd7e41a6228f8c3e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ee71bbacdba7a14e94de41563a04be9c0f00d13
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65200666"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618414"
 ---
 # <a name="security-recommendations"></a>Zalecenia dotyczące zabezpieczeń
 
@@ -35,7 +36,7 @@ W tym artykule znajdziesz listę zaleceń, które mogą być wyzwalane na usług
 
 Zalecenia dotyczące urządzenia zapewniają szczegółowe informacje i sugestie w celu zwiększenia poziomu bezpieczeństwa urządzenia. 
 
-| Severity | Name (Nazwa)                                                      | Źródło danych | Opis                                                                                                                                                                                           |
+| severity | Name (Nazwa)                                                      | Źródło danych | Opis                                                                                                                                                                                           |
 |----------|-----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Średni   | Otwieranie portów na urządzeniu                                      | Agent       | Znaleziono nasłuchiwania punkt końcowy na urządzeniu                                                                                                                                                          |
 | Średni   | Zasady zapory ograniczające w jednej z łańcuchów. | Agent       | Dozwolone zasady zapory znaleziono (wejście/wyjście). Zasady zapory należy odmówić cały ruch domyślnie i zdefiniować reguły zezwalające na potrzeby komunikacji z urządzenia.                               |
@@ -47,7 +48,7 @@ Zalecenia dotyczące urządzenia zapewniają szczegółowe informacje i sugestie
 
 Zalecenia operacyjnej zapewniają szczegółowe informacje i sugestie zwiększające konfiguracji agenta zabezpieczeń.
 
-| Severity | Name (Nazwa)                                    | Źródło danych | Opis                                                                       |
+| severity | Name (Nazwa)                                    | Źródło danych | Opis                                                                       |
 |----------|-----------------------------------------|-------------|-----------------------------------------------------------------------------------|
 | Małe      | Agent wysyła komunikaty unutilized          | Agent       | 10% lub więcej komunikatów zabezpieczeń były mniejsze niż 4kb w ciągu ostatnich 24 godzin.  |
 | Małe      | Nie optymalną konfigurację zabezpieczeń bliźniaczych reprezentacji | Agent       | Konfiguracja bliźniaczej reprezentacji zabezpieczeń nie jest optymalna.                                        |
@@ -58,7 +59,7 @@ Zalecenia operacyjnej zapewniają szczegółowe informacje i sugestie zwiększaj
 
 Zalecenia, alerty zapewniają szczegółowe informacje i sugestie dotyczące działań w celu zwiększenia poziomu bezpieczeństwa środowiska.  
 
-| Severity | Name (Nazwa)                                                     | Źródło danych | Opis                                                                                                                                                                                                             |
+| severity | Name (Nazwa)                                                     | Źródło danych | Opis                                                                                                                                                                                                             |
 |----------|----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Wysoka     | Poświadczenia uwierzytelniania identyczne używane przez wiele urządzeń | Usługa IoT Hub     | Poświadczenia uwierzytelniania usługi IoT Hub są używane przez wiele urządzeń. Może to oznaczać, że urządzenia z systemem nielegalne personifikacji autoryzowanych urządzeń. Użyj poświadczeń zduplikowane zwiększa ryzyko personifikacji urządzenia przez złośliwych aktora. |
 | Średni   | Domyślne zasady filtru IP powinien Odmów                  | Usługa IoT Hub     | Konfiguracja filtru IP mieć reguły zdefiniowane dla dopuszczonego ruchu, a powinien domyślnie, zezwalają na ruch wszystkie inne domyślnie.                                                                                                     |

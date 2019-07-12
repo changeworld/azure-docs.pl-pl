@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 64856d53168a7676cf279da2d8675ce81e1985f7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2142fbf03daa6667b20db43f9212a2b5e6d7dd44
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60447878"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657534"
 ---
 # <a name="copy-data-to-azure-data-explorer-using-azure-data-factory"></a>Kopiowanie danych do Eksploratora danych Azure przy użyciu usługi Azure Data Factory 
 
@@ -50,7 +50,7 @@ W tym artykule przedstawiono sposób użycia narzędzia do kopiowania danych w b
     | **Subskrypcja** | Wybieranie subskrypcji platformy Azure, w której chcesz utworzyć fabrykę danych. |
     | **Grupa zasobów** | Wybierz **Utwórz nową** i wprowadź nazwę nowej grupy zasobów. Wybierz **Użyj istniejącej**, jeśli masz istniejącą grupę zasobów. |
     | **Wersja** | Wybierz **V2** |
-    | **Lokalizacja** | Wybierz lokalizację fabryki danych. Na liście rozwijanej są wyświetlane tylko obsługiwane lokalizacje. Magazyny danych, które są używane przez fabrykę danych może być w inne lokalizacje lub regiony. |
+    | **Location** | Wybierz lokalizację fabryki danych. Na liście rozwijanej są wyświetlane tylko obsługiwane lokalizacje. Magazyny danych, które są używane przez fabrykę danych może być w inne lokalizacje lub regiony. |
     | | |
 
 1. Wybierz opcję powiadomienia na pasku narzędzi, aby monitorować proces tworzenia. Po utworzeniu, przejdź do usługi data factory, który został utworzony. **Usługi Data Factory** zostanie otwarta strona główna.
@@ -141,7 +141,7 @@ Azure Eksploratorze danych nowa połączona usługa jest tworzony do kopiowania 
     * Wybierz **Zakończ** wymagana do ukończenia tworzenia połączonej usługi.
 
     > [!NOTE]
-    > Nazwa główna usługi jest używana przez usługę Azure Data Factory dostęp do usługi Azure Eksploratora danych. Dla jednostki usługi [Tworzenie jednostki usługi Azure Active Directory (Azure AD)](/azure/azure-stack/azure-stack-create-service-principals#manage-service-principal-for-azure-ad). Nie używaj **usługi Azure Key Vault** metody.
+    > Nazwa główna usługi jest używana przez usługę Azure Data Factory dostęp do usługi Azure Eksploratora danych. Dla jednostki usługi [Tworzenie jednostki usługi Azure Active Directory (Azure AD)](/azure-stack/operator/azure-stack-create-service-principals#manage-an-azure-ad-service-principal). Nie używaj **usługi Azure Key Vault** metody.
 
 1. **Docelowego magazynu danych** zostanie otwarty. Utworzone połączenie danych Eksploratora danych usługi Azure jest dostępna do użycia. Wybierz **dalej** do skonfigurowania połączenia.
 
@@ -180,7 +180,7 @@ Azure Eksploratorze danych nowa połączona usługa jest tworzony do kopiowania 
 
     ![Strona Wdrażanie](media/data-factory-load-data/deployment.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się więcej o [Eksploratora usługi Azure Data connector](/azure/data-factory/connector-azure-data-explorer) w usłudze Azure Data Factory.
 

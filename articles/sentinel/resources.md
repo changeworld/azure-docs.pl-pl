@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: 9b4c8e38-c986-4223-aa24-a71b01cb15ae
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 52b9d64ebd4ab90d97a417f9296c424b9412aae9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 601e4651962010f7ee94f2349deb57f60db7990c
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65209675"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621217"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel-preview"></a>Przydatne zasoby dotyczące pracy z wersji zapoznawczej Azure przez wartownika
 
@@ -41,7 +42,7 @@ Ten artykuł zawiera listę zasobów, które mogą pomóc Ci uzyskać więcej in
 | PluralSight | Kurs języka zapytania Kusto| [https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch](https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch)|
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym dokumencie stało się listę zasobów, które są przydatne podczas pracy z platformy Azure przez wartownika. Aby dowiedzieć się więcej na temat platformy Azure przez wartownika, zobacz następujące tematy:
 
 * [Blog Azure Security](https://blogs.msdn.com/b/azuresecurity/). Wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure.
