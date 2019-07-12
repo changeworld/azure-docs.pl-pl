@@ -212,11 +212,11 @@ Wszystkie właściwości, która aplikacja ma definiuje powinno zostać zamapowa
 
 | Nazwa pola | Sposób użycia | Nazwa interfejsu API |
 | --- | --- | --- |
-| trwałe |- |- |
-| priorytet |- |- |
+| durable |- |- |
+| priority |- |- |
 | ttl |Czas wygaśnięcia dla tego komunikatu |[TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| pierwszy przejmująca |- |- |
-| Liczba prób dostarczenia |- |[DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| first-acquirer |- |- |
+| delivery-count |- |[DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 
 #### <a name="properties"></a>properties
 
@@ -224,17 +224,17 @@ Wszystkie właściwości, która aplikacja ma definiuje powinno zostać zamapowa
 | --- | --- | --- |
 | message-id |Zdefiniowane przez aplikację, dowolny identyfikator dla tego komunikatu. Używane do wykrywania duplikatów. |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | user-id |Identyfikator użytkownika zdefiniowanych przez aplikację nie są interpretowane przez usługę Service Bus. |Nie jest dostępny za pośrednictwem interfejsu API usługi Service Bus. |
-| na |Identyfikator docelowego zdefiniowanych przez aplikację nie są interpretowane przez usługę Service Bus. |[Do](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| to |Identyfikator docelowego zdefiniowanych przez aplikację nie są interpretowane przez usługę Service Bus. |[Do](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | subject |Identyfikator celu wiadomości zdefiniowanych przez aplikację, nie są interpretowane przez usługę Service Bus. |[Etykieta](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| Odpowiedz do |Wskaźnik ścieżki odpowiedzi zdefiniowany przez aplikację nie są interpretowane przez usługę Service Bus. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| reply-to |Wskaźnik ścieżki odpowiedzi zdefiniowany przez aplikację nie są interpretowane przez usługę Service Bus. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | correlation-id |Identyfikator korelacji zdefiniowanych przez aplikację nie są interpretowane przez usługę Service Bus. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| Typ zawartości |Zdefiniowane przez aplikację wskaźnik typu zawartości dla treści nie interpretowane przez usługę Service Bus. |[Typ zawartości](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| content-type |Zdefiniowane przez aplikację wskaźnik typu zawartości dla treści nie interpretowane przez usługę Service Bus. |[Typ zawartości](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | content-encoding |Zdefiniowane przez aplikację kodowanie zawartości wskaźnik dla treści nie interpretowane przez usługę Service Bus. |Nie jest dostępny za pośrednictwem interfejsu API usługi Service Bus. |
-| czas w przypadku wygaśnięcia bezwzględne |Deklaruje, w których bezwzględną błyskawicznych komunikat wygasa. Ignorowane na dane wejściowe (nagłówek stwierdzamy TTL), autorytatywny w danych wyjściowych. |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| Godzina utworzenia |Deklaruje co wiadomość została utworzona. Nie są używane przez usługę Service Bus |Nie jest dostępny za pośrednictwem interfejsu API usługi Service Bus. |
-| Identyfikator grupy |Zdefiniowane przez aplikację identyfikator powiązany zestaw komunikatów. Używane dla sesji magistrali usług. |[Identyfikator sesji](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| absolute-expiry-time |Deklaruje, w których bezwzględną błyskawicznych komunikat wygasa. Ignorowane na dane wejściowe (nagłówek stwierdzamy TTL), autorytatywny w danych wyjściowych. |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| creation-time |Deklaruje co wiadomość została utworzona. Nie są używane przez usługę Service Bus |Nie jest dostępny za pośrednictwem interfejsu API usługi Service Bus. |
+| group-id |Zdefiniowane przez aplikację identyfikator powiązany zestaw komunikatów. Używane dla sesji magistrali usług. |[Identyfikator sesji](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | group-sequence |Licznik identyfikowanie numer sekwencji względne wiadomości wewnątrz sesji. Ignorowane przez usługę Service Bus. |Nie jest dostępny za pośrednictwem interfejsu API usługi Service Bus. |
-| Odpowiedz na grupy identyfikator |- |[ReplyToSessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| reply-to-group-id |- |[ReplyToSessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 
 #### <a name="message-annotations"></a>Adnotacje wiadomości
 
