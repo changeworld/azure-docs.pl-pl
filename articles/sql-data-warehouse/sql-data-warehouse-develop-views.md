@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: d4321f8aef6e754d8a1c5b16ac82b4fa62c40949
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8d516cfd764f947bd2fe7fc25f6394c313c0d9a
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873607"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595495"
 ---
 # <a name="views-in-azure-sql-data-warehouse"></a>Widoki w usłudze Azure SQL Data Warehouse
 Porady dotyczące Korzystanie z widoków języka T-SQL w usłudze Azure SQL Data Warehouse związane z opracowywaniem rozwiązań. 
@@ -23,12 +23,18 @@ Porady dotyczące Korzystanie z widoków języka T-SQL w usłudze Azure SQL Data
 ## <a name="why-use-views"></a>Dlaczego warto używać widoków?
 Widoki można na wiele różnych sposobów poprawy jakości rozwiązania.  W tym artykule przedstawiono kilka przykładów sposobu wzbogacić swoje rozwiązanie przy użyciu widoków, a także ograniczenia, które należy wziąć pod uwagę.
 
+
+> [!IMPORTANT]
+> Zobacz nowej składni zmaterializowany widok w [tworzenie ZMATERIALIZOWANEGO WIDOKU AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest).  Aby uzyskać więcej informacji, zobacz [informacje o wersji](/azure/sql-data-warehouse/release-notes-10-0-10106-0).
+>
+
+
 > [!NOTE]
 > W tym artykule nie omówiono składni, aby utworzyć widok. Aby uzyskać więcej informacji, zobacz [CREATE VIEW](/sql/t-sql/statements/create-view-transact-sql) dokumentacji.
 > 
-> 
 
 ## <a name="architectural-abstraction"></a>Abstrakcja architektury
+
 Typowym wzorcem aplikacji jest ponownie utworzyć tabel za pomocą utworzyć TABLE AS SELECT (CTAS) następuje zmiana nazwy wzorzec jednoczesnym ładowania danych obiektu.
 
 Poniższy przykład dodaje nowe rekordy do wymiaru daty. Zwróć uwagę, jak nową tabelę DimDate_New, jest pierwszy tworzone i następnie zmieniona na zastępowanie wersji oryginalnej tabeli.
@@ -65,7 +71,7 @@ Widoki w usłudze SQL Data Warehouse są przechowywane jako tylko metadane. W zw
 * Nie jest obsługiwane dla rozwiń / wskazówki NOEXPAND
 * Istnieją nie widoków indeksowanych w usłudze SQL Data Warehouse
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Więcej porad programistycznych znajdziesz w artykule [Omówienie programowania w usłudze SQL Data Warehouse](sql-data-warehouse-overview-develop.md).
 
 

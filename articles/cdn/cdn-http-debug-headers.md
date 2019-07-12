@@ -7,24 +7,24 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: magattus
-ms.openlocfilehash: e5693e0e191b36aa8d4552824c649a38d2f17b5b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dec753d7c891d226aa2e6d3efa993d8d24adfbaa
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66475288"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593840"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>Nagłówki HTTP X-WE-Debug dla usługi Azure CDN aparatu reguł
 Nagłówek żądania debugowania w pamięci podręcznej, `X-EC-Debug`, zawiera dodatkowe informacje na temat zasad pamięci podręcznej, które są stosowane do żądanego zasobu. Tych nagłówków są specyficzne dla **Azure CDN Premium from Verizon** produktów.
 
-## <a name="usage"></a>Sposób użycia
+## <a name="usage"></a>Użycie
 Odpowiedź wysłana z serwerów POP do użytkownika zawiera `X-EC-Debug` nagłówka tylko wtedy, gdy są spełnione następujące warunki:
 
 - [Funkcja Debuguj pamięć podręczna nagłówki odpowiedzi](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers) został włączony na aparat reguł dla określonego żądania.
@@ -103,7 +103,7 @@ Ten nagłówek odpowiedzi nie wskazuje, czy buforowanie miało miejsce. Przeciwn
 
 Termin używany w powyższej składni nagłówek odpowiedzi jest zdefiniowana w następujący sposób:
 
-Wartość  | Opis
+Value  | Opis
 -------| --------
 TAK    | Wskazuje, czy żądana zawartość została kwalifikuje się do buforowania.
 NO     | Wskazuje, czy żądana zawartość została nie kwalifikuje się do buforowania. Ten stan może być spowodowane jedną z następujących powodów: <br /> Konfiguracja klienta specyficzne dla: Konfiguracja właściwych dla Twojego konta można zapobiec buforowanie zawartości pop serwerów. Na przykład aparat reguł uniemożliwia zasobu buforowana przez włączenie funkcji pomijania pamięci podręcznej do kwalifikowania żądania.<br /> -W pamięci podręcznej nagłówki odpowiedzi: Nagłówki Cache-Control i Expires żądanego elementu zawartości można zapobiec buforowanie ich serwerów POP.

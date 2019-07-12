@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4ff7f92d1d13966be5d17f37210bef961f64faf2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51fae63b6db99f28a5b3bed056dadc0c2513ff0f
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61462415"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839933"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopiowanie danych do i z oprogramowania Oracle w środowisku lokalnym za pomocą usługi Azure Data Factory
 
@@ -77,13 +77,13 @@ Ten łącznik Oracle obsługuje dwie wersje sterowników:
 
 Jeśli używasz kreatora kopiowania do utworzenia potoku kopiowania typ sterownika jest autodetermined. Sterownik firmy Microsoft jest używany domyślnie, chyba że używana wersja bramy jest starsza niż wersja 2.7, lub wybierz Oracle jako obiekt sink.
 
-## <a name="get-started"></a>Rozpoczęcie pracy
+## <a name="get-started"></a>Wprowadzenie
 
 Można utworzyć potok, który zawiera działania kopiowania. Potok przenosi dane z lokalnej bazy danych Oracle lub przy użyciu różnych narzędzi lub interfejsów API.
 
 Najprostszym sposobem utworzenia potoku jest użycie Kreatora kopiowania. Zobacz [samouczka: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych.
 
-Umożliwia także jedną z następujących narzędzi do tworzenia potoku: **witryny Azure portal**, **programu Visual Studio**, **programu Azure PowerShell**, **usługi Azure Resource Manager Szablon**, **interfejsu API platformy .NET**, lub **interfejsu API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku dotyczące sposobu tworzenia potoku, który zawiera działania kopiowania.
+Umożliwia także jedną z następujących narzędzi do tworzenia potoku: **Program Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**, lub **interfejsu API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku dotyczące sposobu tworzenia potoku, który zawiera działania kopiowania.
 
 Czy używasz narzędzi lub interfejsów API, wykonaj następujące kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródłowych do magazynu danych ujścia:
 
@@ -102,7 +102,7 @@ W poniższej tabeli opisano elementy JSON, które są specyficzne dla usługi po
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| — typ |**Typu** właściwość musi być równa **OnPremisesOracle**. |Yes |
+| type |**Typu** właściwość musi być równa **OnPremisesOracle**. |Tak |
 | driverType | Określ, który sterownik do użycia w celu skopiowania danych z lub z bazą danych Oracle. Dozwolone wartości to **Microsoft** i **ODP** (ustawienie domyślne). Zobacz [obsługiwanych wersji i instalacji](#supported-versions-and-installation) Szczegóły sterownika. | Nie |
 | connectionString | Podaj informacje potrzebne do nawiąż połączenie z wystąpieniem bazy danych programu Oracle dla **connectionString** właściwości. | Yes |
 | gatewayName | Nazwa bramy, który służy do łączenia się z serwerem Oracle w środowisku lokalnym. |Yes |
@@ -187,7 +187,7 @@ W działaniu kopiowania, gdy źródłem jest **OracleSource** , następujące w�
 
 ## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>Przykłady JSON do kopiowania danych z bazy danych Oracle
 
-W poniższych przykładach udostępniono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [witryny Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). W przykładach pokazano, jak skopiować dane z lub z bazą danych Oracle i do / z usługi Azure Blob storage. Jednak można skopiować danych do dowolnego ujścia, na liście [obsługiwane magazyny danych i formatów](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.
+W poniższych przykładach udostępniono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). W przykładach pokazano, jak skopiować dane z lub z bazą danych Oracle i do / z usługi Azure Blob storage. Jednak można skopiować danych do dowolnego ujścia, na liście [obsługiwane magazyny danych i formatów](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.
 
 **Przykład: Kopiowanie danych z bazy danych Oracle do usługi Azure Blob storage**
 
@@ -601,22 +601,22 @@ Podczas przenoszenia danych z bazy danych Oracle, następujące mapowania są u�
 | BLOB |Byte[]<br/>(obsługiwane wyłącznie w Oracle 10g i nowszych wersjach po użyciu sterownika Microsoft) |
 | CHAR |String |
 | CLOB |String |
-| DATE |DateTime |
+| DATE |Datetime |
 | FLOAT |Decimal, String (jeśli dokładności > 28) |
 | INTEGER |Decimal, String (jeśli dokładności > 28) |
 | INTERWAŁU ROKU DO MIESIĄCA |Int32 |
 | INTERWAŁU DNIA DO SEKUNDY |TimeSpan |
 | LONG |String |
 | LONG RAW |Byte[] |
-| NCHAR |String |
-| NCLOB |String |
+| NCHAR |Ciąg |
+| NCLOB |Ciąg |
 | NUMBER |Decimal, String (jeśli dokładności > 28) |
-| NVARCHAR2 |String |
+| NVARCHAR2 |Ciąg |
 | RAW |Byte[] |
 | ROWID |String |
-| TIMESTAMP |DateTime |
-| TIMESTAMP WITH LOCAL TIME ZONE |DateTime |
-| TIMESTAMP WITH TIME ZONE |DateTime |
+| TIMESTAMP |Datetime |
+| TIMESTAMP WITH LOCAL TIME ZONE |Datetime |
+| TIMESTAMP WITH TIME ZONE |Datetime |
 | UNSIGNED INTEGER |Number |
 | VARCHAR2 |String |
 | XML |String |

@@ -4,15 +4,15 @@ description: Użyciu programu Azure Powershell Zarządzanie kontami usługi Azur
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 07/03/2019
+ms.date: 07/09/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 28fa20a151bd4f3ee7ba9bedf9903827316c3eff
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: b61c7bbc06d8d265e5dd5dddd31aceadce1f623b
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602594"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797052"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Zarządzanie zasobami interfejsu API SQL usługi Azure Cosmos DB przy użyciu programu PowerShell
 
@@ -35,6 +35,7 @@ Poniższe sekcje pokazują, jak zarządzać kontem usługi Azure Cosmos w tym:
 
 * [Tworzenie konta usługi Azure Cosmos](#create-account)
 * [Zaktualizować konto usługi Azure Cosmos](#update-account)
+* [Wyświetlanie listy wszystkich kont usługi Azure Cosmos w ramach subskrypcji](#list-accounts)
 * [Konto usługi Azure Cosmos](#get-account)
 * [Usuwanie konta usługi Azure Cosmos](#delete-account)
 * [Aktualizacji tagów dla konta usługi Azure Cosmos](#update-tags)
@@ -82,7 +83,17 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 * `$consistencyPolicy` Domyślny poziom spójności konto usługi Cosmos Azure. Aby uzyskać więcej informacji, zobacz [poziomy spójności w usłudze Azure Cosmos DB](consistency-levels.md).
 * `$CosmosDBProperties` Wartości właściwości są przekazywane do dostawcy Cosmos DB usługi Azure Resource Manager do aprowizacji konta.
 
-Azure Cosmos, konta mogą być konfigurowane z zapory adresów IP, a także sieci wirtualnej usługi punktów końcowych. Aby uzyskać informacje na temat konfigurowania zapory adresów IP dla usługi Azure Cosmos DB, zobacz [Konfigurowanie zapory adresów IP](how-to-configure-firewall.md).  Aby uzyskać więcej informacji o sposobie włączania punktów końcowych usługi dla usługi Azure Cosmos DB, zobacz [Konfigurowanie dostępu z sieci wirtualnych](how-to-configure-vnet-service-endpoint.md) .
+Azure Cosmos, konta mogą być konfigurowane z zapory adresów IP, a także sieci wirtualnej usługi punktów końcowych. Aby uzyskać informacje na temat konfigurowania zapory adresów IP dla usługi Azure Cosmos DB, zobacz [Konfigurowanie zapory adresów IP](how-to-configure-firewall.md).  Aby uzyskać więcej informacji o sposobie włączania punktów końcowych usługi dla usługi Azure Cosmos DB, zobacz [Konfigurowanie dostępu z sieci wirtualnych](how-to-configure-vnet-service-endpoint.md).
+
+### <a id="list-accounts"></a> Wyświetlanie listy wszystkich kont usługi Azure Cosmos w ramach subskrypcji
+
+To polecenie umożliwia listy wszystkie konta usługi Azure Cosmos w ramach subskrypcji.
+
+```azurepowershell-interactive
+# List Azure Cosmos Accounts
+
+Get-AzResource -ResourceType Microsoft.DocumentDb/databaseAccounts | ft
+```
 
 ### <a id="get-account"></a> Pobierz właściwości konta usługi Azure Cosmos
 
@@ -229,7 +240,7 @@ Dla multiregionalne konta baz danych możesz zmienić kolejność, w którym kon
 Na poniższym przykładzie przyjęto założenie, to konto ma bieżący priorytet trybu failover westus = 0 i eastus = 1, a następnie przerzuć regionów.
 
 > [!CAUTION]
-> Ta operacja spowoduje wyzwolenie ręcznej pracy awaryjnej dla konta usługi Azure Cosmos.
+> Zmiana `locationName` dla `failoverPriority=0` wyzwoli ręcznej pracy awaryjnej dla konta usługi Azure Cosmos. Inne zmiany priorytetu nie powoduje wyzwolenia przejścia w tryb failover.
 
 ```azurepowershell-interactive
 # Change the failover priority for an Azure Cosmos Account
@@ -254,7 +265,7 @@ W poniższych sekcjach przedstawiono sposób zarządzania bazy danych Azure Cosm
 * [Utwórz bazę danych Azure Cosmos](#create-db)
 * [Utwórz bazę danych Azure Cosmos za pomocą udostępnionej przepływności](#create-db-ru)
 * [Uzyskiwanie informacji o przepływności bazy danych Azure Cosmos](#get-db-ru)
-* [Lista wszystkich Azure Cosmos baz danych na koncie usługi](#get-all-db)
+* [Lista wszystkich Azure Cosmos baz danych na koncie usługi](#list-db)
 * [Pobieranie pojedynczej bazy danych Azure Cosmos](#get-db)
 * [Usuń bazę danych Azure Cosmos](#delete-db)
 
@@ -309,7 +320,7 @@ Get-AzResource -ResourceType $databaseThroughputResourceType `
     -Name $databaseThroughputResourceName  | Select-Object Properties
 ```
 
-### <a id="get-all-db"></a>Pobierz wszystkie bazy danych Azure Cosmos na koncie usługi
+### <a id="list-db"></a>Pobierz wszystkie bazy danych Azure Cosmos na koncie usługi
 
 ```azurepowershell-interactive
 # Get all databases in an Azure Cosmos account
@@ -353,13 +364,14 @@ Remove-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/data
 Poniższe sekcje pokazują, jak zarządzać kontenera usługi Azure Cosmos w tym:
 
 * [Tworzenie kontenera usługi Azure Cosmos](#create-container)
+* [Tworzenie kontenera usługi Azure Cosmos przy użyciu klucza partycji duże](#create-container-big-pk)
 * [Uzyskiwanie informacji o przepływności kontenera usługi Azure Cosmos](#get-container-ru)
 * [Tworzenie kontenera usługi Azure Cosmos za pomocą udostępnionej przepływności](#create-container-ru)
 * [Tworzenie kontenera usługi Azure Cosmos przy użyciu niestandardowych indeksowania](#create-container-custom-index)
 * [Tworzenie kontenera usługi Azure Cosmos za pomocą indeksowania wyłączone](#create-container-no-index)
 * [Tworzenie kontenera usługi Azure Cosmos z unikatowym kluczem i czas wygaśnięcia](#create-container-unique-key-ttl)
 * [Tworzenie kontenera usługi Azure Cosmos za pomocą Rozwiązywanie konfliktów](#create-container-lww)
-* [Listę wszystkich kontenerów w usłudze Azure Cosmos w bazie danych](#list-all-container)
+* [Listę wszystkich kontenerów w usłudze Azure Cosmos w bazie danych](#list-containers)
 * [Pobierz jeden kontener usługi Azure Cosmos w bazie danych](#get-container)
 * [Usuń kontener usługi Azure Cosmos](#delete-container)
 
@@ -379,6 +391,33 @@ $ContainerProperties = @{
         "partitionKey"=@{
             "paths"=@("/myPartitionKey");
             "kind"="Hash"
+        }
+    };
+    "options"=@{ "Throughput"="400" }
+}
+
+New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databases/containers" `
+    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
+    -Name $resourceName -PropertyObject $ContainerProperties
+```
+
+### <a id="create-container-big-pk"></a>Tworzenie kontenera usługi Azure Cosmos o rozmiarze kluczy dużych partycji
+
+```azurepowershell-interactive
+# Create an Azure Cosmos container with a large partition key value (version = 2)
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$databaseName = "database1"
+$containerName = "container1"
+$resourceName = $accountName + "/sql/" + $databaseName + "/" + $containerName
+
+$ContainerProperties = @{
+    "resource"=@{
+        "id"=$containerName;
+        "partitionKey"=@{
+            "paths"=@("/myPartitionKey");
+            "kind"="Hash";
+            "version" = 2
         }
     };
     "options"=@{ "Throughput"="400" }
@@ -569,7 +608,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName -PropertyObject $ContainerProperties
 ```
 
-### <a id="list-all-container"></a>Listę wszystkich kontenerów w usłudze Azure Cosmos w bazie danych
+### <a id="list-containers"></a>Listę wszystkich kontenerów w usłudze Azure Cosmos w bazie danych
 
 ```azurepowershell-interactive
 # List all Azure Cosmos containers in a database
@@ -612,7 +651,7 @@ Remove-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/data
     -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName -Name $resourceName
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Wszystkie przykłady programu PowerShell](powershell-samples.md)
 * [Jak zarządzać kontem usługi Azure Cosmos](how-to-manage-database-account.md)

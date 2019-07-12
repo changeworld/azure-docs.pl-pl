@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 6/13/2019
 ms.author: victorh
-ms.openlocfilehash: 6aad0502b5739906d1fa8fa896f8d0af8cc38e30
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 8e79fd1a839113cad5a3a36c01855d98793d7032
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205011"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655307"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Skalowanie automatyczne i strefowo nadmiarowe Application Gateway w wersji 2 
 
@@ -35,7 +35,7 @@ Nowe jednostki SKU w wersji 2 obejmuje następujące ulepszenia:
 
 ## <a name="supported-regions"></a>Obsługiwane regiony
 
-Standard_v2 i WAF_v2 jednostki SKU jest dostępna w następujących regionach: Północna środkowe stany USA, południowo-środkowe stany USA, zachodnie stany USA, zachodnie stany USA 2, wschodnie stany USA, wschodnie stany USA 2, środkowe stany USA, Europa Północna, Europa Zachodnia, Azja południowo-wschodnia, Francja środkowa, zachodnie Zjednoczone Królestwo, Japonia Wschodnia, Japonia, część zachodnia. W przyszłości zostaną dodane dodatkowe regiony.
+Standard_v2 i WAF_v2 jednostki SKU jest dostępna w następujących regionach: Północna środkowe stany USA, południowo-środkowe stany USA, zachodnie stany USA, zachodnie stany USA 2, wschodnie stany USA, wschodnie stany USA 2, środkowe stany USA, Europa Północna, Europa Zachodnia, Azja południowo-wschodnia, Francja środkowa, Zjednoczone Królestwo zachodnie, Japonia Wschodnia, Japonia Zachodnia, Australia Wschodnia, Australia Południowo-Wschodnia, Kanada Środkowa, Kanada Wschodnia, Azja Wschodnia, Korea Środkowa, Korea Południowa, Indie Południowe Zjednoczone Królestwo Południowe, Indie środkowe, Indie Zachodnie, Indie Południowe.
 
 ## <a name="pricing"></a>Cennik
 

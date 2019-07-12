@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a91d0f75b7e27065bd2ee0ea430a859d265afacb
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 2eae81f357904bd5034d7409ef42b681d1085930
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332051"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67695216"
 ---
 # <a name="vpn-gateways-overview"></a>Przegląd bram sieci VPN
 
@@ -44,8 +44,6 @@ Przypadki użycia dla sieci VPN typu lokacja lokacja, obejmują:
 
 ### <a name="cryptographic-parameters"></a>Parametry kryptograficzne
 
-Połączenia sieci VPN typu lokacja lokacja używa następujących parametrów kryptograficznych domyślne nawiązać bezpiecznego połączenia.  Podczas tworzenia połączenia z lokalnym urządzeniem sieci VPN, parametry muszą być zgodne.
-
 Połączenia sieci VPN typu lokacja lokacja używa następujących parametrów kryptograficznych domyślne nawiązać bezpiecznego połączenia.  Podczas tworzenia połączenia z lokalnym urządzeniem sieci VPN, należy użyć dowolnego z następujących parametrów obsługiwanych przez bramy sieci VPN w środowisku lokalnym.
 
 #### <a name="phase-1-proposals"></a>Faza 1 propozycji
@@ -74,6 +72,6 @@ Połączenia sieci VPN typu lokacja lokacja używa następujących parametrów k
 
 Sieć VPN punkt lokacja służy wysyłać zaszyfrowany ruch sieciowy między siecią region CloudSimple i komputera klienckiego.  Sieci VPN typu punkt lokacja jest najprostszym sposobem na dostęp do sieci prywatnej chmury, w tym usługi chmury prywatnej programu vCenter i maszyn wirtualnych obsługujących obciążenia.  Połączenie sieci VPN typu punkt lokacja należy użyć, jeśli łączysz się Chmura prywatna zdalnie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Konfigurowanie bramy sieci VPN](https://docs.azure.cloudsimple.com/vpn-gateway/)

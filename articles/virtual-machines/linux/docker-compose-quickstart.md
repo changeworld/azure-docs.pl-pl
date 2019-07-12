@@ -4,7 +4,7 @@ description: Jak zainstalować i używać platformy Docker i Compose maszyn wirt
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 02ab8cf9-318d-4a28-9d0c-4a31dccc2a84
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2019
 ms.author: cynthn
-ms.openlocfilehash: 03501ea774cf58a4be88ed9155e5cfdfb99f0379
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29b9b2b7868a39b8e14a559b27f60f9e46bad565
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61474088"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67668001"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Wprowadzenie do platformy Docker i Compose, aby zdefiniować i uruchomić aplikację obsługującą wiele kontenerów na platformie Azure
 Za pomocą [Compose](https://github.com/docker/compose), użyj prostego pliku tekstowego do definiowania aplikacja składająca się z wielu kontenerów platformy Docker. Następnie uruchom aplikację w pojedynczym poleceniu, tak, wszystko, co do wdrożenia środowiska zdefiniowane. Na przykład w tym artykule pokazano, jak szybko skonfigurować bloga WordPress z zapleczem bazy danych MariaDB SQL na maszynie Wirtualnej systemu Ubuntu. Redaguj umożliwia również konfigurowanie bardziej złożonych aplikacji.
@@ -131,7 +131,7 @@ Teraz można połączyć się WordPress bezpośrednio na maszynie Wirtualnej na 
 
 ![Ekran startowy WordPress](./media/docker-compose-quickstart/wordpressstart.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Zapoznaj się z [Compose wiersza polecenia](https://docs.docker.com/compose/reference/) i [Podręcznik użytkownika](https://docs.docker.com/compose/) więcej przykładów dotyczących tworzenia i wdrażania aplikacji obsługującej wiele kontenerów.
 * Albo użyj szablonu usługi Azure Resource Manager, usługi posiada lub w jednym przyczyniły się z [społeczności](https://azure.microsoft.com/documentation/templates/), aby wdrożyć Maszynę wirtualną platformy Azure z platformami Docker i skonfigurować za pomocą tworzenia aplikacji. Na przykład [wdrożyć blog WordPress przy użyciu rozwiązania Docker](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-wordpress-mysql) szablon używa platformy Docker i Compose, szybko wdrożyć WordPress z zapleczem MySQL na maszynie Wirtualnej systemu Ubuntu.
 * Spróbuj integracji narzędzia Docker Compose za pomocą klastra Docker Swarm. Zobacz [przy użyciu narzędzia Compose przy użyciu koordynatora Swarm](https://docs.docker.com/compose/swarm/) do scenariuszy.

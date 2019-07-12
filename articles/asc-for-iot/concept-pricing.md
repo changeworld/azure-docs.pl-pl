@@ -2,24 +2,25 @@
 title: Omówienie Centrum zabezpieczeń Azure dla IoT koszty (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: Więcej informacji na temat kosztów związanych z Centrum zabezpieczeń Azure dla IoT i jak je kontrolować.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: ef839708-4574-4a40-bc45-07005f8e9daf
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 40963e0d81ccff21cc625b799833b996547a13b6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd041cdb1608eab60fa2a5fa756f381656a13a46
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65198322"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618452"
 ---
 # <a name="pricing-and-associated-costs"></a>Cennik i powiązane koszty
 
@@ -62,7 +63,7 @@ Aby zmienić swoje ustawienia:
 
 Poniższa tabela zawiera podsumowanie powiązanych z nimi kosztów i skutki każdej z nich.
 
-|     | Sposób użycia | Komentarz |
+|     | Użycie | Komentarz |
 | --- | --- | --- |
 | **Użycie limitu przydziału usługi IoT Hub** |  |
 | [Eksportowanie urządzeń](https://docs.microsoft.com/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices) zadania (Eksportowanie bliźniaczej reprezentacji) | raz dziennie | Wyłącz _bliźniaczej reprezentacji w kolekcji metadanych_ |

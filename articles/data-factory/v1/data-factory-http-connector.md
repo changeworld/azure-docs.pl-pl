@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f7e070788d2fc11addcafc30d9f232f194f44782
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 22d6999b2a69aceb4421cea070d784f693bdf9c4
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60318482"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839291"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Przenoszenie danych ze źródła HTTP przy użyciu usługi Azure Data Factory
 
@@ -39,13 +39,13 @@ Można użyć tego łącznika protokołu HTTP do pobierania danych z *zarówno w
 
 Podczas kopiowania danych z punktu końcowego HTTP w środowisku lokalnym, należy zainstalować bramę zarządzania danymi w środowisku lokalnym lub Maszynie wirtualnej platformy Azure. Aby dowiedzieć się o bramy zarządzania danymi i instrukcje krok po kroku dotyczące sposobu konfigurowania bramy, zobacz [przenoszenie danych między lokalizacjami lokalnymi i w chmurze](data-factory-move-data-between-onprem-and-cloud.md).
 
-## <a name="get-started"></a>Rozpoczęcie pracy
+## <a name="get-started"></a>Wprowadzenie
 
 Można utworzyć potoku, który ma działanie kopiowania może służyć do przenoszenia danych ze źródła HTTP przy użyciu różnych narzędzi lub interfejsów API:
 
 - Najprostszym sposobem utworzenia potoku jest użycie Kreatora kopiowania danych. Aby uzyskać szybki Przewodnik tworzenia potoku za pomocą Kreatora kopiowania danych, zobacz [samouczka: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md).
 
-- Można również użyć następujących narzędzi do utworzenia potoku: **witryny Azure portal**, **programu Visual Studio**, **programu Azure PowerShell**, **usługi Azure Resource Manager Szablon**, **interfejsu API platformy .NET**, lub **interfejsu API REST**. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku, który zawiera działania kopiowania, zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). Aby JSON przykłady kopiowania danych ze źródła HTTP do usługi Azure Blob storage, zobacz [JSON przykłady](#json-examples).
+- Można również użyć następujących narzędzi do utworzenia potoku: **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET** , lub **interfejsu API REST**. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku, który zawiera działania kopiowania, zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). Aby JSON przykłady kopiowania danych ze źródła HTTP do usługi Azure Blob storage, zobacz [JSON przykłady](#json-examples).
 
 ## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
@@ -53,8 +53,8 @@ W poniższej tabeli opisano elementy JSON, które są specyficzne dla protokołu
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| type | **Typu** właściwość musi być równa **Http**. | Yes |
-| url | Podstawowy adres URL do serwera sieci web. | Yes |
+| type | **Typu** właściwość musi być równa **Http**. | Tak |
+| url | Podstawowy adres URL do serwera sieci web. | Tak |
 | authenticationType | Określa typ uwierzytelniania. Dozwolone wartości to **anonimowe**, **podstawowe**, **szyfrowanego**, **Windows**, i **ClientCertificate**. <br><br> Można znaleźć w kolejnych sekcjach, w tym artykule, aby więcej właściwości i przykłady kodu JSON dla tych typów uwierzytelniania. | Yes |
 | enableServerCertificateValidation | Określa, czy włączyć obsługę weryfikacji certyfikatu SSL serwera, jeśli źródło jest serwerem sieci web protokołu HTTPS. Gdy serwer protokołu HTTPS używa certyfikatu z podpisem własnym, ustaw tę opcję na **false**. | Nie<br /> (wartość domyślna to **true**) |
 | gatewayName | Nazwa wystąpienia bramy zarządzania danymi na potrzeby połączenia ze źródłem HTTP w środowisku lokalnym. | Tak, jeśli kopiujesz dane ze źródła HTTP w środowisku lokalnym |
@@ -68,7 +68,7 @@ Ustaw **authenticationType** do **podstawowe**, **szyfrowanego**, lub **Windows*
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| userName | Nazwa użytkownika na potrzeby dostępu do punktu końcowego HTTP. | Yes |
+| userName | Nazwa użytkownika na potrzeby dostępu do punktu końcowego HTTP. | Tak |
 | password | Hasło dla użytkownika (**username**). | Yes |
 
 **Przykład: Uwierzytelnianie podstawowe, szyfrowane lub Windows**
@@ -160,7 +160,7 @@ Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do def
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | **Typu** zestawu danych musi być równa **Http**. | Yes |
+| type | **Typu** zestawu danych musi być równa **Http**. | Tak |
 | relativeUrl | Względny adres URL do zasobu, który zawiera dane. Jeśli ścieżka nie jest określona, używana jest tylko adres URL, który jest określony w definicji połączonej usługi. <br><br> Aby skonstruować dynamiczny adres URL, możesz użyć [funkcji usługi fabryka danych i zmiennych systemowych](data-factory-functions-variables.md). Przykład: **relativeUrl**: **$$Text.Format ("/ my/raportu? miesiąc = {0: yyyy}-{0:MM} & fmt = csv", SliceStart)** . | Nie |
 | requestMethod | Metoda HTTP. Dozwolone wartości to **UZYSKAĆ** i **WPIS**. | Nie <br />(wartość domyślna to **UZYSKAĆ**) |
 | additionalHeaders | Dodatkowe nagłówki żądania HTTP. | Nie |
@@ -231,7 +231,7 @@ Zobacz [formaty plików i kompresji w usłudze Azure Data Factory](data-factory-
 
 ## <a name="json-examples"></a>Przykłady JSON
 
-W poniższych przykładach udostępniono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [witryny Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). W przykładach pokazano, jak kopiować dane ze źródła HTTP w usłudze Azure Blob storage. Jednak dane mogą być kopiowane *bezpośrednio* z dowolnego źródła do dowolnego ujścia [obsługiwanych](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.
+W poniższych przykładach udostępniono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). W przykładach pokazano, jak kopiować dane ze źródła HTTP w usłudze Azure Blob storage. Jednak dane mogą być kopiowane *bezpośrednio* z dowolnego źródła do dowolnego ujścia [obsługiwanych](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.
 
 **Przykład: Kopiowanie danych ze źródła HTTP do usługi Azure Blob storage**
 

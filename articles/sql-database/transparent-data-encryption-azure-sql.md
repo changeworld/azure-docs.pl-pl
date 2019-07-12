@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/19/2019
-ms.openlocfilehash: 7066b600cf50df583fbf8e9e674ef17d77b86183
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dfc48fec948ab0cf3d16a49bb60eb3c274f2864e
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061385"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723275"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Przezroczyste szyfrowanie danych dla bazy danych SQL i magazynu danych
 
@@ -33,7 +33,7 @@ SQL Server uruchomiony na maszynie wirtualnej platformy Azure, również można 
 
 ## <a name="service-managed-transparent-data-encryption"></a>Zarządzane przez usługę przezroczyste szyfrowanie danych
 
-Na platformie Azure domyślne ustawienie dla technologii transparent data encryption jest, że klucz szyfrowania bazy danych jest chroniony za pomocą wbudowanego serwera certyfikatu. Certyfikat wbudowanego serwera jest unikatowy dla każdego serwera. Jeśli baza danych jest w relacji replikacji geograficznej, zarówno podstawowej i pomocniczej geograficznej bazy danych są chronione przez klucz serwera nadrzędnego podstawowej bazy danych. Jeśli połączenie dwóch baz danych na tym samym serwerze, również udostępnić ten sam certyfikat wbudowanych. Microsoft automatycznie przełącza te certyfikaty niezgodne z zasadami bezpieczeństwa wewnętrznego i klucz główny jest chroniony przez Microsoft wewnętrznego magazynu wpisów tajnych.  Klientom sprawdzenie zgodności bazy danych SQL z zasadami zabezpieczeń wewnętrznych w niezależnie od innych firm raportów dostępnych w [Microsoft Trust Center](https://servicetrust.microsoft.com/).
+Na platformie Azure domyślne ustawienie dla technologii transparent data encryption jest, że klucz szyfrowania bazy danych jest chroniony za pomocą wbudowanego serwera certyfikatu. Certyfikat wbudowanego serwera jest unikatowy dla każdego serwera, a algorytm szyfrowania używany jest AES 256. Jeśli baza danych jest w relacji replikacji geograficznej, zarówno podstawowej i pomocniczej geograficznej bazy danych są chronione przez klucz serwera nadrzędnego podstawowej bazy danych. Jeśli połączenie dwóch baz danych na tym samym serwerze, również udostępnić ten sam certyfikat wbudowanych.  Microsoft automatycznie przełącza te certyfikaty niezgodne z zasadami bezpieczeństwa wewnętrznego i klucz główny jest chroniony przez Microsoft wewnętrznego magazynu wpisów tajnych.  Klientom sprawdzenie zgodności bazy danych SQL z zasadami zabezpieczeń wewnętrznych w niezależnie od innych firm raportów dostępnych w [Microsoft Trust Center](https://servicetrust.microsoft.com/).
 
 Firma Microsoft również bezproblemowo przenosi i zarządza kluczami, zgodnie z potrzebami dla replikacji geograficznej i przywraca.
 
@@ -93,7 +93,7 @@ Aby skonfigurować przezroczyste szyfrowanie danych za pomocą programu PowerShe
 
 Użyj następujących poleceń cmdlet dla usługi Azure SQL Database i Data Warehouse:
 
-| Polecenie cmdlet | Opis |
+| Polecenia cmdlet | Opis |
 | --- | --- |
 | [Set-AzSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) |Włącza lub wyłącza przezroczyste szyfrowanie danych dla bazy danych|
 | [Get-AzSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) |Pobiera stan szyfrowania danych dla bazy danych |
@@ -140,7 +140,7 @@ Użyj następującego zestawu poleceń dla usługi Azure SQL Database i Data War
 |[Pobieranie Transparent Data Encryption konfiguracji](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/get)|Pobiera konfigurację szyfrowania danych dla bazy danych|
 |[Listy Transparent Data Encryption konfiguracji wyników](https://docs.microsoft.com/rest/api/sql/transparentdataencryptionactivities/listbyconfiguration)|Pobiera wynik szyfrowania bazy danych|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby uzyskać ogólny opis technologii transparent data encryption, zobacz [technologii Transparent data encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption).
 - Aby dowiedzieć się więcej na temat technologii transparent data encryption z obsługą Bring Your Own Key dla usługi Azure SQL Database, wystąpienia zarządzanego Azure SQL i magazynu danych, zobacz [technologii Transparent data encryption z obsługą Bring Your Own Key](transparent-data-encryption-byok-azure-sql.md).

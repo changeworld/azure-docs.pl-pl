@@ -4,7 +4,7 @@ description: Jak wdrożyć Windows 7, Windows 8 lub Windows 10 na platformie Azu
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 91c3880a-cede-44f1-ae25-f8f9f5b6eaa4
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: f791b17f2729af3efd2dff5d7884a168f8377154
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fcd97b07416526d71d5bee9bc198eb0d912e1c55
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61403100"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67719152"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Używać klienta Windows na platformie Azure na potrzeby scenariuszy tworzenia i testowania
 Możesz użyć Windows 7, Windows 8 lub Windows 10 Enterprise (x64) na platformie Azure na potrzeby scenariuszy deweloperskich/testowych, pod warunkiem, że masz odpowiednią subskrypcję programu Visual Studio (dawniej MSDN). W tym artykule opisano wymagania kwalifikacyjne dotyczące uruchamiania Windows 7, Windows 8.1, Windows 10 Enterprise na platformie Azure i korzystania z następujących obrazów w galerii platformy Azure.
@@ -63,6 +63,6 @@ Można również wyświetlić Identyfikatora oferty z [kartę "Subskrypcje"](htt
 
 ![Szczegóły Identyfikatora oferty w portalu konta usługi Azure](./media/client-images/offer-id-azure-account-portal.png) 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Teraz można wdrożyć maszyny wirtualne przy użyciu [PowerShell](quick-create-powershell.md), [szablonów usługi Resource Manager](ps-template.md), lub [programu Visual Studio](../../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
 

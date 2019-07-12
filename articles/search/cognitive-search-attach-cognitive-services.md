@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 44f16b3334b991e071fa85ca4cffbc0837f0a6ec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ffce8a2bd8a04e73acdeac037be0b10ba1a9a887
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244428"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672382"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Dołącz zasób usług Cognitive Services za pomocą zestawu umiejętności w usłudze Azure Search 
 
@@ -42,7 +42,7 @@ Bezpłatna (ograniczony wzbogacenia) zasoby są ograniczone do 20 dokumentów ka
 
 1. Otwórz Kreatora importu danych:
 
-   ![Otwórz Kreatora importu danych](media/search-get-started-portal/import-data-cmd2.png "Otwórz Kreatora importu danych")
+   ![Otwórz Kreatora importu danych](media/search-get-started-portal/import-data-cmd.png "Otwórz Kreatora importu danych")
 
 1. Wybierz źródło danych i w dalszym ciągu **Dodaj wyszukiwanie kognitywne (opcjonalnie)** . Aby uzyskać przewodnik krok po kroku tego kreatora, zobacz [Import, indeksu i wykonywania zapytań przy użyciu narzędzia portalu](search-get-started-portal.md).
 
@@ -157,7 +157,7 @@ Ceny przedstawione w tym artykule są hipotetycznych. Służą one do ilustrują
 
 Łączenie wszystkiego razem, zapłacisz około 57.00 $ pozyskiwać 1000 dokumentów PDF tego typu z opisem zestawu umiejętności.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 + [Usługa Azure Search, cennik](https://azure.microsoft.com/pricing/details/search/)
 + [Jak Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md)
 + [Tworzenie zestawu umiejętności (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)

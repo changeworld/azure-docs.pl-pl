@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2016
-ms.author: rloutlaw
-ms.openlocfilehash: 67ae9eec4e6cd4fc7697e54dfd74c5e0c8f1f59c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: routlaw
+ms.openlocfilehash: 571e8d640e068b6635ab4091a01283d698b0264d
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540953"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595647"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>Using Node.js Modules with Azure applications (Używanie modułów Node.js z aplikacjami platformy Azure)
 Ten dokument zawiera wskazówki na temat używania modułów Node.js w aplikacjach hostowanych na platformie Azure. Zapewnia wskazówki na zapewnienie, że aplikacja używa określonej wersji modułu, a także korzystanie z modułów natywnych przy użyciu platformy Azure.
@@ -84,7 +84,7 @@ Gdy aplikacja jest gotowa do produkcji, można zablokować wymagania dotyczące 
 > 
 > 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Teraz, gdy już rozumiesz sposób używania modułów Node.js z platformą Azure, Dowiedz się jak [określanie wersji środowiska Node.js](https://github.com/squillace/staging/blob/master/articles/nodejs-specify-node-version-azure-apps.md), [tworzenie i wdrażanie aplikacji sieci web Node.js](app-service/app-service-web-get-started-nodejs.md), i [sposób używania wiersza polecenia platformy Azure Interfejs dla systemów Mac i Linux](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/).
 
 Aby uzyskać więcej informacji, odwiedź stronę [Centrum deweloperów środowiska Node.js](/nodejs/azure/).

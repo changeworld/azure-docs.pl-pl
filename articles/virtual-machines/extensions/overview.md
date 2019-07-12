@@ -4,7 +4,7 @@ description: Dowiedz się, czym są rozszerzenia maszyny Wirtualnej platformy Az
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: a35cba0ab7df80596ba1403765980809635c0249
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3a8c571d3c6bb55fdd8b2d097b71b83afab5ca00
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60618000"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705919"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Rozszerzenia maszyny wirtualnej platformy Azure i funkcji
 Rozszerzenia maszyn wirtualnych (VM) to małych aplikacji, które zapewniają po wdrożeniu konfiguracji oraz zadania automatyzacji na maszynach wirtualnych platformy Azure, możesz użyć istniejących obrazów i następnie dostosuj je, jako część wdrożenia, uzyskiwanie działalność niestandardowe Tworzenie obrazu.
@@ -51,7 +51,7 @@ Nie trzeba połączyć się bezpośrednio, aby zainstalować lub usunąć rozsze
 ## <a name="anything-else-i-should-be-thinking-about-for-extensions"></a>Czymkolwiek I powinny być zastanawiasz się rozszerzeń?
 Rozszerzenia instalowanie aplikacji, np. wszystkie aplikacje, które istnieją pewne wymagania dotyczące rozszerzeń znajduje się lista obsługiwanych Windows i systemów operacyjnych Linux i musisz mieć zainstalowanych agentów maszyny Wirtualnej platformy Azure. Niektóre poszczególnych aplikacji rozszerzenia maszyny Wirtualnej może mieć własne wymagania wstępne środowiska, takich jak dostęp do punktu końcowego.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Aby uzyskać więcej informacji na temat działania agenta systemu Linux i rozszerzenia, zobacz [rozszerzeń maszyny Wirtualnej platformy Azure i funkcji dla systemu Linux](features-linux.md).
 * Aby uzyskać więcej informacji na temat działania agenta gościa Windows i rozszerzenia zobacz [rozszerzeń maszyny Wirtualnej platformy Azure i funkcji dla Windows](features-windows.md).  
 * Aby zainstalować agenta gościa Windows, zobacz [omówienie agenta maszyny wirtualnej Windows Azure](agent-windows.md).  

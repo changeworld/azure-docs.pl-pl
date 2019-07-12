@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: cfb7dc8ef41c8829caebed6fff2d881093dbbe4d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c45c42077d6f07ef847d2b95d4c24310f51abca4
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076234"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621838"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Rozpoczęcie korzystania z usługi Azure Stream Analytics: Wykrywanie oszustw w czasie rzeczywistym
 
@@ -75,7 +75,7 @@ W tej procedurze należy najpierw utworzyć przestrzeń nazw Centrum zdarzeń, a
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
  
-7. Kliknij pozycję **Utwórz**.
+7. Kliknij przycisk **Utwórz**.
 
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>Udzielanie dostępu do centrum zdarzeń i pobieranie parametrów połączenia
 
@@ -92,7 +92,7 @@ Zanim proces może wysyłać dane do Centrum zdarzeń, Centrum zdarzeń musi mie
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
  
-4.  Kliknij pozycję **Utwórz**.
+4.  Kliknij przycisk **Utwórz**.
 
 5.  Po wdrożeniu zasad kliknij je na liście zasad dostępu współdzielonego.
 
@@ -172,7 +172,7 @@ Teraz, gdy masz strumień zdarzeń połączeń, możesz skonfigurować zadanie u
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png" alt="Create Stream Analytics job in portal" width="300px"/>
 
-3. Kliknij pozycję **Utwórz**.
+3. Kliknij przycisk **Utwórz**.
 
     Zadanie jest tworzone i portalu są wyświetlane szczegóły zadania. Nic nie jest jeszcze uruchomiona, chociaż — należy skonfigurować zadania, zanim można go uruchomić.
 
@@ -188,7 +188,7 @@ Teraz, gdy masz strumień zdarzeń połączeń, możesz skonfigurować zadanie u
    |**Ustawienie**  |**Sugerowana wartość**  |**Opis**  |
    |---------|---------|---------|
    |Alias danych wejściowych  |  CallStream   |  Wprowadź nazwę identyfikującą dane wejściowe zadania.   |
-   |Subskrypcja   |  \<Twoja subskrypcja\> |  Wybierz subskrypcję platformy Azure, która ma Centrum zdarzeń utworzonego.   |
+   |Subscription   |  \<Twoja subskrypcja\> |  Wybierz subskrypcję platformy Azure, która ma Centrum zdarzeń utworzonego.   |
    |Przestrzeń nazw centrum zdarzeń  |  asa-eh-ns-demo |  Wprowadź nazwę przestrzeni nazw Centrum zdarzeń.   |
    |Nazwa centrum zdarzeń  | asa-eh-frauddetection-demo | Wybierz nazwę Centrum zdarzeń.   |
    |Nazwa zasad centrum zdarzeń  | asa-policy-manage-demo | Wybierz zasady dostępu, który został utworzony wcześniej.   |
@@ -197,7 +197,7 @@ Teraz, gdy masz strumień zdarzeń połączeń, możesz skonfigurować zadanie u
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="Create Stream Analytics input in portal" width="300px"/>
 
 
-4. Kliknij pozycję **Utwórz**.
+4. Kliknij przycisk **Utwórz**.
 
 ## <a name="create-queries-to-transform-real-time-data"></a>Tworzenie zapytań do przekształcania danych w czasie rzeczywistym
 
@@ -207,7 +207,7 @@ Proste zapytanie może być tylko odczytać wszystkie dane przychodzące. Jednak
 
 Zapytania tworzone w tym miejscu po prostu wyświetli przekształconych danych do ekranu. W dalszej części tego tematu należy skonfigurować ujścia danych wyjściowych i zapytania, który zapisuje przekształcone dane do tego obiektu sink.
 
-Aby dowiedzieć się więcej na temat języka, zobacz [dokumentacja języka zapytań usługi Azure Stream Analytics](https://msdn.microsoft.com/library/dn834998.aspx).
+Aby dowiedzieć się więcej na temat języka, zobacz [dokumentacja języka zapytań usługi Azure Stream Analytics](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference).
 
 ### <a name="get-sample-data-for-testing-queries"></a>Pobierz przykładowe dane do testowania zapytań
 
@@ -289,11 +289,11 @@ Dla tej transformacji sekwencja danych czasowych systemu Windows, które się ni
         GROUP BY TUMBLINGWINDOW(s, 5), SwitchNum
         ```
 
-    To zapytanie używa `Timestamp By` — słowo kluczowe w `FROM` klauzulę, aby określić które pole znacznika czasu w strumieniu wejściowym, aby użyć, aby zdefiniować okno wirowania. W tym przypadku okno dzieli dane na segmenty według `CallRecTime` pola w każdym rekordzie. (Jeśli żadne pole nie zostanie określony, operacja obsługi okien używa czasu każdego zdarzenia dociera do Centrum zdarzeń. Zobacz sekcję "Czas aplikacji Vs czas nadejścia" w [Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx). 
+    To zapytanie używa `Timestamp By` — słowo kluczowe w `FROM` klauzulę, aby określić które pole znacznika czasu w strumieniu wejściowym, aby użyć, aby zdefiniować okno wirowania. W tym przypadku okno dzieli dane na segmenty według `CallRecTime` pola w każdym rekordzie. (Jeśli żadne pole nie zostanie określony, operacja obsługi okien używa czasu każdego zdarzenia dociera do Centrum zdarzeń. Zobacz sekcję "Czas aplikacji Vs czas nadejścia" w [Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference). 
 
     Obejmuje projekcji `System.Timestamp`, która zwraca sygnaturę czasową na koniec każdego okna. 
 
-    Aby określić, czy użyć okna wirowania, należy użyć [TUMBLINGWINDOW](https://msdn.microsoft.com/library/dn835055.aspx) działa w programach `GROUP BY` klauzuli. W funkcji należy określić jednostkę czasu (dowolnym z mikrosekund na dzień) i rozmiaru okna (liczbę jednostek). W tym przykładzie okno wirowania składa się z odstępach 5-sekundowego, dzięki czemu otrzymasz liczbą według kraju/regionu dla co 5 sekund, przez które wywołania.
+    Aby określić, czy użyć okna wirowania, należy użyć [TUMBLINGWINDOW](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) działa w programach `GROUP BY` klauzuli. W funkcji należy określić jednostkę czasu (dowolnym z mikrosekund na dzień) i rozmiaru okna (liczbę jednostek). W tym przykładzie okno wirowania składa się z odstępach 5-sekundowego, dzięki czemu otrzymasz liczbą według kraju/regionu dla co 5 sekund, przez które wywołania.
 
 2. Kliknij przycisk **testu** ponownie. W wynikach, zwróć uwagę, że sygnatury czasowe, w obszarze **WindowEnd** znajdują się w przyrostach co 5 sekund.
 
@@ -358,14 +358,14 @@ Jeśli masz istniejące konto magazynu obiektów blob, można użyć, który. W 
    |**Ustawienie**  |**Sugerowana wartość**  |**Opis**  |
    |---------|---------|---------|
    |Alias danych wyjściowych  |  CallStream-FraudulentCalls   |  Wprowadź nazwę identyfikującą dane wyjściowe zadania.   |
-   |Subskrypcja   |  \<Twoja subskrypcja\> |  Wybierz subskrypcję platformy Azure, która ma utworzone konto magazynu. Konto magazynu może być w tej samej lub innej subskrypcji. W tym przykładzie przyjęto założenie, że konto magazynu zostało utworzone w tej samej subskrypcji. |
+   |Subscription   |  \<Twoja subskrypcja\> |  Wybierz subskrypcję platformy Azure, która ma utworzone konto magazynu. Konto magazynu może być w tej samej lub innej subskrypcji. W tym przykładzie przyjęto założenie, że konto magazynu zostało utworzone w tej samej subskrypcji. |
    |Konto magazynu  |  asaehstorage |  Wprowadź nazwę utworzonego konta magazynu. |
    |Kontener  | asa-fraudulentcalls-demo | Wybierz pozycję Utwórz nowy, a następnie wprowadź nazwę kontenera. |
 
     <br/>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png" alt="Create blob output for Stream Analytics job" width="300px"/>
     
-5. Kliknij pozycję **Zapisz**. 
+5. Kliknij polecenie **Zapisz**. 
 
 
 ## <a name="start-the-streaming-analytics-job"></a>Uruchamianie zadania usługi Stream Analytics
@@ -408,7 +408,7 @@ Jednak jeśli wszystko będzie gotowe, które nie potrzebują zasoby, które zos
 
 Aby uzyskać dalszą pomoc, spróbuj [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Możesz kontynuować z tego samouczka z następującym artykułem:
 
@@ -418,5 +418,5 @@ Aby uzyskać więcej informacji na temat usługi Stream Analytics ogólnie rzecz
 
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
 * [Scale Azure Stream Analytics jobs (Skalowanie zadań usługi Azure Stream Analytics)](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics Query Language Reference (Dokumentacja dotycząca języka zapytań usługi Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure Stream Analytics Query Language Reference (Dokumentacja dotycząca języka zapytań usługi Azure Stream Analytics)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics Management REST API Reference (Dokumentacja interfejsu API REST zarządzania usługą Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
