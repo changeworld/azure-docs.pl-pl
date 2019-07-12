@@ -10,104 +10,105 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/31/2019
+ms.date: 07/01/2019
 ms.author: mbullwin
-ms.openlocfilehash: 6567d7f2ebaab5bd7b5bc8fb7b5a62970f169161
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e3ec202ba6126b150fb78c76591682f163018661
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476169"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604541"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Adnotacje na wykresy metryk w usłudze Application Insights
 
-Adnotacje na [Eksploratora metryk](../../azure-monitor/app/metrics-explorer.md) wykresy pokazują, w której została wdrożona nowa kompilacja lub innych istotnego zdarzenia. Ułatwiają one można łatwo sprawdzić, czy zmiany miały wpływu na wydajność aplikacji. Mogą być automatycznie tworzone przez [usługom DevOps platformy Azure, system kompilacji](https://docs.microsoft.com/azure/devops/pipelines/tasks/). Można również utworzyć adnotacje mógł oflagować dowolne zdarzenie, które, tworząc je za pomocą programu PowerShell.
+Adnotacje na [Eksploratora metryk](../../azure-monitor/app/metrics-explorer.md) wykresy pokazują, w której została wdrożona nowa kompilacja lub innych istotnych zdarzeń. Adnotacje, należy można łatwo sprawdzić, czy zmiany miały wpływu na wydajność aplikacji. Mogą być automatycznie tworzone przez [potoki Azure](https://docs.microsoft.com/azure/devops/pipelines/tasks/) system kompilacji. Można również utworzyć adnotacje mógł oflagować dowolne zdarzenie, które, tworząc je za pomocą programu PowerShell.
 
 > [!NOTE]
-> W tym artykule odzwierciedla przestarzałego **metryki klasycznego środowiska**. Adnotacje tylko są obecnie dostępne w środowisku klasycznym i  **[skoroszyty](../../azure-monitor/app/usage-workbooks.md)** . Aby dowiedzieć się więcej na temat bieżącego środowiska metryk, należy skontaktować się [w tym artykule](../../azure-monitor/platform/metrics-charts.md).
+> W tym artykule odzwierciedla przestarzałego **metryki klasycznego środowiska**. Adnotacje tylko są obecnie dostępne w środowisku klasycznym i  **[skoroszyty](../../azure-monitor/app/usage-workbooks.md)** . Aby dowiedzieć się więcej na temat bieżącego środowiska metryk, zobacz [zaawansowane funkcje Eksploratora metryk usługi Azure](../../azure-monitor/platform/metrics-charts.md).
 
 ![Przykład adnotacji](./media/annotations/0-example.png)
 
-## <a name="release-annotations-with-azure-devops-services-build"></a>Adnotacje dotyczące dzięki usługom DevOps platformy Azure kompilacji wersji
+## <a name="release-annotations-with-azure-pipelines-build"></a>Adnotacje dotyczące z kompilacją Azure potoki wersji
 
-Adnotacji dotyczących wersji są funkcją usługi Azure potoki oparte na chmurze usługom DevOps platformy Azure.
+Adnotacji dotyczących wersji są funkcją usługi Azure potoki oparte na chmurze DevOps platformy Azure.
 
 ### <a name="install-the-annotations-extension-one-time"></a>Zainstaluj rozszerzenie adnotacji (raz)
-Aby można było utworzyć adnotacji dotyczących wersji, należy zainstalować jedną z wielu rozszerzeń usługom DevOps platformy Azure dostępnych w witrynie Visual Studio Marketplace.
+Aby można było utworzyć adnotacji dotyczących wersji, należy zainstalować jedną z wielu rozszerzeń DevOps platformy Azure dostępnych w witrynie Visual Studio Marketplace.
 
-1. Zaloguj się do Twojej [usługom DevOps platformy Azure](https://azure.microsoft.com/services/devops/) projektu.
-2. W witrynie Visual Studio Marketplace [Pobierz rozszerzenie adnotacji dotyczących wersji](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)i dodaj go do swojej organizacji usługom DevOps platformy Azure.
-
-![Wybierz organizację DevOps platformy Azure, a następnie zainstaluj.](./media/annotations/1-install.png)
-
-Wystarczy zrobić to raz dla swojej organizacji usługom DevOps platformy Azure. Teraz można skonfigurować adnotacji dotyczących wersji dla każdego projektu w Twojej organizacji.
+1. Zaloguj się do Twojej [DevOps platformy Azure](https://azure.microsoft.com/services/devops/) projektu.
+   
+1. W Visual Studio Marketplace [adnotacji dotyczących wersji rozszerzenia](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations) strony, wybierz organizację DevOps platformy Azure, a następnie wybierz pozycję **zainstalować** można dodać rozszerzenia do organizacji DevOps platformy Azure.
+   
+   ![Wybierz organizację DevOps platformy Azure, a następnie wybierz pozycję Zainstaluj.](./media/annotations/1-install.png)
+   
+Musisz zainstalować rozszerzenie jeden raz dla danej organizacji DevOps platformy Azure. Teraz można skonfigurować adnotacji dotyczących wersji dla każdego projektu w Twojej organizacji.
 
 ### <a name="configure-release-annotations"></a>Konfigurowanie adnotacji dotyczących wersji
 
-Należy uzyskać osobne klucz interfejsu API dla każdego szablonu wydania usługom DevOps platformy Azure.
+Dla każdego z szablonów wersja potoki usługi Azure, należy utworzyć oddzielny klucz interfejsu API.
 
-1. Zaloguj się do [portalu Microsoft Azure](https://portal.azure.com) , a następnie otwórz zasób usługi Application Insights monitoruje aplikację. (Lub [utwórz ją teraz](../../azure-monitor/app/app-insights-overview.md), jeśli nie zostało to zrobione jeszcze.)
-2. Otwórz **dostęp do interfejsu API** kartę i skopiuj **Application Insights identyfikator**.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) , a następnie otwórz zasób usługi Application Insights monitoruje aplikację. Lub jeśli nie masz, [Utwórz nowy zasób usługi Application Insights](../../azure-monitor/app/app-insights-overview.md).
    
-    ![W witrynie portal.azure.com otwórz zasób usługi Application Insights, a następnie wybierz pozycję Ustawienia. Otwórz dostęp do interfejsu API. Skopiuj identyfikator aplikacji](./media/annotations/2-app-id.png)
-
-4. W osobnym oknie przeglądarki Otwórz (lub Utwórz) szablon wydania, który zarządza wdrożeń z usługom DevOps platformy Azure.
+1. Otwórz **dostęp do interfejsu API** kartę i skopiuj **Application Insights identyfikator**.
    
-    Dodaj zadanie, a następnie wybierz zadanie adnotację dotyczącą wersji widoczną Application Insights z menu.
+   ![W obszarze dostępu do interfejsu API Skopiuj identyfikator aplikacji.](./media/annotations/2-app-id.png)
 
-   ![Kliknij znak plus, aby dodać zadanie i wybierz adnotację dotyczącą wersji widoczną Application Insights. Wklej identyfikator aplikacji szczegółowych informacji.](./media/annotations/3-add-task.png)
-
-    Wklej **identyfikator aplikacji** skopiowany na karcie dostęp do interfejsu API.
+1. W osobnym oknie przeglądarki Otwórz lub Utwórz szablon wersji, który zarządza wdrożeń potoki usługi Azure.
    
-    ![Wklej identyfikator aplikacji usługi Insights](./media/annotations/4-paste-app-id.png)
-
-5. W oknie platformy Azure Utwórz nowy klucz interfejsu API, a następnie utwórz jego kopię.
+1. Wybierz **Dodaj zadanie**, a następnie wybierz pozycję **adnotację dotyczącą wersji widoczną Application Insights** zadań z menu.
    
-    ![Na karcie dostęp do interfejsu API w oknie platformy Azure kliknij przycisk Utwórz klucz interfejsu API.](./media/annotations/5-create-api-key.png)
-
-    ![Na karcie klucza Utwórz interfejs API zapewnia komentarz, sprawdź adnotacje zapisu, a następnie kliknij przycisk Wygeneruj klucz. Skopiuj nowy klucz.](./media/annotations/6-create-api-key.png)
-
-6. Otwórz kartę Konfiguracja szablonu wydania.
+   ![Wybierz pozycję Dodaj zadanie, a następnie wybierz adnotację dotyczącą wersji widoczną Application Insights.](./media/annotations/3-add-task.png)
    
-    Utwórz definicję zmiennej `ApiKey`.
+1. W obszarze **identyfikator aplikacji**, wklej identyfikator szczegółowych informacji aplikacji, które są kopiowane z **dostęp do interfejsu API** kartę.
    
-    Wklej swój klucz interfejsu API, aby ApiKey definicji zmiennej.
+   ![Wklej identyfikator aplikacji usługi Insights](./media/annotations/4-paste-app-id.png)
    
-    ![W oknie usługom DevOps platformy Azure wybierz kartę zmiennej, a następnie kliknij przycisk Dodaj. Ustaw nazwę, aby ApiKey i do wartości, Wklej klucz, który został wygenerowany, a następnie kliknij ikonę blokady.](./media/annotations/7-paste-api-key.png)
-1. Na koniec **Zapisz** potoku tworzenia wersji.
+1. W usłudze Application Insights **dostęp do interfejsu API** wybierz **Utwórz klucz interfejsu API**. 
+   
+   ![Na karcie dostęp do interfejsu API wybierz pozycję Utwórz klucz interfejsu API.](./media/annotations/5-create-api-key.png)
+   
+1. W **Utwórz klucz interfejsu API** oknie wpisz opis, wybierz **zapis adnotacji**, a następnie wybierz pozycję **Wygeneruj klucz**. Skopiuj nowy klucz.
+   
+   ![W oknie klucza interfejsu API tworzenia wpisz opis, wybierać adnotacje do zapisu, a następnie wybierz Wygeneruj klucz.](./media/annotations/6-create-api-key.png)
+   
+1. W oknie Szablon wydania na **zmienne** zaznacz **Dodaj** utworzyć definicję zmiennej, aby uzyskać nowy klucz interfejsu API.
 
+1. W obszarze **nazwa**, wprowadź `ApiKey`, a następnie w obszarze **wartość**, Wklej klucz interfejsu API został skopiowany z **dostęp do interfejsu API** kartę.
+   
+   ![Na karcie Zmienne DevOps platformy Azure wybierz pozycję Dodaj, nazwa zmiennej ApiKey i Wklej klucz interfejsu API w obszarze wartości.](./media/annotations/7-paste-api-key.png)
+   
+1. Wybierz **Zapisz** w oknie szablonów wersja główna, aby zapisać szablon.
 
 ## <a name="view-annotations"></a>Wyświetlaj adnotacje
-Teraz zawsze, gdy używasz szablonu wydania do wdrażania nowej wersji, adnotacja będą wysyłane do usługi Application Insights. Adnotacje będą wyświetlane na wykresach w Eksploratorze metryk.
+Teraz zawsze, gdy używasz szablonu wydania do wdrażania nowej wersji, adnotacji są wysyłane do usługi Application Insights. Adnotacje są wyświetlane na wykresach w **Eksploratora metryk**.
 
-Kliknij w dowolnym znacznik adnotacji (światła Szara strzałka) można otworzyć szczegóły o wersji, m.in. obiekt żądający, gałęzi kontroli źródła, wersji potoku, środowiska i nie tylko.
+Wybierz wszystkie znacznik adnotacji (światła Szara strzałka) aby otworzyć szczegółowe informacje o wersji, m.in. obiekt żądający, gałęzi kontroli źródła, potok wydania i środowisko.
 
-![Kliknij znacznik adnotacji w dowolnej wersji.](./media/annotations/8-release.png)
+![Wybierz znacznik adnotacji wydania.](./media/annotations/8-release.png)
 
 ## <a name="create-custom-annotations-from-powershell"></a>Tworzenie niestandardowych adnotacje za pomocą programu PowerShell
-Adnotacje można również utworzyć z żaden proces, który chcesz (bez użycia usługom DevOps platformy Azure). 
+Możesz użyć [CreateReleaseAnnotation](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) skrypt programu PowerShell z serwisu GitHub, aby utworzyć adnotacje z żaden proces, chcesz, bez korzystania z DevOps platformy Azure. 
 
+1. Utwórz lokalne kopie z [CreateReleaseAnnotation.ps1](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1).
+   
+1. Wykonaj kroki z poprzedniej procedury, aby uzyskanie Identyfikatora usługi Application Insights i Utwórz klucz interfejsu API z usługi Application Insights **dostęp do interfejsu API** kartę.
+   
+1. Wywołaj skrypt programu PowerShell z następującym kodem, zastępując symbole zastępcze oddzielona kąta z własnymi wartościami. `-releaseProperties` Są opcjonalne. 
+   
+   ```powershell
+   
+        .\CreateReleaseAnnotation.ps1 `
+         -applicationId "<applicationId>" `
+         -apiKey "<apiKey>" `
+         -releaseName "<releaseName>" `
+         -releaseProperties @{
+             "ReleaseDescription"="<a description>";
+             "TriggerBy"="<Your name>" }
+   ```
 
-1. Utwórz lokalne kopie z [skrypt programu Powershell z serwisu GitHub](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1).
+Możesz zmodyfikować skrypt, na przykład aby utworzyć adnotacje w ciągu ostatnich.
 
-2. Uzyskiwanie Identyfikatora aplikacji i Utwórz klucz interfejsu API na karcie dostęp do interfejsu API.
-
-3. Wywołanie skryptu następująco:
-
-```PS
-
-     .\CreateReleaseAnnotation.ps1 `
-      -applicationId "<applicationId>" `
-      -apiKey "<apiKey>" `
-      -releaseName "<myReleaseName>" `
-      -releaseProperties @{
-          "ReleaseDescription"="a description";
-          "TriggerBy"="My Name" }
-```
-
-To proste w celu zmodyfikowania skryptu, na przykład aby utworzyć adnotacje w ciągu ostatnich.
-
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Tworzenie elementów roboczych](../../azure-monitor/app/diagnostic-search.md#create-work-item)
 * [Automatyzacja przy użyciu programu PowerShell](../../azure-monitor/app/powershell.md)

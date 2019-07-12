@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2019
 ms.author: magoedte
-ms.openlocfilehash: fda79a7ea361a6b44798d18b79ffd763055087a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf06004c70609dbea59a47b207e3568299260a82
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67122586"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594448"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-by-using-azure-policy"></a>Włączanie usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) przy użyciu usługi Azure Policy
 
@@ -82,35 +82,35 @@ Aby uzyskać więcej informacji na temat przypisywania zasad platformy Azure, zo
 
 Definicje zasad na Maszynie wirtualnej platformy Azure są wymienione w poniższej tabeli.
 
-|Name (Nazwa) |Opis |Typ |
+|Name (Nazwa) |Opis |Type |
 |-----|------------|-----|
-|[Wersja zapoznawcza]: Włączanie usługi Azure Monitor dla maszyn wirtualnych |Włączanie usługi Azure Monitor dla maszyn wirtualnych z określonego zakresu (grupy zarządzania, subskrypcji lub grupy zasobów). Obszar roboczy usługi Log Analytics przyjmuje jako parametr. |Inicjatywa |
-|[Wersja zapoznawcza]: Inspekcja wdrożenie agenta zależności — nieznajdujące się na liście obrazu maszyny Wirtualnej (OS) |Raporty maszyny wirtualne jako niezgodne, jeśli obraz maszyny Wirtualnej (OS) nie jest zdefiniowana na liście, a nie zainstalowano agenta. |Zasady |
-|[Wersja zapoznawcza]: Inspekcja wdrożenie agenta usługi Log Analytics — nieznajdujące się na liście obrazu maszyny Wirtualnej (OS) |Raporty maszyny wirtualne jako niezgodne, jeśli obraz maszyny Wirtualnej (OS) nie jest zdefiniowana na liście, a nie zainstalowano agenta. |Zasady |
-|[Wersja zapoznawcza]: Wdrażanie agenta zależności maszyn wirtualnych systemu Linux |Jeśli zdefiniowano obrazu maszyny Wirtualnej (systemu operacyjnego) na liście, a nie zainstalowano agenta, należy wdrożyć agenta zależności maszyn wirtualnych systemu Linux. |Zasady |
-|[Wersja zapoznawcza]: Wdrażanie agenta zależności dla maszyn wirtualnych Windows |Jeśli zdefiniowano obrazu maszyny Wirtualnej (systemu operacyjnego) na liście, a nie zainstalowano agenta, należy wdrożyć agenta zależności dla maszyn wirtualnych Windows. |Zasady |
-|[Wersja zapoznawcza]: Wdrożyć agenta Log Analytics dla maszyn wirtualnych systemu Linux |Jeśli zdefiniowano obrazu maszyny Wirtualnej (systemu operacyjnego) na liście, a nie jest zainstalowany agent programu, należy wdrożyć agenta Log Analytics dla maszyn wirtualnych systemu Linux. |Zasady |
-|[Wersja zapoznawcza]: Wdróż agenta usługi Log Analytics dla maszyn wirtualnych Windows |Jeśli zdefiniowano obrazu maszyny Wirtualnej (systemu operacyjnego) na liście, a nie zainstalowano agenta, należy wdrożyć agenta usługi Log Analytics dla maszyn wirtualnych Windows. |Zasady |
+|\[Podgląd\]: Włączanie usługi Azure Monitor dla maszyn wirtualnych |Włączanie usługi Azure Monitor dla maszyn wirtualnych z określonego zakresu (grupy zarządzania, subskrypcji lub grupy zasobów). Obszar roboczy usługi Log Analytics przyjmuje jako parametr. |Inicjatywa |
+|\[Podgląd\]: Inspekcja wdrożenie agenta zależności — nieznajdujące się na liście obrazu maszyny Wirtualnej (OS) |Raporty maszyny wirtualne jako niezgodne, jeśli obraz maszyny Wirtualnej (OS) nie jest zdefiniowana na liście, a nie zainstalowano agenta. |Zasady |
+|\[Podgląd\]: Inspekcja wdrożenie agenta usługi Log Analytics — nieznajdujące się na liście obrazu maszyny Wirtualnej (OS) |Raporty maszyny wirtualne jako niezgodne, jeśli obraz maszyny Wirtualnej (OS) nie jest zdefiniowana na liście, a nie zainstalowano agenta. |Zasady |
+|\[Podgląd\]: Wdrażanie agenta zależności maszyn wirtualnych systemu Linux |Jeśli zdefiniowano obrazu maszyny Wirtualnej (systemu operacyjnego) na liście, a nie zainstalowano agenta, należy wdrożyć agenta zależności maszyn wirtualnych systemu Linux. |Zasady |
+|\[Podgląd\]: Wdrażanie agenta zależności dla maszyn wirtualnych Windows |Jeśli zdefiniowano obrazu maszyny Wirtualnej (systemu operacyjnego) na liście, a nie zainstalowano agenta, należy wdrożyć agenta zależności dla maszyn wirtualnych Windows. |Zasady |
+|\[Podgląd\]: Wdrożyć agenta Log Analytics dla maszyn wirtualnych systemu Linux |Jeśli zdefiniowano obrazu maszyny Wirtualnej (systemu operacyjnego) na liście, a nie jest zainstalowany agent programu, należy wdrożyć agenta Log Analytics dla maszyn wirtualnych systemu Linux. |Zasady |
+|\[Podgląd\]: Wdróż agenta usługi Log Analytics dla maszyn wirtualnych Windows |Jeśli zdefiniowano obrazu maszyny Wirtualnej (systemu operacyjnego) na liście, a nie zainstalowano agenta, należy wdrożyć agenta usługi Log Analytics dla maszyn wirtualnych Windows. |Zasady |
 
 ### <a name="policies-for-azure-virtual-machine-scale-sets"></a>Zestawy skalowania zasad dla maszyn wirtualnych platformy Azure
 
 Definicje zasad dla zestawu skalowania maszyn wirtualnych platformy Azure są wymienione w poniższej tabeli.
 
-|Name (Nazwa) |Opis |Typ |
+|Name (Nazwa) |Opis |Type |
 |-----|------------|-----|
-|[Wersja zapoznawcza]: Włączanie usługi Azure Monitor dla zestawów skalowania maszyn wirtualnych |Włączanie usługi Azure Monitor dla zestawów skalowania maszyn wirtualnych z określonego zakresu (grupy zarządzania, subskrypcji lub grupy zasobów). Obszar roboczy usługi Log Analytics przyjmuje jako parametr. Uwaga: Jeśli zasady uaktualniania zestawu skalowania jest ustawiona na ręczny, zastosuj rozszerzenie do wszystkich maszyn wirtualnych w zestawie, przez wywołanie metody uaktualniania na nich. W interfejsie wiersza polecenia to az vmss update-instances. |Inicjatywa |
-|[Wersja zapoznawcza]: Inspekcja wdrożenie agenta zależności w zestawach skalowania maszyn wirtualnych — nieznajdujące się na liście obrazu maszyny Wirtualnej (OS) |Raporty zestawu jako niezgodne, jeśli obraz maszyny Wirtualnej (OS) nie jest zdefiniowana na liście, a nie zainstalowano agenta skalowania maszyn wirtualnych. |Zasady |
-|[Wersja zapoznawcza]: Inspekcja wdrożenie agenta usługi Log Analytics w zestawach skalowania maszyn wirtualnych — nieznajdujące się na liście obrazu maszyny Wirtualnej (OS) |Raporty zestawu jako niezgodne, jeśli obraz maszyny Wirtualnej (OS) nie jest zdefiniowana na liście, a nie zainstalowano agenta skalowania maszyn wirtualnych. |Zasady |
-|[Wersja zapoznawcza]: Wdrażanie agenta zależności dla zestawów skalowania maszyn wirtualnych systemu Linux |Wdróż agenta zależności dla zestawów skalowania maszyn wirtualnych, jeśli zdefiniowano obrazu maszyny Wirtualnej (systemu operacyjnego) na liście, a nie zainstalowano agenta systemu Linux. |Zasady |
-|[Wersja zapoznawcza]: Wdrażanie agenta zależności dla zestawów skalowania maszyn wirtualnych Windows |Wdróż agenta zależności dla zestawów skalowania maszyn wirtualnych, jeśli zdefiniowano obrazu maszyny Wirtualnej (systemu operacyjnego) na liście, a nie jest zainstalowany agent programu Windows. |Zasady |
-|[Wersja zapoznawcza]: Wdrożyć agenta Log Analytics dla zestawów skalowania maszyn wirtualnych systemu Linux |Wdróż agenta usługi Log Analytics dla zestawów skalowania maszyn wirtualnych, jeśli obraz maszyny Wirtualnej (OS) jest zdefiniowany na liście, a nie zainstalowano agenta systemu Linux. |Zasady |
-|[Wersja zapoznawcza]: Wdrożyć agenta Log Analytics dla zestawów skalowania maszyn wirtualnych Windows |Należy wdrożyć agenta Log Analytics dla zestawów skalowania maszyn wirtualnych, jeśli zdefiniowano obrazu maszyny Wirtualnej (systemu operacyjnego) na liście, a nie jest zainstalowany agent programu Windows. |Zasady |
+|\[Podgląd\]: Włączanie usługi Azure Monitor dla zestawów skalowania maszyn wirtualnych |Włączanie usługi Azure Monitor dla zestawów skalowania maszyn wirtualnych z określonego zakresu (grupy zarządzania, subskrypcji lub grupy zasobów). Obszar roboczy usługi Log Analytics przyjmuje jako parametr. Uwaga: Jeśli zasady uaktualniania zestawu skalowania jest ustawiona na ręczny, zastosuj rozszerzenie do wszystkich maszyn wirtualnych w zestawie, przez wywołanie metody uaktualniania na nich. W interfejsie wiersza polecenia to az vmss update-instances. |Inicjatywa |
+|\[Podgląd\]: Inspekcja wdrożenie agenta zależności w zestawach skalowania maszyn wirtualnych — nieznajdujące się na liście obrazu maszyny Wirtualnej (OS) |Raporty zestawu jako niezgodne, jeśli obraz maszyny Wirtualnej (OS) nie jest zdefiniowana na liście, a nie zainstalowano agenta skalowania maszyn wirtualnych. |Zasady |
+|\[Podgląd\]: Inspekcja wdrożenie agenta usługi Log Analytics w zestawach skalowania maszyn wirtualnych — nieznajdujące się na liście obrazu maszyny Wirtualnej (OS) |Raporty zestawu jako niezgodne, jeśli obraz maszyny Wirtualnej (OS) nie jest zdefiniowana na liście, a nie zainstalowano agenta skalowania maszyn wirtualnych. |Zasady |
+|\[Podgląd\]: Wdrażanie agenta zależności dla zestawów skalowania maszyn wirtualnych systemu Linux |Wdróż agenta zależności dla zestawów skalowania maszyn wirtualnych, jeśli zdefiniowano obrazu maszyny Wirtualnej (systemu operacyjnego) na liście, a nie zainstalowano agenta systemu Linux. |Zasady |
+|\[Podgląd\]: Wdrażanie agenta zależności dla zestawów skalowania maszyn wirtualnych Windows |Wdróż agenta zależności dla zestawów skalowania maszyn wirtualnych, jeśli zdefiniowano obrazu maszyny Wirtualnej (systemu operacyjnego) na liście, a nie jest zainstalowany agent programu Windows. |Zasady |
+|\[Podgląd\]: Wdrożyć agenta Log Analytics dla zestawów skalowania maszyn wirtualnych systemu Linux |Wdróż agenta usługi Log Analytics dla zestawów skalowania maszyn wirtualnych, jeśli obraz maszyny Wirtualnej (OS) jest zdefiniowany na liście, a nie zainstalowano agenta systemu Linux. |Zasady |
+|\[Podgląd\]: Wdrożyć agenta Log Analytics dla zestawów skalowania maszyn wirtualnych Windows |Należy wdrożyć agenta Log Analytics dla zestawów skalowania maszyn wirtualnych, jeśli zdefiniowano obrazu maszyny Wirtualnej (systemu operacyjnego) na liście, a nie jest zainstalowany agent programu Windows. |Zasady |
 
 Zasady autonomicznym (nie dołączona inicjatywy) opisano tutaj:
 
-|Name (Nazwa) |Opis |Typ |
+|Name (Nazwa) |Opis |Type |
 |-----|------------|-----|
-|[Wersja zapoznawcza]: Inspekcja obszaru roboczego analizy dzienników dla maszyny Wirtualnej — niezgodność raportu |Maszyny wirtualne raporcie jako niezgodne, jeśli nie są one rejestrowania do obszaru roboczego usługi Log Analytics w przypisaniu zasad lub inicjatywy. |Zasady |
+|\[Podgląd\]: Inspekcja obszaru roboczego analizy dzienników dla maszyny Wirtualnej — niezgodność raportu |Maszyny wirtualne raporcie jako niezgodne, jeśli nie są one rejestrowania do obszaru roboczego usługi Log Analytics w przypisaniu zasad lub inicjatywy. |Zasady |
 
 ### <a name="assign-the-azure-monitor-initiative"></a>Przypisz inicjatywę usługi Azure Monitor
 Tworzenie przypisania zasad od **usługi Azure Monitor na potrzeby pokrycia zasad maszyn wirtualnych** strony, wykonaj następujące kroki. Aby dowiedzieć się, jak wykonać następujące czynności, zobacz [Tworzenie przypisania zasad w witrynie Azure portal](../../governance/policy/assign-policy-portal.md).
@@ -180,19 +180,19 @@ Na podstawie wyników zasad dołączone do tej inicjatywy, maszyny wirtualne są
 
 * Log Analytics agent lub agenta zależności nie są wdrażane.  
     Ten scenariusz jest typowy dla zakresu przy użyciu istniejących maszyn wirtualnych. Aby go unikać, należy wdrożyć agentów wymaganych przez [tworzenie zadań korygowania](../../governance/policy/how-to/remediate-resources.md) niezgodne zasady.  
-    - [Wersja zapoznawcza]: Deploy Dependency agent for Linux VMs
-    - [Wersja zapoznawcza]: Deploy Dependency agent for Windows VMs
-    - [Wersja zapoznawcza]: Deploy Log Analytics agent for Linux VMs
-    - [Wersja zapoznawcza]: Deploy Log Analytics agent for Windows VMs
+    - \[Podgląd\]: Wdrażanie agenta zależności maszyn wirtualnych systemu Linux
+    - \[Podgląd\]: Wdrażanie agenta zależności dla maszyn wirtualnych Windows
+    - \[Podgląd\]: Wdrożyć agenta Log Analytics dla maszyn wirtualnych systemu Linux
+    - \[Podgląd\]: Wdróż agenta usługi Log Analytics dla maszyn wirtualnych Windows
 
 * Obraz maszyny Wirtualnej (OS) nie jest określona w definicji zasad.  
     Zasady wdrażania obejmują tylko maszyny wirtualne, które są wdrażane z dobrze znanych obrazów maszyn wirtualnych platformy Azure. Zapoznaj się z dokumentacją, aby zobaczyć, czy system operacyjny maszyny Wirtualnej jest obsługiwana. Jeśli nie jest obsługiwany, zduplikowania zasady wdrażania i aktualizacji lub zmodyfikuj go, aby utworzyć obraz zgodne.  
-    - [Wersja zapoznawcza]: Inspekcja wdrożenie agenta zależności — nieznajdujące się na liście obrazu maszyny Wirtualnej (OS)
-    - [Wersja zapoznawcza]: Inspekcja wdrożenie agenta usługi Log Analytics — nieznajdujące się na liście obrazu maszyny Wirtualnej (OS)
+    - \[Podgląd\]: Inspekcja wdrożenie agenta zależności — nieznajdujące się na liście obrazu maszyny Wirtualnej (OS)
+    - \[Podgląd\]: Inspekcja wdrożenie agenta usługi Log Analytics — nieznajdujące się na liście obrazu maszyny Wirtualnej (OS)
 
 * Maszyny wirtualne nie są zalogowaniu się do określonego obszaru roboczego usługi Log Analytics.  
     Istnieje możliwość logowania niektórych maszyn wirtualnych w zakresie inicjatywy do obszaru roboczego usługi Log Analytics w innych niż ten, który jest określony w przypisaniu zasad. Ta zasada jest narzędziem, aby identyfikować, które raportują do niezgodnych obszaru roboczego maszyny wirtualne.  
-    - [Wersja zapoznawcza]: Audit Log Analytics workspace for VM – Report mismatch
+    - \[Podgląd\]: Inspekcja obszaru roboczego analizy dzienników dla maszyny Wirtualnej — niezgodność raportu
 
 ## <a name="edit-an-initiative-assignment"></a>Edytuj przypisanie inicjatywy
 
@@ -204,7 +204,7 @@ W dowolnym momencie po przypisania inicjatywy do grupy zarządzania lub subskryp
 - Obszar roboczy usługi log Analytics
 - Wyjątki
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Teraz, gdy monitorowanie jest włączone dla maszyn wirtualnych, te informacje są dostępne dla analizy dzięki usłudze Azure Monitor dla maszyn wirtualnych. 
 

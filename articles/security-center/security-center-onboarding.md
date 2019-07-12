@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 19/02/2019
+ms.date: 02/19/2019
 ms.author: v-mohabe
-ms.openlocfilehash: fe8ceb8c196f7329027502847fba481169458d86
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5d93d2f1f1c082610cb14a5ea621e0919a41866
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966786"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67588996"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Dołączanie do usługi Azure Security Center w warstwie standardowa celu uzyskania zwiększonych zabezpieczeń
 Uaktualnij do standardowej usługi Security Center z zalet zarządzania zwiększone zabezpieczenia i ochrona przed zagrożeniami dla obciążeń chmury hybrydowej.  Możesz spróbować standardowa jest bezpłatna. Odwiedź Centrum zabezpieczeń [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/) Aby uzyskać więcej informacji.
@@ -94,7 +94,7 @@ Możesz dodać komputer, postępując zgodnie z przepływu pracy od **dołączan
 
 1. Wróć do menu głównego usługi Security Center i **Przegląd** pulpitu nawigacyjnego.
 
-   ![Omówienie][5]
+   ![Przegląd][5]
 
 2. Wybierz **obliczenia i aplikacje**.
 3. W obszarze **obliczenia i aplikacje**, wybierz opcję **dodawania komputerów**.
@@ -107,7 +107,7 @@ Możesz dodać komputer, postępując zgodnie z przepływu pracy od **dołączan
 
    **Agent bezpośredni** blok zawiera również link do pobierania agenta Windows lub Linux, a także identyfikator obszaru roboczego i klucze do użycia podczas konfigurowania agenta.   
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym artykule pokazano, jak dołączyć platformy Azure i zasobów nienależących do platformy Azure, aby można było korzystać z zaawansowanych zabezpieczeń w Centrum zabezpieczeń.  Aby robić więcej przy użyciu zasobów dołączone, zobacz
 
 - [Włączanie zbierania danych](security-center-enable-data-collection.md)

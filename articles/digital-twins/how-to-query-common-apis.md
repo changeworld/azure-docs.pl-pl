@@ -6,14 +6,14 @@ manager: philmea
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 1/7/2019
+ms.date: 07/09/2019
 ms.author: v-adgera
-ms.openlocfilehash: 57abb005f70661d23ea90eaf801b8e5407340bb7
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: eca355a51b516311d060df09905c1df769037ec5
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462034"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722841"
 ---
 # <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>Jak wykonać zapytanie interfejsów API Twins cyfrowych platformy Azure do wykonywania typowych zadań
 
@@ -238,4 +238,4 @@ W tej sekcji przedstawiono niektóre przykładowe zapytania interfejsu API zarz�
 
 Aby dowiedzieć się, jak można uwierzytelnić przy użyciu interfejsu API zarządzania, przeczytaj [uwierzytelniania za pomocą interfejsów API](./security-authenticating-apis.md).
 
-Aby wyświetlić wszystkie punkty końcowe interfejsu API, przeczytaj [sposób używania cyfrowego Swagger Twins](./how-to-use-swagger.md).
+Aby dowiedzieć się więcej na temat punktów końcowych interfejsu API, przeczytaj [sposób używania cyfrowego Swagger Twins](./how-to-use-swagger.md).

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 88051c45f21bdf11807ffcc63d8248cba81ae70b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec2580f0c71c98c7a03f3326cb1b8ff539109ee0
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66137061"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67720027"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfiguracja i zarządzanie nim często zadawane pytania dotyczące aplikacji sieci Web na platformie Azure
 
@@ -30,7 +30,7 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania (FAQ) dotyc
 
 ## <a name="are-there-limitations-i-should-be-aware-of-if-i-want-to-move-app-service-resources"></a>Czy istnieją ograniczenia, o których warto wiedzieć, jeśli chcę przenieść zasoby usługi App Service?
 
-Jeśli zamierzasz przenieść zasoby usługi App Service do nowej grupy zasobów lub subskrypcji, istnieją pewne ograniczenia, które należy zwrócić uwagę. Aby uzyskać więcej informacji, zobacz [ograniczenia usługi App Service](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations).
+Jeśli zamierzasz przenieść zasoby usługi App Service do nowej grupy zasobów lub subskrypcji, istnieją pewne ograniczenia, które należy zwrócić uwagę. Aby uzyskać więcej informacji, zobacz [ograniczenia usługi App Service](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
 
 ## <a name="how-do-i-use-a-custom-domain-name-for-my-web-app"></a>Jak używać niestandardowej nazwy domeny dla mojej aplikacji sieci web?
 
@@ -56,11 +56,11 @@ Aby dowiedzieć się, jak zakupić i skonfigurować certyfikat SSL dla aplikacji
 
 Obecnie usługa Azure Application Insights nie obsługuje operacji przenoszenia. Jeśli oryginalna grupa zasobów zawiera zasób usługi Application Insights, nie można przenieść tego zasobu. Jeśli zasób usługi Application Insights jest uwzględniony, podczas próby Przenieś aplikację usługi App Service, całą przenieść operacja kończy się niepowodzeniem. Jednak usługa Application Insights i plan usługi App Service nie muszą być w tej samej grupie zasobów co aplikacja dla aplikacji do poprawnego działania.
 
-Aby uzyskać więcej informacji, zobacz [ograniczenia usługi App Service](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations).
+Aby uzyskać więcej informacji, zobacz [ograniczenia usługi App Service](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
 
 ## <a name="where-can-i-find-a-guidance-checklist-and-learn-more-about-resource-move-operations"></a>Gdzie można znaleźć listę kontrolną wskazówki i Dowiedz się więcej na temat zasobów operacje są przenoszone?
 
-[Ograniczenia usługi App Service](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations) dowiesz się, jak przenieść zasoby do nowej subskrypcji lub do nowej grupy zasobów w tej samej subskrypcji. Możesz uzyskać informacje na temat listy kontrolnej przenoszenia zasobów, Dowiedz się, usług, które obsługują operacji przenoszenia i Dowiedz się więcej o ograniczeniach usługi App Service i innych zagadnień.
+[Ograniczenia usługi App Service](../azure-resource-manager/move-limitations/app-service-move-limitations.md) dowiesz się, jak przenieść zasoby do nowej subskrypcji lub do nowej grupy zasobów w tej samej subskrypcji. Możesz uzyskać informacje na temat listy kontrolnej przenoszenia zasobów, Dowiedz się, usług, które obsługują operacji przenoszenia i Dowiedz się więcej o ograniczeniach usługi App Service i innych zagadnień.
 
 ## <a name="how-do-i-set-the-server-time-zone-for-my-web-app"></a>Jak ustawić strefa czasowa serwera dla mojej aplikacji sieci web?
 

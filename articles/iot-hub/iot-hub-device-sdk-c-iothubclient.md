@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: yizhon
-ms.openlocfilehash: dd3b693271326c85688a275a65b67ad6257220e3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ff766375dd9ad7cb3bbdf1ef686abb77d1206099
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60400698"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797866"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>Usługa Azure zestaw SDK urządzeń IoT dla języka C — więcej informacji na temat usługi IoTHubClient
 
@@ -264,13 +264,13 @@ IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 
 Istnieje kilka opcji, które są często używane:
 
-* **SetBatching** (wartość logiczna) — Jeśli **true**, wówczas dane wysyłane do usługi IoT Hub jest wysyłany w partii. Jeśli **false**, a następnie komunikaty są wysyłane indywidualnie. Wartość domyślna to **false**. Należy pamiętać, że **SetBatching** opcja dotyczy tylko protokołu HTTPS, a nie protokołów MQTT lub AMQP.
+* **SetBatching** (wartość logiczna) — Jeśli **true**, wówczas dane wysyłane do usługi IoT Hub jest wysyłany w partii. Jeśli **false**, a następnie komunikaty są wysyłane indywidualnie. Wartość domyślna to **false**. Przetwarzanie wsadowe za pośrednictwem protokołu AMQP / AMQP WS, a także dodawanie właściwości systemu na komunikaty D2C jest obsługiwana.
 
 * **Limit czasu** (unsigned int) — ta wartość jest reprezentowana w milisekundach. Jeśli wysyła żądanie HTTPS lub odbierania odpowiedzi trwa dłużej niż ten czas, a następnie połączenie zostanie rozłączone.
 
 Opcja łączenia we wsady jest ważna. Domyślnie zdarzenia ingresses biblioteki indywidualnie (jest to pojedyncze zdarzenie, niezależnie od przekazania do **usługi IoTHubClient\_LL\_SendEventAsync**). Jeśli opcja przetwarzania wsadowego jest **true**, biblioteka zbiera dowolną liczbę zdarzeń, jak to możliwe z buforu (maksymalnie maksymalny rozmiar wiadomości z wykorzystaniem usługi IoT Hub).  Batch zdarzenia są wysyłane do usługi IoT Hub w jednym wywołaniu HTTPS (poszczególne zdarzenia są połączone w tablicy JSON). Włączanie przetwarzanie wsadowe zwykle powoduje wzrost wydajności dużych, ponieważ jesteś zmniejszenia rund sieciowych. Ponadto znacząco zmniejsza przepustowości, ponieważ w przypadku wysyłania jeden zestaw nagłówków protokołu HTTPS z usługą batch zdarzeń, a nie zestaw nagłówki dla poszczególnych zdarzeń. Chyba, że masz powód, aby robić, zazwyczaj należy włączyć, przetwarzanie wsadowe.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym artykule opisano szczegółowo zachowanie **usługi IoTHubClient** Biblioteka odnaleziona w **zestaw SDK urządzeń Azure IoT dla języka C**. Dzięki tym informacjom powinien dysponować dobrą znajomością możliwości **usługi IoTHubClient** biblioteki. Drugi artykuł w tej serii jest [zestaw SDK urządzeń Azure IoT dla języka C - serializator](iot-hub-device-sdk-c-serializer.md), zapewniającą podobne szczegółów na **serializator** biblioteki.
 

@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: dc086bc1252c084b717807213b5ba4c7f9d7bb97
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: db1074046adc52ad859a325c2b875da84dbdb0cd
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514053"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701387"
 ---
 # <a name="create-a-new-saas-offer"></a>Tworzenie nowej oferty SaaS
 
@@ -20,7 +20,7 @@ Aby przystąpić do tworzenia oprogramowania jako usługa (SaaS) zapewnia, upewn
 
 ![Komercyjne pulpitu nawigacyjnego portalu Marketplace Centrum partnerskiego](./media/new-offer-overview.png)
 
-Wybierz pozycję + **Utwórz nową...** przycisk, a następnie wybierz **oprogramowanie jako usługa** elementu menu. 
+Wybierz pozycję + **nowej oferty...** przycisk, a następnie wybierz **oprogramowanie jako usługa** elementu menu. 
 
 Po wybraniu jednej z innych typów ofert, nastąpi przekierowanie do starszej wersji [portalu Cloud Partner](https://cloudpartner.azure.com/).  Tylko oferty SaaS są dostępne w portalu Marketplace komercyjnych w Centrum partnerskim w tej chwili. 
 
@@ -31,13 +31,14 @@ Po wybraniu jednej z innych typów ofert, nastąpi przekierowanie do starszej we
 ![Okno dialogowe Nowy oferty](./media/new-offer-popup.png)
 
 
-## <a name="offer-id-and-name"></a>Identyfikator oferty i nazwy
+## <a name="offer-id-and-alias"></a>Identyfikator oferty i alias.
 
-- **Identyfikator oferty**: Utwórz unikatowy identyfikator dla każdej oferty w ramach Twojego konta. Ten identyfikator będzie widoczne dla klientów w adresie URL oferty w portalu marketplace i szablonów usługi Azure Resource Manager (jeśli dotyczy). Identyfikator oferty muszą być małe alfanumeryczne (w tym łączników i podkreśleń, ale bez białych znaków). To jest ograniczona do 50 znaków i nie można zaktualizować po wybraniu utworzyć.  
+- **Identyfikator oferty**: Unikatowy identyfikator dla każdej oferty w ramach Twojego konta. Ten identyfikator będzie widoczne dla klientów w adresie URL oferty w portalu marketplace i szablonów usługi Azure Resource Manager (jeśli dotyczy). Identyfikator oferty muszą być małe alfanumeryczne (w tym łączników i podkreśleń, ale bez białych znaków). To jest ograniczona do 50 znaków i nie można zmienić po wybraniu *Utwórz*.  
 Przykład: test oferty-1
 <br>Wynikowa w adresie URL: `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`
 
-- **Nazwa oferty**: Oficjalna nazwa oferty aplikacji SaaS, spójność w ramach publikacje, reklamy i witryn sieci web.  Ta nazwa może być na innych.  Oferty, nazwa nie może zawierać spacji, ikon emoji (chyba że są one symbolu znaku towarowego lub praw autorskich) i muszą być ograniczone do 50 znaków.
+- **Alias oferują**: Nazwa używana do odwoływania się do oferty w portalu Centrum partnerskiego. Ta nazwa nie będzie używana w portalu marketplace i różni się od *Nazwa oferty* i inne wartości, które będą wyświetlane dla klientów. Nie można zmienić tej wartości, po wybraniu *Utwórz*.
+
 <br>Przykład: Oferta 1&#8482;
 
 Wybierz pozycję **Utwórz**.  **Oferują Przegląd** strona jest tworzona dla tej oferty.  
@@ -115,8 +116,8 @@ Promuj swoją firmę z firmą Microsoft, tworząc listę portalu marketplace. Wy
 ##### <a name="get-it-now-free"></a>Pobierz teraz (bezpłatnie)
 Lista oferty dla klientów za darmo, podając prawidłowy adres URL (rozpoczynający się od http lub https) gdzie mają dostęp do aplikacji.  Na przykład: `https://contoso.com/saas-app`
 
-##### <a name="free-trial"></a>Bezpłatna wersja próbna
-Wyświetl listę oferty dla klientów na podstawie bezpłatnej wersji próbnej, podając prawidłowy adres URL (rozpoczynający się od http lub https) gdzie mają dostęp do aplikacji.  Na przykład: `https://contoso.com/trial/saas-app`
+##### <a name="free-trial-listing"></a>Bezpłatna wersja próbna (odsłuchanie)
+Wyświetl listę oferty dla klientów z linkiem do bezpłatnej wersji próbnej, podając prawidłowy adres URL (rozpoczynający się od http lub https) gdzie mają dostęp do aplikacji.  Na przykład: `https://contoso.com/trial/saas-app`. Oferty bezpłatnej wersji testowej są tworzone, zarządzane i skonfigurowany przez usługę i czy nie ma subskrypcji zarządzany przez firmę Microsoft.
 
 ##### <a name="contact-me"></a>Kontakt ze mną
 Zbieraj informacje kontaktowe klienta, nawiązując połączenie z system zarządzania relacjami z klientami (CRM). Klient zostanie poproszony o uprawnienia, aby udostępnić swoje informacje. Te szczegóły klienta wraz z nazwa oferty, identyfikator i źródło marketplace wykryto do oferty, będą wysyłane do systemu CRM, które zostały skonfigurowane. Aby uzyskać więcej informacji o konfigurowaniu CRM, zobacz [Connect — Zarządzanie potencjalnymi klientami](#connect-lead-management). 
@@ -174,7 +175,7 @@ Pamiętaj, aby **Zapisz** przed przejściem do następnej sekcji!
 
 Wybierz **Zapisz** po wykonaniu tych pól. 
 
-### <a name="category"></a>Category
+### <a name="category"></a>Kategoria
 Wybierz co najmniej jeden (1) i maksymalnie trzech (3) kategorie używane do grupowania oferty w obszarach wyszukiwania odpowiedniej witryny marketplace. Skontaktuj się, jak Twoja oferta obsługuje te kategorie w opisie oferty. 
 
 ### <a name="industry"></a>Branża
@@ -205,6 +206,9 @@ Pamiętaj, aby **Zapisz** przed przejściem do następnej sekcji!
 
 Oferty Wyświetla kartę języków (i rynków), których Twoja oferta jest dostępna, obecnie angielski (Stany Zjednoczone) jest jedyną lokalizacją dostępne. Ponadto ta strona wyświetla stan listy specyficzny dla języka i daty/godziny, który został dodany. Musisz zdefiniować szczegóły portalu marketplace (oferują nazwę, opis, wyszukiwane terminy, itp.) dla każdego z języków / na rynek.
 
+> [!NOTE]
+> Oferty w zawartości (takiej jak opis oferty, dokumenty, zrzuty ekranu, warunki użytkowania i ochrony prywatności zasady) nie musi być w języku angielskim tak długo, jak opis oferty zaczyna się od frazy "Ta aplikacja jest dostępna tylko w [innym niż język angielski]." Dopuszczalne zapewnienie jest również *przydatne adres URL Linku* oferować zawartości w języku innym niż używane w ramach oferty z listą zawartości.
+
 ### <a name="offer-listings"></a>Ofert
 
 Podaj szczegóły, które mają być wyświetlane w portalu marketplace, w tym opis oferty i zasobów marketingowych.
@@ -216,7 +220,7 @@ W tym polu można wprowadzić maksymalnie 3000 znaków tekstu. Aby uzyskać doda
 - **Wyszukiwanie słów kluczowych**: Wprowadź maksymalnie trzech słów kluczowych, używanych przez klientów można znaleźć oferty w marketplace(s).
 - **Instrukcje z wprowadzeniem** (wymagane): Wyjaśniono, jak skonfigurować i rozpocząć korzystanie z aplikacji dla potencjalnych klientów.  Ten przewodnik Szybki Start mogą zawierać łącza do bardziej szczegółowa dokumentacja online. W tym polu można wprowadzić maksymalnie 3000 znaków tekstu. 
 
-#### <a name="links"></a>Linki
+#### <a name="links"></a>Łącza
 
 - **Zasady zachowania poufności informacji** (wymagane): Połącz z zasady zachowania poufności informacji w organizacji. Jesteś odpowiedzialny za zapewnienie, że aplikacja jest zgodna z prawem do prywatności i podając prawidłową poufności
 - **Program CSP, materiałów marketingowych** (opcjonalnie): Należy podać link do materiałów marketingowych, jeśli chcesz rozszerzyć oferty [Cloud Solution Provider (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) program. Dostawcy usług Kryptograficznych rozszerza oferty do większego zakresu uprawnionych klientów, włączanie partnerzy programu CSP pakietu na rynku, i sprzedawaj swoją ofertę. Te odsprzedawców potrzebny dostęp do materiałów marketingowych oferty. Aby uzyskać więcej informacji, zobacz [usług Go-To-Market](https://partner.microsoft.com/reach-customers/gtm).
@@ -268,9 +272,9 @@ Ręcznie dodaj adresy e-mail maksymalnie dziesięciu (10) lub dwadzieścia (20) 
 
 - **Element webhook połączenia** (wymagane): Dla wszystkich zdarzeń asynchronicznych, które firma Microsoft musi wysłać użytkownikom w imieniu klienta (przykład: Subskrypcja SaaS stała się nieprawidłowa), wymagamy, musisz podać element webhook połączenia. Jeśli nie masz jeszcze system elementu webhook w miejscu, najprostsza konfiguracja ma mieć aplikacja logiki punktu końcowego HTTP, który będzie nasłuchiwać zdarzeń ogłaszany do niego i odpowiednio je obsłużyć (np. https:\//prod-1westus.logic.azure.com:443/work). Aby uzyskać więcej informacji, zobacz [wywołania wyzwalacza lub zagnieżdżanie przepływy pracy za pomocą punktów końcowych HTTP w usłudze logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
 
-- **Identyfikator dzierżawy usługi Azure AD** (wymagane): W witrynie Azure portal, możemy wymagać, aby użytkownik [Utwórz aplikację usługi Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) , dzięki czemu możemy sprawdzić poprawność połączenia między naszych dwóch usług znajduje się za uwierzytelnianiu komunikacji. Aby znaleźć [identyfikator dzierżawy](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-id), przejdź do usługi Azure Active Directory i wybierz **właściwości**, poszukaj **identyfikator katalogu** numer na liście (np. 50c464d3-4930-494c-963c-1e951d15360e).
+- **Identyfikator dzierżawy usługi Azure AD** (wymagane): W witrynie Azure portal, możemy wymagać, aby użytkownik [Utwórz aplikację usługi Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) , dzięki czemu możemy sprawdzić poprawność połączenia między naszych dwóch usług znajduje się za uwierzytelnianiu komunikacji. Aby znaleźć [identyfikator dzierżawy](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in), przejdź do usługi Azure Active Directory i wybierz **właściwości**, poszukaj **identyfikator katalogu** numer na liście (np. 50c464d3-4930-494c-963c-1e951d15360e).
 
-- **Identyfikator aplikacji w usłudze Azure AD** (wymagane): Należy również swoje [identyfikator aplikacji](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key) i klucza uwierzytelniania. Aby uzyskać te wartości, przejdź do usługi Azure Active Directory, a następnie wybierz **rejestracje aplikacji**, poszukaj **identyfikator aplikacji** numer na liście (np. 50c464d3-4930-494c-963c-1e951d15360e). Aby znaleźć klucz uwierzytelniania, przejdź do **ustawienia** i wybierz **klucze**. Należy podać opis i czas trwania, a następnie będzie należy podać wartość liczbową.
+- **Identyfikator aplikacji w usłudze Azure AD** (wymagane): Należy również swoje [identyfikator aplikacji](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) i klucza uwierzytelniania. Aby uzyskać te wartości, przejdź do usługi Azure Active Directory, a następnie wybierz **rejestracje aplikacji**, poszukaj **identyfikator aplikacji** numer na liście (np. 50c464d3-4930-494c-963c-1e951d15360e). Aby znaleźć klucz uwierzytelniania, przejdź do **ustawienia** i wybierz **klucze**. Należy podać opis i czas trwania, a następnie będzie należy podać wartość liczbową.
 
  Należy pamiętać, że identyfikator aplikacji platformy Azure skojarzony z Identyfikatora wydawcy, dlatego upewnij się, że ten sam identyfikator aplikacji jest używany w Twoich ofert.
 
@@ -306,6 +310,22 @@ Wybierz **Zapisz** po wykonaniu tych pól.
 #### <a name="plan-pricing-and-availability"></a>Ceny planu i dostępności
 
 **Ceny i dostępności** karta pozwala na skonfigurowanie rynków, na których ten plan będzie dostępny w modelu żądaną zysków, ceny i okresu rozliczeniowego. Ponadto można wskazać, czy plan widoczne dla wszystkich użytkowników lub tylko do określonych odbiorców (odbiorców prywatnych).
+
+##### <a name="enabling-free-trials"></a>Włączanie bezpłatnych wersji próbnych
+
+Oferty SaaS w portalu Marketplace w komercyjnych umożliwiają z miesięcznej bezpłatnej wersji próbnej sprzedaży firmy Microsoft. W przypadku wszystkich rozliczeń modeli i warunki, z wyjątkiem planów taryfowe bezpłatnych wersji próbnych są obsługiwane. Ta opcja umożliwia klientom barierę niskim do zgłoszenia przez jeden miesiąc bezpłatny dostęp.  Jeśli użytkownik chce włączyć bezpłatnej wersji próbnej w przypadku planów w ramach oferty, klient nie będzie można przekonwertować na płatną subskrypcję przed zakończeniem okresu początkowej jeden miesiąc.  W tym czasie klienci, którzy zakupili oferty można wypróbować jedną z obsługiwanych planów, które mają bezpłatnej wersji próbnej, włączona i konwersji między nimi.  Konwersja na płatną subskrypcję odbywa się automatycznie pod koniec okresu.
+
+>[!Note]
+>Jeśli klient zdecyduje się do przekonwertowania na plan bez bezpłatnych wersji próbnych, konwersja będzie miało miejsce, ale bezpłatna wersja próbna zostanie utracona natychmiast.  Ponadto po uruchomieniu klient płacenia za plan nie jest już otrzymują bezpłatnej wersji próbnej na tej samej subskrypcji, nawet wtedy, gdy konwertują do jednostki SKU, która obsługuje bezpłatnych wersji próbnych.
+
+Możliwość konfigurowania bezpłatnej wersji próbnej jest dostępny dla każdego planu w ofercie. Po prostu przejdź do ceny i dostępności dla każdej oferty, a pole wyboru, aby umożliwić miesięcznej wersji próbnej.
+
+![Bezpłatnej wersji próbnej pola wyboru jednego miesiąca](./media/free-trial-enable.png)
+
+Uzyskiwania informacji na temat klientów aktualnie udział w bezpłatnej wersji próbnej subskrypcji, użyj nowej właściwości interfejsu API `isFreeTrial`, która zostanie oznaczona jako wartość true lub false. Zobacz [interfejsów API usług SaaS Uzyskaj subskrypcję](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription) Aby uzyskać więcej informacji.
+
+>[!Note]
+>Bezpłatnych wersji próbnych nie są obsługiwane w przypadku planów, wykorzystujące zliczania usługę portalu marketplace.
 
 #### <a name="markets"></a>Rynki
 
@@ -434,13 +454,13 @@ W celu wdrożenia wersji testowej w Twoim imieniu, Utwórz i podaj osobnych, uni
 
 - **Identyfikator subskrypcji platformy Azure** (wymagane dla usługi Azure Resource Manager oraz Logic apps): Wprowadź identyfikator subskrypcji, aby udzielić dostępu do usług konta platformy Azure za użycie zasobów, raportowanie i rozliczeń. Firma Microsoft zaleca, które należy wziąć pod uwagę [tworzenia oddzielną subskrypcję platformy Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription) na potrzeby wersje testowe, jeśli nie masz jeszcze takiego. Możesz znaleźć swój identyfikator subskrypcji platformy Azure, logując się do [witryny Azure portal](https://portal.azure.com/) i przechodząc do **subskrypcje** kartę menu po lewej stronie. Należy wybrać kartę wyświetli Identyfikatora subskrypcji (np. "a83645ac-1234-5ab6-6789-1h234g764ghty").
 
-- **Identyfikator dzierżawy usługi Azure AD** (wymagane): Wprowadź usługi Azure Active Directory (AD) [identyfikator dzierżawy](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-id). Aby znaleźć ten identyfikator, zaloguj się do [witryny Azure portal](https://portal.azure.com/), wybierz kartę usługi Active Directory w menu po lewej stronie, wybierz **właściwości** , poszukaj **identyfikator katalogu** numer na liście (np. 50c464d3-4930-494c-963c-1e951d15360e). Możesz również wyszukać identyfikator dzierżawy Twojej organizacji za pomocą adresu URL nazwę domeny w: [ https://www.whatismytenantid.com ](https://www.whatismytenantid.com).
+- **Identyfikator dzierżawy usługi Azure AD** (wymagane): Wprowadź usługi Azure Active Directory (AD) [identyfikator dzierżawy](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in). Aby znaleźć ten identyfikator, zaloguj się do [witryny Azure portal](https://portal.azure.com/), wybierz kartę usługi Active Directory w menu po lewej stronie, wybierz **właściwości** , poszukaj **identyfikator katalogu** numer na liście (np. 50c464d3-4930-494c-963c-1e951d15360e). Możesz również wyszukać identyfikator dzierżawy Twojej organizacji za pomocą adresu URL nazwę domeny w: [ https://www.whatismytenantid.com ](https://www.whatismytenantid.com).
 
 - **Nazwa dzierżawy usługi Azure AD** (wymagane dla usłudze Dynamics 365): Wprowadź nazwę usługi Azure Active Directory (AD). Aby znaleźć tę nazwę, zaloguj się do [witryny Azure portal](https://portal.azure.com/), w prawym górnym rogu, nazwa dzierżawy będą wyświetlane w swojej nazwy konta.
 
-- **Identyfikator aplikacji w usłudze Azure AD** (wymagane): Wprowadź usługi Azure Active Directory (AD) [identyfikator aplikacji](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key). Aby znaleźć ten identyfikator, zaloguj się do [witryny Azure portal](https://portal.azure.com/), wybierz kartę usługi Active Directory w menu po lewej stronie, wybierz **rejestracje aplikacji**, poszukaj **identyfikator aplikacji** numer na liście (np. 50c464d3-4930-494c-963c-1e951d15360e).
+- **Identyfikator aplikacji w usłudze Azure AD** (wymagane): Wprowadź usługi Azure Active Directory (AD) [identyfikator aplikacji](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in). Aby znaleźć ten identyfikator, zaloguj się do [witryny Azure portal](https://portal.azure.com/), wybierz kartę usługi Active Directory w menu po lewej stronie, wybierz **rejestracje aplikacji**, poszukaj **identyfikator aplikacji** numer na liście (np. 50c464d3-4930-494c-963c-1e951d15360e).
 
-- **Klucz tajny usługi Azure AD aplikacji klienta** (wymagane): Wprowadź aplikację usługi Azure AD [klucz tajny klienta](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key). Aby znaleźć tę wartość, zaloguj się do [witryny Azure portal](https://portal.azure.com/). Wybierz **usługi Azure Active Directory** kartę w menu po lewej stronie wybierz **rejestracje aplikacji**, następnie wybierz aplikację dysku testu. Następnie wybierz pozycję **certyfikaty i klucze tajne**, wybierz opcję **nowy wpis tajny klienta**, podaj opis, wybierz **nigdy** w obszarze **Expires**, następnie Wybierz **Dodaj**. Pamiętaj skopiować wartości. (Nie opuścić stronę przed można to zrobić, w przeciwnym razie nie będą mieć dostępu do wartości.)
+- **Klucz tajny usługi Azure AD aplikacji klienta** (wymagane): Wprowadź aplikację usługi Azure AD [klucz tajny klienta](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets). Aby znaleźć tę wartość, zaloguj się do [witryny Azure portal](https://portal.azure.com/). Wybierz **usługi Azure Active Directory** kartę w menu po lewej stronie wybierz **rejestracje aplikacji**, następnie wybierz aplikację dysku testu. Następnie wybierz pozycję **certyfikaty i klucze tajne**, wybierz opcję **nowy wpis tajny klienta**, podaj opis, wybierz **nigdy** w obszarze **Expires**, następnie Wybierz **Dodaj**. Pamiętaj skopiować wartości. (Nie opuścić stronę przed można to zrobić, w przeciwnym razie nie będą mieć dostępu do wartości.)
 
 Pamiętaj, aby **Zapisz** przed przejściem do następnej sekcji!
 

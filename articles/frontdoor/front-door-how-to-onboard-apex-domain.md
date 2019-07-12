@@ -3,16 +3,16 @@ title: Dołączanie domeny katalogu głównego lub wierzchołku do istniejących
 description: Dowiedz się, jak dołączyć domeny katalogu głównego lub wierzchołku do istniejących drzwiami frontowymi przy użyciu witryny Azure portal.
 services: front-door
 author: sharad4u
-ms.service: front-door
+ms.service: frontdoor
 ms.topic: article
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: 464c38b0ece274d2ea7df89ab9fd7c0a60dc4b58
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 8fe8da95a61d2f2bb35095236131670cb6ef0e70
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332533"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605791"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Dołączanie do domeny katalogu głównego lub wierzchołku w swojej drzwiami frontowymi
 Azure drzwiami frontowymi używa rekordów CNAME, aby zweryfikować własność domeny do dołączenia do domen niestandardowych. Ponadto drzwiami frontowymi nie ujawnia adresu IP frontonu, które są skojarzone z profilem drzwiami frontowymi, a więc nie można mapować domenę wierzchołku jako adres IP, jeśli celem jest dodać ją do platformy Azure drzwiami frontowymi.
@@ -75,7 +75,7 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 > [!WARNING]
 > Upewnij się, że tworzone odpowiednie reguły routingu dla swojej domeny wierzchołku lub dodać domeny do istniejącej reguły routingu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak [utworzyć usługę Front Door](quickstart-create-front-door.md).
 - Dowiedz się, [jak działa usługa Front Door](front-door-routing-architecture.md).

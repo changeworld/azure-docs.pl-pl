@@ -17,12 +17,12 @@ ms.date: 10/03/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b4f8caf03aad339cea3c3fcc732fc1af6086ea7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0f6c2f36e1061243851b37da47659aaf7a18e8d6
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108884"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673008"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Co to jest Azure Active Directory Identity Protection (odświeżane)?
 
@@ -69,11 +69,11 @@ Usługa Azure AD Identity Protection wykrywa następujące zdarzenia o podwyższ
 
 | Typ zdarzenia o podwyższonym ryzyku | Opis | Typ wykrywania |
 | ---             | ---         | ---            |
-| Nietypowa podróży | Zaloguj się z nietypowych lokalizacji oparte na ostatnich operacji logowania użytkownika. | Offline |
+| Nietypowa podróży | Zaloguj się z nietypowych lokalizacji oparte na ostatnich operacji logowania użytkownika. | W trybie offline |
 | Anonimowego adresu IP | Zaloguj się za pomocą anonimowego adresu IP (na przykład: Tor przeglądarki, anonymizer sieci VPN). | W czasie rzeczywistym |
 | Nieznane właściwości logowania | Zaloguj się przy użyciu właściwości, które nie okazały z ostatnio dla danego użytkownika. | W czasie rzeczywistym |
-| Złośliwe oprogramowanie połączone adresu IP | Zaloguj się za pomocą adresu IP połączone złośliwego oprogramowania | Offline |
-| Ujawnione poświadczenia | To zdarzenie o podwyższonym ryzyku oznacza, że prawidłowe poświadczenia użytkownika zostały ujawnione | Offline |
+| Złośliwe oprogramowanie połączone adresu IP | Zaloguj się za pomocą adresu IP połączone złośliwego oprogramowania | W trybie offline |
+| Ujawnione poświadczenia | To zdarzenie o podwyższonym ryzyku oznacza, że prawidłowe poświadczenia użytkownika zostały ujawnione | W trybie offline |
 
 
 
@@ -119,7 +119,7 @@ Ryzyko związane z użytkownikiem jest obliczana, biorąc pod uwagę wszystkie r
 
 ## <a name="how-identity-protection-detects-risk"></a>Jak Identity Protection wykrywa zagrożenie  
 
-Usługa Azure AD używa uczenia maszynowego w celu wykrycia anomalii i podejrzanych działań, za pomocą obu sygnałów wykryte w w czasie rzeczywistym podczas logowania oraz jak sygnały rzeczywistemu inne niż dotyczące użytkowników i ich działań logowania. Przy użyciu tych danych, Identity Protection oblicza w czasie rzeczywistym ryzyka logowania w każdym razem, gdy użytkownik jest uwierzytelniany, a także określenie ogólny poziom ryzyka użytkownika dla użytkownika w zasięgu. Identity Protection umożliwia automatyczne podejmowanie akcji na wykrywane odmiany ryzyko przez skonfigurowanie ryzyka związanego z użytkownikiem Identity Protection i zasad ryzyka logowania.  
+Usługa Azure AD używa uczenia maszynowego w celu wykrycia anomalii i podejrzanych działań, za pomocą obu sygnałów wykryte w w czasie rzeczywistym podczas logowania oraz jak sygnały rzeczywistemu inne niż dotyczące użytkowników i ich działań logowania. Przy użyciu tych danych, Identity Protection oblicza w czasie rzeczywistym ryzyka logowania w każdym razem, gdy użytkownik uwierzytelnia, a także określenie ogólny poziom ryzyka użytkownika dla każdego użytkownika. Identity Protection umożliwia automatyczne podejmowanie akcji na wykrywane odmiany ryzyko przez skonfigurowanie ryzyka związanego z użytkownikiem Identity Protection i zasad ryzyka logowania.  
 
  
 
@@ -194,7 +194,7 @@ Aby rozpocząć pracę z usługą Identity Protection, należy najpierw skonfigu
 
 Identity Protection obsługuje 3 role w usłudze Azure AD do zrównoważenia działań z zakresu zarządzania całym wdrożeniu: 
 
-| Rola | Można zrobić | Nie można wykonać |
+| Role | Można zrobić | Nie można wykonać |
 | --- | --- | --- |
 | Administrator globalny | Pełny dostęp do usługi Identity Protection dołączanie Identity Protection | |
 | Administrator zabezpieczeń | Pełny dostęp do usługi Identity Protection | Dołączanie Identity Protection, resetować hasła dla użytkownika |
@@ -210,13 +210,13 @@ Aby uzyskać więcej informacji, zobacz [przypisywanie ról administratorów w u
 
 
 
-| Możliwości | Usługa Azure AD — warstwa Premium P2 | Usługa Azure AD — warstwa Premium P1 | Podstawowa/bezpłatne usługi Azure AD |
+| Możliwość | Usługa Azure AD — warstwa Premium P2 | Usługa Azure AD — warstwa Premium P1 | Podstawowa/bezpłatne usługi Azure AD |
 | --- | --- | --- | --- |
 | Zasady dotyczące ryzyka związanego z użytkownika | Tak | Nie | Nie |
 | Zasady ryzyka logowania | Tak | Nie | Nie |
 | Raport ryzykownych użytkowników | Pełny dostęp | Ograniczone informacje | Ograniczone informacje |
 | Raport dotyczący ryzykownych logowań | Pełny dostęp | Ograniczone informacje | Ograniczone informacje |
-| Zasady rejestracji usługi MFA | Tak | Nie | Nie |
+| Zasady rejestracji usługi MFA | Yes | Nie | Nie |
 
 
 
@@ -224,7 +224,7 @@ Aby uzyskać więcej informacji, zobacz [przypisywanie ról administratorów w u
 
 
 
-## <a name="next-steps"></a>Kolejne kroki 
+## <a name="next-steps"></a>Następne kroki 
 
 Aby rozpocząć pracę z usługą Identity Protection, zobacz [Konfigurowanie zasad ryzyka logowania](quickstart-sign-in-risk-policy.md). 
 

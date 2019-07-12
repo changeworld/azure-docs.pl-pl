@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 10/24/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: dff1716e8886d1ef72f4d2ad4fbca4bcab86a348
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 47df2cbdf0b083cf672353471d1ef51e03507475
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66509791"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835336"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Szybki start: konfigurowanie logowania dla aplikacji jednostronicowej przy użyciu usługi Azure Active Directory B2C
 
@@ -36,7 +36,7 @@ Usługa Azure Active Directory (Azure AD) B2C umożliwia zarządzanie tożsamoś
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 
-1. Uruchom serwer za pomocą następującego polecenia w wierszu polecenia środowiska Node.js: 
+1. Uruchom serwer za pomocą następującego polecenia w wierszu polecenia środowiska Node.js:
 
     ```
     cd active-directory-b2c-javascript-msal-singlepageapp
@@ -56,23 +56,23 @@ Usługa Azure Active Directory (Azure AD) B2C umożliwia zarządzanie tożsamoś
 
 1. Kliknij przycisk **Login** (Zaloguj), aby uruchomić przepływ pracy.
 
-    ![Przykładowa aplikacja w przeglądarce](media/active-directory-b2c-quickstarts-spa/sample-app-spa.png)
+    ![Aplikacja jednostronicowa Przykładowa aplikacja wyświetlony w przeglądarce](media/active-directory-b2c-quickstarts-spa/sample-app-spa.png)
 
-    Przykład obsługuje kilka opcji rejestracji, w tym przy użyciu dostawcy tożsamości dla sieci społecznościowej, lub tworzenia konta lokalnego przy użyciu adresu e-mail. Dla tego przewodnika Szybki start należy użyć konta dostawcy tożsamości dla sieci społecznościowej Facebook, Google, Microsoft lub Twitter. 
+    Przykład obsługuje kilka opcji rejestracji, w tym przy użyciu dostawcy tożsamości dla sieci społecznościowej, lub tworzenia konta lokalnego przy użyciu adresu e-mail. Dla tego przewodnika Szybki start należy użyć konta dostawcy tożsamości dla sieci społecznościowej Facebook, Google, Microsoft lub Twitter.
 
 2. Dla przykładowej aplikacji internetowej usługa Azure AD B2C wyświetla niestandardową stronę logowania fikcyjnej marki Wingtip Toys. Aby zarejestrować się przy użyciu dostawcy tożsamości dla sieci społecznościowej, kliknij przycisk dostawcy tożsamości, którego chcesz użyć.
 
-    ![Dostawca logowania lub rejestracji](media/active-directory-b2c-quickstarts-spa/sign-in-or-sign-up-spa.png)
+    ![Strona logowania lub zarejestruj przedstawiający przyciski dostawcy tożsamości](media/active-directory-b2c-quickstarts-spa/sign-in-or-sign-up-spa.png)
 
-    Uwierzytelniasz się (Zaloguj) przy użyciu konta społecznościowego poświadczeń i Autoryzuj aplikację do odczytywania informacji z konta społecznościowego. Po udzieleniu dostępu aplikacji może ona pobrać informacje z profilu na koncie w sieci społecznościowej, takie jak Twoje nazwisko i miasto. 
+    Uwierzytelniasz się (Zaloguj) przy użyciu konta społecznościowego poświadczeń i Autoryzuj aplikację do odczytywania informacji z konta społecznościowego. Po udzieleniu dostępu aplikacji może ona pobrać informacje z profilu na koncie w sieci społecznościowej, takie jak Twoje nazwisko i miasto.
 
 3. Zakończ proces logowania dla dostawcy tożsamości.
 
 ## <a name="access-a-protected-api-resource"></a>Uzyskiwanie dostępu do chronionego zasobu interfejsu API
 
-Kliknij przycisk **Call Web API** (Wywołaj internetowy interfejs API), aby uzyskać swoją nazwę wyświetlaną zwróconą jako obiekt JSON z wywołania internetowego interfejsu API. 
+Kliknij przycisk **Call Web API** (Wywołaj internetowy interfejs API), aby uzyskać swoją nazwę wyświetlaną zwróconą jako obiekt JSON z wywołania internetowego interfejsu API.
 
-![Odpowiedź internetowego interfejsu API](media/active-directory-b2c-quickstarts-spa/call-api-spa.png)
+![Przykładowa aplikacja w przeglądarce, wyświetlanie odpowiedzi interfejsu API sieci web](media/active-directory-b2c-quickstarts-spa/call-api-spa.png)
 
 Przykładowa aplikacja jednostronicowa dołącza token dostępu do żądania wysłanego do chronionego zasobu internetowego interfejsu API.
 

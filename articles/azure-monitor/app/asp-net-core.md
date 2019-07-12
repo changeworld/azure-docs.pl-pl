@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: 7fe5a4f5a5d1d254918f1b4f997acfb9cf67a75b
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 5ea7ec41ccc721e8eafda56aa7463505ba089845
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272444"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827809"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Usługa Application Insights dla aplikacji platformy ASP.NET Core
 
@@ -177,7 +177,7 @@ Jeśli projekt nie zawiera `_Layout.cshtml`, nadal możesz dodać [monitorowania
 Można dostosować zestaw Application Insights SDK dla platformy ASP.NET Core zmienić konfigurację domyślną. Użytkowników zestawu SDK usługi Application Insights ASP.NET może znać zmiany konfiguracji przy użyciu `ApplicationInsights.config` lub modyfikując `TelemetryConfiguration.Active`. Możesz zmienić konfigurację inaczej dla platformy ASP.NET Core. Dodawanie platformy ASP.NET Core SDK do aplikacji i skonfigurować go za pomocą wbudowanych w platformy ASP.NET Core [wstrzykiwanie zależności](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection). Wprowadzić prawie wszystkie zmiany w konfiguracji w `ConfigureServices()` metody usługi `Startup.cs` klasy, chyba że jest skierowany w inny sposób. Poniższe sekcje zapewniają więcej informacji.
 
 > [!NOTE]
-> W aplikacji platformy ASP.NET Core, zmiany konfiguracji, modyfikując `TelemetryConfiguration.Active` nie jest zalecane.
+> W aplikacji platformy ASP.NET Core, zmiany konfiguracji, modyfikując `TelemetryConfiguration.Active` nie jest obsługiwane.
 
 ### <a name="using-applicationinsightsserviceoptions"></a>Using ApplicationInsightsServiceOptions
 
@@ -314,6 +314,23 @@ using Microsoft.ApplicationInsights.Channel;
     }
 ```
 
+### <a name="disable-telemetry-dynamically"></a>Wyłączanie telemetrii dynamicznie
+
+Jeśli chcesz wyłączyć telemetrię warunkowo i dynamicznie, może zostać rozwiązany `TelemetryConfiguration` wystąpienia z kontenera iniekcji zależności platformy ASP.NET Core w dowolnym miejscu w kodzie i ustaw `DisableTelemetry` flagi na nim.
+
+```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddApplicationInsightsTelemetry();
+    }
+
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env, TelemetryConfiguration configuration)
+    {
+        configuration.DisableTelemetry = true;
+        ...
+    }
+```
+
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
 ### <a name="how-can-i-track-telemetry-thats-not-automatically-collected"></a>Jak mogę śledzić dane telemetryczne, które są automatycznie zbierane?
@@ -402,9 +419,10 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 - Zapoznaj się z to zewnętrzny wideo krok po kroku, aby [Konfigurowanie usługi Application Insights przy użyciu platformy .NET Core i Visual Studio](https://www.youtube.com/watch?v=NoS9UhcR4gA&t) od podstaw.
 - Zapoznaj się z to zewnętrzny wideo krok po kroku, aby [Konfigurowanie usługi Application Insights przy użyciu platformy .NET Core i Visual Studio Code](https://youtu.be/ygGt84GDync) od podstaw.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Zapoznaj się z przepływem użytkownika](../../azure-monitor/app/usage-flows.md) Aby zrozumieć, jak użytkownicy nawigują w aplikacjach.
 * [Konfigurowanie zbierania migawek](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) Aby wyświetlić stan zmiennych i kod źródłowy w tej chwili, zgłaszany jest wyjątek.
 * [Za pomocą interfejsu API](../../azure-monitor/app/api-custom-events-metrics.md) do wysłania własnych zdarzeń i metryk do wyświetlenia szczegółowych informacji o wydajności i użycia Twojej aplikacji.
 * Użyj [testy dostępności](../../azure-monitor/app/monitor-web-app-availability.md) do sprawdzenia aplikacji stale z całego świata.
+* [Wstrzykiwanie zależności w programie ASP.NET Core](https://docs.microsoft.com/aspnet/fundamentals/dependency-injection)

@@ -4,15 +4,15 @@ description: Kroki konfigurowania alertów dotyczących metryk bramy sieci VPN
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
-ms.topic: conceptional
+ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: alzam
-ms.openlocfilehash: e54dadbda0582095e8152ea30376d369177bfd86
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d57663f683ba4e2107ec6813a19fac7b2dcdd26a
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65509908"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605227"
 ---
 # <a name="set-up-alerts-on-vpn-gateway-metrics"></a>Ustawianie alertów dotyczących metryk bramy sieci VPN
 
@@ -29,7 +29,7 @@ Ten artykuł ułatwia konfigurowanie alertów dotyczących metryk usługi Azure 
 |**TunnelEgressPackets** | Count | 5 minut | Liczba wychodzących pakietów w tunelach w bramie należy utworzyć.   |
 |**TunnelEgressPacketDropTSMismatch** | Count | 5 minut | Liczba wychodzących pakietów porzucony w tunelach spowodowane niezgodnością selektor ruchu. |
 |**TunnelIngressBytes** | Bajty | 5 minut | Ruch przychodzący w tunelach w bramie należy utworzyć.   |
-|**TunnelIngressPackets** | Licznik | 5 minut | Liczba przychodzących pakietów w tunelach w bramie należy utworzyć.   |
+|**TunnelIngressPackets** | Count | 5 minut | Liczba przychodzących pakietów w tunelach w bramie należy utworzyć.   |
 |**TunnelIngressPacketDropTSMismatch** | Count | 5 minut | Liczba przychodzących pakietów porzucony w tunelach spowodowane niezgodnością selektor ruchu. |
 
 

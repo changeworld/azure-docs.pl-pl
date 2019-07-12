@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 6/6/2019
+ms.date: 7/8/2019
 ms.author: raiye
-ms.openlocfilehash: bdb3d0af93a69c1d15bd34a4badef5915ec0f01f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88c3cd0e07e207a8b5ae1c07d39c8829a531c743
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66743027"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721122"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Wersje systemów operacyjnych gościa platformy Azure i zgodności zestawów SDK
 Zapewnia zwalnia z aktualne informacje o najnowszych systemu operacyjnego gościa platformy Azure dla usług w chmurze. Te informacje pomagają planowanie ścieżki uaktualnienia przed wyłączeniem systemie operacyjnym gościa. Jeśli konfigurujesz role do użycia *automatyczne* aktualizacji systemu operacyjnego gościa, zgodnie z opisem w [ustawienia aktualizacji systemu operacyjnego gościa Azure][Azure Guest OS Update Settings], nie jest istotne, przeczytanie na tej stronie.
@@ -39,9 +39,12 @@ Zapewnia zwalnia z aktualne informacje o najnowszych systemu operacyjnego gości
 >
 >
 
-Nie wiesz o tym, jak zaktualizować system operacyjny gościa? Sprawdź [to] [ cloud updates] się.
+Nie wiesz o tym, jak zaktualizować system operacyjny gościa? Sprawdź [to][cloud updates] się.
 
 ## <a name="news-updates"></a>Aktualizacje wiadomości
+
+###### <a name="july-8-2019"></a>**8 lipca 2019 r.**
+System operacyjny gościa czerwca został wydany.
 
 ###### <a name="june-6-2019"></a>**6 czerwca 2019 r.**
 System operacyjny gościa może został wydany.
@@ -78,7 +81,7 @@ System operacyjny gościa września został wydany.
 ## <a name="family-6-releases"></a>Zwalnia rodziny 6
 **Windows Server 2019**
 
-Zainstalowane środowisko .NET framework: 3.5, 4.7.2
+Zainstalowane środowisko .NET framework: 3.5, 4.7.2, 4.8
 
 > [!NOTE]
 > Zestaw Windows Azure SDK dla platformy .NET — 3.0 można pobrać [tutaj][Windows Azure SDK].
@@ -95,8 +98,9 @@ Zainstalowane środowisko .NET framework: 3.5, 4.7.2
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty |
 | --- | --- | --- |
+| WA-GUEST-OS-6.8_201906-01 |8 lipca 2019 r. |Wpis 6.10 |
 | WA-GUEST-OS-6.7_201905-01 |6 czerwca 2019 r. |Wpis 6,9 |
-| WA-GUEST-OS-6.6_201904-01 |7 maja 2019 r. |Wpis 6.8 |
+|~~WA-GUEST-OS-6.6_201904-01~~ |7 maja 2019 r. |8 lipca 2019 r. |
 |~~WA-GUEST-OS-6.5_201903-01~~ |26 marca 2019 r. |6 czerwca 2019 r. |
 |~~WA-GUEST-OS-6.4_201902-01~~ |12 marca 2019 r. |7 maja 2019 r. |
 |~~WA-GUEST-OS-6.3_201901-01~~ |5 lutego 2019 r. |26 marca 2019 r. |
@@ -106,7 +110,7 @@ Zainstalowane środowisko .NET framework: 3.5, 4.7.2
 ## <a name="family-5-releases"></a>Zwalnia Family 5
 **Windows Server 2016**
 
-Zainstalowane środowisko .NET framework: 3.5, 4.6.2
+Zainstalowane środowisko .NET framework: 3.5, 4.6.2, 4.7.2, 4.8
 
 > [!NOTE]
 > Hasła protokołu RDP dla rodziny systemów operacyjnych 5 musi być co najmniej 10 znaków.
@@ -115,8 +119,9 @@ Zainstalowane środowisko .NET framework: 3.5, 4.6.2
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty |
 | --- | --- | --- |
+| WA-GUEST-OS-5.32_201906-01 |8 lipca 2019 r. |Wpis 5.34 |
 | WA-GUEST-OS-5.31_201905-01 |6 czerwca 2019 r. |Wpis 5.33 |
-| WA-GUEST-OS-5.30_201904-01 |7 maja 2019 r. |Wpis 5.32 |
+|~~WA-GUEST-OS-5.30_201904-01~~ |7 maja 2019 r. |8 lipca 2019 r. |
 |~~WA-GUEST-OS-5.29_201903-01~~ |26 marca 2019 r. |6 czerwca 2019 r. |
 |~~WA-GUEST-OS-5.28_201902-01~~ |12 marca 2019 r. |7 maja 2019 r. |
 |~~WA-GUEST-OS-5.27_201901-01~~ |5 lutego 2019 r. |26 marca 2019 r. |
@@ -128,12 +133,13 @@ Zainstalowane środowisko .NET framework: 3.5, 4.6.2
 ## <a name="family-4-releases"></a>Zwalnia rodziny w wersji 4
 **Windows Server 2012 R2**
 
-Zainstalowane środowisko .NET framework: 3.5, 4.5.1
+Zainstalowane środowisko .NET framework: 3.5, 4.5.1, 4.5.2
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty |
 | --- | --- | --- |
+| WA-GUEST-OS-4.67_201906-01 |8 lipca 2019 r. |Wpis 4.69 |
 | WA-GUEST-OS-4.66_201905-01 |6 czerwca 2019 r. |Wpis 4.68 |
-| WA-GUEST-OS-4.65_201904-01 |7 maja 2019 r. |Wpis 4.67 |
+|~~WA-GUEST-OS-4.65_201904-01~~ |7 maja 2019 r. |8 lipca 2019 r. |
 |~~WA-GUEST-OS-4.64_201903-01~~ |26 marca 2019 r. |6 czerwca 2019 r. |
 |~~WA-GUEST-OS-4.63_201902-01~~ |12 marca 2019 r. |7 maja 2019 r. |
 |~~WA-GUEST-OS-4.62_201901-01~~ |5 lutego 2019 r. |26 marca 2019 r. |
@@ -149,8 +155,9 @@ Zainstalowane środowisko .NET framework: 3.5, 4.5
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty |
 | --- | --- | --- |
-| WA-GUEST-OS-3.73_201905-01 |Czerwiec 67, 2019 r |Wpis 3,75 |
-| WA-GUEST-OS-3.72_201904-01 |7 maja 2019 r. |Wpis 3.74 |
+| WA-GUEST-OS-3.74_201906-01 |8 lipca 2019 r. |Wpis 3.76 |
+| WA-GUEST-OS-3.73_201905-01 |6 czerwca 2019 r. |Wpis 3,75 |
+|~~WA-GUEST-OS-3.72_201904-01~~ |7 maja 2019 r. |8 lipca 2019 r. |
 |~~WA-GUEST-OS-3.71_201903-01~~ |26 marca 2019 r. |6 czerwca 2019 r. |
 |~~WA-GUEST-OS-3.70_201902-01~~ |12 marca 2019 r. |7 maja 2019 r. |
 |~~WA-GUEST-OS-3.69_201901-01~~ |5 lutego 2019 r. |26 marca 2019 r. |
@@ -162,12 +169,13 @@ Zainstalowane środowisko .NET framework: 3.5, 4.5
 ## <a name="family-2-releases"></a>Zwalnia rodziny 2
 **Windows Server 2008 R2 SP1**
 
-Zainstalowane środowisko .NET framework: 3.5 (w tym w wersji 2.0 i 3.0)
+Zainstalowane środowisko .NET framework: 3.5 (w tym w wersji 2.0 i 3.0), 4.5
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty |
 | --- | --- | --- |
+| WA-GUEST-OS-2.87_201906-01 |8 lipca 2019 r. |Wpis 2.89 |
 | WA-GUEST-OS-2.86_201905-01 |6 czerwca 2019 r. |Wpis 2,88 |
-| WA-GUEST-OS-2.85_201904-01 |7 maja 2019 r. |Wpis 2,87 |
+|~~WA-GUEST-OS-2.85_201904-01~~ |7 maja 2019 r. |8 lipca 2019 r. |
 |~~WA-GUEST-OS-2.84_201903-01~~ |26 marca 2019 r. |6 czerwca 2019 r. |
 |~~WA-GUEST-OS-2.83_201902-01~~ |12 marca 2019 r. |7 maja 2019 r. |
 |~~WA-GUEST-OS-2.82_201901-01~~ |5 lutego 2019 r. |26 marca 2019 r. |
@@ -180,7 +188,7 @@ Zainstalowane środowisko .NET framework: 3.5 (w tym w wersji 2.0 i 3.0)
 Lista poprawek, które są dołączone do wydania systemu operacyjnego gościa w każdym miesiącu jest dostępna [tutaj][patches].
 
 ## <a name="sdk-support"></a>Obsługa zestawu SDK
-Mimo że [zasady wycofywania z zestawu Azure SDK] [ retire policy sdk] oznacza, że tylko wersje powyżej 2.2 są obsługiwane, określonej rodziny systemów operacyjnych gościa pozwalać pozwala korzystać z wcześniejszych wersji. Należy zawsze używać najnowszej obsługiwanym zestawem SDK.
+Mimo że [zasady wycofywania z zestawu Azure SDK][retire policy sdk] oznacza, że tylko wersje powyżej 2.2 są obsługiwane, określonej rodziny systemów operacyjnych gościa pozwalać pozwala korzystać z wcześniejszych wersji. Należy zawsze używać najnowszej obsługiwanym zestawem SDK.
 
 | Rodzina systemów operacyjnych gościa | Zgodne wersje zestawu SDK |
 | --- | --- |
@@ -204,7 +212,7 @@ Rodzin systemów operacyjnych gościa są oparte na wydane wersje systemu Micros
 * **Rodzina systemów operacyjnych gościa**  
   Wersja systemu operacyjnego Windows Server, opartego na systemie operacyjnym gościa. Na przykład *rodziny 3* jest oparty na systemie Windows Server 2012.
 * **Wersja systemu operacyjnego gościa**  
-  Specyficzne dla rodziny obraz systemu operacyjnego gościa oraz odpowiednie [Microsoft Security Response Center (MSRC)] [ msrc] poprawek, które są dostępne na datę produkowaną jest nowa wersja systemu operacyjnego gościa. Nie wszystkie poprawki mogą zostać uwzględnione.
+  Specyficzne dla rodziny obraz systemu operacyjnego gościa oraz odpowiednie [Microsoft Security Response Center (MSRC)][msrc] poprawek, które są dostępne na datę produkowaną jest nowa wersja systemu operacyjnego gościa. Nie wszystkie poprawki mogą zostać uwzględnione.
 
     Numery rozpoczynają się od 0 i Zwiększaj go o 1 w każdym razem, gdy zostanie dodany nowy zestaw aktualizacji. Zera końcowe są wyświetlane tylko jeśli jest to ważne. W wersji 2.10 jest nieco inny, znacznie nowszej niż wersja 2.1.
 * **Wersja systemu operacyjnego gościa**  
@@ -225,9 +233,9 @@ Microsoft Azure stale udostępnia aktualizacje. System operacyjny gościa jest t
 
 Po opublikowaniu nowej wersji systemu operacyjnego gościa, może upłynąć czas pełni propagacji na platformie Azure. Ponieważ usługi są aktualizowane do nowego systemu operacyjnego gościa, ich wykonywany jest ponowny rozruch zapewniane domenach aktualizacji. Usługi skonfigurowane do korzystania z aktualizacji "Automatycznie", otrzyma pierwszego wydania. Po aktualizacji zostanie wyświetlony nowej wersji systemu operacyjnego gościa, na liście usługi w witrynie Azure portal. Ponownych wydań mogą wystąpić w trakcie tego okresu. Niektóre wersje mogą wdrożyć przez dłuższy czas i automatycznego ponownego uruchamiania uaktualniania nie może wystąpić wiele tygodni po dacie oficjalnym wydaniem. Po udostępnieniu systemu operacyjnego gościa, następnie jawnie można tę wersję z portalu lub w pliku konfiguracji.
 
-Na dużym stopniem cennych informacji na temat ponownego uruchamiania i wskaźniki, aby uzyskać więcej szczegółów technicznych informacji o aktualizacji dla gościa i systemu operacyjnego hosta, zobacz zatytułowany post na blogu MSDN [roli wystąpienie powoduje ponowne uruchomienie z powodu uaktualnienia systemu operacyjnego] [ restarts].
+Na dużym stopniem cennych informacji na temat ponownego uruchamiania i wskaźniki, aby uzyskać więcej szczegółów technicznych informacji o aktualizacji dla gościa i systemu operacyjnego hosta, zobacz zatytułowany post na blogu MSDN [roli wystąpienie powoduje ponowne uruchomienie z powodu uaktualnienia systemu operacyjnego][restarts].
 
-Jeśli ręcznie zaktualizować system operacyjny gościa, zobacz [zasady wycofywania systemu operacyjnego gościa] [ retirepolicy] Aby uzyskać dodatkowe informacje.
+Jeśli ręcznie zaktualizować system operacyjny gościa, zobacz [zasady wycofywania systemu operacyjnego gościa][retirepolicy] Aby uzyskać dodatkowe informacje.
 
 ## <a name="guest-os-supportability-and-retirement-policy"></a>Zasady wycofywania i możliwości obsługi systemu operacyjnego gościa
 Zasady wycofywania i możliwości obsługi systemu operacyjnego gościa zostało wyjaśnione [tutaj][retirepolicy].

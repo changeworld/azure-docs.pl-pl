@@ -6,12 +6,12 @@ ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: 2dc4994d88fc03c23a6d5722d6018c926e7d6b8c
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: fc63c1a0b3b496de8e5ecea58f79f1db9d872e80
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67788164"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67838441"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share-preview"></a>Samouczek: Zaakceptuj i odbierać dane przy użyciu udziału danych platformy Azure w wersji zapoznawczej
 
@@ -31,6 +31,8 @@ Upewnij się, czy wszystkie wymagania wstępne zostały spełnione przed zaakcep
 * Subskrypcja platformy Azure: Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 * Konto usługi Azure Storage: Jeśli nie masz jeszcze jeden, możesz utworzyć [konta usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account). 
 * Zaproszenie do udziału danych: Zaproszenie z Microsoft Azure z tematem pod tytułem "zaproszenie udostępniania danych platformy Azure od **<yourdataprovider@domain.com>** ".
+* Uprawnienia do dodawania przypisania roli do konta magazynu, który jest obecny w *Microsoft.Authorization/role przypisania/zapis* uprawnień. To uprawnienie istnieje w roli właściciela. 
+* Rejestracja dostawcy zasobów Microsoft.DataShare. Zobacz [dostawców zasobów Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) dokumentację dotyczącą informacji na temat sposobu wykonania tego zadania. 
 
 > [!IMPORTANT]
 > Aby zaakceptować i odbierać udziału danych platformy Azure, najpierw należy zarejestrować dostawcę zasobów Microsoft.DataShare i musisz być właścicielem konta magazynu, które akceptują dane. Postępuj zgodnie z instrukcjami opisanymi w [Rozwiązywanie problemów z dane udostępniania wersji zapoznawczej Azure](data-share-troubleshoot.md) Zarejestruj dostawcę zasobów udziału danych, a także dodać siebie jako właściciela konta magazynu. 
@@ -96,5 +98,5 @@ Aby sprawdzić, które konto magazynu, możesz użyć, wybierz **zestawów danyc
 ## <a name="view-history"></a>Wyświetlanie historii
 Aby wyświetlić historię z migawki, przejdź do udziałów Odebrano -> Historia. W tym miejscu można znaleźć historię wszystkich migawek, które zostały wygenerowane w ciągu ostatnich 60 dni. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku możesz dzięki modelom uczenia jak akceptować i odbierać udziału danych platformy Azure. Aby dowiedzieć się więcej na temat pojęć udziału danych platformy Azure, w dalszym ciągu [pojęcia: Usługi Azure Data udostępnianie terminologii](terminology.md).

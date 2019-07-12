@@ -4,7 +4,7 @@ description: Planowanie zdarzenia przy użyciu usługi Azure Metadata Service dl
 services: virtual-machines-windows, virtual-machines-linux, cloud-services
 documentationcenter: ''
 author: ericrad
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 0831f08eaa3e8e6f6a0d3f68bc50cd927167b7ba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7691bcd6f9f3137f48bdd52722c887c4777a32c
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65507927"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706533"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Scheduled Events maszyn wirtualnych systemu Linux
 
@@ -75,7 +75,7 @@ Jeśli maszyna wirtualna nie została utworzona w sieci wirtualnej, a przypadki 
 ### <a name="version-and-region-availability"></a>Wersja i dostępność regionów
 Usługa Scheduled Events to numerów wersji. Wersje są obowiązkowe; Bieżąca wersja to `2017-11-01`.
 
-| Version | Typ zlecenia | Regiony | Informacje o wersji | 
+| Version | Typ zlecenia | Regions | Informacje o wersji | 
 | - | - | - | - | 
 | 2017-11-01 | Ogólna dostępność | Wszyscy | <li> Dodano obsługę maszyn wirtualnych o niskim priorytecie eksmisji typ zdarzenia "Preempt"<br> | 
 | 2017-08-01 | Ogólna dostępność | Wszyscy | <li> Usunięte poprzedzona znakiem podkreślenia z nazwy zasobów dla maszyn wirtualnych IaaS<br><li>Wymaganie nagłówka metadanych wymuszone dla wszystkich żądań | 
@@ -214,7 +214,7 @@ if __name__ == '__main__':
   sys.exit(0)
 ```
 
-## <a name="next-steps"></a>Kolejne kroki 
+## <a name="next-steps"></a>Następne kroki 
 - Obejrzyj [Scheduled Events serii Azure Friday](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance) Aby wyświetlić pokaz. 
 - Przejrzyj przykłady kodu Scheduled Events w [Azure wystąpienie metadanych zaplanowane zdarzenia repozytorium usługi GitHub](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm).
 - Przeczytaj więcej na temat interfejsów API, które są dostępne w [Instance Metadata Service](instance-metadata-service.md).

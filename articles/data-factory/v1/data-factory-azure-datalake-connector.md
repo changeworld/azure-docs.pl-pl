@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3bb372c4c3ddb79429df20c24c691c847e927e2a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d8637a2711c0301d9e9f409e169ed04fb3d65783
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60567354"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839540"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Kopiowanie danych do i z Data Lake Storage Gen1 przy użyciu usługi fabryka danych
 > [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
@@ -49,12 +49,12 @@ Możesz skopiować dane z następujących magazynów danych **do usługi Azure D
 
 Zaleca się, że używasz uwierzytelniania jednostki usługi, szczególnie w przypadku kopiowania danych według harmonogramu. Zachowanie wygaśnięcia tokenu może wystąpić przy użyciu uwierzytelniania poświadczeń użytkownika. Szczegółowe informacje dotyczące konfiguracji, zobacz [właściwości usługi połączonej](#linked-service-properties) sekcji.
 
-## <a name="get-started"></a>Rozpoczęcie pracy
+## <a name="get-started"></a>Wprowadzenie
 Utworzysz potok z działaniem kopiowania, które przenosi dane z usługi Azure Data Lake Store przy użyciu różnych narzędzi/interfejsów API.
 
 Najprostszym sposobem utworzenia potoku w celu kopiowania danych jest użycie **kreatora kopiowania**. Samouczek dotyczący tworzenia potoku za pomocą Kreatora kopiowania, zobacz [samouczka: Tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md).
 
-Aby utworzyć potok umożliwia także następujących narzędzi: **Witryna Azure portal**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**i  **Interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
+Aby utworzyć potok umożliwia także następujących narzędzi: **Program Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**, i **interfejsu API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
 
 Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródłowych do magazynu danych ujścia:
 
@@ -72,8 +72,8 @@ Połączona usługa łączy magazyn danych do usługi data factory. Tworzenie po
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| **type** | Właściwość type musi być równa **AzureDataLakeStore**. | Tak |
-| **dataLakeStoreUri** | Informacje o koncie usługi Azure Data Lake Store. Informacja ta ma jedną z następujących formatów: `https://[accountname].azuredatalakestore.net/webhdfs/v1` lub `adl://[accountname].azuredatalakestore.net/`. | Yes |
+| **type** | Właściwość type musi być równa **AzureDataLakeStore**. | Yes |
+| **dataLakeStoreUri** | Informacje o koncie usługi Azure Data Lake Store. Informacja ta ma jedną z następujących formatów: `https://[accountname].azuredatalakestore.net/webhdfs/v1` lub `adl://[accountname].azuredatalakestore.net/`. | Tak |
 | **subscriptionId** | Identyfikator subskrypcji platformy Azure, do której należy konto Data Lake Store. | Wymagane dla ujścia |
 | **resourceGroupName** | Nazwa grupy zasobów platformy Azure, do której należy konto Data Lake Store. | Wymagane dla ujścia |
 
@@ -95,7 +95,7 @@ Użyj uwierzytelniania jednostki usługi, określając następujące właściwo�
 |:--- |:--- |:--- |
 | **servicePrincipalId** | Określ identyfikator klienta aplikacji. | Tak |
 | **servicePrincipalKey** | Określ klucz aplikacji. | Yes |
-| **dzierżawy** | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Można je pobrać, ustawiając kursor myszy w prawym górnym rogu witryny Azure portal. | Tak |
+| **dzierżawy** | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Można je pobrać, ustawiając kursor myszy w prawym górnym rogu witryny Azure portal. | Yes |
 
 **Przykład: Uwierzytelnianie jednostki usługi**
 ```json
@@ -120,7 +120,7 @@ Alternatywnie można uwierzytelnienia poświadczeń użytkownika kopiowanie Data
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| **Autoryzacja** | Kliknij przycisk **Autoryzuj** znajdujący się w edytorze fabryki danych i wprowadź swoje poświadczenia, które przypisuje adres URL autoryzacji wygenerowany automatycznie do tej właściwości. | Tak |
+| **Autoryzacja** | Kliknij przycisk **Autoryzuj** znajdujący się w edytorze fabryki danych i wprowadź swoje poświadczenia, które przypisuje adres URL autoryzacji wygenerowany automatycznie do tej właściwości. | Yes |
 | **sessionId** | Identyfikator sesji OAuth z sesji autoryzacji OAuth. Każdy identyfikator sesji jest unikatowy i mogą być użyte tylko raz. To ustawienie jest generowany automatycznie, korzystając z edytora fabryki danych. | Tak |
 
 > [!IMPORTANT]
@@ -208,12 +208,12 @@ Aby uzyskać szczegółowe informacje na temat klas usługi Data Factory używan
 
 2. Upewnij się, można przyznać co najmniej **czytnika** roli do użytkownika lub nazwa główna usługi na konta usługi data lake. Oto jak:
 
-    1. Przejdź do witryny Azure Portal wybierz kolejno opcje konta usługi Data Lake Store
+    1. Przejdź do witryny Azure portal wybierz kolejno opcje konta usługi Data Lake Store
     2. Kliknij przycisk **kontrola dostępu (IAM)** do bloku Data Lake Store
     3. Kliknij przycisk **Dodaj przypisanie roli**
     4. Ustaw **roli** jako **czytnika**, a następnie wybierz użytkownika lub jednostki usługi użyj związanym z kopiowaniem do udzielania dostępu
 
-3. Jeśli nie chcesz udzielić **czytnika** ma rolę użytkownika lub nazwa główna usługi, alternatywnych [jawnie określić lokalizację wykonania](data-factory-data-movement-activities.md#global) w activitywith kopiowania lokalizacji usługi Data Lake Store. Przykład:
+3. Jeśli nie chcesz udzielić **czytnika** ma rolę użytkownika lub nazwa główna usługi, alternatywnych [jawnie określić lokalizację wykonania](data-factory-data-movement-activities.md#global) w działaniu kopiowania z lokalizacją usługi Data Lake Store. Przykład:
 
     ```json
     {
@@ -239,7 +239,7 @@ Aby określić zestaw danych reprezentujący dane wejściowe w Data Lake Store, 
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| **folderPath** |Ścieżka do kontenera i folderu w Data Lake Store. |Tak |
+| **folderPath** |Ścieżka do kontenera i folderu w Data Lake Store. |Yes |
 | **fileName** |Nazwa pliku w usłudze Azure Data Lake Store. **FileName** właściwość jest opcjonalna i wielkość liter. <br/><br/>Jeśli określisz **fileName**, aktywności (w tym kopiowania) działa na określonego pliku.<br/><br/>Gdy **fileName** nie zostanie określony, kopia uwzględnia wszystkie pliki w **folderPath** w zestawie danych wejściowych.<br/><br/>Gdy **fileName** nie jest określona dla wyjściowego zestawu danych i **preserveHierarchy** nie została określona w ujścia działania nazwę wygenerowanego pliku jest w formacie `Data._Guid_.txt`. Na przykład: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |Nie |
 | **partitionedBy** |**PartitionedBy** właściwość jest opcjonalna. Służy do określania dynamiczne ścieżkę i nazwę pliku dla danych szeregów czasowych. Na przykład **folderPath** mogą być parametryzowane za każdą godzinę danych. Aby uzyskać szczegółowe informacje i przykłady Zobacz właściwość partitionedBy. |Nie |
 | **Format** | Obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, i **ParquetFormat**. Ustaw **typu** właściwości **format** do jednej z tych wartości. Aby uzyskać więcej informacji, zobacz [format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Avro format](data-factory-supported-file-and-compression-formats.md#avro-format), [ORC format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet ](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje w [formaty plików i kompresji, które są obsługiwane przez usługę Azure Data Factory](data-factory-supported-file-and-compression-formats.md) artykułu. <br><br> Jeśli chcesz skopiować pliki "jako — jest" między opartych na plikach magazynów (kopia binarna), Pomiń `format` sekcji w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
@@ -307,7 +307,7 @@ W tej sekcji opisano wynikowe zachowania operacji kopiowania różne kombinacje 
 Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w usłudze Azure Data Factory](data-factory-supported-file-and-compression-formats.md) artykułu.
 
 ## <a name="json-examples-for-copying-data-to-and-from-data-lake-store"></a>Przykłady JSON do kopiowania danych Data Lake Store
-W poniższych przykładach udostępniono przykładowe definicji JSON. Te definicje umożliwia tworzenie potoku za pomocą [witryny Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). W przykładach pokazano, jak kopiować dane do i z usługi Data Lake Store i Azure Blob storage. Jednak dane mogą być kopiowane _bezpośrednio_ z dowolnego źródła do dowolnej obsługiwanej wychwytywanie. Aby uzyskać więcej informacji, zobacz sekcję "obsługiwane magazyny danych i formatów" w [przenoszenie danych za pomocą działania kopiowania](data-factory-data-movement-activities.md) artykułu.
+W poniższych przykładach udostępniono przykładowe definicji JSON. Te definicje umożliwia tworzenie potoku za pomocą [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). W przykładach pokazano, jak kopiować dane do i z usługi Data Lake Store i Azure Blob storage. Jednak dane mogą być kopiowane _bezpośrednio_ z dowolnego źródła do dowolnej obsługiwanej wychwytywanie. Aby uzyskać więcej informacji, zobacz sekcję "obsługiwane magazyny danych i formatów" w [przenoszenie danych za pomocą działania kopiowania](data-factory-data-movement-activities.md) artykułu.
 
 ### <a name="example-copy-data-from-azure-blob-storage-to-azure-data-lake-store"></a>Przykład: Kopiowanie danych z usługi Azure Blob Storage do usługi Azure Data Lake Store
 Przykładowy kod w tej sekcji przedstawiono:

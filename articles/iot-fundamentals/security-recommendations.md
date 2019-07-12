@@ -8,12 +8,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: dkshir
-ms.openlocfilehash: d079e082fb8ac90f398e46f283bd1e33e2b4ab40
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.custom: security-recommendations
+ms.openlocfilehash: 4416f3149c33a0c9a437b2fbd6a48729a5a7f044
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67463086"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722856"
 ---
 # <a name="security-recommendations-for-azure-internet-of-things-iot-deployment"></a>Zalecenia dotyczące zabezpieczeń dla wdrożenia usługi Azure Internet of Things (IoT)
 
@@ -61,7 +62,7 @@ Ten artykuł zawiera zalecenia dotyczące zabezpieczeń dla usługi Azure IoT. W
 | Monitorowanie rozwiązania IoT z chmury | Monitorowanie ogólnej kondycji usługi IoT Hub rozwiązania przy użyciu [metryk w usłudze Azure Monitor](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics). |
 | Konfigurowanie diagnostyki | Ściśle Obejrzyj operacji, rejestrowanie zdarzeń w rozwiązaniu, a następnie wysyłając dzienników diagnostycznych do usługi Azure Monitor, aby uzyskać wgląd w wydajność. Odczyt [monitorowanie i diagnozowanie problemów w usłudze IoT hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitor-resource-health) Aby uzyskać więcej informacji. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W przypadku zaawansowanych scenariuszy dotyczących usługi Azure IoT może być konieczne należy wziąć pod uwagę dodatkowe wymagania dotyczące zabezpieczeń. Zobacz [architekturę zabezpieczeń IoT](iot-security-architecture.md) Aby uzyskać więcej wskazówek.
 

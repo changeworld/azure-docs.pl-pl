@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 95ec6a863f951a8c26abd865041c68df333a4e38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a244883f470f4906879725daf0d37bd1759e65c4
+ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65071341"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67812907"
 ---
 # <a name="durable-functions-patterns-and-technical-concepts-azure-functions"></a>Trwałe wzorce funkcji i zagadnienia techniczne (usługi Azure Functions)
 
@@ -374,7 +374,7 @@ module.exports = async function (context) {
 };
 ```
 
-## <a name="pattern-6-aggregator-preview"></a>Wzorzec #6: Agregatora (wersja zapoznawcza)
+### <a name="aggregator"></a>Wzorzec #6: Agregatora (wersja zapoznawcza)
 
 Szósty wzorzec dotyczy agregowanie danych zdarzeń przez okres czasu w jednym, mogą być adresowane *jednostki*. W tym wzorcu danych agregowana mogą pochodzić z wielu źródeł, mogą być dostarczane w plikach wsadowych lub mogą być rozproszone w długich okresach czasu. Agregator może być konieczne podejmowanie akcji na dane zdarzeń, zgodnie z jego nadejścia i może być konieczne wykonywanie zapytań o dane zagregowane klientów zewnętrznych.
 
@@ -385,27 +385,46 @@ Skomplikowanych czynności o podjęcie próby implementacja tego wzorca przy uż
 Za pomocą [funkcji jednostki trwałe](durable-functions-preview.md#entity-functions), jeden można zaimplementować ten wzorzec łatwo jako pojedynczą funkcję.
 
 ```csharp
-public static async Task Counter(
-    [EntityTrigger(EntityClassName = "Counter")] IDurableEntityContext ctx)
+[FunctionName("Counter")]
+public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 {
     int currentValue = ctx.GetState<int>();
-    int operand = ctx.GetInput<int>();
 
-    switch (ctx.OperationName)
+    switch (ctx.OperationName.ToLowerInvariant())
     {
         case "add":
+            int amount = ctx.GetInput<int>();
             currentValue += operand;
             break;
-        case "subtract":
-            currentValue -= operand;
-            break;
         case "reset":
-            await SendResetNotificationAsync();
             currentValue = 0;
+            break;
+        case "get":
+            ctx.Return(currentValue);
             break;
     }
 
     ctx.SetState(currentValue);
+}
+```
+
+Trwałe jednostki mogą być również modelowane jako klas .NET. Może to być przydatne, jeśli listy operacji stanie się zbyt długa, a przede wszystkim jest statyczna. Poniższy przykład jest równoważny implementację `Counter` jednostki przy użyciu metod i klas platformy .NET.
+
+```csharp
+public class Counter
+{
+    [JsonProperty("value")]
+    public int CurrentValue { get; set; }
+
+    public void Add(int amount) => this.CurrentValue += amount;
+    
+    public void Reset() => this.CurrentValue = 0;
+    
+    public int Get() => this.CurrentValue;
+
+    [FunctionName(nameof(Counter))]
+    public static Task Run([EntityTrigger] IDurableEntityContext ctx)
+        => ctx.DispatchAsync<Counter>();
 }
 ```
 
@@ -426,7 +445,7 @@ public static async Task Run(
 }
 ```
 
-Podobnie klienci mogą wysyłać zapytania dla stanu funkcji jednostki przy użyciu metod na `orchestrationClient` powiązania.
+Dynamicznie generowanym serwery proxy są również dostępne dla sygnalizowanie jednostek w sposób bezpieczny. A oprócz sygnalizowanie, klientów można także wysyłać zapytania dotyczące stanu funkcji jednostki przy użyciu metod na `orchestrationClient` powiązania.
 
 > [!NOTE]
 > Funkcje jednostki są obecnie dostępne wyłącznie w [niezawodne funkcje 2.0 w wersji zapoznawczej](durable-functions-preview.md).
@@ -484,7 +503,7 @@ Magazyn obiektów blob przede wszystkim są używane jako mechanizm dzierżawien
 
 Powinny być śledzone wszystkie znane problemy występujące w [problemy usługi GitHub](https://github.com/Azure/azure-functions-durable-extension/issues) listy. W przypadku napotkania problemów i nie można odnaleźć problem w serwisie GitHub, otwórz nowy problem. Zawierają szczegółowy opis problemu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się więcej na temat funkcje trwałe, zobacz [funkcje trwałe funkcji typy i funkcje](durable-functions-types-features-overview.md). 
 

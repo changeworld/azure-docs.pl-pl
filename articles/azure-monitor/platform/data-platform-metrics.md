@@ -5,18 +5,18 @@ documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
-ms.service: monitoring
+ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 319def9072dbf38eff44ca4459428f1ef99a2b54
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 684491b546a0456d936ae199cdfb93180aa05043
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64867963"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607026"
 ---
 # <a name="metrics-in-azure-monitor"></a>Metryki w usłudze Azure Monitor
 
@@ -105,7 +105,7 @@ Dla większości zasobów na platformie Azure metryki są przechowywane przez 93
 > [!NOTE]
 > Możesz [wysyłanie metryk platformy dla zasobów usługi Azure Monitor do obszaru roboczego usługi Log Analytics](diagnostic-logs-stream-log-store.md) umożliwia analizę trendów w długim okresie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o [platforma danych usługi Azure Monitor](data-platform.md).
 - Dowiedz się więcej o [rejestrować dane w usłudze Azure Monitor](data-platform-logs.md).

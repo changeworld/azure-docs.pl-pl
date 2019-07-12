@@ -4,7 +4,7 @@ description: Więcej informacji na temat obrazów Red Hat Enterprise Linux na pl
 services: virtual-machines-linux
 documentationcenter: ''
 author: BorisB2015
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 6/6/2019
 ms.author: borisb
-ms.openlocfilehash: b40f62a90dbe7c822b95476abe6ec25cf3fb21d6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f7ae82b0376489e21b35e4e94dce32805bea69c6
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070035"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708380"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Obrazy systemu Red Hat Enterprise Linux na platformie Azure
 W tym artykule opisano dostępne obrazy Red Hat Enterprise Linux (RHEL) w witrynie Azure Marketplace oraz zasady dotyczące nazewnictwa i przechowywania.
@@ -152,6 +152,6 @@ Aktualizujemy tylko bieżącej wersji pomocniczej w rodzinie danego obrazu. W we
 ## <a name="image-retention-policy"></a>Zasady przechowywania obrazu
 Nasze bieżące zasady jest przechowywanie wszystkich poprzednio opublikowanych obrazów. Firma Microsoft zastrzega sobie prawo do usunięcia obrazów, które są znane spowodować problemy wszelkiego rodzaju. Na przykład obrazy z konfiguracjami niepoprawna z powodu kolejnych platformy lub aktualizacje składników mogą zostać usunięte. Obrazy, które mogą zostać usunięte podlegają zasadom bieżącej witryny Marketplace do udostępniania powiadomień o się do 30 dni przed usunięcie obrazu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Dowiedz się więcej o usłudze Azure Red Hat Update Infrastructure [tutaj](https://aka.ms/rhui-update).
 * Można znaleźć informacji na temat zasad wsparcia firmy Red Hat dla wszystkich wersji systemu RHEL na [Red Hat Enterprise Linux cyklu](https://access.redhat.com/support/policy/updates/errata) strony.

@@ -3,16 +3,16 @@ title: Usługa Azure CDN from Verizon — Premium funkcje aparatu reguł | Dokum
 description: Dokumentacja dotycząca usługi Azure CDN from Verizon — Premium funkcje aparatu reguł.
 services: cdn
 author: mdgattuso
-ms.service: cdn
+ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: 7e75a6ffe28aa74ea2fad30bbe2728317712d86b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 9177ac544c83305ae95ad681d3dc9f84ac64ea36
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443490"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593241"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Usługa Azure CDN from funkcje aparatu reguł Premium firmy Verizon
 
@@ -24,7 +24,7 @@ Trzecia część reguły jest funkcja. Funkcja określa typ akcji, która jest s
 
 Te funkcje są przeznaczone do kontrolowania dostępu do zawartości.
 
-Name (Nazwa) | Przeznaczenie
+Name (Nazwa) | Cel
 -----|--------
 [Odmowa dostępu (403)](#deny-access-403) | Określa, czy wszystkie żądania są odrzucane odpowiedź 403 Zabroniony.
 [Token uwierzytelniania](#token-auth) | Określa, czy uwierzytelnianie za pomocą tokenu jest stosowany do żądania.
@@ -36,7 +36,7 @@ Name (Nazwa) | Przeznaczenie
 
 Te funkcje są przeznaczone do dostosowywania, kiedy i jak zawartość jest buforowana.
 
-Name (Nazwa) | Przeznaczenie
+Name (Nazwa) | Cel
 -----|--------
 [Parametry przepustowości](#bandwidth-parameters) | Określa, czy parametry ograniczania przepustowości (na przykład ec_rate i ec_prebuf) są aktywne.
 [Ograniczanie przepustowości](#bandwidth-throttling) | Ogranicza przepustowość dla odpowiedzi dostarczonych przez punkt Point of presence (POP, POINT).
@@ -66,7 +66,7 @@ Name (Nazwa) | Przeznaczenie
 
 Ta funkcja została zaprojektowana podać dodatkowe informacje w obrębie reguły.
 
-Name (Nazwa) | Przeznaczenie
+Name (Nazwa) | Cel
 -----|--------
 [Komentarz](#comment) | Umożliwia notatkę do dodania w obrębie reguły.
 
@@ -74,7 +74,7 @@ Name (Nazwa) | Przeznaczenie
 
 Te funkcje są przeznaczone do Dodawanie, modyfikowanie lub usuwanie nagłówków żądania lub odpowiedzi.
 
-Name (Nazwa) | Przeznaczenie
+Name (Nazwa) | Cel
 -----|--------
 [Nagłówek odpowiedzi wiek](#age-response-header) | Określa, czy nagłówek odpowiedzi wiek znajduje się odpowiedzi wysyłane do zleceniodawcy.
 [Debugowanie pamięci podręcznej nagłówki odpowiedzi](#debug-cache-response-headers) | Określa, czy odpowiedź może obejmować nagłówek odpowiedzi X-WE-Debug, który zawiera informacje dotyczące zasad pamięci podręcznej dla żądanego zasobu.
@@ -86,7 +86,7 @@ Name (Nazwa) | Przeznaczenie
 
 Te funkcje pozwalają dostosować dane przechowywane w plikach dziennika raw.
 
-Name (Nazwa) | Przeznaczenie
+Name (Nazwa) | Cel
 -----|--------
 [Pole dziennika niestandardowego 1](#custom-log-field-1) | Określa format i zawartość, która jest przypisana do pola dziennika niestandardowego w pliku dziennika raw.
 [Ciąg zapytania dziennika](#log-query-string) | Określa, czy ciąg zapytania są przechowywane wraz z adresu URL na uzyskiwanie dostępu do dzienników.
@@ -140,7 +140,7 @@ If the desired site does not appear in the list, then you should edit its config
 
 Te funkcje są przeznaczone do sterowania, jak usługa CDN komunikuje się z serwera pochodzenia.
 
-Name (Nazwa) | Przeznaczenie
+Name (Nazwa) | Cel
 -----|--------
 [Maksymalna liczba żądań Keep-Alive](#maximum-keep-alive-requests) | Określa maksymalną liczbę żądań połączenia Keep-Alive, po którym jest ono zamknięte.
 [Serwer proxy specjalnych nagłówków](#proxy-special-headers) | Definiuje zestaw nagłówków żądań specyficzne dla usługi CDN, które są przekazywane z punktu POP do serwera pochodzenia.
@@ -149,7 +149,7 @@ Name (Nazwa) | Przeznaczenie
 
 Te funkcje zapewniają zaawansowane funkcje dla użytkowników zaawansowanych.
 
-Name (Nazwa) | Przeznaczenie
+Name (Nazwa) | Cel
 -----|--------
 [Metody HTTP podlega buforowaniu](#cacheable-http-methods) | Określa zestaw dodatkowych metod HTTP, które mogą być buforowane w sieci.
 [Rozmiar treści podlega buforowaniu, na żądanie](#cacheable-request-body-size) | Definiuje wartość progowa określająca, czy mogą być buforowane odpowiedzi WPIS.
@@ -159,7 +159,7 @@ Name (Nazwa) | Przeznaczenie
 
 Te funkcje umożliwiają żądanie, aby być przekierowywany lub przepisane, aby inny adres URL.
 
-Name (Nazwa) | Przeznaczenie
+Name (Nazwa) | Cel
 -----|--------
 [Wykonaj przekierowania](#follow-redirects) | Określa, czy żądania mogą zostać przekierowane do nazwy hosta, zdefiniowany w nagłówku Location zwróconych przez serwer pochodzenia klienta.
 [Adres URL przekierowania](#url-redirect) | Przekierowuje żądania za pośrednictwem nagłówek lokalizacji.
@@ -173,9 +173,9 @@ Name (Nazwa) | Przeznaczenie
 
 **Cel**: Określa, czy nagłówek odpowiedzi wiek znajduje się odpowiedzi wysyłane do zleceniodawcy.
 
-Wartość|Wynik
+Value|Wynik
 --|--
-Enabled (Włączony) | Nagłówek odpowiedzi wiek znajduje się w odpowiedzi wysyłane do zleceniodawcy.
+Włączono | Nagłówek odpowiedzi wiek znajduje się w odpowiedzi wysyłane do zleceniodawcy.
 Wyłączone | Nagłówek odpowiedzi okres ważności jest wykluczony z odpowiedzi wysyłane do zleceniodawcy.
 
 **Domyślne zachowanie**: Wyłączone.
@@ -194,7 +194,7 @@ Parametry ograniczania przepustowości określają, czy szybkość transferu dan
 
 Wartość|Wynik
 --|--
-Enabled (Włączony)|Umożliwia POP respektować żądania ograniczenia przepustowości.
+Włączono|Umożliwia POP respektować żądania ograniczenia przepustowości.
 Wyłączone|Powoduje, że POP zignorować parametry ograniczenia przepustowości. Żądanej zawartości jest zwykle obsługiwany (to znaczy bez ograniczania przepustowości).
 
 **Domyślne zachowanie:** Włączone.
@@ -230,7 +230,7 @@ Prebuf sekund|Ustaw tę opcję na czas w sekundach dla punktów obecności, pocz
 
 Wartość|Wynik
 --|--
-Enabled (Włączony)|Powoduje, że wszystkie żądania przechodzić do serwera pochodzenia, nawet jeśli zawartość wcześniej był buforowany w lokalizacji POP.
+Włączono|Powoduje, że wszystkie żądania przechodzić do serwera pochodzenia, nawet jeśli zawartość wcześniej był buforowany w lokalizacji POP.
 Wyłączone|Powoduje, że POP do buforowania zasobów zgodnie z zasadami pamięci podręcznej, zdefiniowane w jego nagłówków odpowiedzi.
 
 **Domyślne zachowanie:**
@@ -320,7 +320,7 @@ Informacje o kluczu:
 - Określ co najmniej jedną nazwę parametru ciągu zapytania i Oddziel poszczególne nazwy parametru z jednego miejsca.
 - Ta funkcja określa, czy parametry ciągu zapytania są dołączone lub wykluczone z klucza pamięci podręcznej. Dodatkowe informacje są udostępniane dla każdej opcji w poniższej tabeli.
 
-Typ|Opis
+Type|Opis
 --|--
  Obejmują|  Wskazuje, że każdy określony parametr powinny być uwzględnione w klucz pamięci podręcznej. Unikatowy klucz pamięci podręcznej jest generowany dla każdego żądania, który zawiera unikatową wartość dla parametru ciągu zapytania, zdefiniowane w tej funkcji.
  Uwzględnij wszystkie  |Wskazuje, że Unikatowy klucz pamięci podręcznej jest tworzony dla każdego żądania do elementu zawartości, która zawiera ciąg zapytania unikatowy. Ten typ konfiguracji jest zwykle niezalecane, ponieważ może to prowadzić do niewielkiego odsetka trafień w pamięci podręcznej. Najmniejszą liczbę trafień w pamięci podręcznej zwiększa obciążenie na serwerze źródłowym, ponieważ musi on obsługiwać żądań więcej. Ta konfiguracja jest duplikatem zachowanie buforowania, znane jako "unikatowe pamięci podręcznej" na stronie buforowanie ciągu zapytania.
@@ -441,9 +441,9 @@ To Chybienie pamięci podręcznej częściowe zazwyczaj występuje po użytkowni
 
 Zachowaj domyślną konfigurację HTTP dużych platformy, ponieważ zmniejsza obciążenie serwera pochodzenia klienta i zwiększyć szybkość jaką klientów pobierania zawartości.
 
-Wartość|Wynik
+Value|Wynik
 --|--
-Enabled (Włączony)|Przywraca domyślne zachowanie. Domyślnym zachowaniem jest wymuszenie POP, aby zainicjować pobieranie w tle elementu zawartości z serwera pochodzenia. Po upływie którego element zawartości będą znajdować się w lokalnej pamięci podręcznej punktu obecności.
+Włączono|Przywraca domyślne zachowanie. Domyślnym zachowaniem jest wymuszenie POP, aby zainicjować pobieranie w tle elementu zawartości z serwera pochodzenia. Po upływie którego element zawartości będą znajdować się w lokalnej pamięci podręcznej punktu obecności.
 Wyłączone|POP uniemożliwia wykonywanie pobieranie w tle dla zasobu. Powoduje to, że następnego żądania dla tego zasobu z tego regionu powoduje, że POP do żądania do serwera pochodzenia klienta.
 
 **Domyślne zachowanie:** Włączone.
@@ -551,9 +551,9 @@ Debugowanie odpowiedzi z pamięci podręcznej, który może zostać wyświetlony
 
 X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
-Wartość|Wynik
+Value|Wynik
 -|-
-Enabled (Włączony)|Żądania dla nagłówków odpowiedzi w pamięci podręcznej debugowania zwróci odpowiedź, która zawiera nagłówek X-WE-debugowanie.
+Włączono|Żądania dla nagłówków odpowiedzi w pamięci podręcznej debugowania zwróci odpowiedź, która zawiera nagłówek X-WE-debugowanie.
 Wyłączone|Nagłówek odpowiedzi X WE debugowania zostaną wykluczone z odpowiedzi.
 
 **Domyślne zachowanie:** Wyłączone.
@@ -612,9 +612,9 @@ Ze względu na sposób, w której pamięci podręcznej ustawienia są śledzone 
 
 **Cel**: Określa, czy wszystkie żądania są odrzucane odpowiedź 403 Zabroniony.
 
-Wartość | Wynik
+Value | Wynik
 ------|-------
-Enabled (Włączony)| Powoduje, że wszystkie żądania, które spełniają kryteria dopasowania odrzucone, odpowiedź 403 Zabroniony.
+Włączono| Powoduje, że wszystkie żądania, które spełniają kryteria dopasowania odrzucone, odpowiedź 403 Zabroniony.
 Wyłączone| Przywraca domyślne zachowanie. Domyślnym zachowaniem jest zezwalająca na serwerze źródłowym, można ustalić typu odpowiedzi, który zostanie zwrócony.
 
 **Domyślne zachowanie**: Wyłączone
@@ -680,7 +680,7 @@ Informacje o kluczu:
 
 Wartość|Wynik
 -|-
-Enabled (Włączony)|Można przekierować żądania.
+Włączono|Można przekierować żądania.
 Wyłączone|Nie nastąpi przekierowanie żądania.
 
 **Domyślne zachowanie:** Wyłączone.
@@ -760,7 +760,7 @@ Informacje o kluczu:
 
 Wartość|Wynik
 --|--
-Enabled (Włączony)|Umożliwia klienta HTTP nie pamięci podręcznej żądań były przekazywane do serwera pochodzenia i serwer pochodzenia zwraca nagłówki odpowiedzi i treści za pośrednictwem punktu POP do klienta HTTP.
+Włączono|Umożliwia klienta HTTP nie pamięci podręcznej żądań były przekazywane do serwera pochodzenia i serwer pochodzenia zwraca nagłówki odpowiedzi i treści za pośrednictwem punktu POP do klienta HTTP.
 Wyłączone|Przywraca domyślne zachowanie. Domyślnym zachowaniem jest aby zapobiec żądań pamięci podręcznej nie są przekazywane do serwera pochodzenia.
 
 Dla całego ruchu w środowisku produkcyjnym zaleca pozostaw tę funkcję w stanie domyślnym wyłączone. W przeciwnym razie serwerów źródłowych będzie nie można włączyć osłony od użytkowników końcowych, którzy mogą przypadkowo wyzwolić wiele żądań pamięci podręcznej nie w przypadku odświeżanie stron sieci web lub z wielu popularnych odtwarzaczy multimedialnych, które są kodowane, aby wysyłaj nagłówek nie pamięci podręcznej, z każdym żądaniem wideo. Niemniej jednak ta funkcja może być przydatne do zastosowania do niektórych nieprodukcyjnych przemieszczania lub testowania katalogi, aby umożliwić nowości zostać pobrane na żądanie z serwera pochodzenia.
@@ -827,7 +827,7 @@ Domyślnie ten kod stanu jest zwracane żądania zakresu bajtów nie mogą być 
 
 Wartość|Wynik
 -|-
-Enabled (Włączony)|Zapobiega lokalizacji POP odpowiada na żądanie nieprawidłowy zakres bajtów z 416 żądany zakres nie żądania kodem stanu. Zamiast tego serwery dostarczanie żądanego zasobu i zwrócić 200 OK do klienta.
+Włączono|Zapobiega lokalizacji POP odpowiada na żądanie nieprawidłowy zakres bajtów z 416 żądany zakres nie żądania kodem stanu. Zamiast tego serwery dostarczanie żądanego zasobu i zwrócić 200 OK do klienta.
 Wyłączone|Przywraca domyślne zachowanie. Domyślnym zachowaniem jest respektować 416 żądany zakres nie żądania kod stanu.
 
 **Domyślne zachowanie:** Wyłączone.
@@ -893,7 +893,7 @@ Ze względu na sposób, w której pamięci podręcznej ustawienia są śledzone 
 
 Wartość|Wynik
 -|-
-Enabled (Włączony)|Umożliwia magazynu ciągów zapytania, podczas rejestrowania adresów URL w dzienniku dostępu. Jeśli adres URL zawiera ciąg zapytania, ta opcja będzie ma wpływ.
+Włączono|Umożliwia magazynu ciągów zapytania, podczas rejestrowania adresów URL w dzienniku dostępu. Jeśli adres URL zawiera ciąg zapytania, ta opcja będzie ma wpływ.
 Wyłączone|Przywraca domyślne zachowanie. Domyślnym zachowaniem jest Ignoruj ciągi zapytań, podczas rejestrowania adresów URL w dzienniku dostępu.
 
 **Domyślne zachowanie:** Wyłączone.
@@ -1019,7 +1019,7 @@ Ta pamięć podręczna w częściowej może użyte do spełnienia nowych żąda�
 
 Wartość|Wynik
 -|-
-Enabled (Włączony)|Żądania mogą generować częściowe buforowanej zawartości.
+Włączono|Żądania mogą generować częściowe buforowanej zawartości.
 Wyłączone|Żądania może generować jedynie pełni zbuforowaną wersję żądanej zawartości.
 
 **Domyślne zachowanie:** Wyłączone.
@@ -1081,9 +1081,9 @@ Następujące nagłówki HTTP znajdują się na domyślnej liście:
 
 Prawidłowe wartości to:
 
-Wartość|Wynik
+Value|Wynik
 --|--
-Enabled (Włączony)|Powoduje, że punkt POP ponownie Pobierz element zawartości z serwera pochodzenia.
+Włączono|Powoduje, że punkt POP ponownie Pobierz element zawartości z serwera pochodzenia.
 Wyłączone|Przywraca domyślne zachowanie. Zachowanie domyślne jest do obsługi pamięci podręcznej prawidłowe zasoby na żądanie.
 
 Ta funkcja nie jest wymagany poprawny pamięci podręcznej i dostarczania zawartości, ale może być przydatne jako obejście tego problemu. Na przykład dynamiczne generatorów zawartości na serwerach pochodzenia przypadkowo może spowodować 0 bajtów odpowiedzi są wysyłane do lokalizacji POP. Tego rodzaju odpowiedzi są buforowane przez lokalizacji POP. Jeśli wiesz, że odpowiedzi 0 bajtów nigdy nie jest prawidłowa odpowiedź do takiej zawartości, ta funkcja może uniemożliwić tych typów zasobów z obsługiwanych klientów.
@@ -1148,9 +1148,9 @@ Upewnij się, że nazwa określonego nagłówka nie pasuje do żadnego z następ
 
 **Cel:** Określa, czy wygasła zawartości w pamięci podręcznej zostaną dostarczone, gdy wystąpi błąd podczas ponownego sprawdzania poprawności w pamięci podręcznej lub podczas pobierania żądanej zawartości z serwera pochodzenia klienta.
 
-Wartość|Wynik
+Value|Wynik
 -|-
-Enabled (Włączony)|Zawartość są dostarczane do zleceniodawcy po wystąpieniu błędu podczas połączenia z serwerem pochodzenia.
+Włączono|Zawartość są dostarczane do zleceniodawcy po wystąpieniu błędu podczas połączenia z serwerem pochodzenia.
 Wyłączone|Błąd serwera pochodzenia jest przekazywany do zleceniodawcy.
 
 **Domyślne zachowanie:** Wyłączone
@@ -1194,7 +1194,7 @@ Ta funkcja ma pierwszeństwo przed większość funkcji, z wyjątkiem funkcji po
 
 Wartość | Wynik
 ------|---------
-Enabled (Włączony) | Chroni żądanej zawartości przy użyciu uwierzytelniania opartego na tokenach. Tylko żądania od klientów, podaj prawidłowy token, a jej wymagań, które będą uznawane. Transakcje FTP są wykluczone z uwierzytelniania opartego na tokenach.
+Włączono | Chroni żądanej zawartości przy użyciu uwierzytelniania opartego na tokenach. Tylko żądania od klientów, podaj prawidłowy token, a jej wymagań, które będą uznawane. Transakcje FTP są wykluczone z uwierzytelniania opartego na tokenach.
 Wyłączone| Przywraca domyślne zachowanie. Domyślnym zachowaniem jest umożliwienie konfiguracji uwierzytelniania opartego na tokenie, aby określić, czy żądanie zostanie zabezpieczone.
 
 #### <a name="compatibility"></a>Zgodność
@@ -1270,9 +1270,9 @@ Parametry wpływ tej funkcji są następujące:
 
 Prawidłowe wartości to:
 
-Wartość|Wynik
+Value|Wynik
 ---|----
-Enabled (Włączony)|Powoduje, że punkt POP zignorować wielkość liter podczas porównywania adresy URL dla uwierzytelniania opartego na tokenach parametrów.
+Włączono|Powoduje, że punkt POP zignorować wielkość liter podczas porównywania adresy URL dla uwierzytelniania opartego na tokenach parametrów.
 Wyłączone|Przywraca domyślne zachowanie. Domyślnym zachowaniem jest adres URL porównania dla uwierzytelniania tokenu być uwzględniana wielkość liter.
 
 **Domyślne zachowanie:** Wyłączone.
@@ -1293,9 +1293,9 @@ Informacje o kluczu:
 - Nie można ustawić opcji wartość "ec_token."
 - Upewnij się, że z nazwą zdefiniowaną w opcji wartość zawiera tylko prawidłowe znaki adresu URL.
 
-Wartość|Wynik
+Value|Wynik
 ----|----
-Enabled (Włączony)|Opcja wartość definiuje nazwę parametru ciągu zapytania za pomocą których można zdefiniować tokenów.
+Włączono|Opcja wartość definiuje nazwę parametru ciągu zapytania za pomocą których można zdefiniować tokenów.
 Wyłączone|Token może być określona jako parametr ciągu zapytania niezdefiniowana w adresie URL żądania.
 
 **Domyślne zachowanie:** Wyłączone. Token może być określona jako parametr ciągu zapytania niezdefiniowana w adresie URL żądania.

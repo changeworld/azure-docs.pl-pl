@@ -7,17 +7,17 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 221f559dde2017c9b5d13dd4e06a140a6bcb5e2e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 91db369f9a2a0439bdbaf8600d1b329f0da00aa0
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935422"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786469"
 ---
 <a name="cloud-partner-portal-gdpr-compliance"></a>Cloud-zgodność z RODO Portal partnerów
 ====================================
 
-[Ogólne rozporządzenie o ochronie danych (RODO)](https://ec.europa.eu/justice/data-protection/reform/index_en.htm)to prawo ochrony i prywatności danych Unii Europejskiej (UE). Rozporządzenie GDPR nakłada reguły dla firm, agencji rządowych, non-profit i innych organizacji oferujących towary i usługi osobom w Unii Europejskiej lub który zbierania i analizujących dane związane z osobami mieszkającymi w UE.
+[Ogólne rozporządzenie o ochronie danych (RODO)](https://ec.europa.eu/info/law/law-topic/data-protection/reform_en/) to prawo ochrony i prywatności danych Unii Europejskiej (UE). Rozporządzenie GDPR nakłada reguły dla firm, agencji rządowych, non-profit i innych organizacji oferujących towary i usługi osobom w Unii Europejskiej lub który zbierania i analizujących dane związane z osobami mieszkającymi w UE.
 
 Cloud Partner Portal zapewnia szczegółowe informacje dotyczące jego przetwarzania klienta, danych oraz środków bezpieczeństwa, używanych do ochrony tych danych. Te informacje są dostępne za pośrednictwem jej środowiskach w ramach produktu.
 
@@ -36,7 +36,7 @@ Dane osobowe użytkownika przez naciśnięcie klawisza delete można zarządzać
 
 Do zarządzania zgody w portalu Cloud Partner, są zawsze początkowo wyświetlane wydawca ręki, do której należy zaakceptować do wydawcy z firmą Microsoft w celu. Jeśli nie zgadzasz się na kontrakt umowy wydawcy, następnie będziemy ograniczać przydziału obowiązków z wydawcą, aby nie będą mogli sprzedaży z firmą Microsoft.
 
-<a name="related-links"></a>Powiązane linki
+<a name="related-links"></a>Linki pokrewne
 -------------
 
 -   [Jak i gdzie firma Microsoft wysyła klientów\' dane, w tym lokalizacje geograficzne](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)

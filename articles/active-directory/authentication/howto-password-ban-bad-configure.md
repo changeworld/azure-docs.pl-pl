@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 07/10/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28201e09a4025c0c8820abc6836a5923e48eb885
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f531174c889948308e27109ab4fd80a481ec6bdc
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66742289"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798185"
 ---
 # <a name="configuring-the-custom-banned-password-list"></a>Konfigurowanie listy niestandardowej zakazanych haseł
 
@@ -29,7 +29,7 @@ Konfigurowanie listy niestandardowej zakazanych haseł wymaga licencji usługi A
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i przejdź do **usługi Azure Active Directory**, **metod uwierzytelniania**, następnie **ochrony hasłem**.
 1. Ustaw opcję **wymuszania niestandardowej listy**, **tak**.
 1. Dodaj parametry do **niestandardowe zakazane liście haseł**, jednego ciągu w każdym wierszu
-   * Lista niestandardowych zakazanych haseł może zawierać maksymalnie 1000 słów.
+   * Lista niestandardowych zakazanych haseł może zawierać maksymalnie 1000 warunków.
    * Listy niestandardowe zakazanych haseł jest rozróżniana wielkość liter.
    * Listy niestandardowe zakazanych haseł uwzględnia wspólnej podstawianie znaków.
       * Przykład: "o" i "0" lub "a" i "\@"
@@ -39,6 +39,9 @@ Konfigurowanie listy niestandardowej zakazanych haseł wymaga licencji usługi A
 > [!NOTE]
 > Może upłynąć kilka godzin aktualizacji do listy niestandardowe zakazanych haseł, które mają być stosowane.
 
+> [!NOTE]
+> Listy niestandardowe zakazanych haseł jest ograniczone do mającą co najwyżej 1000 warunków. Nie jest przeznaczona do blokowania bardzo duże listy haseł. Aby w pełni wykorzystać zalety listy niestandardowej zakazanych haseł, firma Microsoft zaleca, aby najpierw przejrzeć i zrozumieć zamierzonego projektu i użycie listy niestandardowej zakazanych haseł (zobacz [niestandardowe zakazane liście haseł](concept-password-ban-bad.md#custom-banned-password-list)), i również algorytm oceny hasło (zobacz [jak są hasła obliczane](concept-password-ban-bad.md#how-are-passwords-evaluated)).
+
 ![Modyfikowanie listy niestandardowej zakazanych haseł w ramach metod uwierzytelniania w witrynie Azure portal](./media/howto-password-ban-bad/authentication-methods-password-protection.png)
 
 ## <a name="how-it-works"></a>Jak to działa
@@ -47,9 +50,10 @@ Za każdym razem użytkownik lub administrator resetuje lub zmiany haseł usług
 
 ## <a name="what-do-users-see"></a>Co widzą użytkownicy
 
-Gdy użytkownik próbuje zresetować hasło do zasobu, który będzie zablokowany, zobaczą następujący komunikat o błędzie:
+Gdy użytkownik próbuje zresetować hasło do zasobu, który będzie zablokowany, zobaczy jeden z następujących komunikatów o błędzie:
 
-Niestety Twoje hasło zawiera słowo, frazę lub wzorzec, który sprawia, że hasło jest łatwe do odgadnięcia. Spróbuj ponownie, używając innego hasła.
+* Niestety Twoje hasło zawiera słowo, frazę lub wzorzec, który sprawia, że hasło jest łatwe do odgadnięcia. Spróbuj ponownie, używając innego hasła.
+* Niestety nie można użyć tego hasła, ponieważ zawiera on słowa lub znaki, które zostały zablokowane przez administratora. Spróbuj ponownie, używając innego hasła.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

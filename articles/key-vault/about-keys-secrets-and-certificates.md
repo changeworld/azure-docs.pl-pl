@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b50f98c4abaeda3ac1805b73aa18fe6c29596426
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 52a0bc1b07ebf1aed55551e37ecc122ff393c0f7
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64708691"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703919"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informacje o kluczach, wpisów tajnych i certyfikatów
 
@@ -198,7 +198,7 @@ Można określić dodatkowe metadane specyficzne dla aplikacji w postaci tagów.
 
 Kontrola dostępu do kluczy zarządzanych przez usługę Key Vault znajduje się na poziomie usługi Key Vault, który działa jako kontener kluczy. Zasady kontroli dostępu do kluczy, różni się od zasad kontroli dostępu dotyczących wpisów tajnych w tej samej usłudze Key Vault. Użytkownicy mogą utworzyć co najmniej jeden magazynów do przechowywania kluczy i są zobowiązane do zachowania segmentacji odpowiedni scenariusz i zarządzanie kluczami. Kontrola dostępu do kluczy jest niezależna od kontroli dostępu do kluczy tajnych.  
 
-Następujące uprawnienia mogą być udzielone na na użytkownika / usługi głównej podstawy w wpisu kontroli dostępu kluczy w magazynie. Te uprawnienia duplikatów ściśle dozwolone klucza obiektu operacje:  
+Następujące uprawnienia mogą być udzielone na na użytkownika / usługi głównej podstawy w wpisu kontroli dostępu kluczy w magazynie. Te uprawnienia dublowanie ściśle operacje dozwolona dla obiektu głównego.  Udzielanie dostępu do jednostki w magazynie kluczy usługi jest to jednorazowa operacja i pozostaną takie same dla wszystkich subskrypcji platformy Azure. Służy on do wdrożenia dowolną liczbę certyfikatów, jak chcesz. 
 
 - Uprawnienia dla operacji zarządzania kluczami
   - *Pobierz*: Przeczytaj publiczną część klucza, a także jego atrybuty
@@ -476,5 +476,4 @@ Aby uzyskać więcej informacji, zobacz [operacje kontem magazynu w dokumentacji
 ## <a name="see-also"></a>Zobacz też
 
 - [Uwierzytelnianie, żądań i odpowiedzi](authentication-requests-and-responses.md)
-- [Wersje usługi Key Vault](key-vault-versions.md)
 - [Przewodnik dewelopera usługi Key Vault](/azure/key-vault/key-vault-developers-guide)

@@ -5,18 +5,18 @@ documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
-ms.service: monitoring
+ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 8883c1e7f2874e1e2e61b8eca122f2ec294c7849
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 00c0fea9d8ca7ee299a9a19473917eba90edd675
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60808931"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606973"
 ---
 # <a name="azure-monitor-data-platform"></a>Platforma danych w usłudze Azure Monitor
 
@@ -70,7 +70,7 @@ W poniższej tabeli porównano metryk i dzienników w usłudze Azure Monitor.
 | Atrybut  | Metryki | Dzienniki |
 |:---|:---|:---|
 | Korzyści | Uproszczona i możliwością scenariuszy niemal w czasie rzeczywistym, takich jak alerty. Idealne rozwiązanie dla szybkiego wykrywania problemów. | Przeanalizowane dzięki zaawansowanemu języka zapytań. Idealne rozwiązanie dla szczegółowej analizy i identyfikowania głównych przyczyn. |
-| Dane | Tylko wartości liczbowe | Dane tekstowe lub liczbowe |
+| Data | Tylko wartości liczbowe | Dane tekstowe lub liczbowe |
 | Struktura | Standardowy zestaw właściwości, w tym przedziału czasu, zasobów, które są monitorowane, wartość liczbowa. Niektóre metryki obejmują wiele wymiarów dla dalszych definicji. | Unikatowy zestaw właściwości, w zależności od typu dziennika. |
 | Collection | Zebrane w regularnych odstępach czasu. | Mogą być zbierane sporadycznie, ponieważ zdarzenia wyzwalacza rekord ma zostać utworzony. |
 | Wyświetl w witrynie Azure portal | Eksplorator metryk | Log Analytics |

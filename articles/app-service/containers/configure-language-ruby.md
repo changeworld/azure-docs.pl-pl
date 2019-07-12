@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 03/28/2019
-ms.author: astay;cephalin;kraigb
+ms.author: cephalin
+ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 8a2eaf50a35b25463be3e323d4362b52e2339bf6
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 95a848ff7d74d35203c7e8377405c709f7fc7bd7
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67550296"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67617392"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Konfigurowanie aplikacji w języku Ruby systemu Linux dla usługi Azure App Service
 
@@ -135,7 +136,7 @@ Domyślnie serwer platformy Rails jest uruchamiana w trybie produkcyjnym. Aby ur
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_ENV="development"
 ```
 
-Jednak to samo ustawienie powoduje, że serwer platformy Rails, aby uruchomić w trybie projektowania, który akceptuje żądania tylko localhost i jest niedostępny poza kontenerem. Aby akceptować żądania klienta zdalnego, należy ustawić `APP_COMMAND_LINE` [ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) do `rails server -b 0.0.0.0`. To ustawienie aplikacji umożliwia uruchamianie poleceń niestandardowych w kontenerze dopisków fonetycznych. Na przykład:
+Jednak to samo ustawienie powoduje, że serwer platformy Rails, aby uruchomić w trybie projektowania, który akceptuje żądania tylko localhost i jest niedostępny poza kontenerem. Aby akceptować żądania klienta zdalnego, należy ustawić `APP_COMMAND_LINE` [ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) do `rails server -b 0.0.0.0`. To ustawienie aplikacji umożliwia uruchamianie poleceń niestandardowych w kontenerze dopisków fonetycznych. Przykład:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings APP_COMMAND_LINE="rails server -b 0.0.0.0"
@@ -143,7 +144,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ### <a name="set-secret_key_base-manually"></a> Ręcznie ustawić secret_key_base
 
-Aby użyć własnego `secret_key_base` wartość samodzielny usługi App Service wygeneruje, ustaw `SECRET_KEY_BASE` [ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) wartością ma. Na przykład:
+Aby użyć własnego `secret_key_base` wartość samodzielny usługi App Service wygeneruje, ustaw `SECRET_KEY_BASE` [ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) wartością ma. Przykład:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings SECRET_KEY_BASE="<key-base-value>"

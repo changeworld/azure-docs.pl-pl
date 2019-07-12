@@ -4,7 +4,7 @@ description: Dowiedz się, jak utworzyć w pełni kwalifikowaną nazwę domeny l
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: a2ae5887-76df-485e-ae19-0efd96df8600
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 885003863b8d5a5a81adc7f0310bbf2238edc68e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48ad63cb39218f099d9128dae379c7df105764b9
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62127703"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723027"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-windows-vm"></a>Tworzenie w pełni kwalifikowanej nazwy domeny w witrynie Azure portal dla maszyny Wirtualnej z systemem Windows
 
@@ -34,7 +34,7 @@ W tym artykule założono, że już utworzono Maszynę wirtualną. Jeśli to kon
 
 Zapewnia teraz możliwość połączenia zdalne z maszyną wirtualną przy użyciu tej nazwy DNS takich jak dla protokołu RDP (Remote Desktop).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Teraz, że maszyna wirtualna ma nazwę publicznego adresu IP i systemu DNS, można wdrożyć typowych struktur aplikacji lub usług, takich jak usługi IIS, SQL lub programu SharePoint.
 
 Można również poczytać więcej o [przy użyciu usługi Resource Manager](../../azure-resource-manager/resource-group-overview.md) zawiera porady na temat tworzenia wdrożeń platformy Azure.

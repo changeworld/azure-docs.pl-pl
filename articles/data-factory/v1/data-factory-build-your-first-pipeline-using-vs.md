@@ -14,21 +14,20 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 2d816ab2f14be8574f77491807d4dbd071487f42
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f3c4fc379ac932e66c5d02e08e72ef4d16db638b
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66163916"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836704"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Samouczek: tworzenie fabryki danych za pomocą programu Visual Studio
 > [!div class="op_single_selector" title="Tools/SDKs"]
 > * [Przegląd i wymagania wstępne](data-factory-build-your-first-pipeline.md)
-> * [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
-> * [Program Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
+> * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [Program PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Szablon usługi Resource Manager](data-factory-build-your-first-pipeline-using-arm.md)
-> * [Interfejs API REST](data-factory-build-your-first-pipeline-using-rest-api.md)
+> * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
 
 > [!NOTE]
@@ -124,8 +123,8 @@ Za pomocą połączonej usługi HDInsight na żądanie klaster usługi HDInsight
 
     Właściwość | Opis
     -------- | ----------- 
-    ClusterSize | Określa rozmiar klastra usługi HDInsight na platformie Hadoop.
-    TimeToLive | Określa czas bezczynności, po którym klaster usługi HDInsight zostanie usunięty.
+    clusterSize | Określa rozmiar klastra usługi HDInsight na platformie Hadoop.
+    timeToLive | Określa czas bezczynności, po którym klaster usługi HDInsight zostanie usunięty.
     linkedServiceName | Określa konto magazynu używane do przechowywania dzienników generowanych przez klaster usługi HDInsight na platformie Hadoop. 
 
     > [!IMPORTANT]
@@ -173,7 +172,7 @@ W tym kroku opisano tworzenie zestawów danych do reprezentowania danych wejści
 
     Właściwość | Opis |
     -------- | ----------- |
-    typ |Właściwość type jest ustawiona na wartość **AzureBlob**, ponieważ dane znajdują się w usłudze Azure Blob Storage.
+    — typ |Właściwość type jest ustawiona na wartość **AzureBlob**, ponieważ dane znajdują się w usłudze Azure Blob Storage.
     linkedServiceName | Odnosi się do utworzonej wcześniej usługi AzureStorageLinkedService1.
     fileName |Ta właściwość jest opcjonalna. Jeśli tę właściwość pominiesz, zostaną wybrane wszystkie pliki z folderu folderPath. W tym przypadku zostanie przetworzony tylko plik input.log.
     type | Pliki dziennika są w formacie tekstowym, więc używana jest wartość TextFormat. |

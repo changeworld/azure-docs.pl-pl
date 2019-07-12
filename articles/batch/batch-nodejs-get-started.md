@@ -10,13 +10,13 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.workload: big-compute
 ms.date: 05/22/2017
-ms.author: shwetams
-ms.openlocfilehash: bb0bfa5eac3dd9031718fb12f270f5fc03bbaea6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: shg
+ms.openlocfilehash: 890e26d21b46fbf24e205fb8e4c8e32e09bf5cb9
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60775234"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704814"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Wprowadzenie do zestawu SDK usługi Batch dla środowiska Node.js
 
@@ -351,7 +351,7 @@ Kod dodaje wiele zadań podrzędnych do puli. Poszczególne zadania podrzędne s
 
 W witrynie Azure Portal zamieszczono szczegółowe widoki stanów zadań i zadań podrzędnych. Można również skorzystać z listy, aby poznać funkcje w ramach zestawu Azure Node SDK. Szczegółowe informacje znajdują się w dokumentacji, do której prowadzi ten [link](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Przejrzyj artykuł [Overview of Azure Batch features](batch-api-basics.md) (Omówienie funkcji w usłudze Azure Batch), który zalecamy użytkownikom rozpoczynającym korzystanie z tej usługi.
 - Zobacz [Batch Node.js reference](/javascript/api/overview/azure/batch) (Dokumentacja języka Node.js dla usługi Batch), aby poznać interfejs API usługi Batch.

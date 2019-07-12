@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
-ms.author: ajaycode
-ms.openlocfilehash: 77cacd7f94d8ddd92fcd7383d2d0a7929734eaeb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: agummadi
+ms.openlocfilehash: 68e84d8ac82d5cdd52bf92df858730315514c17c
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60401412"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612854"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Zmiany cennika dla usługi Azure Network Performance Monitor
 
@@ -117,7 +117,7 @@ Połączenie jest test osiągalności jeden punkt końcowy (adres URL lub sieci 
 
 Zapoznaj się [monitorowanie połączeń](https://azure.microsoft.com/pricing/details/network-watcher/) części kosztu monitorowania punktu końcowego dla całego miesiąca. Opłaty za dane są dostępne na [stronę z cennikiem](https://azure.microsoft.com/pricing/details/log-analytics/) dla usługi Log Analytics w sekcji wprowadzanie danych.
 
-## <a name="references"></a>Dokumentacja
+## <a name="references"></a>Odwołania
 
 [Log Analytics, często zadawane pytania dotyczące cennika](https://azure.microsoft.com/pricing/details/log-analytics/): W sekcji często zadawane pytania dotyczące zawiera informacje o warstwie bezpłatnej, za węzeł, a także inne informacje o cenach.
 

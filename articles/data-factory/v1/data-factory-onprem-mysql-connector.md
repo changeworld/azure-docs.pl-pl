@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: de1263d68e96a23bd6b5eca4297e74b56ba22e40
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 20dd86a46ac1b50f5ce20da6ecf9dff251a8c0b0
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60823950"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839022"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Przenoszenie danych z MySQL za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
@@ -51,7 +51,7 @@ Bramy zarządzania danymi nawiązać połączenie z bazy danych MySQL, musisz za
 Utworzysz potok z działaniem kopiowania, które przenosi dane z lokalnego magazynu danych Cassandra przy użyciu różnych narzędzi/interfejsów API. 
 
 - Najprostszym sposobem utworzenia potoku jest użycie **kreatora kopiowania**. Zobacz [samouczka: Tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych. 
-- Aby utworzyć potok umożliwia także następujących narzędzi: **Witryna Azure portal**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**i  **Interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. 
+- Aby utworzyć potok umożliwia także następujących narzędzi: **Program Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**, i **interfejsu API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. 
 
 Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródłowych do magazynu danych ujścia:
 
@@ -68,14 +68,14 @@ Poniższa tabela zawiera opis specyficzne dla usługi MySQL połączone elementy
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| type |Właściwość type musi być równa: **OnPremisesMySql** |Yes |
-| server |Nazwa serwera MySQL. |Yes |
+| type |Właściwość type musi być równa: **OnPremisesMySql** |Tak |
+| server |Nazwa serwera MySQL. |Tak |
 | database |Nazwa bazy danych MySQL. |Yes |
 | schema |Nazwa schematu w bazie danych. |Nie |
-| authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych MySQL. Możliwe wartości to: `Basic`. |Yes |
-| userName |Określ nazwę użytkownika do łączenia z bazą danych MySQL. |Yes |
-| password |Określ hasło dla konta użytkownika, który określiłeś. |Yes |
-| gatewayName |Nazwa bramy, do którego usługa Data Factory powinna używać do łączenia z bazą danych MySQL w środowisku lokalnym. |Yes |
+| authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych MySQL. Możliwe wartości to: `Basic`. |Tak |
+| userName |Określ nazwę użytkownika do łączenia z bazą danych MySQL. |Tak |
+| password |Określ hasło dla konta użytkownika, który określiłeś. |Tak |
+| gatewayName |Nazwa bramy, do którego usługa Data Factory powinna używać do łączenia z bazą danych MySQL w środowisku lokalnym. |Tak |
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 Aby uzyskać pełną listę sekcje & właściwości dostępne Definiowanie zestawów danych, zobacz [tworzenie zestawów danych](data-factory-create-datasets.md) artykułu. Sekcje, takie jak struktury, dostępność i zasady zestawem danych JSON są podobne dla wszystkich typów na zestaw danych (Azure SQL, obiektów blob platformy Azure, usługa Azure table itp.).
@@ -99,7 +99,7 @@ Gdy źródłowego w działaniu kopiowania jest typu **RelationalSource** (w tym 
 
 
 ## <a name="json-example-copy-data-from-mysql-to-azure-blob"></a>Przykład kodu JSON: Kopiowanie danych z MySQL do obiektów Blob platformy Azure
-W poniższym przykładzie przedstawiono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [witryny Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) lub [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Widoczny jest sposób skopiować dane z lokalnej bazy danych MySQL do usługi Azure Blob Storage. Jednakże, można skopiować danych do dowolnego ujścia, o których wspomniano [tutaj](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.
+W poniższym przykładzie przedstawiono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Widoczny jest sposób skopiować dane z lokalnej bazy danych MySQL do usługi Azure Blob Storage. Jednakże, można skopiować danych do dowolnego ujścia, o których wspomniano [tutaj](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.
 
 > [!IMPORTANT]
 > W tym przykładzie przedstawiono fragmenty kodu JSON. Nie obejmuje instrukcje krok po kroku dotyczące tworzenia fabryki danych. Zobacz [przenoszenia danych między lokalizacjami lokalnymi i chmurą](data-factory-move-data-between-onprem-and-cloud.md) artykuł, aby uzyskać instrukcje krok po kroku.
@@ -306,22 +306,22 @@ Podczas przenoszenia danych do bazy danych MySQL, następujące mapowania są u�
 | bit |Decimal |
 | blob |Byte[] |
 | bool |Boolean |
-| char |String |
-| date |DateTime |
-| datetime |DateTime |
+| char |Ciąg |
+| date |Datetime |
+| datetime |Datetime |
 | decimal |Decimal |
 | podwójnej precyzji |Double |
 | double |Double |
-| Wyliczenia |String |
+| Wyliczenia |Ciąg |
 | float |Single |
 | int unsigned |Int64 |
 | int |Int32 |
 | Liczba całkowita bez znaku |Int64 |
-| liczba całkowita |Int32 |
+| integer |Int32 |
 | długie varbinary |Byte[] |
-| varchar długi |String |
+| varchar długi |Ciąg |
 | longblob |Byte[] |
-| longtext |String |
+| longtext |Ciąg |
 | mediumblob |Byte[] |
 | mediumint bez znaku |Int64 |
 | mediumint |Int32 |
@@ -331,15 +331,15 @@ Podczas przenoszenia danych do bazy danych MySQL, następujące mapowania są u�
 | set |String |
 | smallint bez znaku |Int32 |
 | smallint |Int16 |
-| tekst |String |
+| text |Ciąg |
 | time |TimeSpan |
-| timestamp |DateTime |
+| timestamp |Datetime |
 | tinyblob |Byte[] |
 | tinyint bez znaku |Int16 |
 | tinyint |Int16 |
-| tinytext |String |
+| tinytext |Ciąg |
 | varchar |String |
-| rocznie |Int |
+| rok |Int |
 
 ## <a name="map-source-to-sink-columns"></a>Mapy źródła do ujścia kolumn
 Aby uzyskać informacje dotyczące mapowania kolumn w zestaw danych źródłowych do kolumn w zestawie danych ujścia, zobacz [mapowanie kolumny zestawu danych w usłudze Azure Data Factory](data-factory-map-columns.md).

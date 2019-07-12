@@ -4,7 +4,7 @@ description: Porównaj wyniki testów porównawczych obliczeń CoreMark maszyn w
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 93e812c1-79dd-40c5-b97b-aa79f5cd7d76
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: cynthn;davberg
-ms.openlocfilehash: 7a302a3c6c32819f898cccc99cb83ed09ae03f2c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 54c15ecf458ed2cc5ffd549b3b1e4ee696c3e015
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64869836"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67668144"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Wyniki testów porównawczych wystąpień obliczeniowych maszyn wirtualnych systemu Linux
 Następujące wyniki testów porównawczych CoreMark Pokaż wydajności obliczeniowej dla zestawienia maszyny Wirtualnej platformy Azure o wysokiej wydajności z systemem Ubuntu. Wyniki testów porównawczych obliczeniowych są również dostępne dla [maszyn wirtualnych Windows](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
@@ -75,10 +75,10 @@ Następujące wyniki testów porównawczych CoreMark Pokaż wydajności obliczen
 
 | Rozmiar maszyny wirtualnej | Procesor CPU | procesorów wirtualnych | Węzły NUMA | Memory(GiB) | Średnia ocena | StdDev | StdDev% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Standardowa_D2s_v3 | Intel(R) Xeon(R) Procesora E5-2673 v3 o częstotliwości 2,40 GHz | 2 | 1 | 7.8 | 20,153 | 838 | 4.16% | 147 |
-| Standardowa_D2s_v3 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 2 | 1 | 7.8 | 20,903 | 1,324 | 6.33% | 553 |
-| Standardowa_D4s_v3 | Intel(R) Xeon(R) Procesora E5-2673 v3 o częstotliwości 2,40 GHz | 4 | 1 | 15.7 | 39,502 | 1,257 | 3.18% | 189 |
-| Standardowa_D4s_v3 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 4 | 1 | 15.7 | 40,547 | 1,935 | 4.77% | 511 |
+| Standard_D2s_v3 | Intel(R) Xeon(R) Procesora E5-2673 v3 o częstotliwości 2,40 GHz | 2 | 1 | 7.8 | 20,153 | 838 | 4.16% | 147 |
+| Standard_D2s_v3 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 2 | 1 | 7.8 | 20,903 | 1,324 | 6.33% | 553 |
+| Standard_D4s_v3 | Intel(R) Xeon(R) Procesora E5-2673 v3 o częstotliwości 2,40 GHz | 4 | 1 | 15.7 | 39,502 | 1,257 | 3.18% | 189 |
+| Standard_D4s_v3 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 4 | 1 | 15.7 | 40,547 | 1,935 | 4.77% | 511 |
 | Standardowa_D8s_v3 | Intel(R) Xeon(R) Procesora E5-2673 v3 o częstotliwości 2,40 GHz | 8 | 1 | 31.4 | 80,191 | 1,054 | 1.31% | 168 |
 | Standardowa_D8s_v3 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 8 | 1 | 31.4 | 79,884 | 3,073 | 3.85% | 532 |
 | Standardowa_D16s_v3 | Intel(R) Xeon(R) Procesora E5-2673 v3 o częstotliwości 2,40 GHz | 16 | 1 | 62.9 | 160,319 | 1,213 | 0.76% | 105 |
@@ -92,10 +92,10 @@ Następujące wyniki testów porównawczych CoreMark Pokaż wydajności obliczen
 
 | Rozmiar maszyny wirtualnej | Procesor CPU | procesorów wirtualnych | Węzły NUMA | Memory(GiB) | Średnia ocena | StdDev | StdDev% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Standardowa_D2_v3 | Intel(R) Xeon(R) Procesora E5-2673 v3 o częstotliwości 2,40 GHz | 2 | 1 | 7.8 | 20,359 | 799 | 3.93% | 154 |
-| Standardowa_D2_v3 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 2 | 1 | 7.8 | 20,737 | 1,422 | 6.86% | 546 |
-| Standardowa_D4_v3 | Intel(R) Xeon(R) Procesora E5-2673 v3 o częstotliwości 2,40 GHz | 4 | 1 | 15.7 | 40,095 | 1,501 | 3.74% | 147 |
-| Standardowa_D4_v3 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 4 | 1 | 15.7 | 41,147 | 2,706 | 6.58% | 546 |
+| Maszyna wirtualna Standard_D2_v3 | Intel(R) Xeon(R) Procesora E5-2673 v3 o częstotliwości 2,40 GHz | 2 | 1 | 7.8 | 20,359 | 799 | 3.93% | 154 |
+| Maszyna wirtualna Standard_D2_v3 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 2 | 1 | 7.8 | 20,737 | 1,422 | 6.86% | 546 |
+| Maszyna wirtualna Standard_D4_v3 | Intel(R) Xeon(R) Procesora E5-2673 v3 o częstotliwości 2,40 GHz | 4 | 1 | 15.7 | 40,095 | 1,501 | 3.74% | 147 |
+| Maszyna wirtualna Standard_D4_v3 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 4 | 1 | 15.7 | 41,147 | 2,706 | 6.58% | 546 |
 | Standardowa_D8_v3 | Intel(R) Xeon(R) Procesora E5-2673 v3 o częstotliwości 2,40 GHz | 8 | 1 | 31.4 | 80,383 | 1,486 | 1.85% | 133 |
 | Standardowa_D8_v3 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 8 | 1 | 31.4 | 80,511 | 3,916 | 4.86% | 560 |
 | Standardowa_D16_v3 | Intel(R) Xeon(R) Procesora E5-2673 v3 o częstotliwości 2,40 GHz | 16 | 1 | 62.9 | 160,932 | 2,200 | 1.37% | 140 |
@@ -151,10 +151,10 @@ Następujące wyniki testów porównawczych CoreMark Pokaż wydajności obliczen
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standardowa_D1_v2 | Intel(R) Xeon(R) Procesora E5-2673 v3 o częstotliwości 2,40 GHz | 1 | 1 | 3.4 | 14,730 | 663 | 4.50% | 385 |
 | Standardowa_D1_v2 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 1 | 1 | 3.4 | 15,057 | 1,319 | 8.76% | 322 |
-| Standardowa_D2_v2 | Intel(R) Xeon(R) Procesora E5-2673 v3 o częstotliwości 2,40 GHz | 2 | 1 | 6.8 | 29,395 | 1,073 | 3.65% | 329 |
-| Standardowa_D2_v2 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 2 | 1 | 6.8 | 29,564 | 2,145 | 7.26% | 378 |
-| Standardowa_D3_v2 | Intel(R) Xeon(R) Procesora E5-2673 v3 o częstotliwości 2,40 GHz | 4 | 1 | 13.7 | 58,150 | 1,340 | 2.30% | 343 |
-| Standardowa_D3_v2 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 4 | 1 | 13.7 | 57,820 | 2,944 | 5.09% | 364 |
+| Maszyna wirtualna Standard_D2_v2 | Intel(R) Xeon(R) Procesora E5-2673 v3 o częstotliwości 2,40 GHz | 2 | 1 | 6.8 | 29,395 | 1,073 | 3.65% | 329 |
+| Maszyna wirtualna Standard_D2_v2 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 2 | 1 | 6.8 | 29,564 | 2,145 | 7.26% | 378 |
+| Maszyna wirtualna Standard_D3_v2 | Intel(R) Xeon(R) Procesora E5-2673 v3 o częstotliwości 2,40 GHz | 4 | 1 | 13.7 | 58,150 | 1,340 | 2.30% | 343 |
+| Maszyna wirtualna Standard_D3_v2 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 4 | 1 | 13.7 | 57,820 | 2,944 | 5.09% | 364 |
 | Standardowa_D4_v2 | Intel(R) Xeon(R) Procesora E5-2673 v3 o częstotliwości 2,40 GHz | 8 | 1 | 27.5 | 117,448 | 1,612 | 1.37% | 308 |
 | Standardowa_D4_v2 | Intel(R) Xeon(R) Procesora E5-2673 v4 @ 2.30GHz | 8 | 1 | 27.5 | 114,082 | 3,369 | 2.95% | 399 |
 | Standardowa_D5_v2 | Intel(R) Xeon(R) Procesora E5-2673 v3 o częstotliwości 2,40 GHz | 16 | 1 | 55.0 | 226,370 | 4,722 | 2.09% | 147 |

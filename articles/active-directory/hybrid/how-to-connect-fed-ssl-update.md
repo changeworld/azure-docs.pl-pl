@@ -5,7 +5,7 @@ services: active-directory
 manager: daveba
 editor: billmath
 ms.assetid: 7c781f61-848a-48ad-9863-eb29da78f53c
-ms.service: active-directory  
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ author: billmath
 ms.custom: seohack1
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39ac0e9cf11a0c6c212c4beadb6635ad2b6b056d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4fcdf75586de9621bd0e42cba6fa9c80e5d30817
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60244681"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595208"
 ---
 # <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Aktualizacja certyfikatu SSL dla farmy usługi Active Directory Federation Services (AD FS)
 
@@ -105,7 +105,7 @@ Po zakończeniu konfigurowania, program Azure AD Connect wyświetla komunikat, k
 
     Usuwanie serwera z listy w programie Azure AD Connect nie powoduje usunięcia w konfiguracji usług AD FS. Program Azure AD Connect odwołuje się do żadnych informacji o farmie AD FS (Windows Server 2016 lub nowszy). Jeśli serwer jest nadal obecny w konfiguracji usług AD FS, będzie ono wyświetlane wstecz na liście.  
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Program Azure AD Connect a federacja](how-to-connect-fed-whatis.md)
 - [Zarządzania w usłudze Active Directory Federation Services i dostosowywania za pomocą usługi Azure AD Connect](how-to-connect-fed-management.md)

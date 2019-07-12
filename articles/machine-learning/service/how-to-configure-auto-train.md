@@ -9,14 +9,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9c003ebaed645fcdefb379eb100220ccc2207d82
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 0d9019a6b4a32066480a70f72562bc5a7a9a1e8b
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67202976"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797646"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurowanie automatycznych eksperymentów uczenia Maszynowego w języku Python
 
@@ -40,7 +40,7 @@ Jeśli wolisz nie środowisko pracy z kodem, możesz również [tworzenie zautom
 
 Przed przystąpieniem do wykonywania eksperymentu, należy określić rodzaj maszyny nauczanym problemem, które są rozwiązywania. Automatyczne machine learning obsługuje typy zadań klasyfikacji, regresji i prognozowania.
 
-Automatyczne machine learning obsługuje następujące algorytmy podczas automatyzacji i dostosowywania procesu. Użytkownik nie ma potrzeby w celu określenia algorytm. Algorytmy DNN są dostępne podczas szkolenia, zautomatyzowane ML nie są kompilowane DNN modeli.
+Automatyczne machine learning obsługuje następujące algorytmy podczas automatyzacji i dostosowywania procesu. Użytkownik nie ma potrzeby w celu określenia algorytm. 
 
 Klasyfikacja | Regresji | Prognozowanie szeregów czasowych
 |-- |-- |--
@@ -372,7 +372,7 @@ Użyj tych 2 interfejsy API w pierwszym kroku dopasowanego modelu, aby dowiedzie
 
    Gdzie:
 
-   |Dane wyjściowe|Definicja|
+   |Output|Definicja|
    |----|--------|
    |RawFeatureName|Nazwa funkcji/kolumny wejściowej z zestawu danych przedstawionego.|
    |TypeDetected|Wykryto typ danych wejściowych funkcji.|
@@ -502,7 +502,7 @@ RunDetails(local_run).show()
 
 Aby uzyskać więcej informacji na temat jak wyjaśnienia modelu i znaczenie funkcję można włączyć w innych obszarach SDK poza uczenia maszynowego automatycznych, zobacz [koncepcji](machine-learning-interpretability-explainability.md) artykuł na temat współdziałania.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o [jak i gdzie można wdrożyć model](how-to-deploy-and-where.md).
 

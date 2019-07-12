@@ -10,19 +10,20 @@ ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: laobri
 ms.custom: seodec2018
-ms.openlocfilehash: 98ca455fd92b0c9ed276082413734c6bc063f310
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 2a4d7435383f740dc386a740062e66cd2d3585b0
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671916"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798876"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>Szybki start: Tworzenie indeksu usługi Azure Search przy użyciu witryny Azure portal
 > [!div class="op_single_selector"]
 > * [Portal](search-get-started-portal.md)
-> * [Program PowerShell](search-howto-dotnet-sdk.md)
+> * [Program PowerShell](search-get-started-powershell.md)
 > * [Postman](search-get-started-postman.md)
-> * [C#](search-create-index-dotnet.md)
+> * [Python](search-get-started-python.md)
+> * [C#](search-get-started-dotnet.md)
 
 Aby szybko poznać działanie usługi Azure Search, wypróbuj narzędzia wbudowane w witrynie Azure Portal. Kreatory i edytory nie oferują pełnej równoważności z interfejsami API .NET i REST, ale możesz szybko zacząć pracę bez korzystania z kodu, w ciągu kilku minut pisząc ciekawe zapytania odnoszące się do danych przykładowych.
 
@@ -33,9 +34,9 @@ Aby szybko poznać działanie usługi Azure Search, wypróbuj narzędzia wbudowa
 > * Wyświetlaj istniejący indeks i opcje służące do modyfikowania go
 > * Zapoznaj się z wyszukiwaniem pełnotekstowym, filtrami, aspektami, wyszukiwaniem rozmytym i wyszukiwaniem geograficznym, korzystając z **Eksploratora wyszukiwania**
 
-Jeśli te narzędzia oferują zbyt ograniczone funkcje, możesz skorzystać z [wprowadzenia do programowania dla usługi Azure Search z użyciem kodu .NET](search-howto-dotnet-sdk.md) albo skorzystać z narzędzi [Postman lub Fiddler do wykonywania wywołań interfejsu API REST](search-get-started-postman.md).
+Jeśli narzędzia są zbyt ograniczenie, można rozważyć [oparte na kodzie wprowadzeniem do programowania usługi Azure Search na platformie .NET](search-howto-dotnet-sdk.md) lub użyj [Postman na potrzeby wykonywania wywołań interfejsu API REST](search-get-started-postman.md). Możesz także obejrzeć 6-minutowy pokaz czynności wykonywanych w ramach tego samouczka, rozpoczynający się od około trzeciej minuty tego [klipu wideo z omówieniem usługi Azure Search](https://channel9.msdn.com/Events/Connect/2016/138).
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). Możesz także obejrzeć 6-minutowy pokaz czynności wykonywanych w ramach tego samouczka, rozpoczynający się od około trzeciej minuty tego [klipu wideo z omówieniem usługi Azure Search](https://channel9.msdn.com/Events/Connect/2016/138).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -210,7 +211,7 @@ Filtry aspektów są uwzględniane w żądaniach wyszukiwania. Korzystając z pa
 
 * Aspekty mogą być tworzone tylko na podstawie pól z możliwością filtrowania. W wynikach mogą być zwracane tylko pola z możliwością pobierania.
 
-* *Ocena* pole jest zmiennoprzecinkowej podwójnej precyzji i grupowanie będzie dokładne wartości. Aby uzyskać więcej informacji na temat grupowania według przedziału (na przykład "3 klasyfikacji w formie gwiazdek," "4 gwiazdek," itp.), zobacz [jak wdrożyć nawigację aspektową w usłudze Azure Search](https://docs.microsoft.com/en-us/azure/search/search-faceted-navigation#filter-based-on-a-range).
+* *Ocena* pole jest zmiennoprzecinkowej podwójnej precyzji i grupowanie będzie dokładne wartości. Aby uzyskać więcej informacji na temat grupowania według przedziału (na przykład "3 klasyfikacji w formie gwiazdek," "4 gwiazdek," itp.), zobacz [jak wdrożyć nawigację aspektową w usłudze Azure Search](https://docs.microsoft.com/azure/search/search-faceted-navigation#filter-based-on-a-range).
 
 
 ### <a name="highlight-query"></a> Wyróżnianie wyników wyszukiwania
@@ -267,7 +268,11 @@ Przedstawiono również sposób znajdowania indeksów, indeksatorów i źródeł
 
 ## <a name="clean-up"></a>Czyszczenie
 
-Jeśli w tym samouczku usługa Azure Search była używana po raz pierwszy, usuń grupę zasobów zawierającą usługę Azure Search. W przeciwnym razie wyszukaj odpowiednią nazwę grupy zasobów na liście usług i usuń ją.
+Podczas pracy w ramach własnej subskrypcji jest dobrym pomysłem na końcu projektu ustalić, czy nadal potrzebujesz zasoby utworzone. Po lewej stronie umożliwia uruchamianie zasobów kosztów pieniądze. Możesz usunąć zasoby pojedynczo lub usunąć grupę zasobów, aby usunąć cały zestaw zasobów.
+
+Możesz znaleźć i zarządzanie zasobami w portalu przy użyciu **wszystkie zasoby** lub **grup zasobów** łącze w okienku nawigacji po lewej stronie.
+
+Jeśli używasz bezpłatnej usługi, należy pamiętać, że są ograniczone do trzech indeksów, indeksatorów i źródeł danych. Możesz usunąć poszczególne elementy w portalu w celu pozostania w ramach limitu. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

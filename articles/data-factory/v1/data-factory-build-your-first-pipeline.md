@@ -14,21 +14,20 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d9d9e68b7e74ba7725e97162d01e1a35314fdd0f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 552c89cd3294567e8203b69f81c1ac24716a8b1b
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60564601"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839433"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Samouczek: Tworzenie pierwszego potoku do przekształcania danych przy użyciu klastra Hadoop
 > [!div class="op_single_selector"]
 > * [Przegląd i wymagania wstępne](data-factory-build-your-first-pipeline.md)
-> * [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
-> * [Program Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
+> * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [Program PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Szablon usługi Resource Manager](data-factory-build-your-first-pipeline-using-arm.md)
-> * [Interfejs API REST](data-factory-build-your-first-pipeline-using-rest-api.md)
+> * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
 
 > [!NOTE]
@@ -36,7 +35,7 @@ ms.locfileid: "60564601"
 
 W tym samouczku utworzysz pierwszej fabryki danych platformy Azure przy użyciu potoku danych. Potok przekształca dane wejściowe, uruchamiając skrypt Hive w klastrze usługi Azure HDInsight (Hadoop) w celu wygenerowania danych wyjściowych.  
 
-Ten artykuł zawiera przegląd i wymagania wstępne dla samouczka. Po wykonaniu wymagań wstępnych, można wykonać tego samouczka przy użyciu jednej z następujących narzędzi/zestawów SDK: Witrynę Azure portal, programu Visual Studio, PowerShell i szablonu usługi Resource Manager i interfejsu API REST. Wybierz jedną z opcji na liście rozwijanej na początku (lub) linki na końcu tego artykułu, aby wykonać instrukcje z samouczka przy użyciu jednej z tych opcji.    
+Ten artykuł zawiera przegląd i wymagania wstępne dla samouczka. Po wykonaniu wymagań wstępnych, można wykonać tego samouczka przy użyciu jednej z następujących narzędzi/zestawów SDK: Program Visual Studio, PowerShell, szablon usługi Resource Manager i interfejsu API REST. Wybierz jedną z opcji na liście rozwijanej na początku (lub) linki na końcu tego artykułu, aby wykonać instrukcje z samouczka przy użyciu jednej z tych opcji.    
 
 ## <a name="tutorial-overview"></a>Omówienie samouczka
 Ten samouczek obejmuje wykonanie następujących kroków:
@@ -93,13 +92,12 @@ Przed rozpoczęciem tego samouczka, musisz mieć następujące wymagania wstępn
 
 Po wykonaniu wymagania wstępne, wybierz jedną z następujących narzędzi/zestawów SDK celu tego samouczka: 
 
-- [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
-- [Program Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
+- [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 - [Program PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 - [Szablon usługi Resource Manager](data-factory-build-your-first-pipeline-using-arm.md)
-- [Interfejs API REST](data-factory-build-your-first-pipeline-using-rest-api.md)
+- [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
-Witryna Azure portal i programu Visual Studio umożliwiają graficznego interfejsu użytkownika tworzenia fabryk danych. Natomiast opcji programu PowerShell, szablon usługi Resource Manager i interfejsu API REST umożliwia wykonywanie skryptów programowania tworzenia fabryk danych.
+Program Visual Studio umożliwia graficznego interfejsu użytkownika tworzenia fabryk danych. Natomiast opcji programu PowerShell, szablon usługi Resource Manager i interfejsu API REST umożliwia wykonywanie skryptów programowania tworzenia fabryk danych.
 
 > [!NOTE]
 > Potok danych przedstawiony w tym samouczku przekształca dane wejściowe w celu wygenerowania danych wyjściowych. Nie kopiuje on danych ze źródłowego do docelowego magazynu danych. Aby zapoznać się z samouczkiem dotyczącym kopiowania danych przy użyciu usługi Azure Data Factory, zobacz [Tutorial: Copy data from Blob Storage to SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) (Samouczek: kopiowanie danych z usługi Blob Storage do usługi SQL Database).

@@ -3,8 +3,8 @@ title: Deleguj zadania zarządzania uprawnień usługi Azure AD (wersja zapoznaw
 description: Dowiedz się więcej na temat ról, które można przypisać do delegowania zadań w usłudze Azure Active Directory, zarządzanie uprawnieniami.
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 06/07/2019
-ms.author: rolyon
+ms.date: 07/10/2019
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fa0be8e2af7644564ba27e6d58fda09b1ae7bc7
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: d4c4933847a39a56084894e5bbd40e166e6b73b6
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191501"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798637"
 ---
 # <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>Deleguj zadania zarządzania uprawnień usługi Azure AD (wersja zapoznawcza)
 
@@ -64,7 +64,7 @@ Research oraz działów marketingu mogą teraz wykorzystywać Zarządzanie upraw
 
 Zarządzanie uprawnieniami ma następujące role, które są specyficzne dla Zarządzanie uprawnieniami.
 
-| Rola | Opis |
+| Role | Opis |
 | --- | --- |
 | Twórca katalogu | Tworzenie i Zarządzanie katalogami. Zazwyczaj IT administrator, który nie jest administratorem globalnym lub właściciel zasobu dla kolekcji zasobów. Osoba, która automatycznie tworzy wykaz staje się pierwszym właścicielem katalogu wykazu i można dodać katalogu dodatkowych właścicieli. |
 | Właściciel katalogu | Edytowanie i zarządzanie nią istniejących wykazów. Zazwyczaj administrator IT lub właścicieli zasobów lub użytkownik, który został wyznaczony właściciel katalogu. |
@@ -84,7 +84,7 @@ Poniższa tabela zawiera listę zadań, wykonujących dla tych ról.
 | [Edytuj katalog](entitlement-management-catalog-create.md#edit-a-catalog) |  | :heavy_check_mark: |  |  |
 | [Usuwanie katalogu](entitlement-management-catalog-create.md#delete-a-catalog) |  | :heavy_check_mark: |  |  |
 | [Dodawanie właściciela katalogu lub Menedżera pakietów dostępu do wykazu](#add-a-catalog-owner-or-an-access-package-manager) |  | :heavy_check_mark: |  |  |
-| [Utwórz nowy pakiet dostępu w wykazie](entitlement-management-access-package-create.md) |  | :heavy_check_mark: |  |  |
+| [Utwórz nowy pakiet dostępu w wykazie](entitlement-management-access-package-create.md) |  | :heavy_check_mark:  | :heavy_check_mark:  |  |
 | [Zarządzanie rolami zasobu w pakiecie dostępu](entitlement-management-access-package-edit.md) |  | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Określ, kto może żądać dostępu do pakietu](entitlement-management-access-package-edit.md#add-a-new-policy) |  | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Bezpośrednio przypisać użytkownika do dostępu do pakietu](entitlement-management-access-package-edit.md#directly-assign-a-user) |  | :heavy_check_mark: | :heavy_check_mark: |  |
@@ -128,9 +128,9 @@ Aby delegować tworzenie wykazu, możesz dodać użytkowników do roli Twórcy k
 
 1. W **delegować Zarządzanie uprawnieniami** kliknij **Dodaj katalog dla twórców** do wybierz użytkowników lub grupy, którzy będą członkami tej roli zarządzania uprawnienie.
 
-1. Kliknij pozycję **Wybierz**.
+1. Kliknij przycisk **wybierz**.
 
-1. Kliknij pozycję **Zapisz**.
+1. Kliknij polecenie **Zapisz**.
 
 ## <a name="add-a-catalog-owner-or-an-access-package-manager"></a>Dodawanie właściciela katalogu lub dostęp do Menedżera pakietów
 
@@ -148,7 +148,7 @@ Jeśli chcesz delegować Zarządzanie katalogu lub dostępu do pakietów w katal
 
 1. Kliknij przycisk **wybierz** można dodać te składowe.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Dodaj osoby zatwierdzające](entitlement-management-access-package-edit.md#policy-request)
 - [Dodawanie zasobów do katalogu](entitlement-management-catalog-create.md#add-resources-to-a-catalog)

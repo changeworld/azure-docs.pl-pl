@@ -7,14 +7,14 @@ ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 07/09/2019
 ms.author: gregman
-ms.openlocfilehash: 7062bd2dbd8c375b8dd3fad348e5cc26de8f36d2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8275bceca1a18f49eb7eeece66a3866d77c47635
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60595131"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67796173"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Uruchamianie usługi Azure IoT Edge na maszynach wirtualnych z systemem Ubuntu
 
@@ -45,11 +45,7 @@ Przy pierwszym uruchomieniu usługi Azure IoT Edge na maszynie Wirtualnej z syst
 W witrynie Azure portal, wyszukaj frazę "Azure IoT Edge" i wybierz **Ubuntu Server 16.04 LTS i środowisko uruchomieniowe usługi Azure IoT Edge** umożliwiającą przepływ pracy tworzenia maszyny Wirtualnej. Z tego miejsca, wykonaj kroki 3 i 4 w powyższych instrukcji "Wdrożyć z portalu Azure Marketplace".
 
 ## <a name="deploy-from-azure-cli"></a>Wdrażanie z wiersza polecenia platformy Azure
-1. Jeśli jest to pierwsza wdrażania maszyny wirtualnej z interfejsu wiersza polecenia, należy włączyć wdrożenia programowe dla Twojej subskrypcji platformy Azure:
-   1. Otwórz [usługi Azure IoT Edge w systemie Ubuntu](https://aka.ms/azure-iot-edge-ubuntuvm) oferty w portalu Marketplace
-   1. Wybierz **UZYSKAĆ IT** i **Kontynuuj** na kolejne okno dialogowe
-   1. Wybierz **mają zostać wdrożone programowo? Rozpoczynanie pracy** w dolnej części okna dialogowego w portalu
-   1. Kliknij pozycję **Włącz** znajdujący się w **konfigurowania wdrażania programowego** stronie, a następnie kliknij przycisk **Zapisz**
+
 1. Jeśli używasz interfejsu wiersza polecenia platformy Azure na komputerze, należy uruchomić po zalogowaniu się:
 
    ```azurecli-interactive
@@ -63,8 +59,9 @@ W witrynie Azure portal, wyszukaj frazę "Azure IoT Edge" i wybierz **Ubuntu Ser
       az account list --output table
       ```
     
-   1. Kopiuj pole SubscriptionID dla subskrypcji, którą chcesz użyć
-   1. Identyfikatorem, który właśnie został skopiowany, uruchom następujące polecenie:
+   1. Kopiuj pole SubscriptionID subskrypcję, której chcesz użyć.
+
+   1. Ustaw subskrypcję pracy o identyfikatorze, który został skopiowany:
     
       ```azurecli-interactive 
       az account set -s {SubscriptionId}
@@ -75,11 +72,17 @@ W witrynie Azure portal, wyszukaj frazę "Azure IoT Edge" i wybierz **Ubuntu Ser
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus2
    ```
-    
+
+1. Zaakceptuj warunki użytkowania maszyny wirtualnej. Jeśli chcesz najpierw zapoznaj się z warunkami, wykonaj kroki opisane w [wdrażania w portalu Azure Marketplace](#deploy-from-the-azure-marketplace).
+
+   ```azurecli-interactive
+   az vm image accept-terms --urn microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest
+   ```
+
 1. Utwórz nową maszynę wirtualną:
 
    ```azurecli-interactive
-   az vm create --resource-group IoTEdgeResources --name EdgeVM –-image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
+   az vm create --resource-group IoTEdgeResources --name EdgeVM --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys
    ```
 
 1. Ustaw parametry połączenia urządzenia (możesz wykonać [zarejestrować nowe urządzenie usługi Azure IoT Edge przy użyciu wiersza polecenia platformy Azure](how-to-register-device-cli.md) poradnik, jeśli nie znasz tego procesu):
@@ -91,7 +94,7 @@ W witrynie Azure portal, wyszukaj frazę "Azure IoT Edge" i wybierz **Ubuntu Ser
 Jeśli chcesz SSH do tej maszyny Wirtualnej po zakończeniu instalacji, należy użyć publiczny adres IP przy użyciu polecenia: `ssh azureuser@{publicIpAddress}`
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Teraz, gdy masz urządzenia usługi IoT Edge zaopatrzony zainstalowanego środowiska uruchomieniowego, można [wdrożyć moduły usługi IoT Edge](how-to-deploy-modules-portal.md).
 

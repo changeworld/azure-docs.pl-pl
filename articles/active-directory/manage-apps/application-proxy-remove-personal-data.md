@@ -15,19 +15,19 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 039f8c9f114dfd3542fefa7b1a1eea8656cbb9c4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ebb2a38e520c988ee7ca9a234aadd6ae2de4f0cb
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65782966"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807749"
 ---
-# <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>Usuwanie danych osobowych dla serwera Proxy usługi Azure Active Directory aplikacji  
+# <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>Usuwanie danych osobowych dla serwera Proxy usługi Azure Active Directory aplikacji
 
-Usługa Azure Active Directory serwera Proxy aplikacji wymaga zainstalowania łączników na urządzeniach, co oznacza, że może być dane osobowe na urządzeniach. Ten artykuł zawiera instrukcje dotyczące sposobu usunięcia tego danych osobowych w celu ochrony prywatności. 
-
+Usługa Azure Active Directory serwera Proxy aplikacji wymaga zainstalowania łączników na urządzeniach, co oznacza, że może być dane osobowe na urządzeniach. Ten artykuł zawiera instrukcje dotyczące sposobu usunięcia tego danych osobowych w celu ochrony prywatności.
 
 ## <a name="where-is-the-personal-data"></a>Gdzie jest dane osobowe?
+
 Możliwe jest, serwer Proxy aplikacji do zapisania danych osobowych przez następujące typy dzienników:
 
 - Dzienniki zdarzeń łącznika
@@ -52,36 +52,33 @@ Poniższe sekcje umożliwia usuwanie danych osobowych z dzienników zdarzeń ł�
 
 ### <a name="view-or-export-specific-data"></a>Wyświetlanie lub eksportowanie danych specyficznych dla
 
-Aby wyświetlić lub eksportowania określonych danych, wyszukiwanie powiązane wpisy we wszystkich dziennikach zdarzeń łącznika. Dzienniki znajdują się w lokalizacji `C:\ProgramData\Microsoft\Microsoft AAD Application Proxy Connector\Trace`. 
+Aby wyświetlić lub eksportowania określonych danych, wyszukiwanie powiązane wpisy we wszystkich dziennikach zdarzeń łącznika. Dzienniki znajdują się w lokalizacji `C:\ProgramData\Microsoft\Microsoft AAD Application Proxy Connector\Trace`.
 
 Ponieważ dzienniki są plikami tekstowymi, możesz użyć [findstr](https://docs.microsoft.com/windows-server/administration/windows-commands/findstr) szukać wpisów tekstowych skojarzoną z użytkownikiem.  
 
-Umożliwiające znalezienie danych osobowych, Wyszukaj pliki dziennika na identyfikator użytkownika. 
+Umożliwiające znalezienie danych osobowych, Wyszukaj pliki dziennika na identyfikator użytkownika.
 
 Aby znaleźć dane osobowe rejestrowane przez aplikację, która korzysta z ograniczonego delegowania protokołu Kerberos, wyszukaj te składniki wpisz nazwę użytkownika:
 
 - Główna nazwa użytkownika w środowisku lokalnym
 - Część nazwy głównej nazwy użytkownika
 - Część nazwy głównej nazwy użytkownika w środowisku lokalnym
-- Nazwa konta Menedżera (kont zabezpieczeń SAM) kont zabezpieczeń w środowisku lokalnym 
-
+- Nazwa konta Menedżera (kont zabezpieczeń SAM) kont zabezpieczeń w środowisku lokalnym
 
 ### <a name="delete-specific-data"></a>Usuń określone dane
 
 Aby usunąć szczegółowe dane:
 
 1. Uruchom ponownie usługę łącznika serwera Proxy w aplikacji pakietu Microsoft Azure AD, aby wygenerować nowy plik dziennika. Nowy plik dziennika można usunąć ani zmodyfikować stare pliki dziennika. 
-2. Postępuj zgodnie z [widoku lub eksportowania określonych danych](#view-or-export-specific-data) proces opisany wcześniej w celu znalezienia informacji, które musi zostać usunięty. Wyszukaj wszystkie dzienniki łącznika.
-3. Usuń odpowiednich plików dziennika lub selektywnie usunąć pola, które zawierają dane osobowe. Możesz także usunąć wszystkie stare pliki dziennika, jeśli użytkownik nie są już potrzebne.
+1. Postępuj zgodnie z [widoku lub eksportowania określonych danych](#view-or-export-specific-data) proces opisany wcześniej w celu znalezienia informacji, które musi zostać usunięty. Wyszukaj wszystkie dzienniki łącznika.
+1. Usuń odpowiednich plików dziennika lub selektywnie usunąć pola, które zawierają dane osobowe. Możesz także usunąć wszystkie stare pliki dziennika, jeśli użytkownik nie są już potrzebne.
 
 ### <a name="turn-off-connector-logs"></a>Wyłącz łącznik dzienników
 
-Jedną opcję, aby upewnić się, dzienniki programu connector nie zawierają danych osobowych jest Wyłącz Generowanie dziennika. Aby zatrzymać generowanie dzienników łącznika, należy usunąć następujący wyróżniony wiersz z `C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config`. 
+Jedną opcję, aby upewnić się, dzienniki programu connector nie zawierają danych osobowych jest Wyłącz Generowanie dziennika. Aby zatrzymać generowanie dzienników łącznika, należy usunąć następujący wyróżniony wiersz z `C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config`.
 
-![Konfigurowanie](./media/application-proxy-remove-personal-data/01.png)
-
+![Pokazuje fragment kodu z wyróżniony kod do usunięcia](./media/application-proxy-remove-personal-data/01.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać omówienie serwera Proxy aplikacji, zobacz [jak zapewnić bezpieczny dostęp zdalny do aplikacji lokalnych](application-proxy.md).
-

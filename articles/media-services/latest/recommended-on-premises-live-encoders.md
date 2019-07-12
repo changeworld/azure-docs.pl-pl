@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 06/12/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 1bede8ff7c33988a4e11a84d3a51ca098a608f33
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e31ad51121b1b198e2d444e70c3f482b208ef105
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055279"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67840142"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Zalecane kodery transmisji strumieniowej na żywo
 
@@ -97,7 +97,7 @@ Jako partner usługi Azure Media Services Encoder w warstwie lokalnej usługi Me
 10. Adres URL w kroku 8 należy połączyć z nazwy hosta określonej w kroku 9, aby uzyskać pełny adres URL.
 11. Uruchom koder na żywo przez około 10 minut.
 12. Zatrzymaj wydarzenie na żywo. 
-13. Używanie odtwarzacz, takiej jak [usługi Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) obejrzeć zarchiwizowanego elementu zawartości to upewnić się, że odtwarzanie nie widoczne występującymi na wszystkich poziomach jakości. Można także obejrzeć i zweryfikować za pośrednictwem adresu URL w wersji zapoznawczej podczas sesji na żywo.
+13. Używanie odtwarzacz, takiej jak [usługi Azure Media Player](http://aka.ms/azuremediaplayer) obejrzeć zarchiwizowanego elementu zawartości to upewnić się, że odtwarzanie nie widoczne występującymi na wszystkich poziomach jakości. Można także obejrzeć i zweryfikować za pośrednictwem adresu URL w wersji zapoznawczej podczas sesji na żywo.
 14. Zapisz identyfikator zasobu opublikowanego adresu URL przesyłania strumieniowego na żywo archiwum i ustawień i wersja używanego z koder na żywo.
 15. Resetowanie stanu wydarzenie na żywo po utworzeniu każdej próbki.
 16. Powtórz kroki od 5 do 15 w przypadku wszystkich konfiguracji obsługiwanych przez koder (z lub bez sygnalizowanie ad, podpisów lub inną szybkość kodowania).
@@ -116,14 +116,14 @@ Jako partner usługi Azure Media Services Encoder w warstwie lokalnej usługi Me
 10. Adres URL w kroku 8 należy połączyć z nazwy hosta określonej w kroku 9, aby uzyskać pełny adres URL.
 11. Uruchom koder na żywo przez około 10 minut.
 12. Zatrzymaj wydarzenie na żywo.
-13. Używanie odtwarzacz, takiej jak [usługi Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) obejrzeć zarchiwizowanego elementu zawartości to upewnić się, że odtwarzanie nie występującymi widoczne dla wszystkich poziomów jakości. Można także obejrzeć i zweryfikować za pośrednictwem adresu URL w wersji zapoznawczej podczas sesji na żywo.
+13. Używanie odtwarzacz, takiej jak [usługi Azure Media Player](http://aka.ms/azuremediaplayer) obejrzeć zarchiwizowanego elementu zawartości to upewnić się, że odtwarzanie nie występującymi widoczne dla wszystkich poziomów jakości. Można także obejrzeć i zweryfikować za pośrednictwem adresu URL w wersji zapoznawczej podczas sesji na żywo.
 14. Zapisz identyfikator zasobu opublikowanego adresu URL przesyłania strumieniowego na żywo archiwum i ustawień i wersja używanego z koder na żywo.
 15. Resetowanie stanu wydarzenie na żywo po utworzeniu każdej próbki.
 16. Powtórz kroki od 5 do 15 w przypadku wszystkich konfiguracji obsługiwanych przez koder (z lub bez sygnalizowanie ad, podpisów lub inną szybkość kodowania).
 
 ### <a name="longevity-verification"></a>Weryfikacja trwałość
 
-Te same czynności co w [weryfikacji wydarzenie na żywo przekazywanego](#pass-through-live-event-verification) z wyjątkiem krok 11. <br/>Zamiast 10 minut Uruchom koder na żywo przez jednego tygodnia lub dłużej. Używanie odtwarzacz, takiej jak [usługi Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) obejrzeć transmisji strumieniowych na żywo od czasu do czasu (lub zarchiwizowanego elementu zawartości) to upewnić się, że odtwarzanie nie występującymi widoczne.
+Te same czynności co w [weryfikacji wydarzenie na żywo przekazywanego](#pass-through-live-event-verification) z wyjątkiem krok 11. <br/>Zamiast 10 minut Uruchom koder na żywo przez jednego tygodnia lub dłużej. Używanie odtwarzacz, takiej jak [usługi Azure Media Player](http://aka.ms/azuremediaplayer) obejrzeć transmisji strumieniowych na żywo od czasu do czasu (lub zarchiwizowanego elementu zawartości) to upewnić się, że odtwarzanie nie występującymi widoczne.
 
 ### <a name="email-your-recorded-settings"></a>Swoje zarejestrowane ustawienia poczty e-mail
 

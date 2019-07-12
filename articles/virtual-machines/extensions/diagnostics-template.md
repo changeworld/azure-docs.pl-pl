@@ -4,7 +4,7 @@ description: Aby utworzyć nową maszynę wirtualną Windows za pomocą rozszerz
 services: virtual-machines-windows
 documentationcenter: ''
 author: sbtron
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 8cde8fe7-977b-43d2-be74-ad46dc946058
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: saurabh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 00b4a145da9104cab410c5a07f6d7ec5ded5c45d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8d1c5598bd7ea5b3f35d5447935953d4cd55664a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60800017"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706755"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Użyj monitorowania i diagnostyki za pomocą szablonów maszyn wirtualnych Windows i usługi Azure Resource Manager
 Rozszerzenie diagnostyki platformy Azure zawiera funkcje monitorowania i diagnostyki na maszynie wirtualnej na podstawie Windows Azure. Aby włączyć te możliwości na maszynie wirtualnej, łącznie z rozszerzeniem w ramach szablonu usługi Azure Resource Manager. Zobacz [Tworzenie szablonów usługi Azure Resource Manager przy użyciu rozszerzeń maszyn wirtualnych](../windows/template-description.md#extensions) uzyskać więcej informacji o tym każde rozszerzenie jako część szablonu maszyny wirtualnej. W tym artykule opisano, jak dodać rozszerzenie Diagnostyka Azure do szablonu maszyny wirtualnej systemu windows.  
@@ -63,7 +63,7 @@ Dla prostych Menedżera zasobów na podstawie maszyny wirtualnej Dodaj konfigura
 ]
 ```
 
-Jest innym typową Konwencją można dodać konfiguracji rozszerzenia w węźle głównym zasobów szablonu zamiast definiować go w węźle zasobów maszyny wirtualnej. W przypadku tej metody, należy jawnie określić hierarchicznych relacji między rozszerzenie i maszynę wirtualną z *nazwa* i *typu* wartości. Na przykład: 
+Jest innym typową Konwencją można dodać konfiguracji rozszerzenia w węźle głównym zasobów szablonu zamiast definiować go w węźle zasobów maszyny wirtualnej. W przypadku tej metody, należy jawnie określić hierarchicznych relacji między rozszerzenie i maszynę wirtualną z *nazwa* i *typu* wartości. Przykład: 
 
 ```json
 "name": "[concat(variables('vmName'),'Microsoft.Insights.VMDiagnosticsSettings')]",

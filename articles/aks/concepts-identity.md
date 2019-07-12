@@ -2,17 +2,17 @@
 title: Pojęcia — dostęp i tożsamość w usłudze Azure Kubernetes usługi (AKS)
 description: Więcej informacji na temat dostępu i tożsamości w usłudze Azure Kubernetes Service (AKS), w tym integracji usługi Azure Active Directory, kontroli dostępu opartej na rolach Kubernetes (RBAC) i ról i powiązania.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.author: iainfou
-ms.openlocfilehash: 3432ba671431c25b7cd9ee58decc638861e884c3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mlearned
+ms.openlocfilehash: a1ed1eccd7a10d78cd503559469654e5562cde0c
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60467061"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615865"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Opcje dostępu i tożsamości usługi Azure Kubernetes Service (AKS)
 
@@ -40,9 +40,9 @@ Dzięki integracji z usługą programu Azure Active Directory (AD), może zosta�
 
 ![Integracja usługi Azure Active Directory przy użyciu klastrów usługi AKS](media/concepts-identity/aad-integration.png)
 
-Przy użyciu klastrów AKS zintegrowanej z usługą AD systemu Azure można przyznać użytkownikom lub grupom dostęp do zasobów platformy Kubernetes w przestrzeni nazw lub w klastrze. Aby uzyskać `kubectl` kontekst konfiguracji, użytkownik może uruchomić [az aks get-credentials] [ az-aks-get-credentials] polecenia. Gdy użytkownik następnie wchodzi w interakcję z klastrem usługi AKS przy użyciu `kubectl`, użytkownicy są monitowani o Zaloguj się przy użyciu poświadczeń usługi Azure AD. To podejście zapewnia jedno źródło dla zarządzania kontami użytkowników i hasła poświadczeń. Użytkownik może tylko dostępu do zasobów, zgodnie z definicją administratora klastra.
+Przy użyciu klastrów AKS zintegrowanej z usługą AD systemu Azure można przyznać użytkownikom lub grupom dostęp do zasobów platformy Kubernetes w przestrzeni nazw lub w klastrze. Aby uzyskać `kubectl` kontekst konfiguracji, użytkownik może uruchomić [az aks get-credentials][az-aks-get-credentials] polecenia. Gdy użytkownik następnie wchodzi w interakcję z klastrem usługi AKS przy użyciu `kubectl`, użytkownicy są monitowani o Zaloguj się przy użyciu poświadczeń usługi Azure AD. To podejście zapewnia jedno źródło dla zarządzania kontami użytkowników i hasła poświadczeń. Użytkownik może tylko dostępu do zasobów, zgodnie z definicją administratora klastra.
 
-Uwierzytelnianie usługi Azure AD w klastrach usługi AKS korzysta z protokołu OpenID Connect, warstwy tożsamości korzystających z protokołu OAuth 2.0. OAuth 2.0 definiuje mechanizmy do uzyskania i używania tokenów dostępu, uzyskiwać dostęp do chronionych zasobów i OpenID Connect uwierzytelniania są implementowane jako rozszerzenie proces autoryzacji OAuth 2.0. Aby uzyskać więcej informacji na temat protokołu OpenID Connect, zobacz [Open ID Connect dokumentacji][openid-connect]. Aby sprawdzić, tokeny uwierzytelniania uzyskane z usługi Azure AD za pomocą protokołu OpenID Connect, AKS klastry używają uwierzytelniania tokenu elementu Webhook platformy Kubernetes. Aby uzyskać więcej informacji, zobacz [dokumentacji uwierzytelnianie przy użyciu elementu Webhook tokenów][webhook-token-docs].
+Uwierzytelnianie usługi Azure AD w klastrach usługi AKS korzysta z protokołu OpenID Connect, warstwy tożsamości korzystających z protokołu OAuth 2.0. OAuth 2.0 definiuje mechanizmy do uzyskania i używania tokenów dostępu, uzyskiwać dostęp do chronionych zasobów i OpenID Connect uwierzytelniania są implementowane jako rozszerzenie proces autoryzacji OAuth 2.0. Aby uzyskać więcej informacji na temat protokołu OpenID Connect, zobacz [Open ID Connect dokumentacji][openid-connect]. To verify the authentication tokens obtained from Azure AD through OpenID Connect, AKS clusters use Kubernetes Webhook Token Authentication. For more information, see the [Webhook Token Authentication documentation][webhook-token-docs].
 
 ## <a name="role-based-access-controls-rbac"></a>Kontroli dostępu opartej na rolach (RBAC)
 
@@ -71,7 +71,7 @@ Powiązania roli są używane do przypisywania ról dla danego obszaru nazw. Tak
 
 ClusterRoleBinding działa w taki sam sposób, aby powiązać ról użytkowników, ale mogą być stosowane do zasobów dla całego klastra, a nie określonych przestrzeni nazw. To podejście pozwala udzielać administratorom lub pomocy technicznej inżynierów dostęp do wszystkich zasobów w klastrze AKS.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby rozpocząć pracę z usługą Azure AD i kontroli RBAC usługi Kubernetes, zobacz [integracji usługi Azure Active Directory za pomocą usługi AKS][aks-aad].
 

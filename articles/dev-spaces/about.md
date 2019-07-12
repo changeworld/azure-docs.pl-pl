@@ -4,19 +4,18 @@ titleSuffix: Azure Dev Spaces
 author: zr-msft
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.subservice: azds-kubernetes
 ms.author: zarhoads
 ms.date: 05/07/2019
 ms.topic: overview
 description: Wprowadzenie do usługi Azure Dev miejsca do magazynowania
 keywords: Docker, Kubernetes, Azure, usługi AKS, usługi Azure Kubernetes Service, kontenerów, narzędzia kubectl, k8s
-manager: jeconnoc
-ms.openlocfilehash: 3e887409518f5cc97238a0168213a7918e318c04
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+manager: gwallace
+ms.openlocfilehash: 33ac5a7aa6d823105b87325ba52aa77cd9b9b3a3
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66394013"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706300"
 ---
 # <a name="azure-dev-spaces"></a>Azure Dev Spaces
 
@@ -46,7 +45,7 @@ Aby uzyskać więcej informacji na temat działania usługi Azure Dev miejsca do
 
 Usługa Azure Dev Spaces jest obsługiwana tylko w klastrach usługi AKS w następujących regionach: **Wschodnie stany USA**, **Wschodnie stany USA 2**, **Środkowe stany USA**, **Zachodnie stany USA 2**, **Europa Północna**, **Europa Zachodnia**, **Południowe Zjednoczone Królestwo**, **Azja Południowo-Wschodnia**, **Australia Wschodnia**, **Kanada Środkowa** i **Kanada Wschodnia**. Usługa Azure Dev Spaces obsługuje korzystanie z [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) lub programu [Visual Studio Code](https://code.visualstudio.com/download) za pomocą [rozszerzenia usługi Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) zainstalowanego w systemie Linux, MacOS lub Windows 8 bądź nowszym, aby umożliwić tworzenie i uruchamianie aplikacje w usłudze AKS. Obsługuje ona również, za pomocą [programu Visual Studio](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) zainstalowanych w systemie Windows 8 lub nowszej. Dla programu Visual Studio 2019 r konieczne będzie obciążenia programowanie na platformie Azure. Dla programu Visual Studio 2017, konieczne będzie obciążenia programowanie dla sieci Web i [Visual Studio Tools dla platformy Kubernetes](https://aka.ms/get-vsk8stools).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o programowaniu szybkie, iteracyjne dla zespołów za pomocą usługi Azure Dev miejsca do magazynowania przy użyciu opcji szybkiego startu tworzenia zespołu.
 

@@ -2,17 +2,17 @@
 title: Operator najlepsze rozwiązania — zabezpieczenia klastra usługi Kubernetes w usłudze Azure (AKS)
 description: Poznaj klastra operator najlepsze rozwiązania dotyczące sposobów zarządzania zabezpieczenia klastra i uaktualnień w usłudze Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: iainfou
-ms.openlocfilehash: 54f1455467295e786d9e634b64dfab0933d948db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: d4a77fc1756b0fa9decb6d3a84760beb1e700863
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66475591"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614893"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące zabezpieczeń klastra i uaktualnień w usłudze Azure Kubernetes Service (AKS)
 
@@ -26,7 +26,7 @@ Ten artykuł koncentruje się na sposób zabezpieczania klastra usługi AKS. Oma
 > * Uaktualnianie klastra usługi AKS do najnowszej wersji platformy Kubernetes
 > * Zachowaj aktualizacji węzłów do daty i automatyczne stosowanie poprawek zabezpieczeń
 
-Można również przeczytać najlepsze rozwiązania dotyczące [zarządzanie obrazami kontenera] [ best-practices-container-image-management] i [zasobnika zabezpieczeń][best-practices-pod-security].
+Można również przeczytać najlepsze rozwiązania dotyczące [zarządzanie obrazami kontenera][best-practices-container-image-management] and for [pod security][best-practices-pod-security].
 
 ## <a name="secure-access-to-the-api-server-and-cluster-nodes"></a>Bezpieczny dostęp do interfejsu API serwera i węzłami klastra
 
@@ -57,11 +57,11 @@ Aby uzyskać większą kontrolę nad akcji kontenerów, umożliwia również wbu
 
 ### <a name="app-armor"></a>Moto aplikacji
 
-Aby ograniczyć akcje, które można wykonywać kontenerów, można użyć [AppArmor] [ k8s-apparmor] modułu zabezpieczeń jądra systemu Linux. AppArmor jest dostępny jako część podstawowego węzłów AKS system operacyjny i jest domyślnie włączona. Można tworzyć AppArmor profilów, które ograniczenie akcji takich jak odczytu, zapisu lub wykonania lub funkcji systemu, takich jak instalowanie systemów plików. Domyślne profile AppArmor ograniczyć dostęp do różnych `/proc` i `/sys` lokalizacji i umożliwiają izolowanie logicznie kontenerów z węzła podstawowego. AppArmor działa w przypadku dowolnej aplikacji uruchomionej w systemie Linux, a nie tylko zasobników.
+Aby ograniczyć akcje, które można wykonywać kontenerów, można użyć [AppArmor][k8s-apparmor] modułu zabezpieczeń jądra systemu Linux. AppArmor jest dostępny jako część podstawowego węzłów AKS system operacyjny i jest domyślnie włączona. Można tworzyć AppArmor profilów, które ograniczenie akcji takich jak odczytu, zapisu lub wykonania lub funkcji systemu, takich jak instalowanie systemów plików. Domyślne profile AppArmor ograniczyć dostęp do różnych `/proc` i `/sys` lokalizacji i umożliwiają izolowanie logicznie kontenerów z węzła podstawowego. AppArmor działa w przypadku dowolnej aplikacji uruchomionej w systemie Linux, a nie tylko zasobników.
 
 ![Profile AppArmor używany w klastrze AKS do ograniczenia akcji kontenerów](media/operator-best-practices-container-security/apparmor.png)
 
-Aby zobaczyć AppArmor w działaniu, poniższy przykład tworzy profil, który uniemożliwia zapisywanie do plików. [SSH] [ aks-ssh] do węzła usługi AKS, a następnie utwórz plik o nazwie *Odmów write.profile* i wklej następującą zawartością:
+Aby zobaczyć AppArmor w działaniu, poniższy przykład tworzy profil, który uniemożliwia zapisywanie do plików. [SSH][aks-ssh] do węzła usługi AKS, a następnie utwórz plik o nazwie *Odmów write.profile* i wklej następującą zawartością:
 
 ```
 #include <tunables/global>
@@ -98,13 +98,13 @@ spec:
     command: [ "sh", "-c", "echo 'Hello AppArmor!' && sleep 1h" ]
 ```
 
-Wdrażanie przy użyciu zasobnika przykładowe [zastosować kubectl] [ kubectl-apply] polecenia:
+Wdrażanie przy użyciu zasobnika przykładowe [zastosować kubectl][kubectl-apply] polecenia:
 
 ```console
 kubectl apply -f aks-apparmor.yaml
 ```
 
-Za pomocą zasobnika wdrożone, należy użyć [kubectl exec] [ kubectl-exec] polecenie, aby zapisać do pliku. Nie można wykonać tego polecenia, jak pokazano w następujących przykładowych danych wyjściowych:
+Za pomocą zasobnika wdrożone, należy użyć [kubectl exec][kubectl-exec] polecenie, aby zapisać do pliku. Nie można wykonać tego polecenia, jak pokazano w następujących przykładowych danych wyjściowych:
 
 ```
 $ kubectl exec hello-apparmor touch /tmp/test
@@ -117,9 +117,9 @@ Aby uzyskać więcej informacji na temat AppArmor zobacz [AppArmor profilów w u
 
 ### <a name="secure-computing"></a>Bezpiecznego przetwarzania danych
 
-Natomiast AppArmor działa dla dowolnej aplikacji systemu Linux [funkcję seccomp (*s*uruj *comp*uty)] [ seccomp] działa na poziomie procesu. Funkcję Seccomp jest również moduł zabezpieczeń jądra systemu Linux i obsługiwane przez środowisko uruchomieniowe platformy Docker, używane przez węzłów AKS. Za pomocą funkcję seccomp przetwarzają wywołania, które mogą wykonywać kontenery są ograniczone. Tworzenie filtrów, które określają, jakie akcje, aby udzielić lub odmówić, a następnie korzystanie z adnotacji w manifeście YAML zasobnika do skojarzenia z filtrem funkcję seccomp. Wyrównuje to najlepsze rozwiązanie polegające na tylko udzielanie kontenera minimalne uprawnienia, które są wymagane do uruchomienia i nie ma więcej.
+Natomiast AppArmor działa dla dowolnej aplikacji systemu Linux [funkcję seccomp (*s*uruj *comp*uty)][seccomp] działa na poziomie procesu. Funkcję Seccomp jest również moduł zabezpieczeń jądra systemu Linux i obsługiwane przez środowisko uruchomieniowe platformy Docker, używane przez węzłów AKS. Za pomocą funkcję seccomp przetwarzają wywołania, które mogą wykonywać kontenery są ograniczone. Tworzenie filtrów, które określają, jakie akcje, aby udzielić lub odmówić, a następnie korzystanie z adnotacji w manifeście YAML zasobnika do skojarzenia z filtrem funkcję seccomp. Wyrównuje to najlepsze rozwiązanie polegające na tylko udzielanie kontenera minimalne uprawnienia, które są wymagane do uruchomienia i nie ma więcej.
 
-Aby zobaczyć funkcję seccomp w akcji, należy utworzyć filtr, który uniemożliwia zmienianie uprawnień do pliku. [SSH] [ aks-ssh] do węzła usługi AKS, a następnie utwórz filtr funkcję seccomp o nazwie */var/lib/kubelet/seccomp/prevent-chmod* i wklej następującą zawartością:
+Aby zobaczyć funkcję seccomp w akcji, należy utworzyć filtr, który uniemożliwia zmienianie uprawnień do pliku. [SSH][aks-ssh] do węzła usługi AKS, a następnie utwórz filtr funkcję seccomp o nazwie */var/lib/kubelet/seccomp/prevent-chmod* i wklej następującą zawartością:
 
 ```
 {
@@ -154,13 +154,13 @@ spec:
   restartPolicy: Never
 ```
 
-Wdrażanie przy użyciu zasobnika przykładowe [zastosować kubectl] [ kubectl-apply] polecenia:
+Wdrażanie przy użyciu zasobnika przykładowe [zastosować kubectl][kubectl-apply] polecenia:
 
 ```console
 kubectl apply -f ./aks-seccomp.yaml
 ```
 
-Wyświetl stan zasobników, za pomocą [kubectl get pods-] [ kubectl-get] polecenia. Zasobnik zgłasza błąd. `chmod` Polecenia jest mogły być uruchamiane przez filtr funkcję seccomp, jak pokazano w następujących przykładowych danych wyjściowych:
+Wyświetl stan zasobników, za pomocą [kubectl get pods-][kubectl-get] polecenia. Zasobnik zgłasza błąd. `chmod` Polecenia jest mogły być uruchamiane przez filtr funkcję seccomp, jak pokazano w następujących przykładowych danych wyjściowych:
 
 ```
 $ kubectl get pods
@@ -179,19 +179,19 @@ Nowe funkcje w tempie szybciej niż bardziej tradycyjny różnych platformach in
 
 AKS obsługuje cztery pomocnicze wersje rozwiązania Kubernetes. Oznacza to, gdy wprowadzono nową wersję pomocniczą poprawki, najstarsze pomocniczej wersji i poprawki wersji obsługiwane zostały wycofane. Niewielkie aktualizacje Kubernetes się tak zdarzyć w regularnych odstępach czasu. Upewnij się, że proces nadzoru Sprawdź i uaktualniania, zgodnie z potrzebami, dzięki czemu nie utracą pomocy technicznej. Aby uzyskać więcej informacji, zobacz [obsługiwane wersje rozwiązania Kubernetes usługi AKS][aks-supported-versions]
 
-Aby sprawdzić wersje, które są dostępne dla klastra, użyj [az aks get uaktualnienia] [ az-aks-get-upgrades] polecenia, jak pokazano w poniższym przykładzie:
+Aby sprawdzić wersje, które są dostępne dla klastra, użyj [az aks get uaktualnień][az-aks-get-upgrades] polecenia, jak pokazano w poniższym przykładzie:
 
 ```azurecli-interactive
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Następnie można uaktualnić usługi AKS klastra przy użyciu [uaktualnienia az aks] [ az-aks-upgrade] polecenia. Proces uaktualniania bezpiecznie cordons i opróżnia jednym węźle naraz, harmonogramy zasobników w pozostałych węzłach, a następnie wdraża nowy węzeł uruchomiony w najnowszych wersjach systemu operacyjnego i platformy Kubernetes.
+Następnie można uaktualnić usługi AKS klastra przy użyciu [uaktualnienia az aks][az-aks-upgrade] polecenia. Proces uaktualniania bezpiecznie cordons i opróżnia jednym węźle naraz, harmonogramy zasobników w pozostałych węzłach, a następnie wdraża nowy węzeł uruchomiony w najnowszych wersjach systemu operacyjnego i platformy Kubernetes.
 
 ```azurecli-interactive
 az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.11.8
 ```
 
-Aby uzyskać więcej informacji na temat uaktualnienia w usłudze AKS, zobacz [obsługiwane wersje rozwiązania Kubernetes w usłudze AKS] [ aks-supported-versions] i [Uaktualnianie klastra usługi AKS][aks-upgrade].
+Aby uzyskać więcej informacji na temat uaktualnienia w usłudze AKS, zobacz [obsługiwane wersje rozwiązania Kubernetes w usłudze AKS][aks-supported-versions] and [Upgrade an AKS cluster][aks-upgrade].
 
 ## <a name="process-linux-node-updates-and-reboots-using-kured"></a>Węzeł Linux procesu aktualizacji i wykonuje ponowny rozruch przy użyciu kured
 
@@ -199,7 +199,7 @@ Aby uzyskać więcej informacji na temat uaktualnienia w usłudze AKS, zobacz [o
 
 Każdy wieczór węzłów systemu Linux w usłudze AKS pobrania poprawek zabezpieczeń jest dostępne za pośrednictwem ich kanał aktualizacji dostępnych dla określonych dystrybucji. To zachowanie jest konfigurowana automatycznie podczas wdrażania węzłów w klastrze AKS. Aby zminimalizować przerwy w działaniu i potencjalnego wpływu na działające zadania, węzły są nie automatycznie ponownie uruchomiony, jeśli poprawka zabezpieczeń lub aktualizacji jądra go wymaga.
 
-Open source [kured (KUbernetes ponownie uruchomić demona)] [ kured] projektu, Weaveworks obserwuje do czasu ponownego uruchomienia węzła. W przypadku węzłów systemu Linux stosujący aktualizacje wymagające ponownego uruchomienia systemu, węzeł jest bezpiecznie odizolowywane i opróżniane można przenosić i zaplanować zasobników w innych węzłach w klastrze. Gdy węzeł jest uruchamiany ponownie, zostanie on dodany do klastra i wznawia Kubernetes planowania zasobników na nim. Aby zminimalizować zakłócenia, tylko jeden węzeł w danym momencie może zostać przeprowadzony ponowny rozruch `kured`.
+Open source [kured (KUbernetes ponownie uruchomić demona)][kured] projektu, Weaveworks obserwuje do czasu ponownego uruchomienia węzła. W przypadku węzłów systemu Linux stosujący aktualizacje wymagające ponownego uruchomienia systemu, węzeł jest bezpiecznie odizolowywane i opróżniane można przenosić i zaplanować zasobników w innych węzłach w klastrze. Gdy węzeł jest uruchamiany ponownie, zostanie on dodany do klastra i wznawia Kubernetes planowania zasobników na nim. Aby zminimalizować zakłócenia, tylko jeden węzeł w danym momencie może zostać przeprowadzony ponowny rozruch `kured`.
 
 ![Proces ponownego uruchomienia węzłów AKS, korzystając z kured](media/operator-best-practices-cluster-security/node-reboot-process.png)
 

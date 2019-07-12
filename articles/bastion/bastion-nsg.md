@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: cherylmc
-ms.openlocfilehash: e7210b2b1be072f5326070d768d5fe12c386ee0b
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 5312ad2593e732f4c84eb67ed263bc9e4666a67a
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191605"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594190"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion-preview"></a>Praca z dostępem do sieciowej grupy zabezpieczeń i bastionu Azure (wersja zapoznawcza)
 
@@ -44,9 +44,9 @@ Na poniższym diagramie:
 
 Jeśli zastosujesz sieciowych grup zabezpieczeń do **AzureBastionSubnet**, Zezwalaj na następujące dwa tagi usługi na płaszczyźnie kontroli platformy Azure i infrastrukturą:
 
-* **GatewayManager (tylko model Resource Manager)** : ten tag określa prefiksy adresów usługi Azure Gateway Manager. Jeśli określisz GatewayManager wartości ruch dozwolony lub blokowany do GatewayManager.
+* **GatewayManager (tylko model Resource Manager)** : ten tag określa prefiksy adresów usługi Azure Gateway Manager. Jeśli określisz GatewayManager wartości ruch dozwolony lub blokowany do GatewayManager.  W przypadku tworzenia grup zabezpieczeń sieci na AzureBastionSubnet Włącz tag GatewayManager dla ruchu przychodzącego.
 
-* **AzureCloud (tylko model Resource Manager)** : Ten tag Określa przestrzeń adresów IP na platformie Azure, w tym wszystkich centrów danych publicznych adresów IP. Jeśli określisz AzureCloud wartości ruch dozwolony lub blokowany do platformy Azure publicznych adresów IP. Jeśli chcesz zezwolić na dostęp do AzureCloud w określonym regionie, możesz określić region. Na przykład jeśli chcesz zezwolić na dostęp tylko do AzureCloud platformy Azure w regionie wschodnie stany USA, możesz określić AzureCloud.EastUS jako tag usługi.
+* **AzureCloud (tylko model Resource Manager)** : Ten tag Określa przestrzeń adresów IP na platformie Azure, w tym wszystkich centrów danych publicznych adresów IP. Jeśli określisz AzureCloud wartości ruch dozwolony lub blokowany do platformy Azure publicznych adresów IP. Jeśli chcesz zezwolić na dostęp tylko do AzureCloud w określonym regionie, możesz określić region. Na przykład jeśli chcesz zezwolić na dostęp tylko do AzureCloud platformy Azure w regionie wschodnie stany USA, możesz określić AzureCloud.EastUS jako tag usługi. W przypadku tworzenia grup zabezpieczeń sieci na AzureBastionSubnet Włącz tag AzureCloud dla ruchu wychodzącego.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

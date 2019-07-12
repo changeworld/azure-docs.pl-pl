@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.date: 07/06/2019
 ms.topic: conceptual
 ms.service: key-vault
-ms.openlocfilehash: 79d4254de40ef787b30eb4f483c86383a928ee1f
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 6a748031f9d35e26eeb544f154477ea3449903f5
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566223"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67796098"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Usługa Usługa uwierzytelniania usługi Azure Key Vault przy użyciu platformy .NET
 
@@ -209,11 +209,16 @@ Aby użyć certyfikatu klienta dla uwierzytelniania jednostki usługi
 
 1. Zastąp `{KeyVaultCertificateSecretIdentifier}` w tym ciągu połączenia o identyfikatorze certyfikatu:
 
-```
-RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}
-```
+    ```
+    RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}
+    ```
 
-Jeśli na przykład Twój magazyn kluczy został wywołany "myKeyVault", a następnie utworzono certyfikat o nazwie "myCert", identyfikator certyfikatu będzie `https://myKeyVault.vault.azure.net/secrets/myCert`, oraz parametry połączenia będą `RunAs=App;AppId={TestAppId};TenantId={TenantId};KeyVaultCertificateSecretIdentifier=https://myKeyVault.vault.azure.net/secrets/myCert`.
+    Jeśli na przykład Twój magazyn kluczy został wywołany "myKeyVault", a następnie utworzono certyfikat o nazwie "myCert", identyfikator certyfikatu wyglądałby następująco:
+
+    ```
+    RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier=https://myKeyVault.vault.azure.net/secrets/myCert
+    ```
+
 
 ## <a name="connection-string-support"></a>Obsługa ciągu połączenia
 
@@ -245,7 +250,7 @@ Aby wyświetlić `Microsoft.Azure.Services.AppAuthentication` biblioteki w dzia�
 
 3. [Wywoływanie usług platformy Azure z maszyny Wirtualnej systemu Linux na platformie Azure za pomocą platformy .NET Core próbki i tożsamość zarządzaną](https://github.com/Azure-Samples/linuxvm-msi-keyvault-arm-dotnet/).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o [zarządzanych tożsamości dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/index.yml).
 - Dowiedz się więcej o [scenariusze uwierzytelniania usługi Azure AD](../active-directory/develop/active-directory-authentication-scenarios.md).

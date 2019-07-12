@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: d714756c19b94eafc40cc0dbeffbc07704e8f94e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: efed981b500ff14a66c2355a1d14bd762000622f
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65787815"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606158"
 ---
 # <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>Przykład 4 - klasyfikacji: Prognozowanie ryzyka kredytowego (koszt poufnych)
 
@@ -37,7 +37,7 @@ Oto wykres zakończone, w tym eksperymencie:
 
     ![Otwórz eksperyment](media/ui-sample-classification-predict-credit-risk-cost-sensitive/open-sample4.png)
 
-## <a name="data"></a>Dane
+## <a name="data"></a>Data
 
 Używamy zestawu danych karty kredytowej niemiecki z repozytorium Irvine Unikatowości. Ten zestaw danych zawiera 1000 próbek z funkcjami 20 i 1 etykiety. Poszczególne przykładowe aplikacje przedstawiają osoby. 20 funkcje obejmują funkcje numeryczne i podzielonych na kategorie. Zobacz [UCI witryny sieci Web](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29) Aby uzyskać więcej informacji na temat zestawu danych. Ostatnia kolumna jest etykiety, który wskazuje ryzyko kredytowe, a ma tylko dwa możliwe wartości: ryzyko kredytowe wysoki = 2 i niskie ryzyko kredytowe = 1.
 
@@ -156,7 +156,7 @@ Z tymi wynikami, widać, że najlepszej dokładności jest świadczona przez mod
 
 [!INCLUDE [aml-ui-cleanup](../../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Zapoznaj się z innymi przykładami dostępne dla interfejsu wizualnego:
 
@@ -164,3 +164,4 @@ Zapoznaj się z innymi przykładami dostępne dla interfejsu wizualnego:
 - [Przykład 2 - regresji. Porównaj algorytmy Prognozowanie cen samochodów](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
 - [Próba 3 — klasyfikacji: Prognozowanie ryzyka kredytowego](ui-sample-classification-predict-credit-risk-basic.md)
 - [Przykład 5 - klasyfikacji: Przewidywanie zmienności](ui-sample-classification-predict-churn.md)
+- [Przykład 6 - klasyfikacji: Prognozowanie opóźnień lotów](ui-sample-classification-predict-flight-delay.md)

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 51ca597208b582e95fd305886dcf163744825eee
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: af6fd7b99147396a70fccc7b2b11dfef3def15a8
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509650"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786294"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurowanie aplikacji w języku Java w systemie Linux dla usługi Azure App Service
 
@@ -133,7 +133,7 @@ Deweloperzy uruchomił jedną aplikację z gniazdem jedno wdrożenie w planu us�
 
 Podczas dostosowywania ustawienia sterty aplikacji, przejrzyj szczegóły planu usługi App Service i wziąć pod uwagę wiele aplikacji i miejsca wdrożenia musi znaleźć optymalne alokacji pamięci.
 
-Jeśli wdrażasz aplikację JAR, powinien zostać nazwany *app.jar* tak, aby wbudowanym obrazem można poprawnie identyfikacji danej aplikacji. (Wtyczki Maven nie, ta zmiana nazw automatycznie.) Jeśli nie chcesz zmienić nazwę Twojego pliku JAR do *app.jar*, możesz przesłać skrypt powłoki, za pomocą polecenia do uruchomienia usługi JAR. Następnie wklej pełną ścieżkę do tego skryptu w [plik startowy](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-faq#startup-file) pole tekstowe w sekcji konfiguracji portalu.
+Jeśli wdrażasz aplikację JAR, powinien zostać nazwany *app.jar* tak, aby wbudowanym obrazem można poprawnie identyfikacji danej aplikacji. (Wtyczki Maven nie, ta zmiana nazw automatycznie.) Jeśli nie chcesz zmienić nazwę Twojego pliku JAR do *app.jar*, możesz przesłać skrypt powłoki, za pomocą polecenia do uruchomienia usługi JAR. Następnie wklej pełną ścieżkę do tego skryptu w [plik startowy](app-service-linux-faq.md#built-in-images) pole tekstowe w sekcji konfiguracji portalu.
 
 ### <a name="turn-on-web-sockets"></a>Włącz gniazda sieci web
 
@@ -170,6 +170,10 @@ Alternatywnie można skonfigurować ustawienia aplikacji przy użyciu wtyczki Ma
 ### <a name="adjust-startup-timeout"></a>Dostosuj limit czasu uruchamiania
 
 Jeśli aplikacja języka Java jest szczególnie duże, należy zwiększyć limit czasu uruchamiania. Aby to zrobić, należy utworzyć ustawienie aplikacji, `WEBSITES_CONTAINER_START_TIME_LIMIT` i ustaw ją na liczbę sekund oczekiwania przed przekroczeniem limitu czasu usługi App Service. Wartość maksymalna to `1800` sekund.
+
+### <a name="pre-compile-jsp-files"></a>Pre-Compile JSP files
+
+Aby zwiększyć wydajność aplikacji Tomcat, można kompilować plików JSP przed wdrożeniem usługi App Service. Możesz użyć [wtyczki Maven](https://sling.apache.org/components/jspc-maven-plugin/plugin-info.html) podana przez zawiesia Apache lub za pomocą tego [plik kompilacji narzędzia Ant](https://tomcat.apache.org/tomcat-9.0-doc/jasper-howto.html#Web_Application_Compilation).
 
 ## <a name="secure-applications"></a>Zabezpieczanie aplikacji
 

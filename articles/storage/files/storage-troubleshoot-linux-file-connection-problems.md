@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 97f737c8d1228bd03baf59f2ebe830f715241299
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 232b4ca2ee4f3137069ed155cc82a5c5e3251420
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449845"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807274"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Rozwiązywanie problemów z usługą Azure Files w systemie Linux
 
@@ -94,19 +94,30 @@ Obowiązuje przydział 2000 otwartymi dojściami w jednym pliku. W przypadku 2 0
 
 Zmniejsz liczbę jednoczesnych otwarte dojścia przez zamknięcie niektórych uchwyty, a następnie spróbuj ponownie wykonać operację.
 
+Aby wyświetlić otwarte dojścia do udziału pliku, katalogu lub pliku, użyj [Get AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) polecenia cmdlet programu PowerShell.  
+
+Aby zamknąć otwarte dojścia do udziału pliku, katalogu lub pliku, należy użyć [AzStorageFileHandle Zamknij](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) polecenia cmdlet programu PowerShell.
+
+> [!Note]  
+> Polecenia cmdlet Get-AzStorageFileHandle i zamknij AzStorageFileHandle znajdują się w Az modułu PowerShell w wersji 2.4 lub nowszej. Aby zainstalować najnowszy moduł programu PowerShell Az, zobacz [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Wolne kopiowania plików do i z usługi Azure Files w systemie Linux
 
 - Jeśli nie masz określonych minimalny wymagany rozmiar operacji We/Wy, zalecamy użycie 1 MiB jako rozmiar operacji We/Wy w pod kątem optymalnej wydajności.
-- Jeśli wiesz, końcowy rozmiar pliku, który jest rozszerzanie przy użyciu zapisu oraz oprogramowania nie występują problemy ze zgodnością, podczas niepisane tail do pliku zawiera zera wartość rozmiaru pliku wcześniej dokonywane co zapisu rozszerzanie zapisu.
 - Użyj metody kopiowania prawa:
     - Użyj [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) wszelkie transferu między dwoma udziałami plików.
-    - Cp przy użyciu równoległe można poprawić szybkość kopiowania, liczba wątków zależy od obciążenia i przypadek użycia. W tym przykładzie użyto sześć: `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`.
+    - Korzystanie z równoległych cp lub dd może poprawić szybkość kopiowania, liczba wątków zależy od obciążenia i przypadek użycia. W poniższych przykładach używane sześć: 
+    - przykład CP (cp użyje domyślny rozmiar bloku systemu plików jako rozmiar fragmentu): `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`.
+    - przykład dd (polecenie jawnie ustawia rozmiar fragmentu 1 MiB): `find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
     - Narzędzia open source innych firm takich jak:
         - [Równoległe GNU](https://www.gnu.org/software/parallel/).
         - [Fpart](https://github.com/martymac/fpart) — Sortuje pliki i pakuje je w partycji.
         - [Fpsync](https://github.com/martymac/fpart/blob/master/tools/fpsync) -używa Fpart i narzędzia do kopiowania, uruchomić wiele wystąpień do migracji danych z src_dir do dst_url.
         - [Obsługa wielu](https://github.com/pkolano/mutil) -cp wielowątkowych i md5sum oparte na GNU coreutils.
+- Ustawianie rozmiaru pliku z wyprzedzeniem, dokonywane co zapisu rozszerzanie zapisu pomaga poprawić szybkość kopiowania w scenariuszach, w których rozmiar pliku jest znana. Rozszerzanie konieczność zapisy można uniknąć, można ustawić rozmiar pliku docelowego, za pomocą `truncate - size <size><file>` polecenia. Po tym `dd if=<source> of=<target> bs=1M conv=notrunc`polecenia skopiuje plik źródłowy bez konieczności aktualizowania wielokrotnie rozmiar pliku docelowego. Na przykład można ustawić rozmiar pliku docelowego dla każdego pliku, które chcesz skopiować (przyjmowane jest udział jest zainstalowany wolumin/mnt/udziale):
+    - `$ for i in `` find * -type f``; do truncate --size ``stat -c%s $i`` /mnt/share/$i; done`
+    - a następnie — skopiuj pliki bez rozszerzania zapisów w sposób równoległy: `$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
 
 <a id="error115"></a>
 ## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-30"></a>"Instalowanie error(115): Operacja w toku"podczas instalowania usługi Azure Files przy użyciu protokołu SMB 3.0
@@ -140,6 +151,23 @@ Przejdź do konta magazynu, w którym zlokalizowany jest udział plików platfor
 ### <a name="solution-for-cause-2"></a>Rozwiązanie przyczyny 2
 
 Sprawdź, czy wirtualnej sieci i reguł zapory są poprawnie skonfigurowane na koncie magazynu. Aby sprawdzić, czy wirtualny zasady sieci lub zapory jest przyczyną problemu, tymczasowo zmienić ustawienia na koncie magazynu **zezwolić na dostęp ze wszystkich sieci**. Aby dowiedzieć się więcej, zobacz [zapory Konfigurowanie usługi Azure Storage i sieci wirtualne](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+
+<a id="open-handles"></a>
+## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Nie można usunąć pliku lub katalogu w udziale plików platformy Azure
+
+### <a name="cause"></a>Przyczyna
+Ten problem zazwyczaj występuje, gdy plik lub katalog ma otwarte dojście. 
+
+### <a name="solution"></a>Rozwiązanie
+
+Jeśli klienci SMB zostały zamknięte wszystkie otwarte dojścia i ten problem będzie nadal występować, wykonaj następujące czynności:
+
+- Użyj [Get AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) polecenia cmdlet programu PowerShell, aby wyświetlić otwartych dojść.
+
+- Użyj [AzStorageFileHandle Zamknij](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) polecenia cmdlet programu PowerShell, aby zamknąć otwarte dojścia. 
+
+> [!Note]  
+> Polecenia cmdlet Get-AzStorageFileHandle i zamknij AzStorageFileHandle znajdują się w Az modułu PowerShell w wersji 2.4 lub nowszej. Aby zainstalować najnowszy moduł programu PowerShell Az, zobacz [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Niska wydajność w udziale plików platformy Azure zainstalowany na maszynie Wirtualnej systemu Linux
@@ -191,40 +219,6 @@ Do kopiowania plików przy użyciu poświadczeń użytkownika konta magazynu:
 - `Passwd [storage account name]`
 - `Su [storage account name]`
 - `Cp -p filename.txt /share`
-
-## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Nie można nawiązać lub zainstalować udział plików platformy Azure
-
-### <a name="cause"></a>Przyczyna
-
-Typowe przyczyny tego problemu są:
-
-- Używasz niezgodny klient dystrybucji systemu Linux. Zaleca się, że używasz poniższe dystrybucje systemu Linux do łączenia z udziałem plików platformy Azure:
-
-    |   | SMB 2.1 <br>(Instaluje na maszynach wirtualnych w tym samym regionie platformy Azure) | SMB 3.0 <br>(Instaluje ze środowiska lokalnego i między regionami) |
-    | --- | :---: | :---: |
-    | Ubuntu Server | 14.04+ | 16.04+ |
-    | RHEL | 7+ | 7.5+ |
-    | CentOS | 7+ |  7.5+ |
-    | Debian | 8+ |   |
-    | openSUSE | 13.2+ | 42.3+ |
-    | SUSE Linux Enterprise Server | 12 | 12 SP3+ |
-
-- Narzędzia CIFS (cifs utils) nie są zainstalowane na komputerze klienckim.
-- Minimalna wersja protokołu SMB/CIFS, 2.1, nie jest zainstalowany na komputerze klienckim.
-- Szyfrowanie protokołu SMB 3.0 nie jest obsługiwane na komputerze klienckim. Szyfrowanie protokołu SMB 3.0 jest dostępny w Ubuntu 16.4 i nowsze wersje, wraz z systemem SUSE 12.3 i nowszych wersjach. Inne dystrybucje wymagają jądra 4.11 i nowszych wersjach.
-- Próbujesz połączyć się z kontem magazynu za pośrednictwem portu TCP 445, który nie jest obsługiwany.
-- Próbujesz nawiązać połączenie z udziałem plików platformy Azure z maszyny Wirtualnej platformy Azure, a maszyna wirtualna nie znajduje się w tym samym regionie co konto magazynu.
-- Jeśli [Wymagany bezpieczny transfer]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ustawienie jest włączone na koncie magazynu i usługi Azure Files zezwala tylko na połączenia, które używają protokołu SMB 3.0 za pomocą szyfrowania.
-
-### <a name="solution"></a>Rozwiązanie
-
-Aby rozwiązać ten problem, należy użyć [narzędzie do rozwiązywania problemów dla usługi Azure Files spowodowanych błędami instalowania w systemie Linux](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089). To narzędzie:
-
-* Pomocne podczas walidowania klienta uruchamiania środowiska.
-* Wykrywa konfiguracji niezgodny klienta, spowodowałoby błąd dostępu dla usługi Azure Files.
-* Zawiera wskazówki nad własnym rozwiązaniem problemu.
-* Służy do zbierania danych diagnostycznych śledzenia.
-
 
 ## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: nie można uzyskać dostępu "&lt;ścieżki&gt;": Błąd wejścia/wyjścia
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: malop; kumud
-ms.openlocfilehash: 07c8087043526a8eb0bf7a1963a761c40c11a925
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 383282aedd83f8f3e673444354bf17fdbf3f453c
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67202854"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798951"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing ruchu w sieci wirtualnej
 
@@ -30,17 +30,17 @@ Dowiedz się więcej na temat sposobu kierowania ruchu platformy Azure między p
 
 Platforma Azure automatycznie tworzy trasy systemowe i przypisuje trasy do każdej podsieci w sieci wirtualnej. Nie możesz tworzyć tras systemowych ani nie możesz ich usuwać, ale możesz zastąpić niektóre trasy systemowe [trasami niestandardowymi](#custom-routes). Platforma Azure tworzy domyślne trasy systemowe dla każdej podsieci i dodaje dodatkowe [opcjonalne trasy domyślne](#optional-default-routes) do określonych podsieci lub do każdej podsieci, gdy korzystasz z określonych możliwości platformy Azure.
 
-### <a name="default"></a>Domyślne
+### <a name="default"></a>Domyślny
 
 Każda trasa zawiera prefiks adresu i typ następnego przeskoku. Gdy ruch opuszczający podsieć jest wysyłany na adres IP w ramach prefiksu adresu trasy, trasa zawierająca prefiks jest trasą używaną przez platformę Azure. Dowiedz się więcej o [sposobie wybierania trasy przez platformę Azure](#how-azure-selects-a-route), gdy wiele tras zawiera te same prefiksy lub nakładające się prefiksy. Przy każdym utworzeniu sieci wirtualnej platforma Azure automatycznie tworzy następujące domyślne trasy systemowe dla każdej podsieci w sieci wirtualnej:
 
-|Element źródłowy |Prefiksy adresów                                        |Typ następnego skoku  |
+|Source |Prefiksy adresów                                        |Typ następnego skoku  |
 |-------|---------                                               |---------      |
-|Domyślne|Unikatowy dla sieci wirtualnej                           |Sieć wirtualna|
-|Domyślne|0.0.0.0/0                                               |Internet       |
-|Domyślne|10.0.0.0/8                                              |Brak           |
-|Domyślne|192.168.0.0/16                                          |Brak           |
-|Domyślne|100.64.0.0/10                                           |Brak           |
+|Domyślny|Unikatowy dla sieci wirtualnej                           |Sieć wirtualna|
+|Domyślny|0.0.0.0/0                                               |Internet       |
+|Domyślny|10.0.0.0/8                                              |Brak           |
+|Domyślny|192.168.0.0/16                                          |Brak           |
+|Domyślny|100.64.0.0/10                                           |Brak           |
 
 Typy następnego przeskoku wymienione w powyższej tabeli określają sposób, w jaki platforma Azure kieruje ruch przeznaczony dla wymienionego prefiksu adresu. Poniżej znajdują się objaśnienia typów następnego przeskoku:
 
@@ -57,11 +57,11 @@ Typy następnego przeskoku wymienione w powyższej tabeli określają sposób, w
 
 Platforma Azure dodaje dodatkowe domyślne trasy systemowe dla różnych funkcji platformy Azure, ale tylko po włączeniu tych funkcji przez Ciebie. W zależności od możliwości platforma Azure dodaje opcjonalne trasy domyślne do określonych podsieci w sieci wirtualnej albo do wszystkich podsieci w sieci wirtualnej. Do dodatkowych tras systemowych i typów następnych przeskoków, które platforma Azure może dodać, gdy włączysz różne możliwości, należą:
 
-|Element źródłowy                 |Prefiksy adresów                       |Typ następnego skoku|Podsieć w sieci wirtualnej, której trasa jest dodawana|
+|Source                 |Prefiksy adresów                       |Typ następnego skoku|Podsieć w sieci wirtualnej, której trasa jest dodawana|
 |-----                  |----                                   |---------                    |--------|
-|Domyślne                |Unikatowy dla sieci wirtualnej, na przykład: 10.1.0.0/16|Komunikacja równorzędna sieci wirtualnych                 |Wszyscy|
+|Domyślny                |Unikatowy dla sieci wirtualnej, na przykład: 10.1.0.0/16|Komunikacja równorzędna sieci wirtualnych                 |Wszyscy|
 |Brama sieci wirtualnej|Prefiksy anonsowane lokalnie za pośrednictwem protokołu BGP lub skonfigurowane w bramie sieci lokalnej     |Brama sieci wirtualnej      |Wszyscy|
-|Domyślne                |Wiele                               |VirtualNetworkServiceEndpoint|Tylko podsieć, dla której jest włączony punkt końcowy usługi.|
+|Domyślny                |Wiele                               |VirtualNetworkServiceEndpoint|Tylko podsieć, dla której jest włączony punkt końcowy usługi.|
 
 * **Komunikacja równorzędna sieci wirtualnej**: Podczas tworzenia komunikacji równorzędnej sieci wirtualnej między dwiema sieciami wirtualnymi dodawana jest trasa dla każdego zakresu adresów w obrębie przestrzeni adresowej w każdej sieci wirtualnej, dla której jest tworzona komunikacja równorzędna. Dowiedz się więcej o [komunikacji równorzędnej sieci wirtualnej](virtual-network-peering-overview.md).<br>
 * **Brama sieci wirtualnej**: Co najmniej jedna trasa w ramach *bramy sieci wirtualnej* wymienionej jako typ następnego przeskoku jest dodawana po dodaniu bramy sieci wirtualnej do sieci wirtualnej. Elementem źródłowym jest również *brama sieci wirtualnej*, ponieważ brama dodaje trasy do podsieci. Jeśli Twoja brama sieci lokalnej wymienia trasy protokołu [BGP](#border-gateway-protocol) z bramą sieci wirtualnej platformy Azure, dla każdej trasy propagowanej z bramy sieci lokalnej dodawana jest trasa. Zaleca się zsumowanie tras lokalnych do największych możliwych zakresów adresów, aby jak najmniejsza liczba adresów była propagowana do bramy sieci wirtualnej platformy Azure. Istnieją ograniczenia liczby tras, które możesz propagować do bramy sieci wirtualnej platformy Azure. Aby uzyskać więcej informacji, zobacz [Azure limits (Ograniczenia platformy Azure)](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).<br>
@@ -98,7 +98,7 @@ Podczas tworzenia tras zdefiniowanych przez użytkownika możesz określić poni
 
 Typu **Komunikacja równorzędna sieci wirtualnej** lub **VirtualNetworkServiceEndpoint** nie możesz określić jako typu następnego przeskoku w trasach zdefiniowanych przez użytkownika. Trasy z typami następnego przeskoku **Komunikacja równorzędna sieci wirtualnej** lub **VirtualNetworkServiceEndpoint** są tworzone tylko przez platformę Azure podczas konfigurowania komunikacji równorzędnej sieci wirtualnej lub punktu końcowego usługi.
 
-## <a name="next-hop-types-across-azure-tools"></a>**Typy następnego przeskoku dla narzędzi platformy Azure**
+## <a name="next-hop-types-across-azure-tools"></a>Typy następnego przeskoku dla narzędzi systemu Azure
 
 Nazwa wyświetlana i przywoływana dla typów następnego przeskoku jest różna dla witryny Azure Portal i narzędzi wiersza polecenia oraz usługi Azure Resource Manager i klasycznych modeli wdrażania. W poniższej tabeli wymieniono nazwy używane w odwołaniu do każdego typu następnego przeskoku dla różnych narzędzi i [modeli wdrażania](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json):
 
@@ -139,9 +139,9 @@ Jeśli wiele tras zawiera ten sam prefiks adresu, platforma Azure wybiera typ tr
 Na przykład tabela tras zawiera następujące trasy:
 
 
-|Element źródłowy   |Prefiksy adresów  |Typ następnego skoku           |
+|Source   |Prefiksy adresów  |Typ następnego skoku           |
 |---------|---------         |-------                 |
-|Domyślne  | 0.0.0.0/0        |Internet                |
+|Domyślny  | 0.0.0.0/0        |Internet                |
 |Użytkownik     | 0.0.0.0/0        |Brama sieci wirtualnej |
 
 Jeśli ruch jest przeznaczony dla adresu IP poza prefiksami adresów jakichkolwiek innych tras w tabeli tras, platforma Azure wybiera trasę z elementem źródłowym **Użytkownik**, ponieważ trasy zdefiniowane przez użytkownika mają wyższy priorytet niż trasy domyślne systemu.
@@ -195,7 +195,7 @@ W celu zilustrowania koncepcji podanych w tym artykule w kolejnych sekcjach opis
 
 1. Zezwalaj na cały ruch między wszystkimi innymi podsieciami i sieciami wirtualnymi.
 
-### <a name="implementation"></a>Wdrażanie
+### <a name="implementation"></a>Implementacja
 
 Na poniższej ilustracji przedstawiono implementację za pośrednictwem modelu wdrażania przy użyciu usługi Azure Resource Manager, która spełnia poprzednie wymagania:
 
@@ -209,19 +209,19 @@ Strzałki oznaczają przepływu ruchu.
 
 Tabela tras dla podsieci *Subnet1* na ilustracji zawiera następujące trasy:
 
-|ID  |Element źródłowy |Stan  |Prefiksy adresów    |Typ następnego skoku          |Adres IP następnego przeskoku|Nazwa trasy zdefiniowanej przez użytkownika| 
+|id  |Source |Stan  |Prefiksy adresów    |Typ następnego skoku          |Adres IP następnego przeskoku|Nazwa trasy zdefiniowanej przez użytkownika| 
 |----|-------|-------|------              |-------                |--------           |--------      |
-|1   |Domyślne|Nieprawidłowy|10.0.0.0/16         |Sieć wirtualna        |                   |              |
+|1   |Domyślny|Nieprawidłowy|10.0.0.0/16         |Sieć wirtualna        |                   |              |
 |2   |Użytkownik   |Aktywne |10.0.0.0/16         |Urządzenie wirtualne      |10.0.100.4         |W ramach sieci VNet1  |
 |3   |Użytkownik   |Aktywne |10.0.0.0/24         |Sieć wirtualna        |                   |W ramach podsieci Subnet1|
-|4   |Domyślne|Nieprawidłowy|10.1.0.0/16         |Komunikacja równorzędna sieci wirtualnych           |                   |              |
-|5   |Domyślne|Nieprawidłowy|10.2.0.0/16         |Komunikacja równorzędna sieci wirtualnych           |                   |              |
+|4   |Domyślny|Nieprawidłowy|10.1.0.0/16         |Komunikacja równorzędna sieci wirtualnych           |                   |              |
+|5   |Domyślny|Nieprawidłowy|10.2.0.0/16         |Komunikacja równorzędna sieci wirtualnych           |                   |              |
 |6   |Użytkownik   |Aktywne |10.1.0.0/16         |Brak                   |                   |ToVNet2-1-porzuć|
 |7   |Użytkownik   |Aktywne |10.2.0.0/16         |Brak                   |                   |ToVNet2-2-porzuć|
-|8   |Domyślne|Nieprawidłowy|10.10.0.0/16        |Brama sieci wirtualnej|[X.X.X.X]          |              |
+|8   |Domyślny|Nieprawidłowy|10.10.0.0/16        |Brama sieci wirtualnej|[X.X.X.X]          |              |
 |9   |Użytkownik   |Aktywne |10.10.0.0/16        |Urządzenie wirtualne      |10.0.100.4         |Do lokalnego    |
-|10  |Domyślne|Aktywne |[X.X.X.X]           |VirtualNetworkServiceEndpoint    |         |              |
-|11  |Domyślne|Nieprawidłowy|0.0.0.0/0           |Internet               |                   |              |
+|10  |Domyślny|Aktywne |[X.X.X.X]           |VirtualNetworkServiceEndpoint    |         |              |
+|11  |Domyślny|Nieprawidłowy|0.0.0.0/0           |Internet               |                   |              |
 |12  |Użytkownik   |Aktywne |0.0.0.0/0           |Urządzenie wirtualne      |10.0.100.4         |Domyślne NVA   |
 
 Objaśnienia każdego identyfikatora trasy są następujące:
@@ -243,16 +243,16 @@ Objaśnienia każdego identyfikatora trasy są następujące:
 
 Tabela tras dla podsieci *Subnet2* na ilustracji zawiera następujące trasy:
 
-|Element źródłowy  |Stan  |Prefiksy adresów    |Typ następnego skoku             |Adres IP następnego przeskoku|
+|Source  |Stan  |Prefiksy adresów    |Typ następnego skoku             |Adres IP następnego przeskoku|
 |------- |-------|------              |-------                   |--------           
-|Domyślne |Aktywne |10.0.0.0/16         |Sieć wirtualna           |                   |
-|Domyślne |Aktywne |10.1.0.0/16         |Komunikacja równorzędna sieci wirtualnych              |                   |
-|Domyślne |Aktywne |10.2.0.0/16         |Komunikacja równorzędna sieci wirtualnych              |                   |
-|Domyślne |Aktywne |10.10.0.0/16        |Brama sieci wirtualnej   |[X.X.X.X]          |
-|Domyślne |Aktywne |0.0.0.0/0           |Internet                  |                   |
-|Domyślne |Aktywne |10.0.0.0/8          |Brak                      |                   |
-|Domyślne |Aktywne |100.64.0.0/10       |Brak                      |                   |
-|Domyślne |Aktywne |192.168.0.0/16      |Brak                      |                   |
+|Domyślny |Aktywne |10.0.0.0/16         |Sieć wirtualna           |                   |
+|Domyślny |Aktywne |10.1.0.0/16         |Komunikacja równorzędna sieci wirtualnych              |                   |
+|Domyślny |Aktywne |10.2.0.0/16         |Komunikacja równorzędna sieci wirtualnych              |                   |
+|Domyślny |Aktywne |10.10.0.0/16        |Brama sieci wirtualnej   |[X.X.X.X]          |
+|Domyślny |Aktywne |0.0.0.0/0           |Internet                  |                   |
+|Domyślny |Aktywne |10.0.0.0/8          |Brak                      |                   |
+|Domyślny |Aktywne |100.64.0.0/10       |Brak                      |                   |
+|Domyślny |Aktywne |192.168.0.0/16      |Brak                      |                   |
 
 Tabela tras dla podsieci *Subnet2* zawiera wszystkie domyślne trasy utworzone przez platformę Azure oraz opcjonalne równorzędne sieci wirtualne i opcjonalne trasy bramy sieci wirtualnej. Platforma Azure dodała opcjonalne trasy do wszystkich podsieci w sieci wirtualnej, gdy brama i komunikacja równorzędna zostały dodane do sieci wirtualnej. Platforma Azure usunęła trasy dla prefiksów adresów 10.0.0.0/8, 192.168.0.0/16 i 100.64.0.0/10 z *Subnet1* tabeli tras, gdy zdefiniowana przez użytkownika trasa dla prefiksu adresu 0.0.0.0/0 została dodana do *Subnet1*.  
 

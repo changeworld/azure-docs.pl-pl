@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 ms.date: 08/24/2018
-ms.author: mahender,cephalin
+ms.author: cephalin
+ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: d914e3ad3043b2671e154d1616c6800f34415c11
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 42d925a77de20392459081e6669706da330ba7fa
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60835604"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836711"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Uwierzytelnianie i autoryzacja w usłudze Azure App Service
 
@@ -55,7 +56,7 @@ Moduł jest uruchamiana niezależnie od kodu aplikacji i jest skonfigurowany prz
 
 ### <a name="user-claims"></a>Oświadczenia użytkownika
 
-Dla wszystkich środowisk języka usługi App Service udostępnia oświadczenia użytkownika do kodu przez iniekcję je w nagłówku żądania. W przypadku aplikacji platformy ASP.NET 4.6, wypełnia usługi App Service [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) roszczeń uwierzytelnionego użytkownika, aby można było wykonywać standardowego wzorca kodu platformy .NET, łącznie z `[Authorize]` atrybutu. Podobnie w przypadku aplikacji PHP, usługa App Service umożliwia wypełnienie `_SERVER['REMOTE_USER']` zmiennej.
+Dla wszystkich środowisk języka usługi App Service udostępnia oświadczenia użytkownika do kodu przez iniekcję je w nagłówku żądania. W przypadku aplikacji platformy ASP.NET 4.6, wypełnia usługi App Service [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) roszczeń uwierzytelnionego użytkownika, aby można było wykonywać standardowego wzorca kodu platformy .NET, łącznie z `[Authorize]` atrybutu. Podobnie w przypadku aplikacji PHP, usługa App Service umożliwia wypełnienie `_SERVER['REMOTE_USER']` zmiennej. Dla aplikacji w języku Java, oświadczenia są [dostępne z serwlet Tomcat](containers/configure-language-java.md#authenticate-users).
 
 Aby uzyskać [usługi Azure Functions](../azure-functions/functions-overview.md), `ClaimsPrincipal.Current` nie jest uwodniony dla kodu platformy .NET, ale można nadal znaleźć oświadczenia użytkownika w nagłówku żądania.
 
@@ -150,10 +151,10 @@ Ta opcja zapewnia większą elastyczność obsługi żądań anonimowych. Na prz
 
 Przewodniki z instrukcjami właściwe dla dostawcy:
 
-* [Jak skonfigurować aplikację do używania logowania usługi Azure Active Directory][AAD]
+* [Jak skonfigurować aplikację do używania logowania w usłudze Azure Active Directory][AAD]
 * [Jak skonfigurować aplikację do używania logowania usługi Facebook][Facebook]
 * [Jak skonfigurować aplikację do używania logowania usługi Google][Google]
-* [Jak skonfigurować aplikację do używania Microsoft Account login][MSA]
+* [Jak skonfigurować aplikację do używania logowania za pomocą konta Microsoft][MSA]
 * [Jak skonfigurować aplikację do używania logowania usługi Twitter][Twitter]
 * [Instrukcje: Użyj uwierzytelniania niestandardowego dla aplikacji][custom-auth]
 

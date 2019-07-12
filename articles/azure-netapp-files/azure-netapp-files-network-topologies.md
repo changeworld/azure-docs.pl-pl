@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 207fb003eb1fdaafe4f43f7cd41dd4b7662eddf9
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 5b54d8f21f4cb1cdd7bb06871df6ac22d19d1ab6
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331973"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705199"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Wytyczne dotyczące planowania sieci usługi Azure NetApp Files
 
@@ -35,7 +35,7 @@ Należy zrozumieć kilka istotnych kwestii, podczas planowania związanego z pli
 
 Poniższe funkcje są obecnie obsługiwane dla usługi Azure Files NetApp: 
 
-* Sieciowe grupy zabezpieczeń (NSG) w podsieci
+* Sieciowe grupy zabezpieczeń (NSG) stosowana do podsieci delegowanego
 * Trasy zdefiniowane przez użytkownika (Udr) z następnym etapem jako podsieć plików NetApp platformy Azure
 * Zasady usługi Azure (na przykład niestandardowe zasady nazewnictwa) w interfejsie usługi Azure Files NetApp
 * Moduły równoważenia obciążenia dla ruchu usługi Azure Files NetApp
@@ -52,12 +52,12 @@ W poniższej tabeli opisano topologie sieci, obsługiwane przez usługi Azure Fi
 
 |    Topologie    |    jest obsługiwany    |     Obejście    |
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
-|    Łączność z woluminu w lokalnej sieci wirtualnej    |    Yes    |         |
-|    Łączność z woluminu w skomunikowanej równorzędnie sieci wirtualnej (tym samym regionie)    |    Yes    |         |
+|    Łączność z woluminu w lokalnej sieci wirtualnej    |    Tak    |         |
+|    Łączność z woluminu w skomunikowanej równorzędnie sieci wirtualnej (tym samym regionie)    |    Tak    |         |
 |    Łączność z woluminu w wirtualnych sieciach równorzędnych (Cross regionu lub globalnej komunikacji równorzędnej)    |    Nie    |    Brak    |
-|    Łączność z woluminem przez bramę usługi ExpressRoute    |    Tak    |         |
+|    Łączność z woluminem przez bramę usługi ExpressRoute    |    Yes    |         |
 |    Łączność ze środowiska lokalnego do woluminu w szprysze sieci wirtualnej przez bramę usługi ExpressRoute i wirtualną sieć równorzędną przy użyciu tranzyt przez bramę    |    Nie    |    Utwórz podsieć delegowanego w piastą (sieć wirtualną platformy Azure za pomocą bramy)    |
-|    Łączność ze środowiska lokalnego do woluminu w szprysze sieci wirtualnej za pośrednictwem bramy sieci VPN    |    Yes    |         |
+|    Łączność ze środowiska lokalnego do woluminu w szprysze sieci wirtualnej za pośrednictwem bramy sieci VPN    |    Tak    |         |
 |    Łączność ze środowiska lokalnego do woluminu w szprysze sieci wirtualnej za pośrednictwem bramy sieci VPN i wirtualną sieć równorzędną przy użyciu tranzyt przez bramę    |    Tak    |         |
 
 
@@ -99,7 +99,7 @@ Podstawowy scenariusz jest tworzenie lub połączenie do usługi Azure Files Net
 
 Jeśli masz dodatkowe sieci wirtualne w tym samym regionie, którzy potrzebują dostępu do zasobów siebie nawzajem, sieci wirtualne mogą być połączone za pomocą [komunikacja równorzędna sieci wirtualnych](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) bezpieczną łączność za pośrednictwem infrastruktury platformy Azure. 
 
-Na powyższym diagramie, należy rozważyć sieci wirtualnej 2 i 3 sieci wirtualnej. Jeśli 1 maszyna wirtualna musi połączyć się z 2 maszyn wirtualnych i 2 woluminu lub maszyny Wirtualnej 2 musi połączyć się woluminu 1 lub 1 maszyny Wirtualnej, należy włączyć wirtualną sieć równorzędną między siecią wirtualną 2 i 3 sieci wirtualnej. 
+Na powyższym diagramie, należy rozważyć sieci wirtualnej 2 i 3 sieci wirtualnej. Jeśli maszyna wirtualna 2 musi połączyć się z 3 maszyny Wirtualnej lub woluminie 2 lub 3 maszyny Wirtualnej musi nawiązać połączenie z maszyną Wirtualną 2 lub 1 woluminu, należy włączyć wirtualną sieć równorzędną między siecią wirtualną 2 i 3 sieci wirtualnej. 
 
 Ponadto należy wziąć pod uwagę scenariusz, w którym 1 sieć wirtualna a jest połączona z siecią wirtualną 2 i 2 w sieci wirtualnej jest połączona z siecią wirtualną 3 w tym samym regionie. Zasoby z zakresu od 1 do sieci wirtualnej mogą łączyć się z zasobami w sieci wirtualnej 2, ale nie można połączyć z zasobami w sieci wirtualnej 3, chyba że skomunikowane równorzędnie sieci wirtualnej 1 i 3 sieci wirtualnej. 
 
@@ -111,17 +111,17 @@ Na poniższym diagramie przedstawiono środowisko hybrydowe:
 
 ![Hybrydowe środowisko sieciowe](../media/azure-netapp-files/azure-netapp-files-network-hybrid-environment.png)
 
-W scenariuszu hybrydowym aplikacje z lokalnych centrów danych muszą mieć dostęp do zasobów na platformie Azure.  Jest to, czy chcesz rozszerzyć centrum danych na platformie Azure, którego chcesz użyć usługi natywnego platformy Azure lub na potrzeby odzyskiwania po awarii. Zobacz [bramy sieci VPN, opcje planowania](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable) o tym, jak wiele zasobów lokalnych łączenie się z zasobami na platformie Azure za pośrednictwem sieci VPN lokacja lokacja lub ExpressRoute.
+W scenariuszu hybrydowym aplikacje z lokalnych centrów danych muszą mieć dostęp do zasobów na platformie Azure.  Jest to, czy chcesz rozszerzyć centrum danych na platformie Azure, którego chcesz użyć usługi natywnego platformy Azure lub na potrzeby odzyskiwania po awarii. Zobacz [bramy sieci VPN, opcje planowania](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable) informacji na temat wielu zasobów lokalnych łączenie się z zasobami na platformie Azure za pośrednictwem sieci VPN lokacja lokacja lub ExpressRoute.
 
 W topologii piasty i szprych hybrydowego piastą platformy Azure działa jako centralny punkt łączności z siecią lokalną. Szprychy są sieciami wirtualnymi jest połączona z Centrum i mogą być używane do izolowania obciążeń.
 
-W zależności od konfiguracji. Możesz połączyć zasoby ze środowiska lokalnego do zasobów w Centrum i szprychy.
+W zależności od konfiguracji możesz połączyć zasoby lokalne do zasobów w Centrum i szprychy.
 
 W topologii przedstawionym powyżej sieci lokalnej jest podłączone do koncentratora sieci wirtualnej na platformie Azure, a istnieją 2 szprychy sieciami wirtualnymi w tym samym regionie jest połączona z sieci wirtualnej serwera centralnego.  W tym scenariuszu Opcje łączności, obsługiwane w przypadku usługi Azure Files NetApp woluminy są następujące:
 
-* W środowisku lokalnym zasoby maszyny Wirtualnej 1 i 2 maszyn wirtualnych mogą łączyć się na woluminie 1 w Centrum za pośrednictwem sieci VPN lokacja lokacja lub Expressroute. 
+* W środowisku lokalnym zasoby maszyny Wirtualnej 1 i 2 maszyn wirtualnych mogą łączyć się na woluminie 1 w Centrum za pośrednictwem obwodu site-to-site VPN lub usługi ExpressRoute. 
 * W środowisku lokalnym zasoby maszyny Wirtualnej 1 i 2 maszyn wirtualnych mogą łączyć się na woluminie 2 lub 3 woluminu za pośrednictwem sieci VPN typu lokacja lokacja i regionalne wirtualne sieci równorzędne.
-* 3 maszyny Wirtualnej w piaście sieci wirtualnej można nawiązać woluminie 2 w szprysze 1 sieć wirtualną i 3 woluminu w szprysze sieci wirtualnej 2.
+* 3 maszyny Wirtualnej w piaście sieci wirtualnej mogą łączyć się 2 woluminu w szprysze 1 sieć wirtualną i 3 woluminu w szprysze sieci wirtualnej 2.
 * 4 maszyny Wirtualnej ze szprychy 1 sieci wirtualnej i 5 maszyn wirtualnych ze szprychy 2 w sieci wirtualnej mogą łączyć się na woluminie 1 w sieci wirtualnej serwera centralnego.
 
 4 maszyny Wirtualnej w szprysze 1 sieć wirtualna nie może nawiązać 3 woluminu w szprysze sieci wirtualnej 2. Ponadto 5 maszyn wirtualnych w szprysze VNet2 nie można nawiązać połączenia 2 woluminu w szprysze 1 sieci wirtualnej. Dotyczy to sytuacji, ponieważ nie równorzędne sieci wirtualne będące szprychami i _routing tranzytowy nie jest obsługiwany za pośrednictwem wirtualnej sieci równorzędnej_.

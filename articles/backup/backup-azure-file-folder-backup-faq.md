@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/02/2019
+ms.date: 07/09/2019
 ms.author: dacurwin
-ms.openlocfilehash: d4d1044a30d4ebc551cf1305993aba2a201c4c94
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: dd800c0eeb18fe45b44a72aeb58b500623b2b366
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514450"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705090"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Często zadawane pytania dotyczące tworzenia kopii zapasowych plików i folderów
 
@@ -88,9 +88,19 @@ To ostrzeżenie może się pojawić, nawet jeśli skonfigurowano zasady kopii za
 Rozmiar folderu pamięci podręcznej określa ilość danych, które można umieścić w kopii zapasowej.
 - Woluminy folderu pamięci podręcznej powinien mieć wolnego miejsca, która jest równa co najmniej 5 – 10% całkowitego rozmiaru danych kopii zapasowej.
 - Jeśli wolumin ma mniej niż 5% wolnego miejsca, Zwiększ rozmiar woluminu lub Przenieś folder pamięci podręcznej do woluminu z wystarczającą ilością miejsca.
-- Jeśli utworzenie kopii zapasowej stanu systemu Windows, będziesz potrzebować dodatkowe 30 – 35 GB wolnego miejsca w woluminie zawierającym folder pamięci podręcznej
-### <a name="how-do-i-change-the-cache-location-for-the-mars-agent"></a>Jak zmienić lokalizację pamięci podręcznej agenta usług MARS?
+- Jeśli utworzenie kopii zapasowej stanu systemu Windows, będziesz potrzebować dodatkowe 30 – 35 GB wolnego miejsca w woluminie zawierającym folder pamięci podręcznej.
 
+### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>Jak sprawdzić, czy folder tymczasowy jest prawidłowy i dostępny?
+
+1. Domyślnie folder tymczasowy znajduje się w `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
+2. Upewnij się, że ścieżka lokalizacji folder tymczasowy jest zgodna z wartościami wpisów kluczy rejestru, pokazano poniżej:
+
+  | Ścieżka rejestru | Klucz rejestru | Wartość |
+  | --- | --- | --- |
+  | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Nowa lokalizacja folderu pamięci podręcznej* |
+  | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Nowa lokalizacja folderu pamięci podręcznej* |
+
+### <a name="how-do-i-change-the-cache-location-for-the-mars-agent"></a>Jak zmienić lokalizację pamięci podręcznej agenta usług MARS?
 
 1. Uruchom następujące polecenie w wierszu polecenia z podwyższonym zatrzymać Aparat kopii zapasowej:
 

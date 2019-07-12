@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c15d315d186af5622d9fa988945750d93e8eb11f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae6d55180785c9407662776a95fcba31f8ba5275
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66507560"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835204"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Dodawanie oświadczenia i dostosowywanie danych wejściowych za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C użytkownika
 
@@ -79,7 +79,7 @@ Następujące elementy są używane do definiowania oświadczenia:
 
 #### <a name="dropdownsingleselect"></a>DropdownSingleSelect
 
-![Zrzut ekranu przedstawiający listę rozwijaną opcji](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
+![Kontrolka dropdown przedstawiający kilka opcji wybieranych](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
 
 ```xml
 <ClaimType Id="city">
@@ -96,7 +96,7 @@ Następujące elementy są używane do definiowania oświadczenia:
 
 #### <a name="checkboxmultiselect"></a>CheckboxMultiSelect
 
-![Zrzut ekranu przedstawiający opcji wyboru wielokrotnego](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
+![Kontrolka pola wyboru wielokrotnego wyboru przedstawiający kilka opcji](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
 
 ```xml
 <ClaimType Id="city">
@@ -235,7 +235,7 @@ Następujące elementy są używane do definiowania oświadczenia:
       <IncludeTechnicalProfile ReferenceId="AAD-Common" />
     </TechnicalProfile>
     ```
-   
+
 4. Dodaj `<OutputClaim ClaimTypeReferenceId="city" />` oświadczenia do pliku SignUporSignIn.xml tak, aby to oświadczenie jest wysyłane do aplikacji w tokenie po podróży użytkownika pomyślne.
 
     ```xml
@@ -304,6 +304,6 @@ Zweryfikowane, adres e-mail jest domyślnie włączone w `<TechnicalProfile Id="
 <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się, jak [Użyj atrybutów niestandardowych w niestandardowym profilu Edytuj zasady](active-directory-b2c-create-custom-attributes-profile-edit-custom.md).

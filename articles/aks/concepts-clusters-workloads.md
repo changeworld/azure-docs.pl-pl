@@ -2,17 +2,17 @@
 title: Pojęcia — podstawy platformy Kubernetes dla usługi Azure Kubernetes (AKS)
 description: Poznaj podstawowe klastra i obciążenia składników platformy Kubernetes i ich wzajemnymi do funkcji w usłudze Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.author: iainfou
-ms.openlocfilehash: ab818c0bded71b4566173f4a6a720fce9bc539c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 5f387310e737982b824d0ac9662822d9a74f39e9
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66514526"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616018"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Kubernetes podstawowe pojęcia dotyczące usługi Azure Kubernetes Service (AKS)
 
@@ -132,7 +132,7 @@ Korzysta z rozwiązania Kubernetes *zasobników* w celu uruchomienia wystąpieni
 
 Kiedy tworzysz zasobnik, można zdefiniować *limity zasobów* żądania pewna ilość zasobów procesora CPU lub pamięci. Harmonogram Kubernetes próbuje zaplanować zasobników do uruchamiania w węźle z dostępnych zasobów w celu spełnienia żądania. Można również określić limity zasobów maksymalna, które uniemożliwiają pod danym zużywa zbyt dużej ilości zasobów obliczeniowych, z węzła podstawowego. Najlepszym rozwiązaniem jest uwzględnienie limity zasobów dla wszystkich zasobników ułatwiające harmonogramu Kubernetes, zrozumieć, jakie zasoby są potrzebne i dozwolonych.
 
-Aby uzyskać więcej informacji, zobacz [zasobników] [ kubernetes-pods] i [zasobnika Kubernetes cyklu życia][kubernetes-pod-lifecycle].
+Aby uzyskać więcej informacji, zobacz [zasobników][kubernetes-pods] and [Kubernetes pod lifecycle][kubernetes-pod-lifecycle].
 
 Zasobnik jest zasobem logiczne, ale są kontenerów, których uruchamianie obciążeń aplikacji. Zasobników są zazwyczaj tymczasowych, możliwe do likwidacji zasobów i indywidualnie zaplanowane zasobników przeoczyć niektórych funkcji wysokiej dostępności i nadmiarowości udostępnia rozwiązania Kubernetes. Zamiast tego zasobników są zwykle wdrażane i zarządzane przez rozwiązania Kubernetes *kontrolerów*, takich jak kontroler wdrożenia.
 
@@ -237,7 +237,7 @@ Podczas tworzenia klastra usługi AKS, dostępne są następujące przestrzenie 
 
 Aby uzyskać więcej informacji, zobacz [przestrzeni nazw Kubernetes][kubernetes-namespaces].
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym artykule omówiono niektóre z podstawowych składników platformy Kubernetes i sposobów ich zastosowania w klastrach usługi AKS. Dodatkowe informacje na temat podstawowej platformy Kubernetes oraz pojęcia zostały przedstawione z usługi AKS zobacz następujące artykuły:
 

@@ -2,17 +2,17 @@
 title: Operator najlepsze rozwiązania — tożsamości w usłudze Azure Kubernetes usługi (AKS)
 description: Dowiedz się, operator klastra najlepsze rozwiązania dotyczące sposobów zarządzania uwierzytelniania i autoryzacji dla klastrów w usłudze Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: iainfou
-ms.openlocfilehash: f98e38556458b8d8a675d1e3f985aacfca022082
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.author: mlearned
+ms.openlocfilehash: 82bf59dddeecab0addf00a935f55be8d1d7952d3
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "65074166"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614775"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące uwierzytelniania i autoryzacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -48,7 +48,7 @@ Aby utworzyć klaster AKS, która używa usługi Azure AD, zobacz [integracji us
 
 **Najważniejsze wskazówki** — Użyj Kubernetes RBAC do definiowania, które użytkownicy lub grupy mają uprawnienia do zasobów w klastrze. Tworzenie ról i powiązań, które przypisać najmniejszą ilością uprawnień wymaganych. Integracja z usługą Azure AD, więc wszelkie zmiany w stan użytkownika lub członkostwa w grupie jest automatycznie aktualizowana i dostępu do zasobów klastra jest aktualny.
 
-W usłudze Kubernetes możesz podać szczegółową kontrolę dostępu do zasobów w klastrze. Można zdefiniować uprawnienia na poziomie klastra lub określonych obszarów nazw. Można określić, jakie zasoby mogą być zarządzane i z jakimi uprawnieniami. Te role są stosowane do użytkowników lub grup z powiązaniem. Aby uzyskać więcej informacji na temat *role*, *ClusterRoles*, i *powiązania*, zobacz [opcje dostęp i tożsamość dla usługi Azure Kubernetes Service (AKS)] [aks-concepts-identity].
+W usłudze Kubernetes możesz podać szczegółową kontrolę dostępu do zasobów w klastrze. Można zdefiniować uprawnienia na poziomie klastra lub określonych obszarów nazw. Można określić, jakie zasoby mogą być zarządzane i z jakimi uprawnieniami. Te role są stosowane do użytkowników lub grup z powiązaniem. Aby uzyskać więcej informacji na temat *role*, *ClusterRoles*, i *powiązania*, zobacz [opcje dostęp i tożsamość dla usługi Azure Kubernetes Service (AKS)][aks-concepts-identity].
 
 Na przykład możesz utworzyć rolę, która przyznaje pełny dostęp do zasobów w przestrzeni nazw o nazwie *aplikacji finansowych*, jak pokazano w manifeście YAML następujący przykład:
 
@@ -84,7 +84,7 @@ roleRef:
 
 Gdy *developer1\@contoso.com* jest uwierzytelniany względem klastra AKS mają pełne uprawnienia do zasobów w *aplikacji finansowych* przestrzeni nazw. W tym sposób, możesz logicznie oddzielne i kontroli dostępu do zasobów. Kubernetes RBAC należy używać w połączeniu z platformą Azure — integracji z usługą AD, zgodnie z opisem w poprzedniej sekcji.
 
-Aby zobaczyć, jak kontrolować dostęp do zasobów usługi Kubernetes przy użyciu funkcji RBAC za pomocą grup usługi Azure AD, zobacz [kontrolować dostęp do zasobów klastra przy użyciu tożsamości usługi Azure Active Directory i kontroli dostępu opartej na rolach w usłudze AKS] [ azure-ad-rbac].
+Aby zobaczyć, jak kontrolować dostęp do zasobów usługi Kubernetes przy użyciu funkcji RBAC za pomocą grup usługi Azure AD, zobacz [kontrolować dostęp do zasobów klastra przy użyciu tożsamości usługi Azure Active Directory i kontroli dostępu opartej na rolach w usłudze AKS][azure-ad-rbac].
 
 ## <a name="use-pod-identities"></a>Użyj tożsamości zasobników
 
@@ -113,7 +113,7 @@ W poniższym przykładzie deweloper tworzy zasobnik, który korzysta z tożsamo�
 
 Aby użyć tożsamości zasobników, zobacz [tożsamości usługi Azure Active Directory dla aplikacji platformy Kubernetes][aad-pod-identity].
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Najlepsze rozwiązania dotyczące tej koncentruje się na uwierzytelnianie i autoryzacja dla klastra i zasoby. Aby zaimplementować niektórych z tych najlepszych rozwiązań, zobacz następujące artykuły:
 

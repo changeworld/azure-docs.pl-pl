@@ -3,16 +3,16 @@ title: Utwórz drzwiami frontowymi za pośrednictwem protokołu HTTP do przekier
 description: Dowiedz się, jak utworzyć drzwiami frontowymi przekierowanego ruchu z protokołu HTTP do HTTPS przy użyciu witryny Azure portal.
 services: front-door
 author: sharad4u
-ms.service: front-door
+ms.service: frontdoor
 ms.topic: article
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: a07b19c49630cc925e719aaa1d46476a1edc58f5
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 7fabc1e3445d3dbd357700ffde3caeb985cc60c4
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67333157"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67601959"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>Utwórz drzwiami frontowymi za pośrednictwem protokołu HTTP do przekierowania protokołu HTTPS przy użyciu witryny Azure portal
 
@@ -104,7 +104,7 @@ Po dodaniu tego rekordu CNAME strona rekordów DNS wygląda podobnie jak w nast�
 4. Oznacza to, czy tej samej operacji dla innych regułę routingu oraz dla Twojego trasa przekazywania dalej dodać domenę niestandardową.
 5. Kliknij przycisk **Zapisz** Aby przesłać wprowadzone zmiany.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak [utworzyć usługę Front Door](quickstart-create-front-door.md).
 - Dowiedz się, [jak działa usługa Front Door](front-door-routing-architecture.md).

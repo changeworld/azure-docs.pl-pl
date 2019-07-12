@@ -9,12 +9,12 @@ ms.date: 05/21/2019
 ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: common
-ms.openlocfilehash: 50eb62b20be66337c819372fa3d97eae4d7214b8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 43a673621aa3c114f99479a6da97153dae44990d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435737"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67696097"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Zarządzanie cyklem życia magazynu obiektów Blob platformy Azure
 
@@ -31,7 +31,7 @@ Rozważmy scenariusz, gdzie dane zaczynają częstego dostępu podczas wczesnych
 
 ## <a name="storage-account-support"></a>Obsługa konta magazynu
 
-Zasady zarządzania cyklem życia jest dostępny z obu ogólnego przeznaczenia w wersji 2 (GPv2) konta i kont usługi Blob storage. W witrynie Azure portal możesz uaktualnić istniejące konto ogólnego przeznaczenia (GPv1) do konta GPv2. Aby uzyskać więcej informacji dotyczących kont magazynu, zobacz temat [Azure Storage account overview](../common/storage-account-overview.md) (Omówienie konta usługi Azure Storage).  
+Zasady zarządzania cyklem życia jest dostępna z ogólnego przeznaczenia w wersji 2 (GPv2) konta, kont usługi Blob storage i konta magazynu Premium blokowych obiektów Blob. W witrynie Azure portal możesz uaktualnić istniejące konto ogólnego przeznaczenia (GPv1) do konta GPv2. Aby uzyskać więcej informacji dotyczących kont magazynu, zobacz temat [Azure Storage account overview](../common/storage-account-overview.md) (Omówienie konta usługi Azure Storage).  
 
 ## <a name="pricing"></a>Cennik
 
@@ -39,7 +39,7 @@ Funkcja zarządzania cyklem życia jest bezpłatne. Klienci są obciążani kosz
 
 ## <a name="regional-availability"></a>Dostępność regionalna
 
-Funkcja zarządzania cyklem życia jest dostępna we wszystkich regionach platformy Azure globalnego.
+Funkcja zarządzania cyklem życia jest dostępna we wszystkich regionach platformy Azure i Azure dla instytucji rządowych, globalne.
 
 ## <a name="add-or-remove-a-policy"></a>Dodawanie lub usuwanie zasad
 
@@ -199,10 +199,10 @@ Każda reguła w ramach zasad ma kilka parametrów:
 
 | Nazwa parametru | Typ parametru | Uwagi | Wymagane |
 |----------------|----------------|-------|----------|
-| `name`         | String |Nazwa reguły może zawierać maksymalnie 256 znaków alfanumerycznych. Nazwa reguły jest rozróżniana wielkość liter.  Musi być unikatowa w ramach zasad. | True |
+| `name`         | String |Nazwa reguły może zawierać maksymalnie 256 znaków alfanumerycznych. Nazwa reguły jest rozróżniana wielkość liter.  Musi być unikatowa w ramach zasad. | Prawda |
 | `enabled`      | Boolean | Opcjonalna wartość logiczna, aby umożliwić reguły do zastosowania tymczasowego wyłączone. Wartość domyślna to true, jeśli nie jest ustawiona. | False | 
-| `type`         | Wartość wyliczenia | Bieżącym typem prawidłowe jest `Lifecycle`. | True |
-| `definition`   | Obiekt, który definiuje reguły cyklu życia | Każda definicja składa się z zestawem filtru i zestawem akcji. | True |
+| `type`         | Wartość wyliczenia | Bieżącym typem prawidłowe jest `Lifecycle`. | Prawda |
+| `definition`   | Obiekt, który definiuje reguły cyklu życia | Każda definicja składa się z zestawem filtru i zestawem akcji. | Prawda |
 
 ## <a name="rules"></a>Reguły
 
@@ -262,7 +262,7 @@ Akcje są stosowane do filtrowanych obiektów blob, po spełnieniu warunku wykon
 
 Zarządzanie cyklem życia obsługuje warstw i usuwanie obiektów blob i usuwanie migawek obiektów blob. Dla obiektów blob lub migawki obiektów blob, należy zdefiniować co najmniej jedną akcję dla każdej reguły.
 
-| Akcja        | Podstawowy obiekt Blob                                   | Snapshot      |
+| Action        | Podstawowy obiekt Blob                                   | Snapshot      |
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | Obsługuje obiekty BLOB, obecnie w warstwie gorąca         | Nieobsługiwane |
 | tierToArchive | Obsługuje obiekty BLOB, obecnie w warstwie gorącej lub chłodnej | Nieobsługiwane |
@@ -400,7 +400,7 @@ Platforma działa zasady cyklu życia raz dziennie. Po skonfigurowaniu zasad, mo
 Obiekt blob jest przenoszony z warstwy dostępu do jednej usługi do innej warstwy dostępu, nie powoduje zmiany jego czas ostatniej modyfikacji. Jeśli użytkownik ręcznie przywrócenia z magazynu trwałego zarchiwizowane obiekt blob do warstwy gorąca i używanie, jej będzie przeniesiony z powrotem do warstwy archiwum przez aparat zarządzania cyklem życia. Można zapobiec jego, wyłączając reguły, który ma wpływ na ten obiekt blob tymczasowo. Można skopiować obiektu blob do innej lokalizacji, jeśli musi trwale pozostają w warstwie gorąca. Gdy obiekt blob można bezpiecznie przeniesiony z powrotem do warstwy archiwum, można ponownie włączyć reguły. 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się, jak odzyskiwać dane po przypadkowym usunięciem:
 

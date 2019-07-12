@@ -4,7 +4,7 @@ description: Dowiedz się, jak włączyć InfiniBand za pomocą funkcji SR-IOV.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
@@ -12,27 +12,26 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 879b1eed7bf4778d4d49f6f991d6d74214d33823
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 2e28627359f339a3bf818a15d6a5c8e456fb554a
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537666"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797523"
 ---
 # <a name="enable-infiniband-with-sr-iov"></a>Włącz InfiniBand za pomocą funkcji SR-IOV
-
 
 Najprostszy i zalecany sposób konfigurowania niestandardowego obrazu maszyny Wirtualnej za pomocą InfiniBand (IB) jest dodanie rozszerzenia InfiniBandDriverLinux lub InfiniBandDriverWindows maszyn wirtualnych do wdrożenia.
 Dowiedz się, jak używać tych rozszerzeń maszyn wirtualnych za pomocą [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) i [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances)
 
-Aby ręcznie skonfigurować InfiniBand na SR-IOV (obecnie serii HB i HC) maszyn wirtualnych z włączoną, wykonaj poniższe kroki. Te kroki są tylko RHEL/centos. Dla obrazów systemów Ubuntu (16.04 i 18.04) i w systemie SLES (12 z dodatkiem SP4 i 15) sterowniki wewnętrzne działać prawidłowo. Aby uzyskać systemie Ubuntu 
-
+Aby ręcznie skonfigurować InfiniBand na SR-IOV (obecnie serii HB i HC) maszyn wirtualnych z włączoną, wykonaj poniższe kroki. Te kroki są tylko RHEL/centos. Dla obrazów systemów Ubuntu (16.04 i 18.04) i w systemie SLES (12 z dodatkiem SP4 i 15) sterowniki wewnętrzne działać prawidłowo.
 
 ## <a name="manually-install-ofed"></a>Ręcznie zainstaluj OFED
 
 Zainstaluj najnowsze sterowniki MLNX_OFED ConnectX-5 z [Mellanox](https://www.mellanox.com/page/products_dyn?product_family=26).
 
 RHEL/centos (przykład poniżej 7.6):
+
 ```bash
 sudo yum install -y kernel-devel python-devel
 sudo yum install -y redhat-rpm-config rpm-build gcc-gfortran gcc-c++
@@ -83,6 +82,6 @@ LUB
     systemctl restart waagent
     ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) na platformie Azure.

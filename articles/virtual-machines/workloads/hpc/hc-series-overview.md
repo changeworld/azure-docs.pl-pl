@@ -4,7 +4,7 @@ description: Więcej informacji na temat pomocy technicznej (wersja zapoznawcza)
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
-ms.openlocfilehash: f96a1179c103dd9dfb4d358572f9a9adbe24b977
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6cdb539846104f70dabf684925685fb062fea8af
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66809875"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797550"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>Omówienie maszyn wirtualnych serii połączenia Hybrydowego
 
@@ -31,13 +31,13 @@ Topologia powyżej niesie ze sobą za pośrednictwem także konfigurację funkcj
 
 Maszyna wirtualna ma nie wie, że pCores 0-1 i 24 25 nie zostały nadane jej. W związku z tym udostępnia ona każdego vNUMA tak, jakby był natywną 22 rdzeni.
 
-Intel Xeon Platinum, Gold i Silver procesorów również wprowadzać siatki 2D na struktury sieci komunikacji w obrębie i zewnętrzne do gniazda procesora CPU. Zdecydowanie zaleca się proces przypinania dla uzyskania optymalnej wydajności i spójności. Przypinanie procesu będą działać na maszynach wirtualnych z serii połączenia Hybrydowego, ponieważ dolina podstawowych jest widoczny jako-polega na maszynie Wirtualnej gościa. Więcej w architekturze Intel Xeon SP na: https://bit.ly/2RCYkiE
+Intel Xeon Platinum, Gold i Silver procesorów również wprowadzać siatki 2D na struktury sieci komunikacji w obrębie i zewnętrzne do gniazda procesora CPU. Zdecydowanie zaleca się proces przypinania dla uzyskania optymalnej wydajności i spójności. Przypinanie procesu będą działać na maszynach wirtualnych z serii połączenia Hybrydowego, ponieważ dolina podstawowych jest widoczny jako-polega na maszynie Wirtualnej gościa. Aby dowiedzieć się więcej, zobacz [architekturze Intel Xeon SP](https://bit.ly/2RCYkiE).
 
 Na poniższym diagramie przedstawiono podział rdzeni zastrzeżonych dla funkcji Hypervisor Azure i maszyn wirtualnych serii połączenia Hybrydowego.
 
 ![Podział rdzeni zarezerwowana dla funkcji Hypervisor Azure i maszyn wirtualnych serii połączenia Hybrydowego](./media/hc-series-overview/segregation-cores.png)
 
-## <a name="hardware-specifications"></a>Wymagania dotyczące sprzętu
+## <a name="hardware-specifications"></a>Specyfikacje sprzętowe
 
 | Wymagania dotyczące sprzętu          | Maszyn wirtualnych serii połączenia Hybrydowego                     |
 |----------------------------------|----------------------------------|
@@ -58,10 +58,10 @@ Na poniższym diagramie przedstawiono podział rdzeni zastrzeżonych dla funkcji
 | Dodatkowe struktury       | Ujednolicone X komunikacji, libfabric, PGAS |
 | Usługa Azure Storage — pomoc techniczna       | Standardowe i Premium (maks. 4 dyski) |
 | Obsługa systemu operacyjnego dla funkcji SR-IOV w funkcji RDMA   | CentOS/RHEL 7.6+, SLES 12 SP4+, WinServer 2016+ |
-| Pomoc techniczna platformy Azure CycleCloud    | Tak                         |
+| Pomoc techniczna platformy Azure CycleCloud    | Yes                         |
 | Obsługa usługi Azure Batch         | Tak                         |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się więcej na temat rozmiarów maszyny Wirtualnej HPC dla [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) i [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc) na platformie Azure.
 

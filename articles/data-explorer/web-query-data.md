@@ -1,20 +1,20 @@
 ---
-title: 'Szybki start: wykonywanie zapytań o dane w usłudze Azure Data Explorer'
-description: Z tego przewodnika Szybki start dowiesz się, jak wykonywać zapytania i udostępniać dane w usłudze Azure Data Explorer.
+title: 'Szybki start: Wykonywanie zapytań dotyczących danych w Interfejsie sieci Web Eksploratora danych platformy Azure'
+description: W tym przewodniku Szybki Start dowiesz się, jak wykonywać zapytania i udostępnianie danych w interfejs sieci Web w Eksploratorze danych platformy Azure.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: 6b371cf9aeb55a92fc72357ad7dc6b2cbddcc058
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 07/04/2019
+ms.openlocfilehash: 145e452a3a914e1026d6da11f2ce38e85fa724f0
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60775704"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797186"
 ---
-# <a name="quickstart-query-data-in-azure-data-explorer"></a>Szybki start: wykonywanie zapytań o dane w usłudze Azure Data Explorer
+# <a name="quickstart-query-data-in-azure-data-explorer-web-ui"></a>Szybki start: Wykonywanie zapytań dotyczących danych w Interfejsie sieci Web Eksploratora danych platformy Azure
 
 Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Azure Data Explorer udostępnia aplikację internetową, która umożliwia uruchamianie i udostępnianie zapytań. Aplikacja jest dostępna w witrynie Azure Portal oraz jako autonomiczna aplikacja internetowa. W tym artykule będziesz pracować w wersji autonomicznej, która pozwala łączyć się z wieloma klastrami i udostępniać linki bezpośrednie do zapytań.
 
@@ -189,7 +189,6 @@ Usługa Data Explorer jest obecnie w wersji zapoznawczej, dlatego chętnie pozna
 
 W tym przewodniku Szybki start nie zostały utworzone żadne zasoby, ale jeśli chcesz usunąć jeden lub oba klastry z aplikacji, kliknij klaster prawym przyciskiem myszy, a następnie wybierz pozycję **Usuń połączenie**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-> [!div class="nextstepaction"]
-> [Pisanie zapytań dla usługi Azure Data Explorer](write-queries.md)
+[Pisanie zapytań dla usługi Azure Data Explorer](write-queries.md)

@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: e0d5363e253e89b32b5eca14366504f0ace39043
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 1e5a4ac9f159ce238149d44127fd63dcf3279623
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479644"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807099"
 ---
-# <a name="status-monitor-v2-api-enable-applicationinsightsmonitoring-v031-alpha"></a>Interfejs API w wersji 2 Monitora stanu: Enable-ApplicationInsightsMonitoring (v0.3.1 alfa)
+# <a name="status-monitor-v2-api-enable-applicationinsightsmonitoring-v040-alpha"></a>Interfejs API w wersji 2 Monitora stanu: Enable-ApplicationInsightsMonitoring (v0.4.0 alfa)
 
 W tym artykule opisano polecenia cmdlet, które jest członkiem [modułu Az.ApplicationMonitor PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
@@ -93,9 +93,9 @@ Możesz utworzyć skrypt jednej instalacji dla kilku komputerów, ustawiając `M
 - **MachineFilter** jest wymaganym C# wyrażeń regularnych, komputera lub nazwa maszyny Wirtualnej.
     - ". *" będzie zgodne ze wszystkimi
     - 'ComputerName' będzie zgodna tylko komputery z dokładną nazwą określony.
-- **AppFilter** jest wymaganym C# wyrażeń regularnych, komputera lub nazwa maszyny Wirtualnej.
+- **AppFilter** jest wymaganym C# wyrażeń regularnych, nazwy witryny usług IIS. Listę witryn na serwerze można uzyskać, uruchamiając polecenie [get iissite](https://docs.microsoft.com/powershell/module/iisadministration/get-iissite).
     - ". *" będzie zgodne ze wszystkimi
-    - "ApplicationName" będzie zgodna tylko aplikacje usług IIS o podanej nazwie dokładnie.
+    - "Nazwa witryny" będzie zgodna tylko witryny usług IIS o podanej nazwie dokładnie.
 - **InstrumentationKey** jest wymagane do umożliwienia monitorowania aplikacji, które odpowiadają poprzednim dwa filtry.
     - Pozostaw tę wartość na wartość null, jeśli chcesz zdefiniować zasady, które mają zostać wykluczone z monitorowania.
 
@@ -156,7 +156,7 @@ Updating app pool permissions...
 Successfully enabled Application Insights Status Monitor
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
   Wyświetlanie telemetrii:
  - [Eksplorowanie metryk](../../azure-monitor/app/metrics-explorer.md) do monitorowania wydajności i użycia.

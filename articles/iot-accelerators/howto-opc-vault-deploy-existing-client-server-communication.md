@@ -5,15 +5,15 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: conceptual
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 5ba2dba02585598b3797dd1b490976ebe34b489e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f170d05c513e7f0cc638c5a35e2264f9e043cbcd
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61450668"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603674"
 ---
 # <a name="secure-opc-ua-client-and-opc-ua-server-application"></a>Zabezpieczanie serwera OPC UA, klienta i aplikacji serwera OPC UA 
 OPC Vault to mikrousług, konfigurowanie, rejestrowanie i zarządzanie cyklem życia certyfikatu w przypadku serwera OPC UA i aplikacje klienckie w chmurze. W tym artykule przedstawiono sposób zabezpieczania aplikacji serwera przy użyciu nową parę kluczy i certyfikatów przy użyciu magazynu OPC klienta OPC UA i OPC UA.
@@ -148,7 +148,7 @@ docker-compose -f testbed.yml up
 - Klient testowy OPC zamierza umożliwiają konfigurowanie wydawcy OPC w celu publikowania/unpublish węzły na serwerze testowym OPC wywołania metody bezpośredniej IoTHub i wywołania metody OPC.
 - Obejrzyj dane wyjściowe komunikaty o błędach.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Teraz, gdy wiesz jak wdrożyć magazyn OPC do istniejącego projektu, poniżej przedstawiono sugerowany następnego kroku:
 

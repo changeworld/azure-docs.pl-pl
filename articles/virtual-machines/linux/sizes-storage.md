@@ -4,7 +4,7 @@ description: Wyświetla listę rozmiarów różnych zoptymalizowane pod kątem m
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/15/2019
 ms.author: jonbeck
-ms.openlocfilehash: 6e206763101bdf4d1e4180f8c9f4bc467a39f90d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9390267c2dda5e375e2cc4f601fd60fbbba7fccf
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65510341"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708770"
 ---
 # <a name="storage-optimized-virtual-machine-sizes"></a>Rozmiary maszyny wirtualnej zoptymalizowane pod kątem magazynu
 
@@ -35,7 +35,7 @@ ms.locfileid: "65510341"
 - [Obliczenia o wysokiej wydajności](sizes-hpc.md)
 - [Poprzednie generacje](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o tym, jak [usługi Azure compute jednostki (ACU)](acu.md) pozwalają porównać wydajności obliczeń w jednostkach SKU platformy Azure.
 

@@ -9,13 +9,14 @@ ms.service: azure-functions
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.author: tyleonha, glenga
-ms.openlocfilehash: 8e9e5b96eaf5a25661af721950029a670d0df5f1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: tyleonha
+ms.reviewer: glenga
+ms.openlocfilehash: fc30a2efb21d5b7f3168d9229ec5baf9a7f05eb1
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063235"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706425"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>Debugowanie programu PowerShell usługi Azure Functions lokalnie
 
@@ -246,6 +247,6 @@ Używa rozszerzenia PowerShell `Debug-Runspace`, który z kolei zależy od progr
 
 Powinno to rozbicie się zdarzyć, uruchom `continue` lub `c` polecenie, aby pominąć ten punkt przerwania. Następnie można zatrzymać w oczekiwanym punkcie przerwania.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się więcej na temat tworzenia funkcji przy użyciu programu PowerShell, zobacz [— przewodnik dewelopera usługi Azure Functions w programie PowerShell](functions-reference-powershell.md).

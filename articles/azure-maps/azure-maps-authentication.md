@@ -3,18 +3,18 @@ title: Uwierzytelnianie w usłudze Azure Maps | Microsoft Docs
 description: Uwierzytelnianie na potrzeby używania usług Azure Maps.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/12/2019
+ms.date: 07/11/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 22aba19e16e4349a5b495b307c9906f7ded5a636
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a4608d0631c9a590fdde583e399883a023275c30
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66393677"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67838052"
 ---
 # <a name="authentication-with-azure-maps"></a>Uwierzytelnianie w usłudze Azure Maps
 
@@ -31,7 +31,7 @@ Informacje o wyświetlaniu kluczy, zobacz [wyświetlanie szczegółów uwierzyte
 
 ## <a name="authentication-with-azure-active-directory-preview"></a>Uwierzytelnianie w usłudze Azure Active Directory (wersja zapoznawcza)
 
-Platforma Azure oferuje teraz mapy [usługi Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) integracji na potrzeby uwierzytelniania żądań dotyczących usługi Azure Maps. Usługa Azure AD zapewnia uwierzytelnianie na podstawie tożsamości, w tym [kontroli dostępu opartej na rolach (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview), aby udzielić dostępu użytkownika lub na poziomie aplikacji do zasobów usługi Azure Maps. W kolejnych sekcjach ułatwia zrozumienie pojęcia i składniki usługi Azure Maps integracji z usługą Azure AD.
+Platforma Azure oferuje teraz mapy [usługi Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) integracji na potrzeby uwierzytelniania żądań dotyczących usługi Azure Maps. Usługa Azure AD zapewnia uwierzytelnianie na podstawie tożsamości, w tym [kontroli dostępu opartej na rolach (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview), aby udzielić poziomie użytkownika i grupy na poziomie dodatku poziomu aplikacji dostęp do zasobów usługi Azure Maps. W kolejnych sekcjach ułatwia zrozumienie pojęcia i składniki usługi Azure Maps integracji z usługą Azure AD.
 
 ## <a name="authentication-with-oauth-access-tokens"></a>Uwierzytelnianie przy użyciu tokenów dostępu OAuth
 
@@ -54,10 +54,10 @@ Aby uzyskać ogólne informacje dotyczące żądania tokenów z usługi Azure AD
 
 Po odebraniu tokenu z usługi Azure AD, żądania mogą być wysyłane do usługi Azure Maps z następujący zestaw nagłówków dwa żądania wymagane:
 
-| Nagłówek żądania    |    Wartość    |
+| Nagłówek żądania    |    Value    |
 |:------------------|:------------|
 | x-ms-client-id    | 30d7cc….9f55|
-| Autoryzacja     | Bearer eyJ0e….HNIVN |
+| Authorization     | Bearer eyJ0e….HNIVN |
 
 > [!Note]
 > `x-ms-client-id` jest usługi Azure Maps oparte na koncie identyfikator GUID, który pojawia się na stronie uwierzytelniania usługi Azure Maps.
@@ -75,9 +75,9 @@ Aby uzyskać informacje o wyświetlaniu Identyfikatora klienta, zobacz [wyświet
 
 ## <a name="control-access-with-rbac"></a>Kontroluj dostęp za pomocą funkcji RBAC
 
-System Azure AD pozwala na kontrolowanie dostępu do zabezpieczonych zasobów przy użyciu RBAC. Po utworzeniu konta usługi Azure Maps i Zarejestruj swoją aplikację do usługi Azure Maps usługi Azure AD w ramach dzierżawy usługi Azure AD, możesz skonfigurować RBAC dla użytkownika, aplikacji lub zasobów platformy Azure na stronie portalu konta usługi Azure Maps.
+System Azure AD pozwala na kontrolowanie dostępu do zabezpieczonych zasobów przy użyciu RBAC. Po utworzeniu konta usługi Azure Maps i Zarejestruj swoją aplikację do usługi Azure Maps usługi Azure AD w ramach dzierżawy usługi Azure AD, możesz skonfigurować RBAC dla użytkownika, grupy, aplikacji lub zasobów platformy Azure na stronie portalu konta usługi Azure Maps.
 
-Usługi Azure Maps obsługuje kontrolę dostępu do odczytu dla poszczególnych użytkowników usługi Azure AD, aplikacji i usług platformy Azure za pomocą tożsamości zarządzanych zasobów platformy Azure.
+Usługi Azure Maps obsługuje kontrolę dostępu do odczytu dla poszczególnych użytkowników, grup, aplikacji i usług platformy Azure za pomocą tożsamości zarządzanych zasobów platformy Azure usługi Azure AD.
 
 ![Czytnik danych usługi Azure Maps (wersja zapoznawcza)](./media/azure-maps-authentication/concept.png)
 
@@ -87,7 +87,7 @@ Aby uzyskać informacje o wyświetlaniu ustawień kontroli RBAC można zobaczyć
 
 [Zarządzane tożsamości dla zasobów platformy Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) zapewniają usług platformy Azure (Azure App Service, Azure Functions, Azure Virtual Machines i tak dalej) przy użyciu automatycznie zarządzanych tożsamości, która może być autoryzowane do uzyskiwania dostępu do usługi Azure Maps.  
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby dowiedzieć się więcej o uwierzytelnianiu aplikacji za pomocą usługi Azure AD i usługi Azure Maps, zobacz [Zarządzaj uwierzytelniania usługi Azure Maps](https://review.docs.microsoft.com/azure/azure-maps/how-to-manage-authentication).
 
