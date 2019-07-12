@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 06bdd21363aee8202ce7178f157f01a5c26e3a52
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c22caa4b3da69d46241dfbaa7556d0209130415c
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65851592"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626129"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Projektowanie tabel w usłudze Azure SQL Data Warehouse
 
@@ -42,7 +42,7 @@ Aby wyświetlić organizacji tabel w usłudze SQL Data Warehouse, można użyć 
 
 | Tabela WideWorldImportersDW  | Typ tabeli | SQL Data Warehouse |
 |:-----|:-----|:------|:-----|
-| Miejscowość | Wymiar | wwi.DimCity |
+| City | Wymiar | wwi.DimCity |
 | Zamówienie | Fakt | wwi.FactOrder |
 
 
@@ -107,7 +107,7 @@ Domyślnie usługa SQL Data Warehouse przechowuje tabelę jako klastrowany indek
 Aby uzyskać listę funkcji magazynu kolumn, zobacz [co nowego w indeksach magazynu kolumn](/sql/relational-databases/indexes/columnstore-indexes-what-s-new). Aby poprawić wydajność indeksu magazynu kolumn, zobacz [maksymalizowania i jakości w indeksach magazynu kolumn](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 
 ## <a name="statistics"></a>Statystyki
-Optymalizator zapytań używa statystyki na poziomie kolumny, podczas tworzenia planu wykonania zapytania. Aby poprawić wydajność zapytań, ważne jest musi mieć statystyki dotyczące poszczególnych kolumn, szczególnie kolumny używane w sprzężeniach zapytania. [Tworzenie statystyk](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistics) odbywa się automatycznie.  Jednak zaktualizowanie statystyk nie odbywa się automatycznie. Aktualizowanie statystyk po znacznej liczby wierszy są dodane lub zmienione. Na przykład aktualizowanie statystyk po załadowaniu. Aby uzyskać więcej informacji, zobacz [wskazówki statystyki](sql-data-warehouse-tables-statistics.md).
+Optymalizator zapytań używa statystyki na poziomie kolumny, podczas tworzenia planu wykonania zapytania. Aby poprawić wydajność zapytań, ważne jest musi mieć statystyki dotyczące poszczególnych kolumn, szczególnie kolumny używane w sprzężeniach zapytania. [Tworzenie statystyk](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic) odbywa się automatycznie.  Jednak zaktualizowanie statystyk nie odbywa się automatycznie. Aktualizowanie statystyk po znacznej liczby wierszy są dodane lub zmienione. Na przykład aktualizowanie statystyk po załadowaniu. Aby uzyskać więcej informacji, zobacz [wskazówki statystyki](sql-data-warehouse-tables-statistics.md).
 
 ## <a name="commands-for-creating-tables"></a>Polecenia do tworzenia tabel
 Można utworzyć tabeli jako nowej, pustej tabeli. Można również utworzyć i wypełnić tabelę z wynikami instrukcji select. Poniżej przedstawiono polecenia T-SQL do tworzenia tabeli.

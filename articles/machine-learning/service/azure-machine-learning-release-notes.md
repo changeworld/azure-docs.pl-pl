@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: d43bef902b66976c32735b6d45029f41bb5e3264
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 7aedb0804626d1204121568904763bec5e83e858
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514039"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786268"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Informacje o wersji usługi Azure Machine Learning
 
@@ -25,7 +25,70 @@ Ten artykuł zawiera informacje o wersji usługi Azure Machine Learning.  Aby uz
 
 Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat znanych błędów i rozwiązania problemu.
 
+## <a name="2019-07-09"></a>2019-07-09
 
+### <a name="visual-interface"></a>Interfejs wizualny
++ **Funkcje w wersji zapoznawczej**
+  + Dodanym module "Skrypt Execute R" w interfejsie visual.
+
+### <a name="azure-machine-learning-sdk-for-python-v1048"></a>Usługi Azure Machine Learning zestawu SDK dla języka Python v1.0.48
+
++ **Nowe funkcje**
+  + **azureml-opendatasets**
+    + **usługi Azure ml — contrib-opendatasets** jest teraz dostępny jako **opendatasets usługi Azure ml**. Starego pakietu może nadal działać, ale zaleca się przy użyciu **opendatasets usługi Azure ml** posuwał się naprzód bardziej zaawansowane funkcje i ulepszenia.
+    + Ten pakiet umożliwia rejestrowanie otwartych zestawów danych jako zestawu danych w obszarze roboczym AML i korzystać z dowolnych funkcji, które oferuje zestaw danych.
+    + Obejmuje również istniejące możliwości, takie jak korzystanie z otwartych zestawów danych jako elementy Pandas/SPARK dataframe i lokalizacja sprzężenia dla niektórych zestawu danych, takich jak o pogodzie.
+
++ **Funkcje w wersji zapoznawczej**
+    + HyperDriveConfig mogą teraz akceptować potoku obiekt jako parametr do obsługi strojenia hiperparametrycznego przy użyciu potoku.
+
++ **Poprawki błędów i ulepszenia**
+  + **azureml-train-automl**
+    + Naprawiono usterkę o utratę typy kolumn po transformacji.
+    + Naprawiono usterkę, aby umożliwić y_query jako typ obiektu zawierającego None (s) na początku. 
+    + Rozwiązano problem w procedurze wybór zespołu, który został niepotrzebnie rosnącej na wynikowej zespołu, nawet wtedy, gdy wyniki pozostaje stała.
+    + Rozwiązano problem z ustawieniami whitelist_models i blacklist_models w AutoMLStep.
+    + Rozwiązano problem, który uniemożliwił użytkowania przetwarzania wstępnego, gdy AutoML będzie używany w kontekście usługi Azure ML potoków.
+  + **azureml-opendatasets**
+    + Przeniesione usługi Azure ml — contrib-opendatasets do usługi Azure ml opendatasets.
+    + Dozwolone klasy Otwórz zestaw danych został zarejestrowany do obszaru roboczego AML oraz bezproblemowo wykorzystywać możliwości AML zestawu danych.
+    + Ulepszone NoaaIsdWeather wzbogacić wydajności w wersji-SPARK znacznie.
+  + **azureml-explain-model**
+    + Zaktualizowano dokumentację online dla współdziałania obiektów.
+    + Dodano batch_size do naśladowania objaśnienie podczas include_local = False globalnego wyjaśnienia w partiach, aby poprawić czas wykonywania DecisionTreeExplainableModel do przesyłania strumieniowego.
+    + Rozwiązano problem polegający na którym `explanation.expected_values` czasami zwróci liczba zmiennoprzecinkowa, a nie z góry listy w nim.
+    + Dodano oczekiwanych wartości do automl mimic objaśnienie w danych wyjściowych wyjaśniają biblioteki modelu.
+    + Naprawiono permutacji funkcji znaczenie przekształcenia argument przekazany do Pobierz znaczenie funkcją raw.
+    + Dodano batch_size do naśladowania objaśnienie podczas include_local = False globalnego wyjaśnienia w partiach, aby poprawić czas wykonywania DecisionTreeExplainableModel biblioteki explainability modelu do przesyłania strumieniowego.
+  + **azureml-core**
+    + Dodano możliwość dołączenia DBFS magazynów danych, w interfejsie wiersza polecenia usługi Azure ml.
+    + Rozwiązano problem polegający na przy użyciu magazynu danych przekazywania gdzie pusty folder jest tworzony, jeśli `target_path` wprowadzenie `/`.
+    + Włączono porównanie dwóch zestawów danych.
+    + Usuń model i obraz udostępnia teraz więcej informacji na temat pobierania nadrzędne obiekty, które zależą od nich, jeśli usunięcie nie powiodło się ze względu na zależność nadrzędnego.
+    + Przestarzałe nieużywane ustawienie RunConfiguration auto_prepare_environment.
+  + **azureml-mlflow**
+    + Wykorzystanie zasobów ulepszone zdalnych przebiegów, które używają azureml.mlflow.
+    + Ulepszona dokumentacji pakietu mlflow usługi Azure ml.
+    + Rozwiązano problem polegający na którym mlflow.log_artifacts("my_dir") będzie zapisywać artefaktów w obszarze "my_dir/artefaktu ścieżki" zamiast "artefaktu ścieżek".
+  + **azureml-dataprep**
+    + Obiekty przepływu danych teraz można powtarzana produkujących sekwencji rekordów.
+    + Rozwiązano problem polegający na którym `Dataflow.read_pandas_dataframe` zakończy się niepowodzeniem kiedy `in_memory` argument ma wartość True.
+    + Ulepszona obsługa pandas elementy Dataframe z indeksy kolumn innych niż ciąg.
+    + Udostępniane `set_diagnostics_collection()` umożliwiające programowe Włączanie/wyłączanie zbierania danych telemetrycznych.
+    + Dodano Top Values i bottomValues podsumowanie.
+  + **azureml-pipeline-core**
+    + Parametr hash_paths wszystkie kroki potoku jest przestarzały i zostanie usunięte w przyszłości. Przez domyślną zawartość katalog_źródłowy jest wyznaczana wartość skrótu (z wyjątkiem plików wymienionych w .amlignore lub .gitignore)
+    + Kontynuowanie usprawnienie moduł i ModuleStep do obsługi określonych modułów typu obliczeniowych w ramach przygotowania do integracji RunConfiguration i dalsze zmiany do odblokowywania ich użycia w potokach.
+  + **azureml-pipeline-steps**
+    + AzureBatchStep: Ulepszone dokumentacji w odniesieniu do danych wejściowych lub wyjściowych.
+    + AzureBatchStep: Wartość domyślna delete_batch_job_after_finish zmienione na wartość true.
+  + **azureml-train-core**
+    + Ciągi teraz są akceptowane, jako cel obliczenia do automatycznego strojenia Hiperparametrycznego.
+    + Przestarzałe nieużywane ustawienie RunConfiguration auto_prepare_environment.
+    + Wycofano parametry `conda_dependencies_file_path` i `pip_requirements_file_path` uzyskać `conda_dependencies_file` i `pip_requirements_file` odpowiednio.
+  + **azureml-opendatasets**
+    + Poprawa NoaaIsdWeather znacznie wzbogacanie wydajności w wersji-SPARK.
+    
 ## <a name="2019-07-01"></a>2019-07-01
 
 ### <a name="azure-machine-learning-data-prep-sdk-v117"></a>Zestaw SDK v1.1.7 przeznaczonego do przygotowania danych usługi Azure Machine Learning
@@ -712,6 +775,6 @@ Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat
 Nowy, odświeżana wersji usługi Azure Machine Learning: Dowiedz się więcej na temat tej wersji: https://azure.microsoft.com/blog/what-s-new-in-azure-machine-learning-service/
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Zapoznaj się z omówieniem dla [usługi Azure Machine Learning](../service/overview-what-is-azure-ml.md).

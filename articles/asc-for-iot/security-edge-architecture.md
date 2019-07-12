@@ -2,24 +2,25 @@
 title: Omówienie usługi Azure Security Center dla modułu zabezpieczeń IoT, IoT Edge | Dokumentacja firmy Microsoft
 description: Dowiedz się, architekturę i możliwości usługi Azure Security Center dla modułu zabezpieczeń IoT dla usługi IoT Edge.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: e78523ae-d70a-456a-818d-f8b1b025d7cb
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 847d6238bd42dc7da723dcc9acd47ed09c16dbf9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4581f66a3401764237621bee86228aac724ec0af
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65200582"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616454"
 ---
 # <a name="azure-iot-edge-security-module"></a>Moduł zabezpieczeń w usłudze Azure IoT Edge
 

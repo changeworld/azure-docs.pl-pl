@@ -4,7 +4,7 @@ description: Przewodnik dotyczący sprawdzanie i rozwiązywanie problemów z kon
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermannd
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: 4483a7f53e084be5f245840829f4c9c95648b1af
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b794b045efa4be20a63e9996425d69f0212ae0d7
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60477099"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707237"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Sprawdź i rozwiązywanie problemów z instalacją w wysokiej dostępności skalowalnego w poziomie oprogramowania SAP HANA w systemie SLES 12 z dodatkiem SP3 
 
@@ -94,7 +94,7 @@ Następujące oprogramowanie SAP HANA zalecenia dotyczące sieci trzy podsieci z
 
 Aby uzyskać informacje o konfiguracji oprogramowania SAP HANA, powiązane z użyciem wielu sieci, zobacz [global.ini platformy SAP HANA](#sap-hana-globalini).
 
-Każda maszyna wirtualna w klastrze ma trzy kart sieciowych, które odpowiadają liczba podsieci. [Jak utworzyć maszynę wirtualną systemu Linux na platformie Azure z sieci wielu kart interfejsu] [ azure-linux-multiple-nics] opisuje potencjalny problem z routingiem na platformie Azure, w przypadku wdrażania maszyny Wirtualnej z systemem Linux. Ten artykuł routingu ma zastosowanie tylko w przypadku korzystania z wielu kart sieciowych. Problem ten został rozwiązany przez SUSE domyślnie w systemie SLES 12 z dodatkiem SP3. Aby uzyskać więcej informacji, zobacz [Multi-NIC z chmury — netconfig usługi EC2 i Azure][suse-cloud-netconfig].
+Każda maszyna wirtualna w klastrze ma trzy kart sieciowych, które odpowiadają liczba podsieci. [Jak utworzyć maszynę wirtualną systemu Linux na platformie Azure z sieci wielu kart interfejsu][azure-linux-multiple-nics] describes a potential routing issue on Azure when deploying a Linux VM. This specific routing article applies only for use of multiple vNICs. The problem is solved by SUSE per default in SLES 12 SP3. For more information, see [Multi-NIC with cloud-netconfig in EC2 and Azure][suse-cloud-netconfig].
 
 
 Aby sprawdzić, czy oprogramowanie SAP HANA jest prawidłowo skonfigurowany do używania wielu sieci, uruchom następujące polecenia. Sprawdź najpierw na poziomie systemu operacyjnego czy wszystkich trzech adresów IP dla wszystkich trzech podsieci są aktywne. Zdefiniowanej podsieci z różnych zakresów adresów IP, należy dostosować polecenia:
@@ -726,7 +726,7 @@ Transition Summary:
 ## <a name="planned-maintenance"></a>Planowana konserwacja 
 
 Istnieją różnych przypadków użycia, jeśli chodzi o planowanej konserwacji. Jedno pytanie jest, czy jest to po prostu konieczność konserwacji infrastruktury sposób zmiany na poziomie systemu operacyjnego i konfiguracji dysku lub uaktualnienia platformy HANA.
-Dodatkowe informacje można znaleźć w dokumentach, od firmy SUSE, takich jak [kierunku żadnych przestojów] [ sles-zero-downtime-paper] lub [zoptymalizowane pod kątem scenariuszy SAP HANA SR wydajności] [ sles-12-for-sap]. Te dokumenty również zawierać przykłady pokazujące, jak ręcznie migrować podstawowego.
+Dodatkowe informacje można znaleźć w dokumentach, od firmy SUSE, takich jak [kierunku żadnych przestojów][sles-zero-downtime-paper] or [SAP HANA SR Performance Optimized Scenario][sles-12-for-sap]. Te dokumenty również zawierać przykłady pokazujące, jak ręcznie migrować podstawowego.
 
 Intensywny wewnętrzne testy została wykonana w celu sprawdź przypadek użycia konserwacji infrastruktury. Aby uniknąć problemów związanych z migracją podstawowego, podjęliśmy decyzję o zawsze migracji główną przed przełączeniem klastra w tryb konserwacji. W ten sposób nie jest to niezbędne do zapewnienia klastra zapomnij o sytuacji w poprzedniej wersji portalu: której stronie był podstawowego i który został dodatkowej.
 
@@ -977,7 +977,7 @@ Ten końcowy zrzut ekranu przedstawia **szczegóły** części jednej przejścia
 ![Hawk jednego przejścia](media/hana-vm-scale-out-HA-troubleshooting/hawk-5.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Ten przewodnik rozwiązywania problemów opisano wysokiej dostępności dla oprogramowania SAP HANA w konfiguracji skalowania w poziomie. Innym ważnym elementem w środowisko SAP jest stos oprogramowania SAP NetWeaver. Dowiedz się więcej o [wysokiej dostępności dla oprogramowania SAP NetWeaver na maszynach wirtualnych Azure, które używają systemu SUSE Enterprise Linux Server][sap-nw-ha-guide-sles].
 

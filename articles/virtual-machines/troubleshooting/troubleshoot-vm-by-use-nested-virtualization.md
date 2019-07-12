@@ -4,7 +4,7 @@ description: Jak rozwiązać problem z maszyny Wirtualnej platformy Azure przy u
 services: virtual-machines-windows
 documentationcenter: ''
 author: glimoli
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: c84d015da907c8792f09d1d60e6bc8eddb7e2957
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 135368fd9b838573ae8aa65e16d5df2cd3df3e6d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60444371"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709225"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Rozwiązać problem z maszyny Wirtualnej platformy Azure przy użyciu wirtualizacji zagnieżdżonej na platformie Azure
 
@@ -138,6 +138,6 @@ Zainstaluj maszynę Wirtualną problemie, maszyna wirtualna ratownictwa musi spe
 
 Azure PowerShell umożliwia również tworzenie maszyny Wirtualnej z dysku. Aby uzyskać więcej informacji, zobacz [Utwórz nową maszynę Wirtualną z istniejącego dysku przy użyciu programu PowerShell](../windows/create-vm-specialized.md#create-the-new-vm). 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Jeśli występują problemy z nawiązywaniem połączenia z maszyną wirtualną, zobacz [połączenia RDP Rozwiązywanie problemów z Maszyną wirtualną platformy Azure](troubleshoot-rdp-connection.md). W przypadku problemów z dostępem do aplikacji działających na maszynie Wirtualnej, zobacz [aplikacji Rozwiązywanie problemów z łącznością na maszynie Wirtualnej Windows](troubleshoot-app-connection.md).

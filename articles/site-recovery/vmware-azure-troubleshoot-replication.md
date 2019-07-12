@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 06/27/2019
 ms.author: mayg
-ms.openlocfilehash: c005dcee78e2a9338dc7a816e06d9a78a2f355b6
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: ed04c21fc5f3aecb91483dbd1eb7ca5fbf47c3e9
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491672"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67805960"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Rozwiązywanie problemów z replikacją dla maszyn wirtualnych VMware i serwerów fizycznych
 
@@ -133,7 +133,63 @@ Aby rozwiązać ten problem, należy użyć następujące kroki, aby sprawdzić 
         
           C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
 
+## <a name="error-id-78144---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>Identyfikator błędu 78144 — Brak punktu odzyskiwania spójnego na poziomie aplikacji dostępnego dla maszyny Wirtualnej w ciągu ostatnich minut "XXX"
 
+Niektóre z najczęściej spotykanych problemów zostały wymienione poniżej
+
+#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>Przyczyny 1: Znany problem w programie SQL server 2008/2008 R2 
+**Jak naprawić** : Jest to znany problem z programem SQL server 2008/2008 R2. Można znaleźć w tym artykule KB [agenta usługi Azure Site Recovery lub inne usługi VSS nie będącego komponentem kopii zapasowej kończy się niepowodzeniem dla serwera hostingu SQL Server 2008 R2](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)
+
+#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-autoclose-dbs"></a>Przyczyny 2: Zadania usługi Azure Site Recovery zakończyć się niepowodzeniem na serwerach hostujących dowolna wersja wystąpienia programu SQL Server przy użyciu AUTO_CLOSE baz danych 
+**Jak naprawić** : Zapoznaj się z bazy wiedzy [artykułu](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) 
+
+
+#### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>Przyczyny 3: Znany problem w programie SQL Server 2016 oraz 2017 r.
+**Jak naprawić** : Zapoznaj się z bazy wiedzy [artykułu](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) 
+
+
+### <a name="more-causes-due-to-vss-related-issues"></a>Problemy związane z innych przyczynach z powodu usługi VSS:
+
+Aby dalej rozwiązywać, sprawdź pliki na maszynie źródłowej można uzyskać dokładny błąd kod błędu:
+    
+    C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log
+
+Jak znaleźć błędy w pliku?
+Wyszukaj ciąg "vacpError", otwierając plik vacp.log w edytorze
+        
+    Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|
+
+W powyższym przykładzie **2147754994** jest kod błędu, który informuje o błędzie, jak pokazano poniżej
+
+#### <a name="vss-writer-is-not-installed---error-2147221164"></a>Składnik zapisywania usługi VSS nie jest zainstalowany - 2147221164 błąd 
+
+*Jak naprawić*: Aby wygenerować tagu spójności aplikacji, usługi Azure Site Recovery używa kopii w tle woluminu Microsoft Service (VSS). Instaluje dostawcę VSS do swoich operacji do robienia migawek spójności aplikacji. Ten dostawca usługi VSS jest instalowany jako usługa. W przypadku, gdy usługa dostawcy usługi VSS nie jest zainstalowana, tworzenia migawek spójności aplikacji nie powiedzie się z Identyfikator błędu: 0x80040154 "Klasa nie zarejestrowana". </br>
+Zapoznaj się [artykuł dotyczący rozwiązywania problemów instalacji składnika zapisywania usługi VSS](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures) 
+
+#### <a name="vss-writer-is-disabled---error-2147943458"></a>Składnik zapisywania usługi VSS jest wyłączone — błąd 2147943458
+
+**Jak naprawić**: Aby wygenerować tagu spójności aplikacji, usługi Azure Site Recovery używa kopii w tle woluminu Microsoft Service (VSS). Instaluje dostawcę VSS do swoich operacji do robienia migawek spójności aplikacji. Ten dostawca usługi VSS jest instalowany jako usługa. W przypadku, gdy usługa dostawcy usługi VSS jest wyłączona, tworzenia migawek spójności aplikacji nie powiedzie się o identyfikatorze błędu "określona usługa jest wyłączona i nie może być started(0x80070422)". </br>
+
+- Wyłączenie usługi VSS
+    - Sprawdź, czy typ uruchamiania usługi dostawcy usługi VSS jest równa **automatyczne**.
+    - Uruchom ponownie następujące usługi:
+        - Usługa VSS
+        - Dostawcy usługi VSS programu usługi Azure Site Recovery
+        - Usługę VDS
+
+####  <a name="vss-provider-notregistered---error-2147754756"></a>DOSTAWCY usługi VSS, NOT_REGISTERED — błąd 2147754756
+
+**Jak naprawić**: Aby wygenerować tagu spójności aplikacji, usługi Azure Site Recovery używa kopii w tle woluminu Microsoft Service (VSS). Sprawdź, czy usługa dostawcy usługi VSS usługi Azure Site Recovery jest zainstalowana, czy nie. </br>
+
+- Ponów próbę instalacji dostawcy, używając następujących poleceń:
+- Odinstaluj istniejącego dostawcy: C:\Program pliki (x86) \Microsoft Azure Site Recovery\agent\InMageVSSProvider_Uninstall.cmd
+- Ponownie: C:\Program pliki (x86) \Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd
+ 
+Sprawdź, czy typ uruchamiania usługi dostawcy usługi VSS jest równa **automatyczne**.
+    - Uruchom ponownie następujące usługi:
+        - Usługa VSS
+        - Dostawcy usługi VSS programu usługi Azure Site Recovery
+        - Usługę VDS
 
 ## <a name="next-steps"></a>Kolejne kroki
 

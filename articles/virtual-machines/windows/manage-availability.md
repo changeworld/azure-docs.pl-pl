@@ -4,7 +4,7 @@ description: Dowiedz się, jak używać wielu maszyn wirtualnych, aby zapewnić 
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 02351953-7b6a-4657-b9e1-de2ea8f6aa05
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7631205943efc827edd80d3a89ea68804d94153d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3a1000d2003d618bb15793dd2e3655f677189b58
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60762495"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718752"
 ---
 # <a name="manage-the-availability-of-windows-virtual-machines-in-azure"></a>Zarządzanie dostępnością maszyn wirtualnych Windows na platformie Azure 
 
@@ -31,6 +31,6 @@ Aby uzyskać instrukcje dotyczące tworzenia i używania zestawów dostępności
 
 [!INCLUDE [virtual-machines-common-manage-availability](../../../includes/virtual-machines-common-manage-availability.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej o maszynach wirtualnych równoważenia obciążenia, zobacz [Równoważenie obciążenia maszyn wirtualnych](tutorial-load-balancer.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 373ce1d10af87603b1bdd6339c94891187c35d8c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ec881d190de719c2a7dbedcbf28b0b3ea57140d8
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60332656"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67840127"
 ---
 # <a name="recommended-on-premises-encoders"></a>Zalecane kodery lokalne
 Gdy strumieniowo na żywo za pomocą usługi Azure Media Services, można określić, jak chcesz kanał w taki sposób, aby otrzymywać strumień wejściowy. Jeśli zdecydujesz się na koder lokalnie za pomocą kanału kodowania na żywo, koder ma wypychać strumienia wysokiej jakości jedną szybkością transmisji bitów jako dane wyjściowe. Jeśli zdecydujesz się na koder lokalnie za pomocą przebiegu za pośrednictwem kanału, koder ma wypychać strumień o wielokrotnej szybkości transmisji bitów jako dane wyjściowe z wszystkich klas żądaną produktu wyjściowego. Aby uzyskać więcej informacji, zobacz [transmisja strumieniowa na żywo za pomocą na lokalne kodery](media-services-live-streaming-with-onprem-encoders.md).
@@ -54,7 +54,7 @@ Przekaż za pośrednictwem weryfikacji kanału
 4. Utwórz opublikowane wydarzenie na żywo
 5. Uruchom koder na żywo przez około 10 minut
 6. Zatrzymaj wydarzenie na żywo
-7. Tworzenie, uruchamianie punktu końcowego przesyłania strumieniowego, używać odtwarzacza, takich jak [usługi Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) Obejrzyj zarchiwizowanego elementu zawartości to upewnić się, że odtwarzanie nie występującymi widoczne dla wszystkich poziomów jakości (lub też oglądanie i zweryfikować za pośrednictwem adresu URL (wersja zapoznawcza) podczas sesji na żywo, przed wykonaniem kroku 6)
+7. Tworzenie, uruchamianie punktu końcowego przesyłania strumieniowego, używać odtwarzacza, takich jak [usługi Azure Media Player](http://aka.ms/azuremediaplayer) Obejrzyj zarchiwizowanego elementu zawartości to upewnić się, że odtwarzanie nie występującymi widoczne dla wszystkich poziomów jakości (lub też oglądanie i zweryfikować za pośrednictwem adresu URL (wersja zapoznawcza) podczas sesji na żywo, przed wykonaniem kroku 6)
 8. Zapisz identyfikator zasobu adresu URL przesyłania strumieniowego na żywo archiwum i ustawień i wersja używanego z koder na żywo opublikowane
 9. Zresetuj stan kanału po utworzeniu każdej próbki
 10. Powtórz kroki od 3 do 9, w przypadku wszystkich konfiguracji obsługiwanych przez koder (z lub bez ad sygnalizowanie/napisów/inną kodowanie szybkości)
@@ -66,7 +66,7 @@ Kodowanie weryfikacji kanału na żywo
 4. Utwórz opublikowane wydarzenie na żywo
 5. Uruchom koder na żywo przez około 10 minut
 6. Zatrzymaj wydarzenie na żywo
-7. Tworzenie, uruchamianie punktu końcowego przesyłania strumieniowego, używać odtwarzacza, takich jak [usługi Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) Obejrzyj zarchiwizowanego elementu zawartości to upewnić się, że odtwarzanie nie występującymi widoczne dla wszystkich poziomów jakości (lub też oglądanie i zweryfikować za pośrednictwem adresu URL (wersja zapoznawcza) podczas sesji na żywo, przed wykonaniem kroku 6)
+7. Tworzenie, uruchamianie punktu końcowego przesyłania strumieniowego, używać odtwarzacza, takich jak [usługi Azure Media Player](http://aka.ms/azuremediaplayer) Obejrzyj zarchiwizowanego elementu zawartości to upewnić się, że odtwarzanie nie występującymi widoczne dla wszystkich poziomów jakości (lub też oglądanie i zweryfikować za pośrednictwem adresu URL (wersja zapoznawcza) podczas sesji na żywo, przed wykonaniem kroku 6)
 8. Zapisz identyfikator zasobu adresu URL przesyłania strumieniowego na żywo archiwum i ustawień i wersja używanego z koder na żywo opublikowane
 9. Zresetuj stan kanału po utworzeniu każdej próbki
 10. Powtórz kroki od 3 do 9, w przypadku wszystkich konfiguracji obsługiwanych przez koder (z lub bez ad sygnalizowanie/napisów/różne kodowania szybkość)
@@ -77,7 +77,7 @@ Weryfikacja trwałość
 3. Konfiguruj koder wypychanie strumienia na żywo o różnych szybkościach transmisji bitów.
 4. Utwórz opublikowane wydarzenie na żywo
 5. Uruchom koder na żywo przez jednego tygodnia lub dłużej
-6. Używanie odtwarzacz, takiej jak [usługi Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) obejrzeć transmisji strumieniowych na żywo od czasu do czasu (lub zarchiwizowanego elementu zawartości) to upewnić się, że odtwarzanie nie występującymi widoczne
+6. Używanie odtwarzacz, takiej jak [usługi Azure Media Player](http://aka.ms/azuremediaplayer) obejrzeć transmisji strumieniowych na żywo od czasu do czasu (lub zarchiwizowanego elementu zawartości) to upewnić się, że odtwarzanie nie występującymi widoczne
 7. Zatrzymaj wydarzenie na żywo
 8. Zapisz identyfikator zasobu adresu URL przesyłania strumieniowego na żywo archiwum i ustawień i wersja używanego z koder na żywo opublikowane
 

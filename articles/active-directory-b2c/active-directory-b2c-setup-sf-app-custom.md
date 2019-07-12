@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie polecenie Zaloguj się przy użyciu dostawcy Salesforce SAML za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+title: Konfigurowanie polecenie Zaloguj się przy użyciu dostawcy Salesforce SAML za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
 description: Konfigurowanie logowania za pomocą dostawcy Salesforce SAML za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e565822c006191615dbc10b980da24dcd9ed787a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7cbde2beb03c174facbd145954387a31f6158a9a
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508301"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654191"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurowanie polecenie Zaloguj się przy użyciu dostawcy Salesforce SAML za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -31,11 +31,11 @@ W tym artykule dowiesz się, jak włączyć logowania dla użytkowników z organ
 
 ### <a name="set-up-salesforce-as-an-identity-provider"></a>Konfigurowanie usługi Salesforce jako dostawcy tożsamości
 
-1. [Zaloguj się do usługi Salesforce](https://login.salesforce.com/). 
+1. [Zaloguj się do usługi Salesforce](https://login.salesforce.com/).
 2. W menu po lewej stronie w obszarze **ustawienia**, rozwiń węzeł **tożsamości**, a następnie wybierz pozycję **dostawcy tożsamości**.
 3. Wybierz **umożliwiają dostawcy tożsamości**.
-4. W obszarze **wybierz certyfikat**, wybierz certyfikat, który ma Salesforce można używać do komunikowania się z usługą Azure AD B2C. Można użyć domyślnego certyfikatu. 
-5. Kliknij pozycję **Zapisz**. 
+4. W obszarze **wybierz certyfikat**, wybierz certyfikat, który ma Salesforce można używać do komunikowania się z usługą Azure AD B2C. Można użyć domyślnego certyfikatu.
+5. Kliknij polecenie **Zapisz**.
 
 ### <a name="create-a-connected-app-in-salesforce"></a>Tworzenie połączonych aplikacji w usłudze Salesforce
 
@@ -49,7 +49,7 @@ W tym artykule dowiesz się, jak włączyć logowania dla użytkowników z organ
       ```
 
 6. W **adres URL usługi ACS** wprowadź następujący adres URL. Upewnij się, zastąp wartość `your-tenant` nazwą dzierżawy usługi Azure AD B2C.
-      
+
       ```
       https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer
       ```
@@ -90,17 +90,17 @@ Potrzebujesz przechować certyfikat, który został utworzony w dzierżawie usł
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. Upewnij się, że używasz katalogu zawierającego Twoją dzierżawę usługi Azure AD B2C, klikając pozycję **Filtr katalogu i subskrypcji** w górnym menu i wybierając katalog zawierający Twoją dzierżawę.
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
-4. Na stronie Przegląd wybierz **struktura środowiska tożsamości — wersja ZAPOZNAWCZA**.
+4. Na stronie Przegląd wybierz **struktura środowiska tożsamości**.
 5. Wybierz **klucze zasad** , a następnie wybierz **Dodaj**.
 6. Aby uzyskać **opcje**, wybierz `Upload`.
 7. Wprowadź wartość **Nazwa** dla zasad. Na przykład SAMLSigningCert. Prefiks `B2C_1A_` jest automatycznie dodawany do nazwy klucza.
-8. Przejdź do, a następnie wybierz certyfikat B2CSigningCert.pfx, który został utworzony. 
+8. Przejdź do, a następnie wybierz certyfikat B2CSigningCert.pfx, który został utworzony.
 9. Wprowadź **hasło** certyfikatu.
-3. Kliknij pozycję **Utwórz**.
+3. Kliknij przycisk **Utwórz**.
 
 ## <a name="add-a-claims-provider"></a>Dodawanie dostawcy oświadczeń
 
-Użytkownikom na logowanie przy użyciu konta usługi Salesforce, należy zdefiniować konto jako dostawcy oświadczeń, które usługi Azure AD B2C mogą się komunikować za pośrednictwem punktu końcowego. Punkt końcowy zawiera zestaw oświadczeń, które są używane przez usługę Azure AD B2C, aby sprawdzić, czy określony użytkownik jest uwierzytelniony. 
+Użytkownikom na logowanie przy użyciu konta usługi Salesforce, należy zdefiniować konto jako dostawcy oświadczeń, które usługi Azure AD B2C mogą się komunikować za pośrednictwem punktu końcowego. Punkt końcowy zawiera zestaw oświadczeń, które są używane przez usługę Azure AD B2C, aby sprawdzić, czy określony użytkownik jest uwierzytelniony.
 
 Konta usług Salesforce można zdefiniować jako dostawcy oświadczeń, przez dodanie jej do **ClaimsProviders** elementu w pliku rozszerzenie zasad.
 
@@ -189,7 +189,7 @@ Teraz, gdy przycisk w miejscu, należy połączyć akcji. Akcja, w tym przypadku
     ```XML
     <ClaimsExchange Id="SalesforceExchange" TechnicalProfileReferenceId="salesforce" />
     ```
-    
+
     Zaktualizuj wartość **TechnicalProfileReferenceId** do **identyfikator** profilu technicznego została utworzona wcześniej. Na przykład `LinkedIn-OAUTH`.
 
 3. Zapisz *TrustFrameworkExtensions.xml* plik i ponownie przekazać go do weryfikacji.
@@ -204,7 +204,7 @@ Za pomocą usługi Azure AD B2c odbywa się przy użyciu aplikacji utworzonej w 
 4. Wybierz pozycję **Aplikacje**, a następnie wybierz polecenie **Dodaj**.
 5. Wprowadź nazwę aplikacji, na przykład *testapp1*.
 6. Dla **aplikacji sieci Web / interfejs API sieci Web**, wybierz opcję `Yes`, a następnie wprowadź `https://jwt.ms` dla **adres URL odpowiedzi**.
-7. Kliknij pozycję **Utwórz**.
+7. Kliknij przycisk **Utwórz**.
 
 ## <a name="update-and-test-the-relying-party-file"></a>Aktualizowanie i przetestować go jednostki uzależnionej ze stron
 

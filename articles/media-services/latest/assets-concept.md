@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 07/02/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 1bd9774cf045d9ed7f16a637fcb2eb1378b48686
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: d0a81d5d7ce8e7569b77007b6ad9c322cf626f16
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565810"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67670698"
 ---
 # <a name="assets"></a>Elementy zawartości
 
@@ -101,8 +101,8 @@ W poniższej tabeli przedstawiono sposób, w jaki [zasobów](https://docs.micros
 |description|Name (Nazwa)|
 |lastModified|Ostatnia modyfikacja|
 |storageAccountName|StorageAccountName|
-|storageEncryptionFormat| Opcje — opcje tworzenia|
-|type||
+|storageEncryptionFormat| Opcje (opcje tworzenia)|
+|— typ||
 
 ## <a name="storage-side-encryption"></a>Szyfrowanie po stronie magazynu
 
@@ -122,7 +122,7 @@ Aby chronić Twoje zasoby w spoczynku, zasoby mają zostać zaszyfrowane za pomo
 
 Zobacz [filtrowanie, porządkowanie, stronicowanie jednostek usługi Media Services](entities-overview.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Strumieniowe przesyłanie pliku](stream-files-dotnet-quickstart.md)
 * [Korzystanie z funkcji DVR w chmurze](live-event-cloud-dvr.md)

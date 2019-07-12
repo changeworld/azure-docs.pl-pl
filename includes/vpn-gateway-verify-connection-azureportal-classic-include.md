@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 010/17/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 60a64758ae93320fc44a0705038e9db7e114b9bd
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 26e48d1af8e29c7d00a80910dcca62811da14822
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183060"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673443"
 ---
 Przechodząc w witrynie Azure Portal do połączenia, można sprawdzić stan połączenia klasycznej bramy VPN Gateway sieci wirtualnej. Poniższe kroki pokazują jeden ze sposobów nawigacji do połączenia oraz jego weryfikacji.
 
-1. W witrynie [Azure Portal](http://portal.azure.com) kliknij przycisk **Wszystkie zasoby** i przejdź do klasycznej sieci wirtualnej.
+1. W witrynie [Azure Portal](https://portal.azure.com) kliknij przycisk **Wszystkie zasoby** i przejdź do klasycznej sieci wirtualnej.
 2. W bloku sieci wirtualnej kliknij pozycję **Przegląd**, aby uzyskać dostęp do sekcji **Połączenia VPN** w bloku.
 3. Kliknij lokację na grafice połączeń VPN.
 

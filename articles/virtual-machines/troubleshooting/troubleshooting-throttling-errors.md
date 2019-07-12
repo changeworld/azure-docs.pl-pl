@@ -4,7 +4,7 @@ description: Ograniczanie przepustowości, błędy, ponownych prób i wycofywani
 services: virtual-machines
 documentationcenter: ''
 author: changov
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.service: virtual-machines
@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: vashan, rajraj, changov
-ms.openlocfilehash: efa10f5beae64105857b00b186683d491edb00f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a9e0f2620bf6ff163207fc16ee24a327936ec4bf
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233769"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709195"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>Rozwiązywanie problemów z błędami ograniczania przepływności interfejsu API 
 
@@ -98,6 +98,6 @@ Polecenia cmdlet programu PowerShell używasz usługi interfejsu API REST, któr
 - Jeśli kod klienta wymaga maszyn wirtualnych, dysków i migawek z określonej lokalizacji platformy Azure, formularz oparte na lokalizacji kwerendy zamiast odpytywanie subskrypcji wszystkie maszyny wirtualne, a następnie filtrować według lokalizacji po stronie klienta: `GET /subscriptions/<subId>/providers/Microsoft.Compute/locations/<location>/virtualMachines?api-version=2017-03-30` zapytanie, aby regionalne dostawcę zasobów obliczeniowych punkty końcowe. 
 -   Podczas tworzenia lub aktualizowania zasobów interfejsu API, w szczególności, maszyny wirtualne i zestawy skalowania maszyn wirtualnych, jest znacznie bardziej efektywne do śledzenia operacji asynchronicznej zwrócone do zakończenia niż sondowanie na adres URL zasobu, sama (na podstawie `provisioningState`).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat wytycznych ponawiania prób dla innych usług na platformie Azure, zobacz [ponów wskazówki dla określonych usług](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)

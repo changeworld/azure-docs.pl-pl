@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2018
-ms.author: yili
+ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 4acadc4c08ef50e7d52303689c38c43f81187669
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: be3768aadb3e256aa7b0ba7fe3d72cf4169e9bb2
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60852523"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705715"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>Ciągłe wdrażanie za pomocą usługi Web App for Containers
 
@@ -61,7 +61,7 @@ W rejestrze kontenerów kliknij elementy Webhook, aby wyświetlić bieżące ele
 
 Skopiuj adres URL elementu Webhook. Aby dodać element webhook usługi Docker Hub, wykonaj <a href="https://docs.docker.com/docker-hub/webhooks/" target="_blank">elementy webhook dla usługi Docker Hub</a>.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Wprowadzenie do usługi Azure App Service w systemie Linux](./app-service-linux-intro.md)
 * [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)

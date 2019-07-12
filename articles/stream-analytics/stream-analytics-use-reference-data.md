@@ -8,16 +8,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: e4a6d169b50eff1b0e166bea098e28e65bad8cab
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: ed50dfd7e3c423c1c26a7dc19ae60dcb319f1850
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329304"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621612"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Przy użyciu danych referencyjnych dla wyszukiwania w usłudze Stream Analytics
 
-Dane referencyjne (znany także jako tabela odnośnika) jest ograniczone zestaw danych, który jest statyczny lub wolno zmieniający się charakter, używane do wyszukiwania lub rozszerzyć swoje strumieni danych. Można na przykład w scenariuszu IoT są przechowywane metadane dotyczące czujniki, (które nie zmieniają się często) w danych referencyjnych i przyłączyć go ze strumieniami danych IoT w czasie rzeczywistym. Usługa Azure Stream Analytics ładuje dane referencyjne w pamięci w celu uzyskania małych opóźnień przetwarzania strumienia. Aby korzystać z danych referencyjnych w ramach zadania usługi Azure Stream Analytics, będzie na ogół służy [Dołącz dane odwołanie](https://msdn.microsoft.com/library/azure/dn949258.aspx) w zapytaniu. 
+Dane referencyjne (znany także jako tabela odnośnika) jest ograniczone zestaw danych, który jest statyczny lub wolno zmieniający się charakter, używane do wyszukiwania lub rozszerzyć swoje strumieni danych. Można na przykład w scenariuszu IoT są przechowywane metadane dotyczące czujniki, (które nie zmieniają się często) w danych referencyjnych i przyłączyć go ze strumieniami danych IoT w czasie rzeczywistym. Usługa Azure Stream Analytics ładuje dane referencyjne w pamięci w celu uzyskania małych opóźnień przetwarzania strumienia. Aby korzystać z danych referencyjnych w ramach zadania usługi Azure Stream Analytics, będzie na ogół służy [Dołącz dane odwołanie](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics) w zapytaniu. 
 
 Stream Analytics obsługuje usługi Azure Blob storage i Azure SQL Database jako Warstwa przechowywania danych referencyjnych. Użytkownik może także przekształcić i/lub skopiowania do magazynu obiektów Blob usługi Azure Data Factory, aby użyć danych referencyjnych [dowolną liczbę chmurowych i lokalnych magazynów danych](../data-factory/copy-activity-overview.md).
 
@@ -89,7 +89,7 @@ Aby skonfigurować dane odwołanie do bazy danych SQL, należy najpierw utworzy�
 |**Nazwa właściwości**|**Opis**  |
 |---------|---------|
 |Alias danych wejściowych|Przyjazna nazwa, która będzie służyć w zapytaniu zadania można odwoływać się do tych danych wejściowych.|
-|Subskrypcja|Wybierz subskrypcję|
+|Subscription|Wybierz subskrypcję|
 |Database (Baza danych)|Azure SQL Database zawierającą dane odwołanie.|
 |Nazwa użytkownika|Nazwa użytkownika skojarzony z usługi Azure SQL Database.|
 |Hasło|Hasło skojarzone z usługi Azure SQL Database.|
@@ -111,7 +111,7 @@ Zwiększenie liczby jednostek przesyłania strumieniowego zadania poza 6 nie zwi
 
 Obsługa kompresji nie jest dostępna dla danych referencyjnych. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"]
 > [Szybki start: Tworzenie zadania usługi Stream Analytics przy użyciu witryny Azure portal](stream-analytics-quick-create-portal.md)
 

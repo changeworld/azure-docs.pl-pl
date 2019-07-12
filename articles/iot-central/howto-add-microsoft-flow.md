@@ -8,12 +8,12 @@ ms.date: 04/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: hegate
-ms.openlocfilehash: c50271e28db104522c0e8811508fa882dc316eab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8bc8b8d4e3585ea4c0505f2e36abc6d1da7f8eb
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235809"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797719"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Tworzenie przepływów pracy z łącznikiem usługi IoT Central w Microsoft Flow
 
@@ -31,7 +31,8 @@ Zapoznaj się z [tych szablonów Microsoft Flow](https://aka.ms/iotcentralflowte
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Aplikacja płatność za rzeczywiste użycie
-- Microsoft osobistym lub służbowym lub konta służbowego do logowania się do usługi Flow ([Dowiedz się więcej na temat planów Microsoft Flow](https://aka.ms/microsoftflowplans))
+- Microsoft osobistym lub służbowym lub konta służbowego do użycia, Microsoft Flow ([Dowiedz się więcej na temat planów Microsoft Flow](https://aka.ms/microsoftflowplans))
+- Konto służbowe lub szkolne w celu korzystania z łącznika usługi Azure IoT Central
 
 ## <a name="trigger-a-workflow"></a>Wyzwalacz przepływu pracy
 
@@ -45,7 +46,12 @@ W tej sekcji dowiesz się, jak wyzwalać powiadomienie na urządzenie przenośne
 
     ![Dostępne szablony Microsoft Flow](media/howto-add-microsoft-flow/flowtemplates1.png)
 
-1. Zostanie wyświetlony monit logować się do łączników w wybranym szablonie. Po zalogowaniu łączniki nastąpi przejście do projektanta w celu utworzenia przepływu pracy. Przepływ pracy ma wyzwalacz IoT Central, który zawiera aplikację i reguła już wypełnione.
+1. Zostanie wyświetlony monit logować się do łączników w wybranym szablonie. 
+
+    > [!NOTE]
+    > Do korzystania z łącznika usługi Azure IoT Central, musisz zarejestrować się przy użyciu konta usługi Azure Active Directory (konto służbowe). To konto osobiste, takie jak abc@outlook.com lub abc@live.com nie są obsługiwane przez łącznik usługi Azure IoT Central.
+
+    Po zalogowaniu się do łączników, nastąpi przejście do projektanta w celu utworzenia przepływu pracy. Przepływ pracy ma wyzwalacz IoT Central, który zawiera aplikację i reguła już wypełnione.
 
 1. Dostosowywanie informacje przekazane do tej akcji i dodawania nowych akcji można dostosować przepływ pracy. W tym przykładzie to akcja **powiadomienia — Wyślij mi powiadomienie na urządzenie przenośne**. Możesz uwzględnić *zawartości dynamicznej* z reguły IoT Central, przekazując wzdłuż ważne informacje, takie jak nazwa urządzenia i sygnatura czasowa do powiadomienia.
 
@@ -165,7 +171,7 @@ Jeśli występują problemy podczas tworzenia połączenia z łącznikiem usług
     New-AzureADServicePrincipal -AppId 9edfcdd9-0bc5-4bd4-b287-c3afc716aac7 -DisplayName "Azure IoT Central"
     ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Teraz, kiedy znasz, jak tworzyć przepływy pracy za pomocą Microsoft Flow, sugerowane następnym krokiem jest [zarządzania urządzeniami](howto-manage-devices.md).
 

@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: danlep
-ms.openlocfilehash: 3c1c83bb0c3e46a7eaab519050d9c556e2cc1a7a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2be640c8c7773ebd1fb5c83e67e3f0762d011e85
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60563090"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657573"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>Zainstaluj wolumin tajny w usłudze Azure Container Instances
 
@@ -21,11 +21,11 @@ Użyj *klucz tajny* wolumin, aby podać poufne informacje do kontenerów w grupi
 Wszystkie *klucz tajny* woluminy są wspierane przez [tmpfs][tmpfs], filesystem kopią zapasową w pamięci RAM; ich zawartość nigdy nie są zapisywane w pamięci trwałej.
 
 > [!NOTE]
-> *Klucz tajny* woluminy są obecnie ograniczone do kontenerów systemu Linux. Dowiedz się, jak przekazać zmienne bezpieczne środowisko dla kontenerów systemów Windows i Linux w [ustawić zmienne środowiskowe](container-instances-environment-variables.md). Podczas gdy pracujemy, aby udostępnić wszystkie funkcje dostępne w kontenerach Windows, można znaleźć bieżące różnice dotyczące platform w [limity przydziałów i dostępność regionów dla usługi Azure Container Instances](container-instances-quotas.md).
+> *Klucz tajny* woluminy są obecnie ograniczone do kontenerów systemu Linux. Dowiedz się, jak przekazać zmienne bezpieczne środowisko dla kontenerów systemów Windows i Linux w [ustawić zmienne środowiskowe](container-instances-environment-variables.md). Podczas gdy pracujemy, aby udostępnić wszystkie funkcje dostępne w kontenerach Windows, można znaleźć bieżące różnice dotyczące platform w [Przegląd](container-instances-overview.md#linux-and-windows-containers).
 
 ## <a name="mount-secret-volume---azure-cli"></a>Zainstaluj wolumin tajny — interfejs wiersza polecenia platformy Azure
 
-Aby wdrożyć kontener z jednego lub więcej wpisów tajnych za pomocą wiersza polecenia platformy Azure, należy dołączyć `--secrets` i `--secrets-mount-path` parametrów w [utworzyć kontener az] [ az-container-create] polecenia. W tym przykładzie instaluje *klucz tajny* składający się z dwóch wpisów tajnych, "mysecret1" i "mysecret2," w woluminie `/mnt/secrets`:
+Aby wdrożyć kontener z jednego lub więcej wpisów tajnych za pomocą wiersza polecenia platformy Azure, należy dołączyć `--secrets` i `--secrets-mount-path` parametrów w [utworzyć kontener az][az-container-create] polecenia. W tym przykładzie instaluje *klucz tajny* składający się z dwóch wpisów tajnych, "mysecret1" i "mysecret2," w woluminie `/mnt/secrets`:
 
 ```azurecli-interactive
 az container create \
@@ -36,7 +36,7 @@ az container create \
     --secrets-mount-path /mnt/secrets
 ```
 
-Następujące [az container exec] [ az-container-exec] dane wyjściowe pokazują otworzyć powłokę w działający kontener, wyświetlając listę plików w woluminie wpisu tajnego, a następnie wyświetlanie ich zawartość:
+Następujące [az container exec][az-container-exec] dane wyjściowe pokazują otworzyć powłokę w działający kontener, wyświetlając listę plików w woluminie wpisu tajnego, a następnie wyświetlanie ich zawartość:
 
 ```console
 $ az container exec --resource-group myResourceGroup --name secret-volume-demo --exec-command "/bin/sh"
@@ -60,7 +60,7 @@ Podczas wdrażania za pomocą szablonu YAML, muszą być wartościami wpisów ta
 Następujący szablon YAML definiuje grupę kontenerów za pomocą jednego kontenera, który instaluje *klucz tajny* woluminu w `/mnt/secrets`. Wolumin tajny ma dwa klucze tajne, "mysecret1" i "mysecret2."
 
 ```yaml
-apiVersion: '2018-06-01'
+apiVersion: '2018-10-01'
 location: eastus
 name: secret-volume-demo
 properties:
@@ -88,7 +88,7 @@ tags: {}
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Wdrożyć za pomocą szablonu YAML, należy zapisać w pliku o nazwie poprzedniego YAML `deploy-aci.yaml`, a następnie wykonaj [utworzyć kontener az] [ az-container-create] polecenia `--file` parametru:
+Wdrożyć za pomocą szablonu YAML, należy zapisać w pliku o nazwie poprzedniego YAML `deploy-aci.yaml`, a następnie wykonaj [utworzyć kontener az][az-container-create] polecenia `--file` parametru:
 
 ```azurecli-interactive
 # Deploy with YAML template
@@ -108,7 +108,7 @@ Następujący szablon usługi Resource Manager definiuje grupę kontenerów za p
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-secret.json -->
 [!code-json[volume-secret](~/azure-docs-json-samples/container-instances/aci-deploy-volume-secret.json)]
 
-Wdrażanie przy użyciu szablonu usługi Resource Manager, należy zapisać w pliku o nazwie powyższego kodu JSON `deploy-aci.json`, a następnie wykonaj [Utwórz wdrożenie grupy az] [ az-group-deployment-create] polecenia `--template-file` parametru:
+Wdrażanie przy użyciu szablonu usługi Resource Manager, należy zapisać w pliku o nazwie powyższego kodu JSON `deploy-aci.json`, a następnie wykonaj [Utwórz wdrożenie grupy az][az-group-deployment-create] polecenia `--template-file` parametru:
 
 ```azurecli-interactive
 # Deploy with Resource Manager template

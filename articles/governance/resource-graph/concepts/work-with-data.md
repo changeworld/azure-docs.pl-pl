@@ -7,12 +7,12 @@ ms.date: 04/01/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 9accdc19062cba7bb313afac3da056798c325a4c
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: d04f46dbc60a7242e44d76915e15281cc6248d20
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274419"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786530"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Praca z zestawami danych w dużej ilości zasobów platformy Azure
 
@@ -82,9 +82,9 @@ Search-AzGraph -Query "project id, name | order by id asc" -First 1000 -Skip 300
 > [!IMPORTANT]
 > Zapytanie musi **projektu** **identyfikator** pola w kolejności do dzielenia na strony do pracy. Jeśli brakuje zapytania, odpowiedź nie będzie zawierać **$skipToken**.
 
-Aby uzyskać przykład, zobacz [następnej strony kwerendy](/rest/api/azureresourcegraph/resources/resources#next_page_query) w dokumentacji interfejsu API REST.
+Aby uzyskać przykład, zobacz [następnej strony kwerendy](/rest/api/azureresourcegraph/resources/resources#next-page-query) w dokumentacji interfejsu API REST.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Zobacz język używany w [początkowego zapytania](../samples/starter.md).
 - Zobacz zaawansowane używa w [zaawansowanych zapytań](../samples/advanced.md).

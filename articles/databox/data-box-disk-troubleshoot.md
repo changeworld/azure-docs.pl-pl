@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: alkohli
-ms.openlocfilehash: f725f38a335972ae8e0a8b8402a99202caa54a70
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: f8116ec0836623adf803991017950ddc7f960923
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147081"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67805705"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>Użyj dzienników, aby rozwiązać problemy ze sprawdzaniem poprawności w dysku Azure Data Box
 
@@ -90,8 +90,8 @@ Błędy zawarte w *error.xml* z odpowiednimi zalecane akcje są podsumowane w po
 | `InvalidBlobNameFormat` | Ścieżka pliku nie jest mapowany na ścieżkę prawidłowy obiekt blob w chmurze zgodnie z obiektów Blob platformy Azure, konwencje nazewnictwa.|Zmień nazwę pliku, tak że spełnia on [konwencjami nazewnictwa platformy Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). Ponawianie próby weryfikacji. |
 | `InvalidFileNameFormat` | Ścieżka pliku nie są mapowane na prawidłową ścieżkę do pliku w chmurze zgodnie z konwencji nazewnictwa plików platformy Azure. |Zmień nazwę pliku, tak że spełnia on [konwencjami nazewnictwa platformy Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). Ponawianie próby weryfikacji. |
 | `InvalidDiskNameFormat` | Ścieżka pliku nie jest mapowany na nazwę prawidłowy dysk w chmurze zgodnie z konwencjami nazewnictwa dysk zarządzany platformy Azure. |Zmień nazwę pliku, tak że spełnia on [konwencjami nazewnictwa platformy Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). Ponawianie próby weryfikacji.       |
-| `NotPartOfFileShare` | Nie można przekazać pliki, ponieważ ścieżka przekazywania jest nieprawidłowa. Przekaż pliki do folderu w usłudze Azure Files.   | Usuń pliki z błędami i przekazać te pliki do folderu precreated. Ponawianie próby weryfikacji. |
-| `NonVhdFileNotSupportedForManagedDisk` | Nie można przekazać pliku-VHD jako dysk zarządzany. |Usuń pliki wirtualnego dysku twardego, ponieważ te nie są obsługiwane. Ponawianie próby weryfikacji. |
+| `NotPartOfFileShare` | Ścieżka przekazywania plików jest nieprawidłowa. Przekaż pliki do folderu w usłudze Azure Files.   | Usuń pliki z błędami i przekazać te pliki do folderu precreated. Ponawianie próby weryfikacji. |
+| `NonVhdFileNotSupportedForManagedDisk` | Nie można przekazać pliku-VHD jako dysk zarządzany. |Usuń pliki inne niż wirtualny dysk twardy z `ManagedDisk` folderze te nie są obsługiwane lub przenosić tych plików do `PageBlob` folderu. Ponawianie próby weryfikacji. |
 
 
 ## <a name="next-steps"></a>Kolejne kroki

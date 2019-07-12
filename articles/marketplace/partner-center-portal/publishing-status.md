@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 9bf3136969974abbe9a99a5632478e3cbb22307e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae4840877ae461244a76984ed8ac3edc82d57a38
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66474526"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653980"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Sprawdź stan publikowania oferty komercyjnej witryny Marketplace
 
@@ -75,7 +75,7 @@ Podczas weryfikacji zawartości informacje wprowadzone podczas tworzenia oferty 
 - zrzuty ekranu jakość i towarzyszących wideo; i
 - wyjaśnienie, jak korzysta z tej oferty platformy firmy Microsoft i narzędzi.
 
-Dowiedz się więcej o kryteria weryfikacji zawartości, czytając [ogólne, wyświetlanie listy zasad](https://docs.microsoft.com/legal/marketplace/general-policies#10-general-listing-policies).
+Dowiedz się więcej o kryteria weryfikacji zawartości, czytając [ogólne, wyświetlanie listy zasad](https://docs.microsoft.com/legal/marketplace/certification-policies#100-general-policies).
 
 #### <a name="technical-validation"></a>Sprawdzanie poprawności Technical Preview
 
@@ -141,6 +141,6 @@ W tym kroku Upewniamy się, że Twoja oferta staje się publicznie dostępny w w
 
 Jeśli chcesz wprowadzić zmiany do oferty, które zostały już opublikowane, należy najpierw zaktualizować istniejące oferty, a następnie opublikuj go ponownie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Aktualizowanie istniejącej oferty w witrynie Marketplace komercyjnych](./update-existing-offer.md)

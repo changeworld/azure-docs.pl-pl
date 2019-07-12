@@ -4,7 +4,7 @@ description: Dowiedz się, jak zainstalować bazę danych MongoDB na maszynie Wi
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 53faf630-8da5-4955-8d0b-6e829bf30cba
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: afd8e6b47fb86985acde062af1fb38ec3af4e902
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1436eadace2ff57bde9d67201d6b38d4aee8f523
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711450"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722666"
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>Instalowanie i Konfigurowanie bazy danych MongoDB na maszynie Wirtualnej Windows na platformie Azure
 [Bazy danych MongoDB](https://www.mongodb.org) to popularne typu open source, wysokiej wydajności baza danych NoSQL. Ten artykuł przeprowadzi Cię przez proces instalowania i konfigurowania bazy danych MongoDB na maszynie wirtualnej systemu Windows Server 2016 (VM) na platformie Azure. Możesz również [zainstalować bazę danych MongoDB na maszynie Wirtualnej systemu Linux na platformie Azure](../linux/install-mongodb.md).
@@ -162,6 +162,6 @@ Jeśli to konieczne, Utwórz regułę sieciowej grupy zabezpieczeń, aby zezwala
 > TCP port 27017 jest domyślnym portem używanym przez bazy danych MongoDB. Ten port można zmienić za pomocą `--port` parametru podczas uruchamiania `mongod.exe` ręcznie lub przy użyciu usługi. Jeśli zmienisz numer portu, upewnij się zaktualizować reguły zapory Windows i sieciowej grupy zabezpieczeń, w poprzednich krokach.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym samouczku przedstawiono sposób instalowania i konfigurowania bazy danych MongoDB na maszynie Wirtualnej Windows. Możesz teraz uzyskiwać dostęp bazy danych MongoDB na maszynie Wirtualnej Windows, wykonując poniższe tematy Zaawansowane w [dokumentacją usługi MongoDB](https://docs.mongodb.com/manual/).
 

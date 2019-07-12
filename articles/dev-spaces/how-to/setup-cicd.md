@@ -7,15 +7,15 @@ author: DrEsteban
 ms.author: stevenry
 ms.date: 12/17/2018
 ms.topic: conceptual
-manager: yuvalm
+manager: gwallace
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, containers
-ms.openlocfilehash: 983af0dd75e6ae62630c85d04ac3819c7e260439
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 01e1401c5054eb56d4e2313b5e03ce5a36d1b301
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60687371"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704065"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Ciągła Integracja/ciągłe dostarczanie za pomocą usługi Azure Dev miejsca do magazynowania
 
@@ -101,7 +101,7 @@ Masz teraz to rozwiązanie ciągłej integracji, które automatycznie utworzy *m
 1. Dla **domyślną wersję**, wybierz **najnowsze z gałęzi domyślnej potoku kompilacji z tagami**.
 1. Pozostaw **tagi** puste.
 1. Ustaw **alias źródła** do `drop`. **Alias źródła** wartość jest używana przez zadania wydania, więc musi być ustawiona.
-1. Kliknij pozycję **Add** (Dodaj).
+1. Kliknij przycisk **Dodaj**.
 1. Teraz kliknij ikonę pioruna na nowo utworzony `drop` źródła artefaktu, jak pokazano poniżej:
 
     ![Wersja artefaktu ciągłe wdrażanie konfiguracji](../media/common/release-artifact-cd-setup.png)
@@ -121,7 +121,7 @@ Masz teraz to rozwiązanie ciągłej integracji, które automatycznie utworzy *m
 1. Kliknij przycisk **Zapisz** w prawym górnym rogu, a **OK**.
 1. Kliknij przycisk **+ wydanie** (obok przycisku Zapisz), a **utworzyć wydanie**.
 1. W obszarze **artefaktów**, sprawdź, czy jest wybrany najnowszą kompilację z potokiem kompilacji.
-1. Kliknij pozycję **Utwórz**.
+1. Kliknij przycisk **Utwórz**.
 
 Procesu tworzenia wersji automatyczne rozpocznie teraz, wdrażanie *mywebapi* i *webfrontend* wykresów Kubernetes klastra w systemie _dev_ miejsca najwyższego poziomu. Możesz monitorować postęp wydania DevOps platformy Azure w portalu sieci web:
 

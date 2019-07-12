@@ -3,19 +3,19 @@ title: Migrowanie istniejącej usługi Azure SQL Data Warehouse do Gen2 | Dokume
 description: Instrukcje dotyczące migracji istniejącego magazynu danych na Gen2 oraz harmonogram migracji według regionów.
 services: sql-data-warehouse
 author: mlee3gsd
-ms.author: anumjs
+ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 3141f3a1d6a9f09261dee4113276af72168e35e8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: cef3036b01709847016d9523a5770febb8ff1134
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444702"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839653"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Uaktualnienie magazynu danych do Gen2
 
@@ -39,13 +39,13 @@ Poniższa tabela zawiera podsumowanie według regionu, gdy warstwa wystąpień o
 | Kanada Wschodnia |\* |\* |
 | Środkowe stany USA |Dostępne |1 czerwca 2019 r. |
 | Chiny Wschodnie |\* |\* |
-| Chiny Wschodnie 2 |\* |Gen2 tylko |
+| Chiny Wschodnie 2 |Dostępne |Gen2 tylko |
 | Chiny Północne |\* |\* |
 | Chiny Północne 2 |Dostępne |Gen2 tylko |
 | Azja Wschodnia |Dostępne |1 czerwca 2019 r. |
 | East US |Dostępne |1 czerwca 2019 r. |
 | Wschodnie stany USA 2 |Dostępne |1 czerwca 2019 r. |
-| Francja Środkowa |\* |1 czerwca 2019 r. |
+| Francja Środkowa |Dostępne |1 czerwca 2019 r. |
 | Niemcy Środkowe |\* |\* |
 | Niemcy Środkowo-Zachodnie |1 września 2019 r.|2 stycznia 2020 roku. |
 | Indie Środkowe |Dostępne |1 czerwca 2019 r. |
@@ -56,10 +56,12 @@ Poniższa tabela zawiera podsumowanie według regionu, gdy warstwa wystąpień o
 | Korea Południowa |Dostępne |1 maja 2019 r. |
 | Środkowo-północne stany USA |Dostępne |1 maja 2019 r. |
 | Europa Północna |Dostępne |1 czerwca 2019 r. |
+| Republika Południowej Afryki (północ) |12 lipca 2019 r. |Gen2 tylko |
 | Środkowo-południowe stany USA |Dostępne |1 czerwca 2019 r. |
 | Azja Południowo-Wschodnia |Dostępne |1 czerwca 2019 r. |
-| Południowe Zjednoczone Królestwo |Dostępne, 2019 r |1 czerwca 2019 r. |
-| Zachodnie Zjednoczone Królestwo |\*|\* |
+| Północne Zjednoczone Emiraty Arabskie |20 lipca 2019 r. |Gen2 tylko |
+| Południowe Zjednoczone Królestwo |Dostępne |1 czerwca 2019 r. |
+| Zachodnie Zjednoczone Królestwo |Dostępne |Gen2 tylko |
 | Środkowo-zachodnie stany USA |2 września 2019 r. |2 stycznia 2020 roku.|
 | Europa Zachodnia |Dostępne |1 czerwca 2019 r. |
 | Zachodnie stany USA |Dostępne |1 czerwca 2019 r. |
@@ -145,7 +147,7 @@ Aby uzyskać więcej informacji, zobacz [uaktualnienie do Gen2](upgrade-to-lates
 
 - Odp.: Nie. Po uaktualnieniu region tworzenie nowych wystąpień Gen1 zostaną wyłączone.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Procedura uaktualniania](upgrade-to-latest-generation.md)
 - [Okna obsługi](maintenance-scheduling.md)

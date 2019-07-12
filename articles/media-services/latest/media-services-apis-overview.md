@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 05/02/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ca4e343ea4774bbe4ff992ad671575b150b3c045
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8dac6f38052f176c7a3741a664e174d0a66cbc5
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65890970"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612695"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Tworzenie aplikacji za pomocą usługi Media Services v3 interfejsów API
 
@@ -100,7 +100,6 @@ Usługa Media Services obsługuje następujące operacje długotrwałych:
 * Zatrzymaj StreamingEndpoint
 * StreamingEndpoint skalowania
 
-
 ## <a name="sdks"></a>Zestawy SDK
 
 > [!NOTE]
@@ -138,7 +137,7 @@ Zapoznaj się z [społeczności usługi Azure Media Services](media-services-com
 
 [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Łączenie usługi Media Services za pomocą języka Java](configure-connect-java-howto.md)
 * [Łączenie usługi Media Services przy użyciu platformy .NET](configure-connect-dotnet-howto.md)

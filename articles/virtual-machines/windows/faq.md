@@ -4,7 +4,7 @@ description: Zawiera odpowiedzi na niektóre często zadawane pytania dotyczące
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-management
 ms.assetid: 757da816-a050-4889-a010-6f75d7978eb7
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 7961656e0f295b3e1a9264d839da94de25a224a8
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 69c79db937d70bcc8ae834bf0bdf8f1930bed3c9
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67550317"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722739"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Często zadawane pytania dotyczące maszyn wirtualnych Windows
 W tym artykule opisano często zadawane pytania dotyczące maszyn wirtualnych Windows utworzone na platformie Azure przy użyciu modelu wdrażania usługi Resource Manager. Wersja systemu Linux w tym temacie, zobacz [— często zadawane pytania dotyczące maszyn wirtualnych systemu Linux](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

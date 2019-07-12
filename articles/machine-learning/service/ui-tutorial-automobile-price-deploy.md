@@ -3,22 +3,22 @@ title: 'Samouczek: Wdrażanie modelu za pomocą interfejsu wizualnego uczenia ma
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak tworzyć rozwiązania do analizy predykcyjnej w interfejsie visual usługi Azure Machine Learning. Szkolenie, wynik, wdrożyć model uczenia maszynowego przy użyciu przeciągania i upuszczania modułów. Niniejszy samouczek jest drugą częścią serii legalną dwuczęściową na Prognozowanie cen samochodów przy użyciu regresji liniowej.
 author: peterclu
-ms.author: peterclu
+ms.author: peterlu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 04/06/2019
-ms.openlocfilehash: 8512ca2fe01c772d7e4c21a5cb09303b9804899c
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.date: 07/11/2019
+ms.openlocfilehash: dd28fb51a4fc3fbf3dfc893f2f5f159ccafdb4b3
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389218"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839302"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Samouczek: Wdrażanie modelu za pomocą interfejsu wizualnego uczenia maszynowego
 
-W tym samouczku możesz Przyjrzyj się rozszerzone tworzenie rozwiązania do analizy predykcyjnej w interfejsie visual usługi Azure Machine Learning. Ten samouczek jest **drugą częścią dwuczęściowej serii samouczków**. W [część pierwsza samouczka](ui-tutorial-automobile-price-train-score.md), skonfigurowanych pod kątem, oceniane i ocenić modelu do prognozowania cen samochodów. W tej części samouczka możesz:
+Udostępniania szansę, aby używać modelu predykcyjnego, opracowane w [część pierwsza samouczka](ui-tutorial-automobile-price-train-score.md), można go wdrożyć jako usługę sieci web platformy Azure. Do tej pory były zmieniane za pomocą szkolenia modelu. Teraz nadszedł czas, aby wygenerować nowy prognozy na podstawie danych wejściowych użytkownika. W tej części samouczka możesz:
 
 > [!div class="checklist"]
 > * Przygotowanie modelu wdrożenia
@@ -29,56 +29,40 @@ W tym samouczku możesz Przyjrzyj się rozszerzone tworzenie rozwiązania do ana
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Wykonanie [pierwszej części samouczka](ui-tutorial-automobile-price-train-score.md).
+Pełne [część pierwsza samouczka](ui-tutorial-automobile-price-train-score.md) dowiesz się, jak szkolenie i ocenianie modeli uczenia maszynowego w interfejsie visual.
 
 ## <a name="prepare-for-deployment"></a>Przygotowanie do wdrożenia
 
-Udostępniania szansę, aby używać modelu predykcyjnego, opracowane w ramach tego samouczka, możesz go wdrożyć jako usługę sieci web platformy Azure.
+Przed wdrożeniem eksperymentu jako usługę sieci web, najpierw trzeba przekonwertować swoje *eksperymentu szkolenia* do *eksperyment predykcyjny*.
 
-Do tej pory były zmieniane za pomocą szkolenia modelu. Teraz nadszedł czas, aby wygenerować nowy prognozy na podstawie danych wejściowych użytkownika.
+1. Wybierz **tworzenie eksperymentów predykcyjne*** w dolnej części obszaru roboczego eksperymentu.
 
-Przygotowanie do wdrożenia jest procesem dwuetapowym:  
+    ![Animowany obraz gif przedstawiający automatycznej konwersji eksperymentu szkolenia eksperyment predykcyjny](./media/ui-tutorial-automobile-price-deploy/deploy-web-service.gif)
 
-1. Konwertuj *eksperymentu szkolenia* utworzonego w *eksperyment predykcyjny*
-1. Wdrożyć eksperyment predykcyjny jako usługę sieci web
+    Po wybraniu **utworzyć eksperyment predykcyjny**, ma miejsce kilka rzeczy:
+    
+    * Uczony model jest przechowywany jako **Uczonego modelu** modułu w palecie modułów. Znajdziesz go w folderze **przeszkolone modele**.
+    * Moduły, które zostały użyte do trenowania zostaną usunięte; w szczególności:
+      * Trenowanie modelu
+      * Dzielenie danych
+      * Ocena modelu
+    * Zapisane uczony model jest dodawany do eksperymentu.
+    * **Dane wejściowe usługi w sieci Web** i **sieci Web usługi danych wyjściowych** moduły są dodawane. Te moduły zidentyfikować, gdzie danych użytkownik przejdzie modelu i gdzie dane są zwracane.
 
-Warto najpierw utworzyć kopię eksperymentu, wybierając **Zapisz jako** w dolnej części obszaru roboczego eksperymentu.
+    **Eksperymentu szkolenia** nadal jest zapisywane w ramach nowej karty w górnej części obszaru roboczego eksperymentu.
 
-### <a name="convert-the-training-experiment-to-a-predictive-experiment"></a>Konwertowanie eksperymentu szkolenia na eksperyment predykcyjny
+1. Kliknij przycisk **Run** (Uruchom), aby uruchomić eksperyment
 
-Aby uzyskać ten model jest gotowe do wdrożenia, należy przekonwertować tego eksperymentu szkolenia na eksperyment predykcyjny. Obejmuje to zwykle trzy kroki:
-
-1. Zapisywanie modelu już uczony i Zastąp moduły szkoleniowe
-1. TRIM eksperymentu do usunięcia modułów, które były potrzebne tylko w przypadku szkolenia
-1. Zdefiniuj, którym usługa sieci web będzie akceptować dane wejściowe i gdzie generuje dane wyjściowe
-
-Te kroki można wykonać ręcznie lub można wybrać opcję **ustawić usługę sieci Web** w dolnej części obszaru roboczego eksperymentu do nich wykonywane automatycznie.
-
-![Animowany obraz gif przedstawiający automatycznej konwersji eksperymentu szkolenia eksperyment predykcyjny](./media/ui-tutorial-automobile-price-deploy/deploy-web-service.gif)
-
-Po wybraniu **ustawić usługę sieci Web**, ma miejsce kilka rzeczy:
-
-* Uczony model jest konwertowany na pojedynczej **Uczonego modelu** modułu. Jest on przechowywany w palety modułów, z lewej strony obszaru roboczego eksperymentu. Znajdziesz go w folderze **przeszkolone modele**.
-* Moduły, które zostały użyte do trenowania zostaną usunięte; w szczególności:
-  * Trenowanie modelu
-  * Dzielenie danych
-  * Ocena modelu
-* Zapisane uczony model jest ponownie dodane do eksperymentu
-* **Dane wejściowe usługi w sieci Web** i **sieci Web usługi danych wyjściowych** moduły są dodawane. Te moduły zidentyfikować, gdzie przejdzie modelu danych użytkownika i gdzie dane są zwracane.
-
-Widać, że eksperyment został zapisany w dwóch częściach na nowych kartach w górnej części obszaru roboczego eksperymentu. Oryginalny eksperymentu szkolenia znajduje się w karcie **eksperymentu szkolenia**, a nowo utworzony eksperyment predykcyjny podlega **eksperyment predykcyjny**. Eksperyment predykcyjny jest tym, który wdrożysz jako usługę internetową.
+1. Wybierz dane wyjściowe **Score Model** modułu, a następnie wybierz pozycję **wyświetlanie wyników** Aby sprawdzić, model nadal działa. Widać, że oryginalne dane są wyświetlane, oraz przewidywany cen ("Labels oceniane").
 
 Eksperyment powinien teraz wyglądać następująco:  
 
 ![Zrzut ekranu przedstawiający oczekiwanej konfiguracji eksperymentu po przygotowaniu go do wdrożenia](./media/ui-tutorial-automobile-price-deploy/predictive-graph.png)
 
-Uruchom eksperyment jeszcze jeden raz (wybierz **Uruchom**). Wybierz cel obliczeniowej, mają eksperyment do uruchomienia na w oknie podręcznym. Aby sprawdzić, model nadal działa, wybierz dane wyjściowe modułu Score Model, a następnie wybierz pozycję **wyświetlanie wyników**. Widać, że oryginalne dane są wyświetlane, oraz przewidywany cen ("Labels oceniane").
-
 ## <a name="deploy-the-web-service"></a>Wdrażanie usługi sieci Web
 
-Aby wdrożyć nową usługę sieci web pochodzące z eksperymentu:
-
 1. Wybierz **wdrażanie usługi sieci Web** poniżej obszaru roboczego.
+
 1. Wybierz **obliczenia docelowej** chcesz uruchomić usługę sieci web.
 
     Obecnie interfejs graficzny obsługuje tylko wdrażanie w usłudze Azure Kubernetes Service (AKS) obliczeniowych elementów docelowych. Można wybierać dostępne AKS obliczeniowych elementów docelowych w obszarze roboczym usługi uczenia maszynowego, lub skonfigurować nowe środowisko usługi AKS przy użyciu okna dialogowego, który pojawia się.
@@ -91,9 +75,7 @@ Aby wdrożyć nową usługę sieci web pochodzące z eksperymentu:
 
 ## <a name="test-the-web-service"></a>Test usługi sieci web
 
-Dane wejściowe użytkownika wprowadza wdrożonym modelu za pomocą **sieci Web dane wejściowe usługi** modułu. Dane wejściowe są następnie oceniane w **Score Model** modułu. Sposobu po skonfigurowaniu eksperyment predykcyjny model oczekuje danych w tym samym formacie co oryginalnego zestawu danych dotyczących samochodów ceny. Na koniec wyniki są zwracane użytkownikowi za pośrednictwem **sieci Web usługi danych wyjściowych** modułu.
-
-Usługi sieci web można sprawdzić na karcie usług sieci web w interfejs graficzny.
+Można przetestować i zarządzania usługami sieci web interfejs graficzny, przechodząc do **usług sieci Web** kartę.
 
 1. Przejdź do sekcji usługi sieci web. Zostaną wyświetlone wdrożone z nazwą usługi sieci web **— samouczek — prognozowania cen samochodów [Exp predykcyjne]** .
 
@@ -107,19 +89,13 @@ Usługi sieci web można sprawdzić na karcie usług sieci web w interfejs grafi
 
     ![Zrzut ekranu przedstawiający przetestować stronę usługi sieci web](./media/ui-tutorial-automobile-price-deploy/web-service-test.png)
 
-1. Dane wejściowe testowanie danych lub użyj autofilled przykładowych danych i wybierz polecenie **testu** u dołu. Żądanie testu jest przesyłany do usługi sieci web, a wyniki są wyświetlane na stronie. Mimo że wartość cena jest generowany dla danych wejściowych, nie jest używany do generowania wartości prognozy.
+1. Dane wejściowe testowanie danych lub użyj autofilled przykładowych danych i wybierz polecenie **testu**.
 
-## <a name="manage-the-web-service"></a>Zarządzanie usługą sieci web
-
-Po wdrożeniu usługi sieci web, można zarządzać nim z **usług sieci Web** karcie interfejsu wizualnego.
-
-Usługa sieci web można usunąć, wybierając **Usuń** na stronie szczegółów usługi sieci web.
-
-   ![Zrzut ekranu przedstawiający lokalizację przycisk Usuń w sieci web usługi w dolnej części okna](./media/ui-tutorial-automobile-price-deploy/web-service-delete.png)
+    Żądanie testu jest przesyłany do usługi sieci web, a wyniki są wyświetlane na stronie. Mimo że wartość cena jest generowany dla danych wejściowych, nie jest używany do generowania wartości prognozy.
 
 ## <a name="consume-the-web-service"></a>Korzystanie z usługi sieci web
 
-W poprzednich krokach w tym samouczku wdrożono model predykcyjny samochodów jako usługi sieci web platformy Azure. Teraz użytkownicy mogą wysyłać dane i otrzymywać wyniki za pośrednictwem interfejsu API REST.
+Użytkownicy mogą teraz wysyłać żądań interfejsu API usługi sieci web platformy Azure i otrzymywać wyniki, aby przewidzieć cenę ich nowych samochodów.
 
 **Żądanie/odpowiedź** — użytkownik wysyła co najmniej jeden wiersz danych samochodów w usłudze przy użyciu protokołu HTTP. Usługa odpowiada za pomocą co najmniej jeden zestaw wyników.
 
@@ -131,9 +107,9 @@ Przejdź do **dokumentacji interfejsu API** kartę, aby uzyskać więcej szczeg�
 
   ![Zrzut ekranu przedstawiający dodatkowe szczegóły interfejsu API przez użytkowników można znaleźć na karcie dokumentacji interfejsu API](./media/ui-tutorial-automobile-price-deploy/web-service-api.png)
 
-## <a name="manage-models-and-deployments-in-azure-machine-learning-service-workspace"></a>Zarządzanie modelami i wdrożeń w obszarze roboczym usługi Azure Machine Learning
+## <a name="manage-models-and-deployments"></a>Zarządzanie modelami i wdrożeń
 
-Modele i wdrożeń usług internetowych, utworzonej za pomocą wizualnego interfejsu można zarządzać z obszaru roboczego usługi Azure Machine Learning.
+Modele i wdrożeń usług internetowych, utworzonej za pomocą wizualnego interfejsu można też zarządzać w obszarze roboczym usługi Azure Machine Learning.
 
 1. Otwieranie obszaru roboczego w [witryny Azure portal](https://portal.azure.com/).  
 
@@ -153,9 +129,9 @@ Modele i wdrożeń usług internetowych, utworzonej za pomocą wizualnego interf
 
 [!INCLUDE [aml-ui-cleanup](../../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono kluczowe kroki tworzenia, wdrażania i używania usługi machine learning model w interfejs graficzny. Aby dowiedzieć się więcej na temat wykorzystania interfejs graficzny rozwiązać inne rodzaje problemów, zapoznaj się z przykładowych eksperymentów.
+W tym samouczku przedstawiono kluczowe kroki tworzenia, wdrażania i używania usługi machine learning model w interfejs graficzny. Aby dowiedzieć się więcej na temat wykorzystania interfejs graficzny rozwiązać inne rodzaje problemów, zapoznaj się naszych przykładowych eksperymentów.
 
 > [!div class="nextstepaction"]
 > [Przykładowe klasyfikację ryzyka środków](ui-sample-classification-predict-credit-risk-cost-sensitive.md)

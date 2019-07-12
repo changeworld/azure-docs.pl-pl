@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ec1d5fb13d7fb191bfee6194e69a217bcaddbb9
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 541253cf3a8f2628ea0e76f1115ddc4a290daf62
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482571"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655479"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Szybki start: Rejestrowanie aplikacji w usłudze Microsoft platformy tożsamości
 
@@ -50,7 +50,7 @@ Ten przewodnik Szybki Start dowiesz się, jak dodać i rejestrowanie aplikacji z
        - W przypadku aplikacji internetowej podaj podstawowy adres URL aplikacji. Na przykład ciąg `http://localhost:31544` może być adresem URL aplikacji internetowej uruchomionej na komputerze lokalnym. Użytkownicy mogą użyć tego adresu URL, aby zalogować się do aplikacji klienta internetowego.
        - W przypadku publicznych aplikacji klienckich podaj identyfikator URI używany przez usługę Azure AD do zwracania odpowiedzi tokenu. Podaj wartość specyficzną dla Twojej aplikacji, np. `myapp://auth`.
 
-     Aby zobaczyć konkretne przykłady dotyczące aplikacji internetowych lub natywnych, zapoznaj się z [przewodnikami Szybki start](https://docs.microsoft.com/azure/active-directory/develop/#quickstarts).
+     Aby zobaczyć konkretne przykłady dotyczące aplikacji internetowych lub natywnych, zapoznaj się z [przewodnikami Szybki start](https://docs.microsoft.com/azure/active-directory/develop).
 
 1. Po zakończeniu wybierz pozycję **Rejestruj**.
 
@@ -60,13 +60,13 @@ Usługa Azure AD przypisze do aplikacji unikatowy identyfikator (klienta), po cz
 
 [![Przykład strony Przegląd nowo zarejestrowana aplikacja](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png#lightbox)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o [uprawnieniach i zgodach](v2-permissions-and-consent.md).
 - Aby włączyć dodatkowe funkcje konfiguracji w rejestracji aplikacji — takie jak poświadczenia i uprawnienia — oraz włączyć logowanie dla użytkowników z innych dzierżaw, zobacz następujące przewodniki Szybki start:
     - [Konfigurowanie aplikacji klienckiej na potrzeby uzyskiwania dostępu do internetowych interfejsów API](quickstart-configure-app-access-web-apis.md)
     - [Konfigurowanie aplikacji w celu uwidocznienia internetowych interfejsów API](quickstart-configure-app-expose-web-apis.md)
     - [Modyfikowanie kont obsługiwanych przez aplikację](quickstart-modify-supported-accounts.md)
-- Wybierz [przewodnik Szybki start](https://docs.microsoft.com/azure/active-directory/develop/#quickstarts), aby szybko utworzyć aplikację i dodać do niej funkcje, takie jak uzyskiwanie tokenów, odświeżanie tokenów, logowanie użytkownika i wyświetlanie informacji o użytkowniku.
+- Wybierz [przewodnik Szybki start](https://docs.microsoft.com/azure/active-directory/develop), aby szybko utworzyć aplikację i dodać do niej funkcje, takie jak uzyskiwanie tokenów, odświeżanie tokenów, logowanie użytkownika i wyświetlanie informacji o użytkowniku.
 - Aby dowiedzieć się więcej na temat dwóch obiektów usługi Azure AD reprezentujących zarejestrowaną aplikację i związku między nimi, zobacz [Application objects and service principal objects (Obiekty aplikacji i obiekty główne usługi)](app-objects-and-service-principals.md).
 - Aby dowiedzieć się więcej na temat wytycznych dotyczących znakowania, do których należy stosować się podczas opracowywania aplikacji, zobacz [Wytyczne dotyczące oznaczania aplikacji marką](howto-add-branding-in-azure-ad-apps.md).

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 1838dbb627a6dec46f817101fc1d0cca0961ef77
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7b6d38f7755ebd97791959a5a414b09fe4ac769b
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64574172"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718021"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Często zadawane pytania dotyczące baz danych ClearDB MySQL w usłudze Azure App Service
 Często zadawane pytania odpowiedzi na często zadawane pytania dotyczące używania i kupowanie baz danych ClearDB MySQL dla aplikacji sieci Web platformy Azure.
@@ -80,7 +80,7 @@ Nie. Nie można utworzyć dodatkowych użytkowników, ale można utworzyć dodat
 Tak, podstawowe serii, baz danych mogą być uaktualnione w miejscu (podstawowe 60 za pośrednictwem podstawowych 500). Seria Pro mogą być uaktualnione w miejscu (Pro 125 za pośrednictwem Pro 1000) z wyjątkiem Pro 60. Uaktualnianie bazy danych Pro 60 aktualnie nie jest obsługiwana. 
 
 ## <a name="when-i-migrate-my-resources-from-one-subscription-to-another-does-my-cleardb-mysql-database-get-migrated-as-well"></a>Gdy migrację Moje zasoby z jednej subskrypcji do innej, Moja baza danych ClearDB MySQL migrowani także?
-Podczas wykonywania migracji zasobów między subskrypcjami, niektóre [ograniczenia](azure-resource-manager/resource-group-move-resources.md#app-service-limitations) zastosowania. Bazę danych ClearDB MySQL jest usługą innej firmy i dlatego nie migrowani podczas migracji subskrypcji platformy Azure. Jeśli nie zarządzasz migracji bazy danych MySQL przed Migrowanie zasobów platformy Azure, można wyłączyć bazy danych MySQL firmy ClearDB. Najpierw ręcznie migrować swoje bazy danych, a następnie dokonaj migracji subskrypcji platformy Azure dla aplikacji sieci web. 
+Podczas wykonywania migracji zasobów między subskrypcjami, niektóre [ograniczenia](azure-resource-manager/move-support-resources.md) zastosowania. Bazę danych ClearDB MySQL jest usługą innej firmy i dlatego nie migrowani podczas migracji subskrypcji platformy Azure. Jeśli nie zarządzasz migracji bazy danych MySQL przed Migrowanie zasobów platformy Azure, można wyłączyć bazy danych MySQL firmy ClearDB. Najpierw ręcznie migrować swoje bazy danych, a następnie dokonaj migracji subskrypcji platformy Azure dla aplikacji sieci web. 
 
 ## <a name="i-hit-the-spending-limit-on-my-subscription-i-removed-the-limit-and-my-app-service-is-online-however-the-database-is-not-accessible-how-do-i-re-enable-the-cleardb-database"></a>Osiągnę limit wydatków w ramach mojej subskrypcji. Po usunięciu limitu i mojej usługi App Service jest w trybie online, jednak baza danych nie jest dostępny. Jak ponownie włączyć bazę danych ClearDB?
 Skontaktuj się z pomocą [pomocy technicznej firmy ClearDB](https://www.cleardb.com/developers/help/support) ponowne włączenie bazy danych. Udostępniaj im Twojej subskrypcji platformy Azure informacje i nazwę bazy danych.

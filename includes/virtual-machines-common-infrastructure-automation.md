@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 81bde837cd78646f1fc59d921246c72978ecb840
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 15724adfc6eb875f3d2d5b6d3ecbbb54135a7265
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183212"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671428"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Korzystanie z narzędzi automatyzacji infrastruktury z maszynami wirtualnymi na platformie Azure
 Aby utworzyć i zarządzać maszyn wirtualnych (VM) w sposób ciągły na dużą skalę, zwykle jest pożądane jakąś formę automatyzacji. Istnieje wiele narzędzi i rozwiązań, które umożliwiają automatyzację wdrażania całej infrastruktury platformy Azure i zarządzanie cyklem życia. W tym artykule przedstawiono niektóre z narzędzi automatyzacji infrastruktury, które można użyć na platformie Azure. Te narzędzia często mieści się w jednej z następujących metod:
@@ -45,7 +45,7 @@ Instrukcje:
 
 
 ## <a name="puppet"></a>Puppet
-[Puppet](https://www.puppet.com) to platforma automatyzacji z obsługą przedsiębiorstw, która obsługuje procesu dostarczania i wdrażania aplikacji. Agenci są zainstalowani na komputerach docelowych, aby zezwolić na główny Puppet, aby uruchomić manifestów, które definiują pożądaną konfigurację infrastruktury platformy Azure i maszyn wirtualnych. Puppet można zintegrować z innymi rozwiązaniami, takimi jak Jenkins i usługi GitHub dla przepływu pracy devops ulepszone. Aby uzyskać więcej informacji, zobacz [działa jak Puppet](https://puppet.com/product/how-puppet-works).
+[Puppet](https://www.puppet.com) to platforma automatyzacji z obsługą przedsiębiorstw, która obsługuje procesu dostarczania i wdrażania aplikacji. Agenci są zainstalowani na komputerach docelowych, aby zezwolić na główny Puppet, aby uruchomić manifestów, które definiują pożądaną konfigurację infrastruktury platformy Azure i maszyn wirtualnych. Puppet można zintegrować z innymi rozwiązaniami, takimi jak Jenkins i usługi GitHub dla przepływu pracy devops ulepszone. Aby uzyskać więcej informacji, zobacz [działa jak Puppet](https://puppet.com/products/how-puppet-works).
 
 Instrukcje:
 
@@ -53,7 +53,7 @@ Instrukcje:
 
 
 ## <a name="cloud-init"></a>Cloud-init
-[Cloud-init](https://cloudinit.readthedocs.io) to powszechnie używana metoda dostosowywania maszyny wirtualnej z systemem Linux podczas jej pierwszego rozruchu. Za pomocą pakietu cloud-init można instalować pakiety i zapisywać pliki lub konfigurować użytkowników i zabezpieczenia. Pakiet cloud-init jest wywoływana podczas początkowego rozruchu, dlatego są żadne dodatkowe kroki ani agenci wymagane do zastosowania konfiguracji.  Aby uzyskać więcej informacji na temat poprawnie sformatować swoje `#cloud-config` plików, zobacz [witrynie dokumentacji pakietu cloud-init](http://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` są to pliki tekstowe zakodowane w formacie base64.
+[Cloud-init](https://cloudinit.readthedocs.io) to powszechnie używana metoda dostosowywania maszyny wirtualnej z systemem Linux podczas jej pierwszego rozruchu. Za pomocą pakietu cloud-init można instalować pakiety i zapisywać pliki lub konfigurować użytkowników i zabezpieczenia. Pakiet cloud-init jest wywoływana podczas początkowego rozruchu, dlatego są żadne dodatkowe kroki ani agenci wymagane do zastosowania konfiguracji.  Aby uzyskać więcej informacji na temat poprawnie sformatować swoje `#cloud-config` plików, zobacz [witrynie dokumentacji pakietu cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` są to pliki tekstowe zakodowane w formacie base64.
 
 Pakiet cloud-init działa również w różnych dystrybucjach. Przykładowo nie używa się poleceń **apt-get install** lub **yum install** do zainstalowania pakietu. Zamiast tego możesz zdefiniować listę pakietów do zainstalowania. Pakiet cloud-init automatycznie używa natywnego narzędzia do zarządzania pakietami dla wybranej dystrybucji.
 

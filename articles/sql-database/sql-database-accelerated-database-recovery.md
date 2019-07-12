@@ -11,16 +11,16 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 77bc33747964a5f4ee1a67aba777dc3ed76b9a51
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d556c82f47868f4ee06694e23092f10029d619d
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65073464"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839853"
 ---
 # <a name="accelerated-database-recovery"></a>Odzyskiwanie bazy danych jej jako przyspieszonej
 
-**Przyspieszone odzyskiwanie bazy danych (ADR)** nową funkcję do aparatu bazy danych SQL, która znacznie zwiększa dostępność bazy danych, szczególnie obecności długo działa transakcji, przeprojektowanie proces odzyskiwania aparatu bazy danych SQL. Reguły ADR jest obecnie dostępna dla pojedynczych baz danych i baz danych w puli usługi Azure SQL Database i baz danych w usłudze Azure SQL Data Warehouse. Najważniejsze korzyści reguły ADR są:
+**Przyspieszone odzyskiwanie bazy danych (ADR)** nową funkcję do aparatu bazy danych SQL, która znacznie zwiększa dostępność bazy danych, szczególnie obecności długo działa transakcji, przeprojektowanie proces odzyskiwania aparatu bazy danych SQL. Reguły ADR jest obecnie dostępna dla pojedynczych baz danych i baz danych w puli usługi Azure SQL Database i baz danych w usłudze Azure SQL Data Warehouse (obecnie dostępna w publicznej wersji zapoznawczej). Najważniejsze korzyści reguły ADR są:
 
 - **Odzyskiwanie bazy danych szybkie i spójne**
 

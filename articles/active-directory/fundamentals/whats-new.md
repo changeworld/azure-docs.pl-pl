@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 833a22635c1d53dce9086aa3e11220d5868a302c
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: af215c80148010d526c951e7a5128d6e4622b1cd
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67471989"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625568"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>What's new in Azure Active Directory?
 
@@ -61,7 +61,7 @@ Aby uzyskać więcej informacji, zobacz [ryzyka wykrywania dokumentacji interfej
 
 W czerwcu 2019 r Dodaliśmy obsługę tych 22 nowe aplikacje z Federacją w galerii aplikacji:
 
-[Zestaw narzędzi Azure AD SAML](https://docs.microsoft.com/azure/active-directory/saas-apps/saml-toolkit-tutorial), [Otsuka Shokai (大塚商会)](https://docs.microsoft.com/azure/active-directory/saas-apps/otsuka-shokai-tutorial), [ANAQUA](https://docs.microsoft.com/azure/active-directory/saas-apps/anaqua-tutorial), [klienta sieci VPN platformy Azure](https://portal.azure.com/), [ExpenseIn](https://docs.microsoft.com/azure/active-directory/saas-apps/expensein-tutorial), [ Pomocnik Pomocnika](https://docs.microsoft.com/azure/active-directory/saas-apps/helper-helper-tutorial), [Costpoint](https://docs.microsoft.com/azure/active-directory/saas-apps/costpoint-tutorial), [GlobalOne](https://docs.microsoft.com/azure/active-directory/saas-apps/globalone-tutorial), [Office Mercedes Benz w samochodzie](https://me.secure.mercedes-benz.com/), [Skore](https://app.justskore.it/), [ Oracle chmurze infrastruktury konsoli](https://docs.microsoft.com/azure/active-directory/saas-apps/oracle-cloud-tutorial), [uwierzytelnianie CyberArk SAML](https://docs.microsoft.com/azure/active-directory/saas-apps/cyberark-saml-authentication-tutorial), [Scrible Edu](https://www.scrible.com/sign-in/#/create-account), [PandaDoc](https://docs.microsoft.com/azure/active-directory/saas-apps/pandadoc-tutorial), [Perceptyx ](https://apexdata.azurewebsites.net/docs.microsoft.com/azure/active-directory/saas-apps/perceptyx-tutorial), [Proptimise OS](https://proptimise.co.uk/property-software/), [Vtiger CRM (SAML)](https://docs.microsoft.com/azure/active-directory/saas-apps/vtiger-crm-saml-tutorial), Menedżer dostępu do oprogramowania Oracle dla handlu detalicznego Oracle promocji i Menedżer dostępu do oprogramowania Oracle, Oracle E-Business Suite, Oracle IDCS dla E-Business Suite, Oracle IDCS dla PeopleSoft, Oracle IDCS dla rozwiązań JD Edwards
+[Zestaw narzędzi Azure AD SAML](https://docs.microsoft.com/azure/active-directory/saas-apps/saml-toolkit-tutorial), [Otsuka Shokai (大塚商会)](https://docs.microsoft.com/azure/active-directory/saas-apps/otsuka-shokai-tutorial), [ANAQUA](https://docs.microsoft.com/azure/active-directory/saas-apps/anaqua-tutorial), [klienta sieci VPN platformy Azure](https://portal.azure.com/), [ExpenseIn](https://docs.microsoft.com/azure/active-directory/saas-apps/expensein-tutorial), [ Pomocnik Pomocnika](https://docs.microsoft.com/azure/active-directory/saas-apps/helper-helper-tutorial), [Costpoint](https://docs.microsoft.com/azure/active-directory/saas-apps/costpoint-tutorial), [GlobalOne](https://docs.microsoft.com/azure/active-directory/saas-apps/globalone-tutorial), [Office Mercedes Benz w samochodzie](https://me.secure.mercedes-benz.com/), [Skore](https://app.justskore.it/), [ Oracle chmurze infrastruktury konsoli](https://docs.microsoft.com/azure/active-directory/saas-apps/oracle-cloud-tutorial), [uwierzytelnianie CyberArk SAML](https://docs.microsoft.com/azure/active-directory/saas-apps/cyberark-saml-authentication-tutorial), [Scrible Edu](https://www.scrible.com/sign-in/#/create-account), [PandaDoc](https://docs.microsoft.com/azure/active-directory/saas-apps/pandadoc-tutorial), [Perceptyx ](https://apexdata.azurewebsites.net/docs.microsoft.com/azure/active-directory/saas-apps/perceptyx-tutorial), [Proptimise OS](https://proptimise.co.uk/software/), [Vtiger CRM (SAML)](https://docs.microsoft.com/azure/active-directory/saas-apps/vtiger-crm-saml-tutorial), Menedżer dostępu do oprogramowania Oracle dla handlu detalicznego Oracle promocji i Menedżer dostępu do oprogramowania Oracle, Oracle E-Business Suite, Oracle IDCS dla E-Business Suite, Oracle IDCS dla PeopleSoft, Oracle IDCS dla rozwiązań JD Edwards
 
 Aby uzyskać więcej informacji o aplikacjach, zobacz [integracji aplikacji SaaS w usłudze Azure Active Directory](https://aka.ms/appstutorial). Aby uzyskać więcej informacji o ofercie swoją aplikację w galerii aplikacji Azure AD, zobacz [umieść swoją aplikację w galerii aplikacji usługi Azure Active Directory](https://aka.ms/azureadapprequest).
 

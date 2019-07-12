@@ -2,17 +2,17 @@
 title: Operator najlepsze rozwiązania — funkcje podstawowe usługi scheduler w usłudze Azure Kubernetes usługi (AKS)
 description: Dowiedz się, operator klastra najlepsze rozwiązania dotyczące używania harmonogramu podstawowe funkcje, takie jak limity przydziałów zasobów i zasobnika budżetów przerw w działaniu w usłudze Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: iainfou
-ms.openlocfilehash: f6e370442c9c359a38025762fb90269119ec0ea6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 3ce59784b2c7c1d145d99786b10927c230146c8b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074125"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614616"
 ---
 # <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące harmonogramu podstawowe funkcje w usłudze Azure Kubernetes Service (AKS)
 
@@ -124,13 +124,13 @@ Aby uzyskać więcej informacji o używaniu budżetów przerw w działaniu zasob
 
 **Najważniejsze wskazówki** -regularnie uruchomić najnowszą wersję `kube-advisor` narzędzia typu open source do wykrywania problemów w klastrze. Jeśli zastosujesz limity przydziałów zasobów w istniejącym klastrze usługi AKS, uruchom `kube-advisor` najpierw po to, aby znaleźć zasobników, które nie mają żądania zasobów i ograniczeń.
 
-[Klastra kubernetes w usłudze advisor] [ kube-advisor] narzędzie jest skojarzone projekt typu open source AKS, które skanuje klastra Kubernetes i raporty dotyczące problemów, które znajdzie. Jest jeden wyboru przydatne do identyfikowania zasobników, które nie mają i limity zasobów w miejscu.
+[Klastra kubernetes w usłudze advisor][kube-advisor] narzędzie jest skojarzone projekt typu open source AKS, które skanuje klastra Kubernetes i raporty dotyczące problemów, które znajdzie. Jest jeden wyboru przydatne do identyfikowania zasobników, które nie mają i limity zasobów w miejscu.
 
-Narzędzia klastra kubernetes w usłudze advisor mogą być przedstawione na żądanie zasobów i limity Brak w aplikacji PodSpecs dla Windows, a także aplikacje dla systemu Linux, ale samo narzędzie klastra kubernetes w usłudze klasyfikatora musi być zaplanowane na zasobnik systemu Linux. Można zaplanować zasobnika do uruchamiania na pulę węzłów przy użyciu określonego systemu operacyjnego [selektor węzła] [ k8s-node-selector] w zasobniku konfiguracji.
+Narzędzia klastra kubernetes w usłudze advisor mogą być przedstawione na żądanie zasobów i limity Brak w aplikacji PodSpecs dla Windows, a także aplikacje dla systemu Linux, ale samo narzędzie klastra kubernetes w usłudze klasyfikatora musi być zaplanowane na zasobnik systemu Linux. Można zaplanować zasobnika do uruchamiania na pulę węzłów przy użyciu określonego systemu operacyjnego [selektor węzła][k8s-node-selector] w zasobniku konfiguracji.
 
 W klastrze AKS, który hostuje wiele zespołów deweloperów i aplikacji może być trudne do śledzenia zasobników, bez tych zasobów żądania i ogranicza zestaw. Najlepszym rozwiązaniem jest regularne uruchamianie `kube-advisor` w klastrach usługi AKS, zwłaszcza, jeśli limity przydziałów zasobów nie przypisuj do przestrzeni nazw.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Ten artykuł koncentruje się na podstawowych funkcji usługi scheduler Kubernetes. Aby uzyskać więcej informacji na temat operacji klastra w usłudze AKS zobacz poniższe najlepsze rozwiązania:
 

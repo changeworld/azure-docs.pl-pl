@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: a41c3f60d4b949f78c0755f97c9ef7e6302d78d8
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 68c40cf893bf150756f0a03056473e82cff5754f
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329997"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620955"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Rozwiązywanie problemów z usługą Azure Stream Analytics przy użyciu dzienników diagnostycznych
 
@@ -64,7 +64,7 @@ Zdecydowanie zaleca się włączenie dzienników diagnostycznych i wysyła je do
 
     ![Nawigacja w bloku do dzienników diagnostycznych](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  Tworzenie **nazwa** w **ustawień diagnostycznych** i zaznacz pole wyboru obok pozycji **wysyłanie do usługi Log Analytics**. Następnie Dodaj istniejącą lub Utwórz nową **obszar roboczy usługi Log analytics**. Zaznacz pola wyboru dla **wykonywania** i **tworzenie** w obszarze **dziennika**, i **AllMetrics** w obszarze **METRYKI** . Kliknij pozycję **Zapisz**. Zalecane jest, aby uniknąć dodatkowych kosztów za pomocą obszaru roboczego usługi Log Analytics w tym samym regionie platformy Azure jako zadania usługi Stream Analytics.
+2.  Tworzenie **nazwa** w **ustawień diagnostycznych** i zaznacz pole wyboru obok pozycji **wysyłanie do usługi Log Analytics**. Następnie Dodaj istniejącą lub Utwórz nową **obszar roboczy usługi Log analytics**. Zaznacz pola wyboru dla **wykonywania** i **tworzenie** w obszarze **dziennika**, i **AllMetrics** w obszarze **METRYKI** . Kliknij polecenie **Zapisz**. Zalecane jest, aby uniknąć dodatkowych kosztów za pomocą obszaru roboczego usługi Log Analytics w tym samym regionie platformy Azure jako zadania usługi Stream Analytics.
 
     ![Ustawienia dzienników diagnostycznych](./media/stream-analytics-job-diagnostic-logs/diagnostic-settings.png)
 
@@ -150,5 +150,5 @@ Identyfikator korelacji | [Identyfikator GUID](https://en.wikipedia.org/wiki/Uni
 * [Wprowadzenie do usługi Stream Analytics](stream-analytics-introduction.md)
 * [Rozpoczynanie pracy z usługą Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Skalowanie zadań usługi Stream Analytics](stream-analytics-scale-jobs.md)
-* [Dokumentacja języka zapytań usługi Analytics Stream](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Dokumentacja języka zapytań usługi Analytics Stream](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Błędy danych usługi Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/data-errors)

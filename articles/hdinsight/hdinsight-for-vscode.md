@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: aadfae9a7b74986fd0ac8857669dd3ccaf62af1f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: ebc41fc74d24708a177bf554029df8384c49df05
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67166085"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657231"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Użyj usługi Azure HDInsight Tools for Visual Studio Code
 
@@ -304,32 +304,32 @@ Przesyłanie pliku, zwróć uwagę, że .vscode folder jest automatycznie dodawa
     | name | description | — typ | 
     | :- | :- | :- | 
     | file | Plik zawierający wykonywanie aplikacji | Ścieżka (wymagane) | 
-    | proxyUser | Personifikację podczas uruchamiania zadania | string | 
-    | className | Główna klasa platformy Java lub Spark aplikacji | string |
+    | proxyUser | Personifikację podczas uruchamiania zadania | ciąg | 
+    | className | Główna klasa platformy Java lub Spark aplikacji | ciąg |
     | args | Argumenty wiersza polecenia dla aplikacji | Lista ciągów | 
     | jars | jars ma być używany w ramach tej sesji | Lista parametrów | 
     | pyFiles | Pliki języka Python do użycia w ramach tej sesji | Lista parametrów |
     | files | pliki, które zostaną użyte w tej sesji | Lista parametrów |
-    | driverMemory | Ilość pamięci na potrzeby procesu sterownika | string |
+    | driverMemory | Ilość pamięci na potrzeby procesu sterownika | ciąg |
     | driverCores | Liczba rdzeni do użycia dla procesu sterownika | int |
-    | executorMemory | Ilość pamięci na działaniu proces wykonujący testy | string |
+    | executorMemory | Ilość pamięci na działaniu proces wykonujący testy | ciąg |
     | executorCores | Liczba rdzeni do użycia dla każdej funkcji wykonawczej | int |
     | numExecutors | Liczbie funkcji wykonawczych, aby uruchomić dla tej sesji | int |
     | archives | Archiwa ma być używany w ramach tej sesji | Lista parametrów |
-    | queue | Nazwa kolejki YARN, do której przesłano | string |
-    | name | Nazwa tej sesji | string |
+    | queue | Nazwa kolejki YARN, do której przesłano | ciąg |
+    | name | Nazwa tej sesji | ciąg |
     | conf | Właściwości konfiguracji aparatu Spark | Mapa klucza = val |
 
     Treść odpowiedzi   
     Utworzony obiekt usługi Batch.
 
-    | name | description | — typ | 
+    | name | description | type | 
     | :- | :- | :- | 
     | id | Identyfikator sesji | int | 
     | appId | Identyfikator aplikacji dla tej sesji |  String |
     | appInfo | Informacje o szczegółowe aplikacji | Mapa klucza = val |
     | log | Wiersze dziennika | Lista ciągów |
-    | state |   Stan usługi batch | string |
+    | state |   Stan usługi batch | ciąg |
 
 >[!NOTE]
 >Przypisanej konfiguracji usługi livy będą wyświetlane w okienku danych wyjściowych po Prześlij skrypt.
@@ -436,7 +436,7 @@ Podczas przesyłania zadania do klastra usługi HDInsight przy użyciu usługi A
 
 > [!NOTE]
 > 
->Klucz dostępu dla konta magazynu można uzyskać w witrynie Azure portal. Aby uzyskać informacje, zobacz [wyświetlanie i kopiowanie kluczy dostępu do](https://docs.microsoft.com/azure/storage/common/storage-account-manage#view-and-copy-access-keys).
+>Klucz dostępu dla konta magazynu można uzyskać w witrynie Azure portal. Aby uzyskać informacje, zobacz [wyświetlanie i kopiowanie kluczy dostępu do](https://docs.microsoft.com/azure/storage/common/storage-account-manage#access-keys).
 
 ## <a name="unlink-cluster"></a>Odłącz klastra
 

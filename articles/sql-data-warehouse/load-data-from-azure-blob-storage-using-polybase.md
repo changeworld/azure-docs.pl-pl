@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: load data
+ms.subservice: load-data
 ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: ac0f8cb4d9069d2ef7ce48939ad2dd1c92732d1a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f2830b524c554a6988bfc873cd0f6c54e5c56a4
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242968"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839680"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Samouczek: Załaduj dane dotyczące taksówek w Nowym Jorku do usługi Azure SQL Data Warehouse
 
@@ -72,11 +72,11 @@ Wykonaj poniższe czynności, aby utworzyć pusty magazyn danych SQL.
     | **Nazwa serwera** | Dowolna nazwa unikatowa w skali globalnej | Prawidłowe nazwy serwera opisano w artykule [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Reguły i ograniczenia nazewnictwa). | 
     | **Identyfikator logowania administratora serwera** | Dowolna prawidłowa nazwa | Prawidłowe nazwy identyfikatorów logowania opisano w artykule [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) (Identyfikatory baz danych).|
     | **Hasło** | Dowolne prawidłowe hasło | Hasło musi mieć co najmniej osiem znaków i musi zawierać znaki z trzech z następujących kategorii: wielkie litery, małe litery, cyfry i znaki inne niż alfanumeryczne. |
-    | **Lokalizacja** | Dowolna prawidłowa lokalizacja | Aby uzyskać informacje na temat regionów, zobacz temat [Regiony platformy Azure](https://azure.microsoft.com/regions/). |
+    | **Location** | Dowolna prawidłowa lokalizacja | Aby uzyskać informacje na temat regionów, zobacz temat [Regiony platformy Azure](https://azure.microsoft.com/regions/). |
 
     ![tworzenie serwera bazy danych](media/load-data-from-azure-blob-storage-using-polybase/create-database-server.png)
 
-5. Kliknij pozycję **Wybierz**.
+5. Kliknij przycisk **wybierz**.
 
 6. Kliknij przycisk **poziom wydajności** do określenia, czy magazyn danych jest Gen1 lub Gen2, a liczba danych jednostek magazynu. 
 
@@ -84,7 +84,7 @@ Wykonaj poniższe czynności, aby utworzyć pusty magazyn danych SQL.
 
     ![konfigurowanie wydajności](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
-8. Kliknij przycisk **Zastosuj**.
+8. Kliknij przycisk **zastosować**.
 9. Na stronie usługi SQL Data Warehouse wybierz **sortowanie** dla pustej bazy danych. Na potrzeby tego samouczka użyj wartości domyślnej. Aby uzyskać więcej informacji na temat sortowań, zobacz [Sortowania](/sql/t-sql/statements/collations)
 
 11. Teraz po uzupełnieniu formularza SQL Database kliknij przycisk **Utwórz**, aby aprowizować bazę danych. Aprowizacja zajmuje kilka minut. 
@@ -119,7 +119,7 @@ Usługa SQL Data Warehouse tworzy zaporę na poziomie serwera, która uniemożli
 
 4. Kliknij pozycję **Dodaj adres IP klienta** na pasku narzędzi, aby dodać bieżący adres IP do nowej reguły zapory. Reguła zapory może otworzyć port 1433 dla pojedynczego adresu IP lub zakresu adresów IP.
 
-5. Kliknij pozycję **Zapisz**. Dla bieżącego adresu IP zostanie utworzona reguła zapory na poziomie serwera otwierająca port 1433 na serwerze logicznym.
+5. Kliknij polecenie **Zapisz**. Dla bieżącego adresu IP zostanie utworzona reguła zapory na poziomie serwera otwierająca port 1433 na serwerze logicznym.
 
 6. Kliknij przycisk **OK**, a następnie zamknij stronę **Ustawienia zapory**.
 
@@ -603,7 +603,7 @@ W skrypcie użyto instrukcji języka T-SQL [CREATE TABLE AS SELECT (CTAS)](/sql/
         
    1. Zapytania, ponieważ przy użyciu normalnych [tabel zewnętrznych](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql).
 
-Odnosić się do [dokumentację] (https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview ) Jeśli chcesz skonfigurować punkty końcowe usługi sieci wirtualnej dla usługi SQL Data Warehouse. 
+Zobacz następujące [dokumentacji](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) Jeśli chcesz skonfigurować punkty końcowe usługi sieci wirtualnej dla usługi SQL Data Warehouse. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

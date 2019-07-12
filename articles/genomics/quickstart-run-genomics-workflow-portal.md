@@ -8,12 +8,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
-ms.openlocfilehash: 4c8d488021ca12a704a5c0a06bb0c491588bcaed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b2d68f878aed5ce400214b6bdf6e1c0d713043bb
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60781559"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67670746"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Szybki start: uruchamianie przepływu pracy za pośrednictwem usługi Microsoft Genomics
 
@@ -38,10 +38,10 @@ Skonfiguruj konto usługi Genomics w sposób pokazany na wcześniejszej ilustrac
 
  |**Ustawienie**          |  **Sugerowana wartość**  | **Opis pola** |
  |:-------------       |:-------------         |:----------            |
- |Subskrypcja         | Nazwa subskrypcji użytkownika|Jest to jednostka rozliczeniowa usług platformy Azure — aby uzyskać szczegółowe informacje o subskrypcji, zobacz [Subskrypcje](https://account.azure.com/Subscriptions) |      
- |Grupa zasobów       | MyResourceGroup       |  Grupy zasobów umożliwiają grupowanie wielu zasobów platformy Azure (konto magazynu, konto usługi Genomics itp.) w jednej grupie, co upraszcza zarządzanie. Aby uzyskać więcej informacji, zobacz [Grupy zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups). Prawidłowe nazwy grup zasobów opisano w artykule [Reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) |
+ |Subscription         | Nazwa subskrypcji użytkownika|Jest to jednostka rozliczeniowa usług platformy Azure — aby uzyskać szczegółowe informacje o subskrypcji, zobacz [Subskrypcje](https://account.azure.com/Subscriptions) |      
+ |Resource group       | MyResourceGroup       |  Grupy zasobów umożliwiają grupowanie wielu zasobów platformy Azure (konto magazynu, konto usługi Genomics itp.) w jednej grupie, co upraszcza zarządzanie. Aby uzyskać więcej informacji, zobacz [Grupy zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups). Prawidłowe nazwy grup zasobów opisano w artykule [Reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) |
  |Nazwa konta         | MyGenomicsAccount     |Wybierz unikatowy identyfikator konta. Aby uzyskać informacje o prawidłowych nazwach, zobacz [Reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) |
- |Lokalizacja                   | Zachodnie stany USA 2                    |    Usługa jest dostępna w regionach: Zachodnie stany USA 2, Europa Zachodnia i Azja Południowo-Wschodnia |
+ |Location                   | Zachodnie stany USA 2                    |    Usługa jest dostępna w regionach: Zachodnie stany USA 2, Europa Zachodnia i Azja Południowo-Wschodnia |
 
 
 
@@ -117,10 +117,10 @@ Skonfiguruj konto usługi Storage w sposób pokazany na wcześniejszej ilustracj
 
  |**Ustawienie**          |  **Sugerowana wartość**  | **Opis pola** |
  |:-------------------------       |:-------------         |:----------            |
- |Subskrypcja         | Twoja subskrypcja platformy Azure |Aby uzyskać szczegółowe informacje o subskrypcji, zobacz [Subskrypcje](https://account.azure.com/Subscriptions) |      
- |Grupa zasobów       | MyResourceGroup       |  Możesz wybrać tę samą grupę zasobów co w przypadku konta usługi Genomics. Prawidłowe nazwy grup zasobów opisano w artykule [Reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) |
+ |Subscription         | Twoja subskrypcja platformy Azure |Aby uzyskać szczegółowe informacje o subskrypcji, zobacz [Subskrypcje](https://account.azure.com/Subscriptions) |      
+ |Resource group       | MyResourceGroup       |  Możesz wybrać tę samą grupę zasobów co w przypadku konta usługi Genomics. Prawidłowe nazwy grup zasobów opisano w artykule [Reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) |
  |Nazwa konta magazynu         | MyStorageAccount     |Wybierz unikatowy identyfikator konta. Aby uzyskać informacje o prawidłowych nazwach, zobacz [Reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) |
- |Lokalizacja                  | Zachodnie stany USA 2                  | Użyj tej samej lokalizacji co Twoje konto usługi Genomics, aby zredukować opłaty za ruch wychodzący i zmniejszyć opóźnienia.  | 
+ |Location                  | Zachodnie stany USA 2                  | Użyj tej samej lokalizacji co Twoje konto usługi Genomics, aby zredukować opłaty za ruch wychodzący i zmniejszyć opóźnienia.  | 
  |Wydajność                  | Standardowa (Standard)                   | Wartość domyślna to Standardowa. Aby uzyskać więcej szczegółowych informacji o kontach magazynu w warstwie Standardowa i Premium, zobacz [Wprowadzenie do usługi Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction)    |
  |Rodzaj konta       | Blob Storage       |  Magazyn obiektów blob może być 2–5 razy szybszy od konta ogólnego przeznaczenia w przypadku pobierania i przekazywania. |
  |Replikacja                  | Magazyn lokalnie nadmiarowy                  | Magazyn lokalnie nadmiarowy replikuje dane w centrum danych w regionie, w którym utworzono konto magazynu. Aby uzyskać więcej informacji, zobacz [Replikacja usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy)    |
@@ -152,7 +152,7 @@ Otwórz plik config.txt pobrany z konta usługi Genomics. Sekcje, które należy
 ![Konfiguracja usługi Genomics](./media/quickstart-run-genomics-workflow-portal/genomics-config.png "Konfiguracja usługi Genomics")
 
 
-Jeśli chcesz uruchomić pakiet GATK4, ustaw parametr `process_name` na wartość gatk4 lub gatk4-promo. Aby uzyskać więcej informacji na temat promocji pakietu GATK4, odwiedź [tę stronę](https://aka.ms/msgatk4).
+Jeśli chcesz uruchomić GATK4, ustaw `process_name` parametr `gatk4`.
 
 Domyślnie usługa Genomics generuje pliki VCF. Jeśli wolisz otrzymywać dane wyjściowe w formacie gVCF zamiast VCF (równoważne opcji `-emitRefConfidence` w pakiecie GATK 3.x i `emit-ref-confidence` w pakiecie GATK 4.x), dodaj parametr `emit_ref_confidence` do swojego pliku `config.txt` i ustaw go na wartość `gvcf`, jak pokazano na ilustracji powyżej.  Aby wrócić do danych wyjściowych w formacie VCF, usuń ten parametr z pliku `config.txt` lub ustaw parametr `emit_ref_confidence` na wartość `none`. 
 
@@ -175,5 +175,5 @@ msgen list -f c:\temp\config.txt
 Po zakończeniu przepływu pracy możesz wyświetlić pliki wyjściowe na koncie usługi Azure Storage w skonfigurowanym kontenerze danych wyjściowych. 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym artykule przekazano przykładowe dane wejściowe do usługi Azure Storage oraz przesłano przepływ pracy do usługi Microsoft Genomics za pośrednictwem klienta `msgen` Python. Aby dowiedzieć się więcej o innych typach plików wejściowych, których można używać w usłudze Microsoft Genomics, zobacz następujące strony: [Sparowane pliki FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [Wiele plików FASTQ lub BAM](quickstart-input-multiple.md). Możesz też zapoznać się z tym samouczkiem przy użyciu [samouczka dotyczącego notesu platformy Azure](https://aka.ms/genomicsnotebook).

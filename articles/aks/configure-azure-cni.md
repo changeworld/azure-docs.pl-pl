@@ -2,17 +2,17 @@
 title: Konfigurowanie wtyczki Azure CNI sieci w usłudze Azure Kubernetes Service (AKS)
 description: Dowiedz się, jak skonfigurować sieć wtyczki Azure CNI (zaawansowane) w usłudze Azure Kubernetes Service (AKS), takich jak wdrażanie klastra usługi AKS w istniejącej sieci wirtualnej i podsieci.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.author: iainfou
-ms.openlocfilehash: 8e541834b31a762c65eabf07072d9b9f7333923e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: mlearned
+ms.openlocfilehash: 4d2b4bef5bfcade93b222e69e85df782480e430e
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441974"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615786"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurowanie wtyczki Azure CNI sieci w usłudze Azure Kubernetes Service (AKS)
 
@@ -169,7 +169,7 @@ Zestaw poniższych pytań i odpowiedzi dotyczą **wtyczki Azure CNI** konfigurac
 
   Nie jest to zalecane, ale ta konfiguracja jest możliwe. Zakres adresów usługi to zbiór wirtualnych adresów IP (VIP), który przypisuje wewnętrznych usług w klastrze Kubernetes. Sieci platformy Azure ma nie widoczność zakresu adresów IP usługi klastra Kubernetes. Ze względu na brak widoczność zakresu adresów usługi klastra jest możliwość później utworzyć nową podsieć w sieci wirtualnej klastra, która nakłada się na zakres adresów usługi. W przypadku nakładania się Kubernetes można przypisać usługi adres IP, który jest już używany przez inny zasób w podsieci, powodując nieprzewidywalne zachowanie lub awarie. Przez zapewnienie, że używasz zakresu adresów spoza sieci wirtualnej klastra, możesz uniknąć tego ryzyka nakładają się na siebie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej na temat sieci w usłudze AKS w następujących artykułach:
 

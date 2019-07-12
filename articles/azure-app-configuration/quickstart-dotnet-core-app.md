@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 0bf4aff8e0bae3e84e6383ec560dbfe67e30b994
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: c42066b3ac02264ee357bac7ed3fdd360e9d5d4a
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408725"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798414"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Szybki start: Utwórz .NET Core aplikacji za pomocą konfiguracji aplikacji
 
@@ -39,7 +39,7 @@ Ten przewodnik Szybki Start, instaluje [zestawu .NET Core SDK](https://dotnet.mi
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wybierz **Eksplorator konfiguracji** > **+ Utwórz** można dodać następujące pary klucz wartość:
+6. Wybierz **Eksplorator konfiguracji** >  **+ Utwórz** można dodać następujące pary klucz wartość:
 
     | Klucz | Wartość |
     |---|---|
@@ -53,15 +53,15 @@ Możesz użyć [platformy .NET Core interfejsu wiersza polecenia (CLI)](https://
 
 1. Utwórz nowy folder dla projektu.
 
-2. W nowym folderze uruchom następujące polecenie, aby utworzyć nowy projekt aplikacji sieci web platformy ASP.NET Core MVC:
+2. W nowym folderze uruchom następujące polecenie, aby utworzyć nowy projekt aplikacji konsoli programu ASP.NET Core:
 
         dotnet new console
 
 ## <a name="connect-to-an-app-configuration-store"></a>Łączenie do sklepu z aplikacjami konfiguracji
 
-1. Dodaj odwołanie do `Microsoft.Extensions.Configuration.AzureAppConfiguration` pakietu NuGet, uruchamiając następujące polecenie:
+1. Dodaj odwołanie do `Microsoft.Azure.AppConfiguration.AspNetCore` pakietu NuGet, uruchamiając następujące polecenie:
 
-        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-008520001
+        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009200001-7
 
 2. Uruchom następujące polecenie, aby przywrócić pakiety dla projektu:
 
@@ -113,7 +113,7 @@ Możesz użyć [platformy .NET Core interfejsu wiersza polecenia (CLI)](https://
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki Start został utworzony nowy magazyn konfiguracji aplikacji i jej za pomocą aplikacji konsoli .NET Core za pomocą [dostawcę konfiguracji aplikacji](https://go.microsoft.com/fwlink/?linkid=2074664). Aby dowiedzieć się więcej o tym, jak używać konfiguracji aplikacji, przejdź do następnego samouczka, który demonstruje uwierzytelniania.
 

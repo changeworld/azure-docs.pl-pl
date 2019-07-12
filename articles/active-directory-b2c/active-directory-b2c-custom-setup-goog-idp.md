@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 212243f38b153f75c08a9b4c58622d0444f0ac62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 498fe63964e44de8f9e1bc06c1740f1a9ef9b392
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510370"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654173"
 ---
 # <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>Skonfiguruj polecenie logowania za pomocą konta Google, za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ W tym artykule pokazano, jak włączyć logowanie dla użytkowników z konta Goo
 
 ## <a name="register-the-application"></a>Rejestrowanie aplikacji
 
-Aby włączyć logowania dla użytkowników z konta Google, musisz utworzyć projekt aplikacji Google. 
+Aby włączyć logowania dla użytkowników z konta Google, musisz utworzyć projekt aplikacji Google.
 
 1. Zaloguj się do [konsoli deweloperów Google](https://console.developers.google.com/) przy użyciu poświadczeń konta.
 2. Wprowadź **Nazwa projektu**, kliknij przycisk **Utwórz**, a następnie upewnij się, czy przy użyciu nowego projektu.
@@ -40,7 +40,7 @@ Aby włączyć logowania dla użytkowników z konta Google, musisz utworzyć pro
 6. W obszarze **typ aplikacji**, wybierz opcję **aplikacji sieci Web**.
 7. Wprowadź **nazwa** dla aplikacji.
 8. W **JavaScript autoryzowanych źródeł**, wprowadź `https://your-tenant-name.b2clogin.com` i **identyfikatory URI przekierowania autoryzowanych**, wprowadź `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`. Nazwa Twojej dzierżawy należy zastąpić nazwę dzierżawy. Należy używać małych liter, podczas wprowadzania nazwa dzierżawy, nawet jeśli dzierżawa jest zdefiniowana z wielkich liter w usłudze Azure AD B2C.
-8. Kliknij pozycję **Utwórz**.
+8. Kliknij przycisk **Utwórz**.
 9. Skopiuj wartości z **identyfikator klienta** i **klucz tajny klienta**. Konieczne będzie, obie z nich, aby skonfigurować Google jako dostawcy tożsamości w dzierżawie. Klucz tajny klienta jest ważnym poświadczeniem zabezpieczeń.
 
 ## <a name="create-a-policy-key"></a>Utwórz klucz zasad
@@ -50,17 +50,17 @@ Chcesz przechować klucz tajny klienta, który wcześniej zapisaną w dzierżawi
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. Upewnij się, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C. Wybierz **filtr katalogów i subskrypcji** w górnym menu i wybierz katalog, który zawiera Twojej dzierżawy.
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
-4. Na stronie Przegląd wybierz **struktura środowiska tożsamości — wersja ZAPOZNAWCZA**.
+4. Na stronie Przegląd wybierz **struktura środowiska tożsamości**.
 5. Wybierz **klucze zasad** , a następnie wybierz **Dodaj**.
 6. Aby uzyskać **opcje**, wybierz `Manual`.
 7. Wprowadź **nazwa** klucza zasad. Na przykład `GoogleSecret`. Prefiks `B2C_1A_` jest automatycznie dodawany do nazwy klucza.
 8. W **klucz tajny**, wprowadź klucz tajny klienta, który wcześniej zarejestrowane.
 9. Aby uzyskać **użycie klucza**, wybierz opcję `Signature`.
-10. Kliknij pozycję **Utwórz**.
+10. Kliknij przycisk **Utwórz**.
 
 ## <a name="add-a-claims-provider"></a>Dodawanie dostawcy oświadczeń
 
-Użytkownikom na logowanie przy użyciu konta Google, należy zdefiniować konto jako dostawcy oświadczeń, które usługi Azure AD B2C mogą się komunikować za pośrednictwem punktu końcowego. Punkt końcowy zawiera zestaw oświadczeń, które są używane przez usługę Azure AD B2C, aby sprawdzić, czy określony użytkownik jest uwierzytelniony. 
+Użytkownikom na logowanie przy użyciu konta Google, należy zdefiniować konto jako dostawcy oświadczeń, które usługi Azure AD B2C mogą się komunikować za pośrednictwem punktu końcowego. Punkt końcowy zawiera zestaw oświadczeń, które są używane przez usługę Azure AD B2C, aby sprawdzić, czy określony użytkownik jest uwierzytelniony.
 
 Konto Google można zdefiniować jako dostawcy oświadczeń, przez dodanie jej do **ClaimsProviders** elementu w pliku rozszerzenie zasad.
 
@@ -152,7 +152,7 @@ Teraz, gdy przycisk w miejscu, należy połączyć akcji. Akcja, w tym przypadku
     ```XML
     <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAuth" />
     ```
-    
+
     Zaktualizuj wartość **TechnicalProfileReferenceId** identyfikator profilu technicznego została utworzona wcześniej. Na przykład `Google-OAuth`.
 
 3. Zapisz *TrustFrameworkExtensions.xml* plik i ponownie przekazać go do weryfikacji.
@@ -167,7 +167,7 @@ Za pomocą usługi Azure AD B2c odbywa się przy użyciu aplikacji utworzonej w 
 4. Wybierz pozycję **Aplikacje**, a następnie wybierz polecenie **Dodaj**.
 5. Wprowadź nazwę aplikacji, na przykład *testapp1*.
 6. Dla **aplikacji sieci Web / interfejs API sieci Web**, wybierz opcję `Yes`, a następnie wprowadź `https://jwt.ms` dla **adres URL odpowiedzi**.
-7. Kliknij pozycję **Utwórz**.
+7. Kliknij przycisk **Utwórz**.
 
 ## <a name="update-and-test-the-relying-party-file"></a>Aktualizowanie i przetestować go jednostki uzależnionej ze stron
 

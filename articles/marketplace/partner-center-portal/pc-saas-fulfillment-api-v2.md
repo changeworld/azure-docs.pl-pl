@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: ecee1669c29d7b298741f9e5521de03da6dd7e3b
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 476aaacbe6f1bf6d1920df0f12599976bfcc27b7
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331637"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701135"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>Realizacja SaaS interfejsów API w wersji 2 
 
@@ -87,7 +87,7 @@ Poniższa lista zawiera definicje dla wspólnych parametrów i jednostki używan
 | `offerId`                | Identyfikator unikatowy ciąg, dla każdej oferty (na przykład: "offer1").  |
 | `planId`                 | Identyfikator unikatowy ciąg, w ramach każdego planu/jednostki SKU (na przykład: "srebrna"). |
 | `operationId`            | Identyfikator GUID dla określonej operacji.  |
-|  `action`                | Działania wykonywane w zasobie, albo `subscribe`, `unsubscribe`, `suspend`, `reinstate`, lub `changePlan`, `changeQuantity`, `transfer`.  |
+|  `action`                | Działania wykonywane w zasobie, albo `unsubscribe`, `suspend`, `reinstate`, lub `changePlan`, `changeQuantity`, `transfer`.  |
 |   |   |
 
 Globalnie unikatowe identyfikatory ([identyfikatorów GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)) są liczbami (32-szesnastkowa) 128-bitowe, które zazwyczaj są generowane automatycznie. 
@@ -199,10 +199,16 @@ Pobiera wydawcę i odpowiednich subskrypcji dla ofert wszystkich wydawcy, oparte
           "purchaser": { // Tenant that purchased the SaaS subscription. These could be different for reseller scenario
               "tenantId": "<guid>"
           },
+            "term": {
+                "startDate": "2019-05-31",
+                "endDate": "2019-06-29",
+                "termUnit": "P1M"
+          },
           "allowedCustomerOperations": [
               "Read" // Possible Values: Read, Update, Delete.
           ], // Indicates operations allowed on the SaaS subscription. For CSP-initiated purchases, this will always be Read.
           "sessionMode": "None", // Possible Values: None, DryRun (Dry Run indicates all transactions run as Test-Mode in the commerce stack)
+          "isFreeTrial": "true", // true – the customer subscription is currently in free trial, false – the customer subscription is not currently in free trial.
           "saasSubscriptionStatus": "Subscribed" // Indicates the status of the operation: [NotStarted, PendingFulfillmentStart, Subscribed, Suspended, Unsubscribed]
       }
   ],
@@ -271,7 +277,13 @@ Response Body:
           },
         "allowedCustomerOperations": ["Read"], // Indicates operations allowed on the SaaS subscription. For CSP-initiated purchases, this will always be Read.
         "sessionMode": "None", // Dry Run indicates all transactions run as Test-Mode in the commerce stack
+        "isFreeTrial": "true", // true – customer subscription is currently in free trial, false – customer subscription is not currently in free trial.
         "status": "Subscribed", // Indicates the status of the operation.
+          "term": { //This gives the free trial term start and end date
+            "startDate": "2019-05-31",
+            "endDate": "2019-06-29",
+            "termUnit": "P1M"
+        },
 }
 ```
 
@@ -794,7 +806,6 @@ Wydawca musi implementować element webhook w tej usłudze SaaS w celu proaktywn
 }
 ```
 Gdy akcja może być jedną z następujących czynności: 
-- `subscribe` (Jeśli zasób został aktywowany)
 - `unsubscribe` (Jeśli zasób został usunięty)
 - `changePlan` (podczas operacji zmiany w planie została ukończona)
 - `changeQuantity` (podczas operacji ilość zmian została ukończona)

@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2916c9aba7d404ff4ad380d249bd507fadf71ea
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: b0392a40ef948d96e613da9127629f52b02deb97
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67310072"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655821"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Wymagania wstępne dotyczące usługi Azure AD Connect
 W tym temacie opisano wymagania wstępne i wymagania sprzętowe programu Azure AD Connect.
@@ -49,7 +49,7 @@ Zanim zainstalujesz program Azure AD Connect, istnieje kilka kwestii, które są
 
 ### <a name="azure-ad-connect-server"></a>Serwer usługi Azure AD Connect
 >[!IMPORTANT]
->Serwer programu Azure AD Connect zawiera dane krytyczne tożsamości i powinny być traktowane jako składnik warstwy 0, zgodnie z opisem w [model warstw administracyjnych usługi Active Directory](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#ADATM_BM)
+>Serwer programu Azure AD Connect zawiera dane krytyczne tożsamości i powinny być traktowane jako składnik warstwy 0, zgodnie z opisem w [model warstw administracyjnych usługi Active Directory](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)
 
 * Program Azure AD Connect nie można zainstalować na Small Business Server, Windows Server Essentials przed 2019 r (system Windows Server Essentials 2019 jest obsługiwane). Serwer musi używać systemu Windows Server standard lub lepszej.
 * Instalowanie usługi Azure AD Connect na kontrolerze domeny nie jest zalecane z powodu rozwiązania w zakresie zabezpieczeń i bardziej restrykcyjne ustawienia, które mogą uniemożliwić poprawne zainstalowanie przez program Azure AD Connect.
@@ -227,5 +227,5 @@ Minimalne wymagania dotyczące komputerów z systemem usług AD FS lub serwerów
 * PAMIĘĆ: 2 GB lub nowszej
 * Maszyna wirtualna platformy Azure: Konfiguracja a2 lub nowszej
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Dowiedz się więcej na temat [integrowania tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md).

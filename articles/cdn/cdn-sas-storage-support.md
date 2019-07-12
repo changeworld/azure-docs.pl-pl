@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
 ms.author: magattus
-ms.openlocfilehash: 7edf0a9f8d4eb4c01b6d80fd82a1061b6cbb1e35
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 999bffe9650f3d2f2a04dba728a9aa41fa46a6b0
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60324156"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593411"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Usługa Azure CDN przy użyciu sygnatury dostępu Współdzielonego
 
@@ -48,7 +48,7 @@ Aby uzyskać więcej informacji na temat parametrów ustawień, zobacz [zagadnie
 
 ![Ustawienia sygnatury dostępu Współdzielonego usługi CDN](./media/cdn-sas-storage-support/cdn-sas-settings.png)
 
-### <a name="option-1-using-sas-with-pass-through-to-blob-storage-from-azure-cdn"></a>Opcja 1: Sygnatury dostępu Współdzielonego używania z przy użyciu przekazywanego do magazynu obiektów blob usługi Azure CDN
+### <a name="option-1-using-sas-with-pass-through-to-blob-storage-from-azure-cdn"></a>Option 1: Sygnatury dostępu Współdzielonego używania z przy użyciu przekazywanego do magazynu obiektów blob usługi Azure CDN
 
 Ta opcja jest najprostszy i korzysta z jednego tokenu sygnatury dostępu Współdzielonego, który jest przekazywany przez usługę Azure CDN do serwera pochodzenia.
  
@@ -91,7 +91,7 @@ Ta opcja jest dostępna tylko w przypadku **Azure CDN Premium from Verizon** pro
 
 2. Po nową regułę stanie się aktywny, każdy użytkownik ma dostęp do plików w określonym kontenerze punktu końcowego usługi CDN, niezależnie od tego, czy przy użyciu tokenu sygnatury dostępu Współdzielonego w adresie URL. Oto format: `https://<endpoint hostname>.azureedge.net/<container>/<file>`
  
-   Na przykład:   
+   Przykład:   
    `https://sasstoragedemo.azureedge.net/container1/demo.jpg`
        
 
@@ -106,7 +106,7 @@ Aby użyć uwierzytelniania tokenu zabezpieczeń usługi Azure CDN, musisz mieć
    Adres URL punktu końcowego tokenu zabezpieczeń ma następujący format:   
    `https://<endpoint hostname>.azureedge.net/<container>/<file>?<security_token>`
  
-   Na przykład:   
+   Przykład:   
    ```
    https://sasstoragedemo.azureedge.net/container1/demo.jpg?a4fbc3710fd3449a7c99986bkquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
@@ -135,12 +135,12 @@ Ponieważ sygnatury dostępu Współdzielonego parametry nie są widoczne dla us
 
 | Nazwa parametru sygnatury dostępu Współdzielonego | Opis |
 | --- | --- |
-| Uruchamianie | Czas rozpoczęcia przez sieć CDN systemu Azure na dostęp do pliku obiektu blob. Z powodu zegara pochylanie (po odebraniu sygnału zegara w różnym czasie dla różnych składników), wybierz czas 15 minut wcześniej, jeśli chcesz, aby zasobów, które mają być dostępne natychmiast. |
+| Start | Czas rozpoczęcia przez sieć CDN systemu Azure na dostęp do pliku obiektu blob. Z powodu zegara pochylanie (po odebraniu sygnału zegara w różnym czasie dla różnych składników), wybierz czas 15 minut wcześniej, jeśli chcesz, aby zasobów, które mają być dostępne natychmiast. |
 | End | Czas, po upływie którego usługa Azure CDN nie jest już dostęp do pliku obiektu blob. Wcześniej buforowanych plików w usłudze Azure CDN, są nadal dostępne. Aby kontrolować czas wygaśnięcia pliku, ustaw czas wygaśnięcia odpowiednie w tokenie zabezpieczeń usługi Azure CDN lub przeczyszczania elementu zawartości. |
 | Dozwolone adresy IP | Opcjonalny. Jeśli używasz **Azure CDN from Verizon**, ten parametr zostanie ustawiony na zakresy zdefiniowane w [Azure CDN from Verizon zakresy adresów IP serwerów brzegowych](/azure/cdn/cdn-pop-list-api). Jeśli używasz **Azure CDN from Akamai**, nie można ustawić parametru zakresów adresów IP, ponieważ nie są statyczne adresy IP.|
 | Dozwolone protokoły | Rozróżniany, dozwolone dla żądań wykonywanych przy użyciu sygnatury dostępu Współdzielonego konta. Ustawienie HTTPS jest zalecane.|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat sygnatury dostępu Współdzielonego zobacz następujące artykuły:
 - [Używanie sygnatury dostępu współdzielonego (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)

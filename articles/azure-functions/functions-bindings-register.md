@@ -8,14 +8,14 @@ manager: gwallace
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 02/25/2019
+ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 88ffd6ec24ed19dd3b1e57277884c8759cdac1f9
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 5969c3e0d270b45347f8132b2d655ba2e56cb2c0
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480336"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625893"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Rejestrowanie rozszerzeń powiązania usługi Azure Functions
 
@@ -33,8 +33,8 @@ Poniższa tabela wskazuje, kiedy i jak należy zarejestrować powiązania.
 |-------------------------|------------------------------------|------------------------------------|
 |Azure Portal|Automatyczne|Automatyczne|
 |Języki inne niż .NET lub lokalny rozwój podstawowych narzędzi usługi Azure|Automatyczne|[Podstawowe narzędzia usługi Azure Functions i pakietów rozszerzeń](#extension-bundles)|
-|C#Biblioteka klas przy użyciu programu Visual Studio 2019 r.|[Użyj narzędzia NuGet](#c-class-library-with-visual-studio-2019)|[Użyj narzędzia NuGet](#c-class-library-with-visual-studio-2019)|
-|Biblioteki klas C# za pomocą programu Visual Studio Code|ND|[Korzystanie z platformy .NET Core interfejsu wiersza polecenia](#c-class-library-with-visual-studio-code)|
+|C#Biblioteka klas przy użyciu programu Visual Studio|[Użyj narzędzia NuGet](#vs)|[Użyj narzędzia NuGet](#vs)|
+|Biblioteki klas C# za pomocą programu Visual Studio Code|ND|[Korzystanie z platformy .NET Core interfejsu wiersza polecenia](#vs-code)|
 
 ## <a name="extension-bundles"></a>Pakiety rozszerzeń dla wdrożenia lokalnego
 
@@ -69,9 +69,9 @@ Bieżący zestaw zainstalowanych przez domyślny pakiet rozszerzeń są wyliczan
 
 <a name="local-csharp"></a>
 
-## <a name="c-class-library-with-visual-studio-2019"></a>C\# biblioteki klas przy użyciu programu Visual Studio 2019 r.
+## <a name="vs"></a> C\# biblioteki klas w programie Visual Studio
 
-W **Visual Studio 2019**, możesz zainstalować pakiety z konsoli Menedżera pakietów przy użyciu [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) polecenia, jak pokazano w poniższym przykładzie:
+W **programu Visual Studio**, możesz zainstalować pakiety z konsoli Menedżera pakietów przy użyciu [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) polecenia, jak pokazano w poniższym przykładzie:
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_VERSION>
@@ -81,24 +81,25 @@ Nazwa pakietu używanego do wiązania danej znajduje się w artykule dotyczącym
 
 Zastąp `<TARGET_VERSION>` w przykładzie z określoną wersją pakietu, takich jak `3.0.0-beta5`. Prawidłowych wersji są wyświetlane na stronach poszczególnych pakietów w [NuGet.org](https://nuget.org). Wersji głównych, które odpowiadają środowisko uruchomieniowe 1.x i 2.x, które są określone w artykule odwołania dla wiązania.
 
-## <a name="c-class-library-with-visual-studio-code"></a>Biblioteki klas C# za pomocą programu Visual Studio Code
+Jeśli używasz `Install-Package` k odkazu powiązanie, nie trzeba używać [pakiety rozszerzeń](#extension-bundles). To podejście jest specyficzny dla bibliotek klas, utworzone w programie Visual Studio.
+
+## <a name="vs-code"></a> Biblioteki klas C# za pomocą programu Visual Studio Code
 
 > [!NOTE]
 > Firma Microsoft zaleca używanie [pakiety rozszerzeń](#extension-bundles) zapewnienie funkcji automatycznej instalacji zgodnego zestawu powiązania pakiety rozszerzeń.
 
-W **programu Visual Studio Code**, zainstalowanie pakietów dla C# projekt biblioteki klas z wiersza polecenia przy użyciu [dotnet Dodaj pakiet](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) polecenia w .NET Core interfejsu wiersza polecenia, jak pokazano w poniższym przykładzie:
+W **programu Visual Studio Code**, zainstalowanie pakietów dla C# projekt biblioteki klas z wiersza polecenia przy użyciu [dotnet Dodaj pakiet](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) polecenia w interfejsie wiersza polecenia platformy .NET Core. W poniższym przykładzie pokazano, jak dodać powiązanie:
 
 ```terminal
-dotnet add package Microsoft.Azure.WebJobs.Extensions.ServiceBus --version <TARGET_VERSION>
+dotnet add package Microsoft.Azure.WebJobs.Extensions.<BINDING_TYPE_NAME> --version <TARGET_VERSION>
 ```
 
 .NET Core interfejsu wiersza polecenia należy używać tylko dla usługi Azure Functions 2.x rozwoju.
 
-Nazwa pakietu do użycia dla danego powiązania znajduje się w artykule dotyczącym struktury dla tego powiązania. Aby uzyskać przykład, zobacz [pakietów w dalszej części artykułu odwołanie powiązania usługi Service Bus](functions-bindings-service-bus.md#packages---functions-1x).
+Zastąp `<BINDING_TYPE_NAME>` nazwą pakietu, dostępne w artykule dotyczącym struktury dla żądanego wiązania. Można znaleźć żądanego powiązania odwołanie do artykułu w [listę obsługiwanych powiązania](./functions-triggers-bindings.md#supported-bindings).
 
 Zastąp `<TARGET_VERSION>` w przykładzie z określoną wersją pakietu, takich jak `3.0.0-beta5`. Prawidłowych wersji są wyświetlane na stronach poszczególnych pakietów w [NuGet.org](https://nuget.org). Wersji głównych, które odpowiadają środowisko uruchomieniowe 1.x i 2.x, które są określone w artykule odwołania dla wiązania.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"]
 > [Usługa Azure przykład wyzwalacz i powiązania funkcji](./functions-bindings-example.md)
-

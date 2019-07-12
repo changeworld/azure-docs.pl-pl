@@ -5,14 +5,14 @@ author: mattwojo
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: b0c78cbcc06de3a18f2127693a7c1b24c075e297
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f861a05bd369fb279ab82e230cad307a3569967e
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65806239"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67619389"
 ---
 # <a name="how-to-create-a-commercial-marketplace-account-in-partner-center"></a>Jak utworzyć konto handlowe portalu Marketplace w Centrum partnerskiego
 
@@ -72,6 +72,6 @@ Publikowanie informacji o profilu umowy i firmy zostaną zmigrowane do nowego ko
 
 Gdy konto zostanie przeniesione z CPP do Centrum partnerskiego, konto w Centrum partnerskim staje się konto główne ma być używany do aktualizacji konta, zarządzanie użytkownikami, uprawnienia i informacje dotyczące wypłat zarządzania. Aktualizacje te konta automatycznie zostaną zsynchronizowane na Twoje konto CPP tylko do odczytu, dopóki CPP portal ostatecznie jest przestarzały. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Zarządzanie kontem komercyjnych Marketplace Centrum partnerskiego](./manage-account.md) 

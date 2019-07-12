@@ -4,7 +4,7 @@ description: Dowiedz się, jak używać programu Chef do wdrażania automatyczne
 services: virtual-machines-windows
 documentationcenter: ''
 author: diegoviso
-manager: jeconnoc
+manager: gwallace
 tags: azure-service-management,azure-resource-manager
 editor: ''
 ms.assetid: 0b82ca70-89ed-496d-bb49-c04ae59b4523
@@ -13,17 +13,16 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
 ms.devlang: na
 ms.topic: article
-ms.date: 05/30/2017
+ms.date: 07/09/2019
 ms.author: diviso
-ms.openlocfilehash: 9cb7172fb529d8f0cd8650db7c06a78176ef342d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 74b92c277b1d6eaa0984e55a70459bad59c2bf84
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64729559"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67719278"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Automatyzowanie wdrażania maszyny wirtualnej platformy Azure przy użyciu narzędzia Chef
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 Chef to doskonałe narzędzie do dostarczania automatyzacji i żądanego stanu konfiguracji.
 
@@ -55,9 +54,24 @@ Program chef korzysta z koncepcji "Podręczniki" i "Przepisów", które skuteczn
 
 Po pierwsze przeznaczonego do przygotowania stację roboczą, tworząc katalog do przechowywania plików konfiguracyjnych programu Chef i podręczniki.
 
-Utwórz katalog o nazwie C:\chef.
+Utwórz katalog o nazwie C:\Chef.
 
-Pobieranie programu Azure PowerShell [ustawień publikowania](https://docs.microsoft.com/dynamics-nav/how-to--download-and-import-publish-settings-and-subscription-information).
+Pobierz i zainstaluj najnowszą wersję [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) wersji do stacji roboczej.
+
+## <a name="configure-azure-service-principal"></a>Konfigurowanie jednostki usługi platformy Azure
+
+W najprostszej warunków i jednostki usługi platformy Azure jest konto usługi.   Firma Microsoft będzie używać nazwy głównej usługi Aby pomóc nam tworzenie zasobów platformy Azure ze stacji roboczej naszych Chef.  Aby utworzyć odpowiednie jednostki usługi z wymaganymi uprawnieniami, należy uruchomić następujące polecenia w programie PowerShell:
+ 
+```powershell
+Login-AzureRmAccount
+Get-AzureRmSubscription
+Select-AzureRmSubscription -SubscriptionName "<yourSubscriptionName>"
+$myApplication = New-AzureRmADApplication -DisplayName "automation-app" -HomePage "https://chef-automation-test.com" -IdentifierUris "https://chef-automation-test.com" -Password "#1234p$wdchef19"
+New-AzureRmADServicePrincipal -ApplicationId $myApplication.ApplicationId
+New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $myApplication.ApplicationId
+```
+
+Prosimy o poświęcenie Zanotuj identyfikator subskrypcji, identyfikator dzierżawy, identyfikatora klienta i klucz tajny klienta (hasła, gdy ustawiasz powyżej), będzie on potrzebny później. 
 
 ## <a name="setup-chef-server"></a>Konfigurowanie serwera programu Chef
 
@@ -86,7 +100,7 @@ Po utworzeniu Twojej organizacji, należy pobrać starter kit.
 
 Ten plik zip zestawu starter zawiera pliki konfiguracji w organizacji i klucz użytkownika w `.chef` katalogu.
 
-`organization-validator.pem` Należy go najpierw pobrać oddzielnie, ponieważ jest klucz prywatny i kluczy prywatnych nie powinien być przechowywany na serwerze programu Chef. Z [Zarządzanie Chef](https://manage.chef.io/) i wybierz pozycję "Resetuj sprawdzania poprawności klucza", który zawiera plik do pobrania osobno. Zapisz plik c:\chef.
+`organization-validator.pem` Należy go najpierw pobrać oddzielnie, ponieważ jest klucz prywatny i kluczy prywatnych nie powinien być przechowywany na serwerze programu Chef. Z [Zarządzanie Chef](https://manage.chef.io/), przejdź do sekcji Administracja i wybierz pozycję "Resetuj sprawdzania poprawności klucza", który zawiera plik do pobrania osobno. Zapisz plik c:\chef.
 
 ### <a name="configuring-your-chef-workstation"></a>Konfigurowanie stacji roboczej programu Chef
 
@@ -138,19 +152,20 @@ validation_client_name "moduł sprawdzania myorg"
 
 validation_key           "#{current_dir}/myorg.pem"
 
-Dodaj również następującą pliku ustawień publikowania wiersza odzwierciedlający Nazwa subskrypcji platformy Azure.
+nóż [: azure_tenant_id] = "0000000-1111-aaaa-bbbb-222222222222"
 
-    knife[:azure_publish_settings_file] = "yourfilename.publishsettings"
+nóż [: azure_subscription_id] = "11111111-bbbbb-cccc-1111-222222222222"
 
-Modyfikowanie "cookbook_path" poprzez usunięcie /... / ze ścieżki, dzięki czemu będzie ono wyświetlane jako:
+knife[:azure_client_id] =         "11111111-bbbbb-cccc-1111-2222222222222"
 
-    cookbook_path  ["#{current_dir}/cookbooks"]
+knife[:azure_client_secret] =     "#1234p$wdchef19"
 
-Linie te zapewniają, że nóż odwołuje się do katalogu podręczniki, w obszarze c:\chef\cookbooks i używa wzorów naszego pliku ustawień publikowania platformy Azure podczas operacji na platformie Azure.
+
+Linie te zapewniają, że nóż odwołuje się do katalogu podręczniki, w obszarze c:\chef\cookbooks i używa wzorów jednostki usługi platformy Azure, który został utworzony podczas operacji na platformie Azure.
 
 Plik knife.rb powinien teraz wyglądać podobnie do poniższego przykładu:
 
-![][6]
+![][14]
 
 <!--- Giant problem with this section: Chef 12 uses a config.rb instead of knife.rb
 // However, the starter kit hasn't been updated
@@ -159,17 +174,19 @@ Plik knife.rb powinien teraz wyglądać podobnie do poniższego przykładu:
 <!--- update image [6] knife.rb -->
 
 ```rb
-knife.rb
 current_dir = File.dirname(__FILE__)
 log_level                :info
 log_location             STDOUT
-node_name                "mynode"
-client_key               "#{current_dir}/user.pem"
-chef_server_url          "https://api.chef.io/organizations/myorg"
+node_name                "myorg"
+client_key               "#{current_dir}/myorg.pem"
 validation_client_name   "myorg-validator"
-validation_key           ""#{current_dir}/myorg.pem"
-cookbook_path            ["#{current_dir}/cookbooks"]
-knife[:azure_publish_settings_file] = "yourfilename.publishsettings"
+validation_key           "#{current_dir}/myorg-validator.pem"
+chef_server_url          "https://api.chef.io/organizations/myorg"
+cookbook_path            ["#{current_dir}/../cookbooks"]
+knife[:azure_tenant_id] = "0000000-1111-aaaa-bbbb-222222222222"
+knife[:azure_subscription_id] = "11111111-bbbbb-cccc-1111-222222222222"
+knife[:azure_client_id] = "11111111-bbbbb-cccc-1111-2222222222222"
+knife[:azure_client_secret] = "#1234p$wdchef19"
 ```
 
 ## <a name="install-chef-workstation"></a>Zainstaluj program Chef stacji roboczej
@@ -182,13 +199,13 @@ Na komputerze stacjonarnym zobaczysz "efektywna PowerShell", który jest załado
 `chef --version` powinny zostać zwrócone mniej więcej tak:
 
 ```
-Chef Workstation: 0.2.29
-  chef-run: 0.2.2
-  Chef Client: 14.6.47x
-  delivery-cli: master (6862f27aba89109a9630f0b6c6798efec56b4efe)
-  berks: 7.0.6
-  test-kitchen: 1.23.2
-  inspec: 3.0.12
+Chef Workstation: 0.4.2
+  chef-run: 0.3.0
+  chef-client: 15.0.300
+  delivery-cli: 0.0.52 (9d07501a3b347cc687c902319d23dc32dd5fa621)
+  berks: 7.0.8
+  test-kitchen: 2.2.5
+  inspec: 4.3.2
 ```
 
 > [!NOTE]
@@ -218,7 +235,7 @@ Istnieje prawdopodobieństwo, że liczba zależności, także zostaną zainstalo
 
 Aby upewnić się, że wszystko jest poprawnie skonfigurowane, uruchom następujące polecenie.
 
-    knife azure image list
+    knife azurerm server list
 
 Jeśli wszystko jest poprawnie skonfigurowane, zobaczysz listę przewijanie dostępne obrazy platformy Azure.
 
@@ -273,32 +290,50 @@ W tym kroku możesz utworzyć kopię Cookbook, które zostały utworzone na komp
 ## <a name="deploy-a-virtual-machine-with-knife-azure"></a>Wdrażanie maszyny wirtualnej z systemem Azure nóż
 Wdrażanie maszyny wirtualnej platformy Azure i stosowanie Cookbook "Serwer sieci Web", który instaluje usługi IIS sieci web usługi i domyślne strony sieci web.
 
-Aby to zrobić, należy użyć **server nóż azure utworzyć** polecenia.
+Aby to zrobić, należy użyć **Tworzenie serwera usługi azurerm nóż** polecenia.
 
 Przykład polecenia pojawia się obok.
 
-    knife azure server create --azure-dns-name 'diegotest01' --azure-vm-name 'testserver01' --azure-vm-size 'Small' --azure-storage-account 'portalvhdsxxxx' --bootstrap-protocol 'cloud-api' --azure-source-image 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201411.01-en.us-127GB.vhd' --azure-service-location 'Southeast Asia' --winrm-user azureuser --winrm-password 'myPassword123' --tcp-endpoints 80,3389 --r 'recipe[webserver]'
+    knife azurerm server create `
+    --azure-resource-group-name rg-chefdeployment `
+    --azure-storage-account store `
+    --azure-vm-name chefvm `
+    --azure-vm-size 'Standard_DS2_v2' `
+    --azure-service-location 'westus' `
+    --azure-image-reference-offer 'WindowsServer' `
+    --azure-image-reference-publisher 'MicrosoftWindowsServer' `
+    --azure-image-reference-sku '2016-Datacenter' `
+    --azure-image-reference-version 'latest' `
+    -x myuser -P myPassword123 `
+    --tcp-endpoints '80,3389' `
+    --chef-daemon-interval 1 `
+    -r "recipe[webserver]"
 
-Parametry są oczywiste. Zastąp określonego zmiennych i uruchom.
+
+W powyższym przykładzie utworzy Standard_DS2_v2 maszyny wirtualnej z systemem Windows Server 2016 zainstalowany w regionie zachodnie stany USA. Zastąp określonego zmiennych i uruchom.
 
 > [!NOTE]
-> Za pośrednictwem wiersza polecenia I jestem również Automatyzowanie reguł filtra punktu końcowego sieci przy użyciu parametru punkty końcowe — tcp. Czy mogę zostało otwarte porty 80 i 3389, aby zapewnić dostęp do Mój strony sieci web i sesję RDP.
+> Za pośrednictwem wiersza polecenia I jestem również Automatyzowanie reguł filtra punktu końcowego sieci przy użyciu parametru punkty końcowe — tcp. Czy mogę zostało otwarte porty 80 i 3389, aby zapewnić dostęp do stron sieci web i sesję RDP.
 >
 >
 
 Po uruchomieniu polecenia, przejdź do witryny Azure portal, aby zobaczyć maszynie rozpocząć aprowizację.
 
-![][13]
+![][15]
 
 Pojawia się obok wiersza polecenia.
 
-![][10]
+![][16]
 
-Po zakończeniu wdrożenia należy nawiązać połączenie z usługą sieci web za pośrednictwem portu 80, ponieważ port jest otwarty podczas aprowizacji maszyny wirtualnej za pomocą polecenia nóż platformy Azure. Ponieważ ta maszyna wirtualna jest tylko maszynę wirtualną w tej usłudze w chmurze, połączyć się z nim adres url usługi w chmurze.
+Po zakończeniu wdrożenia publiczny adres IP nowej maszyny wirtualnej pojawi się po zakończeniu wdrożenia, możesz to skopiować i wkleić go do przeglądarki sieci web i wyświetlić witrynę sieci Web, która została wdrożona. Wdrożyliśmy maszyny wirtualnej możemy otworzyć port 80, dlatego powinien być dostępny zewnętrznie.   
 
 ![][11]
 
 W tym przykładzie użyto creative kodu HTML.
+
+Można również wyświetlić stan węzła [Zarządzanie Chef](https://manage.chef.io/). 
+
+![][17]
 
 Pamiętaj, że możesz również łączyć się za pośrednictwem sesji protokołu RDP w witrynie Azure portal za pośrednictwem portu 3389.
 
@@ -316,6 +351,10 @@ Dziękuję! Go i Rozpocznij infrastruktury jako kodu pracy na platformie Azure j
 [10]: media/chef-automation/10.png
 [11]: media/chef-automation/11.png
 [13]: media/chef-automation/13.png
+[14]: media/chef-automation/14.png
+[15]: media/chef-automation/15.png
+[16]: media/chef-automation/16.png
+[17]: media/chef-automation/17.png
 
 
 <!--Link references-->

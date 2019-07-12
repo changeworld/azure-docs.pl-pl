@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: 6d11961f06a75341e633c7a8963e6b83ed37cf13
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bc53fadfb622794703deaff560c9083ca6a1a10
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61341714"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656832"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Obsługa metadanych interfejsu OpenAPI 2.0 w usłudze Azure Functions (wersja zapoznawcza)
 Standard OpenAPI 2.0 (dawniej Swagger) Obsługa metadanych w usłudze Azure Functions jest funkcją w wersji zapoznawczej, która służy do pisania definicji interfejsu OpenAPI 2.0 w aplikacji funkcji. Ten plik może być następnie hostować przy użyciu aplikacji funkcji.
@@ -75,7 +75,7 @@ Poniższa tabela reprezentuje ustawienia portalu Azure i odpowiadające im dane 
    1. Ustaw **źródło definicji interfejsu API** do **funkcja**.
    1. Kliknij przycisk **szablon definicji interfejsu API z Generowanie** i następnie **Zapisz** do tworzenia definicji szablonu do modyfikowania później.
    1. Należy pamiętać, adres URL definicji interfejsu API i klucz.
-1. [Konfigurowanie ciągłej integracji/ciągłego wdrażania (CI/CD)](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment#continuous-deployment-requirements).
+1. [Konfigurowanie ciągłej integracji/ciągłego wdrażania (CI/CD)](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment#requirements-for-continuous-deployment).
 2. Modyfikowanie swagger.json w kontroli źródła pod \site\wwwroot\.azurefunctions\swagger\swagger.json.
 
 Teraz, zmiany swagger.json w repozytorium są obsługiwane przez aplikację funkcji w interfejsie API adres URL definicji i klucz, który zanotowaną w kroku 1.c.

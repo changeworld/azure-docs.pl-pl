@@ -4,7 +4,7 @@ description: Za pomocą konsoli szeregowej dla chodników na maszynach wirtualny
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/08/2019
 ms.author: alsin
-ms.openlocfilehash: 440d917c2ee4a51f2c8ba4b134b50508bdaf4bcb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8a3be6420a91093e060850459ff22fc5823b8cf2
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735260"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710598"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Umożliwia dostęp do programu GRUB i tryb jednego użytkownika konsoli szeregowej
 Program GRUB jest sumy Unified program inicjujący, który prawdopodobnie jest pierwszą rzeczą, jaką będzie wyświetlany po rozruchem maszyny Wirtualnej. Ponieważ wyświetla zanim został uruchomiony system operacyjny, nie jest dostępny za pośrednictwem protokołu SSH. Z programu GRUB są możliwość modyfikowania konfiguracji rozruchu do rozruchu w trybie jednego użytkownika, między innymi.
@@ -132,7 +132,7 @@ Domyślnie obrazów systemu Ubuntu nie może automatycznie pokazywane na ekranie
 1. Zmiana `GRUB_TIMEOUT` wartość na wartość inną niż zero
 1. Otwórz `/etc/default/grub` w edytorze tekstów wybranych przez użytkownika
 1. Komentarz `GRUB_HIDDEN_TIMEOUT=1` wiersza
-1. Uruchom polecenie `sudo update-grub`
+1. Uruchom `sudo update-grub`
 
 ### <a name="single-user-mode-in-ubuntu"></a>Tryb jednego użytkownika w systemie Ubuntu
 Ubuntu spowoduje porzucenie możesz w trybie jednego użytkownika automatycznie, jeśli nie normalny rozruch. Aby ręcznie wprowadzić w trybie jednego użytkownika, należy użyć poniższych instrukcji:

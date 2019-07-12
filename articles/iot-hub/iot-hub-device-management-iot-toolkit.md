@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: 03df2ceb2df4d857e48f1790703a1d87647e43d0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f5697e0b51e8349de62e71be1471beb76aa48765
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60401174"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67838720"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Użyj narzędzia IoT platformy Azure dla programu Visual Studio Code do zarządzania urządzeniami Azure IoT Hub
 
@@ -63,7 +63,7 @@ Uruchom narzędzia IoT platformy Azure dla programu Visual Studio Code z różny
 5. Na liście będą wyświetlane w **Azure IoT Hub Devices** kartę w ciągu kilku sekund.
 
    > [!Note]
-   > Można również ukończyć konfigurację, wybierając pozycję **Ustaw parametry połączenia centrum IoT Hub**. Wprowadź parametry połączenia dla Centrum IoT, które urządzenia IoT, łączy w oknie podręcznym.
+   > Można również ukończyć konfigurację, wybierając pozycję **Ustaw parametry połączenia centrum IoT Hub**. Wprowadź **iothubowner** zasad parametry połączenia dla Centrum IoT, które urządzenia IoT, łączy w oknie podręcznym.
 
 ## <a name="direct-methods"></a>Metody bezpośrednie
 

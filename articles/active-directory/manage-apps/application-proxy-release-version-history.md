@@ -13,15 +13,15 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/05/2019
-ms.subservice: manage-apps
+ms.subservice: app-mgmt
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7af05769861f98ec192789d90f8a61f5b6638d1d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97b54d57a13f0f2b47633a25f1a44efdfa17d11a
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65783284"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595056"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Serwer Proxy aplikacji usługi Azure AD: Historia wersji
 W tym artykule wymieniono wersje i funkcje serwera Proxy aplikacji usługi Azure Active Directory (Azure AD), które zostały zwolnione. Zespół usługi Azure AD regularnie aktualizuje serwera Proxy aplikacji za pomocą nowych funkcji. Łączników serwera Proxy aplikacji są aktualizowane automatycznie po udostępnieniu nowej wersji.
@@ -88,6 +88,6 @@ Ulepszone kontrolę nad limitów połączeń wychodzących dla łączników.
 
 Jeśli używasz łącznika serwera Proxy aplikacji w wersji wcześniejszej niż 1.5.36.0, zaktualizuj do najnowszej wersji, aby zapewnić najnowsze funkcje w pełni obsługiwane.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - Dowiedz się więcej o [dostęp zdalny do aplikacji lokalnych za pośrednictwem serwera Proxy aplikacji usługi Azure AD](application-proxy.md).
 - Aby rozpocząć korzystanie z serwera Proxy aplikacji, zobacz [samouczka: Dodawanie aplikacji w środowisku lokalnym dostępu zdalnego za pośrednictwem serwera Proxy aplikacji](application-proxy-add-on-premises-application.md).

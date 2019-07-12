@@ -4,7 +4,7 @@ description: Automatyzowanie zadań konfiguracji maszyny Wirtualnej systemu Linu
 services: virtual-machines-linux
 documentationcenter: ''
 author: danielsollondon
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
-ms.openlocfilehash: fe3803b7dc75ab13831a5e42d4b1a96f5aa894e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4920cde64ae951fa5f234f6ad6d7423429bb907
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60800306"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706033"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Azure niestandardowy skrypt rozszerzenia w wersji 1 za pomocą maszyn wirtualnych systemu Linux
 
@@ -122,14 +122,14 @@ Tych elementów powinien być traktowane jako poufne dane i określony w konfigu
 | Name (Nazwa) | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.OSTCExtensions | string |
-| type | CustomScriptForLinux | string |
-| typeHandlerVersion | 1.5 | int |
+| publisher | Microsoft.OSTCExtensions | ciąg |
+| type | CustomScriptForLinux | ciąg |
+| typeHandlerVersion | 1,5 | int |
 | fileUris (np.) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
-| commandToExecute (np.) | python MyPythonScript.py \<my-param1\> | string |
+| commandToExecute (np.) | python MyPythonScript.py \<my-param1\> | ciąg |
 | enableInternalDNSCheck | true | boolean |
-| storageAccountName (np.) | examplestorageacct | string |
-| storageAccountKey (np.) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| storageAccountName (np.) | examplestorageacct | ciąg |
+| storageAccountKey (np.) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | ciąg |
 
 ### <a name="property-value-details"></a>Szczegóły dotyczące wartości właściwości
 

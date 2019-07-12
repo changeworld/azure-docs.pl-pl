@@ -1,17 +1,17 @@
 ---
 title: Monitorowanie usługi Azure Database dla serwera MariaDB
 description: W tym artykule opisano metryki dotyczące monitorowania i alertów dla usługi Azure Database dla serwera MariaDB, w tym statystyk procesora CPU, Magazyn i połączenia.
-author: andrela
-ms.author: ajlam
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.openlocfilehash: 8625441f836256028362fc327873383f5b46620c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fb998edffed290bb7bc59945163f0fd48c55cbf5
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67065741"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612528"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Monitorowanie usługi Azure Database dla serwera MariaDB
 Dane dotyczące serwerów monitorowania ułatwia rozwiązywanie problemów i zoptymalizować dla obciążenia. Usługa Azure Database dla serwera MariaDB oferuje różne metryki, które zapewniają wgląd w zachowania serwera.
@@ -26,17 +26,17 @@ Te metryki są dostępne dla usługi Azure Database dla serwera MariaDB:
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Opis|
 |---|---|---|---|
-|cpu_percent|Procent użycia Procesora|Procent|Procent użycia Procesora w użyciu.|
-|memory_percent|Procent pamięci|Procent|Procent pamięci w użyciu.|
-|io_consumption_percent|% Operacji We/Wy|Procent|Procent we/wy w użyciu.|
-|storage_percent|Procent użycia magazynu|Procent|Maksymalne przez wartość procentowa magazynu używane poza serwerem.|
+|cpu_percent|Procent użycia Procesora|Percent|Procent użycia Procesora w użyciu.|
+|memory_percent|Procent pamięci|Percent|Procent pamięci w użyciu.|
+|io_consumption_percent|% Operacji We/Wy|Percent|Procent we/wy w użyciu.|
+|storage_percent|Procent użycia magazynu|Percent|Maksymalne przez wartość procentowa magazynu używane poza serwerem.|
 |storage_used|Użyty magazyn|Bajty|Ilość miejsca w magazynie. Magazyn używany przez usługę mogą obejmować pliki bazy danych, dzienników transakcji i dzienniki serwera.|
-|serverlog_storage_percent|Procent magazynu dziennika serwera|Procent|Wartość procentowa używane poza magazyn dzienników serwera maksymalna serwera magazynu dziennika serwera.|
+|serverlog_storage_percent|Procent magazynu dziennika serwera|Percent|Wartość procentowa używane poza magazyn dzienników serwera maksymalna serwera magazynu dziennika serwera.|
 |serverlog_storage_usage|Używany Magazyn dzienników serwera|Bajty|Ilość miejsca w magazynie dziennika na serwerze.|
 |serverlog_storage_limit|Limit magazynu dziennika serwera|Bajty|Przechowywanie dziennika serwera maksymalną dla tego serwera.|
 |storage_limit|Limit magazynu|Bajty|Maksymalny rozmiar magazynu dla tego serwera.|
 |active_connections|Aktywne połączenia|Count|Liczba aktywnych połączeń z serwerem.|
-|connections_failed|Połączenia zakończone niepowodzeniem|Licznik|Liczba połączeń z serwerem nie powiodło się.|
+|connections_failed|Połączenia zakończone niepowodzeniem|Count|Liczba połączeń z serwerem nie powiodło się.|
 |network_bytes_egress|Sieć — wyjście|Bajty|Sieć się między aktywnych połączeń.|
 |network_bytes_ingress|Sieć — wejście|Bajty|Sieć w różnych aktywnych połączeń.|
 
@@ -56,7 +56,7 @@ Można włączyć wolnych zapytań rejestrowania na serwerze. Te dzienniki są r
 
 [Zalecenia dotyczące wydajności](concepts-performance-recommendations.md) funkcji identyfikuje możliwości poprawy wydajność obciążenia. Publiczna wersja zapoznawcza zalecenia dotyczące wydajności zapewnia zaleceń dotyczących tworzenia nowych indeksy, które potencjalnie mogą zwiększyć wydajność obciążeń. Aby uzyskać zalecenia dotyczące indeksu, funkcja bierze pod uwagę różne cechy bazy danych, w tym jego schematu i obciążenia zgłoszonej Query Store. Po zaimplementowaniu żadnych rekomendacji wydajności, klientów należy przetestować wydajność, aby ocenić wpływ tych zmian.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby uzyskać więcej informacji na temat sposobu uzyskania dostępu i eksportowanie metryk przy użyciu witryny Azure portal, interfejsu API REST lub interfejsu wiersza polecenia, zobacz [Przegląd metryk usługi Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
   - Zobacz [jak skonfigurować alerty](howto-alert-metric.md) wskazówki dotyczące tworzenia alertu na metrykę.

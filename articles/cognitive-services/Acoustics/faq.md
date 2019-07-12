@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 6e979db29f4a223b61580c48101c0d242fdbebbf
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a18f6b57e203c40c0f667f07e8371348cb738c9b
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616332"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827565"
 ---
 # <a name="project-acoustics-frequently-asked-questions"></a>Projekt Akustyka — często zadawane pytania
 
@@ -29,7 +29,7 @@ Możesz pobrać [wtyczki projektu Akustyka Unity](https://www.microsoft.com/down
 
 ## <a name="does-project-acoustics-support-ltxgt-platform"></a>Obsługuje Akustyka projektu &lt;x&gt; platformy?
 
-Obsługa platform Akustyka projektu rozwoju zależnie od potrzeb klienta. Skontaktuj się z nami na [forów Akustyka projektu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=projectacoustics) na uzyskiwanie informacji o obsłudze dotyczącymi dodatkowych platform.
+Obsługa platform Akustyka projektu rozwoju zależnie od potrzeb klienta. Skontaktuj się z nami na [forum problem Akustyka projektu](https://github.com/microsoft/ProjectAcoustics/issues) na uzyskiwanie informacji o obsłudze dotyczącymi dodatkowych platform.
 
 ## <a name="is-azure-used-at-runtime"></a>Azure jest używana w środowisku uruchomieniowym?
 

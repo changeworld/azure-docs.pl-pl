@@ -4,7 +4,7 @@ description: Dowiedz się, jak tworzyć obrazy maszyn wirtualnych Windows na pla
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: 7210f80ab1a475c944390e56647177218c896221
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 905f330af7052b7d39058b5d84fb51a70311248d
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67202933"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67719326"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Jak utworzyć obrazy maszyn wirtualnych Windows na platformie Azure za pomocą usługi Packer
 Każda maszyna wirtualna (VM) na platformie Azure jest tworzony z obrazu, który definiuje Windows dystrybucji i wersji systemu operacyjnego. Obrazy mogą obejmować wstępnie zainstalowane aplikacje i konfiguracje. W portalu Azure Marketplace zawiera wiele obrazów pierwszy i innych firm dla typowych systemu operacyjnego i środowiska aplikacji albo można utworzyć własne niestandardowe obrazy dopasowany do Twoich potrzeb. Ten artykuł szczegółowo opisuje sposób użycia narzędzia typu open-source [Packer](https://www.packer.io/) do definiowania i tworzenie niestandardowych obrazów na platformie Azure.
@@ -248,5 +248,5 @@ Do maszyny Wirtualnej, która obejmuje instalację usług IIS z administracyjnej
 ![Domyślna witryna usług IIS](./media/build-image-with-packer/iis.png) 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Można również użyć istniejących skryptów administracyjnej narzędzia Packer za pomocą [kreatora obrazów platformy Azure](image-builder.md).

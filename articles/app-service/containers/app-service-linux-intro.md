@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 1/11/2019
-ms.author: msangapu;
+ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 8180ddeceb0dcace61b5c3de7e5a45ab75042419
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6bca1b067f5ec667e8b5da92a182a5618582b2f3
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448400"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67617441"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Wprowadzenie do usługi Azure App Service w systemie Linux
 
 [Azure App Service](../overview.md) to w pełni zarządzana platforma obliczeniowa zoptymalizowana pod kątem hostowania witryn i aplikacji internetowych. Klienci mogą używać usługi App Service w systemie Linux do natywnego hostowania aplikacji internetowych w systemie Linux dla obsługiwanych stosów aplikacji. W sekcji [Języki](#languages) wymieniono stosy aplikacji, które są obecnie obsługiwane.
 
-## <a name="languages"></a>Języki
+## <a name="languages"></a>Languages
 
 Usługa App Service w systemie Linux obsługuje szereg wbudowanych obrazów w celu zwiększenia produktywności deweloperów. Jeśli aplikacja wymaga środowiska uruchomieniowego, które nie jest obsługiwane we wbudowanych obrazach, skorzystaj z instrukcji dotyczących sposobu [tworzenia własnego obrazu platformy Docker](tutorial-custom-docker-image.md), aby wykonać wdrożenie w usłudze Web App for Containers.
 
@@ -42,7 +42,7 @@ Usługa App Service w systemie Linux obsługuje szereg wbudowanych obrazów w ce
 
 ## <a name="deployments"></a>Wdrożenia
 
-* Protokół FTP
+* FTP
 * Lokalna usługa Git
 * GitHub
 * Bitbucket
@@ -83,7 +83,7 @@ Dostęp do witryny SCM można uzyskać za pomocą opcji **Narzędzia zaawansowan
 
 ![Wyświetlanie dzienników platformy Docker przy użyciu narzędzia Kudu][1]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Następujące artykuły ułatwią rozpoczęcie pracy z usługą App Service w systemie Linux w przypadku aplikacji internetowych napisanych w różnych językach:
 

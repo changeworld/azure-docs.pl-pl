@@ -4,7 +4,7 @@ description: Służy do wdrażania usługi Azure Disk Encryption dla systemu Lin
 services: virtual-machines-linux
 documentationcenter: ''
 author: ejarvi
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: ejarvi
-ms.openlocfilehash: 05d20e75cf8f0c84936ff4e5dfa42d60678f6ffc
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: d544aae33faf60be00a2b4ea0a45f405efcedb39
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295348"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706141"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Azure Disk Encryption for Linux (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
@@ -141,20 +141,20 @@ Za pomocą `AADClientCertificate`:
 | Name (Nazwa) | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Azure.Security | string |
-| — typ | AzureDiskEncryptionForLinux | string |
+| publisher | Microsoft.Azure.Security | ciąg |
+| type | AzureDiskEncryptionForLinux | ciąg |
 | typeHandlerVersion | 0.1, 1.1 | int |
 | (0.1 schema) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Identyfikator GUID | 
-| (0.1 schema) AADClientSecret | password | string |
-| (0.1 schema) AADClientCertificate | thumbprint | string |
+| (0.1 schema) AADClientSecret | password | ciąg |
+| (0.1 schema) AADClientCertificate | thumbprint | ciąg |
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | Słownik JSON |
-| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
-| KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
-| KeyEncryptionKeyURL | url | string |
-| (optional) KeyVaultURL | url | string |
-| Passphrase | password | string | 
-| SequenceVersion | uniqueidentifier | string |
-| VolumeType | Systemu operacyjnego, danych, wszystkie | string |
+| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | ciąg | 
+| KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | ciąg |
+| KeyEncryptionKeyURL | url | ciąg |
+| (optional) KeyVaultURL | url | ciąg |
+| Passphrase | password | ciąg | 
+| SequenceVersion | uniqueidentifier | ciąg |
+| VolumeType | Systemu operacyjnego, danych, wszystkie | ciąg |
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 
@@ -174,6 +174,6 @@ Rozwiązywanie problemów, można znaleźć [przewodnik rozwiązywania problemó
 
 Jeśli potrzebujesz dodatkowej pomocy w dowolnym momencie, w tym artykule, możesz skontaktować się ze ekspertów platformy Azure na [forów platformy Azure z subskrypcją MSDN i Stack Overflow](https://azure.microsoft.com/support/community/). Alternatywnie mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj [pomocy technicznej Microsoft Azure — często zadawane pytania](https://azure.microsoft.com/support/faq/).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat rozszerzeń maszyn wirtualnych, zobacz [rozszerzenia maszyn wirtualnych i funkcji dla systemu Linux](features-linux.md).

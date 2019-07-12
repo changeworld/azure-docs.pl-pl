@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/26/2018
-ms.author: zhiweiw
+ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ffd783ec41b1b0c4a11ee426648c1e36fbbbf75
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6c5bc2ea76c558e47eaa5f297ebe36a629aa5754
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60349949"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702642"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>Dane usługi kondycji nie są na bieżąco alert
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Agentów na komputerach lokalnych, które program Azure AD Connect Health monitoruje się okresowo przekazywanie danych do usługi Azure AD Connect Health. Jeśli usługa nie odbiera danych z agenta, informacje w portalu jest wyświetlany będą nieaktualne. Aby wyróżnić ten problem, usługa zostanie podniesiony **dane usługi kondycji nie są na bieżąco** alertu. Ten alert jest generowany, gdy usługa nie odebrała kompletne dane w ciągu ostatnich dwóch godzin.  
 
@@ -40,7 +40,7 @@ Usługa pobiera dane z agentów, które są uruchomione na komputerach lokalnych
  
 Poniższa tabela zawiera mapowanie typów usług odpowiednie typy wymaganych danych:
 
-| Typ usługi | Agent (nazwa usługi Windows) | Przeznaczenie | Typ danych, wygenerowane  |
+| Typ usługi | Agent (nazwa usługi Windows) | Cel | Typ danych, wygenerowane  |
 | --- | --- | --- | --- |  
 | Usługa Azure AD Connect (synchronizacja) | Usługa szczegółowych informacji synchronizacji programu Azure AD Connect Health | Zbieraj informacje specyficzne dla usługi AAD Connect (łączników, reguły synchronizacji, itp.) | AadSyncService SynchronizationRules <br />  AadSyncService łączników <br /> AadSyncService GlobalConfigurations  <br />  - AadSyncService-RunProfileResults <br /> - AadSyncService-ServiceConfigurations <br /> AadSyncService bajty   |
 |  | Usługa monitorowania synchronizacji programu Azure AD Connect Health | Zbieranie liczników wydajności specyficzne dla usługi AAD Connect, śladów funkcji ETW, pliki | Licznik wydajności |
@@ -66,7 +66,7 @@ Poniżej podano kroki wymagane do zdiagnozowania problemu. Pierwszy to zestaw po
 * Jeśli masz serwer HTTP Proxy, postępuj zgodnie z tymi [czynności konfiguracyjnych](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy). 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Jeśli dowolny z powyższych kroków zidentyfikować problem, napraw go i zaczekaj alertu rozwiązać. Proces w tle alertu jest uruchamiane co 2 godziny, potrwa do 2 godzin, aby rozwiązać alert. 
 
 * [Zasady przechowywania danych w usłudze Azure AD Connect Health](reference-connect-health-user-privacy.md#data-retention-policy)

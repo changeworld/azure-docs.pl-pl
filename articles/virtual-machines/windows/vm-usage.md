@@ -4,7 +4,7 @@ description: Poznać szczegóły użycia maszyny wirtualnej
 services: virtual-machines
 documentationcenter: ''
 author: mmccrory
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-virtual-machine
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: b515a0b226723989b1cc73356f1377da421dc9aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4cd0f27ebfeb25724bab50069344b417f62d5f50
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61485657"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707895"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Zrozumienie wykorzystania maszyn wirtualnych platformy Azure
 Analizując dane użycia platformy Azure, można uzyskać wgląd w użycie zaawansowanych — szczegółowe informacje, które można włączyć lepiej koszty zarządzania i alokacji w całej organizacji. Ten dokument zawiera szczegółowo omówi informacje dotyczące użycia usługi Azure Compute. Aby uzyskać szczegółowe informacje na temat ogólnego użycia platformy Azure, przejdź do [informacje o rachunku](../../billing/billing-understand-your-bill.md).
@@ -82,7 +82,7 @@ Nazwa regionu, w polu Lokalizacja zasobu w szczegóły użycia różni się od n
 |    chinaeast             |    Chiny Wschodnie                            |
 |    chinanorth            |    Chiny Północne                           |
 |    eastasia              |    Azja Wschodnia                             |
-|    eastus                |    Wschodnie stany USA                               |
+|    eastus                |    East US                               |
 |    eastus2               |    Wschodnie stany USA 2                             |
 |    GermanyCentral        |    Niemcy Środkowe                            |
 |    GermanyNortheast      |    Niemcy Północno-Wschodnie                          |

@@ -7,16 +7,16 @@ ms.author: roastala
 manager: danielsc
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 05/28/2019
-ms.openlocfilehash: 28d8c47db8ea9c8a51bc8e9deb0a689eb0b20177
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1f9199b5bae0c82cd46750d8ef5522a0d3579671
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66392902"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595279"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>W przypadku, gdy do zapisywania i zapisywania plików dla usługi Azure Machine Learning eksperymentów
 
@@ -71,7 +71,7 @@ Jeśli magazyn danych nie jest wymagany, Zapisz pliki na `./outputs` i/lub `./lo
 
 * **Aby zapisać plik napisane jako dzienniki w historii uruchamiania** Zapisz pliki na `./logs` folderu. Dzienniki są przekazywane w czasie rzeczywistym, dzięki czemu ta metoda jest przydatna do przesyłania strumieniowego na żywo aktualizacje z lokalizacji zdalnej, uruchom.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się więcej o [dostępu do danych z usługi magazynów danych](how-to-access-data.md).
 

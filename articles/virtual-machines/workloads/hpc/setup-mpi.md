@@ -4,7 +4,7 @@ description: Dowiedz się, jak skonfigurować MPI for HPC na platformie Azure.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 5356a033dbc3d989dd27019f03b1fe36035ff9a4
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 541e42a72ea604c4d71dc546b14dea2f0857bcc1
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441647"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797512"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>Konfigurowanie interfejsu przekazywania komunikatów dla HPC
 
@@ -126,7 +126,7 @@ Przypinanie proces działa prawidłowo dla 15, 30 i 60 Samodzielnym domyślnie.
 
 ## <a name="osu-mpi-benchmarks"></a>Testy porównawcze OSU MPI
 
-[Pobierz testy porównawcze OSU MPI] [ http://mvapich.cse.ohio-state.edu/benchmarks/ ](http://mvapich.cse.ohio-state.edu/benchmarks/) i untar.
+[Pobierz testy porównawcze MPI OSU](http://mvapich.cse.ohio-state.edu/benchmarks/) i untar.
 
 ```bash
 wget http://mvapich.cse.ohio-state.edu/download/mvapich/osu-micro-benchmarks-5.5.tar.gz
@@ -146,7 +146,7 @@ Testy porównawcze MPI podlegają `mpi/` folderu.
 
 ## <a name="discover-partition-keys"></a>Odkryj kluczy partycji
 
-Odkryj klucze partycji (p-keys) do komunikacji z innymi maszynami wirtualnymi.
+Odkryj klucze partycji (p-keys) do komunikacji z innymi maszynami wirtualnymi w tej samej dzierżawy (zestaw dostępności lub zestawie skalowania maszyn wirtualnych).
 
 ```bash
 /sys/class/infiniband/mlx5_0/ports/1/pkeys/0
@@ -164,13 +164,15 @@ cat /sys/class/infiniband/mlx5_0/ports/1/pkeys/1
 
 Użyj partycji innej niż domyślny (0x7fff) Klucz partycji. UCX wymaga BITEM p-key, zostaje wyczyszczona. Na przykład ustawić UCX_IB_PKEY jako 0x000b dla 0x800b.
 
+Należy również zauważyć, że tak długo, jak istnieje dzierżawy (AVSet lub zestawu skalowania maszyn wirtualnych), PKEYs pozostają takie same. Ta zasada obowiązuje, nawet wtedy, gdy węzły zostaną dodane lub usunięte. Nowych dzierżaw uzyskać różne PKEYs.
+
 
 ## <a name="set-up-user-limits-for-mpi"></a>Konfigurowanie limitów użytkowników dla MPI
 
 Konfigurowanie limitów użytkowników dla MPI.
 
 ```bash
-cat << EOF >> /etc/security/limits.conf
+cat << EOF | sudo tee -a /etc/security/limits.conf
 *               hard    memlock         unlimited
 *               soft    memlock         unlimited
 *               hard    nofile          65535

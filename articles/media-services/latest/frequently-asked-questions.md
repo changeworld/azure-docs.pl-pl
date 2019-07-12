@@ -9,20 +9,20 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/24/2019
+ms.date: 06/21/2019
 ms.author: juliako
-ms.openlocfilehash: 98e8c0ccd150776341e644f7565696e8fbd63e99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b060e2c8a7353dd8145ced8c6e89d9b666a4212c
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65556267"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703891"
 ---
-# <a name="azure-media-services-v3-frequently-asked-questions"></a>Azure Media Services v3 — często zadawane pytania
+# <a name="media-services-v3-frequently-asked-questions"></a>Usługa Media Services v3 — często zadawane pytania
 
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Media Services (AMS) w wersji 3.
 
-## <a name="v3-apis"></a>interfejsy API w wersji 3
+## <a name="general"></a>Ogólne
 
 ### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Jakie ról platformy Azure mogą wykonywać akcje na zasoby usługi Azure Media Services? 
 
@@ -45,6 +45,10 @@ Korzystając z podziałem na strony, zawsze należy używać następny link do w
 ### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Jakie funkcje nie są jeszcze dostępne w usłudze Azure Media Services v3?
 
 Aby uzyskać więcej informacji, zobacz [luki w odniesieniu do interfejsów API w wersji 2 są wyposażone w](migrate-from-v2-to-v3.md#feature-gaps-with-respect-to-v2-apis).
+
+### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>Co to jest proces przenoszenia konta usługi Media Services między subskrypcjami?  
+
+Aby uzyskać więcej informacji, zobacz [Przenoszenie konta usługi Media Services między subskrypcjami](media-services-account-concept.md).
 
 ## <a name="live-streaming"></a>Transmisja strumieniowa na żywo 
 

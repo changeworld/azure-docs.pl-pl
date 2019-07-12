@@ -4,7 +4,7 @@ description: Dowiedz się więcej o używaniu FreeBSD maszyn wirtualnych na plat
 services: virtual-machines-linux
 documentationcenter: ''
 author: thomas1206
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 32b87a5f-d024-4da0-8bf0-77e233d1422b
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: huishao
-ms.openlocfilehash: 1f2d3c40352d60d3cc7366aca6f38a8255a7a629
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 248588ad43f3b3beefa35de468a21cecedc8913d
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60627711"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667787"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Wprowadzenie do systemu FreeBSD na platformie Azure
 Ten artykuł zawiera omówienie działającej maszyny wirtualnej FreeBSD na platformie Azure.
@@ -132,5 +132,5 @@ Opcjonalnie można uzyskać shell głównej, przy użyciu `sudo -s`.
 ## <a name="known-issues"></a>Znane problemy
 [Agenta gościa maszyny Wirtualnej platformy Azure](https://github.com/Azure/WALinuxAgent/) wersja 2.2.2 [znany problem](https://github.com/Azure/WALinuxAgent/pull/517) powodujący błąd aprowizacji dla maszyny Wirtualnej z FreeBSD na platformie Azure. Poprawka została przechwycona przez [agenta gościa maszyny Wirtualnej platformy Azure](https://github.com/Azure/WALinuxAgent/) wersji 2.2.3 i nowszych wersjach. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Przejdź do [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD112) do utworzenia maszyny Wirtualnej z systemem FreeBSD.

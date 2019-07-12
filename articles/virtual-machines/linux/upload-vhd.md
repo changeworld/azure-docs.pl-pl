@@ -4,7 +4,7 @@ description: Przekazywanie lub kopiowanie niestandardową maszynę wirtualną pr
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: a8c7818f-eb65-409e-aa91-ce5ae975c564
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 6483fa8737ee3de6a60c4e4646fefec30ae702b6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 026cab6a5749f556d6f748c80e492d1c920767d1
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61473420"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708405"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Tworzenie maszyny Wirtualnej z systemem Linux z niestandardowego dysku przy użyciu wiersza polecenia platformy Azure
 
@@ -61,7 +61,7 @@ Aby wykonać następujące kroki, będą potrzebne:
 
 W poniższych przykładach, Zastąp przykładowe nazwy parametru przy użyciu własnych wartości, takich jak *myResourceGroup*, *mystorageaccount*, i *mydisks*.
 
-<a id="prepimage"> </a>
+<a id="prepimage"></a>
 
 ## <a name="prepare-the-vm"></a>Przygotowywanie maszyny wirtualnej
 
@@ -82,7 +82,7 @@ Zobacz też [uwagi dotyczące instalacji systemu Linux](create-upload-generic.md
 > 
 > 
 
-## <a name="option-1-upload-a-vhd"></a>Opcja 1: Przekazywanie wirtualnego dysku twardego
+## <a name="option-1-upload-a-vhd"></a>Option 1: Przekazywanie wirtualnego dysku twardego
 
 Możesz przekazać niestandardowe wirtualnego dysku twardego zostały uruchomione na komputerze lokalnym lub który został wyeksportowany z innej chmury. Aby użyć wirtualnego dysku twardego do tworzenia nowej maszyny Wirtualnej platformy Azure, musisz przekazanie dysku VHD do konta magazynu i tworzenie dysku zarządzanego na podstawie wirtualnego dysku twardego. Aby uzyskać więcej informacji, zobacz temat [Omówienie funkcji Dyski zarządzane platformy Azure](../windows/managed-disks-overview.md).
 
@@ -223,5 +223,5 @@ az vm create \
 
 Powinno być możliwe do protokołu SSH z maszyną wirtualną przy użyciu poświadczeń ze źródłowej maszyny Wirtualnej. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Po przygotować i przekazać niestandardowe wirtualnego dysku, możesz przeczytać więcej na temat [przy użyciu usługi Resource Manager i szablonów](../../azure-resource-manager/resource-group-overview.md). Możesz również chcieć [Dodaj dysk danych](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) do nowych maszyn wirtualnych. Jeśli masz aplikacje uruchomione na maszynach wirtualnych, które chcesz uzyskać dostęp, należy koniecznie [otworzyć porty i punkty końcowe](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

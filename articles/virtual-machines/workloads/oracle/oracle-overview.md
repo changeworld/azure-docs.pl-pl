@@ -4,7 +4,7 @@ description: Informacje o opcjach wdrażania aplikacji Oracle i rozwiązań w sy
 services: virtual-machines-linux
 documentationcenter: ''
 author: romitgirdhar
-manager: jeconnoc
+manager: gwallace
 tags: azure-resource-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
-ms.openlocfilehash: b5e40975fca491f289d949ee273d13053897fc6d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8bfa0dfa82f73cad010a608150eac48c7f3d4c8
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66743638"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707447"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Omówienie aplikacji Oracle i rozwiązania na platformie Azure
 
@@ -81,7 +81,7 @@ Używać Oracle bazy danych usług w chmurze (autonomicznej bazy danych, RAC, Ex
 
 Wdrażanie aplikacji Oracle na platformie Azure jest oparty na modelu "bring your own license". Zakłada się, że są poprawnie licencjonowane oprogramowanie Oracle i mieć bieżącej umowy dotyczącej pomocy technicznej w miejscu z firmą Oracle. Oracle, ma gwarancję funkcji przeniesienia licencji w ze środowiska lokalnego do platformy Azure. Zobacz platformę Azure Oracle [— często zadawane pytania](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się więcej o wdrażaniu [obrazów maszyn wirtualnych Oracle](oracle-vm-solutions.md) w infrastrukturze platformy Azure.
 

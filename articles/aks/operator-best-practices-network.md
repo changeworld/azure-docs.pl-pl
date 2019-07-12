@@ -2,17 +2,17 @@
 title: Operator najlepsze rozwiązania — łączność sieciową w usłudze Azure Kubernetes usługi (AKS)
 description: Poznaj klastra operator najlepsze rozwiązania dotyczące zasobów sieci wirtualnej i połączeń w usłudze Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.author: iainfou
-ms.openlocfilehash: 2bdc18ba4dc77178d5fcc5d2ba6d89aa109d923c
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.author: mlearned
+ms.openlocfilehash: d1bc865b38b52c8a7c3ac6ec4dab6408a1d0430c
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "65192233"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614754"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące łączności sieciowej i zabezpieczeń w usłudze Azure Kubernetes Service (AKS)
 
@@ -32,8 +32,8 @@ Najlepsze rozwiązania dotyczące tej koncentruje się na łączności sieciowej
 
 Sieci wirtualne zapewniają podstawowej łączności dla węzłów AKS i klientom dostęp do aplikacji. Istnieją dwa różne sposoby wdrażania klastrów usługi AKS w sieciach wirtualnych:
 
-* **Sieć z wtyczki Kubenet** — platforma Azure zarządza zasobami sieci wirtualnej w klastrze jest wdrażana i używa [wtyczki kubenet] [ kubenet] wtyczka platformy Kubernetes.
-* **Sieć Azure CNI** — wdraża do istniejącej sieci wirtualnej i używa [wtyczki Azure Container Networking interfejsu (CNI)] [ cni-networking] wtyczka platformy Kubernetes. Zasobników otrzymują poszczególnych adresów IP, która może kierować do innych usług sieciowych lub zasobów lokalnych.
+* **Sieć z wtyczki Kubenet** — platforma Azure zarządza zasobami sieci wirtualnej w klastrze jest wdrażana i używa [wtyczki kubenet][kubenet] wtyczka platformy Kubernetes.
+* **Sieć Azure CNI** — wdraża do istniejącej sieci wirtualnej i używa [wtyczki Azure Container Networking interfejsu (CNI)][cni-networking] wtyczka platformy Kubernetes. Zasobników otrzymują poszczególnych adresów IP, która może kierować do innych usług sieciowych lub zasobów lokalnych.
 
 Container Networking interfejsu (CNI) jest protokołem neutralne, który pozwala wysyłać żądania do dostawcy sieci kontener środowiska uruchomieniowego. Wtyczki Azure CNI przypisywania adresów IP do zasobników i węzłów oraz udostępnia adres IP funkcji zarządzania (adresami IP IPAM) nawiązaniu połączenia z istniejącymi sieciami wirtualnymi platformy Azure. Każdy węzeł i zasobnika zasób otrzymuje adres IP w sieci wirtualnej platformy Azure, a nie dodatkowe routing jest potrzebne do komunikowania się z innych zasobów lub usług.
 
@@ -99,7 +99,7 @@ spec:
          servicePort: 80
 ```
 
-Kontroler danych przychodzących jest demona, który działa w węźle usługi AKS i oczekuje na przychodzące żądania. Następnie dystrybucji ruchu na podstawie reguł zdefiniowanych w zasobie danych przychodzących. Najbardziej typowe kontrolera danych przychodzących jest oparty na [NGINX]. AKS nie ogranicza możliwości do określonego kontrolera, aby można było używać innych kontrolerów takich jak [rozkład][contour], [HAProxy][haproxy], lub [ Traefik][traefik].
+Kontroler danych przychodzących jest demona, który działa w węźle usługi AKS i oczekuje na przychodzące żądania. Następnie dystrybucji ruchu na podstawie reguł zdefiniowanych w zasobie danych przychodzących. Najbardziej typowe kontrolera danych przychodzących jest oparty na [NGINX]. AKS nie ogranicza możliwości do określonego kontrolera, aby można było używać innych kontrolerów takich jak [rozkład][contour], [HAProxy][haproxy], lub [Traefik][traefik].
 
 Ruch przychodzący kontrolerów musi być zaplanowane w węźle systemu Linux. Węzły systemu Windows Server (obecnie dostępna w wersji zapoznawczej w usłudze AKS) nie należy uruchamiać kontrolera danych przychodzących. Użyj selektora węzła w manifeście YAML lub wdrożenia wykresu Helm, aby wskazać, zasób powinien być uruchomiony w węźle opartych na systemie Linux. Aby uzyskać więcej informacji, zobacz [selektorów należy używać węzła do kontroli gdzie zaplanowane zasobników w usłudze AKS][concepts-node-selectors].
 
@@ -108,17 +108,17 @@ Istnieje wiele scenariuszy dla danych przychodzących, w tym następujące przew
 * [Tworzenie kontrolera podstawowego transferu danych przychodzących za pomocą połączenia z siecią zewnętrzną][aks-ingress-basic]
 * [Tworzenie kontrolera danych przychodzących, korzystającą z sieci prywatne, wewnętrzne i adres IP][aks-ingress-internal]
 * [Tworzenie kontrolera transferu danych przychodzących, która korzysta z certyfikatów protokołu TLS][aks-ingress-own-tls]
-* Utwórz kontroler danych przychodzących, który używa umożliwia szyfrowanie, aby automatycznie wygenerować certyfikaty protokołu TLS [za pomocą dynamicznego publicznego adresu IP] [ aks-ingress-tls] lub [ze statycznym publicznym adresem IP][aks-ingress-static-tls]
+* Utwórz kontroler danych przychodzących, który używa umożliwia szyfrowanie, aby automatycznie wygenerować certyfikaty protokołu TLS [za pomocą dynamicznego publicznego adresu IP][aks-ingress-tls] or [with a static public IP address][aks-ingress-static-tls]
 
 ## <a name="secure-traffic-with-a-web-application-firewall-waf"></a>Bezpieczny ruch z zapory aplikacji sieci web (WAF)
 
-**Najważniejsze wskazówki** — w celu skanowania ruch przychodzący na wypadek potencjalnych ataków, takich jak korzystać z zapory aplikacji sieci web (WAF) [zapory aplikacji internetowych Barracuda dla platformy Azure] [ barracuda-waf] lub usługi Azure Application Gateway. Te bardziej zaawansowanych zasobów sieciowych również może kierować ruchem poza tylko połączeń HTTP i HTTPS lub podstawowe kończenia żądań SSL.
+**Najważniejsze wskazówki** — w celu skanowania ruch przychodzący na wypadek potencjalnych ataków, takich jak korzystać z zapory aplikacji sieci web (WAF) [zapory aplikacji internetowych Barracuda dla platformy Azure][barracuda-waf] lub usługi Azure Application Gateway. Te bardziej zaawansowanych zasobów sieciowych również może kierować ruchem poza tylko połączeń HTTP i HTTPS lub podstawowe kończenia żądań SSL.
 
 Kontroler danych przychodzących, która dystrybuuje ruch do usług i aplikacji jest zwykle zasobem platformy Kubernetes w klastrze AKS. Kontroler działa jako demon w węźle usługi AKS i zużywa niektóre węzła zasoby, takie jak procesor CPU, pamięci i przepustowość sieci. W dużych środowisk często chcesz odciążyć niektóre tego routingu ruchu lub zakończenia protokołu TLS do zasobu sieciowego poza klastrem usługi AKS. Ponadto chcesz przeprowadzić skanowanie ruch przychodzący na wypadek potencjalnych ataków.
 
 ![Zapory aplikacji sieci web (WAF), takie jak bramy aplikacji platformy Azure mogą chronić i dystrybucji ruchu do klastra usługi AKS](media/operator-best-practices-network/web-application-firewall-app-gateway.png)
 
-Zapora aplikacji sieci web (WAF) zapewnia dodatkową warstwę zabezpieczeń, filtrując ruch przychodzący. Otwórz sieci Web aplikacji Security Project (OWASP) zawiera zestaw reguł do obserwacji atakami, takimi jak wielu lokacji skryptów lub skażające pliku cookie. [Usługa Azure Application Gateway] [ app-gateway] (obecnie w wersji zapoznawczej w usłudze AKS) jest zapory aplikacji sieci Web, które można zintegrować z klastrami AKS, aby zapewnić te funkcje zabezpieczeń, zanim ruch trafia z klastrem AKS i aplikacjami. Inne rozwiązania innych firm również wykonywać te funkcje, dzięki temu można nadal używać istniejących inwestycji i doświadczenia w danego produktu.
+Zapora aplikacji sieci web (WAF) zapewnia dodatkową warstwę zabezpieczeń, filtrując ruch przychodzący. Otwórz sieci Web aplikacji Security Project (OWASP) zawiera zestaw reguł do obserwacji atakami, takimi jak wielu lokacji skryptów lub skażające pliku cookie. [Usługa Azure Application Gateway][app-gateway] (obecnie w wersji zapoznawczej w usłudze AKS) jest zapory aplikacji sieci Web, które można zintegrować z klastrami AKS, aby zapewnić te funkcje zabezpieczeń, zanim ruch trafia z klastrem AKS i aplikacjami. Inne rozwiązania innych firm również wykonywać te funkcje, dzięki temu można nadal używać istniejących inwestycji i doświadczenia w danego produktu.
 
 Zasobów obciążenia równoważenia lub ruch przychodzący w dalszym ciągu uruchamiać w klastrze usługi AKS w taki sposób, aby uściślić Dystrybucja ruchu. App Gateway mogą centralnie zarządzane jako kontroler danych przychodzących, podając definicję zasobu. Aby rozpocząć pracę, [utworzyć kontroler danych przychodzących z bram aplikacji][app-gateway-ingress].
 
@@ -158,7 +158,7 @@ Można wykonać większość operacji w usłudze AKS za pomocą narzędzia do za
 
 ![Łączenie z węzłami usługi AKS przy użyciu hostem bastionu lub przejść pole](media/operator-best-practices-network/connect-using-bastion-host-simplified.png)
 
-Sieć zarządzania hostem bastionu powinien zostać zabezpieczony, zbyt. Użyj [usługi Azure ExpressRoute] [ expressroute] lub [bramy sieci VPN] [ vpn-gateway] nawiązać połączenie z siecią lokalną i kontrolować dostęp przy użyciu zabezpieczeń sieci grupy.
+Sieć zarządzania hostem bastionu powinien zostać zabezpieczony, zbyt. Użyj [usługi Azure ExpressRoute][expressroute] or [VPN gateway][vpn-gateway] nawiązać połączenie z siecią lokalną i kontrolować dostęp przy użyciu sieciowych grup zabezpieczeń.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

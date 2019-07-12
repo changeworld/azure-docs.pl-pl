@@ -4,7 +4,7 @@ description: Jak zresetować hasło konta użytkownika lokalnego Windows, gdy ag
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: cf353dd3-89c9-47f6-a449-f874f0957013
 ms.service: virtual-machines-windows
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
-ms.openlocfilehash: 3c0152726aba115e1b370838308a7bf0af08cab7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4dc38714f4edb024255b4015cef54f26d5eef189
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64708128"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710652"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Resetowanie hasła lokalnego Windows maszyny wirtualnej platformy Azure w trybie offline
 Możesz zresetować lokalne hasło maszyny Wirtualnej na platformie Azure przy użyciu Windows [witryny Azure portal lub programu Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) pod warunkiem jest zainstalowany agent gościa platformy Azure. Ta metoda jest podstawowym sposobem, aby zresetować hasło dla maszyny Wirtualnej platformy Azure. Jeśli wystąpią problemy z powodu braku odpowiedzi agenta gościa platformy Azure lub niepowodzenia instalacji po przekazaniu obrazu niestandardowego, można ręcznie zresetować hasło Windows. W tym artykule opisano, jak zresetować hasło do konta lokalnego, dołączając dysk wirtualny źródłowego systemu operacyjnego do innej maszyny Wirtualnej. Kroki opisane w tym artykule nie dotyczą Windows kontrolerów domeny. 
@@ -161,6 +161,6 @@ Zawsze należy starać się zresetować hasło przy użyciu [witryny Azure porta
     * From %windir%\System32\GroupPolicy
       * Usuń gpt.ini (jeśli gpt.ini istniał wcześniej, a nazwa została zmieniona na gpt.ini.bak, zmiana nazwy pliku bak z powrotem do gpt.ini)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Jeśli nadal nie możesz połączyć przy użyciu pulpitu zdalnego, zobacz [RDP przewodnik rozwiązywania problemów](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). [Szczegółowe RDP przewodnik rozwiązywania problemów z](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) patrzy na rozwiązywanie problemów z metody zamiast określonych kroków. Możesz również [Otwórz żądanie pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) praktyczne pomocy.
 

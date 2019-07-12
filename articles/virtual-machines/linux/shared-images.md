@@ -4,7 +4,7 @@ description: W tym artykule dowiesz się, jak tworzenie udostępnionego obrazu m
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: axayjo
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,14 +14,15 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/06/2019
-ms.author: akjosh; cynthn
+ms.author: akjosh
+ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: bb6db6e5d5e33b7c7b5ba5a8711a06d6394b71f2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5001e6a58bb309ddf9446b1a56b31eb9f37a138d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66226044"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708894"
 ---
 # <a name="create-a-shared-image-gallery-with-the-azure-cli"></a>Utwórz galerię udostępnionego obrazu przy użyciu wiersza polecenia platformy Azure
 
@@ -62,7 +63,7 @@ Można również użyć określonej wersji za pomocą identyfikator wersji obraz
 
 [!INCLUDE [virtual-machines-common-shared-images-update-delete-cli](../../../includes/virtual-machines-common-shared-images-update-delete-cli.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 [Kreator obrazów platformy Azure (wersja zapoznawcza)](image-builder-overview.md) można zautomatyzować tworzenie wersji obrazu, nawet służy do aktualizacji i [tworzy nowej wersji obrazu z istniejącą wersję obrazu](image-builder-gallery-update-image-version.md). 
 
 Można również utworzyć zasoby udostępnione galerii obrazów za pomocą szablonów. Dostępnych jest kilka szablonów szybkiego startu platformy Azure: 

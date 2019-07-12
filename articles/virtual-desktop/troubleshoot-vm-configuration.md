@@ -4,15 +4,15 @@ description: Jak rozwiązać problemy podczas konfiguracji sesji i dzierżawy ho
 services: virtual-desktop
 author: ChJenk
 ms.service: virtual-desktop
-ms.topic: troubleshoot
-ms.date: 04/08/2019
+ms.topic: troubleshooting
+ms.date: 07/10/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 38d59fb20776470cb683f2a2146838bb217addf7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 96a9d8fc7495ea473b0a3250b34251afc5f30c13
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64928125"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786708"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Tworzenie dzierżawy i puli hosta
 
@@ -285,7 +285,19 @@ Jeśli system operacyjny Microsoft Windows 10, Kontynuuj z poniższymi instrukcj
 
 16. Gdy gotowe polecenia cmdlet uruchomione, ponowne uruchomienie maszyny Wirtualnej ze stosem nieprawidłowo side-by-side.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="remote-licensing-model-is-not-configured"></a>Nie skonfigurowano zdalnego modelu licencjonowania
+
+Jeśli logujesz się do wielu sesji systemu Windows 10 Enterprise przy użyciu konta administracyjnego można otrzymać powiadomienie, które mówi "trybu licencjonowania usług pulpitu zdalnego nie jest skonfigurowany, usług pulpitu zdalnego nie będzie działać w X dni. Na serwerze brokera połączeń użyj Menedżera serwera można określać trybu licencjonowania usług pulpitu zdalnego." Jeśli ten komunikat jest wyświetlany, oznacza to, należy ręcznie skonfigurować tryb licencjonowania **na użytkownika**.
+
+Aby ręcznie skonfigurować tryb licencjonowania:  
+
+1. Przejdź do usługi **Start menu** pola wyszukiwania, a następnie znajdź i Otwórz **gpedit.msc** na dostęp do lokalnego edytorze zasad grupy. 
+2. Przejdź do **konfiguracji komputera** > **Szablony administracyjne** > **składników Windows**  >   **Usługi pulpitu zdalnego** > **hosta sesji usług pulpitu zdalnego** > **licencjonowania**. 
+3. Wybierz **Ustaw tryb licencjonowania usług pulpitu zdalnego** i zmień go na **na użytkownika**.
+
+Firma Microsoft obecnie poszukujesz problemy limitu czasu powiadomienia i okres prolongaty i planowanie pozwalających im sprostać w przyszłej aktualizacji. 
+
+## <a name="next-steps"></a>Następne kroki
 
 - Aby uzyskać ogólne na temat rozwiązywania problemów ścieżki eskalacji i pulpitu wirtualnego Windows zobacz [Rozwiązywanie problemów — omówienie, opinie i pomoc techniczna](troubleshoot-set-up-overview.md).
 - Aby rozwiązywać problemy podczas tworzenia puli dzierżawy i hosta w środowisku Windows pulpitu wirtualnego, zobacz [dzierżawy i hostów puli tworzenia](troubleshoot-set-up-issues.md).

@@ -5,16 +5,16 @@ services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 10/17/2018
+ms.date: 07/11/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: a0043ca886bf6c92ab26d76b3678bf8a2764846a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a11e04a92375f5b52849257124344673301739e5
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60563685"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839149"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Szybki start: kierowanie zdarzeń magazynu obiektów blob do internetowego punktu końcowego za pomocą witryny Azure Portal
 
@@ -38,7 +38,7 @@ Po zakończeniu przekonasz się, że dane zdarzenia zostały wysłane do aplikac
 
    ![Wybieranie magazynu](./media/blob-event-quickstart-portal/create-storage.png)
 
-1. Aby zasubskrybować zdarzenia, należy utworzyć konto usługi Storage ogólnego przeznaczenia w wersji 2 lub konto usługi Blob Storage. Aby uzyskać więcej informacji, zobacz temat [Tworzenie konta](../storage/common/storage-quickstart-create-account.md).
+1. Aby zasubskrybować zdarzenia, należy utworzyć konto usługi Storage ogólnego przeznaczenia w wersji 2 lub konto usługi Blob Storage. Aby uzyskać więcej informacji, zobacz [Tworzenie konta magazynu](../storage/common/storage-quickstart-create-account.md).
 
    ![Kroki początkowe](./media/blob-event-quickstart-portal/provide-blob-values.png)
 
@@ -102,10 +102,10 @@ Zdarzenie magazynu Blob Storage jest wyzwalane przez przekazanie pliku. Plik nie
 
 1. Przejdź do pliku testowego i przekaż go.
 
-1. Zdarzenie zostało wyzwolone, a usługa Event Grid wysłała komunikat do punktu końcowego skonfigurowanego podczas subskrybowania. Wyświetl aplikację internetową i zwróć uwagę, że otrzymano zdarzenie utworzone przez obiekt blob. 
+1. Zdarzenie zostało wyzwolone, a usługa Event Grid wysłała komunikat do punktu końcowego skonfigurowanego podczas subskrybowania. Komunikat jest w formacie JSON i zawiera tablicę z jednego lub wielu zdarzeń. W poniższym przykładzie komunikat JSON zawiera tablicę, za pomocą jednego zdarzenia. Wyświetl aplikację internetową i zwróć uwagę, że otrzymano zdarzenie utworzone przez obiekt blob. 
 
    ```json
-   {
+   [{
     "topic": "/subscriptions/{subscription-id}/resourceGroups/eventgroup/providers/Microsoft.Storage/storageAccounts/demoblob0625",
     "subject": "/blobServices/default/containers/eventcontainer/blobs/testfile.txt",
     "eventType": "Microsoft.Storage.BlobCreated",
@@ -127,7 +127,7 @@ Zdarzenie magazynu Blob Storage jest wyzwalane przez przekazanie pliku. Plik nie
     },
     "dataVersion": "",
     "metadataVersion": "1"
-   }
+   }]
    ```
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
@@ -136,7 +136,7 @@ Jeśli zamierzasz kontynuować pracę z tym zdarzeniem, nie usuwaj zasobów utwo
 
 Wybierz grupę zasobów, a następnie wybierz pozycję **Usuń grupę zasobów**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Wiesz już, jak tworzyć tematy niestandardowe i subskrypcje zdarzeń. Dowiedz się więcej na temat tego, co może Ci ułatwić usługa Event Grid:
 

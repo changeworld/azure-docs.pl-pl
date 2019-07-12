@@ -10,13 +10,13 @@ ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 ms.date: 11/20/2018
-ms.author: mahender
-ms.openlocfilehash: 0942d5ba7b31ddb2c0dec5fe979f1331d1bf3bfd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mahender, yevbronsh
+ms.openlocfilehash: b18d5ba303d1cf7ab637638043f9e0727437c232
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66136971"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827861"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Jak używać zarządzanych tożsamości dla usługi App Service i Azure Functions
 
@@ -46,7 +46,7 @@ Aby skonfigurować tożsamość zarządzaną w portalu, musisz najpierw utworzy�
 
 3. Wybierz **tożsamości zarządzanej**.
 
-4. W ramach **przypisanej w systemie** kartę, Przełącz **stan** do **na**. Kliknij pozycję **Zapisz**.
+4. W ramach **przypisanej w systemie** kartę, Przełącz **stan** do **na**. Kliknij polecenie **Zapisz**.
 
 ![Tożsamość zarządzaną w usłudze App Service](media/app-service-managed-service-identity/msi-blade-system.png)
 
@@ -181,7 +181,7 @@ Najpierw musisz utworzyć zasób tożsamości przypisanych przez użytkownika.
 
 5. W ramach **użytkownik przypisany (wersja zapoznawcza)** kliknij pozycję **Dodaj**.
 
-6. Wyszukaj tożsamości, która została utworzona wcześniej i zaznacz go. Kliknij pozycję **Add** (Dodaj).
+6. Wyszukaj tożsamości, która została utworzona wcześniej i zaznacz go. Kliknij przycisk **Dodaj**.
 
 ![Tożsamość zarządzaną w usłudze App Service](media/app-service-managed-service-identity/msi-blade-user.png)
 
@@ -275,6 +275,34 @@ var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServi
 ```
 
 Aby dowiedzieć się więcej na temat Microsoft.Azure.Services.AppAuthentication i operacje, które udostępnia, zobacz [Odwołanie Microsoft.Azure.Services.AppAuthentication] i [usługi App Service i magazynu kluczy przy użyciu tożsamości usługi Zarządzanej platformy .NET Przykładowe](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
+
+
+### <a name="using-the-azure-sdk-for-java"></a>Przy użyciu zestawu Azure SDK dla języka Java
+
+Dla aplikacji w języku Java i funkcji jest najprostszym sposobem, aby pracować z tożsamości zarządzanej [zestawu Azure SDK dla języka Java](https://github.com/Azure/azure-sdk-for-java). W tej sekcji dowiesz się, jak rozpocząć pracę z biblioteką w kodzie.
+
+1. Dodaj odwołanie do [biblioteki zestawu SDK usługi Azure](https://mvnrepository.com/artifact/com.microsoft.azure/azure). W projektach narzędzia Maven, można dodać ten fragment kodu do `dependencies` części pliku POM projektu:
+
+```xml
+<dependency>
+    <groupId>com.microsoft.azure</groupId>
+    <artifactId>azure</artifactId>
+    <version>1.23.0</version>
+</dependency>
+```
+
+2. Użyj `AppServiceMSICredentials` obiektu dla uwierzytelniania. Ten przykład pokazuje, jak mechanizm ten może służyć do pracy z usługą Azure Key Vault:
+
+```java
+import com.microsoft.azure.AzureEnvironment;
+import com.microsoft.azure.management.Azure;
+import com.microsoft.azure.management.keyvault.Vault
+//...
+Azure azure = Azure.authenticate(new AppServiceMSICredentials(AzureEnvironment.AZURE))
+        .withSubscription(subscriptionId);
+Vault myKeyVault = azure.vaults().getByResourceGroup(resourceGroup, keyvaultName);
+
+```
 
 ### <a name="using-the-rest-protocol"></a>Za pośrednictwem protokołu REST
 

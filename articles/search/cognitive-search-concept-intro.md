@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8af927bee11d66c473707b603951fa693f6840e3
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 60a7a141cfcec3beced9e57baddebbc26e753141
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299032"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672158"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Co to jest "cognitive search" w usłudze Azure Search?
 
@@ -77,7 +77,7 @@ Indeksy są generowane na podstawie schematu indeksu, który definiuje pola atry
 
 ## <a name="key-features-and-concepts"></a>Kluczowe funkcje i pojęcia
 
-| Pojęcie | Opis| Linki |
+| Pojęcie | Opis| Łącza |
 |---------|------------|-------|
 | Skillset | Najwyższego poziomu o nazwie zasobu zawierającego zbiór umiejętności. Zestawu umiejętności jest wzbogacony potok. Jest wywoływana podczas indeksowania w indeksatorze. | [Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md) |
 | Umiejętności cognitive | Niepodzielne przekształcenie w wzbogacony potok. Często jest składnikiem, który wyodrębnia lub wnioskuje struktury i w związku z tym rozszerzają zrozumienie danych wejściowych. Prawie zawsze dane wyjściowe są oparte na tekście, a przetwarzanie jest przetwarzanie języka naturalnego i przetwarzanie obrazu, który wyodrębnia lub generuje tekstu z obrazów w danych wejściowych. Dane wyjściowe z umiejętności mogą być zamapowane do pola w indeksie lub używane jako dane wejściowe wzbogacania podrzędnego. Wstępnie zdefiniowane i udostępniane przez firmę Microsoft lub niestandardowe umiejętności: utworzonych i wdrożonych przez użytkownika. | [Wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md) |
@@ -101,7 +101,7 @@ Indeksy są generowane na podstawie schematu indeksu, który definiuje pola atry
 
 + [Przewodnik Szybki Start (portal)](cognitive-search-quickstart-blob.md)
 + [Samouczek (żądania HTTP)](cognitive-search-tutorial-blob.md)
-+ [Przykład umiejętności niestandardowe (C#)](cognitive-search-create-custom-skill-example.md)
++ [Przykład: Tworzenie niestandardowych umiejętności do wyszukiwania kognitywnego (C#)](cognitive-search-create-custom-skill-example.md)
 
 Firma Microsoft zaleca bezpłatna usługa dla celów szkoleniowych, ale należy pamiętać, że liczba bezpłatnych transakcji jest ograniczona do 20 dokumentów na dzień. Aby uruchomić Szybki Start i samouczek w ciągu jednego dnia, należy użyć mniejszy zestaw plików (10 dokumenty), tak, aby mieści się w obu ćwiczeniach.
 
@@ -140,7 +140,7 @@ Ten krok używa interfejsów API REST do tworzenia rozwiązań wyszukiwania kogn
 
 Aby uzyskać więcej informacji na temat określonego pytania lub problemy, zobacz [wskazówki dotyczące rozwiązywania problemów](cognitive-search-concept-troubleshooting.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 + [Dokumentacja wyszukiwania kognitywnego](cognitive-search-resources-documentation.md)
 + [Szybki start: Wypróbuj wyszukiwanie kognitywne w Przewodnik po portalu](cognitive-search-quickstart-blob.md)

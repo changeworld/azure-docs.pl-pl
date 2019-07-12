@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
-ms.openlocfilehash: 1bfc0be81d42e922c47755543fb65aa413ec73a9
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 6fbd20c201e1b141b7276e3283599b00cdefd118
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478760"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795298"
 ---
 # <a name="adding-custom-actions-to-azure-rest-api"></a>Dodawanie akcji niestandardowych do interfejsu API REST platformy Azure
 
@@ -134,7 +134,7 @@ az resource invoke-action --action {actionName} \
 
 Parametr | Wymagane | Opis
 ---|---|---
-action | *Tak* | Nazwa akcji zdefiniowane w **ResourceProvider**.
+Akcja | *Tak* | Nazwa akcji zdefiniowane w **ResourceProvider**.
 identyfikatory | *Tak* | Identyfikator zasobu **ResourceProvider**.
 Treść żądania | *Brak* | Treść żądania, który zostanie wysłany do **punktu końcowego**.
 
@@ -192,8 +192,9 @@ resourceIdentifier | *Tak* | Identyfikator zasobu **ResourceProvider**.
 apiVersion | *Tak* | Wersja interfejsu API środowiska uruchomieniowego zasobów. Zawsze należy "2018-09-01-preview".
 functionValues | *Brak* | Treść żądania, który zostanie wysłany do **punktu końcowego**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Omówienie usługi Azure Resource niestandardowych dostawców](./custom-providers-overview.md)
-- [Samouczek: Tworzenie niestandardowego dostawcy zasobów platformy Azure i wdrażanie zasobów niestandardowych](./create-custom-provider.md)
+- [Szybki start: Tworzenie niestandardowego dostawcy zasobów platformy Azure i wdrażanie zasobów niestandardowych](./create-custom-provider.md)
+- [Samouczek: Tworzenie akcji niestandardowych i zasobów na platformie Azure](./tutorial-custom-providers-101.md)
 - [Instrukcje: Dodawanie zasobów niestandardowych do interfejsu API REST platformy Azure](./custom-providers-resources-endpoint-how-to.md)

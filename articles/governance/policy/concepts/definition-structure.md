@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 398efd36e6c8d82a5090b7446c95abb2d1bfbca1
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 03c7be9112ed22bb43e259fa72581d382a276163
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67428756"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718182"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -105,7 +105,7 @@ Parametry działają tak samo, podczas tworzenia zasad. Jeśli dołączysz param
 Parametr ma następujące właściwości, które są używane w definicji zasad:
 
 - **name**: Nazwa parametru. Używane przez `parameters` funkcji wdrażania w ramach reguły zasad. Aby uzyskać więcej informacji, zobacz [przy użyciu wartości parametru](#using-a-parameter-value).
-- `type`: Określa, czy parametr **ciąg** lub **tablicy**.
+- `type`: Określa, czy parametr **ciąg**, **tablicy**, **obiektu**, **logiczna**, **całkowitą**, **float**, lub **daty/godziny**.
 - `metadata`: Definiuje właściwości podrzędnych głównie używana przez witryny Azure portal, aby wyświetlić informacje o przyjazny dla użytkownika:
   - `description`: Opis dotyczący przeznaczenia parametru. Może służyć do zapewnienia przykładowe dopuszczalne wartości.
   - `displayName`: Przyjazna nazwa wyświetlana w portalu dla parametru.
@@ -304,7 +304,7 @@ W poniższym przykładzie `concat` służy do tworzenia wyszukiwanie tag o nazwi
 }
 ```
 
-### <a name="value"></a>Wartość
+### <a name="value"></a>Value
 
 Warunki można również tworzone za pomocą **wartość**. **wartość** sprawdza warunki względem [parametry](#parameters), [obsługiwane funkcje szablonu](#policy-functions), albo literały.
 **wartość** jest powiązany z żadną obsługiwane [warunek](#conditions).

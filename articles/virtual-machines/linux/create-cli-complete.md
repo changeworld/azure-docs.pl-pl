@@ -4,7 +4,7 @@ description: Utwórz magazyn, maszyny Wirtualnej z systemem Linux, sieci wirtual
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 4ba4060b-ce95-4747-a735-1d7c68597a1a
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: eb4c5897cdadecd074c2764faceeed13f4c724c3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bcaa3ae105490fe4f38a9de47ba0450c33da5ee1
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60328655"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671633"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Utwórz pełną maszyny wirtualnej systemu Linux przy użyciu wiersza polecenia platformy Azure
 Aby szybko utworzyć maszynę wirtualną (VM) na platformie Azure, można użyć jednego polecenia wiersza polecenia platformy Azure, która używa domyślnych wartości, aby utworzyć wszystkie wymagane zasoby pomocnicze. Zasoby, takie jak sieć wirtualną, publiczny adres IP i reguły sieciowej grupy zabezpieczeń są tworzone automatycznie. Aby uzyskać większą kontrolę środowiska w środowisku produkcyjnym należy użyć, możesz utworzyć te zasoby, które wcześniej i następnie dodać maszyny wirtualne do nich. Ten artykuł przeprowadzi Cię przez tworzenie maszyny Wirtualnej, a każdy z pomocnicze zasoby pojedynczo.

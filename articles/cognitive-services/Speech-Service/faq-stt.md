@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: 73e53e47576b0697c0d09b386bb3e830d976dd04
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: a437927f6ad43f4c3a90433faa5b9fa6f964aa5c
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606660"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839229"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Zamiana mowy na tekst — często zadawane pytania
 
@@ -83,7 +83,12 @@ Skontaktuj się z pomocą [obsługa mowy](mailto:speechsupport@microsoft.com?sub
 
 **Odp.:** Interfejs API REST ogranicza żądania do 25 na 5 sekund. Szczegółowe informacje można znaleźć w naszych stron [zamiana mowy na tekst](speech-to-text.md).
 
-Jeśli masz więcej prywatności, które uniemożliwiają za pomocą usługa custom Speech service, skontaktuj się z jednego z kanałów pomocy technicznej.
+**Pyt.: Jak jest naliczana opłata dla audio dwukanałowy?**
+
+**Odp.:** Jeśli prześlesz oddzielnie poszczególnych kanałów (poszczególnych kanałów w jej własnym pliku), Opłata zostanie naliczona na czas trwania każdego pliku. Jeśli prześlesz pojedynczy plik z poszczególnych kanałów multiplexed ze sobą, następnie opłata wyniesie na czas trwania pojedynczy plik.
+
+> [!IMPORTANT]
+> Jeśli masz więcej prywatności, które uniemożliwiają za pomocą usługa custom Speech service, skontaktuj się z jednego z kanałów pomocy technicznej.
 
 ## <a name="importing-data"></a>Importowanie danych
 
@@ -149,7 +154,7 @@ Jeśli masz więcej prywatności, które uniemożliwiają za pomocą usługa cus
 
 **Odp.:** Przekazywanie listę słów, które spowoduje to dodanie słowa do słownictwa, ale go nie będzie uczyć system jak wyrazy są zwykle używane. Dostarczając pełnej lub częściowej wypowiedzi (zdań lub fraz rzeczy, które użytkownicy mogą powiedzieć), model języka informacji można znaleźć nowych słów i sposobu ich używania. Model języka niestandardowego jest dobra, nie tylko na dodawanie nowych słów w systemie, ale również dostosowywania prawdopodobieństwo znanych wyrazy dla aplikacji. Zapewnienie pełnej wypowiedzi pomaga systemu, Dowiedz się, lepiej. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Rozwiązywanie problemów](troubleshooting.md)
 * [Informacje o wersji](releasenotes.md)

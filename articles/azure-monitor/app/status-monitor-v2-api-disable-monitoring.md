@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 201c5cc251896efae6b9f4639818471c0f011afe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 98171692284f5f28fb189e2658d207fb80d428ba
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66514406"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807146"
 ---
-# <a name="status-monitor-v2-api-disable-applicationinsightsmonitoring-v021-alpha"></a>Interfejs API w wersji 2 Monitora stanu: Disable-ApplicationInsightsMonitoring (v0.2.1 alfa)
+# <a name="status-monitor-v2-api-disable-applicationinsightsmonitoring-v040-alpha"></a>Interfejs API w wersji 2 Monitora stanu: Disable-ApplicationInsightsMonitoring (v0.4.0-alpha)
 
 W tym artykule opisano polecenia cmdlet, które jest członkiem [modułu Az.ApplicationMonitor PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
@@ -47,7 +47,7 @@ PS C:\> Disable-ApplicationInsightsMonitoring
 ### <a name="-verbose"></a>-Verbose
 **Typowy parametr.** Aby wyświetlić szczegółowe dzienniki, należy użyć tego przełącznika.
 
-## <a name="output"></a>Dane wyjściowe
+## <a name="output"></a>Output
 
 
 #### <a name="example-output-from-successfully-disabling-monitoring"></a>Przykładowe dane wyjściowe z pomyślnie wyłączanie monitorowania

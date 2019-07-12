@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82e6cbcd01c87ddffb7eac8d0ea0faef85f41a13
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b7484b627d3bc3f26fa01d4c38ee96047c70d007
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66254008"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785484"
 ---
 # <a name="web-app-that-signs-in-users---code-configuration"></a>Aplikacja sieci Web przez logowania użytkowników — Konfiguracja kodu
 
@@ -36,6 +36,8 @@ Dostępne są następujące biblioteki, umożliwia ochronę aplikacji sieci Web 
 | ![.NET](media/sample-v2-code/logo_net.png) | [Tożsamość rozszerzeń modelu dla platformy .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Oprogramowanie Microsoft Identity Extensions dla platformy .NET jest używana bezpośrednio przez platformę ASP.NET i ASP.NET Core, i proponuje zbiór bibliotek DLL, uruchamiania na .NET Framework i .NET Core. Z aplikacji sieci Web Core ASP.NET/ASP.NET, można kontrolować za pomocą tokenu weryfikacji **TokenValidationParameters** klasy (w szczególności w niektórych przypadkach niezależny dostawca oprogramowania) |
 
 ## <a name="aspnet-core-configuration"></a>Konfiguracja platformy ASP.NET Core
+
+Fragmenty kodu, w tym artykule i poniżej są wyodrębniane z [aplikacji sieci Web platformy ASP.NET Core przyrostowe wirusowej rozdziale samouczków, 1](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg). Można odwoływać się do tego samouczka, aby uzyskać szczegółowe informacje z pełną implementację.
 
 ### <a name="application-configuration-files"></a>Pliki konfiguracyjne aplikacji
 
@@ -186,7 +188,7 @@ Kod związane z uwierzytelnianiem w aplikacji sieci Web platformy ASP.NET / inte
  }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Zaloguj się i wylogowywania](scenario-web-app-sign-user-sign-in.md)

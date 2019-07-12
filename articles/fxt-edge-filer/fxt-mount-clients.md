@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: b48d8d74843947c3e40dc80234560b0147be6eea
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 5471bf4041275d5988414def99dd2130f51fbb80
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542967"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67828032"
 ---
 # <a name="tutorial-mount-the-cluster"></a>Samouczek: Zainstaluj klaster
 
@@ -43,7 +43,7 @@ Aby uzyskać informacje dotyczące działania okrężnego DNS równoważenia obc
 
 Prostszą metodę niż w przypadku małych instalacji jest używanie skryptu do przypisywania adresów IP w całym zakresie w momencie instalacji klienta. 
 
-Inne metody równoważenia obciążenia może być odpowiednie dla dużych lub złożonych systemów. Zapoznaj się z przedstawicielem handlowym firmy Microsoft lub Otwórz żądanie pomocy technicznej w celu uzyskania pomocy. (Równoważenie obciążenia azure jest obecnie *nieobsługiwane* z filtr Edge FXT platformy Azure.)
+Inne metody równoważenia obciążenia może być odpowiednie dla dużych lub złożonych systemów. Zapoznaj się z Microsoft reprezentatywny lub Otwórz [żądania pomocy technicznej](fxt-support-ticket.md) Aby uzyskać pomoc. (Równoważenie obciążenia azure jest obecnie *nieobsługiwane* z filtr Edge FXT platformy Azure.)
 
 ## <a name="create-the-mount-command"></a>Utwórz polecenie instalacji 
 
@@ -104,7 +104,7 @@ W celu zapewnienia instalacji klienta bezproblemowe, należy przekazać te ustaw
 --- | --- 
 ``nointr``            | Jeśli klienci korzystają z starszych jądra systemu operacyjnego (przed kwietnia 2008), które obsługują tę opcję, można go użyć. Opcja "Grupa" jest ustawieniem domyślnym.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Po zainstalowano klientów, można przetestować przepływ pracy i rozpoczynanie pracy z klastrem.
 

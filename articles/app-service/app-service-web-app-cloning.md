@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/14/2016
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 907816d4f44a953ae338f6ca505b8fb3e048234e
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: d31a6ee13965aa326ab8a71b5b5435025bc26057
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329647"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705727"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>Usługa Azure App Service aplikacja klonowania, przy użyciu programu PowerShell
 
@@ -130,8 +130,9 @@ Poniżej przedstawiono znane ograniczenia dotyczące klonowania aplikacji:
 * Porada reguły nie są klonowane.
 * Zawartość bazy danych nie są klonowane.
 * Wychodzące adresy IP zmienia się, gdy klonowania na jednostkę skalowania innego
+* Nie są dostępne dla aplikacji systemu Linux
 
-### <a name="references"></a>Dokumentacja
+### <a name="references"></a>Odwołania
 * [Klonowanie w usłudze App Service](app-service-web-app-cloning.md)
 * [Tworzenie kopii zapasowych aplikacji w usłudze Azure App Service](manage-backup.md)
 * [Pomoc techniczna platformy Azure Resource Manager dla usługi Azure Traffic Manager w wersji zapoznawczej](../traffic-manager/traffic-manager-powershell-arm.md)

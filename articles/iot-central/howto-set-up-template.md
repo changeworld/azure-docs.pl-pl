@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 7fb0fba519a7833ac318c713dc9eb3c6ac7f8b5b
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: d27fd9460685c08a2b13936415935f5aaf893797
+ms.sourcegitcommit: dda9fc615db84e6849963b20e1dce74c9fe51821
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509551"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67622408"
 ---
 # <a name="set-up-a-device-template"></a>Konfigurowanie szablonu urządzenia
 
@@ -150,7 +150,7 @@ assetloc: {
 
 ## <a name="settings"></a>Ustawienia
 
-Ustawienia określają urządzenia. Umożliwiają one operatorom Podaj dane wejściowe do urządzenia. Wiele ustawień można dodać do szablonu urządzenia, które są wyświetlane jako kafelki na **ustawienia** kartę dla operatorów do użycia. Można dodawać wiele różnych ustawień: liczba, tekst, Data, przełącznika, listy wyboru i Etykieta sekcji.
+Ustawienia określają urządzenia. Umożliwiają one operatorom Podaj dane wejściowe do urządzenia. Wiele ustawień można dodać do szablonu urządzenia, które są wyświetlane jako kafelki na **ustawienia** kartę dla operatorów do użycia. Można dodawać wiele różnych ustawień: liczba, tekst, Data, przełącz i Etykieta sekcji.
 
 Ustawienia mogą być w jednym z trzech stanów. Urządzenie raportuje tych stanów.
 
@@ -260,7 +260,7 @@ Na przykład można dodać nowego **Echo** polecenia, wybierając **polecenia** 
 
 | Nazwa wyświetlana  | Nazwa pola | Domyślny limit czasu | Typ danych |
 | --------------| -----------|---------------- | --------- |
-| Polecenie echo  | echo       |  30             | tekst      |
+| Polecenie echo  | echo       |  30             | text      |
 
 !["Configure polecenia" formularza przy użyciu szczegółów echo](./media/howto-set-up-template/commandsecho1.png)
 

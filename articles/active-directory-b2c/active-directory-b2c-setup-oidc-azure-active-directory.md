@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie logowania dla organizacji usługi Azure Active Directory — Azure Active Directory B2C | Dokumentacja firmy Microsoft
+title: Konfigurowanie logowania dla organizacji usługi Azure Active Directory — Azure Active Directory B2C
 description: Konfigurowanie logowania dla konkretnej organizacji usługi Azure Active Directory w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/14/2018
+ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 28dbf0382ac151857e72d4bb59e207f07c8ad3f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b867a7f9ffeab3d243c8c094830aa0984cffd04a
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508420"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654203"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Konfigurowanie logowania dla konkretnej organizacji usługi Azure Active Directory w usłudze Azure Active Directory B2C
 
@@ -37,7 +37,7 @@ Aby włączyć logowania dla użytkowników z określonym organizacji usługi Az
 7. Dla **identyfikator URI przekierowania**, zaakceptuj wartość **Web**, a następnie wprowadź następujący adres URL w małych liter, gdzie `your-B2C-tenant-name` jest zastępowana nazwą dzierżawy usługi Azure AD B2C. Na przykład `https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/oauth2/authresp`:
 
     ```
-    https://your--B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
+    https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
     ```
 
     Wszystkie adresy URL powinny teraz być za pomocą [z usługi b2clogin.com](b2clogin.md).
@@ -63,10 +63,10 @@ Aby włączyć logowania dla użytkowników z określonym organizacji usługi Az
     ```
 
 8. Dla **identyfikator klienta**, wprowadź identyfikator aplikacji, które wcześniej zapisaną i **klucz tajny klienta**, wprowadź klucz tajny klienta, który wcześniej zapisane.
-9. Opcjonalnie wprowadź wartość dla **Domain_hint**. Na przykład `ContosoAD`. Jest to wartość do wykorzystania przy odwoływaniu się do tego dostawcy tożsamości za pomocą *domain_hint* w żądaniu. 
+9. Opcjonalnie wprowadź wartość dla **Domain_hint**. Na przykład `ContosoAD`. Jest to wartość do wykorzystania przy odwoływaniu się do tego dostawcy tożsamości za pomocą *domain_hint* w żądaniu.
 10. Kliknij przycisk **OK**.
 11. Wybierz **Mapowanie oświadczeń tego dostawcy tożsamości** i ustaw następujące oświadczeń:
-    
+
     - Aby uzyskać **identyfikator użytkownika**, wprowadź `oid`.
     - Aby uzyskać **nazwę wyświetlaną**, wprowadź `name`.
     - Aby uzyskać **imię**, wprowadź `given_name`.

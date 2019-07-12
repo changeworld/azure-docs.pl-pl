@@ -13,18 +13,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
-ms.author: glenga;msangapu;david.ebbo;suwatch;pbatum;naren.soni;
+ms.author: glenga
+ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 0f2053e978b7c890f4e175515ed54f69694950c6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8f4689e7d8d5af1aba2f31aac0359494a3a259f5
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60833584"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67613377"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Uruchamianie zadań w tle za pomocą zadań Webjob w usłudze Azure App Service
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Zadania Webjob są funkcją [usługi Azure App Service](https://docs.microsoft.com/azure/app-service/) , pozwala na uruchamianie programu lub skryptu w tym samym kontekście jako aplikację sieci web, aplikacji mobilnej lub aplikacji interfejsu API. Brak bez dodatkowych kosztów korzystania z zadań WebJobs.
 
 > [!IMPORTANT]

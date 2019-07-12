@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 6b16b6c4de8c8d2d7a821dd476f07c8ab1135408
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f88d83a851ad878ac9ee9b0195816d2ca35e4c13
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60487271"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839371"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Zestawy danych w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
@@ -33,7 +33,7 @@ W tym artykule opisano, jakie zestawy danych są, jak są one definiowane w form
 > [!NOTE]
 > Jeśli jesteś nowym użytkownikiem usługi Data Factory, zobacz [wprowadzenie do usługi Azure Data Factory](data-factory-introduction.md) omówienie. Jeśli nie masz zdobycie praktycznego doświadczenia z tworzenia fabryk danych, można uzyskać lepsze zrozumienie, zapoznając się [samouczkiem dotyczącym przekształcania danych](data-factory-build-your-first-pipeline.md) i [samouczek przenoszenia danych](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Fabryka danych może obejmować jeden lub wiele potoków. A **potoku** jest logicznym grupowaniem **działania** wspólnie wykonują zadanie. Działania w potoku definiują akcje do wykonania na danych. Może na przykład użyć działania kopiowania, aby skopiować dane z lokalnego programu SQL Server do usługi Azure Blob storage. Następnie należy użyć działania programu Hive, które uruchamia skrypt Hive w klastrze usługi HDInsight platformy Azure do przetwarzania danych z magazynu obiektów Blob w celu wygenerowania danych wyjściowych. Może na koniec użyj drugiego działania kopiowania, aby skopiować dane wyjściowe do usługi Azure SQL Data Warehouse, na podstawie której raportowania dotyczącego rozwiązania analizy biznesowej (BI). Aby uzyskać więcej informacji na temat potoków i działań, zobacz [potokami i działaniami w usłudze Azure Data Factory](data-factory-create-pipelines.md).
 
 Działanie może zająć zero lub więcej danych wejściowych **zestawów danych**i tworzące co najmniej jeden wyjściowe zestawy danych. Wejściowy zestaw danych reprezentuje dane wejściowe dla działania w potoku i wyjściowy zestaw danych reprezentuje dane wyjściowe dla działania. Zestawy danych identyfikują dane w różnych magazynach danych, takich jak tabele, pliki, foldery i dokumenty. Na przykład zestaw danych usługi Azure Blob Określa kontener obiektów blob i folder w usłudze Blob storage, z których potok ma odczytywać dane.
@@ -79,14 +79,14 @@ Zestaw danych w usłudze Data Factory jest zdefiniowany w formacie JSON:
 
 W poniższej tabeli opisano właściwości w powyższy kod JSON:
 
-| Właściwość | Opis | Wymagane | Domyślne |
+| Właściwość | Opis | Wymagane | Domyślny |
 | --- | --- | --- | --- |
-| name |Nazwa zestawu danych. Zobacz [usługi Azure Data Factory — reguły nazewnictwa](data-factory-naming-rules.md) reguły nazewnictwa. |Tak |Nie dotyczy |
+| name |Nazwa zestawu danych. Zobacz [usługi Azure Data Factory — reguły nazewnictwa](data-factory-naming-rules.md) reguły nazewnictwa. |Yes |Nie dotyczy |
 | type |Typ zestawu danych. Określ jeden z typów obsługiwanych przez usługę Data Factory (na przykład: AzureBlob, AzureSqlTable). <br/><br/>Aby uzyskać więcej informacji, zobacz [typ zestawu danych](#Type). |Yes |Nie dotyczy |
 | structure |Schemat zestawu danych.<br/><br/>Aby uzyskać więcej informacji, zobacz [struktury zestawu danych](#Structure). |Nie |Nie dotyczy |
-| typeProperties | Właściwości typu są różne dla każdego typu (na przykład: Usługa Azure Blob, tabela Azure SQL). Szczegółowe informacje na temat obsługiwanych typów i ich właściwości, [typ zestawu danych](#Type). |Yes |Nie dotyczy |
+| typeProperties | Właściwości typu są różne dla każdego typu (na przykład: Usługa Azure Blob, tabela Azure SQL). Szczegółowe informacje na temat obsługiwanych typów i ich właściwości, [typ zestawu danych](#Type). |Tak |Nie dotyczy |
 | external | Flagę logiczną, aby określić, czy zestaw danych jest jawnie generowany przez potok usługi data factory, czy nie. Jeśli wejściowy zestaw danych działania nie jest generowany przez bieżącego potoku, należy ustawić tę flagę na wartość true. Tej flagi należy ustawić na wartość true dla wejściowego zestawu danych pierwszego działania w potoku.  |Nie |false |
-| availability | Definiuje okno przetwarzania (na przykład co godzinę lub codziennie) lub model tworzenia wycinków w środowisku produkcyjnym zestaw danych. Każda jednostka danych używane i generowane przez uruchomienia działania jest nazywany wycinka danych. Jeśli dostępnością wyjściowego zestawu danych jest ustawiony na codziennie (częstotliwość — dzień, interval — 1), wycinek jest generowany codziennie. <br/><br/>Aby uzyskać szczegółowe informacje Zobacz sekcję dotyczącą dostępności zestawu danych. <br/><br/>Szczegółowe informacje na temat zestawu danych model tworzenia wycinków, [planowanie i wykonywanie](data-factory-scheduling-and-execution.md) artykułu. |Yes |Nie dotyczy |
+| availability | Definiuje okno przetwarzania (na przykład co godzinę lub codziennie) lub model tworzenia wycinków w środowisku produkcyjnym zestaw danych. Każda jednostka danych używane i generowane przez uruchomienia działania jest nazywany wycinka danych. Jeśli dostępnością wyjściowego zestawu danych jest ustawiony na codziennie (częstotliwość — dzień, interval — 1), wycinek jest generowany codziennie. <br/><br/>Aby uzyskać szczegółowe informacje Zobacz sekcję dotyczącą dostępności zestawu danych. <br/><br/>Szczegółowe informacje na temat zestawu danych model tworzenia wycinków, [planowanie i wykonywanie](data-factory-scheduling-and-execution.md) artykułu. |Tak |Nie dotyczy |
 | policy |Definiuje kryteria lub warunek, który należy spełnić wycinków zestawu danych. <br/><br/>Aby uzyskać więcej informacji, zobacz [zestawie danych zasad](#Policy) sekcji. |Nie |Nie dotyczy |
 
 ## <a name="dataset-example"></a>Przykładowy zestaw danych
@@ -233,10 +233,10 @@ Wyjściowy zestaw danych jest generowany co godzinę w ramach potoku godziny roz
 
 W poniższej tabeli opisano właściwości, które można użyć w sekcji dostępności:
 
-| Właściwość | Opis | Wymagane | Domyślne |
+| Właściwość | Opis | Wymagane | Domyślny |
 | --- | --- | --- | --- |
 | frequency |Określa jednostkę czasu dla trybu produkcyjnego wycinek zestawu danych.<br/><br/><b>Obsługiwana częstotliwość</b>: Minuty, godziny, dnia, tygodnia, miesiąca |Tak |Nie dotyczy |
-| interval |Określa mnożnik częstotliwości.<br/><br/>"Interwał częstotliwości x" Określa, jak często wycinek jest generowany. Na przykład, jeśli potrzebujesz zestawu danych można podzielić w systemie godzinowym, należy ustawić <b>częstotliwość</b> do <b>godzinę</b>, i <b>interwał</b> do <b>1</b>.<br/><br/>Należy pamiętać, że jeśli określisz **częstotliwość** jako **minutę**, należy ustawić interwał nie może być mniej niż 15. |Yes |Nie dotyczy |
+| interval |Określa mnożnik częstotliwości.<br/><br/>"Interwał częstotliwości x" Określa, jak często wycinek jest generowany. Na przykład, jeśli potrzebujesz zestawu danych można podzielić w systemie godzinowym, należy ustawić <b>częstotliwość</b> do <b>godzinę</b>, i <b>interwał</b> do <b>1</b>.<br/><br/>Należy pamiętać, że jeśli określisz **częstotliwość** jako **minutę**, należy ustawić interwał nie może być mniej niż 15. |Tak |Nie dotyczy |
 | style |Określa, czy wycinek powinny być tworzone na początku lub końcu interwału.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>Jeśli **częstotliwość** ustawiono **miesiąca**, i **styl** jest ustawiona na **EndOfInterval**, wycinek jest generowany na ostatni dzień miesiąca. Jeśli **styl** ustawiono **StartOfInterval**, wycinek jest generowany pierwszego dnia miesiąca.<br/><br/>Jeśli **częstotliwość** jest ustawiona na **dzień**, i **styl** ustawiono **EndOfInterval**, wycinek jest generowany w ciągu ostatniej godziny dnia.<br/><br/>Jeśli **częstotliwość** ustawiono **godzinę**, i **styl** jest ustawiona na **EndOfInterval**, wycinek jest generowany na koniec godziny. Na przykład dla wycinka okres 13: 00 - 14: 00, wycinek jest generowany w 14: 00. |Nie |EndOfInterval |
 | anchorDateTime |Definiuje położenie bezwzględne w czasie używanych przez harmonogram do obliczenia granice wycinek zestawu danych. <br/><br/>Należy pamiętać, że jeśli ta właściwość ma części daty, które są bardziej szczegółowe niż określoną częstotliwością, części bardziej szczegółowe są ignorowane. Na przykład jeśli **interwał** jest **co godzinę** (frequency: hour, interval: 1), a **anchorDateTime** zawiera **minuty i sekundy**, a następnie minuty i sekundy części **anchorDateTime** są ignorowane. |Nie |01/01/0001 |
 | offset |Zakres czasu za pomocą którego przesunięte początek i koniec okresu wszystkich wycinków zestawu danych. <br/><br/>Należy pamiętać, że jeśli oba **anchorDateTime** i **przesunięcie** są określone, wynik jest połączone shift. |Nie |Nie dotyczy |
@@ -280,7 +280,7 @@ Poniższy zestaw danych jest co miesiąc i jest generowany na 3 każdego miesią
 **Zasad** sekcji w definicji zestawu danych definiuje kryteria lub warunek, który należy spełnić wycinków zestawu danych.
 
 ### <a name="validation-policies"></a>Sprawdzanie poprawności zasad
-| Nazwa zasad | Opis | Dotyczy | Wymagane | Domyślne |
+| Nazwa zasad | Opis | Dotyczy | Wymagane | Domyślny |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |Sprawdza, czy dane w **usługi Azure Blob storage** spełnia wymagania minimalny rozmiar (w megabajtach). |Azure Blob Storage |Nie |Nie dotyczy |
 | minimumRows |Sprawdza, czy dane w **bazy danych Azure SQL** lub **tabeli platformy Azure** zawiera minimalną liczbę wierszy. |<ul><li>Baza danych Azure SQL Database</li><li>Tabela platformy Azure</li></ul> |Nie |Nie dotyczy |
@@ -328,7 +328,6 @@ Chyba, że zestaw danych jest generowany przez usługę Data Factory, powinien b
 Zestawy danych można utworzyć przy użyciu jednej z następujących narzędzi lub zestawów SDK:
 
 - Kreator kopiowania
-- Azure Portal
 - Visual Studio
 - PowerShell
 - Szablon usługi Azure Resource Manager
@@ -444,6 +443,6 @@ Możesz utworzyć zestawy danych, które są ograniczone do potoku przy użyciu 
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - Aby uzyskać więcej informacji na temat potoków, zobacz [tworzenie potoków](data-factory-create-pipelines.md).
 - Aby uzyskać więcej informacji na temat sposobu planowania i wykonywania potoków, zobacz [planowanie i wykonywanie w usłudze Azure Data Factory](data-factory-scheduling-and-execution.md).

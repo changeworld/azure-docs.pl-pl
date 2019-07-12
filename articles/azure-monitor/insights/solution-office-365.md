@@ -6,18 +6,18 @@ documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: ''
-ms.service: operations-management-suite
+ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: bwren
-ms.openlocfilehash: 34c7ecbf235bed838af9ed2f848ca492916583f6
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 3f4b0ad8b7aad01472a76db67f2c07e03e978e41
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514214"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673040"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Rozwiązanie do zarządzania usługi Office 365 na platformie Azure (wersja zapoznawcza)
 
@@ -101,7 +101,7 @@ Pierwszym krokiem jest do tworzenia aplikacji w usłudze Azure Active Directory,
     ![Ustawienia wielodostępnej](media/solution-office-365/settings-multitenant.png)
 
 1. Wybierz **wymagane uprawnienia** w **ustawienia** menu, a następnie kliknij przycisk **Dodaj**.
-1. Kliknij przycisk **wybierz interfejs API** i następnie **interfejsów API zarządzania usługi Office 365**. Kliknij przycisk **interfejsów API zarządzania usługi Office 365**. Kliknij pozycję **Wybierz**.
+1. Kliknij przycisk **wybierz interfejs API** i następnie **interfejsów API zarządzania usługi Office 365**. Kliknij przycisk **interfejsów API zarządzania usługi Office 365**. Kliknij przycisk **wybierz**.
 
     ![Wybieranie interfejsu API](media/solution-office-365/select-api.png)
 
@@ -525,7 +525,7 @@ Na pulpicie nawigacyjnym znajdują się kolumny wymienione w poniższej tabeli. 
 |:--|:--|
 | Operacje | Zawiera informacje dotyczące aktywnych użytkowników z wszystkich monitorowanych subskrypcji usługi Office 365. Można również wyświetlić liczbę działań, które zdarzają się wraz z upływem czasu.
 | Exchange | Pokazuje podział działania serwera Exchange, takie jak uprawnienia Dodaj skrzynkę pocztową lub skrzynki pocztowej Ustaw. |
-| Sharepoint | Pokazuje najważniejszych działań, że użytkownicy wykonać na dokumentów programu SharePoint. Podczas przechodzenia do szczegółów z tego kafelka na stronie wyszukiwania znajdują się szczegółowe informacje o tych działań, takich jak dokument docelowy i lokalizację tego działania. Na przykład w przypadku zdarzenia dostępu do pliku będzie mógł wyświetlić dokument, który jest dostępny, jego nazwa skojarzonego konta i adres IP. |
+| Program SharePoint | Pokazuje najważniejszych działań, że użytkownicy wykonać na dokumentów programu SharePoint. Podczas przechodzenia do szczegółów z tego kafelka na stronie wyszukiwania znajdują się szczegółowe informacje o tych działań, takich jak dokument docelowy i lokalizację tego działania. Na przykład w przypadku zdarzenia dostępu do pliku będzie mógł wyświetlić dokument, który jest dostępny, jego nazwa skojarzonego konta i adres IP. |
 | Usługa Azure Active Directory | Obejmuje działania użytkowników najważniejsze, takich jak zresetować hasło użytkownika i prób logowania. Podczas przechodzenia do szczegółów można wyświetlić szczegóły tych działań, takich jak stan wyniku. Najczęściej jest to przydatne, jeśli chcesz monitorować podejrzanych działań w usłudze Azure Active Directory. |
 
 
@@ -541,16 +541,16 @@ Następujące właściwości są wspólne dla wszystkich rekordów w usłudze Of
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Typ | *OfficeActivity* |
+| Type | *OfficeActivity* |
 | ClientIP | Adres IP urządzenia, które było używane podczas zarejestrowania działania. Adres IP jest wyświetlany w formacie adresu IPv4 lub IPv6. |
-| OfficeWorkload | Usługa Office 365, która rekord, który odwołuje się do.<br><br>AzureActiveDirectory<br>Exchange<br>Sharepoint|
+| OfficeWorkload | Usługa Office 365, która rekord, który odwołuje się do.<br><br>AzureActiveDirectory<br>Exchange<br>Program SharePoint|
 | Operacja | Nazwa działania użytkownika lub administratora.  |
 | Identyfikatora organizacji | Identyfikator GUID dzierżawy usługi Office 365 w Twojej organizacji. Tę wartość, zawsze będzie taka sama dla Twojej organizacji, niezależnie od usługi Office 365, w której występuje. |
 | RecordType | Typ operacji wykonywanej. |
 | ResultStatus | Wskazuje, czy akcja (określona we właściwości Operation) zakończyła się powodzeniem. Możliwe wartości to Succeeded, częściowe powodzenie lub niepowodzenie. Wartość dla działania administracyjnego programu Exchange, ma wartość PRAWDA lub FAŁSZ. |
 | UserId | Nazwa UPN (główna nazwa użytkownika) użytkownika, który wykonał operację powodującą zarejestrowanie rekordu na przykład my_name@my_domain_name. Należy pamiętać, że rekordy działań wykonywanych przez konta systemowe (takie jak SHAREPOINT\system lub Zarządzanie NT\System) dostępne są również. | 
 | UserKey | Alternatywnego Identyfikatora użytkownika zidentyfikowanego we właściwości identyfikatora użytkownika.  Na przykład właściwość ta jest wypełniana passport Unikatowy identyfikator (PUID) zdarzenia, wykonywane przez użytkowników w programie SharePoint, usłudze OneDrive dla firm i programem Exchange. Ta właściwość może również określić tę samą wartość jako właściwość identyfikatora użytkownika dla zdarzenia zachodzące w innych usługach i zdarzeniach wykonywanych przez konta systemowe|
-| UserType | Typ użytkownika, który wykonał operację.<br><br>Jednostka administracyjna<br>Aplikacja<br>DcAdmin<br>Regularne<br>Zarezerwowany<br>ServicePrincipal<br>System |
+| UserType | Typ użytkownika, który wykonał operację.<br><br>Administrator<br>Aplikacja<br>DcAdmin<br>Regularne<br>Zarezerwowany<br>ServicePrincipal<br>System |
 
 
 ### <a name="azure-active-directory-base"></a>Podstawowa usługi Azure Active Directory
@@ -691,8 +691,8 @@ Te właściwości są wspólne dla wszystkich rekordów z programu SharePoint.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| OfficeWorkload | Sharepoint |
-| OfficeWorkload | Sharepoint |
+| OfficeWorkload | Program SharePoint |
+| OfficeWorkload | Program SharePoint |
 | EventSource | Określa, że wystąpiło zdarzenie w programie SharePoint. Możliwe wartości to SharePoint lub ObjectModel. |
 | ItemType | Typ obiektu, który został otwierane ani modyfikowane. Znajdują się w tabeli ItemType, aby uzyskać szczegółowe informacje na temat typów obiektów. |
 | MachineDomainInfo | Informacje o operacjach synchronizacji urządzenia. Te informacje są zgłaszane tylko wtedy, gdy jest obecny w żądaniu. |
@@ -708,8 +708,8 @@ Te rekordy są tworzone podczas zmiany konfiguracji zostały wprowadzone w progr
 
 | Właściwość | Opis |
 |:--- |:--- |
-| OfficeWorkload | Sharepoint |
-| OfficeWorkload | Sharepoint |
+| OfficeWorkload | Program SharePoint |
+| OfficeWorkload | Program SharePoint |
 | CustomEvent | Opcjonalne parametry dla niestandardowych zdarzeń. |
 | Event_Data |  Opcjonalne ładunek dla niestandardowych zdarzeń. |
 | ModifiedProperties | Właściwość jest dołączona do zdarzenia administracyjne, takie jak dodawanie użytkownika jako członka lokacji lub grupy Administrator kolekcji witryny. Właściwość zawiera nazwę właściwości, który został zmodyfikowany (na przykład grupa administratorów witryny), nowa wartość właściwości zmodyfikowany (taki użytkownik, który został dodany jako administrator witryny), a wartość poprzedniego zmodyfikowanego obiektu. |
@@ -721,7 +721,7 @@ Te rekordy są tworzone w odpowiedzi na operacje na plikach w programie SharePoi
 
 | Właściwość | Opis |
 |:--- |:--- |
-| OfficeWorkload | Sharepoint |
+| OfficeWorkload | Program SharePoint |
 | OfficeWorkload | SharePointFileOperation |
 | DestinationFileExtension | Rozszerzenie pliku, który jest kopiowane lub przeniesiony. Ta właściwość jest wyświetlany tylko w przypadku FileCopied i FileMoved zdarzeń. |
 | DestinationFileName | Nazwa pliku który jest kopiowane lub przeniesiony. Ta właściwość jest wyświetlany tylko w przypadku FileCopied i FileMoved zdarzeń. |
@@ -750,7 +750,7 @@ Poniższa tabela zawiera przykładowe wyszukiwania w dzienniku dotyczące rekord
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Użyj [rejestrowania zapytań w usłudze Azure Monitor](../log-query/log-query-overview.md) do wyświetlania szczegółowych danych aktualizacji.
 * [Tworzenie własnych pulpitów nawigacyjnych](../learn/tutorial-logs-dashboards.md) Aby wyświetlić ulubione zapytania wyszukiwania usługi Office 365.

@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/14/2019
-ms.author: aljo, mikhegn
-ms.openlocfilehash: 15f288d5400b49ec05c9ffb936fd2097cc61bae8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mikhegn
+ms.openlocfilehash: 07df215d9c3435d5ca3668b3c8d1587dbb99dca1
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428151"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621946"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>Instrukcje: Debugowanie kontenerów Windows w usłudze Azure Service Fabric przy użyciu programu Visual Studio 2019 r.
 
@@ -80,5 +80,5 @@ Poniżej przedstawiono listę znanych ograniczeń polecenia za pomocą debugowan
 
     Program Visual Studio obsługuje konsoli i typów projektów programu ASP.NET, .NET i .NET Core.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej o możliwościach usługi Service Fabric i kontenerów, zobacz overview](service-fabric-containers-overview.md) kontenerów usługi Service Fabric.

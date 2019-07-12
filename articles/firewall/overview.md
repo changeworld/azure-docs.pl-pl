@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 6/26/2019
+ms.date: 7/10/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 9a875f4450b700fc9db74b4402471e282f8e9dab
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: da82f6c93045b38aed887860c6d5c45c93b2260b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442906"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703950"
 ---
 # <a name="what-is-azure-firewall"></a>Co to jest usługa Azure Firewall?
 
@@ -30,7 +30,7 @@ Usługa Azure Firewall oferuje następujące funkcje:
 
 Wysoka dostępność jest wbudowany, nie dodatkowych modułów równoważenia obciążenia są wymagane i nie ma nic, które trzeba skonfigurować.
 
-## <a name="availability-zones-public-preview"></a>Strefy dostępności (publiczna wersja zapoznawcza)
+## <a name="availability-zones"></a>Strefy dostępności
 
 Podczas wdrażania na wielu strefach dostępności na potrzeby zwiększonej dostępności można skonfigurować zaporę platformy Azure. Dzięki strefom dostępności poziomu dostępności zwiększa dostępność przez 99,99% czasu. Aby uzyskać więcej informacji, zobacz zapory usługi Azure [Umowa dotycząca poziomu usług (SLA)](https://azure.microsoft.com/support/legal/sla/azure-firewall/v1_0/). Czas działania 99,99% umowy SLA jest oferowana po wybraniu co najmniej dwóch strefach dostępności.
 
@@ -51,7 +51,7 @@ Usługa Azure Firewall umożliwia skalowanie bez ograniczeń, odpowiednio do zmi
 
 ## <a name="application-fqdn-filtering-rules"></a>Reguły filtrowania w pełni kwalifikowanych nazw domen aplikacji
 
-Możesz ograniczyć wychodzący ruch protokołu HTTP/S do konkretnej listy w pełni kwalifikowanych nazw domen, również z użyciem symboli wieloznacznych. Ta funkcja nie wymaga kończenia żądań SSL.
+Można ograniczyć ruch wychodzący protokołu HTTP/Https lub ruch usługi Azure SQL (wersja zapoznawcza) na określoną listę w pełni kwalifikowanych nazw domen (FQDN) w tym symbole wieloznaczne. Ta funkcja nie wymaga kończenia żądań SSL.
 
 ## <a name="network-traffic-filtering-rules"></a>Reguły filtrowania ruchu sieciowego
 
@@ -77,7 +77,11 @@ Wszystkie adresy IP wychodzącego ruchu sieciowego są tłumaczone na publiczny 
 
 Ruch sieciowy przychodzący do publicznego adresu IP zapory jest przetwarzany przy użyciu technologii DNAT i filtrowany do prywatnych adresów IP w sieciach wirtualnych.
 
-## <a name="multiple-public-ips-public-preview"></a>Wiele publicznych adresów IP (publiczna wersja zapoznawcza)
+## <a name="multiple-public-ip-addresses"></a>Wiele publicznych adresów IP
+
+> [!IMPORTANT]
+> Zaporę platformy Azure przy użyciu wiele publicznych adresów IP jest dostępna za pośrednictwem programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure, REST i szablony. Interfejs użytkownika portalu jest dodawany do regionów stopniowo i będą dostępne we wszystkich regionach, po zakończeniu wdrożenia.
+
 
 Można skojarzyć wiele publicznych adresów IP (maksymalnie 100) z zaporą.
 
@@ -85,9 +89,6 @@ Umożliwia to obsługę następujących scenariuszy:
 
 - **DNAT** — wielu wystąpień standardowego portu można tłumaczyć na serwerach wewnętrznej bazy danych. Na przykład jeśli masz dwa publiczne adresy IP, może dokonywać translacji portu TCP 3389 (RDP) dla obu adresów IP.
 - **SNAT** — dodatkowe porty są dostępne dla połączeń SNAT wychodzących, zmniejszyć prawdopodobieństwo SNAT wyczerpanie portów. W tej chwili zapory usługi Azure losowo wybiera publiczny adres IP źródłowego na potrzeby połączenia. Jeśli masz wszystkie podrzędne filtrowania w sieci, należy zezwolić na wszystkie publiczne adresy IP skojarzone z zaporą.
-
-> [!NOTE]
-> W publicznej wersji zapoznawczej możesz dodać lub usunąć publiczny adres IP do zapory uruchomione, istniejące połączenie przychodzące za pomocą reguł DNAT mogą nie działać 40 – 120 sekund. Nie można usunąć publiczny adres IP przypisany do zapory, chyba, że Zapora jest cofnięty lub usunięty.
 
 ## <a name="azure-monitor-logging"></a>Rejestrowanie w usłudze Azure Monitor
 
@@ -108,10 +109,10 @@ Reguły filtrowania dla protokołów innych niż TCP/UDP (na przykład ICMP) nie
 |Może uzyskać maskowane alerty analizy zagrożeń|Reguły sieciowych z lokalizacją docelową 80/443 dla ruchu wychodzącego masek filtrowania zagrożeń analizy alertów w przypadku skonfigurowania do alertu tylko trybu.|Utwórz, filtrowanie ruchu wychodzącego dla 80/443 przy użyciu reguł aplikacji. Możesz też zmienić tryb analizy zagrożeń **alertów i odmawiać go**.|
 |Zapora usługi Azure używa usługi Azure DNS tylko do rozpoznawania nazw|Zaporę platformy Azure rozpoznaje tylko przy użyciu usługi Azure DNS nazwy FQDN. Niestandardowego serwera DNS nie jest obsługiwane. Ma to żadnego wpływu na rozpoznawanie nazw DNS w innych podsieciach.|Pracujemy nad złagodzenie tego ograniczenia.|
 |Usługa Azure zapory SNAT DNAT nie działa dla prywatnych adresów IP miejsc docelowych.|Pomoc techniczna platformy Azure zapory SNAT/DNAT jest ograniczona do Internetu ruchu wychodzącego/przychodzącego. SNAT/DNAT obecnie nie działa dla prywatnych adresów IP miejsc docelowych. Na przykład typu gwiazda szprychą.|To aktualne ograniczenie.|
-|Nie można usunąć pierwsze publiczny adres IP|Nie można usunąć publiczny adres IP przypisany do zapory, chyba, że Zapora jest cofnięty lub usunięty.|To jest celowe.|
-|Jeśli dodasz lub usuniesz publiczny adres IP, reguły DNAT może nie działać tymczasowo.| Jeśli dodasz lub usuniesz publicznego adresu IP do zapory uruchomione, istniejące połączenie przychodzące za pomocą reguł DNAT może nie działać na 40 – 120 sekund.|Jest to ograniczenie w publicznej wersji zapoznawczej dla tej funkcji.|
+|Nie można usunąć pierwsze publiczny Konfiguracja protokołu IP|Każdy publiczny adres IP zapory usługi Azure jest przypisany do *konfigurację adresu IP*.  Konfiguracja pierwszego adresu IP jest przypisywana podczas wdrażania zapory, a zwykle zawiera odwołanie do podsieci zapory (o ile nie skonfigurowano jawnie inaczej za pośrednictwem wdrożenia szablonu). Nie można usunąć tej konfiguracji adresu IP, ponieważ jego może cofnąć przydziału zapory. Nadal można zmienić lub usunąć publiczny adres IP skojarzony z tą konfiguracją adresu IP, jeśli Zapora ma co najmniej jedno inne publiczny adres IP dostępne do użycia.|To jest celowe.|
 |Strefy dostępności można skonfigurować tylko podczas wdrażania.|Strefy dostępności można skonfigurować tylko podczas wdrażania. Nie można skonfigurować strefy dostępności, po wdrożeniu zapory.|To jest celowe.|
 |SNAT dla połączeń przychodzących|Oprócz DNAT, połączeń za pośrednictwem zapory, publiczny adres IP (ruch przychodzący) czy funkcji SNAT i uzyskać do jednego z zapory prywatnych adresów IP. To wymaganie, już dziś (również dla urządzeń WUS aktywny/aktywny) aby upewnić się, symetryczny routing.|Aby zachować oryginalne źródło dla protokołu HTTP/Https, należy rozważyć użycie [XFF](https://en.wikipedia.org/wiki/X-Forwarded-For) nagłówków. Na przykład, takich jak używać usługi [Azure drzwiami frontowymi](../frontdoor/front-door-http-headers-protocol.md#front-door-service-to-backend) przed zaporą. Zapora aplikacji sieci Web można również dodać jako część drzwi wejściowe platformy Azure i sieć, do zapory.
+|Obsługa tylko w trybie serwera proxy (port 1433) filtrowania nazwa FQDN programu SQL|Dla usługi Azure SQL Database wystąpienia zarządzanego Azure SQL Data Warehouse i Azure SQL:<br><br>W trakcie okresu zapoznawczego filtrowanie nazwa FQDN programu SQL jest obsługiwana w trybie proxy tylko (port 1433).<br><br>Dla usługi Azure SQL IaaS:<br><br>Jeśli używasz niestandardowych portach można określić te porty w regułach aplikacji.|Dla programu SQL w trybie przekierowania, który jest domyślnym, jeśli połączenie z w obrębie platformy Azure, zamiast tego można filtrować dostępu przy użyciu tagu usługi SQL w ramach reguł sieci zapory usługi Azure.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

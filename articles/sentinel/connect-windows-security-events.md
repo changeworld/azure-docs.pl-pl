@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: d51d2e09-a073-41c8-b396-91d60b057e6a
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/17/2019
 ms.author: rkarlin
-ms.openlocfilehash: 36d38aa82b4f0ec8d7d9ef6ebb1145b1fcc334df
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 188febf090ddb3f685f9d3c3b94d822f15bbcfcb
+ms.sourcegitcommit: 80aaf27e3ad2cc4a6599a3b6af0196c6239e6918
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190584"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673762"
 ---
 # <a name="connect-windows-security-events"></a>Łączenie ze zdarzeniami zabezpieczeń systemu Windows 
 
@@ -30,10 +31,10 @@ ms.locfileid: "67190584"
 Wszystkie zdarzenia zabezpieczeń z serwerów Windows połączonego z obszarem roboczym usługi Azure przez wartownika można przesyłać strumieniowo. To połączenie umożliwia wyświetlanie pulpitów nawigacyjnych, tworzyć niestandardowe alerty i lepsze badanie. To zapewnia lepszy wgląd w sieci swojej organizacji i zwiększa możliwości operacji zabezpieczeń.  Możesz wybrać zdarzeń do usługi stream:
 
 - **Wszystkie zdarzenia** — wszystkie Windows zabezpieczeń oraz zdarzeń funkcji AppLocker.
-- **Typowe** -standardowy zestaw zdarzeń na potrzeby inspekcji. Dziennik inspekcji pełną użytkownika znajduje się w tym zestawie. Na przykład ten zestaw zawiera identyfikatory logowania użytkownika i wylogowywania użytkowników (zdarzenie ID 4634). Dołączamy inspekcji akcji, takich jak zmiany w grupie zabezpieczeń, operacji protokołu Kerberos kontrolera domeny kluczy i innych zdarzeń, które są zalecane przez organizacje z branży.
+- **Typowe** -standardowy zestaw zdarzeń na potrzeby inspekcji. Dziennik inspekcji pełną użytkownika znajduje się w tym zestawie. Na przykład ten zestaw zawiera zarówno logowanie użytkownika, jak i użytkownika wylogowania zdarzeń (zdarzenie ID 4634). Dołączamy inspekcji akcji, takich jak zmiany w grupie zabezpieczeń, operacji protokołu Kerberos kontrolera domeny kluczy i innych zdarzeń, które są zalecane przez organizacje z branży.
 
 Zdarzenia, które mają bardzo małą liczbą zostały uwzględnione w typowych Ustaw jako główny motywacja wybrać za pośrednictwem wszystkich zdarzeń jest redukować ilość danych, a nie odfiltrować określonych zdarzeń.
-- **Minimalny** -niewielki zestaw zdarzeń, które mogą wskazywać potencjalne zagrożenia. Po włączeniu tej opcji, nie będziesz mieć możliwość pełnego dziennika inspekcji.  Ten zestaw zawiera tylko te zdarzenia, które mogą wskazywać na naruszenie pomyślne i ważne wydarzenia, które mają bardzo niskim poziomie. Na przykład ten zestaw zawiera udane i nieudane logowania użytkownika (zdarzenie 4624 identyfikatory 4625), ale nie zawiera on wylogowania, co jest ważne w przypadku inspekcji, ale nie ma istotnego znaczenia dla wykrywania i ma stosunkowo dużych ilościach. W większości ilość danych, ten zestaw jest zdarzenia logowania i procesu tworzenia zdarzeń (zdarzenie 4688 identyfikator).
+- **Minimalny** -niewielki zestaw zdarzeń, które mogą wskazywać potencjalne zagrożenia. Po włączeniu tej opcji, nie będziesz mieć możliwość pełnego dziennika inspekcji.  Ten zestaw zawiera tylko te zdarzenia, które mogą wskazywać na naruszenie pomyślne i ważne wydarzenia, które mają bardzo niskim poziomie. Na przykład ten zestaw zawiera udane i nieudane logowania użytkownika (zdarzenie 4624 identyfikatory 4625), ale nie zawiera on Wyloguj informacji jest ważne w przypadku inspekcji, ale nie ma istotnego znaczenia dla wykrywania, która jest stosunkowo dużych ilościach. Większość ilość danych, ten zestaw jest znak w zdarzeniach i procesu tworzenia zdarzeń (zdarzenie 4688 identyfikator).
 - **Brak** — żadne zdarzenia funkcji AppLocker ani zabezpieczeń.
 
 > [!NOTE]

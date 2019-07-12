@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
-ms.author: vinynigam
-ms.openlocfilehash: d573b7ad9edac6b1502744b61e85cba3402a6f68
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: vinigam
+ms.openlocfilehash: 71eb789c92452353029613265fe97411c8c00649
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65232658"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706328"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor rozwiązania — często zadawane pytania
 
@@ -223,6 +223,6 @@ Można wyświetlić stan kondycji węzłów używanych do monitorowania z nastę
 ### <a name="can-npm-report-latency-numbers-in-microseconds"></a>Można NPM raport wartościami opóźnień w mikrosekundach
 NPM zaokrągla liczby opóźnienia w Interfejsie i w milisekundach. Te same dane są przechowywane na większą szczegółowość (czasami do czterech miejsc po przecinku).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Więcej informacji na temat rozwiązania Network Performance Monitor, odwołując się do [rozwiązanie Network Performance Monitor na platformie Azure](../../azure-monitor/insights/network-performance-monitor.md).

@@ -6,14 +6,14 @@ ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.topic: howto
+ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: af5ddd50556b493cddf27d1ebb766d9bf6105107
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8bb077242c0a989e100c81d4dfefeb53f4bc90c4
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67433430"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620688"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>Konfigurowanie wychodzącego ruchu sieciowego w przypadku klastrów Azure HDInsight przy użyciu zapory (wersja zapoznawcza)
 
@@ -65,7 +65,7 @@ Na **dodać kolekcję reguł aplikacji** ekranu, wykonaj następujące czynnośc
    | Rule_2 | * | https:443 | login.windows.net | Umożliwia działanie logowania Windows |
    | Rule_3 | * | https:443,http:80 | <storage_account_name.blob.core.windows.net> | Jeśli klaster jest wspierany przez WASB, Dodaj regułę dla WASB. Aby używać tylko protokołu https połączeń upewnij się, ["Wymagany bezpieczny transfer"](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) jest włączona na koncie magazynu. |
 
-1. Kliknij pozycję **Add** (Dodaj).
+1. Kliknij przycisk **Dodaj**.
 
    ![Tytuł: Wprowadź szczegóły kolekcji reguł aplikacji](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
@@ -81,7 +81,7 @@ Tworzenie reguł sieci, aby poprawnie skonfigurować klastra usługi HDInsight.
    | **Nazwa** | **Protokół** | **Źródłowy adres** | **Adres docelowy** | **Port docelowy** | **Uwagi** |
    | --- | --- | --- | --- | --- | --- |
    | Rule_1 | UDP | * | * | `123` | Usługa Czas |
-   | Rule_2 | Dowolne | * | DC_IP_Address_1, DC_IP_Address_2 | `*` | Jeśli używasz pakietu zabezpieczeń przedsiębiorstwa (ESP), Dodaj regułę sieci w sekcji adresów IP, która umożliwia komunikację za pomocą usługi AAD DS ESP klastrów. Adresy IP kontrolerów domeny w sekcji usługi AAD DS można znaleźć w portalu | 
+   | Rule_2 | Any | * | DC_IP_Address_1, DC_IP_Address_2 | `*` | Jeśli używasz pakietu zabezpieczeń przedsiębiorstwa (ESP), Dodaj regułę sieci w sekcji adresów IP, która umożliwia komunikację za pomocą usługi AAD DS ESP klastrów. Adresy IP kontrolerów domeny w sekcji usługi AAD DS można znaleźć w portalu | 
    | Rule_3 | TCP | * | Adres IP Twojego konta usługi Data Lake Storage | `*` | Jeśli używasz usługi Azure Data Lake Storage, można dodać regułę sieci w sekcji adresów IP do rozwiązania problemu SNI ADLS Gen1 i Gen2. Ta opcja będzie kierować ruch do zapory, która może prowadzić do wyższych kosztów dla dużej ilości danych, ale ruch będzie rejestrowane i inspekcji w dziennikach zapory. Określ adres IP dla swojego konta usługi Data Lake Storage. Można użyć polecenia programu powershell, takie jak `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` rozpoznać nazwę FQDN jako adres IP.|
    | Rule_4 | TCP | * | * | `12000` | (Opcjonalnie) Jeśli używasz usługi Log Analytics, Utwórz regułę sieciowej w sekcji adresów IP, aby umożliwić komunikację z obszaru roboczego usługi Log Analytics. |
 
@@ -208,6 +208,6 @@ Poprzednich instrukcji pomocne w konfigurowaniu zapory usługi Azure w celu ogra
 | ocsp.msocsp.com:80                                                |
 | ocsp.digicert.com:80                                                |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Architektura sieci wirtualnej usługi Azure HDInsight](hdinsight-virtual-network-architecture.md)

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
 ms.date: 05/29/2019
-ms.author: jasonfreeberg
+ms.author: jafreebe
 ms.custom: mvc
-ms.openlocfilehash: bd11b5334fbffc28aa6869c9f37b2b9909692d56
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 0ca50bae0748570932c7a4cc3bb10cde17c940f5
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154794"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67617708"
 ---
 # <a name="quickstart-create-a-java-app-in-app-service"></a>Szybki start: Tworzenie aplikacji Java w usłudze App Service
 
@@ -125,7 +125,7 @@ Po zakończeniu wdrażania w przeglądarce internetowej przejdź do wdrożonej a
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Platforma Azure dla zasobów deweloperów języka Java](/java/azure/)

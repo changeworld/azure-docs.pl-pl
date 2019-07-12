@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 010880304c5011bd5a767650aa0ae6b6103bdde2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5d473cffeefe29febc4f0dfb2a620d917bf238d
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540857"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672110"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Tworzenie zestawu umiejętności w wzbogacony potok
 
-Usługa cognitive search wyodrębnia i uzupełnia danych umożliwiają wyszukiwanie w usłudze Azure Search. Nazywamy ekstrakcji i wzbogacania *umiejętności poznawcze*, połączone do *zestawu umiejętności* istnieją odwołania podczas indeksowania. Można użyć zestawu umiejętności [wbudowanych umiejętności](cognitive-search-predefined-skills.md) lub umiejętności niestandardowe (zobacz [przykład: Tworzenie niestandardowego umiejętności](cognitive-search-create-custom-skill-example.md) Aby uzyskać więcej informacji).
+Usługa cognitive search wyodrębnia i uzupełnia danych umożliwiają wyszukiwanie w usłudze Azure Search. Nazywamy ekstrakcji i wzbogacania *umiejętności poznawcze*, połączone do *zestawu umiejętności* istnieją odwołania podczas indeksowania. Można użyć zestawu umiejętności [wbudowanych umiejętności](cognitive-search-predefined-skills.md) lub umiejętności niestandardowe (zobacz [przykładu: Tworzenie niestandardowych umiejętności do wyszukiwania kognitywnego](cognitive-search-create-custom-skill-example.md) Aby uzyskać więcej informacji).
 
 W tym artykule dowiesz się, jak utworzyć potok wzbogacania umiejętności, których chcesz użyć. Zestawu umiejętności jest dołączony do usługi Azure Search [indeksatora](search-indexer-overview.md). Jedną część procesu projektowania, omówione w tym artykule jest konstruowanie samego zestawu umiejętności. 
 
@@ -277,6 +277,6 @@ Można zapisać dokumenty wzbogaconego jako tabele relacji hierarchicznych zacho
 
 <a name="next-step"></a>
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Teraz, po zapoznaniu się z potoku wzbogacenia i wykorzystując bieżące, kontynuuj [sposobu odwołania adnotacje w zestawu umiejętności](cognitive-search-concept-annotations-syntax.md) lub [sposób mapowania danych wyjściowych do pól w indeksie](cognitive-search-output-field-mapping.md). 

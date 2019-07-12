@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 5efbe874bbf3c1c4081eb7a2c76c1be5a3358ec8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b5015f00d3c6dfe0e1e5c2466af777cc0f1bc509
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65518975"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607150"
 ---
 # <a name="use-azure-sql-vm-cli-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Użyj interfejsu wiersza polecenia maszyny Wirtualnej SQL Azure, aby skonfigurować zawsze włączonej grupy dostępności programu SQL Server na Maszynie wirtualnej platformy Azure
 W tym artykule opisano sposób używania [wiersza polecenia platformy Azure SQL VM](/cli/azure/sql/vm?view=azure-cli-latest/) do wdrożenia Windows Failover Cluster (WSFC) i Dodaj maszyny wirtualne SQL Server do klastra, a także tworzenie wewnętrznego modułu równoważenia obciążenia i odbiornika zawsze włączonej grupy dostępności.  Rzeczywiste wdrożenie grupy dostępności Always On nadal odbywa się ręcznie za pomocą programu SQL Server Management Studio (SSMS). 
@@ -28,7 +28,7 @@ W tym artykule opisano sposób używania [wiersza polecenia platformy Azure SQL 
 Aby zautomatyzować konfiguracji zawsze włączonej grupy dostępności przy użyciu interfejsu wiersza polecenia maszyny Wirtualnej SQL Azure, musi już mieć następujące wymagania wstępne: 
 - [Subskrypcji platformy Azure](https://azure.microsoft.com/free/).
 - Grupa zasobów z kontrolerem domeny. 
-- Co najmniej jeden przyłączonych do domeny [maszyn wirtualnych na platformie Azure działającej wersji programu SQL Server 2016 (lub nowszego) przedsiębiorstwa](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) w *tego samego zestawu dostępności lub w różnych strefach dostępności* które posiadają [zarejestrowany za pomocą dostawcy zasobów maszyny Wirtualnej SQL](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider).  
+- Co najmniej jeden przyłączonych do domeny [maszyn wirtualnych na platformie Azure działającej wersji programu SQL Server 2016 (lub nowszego) przedsiębiorstwa](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) w *tego samego zestawu dostępności lub w różnych strefach dostępności* które posiadają [zarejestrowany za pomocą dostawcy zasobów maszyny Wirtualnej SQL](virtual-machines-windows-sql-register-with-resource-provider.md).  
 - [Interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). 
 - Dwie dostępne (nie używane dla dowolnej jednostki) adresy IP, jeden dla wewnętrznego modułu równoważenia obciążenia i jeden dla odbiornika grupy dostępności w ramach tej samej podsieci co grupy dostępności. Jeśli istniejącego modułu równoważenia obciążenia jest używany, tylko jeden dostępny adres IP jest wymagany dla odbiornika grupy dostępności. 
 
@@ -125,7 +125,7 @@ Gdy grupa dostępności została utworzona ręcznie, można utworzyć odbiornik,
    1. Przejdź do grupy zasobów w [witryny Azure portal](https://portal.azure.com). 
    1. Wybierz zasób sieci wirtualnej. 
    1. Wybierz **właściwości** w **ustawienia** okienka. 
-   1. Zidentyfikuj identyfikator zasobu sieci wirtualnej i Dołącz `/subnets/<subnetname>`na końcu go, aby utworzyć identyfikator podsieci zasobu. Na przykład:
+   1. Zidentyfikuj identyfikator zasobu sieci wirtualnej i Dołącz `/subnets/<subnetname>`na końcu go, aby utworzyć identyfikator podsieci zasobu. Przykład:
         - Identyfikator zasobu sieci wirtualnej jest: `/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet`
         - Moja nazwa podsieci jest `default`.
         - Dlatego jest identyfikator zasobu podsieci: `/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet/subnets/default`
@@ -210,7 +210,7 @@ Poniższy fragment kodu usuwa odbiornika grupy dostępności SQL z obu dostawcy 
 az sql vm group ag-listener delete --group-name <cluster name> --name <listener name > --resource-group <resource group name>
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji zobacz następujące artykuły: 
 

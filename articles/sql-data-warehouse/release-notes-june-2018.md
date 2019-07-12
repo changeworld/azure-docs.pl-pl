@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 07/23/2018
 ms.author: anjangsh
 ms.reviewer: jrasnick
-ms.openlocfilehash: 95c59d3e5504058e27cdb4eda311c3917d6c834a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4348a634fd5b2b33f36d8e79f28caf659b82ccf4
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65912232"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626149"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-june-2018"></a>Co nowego w usłudze Azure SQL Data Warehouse? Czerwiec 2018 r.
 Usługa Azure SQL Data Warehouse odbiera ulepszenia stale. W tym artykule opisano nowe funkcje i zmiany, które zostały wprowadzone w czerwca 2018 r. 
@@ -91,7 +91,7 @@ Central Standard Time             -05:00               1
 
 ## <a name="auto-stats-operations-appear-in-sysdmpdwexecrequests-behavior-change"></a>Automatyczne statystyki operacje są wyświetlane w sys.dm_pdw_exec_requests (Zmiana zachowania)
 
-Wraz z wprowadzeniem [automatycznie Create Statistics](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistics), Azure SQL Data Warehouse spowoduje wygenerowanie statystyki, aby zoptymalizować wykonywania zapytania. Wersji czerwca 2018 r. dodano możliwość monitorowania, gdy statystyki są generowane automatycznie przez dodanie rekordu do [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) wyświetlić zawsze wtedy, gdy dowolne [CREATE STATISTICS](https://docs.microsoft.com/sql/t-sql/statements/create-statistics-transact-sql) operacja jest wykonywana.
+Wraz z wprowadzeniem [automatycznie Create Statistics](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic), Azure SQL Data Warehouse spowoduje wygenerowanie statystyki, aby zoptymalizować wykonywania zapytania. Wersji czerwca 2018 r. dodano możliwość monitorowania, gdy statystyki są generowane automatycznie przez dodanie rekordu do [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) wyświetlić zawsze wtedy, gdy dowolne [CREATE STATISTICS](https://docs.microsoft.com/sql/t-sql/statements/create-statistics-transact-sql) operacja jest wykonywana.
 
 ```sql
 SELECT
@@ -111,7 +111,7 @@ start_time                | end_time                | command
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Po użytkownik podstawową wiedzę na temat usługi SQL Data Warehouse, Dowiedz się, jak szybko [utworzyć SQL Data Warehouse][create a SQL Data Warehouse]. Jeśli dopiero zaczynasz korzystać z platformy Azure, [słownik platformy Azure][Azure glossary] może pomóc Ci zaznajomić się z nową terminologią. Możesz też zwrócić uwagę na inne zasoby dotyczące usługi SQL Data Warehouse.  
+Po użytkownik podstawową wiedzę na temat usługi SQL Data Warehouse, Dowiedz się, jak szybko [utworzyć SQL Data Warehouse][create a SQL Data Warehouse] . If you are new to Azure, you may find the [Azure glossary][Azure glossary] pomóc Ci zaznajomić nową terminologią. Możesz też zwrócić uwagę na inne zasoby dotyczące usługi SQL Data Warehouse.  
 
 * [Historie sukcesu klientów]
 * [Blogi]

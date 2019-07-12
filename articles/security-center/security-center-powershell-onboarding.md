@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: 73043680ea7b8b63a329d0a457449b635b7b80f2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9bf2704fbbaa2c7a469dcefa3dc3f3cd7e4d5504
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60703595"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626262"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Automatyzowanie dołączania do usługi Azure Security Center przy użyciu programu PowerShell
 
@@ -101,7 +101,7 @@ Teraz można tych poleceń cmdlet programu PowerShell za pomocą skryptów autom
 ## <a name="see-also"></a>Zobacz także
 Aby dowiedzieć się więcej na temat wykorzystania programu PowerShell do automatyzacji dołączania do usługi Security Center, zobacz następujący artykuł:
 
-* [Az.Security](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Security/Commands.Security/help/Az.Security.md).
+* [Az.Security](https://docs.microsoft.com/powershell/module/az.security).
 
 Aby dowiedzieć się więcej o usłudze Security Center, zobacz następujący artykuł:
 

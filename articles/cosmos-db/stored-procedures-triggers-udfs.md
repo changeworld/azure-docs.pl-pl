@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/14/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 529c536d9ea3b898745f03c80b63702b2af485da
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 53ff318dcc034fb11e2d554f9ad8e8814eb32879
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165578"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672589"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Procedury składowane, wyzwalacze i funkcje zdefiniowane przez użytkownika
 
@@ -37,7 +37,7 @@ Zapisywanie procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez u�
 * **Hermetyzacja protokołu:** Procedury składowane może służyć do grupowania logiki w jednym miejscu. Hermetyzacja dodaje warstwę abstrakcji na podstawie danych, co pozwala na rozwój aplikacji niezależnie od danych. Ta warstwa abstrakcji jest przydatne, gdy dane są bez schematu i nie trzeba zarządzać dodanie dodatkowej logiki bezpośrednio do aplikacji. Pozyskiwania umożliwia Twojej zabezpieczać dane przez usprawnienie dostępu ze skryptów.
 
 > [!TIP]
-> Procedury składowane są najlepiej dopasowane do działania zapisujące duże. Podejmując decyzję o używane procedury składowane, optymalizować wokół enkapsulacji maksymalną ilość możliwości zapisu. Ogólnie rzecz biorąc procedury składowane nie są najbardziej efektywny sposób oznacza, że dla dużej liczby operacji odczytu dotarłam do zwrócenia do klienta przy użyciu procedur składowanych na potrzeby przetwarzania wsadowego dużej liczby operacji odczytu nie umożliwia uzyskanie żądanego korzyści.
+> Procedury składowane są najbardziej odpowiednie dla operacje zapisu duże i wymagają transakcji między wartość klucza partycji. Przy podejmowaniu decyzji, czy ma być używane procedury składowane, optymalizować wokół enkapsulacji maksymalną ilość możliwości zapisu. Ogólnie rzecz biorąc procedur składowanych nie są w sposób najbardziej skuteczny do wykonywania dużej liczby operacji odczytu lub zapytania, więc przy użyciu przechowywanych procedur z dużą liczbą operacji odczytu, aby powrócić do klienta usługi batch nie umożliwia uzyskanie żądanego korzyści. Aby uzyskać najlepszą wydajność te operacje odczycie powinna być podejmowana po stronie klienta, za pomocą zestawu SDK Cosmos. 
 
 ## <a name="transactions"></a>Transakcje
 
@@ -96,7 +96,7 @@ Funkcje zdefiniowane przez użytkownika (UDF) są używane do rozszerzania skła
 
 Oprócz wysyłania zapytań przy użyciu interfejsu API SQL składni zapytań, [SDK po stronie serwera](https://azure.github.io/azure-cosmosdb-js-server) umożliwia wykonywanie zapytań za pomocą interfejsu języka JavaScript, bez konieczności znajomości języka SQL. Zapytanie interfejsu API języka JavaScript umożliwia programowe tworzenie zapytań, przekazując funkcji predykatu sekwencję wywołań funkcji. Zapytania są analizowane przez środowisko uruchomieniowe JavaScript i są efektywne wykonywane w ramach usługi Azure Cosmos DB. Aby uzyskać informacje dotyczące obsługi zapytań interfejsu API języka JavaScript, zobacz [pracy z językiem JavaScript zintegrowany interfejs API zapytań](javascript-query-api.md) artykułu. Aby uzyskać przykłady, zobacz [sposobu pisania procedur składowanych i wyzwalaczy, przy użyciu interfejsu API języka Javascript zapytania](how-to-write-javascript-query-api.md) artykułu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się, jak pisać i za pomocą procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika w usłudze Azure Cosmos DB następujące artykuły:
 

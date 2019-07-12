@@ -7,12 +7,12 @@ ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 4724789dd1a0893c5ef4ab112306c185f0e87da7
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: d78c640f4269c799d3d371e6dd9db477faf96694
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274386"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807420"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Omówienie usługi Azure Graph zasobów
 
@@ -28,6 +28,8 @@ W tej dokumentacji każda funkcja zostanie szczegółowo omówiona.
 > [!NOTE]
 > Wykres zasobów platformy Azure obsługuje pasek wyszukiwania w witrynie Azure portal, Przeglądaj nowe środowisko "Wszystkie zasoby" i usługi Azure Policy [historię zmian](../policy/how-to/determine-non-compliance.md#change-history-preview)
 > _visual diff_. Ustalono, aby pomóc klientom w zarządzaniu środowisk na dużą skalę.
+
+[!INCLUDE [service-provider-management-toolkit](../../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="how-does-resource-graph-complement-azure-resource-manager"></a>Jak usługa Resource Graph uzupełnia usługę Azure Resource Manager
 
@@ -77,7 +79,7 @@ Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące żądania ogranic
 
 Wykres zasobów obsługuje wiersza polecenia platformy Azure, programu Azure PowerShell i zestawie Azure SDK dla platformy .NET. Zapytania są skonstruowane takie same dla każdego języka. Dowiedz się, jak włączyć usługę Resource Graph w [interfejsie wiersza polecenia platformy Azure](first-query-azurecli.md#add-the-resource-graph-extension) i [programie Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Uruchamianie pierwszego zapytania przy użyciu [wiersza polecenia platformy Azure](first-query-azurecli.md).
 - Uruchamianie pierwszego zapytania przy użyciu [programu Azure PowerShell](first-query-powershell.md).

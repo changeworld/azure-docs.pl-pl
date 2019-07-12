@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
-ms.date: 01/08/2019
-ms.openlocfilehash: f1cb7c9aa0844c82acd333c4f9dd87a4dda013e7
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 07/10/2019
+ms.openlocfilehash: 06004f766cb8e9b12c2353bbe5e432e77df03cee
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165344"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797696"
 ---
 # <a name="securely-run-experiments-and-inference-inside-an-azure-virtual-network"></a>Bezpiecznego uruchamiania eksperymentów oraz wnioskowania wewnątrz sieci wirtualnej platformy Azure
 
@@ -275,9 +275,9 @@ Aby dodać usługi Azure Kubernetes Service w sieci wirtualnej, do obszaru roboc
 
     - __Podsieć__: Wybierz podsieć.
 
-    - __Zakres adresów usługi Kubernetes__: Wybierz zakres adresów usługi Kubernetes. Ten zakres adresów używa zakresu adresów IP notacji CIDR, do definiowania adresów IP dostępnych dla klastra. Nie nakładać się na żadne zakresy adresów IP podsieci. Na przykład: 10.0.0.0/16.
+    - __Zakres adresów usługi Kubernetes__: Wybierz zakres adresów usługi Kubernetes. Ten zakres adresów używa zakresu adresów IP notacji CIDR, do definiowania adresów IP dostępnych dla klastra. Nie nakładać się na żadne zakresy adresów IP podsieci. Przykład: 10.0.0.0/16.
 
-    - __Adres IP usługi DNS platformy Kubernetes__: Wybierz adres IP usługi DNS platformy Kubernetes. Ten adres IP jest przypisywany do usługi DNS platformy Kubernetes. Należy do zakresu adresów usługi Kubernetes. Na przykład: 10.0.0.10.
+    - __Adres IP usługi DNS platformy Kubernetes__: Wybierz adres IP usługi DNS platformy Kubernetes. Ten adres IP jest przypisywany do usługi DNS platformy Kubernetes. Należy do zakresu adresów usługi Kubernetes. Przykład: 10.0.0.10.
 
     - __Adres mostka platformy docker__: Wybierz adres mostka platformy Docker. Ten adres IP jest przypisywany do mostka platformy Docker. Nie może być w żadnych zakresów adresów IP podsieci i zakres adresów usługi Kubernetes. Na przykład: 172.17.0.1/16.
 

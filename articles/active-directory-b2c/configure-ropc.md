@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2e590e4765f4795123e219f8da4b3e62bc79ca30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8de1d27d92ac57f478b7615144dba166f420d27
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511344"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807225"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Konfiguruj przepływ poświadczeń hasła właściciela zasobu w usłudze Azure AD B2C
 
@@ -108,7 +108,7 @@ Utworzyć wywołanie metody POST, tak jak pokazano tutaj z informacjami w poniż
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Klucz | Wartość |
+| Klucz | Value |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
@@ -135,6 +135,8 @@ Odpowiedź oznaczająca Powodzenie będzie wyglądać następująco:
     "refresh_token_expires_in": 1209600
 }
 ```
+> [!NOTE]
+> Podczas tworzenia użytkowników za pośrednictwem interfejsu API programu Graph, aplikacja musi mieć uprawnienia "profil" programu Microsoft Graph, "offline_access" i "openid".
 
 ## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>Wdrożenia przy użyciu preferowanego natywnym zestawem SDK lub Użyj uwierzytelniania aplikacji
 

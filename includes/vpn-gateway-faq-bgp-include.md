@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 192a6f4841e9dc3a478da5e4b53594362955ca71
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 7c1f3fc7861f5e1b895423d502218b9b07302c1c
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183049"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67659874"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>Czy protokół BGP jest obsługiwany na wszystkich jednostkach SKU bramy sieci VPN platformy Azure?
 Nie. Protokół BGP jest obsługiwany na bramach sieci VPN **VpnGw1**, **VpnGw2**, **VpnGw3**, **Standard** i **HighPerformance** na platformie Azure. **Podstawowa** jednostka SKU nie jest obsługiwana.
@@ -85,7 +85,7 @@ Tak, ale co najmniej jedna z bram sieci wirtualnej musi mieć konfigurację akty
 Tak. 
 
 ### <a name="what-address-does-azure-vpn-gateway-use-for-bgp-peer-ip"></a>Jakiego adresu używa brama sieci VPN platformy Azure dla adresu IP elementu równorzędnego protokołu BGP?
-Brama sieci VPN platformy Azure przydziela pojedynczy adres IP z zakresu podsieci bramy zdefiniowanego dla sieci wirtualnej. Domyślnie jest to przedostatni adres zakresu. Na przykład jeśli podsieć bramy to 10.12.255.0/27, w zakresie od 10.12.255.0 do 10.12.255.31, adresem IP elementu równorzędnego protokołu BGP dla bramy sieci VPN platformy Azure jest 10.12.255.30. Te informacje można znaleźć wśród informacji dotyczących bramy sieci VPN platformy Azure.
+Brama Azure VPN gateway przyzna pojedynczy adres IP z zakresu podsieci bramy dla bramy sieci VPN typu aktywne-w gotowości lub dwa adresy IP dla bramy sieci VPN typu aktywne aktywne. Możesz uzyskać rzeczywiste adresy IP protokołu BGP, przydzielany przy użyciu programu PowerShell (Get-AzVirtualNetworkGateway, zwróć uwagę na właściwość "elementu bgpPeeringAddress") lub w witrynie Azure portal (w obszarze właściwości "Skonfiguruj numer ASN protokołu BGP" na stronie konfiguracji bramy).
 
 ### <a name="what-are-the-requirements-for-the-bgp-peer-ip-addresses-on-my-vpn-device"></a>Jakie są wymagania dotyczące adresów IP elementów równorzędnych protokołu BGP na urządzeniu sieci VPN użytkownika?
 Adres lokalnego elementu równorzędnego protokołu BGP **NIE MOŻE** być taki sam jak publiczny adres IP urządzenia sieci VPN użytkownika. Na urządzeniu sieci VPN należy użyć innego adresu IP dla adresu IP elementu równorzędnego protokołu BGP. Może to być adres przypisany do interfejsu sprzężenia zwrotnego na urządzeniu, ale należy pamiętać, że nie może być to adres APIPA (169.254.x.x). Ten adres należy określić w odpowiedniej bramie sieci lokalnej reprezentującej daną lokalizację.

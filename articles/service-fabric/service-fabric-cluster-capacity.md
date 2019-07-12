@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/27/2018
+ms.date: 07/09/2019
 ms.author: chackdan
-ms.openlocfilehash: bd76658c939496f27bf3751060c18d17968acd15
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6b11a3ba4fbffe1d35b590f2e5c47f19b6fb028c
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60386814"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718117"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Zagadnienia dotyczące planowania pojemności klastra usługi Service Fabric
 Dla wszystkich wdrożeń produkcyjnych planowania pojemności jest ważnym krokiem. Poniżej przedstawiono niektóre elementy, które należy wziąć pod uwagę jako część tego procesu.
@@ -77,8 +77,8 @@ Warstwa trwałości jest używany do wskazania systemowi uprawnienia, których m
 | Warstwa trwałości  | Wymagana minimalna liczba maszyn wirtualnych | Jednostek SKU obsługiwanych maszyn wirtualnych                                                                  | Aktualizacje wprowadzone w zestawie skalowania maszyn wirtualnych                               | Aktualizowanie i konserwowanie zainicjowane przez platformę Azure                                                              | 
 | ---------------- |  ----------------------------  | ---------------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | Złoty             | 5                              | Jednostki SKU węzła pełnej dedykowanego pojedynczemu klientowi (na przykład L32s GS5, 5. generacji, DS15_v2, D15_v2) | Może być opóźniony, dopóki nie zatwierdzone przez klaster usługi Service Fabric | Może być wstrzymana przez 2 godziny na UD, aby umożliwić dodatkowy czas dla repliki, aby odzyskać sprawność po wcześniejszej awarii |
-| Srebrny           | 5                              | Maszyny wirtualne lub pojedynczego rdzenia                                                        | Może być opóźniony, dopóki nie zatwierdzone przez klaster usługi Service Fabric | Nie może być opóźniona na dłuższy czas                                                    |
-| Brązowy           | 1                              | Wszyscy                                                                                | Nie będą opóźnione przez klaster usługi Service Fabric           | Nie może być opóźniona na dłuższy czas                                                    |
+| Srebrny           | 5                              | Maszyny wirtualne lub jednego z co najmniej 50 GB lokalny dysk SSD                      | Może być opóźniony, dopóki nie zatwierdzone przez klaster usługi Service Fabric | Nie może być opóźniona na dłuższy czas                                                    |
+| Brązowy           | 1                              | Maszyny wirtualne z co najmniej 50 GB lokalny dysk SSD                                              | Nie będą opóźnione przez klaster usługi Service Fabric           | Nie może być opóźniona na dłuższy czas                                                    |
 
 > [!WARNING]
 > Typy węzłów z trwałością brązowa uzyskać _brakiem uprawnień_. Oznacza to, że zadania infrastruktury, które wpływają na obciążeń bezstanowych będzie nie można zatrzymać lub opóźnione, co może mieć wpływ na Twoich obciążeń. Tylko brązowa na użytek typy węzłów, które są uruchamiane tylko na obciążeniach bezstanowych. W przypadku obciążeń produkcyjnych systemem Silver lub powyżej jest zalecane. 
@@ -108,10 +108,10 @@ Użyj niezawodności na poziomie Silver lub Gold dla wszystkich typów węzłów
 ### <a name="operational-recommendations-for-the-node-type-that-you-have-set-to-silver-or-gold-durability-level"></a>Operational zalecenia dla węzła typu, że zostało ustawione na trwałości silver lub gold poziomu.
 
 - Zachowuj klastra i aplikacje dobrej kondycji przez cały czas i upewnij się, że aplikacje będą odpowiadać na wszystkich [obsługi zdarzeń cyklu życia repliki](service-fabric-reliable-services-lifecycle.md) (np. replika w kompilacji jest zablokowana) w odpowiednim czasie.
-- Przyjęcie bezpieczniejsze sposobów na jednostki SKU maszyny Wirtualnej zmiany (skalowania w górę/w dół): Zmiana jednostki SKU maszyny Wirtualnej zestawu skalowania maszyn wirtualnych jest operacją niebezpieczne i dlatego należy unikać, jeśli jest to możliwe. Poniżej przedstawiono ten proces można wykonać, aby uniknąć typowych problemów.
+- Przyjęcie bezpieczniejsze sposobów na jednostki SKU maszyny Wirtualnej zmiany (skalowania w górę/w dół): Zmiana jednostki SKU maszyny Wirtualnej zestawu skalowania maszyn wirtualnych wymaga numer procedury i zagadnienia. Poniżej przedstawiono ten proces można wykonać, aby uniknąć typowych problemów.
     - **Dla typów innych niż podstawowe węzła:** Zalecane jest, możesz utworzyć nowego zestawu skalowania maszyn wirtualnych, Modyfikowanie ograniczenia do uwzględnienia nowego typu węzeł/zestaw skali maszyny wirtualnej, a następnie ograniczyć stare maszyn wirtualnych skalowania zestawu liczbę wystąpień na zero, jeden węzeł w danym momencie (to jest zapewnienie na umieszczania usługi Czy usunięcie węzłów wpłynąć na niezawodność klastra).
-    - **Dla typu węzła podstawowego:** Nasze zalecenie, to nie należy zmieniać jednostki SKU maszyny Wirtualnej typu węzła podstawowego. Zmiana typu węzła podstawowego, który jednostka SKU nie jest obsługiwana. Jeśli przyczyna nowej jednostki SKU pojemności, zaleca się dodanie większej liczby wystąpień. Jeśli to nie jest to możliwe, Utwórz nowy klaster i [Przywróć stan aplikacji](service-fabric-reliable-services-backup-restore.md) (jeśli dotyczy) ze starego klastra. Nie należy przywrócić wszystkie stanu usługi systemu, zostaną ponownie utworzone podczas wdrażania aplikacji do nowego klastra. Jeśli używasz aplikacji bezstanowych w klastrze, należy wdrożyć aplikacji do nowego klastra.  Masz nie ma niczego do przywrócenia. Jeśli zdecydujesz się przejść nieobsługiwany trasy i chcesz zmienić jednostki SKU maszyny Wirtualnej, następnie modyfikacje upewnij skalowania maszyn wirtualnych Ustaw definicję modelu w celu odzwierciedlenia nowej jednostki SKU. Jeśli klaster zawiera tylko jeden węzeł typu, upewnij się, że wszystkie aplikacje stanowe będą odpowiadać na wszystkich [obsługi zdarzeń cyklu życia repliki](service-fabric-reliable-services-lifecycle.md) (np. replika w kompilacji jest zablokowana) w odpowiednim czasie, który repliki usługi ponownie skompiluj czas trwania wynosi mniej niż pięciu minut (poziom trwałości Silver). 
-    
+    - **Dla typu węzła podstawowego:** Jeśli wybrano jednostki SKU maszyny Wirtualnej wynosi pojemności i chcesz zmienić na większych jednostki SKU maszyny Wirtualnej, postępuj zgodnie z nasze wskazówki na [skalowanie w pionie dla typu węzła podstawowego](https://docs.microsoft.com/azure/service-fabric/service-fabric-scale-up-node-type). 
+
 - Obsługa minimalna liczba pięć węzłów do zestawu skalowania maszyn wirtualnych, który ma poziom trwałości Gold i Silver włączone.
 - Każdy zestaw skalowania maszyn wirtualnych z poziomu niezawodności na poziomie Silver lub Gold musi być mapowane na swój własny typ węzła w klastrze usługi Service Fabric. Mapowanie wielu zestawów skalowania maszyn wirtualnych do jednego węzła typu uniemożliwi koordynacji między klastrem usługi Service Fabric i infrastruktury platformy Azure działa prawidłowo.
 - Usuń losowe wystąpień maszyn wirtualnych, nie zawsze używaj skalowania zestawu skalowania maszyn wirtualnych szczegółów funkcji. Usuwanie losowe wystąpień maszyn wirtualnych ma możliwość tworzenia nierównowagi w wystąpieniu maszyny Wirtualnej, rozkładają się na UD i FD. Ten brak równowagi może negatywnie wpłynąć na możliwość systemów poprawnie załadować saldo między repliki wystąpienia/usługi service.
@@ -160,11 +160,11 @@ Ponieważ wymagana pojemność klastra jest określana przez obciążenie, któr
 W przypadku obciążeń produkcyjnych: 
 
 - Zaleca się przydzielenie dedykowanego klastrów podstawowego elementu NodeType usług systemowych i ograniczeniami dotyczącymi umieszczania Użyj wdrożyć aplikację do dodatkowej elementy NodeType.
-- Zalecane jednostki SKU maszyny Wirtualnej jest standardowa D3 lub standardowa D3_V2 lub równoważny z co najmniej 14 GB lokalny dysk SSD.
-- Minimalne użycie obsługiwane jednostki SKU maszyny Wirtualnej jest standardowa D1 lub D1_V2 standardowy lub równoważny z co najmniej 14 GB lokalny dysk SSD. 
-- Lokalny dysk SSD 14 GB stanowi wymaganie minimalne. Nasze zalecenie jest co najmniej 50 GB. Dla obciążeń, szczególnie podczas korzystania z kontenerów Windows większe dyski są wymagane. 
+- Zalecane jednostki SKU maszyny Wirtualnej jest standardowa D2_V2 lub równoważny z co najmniej 50 GB lokalny dysk SSD.
+- Minimalne użycie obsługiwane jednostki SKU maszyny Wirtualnej jest maszyna wirtualna Standard_D2_V3 lub D1_V2 standardowy lub równoważny z co najmniej 50 GB lokalny dysk SSD. 
+- Nasze zalecenie jest co najmniej 50 GB. Dla obciążeń, szczególnie podczas korzystania z kontenerów Windows większe dyski są wymagane. 
 - Częściowe podstawowych wersji SKU maszyn wirtualnych, takich jak standard_a0 nie są obsługiwane w przypadku obciążeń produkcyjnych.
-- Standardowa A1 jednostka SKU nie jest obsługiwana w przypadku obciążeń produkcyjnych ze względu na wydajność.
+- Serie jednostek SKU maszyn wirtualnych nie są obsługiwane w przypadku obciążeń produkcyjnych ze względu na wydajność.
 - Maszyny wirtualne o niskim priorytecie nie są obsługiwane.
 
 > [!WARNING]
@@ -182,10 +182,10 @@ Tak w przypadku obciążeń produkcyjnych minimalna zalecana innych niż - węz�
 
 W przypadku obciążeń produkcyjnych 
 
-- Zalecane jednostki SKU maszyny Wirtualnej jest standardowa D3 lub standardowa D3_V2 lub równoważny z co najmniej 14 GB lokalny dysk SSD.
-- Minimalne użycie obsługiwane jednostki SKU maszyny Wirtualnej jest standardowa D1 lub D1_V2 standardowy lub równoważny z co najmniej 14 GB lokalny dysk SSD. 
+- Zalecane jednostki SKU maszyny Wirtualnej jest standardowa D2_V2 lub równoważny z co najmniej 50 GB lokalny dysk SSD.
+- Minimalne użycie obsługiwane jednostki SKU maszyny Wirtualnej jest maszyna wirtualna Standard_D2_V3 lub D1_V2 standardowy lub równoważny z co najmniej 50 GB lokalny dysk SSD. 
 - Częściowe podstawowych wersji SKU maszyn wirtualnych, takich jak standard_a0 nie są obsługiwane w przypadku obciążeń produkcyjnych.
-- Standardowa A1 jednostka SKU nie jest obsługiwana w przypadku obciążeń produkcyjnych ze względu na wydajność.
+- Serie jednostek SKU maszyn wirtualnych nie są obsługiwane w przypadku obciążeń produkcyjnych ze względu na wydajność.
 
 ## <a name="non-primary-node-type---capacity-guidance-for-stateless-workloads"></a>Typ węzła podstawowego bez — wskazówki dotyczące wydajności, w przypadku obciążeń bezstanowych
 
@@ -197,14 +197,14 @@ Niniejsze wskazówki bezstanowych obciążeń uruchomionych na typ węzła inneg
 
 W przypadku obciążeń produkcyjnych 
 
-- Zalecane jednostki SKU maszyny Wirtualnej jest standardowa D3 lub standardowa D3_V2 lub równoważnej. 
+- Zalecane jednostki SKU maszyny Wirtualnej jest standardowa D2_V2 lub równoważnej. 
 - Minimalne użycie obsługiwane jednostki SKU maszyny Wirtualnej jest standardowa D1 lub standardowa D1_V2 lub równoważnej. 
 - Częściowe podstawowych wersji SKU maszyn wirtualnych, takich jak standard_a0 nie są obsługiwane w przypadku obciążeń produkcyjnych.
-- Standardowa A1 jednostka SKU nie jest obsługiwana w przypadku obciążeń produkcyjnych ze względu na wydajność.
+- Serie jednostek SKU maszyn wirtualnych nie są obsługiwane w przypadku obciążeń produkcyjnych ze względu na wydajność.
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Zakończ, planowania pojemności i skonfigurować klaster, przeczytaj następujące:
 
 * [Zabezpieczenia klastra usługi Service Fabric](service-fabric-cluster-security.md)

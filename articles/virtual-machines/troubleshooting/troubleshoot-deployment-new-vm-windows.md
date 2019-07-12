@@ -4,7 +4,7 @@ description: Rozwiązywanie problemów dotyczących wdrożenia usługi Resource 
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: JiangChen79
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: top-support-issue, azure-resource-manager
 ms.assetid: afc6c1a4-2769-41f6-bbf9-76f9f23bcdf4
@@ -16,12 +16,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8f18fbabe52c9170cde70900933ce96a3a6400c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6bdf0816e40e34b184da0340a8dbaffbcd7657e8
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62123860"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710457"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Rozwiązywanie problemów dotyczących wdrażania podczas tworzenia nowej maszyny Wirtualnej Windows na platformie Azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -89,7 +89,7 @@ Ten błąd pojawia się w sytuacjach, gdy nowe żądanie maszyna wirtualna jest 
   * Utwórz nową maszynę Wirtualną w innej zestaw dostępności (w tym samym regionie).
   * Dodaj nową maszynę Wirtualną do tej samej sieci wirtualnej.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Jeśli wystąpią problemy podczas uruchamiania zatrzymanej maszyny Wirtualnej Windows lub zmienić rozmiar istniejącej maszyny Wirtualnej Windows na platformie Azure, zobacz [problemów dotyczących wdrożenia usługi Resource Manager Rozwiązywanie problemów przy ponownym uruchamianiu lub zmiany rozmiaru istniejącej maszyny wirtualnej Windows na platformie Azure](restart-resize-error-troubleshooting.md).
 
 

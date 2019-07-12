@@ -13,20 +13,19 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 49d6a06c2cd13c240a0843ef29fd6cc832c30384
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e2f4f214523d9d42761323ec02ca6dae4c20bba6
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66122584"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839426"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>Samouczek: tworzenie potoku za pomocą działania kopiowania przy użyciu interfejsu API .NET
 > [!div class="op_single_selector"]
 > * [Przegląd i wymagania wstępne](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Kreator kopiowania](data-factory-copy-data-wizard-tutorial.md)
-> * [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
-> * [Program Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
-> * [Program PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+> * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+> * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Szablon usługi Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [Interfejs API REST](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [Interfejs API programu .NET](data-factory-copy-activity-tutorial-using-dotnet-api.md)
@@ -125,7 +124,7 @@ Po wykonaniu tych kroków powinny być dostępne cztery następujące wartości:
 1. Za pomocą programu Visual Studio 2012/2013/2015 utwórz aplikację konsolową .NET C#.
    1. Uruchom program **Visual Studio** 2012/2013/2015.
    2. Kliknij pozycję **Plik**, wskaż polecenie **Nowy** i kliknij pozycję **Projekt**.
-   3. Rozwiń węzeł **Szablony** i wybierz opcję **Visual C#**. W tym przewodniku stosowany jest język C#, ale można użyć dowolnego języka platformy .NET.
+   3. Rozwiń węzeł **Szablony** i wybierz opcję **Visual C#** . W tym przewodniku stosowany jest język C#, ale można użyć dowolnego języka platformy .NET.
    4. Wybierz opcję **Aplikacja konsolowa** z listy typów projektów po prawej stronie.
    5. Wprowadź wartość **DataFactoryAPITestApp** jako nazwę.
    6. Wybierz ścieżkę **C:\ADFGetStarted** jako lokalizację.
@@ -136,7 +135,7 @@ Po wykonaniu tych kroków powinny być dostępne cztery następujące wartości:
    2. Uruchom następujące polecenie, aby zainstalować pakiet Azure Active Directory (użyjesz interfejsu API usługi Active Directory w kodzie): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
 4. Dodaj następującą sekcję **appSetttings** do pliku **App.config**. Te ustawienia są używane przez metodę pomocniczą: **GetAuthorizationHeader**.
 
-    Zastąp wartości **&lt;Application ID&gt;**, **&lt;Password&gt;**, **&lt;Subscription ID&gt;** i **&lt;tenant ID&gt;** własnymi wartościami.
+    Zastąp wartości **&lt;Application ID&gt;** , **&lt;Password&gt;** , **&lt;Subscription ID&gt;** i **&lt;tenant ID&gt;** własnymi wartościami.
 
     ```xml
     <?xml version="1.0" encoding="utf-8" ?>
@@ -520,7 +519,7 @@ Po wykonaniu tych kroków powinny być dostępne cztery następujące wartości:
     * Potok: **PipelineBlobSample**
 20. Sprawdź, czy w tabeli **emp** w określonej bazie danych Azure SQL Database zostały utworzone rekordy dwóch pracowników.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby zapoznać się z pełną dokumentacją dotyczącą interfejsu API .NET usługi Data Factory, zobacz [dokumentację interfejsu API .NET usługi Data Factory](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1).
 
 W tym samouczku użyto magazynu obiektów blob platformy Azure jako magazynu danych źródła oraz bazy danych Azure SQL Database jako magazynu danych docelowych w operacji kopiowania. Poniższa tabela zawiera listę magazynów danych obsługiwanych przez działanie kopiowania jako źródła i lokalizacje docelowe: 

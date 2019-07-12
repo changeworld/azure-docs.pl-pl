@@ -2,24 +2,25 @@
 title: Często zadawane pytania dotyczące usługi Azure Security Center w wersji zapoznawczej IoT | Dokumentacja firmy Microsoft
 description: Znajdź odpowiedzi na często zadawane pytania dotyczące usługi Azure Security Center dla funkcji IoT i usługi.
 services: asc-for-iot
-ms.service: ASCforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: 97fda6c2-1ecb-491f-b48d-41788bd7e0d3
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: f15cd14ddc3a489db3abbbd2665d242470b5a821
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e04e21d55722b8cb90b277b34b5bffab343c575
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65200702"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616591"
 ---
 # <a name="azure-security-center-for-iot-frequently-asked-questions"></a>Centrum zabezpieczeń Azure dla IoT — często zadawane pytania  
 

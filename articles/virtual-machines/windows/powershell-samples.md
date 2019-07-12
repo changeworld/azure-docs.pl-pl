@@ -4,7 +4,7 @@ description: Przykłady programu PowerShell maszyny wirtualnej platformy Azure
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 576fe268bec12c16c7c2e2076dfa066c908693d5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9aea63b8366bf974fd89c32105bea707ad72c8a5
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60583693"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67719986"
 ---
 # <a name="azure-virtual-machine-powershell-samples"></a>Przykłady programu Azure PowerShell maszyny wirtualnej
 
@@ -50,4 +50,5 @@ Poniższa tabela zawiera linki do przykładowych skryptów programu PowerShell, 
 | [Szyfrowanie maszyny Wirtualnej i jej dysków danych](./../scripts/virtual-machines-windows-powershell-sample-encrypt-vm.md?toc=%2fpowershell%2fazure%2ftoc.json) | Tworzy usługi Azure key vault, klucz szyfrowania oraz jednostki usługi, a następnie szyfruje maszyny Wirtualnej. |
 |**Monitorowanie maszyn wirtualnych**||
 | [Monitorowanie maszyny Wirtualnej z usługą Azure Monitor](./../scripts/virtual-machines-windows-powershell-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | Tworzy maszynę wirtualną, a następnie instaluje agenta usługi Azure Log Analytics i rejestruje maszyny Wirtualnej w obszarze roboczym usługi Log Analytics.  |
+| [Zbieraj szczegółowe informacje o wszystkich maszyn wirtualnych w subskrypcji przy użyciu programu PowerShell](../scripts/virtual-machines-powershell-sample-collect-vm-details.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | Tworzy plik csv, który zawiera nazwę nazwę maszyny Wirtualnej, grupy zasobów, Region, sieci wirtualnej, podsieci, prywatny adres IP, typ systemu operacyjnego i publiczny adres IP maszyny wirtualne w podanej subskrypcji.
 | | |

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 7925f3aef4123fddd3a96c6e62971b881ae4cbc3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c9dfa6af4fb13018051c06783e5ae2bc3f49c0da
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65021880"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672088"
 ---
 # <a name="predefined-skills-for-content-enrichment-azure-search"></a>Wstępnie zdefiniowane umiejętności wzbogacania zawartości (Azure Search)
 
@@ -45,7 +45,7 @@ Kilka umiejętności są elastyczne, w jaki ich tworzą lub wykorzystują. Ogól
 | [Microsoft.Skills.Custom.WebApiSkill](cognitive-search-custom-skill-web-api.md) | Umożliwia rozszerzalność w potoku w usłudze wyszukiwania poznawczego przez wywołania HTTP do niestandardowego internetowego interfejsu API |
 
 
-Aby uzyskać wskazówki dotyczące tworzenia [umiejętności niestandardowe](cognitive-search-custom-skill-web-api.md), zobacz [jak zdefiniować niestandardowy interfejs](cognitive-search-custom-skill-interface.md) i [przykład: Tworzenie niestandardowego umiejętności](cognitive-search-create-custom-skill-example.md).
+Aby uzyskać wskazówki dotyczące tworzenia [umiejętności niestandardowe](cognitive-search-custom-skill-web-api.md), zobacz [jak zdefiniować niestandardowy interfejs](cognitive-search-custom-skill-interface.md) i [przykładu: Tworzenie niestandardowych umiejętności do wyszukiwania kognitywnego](cognitive-search-create-custom-skill-example.md).
 
 ## <a name="see-also"></a>Zobacz także
 

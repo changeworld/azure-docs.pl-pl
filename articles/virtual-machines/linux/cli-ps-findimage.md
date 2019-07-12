@@ -4,7 +4,7 @@ description: Dowiedz się, jak określić wydawcy, oferty, jednostki SKU i wersj
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 7a858e38-4f17-4e8e-a28a-c7f801101721
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 453628dca04fbc3c48564f15b6cf61802165b0cf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bbe98c4ad3a1b737b9df0d2ea53d53875f26ba54
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60880575"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67668365"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Znajdowanie obrazów maszyny Wirtualnej systemu Linux w witrynie Azure Marketplace przy użyciu wiersza polecenia platformy Azure
 
@@ -372,5 +372,5 @@ az group create --name myResourceGroupVM --location westus
 az vm create --resource-group myResourceGroupVM --name myVM --image bitnami:rabbitmq:rabbitmq:latest --plan-name rabbitmq --plan-product rabbitmq --plan-publisher bitnami
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby szybko utworzyć maszynę wirtualną przy użyciu informacji o obrazie, zobacz [tworzenie i zarządzanie maszynami wirtualnymi systemu Linux przy użyciu wiersza polecenia platformy Azure](tutorial-manage-vm.md).

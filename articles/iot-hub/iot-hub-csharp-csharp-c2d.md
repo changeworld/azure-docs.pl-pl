@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: robinsh
-ms.openlocfilehash: 0d83bdc3fd3f644013a2d2b80128839658524db9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 629342e44af16b6d23f9ed85f8c5306c807b8bfc
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65864444"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621901"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>Wysyłanie komunikatów z chmury do urządzenia z IoT Hub (.NET)
 
@@ -22,11 +22,11 @@ ms.locfileid: "65864444"
 
 ## <a name="introduction"></a>Wprowadzenie
 
-Usługa Azure IoT Hub to w pełni zarządzana usługa, która ułatwia włączanie bezpieczną i niezawodną komunikację dwukierunkową między milionami urządzeń i zapleczem rozwiązania. [Wysyłanie danych telemetrycznych z urządzenia do usługi IoT hub... ](quickstart-send-telemetry-dotnet.md) przedstawia sposób tworzenia Centrum IoT hub, aprowizować w nim tożsamości urządzenia i kodu aplikacji urządzenia, która wysyła komunikaty z urządzenia do chmury.
+Usługa Azure IoT Hub to w pełni zarządzana usługa, która ułatwia włączanie bezpieczną i niezawodną komunikację dwukierunkową między milionami urządzeń i zapleczem rozwiązania. [Wysyłanie danych telemetrycznych z urządzenia do usługi IoT hub](quickstart-send-telemetry-dotnet.md) Przewodnik Szybki Start przedstawia sposób tworzenia Centrum IoT hub, aprowizować w nim tożsamości urządzenia i kodu aplikacji urządzenia, która wysyła komunikaty z urządzenia do chmury.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Ten samouczek opiera się na opcji szybkiego startu [wysyłanie danych telemetrycznych z urządzenia do usługi IoT hub... ](quickstart-send-telemetry-dotnet.md). Prezentuje sposób wykonaj następujące czynności:
+Ten samouczek opiera się [wysyłanie danych telemetrycznych z urządzenia do usługi IoT hub](quickstart-send-telemetry-dotnet.md). Prezentuje sposób wykonaj następujące czynności:
 
 * Z zapleczem rozwiązania wysyłanie komunikatów z chmury do urządzeń do pojedynczego urządzenia za pomocą usługi IoT Hub.
 
@@ -38,13 +38,13 @@ Można znaleźć więcej informacji na temat komunikatów z chmury do urządzeń
 
 Na końcu tego samouczka możesz uruchomić dwie aplikacje konsolowe .NET.
 
-* **SimulatedDevice**, zmodyfikowanej wersji aplikacji utworzonej w [wysyłanie danych telemetrycznych z urządzenia do usługi IoT hub... ](quickstart-send-telemetry-dotnet.md), który nawiązuje połączenie z Centrum IoT i odbiera komunikaty z chmury do urządzenia.
+* **SimulatedDevice**, zmodyfikowanej wersji aplikacji utworzonej w [wysyłanie danych telemetrycznych z urządzenia do usługi IoT hub](quickstart-send-telemetry-dotnet.md), który nawiązuje połączenie z Centrum IoT i odbiera komunikaty z chmury do urządzenia.
 
-* **SendCloudToDevice**, która wysyła komunikat chmury do urządzenia do aplikacji urządzenia za pomocą usługi IoT Hub i odbiera jego potwierdzenie dostawy.
+* **SendCloudToDevice**, która wysyła komunikat chmury do urządzenia do aplikacji urządzenia za pomocą usługi IoT Hub i odbiera jego potwierdzenia dostarczenia.
 
 > [!NOTE]
 > Usługi IoT Hub obsługuje zestaw SDK na wielu platformach i językach (w tym C, Java i Javascript) poprzez [zestawy SDK urządzeń Azure IoT](iot-hub-devguide-sdks.md). Aby uzyskać instrukcje krok po kroku dotyczące łączenia urządzenia do kodu w tym samouczku i ogólnie do usługi Azure IoT Hub, zobacz [usługi IoT Hub — przewodnik dewelopera](iot-hub-devguide.md).
-> 
+>
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
@@ -54,7 +54,7 @@ Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
 ## <a name="receive-messages-in-the-device-app"></a>Odbieranie wiadomości w aplikacji urządzenia
 
-W tej sekcji zmodyfikujesz aplikację urządzenia utworzone w [wysyłanie danych telemetrycznych z urządzenia do usługi IoT hub... ](quickstart-send-telemetry-dotnet.md) do odbierania komunikatów z chmury do urządzeń z usługi IoT hub.
+W tej sekcji zmodyfikujesz aplikację urządzenia utworzone w [wysyłanie danych telemetrycznych z urządzenia do usługi IoT hub](quickstart-send-telemetry-dotnet.md) do odbierania komunikatów z chmury do urządzeń z usługi IoT hub.
 
 1. W programie Visual Studio w **SimulatedDevice** projektu, dodaj następującą metodę do **Program** klasy.
 
@@ -138,7 +138,7 @@ Teraz możesz zapisywać dane aplikacji konsolowej .NET, która wysyła komunika
    static string connectionString = "{iot hub connection string}";
    ```
 
-6. Dodaj następującą metodę do klasy **Program**. Ustaw nazwę urządzenia na używana podczas definiowania urządzeń w [wysyłanie danych telemetrycznych z urządzenia do usługi IoT hub... ](quickstart-send-telemetry-dotnet.md).
+6. Dodaj następującą metodę do klasy **Program**. Ustaw nazwę urządzenia na używana podczas definiowania urządzeń w [wysyłanie danych telemetrycznych z urządzenia do usługi IoT hub](quickstart-send-telemetry-dotnet.md).
 
    ``` csharp
    private async static Task SendCloudToDeviceMessageAsync()
@@ -149,7 +149,7 @@ Teraz możesz zapisywać dane aplikacji konsolowej .NET, która wysyła komunika
    }
    ```
 
-   Ta metoda wysyła nowy komunikat z chmury do urządzenia na urządzeniu z Identyfikatorem, `myFirstDevice`. Ten parametr należy zmienić tylko wtedy, gdy został zmodyfikowany z działaniem używanym w [wysyłanie danych telemetrycznych z urządzenia do usługi IoT hub... ](quickstart-send-telemetry-dotnet.md).
+   Ta metoda wysyła nowy komunikat z chmury do urządzenia na urządzeniu z Identyfikatorem, `myFirstDevice`. Ten parametr należy zmienić tylko wtedy, gdy został zmodyfikowany z działaniem używanym w [wysyłanie danych telemetrycznych z urządzenia do usługi IoT hub](quickstart-send-telemetry-dotnet.md).
 
 7. Na koniec należy dodać następujące wiersze do **Main** metody.
 
@@ -171,7 +171,7 @@ Teraz możesz zapisywać dane aplikacji konsolowej .NET, która wysyła komunika
 
 ## <a name="receive-delivery-feedback"></a>Odbieranie opinii dostarczania
 
-Jest możliwe do żądania potwierdzeń dostarczenia (lub data jej wygaśnięcia) z usługi IoT Hub dla każdego komunikatu chmury do urządzenia. Ta opcja umożliwia zapleczu rozwiązania łatwo informować logiki ponawiania próby lub odszkodowania. Aby uzyskać więcej informacji dotyczących opinii z chmury do urządzenia, zobacz [D2C i C2D komunikatów usługi IoT Hub](iot-hub-devguide-messaging.md).
+Jest możliwe do żądania potwierdzenia dostarczania (lub data jej wygaśnięcia) z usługi IoT Hub dla każdego komunikatu chmury do urządzenia. Ta opcja umożliwia zapleczu rozwiązania łatwo informować logiki ponawiania próby lub odszkodowania. Aby uzyskać więcej informacji dotyczących opinii z chmury do urządzenia, zobacz [D2C i C2D komunikatów usługi IoT Hub](iot-hub-devguide-messaging.md).
 
 W tej sekcji zmodyfikujesz **SendCloudToDevice** aplikacji na żądanie opinii i otrzymywać usługi IoT hub.
 
@@ -217,10 +217,10 @@ W tej sekcji zmodyfikujesz **SendCloudToDevice** aplikacji na żądanie opinii i
    ![Odbieranie komunikatów aplikacji](./media/iot-hub-csharp-csharp-c2d/sendc2d2.png)
 
 > [!NOTE]
-> Sake dla uproszczenia w tym samouczku nie implementuje żadnych zasad ponawiania. W kodzie produkcyjnym należy wdrożyć zasady ponawiania (np. wycofywanie wykładnicze) zgodnie z sugestią podaną w artykule [obsługi błędów przejściowych](/azure/architecture/best-practices/transient-faults).
+> Dla uproszczenia w tym samouczku nie implementuje żadnych zasad ponawiania. W kodzie produkcyjnym należy wdrożyć zasady ponawiania (np. wycofywanie wykładnicze) zgodnie z sugestią podaną w artykule [obsługi błędów przejściowych](/azure/architecture/best-practices/transient-faults).
 >
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym instruktażu przedstawiono sposób wysyłania i odbierania komunikatów z chmury do urządzeń.
 

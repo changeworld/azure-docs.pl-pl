@@ -13,15 +13,15 @@ ms.topic: overview
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 9bf8c51fda6985f88ecffa60b32c1c62e364a511
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aed073e7d65f193c4123106ba1ae3f4f442965e1
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60825053"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836311"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Wprowadzenie do usługi Azure Data Factory 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
 > * [Wersja 1](data-factory-introduction.md)
 > * [Wersja 2 (bieżąca wersja)](../introduction.md)
 
@@ -133,7 +133,6 @@ Załóżmy na przykład, że środowiska obliczeniowe, takie jak klaster usługi
 ## <a name="get-started-with-creating-a-pipeline"></a>Rozpoczynanie tworzenia potoku
 Potoki danych w usłudze Azure Data Factory można tworzyć za pomocą następujących narzędzi lub interfejsów API: 
 
-- Azure Portal
 - Visual Studio
 - PowerShell
 - Interfejs API .NET

@@ -9,13 +9,14 @@ ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: overview
 ms.date: 12/22/2018
-ms.author: azfuncdf, glenga
-ms.openlocfilehash: 2228f3fe05e1021d0f87ce0b0d33a8287f048a8c
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.author: glenga
+ms.reviewer: azfuncdf
+ms.openlocfilehash: 6e1acf5f605d7f6fb42d24e6e7ec624a317b0e31
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872809"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612863"
 ---
 # <a name="what-are-durable-functions"></a>Co to jest Durable Functions?
 
@@ -43,15 +44,15 @@ Podstawowym zastosowaniem rozszerzenia Durable Functions jest uproszczenie zło�
 
 Rozszerzenie Durable Functions obsługuje obecnie następujące języki:
 
-* **C#**: zarówno [prekompilowane biblioteki klas](../functions-dotnet-class-library.md), jak i [skrypt języka C#](../functions-reference-csharp.md).
-* **F#**: prekompilowane biblioteki klas i skrypt języka F#. Skrypt języka F# jest obsługiwany tylko w przypadku wersji 1.x środowiska uruchomieniowego usługi Azure Functions.
+* **C#** : zarówno [prekompilowane biblioteki klas](../functions-dotnet-class-library.md), jak i [skrypt języka C#](../functions-reference-csharp.md).
+* **F#** : prekompilowane biblioteki klas i skrypt języka F#. Skrypt języka F# jest obsługiwany tylko w przypadku wersji 1.x środowiska uruchomieniowego usługi Azure Functions.
 * **JavaScript**: obsługiwany tylko w przypadku wersji 2.x środowiska uruchomieniowego usługi Azure Functions. Wymaga rozszerzenia Durable Functions w wersji 1.7.0 lub nowszej. 
 
 Docelowo rozszerzenie Durable Functions ma obsługiwać wszystkie [języki obsługiwane w usłudze Azure Functions](../supported-languages.md). Zobacz [listę problemów z rozszerzeniem Durable Functions](https://github.com/Azure/azure-functions-durable-extension/issues), aby poznać aktualny stan prac nad obsługą dodatkowych języków.
 
 Np. usługi Azure Functions są szablony, które pomogą Ci tworzyć niezawodne funkcje przy użyciu [Visual Studio 2019](durable-functions-create-first-csharp.md), [programu Visual Studio Code](quickstart-js-vscode.md)i [witryny Azure portal](durable-functions-create-portal.md).
 
-## <a name="billing"></a>Informacje billingowe
+## <a name="billing"></a>Rozliczenia
 
 Opłaty za rozszerzenie Durable Functions są naliczane tak samo, jak w przypadku usługi Azure Functions. Aby uzyskać więcej informacji, zobacz [Cennik usługi Azure Functions](https://azure.microsoft.com/pricing/details/functions/).
 
@@ -72,7 +73,7 @@ Poniższy klip wideo prezentuje zalety rozszerzenia Durable Functions:
 
 Ponieważ Durable Functions to zaawansowane rozszerzenie usługi [Azure Functions](../functions-overview.md), nie jest odpowiednie dla wszystkich aplikacji. Aby dowiedzieć się więcej na temat rozszerzenia Durable Functions, zobacz [Durable Functions patterns and technical concepts (Durable Functions — wzorce i zagadnienia techniczne)](durable-functions-concepts.md). Aby zapoznać się z porównaniem technologii orkiestracji dostępnych na platformie Azure, zobacz [Porównanie usług Azure Functions i Azure Logic Apps](../functions-compare-logic-apps-ms-flow-webjobs.md#compare-azure-functions-and-azure-logic-apps).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Durable Functions patterns and technical concepts (Durable Functions — wzorce i zagadnienia techniczne)](durable-functions-concepts.md)

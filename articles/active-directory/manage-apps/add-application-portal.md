@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/09/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1688cc9317306e7f524536754854b6147ad3dd5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3de6a2cbdfe7a6d006a3bbfab16792376eda0d07
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108765"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702535"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>Szybki start: dodawanie aplikacji do dzierżawy usługi Azure Active Directory
 
@@ -43,27 +43,21 @@ Aby przetestować kroki opisane w tym samouczku, zalecamy użycie środowiska in
 Aby dodać aplikację z galerii do dzierżawy usługi Azure AD:
 
 1. W [witryny Azure portal](https://portal.azure.com), w panelu nawigacyjnym po lewej stronie wybierz **usługi Azure Active Directory**.
-
 1. W **usługi Azure Active Directory** okienku wybierz **aplikacje dla przedsiębiorstw**.
+1. **Wszystkie aplikacje** zostanie otwarte okienko, aby pokazać losowej próbki aplikacji w dzierżawie usługi Azure AD. Wybierz **nową aplikację** w górnej części **wszystkie aplikacje** okienko, aby dodać aplikacji z galerii do dzierżawy.
 
-    ![Otwarte aplikacje dla przedsiębiorstw](media/add-application-portal/open-enterprise-apps.png)
+    ![Wybierz nową aplikację do dodania aplikacji z galerii do Twojej dzierżawy](media/add-application-portal/new-application.png)
 
-1. **Wszystkie aplikacje** zostanie otwarte okienko, aby pokazać losowej próbki aplikacji w dzierżawie usługi Azure AD. Wybierz **nową aplikację** w górnej części **wszystkie aplikacje** okienka.
+1. W **kategorie** okienku zostaną wyświetlone ikony w obszarze **polecane aplikacje** obszar, który jest losowej próbki z galerii aplikacji. Aby wyświetlić więcej aplikacji, można wybrać **Pokaż więcej** , ale nie jest zalecane wyszukiwania w ten sposób, ponieważ istnieją tysiące aplikacji w galerii.
 
-    ![Nowa aplikacja](media/add-application-portal/new-application.png)
-
-1. W **kategorie** okienku zostaną wyświetlone ikony w obszarze **polecane aplikacje** obszar, który jest losowej próbki z galerii aplikacji.  Aby wyświetlić więcej aplikacji, można wybrać **Pokaż więcej**. Jednak nie zaleca się wyszukiwanie w ten sposób, ponieważ istnieją tysiące aplikacji w galerii.
-
-    ![Wyszukiwanie według nazwy lub kategorii](media/add-application-portal/categories.png)
+    ![Wyszukiwać aplikację według nazwy lub kategorii](media/add-application-portal/categories.png)
 
 1. Aby wyszukać aplikację, w obszarze **Dodaj z galerii**, wprowadź nazwę aplikacji, które chcesz dodać. Wybierz aplikację z wyników, a następnie wybierz **Dodaj**. W poniższym przykładzie przedstawiono formularz **Dodaj aplikację**, który pojawia się w przypadku wyszukiwania witryny GitHub.com.
 
-    ![Dodawanie aplikacji](media/add-application-portal/add-an-application.png)
+    ![Pokazuje, jak dodać aplikację z galerii](media/add-application-portal/add-an-application.png)
 
 1. W formularzu specyficznym dla aplikacji można zmienić informacje o właściwościach. Można na przykład edytować nazwę aplikacji, aby odpowiadała potrzebom organizacji. W tym przykładzie jest używana nazwa **GitHub-test**.
-
 1. Po zakończeniu wprowadzania zmian do właściwości, wybierz **Dodaj**.
-
 1. Zostanie wyświetlona strona wprowadzenia z opcjami konfigurowania aplikacji w organizacji.
 
 Dodaniu aplikacji. Możesz zrobić sobie przerwę. W kolejnych sekcjach pokazano, jak zmienić logo i edytować inne właściwości aplikacji.
@@ -73,17 +67,12 @@ Dodaniu aplikacji. Możesz zrobić sobie przerwę. W kolejnych sekcjach pokazano
 Załóżmy, że po przerwie wracasz do konfigurowania swojej aplikacji. Najpierw należy jest, Znajdź aplikację.
 
 1. W  **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie wybierz **usługi Azure Active Directory**.
-
 1. W **usługi Azure Active Directory** okienku wybierz **aplikacje dla przedsiębiorstw**.
-
 1. Z **typ aplikacji** menu rozwijanego wybierz opcję **wszystkie aplikacje**, a następnie wybierz pozycję **Zastosuj**. Aby dowiedzieć się więcej na temat opcji wyświetlania, zobacz [View tenant applications (Wyświetlanie aplikacji dzierżawy)](view-applications-portal.md).
-
 1. Zostanie wyświetlona lista wszystkich aplikacji w dzierżawie usługi Azure AD. Lista jest przykładem losowym. Aby wyświetlić więcej aplikacji, wybierz **Pokaż więcej** jeden lub więcej razy.
-
 1. Aby szybko znaleźć aplikację w dzierżawie, wprowadź nazwę aplikacji w polu wyszukiwania, a następnie wybierz **Zastosuj**. W tym przykładzie wyszukuje aplikacji GitHub test dodane wcześniej.
 
-    ![Wyszukiwanie aplikacji](media/add-application-portal/find-application.png)
-
+    ![Pokazuje, jak znaleźć aplikację, korzystając z pola wyszukiwania](media/add-application-portal/find-application.png)
 
 ## <a name="configure-user-sign-in-properties"></a>Konfigurowanie właściwości logowania użytkownika
 
@@ -94,7 +83,7 @@ Aby edytować właściwości aplikacji:
 1. Wybierz aplikację, aby go otworzyć.
 1. Wybierz **właściwości** aby otworzyć okienko właściwości do edycji.
 
-    ![Edytuj w okienku właściwości](media/add-application-portal/edit-properties.png)
+    ![Pokazuje właściwości ekranu i właściwości można edytować aplikacji](media/add-application-portal/edit-properties.png)
 
 1. Poświęć chwilę na zapoznanie się z opcjami logowania. Opcje określają, jak użytkownicy, którzy są przypisani lub nieprzypisane do aplikacji może zalogować się do aplikacji. I opcje określają, jeśli użytkownik może wyświetlić aplikację w panelu dostępu.
 
@@ -144,10 +133,9 @@ Aby użyć logo niestandardowego:
 1. Przekaż logo.
 1. Gdy skończysz, wybierz pozycję **Zapisz**.
 
-    ![Zmienianie logo](media/add-application-portal/change-logo.png)
+    ![Pokazuje, jak zmienić logo na stronie właściwości aplikacji](media/add-application-portal/change-logo.png)
 
-
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start przedstawiono sposób dodawania aplikacji z galerii do dzierżawy usługi Azure AD. Przedstawiono sposób edytowania właściwości aplikacji.
 
@@ -155,5 +143,3 @@ Teraz możesz przystąpić do konfigurowania aplikacji pod kątem logowania jedn
 
 > [!div class="nextstepaction"]
 > [Skonfiguruj logowanie jednokrotne](configure-single-sign-on-portal.md)
-
-

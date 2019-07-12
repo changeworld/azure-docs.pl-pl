@@ -4,7 +4,7 @@ description: Zmień dysk systemu operacyjnego używany przez maszynę wirtualną
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: be00f8338430452faa8bd5a20d9e2ddfcbb9d09d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae3979f7ceae4a854df00b39d9c2b9673f65f987
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64701298"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67720130"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>Zmień dysk systemu operacyjnego używany przez Maszynę wirtualną platformy Azure przy użyciu programu PowerShell
 

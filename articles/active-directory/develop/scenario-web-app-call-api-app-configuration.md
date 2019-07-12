@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd7f393f889facf147cf25625d5c3b20f886ddf5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c78a951258e3c279f96f44ceac469e4c38cf22c
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65784936"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785569"
 ---
 # <a name="web-app-that-calls-web-apis---code-configuration"></a>Aplikacja sieci Web, że wywołania sieci web interfejsy API — Konfiguracja kodu
 
@@ -44,7 +44,7 @@ Dostępne są następujące biblioteki obsługi przepływ kodu autoryzacji dla a
 
 W programie ASP.NET Core dziać rzeczy `Startup.cs` pliku. Można subskrybować `OnAuthorizationCodeReceived` otworzyć o identyfikatorze zdarzenia połączenia i z tego wydarzenia, wywołaj MSAL. Metoda firmy NET `AcquireTokenFromAuthorizationCode` została przechowywania w pamięci podręcznej tokenu, token dostępu dla żądanego zakresów i token odświeżania, który będzie używany do odświeżenia tokenu dostępu, gdy jest bliski wygaśnięcia, lub można pobrać tokenu w imieniu tego samego użytkownika , ale do innego zasobu.
 
-Komentarze w kodzie poniżej pomoże poznać niektóre aspekty skomplikowanych tkania platformy MSAL.NET i ASP.NET Core
+Komentarze w kodzie poniżej pomaga zrozumieć niektóre aspekty skomplikowanych tkania platformy MSAL.NET i ASP.NET Core. Szczegółowe informacje znajdują się w [aplikacji sieci Web platformy ASP.NET Core przyrostowe wirusowej rozdziału samouczków, 2](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)
 
 ```CSharp
   services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
@@ -151,9 +151,7 @@ private void ConfigureAuth(IAppBuilder app)
   Scope = Globals.BasicSignInScopes, // a basic set of permissions for user sign in & profile access
   TokenValidationParameters = new TokenValidationParameters
   {
-  // We'll inject our own issuer validation logic below.
-  ValidateIssuer = false,
-  NameClaimType = "name",
+   NameClaimType = "name",
   },
   Notifications = new OpenIdConnectAuthenticationNotifications()
   {
@@ -191,7 +189,7 @@ W aplikacji sieci web (lub internetowych interfejsów API jako środek fakcie) i
 
 Przykłady dotyczące używania pamięci podręczne tokenu dla aplikacji sieci Web i interfejsy API sieci web są dostępne w [samouczek dotyczący aplikacji sieci Web platformy ASP.NET Core](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) w fazie [pamięci podręcznej tokenu 2-2](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache). W celu implementacji mają przyjrzeć się następującym folderze [TokenCacheProviders](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web/TokenCacheProviders) w [microsoft uwierzytelniania rozszerzenia do dotnet](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet) biblioteki (w [ Microsoft.Identity.Client.Extensions.Web](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web) folderu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym momencie po zalogowaniu użytkownika tokenu jest przechowywany w pamięci podręcznej tokenu. Zobaczmy, jak są one następnie używane w innych częściach aplikacji sieci Web.
 
