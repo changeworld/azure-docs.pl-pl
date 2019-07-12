@@ -15,12 +15,12 @@ ms.date: 04/04/2019
 ms.author: mimart
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecadb499d140ccfc993820080cae0b749977fc61
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 416e72f7e9e8622f044f7bb6430fbb36010b164e
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824742"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701969"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Zarządzanie certyfikatami federacyjnego logowania jednokrotnego w usłudze Azure Active Directory
 
@@ -43,10 +43,10 @@ Możesz również pobrać certyfikat aktywną lub nieaktywną, wybierając **cer
 Domyślnie platforma Azure konfiguruje certyfikat wygaśnie po upływie trzech lat, gdy jest tworzony automatycznie podczas SAML jednej konfiguracji logowania jednokrotnego. Nie można zmienić datę certyfikatu po jego zapisaniu, należy:
 
 1. Utwórz nowy certyfikat z odpowiednią datą.
-2. Zapisz nowy certyfikat.
-3. Pobierz nowy certyfikat w poprawnym formacie.
-4. Przekaż nowy certyfikat do aplikacji.
-5. Ustaw nowy certyfikat jako aktywny w portalu Azure Active Directory.
+1. Zapisz nowy certyfikat.
+1. Pobierz nowy certyfikat w poprawnym formacie.
+1. Przekaż nowy certyfikat do aplikacji.
+1. Ustaw nowy certyfikat jako aktywny w portalu Azure Active Directory.
 
 Poniższych sekcjach ułatwiają wykonaj następujące kroki.
 
@@ -55,56 +55,40 @@ Poniższych sekcjach ułatwiają wykonaj następujące kroki.
 Najpierw utwórz i Zapisz nowy certyfikat za pomocą różnych wygaśnięcia:
 
 1. Zaloguj się do [portalu Azure Active Directory](https://aad.portal.azure.com/). **Centrum administracyjne usługi Azure Active Directory** zostanie wyświetlona strona.
-
-2. W lewym okienku wybierz pozycję **Aplikacje dla przedsiębiorstw**. Zostanie wyświetlona lista aplikacji przeznaczonych dla przedsiębiorstw na Twoim koncie.
-
-3. Wybierz aplikację, których to dotyczy. Zostanie wyświetlona strona Omówienie aplikacji.
-
-4. W okienku po lewej stronie strony przeglądu aplikacji wybierz **logowanie jednokrotne**.
-
-5. Jeśli **wybierz jedną metodę logowania jednokrotnego** zostanie wyświetlona strona wybierz **SAML**.
-
-6. W **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML - Preview** strony, Znajdź **certyfikat podpisywania SAML** nagłówek i wybierz **Edytuj** ikonę (ołówka). **Certyfikat podpisywania SAML** zostanie wyświetlona strona, która wyświetla stan (**Active** lub **nieaktywny**), datę wygaśnięcia i odcisk palca (ciąg wyznaczania wartości skrótu) każdego certyfikatu.
-
-7. Wybierz **nowy certyfikat**. Pojawi się nowy wiersz poniżej listy certyfikatów, których data wygaśnięcia wartość domyślna to dokładnie trzech lat po dacie bieżącej. (Zmiany nie zostały jeszcze zapisane, dzięki czemu mogą modyfikować datę wygaśnięcia.)
-
-8. W nowym wierszu certyfikatu, umieść kursor nad kolumny daty wygaśnięcia, a następnie wybierz pozycję **wybierz datę** ikonę (Kalendarz). Formant kalendarza zostanie wyświetlone, dni miesiąca do bieżącej daty wygaśnięcia nowego wiersza.
-
-9. Aby ustawić nową datę przy użyciu kontrolki kalendarza. Możesz ustawić dowolna data od bieżącej daty i trzech lat po dacie bieżącej.
-
-10. Wybierz pozycję **Zapisz**. Pojawi się nowy certyfikat ze stanem **nieaktywny**, po upływie daty, wybierz opcję i odcisku palca.
-
-11. Wybierz **X** aby powrócić do **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML - Preview** strony.
+1. W lewym okienku wybierz pozycję **Aplikacje dla przedsiębiorstw**. Zostanie wyświetlona lista aplikacji przeznaczonych dla przedsiębiorstw na Twoim koncie.
+1. Wybierz aplikację, których to dotyczy. Zostanie wyświetlona strona Omówienie aplikacji.
+1. W okienku po lewej stronie strony przeglądu aplikacji wybierz **logowanie jednokrotne**.
+1. Jeśli **wybierz jedną metodę logowania jednokrotnego** zostanie wyświetlona strona wybierz **SAML**.
+1. W **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML - Preview** strony, Znajdź **certyfikat podpisywania SAML** nagłówek i wybierz **Edytuj** ikonę (ołówka). **Certyfikat podpisywania SAML** zostanie wyświetlona strona, która wyświetla stan (**Active** lub **nieaktywny**), datę wygaśnięcia i odcisk palca (ciąg wyznaczania wartości skrótu) każdego certyfikatu.
+1. Wybierz **nowy certyfikat**. Pojawi się nowy wiersz poniżej listy certyfikatów, których data wygaśnięcia wartość domyślna to dokładnie trzech lat po dacie bieżącej. (Zmiany nie zostały jeszcze zapisane, dzięki czemu mogą modyfikować datę wygaśnięcia.)
+1. W nowym wierszu certyfikatu, umieść kursor nad kolumny daty wygaśnięcia, a następnie wybierz pozycję **wybierz datę** ikonę (Kalendarz). Formant kalendarza zostanie wyświetlone, dni miesiąca do bieżącej daty wygaśnięcia nowego wiersza.
+1. Aby ustawić nową datę przy użyciu kontrolki kalendarza. Możesz ustawić dowolna data od bieżącej daty i trzech lat po dacie bieżącej.
+1. Wybierz pozycję **Zapisz**. Pojawi się nowy certyfikat ze stanem **nieaktywny**, po upływie daty, wybierz opcję i odcisku palca.
+1. Wybierz **X** aby powrócić do **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML - Preview** strony.
 
 ### <a name="upload-and-activate-a-certificate"></a>Przekazywanie i aktywować certyfikatu
 
 Następnie Pobierz nowy certyfikat w prawidłowym formacie, przekaż go do aplikacji i uaktywnić w usłudze Azure Active Directory:
 
 1. Aby wyświetlić dodatkowe instrukcje konfiguracji logowania jednokrotnego SAML aplikacji albo:
+
    - Wybieranie **Przewodnik po konfiguracji** link, aby wyświetlić w osobnym oknie przeglądarki lub na karcie, lub
    - przechodząc do **Konfigurowanie** nagłówka i wybierając polecenie **wyświetlić instrukcje krok po kroku** do wyświetlania na pasku bocznym.
 
-2. W instrukcjach należy pamiętać, formacie kodowania, wymagane w celu przekazania certyfikatu.
-
-3. Postępuj zgodnie z instrukcjami w [automatycznie wygenerowany certyfikat dla aplikacji i innych galerii](#auto-generated-certificate-for-gallery-and-non-gallery-applications) wcześniejszej sekcji. Ten krok spowoduje pobranie certyfikatu w formacie kodowania, wymagane do przekazania przez aplikację.
-
-4. Gdy użytkownik chce przechodzą do nowego certyfikatu, wróć do **certyfikat podpisywania SAML** strony, a w wierszu nowo zapisany certyfikat, wybierz przycisk wielokropka ( **...** ) i wybierz **uaktywnić certyfikat**. Stan nowego certyfikatu zmieni się na **Active**, a wcześniej aktywnego certyfikatu zmienia stan **nieaktywny**.
-
-5. Kontynuuj poniższe instrukcje konfiguracji logowania jednokrotnego SAML aplikacji, które wcześniej wyświetlane tak, aby przekazać podpisywania SAML certyfikatów poprawny format kodowania.
+1. W instrukcjach należy pamiętać, formacie kodowania, wymagane w celu przekazania certyfikatu.
+1. Postępuj zgodnie z instrukcjami w [automatycznie wygenerowany certyfikat dla aplikacji i innych galerii](#auto-generated-certificate-for-gallery-and-non-gallery-applications) wcześniejszej sekcji. Ten krok spowoduje pobranie certyfikatu w formacie kodowania, wymagane do przekazania przez aplikację.
+1. Gdy użytkownik chce przechodzą do nowego certyfikatu, wróć do **certyfikat podpisywania SAML** strony, a w wierszu nowo zapisany certyfikat, wybierz przycisk wielokropka ( **...** ) i wybierz **uaktywnić certyfikat**. Stan nowego certyfikatu zmieni się na **Active**, a wcześniej aktywnego certyfikatu zmienia stan **nieaktywny**.
+1. Kontynuuj poniższe instrukcje konfiguracji logowania jednokrotnego SAML aplikacji, które wcześniej wyświetlane tak, aby przekazać podpisywania SAML certyfikatów poprawny format kodowania.
 
 ## <a name="add-email-notification-addresses-for-certificate-expiration"></a>Dodaj adresy powiadomień e-mail do wygaśnięcia certyfikatu
 
 Usługa Azure AD będzie wysyłać wiadomość e-mail powiadomienie 60, 30 i 7 dni przed wygaśnięciem certyfikatu SAML. Możesz dodać więcej niż jeden adres e-mail, aby otrzymywać powiadomienia. Aby określić adresy e-mail, chcesz, aby powiadomienia mają być wysyłane do:
 
 1. W **certyfikat podpisywania SAML** strony, przejdź do **adresy e-mail powiadomień** nagłówka. Domyślnie ten nagłówek używa tylko adres e-mail administratora, który dodaje aplikację.
-
-2. Poniżej adres e-mail końcowego wpisz adres e-mail, który powinien otrzymywać powiadomienie o wygaśnięciu certyfikatu, a następnie naciśnij klawisz Enter.
-
-3. Powtórz poprzedni krok dla każdego z adresów e-mail, który chcesz dodać.
-
-4. Dla każdego z adresów e-mail do usunięcia, wybierz **Usuń** ikonę (Kosza) obok adres e-mail.
-
-5. Wybierz pozycję **Zapisz**.
+1. Poniżej adres e-mail końcowego wpisz adres e-mail, który powinien otrzymywać powiadomienie o wygaśnięciu certyfikatu, a następnie naciśnij klawisz Enter.
+1. Powtórz poprzedni krok dla każdego z adresów e-mail, który chcesz dodać.
+1. Dla każdego z adresów e-mail do usunięcia, wybierz **Usuń** ikonę (Kosza) obok adres e-mail.
+1. Wybierz pozycję **Zapisz**.
 
 Otrzymasz powiadomienie e-mail z aadnotification@microsoft.com. Aby uniknąć poczty e-mail, przechodząc do lokalizacji spamu, Dodaj tę wiadomość e-mail do Twoich kontaktów.
 
@@ -113,21 +97,18 @@ Otrzymasz powiadomienie e-mail z aadnotification@microsoft.com. Aby uniknąć po
 Jeśli certyfikat wygaśnie, można odnowić go za pomocą procedury, która powoduje nie znaczących przestojów dla użytkowników. Aby odnowić Wygasający certyfikat:
 
 1. Postępuj zgodnie z instrukcjami w [Utwórz nowy certyfikat](#create-a-new-certificate) sekcji wcześniej, za pomocą daty, która pokrywa się z istniejącym certyfikatem. Tą datą ogranicza przestoje spowodowane wygaśnięcia certyfikatu.
-
-2. Jeśli aplikacji można automatycznego przerzucania certyfikatu, ustawić nowy certyfikat na aktywny, wykonaj następujące czynności:
+1. Jeśli aplikacji można automatycznego przerzucania certyfikatu, ustawić nowy certyfikat na aktywny, wykonaj następujące czynności:
    1. Wróć do **certyfikat podpisywania SAML** strony.
-   2. W wierszu nowo zapisany certyfikat, wybierz przycisk wielokropka ( **...** ), a następnie wybierz **uaktywnić certyfikat**.
-   3. Pomiń dwa następne kroki.
+   1. W wierszu nowo zapisany certyfikat, wybierz przycisk wielokropka ( **...** ), a następnie wybierz **uaktywnić certyfikat**.
+   1. Pomiń dwa następne kroki.
 
-3. Jeśli aplikacja może obsługiwać tylko jeden certyfikat naraz, wybierz przedział czasu przestojów do wykonania kolejnego kroku. (W przeciwnym razie, jeśli aplikacja nie automatyczne pobranie nowego certyfikatu, ale może obsługiwać więcej niż jeden certyfikat podpisywania, można wykonać następny krok dowolnym.)
-
-4. Przed upływem starego certyfikatu, postępuj zgodnie z instrukcjami [przekazywania i aktywowania certyfikatu](#upload-and-activate-a-certificate) wcześniejszej sekcji.
-
-5. Zaloguj się do aplikacji, aby upewnić się, że certyfikat działa prawidłowo.
+1. Jeśli aplikacja może obsługiwać tylko jeden certyfikat naraz, wybierz przedział czasu przestojów do wykonania kolejnego kroku. (W przeciwnym razie, jeśli aplikacja nie automatyczne pobranie nowego certyfikatu, ale może obsługiwać więcej niż jeden certyfikat podpisywania, można wykonać następny krok dowolnym.)
+1. Przed upływem starego certyfikatu, postępuj zgodnie z instrukcjami [przekazywania i aktywowania certyfikatu](#upload-and-activate-a-certificate) wcześniejszej sekcji.
+1. Zaloguj się do aplikacji, aby upewnić się, że certyfikat działa prawidłowo.
 
 ## <a name="related-articles"></a>Pokrewne artykuły:
 
-* [Samouczków dotyczących integrowania aplikacji SaaS przy użyciu usługi Azure Active Directory](../saas-apps/tutorial-list.md)
-* [Zarządzanie aplikacjami w usłudze Azure Active Directory](what-is-application-management.md)
-* [Single sign-on to applications in Azure Active Directory (Logowanie jednokrotne do aplikacji w usłudze Azure Active Directory)](what-is-single-sign-on.md)
-* [Debugowanie opartej na SAML logowania jednokrotnego do aplikacji w usłudze Azure Active Directory](../develop/howto-v1-debug-saml-sso-issues.md)
+- [Samouczków dotyczących integrowania aplikacji SaaS przy użyciu usługi Azure Active Directory](../saas-apps/tutorial-list.md)
+- [Zarządzanie aplikacjami w usłudze Azure Active Directory](what-is-application-management.md)
+- [Single sign-on to applications in Azure Active Directory (Logowanie jednokrotne do aplikacji w usłudze Azure Active Directory)](what-is-single-sign-on.md)
+- [Debugowanie opartej na SAML logowania jednokrotnego do aplikacji w usłudze Azure Active Directory](../develop/howto-v1-debug-saml-sso-issues.md)

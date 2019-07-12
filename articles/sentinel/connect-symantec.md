@@ -1,43 +1,44 @@
 ---
-title: Połącz dane firmy Symantec ICDX przez wartownika platformy Azure w wersji zapoznawczej | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak nawiązać połączenie z danych firmy Symantec ICDX przez wartownika platformy Azure.
+title: Połącz dane firmy Symantec ICDx przez wartownika platformy Azure w wersji zapoznawczej | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak nawiązać połączenie z danych firmy Symantec ICDx przez wartownika platformy Azure.
 services: sentinel
 documentationcenter: na
 author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: d068223f-395e-46d6-bb94-7ca1afd3503c
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/23/2019
+ms.date: 07/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: 3b21371d6321b208b19ca8b2524308736c3ceca9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 74169b4bd2654fb0ff7ec4cdb2f2b02c0f4cc6e8
+ms.sourcegitcommit: 80aaf27e3ad2cc4a6599a3b6af0196c6239e6918
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244344"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673751"
 ---
-# <a name="connect-your-symantec-icdx-appliance"></a>Połącz urządzenie ICDX firmy Symantec 
+# <a name="connect-your-symantec-icdx-appliance"></a>Połącz urządzenie ICDx firmy Symantec 
 
 > [!IMPORTANT]
 > Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Łącznik ICDX firmy Symantec umożliwia łatwe łączenie wszystkich Twojej firmy Symantec dzienników rozwiązań dotyczących zabezpieczeń, za pomocą usługi Azure przez wartownika, aby wyświetlić pulpity nawigacyjne, tworzyć niestandardowe alerty i lepsze badanie. To zapewnia lepszy wgląd w sieci swojej organizacji i zwiększa możliwości operacji zabezpieczeń. Integracja między ICDX firmy Symantec i platformy Azure przez wartownika korzysta z interfejsu API REST.
+Łącznik ICDx firmy Symantec umożliwia łatwe łączenie wszystkich Twojej firmy Symantec dzienników rozwiązań dotyczących zabezpieczeń, za pomocą usługi Azure przez wartownika, aby wyświetlić pulpity nawigacyjne, tworzyć niestandardowe alerty i lepsze badanie. To zapewnia lepszy wgląd w sieci swojej organizacji i zwiększa możliwości operacji zabezpieczeń. Integracja między ICDx firmy Symantec i platformy Azure przez wartownika korzysta z interfejsu API REST.
 
 
 > [!NOTE]
 > Dane będą przechowywane w lokalizacji geograficznej w obszarze roboczym, na którym są uruchomione przez wartownika platformy Azure.
 
-## <a name="configure-and-connect-symantec-icdx"></a>Skonfigurować i połączyć z ICDX firmy Symantec 
+## <a name="configure-and-connect-symantec-icdx"></a>Skonfigurować i połączyć z ICDx firmy Symantec 
 
-Integrację i wyeksportuj dzienniki bezpośrednio na platformie Azure przez wartownika ICDX firmy Symantec.
+Integrację i wyeksportuj dzienniki bezpośrednio na platformie Azure przez wartownika ICDx firmy Symantec.
 
-1. Otwórz konsolę zarządzania ICDX, aby dodać usługi przesyłania dalej z Microsoft Azure przez wartownika (usługi Log Analytics).
+1. Otwórz konsolę zarządzania ICDx, aby dodać usługi przesyłania dalej z Microsoft Azure przez wartownika (usługi Log Analytics).
 2. Na pasku nawigacyjnym ICDx kliknij **konfiguracji**. 
 3. W górnej części **konfiguracji** ekranu, kliknij przycisk **usług przesyłania dalej**.
 4. W obszarze **usług przesyłania dalej**, obok Microsoft Azure przez wartownika (usługi Log Analytics), kliknij **Dodaj**. 
@@ -66,7 +67,7 @@ Integrację i wyeksportuj dzienniki bezpośrednio na platformie Azure przez wart
     - **Nazwa dziennika niestandardowego**: Wpisz nazwę dziennika niestandardowego w Microsoft Azure portal roboczym usługi Log Analytics przechodząc do przesyłania dalej zdarzeń. Wartość domyślna to SymantecICDx. To pole jest wymagane.
 8. Kliknij przycisk *Zapisz* Zakończ konfigurację usługi przesyłania dalej. 
 9. Aby uruchomić usługę przesyłania dalej, w obszarze **opcje**, kliknij przycisk **więcej** a następnie **Start**.
-10. Aby użyć odpowiednich schematu w usłudze Log Analytics dla zdarzeń ICDX firmy Symantec, możesz wyszukać **SymantecICDX_CL**.
+10. Aby użyć odpowiednich schematu w usłudze Log Analytics dla zdarzeń ICDx firmy Symantec, możesz wyszukać **SymantecICDx_CL**.
 
 
 ## <a name="validate-connectivity"></a>Zweryfikuj łączność
@@ -75,8 +76,8 @@ Może upłynąć zgłaszane 20 minut do momentu dzienników rozpocząć pojawiaj
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
-W tym dokumencie przedstawiono sposób nawiązać Azure przez wartownika ICDX firmy Symantec. Aby dowiedzieć się więcej na temat platformy Azure przez wartownika, zobacz następujące artykuły:
+## <a name="next-steps"></a>Następne kroki
+W tym dokumencie przedstawiono sposób nawiązać Azure przez wartownika ICDx firmy Symantec. Aby dowiedzieć się więcej na temat platformy Azure przez wartownika, zobacz następujące artykuły:
 - Dowiedz się, jak [Uzyskaj wgląd w dane i potencjalne zagrożenia](quickstart-get-visibility.md).
 - Rozpoczynanie pracy [wykrywanie zagrożeń za pomocą platformy Azure przez wartownika](tutorial-detect-threats.md).
 

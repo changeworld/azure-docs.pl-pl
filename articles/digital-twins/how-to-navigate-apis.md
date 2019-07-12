@@ -6,14 +6,14 @@ manager: philmea
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 1/7/2019
+ms.date: 07/09/2019
 ms.author: v-adgera
-ms.openlocfilehash: 1c5549b903e9a4768d81d601c42e621864522781
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: da1493d2d52f2c8a964df3b72c1622a9c6b66abf
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462016"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67719853"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>Jak używać interfejsów API zarządzania Twins cyfrowych platformy Azure
 
@@ -109,8 +109,8 @@ Na poniższej liście przedstawiono kilka przykładów zapytań przy użyciu opc
 - `YOUR_MANAGEMENT_API_URL/spaces?$orderby=Name desc&$top=3&$filter=substringof('Floor’,Name)`
  
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać niektóre typowe wzorce zapytań interfejsu API, przeczytaj [jak wykonywać zapytania interfejsów API Twins cyfrowych platformy Azure do wykonywania typowych zadań](how-to-query-common-apis.md).
 
-
+Aby dowiedzieć się więcej na temat punktów końcowych interfejsu API, przeczytaj [sposób używania cyfrowego Swagger Twins](./how-to-use-swagger.md).

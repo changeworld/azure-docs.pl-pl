@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fe253feca6a22ee0177082e178f897c5b634bb3a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d35c4f410c29bba7848dde53d206cdd2ccd980ca
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61257212"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836152"
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Przenoszenie danych z serwera SFTP przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
@@ -44,15 +44,15 @@ Utworzysz potok z działaniem kopiowania, które przenosi dane ze źródła SFTP
 
 - Najprostszym sposobem utworzenia potoku jest użycie **kreatora kopiowania**. Zobacz [samouczka: Tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych.
 
-- Aby utworzyć potok umożliwia także następujących narzędzi: **Witryna Azure portal**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**i  **Interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. Aby uzyskać przykłady kodu JSON skopiować dane z serwera SFTP do usługi Azure Blob Storage, zobacz [przykład kodu JSON: Kopiowanie danych z serwera SFTP do usługi Azure blob](#json-example-copy-data-from-sftp-server-to-azure-blob) dalszej części tego artykułu.
+- Aby utworzyć potok umożliwia także następujących narzędzi: **Program Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**, i **interfejsu API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. Aby uzyskać przykłady kodu JSON skopiować dane z serwera SFTP do usługi Azure Blob Storage, zobacz [przykład kodu JSON: Kopiowanie danych z serwera SFTP do usługi Azure blob](#json-example-copy-data-from-sftp-server-to-azure-blob) dalszej części tego artykułu.
 
 ## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla połączonej usługi FTP.
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| type | Właściwość type musi być równa `Sftp`. |Yes |
-| host | Nazwa lub adres IP serwera SFTP. |Yes |
+| type | Właściwość type musi być równa `Sftp`. |Tak |
+| host | Nazwa lub adres IP serwera SFTP. |Tak |
 | port |Port, na którym nasłuchuje serwer SFTP. Wartość domyślna to: 21 |Nie |
 | authenticationType |Określ typ uwierzytelniania. Dozwolone wartości: **Podstawowe**, **SshPublicKey**. <br><br> Zapoznaj się [uwierzytelnianie podstawowe użycie](#using-basic-authentication) i [przy użyciu protokołu SSH uwierzytelnianie klucza publicznego](#using-ssh-public-key-authentication) odpowiednio sekcje więcej właściwości i przykłady kodu JSON. |Yes |
 | skipHostKeyValidation | Określ, czy pominąć sprawdzanie poprawności klucza hosta. | Nie. Wartość domyślna: false |
@@ -66,7 +66,7 @@ Aby użyć uwierzytelniania podstawowego, ustaw `authenticationType` jako `Basic
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| username | Użytkownik, który ma dostęp do serwera SFTP. |Yes |
+| username | Użytkownik, który ma dostęp do serwera SFTP. |Tak |
 | password | Hasło dla użytkownika (nazwa użytkownika). | Yes |
 
 #### <a name="example-basic-authentication"></a>Przykład: Uwierzytelnianie podstawowe
@@ -225,7 +225,7 @@ Natomiast właściwości w sekcji typeProperties działania zależą od każdego
 Zobacz [formaty plików i kompresji w usłudze Azure Data Factory](data-factory-supported-file-and-compression-formats.md) artykuł na temat szczegółów.
 
 ## <a name="json-example-copy-data-from-sftp-server-to-azure-blob"></a>Przykład kodu JSON: Kopiowanie danych z serwera SFTP do obiektów blob platformy Azure
-W poniższym przykładzie przedstawiono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [witryny Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) lub [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Pokazują sposób kopiowania danych ze źródła SFTP do usługi Azure Blob Storage. Jednak dane mogą być kopiowane **bezpośrednio** z dowolnego źródła do dowolnego ujścia, o których wspomniano [tutaj](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.
+W poniższym przykładzie przedstawiono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Pokazują sposób kopiowania danych ze źródła SFTP do usługi Azure Blob Storage. Jednak dane mogą być kopiowane **bezpośrednio** z dowolnego źródła do dowolnego ujścia, o których wspomniano [tutaj](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.
 
 > [!IMPORTANT]
 > W tym przykładzie przedstawiono fragmenty kodu JSON. Nie obejmuje instrukcje krok po kroku dotyczące tworzenia fabryki danych. Zobacz [przenoszenia danych między lokalizacjami lokalnymi i chmurą](data-factory-move-data-between-onprem-and-cloud.md) artykuł, aby uzyskać instrukcje krok po kroku.

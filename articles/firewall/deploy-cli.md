@@ -4,15 +4,15 @@ description: W tym artykule dowiesz się, jak wdrożyć i skonfigurować zaporę
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.date: 06/11/2019
+ms.date: 7/10/2019
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: b40ac789fbc331e779e85462724e5c8a8e9bce47
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 24954eecde58c978fa3e14bb3a2d411d708687a3
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083355"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707157"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Wdróż i Skonfiguruj zaporę platformy Azure przy użyciu wiersza polecenia platformy Azure
 
@@ -20,7 +20,7 @@ Kontrolowanie dostępu do sieciowego ruchu wychodzącego jest ważną częścią
 
 Jednym ze sposobów kontrolowania dostępu do sieciowego ruchu wychodzącego z podsieci platformy Azure jest użycie usługi Azure Firewall. Za pomocą usługi Azure Firewall można skonfigurować następujące reguły:
 
-* Reguły aplikacji, które definiują w pełni kwalifikowane nazwy domen (FQDN), do których można uzyskać dostęp z podsieci.
+* Reguły aplikacji, które definiują w pełni kwalifikowane nazwy domen (FQDN), do których można uzyskać dostęp z podsieci. Nazwa FQDN może również [obejmują wystąpień SQL](sql-fqdn-filtering.md).
 * Reguły sieci, które definiują adres źródłowy, protokół, port docelowy i adres docelowy.
 
 Ruch sieciowy podlega skonfigurowanym regułom zapory podczas kierowania ruchu sieciowego do zapory jako bramy domyślnej podsieci.
@@ -54,6 +54,13 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, uruchom interfejs wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Aby znaleźć wersję, uruchom polecenie **az --version**. Aby uzyskać informacje o instalowaniu lub uaktualnianiu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
+
+Zainstaluj rozszerzenie zapory usługi Azure:
+
+```azurecli-interactive
+az extension add -n azure-firewall
+```
+
 
 ## <a name="set-up-the-network"></a>Konfigurowanie sieci
 

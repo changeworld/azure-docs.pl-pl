@@ -4,7 +4,7 @@ description: Za pomocą konsoli szeregowej dla chodników na maszynach wirtualny
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: a249cf96981957de2c445079c0172b9c0c2ce543
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ff87e761bbe5243a478a00ca90d4be03fdbc6d4
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60799462"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706579"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Umożliwia dostęp do programu GRUB i tryb jednego użytkownika konsoli szeregowej
 Program GRUB jest sumy Unified programu inicjującego. Z programu GRUB są możliwość modyfikowania konfiguracji rozruchu do rozruchu w trybie jednego użytkownika, między innymi.
@@ -126,7 +126,7 @@ Domyślnie obrazów systemu Ubuntu nie automatycznie wyświetli ekran programu G
 1. Zmiana `GRUB_TIMEOUT` wartość na wartość inną niż zero
 1. Otwórz `/etc/default/grub` w edytorze tekstów wybranych przez użytkownika
 1. Komentarz `GRUB_HIDDEN_TIMEOUT=1` wiersza
-1. Uruchom polecenie `sudo update-grub`
+1. Uruchom `sudo update-grub`
 
 ### <a name="single-user-mode-in-ubuntu"></a>Tryb jednego użytkownika w systemie Ubuntu
 Ubuntu spowoduje porzucenie możesz w trybie jednego użytkownika automatycznie, jeśli nie normalny rozruch. Aby ręcznie wprowadzić w trybie jednego użytkownika, należy użyć poniższych instrukcji:
@@ -183,7 +183,7 @@ Oracle Linux jest powiązana z CHODNIKÓW włączone poza pole. Aby wprowadzić 
 ### <a name="single-user-mode-in-oracle-linux"></a>Tryb jednego użytkownika w systemie Oracle Linux
 Postępuj zgodnie z instrukcjami dotyczącymi RHEL powyżej, aby włączyć tryb jednego użytkownika w systemie Oracle Linux.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Znajduje się na stronie dokumentacji Linux głównych konsoli szeregowej [tutaj](serial-console.md).
 * Użyj konsoli szeregowej dla [NMI i SysRq wywołania](serial-console-nmi-sysrq.md)
 * Jest również dostępny dla konsoli szeregowej [Windows](../windows/serial-console.md) maszyn wirtualnych

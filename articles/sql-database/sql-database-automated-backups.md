@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 06/27/2019
-ms.openlocfilehash: 1eeb37ce74b3e2f57588197d6bb88f59944c61cf
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: ce16450f7f25e5703cf283c4babb2a935aad21de
+ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67460662"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67813048"
 ---
 # <a name="automated-backups"></a>Automatyczne kopie zapasowe
 
@@ -109,7 +109,11 @@ Jeśli baza danych jest szyfrowana za pomocą funkcji TDE, kopie zapasowe są au
 
 ## <a name="how-does-microsoft-ensure-backup-integrity"></a>Jak usługa Microsoft zabezpiecza integralność kopii zapasowej
 
-Na bieżąco zespół inżynierów usługi Azure SQL Database automatycznie testy przywracania automatycznych kopii zapasowych baz danych w usłudze. Podczas przywracania bazy danych uzyskują również sprawdzania integralności za pomocą polecenia DBCC CHECKDB. Problemy znalezione podczas sprawdzania integralności spowoduje alert do zespołu inżynieryjnego. Aby uzyskać więcej informacji o funkcji integralność danych w usłudze Azure SQL Database, zobacz [integralność danych w usłudze Azure SQL Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/).
+Na bieżąco usługa Azure SQL Database, zespół inżynierów automatycznie testy przywracania automatycznych kopii zapasowych baz danych rozmieszczonych w serwerów logicznych i pul elastycznych (nie jest dostępny w wystąpieniu zarządzanym usługi). Podczas przywracania do punktu w czasie baz danych uzyskują również sprawdzania integralności za pomocą polecenia DBCC CHECKDB.
+
+Wystąpienie zarządzane Trwa automatyczne tworzenie początkowej kopii zapasowej za pomocą `CHECKSUM` baz danych, przywracać za pomocą natywnego `RESTORE` polecenia lub program Data Migration Service po zakończeniu migracji.
+
+Problemy znalezione podczas sprawdzania integralności spowoduje alert do zespołu inżynieryjnego. Aby uzyskać więcej informacji o funkcji integralność danych w usłudze Azure SQL Database, zobacz [integralność danych w usłudze Azure SQL Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/).
 
 ## <a name="how-do-automated-backups-impact-compliance"></a>Jak automatycznie tworzonymi kopiami zapasowymi wpływ na zgodność
 

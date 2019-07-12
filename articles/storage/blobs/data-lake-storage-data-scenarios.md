@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: normesta
-ms.openlocfilehash: c5b6287757f6b71cfd60687f463673f142db04d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd3875c5c78a02efab1251166ec7113902be3e08
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939289"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723240"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Za pomocą usługi Azure Data Lake Storage Gen2 dla wymagających danych big Data
 
@@ -39,8 +39,8 @@ A *system plików* jest kontenerem dla plików i folderów. Należy co najmniej 
 
 |Narzędzie | Wskazówki |
 |---|--|
-|Eksplorator usługi Azure Storage | [Tworzenie systemu plików przy użyciu Eksploratora usługi Storage](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-explorer#create-a-filesystem) |
-|Narzędzie AzCopy | [Tworzenie kontenera obiektów Blob lub udziału plików przy użyciu AzCopyV10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-blob-container-or-file-share)|
+|Eksplorator usługi Azure Storage | [Tworzenie systemu plików przy użyciu Eksploratora usługi Storage](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-explorer#create-a-file-system) |
+|Narzędzie AzCopy | [Tworzenie kontenera obiektów Blob lub udziału plików przy użyciu AzCopyV10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10#transfer-files)|
 |Plik usługi Hadoop (HDFS) systemu interfejsu wiersza polecenia (CLI) z HDInsight |[Tworzenie systemu plików przy użyciu systemu plików HDFS z HDInsight](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-hdfs-data-lake-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-file-system) |
 |Kod w usłudze Azure notesu usługi Databricks|[Tworzenie systemu plików konta magazynu (w języku Scala)](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-storage-account-file-system) <br><br> [Tworzenie systemu plików i zainstalować go (Python)](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-databricks-spark?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-file-system-and-mount-it)|
 
@@ -54,11 +54,11 @@ Ma trzy sposoby, w celu udzielenia dostępu:
 
 * Przypisać jedną z tych ról do użytkowników, grupy, tożsamości zarządzanej przez użytkownika lub nazwy głównej usługi:
 
-  [Storage Blob Data Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader-preview)
+  [Storage Blob Data Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)
 
-  [Współautor danych obiektu Blob magazynu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor-preview)
+  [Współautor danych obiektu Blob magazynu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)
 
-  [Właściciel danych obiektu Blob magazynu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner-preview)
+  [Właściciel danych obiektu Blob magazynu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
 
 * Używają tokenu sygnatury dostępu współdzielonego (SAS).
 
@@ -196,4 +196,4 @@ Oto lista narzędzi, których można użyć, aby pobrać dane z Data Lake Storag
 |Narzędzie | Wskazówki |
 |---|--|
 |Azure Data Factory | [Działanie kopiowania w usłudze Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
-|Apache DistCop | [Kopiowanie danych między obiektów blob usługi Azure Storage i Azure Data Lake Storage Gen2 za pomocą narzędzia DistCp](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
+|Apache DistCp | [Kopiowanie danych między obiektów blob usługi Azure Storage i Azure Data Lake Storage Gen2 za pomocą narzędzia DistCp](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |

@@ -11,19 +11,19 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: bwren
-ms.openlocfilehash: c3732dd2fa87b00eec38f88ab828605b33567235
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 46a4544b86648ee99a751d4793013f6104d1d9df
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60396600"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807030"
 ---
 # <a name="automate-azure-monitor-log-processes-with-the-connector-for-microsoft-flow"></a>Zautomatyzować procesy dzienników usługi Azure Monitor z łącznikiem usługi Microsoft Flow
 [Microsoft Flow](https://ms.flow.microsoft.com) pozwala tworzyć zautomatyzowane przepływy pracy przy użyciu setek akcji dla wielu usług. Dane wyjściowe z akcji może służyć jako dane wejściowe do innego, co pozwala na tworzenie integracja między różnymi usługami.  Łącznik usługi Azure Log Analytics dla Microsoft Flow, umożliwiają tworzenie przepływów pracy, które zawierają dane pobierane przez dziennika zapytań z obszaru roboczego usługi Log Analytics w usłudze Azure Monitor.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Na przykład można użyć Microsoft Flow do korzystania z danych dziennika LAzure monitora na powiadomienie e-mail z usługi Office 365, Utwórz usterkę w DevOps platformy Azure lub opublikuj wiadomość Slack.  Możesz wyzwolić przepływu pracy przez harmonogram prosty lub niektóre akcje w przypadku połączonych usług, takich jak po odebraniu wiadomości e-mail lub tweet.  
+Na przykład można użyć Microsoft Flow do korzystania z danych dzienników usługi Azure Monitor na powiadomienie e-mail z usługi Office 365, Utwórz usterkę w DevOps platformy Azure lub opublikuj wiadomość Slack.  Możesz wyzwolić przepływu pracy przez harmonogram prosty lub niektóre akcje w przypadku połączonych usług, takich jak po odebraniu wiadomości e-mail lub tweet.  
 
 Samouczek, w tym artykule pokazano, jak utworzyć przepływ, który automatycznie wysyła wyników kwerendy dzienników usługi Azure Monitor za pośrednictwem poczty e-mail, tylko jeden przykład sposobu korzystania z łącznika usługi Log Analytics w Microsoft Flow. 
 
@@ -77,7 +77,7 @@ Samouczek, w tym artykule pokazano, jak utworzyć przepływ, który automatyczni
 3. Sprawdź wiadomość e-mail odbiorcy, który określiłeś, po zakończeniu przepływu.  Powinna zostać odebrana wiadomość e-mail z treścią podobny do następującego:<br><br>![Przykładowa wiadomość e-mail wysłana](media/flow-tutorial/flow08.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o [rejestrowania zapytań w usłudze Azure Monitor](../log-query/log-query-overview.md).
 - Dowiedz się więcej o [Microsoft Flow](https://ms.flow.microsoft.com).

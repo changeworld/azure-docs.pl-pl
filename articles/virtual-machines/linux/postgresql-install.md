@@ -4,7 +4,7 @@ description: Dowiedz się, jak instalowanie i konfigurowanie rozwiązania Postgr
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 1a747363-0cc5-4ba3-9be7-084dfeb04651
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: 5fe5e819c4f1079b6eb1fa8bb19d337ecfed600d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 086b36b347f214e1e9cdf44e4fb5a29fe501fa8b
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65955154"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667120"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Instalowanie i konfigurowanie rozwiązania PostgreSQL na platformie Azure
 PostgreSQL jest zaawansowane typu open-source bazy danych podobny do bazy danych Oracle i DB2. Obejmuje funkcje gotowa do użycia w przedsiębiorstwie, takie jak pełne ACID zgodność, niezawodne przetwarzanie transakcyjne i kontroli współbieżności wielu wersji. Obsługuje ona standardów, takich jak ANSI SQL i programu SQL/MED (w tym otoki obcego danych Oracle, MySQL, MongoDB i wielu innych). Jest wysoce rozszerzalny obsługę ponad 12 języków proceduralne, GIN i GiST indeksów, obsługę danych przestrzennych i wiele funkcji NoSQL dla formatu JSON czy aplikacji na podstawie wartości klucza.

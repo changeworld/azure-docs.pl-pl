@@ -2,21 +2,21 @@
 title: Połącz protokół RDP węzłów systemu Windows Server klaster Azure Kubernetes Service (AKS)
 description: Dowiedz się, jak i Utwórz połączenie RDP z klastrem usługi Azure Kubernetes Service (AKS) węzłów systemu Windows Server dla zadań rozwiązywania problemów i konserwacji.
 services: container-service
-author: tylermsft
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 06/04/2019
-ms.author: twhitney
-ms.openlocfilehash: 11f6869d4d5a2ee0ef2e986ee8268c7a001ea015
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 0238278b81255d735f8a950ca307d0e05100cfec
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66688639"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614562"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>Połącz przy użyciu protokołu RDP do usługi Azure Kubernetes Service (AKS) węzłach systemu Windows Server z powodu konserwacji lub rozwiązywania problemów
 
-W całym cyklu życia klastra Azure Kubernetes Service (AKS) konieczne może być dostęp do węzłów AKS systemu Windows Server. Dostęp może być konserwacji, zbieranie danych dziennika lub inne operacje dotyczące rozwiązywania problemów. Możesz uzyskać dostęp do węzłów AKS systemu Windows Server przy użyciu protokołu RDP. Alternatywnie, jeśli mają dostęp do węzłów AKS systemu Windows Server za pomocą protokołu SSH i że masz dostęp do tego samego pary, który został użyty podczas tworzenia klastra, możesz wykonać kroki opisane w [SSH do węzłów klastra Azure Kubernetes Service (AKS)] [ssh-steps]. Ze względów bezpieczeństwa węzłów AKS nie są połączone z Internetem.
+W całym cyklu życia klastra Azure Kubernetes Service (AKS) konieczne może być dostęp do węzłów AKS systemu Windows Server. Dostęp może być konserwacji, zbieranie danych dziennika lub inne operacje dotyczące rozwiązywania problemów. Możesz uzyskać dostęp do węzłów AKS systemu Windows Server przy użyciu protokołu RDP. Alternatywnie, jeśli mają dostęp do węzłów AKS systemu Windows Server za pomocą protokołu SSH i że masz dostęp do tego samego pary, który został użyty podczas tworzenia klastra, możesz wykonać kroki opisane w [SSH do węzłów klastra Azure Kubernetes Service (AKS)][ssh-steps]. Ze względów bezpieczeństwa węzłów AKS nie są połączone z Internetem.
 
 Obsługa węzła systemu Windows Server jest obecnie w wersji zapoznawczej w usłudze AKS.
 
@@ -24,9 +24,9 @@ W tym artykule pokazano, jak utworzyć połączenie RDP z węzłem AKS za pomoc�
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W tym artykule założono, że masz istniejący klaster AKS za pomocą węzła systemu Windows Server. Jeśli potrzebujesz klastra AKS, zobacz artykuł [tworzenia klastra usługi AKS przy użyciu kontenera Windows przy użyciu wiersza polecenia platformy Azure][aks-windows-cli]. Potrzebna nazwa użytkownika administratora Windows i hasło dla węzła systemu Windows Server, które użytkownik chce Rozwiązywanie problemów. Należy również klienta RDP takich jak [Pulpit zdalny Microsoft][rdp-mac].
+W tym artykule założono, że masz istniejący klaster AKS za pomocą węzła systemu Windows Server. Jeśli potrzebujesz klastra AKS, zobacz artykuł [tworzenia klastra usługi AKS przy użyciu kontenera Windows przy użyciu wiersza polecenia platformy Azure][aks-windows-cli]. You need the Windows administrator username and password for the Windows Server node you want to troubleshoot. You also need an RDP client such as [Microsoft Remote Desktop][rdp-mac].
 
-Możesz również muszą wiersza polecenia platformy Azure w wersji 2.0.61 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie przeprowadzenie instalacji lub uaktualnienia, zobacz  [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
+Możesz również muszą wiersza polecenia platformy Azure w wersji 2.0.61 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli potrzebujesz instalacja lub uaktualnienie, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj][install-azure-cli].
 
 ## <a name="deploy-a-virtual-machine-to-the-same-subnet-as-your-cluster"></a>Wdrażanie maszyny wirtualnej do tej samej podsieci co klaster
 
@@ -66,7 +66,7 @@ Zapisz publiczny adres IP maszyny wirtualnej. Ten adres zostanie użyty w kolejn
 
 ## <a name="get-the-node-address"></a>Uzyskaj adres węzła
 
-Aby zarządzać klastrem Kubernetes, należy użyć klienta wiersza polecenia usługi Kubernetes — narzędzia [kubectl][kubectl]. Jeśli korzystasz z usługi Azure Cloud Shell, narzędzie `kubectl` jest już zainstalowane. Aby zainstalować narzędzie `kubectl` lokalnie, użyj polecenia [az aks install-cli][az-aks-install-cli]:
+Aby zarządzać klastrem Kubernetes, należy użyć [kubectl][kubectl], czyli klienta wiersza polecenia usługi Kubernetes. Jeśli korzystasz z usługi Azure Cloud Shell, narzędzie `kubectl` jest już zainstalowane. Aby zainstalować `kubectl` lokalnie, użyj [az aks install-cli][az-aks-install-cli] polecenia:
     
 ```azurecli-interactive
 az aks install-cli
@@ -78,7 +78,7 @@ Aby skonfigurować narzędzie `kubectl` w celu nawiązania połączenia z klastr
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Wewnętrzny adres IP węzłów systemu Windows Server przy użyciu listy [kubectl get-] [ kubectl-get] polecenia:
+Wewnętrzny adres IP węzłów systemu Windows Server przy użyciu listy [kubectl get-][kubectl-get] polecenia:
 
 ```console
 kubectl get nodes -o wide
@@ -113,15 +113,15 @@ Możesz teraz uruchomić dowolne polecenia dotyczące rozwiązywania problemów 
 
 ## <a name="remove-rdp-access"></a>Usuń dostęp RDP
 
-Gdy skończysz, zamknij połączenie RDP do węzła systemu Windows Server, a następnie Zamknij sesję RDP z maszyną wirtualną. Po zamknięciu obie sesje protokołu RDP, należy usunąć maszynę wirtualną za pomocą [Usuń az vm] [ az-vm-delete] polecenia:
+Gdy skończysz, zamknij połączenie RDP do węzła systemu Windows Server, a następnie Zamknij sesję RDP z maszyną wirtualną. Po zamknięciu obie sesje protokołu RDP, należy usunąć maszynę wirtualną za pomocą [Usuń az vm][az-vm-delete] polecenia:
 
 ```azurecli-interactive
 az vm delete --resource-group myResourceGroup --name myVM
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Jeśli potrzebne są dodatkowe dane dotyczące rozwiązywania problemów, możesz to zrobić [wyświetlanie dzienników węzła głównego Kubernetes] [ view-master-logs] lub [usługi Azure Monitor][azure-monitor-containers].
+Jeśli potrzebne są dodatkowe dane dotyczące rozwiązywania problemów, możesz to zrobić [wyświetlanie dzienników węzła głównego Kubernetes][view-master-logs] or [Azure Monitor][azure-monitor-containers].
 
 <!-- EXTERNAL LINKS -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/

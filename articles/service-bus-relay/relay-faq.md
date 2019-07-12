@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
-ms.openlocfilehash: 2433f4b3563cc8b301d1815cccf5ab24406e8662
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c6ea5e72f70620004b4b00be0c779893a3b2ad90
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66111473"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706191"
 ---
 # <a name="azure-relay-faqs"></a>Usługa Azure Relay — często zadawane pytania
 
@@ -42,7 +42,7 @@ Wcześniej nazwaną usługę Service Bus Relay jest teraz nazywana [przekaźnika
 W tej sekcji odpowiedzi na niektóre często zadawane pytania dotyczące usługi Relay struktury cenowej. Możesz również zobaczyć [— często zadawane pytania dla pomocy technicznej Azure](https://azure.microsoft.com/support/faq/) for Azure ogólne informacje o cenach. Aby uzyskać pełne informacje o cenach usługi Relay, zobacz [szczegóły cennika usługi Service Bus][Pricing overview].
 
 ### <a name="how-do-you-charge-for-hybrid-connections-and-wcf-relay"></a>Jak można opłaty za połączenia hybrydowe i WCF Relay?
-Aby uzyskać pełne informacje o cenach usługi Relay, zobacz [połączenia hybrydowe i przekaźniki WCF] [ Pricing overview] tabeli na stronie szczegółów cennika usługi Service Bus. Oprócz ceny podane na tej stronie opłaty są naliczane w przypadku transferów danych skojarzone dla ruchu wychodzącego poza centrum danych, w którym zainicjowano aplikacji.
+Aby uzyskać pełne informacje o cenach usługi Relay, zobacz [połączenia hybrydowe i przekaźniki WCF][Pricing overview] tabeli na stronie szczegółów cennika usługi Service Bus. Oprócz ceny podane na tej stronie opłaty są naliczane w przypadku transferów danych skojarzone dla ruchu wychodzącego poza centrum danych, w którym zainicjowano aplikacji.
 
 ### <a name="how-am-i-billed-for-hybrid-connections"></a>Jak są rozliczane dla połączeń hybrydowych?
 Poniżej przedstawiono trzy przykładowe scenariusze rozliczeń dla połączeń hybrydowych:
@@ -106,7 +106,7 @@ Aby przenieść przestrzeni nazw z jedną subskrypcją platformy Azure do innej 
 
 #### <a name="azure-portal"></a>Azure Portal
 
-Aby przeprowadzić migrację przestrzeni nazw usługi Azure Relay z jednej subskrypcji do innej subskrypcji, należy użyć witryny Azure portal, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../azure-resource-manager/resource-group-move-resources.md#use-portal). 
+Aby przeprowadzić migrację przestrzeni nazw usługi Azure Relay z jednej subskrypcji do innej subskrypcji, należy użyć witryny Azure portal, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../azure-resource-manager/resource-group-move-resources.md#use-the-portal). 
 
 #### <a name="powershell"></a>PowerShell
 
@@ -128,7 +128,7 @@ Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptio
 Opis typowych wyjątków i sugerowane akcje można wykonać, zobacz [przekazywania wyjątki][Relay exceptions].
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-can-i-use-to-generate-a-signature"></a>Co to jest sygnatura dostępu współdzielonego i języków, których można użyć do generowania podpisu?
-Udostępnione sygnatur dostępu (SAS) to mechanizm uwierzytelniania, na podstawie bezpiecznego skróty SHA-256 lub identyfikatory URI. Aby uzyskać informacje o tym, jak wygenerować własne podpisów w Node, PHP, Java, C i C#, zobacz [uwierzytelniania usługi Service Bus przy użyciu sygnatury dostępu współdzielonego][Shared Access Signatures].
+Udostępnione sygnatur dostępu (SAS) to mechanizm uwierzytelniania, na podstawie bezpiecznego skróty SHA-256 lub identyfikatory URI. Aby uzyskać informacje dotyczące generowania własnych podpisów w Node, PHP, Java, C a C#, zobacz [uwierzytelniania usługi Service Bus przy użyciu sygnatury dostępu współdzielonego][Shared Access Signatures].
 
 ### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Czy możliwe jest punktem końcowym przekaźnika dozwolonych?
 Tak. Klient przekazujący sprawia, że połączenia z usługą Azure Relay przy użyciu w pełni kwalifikowanych nazw domen. Klientów można dodać wpisu `*.servicebus.windows.net` na zaporach, które obsługują DNS umieszczania na białej liście.

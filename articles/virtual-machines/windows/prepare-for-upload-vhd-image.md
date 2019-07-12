@@ -4,7 +4,7 @@ description: Dowiedz się, jak przygotować Windows dysku VHD lub VHDX go przeka
 services: virtual-machines-windows
 documentationcenter: ''
 author: glimoli
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 7802489d-33ec-4302-82a4-91463d03887a
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: cc942aeb34d17e8dff064c6a21a3c7b2099c742a
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: f40b3e0d2a49f6522149a977572d4f3c12e34255
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67151026"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67720052"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Przygotowywanie wirtualnego dysku twardego Windows lub VHDX można przekazać na platformę Azure
 
@@ -200,7 +200,7 @@ Upewnij się, że następujące ustawienia są poprawnie skonfigurowane dla dost
 
 9. Jeśli maszyna wirtualna ma być częścią domeny, sprawdź następujące zasady, aby upewnić się, że wcześniejsze ustawień nie są przywracane. 
     
-    | Cel                                     | Zasady                                                                                                                                                       | Wartość                                                                                    |
+    | Cel                                     | Zasady                                                                                                                                                       | Value                                                                                    |
     |------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
     | Włączono protokół RDP                           | Komputera Konfiguracja komputera\Zasady\Ustawienia Settings\Administrative Templates\Components\Remote pulpitu usług sesji pulpitu zdalnego\Połączenia         | Umożliwiają użytkownikom zdalne łączenie się przy użyciu pulpitu zdalnego                                  |
     | NLA zasad grupy                         | Settings\Administrative Templates\Components\Remote pulpitu pulpitu sesji usług zdalnego\Zabezpieczenia                                                    | Wymaganie uwierzytelniania użytkownika na potrzeby dostępu zdalnego przy użyciu uwierzytelniania na poziomie sieci |
@@ -234,7 +234,7 @@ Upewnij się, że następujące ustawienia są poprawnie skonfigurowane dla dost
    ``` 
 5. Jeśli maszyna wirtualna ma być częścią domeny, sprawdź następujące zasady usługi Azure AD, aby upewnić się, że wcześniejsze ustawień nie są przywracane. 
 
-    | Cel                                 | Zasady                                                                                                                                                  | Wartość                                   |
+    | Cel                                 | Zasady                                                                                                                                                  | Value                                   |
     |--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|
     | Włącz profil zapory Windows | Zapora Profile\Windows Firewall\Domain Connection\Windows administracyjne\Sieć\Połączenia komputera Konfiguracja komputera\Zasady\Ustawienia Settings\Administrative   | Chroń wszystkie połączenia sieciowe         |
     | Włącz protokół RDP                           | Zapora Profile\Windows Firewall\Domain Connection\Windows administracyjne\Sieć\Połączenia komputera Konfiguracja komputera\Zasady\Ustawienia Settings\Administrative   | Zezwalaj na przychodzące wyjątki usług pulpitu zdalnego |
@@ -346,7 +346,7 @@ Upewnij się, że maszyna wirtualna jest w dobrej kondycji, bezpieczne i RDP, do
 ### <a name="install-windows-updates"></a>Instalowanie aktualizacji Windows
 W idealnym przypadku należy przechowywać maszyny aktualizowany *poziom poprawki*. Jeśli nie jest to możliwe, upewnij się, że są zainstalowane następujące aktualizacje:
 
-| Składnik               | Binarny         | Windows 7 z dodatkiem SP1, Windows Server 2008 R2 z dodatkiem SP1 | Windows 8, Windows Server 2012               | Windows 8.1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 | Windows 10 v1703    | Windows 10 v1709, Windows Server 2016 v1709 | V1803 systemu Windows 10, Windows Server 2016 v1803 |
+| Składnik               | Binary         | Windows 7 z dodatkiem SP1, Windows Server 2008 R2 z dodatkiem SP1 | Windows 8, Windows Server 2012               | Windows 8.1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 | Windows 10 v1703    | Windows 10 v1709, Windows Server 2016 v1709 | V1803 systemu Windows 10, Windows Server 2016 v1803 |
 |-------------------------|----------------|-------------------------------------------|---------------------------------------------|------------------------------------|---------------------------------------------------------|----------------------------|-------------------------------------------------|-------------------------------------------------|
 | Magazyn                 | Disk.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061         | -                                                       | -                          | -                                               | -                                               |
 |                         | storport.sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.332             | -                                               | -                                               |

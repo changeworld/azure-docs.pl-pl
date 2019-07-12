@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/27/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 61537a4cb8ca1e6e98f2fa04959861eb03480fe9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f0b9b59ec09445a170d1f93181c2b432eafb60bf
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61474887"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839983"
 ---
 # <a name="view-a-maintenance-schedule"></a>Wyświetl harmonogram konserwacji 
 
@@ -27,11 +27,11 @@ Aby wyświetlić harmonogramu konserwacji, która została zastosowana do magazy
 
 1.  Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2.  Wybierz magazyn danych, który chcesz wyświetlić. 
-3.  Otwiera hurtownią danych wybranych w bloku przeglądu. Harmonogram konserwacji, która jest stosowana w magazynie danych, który pojawia się poniżej **harmonogram konserwacji (wersja zapoznawcza)** .
+3.  Otwiera hurtownią danych wybranych w bloku przeglądu. Harmonogram konserwacji, która jest stosowana w magazynie danych, który pojawia się poniżej **harmonogram konserwacji**.
 
 ![Blok przeglądu](media/sql-data-warehouse-maintenance-scheduling/clear-overview-blade.PNG)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - [Dowiedz się więcej](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-usage) o tworzenie, wyświetlanie i Zarządzanie alertami przy użyciu usługi Azure Monitor.
 - [Dowiedz się więcej](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) o akcje elementu webhook dla reguł alertów dzienników.
 - [Dowiedz się więcej](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) tworzenie grup i zarządzanie nimi akcji.

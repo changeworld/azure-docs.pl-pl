@@ -7,24 +7,24 @@ author: zhangmanling
 manager: erikre
 editor: ''
 ms.assetid: 8cc596a7-3e01-4f76-af7b-a05a1421517e
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 7dfa252c29121adca2ecc77c08b2fca81d56e575
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8a65d4ae6aaac78e642c851a66b745a940fa0ad
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61070099"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593897"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Analizowanie wydajności węzła brzegowego w usłudze Microsoft Azure CDN
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Analiza wydajności krańcowej zawiera szczegółowe informacje dotyczące ruchu i użycia przepustowości sieci CDN. Te informacje mogą następnie służyć do generowania statystyk trendów, które pozwalają uzyskać wgląd w sposób Twoje zasoby są buforowane i dostarczania ich klientom. Z kolei pozwala na formularzu strategię dotyczące optymalizacji dostarczania zawartości, i aby ustalić, jakie powinny być problemy rozwiązywane lepsze wykorzystywanie usługi CDN. W rezultacie nie tylko będzie można poprawić wydajność dostarczania danych, ale również można zmniejszyć koszty sieci CDN.
 
 > [!NOTE]
@@ -117,7 +117,7 @@ Te metryki ma na celu śledzenie ogólną wydajność usługi CDN dla ruchu.
 | Pole | Opis |
 | --- | --- |
 | Szybkość transferu |Wskazuje, średnia szybkość jaką zawartość została przeniesiona z sieci CDN do zleceniodawcy. |
-| Czas trwania |Wskazuje, Średni czas w milisekundach, jaki zajęło dostarczania elementu zawartości do żądającego (np. przeglądarka sieci web). |
+| Duration |Wskazuje, Średni czas w milisekundach, jaki zajęło dostarczania elementu zawartości do żądającego (np. przeglądarka sieci web). |
 | Liczba żądań skompresowane |Wskazuje procent liczby trafień, dostarczone przez usługę CDN (serwerów brzegowych) do zleceniodawcy (np. przeglądarka sieci web) w formacie skompresowanym. |
 | Współczynnik błędów 4xx |Wskazuje procent trafień wygenerowanych przez kod stanu 4xx. |
 | Współczynnik błędów 5xx |Wskazuje procent trafień wygenerowanych przez kod stanu 5xx. |

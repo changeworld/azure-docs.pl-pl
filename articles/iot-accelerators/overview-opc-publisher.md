@@ -5,15 +5,15 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 06/10/2019
 ms.topic: overview
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 99b3f6b4495ae5981322c90fce251b9b0a18bb5d
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: c738e927a352373d7f5a4aeb5697e07134a98cba
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450912"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603661"
 ---
 # <a name="what-is-opc-publisher"></a>Wydawca OPC co to jest?
 
@@ -41,6 +41,6 @@ Wydawca OPC obsługuje partie danych wysyłanych do usługi IoT Hub, aby zmniejs
 
 Ta aplikacja używa stosu OPC Foundation OPC UA odwołanie jako pakiety NuGet. Zobacz [ https://opcfoundation.org/license/redistributables/1.3/ ](https://opcfoundation.org/license/redistributables/1.3/) do postanowień licencyjnych.
 
-### <a name="next-steps"></a>Kolejne kroki
+### <a name="next-steps"></a>Następne kroki
 
 Teraz wiesz wydawca OPC są sugerowane następnym krokiem jest Dowiedz się, jak [skonfigurować wydawca OPC](howto-opc-publisher-configure.md).

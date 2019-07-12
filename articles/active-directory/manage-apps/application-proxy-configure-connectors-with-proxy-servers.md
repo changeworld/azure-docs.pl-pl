@@ -12,18 +12,19 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cc0b3a9a02c023678691921100443436cdf0011
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e4b073a63b5b6bec565aed67bcaec7ed014261b
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66015475"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807871"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Praca z istniejących serwerów proxy w środowisku lokalnym
 
 W tym artykule opisano sposób konfigurowania łączników serwera Proxy aplikacji usługi Azure Active Directory (Azure AD) do pracy z serwerami proxy ruchu wychodzącego. Jest ona przeznaczona dla klientów o środowiskach sieciowych, które mają istniejące serwery proxy.
 
 Rozpoczniemy pracę, analizując następujących scenariuszy wdrażania główne:
+
 * Skonfiguruj konektory w celu obejścia proxy ruchu wychodzącego usługi w środowisku lokalnym.
 * Skonfiguruj konektory w celu dostępu serwera Proxy aplikacji usługi Azure AD do przy użyciu serwera proxy ruchu wychodzącego.
 
@@ -53,6 +54,7 @@ Aby wyłączyć użycie serwera proxy ruchu wychodzącego dla łącznika, Edytuj
   </appSettings>
 </configuration>
 ```
+
 Aby upewnić się, że usługa aktualizator łącznika pomija również serwer proxy, należy wprowadzić podobne zmianę do pliku ApplicationProxyConnectorUpdaterService.exe.config. Ten plik znajduje się w aktualizator łącznika serwera Proxy aplikacji usługi AAD C:\Program Files\Microsoft.
 
 Upewnij się utworzyć kopie oryginalnych plików w przypadku, gdy konieczne jest przywrócenie domyślnych plików .config.
@@ -67,8 +69,8 @@ Można skonfigurować łącznik ruch za pośrednictwem serwera proxy ruchu wycho
 
 Wyniku mających tylko ruchu wychodzącego, nie ma potrzeby konfigurowania dostępu ruchu przychodzącego za pośrednictwem zapory.
 
->[!NOTE]
->Serwer Proxy aplikacji nie obsługuje uwierzytelniania do innych serwerów proxy. Konta usług sieciowych aktualizator łącznika/powinny być możliwe nawiązanie połączenia z serwerem proxy bez jest kwestionowana do uwierzytelniania.
+> [!NOTE]
+> Serwer Proxy aplikacji nie obsługuje uwierzytelniania do innych serwerów proxy. Konta usług sieciowych aktualizator łącznika/powinny być możliwe nawiązanie połączenia z serwerem proxy bez jest kwestionowana do uwierzytelniania.
 
 ### <a name="step-1-configure-the-connector-and-related-services-to-go-through-the-outbound-proxy"></a>Krok 1: Konfigurowanie łącznika i powiązanych usług za pośrednictwem serwera proxy ruchu wychodzącego
 
@@ -98,22 +100,23 @@ Następnie skonfiguruj usługi aktualizator łącznika w celu używania serwera 
 ### <a name="step-2-configure-the-proxy-to-allow-traffic-from-the-connector-and-related-services-to-flow-through"></a>Krok 2: Skonfiguruj serwer proxy, aby zezwolić na ruch z łącznika i powiązanych usług przepływ
 
 Istnieją cztery aspektów do uwzględnienia w serwera proxy ruchu wychodzącego:
+
 * Reguły ruchu wychodzącego serwera proxy
 * Uwierzytelnianie serwera proxy
 * Porty serwera proxy
 * Inspekcji połączenia SSL
 
 #### <a name="proxy-outbound-rules"></a>Reguły ruchu wychodzącego serwera proxy
+
 Zezwól na dostęp do następujących adresów URL:
 
-| Adres URL | Zastosowanie |
+| URL | Zastosowanie |
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | Komunikacja między łącznikiem a usługą serwera proxy aplikacji w chmurze |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Platforma Azure używa tych adresów URL do weryfikacji certyfikatów |
 | login.windows.net<br>login.microsoftonline.com | Łącznik używa tych adresów URL podczas procesu rejestracji. |
 
 Jeśli zapora lub serwer proxy można skonfigurować DNS umożliwia list, można zezwolić na połączenia z \*. msappproxy.net i \*. servicebus.windows.net. W przeciwnym razie musisz zezwolić na dostęp do [zakresów adresów IP centrum danych platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653). Zakresy adresów IP są aktualizowane co tydzień.
-
 
 Jeśli nie można zezwolić na połączenie z w pełni kwalifikowaną nazwę domeny, należy określić zakresy adresów IP zamiast tego należy użyć tych opcji:
 
@@ -128,13 +131,15 @@ Uwierzytelnianie serwera proxy nie jest obecnie obsługiwane. Nasz bieżący zal
 
 Łącznik sprawia, że połączenia wychodzące opartym na protokole SSL przy użyciu metody CONNECT. Ta metoda konfiguruje zasadniczo tunel za pośrednictwem serwera proxy ruchu wychodzącego. Konfiguracja serwera proxy, aby umożliwić tunelowania do porty 443 i 80.
 
->[!NOTE]
->Po uruchomieniu usługi Service Bus przy użyciu protokołu HTTPS używa portu 443. Domyślnie Usługa Service Bus podejmuje próbę bezpośredniego połączenia TCP i nastąpi powrót do protokołu HTTPS, tylko wtedy, gdy połączenie bezpośrednie nie powiedzie się.
+> [!NOTE]
+> Po uruchomieniu usługi Service Bus przy użyciu protokołu HTTPS używa portu 443. Domyślnie Usługa Service Bus podejmuje próbę bezpośredniego połączenia TCP i nastąpi powrót do protokołu HTTPS, tylko wtedy, gdy połączenie bezpośrednie nie powiedzie się.
 
 #### <a name="ssl-inspection"></a>Inspekcji połączenia SSL
-Nie należy używać inspekcji połączenia SSL dla ruchu łącznika, ponieważ będzie powodował problemy dla ruchu łącznika. Łącznik używa certyfikatu do uwierzytelniania serwera Proxy aplikacji usługi i certyfikat mogą zostać utracone podczas inspekcji połączenia SSL. 
+
+Nie należy używać inspekcji połączenia SSL dla ruchu łącznika, ponieważ będzie powodował problemy dla ruchu łącznika. Łącznik używa certyfikatu do uwierzytelniania serwera Proxy aplikacji usługi i certyfikat mogą zostać utracone podczas inspekcji połączenia SSL.
 
 ## <a name="troubleshoot-connector-proxy-problems-and-service-connectivity-issues"></a>Rozwiązywanie problemów z łącznika serwera proxy i problemy z połączeniem usługi
+
 Teraz powinien być widoczny całego ruchu odbywającego się za pośrednictwem serwera proxy. Jeśli masz problemy, powinny pomóc następujące informacje dotyczące rozwiązywania problemów.
 
 Najlepszym sposobem na identyfikowanie i rozwiązywanie problemów z łącznością łącznika jest przechwytywanie sieci podczas uruchamiania usługi łącznika. Poniżej przedstawiono kilka porad na przechwytywaniu i filtrowanie danych śledzenia sieci.
@@ -151,21 +156,18 @@ Do rozwiązywania problemów początkowej, wykonaj następujące czynności:
 
    ![Usługa łącznika serwera Proxy aplikacji usługi AD w pliku services.msc](./media/application-proxy-configure-connectors-with-proxy-servers/services-local.png)
 
-2. Message Analyzer Uruchom jako administrator.
-3. Wybierz **Rozpocznij śledzenie lokalnych**.
+1. Message Analyzer Uruchom jako administrator.
+1. Wybierz **Rozpocznij śledzenie lokalnych**.
+1. Uruchom usługę łącznika serwera Proxy aplikacji w usłudze Azure AD.
+1. Zatrzymaj przechwytywanie sieci.
 
-   ![Rozpocznij rejestrowanie sieci](./media/application-proxy-configure-connectors-with-proxy-servers/start-local-trace.png)
-
-3. Uruchom usługę łącznika serwera Proxy aplikacji w usłudze Azure AD.
-4. Zatrzymaj przechwytywanie sieci.
-
-   ![Zatrzymaj przechwytywanie sieci](./media/application-proxy-configure-connectors-with-proxy-servers/stop-trace.png)
+   ![Zrzut ekranu przedstawia przycisk Zatrzymaj przechwytywanie sieci](./media/application-proxy-configure-connectors-with-proxy-servers/stop-trace.png)
 
 ### <a name="check-if-the-connector-traffic-bypasses-outbound-proxies"></a>Sprawdź, jeśli łącznik ruch pomija proxy ruchu wychodzącego
 
-Skonfigurowanie łącznika serwera Proxy aplikacji obejść serwerów proxy i połączyć się bezpośrednio z usługą serwera Proxy aplikacji mają do przeszukania przechwytywania sieci dla zakończonych niepowodzeniem prób połączenia TCP. 
+Skonfigurowanie łącznika serwera Proxy aplikacji obejść serwerów proxy i połączyć się bezpośrednio z usługą serwera Proxy aplikacji mają do przeszukania przechwytywania sieci dla zakończonych niepowodzeniem prób połączenia TCP.
 
-Użyj filtru analizatora komunikatów, aby zidentyfikować te próby. Wprowadź `property.TCPSynRetransmit` w polu filtru i wybierz pozycję **Zastosuj**. 
+Użyj filtru analizatora komunikatów, aby zidentyfikować te próby. Wprowadź `property.TCPSynRetransmit` w polu filtru i wybierz pozycję **Zastosuj**.
 
 Pakiet SYN jest pierwszym pakietów wysyłanych do ustanawiania połączenia protokołu TCP. Jeśli ten pakiet nie zwracają odpowiedzi, jest ponowieniu SYN. Poprzedni filtr umożliwia Zobacz wszystkie syn ponownie przesłane. Następnie możesz sprawdzić, czy te syn odnoszą się do dowolnego ruchu związane z łącznika.
 
@@ -173,16 +175,15 @@ Jeśli oczekujesz, że łącznik do nawiązywania bezpośredniego połączenia z
 
 ### <a name="check-if-the-connector-traffic-uses-outbound-proxies"></a>Sprawdź, jeśli ruch łącznik używa serwerów proxy ruchu wychodzącego
 
-Jeśli skonfigurowano ruchu łącznika serwera Proxy aplikacji za pośrednictwem serwerów proxy, chcesz poszukaj połączenia https nie powiodło się z serwera proxy. 
+Jeśli skonfigurowano ruchu łącznika serwera Proxy aplikacji za pośrednictwem serwerów proxy, chcesz poszukaj połączenia https nie powiodło się z serwera proxy.
 
-Aby filtrować przechwytywania sieci dla tych próby nawiązania połączenia, wprowadź `(https.Request or https.Response) and tcp.port==8080` w filtrze Message Analyzer, zastępując 8080 portów usługi serwera proxy. Wybierz **Zastosuj** wyników filtru. 
+Aby filtrować przechwytywania sieci dla tych próby nawiązania połączenia, wprowadź `(https.Request or https.Response) and tcp.port==8080` w filtrze Message Analyzer, zastępując 8080 portów usługi serwera proxy. Wybierz **Zastosuj** wyników filtru.
 
 Poprzedni filtru zawiera tylko żądania HTTPs i odpowiedzi z port serwera proxy. Szukasz żądań CONNECT, które pokazują komunikacji z serwerem proxy. W razie powodzenia otrzymasz odpowiedź HTTP OK (200).
 
 Jeśli zobaczysz inne kody odpowiedzi, takie jak 407 lub 502, oznacza to, że serwer proxy wymaga uwierzytelniania lub innego powodu nie zezwala na ruch. W tym momencie angażować się z zespołem pomocy technicznej serwera proxy.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Omówienie łączników serwera Proxy aplikacji usługi Azure AD](application-proxy-connectors.md)
-
-- Jeśli masz problemy z problemów z łącznością łącznika, Zadaj pytanie [forum usługi Azure Active Directory](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD&forum=WindowsAzureAD) lub Utwórz bilet z naszym zespołem pomocy technicznej.
+* [Omówienie łączników serwera Proxy aplikacji usługi Azure AD](application-proxy-connectors.md)
+* Jeśli masz problemy z problemów z łącznością łącznika, Zadaj pytanie [forum usługi Azure Active Directory](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD&forum=WindowsAzureAD) lub Utwórz bilet z naszym zespołem pomocy technicznej.

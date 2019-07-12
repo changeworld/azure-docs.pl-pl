@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 03/28/2019
-ms.author: astay;cephalin;kraigb
+ms.author: cephalin
+ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: ad2ea32749c6556d17460b2a16ed41bbaa2ec62e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: fb90122f7277687886a6579fdb729b7f91660ed6
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956153"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67617272"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurowanie aplikacji w języku Python w systemie Linux dla usługi Azure App Service
 
@@ -131,7 +132,7 @@ Jeśli moduł główny znajduje się w podfolderze, takim jak `website`, określ
 gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 ```
 
-Możesz również dodać wszelkie dodatkowe argumenty dla Gunicorn do  *\<polecenia niestandardowego >*, takich jak `--workers=4`. Aby uzyskać więcej informacji, zobacz [Running Gunicorn](https://docs.gunicorn.org/en/stable/run.html) (Uruchamianie serwera Gunicorn) (docs.gunicorn.org).
+Możesz również dodać wszelkie dodatkowe argumenty dla Gunicorn do  *\<polecenia niestandardowego >* , takich jak `--workers=4`. Aby uzyskać więcej informacji, zobacz [Running Gunicorn](https://docs.gunicorn.org/en/stable/run.html) (Uruchamianie serwera Gunicorn) (docs.gunicorn.org).
 
 Aby użyć serwera bez Gunicorn, takich jak [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html), możesz zastąpić  *\<polecenia niestandardowego >* z podobny do poniższego:
 

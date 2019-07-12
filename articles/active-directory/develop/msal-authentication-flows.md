@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 821143d39f8a4c06501ee38ef598a9d06d267d72
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: b7ba6ae188c098e85573503a1518ba65480d713a
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273100"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807205"
 ---
 # <a name="authentication-flows"></a>Przepływy uwierzytelniania
 
@@ -166,7 +166,7 @@ IWA jest dla aplikacji napisanych dla platformy .NET Framework, .NET Core i plat
 
 IWA nie obejście usługi Multi-Factor authentication. Jeśli skonfigurowano uwierzytelnianie wieloskładnikowe, IWA może się nie powieść Jeśli wezwanie do uwierzytelnienia Multi-Factor Authentication jest wymagana. Uwierzytelnianie wieloskładnikowe wymaga interakcji z użytkownikiem.
 
-Nie można kontrolować, gdy dostawca tożsamości żąda uwierzytelniania dwuskładnikowego do wykonania. Jest administratorem dzierżawy. Zazwyczaj uwierzytelnianie dwuskładnikowe jest wymagane po zalogowaniu w innym kraju, jeśli nie masz połączenia za pośrednictwem sieci VPN do sieci firmowej i czasami nawet jeśli masz połączenie za pośrednictwem sieci VPN. Usługa Azure AD używa sztucznej Inteligencji do stale Dowiedz się, jeśli wymagane jest uwierzytelnianie dwuskładnikowe. Jeśli IWA zakończy się niepowodzeniem, użytkownik powinien wrócić do monitowania użytkownika (https://aka.ms/msal-net-interactive).
+Nie można kontrolować, gdy dostawca tożsamości żąda uwierzytelniania dwuskładnikowego do wykonania. Jest administratorem dzierżawy. Zazwyczaj uwierzytelnianie dwuskładnikowe jest wymagane po zalogowaniu w innym kraju, jeśli nie masz połączenia za pośrednictwem sieci VPN do sieci firmowej i czasami nawet jeśli masz połączenie za pośrednictwem sieci VPN. Usługa Azure AD używa sztucznej Inteligencji do stale Dowiedz się, jeśli wymagane jest uwierzytelnianie dwuskładnikowe. W przypadku niepowodzenia IWA użytkownik powinien wrócić do [monit użytkownika interaktywnego] (#interactive).
 
 Urząd, przekazywane w przypadku tworzenia aplikacji klienckiej publiczny musi być jedną z następujących czynności:
 - Gośćmi (w postaci `https://login.microsoftonline.com/{tenant}/` gdzie `tenant` jest albo identyfikator guid reprezentujący identyfikator dzierżawy lub domeny skojarzone z dzierżawcą).

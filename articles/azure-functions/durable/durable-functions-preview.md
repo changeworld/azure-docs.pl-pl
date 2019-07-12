@@ -5,38 +5,38 @@ services: functions
 author: cgillum
 manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/23/2019
+ms.date: 07/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8ceb84ab9e9c41ff6a9cbde62571fb12ae67d790
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7101519aa4a87995dac3a7f11046eed84a2c09b6
+ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596080"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67812760"
 ---
 # <a name="durable-functions-20-preview-azure-functions"></a>Trwałe funkcje w wersji 2.0 (wersja zapoznawcza) (usługi Azure Functions)
 
 *Trwałe funkcje* jest rozszerzeniem [usługi Azure Functions](../functions-overview.md) i [zadań Azure WebJobs](../../app-service/web-sites-create-web-jobs.md) umożliwiający zapis stanowych funkcji w środowisku bezserwerowym. Rozszerzenie zarządza stanem, punktami kontrolnymi i ponownym uruchamianiem. Jeśli nie jesteś już znasz funkcje trwałe, zobacz [Przegląd dokumentacji](durable-functions-overview.md).
 
-Funkcje trwałe to funkcja wersji ogólnie dostępnej (dostępne ogólnie) usługi Azure functions, ale zawiera także kilka podfunkcje, które są obecnie dostępne w publicznej wersji zapoznawczej. W tym artykule opisano funkcje nowo wydanej wersji zapoznawczej i przechodzi w szczegółowe informacje o sposobie ich działania i jak możesz rozpocząć korzystanie z nich.
+Trwałe funkcje 1.x to funkcja wersji ogólnie dostępnej (dostępne ogólnie) usługi Azure functions, ale również zawiera kilka podfunkcje, które są obecnie dostępne w publicznej wersji zapoznawczej. W tym artykule opisano funkcje nowo wydanej wersji zapoznawczej i przechodzi w szczegółowe informacje o sposobie ich działania i jak możesz rozpocząć korzystanie z nich.
 
 > [!NOTE]
-> Te funkcje w wersji zapoznawczej są częścią wersji trwałe Functions 2.0 jest obecnie **wersji alfa jakości** kilka najważniejszych zmian. Tworzy pakiet rozszerzenia niezawodne funkcje platformy Azure można znaleźć w witrynie nuget.org wersje w postaci **2.0.0-alpha**. Te kompilacje nie są odpowiednie dla dowolnych obciążeń produkcyjnych i późniejszymi wersjami może zawierać dodatkowe przełomowe zmiany.
+> Te funkcje w wersji zapoznawczej są częścią wersji trwałe Functions 2.0 jest obecnie **jakości wersji zapoznawczej** kilka najważniejszych zmian. Tworzy pakiet rozszerzenia niezawodne funkcje platformy Azure można znaleźć w witrynie nuget.org wersje w postaci **2.0.0-betaX**. Te kompilacje nie są przeznaczone dla obciążeń produkcyjnych i późniejszymi wersjami może zawierać dodatkowe przełomowe zmiany.
 
 ## <a name="breaking-changes"></a>Zmiany powodujące niezgodność
 
 Kilka przełomowe zmiany zostały wprowadzone trwałe funkcje w wersji 2.0. Istniejące aplikacje nie powinny być zgodne z trwałe Functions 2.0 bez zmian w kodzie. W tej sekcji przedstawiono niektóre zmiany:
 
-### <a name="dropping-net-framework-support"></a>Upuszczanie Obsługa programu .NET Framework
-
-Obsługa programu .NET Framework (i w związku z tym funkcje w wersji 1.0) został odrzucony, niezawodne funkcje 2.0. Głównym powodem jest umożliwienie współautorzy innych niż Windows, tworzyć i testować zmiany dokonane w funkcje trwałe z platform Linux i macOS. Pomocniczy przyczyną jest pomocne dla deweloperów, aby przejść do najnowszej wersji środowiska uruchomieniowego usługi Azure Functions.
-
 ### <a name="hostjson-schema"></a>Host.json schema
 
-Poniższy fragment kodu przedstawia nowy schemat host.json. Zmiana głównego należy pamiętać o jest nowym `"storageProvider"` sekcji i `"azureStorage"` sekcji podrzędne. Ta zmiana została wykonana w celu obsługi [alternatywny dostawców magazynu](durable-functions-preview.md#alternate-storage-providers).
+Poniższy fragment kodu przedstawia nowy schemat host.json. Najważniejszych zmian, których trzeba pamiętać są nowe podsekcje:
+
+* `"storageProvider"` (i `"azureStorage"` podsekcji) dla konfiguracji specyficznych dla magazynowania
+* `"tracking"` Śledzenie i rejestrowanie konfiguracji
+* `"notifications"` (i `"eventGrid"` podsekcji) dla konfiguracji powiadomień siatki zdarzeń
 
 ```json
 {
@@ -56,19 +56,25 @@ Poniższy fragment kodu przedstawia nowy schemat host.json. Zmiana głównego na
           "maxQueuePollingInterval": <hh:mm:ss?>
         }
       },
+      "tracking": {
+        "traceInputsAndOutputs": <bool?>,
+        "traceReplayEvents": <bool?>,
+      },
+      "notifications": {
+        "eventGrid": {
+          "topicEndpoint": <string?>,
+          "keySettingName": <string?>,
+          "publishRetryCount": <string?>,
+          "publishRetryInterval": <hh:mm:ss?>,
+          "publishRetryHttpStatus": <int[]?>,
+          "publishEventTypes": <string[]?>,
+        }
+      },
       "maxConcurrentActivityFunctions": <int?>,
       "maxConcurrentOrchestratorFunctions": <int?>,
-      "traceInputAndOutputs": <bool?>,
-      "eventGridTopicEndpoint": <string?>,
-      "eventGridKeySettingName": <string?>,
-      "eventGridPublishRetryCount": <string?>,
-      "eventGridPublishRetryInterval": <hh:mm:ss?>,
-      "eventGridPublishRetryHttpStatus": <int[]?>,
-      "eventgridPublishEventTypes": <string[]?>,
-      "customLifeCycleNotificationHelperType"
       "extendedSessionsEnabled": <bool?>,
       "extendedSessionIdleTimeoutInSeconds": <int?>,
-      "logReplayEvents": <bool?>
+      "customLifeCycleNotificationHelperType": <string?>
   }
 }
 ```
@@ -93,27 +99,27 @@ W przypadku, gdy abstrakcyjna klasa bazowa zawiera metod wirtualnych, te metody 
 
 Funkcje jednostki zdefiniować operacje odczytywania i aktualizowania małych fragmentów stanu, znane jako *trwałe jednostek*. Podobnie jak funkcje programu orchestrator, funkcje jednostki mają funkcje z typem wyzwalacza specjalne *wyzwalacza jednostki*. W przeciwieństwie do funkcji programu orchestrator funkcje jednostki nie ma żadnych ograniczeń określonego kodu. Funkcje jednostki również zarządzanie stanem jawnie zamiast niejawnie reprezentujący stan za pośrednictwem przepływu sterowania.
 
-Poniższy kod jest przykładem funkcja proste jednostki, która definiuje *licznika* jednostki. Funkcja definiuje trzy operacje `add`, `subtract`, i `reset`, każdy z aktualizacji, którą wartość całkowitą `currentValue`.
+### <a name="net-programing-models"></a>Modele programistyczne platformy .NET
+
+Istnieją dwa opcjonalne modele programowania do tworzenia jednostek trwałe. Poniższy kod jest przykładem prostej *licznika* zaimplementowane jako standardowej funkcji jednostki. Funkcja ta definiuje trzy *operacji*, `add`, `reset`, i `get`, każdy z które działają na wartość całkowitą stanu `currentValue`.
 
 ```csharp
 [FunctionName("Counter")]
-public static async Task Counter(
-    [EntityTrigger] IDurableEntityContext ctx)
+public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 {
     int currentValue = ctx.GetState<int>();
-    int operand = ctx.GetInput<int>();
 
-    switch (ctx.OperationName)
+    switch (ctx.OperationName.ToLowerInvariant())
     {
         case "add":
+            int amount = ctx.GetInput<int>();
             currentValue += operand;
             break;
-        case "subtract":
-            currentValue -= operand;
-            break;
         case "reset":
-            await SendResetNotificationAsync();
             currentValue = 0;
+            break;
+        case "get":
+            ctx.Return(currentValue);
             break;
     }
 
@@ -121,16 +127,38 @@ public static async Task Counter(
 }
 ```
 
+Ten model jest najlepsza w przypadku wdrożeń jednostki prostej lub implementacji, które mają dynamiczne zestaw operacji. Istnieje jednak również oparte na klasach modelu programowania, który jest przydatne w przypadku jednostek, które są statyczne, ale mają bardziej złożonych implementacji. Poniższy przykład jest równoważny implementację `Counter` jednostki przy użyciu metod i klas platformy .NET.
+
+```csharp
+public class Counter
+{
+    [JsonProperty("value")]
+    public int CurrentValue { get; set; }
+
+    public void Add(int amount) => this.CurrentValue += amount;
+    
+    public void Reset() => this.CurrentValue = 0;
+    
+    public int Get() => this.CurrentValue;
+
+    [FunctionName(nameof(Counter))]
+    public static Task Run([EntityTrigger] IDurableEntityContext ctx)
+        => ctx.DispatchAsync<Counter>();
+}
+```
+
+Model oparty na klasie jest podobny do modelu programowania, spopularyzowany przez [Orleans](https://www.microsoft.com/research/project/orleans-virtual-actors/). W tym modelu typ jednostki jest zdefiniowany jako klasa .NET. Każda metoda klasy jest operacją, która może być wywoływany przez klienta zewnętrznego. W odróżnieniu od Orleans jednak .NET interfejsy są opcjonalne. Poprzedni *licznika* przykład nie użyto interfejs, ale nadal może być wywoływany za pośrednictwem innych funkcji lub za pośrednictwem wywołania interfejsu API protokołu HTTP.
+
 Jednostka *wystąpień* są dostępne za pośrednictwem Unikatowy identyfikator *identyfikator jednostki*. Identyfikator jednostki jest po prostu pary ciągów, która jednoznacznie identyfikuje wystąpienie jednostki. Składa się z:
 
-1. **nazwa jednostki**: nazwa, która określa typ jednostki (na przykład "Licznik")
-2. **klucz jednostki**: ciąg, który unikatowo identyfikuje jednostkę wśród innych jednostek o takiej samej nazwie (na przykład, GUID)
+* **Nazwa jednostki**: nazwa, która określa typ jednostki (na przykład "Licznik").
+* **Klucz jednostki**: ciąg, który unikatowo identyfikuje jednostkę wśród innych jednostek o takiej samej nazwie (na przykład, GUID).
 
 Na przykład *licznika* funkcji jednostki mogą być używane do przechowywania wyników w grze online. Każde wystąpienie gry ma identyfikator unikatowy jednostki, takie jak `@Counter@Game1`, `@Counter@Game2`i tak dalej.
 
 ### <a name="comparison-with-virtual-actors"></a>Porównanie z wirtualnego aktorów
 
-Silnie wpływają projektowania jednostek trwałe [model aktorów](https://en.wikipedia.org/wiki/Actor_model). Jeśli już znasz aktorów, pojęć dotyczących trwałego jednostek powinno być znane. W szczególności trwałe jednostki są podobne do [wirtualnego aktorów](https://research.microsoft.com/en-us/projects/orleans/) na wiele sposobów:
+Silnie wpływają projektowania jednostek trwałe [model aktorów](https://en.wikipedia.org/wiki/Actor_model). Jeśli już znasz aktorów, pojęć dotyczących trwałego jednostek powinno być znane. W szczególności trwałe jednostki są podobne do [wirtualnego aktorów](https://research.microsoft.com/projects/orleans/) na wiele sposobów:
 
 * Trwałe wytycznym organizacje mogą być adresowane za pośrednictwem *identyfikator jednostki*.
 * Trwałe jednostki operacje wykonywane szeregowo, po kolei, aby zapobiec wyścigu.
@@ -139,23 +167,22 @@ Silnie wpływają projektowania jednostek trwałe [model aktorów](https://en.wi
 
 Istnieją pewne ważne różnice, które są warte odnotowania:
 
-* Trwałe jednostki są modelowane jako czystych funkcji. Ten projekt jest inny niż większość struktur zorientowane obiektowo, które reprezentują złośliwych użytkowników używających obsługi określonego języka dla klas, właściwości i metody.
 * Trwałe jednostek priorytety *trwałości* za pośrednictwem *opóźnienie*i dlatego nie może być odpowiednia dla aplikacji z ograniczeniami opóźnień.
 * Komunikaty wysyłane między jednostkami są dostarczane, niezawodnie i w kolejności.
 * Trwałe jednostki mogą być używane w połączeniu z mechanizmów trwałe i może służyć jako rozproszone blokad, które są opisane w dalszej części tego artykułu.
 * Wzorce jednostek żądań/odpowiedzi są ograniczone do aranżacji. Komunikacji jednostki do jednostki tylko jednokierunkowe komunikaty (znany także jako "sygnalizowanie") są dozwolone, tak jak w oryginalnym model aktorów. To zachowanie zapobiega rozproszonych zakleszczenia.
 
-### <a name="durable-entity-apis"></a>Interfejsy API trwałe jednostki
+### <a name="durable-entity-net-apis"></a>Trwałe jednostki interfejsów API platformy .NET
 
 Obsługa jednostki obejmuje kilka interfejsów API. Dla, istnieje nowy interfejs API definiowania jednostka funkcji, jak pokazano powyżej, które określą, co ma się zdarzyć, gdy operacja jest wywoływany w jednostce. Ponadto istniejących interfejsów API dla klientów i aranżacji zostały zaktualizowane o nowe funkcje do interakcji z jednostkami.
 
-### <a name="implementing-entity-operations"></a>Działania jednostki
+#### <a name="implementing-entity-operations"></a>Działania jednostki
 
 Wykonywanie operacji na jednostce może wywołać te elementy członkowskie obiektu context (`IDurableEntityContext` na platformie .NET):
 
 * **OperationName**: pobiera nazwę operacji.
-* **GetInput\<T >** : pobiera dane wejściowe dla operacji.
-* **GetState\<T >** : pobiera bieżący stan jednostki.
+* **GetInput\<tWEJŚCIE >** : pobiera dane wejściowe dla operacji.
+* **GetState\<stanu dławienia >** : pobiera bieżący stan jednostki.
 * **SetState**: aktualizuje stan jednostki.
 * **SignalEntity**: wysyła komunikat jednokierunkowy do jednostki.
 * **Funkcja samoobsługowego**: pobiera identyfikator obiektu.
@@ -168,24 +195,90 @@ Operacje są mniej ograniczone niż mechanizmów:
 * Operacje mogą wywołać zewnętrznych we/wy przy użyciu interfejsów API synchroniczna lub asynchroniczna (zaleca się używanie tylko tych asynchroniczne).
 * Operacje mogą być deterministyczna. Na przykład, jest bezpieczny do wywołania `DateTime.UtcNow`, `Guid.NewGuid()` lub `new Random()`.
 
-### <a name="accessing-entities-from-clients"></a>Uzyskiwanie dostępu do jednostek od klientów
+#### <a name="accessing-entities-from-clients"></a>Uzyskiwanie dostępu do jednostek od klientów
 
 Trwałe jednostki mogą być wywoływane z zwykłe funkcje za pośrednictwem `orchestrationClient` powiązania (`IDurableOrchestrationClient` na platformie .NET). Obsługiwane są następujące metody:
 
 * **ReadEntityStateAsync\<T >** : odczytuje stan obiektu.
 * **SignalEntityAsync**: wysyła komunikat jednokierunkowy do jednostki, a następnie czeka na jego można umieścić w kolejce.
+* **SignalEntityAsync\<T >** : taki sam jak `SignalEntityAsync` , ale używa obiektów wygenerowany serwer proxy typu `T`.
 
-Te metody priorytety wydajności za pośrednictwem spójności: `ReadEntityStateAsync` może zwrócić wartość starych i `SignalEntityAsync` może zwrócić, zanim operacja zostanie zakończona. Z kolei wywołanie jednostki z mechanizmów (zgodnie z opisem) jest silnie spójne.
+Poprzedni `SignalEntityAsync` wywołanie wymaga określający nazwę czynności jednostki jako `string` i ładunku operacji, ponieważ `object`. Następujący przykładowy kod jest przykładem tego wzorca:
 
-### <a name="accessing-entities-from-orchestrations"></a>Uzyskiwanie dostępu do jednostek z aranżacji
+```csharp
+EntityId id = // ...
+object amount = 5;
+context.SignalEntityAsync(id, "Add", amount);
+```
 
-Aranżacji można uzyskać dostęp do jednostki przy użyciu obiektu kontekstu. Można wybrać komunikacja jednokierunkowa (zostanie wyzwolony i zapomnij) i komunikacja dwukierunkowa (żądania i odpowiedzi). W odpowiednich metod
+Istnieje również możliwość generowania obiekt serwera proxy, aby uzyskać bezpieczny dostęp. Aby wygenerować proxy bezpieczny, typ jednostki musi implementować interfejs. Na przykład, załóżmy, że `Counter` jednostki, o których wspomniano wcześniej zaimplementowane `ICounter` interfejsu, zdefiniowane w następujący sposób:
+
+```csharp
+public interface ICounter
+{
+    void Add(int amount);
+    void Reset();
+    int Get();
+}
+
+public class Counter : ICounter
+{
+    // ...
+}
+```
+
+Kod klienta można używać `SignalEntityAsync<T>` i określ `ICounter` interfejs jako parametr typu, aby wygenerować proxy bezpieczny. To korzystanie z serwerów proxy w bezpieczny została przedstawiona w następującym przykładzie kodu:
+
+```csharp
+[FunctionName("UserDeleteAvailable")]
+public static async Task AddValueClient(
+    [QueueTrigger("my-queue")] string message,
+    [OrchestrationClient] IDurableOrchestrationClient client)
+{
+    int amount = int.Parse(message);
+    var target = new EntityId(nameof(Counter), "MyCounter");
+    await client.SignalEntityAsync<ICounter>(target, proxy => proxy.Add(amount));
+}
+```
+
+W poprzednim przykładzie `proxy` parametr jest dynamicznie generowanym wystąpienie `ICounter`, co przekłada się wewnętrznie wywołanie `Add` na równoważne (bez typu) wywołanie `SignalEntityAsync`.
+
+> [!NOTE]
+> Ważne jest, aby pamiętać, że `ReadEntityStateAsync` i `SignalEntityAsync` metody `IDurableOrchestrationClient` priorytety wydajności za pośrednictwem spójności. `ReadEntityStateAsync` może zwracać wartość starych i `SignalEntityAsync` może zwrócić, zanim operacja zostanie zakończona.
+
+#### <a name="accessing-entities-from-orchestrations"></a>Uzyskiwanie dostępu do jednostek z aranżacji
+
+Aranżacji mogą uzyskiwać dostęp do jednostki przy użyciu `IDurableOrchestrationContext` obiektu. Można wybrać komunikacja jednokierunkowa (zostanie wyzwolony i zapomnij) i komunikacja dwukierunkowa (żądania i odpowiedzi). Są to odpowiedniej metody:
 
 * **SignalEntity**: wysyła komunikat jednokierunkowy do jednostki.
 * **CallEntityAsync**: wysyła komunikat do jednostki, a następnie czeka na odpowiedź wskazującą, czy operacja zostanie ukończona.
 * **CallEntityAsync\<T >** : wysyła komunikat do jednostki, a następnie czeka na odpowiedź zawierającą wynik o typie T.
 
 Korzystając z komunikacja dwukierunkowa, wyjątki zgłaszane podczas wykonywania operacji również są przesyłane z powrotem do wywołującego aranżacji i zgłaszany ponownie. Z kolei korzystając z pożarem i zapominać, wyjątki nie są przestrzegane.
+
+Aby uzyskać bezpieczny dostęp aranżacji funkcji można wygenerować serwerów proxy w oparciu o interfejs. `CreateEntityProxy` Metoda rozszerzenia może być używana w tym celu:
+
+```csharp
+public interface IAsyncCounter
+{
+    Task AddAsync(int amount);
+    Task ResetAsync();
+    Task<int> GetAsync();
+}
+
+[FunctionName("CounterOrchestration)]
+public static async Task Run(
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
+{
+    // ...
+    IAsyncCounter proxy = context.CreateEntityProxy<IAsyncCounter>("MyCounter");
+    await proxy.AddAsync(5);
+    int newValue = await proxy.GetAsync();
+    // ...
+}
+```
+
+W poprzednim przykładzie jednostki "counter" został zakłada się, że istnieje, który implementuje `IAsyncCounter` interfejsu. Orchestration mógł następnie użyć `IAsyncCounter` definicji w celu wygenerowania typ serwera proxy dla synchronicznie interakcji z jednostką typu.
 
 ### <a name="locking-entities-from-orchestrations"></a>Blokowanie jednostek z aranżacji
 
@@ -282,4 +375,4 @@ Trwałe Framework zadanie obsługuje wielu dostawców magazynu już dzisiaj, w t
 `connectionStringName` Musi odwoływać się do nazwy zmiennej ustawienie lub środowiska aplikacji. Tej zmiennej ustawienie lub środowiska aplikacji powinna zawierać wartość parametrów połączenia w pamięci podręcznej Redis w formie *serwer: port*. Na przykład `localhost:6379` do łączenia się z lokalnego klastra pamięci podręcznej Redis.
 
 > [!NOTE]
-> Dostawcy pamięci podręcznej Redis jest obecnie eksperymentalny i obsługuje tylko aplikacji funkcji działających w jednym węźle.
+> Dostawcy pamięci podręcznej Redis jest obecnie eksperymentalny i obsługuje tylko aplikacji funkcji działających w jednym węźle. Nie gwarantuje, że dostawca pamięci podręcznej Redis nigdy nie będzie ogólnie dostępna i mogą zostać usunięte w przyszłej wersji.

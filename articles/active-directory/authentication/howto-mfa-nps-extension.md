@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dbe3039845b1c9160e4f4fa3007cad1f588f71e
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: ca6f79b5febdbf12c80ab85d07117bf937babef0
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560755"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798208"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrowanie istniejącej infrastruktury NPS przy użyciu usługi Azure Multi-Factor Authentication
 
@@ -76,14 +76,14 @@ Podczas instalowania rozszerzenia potrzebne poświadczenia Identyfikatora i admi
 
 Serwer NPS musi być w stanie komunikować się z następujących adresów URL przez porty 80 i 443.
 
-- [https://adnotifications.windowsazure.com](https://adnotifications.windowsazure.com)
-- [https://login.microsoftonline.com](https://login.microsoftonline.com)
+- https:\//adnotifications.windowsazure.com
+- https:\//login.microsoftonline.com
 
 Ponadto do ukończenia jest wymagana łączność z następującymi adresami URL [Instalatora karty przy użyciu dostarczonego skryptu programu PowerShell](#run-the-powershell-script)
 
-- [https://login.microsoftonline.com](https://login.microsoftonline.com)
-- [https://provisioningapi.microsoftonline.com](https://provisioningapi.microsoftonline.com)
-- [https://aadcdn.msauth.net](https://aadcdn.msauth.net)
+- https:\//login.microsoftonline.com
+- https:\//provisioningapi.microsoftonline.com
+- https:\//aadcdn.msauth.net
 
 ## <a name="prepare-your-environment"></a>Przygotowywanie środowiska
 
@@ -221,7 +221,7 @@ Po włączeniu usługi MFA dla klienta usługi RADIUS, za pomocą rozszerzenia s
 
 Jeśli masz użytkowników, którzy nie są zarejestrowane na potrzeby usługi MFA, można określić, co się dzieje, gdy użytkownik próbuje uwierzytelnić. Użyj ustawienia rejestru *REQUIRE_USER_MATCH* w ścieżce rejestru *HKLM\Software\Microsoft\AzureMFA* do sterowania zachowaniem funkcji. To ustawienie jest dostępna opcja jednej konfiguracji:
 
-| Klucz | Wartość | Domyślne |
+| Klucz | Value | Domyślny |
 | --- | ----- | ------- |
 | REQUIRE_USER_MATCH | PRAWDA/FAŁSZ | Nieustawione (odpowiada to TRUE) |
 
@@ -230,6 +230,14 @@ To ustawienie ma na celu ustalić, co należy zrobić, gdy użytkownik nie zosta
 Można utworzyć ten klucz i ustawić wartość FALSE, gdy użytkownicy są dołączania, a może nie wszystkie ono zarejestrowane na potrzeby usługi Azure MFA jeszcze. Jednak ponieważ klucza pozwala na użytkowników, którzy nie są zarejestrowane na potrzeby usługi MFA do logowania, należy je usunąć ten klucz przed przejściem do środowiska produkcyjnego.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
+
+### <a name="nps-extension-health-check-script"></a>Skrypt sprawdzania kondycji rozszerzenia serwera NPS
+
+Poniższy skrypt jest dostępna w galerii TechNet do wykonywania podstawowych kondycji wyboru czynności podczas rozwiązywania problemów z rozszerzeniem serwera NPS.
+
+[MFA_NPS_Troubleshooter.ps1](https://gallery.technet.microsoft.com/Azure-MFA-NPS-Extension-648de6bb)
+
+---
 
 ### <a name="how-do-i-verify-that-the-client-cert-is-installed-as-expected"></a>Jak sprawdzić, czy certyfikat klienta został zainstalowany, zgodnie z oczekiwaniami?
 

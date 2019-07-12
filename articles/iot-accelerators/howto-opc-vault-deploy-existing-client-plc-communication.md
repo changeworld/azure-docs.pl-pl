@@ -5,15 +5,15 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: conceptual
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 30eedd982fa0536ce45506c159de6d04132e9a14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9b7123f6e74d13ad1d7efa07df6de7a184ad7401
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61451093"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605734"
 ---
 # <a name="secure-the-communication-of-opc-client-and-opc-plc"></a>Bezpieczna komunikacja klienta OPC i OPC PLC
 
@@ -195,7 +195,7 @@ Jeśli widzisz te dane wyjściowe, następnie OPC PLC jest teraz ufające OPC kl
 > Chociaż pokazaliśmy pierwsze kroki weryfikacji dwóch tylko w przypadku OPC PLC te potrzebne można zweryfikować również klienta OPC.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Teraz, gdy wiesz jak wdrożyć magazyn OPC do istniejącego projektu, poniżej przedstawiono sugerowany następnego kroku:
 

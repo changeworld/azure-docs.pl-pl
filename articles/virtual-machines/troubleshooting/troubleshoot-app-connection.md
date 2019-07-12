@@ -4,7 +4,7 @@ description: Aby wyizolować problemy z połączeniem do aplikacji działającyc
 services: virtual-machines
 documentationcenter: ''
 author: genlin
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 keywords: Nie można uruchomić aplikacji, program nie będzie można otworzyć, nasłuchiwać portu blokowany, nie można uruchomić programu, zablokowany port nasłuchujący
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 81535d51617a419174331dbf9b18ea558913dfa9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9bc528cdd098a2e355c542c3ca8f9bcb0287f339
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60922249"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710520"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>Aplikacja Rozwiązywanie problemów z łącznością w przypadku maszyn wirtualnych na platformie Azure
 
@@ -37,12 +37,12 @@ Jeśli potrzebujesz dodatkowej pomocy w dowolnym momencie, w tym artykule, może
 ## <a name="quick-start-troubleshooting-steps"></a>Szybki start, kroki rozwiązywania problemów
 Jeśli masz problemy z połączeniem z aplikacją, wypróbuj następujące ogólne kroki rozwiązywania problemów. Po każdym kroku spróbuj nawiązać połączenie ponownie aplikację:
 
-* Uruchom ponownie maszynę wirtualną
+* Ponowne uruchomienie maszyny wirtualnej
 * Utwórz ponownie punkt końcowy / reguły zapory / reguł Sieciowej grupy zabezpieczeń sieciowych
   * [Model usługi Resource Manager — Zarządzanie sieciowymi grupami zabezpieczeń](../../virtual-network/manage-network-security-group.md)
   * [Model klasyczny — punkty końcowe zarządzających usługami w chmurze](../../cloud-services/cloud-services-enable-communication-role-instances.md)
 * Łączenie z innej lokalizacji, np. innej sieci wirtualnej platformy Azure
-* Ponowne wdrażanie maszyny wirtualnej
+* Ponowne wdrożenie maszyny wirtualnej
   * [Ponowne wdrażanie maszyny Wirtualnej Windows](redeploy-to-new-node-windows.md)
   * [Ponowne wdrażanie maszyny Wirtualnej systemu Linux](redeploy-to-new-node-linux.md)
 * Ponowne utworzenie maszyny wirtualnej

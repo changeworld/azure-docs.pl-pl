@@ -14,12 +14,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 06/18/2019
 ms.author: shvija
-ms.openlocfilehash: 3eb20013a6b3afaddce10f2e4652add0edf22a9a
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: c46b333f2cc304cc12ddf78670b60940c7bc0db3
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276784"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827660"
 ---
 # <a name="scaling-with-event-hubs"></a>Skalowanie za pomocą usługi Event Hubs
 
@@ -48,16 +48,16 @@ Usługa Event Hubs zwiększa przepływność, gdy rośnie obciążenie operacjam
 Aby uzyskać więcej informacji na temat automatyczne rozszerzanie funkcji, zobacz [automatyczne skalowanie jednostek przepływności](event-hubs-auto-inflate.md).
 
 ## <a name="partitions"></a>Partycje
+[!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
 
-Partycje pozwalają skalowaniu dla Twojego przetwarzania transmisji dla klientów. Ze względu na partycjonowanego modelu odbiorców oferująca usługi Event Hubs z partycjami użytkownik może skalowalnego w poziomie podczas przetwarzania zdarzeń jednocześnie. Centrum zdarzeń mogą mieć maksymalnie 32 partycjami.
+### <a name="partition-key"></a>Klucz partycji
 
-Zalecane jest równoważenie jednostek przepływności 1:1 i partycji w celu osiągnięcia optymalnej skali. Jedna partycja ma gwarantowaną ruchu przychodzącego i wychodzącego więcej niż jedną jednostkę przepływności. Może być możliwe do uzyskania większej przepływności na partycji, wydajności nie jest gwarantowana. Jest to, dlaczego firma Microsoft zaleca, że liczba partycji w Centrum zdarzeń jest większa lub równa liczbie jednostek przepływności.
+[Klucz partycji](event-hubs-programming-guide.md#partition-key) służy do mapowania danych zdarzeń przychodzących na określone partycje na potrzeby organizowania danych. Klucz partycji to wartość podawana przez nadawcę przekazywana do centrum zdarzeń. Jest on przetwarzany przez statyczną funkcję tworzenia skrótu, za pomocą której tworzone jest przypisanie partycji. Jeśli nie określisz klucza partycji podczas publikowania zdarzenia, używane jest przypisanie działania okrężnego.
 
-Biorąc pod uwagę łącznej przepływności, w którym planujesz wymagające, wiesz, że liczba jednostek przepływności, które są wymagane i minimalna liczba partycji, ale jak wiele partycji, należy mieć? Wybierz liczbę partycji, oparte na równoległością, który chcesz osiągnąć, jak również w zakresie przyszłych przepływności. Nie ma opłat za liczbę partycji, posiadanych w ramach Centrum zdarzeń.
+Wydawca zdarzeń ma informacje tylko o kluczu partycji, a nie partycji, na której publikowane są zdarzenia. To oddzielenie klucza od partycji powoduje, że nadawca nie musi wiedzieć zbyt dużo o przetwarzaniu podrzędnym. Unikatowa tożsamość urządzenia lub użytkownika stanowi dobry klucz partycji, ale inne atrybuty, takie jak lokalizacja geograficzna, mogą również zostać użyte do grupowania powiązanych zdarzeń w jedną partycję.
 
-Aby uzyskać szczegółowe informacje o cenach za korzystanie z usługi Event Hubs, zobacz [Usługa Event Hubs — cennik](https://azure.microsoft.com/pricing/details/event-hubs/).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Następujące linki pozwalają dowiedzieć się więcej na temat usługi Event Hubs:
 
 - [Automatyczne skalowanie jednostek przepływności](event-hubs-auto-inflate.md)

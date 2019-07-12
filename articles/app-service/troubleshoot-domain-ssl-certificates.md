@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: c0584a69349c2785b5b6bce1d17c023c95b36151
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b6bdc884107a522c81d100c0a05018cbc9d0a70
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66136177"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718269"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Rozwiązywanie problemów z domeny i problemy z certyfikatem SSL w usłudze Azure App Service
 
@@ -325,7 +325,6 @@ Domenę można zarządzać, nawet jeśli nie masz aplikacji internetowej usługi
 
 **Czy mogę przenieść aplikację sieci web przy użyciu domeny niestandardowej do innej subskrypcji lub ze środowiska App Service Environment v1 na V2?**
 
-Tak, można przenieść aplikację sieci web w subskrypcjach. Postępuj zgodnie ze wskazówkami w [sposób przenoszenia zasobów na platformie Azure](../azure-resource-manager/resource-group-move-resources.md). Istnieją pewne ograniczenia podczas przenoszenia aplikacji sieci web. Aby uzyskać więcej informacji, zobacz [ograniczenia dotyczące przenoszenia zasobów usługi App Service](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations
-).
+Tak, można przenieść aplikację sieci web w subskrypcjach. Postępuj zgodnie ze wskazówkami w [sposób przenoszenia zasobów na platformie Azure](../azure-resource-manager/resource-group-move-resources.md). Istnieją pewne ograniczenia podczas przenoszenia aplikacji sieci web. Aby uzyskać więcej informacji, zobacz [ograniczenia dotyczące przenoszenia zasobów usługi App Service](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
 
 Po przeniesieniu aplikacji sieci web, hosta powiązania nazwy domen w obrębie domen niestandardowych, ustawienia należy pozostają takie same. Żadne dodatkowe kroki są wymagane do skonfigurowania powiązania nazwy hosta.
