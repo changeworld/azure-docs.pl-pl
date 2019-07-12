@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6506a93914cfbc10f37980c4b916a93aa9aad75d
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 28487397cbfe70a64b3c403039d7f38270e04dca
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67564399"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827052"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
@@ -210,10 +210,20 @@ Udziały plików standardowa są dostępne we wszystkich regionach maksymalnie 5
 |Europa Zachodnia     |LRS|Nie         |
 |Zachodnie stany USA 2     |LRS, ZRS|Nie         |
 
+Aby pomóc nam określić priorytety nowych regionów i funkcje, Wypełnij ten [ankiety](https://aka.ms/azurefilesatscalesurvey).
 
 ### <a name="steps-to-onboard"></a>Kroki, aby dołączyć
 
-Aby zarejestrować swoją subskrypcję do większych preview udziałów plików, uruchom następujące polecenia środowiska PowerShell:
+Aby zarejestrować swoją subskrypcję do większych preview udziałów plików, należy użyć programu Azure PowerShell. Można użyć [usługi Azure Cloud Shell](https://shell.azure.com/) lub zainstaluj [lokalnie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps?view=azps-2.4.0) do uruchamiania następujących poleceń programu PowerShell:
+
+Najpierw upewnij się, że jest zaznaczona opcja subskrypcji, którą chcesz zarejestrować się w wersji zapoznawczej:
+
+```powershell
+$context = Get-AzSubscription -SubscriptionId ...
+Set-AzContext $context
+```
+
+Następnie należy zarejestrować w wersji zapoznawczej, za pomocą następujących poleceń:
 
 ```powershell
 Register-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage

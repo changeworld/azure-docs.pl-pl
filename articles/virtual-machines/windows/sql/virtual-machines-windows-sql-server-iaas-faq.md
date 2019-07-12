@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 5299437dea18510fa5f85ee27240c8afc434d125
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 95ad2ba4798d41f2e5e49ca33735b997859af23f
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61477267"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67658140"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Często zadawane pytania dotyczące programu SQL Server uruchomionego na maszynach wirtualnych Windows Azure
 
@@ -37,7 +37,7 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat u
 
 ## <a id="images"></a> Obrazy
 
-1. **Jakie obrazów w galerii maszyn wirtualnych programu SQL Server są dostępne?**
+1. **Jakie obrazów w galerii maszyn wirtualnych programu SQL Server są dostępne?** 
 
    Azure obsługuje obrazy maszyn wirtualnych dla wszystkich obsługiwanych wersji głównych programu SQL Server we wszystkich wersjach dla systemów Windows i Linux. Aby uzyskać więcej informacji, zobacz pełną listę [obrazów maszyn wirtualnych Windows](virtual-machines-windows-sql-server-iaas-overview.md#payasyougo) i [obrazów maszyn wirtualnych z systemem Linux](../../linux/sql/sql-server-linux-virtual-machines-overview.md#create).
 
@@ -78,7 +78,6 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat u
 1. **Jak mogę zainstalować moją licencjonowaną kopię programu SQL Server na maszynie wirtualnej platformy Azure?**
 
    Istnieją dwa sposoby, aby to zrobić. Możesz aprowizować jeden z [obrazów maszyn wirtualnych, który obsługuje licencje](virtual-machines-windows-sql-server-iaas-overview.md#BYOL). Ta metoda nosi nazwę bring-your-own-license (BYOL). Innym rozwiązaniem jest skopiowanie nośników instalacyjnych programu SQL Server na maszynę wirtualną z systemem Windows Server, a następnie zainstalowanie programu SQL Server na maszynie wirtualnej. Jednak w przypadku ręcznego zainstalowania programu SQL Server nie ma integracji z portalem, a rozszerzenie agenta IaaS programu SQL Server nie jest obsługiwane, dlatego w tym scenariuszu nie będą działać takie funkcje jak automatyczne tworzenie kopii zapasowych i automatyczne stosowanie poprawek. Z tego względu zalecamy użycie jednego z obrazów z galerii BYOL. Aby użyć BYOL i multimediów programu SQL Server na Maszynie wirtualnej platformy Azure, konieczne jest posiadanie [przenośności licencji za pośrednictwem programu Software Assurance na platformie Azure](https://azure.microsoft.com/pricing/license-mobility/). Aby uzyskać więcej informacji, zobacz [Pricing guidance for SQL Server Azure VMs](virtual-machines-windows-sql-server-pricing-guidance.md) (Wskazówki dotyczące cen maszyn wirtualnych platformy Azure z programem SQL Server).
-
 
 1. **Czy muszę płacić za licencję programu SQL Server na maszynie wirtualnej platformy Azure, jeśli używam jej tylko w trybie wstrzymania/trybie failover?**
 
@@ -147,9 +146,10 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat u
    
 ## <a name="updating-and-patching"></a>Stosowanie poprawek i aktualizacji
 
-1. **Jak zmienić do nowej wersji/wydania programu SQL Server w Maszynie wirtualnej platformy Azure?**
+1. **Jak zmienić do różnych wersji/wydania programu SQL Server w Maszynie wirtualnej platformy Azure?**
 
-   Klienci z pakietem Software Assurance mogą się do miejscowego uaktualnienia ich programu SQL Server uruchomiony na Maszynie wirtualnej platformy Azure przy użyciu nośnika instalacyjnego w portalu licencjonowania zbiorowego. Jednak obecnie, nie ma już zmienić wersję wystąpienia programu SQL Server. Utwórz nową maszynę wirtualną platformy Azure z odpowiednią wersją programu SQL Server, a następnie przeprowadzić migrację baz danych na nowy serwer przy użyciu standardu [technik migracji danych](virtual-machines-windows-migrate-sql.md).
+   Klienci mogą zmieniać ich wersją programu SQL Server przy użyciu nośnika instalacyjnego, który zawiera ich żądanej wersji lub wersji programu SQL Server. Po zmianie wersji użyj witryny Azure portal, aby zmodyfikować właściwości wersji maszyny wirtualnej, aby dokładnie odzwierciedlać rozliczeń dla maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [Zmień wersję maszyny Wirtualnej programu SQL Server](virtual-machines-windows-sql-change-edition.md). 
+
 
 1. **Sposób aktualizacji i dodatków service pack stosowania na maszynę Wirtualną programu SQL Server?**
 
@@ -170,7 +170,7 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat u
 
 1. **Jak zainstalować narzędzia danych serwera SQL na maszynie Wirtualnej platformy Azure?**
 
-    Pobieranie i instalowanie narzędzi danych programu SQL z [programu Microsoft SQL Server Data Tools — Business Intelligence programu Visual Studio 2013](https://www.microsoft.com/en-us/download/details.aspx?id=42313).
+    Pobieranie i instalowanie narzędzi danych programu SQL z [programu Microsoft SQL Server Data Tools — Business Intelligence programu Visual Studio 2013](https://www.microsoft.com/download/details.aspx?id=42313).
 
 1. **Czy transakcji rozproszonych za pomocą usługi MSDTC jest obsługiwana na maszynach wirtualnych programu SQL Server?**
    

@@ -6,15 +6,15 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: 13cec67a690239204bfc52d04b7cf03fd571148a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/10/2019
+ms.openlocfilehash: 5378a49ba5a4f3770ec9d9b3f723c063b4ef1a61
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399270"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67806433"
 ---
-# <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Wizualizuj dane przy użyciu łącznika Eksplorator danych platformy Azure dla usługi Power BI
+# <a name="visualize-data-from-azure-data-explorer-using-a-sql-query-in-power-bi"></a>Wizualizuj dane z Eksploratora danych Azure przy użyciu zapytania SQL w usłudze Power BI
 
 Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Power BI to rozwiązanie do analizy biznesowej, które pozwala wizualizować dane i udostępniać wyniki w organizacji.
 
@@ -84,4 +84,4 @@ Jeśli nie potrzebujesz już raportu, który został utworzony w tym artykule, u
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Wizualizuj dane przy użyciu importowanych zapytania w usłudze Power BI](power-bi-connector.md)
+[Wizualizuj dane przy użyciu łącznika Eksplorator danych platformy Azure dla usługi Power BI](power-bi-connector.md)

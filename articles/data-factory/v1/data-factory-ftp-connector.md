@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4aba7aadbe92b6c4f0ab417785e230bb6a6823df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5d043072244ede5b1d7bd28d4628ffe3cf4961d8
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60486587"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836321"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Przenoszenie danych z serwera FTP za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
@@ -40,12 +40,12 @@ Jeśli chcesz przenieść dane z **lokalnych** serwera FTP do chmury dane magazy
 
 Istnieje możliwość zainstalować bramę na tym samym komputerze lokalnym lub maszynie Wirtualnej IaaS jako serwer FTP. Jednak zaleca się zainstalowanie bramy na osobnym komputerze lub maszynie Wirtualnej IaaS, aby uniknąć rywalizacji i zapewnienia lepszej wydajności. Po zainstalowaniu bramy na osobnym komputerze, maszyna powinna mieć możliwość dostępu do serwera FTP.
 
-## <a name="get-started"></a>Rozpoczęcie pracy
+## <a name="get-started"></a>Wprowadzenie
 Utworzysz potok z działaniem kopiowania, które przenosi dane ze źródła FTP przy użyciu różnych narzędzi lub interfejsów API.
 
 Najprostszym sposobem utworzenia potoku jest użycie **kreatora kopiowania usługi Data Factory**. Zobacz [samouczka: Tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybki przewodnik.
 
-Aby utworzyć potok umożliwia także następujących narzędzi: **Witryna Azure portal**, **programu Visual Studio**, **PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**i **Interfejsu API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
+Aby utworzyć potok umożliwia także następujących narzędzi: **Program Visual Studio**, **PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**, i **interfejsu API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
 
 Czy używasz narzędzi lub interfejsów API, wykonaj następujące kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródłowych do magazynu danych ujścia:
 
@@ -63,11 +63,11 @@ Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości J
 ## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 W poniższej tabeli opisano specyficzne dla usługi FTP, połączone elementy JSON.
 
-| Właściwość | Opis | Wymagane | Domyślne |
+| Właściwość | Opis | Wymagane | Domyślny |
 | --- | --- | --- | --- |
 | type |Ustaw tę pozycję na SerwerFTP. |Yes |&nbsp; |
 | host |Określ nazwę lub adres IP serwera FTP. |Yes |&nbsp; |
-| authenticationType |Określ typ uwierzytelniania. |Yes |Podstawowe i anonimowe |
+| authenticationType |Określ typ uwierzytelniania. |Tak |Podstawowe i anonimowe |
 | username |Określ użytkownika, który ma dostęp do serwera FTP. |Nie |&nbsp; |
 | password |Określ hasło dla użytkownika (nazwa użytkownika). |Nie |&nbsp; |
 | encryptedCredential |Określ zaszyfrowane poświadczenia dostępu do serwera FTP. |Nie |&nbsp; |
@@ -155,7 +155,7 @@ Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zesta
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| folderPath |Podrzędną do folderu. Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Zobacz definicje usługi i zestaw danych próbka połączone przykłady.<br/><br/>Można połączyć tę właściwość z **partitionBy** mają ścieżki folderu oparte na początku wycinka i zakończenia daty i godziny. |Yes |
+| folderPath |Podrzędną do folderu. Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Zobacz definicje usługi i zestaw danych próbka połączone przykłady.<br/><br/>Można połączyć tę właściwość z **partitionBy** mają ścieżki folderu oparte na początku wycinka i zakończenia daty i godziny. |Tak |
 | fileName |Określ nazwę pliku w **folderPath** chcącym tabeli do odwoływania się do określonego pliku w folderze. Jeśli nie określisz żadnej wartości dla tej właściwości, tabela wskazuje wszystkie pliki w folderze.<br/><br/>Gdy **fileName** nie jest określona dla wyjściowego zestawu danych, nazwę wygenerowanego pliku znajduje się w następującym formacie: <br/><br/>`Data.<Guid>.txt` (Przykład: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Nie |
 | fileFilter |Określ filtr, który ma być używany do Wybierz podzbiór plików w **folderPath**, a nie wszystkich plików.<br/><br/>Dozwolone wartości to: `*` (wielu znaków) i `?` (pojedynczy znak).<br/><br/>Przykład 1: `"fileFilter": "*.log"`<br/>Przykład 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> **obiektu fileFilter** jest odpowiednie dla wejściowego zestawu danych w udziale plików. Ta właściwość nie jest obsługiwana przy użyciu pliku System (HDFS, Hadoop Distributed). |Nie |
 | partitionedBy |Można określić dynamiczny **folderPath** i **fileName** danych szeregów czasowych. Na przykład można określić **folderPath** , jest sparametryzowane za każdą godzinę danych. |Nie |
@@ -211,7 +211,7 @@ W działaniu kopiowania, gdy źródłem jest typu **FileSystemSource**, następu
 ## <a name="json-example-copy-data-from-ftp-server-to-azure-blob"></a>Przykład kodu JSON: Kopiowanie danych z serwera FTP do obiektu Blob platformy Azure
 Ten przykład pokazuje, jak skopiować dane z serwera FTP do usługi Azure Blob storage. Jednak możesz skopiować dane bezpośrednio do ujścia, o których wspomniano w [obsługiwane magazyny danych i formatów](data-factory-data-movement-activities.md#supported-data-stores-and-formats), za pomocą działania kopiowania w fabryce danych.
 
-W poniższych przykładach udostępniono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [witryny Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), lub [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md):
+W poniższych przykładach udostępniono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), lub [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md):
 
 * Połączonej usługi typu [SerwerFTP](#linked-service-properties)
 * Połączonej usługi typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
@@ -389,7 +389,7 @@ Potoku zawierającego działanie kopiowania, który jest skonfigurowany do korzy
 > [!NOTE]
 > Aby zamapować kolumny z zestawu danych źródłowych do kolumn z zestawu danych ujścia, zobacz [mapowanie kolumny zestawu danych w usłudze Azure Data Factory](data-factory-map-columns.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Zobacz następujące artykuły:
 
 * Informacje na temat kluczowych czynników tego obniżenie wydajności przenoszenia danych (działanie kopiowania) w fabryce danych i różne sposoby, aby zoptymalizować ją, zobacz [skopiuj dostrajania przewodnik dotyczący wydajności działania i](data-factory-copy-activity-performance.md).

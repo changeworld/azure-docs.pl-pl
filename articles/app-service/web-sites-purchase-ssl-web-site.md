@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
-ms.author: apurvajo;cephalin
+ms.author: cephalin
+ms.reviewer: apurvajo
 ms.custom: seodec18
-ms.openlocfilehash: 0febb8fadd973b67ed232d6094d85894fb383d14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e7768eb29caf66fd8f666a9475ac0787826a47e0
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65955713"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618895"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Kup i skonfiguruj certyfikat SSL dla usługi Azure App Service
 
@@ -51,8 +52,8 @@ Skorzystaj z poniższej tabeli, aby skonfigurować certyfikat. Po zakończeniu k
 |-|-|
 | Name (Nazwa) | Przyjazna nazwa dla certyfikatu usługi App Service. |
 | Nazwa hosta w domenie "naked" | Jeśli określisz domeny katalogu głównego, należy uzyskać certyfikat, który zabezpiecza *zarówno* domeny katalogu głównego i `www` poddomeny. Aby bezpiecznego dowolna poddomena tylko określić w pełni kwalifikowaną nazwę domeny podrzędnej, w tym miejscu (na przykład `mysubdomain.contoso.com`). |
-| Subskrypcja | Centrum danych, w którym hostowana jest aplikacja internetowa. |
-| Grupa zasobów | Grupa zasobów, który zawiera certyfikat. Można użyć nowej grupy zasobów lub wybrać tej samej grupie zasobów jako aplikacji usługi app Service, na przykład. |
+| Subscription | Centrum danych, w którym hostowana jest aplikacja internetowa. |
+| Resource group | Grupa zasobów, który zawiera certyfikat. Można użyć nowej grupy zasobów lub wybrać tej samej grupie zasobów jako aplikacji usługi app Service, na przykład. |
 | Jednostka SKU certyfikatu | Określa typ certyfikatu w celu utworzenia, czy to standardowy certyfikat lub [certyfikat uniwersalny](https://wikipedia.org/wiki/Wildcard_certificate). |
 | Postanowienia prawne | Kliknij, aby upewnić się, że akceptujesz postanowienia prawne. Certyfikaty są uzyskiwane od firmy GoDaddy. |
 
@@ -71,8 +72,8 @@ W **klucza magazynu stanu** kliknij **Key Vault repozytorium** do utworzenia now
 | Ustawienie | Opis |
 |-|-|
 | Name (Nazwa) | Unikatową nazwę, która składa się na znaki alfanumeryczne i łączniki. |
-| Grupa zasobów | Zalecenie wybrać tej samej grupie zasobów certyfikatu usługi App Service. |
-| Lokalizacja | Wybierz tej samej lokalizacji co aplikację usługi App Service. |
+| Resource group | Zalecenie wybrać tej samej grupie zasobów certyfikatu usługi App Service. |
+| Location | Wybierz tej samej lokalizacji co aplikację usługi App Service. |
 | Warstwa cenowa | Aby uzyskać informacje, zobacz [szczegóły cennika usługi Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/). |
 | Zasady dostępu| Określa aplikacje oraz dozwolony dostęp do zasobów magazynu. Możesz skonfigurować ją później, zgodnie z krokami w [udzielić kilka aplikacji, dostęp do magazynu kluczy](../key-vault/key-vault-group-permissions-for-apps.md). |
 | Dostęp do sieci wirtualnej | Ograniczyć dostęp do niektórych sieciach wirtualnych platformy Azure. Możesz skonfigurować ją później, zgodnie z krokami w [skonfigurować Azure Key Vault zapory i sieci wirtualne](../key-vault/key-vault-network-security.md) |

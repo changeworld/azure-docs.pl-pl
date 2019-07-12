@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: e7395c69d99884a5c662e545a69778ed195aec55
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: e6afd90c4e5a1b0759b3de7789ec37db4c04f2c7
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543111"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827457"
 ---
 # <a name="monitor-azure-fxt-edge-filer-hardware-status"></a>Monitorowanie stanu sprzętu filtr Edge FXT platformy Azure
 
@@ -58,7 +58,7 @@ Po lewej stronie apletu frontonu ma różne wskaźniki stanu LED (1) i wskaźnik
 
 Wskaźniki stanu po lewej stronie pokazują solid żółte światła, jeśli istnieje błąd w tym systemie. W poniższej tabeli opisano możliwe przyczyny i potencjalne rozwiązania błędów. 
 
-Jeśli nadal masz błędu po wykonaniu tych rozwiązań, należy się z pomocą techniczną w celu uzyskania pomocy. 
+Jeśli błąd nadal występuje po wykonaniu tych rozwiązań [się z pomocą techniczną](fxt-support-ticket.md) Aby uzyskać pomoc. 
 
 | Ikona | Opis | Błąd | Możliwe rozwiązania |
 |----------------|---------------|--------------------|----------------------|
@@ -79,7 +79,7 @@ Naciśnij klawisz kondycji systemu i identyfikator przycisk, aby przełączyć m
 |-------------------------------------------|-----------------------------------------------|
 | Stałe niebieski | Normalne działanie: system jest włączony, działają normalnie, i nie będzie aktywny tryb Identyfikatora systemu. <br/>Naciśnij przycisk identyfikator i kondycji systemu, jeśli chcesz się przełączyć do trybu Identyfikatora systemu. |
 | Migająca dioda niebieski | Tryb identyfikator systemu jest aktywny. Naciśnij klawisz kondycji systemu i przycisk Identyfikator systemu, jeśli chcesz się przełączyć do trybu kondycji systemu. |
-| Stałe żółtą | System jest w trybie awaryjnym. Jeśli problem będzie się powtarzać, skontaktuj się z działem obsługi klienta firmy Microsoft i pomocy technicznej. |
+| Stałe żółtą | System jest w trybie awaryjnym. Jeśli problem będzie się powtarzać, [skontaktuj się z działem obsługi klienta firmy Microsoft i pomocy technicznej](fxt-support-ticket.md). |
 | Migająca dioda żółtą | Błąd systemowy. Sprawdź dziennik zdarzeń systemu, aby uzyskać określone komunikaty o błędach. Dla informacji na temat zdarzeń i komunikatów o błędach generowane przez system oprogramowania układowego i agentów, które monitorują składników systemu zobacz stronę wyszukiwania kodu błędu w qrl.dell.com. |
 
 
