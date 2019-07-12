@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ecb7030fa3652525a36ce15d66ea6e5daf9c3296
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: b16fecd6db1f4bed319c832795a2252f8de96c6c
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304221"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607137"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Rozszerzona obsługa programu SQL Server 2008 i SQL Server 2008 R2 z platformą Azure
 
@@ -43,7 +43,7 @@ Obrazy wdrożone za pośrednictwem portalu Marketplace są dostarczane z wstępn
 ## <a name="licensing"></a>Licencjonowanie
 Płatność za rzeczywiste użycie programu SQL Server 2008R2 wdrożeń można przekonwertować na [korzyść użycia hybrydowego platformy Azure (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
-Aby przekonwertować licencji Software Assurance (SA) na podstawie płatność za rzeczywiste użycie, klienci powinni się rejestrować przy maszyny Wirtualnej SQL [dostawcy zasobów](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider). Po zarejestrowaniu dostawcy zasobów maszyny Wirtualnej SQL typu licencji SQL będzie wymienne między AHB i płatność za rzeczywiste użycie.
+Aby przekonwertować licencji Software Assurance (SA) na podstawie płatność za rzeczywiste użycie, klienci powinni się rejestrować przy maszyny Wirtualnej SQL [dostawcy zasobów](virtual-machines-windows-sql-register-with-resource-provider.md). Po zarejestrowaniu dostawcy zasobów maszyny Wirtualnej SQL typu licencji SQL będzie wymienne między AHB i płatność za rzeczywiste użycie.
 
 Samodzielnie zainstalowanych wystąpień programu SQL Server 2008 lub SQL Server 2008 R2, na maszynie Wirtualnej platformy Azure można rejestrować za pomocą dostawcy zasobów bazy danych SQL i konwertowanie ich typ licencji na płatność za rzeczywiste użycie.
 
@@ -69,12 +69,12 @@ Rozwiązania odzyskiwania po awarii dla EOS programu SQL Server na maszynie Wirt
 - **Azure Site Recovery**: Teraz można replikować maszyny Wirtualnej między strefami i regionami przy użyciu replikacji usługi Azure Site Recovery. Serwer SQL wymaga migawki spójne z aplikacji zagwarantować odzyskiwania na wypadek awarii. Usługa Azure Site Recovery zapewnia minimalne RPO 1-godzinnego i 2-godzinnego + czas odzyskiwania serwera SQL cel czasu odzyskiwania dla EOS programu SQL Server odzyskiwania po awarii.
 
 ## <a name="security-patching"></a>Stosowanie poprawek zabezpieczeń
-Aktualizacje zabezpieczeń dla maszyn wirtualnych programu SQL Server będą dostarczane za pośrednictwem kanałów Microsoft Update po maszynę Wirtualną programu SQL Server został zarejestrowany przy użyciu języka SQL [dostawcy zasobów](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider). Poprawki albo mogą być pobierane, ręcznie lub automatycznie.
+Aktualizacje zabezpieczeń dla maszyn wirtualnych programu SQL Server będą dostarczane za pośrednictwem kanałów Microsoft Update po maszynę Wirtualną programu SQL Server został zarejestrowany przy użyciu języka SQL [dostawcy zasobów](virtual-machines-windows-sql-register-with-resource-provider.md). Poprawki albo mogą być pobierane, ręcznie lub automatycznie.
 
 Opcja **Automatyczne stosowanie poprawek** jest domyślnie włączona. Automatyczne stosowanie poprawek umożliwia platformie Azure automatyczne stosowanie poprawek programu SQL Server i systemu operacyjnego. Jeśli zainstalowano rozszerzenie programu SQL IaaS, można określić dzień tygodnia, godzinę i czas trwania okna obsługi. Platforma Azure stosuje poprawki w tym oknie obsługi. Harmonogram okna obsługi korzysta z ustawień regionalnych godziny maszyny wirtualnej.  Aby uzyskać więcej informacji, zobacz [Automated Patching for SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-automated-patching.md) (Automatyczne stosowanie poprawek programu SQL Server w usłudze Azure Virtual Machines).
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Migrowanie maszyn wirtualnych SQL Server na platformę Azure
 

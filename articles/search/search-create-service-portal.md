@@ -6,19 +6,19 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 05/29/2019
+ms.date: 07/09/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: fd81115f4e811366b6b115d1c73a9be7ca26698b
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: d0d1dbb81f00f500f3eb95c605ed0c15c634f624
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485616"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706831"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Tworzenie usługi Azure Search w portalu
 
-Usługa Azure Search jest zasobem autonomicznym służącym do dołączania funkcji wyszukiwania do aplikacji niestandardowych. Można ją łatwo zintegrować z wieloma innymi usługami platformy Azure lub korzystać z niej z aplikacjami na serwerach sieciowych lub oprogramowaniem działającym na innych platformach w chmurze.
+Usługa Azure Search jest zasobem autonomicznym służącym do dołączania funkcji wyszukiwania do aplikacji niestandardowych. Mimo że usługa Azure Search zapewnia łatwą integrację z innymi usługami platformy Azure, możesz również używać go jako składnik autonomicznej lub zintegrować ją z aplikacji na serwerach sieciowych lub oprogramowanie uruchomione na innych platformach w chmurze.
 
 Ten artykuł zawiera informacje dotyczące tworzenia zasobu usługi Azure Search w [portalu Azure](https://portal.azure.com/).
 
@@ -73,10 +73,10 @@ W związku z tym, że usługa Azure Search należy do usług platformy Azure, mo
 
 Jeśli indeksujesz danych udostępnionych przez inną usługę Azure service (usługa Azure storage, Azure Cosmos DB, Azure SQL Database), zaleca się utworzenie usługi Azure Search w tym samym regionie, aby uniknąć naliczania opłat przepustowości. Istnieją nie opłaty za dane wychodzące, gdy usługi są w tym samym regionie.
 
-Jeśli używasz wzbogacenia sztucznej Inteligencji w usłudze wyszukiwania poznawczego Tworzenie usługi w tym samym regionie, co zasób usług Cognitive Services. Wspólnej lokalizacji usług jest wymagana dla wzbogacania sztucznej Inteligencji.
+Jeśli używasz wzbogacenia sztucznej Inteligencji w usłudze wyszukiwania poznawczego Tworzenie usługi w tym samym regionie, co zasób usług Cognitive Services. *Wspólnej lokalizacji usługi Azure Search i Cognitive Services, w tym samym regionie jest wymagana dla sztucznej Inteligencji wzbogacania*.
 
 > [!Note]
-> Indie środkowe jest obecnie niedostępna dla nowych usług. Dla usług już w Indie środkowe możesz skalować w górę bez żadnych ograniczeń, a usługa jest w pełni obsługiwana w tym regionie. Ograniczenia w tym regionie jest tymczasowe i ta uwaga zostanie usunięta, gdy nie dłużej zastosowania.
+> Indie środkowe jest obecnie niedostępna dla nowych usług. Dla usług już w Indie środkowe możesz skalować w górę bez żadnych ograniczeń, a usługa jest w pełni obsługiwana w tym regionie. Ograniczenia w tym regionie jest tymczasowa i jest ograniczona do tylko nowe usługi. Ta uwaga zostanie usunięta, gdy ograniczenia ma już zastosowania.
 
 ## <a name="select-a-pricing-tier-sku"></a>Wybieranie warstwy cenowej (jednostek SKU)
 
@@ -88,27 +88,29 @@ Po utworzeniu usługi nie można zmienić warstwy cenowej. W razie konieczności
 
 ## <a name="create-your-service"></a>Tworzenie usługi
 
-Należy pamiętać o przypięciu usługi do pulpitu nawigacyjnego, aby mieć do niej łatwy dostęp po każdym zalogowaniu.
+Wprowadź wymagane dane wejściowe, aby utworzyć usługę. 
 
-![Przypinanie do pulpitu nawigacyjnego](./media/search-create-service-portal/new-service3.png "Przypnij zasób do pulpitu nawigacyjnego, aby mieć do niego wygodny dostęp")
+![Przejrzyj i Utwórz usługę](./media/search-create-service-portal/new-service3.png "przeglądu i utworzyć usługę")
+
+Usługa jest wdrożona w ciągu kilku minut, które można monitorować za pomocą powiadomień platformy Azure. Należy wziąć pod uwagę, przypinanie usługi do pulpitu nawigacyjnego, aby mieć łatwy dostęp w przyszłości.
+
+![Monitorowanie i przypiąć usługę](./media/search-create-service-portal/monitor-notifications.png "monitora i numer pin usługi")
 
 ## <a name="get-a-key-and-url-endpoint"></a>Pobieranie klucza i punktu końcowego adresu URL
 
-Poza pewnymi wyjątkami, używanie nowej usługi wymaga podania punktu końcowego adresu URL i klucza interfejsu API autoryzacji. Przewodniki Szybki start, samouczki, takie jak [Poznaj interfejs API REST usługi Azure Search (Postman)](search-get-started-postman.md) i [Jak używać usługi Azure Search z platformy .NET](search-howto-dotnet-sdk.md), przykłady i kod niestandardowy — wszystkie te zasoby wymagają punktu końcowego i klucza, aby można je było uruchomić w określonym zasobie.
+Tylko w przypadku korzystania z portalu, uzyskiwanie dostępu do nowej usługi wymaga, aby podać adres URL punktu końcowego i klucza interfejsu api usługi uwierzytelniania.
 
 1. W prawej części strony przeglądu usługi zlokalizuj punkt końcowy adresu URL i skopiuj go.
 
-   ![Strona przeglądu usługi z punktem końcowym adresu URL](./media/search-create-service-portal/url-endpoint.png "Strona przeglądu usługi z punktem końcowym adresu URL")
-
 2. W okienku nawigacji po lewej stronie wybierz pozycję **Klucze**, a następnie skopiuj jeden z kluczy administratora (są one równoważne). Klucze interfejsu API administratora są wymagane do tworzenia, aktualizowania i usuwania obiektów w usłudze.
 
-   ![Strona Klucze z kluczem podstawowym i pomocniczym](./media/search-create-service-portal/admin-api-keys.png "Klucze interfejsu API administratora na potrzeby autoryzacji")
+   ![Strona przeglądu usługi z punktem końcowym adresu URL](./media/search-create-service-portal/get-url-key.png "Strona przeglądu usługi z punktem końcowym adresu URL")
 
-Klucz i punkt końcowy nie są wymagane do zadań wykonywanych w portalu. Portal jest już połączony z zasobem usługi Azure Search przy użyciu uprawnień administratora. Aby zapoznać się z samouczkiem portalu, zobacz [Samouczek: importowanie, indeksowanie i wysyłanie zapytań w usłudze Azure Search](search-get-started-portal.md).
+Klucz i punkt końcowy nie są wymagane do zadań wykonywanych w portalu. Portal jest już połączony z zasobem usługi Azure Search przy użyciu uprawnień administratora. Przewodnik po portalu, aby uzyskać rozpoczynać się [Szybki Start: Tworzenie indeksu usługi Azure Search w portalu](search-get-started-portal.md).
 
 ## <a name="scale-your-service"></a>Skalowanie usługi
 
-Tworzenie usługi może potrwać kilka minut (15 minut lub dłużej w zależności od warstwy). Po aprowizacji usługi można ją skalować stosownie do potrzeb. Ponieważ dla usługi Azure Search wybrano warstwę standardową, można ją skalować w dwóch wymiarach: replik i partycji. Wybór warstwy podstawowej oznaczałby, że można dodawać wyłącznie repliki. W razie aprowizacji bezpłatnej usługi skalowanie nie jest dostępne.
+Po aprowizacji usługi można ją skalować stosownie do potrzeb. W przypadku wybrania warstwy standardowa dla usługi Azure Search pozwala skalować usługę w dwóch wymiarach: replik i partycji. Wybór warstwy podstawowej oznaczałby, że można dodawać wyłącznie repliki. W razie aprowizacji bezpłatnej usługi skalowanie nie jest dostępne.
 
 ***Partycje*** umożliwiają usłudze przechowywanie i przeszukiwanie większej liczby dokumentów.
 
@@ -126,7 +128,7 @@ Dodawanie zasobów wiąże się z dodaniem opłat do rachunku miesięcznego. [Ka
 ![Dodawanie pojemności](./media/search-create-service-portal/settings-scale.png "Dodawanie pojemności za pośrednictwem replik i partycji")
 
 > [!Note]
-> Każda warstwa ma inne [limity](search-limits-quotas-capacity.md) całkowitej liczby jednostek wyszukiwania dozwolonych w ramach jednej usługi (repliki * partycje = suma jednostek wyszukiwania).
+> Dla partycji magazynu i szybkość wzrostu na wyższe warstwy. Aby uzyskać więcej informacji, zobacz [pojemnością i limitami](search-limits-quotas-capacity.md).
 
 ## <a name="when-to-add-a-second-service"></a>Kiedy należy dodać drugą usługę
 
@@ -143,9 +145,9 @@ Chociaż większość klientów używa tylko jednej usługi, nadmiarowość usł
 
 Druga usługa nie jest wymagana w celu zapewnienia wysokiej dostępności. Wysoka dostępność zapytań ma miejsce wtedy, gdy używane są co najmniej 2 repliki w tej samej usłudze. Repliki są aktualizowane w odpowiedniej kolejności, co oznacza, że podczas wdrażania aktualizacji usługi działa co najmniej jedna replika. Aby uzyskać więcej informacji na temat czasu pracy, zobacz [Umowy dotyczące poziomu usług](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Po aprowizacji usługi Azure Search możesz utworzyć w portalu swój pierwszy indeks.
 
 > [!div class="nextstepaction"]
-> [Samouczek: importowanie danych, indeksu i uruchamianie zapytań w portalu](search-get-started-portal.md)
+> [Szybki start: Tworzenie indeksu usługi Azure Search w portalu](search-get-started-portal.md)

@@ -2,17 +2,17 @@
 title: Uaktualnianie klastra usługi Azure Kubernetes Service (AKS)
 description: Dowiedz się, jak uaktualnić klaster Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: iainfou
-ms.openlocfilehash: 2cadd4b33cb52307599ce1e83eee8370ef9850fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: dd88b5a044fe495da374178be8774f45bdd30f61
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66692779"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614061"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Uaktualnianie klastra usługi Azure Kubernetes Service (AKS)
 
@@ -26,7 +26,7 @@ Ten artykuł wymaga, czy korzystasz z wiersza polecenia platformy Azure w wersji
 
 ## <a name="check-for-available-aks-cluster-upgrades"></a>Sprawdź, czy są dostępne Uaktualnianie klastra AKS
 
-Aby sprawdzić, które wersje rozwiązania Kubernetes są dostępne dla klastra, użyj [az aks get uaktualnienia] [ az-aks-get-upgrades] polecenia. Poniższy przykład sprawdza dostępne aktualizacje do klastra o nazwie *myAKSCluster* w grupie zasobów o nazwie *myResourceGroup*:
+Aby sprawdzić, które wersje rozwiązania Kubernetes są dostępne dla klastra, użyj [az aks get uaktualnień][az-aks-get-upgrades] polecenia. Poniższy przykład sprawdza dostępne aktualizacje do klastra o nazwie *myAKSCluster* w grupie zasobów o nazwie *myResourceGroup*:
 
 ```azurecli-interactive
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
@@ -47,7 +47,7 @@ default  myResourceGroup  1.11.9         1.11.9           1.12.7, 1.12.8
 
 ## <a name="upgrade-an-aks-cluster"></a>Uaktualnianie klastra AKS
 
-Z listy dostępnych wersji dla klastra usługi AKS, użyj [uaktualnienia az aks] [ az-aks-upgrade] polecenie, aby uaktualnić. Podczas procesu uaktualniania AKS dodaje nowy węzeł do klastra który uruchamia określonej wersji platformy Kubernetes, następnie dokładnie [cordon i opróżniania] [ kubernetes-drain] jednego z węzłów stary, aby zminimalizować zakłócenia dla uruchamiania aplikacje. Gdy nowy węzeł został potwierdzony jako uruchomiona zasobniki aplikacji, węzła starego zostaną usunięte. Ten proces jest powtarzany, aż wszystkie węzły w klastrze zostały uaktualnione.
+Z listy dostępnych wersji dla klastra usługi AKS, użyj [uaktualnienia az aks][az-aks-upgrade] command to upgrade. During the upgrade process, AKS adds a new node to the cluster that runs the specified Kubernetes version, then carefully [cordon and drains][kubernetes-drain] jednego z węzłów stary, aby zminimalizować zakłócenia dla działających aplikacji. Gdy nowy węzeł został potwierdzony jako uruchomiona zasobniki aplikacji, węzła starego zostaną usunięte. Ten proces jest powtarzany, aż wszystkie węzły w klastrze zostały uaktualnione.
 
 Poniższy przykład uaktualniania klastra do wersji *1.12.8*:
 
@@ -57,7 +57,7 @@ az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes
 
 Trwa kilka minut, aby uaktualnić klaster, w zależności od liczby węzłów masz.
 
-Aby upewnić się, że uaktualnienie zakończyło się pomyślnie, należy użyć [az aks show] [ az-aks-show] polecenia:
+Aby upewnić się, że uaktualnienie zakończyło się pomyślnie, należy użyć [az aks show][az-aks-show] polecenia:
 
 ```azurecli-interactive
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
@@ -71,7 +71,7 @@ Name          Location    ResourceGroup    KubernetesVersion    ProvisioningStat
 myAKSCluster  eastus      myResourceGroup  1.12.8               Succeeded            myaksclust-myresourcegroup-19da35-90efab95.hcp.eastus.azmk8s.io
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym artykule pokazano sposób uaktualniania istniejącego klastra usługi AKS. Aby dowiedzieć się więcej na temat wdrażania i zarządzania klastrami usługi AKS, zobacz zestawie samouczków.
 

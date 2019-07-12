@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 4b622a5925aebd140fed2ac74eaf7cc186803b90
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a63ef969f17fc48145174d99fec53e77b61885a4
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60236154"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827972"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Przekształcanie danych przy użyciu działania programu Hive w usłudze Azure Data Factory 
 > [!div class="op_single_selector" title1="Działania przekształcania"]
@@ -75,11 +75,11 @@ Działanie HDInsight Hive w usłudze Data Factory [potoku](data-factory-create-p
 ## <a name="syntax-details"></a>Szczegóły składni
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| name |Nazwa działania |Yes |
+| name |Nazwa działania |Tak |
 | description |Tekst opisujący przeznaczenie działania |Nie |
-| type |HDinsightHive |Yes |
+| type |HDinsightHive |Tak |
 | inputs |Dane wejściowe, używane przez działanie programu Hive |Nie |
-| outputs |Dane wyjściowe generowane przez działanie programu Hive |Yes |
+| outputs |Dane wyjściowe generowane przez działanie programu Hive |Tak |
 | linkedServiceName |Odwołanie do klastra HDInsight zarejestrowany jako połączonej usługi w usłudze Data Factory |Yes |
 | script |Określ wbudowany skrypt programu Hive |Nie |
 | scriptPath |Store skryptu programu Hive w usłudze Azure blob storage i podaj ścieżkę do pliku. Użyj właściwości 'obszarami script' lub "scriptPath". Nie można używać razem. Nazwa pliku jest rozróżniana wielkość liter. |Nie |

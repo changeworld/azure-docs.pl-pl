@@ -2,17 +2,17 @@
 title: Zarządzanie klastrem usługi Azure Kubernetes Service, korzystając z pulpitu nawigacyjnego sieci web
 description: Dowiedz się, jak wbudowany pulpit nawigacyjny interfejsu użytkownika sieci web rozwiązania Kubernetes umożliwiają zarządzanie klastrem usługi Azure Kubernetes Service (AKS)
 services: container-service
-author: tylermsft
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
-ms.author: twhitney
-ms.openlocfilehash: 80c0bd630ba2263696b72b003e27c53f1e457704
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 0de2f285b5eca88a098a2d7cfe1608ad2f0db71b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304539"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615236"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Dostęp do pulpitu nawigacyjnego sieci web rozwiązania Kubernetes w usłudze Azure Kubernetes Service (AKS)
 
@@ -24,11 +24,11 @@ Aby uzyskać więcej informacji na temat pulpitu nawigacyjnego rozwiązania Kube
 
 W krokach szczegółowo opisanych w tym dokumencie przyjęto założenie, został utworzony klaster usługi AKS i ustalonymi `kubectl` połączenia z klastrem. Jeśli musisz utworzyć klaster usługi AKS, zobacz [szybkiego startu usługi AKS][aks-quickstart].
 
-Musisz również mieć zainstalowany i skonfigurowany interfejs wiersza polecenia platformy Azure w wersji 2.0.46 lub nowszej. Uruchom polecenie  `az --version` , aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie przeprowadzenie instalacji lub uaktualnienia, zobacz  [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
+Musisz również mieć zainstalowany i skonfigurowany interfejs wiersza polecenia platformy Azure w wersji 2.0.46 lub nowszej. Uruchom polecenie  `az --version` , aby dowiedzieć się, jaka wersja jest używana. Jeśli potrzebujesz instalacja lub uaktualnienie, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj][install-azure-cli].
 
 ## <a name="start-the-kubernetes-dashboard"></a>Rozpocznij pulpit nawigacyjny platformy Kubernetes
 
-Aby uruchomić Pulpit nawigacyjny platformy Kubernetes, należy użyć [Przeglądaj az aks] [ az-aks-browse] polecenia. W poniższym przykładzie otwierany pulpit nawigacyjny klastra o nazwie *myAKSCluster* w grupie zasobów o nazwie *myResourceGroup*:
+Aby uruchomić Pulpit nawigacyjny platformy Kubernetes, należy użyć [Przeglądaj az aks][az-aks-browse] polecenia. W poniższym przykładzie otwierany pulpit nawigacyjny klastra o nazwie *myAKSCluster* w grupie zasobów o nazwie *myResourceGroup*:
 
 ```azurecli
 az aks browse --resource-group myResourceGroup --name myAKSCluster
@@ -42,7 +42,7 @@ To polecenie tworzy serwer proxy między systemu dla deweloperów i interfejsu A
 
 Jeśli klaster AKS korzysta z funkcji RBAC, *ClusterRoleBinding* musi zostać utworzona zanim poprawnie możesz uzyskać dostęp do pulpitu nawigacyjnego. Domyślnie Pulpit nawigacyjny platformy Kubernetes jest wdrażany z minimalnym dostęp do odczytu i wyświetla błędy dostęp RBAC. Pulpit nawigacyjny platformy Kubernetes, nie obsługuje obecnie poświadczenia dostarczone przez użytkownika, aby określić poziom dostępu, a nie używa ról przypisywane do konta usługi. Administrator klastra może wybrać przyznanie dodatkowe prawa dostępu do *pulpit nawigacyjny platformy kubernetes* do konta usługi, jednak może to być wektor dla podwyższenie poziomu uprawnień. Można również zintegrować uwierzytelniania usługi Azure Active Directory, aby zapewnić bardziej szczegółowy poziom dostępu.
 
-Aby utworzyć powiązanie, użyj [kubectl tworzenie clusterrolebinding] [ kubectl-create-clusterrolebinding] polecenia, jak pokazano w poniższym przykładzie. 
+Aby utworzyć powiązanie, użyj [kubectl tworzenie clusterrolebinding][kubectl-create-clusterrolebinding] polecenia, jak pokazano w poniższym przykładzie. 
 
 > [!WARNING]
 > To powiązanie przykładowych nie obejmuje wszystkie składniki dodatkowego uwierzytelniania i może prowadzić do metody use niezabezpieczone. Pulpit nawigacyjny platformy Kubernetes jest otwarta dla każda osoba z dostępem do adresu URL. Nie ujawniaj pulpit nawigacyjny platformy Kubernetes publicznie.
@@ -53,7 +53,7 @@ Aby utworzyć powiązanie, użyj [kubectl tworzenie clusterrolebinding] [ kubect
 kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
 ```
 
-Pulpit nawigacyjny rozwiązania Kubernetes można teraz uzyskać dostęp w klastrze z włączoną funkcją RBAC. Aby uruchomić Pulpit nawigacyjny platformy Kubernetes, należy użyć [Przeglądaj az aks] [ az-aks-browse] polecenia zgodnie z opisem w poprzednim kroku.
+Pulpit nawigacyjny rozwiązania Kubernetes można teraz uzyskać dostęp w klastrze z włączoną funkcją RBAC. Aby uruchomić Pulpit nawigacyjny platformy Kubernetes, należy użyć [Przeglądaj az aks][az-aks-browse] polecenia zgodnie z opisem w poprzednim kroku.
 
 ## <a name="create-an-application"></a>Tworzenie aplikacji
 

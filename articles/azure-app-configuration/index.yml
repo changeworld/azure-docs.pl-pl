@@ -67,6 +67,7 @@ sections:
         style: unordered
         items:
           - html: <a href="/azure/azure-app-configuration/enable-dynamic-configuration-aspnet-core">Enable dynamic configuration in ASP.NET Core (Włączanie dynamicznej konfiguracji na platformie ASP.NET Core)</a>
+          - html: <a href="/azure/azure-app-configuration/enable-dynamic-configuration-dotnet-core">Enable dynamic configuration in a .NET Core app</a> (Włączanie dynamicznej konfiguracji w aplikacji .NET Core)
           - html: <a href="/azure/azure-app-configuration/use-feature-flags-dotnet-core">Używanie flag funkcji w aplikacji platformy .NET Core</a>
           - html: <a href="/azure/azure-app-configuration/manage-feature-flags">Zarządzanie flagami funkcji</a>
           - html: <a href="/azure/azure-app-configuration/integrate-ci-cd-pipeline">Integracja z potokiem ciągłej integracji/ciągłego wdrażania</a>

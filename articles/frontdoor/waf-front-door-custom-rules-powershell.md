@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/21/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: aac871e71ca0dd30a32e74dd92e417fc95eaa5e1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff8330ab8aec7f0e9aa92409ce1eafd5be5ceeaf
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241334"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605753"
 ---
 # <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>Skonfiguruj zasady zapory aplikacji sieci web przy użyciu programu Azure PowerShell
 Zasady zapory aplikacji sieci web platformy Azure definiuje inspekcji wymagana, gdy żądanie dociera przy wejściu.
@@ -79,7 +79,7 @@ $URLOver100 = New-AzFrontDoorWafCustomRuleObject -Name "URLOver100" -RuleType Ma
 
 Poniższy przykład tworzy zarządzanych domyślny zestaw reguł przy użyciu programu Azure PowerShell:
 ```powershell-interactive
-$managedRules = New-AzFrontDoorManagedRuleObject -Type DefaultRuleSet -Version "preview-0.1"
+$managedRules =  New-AzFrontDoorWafManagedRuleObject -Type DefaultRuleSet -Version 1.0
 ```
 ## <a name="configure-a-security-policy"></a>Konfigurowanie zasad zabezpieczeń
 
@@ -106,7 +106,7 @@ Poniższym przykładzie używa nazwy grupy zasobów *myResourceGroupFD1* przy za
 > [!NOTE]
 > Musisz ustawić *WebApplicationFirewallPolicyLink* właściwość raz połączyć drzwiami frontowymi frontonu zasady zabezpieczeń. Zasady kolejne aktualizacje są automatycznie stosowane do frontonu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o [drzwi](front-door-overview.md) 
 - Dowiedz się więcej o [zapory aplikacji sieci Web dla drzwi](waf-overview.md)

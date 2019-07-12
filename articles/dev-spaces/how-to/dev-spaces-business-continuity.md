@@ -9,13 +9,13 @@ ms.date: 01/28/2019
 ms.topic: conceptual
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s '
-manager: jeconnoc
-ms.openlocfilehash: 69f5bdd80e4cf10db6a530ddfa08a1f26cd42ca0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+manager: gwallace
+ms.openlocfilehash: 2da92b4fcd98024ada8d852d65e08fe8c70e3884
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754419"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704051"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Business ciągłości działania i odzyskiwania po awarii w Azure Dev miejsca do magazynowania
 

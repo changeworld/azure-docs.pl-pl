@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/05/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: e57291292d8957fd323f9be03bb7df0492484ea8
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: da10b70b85e284173abbd1779fb1d39f477ca0cd
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341614"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723198"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues"></a>Uwierzytelnianie za pomocą usługi Azure Active Directory z aplikacji do dostępu do obiektów blob i kolejek
 
@@ -49,16 +49,16 @@ Aby uzyskać więcej informacji na temat rejestrowania aplikacji w usłudze Azur
 Następnie udziel aplikacji uprawnień do wywoływania interfejsów API usługi Azure Storage. Ten krok powoduje włączenie aplikacji w taki sposób autoryzować żądania do usługi Azure Storage z usługą Azure AD.
 
 1. Na **Przegląd** strony zarejestrowanej aplikacji, wybierz opcję **wyświetlanie uprawnień interfejsu API**.
-1. W **uprawnienia do interfejsu API** zaznacz **Dodaj uprawnienia** i wybierz polecenie **Moja organizacja korzysta z interfejsów API**.
-1. W obszarze **Moja organizacja korzysta z interfejsów API** sekcji, wyszukaj frazę "Usługi Azure Storage" i wybierz **usługi Azure Storage** z listy wyników do wyświetlenia **uprawnienia do żądania interfejsu API** okienko.
+1. W **uprawnienia do interfejsu API** zaznacz **Dodaj uprawnienia** i wybierz polecenie **Microsoft APIs**.
+1. Wybierz **usługi Azure Storage** z listy wyników do wyświetlenia **uprawnienia do żądania interfejsu API** okienka.
+1. W obszarze **jakiego rodzaju uprawnień aplikacji wymaga?** , sprawdź, czy uprawnienia dostępne jest **delegowane uprawnienia**. Ta opcja jest wybrana domyślnie.
+1. W **wybierz uprawnienia** części **uprawnienia do żądania interfejsu API** okienku zaznacz pole wyboru obok pozycji **user_impersonation**, następnie kliknij przycisk **Dodaj uprawnienia**.
 
     ![Zrzut ekranu przedstawiający uprawnienia do magazynu](media/storage-auth-aad-app/registered-app-permissions-1.png)
 
-1. W obszarze **jakiego rodzaju uprawnień aplikacji wymaga?** , sprawdź, czy uprawnienia dostępne jest **delegowane uprawnienia**. Ta opcja jest wybrana domyślnie.
-1. W **wybierz uprawnienia** części **uprawnienia do żądania interfejsu API** okienku zaznacz pole wyboru obok pozycji **user_impersonation**, następnie kliknij przycisk **Dodaj uprawnienia**.
-1. **Uprawnienia do interfejsu API** okienka teraz wskazuje, że aplikacja usługi Azure AD ma dostęp do programu Microsoft Graph i Azure Storage. Uprawnienia są przyznawane w programie Microsoft Graph automatycznie podczas rejestrowania aplikacji z usługą Azure AD.
+**Uprawnienia do interfejsu API** okienko wskazują, że Twoje zarejestrowanych aplikacji usługi Azure AD ma dostęp do programu Microsoft Graph i Azure Storage. Uprawnienia są przyznawane w programie Microsoft Graph automatycznie podczas rejestrowania aplikacji z usługą Azure AD.
 
-    ![Zrzut ekranu przedstawiający zarejestrować uprawnień aplikacji](media/storage-auth-aad-app/registered-app-permissions-2.png)
+![Zrzut ekranu przedstawiający zarejestrować uprawnień aplikacji](media/storage-auth-aad-app/registered-app-permissions-2.png)
 
 ## <a name="create-a-client-secret"></a>Utwórz klucz tajny klienta
 
@@ -293,7 +293,7 @@ Po uruchomieniu przykładu, może się okazać konieczne aktualizowanie przekier
 
     ![Zrzut ekranu przedstawiający identyfikatory URI przekierowania dla rejestracji aplikacji](media/storage-auth-aad-app/redirect-uri.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby dowiedzieć się więcej o platformie tożsamości firmy Microsoft, zobacz [platforma tożsamości usługi Microsoft](https://docs.microsoft.com/azure/active-directory/develop/).
 - Aby dowiedzieć się więcej na temat ról RBAC dla usługi Azure storage, zobacz [Zarządzaj praw dostępu do magazynu danych przy użyciu RBAC](storage-auth-aad-rbac.md).

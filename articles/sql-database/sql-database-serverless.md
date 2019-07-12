@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 06/12/2019
-ms.openlocfilehash: afa575c9015cbb21386d23101b74456822dfa33c
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 07/05/2019
+ms.openlocfilehash: 5a1a5ea39c9c0ed8973e1ecfa46977d2d06f83e7
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275470"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603611"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Usługa Azure SQL Database bez użycia serwera (wersja zapoznawcza)
 
@@ -166,7 +166,7 @@ Tworzenie nowej bazy danych lub przenoszenie że istniejącą bazę danych w war
    |Parametr|Wartość opcji|Wartość domyślna|
    |---|---|---|---|
    |Rdzenie wirtualne min|Dowolne {0,5, 1, 2, 4} nie przekracza maksymalny rdzeni wirtualnych|0,5 rdzeni wirtualnych|
-   |Autopause opóźnienia|Minimalnie: 360 minut (6 godzin)<br>Maksimum: do 10 080 minut (7 dni)<br>Zwiększa: 60 minut<br>Wyłącz autopause: -1|360 minut|
+   |Autopause opóźnienia|Minimalnie: 60 minut (1 godzina)<br>Maksimum: do 10 080 minut (7 dni)<br>Zwiększa: 60 minut<br>Wyłącz autopause: -1|60 minut|
 
 > [!NOTE]
 > Przy użyciu języka T-SQL, aby przenieść istniejącą bazę danych do bez użycia serwera lub zmienić jego rozmiar obliczeń nie jest obecnie obsługiwane, ale może odbywać się za pośrednictwem witryny Azure portal lub programu PowerShell.

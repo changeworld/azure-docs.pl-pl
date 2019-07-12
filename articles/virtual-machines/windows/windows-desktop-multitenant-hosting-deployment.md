@@ -4,7 +4,7 @@ description: Dowiedz się, jak zmaksymalizować korzyści Windows Software Assur
 services: virtual-machines-windows
 documentationcenter: ''
 author: xujing
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: 7f43528c55cd22c2649ca0f1208da6f41695b98e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b99ae2abdc4e062588174b6d945b6592ae8e58ed
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61485485"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707854"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Jak wdrożyć system Windows 10 na platformie Azure dzięki wielodostępnej praw hostingu 
 W przypadku klientów Windows 10 Enterprise E3/E5 dla poszczególnych użytkowników lub dostęp do usług pulpitu wirtualnego Windows na użytkownika (licencje subskrypcji użytkownika lub licencji subskrypcji użytkownika dodatku) wielodostępnej hostingu praw dla systemu Windows 10 umożliwia Przenieś licencje systemu Windows 10 do chmury i uruchamianie maszyn wirtualnych z systemem Windows 10 na platformie Azure bez konieczności płacenia za innej licencji. Aby uzyskać więcej informacji, zobacz [wielodostępnej Hosting w systemie Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
@@ -33,7 +33,7 @@ W przypadku klientów Windows 10 Enterprise E3/E5 dla poszczególnych użytkowni
 ## <a name="deploying-windows-10-image-from-azure-marketplace"></a>Wdrażanie obrazu systemu Windows 10 z witryny Azure Marketplace 
 Dla wdrożeń szablonu programu Powershell, interfejsu wiersza polecenia i usługi Azure Resource Manager można znaleźć obrazu systemu Windows 10 za pomocą następujących nazwa_wydawcy, oferty, jednostki sku.
 
-| System operacyjny  |      PublisherName      |  Oferta | SKU |
+| OS  |      PublisherName      |  Oferta | SKU |
 |:----------|:-------------:|:------|:------|
 | Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS2-Pro   |
 | Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS2-ProN  |

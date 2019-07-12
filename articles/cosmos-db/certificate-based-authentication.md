@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: eb8c98df0f015244adf06a9b57f2223509f1f081
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cc39cc09259c1ae681e1fee070777575e2788323
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67082965"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827845"
 ---
-# <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-account"></a>Uwierzytelnianie oparte na certyfikatach dla tożsamości usługi Azure AD, aby klucze dostępu z konta usługi Azure Cosmos
+# <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Uwierzytelnianie oparte na certyfikatach dla tożsamości usługi Azure AD, aby klucze dostępu z kontem usługi Azure Cosmos DB
 
-Uwierzytelnianie oparte na certyfikatach umożliwia aplikacji klienta uwierzytelniali się przy użyciu usługi Azure Active Directory (Azure AD) przy użyciu certyfikatu klienta. Na komputerze, na którym ma być tożsamości, takie jak maszyny w środowisku lokalnym lub maszynie wirtualnej platformy Azure, mogą przeprowadzać uwierzytelnianie oparte na certyfikatach. Aplikacja odczytywać kluczy Azure DB kosmetyczka bez kluczy bezpośrednio w aplikacji. W tym artykule opisano sposób tworzenia przykładowej aplikacji usługi Azure AD, skonfiguruj go pod kątem uwierzytelniania opartego na certyfikatach, zaloguj się do platformy Azure przy użyciu nowej tożsamości aplikacji, a następnie pobiera klucze z konta usługi Azure Cosmos. W tym artykule używany program Azure PowerShell do konfigurowania tożsamości i zapewnia C# przykładową aplikację, która uwierzytelnia i uzyskuje dostęp do kluczy z poziomu konta usługi Azure Cosmos.  
+Uwierzytelnianie oparte na certyfikatach umożliwia aplikacji klienta uwierzytelniali się przy użyciu usługi Azure Active Directory (Azure AD) przy użyciu certyfikatu klienta. Na komputerze, na którym ma być tożsamości, takie jak maszyny w środowisku lokalnym lub maszynie wirtualnej platformy Azure, mogą przeprowadzać uwierzytelnianie oparte na certyfikatach. Aplikację można odczytywać kluczy usługi Azure Cosmos DB bez kluczy bezpośrednio w aplikacji. W tym artykule opisano sposób tworzenia przykładowej aplikacji usługi Azure AD, skonfiguruj go pod kątem uwierzytelniania opartego na certyfikatach, zaloguj się do platformy Azure przy użyciu nowej tożsamości aplikacji, a następnie pobiera klucze z konta usługi Azure Cosmos. W tym artykule używany program Azure PowerShell do konfigurowania tożsamości i zapewnia C# przykładową aplikację, która uwierzytelnia i uzyskuje dostęp do kluczy z poziomu konta usługi Azure Cosmos.  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -26,7 +26,7 @@ Uwierzytelnianie oparte na certyfikatach umożliwia aplikacji klienta uwierzytel
 
 ## <a name="register-an-app-in-azure-ad"></a>Rejestrowanie aplikacji w usłudze Azure AD
 
-W tym kroku zostanie zarejestrować przykładową aplikację sieci web na swoim koncie usługi Azure AD. Ta aplikacja jest później używana odczytywanie kluczy konta usługi Azure Cosmos. Aby zarejestrować aplikację, wykonaj następujące kroki: 
+W tym kroku zostanie zarejestrować przykładową aplikację sieci web na swoim koncie usługi Azure AD. Ta aplikacja jest później używany odczytywanie kluczy konta usługi Azure Cosmos DB. Aby zarejestrować aplikację, wykonaj następujące kroki: 
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com/).
 

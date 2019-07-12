@@ -3,17 +3,17 @@ title: Zabezpieczenia usług CloudSimple
 description: W tym artykule opisano modele odpowiedzialności zabezpieczeń usług CloudSimple
 author: sharaths-cs
 ms.author: b-shsury
-ms.date: 4/27/19
+ms.date: 04/27/2019
 ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: db093f6aef4f1bdb28a96bf89b3013d359a7b796
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 325915aae43c905236910382f650730a6daa127a
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154110"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595322"
 ---
 # <a name="cloudsimple-security-overview"></a>Omówienie zabezpieczeń CloudSimple
 
@@ -88,7 +88,7 @@ CloudSimple obsługuje opcjonalna konfiguracja źródła tożsamości dla serwer
 
 Domyślnie klienci otrzymują uprawnienia, które są niezbędne do codziennych operacji programu vCenter w chmurze prywatnej. Ten poziom uprawnień nie uwzględnia dostęp administracyjny do vCenter. Jeśli dostęp administracyjny tymczasowo wymagane jest, możesz to zrobić [podwyższania poziomu uprawnień użytkownika,](https://docs.azure.cloudsimple.com/escalate-private-cloud-privileges) przez ograniczony okres, podczas wykonywania zadań administracyjnych.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się, jak [utworzyć usługę CloudSimple na platformie Azure](quickstart-create-cloudsimple-service.md).
 * Dowiedz się, jak [utworzyć chmurę prywatną](https://docs.azure.cloudsimple.com/create-private-cloud/).

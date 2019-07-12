@@ -7,6 +7,20 @@
   href: video-indexer/
 - name: Azure Media Player
   href: 'https://amp.azure.net/libs/amp/latest/docs/index.html'
+- name: Specyfikacje
+  items:
+    - name: Metadane czasowe
+      items:
+        - name: RTMP i Smooth Streaming
+          href: media-services-specifications-live-timed-metadata.md
+    - name: Protokoły
+      items:
+        - name: Smooth Streaming (MS-SSTR)
+          items:
+            - name: HEVC — obsługa
+              href: media-services-specifications-ms-sstr-amendment-hevc.md
+            - name: Smooth Streaming — pozyskiwanie
+              href: media-services-fmp4-live-ingest-overview.md
 - name: Zasoby
   items:
     - name: Harmonogram działania dla platformy Azure

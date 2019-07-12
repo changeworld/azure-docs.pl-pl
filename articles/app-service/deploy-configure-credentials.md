@@ -11,14 +11,15 @@ ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 ms.date: 03/10/2019
-ms.author: cephalin;byvinyal
+ms.author: cephalin
+ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: b054e56afdec65ac000b0dc18a0c1a3fd845b4c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 65e5d6bacc67c64fa21268a853dc9c9d9b447da7
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65955983"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67617183"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Skonfiguruj poświadczenia wdrożenia dla usługi Azure App Service
 [Usługa Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) obsługuje dwa typy poświadczeń dla [lokalne wdrożenie narzędzia Git](deploy-local-git.md) i [wdrożenia protokołu FTP/S](deploy-ftp.md). Te poświadczenia nie są takie same, jak poświadczeń usługi Azure Active Directory.
@@ -71,6 +72,6 @@ Aby uzyskać poświadczeń na poziomie aplikacji:
 
 Aby przywrócić poświadczenia poziomie aplikacji, kliknij przycisk **zresetować poświadczenia** w tym samym oknie dialogowym.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się, jak te poświadczenia służą do wdrażania aplikacji na podstawie [lokalnego narzędzia Git](deploy-local-git.md) lub za pomocą [protokołu FTP/S](deploy-ftp.md).

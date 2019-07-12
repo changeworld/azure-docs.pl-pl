@@ -10,12 +10,12 @@ ms.subservice: query
 ms.date: 05/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 984d8ffa9f901437f1413e1d5d3145cabba80883
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: af8aa85488240dbbe4a07811d73ebdbaafefcfef
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65954974"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67588612"
 ---
 # <a name="t-sql-statements-supported-in-azure-sql-data-warehouse"></a>Instrukcje T-SQL obsługiwanych w usłudze Azure SQL Data Warehouse
 Zawiera łącza do dokumentacji dla instrukcji języka T-SQL obsługiwanych w usłudze Azure SQL Data Warehouse.
@@ -23,6 +23,7 @@ Zawiera łącza do dokumentacji dla instrukcji języka T-SQL obsługiwanych w us
 ## <a name="data-definition-language-ddl-statements"></a>Instrukcje języka DDL (Definition) danych
 * [ALTER DATABASE](https://msdn.microsoft.com/library/mt204042.aspx)
 * [POLECENIA ALTER INDEX](https://msdn.microsoft.com/library/ms188388.aspx)
+* [ALTER MATERIALIZED VIEW](/sql/t-sql/statements/alter-materialized-view-transact-sql?view=azure-sqldw-latest) (wersja zapoznawcza) 
 * [ZMIENIĆ PROCEDURY](https://msdn.microsoft.com/library/ms189762.aspx)
 * [ZMIANY SCHEMATU](https://msdn.microsoft.com/library/ms173423.aspx)
 * [ALTER TABLE](https://msdn.microsoft.com/library/ms190273.aspx)
@@ -34,6 +35,7 @@ Zawiera łącza do dokumentacji dla instrukcji języka T-SQL obsługiwanych w us
 * [TWORZENIE ZEWNĘTRZNEJ TABELI](https://msdn.microsoft.com/library/dn935021.aspx)
 * [TWORZENIE FUNKCJI](https://msdn.microsoft.com/library/mt203952.aspx)
 * [TWORZENIE INDEKSU](https://msdn.microsoft.com/library/ms188783.aspx)
+* [Utwórz MATERIALIZED VIEW AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest) (wersja zapoznawcza) 
 * [TWORZENIE PROCEDURY](https://msdn.microsoft.com/library/ms187926.aspx)
 * [UTWÓRZ SCHEMAT](https://msdn.microsoft.com/library/ms189462.aspx)
 * [CREATE STATISTICS](https://msdn.microsoft.com/library/ms188038.aspx)
@@ -52,7 +54,7 @@ Zawiera łącza do dokumentacji dla instrukcji języka T-SQL obsługiwanych w us
 * [WIDOK LISTY](https://msdn.microsoft.com/library/ms173492.aspx)
 * [UPUŚĆ KLASYFIKATORA OBCIĄŻENIA](/sql/t-sql/statements/drop-workload-classifier-transact-sql)
 * [RENAME](https://msdn.microsoft.com/library/mt631611.aspx)
-* [ZESTAW RESULT_SET_CACHING](/sql/t-sql/statements/set-result-set-caching-transact-sql) (wersja zapoznawcza)
+* [ZESTAW RESULT_SET_CACHING](/sql/t-sql/statements/set-result-set-caching-transact-sql) 
 * [TRUNCATE TABLE](https://msdn.microsoft.com/library/ms177570.aspx)
 * [UPDATE STATISTICS](https://msdn.microsoft.com/library/ms187348.aspx)
 
@@ -63,9 +65,12 @@ Zawiera łącza do dokumentacji dla instrukcji języka T-SQL obsługiwanych w us
 
 ## <a name="database-console-commands"></a>Poleceń konsoli bazy danych
 * [DBCC DROPCLEANBUFFERS](https://msdn.microsoft.com/library/ms187762.aspx)
+* [Polecenie DBCC DROPRESULTSETCACHE](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest) (wersja zapoznawcza)
 * [POLECENIE DBCC FREEPROCCACHE](https://msdn.microsoft.com/library/mt204018.aspx)
 * [DBCC SHRINKLOG](https://msdn.microsoft.com/library/mt204020.aspx)
 * [DBCC PDW_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx)
+* [POLECENIE DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest)
+* [Polecenie DBCC SHOWRESULTCACHESPACEUSED](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql) (wersja zapoznawcza)
 * [DBCC PDW_SHOWPARTITIONSTATS](https://msdn.microsoft.com/library/mt204013.aspx)
 * [DBCC PDW_SHOWSPACEUSED](https://msdn.microsoft.com/library/mt204028.aspx)
 * [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/mt204043.aspx)
@@ -113,5 +118,5 @@ Zawiera łącza do dokumentacji dla instrukcji języka T-SQL obsługiwanych w us
 * [USUNĄĆ UŻYTKOWNIKA](https://msdn.microsoft.com/library/ms189438.aspx)
 * [OTWÓRZ KLUCZ GŁÓWNY](https://msdn.microsoft.com/library/ms174433.aspx)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby uzyskać więcej informacje, zobacz [elementy języka T-SQL w usłudze Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-language-elements.md), i [widoki systemowe w usłudze Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-system-views.md).

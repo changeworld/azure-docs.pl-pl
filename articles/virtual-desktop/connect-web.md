@@ -4,15 +4,15 @@ description: Jak połączyć się z Windows wirtualnego pulpitu (wersja zapoznaw
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: d99f20efcebc3c9d97c5e2228e8b55bfd3f432b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4f6bb7c414c38eaa605d259195218c461ddb0ca7
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65834014"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620160"
 ---
 # <a name="connect-from-a-web-browser"></a>Łączenie z przeglądarki internetowej
 
@@ -25,7 +25,7 @@ Klient sieci web umożliwia dostęp do zasobów Windows wirtualnego pulpitu (wer
 
 Podczas każdej przeglądarce obsługą języka HTML5 powinna działać, firma Microsoft oficjalnie obsługuje następujące systemy operacyjne i przeglądarki.
 
-| Przeglądarka           | Obsługiwane systemy operacyjne                     | Uwagi               |
+| Browser           | Obsługiwane systemy operacyjne                     | Uwagi               |
 |-------------------|----------------------------------|---------------------|
 | Microsoft Edge    | Windows                          |                     |
 | Internet Explorer | Windows                          |                     |

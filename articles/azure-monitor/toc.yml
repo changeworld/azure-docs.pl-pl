@@ -358,6 +358,8 @@
                       href: app/status-monitor-v2-api-get-status.md
                     - name: API Set-ApplicationInsightsMonitoringConfig
                       href: app/status-monitor-v2-api-set-config.md
+                    - name: API Start-ApplicationInsightsMonitoringTrace
+                      href: app/status-monitor-v2-api-start-trace.md
                 - name: Pulpit systemu Windows
                   href: app/windows-desktop.md
                 - name: Konsola
@@ -460,6 +462,19 @@
             - name: Dane aplikacji do usługi Log Analytics
               href: platform/app-insights-connector.md
             - name: Eksportowanie danych aplikacji
+              items:
+                - name: Eksport ciągły
+                  href: app/export-telemetry.md
+                  items:
+                    - name: Przykłady kodu
+                      items:
+                        - name: Eksportowanie do bazy danych SQL przy użyciu usługi Stream Analytics
+                          href: app/code-sample-export-sql-stream-analytics.md
+                        - name: Eksportowanie do usługi Stream Analytics
+                          href: app/export-stream-analytics.md
+                - name: Eksportowanie modelu danych
+                  href: app/export-data-model.md
+            - name: Rozwiązywanie problemów
               items:
                 - name: Brak danych dla platformy .NET
                   href: app/asp-net-troubleshoot-no-data.md

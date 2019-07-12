@@ -2,24 +2,25 @@
 title: Konfigurowanie usługi Azure Security Center dla rozwiązania IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak skonfigurować end-to-end rozwiązania IoT przy użyciu usługi Azure Security Center dla IoT.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: ae2207e8-ac5b-4793-8efc-0517f4661222
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: c60b421e9b60c6a2191fe2be189d1abd1c328f24
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 7f90dba899651b677740e9ceb88bdd579ebb073c
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65200797"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616639"
 ---
 # <a name="quickstart-configure-your-iot-solution"></a>Szybki start: Konfiguruj rozwiązanie IoT
 
@@ -50,7 +51,7 @@ Aby dodać nowy zasób do rozwiązania IoT, wykonaj następujące czynności:
 2. Wybierz i Otwórz **zasobów** w obszarze **zabezpieczeń** menu po lewej stronie. 
 3. Wybierz **Dodaj zasoby**.
 4. Wybierz zasoby, które należą do swojego rozwiązania IoT.
-5. Kliknij pozycję **Add** (Dodaj). 
+5. Kliknij przycisk **Dodaj**. 
 
 Gratulacje! Nowy zasób zostały dodane do rozwiązania IoT.
 

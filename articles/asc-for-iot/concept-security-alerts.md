@@ -2,24 +2,25 @@
 title: Przewodnik dotyczący alertów zabezpieczeń dla Centrum zabezpieczeń Azure dla IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: Więcej informacji na temat alertów zabezpieczeń i zalecanych czynności naprawczych funkcje IoT i usługi za pomocą usługi Azure Security Center.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: a5c25cba-59a4-488b-abbe-c37ff9b151f9
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: db3a955cd9e572d1daca044aed75048e394e8457
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6168278a51cf5a73fec0387ab61f46e201d158f9
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65200753"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616940"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>Usługa Azure Security Center dla alertów zabezpieczeń IoT
 
@@ -37,7 +38,7 @@ Aby uzyskać więcej informacji, zobacz [tworzyć niestandardowe alerty](quickst
 
 ## <a name="built-in-alerts-for-iot-devices"></a>Wbudowane alerty dla urządzeń IoT
 
-| Severity | Name (Nazwa)                                                   | Źródło danych | Opis                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| severity | Name (Nazwa)                                                   | Źródło danych | Opis                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 |----------|--------------------------------------------------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Wysoka     | Pomyślne logowanie lokalne                                 | Agent       | Wykryto logowanie pomyślne urządzenia lokalnego                                                                                                                                                                                                                                                                                                                                                                                         |
 | Wysoka     | Atak                                  | Agent       | Wykryto wiele prób zalogowania się niepowodzeniem, po pomyślnym zalogowaniu. Urządzenia wystąpił ataku polegającego na atak.                                                                                                                                                                                                                                                                                                              |
@@ -81,7 +82,7 @@ Aby uzyskać więcej informacji, zobacz [tworzyć niestandardowe alerty](quickst
 
 ## <a name="built-in-alerts-for-iot-hub"></a>Alerty wbudowane usługi IoT Hub
 
-| Severity | Name (Nazwa)                                                                         | Opis                                                                                                                                                                                                                                                                                                                            |
+| severity | Name (Nazwa)                                                                         | Opis                                                                                                                                                                                                                                                                                                                            |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Średni   | Nowy certyfikat dodany do usługi IoT Hub                                    |Nowy certyfikat dodany do usługi IoT hub. Jeśli to dodawanie nie została wprowadzona przez autoryzowanego podmiotu, może to oznaczać złośliwych działań.                                                                                                                                                                                                    |
 | Średni   | Certyfikat został usunięty z usługi IoT Hub                                    | Certyfikat został usunięty z usługi IoT hub. Jeśli ta akcja nie została wprowadzona przez autoryzowanego podmiotu, może to oznaczać złośliwych działań.                                                                                                                                                                                                |

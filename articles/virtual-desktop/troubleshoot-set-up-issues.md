@@ -4,15 +4,15 @@ description: Jak do rozwiązywania oraz usuwania puli dzierżawy i hosta problem
 services: virtual-desktop
 author: ChJenk
 ms.service: virtual-desktop
-ms.topic: troubleshoot
-ms.date: 04/08/2019
+ms.topic: troubleshooting
+ms.date: 07/10/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 88e843c410a750387ecf58497dec79586e2a59d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7ec4e0ffd87c0ef73a551416d8a8cc672f095483
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523328"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786729"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Tworzenie dzierżawy i puli hosta
 
@@ -118,6 +118,17 @@ Przykład surowa wersja błędu:
 **Przyczyny 2:** Nazwa domeny nie jest rozpoznawane.
 
 **Napraw 2:** Można znaleźć błąd "nazwa domeny nie rozwiąże to" maszyny wirtualne nie są przyłączone do domeny w [konfigurację maszyny Wirtualnej hosta sesji](troubleshoot-vm-configuration.md).
+
+
+### <a name="error-your-deployment-failedunauthorized"></a>Błąd: Twoje failed...\Unauthorized wdrożenia
+
+```Error
+{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"Unauthorized","message":"{\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Target\": null,\r\n \"Details\": [\r\n {\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n },\r\n {\r\n \"Code\": \"Unauthorized\"\r\n },\r\n {\r\n \"ErrorEntity\": {\r\n \"ExtendedCode\": \"52020\",\r\n \"MessageTemplate\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Parameters\": [\r\n \"default\"\r\n ],\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n }\r\n }\r\n ],\r\n \"Innererror\": null\r\n}"}]}
+```
+
+**Przyczyna:** Subskrypcję, której używasz to typ, który nie może uzyskać dostępu wymagane funkcje w regionie, w którym klient jest w trakcie wdrażania. Na przykład subskrypcji MSDN, bezpłatna i Education można pokazać ten błąd.
+
+**Poprawka:** Zmień typ subskrypcji lub regionu na takie, które mogą uzyskiwać dostęp do wymaganych funkcji.
 
 ### <a name="error-vmextensionprovisioningerror"></a>Błąd: VMExtensionProvisioningError
 
@@ -331,7 +342,7 @@ Jeśli korzystasz z szablonów usługi GitHub usługi Azure Resource Manager, po
 - IsServicePrincipal: **true**
 - AadTenantId: Utworzony identyfikator dzierżawy usługi Azure AD jednostki usługi
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby uzyskać ogólne na temat rozwiązywania problemów ścieżki eskalacji i pulpitu wirtualnego Windows zobacz [Rozwiązywanie problemów — omówienie, opinie i pomoc techniczna](troubleshoot-set-up-overview.md).
 - Aby rozwiązywać problemy podczas konfigurowania maszyny wirtualnej (VM) w Windows pulpitu wirtualnego, zobacz [konfigurację maszyny wirtualnej hosta sesji](troubleshoot-vm-configuration.md).

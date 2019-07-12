@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 9dfa4b62f5cb79a5716f6f29651e85d0f8a3a409
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ddc7ae10581075127f72dd020c59cf28bbfc9ae2
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65787858"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606131"
 ---
 # <a name="sample-1---regression-predict-price"></a>Przykład 1 - regresji. Przewidywanie ceny
 
@@ -80,7 +80,7 @@ Firma Microsoft następnie przekazać wyniki do **Evaluate Model** modułu, aby 
 
 [!INCLUDE [aml-ui-cleanup](../../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Zapoznaj się z innymi przykładami dostępne dla interfejsu wizualnego:
 
@@ -88,3 +88,4 @@ Zapoznaj się z innymi przykładami dostępne dla interfejsu wizualnego:
 - [Próba 3 — klasyfikacji: Prognozowanie ryzyka kredytowego](ui-sample-classification-predict-credit-risk-basic.md)
 - [Przykład 4 - klasyfikacji: Prognozowanie ryzyka kredytowego (koszt poufnych)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
 - [Przykład 5 - klasyfikacji: Przewidywanie zmienności](ui-sample-classification-predict-churn.md)
+- [Przykład 6 - klasyfikacji: Prognozowanie opóźnień lotów](ui-sample-classification-predict-flight-delay.md)

@@ -4,7 +4,7 @@ description: Wdrażanie klienta programu Chef do maszyny wirtualnej przy użyciu
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: roiyz
-ms.openlocfilehash: 6bd3ea4e664523fe8014be40c51d573ed5158ecf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e72536cc6f9ec3b94016d16de8502e70bc7107aa
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60800266"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706083"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Program chef rozszerzenia maszyny Wirtualnej dla systemów Linux i Windows
 
@@ -69,10 +69,10 @@ Następujący kod JSON zawiera schemat dla rozszerzenia maszyny Wirtualnej progr
 ### <a name="core-property-values"></a>Wartości właściwości podstawowe
 
 | Name (Nazwa) | Wartość / przykład | Typ danych
-| ---- | ---- | ---- 
+| ---- | ---- | ----
 | apiVersion | `2017-12-01` | string (date) |
-| publisher | `Chef.Bootstrap.WindowsAzure` | string |
-| type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | string |
+| publisher | `Chef.Bootstrap.WindowsAzure` | ciąg |
+| — typ | `LinuxChefClient` (Linux), `ChefClient` (Windows) | ciąg |
 | typeHandlerVersion | `1210.12` | string (double) |
 
 ### <a name="settings"></a>Ustawienia
@@ -80,14 +80,14 @@ Następujący kod JSON zawiera schemat dla rozszerzenia maszyny Wirtualnej progr
 | Name (Nazwa) | Wartość / przykład | Typ danych | Wymagana?
 | ---- | ---- | ---- | ----
 | settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | Tak |
-| settings/bootstrap_options/validation_client_name | `myorg-validator` | string | Tak |
-| settings/runlist | `recipe[mycookbook::default]` | string | Tak |
+| settings/bootstrap_options/validation_client_name | `myorg-validator` | ciąg | Tak |
+| settings/runlist | `recipe[mycookbook::default]` | ciąg | Tak |
 
 ### <a name="protected-settings"></a>Chronione ustawienia
 
 | Name (Nazwa) | Przykład | Typ danych | Wymagana?
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | Tak |
+| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | ciąg | Tak |
 
 <!--
 ### Linux-specific settings
@@ -105,7 +105,7 @@ Następujący kod JSON zawiera schemat dla rozszerzenia maszyny Wirtualnej progr
 
 Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Szablony mogą być używane do wdrożenia co najmniej jednej maszyny wirtualnej, zainstalować klienta programu Chef, połączyć się z serwerem Chef i wykonaj początkową konfigurację na serwerze zgodnie z definicją [wykonywania listy](https://docs.chef.io/run_lists.html)
 
-Przykładowy szablon usługi Resource Manager, obejmującą Chef rozszerzenia maszyny Wirtualnej można znaleźć na [w galerii platformy Azure Szybki Start](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm).
+Przykładowy szablon usługi Resource Manager, obejmującą Chef rozszerzenia maszyny Wirtualnej można znaleźć w [galerii Szybki Start platformy Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm).
 
 Konfiguracji JSON dla rozszerzenia maszyny wirtualnej mogą być zagnieżdżone wewnątrz zasobu maszyny wirtualnej lub umieszczone w katalogu głównego lub najwyższego poziomu szablon JSON usługi Resource Manager. Położenie konfiguracji JSON ma wpływ na wartości nazwy i typu zasobu. Aby uzyskać więcej informacji, zobacz [Ustaw nazwę i typ zasobów podrzędnych](../../azure-resource-manager/resource-manager-template-child-resource.md).
 

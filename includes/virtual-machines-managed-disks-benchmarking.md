@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 9c59b98fb615266c193f997c01c83922c18d4408
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e5148ff9e92a2e550a3117356a4e77cbac8fc6f4
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183216"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673450"
 ---
 *Trwa rozgrzewanie pamięci podręcznej*  
 Dysk z buforowania hosta tylko do odczytu są mógł przekazać wyższym operacje We/Wy niż limit na dysku. Aby uzyskać ten maksymalną wydajność odczytu z pamięci podręcznej hosta, najpierw należy musi przećwiczeniu podstawowych zadań pamięci podręcznej tego dysku. Daje to gwarancję, że odczytu z systemem IOs, że na woluminie CacheReads regulują narzędzi porównawczych faktycznie trafienia pamięci podręcznej, a nie dysków bezpośrednio. Wynik trafień w pamięci podręcznej w dodatkowe operacje We/Wy z jednym pamięci podręcznej włączone dysku.
@@ -25,7 +25,7 @@ Dysk z buforowania hosta tylko do odczytu są mógł przekazać wyższym operacj
 
 ### <a name="iometer"></a>Iometer
 
-[Pobierz narzędzie Iometer](http://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) na maszynie Wirtualnej.
+[Pobierz narzędzie Iometer](https://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) na maszynie Wirtualnej.
 
 #### <a name="test-file"></a>Plik testu
 
@@ -68,12 +68,12 @@ Wykonaj poniższe kroki, aby rozgrzewki pamięci podręcznej
    | RandomReads\_1 MB |1 MB |100 |100 |
 1. Uruchom test Iometer zainicjować dysk pamięci podręcznej z następującymi parametrami. Użyj trzech wątków roboczych dla woluminu docelowego i głębokości kolejki wynoszącej 128. Ustaw czas trwania testu "Czas wykonywania" do 2 godzin na karcie "Setup testów".
 
-   | Scenariusz | Wolumin docelowy | Name (Nazwa) | Czas trwania |
+   | Scenariusz | Wolumin docelowy | Name (Nazwa) | Duration |
    | --- | --- | --- | --- |
    | Zainicjuj dysk pamięci podręcznej |CacheReads |RandomWrites\_1 MB |2 godz. |
 1. Uruchom test Iometer rozgrzewania dysk pamięci podręcznej z następującymi parametrami. Użyj trzech wątków roboczych dla woluminu docelowego i głębokości kolejki wynoszącej 128. Ustaw czas trwania testu "Czas wykonywania" do 2 godzin na karcie "Setup testów".
 
-   | Scenariusz | Wolumin docelowy | Name (Nazwa) | Czas trwania |
+   | Scenariusz | Wolumin docelowy | Name (Nazwa) | Duration |
    | --- | --- | --- | --- |
    | Rozgrzewanie dysk pamięci podręcznej |CacheReads |RandomReads\_1 MB |2 godz. |
 

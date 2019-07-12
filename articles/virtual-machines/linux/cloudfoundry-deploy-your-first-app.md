@@ -4,7 +4,7 @@ description: Wdrażanie aplikacji usługi Cloud Foundry na platformie Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: seanmck
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: ''
 keywords: ''
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: 5a43ce3f09ce9695fa5add58b52271a46e2a271a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fe510865e687b6a44538627e4ef9025b41416841
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60388509"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67668344"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Wdrażanie pierwszej aplikacji do usługi Cloud Foundry w systemie Microsoft Azure
 
@@ -31,16 +31,16 @@ ms.locfileid: "60388509"
 
 Istnieje kilka opcji umożliwiających tworzenie środowiska usługi Cloud Foundry na platformie Azure:
 
-- Użyj [oferty Pivotal Cloud Foundry] [ pcf-azuremarketplace] w witrynie Azure Marketplace, aby utworzyć środowisko standardowe, obejmującej menedżera operacji PCF i Broker usług platformy Azure. Możesz znaleźć [wykonaj instrukcje] [ pcf-azuremarketplace-pivotaldocs] wdrażania w portalu marketplace oferty w rozwiązaniu Pivotal dokumentacji.
+- Użyj [oferty Pivotal Cloud Foundry][pcf-azuremarketplace] in the Azure Marketplace to create a standard environment that includes PCF Ops Manager and the Azure Service Broker. You can find [complete instructions][pcf-azuremarketplace-pivotaldocs] wdrażania w portalu marketplace oferty w rozwiązaniu Pivotal dokumentacji.
 - Utwórz dostosowane środowisko przez [wdrażania ręcznego Pivotal Cloud Foundry][pcf-custom].
-- [Wdrażanie pakietów usługi Cloud Foundry typu open-source bezpośrednio] [ oss-cf-bosh] , konfigurując [BOSH](https://bosh.io) Dyrektor, maszynę Wirtualną, która służy do koordynowania wdrożenia środowiska Cloud Foundry.
+- [Wdrażanie pakietów usługi Cloud Foundry typu open-source bezpośrednio][oss-cf-bosh] , konfigurując [BOSH](https://bosh.io) Dyrektor, maszynę Wirtualną, która służy do koordynowania wdrożenia środowiska Cloud Foundry.
 
 > [!IMPORTANT] 
 > Jeśli wdrażasz PCF z witryny Azure Marketplace, zanotuj SYSTEMDOMAINURL i poświadczenia administratora wymagane do uzyskania dostępu Pivotal Menedżera aplikacji, które są opisane w przewodniku wdrażania w portalu marketplace. Są one niezbędne do ukończenia tego samouczka. W przypadku wdrożeń w portalu marketplace SYSTEMDOMAINURL ma postać https://system. *adres IP*. cf.pcfazure.com.
 
 ## <a name="connect-to-the-cloud-controller"></a>Połączyć się z kontrolerem chmury
 
-Kontroler chmury jest podstawowy punkt wejścia dla usługi Cloud Foundry środowiska wdrażania aplikacji i zarządzaniem nimi. Core chmury kontrolera interfejsu API (CCAPI) to interfejs API REST, ale nie jest dostępny za pośrednictwem różnych narzędzi. W tym przypadku będziemy korzystać z niego za pośrednictwem [Cloud Foundry interfejs wiersza polecenia][cf-cli]. Interfejs wiersza polecenia można zainstalować w systemie Linux, MacOS lub Windows, ale jeśli użytkownik nie chce go zainstalować na wszystkich, jest dostępny wstępnie zainstalowany w [usługi Azure Cloud Shell][cloudshell-docs].
+Kontroler chmury jest podstawowy punkt wejścia dla usługi Cloud Foundry środowiska wdrażania aplikacji i zarządzaniem nimi. Core chmury kontrolera interfejsu API (CCAPI) to interfejs API REST, ale nie jest dostępny za pośrednictwem różnych narzędzi. W tym przypadku będziemy korzystać z niego za pośrednictwem [Cloud Foundry interfejs wiersza polecenia][cf-cli]. You can install the CLI on Linux, MacOS, or Windows, but if you'd prefer not to install it at all, it is available pre-installed in the [Azure Cloud Shell][cloudshell-docs].
 
 Aby zalogować się, należy poprzedzić `api` do SYSTEMDOMAINURL, uzyskany z wdrożenia w portalu marketplace. Ponieważ domyślnym wdrożeniu używa certyfikatu z podpisem własnym, powinny również obejmować `skip-ssl-validation` przełącznika.
 
@@ -113,7 +113,7 @@ Aby wyświetlić aplikację hello spring chmury, należy otworzyć podanego adre
 ![Domyślny interfejs użytkownika dla Hello Spring Cloud][hello-spring-cloud-basic]
 
 > [!NOTE] 
-> Aby dowiedzieć się więcej na temat zachodzących podczas `cf push`, zobacz [jak aplikacje są umieszczane] [ cf-push-docs] w dokumentacji usługi Cloud Foundry.
+> Aby dowiedzieć się więcej na temat zachodzących podczas `cf push`, zobacz [jak aplikacje są umieszczane][cf-push-docs] w dokumentacji usługi Cloud Foundry.
 
 ## <a name="view-application-logs"></a>Wyświetlanie dzienników aplikacji
 
@@ -142,7 +142,7 @@ cf scale -i 2 hello-spring-cloud
 Uruchamianie `cf app` polecenia aplikacji pokazuje, że Cloud Foundry tworzy inne wystąpienie aplikacji. Po rozpoczęciu aplikacji Cloud Foundry automatycznie uruchamia Równoważenie obciążenia ruchu do niego.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Zapoznaj się z dokumentacją usługi Cloud Foundry][cloudfoundry-docs]
 - [Konfigurowanie wtyczki usługom DevOps platformy Azure dla usługi Cloud Foundry][vsts-plugin]

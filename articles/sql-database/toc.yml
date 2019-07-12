@@ -30,6 +30,8 @@
       items:
         - name: Reguły zapory bazujące na adresach IP na poziomie serwera
           href: sql-database-server-level-firewall-rule.md
+        - name: Konfigurowanie publicznego punktu końcowego w wystąpieniu zarządzanym
+          href: sql-database-managed-instance-public-endpoint-configure.md
         - name: Połączenie maszyny wirtualnej klienta z wystąpieniem zarządzanym
           href: sql-database-managed-instance-configure-vm.md
         - name: Połączenie punkt-lokacja z wystąpieniem zarządzanym
@@ -512,8 +514,6 @@
           href: sql-database-managed-instance-threat-detection.md
         - name: Łączenie aplikacji
           href: sql-database-managed-instance-connect-app.md
-        - name: Konfigurowanie publicznego punktu końcowego
-          href: sql-database-managed-instance-public-endpoint-configure.md
     - name: Ładowanie i przenoszenie danych
       items:
         - name: Kopiowanie bazy danych w obrębie platformy Azure

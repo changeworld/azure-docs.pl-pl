@@ -4,15 +4,15 @@ description: Jak skonfigurować kontener profilu FSLogix puli hosta Windows wirt
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: f6516e37107a16d80c4d9eb9514782bdbcc44184
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 692902c28b336dd46a7c6f00d5cf5a61ee9f7328
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925209"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67619102"
 ---
 # <a name="set-up-a-user-profile-share-for-a-host-pool"></a>Konfigurowanie udziału profilu użytkownika dla puli hostów
 
@@ -62,9 +62,9 @@ Aby skonfigurować maszyn wirtualnych z oprogramowaniem FSLogix, wykonaj następ
 6. Utwórz klucz o nazwie **profile**.
 7. Utwórz następujące wartości dla klucza profilów:
 
-| Name (Nazwa)                | Typ               | Dane/wartość                        |
+| Name (Nazwa)                | Type               | Dane/wartość                        |
 |---------------------|--------------------|-----------------------------------|
-| Enabled (Włączony)             | DWORD              | 1                                 |
+| Włączono             | DWORD              | 1                                 |
 | VHDLocations        | Wartość ciągu wielokrotnego | "Ścieżka sieciowa dla udziału plików"     |
 
 >[!IMPORTANT]

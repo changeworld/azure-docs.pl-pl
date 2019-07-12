@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 02/14/2019
+ms.date: 07/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: 54b89b74017b8d5d6e4bd1b52c6b3986d2802702
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9744a4b7bc5d2e9ce22bfa14ea33a2b11dacda85
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60457211"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612465"
 ---
 # <a name="reset-a-vpn-gateway"></a>Resetowanie bramy VPN Gateway
 
@@ -24,7 +24,7 @@ Bramy VPN gateway składa się z dwóch wystąpień maszyn wirtualnych działaj�
 
 Po wykonaniu polecenia, można zresetować bramy, bieżące aktywne wystąpienie bramy Azure VPN gateway jest natychmiast uruchomione ponownie. Nastąpi krótkie przerwy podczas trybu failover z aktywnego wystąpienia (ponownie uruchamiane), aby rezerwowe wystąpienie. Przerwa powinna trwać niż dłużej niż minutę.
 
-Jeśli połączenie nie zostanie przywrócone po pierwszym ponownym rozruchu komputera, należy wydać to polecenie ponownie, aby uruchomić ponownie drugie wystąpienie maszyny wirtualnej (nową aktywną bramę). Jeśli wymagane jest przeprowadzenie dwóch rozruchów jednocześnie, to ponowne uruchomienie obu wystąpień maszyn wirtualnych (aktywnego i w gotowości) będzie trwać nieco dłużej. Spowoduje to dłuższą przerwę w łączności przez sieć VPN, trwającą maksymalnie od 2 do 4 minut, podczas której nastąpi ponowny rozruch maszyn wirtualnych.
+Jeśli połączenie nie zostanie przywrócone po pierwszym ponownym rozruchu komputera, należy wydać to polecenie ponownie, aby uruchomić ponownie drugie wystąpienie maszyny wirtualnej (nową aktywną bramę). Jeśli wymagane jest przeprowadzenie dwóch rozruchów jednocześnie, to ponowne uruchomienie obu wystąpień maszyn wirtualnych (aktywnego i w gotowości) będzie trwać nieco dłużej. Spowoduje to dłuższą przerwę w łączności sieci VPN, maksymalnie 30 – 45 minut w przypadku maszyn wirtualnych w celu ukończenia ponownego rozruchu.
 
 Po dwóch ponownych uruchomieniach Jeśli nadal występują problemy z łącznością między środowiskami lokalnymi, otwórz żądanie pomocy technicznej w witrynie Azure portal.
 

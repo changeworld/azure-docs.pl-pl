@@ -2,17 +2,17 @@
 title: Zasoby klastra kontroli RBAC i usługi Azure AD w usłudze Azure Kubernetes Service
 description: Dowiedz się, jak ograniczyć dostęp do zasobów klastra przy użyciu kontroli dostępu opartej na rolach (RBAC) w usłudze Azure Kubernetes Service (AKS) za pomocą członkostwa w grupie usługi Azure Active Directory
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.author: iainfou
-ms.openlocfilehash: e974c47d1dfb04f66b622c64a7143d00de87c4cb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mlearned
+ms.openlocfilehash: fba54fd23fefbe0029b9a809b23568490f05b23e
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60467548"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616167"
 ---
 # <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>Kontrola dostępu do zasobów klastra przy użyciu tożsamości usługi Azure Active Directory i kontroli dostępu opartej na rolach w usłudze Azure Kubernetes Service
 
@@ -37,7 +37,7 @@ W tym artykule utworzymy dwie role użytkowników, których można użyć, aby p
 
 W środowiskach produkcyjnych można użyć istniejących użytkowników i grup w ramach dzierżawy usługi Azure AD.
 
-Najpierw Pobierz identyfikator zasobu usługi AKS klastra przy użyciu [az aks show] [ az-aks-show] polecenia. Przypisz identyfikator zasobu do zmiennej o nazwie *AKS_ID* , dzięki czemu mogą być przywoływane w dodatkowych poleceń.
+Najpierw Pobierz identyfikator zasobu usługi AKS klastra przy użyciu [az aks show][az-aks-show] polecenia. Przypisz identyfikator zasobu do zmiennej o nazwie *AKS_ID* , dzięki czemu mogą być przywoływane w dodatkowych poleceń.
 
 ```azurecli-interactive
 AKS_ID=$(az aks show \
@@ -46,13 +46,13 @@ AKS_ID=$(az aks show \
     --query id -o tsv)
 ```
 
-Tworzenie pierwszej grupy przykładu w usłudze Azure AD dla deweloperów aplikacji przy użyciu [utworzyć grupy usługi ad az] [ az-ad-group-create] polecenia. Poniższy przykład tworzy grupę o nazwie *appdev*:
+Tworzenie pierwszej grupy przykładu w usłudze Azure AD dla deweloperów aplikacji przy użyciu [utworzyć grupy usługi ad az][az-ad-group-create] polecenia. Poniższy przykład tworzy grupę o nazwie *appdev*:
 
 ```azurecli-interactive
 APPDEV_ID=$(az ad group create --display-name appdev --mail-nickname appdev --query objectId -o tsv)
 ```
 
-Teraz Utwórz przypisania ról platformy Azure dla *appdev* grupy za pomocą [utworzenia przypisania roli az] [ az-role-assignment-create] polecenia. To przypisanie umożliwia dowolny członek grupy, użyj `kubectl` do interakcji z klastrem usługi AKS, przyznając *roli użytkownika dla klastra usługi Azure Kubernetes*.
+Teraz Utwórz przypisania ról platformy Azure dla *appdev* grupy za pomocą [utworzenia przypisania roli az][az-role-assignment-create] polecenia. To przypisanie umożliwia dowolny członek grupy, użyj `kubectl` do interakcji z klastrem usługi AKS, przyznając *roli użytkownika dla klastra usługi Azure Kubernetes*.
 
 ```azurecli-interactive
 az role assignment create \
@@ -83,7 +83,7 @@ az role assignment create \
 
 Przy użyciu dwóch przykład grup utworzonych w usłudze Azure AD dla naszych deweloperów aplikacji i SREs teraz Utwórzmy dwóch przykładowych użytkowników. Aby przetestować integrację RBAC na końcu tego artykułu, zaloguj się do klastra usługi AKS przy użyciu tych kont.
 
-Tworzenie pierwszego konta użytkownika w usłudze Azure AD przy użyciu [Utwórz użytkownika usługi ad az] [ az-ad-user-create] polecenia.
+Tworzenie pierwszego konta użytkownika w usłudze Azure AD przy użyciu [Utwórz użytkownika usługi ad az][az-ad-user-create] polecenia.
 
 Poniższy przykład tworzy użytkownika z nazwą wyświetlaną *AKS Dev* i główną nazwę użytkownika (UPN) `aksdev@contoso.com`. Zaktualizuj nazwę UPN, aby uwzględnić zweryfikowanej domeny dla dzierżawy usługi Azure AD (Zastąp *contoso.com* z własnej domeny) i podaj własne bezpieczne `--password` poświadczeń:
 
@@ -95,7 +95,7 @@ AKSDEV_ID=$(az ad user create \
   --query objectId -o tsv)
 ```
 
-Teraz Dodaj użytkownika do *appdev* grupę utworzoną w poprzedniej sekcji przy użyciu [dodać członka grupy ad az] [ az-ad-group-member-add] polecenia:
+Teraz Dodaj użytkownika do *appdev* grupę utworzoną w poprzedniej sekcji przy użyciu [dodać członka grupy ad az][az-ad-group-member-add] polecenia:
 
 ```azurecli-interactive
 az ad group member add --group appdev --member-id $AKSDEV_ID
@@ -119,13 +119,13 @@ az ad group member add --group opssre --member-id $AKSSRE_ID
 
 Tworzone są teraz grup usługi Azure AD i użytkowników. Przypisania ról platformy Azure zostały utworzone dla członków grupy nawiązać połączenie z klastrem AKS jako zwykły użytkownik. Teraz Skonfigurujmy klastra AKS, aby umożliwić dostęp tych różnych grup, do określonych zasobów.
 
-Najpierw pobierz klastra poświadczeń administratora przy użyciu [az aks get-credentials] [ az-aks-get-credentials] polecenia. W jednym z następujących sekcji, możesz uzyskać zwykłych *użytkownika* poświadczeń, aby zobaczyć uwierzytelniania usługi Azure AD klastra przepływu w akcji.
+Najpierw pobierz klastra poświadczeń administratora przy użyciu [az aks get-credentials][az-aks-get-credentials] polecenia. W jednym z następujących sekcji, możesz uzyskać zwykłych *użytkownika* poświadczeń, aby zobaczyć uwierzytelniania usługi Azure AD klastra przepływu w akcji.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
 ```
 
-Tworzenie przestrzeni nazw w klastrze usługi AKS przy użyciu [kubectl tworzenie przestrzeni nazw] [ kubectl-create] polecenia. Poniższy przykład tworzy nazwę przestrzeni nazw *dev*:
+Tworzenie przestrzeni nazw w klastrze usługi AKS przy użyciu [kubectl tworzenie przestrzeni nazw][kubectl-create] polecenia. Poniższy przykład tworzy nazwę przestrzeni nazw *dev*:
 
 ```console
 kubectl create namespace dev
@@ -154,13 +154,13 @@ rules:
   verbs: ["*"]
 ```
 
-Tworzenie przy użyciu roli [zastosować kubectl] [ kubectl-apply] polecenia i podaj nazwę pliku manifestu usługi YAML:
+Tworzenie przy użyciu roli [zastosować kubectl][kubectl-apply] polecenia i podaj nazwę pliku manifestu usługi YAML:
 
 ```console
 kubectl apply -f role-dev-namespace.yaml
 ```
 
-Następnie Pobierz identyfikator zasobu dla *appdev* grupy za pomocą [Pokaż grupy ad az] [ az-ad-group-show] polecenia. Ta grupa jest ustawiana jako podmiot RoleBinding w następnym kroku.
+Następnie Pobierz identyfikator zasobu dla *appdev* grupy za pomocą [Pokaż grupy ad az][az-ad-group-show] polecenia. Ta grupa jest ustawiana jako podmiot RoleBinding w następnym kroku.
 
 ```azurecli-interactive
 az ad group show --group appdev --query objectId -o tsv
@@ -184,7 +184,7 @@ subjects:
   name: groupObjectId
 ```
 
-Tworzenie za pomocą RoleBinding [zastosować kubectl] [ kubectl-apply] polecenia i podaj nazwę pliku manifestu usługi YAML:
+Tworzenie za pomocą RoleBinding [zastosować kubectl][kubectl-apply] polecenia i podaj nazwę pliku manifestu usługi YAML:
 
 ```console
 kubectl apply -f rolebinding-dev-namespace.yaml
@@ -194,7 +194,7 @@ kubectl apply -f rolebinding-dev-namespace.yaml
 
 Teraz Powtórz poprzednie kroki, aby utworzyć przestrzeń nazw, roli i RoleBinding dla SREs.
 
-Najpierw utworzyć przestrzeń nazw dla *sre* przy użyciu [kubectl tworzenie przestrzeni nazw] [ kubectl-create] polecenia:
+Najpierw utworzyć przestrzeń nazw dla *sre* przy użyciu [kubectl tworzenie przestrzeni nazw][kubectl-create] polecenia:
 
 ```console
 kubectl create namespace sre
@@ -219,13 +219,13 @@ rules:
   verbs: ["*"]
 ```
 
-Tworzenie przy użyciu roli [zastosować kubectl] [ kubectl-apply] polecenia i podaj nazwę pliku manifestu usługi YAML:
+Tworzenie przy użyciu roli [zastosować kubectl][kubectl-apply] polecenia i podaj nazwę pliku manifestu usługi YAML:
 
 ```console
 kubectl apply -f role-sre-namespace.yaml
 ```
 
-Pobierz identyfikator zasobu dla *opssre* grupy za pomocą [Pokaż grupy ad az] [ az-ad-group-show] polecenia:
+Pobierz identyfikator zasobu dla *opssre* grupy za pomocą [Pokaż grupy ad az][az-ad-group-show] polecenia:
 
 ```azurecli-interactive
 az ad group show --group opssre --query objectId -o tsv
@@ -249,7 +249,7 @@ subjects:
   name: groupObjectId
 ```
 
-Tworzenie za pomocą RoleBinding [zastosować kubectl] [ kubectl-apply] polecenia i podaj nazwę pliku manifestu usługi YAML:
+Tworzenie za pomocą RoleBinding [zastosować kubectl][kubectl-apply] polecenia i podaj nazwę pliku manifestu usługi YAML:
 
 ```console
 kubectl apply -f rolebinding-sre-namespace.yaml
@@ -259,13 +259,13 @@ kubectl apply -f rolebinding-sre-namespace.yaml
 
 Teraz możemy przetestować pracy oczekiwanych uprawnień podczas tworzenia i zarządzania zasobami w klastrze AKS. W tych przykładach możesz zaplanować i wyświetlić zasobników w przestrzeni nazw przypisanych przez użytkownika. Następnie próbujesz harmonogram i widoku zasobników poza przypisane przestrzeni nazw.
 
-Najpierw należy zresetować *plik kubeconfig* przy użyciu kontekstu [az aks get-credentials] [ az-aks-get-credentials] polecenia. W poprzedniej sekcji można ustawić kontekstu przy użyciu poświadczeń administratora klastra. Administrator pomija logowania usługi Azure AD monity. Bez `--admin` parametru kontekstu użytkownika jest stosowana wymagającego wszystkich żądań uwierzytelnienia przy użyciu usługi Azure AD.
+Najpierw należy zresetować *plik kubeconfig* przy użyciu kontekstu [az aks get-credentials][az-aks-get-credentials] polecenia. W poprzedniej sekcji można ustawić kontekstu przy użyciu poświadczeń administratora klastra. Administrator pomija logowania usługi Azure AD monity. Bez `--admin` parametru kontekstu użytkownika jest stosowana wymagającego wszystkich żądań uwierzytelnienia przy użyciu usługi Azure AD.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --overwrite-existing
 ```
 
-Harmonogram podstawowe zasobnik NGINX, przy użyciu [kubectl Uruchom] [ kubectl-run] polecenia w pliku *dev* przestrzeni nazw:
+Harmonogram podstawowe zasobnik NGINX, przy użyciu [kubectl Uruchom][kubectl-run] polecenia w pliku *dev* przestrzeni nazw:
 
 ```console
 kubectl run --generator=run-pod/v1 nginx-dev --image=nginx --namespace dev
@@ -281,7 +281,7 @@ To sign in, use a web browser to open the page https://microsoft.com/devicelogin
 pod/nginx-dev created
 ```
 
-Teraz za pomocą [kubectl get pods-] [ kubectl-get] polecenie, aby wyświetlić zasobników w *dev* przestrzeni nazw.
+Teraz za pomocą [kubectl get pods-][kubectl-get] polecenie, aby wyświetlić zasobników w *dev* przestrzeni nazw.
 
 ```console
 kubectl get pods --namespace dev
@@ -298,7 +298,7 @@ nginx-dev   1/1     Running   0          4m
 
 ### <a name="create-and-view-cluster-resources-outside-of-the-assigned-namespace"></a>Można tworzyć i wyświetlać zasoby klastra poza przypisane przestrzeni nazw
 
-Teraz próby wyświetlenia zasobników poza *dev* przestrzeni nazw. Użyj [kubectl get pods-] [ kubectl-get] polecenie ponownie, ten czas, aby zobaczyć `--all-namespaces` w następujący sposób:
+Teraz próby wyświetlenia zasobników poza *dev* przestrzeni nazw. Użyj [kubectl get pods-][kubectl-get] polecenie ponownie, ten czas, aby zobaczyć `--all-namespaces` w następujący sposób:
 
 ```console
 kubectl get pods --all-namespaces
@@ -324,7 +324,7 @@ Error from server (Forbidden): pods is forbidden: User "aksdev@contoso.com" cann
 
 Aby upewnić się, że naszych członkostwa w grupie usługi Azure AD i kontroli RBAC usługi Kubernetes działała prawidłowo w różnych użytkowników i grup, spróbuj wykonać poprzednie polecenia, po zalogowaniu się jako *opssre* użytkownika.
 
-Resetuj *plik kubeconfig* przy użyciu kontekstu [az aks get-credentials] [ az-aks-get-credentials] polecenie usuwa token uwierzytelniania wcześniej w pamięci podręcznej dla *aksdev*  użytkownika:
+Resetuj *plik kubeconfig* przy użyciu kontekstu [az aks get-credentials][az-aks-get-credentials] polecenie usuwa token uwierzytelniania wcześniej w pamięci podręcznej dla *aksdev* użytkownika:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --overwrite-existing

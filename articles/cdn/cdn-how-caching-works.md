@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: magattus
-ms.openlocfilehash: f82675f1e93a5471f98c1778e9394f9eaec1a07b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 92d93fbf9fa2f8df15acb62802d7ac53db836dc1
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60636813"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593856"
 ---
 # <a name="how-caching-works"></a>Jak działa buforowanie
 
@@ -126,14 +126,14 @@ W poniższej tabeli opisano domyślne zachowanie dla produktów Azure CDN i ich 
 
 |    | Microsoft: Ogólne dostarczanie w Internecie | Verizon: Ogólne dostarczanie w Internecie | Verizon: DSA | Akamai: Ogólne dostarczanie w Internecie | Akamai: DSA | Akamai: Pobieranie dużych plików | Akamai: ogólne lub strumieniowego przesyłania multimediów wideo na żądanie |
 |------------------------|--------|-------|------|--------|------|-------|--------|
-| **Honoruj źródła**       | Tak    | Yes   | Nie   | Yes    | Nie   | Yes   | Tak    |
+| **Honoruj źródła**       | Yes    | Yes   | Nie   | Yes    | Nie   | Yes   | Yes    |
 | **Czas trwania pamięci podręcznej usługi CDN** | 2 dni |7 dni | Brak | 7 dni | Brak | 1 dzień | 1 rok |
 
 **Uwzględnić pochodzenia**: Określa, czy uwzględnić obsługiwanych nagłówki z dyrektywami, jeśli istnieją w odpowiedzi HTTP z serwera pochodzenia.
 
 **Czas trwania pamięci podręcznej usługi CDN**: Określa ilość czasu, dla której zasób jest buforowany w usłudze Azure CDN. Jednak jeśli **respektować pochodzenia** jest tak i odpowiedzi HTTP z serwera pochodzenia zawiera nagłówek dyrektywami `Expires` lub `Cache-Control: max-age`, wysokiej dostępności treści Azure używa wartości czasu trwania, zamiast tego określony w nagłówku. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby dowiedzieć się, jak dostosować i zastąpić domyślne zachowanie w usłudze CDN przy użyciu reguł buforowania buforowania, zobacz [kontroli Azure działanie buforowania usługi CDN przy użyciu reguł buforowania](cdn-caching-rules.md). 
 - Aby dowiedzieć się, jak używać ciągów zapytań do kontroli zachowania buforowania, zobacz [kontroli usługi Azure CDN caching zachowanie z ciągami zapytań](cdn-query-string.md).

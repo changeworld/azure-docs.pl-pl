@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: eef13c5a4e3757b0eafd77c0915717175c2dbd8c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e04dfa4148213e88aa46e464a31cdd9b6125e0bf
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60769114"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705758"
 ---
 # <a name="create-an-external-app-service-environment"></a>Tworzenie środowiska usługi aplikacji zewnętrznej
 
@@ -33,15 +33,15 @@ Istnieją dwa sposoby wdrażania środowiska App Service Environment (ASE):
 - Z wirtualnym adresem IP będącym zewnętrznym adresem IP — jest to często nazywane zewnętrznym środowiskiem ASE.
 - Z Wirtualnym adresem IP będącym wewnętrznego adresu IP często nazywane środowisko ASE z wewnętrznym modułem równoważenia obciążenia, ponieważ wewnętrzny punkt końcowy wewnętrznego modułu równoważenia obciążenia (ILB).
 
-W tym artykule pokazano, jak tworzenie zewnętrznego środowiska ASE. Aby uzyskać omówienie środowiska ASE, zobacz [wprowadzenie do usługi App Service Environment][Intro]. Aby uzyskać informacje na temat tworzenia środowiska ASE z wewnętrznym modułem równoważenia obciążenia, zobacz [tworzenia i używania środowiska ASE z wewnętrznym modułem równoważenia obciążenia][MakeILBASE].
+W tym artykule pokazano, jak tworzenie zewnętrznego środowiska ASE. Aby uzyskać omówienie środowiska ASE, zobacz [wprowadzenie do usługi App Service Environment][Intro]. For information on how to create an ILB ASE, see [Create and use an ILB ASE][MakeILBASE].
 
 ## <a name="before-you-create-your-ase"></a>Przed przystąpieniem do tworzenia środowiska ASE
 
 Po utworzeniu środowiska ASE, nie można zmienić następujące czynności:
 
-- Lokalizacja
-- Subskrypcja
-- Grupa zasobów
+- Location
+- Subscription
+- Resource group
 - Używane w sieci wirtualnej
 - Podsieć używana
 - Rozmiar podsieci
@@ -96,7 +96,7 @@ Aby utworzyć środowisko ASE, podczas tworzenia planu usługi App Service:
 
     b. Wprowadź nazwę nowej podsieci.
 
-    c. Wybierz rozmiar podsieci. *Pamiętaj, aby wybrać rozmiar wystarczająco dużą do obsługi przyszłego rozwoju środowiska ASE.* Firma Microsoft zaleca `/25`, który zapewnia 128 adresów i może obsłużyć środowiska ASE o maksymalnym rozmiarze. Nie zaleca się `/28`, na przykład, ponieważ nie są dostępne tylko 16 adresów. Infrastruktury przy użyciu co najmniej siedmiu adresów, a inny 5 korzysta z sieci platformy Azure. W `/28` podsieci, w przypadku pozostałych dłuższą skalowanie 4 wystąpień planu usługi App Service dla zewnętrznego środowiska ASE i tylko 3 wystąpień planu usługi App Service, za środowisko ASE wewnętrznego modułu równoważenia obciążenia.
+    c. Wybierz rozmiar podsieci. *Pamiętaj, aby wybrać rozmiar wystarczająco dużą do obsługi przyszłego rozwoju środowiska ASE.* Firma Microsoft zaleca `/24`, który zapewnia 128 adresów i może obsłużyć środowiska ASE o maksymalnym rozmiarze. Nie zaleca się `/28`, na przykład, ponieważ nie są dostępne tylko 16 adresów. Infrastruktury przy użyciu co najmniej siedmiu adresów, a inny 5 korzysta z sieci platformy Azure. W `/28` podsieci, w przypadku pozostałych dłuższą skalowanie 4 wystąpień planu usługi App Service dla zewnętrznego środowiska ASE i tylko 3 wystąpień planu usługi App Service, za środowisko ASE wewnętrznego modułu równoważenia obciążenia.
 
     d. Wybierz zakres adresów IP podsieci.
 
@@ -132,7 +132,7 @@ Aby utworzyć środowisko ASE, podczas tworzenia planu usługi App Service:
 
     b. Wprowadź nazwę nowej podsieci.
 
-    c. Wybierz rozmiar podsieci. *Pamiętaj, aby wybrać rozmiar wystarczająco dużą do obsługi przyszłego rozwoju środowiska ASE.* Firma Microsoft zaleca `/25`, który zapewnia 128 adresów i może obsłużyć środowiska ASE o maksymalnym rozmiarze. Nie zaleca się `/28`, na przykład, ponieważ nie są dostępne tylko 16 adresów. Infrastruktury przy użyciu co najmniej siedmiu adresów, a inny 5 korzysta z sieci platformy Azure. W `/28` podsieci, w przypadku pozostałych dłuższą skalowanie 4 wystąpień planu usługi App Service dla zewnętrznego środowiska ASE i tylko 3 wystąpień planu usługi App Service, za środowisko ASE wewnętrznego modułu równoważenia obciążenia.
+    c. Wybierz rozmiar podsieci. *Pamiętaj, aby wybrać rozmiar wystarczająco dużą do obsługi przyszłego rozwoju środowiska ASE.* Firma Microsoft zaleca `/24`, który zapewnia 128 adresów i może obsłużyć środowiska ASE o maksymalnym rozmiarze. Nie zaleca się `/28`, na przykład, ponieważ nie są dostępne tylko 16 adresów. Infrastruktury przy użyciu co najmniej siedmiu adresów, a inny 5 korzysta z sieci platformy Azure. W `/28` podsieci, w przypadku pozostałych dłuższą skalowanie 4 wystąpień planu usługi App Service dla zewnętrznego środowiska ASE i tylko 3 wystąpień planu usługi App Service, za środowisko ASE wewnętrznego modułu równoważenia obciążenia.
 
     d. Wybierz zakres adresów IP podsieci.
 
@@ -176,7 +176,7 @@ Jeśli tworzysz autonomiczne środowisko ASE, go nie ma nic w nim. Środowisko A
 
 Nadal można utworzyć wystąpienia elementu pierwszą wersję środowiska App Service Environment (środowiska ASEv1). Aby rozpocząć ten proces, portalu Marketplace wyszukaj hasło **środowiska App Service Environment v1**. Należy utworzyć środowisko ASE w taki sam sposób, jak tworzyć autonomiczne środowisko ASE. Po zakończeniu program Twojego środowiska ASEv1 ma dwa Frontony i dwa procesy robocze. Za pomocą środowiska ASEv1 muszą zarządzać frontonami ani procesami roboczymi. Są dodawane automatycznie, gdy tworzysz swoje plany usługi App Service. Frontony działanie jako punktów końcowych HTTP/HTTPS i wysyłania ruchu do pracowników. Procesy robocze to role, które hostują swoje aplikacje. Po utworzeniu środowiska ASE, można dostosować ilość frontonami ani procesami roboczymi. 
 
-Aby dowiedzieć się więcej na temat środowiska ASEv1, zobacz [wprowadzenie do środowiska App Service Environment w wersji 1][ASEv1Intro]. Aby uzyskać więcej informacji na temat skalowania, zarządzania i monitorowania środowiska ASEv1, zobacz [jak skonfigurować środowisko App Service Environment][ConfigureASEv1].
+Aby dowiedzieć się więcej na temat środowiska ASEv1, zobacz [wprowadzenie do środowiska App Service Environment w wersji 1][ASEv1Intro]. For more information on scaling, managing, and monitoring ASEv1, see [How to configure an App Service Environment][ConfigureASEv1].
 
 <!--Image references-->
 [1]: ./media/how_to_create_an_external_app_service_environment/createexternalase-create.png

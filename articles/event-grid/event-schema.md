@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/20/2019
 ms.author: babanisa
-ms.openlocfilehash: 4a795221790a9d56bcbfe30a50b0c838fb8d9e56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8a8193d21bbc1d0af933657705e605ce31589cbf
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304248"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785849"
 ---
 # <a name="azure-event-grid-event-schema"></a>Schemat zdarzeń w usłudze Azure Event Grid
 
@@ -85,14 +85,14 @@ Wszystkie zdarzenia mają te same dane następujących najwyższego poziomu:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| topic | string | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
-| subject | string | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
-| eventType | string | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
-| eventTime | string | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
-| id | string | Unikatowy identyfikator zdarzenia. |
-| data | obiekt | Dane zdarzenia specyficzne dla dostawcy zasobów. |
-| dataVersion | string | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
-| metadataVersion | string | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
+| topic | ciąg | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
+| subject | ciąg | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
+| eventType | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
+| eventTime | ciąg | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
+| id | ciąg | Unikatowy identyfikator zdarzenia. |
+| data | object | Dane zdarzenia specyficzne dla dostawcy zasobów. |
+| dataVersion | ciąg | Wersja schematu obiektu danych. Wydawca Określa wersję schematu. |
+| metadataVersion | ciąg | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
 
 Aby dowiedzieć się więcej na temat właściwości w obiekcie danych, zobacz źródło zdarzenia:
 
@@ -104,6 +104,7 @@ Aby dowiedzieć się więcej na temat właściwości w obiekcie danych, zobacz �
 * [Media Services](../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json)
 * [Grupy zasobów (operacje zarządzania)](event-schema-resource-groups.md)
 * [Service Bus](event-schema-service-bus.md)
+* [Azure SignalR](event-schema-azure-signalr.md)
 
 Niestandardowe tematy wydawca zdarzeń określa obiekt danych. Najwyższego poziomu dane powinny mieć te same pola jako standardowych zdarzeń zdefiniowanych przez zasób.
 
@@ -111,7 +112,7 @@ Podczas publikowania zdarzeń w tematy niestandardowe, należy utworzyć tematy 
 
 Czasami tematu potrzebuje więcej szczegółów na temat co się stało. Na przykład **kont magazynu** wydawcy zawiera temat `/blobServices/default/containers/<container-name>/blobs/<file>` po dodaniu pliku do kontenera. Subskrybent można filtrować według ścieżki `/blobServices/default/containers/testcontainer` można pobrać wszystkie zdarzenia dla tego kontenera, ale nie innych kontenerów na koncie magazynu. Subskrybent można również filtrować lub tras po przyrostku `.txt` aby działał tylko w przypadku plików tekstowych.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Wprowadzenie do usługi Azure Event Grid, zobacz [co to jest usługa Event Grid?](overview.md)
 * Aby uzyskać więcej informacji na temat tworzenia subskrypcji usługi Azure Event Grid, zobacz [schemat subskrypcji usługi Event Grid](subscription-creation-schema.md).

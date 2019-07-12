@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: gokuma
-ms.openlocfilehash: 64642da88850e9a0a17173bc50ae9e750cab55a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57768fc463f5ea1d2f1ec386f3f0975758220013
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235104"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626383"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>Aprowizowanie maszyny wirtualnej do nauki o danych z Windows na platformie Azure
 
@@ -61,13 +61,13 @@ Analitycy danych używać kilku narzędzi do wykonywania tych zadań. Może zaj�
 
 Maszyny DSVM jump-starts projektu analizy. Możesz pracować nad zadaniami w różnych językach, w tym języka R, Python, SQL i C#. Visual Studio zapewnia łatwe w użyciu zintegrowanego rozwoju środowiska (IDE) do tworzenia i testowania kodu. Zestaw SDK usługi Azure znajduje się na maszynie wirtualnej, dzięki czemu można tworzyć aplikacje przy użyciu różnych usług na platformie w chmurze firmy Microsoft.
 
-Opłaty nie będą oprogramowania dla tego obrazu maszyny Wirtualnej do nauki o danych. Opłaty są naliczane tylko opłaty za użycie platformy Azure. Są one zależne od rozmiaru maszyny wirtualnej, którą możesz aprowizować. Szczegółowe informacje na temat obliczeń opłaty znajdują się w **cennik** sekcji na [maszyny wirtualnej do nauki o danych](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.windows-data-science-vm?tab=PlansAndPrice) strony.
+Opłaty nie będą oprogramowania dla tego obrazu maszyny Wirtualnej do nauki o danych. Opłaty są naliczane tylko opłaty za użycie platformy Azure. Są one zależne od rozmiaru maszyny wirtualnej, którą możesz aprowizować. Szczegółowe informacje na temat obliczeń opłaty znajdują się w **cennik** sekcji na [maszyny wirtualnej do nauki o danych](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) strony.
 
 ### <a name="other-dsvm-versions"></a>Inne wersje maszyny DSVM
 
 * [Ubuntu](dsvm-ubuntu-intro.md) obrazu. Ma on wiele narzędzi, podobne do maszyny DSVM plus kilka dodatkowych platform do uczenia głębokiego.
 * A [Linux CentOS](linux-dsvm-intro.md) obrazu.
-* [Wersji systemu Windows Server 2012](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.standard-data-science-vm) maszyny wirtualnej do nauki o danych. Niektóre narzędzia są dostępne tylko w wersji systemu Windows Server 2016. W przeciwnym razie ten artykuł dotyczy również do wersji Windows Server 2012.
+* [Wersji systemu Windows Server 2012](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) maszyny wirtualnej do nauki o danych. Niektóre narzędzia są dostępne tylko w wersji systemu Windows Server 2016. W przeciwnym razie ten artykuł dotyczy również do wersji Windows Server 2012.
 
 ## <a name="prerequisite"></a>Wymagania wstępne
 
@@ -224,7 +224,7 @@ Możesz użyć [Instalatora platformy sieci Web firmy Microsoft](https://www.mic
 > [!NOTE]
 > W tej wersji systemu Windows Server 2012 wersji maszyny wirtualnej DSVM i Windows Server 2016 przed marca 2018 r. domyślne środowisko Anaconda jest język Python 2.7. Pomocniczy środowisko jest język Python 3.5, znajdujący się w **C:\Anaconda\envs\py35**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Odkryj narzędzia i na maszyny Wirtualnej do analizy danych, wybierając **Start** menu.
 * Dowiedz się więcej o usłudze Azure Machine Learning, czytając [co to jest usługa Azure Machine Learning?](../service/overview-what-is-azure-ml.md) i wypróbować [przewodników Szybki Start i samouczki](../service/index.yml) , które są dostępne.

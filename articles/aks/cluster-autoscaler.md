@@ -2,17 +2,17 @@
 title: Użyj skalowania automatycznego klastra w usłudze Azure Kubernetes Service (AKS)
 description: Dowiedz się, jak za pomocą skalowania automatycznego klastra automatycznie Skaluj klaster w taki sposób, aby spełniać wymagania aplikacji w klastrze usługi Azure Kubernetes Service (AKS).
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 05/31/2019
-ms.author: iainfou
-ms.openlocfilehash: c4fe05c96b1006a7d110caa019619ce8be396fe8
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.date: 07/08/2019
+ms.author: mlearned
+ms.openlocfilehash: 3ce080871ff2a38efcc75f6ff6b584af14014879
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491555"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67666003"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>W wersji zapoznawczej — automatyczne skalowanie klastra, aby spełniać wymagania aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -100,7 +100,7 @@ Dwa autoscalers mogą współpracować ze sobą, i są często wdrożone w klast
 Jeśli musisz utworzyć klaster usługi AKS, użyj [tworzenie az aks][az-aks-create] polecenia. Określ *wersji rozwiązania kubernetes —* , spełnia lub przekracza minimalny numer wersji wymagane zgodnie z opisem w poprzednim [przed rozpoczęciem](#before-you-begin) sekcji. Aby włączyć i skonfigurować klaster skalowania automatycznego, należy użyć *--enable klastra — skalowanie* parametru i określ węzeł *— minimalna liczba* i *— maksymalna liczba*.
 
 > [!IMPORTANT]
-> Skalowanie klastra jest składnikiem usługi Kubernetes. Mimo że klaster AKS używa skalowania maszyn wirtualnych dla węzłów, nie ręcznie włączyć lub zmienić ustawienia w witrynie Azure portal lub przy użyciu wiersza polecenia platformy Azure, automatyczne skalowanie zestawu skalowania. Umożliwiają skalowanie klastra Kubernetes Zarządzanie ustawieniami wymagane skali. Aby uzyskać więcej informacji, zobacz [można zmodyfikować zasoby usługi AKS w grupie zasobów MC_?](faq.md#can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc_-resource-group)
+> Skalowanie klastra jest składnikiem usługi Kubernetes. Mimo że klaster AKS używa skalowania maszyn wirtualnych dla węzłów, nie ręcznie włączyć lub zmienić ustawienia w witrynie Azure portal lub przy użyciu wiersza polecenia platformy Azure, automatyczne skalowanie zestawu skalowania. Umożliwiają skalowanie klastra Kubernetes Zarządzanie ustawieniami wymagane skali. Aby uzyskać więcej informacji, zobacz [zasoby usługi AKS w węźle grupy zasobów można zmodyfikować?](faq.md#can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group)
 
 Poniższy przykład tworzy klaster usługi AKS z zestawu skalowania maszyn wirtualnych i włączone skalowanie klastra i korzysta z co najmniej *1* i maksymalna liczba *3* węzłów:
 
@@ -171,7 +171,7 @@ az aks update \
 
 Można ręcznie skalować przy użyciu klastra [az aks skalowania][az-aks-scale] polecenia. Jeśli używasz skalowania automatycznego zasobników w poziomie, funkcja będzie nadal działać z skalowanie klastra wyłączone, ale zasobników może pozostać mógł zostać zaplanowana, jeżeli zasoby węzła są wszystkie używane.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym artykule pokazano, jak automatycznie skalować liczbę węzłów AKS. Aby automatycznie dostosowywać liczbę zasobników, na których działa Twoja aplikacja umożliwia także skalowanie zasobników w poziomie. Aby uzyskać instrukcje na temat korzystania ze skalowania automatycznego zasobników w poziomie, zobacz [skalowanie aplikacji w usłudze AKS][aks-scale-apps].
 

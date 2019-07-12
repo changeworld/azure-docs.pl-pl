@@ -6,13 +6,14 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.author: anzaman;cherylmc
-ms.openlocfilehash: 556589aa7a0a577b9b1a010cf4811922ebc6de52
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: cherylmc
+ms.reviewer: anzaman
+ms.openlocfilehash: e42190814b9365c7db054eb2b5f1842581b64009
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837814"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657067"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>Tworzenie i modyfikowanie obwodu ExpressRoute za pomocą interfejsu wiersza polecenia
 
@@ -23,9 +24,10 @@ W tym artykule opisano, jak utworzyć obwód usługi ExpressRoute systemu Azure 
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [Program PowerShell](expressroute-howto-circuit-arm.md)
 > * [Interfejs wiersza polecenia platformy Azure](howto-circuit-cli.md)
+> * [Szablon usługi Azure Resource Manager](expressroute-howto-circuit-resource-manager-template.md)
 > * [Wideo — witryna Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (klasyczny)](expressroute-howto-circuit-classic.md)
-> 
+>
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -127,8 +129,8 @@ Teraz możesz utworzyć obwód usługi ExpressRoute.
 
 > [!IMPORTANT]
 > Obwód usługi ExpressRoute jest rozliczana w momencie utworzenia klucza usługi. Tę operację należy wykonać, gdy dostawca połączenia jest gotowy do obsługi administracyjnej obwodu.
-> 
-> 
+>
+>
 
 Jeśli nie masz jeszcze grupy zasobów, należy utworzyć jedną przed utworzeniem obwód usługi ExpressRoute. Aby utworzyć grupę zasobów, należy uruchomić następujące polecenie:
 
@@ -136,7 +138,7 @@ Jeśli nie masz jeszcze grupy zasobów, należy utworzyć jedną przed utworzeni
 az group create -n ExpressRouteResourceGroup -l "West US"
 ```
 
-Poniższy przykład pokazuje, jak utworzyć obwód usługi ExpressRoute za pośrednictwem Equinix 200-MB/s w Dolinie Krzemowej. Jeśli używasz innego dostawcy i inne ustawienia, należy zastąpić te informacje podczas Prześlij żądanie. 
+Poniższy przykład pokazuje, jak utworzyć obwód usługi ExpressRoute za pośrednictwem Equinix 200-MB/s w Dolinie Krzemowej. Jeśli używasz innego dostawcy i inne ustawienia, należy zastąpić te informacje podczas Prześlij żądanie.
 
 Upewnij się, że podajesz poprawne warstwa jednostki SKU i rodzina jednostek SKU:
 
@@ -267,8 +269,8 @@ Aby uzyskać instrukcje krok po kroku, zobacz [obwód usługi ExpressRoute, konf
 
 > [!IMPORTANT]
 > Te instrukcje dotyczą tylko obwodów, które są utworzonych przy pomocy dostawców oferujących usługi łączności 2 warstwy. Jeśli używasz dostawcy usług, który oferuje zarządzane w warstwie 3 usługi (zazwyczaj IP sieci VPN, np. MPLS), dostawca połączenia skonfiguruje i zarządza routing.
-> 
-> 
+>
+>
 
 ### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8. Łączenie sieci wirtualnej z obwodem usługi ExpressRoute
 
@@ -279,7 +281,7 @@ Następnie łączenie sieci wirtualnej na obwód usługi ExpressRoute. Użyj [ł
 Można modyfikować niektórych właściwości obwodu usługi ExpressRoute, bez wywierania wpływu na łączność. Można wprowadzić następujące zmiany bez przerw w dostępności:
 
 * Można włączyć lub wyłączyć dodatek premium usługi ExpressRoute dla obwodu usługi ExpressRoute.
-* Możesz zwiększyć przepustowość obwodu usługi ExpressRoute, pod warunkiem, że pojemność dostępna na porcie. Obniżenie przepustowości obwodu nie jest jednak obsługiwane. 
+* Możesz zwiększyć przepustowość obwodu usługi ExpressRoute, pod warunkiem, że pojemność dostępna na porcie. Obniżenie przepustowości obwodu nie jest jednak obsługiwane.
 * Do danych bez ograniczeń, można zmienić planu zliczania z plan taryfowy z danymi. Jednak zmiana zliczania planu z danymi nieograniczonymi na plan taryfowy z danymi nie jest obsługiwana.
 * Można włączać i wyłączać *Zezwalaj na klasyczne operacje*.
 
@@ -299,8 +301,8 @@ Obwód ma teraz funkcje dodatku premium usługi ExpressRoute, włączone. Zaczni
 
 > [!IMPORTANT]
 > Ta operacja może zakończyć się niepowodzeniem, jeśli używasz zasobów, które są większe niż co to jest dozwolone w przypadku obwód standardowy.
-> 
-> 
+>
+>
 
 Przed wyłączeniem dodatek ExpressRoute premium, należy zrozumieć następujące kryteria:
 

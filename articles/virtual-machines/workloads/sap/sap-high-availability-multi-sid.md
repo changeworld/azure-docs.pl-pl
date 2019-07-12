@@ -4,7 +4,7 @@ description: Przewodnik po konfiguracji — wiele identyfikatorów SID oprogramo
 services: virtual-machines-windows, virtual-network, storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fe9b70d74e326166afae366becc47fbcc8b2ea56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fddb0f7cceea167885f56cf6ff5e8639bec1d937
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66120266"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710351"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>Utwórz konfigurację adresu oprogramowanie SAP NetWeaver — wiele identyfikatorów SID
 
@@ -50,14 +50,14 @@ ms.locfileid: "66120266"
 
 We wrześniu 2016 roku firma Microsoft opublikowała funkcji, na której możesz zarządzać wiele wirtualnych adresów IP przy użyciu platformy Azure wewnętrznego modułu równoważenia obciążenia. Ta funkcja już istnieje w module równoważenia obciążenia zewnętrznych platformy Azure.
 
-W przypadku wdrożenia SAP służy wewnętrznego modułu równoważenia obciążenia do tworzenia konfiguracji klastra Windows SAP ASCS/SCS, zgodnie z opisem w [przewodnik dla wysokiej dostępności oprogramowanie SAP NetWeaver na maszynach wirtualnych Windows] [ sap-ha-guide].
+W przypadku wdrożenia SAP służy wewnętrznego modułu równoważenia obciążenia do tworzenia konfiguracji klastra Windows SAP ASCS/SCS, zgodnie z opisem w [przewodnik dla wysokiej dostępności oprogramowanie SAP NetWeaver na maszynach wirtualnych Windows][sap-ha-guide].
 
 Ten artykuł koncentruje się na temat sposobu przenieść z jednej instalacji ASCS/SCS konfiguracji SAP — wiele identyfikatorów SID, instalując dodatkowe wystąpienia SAP ASCS/SCS klastrowane w istniejącym klastrze systemu Windows Server Failover Clustering (WSFC). Po zakończeniu tego procesu został skonfigurowany klaster SAP — wiele identyfikatorów SID.
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Skonfigurowano już klaster usługi WSFC, używany do jednego wystąpienia SAP ASCS/SCS, zgodnie z opisem w [przewodnik dla wysokiej dostępności oprogramowanie SAP NetWeaver na maszynach wirtualnych Windows] [ sap-ha-guide] i jak pokazano na poniższym diagramie.
+Skonfigurowano już klaster usługi WSFC, używany do jednego wystąpienia SAP ASCS/SCS, zgodnie z opisem w [przewodnik dla wysokiej dostępności oprogramowanie SAP NetWeaver na maszynach wirtualnych Windows][sap-ha-guide] i jak pokazano na poniższym diagramie.
 
 ![Wystąpienia SAP ASCS/SCS wysokiej dostępności][sap-ha-guide-figure-6001]
 
@@ -89,7 +89,7 @@ Pełne orientacja pozioma, z dwoma systemami SAP o wysokiej dostępności będzi
 ## <a name="prepare-the-infrastructure"></a>Przygotowywanie infrastruktury
 Aby przygotować infrastrukturę, można zainstalować dodatkowe wystąpienia SAP ASCS/SCS z następującymi parametrami:
 
-| Nazwa parametru | Wartość |
+| Nazwa parametru | Value |
 | --- | --- |
 | SAP ASCS/SCS SID |pr1-lb-ascs |
 | Systemu SAP DBMS wewnętrznego modułu równoważenia obciążenia | PR5 |
@@ -262,13 +262,13 @@ Procedura wysokiego poziomu, jest następujący:
 
 7. [Zmień typ uruchomienia wystąpienia usługi SAP Wywołujących Windows][sap-ha-guide-9.4].
 
-8. [Instalowanie serwera podstawowego aplikacji SAP] [ sap-ha-guide-9.5] na nowym dedykowane maszyny Wirtualnej.
+8. [Instalowanie serwera podstawowego aplikacji SAP][sap-ha-guide-9.5] na nowym dedykowane maszyny Wirtualnej.
 
-9. [Instalowanie serwera dodatkowych aplikacji SAP] [ sap-ha-guide-9.6] na nowym dedykowane maszyny Wirtualnej.
+9. [Instalowanie serwera dodatkowych aplikacji SAP][sap-ha-guide-9.6] na nowym dedykowane maszyny Wirtualnej.
 
 10. [Testowanie trybu failover wystąpienia SAP ASCS/SCS i replikacji oprogramowanie SIOS][sap-ha-guide-10].
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Limity dotyczące sieci: Azure Resource Manager][networking-limits-azure-resource-manager]
 - [Wielu adresów VIP dla usługi Azure Load Balancer][load-balancer-multivip-overview]

@@ -2,24 +2,25 @@
 title: Wybierz i wdrożyć usługę Azure Security Center dla agenta IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak wybrać około i ciągłe wdrażanie usługi Azure Security Center agentów zabezpieczeń IoT na urządzeniach IoT.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: 32a9564d-16fd-4b0d-9618-7d78d614ce76
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 5c76cce5a3d9add8a1dcd8acc439a70c4a8655a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c549e5ccbda9b364b3e7d20c9572eb777c32299e
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65200570"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616825"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Wybierz i wdrożyć agenta zabezpieczeń na urządzeniu IoT
 
@@ -54,10 +55,10 @@ Agent zabezpieczenia oparty na C ma mniejsze obciążenie pamięci i jest idealn
 | Wymagania wstępne systemu Linux | libunwind8 libcurl3, środowisko uruchomieniowe identyfikatora uuid, wykorzystują, audispd wtyczek | libunwind8 libcurl3, środowisko uruchomieniowe uuid, wykorzystują, audispd wtyczek, "sudo", polecenia netstat, iptables |
 | Przestrzeń dyskową | 10.5 MB | 90MB |
 | Zużycie pamięci (średnio) | 5.5 MB | 33MB |
-| [Uwierzytelnianie](concept-security-agent-authentication-methods.md) do usługi IoT Hub | Yes | Tak |
-| Dane zabezpieczeń [kolekcji](how-to-agent-configuration.md#supported-security-events) | Yes | Tak |
-| Zdarzenie agregacji | Tak | Yes |
-| Konfigurowanie zdalnego za pomocą [bliźniaczą reprezentację modułu zabezpieczeń](concept-security-module.md) | Tak | Tak |
+| [Uwierzytelnianie](concept-security-agent-authentication-methods.md) do usługi IoT Hub | Tak | Yes |
+| Dane zabezpieczeń [kolekcji](how-to-agent-configuration.md#supported-security-events) | Tak | Tak |
+| Zdarzenie agregacji | Tak | Tak |
+| Konfigurowanie zdalnego za pomocą [bliźniaczą reprezentację modułu zabezpieczeń](concept-security-module.md) | Tak | Yes |
 
 
 ## <a name="choose-an-agent-flavor"></a>Wybierz wersję agenta 

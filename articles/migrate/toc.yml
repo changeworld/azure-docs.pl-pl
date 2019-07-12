@@ -3,45 +3,97 @@
 - name: Omówienie
   items:
     - name: Informacje o usłudze Azure Migrate
-      href: migrate-overview.md
+      href: migrate-services-overview.md
+    - name: Co nowego
+      href: whats-new.md
 - name: Samouczki
   items:
-    - name: Odnajdywanie i ocenianie maszyn wirtualnych programu VMware
-      href: tutorial-assessment-vmware.md
+    - name: Ocena i migracja maszyn wirtualnych VMware
+      items:
+        - name: Przygotowywanie środowiska VMware do oceny i migracji
+          href: tutorial-prepare-vmware.md
+        - name: Ocena maszyn wirtualnych VMware do migracji
+          href: tutorial-assess-vmware.md
+        - name: Migrowanie maszyn wirtualnych VMware
+          items:
+            - name: Opcje migracji maszyn wirtualnych VMware — informacje
+              href: server-migrate-overview.md
+            - name: Migrowanie maszyn wirtualnych VMware za pomocą migracji bez agentów
+              href: tutorial-migrate-vmware.md
+            - name: Migrowanie maszyn wirtualnych VMware za pomocą migracji z użyciem agentów
+              href: tutorial-migrate-vmware-agent.md
+    - name: Ocena i migracja funkcji Hyper-V
+      items:
+        - name: Przygotowywanie środowiska funkcji Hyper-V do oceny i migracji
+          href: tutorial-prepare-hyper-v.md
+        - name: Ocena maszyn wirtualnych funkcji Hyper-V do migracji
+          href: tutorial-assess-hyper-v.md
+        - name: Migrowanie maszyn wirtualnych funkcji Hyper-V
+          href: tutorial-migrate-hyper-v.md
+    - name: Migrowanie serwerów fizycznych i maszyn wirtualnych
+      href: tutorial-migrate-physical-virtual-machines.md
 - name: Pojęcia
   items:
-    - name: Informacje o module zbierającym
-      href: concepts-collector.md
-    - name: Uaktualnienia wersji modułu zbierającego
-      href: concepts-collector-upgrade.md
+    - name: Często zadawane pytania
+      href: resources-faq.md
+    - name: Tabele obsługi
+      items:
+        - name: Macierz obsługi dla usługi Azure Migrate
+          href: migrate-support-matrix.md
+        - name: Macierz obsługi dotycząca oceny i migracji środowiska VMware
+          href: migrate-support-matrix-vmware.md
+        - name: Macierz obsługi dotycząca oceny i migracji środowiska funkcji Hyper-V
+          href: migrate-support-matrix-hyper-v.md
+    - name: Architektura migracji funkcji Hyper-V
+      href: hyper-v-migration-architecture.md
+    - name: Architektura migracji z użyciem agentów
+      href: agent-based-migration-architecture.md
+    - name: Urządzenie usługi Azure Migrate
+      href: migrate-appliance.md
+    - name: Urządzenie replikacji w usłudze Azure Migrate
+      href: migrate-replication-appliance.md
+    - name: Najlepsze rozwiązania dotyczące ocen
+      href: best-practices-assessment.md
     - name: Obliczenia dotyczące oceny
       href: concepts-assessment-calculation.md
-    - name: Informacje o wizualizacjach zależności
+    - name: Wizualizacja zależności
       href: concepts-dependency-visualization.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Przykłady migracji — seria Contoso
       href: contoso-migration-overview.md
-    - name: Odnajdywanie i ocenianie w dużym środowisku
-      href: how-to-scale-assessment.md
-    - name: Grupowanie maszyn
-      href: how-to-create-a-group.md
-    - name: Grupowanie maszyn przy użyciu zależności maszyn
-      href: how-to-create-group-machine-dependencies.md
-    - name: Uściślanie zawartości grupy za pomocą zależności grupy
-      href: how-to-create-group-dependencies.md
+    - name: Wdrażanie urządzenia do oceny/migracji środowiska VMware (bez agentów)
+      href: how-to-set-up-appliance-vmware.md
+    - name: Wdrażanie urządzenia do oceny/migracji środowiska funkcji Hyper-V
+      href: how-to-set-up-appliance-hyper-v.md
+    - name: Dodawanie narzędzia oceny/migracji po raz pierwszy
+      href: how-to-add-tool-first-time.md
+    - name: Dodawanie narzędzi oceny
+      href: how-to-assess.md
+    - name: Dodawanie narzędzi migracji
+      href: how-to-migrate.md
+    - name: Grupowanie maszyn do oceny
+      items:
+        - name: Tworzenie grupy
+          href: how-to-create-a-group.md
+        - name: Grupowanie maszyn przy użyciu zależności maszyn
+          href: how-to-create-group-machine-dependencies.md
+        - name: Uściślanie zawartości grupy za pomocą zależności grupy
+          href: how-to-create-group-dependencies.md
     - name: Dostosowywanie oceny
       href: how-to-modify-assessment.md
-    - name: Migrowanie maszyn po ocenie
-      href: how-to-get-migration-tool.md
-    - name: Automatyzowanie migracji dużej liczby maszyn wirtualnych
-      href: how-to-migrate-at-scale.md
+    - name: Ocena i migracja skali
+      items:
+        - name: Ocena dużej liczby maszyn wirtualnych VMware
+          href: scale-vmware-assessment.md
+        - name: Ocena dużej liczby maszyn wirtualnych funkcji Hyper-V
+          href: scale-hyper-v-assessment.md
+        - name: Automatyzowanie migracji dużej liczby maszyn wirtualnych
+          href: how-to-migrate-at-scale.md
     - name: Rozwiązywanie problemów z usługą Azure Migrate
       href: troubleshooting-general.md
 - name: Zasoby
   items:
-    - name: Często zadawane pytania
-      href: resources-faq.md
     - name: Migracja w podręczniku Cloud Adoption Framework
       href: 'https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/index'
     - name: Interfejs API REST

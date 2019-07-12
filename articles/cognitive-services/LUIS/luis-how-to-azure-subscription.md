@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 07/10/2019
 ms.author: diberry
-ms.openlocfilehash: 7f82bf5a40df0554d4f98b2d835fcbd69279be43
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: dedc498ebc910b448b1684136c288b2045780e00
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204156"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797947"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>Używanie kluczy subskrypcji z aplikacją usługi LUIS
 
@@ -32,6 +32,8 @@ Testowanie i prototypu tylko przy użyciu warstwy bezpłatna (F0). W przypadku s
 
 Możesz utworzyć [zasobów endpoint prognoz](get-started-portal-deploy-app.md#create-the-endpoint-resource) w witrynie Azure portal. Ten zasób powinien być użyty tylko dla zapytania prediction punktu końcowego. Nie należy używać tego zasobu dla tworzenia zmian do aplikacji.
 
+Można utworzyć zasobu Language Understanding lub zasobu usług Cognitive Services. W przypadku tworzenia zasobu Language Understanding, dobrym rozwiązaniem jest postpend typ zasobu do nazwy zasobu. 
+
 <a name="programmatic-key" ></a>
 <a name="authoring-key" ></a>
 <a name="endpoint-key" ></a>
@@ -45,6 +47,15 @@ Możesz utworzyć [zasobów endpoint prognoz](get-started-portal-deploy-app.md#c
 <a name="assign-endpoint-key"></a>
 <a name="assign-resource"></a>
 
+### <a name="using-resource-from-luis-portal"></a>Za pomocą zasobów z portalu usługi LUIS
+
+Jeśli używasz zasobów z portalu usługi LUIS, nie trzeba wiedzieć klucz lokalizacji. Zamiast tego musisz znać swoje dzierżawcy zasobów, subskrypcji i nazwę zasobu.
+
+Po [przypisać](#assign-resource-key-to-luis-app-in-luis-portal) zasobu z aplikacją usługi LUIS w portalu usługi LUIS, klucza i lokalizacja są dostarczane jako część adresu URL punktu końcowego prognozowania zapytania w sekcji Zarządzanie **kluczy i punktu końcowego ustawienia** strony.
+ 
+### <a name="using-resource-from-rest-api-or-sdk"></a>Za pomocą zasobów z interfejsu API REST lub zestawu SDK
+
+Jeśli używasz zasobów z REST API(s) lub zestawu SDK, musisz wiedzieć Twojego klucza i lokalizacji. Te informacje są dostarczane jako część adresu URL punktu końcowego prognozowania zapytania w sekcji Zarządzanie **kluczy i punktu końcowego ustawienia** strony, jak i w witrynie Azure portal, na stronach przeglądu i klucze zasobu.
 
 ## <a name="assign-resource-key-to-luis-app-in-luis-portal"></a>Przypisz klucz zasobu do aplikacji usługi LUIS w portalu usługi LUIS
 

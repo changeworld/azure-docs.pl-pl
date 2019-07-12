@@ -4,18 +4,18 @@ description: Interfejsy API REST platformy Azure umożliwiają zbieranie metryk 
 services: virtual-machines
 author: rloutlaw
 ms.reviewer: routlaw
-manager: jeconnoc
+manager: gwallace
 ms.service: load-balancer
 ms.custom: REST
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: routlaw
-ms.openlocfilehash: 924154a64673b4ff646f3b6ece373b278ee37181
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 53e93d20f4a8c4877374d8242521ca97d481e15d
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773268"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667452"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>Pobierz metryki użycia maszyny wirtualnej przy użyciu interfejsu API REST
 
@@ -37,8 +37,8 @@ Wymagane są następujące nagłówki:
 
 |Nagłówek żądania|Opis|  
 |--------------------|-----------------|  
-|*Content-Type:*|Wymagany. Ustaw `application/json`.|  
-|*Authorization:*|Wymagany. Ustawić prawidłową `Bearer` [token dostępu](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
+|*Content-Type:*|Wymagane. Ustaw `application/json`.|  
+|*Authorization:*|Wymagana. Ustawić prawidłową `Bearer` [token dostępu](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
 
 ### <a name="uri-parameters"></a>Parametry identyfikatora URI
 

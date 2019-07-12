@@ -9,13 +9,13 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 06/20/2019
-ms.openlocfilehash: a5cbd2036f92c27709d92d0cf415cc9837645fb8
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.date: 07/11/2019
+ms.openlocfilehash: ddbe517510a3f7d1295c8970c13020baa3efacf0
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485602"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67840309"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-c-using-the-net-sdk"></a>Szybki start: Tworzenie indeksu usługi Azure Search w C# przy użyciu zestawu .NET SDK
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ Następujących usług, narzędzi i danych są używane w tym przewodniku Szybki
 
 + [Program Visual Studio](https://visualstudio.microsoft.com/downloads/), w każdej wersji. Przykładowy kod i instrukcje zostały przetestowane na bezpłatna wersja Community.
 
-+ Indeks przykładów i dokumenty są zawarte w tym artykule, również w [rozwiązania Visual Studio](https://github.com/Azure-Samples/azure-search-dotnet-samples/quickstart) dla tego przewodnika Szybki Start.
++ Indeks przykładów i dokumenty są zawarte w tym artykule, również w [rozwiązania Visual Studio](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart) dla tego przewodnika Szybki Start.
 
 + [Tworzenie usługi Azure Search](search-create-service-portal.md) lub [znaleźć istniejącej usługi](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach Twojej bieżącej subskrypcji. Umożliwia to bezpłatna usługa dla tego przewodnika Szybki Start.
 
@@ -195,11 +195,14 @@ Indeksu hotels składa się z pól proste i złożone, gdzie jest prostym polem,
     }
     ```
 
-    Atrybuty pola określają, jak jest używana w aplikacji. Na przykład `IsSearchable` atrybut jest przypisany do każdego pola, które powinny zostać uwzględnione w wyszukiwanie pełnotekstowe. W zestawie SDK platformy .NET wartość domyślna to wyłączyć zachowania pola, które nie są jawnie włączone.
+    Atrybuty pola określają, jak jest używana w aplikacji. Na przykład `IsSearchable` atrybutu muszą być przypisane do każdego pola, które powinny zostać uwzględnione w wyszukiwanie pełnotekstowe. 
+    
+    > [!NOTE]
+    > Zestaw .NET SDK pola musi jawnie określane jako [ `IsSearchable` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issearchable?view=azure-dotnet), [ `IsFilterable` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet), [ `IsSortable` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issortable?view=azure-dotnet), i [ `IsFacetable` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfacetable?view=azure-dotnet). To zachowanie w przeciwieństwie do interfejsu API REST, która umożliwia niejawnie uznanie autorstwa opiera się na typ danych (na przykład prostego ciągu pola są automatycznie wyszukiwanie).
 
     Dokładnie jedno pole w indeksie typu `string` musi być *klucz* pola, który unikatowo identyfikuje każdy dokument. W tym schemacie klucz jest `HotelId`.
 
-    W ten indeks pola Opis, użyj właściwości opcjonalne analizatora, określić, gdy chcesz zastąpić domyślny standardowy analizator Lucene. `description_fr` Pole używa analizator Lucene francuski ([FrLucene](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.frlucene?view=azure-dotnet)), ponieważ przechowuje tekstu w języku francuskim. `description` Używa opcjonalne analizatora języka firmy Microsoft ([EnMicrosoft](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft?view=azure-dotnet)).
+    W ten indeks pól opisu za pomocą opcjonalnego [ `analyzer` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.analyzer?view=azure-dotnet) właściwość, określić, kiedy chcesz zastąpić domyślny standardowy analizator Lucene. `description_fr` Pole używa analizator Lucene francuski ([FrLucene](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.frlucene?view=azure-dotnet)), ponieważ przechowuje tekstu w języku francuskim. `description` Używa opcjonalne analizatora języka firmy Microsoft ([EnMicrosoft](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft?view=azure-dotnet)).
 
 1. W pliku Program.cs, Utwórz wystąpienie obiektu [ `SearchServiceClient` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) klasy, aby nawiązać połączenie z usługą przy użyciu wartości, które są przechowywane w pliku konfiguracji aplikacji (pliku appsettings.json). 
 
@@ -550,13 +553,11 @@ W tej sekcji dodaje dwa elementy funkcjonalności: logiki zapytania i wyniki. Dl
 
 ## <a name="clean-up"></a>Czyszczenie
 
-Gdy ukończysz pracę z indeksem i zechcesz go usunąć, należy wywołać `Indexes.Delete` metody w swojej `SearchServiceClient`.
+Podczas pracy w ramach własnej subskrypcji jest dobrym pomysłem na końcu projektu ustalić, czy nadal potrzebujesz zasoby utworzone. Po lewej stronie umożliwia uruchamianie zasobów kosztów pieniądze. Możesz usunąć zasoby pojedynczo lub usunąć grupę zasobów, aby usunąć cały zestaw zasobów.
 
-```csharp
-serviceClient.Indexes.Delete("hotels");
-```
+Możesz znaleźć i zarządzanie zasobami w portalu przy użyciu **wszystkie zasoby** lub **grup zasobów** łącze w okienku nawigacji po lewej stronie.
 
-Jeśli jesteś także zakończyło się z usługą wyszukiwania, możesz usunąć zasoby z witryny Azure portal.
+Jeśli używasz bezpłatnej usługi, należy pamiętać, że są ograniczone do trzech indeksów, indeksatorów i źródeł danych. Możesz usunąć poszczególne elementy w portalu w celu pozostania w ramach limitu. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

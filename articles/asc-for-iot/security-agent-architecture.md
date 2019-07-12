@@ -2,24 +2,25 @@
 title: Omówienie usługi Azure Security Center dla architektury agenta zabezpieczeń IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: Informacje na temat architektury agenta zabezpieczeń dla agentów używanych w usłudze Azure Security Center dla usługi IoT.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: e78523ae-d70a-456a-818d-f8b1b025d7cb
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 3c05b7e9b1c6d1b9214da168f7abfcbb322f8f6d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f4ca9a2689ab9e09b4ebff903e757f5c352b556
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65192513"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616582"
 ---
 # <a name="security-agent-reference-architecture"></a>Architektura referencyjna agenta zabezpieczeń
 
@@ -56,7 +57,7 @@ ASC IoT oferuje różne Instalatora agentów dla 32-bitowe i 64-bitowej Windows 
 | 32-bitowe  | C  | C#  ||
 | 64-bitowy  | C#lub C           | C#      | Użyj agenta C w przypadku urządzeń z minimalnymi zasobami|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym artykule opisano ASC architektury agenta zabezpieczeń IoT i dostępne pliki instalacyjne.
 

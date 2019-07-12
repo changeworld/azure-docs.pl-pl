@@ -4,7 +4,7 @@ description: Dowiedz się więcej o obsłudze wersji zapoznawczej dla maszyn wir
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: amverma
-ms.openlocfilehash: bf143aa316a3d373a6303865cdc39ee0aaf27d87
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 62e4d3dbd7357f8c98df3307c1c8fe52cbed1c5e
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66809920"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707771"
 ---
 # <a name="hb-series-virtual-machines-overview"></a>Omówienie maszyn wirtualnych z serii HB
 
@@ -39,7 +39,7 @@ Na poniższym diagramie przedstawiono podział rdzeni zastrzeżonych dla funkcji
 
 ![Podział zarezerwowana dla funkcji Hypervisor Azure i maszyn wirtualnych serii HB rdzeni](./media/hb-series-overview/segregation-cores.png)
 
-## <a name="hardware-specifications"></a>Wymagania dotyczące sprzętu
+## <a name="hardware-specifications"></a>Specyfikacje sprzętowe
 
 | Specyfikacje sprzętu                | Maszyn wirtualnych serii HB                     |
 |----------------------------------|----------------------------------|
@@ -60,10 +60,10 @@ Na poniższym diagramie przedstawiono podział rdzeni zastrzeżonych dla funkcji
 | Dodatkowe struktury       | Ujednolicone X komunikacji, libfabric, PGAS |
 | Usługa Azure Storage — pomoc techniczna       | Standardowe i Premium (maks. 4 dyski) |
 | Obsługa systemu operacyjnego dla funkcji SR-IOV w funkcji RDMA   | CentOS/RHEL 7.6+, SLES 12 SP4+, WinServer 2016+  |
-| Pomoc techniczna platformy Azure CycleCloud    | Tak                         |
+| Pomoc techniczna platformy Azure CycleCloud    | Yes                         |
 | Obsługa usługi Azure Batch         | Tak                         |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się więcej na temat rozmiarów maszyny Wirtualnej HPC dla [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) i [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc) na platformie Azure.
 

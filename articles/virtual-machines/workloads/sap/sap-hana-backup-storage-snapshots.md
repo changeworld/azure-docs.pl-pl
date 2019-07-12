@@ -4,7 +4,7 @@ description: Istnieją dwie główne kopii zapasowej możliwości platformy SAP 
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 74f47344afff630a8633b340ea4ce21db28db7ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 875060a59cf70d295534c3a4f56136010a560e74
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60936605"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709933"
 ---
 # <a name="sap-hana-backup-based-on-storage-snapshots"></a>Kopie zapasowe oprogramowania SAP HANA na podstawie migawek magazynu
 
@@ -147,7 +147,7 @@ Go przywrócić tylko dysków danych maszyny wirtualnej portalu Azure, unikając
 
 Jeśli było to możliwe należy wyłączyć platformy SAP HANA przed migawek obiektów blob, procedura będzie mniej skomplikowany. W takim przypadku jeden można pominąć migawki HANA i, jeśli nic się dzieje w systemie, również pominąć blokowanie systemu plików. Zwiększania stopnia złożoności platformy trafia do obrazu, gdy jest to konieczne w celu migawki, gdy wszystko jest w trybie online. Zobacz _wyjaśnienie pojęcia spójności danych SAP HANA podczas robienia migawek magazynu_ w powiązanym artykule [przewodniku kopia zapasowa dla oprogramowania SAP HANA na maszynach wirtualnych Azure](sap-hana-backup-guide.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Przewodnik tworzenia kopii zapasowych dla oprogramowania SAP HANA na maszynach wirtualnych Azure](sap-hana-backup-guide.md) zawiera omówienie oraz informacje na temat rozpoczynania pracy.
 * [Kopia zapasowa oprogramowania SAP HANA na podstawie pliku poziomu](sap-hana-backup-file-level.md) obejmuje opcję tworzenia kopii zapasowych opartych na plikach.
 * Aby dowiedzieć się, jak zadbać o wysokiej dostępności i plan odzyskiwania po awarii oprogramowania SAP Hana na platformie Azure (duże wystąpienia), zobacz [platformy SAP HANA (duże wystąpienia) o wysokiej dostępności i odzyskiwania po awarii na platformie Azure](hana-overview-high-availability-disaster-recovery.md).

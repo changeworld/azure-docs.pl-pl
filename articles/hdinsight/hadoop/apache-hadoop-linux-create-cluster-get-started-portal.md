@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
-ms.date: 06/12/2019
+ms.date: 07/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: e178326c4a165a9bebbef6b0162cc79c1f9a0727
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: f92cb247afb25562a96373c28534549a2f16d8c9
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67459510"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67805588"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>Szybki start: Tworzenie klastra Apache Hadoop w usłudze Azure HDInsight przy użyciu witryny Azure portal
 
@@ -41,12 +41,12 @@ W tej sekcji utworzysz klaster usługi Hadoop w usłudze HDInsight przy użyciu 
     |Właściwość  |Opis  |
     |---------|---------|
     |Nazwa klastra   | Wprowadź nazwę klastra usługi Hadoop. Ponieważ wszystkie klastry w usłudze HDInsight używają tej samej przestrzeni nazw DNS, ta nazwa musi być unikatowa. Nazwa może składać się z maksymalnie 59 znaków, w tym litery, cyfry i łączniki. Łącznik nie może być pierwszym ani ostatnim znakiem nazwy. |
-    |Subskrypcja    |  Wybierz swoją subskrypcję platformy Azure. |
+    |Subscription    |  Wybierz swoją subskrypcję platformy Azure. |
     |Typ klastra     | Na razie pomiń tę właściwość. Podasz te dane wejściowe w następnym kroku tej procedury.|
     |Nazwa użytkownika logowania klastra i hasło    | Domyślna nazwa logowania to **admin**. Hasło musi składać się z co najmniej 10 znaków i musi zawierać co najmniej jedną cyfrę, jedną wielką i jedną małą literę oraz jeden znak inny niż alfanumeryczny (z wyjątkiem znaków ' " ` \). Upewnij się, że **nie zostało podane** typowe hasło, takie jak „Pass@word1”.|
     |Nazwa użytkownika protokołu SSH (Secure Shell) | Domyślna nazwa użytkownika to **sshuser**.  Możesz podać inną nazwę użytkownika protokołu SSH. |
     |Hasło logowania klastra na użytek SSH| Zaznacz to pole wyboru, aby używać tego samego hasła dla użytkownika protokołu SSH oraz użytkownika logowania do klastra.|
-    |Grupa zasobów     | Utwórz grupę zasobów lub wybierz istniejącą grupę zasobów.  Grupa zasobów jest kontenerem składników platformy Azure.  W tym przypadku grupa zasobów zawiera klaster usługi HDInsight i zależne konto usługi Azure Storage. |
+    |Resource group     | Utwórz grupę zasobów lub wybierz istniejącą grupę zasobów.  Grupa zasobów jest kontenerem składników platformy Azure.  W tym przypadku grupa zasobów zawiera klaster usługi HDInsight i zależne konto usługi Azure Storage. |
     |Location    | Wybierz lokalizację platformy Azure, w której chcesz utworzyć klaster.  Wybierz lokalizację znajdującą się blisko, aby zapewnić lepszą wydajność. |
 
     ![Wprowadzenie do usługi HDInsight w systemie Linux — podawanie podstawowych wartości klastra](./media/apache-hadoop-linux-create-cluster-get-started-portal/quick-create-basics.png "Podawanie podstawowych wartości w celu utworzenia klastra usługi HDInsight")
@@ -68,7 +68,7 @@ W tej sekcji utworzysz klaster usługi Hadoop w usłudze HDInsight przy użyciu 
     |---------|---------|
     |Podstawowy typ magazynu    | W tym artykule Wybieranie pozycji Azure storage do użycia usługi Azure Storage Blob jako domyślne konto magazynu. Możesz też użyć usługi Azure Data Lake Storage jako magazynu domyślnego. |
     |Metoda wyboru     |  Na potrzeby tego artykułu wybierz pozycję **Moje subskrypcje**, aby użyć konta magazynu ze swojej subskrypcji platformy Azure. Aby użyć konta magazynu z innych subskrypcji, wybierz pozycję **Klucz dostępu**, a następnie podaj klucz dostępu dla tego konta. |
-    |Wybierz konto magazynu   | Wybierz **wybierz konto magazynu** do wybierz istniejące konto magazynu lub **Utwórz nową**.|
+    |Wybierz konto magazynu   | Wybierz **wybierz konto magazynu** do wybierz istniejące konto magazynu lub **Utwórz nową**. Jeśli utworzysz nowe konto, nazwa musi należeć do zakresu od 3 do 24 znaków i może zawierać tylko cyfry i małe litery.|
 
     Zaakceptuj pozostałe wartości domyślne, a następnie wybierz pozycję **dalej** aby przejść do strony podsumowania.
 
@@ -146,7 +146,7 @@ Po ukończeniu tego przewodnika Szybki Start możesz usunąć klaster. Dzięki u
 
 3. Wybierz pozycję **Usuń grupę zasobów**, aby usunąć grupę zasobów zawierającą klaster i domyślne konto magazynu. Uwaga: usunięcie grupy zasobów powoduje usunięcie konta magazynu. Jeśli chcesz zachować konta magazynu, wybierz opcję usunięcia tylko klastra.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki Start przedstawiono sposób tworzenia klastra HDInsight opartych na systemie Linux przy użyciu szablonu usługi Resource Manager oraz wykonywać podstawowe zapytania Hive. W następnym artykule dowiesz się, jak przeprowadzić operację wyodrębniania, transformacji i ładowania (ETL, extract, transform, and load) przy użyciu usługi Hadoop w usłudze HDInsight.
 

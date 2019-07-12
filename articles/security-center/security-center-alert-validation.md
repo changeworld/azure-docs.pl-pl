@@ -1,5 +1,5 @@
 ---
-title: Walidacja alertów w usłudze Azure Security Center | Microsoft Docs
+title: Alert sprawdzania poprawności (plik testu EICAR) w usłudze Azure Security Center | Dokumentacja firmy Microsoft
 description: Ten dokument zawiera informacje pomocne podczas walidowania alertów zabezpieczeń w usłudze Azure Security Center.
 services: security-center
 documentationcenter: na
@@ -12,38 +12,56 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2018
+ms.date: 7/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 009f5fe7243b8ce597c2be9f9c6874cdb56d103c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f65b4b74a1a91fa081bd9c0d8146d055cebb0de6
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60706063"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626299"
 ---
-# <a name="alerts-validation-in-azure-security-center"></a>Walidacja alertów w usłudze Azure Security Center
+# <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Walidacja alertu (plik testu EICAR) w usłudze Azure Security Center
 Ten dokument zawiera informacje dotyczące sposobu weryfikacji systemu pod kątem prawidłowej konfiguracji alertów usługi Azure Security Center.
 
 ## <a name="what-are-security-alerts"></a>Czym są alerty zabezpieczeń?
-Usługa Security Center automatycznie gromadzi, analizuje i integruje dane dzienników z zasobów platformy Azure, sieci oraz połączonych rozwiązań partnerskich (takich jak zapora i rozwiązania ochrony punktów końcowych), aby wykrywać zagrożenia i powiadamiać Cię o nich za pomocą alertów. Przeczytaj artykuł [Zarządzanie alertami zabezpieczeń i reagowanie na nie w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts), aby uzyskać więcej informacji na temat alertów zabezpieczeń, i artykuł [Informacje o alertach zabezpieczeń w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type), aby dowiedzieć się więcej o różnych typach alertów.
+Alerty to powiadomienia, generowane przez Centrum zabezpieczeń po wykryciu zagrożenia na zasoby. Jego priorytet i wyświetla alerty wraz z informacjami, służące do szybkiego analizowania problemu. Usługa Security Center zawiera także zalecenia dotyczące można sposobu wyeliminowania skutków ataku.
+Aby uzyskać więcej informacji, zobacz [alertów zabezpieczeń w usłudze Azure Security Center](security-center-alerts-overview.md) i [reagowanie na alerty zabezpieczeń w Centrum zabezpieczeń Azure i zarządzanie nimi](security-center-managing-and-responding-alerts.md)
 
 ## <a name="alert-validation"></a>Walidacja alertu
-Po zainstalowaniu agenta usługi Security Center wykonaj poniższe kroki na komputerze, na którym ma znajdować się atakowany zasób dotyczący alertu:
 
-1. Skopiuj plik wykonywalny (na przykład calc.exe) na pulpit komputera lub do wybranego katalogu.
-2. Zmień nazwę tego pliku na **ASC_AlertTest_662jfi039N.exe**.
-3. Otwórz wiersz polecenia, a następnie wykonaj ten plik przy użyciu argumentu (po prostu fałszywych argument nazwy), takich jak: *ASC_AlertTest_662jfi039N.exe -foo*
-4. Zaczekaj od 5 do 10 minut, a następnie otwórz alerty usługi Security Center. Powinien znajdować się tam alert podobny do następującego:
+* [Windows](#validate-windows)
+* [Linux](#validate-linux)
 
-    ![Walidacja alertu](./media/security-center-alert-validation/security-center-alert-validation-fig2.png)
+## Sprawdź poprawność alertu na maszynie Wirtualnej Windows <a name="validate-windows"></a>
 
-Podczas przeglądania tego alertu upewnij się, że pole Inspekcja argumentów włączona ma wartość true. Jeśli wartość to false, musisz włączyć inspekcję argumentów wiersza polecenia. Tę opcję możesz włączyć za pomocą następującego polecenia:
+Po usługi Security Center agent jest zainstalowany na komputerze wykonaj następujące kroki na komputerze, w którym mają być się atakowany zasób dotyczący alertu:
 
-*reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"*
-
+1. Skopiuj plik wykonywalny (na przykład **calc.exe**) na pulpit komputera lub inny katalog wygody i zmień jego jako **ASC_AlertTest_662jfi039N.exe**.
+1. Otwórz wiersz polecenia, a następnie wykonaj ten plik przy użyciu argumentu (po prostu fałszywych argument nazwy), takich jak: ```ASC_AlertTest_662jfi039N.exe -foo```
+1. Zaczekaj od 5 do 10 minut, a następnie otwórz alerty usługi Security Center. Alert jest podobny do [przykład](#alert-validate) poniżej powinien być wyświetlany:
 
 > [!NOTE]
-> Aby wyświetlić pokaz działania tej funkcji, zobacz [Alert Validation in Azure Security Center (Walidacja alertu w usłudze Azure Security Center)](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Alert-Validation-in-Azure-Security-Center).
+> Podczas przeglądania tego alertu testu dla Windows, upewnij się, pole **inspekcja argumentów włączona** jest **true**. Jeśli jest **false**, a następnie należy włączyć inspekcję argumentów wiersza polecenia. Aby ją włączyć, należy użyć następującego polecenia:
+>
+>```reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"```
+
+## Sprawdź poprawność alert dla maszyny Wirtualnej systemu Linux <a name="validate-linux"></a>
+
+Po usługi Security Center agent jest zainstalowany na komputerze wykonaj następujące kroki na komputerze, w którym mają być się atakowany zasób dotyczący alertu:
+1. Skopiuj plik wykonywalny w dogodnym miejscu i zmień jej nazwę na **. / asc_alerttest_662jfi039n**, na przykład:
+
+    ```cp /bin/echo ./asc_alerttest_662jfi039n```
+
+1. Otwórz wiersz polecenia, a następnie wykonaj ten plik:
+
+    ```./asc_alerttest_662jfi039n testing eicar pipe```
+
+1. Zaczekaj od 5 do 10 minut, a następnie otwórz alerty usługi Security Center. Alert jest podobny do [przykład](#alert-validate) poniżej powinien być wyświetlany:
+
+### Przykład alertu <a name="alert-validate"></a>
+
+![Przykład Walidacja alertu](./media/security-center-alert-validation/security-center-alert-validation-fig2.png) 
 
 ## <a name="see-also"></a>Zobacz także
 Ten artykuł zawiera wprowadzenie do procesu walidacji alertów. Teraz, kiedy znasz już usługę Security Center, zapoznaj się z następującymi artykułami:

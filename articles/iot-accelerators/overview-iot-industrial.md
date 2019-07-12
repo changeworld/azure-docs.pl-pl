@@ -5,15 +5,15 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: overview
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: bda40470e3ccf3a5d7b23dca38b21090e864b16a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3c3a54d469d3dcbe04c11aa049906b551d68022f
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60888483"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606199"
 ---
 # <a name="what-is-industrial-iot-iiot"></a>Co to jest przemysłowego Internetu rzeczy (IIoT)
 
@@ -45,7 +45,7 @@ Bliźniacza reprezentacja OPC jest składnikiem IIoT automatyzuje odnajdywanie u
 
 OPC Vault jest implementacją z serwera OPC UA globalnego odnajdywania serwera (GDS), konfigurować, rejestrowanie i zarządzanie cyklem życia certyfikatu w przypadku serwera OPC UA i aplikacje klienckie w chmurze. OPC Vault upraszcza wdrażanie i konserwowanie zasobów bezpiecznej łączności w przemysłowe miejsca. Dzięki automatyzacji zarządzania certyfikatami, magazynie OPC zwalnia operatory fabryki z ręcznie, jak i złożone procesy związane z łącznością i zarządzanie certyfikatami.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Teraz, gdy użytkownik miał wprowadzenie do przemysłowego Internetu rzeczy i jego składników, poniżej przedstawiono sugerowany następny krok:
 

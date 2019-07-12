@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/03/2018
+ms.date: 07/10/2018
 ms.author: juliako
-ms.openlocfilehash: fd5bf9f7bca9c667191d0d3f83be6e29a96c8dbe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c599bc2bba27a3b3603d8d67e2c6049dc2a8b08b
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64926527"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67840153"
 ---
 # <a name="azure-media-player-overview"></a>Omówienie usługi Azure Media Player
 
@@ -30,7 +30,7 @@ Microsoft Azure Media Services umożliwia zawartości do być udostępniany przy
 
 ### <a name="start-using"></a>Rozpoczynanie korzystania z
 
-Możesz użyć [strony pokaz usługi Azure Media Player](https://aka.ms/amp) grać przykładów usługi Azure Media Services lub własnego strumienia.  
+Możesz użyć [strony pokaz usługi Azure Media Player](http://aka.ms/azuremediaplayer) grać przykładów usługi Azure Media Services lub własnego strumienia.  
 
 Aby odtworzyć nowy film wideo, Wklej innego adresu URL i naciśnij **aktualizacji**.
 
@@ -40,7 +40,7 @@ Aby skonfigurować różne opcje odtwarzania (na przykład technologii, języka 
 
 ### <a name="monitor-diagnostics-of-a-video-stream"></a>Monitorowanie diagnostyki strumienia wideo
 
-Możesz użyć [strony pokaz usługi Azure Media Player](https://aka.ms/amp) monitorować diagnostykę strumienia wideo. 
+Możesz użyć [strony pokaz usługi Azure Media Player](http://aka.ms/azuremediaplayer) monitorować diagnostykę strumienia wideo. 
 
 ![Diagnostyka Azure Media Player](./media/azure-media-player/diagnostics.png)
 
@@ -48,7 +48,7 @@ Możesz użyć [strony pokaz usługi Azure Media Player](https://aka.ms/amp) mon
 
 Usługa Azure Media Player jest łatwe do skonfigurowania. Rejestracja trwa tylko kilka minut, aby uzyskać podstawowe odtwarzanie zawartości multimedialnej z konta usługi Media Services. Zobacz [dokumentacji usługi Azure Media Player](https://aka.ms/ampdocs) Aby uzyskać szczegółowe informacje na temat sposobu instalowania i konfigurowania usługi Azure Media Player. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Dokumentacja usługi Azure Media Player](https://aka.ms/ampdocs)
 - [Przykłady usługi Azure Media Player](https://aka.ms/ampsamples)

@@ -2,18 +2,18 @@
 title: Często zadawane pytania dotyczące usługi Azure Kubernetes Service (AKS)
 description: Znajdź odpowiedzi na niektóre często zadawane pytania dotyczące usługi Azure Kubernetes Service (AKS).
 services: container-service
-author: iainfoulds
+author: mlearned
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/03/2019
-ms.author: iainfou
-ms.openlocfilehash: d4fa365e1ed055fa8ddeb8fd475e152af84a3b71
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.date: 07/08/2019
+ms.author: mlearned
+ms.openlocfilehash: 495f182ed450d0fac69b31ea2996bacc60863fea
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560451"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672779"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Często zadawane pytania dotyczące usługi Azure Kubernetes Service (AKS)
 
@@ -62,30 +62,28 @@ W przypadku węzłów systemu Windows Server (obecnie dostępna w wersji zapozna
 Każde wdrożenie usługi AKS obejmuje dwie grupy zasobów:
 
 1. Utworzysz pierwszej grupy zasobów. Ta grupa zawiera zasób usługi Kubernetes. Dostawca zasobów usługi AKS automatycznie tworzy drugi grupy zasobów podczas wdrażania. Na przykład drugiej grupy zasobów *MC_myResourceGroup_myAKSCluster_eastus*. Aby uzyskać informacje dotyczące sposobu określania nazwy tej drugiej grupy zasobów, zobacz następną sekcję.
-1. Grupa zasobów drugi, takich jak *MC_myResourceGroup_myAKSCluster_eastus*, zawiera wszystkie zasoby infrastruktury skojarzonego z klastrem. Te zasoby obejmują maszyny wirtualne z węzła usługi Kubernetes, sieci wirtualnych i magazynu. Ta grupa zasobów ma na celu uproszczenie czyszczenie zasobów.
+1. Druga grupa zasobów, znane jako *grup zasobów dla węzłów*, zawiera wszystkie zasoby infrastruktury skojarzonego z klastrem. Te zasoby obejmują maszyny wirtualne z węzła usługi Kubernetes, sieci wirtualnych i magazynu. Domyślnie węzeł grupy zasobów ma nazwę, takich jak *MC_myResourceGroup_myAKSCluster_eastus*. AKS automatycznie usuwa zasób węzłów zawsze wtedy, gdy klaster jest usuwany, dzięki czemu można stosować tylko za zasoby, które mają cyklu życia klastra.
 
-Jeśli tworzysz zasoby do korzystania z klastra usługi AKS, takich jak konta magazynu lub zastrzeżone publiczne adresy IP, należy je umieścić w grupie zasobów automatycznie generowanych.
+## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>Czy mogę przekazać własną nazwę grupy zasobów węzłów AKS
 
-## <a name="can-i-provide-my-own-name-for-the-aks-infrastructure-resource-group"></a>Czy mogę przekazać własną nazwę grupy zasobów infrastruktury usługi AKS
-
-Tak. Domyślnie dostawca zasobów usługi AKS automatycznie tworzy grupę zasobów pomocniczych (takich jak *MC_myResourceGroup_myAKSCluster_eastus*) podczas wdrażania. Aby zapewnić zgodność z zasadami firmowymi, zapewniają swoją własną nazwę dla tego klastra zarządzanego (*MC_* ) grupy zasobów.
+Tak. Domyślnie AKS zostanie nazwę grupy zasobów węzła *MC_clustername_resourcegroupname_location*, ale możesz też podać własną nazwę.
 
 Aby określić własne nazwy grupy zasobów, należy zainstalować [podglądu usługi aks][aks-preview-cli] wiersza polecenia platformy Azure w wersji rozszerzenia *wersji 0.3.2* lub nowszej. Podczas tworzenia klastra usługi AKS przy użyciu [tworzenie az aks][az-aks-create] poleceń, użyj *— węzeł resource-group* parametru i określ nazwę grupy zasobów. Jeśli użytkownik [używania szablonu usługi Azure Resource Manager][aks-rm-template] wdrożyć klaster usługi AKS, można zdefiniować nazwę grupy zasobów za pomocą *nodeResourceGroup* właściwości.
 
 * Grupa zasobów dodatkowych jest automatycznie tworzona przez dostawcę zasobów platformy Azure w ramach własnej subskrypcji.
 * Można określić nazwę grupy zasobów niestandardowych, tylko wtedy, gdy tworzysz klaster.
 
-Podczas pracy nad *MC_* grupy zasobów, należy pamiętać, że nie możesz:
+Podczas pracy z grupą zasobów węzła pamiętać, że nie możesz:
 
-* Określ istniejącą grupę zasobów dla *MC_* grupy.
-* Określ inną subskrypcję dla *MC_* grupy zasobów.
-* Zmiana *MC_* nazwy grupy zasobów po utworzeniu klastra.
-* Określanie nazw zarządzanych zasobów w ramach *MC_* grupy zasobów.
-* Modyfikowanie lub usuwanie tagów zasobów zarządzanych w ramach *MC_* grupy zasobów. (Zobacz dodatkowe informacje w następnej sekcji).
+* Określ istniejącą grupę zasobów dla węzłów grupy zasobów.
+* Określ inną subskrypcję w węźle grupy zasobów.
+* Po utworzeniu klastra, należy zmienić nazwę grupy zasobów węzła.
+* Określ nazwy zarządzanych zasobów w grupie zasobów węzła.
+* Modyfikować ani usuwać znaczników zarządzane zasoby w grupie zasobów węzła. (Zobacz dodatkowe informacje w następnej sekcji).
 
-## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group"></a>Można zmodyfikować tagów i innych właściwości zasobów usługi AKS w grupie zasobów MC_?
+## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>Można zmodyfikować tagów i innych właściwości zasobów usługi AKS w węźle grupy zasobów?
 
-Jeśli zmodyfikujesz lub usuniesz, tagi utworzone przez platformę Azure i inne właściwości zasobu w *MC_* grupy zasobów mogą wystąpić nieoczekiwane wyniki, takie jak skalowanie i uaktualnianie błędy. AKS umożliwia tworzenie i modyfikowanie tagów niestandardowych. Możesz chcieć, aby utworzyć lub zmodyfikować znaczniki niestandardowe, na przykład przypisać centrum kosztu lub jednostki biznesowej. Modyfikując zasobów w ramach *MC_* w klastrze AKS możesz przerwać cel poziomu usług (SLO). Aby uzyskać więcej informacji, zobacz [AKS jest oferty z umową dotyczącą poziomu usług?](#does-aks-offer-a-service-level-agreement)
+Jeśli zmodyfikujesz lub usuniesz tagi utworzone przez platformę Azure i innych właściwości zasobów, w węźle grupy zasobów, można uzyskać nieoczekiwane wyniki, takie jak skalowanie i uaktualnianie błędy. AKS umożliwia tworzenie i modyfikowanie tagów niestandardowych. Możesz chcieć, aby utworzyć lub zmodyfikować znaczniki niestandardowe, na przykład przypisać centrum kosztu lub jednostki biznesowej. Po zmodyfikowaniu zasoby w grupie zasobów węzła w klastrze AKS, możesz przerwać cel poziomu usług (SLO). Aby uzyskać więcej informacji, zobacz [AKS jest oferty z umową dotyczącą poziomu usług?](#does-aks-offer-a-service-level-agreement)
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>Jakie kontrolery dopuszczenie Kubernetes obsługuje AKS? Można kontrolerów dopuszczenie dodane lub usunięte?
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: ee34c91787ede0431c71b0fd96d2c040717dbca2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 58db6f9903c4dc02c2d76f3784b004972621a000
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60487422"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836497"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Potoki i działania w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
@@ -35,7 +35,7 @@ Ten artykuł ułatwia zapoznanie się z potokami i działaniami w usłudze Azure
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Fabryka danych może obejmować jeden lub wiele potoków. Potoki to logiczne grupy działań, które wspólnie wykonują zadanie. Działania w potoku definiują akcje do wykonania na danych. Możesz na przykład użyć działania kopiowania w celu skopiowania danych z lokalnego programu SQL Server do usługi Azure Blob Storage. Następnie użyj działania usługi Hive, które uruchamia skrypt Hive w klastrze usługi Apache HDInsight w celu przetworzenia/przekształcenia danych z magazynu obiektów blob, aby utworzyć dane wyjściowe. Na koniec użyj drugiego działania kopiowania w celu skopiowania danych wyjściowych do usługi Microsoft Azure SQL Data Warehouse, na podstawie której tworzone są rozwiązania raportowania analizy biznesowej (BI).
 
 Dane działanie może — ale nie musi — korzystać z wejściowych [zestawów danych](data-factory-create-datasets.md) i generować co najmniej jeden wyjściowy [zestaw danych](data-factory-create-datasets.md). Na poniższym diagramie przedstawiono relację między potokiem, działaniem i zestawem danych w usłudze Data Factory:
@@ -97,7 +97,7 @@ Przyjrzyjmy się bliżej definicji potoku w formacie JSON. Ogólna struktura pot
 | Tag | Opis | Wymagane |
 | --- | --- | --- |
 | name |Nazwa potoku. Określ nazwę, która reprezentuje akcję wykonywaną przez potok. <br/><ul><li>Maksymalna liczba znaków: 260</li><li>Musi zaczynać się literą, cyfrą lub znakiem podkreślenia (\_)</li><li>Nie może zawierać następujących znaków: ".", "+","?", "/", "<",">", "\*", "%", "&", ":","\\"</li></ul> |Yes |
-| description | Wprowadź tekst opisujący przeznaczenie potoku. |Yes |
+| description | Wprowadź tekst opisujący przeznaczenie potoku. |Tak |
 | activities | W sekcji **activities** można zdefiniować jedno lub więcej działań. Zobacz następną sekcję, aby uzyskać szczegółowe informacje na temat elementu JSON activities. | Yes |
 | start | Data i godzina rozpoczęcia dla potoku. Musi znajdować się w [ISO format](https://en.wikipedia.org/wiki/ISO_8601). Na przykład: `2016-10-14T16:32:41Z`. <br/><br/>Istnieje możliwość określenia czasu lokalnego, na przykład czasu EST. Oto przykład: `2016-02-27T06:00:00-05:00`", który jest szacowany AM 6<br/><br/>Właściwości początkowe i końcowe razem określają aktywny okres potoku. Wycinki danych wyjściowych tylko są tworzone za pomocą w tym okresie active. |Nie<br/><br/>Jeśli określisz wartości dla właściwości end, należy określić wartość dla właściwości rozpoczęcia.<br/><br/>Czas rozpoczęcia i zakończenia zarówno można pozostawić puste, aby utworzyć potok. Należy określić zarówno wartości można ustawić okresu aktywności potoku do uruchomienia. Jeśli nie określono godziny rozpoczęcia i zakończenia podczas tworzenia potoku, można ustawić je później przy użyciu polecenia cmdlet Set-AzDataFactoryPipelineActivePeriod. |
 | end | Data / Godzina zakończenia dla potoku. Jeśli zostanie określony, musi być w formacie ISO. Na przykład: `2016-10-14T17:32:41Z` <br/><br/>Istnieje możliwość określenia czasu lokalnego, na przykład czasu EST. Oto przykład: `2016-02-27T06:00:00-05:00`, które jest szacowane AM 6<br/><br/>Aby uruchomić potok bezterminowo, określ 9999-09-09 jako wartość właściwości end. <br/><br/> Potok jest aktywny tylko między jego czas rozpoczęcia i zakończenia. Nie jest wykonywany przed godziną rozpoczęcia lub po godzinie zakończenia. Jeśli potok jest wstrzymana, nie są wykonywane niezależnie od czasu rozpoczęcia i zakończenia. Dla potoku do uruchamiania go powinna nie można wstrzymać. Zobacz [planowanie i wykonywanie](data-factory-scheduling-and-execution.md) zrozumienie sposobu planowania i wykonywania działania usługi Azure Data Factory. |Nie <br/><br/>Jeśli określisz wartości dla właściwości uruchamiania, należy określić wartość dla właściwości end.<br/><br/>Zobacz informacje o **start** właściwości. |
@@ -136,9 +136,9 @@ Poniższa tabela zawiera opis właściwości w definicji JSON działania:
 | --- | --- | --- |
 | name | Nazwa działania. Określ nazwę, która reprezentuje akcję wykonywaną przez działanie. <br/><ul><li>Maksymalna liczba znaków: 260</li><li>Musi zaczynać się literą, cyfrą lub znakiem podkreślenia (\_)</li><li>Nie może zawierać następujących znaków: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Yes |
 | description | Tekst opisujący przeznaczenie działania |Yes |
-| type | Typ działania. Zobacz [działania przenoszenia danych](#data-movement-activities) i [działania przekształcania danych](#data-transformation-activities) sekcje dla różnych typów działań. |Yes |
+| — typ | Typ działania. Zobacz [działania przenoszenia danych](#data-movement-activities) i [działania przekształcania danych](#data-transformation-activities) sekcje dla różnych typów działań. |Yes |
 | inputs |Tabele wejściowe używane przez działanie<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Yes |
-| outputs |Dane wyjściowe tabele używane przez działanie.<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": "outputtable1" } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": "outputtable1" }, { "name": "outputtable2" }  ],` |Yes |
+| outputs |Dane wyjściowe tabele używane przez działanie.<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": "outputtable1" } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": "outputtable1" }, { "name": "outputtable2" }  ],` |Tak |
 | linkedServiceName |Nazwa połączonej usługi używana na potrzeby działania. <br/><br/>Działanie może wymagać określenia połączonej usługi, która stanowi łącze do wymaganego środowiska obliczeniowego. |Tak dla działań HDInsight i Azure Machine Learning działanie wsadowego oceniania przez <br/><br/>Nie dla wszystkich innych |
 | typeProperties |Właściwości w **typeProperties** sekcji zależą od typu działania. Aby wyświetlić właściwości typu dla działania, kliknij linki do działań w poprzedniej sekcji. | Nie |
 | policy |Zasady, które mają wpływ na zachowanie działania w czasie wykonania. Jeśli nie jest określona, używane są domyślne zasady. |Nie |
@@ -147,7 +147,7 @@ Poniższa tabela zawiera opis właściwości w definicji JSON działania:
 ### <a name="policies"></a>Zasady
 Zasady wpływają na zachowania w czasie wykonywania działania, w szczególności, po przetworzeniu wycinka tabeli. Poniższa tabela zawiera szczegółowe informacje.
 
-| Właściwość | Dozwolone wartości | Wartość domyślna | Opis |
+| Właściwość | Dozwolone wartości | Default Value | Opis |
 | --- | --- | --- | --- |
 | concurrency |Liczba całkowita <br/><br/>Wartość maksymalna: 10 |1 |Liczba współbieżnych wykonań działania.<br/><br/>Określa liczbę wykonań działania równoległego, które mogą być uruchomione na różnych wycinki. Na przykład jeśli działanie musi przechodzić przez duży zestaw dostępnych danych, o wartości większej współbieżności przyspiesza przetwarzanie danych. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Określa kolejność wycinki danych, które są przetwarzane.<br/><br/>Na przykład jeśli masz 2 dzieli (jeden występuje o 16: 00 i inną o 17: 00), a oba są oczekiwanie na wykonanie. Jeśli ustawisz executionPriorityOrder jako NewestFirst, jest przetwarzana najpierw wycinek o 17: 00. Podobnie jeśli ustawisz executionPriorityORder jako OldestFIrst, następnie wycinka u 16: 00 jest przetwarzany. |
@@ -290,8 +290,7 @@ Aby uzyskać więcej informacji, zobacz [planowania i wykonywania](data-factory-
 ## <a name="create-and-monitor-pipelines"></a>Tworzenie i monitorowanie potoków
 Można tworzyć potoki przy użyciu jednej z następujących narzędzi lub zestawów SDK.
 
-- Kreator kopiowania.
-- Azure Portal
+- Kreator kopiowania
 - Visual Studio
 - Azure PowerShell
 - Szablon usługi Azure Resource Manager
@@ -347,7 +346,7 @@ Można tworzyć i zaplanować okresowe uruchamianie potoku (na przykład: co god
 }
 ```
 
-Pamiętaj o następujących kwestiach:
+Należy pamiętać o następujących kwestiach:
 
 * **Rozpocznij** i **zakończenia** nieokreślonych godziny dla potoku.
 * **Dostępność** z danych wejściowych i wyjściowych zestawów danych jest określony (**częstotliwość** i **interwał**), nawet jeśli fabryka danych używa wartości.

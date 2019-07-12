@@ -4,7 +4,7 @@ description: Planowanie migracji zasobów IaaS z wersji klasycznej do usługi Az
 services: virtual-machines-windows
 documentationcenter: ''
 author: singhkays
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 78492a2c-2694-4023-a7b8-c97d3708dcb7
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: d3e1995682569e5ef7b356bd85ad6c7dba6cdbdb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5e2790515e172ec14e2180f9dfcac6c97b2e135a
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64689495"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723176"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Planowanie migracji zasobów IaaS z wersji klasycznej do usługi Azure Resource Manager
 Gdy usługi Azure Resource Manager oferuje wiele wspaniałych nowych funkcji, ważne jest zaplanowanie podróż migracyjną Postaramy się bezproblemowym przejściu. Poświęcania czasu na temat planowania będą upewnij się, czy nie występują problemy podczas wykonywania działania migracji.

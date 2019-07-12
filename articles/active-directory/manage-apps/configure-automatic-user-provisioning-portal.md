@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bf265f51f2fea16f90dd0bcf2891bd9bed5cef8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b994078350aec5657659f8835d228eb907606bb8
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963575"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807637"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Zarządzanie kontami użytkowników, inicjowanie obsługi administracyjnej dla aplikacji dla przedsiębiorstw w witrynie Azure portal
 
@@ -31,14 +31,11 @@ W tym artykule opisano sposób używania [witryny Azure portal](https://portal.a
 Użyj portalu usługi Azure Active Directory do przeglądania i zarządzania wszystkich aplikacji, które są skonfigurowane do logowania jednokrotnego w katalogu. Aplikacje dla przedsiębiorstw to aplikacje, które są wdrażane i używane w organizacji. Wykonaj następujące kroki, aby wyświetlić aplikacje i zarządzaj nimi przedsiębiorstwa:
 
 1. Otwórz [portalu Azure Active Directory](https://aad.portal.azure.com).
-
 1. Wybierz **aplikacje dla przedsiębiorstw** z okienka po lewej stronie. Jest wyświetlana lista wszystkich skonfigurowanych aplikacji, w tym aplikacje, które zostały dodane z galerii.
-
 1. Wybierz dowolną aplikację, aby załadować jej okienko zasobów, gdzie można wyświetlać raporty i Zarządzaj ustawieniami aplikacji.
-
 1. Wybierz **aprowizacji** Zarządzanie kontem użytkownika inicjowania obsługi ustawienia dla wybranej aplikacji.
 
-   ![Okienko zasobów aplikacji](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
+   ![Inicjowanie obsługi administracyjnej ekranu, aby zarządzać kontem użytkownika, ustawienia aprowizacji](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
 
 ## <a name="provisioning-modes"></a>Tryby udostępniania
 
@@ -68,17 +65,17 @@ Rozwiń **mapowania** możesz wyświetlać i edytować atrybuty użytkownika, kt
 
 Istnieje zestaw wstępnie skonfigurowanego mapowania między obiektami użytkownika usługi Azure AD i obiektów użytkowników każdej aplikacji SaaS. Niektóre aplikacje, zarządzać innych typów obiektów, takich jak grup ani kontaktów. Wybierz mapowanie w tabeli, aby otworzyć Edytor mapowania do prawej, w którym można wyświetlać i odpowiednio je Dostosuj.
 
-![Okienko zasobów aplikacji](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
+![Pokazuje ekran mapowania atrybutów](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
 
 Obsługiwane dostosowania obejmują:
 
 * Włączanie i wyłączanie mapowania dla określonych obiektów, takich jak obiekt użytkownika usługi Azure AD do obiektu użytkownika dla aplikacji SaaS.
 * Edycja atrybutów, które będą działać z obiektu użytkownika w usłudze Azure AD do obiektu użytkownika w aplikacji. Aby uzyskać więcej informacji na temat Mapowanie atrybutów, zobacz [opis atrybutu mapowania typów](customize-application-attributes.md#understanding-attribute-mapping-types).
-* Filtrowanie akcji aprowizacji, które usługi Azure AD, który jest uruchamiany w aplikacji docelowej. Zamiast pełnej synchronizacji obiektów z usługi Azure AD, można ograniczyć uruchamianie akcji. 
+* Filtrowanie akcji aprowizacji, które usługi Azure AD, który jest uruchamiany w aplikacji docelowej. Zamiast pełnej synchronizacji obiektów z usługi Azure AD, można ograniczyć uruchamianie akcji.
 
   Na przykład wybrać tylko **aktualizacji** i usługi Azure AD tylko aktualizacje istniejącego użytkownika konta w aplikacji, ale nie tworzy nowe. Wybierz tylko **Utwórz** i platformy Azure tylko powoduje utworzenie nowych kont użytkowników, ale nie aktualizuje już istniejące. Ta funkcja umożliwia administratorom tworzenie różnych mapowań dla tworzenia kont i aktualizowanie przepływów pracy.
 
-* Dodano nowe mapowanie atrybutu. Wybierz **Dodaj nowe mapowanie** w dolnej części **mapowanie atrybutu** okienka. Wypełnij **Edytuj atrybut** formularza, a następnie wybierz pozycję **Ok** można dodać nowe mapowanie do listy. 
+* Dodano nowe mapowanie atrybutu. Wybierz **Dodaj nowe mapowanie** w dolnej części **mapowanie atrybutu** okienka. Wypełnij **Edytuj atrybut** formularza, a następnie wybierz pozycję **Ok** można dodać nowe mapowanie do listy.
 
 ### <a name="settings"></a>Ustawienia
 

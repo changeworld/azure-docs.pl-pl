@@ -7,13 +7,13 @@ manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 4/3/2019
-ms.author: geetha
-ms.openlocfilehash: 893a22fb9f325625707869c8f6571d572b8f6b33
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: geg
+ms.openlocfilehash: 24ae6ddae30110f6d125158d6f2744bf4eae5006
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61217046"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704992"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Tworzenie kopii zapasowej i przywracanie zaszyfrowanych maszyn wirtualnych platformy Azure
 
@@ -32,8 +32,8 @@ Usługa Azure Backup można kopii zapasowej i przywracania maszyn wirtualnych pl
 
 **Typ dysku maszyny wirtualnej** | **ADE (klucz szyfrowania bloków dm-crypt)** | **ADE i KEK**
 --- | --- | ---
-**niezarządzane** | Yes | Yes
-**Zarządzane**  | Tak | Yes
+**niezarządzane** | Tak | Tak
+**Zarządzane**  | Yes | Tak
 
 - Dowiedz się więcej o [ADE](../security/azure-security-disk-encryption-overview.md), [usługi Key Vault](../key-vault/key-vault-overview.md), i [kluczy Kek](https://blogs.msdn.microsoft.com/cclayton/2017/01/03/creating-a-key-encrypting-key-kek/).
 - Odczyt [— często zadawane pytania](../security/azure-security-disk-encryption-faq.md) dotyczące szyfrowania dysku maszyny Wirtualnej platformy Azure.

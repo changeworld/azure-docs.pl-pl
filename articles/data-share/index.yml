@@ -10,14 +10,14 @@ metadata:
   ms.topic: landing-page
   ms.date: 07/10/2019
 abstract:
-  description: '<p>Usługa Azure Data Share (wersja zapoznawcza) to bezpieczna usługa do udostępniania danych organizacjom zewnętrznym. Wybierz zestawy danych, które chcesz udostępnić, dodaj odbiorców i rozpocznij udostępnianie danych z możliwością nadzorowania, monitorowania i kontrolowania relacji udostępniania danych. </p><p>Dowiedz się z naszych samouczków, jak korzystać z usługi Azure Data Share.</p>'
+  description: '<p>Usługa Azure Data Share (wersja zapoznawcza) to bezpieczna usługa do udostępniania danych organizacjom zewnętrznym. Wybierz zestawy danych, które chcesz udostępnić, dodaj odbiorców i rozpocznij udostępnianie danych z możliwością nadzorowania, monitorowania i kontrolowania relacji udostępniania danych. </p><p>Dowiedz się z naszych samouczków i przewodników, jak korzystać z usługi Azure Data Share.</p>'
   aside:
     image:
       alt: null
       height: 110
       src: media/azure-friday.png
       width: 250
-    title: Usługa Azure Data Share w witrynie Azure Friday’s
+    title: Usługa Azure Data Share w witrynie Azure Friday
     href: 'https://channel9.msdn.com/Shows/Azure-Friday/Share-data-simply-and-securely-using-Azure-Data-Share/player?format=ny'
     width: 250
 sections:

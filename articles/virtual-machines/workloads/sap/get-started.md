@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/10/2019
+ms.date: 07/10/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b4ed11b5a0f463afee0dae149820bb546db0c53
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 27e12b5f33f2e3c0024d5caa6a9bee5e9576a45a
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058717"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67805826"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure umożliwia hostowanie i uruchamianie scenariusze obciążeń SAP
 
@@ -36,10 +36,12 @@ Scenariusze obciążeń SAP na platformie Azure obsługującego również tworzy
 
 ## <a name="latest-changes"></a>Najnowsze zmiany
 
+- Wersja nowy przewodnik [IBM Db2 HADR w systemie Red Hat Enterprise Server](high-availability-guide-rhel-ibm-db2-luw.md)
+- Wersja [wysokiej dostępności dla oprogramowania SAP NetWeaver w systemie Red Hat Enterprise Linux przy użyciu usługi Azure Files NetApp dla aplikacji SAP](high-availability-guide-rhel-netapp-files.md)
 - Wprowadzenie ścieżkę Fast usługi ExpressRoute i zasięgu globalnym dla dużych wystąpień HANA w [architektura SAP HANA (duże wystąpienia) sieci](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture) i powiązanych dokumentów
 - Wersja [dużych wystąpień HANA na platformie Azure kontrolować za pośrednictwem witryny Azure portal](hana-li-portal.md)
 - Wersja [wysoką dostępność środowiska SAP NetWeaver na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server za pomocą usługi Azure Files NetApp dla aplikacji SAP](high-availability-guide-suse-netapp-files.md)
-- Wyjaśnienia **net.ipv4.tcp_timestamps parametrów systemu operacyjnego Linux** ustawienia w połączeniu z platformą Azure Usługa równoważenia obciążenia
+
 
 
 

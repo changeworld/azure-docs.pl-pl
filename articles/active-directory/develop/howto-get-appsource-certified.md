@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b820068f7bd59941346c8d2a3e8ede15252d58b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cc42ab8a8cfb0d182c69bd0940e23cffdb2be0af
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540263"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807249"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Jak uzyskać certyfikatu AppSource dla usługi Azure Active Directory
 
@@ -56,19 +56,19 @@ Aby umożliwić aplikacji z jedną dzierżawą *skontaktuj się ze mną* środow
 
 ## <a name="appsource-trial-experiences"></a>Środowiska wersji próbnej usługi AppSource
 
-### <a name="free-trial-customer-led-trial-experience"></a>Bezpłatna wersja próbna (środowisko wersji próbnej prowadzonej przez klienta) 
+### <a name="free-trial-customer-led-trial-experience"></a>Bezpłatna wersja próbna (środowisko wersji próbnej prowadzonej przez klienta)
 
-Wersji próbnej prowadzonej przez klienta to środowisko, z zaleceniem usługi AppSource, ponieważ oferuje on dostęp jednym kliknięciem, do aplikacji. Poniżej w jaki sposób to środowisko wygląda następująco:<br/><br/>
+Wersji próbnej prowadzonej przez klienta to środowisko, z zaleceniem usługi AppSource, ponieważ oferuje on dostęp jednym kliknięciem, do aplikacji. Poniższy przykład pokazuje, jak wygląda to środowisko:
 
 <table >
 <tr>
-    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step1.png" width="85%"/><ul><li>Użytkownik znajdzie aplikacji w witrynie sieci Web usługi AppSource</li><li>Wybiera opcję "Bezpłatna wersja próbna"</li></ul></td>
-    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step2.png" width="85%" /><ul><li>Usługa AppSource przekierowuje użytkownika do adresu URL witryny sieci web</li><li>Rozpoczyna się swojej witryny sieci web <i>single-sign-on</i> proces automatycznie (ładowanie strony)</li></ul></td>
-    <td valign="top" width="33%">3.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step3.png" width="85%"/><ul><li>Użytkownik jest przekierowywany na stronę logowania firmy Microsoft</li><li>Użytkownik podaje poświadczenia, aby zalogować się</li></ul></td>
+    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step1.png" width="85%" alt-text="Shows Free trial for customer-led trial experience"/><ul><li>Użytkownik znajdzie aplikacji w witrynie sieci Web usługi AppSource</li><li>Wybiera opcję "Bezpłatna wersja próbna"</li></ul></td>
+    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step2.png" width="85%" alt-text="Shows how user is redirected to a URL in your web site"/><ul><li>Usługa AppSource przekierowuje użytkownika do adresu URL witryny sieci web</li><li>Rozpoczyna się swojej witryny sieci web <i>single-sign-on</i> proces automatycznie (ładowanie strony)</li></ul></td>
+    <td valign="top" width="33%">3.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step3.png" width="85%" alt-text="Shows the Microsoft sign-in page"/><ul><li>Użytkownik jest przekierowywany na stronę logowania firmy Microsoft</li><li>Użytkownik podaje poświadczenia, aby zalogować się</li></ul></td>
 </tr>
 <tr>
-    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step4.png" width="85%"/><ul><li>Użytkownik wyrazi zgodę dla aplikacji</li></ul></td>
-    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%"/><ul><li>Zaloguj się zakończy i użytkownik jest przekierowany z powrotem do witryny sieci web</li><li>Użytkownik uruchamia bezpłatnej wersji próbnej</li></ul></td>
+    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step4.png" width="85%" alt-text="Example: Consent page for an application"/><ul><li>Użytkownik wyrazi zgodę dla aplikacji</li></ul></td>
+    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%" alt-text="Shows the experience the user sees when redirected back to your site"/><ul><li>Zaloguj się zakończy i użytkownik jest przekierowany z powrotem do witryny sieci web</li><li>Użytkownik uruchamia bezpłatnej wersji próbnej</li></ul></td>
     <td></td>
 </tr>
 </table>
@@ -79,20 +79,20 @@ Podczas ręcznego lub długoterminowej operacja musi zostać przeprowadzona do a
 
 <table valign="top">
 <tr>
-    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step1.png" width="85%"/><ul><li>Użytkownik znajdzie aplikacji w witrynie sieci web w usłudze AppSource</li><li>Wybiera opcję "Skontaktuj się z pomocą Me"</li></ul></td>
-    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step2.png" width="85%"/><ul><li>Wypełnia formularz z informacji kontaktowych</li></ul></td>
+    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step1.png" width="85%" alt-text="Shows Contact me for partner-led trial experience"/><ul><li>Użytkownik znajdzie aplikacji w witrynie sieci web w usłudze AppSource</li><li>Wybiera opcję "Skontaktuj się z pomocą Me"</li></ul></td>
+    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step2.png" width="85%" alt-text="Shows an example form with contact info"/><ul><li>Wypełnia formularz z informacji kontaktowych</li></ul></td>
      <td valign="top" width="33%">3.<br/><br/>
         <table bgcolor="#f7f7f7">
         <tr>
-            <td><img src="media/active-directory-devhowto-appsource-certified/UserContact.png" width="55%"/></td>
+            <td><img src="media/active-directory-devhowto-appsource-certified/UserContact.png" width="55%" alt-text="Shows placeholder for user information"/></td>
             <td>Odbieranie informacji o użytkowniku</td>
         </tr>
         <tr>
-            <td><img src="media/active-directory-devhowto-appsource-certified/SetupEnv.png" width="55%"/></td>
+            <td><img src="media/active-directory-devhowto-appsource-certified/SetupEnv.png" width="55%" alt-text="Shows placeholder for setup environment info"/></td>
             <td>Konfigurowanie środowiska</td>
         </tr>
         <tr>
-            <td><img src="media/active-directory-devhowto-appsource-certified/ContactCustomer.png" width="55%"/></td>
+            <td><img src="media/active-directory-devhowto-appsource-certified/ContactCustomer.png" width="55%" alt-text="Shows placeholder for trial info"/></td>
             <td>Skontaktuj się z użytkownikiem z informacjami o wersji próbnej</td>
         </tr>
         </table><br/><br/>
@@ -100,9 +100,9 @@ Podczas ręcznego lub długoterminowej operacja musi zostać przeprowadzona do a
     </td>
 </tr>
 <tr>
-    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step3.png" width="85%"/><ul><li>Użytkownik uzyskuje dostęp do aplikacji i ukończyć proces logowanie jednokrotne</li></ul></td>
-    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step4.png" width="85%"/><ul><li>Użytkownik wyrazi zgodę dla aplikacji</li></ul></td>
-    <td valign="top" width="33%">6.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%"/><ul><li>Zaloguj się zakończy i użytkownik jest przekierowany z powrotem do witryny sieci web</li><li>Użytkownik uruchamia bezpłatnej wersji próbnej</li></ul></td>
+    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step3.png" width="85%" alt-text="Shows the application sign-in screen"/><ul><li>Użytkownik uzyskuje dostęp do aplikacji i ukończyć proces logowanie jednokrotne</li></ul></td>
+    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step4.png" width="85%" alt-text="Shows an example consent page for an application"/><ul><li>Użytkownik wyrazi zgodę dla aplikacji</li></ul></td>
+    <td valign="top" width="33%">6.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%" alt-text="Shows the experience the user sees when redirected back to your site"/><ul><li>Zaloguj się zakończy i użytkownik jest przekierowany z powrotem do witryny sieci web</li><li>Użytkownik uruchamia bezpłatnej wersji próbnej</li></ul></td>
    
 </tr>
 </table>
@@ -110,16 +110,15 @@ Podczas ręcznego lub długoterminowej operacja musi zostać przeprowadzona do a
 ### <a name="more-information"></a>Więcej informacji
 
 Aby uzyskać więcej informacji na temat doświadczeń z wersji próbnej usługi AppSource, zobacz [ten film wideo](https://aka.ms/trialexperienceforwebapps). 
- 
+
 ## <a name="next-steps"></a>Następne kroki
 
 - Aby uzyskać więcej informacji na temat tworzenia aplikacji, które obsługują usługę Azure AD, logowania, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
 - Aby uzyskać informacje na temat wyświetlić listę aplikacji SaaS w usłudze AppSource, zobacz [informacje dla partnerów usługi AppSource](https://appsource.microsoft.com/partners)
 
-
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
-W przypadku integracji z usługą Azure AD, używamy [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) ze społecznością świadczenia pomocy technicznej. 
+W przypadku integracji z usługą Azure AD, używamy [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) ze społecznością świadczenia pomocy technicznej.
 
 Zdecydowanie zalecamy najpierw zadać pytanie w witrynie Stack Overflow i przeglądanie istniejących problemów, aby zobaczyć, jeśli ktoś poprosił pytanie przed. Upewnij się, że pytania lub komentarze są oznaczane za pomocą [ `[azure-active-directory]` i `[appsource]` ](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource).
 
@@ -131,6 +130,5 @@ W poniższej sekcji komentarzy umożliwia opinią i Pomóż nam analizy i połą
 [AAD-Dev-Guide]: v1-overview.md
 [AAD-Howto-Multitenant-Overview]: howto-convert-app-to-be-multi-tenant.md
 [AAD-QuickStart-Web-Apps]: v1-overview.md#get-started
-
 
 <!--Image references-->

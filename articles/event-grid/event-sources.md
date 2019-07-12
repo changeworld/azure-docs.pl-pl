@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 3611072759c62f42294730405f1dc402c496acce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad9bb5c135684c4573195298fb8e55a08208f6b6
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735005"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785823"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Źródła zdarzeń w usłudze Azure Event Grid
 
@@ -24,7 +24,7 @@ Ten artykuł zawiera linki do zawartości dla każdego źródła zdarzeń.
 
 Subskrybowanie do zdarzeń subskrypcje platformy Azure w celu reagowanie na zmiany w zasoby w subskrypcji platformy Azure.
 
-|Stanowisko |Opis  |
+|Tytuł |Opis  |
 |---------|---------|
 | [Samouczek: Usługa Azure Automation za pomocą usługi Event Grid i Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |Utwórz maszynę wirtualną, która wysyła zdarzenie. Zdarzenie wyzwala element runbook usługi Automation, tagi maszyny wirtualnej, która wyzwala komunikat, który jest wysyłany do kanału Microsoft Teams. |
 | [Porady: subskrybowanie zdarzeń za pośrednictwem portalu](subscribe-through-portal.md) | Subskrybowanie do zdarzeń dla subskrypcji platformy Azure za pomocą portalu. |
@@ -36,7 +36,7 @@ Subskrybowanie do zdarzeń subskrypcje platformy Azure w celu reagowanie na zmia
 
 Subskrybowanie do zdarzeń Container Registry do reagowania na zmiany w obrazach.
 
-|Stanowisko |Opis  |
+|Tytuł |Opis  |
 |---------|---------|
 | [Szybki Start: wysyłanie zdarzeń do rejestru kontenerów](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Pokazuje, jak wysyłać zdarzenia rejestru kontenera za pomocą wiersza polecenia platformy Azure. |
 | [Schemat zdarzeń](event-schema-container-registry.md) | Pokazuje pola w zdarzeniach rejestru kontenerów. |
@@ -45,7 +45,7 @@ Subskrybowanie do zdarzeń Container Registry do reagowania na zmiany w obrazach
 
 Subskrybować tematy niestandardowe w celu reagowania na zdarzenia aplikacji.
 
-|Stanowisko  |Opis  |
+|Tytuł  |Opis  |
 |---------|---------|
 | [Szybki Start: tworzenie i kierowanie zdarzeń niestandardowych za pomocą wiersza polecenia platformy Azure](custom-event-quickstart.md) | Pokazuje, jak wysyłać zdarzenia niestandardowe za pomocą wiersza polecenia platformy Azure. |
 | [Szybki Start: tworzenie i kierowanie zdarzeń niestandardowych za pomocą programu Azure PowerShell](custom-event-quickstart-powershell.md) | Pokazuje, jak wysyłać zdarzenia niestandardowe za pomocą programu Azure PowerShell. |
@@ -65,7 +65,7 @@ Subskrybować tematy niestandardowe w celu reagowania na zdarzenia aplikacji.
 
 Subskrybowanie zdarzeń usługi Event Hubs odpowiedzieć, aby przechwytywać zdarzenia w pliku. Usługa Event Hubs może działać jako źródło zdarzenia lub program obsługi zdarzeń. Następujące artykuły pokazują, jak używać usługi Event Hubs jako źródła.
 
-|Stanowisko  |Opis  |
+|Tytuł  |Opis  |
 |---------|---------|
 | [Samouczek: przesyłanie strumieniowe danych big data do magazynu danych](event-grid-event-hubs-integration.md) | Gdy usługa Event Hubs tworzy plik przechwytywania, usługa Event Grid wysyła zdarzenie do aplikacji funkcji. Aplikacja pobiera plik przechwytywania i migruje dane do magazynu danych. |
 | [Schemat zdarzeń](event-schema-event-hubs.md) | Pokazuje pola w zdarzeniach usługi Event Hubs. |
@@ -76,7 +76,7 @@ Aby zapoznać się z przykładami usługi Event hubs jako program obsługi, zoba
 
 Subskrybowanie zdarzeń usługi IoT Hub na utworzono usunięty, połączone, odłączonej urządzenie i zdarzenia telemetrii.
 
-|Stanowisko  |Opis  |
+|Tytuł  |Opis  |
 |---------|---------|
 | [Wysyłanie powiadomień e-mail dotyczących zdarzeń usługi Azure IoT Hub przy użyciu aplikacji logiki](publish-iot-hub-events-to-logic-apps.md) | Aplikacja logiki wysyła wiadomość e-mail z powiadomieniem za każdym razem, gdy urządzenie zostanie dodane do Twojego Centrum IoT. |
 | [Reagowanie na zdarzenia IoT Hub przy użyciu usługi Event Grid do wyzwalania akcji](../iot-hub/iot-hub-event-grid.md) | Omówienie integracji usługi IoT Hub z usługą Event Grid. |
@@ -87,7 +87,7 @@ Subskrybowanie zdarzeń usługi IoT Hub na utworzono usunięty, połączone, od�
 
 Subskrybowanie zdarzeń usługi Media Services w celu reagowania na zdarzenia stanu zadania.
 
-|Stanowisko  |Opis  |
+|Tytuł  |Opis  |
 |---------|---------|
 | [Omówienie: reagowanie na zdarzenia usługi Media Services](../media-services/latest/reacting-to-media-services-events.md) | Omówienie integracji usług Media Services za pomocą usługi Event Grid. |
 | [Samouczek: kierowanie zdarzeń usługi Azure Media Services do niestandardowego internetowego punktu końcowego przy użyciu interfejsu wiersza polecenia](../media-services/latest/job-state-events-cli-how-to.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Pokazuje, jak wysyłać zdarzenia z usługi Media Services. |
@@ -97,7 +97,7 @@ Subskrybowanie zdarzeń usługi Media Services w celu reagowania na zdarzenia st
 
 Subskrybowanie zdarzenia grupy zasobów, aby odpowiadanie na zmiany w zasoby w grupie zasobów.
 
-|Stanowisko  |Opis  |
+|Tytuł  |Opis  |
 |---------|---------|
 | [Samouczek: monitorowanie zmian maszyn wirtualnych za pomocą usługi Azure Event Grid i Logic Apps](monitor-virtual-machine-changes-event-grid-logic-app.md) | Aplikacja logiki monitoruje zmiany w maszynie wirtualnej i wysyła wiadomości e-mail o tych zmianach. |
 | [Interfejs wiersza polecenia platformy Azure: subskrybowanie zdarzeń dla grupy zasobów](./scripts/event-grid-cli-resource-group.md)| Przykładowy skrypt, który subskrybuje do zdarzeń dla grupy zasobów. Wysyła zdarzenia do elementu WebHook. |
@@ -111,7 +111,7 @@ Subskrybowanie zdarzenia grupy zasobów, aby odpowiadanie na zmiany w zasoby w g
 
 Subskrybowanie zdarzeń usługi Service Bus, aby odpowiadać na komunikaty bez aktywny odbiornik.
 
-|Stanowisko  |Opis  |
+|Tytuł  |Opis  |
 |---------|---------|
 | [Samouczek: Usługa Azure Service Bus przykłady integracji usługi Azure Event Grid](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Usługa Event Grid wysyła komunikaty z tematu usługi Service Bus, działanie aplikacji i aplikacji logiki. |
 | [Omówienie: Usługa Azure Service Bus do integracji usługi Event Grid](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | Omówienie integracji usługi Service Bus z usługą Event Grid. |
@@ -121,7 +121,7 @@ Subskrybowanie zdarzeń usługi Service Bus, aby odpowiadać na komunikaty bez a
 
 Subskrybowanie zdarzeń usługi Blob Storage do odpowiadanie na zdarzenia utworzone i usunięto usługi blob.
 
-|Stanowisko  |Opis  |
+|Tytuł  |Opis  |
 |---------|---------|
 | [Szybki Start: kierowanie zdarzeń usługi Blob storage do niestandardowego internetowego punktu końcowego przy użyciu wiersza polecenia platformy Azure](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Pokazuje, jak wysyłać zdarzenia usługi blob storage do elementu WebHook przy użyciu wiersza polecenia platformy Azure. |
 | [Szybki Start: kierowanie zdarzeń usługi Blob storage do niestandardowego internetowego punktu końcowego przy użyciu programu PowerShell](../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Pokazuje, jak wysyłać zdarzenia usługi blob storage do elementu WebHook przy użyciu programu Azure PowerShell. |
@@ -135,7 +135,7 @@ Subskrybowanie zdarzeń usługi Blob Storage do odpowiadanie na zdarzenia utworz
 ## <a name="maps"></a>Maps
 Subskrybowanie zdarzeń usługi Azure Maps w celu reagowania na zdarzenia w wirtualnym ogrodzeniu. Na przykład aplikacji wyśle wiadomość e-mail z powiadomieniem za każdym razem, gdy urządzenia wprowadza lub kończy działanie w wirtualnym ogrodzeniu.
 
-|Stanowisko  |Opis  |
+|Tytuł  |Opis  |
 |---------|---------|
 | [Reagowanie na zdarzenia usługi Azure Maps za pomocą usługi Event Grid](../azure-maps/azure-maps-event-grid-integration.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Przegląd integrowania usługi Azure Maps z usługi Event Grid. |
 | [Samouczek: Konfigurowanie wirtualnego ogrodzenia](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Ten samouczek przeprowadzi Cię przez podstawowe kroki konfigurowania geofencingu przy użyciu usługi Azure Maps. Azure Event Grid umożliwia przesyłanie strumieniowe wyników wirtualnego ogrodzenia i skonfigurować powiadomienia na podstawie wyników w wirtualnym ogrodzeniu. |
@@ -144,11 +144,21 @@ Subskrybowanie zdarzeń usługi Azure Maps w celu reagowania na zdarzenia w wirt
 ## <a name="app-configuration"></a>Konfiguracja aplikacji
 Subskrybowanie do zdarzeń konfiguracji aplikacji usługi Azure w celu reagowania na zdarzenia modyfikacji pary klucz wartość.
 
-|Stanowisko | Opis |
+|Tytuł | Opis |
 |---------|---------|
 | [Reagowanie na zdarzenia konfiguracji aplikacji platformy Azure przy użyciu usługi Event Grid](../azure-app-configuration/concept-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Omówienie integracji konfiguracji aplikacji platformy Azure z usługą Event Grid. |
 | [Szybki Start: kierowanie zdarzeń usługi konfiguracji aplikacji platformy Azure do niestandardowego internetowego punktu końcowego przy użyciu wiersza polecenia platformy Azure](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Pokazuje, jak wysyłać zdarzenia konfiguracji aplikacji platformy Azure do elementu WebHook przy użyciu wiersza polecenia platformy Azure. |
 | [Schemat zdarzeń](event-schema-app-configuration.md) | Pokazuje pola w zdarzeniach konfiguracji aplikacji platformy Azure. |
+
+## <a name="azure-signalr"></a>Azure SignalR
+Subskrybowanie zdarzeń usługi Azure SignalR Service do reagowania na zdarzenia połączenia klienta.
+
+|Tytuł | Opis |
+|---------|---------|
+| [Reagowanie na zdarzenia usługi Azure SignalR Service za pomocą usługi Event Grid](../azure-signalr/signalr-concept-event-grid-integration.md) | Omówienie integracji usługi Azure SignalR Service z usługą Event Grid. |
+| [Jak wysyłać zdarzenia usługi Azure SignalR Service do usługi Event Grid](../azure-signalr/signalr-howto-event-grid-integration.md) | Pokazuje, jak wysyłać zdarzenia usługi Azure SignalR Service do aplikacji za pośrednictwem usługi Event Grid. |
+| [Schemat zdarzeń](event-schema-azure-signalr.md) | Pokazuje pola w zdarzeniach usługi Azure SignalR Service. |
+
 
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -9,12 +9,12 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 57cda4d07315c6c37c2ce51f530fb081949b628c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: abe3f67141011c765f9de93bcf51998ddae002cb
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939500"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67696147"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Sterownik systemu plików obiektów Blob platformy Azure (ABFS): Dedykowany sterownika usługi Azure Storage dla platformy Hadoop
 
@@ -59,7 +59,7 @@ Szczegółowe informacje o wszystkich wpisów obsługiwanej konfiguracji są okr
 
 ### <a name="hadoop-documentation"></a>Dokumentacja usługi Hadoop
 
-Sterownik ABFS jest w pełni udokumentowane w [dokumentacji oficjalnego usługi Hadoop](https://hadoop.apache.org/docs/current/hadoop-azure/index.html)
+Sterownik ABFS jest w pełni udokumentowane w [dokumentacji oficjalnego usługi Hadoop](https://github.com/apache/hadoop/blob/trunk/hadoop-tools/hadoop-azure/src/site/markdown/abfs.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

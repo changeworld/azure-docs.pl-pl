@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3da96c09026baff3965e0a90d1f461fd948a3a50
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 59f716ccd7b2e02c9064f13cf1ffd6e8180858c9
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60441136"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827908"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Raporty dotyczące inspekcji w portalu usługi Azure Active Directory 
 
@@ -41,7 +41,7 @@ Ten artykuł zawiera omówienie raport z audytu.
  
 ## <a name="who-can-access-the-data"></a>Kto ma dostęp do danych?
 
-* Użytkownicy w **polu zabezpieczeń**, **Czytelnik zabezpieczeń**, **czytelnika raportów** lub **administratora globalnego** ról
+* Użytkownicy w **Administrator zabezpieczeń**, **Czytelnik zabezpieczeń**, **czytelnika raportów** lub **administratora globalnego** ról
 * Ponadto wszyscy użytkownicy (inni niż administratorzy) widoczne własnych działań inspekcji
 
 ## <a name="audit-logs"></a>Dzienniki inspekcji
@@ -79,7 +79,7 @@ Wybierz element w widoku listy, aby uzyskać więcej szczegółowych informacji.
 Można filtrować dane inspekcji na następujące pola:
 
 - Usługa
-- Category
+- Kategoria
 - Działanie
 - Stan
 - Cel
@@ -112,7 +112,7 @@ Można filtrować dane inspekcji na następujące pola:
 - AdministrativeUnit
 - ApplicationManagement
 - Authentication
-- Autoryzacja
+- Authorization
 - Skontaktuj się z
 - Urządzenie
 - Konfiguracja urządzenia
@@ -140,7 +140,7 @@ Listę wszystkich działań związanych z inspekcją można uzyskać przy użyci
 **Inicjowane przez** Filtr pozwala na określenie nazwy aktora lub uniwersalnych głównej nazwy (UPN). Nazwy i nazwy UPN jest rozróżniana wielkość liter.
 
 **Zakres dat** filtr umożliwia zdefiniowanie przedziału czasu dla zwracanych danych.  
-Możliwe wartości:
+Możliwe wartości to:
 
 - 1 miesiąc
 - 7 dni
@@ -208,7 +208,7 @@ Można wyświetlić dzienniki aktywności usługi Office 365 z [Centrum administ
 
 Można także przejść do dzienników aktywności usługi Office 365, programowo przy użyciu [interfejsów API zarządzania usługi Office 365](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Informacje o działaniach inspekcji usługi Azure AD](reference-audit-activities.md)
 - [Usługa Azure AD zgłasza odwołanie do przechowywania](reference-reports-data-retention.md)

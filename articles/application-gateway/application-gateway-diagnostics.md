@@ -6,13 +6,13 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 3/28/2019
-ms.author: amitsriva
-ms.openlocfilehash: a8b0ee159b1c4a4072ce5a86f9fb925744a415b3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: victorh
+ms.openlocfilehash: 39317c0448168bc2ed8fdd0455a210254887d496
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67048701"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655388"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Kondycja zaplecza, dzienniki diagnostyczne i metryki dla usługi Application Gateway
 
@@ -197,7 +197,7 @@ Dziennik dostępu jest generowany tylko wtedy, gdy włączono w każdym wystąpi
 ```
 Usługa Application Gateway i zapory aplikacji sieci Web w wersji 2 dzienniki przedstawiają nieco więcej informacji:
 
-|Wartość  |Opis  |
+|Value  |Opis  |
 |---------|---------|
 |instanceId     | Wystąpienia bramy aplikacji, który obsłużył żądanie.        |
 |clientIP     | Źródłowy adres IP dla żądania.        |
@@ -237,7 +237,7 @@ Usługa Application Gateway i zapory aplikacji sieci Web w wersji 2 dzienniki pr
         "receivedBytes": 65,
         "sentBytes": 553,
         "timeTaken": 205,
-        "sslEnabled": "off"
+        "sslEnabled": "off",
         "sslCipher": "",
         "sslProtocol": "",
         "serverRouted": "104.41.114.59:80",
@@ -290,7 +290,7 @@ Dziennik wydajności jest generowany tylko wtedy, gdy została włączona w każ
 Dziennik zapory jest generowany tylko wtedy, gdy włączono dla każdej bramy aplikacji, zgodnie z opisem w poprzednich krokach. Ten dziennik wymaga również, że Zapora aplikacji sieci web jest skonfigurowany w bramie aplikacji. Dane są przechowywane na koncie magazynu, który określiłeś, gdy włączono rejestrowanie. Rejestrowane są następujące dane:
 
 
-|Wartość  |Opis  |
+|Value  |Opis  |
 |---------|---------|
 |instanceId     | Zapory, które dane są generowane wystąpienia bramy aplikacji. Dla bramy aplikacji z wieloma wystąpieniami ma jeden wiersz dla każdego wystąpienia.         |
 |clientIp     |   Źródłowy adres IP dla żądania.      |
@@ -300,9 +300,9 @@ Dziennik zapory jest generowany tylko wtedy, gdy włączono dla każdej bramy ap
 |ruleSetVersion     | Wersja używanego zestawu reguł. Dostępne wartości to 2.2.9 i 3.0.     |
 |ruleId     | Identyfikator reguły wyzwalającą zdarzenie.        |
 |message     | Przyjazny dla użytkownika komunikat wyzwalająca zdarzenia. Szczegółowe informacje znajdują się w sekcji szczegółów.        |
-|action     |  Nie wykonano akcji na żądanie. Dostępne wartości są zablokowane i dozwolone.      |
+|Akcja     |  Nie wykonano akcji na żądanie. Dostępne wartości są zablokowane i dozwolone.      |
 |Witryny     | Witryna, dla której został wygenerowany dziennik. Obecnie tylko globalne jest wyświetlany, ponieważ reguły są globalne.|
-|Szczegółowe informacje     | Szczegółowe informacje o zdarzeniu wyzwalającym.        |
+|details informacje     | Szczegółowe informacje o zdarzeniu wyzwalającym.        |
 |details.Message     | Opis reguły.        |
 |details.data     | Odnaleziony w żądaniu, który jest zgodny z reguły określonych danych.         |
 |details.file     | Plik konfiguracji, który zawierał reguły.        |
@@ -419,7 +419,7 @@ Aby dowiedzieć się więcej na temat powiadomień o alertach, zobacz [otrzymywa
 
 Aby dowiedzieć się więcej na temat elementów webhook i jak ich używać z alertami, odwiedź stronę [Konfigurowanie elementu webhook dla alertu dotyczącego metryki Azure](../azure-monitor/platform/alerts-webhooks.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Wizualizuj dzienniki zdarzeń i liczników przy użyciu [dzienniki usługi Azure Monitor](../azure-monitor/insights/azure-networking-analytics.md).
 * [Wizualizuj dziennik aktywności platformy Azure z usługą Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) wpis w blogu.

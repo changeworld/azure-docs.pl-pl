@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 518e3fa842c5283dc20a6111773bd55451f026b6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f33a59105d1be94ccd4fb24ae3d962b36c2efbdd
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60486854"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839353"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Fabryki danych platformy Azure — często zadawane pytania
 > [!NOTE]
@@ -35,7 +35,7 @@ Fabryka danych umożliwia tworzenie opartych na danych przepływy pracy służą
 Aby uzyskać więcej informacji, zobacz [omówienie i kluczowe założenia](data-factory-introduction.md).
 
 ### <a name="where-can-i-find-pricing-details-for-azure-data-factory"></a>Gdzie mogę znaleźć cennik usługi Azure Data Factory?
-Zobacz [stronie szczegółów cennika fabryki danych] [ adf-pricing-details] Aby uzyskać szczegóły cennika usługi Azure Data Factory.  
+Zobacz [stronie szczegółów cennika fabryki danych][adf-pricing-details] Aby uzyskać szczegóły cennika usługi Azure Data Factory.  
 
 ### <a name="how-do-i-get-started-with-azure-data-factory"></a>Jak rozpocząć pracę z usługą Azure Data Factory?
 * Omówienie usługi Azure Data Factory, zobacz [wprowadzenie do usługi Azure Data Factory](data-factory-introduction.md).
@@ -51,11 +51,10 @@ Zobacz **usługi Azure Data Factory Limits limity** części [subskrypcji platfo
 ### <a name="what-is-the-authoringdeveloper-experience-with-azure-data-factory-service"></a>Co to jest środowisko tworzenia developer, przy użyciu usługi Azure Data Factory?
 Autor/tworzenia fabryki danych przy użyciu jednej z następujących narzędzi/zestawów SDK:
 
-* **Witryna Azure portal** bloków usługi Data Factory w witrynie Azure portal Podaj zaawansowanego interfejsu użytkownika w celu utworzenia usługi ad połączonej fabryki danych. **Edytora fabryki danych**, która jest również częścią portalu, pozwala na łatwe tworzenie połączonych usług, tabel, zestawy danych i potoków, określając definicje JSON dotyczące tych artefaktów. Zobacz [Tworzenie pierwszego potoku danych przy użyciu witryny Azure portal](data-factory-build-your-first-pipeline-using-editor.md) przykład tworzenie i wdrażanie fabryki danych przy użyciu portal/edytora.
 * **Program Visual Studio** używasz programu Visual Studio do utworzenia fabryki danych platformy Azure. Zobacz [Tworzenie pierwszego potoku danych przy użyciu programu Visual Studio](data-factory-build-your-first-pipeline-using-vs.md) Aby uzyskać szczegółowe informacje.
-* **Program Azure PowerShell** zobacz [tworzenie i monitorowanie fabryki danych Azure przy użyciu programu Azure PowerShell](data-factory-build-your-first-pipeline-using-powershell.md) dla samouczka/wskazówki dotyczące tworzenia fabryki danych przy użyciu programu PowerShell. Zobacz [Data Factory Cmdlet Reference] [ adf-powershell-reference] zawartości w bibliotece MSDN, aby uzyskać pełną dokumentację poleceń cmdlet usługi Data Factory.
-* **Biblioteka klas programu .NET** można programowo tworzyć fabryki danych przy użyciu zestawu SDK .NET usługi Data Factory. Zobacz [tworzenie, monitorowanie i zarządzanie nimi fabryki danych przy użyciu zestawu .NET SDK](data-factory-create-data-factories-programmatically.md) instrukcje dotyczące tworzenia fabryki danych przy użyciu zestawu .NET SDK. Zobacz [odwołanie do biblioteki klas fabryki danych] [ msdn-class-library-reference] pełną dokumentację zestawu SDK .NET usługi Data Factory.
-* **Interfejs API REST** można również użyć interfejsu API REST udostępnianego przez usługę Azure Data Factory, tworzenie i wdrażanie fabryki danych. Zobacz [dokumentacja interfejsu API REST usługi Data Factory] [ msdn-rest-api-reference] pełną dokumentację interfejsu API REST usługi Data Factory.
+* **Program Azure PowerShell** zobacz [tworzenie i monitorowanie fabryki danych Azure przy użyciu programu Azure PowerShell](data-factory-build-your-first-pipeline-using-powershell.md) dla samouczka/wskazówki dotyczące tworzenia fabryki danych przy użyciu programu PowerShell. Zobacz [Data Factory Cmdlet Reference][adf-powershell-reference] zawartości w bibliotece MSDN, aby uzyskać pełną dokumentację poleceń cmdlet usługi Data Factory.
+* **Biblioteka klas programu .NET** można programowo tworzyć fabryki danych przy użyciu zestawu SDK .NET usługi Data Factory. Zobacz [tworzenie, monitorowanie i zarządzanie nimi fabryki danych przy użyciu zestawu .NET SDK](data-factory-create-data-factories-programmatically.md) instrukcje dotyczące tworzenia fabryki danych przy użyciu zestawu .NET SDK. Zobacz [odwołanie do biblioteki klas fabryki danych][msdn-class-library-reference] pełną dokumentację zestawu SDK .NET usługi Data Factory.
+* **Interfejs API REST** można również użyć interfejsu API REST udostępnianego przez usługę Azure Data Factory, tworzenie i wdrażanie fabryki danych. Zobacz [dokumentacja interfejsu API REST usługi Data Factory][msdn-rest-api-reference] pełną dokumentację interfejsu API REST usługi Data Factory.
 * **Szablon usługi Azure Resource Manager** zobacz [samouczka: Tworzenie pierwszej fabryki danych platformy Azure przy użyciu szablonu usługi Azure Resource Manager](data-factory-build-your-first-pipeline-using-arm.md) fo szczegóły.
 
 ### <a name="can-i-rename-a-data-factory"></a>Czy mogę zmienić nazwę fabryki danych?
@@ -178,7 +177,7 @@ Możesz ponownie uruchomić wycinek w jednym z następujących sposobów:
     ```powershell
     Set-AzDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00"
     ```
-  Zobacz [AzDataFactorySliceStatus zestaw] [ set-azure-datafactory-slice-status] szczegółowe informacje na temat polecenia cmdlet.
+  Zobacz [AzDataFactorySliceStatus zestaw][set-azure-datafactory-slice-status] szczegółowe informacje na temat polecenia cmdlet.
 
 ### <a name="how-long-did-it-take-to-process-a-slice"></a>Jak długo trwało przetworzyć wycinek?
 Aby dowiedzieć się, jak długo można przetworzyć wycinek danych, należy użyć Eksploratorze okien działania w aplikacji monitorowanie i zarządzanie. Zobacz [Eksploratorze okien działania](data-factory-monitor-manage-app.md#activity-window-explorer) Aby uzyskać szczegółowe informacje.

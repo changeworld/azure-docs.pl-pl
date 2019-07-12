@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e275411f9fd9dfb672bb0815e83e37bcd5d1dda9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50a653648f3ae4b40e0bfe2c6f168cfb890bcc59
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60825424"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839105"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>Ładowanie 1 TB w usłudze Azure SQL Data Warehouse w niecałe 15 minut przy użyciu usługi fabryka danych
 > [!NOTE]
@@ -41,7 +41,7 @@ Ten artykuł zawiera szczegółowe instrukcje dotyczące przenoszenia danych do 
 > [!NOTE]
 >  Aby uzyskać ogólne informacje dotyczące możliwości usługi Data Factory podczas przenoszenia danych do i z usługi Azure SQL Data Warehouse, zobacz [przenoszenie danych do i z usługi Azure SQL Data Warehouse przy użyciu usługi Azure Data Factory](data-factory-azure-sql-data-warehouse-connector.md) artykułu.
 >
-> Możesz także tworzyć potoki przy użyciu witryny Azure portal, programu Visual Studio, PowerShell, itp. Zobacz [samouczka: Kopiowanie danych z obiektów Blob platformy Azure do usługi Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) szybki Przewodnik z instrukcjami krok po kroku, za pomocą działania kopiowania w usłudze Azure Data Factory.  
+> Możesz także tworzyć potoki przy użyciu programu Visual Studio, PowerShell, itp. Zobacz [samouczka: Kopiowanie danych z obiektów Blob platformy Azure do usługi Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) szybki Przewodnik z instrukcjami krok po kroku, za pomocą działania kopiowania w usłudze Azure Data Factory.  
 >
 >
 
@@ -124,7 +124,7 @@ Ten artykuł zawiera szczegółowe instrukcje dotyczące przenoszenia danych do 
       2. Wybierz pozycję **Utwórz nowy**, aby wprowadzić nazwę grupy zasobów.
    4. Wybierz **lokalizację** fabryki danych.
    5. Zaznacz pole wyboru **Przypnij do pulpitu nawigacyjnego** u dołu bloku.  
-   6. Kliknij pozycję **Utwórz**.
+   6. Kliknij przycisk **Utwórz**.
 4. Po zakończeniu tworzenia zostanie wyświetlony blok **Fabryka danych**, jak pokazano na poniższej ilustracji:
 
    ![Strona główna fabryki danych](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)
@@ -213,6 +213,6 @@ Poniżej przedstawiono kilka najlepszych rozwiązań dotyczących uruchamiania b
 
 Zobacz [najlepsze rozwiązania dotyczące usługi Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-best-practices.md) Aby uzyskać szczegółowe informacje.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Kreator kopiowania usługi Data Factory](data-factory-copy-wizard.md) — ten artykuł zawiera szczegółowe informacje o kreatorze kopiowania.
 * [Skopiuj wydajności i działania przewodnika dostrajania](data-factory-copy-activity-performance.md) — ten artykuł zawiera Przewodnik dostosowywania i pomiarów wydajności.

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: be36f9ab881f2375b14ba0ea36038f9e840d199f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e70611d438678ded1260dd00a04960c798fdde5
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66156503"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836221"
 ---
 # <a name="move-data-to-and-from-sql-server-on-premises-or-on-iaas-azure-vm-using-azure-data-factory"></a>Przenoszenie danych do i z programu SQL Server w środowisku lokalnym lub w usłudze IaaS (maszyna wirtualna Azure), za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
@@ -56,7 +56,7 @@ Utworzysz potok z działaniem kopiowania, które przenosi dane z lokalnej bazy d
 
 Najprostszym sposobem utworzenia potoku jest użycie **kreatora kopiowania**. Zobacz [samouczka: Tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych.
 
-Aby utworzyć potok umożliwia także następujących narzędzi: **Witryna Azure portal**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**i  **Interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
+Aby utworzyć potok umożliwia także następujących narzędzi: **Program Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**, i **interfejsu API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
 
 Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródłowych do magazynu danych ujścia:
 
@@ -76,10 +76,10 @@ Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla po
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| type |Właściwość type powinna być równa: **OnPremisesSqlServer**. |Tak |
-| connectionString |Określ informacje o parametry połączenia potrzebne do połączenia z bazą danych programu SQL Server w środowisku lokalnym przy użyciu uwierzytelniania SQL lub uwierzytelniania Windows. |Tak |
-| gatewayName |Nazwa bramy, do którego usługa Data Factory powinna używać do łączenia z bazą danych programu SQL Server w środowisku lokalnym. |Tak |
-| username |Określ nazwę użytkownika, jeśli korzystasz z uwierzytelniania Windows. Przykład: **domainname\\username**. |Nie |
+| type |Właściwość type powinna być równa: **OnPremisesSqlServer**. |Yes |
+| connectionString |Określ informacje o parametry połączenia potrzebne do połączenia z bazą danych programu SQL Server w środowisku lokalnym przy użyciu uwierzytelniania SQL lub uwierzytelniania Windows. |Yes |
+| gatewayName |Nazwa bramy, do którego usługa Data Factory powinna używać do łączenia z bazą danych programu SQL Server w środowisku lokalnym. |Yes |
+| username |Określ nazwę użytkownika, jeśli korzystasz z uwierzytelniania Windows. Przykład: **nazwa_domeny\\username**. |Nie |
 | password |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. |Nie |
 
 Umożliwia ona szyfrowanie poświadczeń za pomocą **New AzDataFactoryEncryptValue** polecenia cmdlet i używać ich w parametrach połączenia, jak pokazano w poniższym przykładzie (**EncryptedCredential** właściwość):
@@ -178,7 +178,7 @@ Jeśli nie określisz sqlReaderQuery lub sqlReaderStoredProcedureName kolumny zd
 
 
 ## <a name="json-examples-for-copying-data-from-and-to-sql-server"></a>Przykłady JSON do kopiowania danych do programu SQL Server
-W poniższych przykładach udostępniono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [witryny Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) lub [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Poniższe przykłady pokazują, jak można skopiować danych do i z programu SQL Server i usługi Azure Blob Storage. Jednak dane mogą być kopiowane **bezpośrednio** z dowolnego źródła do dowolnego ujścia, o których wspomniano [tutaj](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.
+W poniższych przykładach udostępniono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Poniższe przykłady pokazują, jak można skopiować danych do i z programu SQL Server i usługi Azure Blob Storage. Jednak dane mogą być kopiowane **bezpośrednio** z dowolnego źródła do dowolnego ujścia, o których wspomniano [tutaj](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.
 
 ## <a name="example-copy-data-from-sql-server-to-azure-blob"></a>Przykład: Kopiowanie danych z programu SQL Server do obiektu Blob platformy Azure
 Poniższy przykład pokazuje:

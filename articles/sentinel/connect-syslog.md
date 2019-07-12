@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: 5dd59729-c623-4cb4-b326-bb847c8f094b
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 673b1df6094703bebcbfd9d82c1268c01d46e814
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ee7b31a57bc9627776b9ca5445132a4662506134
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233582"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67611334"
 ---
 # <a name="connect-your-external-solution-using-syslog"></a>Połącz swoje rozwiązanie zewnętrznych przy użyciu protokołu Syslog
 
@@ -44,7 +45,7 @@ Połączenie usługi SYSLOG odbywa się przy użyciu agenta dla systemu Linux. D
 3. Kliknij przycisk **konfigurowania dzienników do podłączenia** w instalacji łącznika usługi Syslog. 
 4. Kliknij przycisk **naciśnij tutaj, aby otworzyć blok konfiguracji**.
 1. Wybierz **danych** i następnie **Syslog**.
-   - Upewnij się, że każde urządzenie, która jest wysyłana przez Syslog znajduje się w tabeli. Dla każdego obiektu chcesz monitorować, Ustaw ważność. Kliknij przycisk **Zastosuj**.
+   - Upewnij się, że każde urządzenie, która jest wysyłana przez Syslog znajduje się w tabeli. Dla każdego obiektu chcesz monitorować, Ustaw ważność. Kliknij przycisk **zastosować**.
 1. Na komputerze Syslog upewnij się, że wysyłasz tych obiektach. 
 
 3. Aby użyć odpowiednich schematu w usłudze Log Analytics dla dzienników Syslog, możesz wyszukać **Syslog**.
@@ -52,7 +53,7 @@ Połączenie usługi SYSLOG odbywa się przy użyciu agenta dla systemu Linux. D
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym dokumencie przedstawiono sposób łączenia urządzeń lokalnych Syslog do platformy Azure przez wartownika. Aby dowiedzieć się więcej na temat platformy Azure przez wartownika, zobacz następujące artykuły:
 - Dowiedz się, jak [Uzyskaj wgląd w dane i potencjalne zagrożenia](quickstart-get-visibility.md).
 - Rozpoczynanie pracy [wykrywanie zagrożeń za pomocą platformy Azure przez wartownika](tutorial-detect-threats.md).

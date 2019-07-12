@@ -7,7 +7,7 @@ author: senthuransivananthan
 manager: danielgi
 editor: ''
 ms.assetid: cbc2ff98-916d-4339-8959-622823c5b772
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/05/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: c26c9021637b1b6ec2b3808db1307de9955bb660
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: cbde4c7fd568e6d9ff9a0d90332da96926e08077
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922391"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593133"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint-using-resource-manager-template"></a>Szybki start: Tworzenie usługi Azure CDN profilu i punktu końcowego przy użyciu szablonu usługi Resource Manager
 
@@ -222,12 +222,12 @@ az group delete --name cdn
 
 ![Usuń grupę zasobów](./media/create-profile-resource-manager-template/cdn-delete-resource-group.png)
 
-## <a name="references"></a>Dokumentacja
+## <a name="references"></a>Odwołania
 
 * Profil CDN - [dokumentacja szablonu usługi Azure Resource Manager](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles)
 * Punkt końcowy usługi CDN - [dokumentacji dokumentacja szablonu usługi Azure Resource Manager](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się więcej na temat dodawania domeny niestandardowej do punktu końcowego usługi CDN, zapoznaj się z następującym samouczkiem:
 

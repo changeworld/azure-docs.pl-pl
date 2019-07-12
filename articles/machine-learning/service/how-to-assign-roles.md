@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: larryfr
 author: Blackmist
-ms.date: 02/20/2019
+ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: e062fd73f2baeb4948430b13e0caa1f5c0b3f066
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 4a5723b2ffbd34fd7cf022bf747b4504b3bdac53
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341113"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797660"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Zarządzanie dostępem do obszaru roboczego usługi Azure Machine Learning
 
@@ -26,7 +26,7 @@ W tym artykule dowiesz się, jak zarządzać dostępem do obszaru roboczego usł
 
 Obszar roboczy usługi uczenie maszynowe Azure jest zasobem platformy Azure. Podobnie jak inne zasoby platformy Azure gdy zostanie utworzony nowy obszar roboczy usługi Azure Machine Learning, chodzi przy użyciu trzech ról domyślne. Można dodać użytkowników do obszaru roboczego i przypisać je do jednej z tych wbudowanych ról.
 
-| Rola | Poziom dostępu |
+| Role | Poziom dostępu |
 | --- | --- |
 | **Czytelnik** | Akcje tylko do odczytu w obszarze roboczym. Czytelnicy mogą listy i wyświetlenie zasobów w obszarze roboczym, ale nie można utworzyć lub zaktualizować te zasoby. |
 | **Współautor** | Wyświetlanie, tworzenie, edytowanie lub usuwanie (jeśli dotyczy) zasobów w obszarze roboczym. Na przykład współautorzy mogą utworzyć eksperyment, tworzenie lub dołączyć klastra obliczeniowego, przesłać przebiegu i wdrażanie usługi sieci web. |
@@ -41,7 +41,7 @@ Aby uzyskać więcej informacji na temat konkretnych ról wbudowanych, zobacz [w
 
 Jeśli jesteś właścicielem obszaru roboczego, można dodać i usunąć role dla obszaru roboczego. Można także przypisać role do użytkowników. Aby dowiedzieć się, jak zarządzać dostępem, należy użyć następujących łączy:
 - [Interfejs użytkownika witryny Azure portal](/azure/role-based-access-control/role-assignments-portal)
-- [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
+- [Program PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 - [Interfejs wiersza polecenia platformy Azure](/azure/role-based-access-control/role-assignments-cli)
 - [REST API](/azure/role-based-access-control/role-assignments-rest)
 - [Szablony usługi Azure Resource Manager](/azure/role-based-access-control/role-assignments-template)
@@ -110,7 +110,7 @@ az ml workspace share -n my_workspace -g my_resource_group --role "Data Scientis
 
 Aby uzyskać więcej informacji, zobacz [niestandardowych ról dla zasobów platformy Azure](/azure/role-based-access-control/custom-roles).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Omówienie zabezpieczeń przedsiębiorstwa](concept-enterprise-security.md)
 - [Bezpiecznego uruchamiania eksperymentów oraz wnioskowania/wynik wewnątrz sieci wirtualnej](how-to-enable-virtual-network.md)

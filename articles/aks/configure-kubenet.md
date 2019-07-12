@@ -2,18 +2,18 @@
 title: Konfigurowanie wtyczki kubenet sieci w usłudze Azure Kubernetes Service (AKS)
 description: Dowiedz się, jak skonfigurować wtyczki kubenet (podstawowe) sieci w usłudze Azure Kubernetes Service (AKS) do wdrożenia klastra usługi AKS w istniejącej sieci wirtualnej i podsieci.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 06/26/2019
-ms.author: iainfou
+ms.author: mlearned
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 269dd670ed82234b77e06c389ae1c9a5c294010c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e1279261de8e26b9e11f55100ce01277650e251b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441952"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615760"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Użyj wtyczki kubenet sieci przy użyciu własnych zakresów adresów IP w usłudze Azure Kubernetes Service (AKS)
 
@@ -174,7 +174,7 @@ az aks create \
 
 Podczas tworzenia klastra usługi AKS tabeli sieci zabezpieczeń grupy i wyznaczać trasy są tworzone. Te zasoby sieciowe są zarządzane przez na płaszczyźnie kontroli usługi AKS. Sieciowa grupa zabezpieczeń jest automatycznie kojarzony z wirtualnymi kartami sieciowymi na węzłów. Tabela tras jest automatycznie kojarzony z podsieci sieci wirtualnej. Reguły sieciowych grup zabezpieczeń i tabel tras i są automatycznie aktualizowane, jak utworzyć i udostępnić usługi.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Z klastrem usługi AKS wdrażane w istniejącej podsieci sieci wirtualnej można teraz używać klastra zwykły. Rozpoczynanie pracy z usługą [tworzenia aplikacji przy użyciu usługi Azure Dev miejsca do magazynowania][dev-spaces] or [using Draft][use-draft], lub [wdrażać aplikacje za pomocą narzędzia Helm][helm użyj].
 

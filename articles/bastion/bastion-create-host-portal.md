@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: cherylmc
-ms.openlocfilehash: 4a52383e6ab24c6ae1e2be0b67293d65dfa04466
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 65116ebbd6a66241a5b35a39f3dfb8f826a3745f
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477878"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594270"
 ---
 # <a name="create-an-azure-bastion-host-preview"></a>Utwórz host bastionu Azure (wersja zapoznawcza)
 
@@ -57,7 +57,7 @@ Ten rozdział pomaga utworzyć nowy zasób bastionu platformy Azure w witrynie A
     * **Podsieć**: Podsieć w sieci wirtualnej, do której zostanie wdrożony nowy zasób hostem bastionu. Należy utworzyć podsieci za pomocą wartości nazwy **AzureBastionSubnet**. Ta wartość umożliwia platformie Azure pożądanego podsieć, która do wdrażania zasobów bastionu. Stanowi to odmianę podsieć bramy. Zdecydowanie zaleca się użycie co najmniej/27 lub większej podsieci (/ 27, / 26 i tak dalej). Tworzenie **AzureBastionSubnet** bez żadnej grupy zabezpieczeń sieci trasy tabele lub delegowanie.
     * **Publiczny adres IP**: Publiczny adres IP zasobu bastionu, na którym będzie dostępna RDP/SSH (za pośrednictwem portu 443). Tworzenie nowego publicznego adresu IP lub użyć istniejącego. Publiczny adres IP musi być w tym samym regionie, co zasób bastionu, który tworzysz.
     * **Nazwa publicznego adresu IP**: Nazwa zasobu publicznego adresu IP.
-    * **Publiczny adres IP jednostki SKU**: Wstępnie wypełnione, aby domyślnie **standardowa**.
+    * **Publiczny adres IP jednostki SKU**: Wstępnie wypełnione, aby domyślnie **standardowa**. Używa platformy Azure bastionu/obsługuje tylko standardowego publicznego adresu IP jednostki SKU.
     * **Przypisanie**: Wstępnie wypełnione, aby domyślnie **statyczne**.
 
 1. Po określeniu ustawień, kliknij przycisk **przeglądu + Utwórz**. To sprawdzenie poprawności wartości. Po pomyślnej weryfikacji, można rozpocząć procesu tworzenia.

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: a758cce85645e72bfd9434a69393133d3da6b57d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 39f38af601888f847cd1a82da9e2e03e6893c28e
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60591598"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607282"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurowanie wystąpienia klastra trybu Failover programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -54,7 +54,7 @@ W usłudze Azure Virtual Machines można licencji programu SQL Server przy użyc
 
 Za pomocą PAYG licencjonowania, wystąpienia klastra trybu failover (FCI) programu SQL Server na maszynach wirtualnych Azure wiąże się z opłat dla wszystkich węzłów infrastruktury klasyfikacji plików, w tym węzły pasywne. Aby uzyskać więcej informacji, zobacz [cennik maszyn wirtualnych usługi SQL Server Enterprise](https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/). 
 
-Klienci z umowy Enterprise Agreement z pakietem Software Assurance mają prawa do używania jednego bezpłatnego węzła pasywnego infrastruktury klasyfikacji plików dla każdego aktywnego węzła. Aby móc korzystać z tej korzyści w przypadku platformy Azure, używać obrazów maszyn wirtualnych w ramach opcji BYOL, a następnie użyć tej samej licencji na aktywnym i pasywnym węzły trybu. Aby uzyskać więcej informacji, zobacz [umowy Enterprise Agreement](https://www.microsoft.com/en-us/Licensing/licensing-programs/enterprise.aspx).
+Klienci z umowy Enterprise Agreement z pakietem Software Assurance mają prawa do używania jednego bezpłatnego węzła pasywnego infrastruktury klasyfikacji plików dla każdego aktywnego węzła. Aby móc korzystać z tej korzyści w przypadku platformy Azure, używać obrazów maszyn wirtualnych w ramach opcji BYOL, a następnie użyć tej samej licencji na aktywnym i pasywnym węzły trybu. Aby uzyskać więcej informacji, zobacz [umowy Enterprise Agreement](https://www.microsoft.com/Licensing/licensing-programs/enterprise.aspx).
 
 Aby porównać PAYG i BYOL licencji na program SQL Server na maszynach wirtualnych Azure zobacz [wprowadzenie do maszyn wirtualnych SQL](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms).
 
@@ -111,7 +111,7 @@ Te warunki wstępne są spełnione możesz kontynuować tworzenie klastra trybu 
 
    - W witrynie Azure portal kliknij pozycję **+** można otworzyć portalu Azure Marketplace. Wyszukaj **zestawu dostępności**.
    - Kliknij przycisk **zestawu dostępności**.
-   - Kliknij pozycję **Utwórz**.
+   - Kliknij przycisk **Utwórz**.
    - Na **Tworzenie zestawu dostępności** bloku, ustaw następujące wartości:
       - **Nazwa**: Nazwa zestawu dostępności.
       - **Subskrypcja**: Swoją subskrypcję platformy Azure.
@@ -175,7 +175,7 @@ Te warunki wstępne są spełnione możesz kontynuować tworzenie klastra trybu 
 
    Na każdej maszynie wirtualnej należy otworzyć następujące porty w Zaporze Windows.
 
-   | Przeznaczenie | TCP Port | Uwagi
+   | Cel | TCP Port | Uwagi
    | ------ | ------ | ------
    | Oprogramowanie SQL Server | 1433 | Normalne port dla domyślnego wystąpienia programu SQL Server. Jeśli używasz obrazu z galerii, ten port jest automatycznie otwierany.
    | Sonda kondycji | 59999 | Dowolny Otwórz TCP port. Na późniejszym etapie, konfigurowanie równoważenia obciążenia [sondy kondycji](#probe) i klaster pod kątem używania tego portu.  
@@ -361,7 +361,7 @@ Aby utworzyć moduł równoważenia obciążenia:
 
 1. Kliknij pozycję **+ Dodaj**. Wyszukaj w witrynie Marketplace **moduł równoważenia obciążenia**. Kliknij przycisk **moduł równoważenia obciążenia**.
 
-1. Kliknij pozycję **Utwórz**.
+1. Kliknij przycisk **Utwórz**.
 
 1. Konfigurowanie równoważenia obciążenia za pomocą:
 
@@ -421,7 +421,7 @@ Aby utworzyć moduł równoważenia obciążenia:
    - **Sonda kondycji**: Za pomocą sondy kondycji, które zostały wcześniej skonfigurowane.
    - **Trwałość sesji**: Brak.
    - **Limit czasu (w minutach) bezczynności**: 4.
-   - **Pływający adres IP (bezpośredni zwrot serwera)** : Enabled (Włączony)
+   - **Pływający adres IP (bezpośredni zwrot serwera)** : Włączono
 
 1. Kliknij przycisk **OK**.
 

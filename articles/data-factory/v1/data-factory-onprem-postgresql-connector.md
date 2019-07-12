@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: bd39b0aae5b76f37e2153f8e4c4502be994fa5b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a652e157ec0e7e33c8dce7be2f4af2c240edac9e
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61462007"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839909"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Przenoszenie danych z PostgreSQL za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
@@ -50,7 +50,6 @@ Utworzysz potok z działaniem kopiowania, które przenosi dane z lokalnego magaz
 
 - Najprostszym sposobem utworzenia potoku jest użycie **kreatora kopiowania**. Zobacz [samouczka: Tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych.
 - Aby utworzyć potok umożliwia także następujących narzędzi:
-  - Azure Portal
   - Visual Studio
   - Azure PowerShell
   - Szablon usługi Azure Resource Manager
@@ -74,14 +73,14 @@ Poniższa tabela zawiera opis specyficzne dla usługi PostgreSQL, połączone el
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| type |Właściwość type musi być równa: **OnPremisesPostgreSql** |Yes |
+| type |Właściwość type musi być równa: **OnPremisesPostgreSql** |Tak |
 | server |Nazwa serwera PostgreSQL. |Yes |
-| baza danych |Nazwa bazy danych PostgreSQL. |Yes |
+| database |Nazwa bazy danych PostgreSQL. |Tak |
 | schema |Nazwa schematu w bazie danych. Nazwa schematu jest uwzględniana wielkość liter. |Nie |
-| Element authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych PostgreSQL. Możliwe wartości: Anonimowe, podstawowe i Windows. |Yes |
-| nazwa użytkownika |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowe lub Windows. |Nie |
+| authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych PostgreSQL. Możliwe wartości to: Anonimowe, podstawowe i Windows. |Tak |
+| username |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowe lub Windows. |Nie |
 | password |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. |Nie |
-| gatewayName |Nazwa bramy, do którego usługa Data Factory powinna używać do łączenia z bazą danych postgresql w warstwie lokalnej. |Yes |
+| gatewayName |Nazwa bramy, do którego usługa Data Factory powinna używać do łączenia z bazą danych postgresql w warstwie lokalnej. |Tak |
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 Aby uzyskać pełną listę sekcje & właściwości dostępne Definiowanie zestawów danych, zobacz [tworzenie zestawów danych](data-factory-create-datasets.md) artykułu. Sekcje, takie jak struktury, dostępność i zasady zestawem danych JSON są podobne dla wszystkich typów w zestawie danych.
@@ -111,7 +110,7 @@ Jeśli źródło jest typu **RelationalSource** (w tym PostgreSQL), w sekcji typ
  `"query": "select * from \"MySchema\".\"MyTable\""`
 
 ## <a name="json-example-copy-data-from-postgresql-to-azure-blob"></a>Przykład kodu JSON: Kopiowanie danych z PostgreSQL do obiektów Blob platformy Azure
-W poniższym przykładzie przedstawiono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [witryny Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) lub [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Pokazują, jak skopiować dane z bazy danych PostgreSQL w usłudze Azure Blob Storage. Jednakże, można skopiować danych do dowolnego ujścia, o których wspomniano [tutaj](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.
+W poniższym przykładzie przedstawiono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Pokazują, jak skopiować dane z bazy danych PostgreSQL w usłudze Azure Blob Storage. Jednakże, można skopiować danych do dowolnego ujścia, o których wspomniano [tutaj](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.
 
 > [!IMPORTANT]
 > W tym przykładzie przedstawiono fragmenty kodu JSON. Nie obejmuje instrukcje krok po kroku dotyczące tworzenia fabryki danych. Zobacz [przenoszenia danych między lokalizacjami lokalnymi i chmurą](data-factory-move-data-between-onprem-and-cloud.md) artykuł, aby uzyskać instrukcje krok po kroku.
@@ -306,46 +305,46 @@ Podczas przenoszenia danych postgresql w warstwie, następujące mapowania są u
 
 | Typ bazy danych PostgreSQL | Aliasy PostgresSQL | Typ .NET framework |
 | --- | --- | --- |
-| abstime | |DateTime |
+| abstime | |Datetime |
 | bigint |int8 |Int64 |
 | bigserial |serial8 |Int64 |
 | bitowe [(n)] | |Byte [] ciąg |
 | bit zróżnicowanie [(n)] |varbit |Byte [] ciąg |
-| wartość logiczna |bool |Boolean |
+| boolean |bool |Boolean |
 | box | |Byte [] ciąg |
 | bytea | |Byte [] ciąg |
-| znak [(n)] |char [(n)] |String |
+| znak [(n)] |char [(n)] |Ciąg |
 | znak zróżnicowanie [(n)] |varchar [(n)] |String |
 | identyfikator CID | |String |
-| format cidr | |String |
+| CIDR | |Ciąg |
 | Okrąg | |Byte [] ciąg |
-| date | |DateTime |
+| date | |Datetime |
 | DateRange | |String |
 | podwójnej precyzji |FLOAT8 |Double |
 | inet | |Byte [] ciąg |
-| intarry | |String |
-| int4range | |String |
-| int8range | |String |
-| liczba całkowita |int, int4 |Int32 |
-| Interwał [polami] [(p)] | |Zakres czasu |
-| json | |String |
+| intarry | |Ciąg |
+| int4range | |Ciąg |
+| int8range | |Ciąg |
+| integer |int, int4 |Int32 |
+| Interwał [polami] [(p)] | |Timespan |
+| JSON | |Ciąg |
 | jsonb | |Byte[] |
-| wiersz | |Byte [] ciąg |
+| Wiersz | |Byte [] ciąg |
 | lseg | |Byte [] ciąg |
 | macaddr | |Byte [] ciąg |
 | money | |Decimal |
 | numeryczne [(p, s)] |decimal [(p, s)] |Decimal |
 | numrange | |String |
 | oid | |Int32 |
-| ścieżka | |Byte [] ciąg |
+| path | |Byte [] ciąg |
 | pg_lsn | |Int64 |
-| punkt | |Byte [] ciąg |
+| Punkt | |Byte [] ciąg |
 | Wielokąt | |Byte [] ciąg |
 | real |FLOAT4 |Single |
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
-| numer seryjny |serial4 |Int32 |
-| tekst | |String |
+| szeregowe |serial4 |Int32 |
+| text | |String |
 
 ## <a name="map-source-to-sink-columns"></a>Mapy źródła do ujścia kolumn
 Aby uzyskać informacje dotyczące mapowania kolumn w zestaw danych źródłowych do kolumn w zestawie danych ujścia, zobacz [mapowanie kolumny zestawu danych w usłudze Azure Data Factory](data-factory-map-columns.md).

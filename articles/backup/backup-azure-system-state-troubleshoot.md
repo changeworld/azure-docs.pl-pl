@@ -8,13 +8,13 @@ keywords: jak tworzyć kopie zapasowe; Stan systemu tworzenia kopii zapasowych
 ms.service: backup
 ms.topic: conceptual
 ms.date: 05/09/2019
-ms.author: srinathvasireddy
-ms.openlocfilehash: c9e5645fef952257580d74eb6e11911e2286bd79
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.author: srinathv
+ms.openlocfilehash: 87b5fff58ecf9e89bc94f31a0bc3a591c146c88f
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165112"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704998"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Rozwiązywanie problemów z kopii zapasowej stanu systemu
 
@@ -151,6 +151,6 @@ Jeśli zadanie nie powiedzie się, wskazuje problem programu WSB, co mogłoby sp
 | Agenta usług MARS kończy się niepowodzeniem z komunikatem o błędzie: "Ponownie stan systemu nawet nie powiodło się ponieważ partycja systemowa EFI jest zablokowany. To może być spowodowane przez zabezpieczenia innych firm, dostęp do partycji systemowej lub utworzyć kopię zapasową oprogramowania" | -Jeśli ten problem wynika z oprogramowania zabezpieczającego innej firmy, należy skontaktować się z dostawcą ochrony przed wirusami, dzięki czemu umożliwiają one agenta usług MARS <br/><br/> — Jeśli działa oprogramowanie do tworzenia kopii zapasowych innych firm, następnie poczekaj na jego zakończenie, a następnie ponów próbę wykonania kopii zapasowej
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby uzyskać więcej informacji na temat stanu systemu Windows podczas wdrażania usługi Resource Manager, zobacz [tworzenie kopii zapasowej stanu systemu Windows Server](backup-azure-system-state.md)

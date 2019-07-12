@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: cafceb0c7ee6b165ee03727e1dff76db00d2863b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f38f1c313be17457c28c5b30fa743f7a0eae2cc0
+ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077339"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67621980"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>pozyskiwanie danych z centrum zdarzeń do usługi Azure Data Explorer
 
@@ -56,9 +56,9 @@ W tym artykule Generowanie przykładowych danych i wysyłać je do Centrum zdarz
 
     **Ustawienie** | **Sugerowana wartość** | **Opis pola**
     |---|---|---|
-    | Subskrypcja | Twoja subskrypcja | Wybierz subskrypcję platformy Azure, która ma być używana dla centrum zdarzeń.|
-    | Grupa zasobów | *test-hub-rg* | Utwórz nową grupę zasobów. |
-    | Lokalizacja | *Zachodnie stany USA* | Wybierz *zachodnie stany USA* na potrzeby tego artykułu. W przypadku systemu produkcyjnego wybierz region, który najlepiej odpowiada Twoim potrzebom. Utwórz przestrzeń nazw centrum zdarzeń w tej samej lokalizacji co klaster Kusto w celu zapewnienia najlepszej wydajności (jest to szczególnie ważne w przypadku przestrzeni nazw centrum zdarzeń o dużej przepływności).
+    | Subscription | Twoja subskrypcja | Wybierz subskrypcję platformy Azure, która ma być używana dla centrum zdarzeń.|
+    | Resource group | *test-hub-rg* | Utwórz nową grupę zasobów. |
+    | Location | *Zachodnie stany USA* | Wybierz *zachodnie stany USA* na potrzeby tego artykułu. W przypadku systemu produkcyjnego wybierz region, który najlepiej odpowiada Twoim potrzebom. Utwórz przestrzeń nazw centrum zdarzeń w tej samej lokalizacji co klaster Kusto w celu zapewnienia najlepszej wydajności (jest to szczególnie ważne w przypadku przestrzeni nazw centrum zdarzeń o dużej przepływności).
     | Nazwa przestrzeni nazw | Unikatowa nazwa przestrzeni nazw | Wybierz unikatową nazwę, która identyfikuje Twoją przestrzeń nazw. Na przykład *mytestnamespace*. Do podanej nazwy jest dołączana nazwa domeny *servicebus.windows.net*. Nazwa może zawierać tylko litery, cyfry i łączniki. Nazwa musi zaczynać się literą i kończyć literą lub cyfrą. Nazwa musi mieć długość od 6 do 50 znaków.
     | Nazwa centrum zdarzeń | *test-hub* | Centrum zdarzeń znajduje się w przestrzeni nazw, która zapewnia unikatowy kontener określania zakresu. Nazwa centrum zdarzeń musi być unikatowa w obrębie przestrzeni nazw. |
     | Nazwa grupy konsumentów | *test-group* | Dzięki grupom konsumentów każda z wielu aplikacji korzystających z danych może mieć osobny widok strumienia zdarzeń. |
@@ -187,7 +187,7 @@ Kiedy aplikacja generuje dane, możesz teraz zobaczyć przepływ tych danych z c
     ![Zestaw wyników komunikatów](media/ingest-data-event-hub/message-result-set.png)
 
     > [!NOTE]
-    > W systemie Azure Data Explorer istnieją zasady agregacji (dzielenie na partie) dotyczące pozyskiwania danych opracowane w celu optymalizacji procesu pozyskiwania. Zasady są skonfigurowane na wartość 5 minut, więc mogą wystąpić opóźnienia.
+    > W systemie Azure Data Explorer istnieją zasady agregacji (dzielenie na partie) dotyczące pozyskiwania danych opracowane w celu optymalizacji procesu pozyskiwania. Zasady jest domyślnie skonfigurowana do 5 minut, więc mogą wystąpić opóźnienia. Zobacz [przetwarzanie wsadowe zasad](/azure/kusto/concepts/batchingpolicy) Opcje agregacji. Zobacz [przesyłania strumieniowego zasad](/azure/kusto/concepts/streamingingestionpolicy) do pozyskiwania, za pomocą bez agregacji.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

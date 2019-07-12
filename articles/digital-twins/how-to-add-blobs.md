@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 9490772226ecdb90cdd2e0b98fe8336b91db6044
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c61544ce10c5a7d16b3ffc0009039e27f5feecb1
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754508"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67670795"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Dodaj obiekty BLOB do obiektów w reprezentacji urządzeń cyfrowych platformy Azure
 
@@ -36,7 +36,7 @@ Oprócz **Content-Type** i **Content-Disposition**, żądania wieloczęściowego
 
 Są cztery główne schematów JSON:
 
-[![Schematów JSON](media/how-to-add-blobs/blob-models.PNG)](media/how-to-add-blobs/blob-models.PNG#lightbox)
+[![Schematów JSON](media/how-to-add-blobs/blob-models-img.png)](media/how-to-add-blobs/blob-models-img.png#lightbox)
 
 Metadane obiektu blob JSON jest zgodny z modelem następujące:
 
@@ -53,12 +53,12 @@ Metadane obiektu blob JSON jest zgodny z modelem następujące:
 
 | Atrybut | Type | Opis |
 | --- | --- | --- |
-| **parentId** | String | Jednostka nadrzędna do skojarzenia z obiektu blob z (miejsca do magazynowania, urządzeń lub użytkowników) |
+| **parentId** | Ciąg | Jednostka nadrzędna do skojarzenia z obiektu blob z (miejsca do magazynowania, urządzeń lub użytkowników) |
 | **name** |String | Przyjazne dla człowieka nazwę obiektu blob |
 | **type** | String | Nie można użyć typu obiektu blob - *typu* i *typeId*  |
-| **typeId** | Integer | Identyfikator typu obiektu blob — nie można użyć *typu* i *typeId* |
-| **subtype** | String | Podtyp obiektów blob — nie można użyć *podtypu* i *subtypeId* |
-| **subtypeId** | Integer | Identyfikator podtypu dla obiektów blob — nie można użyć *podtypu* i *subtypeId* |
+| **typeId** | Liczba całkowita | Identyfikator typu obiektu blob — nie można użyć *typu* i *typeId* |
+| **Podtyp** | String | Podtyp obiektów blob — nie można użyć *podtypu* i *subtypeId* |
+| **subtypeId** | Liczba całkowita | Identyfikator podtypu dla obiektów blob — nie można użyć *podtypu* i *subtypeId* |
 | **description** | String | Opis dostosowanego obiektu blob |
 | **sharing** | String | Czy obiekt blob może być współużytkowany — wyliczenie [`None`, `Tree`, `Global`] |
 
@@ -113,15 +113,15 @@ Indywidualnie zwróconych obiektów blob są zgodne z następującego schematu J
 | **id** | String | Unikatowy identyfikator dla obiektu blob |
 | **name** |String | Przyjazne dla człowieka nazwę obiektu blob |
 | **parentId** | String | Jednostka nadrzędna do skojarzenia z obiektu blob z (miejsca do magazynowania, urządzeń lub użytkowników) |
-| **type** | String | Nie można użyć typu obiektu blob - *typu* i *typeId*  |
-| **typeId** | Integer | Identyfikator typu obiektu blob — nie można użyć *typu* i *typeId* |
-| **subtype** | String | Podtyp obiektów blob — nie można użyć *podtypu* i *subtypeId* |
-| **subtypeId** | Integer | Identyfikator podtypu dla obiektów blob — nie można użyć *podtypu* i *subtypeId* |
-| **sharing** | String | Czy obiekt blob może być współużytkowany — wyliczenie [`None`, `Tree`, `Global`] |
+| **type** | Ciąg | Nie można użyć typu obiektu blob - *typu* i *typeId*  |
+| **typeId** | Liczba całkowita | Identyfikator typu obiektu blob — nie można użyć *typu* i *typeId* |
+| **Podtyp** | String | Podtyp obiektów blob — nie można użyć *podtypu* i *subtypeId* |
+| **subtypeId** | Liczba całkowita | Identyfikator podtypu dla obiektów blob — nie można użyć *podtypu* i *subtypeId* |
+| **sharing** | Ciąg | Czy obiekt blob może być współużytkowany — wyliczenie [`None`, `Tree`, `Global`] |
 | **description** | String | Opis dostosowanego obiektu blob |
-| **contentInfos** | Tablica | Określa informacje metadanych bez struktury, w tym wersja |
+| **contentInfos** | Array | Określa informacje metadanych bez struktury, w tym wersja |
 | **fullName** | String | Pełna nazwa obiektu blob |
-| **spacePaths** | String | Ścieżka miejsca |
+| **spacePaths** | Ciąg | Ścieżka miejsca |
 
 Metadane obiektu blob zawsze jest dostarczany jako pierwszy fragment z **Content-Type** `application/json` lub jako `.json` pliku. Plik danych jest dostarczany w drugim fragmentów i może być dowolnego typu MIME obsługiwane.
 
@@ -159,7 +159,7 @@ This is my blob content. In this case, some text, but I could also be uploading 
 --USER_DEFINED_BOUNDARY--
 ```
 
-| Wartość | Zamień na |
+| Value | Zamień na |
 | --- | --- |
 | USER_DEFINED_BOUNDARY | Nazwa granice zawartości wieloczęściowej wiadomości |
 
@@ -183,7 +183,7 @@ var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 
 Na koniec [cURL](https://curl.haxx.se/) użytkownicy mogą wprowadzać żądań wieloczęściowego formularza w taki sam sposób:
 
-[![Obiekty BLOB urządzenia](media/how-to-add-blobs/curl.PNG)](media/how-to-add-blobs/curl.PNG#lightbox)
+[![Obiekty BLOB urządzenia](media/how-to-add-blobs/curl-img.png)](media/how-to-add-blobs/curl-img.png#lightbox)
 
 ```bash
 curl
@@ -195,7 +195,7 @@ curl
  -F "text=PATH_TO_FILE;type=text/plain"
 ```
 
-| Wartość | Zamień na |
+| Value | Zamień na |
 | --- | --- |
 | YOUR_TOKEN | Nieprawidłowy token OAuth 2.0 |
 | YOUR_SPACE_ID | Identyfikator obszaru do skojarzenia obiekt blob z |
@@ -211,7 +211,7 @@ W poniższych sekcjach opisano, punkty końcowe interfejsu API związanych z obi
 
 Obiekty BLOB można dołączyć do urządzenia. Na poniższej ilustracji przedstawiono strukturę Swagger dokumentacja interfejsów API zarządzania. Określa związane z urządzeniami punkty końcowe interfejsu API do użycia obiektów blob oraz wszelkie parametry ścieżki wymagane do przekazania do nich.
 
-[![Obiekty BLOB urządzenia](media/how-to-add-blobs/blobs-device-api.PNG)](media/how-to-add-blobs/blobs-device-api.PNG#lightbox)
+[![Obiekty BLOB urządzenia](media/how-to-add-blobs/blobs-device-api-img.png)](media/how-to-add-blobs/blobs-device-api-img.png#lightbox)
 
 Na przykład aby zaktualizować lub tworzenie obiektu blob, a następnie Dołącz obiekt blob do urządzenia, należy uwierzytelnionego żądania HTTP PATCH, aby:
 
@@ -229,7 +229,7 @@ Liczba pomyślnych żądań zwraca obiekt JSON jako [opisanej wcześniej](#blobM
 
 Obiekty BLOB można także dołączyć do miejsca do magazynowania. Poniższa ilustracja zawiera listę wszystkich miejsca na punkty końcowe interfejsu API odpowiedzialny za obsługę obiektów blob. Wyświetla ona wszystkie parametry ścieżki do przekazania do tych punktów końcowych.
 
-[![Obiekty BLOB miejsca](media/how-to-add-blobs/blobs-space-api.PNG)](media/how-to-add-blobs/blobs-space-api.PNG#lightbox)
+[![Obiekty BLOB miejsca](media/how-to-add-blobs/blobs-space-api-img.png)](media/how-to-add-blobs/blobs-space-api-img.png#lightbox)
 
 Na przykład aby zwrócić obiekt blob dołączonych do miejsca, należy uwierzytelnionego żądania HTTP GET do:
 
@@ -249,7 +249,7 @@ POPRAWKI zażadaj tego samego punktu końcowego opisów metadanych aktualizacji 
 
 Obiekty BLOB można dołączyć do modeli użytkownika (na przykład, aby skojarzyć obraz profilu). Na poniższej ilustracji przedstawiono końcowych użytkownika odpowiedniego interfejsu API oraz wszelkie parametry wymagane ścieżki, takich jak `id`:
 
-[![Obiekty BLOB użytkownika](media/how-to-add-blobs/blobs-users-api.PNG)](media/how-to-add-blobs/blobs-users-api.PNG#lightbox)
+[![Obiekty BLOB użytkownika](media/how-to-add-blobs/blobs-users-api-img.png)](media/how-to-add-blobs/blobs-users-api-img.png#lightbox)
 
 Na przykład można pobrać obiektu blob dołączonych do użytkownika, należy utworzyć uwierzytelnionego żądania HTTP GET z wszelkimi danymi formularzu wymaganych do:
 

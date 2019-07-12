@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: 3d38efadfb8ad13d072056ef851be99d9540ad4b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0637491a1d7799bcaef594123aab53f89690c86f
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938428"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654032"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Konfigurowanie maszyny Wirtualnej hostowanej na platformie Azure
 
@@ -66,7 +66,7 @@ Dyski systemu operacyjnego Windows są uogólniony za pomocą [narzędzia syspre
 > [!WARNING]
 >  Ponieważ aktualizacje może być uruchamiane automatycznie, po uruchomieniu programu sysprep, należy wyłączyć maszynę Wirtualną, dopóki nie jest ona wdrożona.  Zamknięcie zapobiegnie kolejnych aktualizacji, możliwość dokonywania zmian danego wystąpienia wirtualnego dysku twardego systemu operacyjnego lub zainstalowane usługi.
 
-Aby uzyskać więcej informacji na temat uruchamiania polecenia sysprep, zobacz [kroki, aby uogólnić wirtualnego dysku twardego](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#steps-to-generalize-a-vhd)
+Aby uzyskać więcej informacji na temat uruchamiania polecenia sysprep, zobacz [kroki, aby uogólnić wirtualnego dysku twardego](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep)
 
 ### <a name="linux"></a>Linux
 

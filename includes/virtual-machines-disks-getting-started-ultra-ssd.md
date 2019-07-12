@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/10/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7515c061467419412608bb8103136791845ae093
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 742e0028b1f92beb8300cc97f09d8292259fbc0a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67133399"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67712470"
 ---
 # <a name="enable-and-deploy-azure-ultra-ssds-preview"></a>Włączyć i wdrożyć SSD ultra platformy Azure (wersja zapoznawcza)
 
@@ -33,7 +33,7 @@ Odpowiedź będzie miała podobny do poniższego, formularza, gdzie X jest stref
 
 Zachowaj **stref** wartość reprezentuje strefy dostępności i będą one potrzebne w celu wdrożenia ultra dyski SSD.
 
-|ResourceType  |Name (Nazwa)  |Lokalizacja  |Strefy  |Ograniczenie  |Możliwości  |Wartość  |
+|ResourceType  |Name (Nazwa)  |Location  |Strefy  |Ograniczenie  |Możliwość  |Value  |
 |---------|---------|---------|---------|---------|---------|---------|
 |Dyski     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
@@ -63,7 +63,7 @@ Aby użyć ultra dysków SSD, należy utworzyć maszynę Wirtualną, która jest
 Zastąp lub ustaw **$vmname**, **$rgname**, **$diskname**, **$location**, **$password**, **$user** zmienne własnymi wartościami. Ustaw **$zone** wartość uzyskany ze strefy dostępności [start części tego artykułu](#determine-your-availability-zone). Następnie uruchom następujące polecenie interfejsu wiersza polecenia, aby utworzyć ultra włączone maszyny Wirtualnej:
 
 ```azurecli-interactive
-az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled --zone $zone --authentication-type password --admin-password $password --admin-username $user --attach-data-disks $diskname --size Standard_D4s_v3 --location $location
+az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled true --zone $zone --authentication-type password --admin-password $password --admin-username $user --attach-data-disks $diskname --size Standard_D4s_v3 --location $location
 ```
 
 ### <a name="create-an-ultra-ssd-using-cli"></a>Tworzenie najwyższej dyski SSD przy użyciu interfejsu wiersza polecenia
@@ -150,6 +150,6 @@ $diskupdateconfig = New-AzDiskUpdateConfig -DiskMBpsReadWrite 2000
 Update-AzDisk -ResourceGroupName $resourceGroup -DiskName $diskName -DiskUpdate $diskupdateconfig
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Jeśli chcesz spróbować nowy typ dysku [żądanie dostępu do wersji zapoznawczej w tej ankiecie](https://aka.ms/UltraSSDPreviewSignUp).

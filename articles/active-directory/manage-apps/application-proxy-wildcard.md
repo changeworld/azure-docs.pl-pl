@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cd29fc00a1c25a7c092393591060ca7e2938155
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 5d3b8176566593c5c9e9ff63a6ccbafcb2a35cd5
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481271"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827991"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Aplikacje z symbolami wieloznacznymi serwera proxy aplikacji usługi Azure Active Directory
 
@@ -45,7 +45,9 @@ Można opublikować aplikacji z symbolami wieloznacznymi, w przypadku zarówno w
 
 > http (s) :/ / *. \<domeny\>
 
-Na przykład: `http(s)://*.adventure-works.com`. Gdy wewnętrzne i zewnętrzne adresy URL można użyć różnych domenach, najlepszym rozwiązaniem, powinna być taka sama. Publikowanie aplikacji, zostanie wyświetlony błąd, jeśli jeden z adresów URL nie zawiera symboli wieloznacznych.
+Na przykład: `http(s)://*.adventure-works.com`.
+
+Gdy wewnętrzne i zewnętrzne adresy URL można użyć różnych domenach, najlepszym rozwiązaniem, powinna być taka sama. Publikowanie aplikacji, zostanie wyświetlony błąd, jeśli jeden z adresów URL nie zawiera symboli wieloznacznych.
 
 Jeśli masz dodatkowe aplikacje za pomocą różnych ustawień konfiguracji, należy opublikować te wyjątki, jako osobne aplikacje zastąpić wartości domyślne ustawione dla symbolu wieloznacznego. Aplikacje bez symboli wieloznacznych zawsze pierwszeństwo aplikacje z symbolami wieloznacznymi. Z perspektywy konfiguracji są "tak" zwykłych aplikacji.
 
@@ -60,7 +62,7 @@ Aby rozpocząć pracę, upewnij się, że zostały spełnione następujące wyma
 Gdy [domen niestandardowych](application-proxy-configure-custom-domain.md) są opcjonalne dla innych aplikacji, są one wymagane w przypadku aplikacje z symbolami wieloznacznymi. Tworzenie domen niestandardowych wymaga:
 
 1. Utwórz zweryfikowanej domeny w obrębie platformy Azure.
-2. Przekaż certyfikat SSL w formacie PFX do usługi serwera proxy aplikacji.
+1. Przekaż certyfikat SSL w formacie PFX do usługi serwera proxy aplikacji.
 
 Należy rozważyć użycie certyfikat uniwersalny, aby dopasować aplikację, która ma zostać utworzone. Alternatywnie umożliwia także certyfikat, który znajduje się tylko określonych aplikacji. W takim przypadku tylko te aplikacje, które są wymienione w certyfikacie będą dostępne za pomocą tej aplikacji z symbolami wieloznacznymi.
 
@@ -82,11 +84,11 @@ Poniżej przedstawiono kilka kwestii, które należy podjąć w celu aplikacje z
 
 W przypadku aplikacji symboli wieloznacznych **wewnętrzny adres URL** muszą być sformatowane jako `http(s)://*.<domain>`.
 
-![Wewnętrzny adres URL, użyj formatu HTTP (s) :/ / *. < domena >](./media/application-proxy-wildcard/22.png)
+![Wewnętrzny adres URL, użyj formatu HTTP (s) :/ / *. \<domeny >](./media/application-proxy-wildcard/22.png)
 
 Po skonfigurowaniu **zewnętrzny adres URL**, należy użyć następującego formatu: `https://*.<custom domain>`
 
-![Dla zewnętrznego adresu URL, użyj następującej domeny https://*.<custom format >](./media/application-proxy-wildcard/21.png)
+![W przypadku zewnętrznego adresu URL użyj https://* formatu. \<domeny niestandardowej >](./media/application-proxy-wildcard/21.png)
 
 Innych pozycji symbolu wieloznacznego, wiele symboli wieloznacznych lub inne ciągi wyrażenie regularne nie są obsługiwane i powoduje błędy.
 
@@ -95,11 +97,11 @@ Innych pozycji symbolu wieloznacznego, wiele symboli wieloznacznych lub inne ci�
 Można wykluczyć aplikację z aplikacji symboli wieloznacznych
 
 - Publikowanie aplikacji wyjątek jako regularne aplikacji
-- Włączanie symboli wieloznacznych tylko dla określonych aplikacji za pomocą ustawienia DNS  
+- Włączanie symboli wieloznacznych tylko dla określonych aplikacji za pomocą ustawienia DNS
 
 Publikowanie aplikacji jako aplikacji regularne jest preferowaną metodą, aby wykluczyć aplikację z symbolem wieloznacznym. Należy opublikować wykluczonych aplikacji przed aplikacji symboli wieloznacznych, aby upewnić się, że listy wyjątków są wymuszane na początku wybrać odpowiedni. Najbardziej konkretnej aplikacji będzie zawsze mają pierwszeństwo — do aplikacji opublikowanych jako `budgets.finance.adventure-works.com` pierwszeństwo aplikacji `*.finance.adventure-works.com`, który z kolei pierwszeństwo aplikacji `*.adventure-works.com`.
 
-Można również ograniczyć symboli wieloznacznych, aby działał tylko dla określonych aplikacji za pomocą usługi zarządzania usługą DNS. Najlepszym rozwiązaniem należy utworzyć wpis CNAME, który zawiera symbol wieloznaczny i nieprawidłowy format zewnętrzny adres URL, które zostały skonfigurowane. Jednakże możesz zamiast tego wskazać adresów URL określonych aplikacji symbole wieloznaczne. Na przykład, zamiast z `*.adventure-works.com`, punkt `hr.adventure-works.com`, `expenses.adventure-works.com` i `travel.adventure-works.com individually` do `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net`. 
+Można również ograniczyć symboli wieloznacznych, aby działał tylko dla określonych aplikacji za pomocą usługi zarządzania usługą DNS. Najlepszym rozwiązaniem należy utworzyć wpis CNAME, który zawiera symbol wieloznaczny i nieprawidłowy format zewnętrzny adres URL, które zostały skonfigurowane. Jednakże możesz zamiast tego wskazać adresów URL określonych aplikacji symbole wieloznaczne. Na przykład, zamiast z `*.adventure-works.com`, punkt `hr.adventure-works.com`, `expenses.adventure-works.com` i `travel.adventure-works.com individually` do `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net`.
 
 Jeśli używasz tej opcji, należy również inny wpis CNAME dla wartości `AppId.domain`, na przykład `00000000-1a11-22b2-c333-444d4d4dd444.adventure-works.com`, również wskazując w tej samej lokalizacji. Możesz znaleźć **AppId** na stronie właściwości aplikacji zastosowań symboli wieloznacznych:
 
@@ -110,7 +112,7 @@ Jeśli używasz tej opcji, należy również inny wpis CNAME dla wartości `AppI
 Zastosowań symboli wieloznacznych jest reprezentowane przez tylko jednego kafelka [panelu MyApps](https://myapps.microsoft.com). Domyślnie ten Kafelek jest ukryty. Pokaż Kafelek i ziemi użytkowników na określonej stronie:
 
 1. Postępuj zgodnie z wytycznymi dla [ustawienie adresu URL strony głównej](application-proxy-configure-custom-home-page.md).
-2. Ustaw **Pokaż aplikacji** do **true** na stronie właściwości aplikacji.
+1. Ustaw **Pokaż aplikacji** do **true** na stronie właściwości aplikacji.
 
 ### <a name="kerberos-constrained-delegation"></a>Ograniczone delegowanie protokołu Kerberos
 

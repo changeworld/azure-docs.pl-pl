@@ -2,24 +2,25 @@
 title: Usługa Azure Security Center dla usługi IoT w wersji zapoznawczej Centrum IoT | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak włączyć usługę Azure Security Center dla usługi IoT w usłudze IoT Hub.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: 670e6d2b-e168-4b14-a9bf-51a33c2a9aad
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/16/2019
 ms.author: mlottner
-ms.openlocfilehash: 7030ae1c3a28cdd74671dc95dce59cf86cacf4c9
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f81fb7aeed1b704ebdd82c1f5b83c33a4b05e9ca
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786161"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618003"
 ---
 # <a name="quickstart-enable-service-in-iot-hub"></a>Szybki start: Włącz usługę w usłudze IoT Hub
 
@@ -35,7 +36,7 @@ Ten artykuł zawiera wyjaśnienie, jak włączyć usługi Azure Security Center 
 
 ## <a name="prerequisites-for-enabling-the-service"></a>Wymagania wstępne dotyczące włączania usługi
 
-- Obszar roboczy usługi Log Analytics
+- Obszar roboczy usługi log Analytics
   - Dwa typy informacji są domyślnie przechowywane w obszarze roboczym usługi Log Analytics przez usługę ASC dla IoT; **alerty zabezpieczeń** i **zalecenia**. 
   - Można wybrać dodać magazyn typu dodatkowe informacje, **nieprzetworzonych zdarzeń**. Należy pamiętać, że przechowywanie **nieprzetworzonych zdarzeń** w usłudze Log Analytics niesie ze sobą dodatkowe koszty. 
 - Usługa IoT Hub (warstwa standardowa)
@@ -50,16 +51,16 @@ Ten artykuł zawiera wyjaśnienie, jak włączyć usługi Azure Security Center 
 Aby włączyć zabezpieczenia w usłudze IoT Hub, wykonaj następujące czynności: 
 
 1. Otwórz swoje **usługi IoT Hub** w witrynie Azure portal. 
-2. W obszarze **zabezpieczeń** menu, kliknij przycisk **Przegląd**, następnie kliknij przycisk **Start (wersja zapoznawcza)**. 
+2. W obszarze **zabezpieczeń** menu, kliknij przycisk **Przegląd**, następnie kliknij przycisk **Start (wersja zapoznawcza)** . 
 3. Wybierz **Włącz zabezpieczenia IoT**. 
 4. Podaj szczegóły obszaru roboczego usługi Log Analytics. 
    - Zdecydować się na przechowywanie **nieprzetworzonych zdarzeń** oprócz domyślne typy informacji magazynu, pozostawiając **nieprzetworzone zdarzenia** Przełącz **na**. 
    - Wybiera umożliwiające **bliźniaczej reprezentacji kolekcji** , pozostawiając **bliźniaczej reprezentacji kolekcji** Przełącz **na**. 
-5. Kliknij pozycję **Zapisz**. 
+5. Kliknij polecenie **Zapisz**. 
 
 Gratulacje! Ukończono włączanie ASC IoT w usłudze IoT Hub. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Przejdź do następnego artykułu, aby dowiedzieć się, jak skonfigurować rozwiązanie...
 

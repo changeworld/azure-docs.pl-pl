@@ -4,7 +4,7 @@ description: Służy do wdrażania usługi Azure Disk Encryption na maszynę wir
 services: virtual-machines-windows
 documentationcenter: ''
 author: ejarvi
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: ff77f9fc017627143b14544af03d0d5e80813db9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9a3e135172f0744c053da816b3c77762dbe783c3
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051697"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706112"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Usługa Azure Disk Encryption for Windows (Microsoft.Azure.Security.AzureDiskEncryption)
 
@@ -144,20 +144,20 @@ Za pomocą `AADClientCertificate`:
 | Name (Nazwa) | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Azure.Security | string |
-| type | AzureDiskEncryptionForLinux | string |
+| publisher | Microsoft.Azure.Security | ciąg |
+| type | AzureDiskEncryptionForLinux | ciąg |
 | typeHandlerVersion | 0.1, 1.1 | int |
 | (0.1 schema) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Identyfikator GUID | 
-| (0.1 schema) AADClientSecret | password | string |
-| (0.1 schema) AADClientCertificate | thumbprint | string |
+| (0.1 schema) AADClientSecret | password | ciąg |
+| (0.1 schema) AADClientCertificate | thumbprint | ciąg |
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | Słownik JSON |
-| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
-| KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
-| KeyEncryptionKeyURL | url | string |
-| KeyVaultURL | url | string |
-| (opcjonalnie) Hasło | password | string | 
-| SequenceVersion | uniqueidentifier | string |
-| VolumeType | Systemu operacyjnego, danych, wszystkie | string |
+| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | ciąg | 
+| KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | ciąg |
+| KeyEncryptionKeyURL | url | ciąg |
+| KeyVaultURL | url | ciąg |
+| (opcjonalnie) Hasło | password | ciąg | 
+| SequenceVersion | uniqueidentifier | ciąg |
+| VolumeType | Systemu operacyjnego, danych, wszystkie | ciąg |
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 Na przykład wdrożenie szablonu zobacz [ Tworzenie nowej maszyny Wirtualnej Windows zaszyfrowane na podstawie obrazu z galerii](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image).

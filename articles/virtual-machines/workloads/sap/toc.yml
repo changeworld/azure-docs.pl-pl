@@ -128,6 +128,8 @@
           href: dbms_guide_ibm.md
         - name: Wysoka dostępność programu IBM Db2 LUW na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server
           href: dbms-guide-ha-ibm.md
+        - name: Wysoka dostępność programu IBM Db2 LUW na maszynach wirtualnych platformy Azure w systemie Red Hat Enterprise Linux Server
+          href: high-availability-guide-rhel-ibm-db2-luw.md
         - name: Wdrażanie systemu DBMS usługi Azure Virtual Machines produktu SAP ESE dla obciążenia SAP
           href: dbms_guide_sapase.md
         - name: 'Wdrażanie rozwiązania SAP MaxDB, technologii liveCache i serwera zawartości na platformie Azure'

@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60eeb420c723e22b771b4b86b55c2ce7d6a23659
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 98b0ec2e1defc4701bff798b2fa93900ec8a9a64
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67536829"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595160"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Instrukcje: Podaj opcjonalne oświadczenia do aplikacji usługi Azure AD
 
@@ -93,7 +93,7 @@ Te oświadczenia są zawsze dołączane w tokenach usługi Azure AD w wersji 1.0
 | `nickname`    | Pseudonim                        | Dodatkową nazwę użytkownika, niezależnie od imię lub nazwisko. | 
 | `family_name` | Nazwisko                       | Zawiera ostatni nazwę, nazwisko lub nazwę rodziny użytkownika, zgodnie z definicją w obiekcie użytkownika. <br>"family_name":"Miller" | Obsługiwane w zarządzanych kont usług i Azure AD   |
 | `given_name`  | Imię                      | Zawiera pierwszy lub "" Nazwa użytkownika, według stawki ustalonej obiektu user.<br>"given_name": "Piotr"                   | Obsługiwane w zarządzanych kont usług i Azure AD  |
-| `upn`         | Nazwa główna użytkownika | Identyfikator użytkownika, który może być używany z parametrem username_hint.  Nie trwały identyfikator dla użytkownika i nie należy używać do kluczowych danych. | Zobacz [dodatkowe właściwości](#additional-properties-of-optional-claims) poniżej dla konfiguracji oświadczenia. |
+| `upn`         | Główna nazwa użytkownika | Identyfikator użytkownika, który może być używany z parametrem username_hint.  Nie trwały identyfikator dla użytkownika i nie należy używać do kluczowych danych. | Zobacz [dodatkowe właściwości](#additional-properties-of-optional-claims) poniżej dla konfiguracji oświadczenia. |
 
 ### <a name="additional-properties-of-optional-claims"></a>Dodatkowe właściwości opcjonalnych oświadczeń
 
@@ -193,7 +193,7 @@ Oprócz zestawu standardowych opcjonalnych oświadczeń można również skonfig
 
 > [!Note]
 > - Rozszerzenia schematu katalogu są nowa funkcja platformy Azure tylko do usługi AD, dlatego jeśli aplikacja manifestu żądań niestandardowego rozszerzenia i użytkownika konta Microsoft loguje się do aplikacji, te rozszerzenia nie zostaną zwrócone.
-> - Usługa Azure AD, opcjonalne oświadczeń działają tylko z rozszerzeniem usługi Azure AD i nie ma wpływu na pracę z rozszerzeniem katalogu programu Microsoft Graph. Oba interfejsy API wymagają `Directory.ReadWriteAll` uprawnienie, które można wyrazić tylko przez administratorów.
+> - Usługa Azure AD, opcjonalne oświadczeń działają tylko z rozszerzeniem usługi Azure AD i nie działa z rozszerzeniem katalogu programu Microsoft Graph. Oba interfejsy API wymagają `Directory.ReadWriteAll` uprawnienie, które można wyrazić tylko przez administratorów.
 
 ### <a name="directory-extension-formatting"></a>Rozszerzenie katalogu, formatowanie
 
@@ -254,7 +254,7 @@ W tej sekcji opisano opcje konfiguracji, w obszarze opcjonalne oświadczenia dot
    }
    ```
 
-   | Schemat opcjonalnych oświadczeń | Wartość |
+   | Schemat opcjonalnych oświadczeń | Value |
    |----------|-------------|
    | **Nazwa:** | Musi być "groups" |
    | **Źródło:** | Nie jest używany. Pomiń lub określ wartość null |
@@ -343,7 +343,7 @@ Brak dostępnych wiele opcji do aktualizacji właściwości na konfigurację to�
 
 1. Po zakończeniu aktualizowania manifestu kliknij **Zapisz** można zapisać manifestu
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej na temat standardowych oświadczenia dostarczane przez usługę Azure AD.
 

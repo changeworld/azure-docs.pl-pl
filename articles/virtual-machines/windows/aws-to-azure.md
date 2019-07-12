@@ -4,7 +4,7 @@ description: Przenieś wystąpienie Windows usługi EC2 usług Amazon Web Servic
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: d6a4c5b2b6d9818dffdb1c1fee8c4c0df7cad77c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bc738a33ba50935a2118b8bd0bbfafed83e5f461
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61456210"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722782"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>Przenoszenie maszyny Wirtualnej z systemem Windows z usługi Amazon Web Services (AWS) na maszynie wirtualnej platformy Azure
 
@@ -61,7 +61,7 @@ Po wyeksportowaniu wirtualny dysk twardy, postępuj zgodnie z instrukcjami [jak 
 > Dane opłat za usługi AWS transferu opłatom za pobieranie wirtualnego dysku twardego. Zobacz [Amazon S3 ceny](https://aws.amazon.com/s3/pricing/) Aby uzyskać więcej informacji.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Możesz teraz przekazanie dysku VHD na platformie Azure i Utwórz nową maszynę Wirtualną. 
 

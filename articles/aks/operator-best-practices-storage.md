@@ -2,17 +2,17 @@
 title: Operator najlepsze rozwiązania — magazynu w usłudze Azure Kubernetes usługi (AKS)
 description: Poznaj klastra operator najlepsze rozwiązania dotyczące magazynowania, szyfrowanie danych i kopie zapasowe w usłudze Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.author: iainfou
-ms.openlocfilehash: 9231b3629c10043e72efad4231111e56fd54c626
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: mlearned
+ms.openlocfilehash: b42cdae634a6c2d8d994225d4cb6b440a99918e5
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447162"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614590"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące magazynu i kopii zapasowych w usłudze Azure Kubernetes Service (AKS)
 
@@ -37,7 +37,7 @@ W poniższej tabeli przedstawiono typy dostępnego magazynu i ich funkcji:
 | Przypadek użycia | Wtyczka woluminu | Odczyt/zapis raz | Wiele tylko do odczytu | Odczyt/zapis wielu | Obsługa kontenerów systemu Windows Server |
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
 | Konfiguracja udostępniona       | Azure Files   | Yes | Yes | Yes | Yes |
-| Dane ze strukturą aplikacji        | Azure Disks   | Yes | Nie  | Nie  | Tak |
+| Dane ze strukturą aplikacji        | Azure Disks   | Yes | Nie  | Nie  | Yes |
 | Dane bez określonej struktury, operacje systemu plików | [BlobFuse (wersja zapoznawcza)][blobfuse] | Yes | Yes | Yes | Nie |
 
 Dwa podstawowe typy magazynu określone woluminy w usłudze AKS są wspierane przez dyski platformy Azure lub usługi Azure Files. Aby zwiększyć bezpieczeństwo, oba typy magazynu, należy użyć szyfrowanie usługi Storage (SSE) Azure domyślnie, który szyfruje dane magazynowane. Obecnie nie można zaszyfrować dyski za pomocą usługi Azure Disk Encryption na poziomie węzłów AKS.
@@ -96,7 +96,7 @@ Gdy Twoje aplikacje przechowują i zużywać dane utrwalone na dyskach lub w pli
 
 Omówienie ograniczeń różne podejścia do tworzenia kopii zapasowych danych i jeśli musisz przełączyć w stan spoczynku dane przed migawki. Kopie zapasowe danych nie zawsze pozwalają na przywrócenie środowiska aplikacji, wdrażania klastra. Aby uzyskać więcej informacji na temat tych scenariuszy, zobacz [najlepszych rozwiązań biznesowych ciągłość działalności biznesowej i odzyskiwanie po awarii w usłudze AKS][best-practices-multi-region].
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Ten artykuł koncentruje się na magazyn najlepsze rozwiązania w usłudze AKS. Aby uzyskać więcej informacji na temat podstawy magazynu na platformie Kubernetes, zobacz [kwestie dotyczące magazynu dla aplikacji w usłudze AKS][aks-concepts-storage].
 

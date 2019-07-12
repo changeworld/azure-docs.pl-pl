@@ -126,6 +126,8 @@
   items:
     - name: Tworzenie szablonów
       href: /azure/azure-resource-manager/resource-group-authoring-templates?toc=%2fazure%2fnetworking%2ftoc.json
+    - name: Dostawcy
+      href: networking-partners-msp.md
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Szablony społeczności

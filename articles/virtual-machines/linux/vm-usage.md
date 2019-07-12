@@ -4,7 +4,7 @@ description: Poznać szczegóły użycia maszyny wirtualnej
 services: virtual-machines
 documentationcenter: ''
 author: mmccrory
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-virtual-machine
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: d3e6d3c534a9295b76043dc8a6e01b9c1bb1496e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bc341492779e6ed5aef2505a98ad8a116866fe4d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60743211"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67695276"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Zrozumienie wykorzystania maszyn wirtualnych platformy Azure
 Analizując dane użycia platformy Azure, można uzyskać wgląd w użycie zaawansowanych — szczegółowe informacje, które można włączyć lepiej koszty zarządzania i alokacji w całej organizacji. Ten dokument zawiera szczegółowo omówi informacje dotyczące użycia usługi Azure Compute. Aby uzyskać szczegółowe informacje na temat ogólnego użycia platformy Azure, przejdź do [informacje o rachunku](https://docs.microsoft.com/azure/billing/billing-understand-your-bill).
@@ -82,7 +82,7 @@ Nazwa regionu, w polu Lokalizacja zasobu w szczegóły użycia różni się od n
 |    chinaeast             |    Chiny Wschodnie                            |
 |    chinanorth            |    Chiny Północne                           |
 |    eastasia              |    Azja Wschodnia                             |
-|    eastus                |    Wschodnie stany USA                               |
+|    eastus                |    East US                               |
 |    eastus2               |    Wschodnie stany USA 2                             |
 |    GermanyCentral        |    Niemcy Środkowe                            |
 |    GermanyNortheast      |    Niemcy Północno-Wschodnie                          |
@@ -142,7 +142,7 @@ W modelu klasycznym opłaty za zasoby są agregowane na poziomie usługi w chmur
 ### <a name="why-is-pricing-not-available-for-dsfsgsls-sizes-on-the-pricing-page"></a>Dlaczego jest nie dostępne ceny dla rozmiarów DS/FS/GS/LS na stronie cennika?
 Usługa Premium storage zdolne do maszyn wirtualnych są rozliczane według stawki takie same, jak inne niż premium storage zdolne do maszyn wirtualnych. Różnią się tylko koszty magazynowania. Odwiedź stronę [magazynu stronę z cennikiem](https://azure.microsoft.com/pricing/details/storage/unmanaged-disks/) Aby uzyskać więcej informacji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej na temat szczegółów użycia, zobacz [opis zawartości rachunku dla systemu Microsoft Azure.](https://docs.microsoft.com/azure/billing/billing-understand-your-bill
 )
 

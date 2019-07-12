@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 5e22a3f3b362811fd87460ec41b61a990f4d83fb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9f80edf18a531d6c2850658ddef9c7007edb350f
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60902110"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795525"
 ---
 # <a name="how-do-i--in-application-insights"></a>Jak mogę (...) w usłudze Application Insights?
 ## <a name="get-an-email-when-"></a>Otrzymaj wiadomość e-mail po...
@@ -137,16 +137,25 @@ Dowiedz się więcej o [cenami i limitami przydziału](../../azure-monitor/app/p
 ## <a name="disable-telemetry"></a>Wyłączanie telemetrii
 Aby **dynamicznie zatrzymywania i uruchamiania** zbierania i przekazywania danych telemetrycznych z serwera:
 
-```
+### <a name="aspnet-classic-applications"></a>Aplikacje klasyczne platformy ASP.NET
 
+```csharp
     using  Microsoft.ApplicationInsights.Extensibility;
 
     TelemetryConfiguration.Active.DisableTelemetry = true;
 ```
 
+### <a name="other-applications"></a>Inne aplikacje
+Nie zaleca się używania `TelemetryConfiguration.Active` singleton w konsoli lub aplikacje platformy ASP.NET Core.
+Jeśli utworzono `TelemetryConfiguration` wystąpienia — ustaw `DisableTelemetry` do `true`.
 
+W przypadku aplikacji platformy ASP.NET Core mogą uzyskiwać dostęp do `TelemetryConfiguration` przy użyciu [wstrzykiwanie zależności platformy ASP.NET Core](/aspnet/core/fundamentals/dependency-injection/). Możesz znaleźć więcej szczegółów w [dotycząca usługi Application Insights dla aplikacji platformy ASP.NET Core](../../azure-monitor/app/asp-net-core.md) artykułu.
 
-Aby **wyłączyć wybrany standardowe moduły zbierające** — na przykład liczniki wydajności, żądania HTTP lub zależności - Usuń lub komentarz odpowiednie wiersze w [plik ApplicationInsights.config](../../azure-monitor/app/api-custom-events-metrics.md). Może to zrobisz, na przykład, jeśli chcesz wysłać dane TrackRequest.
+## <a name="disable-selected-standard-collectors"></a>Wyłącz wybrane standardowych modułów zbierających dzienniki
+Można wyłączyć standardowych modułów zbierających dzienniki (na przykład liczniki wydajności, żądania HTTP lub zależności)
+
+* **Aplikacje ASP.NET** — Usuń lub komentarz odpowiednie wiersze w [pliku ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)
+* **Aplikacje platformy ASP.NET Core** -postępuj zgodnie z opcji konfiguracji modułów danych telemetrycznych w [dotycząca usługi Application Insights platformy ASP.NET Core](../../azure-monitor/app/asp-net-core.md#configuring-or-removing-default-telemetrymodules)
 
 ## <a name="view-system-performance-counters"></a>Liczniki wydajności sytemu widoku
 Wśród metryk, które można wyświetlić w Eksploratorze metryk to zbiór systemu liczników wydajności. Ma wstępnie zdefiniowanych blok pod tytułem **serwerów** wyświetlającą kilka z nich.

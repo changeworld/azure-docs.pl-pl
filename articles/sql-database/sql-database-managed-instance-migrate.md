@@ -11,27 +11,31 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 manager: craigg
-ms.date: 02/11/2019
-ms.openlocfilehash: 9fe6ab797eaa325ad802702e95f5a0e5b8e4fef4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 11/07/2019
+ms.openlocfilehash: 7cf54b79fac87905117e321574571890c59315e6
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070427"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827080"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migracja wystąpienia programu SQL Server do usługi Azure SQL Database, wystąpienia zarządzanego
 
 W tym artykule dowiesz się o metodach migracji programu SQL Server 2005 lub nowszych wersji do [wystąpienie zarządzane usługi Azure SQL Database](sql-database-managed-instance.md). Aby uzyskać informacje na temat migracji do pojedynczej bazy danych lub elastycznej puli, zobacz [migracja do bazy danych pojedyncze lub zbiorcze](sql-database-cloud-migrate.md). Migracja informacji o migracji z innych platform, zobacz [Przewodnik po migracji bazy danych Azure](https://datamigration.microsoft.com/).
 
+> [!NOTE]
+> Jeśli chcesz szybko rozpoczynaj i wypróbuj wystąpienie zarządzane, możesz chcieć przejść do [przewodnika Szybki start](/sql-database-managed-instance-quickstart-guide.md) zamiast tej strony. 
+
 Na wysokim poziomie proces migracji bazy danych wygląda następująco:
 
 ![Proces migracji](./media/sql-database-managed-instance-migration/migration-process.png)
 
-- [Ocena zgodności wystąpienia zarządzanego](#assess-managed-instance-compatibility)
-- [Wybierz opcję połączenie aplikacji](sql-database-managed-instance-connect-app.md)
-- [Wdrażanie w optymalnym rozmiarze wystąpienia zarządzanego](#deploy-to-an-optimally-sized-managed-instance)
-- [Wybierz metodę migracji, a następnie przeprowadzić migrację](#select-migration-method-and-migrate)
-- [Monitorowanie aplikacji](#monitor-applications)
+- [Ocena zgodności wystąpienia zarządzanego](#assess-managed-instance-compatibility) gdzie należy upewnić się, że nie istnieją żadne problemy z blokowaniem, które mogą uniemożliwić migracji.
+  - Ten krok obejmuje również tworzenie [odniesienia wydajności](#create-performance-baseline) ustalenie zużycie zasobów wystąpieniem programu SQL Server. Ten krok jest niezbędny, jeśli chcesz, aby o wdrażanie poprawnie skonfigurowanego wystąpienia zarządzanego i sprawdź wykonań po migracji nie ulegają zmianom.
+- [Wybierz opcje łączności z aplikacji](sql-database-managed-instance-connect-app.md)
+- [Wdrażanie do wystąpienia zarządzanego w optymalnym rozmiarze](#deploy-to-an-optimally-sized-managed-instance) gdzie należy wybrać dane techniczne (liczba rdzeni wirtualnych, ilość pamięci) i warstwę wydajności (krytyczne dla działalności, ogólnego przeznaczenia) z wystąpienia zarządzanego.
+- [Wybierz metodę migracji i migrować](#select-migration-method-and-migrate) gdzie Migrowanie baz danych przy użyciu migracji w trybie offline (natywne i przywracania kopii zapasowych, eksportowanie importe bazy danych) lub migracja online (Data Migration Service, replikacji transakcyjnej).
+- [Monitorowanie aplikacji](#monitor-applications) aby upewnić się, że masz oczekiwana wydajność.
 
 > [!NOTE]
 > Aby przeprowadzić migrację poszczególnych baz danych do pojedynczej bazy danych lub elastycznej puli, zobacz [migracji bazy danych programu SQL Server do usługi Azure SQL Database](sql-database-single-database-migrate.md).
@@ -58,7 +62,11 @@ Zarządzany wystąpienia gwarancji 99,99% dostępności nawet w scenariuszach kr
 
 ### <a name="create-performance-baseline"></a>Tworzenie linii bazowej wydajności
 
-Jeśli potrzebujesz porównać wydajność przetwarzania obciążenia w wystąpieniu zarządzanym przy użyciu oryginalnego obciążenia uruchomione na serwerze SQL, należy utworzyć punkt odniesienia wydajności, która będzie służyć do porównania. Parametry, które będziesz potrzebować do mierzenia w ramach wystąpienia programu SQL Server, należą: 
+Jeśli potrzebujesz porównać wydajność przetwarzania obciążenia w wystąpieniu zarządzanym przy użyciu oryginalnego obciążenia uruchomione na serwerze SQL, należy utworzyć punkt odniesienia wydajności, która będzie służyć do porównania. 
+
+Punkt odniesienia wydajności jest zestaw parametrów, takich jak średni/maksymalny użycie procesora CPU, dysku średni/maksymalny czas oczekiwania operacji We/Wy, przepustowości, operacje We/Wy, Oczekiwana długość życia strony średni/maksymalny, średni maksymalny rozmiar bazy danych TempDB. Czy chcesz mieć parametry zbliżona lub Lepsza nawet po migracji, więc jest ważne, aby mierzyć i Zarejestruj wartości odniesienia dla tych parametrów. Oprócz parametrów systemu, musisz wybrać zestaw językiem zapytań lub najważniejsze zapytania w swoje obciążenia i miary minimalny/średni/maksymalny czas trwania, użycie procesora CPU dla wybranego zapytania. Te wartości będą umożliwiają porównanie wydajności obciążenia uruchomione na wystąpieniu zarządzanym do oryginalnych wartości w źródle programu SQL Server.
+
+Parametry, które będziesz potrzebować do mierzenia w ramach wystąpienia programu SQL Server, należą: 
 - [Monitoruj użycie procesora CPU w ramach wystąpienia programu SQL Server](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131) i rejestrowania na Średni i szczytowego użycia procesora CPU.
 - [Monitorowanie użycia pamięci w ramach wystąpienia programu SQL Server](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-memory-usage) i określić ilość pamięci używanej przez różne składniki, takie jak pula buforów plan pamięci podręcznej, pula magazynu kolumn [OLTP w pamięci](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage?view=sql-server-2017)itp. Ponadto powinien znajdować się wartości średnia i szczytowe użycie licznika wydajności pamięci oczekiwanej długości życia strony.
 - Monitorowanie użycia operacji We/Wy dysku przy użyciu wystąpienia programu SQL Server źródła [sys.dm_io_virtual_file_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) widoku lub [liczniki wydajności](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-disk-usage).
@@ -72,9 +80,10 @@ Wyniku tego działania zostanie powinna mieć udokumentowane średnia i wartośc
 ## <a name="deploy-to-an-optimally-sized-managed-instance"></a>Wdrażanie na optymalny rozmiar wystąpienia zarządzanego
 
 Wystąpienie zarządzane jest przeznaczony dla lokalnych obciążeń, które planuje przenieść do chmury. Wprowadza [nowy model zakupu](sql-database-service-tiers-vcore.md) , zapewnia większą elastyczność przy wyborze odpowiedniego poziomu zasobów dla obciążeń. W środowisku lokalnym masz prawdopodobnie przyzwyczajeni do ustalania rozmiaru te obciążenia za pomocą rdzeni fizycznych i przepustowość we/wy. Model zakupu dla wystąpienia zarządzanego jest na podstawie rdzeni wirtualnych lub "rdzeni wirtualnych," przy użyciu dodatkowego miejsca do magazynowania i we/wy dostępne oddzielnie. Model rdzenia wirtualnego jest prostszy sposób, aby poznać wymagania dotyczące obliczeń w chmurze, a nie za środowiska lokalnego już dziś. Ten nowy model umożliwia utworzenie odpowiedniego rozmiaru docelowego środowiska w chmurze. Ogólne wskazówki, które mogą być pomocne, aby wybrać warstwę odpowiednią usługę i właściwości są opisane poniżej:
-- [Monitoruj użycie procesora CPU w ramach wystąpienia programu SQL Server](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131) i wyboru ile mocy zasilania obecnie używasz (przy użyciu dynamicznych widoków zarządzania, SQL Server Management Studio lub innych narzędzi do monitorowania). Możesz aprowizować wystąpienie zarządzane, która jest zgodna z liczbą rdzeni, które są używane w programie SQL Server, mając na uwadze, który może być konieczne można skalować do dopasowania właściwości procesora CPU [charakterystykami maszyny Wirtualnej, w którym zainstalowano wystąpienie zarządzane usługi](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#hardware-generation-characteristics).
-- Sprawdź ilość dostępnej pamięci w ramach wystąpienia programu SQL Server, a następnie wybierz [warstwę usługi, która ma pasujące pamięci](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#hardware-generation-characteristics). Przydaje się do mierzenia przewidywanej strony trwałości wystąpieniu programu SQL Server w celu określenia [potrzebujesz dodatkowej pamięci](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Do-you-need-more-memory-on-Azure-SQL-Managed-Instance/ba-p/563444).
-- Zmierz opóźnienia operacji We/Wy podsystemu pliku dokonać wyboru między warstw usług ogólnego przeznaczenia i krytyczne dla działania firmy.
+- Na podstawie użycia procesora CPU, które można udostępnić wystąpienia zarządzanego, która jest zgodna z liczbą rdzeni, które są używane w programie SQL Server w linii bazowej, biorąc pod uwagę charakterystykę tego Procesora może być konieczne można skalować do dopasowania [właściwości maszyny Wirtualnej w przypadku wystąpienia zarządzanego zainstalowane](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
+- Na podstawie użycia pamięci odniesienia wybierz [warstwę usługi, która ma pasujące pamięci](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics). Ilość pamięci nie można bezpośrednio wybrany, dlatego należy wybrać wystąpienia zarządzanego z ilością rdzeni wirtualnych, które ma zgodne pamięci (na przykład 5.1 GB/rdzeń wirtualny 5. generacji — w). 
+- Na podstawie linii bazowej we/wy opóźnienia w podsystemie pliku wybrać ogólnego przeznaczenia (Opóźnienie większe niż 5ms) i krytyczne dla działania firmy warstwy usługi (czas oczekiwania na mniej niż 3 ms).
+- Przepływność według planu bazowego w oparciu wstępnie przydzielić rozmiar danych lub pliki dziennika można pobrać oczekiwana wydajność operacji We/Wy.
 
 Możesz wybrać obliczeniowych i zasobów magazynowania we wdrożeniu czasu, a następnie zmienić je później bez przerwy w działaniu swojej aplikacji za pomocą [witryny Azure portal](sql-database-scale-resources.md):
 
@@ -170,6 +179,13 @@ Zmiana parametrów lub Uaktualnij warstwy usług zapewniające zbiegają się do
 
 ### <a name="monitor-performance"></a>Monitorowanie wydajności
 
+Wystąpienie zarządzane zapewnia wiele zaawansowanych narzędzi do monitorowania i rozwiązywania problemów i należy ich używać do monitorowania wydajności w ramach wystąpienia. Niektóre parametry, z potrzebować do monitorowania są:
+- Użycie procesora CPU na wystąpienie Aby określić robi, liczba rdzeni wirtualnych, które należy aprowizować to prawo dopasowania dla obciążenia.
+- Oczekiwany życia strony w ramach wystąpienia zarządzane, aby określić [potrzebujesz dodatkowej pamięci](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Do-you-need-more-memory-on-Azure-SQL-Managed-Instance/ba-p/563444).
+- Poczekaj statystyk, takich jak `INSTANCE_LOG_GOVERNOR` lub `PAGEIOLATCH` informuje, czy masz problemy związane z magazynowaniem we/wy, szczególnie w warstwie przeznaczenie ogólne, w których konieczne może być wstępnie Przydziel pliki, aby uzyskać lepszą wydajność operacji We/Wy.
+
+## <a name="leverage-advanced-paas-features"></a>Korzystaj z zaawansowanych funkcji PaaS
+
 Gdy są w pełni zarządzana platforma i upewnieniu się, że obciążenie wydajności te same możesz wydajność obciążeń programu SQL Server, należy podjąć korzyści, które są dostarczane automatycznie w ramach usługi SQL Database. 
 
 Nawet wtedy, gdy nie wprowadzasz pewne zmiany w wystąpieniu zarządzanym podczas migracji, istnieje wysokie prawdopodobieństwo, które spowoduje włączenie niektóre z nowych funkcji, gdy pracujesz wystąpienie z zalet najnowszych ulepszeń aparatu bazy danych. Niektóre zmiany są włączone tylko po [poziom zgodności bazy danych został zmieniony](https://docs.microsoft.com/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database).
@@ -181,7 +197,7 @@ Aby wzmocnić zabezpieczenia, należy rozważyć użycie [uwierzytelniania usłu
 
 Oprócz Zaawansowane zarządzanie i funkcje zabezpieczeń, wystąpienie zarządzane zapewnia zestaw zaawansowanych narzędzi, które mogą ułatwić [monitorowania i dostrajania obciążenia](sql-database-monitor-tune-overview.md). [Usługa Azure SQL analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) pozwala na monitorowanie szerokiej gamy wystąpienia zarządzane przez usługę i scentralizowane monitorowanie dużą liczbą wystąpień i baz danych. [Automatyczne dostrajanie](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction) w wystąpieniu zarządzanym stale monitorować wydajność statystyk wykonywania planu SQL i automatycznie rozwiązać problemy z wydajnością zidentyfikowane.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby uzyskać informacje o wystąpieniach zarządzanych, zobacz [co to jest wystąpienie zarządzane?](sql-database-managed-instance.md).
 - Aby uzyskać samouczek, który obejmuje Przywracanie z kopii zapasowej, zobacz [Tworzenie wystąpienia zarządzanego](sql-database-managed-instance-get-started.md).

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 06/20/2019
 ms.author: mhopkins
 ms.subservice: blobs
-ms.openlocfilehash: c5e9981c6854ff778775631f1d671189830e564b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 70afb39be696b660d3f85ae0c4b2c108bceb318c
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435765"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625679"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-for-net"></a>Szybki start: Biblioteka klienta magazynu obiektów Blob platformy Azure dla platformy .NET
 
@@ -179,7 +179,7 @@ Użyj następujących klas platformy .NET, aby wchodzić w interakcje z tymi zas
 * [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount): **CloudStorageAccount** klasa reprezentuje konto usługi Azure storage. Klasa używana do autoryzowania dostępu do magazynu obiektów Blob za pomocą kluczy dostępu do Twojego konta.
 * [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient): **CloudBlobClient** klasy zapewnia punkt dostępu do usługi obiektów Blob w kodzie.
 * [CloudBlobContainer](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer): **CloudBlobContainer** klasa reprezentuje kontener obiektów blob w kodzie.
-* [CloudBlockBlob](//dotnet/api/microsoft.azure.storage.blob.cloudblockblob): **CloudBlockBlob** obiekt reprezentuje blokowych obiektów blob w kodzie. Blokowe obiekty blob składają się z bloków danych, którymi można zarządzać indywidualnie.
+* [CloudBlockBlob](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob): **CloudBlockBlob** obiekt reprezentuje blokowych obiektów blob w kodzie. Blokowe obiekty blob składają się z bloków danych, którymi można zarządzać indywidualnie.
 
 ## <a name="code-examples"></a>Przykłady kodu
 
@@ -384,7 +384,7 @@ Po naciśnięciu klawisza **Enter** aplikacja usunie kontener magazynu i pliki. 
 
 Po zweryfikowaniu plików naciśnij dowolny klawisz, aby zakończyć demonstrację i usunąć pliki testowe.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start opisano następujące czynności: przekazywanie, pobieranie i wyświetlanie listy obiektów blob przy użyciu platformy .NET.
 

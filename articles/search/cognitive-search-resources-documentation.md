@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 225ac86efba8a32b085a5fb7fc41bed48c499eab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 41637fae5592ac292da22303071d51b43116c78b
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65022178"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671904"
 ---
 # <a name="documentation-resources-for-cognitive-search-workloads"></a>Zasoby dokumentacji dla obciążeń wyszukiwania kognitywnego
 
@@ -27,7 +27,7 @@ Pełną dokumentację usługi cognitive search są następujące artykuły.
 + [Co to jest usługa cognitive search?](cognitive-search-concept-intro.md)
 + [Szybki start: Wypróbuj wyszukiwanie kognitywne w portalu](cognitive-search-quickstart-blob.md)
 + [Samouczek: Dowiedz się, usługa cognitive search interfejsów API](cognitive-search-tutorial-blob.md)
-+ [Przykład: tworzenie umiejętności niestandardowej](cognitive-search-create-custom-skill-example.md)
++ [Przykład: Tworzenie niestandardowych umiejętności do wyszukiwania kognitywnego](cognitive-search-create-custom-skill-example.md)
 
 ## <a name="how-to-guidance"></a>Wskazówki dotyczące wykonywania określonych zadań
 + [Jak Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md)
@@ -51,7 +51,7 @@ Pełną dokumentację usługi cognitive search są następujące artykuły.
   + [Microsoft.Skills.Vision.OcrSkill](cognitive-search-skill-ocr.md)
   + [Microsoft.Skills.Util.ShaperSkill](cognitive-search-skill-shaper.md)
 
-+ [Interfejs API REST](https://docs.microsoft.com/rest/api/searchservice/)
++ [REST API](https://docs.microsoft.com/rest/api/searchservice/)
   + [Tworzenie zestawu umiejętności (wersja api-version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
   + [Tworzenie indeksatora (wersja api-version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 

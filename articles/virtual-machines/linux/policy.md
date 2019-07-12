@@ -4,7 +4,7 @@ description: Jak zastosować zasady do Menedżera zasobów systemu Linux maszyny
 services: virtual-machines-linux
 documentationcenter: ''
 author: singhkays
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 06778ab4-f8ff-4eed-ae10-26a276fc3faa
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: kasing
-ms.openlocfilehash: 92aa81281c8b0a6accdcc7b76afefe4fef0488ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0c7b1488921e0708a71caade4599cef367b4b3eb
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966182"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667232"
 ---
 # <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>Stosowanie zasad do maszyn wirtualnych systemu Linux przy użyciu usługi Azure Resource Manager
 Za pomocą zasad, organizacja może wymusić różnych konwencji i reguł w całym przedsiębiorstwie. Wymuszanie żądane zachowanie może pomóc w zmniejszeniu ryzyka, przyczyniając się do sukcesu organizacji. W tym artykule opisano sposób można użyć zasad usługi Azure Resource Manager do definiowania żądane zachowanie w przypadku maszyn wirtualnych w organizacji.
@@ -209,7 +209,7 @@ Możesz chcieć zabraniają użycie niektórych rodzajów rozszerzeń. Na przyk�
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Po zdefiniowaniu regułę zasad (jak pokazano w poprzednich przykładach), musisz utworzyć definicję zasad i przypisać je do zakresu. Zakres może być subskrypcji, grupy zasobów lub zasobu. Aby przypisać zasady, zobacz [użycia Azure portal, aby przypisać i zarządzaniu zasadami zasobów](../../governance/policy/assign-policy-portal.md), [Użyj programu PowerShell, aby przypisać zasady](../../governance/policy/assign-policy-powershell.md), lub [interfejsu wiersza polecenia użyj Azure, aby przypisać zasady](../../governance/policy/assign-policy-azurecli.md).
 * Wprowadzenie do zasad zasobów, zobacz [co to jest usługa Azure Policy?](../../governance/policy/overview.md).
 * Aby uzyskać instrukcje dla przedsiębiorstw dotyczące użycia usługi Resource Manager w celu efektywnego zarządzania subskrypcjami, zobacz [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance) (Szkielet platformy Azure dla przedsiębiorstwa — narzucony nadzór subskrypcji).

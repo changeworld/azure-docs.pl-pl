@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 01/18/2019
+ms.date: 07/10/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 078c62913b903eafe9e0fcfcef4189f5ca735d0f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b4b9e913363938f98999c6a769ba83efbd625b69
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002820"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798320"
 ---
 # <a name="azure-storage-redundancy"></a>Nadmiarowość magazynu platformy Azure
 
@@ -46,12 +46,14 @@ Poniższa tabela zawiera krótkie omówienie zakres trwałości i dostępności,
 | Umowa SLA dotycząca dostępności dla żądań odczytu | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) | Co najmniej 99,99% (99,9% w przypadku warstwy dostępu chłodnego) |
 | Umowa SLA dotycząca dostępności dla żądań zapisu | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) | Co najmniej 99,9% (99% w przypadku warstwy dostępu chłodnego) |
 
+Wszystkie dane na koncie magazynu jest replikowany, w tym blokowe obiekty BLOB i uzupełnialnych obiektów blob, stronicowe obiekty BLOB, kolejek, tabel i plików. Wszystkie typy kont magazynu są replikowane, mimo że ZRS wymaga konta magazynu ogólnego przeznaczenia w wersji 2.
+
 Aby uzyskać informacje dla każdej opcji nadmiarowości, zobacz [cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/). 
 
 Aby uzyskać informacje o usłudze Azure Storage gwarantuje potrzeby trwałości i dostępności, zobacz [umowę SLA usługi Azure Storage](https://azure.microsoft.com/support/legal/sla/storage/).
 
 > [!NOTE]
-> Usługa Premium Storage obsługuje tylko lokalnie nadmiarowym (LRS).
+> Usługa Azure Premium Storage obsługuje tylko lokalnie nadmiarowym (LRS).
 
 ## <a name="changing-replication-strategy"></a>Zmiana strategię replikacji
 Strategia replikacji konta magazynu można zmienić za pomocą [witryny Azure portal](https://portal.azure.com/), [programu Azure Powershell](storage-powershell-guide-full.md), [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), lub jeden z [klient usługi Azure biblioteki](https://docs.microsoft.com/azure/index#pivot=sdkstools). Zmiana typu replikacji konta magazynu nie skutkuje czas przestoju.

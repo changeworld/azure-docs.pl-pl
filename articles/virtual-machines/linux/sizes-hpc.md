@@ -4,7 +4,7 @@ description: Wyświetla listę różnych rozmiarach, dostępne dla systemu Linux
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: jonbeck
-ms.openlocfilehash: 003a14174ff65bab253f27a458d4f3e2c0a1a6db
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 847f25d9be1a8654bbc0435d7874acb0ff793304
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069994"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67695598"
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>Wysoka wydajność obliczenia rozmiarów maszyn wirtualnych
 
@@ -56,7 +56,15 @@ W portalu Azure Marketplace zawiera wiele dystrybucji systemu Linux, które obs�
   "typeHandlerVersion": "1.0",
   } 
   ```
- 
+  
+  Poniższe polecenie instaluje najnowsze rozszerzenia InfiniBandDriverLinux w wersji 1.0 na wszystkich maszynach wirtualnych z funkcją RDMA w istniejącej maszyny Wirtualnej zestawu skalowania o nazwie *myVMSS* wdrożone w grupie zasobów o nazwie *myResourceGroup*:
+  ```powershell
+  $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
+  Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.0"
+  Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "MyVMSS" -VirtualMachineScaleSet $VMSS
+  Update-AzVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -InstanceId "*"
+  ```
+  
   > [!NOTE]
   > W obrazach opartych na systemie CentOS HPC aktualizacji jądra są wyłączone w **yum** pliku konfiguracji. Jest to spowodowane sterowniki RDMA systemu Linux są dystrybuowane jako pakiet RPM i aktualizacje sterowników może nie działać, jeśli jest aktualizowana w jądrze.
   >
@@ -82,6 +90,8 @@ System Azure oferuje kilka opcji tworzenia klastrów HPC maszyn wirtualnych syst
 * **Maszyny wirtualne** — wdrażanie maszyn wirtualnych z funkcją RDMA HPC w ten sam zestaw dostępności (podczas użycie modelu wdrażania usługi Azure Resource Manager). Jeśli używasz klasycznego modelu wdrażania, należy wdrożyć maszyny wirtualne w tej samej usłudze w chmurze. 
 
 * **Zestawy skalowania maszyn wirtualnych** — zestaw skalowania maszyn wirtualnych zestawu, upewnij się, ograniczenie wdrożenia do pojedynczej grupy umieszczania. Na przykład w szablonie usługi Resource Manager, należy ustawić `singlePlacementGroup` właściwość `true`. 
+
+* **MPI między maszynami wirtualnymi** — w przypadku komunikacji MPI w razie potrzeby między maszyny wirtualne (VM), upewnij się, że maszyny wirtualne są w tym samym zestawie dostępności lub maszynę wirtualną, takie same zestawu skalowania.
 
 * **Azure CycleCloud** — Tworzenie klastra HPC w [Azure CycleCloud](/azure/cyclecloud/) do uruchamiania zadań MPI w węzłach systemu Linux.
 

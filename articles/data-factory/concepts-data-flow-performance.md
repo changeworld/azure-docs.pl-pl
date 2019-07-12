@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: bbbc2bc5c47821469ecf15a27195b1bf0c12e6e5
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 1ee266d7d9846a357dce613817affdb0cde5bfdc
+ms.sourcegitcommit: e6cb7ca206a125c05acfd431b5a64391a8dcc6b3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190624"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67569024"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapowanie wydajności przepływów danych i dostosowywania przewodnik
 
@@ -127,7 +127,18 @@ Klikając tę ikonę, zostanie wyświetlona plan wykonywania i profil wydajnośc
 * Miej to na uwadze podczas wybierania to popularne rozwiązanie. Można uruchomić wykorzystać zasoby węzła klastra, w przypadku łączenia wielu plików źródłowych duże w pojedynczym wyjściowym pliku partycji.
 * Aby uniknąć wyczerpaniem zasobów obliczeniowych, w węźle, zachowaj domyślne lub jawnego schematu partycjonowania w usłudze ADF, który optymalizuje wydajność, a następnie dodaj kolejne działania kopiowania w potoku, który łączy wszystkie części pliki z folderu danych wyjściowych do pojedynczego nowe plik. Zasadniczo ta technika oddziela akcji transformacji z scalanie plików i osiąga ten sam wynik jako ustawienie "dane wyjściowe do pojedynczego pliku".
 
-## <a name="next-steps"></a>Kolejne kroki
+### <a name="looping-through-file-lists"></a>Zapętlenie przez listy plików
+
+W większości przypadków przepływu danych w usłudze ADF wykona lepiej z potokiem, który umożliwia przekształcenie źródła przepływu danych do iteracji przez wiele plików. Innymi słowy zaleca się używać symboli wieloznacznych lub listy plików w źródle danych przepływu, aby przejść przez listę dużych plików za pomocą instrukcji ForEach w potoku, wywołanie wykonania przepływu danych w każdej iteracji. Proces przepływu danych będą wykonywane szybciej, umożliwiając tworzenie pętli do wewnątrz przepływu danych.
+
+Na przykład jeśli mam listę plików danych z lipca 2019 I chcesz przetworzyć w folderze w usłudze Blob Storage, będzie wydajniej wywołać jeden raz działania wykonywania przepływu danych z potokiem i użyć symbolu wieloznacznego w źródle, jak to :
+
+```DateFiles/*_201907*.txt```
+
+To będą działać lepiej niż wyszukiwania względem Store obiektów Blob w potoku, która następnie wykonuje iterację we wszystkich dopasowanych plików przy użyciu działania wykonywania przepływu danych wewnątrz pętli ForEach.
+
+## <a name="next-steps"></a>Następne kroki
+
 Zobacz inne przepływ danych artykuły związane z wydajnością:
 
 - [Zakładka Optymalizuj przepływ danych](concepts-data-flow-optimize-tab.md)

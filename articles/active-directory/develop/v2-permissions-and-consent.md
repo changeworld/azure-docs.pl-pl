@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73b832002d1c15505e8ae845ac2585548c8e080f
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 032cc0edaa140d82124a7369232cb82bf6c00c10
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482139"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702705"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Uprawnienia i zgody w punkcie końcowym platforma tożsamości firmy Microsoft
 
@@ -53,7 +53,7 @@ Dotyczy to także wszystkie zasoby innych firm, które mają zintegrowany z plat
 
 Definiując te rodzaje uprawnień, zasób ma precyzyjną kontrolę nad jego danych i jak funkcja interfejsu API jest widoczna. Aplikacja innej firmy mogą żądać tych uprawnień z użytkowników i administratorów, którzy musi zatwierdzić żądanie, zanim aplikacja może uzyskiwać dostęp do danych lub działanie w imieniu użytkownika. Według segmentu zasobu funkcje na mniejsze zestawy uprawnień, aplikacje innych firm mogą być wbudowane do żądania tylko określone uprawnienia, które są im niezbędne do wykonywania ich funkcji. Użytkownicy i Administratorzy mogą wiedzieć, dokładnie dane aplikacji ma dostęp do i może być większa pewność nie zachowuje się ze złośliwymi działaniami. Deweloperzy należy zawsze przestrzegać pojęcie minimalnych uprawnień, pytaniem, czy są dostępne tylko uprawnienia, które są im niezbędne do ich działanie aplikacji.
 
-OAuth w wersji 2.0 tego rodzaju uprawnienia są nazywane *zakresy*. One również często nazywane *uprawnienia*. Uprawnienie jest reprezentowany w platformie tożsamości firmy Microsoft jako wartość ciągu. Wartość ciągu dla każdego uprawnienia, kontynuując przykład programu Microsoft Graph, jest:
+OAuth w wersji 2.0 tego rodzaju uprawnienia są nazywane *zakresy*. Dlatego są często nazywane *uprawnienia*. Uprawnienie jest reprezentowany w platformie tożsamości firmy Microsoft jako wartość ciągu. Wartość ciągu dla każdego uprawnienia, kontynuując przykład programu Microsoft Graph, jest:
 
 * Odczytaj kalendarza użytkownika za pomocą `Calendars.Read`
 * Zapisać przy użyciu kalendarza użytkownika `Calendars.ReadWrite`
@@ -167,7 +167,8 @@ Zgoda administratora nie akceptuje parametr zakresu, więc żądanej wszelkie up
 #### <a name="to-configure-the-list-of-statically-requested-permissions-for-an-application"></a>Aby skonfigurować listę statycznie żądanych uprawnień dla aplikacji
 
 1. Przejdź do aplikacji w [rejestracje aplikacji z witryny Azure portal](https://go.microsoft.com/fwlink/?linkid=2083908) środowiskiem lub [tworzenie aplikacji](quickstart-register-app.md) Jeśli jeszcze go.
-2. Znajdź **Microsoft Graph uprawnienia** sekcji, a następnie Dodaj uprawnienia, których wymaga aplikacja.
+2. Znajdź **uprawnienia do interfejsu API** sekcji, a w ramach uprawnień interfejsu API kliknij przycisk Dodaj uprawnienia.
+3. Wybierz **programu Microsoft Graph** z listy dostępnych interfejsów API, a następnie Dodaj uprawnienia, których wymaga aplikacja.
 3. **Zapisz** rejestracji aplikacji.
 
 ### <a name="recommended-sign-the-user-into-your-app"></a>Zalecane: Zaloguj się użytkownika do aplikacji

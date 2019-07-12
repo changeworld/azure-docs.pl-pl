@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/15/2018
-ms.author: sumeet.mittal
+ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 54178ae8988266c751ae0e23ae8c5e6ef7a16f20
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: e36e1ca17b5106c79076d1c62e737ba60907ab19
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67544154"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67666472"
 ---
 # <a name="virtual-network-service-endpoints"></a>Punkty końcowe usługi dla sieci wirtualnej
 
@@ -39,11 +39,12 @@ Ta funkcja jest dostępna dla następujących regionów i usług platformy Azure
 - **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : ogólnie dostępna we wszystkich regionach świadczenia usługi Azure.
 - **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : ogólnie dostępna we wszystkich regionach świadczenia usługi Azure.
 - **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : ogólnie dostępna we wszystkich regionach platformy Azure, w których jest dostępna usługa ADLS Gen1.
+- **[Usługa Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)** : Ogólnie dostępna we wszystkich regionach platformy Azure, w których usługi App service jest dostępna
 
 **Publiczna wersja zapoznawcza**
 
 - **[Usługa Azure Container Registry](../container-registry/container-registry-vnet.md)** : W wersji zapoznawczej dostępne we wszystkich regionach platformy Azure, w których usługa Azure Container Registry jest dostępna.
-- **[Usługa Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/app-service-ip-restrictions)** : W wersji zapoznawczej dostępne we wszystkich regionach platformy Azure, w których usługi App service jest dostępna.
+.
 
 Najbardziej aktualne powiadomienia można znaleźć na stronie [aktualizacji usługi Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network).
 
@@ -137,13 +138,13 @@ Niektóre usługi platformy Azure, takimi jak konta magazynu platformy Azure, mo
 
 ## <a name="virtual-network-service-endpoint-policies"></a>Zasady punktu końcowego usługi dla sieci wirtualnej 
 
-Zasady punktu końcowego usługi dla sieci wirtualnej umożliwiają filtrowanie ruchu sieci wirtualnej do usług platformy Azure, zezwalając na stosowanie tylko wybranych zasobów usług platformy Azure w punktach końcowych usługi. Zasady punktu końcowego usługi zapewniają szczegółową kontrolę dostępu w przypadku ruchu w sieci wirtualnej do usług platformy Azure. Więcej informacji: [Zasady punktu końcowego usługi sieci wirtualnej](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
+Zasady punktu końcowego usługi dla sieci wirtualnej umożliwiają filtrowanie ruchu sieci wirtualnej do usług platformy Azure, zezwalając na stosowanie tylko wybranych zasobów usług platformy Azure w punktach końcowych usługi. Zasady punktu końcowego usługi zapewniają szczegółową kontrolę dostępu w przypadku ruchu w sieci wirtualnej do usług platformy Azure. Więcej informacji: [Zasady punktu końcowego usługi dla sieci wirtualnej](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 
 ## <a name="faqs"></a>Często zadawane pytania
 
 Często zadawane pytania można znaleźć w temacie [Punkt końcowy usługi dla sieci wirtualnej — często zadawane pytania](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#virtual-network-service-endpoints)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak [skonfigurować punkty końcowe usługi dla sieci wirtualnej](tutorial-restrict-network-access-to-resources.md)
 - Dowiedz się, jak [zabezpieczyć konto usługi Azure Storage w sieci wirtualnej](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

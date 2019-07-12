@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: workload management
+ms.subservice: workload-management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0147977307ec22134777d6c3e8242a4191362ada
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2a78f342d7e4b14700224bb63598f41ca95322a5
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66233838"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595410"
 ---
 # <a name="azure-sql-data-warehouse-workload-importance"></a>Znaczenie obciążenia w usłudze Azure SQL Data Warehouse
 
@@ -59,7 +59,7 @@ Q6 jest przesyłany z klasą zasobów smallrc o 9:01:00.
 
 Ponieważ Q5 mediumrc, wymaga dwóch gniazd współbieżności.  Q5 musi czekać na dwa uruchomionych zapytań, aby zakończyć.  Jednak po zakończeniu jednego z uruchomionych zapytań (kwartał 1-4), Q6 zaplanowano od razu, ponieważ istnieją zasoby, aby wykonać zapytanie.  Jeśli Q5 ważności wyższym niż Q6, Q6 czeka, aż Q5 jest uruchomiony, przed rozpoczęciem wykonywania.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby uzyskać więcej informacji na temat tworzenia klasyfikatora, zobacz [tworzenie KLASYFIKATORA obciążenia (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  
 - Aby uzyskać więcej informacji na temat klasyfikacji obciążenia usługa SQL Data Warehouse, zobacz [klasyfikacji obciążenia](sql-data-warehouse-workload-classification.md).  

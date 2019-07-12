@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 00147002317f15345f01c88e81973837d16e6669
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8eedea2e867dd2a5e2d9cf7e92f47c007bc48af1
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65797625"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707083"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Typowe problemy z usługą Azure IoT Edge i ich rozwiązania
 
@@ -343,6 +343,8 @@ Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/ada
 Demon usługi IoT Edge wymusza identyfikator procesu dla wszystkich modułów nawiązywania połączenia z edgeHub ze względów bezpieczeństwa. Weryfikuje, że wszystkie komunikaty wysyłane przez moduł pochodzą z Identyfikatorem procesu głównego modułu. Jeśli komunikat jest przesyłany przez moduł z Identyfikatorem innego procesu niż ustanowione początkowo, odrzuci wiadomości z komunikatem o błąd 404.
 
 ### <a name="resolution"></a>Rozwiązanie
+Począwszy od wersji 1.0.7 wszystkie procesy modułu masz uprawnień do połączenia. Jeśli uaktualnienie do 1.0.7 nie jest możliwe, wykonaj następujące czynności. Aby uzyskać więcej informacji, zobacz [1.0.7 wersji dziennika zmian](https://github.com/Azure/iotedge/blob/master/CHANGELOG.md#iotedged-1).
+
 Upewnij się, że ten sam identyfikator procesu jest zawsze używany przez niestandardowy moduł usługi IoT Edge do wysyłania komunikatów do edgeHub. Na przykład, upewnij się, że `ENTRYPOINT` zamiast `CMD` polecenia w pliku platformy Docker, ponieważ `CMD` doprowadzi do jednego procesu Identyfikator modułu i inny identyfikator procesu działania głównego programu, natomiast polecenia powłoki bash `ENTRYPOINT` doprowadzi do Identyfikator pojedynczego procesu.
 
 
@@ -380,7 +382,7 @@ Powyższy przykład ustawia serwer DNS publicznie usługi DNS. Jeśli urządzeni
 
 Miejsce `daemon.json` we właściwym miejscu dla danej platformy: 
 
-| Platforma | Lokalizacja |
+| Platforma | Location |
 | --------- | -------- |
 | Linux | `/etc/docker` |
 | Host Windows za pomocą kontenerów Windows | `C:\ProgramData\iotedge-moby\config` |
@@ -410,7 +412,7 @@ Można ustawić serwera DNS dla każdego modułu *CreateOptions, można żądań
 
 Pamiętaj ustawić dla *edgeAgent* i *edgeHub* także modułów. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Uważasz, że znaleziono usterkę platformy IoT Edge? [Prześlij problem](https://github.com/Azure/iotedge/issues) tak, aby mogli dalej ulepszać. 
 
 Jeśli masz więcej pytań, Utwórz [żądania pomocy technicznej](https://portal.azure.com/#create/Microsoft.Support) Aby uzyskać pomoc. 

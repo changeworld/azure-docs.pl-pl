@@ -5,15 +5,15 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 06/18/2019
+ms.date: 07/11/2019
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 5358fe387d2a371d96d46d8546ce0f20b47ca54b
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 099bca7483100da1a4ee2f8f10057c416ad145b0
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206487"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67841492"
 ---
 Stosowanie tagów do Twoich zasobów platformy Azure, zapewniając metadanych umożliwia ich logiczne zorganizowanie w taksonomii. Każdy tag składa się z nazwy i pary wartości. Na przykład można zastosować nazwę „Środowisko” i wartość „Produkcyjne” do wszystkich zasobów w środowisku produkcyjnym.
 
@@ -24,9 +24,9 @@ Taksonomii należy wziąć pod uwagę samoobsługi metadane tagowania strategii 
 Tagi mają następujące ograniczenia:
 
 * Nie wszystkie typy zasobów obsługują tagów. Aby określić, jeśli tag można zastosować do typu zasobu, zobacz [obsługę dla zasobów platformy Azure tagów](../articles/azure-resource-manager/tag-support.md).
-* Każdy zasób lub grupa zasobów może mieć co najwyżej 15 par nazwa/wartość tagu. To ograniczenie dotyczy tylko tagów stosowanych bezpośrednio do grupy zasobów lub zasobu. Grupa zasobów może zawierać wiele zasobów, z których każdy może mieć 15 par nazwa/wartość tagu. Jeśli masz więcej niż 15 wartości, które należy skojarzyć z zasobem, użyj ciągu JSON jako wartości tagu. Ciąg JSON może zawierać wiele wartości, które są stosowane do jednej nazwy tagu. W tym artykule przedstawiono przykład przypisywania ciągu JSON do tagu.
+* Każdy zasób lub grupa zasobów może mieć maksymalnie 50 par nazwa/wartość tagu. Obecnie jest obsługiwany tylko kont magazynu, liczba tagów wynosząca 15, ale ten limit zostanie wygenerowany, 50 w przyszłej wersji. Jeśli potrzebujesz więcej tagów niż maksymalna liczba dozwolonych, użyj ciągu JSON jako wartości tagu. Ciąg JSON może zawierać wiele wartości, które są stosowane do jednej nazwy tagu. Grupa zasobów może zawierać wiele zasobów, w których każdy może mieć 50 par nazwa/wartość tagu.
 * Nazwa tagu może zawierać maksymalnie 512 znaków, a wartość tagu jest ograniczona do 256 znaków. W przypadku kont magazynu nazwa tagu jest ograniczona do 128 znaków, a wartość tagu jest ograniczona do 256 znaków.
-* Virtual Machines i Virtual Machine Scale Sets są ograniczone do 2048 znaków, aby uzyskać wszystkie nazwy i wartości tagów w sumie. Tagi uogólnionej maszyny wirtualne nie są obsługiwane.
+* Tagi uogólnionej maszyny wirtualne nie są obsługiwane.
 * Tagi zastosowane do grupy zasobów nie są dziedziczone przez zasoby należące do tej grupy.
 * Nie można zastosować znaczniki do klasycznych zasobów, takich jak usługi w chmurze.
 * Nazwy tagów nie może zawierać następujących znaków: `<`, `>`, `%`, `&`, `\`, `?`, `/`

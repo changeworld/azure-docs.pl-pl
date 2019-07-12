@@ -12,12 +12,12 @@ author: wenjiefu
 ms.author: wenjiefu
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: 68a5d5278e1181695695647cff187d4b95624b40
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 05723a90725992e6b955524a2d35c82d3378ee3d
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537648"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621854"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Rozwiązywanie problemów z wykonanie pakietu w środowiska SSIS integration runtime
 
@@ -57,11 +57,33 @@ Potencjalną przyczyną jest to, że dostawca ADO.NET, użyte w pakiecie nie jes
 
 Ten błąd mógł wystąpić znany problem w starszych wersjach programu SQL Server Management Studio (SSMS). Jeśli pakiet zawiera składnik niestandardowej (na przykład składniki usług SSIS Azure Feature Pack lub partnera), który nie jest zainstalowany na komputerze, gdzie SSMS jest używany w celu wdrożenia, SSMS usunie składnika i spowodować wystąpienie błędu. Uaktualnij [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) do najnowszej wersji, która ma problemu.
 
+### <a name="error-messagessis-executor-exit-code--1073741819"></a>Komunikat o błędzie: "kod zakończenia wykonywania usług SSIS: -1073741819."
+
+* Potencjalną przyczyną & Zalecana akcja:
+  * Ten błąd może być ze względu na ograniczenia dla programu Excel źródłowym i docelowym, gdy wiele źródeł programu Excel lub miejsca docelowe są wykonywane równolegle w wielu wątków. Możesz to zrobić obejście tego ograniczenia, zmień składników programu Excel, aby wykonywanie było sekwencyjne lub oddzielić je do różnych pakietach i wyzwalacza za pośrednictwem "Wykonanie pakietu Task" ExecuteOutOfProcess ustawiona jako PRAWDA.
+
 ### <a name="error-message-there-is-not-enough-space-on-the-disk"></a>Komunikat o błędzie: "Nie ma wystarczającej ilości miejsca na dysku"
 
 Ten błąd oznacza, że dysk lokalny jest używany w w węzeł środowiska SSIS integration runtime. Sprawdź, czy Twoje pakietu lub instalacja niestandardowa zużywa dużo miejsca na dysku:
 * Jeśli dysk jest używany przez pakiet, nastąpi zwolnienie się po zakończeniu wykonywania pakietu.
 * Jeśli dysk jest używany przez ustawienia niestandardowe, można będzie muszą można zatrzymać środowiska SSIS integration runtime zmodyfikować skrypt i uruchom ponownie środowisko integration runtime. Kontener całej usługi Azure blob, który określonym dla instalacji niestandardowej zostaną skopiowane do węzeł środowiska SSIS integration runtime, więc sprawdza, czy jest niepotrzebne zawartości w ramach tego kontenera.
+
+### <a name="error-message-failed-to-retrieve-resource-from-master-microsoftsqlserverintegrationservicesscalescaleoutcontractcommonmasterresponsefailedexception-code300004-descriptionload-file--failed"></a>Komunikat o błędzie: "Nie można pobrać zasobu z głównej. Microsoft.SqlServer.IntegrationServices.Scale.ScaleoutContract.Common.MasterResponseFailedException: Code:300004. Opis: Załaduj plik "***" nie powiodło się. "
+
+* Potencjalną przyczyną & Zalecana akcja:
+  * Jeśli działania SSIS jest wykonywane pakietu z systemu plików (plik pakietu lub pliku projektu), ten błąd wystąpi, jeśli plik projektu, pakietu lub konfiguracji nie jest dostępny za pomocą poświadczeń dostępu do pakietu, podane w działaniu usług SSIS
+    * Jeśli używasz plików platformy Azure:
+      * Ścieżka pliku powinien zaczynać się znakiem \\ \\ \<nazwa konta magazynu\>. file.core.windows.net\\\<ścieżka udziału plików\>
+      * Domena powinna być "Azure"
+      * Nazwa użytkownika powinna być \<nazwa konta magazynu\>
+      * Hasło powinno mieć \<klucz dostępu do magazynu\>
+    * Jeśli jesteś przy użyciu pliku lokalnego, sprawdź, czy jeśli sieć wirtualną, poświadczenia dostępu do pakietu i uprawnienia są prawidłowo skonfigurowane czemu środowiska Azure-SSIS integration runtime można uzyskiwać dostęp do udziału plików w środowisku lokalnym
+
+### <a name="error-message-the-file-name--specified-in-the-connection-was-not-valid"></a>Komunikat o błędzie: "Nazwa pliku"..." określonych w połączenia jest nieprawidłowy "
+
+* Potencjalną przyczyną & Zalecana akcja:
+  * Określono nieprawidłową nazwę pliku
+  * Upewnij się, że używasz nazwy FQDN (w pełni kwalifikowana nazwa domeny) zamiast krótki czas w Menedżera połączeń
 
 ### <a name="error-message-cannot-open-file-"></a>Komunikat o błędzie: "Nie można otworzyć pliku"...""
 

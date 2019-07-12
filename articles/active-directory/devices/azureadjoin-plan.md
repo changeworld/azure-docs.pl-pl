@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36429feed99c421984ed55d4e506954aa30f0040
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 4332c921af770cb47e9a9a779d0bd148153fcd31
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482126"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67666143"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Instrukcje: Planowanie implementacji dołączania do usługi Azure AD
 
@@ -70,7 +70,7 @@ Te scenariusze nie wymagają skonfigurowania serwera federacyjnego uwierzytelnia
 - **WS-Fed:** Ten protokół jest wymagany do przyłączania urządzenia do usługi Azure AD.
 - **WS-Trust:** Ten protokół jest wymagana do logowania się na urządzeniu dołączonym do usługi Azure AD. 
 
-Jeśli dostawca tożsamości nie obsługuje tych protokołów, dołączania do usługi Azure AD nie działa natywnie. Począwszy od systemu Windows 10 1809 użytkownicy zalogować się do urządzenia połączonego z usługi Azure AD za pomocą dostawcy tożsamości opartej na SAML za pośrednictwem [sieci web logowania w systemie Windows 10](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10). Obecnie logowanie w sieci web jest tylko do wersji zapoznawczej funkcji.
+Jeśli dostawca tożsamości nie obsługuje tych protokołów, dołączania do usługi Azure AD nie działa natywnie. Począwszy od systemu Windows 10 1809 użytkownicy zalogować się do urządzenia połączonego z usługi Azure AD za pomocą dostawcy tożsamości opartej na SAML za pośrednictwem [sieci web logowania w systemie Windows 10](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10). Obecnie logowanie w sieci web jest w wersji zapoznawczej i nie jest zalecane w przypadku wdrożeń produkcyjnych.
 
 ### <a name="smartcards-and-certificate-based-authentication"></a>Karty inteligentne i uwierzytelniania opartego na certyfikatach
 
@@ -283,7 +283,7 @@ W przypadku urządzeń przyłączonych do dostawcy usług MDM skonfigurowany dla
 
 Można użyć tej implementacji, aby [wymagają zarządzanych urządzeń do uzyskania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego](../conditional-access/require-managed-devices.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Dołączanie urządzenia z systemem Windows 10 nowe za pomocą usługi Azure AD podczas pierwszego uruchomienia](azuread-joined-devices-frx.md)

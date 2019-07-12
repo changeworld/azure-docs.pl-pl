@@ -11,13 +11,13 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 03/07/2019
-ms.author: brahmnes
-ms.openlocfilehash: cf06c7c21d30fb107baee0d43b33b221c7da2773
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: bfung
+ms.openlocfilehash: 3e8ce3c2eff7b1f7184bb37f141e62563d4fe714
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439901"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612683"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>Włączanie rozszerzenia Snapshot Debugger dla aplikacji .NET w usłudze Azure App Service
 
@@ -52,7 +52,7 @@ Application Insights Snapshot Debugger jest wstępnie zainstalowany jako częś�
 Wykonaj te same czynności, jak w przypadku **Włączanie rozszerzenia Snapshot Debugger**, ale przełączyć oba przełączniki dla rozszerzenia Snapshot Debugger do **poza**.
 Zaleca się, że masz rozszerzenia Snapshot Debugger włączone na wszystkie Twoje aplikacje działają nawet pod dużym diagnostyka wyjątków aplikacji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Generowanie ruchu do aplikacji, które mogą wyzwalać wyjątek. Poczekaj 10 do 15 minut dla migawek do wysłania do wystąpienia usługi Application Insights.
 - Zobacz [migawek](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json#view-snapshots-in-the-portal) w witrynie Azure portal.

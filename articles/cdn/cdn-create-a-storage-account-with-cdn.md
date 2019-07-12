@@ -7,7 +7,7 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: cbc2ff98-916d-4339-8959-622823c5b772
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 05/24/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: ea4134c486310592f1f0f344ae26a11276143faf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d8e1c3f845af6edf274aa95797523ace07cf820c
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60680124"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594027"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Szybki start: Integrowanie konta usługi Azure storage z usługą Azure CDN
 W tym przewodniku Szybki start włączysz usługę [Azure Content Delivery Network (CDN)](cdn-overview.md), aby buforować zawartość z magazynu Azure. Usługa Azure CDN oferuje deweloperom globalne rozwiązanie umożliwiające dostarczanie zawartości z wysoką przepustowością. Może buforować obiekty blob oraz zawartość statyczną wystąpień obliczeniowych na węzłach fizycznych w Stanach Zjednoczonych, Europie, Azji, Australii i Ameryce Południowej.
@@ -55,7 +55,7 @@ Do utworzenia konta magazynu, m.in. w witrynie Azure Portal i programie PowerShe
    
     Ta wartość staje się nazwą hosta w identyfikatorze URI, która jest wykorzystywana do adresowania zasobów blob, kolejki lub tabeli odpowiadających subskrypcji. Aby adresować zasób kontenera w magazynie obiektów blob, użyj identyfikatora URI w następującym formacie:
    
-    http://*&lt;StorageAcountLabel&gt;*.blob.core.windows.net/*&lt;mycontainer&gt;*
+    http:// *&lt;StorageAcountLabel&gt;* .blob.core.windows.net/ *&lt;mycontainer&gt;*
 
     gdzie *&lt;StorageAccountLabel&gt;* odwołuje się do wartości wprowadzonej w polu **Nazwa**.
    
@@ -66,11 +66,11 @@ Do utworzenia konta magazynu, m.in. w witrynie Azure Portal i programie PowerShe
     
 4. Dla pozostałych ustawień należy użyć wartości podanych w poniższej tabeli:
 
-    | Ustawienie  | Wartość |
+    | Ustawienie  | Value |
     | -------- | ----- |
     | **Model wdrażania** | Użyj wartości domyślnej. |
     | **Rodzaj konta** | Użyj wartości domyślnej. |
-    | **Lokalizacja**    | Z listy rozwijanej wybierz pozycję **Środkowe stany USA**. |
+    | **Location**    | Z listy rozwijanej wybierz pozycję **Środkowe stany USA**. |
     | **Replikacja** | Użyj wartości domyślnej. |
     | **Wydajność** | Użyj wartości domyślnej. |
     | **Wymagany bezpieczny transfer** | Użyj wartości domyślnej. |
@@ -98,7 +98,7 @@ Usługę Azure CDN dla konta magazynu można włączyć bezpośrednio z konta ma
     | -------- | ----- |
     | **Profil CDN** | Wybierz **Utwórz nową** i wprowadź nazwę profilu, na przykład *my-cdn-profile-123*. Ta nazwa musi być unikatowa w skali globalnej.  |
     | **Warstwa cenowa** | Z listy rozwijanej wybierz pozycję **Verizon — Standardowa**. |
-    | **Nazwa punktu końcowego usługi CDN** | Wprowadź nazwę hosta punktu końcowego usługi, czyli *my-endpoint-123*. Ta nazwa musi być unikatowa w skali globalnej. Ta nazwa jest używana do uzyskiwania dostępu do buforowanych zasobów w domenie _&lt;nazwa punktu końcowego&gt;_.azureedge.net. |
+    | **Nazwa punktu końcowego usługi CDN** | Wprowadź nazwę hosta punktu końcowego usługi, czyli *my-endpoint-123*. Ta nazwa musi być unikatowa w skali globalnej. Ta nazwa jest używana do uzyskiwania dostępu do buforowanych zasobów w domenie _&lt;nazwa punktu końcowego&gt;_ .azureedge.net. |
     | **Nazwa hosta źródła** | Domyślnie nowy punkt końcowy CDN używa jako nazwy serwera pochodzenia nazwy hosta konta magazynu. |
 
 3. Wybierz pozycję **Utwórz**. Po utworzeniu punktu końcowego zostanie on wyświetlony na liście punktów końcowych.
@@ -142,7 +142,7 @@ W poprzednich krokach utworzono profil i punkt końcowy usługi CDN w grupie zas
 
 3. Aby usunąć konto magazynu, wybierz je z pulpitu nawigacyjnego, a następnie wybierz opcję **Usuń** z górnego menu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej na temat dodawania domeny niestandardowej i włączania protokołu HTTP w punkcie końcowym usługi CDN, zapoznaj się z następującym samouczkiem:
 
 > [!div class="nextstepaction"]

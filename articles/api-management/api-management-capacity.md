@@ -11,16 +11,16 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
-ms.openlocfilehash: fe77361c4c9bed9310f8443ed4ff37faf7ea53a9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c39c585d9947422260868734ec89814d8a510089
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60658334"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836954"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Pojemność wystąpienia usługi Azure API Management
 
-**Pojemność** jest pojedynczą najważniejszą [metryki usługi Azure Monitor](api-management-howto-use-azure-monitor.md#view-metrics-of-your-apis) dokonywania świadomych decyzji, czy wykonać skalowanie wystąpienia usługi API Management, aby pomieścić większe obciążenie. Konstrukcja jest złożona i nakłada pewne zachowanie.
+**Pojemność** jest dla Ciebie najważniejsza [metryki usługi Azure Monitor](api-management-howto-use-azure-monitor.md#view-metrics-of-your-apis) dokonywania świadomych decyzji, czy wykonać skalowanie wystąpienia usługi API Management, aby pomieścić większe obciążenie. Konstrukcja jest złożona i nakłada pewne zachowanie.
 
 W tym artykule opisano, jakie **pojemności** jest i jak działa. Pokazuje, jak uzyskać dostęp do **pojemności** metryki w witrynie Azure portal, a także sugeruje, kiedy należy rozważyć skalowanie lub uaktualnienie wystąpienia usługi API Management.
 
@@ -40,12 +40,14 @@ Aby wykonać kroki z tego artykułu, musisz mieć:
 
 ![Metryka pojemności](./media/api-management-capacity/capacity-ingredients.png)
 
-**Pojemność** stanowi wskaźnik obciążenie wystąpienia usługi APIM. Odzwierciedla użycie zasobów (procesor CPU, pamięci) i długości kolejki sieci. Użycie procesora CPU i pamięci, co spowoduje wyświetlenie zużycie zasobów:
+**Pojemność** stanowi wskaźnik obciążenie wystąpienia usługi API Management. Odzwierciedla użycie zasobów (procesor CPU, pamięci) i długości kolejki sieci. Użycie procesora CPU i pamięci, co spowoduje wyświetlenie zużycie zasobów:
 
-+ Usługi APIM, takie jak zarządzanie akcji lub żądania przetwarzania, wraz z ewentualnym przekazuje żądania, czy używasz zasad
++ Usługi API Management, takie jak zarządzanie akcji lub żądania przetwarzania, wraz z ewentualnym przekazuje żądania, czy używasz zasad
 + procesów wybranego systemu operacyjnego, w tym procesy, które obejmują koszt uzgodnienia protokołu SSL na nowe połączenia.
 
 Łączna liczba **pojemności** jest średnią z wartości z każdej jednostki wystąpienia usługi API Management.
+
+Mimo że **metryki pojemności** jest przeznaczony do powierzchni problemy z wystąpienia usługi API Management, są przypadki, gdy problemy nie zostaną odzwierciedlone w zmianach **metryki pojemności**.
 
 ## <a name="capacity-metric-behavior"></a>Zachowanie metryki pojemności
 
@@ -63,6 +65,8 @@ Są bardziej złożonych operacji w odpowiedzi na żądania, tym wyżej **pojemn
 ![Wartości graniczne na metryki wydajności](./media/api-management-capacity/capacity-spikes.png)
 
 **Pojemność** również skacze sporadycznie lub być większa od zera, nawet jeśli żadne żądanie przetwarzane. On dziać się z powodu akcje specyficzne dla systemu lub platformy i powinny nie należy brać pod uwagę przy podejmowaniu decyzji, które można skalować wystąpienia.
+
+Niska **metryki pojemności** nie musi oznaczać, że wystąpienia usługi API Management nie masz problemy.
   
 ## <a name="use-the-azure-portal-to-examine-capacity"></a>Użyj witryny Azure Portal, aby sprawdzić pojemność
   
@@ -95,6 +99,6 @@ Są bardziej złożonych operacji w odpowiedzi na żądania, tym wyżej **pojemn
 >[!TIP]  
 > Jeśli jesteś w stanie wcześniej oszacować ruchu, należy przetestować swojego wystąpienia usługi APIM dla obciążeń, których oczekujesz. Można stopniowo zwiększać obciążenie żądaniami w dzierżawie usługi, a następnie monitorować, jaka wartość metryki pojemności odnosi się do obciążenia szczytowego. Postępuj zgodnie z instrukcjami z poprzedniej sekcji, aby zrozumieć, jaka pojemność jest używany w dowolnym momencie za pomocą witryny Azure portal.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Jak skalować lub Uaktualnij wystąpienie usługi Azure API Management](upgrade-and-scale.md)

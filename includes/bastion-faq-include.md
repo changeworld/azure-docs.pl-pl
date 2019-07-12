@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e29a9265e010c3f442b742faf62b16dae02739fa
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 29ab9b3c33aae6005510c34b207c7f87714149e5
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191182"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67608293"
 ---
 ### <a name="preview"></a>Jak uczestniczyć w publicznej wersji zapoznawczej
 
@@ -55,4 +55,8 @@ Aby można było utworzyć połączenie, wymagane są następujące role:
 
 ### <a name="previewbill"></a>Cennik — będą rozliczane za udział w wersji zapoznawczej?
 
-Możesz będą naliczane tylko częściowo w publicznej wersji zapoznawczej. Jednak nie ma umowy SLA załączone wraz z wdrożenia. Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://aka.ms/BastionHostPricing).
+Możesz będą naliczane tylko częściowo w publicznej wersji zapoznawczej. Jednak nie ma umowy SLA dołączona do danego wdrożenia. Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://aka.ms/BastionHostPricing).
+
+### <a name="previewbill"></a>Dlaczego otrzymuję błąd "Twoja sesja wygasła" komunikatów przed uruchomieniem sesji bastionu?
+
+Sesji powinien być inicjowane tylko w witrynie Azure portal. Zaloguj się do witryny Azure portal i rozpocznij ponownie sesję. Po przejściu do adresu URL bezpośrednio z innej sesji przeglądarki lub kartę tego błędu jest oczekiwany. Pomaga ono, upewnij się, że sesja jest bardziej bezpieczne i że sesji są dostępne wyłącznie za pośrednictwem witryny Azure portal.

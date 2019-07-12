@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 72d01d6927ee421d01a831244acf65c44a084354
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1938164e957daa84b22fa83e9cb9fa8d51ffeb15
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508665"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654079"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurowanie logowania dla wielu dzierżaw usługi Azure Active Directory za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -45,8 +45,8 @@ Aby włączyć logowania dla użytkowników z określonym organizacji usługi Az
     ```
     https://yourtenant.b2clogin.com/your-tenant.onmicrosoft.com/oauth2/authresp
     ```
-    
-8. Kliknij pozycję **Utwórz**. Kopiuj **identyfikator aplikacji** na później.
+
+8. Kliknij przycisk **Utwórz**. Kopiuj **identyfikator aplikacji** na później.
 9. Wybierz aplikację, a następnie wybierz **ustawienia**.
 10. Wybierz **klucze**wprowadź opis klucza, wybierz czas trwania, a następnie kliknij przycisk **Zapisz**. Skopiuj wartość klucza, który jest wyświetlany na później.
 11. W obszarze **ustawienia**, wybierz opcję **właściwości**ustaw **wielodostępnych** do `Yes`, a następnie kliknij przycisk **Zapisz**
@@ -55,19 +55,19 @@ Aby włączyć logowania dla użytkowników z określonym organizacji usługi Az
 
 Chcesz przechować klucz aplikacji, który został utworzony w dzierżawie usługi Azure AD B2C.
 
-1. Upewnij się, że używasz katalogu zawierającego Twoją dzierżawę usługi Azure AD B2C, klikając pozycję **Filtr katalogu i subskrypcji** w górnym menu i wybierając katalog zawierający Twoją dzierżawę.
+1. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy.
 2. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
-3. Na stronie Przegląd wybierz **struktura środowiska tożsamości — wersja ZAPOZNAWCZA**.
+3. Na stronie Przegląd wybierz **struktura środowiska tożsamości**.
 4. Wybierz **klucze zasad** , a następnie wybierz **Dodaj**.
 5. Aby uzyskać **opcje**, wybierz `Manual`.
 6. Wprowadź **nazwa** klucza zasad. Na przykład `ContosoAppSecret`.  Prefiks `B2C_1A_` jest automatycznie dodawany do nazwy klucza.
 7. W **klucz tajny**, wprowadź klucz aplikacji, który wcześniej zarejestrowane.
 8. Aby uzyskać **użycie klucza**, wybierz opcję `Signature`.
-9. Kliknij pozycję **Utwórz**.
+9. Kliknij przycisk **Utwórz**.
 
 ## <a name="add-a-claims-provider"></a>Dodawanie dostawcy oświadczeń
 
-Użytkownikom na logowanie za pomocą usługi Azure AD, należy zdefiniować usługi Azure AD jako dostawcy oświadczeń, które usługi Azure AD B2C mogą się komunikować za pośrednictwem punktu końcowego. Punkt końcowy zawiera zestaw oświadczeń, które są używane przez usługę Azure AD B2C, aby sprawdzić, czy określony użytkownik jest uwierzytelniony. 
+Użytkownikom na logowanie za pomocą usługi Azure AD, należy zdefiniować usługi Azure AD jako dostawcy oświadczeń, które usługi Azure AD B2C mogą się komunikować za pośrednictwem punktu końcowego. Punkt końcowy zawiera zestaw oświadczeń, które są używane przez usługę Azure AD B2C, aby sprawdzić, czy określony użytkownik jest uwierzytelniony.
 
 Można zdefiniować usługi Azure AD jako dostawcy oświadczeń, przez dodanie usługi Azure AD do **ClaimsProvider** elementu w pliku rozszerzenie zasad.
 
@@ -93,7 +93,7 @@ Można zdefiniować usługi Azure AD jako dostawcy oświadczeń, przez dodanie u
             <Item Key="response_mode">form_post</Item>
             <Item Key="HttpBinding">POST</Item>
             <Item Key="DiscoverMetadataByTokenIssuer">true</Item>
-        
+
             <!-- The key below allows you to specify each of the Azure AD tenants that can be used to sign in. Update the GUIDs below for each tenant. -->
             <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/00000000-0000-0000-0000-000000000000,https://sts.windows.net/11111111-1111-1111-1111-111111111111</Item>
 
@@ -178,7 +178,7 @@ Teraz, gdy przycisk w miejscu, należy połączyć akcji. Akcja, w tym przypadku
     ```XML
     <ClaimsExchange Id="AzureADExchange" TechnicalProfileReferenceId="Common-AAD" />
     ```
-    
+
     Zaktualizuj wartość **TechnicalProfileReferenceId** do **identyfikator** profilu technicznego została utworzona wcześniej. Na przykład `Common-AAD`.
 
 3. Zapisz *TrustFrameworkExtensions.xml* plik i ponownie przekazać go do weryfikacji.
@@ -193,7 +193,7 @@ Za pomocą usługi Azure AD B2C odbywa się przy użyciu aplikacji utworzonej w 
 4. Wybierz pozycję **Aplikacje**, a następnie wybierz polecenie **Dodaj**.
 5. Wprowadź nazwę aplikacji, na przykład *testapp1*.
 6. Dla **aplikacji sieci Web / interfejs API sieci Web**, wybierz opcję `Yes`, a następnie wprowadź `https://jwt.ms` dla **adres URL odpowiedzi**.
-7. Kliknij pozycję **Utwórz**.
+7. Kliknij przycisk **Utwórz**.
 
 ## <a name="update-and-test-the-relying-party-file"></a>Aktualizowanie i przetestować go jednostki uzależnionej ze stron
 

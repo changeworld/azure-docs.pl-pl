@@ -1,18 +1,18 @@
 ---
 title: Dzienniki wolnych zapytań dostępu w usłudze Azure Database for MySQL przy użyciu wiersza polecenia platformy Azure
 description: W tym artykule opisano, jak dostęp do dzienników wolnych zapytań w usłudze Azure Database for MySQL przy użyciu wiersza polecenia platformy Azure.
-author: andrela
-ms.author: ajlam
+author: ajlam
+ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 06/12/219
-ms.openlocfilehash: 740dbce579fba6347b1a7f2cfc6bcae40d3503ab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/12/2019
+ms.openlocfilehash: e6d25a4d8b470580626cab4a84f9d912a3f79f75
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052710"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612642"
 ---
 # <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Konfigurowanie i dostęp do dzienników wolnych zapytań przy użyciu wiersza polecenia platformy Azure
 Azure Database for MySQL — dzienniki wolnych zapytań można pobrać przy użyciu wiersza polecenia platformy Azure, narzędzie wiersza polecenia platformy Azure.
@@ -52,5 +52,5 @@ Skorzystaj z następującego przykładu, aby pobrać określonego pliku dziennik
 az mysql server-logs download --name 20170414-mydemoserver-mysql.log --resource-group myresourcegroup --server mydemoserver
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - Dowiedz się więcej o [wolnych zapytań dzienników w usłudze Azure Database for MySQL](concepts-server-logs.md).

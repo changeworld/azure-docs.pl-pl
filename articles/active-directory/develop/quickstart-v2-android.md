@@ -14,15 +14,15 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/26/2019
-ms.author: dadobali
+ms.author: ryanwi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45252cc4d45e96c2bde4a4600630ea578a8d3009
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: 547eafac8cc1acf2b60416f93804e819a1c549b0
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64946722"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702762"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Szybki start: logowanie użytkowników i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji dla systemu Android
 
@@ -188,7 +188,7 @@ Biblioteka MSAL oferuje dwie metody uzyskiwania tokenów: `acquireToken` i `acqu
 
 #### <a name="acquiretoken-getting-a-token-interactively"></a>acquireToken: Uzyskanie tokenu interaktywnie
 
-Sytuacje wymagają użytkownikom na interakcję z platformą Microsoft identity. W takich przypadkach użytkownik końcowy może wymagać wybierz swoje konto, wprowadź swoje poświadczenia lub wyrazić zgodę na uprawnienia, które zażądał aplikacji. Na przykład: 
+Sytuacje wymagają użytkownikom na interakcję z platformą Microsoft identity. W takich przypadkach użytkownik końcowy może wymagać wybierz swoje konto, wprowadź swoje poświadczenia lub wyrazić zgodę na uprawnienia, które zażądał aplikacji. Na przykład 
 
 * Gdy nowi użytkownicy logują się do aplikacji po raz pierwszy.
 * Jeśli użytkownik resetuje hasła, należy wprowadzić swoje poświadczenia 
@@ -230,7 +230,7 @@ Aplikacje nie wymagają użytkownikom zalogować się za każdym razem, gdy będ
 > | `getAccounts(...)` | Zawiera konta próbujesz uzyskać tokenów dla w trybie dyskretnym |
 > | `getAuthSilentCallback()` | Wywołanie zwrotne wykonywane, gdy kontrola zostanie przekazana z powrotem do aplikacji po uwierzytelnieniu |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 ### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Dowiedz się więcej na temat czynności, które są wymagane to utworzenia aplikacji użytej w tym przewodniku Szybki start
 

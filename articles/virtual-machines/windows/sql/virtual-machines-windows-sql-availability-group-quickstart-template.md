@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fb09d91bb3204a1ab3dc4f9df71eabd2ee7d2bd1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 406bd11765e4b580849e8719939c3e11c19d99a8
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60591314"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604566"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Konfigurowanie zawsze włączonej grupy dostępności programu SQL Server na Maszynie wirtualnej platformy Azure przy użyciu szablonów szybkiego startu platformy Azure
 W tym artykule opisano, jak częściowo zautomatyzować wdrożenia zawsze włączonej konfiguracji grupy dostępności dla maszyn wirtualnych serwera SQL na platformie Azure za pomocą szablonów szybkiego startu platformy Azure. Istnieją dwa szablony szybkiego startu platformy Azure, które są używane w ramach tego procesu. 
@@ -38,7 +38,7 @@ Inne części konfiguracji grupy dostępności musi być wykonywane ręcznie, ta
 Aby zautomatyzować konfiguracji zawsze włączonej grupy dostępności przy użyciu szablonów szybkiego startu, musi już mieć następujące wymagania wstępne: 
 - [Subskrypcji platformy Azure](https://azure.microsoft.com/free/).
 - Grupa zasobów z kontrolerem domeny. 
-- Co najmniej jeden przyłączonych do domeny [maszyn wirtualnych na platformie Azure działającej wersji programu SQL Server 2016 (lub nowszego) przedsiębiorstwa](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) w ten sam zestaw lub dostępności strefę dostępności, które zostały [zarejestrowanego dostawcy zasobów maszyny Wirtualnej SQL](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider).  
+- Co najmniej jeden przyłączonych do domeny [maszyn wirtualnych na platformie Azure działającej wersji programu SQL Server 2016 (lub nowszego) przedsiębiorstwa](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) w ten sam zestaw lub dostępności strefę dostępności, które zostały [zarejestrowanego dostawcy zasobów maszyny Wirtualnej SQL](virtual-machines-windows-sql-register-with-resource-provider.md).  
 - Dwie dostępne (nie używane dla dowolnej jednostki) adresy IP, jeden dla wewnętrznego modułu równoważenia obciążenia i jeden dla odbiornika grupy dostępności w ramach tej samej podsieci co grupy dostępności. Jeśli istniejącego modułu równoważenia obciążenia jest używany, tylko jeden dostępny adres IP jest potrzebny.  
 
 ## <a name="permissions"></a>Uprawnienia
@@ -56,7 +56,7 @@ Gdy maszyny wirtualne programu SQL Server zostały zarejestrowane przy użyciu n
 
     W poniższej tabeli przedstawiono wartości niezbędne do szablonu: 
 
-   | **Pole** | Wartość |
+   | **Pole** | Value |
    | --- | --- |
    | **Subskrypcja** |  Subskrypcja, w której maszyny wirtualne programu SQL Server istnieje. |
    |**Grupa zasobów** | Grupa zasobów, w którym znajdują się Twoje maszyny wirtualne SQL Server. | 
@@ -95,7 +95,7 @@ Zawsze włączone odbiornika grupy dostępności (grupy dostępności) wymaga we
 4. Na **modułu równoważenia obciążenia** bloku kliknij **Utwórz**.
 5. W **Tworzenie modułu równoważenia obciążenia** okna dialogowego Skonfiguruj moduł równoważenia obciążenia w następujący sposób:
 
-   | Ustawienie | Wartość |
+   | Ustawienie | Value |
    | --- | --- |
    | **Nazwa** |Nazwa tekst reprezentujący modułu równoważenia obciążenia. Na przykład **sqlLB**. |
    | **Typ** |**Wewnętrzny**: Większość implementacji użyć wewnętrznego modułu równoważenia obciążenia, który umożliwia aplikacjom w ramach tej samej sieci wirtualnej do grupy dostępności.  </br> **Zewnętrzne**: Umożliwia aplikacjom połączyć się z grupy dostępności za pomocą publicznego połączenia internetowego. |
@@ -105,7 +105,7 @@ Zawsze włączone odbiornika grupy dostępności (grupy dostępności) wymaga we
    | **Prywatny adres IP** | Podaj dostępny adres IP z podsieci. |
    | **Subskrypcja** |Jeśli masz wiele subskrypcji, może pojawić się w tym polu. Wybierz subskrypcję, która ma być skojarzony z tym zasobem. Zwykle jest tej samej subskrypcji co wszystkie zasoby dla grupy dostępności. |
    | **Grupa zasobów** |Wybierz grupę zasobów, które należą do wystąpienia programu SQL Server. |
-   | **Lokalizacja** |Wybierz wystąpienia programu SQL Server znajdują się w lokalizacji platformy Azure. |
+   | **Location** |Wybierz wystąpienia programu SQL Server znajdują się w lokalizacji platformy Azure. |
    | &nbsp; | &nbsp; |
 
 6. Wybierz pozycję **Utwórz**. 
@@ -133,7 +133,7 @@ Konfigurowanie wewnętrznego modułu równoważenia obciążenia i tworzenia odb
 
     W poniższej tabeli przedstawiono wartości niezbędne do szablonu: 
 
-   | **Pole** | Wartość |
+   | **Pole** | Value |
    | --- | --- |
    |**Grupa zasobów** | Grupa zasobów, jeśli Twoje maszyny wirtualne SQL Server i grupy dostępności istnieje. | 
    |**Nazwę istniejącego klastra trybu Failover** | Nazwa maszyny wirtualne programu SQL Server są przyłączone do klastra. |
@@ -190,14 +190,14 @@ Ten błąd może być spowodowany przez jedną z dwóch powodów. Konto domenowe
 
     ![Konto użytkownika puste wskazuje brak głównej nazwy użytkownika](media/virtual-machines-windows-sql-availability-group-quickstart-template/account-missing-upn.png)
 
-5. Wypełnij **nazwa logowania użytkownika** zgodna z nazwą użytkownika i wybierz odpowiednie domeny z listy rozwijanej. 
+5. Wypełnij **nazwa logowania użytkownika** aby pasować do nazwy użytkownika, a następnie wybierz odpowiednie domeny z listy rozwijanej. 
 6. Wybierz **Zastosuj** Aby zapisać zmiany i zamknąć okno dialogowe, wybierając **OK**. 
 
    Po dokonaniu tych zmian, spróbuj ponownie wdrożyć szablon szybkiego startu platformy Azure. 
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji zobacz następujące artykuły: 
 

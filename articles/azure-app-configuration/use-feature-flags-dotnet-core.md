@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 1ce4e9c47bf6f885417b6c06c6036d3cadcaef7b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 99559c0c77c3e4b29badec1c0be2d741df1f0621
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706445"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798372"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Samouczek: Użyj flagi funkcji w aplikacji ASP.NET Core
 
@@ -86,30 +86,42 @@ public class Startup
 
 Zaleca się zachować flag funkcji spoza aplikacji i zarządzaj nimi osobno. Dzięki temu można zmodyfikować stany flagi w dowolnym momencie i te zmiany zaczną obowiązywać w aplikacji, następnie od razu. Konfiguracja aplikacji zapewnia scentralizowanym miejscem do organizowania i kontrolowanie swoje flag funkcji za pośrednictwem dedykowanego interfejsu użytkownika portalu. Konfiguracja aplikacji również możliwość flagi do aplikacji bezpośrednio za pomocą klienta platformy .NET Core bibliotek.
 
-Najprostszym sposobem łączenia aplikacji platformy ASP.NET Core z konfiguracji aplikacji jest za pośrednictwem dostawcy konfiguracji `Microsoft.Extensions.Configuration.AzureAppConfiguration`. Aby użyć tego pakietu NuGet, Dodaj następujący kod do *Program.cs* pliku:
+Najprostszym sposobem łączenia aplikacji platformy ASP.NET Core z konfiguracji aplikacji jest za pośrednictwem dostawcy konfiguracji `Microsoft.Azure.AppConfiguration.AspNetCore`. Wykonaj następujące kroki, aby użyć tego pakietu NuGet.
 
-```csharp
-using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+1. Otwórz *Program.cs* pliku i Dodaj następujący kod.
 
-public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-    WebHost.CreateDefaultBuilder(args)
-           .ConfigureAppConfiguration((hostingContext, config) => {
-               var settings = config.Build();
-               config.AddAzureAppConfiguration(options => {
-                   options.Connect(settings["ConnectionStrings:AppConfig"])
-                          .UseFeatureFlags();
-                });
-           })
-           .UseStartup<Startup>();
-```
+   ```csharp
+   using Microsoft.Extensions.Configuration.AzureAppConfiguration;
 
-Wartości z flag funkcji powinny ulegać zmianie. Domyślnie Menedżer funkcji odświeża wartości flag funkcji co 30 sekund. Poniższy kod pokazuje, jak zmienić interwał sondowania na 5 minut w `options.UseFeatureFlags()` wywołania:
+   public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+       WebHost.CreateDefaultBuilder(args)
+              .ConfigureAppConfiguration((hostingContext, config) => {
+                  var settings = config.Build();
+                  config.AddAzureAppConfiguration(options => {
+                      options.Connect(settings["ConnectionStrings:AppConfig"])
+                             .UseFeatureFlags();
+                   });
+              })
+              .UseStartup<Startup>();
+   ```
+
+2. Otwórz *Startup.cs* i zaktualizuj `Configure` metody w celu dodania oprogramowaniu pośredniczącym, aby umożliwić wartości flag funkcji, należy odświeżyć interwałem cykliczne podczas platformy ASP.NET Core z aplikacji sieci web w dalszym ciągu otrzymywać żądania.
+
+   ```csharp
+   public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+   {
+       app.UseAzureAppConfiguration();
+       app.UseMvc();
+   }
+   ```
+
+Wartości z flag funkcji powinny ulegać zmianie. Domyślnie wartości flagi funkcji są buforowane na okres 30 sekund, więc operacja odświeżania, wyzwalane, gdy oprogramowanie pośredniczące odbiera żądanie nie uaktualni wartość czasu wygaśnięcia wartość w pamięci podręcznej. Poniższy kod pokazuje, jak zmienić czas wygaśnięcia pamięci podręcznej lub interwał sondowania na 5 minut w `options.UseFeatureFlags()` wywołania.
 
 ```csharp
 config.AddAzureAppConfiguration(options => {
     options.Connect(settings["ConnectionStrings:AppConfig"])
            .UseFeatureFlags(featureFlagOptions => {
-                featureFlagOptions.PollInterval = TimeSpan.FromSeconds(300);
+                featureFlagOptions.CacheExpirationTime = TimeSpan.FromMinutes(5);
            });
 });
 ```
@@ -160,7 +172,7 @@ public enum MyFeatureFlags
 
 ## <a name="feature-flag-checks"></a>Sprawdzanie flag funkcji
 
-Podstawowy wzorzec funkcji zarządzania jest najpierw sprawdzić, jeśli jest ustawiona flaga funkcji *na*. Jeśli tak, Menedżer funkcji następnie uruchamia akcje, zawiera tę funkcję. Na przykład:
+Podstawowy wzorzec funkcji zarządzania jest najpierw sprawdzić, jeśli jest ustawiona flaga funkcji *na*. Jeśli tak, Menedżer funkcji następnie uruchamia akcje, zawiera tę funkcję. Przykład:
 
 ```csharp
 IFeatureManager featureManager;
@@ -283,7 +295,7 @@ app.UseForFeature(featureName, appBuilder => {
 });
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono sposób wdrożyć flagi funkcji w aplikacji ASP.NET Core przy użyciu `Microsoft.FeatureManagement` bibliotek. Aby uzyskać więcej informacji dotyczących obsługi różnych funkcji zarządzania w ASP.NET Core i konfiguracji aplikacji zobacz następujące zasoby:
 

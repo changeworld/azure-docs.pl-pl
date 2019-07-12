@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 1bf42e5f418f99f5e5327d790c1adffe2357b84e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e181aab3d92d8111a0a7d1d41bbddac20687a547
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65021933"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67668862"
 ---
 # <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Jak dodać umiejętności niestandardowe do potoku wyszukiwania kognitywnego
 
 A [potokiem indeksowania wyszukiwania kognitywnego](cognitive-search-concept-intro.md) w usłudze Azure Search może odbywać się z [wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md) także [umiejętności niestandardowe](cognitive-search-custom-skill-web-api.md) , umożliwiających tworzenie i dodawanie do potok. Ten artykuł zawiera informacje dotyczące tworzenia niestandardowych umiejętności, która udostępnia interfejs, co pozwala na uwzględnienie w potoku usłudze wyszukiwania poznawczego. 
 
-Budowanie umiejętności niestandardowe daje możliwość wstawiania przekształcenia unikatowe dla zawartości. Umiejętności niestandardowe wykonuje niezależnie, niezależnie od kroku wzbogacania potrzebujesz. Na przykład można zdefiniować jednostki niestandardowe specyficzne dla pola, tworzyć modele klasyfikacji niestandardowej do odróżnienia biznesowych i kontrakty finansowe i dokumenty lub Dodaj umiejętności rozpoznawania mowy, osiągnąć bardziej do plików audio, dla odpowiedniej zawartości. Aby uzyskać przykład krok po kroku, zobacz [przykład: Tworzenie niestandardowego umiejętności](cognitive-search-create-custom-skill-example.md).
+Budowanie umiejętności niestandardowe daje możliwość wstawiania przekształcenia unikatowe dla zawartości. Umiejętności niestandardowe wykonuje niezależnie, niezależnie od kroku wzbogacania potrzebujesz. Na przykład można zdefiniować jednostki niestandardowe specyficzne dla pola, tworzyć modele klasyfikacji niestandardowej do odróżnienia biznesowych i kontrakty finansowe i dokumenty lub Dodaj umiejętności rozpoznawania mowy, osiągnąć bardziej do plików audio, dla odpowiedniej zawartości. Aby uzyskać przykład krok po kroku, zobacz [przykładu: Tworzenie niestandardowych umiejętności do wyszukiwania kognitywnego](cognitive-search-create-custom-skill-example.md).
 
  Niezależnie od możliwości niestandardowych, potrzebujesz, jest prosty i przejrzysty interfejs do łączenia z umiejętności niestandardowe w pozostałej części wzbogacony potok. Jedynym wymaganiem do włączenia [zestawu umiejętności](cognitive-search-defining-skillset.md) jest możliwość akceptują dane wejściowe i Emituj danych wyjściowych w sposób, który jest w użyciu w ramach zestawu umiejętności jako całości. Ten artykuł koncentruje się na formatów wejściowych i wyjściowych, który wymaga wzbogacony potok.
 
@@ -154,9 +154,9 @@ Po utworzeniu enricher interfejsu API sieci Web, wystarczy opisać nagłówków 
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-+ [Przykład: Tworzenie niestandardowych umiejętności dla interfejsu API tłumaczenia tekstu](cognitive-search-create-custom-skill-example.md)
++ [Przykład: Tworzenie niestandardowych umiejętności do wyszukiwania kognitywnego](cognitive-search-create-custom-skill-example.md)
 + [Jak Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md)
 + [Tworzenie zestawu umiejętności (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [Sposób mapowania pól wzbogacony](cognitive-search-output-field-mapping.md)

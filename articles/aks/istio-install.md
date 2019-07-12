@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: pabouwer
-ms.openlocfilehash: c7c234e181e10499e532436bfde05ed89bdc7d28
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 9d973cb2ac210e912d93941a2f81889557379f43
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67465694"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625975"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Instalowanie i używanie Istio w usłudze Azure Kubernetes Service (AKS)
 
@@ -152,14 +152,19 @@ Teraz przejść do następnej sekcji, aby [zainstalować Słowniki CRD Istio w u
 
 ### <a name="windows"></a>Windows
 
-Do zainstalowania Istio `istioctl` klienta binarne w **Powershell**-shell oparte na Windows, użyj następujących poleceń. Skopiuj te polecenia `istioctl` binarne do folderu Istio klienta i przypisz ją do stale dostępne za pośrednictwem usługi `PATH`. Nie ma potrzeby podwyższonym poziomem uprawnień (Administrator), aby wykonać te polecenia.
+Do zainstalowania Istio `istioctl` klienta binarne w **Powershell**-shell oparte na Windows, użyj następujących poleceń. Skopiuj te polecenia `istioctl` binarne do folderu Istio klienta, a następnie dostępna natychmiast (w bieżącej powłoce) i trwałe (za pośrednictwem powłoki ponownego uruchomienia) za pośrednictwem usługi `PATH`. Nie ma potrzeby podwyższonym poziomem uprawnień (Administrator), aby wykonać te polecenia, a nie jest konieczne ponowne uruchomienie powłoki.
 
 ```powershell
+# Copy istioctl.exe to C:\Istio
 cd istio-$ISTIO_VERSION
 New-Item -ItemType Directory -Force -Path "C:\Istio"
 Copy-Item -Path .\bin\istioctl.exe -Destination "C:\Istio\"
-$PATH = [environment]::GetEnvironmentVariable("PATH", "User")
-[environment]::SetEnvironmentVariable("PATH", $PATH + "; C:\Istio\", "User")
+
+# Add C:\Istio to PATH. 
+# Make the new PATH permanently available for the current User, and also immediately available in the current shell.
+$PATH = [environment]::GetEnvironmentVariable("PATH", "User") + "; C:\Istio\"
+[environment]::SetEnvironmentVariable("PATH", $PATH, "User") 
+[environment]::SetEnvironmentVariable("PATH", $PATH)
 ```
 
 Teraz przejść do następnej sekcji, aby [zainstalować Słowniki CRD Istio w usłudze AKS](#install-the-istio-crds-on-aks).
@@ -524,7 +529,7 @@ PowerShell
 kubectl get crds -o name | Select-String -Pattern 'istio.io' |% { kubectl delete $_ }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Poniższa dokumentacja w tym artykule opisano sposób korzystania Istio do dostarczania routingu inteligentne to dystrybucję wydania canary:
 

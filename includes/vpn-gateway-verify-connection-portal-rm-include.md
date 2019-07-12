@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d478107f3176e79c88a05d9cbe6207606a6246d5
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: c1793a22c59cda279a9d8c4522bcec2606d25582
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183062"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673444"
 ---
 Przechodząc w witrynie Azure Portal do połączenia, można sprawdzić stan połączenia bramy VPN Gateway usługi Resource Manager. Poniższe kroki pokazują jeden ze sposobów nawigacji do połączenia oraz jego weryfikacji.
 
-1. W [portalu Azure](http://portal.azure.com) kliknij przycisk **Wszystkie zasoby** i przejdź do bramy sieci wirtualnej.
+1. W [portalu Azure](https://portal.azure.com) kliknij przycisk **Wszystkie zasoby** i przejdź do bramy sieci wirtualnej.
 2. W bloku bramy sieci wirtualnej kliknij opcję **Połączenia**. Zostanie pokazany stan każdego połączenia.
 3. Kliknij nazwę połączenia, które chcesz sprawdzić, aby otworzyć blok **Podstawy**. W bloku Podstawy możesz wyświetlić więcej informacji o połączeniu. Po pomyślnym nawiązaniu połączenia **Stan** jest wyświetlany jako „Powodzenie” i „Połączono”.
 

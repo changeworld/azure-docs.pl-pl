@@ -41,10 +41,14 @@
   items:
     - name: Jednostki SKU rejestru kontenerów
       href: container-registry-skus.md
+    - name: 'Rejestry, repozytoria i obrazy'
+      href: container-registry-concepts.md
     - name: Magazyn obrazów
       href: container-registry-storage.md
     - name: Formaty zawartości
       href: container-registry-image-formats.md
+    - name: Oznaczanie obrazów tagami i wersjami
+      href: container-registry-image-tag-version.md
     - name: Replikacja geograficzna
       href: container-registry-geo-replication.md
     - name: Najlepsze praktyki w zakresie rejestru

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: c910ed9f1160d30e1d4bda2e85b029eb2ad85b02
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd2284211c2fdc5a346c6ffb113f89fe311a358c
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237152"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786499"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Planowanie pojemności dla klastrów HDInsight
 
@@ -82,7 +82,7 @@ Skalowanie klastra jest określana przez liczbę jej węzłów maszyny Wirtualne
 
 W zależności od typu klastra zwiększając liczbę węzłów procesu roboczego dodaje dodatkowe możliwości obliczeniowe (takie jak większa liczba rdzeni), ale może również dodać do łączna ilość pamięci wymaganej dla całego klastra do obsługi magazynu w pamięci przetwarzanych danych. Podobnie jak w przypadku wybranego rozmiaru maszyny Wirtualnej i typu, wybierając w skali klastra prawo zazwyczaj osiągnięto empirically, przy użyciu symulowanego obciążenia lub canary zapytania.
 
-Można skalować w poziomie do klastra, aby obsłużenia szczytowego zapotrzebowania obciążenia, a następnie skalować wróci, gdy te dodatkowe węzły nie są już potrzebne. Aby uzyskać więcej informacji, zobacz [klastrów HDInsight skalowania](hdinsight-scaling-best-practices.md).
+Można skalować w poziomie do klastra, aby obsłużenia szczytowego zapotrzebowania obciążenia, a następnie skalować wróci, gdy te dodatkowe węzły nie są już potrzebne. [Funkcja automatycznego skalowania](hdinsight-autoscale-clusters.md) umożliwia automatyczne skalowanie klastra na podstawie wstępnie określone metryki i chronometrażu. Aby uzyskać więcej informacji na temat ręczne skalowanie klastrów, zobacz [klastrów HDInsight skalowania](hdinsight-scaling-best-practices.md).
 
 ### <a name="cluster-lifecycle"></a>Cykl życia klastra
 
@@ -126,7 +126,7 @@ Możesz [skontaktuj się z pomocą techniczną, aby zażądać zwiększenia limi
 
 Jednak istnieją pewne ograniczenia stały limit przydziału, na przykład pojedynczej subskrypcji platformy Azure może mieć co najwyżej 10 000 rdzeni. Aby uzyskać więcej informacji o tych limitach, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](https://docs.microsoft.com/azure/azure-subscription-service-limits).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Konfigurowanie klastrów w HDInsight przy użyciu technologii Apache Hadoop, Spark, Kafka i](hdinsight-hadoop-provision-linux-clusters.md): Informacje o sposobie instalowania i konfigurowania klastrów w HDInsight przy użyciu technologii Apache Hadoop, Spark, Kafka, Interactive Hive, HBase, usługi ML i Storm.
 * [Monitorowanie wydajności klastra](hdinsight-key-scenarios-to-monitor.md): Więcej informacji na temat kluczowych scenariuszy, do monitorowania dla klastra usługi HDInsight, które mogą mieć wpływ na wydajność klastra.

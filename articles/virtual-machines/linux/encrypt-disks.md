@@ -4,7 +4,7 @@ description: Jak zaszyfrować dyski wirtualne na maszynie Wirtualnej systemu Lin
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 2a23b6fa-6941-4998-9804-8efe93b647b3
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 15bd3cf2ab6ea5285662610c2c0a850bb180e2f8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f38dab21d44e5ed4a01d841a515e8c50e1c713a6
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60731621"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667890"
 ---
 # <a name="how-to-encrypt-a-linux-virtual-machine-in-azure"></a>Jak zaszyfrować maszyny wirtualnej z systemem Linux na platformie Azure
 
@@ -166,6 +166,6 @@ az vm encryption enable \
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Aby uzyskać więcej informacji dotyczących zarządzania usługi Azure Key Vault, w tym usuwanie kluczy kryptograficznych i magazynów, zobacz [Zarządzanie Key Vault przy użyciu interfejsu wiersza polecenia](../../key-vault/key-vault-manage-with-cli2.md).
 * Aby uzyskać więcej informacji o szyfrowaniu dysku, takich jak przygotowywanie zaszyfrowanych niestandardową maszynę Wirtualną do przekazania na platformę Azure, zobacz [usługi Azure Disk Encryption](../../security/azure-security-disk-encryption.md).

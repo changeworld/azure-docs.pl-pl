@@ -4,7 +4,7 @@ description: Wyświetla listę różnych rozmiarów dostępnymi dla maszyn wirtu
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: aabf0d30-04eb-4d34-b44a-69f8bfb84f22
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/02/2019
 ms.author: jonbeck
-ms.openlocfilehash: bd083a00887c5de41a488866fc5244126f6b17be
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 78b0de43652aba20563e2712e249e18ccd18c407
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67544057"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710082"
 ---
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>Rozmiary maszyn wirtualnych Windows na platformie Azure
 
 W tym artykule opisano dostępne rozmiary i opcje dla maszyn wirtualnych platformy Azure używane do uruchamiania obciążeń i aplikacji Windows. Zapewnia również zagadnienia dotyczące wdrażania pod uwagę podczas planowania tych zasobów.  W tym artykule jest także dostępna dla [maszyn wirtualnych systemu Linux](../linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 
-| Typ                     | Rozmiary           |    Opis       |
+| Type                     | Rozmiary           |    Opis       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Zastosowania ogólne](sizes-general.md)          | B, Dsv3, Dv3, DSv2, Dv2, Av2, DC  | Zrównoważona moc procesora CPU w stosunku do pamięci. Idealne na potrzeby testowania i programowania, małych i średnich baz danych oraz serwerów sieci Web o niewielkim i średnim ruchu. |
 | [Optymalizacja pod kątem obliczeń](sizes-compute.md)        | Fsv2           | Duża moc procesora CPU w stosunku do pamięci. Dobrze sprawdzają się w przypadku serwerów sieci Web o średnim ruchu, urządzeń sieciowych, procesów wsadowych i serwerów aplikacji.        |
@@ -61,7 +61,7 @@ Dowiedz się więcej o tym, jak [usługi Azure compute jednostki (ACU)](acu.md) 
 
 Dowiedz się więcej na temat obliczeń wydajność przy użyciu maszyn wirtualnych Windows [wyniki testów porównawczych CoreMark](compute-benchmark-scores.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej na temat różnych rozmiarów maszyn wirtualnych, które są dostępne:
 - [Zastosowania ogólne](sizes-general.md)

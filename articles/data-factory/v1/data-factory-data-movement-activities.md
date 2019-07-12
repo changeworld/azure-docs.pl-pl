@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c188c23f87715b6ba5b90f6015b59f2a347ec0cf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bfb15e717e3cb726aba782d9a9506330d7ea39fe
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60486943"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839313"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Przenoszenie danych za pomocą działania kopiowania
 > [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
@@ -95,7 +95,7 @@ W przypadku zarówno źródła i ujścia magazyny danych w chmurze, Data Factory
 
 | Lokalizacja geograficzna magazynów danych docelowego | Region docelowego magazynu danych | Region, używane do przenoszenia danych |
 |:--- |:--- |:--- |
-| Stany Zjednoczone | Wschodnie stany USA | Wschodnie stany USA |
+| Stany Zjednoczone | East US | East US |
 | &nbsp; | Wschodnie stany USA 2 | Wschodnie stany USA 2 |
 | &nbsp; | Środkowe stany USA | Środkowe stany USA |
 | &nbsp; | Środkowo-północne stany USA | Środkowo-północne stany USA |
@@ -138,7 +138,7 @@ Utworzysz potok za pomocą działania kopiowania na kilka sposobów:
 Kreator kopiowania usługi Data Factory pomaga utworzyć potok za pomocą działania kopiowania. Ten potok umożliwia kopiowanie danych z obsługiwanych źródeł do miejsc docelowych *bez konieczności pisania JSON* definicje usługi połączone, zestawy danych i potoki. Zobacz [kreatora kopiowania usługi Data Factory](data-factory-copy-wizard.md) szczegółowe informacje na temat kreatora.  
 
 ### <a name="by-using-json-scripts"></a>Za pomocą skryptów JSON
-Edytor usługi Data Factory w witrynie Azure portal, programu Visual Studio lub programu Azure PowerShell służy do tworzenia definicji JSON potok (za pomocą działania kopiowania). Można następnie wdrożyć go, aby utworzyć potok w fabryce danych. Zobacz [samouczka: Użyj działania kopiowania w potoku usługi Azure Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) samouczek z instrukcjami krok po kroku.    
+Edytor usługi Data Factory w programie Visual Studio lub programu Azure PowerShell umożliwia tworzenie definicji JSON potok (za pomocą działania kopiowania). Można następnie wdrożyć go, aby utworzyć potok w fabryce danych. Zobacz [samouczka: Użyj działania kopiowania w potoku usługi Azure Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) samouczek z instrukcjami krok po kroku.    
 
 Właściwości kodu JSON (takie jak nazwa, opis, dane wejściowe i wyjściowe tabel i zasad) są dostępne dla wszystkich typów działań. Właściwości, które są dostępne w `typeProperties` różnią się w sekcji działania za pomocą poszczególnych typów działań.
 
@@ -211,6 +211,6 @@ Różnych magazynach danych ma inny typ natywny systemów. Działanie kopiowania
 
 Mapowanie z typu macierzystego systemu z typem platformy .NET dla magazynu danych jest w artykule magazynu odpowiednich danych. (Kliknij link określonych w tabeli obsługiwane magazyny danych). Te mapowania można użyć, aby określić odpowiednie typy podczas tworzenia tabel, tak aby działanie kopiowania wykonuje operację odpowiednie konwersje.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Aby dowiedzieć się więcej o działaniu kopiowania więcej, zobacz [kopiowanie danych z usługi Azure Blob storage do usługi Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 * Aby uzyskać informacje dotyczące przenoszenia danych z lokalnego magazynu danych do magazynu danych w chmurze, zobacz [przenieść dane z lokalnych magazynów danych w chmurze](data-factory-move-data-between-onprem-and-cloud.md).

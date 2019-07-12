@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 07/07/2019
 ms.author: raynew
-ms.openlocfilehash: 5dc98048099264942552862498b5137b4954c200
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 1d54f2847f7c37631374653bf291aadf091f3328
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491640"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67805950"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Macierz obsługi dla odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure
 
@@ -83,15 +83,15 @@ Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5,
 
 **Obsługiwana wersja** | **Wersja usługi mobilności** | **Wersja jądra** |
 --- | --- | --- |
-14.04 LTS | [9.24][9.25 UR]  | 3.13.0-24-Generic do 3.13.0-169-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-146-generic,<br/>4.15.0-1023-Azure do 4.15.0-1042-azure |
+14.04 LTS | [9.26][9.26 UR]| 3.13.0-24-Generic do 3.13.0-170-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-148-generic,<br/>4.15.0-1023-Azure do 4.15.0-1045-azure |
+14.04 LTS | [9.25][9.25 UR]  | 3.13.0-24-Generic do 3.13.0-169-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-146-generic,<br/>4.15.0-1023-Azure do 4.15.0-1042-azure |
 14.04 LTS | [9.24][9.24 UR] | 3.13.0-24-Generic do 3.13.0-167-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-143-generic,<br/>4.15.0-1023-Azure do 4.15.0-1040-azure |
 14.04 LTS | [9.23][9.23 UR] | 3.13.0-24-Generic do 3.13.0-165-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-142-generic,<br/>4.15.0-1023-Azure do 4.15.0-1037-azure |
-14.04 LTS | [9.22][9.22 UR] | 3.13.0-24-Generic do 3.13.0-164-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-140-generic,<br/>4.15.0-1023-Azure do 4.15.0-1036-azure |
 |||
+16.04 LTS | [9.26][9.26 UR] | 4.4.0-21-Generic do 4.4.0-148-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-45-generic,<br/>4.15.0-13-Generic do 4.15.0-50-generic<br/>4.11.0-1009-Azure do 4.11.0-1016-azure,<br/>4.13.0-1005-Azure do 4.13.0-1018-azure <br/>4.15.0-1012-Azure do 4.15.0-1045-azure|
 16.04 LTS | [9.25][9.25 UR] | 4.4.0-21-Generic do 4.4.0-146-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-45-generic,<br/>4.15.0-13-Generic do 4.15.0-48-generic<br/>4.11.0-1009-Azure do 4.11.0-1016-azure,<br/>4.13.0-1005-Azure do 4.13.0-1018-azure <br/>4.15.0-1012-Azure do 4.15.0-1042-azure|
 16.04 LTS | [9.24][9.24 UR] | 4.4.0-21-Generic do 4.4.0-143-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-45-generic,<br/>4.15.0-13-Generic do 4.15.0-46-generic<br/>4.11.0-1009-Azure do 4.11.0-1016-azure,<br/>4.13.0-1005-Azure do 4.13.0-1018-azure <br/>4.15.0-1012-Azure do 4.15.0-1040-azure|
 16.04 LTS | [9.23][9.23 UR] | 4.4.0-21-Generic do 4.4.0-142-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-45-generic,<br/>4.15.0-13-Generic do 4.15.0-45-generic<br/>4.11.0-1009-Azure do 4.11.0-1016-azure,<br/>4.13.0-1005-Azure do 4.13.0-1018-azure <br/>4.15.0-1012-Azure do 4.15.0-1037-azure|
-16.04 LTS | [9.22][9.22 UR] | 4.4.0-21-Generic do 4.4.0-140-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-45-generic,<br/>4.15.0-13-Generic do 4.15.0-43-generic<br/>4.11.0-1009-Azure do 4.11.0-1016-azure,<br/>4.13.0-1005-Azure do 4.13.0-1018-azure <br/>4.15.0-1012-Azure do 4.15.0-1036-azure|
 
 ### <a name="debian-kernel-versions"></a>Wersje jądra systemu debian
 
@@ -108,10 +108,10 @@ Debian 8 | [9.22][9.22 UR],[9.23][9.23 UR], [9,24][9.24 Z PAKIETEM ZBIORCZYM AKT
 
 **Wydania** | **Wersja usługi mobilności** | **Wersja jądra** |
 --- | --- | --- |
+SUSE Linux Enterprise Server 12 (SP1,SP2,SP3,SP4) | [9.26][9.26 UR] | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3\.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.110-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4\.4.121-92.73-default SP2(LTSS) do 4.4.121-92.109-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.178-94.91-default</br></br>Z dodatkiem SP3 4.4.138-4.7-azure do 4.4.178-4.28-azure</br></br>Z dodatkiem SP4 4.12.14-94.41-default do 4.12.14-95.16-default</br>Z dodatkiem SP4 4.12.14-6.3-azure do 4.12.14-6.9-azure |
 SUSE Linux Enterprise Server 12 (SP1,SP2,SP3,SP4) | [9.25][9.25 UR] | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3\.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4\.4.121-92.73-default SP2(LTSS) do 4.4.121-92.104-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.176-94.88-default</br></br>Z dodatkiem SP3 4.4.138-4.7-azure do 4.4.176-4.25-azure</br></br>Z dodatkiem SP4 4.12.14-94.41-default do 4.12.14-95.13-default</br>Z dodatkiem SP4 4.12.14-6.3-azure do 4.12.14-6.9-azure |
 SUSE Linux Enterprise Server 12 (SP1,SP2,SP3,SP4) | [9.24][9.24 UR] | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3\.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4\.4.121-92.73-default SP2(LTSS) do 4.4.121-92.101-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.175-94.79-default</br></br>Z dodatkiem SP4 4.12.14-94.41-default do 4.12.14-95.6-default |
 SUSE Linux Enterprise Server 12 (SP1,SP2,SP3,SP4) | [9.23][9.23 UR] | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3\.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4\.4.121-92.73-default SP2(LTSS) do 4.4.121-92.101-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.162-94.69-default</br></br>Z dodatkiem SP4 4.12.14-94.41-default do 4.12.14-95.6-default |
-SUSE Linux Enterprise Server 12 (SP1,SP2,SP3) | [9.22][9.22 UR] | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3\.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4\.4.121-92.73-default SP2(LTSS) do 4.4.121-92.98-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.162-94.72-default |
 
 
 ## <a name="linux-file-systemsguest-storage"></a>Magazyn gościa/systemów plików systemu Linux
@@ -159,12 +159,12 @@ Wiele kart sieciowych sieci gościa/serwera | Tak.
 --- | ---
 Usługa ExpressRoute systemu Azure | Tak
 ILB | Tak
-ELB | Yes
+ELB | Tak
 Azure Traffic Manager | Tak
-Multi-NIC | Tak
+Multi-NIC | Yes
 Zastrzeżony adres IP | Yes
-IPv4 | Tak
-Zachowaj źródłowy adres IP | Tak
+IPv4 | Yes
+Zachowaj źródłowy adres IP | Yes
 Punkty końcowe usługi dla sieci wirtualnej platformy Azure<br/> | Tak
 Wydajniejsze sieci | Nie
 
@@ -191,10 +191,10 @@ Dysk gościa/serwera z 4K logicznych i rozmiar sektora fizycznego 512 bajtów | 
 Wolumin gościa/serwera z dysku rozłożonego > 4 TB <br/><br/>Zarządzanie woluminami logicznych (LVM)| Tak
 Gość/server - miejsca do magazynowania | Nie
 Gość/serwer Dodaj lub usuń gorąco dysku | Nie
-Gość/server - wykluczyć dysk | Tak
+Gość/server - wykluczyć dysk | Yes
 Gość/serwera wielościeżkowego (MPIO) | Nie
 Gość/serwera partycji GPT | Pięć partycjami są obsługiwane z poziomu [37 pakiet zbiorczy aktualizacji](https://support.microsoft.com/help/4508614/) (wersja 9,25 usługi mobilności) i nowszych wersjach. Poprzednia wersja obsługiwała cztery.
-Rozruchu interfejsu EFI/UEFI gościa/serwera | -Obsługiwana, gdy używasz wersja usługi mobilności 9.13 lub nowszej.<br/> -Obsługiwana podczas migracji maszyn wirtualnych VMware lub serwery fizyczne z systemem Windows Server 2012 lub nowszym na platformie Azure.<br/> — Można replikować tylko maszyny wirtualne do migracji. Powrót po awarii do środowiska lokalnego nie jest obsługiwane.<br/> -Tylko NTFS jest obsługiwana i bezpieczny typ rozruchu UEFI nie jest obsługiwany. <br/> — Rozmiar sektora dysku powinna być 512 bajtów na sektor fizycznych.
+Rozruchu interfejsu EFI/UEFI gościa/serwera | -Obsługiwana, gdy używasz wersja usługi mobilności 9.13 lub nowszej.<br/> -Obsługiwana podczas migracji maszyn wirtualnych VMware lub serwery fizyczne z systemem Windows Server 2012 lub nowszym na platformie Azure.<br/> — Można replikować tylko maszyny wirtualne do migracji. Powrót po awarii do środowiska lokalnego nie jest obsługiwane.<br/> -NTFS tylko jest obsługiwana. <br/> -Bezpieczny typ rozruchu UEFI nie jest obsługiwane. <br/> — Rozmiar sektora dysku powinna być 512 bajtów na sektor fizycznych.
 
 ## <a name="replication-channels"></a>Kanały replikacji
 
@@ -209,13 +209,13 @@ Rozruchu interfejsu EFI/UEFI gościa/serwera | -Obsługiwana, gdy używasz wersj
 **Składnik** | **Obsługiwane**
 --- | ---
 Magazyn lokalnie nadmiarowy | Yes
-Magazyn geograficznie nadmiarowy | Yes
-Magazyn geograficznie nadmiarowy z dostępem do odczytu | Tak
+Magazyn geograficznie nadmiarowy | Tak
+Magazyn geograficznie nadmiarowy z dostępem do odczytu | Yes
 Chłodny Magazyn | Nie
 Magazynu gorącego| Nie
 Obiekty BLOB typu Block | Nie
 Szyfrowanie w spoczynku (SSE)| Tak
-Premium Storage | Tak
+Premium Storage | Yes
 Usługa import/export | Nie
 Usługa Azure zapór usługi Storage dla sieci wirtualnych | Tak.<br/> Skonfigurowane na docelowe konto magazynu dla magazynu/pamięci podręcznej (używane do przechowywania danych replikacji).
 Kont magazynu ogólnego przeznaczenia w wersji 2 (gorące i chłodne warstwy) | Tak (transakcja koszty są znacznie wyższe w porównaniu do wersji 1 w wersji 2)
@@ -294,9 +294,10 @@ Usługa mobilności | Zainstalowana na maszynie Wirtualnej VMware lub serwery fi
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 [Dowiedz się, jak](tutorial-prepare-azure.md) przygotować platformę Azure na potrzeby odzyskiwania po awarii maszyn wirtualnych programu VMware.
 
+[9.26 UR]: https://support.microsoft.com/en-in/help/4508614/update-rollup-37-for-azure-site-recovery
 [9.25 UR]: https://support.microsoft.com/en-in/help/4508614/update-rollup-37-for-azure-site-recovery
 [9.24 UR]: https://support.microsoft.com/en-in/help/4503156
 [9.23 UR]: https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery

@@ -6,13 +6,13 @@ ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-manager: jeconnoc
-ms.openlocfilehash: 345b10a0d66456d795a63e3aacd941ade0e0159c
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+manager: gwallace
+ms.openlocfilehash: 2966a1803d0664312d71ba992a5ba65f73b27370
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466999"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667524"
 ---
 # <a name="preview-create-a-linux-vm-with-azure-image-builder"></a>Wersja zapoznawcza: Tworzenie maszyny Wirtualnej z systemem Linux przy użyciu Kreatora obrazów platformy Azure
 
@@ -234,6 +234,6 @@ az group delete -n $imageResourceGroup
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się więcej o składnikach plik JSON używanych w tym artykule, zobacz [odwołanie do szablonu Kreatora obrazów](image-builder-json.md).

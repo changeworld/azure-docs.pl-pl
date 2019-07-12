@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 4e11b1bc16f874f892288f9677a71023f483de7c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8e10151cd117a3400893f94559b2c9892de9f3c7
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60458126"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67666213"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Integrowanie uwierzytelniania RADIUS bramy sieci VPN platformy Azure za pomocą serwera NPS do uwierzytelniania wieloskładnikowego 
 
@@ -52,18 +52,18 @@ Aby włączyć uwierzytelnianie wieloskładnikowe, użytkownicy muszą być w us
 ### <a name="step-2-configure-the-nps-for-azure-mfa"></a>Krok 2 skonfiguruj serwer NPS dla usługi Azure MFA
 
 1. Na serwerze NPS [zainstalować rozszerzenia serwera NPS dla usługi Azure MFA](../active-directory/authentication/howto-mfa-nps-extension.md#install-the-nps-extension).
-2. Otwórz konsolę NSP, kliknij prawym przyciskiem myszy **klientów RADUIS**, a następnie wybierz pozycję **New**. Tworzenie klienta RADUIS, określając następujące ustawienia:
+2. Otwórz konsolę serwera NPS kliknij prawym przyciskiem myszy **klientów RADIUS**, a następnie wybierz pozycję **New**. Tworzenie klienta usługi RADIUS, określając następujące ustawienia:
 
     - **Przyjazna nazwa**: Wpisz dowolną nazwę.
     - **Adres (IP lub DNS)** : Wpisz podsieć bramy, który został utworzony w kroku 1.
     - **Wspólny klucz tajny**: wpisz wszelkie klucz tajny i Zapamiętaj je w celu późniejszego użycia.
 
-      ![Obraz informacje o ustawieniach klienta RADUIS](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
+      ![Obraz informacje o ustawieniach klienta RADIUS](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
 
  
 3.  Na **zaawansowane** karcie należy ustawić nazwę dostawcy **RADIUS Standard** i upewnij się, że **dodatkowe opcje** nie zaznaczono pole wyboru.
 
-    ![Obraz o zaawansowanych ustawieniach RADUIS](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client2.png)
+    ![Obraz dotyczący Zaawansowane ustawienia klientów usługi RADIUS](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client2.png)
 
 4. Przejdź do **zasady** > **zasad sieciowych**, kliknij dwukrotnie **połączenia z serwerem programu Microsoft Routing i dostęp zdalny** zasad, wybierz opcję  **Udzielanie dostępu**, a następnie kliknij przycisk **OK**.
 

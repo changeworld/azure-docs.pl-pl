@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 85832abeb9908dd891e3f35a0368bc35c7816a6e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 16d11a707851cdbb3e315c9a6d2fe592a97eca9a
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66167862"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839570"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure Blob Storage przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
@@ -50,12 +50,12 @@ Możesz skopiować dane z następujących magazynów danych **do usługi Azure B
 >
 > Działanie kopiowania nie powoduje usunięcia danych ze źródła, po pomyślnie kopiowane są dane do lokalizacji docelowej. Jeśli potrzebujesz usunąć źródło danych po kopiowania zakończonego powodzeniem, należy utworzyć [niestandardowe działanie](data-factory-use-custom-activities.md) do usunięcia danych, a następnie użyć działania w potoku. Aby uzyskać przykład, zobacz [usuwania obiektów blob lub folderu przykład w witrynie GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/DeleteBlobFileFolderCustomActivity).
 
-## <a name="get-started"></a>Rozpoczęcie pracy
+## <a name="get-started"></a>Wprowadzenie
 Utworzysz potok z działaniem kopiowania, które przenosi dane z usługi Azure Blob Storage przy użyciu różnych narzędzi/interfejsów API.
 
 Najprostszym sposobem utworzenia potoku jest użycie **kreatora kopiowania**. Ten artykuł zawiera [wskazówki](#walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage) do tworzenia potoku w celu kopiowania danych z lokalizacji usługi Azure Blob Storage do innej lokalizacji magazynu obiektów Blob platformy Azure. Samouczek dotyczący tworzenia potoku w celu skopiowania danych z usługi Azure Blob Storage do usługi Azure SQL Database, zobacz [samouczka: Tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md).
 
-Aby utworzyć potok umożliwia także następujących narzędzi: **Witryna Azure portal**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**i  **Interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
+Aby utworzyć potok umożliwia także następujących narzędzi: **Program Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**, i **interfejsu API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
 
 Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródłowych do magazynu danych ujścia:
 
@@ -84,7 +84,7 @@ Usługa Data factory obsługuje następujące wartości typu .NET zgodne ze spec
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| folderPath |Ścieżka do kontenera i folderu w magazynie obiektów blob. Przykład: myblobcontainer\myblobfolder\ |Tak |
+| folderPath |Ścieżka do kontenera i folderu w magazynie obiektów blob. Przykład: myblobcontainer\myblobfolder\ |Yes |
 | fileName |Nazwa obiektu blob. Nazwa pliku jest opcjonalny i wielkość liter.<br/><br/>Jeśli określisz parametr filename, aktywności (w tym kopiowania) działa na konkretny obiekt Blob.<br/><br/>Jeśli nie określono nazwy pliku, kopiowania obejmuje wszystkie obiekty BLOB w ścieżce folderu dla wejściowego zestawu danych.<br/><br/>Gdy **fileName** nie jest określona dla wyjściowego zestawu danych i **preserveHierarchy** nie została określona w ujścia działania nazwę wygenerowanego pliku będzie znajdować się w następujących tego formatu: `Data.<Guid>.txt` (na przykład:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nie |
 | partitionedBy |partitionedBy jest opcjonalną właściwością. Służy do określania folderPath dynamiczne i nazwę pliku do danych szeregów czasowych. Na przykład folderPath mogą być parametryzowane za każdą godzinę danych. Zobacz [przy użyciu sekcji właściwości partitionedBy](#using-partitionedby-property) szczegółowe informacje i przykłady. |Nie |
 | format | Obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
@@ -193,7 +193,7 @@ Przyjrzyjmy się jak szybko skopiować dane z usługi Azure blob storage. W tym 
     3. Dla grupy zasobów wybierz **Użyj istniejącej** wybierz istniejącą grupę zasobów (lub) wybierz **Utwórz nową** wprowadź nazwę grupy zasobów.
     4. Wybierz **lokalizację** fabryki danych.
     5. Zaznacz pole wyboru **Przypnij do pulpitu nawigacyjnego** u dołu bloku.
-    6. Kliknij pozycję **Utwórz**.
+    6. Kliknij przycisk **Utwórz**.
 3. Po zakończeniu tworzenia zostanie wyświetlony blok **Fabryka danych**, jak pokazano na poniższej ilustracji:  ![Strona główna fabryki danych](./media/data-factory-azure-blob-connector/data-factory-home-page.png)
 
 ### <a name="copy-wizard"></a>Kreator kopiowania
@@ -232,7 +232,7 @@ Przyjrzyjmy się jak szybko skopiować dane z usługi Azure blob storage. W tym 
     ![Narzędzie kopiowania — Wybieranie pliku lub folderu wejściowego](./media/data-factory-azure-blob-connector/chose-input-file-folder.png)
 7. Na stronie **Ustawienia formatu pliku** są wyświetlane ograniczniki i schemat wykrywany automatycznie przez kreatora w ramach analizy pliku.
     1. Potwierdź następujące opcje:  
-        a. **Format pliku** ustawiono **format tekstu**. Możesz zobaczyć wszystkie obsługiwane formaty na liście rozwijanej. Na przykład: JSON, Avro, ORC, Parquet.
+        a. **Format pliku** ustawiono **format tekstu**. Możesz zobaczyć wszystkie obsługiwane formaty na liście rozwijanej. Przykład: JSON, Avro, ORC, Parquet.
        b. **Ogranicznik kolumny** ustawiono `Comma (,)`. Możesz zobaczyć inne ograniczniki kolumny obsługiwane przez usługę Data Factory na liście rozwijanej. Można również określić ogranicznik niestandardowy.
        c. **Ogranicznik wiersza** ustawiono `Carriage Return + Line feed (\r\n)`. Możesz zobaczyć innych ograniczników wiersza obsługiwane przez usługę Data Factory na liście rozwijanej. Można również określić ogranicznik niestandardowy.
        d. **Pominąć licznik wierszy** ustawiono **0**. Jeśli chcesz, aby kilka wierszy do pominięcia w górnej części pliku, należy wprowadzić numer w tym miejscu.
@@ -466,7 +466,7 @@ Aby uzyskać więcej informacji na temat właściwości obsługiwanych przez Blo
 ```
 
 ## <a name="json-examples-for-copying-data-to-and-from-blob-storage"></a>Przykłady JSON do kopiowania danych z magazynu obiektów Blob
-W poniższych przykładach udostępniono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [witryny Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) lub [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Pokazują, jak kopiować dane do i z usługi Azure Blob Storage i Azure SQL Database. Jednak dane mogą być kopiowane **bezpośrednio** z dowolnego źródła do dowolnego ujścia, o których wspomniano [tutaj](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.
+W poniższych przykładach udostępniono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Pokazują, jak kopiować dane do i z usługi Azure Blob Storage i Azure SQL Database. Jednak dane mogą być kopiowane **bezpośrednio** z dowolnego źródła do dowolnego ujścia, o których wspomniano [tutaj](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.
 
 ### <a name="json-example-copy-data-from-blob-storage-to-sql-database"></a>Przykład kodu JSON: Kopiowanie danych z magazynu obiektów Blob do bazy danych SQL
 Poniższy przykład pokazuje:

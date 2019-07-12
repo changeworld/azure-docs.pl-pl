@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: ae6e0e186f5cc0c9e3f0cd02d45d57c079eb3539
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2c33c481d96a9edecc6360a9a91c095c2bca220b
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60900893"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798341"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Śledzenie operacji niestandardowych za pomocą zestawu SDK .NET usługi Application Insights
 
@@ -31,7 +31,7 @@ Ten dokument zawiera wskazówki na temat sposobu śledzenie operacji niestandard
 - Usługa Application Insights dla sieci web działających (ASP.NET) wersji 2.4 +.
 - Usługa Application Insights dla platformy ASP.NET Core w wersji 2.1 +.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Operacja jest logiczną pracy wykonywane przez aplikację. Ta kolumna ma nazwę, godzinę rozpoczęcia, czas trwania, wynik oraz kontekstu wykonania, takie jak nazwa użytkownika, właściwości i wynik. Jeśli operacja A zostało zainicjowane przez operację B, następnie działanie B jest ustawiony jako element nadrzędny dla A. Operacja może mieć tylko jedną jednostkę nadrzędną, ale może mieć wiele operacji podrzędnych. Aby uzyskać więcej informacji na temat operacji i korelacja telemetrii, zobacz [korelacja telemetrii usługi Azure Application Insights](correlation.md).
 
 W zestawie SDK platformy .NET Application Insights operacji jest opisana przez klasy abstrakcyjnej [OperationTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/Extensibility/Implementation/OperationTelemetry.cs) i jego elementy potomne [RequestTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/RequestTelemetry.cs) i [DependencyTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/DependencyTelemetry.cs).
@@ -51,7 +51,10 @@ W tym przykładzie kontekst śledzenia są propagowane zgodnie z opisem w [proto
 ```csharp
 public class ApplicationInsightsMiddleware : OwinMiddleware
 {
-    private readonly TelemetryClient telemetryClient = new TelemetryClient(TelemetryConfiguration.Active);
+    // you may create a new TelemetryConfiguration instance, reuse one you already have
+    // or fetch the instance created by Application Insights SDK.
+    private readonly TelemetryConfiguration telemetryConfiguration = TelemetryConfiguration.CreateDefault();
+    private readonly TelemetryClient telemetryClient = new TelemetryClient(telemetryConfiguration);
     
     public ApplicationInsightsMiddleware(OwinMiddleware next) : base(next) {}
 
@@ -170,7 +173,7 @@ public async Task Enqueue(string payload)
 }
 ```
 
-#### <a name="process"></a>Process
+#### <a name="process"></a>Proces
 ```csharp
 public async Task Process(BrokeredMessage message)
 {
@@ -207,20 +210,7 @@ public async Task Process(BrokeredMessage message)
 Poniższy przykład pokazuje, jak śledzić [kolejki usługi Azure Storage](../../storage/queues/storage-dotnet-how-to-use-queues.md) operacje i korelowanie danych telemetrycznych od producenta, klienta i usługi Azure Storage. 
 
 Kolejka magazynu ma interfejsu API protokołu HTTP. Wszystkie wywołania do kolejki są śledzone przez moduł zbierający Application Insights zależności żądań HTTP.
-Upewnij się, że masz `Microsoft.ApplicationInsights.DependencyCollector.HttpDependenciesParsingTelemetryInitializer` w `applicationInsights.config`. Jeśli nie masz, dodać je programowo, zgodnie z opisem w [filtrowanie i wstępne przetwarzanie w zestaw SDK usługi Azure Application Insights](../../azure-monitor/app/api-filtering-sampling.md).
-
-Jeśli ręcznie skonfigurować usługi Application Insights, upewnij się, Utwórz i zainicjuj `Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule` podobnie do:
- 
-```csharp
-DependencyTrackingTelemetryModule module = new DependencyTrackingTelemetryModule();
-
-// You can prevent correlation header injection to some domains by adding it to the excluded list.
-// Make sure you add a Storage endpoint. Otherwise, you might experience request signature validation issues on the Storage service side.
-module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("core.windows.net");
-module.Initialize(TelemetryConfiguration.Active);
-
-// Do not forget to dispose of the module during application shutdown.
-```
+Jest ono skonfigurowane domyślnie w aplikacjach ASP.NET i ASP.NET Core i innych rodzajów aplikacji, możesz zapoznać się z [dokumentację aplikacji konsoli](../../azure-monitor/app/console.md)
 
 Możesz również chcieć skorelować identyfikator operacji usługi Application Insights za pomocą identyfikatora magazynu żądania. Aby uzyskać informacje na temat sposobu ustawiania i pobierania magazynu żądania klienta, jak i identyfikator żądania serwera, zobacz [monitorowanie, diagnozowanie i rozwiązywanie problemów z magazynem Azure](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#end-to-end-tracing).
 
@@ -335,7 +325,7 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
 }
 ```
 
-#### <a name="process"></a>Process
+#### <a name="process"></a>Proces
 
 W poniższym przykładzie wiadomości przychodzących jest śledzona w sposób podobny sposób na przychodzące żądania HTTP:
 

@@ -4,15 +4,15 @@ description: Jak rozwiązywać problemy, podczas konfigurowania połączeń klie
 services: virtual-desktop
 author: ChJenk
 ms.service: virtual-desktop
-ms.topic: troubleshoot
+ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: v-chjenk
-ms.openlocfilehash: f88dee579e44a01dc1a7404ef6a670de34063552
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b7a6daa791e44227fd146c9c328a939560ebb3b1
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65833570"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605292"
 ---
 # <a name="remote-desktop-client-connections"></a>Połączenia klienta pulpitu zdalnego
 
@@ -167,7 +167,7 @@ Upewnij się, że użytkownik jest rejestrowanie się przy użyciu poprawnych po
 
 Jeśli klient sieci web jest używana, upewnij się, że nie występują żadne problemy buforowanych poświadczeń.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby uzyskać ogólne na temat rozwiązywania problemów ścieżki eskalacji i pulpitu wirtualnego Windows zobacz [Rozwiązywanie problemów — omówienie, opinie i pomoc techniczna](troubleshoot-set-up-overview.md).
 - Aby rozwiązywać problemy podczas tworzenia puli dzierżawy i hosta w środowisku Windows pulpitu wirtualnego, zobacz [dzierżawy i hostów puli tworzenia](troubleshoot-set-up-issues.md).

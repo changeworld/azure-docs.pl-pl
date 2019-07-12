@@ -3,7 +3,7 @@ title: Łączenie usługi Azure ExpressRoute przy użyciu infrastruktury Chmurow
 description: Łączenie usługi Azure ExpressRoute z FastConnect Oracle chmurze infrastruktury (OCI), aby włączyć rozwiązania aplikacji Oracle wielu chmur
 documentationcenter: virtual-machines
 author: romitgirdhar
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/24/2019
 ms.author: rogirdh
-ms.openlocfilehash: ce1f86f7594692c797aaca5008b211b96ba81fbe
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 671d7c8eb9f10e346b49056e1cc117c9882bb6e8
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67453153"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707571"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Konfigurowanie bezpośredniego połączenia między platformą Azure i infrastruktury chmury programu Oracle  
 
@@ -66,7 +66,7 @@ Na poniższej ilustracji przedstawiono ogólne omówienie wzajemne połączenie:
     * W **klucz usługi dostawcy**, Wklej klucz usługi ExpressRoute.
     * Użyj pierwszego/30 przestrzeń prywatnych adresów IP używać w poprzednim kroku dla **podstawowego adresu IP protokołu BGP** i drugi/30 przestrzeń prywatnych adresów IP dla **pomocniczego adresu IP protokołu BGP** adresu.
         * Przypisz pierwszego adresu użyteczny dwa zakresy dla adresu IP protokołu BGP Oracle (podstawowe i pomocnicze) i drugi adres klientowi adres IP protokołu BGP (z punktu widzenia FastConnect). Pierwszy adres IP niemożliwe jest drugi adres IP w/30 przestrzeń adresowa (pierwszy adres IP jest zastrzeżony przez firmę Microsoft).
-    * Kliknij pozycję **Utwórz**.
+    * Kliknij przycisk **Utwórz**.
 1. Ukończ FastConnect — łączenie sieci wirtualnej chmury w ramach dzierżawy Oracle za pośrednictwem bramą routingu dynamicznego, za pomocą tabeli tras.
 1. Przejdź do platformy Azure, a następnie upewnij się, że **stan dostawcy** dla usługi ExpressRoute circuit została zmieniona na **Aprowizowana** i element równorzędny typu **Azure prywatne** został Zainicjowano obsługę administracyjną. Jest to wymaganie wstępne dla następujących kroków.
 
@@ -102,7 +102,7 @@ Aby usunąć połączenie, poniższe kroki musi następować, w określonej kole
 
 W tym momencie usuwania i anulowania obsługi procesu zostało ukończone.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby uzyskać więcej informacji na temat połączenia wielu chmur między OCI i platformą Azure, zobacz [dokumentacji Oracle](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm).
 * Użyj [skrypty narzędzia Terraform](https://aka.ms/azureociinterconnecttf) wdrażanie infrastruktury dla docelowych aplikacji Oracle za pośrednictwem platformy Azure i skonfigurować połączenie sieciowe. 

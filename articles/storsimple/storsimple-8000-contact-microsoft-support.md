@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
-ms.author: alkohli;
-ms.openlocfilehash: 77050ad37862394785cf348a242f585cc089ba26
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: alkohli
+ms.openlocfilehash: 5394feff80c1df8b7a6cf7f6e6ea56678f575823
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606869"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612505"
 ---
 # <a name="contact-microsoft-support"></a>Kontakt z pomocą techniczną firmy Microsoft
 
@@ -65,7 +65,7 @@ W zależności od Twojego [plan pomocy technicznej](https://azure.microsoft.com/
 
    1. W **opcje kontaktu**, podaj preferowaną metodę kontaktu (telefonu lub adresu e-mail) i język. Czas odpowiedzi zostanie automatycznie wybrany w oparciu o plan subskrypcji.
    2. Informacje kontaktowe zawiera nazwę, adres e-mail, opcjonalny skontaktuj się z pomocą, kraj/region. Wybierz **Zapisz zmiany dotyczące kontaktu dla przyszłych żądań obsługi** pole wyboru.
-   3. Kliknij pozycję **Utwórz**.
+   3. Kliknij przycisk **Utwórz**.
    
        ![MS skontaktuj się z pomocą techniczną za pośrednictwem nowego portalu](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 
@@ -114,6 +114,6 @@ Wykonaj poniższe kroki, aby rozpocząć sesję pomocy technicznej:
 > Możesz wyłączyć dostęp do pomocy technicznej, uruchamiając `Disable-HcsSupportAccess`. Urządzenie StorSimple również będzie podejmować próby wyłączyć dostęp do pomocy technicznej 8 godzin po zainicjowaniu sesji. Jest najlepszym rozwiązaniem, aby zmienić poświadczenia urządzenia StorSimple po zainicjowaniu sesji pomocy technicznej.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się, jak [diagnozowanie i rozwiązywanie problemów związanych z Twojego urządzenia StorSimple 8000 series](storsimple-8000-troubleshoot-deployment.md)

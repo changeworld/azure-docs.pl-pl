@@ -2,17 +2,17 @@
 title: Zabezpieczanie zasobników za pomocą zasad sieciowych w usłudze Azure Kubernetes Service (AKS)
 description: Dowiedz się, jak zabezpieczyć ruch, który przepływa pojęcie zasobników za pomocą zasad sieciowych platformy Kubernetes w usłudze Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.author: iainfou
-ms.openlocfilehash: a0512806ec797f43fc54d8a28a7cbadf86faf1d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: c9bf2c2c459999813c7fc30f95be653168d270ad
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65230016"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67613948"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Zabezpieczanie ruchu sieciowego między zasobników za pomocą zasad sieciowych w usłudze Azure Kubernetes Service (AKS)
 
@@ -22,14 +22,14 @@ W tym artykule pokazano, jak zainstalować aparatu zasad sieciowych i Kubernetes
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Potrzebujesz wiersza polecenia platformy Azure w wersji 2.0.61 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie przeprowadzenie instalacji lub uaktualnienia, zobacz  [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
+Potrzebujesz wiersza polecenia platformy Azure w wersji 2.0.61 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli potrzebujesz instalacja lub uaktualnienie, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj][install-azure-cli].
 
 > [!TIP]
 > Jeśli funkcja zasad sieciowych jest używany w trakcie okresu zapoznawczego, zalecamy możesz [Utwórz nowy klaster](#create-an-aks-cluster-and-enable-network-policy).
 > 
 > Jeśli chcesz nadal korzystać z istniejących klastrów testowych, które używane zasad sieciowych w trakcie okresu zapoznawczego uaktualnienia klastra do nowych wersji rozwiązania Kubernetes dla najnowszej wersji ogólnie dostępnej, a następnie wdrożyć następujące manifest YAML Aby rozwiązać problem, którym wystąpiła awaria serwera metryki i Kubernetes pulpit nawigacyjny. Ta poprawka jest tylko wymagane dla klastrów, które używały Calico aparatu zasad sieci.
 >
-> Ze względów bezpieczeństwa [Przejrzyj zawartość tego manifestu YAML] [ calico-aks-cleanup] Aby zrozumieć, co to jest wdrażana w klastrze AKS.
+> Ze względów bezpieczeństwa [Przejrzyj zawartość tego manifestu YAML][calico-aks-cleanup] Aby zrozumieć, co to jest wdrażana w klastrze AKS.
 >
 > `kubectl delete -f https://raw.githubusercontent.com/Azure/aks-engine/master/docs/topics/calico-3.3.1-cleanup-after-upgrade.yaml`
 
@@ -57,7 +57,7 @@ Zasady sieci działa tylko z opcją wtyczki Azure CNI (zaawansowane). Implementa
 
 ### <a name="differences-between-azure-and-calico-policies-and-their-capabilities"></a>Różnice między platformą Azure i Calico zasady i ich możliwości
 
-| Możliwości                               | Azure                      | Calico                      |
+| Możliwość                               | Azure                      | Calico                      |
 |------------------------------------------|----------------------------|-----------------------------|
 | Obsługiwane platformy                      | Linux                      | Linux                       |
 | Obsługiwane opcje sieciowe             | Azure CNI                  | Azure CNI                   |
@@ -76,7 +76,7 @@ Przyjrzyjmy się zasad sieciowych działa, Utwórz, a następnie rozwiń na zasa
 
 Najpierw Utwórz klaster AKS, który obsługuje zasady sieci. Funkcja zasad sieci można włączyć tylko podczas tworzenia klastra. Nie można włączyć zasad sieciowych w istniejącym klastrze usługi AKS.
 
-Aby z klastrem usługi AKS przy użyciu zasad sieci, należy użyć [wtyczki Azure CNI wtyczki] [ azure-cni] i zdefiniować własne sieci wirtualnej i podsieci. Aby uzyskać szczegółowe informacje na temat sposobu zaplanować zakresy wymagane podsieci, zobacz [skonfigurować zaawansowane funkcje sieciowe][use-advanced-networking].
+Aby z klastrem usługi AKS przy użyciu zasad sieci, należy użyć [wtyczki Azure CNI wtyczki][azure-cni] and define your own virtual network and subnets. For more detailed information on how to plan out the required subnet ranges, see [configure advanced networking][use-advanced-networking].
 
 Poniższy przykładowy skrypt:
 
@@ -138,7 +138,7 @@ az aks create \
     --network-policy azure
 ```
 
-Utworzenie klastra trwa kilka minut. Gdy klaster będzie gotowy, skonfiguruj `kubectl` nawiązać połączenia z klastrem Kubernetes za pomocą [az aks get-credentials] [ az-aks-get-credentials] polecenia. To polecenie umożliwia pobranie poświadczeń i skonfigurowanie interfejsu wiersza polecenia Kubernetes, aby ich używać:
+Utworzenie klastra trwa kilka minut. Gdy klaster będzie gotowy, skonfiguruj `kubectl` nawiązać połączenia z klastrem Kubernetes za pomocą [az aks get-credentials][az-aks-get-credentials] polecenia. To polecenie umożliwia pobranie poświadczeń i skonfigurowanie interfejsu wiersza polecenia Kubernetes, aby ich używać:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME
@@ -207,7 +207,7 @@ spec:
   ingress: []
 ```
 
-Stosowanie zasad sieciowych przy użyciu [zastosować kubectl] [ kubectl-apply] polecenia i podaj nazwę manifeście YAML:
+Stosowanie zasad sieciowych przy użyciu [zastosować kubectl][kubectl-apply] polecenia i podaj nazwę manifeście YAML:
 
 ```azurecli-interactive
 kubectl apply -f backend-policy.yaml
@@ -265,7 +265,7 @@ spec:
 > [!NOTE]
 > Te zasady sieciowe używają *namespaceSelector* i *podSelector* elementu dla reguły ruchu przychodzącego. Składnia YAML jest ważne w przypadku reguł ruchu przychodzącego za dodatek. W tym przykładzie oba te elementy muszą być zgodne, reguły ruchu przychodzącego do zastosowania. Kubernetes wersji wcześniejszych niż *1.12* nie może zinterpretować tych elementów i ograniczanie ruchu sieciowego, zgodnie z oczekiwaniami. Aby uzyskać więcej informacji dotyczących tego zachowania, zobacz [zachowanie do i z selektory][policy-rules].
 
-Stosowanie zasad sieciowych zaktualizowane przy użyciu [zastosować kubectl] [ kubectl-apply] polecenia i podaj nazwę manifeście YAML:
+Stosowanie zasad sieciowych zaktualizowane przy użyciu [zastosować kubectl][kubectl-apply] polecenia i podaj nazwę manifeście YAML:
 
 ```azurecli-interactive
 kubectl apply -f backend-policy.yaml
@@ -388,7 +388,7 @@ spec:
 
 W przykładach bardziej złożone, można zdefiniować wiele reguł ruchu przychodzącego, takie jak *namespaceSelector* i następnie *podSelector*.
 
-Stosowanie zasad sieciowych zaktualizowane przy użyciu [zastosować kubectl] [ kubectl-apply] polecenia i podaj nazwę manifeście YAML:
+Stosowanie zasad sieciowych zaktualizowane przy użyciu [zastosować kubectl][kubectl-apply] polecenia i podaj nazwę manifeście YAML:
 
 ```azurecli-interactive
 kubectl apply -f backend-policy.yaml
@@ -446,14 +446,14 @@ exit
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-W tym artykule będziemy utworzone dwie przestrzenie nazw i stosowane zasady sieci. Aby wyczyścić te zasoby, należy użyć [Usuń kubectl] [ kubectl-delete] polecenia i określić nazwy zasobu:
+W tym artykule będziemy utworzone dwie przestrzenie nazw i stosowane zasady sieci. Aby wyczyścić te zasoby, należy użyć [Usuń kubectl][kubectl-delete] polecenia i określić nazwy zasobu:
 
 ```console
 kubectl delete namespace production
 kubectl delete namespace development
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji o zasobach sieciowych, zobacz [sieci pojęcia związane z aplikacjami w usłudze Azure Kubernetes Service (AKS)][concepts-network].
 

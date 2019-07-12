@@ -4,7 +4,7 @@ description: Dowiedz się, jak instalowanie i konfigurowanie pulpitu zdalnego (x
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 56aa06ade50f6c0eb1467b1295cbebb907023398
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 63f66d345b88984a49b8eb18b02fd79fb0603022
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65209372"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67695518"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Instalowanie i konfigurowanie pulpitu zdalnego, aby nawiązać połączenie z maszyny Wirtualnej z systemem Linux na platformie Azure
 Maszyny wirtualne systemu Linux (VM) na platformie Azure odbywa się zwykle z wiersza polecenia przy użyciu połączenia protokołu secure shell (SSH). Jeśli nowe z systemem Linux lub scenariuszach szybkiego rozwiązywania problemów, korzystanie z pulpitu zdalnego może być łatwiejsze. W tym artykule opisano, jak zainstalować i skonfigurować środowisko pulpitu ([xfce](https://www.xfce.org)) i usług pulpitu zdalnego ([xrdp](https://www.xrdp.org)) dla maszyny Wirtualnej systemu Linux przy użyciu modelu wdrażania usługi Resource Manager.
@@ -137,7 +137,7 @@ Inne dystrybucje systemu Linux, takie jak Red Hat Enterprise Linux i SUSE mogą 
 Jeśli nie otrzymasz żadnych odpowiedzi w kliencie usług pulpitu zdalnego i nie ma żadnych zdarzeń w dzienniku systemu to zachowanie wskazuje, że maszyna wirtualna nie może połączyć się ruchu pulpitu zdalnego. Przejrzyj reguły grupy zabezpieczeń sieci, tak aby upewnić się, że masz regułę zezwalającą na ruch TCP na porcie 3389. Aby uzyskać więcej informacji, zobacz [aplikacji Rozwiązywanie problemów z łącznością](../windows/troubleshoot-app-connection.md).
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby uzyskać więcej informacji na temat tworzenia i używania kluczy SSH z maszynami wirtualnymi systemu Linux, zobacz [tworzenie kluczy SSH dla maszyn wirtualnych systemu Linux na platformie Azure](mac-create-ssh-keys.md).
 
 Aby uzyskać informacje na temat korzystania z protokołu SSH z Windows, zobacz [jak używać protokołu SSH kluczy przy użyciu Windows](ssh-from-windows.md).

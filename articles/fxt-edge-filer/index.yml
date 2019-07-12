@@ -7,7 +7,7 @@ metadata:
   author: ekpgh
   ms.service: fxt-edge-filer
   ms.topic: landing-page
-  ms.date: 06/20/2019
+  ms.date: 07/10/2019
   ms.author: v-erkell
 abstract:
   description: 'Hybrydowa pamięć podręczna magazynu urządzenia Azure FXT Edge Filer to sprzętowy i programowy system hybrydowy, który przyspiesza dostęp do danych opartych na plikach przepływów pracy obliczeń o wysokiej wydajności (HPC) wymagających pod względem odczytu. Klaster obejmujący co najmniej trzy urządzenia Azure FXT Edge Filer może zwiększyć wydajność magazynu lokalnych systemów NAS (NetApp lub Dell EMC Isilon), magazynu w chmurze lub kombinacji rozwiązań.'
@@ -39,3 +39,4 @@ sections:
         items:
           - html: <a href="fxt-specs">Specyfikacje sprzętowe</a>
           - html: <a href="fxt-additional-doc">Dodatkowa dokumentacja</a>
+          - html: <a href="fxt-support-ticket">Otwieranie biletu pomocy technicznej</a>

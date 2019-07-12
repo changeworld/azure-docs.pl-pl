@@ -7,7 +7,8 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: 5a4ae93c-d648-41fb-8fb8-96a025d2f73e
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 07839c6372e0048048b62fbfedd58bfa9b9942f5
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 75bfdce02313ab7e799f6535f247407c239653b8
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65207510"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67619804"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel-preview"></a>Szybki start: Rozpoczynanie pracy z usługą Azure przez wartownika w wersji zapoznawczej
 
@@ -134,7 +135,7 @@ Kiedy tworzysz nowe wykrycie, wykorzystaj wbudowane funkcje wykrywania specjalni
    ![Utwórz regułę alertu](./media/qs-get-visibility/create-alert-rule.png)
 
  
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym przewodniku Szybki Start przedstawiono sposób rozpocząć korzystanie z platformy Azure przez wartownika. Przejdź do samouczka dotyczącego [jak wykrywać zagrożenia](tutorial-detect-threats.md).
 > [!div class="nextstepaction"]
 > [Wykrywanie zagrożeń](tutorial-detect-threats.md) do automatyzowania odpowiedzi na zagrożenia.

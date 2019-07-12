@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 37d43dbdd8de66a10a94827e313679dc6ffd220d
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: b0c7c38ebabfdd142394152f735d40320a98dced
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490381"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798158"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Pobieranie kosztów rezerwacji umowy Enterprise Agreement i danych użycia
 
@@ -119,9 +119,9 @@ Pobieranie danych amortyzowanego kosztu i filtr dla zamówienia rezerwacji przy 
 Można używać rezerwacji obciążeń zwrotnych do innych organizacji subskrypcji, grupy zasobów lub tagów. Dane zamortyzowany koszt zawiera wartość pieniężną wykorzystania rezerwacji w następujących typów danych:
 
 - Zasoby (na przykład maszyny wirtualnej)
-- Grupa zasobów
+- Resource group
 - `Tags`
-- Subskrypcja
+- Subscription
 
 ### <a name="get-the-blended-rate-for-chargeback"></a>Pobierz mieszanego szybkość do obsługi obciążenia zwrotnego
 
@@ -139,19 +139,19 @@ Pobierz dane kosztów Amortized i filtrować dane dotyczące wystąpień zarezer
 2. Uzyskaj kosztów rezerwacji. Suma _koszt_ wartości, które można pobrać wartości pieniężnej zapłacone za wystąpienie zarezerwowane. Obejmuje to koszty używane i nieużywanych rezerwacji.
 3. Odejmij kosztów rezerwacji z szacowane koszty zgodnie z rzeczywistym użyciem, aby uzyskać Szacowane oszczędności.
 
-## <a name="reservation-purchases-and-amortization-in-azure-cost-analysis"></a>Zakup rezerwacji i amortyzacji analizy kosztów platformy Azure
+## <a name="reservation-purchases-and-amortization-in-cost-analysis"></a>Zakup rezerwacji i amortyzacji analizy kosztów
 
-Koszt wystąpienia zarezerwowanego jest dostępna w [tryb podglądu analizy kosztów platformy Azure](https://preview.portal.azure.com/?feature.canmodifystamps=true&amp;microsoft_azure_costmanagement=stage2&amp;Microsoft_Azure_CostManagement_arm_canary=true&amp;Microsoft_Azure_CostManagement_apiversion=2019-04-01-preview&amp;Microsoft_Azure_CostManagement_amortizedCost=true#blade/Microsoft_Azure_CostManagement/Menu/costanalysis). Domyślnie wyświetlanie danych kosztów jest rzeczywisty koszt. Możesz przełączyć się do zamortyzowany koszt. Oto przykład.
+Koszty rezerwacji są dostępne w [analiza kosztów](https://aka.ms/costanalysis). Domyślnie, koszt analizy pokazuje **rzeczywisty koszt**, czyli jak koszty będą wyświetlane na rachunku. Aby wyświetlić zakupy rezerwacji podziale i skojarzone z zasobami, które używane korzyści, przełącz się do **amortyzowanego kosztu**:
 
 ![Przykład przedstawiający miejsce wybrać zamortyzowany koszt analizy kosztów](./media/billing-understand-reserved-instance-usage-ea/portal-cost-analysis-amortized-view.png)
 
-Zastosuj filtry, aby wyświetlić opłat według typu rezerwacji lub jest rozładowany. Grupuj według Nazwa zastrzeżenia, aby zobaczyć koszty według rezerwacji.
+Grupuj według typu opłat, aby zobaczyć podział szczegółów użycia, zakupy i zwroty; lub rezerwacji podziale kosztów rezerwacji i na żądanie. Należy pamiętać, że koszty rezerwacji tylko, którą zobaczą podczas przeglądania rzeczywistego kosztu są zakupy, ale kosztów zostaną przydzielone do poszczególnych zasobów, które używane benfit, przeglądając zamortyzowany koszt. Zobaczysz również nową **UnusedReservation** jest opłata w wysokości typu podczas patrząc amortyzowanego kosztu.
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
 Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące artykuły:
 

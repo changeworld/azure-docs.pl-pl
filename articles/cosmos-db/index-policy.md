@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/14/2019
 ms.author: thweiss
-ms.openlocfilehash: 3f19668cc4fb4f4f4a900c157aa79de83ad1b79b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 791779bfc2262bb13dc2c3a192d9c74ae69cb30e
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67163722"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722537"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Zasady indeksowania w usłudze Azure Cosmos DB
 
@@ -73,6 +73,8 @@ Wszystkie zasady indeksowania musi zawierać ścieżkę katalogu głównego `/*`
 - Wyklucz ścieżka katalogu głównego, aby uwzględnić ścieżki, które muszą zostać pomyślnie zindeksowane.
 
 - Dla ścieżki na zwykłe znaki, które obejmują: znaki alfanumeryczne i _ (podkreślenie), nie trzeba wprowadzić ciąg ścieżki w całym podwójnego cudzysłowu (na przykład, "/ path /?"). Ścieżek przy użyciu innych znaków specjalnych, musisz wprowadzić ciąg ścieżki w całym podwójnych cudzysłowów (na przykład, "/\"abc ścieżki\"/?"). Jeśli oczekujesz znaki specjalne w ścieżce można udosłownić każdej ścieżce dla bezpieczeństwa. Funkcjonalnie go nie wprowadzać wszelkie różnice ucieczki każdej ścieżce Vs tylko tych, które zawierają znaki specjalne.
+
+- Właściwości systemu "element etag" jest wykluczony z indeksowania domyślnie, chyba że element etag jest dodawany do ścieżki dołączone do indeksowania.
 
 Zobacz [w tej sekcji](how-to-manage-indexing-policy.md#indexing-policy-examples) Przykłady zasad indeksowania.
 
@@ -136,7 +138,7 @@ Podczas pracy z zasady indeksowania, mogą wystąpić następujące atrybuty, kt
 - `precision` jest liczbą zdefiniowany na poziomie indeksu dla dołączone ścieżki. Teraz jest ignorowany i może być równa `-1`, gdy narzędzie używasz go wymaga.
 - `hash` jest rodzajem indeksu, która została zastąpiona rodzaj zakresu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Więcej informacji na temat indeksowania znajdziesz w następujących artykułach:
 

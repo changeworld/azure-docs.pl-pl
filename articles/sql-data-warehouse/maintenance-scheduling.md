@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 03/13/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: b97e27b86ecad1f7f87a6de4d43b09d69c167c6f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab6efb858cc86495c687055ce3049cfc0cca7433
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61075332"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807908"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Umożliwia zarządzanie aktualizacjami usługi i konserwacja harmonogramy konserwacji
 
@@ -34,6 +34,9 @@ Aby użyć tej funkcji należy zidentyfikować podstawowych i pomocniczych okna 
 Integracja z usługami powiadomień dotyczących kondycji usługi i monitora Sprawdź kondycję zasobów umożliwia klientom uzyskiwania informacji o zbliżającym się związanych z konserwacją. Nowe usługi automation korzysta z usługi Azure Monitor. Aby zdecydować, jaki ma być powiadamiany o zbliżającym się zdarzenia konserwacji. Również zdecydować, które zautomatyzowane przepływy można łatwiej zarządzać przestojów i zminimalizować wpływ na operacje.
 
 Powiadomienie o 24-godzinny poprzedza wszystkie zdarzenia konserwacji, z wyjątkiem bieżącym DW400c i niższych warstwach. Aby zminimalizować przestoje wystąpienia, upewnij się, czy magazynu danych nie ma długotrwałych transakcji przed okresu wybranym konserwacji. Po uruchomieniu konserwacji wszystkie aktywne sesje zostaną anulowane. Transakcje zatwierdzone asynchronicznie nie zostanie wycofana, a Magazyn danych, mogą mieć krótki utraty łączności. Zostanie wyświetlone powiadomienie natychmiast, po zakończeniu konserwacji w magazynie danych.
+
+> [!NOTE]
+> W przypadku, gdy firma Microsoft jest wymagane wdrożenie aktualizacji krytycznej czasu, może znacznie skrócić czasy powiadomienie z jednotygodniowym.
 
 Jeśli otrzymasz powiadomienie o konserwacji będzie miała miejsce, że usługa SQL Data Warehouse nie można wykonać konserwacji, w tym samym czasie, otrzymasz powiadomienie anulowania. Konserwacja następnie zostanie wznowiona podczas kolejnego okresu zaplanowanej konserwacji.
 

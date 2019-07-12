@@ -6,14 +6,14 @@ ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.topic: howto
+ms.topic: conceptual
 ms.date: 05/09/2019
-ms.openlocfilehash: e9cb9a902cf60fbd3b297a72a7dfa836ee18c835
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
-ms.translationtype: HT
+ms.openlocfilehash: 98bd222212d616a5d2c608779c607bb431d184b9
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67484582"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657329"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Tworzenie i konfigurowanie klastrów pakiet Enterprise Security w usłudze Azure HDInsight
 
@@ -108,7 +108,7 @@ Ci użytkownicy zostaną zsynchronizowane z usługą Azure AD.
 1. Kliknij przycisk **Utwórz zasób** i typ **katalogu**. Wybierz **usługi Azure Active Directory** > **tworzenie**.
 1. Wprowadź **HDIFabrikam** w obszarze **nazwa organizacji**.
 1. Wprowadź **HDIFabrikamoutlook** w obszarze **początkowa nazwa domeny**.
-1. Kliknij pozycję **Utwórz**.
+1. Kliknij przycisk **Utwórz**.
 1. Po lewej stronie w witrynie Azure portal, kliknij przycisk **usługi Azure Active Directory**.
 1. W razie potrzeby kliknij **Przełącz katalog** można zmienić do nowego katalogu, który został utworzony **HDIFabrikamoutlook**.
 1. W obszarze **Zarządzaj** kliknij **niestandardowe nazwy domen** > **Dodaj domenę niestandardową**.
@@ -139,7 +139,7 @@ Omówienie: Teraz skonfigurujesz dzierżawy usługi Azure AD, dzięki czemu moż
 
         ![Rola katalogu](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image040.png)
 
-    1. Wprowadź hasło dla użytkownika. Kliknij pozycję **Utwórz**.
+    1. Wprowadź hasło dla użytkownika. Kliknij przycisk **Utwórz**.
 
 1. Jeśli chcesz zmienić hasło dla nowo utworzonego użytkownika <fabrikamazureadmin@hdifabrikam.com>. Zaloguj się do usługi Azure portal przy użyciu tożsamości, a następnie będą monit o zmianę hasła.
 
@@ -186,7 +186,7 @@ Utwórz przypisanych do użytkowników zarządzanych tożsamości, która będzi
 1. Wybierz subskrypcję.
 1. W obszarze **grupy zasobów** kliknij **Utwórz nową** i wprowadź **HDIFabrikam CentralUS**.
 1. Wybierz **środkowe stany USA** w obszarze **lokalizacji**.
-1. Kliknij pozycję **Utwórz**.
+1. Kliknij przycisk **Utwórz**.
 
 ![Tworzenie nowej tożsamości zarządzanych przypisanych przez użytkownika](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image082.png)
 
@@ -302,7 +302,7 @@ Sprawdź, czy certyfikat jest zainstalowany na komputerze\'magazynu osobistej s.
     1. W obszarze **ustawienia** kliknij **reguły zabezpieczeń dla ruchu przychodzącego** > **Dodaj**.
     1. Na **Dodawanie reguły zabezpieczeń dla ruchu przychodzącego** ekranu, wprowadź następujące właściwości i kliknij przycisk **Dodaj**:
 
-        | Właściwość | Wartość |
+        | Właściwość | Value |
         |---|---|
         | Source | Any |
         | Source port ranges | * |
@@ -310,8 +310,8 @@ Sprawdź, czy certyfikat jest zainstalowany na komputerze\'magazynu osobistej s.
         | Destination port range | 636 |
         | Protocol | Any |
         | Action | Allow |
-        | Priorytet | <Desired Number> |
-        | Name | Port_LDAP_636 |
+        | Priorytet | \<Żądany numer\> |
+        | Name (Nazwa) | Port_LDAP_636 |
 
     ![reguły zabezpieczeń ruchu przychodzącego](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
 
@@ -345,7 +345,7 @@ Ten krok wymaga następujących wymagań wstępnych:
 1. Konfigurowanie niestandardowych DNS na **HDIFabrikam AADDSVNET** sieci wirtualnej.
     1. Przejdź do witryny Azure portal > **grup zasobów** > **OnPremADVRG** > **HDIFabrikam AADDSVNET**  >   **Serwery DNS**.
     1. Wybierz **niestandardowe** i wprowadź `10.0.0.4` i `10.0.0.5`.
-    1. Kliknij pozycję **Zapisz**.
+    1. Kliknij polecenie **Zapisz**.
 
         ![Zapisz ustawienia niestandardowe dns](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image123.png)
 
@@ -355,13 +355,13 @@ Ten krok wymaga następujących wymagań wstępnych:
 
     1. W sekcji 2 **bezpieczeństwo i obsługa sieci**, wykonaj następujące czynności:
         1. Kliknij przycisk **włączone** w obszarze **pakiet Enterprise Security**.
-        1. Kliknij przycisk **użytkownika administratora klastra** i wybierz **HDIAdmin** utworzonego wcześniej w środowisku lokalnym użytkownika jako administratora konta. Kliknij pozycję **Wybierz**.
+        1. Kliknij przycisk **użytkownika administratora klastra** i wybierz **HDIAdmin** utworzonego wcześniej w środowisku lokalnym użytkownika jako administratora konta. Kliknij przycisk **wybierz**.
 
         1. Kliknij przycisk **grupy dostęp do klastra** , a następnie wybierz **HDIUserGroup**. Każdy użytkownik, który można dodać do tej grupy w przyszłości będą mogli korzystać z klastrów HDInsight.
 
             ![Wybierz grupę dostępu do klastra](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image129.jpg)
 
-    1. Wykonaj kolejne kroki konfiguracji klastra i sprawdź szczegóły w **klastra Podsumowanie**. Kliknij pozycję **Utwórz**.
+    1. Wykonaj kolejne kroki konfiguracji klastra i sprawdź szczegóły w **klastra Podsumowanie**. Kliknij przycisk **Utwórz**.
 
 1. Zaloguj się do nowo utworzonego klastra w Interfejsie użytkownika Ambari `https://CLUSTERNAME.azurehdinsight.net` przy użyciu swojej nazwy użytkownika administratora `hdiadmin@hdifabrikam.com` i hasło.
 
@@ -378,6 +378,6 @@ Ten krok wymaga następujących wymagań wstępnych:
 
 Jeśli jesteś w stanie się zalogować za pomocą tego konta, następnie skonfigurowano klaster ESP poprawnie do synchronizacji z usługą active directory w środowisku lokalnym.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [An introduction to Apache Hadoop security with Enterprise Security Package (Wprowadzenie do zabezpieczeń usługi Apache Hadoop z pakietem Enterprise Security)](apache-domain-joined-introduction.md)

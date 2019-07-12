@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: f7e93dc12b9932fed90c7f9fa3145e56a3488b32
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f4140754afa8de994b227dc187cd73c9ccfa86f9
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448019"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67666027"
 ---
 # <a name="azure-api-management-faqs"></a>Często zadawane pytania usługi Azure API Management
 Odpowiedzi na często zadawane pytania dotyczące, wzorce i najlepsze rozwiązania dotyczące usługi Azure API Management.
@@ -87,7 +87,7 @@ Poniżej przedstawiono, jak można dodać użytkownika do grupy administratorów
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Przejdź do grupy zasobów zawierającej wystąpienia usługi API Management, który chcesz zaktualizować.
-3. W usłudze API Management, należy przypisać **interfejsu Api zarządzania Współautor** roli do użytkownika.
+3. W usłudze API Management, należy przypisać **Współautor usługi Api Management** roli do użytkownika.
 
 Teraz używać programu Azure PowerShell nowo dodanych Współautor [poleceń cmdlet](https://docs.microsoft.com/powershell/azure/overview). Oto jak zalogować się jako administrator:
 

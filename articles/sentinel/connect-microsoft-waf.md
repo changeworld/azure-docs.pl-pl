@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: bfa2eca4-abdc-49ce-b11a-0ee229770cdd
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 99c553145f0a600826e48bec437449f278b74fbf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0a308394c3cfa77f80db1361b5a49a485ee5ca0e
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205646"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67611345"
 ---
 # <a name="connect-data-from-microsoft-web-application-firewall"></a>Połącz dane z zapory aplikacji sieci web firmy Microsoft
 
@@ -49,7 +50,7 @@ Po wdrożeniu zapory aplikacji sieci web firmy Microsoft i pobieranie danych, da
     1. Wybierz typy dzienników, które mają być analizowane. Firma Microsoft zaleca: ApplicationGatewayAccessLog i ApplicationGatewayFirewallLog.
 1. Aby użyć odpowiednich schematu w usłudze Log Analytics dla alertów zapory aplikacji sieci web firmy Microsoft, możesz wyszukać **AzureDiagnostics**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym dokumencie przedstawiono sposób nawiązywania połączeń zapory aplikacji sieci web firmy Microsoft na platformie Azure przez wartownika. Aby dowiedzieć się więcej na temat platformy Azure przez wartownika, zobacz następujące artykuły:
 - Dowiedz się, jak [Uzyskaj wgląd w dane i potencjalne zagrożenia](quickstart-get-visibility.md).
 - Rozpoczynanie pracy [wykrywanie zagrożeń za pomocą platformy Azure przez wartownika](tutorial-detect-threats.md).

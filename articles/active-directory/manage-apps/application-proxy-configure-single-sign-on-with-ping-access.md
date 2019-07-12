@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c43498a7829a43fad331841aca045f52ae680be
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 54a99d001f8cb59af3042ce8b6849a2cd9480e99
+ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481472"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723999"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Na podstawie nagłówka uwierzytelniania dla logowania jednokrotnego przy użyciu serwera Proxy aplikacji i PingAccess
 
@@ -53,10 +53,11 @@ Jeśli włączono serwer Proxy aplikacji włączony i już zainstalowano łączn
 Łącznik serwera Proxy aplikacji jest usługę systemu Windows Server, która kieruje ruch z pracownicy zdalni do opublikowanej aplikacji. Aby uzyskać szczegółowe instrukcje dotyczące instalacji, zobacz [samouczka: Dodawanie aplikacji w środowisku lokalnym dostępu zdalnego za pośrednictwem serwera Proxy aplikacji w usłudze Azure Active Directory](application-proxy-add-on-premises-application.md).
 
 1. Zaloguj się do [portalu Azure Active Directory](https://aad.portal.azure.com/) jako administrator aplikacji. **Centrum administracyjne usługi Azure Active Directory** zostanie wyświetlona strona.
-2. Wybierz **usługi Azure Active Directory** > **serwera proxy aplikacji** > **Pobierz usługę łącznika**. **Pobieranie łącznika serwera Proxy aplikacji** zostanie wyświetlona strona.
+1. Wybierz **usługi Azure Active Directory** > **serwera proxy aplikacji** > **Pobierz usługę łącznika**. **Pobieranie łącznika serwera Proxy aplikacji** zostanie wyświetlona strona.
 
    ![Pobieranie łącznika serwera proxy aplikacji](./media/application-proxy-configure-single-sign-on-with-ping-access/application-proxy-connector-download.png)
-3. Postępuj zgodnie z instrukcjami instalacji.
+
+1. Postępuj zgodnie z instrukcjami instalacji.
 
 Pobieranie łącznika automatycznie należy włączyć serwer Proxy aplikacji dla katalogu, ale jeśli nie, możesz wybrać **Włączanie serwera Proxy aplikacji**.
 
@@ -205,7 +206,7 @@ Przykład dołączać adres e-mail do access_token, która zużyje PingAccess:
 
 ### <a name="use-of-claims-mapping-policy-optional"></a>Korzystanie z zasad (opcjonalnie) mapowanie oświadczeń
 
-[Oświadczenia mapowanie zasad (wersja zapoznawcza)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping#claims-mapping-policy-properties/) dla atrybutów, które nie należą do usługi Azure AD. Mapowanie oświadczeń pozwala na migrowanie starej aplikacji lokalnych do chmury, dodając dodatkowe oświadczenia niestandardowe, które są wspierane przez obiekty usług AD FS lub użytkownika
+[Oświadczenia mapowanie zasad (wersja zapoznawcza)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping#claims-mapping-policy-properties) dla atrybutów, które nie należą do usługi Azure AD. Mapowanie oświadczeń pozwala na migrowanie starej aplikacji lokalnych do chmury, dodając dodatkowe oświadczenia niestandardowe, które są wspierane przez obiekty usług AD FS lub użytkownika
 
 Aby aplikacja oświadczenia niestandardowego i zawiera dodatkowe pola, upewnij się, masz także [utworzone oświadczenia niestandardowe mapowanie zasad i przypisać je do aplikacji](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
 

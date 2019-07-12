@@ -6,12 +6,13 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 2/22/2019
 ms.author: victorh
-ms.openlocfilehash: 5e364c597b8c524e95297f279003462f2d16abe1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: conceptual
+ms.openlocfilehash: 70377e6414b41669b6d3e991d24136a3cc4270be
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60832901"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618654"
 ---
 # <a name="customize-web-application-firewall-rules-through-the-azure-cli"></a>Dostosowywanie reguł zapory aplikacji sieci web za pomocą wiersza polecenia platformy Azure
 
@@ -134,7 +135,7 @@ CRS 3.x określonych:
 
 * Liczba przychodzących anomalii wynik przekroczył próg
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Po skonfigurowaniu reguł wyłączonych, możesz dowiedzieć się, jak wyświetlić dzienniki zapory aplikacji sieci Web. Aby uzyskać więcej informacji, zobacz [diagnostyki usługi Application Gateway](application-gateway-diagnostics.md#diagnostic-logging).
 

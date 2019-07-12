@@ -4,7 +4,7 @@ description: Omówienie pomocy technicznej platformy Azure dla maszyn wirtualnyc
 services: virtual-machines-windows
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: lahugh
-ms.openlocfilehash: d8991a6e3137953aae18b91f9cc19e81f0440c75
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 7abc1b7cd3be775af03aeaf558f631060cc6f81c
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67151212"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722727"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>Obsługa generacji 2 maszyny wirtualne (wersja zapoznawcza) na platformie Azure
 
@@ -41,7 +41,7 @@ Maszyny wirtualne generacji 1 są obsługiwane przez wszystkie rozmiary maszyn w
 * [Seria Dsv2](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv2-series) i [seria Dsv3](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
 * [Serii Esv3](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#esv3-series)
 * [Seria Fsv2](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-compute#fsv2-series-1)
-* [Seria GS](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#gs-series)
+* [Seria GS](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#gs-series)
 * [Seria ls](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series) i [Lsv2 serii](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-storage#lsv2-series)
 * [Mv2 serii](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series)
 
@@ -78,7 +78,7 @@ Platforma Azure obecnie nie obsługuje niektórych funkcji, które on-premises H
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>Generacji 1 i generacji 2 możliwości
 
-| Możliwości | 1\. generacji | 2\. generacji |
+| Możliwość | 1\. generacji | 2\. generacji |
 |------------|--------------|--------------|
 | > 2 TB dysku systemu operacyjnego                    | : x:.                        | :heavy_check_mark: |
 | Niestandardowe/image/wymiany dysku systemu operacyjnego         | :heavy_check_mark:         | :heavy_check_mark: |
@@ -145,7 +145,7 @@ Można również utworzyć generacji 2 maszyny wirtualne za pomocą zestawów sk
 * **Można przeprowadzić migrację maszyny Wirtualnej z generacji 1 generacji 2?**  
     Nie, nie można zmienić generację maszyny Wirtualnej, po jego utworzeniu. Jeśli trzeba przełączać się między generacji maszyny Wirtualnej, Utwórz nową maszynę Wirtualną z innej generacji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się więcej o [generacji 2 maszyn wirtualnych funkcji Hyper-v](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
 

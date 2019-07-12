@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: bfdebacb4de205fa42fe96ceb9970d2d109536e8
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 1f03f9e68640edd73d2f6bb55cf205a609450658
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296155"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620498"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream data jako dane wejściowe do usługi Stream Analytics
 
@@ -79,7 +79,7 @@ FROM Input
 ```
 
 > [!NOTE]
-> Korzystając z Centrum zdarzeń jako punkt końcowy dla tras Centrum IoT, mogą uzyskać dostęp do metadanych usługi IoT Hub przy użyciu [funkcja GetMetadataPropertyValue](https://msdn.microsoft.com/library/azure/mt793845.aspx).
+> Korzystając z Centrum zdarzeń jako punkt końcowy dla tras Centrum IoT, mogą uzyskać dostęp do metadanych usługi IoT Hub przy użyciu [funkcja GetMetadataPropertyValue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue).
 > 
 
 ## <a name="stream-data-from-iot-hub"></a>Stream dane z usługi IoT Hub
@@ -129,7 +129,7 @@ W przypadku scenariuszy z dużych ilości danych bez struktury, do przechowywani
 
 Przetwarzania dziennika to powszechnie używany scenariusz dotyczące korzystania z danych wejściowych z magazynu obiektów Blob za pomocą usługi Stream Analytics. W tym scenariuszu pliki danych telemetrycznych przechwycone z systemu i muszą zostać przeanalizowany i przetwarzane w celu wyodrębnienia istotnych danych.
 
-Domyślne sygnatura czasowa zdarzenia usługi Blob storage w usłudze Stream Analytics jest sygnatura czasowa czy ostatniej modyfikacji obiektu blob, który jest `BlobLastModifiedUtcTime`. Do przetwarzania danych w formie strumienia za pomocą znacznika czasu w przypadku ładunek, należy użyć [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) — słowo kluczowe. Zadanie usługi Stream Analytics pobiera dane z usługi Azure Blob storage w danych wejściowych co sekundę Jeśli pliku obiektu blob jest dostępna. Plik obiektu blob jest niedostępny, czy wykładniczego wycofywania z opóźnieniem maksymalny czas w 90 sekund.
+Domyślne sygnatura czasowa zdarzenia usługi Blob storage w usłudze Stream Analytics jest sygnatura czasowa czy ostatniej modyfikacji obiektu blob, który jest `BlobLastModifiedUtcTime`. Do przetwarzania danych w formie strumienia za pomocą znacznika czasu w przypadku ładunek, należy użyć [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) — słowo kluczowe. Zadanie usługi Stream Analytics pobiera dane z usługi Azure Blob storage w danych wejściowych co sekundę Jeśli pliku obiektu blob jest dostępna. Plik obiektu blob jest niedostępny, czy wykładniczego wycofywania z opóźnieniem maksymalny czas w 90 sekund.
 
 Wejść w formacie CSV wymagają wiersz nagłówka do definiowania pól dla zestawu danych, a wszystkie pola wiersz nagłówka musi być unikatowa.
 
@@ -175,7 +175,7 @@ SELECT
 FROM Input
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"]
 > [Szybki start: Tworzenie zadania usługi Stream Analytics przy użyciu witryny Azure portal](stream-analytics-quick-create-portal.md)
 

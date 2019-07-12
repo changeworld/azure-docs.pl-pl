@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/11/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 04cfe489e9eea53bf58dd64e0eac3e5a95033bcc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca96ba4c6b0de8ad39866a0783e7091fb4755164
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966845"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706237"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Przewodnik planowania i obsługi usługi Azure Security Center
 Ten przewodnik jest przeznaczony dla specjalistów IT, architektów IT, analityków zabezpieczeń informacji i administratorów chmury, których organizacje planują wdrożenie usługa Azure Security Center.
@@ -91,17 +91,17 @@ W przypadku osób opisanych na poprzednim diagramie będzie potrzebna następuj�
 
 **Daniel (zabezpieczenia informatyczne)**
 
-* Właściciel/współautor subskrypcji lub administrator zabezpieczeń
+* Właściciel/Współautor subskrypcji lub Administrator zabezpieczeń
 
 **Magda (operacje zabezpieczeń)**
 
 * Czytelnik subskrypcji lub czytelnik zabezpieczeń przeglądający alerty
-* Właściciel/współautor subskrypcji lub administrator zabezpieczeń, który musi odrzucać alerty
+* Właściciel/Współautor subskrypcji lub Administrator zabezpieczeń musi odrzucać alerty
 
 **Stanisław (analityk zabezpieczeń)**
 
 * Czytelnik subskrypcji przeglądający alerty
-* Właściciel/współautor subskrypcji, który musi odrzucać alerty
+* Właściciel/Współautor subskrypcji musi odrzucać alerty
 * Może być wymagany dostęp do obszaru roboczego
 
 Niektóre inne istotne informacje, które należy wziąć pod uwagę:

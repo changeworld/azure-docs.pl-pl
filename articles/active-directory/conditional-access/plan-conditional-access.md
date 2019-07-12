@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56ddc2738305600c611cab1e09d654164f78b3d6
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 3fca84a71e1ede572e3889f973248db158115bec
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509433"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655502"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Instrukcje: Planowanie wdrożenia dostępu warunkowego w usłudze Azure Active Directory
 
@@ -162,7 +162,7 @@ Plan testu jest posiadanie porównanie oczekiwanych wyników i rzeczywiste wynik
 |---|---|---|---|
 |[Wymagać uwierzytelniania Wieloskładnikowego poza pracą](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|Autoryzowane zalogowaniu się użytkownika do *aplikacji* while w zaufanej lokalizacji / pracy|Użytkownik nie jest monitowany o uwierzytelnianie wieloskładnikowe| |
 |[Wymagać uwierzytelniania Wieloskładnikowego poza pracą](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|Autoryzowane zalogowaniu się użytkownika do *aplikacji* podczas nie w zaufanej lokalizacji / pracy|Użytkownik jest monitowany o MFA i zalogować się pomyślnie| |
-|[Wymagać uwierzytelniania Wieloskładnikowego (dla administratora)](https://docs.microsoft.com/azure/active-directory/conditional-access/baseline-protection#require-mfa-for-admins)|Administrator globalny, który zaloguje się do *aplikacji*|Administrator otrzyma monit o uwierzytelnianie wieloskładnikowe| |
+|[Wymagać uwierzytelniania Wieloskładnikowego (dla administratora)](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-baseline-protect-administrators)|Administrator globalny, który zaloguje się do *aplikacji*|Administrator otrzyma monit o uwierzytelnianie wieloskładnikowe| |
 |[Ryzykowne logowania](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|Użytkownik zaloguje się do *aplikacji* przy użyciu [Tor przeglądarki](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-playbook)|Administrator otrzyma monit o uwierzytelnianie wieloskładnikowe| |
 |[Zarządzanie urządzeniami](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|Autoryzowany użytkownik spróbuje się zalogować z autoryzowanych urządzeń|Udzielono dostępu| |
 |[Zarządzanie urządzeniami](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|Autoryzowany użytkownik próbuje Zaloguj się za pomocą nieautoryzowanego urządzenia|Zablokowany dostęp| |

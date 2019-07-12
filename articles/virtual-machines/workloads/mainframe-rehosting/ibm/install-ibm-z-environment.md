@@ -4,16 +4,19 @@ description: Wdróż programowania Z firmy IBM i środowiska testowego (zD & T) 
 services: virtual-machines-linux
 documentationcenter: ''
 author: njray
+ms.author: edprice
 manager: edprice
 editor: edprice
+ms.topic: conceptual
+ms.date: 04/02/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 2f5520213e7d8792c89f5445d470987323173dc3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad02ec75dab4cb6971d0467899d80f5f745fd94b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60859345"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621297"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Instalowanie IBM zD & T, środowisko programistyczne/testowe na platformie Azure
 
@@ -132,6 +135,6 @@ Należy pamiętać, że po uruchomieniu serwera sieci web jest uruchamiana przy 
 
 3. Wklej adres URL w przeglądarce sieci web, aby otworzyć składnik zarządzania dla Twojego zD & T instalacji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Ustaw się aplikacja deweloperów kontrolowane dystrybucji (ADCD) w IBM zD & T w wersji 1](./demo.md)

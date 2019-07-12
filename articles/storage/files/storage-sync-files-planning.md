@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a745fefa5ceb0f81cf8d66e7af9e308c0ecb40b9
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e9e790ac8ac67478a0e7b5143a5b2f1fdd9c790c
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449868"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798665"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planowanie wdrażania usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -69,25 +69,12 @@ Chmura warstw to opcjonalna funkcja usługi Azure File Sync, w których często 
 ## <a name="azure-file-sync-system-requirements-and-interoperability"></a>Wymagania systemowe w usłudze Azure File Sync i współdziałanie 
 Tej sekcji omówiono wymagania systemowe agenta usługi Azure File Sync i współdziałanie z funkcji systemu Windows Server oraz role i rozwiązań innych firm.
 
-### <a name="evaluation-tool"></a>Narzędzie oceny
-Przed wdrożeniem usługi Azure File Sync, należy sprawdzić, czy jest on zgodny z systemu za pomocą narzędzia oceny usługi Azure File Sync. To narzędzie jest polecenie cmdlet programu Azure PowerShell, która sprawdza pod kątem potencjalnych problemów za pomocą systemu plików i zestaw danych, takimi jak nieobsługiwane znaki lub nieobsługiwaną wersję systemu operacyjnego. Należy zauważyć, że najbardziej obejmują jego sprawdzanie, ale nie wszystkie funkcje wymienione poniżej; Zalecamy przeczytanie pozostałej części tej sekcji, aby upewnić się, że Twoje wdrożenie zostanie umieszczone sprawnie. 
+### <a name="evaluation-cmdlet"></a>Polecenia cmdlet oceny
+Przed wdrożeniem usługi Azure File Sync, należy ocenić, czy jest on zgodny z systemu za pomocą polecenia cmdlet usługi Azure File Sync w wersji ewaluacyjnej. To polecenie cmdlet sprawdza pod kątem potencjalnych problemów za pomocą systemu plików i zestaw danych, takimi jak nieobsługiwane znaki lub nieobsługiwaną wersję systemu operacyjnego. Należy zauważyć, że najbardziej obejmują jego sprawdzanie, ale nie wszystkie funkcje wymienione poniżej; Zalecamy przeczytanie pozostałej części tej sekcji, aby upewnić się, że Twoje wdrożenie zostanie umieszczone sprawnie. 
 
-#### <a name="download-instructions"></a>Instrukcje pobierania
-1. Upewnij się, że masz najnowszą wersję modułu PackageManagement i zainstalowany moduł PowerShellGet (umożliwia to zainstalować moduły z wersji zapoznawczej)
-    
-    ```powershell
-        Install-Module -Name PackageManagement -Repository PSGallery -Force
-        Install-Module -Name PowerShellGet -Repository PSGallery -Force
-    ```
- 
-2. Ponowne uruchomienie programu PowerShell
-3. Instalacja modułów
-    
-    ```powershell
-        Install-Module -Name Az.StorageSync -AllowPrerelease -AllowClobber -Force
-    ```
+Polecenia cmdlet oceny można zainstalować po zainstalowaniu modułu programu Az PowerShell, którą można zainstalować, wykonując instrukcje podane w tym miejscu: [Instalowanie i konfigurowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
-#### <a name="usage"></a>Sposób użycia  
+#### <a name="usage"></a>Użycie  
 Narzędzie oceny można wywołać na kilka różnych sposobów: możesz wykonać testy systemu i/lub sprawdzenia zestawu danych. Aby wykonać testy systemu i zestaw danych: 
 
 ```powershell
@@ -115,11 +102,11 @@ Aby wyświetlić wyniki w formacie CSV:
 
     | Version | Obsługiwane jednostki SKU | Obsługiwane opcje wdrażania |
     |---------|----------------|------------------------------|
-    | Windows Server 2019 | Wersja Datacenter i Standard | Pełne (serwera z interfejsem użytkownika) |
-    | Windows Server 2016 | Wersja Datacenter i Standard | Pełne (serwera z interfejsem użytkownika) |
-    | Windows Server 2012 R2 | Wersja Datacenter i Standard | Pełne (serwera z interfejsem użytkownika) |
+    | Windows Server 2019 | Wersja Datacenter i Standard | Pełnej i Core |
+    | Windows Server 2016 | Wersja Datacenter i Standard | Pełnej i Core |
+    | Windows Server 2012 R2 | Wersja Datacenter i Standard | Pełnej i Core |
 
-    Przyszłych wersjach systemu Windows Server zostanie dodana po ich wydaniu. Wcześniejszych wersjach systemu Windows mogą być dodawane w oparciu o opinie użytkowników.
+    Przyszłych wersjach systemu Windows Server zostanie dodana po ich wydaniu.
 
     > [!Important]  
     > Zaleca się pozostawienie wszystkich serwerów, które używają usługi Azure File Sync na bieżąco z najnowszymi aktualizacjami z witryny Windows Update. 
@@ -169,8 +156,12 @@ Windows Server Failover Clustering jest obsługiwany przez usługę Azure File S
 > W każdym węźle w klastrze trybu Failover w celu synchronizacji działała prawidłowo, musi być zainstalowany agent usługi Azure File Sync.
 
 ### <a name="data-deduplication"></a>Funkcja deduplikacji danych
-**Wersja agenta 5.0.2.0**   
-Funkcja deduplikacji danych jest obsługiwana w woluminach z obsługi warstw włączone w systemie Windows Server 2016 i Windows Server 2019 w chmurze. Włączanie deduplikacji na woluminie z obsługi warstw włączone w chmurze pozwala bez inicjowania obsługi administracyjnej więcej miejsca w pamięci podręcznej więcej plików lokalnych. Należy pamiętać, że oszczędności tych woluminów mają zastosowanie tylko w środowisku lokalnym; dane w usłudze Azure Files nie będzie można deduplikacją. 
+**Wersja agenta 5.0.2.0 lub nowszej**   
+Funkcja deduplikacji danych jest obsługiwana w woluminach z obsługi warstw włączone w systemie Windows Server 2016 i Windows Server 2019 w chmurze. Włączanie deduplikacji danych na woluminie z obsługi warstw włączone w chmurze pozwala bez inicjowania obsługi administracyjnej więcej miejsca w pamięci podręcznej więcej plików lokalnych. 
+
+Po włączeniu deduplikacji danych na woluminie z chmurą warstw włączone deduplikacji zoptymalizowane pliki znajdujące się w lokalizacji punktu końcowego serwera będą umieszczane w podobny do zwykłego pliku oparte na chmurze obsługi warstw na ustawienia zasad. Po deduplikacji zasadami warstwowej zoptymalizowane pliki, zadania odzyskiwania pamięci deduplikacji danych zostanie uruchomiony automatycznie, aby odzyskać miejsce na dysku przez usunięcie niepotrzebnych fragmentów, które nie są już używane przez inne pliki na woluminie.
+
+Należy pamiętać, że oszczędności zbiorowego mają zastosowanie tylko do serwera; dane w udziale plików platformy Azure nie będzie można deduplikacją.
 
 **Windows Server 2012 R2 lub starszych wersji agenta**  
 W przypadku woluminów, które nie mają obsługi warstw włączone w chmurze usługi Azure File Sync obsługuje deduplikacji danych systemu Windows Server z włączane na woluminie.
@@ -220,7 +211,7 @@ Ponieważ oprogramowanie antywirusowe polega na skanowanie plików do znanego z�
 Rozwiązania firmy Microsoft wewnętrznych oprogramowania antywirusowego, usługa Windows Defender i System Center Endpoint Protection (SCEP), zarówno automatycznie pominięcia odczytu plików, które mają ustawiony ten atrybut. Firma Microsoft zostały one przetestowane i zidentyfikować niewielki problem w jednym: po dodaniu serwera do istniejącej grupy synchronizacji, pliki mniejsze niż 800 bajtów zostaną odwołane (pobieranego) na nowym serwerze. Pliki te pozostaną na nowym serwerze i nie będą umieszczane, ponieważ nie spełniają warstw wymagany rozmiar (> 64kb).
 
 > [!Note]  
-> Dostawców oprogramowania antywirusowego, można sprawdzić zgodności ich produktów i usługi Azure File Sync za pomocą [Azure pliku synchronizacji programu antywirusowego ze zgodnością zestawu testów] (https://www.microsoft.com/download/details.aspx?id=58322), który jest dostępny do pobrania z Microsoft Download Center.
+> Dostawców oprogramowania antywirusowego, można sprawdzić zgodności ich produktów i za pomocą usługi Azure File Sync [zestawu testów zgodności programu antywirusowego synchronizacji plików Azure](https://www.microsoft.com/download/details.aspx?id=58322), który jest dostępny do pobrania z Microsoft Download Center.
 
 ### <a name="backup-solutions"></a>Rozwiązania tworzenia kopii zapasowych
 Takich jak rozwiązania antywirusowe rozwiązania tworzenia kopii zapasowych może spowodować wycofanie plików warstwowych. Zalecamy używanie rozwiązania tworzenia kopii zapasowych w chmurze do tworzenia kopii zapasowej udziału plików platformy Azure, a nie lokalnie instalowanym produktem kopii zapasowej.
@@ -263,6 +254,7 @@ Usługa Azure File Sync jest dostępna tylko w następujących regionach:
 | Azja Wschodnia | SRA Hongkong |
 | East US | Wirginia |
 | Wschodnie stany USA 2 | Wirginia |
+| Francja Środkowa | Paryż |
 | Korea Środkowa| Seul |
 | Korea Południowa| Pusan |
 | Japonia Wschodnia | Tokyo, Saitama |
@@ -304,6 +296,7 @@ Aby obsługiwać integrację trybu failover dla magazynu geograficznie nadmiarow
 | Azja Wschodnia           | Azja Południowo-Wschodnia     |
 | East US             | Zachodnie stany USA            |
 | Wschodnie stany USA 2           | Środkowe stany USA         |
+| Francja Środkowa      | Francja Południowa       |
 | Japonia Wschodnia          | Japonia Zachodnia         |
 | Japonia Zachodnia          | Japonia Wschodnia         |
 | Korea Środkowa       | Korea Południowa        |
@@ -326,7 +319,7 @@ Aby obsługiwać integrację trybu failover dla magazynu geograficznie nadmiarow
 ## <a name="azure-file-sync-agent-update-policy"></a>Zasady aktualizacji agenta usługi Azure File Sync
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Należy wziąć pod uwagę ustawień zapory i serwera proxy](storage-sync-files-firewall-and-proxy.md)
 * [Planowanie wdrożenia usługi Azure Files](storage-files-planning.md)
 * [Wdrażanie usługi pliki Azure](storage-files-deployment-guide.md)

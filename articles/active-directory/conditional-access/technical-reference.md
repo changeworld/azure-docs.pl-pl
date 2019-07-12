@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 03/22/2019
+ms.date: 07/10/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5919eebccad8d7f9e048ae07be296eaaaf8428eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 535842989ef49ee13a5ddee7c4349a3b819f741c
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112107"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797855"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Informacje dotyczące ustawień usługi Azure Active Directory dostępu warunkowego
 
@@ -101,7 +101,7 @@ W zasadach dostępu warunkowego można skonfigurować warunek platformy urządze
 
 W zasadach dostępu warunkowego można skonfigurować [aplikacje klienckie](conditions.md#client-apps) warunek, aby powiązać zasady do aplikacji klienckiej, który zainicjował próba dostępu. Warunek klienta aplikacji można udzielić lub blokowanie dostępu, gdy podejmowana jest próba dostępu z następujących typów aplikacji klienckich:
 
-- Przeglądarka
+- Browser
 - Aplikacje mobilne i aplikacje komputerowe
 
 ![Kontrola dostępu dla aplikacji klienckich](./media/technical-reference/03.png)
@@ -114,7 +114,7 @@ Zasady dostępu warunkowego, można wybrać **przeglądarek** jako aplikację kl
 
 To ustawienie działa ze wszystkimi przeglądarkami. Jednak do zasad urządzenia, takie jak wymaganie zgodnego urządzenia spełniają następujące systemy operacyjne i przeglądarki są obsługiwane:
 
-| System operacyjny                     | Przeglądarki                                      |
+| OS                     | Przeglądarki                                      |
 | :--                    | :--                                           |
 | Windows 10             | Internet Explorer, Microsoft Edge, Chrome     |
 | Windows 8 / 8.1        | Internet Explorer, Chrome                     |
@@ -134,7 +134,7 @@ W Windows 7, iOS, Android i macOS usługi Azure AD identyfikuje urządzenia przy
 
 #### <a name="chrome-support"></a>Pomocy technicznej dla programu Chrome
 
-Dla programu Chrome obsługi w programie **systemu Windows 10 dla kreatywnych (wersja 1703)** lub nowszej, zainstaluj [to rozszerzenie](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji).
+Dla programu Chrome obsługi w programie **systemu Windows 10 dla kreatywnych (wersja 1703)** lub nowszej, zainstaluj [rozszerzenie systemu Windows 10 kont](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji). To rozszerzenie jest wymagane, gdy zasady dostępu warunkowego wymaga szczegóły dotyczące urządzenia.
 
 Aby automatycznie wdrożyć to rozszerzenie przeglądarki Chrome, utwórz następujący klucz rejestru:
 
@@ -249,7 +249,7 @@ To ustawienie dotyczy następujących aplikacji klienta:
 - **Wymagają zasad ochrony aplikacji** wymagania:
     - Obsługuje tylko systemy iOS i Android, aby uzyskać [warunek platformy urządzenia](#device-platform-condition).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby uzyskać przegląd dostępu warunkowego, zobacz [co to jest dostęp warunkowy w usłudze Azure Active Directory?](../active-directory-conditional-access-azure-portal.md)
 - Jeśli wszystko jest gotowe do skonfigurowania zasad dostępu warunkowego w danym środowisku, zobacz [zalecane praktyki dla dostępu warunkowego w usłudze Azure Active Directory](best-practices.md).
