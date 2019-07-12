@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 1e96431af575533566786341750e17e7a7f446e0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c1a6a53e6db883c63164a6367012faf32ed75519
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076015"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673455"
 ---
 ## <a name="prepare-for-akv-integration"></a>Przygotowanie do Integracja
 Aby korzystać z integracji magazynu kluczy Azure do skonfigurowania maszyny Wirtualnej programu SQL Server, istnieje kilka wymagań wstępnych: 
@@ -38,7 +38,7 @@ Upewnij się, że zainstalowano najnowszy moduł Azure PowerShell. Aby uzyskać 
 
 Po pierwsze, musisz mieć [usługi Azure Active Directory](https://azure.microsoft.com/trial/get-started-active-directory/) (AAD) w ramach subskrypcji. Wśród wielu korzyści dzięki temu można udzielić uprawnień do magazynu kluczy dla niektórych użytkowników i aplikacji.
 
-Następnie należy zarejestrować aplikację za pomocą usługi AAD. Zapewni to konto nazwy głównej usługi, które ma dostęp do magazynu kluczy, którego należy maszyna wirtualna. W artykule usługi Azure Key Vault, możesz znaleźć te kroki w [rejestrowanie aplikacji w usłudze Azure Active Directory](../articles/key-vault/key-vault-manage-with-cli2.md#registering-an-application-with-azure-active-directory) sekcji, lub można wyświetlić czynności, które ze zrzutami ekranu w **uzyskać tożsamości w sekcji aplikacji**  z [ten wpis w blogu](http://blogs.technet.com/b/kv/archive/2015/01/09/azure-key-vault-step-by-step.aspx). Przed wykonaniem tych kroków, należy zebrać następujące informacje w trakcie tej rejestracji, który jest potrzebny później, po włączeniu integracji magazynu kluczy Azure na maszynie Wirtualnej programu SQL.
+Następnie należy zarejestrować aplikację za pomocą usługi AAD. Zapewni to konto nazwy głównej usługi, które ma dostęp do magazynu kluczy, którego należy maszyna wirtualna. W artykule usługi Azure Key Vault, możesz znaleźć te kroki w [rejestrowanie aplikacji w usłudze Azure Active Directory](../articles/key-vault/key-vault-manage-with-cli2.md#registering-an-application-with-azure-active-directory) sekcji, lub można wyświetlić czynności, które ze zrzutami ekranu w **uzyskać tożsamości w sekcji aplikacji**  z [ten wpis w blogu](https://blogs.technet.com/b/kv/archive/2015/01/09/azure-key-vault-step-by-step.aspx). Przed wykonaniem tych kroków, należy zebrać następujące informacje w trakcie tej rejestracji, który jest potrzebny później, po włączeniu integracji magazynu kluczy Azure na maszynie Wirtualnej programu SQL.
 
 * Po dodaniu aplikacji Znajdź **identyfikator aplikacji** na **zarejestrowana aplikacja** bloku.
     Identyfikator aplikacji jest przypisywany później do **$spName** parametru (główna nazwa usługi) w skrypcie programu PowerShell, aby włączyć integracji magazynu kluczy Azure.

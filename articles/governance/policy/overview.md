@@ -7,12 +7,12 @@ ms.date: 12/06/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 2dd31ab29479fade21d27b8e2c23952f905f530a
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: da045a561fba81bf9a5e412a6f2bf0a6160acfa7
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979158"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807444"
 ---
 # <a name="overview-of-the-azure-policy-service"></a>Omówienie usługi Azure Policy
 
@@ -25,6 +25,8 @@ Azure Policy to usługa platformy Azure, która umożliwia tworzenie i przypisyw
 
 > [!IMPORTANT]
 > Ocena zgodności w usłudze Azure Policy jest teraz dostępna w przypadku wszystkich przypisań niezależnie od warstwy cenowej. Jeśli przydziały nie pokazują danych zgodności, upewnij się, że subskrypcja została zarejestrowana w obrębie dostawcy zasobów Microsoft.PolicyInsights.
+
+[!INCLUDE [service-provider-management-toolkit](../../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="how-is-it-different-from-rbac"></a>Czym się to różni od RBAC?
 
@@ -62,7 +64,7 @@ Ocena zasad odbywa się przy użyciu kilku różnych akcji, takich jak przypisan
 
 Aby dowiedzieć się więcej o strukturach definicji zasad, zapoznaj się z tematem [Policy Definition Structure](./concepts/definition-structure.md) (Struktura definicji zasad).
 
-## <a name="policy-assignment"></a>Przypisanie zasad
+## <a name="policy-assignment"></a>Przypisywanie zasad
 
 Przypisywanie zasad to definicja zasad, która została przypisana do określonego zakresu. Zakresem tym może być zarówno [grupa zarządzania](../management-groups/overview.md), jak i grupa zasobów. Termin *zakres* odnosi się do wszystkich grup zasobów, subskrypcji i grup zarządzania, do których przypisano definicję zasad. Przypisania zasad są dziedziczone przez wszystkie zasoby podrzędne. To rozwiązanie oznacza, że zastosowanie zasad do grupy zasobów powoduje zastosowanie ich również do zasobów w tej grupie zasobów. Z przypisania zasad można jednak wyłączyć zakres podrzędny.
 
@@ -140,7 +142,7 @@ Poniższe omówienie usługi Azure Policy dotyczy kompilacji 2018. Aby pobrać s
 
 > [!VIDEO https://www.youtube.com/embed/dxMaYF2GB7o]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Teraz, gdy masz już podstawowe informacje na temat usługi Azure Policy i kluczowych pojęć, oto zalecane kolejne kroki:
 

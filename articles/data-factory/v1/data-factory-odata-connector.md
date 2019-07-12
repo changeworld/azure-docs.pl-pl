@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b2c665de94750c4c6f41bda47960fdb9ba17e819
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 840a839f7d3259de0473937de9c9970fcb95227c
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60824036"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839077"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>Przenoszenie danych źródła z OData przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
@@ -46,7 +46,7 @@ Utworzysz potok z działaniem kopiowania, które przenosi dane ze źródła dany
 
 Najprostszym sposobem utworzenia potoku jest użycie **kreatora kopiowania**. Zobacz [samouczka: Tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych.
 
-Aby utworzyć potok umożliwia także następujących narzędzi: **Witryna Azure portal**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**i  **Interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
+Aby utworzyć potok umożliwia także następujących narzędzi: **Program Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**, i **interfejsu API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
 
 Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródłowych do magazynu danych ujścia:
 
@@ -64,9 +64,9 @@ Poniższa tabela zawiera opis specyficzne dla usługi OData, połączone element
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | type |Właściwość type musi być równa: **OData** |Yes |
-| url |Adres URL usługi OData. |Yes |
-| authenticationType |Typ uwierzytelniania używany do łączenia z źródła OData. <br/><br/> W chmurze OData możliwe wartości to anonimowe, podstawowe i OAuth (Uwaga obsługują obecnie tylko usługę Azure Data Factory usługi Azure Active Directory na podstawie OAuth). <br/><br/> Dla protokołu OData w środowisku lokalnym możliwe wartości to anonimowe, podstawowe i Windows. |Yes |
-| username |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowego. |Tak (tylko wtedy, gdy używasz uwierzytelniania podstawowego) |
+| url |Adres URL usługi OData. |Tak |
+| authenticationType |Typ uwierzytelniania używany do łączenia z źródła OData. <br/><br/> W chmurze OData możliwe wartości to anonimowe, podstawowe i OAuth (Uwaga obsługują obecnie tylko usługę Azure Data Factory usługi Azure Active Directory na podstawie OAuth). <br/><br/> Dla protokołu OData w środowisku lokalnym możliwe wartości to anonimowe, podstawowe i Windows. |Tak |
+| userName |Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowego. |Tak (tylko wtedy, gdy używasz uwierzytelniania podstawowego) |
 | password |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. |Tak (tylko wtedy, gdy używasz uwierzytelniania podstawowego) |
 | authorizedCredential |Jeśli używasz uwierzytelniania OAuth, kliknij przycisk **Autoryzuj** znajdujący się w kreatora kopiowania usługi Data Factory lub edytorze, a następnie wprowadź swoje poświadczenia, wartość tej właściwości zostanie wygenerowany automatycznie. |Tak (tylko w przypadku korzystania z uwierzytelniania OAuth) |
 | gatewayName |Nazwa bramy, do którego usługa Data Factory powinna używać do połączenia z usługą OData w środowisku lokalnym. Określ tylko, jeśli kopiujesz dane z lokalnego źródła OData. |Nie |
@@ -174,7 +174,7 @@ Podczas przenoszenia danych z OData, następujące mapowania są używane z typ�
 | Edm.Binary |Byte[] |
 | Edm.Boolean |Bool |
 | Edm.Byte |Byte[] |
-| Edm.DateTime |DateTime |
+| Edm.DateTime |Datetime |
 | Edm.Decimal |Decimal |
 | Edm.Double |Double |
 | Edm.Single |Single |
@@ -191,7 +191,7 @@ Podczas przenoszenia danych z OData, następujące mapowania są używane z typ�
 > Złożonych danych OData, np. typy obiektów nie są obsługiwane.
 
 ## <a name="json-example-copy-data-from-odata-source-to-azure-blob"></a>Przykład kodu JSON: Kopiowanie danych ze źródła OData do obiektów Blob platformy Azure
-W poniższym przykładzie przedstawiono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [witryny Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) lub [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Pokazują sposób kopiowania danych ze źródła OData do usługi Azure Blob Storage. Jednakże, można skopiować danych do dowolnego ujścia, o których wspomniano [tutaj](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory. Przykład obejmuje następujących jednostek usługi Data Factory:
+W poniższym przykładzie przedstawiono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Pokazują sposób kopiowania danych ze źródła OData do usługi Azure Blob Storage. Jednakże, można skopiować danych do dowolnego ujścia, o których wspomniano [tutaj](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory. Przykład obejmuje następujących jednostek usługi Data Factory:
 
 1. Połączonej usługi typu [OData](#linked-service-properties).
 2. Połączonej usługi typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).

@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/17/2019
-ms.openlocfilehash: 61a208f3e84125acc2a3cb22d3abccf16587e581
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.date: 07/10/2019
+ms.openlocfilehash: dab4262e5412c8ef3cd1e0d2ef8203d7f289693f
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543679"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839182"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozszerzenie usługi Azure HDInsight przy użyciu usługi Azure Virtual Network
 
@@ -25,7 +25,9 @@ Dowiedz się, jak używać HDInsight przy użyciu [Azure Virtual Network](../vir
 * Bezpośredni dostęp do [Apache Hadoop](https://hadoop.apache.org/) usług, które nie są dostępne publicznie w Internecie. Na przykład [platformy Apache Kafka](https://kafka.apache.org/) interfejsów API lub [bazy danych Apache HBase](https://hbase.apache.org/) interfejsu API języka Java.
 
 > [!IMPORTANT]  
-> Od 28 lutego 2019 roku zasobów sieciowych (takich jak karty sieciowe, modułów równoważenia obciążenia itp.) dla nowych klastrów utworzone w sieci Wirtualnej zostaną zainicjowane w tej samej grupie zasobów klastra HDInsight. Wcześniej te zasoby zostały aprowizowane w grupie zasobów sieci Wirtualnej. Nie ma zmian do bieżącego uruchamianie klastrów i tych klastrów, utworzone bez sieci Wirtualnej.
+> Tworzenie klastra usługi HDInsight w sieci Wirtualnej utworzysz kilka zasobów sieciowych, takie jak karty sieciowe i moduły równoważenia obciążenia. Czy **nie** usunąć tych zasobów sieciowych, w razie aby klaster mógł działać poprawnie z sieci Wirtualnej.
+>
+> Od 28 lutego 2019 roku tych zasobów sieciowych (takich jak karty sieciowe, modułów równoważenia obciążenia itp.) dla nowych klastrów utworzone w sieci Wirtualnej zostaną zainicjowane w tej samej grupie zasobów klastra HDInsight. Wcześniej te zasoby zostały aprowizowane w grupie zasobów sieci Wirtualnej. Nie ma zmian do bieżącego uruchamianie klastrów i tych klastrów, utworzone bez sieci Wirtualnej.
 
 ## <a name="prerequisites-for-code-samples-and-examples"></a>Wymagania wstępne dotyczące przykłady kodu i przykłady
 
@@ -270,8 +272,7 @@ Użycie opcji sieciowych grup zabezpieczeń lub tras zdefiniowanych przez użytk
     | ---- | ---- | ---- | ---- | ----- |
     | Azja | Azja Wschodnia | 23.102.235.122</br>52.175.38.134 | \*:443 | Przychodzący |
     | &nbsp; | Azja Południowo-Wschodnia | 13.76.245.160</br>13.76.136.249 | \*:443 | Przychodzący |
-    | Australia | Australia Środkowa | 20.36.36.33</br>20.36.36.196 | \*:443 | Przychodzący |
-    | &nbsp; | Australia Wschodnia | 104.210.84.115</br>13.75.152.195 | \*:443 | Przychodzący |
+    | Australia | Australia Wschodnia | 104.210.84.115</br>13.75.152.195 | \*:443 | Przychodzący |
     | &nbsp; | Australia Południowo-Wschodnia | 13.77.2.56</br>13.77.2.94 | \*:443 | Przychodzący |
     | Brazylia | Brazylia Południowa | 191.235.84.104</br>191.235.87.113 | \*:443 | Przychodzący |
     | Kanada | Kanada Wschodnia | 52.229.127.96</br>52.229.123.172 | \*:443 | Przychodzący |
@@ -650,7 +651,7 @@ W tym przykładzie sprawia, że następujące założenia:
 
 Po wykonaniu tych kroków, można połączyć się z zasobami w sieci wirtualnej przy użyciu w pełni kwalifikowanych nazw domen (FQDN). Można teraz zainstalować HDInsight w sieci wirtualnej.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby uzyskać przykład end-to-end konfigurowania HDInsight, aby nawiązać połączenie między siecią lokalną, zobacz [Connect HDInsight z siecią lokalną](./connect-on-premises-network.md).
 * Podczas konfigurowania klastrów Apache HBase w sieci wirtualnej platformy Azure, zobacz [tworzenie bazy danych Apache HBase klastrów HDInsight w usłudze Azure Virtual Network](hbase/apache-hbase-provision-vnet.md).

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: bc058cb3f27545b9e4ad8ef1062ca4d2fa4c9fa8
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 46f52cb0478b47f8f6b45356815bc4c74e7cc800
+ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155153"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67724120"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Rozwiązywanie problemów aktywacji maszyny wirtualnej Windows Azure
 
@@ -84,7 +84,6 @@ Dla maszyny Wirtualnej, który jest tworzony na podstawie niestandardowego obraz
 
 3. Upewnij się, że maszyna wirtualna jest skonfigurowana do używania właściwego serwera usługi Azure KMS. Aby to zrobić, uruchom następujące polecenie:
   
-
     ```powershell
     Invoke-Expression "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.core.windows.net:1688"
     ```
@@ -93,29 +92,26 @@ Dla maszyny Wirtualnej, który jest tworzony na podstawie niestandardowego obraz
 
 4. Sprawdź przy użyciu Psping, że masz połączenie z serwerem usługi zarządzania Kluczami. Przejdź do folderu, w którym wyodrębniono pobrany plik Pstools.zip, a następnie uruchom:
   
-
     ```
     \psping.exe kms.core.windows.net:1688
     ```
-
-  
    W drugim od końca wierszu danych wyjściowych upewnij się, że widzisz: Wysłane = 4, odebrane = 4, utracone = 0 (0% straty).
 
    Utracono jest większa od 0 (zero), maszyna wirtualna ma połączenie z serwerem usługi zarządzania Kluczami. W takiej sytuacji Jeśli maszyna wirtualna znajduje się w sieci wirtualnej i jest niestandardowego serwera DNS określona, musisz upewnić się, że serwer DNS jest w stanie rozpoznać kms.core.windows.net. Lub zmienić serwer DNS, który jest rozpoznawany kms.core.windows.net.
 
    Należy zauważyć, że po usunięciu wszystkich serwerów DNS z sieci wirtualnej maszyny wirtualne używają wewnętrzna usługi DNS platformy Azure. Ta usługa może rozpoznać kms.core.windows.net.
   
-Sprawdź także, czy Zapora gościa nie został skonfigurowany w taki sposób, który może zablokować próby aktywacji.
+    Upewnij się, że wychodzącego ruchu sieciowego do punktu końcowego usługi KMS, za pomocą portu 1688 nie jest blokowany przez zaporę na maszynie wirtualnej również.
 
-1. Po zweryfikowaniu pomyślne łączności kms.core.windows.net uruchom następujące polecenie w wierszu programu Windows PowerShell z podwyższonym poziomem uprawnień tej. To polecenie podejmuje próbę aktywacji wiele razy.
+5. Po zweryfikowaniu pomyślne łączności kms.core.windows.net uruchom następujące polecenie w wierszu programu Windows PowerShell z podwyższonym poziomem uprawnień tej. To polecenie podejmuje próbę aktywacji wiele razy.
 
     ```powershell
-    1..12 | ForEach-Object { Invoke-Expression “$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ato” ; start-sleep 5 }
+    1..12 | ForEach-Object { Invoke-Expression "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ato" ; start-sleep 5 }
     ```
 
-Pomyślna aktywacja zwraca informacje podobne do następujących:
-
-**Aktywowanie Windows(R), ServerDatacenter edition (12345678-1234-1234-1234-12345678)... Produkt został aktywowany pomyślnie.**
+    Pomyślna aktywacja zwraca informacje podobne do następujących:
+    
+    **Aktywowanie Windows(R), ServerDatacenter edition (12345678-1234-1234-1234-12345678)...  Produkt został aktywowany pomyślnie.**
 
 ## <a name="faq"></a>Często zadawane pytania 
 

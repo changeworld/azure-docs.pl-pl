@@ -4,7 +4,7 @@ description: Jak skonfigurować sterowniki procesora GPU NVIDIA dla maszyn wirtu
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: d91695d0-64b9-4e6b-84bd-18401eaecdde
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 769d3dda7b1e49612279c9bfa6a3dd586e50e4c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d6c8bdb27e9e976a7a490c2a824e994242378641
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66479105"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671206"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Instalowanie sterowników procesora GPU NVIDIA na maszynach wirtualnych serii N z systemem Linux
 
@@ -346,6 +346,6 @@ Następnie należy utworzyć wpis dla skryptu aktualizacji w `/etc/rc.d/rc3.d` ,
 
 * Można ustawić w trybie trwałości `nvidia-smi` , dane wyjściowe polecenia jest szybsza, kiedy trzeba karty zapytania. Aby ustawić tryb trwałości, należy wykonać `nvidia-smi -pm 1`. Należy pamiętać, że jeśli maszyna wirtualna zostanie ponownie uruchomiony, ustawienie trybu stanie się niepotrzebna. Można zawsze skryptu ustawienie trybu do wykonywania podczas uruchamiania.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby przechwycić obraz maszyny Wirtualnej systemu Linux zainstalowane sterowniki NVIDIA, zobacz [jak uogólnić i przechwycić maszynę wirtualną z systemem Linux](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

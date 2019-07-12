@@ -2,17 +2,17 @@
 title: Korzystając z wielu pul węzłów w usłudze Azure Kubernetes Service (AKS)
 description: Dowiedz się, jak tworzyć i zarządzać nimi wiele pul węzłów klastra w usłudze Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/17/2019
-ms.author: iainfou
-ms.openlocfilehash: 48fdb251fa0302c2755281644a804c74ae80a63e
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.author: mlearned
+ms.openlocfilehash: 2c4a0f57edb49ca2b2bc13bd9240b01c2b0556d3
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491539"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67613977"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>W wersji zapoznawczej — tworzenie i zarządzanie nimi wiele pul węzłów klastra w usłudze Azure Kubernetes Service (AKS)
 
@@ -440,7 +440,7 @@ Aby usunąć klaster, użyj [usunięcie grupy az][az-group-delete] polecenie, ab
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym artykule przedstawiono sposób tworzenia i zarządzania nimi wiele pul węzłów w klastrze AKS. Aby uzyskać więcej informacji o sposobie kontrolowania zasobników w pule węzłów, zobacz [najlepsze rozwiązania dotyczące harmonogramu zaawansowanych funkcji w usłudze AKS][operator-best-practices-advanced-scheduler].
 

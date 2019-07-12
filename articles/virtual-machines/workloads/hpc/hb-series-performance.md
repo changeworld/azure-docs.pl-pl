@@ -4,7 +4,7 @@ description: Więcej informacji o wydajności, wyniki rozmiary maszyn wirtualnyc
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 9174ed0fbf95a094c363fa1d9aa899d9554b345b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 820aa1d04437a80f72e95fab71f5c8503c59822c
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66809980"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707743"
 ---
 # <a name="hb-series-virtual-machine-sizes"></a>Rozmiary maszyn wirtualnych serii HB
 
@@ -117,7 +117,7 @@ Przepustowość OSU MPI testu v5.4.3.
 | 4194304          | 12061.33         | 96.49            |
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o [o wysokiej wydajności obliczeniowej](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) na platformie Azure.
 

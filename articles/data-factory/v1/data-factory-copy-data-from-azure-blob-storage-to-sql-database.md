@@ -14,20 +14,19 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 557228bafc00c3028a1fda520da8fe4ec8c7a6f2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ad114ce3a40e11048d01c6768811089c43cdf1db
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60487336"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839386"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Samouczek: Kopiowanie danych z magazynu obiektów Blob do usługi SQL Database przy użyciu usługi fabryka danych
 > [!div class="op_single_selector"]
 > * [Przegląd i wymagania wstępne](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Kreator kopiowania](data-factory-copy-data-wizard-tutorial.md)
-> * [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
-> * [Program Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
-> * [Program PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+> * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+> * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Szablon usługi Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [Interfejs API REST](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [Interfejs API programu .NET](data-factory-copy-activity-tutorial-using-dotnet-api.md)
@@ -117,9 +116,8 @@ Teraz Przygotuj swój usługi Azure blob storage i bazy danych Azure SQL dla teg
 Wymagań wstępnych została ukończona. Można utworzyć fabryki danych przy użyciu jednej z następujących sposobów. Kliknij jedną z opcji na liście rozwijanej u góry lub poniższe linki do wykonania tego samouczka.     
 
 * [Kreator kopiowania](data-factory-copy-data-wizard-tutorial.md)
-* [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
-* [Program Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
-* [Program PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+* [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+* [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 * [Szablon usługi Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 * [Interfejs API REST](data-factory-copy-activity-tutorial-using-rest-api.md)
 * [Interfejs API programu .NET](data-factory-copy-activity-tutorial-using-dotnet-api.md)
