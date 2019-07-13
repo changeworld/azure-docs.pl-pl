@@ -8,13 +8,13 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/26/2018
-ms.author: rosh; v-gedod
-ms.openlocfilehash: e2911ebe9157507534717a4177d4380813dd2ff6
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.author: rosh
+ms.openlocfilehash: cf622f658208ab85fe0a0670a0e034bd58a5047d
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67541550"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849941"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Wysyłanie i przy użyciu lokalnych firm interfejsu API wyszukiwania Bing, zapytań i odpowiedzi
 
@@ -145,7 +145,7 @@ Expires: Tue, 16 Oct 2018 16:25:15 GMT
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../includes/cognitive-services-bing-throttling-requests.md)]
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - [Lokalne wyszukiwanie firm Szybki Start](quickstarts/local-quickstart.md)
 - [Lokalnych firm wyszukiwania Java Szybki Start](quickstarts/local-search-java-quickstart.md)
 - [Lokalny węzeł wyszukiwania firm Szybki Start](quickstarts/local-search-node-quickstart.md)

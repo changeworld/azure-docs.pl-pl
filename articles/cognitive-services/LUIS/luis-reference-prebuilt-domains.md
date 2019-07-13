@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 3265477108b7e74d65050408add6c5d5c94b4852
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b615185472ede25fd6ceef9cc3e7325375e16ac7
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233896"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846680"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>Dokumentacja ze wstępnie utworzonych domen aplikacją usługi LUIS
 Ta dokumentacja zawiera informacje na temat [ze wstępnie utworzonych domen](luis-how-to-use-prebuilt-domains.md), które są wstępnie utworzonych kolekcji intencje i podmioty, które są oferowane usługi LUIS.
@@ -54,7 +54,7 @@ The table below summarizes the currently supported domains. Support for English 
 
 |Typ jednostki|description|
 |--|--|
-|Kalendarz|Kalendarz jest coś o osobiste spotkania i terminy, _nie_ zdarzenia publiczne (takie jak świata w piłce harmonogramy, kalendarze zdarzeń Seattle lub kalendarze ogólnych (np. dnia jest on już dziś, co fall rozpocząć, po Labor Day).|
+|Kalendarz|Kalendarz jest coś o osobiste spotkania i terminy, _nie_ publicznych zdarzeń (na przykład świata w piłce harmonogramy, kalendarze zdarzeń Seattle) lub kalendarze ogólnych (np. dnia jest on już dziś, co fall rozpocząć, po Labor Day).|
 |Komunikacja|Żądania do nawiązywania połączeń, wysyłanie teksty lub wiadomości błyskawiczne Znajdowanie i dodawanie kontaktów i różnych innych komunikacji żądania dotyczące (zazwyczaj wychodząca). Nazwisko osoby kontaktowej tylko zapytania nie należą do domeny komunikacji.|
 |Email|Wiadomość e-mail ma domenę podrzędną domeny komunikacji. Zawiera ona głównie żądań wysyłania i odbierania komunikatów za pośrednictwem wiadomości e-mail.|
 |HomeAutomation|Domeny HomeAutomation zapewnia intencje i podmioty, związane z sterowanie urządzeniami inteligentnymi macierzystego. Obsługuje ona głównie polecenia sterowania związane z światła i klimatyzacyjne, ale ma pewne możliwości Generalizacja dla innych urządzeń electric.|

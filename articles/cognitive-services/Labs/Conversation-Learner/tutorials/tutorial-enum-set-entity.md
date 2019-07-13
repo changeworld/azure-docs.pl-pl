@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: e990ebe89f4446a0226aa0e0f73ffd900e5b021a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.author: nolachar
+ms.openlocfilehash: ed18d30a0c3f5d51cb3a07b8948863cdda16c1ae
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592955"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67845960"
 ---
 # <a name="when-to-use-enum-entities-and-set-entity-actions"></a>Kiedy należy używać Wyliczenia jednostek i USTAWIĆ jednostki akcji
 
@@ -160,7 +160,7 @@ Pierwszy okna dialogowego za pomocą Wyliczenia jednostek i akcje SET_ENTITY wł
 >
 > jednak tworzenie po zalogowaniu się okien dialogowych lub przy użyciu wdrożone botów użytkownicy nie będą widzieć je.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Alternatywne danych wejściowych](./10-alternative-inputs.md)
