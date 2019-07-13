@@ -58,7 +58,8 @@
     - name: Pobieranie szczegółowych informacji za pomocą tokenu
       href: use-insights-token.md
     - name: Zmiana rozmiaru i przycinanie miniatur
-      href: resize-and-crop-thumbnails.md
+      maintainContext: true
+      href: ../bing-web-search/resize-and-crop-thumbnails.md
     - name: Wyszukiwanie obrazu za pomocą tokenów szczegółowych informacji o obrazie
       href: tutorial-visual-search-insights-token.md
     - name: Tworzenie jednostronicowej aplikacji internetowej

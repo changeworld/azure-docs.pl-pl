@@ -45,7 +45,8 @@
 - name: Przewodniki z instrukcjami
   items:
     - name: Zmiana rozmiaru i przycinanie miniatur
-      href: resize-and-crop-thumbnails.md
+      maintainContext: true
+      href: ../bing-web-search/resize-and-crop-thumbnails.md
 - name: Pojęcia
   items:
     - name: Wyszukiwanie jednostek

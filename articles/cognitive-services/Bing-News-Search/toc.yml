@@ -51,7 +51,8 @@
     - name: Dzielenie wiadomości na strony
       href: paging-news.md
     - name: Zmiana rozmiaru i przycinanie miniatur
-      href: resize-and-crop-thumbnails.md
+      maintainContext: true
+      href: ../bing-web-search/resize-and-crop-thumbnails.md
     - name: Uaktualnienie z wersji v5 do wersji v7 interfejsu API
       href: bing-news-upgrade-guide-v5-to-v7.md
     - name: Praca z programem Visual Studio

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: overview
-ms.date: 06/19/2019
+ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: 71d7ebb8cb797e2166fc91fdfdefdba5f22d82ec
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: bf0f74fe76ec7a83e0ce23ca83141276a677a5df
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272698"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868091"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Wyszukiwanie wideo za pomocą interfejsu API wyszukiwania wideo Bing
 
@@ -98,7 +98,7 @@ Odpowiedź zawiera obiekt [Videos](https://docs.microsoft.com/rest/api/cognitive
 
 ## <a name="video-thumbnails"></a>Miniatury wideo
 
-Możesz wyświetlić wszystkie miniatury wideo zwracane przez interfejs API wyszukiwania wideo Bing lub ich podzbiór. Jeśli wyświetlisz podzestaw, udostępnij użytkownikowi opcję wyświetlenia pozostałych filmów wideo. W ramach [wymagań dotyczących użycia i wyświetlania](../UseAndDisplayRequirements.md) dla interfejsu API wyszukiwania Bing filmy wideo należy wyświetlać w kolejności podanej w odpowiedzi. Aby uzyskać informacje na temat zmieniania rozmiaru miniatur, zobacz [Zmiana rozmiaru i przycinanie miniatur](../resize-and-crop-thumbnails.md). 
+Możesz wyświetlić wszystkie miniatury wideo zwracane przez interfejs API wyszukiwania wideo Bing lub ich podzbiór. Jeśli wyświetlisz podzestaw, udostępnij użytkownikowi opcję wyświetlenia pozostałych filmów wideo. W ramach [wymagań dotyczących użycia i wyświetlania](../UseAndDisplayRequirements.md) dla interfejsu API wyszukiwania Bing filmy wideo należy wyświetlać w kolejności podanej w odpowiedzi. Aby uzyskać informacje na temat zmieniania rozmiaru miniatur, zobacz [Zmiana rozmiaru i przycinanie miniatur](../../bing-web-search/resize-and-crop-thumbnails.md). 
 
 Gdy użytkownik umieści kursor na miniaturze, można użyć elementu [motionThumbnailUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-motionthumbnailurl) do odtworzenia miniatury filmu wideo. Pamiętaj o nadaniu atrybutu wyświetlonej miniaturze ruchu.
 

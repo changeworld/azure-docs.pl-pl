@@ -55,7 +55,8 @@
     - name: Dzielenie wyników wyszukiwania obrazów na strony
       href: paging-images.md
     - name: Zmiana rozmiaru i przycinanie miniatur
-      href: resize-and-crop-thumbnails.md
+      maintainContext: true
+      href: ../bing-web-search/resize-and-crop-thumbnails.md
     - name: Uaktualnienie z wersji v5 do v7
       href: bing-image-upgrade-guide-v5-to-v7.md
 - name: Pojęcia

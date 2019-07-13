@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: tutorial
-ms.date: 01/31/2019
+ms.date: 07/12/2019
 ms.author: aahi
-ms.openlocfilehash: 6ba777754990560526d7981ef497ea7f0441e1b0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: a14954de1f8ae073780098f9286aa70502472dcd
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798474"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67867859"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Samouczek: Jednostronicowa aplikacja wyszukiwania wideo
 Interfejs API wyszukiwania wideo Bing umożliwia wyszukiwanie w Internecie i uzyskiwanie wyników wideo odpowiadających zapytaniu wyszukiwania. W tym samouczku utworzymy jednostronicową aplikację internetową, która wyświetla wyniki wyszukiwania na stronie przy użyciu interfejsu API wyszukiwania Bing. Aplikacja zawiera składniki HTML, CSS i JavaScript.
@@ -373,7 +373,7 @@ Funkcja renderująca:
 > * tworzy tagi `<a>` kodu HTML, które prowadzą do obrazu i do zawierającej go strony;
 > * tworzy opis, który wyświetla informacje dotyczące obrazu i witryny, w której się znajduje.
 
-Rozmiar miniatury jest używany zarówno w tagu `<img>`, jak i w polach `h` oraz `w` w adresie URL miniatury. Następnie [usługa miniatur Bing](resize-and-crop-thumbnails.md) dostarcza miniaturę dokładnie tego rozmiaru.
+Rozmiar miniatury jest używany zarówno w tagu `<img>`, jak i w polach `h` oraz `w` w adresie URL miniatury. Bing zwróci [miniaturę](../bing-web-search/resize-and-crop-thumbnails.md) dokładnie tego rozmiaru.
 
 ## <a name="persisting-client-id"></a>Trwały identyfikator klienta
 Odpowiedzi z interfejsów API wyszukiwania Bing mogą zawierać nagłówek `X-MSEdge-ClientID`, który powinien być wysyłany z powrotem do interfejsu API z kolejnymi żądaniami. Jeśli jest używanych wiele interfejsów API wyszukiwania Bing, dla każdego z nich powinien być stosowany ten sam identyfikator klienta, jeśli jest to możliwe.
@@ -389,7 +389,7 @@ Zasady zabezpieczeń przeglądarki (CORS) mogą powodować, że nagłówek `X-MS
 > [!NOTE]
 > W aplikacji internetowej w środowisku produkcyjnym należy wykonać to żądanie po stronie serwera. W przeciwnym razie należy dołączyć klucz interfejsu API wyszukiwania Bing do strony internetowej, aby był on dostępny dla każdego, kto wyświetli źródło. Płacisz za wszystkie użycia związane z Twoim kluczem subskrypcji interfejsu API, nawet za żądania wykonane przez osoby nieupoważnione, zatem ważne jest, aby nie ujawniać swojego klucza.
 
-W celach programistycznych możesz wykonywać żądania interfejsu API wyszukiwania w sieci Web Bing za pośrednictwem serwera proxy CORS. Odpowiedź z tego serwera proxy zawiera nagłówek `Access-Control-Expose-Headers`, który zezwala na nagłówki odpowiedzi i udostępnia je dla języka JavaScript.
+W celach programistycznych możesz wykonywać żądania interfejsu API wyszukiwania w sieci Web Bing za pośrednictwem serwera proxy CORS. Odpowiedź z serwera proxy ma `Access-Control-Expose-Headers` nagłówek, który umożliwia nagłówki odpowiedzi i udostępnienie ich dla języka JavaScript.
 
 Zainstalowanie serwera proxy CORS w celu zezwolenia naszej aplikacji samouczka na dostęp do nagłówka identyfikatora klienta jest łatwe. Najpierw [zainstaluj platformę Node.js](https://nodejs.org/en/download/), jeśli jeszcze jej nie masz. Następnie wykonaj następujące polecenie w oknie polecenia:
 
@@ -405,6 +405,6 @@ Na koniec uruchom serwer proxy CORS za pomocą następującego polecenia:
 
 Podczas korzystania z aplikacji samouczka pozostaw okno polecenia otwarte, ponieważ jego zamknięcie spowoduje zatrzymanie serwera proxy. W rozwijanej sekcji nagłówków HTML poniżej wyników wyszukiwania można teraz zobaczyć nagłówek `X-MSEdge-ClientID` (pomiędzy innymi) i sprawdzić, czy jest on taki sam dla każdego żądania.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"]
 > [Dokumentacja interfejsu API wyszukiwania wideo Bing](//docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference)

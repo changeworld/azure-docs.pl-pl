@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: tutorial
-ms.date: 03/04/2019
+ms.date: 07/12/2019
 ms.author: aahi
-ms.openlocfilehash: 10bcbb4c1957735b0ddad6c97325c32be19ddcdb
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 7b530b3d415761956cbdb45fdc92bfed55a1bae5
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383399"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868256"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Samouczek: tworzenie aplikacji jednostronicowej przy użyciu interfejsu API wyszukiwania obrazów Bing
 
@@ -369,7 +369,7 @@ Parametry `index` i `count` są używane do numerowania wyników, generowania ko
     }, // relatedSearches renderer omitted
 ```
 
-Wymiary `height` i `width` obrazu miniatury są używane zarówno w tagu `<img>`, jak i w polach `h` oraz `w` w adresie URL miniatury. Dzięki temu usługa Bing może zwrócić [miniaturę](resize-and-crop-thumbnails.md) dokładnie tego rozmiaru.
+Wymiary `height` i `width` obrazu miniatury są używane zarówno w tagu `<img>`, jak i w polach `h` oraz `w` w adresie URL miniatury. Dzięki temu usługa Bing może zwrócić [miniaturę](../bing-web-search/resize-and-crop-thumbnails.md) dokładnie tego rozmiaru.
 
 ## <a name="persisting-client-id"></a>Trwały identyfikator klienta
 
@@ -386,7 +386,7 @@ Zasady zabezpieczeń przeglądarki (CORS) mogą powodować, że nagłówek `X-MS
 > [!NOTE]
 > W aplikacji internetowej w środowisku produkcyjnym należy wykonać to żądanie po stronie serwera. W przeciwnym razie należy dołączyć klucz interfejsu API wyszukiwania Bing do strony internetowej, aby był on dostępny dla każdego, kto wyświetli źródło. Płacisz za wszystkie użycia związane z Twoim kluczem subskrypcji interfejsu API, nawet za żądania wykonane przez osoby nieupoważnione, zatem ważne jest, aby nie ujawniać swojego klucza.
 
-W celach programistycznych możesz wykonywać żądania interfejsu API wyszukiwania w sieci Web Bing za pośrednictwem serwera proxy CORS. Odpowiedź z tego serwera proxy zawiera nagłówek `Access-Control-Expose-Headers`, który zezwala na nagłówki odpowiedzi i udostępnia je dla języka JavaScript.
+W celach programistycznych możesz wykonywać żądania interfejsu API wyszukiwania w sieci Web Bing za pośrednictwem serwera proxy CORS. Odpowiedź z serwera proxy ma `Access-Control-Expose-Headers` nagłówek, który umożliwia nagłówki odpowiedzi i udostępnienie ich dla języka JavaScript.
 
 Zainstalowanie serwera proxy CORS w celu zezwolenia naszej aplikacji samouczka na dostęp do nagłówka identyfikatora klienta jest łatwe. Najpierw [zainstaluj platformę Node.js](https://nodejs.org/en/download/), jeśli jeszcze jej nie masz. Następnie wykonaj następujące polecenie w oknie polecenia:
 
@@ -402,7 +402,7 @@ Na koniec uruchom serwer proxy CORS za pomocą następującego polecenia:
 
 Podczas korzystania z aplikacji samouczka pozostaw okno polecenia otwarte, ponieważ jego zamknięcie spowoduje zatrzymanie serwera proxy. W rozwijanej sekcji nagłówków HTML poniżej wyników wyszukiwania można teraz zobaczyć nagłówek `X-MSEdge-ClientID` (pomiędzy innymi) i sprawdzić, czy jest on taki sam dla każdego żądania.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Wyodrębnianie szczegółów obrazu przy użyciu interfejsu API wyszukiwania obrazów Bing](tutorial-image-post.md)

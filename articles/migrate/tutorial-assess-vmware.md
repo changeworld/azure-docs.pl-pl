@@ -5,16 +5,16 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/11/2019
-ms.author: raynew
-ms.openlocfilehash: 5dc1a05e93bf1e82269a4291f147bac6e8ba657a
-ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
+ms.date: 07/12/2019
+ms.author: hamusa
+ms.openlocfilehash: 5f70037b1e6ce284b55ff5ff0ae38eb50c320122
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67813007"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868656"
 ---
-# <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>Ocenianie maszyn wirtualnych VMware z platformą Azure migracji: Ocena serwera
+# <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>Ocenianie maszyn wirtualnych VMware z platformą Azure migracji: Server Assessment
 
 W tym artykule dowiesz się, jak i ocenianie lokalnych maszyn wirtualnych VMware, za pomocą usługi Azure Migrate: Narzędzie do oceny wydajności serwera.
 
@@ -78,13 +78,14 @@ Skonfiguruj nowy projekt usługi Azure Migrate w następujący sposób.
 
 ## <a name="set-up-the-appliance-vm"></a>Konfigurowanie urządzenia maszyny Wirtualnej
 
-Usługa Azure Migrate: Ocena serwera działa z uproszczonego urządzenia maszyny Wirtualnej VMware.
+Azure Migrate: Ocena serwera działa z uproszczonego urządzenia maszyny Wirtualnej VMware.
 
 - Tego urządzenia odnajduje maszyny Wirtualnej i wysyła dane wydajności i metadanych maszyny Wirtualnej do oceny Server migracji platformy Azure.
 - Aby skonfigurować urządzenie możesz:
     - Pobieranie pliku OVA szablonu, a następnie zaimportować go do serwera vCenter.
     - Utworzyć to urządzenie, a następnie sprawdź, czy można nawiązać oceny Server migracji platformy Azure.
     - Konfigurowanie urządzenia po raz pierwszy, a następnie zarejestruj go w projekcie usługi Azure Migrate.
+- Można skonfigurować wiele urządzeń dla pojedynczego projektu Azure Migrate. We wszystkich urządzeń odnajdywanie maksymalnie 35 000 maszyn wirtualnych jest obsługiwana. Maksymalnie 10 000 serwerów można odnaleźć urządzenia.
 
 ### <a name="download-the-ova-template"></a>Pobierz szablon OVA
 
@@ -151,7 +152,7 @@ Skonfiguruj urządzenie wykonując następujące kroki.
     - **Czas synchronizacji**: czas na urządzeniu powinien być zsynchronizowany z czasem internetowym do odnajdowania zapewnić prawidłowe działanie.
     - **Instalowanie aktualizacji**: Urządzenie gwarantuje, że są zainstalowane najnowsze aktualizacje.
     - **Zainstaluj VDDK**: Urządzenie sprawdza zainstalowanym programem VMWare vSphere wirtualnego dysku Development Kit (VDDK) jest zainstalowany.
-        - Usługa Azure Migrate: Migracja serwera używa VDDK do replikowania maszyn podczas migracji na platformę Azure.
+        - Azure Migrate: Migracja serwera używa VDDK do replikowania maszyn podczas migracji na platformę Azure.
         - Pobierz VDDK 6.7 z programu VMware i Wyodrębnij zawartość pliku zip pobranego w określonej lokalizacji na urządzeniu.
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Zarejestruj urządzenie w usłudze Azure Migrate
@@ -171,12 +172,24 @@ Skonfiguruj urządzenie wykonując następujące kroki.
 Teraz nawiązać połączenie z urządzenia do programu vCenter Server i uruchom odnajdywanie maszyn wirtualnych.
 
 1. W **Określ szczegóły serwera vCenter**, określ nazwę (FQDN) lub adres IP serwera vcenter. Pozostaw domyślny port lub określić numery portów, na którym nasłuchuje serwer vCenter.
-2. W **nazwa_użytkownika** i **hasło**, określ poświadczenia konta tylko do odczytu, które urządzenie ma użyć do odnalezienia maszyn wirtualnych na serwerze vCenter. Upewnij się, że konto ma [wymaganych uprawnień do odnajdywania](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions).
+2. W **nazwa_użytkownika** i **hasło**, określ poświadczenia konta tylko do odczytu, które urządzenie ma użyć do odnalezienia maszyn wirtualnych na serwerze vCenter. Upewnij się, że konto ma [wymaganych uprawnień do odnajdywania](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions). Można określić zakres odnajdywania, ograniczając dostęp do konta vCenter. Dowiedz się więcej na temat określania zakresu odnajdowania [tutaj](tutorial-assess-vmware.md#scoping-discovery).
 3. Kliknij przycisk **sprawdzanie poprawności połączenia** aby upewnić się, czy urządzenie może połączyć się serwerem vCenter.
 4. Po nawiązaniu połączenia kliknij **Zapisz i uruchom odnajdywanie**.
 
-
 Spowoduje to uruchomienie odnajdywania. Trwa około 15 minut metadanych wykrytych maszynach wirtualnych są wyświetlane w portalu.
+
+### <a name="scoping-discovery"></a>Wyznaczanie zakresu odnajdywania
+
+Można zmniejszyć zakres odnajdywania, ograniczając dostęp konto vCenter używane na potrzeby odnajdywania. Można ustawić zakresu vCenter Server w centrach danych, klastrów, folder klastry i hosty, folder hostów lub poszczególne maszyny wirtualne. 
+
+> [!NOTE]
+> Już dziś oceny Server nie jest w stanie do odnalezienia maszyn wirtualnych, jeśli konto vCenter ma dostęp udzielany na poziomie folderu programu vCenter maszyny Wirtualnej. Jeśli chcesz ograniczyć zakres odnajdywania przez foldery maszyn wirtualnych, możesz to zrobić, zapewniając vCenter konto ma dostęp tylko do odczytu, przypisana na poziomie maszyny Wirtualnej.  Poniżej przedstawiono instrukcje jak to zrobić:
+>
+> 1. Przypisz uprawnienia tylko do odczytu na wszystkich maszynach wirtualnych w folderach maszyny Wirtualnej, do których chcesz ograniczyć zakres odnajdywania. 
+> 2. Udziel dostępu tylko do odczytu do wszystkich obiektów nadrzędnych, gdzie znajdują się maszyny wirtualne. Wszystkie obiekty nadrzędne - host, folder hostów, klastrów, folder klastrów — w hierarchii do centrum danych mają być włączone. Nie trzeba Propaguj uprawnienia do wszystkich obiektów podrzędnych.
+> 3. Użyj poświadczeń do odnajdowania, wybierając centrum danych jako *zakres zbierania*. ROLACH Ustawianie zapewnia odpowiedniego użytkownika vCenter będzie dostęp do maszyn wirtualnych tylko specyficznym dla dzierżawy.
+>
+> Zanotuj ten folder hosty i klastry są obsługiwane.
 
 ### <a name="verify-vms-in-the-portal"></a>Weryfikowanie maszyn wirtualnych w portalu
 
@@ -285,7 +298,7 @@ Poniżej znajdują się oceny zaufania dla oceny.
 [Dowiedz się więcej](best-practices-assessment.md#best-practices-for-confidence-ratings) najlepszymi rozwiązaniami dotyczącymi oceny zaufania.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku zostaną wykonane następujące czynności:
 

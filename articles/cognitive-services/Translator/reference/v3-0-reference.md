@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: 9b8f3894062c34e743a39f28b5f079a67a285c84
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: 8956aff86777e2a2570c6a555a9bd0882f328a77
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357681"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868410"
 ---
 # <a name="translator-text-api-v30"></a>Interfejs API tekstu usługi Translator w wersji 3.0
 
@@ -31,10 +31,10 @@ Interfejs API tekstu usługi Translator w wersji 3 zapewnia nowoczesnych opartyc
 
 ## <a name="base-urls"></a>Podstawowych adresach URL
 
-Usługa Microsoft Translator jest obsługiwany z wielu lokalizacji centrów danych. Obecnie znajdują się one w 6 [lokalizacjach geograficznych platformy Azure](https://azure.microsoft.com/global-infrastructure/regions):
+Usługa Microsoft Translator jest obsługiwany z wielu lokalizacji centrów danych. Obecnie znajdują się one w 10 [lokalizacjach geograficznych platformy Azure](https://azure.microsoft.com/global-infrastructure/regions):
 
-* **Rozwiązanie to przyniosło im:** Zachodnie stany USA 2 i środkowe stany USA zachodnie 
-* **Azja i Pacyfik:** Azja południowo-wschodnia i Korea Południowa
+* **Rozwiązanie to przyniosło im:** Wschodnie stany USA, południowo-środkowe stany USA, zachodnie środkowe stany USA i zachodnie stany USA 2 
+* **Azja i Pacyfik:** Korea Południowa, Japonia Wschodnia, Azja południowo-wschodnia i Australia Wschodnia
 * **Europa:** Europa Północna i Europa Zachodnia
 
 Żądania interfejs API tekstu usługi Microsoft Translator są w większości przypadków obsługiwane przez centrum danych, które znajduje się najbliżej skąd pochodzi żądanie. W razie awarii centrum danych żądanie może być kierowany poza lokalizacja geograficzna platformy Azure.
@@ -58,7 +58,7 @@ Istnieją trzy nagłówków, których można użyć do uwierzytelnienia Twojej s
 |Nagłówki|Opis|
 |:----|:----|
 |OCP-Apim-Subscription-Key|*Używane z subskrypcją usług Cognitive Services, jeśli przekazujesz klucz tajny*.<br/>Wartość jest platformy Azure klucz tajny dla Twojej subskrypcji do interfejsu API tłumaczenia tekstu.|
-|Autoryzacja|*Jeśli przekazujesz tokenu uwierzytelniania za pomocą subskrypcji usług Cognitive Services.*<br/>Wartość tokenu elementu nośnego: `Bearer <token>`.|
+|Authorization|*Jeśli przekazujesz tokenu uwierzytelniania za pomocą subskrypcji usług Cognitive Services.*<br/>Wartość tokenu elementu nośnego: `Bearer <token>`.|
 |Ocp-Apim-Subscription-Region|*Jeśli przekazujesz klucz tajny wielu usług za pomocą subskrypcji wielu usług Cognitive Services.*<br/>Wartość jest region subskrypcji wielu usług. Ta wartość jest opcjonalna, bez korzystania z wieloma usługami subskrypcji.|
 
 ###  <a name="secret-key"></a>Klucz tajny
