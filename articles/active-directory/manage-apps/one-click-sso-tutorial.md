@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie jeden kliknij Usługa rejestracji Jednokrotnej do aplikacji z galerii aplikacji Azure AD | Dokumentacja firmy Microsoft
-description: Kroki, aby skonfigurować jeden kliknij logowania jednokrotnego do aplikacji z galerii aplikacji Azure AD.
+title: Jednym kliknięciem, pojedynczy konfiguracji logowania jednokrotnego (SSO) aplikacji portalu Azure Marketplace | Dokumentacja firmy Microsoft
+description: Procedura konfiguracji jednym kliknięciem logowania jednokrotnego dla aplikacji w portalu Azure Marketplace.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,74 +16,74 @@ ms.topic: tutorial
 ms.date: 06/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 358240823da469551e254356fc0613bea20d78c5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a83d27af4fd783b95c53ef3a9169cb72bfc29d34
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057848"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67872428"
 ---
-# <a name="one-click-sso-feature-for-azure-ad-gallery-applications"></a>Jedna z funkcji kliknij przycisk logowania jednokrotnego do aplikacji galerii usługi Azure AD
+# <a name="one-click-app-configuration-of-single-sign-on"></a>Konfiguracja aplikacji jednym kliknięciem logowania jednokrotnego
 
- W tym samouczku dowiesz się, jak wykonać jeden kliknij logowania jednokrotnego dla wszystkich aplikacji SAML, które zapewniają interfejs użytkownika konfiguracji logowania jednokrotnego.
+ W tym samouczku dowiesz się, jak przeprowadzić jednym kliknięciem, jednej konfiguracji logowania jednokrotnego (SSO) obsługę protokołu SAML-, aplikacje usługi Azure Active Directory (Azure AD) w portalu Azure Marketplace.
 
-## <a name="introduction-to-one-click-sso"></a>Wprowadzenie do jednego kliknięcia logowania jednokrotnego
+## <a name="introduction-to-one-click-sso"></a>Wprowadzenie do logowania jednokrotnego w jednym kliknięciem
 
-Aby skonfigurować logowanie jednokrotne dla aplikacji galerii usługi Azure AD, które obsługują protokół SAML wprowadzono jedną funkcję kliknij logowania jednokrotnego. Na stronie konfiguracji logowania jednokrotnego usługi Azure AD udostępniliśmy tę opcję, aby umożliwić klientom do automatycznego konfigurowania metadanych usługi Azure AD na stronie aplikacji. Celem jest, aby ułatwić klientom Konfigurowanie logowania jednokrotnego szybko w prosty sposób ręcznego. 
+Funkcja logowania jednokrotnego jednym kliknięciem została zaprojektowana do skonfigurowania logowania jednokrotnego dla aplikacji w portalu Azure Marketplace, które obsługują protokół SAML. Na stronie konfiguracji logowania jednokrotnego usługi Azure AD ta opcja umożliwia automatycznie konfiguruje metadanych usługi Azure AD na stronie aplikacji. W ten sposób możesz szybko skonfigurować logowanie Jednokrotne przy minimalnym nakładzie pracy ręcznej.
 
-## <a name="advantages-of-the-one-click-sso"></a>Korzyści wynikające z nich kliknij przycisk logowania jednokrotnego
+## <a name="advantages-of-one-click-sso"></a>Korzyści wynikające z rejestracji Jednokrotnej w jednym kliknięciem
 
-- Szybkie konfiguracji logowania jednokrotnego aplikacji galerii, klienci muszą wykonać instalację ręczną na stronie aplikacji.
-- Bardziej wydajne i dokładne sposób konfiguracji.
-- Brak komunikacji partnera lub pomocy technicznej, wymagany do instalacji, ponieważ aplikacja udostępnia interfejs wielokrotnego użytku plik konfiguracji SAML.
+- Szybkie konfiguracji logowania jednokrotnego aplikacji w portalu Azure Marketplace, które wymagają ręcznej instalacji na stronie aplikacji.
+- Konfiguracja logowania jednokrotnego bardziej wydajne i dokładne.
+- Brak komunikacji partnera i pomoc niezbędne do instalacji. Aplikacja udostępnia interfejs wielokrotnego użytku plik konfiguracji SAML.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Aktywna subskrypcja aplikacji przy użyciu poświadczeń administracyjnych, które chcesz skonfigurować przy użyciu logowania jednokrotnego OneClick.
-- **Moje rozszerzenie aplikacji bezpiecznego logowania w przeglądarce** firmy Microsoft w przeglądarce. Jeśli chcesz dowiedzieć się więcej o tym rozszerzeniu, zapoznaj się z tym [łącze](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access).
+- Aktywna subskrypcja aplikacji można skonfigurować przy użyciu logowania jednokrotnego. Musisz również mieć poświadczenia administratora.
+- **Rozszerzenie Secure Moje aplikacje logowania** firmy Microsoft w przeglądarce. Aby uzyskać więcej informacji, zobacz [dostępu i użycia aplikacji w portalu Moje aplikacje](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access).
 
-## <a name="one-click-sso-feature-step-by-step-details"></a>Szczegółowe informacje krok po kroku są wyposażone w jeden kliknij logowania jednokrotnego
+## <a name="one-click-sso-configuration-steps"></a>Kroki konfiguracji logowania jednokrotnego w jednym kliknięciem
 
-1. Dodaj aplikację z galerii aplikacji usługi Azure AD.
+1. Dodaj aplikację z portalu Azure Marketplace.
 
-2. Polecenie logowania jednokrotnego.
+2. Wybierz **logowanie jednokrotne**.
 
-3. Kliknij pozycję Włącz logowanie jednokrotne.
+3. Wybierz **włączyć rejestrację jednokrotną**.
 
-4. Wypełnienie wartości wymagana konfiguracja, w sekcji podstawową konfigurację protokołu SAML.
-
-    > [!NOTE] 
-    > Jeśli aplikacja wymaga konfiguracji oświadczenia niestandardowe, należy skonfigurować je przed wykonaniem OneClick logowania jednokrotnego.
-
-5. Jeśli funkcja jeden kliknij logowania jednokrotnego została zaimplementowana dla aplikacji z galerii, zostanie wyświetlony następujący ekran. Jeśli **rozszerzenia przeglądarki do bezpiecznego Moje aplikacje logowania** jest nie jest jeszcze zainstalowana, należy kliknąć **zainstalować rozszerzenie** opcji.
-
-    ![Instalowanie rozszerzenia przeglądarki do bezpiecznego Moje aplikacje logowania](./media/one-click-sso-tutorial/install-myappssecure-extension.png)
-
-6. Po dodaniu rozszerzenia do przeglądarki, kliknij pozycję **Nazwa aplikacji Instalatora** której nastąpi przekierowanie do portalu administracyjnego usługi aplikacji. Należy zalogować się jako administrator dostępu do aplikacji.
-
-    ![Konfigurowanie nazwy aplikacji](./media/one-click-sso-tutorial/setup-sso.png)
-
-7. Rozszerzenie przeglądarki teraz automatycznie konfiguruje aplikację dla Ciebie. Najpierw sprawdza, czy potwierdzenie, jeśli chcesz kontynuować. Kliknij przycisk **Yes** (Tak).
-
-    ![Zapisywanie automatycznie wypełnione danych](./media/one-click-sso-tutorial/save-autopopulate.png)
+4. Wypełnianie wartości wymagana konfiguracja w **podstawową konfigurację protokołu SAML** sekcji.
 
     > [!NOTE]
-    > Jeśli dowolnej aplikacji wymaga dodatkowych nagivation lub kroki, powinny być widoczne odpowiednie komunikaty z prośbą do wykonania tych kroków. 
+    > Jeśli aplikacja ma oświadczenia niestandardowe, które należy skonfigurować, należy je obsłużyć, przed wykonaniem instrukcji w jednym kliknięciem logowania jednokrotnego.
 
-8. Po zakończeniu konfiguracji kliknij **Ok** Aby zapisać zmiany.
+5. Jeśli funkcja logowania jednokrotnego jednym kliknięciem jest dostępna dla aplikacji portalu Azure Marketplace, zostanie wyświetlony następujący ekran. Może być konieczne zainstalowanie **rozszerzenia przeglądarki do bezpiecznego Moje aplikacje logowania** , wybierając **zainstalować rozszerzenie**.
 
-    ![Zapisz dane wypełniana automatycznie](./media/one-click-sso-tutorial/save-data.png)
+   ![Instalowanie rozszerzenia przeglądarki do bezpiecznego Moje aplikacje logowania](./media/one-click-sso-tutorial/install-myappssecure-extension.png)
 
-9. Potwierdzenie pomyślnego komunikat podręczny jest wyświetlany i ustawień logowania jednokrotnego zostaną pomyślnie skonfigurowane. Następnie można przetestować aplikację.
+6. Po dodaniu rozszerzenia do przeglądarki, zaznacz **instalacji \<Nazwa aplikacji\>** . Po użytkownik jest przekierowany do portalu administracyjnego usługi aplikacji, zaloguj się jako administrator.
 
-    ![Skonfigurowane logowanie Jednokrotne](./media/one-click-sso-tutorial/sso-configured.png)
+   ![Konfigurowanie nazwy aplikacji](./media/one-click-sso-tutorial/setup-sso.png)
 
-10. Po pomyślnym zakończeniu konfiguracji, aplikacji zostaną wylogowani i nastąpi powrót do witryny Azure portal.
+7. Rozszerzenie przeglądarki automatycznie konfiguruje logowanie Jednokrotne w aplikacji. Upewnij się, wybierając **tak**.
 
-11. Można kliknąć przycisk Testuj, aby przetestować logowanie jednokrotne.
+   ![Zapisywanie danych wypełniane automatycznie](./media/one-click-sso-tutorial/save-autopopulate.png)
+
+   > [!NOTE]
+   > Jeśli Konfiguracja logowania jednokrotnego dla aplikacji wymaga wykonania dodatkowych kroków, zgodnie z monitami, aby wykonać kroki.
+
+8. Po zakończeniu konfiguracji wybierz **OK** Aby zapisać zmiany.
+
+   ![Zapisz dane wypełniane automatycznie](./media/one-click-sso-tutorial/save-data.png)
+
+9. Wyświetla okno potwierdzenie z informacją, że pomyślnie skonfigurowano ustawienia logowania jednokrotnego.
+
+   ![Skonfigurowane logowanie Jednokrotne](./media/one-click-sso-tutorial/sso-configured.png)
+
+10. Po pomyślnym konfiguracji jest wylogowanie z aplikacji i powrót do witryny Azure portal.
+
+11. Możesz wybrać **Test** do przetestowania logowania jednokrotnego.
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
-* [Co to jest Mój zabezpieczyć aplikacje logowania rozszerzenia przeglądarki](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)
+* [Co to jest rozszerzenie przeglądarki Moje zabezpieczenia aplikacji logowania?](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)
  

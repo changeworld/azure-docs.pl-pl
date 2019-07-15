@@ -1,6 +1,6 @@
 ---
-title: Analiza tonacji za pomocą analizy tekstu usług Azure Cognitive Services | Microsoft Docs
-description: Dowiedz się, jak wykrywać opinię przy użyciu interfejsu API REST analizy tekstu.
+title: Analiza tonacji przy użyciu interfejsu API REST analizy tekstu z usług Azure Cognitive Services | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak do wykrywania tonacji za pomocą interfejsu API REST analizy tekstu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,37 +9,37 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: e17b68dfd63952d0c8c81415b090b047c5808e2e
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: c3004dd3910dd5fdafc933efa213c9f097310e87
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797800"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68001705"
 ---
-# <a name="example-how-to-detect-sentiment-with-text-analytics"></a>Przykład: Jak wykryć tonację przy użyciu analizy tekstu
+# <a name="example-detect-sentiment-with-text-analytics"></a>Przykład: Wykryj tonację z analizy tekstu
 
-[Interfejs API analizy tonacji](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) ocenia tekst wejściowy i zwraca wynik opinii dla każdego dokumentu z zakresu od 0 (negatywna) do 1 (pozytywna).
+[Interfejsu API analizy tonacji Azure](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) ocenia tekst wejściowy i zwraca ocenę tonacji, dla każdego dokumentu. Wyniki z zakresu od 0 (negatywna) do 1 (pozytywna).
 
-Ta możliwość jest przydatna do wykrywania pozytywnych i negatywnych opinii w mediach społecznościowych, recenzjach klientów i na forach dyskusyjnych. Zawartość udostępniasz Ty, a modele i dane uczenia są dostarczane przez usługę.
+Ta możliwość jest przydatna do wykrywania pozytywnych i negatywnych opinii w mediach społecznościowych, recenzjach klientów i na forach dyskusyjnych. Zawartość została udostępniona przez użytkownika. Modele i dane szkoleniowe są dostarczane przez usługę.
 
-Aktualnie analiza tonacji obsługuje angielski, niemiecki, hiszpański i francuski. Inne języki są dostępne w wersji zapoznawczej. Więcej informacji, zobacz [Obsługiwane języki](../text-analytics-supported-languages.md).
+Obecnie interfejs API analizy tonacji obsługuje język angielski, niemiecki, hiszpański i francuskim. Inne języki są dostępne w wersji zapoznawczej. Więcej informacji, zobacz [Obsługiwane języki](../text-analytics-supported-languages.md).
 
 > [!TIP]
-> Analiza tekstu udostępnia również obraz kontenera platformy Docker oparty na systemie Linux na potrzeby analizy tonacji, można więc [zainstalować i uruchomić kontener analizy tekstu](text-analytics-how-to-install-containers.md) blisko danych.
+> Interfejs API analizy tekstu platformy Azure udostępnia również platformy Docker opartych na systemie Linux obraz kontenera do analizy tonacji, można więc [zainstalować i uruchomić kontener analizy tekstu](text-analytics-how-to-install-containers.md) blisko danych.
 
 ## <a name="concepts"></a>Pojęcia
 
-Analiza tekstu używa algorytmu klasyfikacji uczenia maszynowego do wygenerowania oceny opinii z zakresu od 0 do 1. Wyniki zbliżone do wartości 1 wskazują na pozytywną opinię, a wyniki zbliżone do wartości 0 wskazują na negatywną opinię. Model jest wstępnie uczony za pomocą rozbudowanego zestawu tekstów ze skojarzonymi opiniami. Obecnie nie można określić własnych danych uczenia. Model używa kombinacji technik podczas analizy tekstu, w tym przetwarzania tekstu, analizy części mowy, rozmieszczenia słów i skojarzeń słów. Aby uzyskać więcej informacji na temat algorytmu, zobacz [Introducing Text Analytics (Wprowadzenie do analizy tekstu)](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/).
+Analiza tekstu używa algorytmu klasyfikacji uczenia maszynowego do wygenerowania oceny opinii z zakresu od 0 do 1. Wyniki zbliżone do wartości 1 wskazują na pozytywną opinię, a wyniki zbliżone do wartości 0 wskazują na negatywną opinię. Model jest wstępnie uczony za pomocą rozbudowanego zestawu tekstów ze skojarzonymi opiniami. Obecnie nie jest możliwe podanie danych szkoleniowych. Model używa kombinacji metod podczas analizy tekstu. Techniki obejmują przetwarzanie tekstu, analiza części mowy, umieszczania programu word i skojarzenia programu word. Aby uzyskać więcej informacji na temat algorytmu, zobacz [Introducing Text Analytics (Wprowadzenie do analizy tekstu)](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/).
 
-Analiza opinii odbywa się dla całego dokumentu, w przeciwieństwie do wyodrębniania opinii dla konkretnej jednostki w tekście. W praktyce dokładność określania opinii ma tendencję do poprawiania się, jeśli dokumenty zawierają jedno lub dwa zdania, a nie duży blok tekstu. W fazie oceny obiektywizmu model określa, czy dokumentu jako całość jest obiektywny, czy też zawiera opinię. Dokument w większości obiektywny nie przechodzi do fazy wykrywania tonacji, co daje wynik 0,50 bez dalszego przetwarzania. W przypadku dokumentów, których przetwarzanie jest kontynuowane, następna faza generuje wynik większy lub mniejszy niż 0,50 w zależności od opinii wykrytej w dokumencie.
+Analiza opinii odbywa się dla całego dokumentu, w przeciwieństwie do wyodrębniania opinii dla konkretnej jednostki w tekście. W praktyce istnieje tendencja do oceny dokładności usprawniających gdy dokumenty zawierają jeden lub dwa zdania, a nie w dużych bloków tekstu. W fazie oceny obiektywizmu model określa, czy dokumentu jako całość jest obiektywny, czy też zawiera opinię. Dokument, który jest przeważnie cel nie postępu do fazy wykrywanie tonacji, co skutkuje 0,50 wynik, za pomocą żadne dalsze przetwarzanie. W przypadku dokumentów, które nadal w potoku do następnej fazy generuje wynik powyżej lub poniżej 0,50. Wynik zależy od stopnia tonacji wykryte w dokumencie.
 
-## <a name="preparation"></a>Przygotowywanie
+## <a name="preparation"></a>Przygotowanie
 
-Analiza tonacji daje wynik wyższej jakości, jeśli pracuje na mniejszych fragmentach tekstu. Jest to przeciwieństwo wyodrębniania kluczowych fraz, które działa lepiej na większych blokach tekstu. Aby uzyskać najlepsze wyniki dla obu operacji, rozważ odpowiednią zmianę struktury danych wejściowych.
+Analiza tonacji daje wynik wyższej jakości, gdy tworzonemu elementowi nadawana mniejsze fragmenty tekstu do pracy nad. Jest to przeciwieństwo wyodrębniania kluczowych fraz, które działa lepiej na większych blokach tekstu. Aby uzyskać najlepsze wyniki dla obu operacji, rozważ odpowiednią zmianę struktury danych wejściowych.
 
-Konieczne jest posiadanie dokumenty JSON w następującym formacie: Identyfikator, tekstu, język
+Konieczne jest posiadanie dokumenty JSON w następującym formacie: Identyfikator, tekstu i język.
 
-Dokument musi mieć mniej niż 5120 znaków, a kolekcja może zawierać maksymalnie 1000 elementów (identyfikatorów). Kolekcja jest przesyłana w treści żądania. Oto przykład zawartości, dla której można analizować tonację.
+Rozmiar dokumentu musi być w obszarze 5,120 znaków w dokumencie. Może mieć maksymalnie 1000 elementów (ID) na kolekcję. Kolekcja jest przesyłana w treści żądania. Poniższy przykład jest przykładem zawartości, które mogą przesyłać do analizy tonacji:
 
 ```
     {
@@ -75,33 +75,33 @@ Dokument musi mieć mniej niż 5120 znaków, a kolekcja może zawierać maksymal
 
 ## <a name="step-1-structure-the-request"></a>Krok 1: Określenie struktury żądania
 
-Szczegółowe informacje na temat definicji żądania można znaleźć w artykule [Jak wywołać interfejs API analizy tekstu](text-analytics-how-to-call-api.md). Dla wygody poniżej ponownie podano odpowiednie kroki:
+Aby uzyskać więcej informacji na temat definicji żądania, zobacz [wywołania interfejsu API analizy tekstu](text-analytics-how-to-call-api.md). Dla wygody poniżej ponownie podano odpowiednie kroki:
 
-+ Utwórz żądanie **POST**. Zapoznaj się z dokumentacją interfejsu API dla tego żądania: [Interfejs API analizy tonacji](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
++ Utwórz żądanie POST. Aby zapoznać się z dokumentacją interfejsu API dla tego żądania, zobacz [interfejsu API analizy tonacji](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9).
 
-+ Ustaw punkt końcowy HTTP na potrzeby analizy tonacji przy użyciu zasobów analizy tekstu na platformie Azure lub utworzonego wystąpienia [kontenera analizy tekstu](text-analytics-how-to-install-containers.md). Musi on obejmować zasób `/sentiment`: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
++ Ustaw punkt końcowy HTTP do analizy tonacji przy użyciu zasobów analizy tekstu na platformie Azure lub wystąpieniami [kontenera analizy tekstu](text-analytics-how-to-install-containers.md). Musi on zawierać `/sentiment` zasobów: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`.
 
-+ Ustaw nagłówek żądania, tak aby zawierał klucz dostępu dla operacji analizy tekstu. Aby uzyskać więcej informacji, zobacz [How to find endpoints and access keys (Jak znajdować punkty końcowe i klucze dostępu)](text-analytics-how-to-access-key.md).
++ Ustaw nagłówek żądania, tak aby zawierał klucz dostępu dla operacji analizy tekstu. Aby uzyskać więcej informacji, zobacz [Znajdź punkty końcowe i klucze dostępu](text-analytics-how-to-access-key.md).
 
 + W treści żądania podaj kolekcję dokumentów JSON przygotowaną na potrzeby tej analizy.
 
 > [!Tip]
-> Użyj programu [Postman](text-analytics-how-to-call-api.md) lub otwórz **konsolę testowania interfejsu API** w [dokumentacji](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9), aby określić strukturę żądania i przesłać je do usługi za pomocą operacji POST.
+> Użyj [Postman](text-analytics-how-to-call-api.md) lub Otwórz **konsoli testowania interfejsu API** w [dokumentacji](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) struktury żądania i opublikuj go w usłudze.
 
 ## <a name="step-2-post-the-request"></a>Krok 2: Wysłanie żądania
 
-Analiza jest wykonywana po odebraniu żądania. Zobacz [limity danych](../overview.md#data-limits) sekcja w przeglądzie, aby uzyskać informacje na temat rozmiaru i liczby żądań można wysyłać na minutę i sekundę.
+Analiza jest wykonywana po odebraniu żądania. Aby uzyskać informacje na temat rozmiaru i liczby żądań można wysyłać na minutę i sekundę, zobacz [limity danych](../overview.md#data-limits) sekcja w przeglądzie.
 
 Pamiętaj, że usługa jest bezstanowa. Żadne dane nie są przechowywane na koncie. Wyniki są zwracane natychmiast w odpowiedzi.
 
 
-## <a name="step-3-view-results"></a>Krok 3. Wyświetlanie wyników
+## <a name="step-3-view-the-results"></a>Krok 3: Wyświetlanie wyników
 
-Gdy analizator opinii sklasyfikuje tekst jako przeważnie pozytywny lub negatywny, przypisze mu wartość z zakresu od 0 do 1. Wartości zbliżone do 0,5 oznaczają opinię neutralną lub brak opinii. Wynik 0,5 oznacza opinię neutralną. Jeśli ciągu nie można przeanalizować pod kątem opinii lub nie zawiera on opinii, wynik zawsze wynosi dokładnie 0,5. Na przykład jeśli przekażesz ciąg w języku hiszpańskim z kodem języka angielskiego, wynik będzie wynosić 0,5.
+Analizator tonacji klasyfikuje tekstu jako głównie dodatnia lub ujemna. Przypisuje wynik do zakresu od 0 do 1. Wartości zbliżone do 0,5 oznaczają opinię neutralną lub brak opinii. Wynik 0,5 oznacza opinię neutralną. Ciąg nie może zostać przeanalizowane pod kątem tonacji lub ma nie tonacji, wynik jest zawsze 0,5 dokładnie. Na przykład jeśli przekażesz ciąg w języku hiszpańskim z kodem języka angielskiego, wynik będzie wynosić 0,5.
 
-Dane wyjściowe są zwracane natychmiast. Wyniki można przesłać strumieniowo do aplikacji, która akceptuje kod JSON, lub zapisać do pliku w systemie lokalnym, a następnie zaimportować do aplikacji, która umożliwia sortowanie i wyszukiwanie danych oraz manipulowanie nimi.
+Dane wyjściowe są zwracane natychmiast. Można strumienia wyniki do aplikacji, która akceptuje JSON lub zapisywać dane wyjściowe do pliku w systemie lokalnym. Następnie można zaimportować dane wyjściowe do aplikacji, która umożliwia sortowanie, wyszukiwanie i manipulowania danymi.
 
-Poniższy przykład pokazuje odpowiedź dla kolekcji dokumentów w tym artykule.
+Poniższy przykład przedstawia odpowiedź dla kolekcji dokumentów, w tym artykule:
 
 ```json
 {
@@ -131,26 +131,26 @@ Poniższy przykład pokazuje odpowiedź dla kolekcji dokumentów w tym artykule.
 }
 ```
 
-## <a name="sentiment-analysis-v3-public-preview"></a>Publiczna wersja zapoznawcza V3 analizy tonacji
+## <a name="sentiment-analysis-v3-public-preview"></a>Publiczna wersja zapoznawcza tonacji analizy v3
 
-[Następnej wersji analizy tonacji](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-preview/operations/56f30ceeeda5650db055a3c9) jest teraz dostępna w publicznej wersji zapoznawczej, zapewniając znaczne ulepszenia w dokładności i szczegółowe informacje na temat interfejsu API tekstu kategoryzacji i oceniania. 
+[Następnej wersji analizy tonacji](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-preview/operations/56f30ceeeda5650db055a3c9) jest teraz dostępna w publicznej wersji zapoznawczej. Zapewnia znaczne ulepszenia w dokładności i szczegółowe informacje na temat interfejsu API tekstu kategoryzacji i oceniania. 
 
 > [!NOTE]
 > * Format żądania v3 analizę tonacji i [limity danych](../overview.md#data-limits) jest taka sama jak poprzednia wersja.
 > * W tej chwili analiza tonacji w wersji 3: 
 >    * Obecnie obsługuje tylko język angielski.  
->    * Jest dostępna w następujących regionach: `Central US`, `Central Canada`, `East Asia` 
+>    * Jest dostępna w następujących regionach: `Central US`, `Central Canada`, i `East Asia`.
 
 |Cecha |Opis  |
 |---------|---------|
 |Polepszenia dokładności     | znacznie lepsze niż w poprzednich wersjach wykrywanie pozytywnej, neutralnej, negatywnej i mieszanej tonacji dokumentów tekstowych.           |
 |Dokument i tonacji na poziomie pojedynczych zdań     | wykrywanie tonacji zarówno dokumentu, jak i poszczególnych zdań. Jeśli dokument zawiera wiele zdań, wynik tonacji jest również przypisywany do każdego zdania.         |
-|Kategoria opinii i oceny     | Interfejs API zwraca teraz kategorie tonacji (`positive`, `negative`, `neutral` i `mixed`) dla tekstu, oprócz wyniku tonacji.        |
-| Ulepszone danych wyjściowych | analiza tonacji zwraca teraz informacje zarówno dla całego dokumentu, jak i dla poszczególnych zdań. |
+|Kategoria opinii i oceny     | Interfejs API zwraca teraz kategorie tonacji dla tekstu, oprócz wyniku tonacji. Kategorie są `positive`, `negative`, `neutral`, i `mixed`.       |
+| Ulepszone danych wyjściowych | Analiza tonacji teraz zwraca informacje dotyczące zarówno dokumentu cały tekst, jak i jej poszczególnych zdań. |
 
 ### <a name="sentiment-labeling"></a>Etykietowanie tonacji
 
-Analiza tonacji V3 może zwrócić wyniki i etykiet (`positive`, `negative`, i `neutral`) na poziomie zdania i zarządzania dokumentami. Na poziomie dokumentu `mixed` etykiety tonacji (nie score) również mogą być zwracane. Tonację dokumentu jest określany przez agregowanie wyników jego zdania.
+Analiza tonacji w wersji 3 może zwrócić wyniki i etykiety na poziomie zdania i zarządzania dokumentami. Wyniki i etykiety były `positive`, `negative`, i `neutral`. Na poziomie dokumentu `mixed` etykiety tonacji (nie score) również mogą być zwracane. Tonację dokumentu jest określany przez agregację wyników zdania.
 
 | Zdania tonacji                                                        | Zwrócone Etykieta dokumentu |
 |---------------------------------------------------------------------------|----------------|
@@ -159,9 +159,9 @@ Analiza tonacji V3 może zwrócić wyniki i etykiet (`positive`, `negative`, i `
 | Co najmniej jedno zdanie ujemny i co najmniej jedno zdanie dodatnią.         | `mixed`        |
 | Wszystkie zdania są neutralne.                                                 | `neutral`      |
 
-### <a name="sentiment-analysis-v3-example-request"></a>Wskaźniki nastrojów klientów analizy V3 przykładowe żądanie
+### <a name="sentiment-analysis-v3-example-request"></a>Żądania przykład v3 analizy tonacji
 
-Następujący kod JSON jest przykładem żądania dotyczącego nową wersję analizy tonacji. Należy zwrócić uwagę na to, że formatowanie żądania jest taka sama jak poprzednia wersja:
+Następujący kod JSON jest przykładem żądania dotyczącego nową wersję analizy tonacji. Żądanie formatowania jest taka sama jak poprzednia wersja:
 
 ```json
 {
@@ -180,7 +180,7 @@ Następujący kod JSON jest przykładem żądania dotyczącego nową wersję ana
 }
 ```
 
-### <a name="sentiment-analysis-v3-example-response"></a>Analiza tonacji V3 przykładowa odpowiedź
+### <a name="sentiment-analysis-v3-example-response"></a>Wskaźniki nastrojów klientów analizy v3 przykładowa odpowiedź
 
 Format żądania jest taka sama jak poprzednia wersja, zmienił się format odpowiedzi. Następujące dane JSON zamieszczono przykładową odpowiedź z nowej wersji interfejsu API:
 
@@ -260,12 +260,12 @@ Przykład można znaleźć C# aplikacji, która wywołuje tę wersję analizę t
 
 ## <a name="summary"></a>Podsumowanie
 
-W tym artykule przedstawiono pojęcia i przepływ pracy analizy tonacji za pomocą analizy tekstu w usłudze Cognitive Services. Podsumowanie:
+W tym artykule przedstawiono pojęcia i przepływ pracy do analizy tonacji za pomocą analizy tekstu w usługach Azure Cognitive Services. Podsumowanie:
 
-+ [Interfejs API analizy tonacji](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) jest dostępny dla wybranych języków.
++ [Interfejsu API analizy tonacji](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) jest dostępny dla wybranych języków.
 + Dokumenty JSON w treści żądania obejmują identyfikator, tekstu i języka kodu.
-+ Żądanie POST jest wysyłane do punktu końcowego `/sentiment` za pomocą spersonalizowanego [klucza dostępu i punktu końcowego](text-analytics-how-to-access-key.md) prawidłowego dla używanej subskrypcji.
-+ Dane wyjściowe odpowiedzi składające się z oceny opinii dla każdego identyfikatora dokumentu można przesłać strumieniowo do każdej aplikacji akceptującej kod JSON, w tym na przykład do programu Excel i usługi Power BI.
++ Żądanie POST jest `/sentiment` punktu końcowego przy użyciu spersonalizowanego [dostępu key i punktu końcowego](text-analytics-how-to-access-key.md) , który jest poprawny dla Twojej subskrypcji.
++ Dane wyjściowe odpowiedzi, który składa się z wynikiem tonacji dla każdego Identyfikatora dokumentu, może być przesyłany strumieniowo do wszystkich aplikacji, która akceptuje JSON. Przykładowe aplikacje obejmują kilka program Excel i Power BI.
 
 ## <a name="see-also"></a>Zobacz także 
 

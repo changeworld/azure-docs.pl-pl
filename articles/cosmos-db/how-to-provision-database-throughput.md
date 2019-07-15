@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 07/03/2019
 ms.author: rimman
-ms.openlocfilehash: de39581f832c30c64a69797805df7e13ce47b439
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: e44017ea2df24445c28361a0f3d7fb2671317b6d
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565859"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68000642"
 ---
 # <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>Aprowizowanie przepływności w bazie danych w usłudze Azure Cosmos DB
 
@@ -59,6 +59,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
 > Umożliwia Cosmos zestawy SDK dla interfejsu API SQL aprowizowanie przepływności dla wszystkich interfejsów API. Poniższego przykładu możesz też opcjonalnie użyć w przypadku interfejsu API Cassandra.
 
 ### <a id="dotnet-all"></a>Wszystkie interfejsy API
+### <a name="net-v2-sdk"></a>.Net V2 SDK
 
 ```csharp
 //set the throughput for the database
@@ -73,6 +74,9 @@ await client.CreateDatabaseIfNotExistsAsync(
     options);
 ```
 
+### <a name="net-v3-sdk"></a>.Net V3 SDK
+[!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/DatabaseDocsSampleCode.cs?name=DatabaseCreateWithThroughput)]
+
 ### <a id="dotnet-cassandra"></a>Interfejs API rozwiązania Cassandra
 
 ```csharp
@@ -80,7 +84,7 @@ await client.CreateDatabaseIfNotExistsAsync(
 session.Execute(CREATE KEYSPACE IF NOT EXISTS myKeySpace WITH cosmosdb_provisioned_throughput=400);
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Zobacz następujące artykuły, aby dowiedzieć się więcej na temat aprowizowanej przepływności w usłudze Azure Cosmos DB:
 

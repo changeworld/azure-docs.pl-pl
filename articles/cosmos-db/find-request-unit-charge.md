@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 06/14/2019
 ms.author: thweiss
-ms.openlocfilehash: 07ca6278da6dd1f50f017f389c2c1389a42196f4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3d088da4c771c828db9788817e424c4d89586dd6
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67163842"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67986152"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>Znajdź opłata za jednostki żądań w usłudze Azure Cosmos DB
 
@@ -39,7 +39,8 @@ Obecnie można znaleźć opłata za żądanie wyrażana w witrynie Azure portal,
 
 ![Zrzut ekranu przedstawiający opłaty żądania zapytania SQL w witrynie Azure portal](./media/find-request-unit-charge/portal-sql-query.png)
 
-### <a name="use-the-net-sdk-v2"></a>Użyj zestawu SDK platformy .NET w wersji 2
+### <a name="use-the-net-sdk"></a>Korzystanie z zestawu SDK dla platformy .NET
+### <a name="net-v2-sdk"></a>.Net V2 SDK
 
 Obiekty, które są zwracane z [zestawu SDK platformy .NET w wersji 2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) ujawnić `RequestCharge` właściwości:
 
@@ -73,6 +74,12 @@ while (query.HasMoreResults)
     requestCharge = queryResponse.RequestCharge;
 }
 ```
+
+### <a name="net-v3-sdk"></a>.Net V3 SDK
+
+Obiekty, które są zwracane z [zestawu SDK platformy .NET w wersji 3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) ujawnić `RequestCharge` właściwości:
+
+[!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/CustomDocsSampleCode.cs?name=GetRequestCharge)]
 
 Aby uzyskać więcej informacji, zobacz temat [Szybki start: Tworzenie aplikacji internetowej platformy .NET przy użyciu konta interfejsu API SQL w usłudze Azure Cosmos DB](create-sql-api-dotnet.md).
 
@@ -292,7 +299,7 @@ if (tableResult.RequestCharge.HasValue) // would be false when using Azure Stora
 
 Aby uzyskać więcej informacji, zobacz temat [Szybki start: Tworzenie aplikacji interfejsu API tabel przy użyciu zestawu SDK platformy .NET i usługi Azure Cosmos DB](create-table-dotnet.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się więcej o optymalizacji sieci zużycia jednostek RU, zobacz następujące artykuły:
 

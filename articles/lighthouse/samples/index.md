@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.topic: sample
 ms.date: 07/11/2019
 ms.author: jenhayes
-ms.openlocfilehash: 3bc4446b1964b28963166c92b59b55f782ceb67c
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: c0266bd3c88dccc8b0413e617bb4a5fcadbf3720
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67809099"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67971346"
 ---
 # <a name="azure-lighthouse-samples"></a>Przykłady usługi Azure Lighthouse
 
@@ -21,7 +21,7 @@ Poniższa tabela zawiera linki do kluczowych szablonów usługi Azure Resource M
 | **Szablon** | **Opis** |
 |---------|---------|
 | [create-multiple-rgs](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/create-multiple-rgs) | Tworzenie wielu grup zasobów za pomocą jednego szablonu usługi Azure Resource Manager. |
-| [cross-rg-deployment](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/cross-rg-deployment) | Wdrażanie kont magazynu w dwóch różnych grupach zasobów. |
+| [cross-rg-deployment](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/cross-rg-deployment) | Wdrażanie kont magazynu w dwóch różnych grupach zasobów. |
 | [cross-subscription-deployment](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/cross-subscription-deployment) | Wdrażanie szablonów usługi Azure Resource Manager w wielu subskrypcjach. |
 | [delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management) | Dołączanie subskrypcji klienta do zarządzania zasobami delegowanymi na platformie Azure. |
 | [deploy-azure-mgmt-services](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/deploy-azure-mgmt-services) | Tworzy usługi zarządzania platformą Azure, łączy je i wdraża dodatkowe rozwiązania. |
