@@ -81,7 +81,7 @@ Get-AzEnvironment | select Name, StorageEndpointSuffix
 
 To polecenie zwraca następujące wyniki.
 
-| Name (Nazwa)| StorageEndpointSuffix|
+| Name| StorageEndpointSuffix|
 |----|----|
 | AzureChinaCloud | core.chinacloudapi.cn|
 | AzureCloud | core.windows.net |
@@ -108,7 +108,7 @@ Wyniki są podobne do następujących:
 | ResourceManagerUrl | http://management.microsoftazure.de/ |
 | SqlDatabaseDnsSuffix | .database.cloudapi.de |
 | **StorageEndpointSuffix** | core.cloudapi.de |
-| ... | ... | 
+| Przyciski ... | Przyciski ... | 
 
 Aby pobrać tylko właściwości sufiks punktu końcowego magazynu, pobrać określonej chmury i poproś o tylko jednej właściwości.
 
