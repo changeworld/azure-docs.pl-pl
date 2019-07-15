@@ -213,7 +213,7 @@ Kontrolki filtrowania dla dzienników napisane przez [obiektu ILogger](functions
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
 |categoryFilter|Nie dotyczy|Określa, filtrowanie według kategorii| 
-|defaultLevel|Informacje|Dla dowolnej kategorii nie jest określony w `categoryLevels` tablicy, Wyślij dzienniki na tym poziomie i nowszych do usługi Application Insights.| 
+|defaultLevel|Information|Dla dowolnej kategorii nie jest określony w `categoryLevels` tablicy, Wyślij dzienniki na tym poziomie i nowszych do usługi Application Insights.| 
 |categoryLevels|Nie dotyczy|Tablica kategorii określa minimalny poziom rejestrowania do wysłania do usługi Application Insights dla każdej kategorii. Kategoria określone w tym miejscu kontroluje wszystkie kategorie, które zaczynają się od tej samej wartości i wartości dłuższe wyższy priorytet. W poprzednim przykładzie *host.json* pliku wszystkie kategorie, które zaczynają się od "Host.Aggregator" dziennika w `Information` poziom. Wszystkie kategorie, które zaczynają się od "Host", takich jak "Host.Executor" Zaloguj się na `Error` poziom.| 
 
 ## <a name="queues"></a>kolejki
