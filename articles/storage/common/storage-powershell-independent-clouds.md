@@ -98,7 +98,7 @@ Wyniki są podobne do następujących:
 
 |Nazwa właściwości|Wartość|
 |----|----|
-| Name (Nazwa) | AzureGermanCloud |
+| Name | AzureGermanCloud |
 | EnableAdfsAuthentication | False |
 | ActiveDirectoryServiceEndpointResourceI | http://management.core.cloudapi.de/ |
 | GalleryURL | https://gallery.cloudapi.de/ |
@@ -108,7 +108,7 @@ Wyniki są podobne do następujących:
 | ResourceManagerUrl | http://management.microsoftazure.de/ |
 | SqlDatabaseDnsSuffix | .database.cloudapi.de |
 | **StorageEndpointSuffix** | core.cloudapi.de |
-| Przyciski ... | Przyciski ... | 
+| ... | ... | 
 
 Aby pobrać tylko właściwości sufiks punktu końcowego magazynu, pobrać określonej chmury i poproś o tylko jednej właściwości.
 
