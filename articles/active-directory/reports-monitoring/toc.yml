@@ -58,7 +58,7 @@
           href: howto-power-bi-content-pack.md
         - name: Konfigurowanie wymagań wstępnych dla interfejsu API raportowania
           href: howto-configure-prerequisites-for-reporting-api.md
-        - name: Jak używać skoroszytów usługi Azure Monitor
+        - name: Jak używać skoroszytów usługi Azure AD
           href: howto-use-azure-monitor-workbooks.md
     - name: Monitorowanie
       items:
@@ -87,6 +87,8 @@
 - name: Dokumentacja
   expanded: true
   items:
+    - name: Polecenia cmdlet programu PowerShell usługi Azure AD do raportowania
+      href: reference-powershell-reporting.md
     - name: Dokumentacja interfejsu API dzienników inspekcji
       href: 'https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit'
     - name: Dokumentacja interfejsu API dzienników logowania

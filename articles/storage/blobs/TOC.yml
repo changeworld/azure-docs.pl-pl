@@ -353,7 +353,11 @@
             - name: Odzyskiwanie usuniętych obiektów blob
               href: storage-blob-soft-delete.md
         - name: Korzystanie z emulatora magazynu
-          href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+          items:
+            - name: Korzystanie z emulatora typu open-source Azurite
+              href: ../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Korzystanie z emulatora usługi Azure Storage
+              href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Ustawianie i pobieranie właściwości oraz metadanych
           href: storage-properties-metadata.md
         - name: Hostowanie statycznej witryny internetowej

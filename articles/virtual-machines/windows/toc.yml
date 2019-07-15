@@ -54,8 +54,16 @@
   items:
     - name: Azure Resource Manager
       href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: Regiony i dostępność
-      href: regions-and-availability.md
+    - name: Regiony
+      href: regions.md
+    - name: Dostępność i wydajność
+      items:
+        - name: Dostępność
+          href: availability.md
+        - name: Współlokacja
+          href: co-location.md
+        - name: Wydajność sieci
+          href: ../..//virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: Typy i rozmiary maszyn wirtualnych
       href: sizes.md
       items:
@@ -299,6 +307,8 @@
           href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: Wysoka dostępność
           href: manage-availability.md
+        - name: Tworzenie grupy umieszczania w pobliżu
+          href: proximity-placement-groups.md
         - name: Skalowanie w pionie
           href: vertical-scaling-automation.md
         - name: Tworzenie maszyny wirtualnej w strefie dostępności

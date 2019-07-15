@@ -29,6 +29,8 @@
   items:
     - name: Enable dynamic configuration in ASP.NET Core (Włączanie dynamicznej konfiguracji na platformie ASP.NET Core)
       href: enable-dynamic-configuration-aspnet-core.md
+    - name: Włączanie dynamicznej konfiguracji w aplikacji .NET Core
+      href: enable-dynamic-configuration-dotnet-core.md
     - name: Używanie flag funkcji w aplikacji platformy .NET Core
       href: use-feature-flags-dotnet-core.md
     - name: Zarządzanie flagami funkcji

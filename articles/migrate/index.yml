@@ -14,13 +14,30 @@ metadata:
   ms.date: 11/22/2017
   ms.author: raynew
 abstract:
-  description: Usługa Azure Migrate pomaga odnajdywać maszyny lokalne i oceniać ich kwalifikowanie się do migracji na platformę Azure. Oprócz tego przedstawia szacunki dotyczące rozmiarów i kosztów maszyn wirtualnych uruchamianych na platformie Azure.
+  description: 'Usługa Azure Migrate ułatwia migrację do chmury platformy Azure. Usługa Azure Migrate to centrum do śledzenia odnajdywania, oceny i migracji obciążeń lokalnych oraz maszyn wirtualnych w chmurze. W centrum są dostępne narzędzia usługi Azure Migrate do oceny i migracji oraz zintegrowane narzędzia od niezależnych dostawców oprogramowania.'
 sections:
   - title: Samouczki krok po kroku
     items:
       - type: paragraph
-        text: 'Dowiedz się, jak ocenić maszyny wirtualne programu VMware pod kątem migracji na platformę Azure'
+        text: 'Dowiedz się, jak ocenić maszyny wirtualne programu VMware i migrować je na platformę Azure'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-prepare-vmware">Przygotowywanie maszyny wirtualnej środowiska VMware do oceny i migracji na platformę Azure</a>
+          - html: <a href="tutorial-assess-vmware">Ocena maszyn wirtualnych VMware do migracji na platformę Azure</a>
+          - html: <a href="tutorial-migrate-vmware">Migrowanie maszyn wirtualnych VMware na platformę Azure za pomocą migracji bez agentów</a>
+          - html: <a href="tutorial-migrate-vmware-agent">Migrowanie maszyn wirtualnych VMware na platformę Azure za pomocą migracji z użyciem agentów</a>
+      - type: paragraph
+        text: 'Dowiedz się, jak ocenić maszyny wirtualne funkcji Hyper-V i migrować je na platformę Azure'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-prepare-hyper-v">Przygotowywanie maszyny wirtualnej funkcji Hyper-V do oceny i migracji na platformę Azure</a>
+          - html: <a href="tutorial-assess-hyper-v">Ocena maszyn wirtualnych funkcji Hyper-V do migracji na platformę Azure</a>
+          - html: <a href="tutorial-migrate-hyper-v">Migrowanie maszyn wirtualnych funkcji Hyper-V na platformę Azure</a>
+      - type: paragraph
+        text: 'Dowiedz się, jak migrować serwery fizyczne, maszyny zwirtualizowane i maszyny wirtualne w chmurze na platformę Azure'
       - type: list
         style: unordered
         items:
-          - html: <a href="tutorial-assessment-vmware">Odnajdywanie i ocenianie lokalnych maszyn wirtualnych programu VMware</a>
+          - html: <a href="tutorial-migrate-physical-virtual-machines">Migrowanie serwerów fizycznych lub zwirtualizowanych na platformę Azure</a>

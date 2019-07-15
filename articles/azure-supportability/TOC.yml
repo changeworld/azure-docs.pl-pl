@@ -6,16 +6,18 @@
   href: create-manage-support-requests-using-access-control.md
 - name: Żądania zwiększenia limitu przydziału
   items:
-    - name: Żądania zwiększenia limitu przydziału modelu wdrażania usługi Resource Manager
+    - name: Zwiększenie limitu obliczeniowych procesorów wirtualnych
       items:
-        - name: Zwiększenie limitu procesorów wirtualnych serii maszyn wirtualnych
-          href: per-vm-quota-requests.md
-        - name: Zwiększenie limitu całkowitej liczby regionalnych procesorów wirtualnych
-          href: regional-quota-requests.md
-        - name: Zwiększanie limitu sieci
-          href: networking-quota-requests.md
-    - name: Żądania zwiększenia limitu przydziału klasycznego modelu wdrażania
-      href: classic-deployment-model-quota-increase-requests.md
+        - name: Model wdrażania usługi Resource Manager
+          items:
+            - name: Zwiększenie limitu procesorów wirtualnych serii maszyn wirtualnych
+              href: per-vm-quota-requests.md
+            - name: Zwiększenie limitu całkowitej liczby regionalnych procesorów wirtualnych
+              href: regional-quota-requests.md
+        - name: Klasyczny model wdrażania
+          href: classic-deployment-model-quota-increase-requests.md
+    - name: Zwiększanie limitu sieci
+      href: networking-quota-requests.md
 - name: Rozwiązywanie problemów z subskrypcją dotyczących regionu lub jednostki SKU
   href: sku-series-unavailable.md
 - name: Dokumentacja

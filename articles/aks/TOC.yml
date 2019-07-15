@@ -126,6 +126,8 @@
           href: virtual-kubelet.md
         - name: Korzystanie ze skalowania automatycznego klastrów (wersja zapoznawcza)
           href: cluster-autoscaler.md
+        - name: Korzystanie ze stref dostępności (wersja zapoznawcza)
+          href: availability-zones.md
         - name: Używanie pul z wieloma węzłami (wersja zapoznawcza)
           href: use-multiple-node-pools.md
         - name: Wdrażanie usługi AKS przy użyciu programu Terraform
@@ -315,6 +317,8 @@
         - name: Projekt DevOps platformy Azure
           href: ../devops-project/azure-devops-project-aks.md
           maintainContext: true
+        - name: Moduł uruchamiania centrum wdrażania
+          href: deployment-center-launcher.md
     - name: Rozwiązywanie problemów
       items:
         - name: Typowe problemy

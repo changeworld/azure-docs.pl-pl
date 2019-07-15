@@ -16,8 +16,6 @@
       href: tutorial-sspr-pilot.md
     - name: Włączanie integracji samoobsługowego resetowania hasła ze środowiskiem lokalnym
       href: tutorial-enable-writeback.md
-    - name: Włączanie resetowania hasła systemu Windows 10
-      href: tutorial-sspr-windows.md
     - name: Integracja z usługą Azure Identity Protection
       href: tutorial-risk-based-sspr-mfa.md
 - name: Pojęcia
@@ -73,8 +71,8 @@
           href: howto-sspr-authenticationdata.md
         - name: Włączanie zapisywania zwrotnego haseł
           href: howto-sspr-writeback.md
-        - name: 'Samoobsługowe resetowanie haseł dla systemów Windows 7, 8 i 8.1'
-          href: howto-sspr-windows-7-8.md
+        - name: Samoobsługowe resetowanie hasła dla klientów systemu Windows
+          href: howto-sspr-windows.md
     - name: Uwierzytelnianie wieloskładnikowe oparte na chmurze
       items:
         - name: Wdrażanie uwierzytelniania wieloskładnikowego opartego na chmurze

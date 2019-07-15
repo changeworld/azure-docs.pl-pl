@@ -22,6 +22,8 @@
       href: apache-spark-load-data-run-query.md
     - name: Uruchamianie zapytań platformy Apache Spark za pomocą programu IntelliJ
       href: apache-spark-intellij-tool-plugin.md
+    - name: Niepowodzenie debugowania zadania platformy Spark na platformie IntelliJ (wersja zapoznawcza)
+      href: apache-spark-intellij-tool-failure-debug.md
     - name: Analizowanie danych przy użyciu narzędzi do analizy biznesowej
       href: apache-spark-use-bi-tools.md
     - name: Uruchamianie zadania przesyłania strumieniowego
