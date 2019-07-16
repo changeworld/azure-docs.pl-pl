@@ -102,6 +102,8 @@
           href: manage-database-permissions.md
         - name: Sprawdzanie kondycji klastra
           href: check-cluster-health.md
+        - name: Wybieranie jednostki SKU maszyny wirtualnej klastra
+          href: manage-cluster-choose-sku.md
         - name: Zarządzanie skalowaniem klastra w poziomie
           href: manage-cluster-horizontal-scaling.md
         - name: Zarządzanie skalowaniem klastra w pionie

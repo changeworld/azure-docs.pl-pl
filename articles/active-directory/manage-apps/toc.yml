@@ -61,7 +61,7 @@
           href: plan-sso-deployment.md
     - name: Logowanie jednokrotne jednym kliknięciem
       items:
-        - name: Co to jest logowanie jednokrotne jednym kliknięciem
+        - name: Konfiguracja logowania jednokrotnego jednym kliknięciem
           href: one-click-sso-tutorial.md
     - name: Aprowizacja użytkowników i grup
       items:

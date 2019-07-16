@@ -54,34 +54,32 @@
       href: migrate-replication-appliance.md
     - name: Najlepsze rozwiązania dotyczące ocen
       href: best-practices-assessment.md
-    - name: Obliczenia dotyczące oceny
+    - name: Omówienie ocen
       href: concepts-assessment-calculation.md
     - name: Wizualizacja zależności
       href: concepts-dependency-visualization.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Przykłady migracji — seria Contoso
-      href: contoso-migration-overview.md
-    - name: Wdrażanie urządzenia do oceny/migracji środowiska VMware (bez agentów)
+    - name: Praca z poprzednią wersją
+      href: migrate-v1.md
+    - name: Wdrażanie urządzenia VMware
       href: how-to-set-up-appliance-vmware.md
-    - name: Wdrażanie urządzenia do oceny/migracji środowiska funkcji Hyper-V
+    - name: Wdrażanie urządzenia funkcji Hyper-V
       href: how-to-set-up-appliance-hyper-v.md
-    - name: Dodawanie narzędzia oceny/migracji po raz pierwszy
+    - name: Dodawanie narzędzia po raz pierwszy
       href: how-to-add-tool-first-time.md
     - name: Dodawanie narzędzi oceny
       href: how-to-assess.md
-    - name: Dodawanie narzędzi migracji
-      href: how-to-migrate.md
     - name: Grupowanie maszyn do oceny
-      items:
-        - name: Tworzenie grupy
-          href: how-to-create-a-group.md
-        - name: Grupowanie maszyn przy użyciu zależności maszyn
-          href: how-to-create-group-machine-dependencies.md
-        - name: Uściślanie zawartości grupy za pomocą zależności grupy
-          href: how-to-create-group-dependencies.md
+      href: how-to-create-a-group.md
+    - name: Grupowanie maszyn za pomocą wizualizacji zależności
+      href: how-to-create-group-machine-dependencies.md
+    - name: Tworzenie oceny
+      href: how-to-create-assessment.md
     - name: Dostosowywanie oceny
       href: how-to-modify-assessment.md
+    - name: Dodawanie narzędzi migracji
+      href: how-to-migrate.md
     - name: Ocena i migracja skali
       items:
         - name: Ocena dużej liczby maszyn wirtualnych VMware
@@ -90,6 +88,10 @@
           href: scale-hyper-v-assessment.md
         - name: Automatyzowanie migracji dużej liczby maszyn wirtualnych
           href: how-to-migrate-at-scale.md
+    - name: Przykłady migracji — seria Contoso
+      href: contoso-migration-overview.md
+- name: Rozwiązywanie problemów
+  items:
     - name: Rozwiązywanie problemów z usługą Azure Migrate
       href: troubleshooting-general.md
 - name: Zasoby
