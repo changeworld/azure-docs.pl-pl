@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/01/2019
 ms.author: jowargo
-ms.openlocfilehash: 86a2cd824d1896211efd40bb8aa1d007149ef2db
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 67df6c84c5a88a3ffc82948898e356e0a913ba27
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203575"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227790"
 ---
 # <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs"></a>Samouczek: wysyłanie powiadomień push do konkretnych użytkowników aplikacji systemu Android przy użyciu usługi Azure Notification Hubs
 
@@ -276,7 +276,7 @@ Kolejnym krokiem jest zaktualizowanie aplikacji systemu Android utworzonej w ram
         super.onCreate(savedInstanceState);
 
         mainActivity = this;
-        MyHandler.createChannelAndHandleNotifications(getApplicationContext());
+        FirebaseService.createChannelAndHandleNotifications(getApplicationContext());
         fcm = FirebaseInstanceId.getInstance();
         registerClient = new RegisterClient(this, BACKEND_ENDPOINT);
         setContentView(R.layout.activity_main);
@@ -484,7 +484,7 @@ Kolejnym krokiem jest zaktualizowanie aplikacji systemu Android utworzonej w ram
 6. Wpisz wiadomość dla użytkownika, która zostanie odebrana w formie powiadomienia push.
 7. Kliknij przycisk **Send Notification** (Wyślij powiadomienie).  Każde urządzenie, które zostało zarejestrowane przy użyciu pasującego tagu nazwy użytkownika, otrzyma powiadomienie push.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono sposób wysyłania powiadomień push do konkretnych użytkowników, którzy mają tagi skojarzone ze swoimi rejestracjami. Aby dowiedzieć się, jak wypychać powiadomienia oparte na lokalizacji, przejdź do następującego samouczka:
 

@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 3/21/2019
+ms.date: 07/10/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 9de11c0049cf3db3feea311a2541640437ba8632
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1f18aef12978b3df1ba1fd654ea4a0e9548a4b46
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60719932"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68228092"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>Samouczek: Monitorowanie i diagnozowanie aplikacji platformy ASP.NET Core w usłudze Service Fabric przy użyciu usługi Application Insights
 
@@ -46,8 +46,8 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 Przed rozpoczęciem tego samouczka:
 
 * Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Zainstaluj program Visual Studio 2017](https://www.visualstudio.com/), a następnie zainstaluj obciążenia **Programowanie na platformie Azure** i **Tworzenie aplikacji na platformie ASP.NET i tworzenie aplikacji internetowych**.
-* [Instalowanie zestawu SDK usługi Service Fabric](service-fabric-get-started.md)
+* [Instalowanie programu Visual Studio 2019](https://www.visualstudio.com/) i zainstaluj **programowanie na platformie Azure** i **ASP.NET i tworzenie aplikacji internetowych** obciążeń.
+* [Zainstaluj zestaw SDK usługi Service Fabric.](service-fabric-get-started.md)
 
 ## <a name="download-the-voting-sample-application"></a>Pobieranie przykładowej aplikacji do głosowania
 
@@ -74,7 +74,7 @@ Po wprowadzeniu wymaganych informacji kliknij pozycję **Utwórz**, aby aprowizo
 
 ## <a name="add-application-insights-to-the-applications-services"></a>Dodawanie usługi Application Insights do usług aplikacji
 
-Uruchom program Visual Studio 2017 z podwyższonym poziomem uprawnień, kliknij prawym przyciskiem myszy ikonę programu Visual Studio w Start Menu i wybierając pozycję **Uruchom jako administrator**. Kliknij kolejno pozycje **Plik**  >  **Otwórz**  >  **Projekt/rozwiązanie** i przejdź do aplikacji do głosowania (utworzonej w pierwszej części samouczka lub sklonowanej z usługi Git). Otwórz *Voting.sln*. Jeśli zostanie wyświetlony monit, aby przywrócić pakiety NuGet aplikacji, kliknij przycisk **tak**.
+Uruchom program Visual Studio 2019 r z podwyższonym poziomem uprawnień, kliknij prawym przyciskiem myszy ikonę programu Visual Studio w Start Menu i wybierając pozycję **Uruchom jako administrator**. Kliknij kolejno pozycje **Plik**  >  **Otwórz**  >  **Projekt/rozwiązanie** i przejdź do aplikacji do głosowania (utworzonej w pierwszej części samouczka lub sklonowanej z usługi Git). Otwórz *Voting.sln*. Jeśli zostanie wyświetlony monit, aby przywrócić pakiety NuGet aplikacji, kliknij przycisk **tak**.
 
 Wykonaj następujące kroki, aby skonfigurować usługę Application Insights dla usług VotingWeb i VotingData:
 
@@ -214,7 +214,7 @@ Dodajmy zdarzenia niestandardowe do pliku *VoteDataController.cs* (w obszarze *V
 2. Zadeklaruj nowy element *TelemetryClient* na początku klasy po utworzeniu elementu *IReliableStateManager*: `private TelemetryClient telemetry = new TelemetryClient();`.
 3. W funkcji *Put()* dodaj zdarzenie potwierdzające dodanie głosu. Dodaj element `telemetry.TrackEvent($"Added a vote for {name}");` po ukończeniu transakcji bezpośrednio przed instrukcją return *OkResult*.
 4. W funkcji *Delete()* znajduje się element „if/else” oparty na warunku, zgodnie z którym element *votesDictionary* zawiera głosy dla danej opcji głosowania.
-    1. Dodaj zdarzenie potwierdzające usunięcie głosu w instrukcji *if* po elemencie *await tx.CommitAsync()*: `telemetry.TrackEvent($"Deleted votes for {name}");`
+    1. Dodaj zdarzenie potwierdzające usunięcie głosu w instrukcji *if* po elemencie *await tx.CommitAsync()* : `telemetry.TrackEvent($"Deleted votes for {name}");`
     2. Dodaj zdarzenie, aby wskazać, że usunięcie nie zostało wykonane w instrukcji *else*, przed instrukcją return: `telemetry.TrackEvent($"Unable to delete votes for {name}, voting option not found");`
 
 Oto przykładowe funkcje *Put()* i *Delete()* po dodaniu zdarzeń:

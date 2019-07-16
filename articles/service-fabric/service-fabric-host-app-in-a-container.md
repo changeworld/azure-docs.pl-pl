@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/18/2018
+ms.date: 07/08/2019
 ms.author: aljo
-ms.openlocfilehash: 33f742c7de340df41f5d946c891e9896d7d2a012
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6c479553dcb6debe47a2b37ef85b6f3930e135c8
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66119070"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68228121"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Samouczek: Wdrażanie aplikacji .NET w kontenerze systemu Windows w usłudze Azure Service Fabric
 
@@ -41,14 +41,14 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 1. Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 2. Zainstaluj program [Docker CE dla systemu Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description), który umożliwia uruchamianie kontenerów w systemie Windows 10.
 3. Zainstaluj [środowisko uruchomieniowe usługi Service Fabric w wersji 6.2 lub nowszej](service-fabric-get-started.md) i [zestaw SDK usługi Service Fabric w wersji 3.1](service-fabric-get-started.md) lub nowszej.
-4. [Zainstaluj program Visual Studio 2017 w wersji 15.7](https://www.visualstudio.com/) lub nowszej z pakietami roboczymi **Programowanie na platformie Azure** i **Tworzenie aplikacji na platformie ASP.NET i tworzenie aplikacji internetowych**.
-5. Zainstaluj program [Azure PowerShell][link-azure-powershell-install].
+4. Zainstaluj [16.1 wersji 2019 r w usłudze Visual Studio](https://www.visualstudio.com/) lub nowszy z **programowanie na platformie Azure** i **ASP.NET i tworzenie aplikacji internetowych** obciążeń.
+5. Zainstaluj [programu Azure PowerShell][link-azure-powershell-install]
  
 
 ## <a name="download-and-run-fabrikam-fiber-callcenter"></a>Pobieranie i uruchamianie aplikacji Fabrikam Fiber CallCenter
-Pobierz aplikację przykładową [Fabrikam Fiber CallCenter][link-fabrikam-github].  Kliknij link **pobierania archiwum**.  Z katalogu *sourceCode* w pliku *fabrikam.zip* wyodrębnij plik *sourceCode.zip*, a następnie katalog *VS2015* na komputerze.
+Pobierz [Fabrikam Fiber CallCenter][link-fabrikam-github] przykładowej aplikacji.  Kliknij link **pobierania archiwum**.  Z katalogu *sourceCode* w pliku *fabrikam.zip* wyodrębnij plik *sourceCode.zip*, a następnie katalog *VS2015* na komputerze.
 
-Sprawdź, czy aplikację Fabrikam Fiber CallCenter można skompilować i uruchomić bez błędów.  Uruchom program Visual Studio jako **administrator**, a następnie otwórz plik [FabrikamFiber.CallCenter.sln][link-fabrikam-github].  Naciśnij klawisz F5, aby debugować i uruchomić aplikację.
+Sprawdź, czy aplikację Fabrikam Fiber CallCenter można skompilować i uruchomić bez błędów.  Uruchom program Visual Studio jako **administratora** , a następnie otwórz [FabrikamFiber.CallCenter.sln][link-fabrikam-github] pliku.  Naciśnij klawisz F5, aby debugować i uruchomić aplikację.
 
 ![Przykład internetowy dla firmy Fabrikam][fabrikam-web-page]
 
@@ -161,7 +161,7 @@ Podczas tworzenia klastra:
 
 2. Zaloguj się przy użyciu konta platformy Azure, aby uzyskać dostęp do subskrypcji. 
 
-3. Wybierz listę rozwijaną **Punkt końcowy połączenia**, a następnie wybierz polecenie **Utwórz nowy klaster...**.    
+3. Wybierz listę rozwijaną **Punkt końcowy połączenia**, a następnie wybierz polecenie **Utwórz nowy klaster...** .    
         
 4. W oknie dialogowym **Tworzenie klastra** zmodyfikuj następujące ustawienia:
 

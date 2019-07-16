@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 28eac814364b56f59b8edc6f59209a6d742ff403
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 590ba4b7a61fa437767d99ac6b9ae3e0fa94edc3
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183477"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227804"
 ---
 ## <a name="create-the-webapi-project"></a>Tworzenie projektu interfejsu WebAPI
 
@@ -158,7 +158,7 @@ W tej sekcji dodajesz nowy kontroler do zaplecza interfejsu WebAPI w celu obsłu
 
 3. Na liście wyników wybierz pozycję **Microsoft Azure Notification Hubs**, a następnie wybierz pozycję **Instaluj**. Zakończ instalację, a następnie zamknij okno Menedżera pakietów NuGet.
 
-    Ta akcja spowoduje dodanie odwołania do zestawu SDK usługi Azure Notification Hubs z użyciem [pakietu NuGet Microsoft.Azure.Notification Hubs](http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+    Ta akcja spowoduje dodanie odwołania do zestawu SDK usługi Azure Notification Hubs z użyciem [pakietu NuGet Microsoft.Azure.Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
 4. Utwórz plik nowej klasy, która reprezentuje połączenie z centrum powiadomień używane do wysyłania powiadomień. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy folder **Modele**, wybierz polecenie **Dodaj**, a następnie kliknij pozycję **Klasa**. Nadaj nowej klasie nazwę **Notifications.cs**, a następnie wybierz pozycję **Dodaj**, aby wygenerować klasę.
 
@@ -170,7 +170,7 @@ W tej sekcji dodajesz nowy kontroler do zaplecza interfejsu WebAPI w celu obsłu
     using Microsoft.Azure.NotificationHubs;
     ```
 
-6. Zastąp definicję klasy `Notifications` poniższym kodem i zastąp dwa symbole zastępcze parametrami połączenia (z pełnym dostępem) dla Twojego centrum powiadomień i nazwą centrum (dostępną w witrynie [Azure Portal](http://portal.azure.com)):
+6. Zastąp definicję klasy `Notifications` poniższym kodem i zastąp dwa symbole zastępcze parametrami połączenia (z pełnym dostępem) dla Twojego centrum powiadomień i nazwą centrum (dostępną w witrynie [Azure Portal](https://portal.azure.com)):
 
     ```csharp
     public class Notifications

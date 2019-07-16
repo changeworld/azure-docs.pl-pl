@@ -12,21 +12,21 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/14/2019
+ms.date: 07/10/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 097cb554523a9e75b265ca16e79769daf0a49b40
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4c73fe170d0b2cb6f12534de2ccc43bfc7b530f0
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60864641"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68228146"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Samouczek: Tworzenie i wdrażanie aplikacji przy użyciu usługi frontonu platformy ASP.NET Core z internetowym interfejsem API oraz stanowej usługi zaplecza
 
 Niniejszy samouczek jest pierwszą częścią serii.  Zostanie tutaj przedstawiony sposób tworzenia aplikacji usługi Azure Service Fabric za pomocą frontonu internetowego interfejsu API platformy ASP.NET Core i stanowej usługi zaplecza umożliwiającej przechowywanie danych. Po zakończeniu będziesz mieć aplikację do głosowania z usługą internetową frontonu ASP.NET Core, która zapisuje wyniki głosowania w stanowej usłudze zaplecza w klastrze. Jeśli nie chcesz ręcznie tworzyć aplikacji do głosowania, możesz [pobrać kod źródłowy](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) gotowej aplikacji i przejść od razu do sekcji [Szczegółowe omówienie przykładowej aplikacji do głosowania](#walkthrough_anchor).  Jeśli wolisz, możesz też obejrzeć [przewodnik wideo](https://channel9.msdn.com/Events/Connect/2017/E100) dla tego samouczka.
 
-![Diagram aplikacji](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
+![AngularJS+ASP.NET interfejsu API frontonu, łączenie się z usługą stanową wewnętrznej bazy danych w usłudze Service Fabric](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
 
 Część pierwsza serii zawiera informacje na temat wykonywania następujących czynności:
 
@@ -47,7 +47,7 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 
 Przed rozpoczęciem tego samouczka:
 * Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Zainstaluj program Visual Studio 2017](https://www.visualstudio.com/) w wersji 15.5 lub nowszej z obciążeniami **Programowanie na platformie Azure** i **Tworzenie aplikacji na platformie ASP.NET i tworzenie aplikacji internetowych**.
+* [Instalowanie programu Visual Studio 2019](https://www.visualstudio.com/) wersji 15.5 lub nowszej za pomocą **programowanie na platformie Azure** i **ASP.NET i tworzenie aplikacji internetowych** obciążeń.
 * [Zainstaluj zestaw SDK usługi Service Fabric.](service-fabric-get-started.md)
 
 ## <a name="create-an-aspnet-web-api-service-as-a-reliable-service"></a>Tworzenie usługi internetowego interfejsu API platformy ASP.NET jako niezawodnej usługi
@@ -68,7 +68,7 @@ Najpierw utwórz fronton internetowy aplikacji do głosowania za pomocą platfor
    
    ![Wybieranie usługi internetowej programu ASP.NET w oknie dialogowym nowej usługi](./media/service-fabric-tutorial-create-dotnet-app/new-project-dialog-2.png) 
 
-6. Na następnej stronie znajduje się zestaw szablonów projektów programu ASP.NET Core. Na potrzeby tego samouczka wybierz pozycję **Aplikacja internetowa (Model-View-Controller)**, a następnie kliknij przycisk **OK**.
+6. Na następnej stronie znajduje się zestaw szablonów projektów programu ASP.NET Core. Na potrzeby tego samouczka wybierz pozycję **Aplikacja internetowa (Model-View-Controller)** , a następnie kliknij przycisk **OK**.
    
    ![Wybieranie typu projektu programu ASP.NET](./media/service-fabric-tutorial-create-dotnet-app/vs-new-aspnet-project-dialog.png)
 
@@ -346,7 +346,7 @@ Usługa Service Fabric umożliwia spójne i niezawodne przechowywanie danych bez
 
 W tym samouczku utworzysz usługę, która w niezawodnej kolekcji przechowuje wartość licznika.
 
-1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy węzeł **Usługi** w projekcie aplikacji Voting i wybierz pozycję **Dodaj -> Nowa usługa Service Fabric...**.
+1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy węzeł **Usługi** w projekcie aplikacji Voting i wybierz pozycję **Dodaj -> Nowa usługa Service Fabric...** .
     
 2. W oknie dialogowym **Nowa usługa Service Fabric** wybierz usługę **Stateful ASP.NET Core**, nadaj jej nazwę **VotingData** i naciśnij przycisk **OK**.
 
@@ -625,9 +625,9 @@ Aby zobaczyć, co się stanie w kodzie, wykonaj następujące kroki:
 
       ![Dodawanie usługi frontonu Vote](./media/service-fabric-tutorial-create-dotnet-app/addvote-frontend.png)
 
-   2. Najpierw skonstruuj adres URL do elementu ReverseProxy dla usługi zaplecza **(1)**.
-   3. Następnie wyślij żądanie HTTP PUT do elementu ReverseProxy **(2)**.
-   4. Na koniec zwróć odpowiedź z usługi zaplecza do klienta **(3)**.
+   2. Najpierw skonstruuj adres URL do elementu ReverseProxy dla usługi zaplecza **(1)** .
+   3. Następnie wyślij żądanie HTTP PUT do elementu ReverseProxy **(2)** .
+   4. Na koniec zwróć odpowiedź z usługi zaplecza do klienta **(3)** .
 
 5. Naciśnij klawisz **F5**, aby kontynuować.
    1. Jesteś teraz w punkcie przerwania w usłudze zaplecza.
@@ -636,7 +636,7 @@ Aby zobaczyć, co się stanie w kodzie, wykonaj następujące kroki:
 
    2. W pierwszym wierszu metody **(1)** użyj elementu `StateManager` do pobrania lub dodania niezawodnego słownika o nazwie `counts`.
    3. Wszystkie interakcje z wartościami w niezawodnym słowniku wymagają transakcji — ta instrukcja using **(2)** tworzy tę transakcję.
-   4. W transakcji zaktualizuj wartość odpowiedniego klucza dla opcji głosowania i zatwierdź operację **(3)**. Po powrocie z metody zatwierdzania dane są aktualizowane w słowniku i replikowane do innych węzłów w klastrze. Dane są bezpiecznie przechowywane w klastrze, a usługa zaplecza może zostać przełączona w tryb failover do innych węzłów, które nadal mają dostępne dane.
+   4. W transakcji zaktualizuj wartość odpowiedniego klucza dla opcji głosowania i zatwierdź operację **(3)** . Po powrocie z metody zatwierdzania dane są aktualizowane w słowniku i replikowane do innych węzłów w klastrze. Dane są bezpiecznie przechowywane w klastrze, a usługa zaplecza może zostać przełączona w tryb failover do innych węzłów, które nadal mają dostępne dane.
 6. Naciśnij klawisz **F5**, aby kontynuować.
 
 Aby zatrzymać sesję debugowania, naciśnij klawisze **Shift+F5**.

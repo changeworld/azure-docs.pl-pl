@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: rhurey
-ms.openlocfilehash: 158819d481c0ce245539d783f194b159b2b9edb6
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: d73a63a8f58e14149121d0860268fc23930001bf
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606526"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226343"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>Fraza list mowy na tekst
 
@@ -24,6 +24,9 @@ Dostarczając usług przetwarzania mowy z listą frazy, może zwiększyć dokła
 Na przykład w przypadku polecenia "Przenieś" i możliwe miejsca docelowego "Dalej", który może być wymawiane, można dodać wpis "Przesuń do tyłu". Dodawanie frazy zwiększy prawdopodobieństwo, że, kiedy audio jest rozpoznawana rozpoznawania "Przesuń do tyłu" zamiast "Przenoszenia kierunku".
 
 Pojedynczy słów i fraz pełną można dodać do listy fraz. Podczas rozpoznawania wpis na liście frazy jest używany, jeśli dokładne dopasowanie jest uwzględniona w audio. Opieranie się na poprzedni przykład, jeśli lista fraz zawiera "Przesuń do tyłu", a także frazy przechwycone jest "Przenieś powoli kierunku", a następnie wynik rozpoznawania będzie "Przesuń do tyłu powoli".
+
+>[!Note]
+> Zamiany mowy na tekst obecnie wyświetla frazy obsługuje tylko język angielski.
 
 ## <a name="how-to-use-phrase-lists"></a>Jak używać Wyświetla frazy
 
@@ -92,6 +95,6 @@ phraseListGrammar.clear();
 > [!NOTE]
 > Zmienia się na `PhraseListGrammar` obiektu take wpływ na rozpoznawanie dalej lub ponowne nawiązanie połączenia z usługami mowy.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Dokumentacja referencyjna zestawu SDK rozpoznawania mowy](speech-sdk.md)

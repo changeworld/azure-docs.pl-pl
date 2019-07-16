@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54c3ae22b9cc2e447960b9e3527bbbb0afae3e54
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3c7f8c8efcad0a07a3d3a56925866b10d94f82ed
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67095099"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227478"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą PageDNA
 
@@ -171,7 +171,7 @@ W tej sekcji utworzysz użytkownika testowego o nazwie Britta Simon w witrynie A
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon korzystać z platformy Azure logowania jednokrotnego przez udostępnienie jej PageDNA.
+W tej sekcji możesz umożliwić użytkownikowi Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu użytkownika do PageDNA.
 
 1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje** > **PageDNA**.
 
@@ -212,3 +212,4 @@ Po wybraniu **PageDNA** w portalu Moje aplikacje powinny być automatycznie zare
 * [Single sign-on to applications in Azure Active Directory (Logowanie jednokrotne do aplikacji w usłudze Azure Active Directory)](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 * [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+

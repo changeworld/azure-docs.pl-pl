@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Użyj języka R w platformie Spark obliczenia kontekstu w usłudze Azure HDInsight'
-description: Samouczek — Wprowadzenie do języka R i Spark ML usług.
+description: Samouczek — Wprowadzenie do języka R i Spark w klastrze usługi Azure HDInsight Machine Learning.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,24 +8,24 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/21/2019
-ms.openlocfilehash: 244c62467f187417bbb9f0e54173aad5a7d26d0a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f072b6905881da7b7854b0e51d690dbbd40dffb5
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450282"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227440"
 ---
 # <a name="tutorial-use-r-in-a-spark-compute-context-in-azure-hdinsight"></a>Samouczek: Użyj języka R w platformie Spark obliczenia kontekstu w usłudze Azure HDInsight
 
-Ten samouczek zawiera instrukcje krok po kroku wprowadzenie do korzystania z funkcji języka R w Apache Spark, uruchomiony w klastrze usługi ML w usłudze Azure HDInsight.
+Ten samouczek zawiera instrukcje krok po kroku wprowadzenie do korzystania z funkcji języka R w Apache Spark, działających w klastrze usługi Azure HDInsight Machine Learning.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Pobierz przykładowe dane do magazynu lokalnego
-> * Kopiowanie danych do magazynu domyślnego
+> * Kopiuj dane do magazynu domyślnego
 > * Konfigurowanie zestawu danych
-> * Utwórz źródło danych
+> * Tworzenie źródła danych
 > * Tworzenie kontekstu obliczeniowego dla aparatu Spark
 > * Dopasuj modelu liniowego
 > * Użyj plików XDF złożone
@@ -33,23 +33,23 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Klaster usługi ML HDInsight. Zobacz [tworzenie technologii Apache Hadoop clusters, przy użyciu witryny Azure portal](../hdinsight-hadoop-create-linux-clusters-portal.md) i wybierz **usługi ML** dla **typ klastra**.
+* Klaster usługi Azure HDInsight Machine Learning. Przejdź do [tworzenie technologii Apache Hadoop clusters przy użyciu witryny Azure portal](../hdinsight-hadoop-create-linux-clusters-portal.md) a w przypadku **typ klastra**, wybierz opcję **usługi ML**.
 
 ## <a name="connect-to-rstudio-server"></a>Łączenie z programem RStudio Server
 
-RStudio Server działa w węźle krawędzi klastra. Przejdź do następującego adresu URL gdzie `CLUSTERNAME` to nazwa utworzonego klastra usługi ML:
+RStudio Server działa w węźle krawędzi klastra. Przejdź do następującej witryny (gdzie *CLUSTERNAME* w adresie URL to nazwa utworzonego klastra usługi HDInsight Machine Learning):
 
 ```
 https://CLUSTERNAME.azurehdinsight.net/rstudio/
 ```
 
-Podczas pierwszego logowania należy dwukrotnego uwierzytelnienia. Dla pierwszego monitu dotyczącego uwierzytelniania Podaj identyfikator logowania administratora klastra i hasło, wartością domyślną jest `admin`. Dla drugiego monitu dotyczącego uwierzytelniania Podaj logowania SSH i hasło, wartością domyślną jest `sshuser`. Kolejne logowania wymagane tylko poświadczenia protokołu SSH.
+Podczas pierwszego logowania użytkownik dwukrotnego uwierzytelnienia. Podczas pierwszego monitu dotyczącego uwierzytelniania Podaj nazwę użytkownika administratora klastra i hasło (wartość domyślna to *administratora*). Podczas drugiego monitu dotyczącego uwierzytelniania Podaj nazwę użytkownika SSH i hasło (wartość domyślna to *sshuser*). Kolejne logowania wymagają tylko poświadczenia protokołu SSH.
 
-## <a name="download-sample-data"></a>Pobierz przykładowe dane
+## <a name="download-the-sample-data-to-local-storage"></a>Pobierz przykładowe dane do magazynu lokalnego
 
-*Zestawu danych w czasie 2012 linii lotniczych* składa się z 12 plików rozdzielanych przecinkami zawierający informacje w locie przybycia i wyjścia szczegółowe informacje o wszystkich lotów handlowych w USA, dla roku 2012. Jest to zestawu danych big Data z ponad 6 mln uwagi.
+*Zestawu danych w czasie 2012 linii lotniczych* składa się z 12 rozdzielonych przecinkami plików, które zawierają szczegóły wejściu i wyjściu lotu dla wszystkich komercyjnych lotów na terenie Stanów Zjednoczonych w roku 2012. Ten zestaw danych jest duży, za pomocą ponad 6 mln uwagi.
 
-1. Zainicjuj kilku zmiennych środowiskowych. Wprowadź następujący kod w konsoli programu RStudio Server:
+1. Zainicjuj kilku zmiennych środowiskowych. W konsoli programu RStudio Server wprowadź następujący kod:
 
     ```R
     bigDataDirRoot <- "/tutorial/data" # root directory on cluster default storage
@@ -57,11 +57,11 @@ Podczas pierwszego logowania należy dwukrotnego uwierzytelnienia. Dla pierwszeg
     remoteDir <- "https://packages.revolutionanalytics.com/datasets/AirOnTimeCSV2012" # location of data
     ```
 
-    Zmienne pojawi się po prawej stronie ekranu, w obszarze **środowiska** kartę.
+1. W okienku po prawej stronie wybierz **środowiska** kartę. Zmienne są wyświetlane w obszarze **wartości**.
 
-    ![RStudio](./media/ml-services-tutorial-spark-compute/rstudio.png)
+    ![Programu RStudio](./media/ml-services-tutorial-spark-compute/rstudio.png)
 
-2.  Tworzenie katalogu lokalnego i Pobierz przykładowe dane. Wprowadź następujący kod w RStudio:
+1.  Tworzenie katalogu lokalnego i Pobierz przykładowe dane. W programu RStudio wprowadź następujący kod:
 
     ```R
     # Create local directory
@@ -82,11 +82,11 @@ Podczas pierwszego logowania należy dwukrotnego uwierzytelnienia. Dla pierwszeg
     download.file(file.path(remoteDir, "airOT201212.csv"), file.path(localDir, "airOT201212.csv"))
     ```
 
-    Pobieranie powinno zająć około 9 i pół minut.
+    Pobieranie powinna być ukończone w ciągu okołu 9.5 minut.
 
-## <a name="copy-data-to-default-storage"></a>Kopiowanie danych do magazynu domyślnego
+## <a name="copy-the-data-to-default-storage"></a>Kopiuj dane do magazynu domyślnego
 
-Lokalizacja systemu plików HDFS jest określony za pomocą `airDataDir` zmiennej. Wprowadź następujący kod w RStudio:
+Lokalizacja pliku System (HDFS, Hadoop Distributed) jest określona za pomocą `airDataDir` zmiennej. W programu RStudio wprowadź następujący kod:
 
 ```R
 # Set directory in bigDataDirRoot to load the data into
@@ -102,18 +102,18 @@ rxHadoopCopyFromLocal(localDir, bigDataDirRoot)
 rxHadoopListFiles(airDataDir)
 ```
 
-Ten krok należy wykonać w ciągu około 10 sekund.
+Ten krok powinien być ukończone w ciągu około 10 sekund.
 
-## <a name="set-up-data-set"></a>Konfigurowanie zestawu danych
+## <a name="set-up-a-dataset"></a>Konfigurowanie zestawu danych
 
-1. Tworzenie obiektu systemu plików, który używa domyślnych wartości. Wprowadź następujący kod w RStudio:
+1. Tworzenie obiektu systemu plików, który używa domyślnych wartości. W programu RStudio wprowadź następujący kod:
 
     ```R
     # Define the HDFS (WASB) file system
     hdfsFS <- RxHdfsFileSystem()
     ```
 
-2. Oryginalne pliki CSV mają zamiast nazwach zmiennych, dzięki czemu możemy dostarczać `colInfo` listy, aby były one łatwiejsze w zarządzaniu. Wprowadź następujący kod w RStudio:
+1. Ponieważ oryginalne pliki CSV zamiast niewygodna nazwy zmiennych, podaj *colInfo* listy, aby były one łatwiejsze w zarządzaniu. W programu RStudio wprowadź następujący kod:
 
     ```R
     airlineColInfo <- list(
@@ -156,9 +156,9 @@ Ten krok należy wykonać w ciągu około 10 sekund.
     varNames <- names(airlineColInfo)
     ```
 
-## <a name="create-data-source"></a>Utwórz źródło danych
+## <a name="create-data-sources"></a>Tworzenie źródła danych
 
-W kontekście obliczeniowym aparatu Spark możesz utworzyć źródeł danych przy użyciu następujących funkcji:
+W kontekście obliczeniowym aparatu Spark możesz tworzyć źródła danych za pomocą następujących funkcji:
 
 |Funkcja | Opis |
 |---------|-------------|
@@ -168,7 +168,7 @@ W kontekście obliczeniowym aparatu Spark możesz utworzyć źródeł danych prz
 |`RxParquetData` | Generuje obiekt Parquet źródła danych.|
 |`RxOrcData` | Generuje obiekt źródła danych Orc.|
 
-Tworzenie [RxTextData](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxtextdata) przy użyciu plików skopiowanych do systemu plików HDFS. Wprowadź następujący kod w RStudio:
+Tworzenie [RxTextData](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxtextdata) obiektu przy użyciu plików zostało skopiowane do systemu plików HDFS. W programu RStudio wprowadź następujący kod:
 
 ```R
 airDS <- RxTextData( airDataDir,
@@ -177,9 +177,9 @@ airDS <- RxTextData( airDataDir,
                         fileSystem = hdfsFS ) 
 ```
 
-## <a name="create-compute-context-for-spark"></a>Tworzenie kontekstu obliczeniowego dla aparatu Spark
+## <a name="create-a-compute-context-for-spark"></a>Tworzenie kontekstu obliczeniowego dla aparatu Spark
 
-Aby załadować dane i uruchamianie analiz na węzłach procesu roboczego, ustawić kontekstu obliczeniowego w skrypcie [RxSpark](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxspark). W tym kontekście funkcji języka R automatycznie rozkłada obciążenie na wszystkich węzłach procesu roboczego, za pomocą wbudowanych wymagane do zarządzania zadaniami lub kolejki. Kontekstu obliczeniowego aparatu Spark zostanie nawiązane za pośrednictwem `RxSpark` lub `rxSparkConnect()` tworzenie Spark w kontekście obliczeniowym i używa `rxSparkDisconnect()` aby powrócić do lokalnym kontekście obliczeniowym. Wprowadź następujący kod w RStudio:
+Aby załadować dane i uruchamianie analiz na węzłach procesu roboczego, ustawić kontekstu obliczeniowego w skrypcie [RxSpark](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxspark). W tym kontekście funkcji języka R automatycznie rozkłada obciążenie na wszystkich węzłach procesu roboczego, za pomocą wbudowanych wymagane do zarządzania zadaniami lub kolejki. Kontekstu obliczeniowego aparatu Spark zostanie nawiązane za pośrednictwem `RxSpark` lub `rxSparkConnect()` tworzenie kontekstu obliczeniowego aparatu Spark, przy czym `rxSparkDisconnect()` aby powrócić do lokalnym kontekście obliczeniowym. W programu RStudio wprowadź następujący kod:
 
 ```R
 # Define the Spark compute context
@@ -191,7 +191,7 @@ rxSetComputeContext(mySparkCluster)
 
 ## <a name="fit-a-linear-model"></a>Dopasuj modelu liniowego
 
-1. Użyj [rxLinMod](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxlinmod) dopasowania modelu liniowego, w którym używana jest funkcja swoje `airDS` źródła danych. Wprowadź następujący kod w RStudio:
+1. Użyj [rxLinMod](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxlinmod) dopasowania modelu liniowego, w którym używana jest funkcja swoje `airDS` źródła danych. W programu RStudio wprowadź następujący kod:
 
     ```R
     system.time(
@@ -200,9 +200,9 @@ rxSetComputeContext(mySparkCluster)
     )
     ```
     
-    Ten krok należy wykonać w zakresie od 2 do 3 minuty.
+    Ten krok powinien być ukończone w ciągu 2 – 3 minut.
 
-1. Przejrzyj wyniki. Wprowadź następujący kod w RStudio:
+1. Przejrzyj wyniki. W programu RStudio wprowadź następujący kod:
 
     ```R
     summary(delayArr)
@@ -241,13 +241,15 @@ rxSetComputeContext(mySparkCluster)
     Condition number: 1 
     ```
 
-    Zwróć uwagę, że wyniki wskazują przetworzyliśmy wszystkie dane, obserwacje 6 milionów, korzystanie z plików CSV w określonym katalogu. Zauważ również, że ponieważ określonej `cube = TRUE`, mamy szacowany współczynnik za każdy dzień tygodnia (i nie intercept).
+    Wyniki wskazują, że zostało przetworzone wszystkie dane, obserwacje 6 mln, korzystanie z plików CSV w określonym katalogu. Ponieważ określone `cube = TRUE`, mieć szacowany współczynnik za każdy dzień tygodnia (i nie intercept).
 
 ## <a name="use-composite-xdf-files"></a>Użyj plików XDF złożone
 
-Jak Zaobserwowaliśmy, można analizować pliki CSV bezpośrednio przy użyciu języka R w usłudze Hadoop, ale analiza może odbywać się szybciej, jeśli dane są przechowywane w postaci bardziej wydajne. Format .xdf języka R jest bardzo wydajna, ale jest modyfikowana nieco dla systemu plików HDFS, aby poszczególne pliki pozostają w jednym bloku systemu plików HDFS. (Rozmiar bloku systemu plików HDFS różni się od instalacji instalacji ale jest zwykle 64 MB lub 128 MB). Kiedy używać [rxImport](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rximport) na platformie Hadoop, określ `RxTextData` źródła danych, takich jak `AirDS` jako inData i `RxXdfData` źródła danych za pomocą systemu plików ustawiony na system plików HDFS jako argument PlikWyjściowy do utworzenia zestawu z pliki złożone .xdf. `RxXdfData` Obiektu może być następnie użyta jako argument dane w kolejnych analiz oprogramowania R.
+Jak wiesz, można analizować pliki CSV bezpośrednio przy użyciu języka R w usłudze Hadoop. Jednak można wykonać analizy szybciej, gdy dane są przechowywane w postaci bardziej wydajne. Format pliku XDF języka R to wydajne, ale jej zmodyfikował nieco dla systemu plików HDFS, aby poszczególne pliki pozostają w jednym bloku systemu plików HDFS. (Rozmiar bloku systemu plików HDFS różni się od instalacji instalacji ale jest zwykle 64 MB lub 128 MB). 
 
-1. Zdefiniuj `RxXdfData` obiektu. Wprowadź następujący kod w RStudio:
+Kiedy używasz [rxImport](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rximport) na platformie Hadoop, aby utworzyć zestaw plików XDF złożonego, należy określić `RxTextData` źródła danych, takich jak `AirDS` jako inData i `RxXdfData` źródła danych za pomocą systemu plików jest ustawiony na system plików HDFS jako outFile argumentu. Następnie można użyć `RxXdfData` obiekt jako argumentu danych w kolejnych analiz R.
+
+1. Zdefiniuj `RxXdfData` obiektu. W programu RStudio wprowadź następujący kod:
 
     ```R
     airDataXdfDir <- file.path(bigDataDirRoot,"AirOnTimeXDF2012")
@@ -256,14 +258,14 @@ Jak Zaobserwowaliśmy, można analizować pliki CSV bezpośrednio przy użyciu j
                             fileSystem = hdfsFS )
     ```
 
-1. Ustaw rozmiar bloku rozmiar 250 000 wierszy, a następnie określ, czy możemy odczytanie wszystkich danych. Wprowadź następujący kod w RStudio:
+1. Ustaw rozmiar bloku rozmiar 250 000 wierszy, a następnie określ, czy możemy odczytanie wszystkich danych. W programu RStudio wprowadź następujący kod:
 
     ```R
     blockSize <- 250000
     numRowsToRead = -1
     ```
 
-1. Importowanie danych przy użyciu `rxImport`. Wprowadź następujący kod w RStudio:
+1. Importowanie danych przy użyciu `rxImport`. W programu RStudio wprowadź następujący kod:
 
     ```R
     rxImport(inData = airDS,
@@ -273,9 +275,9 @@ Jak Zaobserwowaliśmy, można analizować pliki CSV bezpośrednio przy użyciu j
              numRows = numRowsToRead )
     ```
     
-    Ten krok należy wykonać w kilka minut.
+    Ten krok powinien być ukończone w ciągu kilku minut.
 
-1. Ponowne szacowanie tego samego modelu liniowego, przy użyciu źródła danych nowych, szybszych. Wprowadź następujący kod w RStudio:
+1. Ponowne szacowanie tego samego modelu liniowego, przy użyciu źródła danych nowych, szybszych. W programu RStudio wprowadź następujący kod:
 
     ```R
     system.time(
@@ -284,9 +286,9 @@ Jak Zaobserwowaliśmy, można analizować pliki CSV bezpośrednio przy użyciu j
     )
     ```
     
-    Ten krok należy wykonać w mniej niż minutę.
+    Ten krok powinien być kompletny w mniej niż minutę.
 
-1. Przejrzyj wyniki. Wyniki powinny być takie same, od plików CSV. Wprowadź następujący kod w RStudio:
+1. Przejrzyj wyniki. Wyniki powinny być takie same, od plików CSV. W programu RStudio wprowadź następujący kod:
 
     ```R
     summary(delayArr)
@@ -296,11 +298,11 @@ Jak Zaobserwowaliśmy, można analizować pliki CSV bezpośrednio przy użyciu j
 
 ### <a name="in-a-spark-context"></a>W kontekście usługi Spark
 
-Jeśli z pliku CSV są konwertowane na XDF z zalet wydajności podczas przeprowadzania analizy, ale teraz ma zostać przekonwertowany dane do pliku CSV, możesz zrobić za pomocą [rxDataStep](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxdatastep).
+Przekonwertowanie własnych plików CSV na format plików XDF większą wydajność podczas uruchamiania analizy, ale teraz chcesz przekonwertować swoje dane CSV, możesz to zrobić za pomocą [rxDataStep](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxdatastep).
 
-Aby utworzyć folder z plikami CSV, należy najpierw utworzyć `RxTextData` przy użyciu nazwy katalogu jako argument pliku; jest to folder, w której chcesz utworzyć pliki CSV. Ten katalog jest tworzony po uruchomieniu `rxDataStep`. Następnie wskaż polecenie to `RxTextData` obiektu `outFile` argument `rxDataStep`. Każdy wolumin utworzony będzie miała w oparciu o nazwę katalogu i następuje numer.
+Aby utworzyć folder z plikami CSV, należy najpierw utworzyć `RxTextData` , używając nazwy katalogu jako argument pliku obiektu. Ten obiekt reprezentuje folder, w której chcesz utworzyć pliki CSV. Ten katalog jest tworzony po uruchomieniu `rxDataStep`. Następnie wskaż polecenie to `RxTextData` obiektu `outFile` argument `rxDataStep`. Każdy wolumin, który jest tworzony nosi nazwę na podstawie nazwy katalogu i następuje numer.
 
-Załóżmy, że chcemy napisać folderu udostępnionego woluminu klastra w systemie plików HDFS z naszych `airDataXdf` złożonego XDF po wykonane regresji logistycznej i prognozowania, tak aby nowe pliki CSV zawierają przewidywane wartości oraz reszt. Wprowadź następujący kod w RStudio:
+Załóżmy, że chcesz zapisać folder z plikami CSV w systemie plików HDFS z Twojej `airDataXdf` złożonego XDF po wykonaniu regresji logistycznej i prognozowania, tak aby nowe pliki CSV zawierają przewidywane wartości oraz reszt. W programu RStudio wprowadź następujący kod:
 
 ```R
 airDataCsvDir <- file.path(bigDataDirRoot,"AirDataCSV2012")
@@ -308,15 +310,15 @@ airDataCsvDS <- RxTextData(airDataCsvDir,fileSystem=hdfsFS)
 rxDataStep(inData=airDataXdf, outFile=airDataCsvDS)
 ```
 
-Ten krok należy wykonać w ciągu około dwóch i pół minut.
+Ten krok powinien być ukończone w ciągu około 2,5 minut.
 
-Można zauważyć, że `rxDataStep` napisał się jednym woluminie CSV dla każdego pliku .xdfd w pliku wejściowym XDF złożonego. Jest to domyślne zachowanie dla zapisywania pliku CSV z XDF złożonego systemu plików HDFS gdy ustawiono kontekstu obliczeniowego `RxSpark`.
+`rxDataStep` Napisał się jeden plik CSV dla każdego pliku XDFD w pliku wejściowym XDF złożonego. Jest to domyślne zachowanie dla zapisywania plików CSV z plików XDF złożonego systemu plików HDFS gdy ustawiono kontekstu obliczeniowego `RxSpark`.
 
 ### <a name="in-a-local-context"></a>W kontekście lokalnego
 
-Alternatywnie można przełączyć kontekst obliczeń do `local` po zakończeniu wykonywania analiz usługi oraz korzystać z dwóch argumentów w ramach `RxTextData` które podają nieco większą kontrolę podczas zapisywania plików CSV do systemu plików HDFS: `createFileSet` i `rowsPerOutFile`. Gdy `createFileSet` jest równa `TRUE`, folder z plikami CSV są zapisywane w katalogu, który określisz. Gdy `createFileSet` ustawiono `FALSE` pojedynczy plik CSV jest zapisywany. Drugi argument `rowsPerOutFile`, aby wskazać, ile wierszy chcesz zapisać każdy wolumin pliku, kiedy można ustawić na liczbę całkowitą `createFileSet` jest `TRUE`.
+Alternatywnie, po zakończeniu wykonywania usługi analiz, można przełączyć kontekst obliczeń do `local` może korzystać z dwóch argumentów w ramach `RxTextData` które podają nieco większą kontrolę podczas zapisywania plików CSV do systemu plików HDFS: `createFileSet` i `rowsPerOutFile`. Po ustawieniu `createFileSet` do `TRUE`, folder z plikami CSV są zapisywane w katalogu, który określisz. Po ustawieniu `createFileSet` do `FALSE`, są zapisywane w pojedynczym pliku CSV. Możesz ustawić drugi argument `rowsPerOutFile`, na liczbę całkowitą, aby wskazać, ile wierszy chcesz zapisać każdy wolumin pliku, kiedy `createFileSet` jest `TRUE`.
 
-Wprowadź następujący kod w RStudio:
+W programu RStudio wprowadź następujący kod:
 
 ```R
 rxSetComputeContext("local")
@@ -325,13 +327,13 @@ airDataCsvRowsDS <- RxTextData(airDataCsvRowsDir, fileSystem=hdfsFS, createFileS
 rxDataStep(inData=airDataXdf, outFile=airDataCsvRowsDS)
 ```
 
-Ten krok należy wykonać w około 10 minut.
+Ten krok powinien być ukończone w ciągu około 10 minut.
 
-Korzystając z `RxSpark` kontekstu, obliczeniowego `createFileSet` wartość domyślna to `TRUE` i `rowsPerOutFile` nie ma wpływu. Dlatego jeśli chcesz utworzyć jeden wolumin CSV lub dostosować liczbę wierszy w pliku, należy wykonać `rxDataStep` w `local` kontekstu obliczeniowego (dane mogą być nadal w systemie plików HDFS).
+Kiedy używasz `RxSpark` kontekstu, obliczeniowego `createFileSet` wartość domyślna to `TRUE` i `rowsPerOutFile` nie ma wpływu. W związku z tym, jeśli chcesz utworzyć jeden wolumin CSV lub dostosować liczbę wierszy w pliku, należy wykonać `rxDataStep` w `local` kontekstu obliczeniowego (dane mogą być nadal w systemie plików HDFS).
 
 ## <a name="final-steps"></a>Ostatnie kroki
 
-1. Czyszczenie danych. Wprowadź następujący kod w RStudio:
+1. Czyszczenie danych. W programu RStudio wprowadź następujący kod:
 
     ```R
     rxHadoopRemoveDir(airDataDir)
@@ -341,13 +343,13 @@ Korzystając z `RxSpark` kontekstu, obliczeniowego `createFileSet` wartość dom
     rxHadoopRemoveDir(bigDataDirRoot)
     ```
 
-1. Zatrzymaj zdalnej aplikacji aparatu Spark. Wprowadź następujący kod w RStudio:
+1. Zatrzymaj zdalnej aplikacji aparatu Spark. W programu RStudio wprowadź następujący kod:
 
     ```R
     rxStopEngine(mySparkCluster)
     ```
 
-1. Zamknij sesję R. Wprowadź następujący kod w RStudio:
+1. Zamknij sesję R. W programu RStudio wprowadź następujący kod:
 
     ```R
     quit()
@@ -355,13 +357,13 @@ Korzystając z `RxSpark` kontekstu, obliczeniowego `createFileSet` wartość dom
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Po ukończeniu korzystania z samouczka warto usunąć klaster. Dzięki usłudze HDInsight dane są przechowywane w usłudze Azure Storage, więc można bezpiecznie usunąć klaster, gdy nie jest używany. Opłaty za klaster usługi HDInsight są naliczane nawet wtedy, gdy nie jest używany. Ponieważ opłaty za klaster są wielokrotnie większe niż opłaty za magazyn, ze względów ekonomicznych warto usuwać klastry, gdy nie są używane.
+Po ukończeniu tego samouczka warto usunąć klaster. Za pomocą HDInsight dane są przechowywane w usłudze Azure Storage, dzięki czemu można bezpiecznie usunąć klaster, gdy nie jest używany. Możesz są również naliczane opłaty za klaster usługi HDInsight nawet wtedy, gdy nie jest używany. Ponieważ opłaty za klaster są wielokrotnie większe niż opłaty za magazyn, zapewnia ze względów ekonomicznych warto usuwać klastry, gdy nie są używane.
 
-Aby usunąć klaster, zobacz [usunąć klaster usługi HDInsight przy użyciu przeglądarki, programu PowerShell lub interfejsu wiersza polecenia Azure](../hdinsight-delete-cluster.md).
+Aby usunąć klaster, zobacz [usunąć klaster usługi HDInsight przy użyciu przeglądarki, programu PowerShell lub wiersza polecenia platformy Azure](../hdinsight-delete-cluster.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób użycia funkcji języka R w Apache Spark, uruchamiając w klastrze usługi ML w usłudze Azure HDInsight. Aby uzyskać więcej informacji zobacz następujące artykuły:
+W tym samouczku przedstawiono sposób użycia funkcji języka R w Apache Spark, które są uruchomione w klastrze usługi HDInsight Machine Learning. Aby uzyskać więcej informacji zobacz następujące artykuły:
 
-* [COMPUTE context options obliczeniowego usługi ML w HDInsight](r-server-compute-contexts.md)
+* [COMPUTE context options obliczeniowego dla klastra usługi Azure HDInsight Machine Learning](r-server-compute-contexts.md)
 * [Funkcje języka R dla platformy Spark w usłudze Hadoop](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler-hadoop-functions)

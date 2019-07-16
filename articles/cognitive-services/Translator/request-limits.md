@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: a7621cc80a38d9a07872a94d8e5221dc04023b86
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f9620cc5f135dd7b10da5528e5dec0f5baa70350
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435028"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226248"
 ---
 # <a name="request-limits-for-translator-text"></a>Limity żądań dla tekstu w usłudze Translator
 
@@ -54,7 +54,7 @@ Jeśli dotrzeć do lub przekroczenie limitów lub wysłać zbyt duży, jaka czę
 
 Limity dla [subskrypcji z wieloma usługami](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) są takie same jak w warstwie S1.
 
-Limity te są ograniczone do modele tłumaczenia standard firmy Microsoft. Modele tłumaczenia niestandardowych, korzystających z niestandardowych w usłudze Translator są ograniczone do 1800 znaku w ciągu sekundy.
+Limity te są ograniczone do modele tłumaczenia standard firmy Microsoft. Modele tłumaczenia niestandardowych, korzystających z niestandardowych w usłudze Translator są ograniczone do 1800 znaków na sekundę.
 
 ## <a name="latency"></a>Opóźnienie
 
@@ -67,10 +67,10 @@ Korzystając z [BreakSentence](https://docs.microsoft.com/azure/cognitive-servic
 | Język | Kod | Maksymalna liczba znaków |
 |----------|------|-----------------|
 | Chiński | nazwy zh | 132 |
-| Niemiecki | de | 290 |
+| niemiecki | de | 290 |
 | Włoski | it | 280 |
 | Japoński | ja | 150 |
-| Portugalski | pt | 290 |
+| Portugalski | (czas pacyficzny) | 290 |
 | Hiszpański | es | 280 |
 | Włoski | it | 280 |
 | Tajlandzki | TH | 258 |
@@ -78,7 +78,7 @@ Korzystając z [BreakSentence](https://docs.microsoft.com/azure/cognitive-servic
 > [!NOTE]
 > To ograniczenie nie ma zastosowania do tłumaczenia.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Cennik](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
 * [Dostępność regionalna](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)

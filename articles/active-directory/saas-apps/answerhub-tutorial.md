@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e51c37f983162b82747760b05e2ec5e4e6553c0b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ccf3894daf71be0defe4271a08ec5e8d963e0d34
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106947"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227496"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją AnswerHub
 
@@ -193,7 +193,7 @@ W tej sekcji utworzysz użytkownika testowego o nazwie Britta Simon w witrynie A
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji skonfigurujesz użytkownika Britta Simon w celu korzystania z logowania jednokrotnego usługi Azure AD, udzielając dostępu do aplikacji AnswerHub.
+W tej sekcji możesz skonfigurować użytkownika Britta Simon do używania usługi Azure AD logowanie jednokrotne za udzielanie dostępu użytkownika do AnswerHub.
 
 **Aby przypisać użytkownika testowego usługi Azure AD:**
 

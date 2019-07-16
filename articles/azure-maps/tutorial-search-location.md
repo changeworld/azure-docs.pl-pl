@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 21c7e996cfe2f07d9a5b056d8cbc22f238bb48fd
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: e787366694b55d3dcd61eec2c5a5b42dd187ec55
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357619"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226848"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Wyszukiwanie pobliskich punktów orientacyjnych za pomocą usługi Azure Maps
 
@@ -239,9 +239,9 @@ W wynikach wyszukiwania na utworzonej mapie są używane tylko dane o długości
     map.events.add('mouseover', resultLayer, showPopup);
     ```
 
-    Interfejs API `sup` informacje okna zakotwiczone w wymaganych położeniu na mapie. 
+    Interfejs API `*atlas.Popup` informacje okna zakotwiczone w wymaganych położeniu na mapie. 
 
-2. W *skryptu* tagu po `GetMap` funkcji, Dodaj następujący kod, aby pokazać moused za pośrednictwem informacje na temat wyników w menu podręcznym.
+2. Dodaj następujący kod w ramach `GetMap` funkcji, aby pokazać moused za pośrednictwem informacje na temat wyników w menu podręcznym.
 
     ```JavaScript
     function showPopup(e) {
@@ -270,7 +270,7 @@ W wynikach wyszukiwania na utworzonej mapie są używane tylko dane o długości
 
     ![Kontrolka mapy platformy Azure i usługa Search Service](./media/tutorial-search-location/popup-map.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

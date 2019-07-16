@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: aaae84fcb7df2abfe7e78adb64c22fb19fe45f4e
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 203526b23a9571f0cccf3ebed432978772282418
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606729"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226426"
 ---
 # <a name="try-speech-services-for-free"></a>Wypróbuj bezpłatnie usługi mowy
 
@@ -89,7 +89,7 @@ Można dodać zasobu usługi mowy (w warstwie bezpłatna lub płatna) do konta p
 
    * Nazwa dla nowego zasobu. Nazwa służy do rozróżnienia wielu subskrypcji tej samej usługi.
    * Wybierz subskrypcję platformy Azure, nowy zasób z którym skojarzony jest ustalenie, jak są naliczane opłaty.
-   * Wybierz region, w którym zasób będzie używany. Obecnie usług przetwarzania mowy jest dostępna w regionach zachodnie stany USA, Azja Wschodnia i Europa Północna.
+   * Wybierz [region](regions.md) użycia zasobów.
    * Wybierz opcję bezpłatnej i płatnej warstwy cenowej. Kliknij przycisk **Wyświetl pełne szczegóły ceny** pełne informacje dotyczące cen i użycie przydziały dla każdej warstwy.
    * Utwórz nową grupę zasobów dla tej subskrypcji mowy lub Przypisz subskrypcję przechodząc do istniejącej grupy zasobów. Pomoc, której możesz przechowywać różne subskrypcje platformy Azure uporządkowane grupy zasobów.
    * Wygodny dostęp do Twojej subskrypcji w przyszłości, wybierz **Przypnij do pulpitu nawigacyjnego** pole wyboru.
