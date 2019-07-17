@@ -8,14 +8,14 @@ ms.service: cognitive-services
 services: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 02/14/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 086f55094474d4c06e52001d77630932cd04213c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: af20d555a83e8d229ed5d83d3b1d3f242de1e4a8
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60557430"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275802"
 ---
 # <a name="quickstart-query-prediction-endpoint-with-c-net-sdk"></a>Szybki start: Wysyłanie zapytań do punktu końcowego przewidywania za pomocą zestawu SDK języka C# .NET
 
@@ -179,7 +179,7 @@ Top intent is 'HomeAutomation.TurnOn' with score 0.809439957
 HomeAutomation.Room:'bedroom' begins at position 12 and ends at position 18
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o [zestawie SDK platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/) i zapoznaj się z [dokumentacją referencyjna platformy .NET](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet). 
 

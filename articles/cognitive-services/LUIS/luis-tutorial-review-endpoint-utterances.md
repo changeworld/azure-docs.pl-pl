@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 02/19/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 118ac858103776e880e7304199279a7d50ad71b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2994f7b19d5a104b129dc4d7aff29dabbc89f0f4
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60599569"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276014"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Samouczek: Rozwiązywanie problemów z niepewnymi przewidywaniami przez przeglądanie wypowiedzi punktu końcowego
 W tym samouczku ulepszysz przewidywanie aplikacji, weryfikując i poprawiając wypowiedzi odebrane za pośrednictwem punktu końcowego HTTP usługi LUIS i uznane za niepewne przez tę usługę. Niektóre wypowiedzi mogą wymagać weryfikacji pod kątem intencji, a inne — pod kątem jednostki. Należy regularnie przeglądać wypowiedzi punktu końcowego w ramach zaplanowanej konserwacji usługi LUIS. 
@@ -74,31 +74,22 @@ Wykonaj następujące czynności:
     
     [![Zrzut ekranu obszaru Review endpoint utterances (Przeglądanie wypowiedzi punktu końcowego) z wyróżnionym przełącznikiem Entities view (Widok jednostek)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png#lightbox)
 
+
+    Ta wypowiedź `I'm looking for a job with Natural Language Processing`, nie jest poprawną intencji. 
+
+    Przyczyna wypowiedź został mispredicted jest fakt, że **ApplyForJob** celem ma 21 wypowiedzi w porównaniu do 7 wypowiedzi w **GetJobInformation**. Celem z wypowiedzi więcej będą mieć wyższe prognozy. Jest ważne, jest równoważone ilość i jakość wypowiedzi między opcjami.
+
+1.  Aby wyrównać to wypowiedź, wybierz poprawny intencji i oznacz jednostki zadania znajdujące się w nim. Zmieniono wypowiedź można dodać do aplikacji, wybierając zielone pole wyboru. 
+
     |Wypowiedź|Poprawna intencja|Brakujące jednostki|
     |:--|:--|:--|
-    |Szukam zadania przy użyciu przetwarzania języka naturalnegoSzukam zadania przy użyciu przetwarzania języka naturalnego|GetJobInfo|Zadania — "Języka naturalnego procesu"|
+    |`I'm looking for a job with Natural Language Processing`|GetJobInfo|Zadania — "Języka naturalnego procesu"|
 
-    Ta wypowiedź ma nieprawidłową intencję i ocenę niższą niż 50%. Intencja **ApplyForJob** ma 21 wypowiedzi w porównaniu do siedmiu wypowiedzi w intencji **GetJobInformation**. Poza prawidłowym dopasowaniem punktu końcowego należy dodać więcej wypowiedzi do intencji **GetJobInformation**. Ta czynność zostanie zostawiona jako ćwiczenie do samodzielnego wykonania. Wszystkie intencje z wyjątkiem intencji **None** powinny mieć mniej więcej taką samą liczbę przykładowych wypowiedzi. Intencja **None** powinna mieć 10% wszystkich wypowiedzi w aplikacji. 
+    Dodawanie wypowiedź przenosi wypowiedź z **Przejrzyj wypowiedzi punktu końcowego** do **GetJobInformation** intencji. Wypowiedź punktu końcowego jest teraz przykładową wypowiedzią dla tej intencji. 
 
-1. Dla wypowiedzi `I'm looking for a job with Natual Language Processing` wybierz poprawną intencję, **GetJobInformation**, w kolumnie **Aligned intent** (Dopasowana intencja). 
-
-    [![Zrzut ekranu obszaru Review endpoint utterances (Przeglądanie wypowiedzi punktu końcowego) — dopasowywanie wypowiedzi do intencji](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png)](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png#lightbox)
-
-1. W tej samej wypowiedzi jednostka dla frazy `Natural Language Processing` to keyPhrase. Zamiast niej powinna to być jednostka **Job**. Wybierz frazę `Natural Language Processing`, a następnie jednostkę **Job** z listy.
-
-    [![Zrzut ekranu obszaru Review endpoint utterances (Przeglądanie wypowiedzi punktu końcowego) — oznaczanie etykietą jednostek w wypowiedzi](./media/luis-tutorial-review-endpoint-utterances/label-entity.png)](./media/luis-tutorial-review-endpoint-utterances/label-entity.png#lightbox)
-
-1. W tym samym wierszu wybierz ikonę znacznika wyboru w okręgu w kolumnie **Add to aligned intent** (Dodaj do dopasowanej intencji). 
-
-    [![Zrzut ekranu przedstawiający finalizowanie dopasowywania wypowiedzi do intencji](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png)](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png#lightbox)
-
-    Ta akcja powoduje przeniesienie wypowiedzi z obszaru **Review endpoint utterances** (Przeglądanie wypowiedzi punktu końcowego) do intencji **GetJobInformation**. Wypowiedź punktu końcowego jest teraz przykładową wypowiedzią dla tej intencji. 
+    Wraz z wyrównywanie tej wypowiedź poprawnie, więcej wypowiedzi powinny zostać dodane do **GetJobInformation** intencji. Ta czynność zostanie zostawiona jako ćwiczenie do samodzielnego wykonania. Wszystkie intencje z wyjątkiem intencji **None** powinny mieć mniej więcej taką samą liczbę przykładowych wypowiedzi. Intencja **None** powinna mieć 10% wszystkich wypowiedzi w aplikacji. 
 
 1. Przejrzyj pozostałe wypowiedzi w tej intencji, oznaczając je etykietami i poprawiając intencję **Aligned intent** (Dopasowana intencja), jeśli jest ona nieprawidłowa.
-
-1. Po poprawieniu wszystkich wypowiedzi zaznacz pole wyboru w każdym wierszu, a następnie wybierz przycisk **Add selected** (Dodaj wybrane), aby poprawnie dopasować wypowiedzi. 
-
-    [![Zrzut ekranu przedstawiający finalizowanie dopasowanej intencji pozostałych wypowiedzi](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png)](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png#lightbox)
 
 1. Te wypowiedzi powinny zniknąć z listy. Jeśli zostaną wyświetlone kolejne wypowiedzi, kontynuuj pracę z listą, poprawiając intencje i oznaczając etykietami wszelkie brakujące jednostki, dopóki lista nie będzie pusta. 
 

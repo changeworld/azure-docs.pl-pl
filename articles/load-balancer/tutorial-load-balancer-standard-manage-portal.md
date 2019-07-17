@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: W tym samouczku pokazano, jak utworzyć wystąpienie usługi Load Balancer w warstwie Standardowa przy użyciu witryny Azure Portal.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 Customer intent: I want to create and Standard Load Balancer so that I can load balance internet traffic to VMs and add and remove VMs from the load-balanced set.
 ms.service: load-balancer
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/11/2019
-ms.author: kumud
+ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 78266e447d1ddf6daf5a9b0ad9172ab6470bf0c6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 22d0e56a77036c551b6006f43997c92fcce07499
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61320844"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273353"
 ---
 # <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>Samouczek: Równoważenie obciążenia ruchem internetowym przez skierowanie go do maszyn wirtualnych przy użyciu witryny Azure Portal
 
@@ -47,10 +47,10 @@ W tej sekcji opisano tworzenie standardowego modułu równoważenia obciążenia
 1. W lewym górnym rogu ekranu kliknij pozycję **Utwórz zasób** > **Sieć** > **Moduł równoważenia obciążenia**.
 2. Na karcie **Podstawy** na stronie **Tworzenie modułu równoważenia obciążenia** wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Przeglądanie + tworzenie**:
 
-    | Ustawienie                 | Wartość                                              |
+    | Ustawienie                 | Value                                              |
     | ---                     | ---                                                |
-    | Subskrypcja               | Wybierz subskrypcję.    |    
-    | Grupa zasobów         | Wybierz **Utwórz nową** i typ *myResourceGroupSLB* w polu tekstowym.|
+    | Subscription               | Wybierz subskrypcję.    |    
+    | Resource group         | Wybierz **Utwórz nową** i typ *myResourceGroupSLB* w polu tekstowym.|
     | Name (Nazwa)                   | *myLoadBalancer*                                   |
     | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
     | Type          | Wybierz pozycję **Publiczna**.                                        |
@@ -86,7 +86,7 @@ Aby zezwolić na moduł równoważenia obciążenia monitorować stan aplikacji,
     | Ustawienie | Wartość |
     | ------- | ----- |
     | Name (Nazwa) | Wprowadź *myHealthProbe*. |
-    | Protokół | Wybierz **HTTP**. |
+    | Protocol | Wybierz **HTTP**. |
     | Port | Wprowadź *80*.|
     | Interval | Wprowadź *15* liczbę **interwał** w ciągu kilku sekund między próbami sondy. |
     | Próg złej kondycji | Wybierz *2* liczbę **próg złej kondycji** lub kolejnych niepowodzeń sondy musi wystąpić, zanim maszyny Wirtualnej jest uznawana za złą.|
@@ -105,10 +105,10 @@ Reguła modułu równoważenia obciążenia służy do definiowania sposobu dyst
     | Ustawienie | Wartość |
     | ------- | ----- |
     | Name (Nazwa) | Wprowadź *myHTTPRule*. |
-    | Protokół | wybierz pozycję **TCP**. |
+    | Protocol | wybierz pozycję **TCP**. |
     | Port | Wprowadź *80*.|
     | Port zaplecza | Wprowadź *80*. |
-    | Pula zaplecza | Select *myBackendPool*.|
+    | Pula zaplecza | Wybierz *myBackendPool*.|
     | Sonda kondycji | Wybierz *myHealthProbe*. |
     
 4. Pozostaw resztę ustawień domyślnych, a następnie wybierz pozycję **OK**.
@@ -126,9 +126,9 @@ W tej sekcji Utwórz sieć wirtualną, utworzyć trzy maszyny wirtualne dla puli
     | ------- | ----- |
     | Name (Nazwa) | Wprowadź nazwę *myVNet*. |
     | Przestrzeń adresowa | Wprowadź adres *10.1.0.0/16*. |
-    | Subskrypcja | Wybierz subskrypcję.|
-    | Grupa zasobów | Wybierz istniejący zasób - *myResourceGroupSLB*. |
-    | Lokalizacja | Wybierz pozycję **Europa Zachodnia**.|
+    | Subscription | Wybierz subskrypcję.|
+    | Resource group | Wybierz istniejący zasób - *myResourceGroupSLB*. |
+    | Location | Wybierz pozycję **Europa Zachodnia**.|
     | Podsieć — nazwa | Wprowadź nazwę podsieci *myBackendSubnet*. |
     | Zakres adresów podsieci: 10.41.0.0/24 | Wprowadź *10.1.0.0/24*. |
     
@@ -159,7 +159,7 @@ Load Balancer w warstwie standardowa obsługuje tylko maszyny wirtualne z adresa
        1. Typ *myNetworkSecurityGroup*i wybierz **OK**.
 
    - Aby utworzyć maszynę Wirtualną częścią puli zaplecza modułu równoważenia obciążenia, wykonaj następujące czynności:
-        - W **Równoważenie obciążenia**, aby uzyskać **umieścić tej maszyny wirtualnej za modułem istniejące rozwiązanie do równoważenia obciążenia?**, wybierz opcję **tak**.
+        - W **Równoważenie obciążenia**, aby uzyskać **umieścić tej maszyny wirtualnej za modułem istniejące rozwiązanie do równoważenia obciążenia?** , wybierz opcję **tak**.
         - W **ustawienia równoważenia obciążenia**, aby uzyskać **opcje równoważenia obciążenia**, wybierz opcję **usługa Azure load balancer**.
         - Aby uzyskać **wybrać moduł równoważenia obciążenia**, *myLoadBalancer*. 
 1. Wybierz kartę **Zarządzanie** lub wybierz pozycję **Dalej** > **Zarządzanie**. W obszarze **Monitorowanie** dla opcji **Diagnostyka rozruchu** ustaw wartość **Wyłączone**. 
@@ -244,7 +244,7 @@ Aby dodać *myVM1* do puli zaplecza, wykonaj następujące czynności:
 
 Gdy nie są już potrzebne, Usuń grupę zasobów, moduł równoważenia obciążenia i wszystkich powiązanych zasobów. Aby to zrobić, wybierz *myResouceGroupSLB* grupę zasobów, która zawiera moduł równoważenia obciążenia, a następnie wybierz **Usuń**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku utworzono standardowego modułu równoważenia obciążenia, dołączono maszyny wirtualne do niego, skonfigurowane reguły modułu równoważenia obciążenia ruchu, sondy kondycji i następnie przetestowano moduł równoważenia obciążenia. Ponadto usunięto maszynę wirtualną z zestawu o zrównoważonym obciążeniu i dodano ją z powrotem do puli adresów zaplecza. Aby dowiedzieć się więcej na temat usługi Azure Load Balancer, przejdź do samouczków dotyczących usługi Azure Load Balancer.
 

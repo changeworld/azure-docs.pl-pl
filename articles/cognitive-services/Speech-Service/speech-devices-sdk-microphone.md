@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: 121e94228ca85684b20f2ee43c0f7fa3af82fc73
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: cb30b476471e140f96fa1d159e9a16898f529607
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606333"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277490"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Zalecenia dotyczące macierzy mikrofon zestawu SDK urządzenia mowy
 
@@ -43,34 +43,34 @@ Zalecane właściwości podczas wybierania mikrofon są:
 
 | Parametr                         | Zalecane                       |
 |-----------------------------------|-----------------------------------|
-| SNR                               | \> 65 dB (dBSPL sygnału 94 1 kHz, hałasu A)   |
+| SNR                               | \>= 65 dB (dBSPL sygnału 94 1 kHz, hałasu A)   |
 | Dopasowywanie amplitudy                | ± 1 dB @ 1 kHz                     |
 | Faza dopasowania                    | ° 2 @ 1 kHz                       |
-| Punkt przeciążenia akustyczne (AOP)     | \> 120 dBSPL (THD = 10%)          |
+| Punkt przeciążenia akustyczne (AOP)     | \>= 120 dBSPL (tej = 10%)          |
 | Szybkość transmisji bitów                          | Co najmniej 24-bitowego                    |
 | Częstotliwość próbkowania                     | Minimalna kHz 16\*                   |
-| Directivity                       | Wielokierunkowego                   |
 | Częstotliwość odpowiedzi                | granicach 3 dB, Hz 200 8000 maska liczb zmiennoprzecinkowych\*|
 | Niezawodność                       | Zakres temperatur magazynu C-40 do 70 C<br />Dopuszczalne temperatury C-20-55 C  |
 
-*\*Większe częstotliwości próbkowania lub zakresy częstotliwości "szersze" może być konieczne w przypadku aplikacji o wysokiej jakości komunikacji (VoIP)*
+*\* Większe częstotliwości próbkowania lub zakresy częstotliwości "szersze" może być konieczne w przypadku aplikacji o wysokiej jakości komunikacji (VoIP)*
 
 Wybór składnika dobrej muszą łączyć się z dobrej electroacoustic integracji w celu uniknięcia liczby wydajność składniki używane. Unikatowymi przypadkami użycia mogą również wymagają dodatkowych wymagań (na przykład: działające zakresów temperatury).
 
 ## <a name="microphone-array-integration"></a>Integracja z mikrofonu tablicy
 
-Wydajność tablic po zintegrowaniu do urządzenia i po zysk stałej lub EQ powinna spełniać następujące zalecenia:
+Wydajność mikrofonów po zintegrowaniu urządzenia będą się różnić ze specyfikacji składników. Należy upewnić się, że mikrofon są również zgodne po integracji. W związku z tym wydajność urządzenia mierzona po wszelkich trwale uzyskać lub EQ powinny spełniać następujące zalecenia:
 
 |  Parametr        |    Zalecane |
 |--------------------|----------------------------------------------------|
-|  SNR                 | \> 65 dB (dBSPL sygnału 94 1 kHz, hałasu A) |
+|  SNR                 | \> 63 dB (dBSPL sygnału 94 1 kHz, hałasu A) |
 |  Czułość danych wyjściowych  | -26 dBFS/Pa @ kHz 1 (zalecane) |
 |  Dopasowywanie amplitudy  | granicach 2 dB Hz 200 8000 |
-|  Faza dopasowania      | 5 °, Hz 200 8000 |
-| THD%                 | ≤ 1%, 200 8000 Hz, 94 dBSPL, kolejność 5. |
-|  Częstotliwość odpowiedzi  | granicach dB 6, Hz 200 8000 maska liczb zmiennoprzecinkowych\* |
+| % TEJ\*                 | ≤ 1%, 200 8000 Hz, 94 dBSPL, kolejność 5. |
+|  Częstotliwość odpowiedzi  | granicach dB 6, Hz 200 8000 maska liczb zmiennoprzecinkowych\*\* |
 
-*\*Zakresy częstotliwości "Szersze" mogą być wymagane aplikacje wysokiej jakości komunikacji (VoIP)*
+*\*\* Głośnika niski zakłócenia jest wymagany do mierzenia tej (np. Neumanna KH120)*
+
+*\*\* Zakresy częstotliwości "Szersze" mogą być wymagane aplikacje wysokiej jakości komunikacji (VoIP)*
 
 ## <a name="speaker-integration-recommendations"></a>Zalecenia dotyczące integracji osoby mówiącej
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 01/23/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 5e5a186be19c0ecc9730bc79bddff41fb6bbb571
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 42240c7b45029684e51c25419eab7f4378785a4d
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60197126"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276142"
 ---
 # <a name="quickstart-get-intent-using-java"></a>Szybki start: pobieranie intencji przy użyciu języka Java
 
@@ -66,6 +66,6 @@ Aby uzyskać dostęp do tych samych wyników, które zostały wyświetlone w okn
 
 Usuń folder pliku/projektu języka Java.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"]
 > [Dodawanie wypowiedzi](luis-get-started-java-add-utterance.md)

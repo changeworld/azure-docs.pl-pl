@@ -3,20 +3,20 @@ title: Przewidywanie intencji
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku utworzysz niestandardową aplikację, która będzie przewidywać intencje użytkownika. Ta aplikacja to najprostszy rodzaj aplikacji usługi LUIS, ponieważ nie wyodrębnia ona z tekstu wypowiedzi różnych elementów danych, takich jak adresy e-mail czy daty.
 services: cognitive-services
-author: lingliw
-manager: digimobile
+author: diberry
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 04/19/19
-ms.author: v-lingwu
-ms.openlocfilehash: 067829a1d9425ede1320242e364eca7c30bb7053
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 07/16/2019
+ms.author: diberry
+ms.openlocfilehash: 534aa678df69a4ef71296005922fa59bbe7bbcfa
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66123936"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277577"
 ---
 # <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Samouczek: Tworzenie aplikacji usługi LUIS umożliwiającej określanie intencji użytkownika
 
@@ -45,7 +45,7 @@ Intencje są podzielone na kategorie **intencji**.
 
 Ta aplikacja ma kilka intencji. 
 
-|Intencja|Przeznaczenie|
+|Intencja|Cel|
 |--|--|
 |ApplyForJob|Określa, czy użytkownik ubiega się o pracę.|
 |GetJobInformation|Określa, czy użytkownik szuka informacji dotyczących pracy w ogóle, czy jakiejś konkretnej pracy.|
@@ -131,7 +131,7 @@ Ta aplikacja ma kilka intencji.
 
     Parametr ciągu zapytania `verbose=true` oznacza, że w wynikach zapytania aplikacji zostaną uwzględnione **wszystkie intencje**. Tablica jednostek jest pusta, ponieważ ta aplikacja obecnie nie ma żadnych jednostek. 
 
-    Wynik w formacie JSON określa najwyżej ocenioną intencję jako właściwość **`topScoringIntent`**. Wszystkie wyniki należą do zakresu od 1 do 0, przy czym im bliżej 1, tym lepiej. 
+    Wynik w formacie JSON określa najwyżej ocenioną intencję jako właściwość **`topScoringIntent`** . Wszystkie wyniki należą do zakresu od 1 do 0, przy czym im bliżej 1, tym lepiej. 
 
 ## <a name="create-intent-for-job-applications"></a>Tworzenie intencji na potrzeby podań o pracę
 
@@ -231,7 +231,7 @@ Gdy usługa LUIS zwróci odpowiedź w formacie JSON, żądanie zostanie wykonane
 * [Azure Bot](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku utworzono aplikację Human Resources (HR), utworzono 2 intencje, dodano przykładowe wypowiedzi do każdej intencji, dodano przykładowe wypowiedzi do intencji None, przeprowadzono szkolenie, opublikowano i przetestowano w punkcie końcowym. Są to podstawowe kroki tworzenia modelu usługi LUIS. 
 
@@ -239,7 +239,3 @@ Kontynuuj pracę z tą aplikacją, [dodając prostą jednostkę i listę fraz](l
 
 > [!div class="nextstepaction"]
 > [Dodawanie wstępnie utworzonych intencji i jednostek do aplikacji](luis-tutorial-prebuilt-intents-entities.md)
-
-
-
-

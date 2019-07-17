@@ -11,12 +11,12 @@ ms.date: 01/04/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 9cea3e7494ee81638923cbcaff9f1b82d08a1ad1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b6e57500da0ca863f0c5810f625d6a4b0c56d1bf
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66164749"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277474"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Przekształcanie danych w usłudze Azure Virtual Network przy użyciu działania programu Hive w usłudze Azure Data Factory
 W tym samouczku witryna Azure Portal umożliwia tworzenie potoku usługi Data Factory przekształcającego dane przy użyciu działania programu Hive w klastrze usługi HDInsight, który znajduje się w usłudze Azure Virtual Network (VNet). Ten samouczek obejmuje następujące procedury:
@@ -92,7 +92,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 4. Wybierz opcję **V2** w obszarze **Wersja**.
 5. Na liście **lokalizacja** wybierz lokalizację fabryki danych. Na liście są wyświetlane tylko lokalizacje obsługiwane na potrzeby tworzenia fabryk danych.
 6. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.     
-7. Kliknij pozycję **Utwórz**.
+7. Kliknij przycisk **Utwórz**.
 8. Na pulpicie nawigacyjnym jest widoczny następujący kafelek ze stanem: **Wdrażanie fabryki danych**. 
 
      ![kafelek Wdrażanie fabryki danych](media/tutorial-transform-data-using-hive-in-vnet-portal/deploying-data-factory.png)
@@ -166,7 +166,7 @@ W tej sekcji zredagujesz i wdrożysz dwie połączone usługi:
     2. Wybierz pozycję **MySelfHostedIR** w polu **Połącz za pośrednictwem środowiska Integration Runtime**.
     3. W polu **Nazwa konta magazynu** wybierz konto usługi Azure Storage. 
     4. Aby przetestować połączenie z kontem magazynu, kliknij pozycję **Testuj połączenie**.
-    5. Kliknij pozycję **Zapisz**.
+    5. Kliknij polecenie **Zapisz**.
    
         ![Określanie konta usługi Azure Blob Storage](./media/tutorial-transform-data-using-hive-in-vnet-portal/specify-azure-storage-account.png)
 
@@ -201,7 +201,7 @@ W tym kroku utworzysz nowy potok za pomocą działania programu Hive. Działanie
 Pamiętaj o następujących kwestiach:
 
 - Argument **scriptPath** wskazuje ścieżkę do skryptu programu Hive na koncie Azure Storage użytym dla usługi MyStorageLinkedService. W ścieżce jest rozróżniana wielkość liter.
-- **Output** jest argumentem używanym w skrypcie programu Hive. Użyj formatu `wasb://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`, aby wskazać istniejący folder w usłudze Azure Storage. W ścieżce jest rozróżniana wielkość liter. 
+- **Output** jest argumentem używanym w skrypcie programu Hive. Użyj formatu `wasbs://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`, aby wskazać istniejący folder w usłudze Azure Storage. W ścieżce jest rozróżniana wielkość liter. 
 
 1. W interfejsie użytkownika usługi Data Factory kliknij pozycję **+ (plus)** w lewym okienku, a następnie kliknij pozycję **Potok**. 
 
@@ -226,16 +226,16 @@ Pamiętaj o następujących kwestiach:
         ![Ustawienia skryptu](./media/tutorial-transform-data-using-hive-in-vnet-portal/confirm-hive-script-settings.png)
     5. Na **karcie Skrypt** rozwiń sekcję **Zaawansowane**. 
     6. Kliknij pozycję **Automatycznie wypełniaj ze skryptu** w obszarze **Parametry**. 
-    7. Wprowadź wartość parametru **Dane wyjściowe** w następującym formacie: `wasb://<Blob Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`. Na przykład: `wasb://adftutorial@mystorageaccount.blob.core.windows.net/outputfolder/`.
+    7. Wprowadź wartość parametru **Dane wyjściowe** w następującym formacie: `wasbs://<Blob Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`. Na przykład: `wasbs://adftutorial@mystorageaccount.blob.core.windows.net/outputfolder/`.
  
         ![Argumenty skryptu](./media/tutorial-transform-data-using-hive-in-vnet-portal/script-arguments.png)
 1. Aby opublikować artefakty do usługi Data Factory, kliknij pozycję **Opublikuj**.
 
-    ![Opublikuj](./media/tutorial-transform-data-using-hive-in-vnet-portal/publish.png)
+    ![Publikowanie](./media/tutorial-transform-data-using-hive-in-vnet-portal/publish.png)
 
 ## <a name="trigger-a-pipeline-run"></a>Wyzwalanie uruchomienia potoku
 
-1. Najpierw zweryfikuj potok, klikając przycisk **Weryfikuj** na pasku narzędzi. Zamknij okno **Dane wyjściowe weryfikacji potoku**, klikając przycisk **strzałkę w prawo (>>)**. 
+1. Najpierw zweryfikuj potok, klikając przycisk **Weryfikuj** na pasku narzędzi. Zamknij okno **Dane wyjściowe weryfikacji potoku**, klikając przycisk **strzałkę w prawo (>>)** . 
 
     ![Weryfikowanie potoku](./media/tutorial-transform-data-using-hive-in-vnet-portal/validate-pipeline.png) 
 2. Aby wyzwolić uruchomienie potoku, kliknij pozycję Wyzwól na pasku narzędzi, a następnie kliknij pozycję Wyzwól teraz. 

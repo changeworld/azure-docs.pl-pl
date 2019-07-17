@@ -1,5 +1,5 @@
 ---
-title: Samouczek dotyczący zbiorczego zapraszania użytkowników współpracy usługi B2B — Azure Active Directory | Microsoft Docs
+title: Samouczek dotyczący masowych zapraszanie użytkowników we współpracy B2B — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Z tego samouczka dowiesz się, jak wysyłać zaproszenia zbiorcze do zewnętrznych użytkowników współpracy w usłudze Azure AD B2B za pomocą programu PowerShell i pliku CSV.
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f91d51bda4c41a314c7cc1c2cc895e36bde0500
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d3bd02afa1fe1aaba6602201f839468a58673c29
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65768205"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277998"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>Samouczek: zbiorcze zapraszanie użytkowników współpracy B2B w usłudze Azure AD
 

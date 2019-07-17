@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Ten samouczek przedstawia sposób tworzenia usługi Load Balancer w warstwie Standardowa przy użyciu frontonu strefowo nadmiarowego w celu zrównoważenia obciążenia maszyn wirtualnych w różnych strefach dostępności przy użyciu witryny Azure Portal
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines across availability zones in a region, so that the customers can still access the web service if a datacenter is unavailable.
 ms.service: load-balancer
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2019
-ms.author: kumud
+ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 912307e6509ea66be887838e875076b7a895ca94
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5b024321a18c6dec4f56a7cbc12c5a8fa748f903
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61100173"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273473"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Samouczek: Równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności przy użyciu usługi Load Balancer w strefie Standardowa w witrynie Azure Portal
 
@@ -52,10 +52,10 @@ Usługa Load Balancer w warstwie Standardowa obsługuje tylko publiczny adres IP
 1. W lewym górnym rogu ekranu kliknij pozycję **Utwórz zasób** > **Sieć** > **Moduł równoważenia obciążenia**.
 2. Na karcie **Podstawy** na stronie **Tworzenie modułu równoważenia obciążenia** wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Przeglądanie + tworzenie**:
 
-    | Ustawienie                 | Wartość                                              |
+    | Ustawienie                 | Value                                              |
     | ---                     | ---                                                |
-    | Subskrypcja               | Wybierz subskrypcję.    |    
-    | Grupa zasobów         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupLBAZ* w polu tekstowym.|
+    | Subscription               | Wybierz subskrypcję.    |    
+    | Resource group         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupLBAZ* w polu tekstowym.|
     | Name (Nazwa)                   | *myLoadBalancer*                                   |
     | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
     | Type          | Wybierz pozycję **Publiczna**.                                        |
@@ -179,7 +179,7 @@ Na potrzeby rozdzielania ruchu między maszyny wirtualne używana jest pula adre
     - W menu rozwijanym w obszarze **Maszyna wirtualna** kliknij pozycję **myVM1**.
     - W menu rozwijanym w obszarze **Adres IP** kliknij pozycję myVM1.
 4. Kliknij pozycję **Dodaj nowy zasób zaplecza**, aby dodać wszystkie maszyny wirtualne (*myVM2* i *myVM3*) do dodania do puli zaplecza modułu równoważenia obciążenia.
-5. Kliknij pozycję **Add** (Dodaj).
+5. Kliknij przycisk **Dodaj**.
 
     ![Dodawanie do puli adresów zaplecza](./media/load-balancer-standard-public-availability-zones-portal/add-backend-pool.png)
 

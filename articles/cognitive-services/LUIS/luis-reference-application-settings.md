@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/29/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: a8a1f6fe9372d013d310c557161ceb813b8a478b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3682b9e0c38344be1522440290b46f8c10bd5607
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67163634"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275904"
 ---
 # <a name="application-settings"></a>Ustawienia aplikacji
 
@@ -24,8 +24,8 @@ Te ustawienia aplikacji są przechowywane w [wyeksportowane](https://westus.dev.
 
 |Ustawienie|Wartość domyślna|Uwagi|
 |--|--|--|
-|NormalizePunctuation|True|Usuwa znaki interpunkcyjne.|
-|NormalizeDiacritics|True|Usuwa znaki diakrytyczne.|
+|NormalizePunctuation|Prawda|Usuwa znaki interpunkcyjne.|
+|NormalizeDiacritics|Prawda|Usuwa znaki diakrytyczne.|
 
 ## <a name="diacritics-normalization"></a>Normalizacja znaki diakrytyczne 
 
@@ -48,7 +48,7 @@ Następujące wypowiedzi pokazują, jak znaki diakrytyczne normalizacji ma wpły
 
 #### <a name="brazilian-portuguese-pt-br-diacritics"></a>Portugalski (Brazylia) `pt-br` znaki diakrytyczne
 
-|Znaki diakrytyczne ustawiony na wartość false|Znaki diakrytyczne ustawiony na wartość false|
+|Znaki diakrytyczne ustawiony na wartość false|Znaki diakrytyczne ma wartość true|
 |-|-|
 |`á`|`a`|
 |`â`|`a`|
@@ -66,7 +66,7 @@ Następujące wypowiedzi pokazują, jak znaki diakrytyczne normalizacji ma wpły
 
 #### <a name="dutch-nl-nl-diacritics"></a>Holenderski `nl-nl` znaki diakrytyczne
 
-|Znaki diakrytyczne ustawiony na wartość false|Znaki diakrytyczne ustawiony na wartość false|
+|Znaki diakrytyczne ustawiony na wartość false|Znaki diakrytyczne ma wartość true|
 |-|-|
 |`á`|`a`|
 |`à`|`a`|
@@ -85,7 +85,7 @@ Następujące wypowiedzi pokazują, jak znaki diakrytyczne normalizacji ma wpły
 
 Obejmuje to podhodowli francuskim i Kanady.
 
-|Znaki diakrytyczne ustawiony na wartość false|Znaki diakrytyczne ustawiony na wartość false|
+|Znaki diakrytyczne ustawiony na wartość false|Znaki diakrytyczne ma wartość true|
 |--|--|
 |`é`|`e`|
 |`à`|`a`|
@@ -104,7 +104,7 @@ Obejmuje to podhodowli francuskim i Kanady.
 
 #### <a name="german-de-de-diacritics"></a>Niemiecki `de-de` znaki diakrytyczne
 
-|Znaki diakrytyczne ustawiony na wartość false|Znaki diakrytyczne ustawiony na wartość false|
+|Znaki diakrytyczne ustawiony na wartość false|Znaki diakrytyczne ma wartość true|
 |--|--|
 |`ä`|`a`|
 |`ö`|`o`| 
@@ -112,7 +112,7 @@ Obejmuje to podhodowli francuskim i Kanady.
 
 #### <a name="italian-it-it-diacritics"></a>Włoski `it-it` znaki diakrytyczne
 
-|Znaki diakrytyczne ustawiony na wartość false|Znaki diakrytyczne ustawiony na wartość false|
+|Znaki diakrytyczne ustawiony na wartość false|Znaki diakrytyczne ma wartość true|
 |--|--|
 |`à`|`a`|
 |`è`|`e`|
@@ -129,7 +129,7 @@ Obejmuje to podhodowli francuskim i Kanady.
 
 Dotyczy to również Meksykańskich kanadyjski i hiszpańskim.
 
-|Znaki diakrytyczne ustawiony na wartość false|Znaki diakrytyczne ustawiony na wartość false|
+|Znaki diakrytyczne ustawiony na wartość false|Znaki diakrytyczne ma wartość true|
 |-|-|
 |`á`|`a`|
 |`é`|`e`|

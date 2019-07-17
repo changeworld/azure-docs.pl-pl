@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 04/08/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: e9f8d274d81cdefbf9dfb41708cd537b2d60471a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 01fd5b06a2e534a85c88d5c1a706713f07f40106
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60710399"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277565"
 ---
 # <a name="quickstart-change-model-using-c"></a>Szybki start: zmiana modelu przy użyciu języka C#
 
@@ -49,7 +49,7 @@ W projekcie programu Visual Studio wymagana jest zależność **System.Web**. W 
 
 ### <a name="add-other-dependencies"></a>Dodawanie innych zależności
 
-W projekcie programu Visual Studio wymagane są pakiety **JsonFormatterPlus** i **CommandLineParser**. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy pozycję **Odwołania**, a następnie wybierz polecenie **Zarządzaj pakietami NuGet...**. Przeglądaj w poszukiwaniu i Dodaj każdy z dwóch pakietów. 
+W projekcie programu Visual Studio wymagane są pakiety **JsonFormatterPlus** i **CommandLineParser**. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy pozycję **Odwołania**, a następnie wybierz polecenie **Zarządzaj pakietami NuGet...** . Przeglądaj w poszukiwaniu i Dodaj każdy z dwóch pakietów. 
 
 ![Dodawanie zależności innych firm](./media/luis-quickstart-cs-add-utterance/add-dependencies.png)
 
@@ -138,6 +138,6 @@ W tym wierszu polecenia wyświetlane są wyniki wywołania interfejsu API dodawa
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 Po ukończeniu przewodnika Szybki start usuń wszystkie pliki utworzone w tym przewodniku Szybki start. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"] 
 > [Programowe tworzenie aplikacji LUIS](luis-tutorial-node-import-utterances-csv.md) 

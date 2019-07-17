@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/11/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42b7e59e39adbb485738ca66b7ad8e5ba8293ddc
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: ff2089e8abdde8e6a99de1be2be070fb457fa632
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65784990"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276639"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Wywołanie interfejsu API Microsoft Graph z poziomu aplikacji platformy uniwersalnej Windows (XAML)
 
@@ -59,9 +59,9 @@ Ten przewodnik tworzy aplikację, która wyświetla przycisk tego zapytania inte
 
 ### <a name="create-your-application"></a>Tworzenie aplikacji
 
-1. W programie Visual Studio wybierz pozycje **Plik** > **Nowy** > **Projekt**.
-2. W obszarze **szablony**, wybierz opcję **Visual C#**.
-3. Wybierz pozycję **Pusta aplikacja (platforma uniwersalna systemu Windows)**.
+1. W programie Visual Studio, wybierz **pliku** > **New** > **projektu**.
+2. W obszarze **szablony**, wybierz opcję **Visual C#** .
+3. Wybierz pozycję **Pusta aplikacja (platforma uniwersalna systemu Windows)** .
 4. Określanie nazwy aplikacji, a następnie wybierz pozycję **OK**.
 5. Po wyświetleniu monitu wybierz dowolnej wersji dla **docelowej** i **Minimum** wersji, a następnie wybierz **OK**.
 
@@ -147,7 +147,7 @@ W tej sekcji przedstawiono sposób użycia biblioteki MSAL do pobrania tokenu dl
         }
 
         /// <summary>
-        /// Call AcquireTokenAsync - to acquire a token requiring user to sign-in
+        /// Call AcquireTokenInteractive - to acquire a token requiring user to sign-in
         /// </summary>
         private async void CallGraphButton_Click(object sender, RoutedEventArgs e)
         {
@@ -320,7 +320,7 @@ Aplikacja, w tym przykładzie obsługuje pojedynczego użytkownika. Ale bibliote
 
 Tokeny Identyfikatora pozyskane za pośrednictwem **OpenID Connect** również zawierać małego podzbioru informacji dotyczących użytkownika. `DisplayBasicTokenInfo` zawiera podstawowe informacje zawarte w tokenie. Przykładami są nazwę wyświetlaną tego użytkownika i identyfikator daty wygaśnięcia tokenu i ciąg, który reprezentuje token dostępu, sam. Jeśli wybierzesz **wywołania interfejsu API Microsoft Graph** przycisk kilka razy, zobaczysz, że ten sam token został ponownie dla kolejnych żądań. Widać również datę wygaśnięcia, w przypadku MSAL zdecyduje się, że nadszedł czas na odnowienie tokenu.
 
-## <a name="register-your-application"></a>Zarejestruj swoją aplikację
+## <a name="register-your-application"></a>Rejestrowanie aplikacji
 
 Teraz musisz zarejestrować aplikację w portalu rejestracji aplikacji firmy Microsoft:
 
@@ -329,12 +329,12 @@ Teraz musisz zarejestrować aplikację w portalu rejestracji aplikacji firmy Mic
 1. Przejdź do platforma tożsamości firmy Microsoft dla deweloperów [rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) strony.
 1. Wybierz **nowej rejestracji**.
    - W sekcji **Nazwa** podaj znaczącą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład `UWP-App-calling-MSGraph`.
-   - W **obsługiwane typy kont** zaznacz **kont w dowolnym katalogu organizacji i osobistych kont Microsoft (np. Skype, Xbox, Outlook.com)**.
+   - W **obsługiwane typy kont** zaznacz **kont w dowolnym katalogu organizacji i osobistych kont Microsoft (np. Skype, Xbox, Outlook.com)** .
    - Wybierz pozycję **Zarejestruj**, aby utworzyć aplikację.
 1. W aplikacji **Przegląd** strony, Znajdź **identyfikator aplikacji (klienta)** wartości i zapisaniu go na później. Wróć do programu Visual Studio, otwórz **MainPage.xaml.cs**i zastąp wartość identyfikatora klienta z Identyfikatorem aplikacji, które właśnie zostało zarejestrowane:
 1. Na liście stron dla aplikacji wybierz pozycję **Uwierzytelnianie**.
    1. W **identyfikatory URI przekierowań** sekcji na liście identyfikatory URI przekierowań:
-   1. W **typu** wybierz kolumny **klientem publicznym (mobilnych i klasycznych)**.
+   1. W **typu** wybierz kolumny **klientem publicznym (mobilnych i klasycznych)** .
    1. Wprowadź `urn:ietf:wg:oauth:2.0:oob` w **identyfikator URI PRZEKIEROWANIA** kolumny.
 1. Wybierz pozycję **Zapisz**.
 1. Na liście stron dla aplikacji, wybierz **uprawnienia do interfejsu API**
@@ -368,7 +368,7 @@ Gdy wszystko będzie gotowe do testowania, wybierz pozycję **wywołania interfe
 
 ![Strona logowania](./media/tutorial-v2-windows-uwp/sign-in-page.png)
 
-### <a name="consent"></a>Wyraź zgodę
+### <a name="consent"></a>Wyrażenie zgody
 
 Podczas pierwszego logowania się do aplikacji, zobaczysz ekran wyrażania zgody, podobny do następującego. Wybierz **tak** jawnie zgody na dostęp:
 
@@ -385,7 +385,7 @@ Zobacz też podstawowe informacje o tokenie pozyskane za pośrednictwem `Acquire
 |Właściwość  |Format  |Opis |
 |---------|---------|---------|
 |**Nazwa użytkownika** |<span>user@domain.com</span> |Nazwa użytkownika identyfikuje użytkownika.|
-|**Token wygasa** |DateTime |Czas, po wygaśnięciu ważności tokenu. Biblioteka MSAL rozszerza datę wygaśnięcia, odnawianie tokenu zgodnie z potrzebami.|
+|**Token wygasa** |Datetime |Czas, po wygaśnięciu ważności tokenu. Biblioteka MSAL rozszerza datę wygaśnięcia, odnawianie tokenu zgodnie z potrzebami.|
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Więcej informacji o zakresach i delegowane uprawnienia
 

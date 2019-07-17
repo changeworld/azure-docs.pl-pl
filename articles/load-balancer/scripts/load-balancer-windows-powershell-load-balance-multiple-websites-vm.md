@@ -3,7 +3,7 @@ title: Przykład programu PowerShell — równoważenie obciążenia wielu witry
 description: Ten przykładowy skrypt programu PowerShell przedstawia sposób równoważenia obciążenia wielu witryn internetowych do tej samej maszyny wirtualnej
 services: load-balancer
 documentationcenter: load-balancer
-author: KumudD
+author: asudbring
 manager: jeconnoc
 editor: tysonn
 tags: ''
@@ -14,13 +14,13 @@ ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
-ms.openlocfilehash: 6bedba2c68c05ee7ed6518996e54d007f3e83dc1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 098d300efc0b151d07b087959750a209c392872f
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66170675"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273609"
 ---
 # <a name="azure-powershell-script-example-load-balance-multiple-websites"></a>Przykładowy skrypt programu Azure PowerShell: Równoważenie obciążenia wielu witryn internetowych
 
@@ -66,7 +66,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [New-AzVM](/powershell/module/az.compute/new-azvm) | Tworzy maszynę wirtualną. |
 |[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów i wszystkie zasoby w niej zawarte. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
 

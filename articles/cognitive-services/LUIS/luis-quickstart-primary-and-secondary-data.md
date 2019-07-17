@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 04/01/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: ea9a2df1f06ba6836ef88bc57dc3f95fd31e1ee9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a03a1224451411617f38c8cecafbef008aa08916
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66124237"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276208"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Samouczek: wyodrębnianie nazw przy użyciu prostej jednostki i listy fraz
 
@@ -31,7 +31,7 @@ Prosta jednostka wykrywa pojedynczą koncepcję danych zawartą w wyrazach lub f
 > * Importowanie aplikacji przykładowej
 > * Dodawanie prostej jednostki 
 > * Dodawanie listy fraz w celu wzmocnienia sygnału wyrazów
-> * Szkol 
+> * Szkolenie 
 > * Publikowanie 
 > * Pobieranie intencji i jednostek z punktu końcowego
 
@@ -229,15 +229,15 @@ Otwórz plik [jobs-phrase-list.csv](https://github.com/Azure-Samples/cognitive-s
 
 1. Wybierz pozycję **Create new phrase list** (Utwórz nową listę fraz). 
 
-1. Nadaj nowej liście fraz nazwę `JobNames` i skopiuj listę z pliku jobs-phrase-list.csv do pola tekstowego **Values** (Wartości). Wybierz klawisz Enter. 
+1. Nadaj nowej liście fraz nazwę `JobNames` i skopiuj listę z pliku jobs-phrase-list.csv do pola tekstowego **Values** (Wartości).
 
     [![Zrzut ekranu przedstawiający wyskakujące okno dialogowe Tworzenie nowej listy fraz](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Zrzut ekranu przedstawiający wyskakujące okno dialogowe Tworzenie nowej listy fraz")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
-    Jeśli chcesz dodać więcej wyrazów do listy fraz, wybierz opcję **Recommand (Zalecane)**, a następnie przejrzyj nowe elementy w pozycji **Related Values (Powiązane wartości)** i dodaj odpowiednie pozycje. 
+    Jeśli chcesz dodać więcej wyrazów do listy fraz, wybierz opcję **Recommand (Zalecane)** , a następnie przejrzyj nowe elementy w pozycji **Related Values (Powiązane wartości)** i dodaj odpowiednie pozycje. 
 
     Upewnij się, że pole **These values are interchangeable (Te wartości są wymienne)** jest zaznaczone, ponieważ wszystkie te wartości powinny być traktowane jako synonimy dla zadań. Dowiedz się więcej o [koncepcjach z zakresu listy pojęć](luis-concept-feature.md#how-to-use-phrase-lists) związanych wymiennością i niewymiennością.
 
-1. Wybierz pozycję **Save** (Zapisz), aby aktywować listę fraz.
+1. Wybierz **gotowe** aktywować listy fraz.
 
     [![Zrzut ekranu przedstawiający wyskakujące okno dialogowe Tworzenie nowej listy fraz ze słowami w polu wartości listy fraz](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "Zrzut ekranu przedstawiający wyskakujące okno dialogowe Tworzenie nowej listy fraz ze słowami w polu wartości listy fraz")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 

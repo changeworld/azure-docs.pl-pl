@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Ten samouczek przedstawia sposób tworzenia wystąpienia usługi Load Balancer w warstwie Standardowa przy użyciu frontonu strefowego w celu zrównoważenia obciążenia maszyn wirtualnych w strefie dostępności przy użyciu witryny Azure Portal.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines within a specific zone in a region.
 ms.service: load-balancer
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2019
-ms.author: kumud
+ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 563b54fe9b4ab65cd8d3008e9d3955618194031f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0ec9fae1ce4ef976d5f50e1d8d8412354706c5f8
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61096006"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273399"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Samouczek: Równoważenie obciążenia maszyn wirtualnych w strefie dostępności przy użyciu usługi Load Balancer w strefie Standardowa w witrynie Azure Portal
 
@@ -50,10 +50,10 @@ Usługa Load Balancer w warstwie Standardowa obsługuje tylko standardowy public
 1. W lewym górnym rogu ekranu wybierz pozycję **Utwórz zasób** > **Sieć** > **Moduł równoważenia obciążenia**.
 2. Na karcie **Podstawy** na stronie **Tworzenie modułu równoważenia obciążenia** wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Przeglądanie + tworzenie**:
 
-    | Ustawienie                 | Wartość                                              |
+    | Ustawienie                 | Value                                              |
     | ---                     | ---                                                |
-    | Subskrypcja               | Wybierz subskrypcję.    |    
-    | Grupa zasobów         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupZLB* w polu tekstowym.|
+    | Subscription               | Wybierz subskrypcję.    |    
+    | Resource group         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupZLB* w polu tekstowym.|
     | Name (Nazwa)                   | *myLoadBalancer*                                   |
     | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
     | Type          | Wybierz pozycję **Publiczna**.                                        |
@@ -220,7 +220,7 @@ Reguła modułu równoważenia obciążenia definiuje sposób dystrybucji ruchu 
 
 Gdy grupa zasobów, moduł równoważenia obciążenia i wszystkie pokrewne zasoby nie będą już potrzebne, usuń je. Wybierz grupę zasobów zawierającą moduł równoważenia obciążenia. Następnie wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o [usłudze Load Balancer w warstwie Standardowa](load-balancer-standard-overview.md).
 - [Równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności](tutorial-load-balancer-standard-public-zone-redundant-portal.md).

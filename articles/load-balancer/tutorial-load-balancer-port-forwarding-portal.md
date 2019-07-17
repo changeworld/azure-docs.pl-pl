@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: W tym samouczku pokazano, jak skonfigurować przekierowanie portów przy użyciu usługi Azure Load Balancer w celu utworzenia połączeń z maszynami wirtualnymi w sieci wirtualnej platformy Azure.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 Customer intent: As an IT administrator, I want to configure port forwarding in Azure Load Balancer to remotely connect to VMs in an Azure virtual network.
 ms.service: load-balancer
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
-ms.author: kumud
+ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: db94f1d241223a9c54a6e3d516840dd17fd0c576
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ee4ed818364d04f03caedc8b876ea29c41cb59b7
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61322618"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273446"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Samouczek: Konfigurowanie przekierowania portów w usłudze Azure Load Balancer za pomocą portalu
 
@@ -47,10 +47,10 @@ Najpierw utwórz publiczny moduł równoważenia obciążenia w warstwie Standar
 1. W lewym górnym rogu ekranu kliknij pozycję **Utwórz zasób** > **Sieć** > **Moduł równoważenia obciążenia**.
 2. Na karcie **Podstawy** na stronie **Tworzenie modułu równoważenia obciążenia** wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Przeglądanie + tworzenie**:
 
-    | Ustawienie                 | Wartość                                              |
+    | Ustawienie                 | Value                                              |
     | ---                     | ---                                                |
-    | Subskrypcja               | Wybierz subskrypcję.    |    
-    | Grupa zasobów         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupLB* w polu tekstowym.|
+    | Subscription               | Wybierz subskrypcję.    |    
+    | Resource group         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupLB* w polu tekstowym.|
     | Name (Nazwa)                   | *myLoadBalancer*                                   |
     | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
     | Type          | Wybierz pozycję **Publiczna**.                                        |
@@ -331,7 +331,7 @@ Połączenie RDP powiodło się, ponieważ reguła translatora adresów sieciowy
 
 Aby usunąć moduł równoważenia obciążenia i wszystkie powiązane z nim zasoby, kiedy nie będą już potrzebne, otwórz grupę zasobów **MyResourceGroupLB** i wybierz pozycję **Usuń grupę zasobów**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku utworzono publiczny moduł równoważenia obciążenia w warstwie Standardowa. Utworzono i skonfigurowano zasoby sieciowe, serwery zaplecza, sondę kondycji i reguły dla modułu równoważenia obciążenia. Zainstalowano usługi IIS na maszynach wirtualnych zaplecza i użyto publicznego adresu IP modułu równoważenia obciążenia w celu przetestowania modułu równoważenia obciążenia. Skonfigurowano i przetestowano przekierowanie portów z określonego portu w module równoważenia obciążenia do portu na maszynie wirtualnej zaplecza. 
 

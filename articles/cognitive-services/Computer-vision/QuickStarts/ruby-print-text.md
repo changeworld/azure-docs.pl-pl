@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 07/15/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 71fc32fb34ae67f6d3a4de556da8b107574cc920
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 7c9385078b1f9b42847cf627cf49ac16158d6b52
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603523"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276412"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-ruby"></a>Szybki start: Wyodrębnianie drukowanych tekstu (OCR) przy użyciu interfejsu REST API przetwarzania obrazów i Ruby
 
@@ -33,8 +33,8 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 
-1. Skopiuj następujący kod do edytora tekstów.
-1. W razie potrzeby wprowadź następujące zmiany w kodzie:
+1. Skopiuj poniższy kod do edytora tekstu.
+1. Wprowadź następujące zmiany w kodzie:
     1. Zastąp element `<Subscription Key>` kluczem subskrypcji.
     1. W razie potrzeby zastąp `https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/ocr` adresem URL punktu końcowego dla metody [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) z regionu platformy Azure, z którego uzyskano klucze subskrypcji.
     1. Opcjonalnie zastąp wartość `https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png\` adresem URL innego obrazu, z którego chcesz wyodrębnić tekst drukowany.
@@ -143,7 +143,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Poznaj interfejs API przetwarzania obrazów do analizowania obrazu, wykrywanie osobistości i charakterystycznych elementów krajobrazu, tworzenie miniatur i wyodrębniania tekstu drukowanego lub ręcznie. Aby szybko zacząć eksperymentować z interfejsem API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 

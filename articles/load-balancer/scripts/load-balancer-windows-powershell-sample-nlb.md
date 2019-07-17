@@ -4,20 +4,20 @@ titlesuffix: Azure Load Balancer
 description: Ten przykładowy skrypt programu PowerShell przedstawia sposób równoważenia obciążenia ruchu do maszyn wirtualnych na potrzeby wysokiej dostępności
 services: load-balancer
 documentationcenter: load-balancer
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
-ms.openlocfilehash: 70752f9726ac78ec32d0735dfefe37675ae7be29
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 956a67897fa08fdd2c0d602ba514fcf58fabc292
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66170656"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273534"
 ---
 # <a name="azure-powershell-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Przykładowy skrypt programu Azure PowerShell: Równoważenie obciążenia ruchem maszyn wirtualnych w celu uzyskania wysokiej dostępności
 
@@ -63,7 +63,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [New-AzVM](/powershell/module/az.compute/new-azvm)  | Tworzy maszynę wirtualną i łączy ją z kartą sieciową, siecią wirtualną, podsiecią i sieciową grupą zabezpieczeń. To polecenie określa również obraz maszyny wirtualnej do użycia oraz poświadczenia administracyjne.  |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
 
