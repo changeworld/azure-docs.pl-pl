@@ -283,7 +283,7 @@ Jeśli ustawisz wartość początkową zmiennej, musi być skonfigurowany jako p
 |:--|:--|:--|:--|
 | string   | Wartość należy ująć w cudzysłów.  | "\"Witaj, świecie\"" | "Hello world" |
 | numeric  | Wartość liczbowa w apostrofy.| "64" | 64 |
-| boolean  | **true** lub **false** w cudzysłowie.  Należy pamiętać, że ta wartość musi być litera. | "true" | true |
+| boolean  | **wartość true,** lub **false** w cudzysłowie.  Należy pamiętać, że ta wartość musi być litera. | "true" | true |
 | datetime | Wartość daty serializacji.<br>Polecenia cmdlet ConvertTo Json w programie PowerShell służy do generowania tej wartości dla określonej daty.<br>Przykład: get-date "5/24/2017 13:14:57" \| ConvertTo Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>Moduły

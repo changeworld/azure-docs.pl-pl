@@ -208,6 +208,8 @@
               href: sap-ascs-ha-multi-sid-wsfc-file-share.md
     - name: Odzyskiwanie po awarii oprogramowania SAP za pomocą usługi Azure Site Recovery
       href: '../../../site-recovery/site-recovery-workload.md#protect-sap'
+    - name: Grupy umieszczania w pobliżu na platformie Azure w celu zapewnienia optymalnego opóźnienia sieci dla aplikacji SAP
+      href: sap-proximity-placement-scenarios.md
 - name: Integracja tożsamości usługi AAD i oprogramowania SAP oraz logowanie jednokrotne
   items:
     - name: Integracja z rozwiązaniem SAP Cloud

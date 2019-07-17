@@ -292,6 +292,8 @@
       displayName: 'module, import'
 - name: Scenariusze dotyczące różnych składników
   items:
+    - name: Wysyłanie wiadomości e-mail z poziomu elementu runbook za pomocą usługi SendGrid
+      href: automation-send-email.md
     - name: Galeria elementów Runbook
       href: automation-runbook-gallery.md
     - name: Monitorowanie elementów runbook za pomocą alertów metryki

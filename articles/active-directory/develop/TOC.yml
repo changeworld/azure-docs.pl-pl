@@ -81,8 +81,8 @@
       href: sample-v2-code.md
     - name: Pojęcia
       items:
-        - name: Typy aplikacji
-          href: v2-app-types.md
+        - name: Przepływy uwierzytelniania i scenariusze aplikacji
+          href: authentication-flows-app-scenarios.md
         - name: Scenariusze aplikacji
           items:
             - name: Logowanie odbiorców
@@ -227,6 +227,8 @@
                   href: msal-client-application-configuration.md
                 - name: Inicjowanie aplikacji (.NET)
                   href: msal-net-initializing-client-applications.md
+                - name: Asercje klientów (.NET)
+                  href: msal-net-client-assertions.md
                 - name: Inicjowanie aplikacji (JS)
                   href: msal-js-initializing-client-applications.md
             - name: Obsługa błędów i wyjątków
@@ -267,10 +269,12 @@
                       href: msal-js-known-issues-ie-edge-browsers.md
                     - name: Znane problemy — Safari
                       href: msal-js-known-issues-safari-browser.md
-        - name: Authentication
+        - name: Protokół uwierzytelniania
           items:
             - name: Podstawowe informacje o uwierzytelnianiu
               href: authentication-scenarios.md
+            - name: Typy aplikacji i protokół OAuth 2.0
+              href: v2-app-types.md
             - name: Protokoły OAuth 2.0 i OpenID Connect
               href: active-directory-v2-protocols.md
             - name: OpenID Connect
