@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 02/28/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 614d7c0b58ee318461cf3c97e934a77c84221ef7
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 020403268665633bf3d71cf43258ced87b4f837d
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827594"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249710"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-c"></a>Uzyskiwanie odpowiedzi na pytanie z bazy wiedzy przy użyciu języka C#
 
@@ -36,7 +36,7 @@ Kod używany w tym przewodniku Szybki start znajduje się w repozytorium [https:
 
 ## <a name="create-a-knowledge-base-project"></a>Tworzenie projektu bazy wiedzy
 
-1. Open Visual Studio 2019 Community edition.
+1. Otwórz program Visual Studio 2019 Community edition.
 1. Utwórz nowy projekt aplikacji konsoli (.NET Core), a nazwa projektu QnaMakerQuickstart. Zaakceptuj wartości domyślne pozostałych ustawień.
 
 ## <a name="add-the-required-dependencies"></a>Dodawanie wymaganych zależności
@@ -69,7 +69,7 @@ Skompiluj i uruchom program z poziomu programu Visual Studio. Automatycznie wyś
 
 [!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API Reference (Dokumentacja interfejsu API REST usługi QnA Maker w wersji 4)](https://go.microsoft.com/fwlink/?linkid=2092179)

@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: edjez
-ms.openlocfilehash: 94eaeb6e34e74e1a0f1a3958c23cf33b86c4adcd
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: c317cbec02b82743c233bf36f743cea808c30c69
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620277"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68253587"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Funkcje są informacje o akcji i kontekstu
 
@@ -66,9 +66,10 @@ Poniżej przedstawiono przykłady funkcji obszarów nazw używanych przez aplika
 * current_time
 * NewsArticle_TextAnalytics
 
-Możesz nazwać przestrzenie nazw funkcji zgodne z konwencjami własne tak długo, jak są one prawidłowe kluczy JSON.
+Możesz nazwać przestrzenie nazw funkcji zgodne z konwencjami własne tak długo, jak są one prawidłowe kluczy JSON. Przestrzenie nazw są używane do organizowania funkcji w różnych zestawach i do odróżniania funkcji o podobnych nazwach. Można potraktować przestrzeni nazw jest prefiksem który został dodany do nazwy funkcji. Nie mogą być zagnieżdżone przestrzenie nazw.
 
-W poniższym formacie JSON `user`, `state`, i `device` to funkcja w przestrzeni nazw.
+
+W poniższym formacie JSON `user`, `state`, i `device` to funkcja w przestrzeni nazw. Uwaga w publicznej wersji zapoznawczej: Obecnie zdecydowanie zalecamy przy użyciu nazwy przestrzeni nazw funkcji, które są UTF-8, na podstawie i rozpoczynać się różne litery. Na przykład `user`, `state`, i `device` rozpoczynać `u`, `s`, i `d`. Obecnie o przestrzeni nazw z tej samej pierwszych znaków może spowodować konflikty w indeksach używane dla usługi machine learning.
 
 Obiekty JSON może zawierać zagnieżdżone obiekty JSON i prostych wartości. Tablicę można uwzględnić tylko wtedy, gdy elementy tablicy są liczbami. 
 
@@ -77,7 +78,7 @@ Obiekty JSON może zawierać zagnieżdżone obiekty JSON i prostych wartości. T
     "contextFeatures": [
         { 
             "user": {
-                "name":"Doug",
+                "profileType":"AnonymousUser",
                 "latlong": [47.6, -122.1]
             }
         },
@@ -167,7 +168,7 @@ Akcje, które możesz wysłać do interfejsu API ranga będzie zależeć od tego
 
 Oto kilka przykładów:
 
-|Przeznaczenie|Akcja|
+|Cel|Action|
 |--|--|
 |Spersonalizuj artykułu, który jest wyróżniona na witryny sieci Web grup dyskusyjnych.|Każda akcja jest potencjalnym artykułu z wiadomościami.|
 |Optymalizuj umieszczania ad w witrynie internetowej.|Każda akcja będzie układu lub reguły, aby utworzyć układ reklam (np. na górze w prawo, małe obrazy, duże obrazy).|
@@ -308,6 +309,6 @@ Obiekty JSON może zawierać zagnieżdżone obiekty JSON i prostych wartości. T
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Uczenia przez wzmacnianie](concepts-reinforcement-learning.md) 

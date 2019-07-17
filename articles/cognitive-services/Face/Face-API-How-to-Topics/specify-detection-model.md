@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: yluiu
-ms.openlocfilehash: fbefbea171a8559466117c55703a14268b4c4c99
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 26ab3cb247309aa21791ca5a984f39ef40ce9a78
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592940"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249631"
 ---
 # <a name="specify-a-face-detection-model"></a>Określanie modelu wykrywania twarzy
 
@@ -45,8 +45,7 @@ Kiedy używasz [twarzy — wykrywanie] interfejsu API, można przypisać wersji 
 
 Adres URL żądania [twarzy — wykrywanie] interfejsu API REST będzie wyglądać następująco:
 
-`https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel][&detectionModel]
-&subscription-key=<Subscription key>`
+`https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel][&detectionModel]&subscription-key=<Subscription key>`
 
 Jeśli korzystasz z biblioteki klienta, można przypisać wartość `detectionModel` , przekazując odpowiednie parametry. Jeśli pozostawisz nieprzypisane, interfejsu API użyje domyślnej wersji modelu (`detection_01`). Zobacz poniższy przykład kodu dla biblioteki klienckiej .NET.
 

@@ -7,18 +7,21 @@
 - name: Przewodniki Szybki start
   expanded: true
   items:
-    - name: .NET
-      href: create-sql-api-dotnet.md
-    - name: .NET w wersji zapoznawczej
-      href: create-sql-api-dotnet-preview.md
-    - name: Java
-      href: create-sql-api-java.md
-    - name: Node.js
-      href: create-sql-api-nodejs.md
-    - name: Python
-      href: create-sql-api-python.md
-    - name: Xamarin
-      href: create-sql-api-xamarin-dotnet.md
+    - name: Tworzenie zasobów usługi Cosmos DB
+      expanded: true
+      items:
+        - name: Portal Azure
+          href: create-cosmosdb-resources-portal.md
+        - name: Aplikacja platformy .NET
+          href: create-sql-api-dotnet.md
+        - name: Aplikacja w języku Java
+          href: create-sql-api-java.md
+        - name: Aplikacja platformy Node.js
+          href: create-sql-api-nodejs.md
+        - name: Aplikacja w języku Python
+          href: create-sql-api-python.md
+        - name: Aplikacja platformy Xamarin
+          href: create-sql-api-xamarin-dotnet.md
 - name: Samouczki
   items:
     - name: 1 — Tworzenie danych i zarządzanie nimi
@@ -27,12 +30,6 @@
           items:
             - name: .NET
               href: sql-api-get-started.md
-            - name: .NET w wersji zapoznawczej
-              href: sql-api-dotnet-get-started-preview.md
-            - name: .NET Core
-              href: sql-api-dotnetcore-get-started.md
-            - name: .NET core w wersji zapoznawczej
-              href: sql-api-dotnet-core-get-started-preview.md
             - name: Java
               href: sql-api-java-get-started.md
             - name: Java (asynchroniczny)
@@ -43,8 +40,6 @@
           items:
             - name: .NET
               href: sql-api-dotnet-application.md
-            - name: .NET w wersji zapoznawczej
-              href: sql-api-dotnet-application-preview.md
             - name: Java
               href: sql-api-java-application.md
             - name: Node.js
@@ -755,6 +750,8 @@
       href: sql-api-sdk-dotnet.md
     - name: .NET Core
       href: sql-api-sdk-dotnet-core.md
+    - name: .NET Standard
+      href: sql-api-sdk-dotnet-standard.md
     - name: Biblioteka .NET zestawienia zmian
       href: sql-api-sdk-dotnet-changefeed.md
     - name: Biblioteka .NET funkcji wykonywania zbiorczego

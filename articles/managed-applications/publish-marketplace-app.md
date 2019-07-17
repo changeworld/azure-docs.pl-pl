@@ -8,14 +8,14 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.date: 06/04/2019
+ms.date: 07/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: 40132f67b135b0dc081180c34361047e59776b81
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: 16b653d1018c0c9c090f027ebcd01468af0eefd8
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688564"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234717"
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Aplikacje zarządzane platformy Azure w witrynie Marketplace
 
@@ -105,6 +105,10 @@ Jednostka SKU jest widoczna poniżej oferty nadrzędnej w witrynie Marketplace. 
    * **Plik pakietu (zip)** : Ten pakiet zawiera dwa wymagane pliki skompresowane do pakietu zip. Jeden plik to szablon usługi Resource Manager określający zasoby, które trzeba wdrożyć dla danej aplikacji zarządzanej. Drugi plik definiuje [interfejs użytkownika](create-uidefinition-overview.md) dla klientów wdrażających tę aplikację zarządzaną za pośrednictwem portalu. W interfejsie użytkownika należy określić elementy, które umożliwiają klientom podanie wartości parametrów.
    * **Identyfikator dzierżawy**: Identyfikator dzierżawy dla konta Aby uzyskać dostęp.
    * **Włącz dostęp JIT**: Wybierz **tak** umożliwiające [kontroli dostępu just in time](request-just-in-time-access.md) dla konta. Po włączeniu możesz zażądać dostępu do konta klienta w określonym przedziale czasu. Aby wymagać, że konsumentów Twoją zarządzaną aplikacją udzielić trwałego dostępu Twojego konta, wybierz **nie**.
+   * **Dostosuj akcje dozwolone klienta?** : Wybierz **tak** określić akcje, które użytkownicy mogą wykonywać na zarządzanych zasobów.
+   * **Dozwolone akcje klienta**: Jeśli wybierzesz **tak** dla poprzedniego ustawienia, można określić akcje, które są dozwolone dla klientów przy użyciu [Odmów przydziały dla zasobów platformy Azure](../role-based-access-control/deny-assignments.md).
+
+     Akcje dostępne w temacie [operacji dostawcy zasobów usługi Azure Resource Manager](../role-based-access-control/resource-provider-operations.md). Na przykład, aby zezwolić na ponowne uruchomienie maszyn wirtualnych w konsumentach, należy dodać `Microsoft.Compute/virtualMachines/restart/action` do dozwolonych akcji. `*/read` Akcja automatycznie jest dozwolona, dzięki czemu nie musisz uwzględniać tego ustawienia.
    * **PrincipalId**: Ta właściwość jest identyfikatorem usługi Azure Active Directory (Azure AD) użytkownika, grupy użytkowników lub aplikacji, której udzielono uprawnień dostępu do zasobów w subskrypcji klienta. Uprawnienia są opisywane za pomocą definicji roli.
    * **Definicja roli**: Ta właściwość jest listą wszystkich wbudowanych kontroli dostępu na podstawie ról (RBAC, Role-Based Access Control) zapewnianych przez usługę Azure AD. Możesz wybrać rolę, która najbardziej nadaje się do zarządzania zasobami w imieniu klienta.
    * **Ustawienia zasad**: Zastosuj [zasady Azure Policy](../governance/policy/overview.md) do aplikacji zarządzanej, aby określić wymagania dotyczące zgodności dla wdrożonych rozwiązań. Z dostępnych opcji wybierz zasady do zastosowania. W polu **Parametry zasad** podaj ciąg JSON z wartościami parametrów. Definicje zasad i format wartości parametrów podano w artykule [Przykłady dla usługi Azure Policy](../governance/policy/samples/index.md).
@@ -178,7 +182,7 @@ Formularz **Pomoc techniczna** wypełnij za pomocą kontaktów pomocy techniczne
 
 Po wypełnieniu wszystkich sekcji wybierz pozycję **Opublikuj**, aby rozpocząć proces udostępniania Twojej oferty klientom.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Zobacz artykuł [Omówienie aplikacji zarządzanych](overview.md) zawierający wprowadzenie do aplikacji zarządzanych.
 * Aby dowiedzieć się, jak opublikować aplikację zarządzaną w katalogu usług, zobacz [Tworzenie i publikowanie aplikacji zarządzanej katalogu usług](publish-service-catalog-app.md).

@@ -1,15 +1,15 @@
 ---
-author: diberry
-ms.author: diberry
+author: IEvangelist
+ms.author: dapine
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/24/2019
-ms.openlocfilehash: 4cdcec850f32d7e94f33eb28e5bf7839e511f347
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 7/5/2019
+ms.openlocfilehash: 993b0e8cc5b1ec482b2f6041dfc970dc7e7409dd
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183554"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68229326"
 ---
 Wypełnij i Prześlij [formularz żądania kontenerów przetwarzania w usłudze Cognitive Services](https://aka.ms/VisionContainersPreview) Aby zażądać dostępu do kontenera. Formularz żądania informacji o Tobie, firmy i Scenariusz użytkownika, dla którego będzie używać kontenera. Po przesłaniu formularza, zespół usług Azure Cognitive Services sprawdza ją, aby upewnić się, że spełniają kryteria, aby uzyskać dostęp do prywatnego rejestru kontenerów.
 

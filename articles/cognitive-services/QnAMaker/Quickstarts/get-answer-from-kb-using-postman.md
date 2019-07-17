@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 04/16/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 24bd6731faa9788dc336db199aa9776813e7348f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7083285ac81aa8eafee8de49175e40934e5d05b4
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60914860"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68253808"
 ---
 # <a name="quickstart-get-an-answer-from-knowledge-base-using-postman"></a>Szybki start: Uzyskiwanie odpowiedzi z bazy wiedzy przy użyciu narzędzia Postman
 
@@ -57,7 +57,7 @@ Aby wygenerować odpowiedź za pomocą narzędzia Postman, wykonaj następujące
 
     [![W narzędziu Postman ustaw nagłówki](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png#lightbox).
 
-1. Wybierz kartę **Treść**.
+1. Wybierz **treści** kartę.
 1. Wybierz format **raw** i wprowadź wartość JSON (nr 5 na obrazie) reprezentującą pytanie.
 
     `{"question":"How do I programmatically update my Knowledge Base?"}`
@@ -73,7 +73,7 @@ Aby wygenerować odpowiedź za pomocą narzędzia Postman, wykonaj następujące
 
 Jeśli chcesz uzyskać odpowiedzi z przemieszczania punktu końcowego, Dołącz do adresu URL `isTest` treści właściwości.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Strona publikowania zawiera również informacje dotyczące [generowania odpowiedzi](get-answer-from-kb-using-curl.md) przy użyciu programu cURL. 
 

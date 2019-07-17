@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.openlocfilehash: b48ecce1c87c0a29996e437d621c3ce396a84856
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2b28c38d2444f227d26df1f9ca2d70876ff41064
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60503464"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68260595"
 ---
 # <a name="manage-mailing-list-requests-with-azure-logic-apps"></a>Zarządzanie żądaniami listy adresowej za pomocą usługi Azure Logic Apps
 
@@ -64,7 +64,7 @@ Zaloguj się do <a href="https://portal.azure.com" target="_blank">witryny Azure
    | **Nazwa** | LA-MailingList | Nazwa aplikacji logiki | 
    | **Subskrypcja** | <*your-Azure-subscription-name*> | Nazwa subskrypcji platformy Azure | 
    | **Grupa zasobów** | LA-MailingList-RG | Nazwa [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) używanej do organizowania powiązanych zasobów | 
-   | **Lokalizacja** | Wschodnie stany USA 2 | Region, w którym będą przechowywane informacje na temat aplikacji logiki | 
+   | **Location** | Wschodnie stany USA 2 | Region, w którym będą przechowywane informacje na temat aplikacji logiki | 
    | **Log Analytics** | Wyłączone | Ustawienie **Wyłączone** umożliwia rejestrowanie w celach diagnostycznych. | 
    |||| 
 
@@ -95,7 +95,7 @@ Każda aplikacja logiki musi rozpoczynać się od wyzwalacza, który jest aktywo
       | Ustawienie | Wartość | Opis | 
       | ------- | ----- | ----------- | 
       | **Folder** | Skrzynka odbiorcza | Folder poczty e-mail do monitorowania | 
-      | **Interwał** | 1 | Liczba interwałów do odczekania między sprawdzaniami | 
+      | **Interval** | 1 | Liczba interwałów do odczekania między sprawdzaniami | 
       | **Częstotliwość** | Godzina | Jednostka czasu dla każdego interwału między sprawdzaniami  | 
       |  |  |  | 
 
@@ -126,9 +126,9 @@ Teraz, gdy wyzwalacz jest gotowy, dodaj [akcję](../logic-apps/logic-apps-overvi
 
    | Ustawienie | Wartość | Opis | 
    | ------- | ----- | ----------- | 
-   | **Do** | <*adres-e-mail-osoby-zatwierdzającej*> | Adres e-mail osoby zatwierdzającej. Do celów testowych możesz użyć własnego adresu e-mail. | 
+   | **To** | <*approver-email-address*> | Adres e-mail osoby zatwierdzającej. Do celów testowych możesz użyć własnego adresu e-mail. | 
    | **Opcje użytkownika** | Zatwierdź, Odrzuć | Opcje odpowiedzi, które może wybrać osoba zatwierdzająca. Domyślnie osoba zatwierdzająca może wybrać jako odpowiedź opcję „Zatwierdź” lub „Odrzuć”. | 
-   | **Temat** | Zatwierdzenie żądania elementu członkowskiego dla listy adresowej test-members-ML | Opisowy temat wiadomości e-mail | 
+   | **Subject** | Zatwierdzenie żądania elementu członkowskiego dla listy adresowej test-members-ML | Opisowy temat wiadomości e-mail | 
    |  |  |  | 
 
    Na razie zignoruj listę zawartości dynamicznej oraz śródwierszową listę parametrów wyświetlane po kliknięciu wewnątrz określonych pól edycji. 
@@ -147,7 +147,7 @@ Następnie dodaj warunek sprawdzający odpowiedź wybieraną przez osobę zatwie
 
 2. Zmień nazwę warunku na lepszy opis.
 
-   1. Na pasku tytułu warunku wybierz przycisk z **wielokropkiem** (**...**) > **Zmień nazwę**.
+   1. Na pasku tytułu warunku wybierz przycisk z **wielokropkiem** ( **...** ) > **Zmień nazwę**.
 
       Na przykład jeśli okno przeglądarki jest wąskie:
 
@@ -206,7 +206,7 @@ Następnie dodaj warunek, który pozwoli sprawdzić, czy nowy element członkows
 
 ## <a name="check-for-success-or-failure"></a>Sprawdzanie pod kątem powodzenia lub niepowodzenia
 
-1. W gałęzi **W przypadku wartości true**, w obszarze akcji **Dodawanie elementu członkowskiego do listy** wybierz pozycję **Więcej...** > **Dodaj warunek**.
+1. W gałęzi **W przypadku wartości true**, w obszarze akcji **Dodawanie elementu członkowskiego do listy** wybierz pozycję **Więcej...**  > **Dodaj warunek**.
 
 2. Zmień nazwę warunku na następujący opis: ```If add member succeeded```
 
@@ -247,9 +247,9 @@ Następnie skonfiguruj wiadomości e-mail, które mają być wysyłane, gdy doł
 
    | Ustawienie | Wartość | Opis | 
    | ------- | ----- | ----------- | 
-   | **Do** | <*your-email-address*> | Adres e-mail, na który ma być wysłana wiadomość e-mail z informacją o powodzeniu. Do celów testowych możesz użyć własnego adresu e-mail. | 
-   | **Temat** | <*subject-for-success-email*> | Temat wiadomości e-mail z informacją o powodzeniu. Na potrzeby tego samouczka wprowadź ten tekst, a następnie wybierz określone pole w obszarze **Dodawanie elementu członkowskiego do listy** z listy parametrów lub listy zawartości dynamicznej: <p>„Powodzenie! Elementu członkowskiego dodanego do 'test-members-ML': **Adres e-mail**" | 
-   | **Treść** | <*body-for-success-email*> | Treść wiadomości e-mail z informacją o powodzeniu. Na potrzeby tego samouczka wprowadź ten tekst, a następnie wybierz określone pola w obszarze **Dodawanie elementu członkowskiego do listy** z listy parametrów lub listy zawartości dynamicznej:  <p>"Nowy element członkowski dołączył 'test-members-ML': **Adres e-mail**"</br>"Stan akceptacji elementu członkowskiego: **Stan**" | 
+   | **To** | <*your-email-address*> | Adres e-mail, na który ma być wysłana wiadomość e-mail z informacją o powodzeniu. Do celów testowych możesz użyć własnego adresu e-mail. | 
+   | **Subject** | <*subject-for-success-email*> | Temat wiadomości e-mail z informacją o powodzeniu. Na potrzeby tego samouczka wprowadź ten tekst, a następnie wybierz określone pole w obszarze **Dodawanie elementu członkowskiego do listy** z listy parametrów lub listy zawartości dynamicznej: <p>„Powodzenie! Elementu członkowskiego dodanego do 'test-members-ML': **Adres e-mail**" | 
+   | **Body** | <*body-for-success-email*> | Treść wiadomości e-mail z informacją o powodzeniu. Na potrzeby tego samouczka wprowadź ten tekst, a następnie wybierz określone pola w obszarze **Dodawanie elementu członkowskiego do listy** z listy parametrów lub listy zawartości dynamicznej:  <p>"Nowy element członkowski dołączył 'test-members-ML': **Adres e-mail**"</br>"Stan akceptacji elementu członkowskiego: **Stan**" | 
    | | | | 
 
 5. Zapisz aplikację logiki.
@@ -272,9 +272,9 @@ Następnie skonfiguruj wiadomości e-mail, które mają być wysyłane, gdy doł
 
    | Ustawienie | Wartość | Opis | 
    | ------- | ----- | ----------- | 
-   | **Do** | <*your-email-address*> | Adres e-mail, na który ma być wysłana wiadomość e-mail z informacją o niepowodzeniu. Do celów testowych możesz użyć własnego adresu e-mail. | 
-   | **Temat** | <*subject-for-failure-email*> | Temat wiadomości e-mail z informacją o niepowodzeniu. Na potrzeby tego samouczka wprowadź ten tekst, a następnie wybierz określone pole w obszarze **Dodawanie elementu członkowskiego do listy** z listy parametrów lub listy zawartości dynamicznej: <p>"Nie powiodło się, nie dodania elementu członkowskiego na 'test-members-ML': **Adres e-mail**" | 
-   | **Treść** | <*body-for-failure-email*> | Treść wiadomości e-mail z informacją o niepowodzeniu. Na potrzeby tego samouczka wprowadź ten tekst: <p>„Element członkowski może już istnieć. Sprawdź swoje konto MailChimp”. | 
+   | **To** | <*your-email-address*> | Adres e-mail, na który ma być wysłana wiadomość e-mail z informacją o niepowodzeniu. Do celów testowych możesz użyć własnego adresu e-mail. | 
+   | **Subject** | <*subject-for-failure-email*> | Temat wiadomości e-mail z informacją o niepowodzeniu. Na potrzeby tego samouczka wprowadź ten tekst, a następnie wybierz określone pole w obszarze **Dodawanie elementu członkowskiego do listy** z listy parametrów lub listy zawartości dynamicznej: <p>"Nie powiodło się, nie dodania elementu członkowskiego na 'test-members-ML': **Adres e-mail**" | 
+   | **Body** | <*body-for-failure-email*> | Treść wiadomości e-mail z informacją o niepowodzeniu. Na potrzeby tego samouczka wprowadź ten tekst: <p>„Element członkowski może już istnieć. Sprawdź swoje konto MailChimp”. | 
    | | | | 
 
 5. Zapisz aplikację logiki. 

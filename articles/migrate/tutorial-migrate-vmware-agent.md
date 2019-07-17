@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: fe83cd5f38e8c091ee72875da370b6929a99b727
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: d222936f93f90573a46cd7f6216fbde8043332c7
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854139"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68261415"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>Migrowanie maszyn wirtualnych VMware do platformy Azure (w oparciu o agenta)
 
@@ -121,7 +121,7 @@ Administrator dzierżawy/globalny może nadać uprawnienia w następujący spos�
 
 #### <a name="assign-application-developer-role"></a>Przypisanie roli aplikacji dla deweloperów 
 
-Administrator dzierżawy/globalny przypisać rolę dewelopera aplikacji do konta. [Dowiedz się więcej](https://docs.microsoft.comazure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
+Administrator dzierżawy/globalny przypisać rolę dewelopera aplikacji do konta. [Dowiedz się więcej](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="assign-permissions-to-create-key-vault"></a>Przypisywanie uprawnień do tworzenia usługi Key Vault
 

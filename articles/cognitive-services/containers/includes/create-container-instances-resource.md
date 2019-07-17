@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 7/3/2019
 ms.author: dapine
-ms.openlocfilehash: 38addf4651373ba0f4df411325218a255c835508
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 05284d434e6bd22fd50957f7cc5ec966f88a4fd4
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717158"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68229217"
 ---
 ## <a name="create-an-azure-container-instance-resource"></a>Utwórz zasób usługi wystąpienia kontenera platformy Azure
 
@@ -35,16 +35,16 @@ ms.locfileid: "67717158"
 
 3. Na **sieć** wprowadź następujące informacje:
 
-    |Ustawienie|Wartość|
+    |Ustawienie|Value|
     |--|--|
     |Porty|Ustaw TCP port `5000`. Udostępnia kontener na porcie 5000.|
 
-4. Na **zaawansowane** wprowadź wymagane **zmienne środowiskowe** kontenera [rozliczeń ustawienia](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers#billing-arguments) zasobu usługi ACI:
+4. Na **zaawansowane** wprowadź wymagane **zmienne środowiskowe** kontenera rozliczeń ustawień zasobu usługi ACI:
 
     | Klucz | Value |
     |--|--|
-    |`apikey`|Skopiowane ze **klucze** strony zasobu, analizy tekstu. Jest to 32 ciąg znaków alfanumerycznych, bez spacji lub kreski, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
-    |`billing`|Skopiowane ze **Przegląd** strony zasobu, analizy tekstu. Przykład: `https://northeurope.api.cognitive.microsoft.com/text/analytics/v2.0`|
+    |`apikey`|Skopiowane ze **klucze** strony zasobu. Jest to 32 ciąg znaków alfanumerycznych, bez spacji lub kreski, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
+    |`billing`|Skopiowane ze **Przegląd** strony zasobu.|
     |`eula`|`accept`|
 
 1. Kliknij przycisk **Przejrzyj i Utwórz**

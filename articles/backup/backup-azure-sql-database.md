@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: raynew
-ms.openlocfilehash: 8e7e5d871fa1bb557de4e6fce22658115bf0fe94
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 2957e784540f7c6450235d26da43121db2458dd1
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806993"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249524"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informacje o kopii zapasowej programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -76,7 +76,7 @@ Użytkownicy nie jest naliczana dla tej funkcji do czasu, który stanie się og�
 - Można utworzyć kopię do **OK. 2000** baz danych programu SQL Server w magazynie. Można utworzyć wiele magazynów, w przypadku, gdy masz większą liczbę baz danych.
 - Kopie zapasowe można skonfigurować maksymalnie **50** Przejdź baz danych w jednym; temu ograniczeniu można zoptymalizować obciążeń kopii zapasowych.
 - Firma Microsoft obsługuje bazy danych do **2TB** rozmiar; o rozmiarze większym niż ta, wydajność może pojawiania się nowych problemów.
-- Aby poznać dotyczące liczby baz danych mogą być chronione na serwerze, należy wziąć pod uwagę czynniki, takie jak przepustowość, rozmiar maszyny Wirtualnej, częstotliwość wykonywania kopii zapasowych, rozmiar bazy danych itp. Pracujemy nad planner, które będą pomocne podczas obliczania te liczby na zostanie właścicielami. Firma Microsoft będzie publikować dane w jej wkrótce.
+- Aby poznać dotyczące liczby baz danych mogą być chronione na serwerze, należy wziąć pod uwagę czynniki, takie jak przepustowość, rozmiar maszyny Wirtualnej, częstotliwość wykonywania kopii zapasowych, rozmiar bazy danych itp. [Pobierz](http://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) planista zasobu, który zapewnia przybliżoną liczbę baz danych może mieć na serwer na podstawie zasobów maszyny Wirtualnej i zasad tworzenia kopii zapasowej.
 - W przypadku grup dostępności kopie zapasowe są pobierane z różnych węzłach, na podstawie kilku czynników. Poniżej podsumowano zachowanie tworzenia kopii zapasowej dla grupy dostępności.
 
 ### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Tworzenie kopii zapasowej zachowanie w przypadku zawsze włączonych grup dostępności

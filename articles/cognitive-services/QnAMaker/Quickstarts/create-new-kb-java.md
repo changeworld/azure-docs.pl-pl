@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 02/04/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: c6fddec80da1baa852a2f3712a94b785d775919e
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 298f7e90bb6848d7b0af032bdaff8724a69c227f
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67151041"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249657"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Szybki start: Tworzenie bazy wiedzy w usłudze QnA Maker przy użyciu języka Java
 
@@ -122,7 +122,7 @@ Utworzoną bazę wiedzy można wyświetlić w portalu usługi QnA Maker, na stro
 
 [!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API Reference (Dokumentacja interfejsu API REST usługi QnA Maker w wersji 4)](https://go.microsoft.com/fwlink/?linkid=2092179)

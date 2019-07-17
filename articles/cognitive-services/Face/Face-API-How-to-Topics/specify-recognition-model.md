@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: longl
-ms.openlocfilehash: 0f1069c4a3d0a841b792cedf5a5a90aec80a4cc9
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: fd60923351970dfe5aa5705a0508dbd39941ef58
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592965"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68254347"
 ---
 # <a name="specify-a-face-recognition-model"></a>Określanie modelu rozpoznawania twarzy
 
@@ -45,8 +45,7 @@ Korzystając z [twarzy — wykrywanie] interfejsu API, przypisywanie wersja mode
 
 Opcjonalnie można określić _returnRecognitionModel_ parametru (domyślny **false**) aby wskazać, czy _recognitionModel_ ma zostać zwrócone w odpowiedzi. Dlatego adresie URL żądania dla [twarzy — wykrywanie] interfejsu API REST będzie wyglądać następująco:
 
-`https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel]
-&subscription-key=<Subscription key>`
+`https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel]&subscription-key=<Subscription key>`
 
 Jeśli korzystasz z biblioteki klienta, można przypisać wartość `recognitionModel` , przekazując ciąg reprezentujący wersję.
 Jeśli pozostawisz nieprzypisane, domyślna wersja modelu (_recognition_01_) będą używane. Zobacz poniższy przykład kodu dla biblioteki klienckiej .NET.
@@ -78,7 +77,7 @@ Nie ma zmian w [Twarz — identyfikacja] API; należy tylko określić wersję m
 
 ## <a name="find-similar-faces-with-specified-model"></a>Znajdź podobnych twarzy przy użyciu określonego modelu
 
-Można również określić model uznawania osiągnięć podobieństwa wyszukiwania. Możesz przypisać wersji modelu przy użyciu `recognitionModel` podczas tworzenia list twarzy z [FaceList — tworzenie] interfejsu API lub [LargeFaceList - Create]. Jeśli nie określisz tego parametru, oryginalnym `recognition_01` model jest używany. Lista twarzy zawsze będzie korzystać z rozpoznawania modelu, który został utworzony za pomocą i nowe powierzchnie będzie skojarzony z tym modelu po ich dodaniu do niego; Nie można zmienić po utworzeniu. Aby zobaczyć, jakie modelu skonfigurowano list twarzy, użyj [FaceList - Get] interfejsu API za pomocą _returnRecognitionModel_ zestaw parametrów jako **true**.
+Można również określić model uznawania osiągnięć podobieństwa wyszukiwania. Możesz przypisać wersji modelu przy użyciu `recognitionModel` podczas tworzenia list twarzy z [FaceList — tworzenie] interfejsu API lub [LargeFaceList — tworzenie]. Jeśli nie określisz tego parametru, oryginalnym `recognition_01` model jest używany. Lista twarzy zawsze będzie korzystać z rozpoznawania modelu, który został utworzony za pomocą i nowe powierzchnie będzie skojarzony z tym modelu po ich dodaniu do niego; Nie można zmienić po utworzeniu. Aby zobaczyć, jakie modelu skonfigurowano list twarzy, użyj [FaceList - Get] interfejsu API za pomocą _returnRecognitionModel_ zestaw parametrów jako **true**.
 
 Zobacz poniższy przykład kodu dla biblioteki klienckiej .NET.
 
@@ -104,7 +103,7 @@ Jeśli chcesz porównać parametrów _recognition_01_ i _recognition_02_ modeli 
 
 Jeśli określisz zwykle próg pewności (wartość od zera do jednego, który określa, jak pewność modelu musi być do identyfikacji twarzy), może być konieczne użytek progi różnią się w różnych modelach. Próg dla jednego modelu nie jest przeznaczona do udostępnienia do innego, a nie przyniesie niekoniecznie te same wyniki.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym artykule przedstawiono sposób określania model rozpoznawania za pomocą różnych interfejsów API usług rozpoznawania twarzy. Następnie postępuj zgodnie z szybkiego startu, aby rozpocząć pracę, za pomocą wykrywania twarzy.
 
@@ -121,4 +120,4 @@ W tym artykule przedstawiono sposób określania model rozpoznawania za pomocą 
 [Element LargePersonGroup — tworzenie]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d
 [FaceList — tworzenie]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b
 [FaceList - Get]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c
-[LargeFaceList - Create]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc
+[LargeFaceList — tworzenie]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc

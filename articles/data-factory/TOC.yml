@@ -564,6 +564,8 @@
           href: solution-template-copy-files-multiple-containers.md
         - name: Kopiowanie nowych plików według daty ostatniej modyfikacji
           href: solution-template-copy-new-files-lastmodifieddate.md
+        - name: Przenoszenie plików
+          href: solution-template-move-files.md
         - name: Kopiowanie zbiorcze za pomocą kontrolki tabeli
           href: solution-template-bulk-copy-with-control-table.md
         - name: Kopiowanie różnicowe za pomocą kontrolki tabeli
@@ -574,6 +576,8 @@
       items:
         - name: Rozwiązywanie problemów z aktywnością
           href: data-factory-troubleshoot-guide.md
+        - name: Rozwiązywanie problemów z zarządzaniem środowiskiem Azure-SSIS IR
+          href: ssis-integration-runtime-management-troubleshoot.md
         - name: Rozwiązywanie problemów z wykonywaniem pakietów w środowisku Azure-SSIS IR
           href: ssis-integration-runtime-ssis-activity-faq.md
 - name: Dokumentacja

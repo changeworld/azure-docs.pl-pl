@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 006f7270570eba17fb44421b1c181d9ad68ad2ee
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 2554501ecf6d4ef115e3283fa635c24510b8c797
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854178"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249588"
 ---
 # <a name="migrate-physical-or-virtualized-servers-to-azure"></a>Migrowanie serwerów fizyczne lub zwirtualizowane na platformie Azure 
 
@@ -104,7 +104,7 @@ Administrator dzierżawy/globalny może nadać uprawnienia w następujący spos�
 
 #### <a name="assign-application-developer-role"></a>Przypisanie roli aplikacji dla deweloperów 
 
-Administrator dzierżawy/globalny przypisać rolę dewelopera aplikacji do konta. [Dowiedz się więcej](https://docs.microsoft.comazure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
+Administrator dzierżawy/globalny przypisać rolę dewelopera aplikacji do konta. [Dowiedz się więcej](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="assign-permissions-to-create-key-vault"></a>Przypisywanie uprawnień do tworzenia usługi Key Vault
 
@@ -385,6 +385,6 @@ Po zweryfikowaniu, że migracja testowa działa zgodnie z oczekiwaniami, należy
     - Rozważ wdrożenie usługi [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/overview), aby monitorować użycie zasobu i wydatki.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Badanie [podróży migracji do chmury](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/migrate) w ramach wdrażania chmury platformy Azure.

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 07/03/2019
 ms.author: rimman
-ms.openlocfilehash: e44017ea2df24445c28361a0f3d7fb2671317b6d
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 2744422e2e082c5bc6f63975b1100f336d32d5fa
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68000642"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68250075"
 ---
 # <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>Aprowizowanie przepływności w bazie danych w usłudze Azure Cosmos DB
 
@@ -33,6 +33,22 @@ W tym artykule wyjaśniono, jak aprowizować przepływność mierzoną w bazie d
    * Kliknij przycisk **OK**.
 
 ![Zrzut ekranu okna dialogowego Nowa baza danych](./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png)
+
+
+## <a name="provision-throughput-using-azure-cli"></a>Aprowizowanie przepływności przy użyciu interfejsu wiersza polecenia
+
+```azcli-interactive
+az cosmosdb database create --db-name
+                            [--key]
+                            [--name]
+                            [--resource-group-name]
+                            [--subscription]
+                            [--throughput]
+                            [--url-connection]
+```
+
+
+
 
 ## <a name="provision-throughput-using-powershell"></a>Aprowizowanie przepływności przy użyciu programu PowerShell
 
@@ -59,7 +75,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
 > Umożliwia Cosmos zestawy SDK dla interfejsu API SQL aprowizowanie przepływności dla wszystkich interfejsów API. Poniższego przykładu możesz też opcjonalnie użyć w przypadku interfejsu API Cassandra.
 
 ### <a id="dotnet-all"></a>Wszystkie interfejsy API
-### <a name="net-v2-sdk"></a>.Net V2 SDK
+### <a name="net-v2-sdk"></a>.NET V2 SDK
 
 ```csharp
 //set the throughput for the database
@@ -74,7 +90,7 @@ await client.CreateDatabaseIfNotExistsAsync(
     options);
 ```
 
-### <a name="net-v3-sdk"></a>.Net V3 SDK
+### <a name="net-v3-sdk"></a>.NET V3 SDK
 [!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/DatabaseDocsSampleCode.cs?name=DatabaseCreateWithThroughput)]
 
 ### <a id="dotnet-cassandra"></a>Interfejs API rozwiązania Cassandra

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 07/15/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: c4ce60e3532179efe3ac68c21b32850e73f92a69
-ms.sourcegitcommit: 1b7b0e1c915f586a906c33d7315a5dc7050a2f34
+ms.openlocfilehash: a566094f88ba9ffd25eadd046ae7254e26b9c2cf
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67881219"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234595"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Konfigurowanie dystrybucji globalnej usługi Azure Cosmos DB przy użyciu interfejsu SQL API
 
@@ -78,7 +78,8 @@ DocumentClient docClient = new DocumentClient(
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
 
-## <a name="nodejs-javascript-and-python-sdks"></a>Środowisko node.js, JavaScript i Python SDK
+## <a name="nodejsjavascript"></a>Node.js/JavaScript
+
 Zestawu SDK można używać bez konieczności wprowadzania jakichkolwiek zmian kodu. W takim przypadku zestaw SDK automatycznie kieruje operacje odczytu i zapisu do bieżącego regionu zapisu.
 
 W wersji 1.8 (i nowszych) każdego zestawu SDK parametr ConnectionPolicy dla konstruktora DocumentClient ma nową właściwość o nazwie DocumentClient.ConnectionPolicy.PreferredLocations. Ten parametr jest tablicą ciągów, która przyjmuje listę nazw regionów. Nazwy są sformatowane według kolumny Nazwa regionu [regionów platformy Azure][regions] strony. Możesz również używać wstępnie zdefiniowanych stałych w obiekcie wygody AzureDocuments.Regions
@@ -90,7 +91,7 @@ Bieżące punkty końcowe zapisu i odczytu są dostępne odpowiednio we właści
 >
 >
 
-Poniżej przedstawiono przykładowy kod dla Node.js/Javascript. Kody Python i Java korzystają z tego samego wzorca.
+Poniżej przedstawiono przykładowy kod dla Node.js/Javascript.
 
 ```JavaScript
 // Creating a ConnectionPolicy object
@@ -104,6 +105,34 @@ connectionPolicy.PreferredLocations = ['West US', 'East US', 'North Europe'];
 
 // initialize the connection
 var client = new DocumentDBClient(host, { masterKey: masterKey }, connectionPolicy);
+```
+
+## <a name="python-sdk"></a>Zestaw SDK dla języka Python
+
+Poniższy kod pokazuje, jak skonfigurować preferowanych lokalizacji przy użyciu zestawu SDK języka Python:
+
+```python
+
+connectionPolicy = documents.ConnectionPolicy()
+connectionPolicy.PreferredLocations = ['West US', 'East US', 'North Europe']
+client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connectionPolicy)
+
+```
+
+## <a name="java-v2-sdk"></a>Java V2 SDK
+
+Poniższy kod pokazuje, jak skonfigurować preferowanych lokalizacji przy użyciu zestawu Java SDK:
+
+```java
+ConnectionPolicy policy = new ConnectionPolicy();
+policy.setUsingMultipleWriteLocations(true);
+policy.setPreferredLocations(Arrays.asList("East US", "West US", "Canada Central"));
+AsyncDocumentClient client =
+        new AsyncDocumentClient.Builder()
+                .withMasterKeyOrResourceToken(this.accountKey)
+                .withServiceEndpoint(this.accountEndpoint)
+                .withConnectionPolicy(policy)
+                .build();
 ```
 
 ## <a name="rest"></a>REST

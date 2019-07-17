@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 853e23d4dd2c9192c15ab477571ca5cd0059e965
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 52b113d92fa83795e94d5179ea47ed5d9d9e9a26
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68225475"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248914"
 ---
 # <a name="tutorial-integrate-kiteworks-with-azure-active-directory"></a>Samouczek: Integracja Kiteworks za pomocą usługi Azure Active Directory
 
@@ -104,7 +104,7 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
 
 1. Na pasku narzędzi u góry kliknij pozycję **Settings** (Ustawienia).
 
-    ![Konfigurowanie logowania jednokrotnego](./media/kiteworks-tutorial/tutorial_kiteworks_06.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/kiteworks-tutorial/tutorial_kiteworks_06.png)
 
 1. W **uwierzytelnianie i autoryzacja** kliknij **konfiguracji logowania jednokrotnego**.
 
@@ -118,7 +118,7 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
 
     b. Wybierz **zainicjować AuthnRequest**.
 
-    c. W **identyfikator jednostki dostawcy tożsamości** pola tekstowego, Wklej wartość **usługi Azure AD identyfikator**, który skopiowano z witryny Azure portal. 
+    c. W **identyfikator jednostki dostawcy tożsamości** pola tekstowego, Wklej wartość **usługi Azure AD identyfikator**, który skopiowano z witryny Azure portal.
 
     d. W **pojedynczy znak na adres URL usługi** pola tekstowego, Wklej wartość **adres URL logowania**, który skopiowano z witryny Azure portal.
 
@@ -135,7 +135,7 @@ W tej sekcji utworzymy użytkownika testowego w witrynie Azure portal, o nazwie 
 1. W okienku po lewej stronie w witrynie Azure portal wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
 1. Wybierz **nowego użytkownika** w górnej części ekranu.
 1. W **użytkownika** właściwości, wykonaj następujące kroki:
-   1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
+   1. W polu **Nazwa** wprowadź wartość `B.Simon`.
    1. W **nazwa_użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
    1. Kliknij przycisk **Utwórz**.
@@ -162,7 +162,7 @@ W tej sekcji można udostępnić B.Simon do używania platformy Azure logowanie 
 
 Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon w Kiteworks.
 
-Platforma Kiteworks obsługę just-in-time, który jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Nowy użytkownik jest tworzony podczas próby dostępu Kitewors, jeśli go jeszcze nie istnieje.
+Platforma Kiteworks obsługę just-in-time, który jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Nowy użytkownik jest tworzony podczas próby dostępu Kiteworks, jeśli go jeszcze nie istnieje.
 
 > [!NOTE]
 > Jeśli potrzebujesz ręcznie utworzyć użytkownika, musisz skontaktować się z [zespołu pomocy technicznej platforma Kiteworks](https://accellion.com/support).
@@ -175,8 +175,8 @@ Po kliknięciu kafelka platforma Kiteworks w panelu dostępu, powinien zostać a
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

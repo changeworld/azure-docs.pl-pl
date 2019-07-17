@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 06/26/2019
 ms.author: alinast
 ms.openlocfilehash: 15a152d6941a8c77cae2ef7771be93db4ddceae4
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 07/16/2019
 ms.locfileid: "67484692"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Samouczek: Wdróż Azure cyfrowego bliźniaczych reprezentacji (wersja zapoznawcza) i skonfiguruj przestrzenne programu graph
@@ -180,7 +180,7 @@ Jeśli nie chcesz kontynuować pracy z usługą Azure Digital Twins, możesz usu
 
 1. Jeśli będzie to konieczne, możesz usunąć przykładową aplikację na komputerze służbowym.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się, jak zaimplementować logikę niestandardową w celu monitorowania warunków w przykładowym budynku, przejdź do kolejnego samouczka w serii: 
 > [!div class="nextstepaction"]

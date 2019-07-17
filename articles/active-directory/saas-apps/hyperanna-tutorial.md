@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec333ccff0a79f0f0c1d070785768b7abb36bfac
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: ed5370fda9be2573f773bd2fe653feb74defeb7d
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228919"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248858"
 ---
 # <a name="tutorial-integrate-hyperanna-with-azure-active-directory"></a>Samouczek: Integracja HyperAnna za pomocą usługi Azure Active Directory
 
@@ -88,7 +88,7 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
     | |
     |--|
     | `https://microsoft.hyperanna.com/userservice/auth/saml` |
-    |` https://anna.hyperanna.com/userservice/auth/saml` |
+    | `https://anna.hyperanna.com/userservice/auth/saml` |
 
 1. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
@@ -152,9 +152,9 @@ Po kliknięciu kafelka HyperAnna w panelu dostępu, powinien zostać automatyczn
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
