@@ -10,14 +10,14 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 3fc14b821064719f39eb877aa2253f8084496a66
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a88d7de69158a54995106d45683094c9b976896b
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523496"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302521"
 ---
-# <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Słownik interpretacji języka wspólnego słownika i pojęcia
+# <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Słownik dotyczący typowego słownictwa i koncepcji
 Language Understanding (LUIS) słownik wyjaśnia, warunki, które można napotkać podczas pracy z usługą interfejsu API usługi LUIS.
 
 ## <a name="active-version"></a>Wersja aktywna
@@ -96,11 +96,11 @@ Przykładowy punkt końcowy wygląda następująco:
 
 W [testowania partii](luis-interactive-test.md#batch-testing), to miara dokładności testu.
 
-## <a name="false-negative"></a>Fałszywie ujemnych (TN)
+## <a name="false-negative"></a>Wartość fałszywa ujemna (FN)
 
 W [testowania partii](luis-interactive-test.md#batch-testing), punktów danych reprezentują wypowiedzi, w których aplikacja niepoprawnie przewidzieć braku intencji/jednostkę docelową.
 
-## <a name="false-positive"></a>Wynik fałszywie dodatni (TP)
+## <a name="false-positive"></a>Fałszywie dodatnie (FP)
 
 W [testowania partii](luis-interactive-test.md#batch-testing), punktów danych reprezentują wypowiedzi, w których aplikacja niepoprawnie przewidzieć istnienie intencji/jednostkę docelową.
 

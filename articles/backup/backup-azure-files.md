@@ -8,12 +8,12 @@ ms.date: 01/31/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 30544a49f49714eeefbf54d70e54275d2cf9a7ef
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 252dc48fd35318f9cd8407007187b81a8674fab0
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243549"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296913"
 ---
 # <a name="back-up-azure-file-shares"></a>Tworzenie kopii zapasowej udziałów plików platformy Azure
 W tym artykule opisano sposób tworzenia kopii zapasowej i przywracania [udziałów plików platformy Azure](../storage/files/storage-files-introduction.md) przy użyciu witryny Azure Portal.
@@ -32,15 +32,16 @@ Przed utworzeniem kopii zapasowej udziału plików platformy Azure sprawdź, czy
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Ograniczenia dotyczące tworzenia kopii zapasowej udziału plików platformy Azure w okresie korzystania z wersji zapoznawczej
 Funkcja tworzenia kopii zapasowych udziałów plików platformy Azure jest dostępna w wersji zapoznawczej. Obsługiwane są udziały plików platformy Azure na kontach magazynu ogólnego przeznaczenia w wersji 1 i 2. Następujące scenariusze tworzenia kopii zapasowej nie są obsługiwane w przypadku udziałów plików platformy Azure:
+- Obsługa kopii zapasowych udziałów plików platformy Azure w ramach kont magazynu z replikacją [magazynu strefowo](../storage/common/storage-redundancy-zrs.md) nadmiarowego (ZRS) jest obecnie ograniczona do [tych regionów](backup-azure-files-faq.md#in-which-geos-can-i-back-up-azure-file-shares-).
 - Nie można chronić udziałów plików platformy Azure w ramach kont magazynu, które mają włączone sieci wirtualne lub zaporę.
 - Nie ma dostępnego interfejsu wiersza polecenia do ochrony usługi Azure Files z poziomu usługi Azure Backup.
 - Maksymalna liczba zaplanowanych kopii zapasowych to jedna dziennie.
 - Maksymalna liczba kopii zapasowych na żądanie to cztery dziennie.
 - Aby zapobiec przypadkowemu usunięciu kopii zapasowych z magazynu usługi Recovery Services, użyj [blokad zasobów](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) na koncie magazynu.
 - Nie usuwaj migawek utworzonych przy użyciu usługi Azure Backup. Usunięcie migawek może spowodować utratę punktów odzyskiwania i/lub błędy przywracania.
-- Nie usuwaj udziałów plików, które są chronione przez usługę Azure Backup. Bieżące rozwiązanie usunie wszystkie migawki utworzone przez usługę Azure Backup, gdy udział plików zostanie usunięty, i tym samym utraci wszystkie punkty przywracania.
+- Nie usuwaj udziałów plików, które są chronione przez usługę Azure Backup. Bieżące rozwiązanie usunie wszystkie migawki wykonane przez Azure Backup po usunięciu udziału plików, a tym samym utraci wszystkie punkty przywracania.
 
-Tworzenie kopii zapasowej udziałów plików platformy Azure w ramach kont magazynu za pomocą replikacji [magazynu strefowo nadmiarowego](../storage/common/storage-redundancy-zrs.md) (ZRS) jest obecnie dostępne tylko w regionach Środkowe stany USA (CUS), Wschodnie stany USA (EUS), Wschodnie stany USA 2 (EUS2), Europa Północna (NE), Azja Południowo-Wschodniej (SEA), Europa Zachodnia (WE) i Zachodnie stany USA 2 (WUS2).
+
 
 ## <a name="configuring-backup-for-an-azure-file-share"></a>Konfigurowanie kopii zapasowej udziału plików platformy Azure
 W tym samouczku przyjęto założenie, że ustanowiono już udział plików platformy Azure. Aby utworzyć kopię zapasową udziału plików platformy Azure:
@@ -74,7 +75,7 @@ W tym samouczku przyjęto założenie, że ustanowiono już udział plików plat
     Po ustanowieniu zasad tworzenia kopii zapasowych w zaplanowanym czasie zostanie utworzona migawka udziałów plików, a punkt odzyskiwania zostanie zachowany przez wybrany okres.
 
 ## <a name="create-an-on-demand-backup"></a>Tworzenie kopii zapasowej na żądanie
-W pewnych okolicznościach może zaistnieć potrzeba wygenerowania migawki kopii zapasowych lub punktu odzyskiwania w godzinach innych niż zaplanowane w ramach zasad tworzenia kopii zapasowych. Typowy moment generowania kopii zapasowej na żądanie przypada zaraz po skonfigurowaniu zasad tworzenia kopii zapasowych. Na podstawie harmonogramu w ramach zasad tworzenia kopii zapasowych może upłynąć wiele godzin lub dni zanim migawka zostanie utworzona. Aby chronić dane przed rozpoczęciem obowiązywania zasad tworzenia kopii zapasowych, zainicjuj tworzenie kopii zapasowej na żądanie. Tworzenie kopii zapasowej na żądanie jest często wymagana, przed wprowadzeniem zaplanowanych zmian udziałów plików.
+W pewnych okolicznościach może zaistnieć potrzeba wygenerowania migawki kopii zapasowych lub punktu odzyskiwania w godzinach innych niż zaplanowane w ramach zasad tworzenia kopii zapasowych. Typowy moment generowania kopii zapasowej na żądanie przypada zaraz po skonfigurowaniu zasad tworzenia kopii zapasowych. Na podstawie harmonogramu w ramach zasad tworzenia kopii zapasowych może upłynąć wiele godzin lub dni zanim migawka zostanie utworzona. Aby chronić dane przed rozpoczęciem obowiązywania zasad tworzenia kopii zapasowych, zainicjuj tworzenie kopii zapasowej na żądanie. Tworzenie kopii zapasowej na żądanie jest często wymagane przed wprowadzeniem planowanych zmian w udziałach plików.
 
 ### <a name="to-create-an-on-demand-backup"></a>Tworzenie kopii zapasowej na żądanie
 

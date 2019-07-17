@@ -1,7 +1,7 @@
 ---
-title: Rozwiązywanie problemów z projektem Akustyka tworzenie
+title: Rozwiązanie tworzenie akustyczne projektu
 titlesuffix: Azure Cognitive Services
-description: To omówienie pojęć dotyczących opisano różnicę między rozdzielczość zgrubnym i poprawnie podczas pieczenie Akustyka.
+description: W tym przeglądzie koncepcyjnym opisano różnice między poszczególnymi i bardziej precyzyjnymi rozwiązaniami w czasie, gdy jest to akustyczne
 services: cognitive-services
 author: KyleStorck
 manager: nitinme
@@ -9,32 +9,32 @@ ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 04/05/2019
-ms.author: kylesto
-ms.openlocfilehash: c4f4581beb26eb63392644b40b1e5f16dae0481d
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.author: kylsto
+ms.openlocfilehash: ba7c71c666ae8f90d499bfe52303537aeb112a77
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849956"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296717"
 ---
-# <a name="project-acoustics-bake-resolution"></a>Rozwiązywanie problemów z projektem Akustyka tworzenie
-To omówienie pojęć dotyczących opisano różnicę między rozdzielczość zgrubnym i poprawnie podczas pieczenie Akustyka. Możesz wybrać to ustawienie podczas wykonywania kroku sondy wypieku przepływu pracy.
+# <a name="project-acoustics-bake-resolution"></a>Rozwiązanie tworzenie akustyczne projektu
+W tym przeglądzie koncepcyjnym opisano różnice między poszczególnymi i bardziej precyzyjnymi rozwiązaniami w czasie, gdy jest to akustyczne To ustawienie należy wybrać podczas kroku sondy przepływu pracy pieczenia.
 
-## <a name="Coarse-vs-Fine-Resolution"></a>Rozpoznawanie poprawnie zdalnego programu vs
+## <a name="Coarse-vs-Fine-Resolution"></a>Grube rozwiązanie vs
 
-Jedyną różnicą między ustawień rozpoznawania zgrubnym i dobrym rozwiązaniem jest częstotliwość, w którym odbywa się symulacji. Szczegółowe wykorzystuje dwa razy możliwie jak zgrubnym częstotliwości. Ma to liczba skutki akustyczny symulacji:
+Jedyną różnicą między ustawieniem bardzo duże i precyzyjne rozwiązanie jest częstotliwość wykonywania symulacji. Stosuje częstotliwość dwa razy jako duże. Ma to wpływ na symulację akustyczną:
 
-* Długość fali grubych jest dwa razy tak długo, jak poprawnie i dlatego voxels dwukrotnie są tak duże.
-* Rozmiar voxel, dzięki czemu tworzenie zgrubnym około 16 razy szybciej niż tworzenie dobrym rozwiązaniem jest bezpośrednio związana czasu symulacji.
-* Nie może być symulowana portali (na przykład drzwi lub systemu windows) mniejszy niż rozmiar voxel. Gruba ustawienie może spowodować, że niektóre z tych portali mniejszych, aby nie być symulowana; w związku z tym nie będzie przekazują dźwięku za pomocą w czasie wykonywania. Aby zobaczyć, jeśli to się dzieje, wyświetlając voxels.
-* Mniejszą częstotliwością symulacji powoduje mniej diffraction wokół rogi i krawędzie.
-* Nie można zlokalizować źródła dźwięku wewnątrz voxels "wypełniony" (czyli voxels zawierające geometrii). Skutkuje to Brak dźwięku. Jest trudniejsze do umieszczenia źródeł dźwięku, dzięki czemu nie wewnątrz większych voxels z grubą, niż gdyby poprawnie ustawienie.
-* Większe voxels będzie mającym więcej do portali, jak pokazano poniżej. Pierwszy obraz został utworzony przy użyciu zdalnego, podczas gdy druga jest tego samego pola, za pomocą cienkiej rozpoznawania. Wskazane przez czerwony oznaczenia, jest znacznie mniej nieautoryzowanego dostępu do pola przy użyciu ustawień w dobrym stanie. Niebieska linia jest bramą, zgodnie z definicją geometrii, podczas gdy czerwona linia jest skuteczne portal akustyczne, zależy od rozmiaru voxel. Jak ta włamań odgrywa w danej sytuacji zależy od całkowicie jak voxels wiersz w górę przy użyciu geometrii portalu, który zależy od rozmiaru i lokalizacje obiektów w scenie.
+* Długość fali dla znaków bardzo dużych jest dwa razy większa od, w związku z czym voxels są dwa razy duże.
+* Czas symulacji jest bezpośrednio związany z rozmiarem Voxel, co sprawia, że duże tworzenie około 16 razy szybciej niż w przypadku tworzenie.
+* Portale (na przykład drzwi lub okna) mniejsze niż rozmiar Voxel nie mogą być symulowane. Ustawienie bardzo duże może spowodować, że niektóre z tych mniejszych portali nie będą symulowane; w związku z tym nie przechodzą dźwięku w czasie wykonywania. Możesz sprawdzić, czy tak się dzieje, wyświetlając voxels.
+* Niższa częstotliwość symulacji skutkuje mniej diffraction wokół rogów i krawędzi.
+* Źródła dźwięku nie mogą znajdować się w obrębie "wypełnione" voxels (tj. voxels zawierających geometrię). Powoduje to brak dźwięku. Umieszczanie źródeł dźwięku jest trudniejsze, więc nie znajdują się w większej voxels niż w przypadku korzystania z ustawienia.
+* Im większy voxels, jak pokazano poniżej. Pierwszy obraz został utworzony przy użyciu opcji bardzo duże, a drugi to ten sam bramą, przy użyciu precyzyjnej rozdzielczości. Jak wskazano na czerwono, nastąpi znacznie mniej włamania do bramą przy użyciu ustawienia bardziej szczegółowego. Niebieska linia to bramą zgodnie z definicją geometrii, natomiast czerwona linia jest skutecznym portalem akustycznym zdefiniowanym przez rozmiar Voxel. Sposób, w jaki te wtargnięcie odgrywa w danej sytuacji, zależy całkowicie od tego, jak voxels się z geometrią portalu, która jest określana na podstawie rozmiaru i lokalizacji obiektów w scenie.
 
-![Zrzut ekranu przedstawiający zgrubnym voxels, wypełniając pola w Unreal](media/unreal-coarse-bake.png)
+![Zrzut ekranu przedstawiający gruby voxels wypełniający bramą w Unreal](media/unreal-coarse-bake.png)
 
-![Zrzut ekranu przedstawiający voxels dobrym rozwiązaniem w pola w Unreal](media/unreal-fine-bake.png)
+![Zrzut ekranu przedstawiający szczegółowe voxels w bramą w Unreal](media/unreal-fine-bake.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Wypróbuj ustawień rozpoznawania zgrubnym i poprawnie samodzielnie za pomocą naszych [Unreal](unreal-baking.md) lub [Unity](unity-baking.md) wtyczek.
+Wypróbuj bardzo duże i precyzyjne ustawienia rozdzielczości, korzystając z naszych wtyczek [Unreal](unreal-baking.md) lub [Unity](unity-baking.md) .

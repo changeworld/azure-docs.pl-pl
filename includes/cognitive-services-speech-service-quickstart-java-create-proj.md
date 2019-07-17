@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 2/20/2019
 ms.author: erhopf
-ms.openlocfilehash: 9469fd6a1ffc61e90948178b105abd9f83e55fde
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: ebefe878393b66e5097ebbda5ef6159a8413833f
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183523"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68298445"
 ---
 1. Uruchom środowisko Eclipse.
 
@@ -45,7 +45,7 @@ ms.locfileid: "67183523"
 
      [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#repositories)]
 
-   * Również dodać `dependencies` elementu przy użyciu zestawu SDK mowy 1.5.0 jako zależność wersji:
+   * Należy również dodać `dependencies` element z opcją 1.6.0 zestawu mowy SDK jako zależność:
 
      [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#dependencies)]
 

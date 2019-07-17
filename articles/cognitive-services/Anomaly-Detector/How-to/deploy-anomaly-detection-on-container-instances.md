@@ -1,31 +1,31 @@
 ---
-title: Uruchom w usłudze Azure Container Instances
+title: Uruchom Azure Container Instances
 titleSuffix: Azure Cognitive Services
-description: Wdrażanie kontenera wykrywanie anomalii do wystąpienia kontenera platformy Azure i przetestuj ją w przeglądarce sieci web.
+description: Wdróż kontener wykrywania anomalii w usłudze Azure Container instance i przetestuj go w przeglądarce sieci Web.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: anomaly-detection
+ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 7/5/2019
 ms.author: dapine
-ms.openlocfilehash: b5adc3ed9234050d3977e812202717a0ce83e842
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: defbd1275e24217c235caaef15dc8f7a55ad8613
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711693"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296573"
 ---
-# <a name="deploy-an-anomaly-detector-container-to-azure-container-instances"></a>Wdrażanie kontenera wykrywanie anomalii w usłudze Azure Container Instances
+# <a name="deploy-an-anomaly-detector-container-to-azure-container-instances"></a>Wdróż kontener wykrywania anomalii w Azure Container Instances
 
-Informacje o wdrażaniu usług Cognitive Services [wykrywanie anomalii](../anomaly-detector-container-howto.md) kontenera na platformie Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/). Ta procedura pokazuje tworzenie zasobu usługi Wykrywanie anomalii. Następnie omówimy ściąganie obrazów skojarzony kontener. Na koniec zaznacz mamy możliwość wykonywania aranżacji dwa z poziomu przeglądarki. Używanie kontenerów może przechodzić przez deweloperów uwagi od zarządzania infrastrukturą, aby zamiast koncentrowania się na tworzeniu aplikacji.
+Dowiedz się, jak wdrożyć kontener [wykrywania anomalii](../anomaly-detector-container-howto.md) Cognitive Services na platformie Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/). Ta procedura pokazuje tworzenie zasobu wykrywania anomalii. Następnie omówiono ściąganie skojarzonego obrazu kontenera. Na koniec wyróżnimy możliwość wykonywania aranżacji tych dwóch z przeglądarki. Korzystanie z kontenerów umożliwia przechodzenie przez deweloperów do zarządzania infrastrukturą, aby zamiast tego koncentrować się na tworzeniu aplikacji.
 
 [!INCLUDE [Prerequisites](../../containers/includes/container-preview-prerequisites.md)]
 
 ## <a name="request-access-to-the-private-container-registry"></a>Poproś o dostęp do prywatnego rejestru kontenerów
 
-Najpierw należy wypełnić oraz przesłać [formularz wniosku o kontenerze wykrywanie anomalii](https://aka.ms/adcontainer) Aby zażądać dostępu do kontenera.
+Musisz najpierw zakończyć i przesłać [formularz żądania kontenera wykrywania anomalii](https://aka.ms/adcontainer) , aby zażądać dostępu do kontenera.
 
 [!INCLUDE [Request access](../../../../includes/cognitive-services-containers-request-access-only.md)]
 

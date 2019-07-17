@@ -4,21 +4,21 @@ ms.author: dapine
 ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.openlocfilehash: 9911b1c92bdca6c0cdf064ea484cfb603e659467
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 664cea26f910fa5b3354e2879a33de50eb13a7f3
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67712509"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68286162"
 ---
-Aby skonfigurować serwer proxy HTTP dla żądania wychodzącego, należy użyć tych dwóch argumentów:
+Jeśli musisz skonfigurować serwer proxy HTTP do tworzenia żądań wychodzących, użyj następujących dwóch argumentów:
 
 | Name (Nazwa) | Typ danych | Opis |
 |--|--|--|
-|HTTP_PROXY|ciąg|Serwer proxy, aby użyć, na przykład `http://proxy:8888`<br><proxy-url>|
-|HTTP_PROXY_CREDS|ciąg|wszystkie poświadczenia wymagane do uwierzytelniania serwera proxy, na przykład nazwa_użytkownika: hasło.|
-|`<proxy-user>`|ciąg|Użytkownik, dla serwera proxy.|
-|`proxy-password`|ciąg|Hasło skojarzone z `<proxy-user>` dla serwera proxy.|
+|HTTP_PROXY|ciąg|Serwer proxy do użycia, na przykład`http://proxy:8888`<br>`<proxy-url>`|
+|HTTP_PROXY_CREDS|ciąg|Wszystkie poświadczenia potrzebne do uwierzytelnienia w odniesieniu do serwera proxy, na przykład username: Password.|
+|`<proxy-user>`|ciąg|Użytkownik serwera proxy.|
+|`proxy-password`|ciąg|Hasło skojarzone z `<proxy-user>` serwerem proxy.|
 ||||
 
 

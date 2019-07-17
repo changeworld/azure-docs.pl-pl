@@ -9,18 +9,18 @@ ms.topic: tutorial
 author: MayMSFT
 ms.author: sihhu
 ms.reviewer: trbye
-ms.date: 07/12/2019
+ms.date: 07/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 355927dd8c1bb81265dfa728561ad83a75b0d51d
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 55bece47ad2a9965e5137ad720631d9b5f5add48
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871709"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297881"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Samouczek: Przygotowywanie danych do modelowania regresji
 
-W tym samouczku dowiesz się, jak przygotować dane do modelowania przy użyciu regresji [pakiecie przygotowania danych](https://aka.ms/data-prep-sdk) z [zestawu SDK usługi Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). Wykonasz różne przekształcenia, aby przefiltrować i połączyć dwa różne zestawy danych dotyczących nowojorskich taksówek.
+W tym samouczku dowiesz się, jak przygotować dane do modelowania regresji przy użyciu [pakietu przygotowywania danych](https://aka.ms/data-prep-sdk) z [zestawu SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). Wykonasz różne przekształcenia, aby przefiltrować i połączyć dwa różne zestawy danych dotyczących nowojorskich taksówek.
 
 Ten samouczek jest **pierwszą częścią dwuczęściowej serii**. Po ukończeniu tej serii samouczków będziesz w stanie przewidzieć koszt przejazdu taksówką przez wytrenowanie modelu z użyciem funkcji związanych z danymi. Te funkcje obejmują dzień i godzinę rozpoczęcia podróży, liczbę pasażerów i lokalizację rozpoczęcia podróży.
 
@@ -38,25 +38,25 @@ W tym samouczku zostaną wykonane następujące czynności:
 Przejdź do sekcji [Konfigurowanie środowiska projektowego](#start), aby zapoznać się z instrukcjami dotyczącymi notesu, lub skorzystaj z poniższych instrukcji, aby pobrać notes i uruchomić go w usłudze Azure Notebooks lub na swoim serwerze notesów. Do uruchomienia notesu potrzebne są następujące elementy:
 
 * Serwer notesów Python 3.6 z zainstalowanym następującym oprogramowaniem:
-    * `azureml-dataprep` Pakiet z zestawu SDK usługi Azure Machine Learning
+    * `azureml-dataprep` Pakiet z zestawu SDK Azure Machine Learning
 * Notes samouczka
 
-* Użyj [serwer chmura w obszarze roboczym](#azure) 
+* Korzystanie z [serwera notesu w chmurze w obszarze roboczym](#azure) 
 * Korzystanie z [własnego serwera notesów](#server)
 
-### <a name="azure"></a>Użyj serwera notesu chmura w obszarze roboczym
+### <a name="azure"></a>Korzystanie z serwera notesu w chmurze w obszarze roboczym
 
-To ułatwia rozpoczęcie pracy z serwerem oparte na chmurze notesu. Zestaw Azure Machine Learning SDK for Python jest już zainstalowane i skonfigurowane dla Ciebie, po utworzeniu zasobu w chmurze.
+Rozpoczęcie pracy z własnym serwerem notesu opartym na chmurze jest proste. Zestaw Azure Machine Learning SDK dla języka Python jest już zainstalowany i skonfigurowany dla Ciebie po utworzeniu tego zasobu w chmurze.
 
 [!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
 
-* Po uruchomieniu notesu strony sieci Web, uruchom **samouczki/regresji — część 1 data-prep.ipynb** notesu.
+* Po uruchomieniu witryny sieci Web notesu Uruchom **samouczki/Regression-part1-Data-Prep. ipynb** .
 
 ### <a name="server"></a>Korzystanie z własnego serwera notesów Jupyter Notebook
 
 Wykonaj te kroki, aby utworzyć lokalny serwer notesów Jupyter Notebook na komputerze.  Po wykonaniu kroków uruchom notes **tutorials/regression-part1-data-prep.ipynb**.
 
-1. Wykonaj kroki instalacji [Szybki Start języka Python usługi Azure Machine Learning](setup-create-workspace.md#sdk) do tworzenia środowiska Miniconda i zainstaluj zestaw SDK.  Jeśli chcesz możesz pominąć sekcję **Tworzenie obszaru roboczego**, ale będzie ona wymagana na potrzeby [drugiej części](tutorial-auto-train-models.md) tej serii samouczków.
+1. Wykonaj kroki instalacji opisane w [Azure Machine Learning przewodniku szybki start](setup-create-workspace.md#sdk) w języku Python, aby utworzyć środowisko Miniconda i zainstalować zestaw SDK.  Jeśli chcesz możesz pominąć sekcję **Tworzenie obszaru roboczego**, ale będzie ona wymagana na potrzeby [drugiej części](tutorial-auto-train-models.md) tej serii samouczków.
 1. `azureml-dataprep` Pakiet jest automatycznie instalowany podczas instalowania zestawu SDK.
 1. Sklonuj [repozytorium GitHub](https://aka.ms/aml-notebooks).
 
@@ -77,22 +77,22 @@ Cała konfiguracja dla prac programistycznych może zostać wykonana w notesie j
 * Instalacja zestawu SDK
 * Importowanie pakietów języka Python
 
-### <a name="install-and-import-packages"></a>Zainstaluj i zaimportuj pakiety
+### <a name="install-and-import-packages"></a>Instalowanie i Importowanie pakietów
 
-Użyj następującego polecenia do zainstalowania niezbędnych pakietów, jeśli jeszcze ich nie masz.
+Aby zainstalować wymagane pakiety, należy wykonać następujące czynności, jeśli nie zostały one jeszcze zainstalowane.
 
 ```shell
 pip install "azureml-dataprep[pandas]>=1.1.0,<1.2.0"
 ```
 
-Importuj pakiet.
+Zaimportuj pakiet.
 
 ```python
 import azureml.dataprep as dprep
 ```
 
 > [!IMPORTANT]
-> Upewnij się, że możesz zainstalować najnowszą wersję pakietu azureml.dataprep. W tym samouczku nie będzie działać z numer wersji jest niższy niż 1.1.0
+> Upewnij się, że zainstalowano najnowszą wersję pakietu Azure. datainstallation. Ten samouczek nie będzie działał z numerem wersji mniejszym niż 1.1.0
 
 ## <a name="load-data"></a>Ładowanie danych
 
@@ -112,6 +112,9 @@ yellow_df_raw = dprep.auto_read_file(path=yellow_path)
 display(green_df_raw.head(5))
 display(yellow_df_raw.head(5))
 ```
+
+> [!Note]
+> Adres URL w tym samym przykładzie nie jest kompletnym adresem URL. Zamiast tego odwołuje się do folderu demonstracyjnego w obiekcie blob. Pełny adres URL do niektórych danych to https://dprepdata.blob.core.windows.net/demo/green-small/green_tripdata_2013-08.csv
 
 Obiekt `Dataflow` jest podobny do ramki danych i zawiera serię ocenianych z opóźnieniem, niemożliwych do zmodyfikowania operacji na danych. Operacje można dodawać, wywołując różne dostępne metody przekształcania i filtrowania. Wynik dodawania operacji do obiektu `Dataflow` to zawsze nowy obiekt `Dataflow`.
 
@@ -1094,7 +1097,7 @@ Aby móc kontynuować pracę z częścią drugą samouczka, w bieżącym katalog
 
 Jeśli nie planujesz pracy z drugą częścią, usuń plik **dflows.dprep** z bieżącego katalogu. Usuń ten plik niezależnie od tego, czy uruchamiasz wykonywanie lokalnie, czy w usłudze [Azure Notebooks](https://notebooks.azure.com/).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W części pierwszej części tego samouczka były wykonywane następujące czynności:
 
