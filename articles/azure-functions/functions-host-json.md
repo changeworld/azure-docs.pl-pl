@@ -209,7 +209,7 @@ Kontroluje zachowania rejestrowania aplikacji funkcji, łącznie z usługi Appli
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Określa, jaki poziom rejestrowania w pliku jest włączone.  Dostępne są opcje `never`, `always`, `debugOnly`. |
 |logLevel|Nie dotyczy|Obiekt, który definiuje kategoria dziennika filtrowania dla funkcji w aplikacji. W wersji 2.x następuje układ platformy ASP.NET Core w celu filtrowania kategorii dziennika. Dzięki temu można filtrować rejestrowania dla określonych funkcji. Aby uzyskać więcej informacji, zobacz [filtrowanie dziennika](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) w dokumentacji platformy ASP.NET Core. |
-|console|Nie dotyczy| [Konsoli](#console) ustawień rejestrowania. |
+|console|Nie dotyczy| [console](#console) ustawień rejestrowania. |
 |applicationInsights|Nie dotyczy| [ApplicationInsights](#applicationinsights) ustawienie. |
 
 ## <a name="console"></a>console
