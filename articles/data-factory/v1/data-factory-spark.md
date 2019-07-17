@@ -351,7 +351,7 @@ Utwórz następującą strukturę folderów w usłudze blob storage przywoływan
 | ---- | ----------- | -------- | ---- |
 | . | Ścieżka katalogu głównego zadania Spark w połączonej usługi storage. | Yes | Folder |
 | &lt;zdefiniowane przez użytkownika &gt; | Ścieżka, który wskazuje na pliku wejściowego zadania Spark. | Yes | Plik |
-| . / jars | Wszystkie pliki w tym folderze są przekazywane i umieszczane w ścieżce klasy Java klastra. | Nie | Folder |
+| ./jars | Wszystkie pliki w tym folderze są przekazywane i umieszczane w ścieżce klasy Java klastra. | Nie | Folder |
 | ./pyFiles | Wszystkie pliki w tym folderze są przekazywane i umieszczane w PYTHONPATH klastra. | Nie | Folder |
 | ./files | Wszystkie pliki w tym folderze są przekazywane i umieszczane w katalogu roboczego funkcji wykonawczej. | Nie | Folder |
 | ./archives | Wszystkie pliki w tym folderze są bez kompresji. | Nie | Folder |
