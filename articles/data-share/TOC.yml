@@ -25,10 +25,24 @@
       href: how-to-configure-mapping.md
     - name: Rozwiązywanie problemów
       href: data-share-troubleshoot.md
+    - name: Dodawanie zestawów danych
+      href: how-to-add-datasets.md
+    - name: Dodawanie adresatów
+      href: how-to-add-recipients.md
+    - name: Usuwanie zaproszenia
+      href: how-to-delete-invitation.md
+    - name: Odwoływanie subskrypcji udostępniania
+      href: how-to-revoke-share-subscription.md
+- name: Dokumentacja
+  items:
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.datashare
+    - name: Interfejs API REST
+      href: /rest/api/datashare
 - name: Zasoby
   items:
     - name: Blog
-      href: 'https://azure.microsoft.com/blog/tag/data-share'
+      href: 'https://azure.microsoft.com/blog/announcing-preview-of-azure-data-share/'
     - name: Społeczność techniczna firmy Microsoft
       href: 'https://techcommunity.microsoft.com/'
     - name: Opinia dotycząca produktu
