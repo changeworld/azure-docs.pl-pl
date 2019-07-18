@@ -178,7 +178,7 @@ W tej sekcji opisano różne sposoby, można użyć akcji skryptu, podczas tworz
     | Wybierz skrypt | Aby użyć własnego skryptu, wybierz __niestandardowe__. W przeciwnym razie wybierz dostarczone skrypty. |
     | Name (Nazwa) |Określ nazwę dla akcji skryptu. |
     | Identyfikator URI skryptu powłoki systemowej |Określ identyfikator URI skryptu. |
-    | Proces roboczy/główne/dozorcy |Określ węzły, na których jest uruchamiany skrypt: **HEAD**, **procesu roboczego**, lub **dozorcy**. |
+    | Head/Worker/Zookeeper |Określ węzły, na których jest uruchamiany skrypt: **Head**, **Worker**, lub **ZooKeeper**. |
     | Parametry |Określ parametry, jeśli jest to wymagane przez skrypt. |
 
     Użyj __Utrwal tę akcję skryptu__ wpis, aby upewnić się, że skrypt jest stosowana podczas operacji skalowania.
@@ -260,7 +260,7 @@ Przejdź do [witryny Azure portal](https://portal.azure.com):
     | Wybierz skrypt | Aby użyć własnego skryptu, wybierz __niestandardowe__. W przeciwnym razie wybierz dostarczonego skryptu. |
     | Name (Nazwa) |Określ nazwę dla akcji skryptu. |
     | Identyfikator URI skryptu powłoki systemowej |Określ identyfikator URI skryptu. |
-    | Proces roboczy/główne/dozorcy |Określ węzły, na których jest uruchamiany skrypt: **HEAD**, **procesu roboczego**, lub **dozorcy**. |
+    | Head/Worker/Zookeeper |Określ węzły, na których jest uruchamiany skrypt: **Head**, **Worker**, lub **ZooKeeper**. |
     | Parametry |Określ parametry, jeśli jest to wymagane przez skrypt. |
 
     Użyj __Utrwal tę akcję skryptu__ wpis, aby upewnić się, czy skrypt jest stosowane podczas operacji skalowania.
