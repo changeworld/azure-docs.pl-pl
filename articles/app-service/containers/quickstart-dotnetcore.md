@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: da4d246e098751f650eb6315de3794ad957884d6
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 21400355b2457d1a37bf2c139dfdfd29a104a074
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62121677"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67853801"
 ---
 # <a name="create-an-aspnet-core-app-in-app-service-on-linux"></a>Tworzenie aplikacji platformy ASP.NET Core w usłudze App Service dla systemu Linux
 
@@ -91,14 +91,14 @@ git commit -m "first commit"
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-## <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
+## <a name="create-a-web-app"></a>Tworzenie aplikacji sieci web
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-dotnetcore-linux-no-h.md)]
 
-Przejdź do nowo utworzonej aplikacji. Zastąp ciąg _&lt;app name>_ nazwą swojej aplikacji.
+Przejdź do nowo utworzonej aplikacji. Zastąp  _&lt;ciąg App-Name >_ nazwą aplikacji.
 
 ```bash
-http://<app name>.azurewebsites.net
+http://<app-name>.azurewebsites.net
 ```
 
 Tak powinna wyglądać nowa aplikacja:
@@ -185,10 +185,10 @@ Menu po lewej stronie zawiera różne strony służące do konfigurowania aplika
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek: Aplikacja platformy ASP.NET Core z bazą danych SQL](tutorial-dotnetcore-sqldb-app.md)
+> [Samouczek: ASP.NET Core aplikacji z SQL Database](tutorial-dotnetcore-sqldb-app.md)
 
 > [!div class="nextstepaction"]
-> [Konfigurowanie aplikacji platformy ASP.NET Core](configure-language-dotnetcore.md)
+> [Konfigurowanie aplikacji ASP.NET Core](configure-language-dotnetcore.md)

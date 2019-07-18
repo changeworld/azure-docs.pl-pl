@@ -1,7 +1,7 @@
 ---
 title: Tworzenie aplikacji z wieloma kontenerami przy użyciu narzędzia Docker Compose — Azure App Service
 description: Wdróż swoją pierwszą aplikację wielokontenerową w funkcji Azure Web App for Containers w ciągu kilku minut.
-keywords: usłudze Azure app service, aplikacji sieci web, linux, docker compose multicontainer, obsługującej wiele kontenerów, usługi web app for containers, wiele kontenerów kontener wordpress azure db dla mysql, produkcyjnej bazy danych za pomocą kontenerów
+keywords: Azure App Service, Web App, Linux, Docker, redagowanie, wielokontenerowe, aplikacje sieci Web dla kontenerów, wiele kontenerów, kontener, WordPress, Azure DB for MySQL, produkcyjna baza danych z kontenerami
 services: app-service\web
 documentationcenter: ''
 author: msangapu
@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 543ba3ee4e72c5d31708e9b4983e7889421940ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fce819e84d5c532777ffee91ed4e75a0b65dec9b
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60396929"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67853702"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Tworzenie aplikacji z wieloma kontenerami (w wersji zapoznawczej) przy użyciu konfiguracji narzędzia Docker Compose
 
@@ -102,7 +102,7 @@ Po utworzeniu planu usługi App Service interfejs wiersza polecenia platformy Az
 
 ## <a name="create-a-docker-compose-app"></a>Tworzenie aplikacji narzędzia Docker Compose
 
-W terminalu usługi Cloud Shell utwórz wielokontenerową [aplikację internetową](app-service-linux-intro.md) w ramach planu usługi App Service `myAppServicePlan`, używając polecenia [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). Pamiętaj o zastąpieniu ciągu _\<app_name>_ unikatową nazwą aplikacji.
+W terminalu usługi Cloud Shell utwórz wielokontenerową [aplikację internetową](app-service-linux-intro.md) w ramach planu usługi App Service `myAppServicePlan`, używając polecenia [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). Nie zapomnij zastąpić  _\<APP_NAME >_ unikatową nazwą aplikacji (prawidłowe znaki to `a-z`, `0-9`i `-`).
 
 ```bash
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml
@@ -135,13 +135,13 @@ Przejdź do wdrożonej aplikacji pod adresem `http://<app_name>.azurewebsites.ne
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek: Aplikację WordPress z obsługą wielu kontenerów](tutorial-multi-container-app.md)
+> [Samouczek: Aplikacja WordPress z obsługą wiele kontenerów](tutorial-multi-container-app.md)
 
 > [!div class="nextstepaction"]
-> [Konfigurowanie niestandardowego kontenera](configure-custom-container.md)
+> [Konfigurowanie kontenera niestandardowego](configure-custom-container.md)
 
 <!--Image references-->
 [1]: ./media/tutorial-multi-container-app/azure-multi-container-wordpress-install.png

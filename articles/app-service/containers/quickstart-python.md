@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/29/2019
 ms.author: cephalin
-ms.openlocfilehash: e74c32226815fe799529084da75dbc196771dc53
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 557b917f53064f0e6e9ecd61e2d230a6a4fd2ad6
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514540"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67853680"
 ---
-# <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Tworzenie aplikacji w języku Python w usłudze Azure App Service w systemie Linux
+# <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Tworzenie aplikacji w języku Python w Azure App Service w systemie Linux
 
-W tym przewodniku Szybki Start wdrażanie prostej aplikacji Python [usługi App Service w systemie Linux](app-service-linux-intro.md), która zapewnia wysoce skalowalną i samonaprawialną usługę hostingu w Internecie. Użyj interfejsu wiersza polecenia platformy Azure ( [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli)) za pomocą interaktywnych, oparte na przeglądarce usługi Azure Cloud Shell, dlatego możesz wykonać kroki użyj komputera Mac, Linux lub Windows.
+W tym przewodniku szybki start wdrożono prostą aplikację w języku Python do [App Service w systemie Linux](app-service-linux-intro.md), która zapewnia wysoce skalowalną, samoobsługową usługę hostingu w Internecie. Korzystając z interfejsu wiersza polecenia platformy Azure ( [CLI](/cli/azure/install-azure-cli)) za pośrednictwem interakcyjnego, opartego na przeglądarce Azure Cloud Shell, można wykonać kroki opisane w sekcji Korzystanie z komputera Mac, Linux lub Windows.
 
 ![Przykładowa aplikacja działająca na platformie Azure](media/quickstart-python/hello-world-in-browser.png)
 
@@ -33,7 +33,7 @@ Aby ukończyć ten przewodnik Szybki start:
 
 * <a href="https://www.python.org/downloads/" target="_blank">Instalacja języka Python 3.7</a>
 * <a href="https://git-scm.com/" target="_blank">Zainstaluj oprogramowanie Git</a>
-* Subskrypcja platformy Azure. Jeśli nie masz jeszcze, Utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) przed przystąpieniem do wykonywania.
+* Subskrypcja platformy Azure. Jeśli jeszcze tego nie zrobiono, przed rozpoczęciem Utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) .
 
 ## <a name="download-the-sample-locally"></a>Pobieranie przykładu na maszynę lokalną
 
@@ -105,7 +105,7 @@ Checking connectivity... done.
 
 Przejdź do katalogu, który zawiera przykładowy kod, i uruchom polecenie `az webapp up`.
 
-W poniższym przykładzie Zastąp `<app-name>` unikatową nazwą aplikacji.
+W poniższym przykładzie zastąp ciąg `<app-name>` globalnie unikatową nazwą aplikacji (prawidłowe znaki to `a-z`, `0-9` i `-`).
 
 ```bash
 cd python-docs-hello-world
@@ -170,7 +170,7 @@ return "Hello Azure!"
 
 Zapisz zmiany i zamknij edytor. Użyj polecenia `^S` w celu zapisania i polecenia `^Q` w celu zamknięcia programu.
 
-Ponowne wdrażanie aplikacji za pomocą [ `az webapp up` ](/cli/azure/webapp#az-webapp-up) polecenia. Wstaw nazwę aplikacji `<app-name>`i określ lokalizację `<location-name>` (przy użyciu jednej z wartości podanych w [ `az account list-locations` ](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) polecenie).
+Ponownie Wdróż aplikację przy użyciu [`az webapp up`](/cli/azure/webapp#az-webapp-up) polecenia. Zastąp nazwę aplikacji `<app-name>`, a następnie określ `<location-name>` lokalizację (przy użyciu jednej z wartości [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) podanych w poleceniu).
 
 ```bash
 az webapp up -n <app-name> -l <location-name>
@@ -196,13 +196,13 @@ Menu po lewej stronie zawiera różne strony służące do konfigurowania aplika
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek: Aplikację w języku Python z bazą danych PostgreSQL](tutorial-python-postgresql-app.md)
+> [Samouczek: Aplikacja języka Python z PostgreSQL](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
 > [Konfigurowanie aplikacji języka Python](how-to-configure-python.md)
 
 > [!div class="nextstepaction"]
-> [Samouczek: Uruchamianie aplikacji w języku Python w kontenerze niestandardowe](tutorial-custom-docker-image.md)
+> [Samouczek: Uruchamianie aplikacji języka Python w kontenerze niestandardowym](tutorial-custom-docker-image.md)
