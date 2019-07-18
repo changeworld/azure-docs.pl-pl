@@ -564,12 +564,12 @@
           href: solution-template-copy-files-multiple-containers.md
         - name: Kopiowanie nowych plików według daty ostatniej modyfikacji
           href: solution-template-copy-new-files-lastmodifieddate.md
+        - name: Kopiowanie zbiorcze z bazy danych
+          href: solution-template-bulk-copy-with-control-table.md
+        - name: Kopiowanie różnicowe z bazy danych
+          href: solution-template-delta-copy-with-control-table.md
         - name: Przenoszenie plików
           href: solution-template-move-files.md
-        - name: Kopiowanie zbiorcze za pomocą kontrolki tabeli
-          href: solution-template-bulk-copy-with-control-table.md
-        - name: Kopiowanie różnicowe za pomocą kontrolki tabeli
-          href: solution-template-delta-copy-with-control-table.md
         - name: Przekształcanie danych za pomocą usługi Databricks
           href: solution-template-databricks-notebook.md
     - name: Przewodnik rozwiązywania problemów

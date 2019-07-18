@@ -8,7 +8,7 @@
       href: whats-new.md
 - name: Samouczki
   items:
-    - name: Ocena i migracja maszyn wirtualnych VMware
+    - name: Ocena i migrowanie maszyn wirtualnych VMware
       items:
         - name: Przygotowywanie środowiska VMware do oceny i migracji
           href: tutorial-prepare-vmware.md
@@ -22,7 +22,7 @@
               href: tutorial-migrate-vmware.md
             - name: Migrowanie maszyn wirtualnych VMware za pomocą migracji z użyciem agentów
               href: tutorial-migrate-vmware-agent.md
-    - name: Ocena i migracja funkcji Hyper-V
+    - name: Ocena i migrowanie maszyn wirtualnych funkcji Hyper-V
       items:
         - name: Przygotowywanie środowiska funkcji Hyper-V do oceny i migracji
           href: tutorial-prepare-hyper-v.md
