@@ -3,17 +3,17 @@ title: Replikacja geograficzna rejestru kontenerów platformy Azure
 description: Rozpocznij tworzenie rejestrów kontenerów platformy Azure z replikacją geograficzną i zarządzanie nimi.
 services: container-registry
 author: stevelas
-manager: jeconnoc
+manager: gwallace
 ms.service: container-registry
 ms.topic: overview
 ms.date: 05/24/2019
 ms.author: stevelas
-ms.openlocfilehash: a26b261a900dfae742e00d9540e744524b781815
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: e17b70843fcda1d183de1b81a98da53138835340
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66384120"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309592"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Replikacja geograficzna w usłudze Azure Container Registry
 
@@ -60,11 +60,11 @@ Funkcja replikacji geograficznej usługi Azure Container Registry zapewnia nast�
 
 * Zarządzanie pojedynczym rejestrem w wielu regionach: `contoso.azurecr.io`
 * Zarządzanie jedną konfiguracją wdrożeń obrazów, ponieważ we wszystkich regionach jest używany ten sam adres URL obrazu: `contoso.azurecr.io/public/products/web:1.2`
-* Wypchnij do pojedynczym rejestrem, podczas gdy ACR zarządza replikacji geograficznej. Możesz skonfigurować regionalnych [elementów webhook](container-registry-webhook.md) do powiadamiania osób zdarzenia w określonym replik.
+* Wypchnij do jednego rejestru, podczas gdy ACR zarządza replikacją geograficzną. Można skonfigurować regionalne elementy [webhook](container-registry-webhook.md) , aby powiadamiać o zdarzeniach w określonych replikach.
 
 ## <a name="configure-geo-replication"></a>Konfigurowanie replikacji geograficznej
 
-Konfigurowanie replikacji geograficznej jest równie proste, co klikanie regionów na mapie. Można również zarządzać replikacją geograficzną za pomocą narzędzi, w tym [az acr replikacji](/cli/azure/acr/replication) poleceń w interfejsie wiersza polecenia platformy Azure.
+Konfigurowanie replikacji geograficznej jest równie proste, co klikanie regionów na mapie. Replikacją geograficzną można także zarządzać za pomocą narzędzi, w tym poleceń [AZ ACR Replication](/cli/azure/acr/replication) w interfejsie wiersza polecenia platformy Azure.
 
 Replikacja geograficzna jest funkcją dotyczącą tylko [rejestrów w warstwie Premium](container-registry-skus.md). Jeśli Twój rejestr nie znajduje się jeszcze w warstwie Premium, możesz zmienić warstwę z warstwy Podstawowa i Standardowa na warstwę Premium w [witrynie Azure Portal](https://portal.azure.com):
 
@@ -94,10 +94,10 @@ Usługa ACR rozpocznie synchronizowanie obrazów między skonfigurowanymi replik
 
 ## <a name="considerations-for-using-a-geo-replicated-registry"></a>Zagadnienia dotyczące korzystania z rejestru z replikacją geograficzną
 
-* Każdego regionu, w rejestrze z replikacją geograficzną jest niezależne, po skonfigurowaniu. Azure SLA rejestru kontenera mają zastosowanie do każdego regionu z replikacją geograficzną.
-* Podczas wypychania lub ściągania obrazów z rejestru replikowanego geograficznie, usługi Azure Traffic Manager w tle wysyła żądanie do rejestru znajduje się w regionie najbliżej Ciebie.
-* Po wypchnięciu aktualizacji obrazu lub tag do najbliższego regionu, dopiero po pewnym czasie usługi Azure Container Registry do replikowania manifesty i warstwy do pozostałych regionach, które wyrażania zgody na. Większe obrazy dłużej może replikować niż mniejsze. Obrazów i tagów są synchronizowane w regionach replikacji przy użyciu modelu spójności ostatecznej.
-* Aby zarządzać przepływów pracy, które są zależne od wypychania aktualizacji do rejestru replikowanego geograficznie, zaleca się skonfigurowanie [elementów webhook](container-registry-webhook.md) do reagowania na zdarzenia wypychania. Regionalne elementy webhook w ramach rejestr z replikacją geograficzną można skonfigurować do śledzenia wypychanie zdarzeń po ich zakończeniu regionach replikacją geograficzną.
+* Każdy region w rejestrze z replikacją geograficzną jest niezależny od konfiguracji. Azure Container Registry umowy SLA mają zastosowanie do każdego regionu zreplikowanego geograficznie.
+* W przypadku wypychania lub ściągania obrazów z rejestru z replikacją geograficzną, usługa Azure Traffic Manager w tle wysyła żądanie do rejestru znajdującego się w regionie najbliżej użytkownika.
+* Po wypchnięciu aktualizacji obrazu lub tagu do najbliższego regionu przez Azure Container Registry replikację manifestów i warstw do pozostałych regionów, które zostały wybrane. Większe obrazy trwają dłużej niż mniejsze. Obrazy i Tagi są synchronizowane w regionach replikacji z modelem spójności ostatecznej.
+* Aby zarządzać przepływami pracy, które są zależne od aktualizacji wypychanych do rejestru z replikacją geograficzną, zalecamy skonfigurowanie elementów [webhook](container-registry-webhook.md) w celu reagowania na zdarzenia wypychania. Można skonfigurować regionalne elementy webhook w ramach rejestru replikowanego geograficznie do śledzenia zdarzeń wypychania w miarę ich kończenia w regionach replikowanych geograficznie.
 
 
 ## <a name="geo-replication-pricing"></a>Cennik replikacji geograficznej
@@ -106,7 +106,7 @@ Replikacja geograficzna jest funkcją [jednostki SKU w warstwie Premium](contain
 
 W poprzednim przykładzie firma Contoso skonsolidowała dwa rejestry w ramach jednego, dodając repliki do regionu Wschodnie stany USA, Kanada Środkowa i Europa Zachodnia. Firma Contoso zapłaciłaby miesięcznie czterokrotną opłatę za warstwę Premium bez dodatkowej konfiguracji ani zarządzania. W każdym regionie obrazy są teraz ściągane lokalnie, co zwiększa wydajność i niezawodność bez ponoszenia opłat za ruch wychodzący w sieci z regionu Zachodnie stany USA do regionu Kanada Środkowa i Wschodnie stany USA.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Zapoznaj się z trzyczęściową serią samouczków dostępną w sekcji [Replikacja geograficzna w usłudze Azure Container Registry](container-registry-tutorial-prepare-registry.md). Opisano w niej tworzenie rejestru z replikacją geograficzną, tworzenie kontenera, a następnie wdrażanie go w ramach wielu regionalnych aplikacji usługi Web Apps na potrzeby wystąpień kontenerów za pomocą pojedynczego polecenia `docker push`.
 

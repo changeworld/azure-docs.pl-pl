@@ -200,7 +200,7 @@ Ta sekcja jest opcjonalna. Uwzględnij go dla alertu pomiaru metryki.
 |:--|:--|:--|
 | TriggerCondition | Tak | Określa, czy próg całkowitą liczbę naruszeń lub kolejne naruszenia spośród następujących wartości:<br><br>**Łączna liczba<br>kolejnych** |
 | Operator | Yes | Operator porównania z następujących wartości:<br><br>**gt = większa niż<br>lt = mniej niż** |
-| Wartość | Yes | Liczba przypadków, które muszą zostać spełnione kryteria do wyzwolenia alertu. |
+| Value | Yes | Liczba przypadków, które muszą zostać spełnione kryteria do wyzwolenia alertu. |
 
 
 #### <a name="throttling"></a>Ograniczanie przepływności

@@ -4,14 +4,14 @@ description: Opis pojęć związanych z usługą Azure Managed Applications
 author: tfitzmac
 ms.service: managed-applications
 ms.topic: overview
-ms.date: 05/31/2019
+ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5b6cb030c6eba5d80dfd046f1c3950609da1ed73
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 97d6a229651f1c3fbcdbb79c7ae7d1c1f855882b
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479827"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234753"
 ---
 # <a name="azure-managed-applications-overview"></a>Omówienie usługi Azure Managed Applications
 
@@ -29,7 +29,7 @@ Klienci wdrażają aplikacje zarządzane w swoich subskrypcjach, ale nie muszą 
 
 Aplikacje zarządzane umożliwiają zespołom IT udostępnianie wstępnie zatwierdzonych rozwiązań użytkownikom w organizacji. Wiesz, że te rozwiązania są zgodne ze standardami używanymi w organizacji.
 
-Zarządzanych aplikacjach obsługujących [zarządzanych tożsamości dla zasobów platformy Azure](./publish-managed-identity.md).
+Zarządzane aplikacje obsługują [zarządzane tożsamości dla zasobów platformy Azure](./publish-managed-identity.md).
 
 ## <a name="types-of-managed-applications"></a>Typy aplikacji zarządzanych
 
@@ -51,7 +51,7 @@ Aby uzyskać informacje dotyczące publikowania aplikacji zarządzanych w witryn
 
 ## <a name="resource-groups-for-managed-applications"></a>Grupy zasobów aplikacji zarządzanych
 
-Zazwyczaj zasoby dla zarządzanych aplikacji znajdują się w dwóch grupach zasobów. Jedną z nich zarządza użytkownik, a drugą — wydawca. Podczas definiowania aplikacji zarządzanej wydawca określa poziomy dostępu. Wydawcy mogą żądać albo trwałe przypisania roli, lub [dostępu just in time](request-just-in-time-access.md) dla zadania które ma ograniczenie w danym okresie.
+Zazwyczaj zasoby dla aplikacji zarządzanej znajdują się w dwóch grupach zasobów. Jedną z nich zarządza użytkownik, a drugą — wydawca. Podczas definiowania aplikacji zarządzanej wydawca określa poziomy dostępu. Wydawca może zażądać trwałego przypisania roli lub [dostępu just in Time](request-just-in-time-access.md) do przypisania, które jest ograniczone do przedziału czasu.
 
 Ograniczanie dostępu do [operacji na danych](../role-based-access-control/role-definitions.md) nie jest obecnie obsługiwane dla wszystkich dostawców danych na platformie Azure.
 
@@ -67,7 +67,9 @@ Klient, który ma pełny dostęp do grupy zasobów, zarządza cyklem życia apli
 
 ### <a name="managed-resource-group"></a>Zarządzana grupa zasobów
 
-Ta grupa zasobów zawiera wszystkie zasoby, które są wymagane przez aplikację zarządzaną. Na przykład może ona obejmować maszyny wirtualne, konta magazynu i sieci wirtualne używane przez rozwiązanie. Klient ma ograniczony dostęp do tej grupy zasobów, ponieważ nie zarządza on poszczególnymi zasobami aplikacji zarządzanej. Dostęp wydawcy do grupy zasobów odpowiada roli określonej w definicji aplikacji zarządzanej. Na przykład wydawca może zażądać roli właściciela lub współautora dla tej grupy zasobów. Dostęp jest stałe lub ograniczone do określonej godzinie.
+Ta grupa zasobów zawiera wszystkie zasoby, które są wymagane przez aplikację zarządzaną. Na przykład może ona obejmować maszyny wirtualne, konta magazynu i sieci wirtualne używane przez rozwiązanie. Klient ma ograniczony dostęp do tej grupy zasobów, ponieważ nie zarządza on poszczególnymi zasobami aplikacji zarządzanej. Dostęp wydawcy do grupy zasobów odpowiada roli określonej w definicji aplikacji zarządzanej. Na przykład wydawca może zażądać roli właściciela lub współautora dla tej grupy zasobów. Dostęp jest trwały lub ograniczony do określonego czasu.
+
+W przypadku publikowania [aplikacji zarządzanej w portalu Marketplace](publish-marketplace-app.md)Wydawca może udzielić konsumentom możliwości wykonywania określonych akcji na zasobach w zarządzanej grupie zasobów. Na przykład Wydawca może określić, że klienci mogą ponownie uruchamiać maszyny wirtualne. Wszystkie inne akcje poza akcją odczytu nadal są odrzucane.
 
 Usunięcie aplikacji zarządzanej powoduje również usunięcie zarządzanej grupy zasobów.
 
@@ -75,7 +77,7 @@ Usunięcie aplikacji zarządzanej powoduje również usunięcie zarządzanej gru
 
 Do aplikacji zarządzanej możesz zastosować [zasady Azure Policy](../governance/policy/overview.md). Zasady są stosowane, aby zapewnić zgodność wdrożonych wystąpień aplikacji zarządzanych z wymaganiami dotyczącymi danych i zabezpieczeń. Jeśli aplikacja wchodzi w interakcje z danymi poufnymi, upewnij się, że oceniono sposoby ochrony tych danych. Jeśli na przykład aplikacja wchodzi w interakcje z danymi usługi Office 365, zastosuj zasady zapewniające włączenie szyfrowania danych.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym artykule omówiono korzyści z używania aplikacji zarządzanych. Przejdź do następnego artykułu, aby utworzyć definicję aplikacji zarządzanej.
 
