@@ -44,7 +44,7 @@ Oto, co otrzymujesz:
 
 Opcje, których można nadal używać Express:
 
-- Jeśli nie chcesz synchronizować wszystkich jednostek organizacyjnych, można nadal używać Express i na ostatniej stronie, usuń zaznaczenie ** proces synchronizacji rozpocznie się... ***. A następnie ponownie uruchom Kreatora instalacji, a następnie Zmień jednostki organizacyjne w [opcje konfiguracji](how-to-connect-installation-wizard.md#customize-synchronization-options) i Włącz synchronizację według harmonogramu.
+- Jeśli nie chcesz synchronizować wszystkich jednostek organizacyjnych, można nadal używać Express i na ostatniej stronie, usuń zaznaczenie **proces synchronizacji rozpocznie się...***. A następnie ponownie uruchom Kreatora instalacji, a następnie Zmień jednostki organizacyjne w [opcje konfiguracji](how-to-connect-installation-wizard.md#customize-synchronization-options) i Włącz synchronizację według harmonogramu.
 - Chcesz włączyć jedną z funkcji w usłudze Azure AD Premium, takich jak funkcja zapisywania zwrotnego haseł. Najpierw wykonaj express można pobrać ukończeniem instalacji początkowej. A następnie ponownie uruchom Kreatora instalacji, a następnie zmień [opcje konfiguracji](how-to-connect-installation-wizard.md#customize-synchronization-options).
 
 ## <a name="custom"></a>Niestandardowy

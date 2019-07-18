@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: b6f0d25f621768f79e8262f38617152e91692a23
 ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 06/13/2019
 ms.locfileid: "62129858"
@@ -92,8 +92,8 @@ Później w kroku oddzielne repatriacji przejścia w tryb failover bazy danych w
 Przed rozpoczęciem procesu odzyskiwania należy przejrzeć normalnego stanu dobrej kondycji aplikacji.
 1. W przeglądarce sieci web Otwórz Centrum zdarzeń o nazwie Wingtip Tickets (http://events.wingtip-dpt.&lt ; użytkownika&gt;. trafficmanager.net - Zastąp &lt; użytkownika&gt; wartością użytkownika wdrożenia).
     * Przewiń do dołu strony i zwróć uwagę, nazwę serwera wykazu i lokalizację w stopce. Lokalizacja jest region, w którym aplikacja została wdrożona.
-    *PORADA: Umieść kursor myszy nad lokalizacją, aby powiększyć wyświetlania. * 
-     ![Dobrej kondycji Centrum zdarzeń w regionie oryginalny](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
+    *PORADA: Umieść kursor myszy nad lokalizacją, aby powiększyć wyświetlania.* 
+    ![Dobrej kondycji Centrum zdarzeń w regionie oryginalny](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
 
 2. Kliknij w dzierżawie Contoso Concert Hall, a następnie otwórz jego stronę zdarzeń.
     * W stopce Zwróć uwagę na nazwę serwera dzierżawy. Lokalizacja będzie taka sama jak lokalizacja serwera wykazu.

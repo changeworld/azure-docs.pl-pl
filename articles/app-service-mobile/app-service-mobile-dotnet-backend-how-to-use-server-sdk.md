@@ -79,7 +79,7 @@ Aby zainstalować zestaw SDK, kliknij prawym przyciskiem myszy projekt serwera w
 
 ### <a name="server-project-setup"></a> Inicjowanie projektu serwera
 Projekt serwera zaplecza platformy .NET jest inicjowany podobne do innych projektów programu ASP.NET, umieszczając klasy początkowej OWIN. Upewnij się, że masz odwołanie do pakietu NuGet `Microsoft.Owin.Host.SystemWeb`. Aby dodać tę klasę w programie Visual Studio, kliknij prawym przyciskiem myszy na projekt serwera, a następnie wybierz **Dodaj** >
-**nowy element**, następnie **Web**  >  ** Ogólne** > **Klasa początkowa OWIN**.  Klasa jest generowany przy użyciu następującego atrybutu:
+**nowy element**, następnie **Web** > **Ogólne** > **Klasa początkowa OWIN**.  Klasa jest generowany przy użyciu następującego atrybutu:
 
     [assembly: OwinStartup(typeof(YourServiceName.YourStartupClassName))]
 
