@@ -188,7 +188,7 @@ Ta sekcja jest wymagana. Definiuje właściwości próg alertu.
 | Nazwa elementu | Wymagane | description |
 |:--|:--|:--|
 | Operator | Yes | Operator porównania z następujących wartości:<br><br>**gt = większa niż<br>lt = mniej niż** |
-| Wartość | Yes | Wartość do porównania wyników. |
+| Value | Yes | Wartość do porównania wyników. |
 
 ##### <a name="metricstrigger"></a>MetricsTrigger
 Ta sekcja jest opcjonalna. Uwzględnij go dla alertu pomiaru metryki.
