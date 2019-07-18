@@ -1,6 +1,6 @@
 ---
-title: Microsoft identity platformy Windows desktop Przewodnik Szybki Start | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak uzyskać token dostępu i wywołać interfejs API chroniony przez punkt końcowy platforma tożsamości firmy Microsoft pulpitu Windows aplikacji .NET (XAML)
+title: Microsoft Identity platform Windows Desktop — Szybki Start | Microsoft Docs
+description: Dowiedz się, w jaki sposób aplikacja Windows Desktop .NET (XAML) może uzyskać token dostępu i wywołać interfejs API chroniony przez punkt końcowy platformy tożsamości firmy Microsoft
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/11/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35c71262b1338a2e9d471d16368fd90ea4c6d059
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: fe90e5a70779857f0045baf27abc59a75289c39c
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565396"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276819"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Szybki start: Uzyskiwanie tokenu i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji klasycznej w systemie Windows
 
 W tym przewodniku Szybki start dowiesz się, jak napisać aplikację klasyczną .NET (WPF) w systemie Windows umożliwiającą logowanie się na kontach osobistych i służbowych, uzyskiwanie tokenów dostępu i wywoływanie interfejsu API programu Microsoft Graph.
 
-![Pokazuje, jak działa przykładowej aplikacji wygenerowane przez ten przewodnik Szybki Start](media/quickstart-v2-windows-desktop/windesktop-intro.svg)
+![Pokazuje sposób działania przykładowej aplikacji wygenerowanej przez ten przewodnik Szybki Start](media/quickstart-v2-windows-desktop/windesktop-intro.svg)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Rejestrowanie i pobieranie aplikacji Szybki start
@@ -38,7 +38,7 @@ W tym przewodniku Szybki start dowiesz się, jak napisać aplikację klasyczną 
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Opcja 1: zarejestrowanie i automatyczne skonfigurowanie aplikacji, a następnie pobranie przykładowego kodu
 >
-> 1. Przejdź do nowego [witryna Azure portal — rejestracje aplikacji](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs).
+> 1. Przejdź do nowego [Azure Portal-rejestracje aplikacji](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs).
 > 1. Wprowadź nazwę aplikacji i wybierz pozycję **Zarejestruj**.
 > 1. Postępuj zgodnie z instrukcjami, aby pobrać i automatycznie skonfigurować nową aplikację za pomocą tylko jednego kliknięcia.
 >
@@ -49,14 +49,14 @@ W tym przewodniku Szybki start dowiesz się, jak napisać aplikację klasyczną 
 >
 > 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
 > 1. Jeśli Twoje konto umożliwia dostęp do więcej niż jednej dzierżawy, wybierz konto w prawym górnym rogu, a następnie ustaw sesję portalu na odpowiednią dzierżawę usługi Azure AD.
-> 1. Przejdź do platforma tożsamości firmy Microsoft dla deweloperów [rejestracje aplikacji](https://aka.ms/MobileAppReg) strony.
-> 1. Wybierz **nowej rejestracji**.
+> 1. Przejdź do strony Microsoft Identity Platform for Developers [rejestracje aplikacji](https://aka.ms/MobileAppReg) .
+> 1. Wybierz pozycję **Nowa rejestracja**.
 >      - W sekcji **Nazwa** podaj znaczącą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład `Win-App-calling-MsGraph`.
 >      - W sekcji **Obsługiwane typy kont** wybierz pozycję **Konta w dowolnym katalogu organizacyjnym i konta osobiste Microsoft (na przykład Skype, Xbox, Outlook.com)** .
 >      - Wybierz pozycję **Zarejestruj**, aby utworzyć aplikację.
 > 1. Na liście stron dla aplikacji wybierz pozycję **Uwierzytelnianie**.
-> 1. Rozwiń **pulpitu i urządzenia** sekcji.  (Jeśli **pulpitu i urządzenia** nie jest widoczny, kliknij najpierw na górnym banerze, aby wyświetlić podgląd proces uwierzytelniania)
-> 1. W obszarze **identyfikator URI przekierowania** zaznacz **Dodaj identyfikator URI**.  Type **urn:ietf:wg:oauth:2.0:oob**.
+> 1. Rozwiń sekcję **Desktop + Devices (urządzenia** ).  (Jeśli **komputery stacjonarne i urządzenia** nie są widoczne, najpierw kliknij górny baner, aby zobaczyć środowisko uwierzytelniania w wersji zapoznawczej).
+> 1. W sekcji **Identyfikator URI przekierowania** wybierz pozycję **Dodaj identyfikator URI**.  Typ **urn: IETF: wg: OAuth: 2.0: OOB**.
 > 1. Wybierz pozycję **Zapisz**.
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -70,7 +70,7 @@ W tym przewodniku Szybki start dowiesz się, jak napisać aplikację klasyczną 
 
 #### <a name="step-2-download-your-visual-studio-project"></a>Krok 2: pobieranie projektu programu Visual Studio
 
-[Pobieranie projektu programu Visual Studio](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip) ([widok projektu w usłudze Github](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/))
+[Pobierz projekt programu Visual Studio](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)  ([Wyświetl projekt w serwisie GitHub](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/))
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: konfigurowanie projektu programu Visual Studio
 
@@ -84,7 +84,7 @@ W tym przewodniku Szybki start dowiesz się, jak napisać aplikację klasyczną 
     ```
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Ten przewodnik szybkiego startu obsługuje Enter_the_Supported_Account_Info_Here.
+> > Ten przewodnik Szybki Start obsługuje Enter_the_Supported_Account_Info_Here.
 
 > [!div renderon="docs"]
 > Gdzie:
@@ -101,7 +101,7 @@ W tym przewodniku Szybki start dowiesz się, jak napisać aplikację klasyczną 
 
 ### <a name="msalnet"></a>MSAL.NET
 
-Biblioteka MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) to biblioteka używane do logowania użytkowników i żądać tokenów, które umożliwiają dostęp do interfejsu API chronionego przez platforma tożsamości usługi Microsoft. Bibliotekę MSAL można zainstalować, uruchamiając następujące polecenie w **Konsoli menedżera pakietów** programu Visual Studio:
+MSAL ([Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) to biblioteka służąca do logowania użytkowników i żądania tokenów używanych w celu uzyskania dostępu do interfejsu API chronionego przez platformę tożsamości firmy Microsoft. Bibliotekę MSAL można zainstalować, uruchamiając następujące polecenie w **Konsoli menedżera pakietów** programu Visual Studio:
 
 ```powershell
 Install-Package Microsoft.Identity.Client -IncludePrerelease
@@ -134,7 +134,7 @@ Biblioteka MSAL oferuje dwie metody uzyskiwania tokenów: `AcquireTokenInteracti
 
 #### <a name="get-a-user-token-interactively"></a>Interaktywne pobieranie tokenu użytkownika
 
-Sytuacje wymagają wymuszania użytkowników wchodzić w interakcje z punktem końcowym platforma tożsamości firmy Microsoft za pomocą okna podręcznego, albo zweryfikowania ich poświadczeń lub wyrazić zgodę. Oto niektóre przykłady:
+W niektórych sytuacjach należy wymusić, aby użytkownicy korzystali z punktu końcowego platformy tożsamości firmy Microsoft za pomocą okna podręcznego w celu sprawdzenia poprawności poświadczeń lub udzielenia zgody. Oto niektóre przykłady:
 
 - Gdy nowi użytkownicy logują się do aplikacji po raz pierwszy.
 - Gdy użytkownicy muszą ponownie wprowadzić poświadczenia, ponieważ hasło wygasło.
@@ -152,7 +152,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
 
 #### <a name="get-a-user-token-silently"></a>Dyskretne pobieranie tokenu użytkownika
 
-Nie chcesz, aby użytkownik musiał weryfikować poświadczenia za każdym razem, gdy musi uzyskać dostęp do zasobu. Przez większość czasu uzyskiwanie i odnawianie tokenów powinno odbywać się bez żadnej interakcji z użytkownikiem. Możesz użyć metody `AcquireTokenSilentAsync` do uzyskiwania tokenów umożliwiających dostęp do chronionych zasobów po początkowym skorzystaniu z metody `AcquireTokenInteractive`:
+Nie chcesz, aby użytkownik musiał weryfikować poświadczenia za każdym razem, gdy musi uzyskać dostęp do zasobu. Przez większość czasu uzyskiwanie i odnawianie tokenów powinno odbywać się bez żadnej interakcji z użytkownikiem. Możesz użyć metody `AcquireTokenSilent` do uzyskiwania tokenów umożliwiających dostęp do chronionych zasobów po początkowym skorzystaniu z metody `AcquireTokenInteractive`:
 
 ```csharp
 var accounts = await App.PublicClientApp.GetAccountsAsync();
@@ -168,7 +168,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Wypróbuj samouczek dotyczący aplikacji klasycznych systemu Windows, aby uzyskać instrukcje krok po kroku dotyczące tworzenia aplikacji i nowych funkcji, w tym pełne objaśnienie informacji zawartych w tym podręczniku Szybki start.
 

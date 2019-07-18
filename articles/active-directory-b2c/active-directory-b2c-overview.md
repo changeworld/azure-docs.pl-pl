@@ -10,18 +10,18 @@ ms.topic: overview
 ms.date: 02/20/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5cceac260979b4322d41843038eab0998c8e8ba4
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: ca9d8a8373bd73d527862864d436319eb45b5f48
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66509746"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227163"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Co to jest usługa Azure Active Directory B2C?
 
-Usługa Azure Active Directory (Azure AD) B2C to usługa zarządzania tożsamościami firma klient. Usługa ta umożliwia dostosowywanie i kontrolowanie bezpiecznych interakcji użytkowników z aplikacjami internetowymi, klasycznymi, mobilnymi i jednostronicowymi. Za pomocą usługi Azure AD B2C użytkownicy mogą tworzyć konta, logować się, resetować hasła i edytować profile. W usłudze Azure AD B2C zaimplementowano formę protokołów OpenID Connect i OAuth 2.0. Kluczowym elementem implementacji tych protokołów są tokeny zabezpieczające i ich oświadczenia, które umożliwiają bezpieczny dostęp do zasobów.
+Azure Active Directory (Azure AD) B2C to usługa zarządzania tożsamościami między firmami. Usługa ta umożliwia dostosowywanie i kontrolowanie bezpiecznych interakcji użytkowników z aplikacjami internetowymi, klasycznymi, mobilnymi i jednostronicowymi. Za pomocą usługi Azure AD B2C użytkownicy mogą tworzyć konta, logować się, resetować hasła i edytować profile. W usłudze Azure AD B2C zaimplementowano formę protokołów OpenID Connect i OAuth 2.0. Kluczowym elementem implementacji tych protokołów są tokeny zabezpieczające i ich oświadczenia, które umożliwiają bezpieczny dostęp do zasobów.
 
-*Podróż użytkownika* to żądanie, które określa zasady sterujące interakcjami użytkownika i aplikacji z usługą Azure AD B2C. Na potrzeby zdefiniowania podróży użytkownika w usłudze Azure AD B2C są dostępne Dwie ścieżki. 
+*Podróż użytkownika* to żądanie, które określa zasady sterujące interakcjami użytkownika i aplikacji z usługą Azure AD B2C. Na potrzeby zdefiniowania podróży użytkownika w usłudze Azure AD B2C są dostępne Dwie ścieżki.
 
 Jeśli jesteś twórcą aplikacji i masz wiedzę na temat obsługi tożsamości lub jej nie masz, możesz zdefiniować typowe przepływy użytkownika tożsamości za pomocą witryny Azure Portal. Jeśli jesteś specjalistą w zakresie obsługi tożsamości, integratorem systemów, konsultantem lub członkiem wewnętrznego zespołu ds. tożsamości, wiesz, jak korzystać z przepływów OpenID Connect, i rozumiesz działanie dostawców tożsamości oraz uwierzytelniania opartego na oświadczeniach, możesz stosować zasady niestandardowe oparte na języku XML.
 
@@ -29,7 +29,7 @@ Przed rozpoczęciem definiowania podróży użytkownika musisz utworzyć dzierż
 
 ## <a name="protocols-and-tokens"></a>Protokoły i tokeny
 
-Na potrzeby podróży użytkownika usługa Azure AD B2C obsługuje [protokoły OpenID Connect i OAuth 2.0](active-directory-b2c-reference-protocols.md). Podczas wdrażania protokołu OpenID Connect w usłudze Azure AD B2C aplikacja rozpoczyna podróż użytkownika, wysyłając żądania uwierzytelniania do usługi Azure AD B2C. 
+Na potrzeby podróży użytkownika usługa Azure AD B2C obsługuje [protokoły OpenID Connect i OAuth 2.0](active-directory-b2c-reference-protocols.md). Podczas wdrażania protokołu OpenID Connect w usłudze Azure AD B2C aplikacja rozpoczyna podróż użytkownika, wysyłając żądania uwierzytelniania do usługi Azure AD B2C.
 
 Wynikiem żądania skierowanego do usługi Azure AD B2C jest token zabezpieczający, taki jak [token identyfikatora lub token dostępu](active-directory-b2c-reference-tokens.md). Ten token zabezpieczający definiuje tożsamość użytkownika. Tokeny są odbierane w punktach końcowych usługi Azure AD B2C, takich jak punkt końcowy `/token` lub `/authorize`. Z poziomu tych tokenów można uzyskać dostęp do oświadczeń, za pomocą których można zweryfikować tożsamości i zezwolić na dostęp do bezpiecznych zasobów.
 
@@ -62,17 +62,17 @@ Podróże użytkownika umożliwiają sterowanie zachowaniami dzięki skonfigurow
 - Wygląd i działanie stron
 - Informacje zwrócone do aplikacji
 
-Zasady niestandardowe to pliki konfiguracji definiujące zachowanie platformy [Identity Experience Framework](trustframeworkpolicy.md) w dzierżawie usługi Azure AD B2C. Identity Experience Framework to podstawowa platforma, która ustanawia relację zaufania wielu jednostek i finalizuje etapy podróży użytkownika. 
+Zasady niestandardowe to pliki konfiguracji definiujące zachowanie platformy [Identity Experience Framework](trustframeworkpolicy.md) w dzierżawie usługi Azure AD B2C. Identity Experience Framework to podstawowa platforma, która ustanawia relację zaufania wielu jednostek i finalizuje etapy podróży użytkownika.
 
-Zasady niestandardowe mogą być modyfikowane, dzięki czemu mogą wykonywać wiele zadań. Niestandardowe zasady są to jeden lub kilka plików w formacie XML, które odwołują się do siebie nawzajem zgodnie z łańcuchem hierarchii. Na potrzeby zasad niestandardowych dostępny jest [pakiet początkowy](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) umożliwiający włączanie typowych zadań związanych z tożsamościami. 
+Zasady niestandardowe mogą być modyfikowane, dzięki czemu mogą wykonywać wiele zadań. Niestandardowe zasady są to jeden lub kilka plików w formacie XML, które odwołują się do siebie nawzajem zgodnie z łańcuchem hierarchii. Na potrzeby zasad niestandardowych dostępny jest [pakiet początkowy](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) umożliwiający włączanie typowych zadań związanych z tożsamościami.
 
 W razie potrzeby w dzierżawie usługi Azure AD B2C są używane zasady niestandardowe lub przepływy użytkowników różnego typu. Można użyć ich ponownie w innych aplikacjach. Ta elastyczność umożliwia definiowanie i modyfikowanie obsługi tożsamości użytkownika przy zerowych lub jedynie minimalnych zmianach w kodzie. Aby użyć zasad, dodaj określony parametr zapytania do żądań uwierzytelnienia HTTP. Aby utworzyć własne zasady niestandardowe, zobacz [Wprowadzenie do zasad niestandardowych w usłudze Azure Active Directory B2C](active-directory-b2c-get-started-custom.md).
 
-## <a name="identity-providers"></a>Dostawcy tożsamości 
+## <a name="identity-providers"></a>Dostawcy tożsamości
 
-W swoich aplikacjach możesz umożliwić użytkownikom logowanie się za pomocą różnych dostawców tożsamości. *Dostawca tożsamości* tworzy, i przechowuje informacje dotyczące tożsamości oraz zarządza nimi, zapewniając jednocześnie aplikacjom usługi uwierzytelniania. Dostawców tożsamości obsługiwanych przez usługę Azure AD B2C możesz dodać w witrynie Azure Portal. 
+W swoich aplikacjach możesz umożliwić użytkownikom logowanie się za pomocą różnych dostawców tożsamości. *Dostawca tożsamości* tworzy, i przechowuje informacje dotyczące tożsamości oraz zarządza nimi, zapewniając jednocześnie aplikacjom usługi uwierzytelniania. Dostawców tożsamości obsługiwanych przez usługę Azure AD B2C możesz dodać w witrynie Azure Portal.
 
-Zazwyczaj używa się tylko jednego dostawcy tożsamości w aplikacji, ale istnieje możliwość dodania większej ich liczby. Aby skonfigurować dostawcę tożsamości w dzierżawie usługi Azure AD B2C, najpierw utwórz aplikację w witrynie dewelopera dostawcy tożsamości, a następnie zarejestruj identyfikator aplikacji lub identyfikator klienta oraz hasło lub klucz tajny klienta z poziomu tworzonej aplikacji dostawcy tożsamości. Ten identyfikator i hasło są następnie używane do konfigurowania aplikacji. 
+Zazwyczaj używa się tylko jednego dostawcy tożsamości w aplikacji, ale istnieje możliwość dodania większej ich liczby. Aby skonfigurować dostawcę tożsamości w dzierżawie usługi Azure AD B2C, najpierw utwórz aplikację w witrynie dewelopera dostawcy tożsamości, a następnie zarejestruj identyfikator aplikacji lub identyfikator klienta oraz hasło lub klucz tajny klienta z poziomu tworzonej aplikacji dostawcy tożsamości. Ten identyfikator i hasło są następnie używane do konfigurowania aplikacji.
 
 W następujących artykułach opisano kroki dodawania niektórych typowych dostawców tożsamości do przepływów użytkownika:
 
@@ -90,7 +90,7 @@ Aby uzyskać więcej informacji, zobacz [Samouczek: dodawanie dostawcy tożsamo�
 
 ## <a name="page-customization"></a>Dostosowywanie strony
 
-Większość zawartości HTML i CSS przekazywanej klientom w ramach podróży użytkownika może być kontrolowana. Za pomocą funkcji dostosowywania strony można dostosować wygląd i działanie dowolnych zasad niestandardowych lub przepływu użytkownika. Ta funkcja dostosowywania pozwala zapewnić spójność wizerunku marki i wrażeń wizualnych między aplikacją i usługą Azure AD B2C. 
+Większość zawartości HTML i CSS przekazywanej klientom w ramach podróży użytkownika może być kontrolowana. Za pomocą funkcji dostosowywania strony można dostosować wygląd i działanie dowolnych zasad niestandardowych lub przepływu użytkownika. Ta funkcja dostosowywania pozwala zapewnić spójność wizerunku marki i wrażeń wizualnych między aplikacją i usługą Azure AD B2C.
 
 Usługa Azure AD B2C uruchamia kod w przeglądarce użytkownika i wykorzystuje nowoczesne podejście nazywane współużytkowaniem zasobów między źródłami (CORS, Cross-origin Resource Sharing). Najpierw należy określić adres URL w zasadach z dostosowaną zawartością HTML. Usługa Azure AD B2C scala elementy interfejsu użytkownika z zawartością HTML ładowaną z adresu URL, a następnie wyświetla stronę użytkownikowi.
 
@@ -121,7 +121,7 @@ Jeśli jesteś deweloperem aplikacji jednostronicowych i korzystasz z technologi
 
 ### <a name="javascript"></a>JavaScript
 
-Do aplikacji w usłudze Azure AD B2C możesz dodać własny kod JavaScript po stronie klienta. Aby skonfigurować kod JavaScript w aplikacji, zdefiniuj [kontrakt strony](page-contract.md) i włącz obsługę języka [JavaScript](javascript-samples.md) w przepływach użytkownika lub zasadach niestandardowych.
+Do aplikacji w usłudze Azure AD B2C możesz dodać własny kod JavaScript po stronie klienta. Aby skonfigurować język JavaScript w aplikacji, należy zdefiniować [Układ strony](page-layout.md) i włączyć [obsługę języka JavaScript](javascript-samples.md) w przepływach użytkownika lub zasadach niestandardowych.
 
 ### <a name="user-accounts"></a>Konta użytkowników
 

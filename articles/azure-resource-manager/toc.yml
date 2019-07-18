@@ -152,6 +152,12 @@
               href: ./move-limitations/virtual-machines-move-limitations.md
             - name: Sieci wirtualne
               href: ./move-limitations/virtual-network-move-limitations.md
+    - name: Tagi
+      items:
+        - name: Tagowanie zasobów
+          href: resource-group-using-tags.md
+        - name: Pomoc techniczna dla tagów
+          href: tag-support.md
     - name: Zarządzanie
       items:
         - name: Zarządzanie grupami zasobów
@@ -176,9 +182,6 @@
             - name: Korzystanie z programu Azure PowerShell
               displayName: 'open,delete,deploy,move,lock,tag'
               href: manage-resources-powershell.md
-        - name: Organizowanie zasobów
-          displayName: tags
-          href: resource-group-using-tags.md
         - name: Blokowanie zasobów
           href: resource-group-lock-resources.md
         - name: Interfejs API uwierzytelniania na potrzeby dostępu do subskrypcji
@@ -251,12 +254,8 @@
           href: resource-group-template-functions-resource.md
         - name: Funkcje ciągów
           href: resource-group-template-functions-string.md
-    - name: Możliwości dotyczące zasobów
-      items:
-        - name: Usuwanie w trybie pełnym
-          href: complete-mode-deletion.md
-        - name: Pomoc techniczna dla tagów
-          href: tag-support.md
+    - name: Usuwanie w trybie pełnym
+      href: complete-mode-deletion.md
     - name: Dostawcy zasobów według usługi
       href: azure-services-resource-providers.md
     - name: REST — Resource Manager

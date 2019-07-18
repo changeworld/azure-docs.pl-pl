@@ -1,7 +1,7 @@
 ---
 title: Tworzenie aplikacji internetowej Java w systemie Linux — Azure App Service
 description: W ramach tego podręcznika Szybki start wdrożysz swoją pierwszą aplikację Hello world w języku Java w usłudze Azure App Service w systemie Linux w ciągu kilku minut.
-keywords: azure, app service, web app, linux, java, maven, quickstart
+keywords: Azure, App Service, Web App, Linux, Java, Maven, szybki start
 services: app-service\web
 documentationcenter: ''
 author: msangapu
@@ -16,19 +16,19 @@ ms.topic: quickstart
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 09a3ad182ff5ee19a81b03557b3277343912a774
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 30689e05a2567646ff541818dc68a90c13da7a56
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461415"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297254"
 ---
 # <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>Szybki start: tworzenie aplikacji w języku Java w usłudze App Service w systemie Linux
 
-Usługa [App Service w systemie Linux](app-service-linux-intro.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie przy użyciu systemu operacyjnego Linux. Ten przewodnik Szybki Start przedstawia sposób użycia [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) z [wtyczka Maven Plugin for Azure App Service](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) do wdrożenia pliku archiwum (WAR) w sieci web Java.
+Usługa [App Service w systemie Linux](app-service-linux-intro.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie przy użyciu systemu operacyjnego Linux. W tym przewodniku szybki start pokazano, jak używać [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) z [wtyczką Maven dla Azure App Service](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) w celu wdrożenia pliku archiwum sieci Web (War) języka Java.
 > [!NOTE]
 >
-> To samo można również wykonać przy użyciu popularnych środowisk IDE, takie jak IntelliJ oraz Eclipse. Zapoznaj się z naszym podobne dokumenty w [Azure Toolkit for IntelliJ Przewodnik Szybki Start](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) lub [Azure Toolkit for Eclipse Przewodnik Szybki Start](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app).
+> Ten sam element można także wykonać przy użyciu popularnych środowisk IDE, takich jak IntelliJ i zaćmienie. Zapoznaj się z naszymi dokumentami w [Azure Toolkit for IntelliJ przewodniku szybki start](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) lub [Azure Toolkit for Eclipse przewodnika Szybki Start](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app).
 >
 ![Przykładowa aplikacja działająca na platformie Azure](media/quickstart-java/java-hello-world-in-browser.png)
 
@@ -67,13 +67,13 @@ Następnie dodaj następującą definicję wtyczki w elemencie `<build>` pliku `
 </plugins>
 ```
 
-Proces wdrażania w usłudze Azure App Service przy użyciu poświadczeń konta z wiersza polecenia platformy Azure. [Zaloguj się przy użyciu wiersza polecenia platformy Azure](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) przed kontynuowaniem.
+Proces wdrażania do Azure App Service używa poświadczeń konta z interfejsu wiersza polecenia platformy Azure. Przed kontynuowaniem [Zaloguj się przy użyciu interfejsu wiersza polecenia platformy Azure](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) .
 
 ```azurecli
 az login
 ```
 
-Można skonfigurować wdrożenie, a następnie uruchom polecenie narzędzia maven `mvn azure-webapp:config` w wierszu polecenia i użyć domyślnej konfiguracji, naciskając klawisz **ENTER** do momentu uzyskania **Potwierdź (T/N)** w wierszu, następnie Naciśnij klawisz **"y"** i zakończeniu konfigurowania.
+Następnie możesz skonfigurować wdrożenie `mvn azure-webapp:config` , uruchomić polecenie Maven w wierszu polecenia i użyć konfiguracji domyślnych, naciskając klawisz **Enter** do momentu uzyskania monitu o **potwierdzenie (t/N)** , a następnie naciśnij klawisz **"Y"** , a konfiguracja zostanie ukończona. .
 
 ```cmd
 ~@Azure:~/helloworld$ mvn azure-webapp:config
@@ -83,7 +83,7 @@ Można skonfigurować wdrożenie, a następnie uruchom polecenie narzędzia mave
 [INFO] Building helloworld Maven Webapp 1.0-SNAPSHOT
 [INFO] --------------------------------[ war ]---------------------------------
 [INFO]
-[INFO] --- azure-webapp-maven-plugin:1.6.0:config (default-cli) @ helloworld ---
+[INFO] --- azure-webapp-maven-plugin:1.7.0:config (default-cli) @ helloworld ---
 [WARNING] The plugin may not work if you change the os of an existing webapp.
 Define value for OS(Default: Linux):
 1. linux [*]
@@ -114,17 +114,17 @@ Confirm (Y/N)? : Y
 > [!NOTE]
 > W tym artykule pracujemy tylko z aplikacjami w języku Java umieszczonych w pakietach w postaci plików WAR. Wtyczka obsługuje również aplikacje internetowe JAR. Odwiedź stronę [Deploy a Java SE JAR file to App Service on Linux](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) (Wdrażanie pliku JAR języka Java SE do usługi App Service w systemie Linux), aby wypróbować tę funkcję.
 
-Przejdź do `pom.xml` ponownie wyświetlić zostaje aktualizowana Konfiguracja wtyczki, można zmodyfikować inne konfiguracje dla usługi App Service bezpośrednio w pliku pom Jeżeli potrzebny, niektóre typowe z nich są wymienione poniżej:
+`pom.xml` Przejdź ponownie, aby zobaczyć, że konfiguracja wtyczki została zaktualizowana, w razie potrzeby można zmodyfikować inne konfiguracje dla App Service bezpośrednio w pliku pliku pom:
 
  Właściwość | Wymagane | Opis | Version
 ---|---|---|---
-`<schemaVersion>` | false | Określ wersję schematu konfiguracji. Obsługiwane są następujące wartości: `v1`, `v2`. | 1.5.2
-`<resourceGroup>` | true | Grupa zasobów platformy Azure dla aplikacji sieci Web. | 0.1.0+
-`<appName>` | true | Nazwa aplikacji sieci Web. | 0.1.0+
-[`<region>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) | true | Określa region, w którym będzie hostowana aplikacji sieci Web; Wartość domyślna to **westus**. We wszystkich regionach prawidłowy w [obsługiwane regiony](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) sekcji. | 0.1.0+
-[`<pricingTier>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme##pricingtier) | false | Warstwę cenową dla aplikacji sieci Web. Wartość domyślna to **P1V2**.| 0.1.0+
-[`<runtime>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting) | true | Konfiguracja środowiska uruchomieniowego, można wyświetlić szczegółowe informacje [tutaj](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting). | 0.1.0+
-[`<deployment>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting) | true | Konfiguracja wdrożenia można wyświetlić szczegóły [tutaj](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting). | 0.1.0+
+`<schemaVersion>` | false | Określ wersję schematu konfiguracji. Obsługiwane są następujące wartości `v1`: `v2`,. | 1.5.2
+`<resourceGroup>` | true | Grupa zasobów platformy Azure dla aplikacji sieci Web. | 0.1.0 +
+`<appName>` | true | Nazwa aplikacji sieci Web. | 0.1.0 +
+[`<region>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) | true | Określa region, w którym będzie hostowana aplikacja sieci Web; wartość domyślna to **zachodnie**. Wszystkie prawidłowe regiony w sekcji [Obsługiwane regiony](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) . | 0.1.0 +
+[`<pricingTier>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme##pricingtier) | false | Warstwa cenowa aplikacji sieci Web. Wartość domyślna to **P1V2**.| 0.1.0 +
+[`<runtime>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting) | true | Konfiguracja środowiska uruchomieniowego, w [tym miejscu](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting)można zobaczyć szczegóły. | 0.1.0 +
+[`<deployment>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting) | true | W konfiguracji wdrożenia można zobaczyć szczegóły [tutaj](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting). | 0.1.0 +
 
 ## <a name="deploy-the-app"></a>Wdrażanie aplikacji
 
@@ -150,10 +150,10 @@ az group delete --name <your resource group name; for example: helloworld-155840
 
 Wykonanie tego polecenia może potrwać około minutę.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek: Aplikacja przedsiębiorstwa Java z bazą danych PostgreSQL](tutorial-java-enterprise-postgresql-app.md)
+> [Samouczek: Aplikacja Java Enterprise z PostgreSQL](tutorial-java-enterprise-postgresql-app.md)
 
 > [!div class="nextstepaction"]
 > [Konfigurowanie aplikacji Java](configure-custom-container.md)
@@ -162,4 +162,4 @@ Wykonanie tego polecenia może potrwać około minutę.
 > [Ciągła integracja/ciągłe wdrażanie przy użyciu narzędzia Jenkins](/azure/jenkins/deploy-jenkins-app-service-plugin)
 
 > [!div class="nextstepaction"]
-> [Inne oferty Azure for Zasoby deweloperów języka Java](/java/azure/)
+> [Inne zasoby platformy Azure dla deweloperów języka Java](/java/azure/)
