@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 10/29/2018
+ms.date: 07/15/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: ece51892522721f7be3cdcadbb3b79705c9f83e4
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 9845329d30da40243751c00f7c0fa62fdcfe5a0d
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66384096"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67990090"
 ---
 # <a name="start-monitoring-your-website"></a>Rozpoczynanie monitorowania witryny internetowej
 
@@ -41,16 +41,18 @@ Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowol
 
 1. Wybierz pozycję **Utwórz zasób** > **Narzędzia do zarządzania** > **Application Insights**.
 
+   > [!NOTE]
+   >Jeśli tworzysz zasób Application Insights, możesz dowiedzieć się więcej, odwiedzając artykuł [Tworzenie zasobu Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) .
+
    Zostanie wyświetlone okno konfiguracji. Wypełnij pola wejściowe, używając poniższej tabeli.
 
-    | Ustawienia        | Wartość           | Opis  |
+    | Ustawienia        | Value           | Opis  |
    | ------------- |:-------------|:-----|
    | **Nazwa**      | Wartość unikatowa w skali globalnej | Nazwa identyfikująca monitorowaną aplikację |
-   | **Typ aplikacji** | Ogólnego zastosowania | Typ monitorowanej aplikacji |
    | **Grupa zasobów**     | myResourceGroup      | Nazwa nowej grupy zasobów hostującej dane usługi App Insights |
-   | **Lokalizacja** | Wschodnie stany USA | Wybierz lokalizację w pobliżu Ciebie lub w pobliżu miejsca hostowania aplikacji |
+   | **Location** | East US | Wybierz lokalizację w pobliżu Ciebie lub w pobliżu miejsca hostowania aplikacji |
 
-2. Kliknij pozycję **Utwórz**.
+2. Kliknij przycisk **Utwórz**.
 
 ## <a name="create-an-html-file"></a>Tworzenie pliku HTML
 

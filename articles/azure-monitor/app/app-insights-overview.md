@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 06/03/2019
 ms.author: mbullwin
-ms.openlocfilehash: cdaae4e539d5216cf4950c15349f01b54ae8acd2
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 5e42c36e6a321775e6017a2318857e20b7dcaf0d
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496369"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876461"
 ---
 # <a name="what-is-application-insights"></a>Co to jest usługa Application Insights?
 Usługa Application Insights jest rozszerzalną usługą zarządzania wydajnością aplikacji (APM) dla deweloperów sieci Web na wielu platformach. Użyj tej usługi do monitorowania aplikacji internetowej na żywo. Usługa automatycznie wykryje nieprawidłowości w zakresie wydajności. Obejmuje ona zaawansowane narzędzia analityczne, dzięki którym możesz diagnozować problemy i zrozumieć sposób korzystania z aplikacji przez użytkowników.  Usługa ta pomaga w ciągłym doskonaleniu wydajności i użyteczności tworzonych rozwiązań. Działa w przypadku aplikacji na różnych platformach, w tym .NET, Node.js i Java EE, hostowanych lokalnie w środowisku hybrydowym lub w dowolnej chmurze publicznej. Integruje się ona z procesem DevOps i ma punkty połączenia z szeroką gamą narzędzi programistycznych. Może monitorować i analizować dane telemetryczne z aplikacji mobilnych dzięki integracji z usługą Visual Studio App Center.
@@ -79,7 +79,7 @@ Istnieje wiele sposobów eksploracji danych. Zapoznaj się z następującymi art
 ### <a name="monitor"></a>Monitorowanie
 Zainstaluj usługę Application Insights w swojej aplikacji, skonfiguruj [testy sieci Web dostępności](../../azure-monitor/app/monitor-web-app-availability.md) oraz:
 
-* Dowiedz się, wartość domyślna [pulpit nawigacyjny aplikacji](../../azure-monitor/app/overview-dashboard.md) dla pomieszczenia zespołu, aby śledzić obciążenie, elastyczność i wydajność zależności, ładowania stron i wywołań AJAX.
+* Wyewidencjonuj domyślny [pulpit nawigacyjny aplikacji](../../azure-monitor/app/overview-dashboard.md) dla pokoju zespołu, aby śledzić obciążenie, czas reakcji oraz wydajność zależności, ładowania stron i wywołań AJAX.
 * Wykryj, jakie żądania są najwolniejsze i najczęściej kończą się niepowodzeniem.
 * Obejrzyj [transmisję strumieniową na żywo](../../azure-monitor/app/live-stream.md) podczas wdrażania nowej wersji, aby od razu dowiedzieć się o wszelkich pogorszeniach.
 
@@ -97,18 +97,19 @@ Po odebraniu alertu lub odnalezieniu problemu:
 * Zapisz niestandardową telemetrię do kodu.
 * Oprzyj następny cyklu rozwoju na twardych dowodach ze swojej telemetrii.
 
-## <a name="get-started"></a>Rozpoczęcie pracy
+## <a name="get-started"></a>Wprowadzenie
 Usługa Application Insights jest jedną z wielu usług hostowanych na platformie Microsoft Azure, a dane telemetryczne są przesyłane do analizy i prezentacji. Dlatego przed wykonaniem jakichkolwiek innych czynności będzie potrzebna subskrypcja platformy [Microsoft Azure](https://azure.com). Rejestracja jest bezpłatna, a jeśli wybierzesz podstawowy [plan cenowy](https://azure.microsoft.com/pricing/details/application-insights/) usługi Application Insights, nie będzie opłat do chwili, gdy aplikacja rozrośnie się na tyle, aby mieć znaczne wykorzystanie. Jeśli Twoja organizacja ma już subskrypcję, może ona dodać do niej Twoje konto Microsoft.
 
 Istnieje kilka sposobów, aby rozpocząć. Zacznij od tego, co najlepiej sprawdza się w Twoim przypadku. Resztę możesz dodać później.
 
-* **W czasie wykonywania: wdróż instrumentację aplikacji internetowej na serwerze.** Idealne rozwiązanie dla już wdrożone aplikacje. Pozwala uniknąć wszelkich aktualizacji kodu.
-  * [**Aplikacje ASP.NET hostowane w usługach IIS lokalnie lub na maszynie wirtualnej**](../../azure-monitor/app/monitor-performance-live-website-now.md)
-  * [**Aplikacje ASP.NET lub ASP.NET Core hostowanych w usłudze Azure Web Apps**](../../azure-monitor/app/azure-web-apps.md)
-* **W czasie tworzenia: dodaj usługę Application Insights do swojego kodu.** Umożliwia dostosowywanie zbierania danych telemetrycznych i wysyłanie dodatkowych danych telemetrycznych.
+* **W czasie wykonywania: wdróż instrumentację aplikacji internetowej na serwerze.** Idealne rozwiązanie w przypadku aplikacji, które zostały już wdrożone. Pozwala uniknąć wszelkich aktualizacji kodu.
+  * [**Aplikacje ASP.NET lub ASP.NET Core hostowane na platformie Azure Web Apps**](../../azure-monitor/app/azure-web-apps.md)
+  * [**ASP.NET aplikacje hostowane w usługach IIS na maszynie wirtualnej platformy Azure lub w zestawie skalowania maszyn wirtualnych platformy Azure**](../../azure-monitor/app/azure-vm-vmss-apps.md)
+  * [**ASP.NET aplikacje hostowane w lokalnych maszynach wirtualnych usług IIS**](../../azure-monitor/app/monitor-performance-live-website-now.md)
+* **W czasie tworzenia: dodaj usługę Application Insights do swojego kodu.** Pozwala dostosować zbieranie danych telemetrycznych i wysyłać dodatkowe dane telemetryczne.
   * [Aplikacje ASP.NET](../../azure-monitor/app/asp-net.md)
-  * [Aplikacje platformy ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
-  * [Aplikacje konsoli .NET](../../azure-monitor/app/console.md)
+  * [ASP.NET Core aplikacji](../../azure-monitor/app/asp-net-core.md)
+  * [Aplikacje konsolowe platformy .NET](../../azure-monitor/app/console.md)
   * [Java](../../azure-monitor/app/java-get-started.md)
   * [Node.js](../../azure-monitor/app/nodejs.md)
   * [Inne platformy](../../azure-monitor/app/platforms.md)
@@ -116,9 +117,10 @@ Istnieje kilka sposobów, aby rozpocząć. Zacznij od tego, co najlepiej sprawdz
 * **[Analizowanie użycia aplikacji mobilnej](../../azure-monitor/learn/mobile-center-quickstart.md)** dzięki integracji z usługą Visual Studio App Center.
 * **[Testy dostępności](../../azure-monitor/app/monitor-web-app-availability.md)** — regularnie używaj polecenia ping dla witryny sieci Web z naszych serwerów.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Rozpocznij pracę w czasie wykonywania za pomocą rozwiązań:
 
+* [Maszyna wirtualna platformy Azure i zestaw skalowania maszyn wirtualnych platformy Azure — aplikacje hostowane](../../azure-monitor/app/azure-vm-vmss-apps.md)
 * [Serwer usług IIS](../../azure-monitor/app/monitor-performance-live-website-now.md)
 * [Azure Web Apps](../../azure-monitor/app/azure-web-apps.md)
 
@@ -139,11 +141,11 @@ Rozpocznij pracę w czasie programowania za pomocą rozwiązań:
 * Blog:
   * [Blog usługi Application Insights](https://azure.microsoft.com/blog/tag/application-insights)
 
-## <a name="videos"></a>Filmy wideo
+## <a name="videos"></a>Wideo
 
-- Zewnętrzne wideo: [Konfigurowanie usługi Application Insights z aplikacją ASP.NET](https://www.youtube.com/watch?v=blnGAVgMAfA).
-- Zewnętrzne wideo: [Konfigurowanie usługi Application Insights przy użyciu platformy ASP.NET Core i Visual Studio](https://www.youtube.com/watch?v=NoS9UhcR4gA&t).
-- Zewnętrzne wideo: [Konfigurowanie usługi Application Insights przy użyciu platformy ASP.NET Core i Visual Studio Code](https://youtu.be/ygGt84GDync).
+- Wideo zewnętrzne: [konfigurowanie Application Insights z aplikacją ASP.NET](https://www.youtube.com/watch?v=blnGAVgMAfA).
+- Wideo zewnętrzne: [konfigurowanie Application Insights przy użyciu ASP.NET Core i programu Visual Studio](https://www.youtube.com/watch?v=NoS9UhcR4gA&t).
+- Wideo zewnętrzne: [konfigurowanie Application Insights z ASP.NET Core i Visual Studio Code](https://youtu.be/ygGt84GDync).
 
 <!--Link references-->
 

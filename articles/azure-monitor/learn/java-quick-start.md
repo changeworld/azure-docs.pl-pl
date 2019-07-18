@@ -1,22 +1,22 @@
 ---
 title: Szybki start — Azure Application Insights | Microsoft Docs
-description: Przedstawiono instrukcje pozwalające szybko skonfigurować aplikację internetową Java do monitorowania za pomocą usługi Application Insights
+description: Zawiera instrukcje umożliwiające szybką konfigurację aplikacji sieci Web w języku Java na potrzeby monitorowania za pomocą Application Insights
 services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.reviewer: lagayhar
-ms.date: 04/18/2019
+ms.date: 07/15/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: fc47b00bb266bb57ecffbb522667ca67ac7c8c97
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: ef3c7668f1fb462b2d6a91cc90746437e74df51d
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67656744"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67989887"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>Rozpoczynanie monitorowania aplikacji internetowej Java
 
@@ -36,7 +36,7 @@ Jeśli nie masz dynamicznego projektu internetowego Java, możesz go utworzyć, 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
-Jeśli wolisz Spring framework, spróbuj [skonfigurować aplikację Spring Boot inicjatora do użycia w przewodniku usługi Application Insights](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)
+Jeśli wolisz platformę sieci szkieletowej, wypróbuj [aplikację "Konfigurowanie inicjatora rozruchu sprężynowego" w celu użycia przewodnika Application Insights](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
@@ -49,8 +49,6 @@ Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowol
 1. Wybierz pozycję **Utwórz zasób** > **Narzędzia deweloperskie** > **Application Insights**.
 
    ![Dodawanie zasobu usługi Application Insights](./media/java-quick-start/1createresourseappinsights.png)
-
-   ![Dodawanie zasobu usługi Application Insights](./media/java-quick-start/2createjavaapp.png)
 
    Zostanie wyświetlone okno konfiguracji. Wypełnij pola wejściowe, używając poniższej tabeli.
 
@@ -91,7 +89,7 @@ Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowol
 
 ## <a name="start-monitoring-in-the-azure-portal"></a>Rozpoczynanie monitorowania w witrynie Azure Portal
 
-1. Możesz teraz ponownie otworzyć usługę Application Insights **Przegląd** strony w witrynie Azure portal, aby wyświetlić szczegółowe informacje o obecnie uruchomionej aplikacji.
+1. Możesz teraz ponownie otworzyć stronę **omówienia** Application Insights w Azure Portal, aby wyświetlić szczegółowe informacje o aktualnie uruchomionej aplikacji.
 
    ![Menu Przegląd usługi Application Insights](./media/java-quick-start/3overview.png)
 
@@ -99,7 +97,7 @@ Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowol
 
    ![Mapa aplikacji](./media/java-quick-start/4appmap.png)
 
-3.  Kliknij pozycję **analizy aplikacji** ikonę ![ikona mapy aplikacji](./media/java-quick-start/006.png) **Wyświetl w obszarze analiza**.  Spowoduje to otwarcie strony **Analiza usługi Application Insights**, która udostępnia zaawansowany język zapytań na potrzeby analizy wszystkich danych zbieranych przez usługę Application Insights. W tym przypadku jest generowane zapytanie, które renderuje liczbę żądań w formie wykresu. Możesz pisać własne zapytania do analizy innych danych.
+3.  Kliknij ![ikonę **Analiza aplikacji** widok ikona](./media/java-quick-start/006.png) mapy aplikacji **w obszarze Analiza**.  Spowoduje to otwarcie strony **Analiza usługi Application Insights**, która udostępnia zaawansowany język zapytań na potrzeby analizy wszystkich danych zbieranych przez usługę Application Insights. W tym przypadku jest generowane zapytanie, które renderuje liczbę żądań w formie wykresu. Możesz pisać własne zapytania do analizy innych danych.
 
    ![Wykres analizy żądań użytkowników w danym okresie](./media/java-quick-start/5analytics.png)
 
@@ -137,7 +135,7 @@ Więcej informacji na temat monitorowania środowiska Java można znaleźć w [d
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Po zakończeniu testowania, możesz usunąć grupę zasobów i wszystkie pokrewne zasoby. Można więc wykonaj poniższe kroki.
+Po zakończeniu testowania można usunąć grupę zasobów i wszystkie powiązane zasoby. W tym celu wykonaj poniższe kroki.
 
 1. W menu znajdującym się po lewej stronie w witrynie Azure Portal kliknij pozycję **Grupy zasobów**, a następnie kliknij pozycję **myResourceGroup**.
 2. Na stronie grupy zasobów kliknij pozycję **Usuń**, wpisz w polu tekstowym nazwę **myResourceGroup**, a następnie kliknij pozycję **Usuń**.

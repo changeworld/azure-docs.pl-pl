@@ -12,14 +12,14 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 88c9996ce3f2d89ae58881c913f6bd4e549b5814
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: ec2b974e008ea4c7e266f5ae0d46cd67d2133e54
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62117751"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67853998"
 ---
-# <a name="run-a-custom-linux-container-in-azure-app-service"></a>Uruchamianie niestandardowego kontenera systemu Linux w usłudze Azure App Service
+# <a name="run-a-custom-linux-container-in-azure-app-service"></a>Uruchamianie niestandardowego kontenera systemu Linux w Azure App Service
 
 Usługa [App Service dla systemu Linux](app-service-linux-intro.md) zapewnia wstępnie zdefiniowane stosy aplikacji w systemie Linux z obsługą języków takich jak .NET, PHP, Node.js i innych. Można także użyć niestandardowego obrazu platformy Docker, aby uruchamiać aplikację internetową na stosie aplikacji, który nie jest zdefiniowany na platformie Azure. W tym przewodniku Szybki start pokazano, jak utworzyć aplikację internetową i wdrożyć w niej obraz Go z usługi Docker Hub. Do tworzenia aplikacji internetowej używany jest [interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
 
@@ -33,9 +33,9 @@ Usługa [App Service dla systemu Linux](app-service-linux-intro.md) zapewnia wst
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-## <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
+## <a name="create-a-web-app"></a>Tworzenie aplikacji sieci web
 
-Utwórz [aplikację internetową](../overview.md) w `myAppServicePlan`planie usługi App Service za pomocą polecenia [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). Nie zapomnij zastąpić elementu `<app name>` unikatową w skali globalnej nazwą aplikacji.
+Utwórz [aplikację internetową](../overview.md) w `myAppServicePlan`planie usługi App Service za pomocą polecenia [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). Nie `<app name>` zapomnij zamienić na globalnie unikatową nazwę aplikacji (prawidłowe znaki `a-z`to `0-9`, i `-`).
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --deployment-container-image-name microsoft/azure-appservices-go-quickstart
@@ -72,13 +72,13 @@ http://<app_name>.azurewebsites.net/hello
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek: Wdrażanie z repozytorium prywatnego kontenerów](tutorial-custom-docker-image.md)
+> [Samouczek: Wdróż z repozytorium prywatnego kontenera](tutorial-custom-docker-image.md)
 
 > [!div class="nextstepaction"]
-> [Konfigurowanie niestandardowego kontenera](configure-custom-container.md)
+> [Konfigurowanie kontenera niestandardowego](configure-custom-container.md)
 
 > [!div class="nextstepaction"]
-> [Samouczek: Aplikację WordPress z obsługą wielu kontenerów](tutorial-multi-container-app.md)
+> [Samouczek: Aplikacja WordPress z obsługą wiele kontenerów](tutorial-multi-container-app.md)
