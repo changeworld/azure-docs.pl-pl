@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c0dde4c59c2fe9cde23a9f88c69f3e2673942812
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 7976dcafe8bb3f787465e72b6a61bbc48daf4086
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62117687"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849552"
 ---
 # <a name="create-a-php-app-in-app-service-on-linux"></a>Tworzenie aplikacji w języku PHP w usłudze App Service w systemie Linux
 
@@ -28,7 +28,7 @@ ms.locfileid: "62117687"
 > W tym artykule opisano wdrażanie aplikacji w usłudze App Service w systemie Linux. Aby wdrożyć aplikację w usłudze App Service w systemie _Windows_, zobacz [Tworzenie aplikacji PHP na platformie Azure](../app-service-web-get-started-php.md).
 >
 
-Usługa [App Service w systemie Linux](app-service-linux-intro.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie przy użyciu systemu operacyjnego Linux. Ten samouczek Szybki start przedstawia sposób wdrażania aplikacji PHP w usłudze Azure App Service w systemie Linux. Aplikację z wbudowanym obrazem możesz utworzyć przy użyciu [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) w usłudze Cloud Shell. Usługa Git umożliwia wdrażanie kodu w języku PHP w aplikacji usługi App Service.
+Usługa [App Service w systemie Linux](app-service-linux-intro.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie przy użyciu systemu operacyjnego Linux. Ten samouczek szybki start przedstawia sposób wdrażania aplikacji PHP do Azure App Service w systemie Linux przy użyciu [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
 
 ![Przykładowa aplikacja działająca na platformie Azure](media/quickstart-php/hello-world-in-browser.png)
 
@@ -76,7 +76,7 @@ W oknie terminalu naciśnij kombinację klawiszy **Ctrl + C**, aby zamknąć ser
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-## <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
+## <a name="create-a-web-app"></a>Tworzenie aplikacji sieci web
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-php-linux-no-h.md)] 
 
@@ -166,10 +166,10 @@ Menu po lewej stronie zawiera różne strony służące do konfigurowania aplika
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Samouczek: Aplikacja PHP z bazą danych MySQL](tutorial-php-mysql-app.md)
 
 > [!div class="nextstepaction"]
-> [Konfigurowanie aplikacji w języku PHP](configure-language-php.md)
+> [Konfigurowanie aplikacji PHP](configure-language-php.md)

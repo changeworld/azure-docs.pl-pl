@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: go
 ms.topic: quickstart
 author: David-Engel
-ms.author: v-daveng
+ms.author: craigg
 ms.reviewer: MightyPen
 manager: craigg
 ms.date: 02/12/2019
-ms.openlocfilehash: 0014dc0edde0eafc153b40eec06c6bd6dc8446b5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 25de6fc2d752020ea47913bf6a4666735026b96f
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61409109"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871679"
 ---
 # <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>Szybki start: korzystanie z języka Golang do wykonywania zapytań w bazie danych Azure SQL Database
 
@@ -31,13 +31,13 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
   || Pojedyncza baza danych | Wystąpienie zarządzane |
   |:--- |:--- |:---|
-  | Przycisk Utwórz| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
+  | Create| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [Interfejs wiersza polecenia](scripts/sql-database-create-and-configure-database-cli.md) | [Interfejs wiersza polecenia](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [Program PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [Program PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Konfigurowanie | [Reguła zapory IP na poziomie serwera](sql-database-server-level-firewall-rule.md)| [Łączność z maszyny wirtualnej](sql-database-managed-instance-configure-vm.md)|
+  | Konfigurowanie | [Reguła zapory bazująca na adresach IP na poziomie serwera](sql-database-server-level-firewall-rule.md)| [Łączność z maszyny wirtualnej](sql-database-managed-instance-configure-vm.md)|
   |||[Łączność ze środowiska lokalnego](sql-database-managed-instance-configure-p2s.md)
   |Ładowanie danych|Ładowanie bazy danych Adventure Works na potrzeby samouczka Szybki start|[Przywracanie bazy danych Wide World Importers](sql-database-managed-instance-get-started-restore.md)
-  |||Przywróć lub zaimportować Adventure Works z [BACPAC](sql-database-import.md) plik wchodzącej w skład [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  |||Przywróć lub zaimportuj Adventure Works z pliku [BACPAC](sql-database-import.md) z usługi [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
   > [!IMPORTANT]
@@ -328,7 +328,7 @@ Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą dan
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Projektowanie pierwszej bazy danych SQL na platformie Azure](sql-database-design-first-database.md)
+- [Projektowanie pierwszej bazy danych Azure SQL Database](sql-database-design-first-database.md)
 - [Sterownik języka Golang dla programu Microsoft SQL Server](https://github.com/denisenkom/go-mssqldb)
 - [Zgłaszanie problemów/zadawanie pytań](https://github.com/denisenkom/go-mssqldb/issues)
 

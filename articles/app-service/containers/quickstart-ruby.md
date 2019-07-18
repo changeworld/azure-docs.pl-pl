@@ -13,30 +13,30 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 07/11/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 29126171a2d808153c7578d911e0725641ec39ff
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: f9f142543140be3348bf7cd94894cc9e88278368
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62117639"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849485"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service-on-linux"></a>Informacje na temat tworzenia aplikacji Ruby on Rails w usłudze App Service w systemie Linux
 
-Usługa [Azure App Service w systemie Linux](app-service-linux-intro.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie. Ten przewodnik szybkiego startu pokazuje, jak utworzyć podstawową aplikację [Ruby on Rails](https://rubyonrails.org/), którą można wdrożyć na platformie Azure jako aplikację internetową w systemie Linux.
+Usługa [App Service w systemie Linux](app-service-linux-intro.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie przy użyciu systemu operacyjnego Linux. Ten samouczek szybki start przedstawia sposób wdrażania aplikacji języka Ruby on-Szyns w celu Azure App Service w systemie Linux przy użyciu [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
 
 > [!NOTE]
-> Obecnie stos programistyczny Ruby obsługuje jedynie aplikację Ruby on Rails. Jeśli chcesz użyć innej platformy, takie jak Sinatra, lub jeśli chcesz użyć [nieobsługiwana wersja środowiska Ruby](app-service-linux-intro.md), musisz [ją uruchomić w kontener niestandardowy](quickstart-docker-go.md).
+> Obecnie stos programistyczny Ruby obsługuje jedynie aplikację Ruby on Rails. Jeśli chcesz użyć innej platformy, takiej jak Sinatra, lub jeśli chcesz użyć nieobsługiwanej [wersji języka Ruby](app-service-linux-intro.md), musisz [uruchomić ją w kontenerze](quickstart-docker-go.md)niestandardowym.
 
-![Hello-world](./media/quickstart-ruby/hello-world-updated.png)
+![Hello-world](./media/quickstart-ruby/hello-world-configured.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* <a href="https://www.ruby-lang.org/en/documentation/installation/#rubyinstaller" target="_blank">Zainstaluj oprogramowanie Ruby 2.3 lub nowsze</a>
+* <a href="https://www.ruby-lang.org/en/documentation/installation/#rubyinstaller" target="_blank">Zainstaluj język Ruby 2,6 lub nowszy</a>
 * <a href="https://git-scm.com/" target="_blank">Zainstaluj oprogramowanie Git</a>
 
 ## <a name="download-the-sample"></a>Pobierz przykład
@@ -51,7 +51,7 @@ git clone https://github.com/Azure-Samples/ruby-docs-hello-world
 
 Uruchom aplikację lokalnie, aby zobaczyć, jak powinna ona wyglądać, gdy wdrożysz ją na platformie Azure. Otwórz okno terminala, zmień katalog na `hello-world` i użyj polecenia `rails server`, aby uruchomić serwer.
 
-Pierwszym krokiem jest zainstalowanie wymaganych rozwiązań Gem. W próbce znajduje się `Gemfile`, więc nie trzeba określać rozwiązań Gem do zainstalowania. W tym celu użyjemy programu instalującego niezamówione pakiety oprogramowania:
+Pierwszym krokiem jest zainstalowanie wymaganych rozwiązań Gem. `Gemfile` Znajduje się w próbce, więc po prostu uruchom następujące polecenie:
 
 ```bash
 bundle install
@@ -65,7 +65,7 @@ bundle exec rails server
 
 Przy użyciu przeglądarki internetowej przejdź pod adres `http://localhost:3000`, aby przetestować aplikację lokalnie.
 
-![Skonfigurowana aplikacja Hello World](./media/quickstart-ruby/hello-world-configured.png)
+![Skonfigurowana aplikacja Hello World](./media/quickstart-ruby/hello-world-updated.png)
 
 [!INCLUDE [Try Cloud Shell](../../../includes/cloud-shell-try-it.md)]
 
@@ -75,11 +75,11 @@ Przy użyciu przeglądarki internetowej przejdź pod adres `http://localhost:300
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-## <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
+## <a name="create-a-web-app"></a>Tworzenie aplikacji sieci web
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-ruby-linux-no-h.md)] 
 
-Przejdź do witryny, aby zobaczyć nowo utworzoną aplikację internetową z wbudowanym obrazem. Zastąp ciąg _&lt;nazwa aplikacji>_ nazwą swojej aplikacji internetowej.
+Przejdź do aplikacji, aby zobaczyć nowo utworzoną aplikację internetową z wbudowanym obrazem. Zastąp ciąg _&lt;nazwa aplikacji>_ nazwą swojej aplikacji internetowej.
 
 ```bash
 http://<app_name>.azurewebsites.net
@@ -91,55 +91,50 @@ Tak powinna wyglądać nowa aplikacja internetowa:
 
 ## <a name="deploy-your-application"></a>Wdrażanie aplikacji
 
-Uruchom następujące polecenia w celu wdrożenia lokalnej aplikacji w witrynie internetowej platformy Azure:
+Uruchom następujące polecenia, aby wdrożyć aplikację lokalną w aplikacji sieci Web platformy Azure:
 
 ```bash
 git remote add azure <Git deployment URL from above>
-git add -A
-git commit -m "Initial deployment commit"
 git push azure master
 ```
 
 Upewnij się, że operacje zdalnego wdrażania raportują powodzenie. Polecenia tworzą dane wyjściowe podobne do następującego tekstu:
 
 ```bash
-remote: Using sass-rails 5.0.6
-remote: Updating files in vendor/cache
-remote: Bundle gems are installed into ./vendor/bundle
-remote: Updating files in vendor/cache
-remote: ~site/repository
+remote: Using turbolinks 5.2.0
+remote: Using uglifier 4.1.20
+remote: Using web-console 3.7.0
+remote: Bundle complete! 18 Gemfile dependencies, 78 gems now installed.
+remote: Bundled gems are installed into `/tmp/bundle`
+remote: Zipping up bundle contents
+remote: .......
+remote: ~/site/repository
 remote: Finished successfully.
 remote: Running post deployment command(s)...
 remote: Deployment successful.
-To https://<your web app name>.scm.azurewebsites.net/<your web app name>.git
-  579ccb....2ca5f31  master -> master
-myuser@ubuntu1234:~workspace/<app name>$
+remote: App container will begin restart within 10 seconds.
+To https://<app-name>.scm.azurewebsites.net/<app-name>.git
+   a6e73a2..ae34be9  master -> master
 ```
 
-Po zakończeniu wdrożenia uruchom ponownie swoją aplikację internetową, aby wdrożenie zostało zastosowane, korzystając z polecenia [`az webapp restart`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-restart), jak pokazano poniżej:
-
-```azurecli-interactive
-az webapp restart --name <app name> --resource-group myResourceGroup
-```
-
-Przejdź do swojej witryny i sprawdź wyniki.
+Po zakończeniu wdrożenia Poczekaj około 10 sekund na ponowne uruchomienie aplikacji sieci Web, a następnie przejdź do aplikacji sieci Web i sprawdź wyniki.
 
 ```bash
-http://<app name>.azurewebsites.net
+http://<app-name>.azurewebsites.net
 ```
 
-![uaktualniona aplikacja internetowa](./media/quickstart-ruby/hello-world-updated.png)
+![uaktualniona aplikacja internetowa](./media/quickstart-ruby/hello-world-configured.png)
 
 > [!NOTE]
-> Podczas ponownego uruchamiania aplikacji próba przeglądania wyników witryny powoduje wyświetlenie kodu stanu HTTP `Error 503 Server unavailable`. Proces ponownego uruchamiania może potrwać kilka minut.
+> Po ponownym uruchomieniu aplikacji można obserwować kod `Error 503 Server unavailable` stanu HTTP w przeglądarce lub na `Hey, Ruby developers!` stronie domyślnej. Ponowne uruchomienie aplikacji może potrwać kilka minut.
 >
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek: Ruby on Rails z Postgres](tutorial-ruby-postgres-app.md)
+> [Samouczek: Język Ruby na szynach z Postgres](tutorial-ruby-postgres-app.md)
 
 > [!div class="nextstepaction"]
-> [Konfigurowanie aplikacji języka Ruby](configure-language-ruby.md)
+> [Konfigurowanie aplikacji Ruby](configure-language-ruby.md)

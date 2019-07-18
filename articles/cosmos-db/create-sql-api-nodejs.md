@@ -8,18 +8,17 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: dech
-ms.openlocfilehash: ec6f676933f5c275c49fa4da1af0e1c3084dab89
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 19312e6c6aa71a81c3339e7d40de582490c4ffff
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754567"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67986341"
 ---
 # <a name="quickstart-build-a-nodejs-app-using-azure-cosmos-db-sql-api-account"></a>Szybki start: Tworzenie aplikacji platformy Node.js przy użyciu konta interfejsu API SQL usługi Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
-> * [.NET (wersja zapoznawcza)](create-sql-api-dotnet-preview.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
@@ -133,7 +132,7 @@ Wszystkie poniższe fragmenty kodu pochodzą z pliku **app.js**.
 
 Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach połączenia i skopiować je do aplikacji.
 
-1. W [witryny Azure portal](https://portal.azure.com/), w ramach konta usługi Azure Cosmos w nawigacji po lewej stronie kliknij **klucze**, a następnie kliknij przycisk **klucze odczytu i zapisu**. W następnym kroku, korzystając z przycisków kopiowania dostępnych po prawej stronie ekranu, skopiujesz identyfikator URI i klucz podstawowy do pliku `config.js`.
+1. W [Azure Portal](https://portal.azure.com/)na koncie usługi Azure Cosmos w lewym okienku nawigacji kliknij pozycję **klucze**, a następnie kliknij pozycję **klucze odczytu i zapisu**. W następnym kroku, korzystając z przycisków kopiowania dostępnych po prawej stronie ekranu, skopiujesz identyfikator URI i klucz podstawowy do pliku `config.js`.
 
     ![Wyświetlanie i kopiowanie klucza dostępu w witrynie Azure Portal, blok Klucze](./media/create-sql-api-dotnet/keys.png)
 
@@ -162,9 +161,9 @@ Teraz można wrócić do Eksploratora danych i zobaczyć, jak się pracuje z now
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki Start wyjaśniono sposób tworzenia konta usługi Azure Cosmos, tworzenia kontenera za pomocą Eksploratora danych i uruchamiania aplikacji. Teraz możesz zaimportować dodatkowe dane do swojego konta usługi Cosmos DB. 
+W tym przewodniku szybki start przedstawiono sposób tworzenia konta usługi Azure Cosmos, tworzenia kontenera przy użyciu Eksplorator danych i uruchamiania aplikacji. Teraz możesz zaimportować dodatkowe dane do swojego konta usługi Cosmos DB. 
 
 > [!div class="nextstepaction"]
 > [Importowanie danych do usługi Azure Cosmos DB](import-data.md)
