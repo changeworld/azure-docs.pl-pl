@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/05/2019
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: c98d52e95a285c2979742c8572a86718238548f4
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: ba1ec821bd25e3b9f4479c3d09fdf5ab981ab0a7
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67985627"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305506"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Samouczek: Tworzenie aplikacji konsolowej Node.js przy użyciu zestawu SDK dla języka JavaScript na potrzeby zarządzania danymi interfejsu API SQL usługi Azure Cosmos DB
 
@@ -93,13 +93,13 @@ Gdy aplikacja już istnieje, musisz się upewnić, że może ona komunikować si
    config.primaryKey = "~your primary key here~";
    ``` 
 
-1. Skopiuj i wklej dane ```database```, ```container``` i ```items``` do obiektu ```config``` poniżej miejsca, w którym zostały ustawione właściwości ```config.endpoint``` i ```config.primaryKey```. Jeśli masz już dane, które chcesz przechowywać w bazie danych, możesz użyć narzędzia migracji danych w usłudze Azure Cosmos DB, zamiast definiować tutaj dane. Plik config.js powinna mieć następujący kod:
+1. Skopiuj i wklej dane ```database```, ```container``` i ```items``` do obiektu ```config``` poniżej miejsca, w którym zostały ustawione właściwości ```config.endpoint``` i ```config.primaryKey```. Jeśli masz już dane, które chcesz przechowywać w bazie danych, możesz użyć narzędzia migracji danych w usłudze Azure Cosmos DB, zamiast definiować tutaj dane. Plik config. js powinien mieć następujący kod:
 
    [!code-javascript[nodejs-get-started](~/cosmosdb-nodejs-get-started/config.js)]
 
    Zestaw SDK dla języka JavaScript używa terminów *kontener* i *element* w znaczeniu ogólnym. Kontener może być kolekcją, wykresem lub tabelą. Element może być dokumentem, krawędzią/wierzchołkiem lub wierszem i stanowi zawartość znajdująca się w kontenerze. 
    
-   `module.exports = config;` Kod jest używany do eksportowania swoje ```config``` obiektu tak, aby podać go w ramach ```app.js``` pliku.
+   `module.exports = config;`kod służy do eksportowania ```config``` obiektu, dzięki czemu można odwoływać się do niego ```app.js``` w pliku.
 
 ## <a id="Connect"></a>Łączenie się z kontem usługi Azure Cosmos DB
 
@@ -127,8 +127,9 @@ Gdy aplikacja już istnieje, musisz się upewnić, że może ona komunikować si
 > [!Note]
 > W przypadku nawiązywania połączenia z **Emulatorem usługi Cosmos DB** wyłącz weryfikację SSL przez utworzenie niestandardowych zasad połączenia.
 >   ```
->   const connectionPolicy = new cosmos.ConnectionPolicy ()
->   connectionPolicy.DisableSSLVerification = true
+>   const ConnectionPolicy = require('@azure/cosmos').ConnectionPolicy;
+>   const connectionPolicy = new ConnectionPolicy();
+>   connectionPolicy.DisableSSLVerification = true;
 >
 >   const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey }, connectionPolicy });
 >   ```
@@ -152,7 +153,7 @@ Teraz, gdy masz kod służący do zainicjowania klienta usługi Azure Cosmos DB,
 
    Bazę danych można utworzyć przy użyciu funkcji `createIfNotExists` lub funkcji create klasy **Databases**. Baza danych jest logicznym kontenerem elementów podzielonym na partycje w kontenerach. 
 
-2. Skopiuj i wklej metody **createDatabase** i **readDatabase** do pliku app.js pod definicją ```databaseId``` i ```containerId```. **CreateDatabase** funkcji utworzy nową bazę danych o identyfikatorze ```FamilyDatabase```określone z ```config``` obiektu, jeśli go jeszcze nie istnieje. Funkcja **readDatabase** odczyta definicję bazy danych w celu sprawdzenia, czy baza danych istnieje.
+2. Skopiuj i wklej metody **createDatabase** i **readDatabase** do pliku app.js pod definicją ```databaseId``` i ```containerId```. Funkcja **dbdatabase** utworzy nową bazę danych o identyfikatorze ```FamilyDatabase``` ```config``` , określoną na podstawie obiektu, jeśli jeszcze nie istnieje. Funkcja **readDatabase** odczyta definicję bazy danych w celu sprawdzenia, czy baza danych istnieje.
 
    ```javascript
    /**
@@ -380,7 +381,7 @@ Kontener można utworzyć przy użyciu funkcji `createIfNotExists` lub funkcji c
 
 Element można utworzyć za pomocą funkcji create klasy **Items**. Gdy korzystasz z interfejsu API SQL, elementy są przekazywane jako dokumenty, które stanowią zdefiniowaną przez użytkownika (dowolną) zawartość JSON. Teraz można wstawić element do bazy danych Azure Cosmos DB.
 
-1. Skopiuj i wklej funkcję **createFamilyItem** poniżej funkcji **readContainer**. Funkcja **createFamilyItem** służy do tworzenia elementów zawierających dane JSON zapisane w obiekcie ```config```. Sprawdzimy upewnij się, że element o takim samym identyfikatorze jeszcze nie istnieje przed jego utworzeniem.
+1. Skopiuj i wklej funkcję **createFamilyItem** poniżej funkcji **readContainer**. Funkcja **createFamilyItem** służy do tworzenia elementów zawierających dane JSON zapisane w obiekcie ```config```. Sprawdzimy, czy element o takim samym IDENTYFIKATORze jeszcze nie istnieje przed jego utworzeniem.
 
    ```javascript
    /**
@@ -657,7 +658,7 @@ Jeśli nie masz czasu na ukończenie tego samouczka lub po prostu chcesz pobrać
 
 Do uruchomienia rozwiązania z wprowadzeniem, które zawiera cały kod znajdujący się w tym artykule, będą potrzebne następujące elementy: 
 
-* [Konta usługi Azure Cosmos DB][create-account]. 
+* [Konto Azure Cosmos DB][create-account]. 
 * Rozwiązanie [z wprowadzeniem](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started) dostępne w witrynie GitHub. 
 
 Zainstaluj zależności projektu za pomocą menedżera npm. Użyj następującego polecenia: 

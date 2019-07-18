@@ -1,7 +1,7 @@
 ---
 title: 'Szybki start: Wywoływanie interfejsu API analizy tekstu przy użyciu języka Python'
 titleSuffix: Azure Cognitive Services
-description: Pobierz informacje oraz przykłady kodu w celu szybkiego Rozpocznij pracę przy użyciu interfejsu API analizy tekstu w usługach Azure Cognitive Services.
+description: Uzyskaj informacje i przykłady kodu, aby szybko rozpocząć korzystanie z interfejs API analizy tekstu na platformie Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,17 +10,17 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 06/28/2019
 ms.author: aahi
-ms.openlocfilehash: 835dc8d25ad1d6a30020408636b556c3f247200d
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: fdef4bc582a61033a45b88d2ab7dcf9da92a91f1
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478371"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305498"
 ---
-# <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Szybki start: Za pomocą interfejsu API REST języka Python do wywoływania usług Cognitive analizy tekstu 
+# <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Szybki start: Korzystanie z interfejsu API REST języka Python w celu wywołania usługi analiza tekstu poznawczej 
 <a name="HOLTop"></a>
 
-Użyj tego przewodnika Szybki Start, aby rozpocząć analizowanie język za pomocą interfejsu REST API analizy tekstu i Python. W tym artykule przedstawiono, jak do [Wykryj język](#Detect), [analizowanie tonacji](#SentimentAnalysis), [wyodrębnianie kluczowych fraz](#KeyPhraseExtraction), i [zidentyfikować połączonych jednostek](#Entities).
+Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć analizowanie języka za pomocą interfejsu API REST analiza tekstu i środowiska Python. W tym artykule pokazano, jak [wykryć język](#Detect), [analizować tonacji](#SentimentAnalysis), [wyodrębniać kluczowe frazy](#KeyPhraseExtraction)i [identyfikować połączone jednostki](#Entities).
 
 Zapoznaj się z tematem [API definitions (Definicje interfejsu API)](//go.microsoft.com/fwlink/?LinkID=759346), zawierającym dokumentację techniczną interfejsów API.
 
@@ -28,11 +28,11 @@ Zapoznaj się z tematem [API definitions (Definicje interfejsu API)](//go.micros
 
 * [Python 3.x](https://python.org)
 
-* [Punktu końcowego i klucza dostępu](../How-tos/text-analytics-how-to-access-key.md) wygenerowany dla Ciebie podczas tworzenia konta.
+* [Punkt końcowy i klucz dostępu](../How-tos/text-analytics-how-to-access-key.md) , który został wygenerowany dla Ciebie podczas rejestracji.
 
-* Python żądań biblioteki
+* Biblioteka żądań języka Python
     
-    Biblioteki można zainstalować za pomocą następującego polecenia:
+    Bibliotekę można zainstalować za pomocą tego polecenia:
 
     ```console
     pip install --upgrade requests
@@ -43,7 +43,7 @@ Zapoznaj się z tematem [API definitions (Definicje interfejsu API)](//go.micros
 
 ## <a name="create-a-new-python-application"></a>Tworzenie nowej aplikacji w języku Python
 
-Utwórz nową aplikację języka Python w ulubionym edytorze lub w środowisku IDE. Dodaj następujące instrukcje importu do pliku.
+Utwórz nową aplikację w języku Python w ulubionym edytorze lub w środowisku IDE. Dodaj następujące Importy do pliku.
 
 ```python
 import requests
@@ -51,26 +51,26 @@ import requests
 from pprint import pprint
 ```
 
-Utwórz zmienne swój klucz subskrypcji i punkt końcowy interfejsu API REST analizy tekstu. Sprawdź, czy region w punkcie końcowym odpowiada z użytym podczas tworzenia konta (na przykład `westcentralus`). Jeśli używasz bezpłatnej wersji próbnej klucza, nie trzeba wprowadzić zmiany.
+Utwórz zmienne dla klucza subskrypcji i punkt końcowy analiza tekstu interfejsu API REST. Sprawdź, czy region w punkcie końcowym odpowiada temu, który został użyty podczas rejestracji (na przykład `westcentralus`). W przypadku korzystania z bezpłatnego klucza próbnego nie trzeba zmieniać żadnych elementów.
     
 ```python
 subscription_key = "<ADD YOUR KEY HERE>"
 text_analytics_base_url = "https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/"
 ```
 
-Poniżej opisano sposób wywoływania każdą z funkcji interfejsu API.
+W poniższych sekcjach opisano sposób wywoływania poszczególnych funkcji interfejsu API.
 
 <a name="Detect"></a>
 
 ## <a name="detect-languages"></a>Wykrywanie języków
 
-Dołącz `languages` do podstawowego punktu końcowego analizy tekstu w celu utworzenia adresu URL wykrywanie języka. Na przykład: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`
+Dołącz `languages` do podstawowego punktu końcowego analiza tekstu, aby utworzyć adres URL wykrywania języka. Na przykład: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`
     
 ```python
 language_api_url = text_analytics_base_url + "languages"
 ```
 
-Ładunek do interfejsu API składa się z listy `documents`, które są spójne kolekcje zawierające `id` i `text` atrybutu. `text` Atrybut przechowuje tekst, który ma być analizowane i `id` może być dowolna wartość. 
+Ładunek do interfejsu API składa się z listy `documents`, która jest krotką `id` zawierającą i `text` atrybut. Ten `text` atrybut przechowuje tekst do przeanalizowania, `id` a może być dowolną wartością. 
 
 ```python
 documents = { "documents": [
@@ -80,7 +80,7 @@ documents = { "documents": [
 ]}
 ```
 
-Biblioteka żądań służy do wysyłania dokumenty do interfejsu API. Dodaj klucz subskrypcji, aby `Ocp-Apim-Subscription-Key` nagłówka i Wyślij żądanie za pomocą `requests.post()`. 
+Użyj biblioteki Requests, aby wysłać dokumenty do interfejsu API. Dodaj swój klucz subskrypcji do `Ocp-Apim-Subscription-Key` nagłówka i Wyślij żądanie przy użyciu. `requests.post()` 
 
 ```python
 headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
@@ -133,13 +133,13 @@ pprint(languages)
 
 ## <a name="analyze-sentiment"></a>Analiza tonacji
 
-Aby wykrywania tonacji (który zakresów między dodatnia lub ujemna) zestaw dokumentów, należy dołączyć `sentiment` do podstawowego punktu końcowego analizy tekstu w celu utworzenia adresu URL wykrywanie języka. Na przykład: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
+Aby wykryć tonacji (zakres wartości dodatnich lub ujemnych) zestawu dokumentów, Dołącz `sentiment` do podstawowego punktu końcowego analiza tekstu, aby utworzyć adres URL wykrywania języka. Na przykład: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
     
 ```python
 sentiment_url = text_analytics_base_url + "sentiment"
 ```
 
-Jak w przykładzie wykrywania języka Tworzenie słownika przy użyciu `documents` klucza, który składa się z listy dokumentów. Każdy dokument jest spójną kolekcją składająca się z elementów `id` i `text` do przeanalizowania oraz elementem `language` tekstu. 
+Podobnie jak w przypadku wykrywania języka, Utwórz słownik z `documents` kluczem, który składa się z listy dokumentów. Każdy dokument jest spójną kolekcją składająca się z elementów `id` i `text` do przeanalizowania oraz elementem `language` tekstu. 
 
 ```python
 documents = {"documents" : [
@@ -150,7 +150,7 @@ documents = {"documents" : [
 ]}
 ```
 
-Biblioteka żądań służy do wysyłania dokumenty do interfejsu API. Dodaj klucz subskrypcji, aby `Ocp-Apim-Subscription-Key` nagłówka i Wyślij żądanie za pomocą `requests.post()`. 
+Użyj biblioteki Requests, aby wysłać dokumenty do interfejsu API. Dodaj swój klucz subskrypcji do `Ocp-Apim-Subscription-Key` nagłówka i Wyślij żądanie przy użyciu. `requests.post()` 
 
 ```python
 headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
@@ -161,7 +161,7 @@ pprint(sentiments)
 
 ### <a name="output"></a>Output
 
-Ocenę tonacji dla dokumentu jest od 0,0 do 1,0, z wyższą ocenę wskazująca, bardziej dodatnie wskaźniki nastrojów klientów.
+Wynik tonacji dla dokumentu ma wartość z zakresu od 0,0 do 1,0, o wyższym wyniku, wskazujący bardziej pozytywną tonacji.
 
 ```json
 {
@@ -193,13 +193,13 @@ Ocenę tonacji dla dokumentu jest od 0,0 do 1,0, z wyższą ocenę wskazująca, 
 
 ## <a name="extract-key-phrases"></a>Wyodrębnianie kluczowych fraz
  
-Aby wyodrębnić kluczowe frazy z zestaw dokumentów, należy dołączyć `keyPhrases` do podstawowego punktu końcowego analizy tekstu w celu utworzenia adresu URL wykrywanie języka. Na przykład: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
+Aby wyodrębnić kluczowe frazy z zestawu dokumentów, Dołącz `keyPhrases` do podstawowego punktu końcowego analiza tekstu, aby utworzyć adres URL wykrywania języka. Na przykład: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
     
 ```python
 keyphrase_url = text_analytics_base_url + "keyPhrases"
 ```
 
-Ten zbiór dokumentów, jest taka sama używane na przykład analizy tonacji.
+Ta kolekcja dokumentów jest taka sama, jak w przypadku przykładu analizy tonacji.
 
 ```python
 documents = {"documents" : [
@@ -210,7 +210,7 @@ documents = {"documents" : [
 ]}
 ```
 
-Biblioteka żądań służy do wysyłania dokumenty do interfejsu API. Dodaj klucz subskrypcji, aby `Ocp-Apim-Subscription-Key` nagłówka i Wyślij żądanie za pomocą `requests.post()`. 
+Użyj biblioteki Requests, aby wysłać dokumenty do interfejsu API. Dodaj swój klucz subskrypcji do `Ocp-Apim-Subscription-Key` nagłówka i Wyślij żądanie przy użyciu. `requests.post()` 
 
 ```python
 headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
@@ -267,13 +267,13 @@ pprint(key_phrases)
 
 ## <a name="identify-entities"></a>Identyfikowanie jednostek
 
-Aby zidentyfikować dobrze znanych jednostek (osoby, miejsca i rzeczy) w dokumentach tekstu, należy dołączyć `entities` do podstawowego punktu końcowego analizy tekstu w celu utworzenia adresu URL wykrywanie języka. Na przykład: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/entities`
+Aby zidentyfikować dobrze znane jednostki (osoby, miejsca i rzeczy) w dokumentach tekstowych, Dołącz `entities` do podstawowego punktu końcowego analiza tekstu, aby utworzyć adres URL wykrywania języka. Na przykład: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/entities`
     
 ```python
 entities_url = text_analytics_base_url + "entities"
 ```
 
-Utwórz zbiór dokumentów, podobnie jak w poprzednich przykładach. 
+Utwórz kolekcję dokumentów, jak w poprzednich przykładach. 
 
 ```python
 documents = {"documents" : [
@@ -281,12 +281,13 @@ documents = {"documents" : [
 ]}
 ```
 
-Biblioteka żądań służy do wysyłania dokumenty do interfejsu API. Dodaj klucz subskrypcji, aby `Ocp-Apim-Subscription-Key` nagłówka i Wyślij żądanie za pomocą `requests.post()`.
+Użyj biblioteki Requests, aby wysłać dokumenty do interfejsu API. Dodaj swój klucz subskrypcji do `Ocp-Apim-Subscription-Key` nagłówka i Wyślij żądanie przy użyciu. `requests.post()`
 
 ```python
 headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
 response  = requests.post(entities_url, headers=headers, json=documents)
 entities = response.json()
+pprint(entities)
 ```
 
 ### <a name="output"></a>Output

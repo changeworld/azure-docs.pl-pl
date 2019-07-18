@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: aahi
-ms.openlocfilehash: 96539a59bd22644eaedb88886bc5b9facb4ca1c1
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 558ce8950a1848f0cddc247f60dd4e75dd20ccf0
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302096"
+ms.locfileid: "68305477"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Obsługa języka i regionu dla interfejs API analizy tekstu
 
@@ -48,13 +48,13 @@ Obsługa języka jest początkowo wdrażana w wersji zapoznawczej, z stopniowani
 |:----------- |:-------------:|:---------:|:-----------:|:-----------:|:-----------:
 | Arabski      | `ar`          |           |             | ✔ \*                     | |
 | Czeski       | `cs`          |           |             | ✔ \*                     | |
-| Chiński (uproszczony) | `zh-CN`|           |             | ✔ \        |    |
+| Chiński (uproszczony) | `zh-CN`|           |             | ✔         |    |
 | Duński      | `da`          | ✔ \*     | ✔           | ✔ \*            |     |
 | Holenderski       | `nl`          | ✔ \*     | ✔          |  ✔ \*           |     |
 | Angielski     | `en`          | ✔        | ✔           |  ✔ \*\*     |      |
 | Fiński     | `fi`          | ✔ \*     | ✔           |  ✔ \*           |     |
-| Francuski      | `fr`          | ✔        | ✔           |  ✔ \           |     |
-| niemiecki      | `de`          | ✔ \*     | ✔           |  ✔ \          |     |
+| Francuski      | `fr`          | ✔        | ✔           |  ✔            |     |
+| niemiecki      | `de`          | ✔ \*     | ✔           |  ✔           |     |
 | Grecki       | `el`          | ✔ \*     |             |            |     |
 | Węgierski   | `hu`          |           |             |  ✔ \*          |     | 
 | Włoski     | `it`          | ✔ \*     | ✔           |  ✔ \*           |     |
