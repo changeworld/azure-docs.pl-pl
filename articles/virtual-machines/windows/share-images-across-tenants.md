@@ -1,6 +1,6 @@
 ---
-title: Udostępnianie galerii obrazów dla dzierżaw na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak udostępnianie obrazów maszyn wirtualnych dzierżawy platformy Azure przy użyciu współdzielonego, galerie obrazów.
+title: Udostępnianie obrazów galerii między dzierżawcami na platformie Azure | Microsoft Docs
+description: Dowiedz się, jak udostępniać obrazy maszyn wirtualnych w dzierżawach platformy Azure przy użyciu udostępnionych galerii obrazów.
 services: virtual-machines-windows
 author: cynthn
 manager: gwallace
@@ -8,27 +8,27 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 04/05/2019
+ms.date: 07/15/2019
 ms.author: cynthn
-ms.openlocfilehash: c26abe948fa415c780d543c615c34af2091cfbc7
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: b921aabd8d71654d089c5f16aba27c286a1e91ec
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709157"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305037"
 ---
-# <a name="share-gallery-vm-images-across-azure-tenants"></a>Udostępnianie galerii obrazów maszyn wirtualnych dzierżawy platformy Azure
+# <a name="share-gallery-vm-images-across-azure-tenants"></a>Udostępnianie obrazów maszyn wirtualnych z galerii w ramach dzierżawców platformy Azure
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../../includes/virtual-machines-share-images-across-tenants.md)]
 
 
 > [!IMPORTANT]
-> Nie można użyć portalu, aby wdrożyć Maszynę wirtualną z obrazu w innej dzierżawie usługi azure. Aby utworzyć Maszynę wirtualną z obrazu udostępniane między dzierżawami, należy użyć [wiersza polecenia platformy Azure](../linux/share-images-across-tenants.md) lub programu Powershell.
+> Nie można użyć portalu do wdrożenia maszyny wirtualnej na podstawie obrazu w innej dzierżawie platformy Azure. Aby utworzyć maszynę wirtualną na podstawie obrazu udostępnianego między dzierżawcami, musisz użyć [interfejsu wiersza polecenia platformy Azure](../linux/share-images-across-tenants.md) lub programu PowerShell.
 
-## <a name="create-a-vm-using-powershell"></a>Utwórz Maszynę wirtualną przy użyciu programu PowerShell
+## <a name="create-a-vm-using-powershell"></a>Tworzenie maszyny wirtualnej przy użyciu programu PowerShell
 
 
-Zaloguj się do obu dzierżaw przy użyciu Identyfikatora aplikacji, identyfikator wpisu tajnego i dzierżawy. 
+Zaloguj się do obu dzierżawców przy użyciu identyfikatora aplikacji, klucza tajnego i identyfikatora dzierżawy. 
 
 ```azurepowershell-interactive
 $applicationId = '<App ID>'
@@ -41,23 +41,48 @@ Connect-AzAccount -ServicePrincipal -Credential $cred  -Tenant "<Tenant 1 ID>"
 Connect-AzAccount -ServicePrincipal -Credential $cred -Tenant "<Tenant 2 ID>"
 ```
 
-Tworzenie maszyny Wirtualnej w grupie zasobów, które ma uprawnienie dotyczące rejestracji aplikacji. Informacje przedstawione w tym przykładzie należy zastąpić własnymi.
+Utwórz maszynę wirtualną w grupie zasobów, która ma uprawnienia do rejestracji aplikacji. Zastąp informacje w tym przykładzie własnym.
+
+
 
 ```azurepowershell-interactive
 $resourceGroup = "myResourceGroup"
+$location = "South Central US"
+$vmName = "myVMfromImage"
+
+# Set a variable for the image version in Tenant 1 using the full image ID of the shared image version
 $image = "/subscriptions/<Tenant 1 subscription>/resourceGroups/<Resource group>/providers/Microsoft.Compute/galleries/<Gallery>/images/<Image definition>/versions/<version>"
-New-AzVm `
-   -ResourceGroupName "myResourceGroup" `
-   -Name "myVMfromImage" `
-   -Image $image `
-   -Location "South Central US" `
-   -VirtualNetworkName "myImageVnet" `
-   -SubnetName "myImageSubnet" `
-   -SecurityGroupName "myImageNSG" `
-   -PublicIpAddressName "myImagePIP" `
-   -OpenPorts 3389
+
+# Create user object
+$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
+
+# Create a resource group
+New-AzResourceGroup -Name $resourceGroup -Location $location
+
+# Networking pieces
+$subnetConfig = New-AzVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix 192.168.1.0/24
+$vnet = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $location `
+  -Name MYvNET -AddressPrefix 192.168.0.0/16 -Subnet $subnetConfig
+$pip = New-AzPublicIpAddress -ResourceGroupName $resourceGroup -Location $location `
+  -Name "mypublicdns$(Get-Random)" -AllocationMethod Static -IdleTimeoutInMinutes 4
+$nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleRDP  -Protocol Tcp `
+  -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
+  -DestinationPortRange 3389 -Access Allow
+$nsg = New-AzNetworkSecurityGroup -ResourceGroupName $resourceGroup -Location $location `
+  -Name myNetworkSecurityGroup -SecurityRules $nsgRuleRDP
+$nic = New-AzNetworkInterface -Name myNic -ResourceGroupName $resourceGroup -Location $location `
+  -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
+
+# Create a virtual machine configuration using the $image variable to specify the shared image
+$vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D1_v2 | `
+Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred | `
+Set-AzVMSourceImage -Id $image | `
+Add-AzVMNetworkInterface -Id $nic.Id
+
+# Create a virtual machine
+New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Można również utworzyć obraz udostępnione zasoby galerii pakietu przy użyciu [witryny Azure portal](shared-images-portal.md).
+Możesz również utworzyć zasoby udostępnionej galerii obrazów przy użyciu [Azure Portal](shared-images-portal.md).

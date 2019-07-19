@@ -1,6 +1,6 @@
 ---
-title: Instalowanie bazy danych MySQL na maszynie Wirtualnej z dystrybucją systemu OpenSUSE na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się zainstalować MySQL na maszynie wirtualnej systemu Linux OpenSUSE na platformie Azure.
+title: Instalowanie bazy danych MySQL na maszynie wirtualnej OpenSUSE na platformie Azure | Microsoft Docs
+description: Dowiedz się, jak zainstalować program MySQL na maszynie wirtualnej z systemem OpenSUSE Linux na platformie Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -14,32 +14,32 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
-ms.author: za-rhoads
-ms.openlocfilehash: 9f5ead43fb2d516697f7bbca5367cb02620152f9
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.author: cynthn
+ms.openlocfilehash: baa52f4a17b06b6927013c88f37d4f2bc24744f3
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667498"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876023"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>Instalowanie bazy danych MySQL na maszynie wirtualnej z dystrybucją systemu OpenSUSE Linux na platformie Azure
 
-[MySQL](https://www.mysql.com) popularne, typu open-source baza danych SQL. Ten samouczek pokazuje, jak utworzyć maszyny wirtualnej z dystrybucją systemu OpenSUSE Linux, a następnie instalowanie programu MySQL.
+[MySQL](https://www.mysql.com) to popularna, typu open-source baza danych SQL. W tym samouczku pokazano, jak utworzyć maszynę wirtualną z systemem OpenSUSE Linux, a następnie zainstalować MySQL.
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, musisz mieć interfejs wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-virtual-machine-running-opensuse-linux"></a>Tworzenie maszyny wirtualnej z dystrybucją systemu OpenSUSE Linux
+## <a name="create-a-virtual-machine-running-opensuse-linux"></a>Tworzenie maszyny wirtualnej z systemem OpenSUSE Linux
 
-Najpierw utwórz grupę zasobów. W tym przykładzie grupa zasobów ma nazwę *mySQSUSEResourceGroup* zostaje utworzony w *wschodnie stany USA* regionu.
+Najpierw utwórz grupę zasobów. W tym przykładzie grupa zasobów ma nazwę *mySQSUSEResourceGroup* i jest tworzona w regionie *Wschodnie stany USA* .
 
 ```azurecli-interactive
 az group create --name mySQLSUSEResourceGroup --location eastus
 ```
 
-Tworzenie maszyny Wirtualnej. W tym przykładzie maszyna wirtualna nazywa *myVM* i rozmiar maszyny Wirtualnej jest *Standard_D2s_v3*, ale należy wybrać [rozmiar maszyny Wirtualnej](sizes.md) uważasz, że jest najbardziej odpowiednie dla danego obciążenia.
+Utwórz maszynę wirtualną. W tym przykładzie maszyna wirtualna ma nazwę *myVM* , a rozmiar maszyny wirtualnej to *Standard_D2s_v3*, ale należy wybrać [rozmiar maszyny wirtualnej](sizes.md) , która jest najbardziej odpowiednia dla obciążenia.
 
 ```azurecli-interactive
 az vm create --resource-group mySQLSUSEResourceGroup \
@@ -49,7 +49,7 @@ az vm create --resource-group mySQLSUSEResourceGroup \
    --generate-ssh-keys
 ```
 
-Należy również dodać reguły do sieciowej grupy zabezpieczeń, aby zezwolić na ruch przez port 3306 for MySQL.
+Należy również dodać regułę do sieciowej grupy zabezpieczeń, aby zezwalać na ruch przez port 3306 dla programu MySQL.
 
 ```azurecli-interactive
 az vm open-port --port 3306 --resource-group mySQLSUSEResourceGroup --name myVM
@@ -57,44 +57,44 @@ az vm open-port --port 3306 --resource-group mySQLSUSEResourceGroup --name myVM
 
 ## <a name="connect-to-the-vm"></a>Łączenie z maszyną wirtualną
 
-Dowiesz się z maszyną Wirtualną za pomocą protokołu SSH. W tym przykładzie jest publiczny adres IP maszyny wirtualnej *10.111.112.113*. Podczas tworzenia maszyny Wirtualnej, możesz zobaczyć adres IP w danych wyjściowych.
+Do nawiązania połączenia z maszyną wirtualną będziesz używać protokołu SSH. W tym przykładzie publiczny adres IP maszyny wirtualnej to *10.111.112.113*. Podczas tworzenia maszyny wirtualnej można zobaczyć adres IP w danych wyjściowych.
 
 ```azurecli-interactive  
 ssh 10.111.112.113
 ```
 
  
-## <a name="update-the-vm"></a>Zaktualizuj maszynę Wirtualną
+## <a name="update-the-vm"></a>Aktualizowanie maszyny wirtualnej
  
-Po połączeniu z maszyną wirtualną, zainstalować system aktualizacje i poprawki. 
+Po nawiązaniu połączenia z maszyną wirtualną Zainstaluj aktualizacje systemu i poprawki. 
    
 ```bash
 sudo zypper update
 ```
 
-Postępuj zgodnie z monitami, aby zaktualizować maszyny Wirtualnej.
+Postępuj zgodnie z monitami, aby zaktualizować maszynę wirtualną.
 
 ## <a name="install-mysql"></a>Instalowanie programu MySQL 
 
 
-Instalowanie programu MySQL na maszynie wirtualnej za pomocą protokołu SSH. Odpowiedz na monity, zgodnie z potrzebami.
+Zainstaluj program MySQL na maszynie wirtualnej za pośrednictwem protokołu SSH. Odpowiedź na pytanie, zgodnie z potrzebami.
 
 ```bash
 sudo zypper install mysql
 ```
  
-Ustaw MySQL uruchamianą podczas rozruchu systemu. 
+Skonfiguruj system MySQL do uruchamiania podczas uruchamiania systemu. 
 
 ```bash
 sudo systemctl enable mysql
 ```
-Sprawdź, czy włączono MySQL.
+Sprawdź, czy baza danych MySQL jest włączona.
 
 ```bash
 systemctl is-enabled mysql
 ```
 
-Powinny zostać zwrócone: włączone.
+Powinno to zwrócić: włączone.
 
 Uruchom ponownie serwer.
 
@@ -103,11 +103,11 @@ sudo reboot
 ```
 
 
-## <a name="mysql-password"></a>Hasło programu MySQL
+## <a name="mysql-password"></a>Hasło MySQL
 
-Po zakończeniu instalacji hasła głównego MySQL jest domyślnie puste. Uruchom **mysql\_bezpiecznego\_instalacji** skrypt, aby zabezpieczyć MySQL. Skrypt wyświetli monit o zmianę hasła głównego MySQL, usunąć konta użytkownika anonimowego, wyłączyć logowania zdalnego katalogu głównego, Usuń test bazy danych i ponowne załadowanie tabeli uprawnień. 
+Po zakończeniu instalacji hasło główne programu MySQL jest domyślnie puste. Uruchom skrypt **instalacji\_bezpiecznego\_MySQL** , aby zabezpieczyć MySQL. Skrypt poprosi o zmianę hasła głównego programu MySQL, usunięcie kont użytkowników anonimowych, wyłączenie zdalnego logowania się, usunięcie testów baz danych i ponowne załadowanie tabeli uprawnień. 
 
-Gdy serwer jest ponownie uruchamiany, ssh z maszyną wirtualną ponownie.
+Po ponownym uruchomieniu serwera należy ponownie przeprowadzić protokół SSH do maszyny wirtualnej.
 
 ```azurecli-interactive  
 ssh 10.111.112.113
@@ -119,14 +119,14 @@ ssh 10.111.112.113
 mysql_secure_installation
 ```
 
-## <a name="sign-in-to-mysql"></a>Zaloguj się do bazy danych MySQL
+## <a name="sign-in-to-mysql"></a>Logowanie do bazy danych MySQL
 
-Możesz teraz zalogować i wprowadź w wierszu polecenia MySQL.
+Możesz teraz zalogować się i wprowadzić monit dotyczący programu MySQL.
 
 ```bash  
 mysql -u root -p
 ```
-To przełączników do wiersza polecenia MySQL gdzie można wydać instrukcji SQL do interakcji z bazą danych.
+Spowoduje to przełączenie do monitu programu MySQL, w którym można wydać instrukcje SQL, aby móc korzystać z bazy danych.
 
 Teraz Utwórz nowego użytkownika programu MySQL.
 
@@ -134,36 +134,36 @@ Teraz Utwórz nowego użytkownika programu MySQL.
 CREATE USER 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 ```
    
-Rozdzielana średnikami (;) na końcu wiersza jest kluczowa dla zakończenie polecenia.
+Średnik (;) na końcu wiersza są kluczowe znaczenie dla zakończenia polecenia.
 
 
 ## <a name="create-a-database"></a>Tworzenie bazy danych
 
 
-Tworzenie bazy danych i udzielanie `mysqluser` uprawnień użytkownika.
+Utwórz bazę danych i Udziel `mysqluser` uprawnień użytkownika.
 
 ```sql
 CREATE DATABASE testdatabase;
 GRANT ALL ON testdatabase.* TO 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 ```
    
-Bazy danych, nazwy użytkownika i hasła są używane tylko przez skrypty połączenie z bazą danych.  Nazwy kont użytkowników bazy danych nie musi to oznaczać konta użytkowników w systemie.
+Nazwy i hasła użytkowników bazy danych są używane tylko przez skrypty łączące się z bazą danych.  Nazwy kont użytkowników bazy danych nie muszą reprezentować rzeczywistych kont użytkowników w systemie.
 
-Włącz logowanie z innego komputera. W tym przykładzie jest adres IP komputera, aby umożliwić logowanie z *10.112.113.114*.
+Włącz logowanie się na innym komputerze. W tym przykładzie adres IP komputera, na którym jest dozwolone logowanie, to *10.112.113.114*.
 
 ```sql
 GRANT ALL ON testdatabase.* TO 'mysqluser'@'10.112.113.114' IDENTIFIED BY 'password';
 ```
    
-Aby zamknąć narzędzie administracyjne bazy danych MySQL, wpisz:
+Aby zamknąć narzędzie do administrowania bazą danych MySQL, wpisz:
 
 ```    
 quit
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać szczegółowe informacje o MySQL, zobacz [dokumentacji MySQL](https://dev.mysql.com/doc).
+## <a name="next-steps"></a>Następne kroki
+Szczegółowe informacje o programie MySQL można znaleźć w [dokumentacji programu MySQL](https://dev.mysql.com/doc).
 
 
 

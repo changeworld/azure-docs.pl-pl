@@ -1,24 +1,24 @@
 ---
-title: Przenoszenie obsługi operacji przez typ zasobu platformy Azure
-description: Wyświetla listę typów zasobów platformy Azure, które mogą zostać przeniesione do nowej grupy zasobów lub subskrypcji.
+title: Obsługa operacji przenoszenia według typu zasobów platformy Azure
+description: Wyświetla listę typów zasobów platformy Azure, które można przenieść do nowej grupy zasobów lub subskrypcji.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 7/9/2019
 ms.author: tomfitz
-ms.openlocfilehash: 093c20407cb6210125106189f36566f539de0dcc
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 22493ad7998e9014c88c79e6ac5eee3bf1216119
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721118"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226816"
 ---
-# <a name="move-operation-support-for-resources"></a>Przenoszenie obsługi operacji dla zasobów
-W tym artykule wymieniono, czy typ zasobu platformy Azure obsługuje operacji przenoszenia. Umożliwia także informacji na temat specjalne warunki, które należy wziąć pod uwagę podczas przenoszenia zasobu.
+# <a name="move-operation-support-for-resources"></a>Obsługa operacji przenoszenia dla zasobów
+W tym artykule przedstawiono, czy typ zasobu platformy Azure obsługuje operację przenoszenia. Zawiera również informacje dotyczące specjalnych warunków, które należy wziąć pod uwagę podczas przeniesienia zasobu.
 
 Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="op_single_selector"]
-> - [Microsoft.AAD](#microsoftaad)
+> - [Microsoft. AAD](#microsoftaad)
 > - [microsoft.aadiam](#microsoftaadiam)
 > - [Microsoft.AlertsManagement](#microsoftalertsmanagement)
 > - [Microsoft.AnalysisServices](#microsoftanalysisservices)
@@ -26,7 +26,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > - [Microsoft.AppConfiguration](#microsoftappconfiguration)
 > - [Microsoft.AppService](#microsoftappservice)
 > - [Microsoft.Authorization](#microsoftauthorization)
-> - [Microsoft.Automation w sposób](#microsoftautomation)
+> - [Microsoft. Automation](#microsoftautomation)
 > - [Microsoft.AzureActiveDirectory](#microsoftazureactivedirectory)
 > - [Microsoft.AzureStack](#microsoftazurestack)
 > - [Microsoft.Backup](#microsoftbackup)
@@ -35,7 +35,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > - [Microsoft.BingMaps](#microsoftbingmaps)
 > - [Microsoft.BizTalkServices](#microsoftbiztalkservices)
 > - [Microsoft.Blockchain](#microsoftblockchain)
-> - [Microsoft.Blueprint](#microsoftblueprint)
+> - [Microsoft. plan](#microsoftblueprint)
 > - [Microsoft.BotService](#microsoftbotservice)
 > - [Microsoft.Cache](#microsoftcache)
 > - [Microsoft.Cdn](#microsoftcdn)
@@ -55,7 +55,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > - [Microsoft.CustomerInsights](#microsoftcustomerinsights)
 > - [Microsoft.DataBox](#microsoftdatabox)
 > - [Microsoft.DataBoxEdge](#microsoftdataboxedge)
-> - [Microsoft.Databricks](#microsoftdatabricks)
+> - [Microsoft. datacegły](#microsoftdatabricks)
 > - [Microsoft.DataCatalog](#microsoftdatacatalog)
 > - [Microsoft.DataConnect](#microsoftdataconnect)
 > - [Microsoft.DataExchange](#microsoftdataexchange)
@@ -63,7 +63,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > - [Microsoft.DataLake](#microsoftdatalake)
 > - [Microsoft.DataLakeAnalytics](#microsoftdatalakeanalytics)
 > - [Microsoft.DataLakeStore](#microsoftdatalakestore)
-> - [Microsoft.DataMigration](#microsoftdatamigration)
+> - [Migracja Microsoft.](#microsoftdatamigration)
 > - [Microsoft.DBforMariaDB](#microsoftdbformariadb)
 > - [Microsoft.DBforMySQL](#microsoftdbformysql)
 > - [Microsoft.DBforPostgreSQL](#microsoftdbforpostgresql)
@@ -75,16 +75,16 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > - [Microsoft.DocumentDB](#microsoftdocumentdb)
 > - [Microsoft.DomainRegistration](#microsoftdomainregistration)
 > - [Microsoft.EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
-> - [Microsoft.EventGrid](#microsofteventgrid)
+> - [Microsoft. EventGrid](#microsofteventgrid)
 > - [Microsoft.EventHub](#microsofteventhub)
 > - [Microsoft.Genomics](#microsoftgenomics)
 > - [Microsoft.HanaOnAzure](#microsofthanaonazure)
-> - [Microsoft.HDInsight](#microsofthdinsight)
+> - [Microsoft. HDInsight](#microsofthdinsight)
 > - [Microsoft.HealthcareApis](#microsofthealthcareapis)
-> - [Microsoft.HybridCompute](#microsofthybridcompute)
-> - [Microsoft.HybridData](#microsofthybriddata)
+> - [Microsoft. HybridCompute](#microsofthybridcompute)
+> - [Microsoft. HybridData](#microsofthybriddata)
 > - [Microsoft.ImportExport](#microsoftimportexport)
-> - [microsoft.insights](#microsoftinsights)
+> - [Microsoft. Insights](#microsoftinsights)
 > - [Microsoft.IoTCentral](#microsoftiotcentral)
 > - [Microsoft.IoTSpaces](#microsoftiotspaces)
 > - [Microsoft.KeyVault](#microsoftkeyvault)
@@ -92,24 +92,24 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > - [Microsoft.LabServices](#microsoftlabservices)
 > - [Microsoft.LocationBasedServices](#microsoftlocationbasedservices)
 > - [Microsoft.LocationServices](#microsoftlocationservices)
-> - [Microsoft.Logic](#microsoftlogic)
-> - [Microsoft.MachineLearning](#microsoftmachinelearning)
-> - [Microsoft.MachineLearningCompute](#microsoftmachinelearningcompute)
-> - [Microsoft.MachineLearningExperimentation](#microsoftmachinelearningexperimentation)
+> - [Microsoft. Logic](#microsoftlogic)
+> - [Microsoft. MachineLearning](#microsoftmachinelearning)
+> - [Microsoft. MachineLearningCompute](#microsoftmachinelearningcompute)
+> - [Microsoft. MachineLearningExperimentation](#microsoftmachinelearningexperimentation)
 > - [Microsoft.MachineLearningModelManagement](#microsoftmachinelearningmodelmanagement)
-> - [Microsoft.MachineLearningOperationalization](#microsoftmachinelearningoperationalization)
+> - [Microsoft. MachineLearningOperationalization](#microsoftmachinelearningoperationalization)
 > - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
 > - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
-> - [Microsoft.Maps](#microsoftmaps)
+> - [Microsoft. Maps](#microsoftmaps)
 > - [Microsoft.MarketplaceApps](#microsoftmarketplaceapps)
-> - [Microsoft.Media](#microsoftmedia)
-> - [Microsoft.Migrate](#microsoftmigrate)
+> - [Microsoft. Media](#microsoftmedia)
+> - [Microsoft. Migrowanie](#microsoftmigrate)
 > - [Microsoft.NetApp](#microsoftnetapp)
 > - [Microsoft.Network](#microsoftnetwork)
 > - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
-> - [Microsoft.OperationalInsights](#microsoftoperationalinsights)
+> - [Microsoft. OperationalInsights](#microsoftoperationalinsights)
 > - [Microsoft.OperationsManagement](#microsoftoperationsmanagement)
-> - [Microsoft.Peering](#microsoftpeering)
+> - [Microsoft. Komunikacja równorzędna](#microsoftpeering)
 > - [Microsoft.Portal](#microsoftportal)
 > - [Microsoft.PortalSdk](#microsoftportalsdk)
 > - [Microsoft.PowerBI](#microsoftpowerbi)
@@ -118,9 +118,9 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
 > - [Microsoft.Relay](#microsoftrelay)
 > - [Microsoft.SaaS](#microsoftsaas)
-> - [Microsoft.Scheduler](#microsoftscheduler)
+> - [Microsoft. Scheduler](#microsoftscheduler)
 > - [Microsoft.Search](#microsoftsearch)
-> - [Microsoft.Security](#microsoftsecurity)
+> - [Microsoft. Security](#microsoftsecurity)
 > - [Microsoft.ServerManagement](#microsoftservermanagement)
 > - [Microsoft.ServiceBus](#microsoftservicebus)
 > - [Microsoft.ServiceFabric](#microsoftservicefabric)
@@ -144,8 +144,8 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > - [Microsoft.Token](#microsofttoken)
 > - [Microsoft.VirtualMachineImages](#microsoftvirtualmachineimages)
 > - [microsoft.visualstudio](#microsoftvisualstudio)
-> - [Microsoft.VMwareCloudSimple](#microsoftvmwarecloudsimple)
-> - [Microsoft.Web](#microsoftweb)
+> - [Microsoft. VMwareCloudSimple](#microsoftvmwarecloudsimple)
+> - [Microsoft. Web](#microsoftweb)
 > - [Microsoft.WindowsIoT](#microsoftwindowsiot)
 > - [Microsoft.WindowsVirtualDesktop](#microsoftwindowsvirtualdesktop)
 
@@ -157,22 +157,22 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 ## <a name="microsoftaadiam"></a>microsoft.aadiam
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Dzierżaw | Nie | Nie |
+| dzierżaw | Nie | Nie |
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| actionrules | Yes | Tak |
+| actionrules | Tak | Tak |
 
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Serwery | Yes | Tak |
+| Serwerem | Tak | Tak |
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| usługa | Tak | Yes |
+| usługa | Tak | Tak |
 
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 | Typ zasobu | Resource group | Subscription |
@@ -182,12 +182,12 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 ## <a name="microsoftappservice"></a>Microsoft.AppService
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| aplikacje interfejsów API | Nie | Nie |
+| apiapps | Nie | Nie |
 | appidentities | Nie | Nie |
-| Bramy | Nie | Nie |
+| bram | Nie | Nie |
 
 > [!IMPORTANT]
-> Zobacz [wskazówki dotyczące przenoszenia usługi App](./move-limitations/app-service-move-limitations.md).
+> Zobacz [App Service wskazówki dotyczące przenoszenia](./move-limitations/app-service-move-limitations.md).
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 | Typ zasobu | Resource group | Subscription |
@@ -197,9 +197,9 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| automationaccounts | Yes | Yes |
-| automationaccounts/configurations | Yes | Tak |
-| automationaccounts/elementów runbook | Tak | Tak |
+| automationaccounts | Tak | Yes |
+| automationaccounts/konfiguracje | Tak | Yes |
+| automationaccounts/elementy Runbook | Yes | Tak |
 
 > [!IMPORTANT]
 > Elementy Runbook muszą istnieć w tej samej grupie zasobów co konto usługi Automation.
@@ -207,12 +207,12 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 ## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| b2cdirectories | Tak | Tak |
+| b2cdirectories | Tak | Yes |
 
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| rejestracje | Tak | Tak |
+| rejestracje | Tak | Yes |
 
 ## <a name="microsoftbackup"></a>Microsoft.Backup
 | Typ zasobu | Resource group | Subscription |
@@ -222,15 +222,15 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| batchaccounts | Tak | Tak |
+| batchaccounts | Tak | Yes |
 
 ## <a name="microsoftbatchai"></a>Microsoft.BatchAI
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Klastry | Nie | Nie |
+| oparty | Nie | Nie |
 | fileservers | Nie | Nie |
-| Zadania | Nie | Nie |
-| Obszary robocze | Nie | Nie |
+| zadania | Nie | Nie |
+| Obszarów roboczych | Nie | Nie |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 | Typ zasobu | Resource group | Subscription |
@@ -240,12 +240,12 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 ## <a name="microsoftbiztalkservices"></a>Microsoft.BizTalkServices
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| biztalk | Tak | Yes |
+| biztalk | Tak | Tak |
 
-## <a name="microsoftblockchain"></a>Microsoft.Blockchain
+## <a name="microsoftblockchain"></a>Microsoft. łańcucha bloków
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| blockchainmembers | Yes | Tak |
+| blockchainmembers | Tak | Tak |
 
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
 | Typ zasobu | Resource group | Subscription |
@@ -255,38 +255,38 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| botservices | Tak | Tak |
+| botservices | Yes | Tak |
 
 ## <a name="microsoftcache"></a>Microsoft.Cache
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Redis Cache | Yes | Tak |
+| Redis | Tak | Yes |
 
 > [!IMPORTANT]
-> Skonfigurowanie usługi Azure Cache dla wystąpienia pamięci podręcznej Redis przy użyciu sieci wirtualnej wystąpienia nie można przenieść do innej subskrypcji. Zobacz [sieci wirtualnych, Przenieś ograniczenia](./move-limitations/virtual-network-move-limitations.md).
+> Jeśli wystąpienie usługi Azure cache for Redis jest skonfigurowane przy użyciu sieci wirtualnej, nie można przenieść wystąpienia do innej subskrypcji. Zobacz [ograniczenia przenoszenia sieci wirtualnych](./move-limitations/virtual-network-move-limitations.md).
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| profiles | Tak | Yes |
-| Profile/punktów końcowych | Tak | Tak |
+| profiles | Tak | Tak |
+| Profile/punkty końcowe | Tak | Yes |
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| zamówień certyfikatów | Tak | Tak |
+| certificateorders | Yes | Yes |
 
 > [!IMPORTANT]
-> Zobacz [wskazówki dotyczące przenoszenia usługi App](./move-limitations/app-service-move-limitations.md).
+> Zobacz [App Service wskazówki dotyczące przenoszenia](./move-limitations/app-service-move-limitations.md).
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | domainnames | Tak | Nie |
-| maszyn wirtualnych | Yes | Nie |
+| virtualmachines | Tak | Nie |
 
 > [!IMPORTANT]
-> Zobacz [wdrożeń klasycznych przenieść wskazówki](./move-limitations/classic-model-move-limitations.md). Zasobów klasycznego wdrożenia można przenosić między subskrypcjami przy użyciu określonych operacji w przypadku tego scenariusza.
+> Zobacz [klasyczne wskazówki dotyczące przenoszenia wdrożenia](./move-limitations/classic-model-move-limitations.md). Klasyczne zasoby wdrażania można przenosić między subskrypcjami przy użyciu operacji specyficznych dla tego scenariusza.
 
 ## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
 | Typ zasobu | Resource group | Subscription |
@@ -296,7 +296,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 | virtualnetworks | Nie | Nie |
 
 > [!IMPORTANT]
-> Zobacz [wdrożeń klasycznych przenieść wskazówki](./move-limitations/classic-model-move-limitations.md). Zasobów klasycznego wdrożenia można przenosić między subskrypcjami przy użyciu określonych operacji w przypadku tego scenariusza.
+> Zobacz [klasyczne wskazówki dotyczące przenoszenia wdrożenia](./move-limitations/classic-model-move-limitations.md). Klasyczne zasoby wdrażania można przenosić między subskrypcjami przy użyciu operacji specyficznych dla tego scenariusza.
 
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
 | Typ zasobu | Resource group | Subscription |
@@ -304,7 +304,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 | storageaccounts | Tak | Nie |
 
 > [!IMPORTANT]
-> Zobacz [wdrożeń klasycznych przenieść wskazówki](./move-limitations/classic-model-move-limitations.md). Zasobów klasycznego wdrożenia można przenosić między subskrypcjami przy użyciu określonych operacji w przypadku tego scenariusza.
+> Zobacz [klasyczne wskazówki dotyczące przenoszenia wdrożenia](./move-limitations/classic-model-move-limitations.md). Klasyczne zasoby wdrażania można przenosić między subskrypcjami przy użyciu operacji specyficznych dla tego scenariusza.
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 | Typ zasobu | Resource group | Subscription |
@@ -315,24 +315,24 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | availabilitysets | Tak | Tak |
-| Dyski | Tak | Tak |
-| Galerie | Nie | Nie |
-| galerie/obrazów | Nie | Nie |
-| Galerie/obrazy/wersji | Nie | Nie |
+| Dysku | Tak | Tak |
+| znajduj | Nie | Nie |
+| Galerie/obrazy | Nie | Nie |
+| Galerie/obrazy/wersje | Nie | Nie |
 | hostgroups | Nie | Nie |
-| hostgroups/hosts | Nie | Nie |
-| images | Tak | Yes |
+| hostgroups/hosty | Nie | Nie |
+| images | Yes | Tak |
 | proximityplacementgroups | Nie | Nie |
 | restorepointcollections | Nie | Nie |
 | sharedvmimages | Nie | Nie |
-| sharedvmimages/wersji | Nie | Nie |
+| sharedvmimages/wersje | Nie | Nie |
 | Migawki | Tak | Yes |
-| maszyn wirtualnych | Tak | Yes |
-| maszyn wirtualnych/rozszerzenia | Yes | Yes |
+| virtualmachines | Yes | Yes |
+| virtualmachines/rozszerzenia | Yes | Tak |
 | virtualmachinescalesets | Tak | Tak |
 
 > [!IMPORTANT]
-> Zobacz [maszyn wirtualnych, Przenieś wskazówki](./move-limitations/virtual-machines-move-limitations.md).
+> Zobacz [Virtual Machines wskazówki dotyczące przenoszenia](./move-limitations/virtual-machines-move-limitations.md).
 
 ## <a name="microsoftcontainer"></a>Microsoft.Container
 | Typ zasobu | Resource group | Subscription |
@@ -347,11 +347,11 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| rejestry | Tak | Yes |
-| rejestry/buildtasks | Tak | Yes |
-| rejestry/replikacji | Tak | Tak |
-| rejestry/zadań | Tak | Tak |
-| rejestry/elementów webhook | Tak | Tak |
+| wołuje | Yes | Tak |
+| rejestry/BuildTasks | Tak | Tak |
+| rejestry/replikacje | Yes | Tak |
+| rejestry/zadania | Tak | Tak |
+| rejestry/elementy webhook | Tak | Tak |
 
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
 | Typ zasobu | Resource group | Subscription |
@@ -363,7 +363,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| aplikacje | Yes | Tak |
+| aplikacje | Tak | Tak |
 
 ## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
 | Typ zasobu | Resource group | Subscription |
@@ -378,12 +378,12 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Koncentratory | Tak | Tak |
+| węzłów | Tak | Tak |
 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Zadania | Nie | Nie |
+| zadania | Nie | Nie |
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
 | Typ zasobu | Resource group | Subscription |
@@ -393,13 +393,13 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Obszary robocze | Nie | Nie |
+| Obszarów roboczych | Nie | Nie |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| katalogi | Tak | Tak |
-| datacatalogs | Nie | Nie |
+| wykazy | Tak | Yes |
+| wykazy | Nie | Nie |
 
 ## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
 | Typ zasobu | Resource group | Subscription |
@@ -410,13 +410,13 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | Pakiety | Nie | Nie |
-| Plany | Nie | Nie |
+| pakiety | Nie | Nie |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| datafactories | Tak | Tak |
-| fabryki | Tak | Yes |
+| fabryki datafactors | Tak | Tak |
+| fabryki | Tak | Tak |
 
 ## <a name="microsoftdatalake"></a>Microsoft.DataLake
 | Typ zasobu | Resource group | Subscription |
@@ -431,87 +431,87 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| accounts | Tak | Tak |
+| accounts | Tak | Yes |
 
-## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
+## <a name="microsoftdatamigration"></a>Migracja Microsoft.
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | services | Nie | Nie |
 | usługi/projekty | Nie | Nie |
-| gniazda | Nie | Nie |
+| czasów | Nie | Nie |
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Serwery | Yes | Tak |
+| Serwerem | Tak | Yes |
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Serwery | Tak | Tak |
+| Serwerem | Yes | Tak |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | servergroups | Nie | Nie |
-| Serwery | Tak | Tak |
-| serversv2 | Tak | Yes |
+| Serwerem | Tak | Tak |
+| serversv2 | Tak | Tak |
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | artifactsources | Tak | Tak |
-| Wprowadzanie | Yes | Tak |
-| servicetopologies | Tak | Yes |
-| servicetopologies/usługi | Tak | Yes |
-| servicetopologies/services/serviceunits | Tak | Tak |
-| kroki | Tak | Tak |
+| wprowadzanie | Tak | Yes |
+| servicetopologie | Yes | Tak |
+| servicetopologie/usługi | Yes | Yes |
+| servicetopologie/usługi/serviceunits | Yes | Tak |
+| kroki | Yes | Tak |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | elasticpools | Nie | Nie |
 | elasticpools/iothubtenants | Nie | Nie |
-| iothubs | Tak | Tak |
-| provisioningservices | Yes | Tak |
+| iothubs | Tak | Yes |
+| provisioningservices | Tak | Yes |
 
 ## <a name="microsoftdevspaces"></a>Microsoft.DevSpaces
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Kontrolery | Nie | Nie |
+| Rejestrowanie | Nie | Nie |
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | labcenters | Nie | Nie |
-| Warsztaty | Yes | Nie |
-| laboratoria/środowisk | Tak | Tak |
-| laboratoria/servicerunners | Yes | Tak |
-| laboratoria/maszyn wirtualnych | Yes | Nie |
-| Harmonogramy | Yes | Tak |
+| Labs | Tak | Nie |
+| laboratoria/środowiska | Tak | Yes |
+| laboratoria/servicerunner | Tak | Tak |
+| Labs/virtualmachines | Tak | Nie |
+| Uruchamianie | Tak | Tak |
 
 ## <a name="microsoftdns"></a>microsoft.dns
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | dnszones | Nie | Nie |
 | dnszones/a | Nie | Nie |
-| dnszones/aaaa | Nie | Nie |
-| dnszones/cname | Nie | Nie |
-| dnszones/mx | Nie | Nie |
-| dnszones/ptr | Nie | Nie |
-| dnszones/srv | Nie | Nie |
+| dnszones/AAAA | Nie | Nie |
+| dnszones/CNAME | Nie | Nie |
+| dnszones/MX | Nie | Nie |
+| dnszones/PTR | Nie | Nie |
+| dnszones/SRV | Nie | Nie |
 | dnszones/txt | Nie | Nie |
 | trafficmanagerprofiles | Nie | Nie |
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| databaseaccounts | Tak | Tak |
+| databaseaccounts | Tak | Yes |
 
 ## <a name="microsoftdomainregistration"></a>Microsoft.DomainRegistration
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| domeny | Tak | Yes |
+| domeny | Tak | Tak |
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
 | Typ zasobu | Resource group | Subscription |
@@ -521,14 +521,14 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| domeny | Tak | Yes |
-| Tematy | Tak | Tak |
+| domeny | Tak | Tak |
+| opisano | Tak | Tak |
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Klastry | Tak | Tak |
-| Przestrzenie nazw | Tak | Yes |
+| oparty | Yes | Tak |
+| Przestrzeni | Yes | Yes |
 
 ## <a name="microsoftgenomics"></a>Microsoft.Genomics
 | Typ zasobu | Resource group | Subscription |
@@ -538,12 +538,12 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 ## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| hanainstances | Tak | Tak |
+| hanainstances | Yes | Tak |
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Klastry | Tak | Tak |
+| oparty | Yes | Yes |
 
 > [!IMPORTANT]
 > Klastry HDInsight można przenieść do nowej subskrypcji lub grupy zasobów. Jednak nie można przenosić między subskrypcjami, zasoby sieciowe połączone z klastrem HDInsight (na przykład sieci wirtualnej, kart interfejsu Sieciowego lub modułu równoważenia obciążenia). Ponadto nie można przenieść do nowej grupy zasobów interfejsu Sieciowego, który jest dołączony do maszyny wirtualnej do klastra.
@@ -553,14 +553,14 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 ## <a name="microsofthealthcareapis"></a>Microsoft.HealthcareApis
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| services | Tak | Tak |
+| services | Tak | Yes |
 
-## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
+## <a name="microsofthybridcompute"></a>Microsoft. HybridCompute
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| maszyny | Nie | Nie |
+| Win64 | Nie | Nie |
 
-## <a name="microsofthybriddata"></a>Microsoft.HybridData
+## <a name="microsofthybriddata"></a>Microsoft. HybridData
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | datamanagers | Tak | Tak |
@@ -568,52 +568,52 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Zadania | Tak | Tak |
+| zadania | Yes | Tak |
 
-## <a name="microsoftinsights"></a>microsoft.insights
+## <a name="microsoftinsights"></a>Microsoft. Insights
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | accounts | Nie | Nie |
-| actiongroups | Yes | Yes |
-| alerty dziennika aktywności | Nie | Nie |
-| alertrules | Tak | Tak |
-| wartość autoscalesettings | Tak | Tak |
-| Składniki | Yes | Tak |
+| actiongroups | Tak | Tak |
+| activitylogalerts | Nie | Nie |
+| alertrules | Tak | Yes |
+| autoscalesettings | Yes | Tak |
+| Komponentów | Tak | Tak |
 | guestdiagnosticsettings | Nie | Nie |
 | metricalerts | Nie | Nie |
 | notificationgroups | Nie | Nie |
 | notificationrules | Nie | Nie |
-| scheduledqueryrules | Yes | Tak |
-| testy internetowe | Tak | Tak |
-| Skoroszyty | Tak | Tak |
+| scheduledqueryrules | Tak | Yes |
+| testów internetowych | Tak | Yes |
+| Otwiera | Tak | Tak |
 
 > [!IMPORTANT]
-> Upewnij się, że przejście do nowej subskrypcji nie może przekraczać [limity przydziału subskrypcji](../azure-subscription-service-limits.md#azure-monitor-limits).
+> Upewnij się, że przejście do nowej subskrypcji nie przekracza przydziałów [subskrypcji](../azure-subscription-service-limits.md#azure-monitor-limits).
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| iotapps | Tak | Yes |
+| iotapps | Yes | Tak |
 
 ## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| checknameavailability | Yes | Tak |
-| graph | Yes | Tak |
+| checknameavailability | Tak | Tak |
+| graph | Tak | Yes |
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | hsmpools | Nie | Nie |
-| Magazyny | Yes | Yes |
+| magazynów | Yes | Yes |
 
 > [!IMPORTANT]
-> Magazyny klucz używany do szyfrowania dysku nie można przenieść do grupy zasobów w tej samej subskrypcji lub w różnych subskrypcjach.
+> Magazyny kluczy używane do szyfrowania dysków nie mogą zostać przeniesione do grupy zasobów w tej samej subskrypcji lub w różnych subskrypcjach.
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Klastry | Tak | Yes |
+| oparty | Tak | Tak |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 | Typ zasobu | Resource group | Subscription |
@@ -634,39 +634,39 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | hostingenvironments | Nie | Nie |
-| integrationaccounts | Yes | Tak |
+| integrationaccounts | Tak | Tak |
 | integrationserviceenvironments | Nie | Nie |
 | isolatedenvironments | Nie | Nie |
-| Przepływy pracy | Tak | Yes |
+| przebieg | Yes | Tak |
 
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| commitmentplans | Tak | Tak |
-| usługi sieci Web | Tak | Nie |
-| Obszary robocze | Yes | Yes |
+| commitmentplans | Yes | Tak |
+| WebServices | Tak | Nie |
+| Obszarów roboczych | Tak | Yes |
 
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft.MachineLearningCompute
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| operationalizationclusters | Yes | Yes |
+| operationalizationclusters | Yes | Tak |
 
-## <a name="microsoftmachinelearningexperimentation"></a>Microsoft.MachineLearningExperimentation
+## <a name="microsoftmachinelearningexperimentation"></a>Microsoft. MachineLearningExperimentation
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | accounts | Nie | Nie |
-| konta/obszarów roboczych | Nie | Nie |
-| obszary robocze/kont/projektów | Nie | Nie |
+| konta/obszary robocze | Nie | Nie |
+| konta/obszary robocze/projekty | Nie | Nie |
 | teamaccounts | Nie | Nie |
-| teamaccounts/obszarów roboczych | Nie | Nie |
-| obszary robocze/teamaccounts/projektów | Nie | Nie |
+| teamaccounts/obszary robocze | Nie | Nie |
+| teamaccounts/obszary robocze/projekty | Nie | Nie |
 
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| accounts | Yes | Yes |
+| accounts | Tak | Yes |
 
-## <a name="microsoftmachinelearningoperationalization"></a>Microsoft.MachineLearningOperationalization
+## <a name="microsoftmachinelearningoperationalization"></a>Microsoft. MachineLearningOperationalization
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | hostingaccounts | Nie | Nie |
@@ -674,17 +674,17 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Obszary robocze | Nie | Nie |
+| Obszarów roboczych | Nie | Nie |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| userassignedidentities | Nie | Nie |
+| resourceidentity | Nie | Nie |
 
-## <a name="microsoftmaps"></a>Microsoft.Maps
+## <a name="microsoftmaps"></a>Microsoft. Maps
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| accounts | Tak | Yes |
+| accounts | Yes | Tak |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 | Typ zasobu | Resource group | Subscription |
@@ -694,16 +694,16 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 ## <a name="microsoftmedia"></a>Microsoft.Media
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| mediaservices | Tak | Tak |
-| mediaservices/liveevents | Tak | Yes |
-| mediaservices/punkty | Yes | Tak |
+| MediaServices | Yes | Tak |
+| MediaServices/liveevents | Tak | Yes |
+| MediaServices/streamingendpoints | Tak | Tak |
 
 ## <a name="microsoftmigrate"></a>Microsoft.Migrate
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | assessmentprojects | Nie | Nie |
 | migrateprojects | Nie | Nie |
-| Projekty | Nie | Nie |
+| projektami | Nie | Nie |
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 | Typ zasobu | Resource group | Subscription |
@@ -711,7 +711,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 | netappaccounts | Nie | Nie |
 | netappaccounts/capacitypools | Nie | Nie |
 | netappaccounts/capacitypools/volumes | Nie | Nie |
-| netappaccounts/capacitypools/volumes/mounttargets | Nie | Nie |
+| netappaccounts/capacitypools/woluminy/mounttargets | Nie | Nie |
 | netappaccounts/capacitypools/volumes/snapshots | Nie | Nie |
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
@@ -719,84 +719,84 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 | ------------- | ----------- | ---------- |
 | applicationgateways | Nie | Nie |
 | applicationgatewaywebapplicationfirewallpolicies | Nie | Nie |
-| applicationsecuritygroups | Tak | Yes |
-| azurefirewalls | Yes | Tak |
+| applicationsecuritygroups | Tak | Tak |
+| azurefirewalls | Tak | Yes |
 | bastionhosts | Nie | Nie |
-| Połączenia | Tak | Tak |
+| Licznik | Tak | Tak |
 | ddoscustompolicies | Tak | Tak |
 | ddosprotectionplans | Nie | Nie |
-| dnszones | Tak | Yes |
+| dnszones | Yes | Yes |
 | expressroutecircuits | Nie | Nie |
 | expressroutecrossconnections | Nie | Nie |
 | expressroutegateways | Nie | Nie |
 | expressrouteports | Nie | Nie |
-| frontdoors | Nie | Nie |
+| usługi frontdoor | Nie | Nie |
 | frontdoorwebapplicationfirewallpolicies | Nie | Nie |
-| loadbalancers | Tak — podstawowej jednostki SKU<br>Nie — standardowa jednostka SKU | Tak — podstawowej jednostki SKU<br>Nie — standardowa jednostka SKU |
-| localnetworkgateways | Tak | Tak |
+| loadbalancers | Tak — podstawowa jednostka SKU<br>Niestandardowa jednostka SKU | Tak — podstawowa jednostka SKU<br>Niestandardowa jednostka SKU |
+| localnetworkgateways | Yes | Tak |
 | natgateways | Yes | Tak |
-| networkintentpolicies | Tak | Tak |
-| interfejsy | Yes | Tak |
+| networkintentpolicies | Tak | Yes |
+| networkinterfaces | Tak | Yes |
 | networkprofiles | Nie | Nie |
-| networksecuritygroups | Tak | Tak |
-| networkwatchers | Tak | Tak |
-| networkwatchers/connectionmonitors | Yes | Tak |
-| networkwatchers/obiektywów | Tak | Tak |
-| networkwatchers/pingmeshes | Tak | Tak |
+| networksecuritygroups | Yes | Tak |
+| networkwatchers | Yes | Tak |
+| networkwatchers/connectionmonitors | Tak | Tak |
+| networkwatchers/soczewki | Tak | Tak |
+| networkwatchers/pingmeshes | Yes | Yes |
 | p2svpngateways | Nie | Nie |
 | privatednszones | Yes | Tak |
-| privatednszones/virtualnetworklinks | Yes | Tak |
+| privatednszones/virtualnetworklinks | Tak | Tak |
 | privateendpoints | Nie | Nie |
 | privatelinkservices | Nie | Nie |
-| publicipaddresses | Tak — podstawowej jednostki SKU<br>Nie — standardowa jednostka SKU | Tak — podstawowej jednostki SKU<br>Nie — standardowa jednostka SKU |
-| publicipprefixes | Tak | Tak |
+| adresów publicipaddress | Tak — podstawowa jednostka SKU<br>Niestandardowa jednostka SKU | Tak — podstawowa jednostka SKU<br>Niestandardowa jednostka SKU |
+| publicipprefixes | Tak | Yes |
 | routefilters | Nie | Nie |
 | routetables | Tak | Tak |
-| securegateways | Tak | Tak |
+| securegateways | Yes | Tak |
 | serviceendpointpolicies | Yes | Tak |
-| trafficmanagerprofiles | Tak | Tak |
+| trafficmanagerprofiles | Yes | Tak |
 | virtualhubs | Nie | Nie |
-| virtualnetworkgateways | Yes | Tak |
+| virtualnetworkgateways | Tak | Tak |
 | virtualnetworks | Tak | Tak |
 | virtualnetworktaps | Nie | Nie |
 | virtualwans | Nie | Nie |
 | vpngateways | Nie | Nie |
 | vpnsites | Nie | Nie |
-| webapplicationfirewallpolicies | Tak | Tak |
+| webapplicationfirewallpolicies | Tak | Yes |
 
 > [!IMPORTANT]
-> Zobacz [sieci wirtualnych, Przenieś wskazówki](./move-limitations/virtual-network-move-limitations.md).
+> Zobacz [wskazówki dotyczące przenoszenia sieci wirtualnych](./move-limitations/virtual-network-move-limitations.md).
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Przestrzenie nazw | Yes | Tak |
+| Przestrzeni | Tak | Tak |
 | przestrzenie nazw/notificationhubs | Tak | Tak |
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Obszary robocze | Yes | Tak |
+| Obszarów roboczych | Yes | Yes |
 
 > [!IMPORTANT]
-> Upewnij się, że przejście do nowej subskrypcji nie może przekraczać [limity przydziału subskrypcji](../azure-subscription-service-limits.md#azure-monitor-limits).
+> Upewnij się, że przejście do nowej subskrypcji nie przekracza przydziałów [subskrypcji](../azure-subscription-service-limits.md#azure-monitor-limits).
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| managementconfigurations | Yes | Tak |
-| rozwiązania | Yes | Tak |
+| managementconfigurations | Yes | Yes |
+| rozwiązania | Tak | Tak |
 | Widoki | Yes | Yes |
 
-## <a name="microsoftpeering"></a>Microsoft.Peering
+## <a name="microsoftpeering"></a>Microsoft. Komunikacja równorzędna
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Komunikacja równorzędna | Nie | Nie |
+| komunikacje równorzędne | Nie | Nie |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Pulpity nawigacyjne | Tak | Tak |
+| Pulpitów nawigacyjnych | Yes | Yes |
 
 ## <a name="microsoftportalsdk"></a>Microsoft.PortalSdk
 | Typ zasobu | Resource group | Subscription |
@@ -806,12 +806,12 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| workspacecollections | Tak | Tak |
+| workspacecollections | Yes | Yes |
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Pojemności | Tak | Yes |
+| produkcyjnych | Yes | Tak |
 
 ## <a name="microsoftprojectoxford"></a>Microsoft.ProjectOxford
 | Typ zasobu | Resource group | Subscription |
@@ -821,77 +821,77 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Magazyny | Tak | Yes |
+| magazynów | Tak | Tak |
 
 > [!IMPORTANT]
-> Zobacz [usługi Recovery Services przenieść wskazówki](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
+> Zobacz [Recovery Services wskazówki dotyczące przenoszenia](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Przestrzenie nazw | Yes | Yes |
+| Przestrzeni | Yes | Tak |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| aplikacje | Tak | Nie |
+| aplikacje | Yes | Nie |
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| przepływy | Yes | Tak |
-| kolekcjach | Tak | Yes |
+| przekazywania | Tak | Tak |
+| jobcollections | Tak | Tak |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| searchservices | Tak | Yes |
+| searchservices | Tak | Tak |
 
 > [!IMPORTANT]
-> Nie można przenieść kilka wyszukiwania zasobów w różnych regionach w ramach jednej operacji. Zamiast tego należy przenieść je w oddzielne operacje.
+> Nie można przenieść kilku zasobów wyszukiwania w różnych regionach w jednej operacji. Zamiast tego należy przenieść je w osobnych operacjach.
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| iotsecuritysolutions | Tak | Tak |
+| iotsecuritysolutions | Yes | Tak |
 
 ## <a name="microsoftservermanagement"></a>Microsoft.ServerManagement
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Bramy | Nie | Nie |
+| bram | Nie | Nie |
 | węzły | Nie | Nie |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Przestrzenie nazw | Yes | Tak |
+| Przestrzeni | Tak | Tak |
 
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | aplikacje | Nie | Nie |
-| Klastry | Tak | Yes |
+| oparty | Tak | Tak |
 | containergroups | Nie | Nie |
 | containergroupsets | Nie | Nie |
 | edgeclusters | Nie | Nie |
-| Sieci | Nie | Nie |
+| sieci | Nie | Nie |
 | secretstores | Nie | Nie |
 | volumes | Nie | Nie |
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| aplikacje | Yes | Yes |
+| aplikacje | Yes | Tak |
 | containergroups | Nie | Nie |
-| Bramy | Tak | Yes |
-| Sieci | Tak | Tak |
-| wpisy tajne | Tak | Yes |
+| bram | Yes | Tak |
+| sieci | Tak | Yes |
+| wpisy tajne | Yes | Tak |
 | volumes | Tak | Tak |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| signalr | Yes | Yes |
+| SignalR | Tak | Yes |
 
 ## <a name="microsoftsiterecovery"></a>Microsoft.SiteRecovery
 | Typ zasobu | Resource group | Subscription |
@@ -899,13 +899,13 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 | siterecoveryvault | Nie | Nie |
 
 > [!IMPORTANT]
-> Zobacz [usługi Recovery Services przenieść wskazówki](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
+> Zobacz [Recovery Services wskazówki dotyczące przenoszenia](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
 
 ## <a name="microsoftsolutions"></a>Microsoft.Solutions
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | appliancedefinitions | Nie | Nie |
-| urządzenia | Nie | Nie |
+| gotowania | Nie | Nie |
 | applicationdefinitions | Nie | Nie |
 | aplikacje | Nie | Nie |
 | jitrequests | Nie | Nie |
@@ -913,22 +913,22 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 ## <a name="microsoftsql"></a>Microsoft.Sql
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| instancepools | Tak | Tak |
-| managedinstances | Tak | Yes |
-| managedinstances/baz danych | Yes | Tak |
-| Serwery | Yes | Tak |
-| serwery/baz danych | Yes | Tak |
-| servers/elasticpools | Tak | Tak |
+| instancepools | Nie | Nie |
+| managedinstances | Nie | Nie |
+| ManagedInstances/bazy danych | Nie | Nie |
+| Serwerem | Tak | Yes |
+| Serwery/bazy danych | Tak | Tak |
+| serwery/elasticpools | Tak | Tak |
 | virtualclusters | Tak | Tak |
 
 > [!IMPORTANT]
-> Bazy danych i serwera musi być w tej samej grupie zasobów. Gdy przesuniesz programu SQL server, jego baz danych są również przenoszone. To zachowanie ma zastosowanie do baz danych Azure SQL Database i Azure SQL Data Warehouse.
+> Baza danych i serwer muszą znajdować się w tej samej grupie zasobów. Gdy przesuniesz programu SQL server, jego baz danych są również przenoszone. To zachowanie ma zastosowanie do baz danych Azure SQL Database i Azure SQL Data Warehouse.
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| sqlvirtualmachinegroups | Tak | Tak |
-| sqlvirtualmachines | Yes | Yes |
+| sqlvirtualmachinegroups | Yes | Yes |
+| sqlvirtualmachines | Tak | Tak |
 
 ## <a name="microsoftsqlvm"></a>Microsoft.SqlVM
 | Typ zasobu | Resource group | Subscription |
@@ -938,17 +938,17 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| storageaccounts | Tak | Tak |
+| storageaccounts | Yes | Tak |
 
 ## <a name="microsoftstoragecache"></a>Microsoft.StorageCache
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Pamięci podręczne | Nie | Nie |
+| pamięci podręcznych | Nie | Nie |
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| storagesyncservices | Tak | Yes |
+| storagesyncservices | Tak | Tak |
 
 ## <a name="microsoftstoragesyncdev"></a>Microsoft.StorageSyncDev
 | Typ zasobu | Resource group | Subscription |
@@ -963,42 +963,42 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Menedżerowie | Nie | Nie |
+| skonfigurowany | Nie | Nie |
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| streamingjobs | Yes | Yes |
+| streamingjobs | Yes | Tak |
 
 > [!IMPORTANT]
-> Stream Analytics, które zadania nie można przenieść uruchamianego w stanie.
+> Nie można przenieść zadań Stream Analytics, gdy stan jest uruchomiony.
 
 ## <a name="microsoftstreamanalyticsexplorer"></a>Microsoft.StreamAnalyticsExplorer
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Środowiska | Nie | Nie |
-| środowiska/eventsources | Nie | Nie |
+| wiejski | Nie | Nie |
+| środowiska/źródła zdarzeń | Nie | Nie |
 | wystąpienia | Nie | Nie |
-| wystąpienia/środowisk | Nie | Nie |
-| środowiska/wystąpienia/eventsources | Nie | Nie |
+| wystąpienia/środowiska | Nie | Nie |
+| wystąpienia/środowiska/obiekty EventSource | Nie | Nie |
 
 ## <a name="microsoftterraformoss"></a>Microsoft.TerraformOSS
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | providerregistrations | Nie | Nie |
-| Zasoby | Nie | Nie |
+| Produkcyjnych | Nie | Nie |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Środowiska | Tak | Tak |
-| środowiska/eventsources | Tak | Yes |
-| środowiska/referencedatasets | Yes | Tak |
+| wiejski | Tak | Tak |
+| środowiska/źródła zdarzeń | Tak | Yes |
+| środowiska/referencedatasets | Tak | Yes |
 
-## <a name="microsofttoken"></a>Microsoft.Token
+## <a name="microsofttoken"></a>Microsoft. token
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| przechowuje | Nie | Nie |
+| przechowywać | Nie | Nie |
 
 ## <a name="microsoftvirtualmachineimages"></a>Microsoft.VirtualMachineImages
 | Typ zasobu | Resource group | Subscription |
@@ -1008,35 +1008,35 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 ## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| account | Tak | Tak |
-| konta i rozszerzeń | Tak | Tak |
-| konto lub projekt docelowy | Yes | Yes |
+| account | Yes | Tak |
+| konto/rozszerzenie | Tak | Yes |
+| konto/projekt | Tak | Yes |
 
 > [!IMPORTANT]
-> Aby zmienić subskrypcję DevOps platformy Azure, zobacz [zmienić subskrypcję platformy Azure używane na potrzeby rozliczeń](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json).
+> Aby zmienić subskrypcję usługi Azure DevOps, zobacz [zmiana subskrypcji platformy Azure używanej do](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)rozliczania.
 
-## <a name="microsoftvmwarecloudsimple"></a>Microsoft.VMwareCloudSimple
+## <a name="microsoftvmwarecloudsimple"></a>Microsoft. VMwareCloudSimple
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
 | dedicatedcloudnodes | Tak | Yes |
 | dedicatedcloudservices | Yes | Tak |
-| maszyn wirtualnych | Yes | Yes |
+| virtualmachines | Yes | Yes |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 | Typ zasobu | Resource group | Subscription |
 | ------------- | ----------- | ---------- |
-| Certyfikaty | Nie | Tak |
-| connectiongateways | Tak | Yes |
-| Połączenia | Tak | Tak |
+| Przystawki | Nie | Tak |
+| connectiongateways | Tak | Tak |
+| Licznik | Tak | Tak |
 | customapis | Tak | Tak |
 | hostingenvironments | Nie | Nie |
-| farm serwerów | Yes | Tak |
-| Lokacje | Yes | Yes |
-| sites/premieraddons | Tak | Tak |
-| Lokacje/miejsca | Yes | Yes |
+| dopuszczalna | Tak | Yes |
+| teren | Yes | Tak |
+| sites/premieraddons | Yes | Tak |
+| Lokacje/miejsca | Yes | Tak |
 
 > [!IMPORTANT]
-> Zobacz [wskazówki dotyczące przenoszenia usługi App](./move-limitations/app-service-move-limitations.md).
+> Zobacz [App Service wskazówki dotyczące przenoszenia](./move-limitations/app-service-move-limitations.md).
 
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
 | Typ zasobu | Resource group | Subscription |
@@ -1048,13 +1048,13 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 | ------------- | ----------- | ---------- |
 | applicationgroups | Nie | Nie |
 | hostpools | Nie | Nie |
-| Obszary robocze | Nie | Nie |
+| Obszarów roboczych | Nie | Nie |
 
 ## <a name="third-party-services"></a>Usługi innych firm
 
-Usługi innych firm nie obsługują obecnie operacji przenoszenia.
+Usługi innych firm obecnie nie obsługują operacji przenoszenia.
 
-## <a name="next-steps"></a>Następne kroki
-Poleceń przenieść zasoby można znaleźć [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](resource-group-move-resources.md).
+## <a name="next-steps"></a>Kolejne kroki
+Aby uzyskać polecenia przenoszenia zasobów, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](resource-group-move-resources.md).
 
-Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobierz [move-pomocy technicznej — resources.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv).
+Aby uzyskać te same dane jak plik z wartościami rozdzielanymi przecinkami, Pobierz [Move-support-Resources. csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv).

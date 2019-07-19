@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 7/17/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: e13884fb0c39beabf543fd04c9808373a68ec26a
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
-ms.translationtype: HT
+ms.openlocfilehash: 9e9472fbcd01cf40204063174b159638369d7429
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304305"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326666"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Limity rozmiaru żądań zapory aplikacji sieci Web i listy wykluczeń
 
@@ -91,11 +91,11 @@ Następujące polecenie cmdlet Azure PowerShell wyklucza parametr użytkownika z
 ```azurepowershell
 $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
    -MatchVariable "RequestArgNames" `
-   -SelectorMatchOperator "Equals" `
+   -SelectorMatchOperator "StartsWith" `
    -Selector "user"
 ```
-Dlatego jeśli adres URL **http://www.contoso.com/?user=fdafdasfda** jest przesyłany do WAF, nie będzie obliczany ciąg **fdafdasfda**.
+Dlatego jeśli adres URL **http://www.contoso.com/?user%281%29=fdafdasfda** jest przesyłany do WAF, nie będzie on obliczany w ciągu **fdafdasfda**, ale nadal będzie obliczał nazwę parametru **użytkownika% SRM% 29**. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Po skonfigurowaniu ustawień WAF można dowiedzieć się, jak wyświetlać dzienniki WAF. Aby uzyskać więcej informacji, zobacz [Application Gateway Diagnostics](application-gateway-diagnostics.md#diagnostic-logging).

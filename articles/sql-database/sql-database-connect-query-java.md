@@ -11,12 +11,12 @@ ms.author: andrela
 ms.reviewer: v-masebo
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 2d9ce34d52d08b4dd38caaadfab48b7a69870e9a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fcc1a093f8df87da24f9d7f7945c490d7b58c9bd
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61408983"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320579"
 ---
 # <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>Szybki start: Korzystanie z języka Java do wykonywania zapytań w bazie danych Azure SQL Database
 
@@ -30,15 +30,14 @@ Aby ukończyć ten przykład, upewnij się, że dysponujesz następującymi elem
 
   || Pojedyncza baza danych | Wystąpienie zarządzane |
   |:--- |:--- |:---|
-  | Przycisk Utwórz| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
+  | Create| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [Interfejs wiersza polecenia](scripts/sql-database-create-and-configure-database-cli.md) | [Interfejs wiersza polecenia](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [Program PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [Program PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Konfigurowanie | [Reguła zapory IP na poziomie serwera](sql-database-server-level-firewall-rule.md)| [Łączność z maszyny wirtualnej](sql-database-managed-instance-configure-vm.md)|
+  | Konfigurowanie | [Reguła zapory bazująca na adresach IP na poziomie serwera](sql-database-server-level-firewall-rule.md)| [Łączność z maszyny wirtualnej](sql-database-managed-instance-configure-vm.md)|
   |||[Łączność ze środowiska lokalnego](sql-database-managed-instance-configure-p2s.md)
   |Ładowanie danych|Ładowanie bazy danych Adventure Works na potrzeby samouczka Szybki start|[Przywracanie bazy danych Wide World Importers](sql-database-managed-instance-get-started-restore.md)
-  |||Przywróć lub zaimportować Adventure Works z [BACPAC](sql-database-import.md) plik wchodzącej w skład [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
-  |||
-
+  |||Przywróć lub zaimportuj Adventure Works z pliku [BACPAC](sql-database-import.md) z usługi [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  
   > [!IMPORTANT]
   > Skrypty zamieszczone w tym artykule korzystają z bazy danych Adventure Works. Za pomocą wystąpienia zarządzanego należy zaimportować bazę danych Adventure Works do bazy danych wystąpienia lub zmodyfikować skrypty znajdujące się w tym artykule, aby korzystały z bazy danych Wide World Importers.
 
@@ -168,7 +167,7 @@ Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą dan
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Projektowanie pierwszej bazy danych SQL na platformie Azure](sql-database-design-first-database.md)  
+- [Projektowanie pierwszej bazy danych Azure SQL Database](sql-database-design-first-database.md)  
 
 - [Sterownik JDBC firmy Microsoft dla programu SQL Server](https://github.com/microsoft/mssql-jdbc)  
 

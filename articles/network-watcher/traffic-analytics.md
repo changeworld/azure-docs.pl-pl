@@ -1,6 +1,6 @@
 ---
-title: Analiza ruchu platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak i analizowanie dzienników przepływów grupy zabezpieczeń sieci platformy Azure za pomocą analizy ruchu.
+title: Analiza ruchu na platformie Azure | Microsoft Docs
+description: Dowiedz się, jak analizować dzienniki przepływu sieciowych grup zabezpieczeń platformy Azure przy użyciu analizy ruchu.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -12,55 +12,56 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
-ms.author: yagup;kumud
-ms.openlocfilehash: 07bff578b27df13c65eb912a64b6a44b97175d37
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: kumud
+ms.reviewer: yagup
+ms.openlocfilehash: ca3174ad69185da88bf89c843f641dd2b20d9ac5
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051668"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67872485"
 ---
 # <a name="traffic-analytics"></a>Analiza ruchu
 
-Analiza ruchu jest oparta na chmurze rozwiązania, który zapewnia wgląd w aktywność użytkownika i aplikacji w sieciach w chmurze. Analiza ruchu analizuje usługi Network Watcher dzienniki sieciowych grup zabezpieczeń (NSG) przepływu udostępnienie szczegółowych informacji na przepływ ruchu w Twojej chmurze platformy Azure. Za pomocą analizy ruchu możesz wykonywać następujące czynności:
+Analiza ruchu to rozwiązanie oparte na chmurze, które zapewnia wgląd w aktywność użytkowników i aplikacji w sieciach w chmurze. Analiza ruchu analizuje dzienniki przepływu Network Watcher sieciowych grup zabezpieczeń (sieciowej grupy zabezpieczeń), aby uzyskać wgląd w przepływ ruchu w chmurze platformy Azure. Analiza ruchu umożliwia:
 
-- Wizualizowanie działań sieciowych wszystkich subskrypcji platformy Azure i identyfikacji punktów aktywnych.
-- Identyfikuj zagrożenia bezpieczeństwa dla i zabezpieczyć swoją sieć, za pomocą informacje, takie jak otwierać porty, aplikacji, próba dostępu do Internetu i maszyn wirtualnych (VM) nawiązywania połączenia z sieciami nieautoryzowane.
-- Zrozumieć wzorce przepływu ruchu między regionami platformy Azure a Internetem, aby zoptymalizować wdrożenie sieci, wydajność i pojemność.
-- Wykrywanie błędów konfiguracji sieci, co prowadzi do połączenia zakończone niepowodzeniem w sieci.
+- Wizualizuj aktywność sieci w ramach subskrypcji platformy Azure i zidentyfikuj punkty aktywne.
+- Zidentyfikuj zagrożenia bezpieczeństwa, a także Zabezpiecz sieć, korzystając z informacji takich jak Open-Ports, Applications próbujących uzyskać dostęp do Internetu oraz maszyn wirtualnych łączących się z nieautoryzowanymi sieciami.
+- Zrozumienie wzorców przepływu ruchu w regionach platformy Azure oraz w Internecie w celu zoptymalizowania wdrożenia sieci pod kątem wydajności i pojemności.
+- Lokalizowanie błędnych konfiguracji sieciowych prowadzących do nieudanych połączeń w sieci.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="why-traffic-analytics"></a>Dlaczego traffic analytics?
+## <a name="why-traffic-analytics"></a>Dlaczego Analiza ruchu?
 
-Ważne jest monitorowanie, zarządzanie i znasz sieci Niezrównana zabezpieczeń, zgodności i wydajności. Znajomość własnego środowiska jest sprawą Zabezpieczanie i optymalizowanie go. Często muszą znać bieżący stan sieci, który nawiązuje połączenie, gdzie one jest nawiązywane połączenie, które porty są otwarte dla Internetu, zachowanie oczekiwane sieci zachowanie nieregularne sieci i nagłego wzrostu ruchu.
+Niezbędne jest monitorowanie własnej sieci i zarządzanie nią w celu naruszenia bezpieczeństwa, zgodności i wydajności. Znajomość własnego środowiska ma najważniejsze znaczenie dla ochrony i optymalizacji. Często trzeba znać bieżący stan sieci, który nawiązuje połączenie, z którym są nawiązywane połączenia, które porty są otwarte dla Internetu, oczekiwano zachowania sieci, nieregularne zachowanie sieci i nagłe wzrost ruchu.
 
-Sieciach w chmurze są inne niż enterprise sieciami lokalnymi, w którym masz netflow lub równoważne protokołu zdolne do routery i przełączniki, które zapewniają możliwość zbierania ruchu sieciowego adresu IP, ponieważ wprowadza lub kończy pracę z interfejsem sieciowym. Analizując dane o przepływ ruchu, możesz tworzyć analizy ruchu sieciowego i woluminów.
+Sieci w chmurze są inne niż lokalne sieci przedsiębiorstwa, w których są dostępne lub równoważne routery i przełączniki obsługujące protokół, które umożliwiają zbieranie ruchu sieciowego IP w miarę wprowadzania lub wyłączania interfejsu sieciowego. Analizując dane przepływu ruchu, można utworzyć analizę przepływu ruchu sieciowego i woluminu.
 
-Sieci wirtualne platformy Azure mają dzienników przepływu sieciowej grupy zabezpieczeń zawierające informacje o ruch przychodzący i wychodzący ruch IP za pomocą sieciowej grupy zabezpieczeń skojarzone z poszczególnymi interfejsami sieciowymi maszyn wirtualnych i podsieci. Analizowanie danych nieprzetworzonych dzienników przepływu sieciowych grup zabezpieczeń, a następnie wstawianie analizy zabezpieczeń, topologia i lokalizacji geograficznej, ruch analytics może dostarczyć szczegółowe informacje dotyczące przepływu ruchu w danym środowisku. Analiza ruchu oferuje informacji takich jak hosty najczęściej komunikujące się najczęściej komunikujące się protokołów aplikacji, najbardziej konwersacji pary hosta, dozwolone/zablokowane ruchu, ruchu przychodzącego/wychodzącego, otwieranie portów w Internecie, reguły blokowania najbardziej, ruchu Dystrybucja na centrum danych platformy Azure, sieci wirtualnej, podsieci, lub nieautoryzowane sieci.
+Usługi Azure Virtual Networks zawierają dzienniki przepływu sieciowej grupy zabezpieczeń, które udostępniają informacje dotyczące ruchu przychodzącego i wychodzącego IP za pośrednictwem sieciowej grupy zabezpieczeń skojarzonej z poszczególnymi interfejsami sieciowymi, maszynami wirtualnymi lub podsieciami. Analizując nieprzetworzone dzienniki przepływu sieciowej grupy zabezpieczeń i wstawiając inteligencję zabezpieczeń, topologię i lokalizację geograficzną, Analiza ruchu może zapewnić wgląd w przepływ ruchu w środowisku. Analiza ruchu zawiera informacje takie jak większość hostów komunikujących się, większość komunikacji między protokołami aplikacji, większość par hostów z możliwością obsługi, dozwolony/zablokowany ruch, ruch przychodzący/wychodzący, otwieranie portów internetowych, większość reguł blokowania, ruch Dystrybucja według centrum danych platformy Azure, sieci wirtualnej, podsieci lub nieautoryzowanych sieci.
 
 ## <a name="key-components"></a>Główne składniki
 
-- **Sieciowa grupa zabezpieczeń (NSG)** : Zawiera listę reguł zabezpieczeń, które blokują lub zezwalają na ruch sieciowy do zasobów połączonych z siecią wirtualną platformy Azure. Sieciowe grupy zabezpieczeń można skojarzyć z podsieciami, poszczególnymi maszynami wirtualnymi (model klasyczny) lub poszczególnymi interfejsami sieciowymi (NIC) dołączonymi do maszyn wirtualnych (model usługi Resource Manager). Aby uzyskać więcej informacji, zobacz [omówienie grupy zabezpieczeń sieci](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Dzienników przepływu Sieciowej grupy zabezpieczeń sieci**: Zezwalaj na wyświetlanie informacji o przychodzący i wychodzący ruch IP sieciowej grupy zabezpieczeń. Przepływu sieciowej grupy zabezpieczeń, dzienniki są zapisywane w formacie json i Pokaż przepływy wychodzące i przychodzące na podstawie reguły w poszczególnych kart Sieciowych przepływ ma zastosowanie do 5-elementowe spójne kolekcje informacji o przepływie (źródłowego i docelowego adresu IP, źródłowy i docelowy port i protokół) i czy był dozwolony ruch lub zabronione. Aby uzyskać więcej informacji na temat dzienników przepływu sieciowych grup zabezpieczeń, zobacz [dzienników przepływu sieciowych grup zabezpieczeń](network-watcher-nsg-flow-logging-overview.md).
-- **Log Analytics**: Usługa Azure, która służy do zbierania danych monitorowania i przechowuje dane w centralnym repozytorium. Te dane mogą obejmować zdarzenia, dane dotyczące wydajności i niestandardowe dane dostarczane za pośrednictwem interfejsu API usługi Azure. Zebrane dane są dostępne na potrzeby alertów, analizy i eksportu. Monitorowanie aplikacji, takich jak analiza ruchu i monitora wydajności sieci są tworzone przy użyciu dzienników usługi Azure Monitor jako podstawa. Aby uzyskać więcej informacji, zobacz [dzienniki usługi Azure Monitor](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Zaloguj się obszar roboczy usługi Analytics**: Wystąpienie usługi Azure Monitor dzienników, w której są przechowywane dane odnoszących się do konta platformy Azure. Aby uzyskać więcej informacji na temat obszarów roboczych usługi Log Analytics, zobacz [Utwórz obszar roboczy usługi Log Analytics](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Network Watcher**: Regionalna usługa, która pozwala na monitorowanie i diagnozowanie warunków na poziomie scenariusza sieci na platformie Azure. Można włączyć dzienniki sieciowych grup zabezpieczeń usługi flow włączać i wyłączać przy użyciu usługi Network Watcher. Aby uzyskać więcej informacji, zobacz [usługi Network Watcher](network-watcher-monitoring-overview.md).
+- **Sieciowa Grupa zabezpieczeń (sieciowej grupy zabezpieczeń)** : Zawiera listę reguł zabezpieczeń, które zezwalają na ruch sieciowy połączony z usługą Azure Virtual Network lub go odmówili. Sieciowe grupy zabezpieczeń można skojarzyć z podsieciami, poszczególnymi maszynami wirtualnymi (model klasyczny) lub poszczególnymi interfejsami sieciowymi (NIC) dołączonymi do maszyn wirtualnych (model usługi Resource Manager). Aby uzyskać więcej informacji, zobacz [Omówienie grup zabezpieczeń sieci](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Dzienniki przepływu sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń)** : Umożliwia wyświetlanie informacji dotyczących ruchu przychodzącego i wychodzącego IP za pomocą sieciowej grupy zabezpieczeń. Dzienniki przepływu sieciowej grupy zabezpieczeń są zapisywane w formacie JSON i pokazują przepływy wychodzące i przychodzące dla każdej reguły, karta sieciowa przepływu ma zastosowanie do pięciu informacji o przepływie (źródłowy/docelowy adres IP, port źródłowy/docelowy i protokół), a jeśli ruch był dozwolony lub odmowa. Aby uzyskać więcej informacji na temat dzienników przepływów sieciowej grupy zabezpieczeń, zobacz [dzienniki przepływu sieciowej grupy zabezpieczeń](network-watcher-nsg-flow-logging-overview.md).
+- **Log Analytics**: Usługa platformy Azure, która zbiera dane monitorowania i zapisuje dane w centralnym repozytorium. Te dane mogą obejmować zdarzenia, dane dotyczące wydajności lub dane niestandardowe udostępniane za pomocą interfejsu API platformy Azure. Zebrane dane są dostępne na potrzeby alertów, analizy i eksportu. Aplikacje monitorujące, takie jak Monitor wydajności sieci i Analiza ruchu, są tworzone przy użyciu Azure Monitor dzienników jako podstawy. Aby uzyskać więcej informacji, zobacz [dzienniki Azure monitor](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Log Analytics obszar roboczy**: Jest przechowywane wystąpienie dzienników Azure Monitor, w których dane odnoszą się do konta platformy Azure. Aby uzyskać więcej informacji na temat obszarów roboczych Log Analytics, zobacz [tworzenie log Analytics obszaru roboczego](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Network Watcher**: Usługa regionalna, która umożliwia monitorowanie i diagnozowanie warunków na poziomie scenariusza sieci na platformie Azure. Dzienniki przepływu sieciowej grupy zabezpieczeń można włączać i wyłączać za pomocą Network Watcher. Aby uzyskać więcej informacji, zobacz [Network Watcher](network-watcher-monitoring-overview.md).
 
-## <a name="how-traffic-analytics-works"></a>Jak działa analizy ruchu
+## <a name="how-traffic-analytics-works"></a>Jak działa Analiza ruchu
 
-Analiza ruchu sprawdza nieprzetworzonych dzienników przepływu sieciowych grup zabezpieczeń i przechwytuje dzienniki obniżone przez agregowanie typowych przepływów między tego samego źródłowego adresu IP, docelowy adres IP, port docelowy i protokołu. Na przykład Host 1 (adres IP: . 10.10.10.10) komunikowania się z hostem 2 (adres IP: 10.10.20.10), 100 razy w okresie 1 godziny przy użyciu portu (np. 80) i protokół (na przykład http). Zmniejszenie dziennika ma jeden wpis, który Host 1 i 2 hosta przekazana do 100 razy w okresie 1 godziny przy użyciu portu *80* i protokół *HTTP*, zamiast pozycji 100. Zmniejszenie dzienniki są rozszerzone o lokalizacji geograficznej, bezpieczeństwa i informacje o topologii, a następnie zapisywane w obszarze roboczym usługi Log Analytics. Na poniższej ilustracji przedstawiono przepływ danych:
+Analiza ruchu analizuje dzienniki nieprzetworzonych przepływów sieciowej grupy zabezpieczeń i przechwytuje zredukowane dzienniki poprzez agregowanie typowych przepływów między tym samym źródłowym adresem IP, docelowym adresem IP, portem docelowym i protokołem. Na przykład host 1 (adres IP: 10.10.10.10) do komunikacji z hostem 2 (adres IP: 10.10.20.10), 100 razy w okresie 1 godziny przy użyciu portu (na przykład 80) i protokołu (na przykład http). Zredukowany Dziennik ma jeden wpis, który host 1 & Host 2 komunikuje się 100 razy w okresie 1 godziny przy użyciu portu *80* i protokołu *http*, a nie do 100 wpisów. Zredukowane dzienniki są ulepszone przy użyciu informacji o lokalizacji geograficznej, zabezpieczeń i topologii, a następnie są przechowywane w obszarze roboczym Log Analytics. Na poniższej ilustracji przedstawiono przepływ danych:
 
-![Przepływ danych dla przetwarzania dzienników przepływu sieciowych grup zabezpieczeń](./media/traffic-analytics/data-flow-for-nsg-flow-log-processing.png)
+![Przepływ danych dla przetwarzania dzienników przepływu sieciowej grupy zabezpieczeń](./media/traffic-analytics/data-flow-for-nsg-flow-log-processing.png)
 
 ## <a name="supported-regions"></a>Obsługiwane regiony
 
-Korzystanie z analizy ruchu dla sieciowych grup zabezpieczeń w jednym z następujących obsługiwanych regionów:
+Analizy ruchu można użyć dla sieciowych grup zabezpieczeń w jednym z następujących obsługiwanych regionów:
 
 * Kanada Środkowa
 * Środkowo-zachodnie stany USA
-* Wschodnie stany USA
+* East US
 * Wschodnie stany USA 2
 * Środkowo-północne stany USA
 * Środkowo-południowe stany USA
@@ -84,10 +85,10 @@ Korzystanie z analizy ruchu dla sieciowych grup zabezpieczeń w jednym z następ
 * Japonia Zachodnia
 * Administracja USA — Wirginia
 
-Obszar roboczy usługi Log Analytics muszą znajdować się w następujących regionach:
+Obszar roboczy Log Analytics musi istnieć w następujących regionach:
 * Kanada Środkowa
 * Środkowo-zachodnie stany USA
-* Wschodnie stany USA
+* East US
 * Wschodnie stany USA 2
 * Środkowo-południowe stany USA
 * Zachodnie stany USA
@@ -110,55 +111,55 @@ Obszar roboczy usługi Log Analytics muszą znajdować się w następujących re
 
 ### <a name="user-access-requirements"></a>Wymagania dotyczące dostępu użytkowników
 
-Twoje konto musi należeć do jednej z następujących Azure [wbudowane role](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json):
+Twoje konto musi być członkiem jednej z następujących [wbudowanych ról](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)platformy Azure:
 
-|Model wdrażania   | Rola                   |
+|Model wdrażania   | Role                   |
 |---------          |---------               |
 |Resource Manager   | Właściciel                  |
 |                   | Współautor            |
 |                   | Czytelnik                 |
 |                   | Współautor sieci    |
 
-Jeśli Twoje konto nie jest przypisana do jednego z wbudowanych ról, musi ona zostać przypisana do [roli niestandardowej](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) przypisany następujące działania, na poziomie subskrypcji:
+Jeśli Twoje konto nie jest przypisane do jednej z ról wbudowanych, musi być przypisane do [roli niestandardowej](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) , do której przypisano następujące akcje, na poziomie subskrypcji:
 
-- "Microsoft.Network/applicationGateways/read"
-- "Microsoft.Network/connections/read"
-- "Microsoft.Network/loadBalancers/read"
-- "Microsoft.Network/localNetworkGateways/read"
-- "Microsoft.Network/networkInterfaces/read"
+- "Microsoft. Network/applicationGateways/Read"
+- "Microsoft. Network/Connections/Read"
+- "Microsoft. Network/loadBalancers/Read"
+- "Microsoft. Network/localNetworkGateways/Read"
+- "Microsoft. Network/networkInterfaces/Read"
 - "Microsoft.Network/networkSecurityGroups/read"
 - "Microsoft.Network/publicIPAddresses/read"
-- "Microsoft.Network/routeTables/read"
-- "Microsoft.Network/virtualNetworkGateways/read"
-- "Microsoft.Network/virtualNetworks/read"
+- "Microsoft. Network/routeTables/Read"
+- "Microsoft. Network/virtualNetworkGateways/Read"
+- "Microsoft. Network/virtualNetworks/Read"
 
-Aby uzyskać informacji na temat sposobu sprawdzania uprawnień dostępu użytkowników, zobacz [Traffic analytics — często zadawane pytania](traffic-analytics-faq.md).
+Aby uzyskać informacje na temat sprawdzania uprawnień dostępu użytkownika, zobacz Omówienie usługi [Traffic Analytics — często zadawane pytania](traffic-analytics-faq.md).
 
 ### <a name="enable-network-watcher"></a>Włączanie usługi Network Watcher
 
-W celu analizy ruchu, musisz mieć istniejącej usługi network watcher, lub [Włącz usługę network watcher](network-watcher-create.md) w każdym regionie, czy masz sieciowych grup zabezpieczeń, które mają być analizowane ruchu dla. Analiza ruchu może zostać włączona dla sieciowych grup zabezpieczeń hostowanych w dowolnym [obsługiwane regiony](#supported-regions).
+Aby analizować ruch, musisz mieć istniejący obserwator sieci lub [włączyć obserwatora sieci](network-watcher-create.md) w każdym regionie, w którym sieciowych grup zabezpieczeń chcesz analizować ruch. Analiza ruchu może być włączona dla usługi sieciowych grup zabezpieczeń hostowanej w dowolnym z [obsługiwanych regionów](#supported-regions).
 
-### <a name="select-a-network-security-group"></a>Wybierz grupę zabezpieczeń sieci
+### <a name="select-a-network-security-group"></a>Wybierz sieciową grupę zabezpieczeń
 
-Przed włączeniem przepływu sieciowej grupy zabezpieczeń, rejestrowanie, konieczne jest posiadanie sieciową grupę zabezpieczeń do logowania przepływów. Jeśli nie masz sieciowej grupy zabezpieczeń, zobacz [Utwórz sieciową grupę zabezpieczeń](../virtual-network/manage-network-security-group.md#create-a-network-security-group) ją utworzyć.
+Przed włączeniem rejestrowania przepływu sieciowej grupy zabezpieczeń należy mieć sieciową grupę zabezpieczeń, aby rejestrować przepływy dla programu. Jeśli nie masz sieciowej grupy zabezpieczeń, zobacz [Tworzenie sieciowej grupy zabezpieczeń](../virtual-network/manage-network-security-group.md#create-a-network-security-group) , aby ją utworzyć.
 
-Po lewej stronie witryny Azure portal, wybierz **Monitor**, następnie **usługi Network watcher**, a następnie wybierz pozycję **dzienników przepływu sieciowych grup zabezpieczeń**. Wybierz sieciową grupę zabezpieczeń, który chcesz włączyć dzienników przepływu sieciowej grupy zabezpieczeń, jak pokazano na poniższej ilustracji:
+Po lewej stronie Azure Portal wybierz pozycję **monitor**, a następnie **obserwator sieci**, a następnie wybierz pozycję **dzienniki przepływów sieciowej grupy zabezpieczeń**. Wybierz sieciową grupę zabezpieczeń, dla której chcesz włączyć dziennik przepływu sieciowej grupy zabezpieczeń, jak pokazano na poniższej ilustracji:
 
-![Wybór sieciowych grup zabezpieczeń, które wymagają włączenia dzienników przepływu sieciowej grupy zabezpieczeń](./media/traffic-analytics/selection-of-nsgs-that-require-enablement-of-nsg-flow-logging.png)
+![Wybór sieciowych grup zabezpieczeń, które wymagają włączenia dziennika przepływu sieciowej grupy zabezpieczeń](./media/traffic-analytics/selection-of-nsgs-that-require-enablement-of-nsg-flow-logging.png)
 
-Jeśli zostanie podjęta próba włączenia usługi analiza ruchu dla sieciowych grup zabezpieczeń, który znajduje się w dowolnym regionie innych niż [obsługiwane regiony](#supported-regions), komunikat o błędzie "Nie znaleziono".
+Jeśli spróbujesz włączyć analizę ruchu dla sieciowej grupy zabezpieczeń, który jest hostowany w dowolnym regionie innym niż [Obsługiwane regiony](#supported-regions), zostanie wyświetlony komunikat o błędzie "nie znaleziono".
 
 ## <a name="enable-flow-log-settings"></a>Włącz ustawienia dziennika przepływu
 
-Przed włączeniem ustawienia dziennika przepływu, należy wykonać następujące zadania:
+Przed włączeniem ustawień dziennika przepływu należy wykonać następujące zadania:
 
-Jeśli jeszcze nie jest zarejestrowany dla Twojej subskrypcji, należy zarejestrować dostawcę usługi Azure Insights:
+Zarejestruj dostawcę usługi Azure Insights, jeśli nie został jeszcze zarejestrowany dla Twojej subskrypcji:
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.Insights
 ```
 
-Jeśli nie masz jeszcze loguje się konta usługi Azure Storage do przechowywania przepływu sieciowej grupy zabezpieczeń, musisz utworzyć konto magazynu. Za pomocą poniższego polecenia, można utworzyć konta magazynu. Przed uruchomieniem poleceń, Zastąp `<replace-with-your-unique-storage-account-name>` nazwą, która jest unikatowa dla wszystkich lokalizacji platformy Azure od 3 do 24 znaków długości, przy użyciu tylko cyfry i małe litery. Jeśli to konieczne, można również zmienić nazwę grupy zasobów.
+Jeśli nie masz jeszcze konta usługi Azure Storage do przechowywania dzienników przepływu sieciowej grupy zabezpieczeń w programie, musisz utworzyć konto magazynu. Można utworzyć konto magazynu za pomocą poniższego polecenia. Przed uruchomieniem polecenia Zamień `<replace-with-your-unique-storage-account-name>` na nazwę, która jest unikatowa we wszystkich lokalizacjach platformy Azure, od 3-24 znaków, używając tylko cyfr i małych liter. W razie potrzeby można również zmienić nazwę grupy zasobów.
 
 ```azurepowershell-interactive
 New-AzStorageAccount `
@@ -169,207 +170,207 @@ New-AzStorageAccount `
   -Kind StorageV2
 ```
 
-Wybierz następujące opcje, jak pokazano na ilustracji:
+Wybierz poniższe opcje, jak pokazano na ilustracji:
 
-1. Wybierz *na* dla **stanu**
-2. Wybierz *w wersji 2* dla **wersji dzienników przepływu**. W wersji 2 zawiera statystyki sesji przepływu (bajtów i pakietów)
-3. Wybierz istniejące konto magazynu do przechowywania dzienników przepływów na platformie. Jeśli chcesz przechowywać dane w nieskończoność, ustaw wartość *0*. Powoduje naliczenie opłat za magazyn Azure dla konta magazynu.
-4. Ustaw **przechowywania** do liczby dni, które mają być przechowywane dane.
-5. Wybierz *na* dla **stan analizy ruchu**.
-6. Wybierz istniejący obszar roboczy usługi Log Analytics (OMS) lub **Utwórz nowy obszar roboczy** Aby utworzyć nową. Analiza ruchu służy obszar roboczy usługi Log Analytics do przechowywania danych zagregowanych i indeksowane, który jest następnie używany do generowania analizami. Jeśli wybierzesz istniejącego obszaru roboczego, musi istnieć w jednym z [obsługiwane regiony](#supported-regions) i zostały uaktualnione do nowego języka zapytań. Jeśli nie chcesz, aby uaktualnić istniejący obszar roboczy lub w obsługiwanym regionie nie ma obszaru roboczego, Utwórz nową. Aby uzyskać więcej informacji na temat język zapytań, zobacz [usługi Azure Log Analytics, uaktualnienie do nową funkcją przeszukiwania dzienników](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+1. Wybierz pozycję *włączone* dla **stanu**
+2. Wybierz *wersję 2* dla **wersji dzienników przepływów**. Wersja 2 zawiera statystykę przepływu/sesji (bajty i pakiety)
+3. Wybierz istniejące konto magazynu, w którym mają być przechowywane dzienniki przepływów. Jeśli chcesz przechowywać dane w nieskończoność, ustaw wartość na *0*. Opłaty za usługę Azure Storage są naliczane za konto magazynu.
+4. Ustaw wartość **przechowywanie** na liczbę dni, przez którą mają być przechowywane dane.
+5. Wybierz pozycję *włączone* , aby uzyskać **stan Analiza ruchu**.
+6. Wybierz istniejący obszar roboczy usługi Log Analytics (OMS) lub wybierz pozycję **Utwórz nowy obszar roboczy** , aby utworzyć nowy. Obszar roboczy Log Analytics jest używany przez Analiza ruchu do przechowywania zagregowanych i indeksowanych danych, które są następnie używane do generowania analizy. Jeśli wybierzesz istniejący obszar roboczy, musi on znajdować się w jednym z [obsługiwanych regionów](#supported-regions) i został uaktualniony do nowego języka zapytań. Jeśli nie chcesz uaktualnić istniejącego obszaru roboczego lub nie masz obszaru roboczego w obsługiwanym regionie, Utwórz nowy. Aby uzyskać więcej informacji na temat języków zapytań, zobacz [Azure log Analytics Upgrade to New Search log](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
-    Obszaru roboczego analizy dzienników hostingu rozwiązanie do analizy ruchu i sieciowe grupy zabezpieczeń nie muszą znajdować się w tym samym regionie. Na przykład można mieć sieciowych grup zabezpieczeń w regionie wschodnie stany USA i zachodnie stany USA, w obszarze roboczym w regionie Europa Zachodnia, może być analizy ruchu. Wiele sieciowych grup zabezpieczeń można skonfigurować w tym samym obszarze roboczym.
+    Obszar roboczy usługi log Analytics obsługujący rozwiązanie do analizy ruchu i sieciowych grup zabezpieczeń nie muszą znajdować się w tym samym regionie. Na przykład możesz mieć dostęp do analizy ruchu w obszarze roboczym w regionie Europa Zachodnia, a ty możesz mieć sieciowych grup zabezpieczeń w regionach Wschodnie stany USA i zachodnie stany USA. W tym samym obszarze roboczym można skonfigurować wiele sieciowych grup zabezpieczeń.
 7. Wybierz pozycję **Zapisz**.
 
-    ![Wybór konta magazynu, obszar roboczy usługi Log Analytics i włączanie analizy ruchu](./media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement-nsg-flowlogs-v2.png)
+    ![Wybór konta magazynu, obszaru roboczego Log Analytics i włączenia Analiza ruchu](./media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement-nsg-flowlogs-v2.png)
 
-Powtórz poprzednie kroki dla innych NSG, dla których chcesz włączyć analizy ruchu. Dane z dzienników przepływu są wysyłane do obszaru roboczego, dlatego upewnij się, że lokalnymi przepisami i regulacjami w kraju/regionu na przechowywanie danych w regionie, w którym istnieje obszar roboczy.
+Powtórz poprzednie kroki dla wszystkich innych sieciowych grup zabezpieczeń, dla których chcesz włączyć funkcję analizy ruchu dla programu. Dane z dzienników przepływów są wysyłane do obszaru roboczego, dlatego należy się upewnić, że lokalne prawa i regulacje w Twoim kraju/regionie zezwalają na przechowywanie danych w regionie, w którym znajduje się obszar roboczy.
 
-Można również skonfigurować za pomocą analizy ruchu [AzNetworkWatcherConfigFlowLog zestaw](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) polecenia cmdlet programu PowerShell w programie Azure PowerShell. Uruchom `Get-Module -ListAvailable Az` można odnaleźć zainstalowanej wersji. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-Az-ps).
+Analiza ruchu można również skonfigurować za pomocą polecenia cmdlet [Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) środowiska PowerShell w Azure PowerShell. Uruchom `Get-Module -ListAvailable Az` , aby znaleźć zainstalowaną wersję. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-Az-ps).
 
-## <a name="view-traffic-analytics"></a>Wyświetl analizę ruchu
+## <a name="view-traffic-analytics"></a>Wyświetlanie analizy ruchu
 
-Na stronie po lewej stronie portalu, wybierz **wszystkich usług**, wprowadź *Monitor* w **filtru** pole. Gdy **Monitor** pojawi się w wynikach wyszukiwania, wybierz ją. Aby rozpocząć eksplorację, analizę ruchu i jego możliwości, wybierz opcję **usługi Network watcher**, następnie **analizy ruchu**.
+Po lewej stronie portalu wybierz pozycję **wszystkie usługi**, a następnie wprowadź wartość *monitor* w polu **Filtr** . Gdy **monitor** pojawi się w wynikach wyszukiwania, wybierz go. Aby rozpocząć Eksplorowanie analizy ruchu i jej możliwości, wybierz pozycję **Monitor sieci**, a następnie **Analiza ruchu**.
 
-![Uzyskiwanie dostępu do pulpitu nawigacyjnego analizy ruchu](./media/traffic-analytics/accessing-the-traffic-analytics-dashboard.png)
+![Uzyskiwanie dostępu do pulpitu nawigacyjnego Analiza ruchu](./media/traffic-analytics/accessing-the-traffic-analytics-dashboard.png)
 
-Pulpit nawigacyjny może potrwać do 30 minut pojawi się po raz pierwszy, ponieważ analiza ruchu musi najpierw agregacji wystarczającej ilości danych dla niego do uzyskania istotnych informacji, zanim może generować raportów.
+Po raz pierwszy pulpit nawigacyjny może potrwać do 30 minut, ponieważ Analiza ruchu musi najpierw agregować wystarczającą ilość danych, aby uzyskać istotny wgląd, zanim będzie mógł generować raporty.
 
 ## <a name="usage-scenarios"></a>Scenariusze użytkowania
 
-Niektóre szczegółowe informacje, które możesz chcieć uzyskać po w pełni jest skonfigurowana analiza ruchu, są następujące:
+Niektóre szczegółowe informacje, które można uzyskać po skonfigurowaniu Analiza ruchu jest w pełni skonfigurowane, są następujące:
 
-### <a name="find-traffic-hotspots"></a>Znajdowanie ruchu hotspotami
+### <a name="find-traffic-hotspots"></a>Znajdź hotspoty ruchu
 
 **Szukać**
 
-- Które hostów, podsieci i sieci wirtualne są wysyłania lub odbierania ruchu związanego z większości, przechodzenie przez maksymalne złośliwy ruch i blokuje znaczące przepływów?
-    - Sprawdź porównawczych wykresu dla hostów, podsieci i sieci wirtualnej. Opis hosta, którego, podsieciami i sieciami wirtualnymi jest wysyłany lub odbieranie ruchu w najbardziej może pomóc w zidentyfikowaniu hosty, które są przetwarzania najbardziej ruchu, i czy Dystrybucja ruchu odbywa się poprawnie.
-    - Możesz ocenić, jeśli wielkość ruchu sieciowego jest odpowiedni dla hosta. Jest ilość ruchu normalnego zachowania lub on że opiszemy je dalszego dochodzenia?
-- Ilość ruchu przychodzącego/wychodzącego jest?
-    -   Host oczekuje się, aby otrzymać więcej ruchu przychodzącego ruchu sieciowego niż wychodzących i odwrotnie?
+- Które hosty, podsieci i sieci wirtualne wysyłają lub odbierają najwięcej ruchu, przechodząc do maksymalnego złośliwego ruchu i blokując znaczące przepływy?
+    - Sprawdź Wykres porównawczy dla hosta, podsieci i sieci wirtualnej. Informacje o tym, które hosty, podsieci i sieci wirtualne są wysyłane lub odbierające najwięcej ruchu, mogą ułatwić zidentyfikowanie hostów, które przetwarzają większość ruchu, oraz tego, czy dystrybucja ruchu jest wykonywana prawidłowo.
+    - Można oszacować, czy wolumin ruchu jest odpowiedni dla hosta. Czy jest to natężenie normalnego działania ruchu lub czy ma ono na celu dalsze badanie?
+- Jak dużo ruchu przychodzącego/wychodzącego?
+    -   Czy host powinien odbierać więcej ruchu przychodzącego niż wychodzące lub odwrotnie?
 - Statystyka zablokowanego ruchu.
-    - Dlaczego hoście blokuje znacząca ilość nieszkodliwy ruch? To zachowanie wymaga dalszych badań, prawdopodobnie optymalizacji konfiguracji
-- Statystyki złośliwy ruch dozwolone/zablokowane
-  - Dlaczego host odbiera złośliwy ruch i dlaczego jest dozwolone przepływy z złośliwego źródła? To zachowanie wymaga dalszego dochodzenia, prawdopodobnie optymalizacji konfiguracji.
+    - Dlaczego host blokuje znaczną ilość nieszkodliwego ruchu? To zachowanie wymaga dalszych badań i prawdopodobnie zoptymalizować konfigurację
+- Statystyka złośliwego dozwolonego/zablokowanego ruchu
+  - Dlaczego Host odbiera złośliwy ruch i dlaczego są dozwolone przepływy ze złośliwego źródła? To zachowanie wymaga dalszych badań i prawdopodobnie zoptymalizować konfigurację.
 
-    Wybierz **holograficznych**w obszarze **hosta**, jak pokazano na poniższej ilustracji:
+    Wybierz pozycję **Zobacz wszystkie**w obszarze **host**, jak pokazano na poniższej ilustracji:
 
-    ![Pulpit nawigacyjny zaprezentować hosta z większości szczegóły ruchu](media/traffic-analytics/dashboard-showcasing-host-with-most-traffic-details.png)
+    ![Pokaz pulpitu nawigacyjnego z większością szczegółów ruchu](media/traffic-analytics/dashboard-showcasing-host-with-most-traffic-details.png)
 
-- Na poniższej ilustracji przedstawiono czas na popularności najważniejsze pięcioma hostami talking oraz informacje związane z przepływem (dozwolone — przychodzącego/wychodzącego i odmowy - przychodzącego/wychodzącego przepływu) dla hosta:
+- Na poniższej ilustracji przedstawiono trend czasu dla pięciu najlepszych hostów oraz szczegóły dotyczące przepływów (dozwolone – przychodzące/wychodzące i odrzucone — przepływy przychodzące/wychodzące) dla hosta:
 
-    ![Pięć mówić większość hosta trendu](media/traffic-analytics/top-five-most-talking-host-trend.png)
-
-**Szukać**
-
-- Które są najbardziej konwersacji pary hosta?
-    - Oczekiwane zachowanie, takie jak komunikacja frontonu lub zaplecza lub nieregularne zachowanie, takie jak ruch internetowy serwer zaplecza.
-- Statystyki dozwolone/zablokowane ruchu
-    - Dlaczego zezwalanie lub blokowanie natężeniem ruchu znaczące hosta
-- Najczęściej używany protokół aplikacji wśród większości konwersacji pary hosta:
-    - Czy aplikacje te są dozwolone w tej sieci?
-    - Aplikacje są skonfigurowane prawidłowo? Są one przy użyciu odpowiedniego protokołu komunikacji? Wybierz **holograficznych** w obszarze **częste odzyskiwanie pamięci konwersacji**, co zostało przedstawione na poniższej ilustracji:
-
-        ![Pulpit nawigacyjny, w którym przedstawiane są najczęściej konwersacji](./media/traffic-analytics/dashboard-showcasing-most-frequent-conversation.png)
-
-- Na poniższej ilustracji przedstawiono czas na popularności dla najważniejsze konwersacje pięć i szczegóły związane z przepływem, takich jak dozwolonych i niedozwolonych przepływy ruchu przychodzącego i wychodzącego dla pary konwersacji:
-
-    ![Pierwszych 5 trendów i szczegóły dotyczące intensywnych konwersacji](./media/traffic-analytics/top-five-chatty-conversation-details-and-trend.png)
+    ![Pięć najważniejszych trendów hosta](media/traffic-analytics/top-five-most-talking-host-trend.png)
 
 **Szukać**
 
-- Protokół aplikacji, które jest najczęściej używane w danym środowisku i które konwersacji pary hosta korzysta z protokołu aplikacji najbardziej?
-    - Czy aplikacje te są dozwolone w tej sieci?
-    - Aplikacje są skonfigurowane prawidłowo? Są one przy użyciu odpowiedniego protokołu komunikacji? Oczekiwane zachowanie jest typowe porty, takie jak 80 i 443. Komunikacji standardowa Jeśli nie są wyświetlane wszelkie nietypowe porty, mogą wymagać zmian w konfiguracji. Wybierz **holograficznych** w obszarze **port aplikacji**, na poniższej ilustracji:
+- Które są najbardziej odwracające pary hostów?
+    - Oczekiwane zachowanie, takie jak komunikacja frontonu lub komunikacji zaplecza lub nieregularnego zachowania, na przykład ruch internetowy zaplecza.
+- Statystyki dozwolone/zablokowanego ruchu
+    - Dlaczego Host dopuszcza lub blokuje znaczną ilość ruchu sieciowego
+- Najczęściej używany protokół aplikacji wśród pary hostów z największą ilością:
+    - Czy te aplikacje są dozwolone w tej sieci?
+    - Czy poprawnie skonfigurowano aplikacje? Czy korzystają one z odpowiedniego protokołu do komunikacji? Zaznacz opcję **Zobacz wszystko** w obszarze **częste konwersacje**, jak pokazano na poniższej ilustracji:
 
-        ![Pulpit nawigacyjny, w którym przedstawiane są najczęściej używane protokoły aplikacji](./media/traffic-analytics/dashboard-showcasing-top-application-protocols.png)
+        ![Pulpit nawigacyjny przedstawiający najczęstsze konwersacje](./media/traffic-analytics/dashboard-showcasing-most-frequent-conversation.png)
 
-- Następujące obrazy Pokaż czas popularne protokoły L7 pięć i szczegóły dotyczące przepływu (na przykład dozwolonych i niedozwolonych przepływy do niego dostępu) na protokół L7:
+- Na poniższej ilustracji przedstawiono trend czasu dla pięciu pierwszych konwersacji oraz szczegóły dotyczące przepływu, takie jak dozwolone i odrzucane przepływy ruchu przychodzącego i wychodzącego dla pary konwersacji:
 
-    ![Pięć najważniejszych warstwy 7 szczegóły protokołów i trend](./media/traffic-analytics/top-five-layer-seven-protocols-details-and-trend.png)
+    ![Pięć najważniejszych szczegółów konwersacji i trendów](./media/traffic-analytics/top-five-chatty-conversation-details-and-trend.png)
 
-    ![Szczegóły protokołu aplikacji podczas wyszukiwania dziennika przepływu](./media/traffic-analytics/flow-details-for-application-protocol-in-log-search.png)
+**Szukać**
+
+- Który protokół aplikacji jest najczęściej używany w danym środowisku, a pary hostów z odwracaniem używają protokołu aplikacji?
+    - Czy te aplikacje są dozwolone w tej sieci?
+    - Czy poprawnie skonfigurowano aplikacje? Czy korzystają one z odpowiedniego protokołu do komunikacji? Oczekiwane zachowanie to typowe porty, takie jak 80 i 443. W przypadku komunikacji standardowej, jeśli są wyświetlane jakiekolwiek nietypowe porty, mogą one wymagać zmiany konfiguracji. Wybierz pozycję **Zobacz wszystko** w obszarze **port aplikacji**, na poniższej ilustracji:
+
+        ![Pulpit nawigacyjny przedstawiający najpopularniejsze protokoły aplikacji](./media/traffic-analytics/dashboard-showcasing-top-application-protocols.png)
+
+- Następujące obrazy przedstawiają trendy czasu dla pięciu pierwszych protokołów P7 oraz szczegóły dotyczące przepływów (na przykład przepływy dozwolone i odrzucone) dla protokołu P7:
+
+    ![Pięć najważniejszych szczegółowych protokołów warstwy 7 i trendu](./media/traffic-analytics/top-five-layer-seven-protocols-details-and-trend.png)
+
+    ![Szczegóły przepływu dla protokołu aplikacji w przeszukiwaniu dzienników](./media/traffic-analytics/flow-details-for-application-protocol-in-log-search.png)
 
 **Szukać**
 
 - Trendy wykorzystania pojemności bramy sieci VPN w danym środowisku.
-    - Każda jednostka SKU sieci VPN umożliwia pewna ilość przepustowości. Czy bram sieci VPN skutkowało niewystarczającym wykorzystaniem?
-    - Bram osiągają wydajność? Należy uaktualnić do następnej wyższej wersji jednostki SKU?
-- Hosty najczęściej konwersacji, za pomocą których bramy sieci VPN, które są przez port, który?
-    - Ten wzorzec jest normalne? Wybierz **holograficznych** w obszarze **bramy sieci VPN**, jak pokazano na poniższej ilustracji:
+    - Każda jednostka SKU sieci VPN pozwala uzyskać określoną przepustowość. Czy bramy sieci VPN są niewykorzystywane?
+    - Czy bramy docierają do pojemności? Czy należy uaktualnić do następnej wyższej jednostki SKU?
+- Które są największej liczbie hostów, za pośrednictwem której Brama sieci VPN przekroczy port?
+    - Czy ten wzorzec jest normalny? Wybierz pozycję **Zobacz wszystko** w obszarze **Brama sieci VPN**, jak pokazano na poniższej ilustracji:
 
-        ![Pulpit nawigacyjny, którym przedstawiane są najważniejsze aktywne połączenia sieci VPN](./media/traffic-analytics/dashboard-showcasing-top-active-vpn-connections.png)
+        ![Pulpit nawigacyjny przedstawiający najpopularniejsze aktywne połączenia sieci VPN](./media/traffic-analytics/dashboard-showcasing-top-active-vpn-connections.png)
 
-- Na poniższej ilustracji przedstawiono czas analizy trendów wykorzystania pojemności bramy Azure VPN Gateway i szczegóły dotyczące przepływu (na przykład z dozwolonymi przepływami i porty):
+- Na poniższej ilustracji przedstawiono trendy czasu dla wykorzystania pojemności VPN Gateway platformy Azure i szczegółowe informacje dotyczące przepływu (takie jak dozwolone przepływy i porty):
 
-    ![Sieci VPN bramy trendów i przepływ szczegóły wykorzystania](./media/traffic-analytics/vpn-gateway-utilization-trend-and-flow-details.png)
+    ![Szczegóły dotyczące trendu i przepływu użycia bramy sieci VPN](./media/traffic-analytics/vpn-gateway-utilization-trend-and-flow-details.png)
 
-### <a name="visualize-traffic-distribution-by-geography"></a>Wizualizuj Dystrybucja ruchu według lokalizacji geograficznej
-
-**Szukać**
-
-- Dystrybucja ruchu w centrum danych, takie jak najważniejsze źródła ruchu do centrum danych, sieci nieautoryzowany najważniejsze konwersację z centrum danych a górnej konwersację protokołów aplikacji.
-  - Jeśli zauważysz większe obciążenie w centrum danych, możesz zaplanować do dystrybucji ruchu wydajne.
-  - Jeśli nieautoryzowany sieci są konwersację w centrum danych, następnie Rozwiąż reguły sieciowej grupy zabezpieczeń, aby je zablokować.
-
-    Wybierz **wyświetlanie mapy** w obszarze **środowiska**, jak pokazano na poniższej ilustracji:
-
-    ![Prezentacja Dystrybucja ruchu pulpitu nawigacyjnego](./media/traffic-analytics/dashboard-showcasing-traffic-distribution.png)
-
-- Mapy geograficznej przedstawiono najważniejsze wstążki do wyboru parametrów, takich jak centra danych (obsługujące analizę wdrożono/No wdrożenia/aktywny/nieaktywny/ruchu/nie obsługujące analizę ruchu) i kraje/regiony, w których pochodzi ruch Benign/złośliwym kodem do aktywnej Wdrożenie:
-
-    ![Widok mapy geograficznej przedstawiająca aktywne wdrożenie](./media/traffic-analytics/geo-map-view-showcasing-active-deployment.png)
-
-- Mapy geograficznej pokazuje dystrybucji ruchu do centrum danych z krajów/regionów i kontynentach komunikowania się go w niebieska (nieszkodliwy ruch) i czerwona (ruch złośliwego) kolorowe wierszy:
-
-    ![Zaprezentować rozkładania ruchu kraje/regiony i kontynentach widoku mapy geograficznej](./media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png)
-
-    ![Szczegóły dla dystrybucji ruchu na wyszukiwanie w dziennikach przepływu](./media/traffic-analytics/flow-details-for-traffic-distribution-in-log-search.png)
-
-### <a name="visualize-traffic-distribution-by-virtual-networks"></a>Wizualizuj Dystrybucja ruchu przez sieci wirtualnych
+### <a name="visualize-traffic-distribution-by-geography"></a>Wizualizowanie dystrybucji ruchu według lokalizacji geograficznej
 
 **Szukać**
 
-- Dystrybucja ruchu na sieć wirtualną, topologia, najważniejsze źródła ruchu w sieci wirtualnej, sieci nieautoryzowany najważniejsze konwersację do sieci wirtualnej i górnym konwersację protokołów aplikacji.
-  - Wiedząc, sieć wirtualną, która jest konwersację na sieć wirtualną, która. Konwersacji nie oczekuje się, można rozwiązać.
-  - Jeśli nieautoryzowany sieci są konwersację z wirtualnych sieci, można rozwiązać reguły sieciowej grupy zabezpieczeń, aby zablokować sieci nieautoryzowany.
+- Rozkład ruchu na centra danych, takie jak najpopularniejsze źródła ruchu, do centrum danych, najpopularniejszych nieautoryzowanych sieci, które są odwracane w usłudze Data Center i górnego odwrócenia protokołów aplikacji.
+  - Jeśli zaobserwujesz więcej obciążeń w centrum danych, możesz zaplanować efektywną dystrybucję ruchu.
+  - Jeśli nieautoryzowane sieci są w centrum danych, Popraw reguły sieciowej grupy zabezpieczeń, aby je zablokować.
+
+    Wybierz pozycję **Wyświetl mapę** w **środowisku**, jak pokazano na poniższej ilustracji:
+
+    ![Pokaz pulpitu nawigacyjnego — dystrybucja ruchu](./media/traffic-analytics/dashboard-showcasing-traffic-distribution.png)
+
+- Mapa geograficzna pokazuje górną Wstążkę do wybierania parametrów, takich jak centra danych (wdrożone/niewymagające wdrożenia/Active/nieaktywny/Analiza ruchu włączone/Analiza ruchu nie włączono), a kraje/regiony, w których działa niegroźny/złośliwy ruch do aktywnego mieszczeniu
+
+    ![Widok mapy geograficznej przedstawiający aktywne wdrożenie](./media/traffic-analytics/geo-map-view-showcasing-active-deployment.png)
+
+- Mapa geograficzna przedstawia rozkład ruchu do centrum danych z krajów/regionów i kontynentuje komunikację z nim w kolorze niebieskim (niegroźny ruch) i czerwony (złośliwy ruch) kolorowe linie:
+
+    ![Widok mapy geograficznej przedstawiający rozkład ruchu do krajów/regionów i kontynentów](./media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png)
+
+    ![Szczegóły przepływu dla dystrybucji ruchu w przeszukiwaniu dzienników](./media/traffic-analytics/flow-details-for-traffic-distribution-in-log-search.png)
+
+### <a name="visualize-traffic-distribution-by-virtual-networks"></a>Wizualizowanie dystrybucji ruchu przez sieci wirtualne
+
+**Szukać**
+
+- Dystrybucja ruchu na sieć wirtualna, topologia, najważniejsze źródła ruchu do sieci wirtualnej, najważniejsze nieautoryzowane sieci odwracające do sieci wirtualnej i górne protokoły aplikacji.
+  - Znajomość, która Sieć wirtualna jest odwracana do tej sieci wirtualnej. Jeśli konwersacja nie jest oczekiwana, można ją poprawić.
+  - Jeśli nieautoryzowane sieci są odwracające do sieci wirtualnej, możesz poprawić reguły sieciowej grupy zabezpieczeń, aby blokować nieautoryzowane sieci.
  
-    Wybierz **sieci wirtualne widoku** w obszarze **środowiska**, jak pokazano na poniższej ilustracji:
+    Wybierz pozycję **Wyświetl sieci wirtualnych** w **środowisku**, jak pokazano na poniższej ilustracji:
 
-    ![Pulpit nawigacyjny, w którym przedstawiane są dystrybucja sieci wirtualnej](./media/traffic-analytics/dashboard-showcasing-virtual-network-distribution.png)
+    ![Pulpit nawigacyjny — pokaz dystrybucji sieci wirtualnej](./media/traffic-analytics/dashboard-showcasing-virtual-network-distribution.png)
 
-- Topologię sieci wirtualnej przedstawiono najważniejsze wstążce wybór parametrów, takich jak sieci wirtualnej (Vnet sieci wirtualnej połączeń/Active/Inactive), połączenia zewnętrzne, aktywne przepływy i złośliwe przepływy sieci wirtualnej.
-- Można filtrować wirtualnego topologią i konfiguracją sieci na podstawie subskrypcji, obszarów roboczych, grupy zasobów i interwał czasu. Dodatkowe filtry, które pomagają zrozumieć, czy przepływ: Przepływ typu (między sieciami wirtualnymi, IntraVNET itd.), kierunek przepływu (przychodzące, wychodzące), stan przepływu (dozwolonych, zablokowanych), sieci wirtualne (docelowe i połączone), typ połączenia (komunikacji równorzędnej lub brama - P2S i S2S) i sieciowej grupy zabezpieczeń. Te filtry umożliwiają skupić się na sieci wirtualnych, które chcesz zbadać szczegółowo.
-- Topologię sieci wirtualnej przedstawia Dystrybucja ruchu w sieci wirtualnej w odniesieniu do przepływów (dozwolone/zablokowane/ruchu przychodzącego/ruchu wychodzącego/Benign/złośliwym kodem), protokół aplikacji i sieciowych grup zabezpieczeń, na przykład:
+- Topologia Virtual Network przedstawia najwyższą Wstążkę do wybierania parametrów, takich jak sieć wirtualna (połączenia sieci wirtualnej/aktywne/nieaktywne), połączenia zewnętrzne, aktywne przepływy i złośliwe przepływy sieci wirtualnej.
+- Topologię Virtual Network można filtrować na podstawie subskrypcji, obszarów roboczych, grup zasobów i interwału czasu. Dodatkowe filtry, które pomagają zrozumieć przepływ: Typ przepływu (ramach, IntraVNET itd.), kierunek przepływu (przychodzący, wychodzący), stan przepływu (dozwolony, zablokowany), sieci wirtualnych (ukierunkowany i połączony), typ połączenia (Komunikacja równorzędna lub Brama-P2S i S2S) oraz sieciowej grupy zabezpieczeń. Użyj tych filtrów, aby skoncentrować się na sieci wirtualnych, który ma zostać szczegółowo sprawdzony.
+- Topologia Virtual Network przedstawia dystrybucję ruchu do sieci wirtualnej w odniesieniu do przepływów (dozwolony/zablokowany/przychodzący/wychodzący/niegroźny/złośliwy), protokołu aplikacji i sieciowych grup zabezpieczeń, na przykład:
 
-    ![Topologii sieci wirtualnej, na którym przedstawiane są szczegóły dystrybucji i przepływ ruchu](./media/traffic-analytics/virtual-network-topology-showcasing-traffic-distribution-and-flow-details.png)
+    ![Topologia sieci wirtualnej przedstawiające informacje o dystrybucji i przepływie ruchu](./media/traffic-analytics/virtual-network-topology-showcasing-traffic-distribution-and-flow-details.png)
     
-    ![Topologii sieci wirtualnej, na którym przedstawiane są najwyższego poziomu i więcej filtrów](./media/traffic-analytics/virtual-network-filters.png)
+    ![Doprezentowanie topologii sieci wirtualnej najwyższego poziomu i wielu filtrów](./media/traffic-analytics/virtual-network-filters.png)
 
-    ![Szczegóły do dystrybucji ruchu w sieci wirtualnej podczas wyszukiwania dziennika przepływu](./media/traffic-analytics/flow-details-for-virtual-network-traffic-distribution-in-log-search.png)
+    ![Szczegóły przepływu dla dystrybucji ruchu w sieci wirtualnej w przeszukiwaniu dzienników](./media/traffic-analytics/flow-details-for-virtual-network-traffic-distribution-in-log-search.png)
 
 **Szukać**
 
-- Ruch dystrybucji na podsieci, topologia, najważniejsze źródła ruch do podsieci, sieci nieautoryzowany najważniejsze konwersację do podsieci, a następnie górnej konwersację protokołów aplikacji.
-    - Wiedząc, podsieć, która jest konwersację do której podsieci. Jeśli widzisz nieoczekiwany rozmowy, możesz poprawić konfigurację.
-    - Jeśli nieautoryzowany sieci są konwersację z podsiecią, jesteś w stanie go poprawić, konfigurując reguły sieciowej grupy zabezpieczeń, aby zablokować sieci nieautoryzowany.
-- Topologia podsieci przedstawiono najważniejsze wstążki do wyboru parametry, takie jak podsieci Active/Inactive, połączeń zewnętrznych, aktywne przepływy i złośliwe przepływy podsieci.
-- Topologia podsieci przedstawia Dystrybucja ruchu w sieci wirtualnej w odniesieniu do przepływów (dozwolone/zablokowane/ruchu przychodzącego/ruchu wychodzącego/Benign/złośliwym kodem), protokół aplikacji i sieciowe grupy zabezpieczeń, na przykład:
+- Dystrybucja ruchu na podsieci, topologia, najważniejsze źródła ruchu do podsieci, najważniejsze nieautoryzowane sieci odwracające do podsieci oraz górne protokoły aplikacji.
+    - Poznanie podsieci, do której odnosi się ta podsieć. Jeśli zobaczysz nieoczekiwane konwersacje, możesz poprawić konfigurację.
+    - Jeśli nieautoryzowane sieci są odwracane z podsiecią, można je poprawić przez skonfigurowanie reguł sieciowej grupy zabezpieczeń, aby blokować nieautoryzowane sieci.
+- Topologia podsieci pokazuje górną Wstążkę do wyboru parametrów, takich jak podsieć aktywna/nieaktywna, połączenia zewnętrzne, aktywne przepływy i złośliwe przepływy podsieci.
+- Topologia podsieci przedstawia dystrybucję ruchu do sieci wirtualnej w odniesieniu do przepływów (dozwolony/zablokowany/przychodzący/wychodzący/niegroźny/złośliwy), protokołu aplikacji i sieciowych grup zabezpieczeń, na przykład:
 
-    ![Topologia podsieci, w którym przedstawiane są Dystrybucja ruchu w podsieci sieci wirtualnej w odniesieniu do przepływów](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-virtual-subnet-with-regards-to-flows.png)
+    ![Topologia podsieci przedstawia dystrybucja ruchu w podsieci sieci wirtualnej w odniesieniu do przepływów](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-virtual-subnet-with-regards-to-flows.png)
 
 **Szukać**
 
-Dystrybucja ruchu dla bramy Application gateway i modułu równoważenia obciążenia, topologia, najważniejsze źródła ruchu z górnego nieautoryzowane sieci konwersację bramy Application gateway i modułu równoważenia obciążenia i pierwszych konwersację protokołów aplikacji. 
+Dystrybucja ruchu na bramę aplikacji & Load Balancer, topologia, najważniejsze źródła ruchu, najważniejsze sieci nieautoryzowane odwracające do bramy Application Gateway & Load Balancer i górne protokoły aplikacji. 
     
- - Wiedząc, podsieć, która jest konwersację, do którego usługa Application gateway lub moduł równoważenia obciążenia. Jeśli zauważysz nieoczekiwany konwersacji, możesz poprawić konfigurację.
- - Jeśli nieautoryzowany sieci są konwersację z bramy aplikacji lub usługi równoważenia obciążenia, jesteś w stanie go poprawić, konfigurując reguły sieciowej grupy zabezpieczeń, aby zablokować sieci nieautoryzowany. 
+ - Poznanie podsieci, do której odnosi się Brama aplikacji lub Load Balancer. Jeśli zauważysz nieoczekiwane konwersacje, możesz poprawić konfigurację.
+ - Jeśli nieautoryzowane sieci są odwracające do bramy aplikacji lub Load Balancer, można je poprawić, konfigurując reguły sieciowej grupy zabezpieczeń w celu blokowania nieautoryzowanych sieci. 
 
     ![subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
 
-### <a name="view-ports-and-virtual-machines-receiving-traffic-from-the-internet"></a>Wyświetlanie portów i maszyny wirtualne odbierające ruch z Internetu
+### <a name="view-ports-and-virtual-machines-receiving-traffic-from-the-internet"></a>Wyświetlanie portów i maszyn wirtualnych odbierających ruch z Internetu
 
 **Szukać**
 
-- Otwórz porty są konwersację za pośrednictwem Internetu?
-  - Jeśli porty nieoczekiwany zostaną znalezione open, można poprawić konfigurację:
+- Które otwarte porty są nawracane przez Internet?
+  - W przypadku znalezienia nieoczekiwanych portów można poprawić konfigurację:
 
-    ![Pulpit nawigacyjny którym przedstawiane są porty, odbierania i wysyłania ruchu do Internetu](./media/traffic-analytics/dashboard-showcasing-ports-receiving-and-sending-traffic-to-the-internet.png)
+    ![Pulpit nawigacyjny przedstawiający porty odbierające i wysyłające ruch do Internetu](./media/traffic-analytics/dashboard-showcasing-ports-receiving-and-sending-traffic-to-the-internet.png)
 
-    ![Szczegóły dotyczące portów docelowych platformy Azure i hostów](./media/traffic-analytics/details-of-azure-destination-ports-and-hosts.png)
-
-**Szukać**
-
-Czy masz złośliwy ruch w środowisku? Gdzie jest ona pochodzące z komputera? Gdzie jest kierowany do?
-
-![Złośliwy ruch przepływa szczegółowo przeszukiwania dzienników](./media/traffic-analytics/malicious-traffic-flows-detail-in-log-search.png)
-
-
-### <a name="visualize-the-trends-in-nsgnsg-rules-hits"></a>Wizualizowanie trendów w trafień reguł sieciowych grup zabezpieczeń lub grupę zabezpieczeń sieci
+    ![Szczegóły dotyczące portów i hostów docelowych platformy Azure](./media/traffic-analytics/details-of-azure-destination-ports-and-hosts.png)
 
 **Szukać**
 
-- Reguły sieciowej grupy zabezpieczeń lub grupę zabezpieczeń sieci ma większość trafień na wykresie porównawczych dystrybucja przepływów?
-- Jakie są najważniejsze pary konwersacji źródłowy i docelowy na reguły sieciowej grupy zabezpieczeń lub grupę zabezpieczeń sieci?
+Czy masz złośliwy ruch w Twoim środowisku? Skąd pochodzi? Gdzie jest on przeznaczony?
 
-    ![Pulpit nawigacyjny sieciowej grupy zabezpieczeń przedstawiające trafienia statystyki](./media/traffic-analytics/dashboard-showcasing-nsg-hits-statistics.png)
+![Szczegóły dotyczące złośliwego ruchu w przeszukiwaniu dzienników](./media/traffic-analytics/malicious-traffic-flows-detail-in-log-search.png)
 
-- Następujące obrazy Pokaż czas Trend dla trafień reguł sieciowych grup zabezpieczeń i szczegóły przepływu źródłowego i docelowego dla sieciowej grupy zabezpieczeń:
 
-  - Szybkie wykrycie sieciowej grupy zabezpieczeń i sieciowe grupy zabezpieczeń, które zasady są przechodzenie przez złośliwe przepływy i które są najważniejsze złośliwy adres IP pozwalająca też sprostać dostęp do środowiska chmury
-  - Określenie, które reguły sieciowej grupy zabezpieczeń lub grupę zabezpieczeń umożliwiające/blokują ruch sieciowy znaczne
-  - Wybierz opcję top filtry dla szczegółowej kontroli sieciowej grupy zabezpieczeń lub sieciowej grupy zabezpieczeń reguły
+### <a name="visualize-the-trends-in-nsgnsg-rules-hits"></a>Wizualizuj trendy w sieciowej grupy zabezpieczeń/sieciowej grupy ZABEZPIECZEŃe trafień reguł
 
-    ![Prezentacja czas na popularności trafienia reguł sieciowych grup zabezpieczeń i najważniejsze reguły sieciowej grupy zabezpieczeń](./media/traffic-analytics/showcasing-time-trending-for-nsg-rule-hits-and-top-nsg-rules.png)
+**Szukać**
 
-    ![Najważniejsze sieciowej grupy zabezpieczeń reguły szczegóły statystyk podczas wyszukiwania dziennika](./media/traffic-analytics/top-nsg-rules-statistics-details-in-log-search.png)
+- Które reguły sieciowej grupy zabezpieczeń/sieciowej grupy zabezpieczeń mają najwięcej trafień na wykresie porównawczym z dystrybucją przepływów?
+- Jakie są najlepsze źródłowe i docelowe pary konwersacji dla reguł sieciowej grupy zabezpieczeń/sieciowej grupy zabezpieczeń?
+
+    ![Pokaz pulpitu nawigacyjnego — statystyki trafień sieciowej grupy zabezpieczeń](./media/traffic-analytics/dashboard-showcasing-nsg-hits-statistics.png)
+
+- Następujące obrazy przedstawiają trendy czasu dla trafień reguł sieciowej grupy zabezpieczeń i szczegółów przepływu źródła danych dla sieciowej grupy zabezpieczeń:
+
+  - Szybko wykrywaj, które reguły sieciowych grup zabezpieczeń i sieciowej grupy zabezpieczeń przechodzą przez złośliwe przepływy, a które są najbardziej złośliwymi adresami IP, które uzyskują dostęp do środowiska chmury
+  - Ustal, które reguły sieciowej grupy zabezpieczeń/sieciowej grupy zabezpieczeń umożliwiają lub blokują znaczny ruch sieciowy
+  - Wybierz górne filtry do szczegółowej inspekcji reguł sieciowej grupy zabezpieczeń lub sieciowej grupy zabezpieczeń
+
+    ![Trend czasu prezentowania dla trafień reguł sieciowej grupy zabezpieczeń i reguł sieciowej grupy zabezpieczeń najważniejszych](./media/traffic-analytics/showcasing-time-trending-for-nsg-rule-hits-and-top-nsg-rules.png)
+
+    ![Szczegóły statystyk sieciowej grupy zabezpieczeń najważniejszych reguł w przeszukiwaniu dzienników](./media/traffic-analytics/top-nsg-rules-statistics-details-in-log-search.png)
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-Aby uzyskać odpowiedzi na często zadawane pytania, zobacz [Traffic analytics — często zadawane pytania](traffic-analytics-faq.md).
+Aby uzyskać odpowiedzi na często zadawane pytania, zobacz [Analiza ruchu — często zadawane](traffic-analytics-faq.md)pytania.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby dowiedzieć się, jak włączyć dzienniki przepływu, zobacz [rejestrowanie przepływu sieciowej grupy zabezpieczeń z włączeniem](network-watcher-nsg-flow-logging-portal.md).
-- Aby zrozumieć schemat i przetwarzania informacji analizy ruchu, zobacz [Traffic analytics schematu](traffic-analytics-schema.md).
+- Aby dowiedzieć się, jak włączyć dzienniki przepływów, zobacz [Włączanie rejestrowania przepływu sieciowej grupy zabezpieczeń](network-watcher-nsg-flow-logging-portal.md).
+- Aby zrozumieć schemat i informacje o przetwarzaniu Analiza ruchu, zobacz [schemat analizy ruchu](traffic-analytics-schema.md).

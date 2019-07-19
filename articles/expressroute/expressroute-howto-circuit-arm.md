@@ -1,19 +1,20 @@
 ---
-title: 'Tworzenie i modyfikowanie obwodu usługi ExpressRoute — program PowerShell: Azure | Microsoft Docs'
+title: 'Tworzenie i modyfikowanie obwodu ExpressRoute — PowerShell: Azure | Microsoft Docs'
 description: Tworzenie, aprowizować, sprawdź, aktualizacji, usuwania i anulować aprowizację obwodu usługi ExpressRoute.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
 ms.date: 02/20/2019
-ms.author: ganesr;cherylmc
+ms.author: cherylmc
+ms.reviewer: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 06f49dc00b83ee2190f6361ebb8e6f052384402a
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 2ff22a3c0087ff7e24517f792ba9abacbae76e3a
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657303"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846635"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>Tworzenie i modyfikowanie obwodu ExpressRoute za pomocą programu PowerShell
 > [!div class="op_single_selector"]
@@ -45,7 +46,7 @@ Przed rozpoczęciem należy przejrzeć [wymagania wstępne](expressroute-prerequ
 ### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2. Pobieranie listy obsługiwanych dostawców, lokalizacji i przepustowości
 Przed przystąpieniem do tworzenia obwodu usługi ExpressRoute, należy listę dostawców łączności obsługiwanych, lokalizacji i opcje przepustowości.
 
-Polecenia cmdlet programu PowerShell **Get AzExpressRouteServiceProvider** zwraca te informacje, która będzie używana w dalszych krokach:
+Polecenie cmdlet **Get-AzExpressRouteServiceProvider** programu PowerShell zwraca te informacje, które będą używane w kolejnych krokach:
 
 ```azurepowershell-interactive
 Get-AzExpressRouteServiceProvider
@@ -90,7 +91,7 @@ get-help New-AzExpressRouteCircuit -detailed
 
 
 ### <a name="4-list-all-expressroute-circuits"></a>4. Lista wszystkich obwodów usługi ExpressRoute
-Aby uzyskać listę wszystkich obwodów usługi ExpressRoute, które zostały utworzone, uruchom **Get AzExpressRouteCircuit** polecenia:
+Aby uzyskać listę wszystkich utworzonych obwodów usługi ExpressRoute, uruchom polecenie **Get-AzExpressRouteCircuit** :
 
 ```azurepowershell-interactive
 Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -216,7 +217,7 @@ Aby uzyskać instrukcje krok po kroku, zobacz [obwód usługi ExpressRoute, konf
 Następnie łączenie sieci wirtualnej na obwód usługi ExpressRoute. Użyj [łączenie sieci wirtualnych obwodów usługi ExpressRoute](expressroute-howto-linkvnet-arm.md) artykuł podczas pracy z modelem wdrażania usługi Resource Manager.
 
 ## <a name="getting-the-status-of-an-expressroute-circuit"></a>Uzyskiwanie stanu obwodu usługi ExpressRoute
-Te informacje w dowolnym momencie można pobrać za pomocą **Get AzExpressRouteCircuit** polecenia cmdlet. Wywołania bez parametrów wyświetla listę wszystkich obwodów.
+Te informacje można pobrać w dowolnym momencie za pomocą polecenia cmdlet **Get-AzExpressRouteCircuit** . Wywołania bez parametrów wyświetla listę wszystkich obwodów.
 
 ```azurepowershell-interactive
 Get-AzExpressRouteCircuit

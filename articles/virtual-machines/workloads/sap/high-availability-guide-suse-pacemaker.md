@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 46044c061cca24714d1a951e28cf01ca29f14a7e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: cd377e78abe328814795bb1f75465b090a13e456
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707207"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68228362"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Konfigurowanie program Pacemaker w systemie SUSE Linux Enterprise Server na platformie Azure
 
@@ -84,7 +84,7 @@ Uruchom następujące polecenia na wszystkich **iSCSI docelowych maszyn wirtualn
 
 Uruchom następujące polecenia na wszystkich **iSCSI docelowych maszyn wirtualnych** do tworzenia dysków iSCSI w przypadku klastrów używane przez systemy SAP. W poniższym przykładzie są tworzone interwencja urządzeń dla wielu klastrów. Przedstawia on sposób użyje jednego serwera obiektów docelowych iSCSI dla wielu klastrów. Urządzenia interwencja są umieszczane na dysku systemu operacyjnego. Upewnij się, że masz wystarczająco dużo miejsca.
 
-**`nfs`** Służy do identyfikowania klastra systemu plików NFS **ascsnw1** służy do identyfikowania klastra ASCS **NW1**, **dbnw1** służy do identyfikowania bazy danych klastra **NW1** , **0 systemu plików nfs** i **1 systemu plików nfs** są nazwy hostów węzłów klastra systemu plików NFS **nw1 xscs 0** i **nw1 xscs 1**są nazwy hostów programu **NW1** węzły, klastra ASCS i **nw1-db-0** i **nw1-db-1** są nazwy hostów bazy danych z węzłami klastra. Zamień na ich nazw hostów węzły klastra i identyfikatora SID systemu SAP.
+**`nfs`** służy do identyfikowania klastra NFS, **ascsnw1** służy do identyfikowania klastra ASCS **NW1**, **dbnw1** służy do identyfikowania klastra bazy danych **NW1**, **NFS-0** i **NFS-1** są nazwami hostów węzłów klastra NFS,  **NW1-xscs-0** i **NW1-xscs-1** są nazwami hostów **NW1** ASCS węzłów klastra, a **NW1-DB-0** i **NW1-dB-1** są nazwami hostów węzłów klastra bazy danych. Zamień na ich nazw hostów węzły klastra i identyfikatora SID systemu SAP.
 
 <pre><code># Create the root folder for all SBD devices
 sudo mkdir /sbd
@@ -302,7 +302,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    <b>SBD_WATCHDOG="yes"</b>
    </code></pre>
 
-   Utwórz `softdog` pliku konfiguracji
+   Utwórz plik `softdog` konfiguracji
 
    <pre><code>echo softdog | sudo tee /etc/modules-load.d/softdog.conf
    </code></pre>
@@ -321,7 +321,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    <pre><code>sudo zypper update
    </code></pre>
 
-1. **[A]**  Konfiguracji systemu operacyjnego
+1. **[A]** Skonfiguruj system operacyjny
 
    W niektórych przypadkach program Pacemaker tworzy wiele procesów, a tym samym przekroczy dozwolona liczba procesów. W takim przypadku pulsu między węzłami klastra może zakończyć się niepowodzeniem i prowadzić do trybu failover zasobów. Zalecamy zwiększenie maksymalna liczba dozwolonych procesów, ustawiając następujący parametr.
 
@@ -348,9 +348,9 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    vm.dirty_background_bytes = 314572800
    </code></pre>
 
-1. **[A]**  Konfigurowanie chmury platformy azure netconfig zaświadczanie o kondycji klastra
+1. **[A]** Konfigurowanie klastra usługi Cloud-config — Azure for ha
 
-   Zmień plik konfiguracji interfejsu sieciowego, jak pokazano poniżej, aby uniemożliwić usunięcie wirtualnego adresu IP (program Pacemaker kontrolować przypisania adresów VIP) wtyczki sieci chmury. Aby uzyskać więcej informacji, zobacz [SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633). 
+   Zmień plik konfiguracji dla interfejsu sieciowego, jak pokazano poniżej, aby zapobiec usunięciu przez wtyczkę sieci wirtualnej wirtualnego adresu IP (Pacemaker musi kontrolować przypisanie adresu VIP). Aby uzyskać więcej informacji, zobacz [SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633). 
 
    <pre><code># Edit the configuration file
    sudo vi /etc/sysconfig/network/ifcfg-eth0 
@@ -495,17 +495,18 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
 
 Urządzenie pomocą metody STONITH używa nazwy głównej usługi, do autoryzacji dla Microsoft Azure. Wykonaj następujące kroki, aby utworzyć jednostkę usługi.
 
-1. Przejdź do [https://portal.azure.com](https://portal.azure.com)
+1. Przejdź do strony <https://portal.azure.com>
 1. Otwórz blok usługi Azure Active Directory  
    Przejdź do właściwości i zanotuj nazwę katalogu. Jest to **identyfikator dzierżawy**.
 1. Kliknij przycisk rejestracje aplikacji
-1. Kliknij pozycję Dodaj.
-1. Wprowadź nazwę, wybierz typ aplikacji "Aplikacja/interfejsu API sieci Web", wprowadź adres URL logowania (na przykład http\://localhost) i kliknij przycisk Utwórz
-1. Adres URL logowania nie jest używany i może być dowolny prawidłowy adres URL
-1. Wybierz nową aplikację, a następnie kliknij przycisk kluczy na karcie Ustawienia
-1. Wprowadź opis nowego klucza, wybierz pozycję "Nigdy nie wygasa" i kliknij przycisk Zapisz
+1. Kliknij pozycję Nowa rejestracja
+1. Wprowadź nazwę, wybierz pozycję "konta tylko w tym katalogu organizacji". 
+2. Wybierz pozycję typ aplikacji "sieć Web", wprowadź adres URL logowania (na przykład http:\//localhost), a następnie kliknij przycisk Dodaj.  
+   Adres URL logowania nie jest używany i może być dowolny prawidłowy adres URL
+1. Wybierz pozycję Certyfikaty i wpisy tajne, a następnie kliknij pozycję Nowy wpis tajny klienta.
+1. Wprowadź opis nowego klucza, wybierz pozycję "nigdy nie wygasa" i kliknij przycisk Dodaj.
 1. Zanotuj wartość. Jest ona używana jako **hasło** jednostki usługi
-1. Zanotuj identyfikator aplikacji. Jest ona używana jako nazwa użytkownika (**Identyfikatora logowania** w poniższych krokach) jednostki usługi
+1. Wybierz pozycję przegląd. Zanotuj identyfikator aplikacji. Jest ona używana jako nazwa użytkownika (**Identyfikatora logowania** w poniższych krokach) jednostki usługi
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]**  Utworzyć rolę niestandardową dla agenta odgradzania
 
@@ -533,11 +534,11 @@ Użyj zawartości dla pliku wejściowego. Należy dostosować zawartość dla Tw
 }
 ```
 
-### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]**  Przypisać rolę niestandardową nazwę główną usługi
+### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]** Przypisz rolę niestandardową do jednostki usługi
 
 Przypisz rolę niestandardową "Linux horyzont agenta rolę" utworzonego w rozdziale ostatniego jednostki usługi. Nie używaj roli właściciel już!
 
-1. Przejdź do [https://portal.azure.com](https://portal.azure.com)
+1. Przejdź do[https://portal.azure.com](https://portal.azure.com)
 1. Otwieranie bloku wszystkie zasoby
 1. Wybierz maszynę wirtualną, w pierwszym węźle klastra
 1. Kliknij przycisk kontroli dostępu (IAM)
@@ -576,16 +577,16 @@ sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
    op monitor interval="15" timeout="15"
 </code></pre>
 
-## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Program pacemaker konfiguracji dla platformy Azure zaplanowane zdarzenia
+## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Konfiguracja Pacemaker dla zaplanowanych zdarzeń platformy Azure
 
-Platforma Azure oferuje [zaplanowane zdarzenia](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events). Zaplanowane zdarzenia są dostarczane za pośrednictwem usługi metadanych i poczekanie, aż aplikacji przygotować się do zdarzeń, takich jak zamknięcie maszyny Wirtualnej, ponowne wdrożenie maszyny Wirtualnej itd. Zasób agenta **[zdarzeń azure](https://github.com/ClusterLabs/resource-agents/pull/1161)** monitorów zaplanowanych zdarzeń platformy Azure. W przypadku wykrycia zdarzenia agent spróbuje zatrzymać wszystkie zasoby objęte wpływem maszyny wirtualnej i przenieść je do innego węzła w klastrze. Aby osiągnąć tego dodatkowe zasoby program Pacemaker musi być skonfigurowany. 
+Platforma Azure oferuje [zaplanowane zdarzenia](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events). Zaplanowane zdarzenia są udostępniane za pośrednictwem usługi meta-danych i umożliwiają czas przygotowania aplikacji do zdarzeń takich jak zamknięcie maszyny wirtualnej, ponowne wdrożenie maszyny wirtualnej itp. Agent zasobów **[Azure — monitorowanie zdarzeń](https://github.com/ClusterLabs/resource-agents/pull/1161)** dla zaplanowanych zdarzeń platformy Azure. Jeśli zostaną wykryte zdarzenia, Agent podejmie próbę zatrzymania wszystkich zasobów na maszynie wirtualnej, której to dotyczy, i przenieść je do innego węzła w klastrze. Aby uzyskać więcej zasobów Pacemaker, należy skonfigurować. 
 
-1. **[A]**  Zainstalować **zdarzeń azure** agenta. 
+1. **[A]** Zainstaluj agenta **zdarzeń platformy Azure** . 
 
 <pre><code>sudo zypper install resource-agents
 </code></pre>
 
-2. **[1]**  Konfigurowanie zasobów w program Pacemaker. 
+2. **[1]** Skonfiguruj zasoby w Pacemaker. 
 
 <pre><code>
 #Place the cluster in maintenance mode
@@ -600,17 +601,17 @@ sudo crm configure property maintenance-mode=false
 </code></pre>
 
    > [!NOTE]
-   > Po skonfigurowaniu zasobów program Pacemaker dla agenta zdarzenia platformy azure, po umieszczeniu klastra na lub z trybu konserwacji, może nastąpić komunikaty ostrzegawcze, takich jak:  
-     Ostrzeżenie: w cib opcje ładowania początkowego: nieznany atrybut "hostName_  <strong>hostname</strong>"  
-     Ostrzeżenie: w cib opcje ładowania początkowego: nieznany atrybut "azure-events_globalPullState"  
-     Ostrzeżenie: w cib opcje ładowania początkowego: nieznany atrybut "hostName_ <strong>hostname</strong>"  
-   > Można zignorować te ostrzeżenia.
+   > Po skonfigurowaniu zasobów Pacemaker dla agenta zdarzeń platformy Azure, gdy klaster zostanie umieszczony w trybie konserwacji lub z niego, można uzyskać komunikaty ostrzegawcze, takie jak:  
+     Ostrzeżenie: CIB-Bootstrap-Options: nieznany atrybut "hostName_ <strong>hostname</strong>"  
+     Ostrzeżenie: CIB-Bootstrap-Options: nieznany atrybut "Azure-events_globalPullState"  
+     Ostrzeżenie: CIB-Bootstrap-Options: nieznany atrybut "hostName_ <strong>hostname</strong>"  
+   > Te komunikaty ostrzegawcze mogą być ignorowane.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Azure maszyny wirtualne, planowania i implementacji dla rozwiązania SAP][planning-guide]
-* [Wdrażania maszyn wirtualnych platformy Azure dla rozwiązania SAP][deployment-guide]
-* [Wdrażania systemu DBMS na maszynach wirtualnych platformy Azure dla rozwiązania SAP][dbms-guide]
-* [Wysoka dostępność systemu NFS na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server][sles-nfs-guide]
-* [Wysoka dostępność środowiska SAP NetWeaver na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server dla aplikacji SAP][sles-guide]
-* Aby dowiedzieć się, jak zadbać o wysokiej dostępności i plan odzyskiwania po awarii oprogramowania SAP Hana na maszynach wirtualnych platformy Azure, zobacz [wysokiej dostępności dla oprogramowania SAP HANA w usłudze Azure Virtual Machines (VMs)][sap-hana-ha]
+* [Planowanie i wdrażanie Virtual Machines platformy Azure dla oprogramowania SAP][planning-guide]
+* [Wdrożenie Virtual Machines platformy Azure dla oprogramowania SAP][deployment-guide]
+* [Wdrożenie systemu Azure Virtual Machines DBMS dla oprogramowania SAP][dbms-guide]
+* [Wysoka dostępność systemu plików NFS na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server][sles-nfs-guide]
+* [Wysoka dostępność dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server dla aplikacji SAP][sles-guide]
+* Aby dowiedzieć się, jak zapewnić wysoką dostępność i zaplanować odzyskiwanie po awarii SAP HANA na maszynach wirtualnych platformy Azure, zobacz [wysoka dostępność SAP HANA na platformie azure Virtual Machines (maszyny wirtualne)][sap-hana-ha]

@@ -15,27 +15,21 @@ ms.workload: tbd
 ms.date: 05/11/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 73c14b3d3023dcca113589d63276216fcfdd17f1
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 70a8e4cd694a90e83bf78e00a7c725a8c887b2eb
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67513445"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68324070"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-python"></a>Szybki start: korzystanie z usługi Azure Cache for Redis za pomocą języka Python
 
-
-## <a name="introduction"></a>Wprowadzenie
-
-W tym przewodniku Szybki start przedstawiono sposób nawiązywania połączenia z usługą Azure Cache for Redis przy użyciu języka Python w celu odczytywania i zapisywania danych w pamięci podręcznej. 
-
-![Test dotyczący języka Python ukończony](./media/cache-python-get-started/cache-python-completed.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+W tym przewodniku szybki start dodaliśmy usługę Azure cache for Redis do aplikacji w języku Python, aby uzyskać dostęp do bezpiecznej, dedykowanej pamięci podręcznej dostępnej z dowolnej aplikacji na platformie Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Środowisko Python 2 lub Python 3](https://www.python.org/downloads/) z zainstalowanym pakietem [pip](https://pypi.org/project/pip/). 
+- Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
+- [Python 2 lub 3](https://www.python.org/downloads/)
 
 ## <a name="create-an-azure-cache-for-redis-on-azure"></a>Tworzenie usługi Azure Cache for Redis na platformie Azure
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -46,7 +40,7 @@ W tym przewodniku Szybki start przedstawiono sposób nawiązywania połączenia 
 
 [Redis-py](https://github.com/andymccurdy/redis-py) to interfejs języka Python dla usługi Azure Cache for Redis. Użyj dostępnego w języku Python narzędzia do obsługi pakietów *pip*, aby zainstalować pakiet redis-py. 
 
-W poniższym przykładzie użyto *pip3* dla środowiska python3 jako zainstalować pakiet redis-py w systemie Windows 10 przy użyciu programu Visual Studio 2019 wiersz polecenia dewelopera uruchomiona z podwyższonym poziomem uprawnień administratora.
+W poniższym przykładzie użyto *PIP3* for python3 do zainstalowania pakietu Redis-PR w systemie Windows 10 przy użyciu wiersza polecenia dla deweloperów programu Visual Studio 2019 z podniesionymi uprawnieniami administratora.
 
 ```python
     pip3 install redis
@@ -70,7 +64,7 @@ b'bar'
 ```
 
 > [!IMPORTANT]
-> Dla usługi Redis jest wersja 3.0 lub wyższej, sprawdzenie certyfikatu SSL jest wymuszany. ssl_ca_certs musi być jawnie ustawione podczas nawiązywania połączenia z magazynem Redis. W przypadku systemu Linux RH ssl_ca_certs znajdują się w "/ etc/pki/tls/certs/ca-bundle.crt" moduł certyfikatu.
+> W przypadku wersji Redis jest 3,0 lub wyższa, wymuszana jest kontrola certyfikatu SSL. ssl_ca_certs musi być jawnie ustawiona podczas nawiązywania połączenia z Redis. W przypadku RH Linux ssl_ca_certs można znaleźć w module certyfikatu "/etc/pki/tls/certs/CA-Bundle.CRT".
 
 ## <a name="create-a-python-script"></a>Tworzenie skryptu w języku Python
 
@@ -127,13 +121,10 @@ Zobaczysz prośbę o potwierdzenie usunięcia grupy zasobów. Wpisz nazwę grupy
 
 Po krótkim czasie grupa zasobów i wszystkie zawarte w niej zasoby zostaną usunięte.
 
-
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie prostej aplikacji internetowej platformy ASP.NET, która korzysta z usługi Azure Cache for Redis.](./cache-web-app-howto.md)
-
-
 
 <!--Image references-->
 [1]: ./media/cache-python-get-started/redis-cache-new-cache-menu.png

@@ -1,6 +1,6 @@
 ---
-title: Biblioteki uwierzytelniania platforma tożsamości firmy Microsoft | Dokumentacja firmy Microsoft
-description: Biblioteki klienckie zgodne i bibliotek oprogramowania pośredniczącego serwera, oraz powiązane biblioteki, źródła i łącza próbki, punktu końcowego platformy tożsamości firmy Microsoft.
+title: Biblioteki uwierzytelniania platformy tożsamości firmy Microsoft | Microsoft Docs
+description: Zgodne biblioteki klienckie i biblioteki pośredniczące serwera oraz powiązane biblioteki, źródła i przykładowe linki dla punktu końcowego platformy tożsamości firmy Microsoft.
 services: active-directory
 documentationcenter: ''
 author: negoe
@@ -18,86 +18,100 @@ ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c3edfd9ef346407529eea1d887efd795e647808
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: bff7309d8d62d7c2e9e982152d01085ec5634b92
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440811"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234688"
 ---
-# <a name="microsoft-identity-platform-authentication-libraries"></a>Biblioteki uwierzytelniania platforma tożsamości firmy Microsoft
+# <a name="microsoft-identity-platform-authentication-libraries"></a>Biblioteki uwierzytelniania platformy tożsamości firmy Microsoft
 
-[Punktu końcowego platformy tożsamości firmy Microsoft](active-directory-v2-compare.md) obsługuje standardowe protokoły OAuth 2.0 i OpenID Connect 1.0. Biblioteka Microsoft Authentication Library (MSAL) jest przeznaczona do pracy z punktem końcowym platforma tożsamości firmy Microsoft. Można również użyć bibliotek typu open source, które obsługują protokołu OAuth 2.0 i OpenID Connect 1.0.
+[Punkt końcowy platformy tożsamości firmy Microsoft](active-directory-v2-compare.md) obsługuje standardowe w branży protokoły OAuth 2,0 i openid connect Connect 1,0. Biblioteka Microsoft Authentication Library (MSAL) została zaprojektowana do pracy z punktem końcowym platformy tożsamości firmy Microsoft. Można również użyć bibliotek Open Source, które obsługują uwierzytelnianie OAuth 2,0 i OpenID Connect Connect 1,0.
 
-Firma Microsoft zaleca używanie bibliotek napisanych przez protokół domeny eksperci, postępuj zgodnie z metodologii cykl projektowania zabezpieczeń (SDL). Takie biblioteki obejmują [następującymi Microsoft][Microsoft-SDL]. Jeśli kod dla protokołów, należy przestrzegać metodologii, takich jak Microsoft SDL. W specyfikacji standardów dla każdego protokołu, należy zwracać szczególną uwagę na zagadnienia dotyczące zabezpieczeń.
+Zalecamy używanie bibliotek pisanych przez ekspertów domen protokołu, którzy przestrzegają metodologii cyklu projektowania zabezpieczeń (SDL). Takie biblioteki obejmują [te, które są zgodne z firmą Microsoft][Microsoft-SDL]. Jeśli kod jest dostępny dla protokołów, należy postępować zgodnie z metodologią, taką jak Microsoft SDL. Zwróć szczególną uwagę na kwestie dotyczące zabezpieczeń w specyfikacjach standardów dla każdego protokołu.
 
 > [!NOTE]
-> Czy szukasz dla Azure Active Directory Authentication Library (ADAL) Zapoznaj się z [przewodnik biblioteki ADAL](active-directory-authentication-libraries.md).
+> Szukasz biblioteki uwierzytelniania Azure Active Directory (ADAL)? Zapoznaj się z [przewodnikiem biblioteki ADAL](active-directory-authentication-libraries.md).
 
-## <a name="types-of-libraries"></a>Rodzaje bibliotek
+## <a name="types-of-libraries"></a>Typy bibliotek
 
-Microsoft platformy tożsamości z punktu końcowego współpracuje z dwoma rodzajami biblioteki:
+Punkt końcowy platformy tożsamości firmy Microsoft współpracuje z dwoma typami bibliotek:
 
-* **Biblioteki klienckie**: Serwery i klientów natywnych wykorzystać biblioteki klienckie do uzyskania tokenów dostępu do wywoływania zasobów, takich jak program Microsoft Graph.
-* **Biblioteki oprogramowania pośredniczącego serwera**: Aplikacje sieci Web na użytek bibliotek oprogramowania pośredniczącego serwera podczas rejestracji. Interfejsy API sieci Web możliwe używanie bibliotek oprogramowania pośredniczącego serwera do sprawdzania poprawności tokenów, które są wysyłane przez klientów natywnych lub przez inne serwery.
+* **Biblioteki klienckie**: Natywni klienci i serwery używają bibliotek klienckich, aby uzyskiwać tokeny dostępu do wywoływania zasobu, takiego jak Microsoft Graph.
+* **Biblioteki oprogramowania pośredniczącego serwera**: Aplikacje sieci Web używają bibliotek oprogramowania pośredniczącego serwera do logowania użytkownika. Interfejsy API sieci Web używają bibliotek oprogramowania pośredniczącego serwera do weryfikowania tokenów wysyłanych przez natywnych klientów lub przez inne serwery.
 
-## <a name="library-support"></a>Obsługa bibliotek
+## <a name="library-support"></a>Obsługa biblioteki
 
 Biblioteki są dostępne w dwóch kategoriach pomocy technicznej:
 
-* **Obsługiwane przez firmę Microsoft**: Firma Microsoft oferuje poprawki dla tych bibliotek i wykonaniu SDL należytą starannością na tych bibliotek.
-* **Zgodne**: Firma Microsoft przetestowała tych bibliotek w podstawowych scenariuszy oraz potwierdziła, pracują z punktem końcowym platforma tożsamości firmy Microsoft. Firma Microsoft nie zapewnia poprawki dla tych bibliotek i nie zostało wykonane przeglądu tych bibliotek. Problemy i sugestie funkcji powinny być kierowane do biblioteki typu open-source projektu.
+* **Obsługiwane przez firmę Microsoft**: Firma Microsoft udostępnia poprawki dla tych bibliotek i w związku z tym ma zakończono staranne podwyższyć do tych bibliotek.
+* **Zgodne**: Firma Microsoft przetestowała te biblioteki w podstawowe scenariusze i potwierdziła, że współpracują z punktem końcowym platformy tożsamości firmy Microsoft. Firma Microsoft nie udostępnia poprawek dla tych bibliotek i nie przeprowadzono przeglądu tych bibliotek. Problemy i żądania funkcji powinny być kierowane do projektu open-source biblioteki.
 
-Aby uzyskać listę bibliotek, które działają z punktem końcowym platforma tożsamości firmy Microsoft zobacz następujące sekcje.
+Aby zapoznać się z listą bibliotek, które współpracują z punktem końcowym platformy tożsamości firmy Microsoft, zobacz następujące sekcje.
 
 ## <a name="microsoft-supported-client-libraries"></a>Biblioteki klienckie obsługiwane przez firmę Microsoft
 
-Korzystać z bibliotek uwierzytelniania klienta, można uzyskać tokenu do wywoływania chronionego internetowego interfejsu API.
+Użyj bibliotek uwierzytelniania klienta, aby uzyskać token do wywoływania chronionego internetowego interfejsu API.
 
-| Platforma | Biblioteka | Do pobrania | Kod źródłowy | Sample | Tematy pomocy | Koncepcyjny dokumentu | Harmonogram działania |
+| Platforma | Biblioteka | Do pobrania | Kod źródłowy | Sample | Tematy pomocy | Dokument koncepcyjny | Harmonogram działania |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| ![JavaScript](media/sample-v2-code/logo_js.png) | MSAL.js  | [NPM](https://www.npmjs.com/package/msal) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/README.md) |  [Aplikacje z jedną stroną](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) | [Dokumentacja](https://htmlpreview.github.io/?https://raw.githubusercontent.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core/docs/classes/_useragentapplication_.useragentapplication.html) | [Dokumentacja koncepcyjne](msal-overview.md)| [Harmonogram działania](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
+| ![JavaScript](media/sample-v2-code/logo_js.png) | MSAL.js  | [NPM](https://www.npmjs.com/package/msal) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/README.md) |  [Aplikacje z jedną stroną](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) | [Dokumentacja](https://htmlpreview.github.io/?https://raw.githubusercontent.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core/docs/classes/_useragentapplication_.useragentapplication.html) | [Dokumentacja koncepcji](msal-overview.md)| [Harmonogram działania](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
 |![Angular JS](media/sample-v2-code/logo_angular.png) | MSAL Angular JS | [NPM](https://www.npmjs.com/package/@azure/msal-angularjs) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md) |  |  | |
-![Angular](media/sample-v2-code/logo_angular.png) | Platformy Angular biblioteki MSAL (wersja zapoznawcza) | [NPM](https://www.npmjs.com/package/@azure/msal-angular) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | | | |
+![Angular](media/sample-v2-code/logo_angular.png) | MSAL kątowy (wersja zapoznawcza) | [NPM](https://www.npmjs.com/package/@azure/msal-angular) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | | | |
 | ![.NET Framework](media/sample-v2-code/logo_NET.png) ![Platforma UWP](media/sample-v2-code/logo_windows.png) ![Xamarin](media/sample-v2-code/logo_xamarin.png) | MSAL.NET  |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Client) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [Aplikacja klasyczna](guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) | [MSAL.NET](https://docs.microsoft.com/dotnet/api/microsoft.identity.client?view=azure-dotnet-preview) |[Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#conceptual-documentation) (Witryna typu wiki) | [Harmonogram działania](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#roadmap)
-| ![Python](media/sample-v2-code/logo_python.png) | Biblioteka MSAL Python (wersja zapoznawcza) | [PyPI](https://pypi.org/project/msal) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-python) | [Przykłady](https://github.com/AzureAD/microsoft-authentication-library-for-python/tree/dev/sample) | [ReadTheDocs](https://msal-python.rtfd.io/) | [Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) (Witryna typu wiki) | [Harmonogram działania](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki/Roadmap)
-| ![Java](media/sample-v2-code/logo_java.png) | Biblioteka MSAL Java (wersja zapoznawcza) | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure/msal4j) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-java) | [Przykłady](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples) | | | [Harmonogram działania](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki)
-| ![dla systemu iOS / Objective C lub swift.](media/sample-v2-code/logo_iOS.png) | Biblioteka MSAL obj_c (wersja zapoznawcza) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) | [Aplikacja systemu iOS](https://github.com/Azure-Samples/active-directory-msal-ios-swift) |  |
-|![Android / Java](media/sample-v2-code/logo_Android.png) | Biblioteka MSAL (wersja zapoznawcza) | [Centralne repozytorium](https://repo1.maven.org/maven2/com/microsoft/identity/client/msal/) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-android) | [Aplikacja dla systemu android](quickstart-v2-android.md) | [JavaDocs](https://javadoc.io/doc/com.microsoft.identity.client/msal) | | |
+| ![Python](media/sample-v2-code/logo_python.png) | MSAL Python (wersja zapoznawcza) | [PyPI](https://pypi.org/project/msal) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-python) | [Przykłady](https://github.com/AzureAD/microsoft-authentication-library-for-python/tree/dev/sample) | [ReadTheDocs](https://msal-python.rtfd.io/) | [Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) (Witryna typu wiki) | [Harmonogram działania](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki/Roadmap)
+| ![Java](media/sample-v2-code/logo_java.png) | MSAL Java (wersja zapoznawcza) | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure/msal4j) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-java) | [Przykłady](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples) | | | [Harmonogram działania](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki)
+| ![iOS/cel C lub SWIFT](media/sample-v2-code/logo_iOS.png) | MSAL obj_c (wersja zapoznawcza) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) | [Aplikacja systemu iOS](https://github.com/Azure-Samples/active-directory-msal-ios-swift) |  |
+|![System Android/Java](media/sample-v2-code/logo_Android.png) | MSAL (wersja zapoznawcza) | [Repozytorium centralne](https://repo1.maven.org/maven2/com/microsoft/identity/client/msal/) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-android) | [Aplikacja systemu Android](quickstart-v2-android.md) | [JavaDocs](https://javadoc.io/doc/com.microsoft.identity.client/msal) | | |
 
-## <a name="microsoft-supported-server-middleware-libraries"></a>Biblioteki oprogramowania pośredniczącego serwera obsługiwane przez firmę Microsoft
+## <a name="microsoft-supported-server-middleware-libraries"></a>Biblioteki pośredniczące serwera obsługiwane przez firmę Microsoft
 
-Korzystać z oprogramowania pośredniczącego bibliotek, aby pomóc w ochronie aplikacji sieci web i interfejsów API sieci web. Aplikacji internetowych lub internetowych interfejsów API napisanych z użyciem programu ASP.NET lub ASP.NET Core, biblioteki oprogramowania pośredniczącego.
+Korzystaj z bibliotek oprogramowania pośredniczącego, aby chronić aplikacje sieci Web i interfejsy API sieci Web. Aplikacje sieci Web lub interfejsy API sieci Web, które są zapisywane z ASP.NET lub ASP.NET Core używają bibliotek oprogramowania pośredniczącego.
 
 | Platforma | Biblioteka | Do pobrania | Kod źródłowy | Sample | Tematy pomocy
 | --- | --- | --- | --- | --- | --- |
-| ![.NET](media/sample-v2-code/logo_NET.png) ![.NET Core](media/sample-v2-code/logo_NETcore.png) | ASP.NET Security |[NuGet](https://www.nuget.org/packages/Microsoft.AspNet.Mvc/) |[GitHub](https://github.com/aspnet/AspNetCore) |[Aplikacja MVC](quickstart-v2-aspnet-webapp.md) |[Dokumentacja interfejsu API platformy ASP.NET](https://docs.microsoft.com/dotnet/api/?view=aspnetcore-2.0) |
-| ![.NET](media/sample-v2-code/logo_NET.png)| Rozszerzenia modelu IdentityModel dla platformy .NET| |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | [Aplikacja MVC](quickstart-v2-aspnet-webapp.md) |[Dokumentacja](https://docs.microsoft.com/dotnet/api/overview/azure/activedirectory/client?view=azure-dotnet) |
-| ![Node.js](media/sample-v2-code/logo_nodejs.png) | Usługa Azure AD usługi Passport. |[NPM](https://www.npmjs.com/package/passport-azure-ad) |[GitHub](https://github.com/AzureAD/passport-azure-ad) | [Aplikacja sieci Web](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs) | |
+| ![.NET](media/sample-v2-code/logo_NET.png) ![.NET Core](media/sample-v2-code/logo_NETcore.png) | Zabezpieczenia ASP.NET |[NuGet](https://www.nuget.org/packages/Microsoft.AspNet.Mvc/) |[GitHub](https://github.com/aspnet/AspNetCore) |[Aplikacja MVC](quickstart-v2-aspnet-webapp.md) |[Dokumentacja interfejsu API ASP.NET](https://docs.microsoft.com/dotnet/api/?view=aspnetcore-2.0) |
+| ![.NET](media/sample-v2-code/logo_NET.png)| Rozszerzenia IdentityModel dla platformy .NET| |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | [Aplikacja MVC](quickstart-v2-aspnet-webapp.md) |[Dokumentacja](https://docs.microsoft.com/dotnet/api/overview/azure/activedirectory/client?view=azure-dotnet) |
+| ![Node.js](media/sample-v2-code/logo_nodejs.png) | Paszport usługi Azure AD |[NPM](https://www.npmjs.com/package/passport-azure-ad) |[GitHub](https://github.com/AzureAD/passport-azure-ad) | [Aplikacja sieci Web](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs) | |
 
-## <a name="compatible-client-libraries"></a>Biblioteki klienckie zgodne
+## <a name="microsoft-supported-libraries-by-os--language"></a>Biblioteki obsługiwane przez firmę Microsoft według systemu operacyjnego/języka
 
-| Platforma | Nazwa biblioteki | Przetestowanej wersji | Kod źródłowy | Sample |
+W przypadku obsługiwanych systemów operacyjnych i języków, mapowanie jest następujące:
+
+|             | ![Windows](media/sample-v2-code/logo_windows.png) Windows    | Linux      | macOS      | ![iOS](media/sample-v2-code/logo_iOS.png)        | ![System Android/Java](media/sample-v2-code/logo_Android.png) Android    |
+|-------------|------------|------------|------------|------------|------------|
+| ![JavaScript](media/sample-v2-code/logo_js.png)  |  MSAL.js | MSAL.js | MSAL.js | MSAL.js |  MSAL.js |
+| <img alt="C#" src="../../cognitive-services/speech-service/media/index/logo_csharp.svg" width="64px" height="64px" /> | ASP.NET, ASP.NET Core, MSAL.Net (.NET PD, rdzeń, platformy UWP)| ASP.NET Core, MSAL.Net (.NET Core) | ASP.NET Core, MSAL.Net (MacOS)       | MSAL.Net (Xamarin. iOS) | MSAL.Net (Xamarin. Android)|
+| <img alt="Objective C" src="../../cognitive-services/speech-service/media/index/logo_objc.jpg" width="64px" height="64px" /> |            |            |        | MSAL. iOS |            |
+| ![Java](media/sample-v2-code/logo_java.png) Java       |        |        |       | | MSAL. Systemów
+| ![Java](media/sample-v2-code/logo_java.png) Java       | msal4j       | msal4j       | msal4j      | |
+| ![Python](media/sample-v2-code/logo_python.png) Python     | MSAL Python | MSAL Python | MSAL Python |
+| ![Node. js](media/sample-v2-code/logo_nodejs.png) Node.JS     | Paszport. Node | Paszport. Node | Paszport. Node |
+
+## <a name="compatible-client-libraries"></a>Zgodne biblioteki klienckie
+
+| Platforma | Nazwa biblioteki | Przetestowana wersja | Kod źródłowy | Sample |
 |:---:|:---:|:---:|:---:|:---:|
-|![JavaScript](media/sample-v2-code/logo_js.png)|[Hello.js](https://adodson.com/hello.js/) | Wersja pytanie 1.13.5 |[Hello.js](https://github.com/MrSwitch/hello.js) |[SPA](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2) |
-| ![Java](media/sample-v2-code/logo_java.png) | [Sekretarz języka Java](https://github.com/scribejava/scribejava) | [Wersja 3.2.0](https://github.com/scribejava/scribejava/releases/tag/scribejava-3.2.0) | [ScribeJava](https://github.com/scribejava/scribejava/) | |
-| ![Java](media/sample-v2-code/logo_java.png) | [Biblioteka Gluu OpenID Connect](https://github.com/GluuFederation/oxAuth) | [Wersja 3.0.2](https://github.com/GluuFederation/oxAuth/releases/tag/3.0.2) | [Biblioteka Gluu OpenID Connect](https://github.com/GluuFederation/oxAuth) | |
-| ![Python](media/sample-v2-code/logo_python.png) | [Requests-OAuthlib](https://github.com/requests/requests-oauthlib) | [Wersji 1.2.0 lub nowszej](https://github.com/requests/requests-oauthlib/releases/tag/v1.2.0) | [Requests-OAuthlib](https://github.com/requests/requests-oauthlib) | |
-| ![Node.js](media/sample-v2-code/logo_nodejs.png) | [klienta openid](https://github.com/panva/node-openid-client) | [Wersja 2.4.5](https://github.com/panva/node-openid-client/releases/tag/v2.4.5) | [klienta openid](https://github.com/panva/node-openid-client) | |
-| ![PHP](media/sample-v2-code/logo_php.png) | [PHP Ligi klienta protokołu oauth2](https://github.com/thephpleague/oauth2-client) | [W wersji 1.4.2](https://github.com/thephpleague/oauth2-client/releases/tag/1.4.2) | [Klient protokołu oauth2](https://github.com/thephpleague/oauth2-client/) | |
-| ![Ruby](media/sample-v2-code/logo_ruby.png) |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth: 1.3.1<br />omniauth oauth2: 1.4.0 |[OmniAuth](https://github.com/omniauth/omniauth)<br />[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |  |
-| ![iOS](media/sample-v2-code/logo_iOS.png) ![Android](media/sample-v2-code/logo_Android.png) | [React Native uwierzytelniania aplikacji](https://github.com/FormidableLabs/react-native-app-auth) | [Wersja 4.2.0](https://github.com/FormidableLabs/react-native-app-auth/releases/tag/v4.2.0) | [React Native uwierzytelniania aplikacji](https://github.com/FormidableLabs/react-native-app-auth) | |
+|![JavaScript](media/sample-v2-code/logo_js.png)|[Hello.js](https://adodson.com/hello.js/) | 1\.13.5 wersja |[Hello.js](https://github.com/MrSwitch/hello.js) |[HASŁA](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2) |
+| ![Java](media/sample-v2-code/logo_java.png) | [Kod w języku Java](https://github.com/scribejava/scribejava) | [3.2.0 wersja](https://github.com/scribejava/scribejava/releases/tag/scribejava-3.2.0) | [ScribeJava](https://github.com/scribejava/scribejava/) | |
+| ![Java](media/sample-v2-code/logo_java.png) | [Biblioteka GLUU OpenID Connect Connect](https://github.com/GluuFederation/oxAuth) | [3.0.2 wersja](https://github.com/GluuFederation/oxAuth/releases/tag/3.0.2) | [Biblioteka GLUU OpenID Connect Connect](https://github.com/GluuFederation/oxAuth) | |
+| ![Python](media/sample-v2-code/logo_python.png) | [Żądania — OAuthlib](https://github.com/requests/requests-oauthlib) | [Wersji 1.2.0 lub nowszej](https://github.com/requests/requests-oauthlib/releases/tag/v1.2.0) | [Żądania — OAuthlib](https://github.com/requests/requests-oauthlib) | |
+| ![Node.js](media/sample-v2-code/logo_nodejs.png) | [OpenID Connect — klient](https://github.com/panva/node-openid-client) | [2.4.5 wersja](https://github.com/panva/node-openid-client/releases/tag/v2.4.5) | [OpenID Connect — klient](https://github.com/panva/node-openid-client) | |
+| ![PHP](media/sample-v2-code/logo_php.png) | [PHP League OAuth2 — klient](https://github.com/thephpleague/oauth2-client) | [W wersji 1.4.2](https://github.com/thephpleague/oauth2-client/releases/tag/1.4.2) | [OAuth2 — klient](https://github.com/thephpleague/oauth2-client/) | |
+| ![Ruby](media/sample-v2-code/logo_ruby.png) |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth: 1.3.1<br />omniauth — OAuth2: 1.4.0 |[OmniAuth](https://github.com/omniauth/omniauth)<br />[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |  |
+| ![iOS](media/sample-v2-code/logo_iOS.png) ![Android](media/sample-v2-code/logo_Android.png) | [Reagowanie na natywną autoryzację aplikacji](https://github.com/FormidableLabs/react-native-app-auth) | [4.2.0 wersja](https://github.com/FormidableLabs/react-native-app-auth/releases/tag/v4.2.0) | [Reagowanie na natywną autoryzację aplikacji](https://github.com/FormidableLabs/react-native-app-auth) | |
 
-Wszystkie biblioteki zgodnych ze standardami możesz użyć punktu końcowego platformy tożsamości firmy Microsoft. Warto wiedzieć, gdzie szukać pomocy technicznej:
+W przypadku dowolnej biblioteki zgodnej ze standardami można użyć punktu końcowego platformy tożsamości firmy Microsoft. Ważne jest, aby wiedzieć, gdzie warto uzyskać pomoc techniczną:
 
-* Problemy i sugestie dotyczące nowych funkcji w kodzie biblioteki skontaktuj się z właścicielem biblioteki.
-* Problemy i sugestie dotyczące nowych funkcji w implementacji protokołu po stronie usługi skontaktuj się z pomocą firmy Microsoft.
-* [Plik wniosek dotyczący funkcji](https://feedback.azure.com/forums/169401-azure-active-directory) dodatkowych funkcji, które mają być wyświetlane w protokole.
-* [Utwórz żądanie obsługi](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) Jeśli znajdziesz problem gdzie Microsoft platformy tożsamości z punktu końcowego nie jest zgodna z protokołu OAuth 2.0 lub OpenID Connect 1.0.
+* W przypadku problemów i nowych żądań funkcji w kodzie biblioteki należy skontaktować się z właścicielem biblioteki.
+* W przypadku problemów i nowych żądań funkcji w implementacji protokołu po stronie usługi należy skontaktować się z firmą Microsoft.
+* Prześlij [żądanie funkcji](https://feedback.azure.com/forums/169401-azure-active-directory) w celu uzyskania dodatkowych funkcji, które mają być widoczne w protokole.
+* [Utwórz żądanie pomocy technicznej](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) , jeśli znajdziesz problem polegający na tym, że punkt końcowy platformy tożsamości firmy Microsoft nie jest zgodny z uwierzytelnianiem OAuth 2,0 lub openid connect Connect 1,0.
 
 ## <a name="related-content"></a>Powiązana zawartość
 
-Aby uzyskać więcej informacji na temat punktu końcowego platformy tożsamości firmy Microsoft, zobacz [Przegląd platforma tożsamości usługi Microsoft][AAD-App-Model-V2-Overview].
+Aby uzyskać więcej informacji na temat punktu końcowego platformy tożsamości firmy Microsoft, zobacz [Omówienie platformy tożsamości firmy Microsoft][AAD-App-Model-V2-Overview].
 
 <!--Image references-->
 

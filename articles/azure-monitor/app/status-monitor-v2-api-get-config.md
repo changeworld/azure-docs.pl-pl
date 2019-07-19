@@ -1,6 +1,6 @@
 ---
-title: 'Dokumentacja interfejsu API w wersji 2 usługi Azure Monitor stanu: Pobierz konfigurację | Dokumentacja firmy Microsoft'
-description: Dokumentacja interfejsu API w wersji 2 Monitor stanu. Get-ApplicationInsightsMonitoringConfig. Monitorowanie wydajności witryny sieci Web bez konieczności ponownego wdrażania witryny sieci Web. Działa z aplikacjami sieci web platformy ASP.NET hostowanej lokalnie, na maszynach wirtualnych lub na platformie Azure.
+title: 'Dokumentacja interfejsu API platformy Azure monitor stanu v2: Pobierz konfigurację | Microsoft Docs'
+description: Dokumentacja interfejsu API monitor stanu v2. Get-ApplicationInsightsMonitoringConfig. Monitorowanie wydajności witryny sieci Web bez ponownego wdrażania witryny sieci Web. Współpracuje z usługą ASP.NET Web Apps hostowaną lokalnie, na maszynach wirtualnych lub na platformie Azure.
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -12,25 +12,20 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 7eaaaa2dd7b22d138ea2f0a52d0bf0a1b2eab026
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 9e1b3242a96bfaadfe6f791e0ca9bf25262065e2
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807088"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326349"
 ---
-# <a name="status-monitor-v2-api-get-applicationinsightsmonitoringconfig-v040-alpha"></a>Interfejs API w wersji 2 Monitora stanu: Get-ApplicationInsightsMonitoringConfig (v0.4.0-alpha)
+# <a name="status-monitor-v2-api-get-applicationinsightsmonitoringconfig"></a>Interfejs API monitor stanu v2: Get-ApplicationInsightsMonitoringConfig
 
-W tym artykule opisano polecenia cmdlet, które jest członkiem [modułu Az.ApplicationMonitor PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
-
-> [!IMPORTANT]
-> Monitor stanu w wersji 2 jest obecnie w publicznej wersji zapoznawczej.
-> Tej wersji zapoznawczej jest oferowana bez umowy dotyczącej poziomu usług, i firma Microsoft nie jest to zalecane w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, a niektóre mogą mieć ograniczone możliwości.
-> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+W tym artykule opisano polecenie cmdlet, które jest członkiem [modułu programu PowerShell AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
 ## <a name="description"></a>Opis
 
-Plik konfiguracji, który pobiera i drukuje wartości do konsoli.
+Pobiera plik konfiguracji i drukuje wartości w konsoli programu.
 
 > [!IMPORTANT] 
 > To polecenie cmdlet wymaga sesji programu PowerShell z uprawnieniami administratora.
@@ -43,12 +38,12 @@ PS C:\> Get-ApplicationInsightsMonitoringConfig
 
 ## <a name="parameters"></a>Parametry
 
-Bez parametrów jest wymagany.
+Nie są wymagane żadne parametry.
 
 ## <a name="output"></a>Output
 
 
-#### <a name="example-output-from-reading-the-config-file"></a>Przykładowe dane wyjściowe na podstawie odczytu pliku konfiguracji
+#### <a name="example-output-from-reading-the-config-file"></a>Przykładowe dane wyjściowe odczytywania pliku konfiguracji
 
 ```
 RedfieldConfiguration:
@@ -61,16 +56,16 @@ Filters:
 ## <a name="next-steps"></a>Następne kroki
 
   Wyświetlanie telemetrii:
- - [Eksplorowanie metryk](../../azure-monitor/app/metrics-explorer.md) do monitorowania wydajności i użycia.
-- [Wyszukiwanie zdarzeń i dzienników](../../azure-monitor/app/diagnostic-search.md) do diagnozowania problemów.
-- Użyj [analytics](../../azure-monitor/app/analytics.md) dla bardziej zaawansowanych zapytań.
+ - [Poznaj metryki](../../azure-monitor/app/metrics-explorer.md) , aby monitorować wydajność i użycie.
+- [Wyszukaj zdarzenia i dzienniki](../../azure-monitor/app/diagnostic-search.md) , aby zdiagnozować problemy.
+- Użyj [analizy](../../azure-monitor/app/analytics.md) , aby uzyskać bardziej zaawansowane zapytania.
 - [Tworzenie pulpitów nawigacyjnych](../../azure-monitor/app/overview-dashboard.md).
  
  Dodawanie kolejnych funkcji telemetrii:
- - [Tworzenie testów sieci web](monitor-web-app-availability.md) aby upewnić się, że witryna pozostaje aktywna.
-- [Dodawanie telemetrii klienta sieci web](../../azure-monitor/app/javascript.md) aby zobaczyć wyjątki pochodzące z kodu strony sieci web i umożliwić wywołania śledzenia.
-- [Dodaj zestaw Application Insights SDK do kodu](../../azure-monitor/app/asp-net.md) dzięki czemu można wstawić ślad i rejestrować wywołania.
+ - [Utwórz testy sieci Web](monitor-web-app-availability.md) , aby upewnić się, że witryna pozostaje aktywna.
+- [Dodaj telemetrię klienta sieci Web](../../azure-monitor/app/javascript.md) , aby zobaczyć wyjątki z kodu strony sieci Web i włączyć wywołania śledzenia.
+- [Dodaj do kodu zestaw SDK Application Insights](../../azure-monitor/app/asp-net.md) , aby móc wstawiać wywołania śledzenia i rejestrowania.
  
- Wykonuj więcej zadań dzięki v2 Monitora stanu:
- - Użyj zapoznaj się z przewodnikiem [Rozwiązywanie problemów z](status-monitor-v2-troubleshoot.md) Monitora stanu w wersji 2.
- - Zmiany konfiguracji przy użyciu [Set config](status-monitor-v2-api-set-config.md) polecenia cmdlet.
+ Więcej informacji o monitor stanu v2:
+ - Skorzystaj z naszego przewodnika, aby [rozwiązywać problemy z](status-monitor-v2-troubleshoot.md) Monitor stanu v2.
+ - Wprowadź zmiany w konfiguracji za pomocą polecenia cmdlet [set config](status-monitor-v2-api-set-config.md) .

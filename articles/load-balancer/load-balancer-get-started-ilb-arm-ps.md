@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Dowiedz się, jak utworzyć wewnętrzny moduł równoważenia obciążenia przy użyciu modułu Azure PowerShell z usługą Azure Resource Manager
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -12,13 +12,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: 521f8f29e2f8475ab7308f5646b94c6fc0f6a01f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: b53225334c6a7d61fcee70327df5979af1e424ee
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60398812"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275396"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Tworzenie wewnętrznego modułu równoważenia obciążenia przy użyciu modułu Azure PowerShell
 
@@ -42,11 +42,11 @@ W tym artykule opisano, jak utworzyć wewnętrzny moduł równoważenia obciąż
 
 Aby wdrożyć moduł równoważenia obciążenia, muszą zostać utworzone następujące obiekty:
 
-* Puli adresów IP frontonu: Prywatny adres IP dla całego przychodzącego ruchu sieciowego.
+* Pula adresów IP frontonu: Prywatny adres IP dla całego przychodzącego ruchu sieciowego.
 * Pula adresów zaplecza: Interfejsy sieciowe do odbierania ruchu ze zrównoważonym obciążeniem z adresu IP frontonu.
-* Reguły równoważenia obciążenia: Konfiguracja portu (źródła i lokalnego) dla modułu równoważenia obciążenia.
-* Konfiguracja sondy: Sondy stanu kondycji dla maszyn wirtualnych.
-* Reguły NAT dla ruchu przychodzącego: Reguły portów dla bezpośredniego dostępu do maszyn wirtualnych.
+* Reguły równoważenia obciążenia: Konfiguracja portu (źródłowego i lokalnego) dla modułu równoważenia obciążenia.
+* Konfiguracja sondy: Sondy stanu kondycji maszyn wirtualnych.
+* Reguły NAT dla ruchu przychodzącego: Reguły portów umożliwiające bezpośredni dostęp do maszyn wirtualnych.
 
 Aby uzyskać więcej informacji na temat składników modułu równoważenia obciążenia, zobacz [Azure Resource Manager support for load balancer (Obsługa usługi Azure Resource Manager dla modułu równoważenia obciążenia)](load-balancer-arm.md).
 
@@ -64,7 +64,7 @@ Uruchom moduł programu PowerShell dla usługi Azure Resource Manager.
 Connect-AzAccount
 ```
 
-### <a name="step-2-view-your-subscriptions"></a>Krok 2: Wyświetlenie swoich subskrypcji
+### <a name="step-2-view-your-subscriptions"></a>Krok 2: Wyświetlanie Twoich subskrypcji
 
 Sprawdź własne dostępne subskrypcje platformy Azure.
 
@@ -82,7 +82,7 @@ Wybierz swoją subskrypcję platformy Azure, która będzie używana do wdrażan
 Select-AzSubscription -Subscriptionid "GUID of subscription"
 ```
 
-### <a name="step-4-choose-the-resource-group-for-the-load-balancer"></a>Krok 4: Wybierz grupę zasobów dla modułu równoważenia obciążenia
+### <a name="step-4-choose-the-resource-group-for-the-load-balancer"></a>Krok 4: Wybierz grupę zasobów dla usługi równoważenia obciążenia
 
 Utwórz nową grupę zasobów dla modułu równoważenia obciążenia. Pomiń ten krok, jeśli używasz istniejącej grupy zasobów.
 
@@ -114,7 +114,7 @@ Sieć wirtualna zostanie utworzona. Podsieć **LB-Subnet-BE** zostanie dodana do
 
 Utwórz pulę adresów IP frontonu dla ruchu przychodzącego i pulę adresów zaplecza w celu odbierania ruchu ze zrównoważonym obciążeniem.
 
-### <a name="step-1-create-a-front-end-ip-pool"></a>Krok 1: Utwórz pulę adresów IP frontonu
+### <a name="step-1-create-a-front-end-ip-pool"></a>Krok 1: Tworzenie puli adresów IP frontonu
 
 Utwórz pulę adresów IP frontonu za pomocą prywatnego adresu IP 10.0.2.5 dla podsieci 10.0.2.0/24. Ten adres jest punktem końcowym przychodzącego ruchu sieciowego.
 
@@ -138,10 +138,10 @@ Po utworzeniu puli adresów IP frontonu i puli adresów zaplecza określ reguły
 
 W tym przykładzie są tworzone następujące cztery obiekty reguły:
 
-* Reguła ruchu przychodzącego translatora adresów Sieciowych dla protokołu RDP (Remote Desktop): Przekierowuje cały ruch przychodzący na porcie 3441 do portu 3389.
-* Druga Reguła ruchu przychodzącego translatora adresów Sieciowych dla protokołu RDP: Przekierowuje cały ruch przychodzący na porcie 3442 do portu 3389.
-* Reguła sondy stanu: Umożliwia sprawdzenie stanu kondycji ścieżki HealthProbe.aspx.
-* Reguła modułu równoważenia obciążenia: Równoważy obciążenie całego ruchu przychodzącego na publicznym porcie 80 do lokalnego portu 80 w puli adresów zaplecza.
+* Reguła NAT dla ruchu przychodzącego dla Remote Desktop Protocol (RDP): Przekierowuje cały ruch przychodzący na porcie 3441 do portu 3389.
+* Druga Reguła ruchu przychodzącego NAT dla protokołu RDP: Przekierowuje cały ruch przychodzący na porcie 3442 do portu 3389.
+* Reguła sondy kondycji: Sprawdza stan kondycji ścieżki HealthProbe. aspx.
+* Reguła modułu równoważenia obciążenia: Równoważy obciążenia cały ruch przychodzący na porcie publicznym 80 do portu lokalnego 80 w puli adresów zaplecza.
 
 ```azurepowershell-interactive
 $inboundNATRule1= New-AzLoadBalancerInboundNatRuleConfig -Name "RDP1" -FrontendIpConfiguration $frontendIP -Protocol TCP -FrontendPort 3441 -BackendPort 3389
@@ -239,7 +239,7 @@ Ustawienia powinny być następujące:
 
 
 
-### <a name="step-3-assign-the-nic-to-a-vm"></a>Krok 3: Przypisz kartę Sieciową do maszyny Wirtualnej
+### <a name="step-3-assign-the-nic-to-a-vm"></a>Krok 3: Przypisywanie karty sieciowej do maszyny wirtualnej
 
 Przypisz interfejs sieciowy do maszyny wirtualnej za pomocą polecenia `Add-AzVMNetworkInterface`.
 
@@ -249,7 +249,7 @@ Aby uzyskać instrukcje krok po kroku dotyczące tworzenia maszyny wirtualnej i 
 
 Po utworzeniu maszyny wirtualnej należy dodać interfejs sieciowy.
 
-### <a name="step-1-store-the-load-balancer-resource"></a>Krok 1: Store zasobu modułu równoważenia obciążenia
+### <a name="step-1-store-the-load-balancer-resource"></a>Krok 1: Przechowywanie zasobu modułu równoważenia obciążenia
 
 Zapisz zasób modułu równoważenia obciążenia w zmiennej (jeśli jeszcze nie zostało to zrobione). Używamy nazwy zmiennej **$lb**. Dla wartości atrybutów w skrypcie użyj nazw zasobów modułu równoważenia obciążenia, które zostały utworzone w poprzednich krokach.
 
@@ -257,7 +257,7 @@ Zapisz zasób modułu równoważenia obciążenia w zmiennej (jeśli jeszcze nie
 $lb = Get-AzLoadBalancer –name NRP-LB -resourcegroupname NRP-RG
 ```
 
-### <a name="step-2-store-the-back-end-configuration"></a>Krok 2: Store konfiguracji zaplecza
+### <a name="step-2-store-the-back-end-configuration"></a>Krok 2: Przechowywanie konfiguracji zaplecza
 
 Zapisz konfigurację zaplecza w zmiennej **$backend**.
 
@@ -265,7 +265,7 @@ Zapisz konfigurację zaplecza w zmiennej **$backend**.
 $backend = Get-AzLoadBalancerBackendAddressPoolConfig -name LB-backend -LoadBalancer $lb
 ```
 
-### <a name="step-3-store-the-network-interface"></a>Krok 3: Store interfejsu sieciowego
+### <a name="step-3-store-the-network-interface"></a>Krok 3: Zapisywanie interfejsu sieciowego
 
 Zapisz interfejs sieciowy w innej zmiennej. Ten interfejs został utworzony w punkcie „Tworzenie interfejsów sieciowych, krok 1”. Używamy nazwy zmiennej **$nic1**. Użyj takiej samej nazwy interfejsu sieciowego jak w poprzednim przykładzie.
 
@@ -273,7 +273,7 @@ Zapisz interfejs sieciowy w innej zmiennej. Ten interfejs został utworzony w pu
 $nic = Get-AzNetworkInterface –name lb-nic1-be -resourcegroupname NRP-RG
 ```
 
-### <a name="step-4-change-the-back-end-configuration"></a>Krok 4: Zmień konfigurację zaplecza
+### <a name="step-4-change-the-back-end-configuration"></a>Krok 4: Zmiana konfiguracji zaplecza
 
 Zmień konfigurację zaplecza na interfejsie sieciowym.
 
@@ -281,7 +281,7 @@ Zmień konfigurację zaplecza na interfejsie sieciowym.
 $nic.IpConfigurations[0].LoadBalancerBackendAddressPools=$backend
 ```
 
-### <a name="step-5-save-the-network-interface-object"></a>Krok 5. Zapisywanie obiektu interfejsu sieciowego
+### <a name="step-5-save-the-network-interface-object"></a>Krok 5. Zapisz obiekt interfejsu sieciowego
 
 Zapisz obiekt interfejsu sieciowego.
 
@@ -293,7 +293,7 @@ Po dodaniu interfejsu do puli zaplecza ruch sieciowy ma zrównoważone obciąże
 
 ## <a name="update-an-existing-load-balancer"></a>Aktualizowanie istniejącego modułu równoważenia obciążenia
 
-### <a name="step-1-assign-the-load-balancer-object-to-a-variable"></a>Krok 1: Przypisz obiekt modułu równoważenia obciążenia do zmiennej
+### <a name="step-1-assign-the-load-balancer-object-to-a-variable"></a>Krok 1: Przypisywanie obiektu modułu równoważenia obciążenia do zmiennej
 
 Przypisz obiekt modułu równoważenia obciążenia (z poprzedniego przykładu) do zmiennej **$slb** przy użyciu polecenia `Get-AzLoadBalancer`:
 
@@ -301,7 +301,7 @@ Przypisz obiekt modułu równoważenia obciążenia (z poprzedniego przykładu) 
 $slb = Get-AzLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
 ```
 
-### <a name="step-2-add-a-nat-rule"></a>Krok 2: Dodaj regułę NAT
+### <a name="step-2-add-a-nat-rule"></a>Krok 2: Dodawanie reguły NAT
 
 Dodaj nową regułę NAT dla ruchu przychodzącego do istniejącego modułu równoważenia obciążenia. Użyj portu 81 dla puli frontonu i portu 8181 dla puli zaplecza:
 

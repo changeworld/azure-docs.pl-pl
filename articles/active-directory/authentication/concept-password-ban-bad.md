@@ -1,6 +1,6 @@
 ---
-title: Dynamicznie zakazane haseł — Azure Active Directory
-description: Zablokuj słabe hasła ze środowiska za pomocą haseł usługi Azure AD, dynamicznie zakazane
+title: Dynamicznie zabronione hasła — Azure Active Directory
+description: Zablokuj słabe hasła ze środowiska za pomocą dynamicznie zabronionych haseł usługi Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,168 +11,170 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c043b2ed1a626e362d7edd1a83429aa14046f8ac
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: fe2b4ed91969248bc0818f98306a108555eac424
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703057"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67853054"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Eliminowanie nieprawidłowych haseł w organizacji
 
-Liderów branży zorientować się, nie należy używać tego samego hasła w wielu miejscach złożoną i nie wprowadzać proste, np. "/ Password123". Jak organizacje gwarantuje, że użytkownikom postępujesz zgodnie z najlepszych wskazówek Jak one upewnij się, że użytkownicy nie są z słabe hasła lub nawet zmian na słabe hasła?
+Liderzy branżowi informują o tym, że nie używasz tego samego hasła w wielu miejscach, aby zapewnić jego złożoność i nie tak, jak "Password123". W jaki sposób organizacje mogą zagwarantować, że ich użytkownicy są zgodnie z najlepszymi wskazówkami? Jak upewnić się, że użytkownicy nie używają słabych haseł, a nawet odmian dla słabych haseł?
 
-Pierwszym krokiem w silniejszych haseł jest zapewnienie wskazówek dla użytkowników. Firmy Microsoft Bieżące wskazówki na ten temat można znaleźć pod następujący link:
+Pierwszym krokiem w przypadku silnych haseł jest zapewnienie użytkownikom wskazówek. Bieżące wskazówki dotyczące tego tematu firmy Microsoft można znaleźć w następującym łączu:
 
-[Wskazówki dotyczące hasła Microsoft](https://www.microsoft.com/research/publication/password-guidance)
+[Wskazówki dotyczące haseł firmy Microsoft](https://www.microsoft.com/research/publication/password-guidance)
 
-Dobrą wskazówkę jest ważne, ale nawet z Zdajemy sobie sprawę, że wielu użytkowników będzie nadal znajdą się wybierając słabe hasła. Ochrona za pomocą usługi Azure AD hasła chroni Twojej organizacji, wykrywanie i blokowanie znane słabe hasła i ich warianty, a także opcjonalnie blokuje dodatkowe postanowienia słabe, które są specyficzne dla Twojej organizacji.
+Posiadanie dobrych wskazówek jest ważne, ale nawet w przypadku, gdy mamy pewność, że wielu użytkowników nadal kończy Wybieranie słabych haseł. Ochrona hasłem w usłudze Azure AD chroni organizację przez wykrywanie i blokowanie znanych słabych haseł oraz ich wariantów, a także opcjonalne blokowanie dodatkowych warunków, które są specyficzne dla Twojej organizacji.
 
-Aby uzyskać więcej informacji na temat bieżącego działaniach związanych z zabezpieczeniami, zobacz [Microsoft Security Intelligence Report](https://www.microsoft.com/security/operations/security-intelligence-report).
+Aby uzyskać więcej informacji na temat bieżących wysiłków związanych z zabezpieczeniami, zobacz [Raport analizy zabezpieczeń firmy Microsoft](https://www.microsoft.com/security/operations/security-intelligence-report).
 
-## <a name="global-banned-password-list"></a>Listy globalne zakazanych haseł
+## <a name="global-banned-password-list"></a>Lista zabronionych haseł globalnych
 
-Zespół usługi Azure AD Identity Protection nieustannie analizuje dane telemetryczne z zabezpieczeń usługi Azure AD, dane dla często używanych haseł słabych lub ze złamanymi zabezpieczeniami lub dokładniej, słabym podstawowa warunki, które są często używane jako podstawa dla słabe hasła. Podczas tych postanowień słabe zostaną znalezione, są one dodane do listy globalnej zakazanych haseł. Zawartość listy globalne zakazanych haseł, nie są oparte na żadne zewnętrzne źródło danych. Listy globalne zakazanych haseł opiera się wyłącznie na bieżące wyniki telemetrii zabezpieczeń usługi Azure AD i analizy.
+Zespół Azure AD Identity Protection stale analizuje dane telemetryczne zabezpieczeń usługi Azure AD szukające często używanych słabych lub złamanych haseł lub bardziej szczegółowych warunków podstawowych, które często są używane jako podstawa dla słabych haseł. Po znalezieniu takich słabych terminów są one dodawane do listy globalnie zabronione hasła. Zawartość globalnej listy haseł zabronione nie jest oparta na żadnym zewnętrznym źródle danych. Globalna lista wykluczonych haseł opiera się wyłącznie na bieżących wynikach telemetrii i analizie zabezpieczeń usługi Azure AD.
 
-Zawsze, gdy nowe hasło jest zmienione lub zresetować dla dowolnego użytkownika w dowolnej dzierżawy w usłudze Azure AD, bieżąca wersja listy globalne zakazanych haseł jest używany jako klucz, w danych wejściowych podczas sprawdzania siły hasła. Tej weryfikacji powoduje dużo silniejszego hasła dla wszystkich klientów usługi Azure AD.
-
-> [!NOTE]
-> Cyberprzestępcy również często stosują podobne strategie w ich ataków. W związku z tym Microsoft nie publikuje publicznie zawartość tej listy.
-
-## <a name="custom-banned-password-list"></a>Niestandardowe zakazane liście haseł
-
-Niektóre organizacje mogą zdecydować zwiększyć bezpieczeństwo jeszcze bardziej poprzez dodawanie dostosowań na górze listy globalne zakazanych haseł w nazywanej przez firmę Microsoft listy niestandardowej zakazanych haseł. Firma Microsoft zaleca się, że warunki dodana do tej listy przede wszystkim koncentrują się na warunki specyficzne dla organizacji takich jak:
-
-- Nazw marek
-- Nazwy produktu
-- (Na przykład, na przykład w siedzibie firmy)
-- Warunki wewnętrzny specyficzny dla firmy
-- Skróty, które mają określoną firmą, co oznacza.
-
-Gdy warunki są dodawane do listy niestandardowej zakazanych haseł, ich zostanie dodany do listy globalnej zakazanych haseł podczas sprawdzania poprawności hasła.
+Za każdym razem, gdy nowe hasło jest zmieniane lub resetowane dla dowolnego użytkownika w dowolnej dzierżawie w usłudze Azure AD, bieżąca wersja globalnej listy haseł jest używana jako dane wejściowe klucza podczas sprawdzania siły hasła. To sprawdzenie poprawności skutkuje znacznie silniejszymi hasłami dla wszystkich klientów usługi Azure AD.
 
 > [!NOTE]
-> Listy niestandardowe zakazanych haseł jest ograniczone do mającą co najwyżej 1000 warunków. Nie jest przeznaczona do blokowania bardzo duże listy haseł. Aby w pełni wykorzystać zalety listy niestandardowej zakazanych haseł, firma Microsoft zaleca, aby najpierw przejrzeć i zrozumieć algorytm oceny hasło (zobacz [jak są hasła obliczane](concept-password-ban-bad.md#how-are-passwords-evaluated)) przed dodaniem nowych warunków do Niestandardowa lista zabronione. Zrozumienie, jak działa algorytm umożliwi w przedsiębiorstwie w celu wydajnego wykrywać i blokować dużą liczbę słabe hasła i ich warianty.
+> Cybernetycznymi — przestępcy stosują także podobne strategie w oddziałach. W związku z tym firma Microsoft nie publikuje zawartości tej listy publicznie.
 
-Na przykład: należy wziąć pod uwagę klienta o nazwie "Contoso", która opiera się w Londynie, i sprawia to, że produkt o nazwie "Widżet". Dla takich klientów będzie marnotrawstwa, a także mniej bezpieczna opcja próby takich jak blokowanie określonych odmiany tych terminów:
+## <a name="custom-banned-password-list"></a>Niestandardowa lista wykluczonych haseł
 
-- "Firma Contoso! 1"
+Niektóre organizacje mogą chcieć jeszcze bardziej poprawić zabezpieczenia poprzez dodanie własnych dostosowań na liście globalnie zakazanych haseł, w których firma Microsoft wywołuje niestandardową listę wykluczonych haseł. Firma Microsoft zaleca, aby warunki dodane do tej listy były głównie skoncentrowane na warunkach określonych w organizacji, takich jak:
+
+- Nazwy marki
+- Nazwy produktów
+- Lokalizacje (np. oddział firmy)
+- Terminy wewnętrzne specyficzne dla firmy
+- Skróty, które mają określone znaczenie firmy.
+
+Po dodaniu terminów do listy niestandardowych zakazanych haseł zostaną one połączone z warunkami z listy globalnie zakazanych haseł podczas walidacji haseł.
+
+> [!NOTE]
+> Niestandardowa lista wykluczonych haseł jest ograniczona do maksymalnie 1000 warunków. Nie jest ona przeznaczona do blokowania bardzo dużych list haseł. Aby w pełni wykorzystać zalety niestandardowej listy zakazanych haseł, firma Microsoft zaleca, aby najpierw przejrzeć i zrozumieć algorytm oceny haseł (zobacz [jak są oceniane hasła](concept-password-ban-bad.md#how-are-passwords-evaluated)) przed dodaniem nowych warunków do listy zablokowanych niestandardowych. Zrozumienie, jak działa algorytm umożliwi firmie wydajne wykrywanie i blokowanie dużej liczby słabych haseł i ich wariantów.
+
+Na przykład: Rozważmy klienta o nazwie "contoso", który jest oparty na Londynie i który sprawia, że produkt nosi nazwę "widget". W przypadku takiego klienta należy wasteful, a także mniej bezpieczny, aby próbować blokować konkretne wahania tych warunków, takich jak:
+
+- "Contoso! 1"
 - "Contoso@London"
 - "ContosoWidget"
-- "! Contoso"
+- "! Contoso
 - "LondonHQ"
-- ...etcetera
+- ... etcetera
 
-Zamiast tego jest znacznie bardziej efektywne i bezpieczne blokowania kluczy podstawowych warunków:
+Zamiast tego jest to znacznie bardziej wydajne i bezpieczne, aby blokować tylko kluczowe warunki podstawowe:
 
-- "Contoso"
-- "Londyn"
-- "Widżet"
+- Contoso
+- Londyn
+- Walidacj
 
-Algorytm sprawdzania poprawności hasła następnie będzie automatycznie blokować słabe warianty oraz kombinacje powyższych.
+Algorytm walidacji hasła będzie automatycznie blokować słabe warianty i kombinacje powyższych.
 
-Niestandardowy zablokowane lista hasła oraz możliwość włączenia Active Directory w środowisku lokalnym, integracja jest zarządzane przy użyciu witryny Azure portal.
+Niestandardowa lista wykluczonych haseł oraz możliwość włączania integracji Active Directory lokalnych jest zarządzana przy użyciu Azure Portal.
 
-![Modyfikowanie listy niestandardowe zakazanych haseł, w ramach metod uwierzytelniania](./media/concept-password-ban-bad/authentication-methods-password-protection.png)
+![Modyfikowanie niestandardowej listy wykluczonych haseł w obszarze metody uwierzytelniania](./media/concept-password-ban-bad/authentication-methods-password-protection.png)
 
-## <a name="password-spray-attacks-and-third-party-compromised-password-lists"></a>Hasło osłony ataków i listy innych firm, których bezpieczeństwo zostało naruszone haseł
+## <a name="password-spray-attacks-and-third-party-compromised-password-lists"></a>Ataki rozpylania hasła i listy haseł z naruszonymi zabezpieczeniami innych firm
 
-Jeden klucz korzyści ochrony haseł usługi Azure AD jest ułatwią Ci chronić przed atakami osłony hasła. Większość ataków osłony hasła, nie należy próbować ataków dowolnego danego konta poszczególnych więcej niż kilka razy, ponieważ takie zachowanie znacznie zwiększa prawdopodobieństwo wykrycia, za pośrednictwem blokady konta lub w inny sposób. Do większości ataków osłony hasła w związku z tym polegają na przesyłanie tylko niewielka liczba znanych haseł najsłabsza w odniesieniu do każdego z kont w przedsiębiorstwie. Ta technika umożliwia osobie atakującej na szybko wyszukać łatwo zagrożonych konta, przy jednoczesnym uniknięcie potencjalnych progi wykrywania.
+Jedną z korzyści związanych z ochroną hasłem w usłudze Azure AD jest ułatwienie obrony przed atakami polegającymi na rozpylaniu hasła. Większość ataków z rozpylaczem hasła nie podejmuje próby ataków na każde pojedyncze konto więcej niż kilka razy, ponieważ takie zachowanie znacznie zwiększa prawdopodobieństwo wykrycia przez zablokowanie konta lub inne środki. Większość ataków z rozpylaczem hasła polega na przesłaniu tylko niewielkiej liczby znanych słabych haseł do poszczególnych kont w przedsiębiorstwie. Dzięki tej metodzie osoba atakująca może szybko wyszukiwać łatwo naruszone konto, jednocześnie unikając potencjalnych progów wykrywania.
 
-Ochrony hasłem w usłudze Azure AD zaprojektowano w celu wydajnego zablokować wszystkie znane słabe hasła, które mogą być używane w osłony złamania hasła, w oparciu o dane telemetryczne zabezpieczeń w rzeczywistych warunkach widzianych przez usługę Azure AD.  Firma Microsoft zapoznała się z witryn sieci Web innych firm, który wylicza milionów haseł, których bezpieczeństwo zostało naruszone w poprzednim naruszenia zabezpieczeń znany. To częsty problem w produkty sprawdzania poprawności hasła innych firm pod kątem opierać się na atak metodą siłową porównanie z milionów hasła. Microsoft czuje, że techniki takie nie są najlepszym sposobem, aby zwiększyć siłę hasła ogólną typowe strategie używana przez osoby atakujące osłony hasło podane.
+Ochrona hasłem w usłudze Azure AD została zaprojektowana w celu wydajnego zablokowania wszystkich znanych słabych haseł, które mogą być używane w atakach z wykorzystaniem hasła, na podstawie rzeczywistych danych telemetrycznych zabezpieczeń widzianych przez usługę Azure AD.  Firma Microsoft wie o witrynach sieci Web innych firm, które wyliczają miliony haseł, które zostały naruszone w ramach wcześniejszych publicznie znanych naruszeń zabezpieczeń. Jest to typowy dla produktów innych firm do sprawdzania poprawności haseł, które są oparte na porównaniu z wymuszeniem rozliczania do tych milionów haseł. Firma Microsoft uważa, że takie techniki nie są najlepszym sposobem na poprawienie ogólnej siły hasła, z uwzględnieniem typowych strategii używanych przez osoby atakujące przy użyciu hasła.
 
 > [!NOTE]
-> Microsoft, listy globalne zakazanych haseł nie jest oparte na żadnych danych innych firm źródeł, łącznie z listy haseł ze złamanymi zabezpieczeniami.
+> Lista wykluczonych haseł Microsoft Global nie jest oparta na żadnym ze źródeł danych innych firm, w tym na listach z naruszonymi hasłami.
 
-Mimo że globalnej listy zakazanych firmy Microsoft jest mały w porównaniu ze niektóre listy zbiorcze innych firm, to fakt, że pochodzi z rzeczywistych zabezpieczeń telemetrii na ataki osłony rzeczywiste hasło, a także fakt powiększane są jego wpływ na bezpieczeństwo, firmy Microsoft algorytm sprawdzania poprawności hasła używa inteligentnych technik dopasowywania rozmytego. Wynik końcowy to, że go będzie efektywnie wykrywać i blokować milionów najbardziej typowe słabe hasła z użycia w przedsiębiorstwie. Klienci logujący się dodać terminów specyficznych dla organizacji do listy niestandardowej zakazanych haseł, która jest również korzystać z tego samego algorytmu.
+Mimo że globalna lista zabronionych firmy Microsoft jest niewielka w porównaniu z niektórymi listami zbiorczymi innych firm, jego skutki bezpieczeństwa są wzmacniane przez fakt, że pochodzi on z realnej telemetrii zabezpieczającej na potrzeby faktycznego ataku z wykorzystaniem hasła, a także faktu, że firma Microsoft algorytm walidacji hasła używa inteligentnych technik dopasowywania rozmytego. Wynikiem tego jest to, że będzie efektywnie wykrywać i blokować miliony najbardziej typowych słabych haseł w przedsiębiorstwie. Klienci, którzy zdecydują się dodać warunki specyficzne dla organizacji do listy niestandardowo zakazane hasła, również korzystają z tego samego algorytmu.
 
-## <a name="on-premises-hybrid-scenarios"></a>Scenariusze hybrydowe w środowisku lokalnym
+Dodatkowe informacje na temat problemów z zabezpieczeniami opartymi na haśle można sprawdzić na [komputerze PA $ $Word nie ma znaczenia](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984).
 
-Ochrona konta tylko w chmurze jest pomocne, ale w wielu organizacjach Obsługa scenariuszy hybrydowych, w tym usługi Active Directory lokalnego systemu Windows Server. Istnieje możliwość zainstalowania ochrona za pomocą hasła usługi Azure AD dla usługi Active Directory systemu Windows Server agentów lokalnego rozszerzenie listy zakazanych haseł w istniejącej infrastrukturze. Teraz użytkownicy i Administratorzy, którzy zmienić, ustawianie lub resetowanie haseł w środowisku lokalnym są wymagane do wykonania tych samych zasad haseł jako użytkowników tylko w chmurze.
+## <a name="on-premises-hybrid-scenarios"></a>Lokalne scenariusze hybrydowe
 
-## <a name="how-are-passwords-evaluated"></a>Sposób oceniania hasła
+Ochrona kont tylko w chmurze jest przydatna, ale wiele organizacji utrzymuje scenariusze hybrydowe, w tym Active Directory lokalnego systemu Windows Server. Korzyści z używania ochrony hasłem w usłudze Azure AD mogą być również rozszerzane do środowiska Active Directory systemu Windows Server za pośrednictwem instalacji agentów lokalnych. Teraz użytkownicy i Administratorzy, którzy zmienią lub zresetują hasła w Active Directory są zobowiązani do zgodności z tymi samymi zasadami haseł co użytkownicy tylko w chmurze.
 
-Zawsze, gdy użytkownik zmienia lub resetuje hasła, nowe hasło jest sprawdzane pod kątem sile i złożoność przez weryfikację przed globalnej i liście niestandardowych zakazanych haseł (jeśli są one skonfigurowane).
+## <a name="how-are-passwords-evaluated"></a>Jak są oceniane hasła
 
-Nawet wtedy, gdy hasło użytkownika zawiera zakazanych haseł, hasło nadal mogą zostać zaakceptowane, jeżeli ogólną hasła jest wystarczająco silne. Nowo skonfigurowana hasło będzie przejście przez następujące kroki, aby ocenić jej ogólną siły, aby określić, jeśli powinien zostać zaakceptowane lub odrzucone.
+Za każdym razem, gdy użytkownik zmienia lub resetuje hasło, nowe hasło jest sprawdzane pod kątem siły i złożoności, sprawdzając, czy jest to połączona lista warunków z globalnych i niestandardowych list zakazanych haseł (Jeśli ta ostatnia jest skonfigurowana).
 
-### <a name="step-1-normalization"></a>Krok 1: Normalizacja
+Nawet jeśli hasło użytkownika zawiera zabronione hasło, hasło może nadal zostać zaakceptowane, jeśli ogólne hasło jest wystarczająco silne. Nowo skonfigurowane hasło przejdzie przez następujące kroki, aby ocenić jego ogólną siłę, aby określić, czy powinien zostać zaakceptowany czy odrzucony.
 
-Nowe hasło najpierw przechodzi przez proces normalizacji. Ta technika umożliwia niewielki zestaw zakazanych haseł można zamapować na znacznie większy zbiór potencjalnie słabe hasła.
+### <a name="step-1-normalization"></a>Krok 1: Normalizacji
 
-Normalizacji ma dwie części.  Nie zostaną zmienione po pierwsze, wielkie litery na małe litery.  Drugi, typowe znak podstawienia są wykonywane na przykład:  
+Nowe hasło najpierw przechodzi przez proces normalizacji. Ta technika umożliwia zmapowanie małego zestawu zabronionych haseł do znacznie większego zestawu potencjalnie słabych haseł.
 
-| Oryginalny list  | Podstawione list |
+Normalizacja ma dwie części.  Po pierwsze wielkie litery są zmieniane na małą literę.  Sekunda, typowe podstawienia znaków są wykonywane, na przykład:  
+
+| Oryginalna litera  | Zastąpiona litera |
 | --- | --- |
-| '0'  | ' o' |
-| '1'  | 'l' |
-| '$'  | 's' |
+| '0'  | wyjścia |
+| jedno  | & |
+| '$'  | przeglądarki |
 | '\@'  | 'a' |
 
-Przykład: Załóżmy, że hasło "puste" jest zablokowane, a użytkownik próbuje zmienić hasła w celu "Bl@nK". Mimo że "Bl@nk" to nie jest zablokowany, proces normalizacji konwertuje to hasło "blank", czyli zakazanych haseł.
+Przykład: Załóżmy, że hasło "puste" jest zabronione, a użytkownik próbuje zmienić hasło na "Bl@nK". Chociaż "Bl@nk" nie jest jawnie zakazany, proces normalizacji konwertuje to hasło na "puste", które jest zakazanym hasłem.
 
-### <a name="step-2-check-if-password-is-considered-banned"></a>Krok 2: Sprawdź, czy hasło jest traktowane jako zablokowane
+### <a name="step-2-check-if-password-is-considered-banned"></a>Krok 2: Sprawdź, czy hasło jest uznawane za zabronione
 
 #### <a name="fuzzy-matching-behavior"></a>Zachowanie dopasowywania rozmytego
 
-Dopasowywania rozmytego jest używany na znormalizowaną hasło Aby ustalić, czy zawiera ono hasło w obu globalne lub niestandardowej zakazane listy haseł. Proces dopasowywania opiera się na odległość edycji porównania jednego (1).  
+Dopasowywanie rozmyte jest używane na znormalizowanym haśle, aby określić, czy zawiera hasło znalezione na listach globalnych lub niestandardowych zakazanych haseł. Proces dopasowywania zależy od edycji odległości jednego (1) porównania.  
 
-Przykład: Załóżmy, że hasło "abcdef" jest niedozwolone, a użytkownik podejmuje próbę zmiany hasła do jednej z następujących czynności:
+Przykład: Załóżmy, że hasło "abcdef" jest zabronione, a użytkownik próbuje zmienić hasło na jedną z następujących czynności:
 
-"abcdeg"    *(ostatnie znak zmieniła się z "f", "g")* "abcdefg"   *"(g" dołączonych do końca)* "abcde"     *(końcowe "f" zostało usunięte z zakończenia)*
+"abcdeg"    *(ostatni znak został zmieniony z "f" na "g")* "abcdefg"   *"(" dołączono do końca ")* " abcd "     *(końcowe" f "zostało usunięte z końca)*
 
-Każdego z powyższych haseł jest specjalnie niezgodny zakazanych haseł "abcdef". Jednak ponieważ każdy przykład odbywa się w odległości edycji 1 zakazanych termin "abcdef", zostały one wszystkie uznane za dopasowanie zakończyło się "abcdef".
+Każde z powyższych haseł nie jest jawnie zgodne z zakazanym hasłem "abcdef". Jednakże, ponieważ każdy przykład znajduje się w odległości od 1 niedozwolonego terminu "abcdef", wszystkie są uważane za zgodne z "abcdef".
 
-#### <a name="substring-matching-on-specific-terms"></a>Podciąg dopasowania (na warunkach określonych)
+#### <a name="substring-matching-on-specific-terms"></a>Dopasowywanie podciągów (na określonych warunkach)
 
-Dopasowywanie podciągów jest używana na znormalizowaną hasła sprawdź imienia użytkownika i nazwisko oraz nazwę dzierżawy (Zwróć uwagę, że dopasowywanie nazw dzierżawy odbywa się podczas sprawdzania poprawności hasła na kontrolerze domeny usługi Active Directory).
+Dopasowywanie podciągów jest używane na znormalizowanym haśle, aby sprawdzić, czy nazwa użytkownika i nazwisko oraz nazwę dzierżawy (należy zauważyć, że dopasowywanie nazw dzierżawców nie jest wykonywane podczas weryfikacji haseł na Active Directory kontrolerze domeny).
 
-Przykład: Załóżmy, że mamy użytkownika, Pol, kto chce, aby zresetować swoje hasło, aby "P0l123fb". Po normalizacji to hasło będzie stają się "pol123fb". Dopasowywanie podciągów wykryje, że hasło zawiera imię użytkownika "Pol". Mimo że "P0l123fb" nie jest specjalnie na obu listy zakazanych haseł, dopasowywanie podciągów znaleziono "Pol" w haśle. W związku z tym to hasło będzie odrzucane.
+Przykład: Załóżmy, że mamy użytkownika, pol, który chce zresetować swoje hasło do "P0l123fb". Po normalizacji to hasło stanie się "pol123fb". Dopasowywanie podciągów oznacza, że hasło zawiera imię i nazwisko użytkownika "pol". Mimo że "P0l123fb" nie został jawnie na liście wykluczonych haseł, dopasowanie podciągu znaleziono "pol" w haśle. W związku z tym hasło byłoby odrzucone.
 
-#### <a name="score-calculation"></a>Wynik obliczania
+#### <a name="score-calculation"></a>Obliczanie wyniku
 
-Następnym krokiem jest, aby zidentyfikować wszystkie wystąpienia elementu zakazanych haseł w znormalizowanych nowe hasło użytkownika. Następnie:
+Następnym krokiem jest zidentyfikowanie wszystkich wystąpień zakazanych haseł w znormalizowanym nowym haśle użytkownika. Następnie
 
-1. Każdy zakazanych haseł, która znajduje się w haśle użytkownika znajduje się jeden punkt.
-2. Każdy pozostały znak unikatowy znajduje się jeden punkt.
-3. Hasło musi zawierać co najmniej pięciu (5) punkty go do zaakceptowania.
+1. Każde z zakazanych haseł, które znajdują się w haśle użytkownika, otrzymuje jeden punkt.
+2. Każdy pozostały unikatowy znak jest przyznany jeden punkt.
+3. Hasło musi zawierać co najmniej pięć (5) punktów, aby można je było zaakceptować.
 
-W dwóch następnych przykładach Załóżmy że Contoso używa ochrony haseł usługi Azure AD i ich listy niestandardowej ma "contoso". Załóżmy również, że "puste" znajduje się w globalnej listy.
+Załóżmy, że firma Contoso używa ochrony hasłem usługi Azure AD i ma "contoso" na swojej liście niestandardowej. Załóżmy również, że na globalnej liście znajduje się wartość "puste".
 
-Przykład: użytkownik zmieni hasło "C0ntos0Blank12"
+Przykład: użytkownik zmienia swoje hasło na "C0ntos0Blank12"
 
-Po normalizacji to hasło, staje się "contosoblank12". Proces dopasowywania wykryje, że to hasło zawiera dwa hasła zabronione: contoso i puste. To hasło następnie oblicza wynik:
+Po normalizacji to hasło przyjmuje wartość "contosoblank12". Proces dopasowywania stwierdza, że to hasło zawiera dwa zabronione hasła: contoso i blank. To hasło otrzymuje wynik:
 
-[contoso] + [puste] + [1] + [2] = 4 punkty, ponieważ jest to hasło w obszarze pięciu (5) punkty, jego zostanie odrzucone.
+[contoso] + [puste] + [1] + [2] = 4 punkty, ponieważ to hasło znajduje się poniżej pięciu (5) punktów, zostanie odrzucone.
 
-Przykład: hasła w celu zmiany przez użytkownika "ContoS0Bl@nkf9!".
+Przykład: użytkownik zmienia swoje hasło na "ContoS0Bl@nkf9!".
 
-Po normalizacji to hasło, staje się "contosoblankf9!". Proces dopasowywania wykryje, że to hasło zawiera dwa hasła zabronione: contoso i puste. To hasło następnie oblicza wynik:
+Po normalizacji to hasło zmieni się na "contosoblankf9!". Proces dopasowywania stwierdza, że to hasło zawiera dwa zabronione hasła: contoso i blank. To hasło otrzymuje wynik:
 
-[contoso] + [puste] + [f] + [9] + [!] = 5 punktów to hasło jest co najmniej pięciu (5) punkty, jego akceptacją.
+[contoso] + [puste] + [f] + [9] + [!] = 5 punktów, ponieważ to hasło ma co najmniej pięć (5) punktów, jest akceptowane.
 
    > [!IMPORTANT]
-   > Należy pamiętać, że algorytm zakazanych haseł, wraz z globalnej listy można i zmienić w dowolnym momencie na platformie Azure na podstawie analizy bezpieczeństwa i badań. Dla usługi agenta kontrolera domeny w środowisku lokalnym algorytmy zaktualizowany zostanie aktywowane dopiero po ponownym zainstalowaniu oprogramowanie agenta kontrolera domeny.
+   > Należy pamiętać, że wykluczony algorytm hasła wraz z globalną listą może i wprowadzić zmiany w dowolnym momencie na platformie Azure na podstawie trwającej analizy zabezpieczeń i badań. W przypadku lokalnej usługi agenta DC zaktualizowane algorytmy zaczną obowiązywać dopiero po ponownym zainstalowaniu oprogramowania agenta kontrolera domeny.
 
 ## <a name="license-requirements"></a>Wymagania licencyjne
 
-|   | Usługa Azure AD ochrona za pomocą hasła przy użyciu listy globalne zakazanych haseł | Usługa Azure AD ochrona za pomocą hasła przy użyciu listy niestandardowej zakazanych haseł|
+|   | Ochrona hasłem w usłudze Azure AD z listą globalnie zakazanych haseł | Ochrona hasłem w usłudze Azure AD za pomocą niestandardowej listy zablokowanych haseł|
 | --- | --- | --- |
-| Użytkownicy tylko w chmurze | Usługa Azure AD — warstwa Bezpłatna | Usługa Azure AD Premium P1 lub P2 |
-| Użytkownicy są synchronizowani z lokalnego systemu Windows Server Active Directory | Usługa Azure AD Premium P1 lub P2 | Usługa Azure AD Premium P1 lub P2 |
+| Użytkownicy tylko w chmurze | Usługa Azure AD — warstwa Bezpłatna | Azure AD — wersja Premium P1 lub P2 |
+| Użytkownicy zsynchronizowani z lokalnego systemu Windows Server Active Directory | Azure AD — wersja Premium P1 lub P2 | Azure AD — wersja Premium P1 lub P2 |
 
 > [!NOTE]
-> Lokalnych użytkowników usługi Active Directory systemu Windows Server, które nie są zsynchronizowane z usługą Azure Active Directory również skorzystać z zalet oparte na istniejącej licencji dla użytkowników zsynchronizowanych ochrona za pomocą hasła usługi Azure AD.
+> Lokalne serwery z systemem Windows Server Active Directory użytkowników, którzy nie są zsynchronizowani z Azure Active Directory również korzystać z ochrony hasłem usługi Azure AD na podstawie istniejącej licencji dla synchronizowanych użytkowników.
 
-Dodatkowe informacje o licencjonowaniu, wraz z kosztami, można znaleźć na [usługi Azure Active Directory ceny witryny](https://azure.microsoft.com/pricing/details/active-directory/).
+Dodatkowe informacje o licencjonowaniu, w tym koszty, można znaleźć w [witrynie Azure Active Directory cenowej](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="what-do-users-see"></a>Co widzą użytkownicy
 
-Gdy użytkownik próbuje zresetować hasło do zasobu, który będzie zablokowany, zobaczą następujący komunikat o błędzie:
+Gdy użytkownik spróbuje zresetować hasło do elementu, który mógłby zostać zabroniony, zobaczy następujący komunikat o błędzie:
 
-Niestety Twoje hasło zawiera słowo, frazę lub wzorzec, który sprawia, że hasło jest łatwe do odgadnięcia. Spróbuj ponownie, używając innego hasła.
+Niestety, hasło zawiera słowo, frazę lub wzorzec, które ułatwiają odgadnięcie hasła. Spróbuj ponownie, używając innego hasła.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Skonfiguruj listę niestandardowych zakazanych haseł](howto-password-ban-bad.md)
-- [Włączanie usługi Azure AD hasło ochrony agentów w środowisku lokalnym](howto-password-ban-bad-on-premises-deploy.md)
+- [Skonfiguruj niestandardową listę wykluczonych haseł](howto-password-ban-bad.md)
+- [Włączanie lokalnych agentów ochrony hasłem usługi Azure AD](howto-password-ban-bad-on-premises-deploy.md)

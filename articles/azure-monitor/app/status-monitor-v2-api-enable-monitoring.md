@@ -1,6 +1,6 @@
 ---
-title: 'Dokumentacja interfejsu API w wersji 2 usługi Azure Monitor stanu: Aby włączyć monitorowanie | Dokumentacja firmy Microsoft'
-description: Dokumentacja interfejsu API w wersji 2 Monitor stanu. Enable-ApplicationInsightsMonitoring. Monitorowanie wydajności witryny sieci Web bez konieczności ponownego wdrażania witryny sieci Web. Działa z aplikacjami sieci web platformy ASP.NET hostowanej lokalnie, na maszynach wirtualnych lub na platformie Azure.
+title: 'Dokumentacja interfejsu API platformy Azure monitor stanu v2: Włącz monitorowanie | Microsoft Docs'
+description: Dokumentacja interfejsu API monitor stanu v2. Enable-ApplicationInsightsMonitoring. Monitorowanie wydajności witryny sieci Web bez ponownego wdrażania witryny sieci Web. Współpracuje z usługą ASP.NET Web Apps hostowaną lokalnie, na maszynach wirtualnych lub na platformie Azure.
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -12,58 +12,53 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 1e5a4ac9f159ce238149d44127fd63dcf3279623
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: d3963889e3604fb67cb526b992e7ca27b1212b59
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807099"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326359"
 ---
-# <a name="status-monitor-v2-api-enable-applicationinsightsmonitoring-v040-alpha"></a>Interfejs API w wersji 2 Monitora stanu: Enable-ApplicationInsightsMonitoring (v0.4.0 alfa)
+# <a name="status-monitor-v2-api-enable-applicationinsightsmonitoring"></a>Interfejs API monitor stanu v2: Enable-ApplicationInsightsMonitoring
 
-W tym artykule opisano polecenia cmdlet, które jest członkiem [modułu Az.ApplicationMonitor PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
-
-> [!IMPORTANT]
-> Monitor stanu w wersji 2 jest obecnie w publicznej wersji zapoznawczej.
-> Tej wersji zapoznawczej jest oferowana bez umowy dotyczącej poziomu usług, i firma Microsoft nie jest to zalecane w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, a niektóre mogą mieć ograniczone możliwości.
-> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+W tym artykule opisano polecenie cmdlet, które jest członkiem [modułu programu PowerShell AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
 ## <a name="description"></a>Opis
 
-Bez kodu umożliwia dołączenie, monitorowanie aplikacji usług IIS na komputerze docelowym.
+Włącza bezkodowe monitorowanie aplikacji usług IIS na komputerze docelowym.
 
-To polecenie cmdlet spowoduje modyfikowania pliku applicationHost.config usług IIS i ustawić niektóre klucze rejestru.
-Ponadto spowoduje to utworzenie pliku applicationinsights.ikey.config, który definiuje klucz instrumentacji, używany przez każdą aplikację.
-Usługi IIS zostaną załadowane RedfieldModule uruchamianie doda zestaw SDK usługi Application Insights do aplikacji jako początkowy aplikacji.
-Ponowne uruchomienie usług IIS, aby zmiany zaczęły obowiązywać.
+To polecenie cmdlet zmodyfikuje plik applicationHost. config usług IIS i ustawi niektóre klucze rejestru.
+Utworzy również plik ApplicationInsights. iKey. config, który definiuje klucz Instrumentacji używany przez poszczególne aplikacje.
+Usługi IIS będą ładować RedfieldModule przy uruchamianiu, co spowoduje wstrzyknięcie zestawu SDK Application Insights do aplikacji w miarę uruchamiania aplikacji.
+Uruchom ponownie usługi IIS, aby zmiany zaczęły obowiązywać.
 
-Po włączeniu monitorowania, firma Microsoft zaleca użycie [metryki na żywo](live-stream.md) można szybko sprawdzić, jeśli Twoja aplikacja wysyła nam dane telemetryczne.
+Po włączeniu monitorowania zalecamy korzystanie z [metryk na żywo](live-stream.md) , aby szybko sprawdzić, czy aplikacja wysyła do nas dane telemetryczne.
 
 
 > [!NOTE] 
-> - Aby rozpocząć pracę, musisz mieć klucz instrumentacji. Aby uzyskać więcej informacji, zobacz [Utwórz zasób](create-new-resource.md#copy-the-instrumentation-key).
-> - To polecenie cmdlet wymaga Przejrzyj i zaakceptuj nasze licencyjne i zasady zachowania poufności.
+> - Aby rozpocząć, musisz dysponować kluczem Instrumentacji. Aby uzyskać więcej informacji, zobacz [Tworzenie zasobu](create-new-resource.md#copy-the-instrumentation-key).
+> - To polecenie cmdlet wymaga przejrzenia i zaakceptowania naszych licencji i zasad zachowania poufności informacji.
 
 > [!IMPORTANT] 
-> To polecenie cmdlet wymaga sesji programu PowerShell z uprawnieniami administratora i zasad wykonania z podwyższonym poziomem uprawnień. Aby uzyskać więcej informacji, zobacz [Uruchom program PowerShell jako administrator przy użyciu zasad usługi z podwyższonym poziomem uprawnień wykonywanie](status-monitor-v2-detailed-instructions.md#run-powershell-as-admin-with-an-elevated-execution-policy).
+> To polecenie cmdlet wymaga sesji programu PowerShell z uprawnieniami administratora i zasadami wykonywania podwyższonego poziomu uprawnień. Aby uzyskać więcej informacji, zobacz [Uruchamianie programu PowerShell jako administrator z zasadami wykonywania podwyższonego poziomu uprawnień](status-monitor-v2-detailed-instructions.md#run-powershell-as-admin-with-an-elevated-execution-policy).
 
 ## <a name="examples"></a>Przykłady
 
-### <a name="example-with-a-single-instrumentation-key"></a>Przykład: klucz Instrumentacji pojedynczego
-W tym przykładzie wszystkie aplikacje na bieżącym komputerze są przypisywane klucz Instrumentacji jednego.
+### <a name="example-with-a-single-instrumentation-key"></a>Przykład z pojedynczym kluczem Instrumentacji
+W tym przykładzie wszystkie aplikacje na bieżącym komputerze mają przypisany pojedynczy klucz Instrumentacji.
 
 ```powershell
 PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
-### <a name="example-with-an-instrumentation-key-map"></a>Przykład z mapą klucza Instrumentacji
+### <a name="example-with-an-instrumentation-key-map"></a>Przykład z mapą kluczy Instrumentacji
 W tym przykładzie:
-- `MachineFilter` Dopasowuje bieżący komputer przy użyciu `'.*'` symboli wieloznacznych.
-- `AppFilter='WebAppExclude'` udostępnia `null` klucz instrumentacji. Określona aplikacja nie będzie instrumentowany.
-- `AppFilter='WebAppOne'` przypisuje określona aplikacja klucz Instrumentacji unikatowy.
-- `AppFilter='WebAppTwo'` przypisuje określona aplikacja klucz Instrumentacji unikatowy.
-- Na koniec `AppFilter` używa również `'.*'` symboli wieloznacznych, aby dopasować wszystkie aplikacje sieci web, które nie zostały dopasowane przez wcześniejsze reguły i przypisz domyślny klucz instrumentacji.
-- Miejsca do magazynowania są dodawane dla czytelności.
+- `MachineFilter`dopasowuje bieżący komputer przy użyciu `'.*'` symbolu wieloznacznego.
+- `AppFilter='WebAppExclude'`udostępnia klucz `null` Instrumentacji. Określona aplikacja nie będzie Instrumentacją.
+- `AppFilter='WebAppOne'`przypisuje określoną aplikację unikatowy klucz Instrumentacji.
+- `AppFilter='WebAppTwo'`przypisuje określoną aplikację unikatowy klucz Instrumentacji.
+- Na koniec `AppFilter` `'.*'` używa również symboli wieloznacznych, aby dopasować wszystkie aplikacje sieci Web, które nie są zgodne ze starszymi regułami i przypisać domyślny klucz Instrumentacji.
+- Spacje są dodawane do czytelności.
 
 ```powershell
 PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap 
@@ -78,52 +73,52 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 ## <a name="parameters"></a>Parametry
 
 ### <a name="-instrumentationkey"></a>-InstrumentationKey
-**Wymagane.** Użyj tego parametru, aby podać klucz Instrumentacji pojedynczej do użytku przez wszystkie aplikacje na komputerze docelowym.
+**Wymagane.** Użyj tego parametru, aby dostarczyć pojedynczy klucz instrumentacji do użycia przez wszystkie aplikacje na komputerze docelowym.
 
 ### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
-**Wymagane.** Użyj tego parametru jest podanie wielu kluczy Instrumentacji i mapowanie kluczy instrumentacji, używanych przez każdą aplikację.
-Możesz utworzyć skrypt jednej instalacji dla kilku komputerów, ustawiając `MachineFilter`.
+**Wymagane.** Użyj tego parametru, aby podać wiele kluczy Instrumentacji i mapowanie kluczy Instrumentacji używanych przez poszczególne aplikacje.
+Można utworzyć pojedynczy skrypt instalacyjny dla kilku komputerów przez ustawienie `MachineFilter`.
 
 > [!IMPORTANT]
-> Aplikacje zostanie dopasowany do reguły w kolejności, które zasady zostały udostępnione. Dlatego najpierw należy określić najbardziej specyficzne reguły, a ostatni najbardziej ogólne reguły.
+> Aplikacje będą zgodne z regułami w kolejności, w jakiej są udostępniane reguły. Dlatego należy najpierw określić najbardziej szczegółowe reguły i najbardziej ogólne reguły.
 
 #### <a name="schema"></a>Schemat
 `@(@{MachineFilter='.*';AppFilter='.*';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'}})`
 
-- **MachineFilter** jest wymaganym C# wyrażeń regularnych, komputera lub nazwa maszyny Wirtualnej.
-    - ". *" będzie zgodne ze wszystkimi
-    - 'ComputerName' będzie zgodna tylko komputery z dokładną nazwą określony.
-- **AppFilter** jest wymaganym C# wyrażeń regularnych, nazwy witryny usług IIS. Listę witryn na serwerze można uzyskać, uruchamiając polecenie [get iissite](https://docs.microsoft.com/powershell/module/iisadministration/get-iissite).
-    - ". *" będzie zgodne ze wszystkimi
-    - "Nazwa witryny" będzie zgodna tylko witryny usług IIS o podanej nazwie dokładnie.
-- **InstrumentationKey** jest wymagane do umożliwienia monitorowania aplikacji, które odpowiadają poprzednim dwa filtry.
-    - Pozostaw tę wartość na wartość null, jeśli chcesz zdefiniować zasady, które mają zostać wykluczone z monitorowania.
+- **MachineFilter** to wymagane C# wyrażenie regularne nazwy komputera lub maszyny wirtualnej.
+    - ". *" będzie pasować do wszystkich
+    - Nazwa "ComputerName" będzie pasować tylko do komputerów o określonej nazwie.
+- **AppFilter** to wymagane C# wyrażenie regularne nazwy witryny usług IIS. Listę witryn na serwerze można uzyskać, uruchamiając polecenie [Get-iissite](https://docs.microsoft.com/powershell/module/iisadministration/get-iissite).
+    - ". *" będzie pasować do wszystkich
+    - Wartość "sitename" będzie pasować tylko do witryny usług IIS z określoną dokładną nazwą.
+- **InstrumentationKey** jest wymagana, aby umożliwić monitorowanie aplikacji, które pasują do poprzednich dwóch filtrów.
+    - Pozostaw tę wartość null, jeśli chcesz zdefiniować reguły do wykluczenia monitorowania.
 
 
 ### <a name="-enableinstrumentationengine"></a>-EnableInstrumentationEngine
-**Opcjonalnie.** Użyj tego przełącznika, aby włączyć aparat Instrumentacji i Zbieraj zdarzenia i komunikaty o tym, co się dzieje podczas wykonywania procesu zarządzanego. Te zdarzenia i komunikaty zawierają kody wyników programu zależności, zleceń HTTP i tekst polecenia SQL.
+**Opcjonalnie.** Użyj tego przełącznika, aby umożliwić aparatowi Instrumentacji zbieranie zdarzeń i komunikatów na temat tego, co się dzieje w trakcie wykonywania procesu zarządzanego. Te zdarzenia i komunikaty obejmują kody wyników zależności, zlecenia HTTP i tekst polecenia SQL.
 
-Aparat Instrumentacji dodaje obciążenie i jest domyślnie wyłączona.
+Aparat Instrumentacji dodaje obciążenie i jest domyślnie wyłączony.
 
 ### <a name="-acceptlicense"></a>-AcceptLicense
-**Opcjonalnie.** Aby zaakceptować umowę licencyjną i zachowania poufności w przypadku instalacji nienadzorowanej, należy użyć tego przełącznika.
+**Opcjonalnie.** Ten przełącznik umożliwia zaakceptowanie licencji i zasad zachowania poufności informacji w instalacjach bezobsługowych.
 
 ### <a name="-ignoresharedconfig"></a>-IgnoreSharedConfig
-W przypadku klastra serwerów sieci web, być może używasz [konfigurację udostępnioną](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211).
-HttpModule nie wprowadzony w tej konfiguracji udostępnionej.
-Ten skrypt zakończy się niepowodzeniem z komunikatem o wymaganych kroków instalacji dodatkowych.
-Aby zignorować to sprawdzenie i kontynuuj instalowanie wymagań wstępnych, należy użyć tego przełącznika. Aby uzyskać więcej informacji, zobacz [znanych konfliktu z--konfiguracji udostępnionej usług iis —](status-monitor-v2-troubleshoot.md#conflict-with-iis-shared-configuration)
+W przypadku klastra serwerów sieci Web może być używana [Konfiguracja udostępniona](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211).
+Nie można wstrzyknąć modułu HttpModule do tej konfiguracji udostępnionej.
+Ten skrypt zakończy się niepowodzeniem z komunikatem, że wymagane jest wykonanie dodatkowych czynności instalacyjnych.
+Użyj tego przełącznika, aby zignorować to sprawdzenie i kontynuować instalowanie wymagań wstępnych. Aby uzyskać więcej informacji, zobacz [znane konflikty z-with-IIS — konfiguracja udostępniona](status-monitor-v2-troubleshoot.md#conflict-with-iis-shared-configuration)
 
 ### <a name="-verbose"></a>-Verbose
-**Typowy parametr.** Aby wyświetlić szczegółowe dzienniki, należy użyć tego przełącznika.
+**Wspólny parametr.** Użyj tego przełącznika, aby wyświetlić szczegółowe dzienniki.
 
 ### <a name="-whatif"></a>-WhatIf 
-**Typowy parametr.** Ten przełącznik umożliwia testowanie i Walidacja parametry wejściowe bez faktycznego włączania monitorowania.
+**Wspólny parametr.** Za pomocą tego przełącznika można testować i weryfikować parametry wejściowe bez faktycznego włączenia monitorowania.
 
 ## <a name="output"></a>Output
 
 
-#### <a name="example-output-from-a-successful-enablement"></a>Przykładowe dane wyjściowe z pomyślnej aktywacji
+#### <a name="example-output-from-a-successful-enablement"></a>Przykładowe dane wyjściowe z pomyślnego włączenia
 
 ```
 Initiating Disable Process
@@ -159,17 +154,17 @@ Successfully enabled Application Insights Status Monitor
 ## <a name="next-steps"></a>Następne kroki
 
   Wyświetlanie telemetrii:
- - [Eksplorowanie metryk](../../azure-monitor/app/metrics-explorer.md) do monitorowania wydajności i użycia.
-- [Wyszukiwanie zdarzeń i dzienników](../../azure-monitor/app/diagnostic-search.md) do diagnozowania problemów.
-- [Korzystanie z analizy](../../azure-monitor/app/analytics.md) dla bardziej zaawansowanych zapytań.
+ - [Poznaj metryki](../../azure-monitor/app/metrics-explorer.md) , aby monitorować wydajność i użycie.
+- [Wyszukaj zdarzenia i dzienniki](../../azure-monitor/app/diagnostic-search.md) , aby zdiagnozować problemy.
+- [Użyj analizy](../../azure-monitor/app/analytics.md) , aby uzyskać bardziej zaawansowane zapytania.
 - [Tworzenie pulpitów nawigacyjnych](../../azure-monitor/app/overview-dashboard.md).
  
  Dodawanie kolejnych funkcji telemetrii:
- - [Tworzenie testów sieci web](monitor-web-app-availability.md) aby upewnić się, że witryna pozostaje aktywna.
-- [Dodawanie telemetrii klienta sieci web](../../azure-monitor/app/javascript.md) aby zobaczyć wyjątki pochodzące z kodu strony sieci web i umożliwić wywołania śledzenia.
-- [Dodaj zestaw Application Insights SDK do kodu](../../azure-monitor/app/asp-net.md) dzięki czemu można wstawić ślad i rejestrować wywołania.
+ - [Utwórz testy sieci Web](monitor-web-app-availability.md) , aby upewnić się, że witryna pozostaje aktywna.
+- [Dodaj telemetrię klienta sieci Web](../../azure-monitor/app/javascript.md) , aby zobaczyć wyjątki z kodu strony sieci Web i włączyć wywołania śledzenia.
+- [Dodaj do kodu zestaw SDK Application Insights](../../azure-monitor/app/asp-net.md) , aby móc wstawiać wywołania śledzenia i rejestrowania.
  
- Wykonuj więcej zadań dzięki v2 Monitora stanu:
- - Użyj zapoznaj się z przewodnikiem [Rozwiązywanie problemów z](status-monitor-v2-troubleshoot.md) Monitora stanu w wersji 2.
- - [Pobierz konfigurację](status-monitor-v2-api-get-config.md) aby upewnić się, że Twoje ustawienia zostały prawidłowo zarejestrowane.
- - [Pobierz stan](status-monitor-v2-api-get-status.md) do inspekcji, monitorowania.
+ Więcej informacji o monitor stanu v2:
+ - Skorzystaj z naszego przewodnika, aby [rozwiązywać problemy z](status-monitor-v2-troubleshoot.md) Monitor stanu v2.
+ - [Pobierz konfigurację](status-monitor-v2-api-get-config.md) , aby upewnić się, że Twoje ustawienia zostały poprawnie zarejestrowane.
+ - [Pobierz stan,](status-monitor-v2-api-get-status.md) aby sprawdzić monitorowanie.

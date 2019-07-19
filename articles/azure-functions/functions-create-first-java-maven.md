@@ -13,16 +13,16 @@ ms.date: 08/10/2018
 ms.author: routlaw
 ms.reviewer: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: fcbf181601230493dc52bde06e4f35db062f9a32
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 20327e64080182518fd28b1d367ffe37be5ce9a4
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807169"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323963"
 ---
 # <a name="create-your-first-function-with-java-and-maven"></a>Tworzenie pierwszej funkcji przy użyciu języka Java i narzędzia Maven
 
-Ten artykuł przeprowadzi Cię przez przy użyciu narzędzia wiersza polecenia narzędzia Maven, aby tworzyć i publikować funkcji języka Java usługi Azure Functions. Gdy wszystko będzie gotowe, Twój kod funkcji zostanie uruchomiony w [planie zużycia](functions-scale.md#consumption-plan) na platformie Azure i może być wyzwalany za pomocą żądania HTTP.
+W tym artykule opisano sposób tworzenia i publikowania funkcji języka Java do Azure Functions przy użyciu narzędzia wiersza polecenia Maven. Gdy wszystko będzie gotowe, Twój kod funkcji zostanie uruchomiony w [planie zużycia](functions-scale.md#consumption-plan) na platformie Azure i może być wyzwalany za pomocą żądania HTTP.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -30,10 +30,10 @@ Ten artykuł przeprowadzi Cię przez przy użyciu narzędzia wiersza polecenia n
 
 Aby opracowywać funkcje przy użyciu języka Java, musisz mieć zainstalowane następujące składniki:
 
-- [Zestaw Java Developer Kit](https://aka.ms/azure-jdks), wersja 8
-- [Narzędzia Apache Maven](https://maven.apache.org), wersja 3.0 lub nowszej
+- [Zestaw Java developer Kit](https://aka.ms/azure-jdks), wersja 8
+- [Apache Maven](https://maven.apache.org), wersja 3,0 lub nowsza
 - [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure)
-- [Podstawowe narzędzia usługi Azure Functions](./functions-run-local.md#v2) wersji 2.6.666 lub nowszy
+- [Azure Functions Core Tools](./functions-run-local.md#v2) w wersji 2.6.666 lub nowszej
 
 > [!IMPORTANT]
 > Aby wykonać wszystkie czynności opisane w tym przewodniku Szybki start, dla zmiennej środowiskowej JAVA_HOME należy ustawić lokalizację instalacji zestawu JDK.
@@ -51,7 +51,7 @@ mvn archetype:generate \
 ```
 
 > [!NOTE]
-> Jeśli masz problemy z uruchamianiem polecenia, zapoznaj się z tego, co `maven-archetype-plugin` wersja jest używana. Ponieważ polecenia są uruchomione w pustym katalogu bez `.pom` pliku, jego może próbować użyć wtyczki starszej wersji z `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` w przypadku uaktualnienia ze starszej wersji usługi Maven. Jeśli tak, spróbuj usunąć `maven-archetype-plugin` katalogu i uruchom ponownie polecenie.
+> Jeśli występują problemy z uruchomieniem polecenia, należy `maven-archetype-plugin` zapoznać się z używaną wersją. Ponieważ uruchamiasz polecenie w pustym katalogu bez `.pom` pliku, może być podjęta próba użycia wtyczki starszej wersji od `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` , jeśli uaktualniono Maven ze starszej wersji. Jeśli tak, spróbuj usunąć `maven-archetype-plugin` katalog i ponownie uruchomić polecenie.
 
 ### <a name="windows"></a>Windows
 
@@ -82,7 +82,7 @@ Define value for property 'resourceGroup' java-functions-group: :
 Confirm properties configuration: Y
 ```
 
-Narzędzie Maven utworzy pliki projektu w nowym folderze o nazwie podanej we właściwości _artifactId_. W tym przykładzie jest to `fabrikam-functions`. Jest gotowy do uruchomienia kod wygenerowany w projekcie [wyzwalaną przez protokół HTTP](/azure/azure-functions/functions-bindings-http-webhook) funkcja, która zwraca treść żądania. Zastąp *src/main/java/com/fabrikam/functions/Function.java* następującym kodem: 
+Narzędzie Maven utworzy pliki projektu w nowym folderze o nazwie podanej we właściwości _artifactId_. W tym przykładzie jest to `fabrikam-functions`. Gotowy do uruchomienia wygenerowany kod w projekcie jest funkcją wyzwalaną przez [protokół http](/azure/azure-functions/functions-bindings-http-webhook) , która umożliwia echo treści żądania. Zastąp *src/Main/Java/com/Fabrikam/Functions/Function. Java* następującym kodem: 
 
 ```java
 package com.fabrikam.functions;
@@ -117,7 +117,7 @@ public class Function {
 
 ```
 
-## <a name="enable-extension-bundles"></a>Włącz rozszerzenie pakiety
+## <a name="enable-extension-bundles"></a>Włącz zbiory rozszerzeń
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -125,7 +125,7 @@ public class Function {
 
 Zmień katalog na nowo utworzony folder projektu, a następnie skompiluj i uruchom funkcję za pomocą narzędzia Maven:
 
-```
+```CMD
 cd fabrikam-function
 mvn clean package 
 mvn azure-functions:run
@@ -147,7 +147,7 @@ Http Functions:
 
 Wyzwól funkcję z poziomu wiersza polecenia, używając programu curl w nowym oknie terminalu:
 
-```
+```CMD
 curl -w "\n" http://localhost:7071/api/hello -d LocalFunction
 ```
 
@@ -159,18 +159,18 @@ Aby zatrzymać wykonywanie kodu funkcji, użyj polecenia `Ctrl-C` w oknie termin
 
 ## <a name="deploy-the-function-to-azure"></a>Wdrażanie funkcji na platformie Azure
 
-Proces wdrażania w usłudze Azure Functions korzysta z poświadczeń konta z interfejsu wiersza polecenia platformy Azure. [Zaloguj się przy użyciu wiersza polecenia platformy Azure](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) przed kontynuowaniem.
+Proces wdrażania w usłudze Azure Functions korzysta z poświadczeń konta z interfejsu wiersza polecenia platformy Azure. Przed kontynuowaniem [Zaloguj się przy użyciu interfejsu wiersza polecenia platformy Azure](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) .
 
 ```azurecli
 az login
 ```
 
-Wdróż swój kod w nowej aplikacji funkcji, używając elementu docelowego `azure-functions:deploy` narzędzia Maven. Spowoduje to wykonanie [Zip wdrażania z uruchamiania z pakietem](functions-deployment-technologies.md#zip-deploy) włączony tryb.
+Wdróż swój kod w nowej aplikacji funkcji, używając elementu docelowego `azure-functions:deploy` narzędzia Maven. Spowoduje to wykonanie [wdrożenia zip z](functions-deployment-technologies.md#zip-deploy) włączonym trybem uruchamiania z pakietu.
 
 > [!NOTE]
-> Korzystając z programu Visual Studio Code do wdrażania aplikacji funkcji, pamiętaj, aby wybrać subskrypcję — bezpłatne lub otrzymają komunikat o błędzie. Możesz obejrzeć subskrypcji po lewej stronie IDE.
+> Jeśli używasz Visual Studio Code do wdrożenia aplikacji funkcji, pamiętaj, aby wybrać niebezpłatną subskrypcję lub wystąpił błąd. Możesz obejrzeć swoją subskrypcję po lewej stronie IDE.
 
-```
+```azurecli
 mvn azure-functions:deploy
 ```
 
@@ -187,9 +187,9 @@ Po zakończeniu wdrażania zostanie wyświetlony adres URL umożliwiający uzysk
 Przetestuj działanie aplikacji funkcji na platformie Azure, używając programu `cURL`. Musisz zmienić adres URL z poniższego przykładu tak, aby był zgodny z adresem URL Twojej wdrożonej aplikacji funkcji uzyskanym w poprzednim kroku.
 
 > [!NOTE]
-> Upewnij się, możesz ustawić **prawa dostępu** do `Anonymous`. Po wybraniu domyślnego poziomu `Function`, są wymagane, aby przedstawić [funkcyjne](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) w żądaniach wysyłanych do uzyskania dostępu do punktu końcowego funkcji.
+> Upewnij się, że ustawiono **prawa dostępu** do `Anonymous`programu. Po wybraniu domyślnego poziomu programu `Function`wymagane jest zaprezentowanie [klucza funkcji](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) w żądaniach, aby uzyskać dostęp do punktu końcowego funkcji.
 
-```
+```azurecli
 curl -w "\n" https://fabrikam-function-20170920120101928.azurewebsites.net/api/hello -d AzureFunctions
 ```
 
@@ -211,7 +211,7 @@ Na następujący:
 return request.createResponse(200, "Hi, " + name);
 ```
 
-Zapisz zmiany. Pakiet czyste mvn wykonywania i ponowne wdrażanie, uruchamiając `azure-functions:deploy` z poziomu terminalu, tak jak poprzednio. Aplikacja funkcji zostanie zaktualizowana, a żądanie:
+Zapisz zmiany. Uruchom czysty pakiet MVN i Wdróż go ponownie, `azure-functions:deploy` uruchamiając od terminalu jako poprzednio. Aplikacja funkcji zostanie zaktualizowana, a żądanie:
 
 ```bash
 curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.azurewebsites.net/api/hello

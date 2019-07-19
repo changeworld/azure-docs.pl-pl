@@ -1,10 +1,10 @@
 ---
-title: Utwórz zadania przygotowanie zadania i ukończone zadania w węzłach obliczeniowych — usługi Azure Batch | Dokumentacja firmy Microsoft
-description: Użyj poziom zadania przygotowania zadania, aby zminimalizować transfer danych do węzłów obliczeniowych w usłudze Azure Batch, a następnie zwolnij zadań dla węzła oczyszczania po ukończeniu zadania.
+title: Utwórz zadania w celu przygotowania zadań i ukończenia zadań w węzłach obliczeniowych — Azure Batch | Microsoft Docs
+description: Zadania przygotowania na poziomie zadania umożliwiają minimalizowanie transferu danych do Azure Batch węzłów obliczeniowych oraz wykonywanie zadań do wyczyszczenia węzła podczas ukończenia zadania.
 services: batch
 documentationcenter: .net
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 63d9d4f1-8521-4bbb-b95a-c4cad73692d3
 ms.service: batch
@@ -15,71 +15,71 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 517ac0f612b9e5fc5909a7f0fe2ce088c9b367d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 75ff3bdf7a0900c32feb7090e0c24af748080a76
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60776210"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323487"
 ---
-# <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Uruchamianie zadań przygotowania i zwolnienia zadań w usłudze Batch węzłów obliczeniowych
+# <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Uruchamianie zadań przygotowania i zwolnienia zadań w węzłach obliczeniowych wsadowych
 
- Zadanie usługi Azure Batch często wymaga pewnego rodzaju instalacji przed jego zadania podrzędne są wykonywane, a po utworzeniu zadania konserwacji, po zakończeniu jego zadań podrzędnych. Może być konieczne, Pobierz typowych zadań, danych wejściowych do węzłów obliczeniowych lub przekazać dane wyjściowe zadań do usługi Azure Storage, po ukończeniu zadania. Możesz użyć **zadania przygotowania** i **zadania wersji** zadania do wykonania tych operacji.
+ Zadanie Azure Batch często wymaga pewnego formularza Instalatora przed wykonaniem zadań i konserwacji po wykonaniu zadania po zakończeniu zadań. Może być konieczne pobranie typowych danych wejściowych zadania do węzłów obliczeniowych lub przekazanie danych wyjściowych zadania do usługi Azure Storage po zakończeniu zadania. Aby wykonać te operacje, można użyć zadań **przygotowania** i **zwolnienia** zadań.
 
-## <a name="what-are-job-preparation-and-release-tasks"></a>Co to są przygotowanie zadania i zadania zwolnienia?
-Przed uruchomieniem zadania podrzędne, zadanie przygotowania zadania jest uruchamiane na wszystkich węzłach obliczeniowych zaplanowanych do uruchamiania co najmniej jedno zadanie. Po zakończeniu zadania zadanie zwolnienia zadania jest uruchamiane w każdym węźle w puli która wykonała przynajmniej jedno zadanie. Podobnie jak w przypadku normalnych zadania podrzędne usługi Batch można określić w wierszu polecenia można wywołać po uruchomieniu zadania przygotowania i zwolnienia zadania.
+## <a name="what-are-job-preparation-and-release-tasks"></a>Co to są zadania przygotowania i zwolnienia zadań?
+Przed uruchomieniem zadań zadania, zadanie przygotowania zadania jest uruchamiane na wszystkich węzłach obliczeniowych zaplanowanych do uruchomienia co najmniej jednego zadania. Po zakończeniu zadania zadanie zwolnienia zadania jest uruchamiane w każdym węźle w puli, który wykonał co najmniej jedno zadanie. Podobnie jak w przypadku normalnych zadań wsadowych, można określić wiersz polecenia, który ma być wywoływany, gdy zadanie przygotowania lub zwolnienia zadania zostanie uruchomione.
 
-Zadania przygotowania i zwolnienia zadań oferują dobrze znanych funkcji zadania usługi Batch, takie jak pobieranie plików ([pliki zasobów][net_job_prep_resourcefiles]), z podwyższonym poziomem uprawnień wykonywanie, niestandardowe zmienne środowiskowe, maksymalny czas trwania wykonywania, spróbuj ponownie Liczba i czas przechowywania pliku.
+Zadania przygotowania i zwolnienia zadań oferują znane funkcje zadań wsadowych, takie jak pobieranie plików ([pliki zasobów][net_job_prep_resourcefiles]), wykonywanie z podwyższonym poziomem uprawnień, niestandardowe zmienne środowiskowe, maksymalny czas trwania wykonywania, liczba ponownych prób i czas przechowywania pliku.
 
-W poniższych sekcjach dowiesz się, jak używać [JobPreparationTask] [ net_job_prep] i [JobReleaseTask] [ net_job_release] klasy znalezione w [ Batch .NET] [ api_net] biblioteki.
+W poniższych sekcjach dowiesz się, jak używać klas [JobPreparationTask][net_job_prep] and [JobReleaseTask][net_job_release] znajdujących się w bibliotece [Batch .NET][api_net] .
 
 > [!TIP]
-> Zadania przygotowania i zwolnienia zadań są szczególnie przydatne w środowiskach "udostępnione puli", w których pula węzłów obliczeniowych utrzymuje się między uruchomionych zadań i jest używana przez wiele zadań.
+> Zadania przygotowania i zwolnienia zadań są szczególnie przydatne w środowiskach "Pula współdzielona", w których Pula węzłów obliczeniowych utrzymuje się między uruchomieniami zadań i jest używana przez wiele zadań.
 > 
 > 
 
-## <a name="when-to-use-job-preparation-and-release-tasks"></a>Kiedy należy używać przygotowanie zadania i zwolnić zadania
-Zadania przygotowania i zwolnienia zadań są dobrym rozwiązaniem w następujących sytuacjach:
+## <a name="when-to-use-job-preparation-and-release-tasks"></a>Kiedy używać zadań przygotowania i zwolnienia zadań
+Zadania przygotowania i zwolnienia zadań są dobre dla następujących sytuacji:
 
-**Pobierz dane typowe zadania**
+**Pobierz typowe dane zadania**
 
-Zadania usługi Batch często wymagają ze wspólnego zestawu danych jako dane wejściowe dla zadania. Na przykład w codzienne obliczenia ryzyka analizy danych rynkowych jest specyficzne dla zadania, jeszcze wspólne dla wszystkich zadań w ramach zadania. Te dane na rynku, rozmiar, często kilku gigabajtów powinny być pobierane do każdego węzła obliczeniowego tylko raz, aby można go używać przez każde zadanie podrzędne uruchamiane w węźle. Użyj **zadania podrzędnego przygotowania zadania** do pobrania tych danych do każdego węzła, zanim wykonywanie zadania przez inne zadania.
+Zadania usługi Batch często wymagają wspólnego zestawu danych jako danych wejściowych dla zadań zadania. Na przykład Obliczanie analizy ryzyka dziennego oznacza, że dane rynkowe są specyficzne dla zadania, ale wspólne dla wszystkich zadań w zadaniu. Te dane na rynku, często kilka gigabajtów o rozmiarze, powinny być pobierane do poszczególnych węzłów obliczeniowych tylko raz, aby można było użyć dowolnego zadania uruchomionego w węźle. Użyj **zadania przygotowania zadania** , aby pobrać te dane do każdego węzła przed wykonaniem innych zadań.
 
-**Usuwanie danych wyjściowych zadań i zadań**
+**Usuń zadanie i dane wyjściowe zadania**
 
-W środowisku "udostępnione puli", w którym węzłów obliczeniowych w puli nie zostaną zlikwidowane między zadaniami, może być konieczne usunięcie danych zadania między działa. Może być konieczne zaoszczędzić miejsce na dysku w węzłach lub spełnia zasady zabezpieczeń Twojej organizacji. Użyj **zadanie podrzędne zwolnienia zadania** do usuwania danych, który został pobrany przez zadanie podrzędne przygotowania zadania lub generowane podczas wykonywania zadania.
+W środowisku "Pula współdzielona", w którym węzły obliczeniowe puli nie są likwidowane między zadaniami, może być konieczne usunięcie danych zadania między przebiegami. Może być konieczne zagwarantowanie miejsca na dysku w węzłach lub spełnienie zasad zabezpieczeń w organizacji. **Zadanie zwolnienia zadania** służy do usuwania danych pobranych przez zadanie przygotowania zadania lub wygenerowanych podczas wykonywania zadania.
 
-**Przechowywanie dzienników**
+**Przechowywanie dziennika**
 
-Możesz chcieć przechowywać kopię plików dziennika, które są generowane przez podzadania lub może ulec awarii pliki zrzutu, które mogą być generowane przez aplikacje zakończone niepowodzeniem. Użyj **zadanie podrzędne zwolnienia zadania** w takich przypadkach kompresję i przekazywanie tych danych do [usługi Azure Storage] [ azure_storage] konta.
+Warto zachować kopię plików dziennika generowanych przez zadania lub ewentualnie pliki zrzutu awaryjnego, które mogą być generowane przez aplikacje zakończone niepowodzeniem. W takich przypadkach można użyć **zadania zwolnienia zadania** w celu skompresowania i przekazania tych danych do konta [usługi Azure Storage][azure_storage] .
 
 > [!TIP]
-> Innym sposobem, aby utrwalić dzienników i innych zadań i zadań, danych wyjściowych danych jest użycie [Konwencji plików usługi Batch Azure](batch-task-output.md) biblioteki.
+> Innym sposobem utrwalania dzienników i innych danych wyjściowych zadania jest użycie biblioteki [Konwencji plików Azure Batch](batch-task-output.md) .
 > 
 > 
 
 ## <a name="job-preparation-task"></a>Zadanie przygotowania zadania
-Przed wykonaniem zadania usługa Batch wykonuje zadania podrzędnego przygotowania zadania w każdym węźle obliczeniowym, który jest zaplanowane do uruchomienia zadania. Domyślnie usługa Batch oczekuje na zadanie przygotowania zadania, należy wykonać przed uruchomieniem zadania zaplanowane do wykonania w węźle. Można jednak skonfigurować usługi aby nie czekać. Jeśli węzeł zostanie ponownie uruchomiony, zadanie przygotowania zadania jest uruchamiane ponownie, ale można również wyłączyć to zachowanie.
+Przed wykonaniem zadań zadania wsadowego program Batch wykonuje zadanie przygotowania zadania na każdym węźle obliczeniowym zaplanowanym do uruchomienia zadania. Domyślnie usługa Batch czeka na ukończenie zadania przygotowania zadania przed uruchomieniem zadań zaplanowanych do wykonania w węźle. Można jednak skonfigurować usługę tak, aby nie czekać. Jeśli węzeł zostanie ponownie uruchomiony, zadanie przygotowania zadania zostanie uruchomione ponownie, ale można również wyłączyć to zachowanie.
 
-Zadanie przygotowania zadania jest wykonywane tylko w przypadku węzłów, które są planowane do uruchomienia zadania. Zapobiega to niepotrzebne wykonanie zadanie podrzędne przygotowania w przypadku, gdy węzeł nie jest przypisany zadania. Taka sytuacja może wystąpić, gdy liczba zadań w zadaniu jest mniejsza niż liczba węzłów w puli. Ma również zastosowanie, gdy [wykonywanie zadań jednoczesnych](batch-parallel-node-tasks.md) jest włączone, dlatego jeśli bezczynności niektóre węzły liczba zadań jest niższa niż łączna liczba możliwych współbieżnych zadań. Uruchamiając nie zadania podrzędnego przygotowania zadania w węzłach bezczynności, spędzisz mniej pieniędzy na opłaty za transfer danych.
-
-> [!NOTE]
-> [JobPreparationTask] [ net_job_prep_cloudjob] różni się od [CloudPool.StartTask] [ pool_starttask] się JobPreparationTask wykonuje na początku każdego zadania, natomiast funkcja StartTask wykonuje tylko kiedy węzeł obliczeniowy najpierw łączy puli lub ponowne uruchomienie.
-> 
-> 
-
-## <a name="job-release-task"></a>Zadanie podrzędne zwolnienia zadania
-Gdy zadanie jest oznaczane jako ukończone, zadanie podrzędne zwolnienia zadania jest wykonywana w każdym węźle w puli która wykonała przynajmniej jedno zadanie. Możesz oznaczyć zadanie jako wykonane przez wystawienie otrzymała żądanie przerwania. Następnie usługa Batch ustawi stan zadania *przerywa*, kończy się żadnych aktywnych zadań podrzędnych uruchomionych lub skojarzone z zadaniem i jest uruchamiane zadanie podrzędne zwolnienia zadania. Zadanie jest następnie przechodzi do *ukończone* stanu.
+Zadanie przygotowania zadania jest wykonywane tylko w węzłach, które zaplanowano do uruchomienia zadania. Zapobiega to niepotrzebnemu wykonaniu zadania przygotowania w przypadku, gdy węzeł nie ma przypisanego zadania. Taka sytuacja może wystąpić, gdy liczba zadań dla zadania jest mniejsza niż liczba węzłów w puli. Ma również zastosowanie, gdy włączone jest [współbieżne wykonywanie zadań](batch-parallel-node-tasks.md) , co pozostawia pewne węzły w stanie bezczynności, jeśli liczba zadań jest mniejsza niż łączna możliwa liczba współbieżnych zadań. Nie uruchamiając zadania przygotowania zadania w węzłach bezczynnych, można poświęcać mniej pieniędzy na opłaty za transfer danych.
 
 > [!NOTE]
-> Usuwanie zadania wykonuje też zadanie podrzędne zwolnienia zadania. Jednak jeśli zadanie zostało już zakończone, zwolnienie zadania nie uruchomieniu po raz drugi Jeśli zadanie później zostanie usunięty.
+> [JobPreparationTask][net_job_prep_cloudjob] differs from [CloudPool.StartTask][pool_starttask] w tym JobPreparationTask jest wykonywane na początku każdego zadania, a StartTask jest wykonywane tylko wtedy, gdy węzeł obliczeniowy najpierw dołączy pulę lub ponownie się uruchamia.
 > 
 > 
 
-## <a name="job-prep-and-release-tasks-with-batch-net"></a>Zadania przygotowania bazy i wersji zadania za pomocą platformy .NET usługi Batch
-Aby użyć zadania przygotowania zadania, przypisywać [JobPreparationTask] [ net_job_prep] obiektu zadania [CloudJob.JobPreparationTask] [ net_job_prep_cloudjob] właściwości. Podobnie, zainicjować [JobReleaseTask] [ net_job_release] i przypisz je do zadania [CloudJob.JobReleaseTask] [ net_job_prep_cloudjob] właściwości do ustawienia zadania Zwolnienie zadania.
+## <a name="job-release-task"></a>Zadanie zwolnienia zadania
+Gdy zadanie zostanie oznaczone jako ukończone, zadanie Zwolnij zadanie jest wykonywane na każdym węźle w puli, który wykonał co najmniej jedno zadanie. Zadanie jest oznaczane jako ukończone przez wystawienie żądania przerwania. Usługa Batch ustawia następnie stan zadania na *zakończenie*, kończy wszystkie aktywne lub uruchomione zadania skojarzone z zadaniem i uruchamia zadanie zwolnienia zadania. Zadanie jest następnie przenoszone do stanu *ukończone* .
 
-W poniższym przykładzie `myBatchClient` jest wystąpieniem [BatchClient][net_batch_client], i `myPool` jest istniejącej puli w ramach konta usługi Batch.
+> [!NOTE]
+> Podczas usuwania zadania jest również wykonywane zadanie zwolnienia zadania. Jeśli jednak zadanie zostało już zakończone, zadanie zlecenia nie jest uruchamiane po raz drugi, jeśli zadanie zostanie później usunięte.
+> 
+> 
+
+## <a name="job-prep-and-release-tasks-with-batch-net"></a>Zadania przygotowania i zwolnienia zadań za pomocą programu Batch .NET
+Aby użyć zadania przygotowania zadania, przypisz Właściwość [JobPreparationTask][net_job_prep] object to your job's [CloudJob.JobPreparationTask][net_job_prep_cloudjob] . Podobnie zainicjuj [funkcji jobreleasetask][net_job_release] i przypisz go do właściwości [CloudJob. funkcji jobreleasetask][net_job_prep_cloudjob] zadania, aby ustawić zadanie zwolnienia zadania.
+
+W tym fragmencie `myBatchClient` kodu jest wystąpienie elementu [BatchClient][net_batch_client]i `myPool` jest istniejącą pulą w ramach konta wsadowego.
 
 ```csharp
 // Create the CloudJob for CloudPool "myPool"
@@ -105,7 +105,7 @@ myJob.JobReleaseTask =
 await myJob.CommitAsync();
 ```
 
-Jak wspomniano wcześniej, podrzędne zwolnienia zadania jest wykonywany, gdy zadanie zostało przerwane lub usunięte. Zakończenie zadania za pomocą [JobOperations.TerminateJobAsync][net_job_terminate]. Usuń zadanie [JobOperations.DeleteJobAsync][net_job_delete]. Zwykle zakończyć lub usunąć zadanie po zakończeniu jego zadań podrzędnych, lub gdy został osiągnięty limit czasu, który został zdefiniowany.
+Jak wspomniano wcześniej, zadanie wydania jest wykonywane, gdy zadanie zostanie zakończone lub usunięte. Przerwij zadanie przy użyciu elementu [JobOperations. TerminateJobAsync][net_job_terminate]. Delete a job with [JobOperations.DeleteJobAsync][net_job_delete]. Zadanie jest zazwyczaj przerywane lub usuwane po zakończeniu jego zadań lub po osiągnięciu limitu czasu zdefiniowanego przez użytkownika.
 
 ```csharp
 // Terminate the job to mark it as Completed; this will initiate the
@@ -115,19 +115,19 @@ Jak wspomniano wcześniej, podrzędne zwolnienia zadania jest wykonywany, gdy za
 await myBatchClient.JobOperations.TerminateJobAsync("JobPrepReleaseSampleJob");
 ```
 
-## <a name="code-sample-on-github"></a>Przykładowy kod w serwisie GitHub
-Aby zapoznać się przygotowanie zadania i zwolnienie zadania w działaniu, zapoznaj się z [JobPrepRelease] [ job_prep_release_sample] przykładowy projekt w witrynie GitHub. Ta aplikacja konsolowa wykonuje następujące czynności:
+## <a name="code-sample-on-github"></a>Przykład kodu w witrynie GitHub
+Aby wyświetlić zadania przygotowania i zwolnienia zadania, zapoznaj się z przykładowym projektem [JobPrepRelease][job_prep_release_sample] w witrynie GitHub. Ta Aplikacja konsolowa wykonuje następujące czynności:
 
-1. Tworzy pulę, z dwoma węzłami.
-2. Tworzy zadanie przygotowanie zadania, wersji i zadań standardowych.
-3. Uruchamia zadanie przygotowania zadania, które najpierw zapisuje identyfikator węzła do pliku tekstowego w katalogu "udostępnione" węzła.
-4. Uruchamia zadanie w każdym węźle, który zapisuje jego identyfikator zadania: do tego samego pliku tekstowego.
-5. Po wykonaniu wszystkich zadań (lub zostanie osiągnięty limit czasu), drukuje zawartość pliku tekstowego każdego węzła do konsoli.
-6. Po ukończeniu zadania jest uruchamiane zadanie podrzędne zwolnienia zadania do usunięcia pliku z węzła.
-7. Wyświetla kody zakończenia zadania przygotowania i zwolnienia zadań dla każdego węzła, na którym są wykonywane.
-8. Wstrzymuje wykonywanie umożliwia potwierdzenie usunięcia zadania i/lub puli.
+1. Tworzy pulę z dwoma węzłami.
+2. Tworzy zadanie z przygotowaniem zadania, wydaniem i zadaniami standardowymi.
+3. Uruchamia zadanie przygotowania zadania, które najpierw zapisuje identyfikator węzła do pliku tekstowego w katalogu "Shared" węzła.
+4. Uruchamia zadanie dla każdego węzła, który zapisuje jego identyfikator zadania w tym samym pliku tekstowym.
+5. Po zakończeniu wszystkich zadań (lub osiągnięciu limitu czasu) program drukuje zawartość pliku tekstowego każdego węzła w konsoli programu.
+6. Po zakończeniu zadania uruchom zadanie Zwolnij zadanie, aby usunąć plik z węzła.
+7. Drukuje kody zakończenia zadań przygotowania i zwolnienia zadania dla każdego węzła, na którym zostały wykonane.
+8. Wstrzymuje wykonywanie, aby umożliwić potwierdzenie usunięcia zadania i/lub puli.
 
-Dane wyjściowe z przykładowej aplikacji będą podobne do następujących:
+Dane wyjściowe z przykładowej aplikacji są podobne do następujących:
 
 ```
 Attempting to create pool: JobPrepReleaseSamplePool
@@ -173,27 +173,27 @@ Sample complete, hit ENTER to exit...
 ```
 
 > [!NOTE]
-> Ze względu na zmiennej tworzenia i uruchamiania czasu węzłów w nowej puli (niektóre węzły są gotowe do zadań przed innymi) mogą pojawić się różne wyniki. Ściślej mówiąc ponieważ szybkiego zakończenia zadania, jednym z węzłów w puli może wykonywać wszystkie zadania podrzędne. W takim przypadku można zauważyć, że zadania przygotowania i zwolnienia zadania nie istnieją dla węzła, który jest wykonywane żadne zadania.
+> Ze względu na tworzenie zmiennej i czas rozpoczęcia węzłów w nowej puli (niektóre węzły są gotowe do wykonywania zadań przed innymi), mogą pojawić się różne dane wyjściowe. W związku z tym, ponieważ zadania są wykonywane szybko, jeden z węzłów puli może wykonywać wszystkie zadania zadań. W takim przypadku należy zauważyć, że zadania przygotowania i zwolnienia zadania nie istnieją dla węzła, który nie wykonał żadnych zadań.
 > 
 > 
 
-### <a name="inspect-job-preparation-and-release-tasks-in-the-azure-portal"></a>Zbadaj zadania przygotowania i zwolnienia zadania w witrynie Azure portal
-Po uruchomieniu aplikacji przykładowej, możesz użyć [witryny Azure portal] [ portal] można wyświetlić właściwości zadania i jego zadań podrzędnych, a nawet pobierać plik tekstowy udostępnionego, który jest modyfikowany przez zadania podrzędne.
+### <a name="inspect-job-preparation-and-release-tasks-in-the-azure-portal"></a>Inspekcja zadań przygotowywania i zwalniania zadań w Azure Portal
+Po uruchomieniu przykładowej aplikacji można użyć [Azure Portal][portal] , aby wyświetlić właściwości zadania i jego zadań, a nawet pobrać udostępniony plik tekstowy, który jest modyfikowany przez zadania zadania podrzędnego.
 
-Zrzut ekranu poniżej przedstawiono **bloku zadań przygotowywania** w witrynie Azure portal po uruchomieniu aplikacji przykładowej. Przejdź do *JobPrepReleaseSampleJob* właściwości po zakończeniu zadania (ale przed usunięciem z zadania i puli) i kliknij przycisk **przygotowania** lub **zadaniazwolnienia**Aby wyświetlić jego właściwości.
+Zrzut ekranu poniżej przedstawia **blok zadania przygotowania** w Azure Portal po uruchomieniu przykładowej aplikacji. Przejdź do właściwości *JobPrepReleaseSampleJob* po ukończeniu zadań (ale przed usunięciem zadania i puli), a następnie kliknij pozycję **zadania przygotowania** lub **zlecenia wydania** , aby wyświetlić ich właściwości.
 
-![Właściwości przygotowanie zadania w witrynie Azure portal][1]
+![Właściwości przygotowania zadania w Azure Portal][1]
 
 ## <a name="next-steps"></a>Kolejne kroki
 ### <a name="application-packages"></a>Pakiety aplikacji
-Oprócz zadania podrzędnego przygotowania zadania umożliwia także [pakiety aplikacji](batch-application-packages.md) funkcji usługi Batch w celu przygotowania węzłów obliczeniowych do wykonywania zadań. Ta funkcja jest szczególnie przydatne w przypadku wdrażania aplikacji, które nie wymagają uruchamiania Instalatora, aplikacje, które zawierają wiele plików (ponad 100) lub aplikacji, które wymagają kontroli wersji z ograniczeniami.
+Oprócz zadania przygotowania zadania można także użyć funkcji [pakietów aplikacji](batch-application-packages.md) usługi Batch do przygotowania węzłów obliczeniowych do wykonywania zadań. Ta funkcja jest szczególnie przydatna w przypadku wdrażania aplikacji, które nie wymagają uruchamiania Instalatora, aplikacji zawierających wiele plików (100 +) lub aplikacji wymagających ścisłej kontroli wersji.
 
-### <a name="installing-applications-and-staging-data"></a>Instaluje aplikacje i przemieszcza dane
-Ten wpis na forum MSDN zawiera omówienie kilku metod przygotowania węzłów do uruchamiania zadań:
+### <a name="installing-applications-and-staging-data"></a>Instalowanie aplikacji i danych przemieszczania
+Ten wpis na forum MSDN zawiera omówienie kilku metod przygotowywania węzłów do uruchamiania zadań:
 
-[Instaluje aplikacje i przemieszcza dane w usłudze Batch węzłów obliczeniowych][forum_post]
+[Instalowanie aplikacji i danych przemieszczania w węzłach obliczeniowych wsadowych][forum_post]
 
-Zapisane przez jeden z członków zespołu usługi Azure Batch, omówiono w nim kilka technik, które służy do wdrażania aplikacji i danych w węzłach obliczeniowych.
+Zapisanie przez jednego z członków zespołu Azure Batch obejmuje kilka technik, których można użyć do wdrażania aplikacji i danych w węzłach obliczeniowych.
 
 [api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_listjobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx

@@ -1,161 +1,161 @@
 ---
-title: Często zadawane pytania dotyczące usługi Azure Import/Export | Dokumentacja firmy Microsoft
-description: Odczyt odpowiedzi na często zadawane pytania dotyczące usługi Azure Import/Eksport.
+title: Często zadawane pytania dotyczące usługi Azure Import/Export | Microsoft Docs
+description: Przeczytaj odpowiedzi na często zadawane pytania dotyczące usługi Azure Import Export.
 author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 12/13/2018
+ms.date: 07/18/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: ee2917c64843c8ab137e0122d63a328d6c19fedb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 109f541157716ae4f9b195d0a3ed02a1d8c91960
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61478576"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314103"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Usługa Azure Import/Export: często zadawane pytania 
-Poniżej przedstawiono pytania i odpowiedzi, które mogą wystąpić podczas przesyłanie danych do magazynu platformy Azure za pomocą usługi Azure Import/Export. Pytania i odpowiedzi są podzielone na następujące kategorie:
+Poniżej znajdują się pytania i odpowiedzi, które mogą wystąpić w przypadku przenoszenia danych do usługi Azure Storage za pomocą usług Azure Import/Export. Pytania i odpowiedzi są podzielone na następujące kategorie:
 
-- O usłudze Import/Export
-- Przygotowywanie dysków dla usługi import/export
+- Usługa Import/Export — informacje
+- Przygotowywanie dysków do importowania/eksportowania
 - Zadania importu/eksportu
-- Wysyłanie dysków
+- Dyski wysyłkowe
 - Różne 
 
-## <a name="about-importexport-service"></a>O usłudze Import/Export
+## <a name="about-importexport-service"></a>Usługa Import/Export — informacje
 
-### <a name="can-i-copy-azure-file-storage-using-the-azure-importexport-service"></a>Czy mogę skopiować usługi Azure File storage przy użyciu usługi Azure Import/Export
+### <a name="can-i-copy-azure-file-storage-using-the-azure-importexport-service"></a>Czy mogę skopiować usługę Azure File Storage za pomocą usługi Azure Import/Export?
 
-Tak. Obsługa usługi Azure Import/Export zaimportować do usługi Azure File Storage. Nie obsługuje eksportowanie plików platformy Azure w tej chwili.
+Tak. Usługa Azure Import/Export obsługuje importowanie do usługi Azure File Storage. W tej chwili nie obsługuje eksportu Azure Files.
 
-### <a name="is-the-azure-importexport-service-available-for-csp-subscriptions"></a>Usługa Azure Import/Export jest dostępna dla subskrypcji programu CSP?
+### <a name="is-the-azure-importexport-service-available-for-csp-subscriptions"></a>Czy usługa Azure Import/Export jest dostępna dla subskrypcji CSP?
 
-Tak. Usługa Azure Import/Export obsługuje subskrypcje dostawcy rozwiązań w chmurze (CSP).
+Tak. Usługa Azure Import/Export obsługuje subskrypcje dostawców rozwiązań w chmurze (CSP).
 
-### <a name="can-i-use-the-azure-importexport-service-to-copy-pst-mailboxes-and-sharepoint-data-to-o365"></a>Skopiuj PST skrzynek pocztowych i dane programu SharePoint do usługi Office 365 mogą używać usługi Azure Import/Export?
+### <a name="can-i-use-the-azure-importexport-service-to-copy-pst-mailboxes-and-sharepoint-data-to-o365"></a>Czy mogę użyć usługi Azure Import/Export do kopiowania skrzynek pocztowych PST i danych programu SharePoint do usługi O365?
 
-Tak. Aby uzyskać więcej informacji, przejdź do [pliki PST importu lub dane programu SharePoint do usługi Office 365](https://technet.microsoft.com/library/ms.o365.cc.ingestionhelp.aspx).
+Tak. Aby uzyskać więcej informacji, przejdź do obszaru [Importowanie plików PST lub danych programu SharePoint do pakietu Office 365](https://technet.microsoft.com/library/ms.o365.cc.ingestionhelp.aspx).
 
-### <a name="can-i-use-the-azure-importexport-service-to-copy-my-backups-offline-to-the-azure-backup-service"></a>Aby skopiować Moje kopie zapasowe w trybie offline w usłudze Kopia zapasowa Azure można używać usługi Azure Import/Export?
+### <a name="can-i-use-the-azure-importexport-service-to-copy-my-backups-offline-to-the-azure-backup-service"></a>Czy mogę użyć usługi Azure Import/Export do kopiowania kopii zapasowych w tryb offline do usługi Azure Backup?
 
-Tak. Aby uzyskać więcej informacji, przejdź do [workflow kopii zapasowej Offline w usłudze Azure Backup](../../backup/backup-azure-backup-import-export.md).
+Tak. Aby uzyskać więcej informacji, przejdź do [przepływu pracy kopii zapasowej offline w Azure Backup](../../backup/backup-azure-backup-import-export.md).
 
-### <a name="can-i-purchase-drives-for-importexport-jobs-from-microsoft"></a>Od firmy Microsoft można kupić dysków dla zadania importu/eksportu?
+### <a name="can-i-purchase-drives-for-importexport-jobs-from-microsoft"></a>Czy mogę kupić dyski do zadań importu/eksportu z firmy Microsoft?
 
-Nie. Musisz wysłać dysków do importowania i eksportowania zadania.
+Nie. Musisz dostarczyć własne dyski do zadań importu i eksportu.
 
 
-## <a name="preparing-disks-for-importexport"></a>Przygotowywanie dysków dla usługi import/export
+## <a name="preparing-disks-for-importexport"></a>Przygotowywanie dysków do importowania/eksportowania
 
-### <a name="can-i-skip-the-drive-preparation-step-for-an-import-job-can-i-prepare-a-drive-without-copying"></a>Czy można pominąć krok przygotowania dysku do zadania importu? Bez kopiowania można przygotować dysku?
+### <a name="can-i-skip-the-drive-preparation-step-for-an-import-job-can-i-prepare-a-drive-without-copying"></a>Czy mogę pominąć krok przygotowania dysku dla zadania importu? Czy mogę przygotować dysk bez kopiowania?
 
-Nie. Każdy dysk służą do importowania danych muszą być przygotowane za pomocą narzędzia Azure WAImportExport. To narzędzie umożliwia także skopiować dane na dysku.
+Nie. Wszystkie dyski używane do importowania danych muszą zostać przygotowane przy użyciu narzędzia Azure WAImportExport. Użyj narzędzia, aby skopiować dane na dysk.
 
-### <a name="do-i-need-to-perform-any-disk-preparation-when-creating-an-export-job"></a>Czy muszę wykonać wszelkie przygotowanie dysku podczas tworzenia zadania eksportu?
+### <a name="do-i-need-to-perform-any-disk-preparation-when-creating-an-export-job"></a>Czy podczas tworzenia zadania eksportu trzeba wykonać dowolne przygotowanie dysku?
 
-Nie. Niektóre prechecks są zalecane. Aby sprawdzić, liczba dysków wymagana, należy użyć narzędzia WAImportExport PreviewExport polecenia. Aby uzyskać więcej informacji, zobacz [wyświetlanie podglądu użycia dysków przez zadanie eksportu](https://msdn.microsoft.com/library/azure/dn722414.aspx). Polecenie ułatwia wyświetlanie podglądu użycia dysków dla wybranych obiektów blob, w oparciu o rozmiar dysków, które zamierzasz używać. Sprawdź także, czy może odczytywać i zapisu na dysku twardym, który jest dostarczany zadanie eksportu.
+Nie. Zalecane jest pewne sprawdzanie. Aby sprawdzić wymaganą liczbę dysków, użyj polecenia PreviewExport narzędzia WAImportExport. Aby uzyskać więcej informacji, zobacz [Wyświetlanie podglądu użycia dysku dla zadania eksportu](https://msdn.microsoft.com/library/azure/dn722414.aspx). Polecenie ułatwia zapodglądanie użycia dysku dla wybranych obiektów BLOB na podstawie rozmiaru dysków, które mają być używane. Sprawdź również, czy można czytać i zapisywać dane z dysku twardego, który jest dostarczany dla zadania eksportu.
 
 ## <a name="importexport-jobs"></a>Zadania importu/eksportu
 
-### <a name="can-i-cancel-my-job"></a>Czy można anulować Moje zadanie?
-Tak. Można anulować zadania, gdy jego stan to **tworzenie** lub **wysyłania**. Poza te etapy nie można anulować zadania, i jest kontynuowany aż do końcowego etapu.
+### <a name="can-i-cancel-my-job"></a>Czy mogę anulować moje zadanie?
+Tak. Zadanie można anulować, gdy jego stan to **Tworzenie** lub **wysyłka**. Poza tymi etapami nie można anulować zadania i jest ono kontynuowane do momentu zakończenia ostatniego etapu.
 
-### <a name="how-long-can-i-view-the-status-of-completed-jobs-in-the-azure-portal"></a>Jak długo można wyświetlić stan ukończonych zadań w witrynie Azure portal?
-Możesz wyświetlić stan ukończonych zadań przez 90 dni. Ukończone zadania są usuwane po 90 dniach.
+### <a name="how-long-can-i-view-the-status-of-completed-jobs-in-the-azure-portal"></a>Jak długo można wyświetlić stan ukończonych zadań w Azure Portal?
+Można wyświetlić stan ukończonych zadań przez maksymalnie 90 dni. Ukończone zadania są usuwane po 90 dniach.
 
-### <a name="if-i-want-to-import-or-export-more-than-10-drives-what-should-i-do"></a>Jeśli chcę zaimportować lub wyeksportować więcej niż 10 dysków, co należy zrobić?
-Jeden import lub zadanie eksportu może odwoływać się tylko 10 dysków w ramach jednego zadania. Aby wysłać więcej niż 10 dysków, należy utworzyć wiele zadań. Dyski skojarzone z tym samym zadaniu powinny być wysyłane ze sobą w tym samym pakiecie. Dla zadania importu więcej informacji i wskazówek, gdy pojemność danych obejmuje wiele dysków, skontaktuj się z pomocą techniczną firmy Microsoft w bulkimport@microsoft.com. 
+### <a name="if-i-want-to-import-or-export-more-than-10-drives-what-should-i-do"></a>Co mam zrobić, jeśli chcę zaimportować lub wyeksportować więcej niż 10 dysków?
+Jedno zadanie importu lub eksportu może odwoływać się tylko do 10 dysków w jednym zadaniu. Aby dostarczyć więcej niż 10 dysków, należy utworzyć wiele zadań. Dyski skojarzone z tym samym zadaniem muszą być dostarczane razem z tym samym pakietem. Aby uzyskać więcej informacji i wskazówki, gdy pojemność danych obejmuje wiele zadań importowania dysku, skontaktuj się z pomoc techniczna firmy Microsoft. 
 
-### <a name="the-uploaded-blob-shows-status-as-lease-expired-what-should-i-do"></a>Przekazany obiekt blob wskazuje stan jako "Dzierżawa wygasła". Co mam zrobić?
-Pole "Dzierżawa wygasła" można zignorować. Import/Export uzyskuje dzierżawę w obiekcie blob podczas przekazywania, aby upewnić się, że żaden inny proces może zaktualizować obiektów blob w sposób równoległy. Wygasłe dzierżawy oznacza, że Import/export nie jest już przekazywania do niej, a obiekt blob jest dostępny do użycia. 
+### <a name="the-uploaded-blob-shows-status-as-lease-expired-what-should-i-do"></a>Przekazany obiekt BLOB wskazuje stan "Dzierżawa wygasła". Co mam zrobić?
+Możesz zignorować pole "wygasła dzierżawa". Import/Export pobiera dzierżawę obiektu BLOB podczas przekazywania, aby upewnić się, że żaden inny proces nie może zaktualizować obiektu BLOB równolegle. Dzierżawa wygasła, oznacza, że import/eksport nie jest już przekazywany do niego, a obiekt BLOB jest dostępny do użytku. 
 
-## <a name="shipping-disks"></a>Wysyłanie dysków
+## <a name="shipping-disks"></a>Dyski wysyłkowe
 
-### <a name="what-is-the-maximum-number-of-hdd-for-in-one-shipment"></a>Co to jest maksymalna liczba dysk twardy dla jednego wydania?
-Nie ma żadnego limitu liczby dysków twardych w jednym wydaniu. Jeśli dyski należą do wielu zadań, zalecamy możesz: 
-- etykiety dysków o odpowiedniej nazwy zadania.
-- aktualizowanie zadania za pomocą numeru śledzenia sufiks wartość -1,-2 itd.
+### <a name="what-is-the-maximum-number-of-hdd-for-in-one-shipment"></a>Jaka jest maksymalna liczba dysków twardych w jednej wysyłce?
+Nie ma żadnego limitu liczby HDD w jednej wysyłce. Jeśli dyski należą do wielu zadań, zalecamy: 
+- Oznacz dyski odpowiednimi nazwami zadań.
+- Zaktualizuj zadania o numerze śledzenia z sufiksem-1,-2 itd.
 
-### <a name="should-i-include-anything-other-than-the-hdd-in-my-package"></a>Należy umieszczać coś innego niż dysk twardy w moim pakiecie?
-Tylko dyski twarde są dostarczane w pakiecie wysyłki. Nie należy dołączać elementy, takie jak kable dostaw energii lub kable USB.
+### <a name="should-i-include-anything-other-than-the-hdd-in-my-package"></a>Czy mogę dołączyć coś innego niż dysk twardy w moim pakiecie?
+Wyślij tylko dyski twarde w pakiecie wysyłkowym. Nie dołączaj elementów, takich jak kable zasilacza lub kable USB.
 
-### <a name="do-i-have-to-ship-my-drives-using-fedex-or-dhl"></a>Czy muszę dostarczaj Moje dyski za pomocą FedEx lub przez firmę DHL?
-Możesz przesłać dysków do centrum danych platformy Azure przy użyciu dowolnej znanych operatora, takich jak FedEx, przez firmę DHL, UPS lub poczty amerykańskiej. Jednak dla wysyłki zwrotnej dysków dla użytkownika z centrum danych, musisz podać:
+### <a name="do-i-have-to-ship-my-drives-using-fedex-or-dhl"></a>Czy muszę dostarczyć moje dyski przy użyciu FedEx lub DHL?
+Możesz dostarczać dyski do centrum danych platformy Azure przy użyciu dowolnego znanego operatora, takiego jak FedEx, DHL, UPS lub US Postal Service. Jednak dla wysyłki zwrotnej dysków z centrum danych należy podać:
 
-- Liczba kont FedEx w USA i UE, lub
-- Numer konta przez firmę DHL w regionach Azja Wschodnia i Australia.
+- Numer konta FedEx w Stanach Zjednoczonych i UE, lub
+- Numer konta DHL w regionach Azji i Australii.
 
 > [!NOTE]
-> Centra danych w Indiach wymaga litery deklaracji nagłówek listowy (dostarczanie challan) do zwrócenia z stacje. Aby rozmieścić wymaganego wpisu — dostęp próbny, możesz również zarezerwować pobranie za pomocą operatora wybranego i udostępniać szczegółowe informacje z centrum danych.
+> Centra danych w Indiach wymagają litery deklaracji na nagłówku listowym (Challan dostarczania) w celu zwrócenia dysków. Aby rozmieścić wymagane wejście wejścia, należy również zaksięgować pobranie z wybranym przewoźnikiem i udostępnić szczegóły w centrum danych.
 
-### <a name="are-there-any-restrictions-with-shipping-my-drive-internationally"></a>Czy istnieją jakieś ograniczenia przy dostarczaniu stacja w wielu krajach?
-Należy pamiętać, nośnik fizyczny, który jest dostarczany może być konieczne między granicami. Ponosisz odpowiedzialność za zapewnienie, że Twoje dane i nośnik fizyczny są importowane i/lub wyeksportowane zgodnie z obowiązującymi przepisami. Przed wysyłką nośnik fizyczny z Twojej doradców, aby sprawdzić, czy multimediów i danych prawnie mogą być wysyłane do centrum danych zidentyfikowane. Ułatwi to zapewnienie osiągnie firmy Microsoft, w odpowiednim czasie.
+### <a name="are-there-any-restrictions-with-shipping-my-drive-internationally"></a>Czy istnieją jakieś ograniczenia dotyczące wysyłania moich stacji międzynarodowych?
+Należy pamiętać, że wysyłany nośnik fizyczny może wymagać przekroczenia granic międzynarodowych. Użytkownik jest odpowiedzialny za zapewnienie, że nośnik fizyczny i dane zostaną zaimportowane i/lub wyeksportowane zgodnie z obowiązującymi przepisami. Przed wysłaniem nośnika fizycznego należy skontaktować się z doradcami, aby upewnić się, że nośnik i dane mogą zostać legalnie wysłane do określonego centrum danych. Pomoże to zapewnić firmie Microsoft w odpowiednim czasie.
 
-### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>Czy istnieją jakiekolwiek specjalne wymagania, dostarczania dysków do centrum danych?
+### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>Czy istnieją jakieś specjalne wymagania dotyczące dostarczania dysków do centrum danych?
 
-Wymagania zależą od ograniczeń określonych centrów danych platformy Azure.
-- Istnieje kilka witryn, które wymagają centrum danych platformy Microsoft numer identyfikacyjny dla ruchu przychodzącego, które ma zostać zapisany na działkę ze względów bezpieczeństwa. Przed dostarczeniem aplikacji z dysków lub dysków do centrum danych, skontaktuj się z działem Azure DataBox operacji (adbops@microsoft.com) w celu rozwiązania tego numeru. Bez tego numeru pakiet zostanie odrzucone.
-- Centra danych w Indiach wymagają informacje osobowe sterownika, takie jak karty identyfikacyjnej dla instytucji rządowych lub nie dowodu. (na przykład, PRZESUWANIE, AADHAR, listy Dystrybucyjnej) nazwę, skontaktuj się z pomocą i samochodu płytką liczbę, aby otrzymać przebiegu wpis bramy. Aby uniknąć opóźnień w dostawie, informuje operatora o tych wymagań.
+Wymagania te zależą od konkretnych ograniczeń centrum danych platformy Azure.
+- Istnieje kilka witryn, które wymagają napisania numeru IDENTYFIKACYJNego Microsoft centrum danych w ramach usługi Parcel ze względów bezpieczeństwa. Przed dostarczeniem dysków lub dysków do centrum danych skontaktuj się z pomocą techniczną Azureadbops@microsoft.comDataBox Operations (), aby uzyskać tę liczbę. Bez tej liczby pakiet zostanie odrzucony.
+- Centra danych w Indiach wymagają szczegółowych informacji o sterowniku, takich jak karta identyfikatora instytucji rządowych lub numer dowodu. (na przykład PANORAMowanie, AADHAR, DL), imię i nazwisko, kontakt i numer płyty samochodu, aby przejść do wpisu bramy. Aby uniknąć opóźnień dostarczania, należy poinformować przewoźnika o tych wymaganiach.
 
 
-### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>Podczas tworzenia zadania, adresu wysyłkowego jest lokalizacji, która różni się od Moje Lokalizacja konta magazynu. Co mam zrobić?
+### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>Podczas tworzenia zadania adres wysyłkowy jest lokalizacją inną niż lokalizacja konta magazynu. Co mam zrobić?
 
-Niektóre lokalizacji konta magazynu są mapowane do lokalizacji alternatywnej wysyłki. Wcześniej dostępnych lokalizacji wysyłki można również tymczasowo mapować do alternatywnej lokalizacji. Zawsze sprawdzaj adres wysyłkowy podane podczas tworzenia zadania przed dostarczeniem dysków.
+Niektóre lokalizacje kont magazynu są mapowane na alternatywne lokalizacje dostawy. Wcześniej dostępne lokalizacje wysyłkowe mogą być również tymczasowo mapowane na alternatywne lokalizacje. Zawsze sprawdzaj adres wysyłkowy podany podczas tworzenia zadania przed wysłaniem dysków.
 
-### <a name="when-shipping-my-drive-the-carrier-asks-for-the-data-center-contact-address-and-phone-number-what-should-i-provide"></a>Podczas wysyłania dysk, operatora poprosi o podanie danych Centrum skontaktuj się z pomocą adres i numer telefonu. Co należy zapewnić?
+### <a name="when-shipping-my-drive-the-carrier-asks-for-the-data-center-contact-address-and-phone-number-what-should-i-provide"></a>Gdy wysyłam mój dysk, zostanie wyświetlony monit dotyczący adresu kontaktowego centrum danych i numeru telefonu. Co mam udostępnić?
 
-Numer telefonu i kontroler domeny adresów jest dostępna w ramach zadania tworzenia.
+Numer telefonu i adres kontrolera domeny są udostępniane w ramach tworzenia zadań.
 
 
 ## <a name="miscellaneous"></a>Różne
 
-### <a name="what-happens-if-i-accidentally-send-an-hdd-that-does-not-conform-to-the-supported-requirements"></a>Co się stanie, jeśli wymagania obsługiwanej przypadkowo wysyła dysk twardy, który nie jest zgodny?
+### <a name="what-happens-if-i-accidentally-send-an-hdd-that-does-not-conform-to-the-supported-requirements"></a>Co się stanie, jeśli przypadkowo wyślę dysk twardy, który nie jest zgodny z obsługiwanymi wymaganiami?
 
-Centrum danych platformy Azure zwróci dysku, który nie jest zgodny obsługiwane wymagania dla Ciebie. Jeśli tylko niektóre z stacje w pakiecie spełnia wymagania w zakresie obsługi, te dyski zostaną przetworzone i dyski, które nie spełniają wymagań, zostanie zwrócona do Ciebie.
+Centrum danych Azure zwróci dysk, który nie jest zgodny z obsługiwanymi wymaganiami. Jeśli tylko niektóre dyski w pakiecie spełniają wymagania dotyczące pomocy technicznej, te dyski zostaną przetworzone, a dyski, które nie spełniają wymagań, zostaną zwrócone do użytkownika.
 
-### <a name="does-the-service-format-the-drives-before-returning-them"></a>Usługa i sformatować dyski przed zwróceniem?
+### <a name="does-the-service-format-the-drives-before-returning-them"></a>Czy usługa sformatuje dyski przed ich zwróceniem?
 
 Nie. Wszystkie dyski są szyfrowane za pomocą funkcji BitLocker.
 
-### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>Jak mają dostęp do danych, który jest importowany przez tę usługę?
+### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>Jak uzyskać dostęp do danych importowanych przez tę usługę?
 
-Za pomocą witryny Azure Portal lub [Eksploratora usługi Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) dostępu do danych w ramach konta usługi Azure storage.  
+Użyj witryny Azure Portal lub [Eksplorator usługi Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) , aby uzyskać dostęp do danych na koncie usługi Azure Storage.  
 
-### <a name="after-the-import-is-complete-what-does-my-data-look-like-in-the-storage-account-is-my-directory-hierarchy-preserved"></a>Po ukończeniu importowania Moje dane jak wygląda w ramach konta magazynu? Moje hierarchii katalogów jest zachowywana?
+### <a name="after-the-import-is-complete-what-does-my-data-look-like-in-the-storage-account-is-my-directory-hierarchy-preserved"></a>Po zakończeniu importowania jak wyglądają moje dane na koncie magazynu? Czy moja hierarchia katalogów jest zachowywana?
 
-Podczas przygotowywania dysków twardych do zadania importu, miejsce docelowe jest określony przez pole DstBlobPathOrPrefix w zestawie danych CSV. Jest to kontener docelowy w ramach konta magazynu, do którego są kopiowane dane z dysku twardego. W tym kontenerze docelowym katalogi wirtualne są tworzone foldery na dysku twardym, a obiekty BLOB są tworzone dla plików. 
+Podczas przygotowywania dysku twardego dla zadania importowania, miejsce docelowe jest określane przez pole DstBlobPathOrPrefix w pliku CSV zestawu danych. Jest to kontener docelowy na koncie magazynu, do którego kopiowane są dane z dysku twardego. W tym kontenerze docelowym katalogi wirtualne są tworzone dla folderów z dysku twardego, a obiekty blob są tworzone dla plików. 
 
-### <a name="if-a-drive-has-files-that-already-exist-in-my-storage-account-does-the-service-overwrite-existing-blobs-or-files"></a>Jeśli dysk ma pliki, które już istnieją w moim koncie usługi storage, powoduje usługi zastąpienia istniejących obiektów blob lub pliki?
+### <a name="if-a-drive-has-files-that-already-exist-in-my-storage-account-does-the-service-overwrite-existing-blobs-or-files"></a>Czy na dysku znajdują się pliki, które już istnieją na moim koncie magazynu, czy usługa zastępuje istniejące obiekty blob lub pliki?
 
-Jest zależna. Podczas przygotowywania dysku, możesz określić, czy pliki docelowe powinny być zastąpione, czy ignorowane za pomocą pola w pliku CSV zestaw danych o nazwie dyspozycji: < Zmień nazwę | zastąpić nie | zastąpić >. Domyślnie usługa zmienia nazwę nowych plików zamiast zastępowania istniejących obiektów blob lub plików.
+Zależy od. Podczas przygotowywania dysku można określić, czy pliki docelowe mają być zastępowane lub ignorowane przy użyciu pola w pliku CSV zestawu danych o nazwie Dyspozycja: < zmienić nazwę | nie zastępuj | zastąpić >. Domyślnie usługa zmienia nazwy nowych plików zamiast zastępować istniejące obiekty blob lub pliki.
 
-### <a name="is-the-waimportexport-tool-compatible-with-32-bit-operating-systems"></a>Narzędzie WAImportExport jest zgodny z 32-bitowych systemach operacyjnych?
-Nie. Narzędzie WAImportExport jest zgodna tylko z 64-bitowych systemach operacyjnych Windows. Aby uzyskać pełną listę obsługiwanych systemów operacyjnych, przejdź do [obsługiwane systemy operacyjne](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements). 
-
-
-### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Jaka jest maksymalna blokowych obiektów Blob i rozmiar stronicowego obiektu Blob, obsługiwane przez usługi Azure Import/Export?
-
-Rozmiar maksymalny blokowych obiektów Blob jest około 4.768TB lub 5 000 000 MB.
-Rozmiar maksymalny stronicowych obiektów Blob jest 8TB.
+### <a name="is-the-waimportexport-tool-compatible-with-32-bit-operating-systems"></a>Czy narzędzie WAImportExport jest zgodne z 32-bitowymi systemami operacyjnymi?
+Nie. Narzędzie WAImportExport jest zgodne tylko z 64-bitowymi systemami operacyjnymi Windows. Aby uzyskać pełną listę obsługiwanych systemów operacyjnych, przejdź do obszaru [obsługiwane systemy operacyjne](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements). 
 
 
-### <a name="does-azure-importexport-support-aes-256-encryption"></a>Usługa Azure Import/Export obsługuje szyfrowanie AES-256?
-Domyślnie usługa Azure Import/Export używa algorytmu AES-128 szyfrowanie funkcją bitlocker. Możesz zmienić to AES-256, szyfrując ręcznie za pomocą funkcji bitlocker przed skopiowaniem danych. 
+### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Jaki jest maksymalny rozmiar obiektu BLOB bloku i rozmiaru obiektu BLOB obsługiwanego przez usługę Azure Import/Export?
 
-- Jeśli przy użyciu [WAImportExport V1](https://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip), poniżej przedstawiono przykład polecenia
+Maksymalny rozmiar bloku obiektu BLOB wynosi około 4.768 TB lub 5 000 000 MB.
+Maksymalny rozmiar obiektu BLOB strony to 8TB.
+
+
+### <a name="does-azure-importexport-support-aes-256-encryption"></a>Czy usługa Azure Import/Export obsługuje szyfrowanie AES-256?
+Usługa Azure Import/Export domyślnie korzysta z szyfrowania AES-128 funkcji BitLocker. Można to zmienić na AES-256 przez ręczne szyfrowanie przy użyciu funkcji BitLocker przed skopiowaniem danych. 
+
+- W przypadku korzystania z [WAImportExport V1](https://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip)poniżej znajduje się przykładowe polecenie
     ```
     WAImportExport PrepImport /sk:<StorageAccountKey> /csas:<ContainerSas> /t: <TargetDriveLetter> [/format] [/silentmode] [/encrypt] [/bk:<BitLockerKey>] [/logdir:<LogDirectory>] /j:<JournalFile> /id:<SessionId> /srcdir:<SourceDirectory> /dstdir:<DestinationBlobVirtualDirectory> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>] 
     ```
-- Jeśli przy użyciu [WAImportExport V2](https://www.microsoft.com/download/details.aspx?id=55280) określ "AlreadyEncrypted", a następnie podać klucz w driveset CSV.
+- W przypadku używania [WAImportExport v2](https://www.microsoft.com/download/details.aspx?id=55280) Określ wartość "AlreadyEncrypted" i Podaj klucz w woluminie CSV driveset.
     ```
     DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
     G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631 |
     ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Co to jest Azure Import/Export?](storage-import-export-service.md)
+* [Co to jest usługa Azure Import/Export?](storage-import-export-service.md)
 
 

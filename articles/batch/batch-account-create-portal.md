@@ -4,7 +4,7 @@ description: Dowiedz się, jak utworzyć konto usługi Azure Batch w portalu Azu
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 3fbae545-245f-4c66-aee2-e25d7d5d36db
 ms.service: batch
@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86747b72c436c4dac3bbf0a752fee4d24cb47f60
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e1543d578e6812fd270bd76ec18bdfe8fe5ba6a
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60722576"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68324024"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Tworzenie konta usługi Batch w witrynie Azure Portal
 
-Dowiedz się, jak utworzyć konto usługi Azure Batch w witrynie [Azure Portal][azure_portal] i wybrać właściwości konta pasujące do scenariusza obliczeniowego. Dowiedz się, gdzie znaleźć ważne właściwości konta, takie jak klucze dostępu i adresy URL konta.
+Dowiedz się, jak utworzyć konto Azure Batch w [Azure Portal][azure_portal]i wybrać właściwości konta pasujące do scenariusza obliczeniowego. Dowiedz się, gdzie znaleźć ważne właściwości konta, takie jak klucze dostępu i adresy URL konta.
 
 Ogólne informacje o kontach usługi Batch i scenariuszach można znaleźć w [omówieniu funkcji](batch-api-basics.md).
 
@@ -109,17 +109,21 @@ Podczas tworzenia pierwszego konta usługi Batch w trybie subskrypcji użytkowni
 
 W trybie subskrypcji użytkownika wymagana jest usługa Azure Key Vault należąca do tej samej grupy zasobów, co konto usługi Batch, które ma zostać utworzone. Upewnij się, że grupa zasobów znajduje się w regionie, gdzie usługa Batch jest [dostępna](https://azure.microsoft.com/regions/services/) i który obsługuje Twoja subskrypcja.
 
-1. W witrynie [Azure Portal][azure_portal] wybierz pozycję **Nowy** > **Bezpieczeństwo** > **Key Vault**.
+1. W [Azure Portal][azure_portal]wybierz pozycję **nowe** > **Key Vault** **zabezpieczeń** > .
 
 1. Na stronie **Tworzenie magazynu Key Vault** wprowadź nazwę magazynu Key Vault i utwórz grupę zasobów w wymaganym regionie konta usługi Batch. Pozostaw wartości domyślne pozostałych ustawień, a następnie wybierz przycisk **Utwórz**.
 
-Podczas tworzenia konta usługi Batch w trybie subskrypcji użytkownika użyj grupy zasobów dla magazynu kluczy, określ **subskrypcję użytkownika** jako tryb alokacji puli, a następnie wybierz magazyn kluczy.
+Podczas tworzenia konta usługi Batch w trybie subskrypcji użytkownika należy użyć grupy zasobów magazynu kluczy. Określ **subskrypcję użytkownika** jako tryb alokacji puli, wybierz magazyn kluczy i zaznacz pole wyboru w celu udzielenia Azure Batch dostępu do magazynu kluczy. 
+
+Jeśli wolisz udzielić dostępu do magazynu kluczy ręcznie, przejdź do sekcji **zasady dostępu** w magazynie kluczy i wybierz pozycję **Microsoft Azure Batch**. Skonfiguruj **uprawnienia klucza tajnego** za pomocą menu rozwijanego. Azure Batch musi mieć co najmniej uprawnienia **Get**, **list**, **Set**i **delete** .
+
+![Uprawnienia klucza tajnego dla Azure Batch](./media/batch-account-create-portal/secret-permissions.png)
 
 ### <a name="configure-subscription-quotas"></a>Konfigurowanie limitów przydziału subskrypcji
 
 Limity przydziału rdzeni nie są ustawiane domyślnie na kontach usługi Batch subskrypcji użytkownika. Limity przydziału rdzeni trzeba ustawić ręcznie, ponieważ standardowe limity przydziału rdzeni usługi Batch nie dotyczą kont w trybie subskrypcji użytkownika.
 
-1. W [witrynie Azure Portal][azure_portal] wybierz konto usługi Batch trybu subskrypcji użytkownika, aby wyświetlić jego ustawienia i właściwości.
+1. W [Azure Portal][azure_portal]wybierz konto usługi Batch w trybie subskrypcji użytkownika, aby wyświetlić jego ustawienia i właściwości.
 
 1. Z menu po lewej stronie wybierz pozycję **Limity przydziału**, aby wyświetlić i skonfigurować limity przydziału rdzeni skojarzone z kontem usługi Batch.
 

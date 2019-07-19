@@ -1,18 +1,18 @@
 ---
 title: Tworzenie strefy prywatnej usługi Azure DNS przy użyciu programu Azure PowerShell
-description: W tym artykule Tworzenie i testowanie prywatnej strefy i rekordu DNS w usłudze Azure DNS. W tym szczegółowym przewodniku pokazano, jak po raz pierwszy utworzyć strefę prywatną i rekord DNS przy użyciu programu Azure PowerShell oraz zarządzać nimi.
+description: W tym artykule opisano tworzenie i testowanie prywatnej strefy i rekordu DNS w Azure DNS. W tym szczegółowym przewodniku pokazano, jak po raz pierwszy utworzyć strefę prywatną i rekord DNS przy użyciu programu Azure PowerShell oraz zarządzać nimi.
 services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: victorh
-ms.openlocfilehash: 9d79ed28bd331b723755e1c17233aa82421ad1d7
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 6603929fa7b4c597a846fc299577a9682d8f54e0
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147874"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854131"
 ---
 # <a name="create-an-azure-dns-private-zone-using-azure-powershell"></a>Tworzenie strefy prywatnej usługi Azure DNS przy użyciu programu Azure PowerShell
 
@@ -22,7 +22,7 @@ W tym artykule przedstawiono kroki umożliwiające utworzenie po raz pierwszy pr
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Strefa DNS jest używana do hostowania rekordów DNS dla określonej domeny. Aby rozpocząć hostowanie domeny w usłudze Azure DNS, musisz utworzyć strefę DNS dla tej nazwy domeny. Każdy rekord DNS domeny zostanie utworzony w tej strefie DNS. Aby opublikować prywatną strefę DNS w sieci wirtualnej, musisz określić listę sieci wirtualnych, które mogą rozpoznawać rekordy w strefie.  Są to tak zwane *połączone* sieci wirtualnych. Po włączeniu autorejestracją system DNS Azure aktualizuje również rekordy strefy zawsze wtedy, gdy maszyna wirtualna jest tworzona, zmiany jego "adres IP lub został usunięty.
+Strefa DNS jest używana do hostowania rekordów DNS dla określonej domeny. Aby rozpocząć hostowanie domeny w usłudze Azure DNS, musisz utworzyć strefę DNS dla tej nazwy domeny. Każdy rekord DNS domeny zostanie utworzony w tej strefie DNS. Aby opublikować prywatną strefę DNS w sieci wirtualnej, musisz określić listę sieci wirtualnych, które mogą rozpoznawać rekordy w strefie.  Są one nazywane *połączonymi* sieciami wirtualnymi. Gdy Autorejestracja jest włączona, Azure DNS aktualizuje także rekordy strefy za każdym razem, gdy maszyna wirtualna jest tworzona, zmienia jej adres IP lub został usunięty.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
@@ -36,7 +36,7 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-Jeśli wolisz, możesz wykonać tej procedury przy użyciu [wiersza polecenia platformy Azure](private-dns-getstarted-cli.md).
+Jeśli wolisz, możesz wykonać tę procedurę za pomocą [interfejsu wiersza polecenia platformy Azure](private-dns-getstarted-cli.md).
 
 ## <a name="create-the-resource-group"></a>Tworzenie grupy zasobów
 
@@ -50,9 +50,11 @@ New-AzResourceGroup -name MyAzureResourceGroup -location "eastus"
 
 Strefa DNS jest tworzona za pomocą polecenia cmdlet `New-AzPrivateDnsZone`.
 
-Poniższy przykład tworzy sieć wirtualną o nazwie **myAzureVNet**. A następnie tworzy strefę DNS o nazwie **private.contoso.com** w **MyAzureResourceGroup** grupy zasobów, łączy strefę DNS do **MyAzureVnet** sieci wirtualnej, a Umożliwia automatyczną rejestrację.
+Poniższy przykład tworzy sieć wirtualną o nazwie **myAzureVNet**. Następnie tworzy strefę DNS o nazwie **Private.contoso.com** w grupie zasobów **MyAzureResourceGroup** , łączy strefę DNS z siecią wirtualną **MyAzureVnet** i włącza rejestrację automatyczną.
 
 ```azurepowershell
+Install-Module -Name Az.PrivateDns -force
+
 $backendSubnet = New-AzVirtualNetworkSubnetConfig -Name backendSubnet -AddressPrefix "10.2.0.0/24"
 $vnet = New-AzVirtualNetwork `
   -ResourceGroupName MyAzureResourceGroup `
@@ -68,7 +70,7 @@ $link = New-AzPrivateDnsVirtualNetworkLink -ZoneName private.contoso.com `
   -VirtualNetworkId $vnet.id -EnableRegistration
 ```
 
-Jeśli chcesz utworzyć strefę tylko do rozpoznawania nazw (rejestracja nie automatycznego nazwy hosta), można pominąć `-EnableRegistration` parametru.
+Jeśli chcesz utworzyć strefę tylko do rozpoznawania nazw (bez automatycznej rejestracji nazwy hosta), możesz pominąć `-EnableRegistration` parametr.
 
 ### <a name="list-dns-private-zones"></a>Wyświetlanie listy stref prywatnych DNS
 
@@ -114,7 +116,7 @@ Ukończenie tej operacji potrwa kilka minut.
 
 ## <a name="create-an-additional-dns-record"></a>Tworzenie dodatkowego rekordu DNS
 
-Zestawy rekordów są tworzone za pomocą polecenia cmdlet `New-AzPrivateDnsRecordSet`. Poniższy przykład tworzy rekord o nazwie względnej **db** w strefie DNS **private.contoso.com**, w grupie zasobów **MyAzureResourceGroup**. W pełni kwalifikowana nazwa zestawu rekordów to **db.private.contoso.com**. Typ rekordu to „A” z adresem IP „10.2.0.4”, a czas wygaśnięcia wynosi 3600 sekund.
+Zestawy rekordów są tworzone za pomocą polecenia cmdlet `New-AzPrivateDnsRecordSet`. Poniższy przykład tworzy rekord z względną nazwą **bazy danych** w strefie DNS **Private.contoso.com**w grupie zasobów **MyAzureResourceGroup**. W pełni kwalifikowana nazwa zestawu rekordów to **DB.private.contoso.com**. Typ rekordu to „A” z adresem IP „10.2.0.4”, a czas wygaśnięcia wynosi 3600 sekund.
 
 ```azurepowershell
 New-AzPrivateDnsRecordSet -Name db -RecordType A -ZoneName private.contoso.com `
@@ -132,7 +134,7 @@ Get-AzPrivateDnsRecordSet -ZoneName private.contoso.com -ResourceGroupName MyAzu
 
 ## <a name="test-the-private-zone"></a>Testowanie strefy prywatnej
 
-Teraz możesz sprawdzić rozpoznawanie nazw dla swojej **private.contoso.com** stref prywatnych.
+Teraz można testować rozpoznawanie nazw dla strefy prywatnej **Private.contoso.com** .
 
 ### <a name="configure-vms-to-allow-inbound-icmp"></a>Konfigurowanie maszyn wirtualnych w celu zezwolenia na ruch przychodzący protokołu ICMP
 
@@ -199,15 +201,15 @@ Powtórz dla maszyny wirtualnej myVM02.
 
 ## <a name="delete-all-resources"></a>Usuwanie wszystkich zasobów
 
-Gdy nie są już potrzebne, Usuń **MyAzureResourceGroup** grupę zasobów, aby usunąć zasoby utworzone w tym artykule.
+Gdy nie jest już potrzebne, Usuń grupę zasobów **MyAzureResourceGroup** , aby usunąć zasoby utworzone w tym artykule.
 
 ```azurepowershell
 Remove-AzResourceGroup -Name MyAzureResourceGroup
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule wdrożone prywatnej strefy DNS utworzyć rekord DNS i przetestowane strefy.
+W tym artykule wdrożono prywatną strefę DNS, utworzono rekord DNS i przetestowano strefę.
 Następnie możesz dowiedzieć się więcej na temat stref prywatnych DNS.
 
 * [Używanie usługi Azure DNS na potrzeby domen prywatnych](private-dns-overview.md)

@@ -15,32 +15,21 @@ ms.workload: tbd
 ms.date: 05/23/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 047350fa957d9ca1fdec50f97a590ba90a42e1b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 01fb6f66ce71599a70a127a2b73eba6f848bf365
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60830572"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68324143"
 ---
-# <a name="quickstart-how-to-use-azure-cache-for-redis-with-java"></a>Szybki start: Jak używać usługi Azure Cache for Redis za pomocą języka Java
+# <a name="quickstart-use-azure-cache-for-redis-with-java"></a>Szybki start: Korzystanie z usługi Azure cache for Redis w języku Java
 
-
-Usługa Azure Cache for Redis daje dostęp do dedykowanej usługi Azure Cache for Redis, którą zarządza firma Microsoft. Pamięć podręczna jest dostępna z poziomu dowolnej aplikacji na platformie Microsoft Azure.
-
-W tym artykule przedstawiono rozpoczynanie pracy z usługą Azure Cache for Redis za pomocą klienta Redis [Jedis](https://github.com/xetorthio/jedis) dla języka Java.
-
-![Ukończono tworzenie aplikacji pamięci podręcznej](./media/cache-java-get-started/cache-app-complete.png)
-
-Do wykonania kroków tego przewodnika Szybki start możesz użyć dowolnego edytora kodu. Doskonałym wyborem jest program [Visual Studio Code](https://code.visualstudio.com/), dostępny na platformach Windows, macOS i Linux.
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
+W tym przewodniku szybki start dodaliśmy usługę Azure cache for Redis do aplikacji Java przy użyciu klienta [Jedis](https://github.com/xetorthio/jedis) Redis, aby uzyskać dostęp do bezpiecznej, dedykowanej pamięci podręcznej dostępnej z dowolnej aplikacji na platformie Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-[Apache Maven](https://maven.apache.org/)
-
-
+- Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
+- [Apache Maven](https://maven.apache.org/download.cgi)
 
 ## <a name="create-an-azure-cache-for-redis"></a>Tworzenie usługi Azure Cache for Redis
 
@@ -50,7 +39,7 @@ Do wykonania kroków tego przewodnika Szybki start możesz użyć dowolnego edyt
 
 Dodaj zmienne środowiskowe dla **NAZWY HOSTA** i **podstawowego** klucza dostępu. Użyj zmiennych z kodu, nie dodawaj wrażliwych informacji bezpośrednio w kodzie.
 
-```
+```CMD 
 set REDISCACHEHOSTNAME=contosoCache.redis.cache.windows.net
 set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
@@ -59,7 +48,7 @@ set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 Za pomocą programu Maven wygeneruj nową aplikację przewodnika Szybki Start:
 
-```
+```CMD
 mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.3 -DgroupId=example.demo -DartifactId=redistest -Dversion=1.0
 ```
 
@@ -139,7 +128,7 @@ Zapisz plik *App.java*.
 
 Wykonaj następujące polecenie narzędzia Maven, aby skompilować i uruchomić aplikację:
 
-```
+```CMD
 mvn compile
 mvn exec:java -D exec.mainClass=example.demo.App
 ```
@@ -147,7 +136,6 @@ mvn exec:java -D exec.mainClass=example.demo.App
 W poniższym przykładzie widać, że klucz `Message` miał już w pamięci podręcznej wartość, która została ustawiona za pomocą konsoli Redis w witrynie Azure Portal. Aplikacja zaktualizowała tę wartość w pamięci podręcznej. Aplikacja również wykonała polecenia `PING` i `CLIENT LIST`.
 
 ![Ukończono tworzenie aplikacji pamięci podręcznej](./media/cache-java-get-started/cache-app-complete.png)
-
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -161,7 +149,7 @@ W przeciwnym razie po zakończeniu pracy z przykładową aplikacją poradnika Sz
 
 Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i kliknij pozycję **Grupy zasobów**.
 
-W polu tekstowym **Filtruj według nazwy...** wpisz nazwę grupy zasobów. Instrukcje w tym artykule używają grupy zasobów o nazwie *TestResources*. Dla grupy zasobów na liście wyników kliknij pozycję **...**, a następnie kliknij pozycję **Usuń grupę zasobów**.
+W polu tekstowym **Filtruj według nazwy...** wpisz nazwę grupy zasobów. Instrukcje w tym artykule używają grupy zasobów o nazwie *TestResources*. Dla grupy zasobów na liście wyników kliknij pozycję **...** , a następnie kliknij pozycję **Usuń grupę zasobów**.
 
 ![Usuwanie](./media/cache-java-get-started/cache-delete-resource-group.png)
 
@@ -169,14 +157,9 @@ Zobaczysz prośbę o potwierdzenie usunięcia grupy zasobów. Wpisz nazwę grupy
 
 Po krótkim czasie grupa zasobów i wszystkie zawarte w niej zasoby zostaną usunięte.
 
-
-
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start pokazano, jak korzystać z usługi Azure Cache for Redis z poziomu aplikacji Java. Przejdź do kolejnego Szybkiego startu, w którym wyjaśniono, jak używać usługi Microsoft Azure Cache for Redis z poziomu aplikacji internetowej ASP.NET.
 
 > [!div class="nextstepaction"]
 > [Tworzenie na platformie ASP.NET aplikacji internetowej, która korzysta z usługi Microsoft Azure Cache for Redis.](./cache-web-app-howto.md)
-
-
-

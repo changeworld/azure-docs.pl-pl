@@ -4,7 +4,7 @@ description: Opis korzystania z usługi Azure Batch na potrzeby dużych obciąż
 services: batch
 documentationcenter: ''
 author: mscurrell
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 01/19/2018
 ms.author: markscu
 ms.custom: mvc
-ms.openlocfilehash: 1dbd31b3c666857765b8b20a11d4d0c7ea8ea37b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: c55b831903ed8dad124156013c8379536f676efa
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704764"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322797"
 ---
 # <a name="what-is-azure-batch"></a>Co to jest Azure Batch?
 
@@ -30,7 +30,7 @@ Deweloperzy mogą używać usługi Batch jako usługi platformy do tworzenia apl
 
 Za korzystanie z usługi Batch nie są naliczane dodatkowe opłaty. Płaci się wyłącznie za wykorzystane zasoby bazowe, takie jak maszyny wirtualne, magazyn i zasoby sieciowe.
 
-Aby porównać usługę Batch oraz inne opcje rozwiązań HPC na platformie Azure, zobacz [o wysokiej wydajności (HPC) na platformie Azure](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/).
+Aby uzyskać porównanie między usługą Batch i innymi opcjami rozwiązania HPC na platformie Azure, zobacz [wydajność obliczeń o wysokiej wydajności (HPC) na platformie Azure](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/).
 
 ## <a name="run-parallel-workloads"></a>Uruchamianie równoległych obciążeń
 Z usługą Batch działają dobrze obciążenia wewnętrznie równoległe (zwane również „zaskakująco równoległymi”). Obciążenia wewnętrznie równoległe to te, w przypadku których aplikacje mogą być uruchamiane równolegle i każde wystąpienie wykonuje część pracy. Aplikacje w trakcie wykonywania mogą uzyskiwać dostęp do niektórych wspólnych danych, ale nie komunikują się z innymi wystąpieniami aplikacji. Z tego względu obciążenia wewnętrznie równoległe mogą być uruchamiane na dużą skalę, zależną od ilości zasobów obliczeniowych dostępnych do jednoczesnego uruchamiania aplikacji.

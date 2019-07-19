@@ -4,7 +4,7 @@ description: Przykład skryptu interfejsu wiersza polecenia platformy Azure — 
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: lahugh
-ms.openlocfilehash: 3358c1aab5dc39e30690b242039940830f2e9ffc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a22bd7a2ab4e3a9c0d56aa9f4a2137881b6216af
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66127445"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322218"
 ---
 # <a name="cli-example-create-a-batch-account-in-user-subscription-mode"></a>Przykład użycia interfejsu wiersza polecenia: tworzenie konta usługi Batch w trybie subskrypcji użytkownika
 

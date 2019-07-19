@@ -1,115 +1,112 @@
 ---
-title: Ocena dużej liczby maszyn wirtualnych programu VMware do migracji na platformę Azure za pomocą usługi Azure Migrate | Dokumentacja firmy Microsoft
-description: Opisuje sposób oceny dużej liczby maszyn wirtualnych programu VMware do migracji na platformę Azure za pomocą usługi Azure Migrate.
+title: Ocenianie dużej liczby maszyn wirtualnych VMware do migracji na platformę Azure za pomocą Azure Migrate | Microsoft Docs
+description: Opisuje sposób oceny dużej liczby maszyn wirtualnych VMware do migracji na platformę Azure przy użyciu usługi Azure Migrate.
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/10/2019
-ms.author: raynew
-ms.openlocfilehash: 6102a1c59be3627b95dc1e0cb1d1d712d5832d2f
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.date: 07/12/2019
+ms.author: hamusa
+ms.openlocfilehash: c9c57a07100f2ea6db86408826bf74d05c8df5aa
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67811338"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868681"
 ---
-# <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Ocena dużej liczby maszyn wirtualnych programu VMware do migracji na platformę Azure
+# <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Ocenianie dużej liczby maszyn wirtualnych VMware na potrzeby migracji na platformę Azure
 
 
-W tym artykule opisano sposób oceny dużą (35 000 1000) lokalnych maszyn wirtualnych programu VMware do migracji na platformę Azure za pomocą narzędzia oceny Server migracji platformy Azure
+W tym artykule opisano sposób oceny dużych liczb (1000 35000) lokalnych maszyn wirtualnych VMware na potrzeby migracji na platformę Azure przy użyciu narzędzia do oceny serwera Azure Migrate
 
-[Usługa Azure Migrate](migrate-services-overview.md) udostępnia Centrum narzędzi, które ułatwiają odnajdowanie, oceny i migracji aplikacji, infrastruktury i obciążeń w systemie Microsoft Azure. Centrum obejmuje usługę Azure Migrate narzędzi i ofert Niezależnym dostawcą oprogramowania niezależnie od innych firm. 
+[Azure Migrate](migrate-services-overview.md) udostępnia centrum narzędzi, które ułatwiają odnajdywanie, ocenianie i Migrowanie aplikacji, infrastruktury i obciążeń do Microsoft Azure. Centrum obejmuje narzędzia Azure Migrate i oferty niezależnych dostawców oprogramowania (ISV) innych firm. 
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 > [!div class="checklist"]
-> * Plan oceny na dużą skalę.
-> * Skonfiguruj uprawnienia platformy Azure i przygotowywanie wdrożenia oprogramowania VMware do oceny.
-> * Utwórz projekt usługi Azure Migrate, a następnie utwórz ocenę.
-> * Przejrzyj oceny podczas planowania migracji.
+> * Zaplanuj ocenę na dużą skalę.
+> * Skonfiguruj uprawnienia platformy Azure i przygotuj oprogramowanie VMware do oceny.
+> * Utwórz projekt Azure Migrate i Utwórz ocenę.
+> * Zapoznaj się z oceną zgodnie z planem migracji.
 
 
 > [!NOTE]
-> Jeśli chcesz wypróbować od koncepcji do oceny kilku maszyn wirtualnych przed oceny na dużą skalę, postępuj zgodnie z naszym [serii samouczków](tutorial-prepare-vmware.md)
+> Jeśli chcesz wypróbować ocenę koncepcji, aby ocenić kilka maszyn wirtualnych przed oceną na dużą skalę, postępuj zgodnie z naszymi seriami [samouczków](tutorial-prepare-vmware.md)
 
-## <a name="plan-for-assessment"></a>Plan oceny
+## <a name="plan-for-assessment"></a>Planowanie oceny
 
-Planując oceny dużej liczby maszyn wirtualnych VMware, istnieje kilka rzeczy, które należy przemyśleć:
+Planując ocenę dużej liczby maszyn wirtualnych VMware, istnieje kilka rzeczy, które należy wziąć pod uwagę:
 
-- **Planowanie projektów usługi Azure Migrate**: Zorientować się, jak wdrożyć usługę Azure Migrate projektów. Na przykład jeśli swoje centra danych znajdują się w różnych lokalizacjach geograficznych lub chcesz przechować wykrywania, oceny lub metadane dotyczące migracji w innej lokalizacji geograficznej, możesz potrzebować wielu projektów. 
-- **Plan urządzenia**: Usługa Azure Migrate używa urządzenia usługi Azure Migrate w środowisku lokalnym, wdrożone jako maszyny Wirtualnej programu VMware, aby stale odnajdywanie maszyn wirtualnych. Urządzenie monitoruje zmiany środowiska, takie jak dodawanie maszyn wirtualnych, dysków lub kart sieciowych. Wysyła również metadanych i wydajności danych dotyczących ich na platformę Azure. Należy sprawdzić, ile urządzenia, zajdzie potrzeba wdrożenia.
-- **Plan kont do odnajdywania**: Usługa Azure Migrate urządzenie korzysta z konta z dostępem do programu vCenter Server w celu odnalezienia maszyn wirtualnych do oceny i migracji. W przypadku odnajdywania ponad 10 000 maszyn wirtualnych, należy skonfigurować wiele kont.
+- **Planowanie Azure Migrate projektów**: Dowiedz się, jak wdrożyć projekty Azure Migrate. Na przykład jeśli centra danych znajdują się w różnych lokalizacje geograficzneach lub chcesz przechowywać metadane związane z odnajdywaniem, oceną lub migracją w innej lokalizacji geograficznej, może być konieczne przeprowadzenie wielu projektów. 
+- **Urządzenia planu**: Azure Migrate używa lokalnego urządzenia Azure Migrate wdrożonego jako maszyna wirtualna VMware w celu ciągłego odnajdywania maszyn wirtualnych. Urządzenie monitoruje zmiany środowiska, takie jak dodawanie maszyn wirtualnych, dysków lub kart sieciowych. Wysyła również metadane i dane dotyczące wydajności na platformie Azure. Należy ustalić liczbę urządzeń, które należy wdrożyć.
+- **Planowanie kont do odnajdowania**: Urządzenie Azure Migrate używa konta z dostępem do vCenter Server w celu odnajdywania maszyn wirtualnych na potrzeby oceny i migracji. W przypadku odnajdywania więcej niż 10 000 maszyn wirtualnych Skonfiguruj wiele kont.
 
 
-## <a name="planning-limits"></a>Planowanie limity
+## <a name="planning-limits"></a>Limity planowania
  
-Użyj ograniczeń podsumowane w poniższej tabeli do planowania.
+Użyj limitów podsumowania w tej tabeli w celu zaplanowania.
 
 **Planowanie** | **Limity**
 --- | --- 
-**Projekty migracji platformy Azure** | Ocenianie maksymalnie 35 000 maszyn wirtualnych w projekcie.
-**Urządzenie Azure Migrate** | Urządzenie może łączyć się tylko z jednego serwera vCenter.<br/><br/> Urządzenie może być skojarzony tylko z pojedynczego projektu Azure Migrate.<br/> Urządzenie można odnajdywać maksymalnie 10 000 maszyn wirtualnych w programie vcenter Server.
-**Usługa Azure Migrate oceny** | Można oceniać gotowość do 35 000 maszyn wirtualnych w ramach pojedynczej oceny.
+**Projekty Azure Migrate** | Oceń do 35 000 maszyn wirtualnych w projekcie.
+**Urządzenie Azure Migrate** | Urządzenie może łączyć się tylko z jednym vCenter Server.<br/><br/> Urządzenie może być skojarzone tylko z pojedynczym projektem Azure Migrate.<br/> Urządzenie może wykryć do 10 000 maszyn wirtualnych na vCenter Server.
+**Ocena Azure Migrate** | W ramach jednej oceny można ocenić do 35 000 maszyn wirtualnych.
 
-Te limity, pamiętając Oto kilka przykładowych wdrożeń:
+Mając na uwadze następujące limity, Oto kilka przykładowych wdrożeń:
 
 
-**Serwer vCenter** | **Maszyna wirtualna na serwerze** | **Zalecenie** | **Akcja**
+**Serwer vCenter** | **Maszyny wirtualne na serwerze** | **Zalecenie** | **Akcja**
 ---|---|---
-Jeden | < 10,000 | Jeden projekt usługi Azure Migrate.<br/> Jednego urządzenia.<br/> Jedno konto vCenter dla odnajdywania. | Skonfiguruj urządzenie, Połącz z programem vCenter Server przy użyciu konta.
-Jeden | > 10,000 | Jeden projekt usługi Azure Migrate.<br/> Wiele urządzeń.<br/> Wiele kont vCenter. | Skonfiguruj urządzenie, co 10 000 maszyn wirtualnych.<br/><br/> Konfigurowanie kont vCenter i dzielenia magazynu do ograniczania dostępu dla konta usługi do mniej niż 10 000 maszyn wirtualnych.<br/> Programem vCenter server przy użyciu konta, należy połączyć z każdego urządzenia.<br/> Możesz analizować zależności między maszynami, które zostały wykryte przy użyciu różnych urządzeń.
-Wiele | < 10,000 |  Jeden projekt usługi Azure Migrate.<br/> Wiele urządzeń.<br/> Jedno konto vCenter dla odnajdywania. | Konfigurowanie urządzeń, Połącz z programem vCenter Server przy użyciu konta.<br/> Możesz analizować zależności między maszynami, które zostały wykryte przy użyciu różnych urządzeń.
-Wiele | > 10,000 | Jeden projekt usługi Azure Migrate.<br/> Wiele urządzeń.<br/> Wiele kont vCenter. | Jeśli odnajdowania programu vCenter Server w przypadku maszyn wirtualnych < 10 000 operacji Skonfiguruj urządzenie, dla każdego serwera vCenter.<br/><br/> Jeśli odnajdowania programu vCenter Server > 10 000 maszyn wirtualnych, skonfigurować urządzenie dla każdej 10 000 maszyn wirtualnych.<br/> Konfigurowanie kont vCenter i dzielenia magazynu do ograniczania dostępu dla konta usługi do mniej niż 10 000 maszyn wirtualnych.<br/> Programem vCenter server przy użyciu konta, należy połączyć z każdego urządzenia.<br/> Możesz analizować zależności między maszynami, które zostały wykryte przy użyciu różnych urządzeń.
+Je | < 10 000 | Jeden Azure Migrate projektu.<br/> Jedno urządzenie.<br/> Jedno konto vCenter do odnajdowania. | Skonfiguruj urządzenie, Połącz się z vCenter Server przy użyciu konta.
+Je | > 10 000 | Jeden Azure Migrate projektu.<br/> Wiele urządzeń.<br/> Wiele kont vCenter. | Skonfiguruj urządzenie dla każdego 10 000 maszyn wirtualnych.<br/><br/> Skonfiguruj konta vCenter i Podziel zapasy, aby ograniczyć dostęp dla konta do mniej niż 10 000 maszyn wirtualnych.<br/> Połącz każde urządzenie z serwerem vCenter Server przy użyciu konta.<br/> Można analizować zależności między maszynami, które są wykrywane przy użyciu różnych urządzeń.
+Wiele | < 10 000 |  Jeden Azure Migrate projektu.<br/> Wiele urządzeń.<br/> Jedno konto vCenter do odnajdowania. | Skonfiguruj urządzenia, Połącz się z vCenter Server przy użyciu konta.<br/> Można analizować zależności między maszynami, które są wykrywane przy użyciu różnych urządzeń.
+Wiele | > 10 000 | Jeden Azure Migrate projektu.<br/> Wiele urządzeń.<br/> Wiele kont vCenter. | W przypadku vCenter Server odnajdywania < 10 000 maszyn wirtualnych Skonfiguruj urządzenie dla każdego vCenter Server.<br/><br/> W przypadku vCenter Server odnajdywania > 10 000 maszyn wirtualnych Skonfiguruj urządzenie dla każdej maszyny wirtualnej 10 000.<br/> Skonfiguruj konta vCenter i Podziel zapasy, aby ograniczyć dostęp dla konta do mniej niż 10 000 maszyn wirtualnych.<br/> Połącz każde urządzenie z serwerem vCenter Server przy użyciu konta.<br/> Można analizować zależności między maszynami, które są wykrywane przy użyciu różnych urządzeń.
 
 
-## <a name="plan-discovery-in-a-multi-tenant-environment"></a>Planowanie odnajdywania w środowisku z wieloma dzierżawami
+## <a name="plan-discovery-in-a-multi-tenant-environment"></a>Planowanie odnajdywania w środowisku z wieloma dzierżawcami
 
-Jeśli planowane jest w przypadku środowiska z wieloma dzierżawami, można określić zakres odnajdywania w programie vcenter Server.
+W przypadku planowania środowiska z wieloma dzierżawcami można określać zakres odnajdywania na vCenter Server.
 
-- Możesz ustawić zakres odnajdywania urządzenia do centrum danych z serwera vCenter, klastra lub folderze folder hostów lub poszczególne maszyny wirtualne, host lub klastry.
-- Jeśli nie chcesz odnaleźć oddzielnie każdą dzierżawę środowiska są dzielone między dzierżawami, możesz ograniczyć dostęp do konta vCenter, używanego przez urządzenie do odnajdywania. 
-    - Jeśli dzierżawcy mają hostów, Utwórz poświadczenia z dostępem tylko do odczytu dla maszyn wirtualnych, które należą do określonej dzierżawy. 
-    - Te poświadczenia służą do odnajdywania urządzenia usługi Azure Migrate.
-    - Usługa Azure Migrate oceny nie można odnaleźć maszyn wirtualnych, jeśli konto vCenter ma dostęp udzielany na poziomie folderu vCenter maszyny Wirtualnej. Foldery hostów i klastrów są obsługiwane. 
+- Zakres odnajdywania urządzenia można ustawić na vCenter Server centrami danych, klastrami lub folderami klastrów, hostów lub folderów hostów lub poszczególnych maszyn wirtualnych.
+- Jeśli Twoje środowisko jest współużytkowane przez dzierżawców i chcesz osobno wykryć każdą dzierżawę, możesz zakres dostępu do konta vCenter używanego przez urządzenie do odnajdywania. 
+    - Jeśli dzierżawy współużytkują hosty, możesz chcieć zasięgać według folderów maszyn wirtualnych. Azure Migrate nie może wykryć maszyn wirtualnych, jeśli konto vCenter ma dostęp udzielony na poziomie folderu programu vCenter VM. Jeśli chcesz przeznaczyć zakres odnajdywania według folderów maszyn wirtualnych, możesz to zrobić, upewniając się, że konto vCenter ma dostęp tylko do odczytu na poziomie maszyny wirtualnej. Więcej informacji o określaniu zakresu odnajdywania [znajdziesz tutaj](tutorial-assess-vmware.md#scoping-discovery).
 
-## <a name="prepare-for-assessment"></a>Przygotowywanie oceny
+## <a name="prepare-for-assessment"></a>Przygotowanie do oceny
 
-Przygotowywanie platformy Azure i programu VMware server oceny. 
+Przygotuj platformę Azure i oprogramowanie VMware do oceny serwera. 
 
-1. Sprawdź [VMware obsługują wymagania i ograniczenia](migrate-support-matrix-vmware.md).
-2. Skonfiguruj uprawnienia dla konta platformy Azure korzystać z usługi Azure Migrate.
-3. Przygotowywanie wdrożenia oprogramowania VMware do oceny.
+1. Sprawdź [wymagania i ograniczenia dotyczące obsługi programu VMware](migrate-support-matrix-vmware.md).
+2. Skonfiguruj uprawnienia dla Twojego konta platformy Azure, aby móc korzystać z Azure Migrate.
+3. Przygotuj oprogramowanie VMware do oceny.
 
-
-Postępuj zgodnie z instrukcjami w [w tym samouczku](tutorial-prepare-vmware.md) skonfigurować te ustawienia.
+Aby skonfigurować te ustawienia, postępuj zgodnie z instrukcjami podanymi w [tym samouczku](tutorial-prepare-vmware.md) .
 
 
 ## <a name="create-a-project"></a>Tworzenie projektu
 
-Zgodnie z wymaganiami planowania wykonaj następujące czynności:
+Zgodnie z wymaganiami dotyczącymi planowania wykonaj następujące czynności:
 
-1. Twórz projekty usługi Azure Migrate.
-2. Dodaj narzędzia do oceny migracji serwera w Azure, do projektów.
+1. Utwórz projekty Azure Migrate.
+2. Dodaj narzędzie do oceny serwera Azure Migrate do projektów.
 
 [Dowiedz się więcej](how-to-add-tool-first-time.md)
 
 ## <a name="create-and-review-an-assessment"></a>Tworzenie i przeglądanie oceny
 
-1. Utworzyć oceny dla maszyn wirtualnych VMware.
-1. Przegląd ocen w ramach przygotowania do planowania migracji.
+1. Utwórz oceny dla maszyn wirtualnych VMware.
+1. Zapoznaj się z ocenami w temacie przygotowanie do planowania migracji.
 
 
-Postępuj zgodnie z instrukcjami w [w tym samouczku](tutorial-assess-vmware.md) skonfigurować te ustawienia.
+Aby skonfigurować te ustawienia, postępuj zgodnie z instrukcjami podanymi w [tym samouczku](tutorial-assess-vmware.md) .
     
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym artykule opisano następujące zagadnienia:
  
 > [!div class="checklist"] 
-> * Planowanej pod kątem skalowania usługi Azure Migrate ocen dla maszyn wirtualnych VMware
-> * Przygotowany platformy Azure i programu VMware do oceny
-> * Utworzony projekt usługi Azure Migrate i uruchomiono ocen
-> * Przeglądu oceny w ramach przygotowania do migracji.
+> * Planowane skalowanie Azure Migrate ocen dotyczących maszyn wirtualnych VMware
+> * Przygotowano platformę Azure i oprogramowanie VMware do oceny
+> * Utworzono projekt Azure Migrate i uruchomiono oceny
+> * Przegląd ocen w przygotowaniu do migracji.
 
-Teraz [Dowiedz się, jak](concepts-assessment-calculation.md) obliczania ocen i jak [modyfikowanie oceny](how-to-modify-assessment.md).
+Teraz [Dowiedz się, jak](concepts-assessment-calculation.md) są obliczane oceny i jak [modyfikować oceny](how-to-modify-assessment.md).

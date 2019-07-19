@@ -1,13 +1,14 @@
 ---
-title: Informacje o wyrażenie zgody aplikacji usługi Azure AD, wystąpi | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej na temat usługi Azure AD zgody środowiska, aby zobaczyć, jak można ją podczas zarządzania i programowania aplikacji w usłudze Azure AD
+title: Informacje o możliwościach wyrażania zgody aplikacji usługi Azure AD | Microsoft Docs
+description: Dowiedz się więcej o usłudze Azure AD, aby zobaczyć, jak można jej używać podczas zarządzania aplikacjami i opracowywania ich w usłudze Azure AD
 services: active-directory
 documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: develop
+ms.custom: aaddev
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,74 +17,74 @@ ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d71bfd5e560bb1509337ac371fbe101b4c6d63b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ac9d278053f05f9041a002b1c6ef3f873b0d9efb
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540644"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68324863"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Opis środowisk zgody dla aplikacji usługi Azure AD
 
-Dowiedz się więcej na temat aplikacji Azure Active Directory (Azure AD) zgoda środowisko użytkownika. Dlatego inteligentnie Zarządzanie aplikacjami w swojej organizacji lub Twórz aplikacje za pomocą aby usprawnić środowisko zgody.
+Dowiedz się więcej na temat sposobu korzystania z aplikacji Azure Active Directory (Azure AD). Dzięki temu można inteligentnie zarządzać aplikacjami dla organizacji i/lub opracowywać aplikacje z bardziej bezproblemowe.
 
-## <a name="consent-and-permissions"></a>Uprawnienia i zgody
+## <a name="consent-and-permissions"></a>Zgoda i uprawnienia
 
-Zgoda jest proces udzielania autoryzacji do aplikacji w celu dostępu do chronionych zasobów w imieniu użytkownika. Administrator lub użytkownik można poprosić o ich zgodę zezwolić na dostęp do danych organizacji/poszczególnych użytkowników.
+Zgoda polega na tym, że użytkownik udzielający autoryzacji aplikacji dostępu do chronionych zasobów w ich imieniu. Administrator lub użytkownik może zostać poproszony o zgodę, aby zezwolić na dostęp do swojej organizacji/poszczególnych danych.
 
-Rzeczywiste środowisko udzielania zgody będą się różnić w zależności od zasad zabezpieczeń ustawionych w dzierżawie użytkownika, zakresu użytkownika urzędu (lub rolach) i typ [uprawnienia](https://docs.microsoft.com/azure/active-directory/develop/active-directory-permissions) żądanego przez aplikację klienta. Oznacza to, że niektóre kontrolę nad środowiskiem zgody posiadanych przez deweloperów aplikacji i administratorów dzierżawy. Administratorzy mają elastyczność i wyłączanie zasad na dzierżawy lub aplikacji do sterowania środowisko zgody w ramach ich dzierżawy. Deweloperzy aplikacji mogą określają, jakie uprawnienia są żądane i chcą prowadzą użytkowników przez użytkownika wyraża zgodę przepływu lub przepływu wyrażania zgody administratora.
+Rzeczywiste środowisko użytkownika udzielania zgody będzie różnić się w zależności od zasad ustawionych w dzierżawie użytkownika, zakresu uwierzytelniania użytkownika (lub roli) oraz typu [uprawnień](https://docs.microsoft.com/azure/active-directory/develop/active-directory-permissions) wymaganych przez aplikację kliencką. Oznacza to, że deweloperzy aplikacji i Administratorzy dzierżawy mają pewną kontrolę nad doświadczeniem w zakresie wyrażania zgody. Administratorzy mają elastyczność ustawiania i wyłączania zasad w dzierżawie lub aplikacji w celu kontrolowania sposobu wyrażania zgody w dzierżawie. Deweloperzy aplikacji mogą określać, jakie typy uprawnień są wymagane i czy chcą przeprowadzić użytkowników przez przepływ zgody użytkownika lub przepływ zgody administratora.
 
-- **Przepływu wyrażania zgody użytkownika** jest, gdy deweloper aplikacji kieruje użytkowników do punktu końcowego autoryzacji z zamiarem rekordów wyrażania zgody dla bieżącego użytkownika.
-- **Przepływu wyrażania zgody administratora** jest, gdy deweloper aplikacji kieruje użytkowników do administratora zgody punktu końcowego z zamiarem rekordów zgody na całej dzierżawie. Aby zapewnić przepływu wyrażania zgody administratora działa poprawnie, deweloperzy aplikacji musi zawierać wszystkie uprawnienia w `RequiredResourceAccess` właściwości w manifeście aplikacji. Aby uzyskać więcej informacji, zobacz [manifest aplikacji](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest).
+- **Przepływ zgody użytkownika** polega na tym, że deweloper aplikacji kieruje użytkowników do punktu końcowego autoryzacji z zamiarem zarejestrowania zgody wyłącznie dla bieżącego użytkownika.
+- **Przepływ zgody administratora** polega na tym, że deweloper aplikacji kieruje użytkowników do punktu końcowego zgody na administratora z zamiarem zarejestrowania zgody dla całej dzierżawy. Aby zapewnić prawidłowe działanie przepływu zgody administratora, deweloperzy aplikacji muszą wyświetlić listę wszystkich uprawnień we `RequiredResourceAccess` właściwości w manifeście aplikacji. Aby uzyskać więcej informacji, zobacz [manifest aplikacji](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest).
 
-## <a name="building-blocks-of-the-consent-prompt"></a>Bloki konstrukcyjne monit o wyrażenie zgody
+## <a name="building-blocks-of-the-consent-prompt"></a>Bloki konstrukcyjne monitu o zgodę
 
-Monit o wyrażenie zgody jest przeznaczony do upewnij się, że użytkownicy mają wystarczająco dużo informacji, aby określić, jeśli są zaufane aplikacji klienckiej dostęp do chronionych zasobów w ich imieniu. Dotyczącej bloków konstrukcyjnych pomoże użytkownikom udzielania zgody upewnij, więcej informacji decyzji i ułatwić deweloperom tworzenie lepszych rozwiązań.
+Monit o zgodę został zaprojektowany w celu zapewnienia, że użytkownicy mają wystarczającą ilość informacji, aby określić, czy ufają aplikacji klienckiej w celu uzyskania dostępu do chronionych zasobów w ich imieniu. Zrozumienie bloków konstrukcyjnych pomoże użytkownikom w udzielaniu zgody na podejmowanie bardziej świadomych decyzji i ułatwia deweloperom tworzenie lepszych środowisk użytkowników.
 
-Poniższy diagram i tabeli, podaj informacje na temat bloków konstrukcyjnych monit o wyrażenie zgody.
+Poniższy diagram i tabela zawierają informacje dotyczące bloków konstrukcyjnych monitu o zgodę.
 
-![Bloki konstrukcyjne monit o wyrażenie zgody](./media/application-consent-experience/consent_prompt.png)
+![Bloki konstrukcyjne monitu o zgodę](./media/application-consent-experience/consent_prompt.png)
 
-| # | Składnik | Przeznaczenie |
+| # | Składnik | Cel |
 | ----- | ----- | ----- |
-| 1 | Identyfikator użytkownika | Ten identyfikator reprezentuje użytkownika, który aplikacja kliencka żąda dostępu do chronionych zasobów w imieniu osób. |
-| 2 | Stanowisko | Tytuł zmienia się zależnie od tego, czy użytkownicy są poddawane przepływu wyrażania zgody użytkownika lub administratora. W usłudze flow zgody użytkownika tytuł będzie "Żądane uprawnienia" podczas przepływu wyrażania zgody administratora tytuł będzie miał dodatkowy wiersz "Akceptuj dla Twojej organizacji". |
-| 3 | Logo aplikacji | Ten obraz Ci użytkownicy wizualną od tego, czy ta aplikacja jest aplikacją ma dostęp. Ten obraz jest dostarczany przez deweloperów aplikacji i własność ten obraz nie jest zweryfikowany. |
-| 4 | Nazwa aplikacji | Tę wartość należy poinformować użytkowników, która aplikacja żąda dostępu do swoich danych. Należy pamiętać, ta nazwa jest świadczona przez deweloperów i własności to nazwa aplikacji nie jest zweryfikowany. |
-| 5 | Domena wydawcy | Ta wartość powinna udostępniają użytkownikom domeny, które mogą być w stanie oceniająca wiarygodności. Ta domena jest świadczona przez deweloperów i zweryfikowaniu własności tej domeny wydawcy. |
-| 6 | Uprawnienia | Ta lista zawiera wymagane przez aplikację kliencką uprawnienia. Użytkownicy zawsze należy ocenić typy Aby zrozumieć, jakie dane, aplikacja kliencka będzie autoryzowana do dostępu w ich imieniu po ich zaakceptowaniu wymagane uprawnienia. Jako Deweloper aplikacji najlepiej jest żądanie dostępu do uprawnień za pomocą najniższych uprawnień. |
-| 7 | Opis uprawnień | Ta wartość jest udostępniany przez usługę ujawnienia uprawnień. Aby wyświetlić opisy uprawnień, możesz przełączyć cudzysłów ostrokątny obok uprawnienia. |
-| 8 | Warunki aplikacji | Niniejsze postanowienia zawierają linki do warunków usługi i zasady zachowania poufności aplikacji. Wydawca jest odpowiedzialny za tworzenie konspektu ich zestawów reguł w jej warunkach użytkowania usługi. Ponadto wydawca jest odpowiedzialny za ujawnieniu sposób ich używania i udostępniania danych użytkowników w ich zachowania poufności informacji. Jeśli wydawca nie udostępnia łącza do tych wartości dla aplikacji wielodostępnych, będzie pogrubiony ostrzeżenia na monit o wyrażenie zgody. |
-| 9 | https://myapps.microsoft.com | Jest to link, w którym użytkownicy mogą przejrzeć i usunąć wszystkie aplikacje firm innych niż Microsoft, które aktualnie mają dostęp do swoich danych. |
+| 1 | Identyfikator użytkownika | Ten identyfikator reprezentuje użytkownika, którego aplikacja kliencka żąda dostępu do chronionych zasobów w imieniu. |
+| 2 | Tytuł | Tytuł zmienia się w zależności od tego, czy użytkownicy przechodzą przez przepływ zgody użytkownika lub administratora. W przepływie zgody użytkownika tytuł będzie "żądanymi uprawnieniami" w przepływie zgody administratora, a tytuł będzie miał dodatkowy wiersz "Akceptuj dla organizacji". |
+| 3 | Logo aplikacji | Ten obraz powinien ułatwić użytkownikom wizualne określenie, czy ta aplikacja jest aplikacją, do której mają dostęp. Ten obraz jest dostarczany przez deweloperów aplikacji, a własność tego obrazu nie jest zweryfikowana. |
+| 4 | Nazwa aplikacji | Ta wartość powinna informować użytkowników, którzy aplikacje żądają dostępu do swoich danych. Należy pamiętać, że ta nazwa jest dostarczana przez deweloperów, a własność tej nazwy aplikacji nie jest zweryfikowana. |
+| 5 | Domena wydawcy | Ta wartość powinna zapewnić użytkownikom domenę, że może ona być w stanie oszacować pod kątem wiarygodności. Ta domena jest świadczona przez deweloperów i sprawdzana jest własność tej domeny wydawcy. |
+| 6 | Uprawnienia | Ta lista zawiera uprawnienia wymagane przez aplikację kliencką. Użytkownicy powinni zawsze oszacować typy żądanych uprawnień, aby zrozumieć, jakie dane aplikacja kliencka będzie uprawniona do uzyskiwania dostępu w ich imieniu, jeśli zostaną one zaakceptowane. Deweloper aplikacji najlepiej zażądać dostępu do uprawnień o najniższych uprawnieniach. |
+| 7 | Opis uprawnienia | Ta wartość jest dostarczana przez usługę, która uwidacznia uprawnienia. Aby wyświetlić opisy uprawnień, należy przełączyć cudzysłów ostrokątny obok uprawnienia. |
+| 8 | Warunki aplikacji | Warunki te zawierają linki do warunków użytkowania usługi i zasad zachowania poufności informacji aplikacji. Wydawca jest odpowiedzialny za tworzenie reguł w swoich warunkach użytkowania. Ponadto Wydawca jest odpowiedzialny za odzamykanie sposobu używania i udostępniania danych użytkownika w zasadach zachowania poufności informacji. Jeśli Wydawca nie poda linków do tych wartości dla aplikacji wielodostępnych, w monicie o zgodę zostanie pogrubione ostrzeżenie. |
+| 9 | https://myapps.microsoft.com | Jest to link, w którym użytkownicy mogą przeglądać i usuwać aplikacje inne niż firmy Microsoft, które aktualnie mają dostęp do swoich danych. |
 
-## <a name="common-consent-scenarios"></a>Typowe scenariusze zgody
+## <a name="common-consent-scenarios"></a>Typowe scenariusze wyrażania zgody
 
-Poniżej przedstawiono procesy zgody, które użytkownik może zostać wyświetlony w typowych scenariuszach zgody:
+Poniżej przedstawiono sposób, w jaki użytkownik może zobaczyć w typowych scenariuszach zgody:
 
-1. Osobom dostęp do aplikacji z hiperlinkiem do użytkownika wyraża zgodę przepływu podczas wymagające zestawu uprawnień, który znajduje się w ich zakresie urzędu.
+1. Osoby, które uzyskują dostęp do aplikacji, która kieruje je do przepływu wyrażania zgody użytkownika, ale wymaga zestawu uprawnień znajdującego się w zakresie urzędu certyfikacji.
     
-    1. Administratorzy zobaczą dodatkowej kontroli w wierszu polecenia z tradycyjnych zgody, który umożliwi im zgody w imieniu całej dzierżawie. Formant zostanie przywrócona wartość domyślna jest wyłączany, więc tylko gdy Administratorzy jawnie Sprawdź, czy pole zgody udzielone w imieniu całej dzierżawie. Obecnie to pole wyboru będzie wyświetlana tylko dla roli administratora globalnego, więc aplikacja i administratora chmury nie będą widzieć tego pola wyboru.
+    1. Administratorzy będą widzieć dodatkową kontrolę nad tradycyjnym monitem o zgodę, który zezwoli na ich zgodę w imieniu całej dzierżawy. Formant zostanie przyznany jako wyłączony, więc tylko wtedy, gdy Administratorzy jawnie zaznaczą pole, zgoda zostanie udzielona w imieniu całej dzierżawy. Obecnie to pole wyboru będzie wyświetlane tylko dla roli administratora globalnego, więc administrator chmury i administrator aplikacji nie będą widzieć tego pola wyboru.
 
-        ![Monit o wyrażenie zgody na scenariusz 1a](./media/application-consent-experience/consent_prompt_1a.png)
+        ![Monit o zgodę dla scenariusza 1a](./media/application-consent-experience/consent_prompt_1a.png)
     
-    2. Użytkownicy zobaczą monit o tradycyjnych wyrażenie zgody.
+    2. Użytkownicy będą widzieć tradycyjny monit o zgodę.
 
-        ![Monit o wyrażenie zgody na scenariusz 1b](./media/application-consent-experience/consent_prompt_1b.png)
+        ![Monit o zgodę dla scenariusza 1b](./media/application-consent-experience/consent_prompt_1b.png)
 
-2. Uzyskiwanie dostępu do aplikacji, która wymaga co najmniej jedno uprawnienie, który znajduje się poza ich zakresem urzędu użytkowników indywidualnych.
-    1. Administratorzy zobaczą tym samym wierszu jako 1.i przedstawionych powyżej.
-    2. Użytkownikom zostanie zablokowany udzielania zgody aplikacji, a będą powiadamiani poprosić swojego administratora o dostęp do aplikacji. 
+2. Osoby, które uzyskują dostęp do aplikacji, która wymaga co najmniej jednego uprawnienia poza ich zakresem uprawnień.
+    1. Administratorzy będą widzieli ten sam monit co 1. pokazane powyżej.
+    2. Użytkownicy będą mogli udzielać zgody na dostęp do aplikacji i otrzymają monit o poproszenie administratora o udzielenie dostępu do aplikacji. 
                 
-        ![Monit o wyrażenie zgody na scenariusz 1b](./media/application-consent-experience/consent_prompt_2b.png)
+        ![Monit o zgodę dla scenariusza 1b](./media/application-consent-experience/consent_prompt_2b.png)
 
-3. Osoby, które przejść lub są kierowane do administratora zgody przepływu.
-    1. Administratorzy zobaczą monit o wyrażenie zgody administratora. Tytuł i opis uprawnienia zmieniony na ten monit, Wyróżnij zmiany fakt, że akceptując ten monit spowoduje przyznanie aplikacji dostęp do żądanych danych w imieniu całej dzierżawie.
+3. Osoby, które poruszają się lub kierują do przepływu zgody administratora.
+    1. Administratorzy będą widzieli monit o zgodę administratora. Tytuł i opisy uprawnień zostały zmienione w tym monicie, natomiast w przypadku zmiany zostanie wyświetlona informacja o tym, że ten monit zostanie udzielony, udziel aplikacji dostępu do żądanych danych w imieniu całej dzierżawy.
         
-        ![Monit o wyrażenie zgody na scenariusz 1b](./media/application-consent-experience/consent_prompt_3a.png)
+        ![Monit o zgodę dla scenariusza 1b](./media/application-consent-experience/consent_prompt_3a.png)
         
-    1. Użytkownicy inni niż administratorzy zobaczą tym samym ekranie jako ii 2. przedstawionych powyżej.
+    1. Użytkownicy niebędący administratorami zobaczą ten sam ekran co 2. II powyżej.
 
-## <a name="next-steps"></a>Kolejne kroki
-- Szczegółowe omówienie [jak platformy wyrażania zgody w usłudze Azure AD implementuje zgody](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
-- Aby uzyskać bardziej szczegółowe informacje, Dowiedz się, [użycia platformy wyrażania zgody aplikacji z wieloma dzierżawami](active-directory-devhowto-multi-tenant-overview.md) do zaimplementowania "user" i "admin" zgody, obsługa więcej zaawansowanych wzorce aplikacji wielowarstwowych.
-- Dowiedz się, [sposobu konfigurowania domena wydawcy aplikacji](howto-configure-publisher-domain.md).
+## <a name="next-steps"></a>Następne kroki
+- Zapoznaj się z omówieniem krok po kroku [na temat sposobu, w jaki platforma zgody usługi Azure AD implementuje wyrażanie zgody](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
+- Aby uzyskać większą głębokość, Dowiedz się, w [jaki sposób aplikacja wielodostępna może używać struktury zgody](active-directory-devhowto-multi-tenant-overview.md) do implementowania zgody "User" i "admin", co pozwala na bardziej zaawansowane wzorce aplikacji wielowarstwowej.
+- Dowiedz się [, jak skonfigurować domenę wydawcy aplikacji](howto-configure-publisher-domain.md).

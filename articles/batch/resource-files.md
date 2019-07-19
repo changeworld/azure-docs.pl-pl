@@ -1,48 +1,48 @@
 ---
-title: Tworzenie i używanie plików zasobów — Azure Batch | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć pliki zasobów usługi Azure Batch z różnych źródeł danych wejściowych.
+title: Tworzenie i używanie plików zasobów — Azure Batch | Microsoft Docs
+description: Dowiedz się, jak tworzyć pliki zasobów Azure Batch z różnych źródeł danych wejściowych.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: lahugh
-ms.openlocfilehash: 113faffb0ebac50a67c96ce21e0ee2c1564bb4fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9c55b22d1cb85fb645087cf48b54f9d5ac12d58f
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65405639"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322186"
 ---
 # <a name="creating-and-using-resource-files"></a>Tworzenie i używanie plików zasobów
 
-Zadanie usługi Azure Batch często wymaga pewnego rodzaju dane można przetworzyć. Pliki zasobów są sposób dane do usługi Batch maszyny wirtualnej (VM) za pomocą zadania. Pliki zasobów obsługi wszystkich typów zadań: zadania, zostaną uruchomione zadania, przygotowanie zadania, zadania podrzędne zwolnienia zadania itp. W tym artykule opisano kilka typowych metod na temat sposobu tworzenia plików zasobów i umieścić je na maszynie Wirtualnej.  
+Zadanie Azure Batch często wymaga pewnej formy danych do przetworzenia. Pliki zasobów to metody umożliwiające dostarczenie tych danych do maszyny wirtualnej z usługą Batch za pośrednictwem zadania. Wszystkie typy zadań obsługują pliki zasobów: zadania, zadania uruchamiania, zadania przygotowania zadania, zadania zwolnienia zadań itp. W tym artykule opisano kilka typowych metod tworzenia plików zasobów i umieszczania ich na maszynie wirtualnej.  
 
-Pliki zasobów są mechanizm umieszczanie danych na Maszynę wirtualną w usłudze Batch, ale typ danych i sposobu ich wykorzystywania jest elastyczny. Istnieją jednak pewne typowe przypadki użycia:
+Pliki zasobów to mechanizm do umieszczania danych na maszynie wirtualnej w usłudze Batch, ale typ danych i sposób ich użycia są elastyczne. Istnieją jednak niektóre typowe przypadki użycia:
 
-1. Inicjowanie obsługi wspólnej plików na każdej maszynie Wirtualnej przy użyciu plików zasobów dla zadania rozpoczęcia
-1. Aprowizowanie dane wejściowe do przetworzenia przez zadania
+1. Udostępnianie typowych plików na każdej maszynie wirtualnej przy użyciu plików zasobów w zadaniu uruchamiania
+1. Udostępnianie danych wejściowych do przetworzenia przez zadania
 
-Wspólne pliki można na przykład plików na zadanie podrzędne uruchamiania używane do instalowania aplikacji uruchamianych przez podzadania. Dane wejściowe można obrazu raw lub dane wideo lub żadnych informacji do przetworzenia przy użyciu usługi Batch.
+Typowe pliki mogą to być na przykład pliki w zadaniu uruchamiania służące do instalowania aplikacji uruchamianych przez zadania. Dane wejściowe mogą być nieprzetworzonymi obrazami lub danymi wideo albo informacjami, które mają być przetwarzane przez partię.
 
 ## <a name="types-of-resource-files"></a>Typy plików zasobów
 
-Istnieje kilka różnych opcji można wygenerować plików źródłowych. Proces tworzenia plików zasobów różni się w zależności od tego, gdzie są przechowywane oryginalnych danych.
+Istnieje kilka różnych opcji umożliwiających generowanie plików zasobów. Proces tworzenia plików zasobów różni się w zależności od tego, gdzie są przechowywane oryginalne dane.
 
-Opcje tworzenia pliku zasobu:
+Opcje tworzenia pliku zasobów:
 
 - [Adres URL kontenera magazynu](#storage-container-url): Generuje plik zasobów z dowolnego kontenera magazynu na platformie Azure
-- [Nazwa kontenera magazynu](#storage-container-name): Generuje plik zasobów na podstawie nazwy kontenera na koncie magazynu platformy Azure, połączone z usługi Batch
-- [Punkt końcowy sieci Web](#web-endpoint): Generuje plik zasobów z dowolnym prawidłowym adresem URL protokołu HTTP
+- [Nazwa kontenera magazynu](#storage-container-name): Generuje plik zasobów na podstawie nazwy kontenera na koncie usługi Azure Storage połączonym z usługą Batch
+- [Punkt końcowy sieci Web](#web-endpoint): Generuje plik zasobów na podstawie dowolnego prawidłowego adresu URL HTTP
 
 ### <a name="storage-container-url"></a>Adres URL kontenera magazynu
 
-Przy użyciu adresu URL kontenera magazynu oznacza, że masz dostęp plików w dowolnym kontenerze magazynu na platformie Azure z odpowiednimi uprawnieniami.
+Użycie adresu URL kontenera magazynu oznacza, że można uzyskać dostęp do plików w dowolnym kontenerze magazynu na platformie Azure z odpowiednimi uprawnieniami.
 
-W tym C# przykład już zostały przekazane pliki do kontenera usługi Azure storage jako magazynu obiektów blob. Aby uzyskać dostęp do danych, potrzebne do utworzenia pliku zasobów, najpierw należy uzyskać dostęp do kontenera magazynu.
+W tym C# przykładzie pliki zostały już przekazane do kontenera usługi Azure Storage jako magazynu obiektów BLOB. Aby uzyskać dostęp do danych potrzebnych do utworzenia pliku zasobów, najpierw musimy uzyskać dostęp do kontenera magazynu.
 
-Tworzenie sygnatury dostępu współdzielonego (SAS) identyfikator URI przy użyciu odpowiednich uprawnień dostępu do kontenera magazynu. Ustaw czas wygaśnięcia i uprawnienia dla sygnatury dostępu Współdzielonego. W tym przypadku nie czas rozpoczęcia jest określony, więc sygnatury dostępu Współdzielonego zaczyna obowiązywać natychmiast i wygasa po dwóch godzinach od jego wygenerowaniu.
+Utwórz identyfikator URI sygnatury dostępu współdzielonego (SAS) z odpowiednimi uprawnieniami dostępu do kontenera magazynu. Ustaw czas wygaśnięcia i uprawnienia dla sygnatury dostępu współdzielonego. W takim przypadku nie zostanie określony czas rozpoczęcia, więc sygnatura dostępu współdzielonego stają obowiązywać natychmiast i wygasa po upływie dwóch godzin od jego wygenerowania.
 
 ```csharp
 SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
@@ -53,9 +53,9 @@ SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
 ```
 
 > [!NOTE]
-> Dostępu do kontenera, musisz mieć obie `Read` i `List` uprawnienia, natomiast dzięki dostępowi do obiektu blob, wystarczy `Read` uprawnień.
+> Aby uzyskać dostęp do kontenera, musisz mieć `Read` zarówno `List` uprawnienia, jak i `Read` dostęp do obiektów BLOB.
 
-Po skonfigurowaniu uprawnień utworzyć token sygnatury dostępu Współdzielonego i sformatować adres URL SAS do uzyskiwania dostępu do kontenera magazynu. Za pomocą sformatowany adres URL sygnatury dostępu Współdzielonego kontenera magazynu wygenerować plik zasobu o [ `FromStorageContainerUrl` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet).
+Po skonfigurowaniu uprawnień należy utworzyć token sygnatury dostępu współdzielonego i sformatować adres URL sygnatury dostępu współdzielonego, aby uzyskać dostęp do kontenera magazynu. Przy użyciu sformatowanego adresu URL sygnatury dostępu współdzielonego dla kontenera magazynu [`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet)wygeneruj plik zasobów przy użyciu polecenia.
 
 ```csharp
 CloudBlobContainer container = blobClient.GetContainerReference(containerName);
@@ -66,15 +66,15 @@ string containerSasUrl = String.Format("{0}{1}", container.Uri, sasToken);
 ResourceFile inputFile = ResourceFile.FromStorageContainerUrl(containerSasUrl);
 ```
 
-Alternatywę dla generowania adresu URL sygnatury dostępu Współdzielonego jest umożliwienie anonimowe, publiczny dostęp do odczytu do kontenera i jego obiektów blob w usłudze Azure Blob storage. Dzięki temu można przyznać dostęp tylko do odczytu do tych zasobów, bez udostępniania klucz konta, a także bez konieczności sygnatury dostępu Współdzielonego. Publiczny dostęp do odczytu jest zazwyczaj używany w scenariuszach, w której chcesz niektórych obiektów blob, które zawsze będą dostępne dla anonimowy dostęp do odczytu. Jeśli w tym scenariuszu pasujące do rozwiązania, zobacz [anonimowy dostęp do obiektów blob](../storage/blobs/storage-manage-access-to-resources.md) artykuł, aby dowiedzieć się więcej o zarządzaniu dostępem do danych obiektów blob.
+Alternatywą dla generowania adresu URL SAS jest umożliwienie anonimowego, publicznego dostępu do odczytu do kontenera i jego obiektów BLOB w usłudze Azure Blob Storage. Dzięki temu można przyznać dostęp tylko do odczytu do tych zasobów bez udostępniania klucza konta i bez konieczności używania sygnatury dostępu współdzielonego. Publiczny dostęp do odczytu jest zazwyczaj używany w scenariuszach, w których niektóre obiekty blob mają zawsze być dostępne do anonimowego dostępu do odczytu. Jeśli ten scenariusz odpowiada Twojemu rozwiązaniu, zobacz artykuł [anonimowy dostęp do obiektów BLOB](../storage/blobs/storage-manage-access-to-resources.md) , aby dowiedzieć się więcej na temat zarządzania dostępem do danych obiektów BLOB.
 
 ### <a name="storage-container-name"></a>Nazwa kontenera magazynu
 
-Zamiast konfigurowania oraz tworzenia adresu URL sygnatury dostępu Współdzielonego, można użyć nazwa kontenera usługi Azure storage, dostęp do danych obiektów blob. Kontener magazynu używane musi koncie magazynu platformy Azure, który jest połączony z kontem usługi Batch, znane jako konto autostorage. Przy użyciu nazwy kontenera magazynu konta autostorage pozwala pominąć konfigurowanie i Tworzenie adresu URL sygnatury dostępu Współdzielonego dostępu do kontenera magazynu.
+Zamiast konfigurować i tworzyć adres URL sygnatury dostępu współdzielonego, można użyć nazwy kontenera usługi Azure Storage, aby uzyskać dostęp do danych obiektów BLOB. Używany kontener magazynu musi być kontem usługi Azure Storage, które jest połączone z kontem w usłudze Batch, znanym jako konto magazynu. Użycie nazwy kontenera magazynu dla konta usługi Storage umożliwia obejście konfiguracji i utworzenia adresu URL sygnatury dostępu współdzielonego w celu uzyskania dostęp do kontenera magazynu.
 
-W tym przykładzie przyjęto założenie, że dane, które ma być używany do tworzenia plików zasobów jest już konta usługi Azure Storage, połączony z Twoim kontem usługi Batch. Jeśli nie masz konta autostorage, zobacz kroki w [Utwórz konto usługi Batch](batch-account-create-portal.md) Aby uzyskać szczegółowe informacje na temat sposobu tworzenia i łączenia konta usługi.
+W tym przykładzie przyjęto założenie, że dane, które mają być używane do tworzenia plików zasobów, są już na koncie usługi Azure Storage połączonym z kontem usług Batch. Jeśli nie masz konta usługi autostorage, zapoznaj się z instrukcjami w temacie [Tworzenie konta usługi Batch](batch-account-create-portal.md) , aby uzyskać szczegółowe informacje na temat tworzenia i łączenia konta.
 
-Za pomocą połączonego konta magazynu, nie trzeba tworzyć i konfigurować adres URL sygnatury dostępu Współdzielonego kontenera magazynu. Zamiast tego należy podać nazwę kontenera magazynu w połączonym koncie magazynu.
+Przy użyciu połączonego konta magazynu nie trzeba tworzyć i konfigurować adresu URL sygnatury dostępu współdzielonego dla kontenera magazynu. Zamiast tego Podaj nazwę kontenera magazynu na połączonym koncie magazynu.
 
 ```csharp
 ResourceFile inputFile = ResourceFile.FromAutoStorageContainer(containerName);
@@ -82,9 +82,9 @@ ResourceFile inputFile = ResourceFile.FromAutoStorageContainer(containerName);
 
 ### <a name="web-endpoint"></a>Punkt końcowy sieci Web
 
-Dane, które nie są przekazywane do usługi Azure Storage, nadal może służyć do tworzenia plików zasobów. Możesz określić każdy prawidłowy adres HTTP URL zawierających dane wejściowe. Adres URL jest dostarczany do interfejsu API usługi Batch, a następnie dane jest używane do utworzenia pliku zasobów.
+Dane, które nie zostały przekazane do usługi Azure Storage, nadal mogą być używane do tworzenia plików zasobów. Można określić dowolny prawidłowy adres URL HTTP zawierający dane wejściowe. Adres URL jest dostarczany do interfejsu API usługi Batch, a następnie dane są używane do tworzenia pliku zasobów.
 
-W następującym C# przykład danych wejściowych znajduje się na fikcyjnej punktu końcowego usługi GitHub. Interfejs API pobiera plik z prawidłową internetowego punktu końcowego i generuje plik zasobów do użycia przez zadanie. Żadne poświadczenia nie są wymagane dla tego scenariusza.
+W poniższym C# przykładzie dane wejściowe są hostowane w fikcyjnym punkcie końcowym usługi GitHub. Interfejs API pobiera plik z prawidłowego punktu końcowego sieci Web i generuje plik zasobów, który ma zostać wykorzystany przez zadanie. W tym scenariuszu nie są potrzebne żadne poświadczenia.
 
 ```csharp
 ResourceFile inputFile = ResourceFile.FromUrl("https://github.com/foo/file.txt", filePath);
@@ -92,23 +92,23 @@ ResourceFile inputFile = ResourceFile.FromUrl("https://github.com/foo/file.txt",
 
 ## <a name="tips-and-suggestions"></a>Porady i sugestie
 
-Każde zadanie usługi Azure Batch używa plików inaczej, dlatego Batch ma opcjami dostępnymi na potrzeby zarządzania plikami na zadania. Następujące scenariusze nie są przeznaczone do wyczerpująca, ale zamiast tego obejmują kilka typowych sytuacjach i przedstawić zalecenia w zakresie.
+Każde zadanie Azure Batch używa plików w inny sposób, co oznacza, że w usłudze Batch dostępne są opcje zarządzania plikami na zadaniach. Następujące scenariusze nie są przeznaczone do kompleksowego, ale obejmują kilka typowych sytuacji i udostępniają zalecenia.
 
 ### <a name="many-resource-files"></a>Wiele plików zasobów
 
-Zadania usługi Batch mogą zawierać kilka zadań, które używają tego samego, wspólnego plików. Jeśli pliki typowych zadań są współużytkowane przez wiele zadań, za pomocą pakietu aplikacji ma zawierać pliki, zamiast korzystać z plików zasobów może być lepszym rozwiązaniem. Pakiety aplikacji zapewniają optymalizacji dla szybkość pobierania. Ponadto dane w pakiety aplikacji są buforowane między zadaniami, dlatego jeśli pliki zadanie nie zmieniają się często, pakiety aplikacji może być dobrym rozwiązaniem dla danego rozwiązania. Za pomocą pakietów aplikacji nie muszą ręcznie zarządzać kilka plików zasobów lub generowania adresów URL sygnatury dostępu Współdzielonego, aby uzyskać dostęp do plików w usłudze Azure Storage. Batch działają w tle z usługi Azure Storage do przechowywania i wdrażania pakietów aplikacji do węzłów obliczeniowych.
+Zadanie wsadowe może zawierać kilka zadań, które używają tych samych, wspólnych plików. Jeśli wspólne pliki zadań są współużytkowane przez wiele zadań, użycie pakietu aplikacji do przechowywania plików zamiast plików zasobów może być lepszym rozwiązaniem. Pakiety aplikacji zapewniają optymalizację dla szybkości pobierania. Ponadto dane w pakietach aplikacji są buforowane między zadaniami, więc jeśli pliki zadań nie zmieniają się często, pakiety aplikacji mogą być dobrze dopasowane do danego rozwiązania. W przypadku pakietów aplikacji nie trzeba ręcznie zarządzać kilkoma plikami zasobów ani generować adresów URL SAS, aby uzyskać dostęp do plików w usłudze Azure Storage. Usługa Batch działa w tle w usłudze Azure Storage, aby przechowywać i wdrażać pakiety aplikacji w węzłach obliczeniowych.
 
-Jeśli każde zadanie zawiera wiele plików unikatowe dla tego zadania, pliki zasobów są głównie prawdopodobnie najlepszym rozwiązaniem. Zadania, które często używają unikatowych plików muszą zostać zaktualizowane lub zastąpiony, który nie jest łatwe do zawartości pakietów aplikacji. Pliki zasobów zapewniają większą elastyczność podczas aktualizowania, dodawania i edytowania pojedynczych plików.
+Jeśli każde zadanie ma wiele plików unikatowych dla tego zadania, najprawdopodobniej najlepszym rozwiązaniem jest plik zasobów. Zadania korzystające z unikatowych plików często muszą być aktualizowane lub zastępowane, co nie jest łatwe do wykonania w przypadku zawartości pakietów aplikacji. Pliki zasobów zapewniają dodatkową elastyczność aktualizowania, dodawania lub edytowania poszczególnych plików.
 
-### <a name="number-of-resource-files-per-task"></a>Liczba plików zasobów dla każdego zadania
+### <a name="number-of-resource-files-per-task"></a>Liczba plików zasobów na zadanie
 
-W przypadku kilku plików zasobów kilkuset określony dla zadania usługi Batch może odrzucić zadanie dla niej zbyt dużego. Najlepiej Zachowywanie zadań małych, minimalizując liczbę plików zasobów w samo zadanie.
+Jeśli w zadaniu określono kilka plików zasobów, przetwarzanie wsadowe może odrzucić zadanie zbyt duże. Najlepszym rozwiązaniem jest utrzymywanie zadań przez zminimalizowanie liczby plików zasobów w samym zadaniu.
 
-Jeśli nie ma możliwości aby zminimalizować liczbę plików zadanie wymaga, zadania można zoptymalizować, tworząc plik pojedynczy zasób, który odwołuje się do kontenera magazynu plików zasobów. W tym celu należy umieścić pliki zasobów w kontenerze usługi Azure Storage i używać różnych trybach "Container" plików zasobów. Użyj opcji prefiks obiektu blob, aby określić kolekcji plików do pobrania dla zadań podrzędnych.
+Jeśli nie ma możliwości zminimalizowania liczby plików potrzebnych do wykonania zadania, można zoptymalizować zadanie, tworząc jeden plik zasobu, który odwołuje się do kontenera magazynu plików zasobów. W tym celu należy umieścić pliki zasobów w kontenerze usługi Azure Storage i użyć różnych trybów "Container" plików zasobów. Użyj opcji prefiksu obiektu BLOB, aby określić kolekcje plików do pobrania dla zadań.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej o [pakiety aplikacji](batch-application-packages.md) jako alternatywę do plików zasobów.
-- Aby uzyskać więcej informacji na temat plików zasobów przy użyciu kontenerów, zobacz [obciążeń kontenerów](batch-docker-container-workloads.md).
-- Aby dowiedzieć się, jak zebrać i zapisać dane wyjściowe z zadania, zobacz [utrwalanie danych wyjściowych zadań i zadań podrzędnych](batch-task-output.md).
+- Zapoznaj się z [pakietami aplikacji](batch-application-packages.md) jako alternatywą dla plików zasobów.
+- Aby uzyskać więcej informacji o używaniu kontenerów dla plików zasobów, zobacz [obciążenia kontenerów](batch-docker-container-workloads.md).
+- Aby dowiedzieć się, jak zbierać i zapisywać dane wyjściowe z zadań, zobacz [utrwalanie zadań i danych wyjściowych zadań](batch-task-output.md).
 - Dowiedz się więcej o [interfejsach API i narzędziach usługi Batch](batch-apis-tools.md) umożliwiających tworzenie rozwiązań usługi Batch.

@@ -14,52 +14,48 @@ ms.tgt_pltfrm: Azure Functions
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: a4900964fb6feeb4c7cb0f147d3681031cac6a7b
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 5eb9d0631a4d5f4221b5184198290a5109655408
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798427"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326583"
 ---
-# <a name="quickstart-create-an-azure-function-with-app-configuration"></a>Szybki start: Tworzenie funkcji platformy Azure przy użyciu usługi App Configuration
+# <a name="quickstart-create-an-azure-function-with-azure-app-configuration"></a>Szybki start: Tworzenie funkcji platformy Azure przy użyciu konfiguracji aplikacji platformy Azure
 
-Usługa Azure App Configuration to zarządzana usługa konfiguracji na platformie Azure. Umożliwia on łatwe przechowywać i zarządzać wszystkie ustawienia aplikacji w jednym miejscu, który jest oddzielony od kodu. Ten przewodnik Szybki Start pokazano, jak zintegrować usługę z funkcji platformy Azure. 
-
-Wykonaj kroki w tym przewodniku Szybki Start, można użyć dowolnego edytora kodu. [Visual Studio Code](https://code.visualstudio.com/) jest doskonałą opcją dostępne w Windows, macOS i platformy Linux.
-
-![Lokalny kompletny przewodnik Szybki Start](./media/quickstarts/dotnet-core-function-launch-local.png)
+W tym przewodniku szybki start dołączysz usługę Azure App Configuration do funkcji platformy Azure w celu scentralizowanego przechowywania i zarządzania wszystkimi ustawieniami aplikacji oddzielonymi od kodu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ten przewodnik Szybki Start, instaluje [Visual Studio 2019](https://visualstudio.microsoft.com/vs). Upewnij się, że obciążenie **programowanie na platformie Azure** jest również instalowane. Zainstaluj również [najnowsze narzędzia usługi Azure Functions](../azure-functions/functions-develop-vs.md#check-your-tools-version).
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+- Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
+- [Program Visual Studio 2019](https://visualstudio.microsoft.com/vs) z obciążeniem **programowania na platformie Azure** .
+- [Narzędzia Azure Functions](../azure-functions/functions-develop-vs.md#check-your-tools-version)
 
 ## <a name="create-an-app-configuration-store"></a>Tworzenie magazynu konfiguracji aplikacji
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wybierz **Eksplorator konfiguracji** >  **+ Utwórz** można dodać następujące pary klucz wartość:
+6. Wybierz kolejno pozycje **Eksplorator** > konfiguracji **+ Utwórz** , aby dodać następujące pary klucz-wartość:
 
     | Klucz | Value |
     |---|---|
     | TestApp:Settings:Message | Dane z usługi Azure App Configuration |
 
-    Pozostaw **etykiety** i **typu zawartości** puste, aby teraz.
+    Dla tej pory pozostaw pustą **etykietę** i **Typ zawartości** .
 
 ## <a name="create-a-function-app"></a>Tworzenie aplikacji funkcji
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-## <a name="connect-to-an-app-configuration-store"></a>Łączenie do sklepu z aplikacjami konfiguracji
+## <a name="connect-to-an-app-configuration-store"></a>Nawiązywanie połączenia z magazynem konfiguracji aplikacji
 
-1. Kliknij prawym przyciskiem myszy projekt, a następnie wybierz pozycję **Zarządzaj pakietami NuGet**. Na **Przeglądaj** kartę, wyszukiwanie i dodaj następujące pakiety NuGet do projektu. Jeśli nie można go znaleźć, wybrać **Uwzględnij wersję wstępną** pole wyboru.
+1. Kliknij prawym przyciskiem myszy projekt, a następnie wybierz pozycję **Zarządzaj pakietami NuGet**. Na karcie **Przeglądaj** Wyszukaj i Dodaj następujące pakiety NuGet do swojego projektu. Jeśli nie możesz ich znaleźć, zaznacz pole wyboru **Uwzględnij wersję wstępną** .
 
     ```
     Microsoft.Extensions.Configuration.AzureAppConfiguration 2.0.0-preview-009200001-1437 or later
     ```
 
-2. Otwórz *Function1.cs*i Dodaj odwołanie do dostawcy konfiguracji aplikacji programu .NET Core.
+2. Otwórz *Function1.cs*i Dodaj odwołanie do dostawcy konfiguracji aplikacji .NET Core.
 
     ```csharp
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
@@ -91,7 +87,7 @@ Ten przewodnik Szybki Start, instaluje [Visual Studio 2019](https://visualstudio
 
 ## <a name="test-the-function-locally"></a>Lokalne testowanie funkcji
 
-1. Ustaw zmienną środowiskową o nazwie **ConnectionString**i ustaw ją na klucz dostępu do magazynu konfiguracji aplikacji. Korzystając z wiersza polecenia Windows, uruchom następujące polecenie i ponownie uruchom wiersz polecenia, aby umożliwić zmiana zaczęła obowiązywać:
+1. Ustaw zmienną środowiskową o nazwie **ConnectionString**i ustaw ją na klucz dostępu do magazynu konfiguracji aplikacji. Jeśli używasz wiersza polecenia systemu Windows, uruchom następujące polecenie i ponownie uruchom wiersz polecenia, aby zezwolić na wprowadzenie zmiany:
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
@@ -99,17 +95,17 @@ Ten przewodnik Szybki Start, instaluje [Visual Studio 2019](https://visualstudio
 
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
-    Jeśli korzystasz z systemem macOS lub Linux, uruchom następujące polecenie:
+    Jeśli używasz macOS lub Linux, uruchom następujące polecenie:
 
         export ConnectionString='connection-string-of-your-app-configuration-store'
 
-2. Aby przetestować funkcję, naciśnij klawisz F5. Po wyświetleniu monitu zaakceptuj żądanie programu Visual Studio dotyczące pobrania i zainstalowania zestawu narzędzi **Azure Functions Core (CLI)** . Również może być konieczne włączenie wyjątku zapory, aby umożliwić narzędziom obsługę żądań HTTP.
+2. Aby przetestować funkcję, naciśnij klawisz F5. Po wyświetleniu monitu zaakceptuj żądanie programu Visual Studio dotyczące pobrania i zainstalowania zestawu narzędzi **Azure Functions Core (CLI)** . Może być również konieczne włączenie wyjątku zapory, aby narzędzia mogły obsługiwać żądania HTTP.
 
 3. Skopiuj adres URL funkcji z danych wyjściowych środowiska uruchomieniowego usługi Azure Functions.
 
     ![Debugowanie funkcji w programie VS z przewodnika Szybki start](./media/quickstarts/function-visual-studio-debugging.png)
 
-4. Wklej adres URL żądania HTTP w pasku adresu przeglądarki. Na poniższej ilustracji przedstawiono odpowiedzi w przeglądarce, aby lokalne żądanie GET zwróconą przez funkcję.
+4. Wklej adres URL żądania HTTP w pasku adresu przeglądarki. Na poniższej ilustracji przedstawiono odpowiedź w przeglądarce do lokalnego żądania GET zwróconego przez funkcję.
 
     ![Lokalne uruchamianie funkcji z przewodnika Szybki start](./media/quickstarts/dotnet-core-function-launch-local.png)
 
@@ -119,7 +115,7 @@ Ten przewodnik Szybki Start, instaluje [Visual Studio 2019](https://visualstudio
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki Start został utworzony nowy magazyn konfiguracji aplikacji i jej za pomocą funkcji platformy Azure. Aby dowiedzieć się więcej o tym, jak używać konfiguracji aplikacji, przejdź do następnego samouczka, który demonstruje uwierzytelniania.
+W tym przewodniku szybki start utworzono nowy magazyn konfiguracji aplikacji i używał go przy użyciu funkcji platformy Azure. Aby dowiedzieć się więcej na temat sposobu korzystania z konfiguracji aplikacji, przejdź do następnego samouczka, który pokazuje uwierzytelnianie.
 
 > [!div class="nextstepaction"]
-> [Integracja tożsamości zarządzanych](./howto-integrate-azure-managed-service-identity.md)
+> [Integracja tożsamości zarządzanej](./howto-integrate-azure-managed-service-identity.md)

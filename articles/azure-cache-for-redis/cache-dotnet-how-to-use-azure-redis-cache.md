@@ -15,29 +15,22 @@ ms.topic: quickstart
 ms.date: 05/18/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 487a51b6f644cca88011383b8035515d437857e6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5930ac3834c0b697a4c03ce5b110dfeac105436a
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60553388"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68324429"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-a-net-application"></a>Szybki start: Korzystanie z usługi Azure Cache for Redis przy użyciu aplikacji platformy .NET
+# <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>Szybki start: Używanie usługi Azure cache for Redis z aplikacją .NET Framework
 
-
-
-W tym przewodniku Szybki start opisano rozpoczęcie pracy z usługą Microsoft Azure Cache for Redis na platformie .NET. Usługa Microsoft Azure Cache for Redis jest oparta na popularnym rozwiązaniu open source Azure Cache for Redis. Daje dostęp do zabezpieczonej, dedykowanej usługi Azure Cache for Redis, którą zarządza firma Microsoft. Pamięć podręczna utworzona przy użyciu usługi Azure Cache for Redis jest dostępna z poziomu dowolnej aplikacji w ramach platformy Microsoft Azure.
-
-W tym przewodniku Szybki start będziesz używać klienta [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) z kodem C\# w aplikacji konsolowej. Utworzysz pamięć podręczną i skonfigurujesz aplikację kliencką platformy .NET. Następnie dodasz i zaktualizujesz obiekty w pamięci podręcznej. 
-
-![Ukończono tworzenie aplikacji konsolowej](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-console-app-complete.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+W tym przewodniku szybki start dodaliśmy usługę Azure cache for Redis do aplikacji .NET Framework, aby uzyskać dostęp do bezpiecznej, dedykowanej pamięci podręcznej dostępnej z dowolnej aplikacji na platformie Azure. Należy używać klienta [stackexchange. Redis](https://github.com/StackExchange/StackExchange.Redis) z C# kodem w aplikacji konsolowej platformy .NET.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Program Visual Studio](https://www.visualstudio.com/downloads/)
-* Klient StackExchange.Redis wymaga programu [.NET Framework 4 lub jego nowszej wersji](https://www.microsoft.com/net/download/dotnet-framework-runtime).
+- Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/)
+- [.NET Framework 4 lub więcej](https://www.microsoft.com/net/download/dotnet-framework-runtime), co jest wymagane przez klienta stackexchange. Redis.
 
 ## <a name="create-a-cache"></a>Tworzenie pamięci podręcznej
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -59,7 +52,7 @@ Zastąp element `<cache-name>` nazwą hosta pamięci podręcznej.
 Zastąp element `<access-key>` kluczem podstawowym pamięci podręcznej.
 
 
-## <a name="create-a-console-app"></a>Tworzenie aplikacji konsolowej
+## <a name="create-a-console-app"></a>Tworzenie aplikacji konsoli
 
 W programie Visual Studio kliknij kolejno pozycje **Plik** > **Nowy** > **Projekt**.
 
@@ -256,7 +249,7 @@ W przeciwnym razie po zakończeniu pracy z przykładową aplikacją poradnika Sz
 
 Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i kliknij pozycję **Grupy zasobów**.
 
-W polu tekstowym **Filtruj według nazwy...** wpisz nazwę grupy zasobów. Instrukcje w tym artykule używają grupy zasobów o nazwie *TestResources*. Dla grupy zasobów na liście wyników kliknij pozycję **...**, a następnie kliknij pozycję **Usuń grupę zasobów**.
+W polu tekstowym **Filtruj według nazwy...** wpisz nazwę grupy zasobów. Instrukcje w tym artykule używają grupy zasobów o nazwie *TestResources*. Dla grupy zasobów na liście wyników kliknij pozycję **...** , a następnie kliknij pozycję **Usuń grupę zasobów**.
 
 ![Usuwanie](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-delete-resource-group.png)
 

@@ -3,18 +3,18 @@ title: Co to jest usługa Azure Container Instances?
 description: Usługa Azure Container Instances to najszybszy i najprostszy sposób uruchamiania wyizolowanych kontenerów na platformie Azure, bez konieczności zarządzania jakimikolwiek maszynami wirtualnymi ani korzystania z orkiestratora wyższego poziomu.
 services: container-instances
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 ms.service: container-instances
 ms.topic: overview
 ms.date: 04/25/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 0ec0280ab2a39674a1b41120f0a8791dfb8b1922
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: a07eda709c813e68bc3e4f08b6aab3f93dec65a6
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073285"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325743"
 ---
 # <a name="what-is-azure-container-instances"></a>Co to jest usługa Azure Container Instances?
 
@@ -51,15 +51,15 @@ Usługa Azure Container Instances umożliwia planowanie kontenerów systemów Wi
 Niektóre funkcje są obecnie ograniczone do kontenerów systemu Linux:
 
 * Wiele kontenerów na grupę kontenerów
-* Instalowanie woluminów ([usługi Azure Files](container-instances-volume-azure-files.md), [emptyDir](container-instances-volume-emptydir.md), [GitRepo](container-instances-volume-gitrepo.md), [klucz tajny](container-instances-volume-secret.md))
-* [Metryki użycia zasobów](container-instances-monitor.md) z usługą Azure Monitor
-* [Wdrażanie sieci wirtualnej](container-instances-vnet.md) (wersja zapoznawcza)
-* [Zasoby procesora GPU](container-instances-gpu.md) (wersja zapoznawcza)
+* Instalowanie woluminu ([Azure Files](container-instances-volume-azure-files.md), [emptyDir](container-instances-volume-emptydir.md), [GitRepo](container-instances-volume-gitrepo.md), [Secret](container-instances-volume-secret.md))
+* [Metryki użycia zasobów](container-instances-monitor.md) z Azure monitor
+* [Wdrażanie sieci wirtualnej](container-instances-vnet.md) przeglądania
+* [Zasoby procesora GPU](container-instances-gpu.md) przeglądania
 
-Dla wdrożeń kontenerów Windows, użyj obrazy oparte na typowych [Windows podstawowa obrazów](container-instances-faq.md#what-windows-base-os-images-are-supported).
+W przypadku wdrożeń kontenerów systemu Windows należy używać obrazów opartych na typowych [obrazach podstawowych systemu Windows](container-instances-faq.md#what-windows-base-os-images-are-supported).
 
 > [!NOTE]
-> Korzystanie z obrazów w sieci systemu Windows Server w 2019 r w usłudze Azure Container Instances jest dostępna w wersji zapoznawczej.
+> Korzystanie z obrazów opartych na systemie Windows Server 2019 w Azure Container Instances jest w wersji zapoznawczej.
 
 ## <a name="co-scheduled-groups"></a>Grupy planowane wspólnie
 

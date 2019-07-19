@@ -1,6 +1,6 @@
 ---
-title: Przekaż token dostępu za pomocą zasad niestandardowych dla aplikacji w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak można przekazać tokenu dostępu dla dostawców tożsamości OAuth 2.0 jako oświadczenia za pomocą niestandardowych zasad do aplikacji w usłudze Azure Active Directory B2C.
+title: Przekaż token dostępu za pomocą zasad niestandardowych do aplikacji w Azure Active Directory B2C | Microsoft Docs
+description: Dowiedz się, jak przekazać token dostępu dla dostawców tożsamości OAuth 2.0 jako rolę w ramach zasad niestandardowych do aplikacji w Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,28 +10,28 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d9420398c012b8da18e3b035cb845db6ce8c942d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2253e9f6331662f0ead0251f9affd7996e02aa31
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511063"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846873"
 ---
-# <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Przekaż token dostępu za pomocą zasad niestandardowych dla aplikacji w usłudze Azure Active Directory B2C
+# <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Przekaż token dostępu za pomocą zasad niestandardowych do aplikacji w Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-A [zasad niestandardowych](active-directory-b2c-get-started-custom.md) w usłudze Azure Active Directory (Azure AD) B2C umożliwia użytkownikom aplikacji Zarejestruj się lub zaloguj się przy użyciu dostawcy tożsamości. W takiej sytuacji usługa Azure AD B2C odbiera [token dostępu](active-directory-b2c-reference-tokens.md) od dostawcy tożsamości. Usługa Azure AD B2C używa tego tokenu, można pobrać informacji o użytkowniku. Możesz dodać typ oświadczenia i dane wyjściowe oświadczenia do niestandardowych zasad do przekazania tokenu za pośrednictwem aplikacji, które należy zarejestrować w usłudze Azure AD B2C. 
+[Zasady niestandardowe](active-directory-b2c-get-started-custom.md) w Azure Active Directory (Azure AD) B2C zapewniają użytkownikom aplikacji możliwość rejestrowania się lub logowania za pomocą dostawcy tożsamości. W takim przypadku Azure AD B2C odbiera [token dostępu](active-directory-b2c-reference-tokens.md) od dostawcy tożsamości. Azure AD B2C używa tego tokenu do pobierania informacji o użytkowniku. Aby przekazać token do aplikacji rejestrowanych w Azure AD B2C, należy dodać do zasad niestandardowych typ i zastrzeżenie wyjściowe.
 
-Usługa Azure AD B2C obsługuje przekazywanie tokenu dostępu [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) i [OpenID Connect](active-directory-b2c-reference-oidc.md) dostawców tożsamości. W przypadku innych dostawców tożsamości oświadczenie zwracany jest pusty.
+Azure AD B2C obsługuje przekazywanie tokenu dostępu dla dostawców tożsamości [OAuth 2,0](active-directory-b2c-reference-oauth-code.md) i [OpenID Connect Connect](active-directory-b2c-reference-oidc.md) . W przypadku wszystkich innych dostawców tożsamości, zgłoszenie jest zwracane puste.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Niestandardowe zasady jest skonfigurowany za pomocą protokołu OAuth 2.0 lub OpenID Connect dostawcy tożsamości.
+- Zasady niestandardowe są konfigurowane za pomocą dostawcy tożsamości protokołu OAuth 2,0 lub OpenID Connect Connect.
 
-## <a name="add-the-claim-elements"></a>Dodawanie elementów oświadczeń 
+## <a name="add-the-claim-elements"></a>Dodaj elementy roszczeń
 
-1. Otwórz swoje *TrustframeworkExtensions.xml* pliku i Dodaj następujący kod **oświadczenia** elementu z identyfikatorem `identityProviderAccessToken` do **ClaimsSchema** elementu:
+1. Otwórz plik *TrustframeworkExtensions. XML* i Dodaj następujący element **ClaimType** z identyfikatorem `identityProviderAccessToken` do elementu **ClaimsSchema** :
 
     ```XML
     <BuildingBlocks>
@@ -46,7 +46,7 @@ Usługa Azure AD B2C obsługuje przekazywanie tokenu dostępu [OAuth 2.0](active
     </BuildingBlocks>
     ```
 
-2. Dodaj **oświadczenie OutputClaim** elementu **profilu technicznego** elementu dla każdego dostawcy tożsamości OAuth 2.0, które chcieliby token dostępu. Poniższy przykład pokazuje element dodawane do profilu technicznego Facebook:
+2. Dodaj element **oświadczenie outputclaim** do elementu **profilu technicznym** dla każdego dostawcy tożsamości OAuth 2,0, dla którego chcesz uzyskać token dostępu. Poniższy przykład pokazuje element dodany do profilu technicznego Facebook:
 
     ```XML
     <ClaimsProvider>
@@ -62,8 +62,8 @@ Usługa Azure AD B2C obsługuje przekazywanie tokenu dostępu [OAuth 2.0](active
     </ClaimsProvider>
     ```
 
-3. Zapisz *TrustframeworkExtensions.xml* pliku.
-4. Otwórz pliku jednostki uzależnionej zasad firmy, takich jak *SignUpOrSignIn.xml*i Dodaj **oświadczenie OutputClaim** elementu **profilu technicznego**:
+3. Zapisz plik *TrustframeworkExtensions. XML* .
+4. Otwórz plik zasad jednostki uzależnionej, taki jak *SignUpOrSignIn. XML*, i Dodaj element **oświadczenie outputclaim** do **profilu technicznym**:
 
     ```XML
     <RelyingParty>
@@ -81,34 +81,29 @@ Usługa Azure AD B2C obsługuje przekazywanie tokenu dostępu [OAuth 2.0](active
 
 ## <a name="test-your-policy"></a>Testowanie zasad
 
-Podczas testowania aplikacji w usłudze Azure AD B2C, może być przydatne do ma tokenu usługi Azure AD B2C, powrót do `https://jwt.ms` aby mieć możliwość przejrzenia oświadczeń w nim.
+Podczas testowania aplikacji w Azure AD B2C może być przydatne, aby token `https://jwt.ms` Azure AD B2C był w stanie przejrzeć oświadczenia w nim.
 
 ### <a name="upload-the-files"></a>Przekaż pliki
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. Upewnij się, że używasz katalogu zawierającego Twoją dzierżawę usługi Azure AD B2C, klikając pozycję **Filtr katalogu i subskrypcji** w górnym menu i wybierając katalog zawierający Twoją dzierżawę.
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
-4. Wybierz **struktura środowiska tożsamości**.
-5. Na stronie zasad niestandardowych kliknij **zasady przekazywania**.
-6. Wybierz **Zastąp zasady Jeśli istnieje**, a następnie wyszukaj i wybierz pozycję *TrustframeworkExtensions.xml* pliku.
+4. Wybierz pozycję **platforma obsługi tożsamości**.
+5. Na stronie zasady niestandardowe kliknij pozycję **Przekaż zasady**.
+6. Wybierz opcję **Zastąp zasady, jeśli istnieje**, a następnie wyszukaj i wybierz plik *TrustframeworkExtensions. XML* .
 7. Kliknij pozycję **Przekaż**.
-8. Powtórz kroki od 5 do 7 dla jednostki uzależnionej pliku innych firm, takich jak *SignUpOrSignIn.xml*.
+8. Powtórz kroki od 5 do 7 dla pliku jednostki uzależnionej, np. *SignUpOrSignIn. XML*.
 
 ### <a name="run-the-policy"></a>Uruchamianie zasad
 
-1. Otwórz zasady, który został zmodyfikowany. Na przykład *B2C_1A_signup_signin*.
-2. Aby uzyskać **aplikacji**, wybierz swoją aplikację, która została wcześniej zarejestrowana. Aby wyświetlić token w poniższym przykładzie **adres URL odpowiedzi** powinien być wyświetlony `https://jwt.ms`.
+1. Otwórz zasady, które zostały zmienione. Na przykład *B2C_1A_signup_signin*.
+2. W przypadku **aplikacji**wybierz wcześniej zarejestrowaną aplikację. Aby wyświetlić token w poniższym przykładzie, **adres URL odpowiedzi** powinien być widoczny `https://jwt.ms`.
 3. Kliknij pozycję **Uruchom teraz**.
 
-    Powinien zostać wyświetlony podobny do poniższego przykładu:
+    Powinieneś zobaczyć coś podobnego do poniższego przykładu:
 
-    ![Token zdekodowany](./media/idp-pass-through-custom/idp-pass-through-custom-token.png)
+    ![Zdekodowany token w jwt.ms z wyróżnionym blokiem idp_access_token](./media/idp-pass-through-custom/idp-pass-through-custom-token.PNG)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o tokenów w [odwołania do tokenu usługi Azure Active Directory](active-directory-b2c-reference-tokens.md).
-
-
-
-
-
+Dowiedz się więcej o tokenach w odniesieniu do [tokenów Azure Active Directory](active-directory-b2c-reference-tokens.md).

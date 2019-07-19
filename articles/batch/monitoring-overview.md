@@ -1,9 +1,9 @@
 ---
-title: Monitorowanie usługi Azure Batch | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o usług monitorowania platformy Azure, metryk, dzienników diagnostycznych i inne funkcje monitorowania dla usługi Azure Batch.
+title: Monitoruj Azure Batch | Microsoft Docs
+description: Dowiedz się więcej na temat usług monitorowania platformy Azure, metryk, dzienników diagnostycznych i innych funkcji monitorowania dla Azure Batch.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
@@ -11,62 +11,62 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: lahugh
-ms.openlocfilehash: b0243b37f725fc977337b72998d610e9bda71a86
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 77fcfed125104588e27e6a0e80cdb4a92a744083
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62128859"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322453"
 ---
 # <a name="monitor-batch-solutions"></a>Monitorowanie rozwiązań usługi Batch
 
-Portal Azure i usługi Batch zapewniają szeroką gamę usług, narzędzi i interfejsów API do monitorowania rozwiązań usługi Batch. Ten artykuł pomaga w wyborze metody monitorowania, który spełnia Twoje potrzeby.
+Platforma Azure i usługa Batch oferują szereg usług, narzędzi i interfejsów API do monitorowania rozwiązań usługi Batch. Ten artykuł omówienia ułatwia wybór podejścia do monitorowania, które odpowiada Twoim potrzebom.
 
-Aby zapoznać się z omówieniem składników platformy Azure i usług, które są dostępne do monitorowania zasobów platformy Azure, zobacz [monitorowania platformy Azure, aplikacje i zasoby](../monitoring-and-diagnostics/monitoring-overview.md).
+Aby zapoznać się z omówieniem składników i usług platformy Azure dostępnych do monitorowania zasobów platformy Azure, zobacz [monitorowanie aplikacji i zasobów platformy Azure](../monitoring-and-diagnostics/monitoring-overview.md).
 
 ## <a name="subscription-level-monitoring"></a>Monitorowanie na poziomie subskrypcji
 
-Na poziomie subskrypcji, która zawiera konta usługi Batch, [dziennika aktywności platformy Azure](../azure-monitor/platform/activity-logs-overview.md) zbiera dane zdarzeń operacyjnych w [kilka kategorii](../azure-monitor/platform/activity-logs-overview.md#categories-in-the-activity-log).
+Na poziomie subskrypcji, który obejmuje konta usługi Batch, [Dziennik aktywności platformy Azure](../azure-monitor/platform/activity-logs-overview.md) zbiera dane zdarzeń operacyjnych w [różnych kategoriach](../azure-monitor/platform/activity-logs-overview.md#categories-in-the-activity-log).
 
-Konta usługi Batch w szczególności dziennika aktywności zbiera zdarzenia związane z zarządzaniem tworzenia i usuwania i klucz konta.
+W przypadku kont usługi Batch dziennik aktywności zbiera zdarzenia związane z tworzeniem i usuwaniem kont oraz zarządzaniem kluczami.
 
-Jednym ze sposobów, aby pobrać zdarzenia z dziennika aktywności jest za pomocą witryny Azure portal. Kliknij przycisk **wszystkich usług** > **dziennika aktywności**. Lub zapytanie dla zdarzenia przy użyciu wiersza polecenia platformy Azure, poleceń cmdlet programu PowerShell lub interfejsu API REST usługi Azure Monitor. Można również wyeksportować dziennik aktywności lub skonfigurować [alertów dziennika aktywności](../monitoring-and-diagnostics/monitoring-activity-log-alerts-new-experience.md).
+Jednym ze sposobów na pobranie zdarzeń z dziennika aktywności jest użycie Azure Portal. Kliknij kolejno pozycje **wszystkie usługi** > **Dziennik aktywności**. Można też wykonywać zapytania o zdarzenia za pomocą interfejsu wiersza polecenia platformy Azure, poleceń cmdlet programu PowerShell lub interfejsu API REST Azure Monitor. Możesz również wyeksportować dziennik aktywności lub skonfigurować [alerty dziennika aktywności](../monitoring-and-diagnostics/monitoring-activity-log-alerts-new-experience.md).
 
-## <a name="batch-account-level-monitoring"></a>Monitorowanie na poziomie konta usługi Batch
+## <a name="batch-account-level-monitoring"></a>Monitorowanie na poziomie konta w usłudze Batch
 
-Każde konto usługi Batch za pomocą funkcji monitorowania [usługi Azure Monitor](../azure-monitor/overview.md). Usługa Azure Monitor umożliwia zbieranie informacji o [metryki](../azure-monitor/platform/data-platform-metrics.md) i opcjonalnie [dzienniki diagnostyczne](../azure-monitor/platform/diagnostic-logs-overview.md) zasobów należących do zakresu na poziomie konta usługi Batch, takie jak pule, zadania i zadania. Zbieranie i używanie tych danych, ręcznie lub programowo do monitorowania działań na koncie usługi Batch i diagnozowanie problemów. Aby uzyskać więcej informacji, zobacz [Batch metryki, alerty i dzienniki diagnostyczne oceny i monitorowania](batch-diagnostics.md).
+Monitoruj każde konto usługi Batch przy użyciu funkcji [Azure monitor](../azure-monitor/overview.md). Azure Monitor zbiera [metryki](../azure-monitor/platform/data-platform-metrics.md) i opcjonalne [dzienniki diagnostyczne](../azure-monitor/platform/diagnostic-logs-overview.md) dla zasobów objętych zakresem na poziomie konta usługi Batch, takich jak pule, zadania i zadania. Zbieraj te dane i korzystaj z nich ręcznie lub programowo, aby monitorować działania na koncie w usłudze Batch i diagnozować problemy. Aby uzyskać szczegółowe informacje, zobacz metryki usługi [Batch, alerty i dzienniki na potrzeby oceny i monitorowania diagnostyki](batch-diagnostics.md).
  
 > [!NOTE]
-> Metryki są dostępne, domyślnie na koncie usługi Batch bez dodatkowej konfiguracji i mają 30-dniową historię stopniowe. Należy włączyć rejestrowanie diagnostyczne dla konta usługi Batch i może pociągnąć za sobą dodatkowe koszty przechowywania lub przetwarzania danych dzienników diagnostycznych. 
+> Metryki są domyślnie dostępne na koncie w usłudze Batch bez dodatkowej konfiguracji i zawierają 30-dniową historię zmian. Należy włączyć rejestrowanie diagnostyczne dla konta usługi Batch i nawiązać dodatkowe koszty przechowywania lub przetwarzania danych dzienników diagnostycznych. 
 
-## <a name="batch-resource-monitoring"></a>Monitorowanie zasobów usługi Batch
+## <a name="batch-resource-monitoring"></a>Monitorowanie zasobów wsadowych
 
-W aplikacji usługi Batch należy użyć interfejsów API usługi Batch do monitorowania lub wykonać zapytanie o stan usługi zasobów, w tym zadań, zadań, węzły i pul. Na przykład:
+W aplikacjach wsadowych należy używać interfejsów API programu Batch do monitorowania stanu zasobów, takich jak zadania, zadania, węzły i pule. Na przykład:
 
-* [Liczba zadań i obliczeń węzły według stanu](batch-get-resource-counts.md)
-* [Wydajny sposób tworzyć zapytania w celu wyświetlenia listy zasobów usługi Batch](batch-efficient-list-queries.md)
-* [Tworzenie zależności między zadaniami](batch-task-dependencies.md)
-* Użyj [zadanie podrzędne Menedżera zadań](/rest/api/batchservice/job/add#jobmanagertask)
-* Monitor [zadań stanu](/rest/api/batchservice/task/list#taskstate)
-* Monitor [stan węzła](/rest/api/batchservice/computenode/list#computenodestate)
-* Monitor [puli stanu](/rest/api/batchservice/pool/get#poolstate)
-* Monitor [puli użycie w ramach konta](/rest/api/batchservice/pool/listusagemetrics)
+* [Liczenie zadań i węzłów obliczeniowych według stanu](batch-get-resource-counts.md)
+* [Twórz zapytania umożliwiające wydajne wyświetlanie zasobów wsadowych](batch-efficient-list-queries.md)
+* [Tworzenie zależności zadań](batch-task-dependencies.md)
+* Korzystanie z [zadania Menedżera zadań](/rest/api/batchservice/job/add#jobmanagertask)
+* Monitoruj [stan zadania](/rest/api/batchservice/task/list#taskstate)
+* Monitoruj [stan węzła](/rest/api/batchservice/computenode/list#computenodestate)
+* Monitoruj [stan puli](/rest/api/batchservice/pool/get#poolstate)
+* Monitoruj [użycie puli na koncie](/rest/api/batchservice/pool/listusagemetrics)
 * [Liczba węzłów puli według stanu](/rest/api/batchservice/account/listpoolnodecounts)
 
-## <a name="vm-performance-counters-and-application-monitoring"></a>Liczniki wydajności maszyn wirtualnych i monitorowania aplikacji
+## <a name="vm-performance-counters-and-application-monitoring"></a>Liczniki wydajności maszyn wirtualnych i monitorowanie aplikacji
 
-* [Usługa Application Insights](../azure-monitor/app/app-insights-overview.md) jest usługą platformy Azure służących do programowego monitorować dostępność, wydajność i użycie zadań wsadowych oraz zadań. Łatwo get liczników wydajności z węzłów obliczeniowych (maszyn wirtualnych) i niestandardowych informacji do zadań zniżki w stosunku do maszyn wirtualnych. 
+* [Application Insights](../azure-monitor/app/app-insights-overview.md) to usługa platformy Azure, za pomocą której można programowo monitorować dostępność, wydajność i użycie zadań i zadań usługi Batch. Łatwe pobieranie liczników wydajności z węzłów obliczeniowych (maszyn wirtualnych) i informacji niestandardowych dotyczących zadań z maszyn wirtualnych. 
 
-  Aby uzyskać przykład, zobacz [monitorowania i debugowania aplikacji .NET usługi Batch za pomocą usługi Application Insights](monitor-application-insights.md) i towarzyszących [przykładowy kod](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights).
+  Aby zapoznać się z przykładem, zobacz [monitorowanie i debugowanie aplikacji usługi Batch .NET przy użyciu Application Insights](monitor-application-insights.md) i towarzyszącego [przykładu kodu](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights).
 
   > [!NOTE]
-  > Może pociągnąć za sobą dodatkowe koszty używania usługi Application Insights. Zobacz [opcje cennika](https://azure.microsoft.com/pricing/details/application-insights/). 
+  > Korzystanie z Application Insights może pociągnąć za sobą dodatkowe koszty. Zobacz [Opcje cenowe](https://azure.microsoft.com/pricing/details/application-insights/). 
   >
 
-* [Batch Explorer](https://github.com/Azure/BatchExplorer) to bezpłatne, bogate w funkcje, autonomiczne narzędzie klienta pomagające tworzyć, debugować i monitorować aplikacje usługi Azure Batch. Pobierz [pakiet instalacyjny](https://azure.github.io/BatchExplorer/) dla komputerów Mac lub systemu Linux albo Windows. Opcjonalnie skonfiguruj rozwiązania usługi Batch w taki sposób, aby [Wyświetl dane usługi Application Insights](https://github.com/Azure/batch-insights) takich jak liczniki wydajności maszyn wirtualnych w Eksploratorze usługi Batch.
+* [Batch Explorer](https://github.com/Azure/BatchExplorer) to bezpłatne, bogate w funkcje, autonomiczne narzędzie klienta pomagające tworzyć, debugować i monitorować aplikacje Azure Batch. Pobierz [pakiet instalacyjny](https://azure.github.io/BatchExplorer/) dla komputerów Mac lub systemu Linux albo Windows. Opcjonalnie Skonfiguruj rozwiązanie do przetwarzania wsadowego, aby [wyświetlać Application Insights dane](https://github.com/Azure/batch-insights) , takie jak liczniki wydajności maszyn wirtualnych, w Batch Explorer.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się więcej o [interfejsach API i narzędziach usługi Batch](batch-apis-tools.md) umożliwiających tworzenie rozwiązań usługi Batch.
-* Dowiedz się więcej o [rejestrowania diagnostycznego](batch-diagnostics.md) przy użyciu usługi Batch.
+* Dowiedz się więcej na temat [rejestrowania diagnostycznego](batch-diagnostics.md) w usłudze Batch.

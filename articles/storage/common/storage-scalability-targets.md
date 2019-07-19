@@ -1,33 +1,33 @@
 ---
-title: Usługa Azure Storage cele skalowalności i wydajności - kont magazynu
-description: Więcej informacji na temat cele skalowalności i wydajności, w tym pojemności, liczba żądań i przepustowości ruchu przychodzącego i wychodzącego, do konta usługi Azure storage.
+title: Cele dotyczące skalowalności i wydajności usługi Azure Storage — konta magazynu
+description: Dowiedz się więcej na temat skalowalności i wydajności, takich jak pojemność, szybkość żądania oraz przepustowość ruchu przychodzącego i wychodzącego, dla kont usługi Azure Storage.
 services: storage
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/23/2019
+ms.date: 07/18/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 932d250d6685a1b905e4a03a0118d8c8f1f26418
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 046c2308d5cef2df7e12b6185fc24b8df4f821dc
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67151241"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326974"
 ---
-# <a name="azure-storage-scalability-and-performance-targets-for-storage-accounts"></a>Usługa Azure Storage cele skalowalności i wydajności dla kont magazynu
+# <a name="azure-storage-scalability-and-performance-targets-for-storage-accounts"></a>Cele dotyczące skalowalności i wydajności usługi Azure Storage dla kont magazynu
 
-Ten artykuł szczegółowo opisuje cele skalowalności i wydajności dla konta usługi Azure storage. Cele dotyczące skalowalności i wydajności, wymienione w tym miejscu są cele wysokiej klasy, ale są osiągalne. Wszystkie przypadki, liczba żądań i przepustowości magazynu konta zależy od rozmiaru obiektów przechowywanych, wzorce dostępu wykorzystywany, i wykonuje aplikację typu obciążenia.
+W tym artykule opisano elementy docelowe skalowalności i wydajności dla kont usługi Azure Storage. Elementy docelowe skalowalności i wydajności wymienione w tym miejscu są obiektami docelowymi wysokiej klasy, ale są osiągalne. We wszystkich przypadkach częstotliwość żądań i przepustowość osiągnięta przez konto magazynu zależy od rozmiaru przechowywanych obiektów, użytych wzorców dostępu oraz typu obciążenia wykonywanego przez aplikację.
 
-Pamiętaj przetestować usługi w celu określenia, czy jego wydajność, spełnia Twoje wymagania. Jeśli to możliwe Unikaj skokami szybkość ruchu i upewnij się, że ruch jest dobrze rozproszone pomiędzy partycjami.
+Upewnij się, że usługa została przetestowana, aby określić, czy jej wydajność spełnia Twoje wymagania. Jeśli to możliwe, unikaj nagłych skoków natężenia ruchu i upewnij się, że ruch jest prawidłowo dystrybuowany między partycjami.
 
-Gdy aplikacja osiągnie limit partycji radzić dla obciążenia, usługi Azure Storage rozpoczyna zwracają kod błędu: 503 (serwer zajęty) lub kod błędu: 500 odpowiedzi (limit czasu operacji). Jeśli występują błędy 503 należy rozważyć zmodyfikowanie aplikacji umożliwiająca użycie zasady wykładniczego wycofywania ponownych prób. Wykładniczego wycofywania umożliwia obciążenia na partycji, aby zmniejszyć i działają nawet pod dużym nagłych skoków ruchu do tej partycji.
+Gdy aplikacja osiągnie limit, co może obsłużyć partycja w obciążeniu, usługa Azure Storage zaczyna zwracać kod błędu 503 (serwer zajęty) lub kod błędu 500 (limit czasu operacji). Jeśli wystąpią błędy 503, Rozważ zmodyfikowanie aplikacji tak, aby korzystała z zasad wycofywania wykładniczych na potrzeby ponownych prób. Wykładniczy wycofywania umożliwia zmniejszenie obciążenia partycji i ułatwienie wzrostu ruchu do tej partycji.
 
-## <a name="storage-account-scale-limits"></a>Limity skalowania dla konta magazynu
+## <a name="storage-account-scale-limits"></a>Limity skalowania konta magazynu
 
 [!INCLUDE [azure-storage-limits](../../../includes/azure-storage-limits.md)]
 
-## <a name="premium-performance-storage-account-scale-limits"></a>Limity skalowania dla konta magazynu Premium wydajności
+## <a name="premium-performance-storage-account-scale-limits"></a>Limity skalowania konta magazynu wydajności w warstwie Premium
 
 [!INCLUDE [azure-premium-limits](../../../includes/azure-storage-limits-premium.md)]
 
@@ -35,49 +35,49 @@ Gdy aplikacja osiągnie limit partycji radzić dla obciążenia, usługi Azure S
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 
-## <a name="azure-blob-storage-scale-targets"></a>Azure celów skalowania magazynu obiektów Blob
+## <a name="azure-blob-storage-scale-targets"></a>Cele skalowania magazynu obiektów blob platformy Azure
 
 [!INCLUDE [storage-blob-scale-targets](../../../includes/storage-blob-scale-targets.md)]
 
 ## <a name="azure-files-scale-targets"></a>Usługa Azure celów skalowania plików
 
-Aby uzyskać więcej informacji na temat cele skalowalności i wydajności dla usługi Azure Files i usługi Azure File Sync, zobacz [cele dotyczące skalowalności i wydajności usługi Azure Files](../files/storage-files-scale-targets.md).
+Aby uzyskać więcej informacji na temat elementów docelowych skalowania i wydajności dla Azure Files i Azure File Sync, zobacz [Azure Files cele dotyczące skalowalności i wydajności](../files/storage-files-scale-targets.md).
 
 > [!IMPORTANT]
-> Limity konta magazynu mają zastosowanie do wszystkich udziałów. Skalowanie do maksymalna liczba kont magazynu tylko jest osiągalna, jeśli istnieje tylko jeden udział przypada na koncie magazynu.
+> Limity konta magazynu dotyczą wszystkich udziałów. Skalowanie w górę do wartości maksymalnej dla kont magazynu jest osiągalne tylko wtedy, gdy istnieje tylko jeden udział na konto magazynu.
 >
-> Udziały plików standardowych większy niż wynosi 5 TiB są w wersji zapoznawczej i mają pewne ograniczenia.
-> Lista ograniczeń i dołączyć do wersji zapoznawczej te większe rozmiary udziału plików, zobacz [standardowych plikowych udziałów](../files/storage-files-planning.md#standard-file-shares) przewodnik sekcji planowania usługi Azure Files.
+> Standardowe udziały plików większe niż 5 TiB są w wersji zapoznawczej i mają pewne ograniczenia.
+> Aby zapoznać się z listą ograniczeń i dołączyć do wersji zapoznawczej tych większych rozmiarów udziałów plików, zobacz sekcję [standardowe udziały plików](../files/storage-files-planning.md#standard-file-shares) w przewodniku planowania Azure Files.
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
-### <a name="premium-files-scale-targets"></a>Files w warstwie Premium skalowanie elementów docelowych
+### <a name="premium-files-scale-targets"></a>Cele skalowania plików w warstwie Premium
 
-Istnieją trzy kategorie ograniczenia do uwzględnienia w przypadku plików — wersja premium: kont magazynu, udziały i plików.
+Istnieją trzy kategorie ograniczeń, które należy wziąć pod uwagę w przypadku plików Premium: konta magazynu, udziały i pliki.
 
-Na przykład: Pojedynczy udział może osiągnąć 100 000 operacji We/Wy i maksymalnie 5000 operacji We/Wy można skalować w jednym pliku. Tak na przykład, jeśli masz trzy pliki w jednym udziale, max operacje We/Wy, można uzyskać z tego folderu wspólnego jest 15 000.
+Na przykład: Pojedynczy udział może osiągać 100 000 operacji we/wy, a pojedynczy plik może być skalowany w górę do 5 000 operacji we/wy na sekundę. Jeśli na przykład masz trzy pliki w jednym udziale, Maksymalna liczba IOPs, którą można uzyskać z tego udziału, to 15 000.
 
-#### <a name="premium-file-share-limits"></a>Limity udziału plików — wersja Premium
+#### <a name="premium-file-share-limits"></a>Limity udziałów plików w warstwie Premium
 
 [!INCLUDE [storage-files-premium-scale-targets](../../../includes/storage-files-premium-scale-targets.md)]
 
 ### <a name="azure-file-sync-scale-targets"></a>Cele skalowania usługi Azure File Sync
 
-Usługa Azure File Sync został zaprojektowany w celu nieograniczonego użycia, ale nie nieograniczonego użycia zawsze jest możliwe. Poniższa tabela wskazuje granice badania firmy Microsoft oraz wskazuje, które elementy docelowe są limity stałe:
+Azure File Sync został zaprojektowany z myślą o celu nieograniczonego użycia, ale nieograniczone użycie nie zawsze jest możliwe. Poniższa tabela wskazuje granice testowania firmy Microsoft, a także wskazuje, które cele są sztywne:
 
 [!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
-## <a name="azure-queue-storage-scale-targets"></a>Skalowanie magazynu platformy Azure kolejki elementów docelowych
+## <a name="azure-queue-storage-scale-targets"></a>Cele skalowania usługi Azure queue storage
 
 [!INCLUDE [storage-queues-scale-targets](../../../includes/storage-queues-scale-targets.md)]
 
-## <a name="azure-table-storage-scale-targets"></a>Cele skalowania usługi storage dotyczące tabeli platformy Azure
+## <a name="azure-table-storage-scale-targets"></a>Cele skalowania w usłudze Azure Table Storage
 
 [!INCLUDE [storage-table-scale-targets](../../../includes/storage-tables-scale-targets.md)]
 
 ## <a name="see-also"></a>Zobacz także
 
-- [Szczegóły cennika usługi Storage](https://azure.microsoft.com/pricing/details/storage/)
-- [Subskrypcja platformy Azure i limity, przydziały i ograniczenia](../../azure-subscription-service-limits.md)
+- [Szczegóły cennika magazynu](https://azure.microsoft.com/pricing/details/storage/)
+- [Limity subskrypcji i usług platformy Azure, przydziały i ograniczenia](../../azure-subscription-service-limits.md)
 - [Replikacja usługi Azure Storage](../storage-redundancy.md)
 - [Microsoft Azure Storage Performance and Scalability Checklist (Lista kontrolna dotycząca wydajności i skalowalności usługi Microsoft Azure Storage)](../storage-performance-checklist.md)

@@ -1,77 +1,77 @@
 ---
-title: Wdrażanie z włączonymi procesorami GPU w usłudze Azure container instances
-description: Dowiedz się, jak wdrożyć w usłudze Azure container instances do uruchamiania na zasoby procesora GPU.
+title: Wdrażanie wystąpień kontenera platformy Azure z obsługą procesora GPU
+description: Dowiedz się, jak wdrożyć usługę Azure Container Instances do uruchamiania na zasobach procesora GPU.
 services: container-instances
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 04/17/2019
 ms.author: danlep
-ms.openlocfilehash: 5073b68f6ef3de330671e3ea25056e0cae976360
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 300e9b82d578663a4d2ada3889a07d8b03051cc5
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60583831"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325947"
 ---
-# <a name="deploy-container-instances-that-use-gpu-resources"></a>Wdrażanie wystąpień kontenerów, które używają zasobów procesora GPU
+# <a name="deploy-container-instances-that-use-gpu-resources"></a>Wdrażanie wystąpień kontenerów korzystających z zasobów procesora GPU
 
-Do uruchamiania niektórych obciążeń intensywnie korzystających z obliczeń w usłudze Azure Container Instances, należy wdrożyć swoje [grup kontenerów](container-instances-container-groups.md) z *zasoby procesora GPU*. Wystąpienia kontenerów w grupie mają dostęp do co najmniej jeden procesory GPU NVIDIA Tesla podczas uruchamiania obciążeń kontenerów, takich jak CUDA i głębokiego uczenia aplikacji.
+Aby uruchamiać pewne obciążenia intensywnie korzystające z obliczeń na Azure Container Instances, należy wdrożyć [grupy kontenerów](container-instances-container-groups.md) z *zasobami procesora GPU*. Wystąpienia kontenerów w grupie mogą uzyskać dostęp do co najmniej jednego procesora graficznego NVIDIA Tesla podczas wykonywania obciążeń kontenerów, takich jak CUDA i aplikacje do uczenia głębokiego.
 
-W tym artykule pokazano, jak dodać zasoby procesora GPU w przypadku wdrażania grupy kontenerów za pomocą [pliku YAML](container-instances-multi-container-yaml.md) lub [szablonu usługi Resource Manager](container-instances-multi-container-group.md). Można również określić zasoby procesora GPU w przypadku wdrażania wystąpienia kontenera w witrynie Azure portal.
+W tym artykule przedstawiono sposób dodawania zasobów procesora GPU podczas wdrażania grupy kontenerów przy użyciu [pliku YAML](container-instances-multi-container-yaml.md) lub [szablonu Menedżer zasobów](container-instances-multi-container-group.md). Podczas wdrażania wystąpienia kontenera przy użyciu Azure Portal można także określić zasoby procesora GPU.
 
 > [!IMPORTANT]
-> Ta funkcja jest obecnie dostępna w wersji zapoznawczej, a niektóre [ograniczenia](#preview-limitations). Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania][terms-of-use]. Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
+> Ta funkcja jest obecnie dostępna w wersji zapoznawczej, a niektóre [ograniczenia mają zastosowanie](#preview-limitations). Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania][terms-of-use]. Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
 
 ## <a name="preview-limitations"></a>Ograniczenia wersji zapoznawczej
 
-W wersji zapoznawczej poniższe ograniczenia mają zastosowanie podczas korzystania z zasobów procesora GPU w grupy kontenerów. 
+W wersji zapoznawczej poniższe ograniczenia mają zastosowanie w przypadku używania zasobów procesora GPU w grupach kontenerów. 
 
 [!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
 
-Obsługa zostanie dodana dla dodatkowych regionów wraz z upływem czasu.
+Obsługa zostanie dodana dla dodatkowych regionów w czasie.
 
-**Obsługiwane typy systemu operacyjnego**: Tylko system Linux
+**Obsługiwane typy systemów operacyjnych**: Tylko system Linux
 
-**Dodatkowe ograniczenia**: Zasoby procesora GPU nie można używać w przypadku wdrażania w grupie kontenerów [sieci wirtualnej](container-instances-vnet.md).
+**Dodatkowe ograniczenia**: Zasobów procesora GPU nie można używać podczas wdrażania grupy kontenerów w [sieci wirtualnej](container-instances-vnet.md).
 
-## <a name="about-gpu-resources"></a>O zasoby procesora GPU
+## <a name="about-gpu-resources"></a>Informacje o zasobach procesora GPU
 
-### <a name="count-and-sku"></a>Liczba i jednostki SKU
+### <a name="count-and-sku"></a>Liczba i jednostka SKU
 
-Aby użyć procesorach GPU znajdujących się w wystąpieniu kontenera, określ *zasobów procesora GPU* z następującymi informacjami:
+Aby użyć procesorów GPU w wystąpieniu kontenera, określ *zasób procesora GPU* z następującymi informacjami:
 
-* **Liczba** -liczba procesorów GPU: **1**, **2**, lub **4**.
-* **Jednostka SKU** -jednostki SKU procesora GPU: **K80**, **P100**, lub **V100**. Każda jednostka SKU mapuje GPU NVIDIA Tesla w jednym następujących rodzin maszyn wirtualnych z obsługą procesorów GPU platformy Azure:
+* **Liczba** — liczba procesorów GPU: **1**, **2**lub **4**.
+* **Jednostka SKU** — jednostka SKU procesora GPU: **K80**, **P100**lub **V100**. Każda jednostka SKU jest mapowana na procesor GPU NVIDIA Tesla w jednej z następujących rodzin maszyn wirtualnych z obsługą procesora GPU platformy Azure:
 
-  | SKU | Rodziny maszyn wirtualnych |
+  | SKU | Rodzina maszyn wirtualnych |
   | --- | --- |
-  | K80 | [NC](../virtual-machines/linux/sizes-gpu.md#nc-series) |
+  | K80 | [SIECIOWEGO](../virtual-machines/linux/sizes-gpu.md#nc-series) |
   | P100 | [NCv2](../virtual-machines/linux/sizes-gpu.md#ncv2-series) |
   | V100 | [NCv3](../virtual-machines/linux/sizes-gpu.md#ncv3-series) |
 
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
 
-Podczas wdrażania zasobów procesora GPU, ustaw odpowiednią dla obciążenia, do maksymalnej wartości podanych w powyższej tabeli zasobów Procesora i pamięci. Te wartości są obecnie większy niż zasoby Procesora i pamięci, które muszą być dostępne w grupy kontenerów bez zasobów procesora GPU.  
+Podczas wdrażania zasobów procesora GPU należy ustawić zasoby procesora i pamięci odpowiednie dla obciążenia, maksymalnie do wartości maksymalnych przedstawionych w powyższej tabeli. Te wartości są obecnie większe niż zasoby procesora i pamięci dostępne w grupach kontenerów bez zasobów procesora GPU.  
 
-### <a name="things-to-know"></a>Należy znać
+### <a name="things-to-know"></a>Elementy, które należy znać
 
-* **Czas wdrożenia** — Tworzenie grupy kontenerów, zawierający zasoby procesora GPU trwa maksymalnie **8 – 10 minut**. Jest to spowodowane dodatkowy czas, aby aprowizować i skonfigurować Maszynę wirtualną procesora GPU na platformie Azure. 
+* **Czas wdrożenia** — Tworzenie grupy kontenerów zawierającej zasoby procesora GPU trwa do **8-10 minut**. Wynika to z dodatkowego czasu na udostępnienie i skonfigurowanie maszyny wirtualnej procesora GPU na platformie Azure. 
 
-* **Cennik** — jest to podobne do grup kontenerów bez zasobów procesora GPU, platformie Azure są naliczane za zasoby używane za pośrednictwem *czas trwania* grupy kontenerów, z zasobami procesora GPU. Czas trwania jest obliczany od momentu do ściągania obrazów swój pierwszy kontener do momentu zakończenia działania grupy kontenerów. Nie ma czas wdrażania grupy kontenerów.
+* **Cennik** — podobnie jak w przypadku grup kontenerów bez zasobów procesora GPU, weksle dla zasobów używanych w *czasie trwania* grupy kontenerów z zasobami procesora GPU. Czas trwania jest obliczany od momentu pociągnięcia pierwszego obrazu kontenera do momentu zakończenia działania grupy kontenerów. Nie obejmuje czasu wdrożenia grupy kontenerów.
 
-  Zobacz [cennik](https://azure.microsoft.com/pricing/details/container-instances/).
+  Zobacz [szczegóły cennika](https://azure.microsoft.com/pricing/details/container-instances/).
 
-* **Sterowniki CUDA** — usługa Container instances za pomocą zasobów procesora GPU to wstępnie zainicjowana sterowniki NVIDIA CUDA i środowiska uruchomieniowe kontenera, aby można było używać obrazów kontenerów opracowana dla obciążeń CUDA.
+* **Sterowniki cuda** — wystąpienia kontenerów z zasobami procesora GPU są wstępnie udostępniane za pomocą sterowników NVIDIA CUDA i środowisk uruchomieniowych kontenera, dzięki czemu można używać obrazów kontenerów opracowanych dla obciążeń cuda.
 
-  Na tym etapie firma Microsoft obsługuje CUDA 9.0. Na przykład można użyć następującego obrazy podstawowe dla pliku platformy Docker:
+  Na tym etapie obsługujemy CUDA 9,0. Na przykład można użyć następujących obrazów podstawowych dla pliku platformy Docker:
   * [nvidia/cuda:9.0-base-ubuntu16.04](https://hub.docker.com/r/nvidia/cuda/)
   * [tensorflow/tensorflow: 1.12.0-gpu-py3](https://hub.docker.com/r/tensorflow/tensorflow)
     
-## <a name="yaml-example"></a>Przykład kodu YAML
+## <a name="yaml-example"></a>Przykład YAML
 
-Jednym ze sposobów, aby dodać zasoby procesora GPU jest wdrożenie grupy kontenerów za pomocą [pliku YAML](container-instances-multi-container-yaml.md). Skopiuj poniższego kodu YAML do nowego pliku o nazwie *procesora gpu wdrażanie aci.yaml*, następnie zapisz plik. Ta YAML tworzy grupę kontenerów o nazwie *gpucontainergroup* określając wystąpienie kontenera z K80 GPU. Przykładowa aplikacja dodanie wektor CUDA uruchamiane wystąpienie. Żądania zasobów są wystarczające do uruchomienia obciążenia.
+Jednym ze sposobów dodawania zasobów procesora GPU jest wdrożenie grupy kontenerów przy użyciu [pliku YAML](container-instances-multi-container-yaml.md). Skopiuj następujący YAML do nowego pliku o nazwie *GPU-Deploy-ACI. YAML*, a następnie Zapisz plik. Ten YAML tworzy grupę kontenerów o nazwie *gpucontainergroup* określającą wystąpienie kontenera z procesorem GPU K80. Wystąpienie uruchamia przykładową aplikację do dodawania wektorów CUDA. Żądania zasobów są wystarczające do uruchomienia obciążenia.
 
 ```YAML
 additional_properties: {}
@@ -93,13 +93,13 @@ properties:
   restartPolicy: OnFailure
 ```
 
-Wdróż grupę kontenerów z [utworzyć kontener az] [ az-container-create] polecenie, określając nazwę pliku YAML `--file` parametru. Należy podać nazwę grupy zasobów i lokalizację dla grupy kontenerów, takich jak *eastus* , która obsługuje zasoby procesora GPU.  
+Wdróż grupę kontenerów za pomocą polecenia [AZ Container Create][az-container-create] , określając nazwę pliku YAML dla `--file` parametru. Należy podać nazwę grupy zasobów i lokalizację dla grupy kontenerów, na przykład *Wschodnie* , która obsługuje zasoby procesora GPU.  
 
 ```azurecli
 az container create --resource-group myResourceGroup --file gpu-deploy-aci.yaml --location eastus
 ```
 
-Przeprowadzenie wdrożenia zajmuje kilka minut. Następnie kontenera rozpoczyna się i uruchamia operację dodawania CUDA wektora. Uruchom [dzienniki kontenerów az] [ az-container-logs] polecenie, aby wyświetlić dane wyjściowe dziennika:
+Przeprowadzenie wdrożenia zajmuje kilka minut. Następnie zostanie uruchomiony kontener i zostanie uruchomiona operacja dodawania wektora CUDA. Uruchom polecenie [AZ Container Logs][az-container-logs] , aby wyświetlić dane wyjściowe dziennika:
 
 ```azurecli
 az container logs --resource-group myResourceGroup --name gpucontainergroup --container-name gpucontainer
@@ -116,9 +116,9 @@ Test PASSED
 Done
 ```
 
-## <a name="resource-manager-template-example"></a>Przykładowy szablon usługi Resource Manager
+## <a name="resource-manager-template-example"></a>Przykład szablonu Menedżer zasobów
 
-Innym sposobem wdrożenia grupy kontenerów, z zasobami procesora GPU polega na użyciu [szablonu usługi Resource Manager](container-instances-multi-container-group.md). Rozpocznij od utworzenia pliku o nazwie `gpudeploy.json`, następnie skopiuj następujący kod JSON do niego. W tym przykładzie wdrażasz wystąpienie kontenera z V100 procesora GPU, który uruchamia [TensorFlow](https://www.tensorflow.org/versions/r1.1/get_started/mnist/beginners) zadania szkolenia względem [zestawu danych mnist ręcznie ZAPISANYCH](http://yann.lecun.com/exdb/mnist/). Żądania zasobów są wystarczające do uruchomienia obciążenia.
+Innym sposobem wdrożenia grupy kontenerów z zasobami procesora GPU jest użycie [szablonu Menedżer zasobów](container-instances-multi-container-group.md). Zacznij od utworzenia pliku o nazwie `gpudeploy.json`, a następnie skopiuj do niego Poniższy kod JSON. W tym przykładzie wdrożono wystąpienie kontenera z procesorem GPU V100, który uruchamia zadanie szkolenia [TensorFlow](https://www.tensorflow.org/) z zestawem danych mnist ręcznie. Żądania zasobów są wystarczające do uruchomienia obciążenia.
 
 ```JSON
 {
@@ -170,13 +170,13 @@ Innym sposobem wdrożenia grupy kontenerów, z zasobami procesora GPU polega na 
 }
 ```
 
-Wdrażanie szablonu przy użyciu [Utwórz wdrożenie grupy az] [ az-group-deployment-create] polecenia. Należy podać nazwę grupy zasobów, która została utworzona w regionie, takich jak *eastus* , która obsługuje zasoby procesora GPU.
+Wdróż szablon za pomocą polecenia [AZ Group Deployment Create][az-group-deployment-create] . Należy podać nazwę grupy zasobów, która została utworzona w regionie, takim jak *Wschodnie* , która obsługuje zasoby procesora GPU.
 
 ```azurecli-interactive
 az group deployment create --resource-group myResourceGroup --template-file gpudeploy.json
 ```
 
-Przeprowadzenie wdrożenia zajmuje kilka minut. Następnie kontenera rozpoczyna się i uruchamia zadania TensorFlow. Uruchom [dzienniki kontenerów az] [ az-container-logs] polecenie, aby wyświetlić dane wyjściowe dziennika:
+Przeprowadzenie wdrożenia zajmuje kilka minut. Następnie zostanie uruchomiony kontener i zostanie uruchomione zadanie TensorFlow. Uruchom polecenie [AZ Container Logs][az-container-logs] , aby wyświetlić dane wyjściowe dziennika:
 
 ```azurecli
 az container logs --resource-group myResourceGroup --name gpucontainergrouprm --container-name gpucontainer
@@ -211,23 +211,23 @@ Adding run metadata for 999
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Korzystanie z zasobów procesora GPU może być kosztowne, upewnij się, że kontenery nie uruchamiaj nieoczekiwanie przez długi czas. Monitorowania kontenerów w witrynie Azure portal lub sprawdzić stan grupę kontenerów, z [az container show] [ az-container-show] polecenia. Na przykład:
+Ponieważ korzystanie z zasobów procesora GPU może być kosztowne, należy się upewnić, że kontenery nie działają nieoczekiwanie przez długi czas. Monitoruj kontenery w Azure Portal lub Sprawdź stan grupy kontenerów za pomocą polecenia [AZ Container show][az-container-show] . Na przykład:
 
 ```azurecli
 az container show --resource-group myResourceGroup --name gpucontainergroup --output table
 ```
 
-Po zakończeniu pracy z usługą container instances został utworzony, usuń je za pomocą następujących poleceń:
+Po zakończeniu pracy z utworzonymi wystąpieniami kontenerów usuń je za pomocą następujących poleceń:
 
 ```azurecli
 az container delete --resource-group myResourceGroup --name gpucontainergroup -y
 az container delete --resource-group myResourceGroup --name gpucontainergrouprm -y
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o wdrażaniu grupę kontenerów za pomocą [pliku YAML](container-instances-multi-container-yaml.md) lub [szablonu usługi Resource Manager](container-instances-multi-container-group.md).
-* Dowiedz się więcej o [rozmiarów maszyn wirtualnych GPU zoptymalizowanych pod kątem](../virtual-machines/linux/sizes-gpu.md) na platformie Azure.
+* Dowiedz się więcej o wdrażaniu grupy kontenerów przy użyciu [pliku YAML](container-instances-multi-container-yaml.md) lub [szablonu Menedżer zasobów](container-instances-multi-container-group.md).
+* Dowiedz się więcej o [rozmiarach maszyn wirtualnych zoptymalizowanych pod kątem procesora GPU](../virtual-machines/linux/sizes-gpu.md) na platformie Azure.
 
 
 <!-- IMAGES -->

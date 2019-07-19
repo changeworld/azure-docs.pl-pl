@@ -1,5 +1,5 @@
 ---
-title: Używanie z Kubernetes i Helm
+title: Używanie z usługą Kubernetes i rozwiązaniem Helm
 titleSuffix: Azure Cognitive Services
 description: Za pomocą Kubernetes i Helm do definiowania obrazów kontenerów zamiany mowy na tekst i zamiany tekstu na mowę utworzysz pakiet Kubernetes. Ten pakiet zostanie wdrożony w klastrze Kubernetes lokalnie.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 7/16/2019
 ms.author: dapine
-ms.openlocfilehash: ace519d9be5945754fb79dc4c6fbb244c665d98b
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: ba292a7d3bdf58ff78764bc2095fdf4a8c486070
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302604"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326206"
 ---
-# <a name="use-with-kubernetes-and-helm"></a>Używanie z Kubernetes i Helm
+# <a name="use-with-kubernetes-and-helm"></a>Używanie z usługą Kubernetes i rozwiązaniem Helm
 
-Za pomocą Kubernetes i Helm do definiowania obrazów kontenerów zamiany mowy na tekst i zamiany tekstu na mowę utworzysz pakiet Kubernetes. Ten pakiet zostanie wdrożony w klastrze Kubernetes lokalnie. Na koniec dowiesz się, jak przetestować wdrożone usługi i różne opcje konfiguracji. Aby uzyskać więcej informacji na temat uruchamiania kontenerów platformy Docker bez aranżacji Kubernetes, zobacz [Install and run Speech Service Containers](speech-container-howto.md).
+Jedną z opcji zarządzania kontenerami mowy w środowisku lokalnym jest użycie Kubernetes i Helm. Za pomocą Kubernetes i Helm do definiowania obrazów kontenerów zamiany mowy na tekst i zamiany tekstu na mowę utworzysz pakiet Kubernetes. Ten pakiet zostanie wdrożony w klastrze Kubernetes lokalnie. Na koniec dowiesz się, jak przetestować wdrożone usługi i różne opcje konfiguracji. Aby uzyskać więcej informacji na temat uruchamiania kontenerów platformy Docker bez aranżacji Kubernetes, zobacz [Install and run Speech Service Containers](speech-container-howto.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

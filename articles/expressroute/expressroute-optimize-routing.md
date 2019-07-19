@@ -1,22 +1,53 @@
 ---
-title: 'Optymalizacja routingu - obwodów usługi ExpressRoute: Azure | Microsoft Docs'
+title: 'Optymalizuj obwody usługi Routing-ExpressRoute: Azure | Microsoft Docs'
 description: Ta strona zawiera szczegółowe informacje dotyczące optymalizacji routingu w przypadku, gdy występują co najmniej dwa obwody usługi ExpressRoute łączące firmę Microsoft z siecią firmową.
 services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 07/11/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 65c23b05cfcb623f8e2870df813f5516b3039d5c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0bd8c0417b32e93a4f52b545c4d7fc532992a0b1
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60883571"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854317"
 ---
 # <a name="optimize-expressroute-routing"></a>Optymalizacja routingu usługi ExpressRoute
 Jeśli masz wiele obwodów usługi ExpressRoute, masz więcej niż jedną ścieżkę łączenia z firmą Microsoft. W związku z tym może wystąpić routing nieoptymalny, tzn. ruch może użyć dłuższej ścieżki w celu dotarcia do firmy Microsoft lub z firmy Microsoft do sieci użytkownika. Im dłuższa ścieżka sieciowa, tym większe opóźnienie. Opóźnienie ma bezpośredni wpływ na wydajność aplikacji i środowisko użytkownika. W tym artykule przedstawiono ten problem i wyjaśniono, jak zoptymalizować routing przy użyciu standardowych technologii routingu.
+
+## <a name="path-selection-on-microsoft-and-public-peerings"></a>Wybór ścieżki dla firmy Microsoft i publicznych komunikacji równorzędnych
+Ważne jest, aby zapewnić, że podczas używania usługi Microsoft lub publicznej komunikacji równorzędnej ruch przepływający nad żądaną ścieżką, jeśli istnieje co najmniej jeden obwody usługi ExpressRoute, a także ścieżki do Internetu za pośrednictwem Internetu (9) lub usługodawcy internetowego (ISP). Protokół BGP wykorzystuje najlepszy algorytm wyboru ścieżki na podstawie różnych czynników, takich jak najdłuższy odpowiednik prefiksu (LPM). Aby zapewnić, że ruch przeznaczony dla platformy Azure za pośrednictwem firmy Microsoft lub publicznej komunikacji równorzędnej przechodzi przez ścieżkę ExpressRoute, klienci muszą zaimplementować *lokalny atrybut preferencji* , aby upewnić się, że ścieżka jest zawsze preferowana w ExpressRoute. 
+
+> [!NOTE]
+> Domyślna preferencja lokalna to zwykle 100. Wyższe preferencje lokalne są bardziej preferowane. 
+>
+>
+
+Rozważmy następujący przykładowy scenariusz:
+
+![Przypadek 1 dotyczący usługi ExpressRoute — suboptymalny routing od klienta do firmy Microsoft](./media/expressroute-optimize-routing/expressroute-localPreference.png)
+
+W powyższym przykładzie, aby preferować ExpressRoute ścieżki skonfigurować preferencję lokalną w następujący sposób. 
+
+**Cisco IOS — konfiguracja XE z perspektywy R1:**
+
+    R1(config)#route-map prefer-ExR permit 10
+    R1(config-route-map)#set local-preference 150
+
+    R1(config)#router BGP 345
+    R1(config-router)#neighbor 1.1.1.2 remote-as 12076
+    R1(config-router)#neighbor 1.1.1.2 activate
+    R1(config-router)#neighbor 1.1.1.2 route-map prefer-ExR in
+
+**Junos konfigurację z perspektywy R1:**
+
+    user@R1# set protocols bgp group ibgp type internal
+    user@R1# set protocols bgp group ibgp local-preference 150
+
+
 
 ## <a name="suboptimal-routing-from-customer-to-microsoft"></a>Suboptymalny routing od klienta do firmy Microsoft
 Przyjrzyjmy się problemowi z routingiem, korzystając z przykładu. Załóżmy, że masz dwa biura w USA: jedno w Los Angeles i jedno w Nowym Jorku. Biura są połączone za pośrednictwem sieci WAN, która może być Twoją siecią podstawową lub siecią IP VPN dostawcy usług. Dostępne są dwa obwody usługi ExpressRoute: jeden w zachodnich stanach USA i jeden we wschodnich stanach USA, które są również połączone w ramach sieci WAN. Oczywiście masz dwie ścieżki połączenia z siecią firmy Microsoft. Teraz wyobraź sobie, że dysponujesz wdrożeniem platformy Azure (np. usługą Azure App Service) zarówno w zachodnich, jak i wschodnich stanach USA. Masz zamiar połączyć użytkowników z Los Angeles z regionem świadczenia usługi Azure Zachodnie stany USA Azure, a użytkowników w Nowym Jorku z regionem Wschodnie stany USA, ponieważ administrator usług anonsuje, że użytkownicy z poszczególnych biur uzyskują w ten sposób dostęp do pobliskich usług Azure w celu uzyskania optymalnego środowiska. Niestety plan działa dobrze w przypadku użytkowników ze wschodniego wybrzeża, ale nie w przypadku użytkowników z zachodniego wybrzeża. Przyczyną tego problemu jest następująca. W poszczególnych obwodach usługi ExpressRoute anonsujemy zarówno prefiks dla wschodnich stanów USA (23.100.0.0/16), jak i prefiks w zachodnich stanach USA (13.100.0.0/16). Jeśli nie wiesz, który prefiks odpowiada któremu regionowi, nie możesz ich traktować w różny sposób. Sieć WAN może uznać, że oba prefiksy są bliżej wschodnich niż zachodnich stanów USA, i skierować obu użytkowników biura do obwodu usługi ExpressRoute we wschodnich stanach USA. W rezultacie wielu użytkowników w biurze z Los Angeles będzie niezadowolonych.

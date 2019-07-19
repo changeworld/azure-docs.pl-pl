@@ -1,54 +1,60 @@
 ---
-title: Autoryzowanie dostępu do obiektów blob i kolejek usługi Azure Active Directory i zarządzanych tożsamości dla zasobów platformy Azure — usłudze Azure Storage
-description: Obiekt Blob i kolejki magazynu pomocy technicznej platformy Azure Autoryzowanie dostępu do zasobów przy użyciu usługi Azure Active Directory i zarządzanych tożsamości dla zasobów platformy Azure. Zarządzanych tożsamości dla zasobów platformy Azure można używać do autoryzowania dostępu do obiektów blob i kolejki z aplikacjami uruchomionymi na maszynach wirtualnych platformy Azure, aplikacji funkcji, zestawy skalowania maszyn wirtualnych i innych.
+title: Autoryzuj dostęp do obiektów blob i kolejek przy użyciu tożsamości Azure Active Directory i zarządzanych dla zasobów platformy Azure — Azure Storage
+description: Usługi Azure BLOB i queue storage obsługują autoryzowanie dostępu do zasobów za pomocą tożsamości Azure Active Directory i zarządzanych dla zasobów platformy Azure. Za pomocą zarządzanych tożsamości dla zasobów platformy Azure można autoryzować dostęp do obiektów blob i kolejek z aplikacji uruchamianych na maszynach wirtualnych platformy Azure, aplikacjach funkcji, zestawach skalowania maszyn wirtualnych i innych.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 07/15/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 23e1171a8757d021b8c6d38f90bdbf720014045f
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 469790660e843816cc431420e7e1407c90a7de05
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303413"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249934"
 ---
-# <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Autoryzowanie dostępu do obiektów blob i kolejek usługi Azure Active Directory i zarządzanych tożsamości dla zasobów platformy Azure
+# <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Autoryzuj dostęp do obiektów blob i kolejek przy użyciu tożsamości Azure Active Directory i zarządzanych dla zasobów platformy Azure
 
-Usługa Azure storage Blob i kolejki obsługuje uwierzytelnianie usługi Azure Active Directory (Azure AD) przy użyciu [zarządzanych tożsamości dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md). Zarządzane tożsamości dla zasobów platformy Azure można autoryzować dostępu do obiektów blob i kolejki danych za pomocą poświadczeń usługi Azure AD z aplikacjami uruchomionymi na maszynach wirtualnych platformy Azure (maszyny wirtualne), aplikacji funkcji, zestawy skalowania maszyn wirtualnych i innych usług. Korzystając z zarządzanych tożsamości dla zasobów platformy Azure wraz z uwierzytelniania usługi Azure AD, można uniknąć przechowywania poświadczeń za pomocą aplikacji działających w chmurze.  
+Usługi Azure BLOB i queue storage obsługują uwierzytelnianie Azure Active Directory (Azure AD) z [tożsamościami zarządzanymi dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md). Zarządzane tożsamości dla zasobów platformy Azure mogą autoryzować dostęp do danych obiektów blob i kolejek przy użyciu poświadczeń usługi Azure AD z aplikacji uruchomionych na maszynach wirtualnych platformy Azure, aplikacji funkcji, zestawów skalowania maszyn wirtualnych i innych usług. Korzystając z tożsamości zarządzanych dla zasobów platformy Azure wraz z uwierzytelnianiem w usłudze Azure AD, można uniknąć zapisywania poświadczeń z aplikacjami uruchomionymi w chmurze.  
 
-W tym artykule przedstawiono sposób autoryzacji dostępu do danych obiektów blob lub kolejki za pomocą tożsamości zarządzanej maszyny wirtualnej platformy Azure. 
+W tym artykule przedstawiono sposób autoryzacji dostępu do danych obiektu BLOB lub kolejki przy użyciu tożsamości zarządzanej z maszyny wirtualnej platformy Azure.
 
-## <a name="enable-managed-identities-on-a-vm"></a>Włącz zarządzanych tożsamości na maszynie Wirtualnej
+## <a name="enable-managed-identities-on-a-vm"></a>Włączanie tożsamości zarządzanych na maszynie wirtualnej
 
-Korzystać z zarządzanych tożsamości dla zasobów platformy Azure, do autoryzacji dostępu do obiektów blob i kolejki z maszyny Wirtualnej, należy najpierw włączyć zarządzanych tożsamości dla zasobów platformy Azure na maszynie Wirtualnej. Aby dowiedzieć się, jak włączyć zarządzanych tożsamości dla zasobów platformy Azure, zobacz jeden z następujących artykułów:
+Aby można było używać zarządzanych tożsamości dla zasobów platformy Azure w celu autoryzowania dostępu do obiektów blob i kolejek z poziomu maszyny wirtualnej, należy najpierw włączyć zarządzane tożsamości dla zasobów platformy Azure na maszynie wirtualnej. Aby dowiedzieć się, jak włączyć zarządzane tożsamości dla zasobów platformy Azure, zobacz jeden z następujących artykułów:
 
 - [Azure Portal](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
 - [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Interfejs wiersza polecenia platformy Azure](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Szablon usługi Azure Resource Manager](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
-- [Zestawy SDK platformy Azure](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
+- [Azure Resource Manager biblioteki klienckie](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
-## <a name="grant-permissions-to-an-azure-ad-managed-identity"></a>Udzielanie uprawnień do tożsamości usługi Azure AD zarządzane
+## <a name="grant-permissions-to-an-azure-ad-managed-identity"></a>Przyznawanie uprawnień do tożsamości zarządzanej usługi Azure AD
 
-Aby autoryzować żądania do usługi blob Storage lub kolejki z zarządzanych tożsamości w aplikacji usługi Azure Storage, należy najpierw skonfigurować ustawienia kontroli (RBAC) dostępu opartej na rolach dla tej tożsamości zarządzanej. Usługa Azure Storage określa role RBAC, które obejmują uprawnienia do danych obiektów blob i kolejek. Gdy rola RBAC jest przypisane do tożsamości zarządzanej, tożsamość zarządzaną otrzymuje te uprawnienia do danych obiektów blob lub kolejki w odpowiednim rozwiązaniem. 
+Aby autoryzować żądanie do obiektu BLOB lub usługa kolejki z tożsamości zarządzanej w aplikacji usługi Azure Storage, najpierw Skonfiguruj ustawienia kontroli dostępu opartej na rolach (RBAC) dla tej tożsamości zarządzanej. Usługa Azure Storage definiuje role RBAC, które obejmują uprawnienia do danych obiektów blob i kolejek. Gdy rola RBAC zostanie przypisana do tożsamości zarządzanej, zarządzana tożsamość otrzymuje te uprawnienia do danych obiektu BLOB lub kolejki w odpowiednim zakresie.
 
-Aby uzyskać więcej informacji na temat przypisywania ról RBAC zobacz jeden z następujących artykułów:
+Aby uzyskać więcej informacji na temat przypisywania ról RBAC, zobacz jeden z następujących artykułów:
 
-- [Udzielanie dostępu do obiektów blob i kolejek danych Azure przy użyciu funkcji RBAC w witrynie Azure portal](storage-auth-aad-rbac-portal.md)
-- [Udzielanie dostępu do danych platformy Azure obiektów blob i kolejek przy użyciu RBAC przy użyciu wiersza polecenia platformy Azure](storage-auth-aad-rbac-cli.md)
-- [Udzielanie dostępu do danych platformy Azure obiektów blob i kolejek przy użyciu kontroli RBAC przy użyciu programu PowerShell](storage-auth-aad-rbac-powershell.md)
+- [Udzielanie dostępu do obiektów blob platformy Azure i danych z kolejki RBAC w Azure Portal](storage-auth-aad-rbac-portal.md)
+- [Udzielanie dostępu do obiektów blob platformy Azure i danych z kolejki RBAC przy użyciu interfejsu wiersza polecenia platformy Azure](storage-auth-aad-rbac-cli.md)
+- [Udzielanie dostępu do obiektów blob platformy Azure i danych z kolejki RBAC przy użyciu programu PowerShell](storage-auth-aad-rbac-powershell.md)
 
-## <a name="authorize-with-a-managed-identity-access-token"></a>Autoryzuj przy użyciu tokenu dostępu tożsamości zarządzanej
+## <a name="azure-storage-resource-id"></a>Identyfikator zasobu usługi Azure Storage
 
-Aby autoryzować żądania kierowane do magazynu obiektów Blob i kolejek przy użyciu tożsamości zarządzanej, aplikacji lub skryptu należy uzyskać OAuth token. [Uwierzytelniania platformy Microsoft Azure App](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) Biblioteka kliencka dla platformy .NET (wersja zapoznawcza) upraszcza proces pobierania i odnawiania tokenu w kodzie.
+[!INCLUDE [storage-resource-id-include](../../../includes/storage-resource-id-include.md)]
 
-Biblioteka klienta uwierzytelniania aplikacji, które automatycznie zarządza uwierzytelnianiem. Biblioteki do uwierzytelniania podczas tworzenia lokalnego przy użyciu poświadczeń dla deweloperów. Podczas tworzenia lokalnego przy użyciu poświadczeń dewelopera jest bezpieczniejsza, ponieważ nie trzeba utworzyć poświadczenia usługi Azure AD lub udostępnić poświadczeń między deweloperów. Gdy rozwiązanie jest później wdrożone na platformie Azure, biblioteka przełącza się do przy użyciu poświadczeń aplikacji.
+## <a name="net-code-example-create-a-block-blob"></a>Przykład kodu platformy .NET: Tworzenie blokowego obiektu BLOB
 
-Za pomocą biblioteki uwierzytelniania aplikacji w aplikacji usługi Azure Storage, należy zainstalować najnowszy pakiet (wersja zapoznawcza) z [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication), a także najnowszą wersję [wspólne biblioteki klienta usługi Azure Storage dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/) i [biblioteki klienta magazynu obiektów Blob platformy Azure dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/). Dodaj następujący kod **przy użyciu** instrukcji w kodzie:
+W przykładzie kodu pokazano, jak uzyskać token OAuth 2,0 z usługi Azure AD i użyć go do autoryzowania żądania utworzenia blokowego obiektu BLOB. Aby skorzystać z tego przykładu, należy najpierw wykonać czynności opisane w poprzednich sekcjach.
+
+Biblioteka klienta [uwierzytelniania aplikacji Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) dla platformy .NET (wersja zapoznawcza) upraszcza proces uzyskiwania i odnawiania tokenu z kodu. Biblioteka klienta uwierzytelniania aplikacji zarządza uwierzytelnianiem automatycznie. Biblioteka używa poświadczeń dewelopera do uwierzytelniania podczas lokalnego tworzenia oprogramowania. Korzystanie z poświadczeń dewelopera podczas lokalnego tworzenia jest bezpieczniejsze, ponieważ nie ma potrzeby tworzenia poświadczeń usługi Azure AD ani udostępniania poświadczeń między deweloperami. Gdy rozwiązanie zostanie wdrożone później na platformie Azure, biblioteka automatycznie przełączy się do korzystania z poświadczeń aplikacji.
+
+### <a name="install-packages"></a>Instalowanie pakietów
+
+Aby użyć biblioteki uwierzytelniania aplikacji w aplikacji usługi Azure Storage, zainstaluj najnowszy pakiet wersji zapoznawczej z programu [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication), a także najnowszą wersję [biblioteki wspólnych klientów usługi Azure Storage dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/) i [biblioteki klienckiej usługi Azure Blob Storage dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/). Dodaj następujące instrukcje **using** do kodu:
 
 ```csharp
 using Microsoft.Azure.Services.AppAuthentication;
@@ -56,54 +62,15 @@ using Microsoft.Azure.Storage.Auth;
 using Microsoft.Azure.Storage.Blob;
 ```
 
-Biblioteka uwierzytelniania aplikacji zapewnia **AzureServiceTokenProvider** klasy. Wystąpienie tej klasy może być przekazywany do wywołania zwrotnego, który pobiera token, a następnie odnawia token przed jego wygaśnięciem.
+### <a name="add-the-callback-method"></a>Dodaj metodę wywołania zwrotnego
 
-Poniższy przykład pobiera token i używa jej do utworzenia nowego obiektu blob, a następnie używa tego samego tokenu do odczytania obiektu blob.
-
-```csharp
-const string blobName = "https://storagesamples.blob.core.windows.net/sample-container/blob1.txt";
-
-// Get the initial access token and the interval at which to refresh it.
-AzureServiceTokenProvider azureServiceTokenProvider = new AzureServiceTokenProvider();
-var tokenAndFrequency = TokenRenewerAsync(azureServiceTokenProvider, 
-                                            CancellationToken.None).GetAwaiter().GetResult();
-
-// Create storage credentials using the initial token, and connect the callback function 
-// to renew the token just before it expires
-TokenCredential tokenCredential = new TokenCredential(tokenAndFrequency.Token, 
-                                                        TokenRenewerAsync,
-                                                        azureServiceTokenProvider, 
-                                                        tokenAndFrequency.Frequency.Value);
-
-StorageCredentials storageCredentials = new StorageCredentials(tokenCredential);
-
-// Create a blob using the storage credentials.
-CloudBlockBlob blob = new CloudBlockBlob(new Uri(blobName), 
-                                            storageCredentials);
-
-// Upload text to the blob.
-blob.UploadTextAsync(string.Format("This is a blob named {0}", blob.Name));
-
-// Continue to make requests against Azure Storage. 
-// The token is automatically refreshed as needed in the background.
-do
-{
-    // Read blob contents
-    Console.WriteLine("Time accessed: {0} Blob Content: {1}", 
-                        DateTimeOffset.UtcNow, 
-                        blob.DownloadTextAsync().Result);
-
-    // Sleep for ten seconds, then read the contents of the blob again.
-    Thread.Sleep(TimeSpan.FromSeconds(10));
-} while (true);
-```
-
-Metoda wywołania zwrotnego sprawdza, czy czas wygaśnięcia tokenu i jest odnawiana go zgodnie z potrzebami:
+Metoda wywołania zwrotnego sprawdza czas wygaśnięcia tokenu i odnawia go w razie konieczności:
 
 ```csharp
 private static async Task<NewTokenAndFrequency> TokenRenewerAsync(Object state, CancellationToken cancellationToken)
 {
     // Specify the resource ID for requesting Azure AD tokens for Azure Storage.
+    // Note that you can also specify the root URI for your storage account as the resource ID.
     const string StorageResource = "https://storage.azure.com/";  
 
     // Use the same token provider to request a new token.
@@ -122,15 +89,59 @@ private static async Task<NewTokenAndFrequency> TokenRenewerAsync(Object state, 
 }
 ```
 
-Aby uzyskać więcej informacji na temat biblioteki uwierzytelniania aplikacji, zobacz [Service-to-service authentication usługi Azure Key Vault przy użyciu platformy .NET](../../key-vault/service-to-service-authentication.md). 
+### <a name="get-a-token-and-create-a-block-blob"></a>Pobieranie tokenu i tworzenie blokowego obiektu BLOB
 
-Aby dowiedzieć się więcej o tym, jak można uzyskać tokenu dostępu, zobacz [jak uzyskiwanie tokenu dostępu, za pomocą tożsamości zarządzanych zasobów platformy Azure na Maszynie wirtualnej platformy Azure](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md).
+Biblioteka uwierzytelniania aplikacji udostępnia klasę **AzureServiceTokenProvider** . Wystąpienie tej klasy można przesłać do wywołania zwrotnego, które pobiera token, a następnie odnawia token przed jego wygaśnięciem.
+
+Poniższy przykład pobiera token i używa go do utworzenia nowego obiektu BLOB, a następnie używa tego samego tokenu do odczytu obiektu BLOB.
+
+```csharp
+const string blobName = "https://storagesamples.blob.core.windows.net/sample-container/blob1.txt";
+
+// Get the initial access token and the interval at which to refresh it.
+AzureServiceTokenProvider azureServiceTokenProvider = new AzureServiceTokenProvider();
+var tokenAndFrequency = TokenRenewerAsync(azureServiceTokenProvider,
+                                            CancellationToken.None).GetAwaiter().GetResult();
+
+// Create storage credentials using the initial token, and connect the callback function
+// to renew the token just before it expires
+TokenCredential tokenCredential = new TokenCredential(tokenAndFrequency.Token,
+                                                        TokenRenewerAsync,
+                                                        azureServiceTokenProvider,
+                                                        tokenAndFrequency.Frequency.Value);
+
+StorageCredentials storageCredentials = new StorageCredentials(tokenCredential);
+
+// Create a blob using the storage credentials.
+CloudBlockBlob blob = new CloudBlockBlob(new Uri(blobName),
+                                            storageCredentials);
+
+// Upload text to the blob.
+blob.UploadTextAsync(string.Format("This is a blob named {0}", blob.Name));
+
+// Continue to make requests against Azure Storage.
+// The token is automatically refreshed as needed in the background.
+do
+{
+    // Read blob contents
+    Console.WriteLine("Time accessed: {0} Blob Content: {1}",
+                        DateTimeOffset.UtcNow,
+                        blob.DownloadTextAsync().Result);
+
+    // Sleep for ten seconds, then read the contents of the blob again.
+    Thread.Sleep(TimeSpan.FromSeconds(10));
+} while (true);
+```
+
+Aby uzyskać więcej informacji na temat biblioteki uwierzytelniania aplikacji, zobacz [uwierzytelnianie między usługą w celu Azure Key Vault przy użyciu platformy .NET](../../key-vault/service-to-service-authentication.md).
+
+Aby dowiedzieć się więcej na temat uzyskiwania tokenu dostępu, zobacz [jak używać tożsamości zarządzanych dla zasobów platformy Azure na maszynie wirtualnej platformy Azure w celu uzyskania tokenu dostępu](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md).
 
 > [!NOTE]
-> Aby autoryzować żądań na podstawie danych obiektów blob lub kolejki przy użyciu usługi Azure AD, musi używać protokołu HTTPS dla tych żądań.
+> Aby autoryzować żądania względem obiektów blob lub danych z kolejki za pomocą usługi Azure AD, musisz użyć protokołu HTTPS dla tych żądań.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się więcej na temat ról RBAC dla usługi Azure storage, zobacz [Zarządzaj praw dostępu do magazynu danych przy użyciu RBAC](storage-auth-aad-rbac.md).
-- Aby dowiedzieć się, jak autoryzować dostęp do kontenerów i kolejki ze w aplikacjach pamięci masowej, zobacz [Użyj usługi Azure AD z magazynu aplikacji](storage-auth-aad-app.md).
-- Aby dowiedzieć się, jak uruchamiać polecenia wiersza polecenia platformy Azure i programu PowerShell przy użyciu poświadczeń usługi Azure AD, zobacz [polecenia uruchomienia wiersza polecenia platformy Azure lub programu PowerShell przy użyciu poświadczeń usługi Azure AD, aby uzyskiwać dostęp do danych obiektów blob i kolejki](storage-auth-aad-script.md).
+- Aby dowiedzieć się więcej o rolach RBAC dla usługi Azure Storage, zobacz [Zarządzanie prawami dostępu do danych magazynu za pomocą RBAC](storage-auth-aad-rbac.md).
+- Aby dowiedzieć się, jak autoryzować dostęp do kontenerów i kolejek z poziomu aplikacji magazynu, zobacz [Korzystanie z usługi Azure AD z aplikacjami magazynu](storage-auth-aad-app.md).
+- Aby dowiedzieć się, jak uruchomić interfejs wiersza polecenia platformy Azure i poleceń programu PowerShell przy użyciu poświadczeń usługi Azure AD, zobacz [Uruchamianie interfejsu wiersza polecenia platformy Azure lub poleceń programu PowerShell przy użyciu poświadczeń usługi Azure AD w celu uzyskania dostępu do danych obiektów](storage-auth-aad-script.md)

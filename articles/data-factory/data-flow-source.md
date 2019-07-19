@@ -1,158 +1,162 @@
 ---
-title: Konfigurowanie Przekształcenie źródła w funkcji mapowania przepływu danych usługi Azure Data Factory
-description: Dowiedz się, jak skonfigurować źródło przekształcenia w mapowanie przepływu danych.
+title: Skonfiguruj transformację źródłową w funkcji przepływu danych mapowania Azure Data Factory
+description: Dowiedz się, jak skonfigurować transformację źródłową w mapowaniu przepływu danych.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 4f77eafd3309d7c1d679c126b1a5eb1ff0e9a28d
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: f6aed5d2ac1c4672d8d8868fe127ead053512e42
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490093"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314833"
 ---
-# <a name="source-transformation-for-mapping-data-flow"></a>Przekształcenie źródła dla mapowania przepływu danych 
+# <a name="source-transformation-for-mapping-data-flow"></a>Przekształcanie źródła na potrzeby mapowania przepływu danych 
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Przekształcenie źródła umożliwia skonfigurowanie źródła danych dla przepływu danych. Przepływ danych może zawierać więcej niż jeden Przekształcenie źródła. Podczas projektowania danych przepływów, zawsze zaczyna się od Przekształcenie źródła.
+Transformacja źródła konfiguruje źródło danych dla przepływu danych. Przepływ danych może zawierać więcej niż jedną transformację źródłową. Podczas projektowania przepływów danych zawsze zaczyna się od transformacji źródłowej.
 
-Każdy przepływ danych wymaga co najmniej jedno źródło przekształcenia. Co jest niezbędne do ukończenia przekształceń danych, należy dodać dowolną liczbę źródeł. Możesz dołączyć do tych źródeł, wraz z przekształcenie sprzężenie lub union transformacji.
+Każdy przepływ danych wymaga co najmniej jednego przekształcenia źródła. Dodaj dowolną liczbę źródeł, aby dokończyć przekształcenia danych. Można przyłączyć te źródła wraz z przekształceniem sprzężenia lub przekształceniem Unii.
 
 > [!NOTE]
-> Podczas debugowania przepływu danych, dane są odczytywane ze źródła przy użyciu ustawienia próbkowania lub limity źródła debugowania. Można zapisać danych do ujścia, należy uruchomić przepływ danych z potoku przepływu danych działania. 
+> Podczas debugowania przepływu danych dane są odczytywane ze źródła przy użyciu ustawienia próbkowania lub limitów źródła debugowania. Aby zapisać dane w ujścia, należy uruchomić przepływ danych z działania przepływu danych potoku. 
 
-![Przekształcenie opcje na karcie Ustawienia źródła źródła](media/data-flow/source.png "źródła")
+![Opcje przekształcania źródłowego na karcie Ustawienia źródła](media/data-flow/source.png "Źródło")
 
-Z dokładnie jeden zestaw danych fabryki danych, należy skojarzyć swoją transformację przepływ danych źródłowych. Zestaw danych określa kształt i lokalizację danych, przeznaczonych do zapisu lub odczytu. Symbole wieloznaczne oraz plik listy w źródle służy do pracy z więcej niż jeden plik jednocześnie.
+Skojarz transformację źródła przepływu danych z dokładnie jednym Data Factory zestawem danych. Zestaw danych definiuje kształt i lokalizację danych, które mają być zapisywane lub odczytywane. Możesz użyć symboli wieloznacznych i list plików w źródle, aby współpracować z więcej niż jednym plikiem jednocześnie.
 
-## <a name="data-flow-staging-areas"></a>Przepływ danych — obszarów tymczasowych
+## <a name="data-flow-staging-areas"></a>Obszary tymczasowe przepływu danych
 
-Przepływ danych współpracuje z *przemieszczania* zestawów danych, które są wszystkie na platformie Azure. Na użytek tych zestawów danych przemieszczania, gdy masz transformowanie danych. 
+Przepływ danych działa z *tymczasowymi* zestawami datadataset, które znajdują się na platformie Azure. Te zestawy danych są używane do przemieszczania podczas przekształcania danych. 
 
-Fabryka danych ma dostęp do niemal 80 natywne łączniki. Aby dołączyć dane z tych innych źródeł danych, należy użyć narzędzia działania kopiowania do przygotowania danych w jednym z przepływem danych zestawu danych tymczasowych obszarów.
+Data Factory ma dostęp do niemal 80 łączników natywnych. Aby dołączyć dane z innych źródeł w przepływie danych, należy użyć narzędzia działania kopiowania do przygotowania tych danych w jednym z obszarów tymczasowych zestawu danych przepływu danych.
 
 ## <a name="options"></a>Opcje
 
-Wybierz opcje schematu i pobierania danych.
+Wybierz opcje schematu i próbkowania dla danych.
 
-### <a name="allow-schema-drift"></a>Zezwalaj na kilka schematu
-Wybierz **Zezwalaj dryfu schematu** Jeśli kolumny źródłowe zmieni się często. To ustawienie umożliwia wszystkie pola źródłowego przychodzący przepływ przekształcenia do ujścia.
+### <a name="schema-drift"></a>Odchylenia od schematu
+[Dryfowanie schematu](concepts-data-flow-schema-drift.md) to możliwość natywnego obsługi elastycznych schematów w przepływach danych bez konieczności jawnego definiowania zmian w kolumnach.
 
-### <a name="validate-schema"></a>Sprawdzanie poprawności schematu
+* Wybierz opcję **Zezwalaj na dryfowanie schematu** , jeśli kolumny źródłowe będą często zmieniane. To ustawienie umożliwia przepływ wszystkich przychodzących pól źródłowych do przepływu przez przekształcenia do ujścia.
 
-Jeśli przychodzący wersji źródła danych nie jest zgodny zdefiniowanego schematu, przepływ danych zakończy się niepowodzeniem do uruchomienia.
+* Wybranie opcji **wnioskowanie typów kolumn** z przekazaniem spowoduje wyszukanie funkcji ADF w celu zdefiniowania typów danych dla każdej wykrytej nowej kolumny. Po wyłączeniu tej funkcji ADF przyjmie ciąg.
 
-![Ustawienia źródła publicznych, przedstawiający opcje Zezwalaj schematu dryfu, próbkowania i schematu sprawdzania poprawności](media/data-flow/source1.png "publiczne źródło 1")
+### <a name="validate-schema"></a>Weryfikuj schemat
+
+Jeśli przychodzące wersje danych źródłowych nie są zgodne ze zdefiniowanym schematem, przepływ danych nie zostanie uruchomiony.
+
+![Ustawienia źródła publicznego, pokazując opcje sprawdzania poprawności schematu, Zezwalaj na dryfowanie schematu i próbkowanie](media/data-flow/source1.png "Źródło publiczne 1")
 
 ### <a name="sample-the-data"></a>Przykładowe dane
-Włącz **próbkowania** ograniczenia liczby wierszy ze źródła. Użyj tego ustawienia podczas testowania i przykładowe dane ze źródła do debugowania.
+Włącz **próbkowanie** , aby ograniczyć liczbę wierszy ze źródła. Użyj tego ustawienia, gdy testujesz lub przykładowe dane ze źródła do celów debugowania.
 
-## <a name="define-schema"></a>Definiowanie schematu
+## <a name="define-schema"></a>Definiuj schemat
 
-W przypadku plików źródłowych nie są silnie typizowane (na przykład, pliki proste zamiast plików Parquet), należy zdefiniować typy danych dla każdego pola, w tym miejscu w Przekształcenie źródła.  
+Jeśli pliki źródłowe nie są jednoznacznie wpisane (na przykład pliki płaskie, a nie pliki parquet), Zdefiniuj typy danych dla każdego pola w transformacji źródłowej.  
 
-![Przekształcenie ustawienia na karcie Zdefiniuj schemat źródła](media/data-flow/source2.png "źródła 2")
+![Ustawienia transformacji źródła na karcie Zdefiniuj schemat](media/data-flow/source2.png "Źródło 2")
 
-Nazwy kolumn w transformacji wybierz można później zmienić. Umożliwia także zmieniać typów danych przekształcania kolumn pochodnych. Silnie typizowane źródeł można modyfikować typy danych w później wybierz transformacji. 
+Można później zmienić nazwy kolumn w przekształceniu SELECT. Zmień typy danych przy użyciu transformacji kolumn pochodnych. W przypadku źródeł o jednoznacznie określonym typie można modyfikować typy danych w późniejszej transformacji SELECT. 
 
-![Typy danych w transformacji wybierz](media/data-flow/source003.png "typy danych")
+![Typy danych w przekształcaniu SELECT](media/data-flow/source003.png "typy danych")
 
-### <a name="optimize-the-source-transformation"></a>Optymalizowanie Przekształcenie źródła
+### <a name="optimize-the-source-transformation"></a>Optymalizuj transformację źródłową
 
-Na **Optymalizacja** karta Przekształcenie źródła może zostać wyświetlony **źródła** partycji typu. Ta opcja jest dostępna tylko wtedy, gdy źródłem jest usługa Azure SQL Database. Jest to spowodowane usługi Data Factory stara się połączenia równolegle uruchamiać duże zapytania źródło bazy danych SQL.
+Na karcie **Optymalizacja** dla transformacji źródłowej może zostać wyświetlony typ partycji **źródłowej** . Ta opcja jest dostępna tylko wtedy, gdy źródło jest Azure SQL Database. Dzieje się tak, ponieważ Data Factory próbuje nawiązać połączenie równolegle, aby uruchamiać duże zapytania względem źródła SQL Database.
 
-![Ustawienia partycji źródła](media/data-flow/sourcepart3.png "partycjonowania")
+![Ustawienia partycji źródłowej](media/data-flow/sourcepart3.png "partycjonowanie")
 
-Nie masz do partycjonowania danych w źródle bazy danych SQL, ale partycje są przydatne w przypadku dużych kwerend. Można utworzyć partycji kolumny lub zapytanie.
+Nie ma potrzeby partycjonowania danych w źródle SQL Database, ale partycje są przydatne w przypadku dużych zapytań. Partycję można oprzeć na kolumnie lub zapytaniu.
 
-### <a name="use-a-column-to-partition-data"></a>Użyj kolumny do partycjonowania danych
+### <a name="use-a-column-to-partition-data"></a>Używanie kolumny do partycjonowania danych
 
-Z tabeli źródłowej wybierz kolumnę do partycji na. Również ustawić liczbę partycji.
+Z tabeli źródłowej wybierz kolumnę do partycjonowania. Należy również ustawić liczbę partycji.
 
-### <a name="use-a-query-to-partition-data"></a>Użyj zapytania do partycjonowania danych
+### <a name="use-a-query-to-partition-data"></a>Używanie zapytania do partycjonowania danych
 
-Można podzielić połączenia na podstawie zapytania. Po prostu wprowadź zawartość predykat WHERE. Na przykład wprowadź rok > 1980.
+Możesz wybrać opcję partycjonowania połączeń na podstawie zapytania. Wystarczy wprowadzić zawartość predykatu WHERE. Na przykład wprowadź Year > 1980.
 
-## <a name="source-file-management"></a>Zarządzanie plikami źródła
+## <a name="source-file-management"></a>Zarządzanie plikiem źródłowym
 
-Wybierz ustawienia do zarządzania plikami w źródle. 
+Wybierz pozycję Ustawienia, aby zarządzać plikami w źródle. 
 
-![Nowe ustawienia źródła](media/data-flow/source2.png "nowe ustawienia")
+![Nowe ustawienia źródła](media/data-flow/source2.png "Nowe ustawienia")
 
-* **Ścieżka symboli wieloznacznych**: Z folderu źródłowego wybierz serię plików, które pasują do wzorca. Ustawienie to zastępuje dowolny plik w definicji zestawu danych.
+* **Ścieżka symboli**wieloznacznych: Z kontenera źródłowego wybierz serię plików, które pasują do wzorca. To ustawienie zastępuje dowolny plik w definicji zestawu danych.
 
 Przykłady symboli wieloznacznych:
 
-* ```*``` Reprezentuje dowolny zestaw znaków
-* ```**``` Reprezentuje zagnieżdżanie katalogu cykliczne
-* ```?``` Zastępuje jeden znak
-* ```[]``` Pasuje do jednej więcej znaków w nawiasach
+* ```*```Reprezentuje dowolny zestaw znaków
+* ```**```Reprezentuje zagnieżdżanie katalogów cyklicznych
+* ```?```Zamienia jeden znak
+* ```[]```Dopasowuje jeden z więcej znaków w nawiasach
 
-* ```/data/sales/**/*.csv``` Pobiera wszystkie pliki csv w ramach /data/sales
-* ```/data/sales/20??/**``` Pobiera wszystkie pliki w XX wieku
-* ```/data/sales/2004/*/12/[XY]1?.csv``` Pobiera wszystkie pliki csv w 2004 w grudniu, począwszy od X lub Y poprzedzony 2-cyfrowy numer
+* ```/data/sales/**/*.csv```Pobiera wszystkie pliki CSV w obszarze/Data/Sales
+* ```/data/sales/20??/**```Pobiera wszystkie pliki w 20-wieku
+* ```/data/sales/2004/*/12/[XY]1?.csv```Pobiera wszystkie pliki CSV w 2004 w grudniu, zaczynając od X lub Y poprzedzone przez 2-cyfrową liczbę
 
-Kontener musi być w zestawie danych. Ścieżki symboli wieloznacznych w związku z tym należy również uwzględnić swoje ścieżkę folderu w folderze głównym.
+Kontener musi być określony w zestawie danych. Ścieżka symbolu wieloznacznego musi zawierać również ścieżkę folderu z folderu głównego.
 
-* **Lista plików**: Jest to zestaw plików. Utwórz plik tekstowy, który zawiera listę plików ścieżkę względną do przetworzenia. Wskaż to plik tekstowy.
-* **Kolumny do przechowywania nazwy pliku**: Store nazwę pliku źródłowego w kolumnie w Twoich danych. Wprowadź nową nazwę do przechowywania ciągu nazwy pliku.
-* **Po zakończeniu**: Wybierz nic nie rób z plikiem źródłowym, po danych przebiegi przepływu, usuń plik źródłowy lub Przenieś plik źródłowy. Ścieżki na czas przeprowadzki są względne.
+* **Lista plików**: To jest zestaw plików. Utwórz plik tekstowy, który zawiera listę plików ścieżek względnych do przetworzenia. Wskaż ten plik tekstowy.
+* **Kolumna do przechowywania nazwy pliku**: Zapisz nazwę pliku źródłowego w kolumnie w danych. Wprowadź tutaj nową nazwę, aby zapisać ciąg nazw plików.
+* **Po zakończeniu**: Wybierz, aby nic nie robić z plikiem źródłowym po uruchomieniu przepływu danych, usuń plik źródłowy lub Przenieś plik źródłowy. Ścieżki do przenoszenia są względne.
 
-Aby przenieść pliki źródłowe do innej lokalizacji przetwarzania końcowego, najpierw wybierz "Przenieś" dla operacji pliku. Następnie ustaw katalog "od". Jeśli nie używasz żadnych symboli wieloznacznych dotyczące ścieżki, a następnie "ustawienie od" będzie tym samym folderze co folderu źródłowego.
+Aby przenieść pliki źródłowe do innej lokalizacji po przetworzeniu, najpierw wybierz pozycję "Przenieś" dla operacji na pliku. Następnie ustaw katalog "z". Jeśli nie używasz symboli wieloznacznych dla ścieżki, ustawienie "od" będzie takie samo jak folder źródłowy.
 
-Jeśli masz ścieżkę źródłową ze znakami wieloznacznymi, np:
+Jeśli masz wieloznaczną ścieżkę źródłową, np.:
 
 ```/data/sales/20??/**/*.csv```
 
-Można określić jako "od"
+Możesz określić wartość "od" jako
 
 ```/data/sales```
 
-A "do" jako
+I "do" jako
 
 ```/backup/priorSales```
 
-W takim przypadku wszystkie podkatalogi, w obszarze /data/sales, które zostały źródło są przenoszone względem /backup/priorSales.
+W takim przypadku wszystkie podkatalogi w/Data/Sales, które były źródłem są przenoszone względem/backup/priorSales.
 
 ### <a name="sql-datasets"></a>Zestawy danych SQL
 
-Jeśli źródłem jest baza danych SQL lub SQL Data Warehouse, masz dodatkowe opcje zarządzania pliku źródłowym.
+Jeśli źródło jest w SQL Database lub SQL Data Warehouse, dostępne są dodatkowe opcje zarządzania plikami źródłowymi.
 
-* **Zapytanie**: Wprowadź kwerendę SQL dla źródła. To ustawienie przesłania wszelkie tabelę, która została wybrana w zestawie danych. Należy pamiętać, że **Order By** klauzule nie są obsługiwane w tym miejscu, ale można ustawić pełną instrukcję SELECT FROM. Umożliwia także funkcje tabel zdefiniowanych przez użytkownika. **Wybierz * z udfGetData()** jest UDF w języku SQL, która zwraca tabelę. To zapytanie powoduje wygenerowanie tabeli źródłowej, używanego w przepływie danych.
-* **Wielkość partii**: Wprowadź rozmiar partii, Podziel duże ilości danych do odczytu.
-* **Poziom izolacji**: Domyślne dla źródła SQL w usłudze ADF mapowanie przepływu danych jest Odczyt nieprzekazany. Poziom izolacji w tym miejscu można zmienić na jedną z następujących wartości:
-* Odczyt przekazany
-* Odczyt nieprzekazany
+* **Zapytanie**: Wprowadź zapytanie SQL dla źródła. To ustawienie przesłania każdą tabelę, która została wybrana w zestawie danych. Należy zauważyć, że klauzule **order by** nie są obsługiwane w tym miejscu, ale można ustawić pełną instrukcję SELECT FROM. Można również użyć funkcji tabeli zdefiniowanej przez użytkownika. **SELECT * FROM udfGetData ()** to format UDF w języku SQL, który zwraca tabelę. To zapytanie spowoduje utworzenie tabeli źródłowej, której można użyć w przepływie danych.
+* **Rozmiar wsadu**: Wprowadź rozmiar partii, aby podzielić duże ilości danych na odczyt.
+* **Poziom izolacji**: Domyślne źródła danych SQL w mapowaniu strumieniowego ADF są odczytywane jako niezatwierdzone. Poziom izolacji można zmienić tutaj na jedną z następujących wartości:
+* Odczytaj zatwierdzone
+* Odczytaj niezatwierdzone
 * Odczyt powtarzalny
-* Możliwy do serializacji
+* Serializable
 * Brak (Ignoruj poziom izolacji)
 
-![Poziom izolacji](media/data-flow/isolationlevel.png "poziom izolacji")
+![Poziom izolacji](media/data-flow/isolationlevel.png "Poziom izolacji")
 
 > [!NOTE]
-> Operacje na plikach uruchamiane tylko wtedy, gdy przepływ danych jest uruchamiany z potoku uruchomienia (potoku debugowania lub wykonywania Uruchom), który używa działania wykonywania przepływu danych w potoku. Operacje na plikach *nie* uruchomić tryb debugowania przepływ danych.
+> Operacje na plikach są uruchamiane tylko wtedy, gdy rozpoczyna się przepływ danych z uruchomienia potoku (debugowania lub przebiegu wykonywania) używającego działania wykonywania przepływu danych w potoku. Operacje na plikach *nie są* uruchamiane w trybie debugowania przepływu danych.
 
-### <a name="projection"></a>Projekcja
+### <a name="projection"></a>Rzut
 
-Podobnie jak schematy w zestawach danych projekcji w źródle definiuje kolumny danych, typy i formaty danych źródłowych. 
+Podobnie jak w przypadku schematów w zestawach danych, projekcja w źródle definiuje kolumny, typy i formaty dane z danych źródłowych. 
 
-![Ustawienia na karcie projekcji](media/data-flow/source3.png "projekcji")
+![Ustawienia na karcie projekcja](media/data-flow/source3.png "Projekcja")
 
-Jeśli plik tekstowy nie ma zdefiniowanego schematu, wybierz opcję **Wykryj typ danych** tak, aby usługi fabryka danych będzie przykładowe i wywnioskować typów danych. Wybierz **Zdefiniuj domyślny format** automatycznie formatuje dane domyślne. 
+Jeśli plik tekstowy nie ma zdefiniowanego schematu, wybierz pozycję **Wykryj typ danych** , aby Data Factory próbkować i wywnioskować typy danych. Wybierz opcję **Definiuj domyślny format** , aby automatycznie wykrywać domyślne formaty danych. 
 
-Można modyfikować typy danych kolumn w później — kolumny nie pochodzącej ze transformacji. Wybierz przekształcania umożliwia zmodyfikowanie nazw kolumn.
+Można modyfikować typy danych kolumny w późniejszej transformacji pochodnej kolumny. Użyj przekształcenia SELECT, aby zmodyfikować nazwy kolumn.
 
-![Ustawienia domyślne formatów danych](media/data-flow/source2.png "domyślne formatów")
+![Ustawienia dla domyślnych formatów danych](media/data-flow/source2.png "Formaty domyślne")
 
 ### <a name="add-dynamic-content"></a>Dodaj zawartość dynamiczną
 
-Po kliknięciu wewnątrz pola na panelu Ustawienia, zobaczysz hyperlink "Dodawanie zawartości dynamicznej". Po kliknięciu przycisku poniżej spowoduje uruchomienie Kreatora wyrażeń. Jest to, gdzie można ustawić wartości dla ustawień dynamicznie przy użyciu wyrażeń, wartości literału statyczne lub parametrów.
+Po kliknięciu wewnątrz pól w panelu ustawień zostanie wyświetlone hiperłącze "Dodaj zawartość dynamiczną". Po kliknięciu tutaj zostanie uruchomiony program Expression Builder. Jest to miejsce, w którym można ustawić wartości ustawień dynamicznie przy użyciu wyrażeń, statycznych wartości literałów lub parametrów.
 
-![Parametry](media/data-flow/params6.png "parametrów")
+![Parametry](media/data-flow/params6.png "Parametry")
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Rozpocznij tworzenie [przekształcania kolumn pochodnych](data-flow-derived-column.md) i [wybierz przekształcania](data-flow-select.md).
+Zacznij tworzyć [transformację pochodną kolumny](data-flow-derived-column.md) i [przekształcenie SELECT](data-flow-select.md).

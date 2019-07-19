@@ -1,80 +1,90 @@
 ---
-title: Wizualizacja zależności w usłudze Azure Migrate | Dokumentacja firmy Microsoft
-description: Zawiera omówienie obliczenia dotyczące oceny usługi Azure Migrate.
+title: Wizualizacja zależności w Azure Migrate | Microsoft Docs
+description: Zawiera omówienie obliczeń oceny w usłudze oceny serwera w Azure Migrate
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/05/2018
-ms.author: raynew
-ms.openlocfilehash: 8df587db7655e2aafd876d80581f3296c8c99fbf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/18/2019
+ms.author: hamusa
+ms.openlocfilehash: 8934306efadc4ec732afbb658c081ada30f232cd
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60201565"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68312220"
 ---
 # <a name="dependency-visualization"></a>Wizualizacja zależności
 
-[Usługi Azure Migrate](migrate-overview.md) ocenia grupy maszyn lokalnych do migracji na platformę Azure. Skorzystać z funkcji wizualizacji zależności w usłudze Azure Migrate, aby utworzyć grupy. Ten artykuł zawiera informacje o tej funkcji.
+Azure Migrate: Ocena serwera ocenia grupy maszyn lokalnych pod kątem migracji na platformę Azure. W celu utworzenia grup można użyć funkcji wizualizacji zależności w obszarze Ocena serwera. Ten artykuł zawiera informacje dotyczące tej funkcji.
 
 > [!NOTE]
 > Funkcja wizualizacji zależności nie jest dostępna na platformie Azure Government.
 
 ## <a name="overview"></a>Omówienie
 
-Wizualizacja zależności w usłudze Azure Migrate służy do tworzenia grup o wysokim poziomie pewności dla oceny migracji. Za pomocą wizualizacji zależności, można wyświetlać sieci zależności maszyn i zidentyfikować powiązane maszyny, które muszą być migrowane razem na platformie Azure. Ta funkcja jest przydatne w scenariuszach, w której nie jesteś świadomość maszyn, które stanowią aplikacji i muszą być migrowane razem na platformie Azure.
+Wizualizacja zależności w ramach oceny serwera umożliwia tworzenie grup o wysokim poziomie pewności na potrzeby oceny migracji. Za pomocą wizualizacji zależności można wyświetlać zależności sieci maszyn i identyfikować powiązane maszyny, które muszą zostać zmigrowane razem z platformą Azure. Ta funkcja jest przydatna w scenariuszach, w których nie są w pełni świadomi maszyn, które stanowią aplikację i muszą zostać zmigrowane razem z platformą Azure.
+
+## <a name="before-you-start"></a>Przed rozpoczęciem
+
+- Upewnij się, że [utworzono](how-to-add-tool-first-time.md) projekt Azure Migrate.
+- Jeśli projekt został już utworzony, upewnij się, że [dodano](how-to-assess.md) Azure Migrate: Narzędzie do oceny serwera.
+- Upewnij się, że maszyny zostały odnalezione w Azure Migrate; w tym celu można skonfigurować urządzenie Azure Migrate dla oprogramowania [VMware](how-to-set-up-appliance-vmware.md) lub [funkcji Hyper-V](how-to-set-up-appliance-hyper-v.md). Urządzenie odnajduje maszyny lokalne i wysyła metadane i dane wydajności do Azure Migrate: Ocena serwera. [Dowiedz się więcej](migrate-appliance.md).
 
 ## <a name="how-does-it-work"></a>Jak to działa?
 
-Usługa Azure Migrate korzysta [rozwiązania Service Map](../operations-management-suite/operations-management-suite-service-map.md) rozwiązania [dzienniki usługi Azure Monitor](../log-analytics/log-analytics-overview.md) dla wizualizacji zależności.
-- Aby korzystać z wizualizacji zależności, należy skojarzyć obszar roboczy usługi Log Analytics, nowej lub istniejącej z projektem migracji platformy Azure.
-- Możesz tworzyć lub dołączyć obszaru roboczego w tej samej subskrypcji, w której jest tworzony projekt migracji.
-- Aby dołączyć obszar roboczy usługi Log Analytics z projektem, przejdź do **Essentials** części projektu **Przegląd** strony, a następnie kliknij przycisk **wymaga konfiguracji**
+Azure Migrate używa rozwiązania [Service map](../operations-management-suite/operations-management-suite-service-map.md) w [dziennikach Azure monitor](../log-analytics/log-analytics-overview.md) na potrzeby wizualizacji zależności.
+- Aby można było korzystać z wizualizacji zależności, należy skojarzyć obszar roboczy Log Analytics, nowy lub istniejący, z projektem Azure Migrate.
+- Obszar roboczy można utworzyć lub dołączyć tylko w ramach tej samej subskrypcji, w której jest tworzony projekt Azure Migrate.
+- Aby dołączyć obszar roboczy Log Analytics do projektu:
+    1. Na karcie **serwery** w **Azure Migrate: Kafelek Ocena** serwera, kliknij przycisk **Przegląd**.
+    2. W obszarze **Przegląd**kliknij strzałkę w dół, aby rozwinąć **podstawowe**elementy.
+    3. W **obszarze roboczym pakietu OMS**kliknij pozycję **wymaga konfiguracji**.
+    4. W obszarze **Konfiguruj obszar roboczy**Określ, czy chcesz utworzyć nowy obszar roboczy, czy użyć istniejącego:
+    
+    ![Dodaj obszar roboczy](./media/how-to-create-group-machine-dependencies/workspace.png)
 
-    ![Skojarzyć obszar roboczy usługi Log Analytics](./media/concepts-dependency-visualization/associate-workspace.png)
-
-- Podczas tworzenia skojarzenia obszar roboczy, uzyskasz opcję, aby utworzyć nowy obszar roboczy lub dołączenie istniejącego:
-  - Gdy tworzysz nowy obszar roboczy, musisz określić nazwę obszaru roboczego. Obszar roboczy zostanie utworzony w regionie, w tym samym [lokalizacja geograficzna platformy Azure](https://azure.microsoft.com/global-infrastructure/geographies/) jako projekt migracji.
-  - Po dołączeniu istniejącego obszaru roboczego, możesz wybrać wszystkie dostępne obszary robocze w tej samej subskrypcji co projekt migracji. Należy pamiętać, że tylko te obszary robocze są wymienione, które zostały utworzone w regionie, w którym [Mapa usługi jest obsługiwany](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions). Aby można było połączyć obszar roboczy, upewnij się, że masz "Reader" dostęp do obszaru roboczego.
+- Podczas kojarzenia obszaru roboczego uzyskasz możliwość utworzenia nowego obszaru roboczego lub dołączenia istniejącego:
+  - Podczas tworzenia nowego obszaru roboczego należy określić nazwę obszaru roboczego. Obszar roboczy jest następnie tworzony w regionie w tej samej lokalizacji [geograficznej platformy Azure](https://azure.microsoft.com/global-infrastructure/geographies/) co projekt migracji.
+  - Po dołączeniu istniejącego obszaru roboczego możesz wybrać wszystkie dostępne obszary robocze w tej samej subskrypcji co projekt migracji. Należy zauważyć, że na liście są wyświetlane tylko te obszary robocze, które zostały utworzone w regionie, w którym [Service map jest obsługiwana](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions). Aby możliwe było dołączenie obszaru roboczego, upewnij się, że masz dostęp do obszaru roboczego "czytelnik".
 
   > [!NOTE]
-  > Po dołączeniu obszaru roboczego do projektu nie można go zmienić później.
+  > Po dołączeniu obszaru roboczego do projektu nie można go później zmienić.
 
-- Skojarzone obszaru roboczego jest oznaczony przy użyciu klucza **projektu migracji**i wartość **Nazwa projektu**, które służy do wyszukiwania w witrynie Azure portal.
-- Aby przejść do obszaru roboczego skojarzonego z projektem, możesz przejść do **Essentials** części projektu **Przegląd** strony, a dostęp do obszaru roboczego
+- Skojarzony obszar roboczy jest otagowany za pomocą **projektu migracji**kluczy i **nazwy projektu**wartości, którego można użyć do wyszukiwania w Azure Portal.
+- Aby przejść do obszaru roboczego skojarzonego z projektem, możesz przejść do sekcji **podstawowe** strony **Przegląd** projektu i uzyskać dostęp do obszaru roboczego
 
-    ![Przejdź do obszaru roboczego usługi Log Analytics](./media/concepts-dependency-visualization/oms-workspace.png)
+    ![Nawigowanie Log Analytics obszarze roboczym](./media/concepts-dependency-visualization/oms-workspace.png)
 
-Aby użyć wizualizacji zależności, musisz pobrać i zainstalować agentów na każdej maszynie w środowisku lokalnym, w której mają być analizowane.  
+Aby można było używać wizualizacji zależności, należy pobrać i zainstalować agentów na każdej maszynie lokalnej, która ma zostać przeanalizowana.  
 
-- [Microsoft Monitoring agent(MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) musi być zainstalowany na każdym komputerze.
-- [Agenta zależności](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure) musi być zainstalowany na każdym komputerze.
-- Ponadto w przypadku maszyn bez łączności internetowej musisz pobrać i zainstalować bramę usługi Log Analytics na nich.
+- [Program Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) musi zostać zainstalowany na każdej maszynie. [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-mma) na temat sposobu instalowania agenta MMA.
+- [Agent zależności](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure) musi być zainstalowany na każdej maszynie. [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-dependency-agent) na temat sposobu instalowania agenta zależności.
+- Ponadto, jeśli masz maszyny bez łączności z Internetem, musisz pobrać i zainstalować bramę Log Analytics na nich.
 
-Nie potrzebujesz tych agentów na komputerach, które chcesz ocenić, jeśli nie używasz wizualizacji zależności.
+Te agenci nie są potrzebne na maszynach, które chcesz ocenić, chyba że używasz wizualizacji zależności.
 
-## <a name="do-i-need-to-pay-for-it"></a>Czy muszę płacić za jej?
+## <a name="do-i-need-to-pay-for-it"></a>Czy muszę uiścić płatność?
 
-Usługa Azure Migrate jest dostępna bez dodatkowych opłat. Korzystanie z funkcji wizualizacji zależności w usłudze Azure Migrate wymaga rozwiązania Service Map, a możesz skojarzyć obszar roboczy usługi Log Analytics, nowej lub istniejącej, za pomocą usługi Azure Migrate projektu. Funkcji wizualizacji zależności w usłudze Azure Migrate jest bezpłatne przez pierwsze 180 dni w usłudze Azure Migrate.
+Funkcja wizualizacji zależności jest dostępna bez dodatkowych opłat. Korzystanie z funkcji wizualizacji zależności w ramach oceny serwera wymaga Service Map i wymaga skojarzenia obszaru roboczego Log Analytics, nowego lub istniejącego z projektem Azure Migrate. Funkcje wizualizacji zależności w ramach oceny serwera są bezpłatne przez pierwsze 180 dni.
 
-1. Użyj dowolnego rozwiązania niż Service Map w tym obszarze roboczym usługi Log Analytics spowoduje naliczenie opłaty za [standardowa usługa Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) opłaty.
-2. Aby zapewnić obsługę scenariuszy migracji, bez ponoszenia dodatkowych kosztów, rozwiązania mapy usługi nie spowoduje naliczenia żadnych opłat dla przez pierwsze 180 dni od dnia skojarzyć obszar roboczy usługi Log Analytics za pomocą usługi Azure Migrate projektu. Po upływie 180 dni będą naliczane standardowe opłaty usługi Log Analytics.
+1. Użycie rozwiązań innych niż Service Map w tym Log Analytics obszarze roboczym spowoduje naliczenie [standardowych log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) opłat.
+2. Aby obsłużyć scenariusze migracji bez dodatkowych kosztów, rozwiązanie Service Map nie spowoduje naliczania opłat za pierwsze 180 dni od dnia kojarzenia obszaru roboczego Log Analytics z projektem Azure Migrate. Po 180 dniach opłaty zostaną naliczone według standardowych Log Analytics.
 
-Po zarejestrowaniu agentów do obszaru roboczego, użyj Identyfikatora jak i klucz podany przez projekt, na stronie kroki instalacji agenta.
+Podczas rejestrowania agentów w obszarze roboczym Użyj identyfikatora i klucza podanym przez projekt na stronie Instalowanie kroków agenta.
 
-Po usunięciu projektu Azure Migrate nie zostanie usunięty wraz z jej obszaru roboczego. Po usunięciu projektu, użycia rozwiązania Service Map, nie będą bezpłatne i każdego węzła spowoduje obciążenie opłatami zgodnie z warstwy płatnej obszaru roboczego usługi Log Analytics.
+Po usunięciu projektu Azure Migrate obszar roboczy nie zostanie usunięty wraz z nim. Po usunięciu projektu Service Map użycie nie będzie bezpłatne, a dla każdego węzła zostanie naliczona opłata zgodnie z warstwą płatną Log Analytics obszarze roboczym.
 
 > [!NOTE]
-> Funkcji wizualizacji zależności rozwiązania Service map za pomocą obszaru roboczego usługi Log Analytics. Od 28 lutego 2018 r. za pomocą anons dotyczący aplikacji usługi Azure Migrate ogólnej dostępności ta funkcja jest teraz dostępne bez dodatkowych opłat. Musisz utworzyć nowy projekt, aby użyć bezpłatnego użycia obszaru roboczego. Istniejących obszarów roboczych przed ogólnej dostępności są nadal mogą być obciążane i, dlatego zaleca się migrację do nowego projektu.
+> Funkcja wizualizacji zależności używa Service Map za pośrednictwem Log Analytics obszaru roboczego. Od 28 lutego 2018 z ogłoszeniem Azure Migrate ogólnej dostępności funkcja jest teraz dostępna bez dodatkowych opłat. Należy utworzyć nowy projekt, aby korzystać z obszaru roboczego bezpłatnego użycia. Istniejące obszary robocze przed ogólną dostępnością nadal są płatne, dlatego zalecamy przeniesienie do nowego projektu.
 
 Więcej informacji o cenach usługi Azure Migrate można uzyskać [tutaj](https://azure.microsoft.com/pricing/details/azure-migrate/).
 
-## <a name="how-do-i-manage-the-workspace"></a>Jak zarządzać obszaru roboczego?
+## <a name="how-do-i-manage-the-workspace"></a>Jak mogę zarządzać obszarem roboczym?
 
-Można użyć obszaru roboczego usługi Log Analytics spoza usługi Azure Migrate. Nie są usuwane po usunięciu projektu migracji, w której został utworzony. Jeśli nie potrzebujesz już obszar roboczy, [ją usunąć](../azure-monitor/platform/manage-access.md) ręcznie.
+Możesz użyć obszaru roboczego Log Analytics poza Azure Migrate. Nie jest on usuwany w przypadku usunięcia projektu Azure Migrate, w którym został utworzony. Jeśli obszar roboczy nie jest już potrzebny, [Usuń go](../azure-monitor/platform/manage-access.md) ręcznie.
 
-Nie usuwaj tego obszar roboczy utworzony przez usługę Azure Migrate, o ile nie usuniesz projekt migracji. Jeśli to zrobisz, funkcji wizualizacji zależności nie będzie działać zgodnie z oczekiwaniami.
+Nie usuwaj obszaru roboczego utworzonego przez Azure Migrate, chyba że usuniesz Azure Migrate projekt. Jeśli to zrobisz, funkcja wizualizacji zależności nie będzie działać zgodnie z oczekiwaniami.
 
 ## <a name="next-steps"></a>Kolejne kroki
-- [Grupowanie maszyn za pomocą zależności maszyn](how-to-create-group-machine-dependencies.md)
-- [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/resources-faq#dependency-visualization) temat — często zadawane pytania na wizualizacji zależności.
+- [Grupowanie maszyn przy użyciu zależności maszyn](how-to-create-group-machine-dependencies.md)
+- [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/resources-faq#what-is-dependency-visualization) na temat często zadawanych pytań dotyczących wizualizacji zależności.

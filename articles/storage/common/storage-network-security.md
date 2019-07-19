@@ -9,21 +9,21 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f6422bf2ccc42c12d8f2d20a5a7ece8d37e8b48e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 398b2236caa77e4aef5b471079407a5edeeeee2d
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449728"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326931"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurowanie zapór usługi Azure Storage i sieci wirtualnych
 
 Usługa Azure Storage oferuje model zabezpieczeń warstwowych. Ten model umożliwia Zabezpieczanie kont magazynu do określonego zestawu sieci, obsługiwane. Po skonfigurowaniu reguł sieci tylko te aplikacje, które wnioskujące o udostępnienie danych z ponad określonego zestawu sieci mają dostęp do konta magazynu.
 
-Aplikacja, która uzyskuje dostęp do konta magazynu, gdy zasady sieci wymaga prawidłowego autoryzacji w żądaniu. Autoryzacja jest obsługiwana przy użyciu poświadczeń usługi Azure Active Directory (Azure AD) dla kolejek i obiektów blob, prawidłowe konto dostępu do klucza lub tokenu sygnatury dostępu Współdzielonego.
+Aplikacja, która uzyskuje dostęp do konta magazynu, gdy zasady sieci wymaga prawidłowego autoryzacji w żądaniu. Autoryzacja jest obsługiwana przy użyciu poświadczeń usługi Azure Active Directory (Azure AD) dla obiektów blob i kolejek z prawidłowym kluczem dostępu do konta lub z tokenem SAS.
 
 > [!IMPORTANT]
-> Usługa Azure File Sync nie obsługuje jeszcze zapory i sieci wirtualne. Jeśli używasz usługi Azure File Sync na swoim koncie magazynu, włączyć te usługi Azure File Sync nie będzie synchronizowane.
+> Azure File Sync nie obsługuje jeszcze zapór i sieci wirtualnych. Jeśli używasz Azure File Sync na koncie magazynu i włączysz te usługi, Azure File Sync nie będą synchronizowane.
 >
 > Włączenie reguły zapory dla konta magazynu domyślnie blokuje żądań przychodzących danych, chyba, że żądania pochodzą z usługi, która działa w ramach usługi Azure Virtual Network (VNet). Żądania, które są blokowane obejmują z innymi usługami platformy Azure w witrynie Azure portal, rejestrowania i metryk usług i tak dalej.
 >
@@ -353,15 +353,16 @@ Po włączeniu **dozwolonych zaufanych usług firmy Microsoft...**  wyjątku, na
 |Usługa|Nazwa dostawcy zasobów|Przeznaczenie|
 |:------|:---------------------|:------|
 |Azure Backup|Microsoft.RecoveryServices|Wykonywanie kopii zapasowych i przywracanie dysków niezarządzanych na maszynach wirtualnych IAAS. (niewymagane w przypadku dysków zarządzanych). [Dowiedz się więcej](/azure/backup/backup-introduction-to-azure-backup).|
-|Azure Data Box|Microsoft.DataBox|Umożliwia importowanie danych na platformę Azure za pomocą urządzenia Data Box. [Dowiedz się więcej](/azure/databox/data-box-overview).|
+|Azure Data Box|Microsoft.DataBox|Umożliwia importowanie danych na platformę Azure przy użyciu urządzenie Data Box. [Dowiedz się więcej](/azure/databox/data-box-overview).|
 |Azure DevTest Labs|Microsoft.DevTestLab|Tworzenie i artefaktu instalacji obrazu niestandardowego. [Dowiedz się więcej](/azure/devtest-lab/devtest-lab-overview).|
 |Azure Event Grid|Microsoft.EventGrid|Włączanie publikowania zdarzeń usługi Blob Storage i umożliwiają usługi Event Grid opublikować w kolejkach usługi storage. Dowiedz się więcej o [zdarzenia usługi blob storage](/azure/event-grid/event-sources) i [publikowania w kolejkach](/azure/event-grid/event-handlers).|
 |Azure Event Hubs|Microsoft.EventHub|Archiwizowanie danych za pomocą usługi Event Hubs Capture. [Dowiedz się więcej](/azure/event-hubs/event-hubs-capture-overview).|
-|Azure HDInsight|Microsoft.HDInsight|Aprowizacja początkowa zawartość domyślnego systemu plików dla nowego klastra HDInsight. [Dowiedz się więcej](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/).|
+| Azure File Sync| Microsoft.StorageSync| Umożliwia przekształcenie serwera plików Premium na pamięć podręczną dla udziałów plików platformy Azure. Umożliwienie synchronizacji obejmujących wiele witryn, szybkie odzyskiwanie po awarii i tworzenie kopii zapasowej po stronie chmury. [Dowiedz się więcej](../files/storage-sync-files-planning.md)|
+|Azure HDInsight|Microsoft.HDInsight|Zainicjuj wstępną zawartość domyślnego systemu plików dla nowego klastra usługi HDInsight. [Dowiedz się więcej](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/).|
 |Azure Monitor|Microsoft.Insights|Umożliwia zapisywanie danych do konta magazynu zabezpieczone monitorowania [więcej](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security).|
 |Sieci systemu Azure|Microsoft.Network|Store i analizowanie dzienników ruchu sieciowego. [Dowiedz się więcej](/azure/network-watcher/network-watcher-packet-capture-overview).|
 |Azure Site Recovery|Microsoft.SiteRecovery |Konfigurowanie odzyskiwania po awarii, należy włączyć replikację dla maszyn wirtualnych IaaS platformy Azure. Jest to wymagane, jeśli używasz konta magazynu pamięci podręcznej włączona jest Zapora lub źródłowego konta magazynu lub docelowe konto magazynu.  [Dowiedz się więcej](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication).|
-|Azure SQL Data Warehouse|Microsoft.Sql|Umożliwia importowanie i eksportowanie scenariusze z określonych wystąpień bazy danych SQL przy użyciu technologii PolyBase. [Dowiedz się więcej](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview).|
+|Azure SQL Data Warehouse|Microsoft.Sql|Umożliwia importowanie i eksportowanie scenariuszy z określonych wystąpień baz danych SQL przy użyciu bazy. [Dowiedz się więcej](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview).|
 
 ### <a name="storage-analytics-data-access"></a>Dostęp do danych analizy magazynu
 

@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 06/11/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: b7bc040ae799aec98454fb227bbeeb6027f9615a
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 0325fc8cabc43988fb27a307921977b9b487c123
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673448"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68286344"
 ---
-Maszyny Wirtualnej zoptymalizowane pod kątem procesora GPU z jednym lub wieloma procesorami GPU firmy NVIDIA wyspecjalizowane maszyny wirtualne o rozmiarach. Te rozmiary są przeznaczone dla obciążeń intensywnie korzystających z obliczeń, bogatych w elementy graficzne i wizualizacji. Ten artykuł zawiera informacje o liczbie i rodzaju procesorów GPU, procesorów wirtualnych, dysków z danymi i kart sieciowych. Przepustowość przepływności i sieć magazynu dostępne są również dla każdego rozmiaru w tej metodzie grupowania.
+Rozmiary maszyn wirtualnych zoptymalizowane pod kątem procesora GPU są wyspecjalizowanymi maszynami wirtualnymi z jednym lub wieloma procesorami GPU firmy NVIDIA. Te rozmiary są przeznaczone do obciążeń intensywnie korzystających z operacji obliczeniowych, intensywnie korzystających z grafiki i wizualizacji. Ten artykuł zawiera informacje o liczbie i typie procesorów GPU, procesorów wirtualnych vCPU, dysków danych i kart interfejsu sieciowego. Przepustowość magazynu i przepustowość sieci są również uwzględniane dla każdego rozmiaru w ramach grupowania.
 
-* **NC, NCv2, NCv3** rozmiarów są zoptymalizowane dla aplikacji z mocy obliczeniowej i intensywnie korzystających z sieci i algorytmów. Niektóre przykłady są CUDA i OpenCL oparte na aplikacje i symulacje, sztucznej Inteligencji i uczenia głębokiego. Seria NCv3 koncentruje się na obciążeń obliczeniowych o wysokiej wydajności, wyposażone w procesor GPU firmy NVIDIA Tesla V100. Seria NC używa wersji 3 z 2,60 GHz Intel Xeon E5-2690 v3 (Haswell) z zegarem, a seria NCv2 i maszyny wirtualne z serii NCv3 Użyj v4 Intel Xeon E5-2690 procesora (Broadwell).
+* **NC, NCv2, rozmiary seria NCV3** są zoptymalizowane pod kątem intensywnie korzystających z obliczeń aplikacji i algorytmów intensywnie korzystających z sieci. Niektóre przykłady to aplikacje i symulacje oparte na CUDAach i OpenCLach, a następnie bogate w szczegółowe uczenie. Seria Seria NCV3 koncentruje się na obciążeniach obliczeniowych o wysokiej wydajności, które obejmują procesor GPU Tesla V100 firmy NVIDIA. W serii NC jest używany procesor Intel Xeon E5-2690 v3 2.60 GHz v3 (Haswell), a maszyny wirtualne serii NCv2 i seria NCV3 używają procesora Intel Xeon E5-2690 v4 (Broadwell).
 
-* **ND i NDv2** seria ND koncentruje się na scenariuszach szkoleń i wnioskowania na potrzeby uczenia głębokiego. Korzysta ona z procesorów GPU NVIDIA Tesla P40 i v4 Intel Xeon E5-2690 procesora (Broadwell). Seria NDv2 korzysta z procesorów Intel Xeon Platinum 8168 (Skylake).
+* **ND i NDv2** Seria ND koncentruje się na scenariuszach szkolenia i wnioskowania o uczenie głębokie. Używa procesora GPU NVIDIA Tesla P40 i procesorów Intel Xeon E5-2690 v4 (Broadwell). Seria NDv2 używa procesora Intel Xeon Platinum 8168 (Skylake).
 
-* **NV i NVv3** rozmiarów są zoptymalizowane pod kątem i przeznaczone dla zdalnej wizualizacji, przesyłania strumieniowego, gier, kodowania i scenariuszy VDI przy użyciu platform, takich jak OpenGL i DirectX.  Te maszyny wirtualne są wspierane przez procesorów GPU Tesla M60 firmy NVIDIA.
+* Rozmiary **NV i NVv3** są zoptymalizowane i zaprojektowane pod kątem zdalnego wizualizacji, przesyłania strumieniowego, gier, kodowania i infrastruktury VDI przy użyciu struktur, takich jak OpenGL i DirectX.  Te maszyny wirtualne są obsługiwane przez procesor GPU NVIDIA Tesla M60.
 
 ## <a name="nc-series"></a>Seria NC
 
@@ -29,7 +29,7 @@ Magazyn w warstwie Premium:  Nieobsługiwane
 
 Buforowanie Premium Storage:  Nieobsługiwane
 
-Maszyny wirtualne z serii NC są obsługiwane przez [procesory GPU NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) karty i 2690 z technologią Intel Xeon E5 v3 (Haswell) z zegarem. Użytkownicy mogą przetwarzanie danych szybciej dzięki wykorzystaniu architektury CUDA dla aplikacji eksploracji energii, symulacji awarii, ray śledzenia renderowania, uczenie głębokie i inne. Konfigurację NC24r zapewnia małe opóźnienia interfejsu sieci o wysokiej przepływności zoptymalizowany pod kątem ściśle sprzężonych równoległych obciążeń obliczeniowych.
+Maszyny wirtualne z serii NC są obsługiwane przez kartę [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) i procesor Intel Xeon E5-2690 v3 (Haswell). Użytkownicy mogą szybciej przetwarzanie dane, wykorzystując CUDA do obsługi aplikacji, symulacji awarii, renderowanie śledzenia, śledzenie, uczenie głębokie i wiele innych. Konfiguracja NC24r zapewnia małe opóźnienia i wysoką przepływność interfejsu sieciowego zoptymalizowane pod kątem ściśle sprzężonych równoległych obciążeń obliczeniowych.
 
 | Size | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Procesory GPU | Pamięć procesora GPU: GiB | Maks. liczba dysków danych | Maksymalna liczba kart sieciowych |
 | --- | --- | --- | --- | --- | --- | --- | ---- |
@@ -48,22 +48,22 @@ Magazyn w warstwie Premium:  Obsługiwane
 
 Buforowanie Premium Storage:  Obsługiwane
 
-Maszyny wirtualne z serii NCv2 są obsługiwane przez [procesory GPU NVIDIA Tesla P100](https://www.nvidia.com/en-us/data-center/tesla-p100/) procesorów GPU. Te procesory GPU oferują ponad 2 razy większą wydajność w porównaniu z serii NC. Klienci mogą korzystać z zalet tych zaktualizowanych procesorów GPU w przypadku tradycyjnych obciążeń obliczeń HPC, takie jak modelowanie dotyczące złóż, DNA sekwencjonowania, dna, analiza, symulacje metodą Monte Carlo i inne. Oprócz procesorów GPU, maszyny wirtualne z serii NCv2 są również obsługiwane przez Intel Xeon E5-2690 v4 (broadwell z zegarem) procesorów.
+Maszyny wirtualne z serii NCv2 są obsługiwane przez procesory [NVIDIA Tesla P100](https://www.nvidia.com/en-us/data-center/tesla-p100/) GPU. Te procesory GPU mogą zapewnić ponad 2. wydajność obliczeniową serii NC. Klienci mogą korzystać z tych zaktualizowanych procesorów GPU dla tradycyjnych obciążeń HPC, takich jak modelowanie zbiorników, sekwencjonowanie DNA, analiza białka, symulacje Monte Carlo i inne. Poza procesorami GPU maszyny wirtualne serii NCv2 są również obsługiwane przez procesory Intel Xeon E5-2690 v4 (Broadwell).
 
-Konfiguracja v2 NC24rs zapewnia małe opóźnienia interfejsu sieci o wysokiej przepływności zoptymalizowany pod kątem ściśle sprzężonych równoległych obciążeń obliczeniowych.
+Konfiguracja NC24rs v2 zapewnia małe opóźnienia i wysoką przepływność interfejsu sieciowego zoptymalizowane pod kątem ściśle sprzężonych równoległych obciążeń obliczeniowych.
 
 > [!IMPORTANT]
-> Dla tej rodziny rozmiar przydziału rdzeni procesorów wirtualnych w ramach subskrypcji jest początkowo równa 0 w każdym regionie. [Zażądać zwiększenia limitu przydziału procesorów wirtualnych](../articles/azure-supportability/resource-manager-core-quotas-request.md) dla tej rodziny w [dostępny region](https://azure.microsoft.com/regions/services/).
+> W przypadku tej rodziny rozmiarów limit przydziału vCPU (rdzeń) w subskrypcji jest początkowo ustawiany na 0 w każdym regionie. [Zażądaj zwiększenia limitu przydziału vCPU](../articles/azure-supportability/resource-manager-core-quotas-request.md) dla tej rodziny w [dostępnym regionie](https://azure.microsoft.com/regions/services/).
 >
 
 | Size | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Procesory GPU | Pamięć procesora GPU: GiB | Maks. liczba dysków danych | Maksymalna przepływność niebuforowanych dysków: IOPS / MB/s | Maksymalna liczba kart sieciowych |
 | --- | --- | --- | --- | --- | --- | ---  | ---| --- |
 | Standard_NC6s_v2 | 6 |112 | 736 | 1 | 16 | 12 | 20000/ 200 | 4 |
-| Standard_NC12s_v2 | 12 |224 | 1474 | 2 | 32 | 24 | 40000 / 400 | 8 |
-| Standard_NC24s_v2 | 24 |448 | 2948 | 4 | 64 | 32 | 80000 / 800 | 8 |
-| Standard_NC24rs_v2 * | 24 |448 | 2948 | 4 | 64 | 32 | 80000 / 800 | 8 |
+| Standard_NC12s_v2 | 12 |224 | 1474 | 2 | 32 | 24 | 40000/400 | 8 |
+| Standard_NC24s_v2 | 24 |448 | 2948 | 4 | 64 | 32 | 80000/800 | 8 |
+| Standard_NC24rs_v2* | 24 |448 | 2948 | 4 | 64 | 32 | 80000/800 | 8 |
 
-1 procesor GPU = jedną kartę P100.
+1 procesor GPU = jedna karta P100.
 
 *Obsługa technologii RDMA
 
@@ -73,24 +73,24 @@ Magazyn w warstwie Premium:  Obsługiwane
 
 Buforowanie Premium Storage:  Obsługiwane
 
-Maszyny wirtualne z serii NCv3 są obsługiwane przez [procesory GPU NVIDIA Tesla V100](https://www.nvidia.com/en-us/data-center/tesla-v100/) procesorów GPU. Te procesory GPU oferują ponad 1,5 raza większą wydajność seria NCv2. Klienci mogą korzystać z zalet tych zaktualizowanych procesorów GPU w przypadku tradycyjnych obciążeń obliczeń HPC, takie jak modelowanie dotyczące złóż, DNA sekwencjonowania, dna, analiza, symulacje metodą Monte Carlo i inne. Konfiguracja v3 NC24rs zapewnia małe opóźnienia interfejsu sieci o wysokiej przepływności zoptymalizowany pod kątem ściśle sprzężonych równoległych obciążeń obliczeniowych. Oprócz procesorów GPU, maszyny wirtualne z serii NCv3 są również obsługiwane przez Intel Xeon E5-2690 v4 (broadwell z zegarem) procesorów.
+Maszyny wirtualne z serii seria NCV3 są obsługiwane przez procesory [NVIDIA Tesla V100](https://www.nvidia.com/en-us/data-center/tesla-v100/) GPU. Te procesory GPU mogą zapewnić 1,5 x wydajności obliczeniowej serii NCv2. Klienci mogą korzystać z tych zaktualizowanych procesorów GPU dla tradycyjnych obciążeń HPC, takich jak modelowanie zbiorników, sekwencjonowanie DNA, analiza białka, symulacje Monte Carlo i inne. Konfiguracja NC24rs v3 zapewnia małe opóźnienia i wysoką przepływność interfejsu sieciowego zoptymalizowane pod kątem ściśle sprzężonych równoległych obciążeń obliczeniowych. Poza procesorami GPU maszyny wirtualne serii seria NCV3 są również obsługiwane przez procesory Intel Xeon E5-2690 v4 (Broadwell).
 
 > [!IMPORTANT]
-> Dla tej rodziny rozmiar przydziału rdzeni procesorów wirtualnych w ramach subskrypcji jest początkowo równa 0 w każdym regionie. [Zażądać zwiększenia limitu przydziału procesorów wirtualnych](../articles/azure-supportability/resource-manager-core-quotas-request.md) dla tej rodziny w [dostępny region](https://azure.microsoft.com/regions/services/).
+> W przypadku tej rodziny rozmiarów limit przydziału vCPU (rdzeń) w subskrypcji jest początkowo ustawiany na 0 w każdym regionie. [Zażądaj zwiększenia limitu przydziału vCPU](../articles/azure-supportability/resource-manager-core-quotas-request.md) dla tej rodziny w [dostępnym regionie](https://azure.microsoft.com/regions/services/).
 >
 
 | Size | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Procesory GPU | Pamięć procesora GPU: GiB | Maks. liczba dysków danych | Maksymalna przepływność niebuforowanych dysków: IOPS / MB/s | Maksymalna liczba kart sieciowych |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_NC6s_v3 | 6 |112 | 736 | 1 | 16 | 12 | 20000 / 200 | 4 |
-| Standard_NC12s_v3 | 12 |224 | 1474 | 2 | 32 | 24 | 40000 / 400 | 8 |
-| Standard_NC24s_v3 | 24 |448 | 2948 | 4 | 64 | 32 | 80000 / 800 | 8 | 
-| Standard_NC24rs_v3 * |24 |448 | 2948 | 4 | 64 | 32 | 80000 / 800 | 8 |
+| Standard_NC6s_v3 | 6 |112 | 736 | 1 | 16 | 12 | 20000/200 | 4 |
+| Standard_NC12s_v3 | 12 |224 | 1474 | 2 | 32 | 24 | 40000/400 | 8 |
+| Standard_NC24s_v3 | 24 |448 | 2948 | 4 | 64 | 32 | 80000/800 | 8 | 
+| Standard_NC24rs_v3* |24 |448 | 2948 | 4 | 64 | 32 | 80000/800 | 8 |
 
-1 procesor GPU = jedną kartę V100.
+1 procesor GPU = jedna karta V100.
 
 *Obsługa technologii RDMA
 
-## <a name="ndv2-series-preview"></a>Seria NDv2 (wersja zapoznawcza)
+## <a name="ndv2-series-preview"></a>NDv2 — seria (wersja zapoznawcza)
 
 Magazyn w warstwie Premium:  Obsługiwane
 
@@ -98,14 +98,14 @@ Buforowanie Premium Storage:  Obsługiwane
 
 Infiniband: Nieobsługiwane
 
-Maszyna wirtualna serii NDv2 jest nowy dodatek do rodziny procesorów GPU zaprojektowanej na potrzeby HPC, sztucznej Inteligencji i usługi machine learning obciążeń. Usługa jest obsługiwana przez 8 procesory GPU NVIDIA Tesla V100 NVLINK połączone ze sobą, procesorów GPU i 40 rdzeni Intel Xeon Platinum 8168 (Skylake) i 672 GiB pamięci systemowej. Wystąpienie NDv2 zapewnia świetną wydajność w przypadku precyzji FP32 i FP64 dla obciążeń obliczeń HPC i sztucznej inteligencji korzystających ze struktur Cuda, TensorFlow, Pytorch, Caffe i innych.
+Maszyna wirtualna z serii NDv2 to nowy dodatek do rodziny procesorów GPU przeznaczonej do obsługi obciążeń HPC, AI i uczenia maszynowego. Jest on obsługiwany przez 8 NVIDIA Tesla V100 NVLINK współpołączone procesory GPU i 40 rdzenie Intel Xeon Platinum 8168 (Skylake) oraz 672 GiB pamięci systemowej. Wystąpienie NDv2 zapewnia świetną wydajność w przypadku precyzji FP32 i FP64 dla obciążeń obliczeń HPC i sztucznej inteligencji korzystających ze struktur Cuda, TensorFlow, Pytorch, Caffe i innych.
 
-[Utwórz konto i Uzyskaj dostęp do tych maszyn w trakcie okresu zapoznawczego](https://aka.ms/ndv2signup).
+[Utwórz konto i uzyskaj dostęp do tych maszyn w trakcie okresu](https://aka.ms/ndv2signup)zapoznawczego.
 <br>
 
-| Size | Procesor wirtualny | Procesory GPU | Memory (Pamięć) | Karty sieciowe (maks.) | Temp Storage (SSD) GiB | Maksymalnie z Dyski z danymi | Maksymalna przepływność niebuforowanych dysków: IOPS / MB/s | Maksymalna przepustowość sieci | 
+| Size | Procesor wirtualny | Procesory GPU | Memory (Pamięć) | Karty sieciowe (maks.) | Magazyn tymczasowy (SSD) GiB | Maksymalnie z dyski danych | Maksymalna przepływność niebuforowanych dysków: IOPS / MB/s | Maksymalna przepustowość sieci | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_ND40s_v2 | 40 | 8 V100 (NVLink) | 672 GiB | 8 | 2948 | 32 | 80000 / 800 | 24000 MB/s |
+| Standard_ND40s_v2 | 40 | 8 V100 (NVLink) | 672 GiB | 8 | 2948 | 32 | 80000/800 | 24000 MB/s |
 
 ## <a name="nd-series"></a>Seria ND
 
@@ -113,20 +113,20 @@ Magazyn w warstwie Premium:  Obsługiwane
 
 Buforowanie Premium Storage:  Obsługiwane
 
-Maszyny wirtualne serii ND to nowy dodatek do rodziny procesorów GPU zaprojektowana pod kątem sztucznej Inteligencji i uczenia głębokiego obciążeń. Oferują doskonałą wydajność na potrzeby szkoleń i wnioskowania. ND wystąpienia są obsługiwane przez [procesory GPU NVIDIA Tesla P40](https://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) procesorów GPU i Intel Xeon E5-2690 v4 (broadwell z zegarem) procesorów. Te wystąpienia oferują doskonałą wydajność dla pojedynczej precyzji operacje zmiennoprzecinkowe, w przypadku obciążeń sztucznej Inteligencji przy użyciu zestawu narzędzi Microsoft Cognitive Toolkit, TensorFlow, Caffe i innych platform. Seria ND oferuje także dużo pojemniejszą pamięć procesora GPU (24 GB) mieszczącą znacznie większe modele sieci neuronowych. Podobnie jak seria NC, seria ND oferuje konfigurację z pomocniczych sieci o małych opóźnieniach i wysokiej przepływności przez funkcję RDMA oraz łączność InfiniBand, dzięki czemu można uruchamiać zadania szkoleń o dużej skali obejmujące wiele procesorów GPU.
+Maszyny wirtualne z serii ND to nowe dodanie do rodziny procesorów GPU zaprojektowanej dla systemu AI i obciążeń głębokiego uczenia. Oferują one doskonałą wydajność na potrzeby szkoleń i wnioskowania. Wystąpienia ND są obsługiwane przez procesory [NVIDIA Tesla P40](https://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) i procesory Intel Xeon E5-2690 v4 (Broadwell). Te wystąpienia zapewniają doskonałą wydajność operacji zmiennoprzecinkowych o pojedynczej precyzji dla obciążeń AI wykorzystujących Microsoft Cognitive Toolkit, TensorFlow, Caffe i inne platformy. Seria ND oferuje także dużo pojemniejszą pamięć procesora GPU (24 GB) mieszczącą znacznie większe modele sieci neuronowych. Podobnie jak w przypadku serii NC, Seria ND oferuje konfigurację z dodatkową siecią o małym opóźnieniu i wysokiej przepływności za pośrednictwem funkcji RDMA oraz łączności InfiniBand, dzięki czemu można uruchamiać zadania szkoleniowe o dużej skali obejmujące wiele procesorów GPU.
 
 > [!IMPORTANT]
-> Dla tej rodziny rozmiar przydziału rdzeni procesorów wirtualnych na region w ramach subskrypcji początkowo jest równa 0. [Zażądać zwiększenia limitu przydziału procesorów wirtualnych](../articles/azure-supportability/resource-manager-core-quotas-request.md) dla tej rodziny w [dostępny region](https://azure.microsoft.com/regions/services/).
+> W przypadku tej rodziny rozmiarów limit przydziału vCPU (rdzeń) na region w ramach subskrypcji jest początkowo ustawiony na 0. [Zażądaj zwiększenia limitu przydziału vCPU](../articles/azure-supportability/resource-manager-core-quotas-request.md) dla tej rodziny w [dostępnym regionie](https://azure.microsoft.com/regions/services/).
 >
 
 | Size | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Procesory GPU | Pamięć procesora GPU: GiB | Maks. liczba dysków danych | Maksymalna przepływność niebuforowanych dysków: IOPS / MB/s | Maksymalna liczba kart sieciowych |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_ND6s | 6 |112 | 736 | 1 | 24 | 12 | 20000 / 200 | 4 |
-| Standard_ND12s | 12 |224 | 1474 | 2 | 48 | 24 | 40000 / 400 | 8 | 
-| Standard_ND24s | 24 |448 | 2948 | 4 | 96 | 32 | 80000 / 800 | 8 |
-| Standard_ND24rs * | 24 |448 | 2948 | 4 | 96 | 32 | 80000 / 800 | 8 |
+| Standard_ND6s | 6 |112 | 736 | 1 | 24 | 12 | 20000/200 | 4 |
+| Standard_ND12s | 12 |224 | 1474 | 2 | 48 | 24 | 40000/400 | 8 | 
+| Standard_ND24s | 24 |448 | 2948 | 4 | 96 | 32 | 80000/800 | 8 |
+| Standard_ND24rs* | 24 |448 | 2948 | 4 | 96 | 32 | 80000/800 | 8 |
 
-1 procesor GPU = jedną kartę P40.
+1 procesor GPU = jedna karta P40.
 
 *Obsługa technologii RDMA
 
@@ -136,9 +136,9 @@ Magazyn w warstwie Premium:  Nieobsługiwane
 
 Buforowanie Premium Storage:  Nieobsługiwane
 
-Maszyn wirtualnych z serii NV są obsługiwane przez [procesory GPU NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) NVIDIA oraz technologii NVIDIA GRID technologii dla pulpitu przyspieszonych aplikacji komputerowych i pulpitów wirtualnych gdzie klienci będą mogli wizualizować swoje dane lub symulacje. Użytkownicy będą mogli wizualizować swoje grafiki przepływy pracy na wystąpieniach NV, aby uzyskać doskonałe możliwości grafiki oraz dodatkowo uruchamiać obciążenia o pojedynczej precyzji, takie jak kodowanie i renderowanie. Maszyny wirtualne z serii NV są również obsługiwane przez 2690 z technologią Intel Xeon E5 v3 (Haswell) procesorów.
+Maszyny wirtualne z serii NV są obsługiwane przez procesory [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) i technologię NVIDIA GRID dla aplikacji klasycznych i pulpitów wirtualnych, na których klienci mogą wizualizować swoje dane lub symulacje. Użytkownicy mogą wizualizować przepływy pracy intensywnie korzystających z grafiki w wystąpieniach TRWAŁych w celu uzyskania najwyższej jakości grafiki i dodatkowo uruchamiania obciążeń o pojedynczej precyzji, takich jak kodowanie i renderowanie. Maszyny wirtualne z serii NV są również obsługiwane przez procesory Intel Xeon E5-2690 v3 (Haswell).
 
-Każdy procesor GPU w wystąpieniach NV jest dostarczany z licencją siatki. Ta licencja zapewnia elastyczność do korzystania z wystąpienia NV jako wirtualnej stacji roboczej dla jednego użytkownika lub 25 współbieżnych użytkownicy mogą łączyć się maszyna wirtualna dla scenariusza aplikacji wirtualnej.
+Każdy procesor GPU w wystąpieniach TRWAŁych zawiera licencję siatki. Ta licencja zapewnia elastyczność używania wystąpienia TRWAŁEgo jako wirtualnej stacji roboczej dla jednego użytkownika lub 25 jednoczesnych użytkowników może połączyć się z MASZYNą wirtualną w scenariuszu aplikacji wirtualnej.
 
 | Size | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Procesory GPU | Pamięć procesora GPU: GiB | Maks. liczba dysków danych | Maksymalna liczba kart sieciowych | Wirtualne stacje robocze | Aplikacje wirtualne |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -148,22 +148,22 @@ Każdy procesor GPU w wystąpieniach NV jest dostarczany z licencją siatki. Ta 
 
 1 procesor GPU = połowa karty M60.
 
-## <a name="nvv3-series-preview-sup1sup"></a>Seria NVv3 (wersja zapoznawcza) <sup>1</sup>
+## <a name="nvv3-series--sup1sup"></a>NVv3 — seria <sup>1</sup>
 
 Magazyn w warstwie Premium:  Obsługiwane
 
 Buforowanie Premium Storage:  Obsługiwane
 
-Maszyn wirtualnych z serii NVv3 są obsługiwane przez [procesory GPU NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) NVIDIA oraz technologii NVIDIA GRID technologię Intel E5-2690 v4 (broadwell z zegarem) procesorów. Te maszyny wirtualne są przeznaczone dla procesora GPU accelerated aplikacji graficznych i pulpitów wirtualnych, których klienci chcą wizualizować swoje dane, symulowanie wyników, aby wyświetlić, pracować nad CAD lub renderowania i dane ze strumienia zawartości. Dodatkowo te maszyny wirtualne mogą uruchamiać obciążenia o pojedynczej precyzji, takie jak kodowanie i renderowanie. Maszyny wirtualne NVv3 obsługuje usługi Premium Storage i dołączone dwa razy pamięć systemową (RAM) w porównaniu z jego poprzednika, seria NV.  
+Maszyny wirtualne z serii NVv3 są obsługiwane przez procesory [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU i technologię NVIDIA GRID z procesorem Intel E5-2690 v4 (Broadwell). Te maszyny wirtualne są przeznaczone dla procesorów GPU i pulpitów wirtualnych, na których klienci chcą wizualizować swoje dane, symulują wyniki do wyświetlania, pracy w programie CAD lub renderowania i przesyłania strumieniowego zawartości. Dodatkowo te maszyny wirtualne mogą uruchamiać obciążenia o pojedynczej precyzji, takie jak kodowanie i renderowanie. NVv3 maszyny wirtualne obsługują Premium Storage i mają dwa razy większą ilość pamięci systemowej (RAM) w porównaniu z poprzednią serią NV.  
 
-Każdy procesor GPU w NVv3 wystąpienia jest powiązana z licencją siatki. Ta licencja zapewnia elastyczność do korzystania z wystąpienia NV jako wirtualnej stacji roboczej dla jednego użytkownika lub 25 współbieżnych użytkownicy mogą łączyć się maszyna wirtualna dla scenariusza aplikacji wirtualnej.
+Każdy procesor GPU w wystąpieniach NVv3 zawiera licencję siatki. Ta licencja zapewnia elastyczność używania wystąpienia TRWAŁEgo jako wirtualnej stacji roboczej dla jednego użytkownika lub 25 jednoczesnych użytkowników może połączyć się z MASZYNą wirtualną w scenariuszu aplikacji wirtualnej.
 
 | Size | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Procesory GPU | Pamięć procesora GPU: GiB | Maks. liczba dysków danych | Maksymalna przepływność niebuforowanych dysków: IOPS / MB/s | Maksymalna liczba kart sieciowych | Wirtualne stacje robocze | Aplikacje wirtualne | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_NV12s_v3 |12 |112 |320 | 1 | 8 | 12 | 20000 / 200 | 4 | 1 | 25 |
-| Standard_NV24s_v3 |24 |224 |640 | 2 | 16 | 24 | 40000 / 400 | 8 | 2 | 50 |
-| Standard_NV48s_v3 |48 |448 |1280 | 4 | 32 | 32 | 80000 / 800 | 8 | 4 | 100 |
+| Standard_NV12s_v3 |12 |112 |320 | 1 | 8 | 12 | 20000/200 | 4 | 1 | 25 |
+| Standard_NV24s_v3 |24 |224 |640 | 2 | 16 | 24 | 40000/400 | 8 | 2 | 50 |
+| Standard_NV48s_v3 |48 |448 |1280 | 4 | 32 | 32 | 80000/800 | 8 | 4 | 100 |
 
 1 procesor GPU = połowa karty M60.
 
-<sup>1</sup> maszyny wirtualne z serii NVv3 są wyposażone w technologię Intel Hyper-Threading
+<sup>1</sup> maszyny wirtualne serii NVv3 z technologią Intel Hyper-Threading

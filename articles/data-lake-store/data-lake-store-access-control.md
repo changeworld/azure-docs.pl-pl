@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 211cb32298b17bb9e4023bf8bc74233c3916f58d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 276e691351d852d6dcb0075d47bf33af6767fc10
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60879110"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226096"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Kontrola dostępu w usłudze Azure Data Lake magazynu Gen1
 
@@ -27,9 +27,9 @@ Azure Data Lake Storage Gen1 wdraża model kontroli dostępu pochodzący z syste
 
 Istnieją dwa typy list kontroli dostępu (ACL) — **Listy ACL dostępu** i **Domyślne listy ACL**.
 
-* **Dostęp do listy ACL**: Te kontrolują dostęp do obiektu. Pliki i foldery mają listy ACL dostępu.
+* **Listy ACL dostępu**: Kontrolują dostęp do obiektu. Pliki i foldery mają listy ACL dostępu.
 
-* **Domyślne listy ACL**: "Szablon" list ACL skojarzonych z folderem, które określają listy ACL dostępu dla wszelkich elementów podrzędnych, które są tworzone w tym folderze. Pliki nie mają domyślnych list ACL.
+* **Domyślne listy ACL**: "Szablon" list ACL skojarzonych z folderem, który określa listy ACL dostępu dla wszelkich elementów podrzędnych, które są tworzone w tym folderze. Pliki nie mają domyślnych list ACL.
 
 
 Zarówno listy ACL dostępu, jak i domyślne listy ACL mają tę samą strukturę.
@@ -133,7 +133,7 @@ Ponieważ ma skojarzone z użytkownikami w Data Lake Storage Gen1 nie "grupą g�
 **Przypisywanie grupa będąca właścicielem dla nowego pliku lub folderu**
 
 * **Przypadek 1**: Folder główny "/". Ten folder jest tworzony po utworzeniu konta Data Lake Storage Gen1. W takim przypadku grupa będąca właścicielem jest równa identyfikator GUID wszystko od zera.  Ta wartość nie zezwala na dostęp do wszystkich.  Symbol zastępczy jest do tego czasu, które grupa jest przypisana.
-* **Przypadek 2** (każdy inny przypadek): Gdy zostanie utworzony nowy element, grupa będąca właścicielem jest kopiowana z folderu nadrzędnego.
+* **Przypadek 2** (W każdym innym przypadku): Po utworzeniu nowego elementu grupa będąca właścicielem jest kopiowana z folderu nadrzędnego.
 
 **Zmiana grupy będącej właścicielem**
 
@@ -166,7 +166,7 @@ def access_check( user, desired_perms, path ) :
   # Handle the owning user. Note that mask IS NOT used.
   entry = get_acl_entry( path, OWNER )
   if (user == entry.identity)
-      return ( (desired_perms & e.permissions) == desired_perms )
+      return ( (desired_perms & entry.permissions) == desired_perms )
 
   # Handle the named users. Note that mask IS used.
   entries = get_acl_entries( path, NAMED_USER )
@@ -216,9 +216,9 @@ Gdy nowy plik lub folder jest tworzony w istniejącym folderze, domyślna lista 
 
 ### <a name="umask"></a>maska umask
 
-Podczas tworzenia pliku lub folderu, maska umask jest używana do modyfikowania konfiguracji domyślnej listy ACL dla elementu podrzędnego. Maska umask jest 9-bitową 9-bitową wartością w foldery nadrzędne, które zawiera wartość RWX **użytkownika będącego właścicielem**, **grupy będącej właścicielem**, i **innych**.
+Podczas tworzenia pliku lub folderu, maska umask jest używana do modyfikowania konfiguracji domyślnej listy ACL dla elementu podrzędnego. Maska umask jest wartością 9-bitową w folderach nadrzędnych, która zawiera wartość RWX dla **użytkownika będącego właścicielem**, **grupy będącej właścicielem**i **innych**.
 
-Maska umask dla usługi Azure Data Lake Storage Gen1 stałą wartość, która jest równa 007. Ta wartość przekłada się na
+Maska umask dla Azure Data Lake Storage Gen1 jest stałą wartością ustawioną na 007. Ta wartość przekłada się na
 
 | Maska umask składnika     | Forma liczbowa | Forma krótka | Znaczenie |
 |---------------------|--------------|------------|---------|

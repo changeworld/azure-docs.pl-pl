@@ -1,110 +1,106 @@
 ---
-title: Diagnozowanie problemów z wydajnością grafiki w pulpitu zdalnego - Azure
-description: W tym artykule opisano sposób użycia funkcji RemoteFX grafiki liczników w sesji protokołu remote desktop protocol do diagnozowania problemów z wydajnością za pomocą grafiki w Windows pulpitu wirtualnego.
+title: Diagnozowanie problemów z wydajnością grafiki w usłudze pulpit zdalny — Azure
+description: W tym artykule opisano, jak używać liczników grafiki RemoteFX w sesjach protokołu pulpitu zdalnego do diagnozowania problemów z wydajnością za pomocą grafiki na pulpicie wirtualnym systemu Windows.
 services: virtual-desktop
 author: ChJenk
 ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: v-chjenk
-ms.openlocfilehash: a139542bf9272336784ac96d667d65caa1ed96ff
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 8cd24861b9d7432a582d1b635b8ffcf0d8d2b9e6
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67607330"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68233622"
 ---
-# <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>Diagnozowanie problemów z wydajnością grafiki w pulpitu zdalnego
+# <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>Diagnozowanie problemów z wydajnością grafiki w programie Pulpit zdalny
 
-System nie działa zgodnie z oczekiwaniami, należy zidentyfikować źródło problemu. Ten artykuł pomaga zidentyfikować i eliminowanie wąskich gardeł wydajności powiązane grafiki podczas sesji protokołu RDP (Remote Desktop).
+Aby zdiagnozować problemy z jakością środowiska w sesjach zdalnych, liczniki zostały podane w sekcji grafiki funkcji RemoteFX monitora wydajności. Ten artykuł ułatwia identyfikowanie i rozwiązywanie wąskich gardeł wydajności związanych z grafikią podczas sesji Remote Desktop Protocol (RDP) przy użyciu tych liczników.
 
-## <a name="find-your-remote-session-name"></a>Znajdowanie nazwy sesji zdalnej
+## <a name="find-your-remote-session-name"></a>Znajdź nazwę sesji zdalnej
 
-Potrzebna będzie nazwą sesji zdalnej do identyfikowania grafiki liczników wydajności. Postępuj zgodnie z instrukcjami w tej sekcji, aby określić nazwę sesji zdalnej usługi Windows wirtualnego Desktop w wersji zapoznawczej.
+Do identyfikacji liczników wydajności grafiki potrzebna jest nazwa sesji zdalnej. Postępuj zgodnie z instrukcjami w tej sekcji, aby zidentyfikować wystąpienie każdego licznika.
 
-1. Otwórz wiersz polecenia Windows z sesji zdalnej.
-2. Uruchom **qwinsta** polecenia.
-    - Jeśli sesja znajduje się w wielu sesji maszyny wirtualnej (VM): Sufiks dla każdej nazwy licznika jest tym samym sufiksem nazwę sesji, takie jak "protokołu rdp-tcp 37."
-    - Jeśli sesja jest hostowany na maszynie wirtualnej, który obsługuje wirtualne graficznych (vGPU): Liczniki są przechowywane na serwerze, a nie na maszynie wirtualnej. Wystąpienia liczników obejmują nazwę maszyny Wirtualnej, zamiast numeru nazwę sesji, takie jak "Win8 Enterprise maszyny Wirtualnej."
+1. Otwórz wiersz polecenia systemu Windows z sesji zdalnej.
+2. Uruchom polecenie **qwinsta** i Znajdź nazwę sesji.
+    - Jeśli sesja jest hostowana na maszynie wirtualnej wielosesyjnej (VM): Wystąpienie każdego licznika jest sufiksem o tym samym numerze, który ma sufiks nazwy sesji, na przykład "RDP-TCP 37".
+    - Jeśli sesja jest hostowana na maszynie wirtualnej obsługującej wirtualne jednostki przetwarzania grafiki (vGPU): Wystąpienie każdego licznika jest przechowywane na serwerze, a nie na maszynie wirtualnej. Wystąpienia liczników zawierają nazwę maszyny wirtualnej zamiast numeru w nazwie sesji, na przykład "Win8 Enterprise VM".
 
 >[!NOTE]
-> Chociaż liczniki RemoteFX w nazwach, obejmują one grafiki pulpitu zdalnego w vGPU realizację scenariuszy.
+> Chociaż liczniki mają funkcję RemoteFX w swoich nazwach, obejmują również grafikę pulpitu zdalnego w scenariuszach vGPU.
 
 ## <a name="access-performance-counters"></a>Dostęp do liczników wydajności
 
-Liczniki wydajności w grafice RemoteFX ułatwić wykrywanie wąskich gardeł, która ułatwia śledzenie elementów, takich jak kodowanie czas ramki i pominięte ramki.
+Po ustaleniu nazwy sesji zdalnej postępuj zgodnie z tymi instrukcjami, aby zebrać liczniki wydajności grafiki RemoteFX dla sesji zdalnej.
 
-Po określeniu nazwy sesji zdalnej, wykonaj te instrukcje dotyczące grafiki RemoteFX liczniki wydajności są zbierane dla sesji zdalnej.
-
-1. Wybierz **Start** > **narzędzia administracyjne** > **monitora wydajności**.
-2. W **monitora wydajności** okna dialogowego rozwiń **narzędzia do monitorowania**, wybierz opcję **monitora wydajności**, a następnie wybierz pozycję **Dodaj**.
-3. W **Dodaj liczniki** okno dialogowe z **dostępne liczniki** listy, rozwiń wartość obiektu licznika wydajności dla RemoteFX grafiki.
+1. Wybierz kolejno pozycje **Uruchom** > **Narzędzia** > administracyjne**Monitor wydajności**.
+2. W oknie dialogowym **Monitor wydajności** rozwiń węzeł **Narzędzia do monitorowania**, wybierz pozycję **Monitor wydajności**, a następnie wybierz pozycję **Dodaj**.
+3. W oknie dialogowym **Dodawanie liczników** z listy **dostępne liczniki** rozwiń sekcję dotyczącą grafiki RemoteFX.
 4. Wybierz liczniki do monitorowania.
-5. W **wystąpień wybranego obiektu** , wybierz konkretne wystąpienia można monitorować dla wybranych liczników, a następnie wybierz pozycję na liście **Dodaj**. Aby wybrać wszystkie wystąpienia liczników dostępna, wybierz **wszystkie wystąpienia**.
-6. Po dodaniu liczników, wybierz **OK**.
+5. Na liście **wystąpienia wybranego obiektu** wybierz określone wystąpienia do monitorowania dla wybranych liczników, a następnie wybierz pozycję **Dodaj**. Aby zaznaczyć wszystkie dostępne wystąpienia liczników, zaznacz opcję **wszystkie wystąpienia**.
+6. Po dodaniu liczników wybierz **przycisk OK**.
 
 Wybrane liczniki wydajności będą wyświetlane na ekranie monitora wydajności.
 
 >[!NOTE]
->Każdej aktywnej sesji na hoście ma własne wystąpienie każdego licznika wydajności.
+>Każda aktywna sesja na hoście ma własne wystąpienie każdego licznika wydajności.
 
-## <a name="diagnosis"></a>Diagnostyka
+## <a name="diagnose-issues"></a>Diagnozowanie problemów
 
-Problemy z wydajnością powiązane grafiki ogólnie można podzielić na cztery kategorie:
+Problemy z wydajnością związane z grafikią zwykle dzielą się na cztery kategorie:
 
 - Niska szybkość klatek
-- Losowe wstrzymania
-- Duże opóźnienie danych wejściowych
-- Jakość ramki niska
+- Miejsca losowe
+- Duże opóźnienie wejścia
+- Niska jakość ramki
 
-Rozpocznij od adresowania niska szybkość klatek, losowych wstrzymania i duże opóźnienie danych wejściowych. Następna sekcja poinformuje, które liczniki wydajności mierzą każdej kategorii.
+### <a name="addressing-low-frame-rate-random-stalls-and-high-input-latency"></a>Rozwiązywanie niskich szybkości klatek, losowych miejsc i dużych opóźnień wejścia
 
-### <a name="performance-counters"></a>Liczniki wydajności
+Najpierw sprawdź ramki wyjściowe/sekundę. Mierzy ona liczbę ramek udostępnianych klientowi. Jeśli ta wartość jest mniejsza od licznika ramki wejściowe/sekundę, ramki są pomijane. Aby zidentyfikować wąskie gardło, należy użyć klatek pominiętych/sekundę.
 
-Ten rozdział pomaga w identyfikacji wąskich gardeł.
+Istnieją trzy typy klatek pominiętych/sekund:
 
-Najpierw sprawdź licznik Frames/Second danych wyjściowych. Mierzy liczbę klatek udostępnione do klienta. Jeśli ta wartość jest mniejsza niż licznik Frames/Second dane wejściowe, ramki jest pomijany. Aby zidentyfikować wąskie gardło, za pomocą ramek liczniki pomijane/sekundę.
+- Pominięte klatki/sekundę (niewystarczające zasoby serwera)
+- Pominięte klatki/sekundę (niewystarczające zasoby sieciowe)
+- Pominięte klatki/sekundę (niewystarczające zasoby klienta)
 
-Istnieją trzy typy ramek liczniki pomijane na sekundę:
+Wysoka wartość dla wszystkich klatek pominiętych/sekund oznacza, że problem jest związany z zasobem śledzonym przez licznik. Na przykład jeśli klient nie dekoduje i przedstawia ramek z tą samą szybkością, serwer oferuje ramki, pominięte klatki/sekundę (niewystarczające zasoby klienta) będą wysokie.
 
-- Ramki pominięte na sekundę (za mało zasobów sieciowych)
-- Ramki pominięte na sekundę (klient niewystarczające zasoby)
-- Ramki pominięte na sekundę (serwera są niewystarczające zasoby)
+Jeśli licznik ramki wyjściowe/drugi dopasowuje ramki wejściowe/sekundę, ale nadal zauważysz nietypowe opóźnienia lub ogiera, średni czas kodowania może być przyczyna. Kodowanie jest procesem synchronicznym, który występuje na serwerze w scenariuszu pojedynczej sesji (vGPU) i na maszynie wirtualnej w scenariuszu obejmującym wiele sesji. Średni czas kodowania powinien mieć mniej niż 33 MS. Jeśli średni czas kodowania jest równy 33 MS, ale nadal występują problemy z wydajnością, może wystąpić problem z aplikacją lub systemem operacyjnym, z którego korzystasz.
 
-Śledzi licznika o wysokiej wartości dla każdej ramki liczniki pomijane/sekundę wskazuje, czy problem jest związany z zasobem. Na przykład jeśli klient nie dekodowanie i obecne ramki przy użyciu stawki stosowanej serwera oferuje ramek, licznik ramek pomijane/sekundę (niewystarczające zasoby klienta) będzie wysoka.
+Aby uzyskać więcej informacji o diagnozowaniu problemów związanych z aplikacjami, zobacz [liczniki wydajności opóźnienia danych wejściowych użytkownika](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters).
 
-Jeśli licznik Frames/Second danych wyjściowych odpowiada licznika Frames/Second dane wejściowe, jeszcze nadal masz lag nietypowe lub wstrzymujących działanie, problem może być Średni czas kodowania. Kodowanie jest synchroniczne procesu, który występuje na serwerze, w tym scenariuszu w pojedynczej sesji (vGPU) i na maszynie Wirtualnej, w tym scenariuszu wielu sesji. Średni czas kodowania powinna być poniżej 33 ms. Jeśli Średni czas kodowania jest poniżej 33 ms, ale nadal masz problemy z wydajnością, może to być problem z aplikacji lub systemu operacyjnego, którego używasz.
+Ponieważ protokół RDP obsługuje średni czas kodowania 33 MS, obsługuje wejściowy współczynnik ramek do 30 klatek na sekundę. Należy pamiętać, że 33 MS to maksymalna obsługiwana szybkość klatek. W wielu przypadkach częstotliwość klatek napotkanych przez użytkownika będzie niższa, w zależności od tego, jak często ramka jest dostarczana do protokołu RDP przez źródło. Na przykład zadania, takie jak oglądanie filmu wideo, wymagają pełnego współczynnika klatek wejścia o 30 klatek na sekundę, ale mniej znacznie intensywnie korzystających z nich zadań, takich jak rzadko edytowane są wyniki w postaci znacznie mniejszej wartości klatek wejścia/s, bez obniżenia wydajności. jakość środowiska.
 
-Aby uzyskać więcej informacji na temat diagnozowania problemów dotyczących aplikacji, zobacz [liczniki wydajności opóźnienia dane wejściowe użytkownika](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters).
+### <a name="addressing-poor-frame-quality"></a>Rozwiązywanie słabej jakości ramki
 
-Ponieważ protokół RDP obsługuje Średni czas kodowania 33 ms, obsługuje on szybkość klatek danych wejściowych, maksymalnie 30 klatek na sekundę. Należy pamiętać, że 33 ms maksymalnej obsługiwanej szybkości klatek. W wielu przypadkach szybkość klatek doświadczonym przez użytkownika będzie niższa, w zależności od tego, jak często ramkę podano dla protokołu RDP przez źródło. Na przykład zadania, takie jak oglądanie wideo wymaga pełnej wejściowych szybkości 30 klatek na sekundę, ale mniej zadań Obciążenie zasobów, takich jak rzadko edycji dokumentu programu word nie wymagają wysoki współczynnik klatek na sekundę dla zajmującymi.
-
-Aby zdiagnozować problemy z jakością ramki, należy użyć licznika jakość ramki. Ten licznik wyraża jakość ramki danych wyjściowych jako wartość procentowa jakość ramki źródła. Obniżenie jakości mogą wynikać z funkcją RemoteFX lub mogą być wbudowane w źródle grafiki. Jeśli funkcja RemoteFX spowodowało obniżenie jakości, problem może być brak zasobów w sieci lub serwera do wysyłania zawartości pozwala uzyskać większą wierność.
+Użyj licznika jakości ramki, aby zdiagnozować problemy z jakością ramki. Ten licznik przedstawia jakość ramki wyjściowej jako wartość procentową jakości ramki źródłowej. Utrata jakości może być spowodowana funkcją RemoteFX lub źródłem grafiki. Jeśli funkcja RemoteFX spowodowała utratę jakości, przyczyną problemu może być brak zasobów sieciowych lub serwerowych w celu wysłania zawartości o wyższej wierności.
 
 ## <a name="mitigation"></a>Środki zaradcze
 
-Jeśli zasoby serwera są przyczyną wąskie gardło, wypróbuj jedną z następujących czynności w celu zwiększenia wydajności:
+Jeśli zasoby serwera powodują wąskie gardło, wypróbuj jedną z następujących metod, aby zwiększyć wydajność:
 
-- Zmniejsz liczbę sesji na hoście.
-- Zwiększ ilość pamięci i zasobów obliczeniowych zasobów na serwerze.
-- Usuń rozwiązanie połączenia.
+- Zmniejsz liczbę sesji na hosta.
+- Zwiększ ilość pamięci i zasobów obliczeniowych na serwerze.
+- Porzuć rozwiązanie.
 
-Jeśli zasoby sieciowe powodują wąskie gardło, wypróbuj jedną z następujących czynności, aby zwiększyć dostępność sieci sesji:
+Jeśli zasoby sieciowe powodują wąskie gardło, wypróbuj jedną z następujących metod, aby zwiększyć dostępność sieci na sesję:
 
-- Zmniejsz liczbę sesji na hoście.
-- Usuń rozwiązanie połączenia.
-- Korzystanie z wyższej przepustowości sieci.
+- Zmniejsz liczbę sesji na hosta.
+- Użyj sieci o wyższej przepustowości.
+- Porzuć rozwiązanie.
 
-Jeśli zasoby klienta powodują wąskie gardło, wykonaj jedną lub obie następujące czynności, aby zwiększyć wydajność:
+Jeśli zasoby klienta powodują wąskie gardło, wypróbuj jedną z następujących metod, aby zwiększyć wydajność:
 
-- Zainstaluj najnowsze klienta pulpitu zdalnego.
-- Zwiększ ilość pamięci i zasobów na komputerze klienckim obliczeniowych.
+- Zainstaluj najnowszego klienta Pulpit zdalny.
+- Zwiększ ilość pamięci i zasobów obliczeniowych na komputerze klienckim.
 
 > [!NOTE]
-> Obecnie nie obsługujemy licznika Frames/Second źródła. Na razie licznika Frames/Second źródła będzie zawsze ustawiana na 0.
+> Obecnie nie są obsługiwane liczniki źródłowe/sekundę. Na razie klatki źródłowe/drugi licznika zawsze będą wyświetlać 0.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby utworzyć maszynę wirtualną platformy Azure zoptymalizowane pod kątem procesora GPU, zobacz [skonfigurować GPU przyspieszenie jednostki (GPU) dla środowiska Windows wirtualnego Desktop w wersji zapoznawczej](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu).
-- Omówienie śledzi Rozwiązywanie problemów i eskalacji, zobacz [Rozwiązywanie problemów — omówienie, opinie i pomoc techniczna](https://docs.microsoft.com/azure/virtual-desktop/troubleshoot-set-up-overview).
-- Aby dowiedzieć się więcej na temat usługi w wersji zapoznawczej, zobacz [Windows Desktop w wersji zapoznawczej środowiska](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
+- Aby utworzyć maszynę wirtualną platformy Azure zoptymalizowaną pod kątem procesora GPU, zobacz [Konfigurowanie przyspieszenia procesora graficznego dla systemu Windows w wersji](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu)zapoznawczej.
+- Aby zapoznać się z omówieniem rozwiązywania problemów i śledzenia eskalacji, zobacz [Omówienie rozwiązywania problemów, opinie i pomoc techniczną](https://docs.microsoft.com/azure/virtual-desktop/troubleshoot-set-up-overview).
+- Aby dowiedzieć się więcej na temat usługi w wersji zapoznawczej, zobacz [środowisko Windows Desktop Preview](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).

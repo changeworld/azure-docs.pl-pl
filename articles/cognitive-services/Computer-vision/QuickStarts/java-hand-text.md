@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: wyodrębnianie tekstu odręcznego — REST, Java'
+title: 'Szybki start: Wyodrębnij tekst drukowany i napisany ręcznie — REST, Java'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku Szybki start wyodrębnisz z obrazu tekst odręczny przy użyciu interfejsu API przetwarzania obrazów i języka Java.
+description: W tym przewodniku szybki start wyodrębnisz drukowany i odręczny tekst z obrazu przy użyciu interfejs API przetwarzania obrazów w języku Java.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,26 +11,26 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 1776a387add47464287e4ee3a22a2e1f5c3c781a
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 545bd3acbd212a26b3e35020559ab62788ab7257
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604395"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68312010"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-computer-vision-rest-api-and-java"></a>Szybki start: Wyodrębnianie tekstu odręcznego za pomocą interfejsu REST API przetwarzania obrazów i Java
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-java"></a>Szybki start: Wyodrębnij tekst drukowany i odręczny przy użyciu interfejsu API REST przetwarzanie obrazów i środowiska Java
 
-W tym przewodniku Szybki start wyodrębnisz tekst odręczny z obrazu przy użyciu interfejsu API REST przetwarzania obrazów. Za pomocą [odczytu wsadowego](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) interfejsu API i [wynik operacji odczytu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) interfejsu API, można wykryć tekstu odręcznego na obrazie, a następnie Wyodrębnij rozpoznane znaki do strumienia znaków, można używać maszyny.
+W tym przewodniku szybki start wyodrębnisz drukowany i/lub odręczny tekst z obrazu za pomocą interfejsu API REST przetwarzanie obrazów. Przy użyciu metod operacji odczytu i [odczytu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) [partii](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) możesz wykryć tekst w obrazie i wyodrębnić rozpoznane znaki do strumienia znaków, który można odczytać. Interfejs API określi model rozpoznawania, który ma być używany dla każdego wiersza tekstu, aby obsługiwał obrazy zarówno w postaci tekstu, jak i w postaci odręcznej.
 
 > [!IMPORTANT]
-> W odróżnieniu od [optyczne rozpoznawanie znaków](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) metody [odczytu wsadowego](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) metody jest uruchamiane asynchronicznie. Ta metoda nie zwraca żadnych informacji w treści pomyślnej odpowiedzi. Zamiast tego metody odczytu wsadowego zwraca identyfikator URI w wartości `Operation-Content` pole nagłówka odpowiedzi. Następnie możesz wywołać ten identyfikator URI, który reprezentuje [wynik operacji odczytu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) metody, aby sprawdzić stan i zwracają wyniki wywołania metody odczytu wsadowego.
+> W przeciwieństwie do metody [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) Metoda [odczytywania wsadowego](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) jest uruchamiana asynchronicznie. Ta metoda nie zwraca żadnych informacji w treści pomyślnej odpowiedzi. Zamiast tego metoda odczytywania wsadowego zwraca identyfikator URI w wartości `Operation-Content` pola nagłówka odpowiedzi. Następnie można wywołać ten identyfikator URI, który reprezentuje metodę [wyniku operacji odczytu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) , aby sprawdzić stan i zwrócić wyniki wywołania metody odczytu wsadowego.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Musisz mieć zainstalowaną platformę [Java&trade; i zestaw Standard Edition Development Kit 7 lub 8](https://aka.ms/azure-jdks) (JDK 7 lub 8).
-- Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Możesz uzyskać bezpłatnej wersji próbnej klucza z [spróbuj usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub, postępuj zgodnie z instrukcjami w [Tworzenie konta usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) subskrybować przetwarzania obrazów, i Uzyskaj klucz.
+- Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Możesz uzyskać bezpłatny klucz wersji próbnej z usługi [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować przetwarzanie obrazów i uzyskać klucz.
 
 ## <a name="create-and-run-the-sample-application"></a>Tworzenie i uruchamianie przykładowej aplikacji
 
@@ -60,8 +60,8 @@ Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 
 1. Zastąp klasę publiczną `Main` poniższym kodem, a następnie w odpowiednich miejscach wprowadź następujące zmiany kodu:
    1. Zastąp wartość `subscriptionKey` kluczem subskrypcji.
-   1. Zastąp wartość `uriBase` przy użyciu adresu URL punktu końcowego dla [odczytu wsadowego](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) metody z regionu platformy Azure, gdzie uzyskać klucze subskrypcji, jeśli to konieczne.
-   1. Opcjonalnie zastąp wartość `imageToAnalyze` adresem URL innego obrazu, z którego chcesz wyodrębnić tekst odręczny.
+   1. Zastąp wartość wartością `uriBase` z adresem URL punktu końcowego dla metody [odczytu partii](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) z regionu platformy Azure, w którym zostały uzyskane klucze subskrypcji, w razie potrzeby.
+   1. Opcjonalnie należy zamienić wartość `imageToAnalyze` na adres URL innego obrazu, z którego ma zostać wyodrębniony tekst.
 1. Zapisz, a następnie skompiluj projekt języka Java.
 1. Jeśli używasz środowiska IDE, uruchom klasę `Main`. W przeciwnym razie otwórz okno wiersza polecenia, a następnie użyj polecenia `java`, aby uruchomić skompilowaną klasę. Na przykład `java Main`.
 
@@ -112,7 +112,7 @@ public class Main {
                     new StringEntity("{\"url\":\"" + imageToAnalyze + "\"}");
             request.setEntity(requestEntity);
 
-            // Two REST API methods are required to extract handwritten text.
+            // Two REST API methods are required to extract text.
             // One method to submit the image for processing, the other method
             // to retrieve the text found in the image.
 
@@ -152,12 +152,12 @@ public class Main {
             // If the first REST API method completes successfully, the second
             // REST API method retrieves the text written in the image.
             //
-            // Note: The response may not be immediately available. Handwriting
+            // Note: The response may not be immediately available. Text
             // recognition is an asynchronous operation that can take a variable
-            // amount of time depending on the length of the handwritten text.
+            // amount of time depending on the length of the text.
             // You may need to wait or retry this operation.
 
-            System.out.println("\nHandwritten text submitted.\n" +
+            System.out.println("\nText submitted.\n" +
                     "Waiting 10 seconds to retrieve the recognized text.\n");
             Thread.sleep(10000);
 
@@ -187,7 +187,7 @@ public class Main {
 Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON. Przykładowa aplikacja analizuje i wyświetla pomyślną odpowiedź w oknie konsoli, podobnie jak w poniższym przykładzie:
 
 ```json
-Handwritten text submitted. Waiting 10 seconds to retrieve the recognized text.
+Text submitted. Waiting 10 seconds to retrieve the recognized text.
 
 Text recognition result response:
 
@@ -294,7 +294,7 @@ Text recognition result response:
 
 Gdy projekt języka Java nie będzie już potrzebny, usuń go wraz ze skompilowaną klasą i zaimportowanymi bibliotekami.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Zapoznaj się z aplikacją w języku Java Swing, w której zastosowano interfejs API przetwarzania obrazów do optycznego rozpoznawania znaków (OCR), inteligentnego przycinania miniatur oraz wykrywania, kategoryzowania, tagowania i opisywania elementów wizualnych, w tym twarzy, na obrazie. Aby szybko zacząć eksperymentować z interfejsem API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 

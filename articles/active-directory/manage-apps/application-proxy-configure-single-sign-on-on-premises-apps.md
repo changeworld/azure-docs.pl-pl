@@ -1,6 +1,6 @@
 ---
-title: SAML logowania jednokrotnego dla aplikacji w środowisku lokalnym za pomocą usługi Azure Active Directory serwera Proxy aplikacji (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zapewnić logowanie jednokrotne dla lokalnych aplikacje opublikowane za pośrednictwem serwera Proxy aplikacji, które są zabezpieczone przy użyciu uwierzytelniania SAML.
+title: Logowanie jednokrotne w usłudze SAML dla aplikacji lokalnych z serwer proxy aplikacji usługi Azure Active Directory (wersja zapoznawcza) | Microsoft Docs
+description: Dowiedz się, jak zapewnić Logowanie jednokrotne dla aplikacji lokalnych, które są zabezpieczone przy użyciu uwierzytelniania SAML. Zapewnianie dostępu zdalnego do aplikacji lokalnych przy użyciu serwera proxy aplikacji.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -11,62 +11,93 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 07/09/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 907cb598d708bfa26f53d2e43fef5456258c21b1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a9f4ab79a9fc9b8fec26cce98d9a878b6fa2a0c3
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66393046"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67853759"
 ---
-# <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy-preview"></a>SAML logowania jednokrotnego dla aplikacji w środowisku lokalnym dzięki serwerowi Proxy aplikacji (wersja zapoznawcza)
+# <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy-preview"></a>Logowanie jednokrotne w usłudze SAML dla aplikacji lokalnych przy użyciu serwera proxy aplikacji (wersja zapoznawcza)
 
-Logowanie jednokrotne (SSO) można udostępnić lokalne aplikacje, które są zabezpieczone przy użyciu uwierzytelniania SAML i zapewnić dostęp zdalny do tych aplikacji za pośrednictwem serwera Proxy aplikacji. Przy użyciu protokołu SAML logowania jednokrotnego usługi Azure Active Directory (Azure AD) uwierzytelnia się do aplikacji za pomocą konta usługi Azure AD. Usługa Azure AD komunikuje się informacji logowania jednokrotnego do aplikacji za pośrednictwem protokołu połączenia. Można również mapować użytkowników do ról aplikacji, na podstawie reguł zdefiniowanych w swoje oświadczenia języka SAML. Po włączeniu serwera Proxy aplikacji, oprócz logowania jednokrotnego SAML użytkownicy będą mieli dostępu do aplikacji i bezproblemowe logowanie Jednokrotne.
+Możesz udostępnić Logowanie jednokrotne do aplikacji lokalnych, które są zabezpieczone przy użyciu uwierzytelniania SAML i zapewniają dostęp zdalny do tych aplikacji za pomocą serwera proxy aplikacji. Za pomocą logowania jednokrotnego w protokole SAML usługa Azure Active Directory (Azure AD) uwierzytelnia się w aplikacji przy użyciu konta usługi Azure AD użytkownika. Usługa Azure AD komunikuje się informacji logowania jednokrotnego do aplikacji za pośrednictwem protokołu połączenia. Możesz również mapować użytkowników na określone role aplikacji na podstawie reguł zdefiniowanych w oświadczeniach SAML. Po włączeniu serwera proxy aplikacji oprócz rejestracji jednokrotnej protokołu SAML użytkownicy będą mieli zewnętrzny dostęp do aplikacji i bezproblemowe środowisko logowania jednokrotnego.
 
-Aplikacje muszą mieć możliwość korzystania tokeny SAML wystawione przez **usługi Azure Active Directory**. Ta konfiguracja nie ma zastosowania do aplikacji przy użyciu dostawcy tożsamości w środowisku lokalnym. Dla tych scenariuszy, zaleca się, przeglądając [zasoby dotyczące migrowania aplikacji do usługi Azure AD](migration-resources.md).
+Aplikacje muszą być w stanie korzystać z tokenów SAML wystawionych przez **Azure Active Directory**. Ta konfiguracja nie ma zastosowania do aplikacji korzystających z lokalnego dostawcy tożsamości. W tych scenariuszach zalecamy przeglądanie [zasobów na potrzeby migrowania aplikacji do usługi Azure AD](migration-resources.md).
 
-Za pomocą funkcji szyfrowania tokenów SAML działa również logowania jednokrotnego SAML z serwerem Proxy aplikacji. Aby uzyskać więcej informacji, zobacz [szyfrowania tokenu Konfigurowanie usługi Azure AD SAML](howto-saml-token-encryption.md).
+Logowanie jednokrotne SAML z serwerem proxy aplikacji działa również z funkcją szyfrowania tokenu języka SAML. Aby uzyskać więcej informacji, zobacz [Konfigurowanie szyfrowania tokenów SAML usługi Azure AD](howto-saml-token-encryption.md).
 
-## <a name="publish-the-on-premises-application-with-application-proxy"></a>Publikowanie aplikacji w środowisku lokalnym dzięki serwerowi Proxy aplikacji
+Poniższe diagramy protokołów opisują sekwencję logowania jednokrotnego dla przepływu zainicjowanego przez dostawcę usług (zainicjowany z dodatkiem SP) i przepływem zainicjowanego przez dostawcę tożsamości (dostawcy tożsamości). Serwer proxy aplikacji współpracuje z logowaniem jednokrotnym SAML przez buforowanie żądania SAML i odpowiedzi do i z aplikacji lokalnej.
 
-Przed zapewnieniem logowania jednokrotnego dla aplikacji w środowisku lokalnym, upewnij się, włączono serwer Proxy aplikacji i masz zainstalowanego łącznika. Zobacz [Dodawanie aplikacji w środowisku lokalnym dostępu zdalnego za pośrednictwem serwera Proxy aplikacji w usłudze Azure AD](application-proxy-add-on-premises-application.md) Aby dowiedzieć się, jak.
+  ![Przepływ SAML SP](./media/application-proxy-configure-single-sign-on-on-premises-apps/saml-sp-initiated-flow.png)
 
-Należy pamiętać, następujące po zamierzasz instrukcje z samouczka:
+  ![Przepływ SAML SP](./media/application-proxy-configure-single-sign-on-on-premises-apps/saml-idp-initiated-flow.png)
 
-* Opublikuj aplikację zgodnie z instrukcjami w tym samouczku. Upewnij się, że wybrano **usługi Azure Active Directory** jako **wstępne uwierzytelnianie** metodę dla aplikacji (krok 4 [Dodawanie aplikacji lokalnych do usługi Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad
-)).
-* Kopiuj **zewnętrzny adres URL** dla aplikacji.
-* Najlepszym rozwiązaniem jest Użyj domen niestandardowych, jeśli to możliwe, aby środowiska zoptymalizowane użytkownika. Dowiedz się więcej o [Praca z domenami niestandardowymi na serwerze Proxy aplikacji usługi Azure AD](application-proxy-configure-custom-domain.md).
-* Dodaj co najmniej jednego użytkownika do aplikacji i upewnij się, że testowe konto ma dostęp do aplikacji w środowisku lokalnym. Za pomocą testu konta testu, jeśli można uzyskać dostępu do aplikacji, odwiedzając **zewnętrzny adres URL** do sprawdzania poprawności serwera Proxy aplikacji są poprawnie skonfigurowane. Aby uzyskać informacje dotyczące rozwiązywania problemów, zobacz [Rozwiązywanie problemów z serwera Proxy aplikacji problemy i komunikaty o błędach](application-proxy-troubleshoot.md).
+## <a name="create-an-application-and-set-up-saml-sso"></a>Tworzenie aplikacji i Konfigurowanie protokołu SAML SSO
 
-## <a name="set-up-saml-sso"></a>Konfigurowanie logowania jednokrotnego SAML
+1. W Azure Portal wybierz pozycję **Azure Active Directory > aplikacje dla przedsiębiorstw** i wybierz pozycję **Nowa aplikacja**.
 
-1. W witrynie Azure portal wybierz **usługi Azure Active Directory > aplikacje dla przedsiębiorstw** i wybierz aplikację z listy.
-1. Z poziomu aplikacji **Przegląd** wybierz opcję **logowanie jednokrotne**.
-1. Wybierz **SAML** jako pojedynczej metody logowania jednokrotnego.
-1. W **Ustaw się logowanie jednokrotne z SAML** strony, Edytuj **podstawową konfigurację protokołu SAML** danych i postępuj zgodnie z instrukcjami w [Enter podstawową konfigurację protokołu SAML](configure-single-sign-on-non-gallery-applications.md#saml-based-single-sign-on) skonfigurować opartej na SAML uwierzytelnianie dla aplikacji.
+2. W obszarze **Dodaj własną aplikację**wybierz pozycję **aplikacja**niebędąca galerią.
 
-   * Upewnij się, że **adres URL odpowiedzi** odpowiada **zewnętrzny adres URL** dla aplikacji w środowisku lokalnym, która opublikowane za pośrednictwem serwera Proxy aplikacji lub jest ścieżką, w obszarze **zewnętrzny adres URL**.
-   * Usługi flow inicjowane przez dostawcę tożsamości, gdzie aplikacja wymaga innego **adres URL odpowiedzi** konfiguracji SAML, dodaj ją jako **dodatkowe** adres URL na liście i znacznik wyboru obok niego do wyznaczenia jako podstawowy **adres URL odpowiedzi**.
-   * Przepływ zainicjowanego przez dostawcę usług upewnij się, że aplikacja wewnętrznej bazy danych określa poprawny **adres URL odpowiedzi** lub adres URL usługi konsumenta potwierdzenie służące do odbierania token uwierzytelniania.
+3. Wprowadź nazwę wyświetlaną nowej aplikacji, a następnie wybierz pozycję **Dodaj**.
 
-     ![Wprowadzanie podstawowych danych konfiguracji protokołu SAML](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
+4. Na stronie **Przegląd** aplikacji wybierz pozycję **Logowanie**jednokrotne.
+
+5. Wybierz pozycję **SAML** jako metodę logowania jednokrotnego.
+
+6. Najpierw skonfiguruj Logowanie jednokrotne SAML do pracy w sieci firmowej. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** przejdź do nagłówka **Podstawowa konfiguracja SAML** i wybierz jego ikonę **edycji** (ołówek). Postępuj zgodnie z instrukcjami w [wprowadź podstawową konfigurację SAML](configure-single-sign-on-non-gallery-applications.md#saml-based-single-sign-on) , aby skonfigurować uwierzytelnianie oparte na protokole SAML dla aplikacji.
+
+7. Dodaj co najmniej jednego użytkownika do aplikacji i upewnij się, że konto testowe ma dostęp do aplikacji. Po nawiązaniu połączenia z siecią firmową Użyj konta testowego, aby sprawdzić, czy użytkownik ma Logowanie jednokrotne do aplikacji. 
+
+   > [!NOTE]
+   > Po skonfigurowaniu serwera proxy aplikacji powrócisz i zaktualizujesz **adres URL odpowiedzi**SAML.
+
+## <a name="publish-the-on-premises-application-with-application-proxy"></a>Publikowanie aplikacji lokalnej przy użyciu serwera proxy aplikacji
+
+Aby można było zapewnić Logowanie jednokrotne dla aplikacji lokalnych, należy włączyć serwer proxy aplikacji i zainstalować łącznik. Zapoznaj się z samouczkiem [Dodawanie lokalnej aplikacji do dostępu zdalnego za pomocą serwera proxy aplikacji w usłudze Azure AD](application-proxy-add-on-premises-application.md) , aby dowiedzieć się, jak przygotować środowisko lokalne, zainstalować i zarejestrować łącznik oraz przetestować łącznik. Następnie wykonaj następujące kroki, aby opublikować nową aplikację przy użyciu serwera proxy aplikacji. Inne ustawienia, które nie zostały wymienione poniżej, można znaleźć w sekcji [Dodawanie aplikacji lokalnej do usługi Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad) w samouczku.
+
+1. Gdy aplikacja jest nadal otwarta w Azure Portal, wybierz pozycję **serwer proxy aplikacji**. Podaj **wewnętrzny adres URL** aplikacji. Jeśli używasz domeny niestandardowej, musisz również przekazać certyfikat SSL dla swojej aplikacji. 
+   > [!NOTE]
+   > Najlepszym rozwiązaniem jest użycie domen niestandardowych wszędzie tam, gdzie jest to możliwe dla zoptymalizowanego środowiska użytkownika. Dowiedz się więcej [na temat pracy z domenami niestandardowymi w usłudze Azure serwer proxy aplikacji usługi Azure AD](application-proxy-configure-custom-domain.md).
+
+2. Wybierz **Azure Active Directory** jako metodę **wstępnego uwierzytelniania** dla aplikacji.
+
+3. Skopiuj **zewnętrzny adres URL** aplikacji. Ten adres URL będzie potrzebny do ukończenia konfiguracji protokołu SAML.
+
+4. Korzystając z konta testowego, spróbuj otworzyć aplikację z zewnętrznym **adresem URL** , aby sprawdzić, czy serwer proxy aplikacji został prawidłowo skonfigurowany. Jeśli występują problemy, zobacz [Rozwiązywanie problemów z serwerem proxy aplikacji i komunikatów o błędach](application-proxy-troubleshoot.md).
+
+## <a name="update-the-saml-configuration"></a>Aktualizowanie konfiguracji protokołu SAML
+
+1. Gdy aplikacja jest nadal otwarta w Azure Portal, wybierz pozycję **Logowanie**jednokrotne. 
+
+2. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** przejdź do nagłówka **Podstawowa konfiguracja SAML** i wybierz jego ikonę **edycji** (ołówek). **Zewnętrzny adres URL** skonfigurowany w serwerze proxy aplikacji automatycznie wypełnia pola **Identyfikator**, **adres URL odpowiedzi**oraz **adres URL wylogowywania** . Nie edytuj tych adresów URL, ponieważ są one wymagane do poprawnego działania serwera proxy aplikacji.
+
+3. Edytuj **adres URL odpowiedzi** skonfigurowany wcześniej, tak aby jego domena była osiągalna przez serwer proxy aplikacji. Na przykład jeśli **zewnętrzny adres URL** to `https://contosotravel-f128.msappproxy.net` i `https://contosotravel.com/acs`oryginalny **adres URL odpowiedzi** , należy zaktualizować oryginalny **adres URL** `https://contosotravel-f128.msappproxy.net/acs`odpowiedzi. 
+
+    ![Wprowadź podstawowe dane konfiguracyjne SAML](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
+
+
+4. Zaznacz pole wyboru obok zaktualizowanego **adresu URL odpowiedzi** , aby oznaczyć go jako domyślny.
+
+   * Jeśli wymagany **adres URL odpowiedzi** jest już wymieniony, Oznacz ten **adres URL odpowiedzi** jako domyślny i Usuń wcześniej skonfigurowany **adres URL odpowiedzi**.
+
+   * W przypadku przepływu zainicjowanego przez program SP upewnij się, że aplikacja zaplecza określa prawidłowy **adres URL odpowiedzi** lub adres URL usługi konsumenckej potwierdzenia do otrzymania tokenu uwierzytelniania.
 
     > [!NOTE]
-    > Jeśli aplikacja wewnętrznej bazy danych oczekuje **adres URL odpowiedzi** jako wewnętrzny adres URL, należy użyć [domen niestandardowych](application-proxy-configure-custom-domain.md) dopasowania wewnętrzne i zewnętrzne adresy URL lub zainstaluj Moje aplikacje bezpiecznego logowania rozszerzenie na urządzeniach użytkowników. To rozszerzenie automatycznie nastąpi przekierowanie do odpowiedniej usługi serwera Proxy aplikacji. Aby zainstalować rozszerzenie, zobacz [Moje aplikacje bezpiecznego logowania rozszerzenia](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension).
-
+    > Jeśli w aplikacji zaplecza **adres URL odpowiedzi** będzie wewnętrznym adresem URL, należy użyć [domen niestandardowych](application-proxy-configure-custom-domain.md) w celu uzyskania zgodności z wewnętrznymi i zewnętrznymi adresami URL lub zainstalować rozszerzenie moje aplikacje bezpieczne logowanie na urządzeniach użytkowników. To rozszerzenie zostanie automatycznie przekierowanie do odpowiedniej usługi serwera proxy aplikacji. Aby zainstalować rozszerzenie, zobacz [Moje aplikacje bezpieczne logowanie](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension).
+    
 ## <a name="test-your-app"></a>Testowanie aplikacji
 
 Po zakończeniu wszystkie te kroki aplikacji powinna być uruchomiona. Aby przetestować aplikację:
 
-1. Otwórz przeglądarkę i przejdź do zewnętrznego adresu URL, który został utworzony podczas publikowania aplikacji. 
-1. Zaloguj się przy użyciu konta testowego, który jest przypisany do aplikacji. Można załadować aplikacji i logowania jednokrotnego do aplikacji.
+1. Otwórz przeglądarkę i przejdź do **zewnętrznego adresu URL** , który został utworzony podczas publikowania aplikacji. 
+1. Zaloguj się przy użyciu konta testowego, który jest przypisany do aplikacji. Powinno być możliwe załadowanie aplikacji i logowanie jednokrotne do aplikacji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [W jaki sposób serwer Proxy aplikacji usługi Azure AD zapewnia logowanie jednokrotne](application-proxy-single-sign-on.md)
 - [Rozwiązywanie problemów z serwera Proxy aplikacji](application-proxy-troubleshoot.md)

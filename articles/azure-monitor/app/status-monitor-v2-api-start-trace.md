@@ -1,6 +1,6 @@
 ---
-title: 'Dokumentacja interfejsu API w wersji 2 usługi Azure Monitor stanu: Rozpocznij śledzenie | Dokumentacja firmy Microsoft'
-description: Dokumentacja interfejsu API w wersji 2 Monitor stanu. Rozpocznij śledzenie. Zbieranie dzienników zdarzeń systemu Windows z Monitora stanu i zestawu SDK usługi Application Insights.
+title: 'Dokumentacja interfejsu API platformy Azure monitor stanu v2: Rozpocznij śledzenie | Microsoft Docs'
+description: Dokumentacja interfejsu API monitor stanu v2. Rozpocznij śledzenie. Zbierz dzienniki ETW z monitor stanu i Application Insights SDK.
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -12,74 +12,69 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: b6787134707273a76290adb723a9bc9012252ebd
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 3060a48e297082f5b70c8bd96030fe519f6e8b6f
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807054"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326304"
 ---
-# <a name="status-monitor-v2-api-start-applicationinsightsmonitoringtrace-v040-alpha"></a>Interfejs API w wersji 2 Monitora stanu: Start-ApplicationInsightsMonitoringTrace (v0.4.0-alpha)
+# <a name="status-monitor-v2-api-start-applicationinsightsmonitoringtrace"></a>Interfejs API monitor stanu v2: Start-ApplicationInsightsMonitoringTrace
 
-W tym artykule opisano polecenia cmdlet, które jest członkiem [modułu Az.ApplicationMonitor PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
-
-> [!IMPORTANT]
-> Monitor stanu w wersji 2 jest obecnie w publicznej wersji zapoznawczej.
-> Tej wersji zapoznawczej jest oferowana bez umowy dotyczącej poziomu usług, i firma Microsoft nie jest to zalecane w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, a niektóre mogą mieć ograniczone możliwości.
-> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+W tym artykule opisano polecenie cmdlet, które jest członkiem [modułu programu PowerShell AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
 ## <a name="description"></a>Opis
 
-Gromadzi informacje o [zdarzenia ETW](https://docs.microsoft.com/windows/desktop/etw/event-tracing-portal) z uaktualniać dołączanie środowiska uruchomieniowego. To polecenie cmdlet jest alternatywą do uruchamiania [narzędzia PerfView](https://github.com/microsoft/perfview).
+Zbiera [zdarzenia ETW](https://docs.microsoft.com/windows/desktop/etw/event-tracing-portal) z środowiska wykonawczego dołączania bezkodowego. To polecenie cmdlet jest alternatywą dla uruchamiania [Narzędzia PerfView](https://github.com/microsoft/perfview).
 
-Zebrane zdarzenia będą drukowane do konsoli w w czasie rzeczywistym i jest zapisywana w pliku ETL. Plik ETL danych wyjściowych może zostać otwarty przez [narzędzia PerfView](https://github.com/microsoft/perfview) celu bliższego zbadania problemu.
+Zebrane zdarzenia będą drukowane w konsoli programu w czasie rzeczywistym i zapisane w pliku ETL. Wyjściowy plik ETL może być otwarty przez [Narzędzia PerfView](https://github.com/microsoft/perfview) do dalszej analizy.
 
-To polecenie cmdlet zostanie uruchomiony, dopóki osiągnie limitu czasu (domyślnie 5 minut) lub ręcznie zatrzymana (`Ctrl + C`).
+To polecenie cmdlet zostanie uruchomione do momentu osiągnięcia limitu czasu trwania (domyślnie 5 minut) lub zostanie zatrzymane ręcznie (`Ctrl + C`).
 
 > [!IMPORTANT] 
 > To polecenie cmdlet wymaga sesji programu PowerShell z uprawnieniami administratora.
 
 ## <a name="examples"></a>Przykłady
 
-### <a name="how-to-collect-events"></a>Jak służąca do gromadzenia zdarzeń
+### <a name="how-to-collect-events"></a>Jak zbierać zdarzenia
 
-Będzie zazwyczaj poproś zbieranie zdarzeń do badania, dlaczego nie ma instrumentacji aplikacji.
+Zwykle będziemy zbierać zdarzenia w celu zbadania, Dlaczego aplikacja nie jest Instrumentacją.
 
-Bez kodu dołączanie środowiska uruchomieniowego emitować zdarzenia ETW, podczas uruchamiania usług IIS i podczas uruchamiania aplikacji.
+Środowisko uruchomieniowe dołączania bezkodowego będzie emitować zdarzenia ETW podczas uruchamiania usług IIS i uruchamiania aplikacji.
 
-Aby zebrać następujące zdarzenia:
-1. W konsoli polecenia z uprawnieniami administratora, wykonaj `iisreset /stop` wyłączenia usług IIS i wszystkie aplikacje sieci web.
-2. Wykonanie tego polecenia cmdlet
-3. W konsoli polecenia z uprawnieniami administratora, wykonaj `iisreset /start` do uruchamiania usług IIS.
+Aby zebrać te zdarzenia:
+1. W konsoli cmd z uprawnieniami administratora wykonaj `iisreset /stop` polecenie, aby wyłączyć usługi IIS i wszystkie aplikacje sieci Web.
+2. Wykonaj to polecenie cmdlet
+3. W konsoli cmd z uprawnieniami administratora uruchom polecenie, `iisreset /start` aby uruchomić usługi IIS.
 4. Spróbuj przejść do swojej aplikacji.
-5. Po zakończeniu ładowania aplikacji możesz ręcznie zatrzymać (`Ctrl + C`) lub poczekaj na wartość limitu czasu.
+5. Po zakończeniu ładowania aplikacji można ją zatrzymać ręcznie (`Ctrl + C`) lub poczekać na przekroczenie limitu czasu.
 
-### <a name="what-events-to-collect"></a>Jakie zdarzenia mają być zbierane
+### <a name="what-events-to-collect"></a>Jakie zdarzenia należy zebrać
 
-Podczas zbierania zdarzeń są trzy opcje:
-1. Użyj przełącznika `-CollectSdkEvents` służąca do gromadzenia zdarzeń emitowane przez zestaw SDK usługi Application Insights.
-2. Użyj przełącznika `-CollectRedfieldEvents` służąca do gromadzenia zdarzeń wyemitowane przez Monitor stanu i środowiska uruchomieniowego Redfield. Dzienniki te są pomocne podczas diagnozowania usług IIS i uruchomienia aplikacji.
-3. Aby zebrać oba typy zdarzeń, należy użyć oba przełączniki.
-4. Domyślnie, jeśli przełącznik nie jest określony, czy oba typy zdarzeń zostaną zebrane.
+Podczas zbierania zdarzeń są dostępne trzy opcje:
+1. Użyj przełącznika `-CollectSdkEvents` , aby zbierać zdarzenia emitowane z zestawu SDK Application Insights.
+2. Użyj przełącznika `-CollectRedfieldEvents` , aby zbierać zdarzenia emitowane przez Monitor stanu i środowisko uruchomieniowe Redfield. Te dzienniki są przydatne podczas diagnozowania usług IIS i uruchamiania aplikacji.
+3. Użyj obu przełączników do zbierania obu typów zdarzeń.
+4. Domyślnie, jeśli nie określono żadnego przełącznika, zostaną zebrane oba typy zdarzeń.
 
 
 ## <a name="parameters"></a>Parametry
 
 ### <a name="-maxdurationinminutes"></a>-MaxDurationInMinutes
-**Opcjonalnie.** Użyj tego parametru, aby ustawić, jak długo ten skrypt należy zbierać zdarzenia. Wartość domyślna to 5 minut.
+**Opcjonalnie.** Użyj tego parametru, aby określić, jak długo ten skrypt ma zbierać zdarzenia. Wartość domyślna to 5 minut.
 
 ### <a name="-logdirectory"></a>-LogDirectory
-**Opcjonalnie.** Użyj tego przełącznika, aby ustawić katalogu wyjściowego pliku ETL. Domyślnie ten plik zostanie utworzony w katalogu modułów programu PowerShell. Pełna ścieżka zostanie wyświetlony podczas wykonywania skryptu.
+**Opcjonalnie.** Użyj tego przełącznika, aby ustawić katalog wyjściowy pliku ETL. Domyślnie ten plik zostanie utworzony w katalogu modułów programu PowerShell. Pełna ścieżka zostanie wyświetlona podczas wykonywania skryptu.
 
 
 ### <a name="-collectsdkevents"></a>-CollectSdkEvents
-**Opcjonalnie.** Ten przełącznik umożliwia zbieranie zdarzeń zestawu SDK usługi Application Insights.
+**Opcjonalnie.** Ten przełącznik umożliwia zbieranie zdarzeń Application Insights SDK.
 
 ### <a name="-collectredfieldevents"></a>-CollectRedfieldEvents
-**Opcjonalnie.** Aby zbierać zdarzenia z Monitora stanu i środowiska uruchomieniowego Redfield, należy użyć tego przełącznika.
+**Opcjonalnie.** Ten przełącznik służy do zbierania zdarzeń z monitor stanu i środowiska uruchomieniowego Redfield.
 
 ### <a name="-verbose"></a>-Verbose
-**Typowy parametr.** W danych wyjściowych szczegółowych dzienników, należy użyć tego przełącznika.
+**Wspólny parametr.** Ten przełącznik umożliwia wyprowadzanie szczegółowych dzienników.
 
 
 
@@ -118,15 +113,15 @@ Timeout Reached. Stopping...
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dodatkowe procedury rozwiązywania problemów:
+Dodatkowe Rozwiązywanie problemów:
 
-- Przejrzyj dodatkowe kroki rozwiązywania problemów w tym miejscu: https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-troubleshoot
-- Przegląd [dokumentacja interfejsu API](status-monitor-v2-overview.md#powershell-api-reference) Aby dowiedzieć się więcej na temat parametrów, które mogły zostać pominięte.
-- Jeśli potrzebujesz dodatkowej pomocy, możesz skontaktować się nam na [GitHub](https://github.com/Microsoft/ApplicationInsights-Home/issues).
+- Zapoznaj się z dodatkowymi krokami rozwiązywania problemów: https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-troubleshoot
+- Przejrzyj [odwołanie do interfejsu API](status-monitor-v2-overview.md#powershell-api-reference) , aby dowiedzieć się więcej na temat parametrów, które mogły zostać pominięte.
+- Jeśli potrzebujesz dodatkowej pomocy, możesz skontaktować się z nami w serwisie [GitHub](https://github.com/Microsoft/ApplicationInsights-Home/issues).
 
 
 
- Wykonuj więcej zadań dzięki v2 Monitora stanu:
- - Użyj zapoznaj się z przewodnikiem [Rozwiązywanie problemów z](status-monitor-v2-troubleshoot.md) Monitora stanu w wersji 2.
- - [Pobierz konfigurację](status-monitor-v2-api-get-config.md) aby upewnić się, że Twoje ustawienia zostały prawidłowo zarejestrowane.
- - [Pobierz stan](status-monitor-v2-api-get-status.md) do inspekcji, monitorowania.
+ Więcej informacji o monitor stanu v2:
+ - Skorzystaj z naszego przewodnika, aby [rozwiązywać problemy z](status-monitor-v2-troubleshoot.md) Monitor stanu v2.
+ - [Pobierz konfigurację](status-monitor-v2-api-get-config.md) , aby upewnić się, że Twoje ustawienia zostały poprawnie zarejestrowane.
+ - [Pobierz stan,](status-monitor-v2-api-get-status.md) aby sprawdzić monitorowanie.

@@ -4,7 +4,7 @@ description: Przykład skryptu interfejsu wiersza polecenia platformy Azure — 
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 ms.assetid: ''
 ms.service: batch
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: lahugh
-ms.openlocfilehash: 4ddcc2541bd31c887c17e549209270c60d735351
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a5e81393014dd70ae83f66e2a1d41f4de3c14205
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66127369"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321850"
 ---
 # <a name="cli-example-run-a-job-and-tasks-with-azure-batch"></a>Przykład użycia interfejsu wiersza polecenia: Uruchamianie zadania i zadań podrzędnych za pomocą usługi Azure Batch
 
@@ -58,6 +58,6 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [az batch task show](https://docs.microsoft.com/cli/azure/batch/task#az-batch-task-show) | Pobiera szczegóły zadania podrzędnego z określonego zadania usługi Batch.  |
 | [az group delete](/cli/azure/group#az-group-delete) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](/cli/azure).

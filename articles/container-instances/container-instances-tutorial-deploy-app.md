@@ -3,17 +3,18 @@ title: 'Samouczek: wdrażanie aplikacji kontenerowej w usłudze Azure Container 
 description: Samouczek usługi Azure Container Instances, część 3 z 3 — wdrażanie aplikacji kontenerowej w usłudze Azure Container Instances
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 210254a4404a5280e326bf40057331a784ff6148
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e14a3ba50d75161afa3325b3b7bcbfe96ea24cc3
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60684199"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325629"
 ---
 # <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Samouczek: Wdrażanie aplikacji kontenerowej w usłudze Azure Container Instances
 
@@ -46,7 +47,7 @@ az acr show --name <acrName> --query loginServer
 
 ### <a name="deploy-container"></a>Wdrażanie kontenera
 
-Teraz użyj polecenia [az container create][az-container-create], aby wdrożyć kontener. Zastąp element `<acrLoginServer>` wartością uzyskaną przy użyciu poprzedniego polecenia. Zastąp elementy `<service-principal-ID>` i `<service-principal-password>` identyfikatorem jednostki usługi i hasłem jednostki usługi, które umożliwiają dostęp do rejestru. Zastąp element `<aciDnsLabel>` odpowiednią nazwą DNS.
+Teraz użyj polecenia [AZ Container Create][az-container-create] , aby wdrożyć kontener. Zastąp element `<acrLoginServer>` wartością uzyskaną przy użyciu poprzedniego polecenia. Zastąp elementy `<service-principal-ID>` i `<service-principal-password>` identyfikatorem jednostki usługi i hasłem jednostki usługi, które umożliwiają dostęp do rejestru. Zastąp element `<aciDnsLabel>` odpowiednią nazwą DNS.
 
 ```azurecli
 az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-login-server <acrLoginServer> --registry-username <service-principal-ID> --registry-password <service-principal-password> --dns-name-label <aciDnsLabel> --ports 80
@@ -56,23 +57,23 @@ W ciągu kilku sekund powinna pojawić się początkowa odpowiedź z platformy A
 
 ### <a name="verify-deployment-progress"></a>Sprawdzanie postępu wdrażania
 
-Aby wyświetlić stan wdrożenia, użyj polecenia [az container show][az-container-show]:
+Aby wyświetlić stan wdrożenia, użyj [AZ Container show][az-container-show]:
 
 ```azurecli
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query instanceView.state
 ```
 
-Powtarzaj polecenie [az container show][az-container-show], aż stan zmieni się z *Oczekujące* na *Uruchomiono*. Powinno to potrwać krócej niż minutę. Jeśli kontener ma stan *Uruchomiono*, przejdź do następnego kroku.
+Powtarzaj polecenie [AZ Container show][az-container-show] , aż stan zmieni się z *oczekujące* na *uruchomione*, co powinno potrwać od minuty. Jeśli kontener ma stan *Uruchomiono*, przejdź do następnego kroku.
 
 ## <a name="view-the-application-and-container-logs"></a>Wyświetlanie dzienników aplikacji i kontenerów
 
-Po pomyślnym wdrożeniu wyświetl w pełni kwalifikowaną nazwę domeny (FQDN) kontenera przy użyciu polecenia [az container show][az-container-show]:
+Po pomyślnym wdrożeniu Wyświetl w pełni kwalifikowaną nazwę domeny (FQDN) kontenera za pomocą polecenia [AZ Container show][az-container-show] :
 
 ```bash
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 ```
 
-Na przykład:
+Przykład:
 ```console
 $ az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 "aci-demo.eastus.azurecontainer.io"
@@ -99,7 +100,7 @@ listening on port 80
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli nie potrzebujesz już zasobów utworzonych w tej serii samouczków, możesz wykonać polecenie [az group delete][az-group-delete], aby usunąć grupę zasobów i wszystkie należące do niej zasoby. To polecenie usuwa utworzony rejestr kontenerów, a także uruchomiony kontener i wszystkie powiązane zasoby.
+Jeśli nie potrzebujesz już żadnych zasobów utworzonych w tej serii samouczków, możesz uruchomić polecenie [AZ Group Delete][az-group-delete] , aby usunąć grupę zasobów i wszystkie zawarte w niej zasoby. To polecenie usuwa utworzony rejestr kontenerów, a także uruchomiony kontener i wszystkie powiązane zasoby.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
