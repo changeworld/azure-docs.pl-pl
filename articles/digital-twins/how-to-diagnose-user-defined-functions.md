@@ -1,51 +1,51 @@
 ---
-title: Jak można debugować funkcje zdefiniowane przez użytkownika w reprezentacji urządzeń cyfrowych platformy Azure | Dokumentacja firmy Microsoft
-description: Wytyczne dotyczące debugowania funkcji UDF w reprezentacji urządzeń cyfrowych platformy Azure.
+title: Jak debugować UDF w usłudze Azure Digital bliźniaczych reprezentacji | Microsoft Docs
+description: Wskazówki dotyczące debugowania UDF w usłudze Azure Digital bliźniaczych reprezentacji.
 author: stefanmsft
 manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 06/05/2019
-ms.author: stefanmsft
+ms.author: stegaw
 ms.custom: seodec18
-ms.openlocfilehash: 4d772b8cad64f138d93d91e87f6e6364c5a5d602
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 577467a6322b7f6d3cd7f199d80963f2f1a98ed6
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808889"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849325"
 ---
-# <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Jak można debugować funkcje zdefiniowane przez użytkownika w reprezentacji urządzeń cyfrowych platformy Azure
+# <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Jak debugować funkcje zdefiniowane przez użytkownika w usłudze Azure Digital bliźniaczych reprezentacji
 
-Ten artykuł zawiera podsumowanie jak diagnozować i debugować funkcje zdefiniowane przez użytkownika w reprezentacji urządzeń cyfrowych platformy Azure. Następnie identyfikuje niektóre z najbardziej typowych scenariuszy podczas debugowania ich.
+W tym artykule opisano sposób diagnozowania i debugowania funkcji zdefiniowanych przez użytkownika w usłudze Azure Digital bliźniaczych reprezentacji. Następnie identyfikuje kilka typowych scenariuszy znalezionych podczas debugowania.
 
 >[!TIP]
-> Odczyt [jak skonfigurować monitorowanie i rejestrowanie](./how-to-configure-monitoring.md) Aby dowiedzieć się więcej o konfigurowaniu narzędzia debugowania w cyfrowych bliźniaczych reprezentacji platformy Azure przy użyciu dzienników aktywności, dzienniki diagnostyczne i usługi Azure Monitor.
+> Przeczytaj [temat jak skonfigurować monitorowanie i rejestrowanie](./how-to-configure-monitoring.md) , aby dowiedzieć się więcej o konfigurowaniu narzędzi do debugowania w usłudze Azure Digital bliźniaczych reprezentacji przy użyciu dzienników aktywności, dzienników diagnostycznych i Azure monitor.
 
-## <a name="debug-issues"></a>Debugowanie błędów
+## <a name="debug-issues"></a>Problemy z debugowaniem
 
-Wiedza, jak diagnozować problemy w reprezentacji urządzeń cyfrowych platformy Azure pozwala na efektywne analizowania problemów ustalenie przyczyn tych problemów i zapewnia odpowiednie rozwiązania dla nich.
+Wiedząc, jak zdiagnozować problemy w usłudze Azure Digital bliźniaczych reprezentacji, można skutecznie analizować problemy, identyfikować przyczyny problemów i udostępniać odpowiednie rozwiązania.
 
-Szereg rejestrowania, Analityki i narzędzi diagnostycznych znajdują się w tym celu.
+Do tego celu są dostępne różne narzędzia do rejestrowania, analizy i diagnostyki.
 
 ### <a name="enable-logging-for-your-instance"></a>Włącz rejestrowanie dla swojego wystąpienia
 
-Twins cyfrowych platformy Azure obsługuje niezawodne rejestrowanie, monitorowanie i analizy. Rozwiązania deweloperzy mogą używać usługi Azure Monitor dzienników, dzienniki diagnostyczne, dzienniki aktywności i innych usług, do obsługi złożonych potrzeb monitorowania aplikacji IoT. Opcje rejestrowania można łączyć z zapytania lub wyświetla rekordy w kilku usługach oraz zapewniają szczegółowe rejestrowanie pokrycie dla wielu usług.
+Usługa Azure Digital bliźniaczych reprezentacji obsługuje niezawodne rejestrowanie, monitorowanie i analizę. Deweloperzy rozwiązań mogą korzystać z dzienników Azure Monitor, dzienników diagnostycznych, dzienników aktywności i innych usług w celu obsługi złożonych potrzeb związanych z monitorowaniem aplikacji IoT. Opcje rejestrowania można łączyć z kwerendą lub wyświetlać rekordy w kilku usługach i zapewnić szczegółowe pokrycie rejestrowania w wielu usługach.
 
-* Konfiguracja rejestrowania specyficzne dla bliźniaczych reprezentacji cyfrowych platformy Azure, można znaleźć [jak skonfigurować monitorowanie i rejestrowanie](./how-to-configure-monitoring.md).
-* Zapoznaj się z [usługi Azure Monitor](../azure-monitor/overview.md) Przegląd informacje dotyczące ustawień zaawansowanych dziennika, włączana za pomocą usługi Azure Monitor.
-* Zapoznaj się z artykułem [zbieranie i używanie dane dzienników z zasobów platformy Azure](../azure-monitor/platform/diagnostic-logs-overview.md) dotyczących konfigurowania ustawienia dziennika diagnostycznego Twins cyfrowych platformy Azure za pośrednictwem witryny Azure Portal, interfejsu wiersza polecenia platformy Azure lub programu PowerShell.
+* Aby uzyskać konfigurację rejestrowania specyficzną dla usługi Azure Digital bliźniaczych reprezentacji, przeczytaj artykuł [jak skonfigurować monitorowanie i rejestrowanie](./how-to-configure-monitoring.md).
+* Zapoznaj się z omówieniem [Azure monitor](../azure-monitor/overview.md) , aby dowiedzieć się więcej o zaawansowanych ustawieniach rejestrowania włączonych za pomocą Azure monitor.
+* Zapoznaj się z artykułem [zbieranie danych dzienników z zasobów platformy Azure i korzystanie z nich](../azure-monitor/platform/diagnostic-logs-overview.md) w celu konfigurowania ustawień dziennika diagnostycznego w usłudze Azure Digital bliźniaczych reprezentacji za pomocą witryny Azure Portal, interfejsu wiersza polecenia platformy Azure lub programu PowerShell.
 
-Po skonfigurowaniu będzie mogła wybierz wszystkie kategorie dzienników, metryk i użycie obszary robocze usługi zaawansowane monitorowanie usługi Azure log analytics do wspierania wysiłków debugowania.
+Po skonfigurowaniu można wybrać wszystkie kategorie i metryki dzienników oraz zaawansowane Azure Monitor obszary robocze usługi log Analytics do obsługi działań związanych z debugowaniem.
 
-### <a name="trace-sensor-telemetry"></a>Telemetria śledzenia usługi czujnika
+### <a name="trace-sensor-telemetry"></a>Dane telemetryczne czujnika śledzenia
 
-Śledź dane telemetryczne z czujników, sprawdź, czy ustawienia diagnostyczne są włączone dla swojego wystąpienia Twins cyfrowych platformy Azure. Następnie upewnij się, czy wszystkie żądane kategorie dziennika są zaznaczone. Ponadto upewnij się, że wybrane dzienniki są wysyłane do usługi Azure Monitor dzienniki.
+Aby śledzić dane telemetryczne czujnika, sprawdź, czy ustawienia diagnostyczne są włączone dla Twojego wystąpienia usługi Azure Digital bliźniaczych reprezentacji. Następnie upewnij się, że wybrano wszystkie żądane kategorie dzienników. Na koniec upewnij się, że żądane dzienniki są wysyłane do dzienników Azure Monitor.
 
-Aby dopasować komunikaty telemetryczne czujnik, jego odpowiednich dzienniki, można określić identyfikator korelacji na dane zdarzenia są wysyłane. Aby to zrobić, należy ustawić `x-ms-client-request-id` właściwość identyfikatora GUID.
+Aby dopasować komunikat telemetrii czujnika do odpowiednich dzienników, można określić identyfikator korelacji dla wysyłanych danych zdarzenia. Aby to zrobić, należy ustawić `x-ms-client-request-id` właściwość na identyfikator GUID.
 
-Po wysłaniu danych telemetrycznych, Otwórz program log analytics, aby zapytanie o dzienniki przy użyciu zestawu identyfikator korelacji:
+Po wysłaniu telemetrii Otwórz usługę log Analytics, aby wykonać zapytanie dotyczące dzienników przy użyciu zestawu identyfikator korelacji:
 
 ```Kusto
 AzureDiagnostics
@@ -54,28 +54,28 @@ AzureDiagnostics
 
 | Wartość zapytania | Zamień na |
 | --- | --- |
-| YOUR_CORRELATION_IDENTIFIER | Identyfikator korelacji, który został określony na dane zdarzeń |
+| YOUR_CORRELATION_IDENTIFIER | Identyfikator korelacji określony dla danych zdarzenia |
 
-Włączenie rejestrowania dla funkcji zdefiniowanych przez użytkownika tych dzienników są wyświetlane w wystąpieniu log analytics z kategorią `UserDefinedFunction`. Aby je pobrać, wprowadź następujące warunki zapytania w usłudze log analytics:
+Jeśli włączysz rejestrowanie dla funkcji zdefiniowanej przez użytkownika, te dzienniki będą widoczne w wystąpieniu usługi log Analytics z kategorią `UserDefinedFunction`. Aby je pobrać, wprowadź następujący warunek zapytania w usłudze log Analytics:
 
 ```Kusto
 AzureDiagnostics
 | where Category == 'UserDefinedFunction'
 ```
 
-Aby uzyskać więcej informacji na temat kwerend operacji odczytu [wprowadzenie do zapytań](../azure-monitor/log-query/get-started-queries.md).
+Aby uzyskać więcej informacji na temat zaawansowanych operacji związanych z zapytaniami, przeczytaj artykuł [wprowadzenie do zapytań](../azure-monitor/log-query/get-started-queries.md).
 
-## <a name="identify-common-issues"></a>Zidentyfikować typowe problemy
+## <a name="identify-common-issues"></a>Identyfikowanie typowych problemów
 
-Diagnozowanie i identyfikuje typowe problemy są ważne podczas rozwiązywania problemów z rozwiązania. Kilka problemów najczęściej występujących podczas tworzenia funkcji zdefiniowanych przez użytkownika są podsumowane w poniższe podsekcje.
+Diagnozowanie i identyfikowanie typowych problemów jest ważne podczas rozwiązywania problemów z rozwiązaniem. Niektóre często występujące problemy podczas tworzenia funkcji zdefiniowanych przez użytkownika są podsumowywane w poniższych podsekcjach.
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-### <a name="check-if-a-role-assignment-was-created"></a>Sprawdź, czy przydział roli został utworzony
+### <a name="check-if-a-role-assignment-was-created"></a>Sprawdź, czy utworzono przypisanie roli
 
-Bez przypisania roli, utworzone w ramach interfejsu API zarządzania funkcja zdefiniowana przez użytkownika nie ma dostępu do wykonywać żadnych akcji, takie jak wysyłanie powiadomień, pobierania metadanych, i ustawienie obliczonych wartości w ramach topologii.
+Bez przypisania roli utworzonego w ramach interfejsu API zarządzania funkcja zdefiniowana przez użytkownika nie ma dostępu do wykonywania żadnych akcji, takich jak wysyłanie powiadomień, Pobieranie metadanych i ustawianie wartości obliczanych w topologii.
 
-Sprawdź, czy przydział roli istnieje funkcji zdefiniowanych przez użytkownika za pomocą usługi API Management:
+Sprawdź, czy przypisanie roli istnieje dla funkcji zdefiniowanej przez użytkownika za pomocą interfejsu API zarządzania:
 
 ```plaintext
 GET YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=Down&objectId=YOUR_USER_DEFINED_FUNCTION_ID
@@ -83,13 +83,13 @@ GET YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=Down&objectId=YOUR_U
 
 | Wartość parametru | Zamień na |
 | --- | --- |
-| YOUR_USER_DEFINED_FUNCTION_ID | Identyfikator funkcji zdefiniowanej przez użytkownika do pobrania przypisań ról|
+| YOUR_USER_DEFINED_FUNCTION_ID | Identyfikator funkcji zdefiniowanej przez użytkownika do pobierania przypisań ról dla|
 
-Dowiedz się, [jak można utworzyć przypisania roli, funkcji zdefiniowanych przez użytkownika](./how-to-user-defined-functions.md), jeśli istnieje nie przypisań ról.
+Dowiedz się, [jak utworzyć przypisanie roli dla funkcji zdefiniowanej przez użytkownika](./how-to-user-defined-functions.md), jeśli nie istnieją żadne przypisania ról.
 
-### <a name="check-if-the-matcher-works-for-a-sensors-telemetry"></a>Sprawdź, czy dopasowywania działa dla czujnika telemetrii
+### <a name="check-if-the-matcher-works-for-a-sensors-telemetry"></a>Sprawdź, czy odpowiednika działa dla danych telemetrycznych czujnika
 
-Przy użyciu następującego wywołania względem interfejsu API zarządzania wystąpieniami danego Twins cyfrowych platformy Azure możesz określić, czy dany dopasowywania ma zastosowanie do danego czujnika.
+Za pomocą następującego wywołania interfejsu API zarządzania wystąpieniami Digital bliźniaczych reprezentacji platformy Azure można określić, czy dany odpowiednik ma zastosowanie do danego czujnika.
 
 ```plaintext
 GET YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_IDENTIFIER/evaluate/YOUR_SENSOR_IDENTIFIER?enableLogging=true
@@ -97,8 +97,8 @@ GET YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_IDENTIFIER/evaluate/YOUR_SENSO
 
 | Parametr | Zamień na |
 | --- | --- |
-| *YOUR_MATCHER_IDENTIFIER* | Identyfikator dopasowywania, którą chcesz ocenić |
-| *YOUR_SENSOR_IDENTIFIER* | Identyfikator czujnik, który chcesz ocenić |
+| *YOUR_MATCHER_IDENTIFIER* | Identyfikator dopasowań, który chcesz oszacować |
+| *YOUR_SENSOR_IDENTIFIER* | Identyfikator czujnika, który chcesz oszacować |
 
 Odpowiedź:
 
@@ -111,9 +111,9 @@ Odpowiedź:
 }
 ```
 
-### <a name="check-what-a-sensor-triggers"></a>Sprawdź, co wyzwala czujnika
+### <a name="check-what-a-sensor-triggers"></a>Sprawdź, jakie są wyzwalacze czujnika
 
-Przy użyciu następującego wywołania względem cyfrowego Twins zarządzania interfejsów API usługi Azure możesz określić identyfikatory zdefiniowane przez użytkownika funkcji wyzwalanej przez dany czujnik przychodzących danych telemetrycznych:
+Korzystając z następującego wywołania interfejsów API usługi Azure Digital bliźniaczych reprezentacji Management, można określić identyfikatory funkcji zdefiniowanych przez użytkownika wyzwalane przez dane telemetrii przychodzącej czujnika:
 
 ```plaintext
 GET YOUR_MANAGEMENT_API_URL/sensors/YOUR_SENSOR_IDENTIFIER/matchers?includes=UserDefinedFunctions
@@ -152,11 +152,11 @@ Odpowiedź:
 ]
 ```
 
-### <a name="issue-with-receiving-notifications"></a>Problem z otrzymywania powiadomień
+### <a name="issue-with-receiving-notifications"></a>Problem z otrzymywaniem powiadomień
 
-Jeśli nie otrzymujesz powiadomień wyzwalane funkcji zdefiniowanej przez użytkownika, upewnij się, że Twój parametr typu obiektu topologia jest zgodny z typem identyfikatora, który jest używany.
+Gdy nie otrzymujesz powiadomień z wywołanej funkcji zdefiniowanej przez użytkownika, upewnij się, że parametr typu obiektu topologii jest zgodny z typem używanego identyfikatora.
 
-**Niepoprawne** przykładu:
+**Nieprawidłowe** Przyklad
 
 ```JavaScript
 var customNotification = {
@@ -166,9 +166,9 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Space", JSON.stringify(customNotification));
 ```
 
-W tym scenariuszu pojawia się ponieważ używanych identyfikator odwołuje się do czujnika, gdy określony typ obiektu topologii, jest `Space`.
+Ten scenariusz występuje, ponieważ użyty identyfikator odwołuje się do czujnika, a określony typ obiektu topologii `Space`to.
 
-**Poprawne** przykładu:
+**Poprawne** Przyklad
 
 ```JavaScript
 var customNotification = {
@@ -178,7 +178,7 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Sensor", JSON.stringify(customNotification));
 ```
 
-Najprostszym sposobem, aby nie uruchamiać ten problem występuje, jest użycie `Notify` metody na obiekt metadanych.
+Najprostszym sposobem nieuruchomienia tego problemu jest użycie `Notify` metody w obiekcie metadanych.
 
 Przykład:
 
@@ -195,18 +195,18 @@ function process(telemetry, executionContext) {
 }
 ```
 
-## <a name="common-diagnostic-exceptions"></a>Typowe wyjątki dotyczące diagnostyki
+## <a name="common-diagnostic-exceptions"></a>Typowe wyjątki diagnostyki
 
-Po włączeniu ustawienia diagnostyczne, mogą wystąpić następujące typowe wyjątki dotyczące:
+W przypadku włączenia ustawień diagnostycznych mogą wystąpić następujące typowe wyjątki:
 
-1. **Ograniczanie**: Jeśli funkcji zdefiniowanych przez użytkownika przekracza szybkość wykonywania limity opisane w [limity](./concepts-service-limits.md) artykułu, zostanie ograniczona. Do momentu wygaśnięcia limity ograniczania, żadne dalsze operacje są wykonywane pomyślnie.
+1. **Ograniczanie przepustowości**: Jeśli funkcja zdefiniowana przez użytkownika przekracza limity szybkości wykonywania opisane w artykule [limity usług](./concepts-service-limits.md) , zostanie ono ograniczone. Kolejne operacje nie są wykonywane pomyślnie do momentu wygaśnięcia limitów ograniczania.
 
-1. **Nie można odnaleźć danych**: Jeśli funkcji zdefiniowanych przez użytkownika próbuje uzyskać dostęp metadanych, który nie istnieje, operacja zakończy się niepowodzeniem.
+1. **Nie znaleziono danych**: Jeśli zdefiniowana przez użytkownika funkcja próbuje uzyskać dostęp do nieistniejących metadanych, operacja kończy się niepowodzeniem.
 
-1. **Nieautoryzowane**: Jeśli nie ma zdefiniowanej przez użytkownika funkcji przypisania roli ustawiona lub nie ma wystarczające uprawnienia dostępu do niektórych metadanych w topologii, kończy się niepowodzeniem.
+1. **Nie autoryzowane**: Jeśli zdefiniowana przez użytkownika funkcja nie ma ustawionego przypisania roli lub nie ma wystarczających uprawnień dostępu do określonych metadanych z topologii, operacja kończy się niepowodzeniem.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się, jak włączyć [monitorowania i dzienniki](./how-to-configure-monitoring.md) w reprezentacji urządzeń cyfrowych platformy Azure.
+- Dowiedz się, jak włączyć [monitorowanie i dzienniki](./how-to-configure-monitoring.md) w usłudze Azure Digital bliźniaczych reprezentacji.
 
-- Odczyt [dziennik aktywności — omówienie platformy Azure](../azure-monitor/platform/activity-logs-overview.md) artykułu, aby uzyskać więcej opcji platformy Azure rejestrowania.
+- Zapoznaj się z artykułem [Omówienie dziennika aktywności platformy Azure](../azure-monitor/platform/activity-logs-overview.md) , aby uzyskać więcej opcji rejestrowania na platformie Azure.

@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Dowiedz się, jak utworzyć za pomocą interfejsu API REST usługi Azure Load Balancer.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -12,17 +12,17 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: load-balancer
 ms.date: 06/06/2018
-ms.author: kumud
-ms.openlocfilehash: 159fe9d6a891858d8d2cc2315e9544b79eb44cff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: ae8fb4494d27d0c145963c9b32757bdb802e0cc7
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60884983"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275557"
 ---
 # <a name="create-an-azure-basic-load-balancer-using-rest-api"></a>Tworzenie usługi Azure podstawowego modułu równoważenia obciążenia przy użyciu interfejsu API REST
 
-Usługi Azure Load Balancer dystrybuuje nowych przepływów ruchu przychodzącego, przychodzące do frontonu modułu równoważenia obciążenia do wystąpień puli zaplecza, zgodnie z zasadami i sondy kondycji. Moduł równoważenia obciążenia jest dostępny w dwóch jednostek SKU: Podstawowa i Standardowa. Aby zrozumieć różnicę między dwoma wersjami jednostki SKU [porównania jednostki SKU modułu równoważenia obciążenia](load-balancer-overview.md#skus).
+Usługi Azure Load Balancer dystrybuuje nowych przepływów ruchu przychodzącego, przychodzące do frontonu modułu równoważenia obciążenia do wystąpień puli zaplecza, zgodnie z zasadami i sondy kondycji. Load Balancer jest dostępny w dwóch jednostkach SKU: Podstawowa i Standardowa. Aby zrozumieć różnicę między dwoma wersjami jednostki SKU [porównania jednostki SKU modułu równoważenia obciążenia](load-balancer-overview.md#skus).
  
 Niniejszy instruktaż pokazuje, jak utworzyć Azure podstawowego modułu równoważenia obciążenia przy użyciu [interfejsu API REST usługi Azure](/rest/api/azure/) aby ułatwić obciążenia równoważenia przychodzącego żądania na wielu maszynach wirtualnych w ramach sieci wirtualnej platformy Azure. Pełna dokumentacja i dodatkowe przykłady są dostępne w [odwołania REST modułu równoważenia obciążenia Azure](/rest/api/load-balancer/).
  
@@ -51,7 +51,7 @@ Wymagany jest tylko parametr `location`. Jeżeli nie zdefiniujesz *jednostki SKU
 | location | ciąg | Lokalizacja zasobu. Pobierz bieżącą listę lokalizacji przy użyciu [listy lokalizacji](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations) operacji. |
 
 
-## <a name="example-create-and-update-a-basic-load-balancer"></a>Przykład: Tworzenie i aktualizowanie podstawowego modułu równoważenia obciążenia
+## <a name="example-create-and-update-a-basic-load-balancer"></a>Przykład: Tworzenie i aktualizowanie podstawowego Load Balancer
 
 W tym przykładzie należy najpierw utworzyć podstawowy moduł równoważenia obciążenia wraz z jej zasobami. Następnie należy skonfigurować zasobów modułu równoważenia obciążenia, które zawierają konfigurację adresu IP frontonu, puli adresów zaplecza, reguły równoważenia obciążenia, sondy kondycji oraz regułę ruchu przychodzącego translatora adresów Sieciowych.
 

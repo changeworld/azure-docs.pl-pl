@@ -1,6 +1,6 @@
 ---
-title: Artykuł na temat rozwiązywania typowych problemów/problemów związanych z użyciem usługi Azure Database Migration Service znane | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o tym, jak rozwiązywać typowe znanych problemów/błędów związanych z użyciem usługi Azure Database Migration Service.
+title: Artykuł dotyczący znanych problemów dotyczących rozwiązywania typowych problemów/błędów związanych z używaniem Azure Database Migration Service | Microsoft Docs
+description: Dowiedz się, jak rozwiązywać typowe znane problemy i błędy związane z używaniem Azure Database Migration Service.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -11,122 +11,122 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 06/18/2019
-ms.openlocfilehash: 1d639a8b1d5c7a5dd2b7bac7c5e020be7c8b1c50
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: e33f195ea821b34147c748e9c0aa64cb63b58fdc
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190958"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249980"
 ---
-# <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Rozwiązywanie typowych problemów z usługi Azure Database Migration Service, jak i błędy
+# <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Rozwiązywanie typowych problemów i błędów Azure Database Migration Service
 
-W tym artykule opisano niektóre typowe problemy i błędy, które użytkownicy usługi Azure Database Migration Service mogą pochodzić między. Artykuł zawiera również informacje dotyczące sposobu rozwiązania tych problemów i błędów.
+W tym artykule opisano niektóre typowe problemy i błędy, które mogą występować Azure Database Migration Service użytkownicy. Artykuł zawiera również informacje dotyczące sposobu rozwiązywania tych problemów i błędów.
 
-## <a name="migration-activity-in-queued-state"></a>Działania migracji w stanie umieszczenia w kolejce
+## <a name="migration-activity-in-queued-state"></a>Działanie migracji w stanie w kolejce
 
-Po utworzeniu nowych działań w projekcie usługi Azure Database Migration Service działania pozostają w stanie umieszczenia w kolejce.
-
-| Przyczyna         | Rozwiązanie |
-| ------------- | ------------- |
-| Ten problem występuje, gdy wystąpienie usługi Azure Database Migration Service osiągnął maksymalną pojemność w zakresie bieżących zadań, które jednocześnie uruchomić. Wszelkie nowe działanie znajduje się w kolejce do momentu pojemność stanie się dostępny. | Sprawdź poprawność Data Migration Service, wystąpienie posiada uruchamiania działań w projektach. Możesz nadal tworzyć nowe działania, które automatycznie dodane do kolejki w celu wykonania. Tak szybko, jak wykonać jedną z istniejących uruchamiania działań, następne działanie w kolejce zacznie działać, a stan zmieni się na uruchomiona automatycznie. Nie trzeba podejmować żadnych dodatkowych działań, aby rozpocząć migrację działania umieszczonych w kolejce.<br><br> |
-
-## <a name="max-number-of-databases-selected-for-migration"></a>Maksymalna liczba baz danych wybrana do migracji
-
-Wystąpił następujący błąd podczas tworzenia działania dla projektu migracji bazy danych w przypadku przenoszenia bazy danych SQL Azure lub usługi Azure SQL Database wystąpienia zarządzanego:
-
-* **Błąd**: Błąd weryfikacji ustawień migracji","errorDetail":"więcej niż maksymalna liczba "4" obiekty "Bazy danych" została wybrana do migracji".
+W przypadku tworzenia nowych działań w projekcie Azure Database Migration Service działania pozostają w stanie w kolejce.
 
 | Przyczyna         | Rozwiązanie |
 | ------------- | ------------- |
-| Ten błąd wyświetlane, gdy wybrano więcej niż cztery bazy danych dla działania migracji. W chwili obecnej każde działanie migracji jest ograniczona do czterech baz danych. | Wybierz czterech lub mniejszej liczby baz danych na działanie migracji. Jeśli potrzebujesz więcej niż cztery równoległe Migrowanie baz danych, aprowizowanie inne wystąpienie usługi Azure Database Migration Service. Obecnie Każda subskrypcja obsługuje maksymalnie dwa wystąpienia usługi Azure Database Migration Service.<br><br> |
+| Ten problem występuje, gdy wystąpienie Azure Database Migration Service osiągnie maksymalną pojemność dla bieżących zadań, które jednocześnie są uruchamiane. Wszelkie nowe działania są umieszczane w kolejce do momentu udostępnienia pojemności. | Sprawdź, czy wystąpienie usługi migracji danych ma uruchomione działania między projektami. Można nadal tworzyć nowe działania, które zostaną automatycznie dodane do kolejki w celu wykonania. Gdy tylko wszystkie istniejące działania są zakończone, następne działanie w kolejce zacznie działać i stan zmieni się na uruchomiony automatycznie. Nie musisz podejmować żadnych dodatkowych czynności, aby rozpocząć migrację działania z kolejki.<br><br> |
+
+## <a name="max-number-of-databases-selected-for-migration"></a>Maksymalna liczba baz danych wybranych do migracji
+
+Wystąpił następujący błąd podczas tworzenia działania dla projektu migracji bazy danych na potrzeby przeniesienia do Azure SQL Database lub wystąpienia zarządzanego Azure SQL Database:
+
+* **Błąd**: Błąd walidacji ustawień migracji "," errorDetail ": dla migracji wybrano" więcej niż maksymalną liczbę obiektów "Databases" dla "Database". "
+
+| Przyczyna         | Rozwiązanie |
+| ------------- | ------------- |
+| Ten błąd jest wyświetlany, gdy wybrano więcej niż cztery bazy danych dla jednego działania migracji. W danej chwili każde działanie migracji jest ograniczone do czterech baz danych. | Wybierz cztery lub mniej baz danych na działanie migracji. Jeśli musisz migrować więcej niż cztery bazy danych równolegle, zainicjuj inne wystąpienie Azure Database Migration Service. Obecnie Każda subskrypcja obsługuje do dwóch wystąpień Azure Database Migration Service.<br><br> |
 
 ## <a name="errors-for-mysql-migration-to-azure-mysql-with-recovery-failures"></a>Błędy migracji MySQL do usługi Azure MySQL z błędami odzyskiwania
 
-Podczas migracji z MySQL do usługi Azure Database for MySQL za pomocą usługi Azure Database Migration Service, działania migracji nie powiedzie się z następującym błędem:
+W przypadku migrowania z programu MySQL do Azure Database for MySQL przy użyciu Azure Database Migration Service działanie migracji kończy się niepowodzeniem z powodu następującego błędu:
 
-* **Błąd**: Błąd migracji bazy danych — zadanie "TaskID" zostało wstrzymane z powodu błędów kolejnych odzyskiwania [n].
-
-| Przyczyna         | Rozwiązanie |
-| ------------- | ------------- |
-| Ten błąd może wystąpić, gdy użytkownik, wykonując migrację brakuje rolę ReplicationAdmin i/lub uprawnienia REPLICATION CLIENT, REPLIKACJA i SUPER (wersje starsze niż MySQL niż 5.6.6).<br><br><br><br><br><br><br><br><br><br><br><br><br> | Upewnij się, że [uprawnień wstępnych](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#prerequisites) użytkownika konta są skonfigurowane dokładnie w usłudze Azure Database for MySQL — wystąpienia. Na przykład aby utworzyć użytkownika o nazwie "migrateuser" z wymaganymi uprawnieniami należy wykonać następujące czynności:<br>1. Tworzenie użytkownika migrateuser@'% "IDENTYFIKOWANY przez 'klucz tajny.'; <br>2. Przyznawanie uprawnień wszystkich na db_name.* do "migrateuser'@'%" identyfikowany przez 'klucz tajny.'; Powtórz ten krok, aby przyznać dostęp do większej liczby baz danych <br>3. Przyznania podrzędnego replikacji na *.* Aby "migrateuser'@'%" identyfikowany przez 'klucz tajny.';<br>4. Udziel klienta replikacji na *.* Aby "migrateuser'@'%" identyfikowany przez 'klucz tajny.';<br>5. Flush uprawnień. |
-
-## <a name="error-when-attempting-to-stop-azure-database-migration-service"></a>Wystąpił błąd podczas próby zatrzymania usługi Azure Database Migration Service
-
-Otrzymujesz następujący błąd podczas zatrzymywania wystąpień usługi Azure Database Migration Service:
-
-* **Błąd**: Nie można zatrzymać usługi. Błąd: {"error": {"code": "InvalidRequest", "message": "jedno lub więcej działań są aktualnie uruchomione. Aby zatrzymać usługę, zaczekaj, aż działania zostały ukończone lub Zatrzymaj działania ręcznie i spróbuj ponownie. "}}
+* **Błąd**: Błąd migracji bazy danych — zadanie "TaskID" zostało wstrzymane z powodu [n] kolejnych błędów odzyskiwania.
 
 | Przyczyna         | Rozwiązanie |
 | ------------- | ------------- |
-| Ten błąd wyświetlane, gdy wystąpienie usługi, którą próbujesz zatrzymać obejmuje działania, które nadal są uruchomione lub przedstawić w projektach migracji. <br><br><br><br><br><br> | Upewnij się, że nie ma żadnych działań, uruchomiony w wystąpieniu usługi Azure Database Migration Service, w przypadku próby zatrzymania. Można również usunąć działań lub projektów przed podjęciem próby zatrzymania usługi. Poniższe kroki ilustrują usuwanie projektów, aby wyczyścić wystąpienie usługi migracji, usuwając wszystkie uruchomione zadania:<br>1. Install-Module-nazwa AzureRM.DataMigration <br>2. Login-AzureRmAccount <br>3. Select-AzureRmSubscription -SubscriptionName "<subName>" <br> 4. Remove-AzureRmDataMigrationProject -Name <projectName> -ResourceGroupName <rgName> -ServiceName <serviceName> -DeleteRunningTask |
+| Ten błąd może wystąpić, gdy użytkownik wykonujący migrację nie ma ReplicationAdmin roli i/lub uprawnień klienta replikacji, repliki replikacji i SUPER (wersje wcześniejsze niż MySQL 5.6.6).<br><br><br><br><br><br><br><br><br><br><br><br><br> | Upewnij się, że [wstępnie wymagane uprawnienia](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#prerequisites) dla konta użytkownika są skonfigurowane prawidłowo w wystąpieniu Azure Database for MySQL. Na przykład następujące kroki można wykonać, aby utworzyć użytkownika o nazwie "MigrateUser" z wymaganymi uprawnieniami:<br>1. Utwórz użytkownika MigrateUser @ "%" IDENTYFIKOWANego przez element "Secret"; <br>2. Przyznaj wszystkim uprawnienia do db_name. * do "MigrateUser" @ "%" identyfikowanego przez "Secret"; Powtórz ten krok, aby przyznać dostęp do większej liczby baz danych <br>3. Przyznaj replikację podrzędną *.* na element "MigrateUser" @ "%" identyfikowany przez element "Secret";<br>4. Udziel klienta replikacji na komputerze *.* na element "MigrateUser" @ "%" identyfikowany przez element "Secret";<br>5. Uprawnienia opróżniania; |
 
-## <a name="error-when-attempting-to-start-azure-database-migration-service"></a>Wystąpił błąd podczas próby uruchomienia usługi Azure Database Migration Service
+## <a name="error-when-attempting-to-stop-azure-database-migration-service"></a>Wystąpił błąd podczas próby zatrzymania Azure Database Migration Service
 
-Pojawi się następujący błąd, podczas uruchamiania wystąpienia usługi Azure Database Migration Service:
+Podczas zatrzymywania wystąpienia Azure Database Migration Service pojawia się następujący błąd:
 
-* **Błąd**: Usługi nie powiedzie się do ekranu startowego. Błąd: {"errorDetail": "nie można uruchomić, skontaktuj się z pomocą techniczną firmy Microsoft"}
+* **Błąd**: Nie można zatrzymać usługi. Błąd: {"Error": {"Code": "InvalidRequest", "Message": "co najmniej jedno działanie jest obecnie uruchomione. Aby zatrzymać usługę, poczekaj na zakończenie działania lub Zatrzymaj te działania ręcznie i spróbuj ponownie. "}}
 
 | Przyczyna         | Rozwiązanie |
 | ------------- | ------------- |
-| Ten błąd wyświetlane, gdy poprzednie wystąpienie wewnętrznie nie powiodło się. Ten błąd występuje rzadko, a zespół inżynierów jest świadomy. <br> | Usuń wystąpienie usługi, nie można uruchomić, a następnie Udostępnij nowy, aby go zastąpić. |
+| Ten błąd jest wyświetlany, gdy wystąpienie usługi, które ma zostać zatrzymane, obejmuje działania, które są nadal uruchomione lub obecne w projektach migracji. <br><br><br><br><br><br> | Upewnij się, że nie ma żadnych działań uruchomionych w wystąpieniu Azure Database Migration Service, które próbujesz zatrzymać. Przed podjęciem próby zatrzymania usługi można również usunąć działania lub projekty. Poniższe kroki ilustrują, jak usunąć projekty w celu oczyszczenia wystąpienia usługi migracji przez usunięcie wszystkich uruchomionych zadań:<br>1. Install-module-name AzureRM. datamigration <br>2. Login-AzureRmAccount <br>3. SELECT-AzureRmSubscription-subscriptionname "\<SubName >" <br> 4. Remove-AzureRmDataMigrationProject-Name \<projectName >-ResourceGroupName \<rgName >-ServiceName \<ServiceName >-DeleteRunningTask |
 
-## <a name="error-restoring-database-while-migrating-sql-to-azure-sql-db-managed-instance"></a>Błąd podczas przywracania bazy danych, gdy wystąpienie zarządzane SQL Migrowanie do usługi Azure SQL DB
+## <a name="error-when-attempting-to-start-azure-database-migration-service"></a>Wystąpił błąd podczas próby uruchomienia Azure Database Migration Service
 
-Po wykonaniu migracji do usługi online z programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database jednorazowej migracji zakończy się niepowodzeniem z powodu następującego błędu:
+Podczas uruchamiania wystąpienia Azure Database Migration Service pojawia się następujący błąd:
 
-* **Błąd**: Operacja przywracania nie powiodła się dla "operationId" identyfikator operacji. Kod "AuthorizationFailed", komunikat "klient"clientId"o identyfikatorze obiektu"objectId"nie ma autoryzacji do wykonania akcji"Microsoft.Sql/locations/managedDatabaseRestoreAzureAsyncOperation/read"w zakresie" /subscriptions/ Identyfikator subskrypcji ".".
+* **Błąd**: Uruchamianie usługi nie powiodło się. Błąd: {"errorDetail": "nie można uruchomić usługi, skontaktuj się z pomocą techniczną firmy Microsoft".
+
+| Przyczyna         | Rozwiązanie |
+| ------------- | ------------- |
+| Ten błąd jest wyświetlany, gdy poprzednie wystąpienie nie powiodło się wewnętrznie. Ten błąd występuje rzadko, a zespół inżynieryjny zna go. <br> | Usuń wystąpienie usługi, której nie można uruchomić, a następnie Udostępnij nowe, aby je zastąpić. |
+
+## <a name="error-restoring-database-while-migrating-sql-to-azure-sql-db-managed-instance"></a>Wystąpił błąd podczas przywracania bazy danych programu SQL Server do wystąpienia zarządzanego usługi Azure SQL DB
+
+Podczas przeprowadzania migracji w trybie online z SQL Server do wystąpienia zarządzanego Azure SQL Database uruchomienie produkcyjne kończy się niepowodzeniem z powodu następującego błędu:
+
+* **Błąd**: Operacja przywracania nie powiodła się dla identyfikatora operacji "operationId". Kod "AuthorizationFailed", komunikat "klient" clientId "o identyfikatorze obiektu" objectId ", nie ma autoryzacji do wykonania akcji" Microsoft. SQL/Locations/managedDatabaseRestoreAzureAsyncOperation/Read "w zakresie/subscriptions/ Identyfikator subskrypcji ".".
 
 | Przyczyna         | Rozwiązanie    |
 | ------------- | ------------- |
-| Ten błąd wskazuje podmiotu zabezpieczeń aplikacji używanych na potrzeby migracji online z programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database nie wpływa uprawnień w ramach subskrypcji. Niektóre wywołania interfejsu API za pomocą wystąpienia zarządzanego w chwili obecnej wymagają tego uprawnienia, w ramach subskrypcji dla operacji przywracania. <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | Użyj `Get-AzureADServicePrincipal` polecenia cmdlet programu PowerShell przy użyciu `-ObjectId` dostępne z komunikatu o błędzie, aby wyświetlić listę identyfikator używany nazwę wyświetlaną.<br><br> Weryfikowanie uprawnień do tej aplikacji i upewnij się, ma ona [rola "Współautor"](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) na poziomie subskrypcji. <br><br> Azure Database migracji usługi zespołu inżynierów programu dokłada starań, aby ograniczyć wymagany dostęp z bieżącego współtworzyć roli w ramach subskrypcji. Jeśli masz wymaganiem biznesowym, który nie zezwala na używanie współtworzyć roli, skontaktuj się z działem pomocy technicznej platformy Azure, aby uzyskać dodatkową pomoc. |
+| Ten błąd wskazuje, że podmiot zabezpieczeń aplikacji używany do migracji w trybie online z SQL Server do wystąpienia zarządzanego Azure SQL Database nie ma uprawnienia Współtworzenie w ramach subskrypcji. Niektóre wywołania interfejsu API z wystąpieniem zarządzanym w obecnym momencie wymagają tego uprawnienia do subskrypcji dla operacji przywracania. <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | Użyj polecenia cmdlet `-ObjectId` `Get-AzureADServicePrincipal` programu PowerShell z opcją dostępne w komunikacie o błędzie, aby wyświetlić nazwę wyświetlaną używanego identyfikatora aplikacji.<br><br> Sprawdź poprawność uprawnień do tej aplikacji i upewnij się, że ma ona [rolę współautor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) na poziomie subskrypcji. <br><br> Zespół inżynierów Azure Database Migration Service pracuje nad ograniczeniem dostępu wymaganego przez bieżącą rolę programu w ramach subskrypcji. Jeśli masz wymóg biznesowy, który nie zezwala na korzystanie z roli programu, skontaktuj się z pomocą techniczną platformy Azure w celu uzyskania dodatkowej pomocy. |
 
-## <a name="error-when-deleting-nic-associated-with-azure-database-migration-service"></a>Wystąpił błąd podczas usuwania karty Sieciowej skojarzonych z usługi Azure Database Migration Service
+## <a name="error-when-deleting-nic-associated-with-azure-database-migration-service"></a>Wystąpił błąd podczas usuwania karty sieciowej skojarzonej z Azure Database Migration Service
 
-Podczas próby usunięcia skojarzone z usługi Azure Database Migration Service karty interfejsu sieciowego, próba usunięcia zakończy się niepowodzeniem z powodu następującego błędu:
+Podczas próby usunięcia karty interfejsu sieciowego skojarzonej z Azure Database Migration Service próba usunięcia nie powiedzie się z powodu tego błędu:
 
-* **Błąd**: Nie można usunąć kart Sieciowych powiązanych z usługi Azure Database Migration Service ze względu na usługę DMS, przy użyciu interfejsu Sieciowego
-
-| Przyczyna         | Rozwiązanie    |
-| ------------- | ------------- |
-| Ten problem występuje, gdy wystąpienie usługi Azure Database Migration Service nadal mogą być obecne i używania karty sieciowej. <br><br><br><br><br><br><br><br> | Aby usunąć tę kartę Sieciową, usuń wystąpienia usługi DMS, która automatycznie usuwa karty Sieciowej używanej przez usługę.<br><br> **Ważne**: Upewnij się, że wystąpienia usługi Azure Database Migration Service, usunięcie nie ma uruchomionych działań.<br><br> Po usunięciu wszystkich projektów i czynnościami związanymi z wystąpieniem usługi Azure Database Migration Service możesz usunąć wystąpienie usługi. Karty Sieciowej używanej przez wystąpienie usługi jest automatycznie czyszczone jako część usuwania usługi. |
-
-## <a name="connection-error-when-using-expressroute"></a>Błąd połączenia podczas korzystania z usługi ExpressRoute
-
-Podczas próby nawiązania połączenia ze źródłem w Kreatorze projektu usługi Azure Database Migration service, połączenie nie powiedzie się po dłuższy limit czasu, jeśli źródło jest przy użyciu usługi ExpressRoute dla łączności.
+* **Błąd**: Nie można usunąć karty sieciowej skojarzonej z Azure Database Migration Service z powodu usługi DMS korzystającej z karty sieciowej
 
 | Przyczyna         | Rozwiązanie    |
 | ------------- | ------------- |
-| Korzystając z [ExpressRoute](https://azure.microsoft.com/services/expressroute/), Azure Database Migration Service [wymaga](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) trzy punkty końcowe usługi w podsieci sieci wirtualnej skojarzony z usługą aprowizacji:<br> — Punkt końcowy Usługa Service Bus<br> — Punkt końcowy magazynu<br> — Docelowa baza danych punktu końcowego, (np. SQL punktu końcowego, punktu końcowego usługi Cosmos DB)<br><br><br><br><br> | [Włącz](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) punktów końcowych usługi wymagane dla połączenia usługi ExpressRoute między źródłem i Azure Database Migration Service. <br><br><br><br><br><br><br><br> |
+| Ten problem występuje, gdy wystąpienie Azure Database Migration Service nadal może być obecne i zużywać kartę sieciową. <br><br><br><br><br><br><br><br> | Aby usunąć tę kartę sieciową, Usuń wystąpienie usługi DMS, które automatycznie usunie kartę sieciową używaną przez usługę.<br><br> **Ważne**: Upewnij się, że usuwane wystąpienie Azure Database Migration Service nie ma uruchomionych działań.<br><br> Po usunięciu wszystkich projektów i działań skojarzonych z wystąpieniem Azure Database Migration Service można usunąć wystąpienie usługi. Karta sieciowa używana przez wystąpienie usługi jest automatycznie czyszczona w ramach usunięcia usługi. |
 
-## <a name="timeout-error-when-migrating-a-mysql-database-to-azure-mysql"></a>Błąd upływu limitu czasu podczas migracji bazy danych MySQL do usługi Azure MySQL
+## <a name="connection-error-when-using-expressroute"></a>Błąd połączenia podczas korzystania z ExpressRoute
 
-Podczas migracji bazy danych MySQL do usługi Azure Database for MySQL wystąpienie przy użyciu usługi Azure Database Migration Service, migracja nie powiedzie się z powodu następującego błędu limitu czasu:
-
-* **Błąd**: Błąd migracji bazy danych — nie można załadować pliku — nie można uruchomić proces ładowania pliku "n" RetCode: SQL_ERROR SqlState: HY000 NativeError: Komunikat 1205: [MySQL] [sterownik ODBC] [mysqld] blokady czas oczekiwania przekracza; Spróbuj ponownie uruchomić transakcji
+Podczas próby nawiązania połączenia ze źródłem w kreatorze projektu usługi Azure Database Migration Service, połączenie nie powiedzie się po dłuższym czasie oczekiwania, jeśli źródło używa usługi ExpressRoute dla połączeń.
 
 | Przyczyna         | Rozwiązanie    |
 | ------------- | ------------- |
-| Ten błąd występuje, gdy migracja nie powiedzie się z powodu przekroczenia limitu czasu oczekiwania dla blokady, podczas migracji. | Rozważ zwiększenie wartości parametru server **"innodb_lock_wait_timeout"** . Dozwolone jest 1073741824. |
+| W przypadku korzystania z [ExpressRoute](https://azure.microsoft.com/services/expressroute/), Azure Database Migration Service [wymaga](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) obsługi trzech punktów końcowych usługi w podsieci Virtual Network skojarzonej z usługą:<br> --Service Bus punkt końcowy<br> --Punkt końcowy magazynu<br> --Docelowy punkt końcowy bazy danych (np. punkt końcowy SQL, Cosmos DB punkt końcowy)<br><br><br><br><br> | [Włącz](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) wymagane punkty końcowe usługi dla łączności ExpressRoute między źródłem a Azure Database Migration Service. <br><br><br><br><br><br><br><br> |
 
-## <a name="error-connecting-to-source-sql-server-when-using-dynamic-port-or-named-instance"></a>Błąd podczas łączenia ze źródłem programu SQL Server w przypadku korzystania z portów dynamicznych lub nazwane wystąpienie
+## <a name="timeout-error-when-migrating-a-mysql-database-to-azure-mysql"></a>Błąd przekroczenia limitu czasu podczas migrowania bazy danych MySQL do usługi Azure MySQL
 
-Podczas próby nawiązania połączenia usługi Azure Database Migration Service do źródła programu SQL Server, które jest uruchamiane w nazwanym wystąpieniu lub port dynamiczny, połączenie kończy się niepowodzeniem z powodu następującego błędu:
+Podczas migrowania bazy danych MySQL do wystąpienia Azure Database for MySQL za pośrednictwem Azure Database Migration Service migracja kończy się niepowodzeniem z powodu następującego błędu limitu czasu:
 
-* **Błąd**: -1 - Połączenie SQL nie powiodło się. Podczas nawiązywania połączenia z serwerem SQL wystąpił błąd dotyczący sieci lub wystąpienia. Serwer nie został znaleziony lub był niedostępny. Sprawdź, czy nazwa wystąpienia jest prawidłowa i że program SQL Server jest skonfigurowany do zezwalania na połączenia zdalne. (Dostawca: Interfejsy sieciowe programu SQL, błąd: 26 — błąd podczas znajdowania/podanego wystąpienia)
+* **Błąd**: Błąd migracji bazy danych — nie można załadować pliku — nie można uruchomić procesu ładowania dla pliku "n" RetCode: SQL_ERROR SqlState: HY000 NativeError: 1205 komunikat: [MySQL] [ODBC Driver] [MySQL] Przekroczono limit czasu oczekiwania na blokadę; Spróbuj ponownie uruchomić transakcję
 
 | Przyczyna         | Rozwiązanie    |
 | ------------- | ------------- |
-| Ten problem występuje, gdy wystąpieniem programu SQL Server, który próbuje połączyć się z usługi Azure Database Migration Service, ma port dynamiczny albo jest używane nazwane wystąpienie. Usługi SQL Server Browser nasłuchuje na porcie UDP 1434 dla połączeń przychodzących do nazwanego wystąpienia lub podczas korzystania z portów dynamicznych. Port dynamiczny mogą ulec zmianie w każdym ponownym uruchomieniu usługi SQL Server. Możesz sprawdzić portów dynamicznych przypisanych do wystąpienia za pomocą konfiguracji sieci w programie SQL Server Configuration Manager.<br><br><br> |Sprawdź, czy usługi Azure Database Migration Service można połączyć ze źródła usługi SQL Server Browser na porcie UDP 1434 i wystąpienie programu SQL Server za pośrednictwem portu TCP przypisywany dynamicznie, jeśli ma to zastosowanie. |
+| Ten błąd występuje, gdy migracja nie powiedzie się z powodu przekroczenia limitu czasu oczekiwania blokady podczas migracji. | Rozważ zwiększenie wartości parametru serwera **"innodb_lock_wait_timeout"** . Najwyższa dozwolona wartość to 1073741824. |
 
-## <a name="additional-known-issues"></a>Dodatkowe znanych problemów
+## <a name="error-connecting-to-source-sql-server-when-using-dynamic-port-or-named-instance"></a>Błąd podczas nawiązywania połączenia ze źródłem SQL Server przy użyciu portu dynamicznego lub nazwanego wystąpienia
 
-* [Znane problemy dotyczące/migracja ograniczeń dotyczących migracji online do usługi Azure SQL Database](https://docs.microsoft.com/azure/dms/known-issues-azure-sql-online)
-* [Ograniczenia znanych problemów/migracja online migracji do usługi Azure Database for MySQL](https://docs.microsoft.com/azure/dms/known-issues-azure-mysql-online)
-* [Ograniczenia znanych problemów/migracja online migracji do usługi Azure Database for PostgreSQL](https://docs.microsoft.com/azure/dms/known-issues-azure-postgresql-online)
+Podczas próby nawiązania połączenia Azure Database Migration Service ze źródłem SQL Server, które jest uruchamiane w nazwanym wystąpieniu lub na porcie dynamicznym, połączenie kończy się niepowodzeniem z powodu tego błędu:
+
+* **Błąd**: nie można nawiązać połączenia z programem SQL Server. Podczas nawiązywania połączenia z serwerem SQL wystąpił błąd dotyczący sieci lub wystąpienia. Serwer nie został znaleziony lub był niedostępny. Sprawdź, czy nazwa wystąpienia jest poprawna i czy SQL Server jest skonfigurowany do zezwalania na połączenia zdalne. dostawcy Interfejsy sieciowe SQL, błąd: 26-błąd podczas lokalizowania określonego serwera/wystąpienia)
+
+| Przyczyna         | Rozwiązanie    |
+| ------------- | ------------- |
+| Ten problem występuje, gdy wystąpienie źródła SQL Server, które Azure Database Migration Service próbuje nawiązać połączenie z portem dynamicznym lub używa nazwanego wystąpienia. Usługa SQL Server Browser nasłuchuje na porcie UDP 1434 dla połączeń przychodzących z nazwanym wystąpieniem lub przy użyciu portu dynamicznego. Port dynamiczny może ulec zmianie przy każdym ponownym uruchomieniu usługi SQL Server. Możesz sprawdzić port dynamiczny przypisany do wystąpienia za pośrednictwem konfiguracji sieci w SQL Server Configuration Manager.<br><br><br> |Sprawdź, czy Azure Database Migration Service może nawiązać połączenie z usługą SQL Server Browser źródłowej na porcie UDP 1434 i wystąpieniu SQL Server za pośrednictwem dynamicznie przypisanego portu TCP. |
+
+## <a name="additional-known-issues"></a>Dodatkowe znane problemy
+
+* [Znane problemy/ograniczenia migracji z migracją online do Azure SQL Database](https://docs.microsoft.com/azure/dms/known-issues-azure-sql-online)
+* [Znane problemy/ograniczenia migracji z migracją online do Azure Database for MySQL](https://docs.microsoft.com/azure/dms/known-issues-azure-mysql-online)
+* [Znane problemy/ograniczenia migracji z migracją online do Azure Database for PostgreSQL](https://docs.microsoft.com/azure/dms/known-issues-azure-postgresql-online)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Wyświetl artykuł [usługi migracji bazy danych programu Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration).
-* Wyświetl artykuł [jak konfigurować parametry serwera w usłudze Azure Database for MySQL za pomocą witryny Azure portal](https://docs.microsoft.com/azure/mysql/howto-server-parameters).
-* Wyświetl artykuł [Przegląd wymagań wstępnych dotyczących używania usługi Azure Database Migration Service](https://docs.microsoft.com/azure/dms/pre-reqs).
-* Zobacz [— często zadawane pytania dotyczące korzystania z usługi Azure Database Migration Service](https://docs.microsoft.com/azure/dms/faq).
+* Zapoznaj się z artykułem [Azure Database Migration Service PowerShell](https://docs.microsoft.com/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration).
+* Zapoznaj się z artykułem [jak skonfigurować parametry serwera w Azure Database for MySQL przy użyciu Azure Portal](https://docs.microsoft.com/azure/mysql/howto-server-parameters).
+* Zapoznaj się z artykułem [Przegląd wymagań wstępnych dotyczących korzystania z Azure Database Migration Service](https://docs.microsoft.com/azure/dms/pre-reqs).
+* Zobacz [często zadawane pytania dotyczące korzystania z Azure Database Migration Service](https://docs.microsoft.com/azure/dms/faq).

@@ -1,6 +1,6 @@
 ---
 title: Jak zarządzać nieaktywnymi urządzeniami w usłudze Azure AD | Microsoft Docs
-description: Dowiedz się, jak usunąć stare urządzenia ze swojej bazy danych zarejestrowanych w usłudze Azure Active Directory.
+description: Informacje o usuwaniu starych urządzeń z bazy danych zarejestrowanych urządzeń w Azure Active Directory.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b64fd7efb00dabd1e1758ec631e6992d68bff2ab
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 8e9c11613a9bdcaedad1a69662b2d6bd7bfefc3b
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481648"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67867253"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Instrukcje: Zarządzanie nieaktywnymi urządzeniami w usłudze Azure AD
 
@@ -43,7 +43,7 @@ Ponieważ nieaktywne urządzenie jest zdefiniowane jako zarejestrowane urządzen
 
 Obliczanie znacznika czasu aktywności jest wyzwalane przez próbę uwierzytelnienia urządzenia. Usługa Azure AD oblicza znacznik czasu aktywności w następujących sytuacjach:
 
-- Zasady dostępu warunkowego, wymagających [urządzeń zarządzanych przy użyciu](../conditional-access/require-managed-devices.md) lub [zatwierdzonych aplikacji klienckich](../conditional-access/app-based-conditional-access.md) została wyzwolona.
+- Zasady dostępu warunkowego wymagające, że [zarządzane urządzenia](../conditional-access/require-managed-devices.md) lub [zatwierdzone aplikacje klienckie](../conditional-access/app-based-conditional-access.md) zostały wyzwolone.
 - Wykazywanie aktywności w sieci przez urządzenia z systemem Windows 10, które są dołączone do usługi Azure AD lub dołączone hybrydowo do usługi Azure AD. 
 - Zaewidencjonowanie w usłudze urządzeń zarządzanych przy użyciu usługi Intune.
 
@@ -129,7 +129,7 @@ Get-MsolDevice -all | select-object -Property Enabled, DeviceId, DisplayName, De
 mateLastLogonTimestamp | export-csv devicelist-summary.csv
 ```
 
-Jeśli masz dużą liczbę urządzeń w katalogu, użyj filtru sygnatury czasowej, aby zawęzić liczba zwróconych urządzeń. Aby uzyskać wszystkie urządzenia ze znacznikiem czasu starszym niż określona data oraz zachować zwrócone dane w pliku CSV, użyj następującego polecenia: 
+Jeśli masz dużą liczbę urządzeń w katalogu, Użyj filtru sygnatur czasowych, aby zawęzić liczbę zwróconych urządzeń. Aby uzyskać wszystkie urządzenia ze znacznikiem czasu starszym niż określona data oraz zachować zwrócone dane w pliku CSV, użyj następującego polecenia: 
 
 ```PowerShell
 $dt = [datetime]’2017/01/01’
@@ -145,6 +145,13 @@ Znacznik czasu jest aktualizowany w celu obsługi scenariuszy cyklu życia urzą
 ### <a name="why-should-i-worry-about-my-bitlocker-keys"></a>Dlaczego muszę zadbać o klucze funkcji BitLocker?
 
 Skonfigurowane klucze funkcji BitLocker dla urządzeń z systemem Windows 10 są przechowywane w obiekcie urządzenia w usłudze Azure AD. Jeśli usuwasz nieaktywne urządzenie, usuwasz również klucze funkcji BitLocker, które są przechowywane na tym urządzeniu. Przed usunięciem nieaktywnego urządzenia musisz sprawdzić, czy zasady oczyszczania są zgodne z rzeczywistym cyklem życia urządzenia. 
+
+### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>Dlaczego należy się martwić o urządzenia z systemem Windows
+
+Gdy urządzenie usługi Azure AD zostało skojarzone z obiektem autopilotażu systemu Windows, następujące trzy scenariusze mogą wystąpić, jeśli urządzenie zostanie ponownie przeprowadzona w przyszłości:
+- W przypadku wdrożeń opartych na użytkownikach w systemie Windows przy użyciu aplikacji typu "autopilotażowe" bez używania białych dokładne zostanie utworzone nowe urządzenie usługi Azure AD, ale nie będzie ono otagowane przy użyciu ZTDID.
+- W przypadku wdrożeń w trybie samoobsługowego wdrażania automatycznego systemu Windows nie będą one działać, ponieważ nie można odnaleźć skojarzenia z urządzeniem usługi Azure AD.  (Jest to mechanizm zabezpieczeń, aby upewnić się, że żadne urządzenia "nie będące skrytkami" próbują dołączyć do usługi Azure AD bez poświadczeń). Błąd będzie wskazywać niezgodność ZTDID.
+- W przypadku wdrożeń dokładne z systemem Windows przy użyciu środowiska autopilota nie powiedzie się, ponieważ nie można znaleźć skojarzonego urządzenia usługi Azure AD. (W tle, białe wdrożenia dokładne używają tego samego procesu samoobsługowego wdrażania, więc wymuszają te same mechanizmy zabezpieczeń).
 
 ### <a name="how-do-i-know-all-the-type-of-devices-joined"></a>Jak mogę sprawdzić, czy wszystkie typy urządzeń zostały dołączone?
 

@@ -7,29 +7,29 @@ ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 36e881fb9ba3ab81611b94a36ef0beed8748d5b1
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f457b316d9f499f2cab02452c1b03ad07a9aef27
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705116"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302825"
 ---
 # <a name="throttling-resource-manager-requests"></a>Ograniczanie żądań usługi Resource Manager
 
-Dla każdej subskrypcji platformy Azure i dzierżawy usługi Resource Manager pozwala maksymalnie 12 000 żądań na godzinę żądania odczytu i 1200 zapisu na godzinę. Limity te są ograniczone do podmiotu zabezpieczeń (użytkownika lub aplikacji), że żądania i identyfikator subskrypcji lub identyfikatora dzierżawy W przypadku żądań pochodzących z więcej niż podmiotu zabezpieczeń, limit jednej subskrypcji, czy dzierżawa jest większa niż 12 000 i 1200 na godzinę.
+Dla każdej subskrypcji platformy Azure i dzierżawy usługi Resource Manager pozwala maksymalnie 12 000 żądań na godzinę żądania odczytu i 1200 zapisu na godzinę. Limity te są objęte zakresem podmiotu zabezpieczeń (użytkownika lub aplikacji), które żądają żądań i identyfikatora subskrypcji lub identyfikatora dzierżawy. Jeśli Twoje żądania pochodzą z więcej niż jednego podmiotu zabezpieczeń, limit w ramach subskrypcji lub dzierżawy jest większy niż 12 000 i 1 200 za godzinę.
 
-Żądania są stosowane do dzierżawy lub Twojej subskrypcji. Żądania subskrypcji są te, które obejmują przekazywanie Identyfikatora subskrypcji, takie jak pobieranie grup zasobów w ramach subskrypcji. Żądania dzierżawy nie zawierają Identyfikatora subskrypcji, takie jak pobieranie prawidłowych lokalizacji platformy Azure.
+Żądania są stosowane do dzierżawy lub Twojej subskrypcji. Żądania subskrypcji to te, które obejmują przekazywanie identyfikatora subskrypcji, na przykład pobieranie grup zasobów w ramach subskrypcji. Żądania dzierżawy nie zawierają Identyfikatora subskrypcji, takie jak pobieranie prawidłowych lokalizacji platformy Azure.
 
 Te limity mają zastosowanie do każdego wystąpienia usługi Azure Resource Manager. Istnieje wiele wystąpień w każdym regionie platformy Azure i usługi Azure Resource Manager jest wdrażana we wszystkich regionach platformy Azure.  Zatem w praktyce skutecznie znacznie wyższa niż te limity są limity, jako użytkownik żądania są zazwyczaj obsługiwane przez wiele różnych wystąpień.
 
-Jeśli aplikacji lub skryptu osiągnie te limity, należy ograniczania żądań. W tym artykule przedstawiono sposób określenia pozostałych żądań, które mają przed przekroczeniem limitu oraz reagować, gdy został osiągnięty limit.
+Jeśli aplikacji lub skryptu osiągnie te limity, należy ograniczania żądań. W tym artykule opisano, jak określić pozostałe żądania przed osiągnięciem limitu oraz jak odpowiedzieć, gdy osiągnięto limit.
 
 W przypadku osiągnięcia limitu otrzymasz kod stanu HTTP **429 zbyt wiele żądań**.
 
-Wykres zasobów platformy Azure ogranicza liczbę żądań do swoich operacji. Kroki opisane w tym artykule w celu określenia pozostałych żądań i jak reagować po osiągnięciu limitu dotyczą również wykres zasobów. Jednak wykres zasobów ustawia współczynnik swój własny limit i resetowania. Aby uzyskać więcej informacji, zobacz [ograniczania wykresie zasobów Azure](../governance/resource-graph/overview.md#throttling).
+Wykres zasobów platformy Azure ogranicza liczbę żądań do operacji. Kroki opisane w tym artykule, aby określić pozostałe żądania i jak odpowiedzieć, gdy limit zostanie osiągnięty, również mają zastosowanie do grafu zasobów. Jednak wykres zasobów ustawia własny limit i częstotliwość resetowania. Aby uzyskać więcej informacji, zobacz [ograniczanie na wykresie zasobów platformy Azure](../governance/resource-graph/overview.md#throttling).
 
 ## <a name="remaining-requests"></a>Pozostałych żądań
-Liczba pozostałych żądań, które można określić, sprawdzając nagłówki odpowiedzi. Żądania odczytu zwracają wartość w nagłówku liczbę pozostałych żądań odczytu. Zapisu żądania zawierać wartość dla liczby pozostałych żądań zapisu. W poniższej tabeli opisano nagłówki odpowiedzi, które można sprawdzić w przypadku tych wartości:
+Liczba pozostałych żądań, które można określić, sprawdzając nagłówki odpowiedzi. Żądania odczytu zwracają wartość w nagłówku dla liczby pozostałych żądań odczytu. Żądania zapisu zawierają wartość dla liczby pozostałych żądań zapisu. W poniższej tabeli opisano nagłówki odpowiedzi, które można sprawdzić w przypadku tych wartości:
 
 | Nagłówek odpowiedzi | Opis |
 | --- | --- |

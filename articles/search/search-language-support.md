@@ -1,74 +1,57 @@
 ---
-title: Wiele języków, indeksowanie dla innej niż angielska wyszukiwania zapytania — usługa Azure Search
-description: Usługa Azure Search obsługuje 56 językach, wykorzystując analizatorów języka — Lucene i przetwarzania języka naturalnego technologii firmy Microsoft.
+title: Indeksowanie wielu języków dla zapytań wyszukiwania innych niż angielskie — Azure Search
+description: Azure Search obsługuje języki 56, wykorzystując analizatory języka z technologii Lucene i technologia przetwarzania języka naturalnego od firmy Microsoft.
 author: yahnoosh
 manager: jlembicz
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 07/11/2019
 ms.author: jlembicz
 ms.custom: seodec2018
-ms.openlocfilehash: cc9f271c1c79f34ba62fa22d6ce4fd6bf16738f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 403febfcb54194602051aaebe2952265c0675e9d
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65025265"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854418"
 ---
-# <a name="create-an-index-for-documents-in-multiple-languages-in-azure-search"></a>Tworzenie indeksu dla dokumentów w wielu językach w usłudze Azure Search
-> [!div class="op_single_selector"]
->
-> * [Portal](search-language-support.md)
-> * [REST](https://msdn.microsoft.com/library/azure/dn879793.aspx)
-> * [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.search.models.analyzername.aspx)
->
->
+# <a name="how-to-create-an-index-for-multiple-languages-in-azure-search"></a>Jak utworzyć indeks dla wielu języków w Azure Search
 
-Uwalnianie potencjału funkcji analizatory języka jest równie proste jak ustawienie jedną właściwością w polu możliwym do przeszukania w definicji indeksu. Teraz możesz wykonać ten krok w portalu.
+Indeksy mogą zawierać pola zawierające zawartość z wielu języków, na przykład tworząc poszczególne pola dla ciągów specyficznych dla języka. W celu uzyskania najlepszych wyników podczas indeksowania i wykonywania zapytań należy przypisać Analizator języka, który zapewnia odpowiednie reguły językowe. 
 
-Poniżej przedstawiono zrzuty ekranu przedstawiające bloków w witrynie Azure Portal dla usługi Azure Search, które umożliwiają użytkownikom Definiowanie schematu indeksu. W tym bloku użytkownicy mogą tworzyć, wszystkie pola i ustaw właściwość analizator dla każdego z nich.
+Azure Search oferuje duży wybór analizatorów języka z zarówno Lucene, jak i firmy Microsoft, które można przypisać do poszczególnych pól przy użyciu właściwości analizatora. Możesz również określić Analizator języka w portalu, zgodnie z opisem w tym artykule.
 
-> [!IMPORTANT]
-> Można ustawić tylko analizatora języków podczas definicji pola, podobnie jak podczas tworzenia nowego indeksu od podstaw w górę lub podczas dodawania nowe pole do istniejącego indeksu. Upewnij się, że w pełni określić wszystkich atrybutów, w tym analizator, podczas tworzenia pola. Nie można edytować atrybuty, lub zmień typ analizatora, po zapisaniu zmian.
->
->
+## <a name="add-analyzers-to-fields"></a>Dodawanie analizatorów do pól
 
-## <a name="define-a-new-field-definition"></a>Zdefiniuj nową definicję pola
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) , a następnie otwórz blok usługi usługi search.
-2. Kliknij przycisk **Dodaj indeks** na pasku poleceń u góry pulpitu nawigacyjnego usługi, aby uruchomić nowy indeks lub Otwórz istniejący indeks, aby ustawić analizator na nowe pola, które dodajesz do istniejącego indeksu.
-3. Zostanie wyświetlony blok pola, opcjami do definiowania schematu indeksu, w tym karty analizator używany do wybierania analizatora języka.
-4. W polu Uruchom definicję pola, podając nazwę, wybierając typ danych i ustawienie atrybuty należy zaznaczyć pole jako pełnotekstowe wyszukiwanie, pobieranie w wynikach wyszukiwania, można używać w strukturach nawigacji zestawu reguł, sortowanie i tak dalej.
-5. Przed przejściem do następnego pola, należy otworzyć **analizatora** kartę.
+Analizator języka jest określany podczas tworzenia pola. Dodanie analizatora do istniejącej definicji pola wymaga zastąpienia (i ponownego załadowania) indeksu lub utworzenia nowego pola identycznego z oryginałem, ale z przypisaniem analizatora. Następnie można usunąć nieużywane pole ze swojej wygody.
 
-![][1]
-*Aby wybrać analizator, kliknij kartę analizatora bloku pola*
+1. Zaloguj się do [Azure Portal](https://portal.azure.com) i Znajdź usługę wyszukiwania.
+1. Kliknij przycisk **Dodaj indeks** na pasku poleceń w górnej części pulpitu nawigacyjnego usługi, aby uruchomić nowy indeks, lub Otwórz istniejący indeks, aby ustawić analizator dla nowych pól dodawanych do istniejącego indeksu.
+1. Rozpocznij Definiowanie pola, podając nazwę.
+1. Wybierz typ danych EDM. String. Tylko pola ciągów są wyszukiwaniem pełnotekstowym.
+1. Ustaw atrybut z **możliwością wyszukiwania** , aby włączyć właściwość Analizator. Aby można było używać analizatora języka, pole musi być oparte na tekście.
+1. Wybierz jeden z dostępnych analizatorów. 
 
-## <a name="choose-an-analyzer"></a>Wybierz Analizator
-1. Przewiń do pola, które są definiowane.
-2. Jeśli nie została oznaczona jako wyszukiwanie, kliknij pole wyboru, teraz, aby oznaczyć go jako **z możliwością wyszukiwania**.
-3. Kliknij obszar analizatora, aby wyświetlić listę dostępnych analizatorów.
-4. Wybierz odpowiedni analizator, którego chcesz użyć.
+![Przypisz analizatory języka podczas definiowania pola](media/search-language-support/select-analyzer.png "Przypisz analizatory języka podczas definiowania pola")
 
-![][2]
-*Wybierz jedną z obsługiwanych analizatory dla każdego pola*
+Domyślnie wszystkie pola z możliwością wyszukiwania korzystają ze [standardowego analizatora Lucene](https://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) , który jest językiem niezależny od. Aby wyświetlić pełną listę obsługiwanych analizatorów, zobacz [Dodawanie analizatorów języka do indeksu Azure Search](index-add-language-analyzers.md).
 
-Domyślnie wszystkie pola z możliwością wyszukiwania używają [analizator Lucene standardowa](https://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) który jest niezależny od języka. Aby wyświetlić pełną listę obsługiwanych analizatorów, zobacz [Obsługa języków w usłudze Azure Search](https://msdn.microsoft.com/library/azure/dn879793.aspx).
+Analizatory są przeznaczone do użycia w portalu. Jeśli wymagane jest dostosowanie lub określona konfiguracja filtrów i tokenizatory, należy [utworzyć Analizator niestandardowy](index-add-custom-analyzers.md) w kodzie. Portal nie obsługuje wybierania ani konfigurowania analizatorów niestandardowych.
 
-Po wybraniu analizatora języków dla pola będą używane przy każdym żądaniu indeksowanie i wyszukiwanie dla tego pola. Gdy zapytanie jest wystawiony na podstawie wielu pól za pomocą różnych analizatorów, zapytania będą przetwarzane niezależnie przez prawo analizatory dla każdego pola.
+## <a name="query-language-specific-fields"></a>Zapytania dotyczące pól specyficznych dla języka
 
-Wiele aplikacji internetowych i mobilnych służą użytkowników na całym świecie używający innych języków. Istnieje możliwość definiowania indeksu dla tego typu scenariusza, tworząc pole dla każdego z obsługiwanych języków.
+Po wybraniu analizatora języka dla pola będzie on używany z każdym indeksem i żądaniem wyszukiwania dla tego pola. Gdy zapytanie jest wydawane dla wielu pól przy użyciu różnych analizatorów, kwerenda zostanie przetworzona niezależnie od przypisanych analizatorów dla każdego pola.
 
-![][3]
-*Definicja indeksu pole Opis każdego z języków obsługiwanych*
+Jeśli jest znany język agenta wysyłającego zapytanie, żądanie wyszukiwania można ograniczyć do określonego pola przy użyciu parametru zapytania **searchFields** . Następujące zapytanie zostanie wygenerowane tylko w odniesieniu do opisu w Polski:
 
-Jeśli język agenta zapytania jest znany, żądanie wyszukiwania może należeć do zakresu za pomocą określonego pola **searchFields** parametr zapytania. Następujące zapytanie, pojawi się wyłącznie w odniesieniu do opisu Polski:
+`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=PolishContent&api-version=2019-05-06`
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=description_pl&api-version=2019-05-06`
+Możesz wysyłać zapytania do indeksu z portalu przy użyciu [**Eksploratora wyszukiwania**](search-explorer.md) do wklejenia zapytania podobnego do przedstawionego powyżej.
 
-Możesz zbadać indeksu w portalu przy użyciu **Eksploratora wyszukiwania** wkleić w zapytaniu podobny do przedstawionego powyżej. Eksplorator wyszukiwania jest dostępne z poziomu paska poleceń w bloku usługi. Zobacz [zapytania w indeksie usługi Azure Search w portalu](search-explorer.md) Aby uzyskać szczegółowe informacje.
+## <a name="boost-language-specific-fields"></a>Zwiększ pola specyficzne dla języka
 
-Czasami język agenta zapytania nie jest znany, w którym to przypadku zapytania mogą być wystawiane względem wszystkich pól jednocześnie. Jeśli to konieczne, preferencji wyników w niektórych językach mogą być definiowane za pomocą [profile oceniania](https://msdn.microsoft.com/library/azure/dn798928.aspx). W poniższym przykładzie dopasowań w opisie w języku angielskim będą oceniane wyższej względem dopasowań w Polski i francuskim:
+Czasami język agenta wystawiającego zapytanie nie jest znany, w takim przypadku zapytanie można wystawić dla wszystkich pól jednocześnie. W razie potrzeby Preferencja dla wyników w określonym języku można zdefiniować za pomocą [profilów oceniania](index-add-scoring-profiles.md). W poniższym przykładzie dopasowań Znalezione w opisie w języku angielskim będą oceniane w sposób wyższy względem dopasowań w języku polskim i francuskim:
 
     "scoringProfiles": [
       {
@@ -81,9 +64,6 @@ Czasami język agenta zapytania nie jest znany, w którym to przypadku zapytania
 
 `https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2019-05-06`
 
-Jeśli jesteś deweloperem platformy .NET, pamiętaj, że możesz skonfigurować użyciu przez analizatory języka [zestawu .NET SDK usługi Azure Search](https://www.nuget.org/packages/Microsoft.Azure.Search). Najnowsza wersja zapewnia obsługę również analizatory języka firmy Microsoft.
+## <a name="next-steps"></a>Kolejne kroki
 
-<!-- Image References -->
-[1]: ./media/search-language-support/AnalyzerTab.png
-[2]: ./media/search-language-support/SelectAnalyzer.png
-[3]: ./media/search-language-support/IndexDefinition.png
+Jeśli jesteś deweloperem platformy .NET, pamiętaj, że możesz skonfigurować analizatory języka, korzystając z [Azure Search .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search) i właściwości [Analizator](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet) . 

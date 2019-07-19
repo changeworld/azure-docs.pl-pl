@@ -1,24 +1,24 @@
 ---
-title: Tworzenie szablonu Kreatora obrazów platformy Azure (wersja zapoznawcza)
-description: Dowiedz się, jak utworzyć szablon za pomocą Kreatora obrazów platformy Azure.
+title: Tworzenie szablonu programu Azure Image Builder (wersja zapoznawcza)
+description: Dowiedz się, jak utworzyć szablon do użycia z programem Azure Image Builder.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/10/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 16ad2a93c9ff035166a738edba40c99075a6e7ba
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 065962614d0b85c4c50f86bef0b610c9b3577e07
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671460"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248152"
 ---
-# <a name="preview-create-an-azure-image-builder-template"></a>Wersja zapoznawcza: Tworzenie szablonu Kreatora obrazów platformy Azure 
+# <a name="preview-create-an-azure-image-builder-template"></a>Wersja zapoznawcza: Tworzenie szablonu usługi Azure Image Builder 
 
-Kreator obrazów platformy Azure korzysta z pliku JSON do przekazywania informacji do usługi kreatora obrazów. W tym artykule firma Microsoft będzie przechodzi przez części pliku json, dzięki czemu można tworzyć własne. Aby wyświetlić przykłady plików pełnej JSON, zobacz [Azure obrazu konstruktora w witrynie GitHub](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts).
+Usługa Azure Image Builder używa pliku JSON do przekazywania informacji do usługi Image Builder. W tym artykule przejdziemy do sekcji pliku JSON, aby można było utworzyć własne. Aby zapoznać się z przykładami pełnych plików JSON, zobacz [Azure Image Builder GitHub](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts).
 
-Ten format jest używany podstawowy szablon:
+Jest to podstawowy format szablonu:
 
 ```json
  { 
@@ -42,9 +42,9 @@ Ten format jest używany podstawowy szablon:
 
 
 
-## <a name="type-and-api-version"></a>Wersja typu i interfejsu API
+## <a name="type-and-api-version"></a>Typ i wersja interfejsu API
 
-`type` Jest typem zasobu, który musi być `"Microsoft.VirtualMachineImages/imageTemplates"`. `apiVersion` Zmieni się wraz z upływem czasu zgodnie ze zmianami interfejsu API, ale powinien być `"2019-05-01-preview"` w wersji zapoznawczej.
+Jest typem zasobu, który musi być `"Microsoft.VirtualMachineImages/imageTemplates"`. `type` Zmieni się w miarę upływu czasu, gdy interfejs API ulegnie zmianie `"2019-05-01-preview"` , ale powinien być w wersji zapoznawczej. `apiVersion`
 
 ```json
     "type": "Microsoft.VirtualMachineImages/imageTemplates",
@@ -53,7 +53,7 @@ Ten format jest używany podstawowy szablon:
 
 ## <a name="location"></a>Location
 
-Lokalizacja jest region, w której zostanie utworzony obraz niestandardowy. Kreator obrazów (wersja zapoznawcza) obsługiwane są następujące regiony:
+Lokalizacja to region, w którym zostanie utworzony obraz niestandardowy. W przypadku wersji zapoznawczej programu Image Builder obsługiwane są następujące regiony:
 
 - East US
 - Wschodnie stany USA 2
@@ -68,18 +68,18 @@ Lokalizacja jest region, w której zostanie utworzony obraz niestandardowy. Krea
     
 ## <a name="depends-on-optional"></a>Zależy od (opcjonalnie)
 
-Ta opcjonalna sekcja może służyć do zapewnienia, że zależności odbywa się przed kontynuowaniem. 
+Tej opcjonalnej sekcji można użyć, aby upewnić się, że zależności zostały ukończone przed kontynuowaniem. 
 
 ```json
     "dependsOn": [],
 ```
 
-Aby uzyskać więcej informacji, zobacz [Definiowanie zależności zasobu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies#dependson).
+Aby uzyskać więcej informacji, zobacz [Definiowanie zależności zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies#dependson).
 
 ## <a name="identity"></a>Tożsamość
-Domyślnie obsługuje Kreatora obrazów za pomocą skryptów lub kopiowania plików z wielu lokalizacji, takich jak GitHub i Azure storage. Można ich używać, muszą być dostępny publicznie.
+Domyślnie Konstruktor obrazów obsługuje używanie skryptów lub kopiowanie plików z wielu lokalizacji, takich jak GitHub i Azure Storage. Aby móc z nich korzystać, muszą one być publicznie dostępne.
 
-Umożliwia także tożsamości zarządzanej Azure User-Assigned, zdefiniowane przez użytkownika, aby zezwolić na dostęp Kreator obrazów usługi Azure Storage, tak długo, jak tożsamość udzielono co najmniej "Czytnik danych obiektu Blob magazynu" na koncie usługi Azure storage. Oznacza to, że nie trzeba dostępną z zewnątrz obiektów blob storage lub Instalator tokeny sygnatur dostępu Współdzielonego.
+Możesz również użyć tożsamości zarządzanej przypisanej przez użytkownika platformy Azure zdefiniowanej przez Ciebie, aby zezwolić programowi Image Builder na dostęp do usługi Azure Storage, o ile w ramach tożsamości udzielono co najmniej "czytnika danych obiektów blob magazynu" na koncie usługi Azure Storage. Oznacza to, że nie trzeba udostępniać obiektów blob magazynu w sposób zewnętrzny lub skonfigurować tokeny sygnatury dostępu współdzielonego.
 
 
 ```json
@@ -91,28 +91,28 @@ Umożliwia także tożsamości zarządzanej Azure User-Assigned, zdefiniowane pr
         },
 ```
 
-Aby uzyskać kompletny przykład, zobacz [ korzystać z tożsamości zarządzanej Azure User-Assigned uzyskiwania dostępu do plików w usłudze Azure Storage](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage).
+Aby uzyskać pełny przykład, zobacz [Używanie tożsamości zarządzanej przypisanej przez użytkownika platformy Azure w celu uzyskiwania dostępu do plików w usłudze Azure Storage](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage).
 
-Obraz konstruktora, obsługę tożsamości User-Assigned: • obsługuje jednej tożsamości, tylko • nie obsługuje niestandardowych nazw domen
+Obsługa konstruktora obrazów dla tożsamości przypisanej przez użytkownika: • obsługuje tylko jedną tożsamość • nie obsługuje niestandardowych nazw domen
 
-Aby dowiedzieć się więcej, zobacz [co to jest zarządzanych tożsamości dla zasobów platformy Azure?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
-Aby uzyskać więcej informacji na temat wdrażania tej funkcji, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure przy użyciu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity).
+Aby dowiedzieć się więcej, zobacz [co to są tożsamości zarządzane dla zasobów platformy Azure?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+Aby uzyskać więcej informacji na temat wdrażania tej funkcji, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity).
 
-## <a name="properties-source"></a>Właściwości: źródła
+## <a name="properties-source"></a>Właściwości: Źródło
 
-`source` Sekcja zawiera informacje dotyczące obrazu źródłowego, który będzie używany przez kreatora obrazów.
+`source` Sekcja zawiera informacje o obrazie źródłowym, który będzie używany przez Konstruktor obrazów.
 
-Interfejs API wymaga "SourceType" definiujące źródło budowania obrazu, obecnie dostępne są trzy typy:
-- ISO — Użyj tego, gdy źródłem jest ISO systemu RHEL.
-- PlatformImage - wykazały, że obraz źródłowy jest obraz z witryny Marketplace.
-- ManagedImage — Użyj tego ustawienia podczas od zwykłego obrazu zarządzanego.
-- SharedImageVersion — to jest używany, gdy używana jest wersja obrazu w galerii obrazów udostępnione jako źródło.
+Interfejs API wymaga elementu "SourceType", który definiuje Źródło dla kompilacji obrazu, obecnie istnieją trzy typy:
+- ISO — Użyj tego elementu, jeśli źródłem jest RHEL ISO.
+- PlatformImage — wskazuje, że obraz źródłowy jest obrazem portalu Marketplace.
+- ManagedImage — Użyj tego w przypadku uruchamiania z regularnego zarządzanego obrazu.
+- SharedImageVersion — ta wartość jest używana w przypadku używania wersji obrazu w galerii obrazów udostępnionych jako źródło.
 
 ### <a name="iso-source"></a>Źródło ISO
 
-Kreator obrazów platformy Azure obsługuje tylko przy użyciu opublikowanych Red Hat Enterprise Linux 7.x binarne DVD obrazy ISO, w wersji zapoznawczej. Kreator obrazów obsługuje:
-- RHEL 7.3 
-- RHEL 7.4 
+Konstruktor obrazów platformy Azure obsługuje tylko użycie opublikowanych Red Hat Enterprise Linux 7. x binarnego dysku DVD obrazów ISO w wersji zapoznawczej. Konstruktor obrazów obsługuje:
+- RHEL 7,3 
+- RHEL 7,4 
 - RHEL W WERSJI 7.5 
  
 ```json
@@ -123,18 +123,18 @@ Kreator obrazów platformy Azure obsługuje tylko przy użyciu opublikowanych Re
 }
 ```
 
-Aby uzyskać `sourceURI` i `sha256Checksum` wartości, przejdź do `https://access.redhat.com/downloads` następnie wybierz produkt **Red Hat Enterprise Linux**oraz obsługiwaną wersją. 
+Aby uzyskać `sourceURI` wartości i `sha256Checksum` , przejdź do `https://access.redhat.com/downloads` pozycji Wybierz **Red Hat Enterprise Linux**produktu i obsługiwaną wersję. 
 
-Na liście **instalatorów i obrazów Red Hat Enterprise Linux Server**, należy skopiować link DVD binarne programu Red Hat Enterprise Linux 7.x i sumy kontrolnej.
+Na liście instalatorów **i obrazów dla serwera Red Hat Enterprise Linux**należy skopiować link do Red Hat Enterprise Linux 7. x binarnego dysku DVD oraz sumy kontrolnej.
 
 > [!NOTE]
-> Tokeny dostępu łącza są odświeżane w krótkich odstępach czasu, więc za każdym razem, gdy użytkownik chce przesłać szablon, musisz sprawdzić, Jeśli połączysz RH adres uległ zmianie.
+> Tokeny dostępu linków są odświeżane w częstych odstępach czasu, dlatego za każdym razem, gdy chcesz przesłać szablon, należy sprawdzić, czy adres linku RH został zmieniony.
  
 ### <a name="platformimage-source"></a>Źródło PlatformImage 
-Kreator obrazów platformy Azure obsługuje następujące obrazów portalu Azure Marketplace:
+Usługa Azure Image Builder obsługuje następujące obrazy w portalu Azure Marketplace:
 * Ubuntu 18.04
 * Ubuntu 16.04
-* RHEL 7.6
+* RHEL 7,6
 * CentOS 7.6
 * Windows 2016
 * Windows 2019
@@ -150,18 +150,18 @@ Kreator obrazów platformy Azure obsługuje następujące obrazów portalu Azure
 ```
 
 
-Właściwości, w tym miejscu są takie same, służą do tworzenia maszyny Wirtualnej, przy użyciu interfejsu wiersza polecenia AZ Uruchom poniżej, aby pobrać właściwości: 
+Właściwości w tym miejscu są takie same, jak w przypadku tworzenia maszyn wirtualnych za pomocą polecenia AZ CLI, uruchom poniższe polecenie, aby uzyskać właściwości: 
  
 ```azurecli-interactive
 az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all 
 ```
 
 > [!NOTE]
-> Wersja nie może być "najnowszy", należy użyć polecenia powyżej sposób uzyskać numer wersji. 
+> Wersja nie może mieć wartości "Najnowsza", należy użyć powyższego polecenia, aby uzyskać numer wersji. 
 
 ### <a name="managedimage-source"></a>Źródło ManagedImage
 
-Ustawia obraz źródłowy jako istniejącego zarządzanego obrazu uogólnionego wirtualnego dysku twardego lub maszyny Wirtualnej. Zarządzanego obrazu źródłowego musi być obsługiwane systemy operacyjne i musi być w tym samym regionie, co Twój szablon kreatora obrazów platformy Azure. 
+Ustawia obraz źródłowy jako istniejący obraz zarządzany uogólnionego wirtualnego dysku twardego lub maszyny wirtualnej. Źródłowy obraz zarządzany musi mieć obsługiwany system operacyjny i znajdować się w tym samym regionie co szablon programu Azure Image Builder. 
 
 ```json
         "source": { 
@@ -170,11 +170,11 @@ Ustawia obraz źródłowy jako istniejącego zarządzanego obrazu uogólnionego 
         }
 ```
 
-`imageId` Powinny być ResourceId zarządzanego obrazu. Użyj `az image list` Aby wyświetlić listę dostępnych obrazów.
+`imageId` Powinien być identyfikator ResourceID obrazu zarządzanego. Użyj `az image list` , aby wyświetlić listę dostępnych obrazów.
 
 
 ### <a name="sharedimageversion-source"></a>Źródło SharedImageVersion
-Ustawia obraz źródłowy istniejącą wersję obrazu w galerii obrazów udostępnione. Wersja obrazu muszą być obsługiwanego systemu operacyjnego i obraz, który musi zostać zreplikowana do tego samego regionu co szablon kreatora obrazów platformy Azure. 
+Ustawia obraz źródłowy jako istniejącą wersję obrazu w galerii obrazów udostępnionych. Wersja obrazu musi być w obsługiwanym systemie operacyjnym, a obraz musi być replikowany do tego samego regionu co szablon programu Azure Image Builder. 
 
 ```json
         "source": { 
@@ -183,21 +183,21 @@ Ustawia obraz źródłowy istniejącą wersję obrazu w galerii obrazów udostę
    } 
 ```
 
-`imageVersionId` Powinny być ResourceId wersji obrazu. Użyj [az sig wersję obrazu listy](/cli/azure/sig/image-version#az-sig-image-version-list) do listy obrazu wersji.
+`imageVersionId` Powinien być identyfikator ResourceID wersji obrazu. Użyj [AZ SIG Image-Version list](/cli/azure/sig/image-version#az-sig-image-version-list) , aby wyświetlić listę wersji obrazu.
 
-## <a name="properties-customize"></a>Właściwości: dostosowywanie
+## <a name="properties-customize"></a>Właściwości: Dostosowywanie
 
 
-Kreator obrazów obsługuje wiele "twórcom dostosowań". Twórcom dostosowań są funkcje, które są używane do dostosowywania obrazu, takie jak uruchamianie skryptów lub ponowne uruchamianie serwerów. 
+Konstruktor obrazów obsługuje wiele "konfiguratorów". Dostosowania są funkcjami używanymi do dostosowywania obrazu, takich jak uruchamianie skryptów lub ponowne uruchamianie serwerów. 
 
-Korzystając z `customize`: 
-- Można użyć wielu twórcom dostosowań, ale musi mieć unikatową `name`.
-- Twórcom dostosowań wykonywane w kolejności określonej w szablonie.
-- W przypadku awarii jednego konfiguratora składnik całego dostosowania zostaną zakończyć się niepowodzeniem i ponownie zgłosić błąd.
-- Należy rozważyć, jak długo kompilację obrazu wymagają i Dostosuj właściwości "buildTimeoutInMinutes", umożliwia kreatora obrazów wystarczająco dużo czasu na ukończenie.
-- Zdecydowanie zalecane jest, że należy dokładnie przetestować skrypt przed jego użyciem w szablonie. Debugowanie skryptu na własnej maszynie Wirtualnej będzie łatwiejsza.
-- Nie należy umieszczać w skryptach poufnych danych. 
-- Lokalizacje skryptu muszą być dostępny publicznie, chyba że używasz [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage).
+W przypadku `customize`korzystania z: 
+- Można użyć wielu dostosowań, ale muszą one mieć unikatowy `name`.
+- Dostosowania są wykonywane w kolejności określonej w szablonie.
+- Jeśli jeden z ustawień nie powiedzie się, cały składnik dostosowywania zakończy się niepowodzeniem, a raport zostanie zwrócony z powrotem.
+- Zastanów się, ile czasu będzie wymagała kompilacja obrazu, i Dostosuj Właściwość "buildTimeoutInMinutes", aby zezwolić na ukończenie pracy konstruktora obrazu.
+- Zdecydowanie zaleca się dokładne przetestowanie skryptu przed użyciem go w szablonie. Debugowanie skryptu na własnej maszynie wirtualnej będzie łatwiejsze.
+- Nie należy umieszczać poufnych danych w skryptach. 
+- Lokalizacje skryptów muszą być publicznie dostępne, chyba że używany jest plik [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage).
 
 ```json
         "customize": [
@@ -218,12 +218,12 @@ Korzystając z `customize`:
 ```     
 
  
-W sekcji Dostosuj jest tablicą. Kreator obrazów platformy Azure zostanie uruchomiony za pośrednictwem twórcom dostosowań w kolejności sekwencyjnej. Jakiekolwiek niepowodzenie w dowolnym konfiguratora zakończy się niepowodzeniem procesu kompilacji. 
+Sekcja Dostosowywanie jest tablicą. Konstruktor obrazów platformy Azure będzie uruchamiany przez konfiguratorów w kolejności sekwencyjnej. Dowolna awaria w dowolnym obszarze dostosowywania zakończy się niepowodzeniem procesu kompilacji. 
  
  
 ### <a name="shell-customizer"></a>Konfigurator powłoki
 
-Obsługuje konfiguratora powłoki uruchamianie skryptów powłoki, muszą to być publicznie dostępne dla IB do nich dostęp.
+Konfigurator powłoki obsługuje uruchamianie skryptów powłoki, muszą być publicznie dostępne dla IB w celu uzyskania dostępu do nich.
 
 ```json
     "customize": [ 
@@ -244,18 +244,18 @@ Obsługuje konfiguratora powłoki uruchamianie skryptów powłoki, muszą to by�
 
 Obsługa systemu operacyjnego: Linux 
  
-Dostosowywanie właściwości:
+Dostosuj właściwości:
 
-- **Typ** — skorupach 
-- **Nazwa** — Nazwa śledzenia dostosowania 
-- **scriptUri** — identyfikator URI do lokalizacji pliku 
-- **wbudowane** -tablicę poleceń powłoki, oddzielonych przecinkami.
+- **Typ** — Shell 
+- Nazwa **— Nazwa** do śledzenia dostosowania 
+- **scriptUri** -URI do lokalizacji pliku 
+- **wbudowana** tablica poleceń powłoki, rozdzielonych przecinkami.
  
 > [!NOTE]
-> Podczas uruchamiania konfiguratora powłoki ze źródłem ISO systemu RHEL, należy upewnić się pierwszy uchwytów w powłoki dostosowywania rejestrowanie przy użyciu serwera uprawnienie firmy Red Hat, zanim nastąpi wszelkie dostosowania. Po zakończeniu dostosowywania skryptu należy wyrejestrować z serwerem uprawnienie.
+> Podczas uruchamiania konfiguratora powłoki ze źródłem ISO RHEL należy upewnić się, że pierwsza powłoka dostosowania obsługuje rejestrowanie z serwerem uprawnień Red Hat przed wystąpieniem dostosowania. Po zakończeniu dostosowywania skrypt powinien zostać wyrejestrowany na serwerze uprawnień.
 
-### <a name="windows-restart-customizer"></a>Windows ponownie uruchomić konfiguratora 
-Konfigurator ponownego uruchomienia pozwala na ponowne uruchomienie maszyny Wirtualnej z systemem Windows i poczekaj na jego powrocie do trybu online, pozwala na instalowanie oprogramowania, wymagającego ponownego uruchomienia systemu.  
+### <a name="windows-restart-customizer"></a>Dostosowywanie ponownego uruchomienia systemu Windows 
+Dostosowywanie ponownego uruchomienia umożliwia ponowne uruchomienie maszyny wirtualnej z systemem Windows i poczekanie, aż powróci do trybu online. pozwala to na zainstalowanie oprogramowania wymagającego ponownego uruchomienia.  
 
 ```json 
      "customize": [ 
@@ -268,15 +268,15 @@ Konfigurator ponownego uruchomienia pozwala na ponowne uruchomienie maszyny Wirt
 
 Obsługa systemu operacyjnego: Windows
  
-Dostosowywanie właściwości:
+Dostosuj właściwości:
 - **Typ**: WindowsRestart
-- **restartCommand** — polecenie do wykonania ponownego uruchomienia (opcjonalnie). Wartość domyślna to `'shutdown /r /f /t 0 /c \"packer restart\"'`.
-- **restartCheckCommand** — polecenie, aby sprawdzić, jeśli ponowne uruchomienie powiodło się (opcjonalnie). 
-- **restartTimeout** -Uruchom ponownie limit czasu określony w postaci ciągu, wielkości i jednostki. Na przykład `5m` (5 minut) lub `2h` (2 godziny). Wartość domyślna to: '5m'
+- **restartCommand** — polecenie, aby wykonać ponowne uruchomienie (opcjonalnie). Wartość domyślna to `'shutdown /r /f /t 0 /c \"packer restart\"'`.
+- **restartCheckCommand** — polecenie, aby sprawdzić, czy ponowne uruchomienie zakończyło się pomyślnie (opcjonalnie). 
+- **restartTimeout** — limit czasu ponownego uruchomienia określony jako ciąg wielkości i jednostki. Na przykład `5m` (5 minut) lub `2h` (2 godziny). Wartość domyślna to: 5 m
 
 
-### <a name="powershell-customizer"></a>Konfigurator programu PowerShell 
-Obsługuje konfiguratora powłoki, uruchamianie skryptów programu PowerShell i wierszu polecenia, skrypty muszą być dostępne publicznie IB do nich dostęp.
+### <a name="powershell-customizer"></a>Dostosowywanie programu PowerShell 
+Konfigurator powłoki obsługuje uruchamianie skryptów programu PowerShell i polecenia wbudowanego. skrypty muszą być dostępne publicznie, aby można było uzyskać do nich dostęp.
 
 ```json 
      "customize": [
@@ -296,16 +296,16 @@ Obsługuje konfiguratora powłoki, uruchamianie skryptów programu PowerShell i 
 
 Obsługa systemu operacyjnego: System Windows i Linux
 
-Dostosowywanie właściwości:
+Dostosuj właściwości:
 
-- **Typ** — program PowerShell.
-- **scriptUri** — identyfikator URI do lokalizacji pliku skryptu programu PowerShell. 
-- **wbudowane** — wbudowanego polecenia, aby uruchomić, oddzielonych przecinkami.
-- **valid_exit_codes** — jest to opcjonalne, prawidłowe kody, które mogą być zwracane przez skrypt/wbudowanego polecenia, pozwoli to uniknąć zgłoszonego błędu polecenia skryptu/wbudowanego.
+- **Type** — PowerShell.
+- **scriptUri** -URI do lokalizacji pliku skryptu programu PowerShell. 
+- **wbudowane** — polecenia śródwierszowe do uruchomienia, oddzielone przecinkami.
+- **valid_exit_codes** — opcjonalne, prawidłowe kody, które mogą być zwracane z skryptu/polecenia wbudowanego, pozwoli to uniknąć zgłaszanego błędu skryptu/polecenia wbudowanego.
 
-### <a name="file-customizer"></a>Konfigurator pliku
+### <a name="file-customizer"></a>Konfigurator plików
 
-Konfigurator pliku umożliwia kreatora obrazów, Pobierz plik z usługi GitHub lub usługi Azure storage. Jeśli potok kompilacji obrazu, która korzysta z artefaktów kompilacji, można następnie ustawić konfiguratora plików do pobrania z udziału kompilacji i Przenieś artefakty do obrazu.  
+Program do dostosowywania plików umożliwia programowi Image Builder pobranie pliku z witryny GitHub lub Azure Storage. Jeśli masz potok kompilacji obrazu, który opiera się na artefaktach kompilacji, możesz ustawić konfiguratora plików na pobieranie z udziału kompilacji i przenieść artefakty do obrazu.  
 
 ```json
      "customize": [ 
@@ -320,33 +320,33 @@ Konfigurator pliku umożliwia kreatora obrazów, Pobierz plik z usługi GitHub l
 
 Obsługa systemu operacyjnego: Linux i Windows 
 
-Właściwości konfiguratora pliku:
+Właściwości dostosowywania pliku:
 
-- **sourceuri i** — punkt końcowy dostępny magazyn, może to być GitHub lub usługi Azure storage. Można go pobrać tylko jeden plik, a nie cały katalog. Jeśli trzeba pobrać katalogu, użyj skompresowany plik, a następnie zdekompresować go za pomocą programu PowerShell lub powłoki twórcom dostosowań. 
-- **miejsce docelowe** — jest to docelowy pełną ścieżkę i nazwę pliku. Wszystkie odwołania ścieżkę i podkatalogi musi istnieje, skonfigurować tych wcześniej za pomocą programu PowerShell lub powłoki twórcom dostosowań. Utwórz ścieżkę umożliwia twórcom dostosowań skryptu. 
+- **SourceUri** — dostępny punkt końcowy magazynu, może to być usługa GitHub lub Azure Storage. Można pobrać tylko jeden plik, a nie cały katalog. Jeśli konieczne jest pobranie katalogu, należy użyć skompresowanego pliku, a następnie zdekompresować go przy użyciu powłoki lub konfiguratorów programu PowerShell. 
+- **Destination** — jest to pełna ścieżka docelowa i nazwa pliku. Wszystkie ścieżki i podkatalogi, do których się odwołuje, muszą istnieć, użyj programu Shell lub konfiguratorzy programu PowerShell, aby wcześniej je skonfigurować. Możesz użyć niestandardowych konfiguratorów skryptów, aby utworzyć ścieżkę. 
 
-Jest to obsługiwane przez katalogi Windows i Linux ścieżki, ale istnieją pewne różnice: 
-- Linux systemu operacyjnego — jedyna ścieżka obrazu może zapisywać konstruktora jest tmp.
-- Windows — Brak ograniczeń ścieżki, ale ścieżki musi istnieć.
+Jest to obsługiwane przez katalogi systemu Windows i ścieżki Linux, ale istnieją pewne różnice: 
+- System operacyjny Linux — jedyną ścieżką konstruktora obrazu można napisać w/tmp.
+- Windows — brak ograniczenia ścieżki, ale ścieżka musi istnieć.
  
  
-Jeśli wystąpi błąd próbują pobrać plik i umieść ją w określonym katalogu krok Dostosuj zakończy się niepowodzeniem i będzie on miał customization.log.
+Jeśli wystąpi błąd podczas próby pobrania pliku lub umieszczenia go w określonym katalogu, krok dostosowywania zakończy się niepowodzeniem i będzie on znajdować się w pliku customization. log.
 
->> Uwaga! Konfigurator pliku tylko nadaje się do pobierania plików małe, < 20MB. Dla większych pobierania plików użyć skryptu lub wbudowanego polecenia, kod użycia do pobierania plików, takich jak Linux `wget` lub `curl`, Windows, `Invoke-WebRequest`.
+>> Korygując! Program do dostosowywania plików jest odpowiedni dla małych plików do pobrania, < baza. W przypadku większych pobrań plików Użyj skryptu lub polecenia wbudowanego, a następnie użyj kodu do pobrania plików, takich jak `wget` Linux `curl`lub Windows, `Invoke-WebRequest`.
 
-Pliki w konfiguratora plików, które można pobrać z usługi Azure Storage przy użyciu [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage).
+Pliki w obszarze dostosowywania plików można pobrać z usługi Azure Storage przy użyciu pliku [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage).
 
 ### <a name="generalize"></a>Generalize 
-Domyślnie Kreator obrazów usługi Azure będzie również uruchomić "deprovision" kod na końcu każdej fazy dostosowywania obrazu do uogólnienia obrazu. Uogólnianie jest procesem, gdzie obraz, który jest skonfigurowany tak, może zostać użyte do utworzenia wielu maszyn wirtualnych. W przypadku maszyn wirtualnych Windows Azure kreatora obrazów używa programu Sysprep. W przypadku systemu Linux jest uruchamiany Kreator obrazów platformy Azure "waagent-deprovision". 
+Domyślnie program Azure Image Builder uruchomi również kod "anulowania aprowizacji" na końcu każdej fazy dostosowywania obrazu do "generalize" obrazu. Uogólnianie to proces, w którym obraz jest skonfigurowany tak, aby można go było ponownie wykorzystać do tworzenia wielu maszyn wirtualnych. W przypadku maszyn wirtualnych z systemem Windows usługa Azure Image Builder używa programu Sysprep. W przypadku systemu Linux usługa Azure Image Builder uruchamia polecenie "waagent-dezastrzeganie". 
 
-Polecenia kreatora obrazów użytkowników do uogólnienia może nie być odpowiednie dla każdej sytuacji, więc kreator obrazów platformy Azure będzie umożliwiają dostosowanie tego polecenia, jeśli to konieczne. 
+Polecenia konstruktora obrazu, które użytkownicy mogą uogólniać, nie są odpowiednie dla każdej sytuacji, więc usługa Azure Image Builder umożliwi dostosowanie tego polecenia w razie potrzeby. 
 
-Jeśli migrujesz istniejące dostosowywania, a używasz różne polecenia Sysprep/waagent, można za pomocą poleceń ogólnych kreatora obrazów, a jeśli proces tworzenia maszyny Wirtualnej nie powiedzie się, należy użyć własnego polecenia Sysprep lub ich waagent.
+W przypadku migrowania istniejącego dostosowania i używania innych poleceń Sysprep/waagent można użyć poleceń ogólnych konstruktora obrazu, a jeśli Tworzenie maszyny wirtualnej nie powiedzie się, użyj własnych poleceń Sysprep lub waagent.
 
-Jeśli Kreator obrazów platformy Azure tworzy niestandardowy obraz Windows pomyślnie, a następnie utwórz Maszynę wirtualną z go, a następnie okaże się, że proces tworzenia maszyny Wirtualnej nie powiedzie się lub nie zostanie ukończone pomyślnie, należy zapoznać się z dokumentacją programu Sysprep systemu Windows Server lub Prześlij żądanie pomocy technicznej za pomocą Zespołem pomocy technicznej systemu Windows Server Sysprep klienta usług, kto może rozwiązać i wykonać funkcji advise dla poprawne użycie narzędzia Sysprep.
+Jeśli narzędzie Azure Image Builder pomyślnie utworzy obraz niestandardowy systemu Windows, a następnie utworzysz dla niego maszynę wirtualną, sprawdź, czy Tworzenie maszyny wirtualnej nie powiedzie się lub nie zakończy się pomyślnie, należy przejrzeć dokumentację programu Sysprep dla systemu Windows Server lub zgłosić żądanie pomocy technicznej z Program Windows Server Sysprep Customer Services dla zespołu pomocy technicznej, który może rozwiązywać problemy i doradzać właściwym użyciu programu Sysprep.
 
 
-#### <a name="default-sysprep-command"></a>Domyślnie polecenia Sysprep
+#### <a name="default-sysprep-command"></a>Domyślne polecenie programu Sysprep
 ```powershell
 echo '>>> Waiting for GA to start ...'
 while ((Get-Service RdAgent).Status -ne 'Running') { Start-Sleep -s 5 }
@@ -356,35 +356,35 @@ echo '>>> Sysprepping VM ...'
 if( Test-Path $Env:SystemRoot\\windows\\system32\\Sysprep\\unattend.xml ){ rm $Env:SystemRoot\\windows\\system32\\Sysprep\\unattend.xml -Force} & $Env:SystemRoot\\System32\\Sysprep\\Sysprep.exe /oobe /generalize /quiet /quit
 while($true) { $imageState = Get-ItemProperty HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Setup\\State | Select ImageState; if($imageState.ImageState -ne 'IMAGE_STATE_GENERALIZE_RESEAL_TO_OOBE') { Write-Output $imageState.ImageState; Start-Sleep -s 5  } else { break } }
 ```
-#### <a name="default-linux-deprovision-command"></a>Domyślnie polecenia anulowania aprowizacji systemu Linux
+#### <a name="default-linux-deprovision-command"></a>Domyślne polecenie anulowania aprowizacji systemu Linux
 
 ```bash
 /usr/sbin/waagent -force -deprovision+user && export HISTSIZE=0 && sync
 ```
 
 #### <a name="overriding-the-commands"></a>Zastępowanie poleceń
-Aby zastąpić polecenia, użyj provisioners skrypt programu PowerShell lub powłoki, aby utworzyć pliki poleceń przy użyciu dokładnej nazwy pliku i umieść je w katalogu poprawny katalogów:
+Aby zastąpić polecenia, należy użyć programu PowerShell lub obsługi skryptów powłoki w celu utworzenia plików poleceń z dokładną nazwą pliku i umieścić je w prawidłowych katalogach:
 
 * Windows: c:\DeprovisioningScript.ps1
-* Linux: /tmp/DeprovisioningScript.sh
+* Linux:/tmp/DeprovisioningScript.sh
 
-Kreator obrazów odczyta te polecenia, te są zapisywane w dziennikach AIB "customization.log". Zobacz [Rozwiązywanie problemów z](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-logs) na temat sposobu zbierania dzienników.
+Konstruktor obrazów odczyta te polecenia, są one zapisywane do dzienników AIB "Customization. log". Zobacz temat [Rozwiązywanie problemów](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-logs) dotyczących zbierania dzienników.
  
-## <a name="properties-distribute"></a>Właściwości: Dystrybucja
+## <a name="properties-distribute"></a>Właściwości: Dystrybuuj
 
-Kreator obrazów platformy Azure obsługuje trzy dystrybucji elementów docelowych: 
+Konstruktor obrazów platformy Azure obsługuje trzy cele dystrybucji: 
 
-- **managedImage** — zarządzanego obrazu.
+- obraz zarządzany przez **managedImage** .
 - **sharedImage** — Galeria obrazów udostępnionych.
-- **Wirtualny dysk twardy** — dysk VHD na koncie magazynu.
+- **Wirtualny dysk twardy** (VHD) na koncie magazynu.
 
-Można dokonać dystrybucji obrazu do obu typów docelowego z taką samą konfigurację, zapoznaj się z artykułem [przykłady](https://github.com/danielsollondon/azvmimagebuilder/blob/7f3d8c01eb3bf960d8b6df20ecd5c244988d13b6/armTemplates/azplatform_image_deploy_sigmdi.json#L80).
+Można dystrybuować obraz do obu typów docelowych w tej samej konfiguracji, zobacz [przykłady](https://github.com/danielsollondon/azvmimagebuilder/blob/7f3d8c01eb3bf960d8b6df20ecd5c244988d13b6/armTemplates/azplatform_image_deploy_sigmdi.json#L80).
 
-Ponieważ może mieć więcej niż jeden element docelowy i przekazać go, Kreator obrazów zachowuje stan każdego obiektu docelowego dystrybucji, który jest możliwy, badając `runOutputName`.  `runOutputName` Jest obiekt można tworzyć zapytania wpis dystrybucji dla informacji o dystrybucji. Na przykład można badać lokalizacja wirtualnego dysku twardego lub regiony, w których wersja obrazu zostały zreplikowane w usłudze. Jest to właściwość każdej dystrybucji elementu docelowego. `runOutputName` Musi być unikatowa dla każdego obiektu docelowego dystrybucji.
+Ponieważ możesz mieć więcej niż jeden element docelowy do dystrybucji, Konstruktor obrazów zachowuje stan dla każdego elementu docelowego dystrybucji, do którego można uzyskać dostęp za pomocą zapytania `runOutputName`.  `runOutputName` Jest obiektem, który można wysłać zapytanie o dystrybucję w celu uzyskania informacji o tej dystrybucji. Można na przykład zbadać lokalizację dysku VHD lub regiony, do których została zreplikowana wersja obrazu. Jest to właściwość każdego celu dystrybucji. `runOutputName` Musi być unikatowa dla każdego celu dystrybucji.
  
-### <a name="distribute-managedimage"></a>Dystrybucja: managedImage
+### <a name="distribute-managedimage"></a>Dystrybuuj: managedImage
 
-Dane wyjściowe obrazu będzie zasób obrazu zarządzanego.
+Wyjście obrazu będzie zasobem obrazu zarządzanego.
 
 ```json
 "distribute": [
@@ -400,28 +400,28 @@ Dane wyjściowe obrazu będzie zasób obrazu zarządzanego.
          }]
 ```
  
-Dystrybucja właściwości:
+Dystrybuuj właściwości:
 - **Typ** — managedImage 
-- **imageId** — identyfikator zasobu obrazu docelowego, oczekiwany format: /subscriptions/<subscriptionId>/resourceGroups/<destinationResourceGroupName>/providers/Microsoft.Compute/images/<imageName>
-- **Lokalizacja** — lokalizacja zarządzanego obrazu.  
-- **runOutputName** — unikatowa nazwa do identyfikacji dystrybucji.  
-- **artifactTags** — tagi pary wartości klucza określone opcjonalne użytkownika.
+- **imageId** — identyfikator zasobu obrazu docelowego, oczekiwany format:/subscriptions/\<subskrypcji >/resourceGroups/\<destinationResourceGroupName >/Providers/Microsoft.COMPUTE/images/\< > obrazu
+- **Lokalizacja** lokalizacji zarządzanego obrazu.  
+- **runOutputName** — unikatowa nazwa identyfikująca dystrybucję.  
+- **artifactTags** — opcjonalne Tagi par wartości klucza określonego przez użytkownika.
  
  
 > [!NOTE]
-> Docelowa grupa zasobów musi istnieć.
-> Jeśli chcesz, aby obraz przekazany do innego regionu, zwiększy czas wdrażania. 
+> Docelowa Grupa zasobów musi istnieć.
+> Jeśli chcesz, aby obraz został rozdystrybuowany do innego regionu, wydłuża to czas wdrażania. 
 
-### <a name="distribute-sharedimage"></a>Dystrybucja: sharedImage 
-Galeria obrazów platformy Azure Shared jest nowa usługa zarządzania obrazami, która umożliwia zarządzanie replikacji region obrazu, przechowywanie wersji i udostępniania obrazów niestandardowych. Kreator obrazów platformy Azure obsługuje dystrybucję z tą usługą, dzięki czemu można dokonać dystrybucji obrazów regiony obsługiwane przez udostępnione, galerie obrazów. 
+### <a name="distribute-sharedimage"></a>Dystrybuuj: sharedImage 
+Galeria udostępnionych obrazów systemu Azure to nowa usługa zarządzania obrazami, która umożliwia zarządzanie replikacją regionów obrazu, przechowywanie wersji i udostępnianie obrazów niestandardowych. Konstruktor obrazów platformy Azure obsługuje dystrybucję z tą usługą, dzięki czemu można dystrybuować obrazy do regionów obsługiwanych przez udostępnione Galerie obrazów. 
  
-Galeria obrazów współdzielona składają się: 
+Udostępniona Galeria obrazów składa się z: 
  
-- Galeria — kontener dla wielu obrazów udostępnionych. Galeria zostanie wdrożona w jednym regionie.
-- Obraz definicje - koncepcyjny grupowania obrazów. 
-- Wersje obrazów — jest to typ obrazu, który jest używany do wdrażania maszyn wirtualnych lub skalowania zestawu. Wersje obrazów mogą być replikowane do innych regionów, w której maszyny wirtualne muszą zostać wdrożone.
+- Galeria — kontener dla wielu obrazów udostępnionych. Galeria jest wdrażana w jednym regionie.
+- Definicje obrazów — grupowanie koncepcji dla obrazów. 
+- Wersje obrazu — ten typ obrazu służy do wdrażania maszyny wirtualnej lub zestawu skalowania. Wersje obrazu mogą być replikowane do innych regionów, w których należy wdrożyć maszyny wirtualne.
  
-Aby można było dystrybuować do galerii obrazów, musi utworzyć galerii i definicję obrazu, zobacz [udostępnionych obrazów](shared-images.md). 
+Przed rozpoczęciem dystrybucji do galerii obrazów należy utworzyć galerię i definicję obrazu, zobacz [obrazy udostępnione](shared-images.md). 
 
 ```json
 {
@@ -438,19 +438,19 @@ Aby można było dystrybuować do galerii obrazów, musi utworzyć galerii i def
     ]}
 ``` 
 
-Dystrybucja właściwości galerii udostępnionego obrazu:
+Dystrybuuj właściwości dla udostępnionych galerii obrazów:
 
-- **Typ** -sharedImage  
-- **galleryImageId** — identyfikator galerii obrazów udostępnionych. Format to: /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<sharedImageGalleryName>/images/<imageGalleryName>.
-- **runOutputName** — unikatowa nazwa do identyfikacji dystrybucji.  
-- **artifactTags** — tagi pary wartości klucza określone opcjonalne użytkownika.
-- **replicationRegions** — tablica regionach w celu replikacji. Jeden z regionów musi być regionu, w których jest wdrażany galerii.
+- **Typ** — sharedImage  
+- **galleryImageId** — identyfikator galerii obrazów udostępnionych. Format to:\</subscriptions/Identyfikator subskrypcji >/resourceGroups/\<resourceGroupName >/Providers/Microsoft.COMPUTE/Galleries/\<sharedImageGalleryName >/images/\< imageGalleryName >.
+- **runOutputName** — unikatowa nazwa identyfikująca dystrybucję.  
+- **artifactTags** — opcjonalne Tagi par wartości klucza określonego przez użytkownika.
+- **replicationRegions** — tablica regionów do replikacji. Jednym z regionów musi być region, w którym została wdrożona Galeria.
  
 > [!NOTE]
-> Można użyć Kreatora obrazów platformy Azure w innym regionie, w galerii, ale usługa kreatora obrazów platformy Azure musi transfer obrazu między centrami danych i to będzie trwać dłużej. Kreator obrazów zostaną automatycznie wersję obrazu, w oparciu o całkowitą monotoniczny, nie można określić jej obecnie. 
+> Możesz użyć programu Azure Image Builder w innym regionie w galerii, ale usługa Azure Image Builder musi przetransferować obraz między centrami danych, co zajmie więcej czasu. Konstruktor obrazów automatycznie zmieni wersję obrazu na podstawie liczby całkowitej monotoniczny, ale nie będzie można go określić obecnie. 
 
-### <a name="distribute-vhd"></a>Dystrybucji: VHD  
-Do dysku VHD może zapewniać dane wyjściowe. Można następnie skopiuj wirtualny dysk twardy i użyć go do publikowania w portalu Azure MarketPlace lub za pomocą usługi Azure Stack.  
+### <a name="distribute-vhd"></a>Prowadzi VHD  
+Można wyprowadzać dane wyjściowe do dysku VHD. Następnie możesz skopiować dysk VHD i użyć go do opublikowania w portalu Azure MarketPlace lub użyć z Azure Stack.  
 
 ```json
  { 
@@ -463,15 +463,15 @@ Do dysku VHD może zapewniać dane wyjściowe. Można następnie skopiuj wirtual
  }
 ```
  
-Obsługa systemu operacyjnego: Windows i Linux
+Obsługa systemu operacyjnego: Systemy Windows i Linux
 
-Dystrybucja parametry wirtualnego dysku twardego:
+Dystrybuuj parametry wirtualnego dysku twardego:
 
-- **Typ** -wirtualnego dysku twardego.
-- **runOutputName** — unikatowa nazwa do identyfikacji dystrybucji.  
-- **tagi** — tagi pary wartości klucza określone opcjonalne użytkownika.
+- **Typ** — wirtualny dysk twardy.
+- **runOutputName** — unikatowa nazwa identyfikująca dystrybucję.  
+- **Tagi** — opcjonalne Tagi par wartości klucza określonego przez użytkownika.
  
-Kreator obrazów platformy Azure nie zezwala użytkownikowi na określenie Lokalizacja konta magazynu, ale możesz zbadać stan `runOutputs` lokalizacji.  
+Usługa Azure Image Builder nie zezwala użytkownikowi na określenie lokalizacji konta magazynu, ale można wysłać zapytanie o stan `runOutputs` w celu pobrania lokalizacji.  
 
 ```azurecli-interactive
 az resource show \
@@ -479,11 +479,11 @@ az resource show \
 ```
 
 > [!NOTE]
-> Po utworzeniu wirtualnego dysku twardego, skopiuj go do innej lokalizacji, tak szybko, jak to możliwe. Wirtualny dysk twardy jest przechowywany na koncie magazynu w grupie zasobów tymczasowe, utworzone po przesłaniu obrazu szablonu usługi kreatora obrazów platformy Azure. Jeśli usuniesz szablon obrazu, spowoduje utratę wirtualnego dysku twardego. 
+> Po utworzeniu dysku VHD skopiuj go do innej lokalizacji tak szybko, jak to możliwe. Wirtualny dysk twardy jest przechowywany na koncie magazynu w tymczasowej grupie zasobów utworzonej podczas przesyłania szablonu obrazu do usługi Azure Image Builder. Usunięcie szablonu obrazu spowoduje utratę wirtualnego dysku twardego. 
  
 ## <a name="next-steps"></a>Następne kroki
 
-Przykładowe pliki JSON dla różnych scenariuszy, w [Azure obrazu konstruktora w witrynie GitHub](https://github.com/danielsollondon/azvmimagebuilder).
+Istnieją przykładowe pliki JSON dla różnych scenariuszy w witrynie [GitHub usługi Azure Image Builder](https://github.com/danielsollondon/azvmimagebuilder).
  
  
  

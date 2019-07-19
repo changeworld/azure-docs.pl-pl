@@ -1,6 +1,6 @@
 ---
-title: OpenCensus Przejdź śledzenie za pomocą usługi Azure Application Insights | Dokumentacja firmy Microsoft
-description: Zawiera instrukcje dotyczące integracji OpenCensus Przejdź śledzenie za pomocą lokalnej usługi przesyłania dalej i Application Insights
+title: Śledzenie OpenCensus za pomocą usługi Azure Application Insights | Microsoft Docs
+description: Zawiera instrukcje dotyczące integrowania OpenCensus go z lokalną usługą przesyłania dalej i Application Insights
 services: application-insights
 keywords: ''
 author: mrbullwinkle
@@ -9,22 +9,22 @@ ms.date: 09/15/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cdf01fbbcc8ef1f90b2e0f8973f59c46c5bf70f8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 56e66f17e9ce1d2482463f619e82dfd29d48f191
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60577908"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67990298"
 ---
-# <a name="collect-distributed-traces-from-go-preview"></a>Zbierać ślady rozproszonego z rzeczywistym użyciem (wersja zapoznawcza)
+# <a name="collect-distributed-traces-from-go-preview"></a>Zbierz rozproszone dane śledzenia z języka go (wersja zapoznawcza)
 
-Usługa Application Insights teraz obsługuje rozproszone śledzenie aplikacji w języku Go dzięki integracji z usługą [OpenCensus](https://opencensus.io) i naszej nowej [lokalnej usługi przesyłania dalej](./opencensus-local-forwarder.md). W tym artykule opisano krok po kroku przez proces konfigurowania OpenCensus dla języka Go i pobieranie danych śledzenia do usługi Application Insights.
+Application Insights teraz obsługuje rozproszone śledzenie aplikacji języka go przez integrację z usługą [OpenCensus](https://opencensus.io) i naszą nową [lokalną usługę przesyłania dalej](./opencensus-local-forwarder.md). W tym artykule przedstawiono krok po kroku przez proces konfigurowania usługi OpenCensus dla języka go i pobierania danych śledzenia do Application Insights.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Konieczna jest subskrypcja platformy Azure.
-- Należy zainstalować go, w tym artykule używa wersji 1.11 [Go pobrać](https://golang.org/dl/).
-- Postępuj zgodnie z instrukcjami, aby zainstalować [lokalnej usługi przesyłania dalej, co usługa Windows](./opencensus-local-forwarder.md).
+- Należy zainstalować go. w tym artykule jest używane [pobieranie](https://golang.org/dl/)wersji 1,11.
+- Postępuj zgodnie z instrukcjami, aby zainstalować [usługę przesyłania dalej w systemie Windows](./opencensus-local-forwarder.md).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
@@ -32,32 +32,34 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
-## <a name="create-application-insights-resource"></a>Utwórz zasób usługi Application Insights
+## <a name="create-application-insights-resource"></a>Utwórz zasób Application Insights
 
-Najpierw należy utworzyć zasób usługi Application Insights, który generuje klucz Instrumentacji (klucz Instrumentacji). Klucz Instrumentacji jest następnie używany do konfigurowania lokalnego usługi przesyłania dalej wysyłanie rozproszone śledzenie z OpenCensus instrumentacji aplikacji do usługi Application Insights.   
+Najpierw należy utworzyć zasób Application Insights, który spowoduje wygenerowanie klucza Instrumentacji (iKey). IKey jest następnie używany do konfigurowania lokalnego usługi przesyłania dalej do wysyłania dystrybuowanych śladów z OpenCensusej aplikacji Instrumentacji do Application Insights.   
 
-1. Wybierz **Utwórz zasób** > **narzędzi deweloperskich** > **usługi Application Insights**.
+1. Wybierz pozycję **Utwórz zasób** > **Narzędzia deweloperskie** > **Application Insights**.
 
    ![Dodawanie zasobu usługi Application Insights](./media/opencensus-Go/0001-create-resource.png)
+
+ > [!NOTE]
+   >Jeśli tworzysz zasób Application Insights, możesz dowiedzieć się więcej, odwiedzając artykuł [Tworzenie zasobu Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) .
 
    Zostanie wyświetlone okno konfiguracji. Wypełnij pola wejściowe, używając poniższej tabeli.
 
     | Ustawienia        | Wartość           | Opis  |
    | ------------- |:-------------|:-----|
    | **Nazwa**      | Wartość unikatowa w skali globalnej | Nazwa identyfikująca monitorowaną aplikację |
-   | **Typ aplikacji** | Ogólne | Typ monitorowanej aplikacji |
    | **Grupa zasobów**     | myResourceGroup      | Nazwa nowej grupy zasobów hostującej dane usługi App Insights |
-   | **Lokalizacja** | Wschodnie stany USA | Wybierz lokalizację w pobliżu Ciebie lub w pobliżu miejsca hostowania aplikacji |
+   | **Location** | East US | Wybierz lokalizację w pobliżu Ciebie lub w pobliżu miejsca hostowania aplikacji |
 
-2. Kliknij pozycję **Utwórz**.
+2. Kliknij przycisk **Utwórz**.
 
-## <a name="configure-local-forwarder"></a>Skonfiguruj lokalne usługi przesyłania dalej
+## <a name="configure-local-forwarder"></a>Konfigurowanie usługi przesyłania dalej lokalnego
 
 1. Wybierz pozycję **Przegląd**  >  **Podstawy** i skopiuj **klucz instrumentacji** aplikacji.
 
-   ![Zrzut ekranu przedstawiający klucz Instrumentacji](./media/opencensus-Go/0003-instrumentation-key.png)
+   ![Zrzut ekranu klucza Instrumentacji](./media/opencensus-Go/0003-instrumentation-key.png)
 
-2. Edytuj swoje `LocalForwarder.config` pliku i Dodaj klucz instrumentacji. Jeśli postąpiono zgodnie z instrukcjami w [wstępny](./opencensus-local-forwarder.md) plik znajduje się w `C:\LF-WindowsServiceHost`
+2. `LocalForwarder.config` Edytuj plik i Dodaj swój klucz Instrumentacji. Jeśli wykonano instrukcje w wymaganiu [wstępnym](./opencensus-local-forwarder.md) , plik znajduje się w lokalizacji`C:\LF-WindowsServiceHost`
 
     ```xml
       <OpenCensusToApplicationInsights>
@@ -74,18 +76,18 @@ Najpierw należy utworzyć zasób usługi Application Insights, który generuje 
     </LocalForwarderConfiguration>
     ```
 
-3. Uruchom ponownie aplikację **lokalnej usługi przesyłania dalej** usługi.
+3. Uruchom ponownie **lokalną usługę przesyłania dalej** aplikacji.
 
-## <a name="opencensus-go-packages"></a>Pakiety OpenCensus z rzeczywistym użyciem
+## <a name="opencensus-go-packages"></a>Pakiety OpenCensus
 
-1. Zainstaluj pakiety Otwórz spis dla języka Go z poziomu wiersza polecenia:
+1. Zainstaluj pakiety Open spisu dla języka go z poziomu wiersza polecenia:
 
     ```go
     go get -u go.opencensus.io
     go get -u contrib.go.opencensus.io/exporter/ocagent
     ```
 
-2. Dodaj następujący kod do pliku .go i następnie skompilować i uruchomić. (W tym przykładzie jest tworzony na podstawie oficjalne wskazówki OpenCensus dodano kod, który ułatwia integrację z lokalnej usługi przesyłania dalej)
+2. Dodaj następujący kod do pliku..., a następnie Skompiluj i Uruchom. (Ten przykład pochodzi od oficjalnych wskazówek dotyczących OpenCensus z dodanym kodem, który ułatwia integrację z lokalną usługą przesyłania dalej)
 
      ```go
         // Copyright 2018, OpenCensus Authors
@@ -184,45 +186,45 @@ Najpierw należy utworzyć zasób usługi Application Insights, który generuje 
         }
      ```
 
-3. Gdy zostanie uruchomiona prosta aplikacja Przejdź przejdź do `http://localhost:50030`. Każdym odświeżeniu przeglądarki wygeneruje tekst "hello world" wraz z odpowiedniego zakresu danych, które są pobierane przez lokalne usługi przesyłania dalej.
+3. Gdy aplikacja Simple go działa, przejdź do `http://localhost:50030`. Każde odświeżenie przeglądarki spowoduje wygenerowanie tekstu "Hello World" wraz z odpowiednimi danymi zakresu, które są pobierane przez lokalną usługę przesyłania dalej.
 
-4. Aby potwierdzić, że **lokalnej usługi przesyłania dalej** jest pobrania Sprawdź ślady `LocalForwarder.config` pliku. Jeśli wykonano kroki opisane w [wstępnie wymaganego składnika](https://docs.microsoft.com/azure/application-insights/local-forwarder), będą znajdować się w `C:\LF-WindowsServiceHost`.
+4. Aby upewnić się, że **lokalna usługa przesyłania dalej** pobiera ślady, sprawdź `LocalForwarder.config` plik. Jeśli wykonano kroki wymagane w ramach [wymagań wstępnych](https://docs.microsoft.com/azure/application-insights/local-forwarder), będzie ono znajdować `C:\LF-WindowsServiceHost`się w temacie.
 
-    Na ilustracji poniżej w pliku dziennika możesz zobaczyć, że przed uruchomieniem drugi skrypt, w którym dodaliśmy eksporter `OpenCensus input BatchesReceived` : 0. Gdy Rozpoczęliśmy uruchamianie ze zaktualizowanego skryptu `BatchesReceived` zwiększona równy wartości, które możemy wprowadzić:
+    Na poniższym obrazie pliku dziennika można zobaczyć, że przed uruchomieniem drugiego skryptu, w którym został dodany eksporter `OpenCensus input BatchesReceived` , to 0. Po rozpoczęciu pracy z zaktualizowanym skryptem `BatchesReceived` zwiększono liczbę wprowadzonych wartości:
     
     ![Formularz nowego zasobu usługi App Insights](./media/opencensus-go/0004-batches-received.png)
 
 ## <a name="start-monitoring-in-the-azure-portal"></a>Rozpoczynanie monitorowania w witrynie Azure Portal
 
-1. Możesz teraz ponownie otworzyć usługę Application Insights **Przegląd** strony w witrynie Azure portal, aby wyświetlić szczegółowe informacje o obecnie uruchomionej aplikacji. Wybierz **Live Stream metryki**.
+1. Możesz teraz ponownie otworzyć stronę **omówienia** Application Insights w Azure Portal, aby wyświetlić szczegóły dotyczące aktualnie uruchomionej aplikacji. Wybierz pozycję **Live Metric Stream**.
 
-   ![Zrzut ekranu przedstawiający okienko omówienia z zaznaczona czerwonym prostokątem strumień metryk na żywo](./media/opencensus-go/0005-overview-live-metrics-stream.png)
+   ![Zrzut ekranu przedstawiający okienko przegląd z aktywnym strumieńem metryk w czerwonym polu](./media/opencensus-go/0005-overview-live-metrics-stream.png)
 
-2. Możesz ponownie uruchomić drugą aplikację języka Go i Rozpocznij odświeżanie przeglądarki pod kątem `http://localhost:50030`, zostanie wyświetlony na żywo dane śledzenia niezapisywanie ich w usłudze Application Insights z usługi lokalnej usługi przesyłania dalej.
+2. Jeśli ponownie uruchomisz aplikację po raz drugi i rozpocznie się odświeżanie `http://localhost:50030`przeglądarki dla programu, zobaczysz dane śledzenia na żywo, gdy dociera do Application Insights z lokalnej usługi przesyłania dalej.
 
-   ![Zrzut ekranu przedstawiający transmisji strumieniowej metryk na żywo z danymi wydajności wyświetlane](./media/opencensus-go/0006-stream.png)
+   ![Zrzut ekranu przedstawiający strumień metryk na żywo z wyświetlonymi danymi wydajności](./media/opencensus-go/0006-stream.png)
 
-3. Przejdź z powrotem do **Przegląd** strony i wybierz **mapy aplikacji** Aby uzyskać wizualny układ relacji zależności i czasu wywołania między składnikami aplikacji.
+3. Przejdź z powrotem do strony **Przegląd** i wybierz pozycję **Mapa aplikacji** , aby uzyskać wizualny układ relacji zależności i Wywołaj chronometraż między składnikami aplikacji.
 
-    ![Zrzut ekranu przedstawiający mapę aplikacji w warstwie podstawowa](./media/opencensus-go/0007-application-map.png)
+    ![Zrzut ekranu przedstawiający podstawową mapę aplikacji](./media/opencensus-go/0007-application-map.png)
 
-    Ponieważ firma Microsoft była tylko śledzenia jedno wywołanie metody, nasza Mapa aplikacji jest jak interesujące. Ale mapy aplikacji mogą być skalowane do wizualizacji o wiele bardziej rozproszonych:
+    Ponieważ śledzono tylko jedno wywołanie metody, Mapa aplikacji nie jest tak interesująca. Jednak Mapa aplikacji może być skalowana w celu wizualizowania znacznie większej liczby aplikacji rozproszonych:
 
    ![Mapa aplikacji](media/opencensus-go/application-map.png)
 
-4. Wybierz **badanie wydajności** wykonywania szczegółową analizę wydajności i określenia głównej przyczyny niskiej wydajności.
+4. Wybierz pozycję **Zbadaj wydajność** , aby przeprowadzić szczegółową analizę wydajności i określić główną przyczynę powolnej wydajności.
 
-    ![Zrzut ekranu przedstawiający okienko wyników](./media/opencensus-go/0008-performance.png)
+    ![Zrzut ekranu przedstawiający okienko wydajności](./media/opencensus-go/0008-performance.png)
 
-5. Wybieranie **przykłady** , a następnie klikając na dowolnym z przykładów, które są wyświetlane w okienku po prawej stronie spowoduje uruchomienie środowiska szczegółów transakcji end-to-end. Gdy nasza Przykładowa aplikacja właśnie pokaże nam to pojedyncze zdarzenie, bardziej złożonych aplikacji będzie pozwalają zapoznać się transakcji end-to-end do poziomu poszczególnych zdarzeń stosu wywołań.
+5. Wybranie **próbek** , a następnie kliknięcie dowolnego z przykładów, które pojawiają się w okienku po prawej stronie, spowoduje uruchomienie kompleksowego środowiska z informacjami o transakcji. Mimo że nasza Przykładowa aplikacja wyświetli tylko jedno zdarzenie, bardziej złożona aplikacja umożliwi Eksplorowanie kompleksowej transakcji w dół do poziomu jednego ze stosu wywołań poszczególnych zdarzeń.
 
-     ![Zrzut ekranu przedstawiający interfejs transakcji end-to-end](./media/opencensus-go/0009-end-to-end-transaction.png)
+     ![Zrzut ekranu przedstawiający kompletny interfejs transakcji](./media/opencensus-go/0009-end-to-end-transaction.png)
 
-## <a name="opencensus-trace-for-go"></a>Możliwe jest śledzenie OpenCensus dla języka Go
+## <a name="opencensus-trace-for-go"></a>Śledzenie OpenCensus dla języka go
 
-Pokrótce informacje omówione tylko podstawowe informacje dotyczące integrowania OpenCensus dla języka Go z lokalnej usługi przesyłania dalej i usługi Application Insights. [Oficjalne wskazówki dotyczące użycia OpenCensus Go](https://godoc.org/go.opencensus.io) obejmuje bardziej zaawansowanych tematów.
+Poznasz jedynie podstawowe informacje dotyczące integrowania OpenCensus dla języka go z lokalną usługą przesyłania dalej i Application Insights. [Oficjalne wskazówki dotyczące użycia](https://godoc.org/go.opencensus.io) programu OpenCensuse dotyczą bardziej zaawansowanych tematów.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Mapa aplikacji](./../../azure-monitor/app/app-map.md)
-* [Monitorowanie wydajności end-to-end](./../../azure-monitor/learn/tutorial-performance.md)
+* [Kompleksowe monitorowanie wydajności](./../../azure-monitor/learn/tutorial-performance.md)

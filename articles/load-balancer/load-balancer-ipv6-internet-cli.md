@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Dowiedz się, jak utworzyć publiczny moduł równoważenia obciążenia przy użyciu protokołu IPv6 przy użyciu wiersza polecenia platformy Azure.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 keywords: Protokół IPv6, usługa azure load balancer, podwójnego stosu, publiczny adres ip, natywnego protokołu ipv6, aplikację mobilną, iot
 ms.service: load-balancer
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
-ms.author: kumud
-ms.openlocfilehash: 1caa8e7554024c3b2e3d86436d3d494d7995169a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 0ee85a92753845e0e67fff22da894a048acb1b14
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60516662"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274952"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Tworzenie publicznego modułu równoważenia obciążenia przy użyciu protokołu IPv6 przy użyciu wiersza polecenia platformy Azure
 
@@ -46,11 +46,11 @@ Poniższe kroki pokazują jak utworzyć publiczny moduł równoważenia obciąż
 
 Aby wdrożyć moduł równoważenia obciążenia, należy utworzyć i skonfigurować następujące obiekty:
 
-* **Konfiguracja IP frontonu**: Zawiera publiczne adresy IP dla przychodzącego ruchu sieciowego.
-* **Pula adresów zaplecza**: Zawiera interfejsy sieciowe (NIC) maszyn wirtualnych odbierających ruch sieciowy z modułu równoważenia obciążenia.
-* **Reguły równoważenia obciążenia**: Zawiera reguły mapowania portu publicznego modułu równoważenia obciążenia na port w puli adresów zaplecza.
-* **Reguły NAT dla ruchu przychodzącego**: Zawiera reguły translatora (NAT) adresów sieciowych, które mapowania portu publicznego modułu równoważenia obciążenia na port określonej maszyny wirtualnej w puli adresów zaplecza.
-* **Sondy**: Sondy kondycji używane do sprawdzania dostępności wystąpień maszyn wirtualnych w puli adresów zaplecza.
+* **Konfiguracja adresu IP frontonu**: Zawiera publiczne adresy IP dla przychodzącego ruchu sieciowego.
+* **Pula adresów zaplecza**: Zawiera interfejsy sieciowe (nic), dla których maszyny wirtualne mają odbierać ruch sieciowy z modułu równoważenia obciążenia.
+* **Reguły równoważenia obciążenia**: Zawiera reguły, które mapują port publiczny modułu równoważenia obciążenia na port w puli adresów zaplecza.
+* **Reguły NAT dla ruchu przychodzącego**: Zawiera reguły translacji adresów sieciowych (NAT), które mapują port publiczny modułu równoważenia obciążenia na port określonej maszyny wirtualnej w puli adresów zaplecza.
+* **Sondy**: Zawiera sondy kondycji, które są używane do sprawdzania dostępności wystąpień maszyn wirtualnych w puli adresów zaplecza.
 
 ## <a name="set-up-azure-cli"></a>Konfigurowanie interfejsu wiersza polecenia platformy Azure
 

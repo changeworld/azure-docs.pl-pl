@@ -1,10 +1,10 @@
 ---
-title: Tworzenie modułu równoważenia obciążenia za pomocą frontonu strefowo nadmiarowe — interfejs wiersza polecenia platformy Azure
+title: Tworzenie Load Balancer za pomocą Strefowo nadmiarowego frontonu — interfejs wiersza polecenia platformy Azure
 titlesuffix: Azure Load Balancer
-description: Dowiedz się, jak utworzyć publiczny moduł równoważenia obciążenia standardowego przy użyciu strefowo nadmiarowy publiczny adres IP adres serwera sieci Web przy użyciu wiersza polecenia platformy Azure
+description: Dowiedz się, jak utworzyć publiczną usługa Load Balancer w warstwie Standardowa ze strefowo nadmiarowym publicznym adresem IP przy użyciu interfejsu wiersza polecenia platformy Azure
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 ms.service: load-balancer
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
-ms.author: kumud
-ms.openlocfilehash: 40396a8ef62553dd3ec721e97fe08bf8aa51c731
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 2dcd7d2cffa567307e1d6eb4326a379bc2d409be
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66122116"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275171"
 ---
 #  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-cli"></a>Tworzenie standardowego modułu równoważenia obciążenia przy użyciu strefowo nadmiarowe frontonu przy użyciu wiersza polecenia platformy Azure
 

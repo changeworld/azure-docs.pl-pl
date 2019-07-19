@@ -1,56 +1,56 @@
 ---
-title: Harmonogramy konserwacji platformy Azure (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Planowanie konserwacji umożliwia klientom w planowaniu wokół zdarzenia niezbędne zaplanowanej konserwacji, które korzysta z usługi Azure SQL Data Warehouse to dystrybucję nowych funkcji, uaktualnienia i poprawki.
+title: Harmonogramy konserwacji platformy Azure (wersja zapoznawcza) | Microsoft Docs
+description: Planowanie konserwacji umożliwia klientom zaplanowanie niezbędnych zaplanowanych zdarzeń konserwacji, których usługa Azure SQL Data Warehouse używa do tworzenia nowych funkcji, uaktualnień i poprawek.
 services: sql-data-warehouse
 author: antvgski
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 03/13/2019
+ms.date: 07/16/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: ab6efb858cc86495c687055ce3049cfc0cca7433
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 3875106e8c6301c95bc8d0fbce6a1c0400d07f78
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807908"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278123"
 ---
-# <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Umożliwia zarządzanie aktualizacjami usługi i konserwacja harmonogramy konserwacji
+# <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Korzystanie z harmonogramów konserwacji do zarządzania aktualizacjami i konserwacją usług
 
-Harmonogramy konserwacji są teraz dostępne we wszystkich regionach usługi Azure SQL Data Warehouse. Ta funkcja zintegrować planowanej konserwacji powiadomień dotyczących kondycji usługi, Monitor sprawdzanie kondycji zasobu usługi harmonogramu konserwacji usługi Azure SQL Data Warehouse.
+Harmonogramy konserwacji są teraz dostępne we wszystkich regionach Azure SQL Data Warehouse. Ta funkcja integruje Service Health planowane powiadomienia o konserwacji, Resource Health monitorowanie i usługę planowania konserwacji Azure SQL Data Warehouse.
 
-Służy harmonogramów, wybierz przedział czasu, gdy jest to wygodne otrzymać nowe funkcje, uaktualnienia i poprawki konserwacji. Możesz wybrać podstawowy i pomocniczy konserwacyjne przed upływem siedmiu dni. Przykładem jest podstawowy okna sobota 22:00 do niedzieli 01:00 i okien podrzędnych z środę 19:00 do 22:00. Jeśli usługa SQL Data Warehouse, nie można wykonać konserwacji podczas okna obsługi podstawowego, spróbuje konserwację ponownie podczas okna obsługi dodatkowej. Konserwacja usługi mogą wystąpić podczas podstawowego i pomocniczego systemu windows. W celu zapewnienia szybkiego zakończenia wszystkich operacji konserwacji, DW400(c) i niższych warstw magazynu danych można wykonać konserwacji poza w wyznaczonym oknie obsługi.
+Planowanie konserwacji służy do wybierania przedziału czasu, gdy jest wygodne do otrzymywania nowych funkcji, uaktualnień i poprawek. Możesz wybrać podstawowe i pomocnicze okno obsługi w ciągu siedmiu dni. Przykładem jest okno podstawowe z soboty od 22:00 do niedziela 01:00 i dodatkowe okno z środę 19:00 do 22:00. Jeśli SQL Data Warehouse nie może wykonać konserwacji w ramach głównego okna obsługi, spróbuje przeprowadzić konserwację ponownie w oknie konserwacji dodatkowej. Konserwacja usługi może wystąpić podczas zarówno podstawowego, jak i pomocniczego systemu Windows. Aby zapewnić szybkie zakończenie wszystkich operacji konserwacji, DW400 (c) i niższe warstwy magazynu danych mogą zakończyć konserwację poza wydzielonym oknem obsługi.
 
-Wszystkie nowo utworzone Azure SQL Data Warehouse wystąpienia będą mieć harmonogramu konserwacji zdefiniowaną przez system stosowane podczas wdrażania. Harmonogram może być edytowany, zaraz po zakończeniu wdrożenia.
+Wszystkie nowo utworzone wystąpienia Azure SQL Data Warehouse będą miały zdefiniowany przez system harmonogram konserwacji stosowany podczas wdrażania. Harmonogram można edytować zaraz po zakończeniu wdrażania.
 
-Każde okno obsługi może być trzech do ośmiu godzin. Konserwacji może nastąpić w dowolnej chwili, w oknie. Jak usługa wdraża nowy kod z magazynem danych, należy się spodziewać krótki utraty łączności.
+Każde okno obsługi może być od trzech do ośmiu godzin. W oknie można przeprowadzić konserwację w dowolnym momencie. Po rozpoczęciu konserwacji wszystkie aktywne sesje zostaną anulowane, a transakcje niezatwierdzone zostaną wycofane. Należy oczekiwać wielu krótkich strat podczas łączności, ponieważ usługa wdraża nowy kod w magazynie danych. Użytkownik zostanie powiadomiony natychmiast po zakończeniu konserwacji w magazynie danych
 
-Aby użyć tej funkcji należy zidentyfikować podstawowych i pomocniczych okna zakresów dni. Wszystkie operacje konserwacji powinno zostać zakończone w ciągu okna zaplanowanej konserwacji. Nie obsługi będzie miała miejsce poza określonym oknami bez wcześniejszego powiadomienia. Jeśli magazyn danych jest wstrzymany podczas zaplanowanej konserwacji, zostaną zaktualizowane podczas operacji wznowienia.  
+Aby użyć tej funkcji, należy zidentyfikować podstawowe i pomocnicze okno w różnych zakresach dni. Wszystkie operacje konserwacji powinny zakończyć się w ramach zaplanowanych okien obsługi. Żadna konserwacja nie zostanie przeprowadzona poza określonymi oknami obsługi bez wcześniejszego powiadomienia. Jeśli magazyn danych jest wstrzymany podczas zaplanowanej konserwacji, zostanie on zaktualizowany podczas operacji wznawiania.  
 
 ## <a name="alerts-and-monitoring"></a>Alerty i monitorowanie
 
-Integracja z usługami powiadomień dotyczących kondycji usługi i monitora Sprawdź kondycję zasobów umożliwia klientom uzyskiwania informacji o zbliżającym się związanych z konserwacją. Nowe usługi automation korzysta z usługi Azure Monitor. Aby zdecydować, jaki ma być powiadamiany o zbliżającym się zdarzenia konserwacji. Również zdecydować, które zautomatyzowane przepływy można łatwiej zarządzać przestojów i zminimalizować wpływ na operacje.
+Integracja z Service Health powiadomieniami i monitorowaniem Resource Health kontrola pozwala klientom na uzyskanie informacji o zbliżającej się aktywności. Nowa Automatyzacja wykorzystuje Azure Monitor. Możesz zdecydować, jak chcesz otrzymywać powiadomienia o zbliżającym się zdarzeniu konserwacji. Należy także zdecydować, które automatyczne przepływy mogą pomóc w zarządzaniu przestojami i zminimalizować wpływ operacji na działania.
 
-Powiadomienie o 24-godzinny poprzedza wszystkie zdarzenia konserwacji, z wyjątkiem bieżącym DW400c i niższych warstwach. Aby zminimalizować przestoje wystąpienia, upewnij się, czy magazynu danych nie ma długotrwałych transakcji przed okresu wybranym konserwacji. Po uruchomieniu konserwacji wszystkie aktywne sesje zostaną anulowane. Transakcje zatwierdzone asynchronicznie nie zostanie wycofana, a Magazyn danych, mogą mieć krótki utraty łączności. Zostanie wyświetlone powiadomienie natychmiast, po zakończeniu konserwacji w magazynie danych.
+Powiadomienie z góry o 24 godzinie poprzedza wszystkie zdarzenia konserwacji, z powodu bieżącego wyjątku DW400c i niższych warstw. Aby zminimalizować przestoje wystąpienia, upewnij się, że magazyn danych nie ma długotrwałych transakcji przed wybranym okresem konserwacji.
 
 > [!NOTE]
-> W przypadku, gdy firma Microsoft jest wymagane wdrożenie aktualizacji krytycznej czasu, może znacznie skrócić czasy powiadomienie z jednotygodniowym.
+> W przypadku, gdy wymagane jest wdrożenie aktualizacji krytycznej czasu, zaawansowane czasy powiadomień mogą być znacząco ograniczone.
 
-Jeśli otrzymasz powiadomienie o konserwacji będzie miała miejsce, że usługa SQL Data Warehouse nie można wykonać konserwacji, w tym samym czasie, otrzymasz powiadomienie anulowania. Konserwacja następnie zostanie wznowiona podczas kolejnego okresu zaplanowanej konserwacji.
+Jeśli otrzymasz powiadomienie z wyprzedzeniem, że w tym czasie SQL Data Warehouse nie będzie można przeprowadzić konserwacji, otrzymasz powiadomienie o anulowaniu. Następnie konserwacja zostanie wznowiona w następnym zaplanowanym okresie konserwacji.
 
-Wszystkie zdarzenia aktywnego zarządzania są wyświetlane w **Service Health — planowaną konserwację** sekcji. Historia kondycji usługi zawiera pełną dokumentację przeszłych zdarzeń. Możesz monitorować konserwacji za pomocą usługi Azure Service Health sprawdzanie pulpitu nawigacyjnego w portalu podczas aktywne zdarzenie.
+Wszystkie aktywne zdarzenia konserwacji są wyświetlane w sekcji **konserwacja Service Health-planowana** . Historia Service Health obejmuje pełny zapis przeszłych zdarzeń. Konserwację można monitorować za pomocą pulpitu nawigacyjnego portalu Azure Service Health Check podczas aktywnego zdarzenia.
 
-### <a name="maintenance-schedule-availability"></a>Dostępność harmonogram konserwacji
+### <a name="maintenance-schedule-availability"></a>Dostępność harmonogramu konserwacji
 
-Nawet jeśli planowania konserwacji jest niedostępna w Twoim regionie wybrany, można wyświetlać i edytować harmonogramu konserwacji w dowolnym momencie. Podczas planowania konserwacji staje się dostępna w Twoim regionie, harmonogram zidentyfikowanych natychmiast stanie się aktywne w magazynu danych.
+Nawet jeśli planowanie konserwacji nie jest dostępne w wybranym regionie, można w dowolnym momencie wyświetlać i edytować harmonogram konserwacji. Gdy planowanie konserwacji stanie się dostępne w Twoim regionie, określony harmonogram zostanie natychmiast uaktywniony w magazynie danych.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Dowiedz się więcej](viewing-maintenance-schedule.md) o wyświetlaniu harmonogram konserwacji.
-- [Dowiedz się więcej](changing-maintenance-schedule.md) o zmienianiu harmonogram konserwacji.
-- [Dowiedz się więcej](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-usage) o tworzenie, wyświetlanie i Zarządzanie alertami przy użyciu usługi Azure Monitor.
-- [Dowiedz się więcej](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) o akcje elementu webhook dla reguł alertów dzienników.
-- [Dowiedz się więcej](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) tworzenie grup i zarządzanie nimi akcji.
-- [Dowiedz się więcej](https://docs.microsoft.com/azure/service-health/service-health-overview) dotyczące usługi Azure Service Health.
+- [Dowiedz się więcej](viewing-maintenance-schedule.md) o wyświetlaniu harmonogramu konserwacji.
+- [Dowiedz się więcej](changing-maintenance-schedule.md) na temat zmieniania harmonogramu konserwacji.
+- [Dowiedz się więcej](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-usage) na temat tworzenia i wyświetlania alertów oraz zarządzania nimi przy użyciu Azure monitor.
+- [Dowiedz się więcej](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) o akcjach elementu webhook dla reguł alertów dziennika.
+- [Dowiedz się więcej](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) Tworzenie grup akcji i zarządzanie nimi.
+- [Dowiedz się więcej](https://docs.microsoft.com/azure/service-health/service-health-overview) o Azure Service Health.

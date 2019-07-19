@@ -1,6 +1,6 @@
 ---
-title: Udostępnianie kont i poświadczeń — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak usługi Azure Active Directory umożliwia organizacjom bezpieczne udostępnianie kont lokalnych aplikacji i usług w chmurze konsumenta.
+title: Udostępnianie kont i poświadczeń — Azure Active Directory | Microsoft Docs
+description: Opisuje, w jaki sposób Azure Active Directory umożliwia organizacjom bezpieczne udostępnianie kont dla aplikacji lokalnych i usług w chmurze konsumenta.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,63 +15,62 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 902696e35a2447b67dab74b73794b80ad5e26511
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5638710c4c01d361d108cfef69869fad1a7dad1a
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083731"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304374"
 ---
-# <a name="sharing-accounts-with-azure-ad"></a>Udostępnianie kont w usłudze Azure AD
+# <a name="sharing-accounts-with-azure-ad"></a>Udostępnianie kont za pomocą usługi Azure AD
 ## <a name="overview"></a>Omówienie
-Czasami organizacje muszą używać jednej nazwy użytkownika i hasło dla wielu osób, które zwykle odbywa się w dwóch przypadkach:
+Czasami organizacje muszą używać pojedynczej nazwy użytkownika i hasła dla wielu osób, co zwykle odbywa się w dwóch przypadkach:
 
-* Podczas uzyskiwania dostępu do aplikacji, które wymagają unikatowych logowania i hasło dla każdego użytkownika, czy aplikacje lokalne lub odbiorcy usługi w chmurze (na przykład kont mediów społecznościowych firmy).
-* Podczas tworzenia środowiska z wieloma użytkownikami. Może mieć jednego, lokalnego konta, mającego podniesione uprawnienia, która jest używana do podstawowego działania Instalatora, administracji i odzyskiwania. Na przykład lokalnego "administrator globalny" konta usługi Office 365 lub konta głównego w usłudze Salesforce.
+* Podczas uzyskiwania dostępu do aplikacji, które wymagają unikatowego logowania i hasła dla każdego użytkownika, zarówno lokalnych aplikacji, jak i usług w chmurze konsumentów (na przykład firmowych kont mediów społecznościowych).
+* Podczas tworzenia środowisk wielu użytkowników. Może istnieć jedno konto lokalne, które ma podwyższone uprawnienia i służy do wykonywania podstawowych działań związanych z instalacją, administracją i odzyskiwaniem. Na przykład lokalne konto administratora globalnego dla pakietu Office 365 lub konta głównego w usłudze Salesforce.
 
-Tradycyjnie te konta są udostępniane przez dystrybucję poświadczeń (nazwy użytkownika i hasło) do prawej osób lub zapisywania ich w udostępnionej lokalizacji, w których wielu agentów zaufane mają do nich dostęp.
+Tradycyjnie te konta są udostępniane przez dystrybuowanie poświadczeń (username i Password) do odpowiednich osób lub przechowywanie ich w udostępnionej lokalizacji, w której wielu zaufanych agentów może uzyskiwać do nich dostęp.
 
-Tradycyjnego modelu udostępniania ma kilka wady:
+Tradycyjny model udostępniania ma kilka wad:
 
-* Włączanie dostępu do nowych aplikacji wymaga rozpowszechnić poświadczenia dla wszystkich użytkowników, których potrzebuje dostępu.
-* Każdy udostępnionej aplikacji może wymagać swój własny unikatowy zestaw poświadczeń udostępnionych, wymagając od użytkowników do zapamiętania wiele zestawów poświadczeń. Gdy użytkownicy mają do zapamiętania wiele poświadczeń, ryzyko zwiększa ich zastosuje poważniejsze ryzykowne rozwiązań. (na przykład zapisywać hasła).
-* Nie wiadomo, kto ma dostęp do aplikacji.
-* Nie można sprawdzić, kto ma *dostępne* aplikacji.
-* Jeśli chcesz usunąć dostęp do aplikacji, musisz zaktualizować poświadczenia i przekazywania ich do wszystkich osób, które wymagają dostępu do tej aplikacji.
+* Umożliwienie dostępu do nowych aplikacji wymaga dystrybuowania poświadczeń do wszystkich osób, które wymagają dostępu.
+* Każda aplikacja udostępniona może wymagać własnego unikatowego zestawu poświadczeń udostępnionych, co wymaga zapamiętania wielu zestawów poświadczeń przez użytkowników. Gdy użytkownicy muszą pamiętać wiele poświadczeń, ryzyko zwiększy konieczność stosowania ryzykownych praktyk. (na przykład zapisywanie haseł).
+* Nie można określić, kto ma dostęp do aplikacji.
+* Nie można określić, kto uzyskał *dostęp do* aplikacji.
+* Jeśli chcesz usunąć dostęp do aplikacji, musisz zaktualizować poświadczenia i ponownie je rozesłać do wszystkich użytkowników, którzy potrzebują dostępu do tej aplikacji.
 
-## <a name="azure-active-directory-account-sharing"></a>Konta i do udostępniania usługi Azure Active Directory
-Usługa Azure AD zapewnia nowe podejście do korzystania z udostępnionych kont, które eliminuje te niedogodności.
+## <a name="azure-active-directory-account-sharing"></a>Azure Active Directory udostępnianie konta
+Usługa Azure AD udostępnia nowe podejście do korzystania z kont współużytkowanych, które eliminują te wady.
 
-Administrator usługi Azure AD umożliwia skonfigurowanie, aplikacji, które użytkownik ma dostęp, za pomocą panelu dostępu i wybierając typ najlepiej rejestracji jednokrotnej odpowiednie dla danego zastosowania. Jeden z tych typów *opartego na hasłach logowania jednokrotnego*, umożliwia usłudze Azure AD działają jako rodzaju "brokerze" podczas procesu logowania jednokrotnego dla tej aplikacji.
+Administrator usługi Azure AD konfiguruje aplikacje, do których użytkownik może uzyskać dostęp za pomocą panelu dostępu i wybierając typ logowania jednokrotnego dla tej aplikacji. Jednym z tych typów jest *Logowanie*jednokrotne oparte na hasłach, dzięki czemu usługa Azure AD działa jako "Broker" podczas procesu logowania dla tej aplikacji.
 
-Użytkownicy logują raz przy użyciu swojego konta organizacji. To konto jest używane regularnie uzyskać dostęp do swojego pulpitu lub wiadomości e-mail. Mogą odnajdywać i dostęp do tych aplikacji, które są przypisane. Za pomocą udostępnionych kont tej listy aplikacji może zawierać dowolną liczbę poświadczeń udostępnionych. Użytkownik końcowy nie musi Zapamiętaj lub Zapisz różnych kont, które mogą używać.
+Użytkownicy logują się jednokrotnie przy użyciu konta organizacyjnego. To konto jest tym samym, z którego regularnie korzysta do uzyskiwania dostępu do swojego pulpitu lub poczty e-mail. Mogą oni odnajdywać i uzyskiwać dostęp tylko do tych aplikacji, do których są przypisane. Dzięki udostępnionym kontom ta lista aplikacji może zawierać dowolną liczbę poświadczeń udostępnionych. Użytkownik końcowy nie musi pamiętać ani zapisywać różnych kont, które mogą być używane.
 
-Udostępnione konta nie tylko zwiększyć nadzoru i zwiększyć użyteczność, również zwiększyć bezpieczeństwo. Użytkownicy z uprawnieniami do korzystania z poświadczeń nie widzisz wspólne hasło, ale raczej uzyskać uprawnienia do korzystania z hasła jako część przepływu uwierzytelniania zorganizowane. Ponadto niektóre hasło logowania jednokrotnego aplikacji zapewniają możliwość korzystania z usługi Azure AD, należy okresowo przerzucania (aktualizacja) hasła. System używa dużych i złożonych haseł, które zwiększa bezpieczeństwo konta. Administrator może łatwo udzielić lub odwołać dostęp do aplikacji, wie, kto ma dostęp do konta i kto ma dostęp do niego w przeszłości.
+Współużytkowane konta nie tylko zwiększają nadzór i zwiększają użyteczność, a także zwiększają bezpieczeństwo. Użytkownicy z uprawnieniami do korzystania z poświadczeń nie widzą hasła udostępnionego, ale nie otrzymują uprawnień do używania hasła w ramach zorganizowanego przepływu uwierzytelniania. Ponadto niektóre aplikacje logowania jednokrotnego hasła umożliwiają korzystanie z usługi Azure AD do okresowego przerzucania haseł (aktualizacji). System używa dużych, złożonych haseł, które zwiększają bezpieczeństwo konta. Administrator może łatwo udzielić lub odwołać dostęp do aplikacji, wiedzący o tym, kto ma dostęp do konta i kto ma do niego dostęp w przeszłości.
 
-Usługa Azure AD obsługuje udostępnione konta dla dowolnej usługi Enterprise Mobility Suite (EMS), Premium lub podstawowa licencjonowanych użytkowników, w przypadku wszystkich typów hasło pojedynczego logowania aplikacji. Można udostępniać konta dla dowolnej tysiące wstępnie zintegrowanych aplikacji w galerii aplikacji i można dodać własne uwierzytelniania hasła aplikacji przy użyciu [niestandardowe aplikacje logowania jednokrotnego](../manage-apps/configure-single-sign-on-portal.md).
+Usługa Azure AD obsługuje współużytkowane konta dla wszystkich typów haseł logowania jednokrotnego (Enterprise Mobility Suite), Premium lub Basic licencjonowanych użytkowników. W galerii aplikacji można udostępniać konta dla dowolnych tysięcy wstępnie zintegrowanych aplikacji, a także dodawać własne aplikacje uwierzytelniające hasła przy użyciu [niestandardowych aplikacji SSO](../manage-apps/configure-single-sign-on-portal.md).
 
-Funkcje platformy Azure AD, które umożliwiają udostępnianie konta obejmują:
+Funkcje usługi Azure AD, które umożliwiają udostępnianie kont, obejmują:
 
-* [Hasło logowania jednokrotnego](../manage-apps/what-is-single-sign-on.md#password-based-sso)
-* Hasło pojedynczego logowania jednokrotnego agenta
-* [Przypisanie do grupy](groups-self-service-management.md)
-* Niestandardowe hasło aplikacji
-* [Raporty pulpitu nawigacyjnego użycie aplikacji](../active-directory-passwords-get-insights.md)
-* Portale dostępu użytkownika końcowego
+* [Logowanie jednokrotne przy użyciu hasła](../manage-apps/what-is-single-sign-on.md#password-based-sso)
+* Agent logowania jednokrotnego dla hasła
+* [Przypisanie grupy](groups-self-service-management.md)
+* Niestandardowe aplikacje hasła
+* [Pulpit nawigacyjny/raporty użycia aplikacji](../active-directory-passwords-get-insights.md)
+* Portale dostępu użytkowników końcowych
 * [Serwer proxy aplikacji](../manage-apps/application-proxy.md)
 * [Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/all/)
 
-## <a name="sharing-an-account"></a>Udostępnianie kont
-Aby korzystać z usługi Azure AD, aby udostępnić konto, należy:
+## <a name="sharing-an-account"></a>Udostępnianie konta
+Aby używać usługi Azure AD do udostępniania konta, musisz:
 
-* Dodawanie aplikacji [galerii aplikacji](https://azure.microsoft.com/marketplace/active-directory/) lub [aplikacji niestandardowej](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)
-* Konfigurowanie aplikacji dla hasła pojedynczego logowania jednokrotnego (SSO)
-* Użyj [przypisywania na podstawie grupy](groups-saasapps.md) i wybrać opcję wprowadzenia poświadczeń udostępnionych
-* Opcjonalnie: w niektórych aplikacjach, takich jak Facebook, Twitter i LinkedIn, możesz włączyć opcję dla [usługi Azure AD automatycznego przerzucania hasła](https://cloudblogs.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/)
+* Dodawanie [galerii](https://azure.microsoft.com/marketplace/active-directory/) aplikacji aplikacji lub [aplikacji niestandardowej](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)
+* Konfigurowanie aplikacji do logowania jednokrotnego (SSO) hasła
+* Użyj [przypisania opartego na grupach](groups-saasapps.md) i wybierz opcję, aby wprowadzić poświadczenia udostępnione
 
-Można również ustawić konta udostępnionego bezpieczniejsze z usługi Multi-Factor Authentication (MFA) (Dowiedz się więcej o [zabezpieczanie aplikacji z usługą Azure AD](../authentication/concept-mfa-whichversion.md)) i delegować możliwość zarządzania, kto ma dostęp do aplikacji przy użyciu [ Usługa Azure AD samoobsługi](groups-self-service-management.md) grupy zarządzania.
+Możesz również zwiększyć bezpieczeństwo konta współużytkowanego przy użyciu uwierzytelniania wieloskładnikowego (MFA) (Dowiedz się więcej o [zabezpieczaniu aplikacji za pomocą usługi Azure AD](../authentication/concept-mfa-whichversion.md)) i można delegować możliwość zarządzania dostępem do aplikacji za pomocą samoobsługowej usługi [Azure AD. ](groups-self-service-management.md)zarządzanie grupami.
 
 ## <a name="related-articles"></a>Pokrewne artykuły:
 * [Zarządzanie aplikacjami w usłudze Azure Active Directory](../manage-apps/what-is-application-management.md)
 * [Ochrona aplikacji przy użyciu dostępu warunkowego](../active-directory-conditional-access-azure-portal.md)
-* [Zarządzanie grupami samoobsługi/SSAA](groups-self-service-management.md)
+* [Samoobsługowe zarządzanie grupami/SSAA](groups-self-service-management.md)

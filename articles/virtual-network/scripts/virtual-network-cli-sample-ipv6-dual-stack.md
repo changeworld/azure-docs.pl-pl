@@ -1,7 +1,7 @@
 ---
-title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — Konfigurowanie sieci wirtualnej punktów końcowych protokołu IPv6 (wersja zapoznawcza)
+title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — Konfigurowanie punktów końcowych sieci wirtualnej IPv6 (wersja zapoznawcza)
 titlesuffix: Azure Virtual Network
-description: Włączanie punktów końcowych protokołu IPv6 przy użyciu wiersza polecenia platformy Azure w usłudze Azure Virtual Network
+description: Włączanie punktów końcowych IPv6 przy użyciu interfejsu wiersza polecenia platformy Azure na platformie Azure Virtual Network
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,33 +12,35 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/23/2019
 ms.author: kumud
-ms.openlocfilehash: a1c8f151a4c6459064d92ff2efb44fa8b74f8fc1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3df475ce89a3b1f5a1acfb20dc427fdb7a9b7d16
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "63761462"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248903"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>Konfigurowanie punktów końcowych protokołu IPv6 w sieci wirtualnej przykładowy skrypt (wersja zapoznawcza)
+# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>Przykład konfiguracji punktów końcowych protokołu IPv6 w skrypcie sieci wirtualnej (wersja zapoznawcza)
 
-W tym artykule pokazano, jak wdrożyć aplikację na platformie Azure, która obejmuje sieć wirtualną podwójnego stosu z podsiecią podwójnego stosu, moduł równoważenia obciążenia z konfiguracji frontonu podwójnego (IPv4 + IPv6), maszyn wirtualnych przy użyciu karty sieciowe, które ma podwójną konfiguracji adresu IP, podwójny stos (IPv4 + IPv6) reguły podwójną sieciowej grupy zabezpieczeń, a dwa publiczne adresy IP.
+W tym artykule opisano sposób wdrażania aplikacji podwójnego stosu (IPv4 + IPv6) na platformie Azure, która obejmuje sieć wirtualną o podwójnej stercie z podsiecią podwójnego stosu, moduł równoważenia obciążenia z dwoma sieciami frontonu (IPv4 + IPv6), maszyny wirtualne z kartami sieciowymi z konfiguracją Dual IP, podwójne reguły sieciowej grupy zabezpieczeń i dwa publiczne adresy IP.
 
 Skrypt można wykonać z poziomu usługi Azure [Cloud Shell](https://shell.azure.com/bash) lub lokalnej instalacji wiersza polecenia platformy Azure. Jeśli używasz interfejsu wiersza polecenia lokalnie, ten skrypt wymaga uruchomienia wersji 2.0.28 lub nowszej. Aby dowiedzieć się, jaka wersja została zainstalowana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia lokalnie, musisz też uruchomić polecenie `az login`, aby utworzyć połączenie z platformą Azure.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Aby używać protokołu IPv6 dla funkcji sieci wirtualnej platformy Azure, należy skonfigurować subskrypcję tylko raz w następujący sposób:
+Aby użyć funkcji IPv6 dla usługi Azure Virtual Network, należy skonfigurować subskrypcję tylko raz w następujący sposób:
 
 ```azurecli
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
+az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
-Trwa rejestracja funkcji ukończyć do 30 minut. Za pomocą następującego polecenia wiersza polecenia platformy Azure, możesz sprawdzić swój status rejestracji:
+Ukończenie rejestracji funkcji może potrwać do 30 minut. Stan rejestracji można sprawdzić, uruchamiając następujące polecenie interfejsu wiersza polecenia platformy Azure:
 
 ```azurelci
 az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
+az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
-Po zakończeniu rejestracji, uruchom następujące polecenie:
+Po zakończeniu rejestracji Uruchom następujące polecenie:
 
 ```azurelci
 az provider register --namespace Microsoft.Network
@@ -287,7 +289,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [az vm create](/cli/azure/vm#az-vm-create) | Tworzy maszynę wirtualną i łączy ją z kartą sieciową, siecią wirtualną, podsiecią i sieciową grupą zabezpieczeń. To polecenie określa również obraz maszyny wirtualnej do użycia oraz poświadczenia administracyjne.  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

@@ -1,6 +1,6 @@
 ---
-title: Narzędzie do modelowania zagrożeń zwalnia — narzędzie do modelowania zagrożeń firmy Microsoft — Azure | Dokumentacja firmy Microsoft
-description: Dokumentowanie informacje o wersji przed zagrożeniami, narzędzie do modelowania
+title: Threat Modeling Tool releases — Microsoft Threat Modeling Tool na platformie Azure | Microsoft Docs
+description: Dokumentowanie informacji o wersji dla narzędzia do modelowania zagrożeń
 services: security
 documentationcenter: na
 author: jegeib
@@ -14,33 +14,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: jegeib
-ms.openlocfilehash: c2ef02fd4c057dbdb15632752521ae314571560b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9cf9ecca59b60f93749133c98cc23c6d6815c41e
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60586071"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849773"
 ---
-# <a name="threat-modeling-tool-releases"></a>Wersje narzędzia do modelowania zagrożeń
+# <a name="threat-modeling-tool-releases"></a>Wersje Threat Modeling Tool
 
-Narzędzie do modelowania zagrożeń firmy Microsoft jest obecnie ogólnie jako wolną [kliknij do pobierania](https://aka.ms/threatmodelingtool) aplikacji dla Windows. Ten mechanizm dostarczania pozwala nam wypychania najnowsze ulepszenia i poprawki dla klientów każdym otwarciu narzędzia.
+Microsoft Threat Modeling Tool jest obecnie zwalniana jako bezpłatna aplikacja [do pobrania](https://aka.ms/threatmodelingtool) dla systemu Windows. Mechanizm dostarczania pozwala nam na wypychanie najnowszych ulepszeń i poprawek błędów do klientów przy każdym otwarciu narzędzia.
 
 ## <a name="system-requirements"></a>Wymagania systemowe
 
 - Obsługiwane systemy operacyjne
-  - Program Microsoft Windows Update rozliczenia 10 lub nowszym
+  - Rocznicowa Aktualizacja systemu Microsoft Windows 10 lub nowsza wersja
 - Wymagana wersja platformy .NET
   - .NET 4.7.1 lub nowszy
 - Wymagania dodatkowe
-  - Aby otrzymywać aktualizacje do narzędzia i szablony wymagane jest połączenie internetowe.
+  - Do otrzymywania aktualizacji narzędzia i szablonów jest wymagane połączenie z Internetem.
 
 ## <a name="release-notes"></a>Informacje o wersji
 
-- [Microsoft Threat modelowania narzędzia w wersji Ogólnodostępnej wersji 7.1.60408.1](./azure-security-threat-modeling-tool-releases-71604081.md) — 2019 9 kwietnia
-- [Microsoft Threat modelowania narzędzia w wersji Ogólnodostępnej wersji 7.1.60126.1](./azure-security-threat-modeling-tool-releases-71601261.md) — 2019 29 stycznia
-- [Microsoft Threat modelowania narzędzia w wersji Ogólnodostępnej wersji 7.1.51023.1](./azure-security-threat-modeling-tool-releases-71510231.md) — 2018 1 listopada
-- [Microsoft Threat modelowania narzędzia w wersji Ogólnodostępnej wersji 7.1.50911.2](./azure-security-threat-modeling-tool-releases-71509112.md) — 2018 12 września
+- [Microsoft Threat Modeling Tool w wersji 7.1.60702.1](./azure-security-threat-modeling-tool-releases-71607021.md) – Lipiec 2 2019
+- [Microsoft Threat Modeling Tool wersja release 7.1.60408.1](./azure-security-threat-modeling-tool-releases-71604081.md) -Kwiecień 9 2019
+- [Microsoft Threat Modeling Tool wersja 7.1.60126.1](./azure-security-threat-modeling-tool-releases-71601261.md) — Styczeń 29 2019
+- [Microsoft Threat Modeling Tool ga wersja 7.1.51023.1](./azure-security-threat-modeling-tool-releases-71510231.md) — Listopad 1 2018
+- [Microsoft Threat Modeling Tool wersja release 7.1.50911.2](./azure-security-threat-modeling-tool-releases-71509112.md) -Wrzesień 12 2018
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Pobierz najnowszą wersję [narzędzie do modelowania zagrożeń firmy Microsoft](https://aka.ms/threatmodelingtool).
+Pobierz najnowszą wersję [Microsoft Threat Modeling Tool](https://aka.ms/threatmodelingtool).
