@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 01fd5b06a2e534a85c88d5c1a706713f07f40106
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: d44877e35687745ddba51d4d015729e62106c9ca
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277565"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348435"
 ---
 # <a name="quickstart-change-model-using-c"></a>Szybki start: zmiana modelu przy użyciu języka C#
 
@@ -37,19 +37,19 @@ ms.locfileid: "68277565"
 
 ## <a name="create-quickstart-code"></a>Tworzenie kodu przewodnika Szybki start 
 
-W programie Visual Studio Utwórz nowy **Windows Classic Desktop konsoli** aplikacji przy użyciu programu .NET Framework. Nadaj projektowi nazwę `ConsoleApp1`.
+W programie Visual Studio Utwórz nową aplikację **klasycznej konsoli klasycznych systemu Windows** przy użyciu .NET Framework. Nadaj nazwę projektowi `ConsoleApp1`.
 
 ![Typ projektu programu Visual Studio](./media/luis-quickstart-cs-add-utterance/vs-project-type.png)
 
 ### <a name="add-the-systemweb-dependency"></a>Dodawanie zależności System.Web
 
-W projekcie programu Visual Studio wymagana jest zależność **System.Web**. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **odwołania** i wybierz **Dodaj odwołanie** z sekcji zestawów.
+W projekcie programu Visual Studio wymagana jest zależność **System.Web**. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy pozycję **odwołania** i wybierz polecenie **Dodaj odwołanie** z sekcji zestawy.
 
 ![Dodawanie odwołania System.Web](./media/luis-quickstart-cs-add-utterance/system.web.png)
 
 ### <a name="add-other-dependencies"></a>Dodawanie innych zależności
 
-W projekcie programu Visual Studio wymagane są pakiety **JsonFormatterPlus** i **CommandLineParser**. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy pozycję **Odwołania**, a następnie wybierz polecenie **Zarządzaj pakietami NuGet...** . Przeglądaj w poszukiwaniu i Dodaj każdy z dwóch pakietów. 
+W projekcie programu Visual Studio wymagane są pakiety **JsonFormatterPlus** i **CommandLineParser**. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy pozycję **Odwołania**, a następnie wybierz polecenie **Zarządzaj pakietami NuGet...** . Wyszukaj i Dodaj wszystkie te dwa pakiety. 
 
 ![Dodawanie zależności innych firm](./media/luis-quickstart-cs-add-utterance/add-dependencies.png)
 
@@ -57,7 +57,7 @@ W projekcie programu Visual Studio wymagane są pakiety **JsonFormatterPlus** i 
 ### <a name="write-the-c-code"></a>Tworzenie kodu w języku C#
 Plik **Program.cs** powinien mieć następującą zawartość:
 
-```C#
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -75,7 +75,7 @@ namespace ConsoleApp1
 }
 ```
 
-Zaktualizuj zależności, które są:
+Zaktualizuj zależności, aby:
 
    [!code-csharp[Add the dependencies](~/samples-luis/documentation-samples/quickstarts/change-model/csharp/ConsoleApp1/Program.cs?range=1-11 "Add the dependencies")]
 
@@ -115,7 +115,7 @@ Aby zarządzać argumentami wiersza polecenia, dodaj kod główny. Dodaj metodę
 
 ### <a name="copy-utterancesjson-to-output-directory"></a>Kopiowanie pliku utterances.json do katalogu wyjściowego
 
-W Eksploratorze rozwiązań należy dodać `utterances.json` klikając prawym przyciskiem myszy nazwę projektu w Eksploratorze rozwiązań, a następnie wybierając pozycję **Dodaj**, a następnie wybierając pozycję **istniejący element**. Wybierz `utterances.json` pliku. Spowoduje to dodanie pliku do projektu. Następnie należy do dodania do kierunku danych wyjściowych. Kliknij prawym przyciskiem myszy `utterances.json` i wybierz **właściwości**. W oknach właściwości dla pozycji **Akcja kompilacji** wybierz wartość `Content`, a dla pozycji **Kopiuj do katalogu wyjściowego** wartość `Copy Always`.  
+W Eksplorator rozwiązań Dodaj `utterances.json` przez kliknięcie prawym przyciskiem myszy nazwę projektu Eksplorator rozwiązań, a następnie wybierz pozycję **Dodaj**, a następnie wybierz pozycję **istniejący element**. `utterances.json` Wybierz plik. Spowoduje to dodanie pliku do projektu. Następnie należy dodać go do kierunku danych wyjściowych. Kliknij prawym przyciskiem `utterances.json` myszy pozycję i wybierz pozycję **Właściwości**. W oknach właściwości dla pozycji **Akcja kompilacji** wybierz wartość `Content`, a dla pozycji **Kopiuj do katalogu wyjściowego** wartość `Copy Always`.  
 
 ![Oznaczanie pliku JSON jako zawartości](./media/luis-quickstart-cs-add-utterance/content-properties.png)
 
@@ -138,6 +138,6 @@ W tym wierszu polecenia wyświetlane są wyniki wywołania interfejsu API dodawa
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 Po ukończeniu przewodnika Szybki start usuń wszystkie pliki utworzone w tym przewodniku Szybki start. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"] 
 > [Programowe tworzenie aplikacji LUIS](luis-tutorial-node-import-utterances-csv.md) 

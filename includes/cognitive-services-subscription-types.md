@@ -4,27 +4,29 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: ad1527a5e7f1cb2ff1beb9ddace5460f41bb8a87
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 674dd30ff3e493ec4c4036f032f82624a6ca5749
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461509"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334232"
 ---
-## <a name="azure-cognitive-service-subscription-types"></a>Usługa Azure typów subskrypcji usługi cognitive Services
+## <a name="azure-cognitive-service-resource-types"></a>Typy zasobów usługi poznawczej platformy Azure
 
 > [!NOTE]
-> Właściciele subskrypcji można wyłączyć tworzenie konta usług Cognitive Services dla subskrypcji i grupy zasobów, stosując [usługa Azure policy](https://docs.microsoft.com/azure/governance/policy/overview#policy-definition), przypisywanie definicji zasad "nie dozwolone typy zasobów" i określając **Microsoft.CognitiveServices/accounts** jako typ zasobu docelowego.
+> Właściciele subskrypcji mogą wyłączyć tworzenie zasobów Cognitive Services dla grup zasobów i subskrypcji, stosując [Zasady platformy Azure](https://docs.microsoft.com/azure/governance/policy/overview#policy-definition), przypisując definicje zasad "Niedozwolone typy zasobów" i określając  **Microsoft. CognitiveServices/konta** jako docelowy typ zasobu.
 
-Dostęp z usług Azure Cognitive Services, za pośrednictwem dwóch różnych subskrypcjach: Wielu usług subskrypcji lub jednousługowa jeden. Te subskrypcje pozwalają połączyć się z jednej usługi lub wiele usług na raz.
+Dostęp do usługi Azure Cognitive Services można uzyskać za pomocą dwóch różnych zasobów: Zasób wielu usług lub jedna usługa. Te subskrypcje umożliwiają łączenie się z jedną usługą lub wieloma usługami jednocześnie.
 
-### <a name="multi-service-subscription"></a>Wielu usług subskrypcji
+### <a name="multi-service-resource"></a>Zasób obejmujący wiele usług
 
 >[!WARNING]
-> W tej chwili tych usług **nie** obsługi wielu usług kluczy: Usługa QnA Maker usług przetwarzania mowy, Custom Vision i wykrywanie anomalii.
+> W tej chwili te usługi **nie** obsługują kluczy wielousługowych: QnA Maker, usługi mowy, Custom Vision i wykrywania anomalii.
 
-Wielu usług subskrypcję dla usług Azure Cognitive Services umożliwia korzystanie z jednej subskrypcji i zasobów platformy Azure dla większości usług Azure Cognitive Services i konsoliduje rozliczeń z usługami, których używasz. Zobacz [cennik usług Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) Aby uzyskać dodatkowe informacje.
+Subskrybowanie wielousługowego zasobu Cognitive Services:
+* Umożliwia korzystanie z pojedynczego zasobu platformy Azure dla większości Cognitive Services platformy Azure.
+* Konsoliduje rozliczenia od usług, z których korzystasz. Zobacz [cennik Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) , aby uzyskać dodatkowe informacje.
 
-### <a name="single-service-subscription"></a>Usługę pojedynczej subskrypcji
+### <a name="single-service-resource"></a>Zasób pojedynczego usługi
 
-Subskrypcja do pojedynczej usługi, takie jak przetwarzanie obrazów lub usług przetwarzania mowy. Subskrypcja jednousługowa jest ograniczona do tego zasobu. 
+Zasoby pojedynczej usługi (takie jak przetwarzanie obrazów lub usługi mowy) są ograniczone do określonej usługi.

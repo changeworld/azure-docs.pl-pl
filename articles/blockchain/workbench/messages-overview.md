@@ -262,7 +262,7 @@ Blockchain Workbench zwraca odpowiedź z następujących pól:
 | messageSchemaVersion  | Wersja schematu komunikatów |
 | messageName           | **CreateContractActionUpdate** |
 | status                | Stan żądania akcji kontraktu. Możliwe wartości: **Przesłano**, **zatwierdzone**, **błąd**.                         |
-| AdditionalInformation | Dodatkowe informacje podane na podstawie stanu |
+| additionalInformation | Dodatkowe informacje podane na podstawie stanu |
 
 Przykład przesłane **Utwórz akcję kontraktu** odpowiedzi z aplikacji Blockchain Workbench:
 
@@ -388,7 +388,7 @@ Zawiera informacje o poszczególnych bloków. *BlockMessage* zawiera sekcja o in
 | connectionId | Unikatowy identyfikator połączenia |
 | messageSchemaVersion | Wersja schematu komunikatów |
 | messageName | **BlockMessage** |
-| AdditionalInformation | Dodatkowe informacje podane |
+| additionalInformation | Dodatkowe informacje podane |
 
 #### <a name="block-information"></a>Blok informacji
 
@@ -460,7 +460,7 @@ Zawiera informacje o kontraktu. Komunikat zawiera sekcja właściwości kontrakt
 | connectionId | Unikatowy identyfikator połączenia |
 | messageSchemaVersion | Wersja schematu komunikatów |
 | messageName | **ContractMessage** |
-| AdditionalInformation | Dodatkowe informacje podane |
+| additionalInformation | Dodatkowe informacje podane |
 
 #### <a name="modifying-transaction-information"></a>Modyfikowanie informacji o transakcji
 
@@ -573,7 +573,7 @@ Zawiera informacje, po wywołaniu funkcji kontraktu, takich jak nazwy funkcji, p
 | connectionId                | Unikatowy identyfikator połączenia |
 | messageSchemaVersion        | Wersja schematu komunikatów |
 | messageName                 | **EventMessage** |
-| AdditionalInformation       | Dodatkowe informacje podane |
+| additionalInformation       | Dodatkowe informacje podane |
 
 #### <a name="caller-information"></a>Informacje o wywołującym
 
@@ -654,7 +654,7 @@ Zawiera informacje, gdy aplikacja zostanie przekazany do aplikacji Workbench, ta
 | connectionId | Unikatowy identyfikator połączenia |
 | messageSchemaVersion | Wersja schematu komunikatów |
 | messageName | **EventMessage** |
-| AdditionalInformation | Podane tu informacje dodatkowe zawiera Stany przepływu pracy aplikacji i informacje o przejście. |
+| additionalInformation | Podane tu informacje dodatkowe zawiera Stany przepływu pracy aplikacji i informacje o przejście. |
 
 #### <a name="contract-code-information"></a>Informacje o kodu kontraktu
 
@@ -847,7 +847,7 @@ Zawiera informacje, gdy użytkownik ma przypisaną rolę w aplikacji Workbench, 
 | connectionId           | Unikatowy identyfikator połączenia |
 | messageSchemaVersion   | Wersja schematu komunikatów |
 | messageName            | **EventMessage** |
-| AdditionalInformation  | Dodatkowe informacje podane |
+| additionalInformation  | Dodatkowe informacje podane |
 
 #### <a name="roleassignment-application-role"></a>Rola aplikacji RoleAssignment
 

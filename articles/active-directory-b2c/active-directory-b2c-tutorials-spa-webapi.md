@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 609e7bc4104a445c5d77109c9470fb487b2f1336
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: cbea29320c896637190766d1b2b60c09f7db5163
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66507743"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68347165"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Samouczek: udzielanie dostępu do internetowego interfejsu API platformy ASP.NET Core z aplikacji jednostronicowej przy użyciu usługi Azure Active Directory B2C
 
@@ -47,7 +47,7 @@ Należy zarejestrować zasoby internetowego interfejsu API w dzierżawie, zanim 
 6. Dla pozycji **Uwzględnij aplikację internetową/internetowy interfejs API** i **Zezwalaj na niejawny przepływ** wybierz wartość **Tak**.
 7. Dla pozycji **Adres URL odpowiedzi** wprowadź punkt końcowy, w którym usługa Azure AD B2C powinna zwracać wszelkie tokeny żądane przez Twoją aplikację. W tym samouczku przykładowa aplikacja jest uruchamiana lokalnie i nasłuchuje na `https://localhost:5000`.
 8. Dla pozycji **Identyfikator URI identyfikatora aplikacji** wprowadź identyfikator używany na potrzeby internetowego interfejsu API. Zostanie wygenerowany pełny identyfikator URI łącznie z domeną. Na przykład `https://contosotenant.onmicrosoft.com/api`.
-9. Kliknij pozycję **Utwórz**.
+9. Kliknij przycisk **Utwórz**.
 10. Na stronie właściwości zapisz identyfikator aplikacji, który będzie używany podczas konfigurowania aplikacji internetowej.
 
 ## <a name="configure-scopes"></a>Konfigurowanie zakresów
@@ -58,7 +58,7 @@ Zakresy umożliwiają zarządzanie dostępem do chronionych zasobów. Zakresy s�
 2. Wybierz pozycję **Opublikowane zakresy**.
 3. Dla pozycji **zakres** wprowadź `Hello.Read`, a dla opisu wprowadź `Read access to hello`.
 4. Dla pozycji **zakres** wprowadź `Hello.Write`, a dla opisu wprowadź `Write access to hello`.
-5. Kliknij pozycję **Zapisz**.
+5. Kliknij polecenie **Zapisz**.
 
 Opublikowane zakresy umożliwiają udzielenie aplikacji klienckiej uprawnień do internetowego interfejsu API.
 
@@ -103,14 +103,14 @@ Aby umożliwić aplikacji jednostronicowej wywoływanie internetowego interfejsu
 
 1. W pliku **Startup.cs** dodaj mechanizm CORS do metody `ConfigureServices()`.
 
-    ```C#
+    ```csharp
     public void ConfigureServices(IServiceCollection services) {
       services.AddCors();
     ```
 
 2. W pliku **Startup.cs** skonfiguruj mechanizm CORS w metodzie `Configure()`.
 
-    ```C#
+    ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory) {
       app.UseCors(builder =>
         builder.WithOrigins("http://localhost:6420").AllowAnyHeader().AllowAnyMethod());
@@ -169,7 +169,7 @@ Po uruchomieniu projektu strona internetowa jest wyświetlana w przeglądarce do
 
 Po utworzeniu nowego konta lub zalogowaniu się przy użyciu konta użytkownika przykład wywołuje chronionej internetowy interfejs API i zwraca wynik.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: c84f336d11a512435e6d8eea814b41e9213eeb13
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 699dd41024bd60b2016771d728253d938fc9ab23
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835697"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68347151"
 ---
 # <a name="tutorial-enable-authentication-in-a-native-client-application-using-azure-active-directory-b2c"></a>Samouczek: włączanie uwierzytelniania w natywnej aplikacji klienckiej przy użyciu usługi Azure Active Directory B2C
 
@@ -33,7 +33,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - [Tworzenie przepływów użytkownika](tutorial-create-user-flows.md), aby umieścić platformę użytkownika w Twojej aplikacji.
-- Zainstaluj [Visual Studio 2019](https://www.visualstudio.com/downloads/) z **programowanie aplikacji klasycznych dla platformy .NET** i **ASP.NET i tworzenie aplikacji internetowych** obciążeń.
+- Zainstaluj [program Visual Studio 2019](https://www.visualstudio.com/downloads/) przy użyciu programu **.NET desktop Development** i **ASP.NET oraz obciążeń związanych z programowaniem aplikacji sieci Web** .
 
 ## <a name="add-the-native-client-application"></a>Dodawanie natywnej aplikacji klienckiej
 
@@ -65,14 +65,14 @@ Aby zmienić ustawienia aplikacji, zastąp `<your-tenant-name>` nazwą swojej dz
 1. Otwórz rozwiązanie `active-directory-b2c-wpf` w programie Visual Studio.
 2. W projekcie `active-directory-b2c-wpf` otwórz plik **App.xaml.cs** i wprowadź następujące aktualizacje:
 
-    ```C#
+    ```csharp
     private static string Tenant = "<your-tenant-name>.onmicrosoft.com";
     private static string ClientId = "<application-ID>";
     ```
 
 3. Zaktualizuj zmienną **PolicySignUpSignIn** za pomocą nazwy utworzonego przepływu użytkownika.
 
-    ```C#
+    ```csharp
     public static string PolicySignUpSignIn = "B2C_1_signupsignin1";
     ```
 
@@ -88,7 +88,7 @@ Naciśnij klawisz **F5**, aby skompilować i uruchomić przykładową aplikację
 
     Użyj prawidłowego adresu e-mail i przeprowadź weryfikację przy użyciu kodu weryfikacyjnego. Ustaw hasło. Wprowadź wartości żądanych atrybutów.
 
-    ![Strona rejestracji wyświetlane jako część sign-in/rejestracją przepływu pracy](media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.PNG)
+    ![Strona rejestracji wyświetlana w ramach przepływu pracy logowania/rejestrowania](media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.PNG)
 
 4. Kliknij pozycję **Utwórz**, aby utworzyć konto lokalne w dzierżawie usługi Azure AD B2C.
 

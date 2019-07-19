@@ -81,6 +81,8 @@
       href: sample-v2-code.md
     - name: Pojęcia
       items:
+        - name: Podstawowe informacje o uwierzytelnianiu
+          href: authentication-scenarios.md
         - name: Przepływy uwierzytelniania i scenariusze aplikacji
           href: authentication-flows-app-scenarios.md
         - name: Scenariusze aplikacji
@@ -271,8 +273,6 @@
                       href: msal-js-known-issues-safari-browser.md
         - name: Protokół uwierzytelniania
           items:
-            - name: Podstawowe informacje o uwierzytelnianiu
-              href: authentication-scenarios.md
             - name: Typy aplikacji i protokół OAuth 2.0
               href: v2-app-types.md
             - name: Protokoły OAuth 2.0 i OpenID Connect

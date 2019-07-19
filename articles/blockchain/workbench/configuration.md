@@ -209,7 +209,7 @@ Definiuje funkcje, które mogą być wykonywane w przepływie pracy.
 
 | Pole | Description | Wymagane | Maksymalna długość |
 |-------|-------------|:--------:|-----------:|
-| Name (Nazwa) | Unikatowa nazwa funkcji. Odpowiedni kontrakt inteligentnych muszą używać tego samego **nazwa** dla odpowiednich funkcji. | Tak | 50 |
+| Name | Unikatowa nazwa funkcji. Odpowiedni kontrakt inteligentnych muszą używać tego samego **nazwa** dla odpowiednich funkcji. | Tak | 50 |
 | DisplayName | Przyjazną nazwę wyświetlaną funkcji. | Yes | 255 |
 | Description | Opis funkcji | Nie | 255 |
 | Parametry | Kolekcja [identyfikatory](#identifiers) odpowiadający parametrów funkcji. | Tak | |
@@ -257,7 +257,7 @@ Kolekcja unikatowych stanów w przepływie pracy. Każdy stan przechwytuje krok 
 
 | Pole | Description | Wymagane | Maksymalna długość |
 |-------|-------------|:--------:|-----------:|
-| Name (Nazwa) | Unikatowa nazwa stanu. Odpowiedni kontrakt inteligentnych muszą używać tego samego **nazwa** dotyczy stanu. | Yes | 50 |
+| Name | Unikatowa nazwa stanu. Odpowiedni kontrakt inteligentnych muszą używać tego samego **nazwa** dotyczy stanu. | Yes | 50 |
 | DisplayName | Przyjazną nazwę wyświetlaną stanu. | Tak | 255 |
 | Description | Opis stanu. | Nie | 255 |
 | ProcentWykonania | Wartość całkowitą, wyświetlana w interfejsie użytkownika aplikacji Blockchain Workbench, aby wyświetlić postęp na przepływ sterowania logiki biznesowej. | Tak | |
@@ -371,7 +371,7 @@ Role aplikacji zdefiniować zestaw ról, które można przypisać do użytkownik
 
 | Pole | Description | Wymagane | Maksymalna długość |
 |-------|-------------|:--------:|-----------:|
-| Name (Nazwa) | Unikatowa nazwa roli aplikacji. Odpowiedni kontrakt inteligentnych muszą używać tego samego **nazwa** dla odpowiednich ról. Nazwy typów podstawowych są zastrzeżone. Nie można nadać nazwy roli aplikacji z taką samą nazwę jak [typu](#type)| Yes | 50 |
+| Name | Unikatowa nazwa roli aplikacji. Odpowiedni kontrakt inteligentnych muszą używać tego samego **nazwa** dla odpowiednich ról. Nazwy typów podstawowych są zastrzeżone. Nie można nadać nazwy roli aplikacji z taką samą nazwę jak [typu](#type)| Yes | 50 |
 | Description | Opis roli aplikacji. | Nie | 255 |
 
 ### <a name="application-roles-example"></a>Przykład ról aplikacji
@@ -394,7 +394,7 @@ Identyfikatory reprezentują kolekcję informacje używane do opisywania właśc
 
 | Pole | Description | Wymagane | Maksymalna długość |
 |-------|-------------|:--------:|-----------:|
-| Name (Nazwa) | Unikatowa nazwa właściwości lub parametru. Odpowiedni kontrakt inteligentnych muszą używać tego samego **nazwa** dla odpowiednich właściwości lub parametru. | Tak | 50 |
+| Name | Unikatowa nazwa właściwości lub parametru. Odpowiedni kontrakt inteligentnych muszą używać tego samego **nazwa** dla odpowiednich właściwości lub parametru. | Tak | 50 |
 | DisplayName | Przyjazna nazwa wyświetlana dla właściwości lub parametru. | Tak | 255 |
 | Description | Opis właściwości lub parametru. | Nie | 255 |
 

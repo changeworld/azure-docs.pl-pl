@@ -1,74 +1,74 @@
 ---
-title: Utwórz konto usług Cognitive Services w witrynie Azure portal
+title: Utwórz zasób Cognitive Services w Azure Portal
 titlesuffix: Azure Cognitive Services
-description: Jak utworzyć konta interfejsów API usługi Azure Cognitive Services w witrynie Azure portal.
+description: Rozpocznij pracę z usługą Azure Cognitive Services, tworząc i subskrybując zasób w Azure Portal.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/11/2019
+ms.date: 07/16/2019
 ms.author: aahi
-ms.openlocfilehash: b857ee0395c447c8699b8f6a812853528812a7bd
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e9616f3014288e4b2580f474c49c646928db5a08
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445850"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334247"
 ---
-# <a name="create-a-cognitive-services-account-using-the-azure-portal"></a>Tworzenie konta usług Cognitive Services w witrynie Azure portal
+# <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Tworzenie zasobu Cognitive Services przy użyciu Azure Portal
 
-W tym przewodniku Szybki Start dowiesz się, jak utworzyć konto usług Azure Cognitive Services i Utwórz konto, które ma subskrypcję usługi jednego lub wielu usług. Te usługi są reprezentowane przez platformę Azure [zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal), które umożliwiają łączenie się z jednego lub wielu interfejsów API usługi Azure Cognitive Services.
+Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć pracę z usługą Azure Cognitive Services przy użyciu Azure Portal. Cognitive Services są reprezentowane przez [zasoby](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal) platformy Azure utworzone w ramach subskrypcji platformy Azure. Po utworzeniu zasobu Użyj kluczy i punktu końcowego wygenerowanego do uwierzytelniania aplikacji. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Ważnej subskrypcji platformy Azure. [Tworzenie konta usługi](https://azure.microsoft.com/free/) za darmo.
+* Prawidłowa subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
-## <a name="create-a-new-azure-cognitive-services-resource"></a>Utwórz nowy zasób usług Azure Cognitive Services
+## <a name="create-a-new-azure-cognitive-services-resource"></a>Tworzenie nowego zasobu usługi Azure Cognitive Services
 
-Przed utworzeniem zasobu, musi mieć grupę zasobów platformy Azure. Każde konto usług Cognitive Services (i jego skojarzonego zasobu platformy Azure) musi należeć do grupy zasobów platformy Azure. Po utworzeniu konta masz opcję, aby utworzyć nową grupę zasobów lub użyć istniejącego. W tym artykule przedstawiono sposób tworzenia nowej grupy zasobów.
+Przed utworzeniem zasobu Cognitive Services należy mieć grupę zasobów platformy Azure, która będzie zawierać zasób. W przypadku tworzenia nowego zasobu można utworzyć nową grupę zasobów lub użyć istniejącej grupy. W tym artykule pokazano, jak utworzyć nową grupę zasobów.
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)i kliknij przycisk **+ Utwórz zasób**.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com)i kliknij pozycję **+ Utwórz zasób**.
 
     ![Wybierz interfejsy API usług Cognitive Services](media/cognitive-services-apis-create-account/azurePortalScreenMulti.png)
 
-2. Usługi Cognitive Services za pomocą można znaleźć w następujący sposób:
-    * Za pomocą paska wyszukiwania, a następnie wprowadź nazwę usługi, które chcesz subskrybować.
-        * Aby utworzyć zasób dla wielu usług subskrypcji, wprowadź **usług Cognitive Services** w wyszukiwaniu paska i wybierz **usług Cognitive Services** zasobów.
+2. Dostępne Cognitive Services można znaleźć w następujących sposób:
+    * Użyj paska wyszukiwania i wprowadź nazwę usługi, którą chcesz subskrybować.
+        * Aby utworzyć zasób obejmujący wiele usług, wprowadź **Cognitive Services** na pasku wyszukiwania, a następnie wybierz zasób **Cognitive Services** .
 
-        ![Wyszukiwanie poznawcze](media/cognitive-services-apis-create-account/azureCogServSearchMulti.png)
+        ![Wyszukaj Cognitive Services](media/cognitive-services-apis-create-account/azureCogServSearchMulti.png)
 
-    * Aby wyświetlić wszystkie dostępne usługi cognitive services, wybierz **SI i uczenie maszynowe**w obszarze **portalu Azure Marketplace**. Jeśli nie widzisz usługi interesuje Cię, kliknij polecenie **holograficznych** i przewiń do **usług Cognitive Services**. Kliknij przycisk **więcej** Aby wyświetlić cały katalog interfejsów API usług Cognitive Services.
+    * Aby wyświetlić wszystkie dostępne usługi poznawcze, wybierz pozycję **AI + Machine Learning**w obszarze **Azure Marketplace**. Jeśli nie widzisz interesującej Cię usługi, kliknij pozycję **Zobacz wszystko** i przewiń do **Cognitive Services**. Kliknij przycisk **więcej** , aby wyświetlić cały katalog interfejsy API usług Cognitive Services.
     
         ![Wybierz interfejsy API usług Cognitive Services](media/cognitive-services-apis-create-account/azureMarketplace.png)
 
-3. Na **Utwórz** Podaj następujące informacje:
+3. Na stronie **Tworzenie** podaj następujące informacje:
 
     > [!IMPORTANT]
-    > Usługi lokalizacji platformy Azure, należy pamiętać, ponieważ może on potrzebny podczas wywoływania usług Azure Cognitive Services.
+    > Zapamiętaj swoją lokalizację platformy Azure, ponieważ może być potrzebna podczas wywoływania Cognitive Services platformy Azure.
 
     |    |    |
     |--|--|
-    | **Nazwa** | Opisowa nazwa zasobu usług cognitive services. Firma Microsoft zaleca używanie nazwę opisową, na przykład *MyCognitiveServicesAccount*. |
+    | **Nazwa** | Opisowa nazwa zasobu usług poznawczej. Na przykład *MyCognitiveServicesAccount*. |
     | **Subskrypcja** | Wybierz jedną z dostępnych subskrypcji platformy Azure. |
-    | **Location** | Lokalizacja wystąpienia usługi cognitive Services. Różne lokalizacje może wprowadzić opóźnienie, ale nie mają wpływu na dostępność Twojego zasobu w czasie wykonywania. |
-    | **Warstwa cenowa** | Koszt konta usług Cognitive Services zależy od wybranych opcji i użycie. Aby uzyskać więcej informacji, zobacz omówienie interfejsu API [cennik](https://azure.microsoft.com/pricing/details/cognitive-services/).
-    | **Grupa zasobów** | [Grupy zasobów platformy Azure](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access#what-is-an-azure-resource-group) który będzie zawierał zasobu usług Cognitive Services. Można utworzyć nową grupę lub dodaj je do wcześniej istniejącej grupy. |
+    | **Location** | Lokalizacja wystąpienia usługi poznawczej. Różne lokalizacje mogą wprowadzać opóźnienia, ale nie mają wpływu na dostępność zasobu przez środowisko uruchomieniowe. |
+    | **Warstwa cenowa** | Koszt konta Cognitive Services zależy od wybranych opcji i użycia. Aby uzyskać więcej informacji, zobacz [szczegóły cennika](https://azure.microsoft.com/pricing/details/cognitive-services/)interfejsu API.
+    | **Grupa zasobów** | [Grupa zasobów platformy Azure](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access#what-is-an-azure-resource-group) , która będzie zawierać zasób Cognitive Services. Można utworzyć nową grupę lub dodać ją do istniejącej grupy. |
 
     ![Ekran tworzenia zasobów](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
 
-## <a name="get-the-keys-for-your-subscription"></a>Uzyskiwanie kluczy subskrypcji
+## <a name="get-the-keys-for-your-resource"></a>Pobierz klucze dla zasobu
 
-Po utworzeniu zasobu możesz do niego dostęp na pulpicie nawigacyjnym platformy Azure, jeśli został przypięty. W przeciwnym razie można znaleźć w **grup zasobów**. Po wybraniu zasobu, zaznaczając można uzyskać klucze **klucze** w obszarze **zarządzania zasobami**.
+Po utworzeniu zasobu możesz uzyskać do niego dostęp z poziomu pulpitu nawigacyjnego platformy Azure, jeśli został on przypięty. W przeciwnym razie można je znaleźć w **grupach zasobów**. Po wybraniu zasobu można pobrać klucze, wybierając pozycję **klucze** w obszarze **Zarządzanie zasobami**.
 
 [!INCLUDE [cognitive-services-environment-variables](../../includes/cognitive-services-environment-variables.md)]
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli chcesz wyczyścić i usunąć subskrypcję usług Cognitive Services, możesz usunąć zasób lub grupa zasobów. Usunięcie grupy zasobów powoduje również usunięcie wszystkich innych zasobów skojarzonych z grupą zasobów.
+Jeśli chcesz wyczyścić i usunąć subskrypcję Cognitive Services, możesz usunąć zasób lub grupę zasobów. Usunięcie grupy zasobów spowoduje również usunięcie wszystkich innych zasobów znajdujących się w grupie.
 
 Aby usunąć grupę zasobów za pomocą witryny Azure Portal:
 
@@ -78,7 +78,7 @@ Aby usunąć grupę zasobów za pomocą witryny Azure Portal:
 
 ## <a name="see-also"></a>Zobacz także
 
-* [Uwierzytelnianie żądań usług Azure Cognitive Services](authentication.md)
-* [Co to są usługi Azure Cognitive Services?](Welcome.md)
-* [Obsługuje język naturalny](language-support.md)
-* [Obsługa kontenerów platformy docker](cognitive-services-container-support.md)
+* [Uwierzytelnianie żądań w usłudze Azure Cognitive Services](authentication.md)
+* [Co to jest platforma Azure Cognitive Services?](Welcome.md)
+* [Obsługa języka naturalnego](language-support.md)
+* [Obsługa kontenerów platformy Docker](cognitive-services-container-support.md)

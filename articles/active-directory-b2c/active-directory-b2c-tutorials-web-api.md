@@ -2,20 +2,20 @@
 title: Samouczek — udzielanie dostępu do internetowego interfejsu API platformy ASP.NET — Azure Active Directory B2C | Microsoft Docs
 description: Samouczek dotyczący używania usługi Active Directory B2C do chronienia internetowego interfejsu API platformy ASP.NET i wywoływania go z aplikacji internetowej platformy ASP.NET.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
-ms.author: davidmu
+ms.author: marsma
 ms.date: 02/04/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 77e3eaeffba862c727e021427e5f27967fcf35bd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 339b118e48a01469312a40e6b0652a4ffb90291a
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687993"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68347128"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Samouczek: udzielanie dostępu do internetowego interfejsu API platformy ASP.NET przy użyciu usługi Azure Active Directory B2C
 
@@ -47,7 +47,7 @@ Należy zarejestrować zasoby internetowego interfejsu API w dzierżawie, zanim 
 6. Dla pozycji **Uwzględnij aplikację internetową/internetowy interfejs API** i **Zezwalaj na niejawny przepływ** wybierz wartość **Tak**.
 7. Dla pozycji **Adres URL odpowiedzi** wprowadź punkt końcowy, w którym usługa Azure AD B2C powinna zwracać wszelkie tokeny żądane przez Twoją aplikację. W tym samouczku przykładowa aplikacja jest uruchamiana lokalnie i nasłuchuje na `https://localhost:44332`.
 8. Dla pozycji **Identyfikator URI identyfikatora aplikacji** wprowadź identyfikator używany na potrzeby internetowego interfejsu API. Zostanie wygenerowany pełny identyfikator URI łącznie z domeną. Na przykład `https://contosotenant.onmicrosoft.com/api`.
-9. Kliknij pozycję **Utwórz**.
+9. Kliknij przycisk **Utwórz**.
 10. Na stronie właściwości zapisz identyfikator aplikacji, który będzie używany podczas konfigurowania aplikacji internetowej.
 
 ## <a name="configure-scopes"></a>Konfigurowanie zakresów
@@ -58,7 +58,7 @@ Zakresy umożliwiają zarządzanie dostępem do chronionych zasobów. Zakresy s�
 2. Wybierz pozycję **Opublikowane zakresy**.
 3. Dla pozycji **zakres** wprowadź `Hello.Read`, a dla opisu wprowadź `Read access to hello`.
 4. Dla pozycji **zakres** wprowadź `Hello.Write`, a dla opisu wprowadź `Write access to hello`.
-5. Kliknij pozycję **Zapisz**.
+5. Kliknij polecenie **Zapisz**.
 
 Opublikowane zakresy umożliwiają udzielenie aplikacji klienckiej uprawnień do internetowego interfejsu API.
 
@@ -91,13 +91,13 @@ Przykładowe rozwiązanie zawiera następujące dwa projekty:
 2. Otwórz plik **Web.config** w projekcie **TaskWebApp**.
 3. Aby uruchomić interfejs API lokalnie, użyj ustawienia „localhost” dla wartości **api:TaskServiceUrl**. Zmień plik Web.config w następujący sposób: 
 
-    ```C#
+    ```csharp
     <add key="api:TaskServiceUrl" value="https://localhost:44332/"/>
     ```
 
 3. Skonfiguruj identyfikator URI interfejsu API. Ten identyfikator URI jest używany przez aplikację internetową w celu wysyłania żądań do interfejsu API. Ponadto skonfiguruj żądane uprawnienia.
 
-    ```C#
+    ```csharp
     <add key="api:ApiIdentifier" value="https://<Your tenant name>.onmicrosoft.com/api/" />
     <add key="api:ReadScope" value="Hello.Read" />
     <add key="api:WriteScope" value="Hello.Write" />
@@ -108,25 +108,25 @@ Przykładowe rozwiązanie zawiera następujące dwa projekty:
 1. Otwórz plik **Web.config** w projekcie **TaskService**.
 2. Skonfiguruj interfejs API w celu korzystania z dzierżawy.
 
-    ```C#
+    ```csharp
     <add key="ida:Tenant" value="<Your tenant name>.onmicrosoft.com" />
     ```
 
 3. Jako identyfikator klienta ustaw zarejestrowany identyfikator aplikacji dla interfejsu API.
 
-    ```C#
+    ```csharp
     <add key="ida:ClientId" value="<application-ID>"/>
     ```
 
 4. Zaktualizuj ustawienie przepływu użytkownika, używając nazwy przepływu użytkownika rejestracji i logowania.
 
-    ```C#
+    ```csharp
     <add key="ida:SignUpSignInUserFlowId" value="B2C_1_signupsignin1" />
     ```
 
 5. Skonfiguruj ustawienie zakresów tak, aby było zgodne z ustawieniami utworzonymi w portalu.
 
-    ```C#
+    ```csharp
     <add key="api:ReadScope" value="Hello.Read" />
     <add key="api:WriteScope" value="Hello.Write" />
     ```
@@ -135,7 +135,7 @@ Przykładowe rozwiązanie zawiera następujące dwa projekty:
 
 Należy uruchomić zarówno projekt **TaskWebApp**, jak i **TaskService**. 
 
-1. W Eksploratorze rozwiązań kliknij rozwiązanie prawym przyciskiem myszy i wybierz pozycję **Ustaw projekty startowe...**. 
+1. W Eksploratorze rozwiązań kliknij rozwiązanie prawym przyciskiem myszy i wybierz pozycję **Ustaw projekty startowe...** . 
 2. Wybierz pozycję **Ustawianie wielu projektów startowych**.
 3. Zmień ustawienie **Akcja** dla obu projektów na wartość **Uruchom**.
 4. Kliknij pozycję **OK**, aby zapisać konfigurację.
@@ -147,7 +147,7 @@ Należy uruchomić zarówno projekt **TaskWebApp**, jak i **TaskService**.
 
 Podczas tworzenia elementu listy zadań do wykonania aplikacja internetowa wysyła żądanie do internetowego interfejsu API, aby wygenerować element listy zadań do wykonania. Chroniona aplikacja internetowa wywołuje chroniony internetowy interfejs API w dzierżawie usługi Azure AD B2C.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
