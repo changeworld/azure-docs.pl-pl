@@ -111,7 +111,7 @@ Aby zilustrować schematu ustawienie skalowania automatycznego, służy następu
 | rule | scaleAction | Działanie podejmowane w momencie wyzwolenia metricTrigger reguły. |
 | scaleAction | direction | "Zwiększ" do skalowania w poziomie lub "Zmniejsz" do skalowania do wewnątrz.|
 | scaleAction | value | Ile, aby zwiększyć lub zmniejszyć wydajność zasobu. |
-| scaleAction | ochładzania | Ilość czasu oczekiwania po zakończeniu operacji skalowania przed ponownym skalowaniem. Na przykład jeśli **ochładzania = "PT10M"** , automatycznego skalowania nie jest podejmowana próba skalowania ponownie dla innego 10 minut. Ochładzania jest umożliwienie metryk w celu stabilizacji po dodawania lub usuwania wystąpień. |
+| scaleAction | cooldown | Ilość czasu oczekiwania po zakończeniu operacji skalowania przed ponownym skalowaniem. Na przykład jeśli **ochładzania = "PT10M"** , automatycznego skalowania nie jest podejmowana próba skalowania ponownie dla innego 10 minut. Ochładzania jest umożliwienie metryk w celu stabilizacji po dodawania lub usuwania wystąpień. |
 
 ## <a name="autoscale-profiles"></a>Profile automatycznego skalowania
 
