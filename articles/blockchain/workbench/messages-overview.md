@@ -70,7 +70,7 @@ Blockchain Workbench zwraca odpowiedź z następujących pól:
 | messageSchemaVersion  | Wersja schematu komunikatów |
 | messageName           | **CreateUserUpdate** |
 | status                | Stan żądania utworzenia użytkownika.  Jeśli operacja się powiedzie, wartość jest **Powodzenie**. W przypadku awarii, wartość jest **błąd**.     |
-| AdditionalInformation | Dodatkowe informacje podane na podstawie stanu |
+| additionalInformation | Dodatkowe informacje podane na podstawie stanu |
 
 Przykład pomyślnie **Utwórz użytkownika** odpowiedzi z aplikacji Blockchain Workbench:
 
@@ -159,7 +159,7 @@ Blockchain Workbench zwraca odpowiedź z następujących pól:
 | messageSchemaVersion     | Wersja schematu komunikatów                                                         |
 | messageName              | **CreateContractUpdate**                                                      |
 | status                   | Stan żądania utworzenia kontraktu.  Możliwe wartości: **Przesłano**, **zatwierdzone**, **błąd**.  |
-| AdditionalInformation    | Dodatkowe informacje podane na podstawie stanu                              |
+| additionalInformation    | Dodatkowe informacje podane na podstawie stanu                              |
 
 Przykład przesłane **tworzenie kontraktu** odpowiedzi z aplikacji Blockchain Workbench:
 
