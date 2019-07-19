@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie dostępem do zarządzania platformy Azure przy użyciu dostępu warunkowego w usłudze Azure Active Directory
-description: Więcej informacji na temat przy użyciu dostępu warunkowego w usłudze Azure AD w celu zarządzania dostępem do zarządzania platformy Azure.
+title: Zarządzanie dostępem do zarządzania platformą Azure przy użyciu dostępu warunkowego w Azure Active Directory
+description: Dowiedz się więcej o korzystaniu z dostępu warunkowego w usłudze Azure AD do zarządzania dostępem do zarządzania platformą Azure.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -12,29 +12,38 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2019
+ms.date: 07/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: 4ee58835a5055f5382cefa3a049424ffe97a01c4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3aa24fdfc156c0197d724fd57729f5b11fa908ee
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67122942"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278156"
 ---
-# <a name="manage-access-to-azure-management-with-conditional-access"></a>Zarządzanie dostępem do zarządzania platformy Azure przy użyciu dostępu warunkowego
+# <a name="manage-access-to-azure-management-with-conditional-access"></a>Zarządzanie dostępem do zarządzania platformą Azure przy użyciu dostępu warunkowego
 
-Dostęp warunkowy w usłudze Azure Active Directory (Azure AD) steruje dostępem do aplikacji na podstawie określonych warunków, które określisz w chmurze. Aby zezwolić na dostęp, należy utworzyć zasady dostępu warunkowego, które zezwalania lub blokowania dostępu opartego na czy są spełnione wymagania zasad. 
+Dostęp warunkowy w usłudze Azure Active Directory (Azure AD) kontroluje dostęp do aplikacji w chmurze na podstawie określonych warunków, które określisz. Aby zezwolić na dostęp, należy utworzyć zasady dostępu warunkowego, które zezwalają na dostęp lub blokują je w zależności od tego, czy są spełnione wymagania zasad. 
 
-Zwykle Użyj dostępu warunkowego do kontrolowania dostępu do aplikacji w chmurze. Możesz również skonfigurować zasady, do kontrolowania dostępu do zarządzania platformy Azure na podstawie określonych warunków (np. ryzyko logowania, lokalizacji lub urządzeń) oraz do wymuszania wymagań, takich jak uwierzytelnianie wieloskładnikowe.
+Zazwyczaj dostęp warunkowy służy do kontrolowania dostępu do aplikacji w chmurze. Można również skonfigurować zasady umożliwiające kontrolowanie dostępu do usługi Azure Management w oparciu o określone warunki (takie jak ryzyko związane z logowaniem, lokalizacja lub urządzenie) oraz wymuszanie wymagań, takich jak uwierzytelnianie wieloskładnikowe.
 
-Aby utworzyć zasady zarządzania systemu Azure, musisz wybrać **Microsoft Azure Management** w obszarze **aplikacje w chmurze** podczas wybierania aplikacji, dla której chcesz zastosować zasady.
+Aby utworzyć zasady zarządzania platformą Azure, wybierz pozycję **zarządzanie Microsoft Azure** w obszarze **aplikacje w chmurze** podczas wybierania aplikacji, do której mają zostać zastosowane zasady.
 
-![Dostęp warunkowy do zarządzania platformą Azure](./media/conditional-access-azure-management/conditional-access-azure-mgmt.png)
+![Dostęp warunkowy do zarządzania platformy Azure](./media/conditional-access-azure-management/conditional-access-azure-mgmt.png)
 
-Utworzonej zasady mają zastosowanie do wszystkich punktów końcowych zarządzania platformy Azure, łącznie z witryny Azure portal, dostawca usługi Azure Resource Manager i interfejsów API zarządzania usługami programu Azure PowerShell i programu Visual Studio subskrypcji administrator portalu klasycznym. Należy pamiętać, że zostaną zastosowane zasady programu Azure PowerShell, która wywołuje interfejs API usługi Azure Resource Manager. Nie ma zastosowania do [usługi Azure AD PowerShell](/powershell/azure/active-directory/install-adv2), która wymaga programu Microsoft Graph.
+Utworzone zasady mają zastosowanie do wszystkich punktów końcowych zarządzania platformy Azure, w tym następujących:
+
+- Azure Portal
+- Dostawca Azure Resource Manager
+- Klasyczne interfejsy API zarządzania usługami
+- Azure PowerShell
+- Portal administratora subskrypcji programu Visual Studio
+- Azure DevOps
+
+Należy zauważyć, że zasady dotyczą Azure PowerShell, które wywołuje interfejs API Azure Resource Manager. Nie dotyczy to [programu PowerShell usługi Azure AD](/powershell/azure/active-directory/install-adv2), który wywołuje Microsoft Graph.
 
 > [!CAUTION]
-> Upewnij się, że rozumiesz, jak działa dostęp warunkowy, przed rozpoczęciem konfigurowania zasad do zarządzania dostępem do zarządzania platformy Azure. Upewnij się, że nie utworzono warunki, które mogą blokować dostęp do portalu.
+> Upewnij się, że rozumiesz, jak działa dostęp warunkowy przed skonfigurowaniem zasad zarządzania dostępem do usługi Azure Management. Upewnij się, że nie utworzysz warunków, które mogą blokować własny dostęp do portalu.
 
-Aby uzyskać więcej informacji na temat sposobu konfigurowania i korzystania z dostępu warunkowego, zobacz [dostępu warunkowego w usłudze Azure Active Directory](../active-directory/active-directory-conditional-access-azure-portal.md).
+Aby uzyskać więcej informacji na temat konfigurowania dostępu warunkowego i korzystania z niego, zobacz [dostęp warunkowy w Azure Active Directory](../active-directory/active-directory-conditional-access-azure-portal.md).

@@ -1,6 +1,6 @@
 ---
 title: Aby utworzyć i skonfigurować obszar roboczy usługi Log Analytics przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
-description: Obszary robocze usługi log Analytics w usłudze Azure Monitor przechowywania danych z serwerów w sieci lokalnej lub infrastruktury chmury. Można zbierać dane maszyn z usługi Azure storage wygenerowanym przez narzędzie diagnostyczne systemu Azure.
+description: Log Analytics obszary robocze w Azure Monitor przechowywanie danych z serwerów w infrastrukturze lokalnej lub w chmurze. Można zbierać dane maszyn z usługi Azure storage wygenerowanym przez narzędzie diagnostyczne systemu Azure.
 services: log-analytics
 author: bwren
 ms.service: log-analytics
@@ -8,16 +8,16 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 05/19/2019
 ms.author: bwren
-ms.openlocfilehash: 36cb2462a47f9d175ca25bbbde46a14009637db0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4faa58536d6458b01adbb7dab60bfd10be18275b
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65907884"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234797"
 ---
-# <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Zarządzanie roboczym usługi Log Analytics w usłudze Azure Monitor przy użyciu programu PowerShell
+# <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Zarządzanie obszarem roboczym Log Analytics w Azure Monitor przy użyciu programu PowerShell
 
-Możesz użyć [poleceń cmdlet programu PowerShell programu Log Analytics](https://docs.microsoft.com/powershell/module/az.operationalinsights/) do wykonywania różnych funkcji w obszarze roboczym Log Analytics w usłudze Azure Monitor z wiersza polecenia lub w ramach skryptu.  Przykłady zadań, które można wykonać przy użyciu programu PowerShell:
+Za pomocą [poleceń cmdlet programu PowerShell log Analytics](https://docs.microsoft.com/powershell/module/az.operationalinsights/) można wykonywać różne funkcje w log Analytics obszarze roboczym w Azure monitor z wiersza polecenia lub jako część skryptu.  Przykłady zadań, które można wykonać przy użyciu programu PowerShell:
 
 * Tworzenie obszaru roboczego
 * Dodawanie lub usuwanie rozwiązania
@@ -39,7 +39,7 @@ Ten artykuł zawiera dwa przykłady kodu, które pokazują niektóre funkcje, kt
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Te przykłady pracy z wersją 1.0.0 lub nowszej moduł Az.OperationalInsights.
+Te przykłady działają w wersji 1.0.0 lub nowszej modułu AZ. OperationalInsights.
 
 
 ## <a name="create-and-configure-a-log-analytics-workspace"></a>Tworzenie i konfigurowanie obszaru roboczego usługi Log Analytics
@@ -161,7 +161,7 @@ Enable-AzOperationalInsightsIISLogCollection -ResourceGroupName $ResourceGroup -
 
 # Linux Perf
 New-AzOperationalInsightsLinuxPerformanceObjectDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -ObjectName "Logical Disk" -InstanceName "*"  -CounterNames @("% Used Inodes", "Free Megabytes", "% Used Space", "Disk Transfers/sec", "Disk Reads/sec", "Disk Reads/sec", "Disk Writes/sec") -IntervalSeconds 20  -Name "Example Linux Disk Performance Counters"
-Enable-AzOperationalInsightsLinuxCustomLogCollection -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName
+Enable-AzOperationalInsightsLinuxPerformanceCollection -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName
 
 # Linux Syslog
 New-AzOperationalInsightsLinuxSyslogDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -Facility "kern" -CollectEmergency -CollectAlert -CollectCritical -CollectError -CollectWarning -Name "Example kernel syslog collection"
@@ -178,24 +178,24 @@ New-AzOperationalInsightsWindowsPerformanceCounterDataSource -ResourceGroupName 
 New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -CustomLogRawJson "$CustomLog" -Name "Example Custom Log Collection"
 
 ```
-W powyższym przykładzie regexDelimiter został zdefiniowany jako "\\n" dla nowego wiersza. Ogranicznik dziennika może być również sygnaturę czasową.  Poniżej przedstawiono obsługiwane formaty:
+W powyższym przykładzie regexDelimiter został zdefiniowany jako\\"n" dla nowego wiersza. Ogranicznik dziennika może być również sygnaturą czasową.  Są to obsługiwane formaty:
 
-| Format | Format wyrażenia regularnego JSON korzysta z dwóch \\ dla każdego \ w standardowych wyrażeń regularnych więc jeśli testowania w aplikacji w języku wyrażeń regularnych zmniejszyć \\ do \ | | |
+| Format | Format wyrażenia regularnego JSON \\ używa dwóch dla każdego elementu \ w standardowym wyrażeniach regularnych, dlatego jeśli \\ testowanie w aplikacji wyrażenia regularnego zmniejszy do \ | | |
 | --- | --- | --- | --- |
-| `YYYY-MM-DD HH:MM:SS` | `((\\\\d{2})\|(\\\\d{4}))-([0-1]\\\\d)-(([0-3]\\\\d)\|(\\\\d))\\\\s((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
-| `M/D/YYYY HH:MM:SS AM/PM` | `(([0-1]\\\\d)\|[0-9])/(([0-3]\\\\d)\|(\\\\d))/((\\\\d{2})\|(\\\\d{4}))\\\\s((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9]\\\\s(AM\|PM\|am\|pm)` | | |
-| `dd/MMM/yyyy HH:MM:SS` | `((([0-3]\\\\d)\` | `(\\\\d))/(Jan\|Feb\|Mar\|May\|Apr\|Jul\|Jun\|Aug\|Oct\|Sep\|Nov\|Dec\|jan\|feb\|mar\|may\|apr\|jul\|jun\|aug\|oct\|sep\|nov\|dec)/((\\\\d{2})\|(\\\\d{4}))\\\\s((\\\\d)\` | `([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9])` |
-| `MMM dd yyyy HH:MM:SS` | `(((?:Jan(?:uary)?\|Feb(?:ruary)?\|Mar(?:ch)?\|Apr(?:il)?\|May\|Jun(?:e)?\|Jul(?:y)?\|Aug(?:ust)?\|Sep(?:tember)?\|Sept\|Oct(?:ober)?\|Nov(?:ember)?\|Dec(?:ember)?)).*?((?:(?:[0-2]?\\\\d{1})\|(?:[3][01]{1})))(?![\\\\d]).*?((?:(?:[1]{1}\\\\d{1}\\\\d{1}\\\\d{1})\|(?:[2]{1}\\\\d{3})))(?![\\\\d]).*?((?:(?:[0-1][0-9])\|(?:[2][0-3])\|(?:[0-9])):(?:[0-5][0-9])(?::[0-5][0-9])?(?:\\\\s?(?:am\|AM\|pm\|PM))?))` | | |
-| `yyMMdd HH:mm:ss` | `([0-9]{2}([0][1-9]\|[1][0-2])([0-2][0-9]\|[3][0-1])\\\\s\\\\s?([0-1]?[0-9]\|[2][0-3]):[0-5][0-9]:[0-5][0-9])` | | |
-| `ddMMyy HH:mm:ss` | `(([0-2][0-9]\|[3][0-1])([0][1-9]\|[1][0-2])[0-9]{2}\\\\s\\\\s?([0-1]?[0-9]\|[2][0-3]):[0-5][0-9]:[0-5][0-9])` | | |
-| `MMM d HH:mm:ss` | `(Jan\|Feb\|Mar\|Apr\|May\|Jun\|Jul\|Aug\|Sep\|Oct\|Nov\|Dec)\\\\s\\\\s?([0]?[1-9]\|[1-2][0-9]\|[3][0-1])\\\\s([0-1]?[0-9]\|[2][0-3]):([0-5][0-9]):([0-5][0-9])` | | |
-| `MMM  d HH:mm:ss` <br> dwie spacje po MMM | `(Jan\|Feb\|Mar\|Apr\|May\|Jun\|Jul\|Aug\|Sep\|Oct\|Nov\|Dec)\\\\s\\\\s([0]?[1-9]\|[1-2][0-9]\|[3][0-1])\\\\s([0][0-9]\|[1][0-2]):([0-5][0-9]):([0-5][0-9])` | | |
-| `MMM d HH:mm:ss` | `(Jan\|Feb\|Mar\|Apr\|May\|Jun\|Jul\|Aug\|Sep\|Oct\|Nov\|Dec)\\\\s([0]?[1-9]\|[1-2][0-9]\|[3][0-1])\\\\s([0][0-9]\|[1][0-2]):([0-5][0-9]):([0-5][0-9])` | | |
-| `dd/MMM/yyyy:HH:mm:ss +zzzz` <br> gdzie + jest + lub - <br> gdy przesunięcie czasu zzzz | `(([0-2][1-9]\|[3][0-1])\\\\/(Jan\|Feb\|Mar\|Apr\|May\|Jun\|Jul\|Aug\|Sep\|Oct\|Nov\|Dec)\\\\/((19\|20)[0-9][0-9]):([0][0-9]\|[1][0-2]):([0-5][0-9]):([0-5][0-9])\\\\s[\\\\+\|\\\\-][0-9]{4})` | | |
-| `yyyy-MM-ddTHH:mm:ss` <br> T jest literałem litera T | `((\\\\d{2})\|(\\\\d{4}))-([0-1]\\\\d)-(([0-3]\\\\d)\|(\\\\d))T((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
+| `YYYY-MM-DD HH:MM:SS` | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
+| `M/D/YYYY HH:MM:SS AM/PM` | `(([0-1]\\d)|[0-9])/(([0-3]\\d)|(\\d))/((\\d{2})|(\\d{4}))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]\\s(AM|PM|am|pm)` | | |
+| `dd/MMM/yyyy HH:MM:SS` | `(([0-2][1-9]|[3][0-1])\\/(Jan|Feb|Mar|May|Apr|Jul|Jun|Aug|Oct|Sep|Nov|Dec|jan|feb|mar|may|apr|jul|jun|aug|oct|sep|nov|dec)\\/((19|20)[0-9][0-9]))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9])` |
+| `MMM dd yyyy HH:MM:SS` | `(((?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Sept|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)).*?((?:(?:[0-2]?\\d{1})|(?:[3][01]{1})))(?![\\d]).*?((?:(?:[1]{1}\\d{1}\\d{1}\\d{1})|(?:[2]{1}\\d{3})))(?![\\d]).*?((?:(?:[0-1][0-9])|(?:[2][0-3])|(?:[0-9])):(?:[0-5][0-9])(?::[0-5][0-9])?(?:\\s?(?:am|AM|pm|PM))?))` | | |
+| `yyMMdd HH:mm:ss` | `([0-9]{2}([0][1-9]|[1][0-2])([0-2][0-9]|[3][0-1])\\s\\s?([0-1]?[0-9]|[2][0-3]):[0-5][0-9]:[0-5][0-9])` | | |
+| `ddMMyy HH:mm:ss` | `(([0-2][0-9]|[3][0-1])([0][1-9]|[1][0-2])[0-9]{2}\\s\\s?([0-1]?[0-9]|[2][0-3]):[0-5][0-9]:[0-5][0-9])` | | |
+| `MMM d HH:mm:ss` | `(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s\\s?([0]?[1-9]|[1-2][0-9]|[3][0-1])\\s([0-1]?[0-9]|[2][0-3]):([0-5][0-9]):([0-5][0-9])` | | |
+| `MMM  d HH:mm:ss` <br> dwie spacje po MMM | `(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s\\s([0]?[1-9]|[1-2][0-9]|[3][0-1])\\s([0][0-9]|[1][0-2]):([0-5][0-9]):([0-5][0-9])` | | |
+| `MMM d HH:mm:ss` | `(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s([0]?[1-9]|[1-2][0-9]|[3][0-1])\\s([0][0-9]|[1][0-2]):([0-5][0-9]):([0-5][0-9])` | | |
+| `dd/MMM/yyyy:HH:mm:ss +zzzz` <br> gdzie + is + lub a- <br> gdzie zzzz przesunięcie czasu | `(([0-2][1-9]|[3][0-1])\\/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\/((19|20)[0-9][0-9]):([0][0-9]|[1][0-2]):([0-5][0-9]):([0-5][0-9])\\s[\\+|\\-][0-9]{4})` | | |
+| `yyyy-MM-ddTHH:mm:ss` <br> T to litera litera T | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))T((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
 
-## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>Konfigurowanie usługi Log Analytics do wysyłania usługi Diagnostyka Azure
-Bez wykorzystania agentów monitorowania zasobów platformy Azure, zasoby muszą mieć diagnostyki platformy Azure, włączony i skonfigurowany do zapisu do obszaru roboczego usługi Log Analytics. Ta metoda wysyła dane bezpośrednio do obszaru roboczego i nie wymaga dane są zapisywane na koncie magazynu. Zasoby obsługiwane obejmują:
+## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>Konfigurowanie Log Analytics do wysyłania diagnostyki Azure
+Bez wykorzystania agentów monitorowania zasobów platformy Azure, zasoby muszą mieć diagnostyki platformy Azure, włączony i skonfigurowany do zapisu do obszaru roboczego usługi Log Analytics. Takie podejście wysyła dane bezpośrednio do obszaru roboczego i nie wymaga zapisywania danych na koncie magazynu. Zasoby obsługiwane obejmują:
 
 | Typ zasobu | Dzienniki | Metryki |
 | --- | --- | --- |
@@ -230,18 +230,18 @@ $resourceId = "/SUBSCRIPTIONS/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/RESOURCEGROUPS/D
 Set-AzDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Enabled $true
 ```
 
-Poprzedni polecenie cmdlet umożliwia również zbieranie dzienników z zasobów, które należą do różnych subskrypcji. Polecenie cmdlet jest w stanie działać w subskrypcjach, ponieważ udostępniasz identyfikator zasobu tworzenia dzienników i dzienniki są wysyłane do obszaru roboczego.
+Poprzedni polecenie cmdlet umożliwia również zbieranie dzienników z zasobów, które należą do różnych subskrypcji. Polecenie cmdlet może współdziałać między subskrypcjami od momentu, gdy podajesz identyfikator zarówno zasobów tworzących dzienniki, jak i obszar roboczy, do którego są wysyłane dzienniki.
 
 
-## <a name="configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage"></a>Konfigurowanie obszaru roboczego usługi Log Analytics, zbieranie diagnostyki platformy Azure z magazynu
-Aby zebrać dane dzienników z uruchomionego wystąpienia klasyczną usługę w chmurze lub klaster usługi Service fabric, musisz najpierw zapisać dane do usługi Azure storage. Obszar roboczy usługi Log Analytics jest następnie konfigurowana do zbierania dzienników z konta magazynu. Zasoby obsługiwane obejmują:
+## <a name="configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage"></a>Konfigurowanie obszaru roboczego Log Analytics w celu zbierania danych diagnostycznych platformy Azure z magazynu
+Aby zebrać dane dzienników z uruchomionego wystąpienia klasyczną usługę w chmurze lub klaster usługi Service fabric, musisz najpierw zapisać dane do usługi Azure storage. Następnie zostanie skonfigurowany obszar roboczy Log Analytics do zbierania dzienników z konta magazynu. Zasoby obsługiwane obejmują:
 
 * Klasyczne cloud services (role sieci web i proces roboczy)
 * Klastry usługi Service fabric
 
 W poniższym przykładzie przedstawiono sposób:
 
-1. Wyświetlanie listy istniejących kont magazynu i lokalizacje, które są indeksowane dane z obszaru roboczego
+1. Wyświetl listę istniejących kont magazynu i lokalizacji, z których obszar roboczy będzie indeksować dane
 2. Utwórz konfigurację do odczytu z konta magazynu
 3. Zaktualizuj nowo utworzoną konfigurację do indeksowania danych z lokalizacji dodatkowej
 4. Usuń konfigurację nowo utworzony
@@ -268,7 +268,7 @@ Remove-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.Resourc
 
 ```
 
-Powyższy skrypt umożliwia również zbieranie dzienników z kont magazynu w różnych subskrypcjach. Skrypt jest w stanie działać w subskrypcjach, ponieważ informujemy identyfikator zasobu konta magazynu i odpowiedni klucz dostępu. Zmiana klucza dostępu, musisz zaktualizować szczegółowe dane o magazynie zapewnienie nowego klucza.
+Powyższy skrypt umożliwia również zbieranie dzienników z kont magazynu w różnych subskrypcjach. Skrypt może współdziałać między subskrypcjami od momentu, gdy podajesz identyfikator zasobu konta magazynu i odpowiedni klucz dostępu. Zmiana klucza dostępu, musisz zaktualizować szczegółowe dane o magazynie zapewnienie nowego klucza.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

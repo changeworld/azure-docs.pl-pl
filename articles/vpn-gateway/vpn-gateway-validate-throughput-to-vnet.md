@@ -1,135 +1,267 @@
 ---
-title: Sprawdzanie przepustowości sieci VPN z siecią wirtualną Azure firmy Microsoft | Dokumentacja firmy Microsoft
-description: Ten dokument ma na celu pomóc użytkownikowi, sprawdzanie przepustowości sieci z ich zasobów lokalnych na maszynie wirtualnej platformy Azure.
+title: Weryfikowanie przepływności sieci VPN do Microsoft Azure Virtual Network | Microsoft Docs
+description: Celem tego dokumentu jest ułatwienie użytkownikowi zweryfikowania przepływności sieci z zasobów lokalnych do maszyny wirtualnej platformy Azure.
 services: vpn-gateway
 author: cherylmc
 manager: jasmc
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 05/29/2019
-ms.author: radwiv;chadmat;genli
-ms.openlocfilehash: c1117afcf6254c32ebe0a4e72ad5619606098253
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: radwiv
+ms.reviewer: chadmat;genli
+ms.openlocfilehash: 1531bbe97c842fbae2ffe7df41f19a3a7be689d5
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388612"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68228334"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Jak zweryfikować przepływność sieci VPN do sieci wirtualnej
 
-Umożliwia ustanawianie bezpiecznej połączenia bramy sieci VPN, obejmujące między siecią wirtualną w ramach platformy Azure i lokalnej infrastruktury IT.
+Połączenie bramy sieci VPN umożliwia nawiązanie bezpiecznej łączności między Virtual Networkami w ramach platformy Azure i lokalnej infrastruktury INFORMATYCZNej.
 
-W tym artykule przedstawiono sposób sprawdzania poprawności przepływność sieci z zasobami lokalnymi, maszyną wirtualną (VM) platformy Azure. Zawiera także wskazówki dotyczące rozwiązywania problemów. 
+W tym artykule pokazano, jak zweryfikować przepływność sieci z zasobów lokalnych do maszyny wirtualnej platformy Azure.
 
->[!NOTE]
->Ten artykuł ma ułatwić diagnozowanie i rozwiązywanie typowych problemów dotyczących. Jeśli nie uda się rozwiązać problem, korzystając z poniższych informacji [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
->
->
+> [!NOTE]
+> Ten artykuł ma na celu ułatwienie diagnozowania i rozwiązywania typowych problemów. Jeśli nie możesz rozwiązać problemu, korzystając z poniższych informacji, [skontaktuj się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ## <a name="overview"></a>Omówienie
 
 Połączenie bramy sieci VPN obejmuje następujące składniki:
 
-- Lokalne urządzenie sieci VPN (wyświetlanie listy [zweryfikowanych urządzeń sieci VPN)](vpn-gateway-about-vpn-devices.md#devicetable).
-- Publicznej sieci Internet
-- Usługa Azure VPN gateway
-- Maszyna wirtualna platformy Azure
+* Lokalne urządzenie sieci VPN (Wyświetlanie listy [zweryfikowanych urządzeń sieci VPN](vpn-gateway-about-vpn-devices.md#devicetable)).
+* Publiczny Internet
+* Brama sieci VPN platformy Azure
+* Maszyna wirtualna platformy Azure
 
-Na poniższym diagramie przedstawiono logiczne połączenie między siecią lokalną z siecią wirtualną platformy Azure za pośrednictwem sieci VPN.
+Na poniższym diagramie przedstawiono logiczne połączenie sieci lokalnej z siecią wirtualną platformy Azure za pośrednictwem sieci VPN.
 
-![Łączność z klienta sieci logicznej sieci MSFT przy użyciu sieci VPN](./media/vpn-gateway-validate-throughput-to-vnet/VPNPerf.png)
+![Połączenie logiczne sieci klienta z siecią MSFT przy użyciu sieci VPN](./media/vpn-gateway-validate-throughput-to-vnet/VPNPerf.png)
 
-## <a name="calculate-the-maximum-expected-ingressegress"></a>Oblicz maksymalny oczekiwany ruchem przychodzącym/wychodzącym
+## <a name="calculate-the-maximum-expected-ingressegress"></a>Oblicz maksymalną oczekiwaną wartość ruchu przychodzącego/wychodzącego
 
-1.  Ustal wymagania dotyczące przepływności linii bazowej Twojej aplikacji.
-2.  Określ limitów przepływności bramy sieci VPN platformy Azure. Aby uzyskać pomoc, zobacz sekcję "Jednostki SKU bramy" [VPN Gateway — informacje](vpn-gateway-about-vpngateways.md#gwsku).
-3.  Określić [wskazówki dotyczące przepustowości w maszynie Wirtualnej platformy Azure](../virtual-machines/virtual-machines-windows-sizes.md) dla rozmiaru maszyn wirtualnych.
-4.  Określ przepustowość usługodawcy internetowego (ISP).
-5.  Obliczanie przepływności oczekiwanego — co najmniej przepustowości (maszyna wirtualna, brama usługodawcy internetowego) * 0,8.
+1. Ustal wymagania dotyczące przepływności linii bazowej aplikacji.
+1. Ustal limity przepływności bramy sieci VPN platformy Azure. Aby uzyskać pomoc, zobacz sekcję "jednostki SKU bramy" tematu [Informacje o VPN Gateway](vpn-gateway-about-vpngateways.md#gwsku).
+1. Określ [wskazówki dotyczące przepływności maszyn wirtualnych platformy Azure](../virtual-machines/virtual-machines-windows-sizes.md) dla rozmiaru maszyny wirtualnej.
+1. Określ przepustowość usługodawcy internetowego (ISP).
+1. Oblicz oczekiwaną przepływność, przyjmując najmniejszą przepustowość maszyny wirtualnej, VPN Gateway lub usługodawcy internetowego; który jest mierzony w megabitach na sekundę (/) podzielony przez osiem (8).
 
-Jeśli obliczona przepływność nie spełnia wymagań w zakresie przepływności aplikacji linii bazowej, należy zwiększyć przepustowość zasobu, który został zidentyfikowany jako wąskie gardło. Aby zmienić rozmiar bramy Azure VPN Gateway, zobacz [Zmiana jednostki SKU bramy](vpn-gateway-about-vpn-gateway-settings.md#gwsku). Aby zmienić rozmiar maszyny wirtualnej, zobacz [zmienić rozmiar maszyny Wirtualnej](../virtual-machines/virtual-machines-windows-resize-vm.md). Jeśli nie występują oczekiwanego przepustowością Internetu, można również skontaktować się z usługodawcą Internetowym.
+Jeśli obliczona przepływność nie spełnia wymagań dotyczących przepływności linii bazowej aplikacji, należy zwiększyć przepustowość zasobu, która została zidentyfikowana jako wąskie gardło. Aby zmienić rozmiar VPN Gateway platformy Azure, zobacz [Zmiana jednostki SKU bramy](vpn-gateway-about-vpn-gateway-settings.md#gwsku). Aby zmienić rozmiar maszyny wirtualnej, zobacz [zmiana rozmiaru maszyny](../virtual-machines/virtual-machines-windows-resize-vm.md)wirtualnej. Jeśli nie masz oczekiwanej przepustowości Internetu, możesz również skontaktować się z USŁUGODAWCą internetowym.
 
-## <a name="validate-network-throughput-by-using-performance-tools"></a>Sprawdzanie przepustowości sieci za pomocą narzędzia do oceny wydajności
+> [!NOTE]
+> VPN Gateway przepływność jest zagregowana z wszystkich połączeń Site-to-Site\VNET-to-VNET lub punkt-lokacja.
 
-Ta powinna być sprawdzana podczas godziny poza szczytem, jak nasycenie przepustowość tunelu sieci VPN, podczas testowania nie daje dokładne wyniki.
+## <a name="validate-network-throughput-by-using-performance-tools"></a>Sprawdzanie przepływności sieci przy użyciu narzędzi do oceny wydajności
 
-To narzędzie, której używamy dla tego testu jest dotyczące programu Iperf; który działa w systemach Windows i Linux oraz ma tryby klienta i serwera. Jest ograniczony do 3 GB/s dla Windows maszyn wirtualnych.
+Ta weryfikacja powinna być wykonywana w godzinach poza godzinami szczytu, podobnie jak nasycenie przepływności tunelu VPN podczas testowania nie daje dokładnych wyników.
 
-To narzędzie nie wykonuje żadnych operacji odczytu/zapisu na dysku. Tworzy wyłącznie automatycznie wygenerowany ruchu TCP od końca jednego do drugiego. Statystyka oparta na eksperymentowanie, służący do pomiaru przepustowości między klientem i serwerem węzłami on generowany. Podczas testowania między dwoma węzłami, jeden działa jako serwer, a drugi jako klienta. Po zakończeniu tego testu, firma Microsoft zaleca, aby odwrócić ról, aby przetestować zarówno przekazywanie i pobieranie przepływności na obu węzłach.
+Narzędzie, którego używamy do tego testu, to iPerf, który działa w systemach Windows i Linux oraz ma zarówno tryb klienta, jak i serwera. Jest ona ograniczona do 3Gbps dla maszyn wirtualnych z systemem Windows.
 
-### <a name="download-iperf"></a>Pobierz dotyczące programu Iperf
-Pobierz [dotyczące programu Iperf;](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip). Aby uzyskać więcej informacji, zobacz [dokumentacji dotyczące programu Iperf;](https://iperf.fr/iperf-doc.php).
+To narzędzie nie wykonuje żadnych operacji odczytu/zapisu na dysku. Generuje on wyłącznie wygenerowany przez siebie ruch TCP z jednego końca do drugiego. Generuje on statystyki na podstawie eksperymentów, które mierzą dostępną przepustowość między węzłami klienta i serwera. Podczas testowania między dwoma węzłami jeden węzeł pełni rolę serwera, a drugi węzeł pełni rolę klienta. Po zakończeniu tego testu zalecamy odwrócenie ról węzłów w celu przetestowania przepływności przekazywania i pobierania na obu węzłach.
 
- >[!NOTE]
- >Produkty innych firm, w tym artykule są wytwarzane przez producentów niezależnych od firmy Microsoft. Firma Microsoft nie udziela żadnych gwarancji, dorozumianych ani żadnego innego, o wydajności ani niezawodności tych produktów.
- >
- >
+### <a name="download-iperf"></a>Pobierz iPerf
 
-### <a name="run-iperf-iperf3exe"></a>Uruchom dotyczące programu Iperf; (iperf3.exe)
-1. Włącz regułę sieciowej grupy zabezpieczeń/listami ACL, zezwala na ruch (do testowania na platformie Azure maszynie Wirtualnej publiczny adres IP).
+Pobierz [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip). Aby uzyskać szczegółowe informacje, zobacz [dokumentację iPerf](https://iperf.fr/iperf-doc.php).
 
-2. W obu węzłach włączenie wyjątku zapory dla portu 5001.
+ > [!NOTE]
+ > Produkty innych firm omówione w tym artykule są wytwarzane przez firmy niezależne od firmy Microsoft. Firma Microsoft nie udziela żadnych gwarancji, dorozumianych lub w inny sposób, dotyczących wydajności lub niezawodności tych produktów.
 
-    **Windows:** Jako administrator, uruchom następujące polecenie:
+### <a name="run-iperf-iperf3exe"></a>Uruchom iPerf (iperf3. exe)
 
-    ```CMD
-    netsh advfirewall firewall add rule name="Open Port 5001" dir=in action=allow protocol=TCP localport=5001
-    ```
+1. Włącz regułę sieciowej grupy zabezpieczeń/ACL zezwalającą na ruch (na potrzeby testowania publicznego adresu IP na maszynie wirtualnej platformy Azure).
 
-    Aby usunąć regułę, podczas testowania zakończeniu, uruchom następujące polecenie:
+1. Na obu węzłach Włącz wyjątek zapory dla portu 5001.
 
-    ```CMD
-    netsh advfirewall firewall delete rule name="Open Port 5001" protocol=TCP localport=5001
-    ```
-     
-    **Linux platformy Azure:**  Obrazy systemu Linux platformy Azure umieszczone są zapory ograniczające. W przypadku aplikacja nasłuchuje na porcie ruch jest dozwolony przez. Obrazy niestandardowe, które są zabezpieczone może być konieczne jawnie otwierane porty. Obejmują typowe zapory warstwy system operacyjny Linux `iptables`, `ufw`, lub `firewalld`.
+   **Windows:** Uruchom następujące polecenie jako administrator:
 
-3. W węźle serwera przejdź do katalogu, w której jest wyodrębniany iperf3.exe. Następnie należy uruchomić dotyczące programu Iperf; w trybie serwera i ustaw ją do nasłuchiwania na porcie 5001 jako następujących poleceń:
+   ```CMD
+   netsh advfirewall firewall add rule name="Open Port 5001" dir=in action=allow protocol=TCP localport=5001
+   ```
 
-     ```CMD
-     cd c:\iperf-3.1.2-win65
+   Aby usunąć regułę po zakończeniu testowania, uruchom następujące polecenie:
 
-     iperf3.exe -s -p 5001
-     ```
+   ```CMD
+   netsh advfirewall firewall delete rule name="Open Port 5001" protocol=TCP localport=5001
+   ```
 
-4. W węźle klienta przejdź do katalogu, w których narzędzie dotyczące programu Iperf; jest wyodrębniany i następnie uruchom następujące polecenie:
+   **System Linux systemu Azure:** Obrazy systemu Linux na platformie Azure mają przypisaną zaporę. Jeśli aplikacja nasłuchuje na porcie, ruch jest dozwolony w. Chronione obrazy niestandardowe mogą wymagać jawnego otwierania portów. Typowe zapory systemu operacyjnego Linux obejmują `iptables`, `ufw`, lub `firewalld`.
 
-    ```CMD
-    iperf3.exe -c <IP of the iperf Server> -t 30 -p 5001 -P 32
-    ```
+1. W węźle serwer przejdź do katalogu, w którym został wyodrębniony iperf3. exe. Następnie uruchom program iPerf w trybie serwera i ustaw go, aby nasłuchiwać na porcie 5001 jako następujące polecenia:
 
-    Klient jest wykonuje ruch na porcie 5001 do serwera przez 30 sekund. Flagi "-P" oznacza, że używasz 32 jednoczesnych połączeń z węzła serwera.
+   ```CMD
+   cd c:\iperf-3.1.2-win65
 
-    Na poniższym ekranie przedstawiono dane wyjściowe z tego przykładu:
+   iperf3.exe -s -p 5001
+   ```
 
-    ![Dane wyjściowe](./media/vpn-gateway-validate-throughput-to-vnet/06theoutput.png)
+   > [!Note]
+   > Port 5001 można dostosować do konta dla określonych ograniczeń zapory w środowisku.
 
-5. (OPCJONALNIE) Aby zachować wyniki testów, uruchom następujące polecenie:
+1. W węźle klienta przejdź do katalogu, w którym wyodrębniono narzędzie Iperf, a następnie uruchom następujące polecenie:
 
-    ```CMD
-    iperf3.exe -c IPofTheServerToReach -t 30 -p 5001 -P 32  >> output.txt
-    ```
+   ```CMD
+   iperf3.exe -c <IP of the iperf Server> -t 30 -p 5001 -P 32
+   ```
 
-6. Po wykonaniu poprzednich kroków, wykonaj te same kroki z rolami cofnięte, tak, aby teraz będzie węzeł serwera, klienta i na odwrót.
+   Klient przekieruje 30-sekundowy ruch na port 5001 do serwera. Flaga "-P" wskazuje, że firma Microsoft 32 udostępnia liczbę jednoczesnych połączeń z węzłem serwera.
 
-## <a name="address-slow-file-copy-issues"></a>Problemów z kopiowaniem plików wolnych adresów
-Może wystąpić powolne pliku kopiowanie, gdy za pomocą Eksploratora Windows lub przeciąganie i upuszczanie za pomocą sesji protokołu RDP. Ten problem jest zwykle ze względu na jeden lub oba z następujących czynników:
+   Na poniższym ekranie przedstawiono dane wyjściowe z tego przykładu:
 
-- Podczas kopiowania plików, aplikacji kopiowania plików, takich jak Eksplorator Windows i protokołu RDP, nie należy używać wielu wątków. Lepszą wydajność, użyj aplikacji wielowątkowych plików kopii takich jak [Richcopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) do kopiowania plików za pomocą 16 lub 32 wątków. Aby zmienić liczbę wątków związanym z kopiowaniem plików w Richcopy, kliknij przycisk **akcji** > **opcje kopiowania** > **skopiowanie pliku**.<br><br>
-![Zagadnienia dotyczące kopiowania plików powolne](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
-- Za mało szybkość odczytu/zapisu dysku maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z magazynu Azure](../storage/common/storage-e2e-troubleshooting.md).
+   ![Output](./media/vpn-gateway-validate-throughput-to-vnet/06theoutput.png)
 
-## <a name="on-premises-device-external-facing-interface"></a>Interfejs umożliwiający dostęp do Internetu zewnętrznego urządzenia w środowisku lokalnym
-Jeśli lokalne urządzenie sieci VPN adresu IP dostępnego z Internetu jest uwzględniona w [sieci lokalnej](vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) definicja przestrzeni adresów na platformie Azure, możesz napotkać niemożność Przenieś w górę zamknie połączenie sieci VPN, sporadyczne lub problemów z wydajnością.
+1. OBOWIĄZKOWE Aby zachować wyniki testów, uruchom następujące polecenie:
 
-## <a name="checking-latency"></a>Sprawdzanie opóźnienia
-Użyj polecenia tracert do śledzenia na urządzeniu Microsoft Azure Edge, aby ustalić, czy istnieją wszelkich opóźnień powyżej 100 ms między przeskoków.
+   ```CMD
+   iperf3.exe -c IPofTheServerToReach -t 30 -p 5001 -P 32  >> output.txt
+   ```
 
-Z sieci lokalnej, należy uruchomić *tracert* na adres VIP bramy platformy Azure lub maszynie Wirtualnej. Gdy zostanie wyświetlony tylko * zwrócone, wiesz, został osiągnięty limit usługi Azure edge. Po wyświetleniu nazwy DNS, zawierające "MSN" zwrócił wiesz, że został osiągnięty limit sieci szkieletowej firmy Microsoft.<br><br>
-![Sprawdzanie opóźnienia](./media/vpn-gateway-validate-throughput-to-vnet/08checkinglatency.png)
+1. Po wykonaniu poprzednich kroków wykonaj te same czynności z cofniętymi rolami, aby węzeł serwera był teraz węzłem klienta i na odwrót.
+
+> [!Note]
+> Iperf nie jest jedynym narzędziem. [NTTTCP jest alternatywnym rozwiązaniem do testowania](https://docs.microsoft.com/azure/virtual-network/virtual-network-bandwidth-testing).
+
+## <a name="test-vms-running-windows"></a>Testowanie maszyn wirtualnych z systemem Windows
+
+### <a name="load-latteexe-onto-the-vms"></a>Załaduj latte. exe na maszynach wirtualnych
+
+Pobierz najnowszą wersję programu [latte. exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
+
+Rozważ umieszczenie pliku latte. exe w osobnym folderze, na przykład`c:\tools`
+
+### <a name="allow-latteexe-through-the-windows-firewall"></a>Zezwalaj programowi latte. exe za pomocą zapory systemu Windows
+
+Na odbiorniku Utwórz regułę zezwalania w zaporze systemu Windows, aby zezwolić na odbieranie ruchu latte. exe. Najłatwiej zezwolić na cały program latte. exe, zamiast zezwalać na ruch przychodzący określonych portów TCP.
+
+### <a name="allow-latteexe-through-the-windows-firewall-like-this"></a>Zezwalaj na latte. exe za pomocą zapory systemu Windows, takiej jak ta
+
+`netsh advfirewall firewall add rule program=<PATH>\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY`
+
+Jeśli na przykład skopiowano plik latte. exe do folderu "c:\Tools", będzie to polecenie
+
+`netsh advfirewall firewall add rule program=c:\tools\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY`
+
+### <a name="run-latency-tests"></a>Testy opóźnienia uruchamiania
+
+Uruchom program latte. exe w ODBIORNIKu (Uruchom z polecenia CMD, a nie z programu PowerShell):
+
+`latte -a <Receiver IP address>:<port> -i <iterations>`
+
+Wszystkie iteracje 65 000 dla są wystarczająco długie, aby zwracały reprezentatywne wyniki.
+
+Wszystkie dostępne numery portów są dokładne.
+
+Jeśli maszyna wirtualna ma adres IP 10.0.0.4, będzie wyglądać następująco
+
+`latte -c -a 10.0.0.4:5005 -i 65100`
+
+Uruchom program latte. exe na NADAWCy (Uruchom z polecenia CMD, a nie z programu PowerShell)
+
+`latte -c -a <Receiver IP address>:<port> -i <iterations>`
+
+Wyniki polecenia są takie same jak w odniesieniu do odbiorcy z wyjątkiem dodania wartości "-c", aby wskazać, że jest to "klient" lub nadawca
+
+`latte -c -a 10.0.0.4:5005 -i 65100`
+
+Poczekaj na wyniki. W zależności od tego, jak daleko są maszyny wirtualne, może to potrwać kilka minut. Rozważ rozpoczęcie od mniejszej liczby iteracji do przetestowania pod kątem sukcesu przed uruchomieniem dłuższych testów.
+
+## <a name="test-vms-running-linux"></a>Testowanie maszyn wirtualnych z systemem Linux
+
+Użyj [SockPerf](https://github.com/mellanox/sockperf) do testowania maszyn wirtualnych.
+
+### <a name="install-sockperf-on-the-vms"></a>Instalowanie SockPerf na maszynach wirtualnych
+
+Na maszynach wirtualnych z systemem Linux (NADAWCy i odbiornik) Uruchom następujące polecenia, aby przygotować SockPerf na maszynach wirtualnych:
+
+#### <a name="centos--rhel---install-git-and-other-helpful-tools"></a>CentOS/RHEL — Instalowanie usługi GIT i innych przydatnych narzędzi
+
+`sudo yum install gcc -y -q`
+`sudo yum install git -y -q`
+`sudo yum install gcc-c++ -y`
+`sudo yum install ncurses-devel -y`
+`sudo yum install -y automake`
+
+#### <a name="ubuntu---install-git-and-other-helpful-tools"></a>Ubuntu — Instalowanie usługi GIT i innych przydatnych narzędzi
+
+`sudo apt-get install build-essential -y`
+`sudo apt-get install git -y -q`
+`sudo apt-get install -y autotools-dev`
+`sudo apt-get install -y automake`
+
+#### <a name="bash---all"></a>Bash — wszystko
+
+Z wiersza polecenia bash (założono, że zainstalowano Git)
+
+`git clone https://github.com/mellanox/sockperf`
+`cd sockperf/`
+`./autogen.sh`
+`./configure --prefix=`
+
+Działa wolniej, może potrwać kilka minut
+
+`make`
+
+Szybka instalacja
+
+`sudo make install`
+
+### <a name="run-sockperf-on-the-vms"></a>Uruchom SockPerf na maszynach wirtualnych
+
+#### <a name="sample-commands-after-installation-serverreceiver---assumes-servers-ip-is-10004"></a>Przykładowe polecenia po instalacji. Serwer/odbiornik — adres IP serwera zakłada, że jest 10.0.0.4
+
+`sudo sockperf sr --tcp -i 10.0.0.4 -p 12345 --full-rtt`
+
+#### <a name="client---assumes-servers-ip-is-10004"></a>Klient — zakłada, że adres IP serwera to 10.0.0.4
+
+`sockperf ping-pong -i 10.0.0.4 --tcp -m 1400 -t 101 -p 12345  --full-rtt`
+
+> [!Note]
+> Upewnij się, że podczas testowania przepływności między maszyną wirtualną a bramą nie ma przeskoków pośrednich (np. urządzenia wirtualnego).
+> Jeśli istnieją słabe wyniki (pod względem ogólnej przepływności) pochodzące z testów iPERF/NTTTCP powyżej, zapoznaj się z poniższym artykułem, aby zrozumieć kluczowe czynniki związane z potencjalnymi przyczynami problemu: https://docs.microsoft.com/azure/virtual-network/virtual-network-tcpip-performance-tuning
+
+W szczególności analiza śladów przechwytywania pakietów (Wireshark/Monitor sieci) zebranych równolegle z klienta i serwera podczas tych testów będzie pomocna w ocenie złej wydajności. Te ślady mogą obejmować utratę pakietów, duże opóźnienia i rozmiar jednostki MTU. Fragmentacja, okno TCP 0, fragmenty poza kolejnością i tak dalej.
+
+## <a name="address-slow-file-copy-issues"></a>Problemy z kopiowaniem wolnych plików
+
+Nawet jeśli ogólna przepływność oceniona przy poprzednich krokach (iPERF/NTTTCP/itp.) była dobra, może wystąpić powolne polecenie ping do pliku podczas korzystania z Eksploratora Windows lub przeciąganie i upuszczanie przez sesję RDP. Ten problem jest zwykle spowodowany przez jeden lub oba z następujących czynników:
+
+* Aplikacje do kopiowania plików, takie jak Eksplorator Windows i RDP, nie używają wielu wątków podczas kopiowania plików. Aby uzyskać lepszą wydajność, należy użyć wielowątkowej aplikacji do kopiowania plików, takiej jak [RichCopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) , do kopiowania plików przy użyciu 16 lub 32 wątków. Aby zmienić numer wątku dla kopiowania plików w RichCopy, kliknij pozycję **Akcja** > **Kopiuj opcje** > **pliku Kopiuj**.
+
+   ![Problemy związane z kopiowaniem plików](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
+
+   > [!Note]
+   > Nie wszystkie aplikacje działają tak samo, jak nie wszystkie wątki są wykorzystywane przez wszystkie aplikacje/procesy. Po uruchomieniu testu można zobaczyć, że niektóre wątki są puste i nie będą zapewniać dokładnych wyników przepływności.
+   > Aby sprawdzić wydajność transferu plików aplikacji, należy użyć wielowątkowości przez zwiększenie liczby wątków w pomyślnym lub zmniejszeniu, aby znaleźć optymalną przepływność aplikacji lub transferu plików.
+
+* Niewystarczająca szybkość odczytu/zapisu dysku maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z usługą Azure Storage](../storage/common/storage-e2e-troubleshooting.md).
+
+## <a name="on-premises-device-external-facing-interface"></a>Zewnętrzny interfejs połączony z urządzeniem lokalnym
+
+Wymieniono podsieci zakresów lokalnych, które mają być dostępne na platformie Azure za pośrednictwem sieci VPN w bramie sieci lokalnej. Jednocześnie Zdefiniuj przestrzeń adresową sieci wirtualnej na platformie Azure z urządzeniem lokalnym.
+
+* **Brama oparta na trasach**: Zasady lub selektor ruchu dla sieci VPN opartych na trasach są skonfigurowane jako każdy z każdym (lub symbole wieloznaczne).
+
+* **Brama oparta na zasadach**: Sieci VPN oparte na zasadach szyfrują pakiety i kierują je bezpośrednio przez tunele protokołu IPsec na podstawie kombinacji prefiksów adresów między siecią lokalną użytkownika i siecią wirtualną platformy Azure. Zasady (lub selektor ruchu) są zazwyczaj zdefiniowane jako lista dostępu w konfiguracji VPN.
+
+* Połączenia **UsePolicyBasedTrafficSelector** : ("UsePolicyBasedTrafficSelectors" do $true połączenia skonfiguruje bramę sieci VPN platformy Azure w celu połączenia z ZAPORĄ sieci VPN opartą na zasadach lokalnie. W przypadku włączenia usługi PolicyBasedTrafficSelectors należy upewnić się, że urządzenie sieci VPN ma pasujące selektory ruchu zdefiniowane ze wszystkimi kombinacjami prefiksów sieci lokalnej (bram sieciowych) do i z prefiksów sieci wirtualnej platformy Azure, a nie dowolny z nich.
+
+Niewłaściwa konfiguracja może prowadzić do częstego rozłączenia w tunelu, porzucania pakietów, złej przepływności i opóźnień.
+
+## <a name="check-latency"></a>Opóźnienie sprawdzania
+
+Opóźnienie można sprawdzić przy użyciu następujących narzędzi:
+
+* WinMTR
+* TCPTraceroute
+* `ping`i `psping` (te narzędzia mogą zapewnić dobre oszacowanie RTT, ale nie mogą być używane we wszystkich przypadkach).
+
+![Opóźnienie sprawdzania](./media/vpn-gateway-validate-throughput-to-vnet/08checkinglatency.png)
+
+Jeśli zauważysz duże opóźnienia w dowolnych przeskokach przed wprowadzeniem szkieletu sieci firmy Microsoft, możesz chcieć kontynuować dalsze badania u usługodawcy internetowego.
+
+Jeśli duże, nietypowe opóźnienia są zauważalne z przeskoków w ciągu "msn.net", skontaktuj się z pomocą techniczną firmy Microsoft w celu uzyskania dalszych badań.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać dodatkowe informacje lub pomoc zapoznaj się z następujących linków:
 
-- [Optymalizowanie przepływności sieci maszyn wirtualnych platformy Azure](../virtual-network/virtual-network-optimize-network-bandwidth.md)
-- [Pomoc techniczna firmy Microsoft](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
+Aby uzyskać więcej informacji i uzyskać pomoc, zapoznaj się z następującym łączem:
+
+* [pomoc techniczna firmy Microsoft](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)

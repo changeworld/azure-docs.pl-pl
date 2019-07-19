@@ -1,5 +1,5 @@
 ---
-title: Filtry i usługi Azure Media Services o nazwie manifesty dynamiczne | Dokumentacja firmy Microsoft
+title: Filtry i Azure Media Services manifesty dynamiczne | Microsoft Docs
 description: W tym temacie opisano sposób tworzenia filtrów, więc klienta można ich używać do określonych sekcji strumienia strumienia. Usługa Media Services tworzy manifestów dynamicznych w celu uzyskania tego selektywne przesyłania strumieniowego.
 services: media-services
 documentationcenter: ''
@@ -13,48 +13,48 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: juliako
-ms.openlocfilehash: ee0200f7c007b437a27b8e9d0f36becc13b8f611
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: bbbb570cc042d5faa16b66c42aef9792b24fdb12
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835815"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854050"
 ---
-# <a name="pre-filtering-manifests-by-using-dynamic-packager"></a>Wstępnie filtrowanie manifesty za pomocą funkcji dynamicznego pakowania
+# <a name="pre-filtering-manifests-by-using-dynamic-packager"></a>Wstępne filtrowanie manifestów przy użyciu Pakowarki dynamicznej
 
-Gdy można dostarczać z adaptacyjną szybkością transmisji bitów, przesyłanie strumieniowe zawartości do urządzeń, często konieczne publikowanie wielu wersji manifestu możliwości określonego urządzenia docelowego lub dostępnej przepustowości sieci. [Funkcji dynamicznego pakowania](dynamic-packaging-overview.md) pozwala określić filtry, które można odfiltrować określonych koderów-dekoderów, rozdzielczości, szybkości transmisji i dźwięk śledzić kombinacje na bieżąco usunięcie konieczności tworzenia wielu kopii. Po prostu, należy opublikować nowy adres URL przy użyciu określonych filtrów pod kątem urządzenia docelowego (z systemem iOS, Android, SmartTV lub przeglądarki) i możliwości sieciowych (scenariusze o dużej przepustowości, mobilnych lub o niskiej przepustowości). W tym przypadku klienci można manipulować, przesyłanie strumieniowe zawartości za pomocą ciągu zapytania (, określając dostępny [filtry zasobów lub filtry konta](filters-concept.md)) i korzystaj z filtrów do określonych sekcji strumienia strumienia.
+W przypadku dostarczania zawartości przesyłania strumieniowego z adaptacyjną szybkością transmisji bitów do urządzeń często trzeba opublikować wiele wersji manifestu, aby określić możliwości urządzenia lub dostępną przepustowość sieci. [Pakowarka dynamiczna](dynamic-packaging-overview.md) pozwala określić filtry, które mogą odfiltrować określone kodery-dekoder, rozdzielczości, szybkości transmisji bitów i kombinacje ścieżek audio na bieżąco, usuwając konieczność tworzenia wielu kopii. Wystarczy opublikować nowy adres URL z określonym zestawem filtrów skonfigurowanym dla urządzeń docelowych (iOS, Android, biznesu SmartTV lub przeglądarki) oraz możliwości sieci (scenariusze o wysokiej przepustowości, mobilnych lub niskiej przepustowości). W takim przypadku klienci mogą manipulować przesyłaniem strumieniowym zawartości za pośrednictwem ciągu zapytania (przez określenie dostępnych [filtrów zasobów lub filtrów kont](filters-concept.md)) i używać filtrów do przesyłania strumieniowego określonych sekcji strumienia.
 
-Niektóre scenariusze dostarczania wymagają, należy upewnić się, że klient nie może uzyskać dostępu do określonej ścieżki. Na przykład może nie chcesz opublikować manifestu, który zawiera HD ścieżki do warstwy określonych subskrybentów. Możesz też usunąć ścieżek określonych adaptacyjną szybkością transmisji bitów (ABR), aby ograniczyć koszty dostawy do określonego urządzenia, które nie będą korzystać z dodatkowych ścieżek. W takim przypadku można było skojarzyć listę filtrów wstępnie utworzonych za pomocą usługi [lokalizatora przesyłania strumieniowego](streaming-locators-concept.md) przy tworzeniu. W tym przypadku klienci nie można manipulować, jak są przesyłane strumieniowo zawartość, jest on definiowany przez **lokalizatora przesyłania strumieniowego**.
+Niektóre scenariusze dostarczania wymagają upewnienia się, że klient nie może uzyskać dostępu do określonych ścieżek. Na przykład możesz nie chcieć opublikować manifestu, który zawiera ścieżki HD do określonej warstwy subskrybenta. Można również usunąć określone ścieżki z adaptacyjną szybkością transmisji bitów (ABR), aby zmniejszyć koszty dostarczania do określonego urządzenia, które nie byłyby korzystne w przypadku dodatkowych śladów. W takim przypadku można skojarzyć listę wstępnie utworzonych filtrów z [lokalizatorem przesyłania strumieniowego](streaming-locators-concept.md) podczas tworzenia. W takim przypadku klienci nie mogą manipulować sposobem przesyłania strumieniowego zawartości, jest on definiowany przez **lokalizator przesyłania strumieniowego**.
 
-Można połączyć filtrowania poprzez określenie [filtrów na lokalizatora przesyłania strumieniowego](filters-concept.md#associating-filters-with-streaming-locator) + dodatkowe urządzenia określone filtry określające przez klienta w adresie URL. Może to być przydatne do ograniczania dodatkowych ścieżek, takich jak strumienie metadanych lub zdarzenia, audio, języki lub opisu ścieżki audio. 
+Filtrowanie można łączyć przez określenie [filtrów w lokalizatorze przesyłania strumieniowego](filters-concept.md#associating-filters-with-streaming-locator) + dodatkowe filtry specyficzne dla urządzenia, które klient określi w adresie URL. Może to być przydatne, aby ograniczyć dodatkowe ścieżki, takie jak metadane lub strumienie zdarzeń, Języki audio lub ścieżki audio opisowe. 
 
-Możliwość określenia różnych filtrów na strumień, zapewnia zaawansowany **manifestów dynamicznych** manipulowania rozwiązania pod kątem wielu scenariuszy przypadków użycia dla urządzeń docelowych. W tym temacie opisano pojęcia związane z **manifestów dynamicznych** i zawiera przykładowe scenariusze, w których warto korzystać z tej funkcji.
+Możliwość określania różnych filtrów w strumieniu zapewnia zaawansowane rozwiązanie do **dynamicznego** manipulowania manifestem, które jest przeznaczone do obsługi wielu scenariuszy przypadków użycia dla urządzeń docelowych. W tym temacie objaśniono koncepcje dotyczące **manifestów dynamicznych** i przedstawiono przykłady scenariuszy, w których warto użyć tej funkcji.
 
 > [!NOTE]
-> Nie zmieniaj manifestów dynamicznych, elementu zawartości i domyślny manifest dla tego zasobu. 
+> Manifesty dynamiczne nie zmieniają elementu zawartości i domyślnego manifestu dla tego elementu zawartości. 
 > 
 
 ##  <a name="overview-of-manifests"></a>Omówienie manifestów
 
-Usługa Azure Media Services obsługuje protokoły HLS, MPEG DASH i Smooth Streaming. Jako część [funkcję dynamicznego tworzenia pakietów](dynamic-packaging-overview.md), przesyłania strumieniowego manifesty na kliencie (listy odtwarzania wzorca HLS, DASH Media prezentacji opis [MPD] i Smooth Streaming) generowanych dynamicznie w oparciu o wybór formatu w adresie URL. Zobacz protokoły dostarczania w [Typowy przepływ pracy na żądanie](dynamic-packaging-overview.md#delivery-protocols). 
+Azure Media Services obsługuje protokoły HLS, KRESKi MPEG i Smooth Streaming. W ramach tworzenia [pakietów dynamicznych](dynamic-packaging-overview.md)manifesty klienta przesyłania strumieniowego (HLS Master list odtwarzania, opis prezentacji nośników kreskowych [MPD] i Smooth Streaming) są dynamicznie generowane na podstawie selektora formatu w adresie URL. Zobacz protokoły dostarczania w [typowym przepływie pracy na żądanie](dynamic-packaging-overview.md#delivery-protocols). 
 
-### <a name="get-and-examine-manifest-files"></a>Pobierz i sprawdź plik manifestu
+### <a name="get-and-examine-manifest-files"></a>Pobieranie i sprawdzanie plików manifestu
 
-Należy określić listę filtrów śledzenie właściwości warunków, które ścieżki strumienia (na żywo lub wideo na żądanie [wideo]) powinny być uwzględnione w manifeście utworzony dynamicznie w oparciu. Aby uzyskać i zbadać właściwości ścieżki, musisz najpierw załadować manifestu Smooth Streaming.
+Należy określić listę warunków właściwości śledzenia filtru na podstawie ścieżek strumienia (na żywo lub wideo na żądanie [VOD]), które należy uwzględnić w dynamicznie tworzonym manifeście. Aby pobrać i przejrzeć właściwości ścieżek, należy najpierw załadować manifest Smooth Streaming.
 
-[Przekazywanie, kodowanie i przesyłanie strumieniowe plików przy użyciu platformy .NET](stream-files-tutorial-with-api.md#get-streaming-urls) samouczka dowiesz się, jak tworzyć adresy URL przesyłania strumieniowego przy użyciu platformy .NET. Po uruchomieniu aplikacji, wskazuje jeden z adresów URL w manifeście Smooth Streaming: `https://amsaccount-usw22.streaming.media.azure.net/00000000-0000-0000-0000-0000000000000/ignite.ism/manifest`.<br/> Skopiuj i wklej adres URL w pasku adresu przeglądarki. Plik zostanie pobrany. Możesz otworzyć go w wybranym edytorze tekstów.
+[Pliki przekazywania, kodowania i przesyłania strumieniowego z użyciem samouczka platformy .NET](stream-files-tutorial-with-api.md#get-streaming-urls) pokazują, jak utworzyć adresy URL przesyłania strumieniowego przy użyciu platformy .NET. Po uruchomieniu aplikacji jeden z adresów URL wskazuje manifest Smooth Streaming: `https://amsaccount-usw22.streaming.media.azure.net/00000000-0000-0000-0000-0000000000000/ignite.ism/manifest`.<br/> Skopiuj i wklej adres URL na pasku adresu przeglądarki. Plik zostanie pobrany. Możesz otworzyć go w wybranym edytorze tekstu.
 
-Na przykład REST, zobacz [przekazywanie, kodowanie i przesyłanie strumieniowe plików z użyciem usług REST](stream-files-tutorial-with-rest.md#list-paths-and-build-streaming-urls).
+Aby zapoznać się z przykładem REST, zobacz [przekazywanie, kodowanie i przesyłanie strumieniowe plików](stream-files-tutorial-with-rest.md#list-paths-and-build-streaming-urls).
 
-### <a name="monitor-the-bitrate-of-a-video-stream"></a>Monitor szybkości transmisji bitów strumienia wideo
+### <a name="monitor-the-bitrate-of-a-video-stream"></a>Monitoruj szybkość transmisji strumienia wideo
 
-Możesz użyć [strony pokaz usługi Azure Media Player](http://aka.ms/azuremediaplayer) monitorowanie szybkości transmisji bitów strumienia wideo. Na stronie wersji demonstracyjnej są wyświetlane informacje diagnostyczne na **diagnostyki** karty:
+Za pomocą [strony demonstracyjnej Azure Media Player](https://aka.ms/azuremediaplayer) można monitorować szybkość transmisji strumieniowej wideo. Na stronie demonstracyjnej są wyświetlane informacje diagnostyczne na karcie **Diagnostyka** :
 
 ![Diagnostyka Azure Media Player][amp_diagnostics]
  
 ### <a name="examples-urls-with-filters-in-query-string"></a>Przykłady: Adresy URL z filtrami w ciągu zapytania
 
-Filtry można stosować do ABR, Adaptive Bitrate protokołów przesyłania strumieniowego: HLS, MPEG-DASH i Smooth Streaming. W poniższej tabeli przedstawiono przykładowe adresy URL przy użyciu filtrów:
+Można zastosować filtry do protokołów ABR przesyłania strumieniowego: HLS, MPEG-KRESKa i Smooth Streaming. W poniższej tabeli przedstawiono kilka przykładów adresów URL z filtrami:
 
 |Protocol|Przykład|
 |---|---|
@@ -62,96 +62,96 @@ Filtry można stosować do ABR, Adaptive Bitrate protokołów przesyłania strum
 |MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
 |Smooth Streaming|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
 
-## <a name="rendition-filtering"></a>Filtrowania wyświetlania
+## <a name="rendition-filtering"></a>Filtrowanie wersji
 
-Można zakodować element zawartości do wielu profilów kodowania (H.264 linii bazowej, H.264 wysoki, AACL, AACH, Dolby Digital Plus) i wielokrotnych jakości. Jednak nie wszystkie urządzenia klienta będzie obsługiwać profilów wszystkich elementów zawartości i szybkości transmisji. Na przykład starsze urządzenia z systemem Android obsługuje tylko H.264 linii bazowej + AACL. Wysyłanie wyższe szybkości transmisji do urządzenia, które nie mogą korzystać z zalet marnuje obliczenia przepustowości i urządzeń. Takie urządzenia muszą dekodowania wszystkie dane informacje tylko do skalowania w dół do wyświetlenia.
+Możesz zakodować zasób do wielu profilów kodowania (H. 264), H. 264 High, AACL, AACH, Dolby Digital Plus) i wielu szybkości transmisji bitów. Jednak nie wszystkie urządzenia klienckie będą obsługiwać wszystkie profile zasobów i szybkości transmisji bitów. Na przykład starsze urządzenia z systemem Android obsługują tylko linię bazową H. 264 i AACL. Wysyłanie wyższych szybkości transmisji bitów do urządzenia, które nie mogą uzyskać korzyści z ograniczenia przepustowości i urządzenia. Takie urządzenie musi zdekodować wszystkie dane, tylko do skalowania w dół na potrzeby wyświetlania.
 
-Manifestów dynamicznych, umożliwia tworzenie profilów urządzeń (takich jak aplikacje mobilne, konsoli lub HD/SD) i obejmuje ścieżek i klas, które mają być częścią każdego profilu. Jest to filtrowania wyświetlania. Na poniższym diagramie przedstawiono przykład go.
+Za pomocą manifestu dynamicznego można utworzyć profile urządzeń (takie jak Mobile, Console lub HD/SD) i uwzględnić ścieżki i jakości, które mają być częścią każdego profilu. To nazywa się filtrowaniem wersji. Na poniższym diagramie przedstawiono przykład.
 
-![Przykład filtrowania wyświetlania][renditions2]
+![Przykład filtrowania odwzorowania][renditions2]
 
-W poniższym przykładzie koder użytego do kodowania zasobów mezzanine do siedmiu odwzorowaniami wideo każdego pliku MP4 z ISO (z 180p, aby 1080p). Zakodowanym elementem zawartości może być [dynamicznie spakowanych](dynamic-packaging-overview.md) do żadnego z następujących protokołów: HLS, MPEG DASH i Smooth. 
+W poniższym przykładzie koder został użyty do zakodowania zasobu Mezzanine do siedmiu plików ISO pliki MP4 (od 180p do 1080p). Zakodowany element zawartości może być [dynamicznie spakowany](dynamic-packaging-overview.md) w jednym z następujących protokołów przesyłania strumieniowego: HLS, PAUZa MPEG i gładki. 
 
-Górnej Poniższy diagram przedstawia HLS manifestu dla zasobu bez filtrów. (Zawiera wszystkie wersje siedem).  W lewym dolnym rogu na diagramie przedstawiono manifest HLS, do którego zastosowano filtr o nazwie "ott". Filtr "ott" Określa usunięcie wszystkich szybkości transmisji poniżej 1 MB/s, więc dwa poziomy jakości dolnej zostały usunięta, a w odpowiedzi. W prawym dolnym rogu na diagramie przedstawiono manifest HLS, do którego zastosowano filtr o nazwie "przenośnych". Filtr "przenośnych" oznacza usunięcie wersji, w którym rozwiązania jest większy niż 720p, więc dwóch 1080 p odwzorowaniami zostały usunięta, a.
+W górnej części poniższego diagramu przedstawiono manifest HLS dla elementu zawartości bez filtrów. (Zawiera wszystkie siedem wersji).  W lewym dolnym rogu diagram przedstawia manifest HLS, do którego zastosowano filtr o nazwie "OTT". Filtr "OTT" określa usunięcie wszystkich szybkości transmisji bitów poniżej 1 MB/s, tak aby dwa poziomy jakości dolne zostały usunięte w odpowiedzi. W prawym dolnym rogu Diagram pokazuje manifest HLS, do którego zastosowano filtr o nazwie "Mobile". Filtr "Mobile" określa usunięcie wersji, gdzie rozdzielczość jest większa niż 720, więc dwie wersje 1080p zostały usunięte.
 
-![Filtrowania wyświetlania][renditions1]
+![Filtrowanie wersji][renditions1]
 
-## <a name="removing-language-tracks"></a>Usunięcie wersji językowych
-Twoje zasoby mogą obejmować wiele języków audio, takich jak angielski, hiszpański, francuski, itp. Zazwyczaj menedżerów Player SDK domyślny wybór ścieżki audio i dostępne audio śledzi na wybór użytkownika.
+## <a name="removing-language-tracks"></a>Usuwanie ścieżek języka
+Twoje zasoby mogą zawierać wiele języków audio, takich jak angielski, hiszpański, francuski itp. Zazwyczaj Menedżer zestawu SDK odtwarzacza domyślnie wybiera ścieżki audio i dostępne ścieżki audio dla poszczególnych użytkowników.
 
-Tworzenie takich zestawów SDK Player może być trudne, ponieważ wymaga to różne implementacje dla architektury odtwarzaczy specyficznych dla urządzenia. Ponadto na niektórych platformach Player interfejsy API są ograniczone i nie obejmują funkcji wyboru audio, gdzie użytkownicy nie mogą wybrać ani zmienić domyślną ścieżkę audio. Za pomocą filtrów zawartości można kontrolować zachowanie, tworząc filtry, które są uwzględnione jedynie żądane języki audio.
+Opracowywanie takich zestawów SDK odtwarzacza jest trudne, ponieważ wymaga różnych implementacji dla środowisk odtwarzacza właściwych dla konkretnych urządzeń. Ponadto na niektórych platformach interfejsy API odtwarzacza są ograniczone i nie obejmują funkcji wyboru audio, w której użytkownicy nie mogą wybrać ani zmienić domyślnej ścieżki audio. Filtry zasobów umożliwiają sterowanie zachowaniem przez tworzenie filtrów, które zawierają tylko odpowiednie języki audio.
 
 ![Filtrowanie ścieżek języka][language_filter]
 
-## <a name="trimming-the-start-of-an-asset"></a>Przycinanie początek elementu zawartości
+## <a name="trimming-the-start-of-an-asset"></a>Przycinanie początku elementu zawartości
 
-W większości wydarzeń transmisji strumieniowej na żywo Operatorzy uruchomić niektóre testy przed rzeczywistego zdarzenia. Na przykład może być obejmują one plansz następująco przed rozpoczęciem zdarzenia: "Program rozpocznie chwilowo." 
+W przypadku większości zdarzeń przesyłania strumieniowego na żywo operatory uruchamiają niektóre testy przed rzeczywistym zdarzeniem. Na przykład mogą zawierać Niemnie, podobne do tego przed rozpoczęciem zdarzenia: "Program rozpocznie się chwilowo". 
 
-Jeśli program jest archiwizacji, testów i planszy danych również są archiwizowane i w prezentacji. Jednak te informacje nie być wyświetlane na klientach. Za pomocą manifestów dynamicznych możesz utworzyć filtr godziny rozpoczęcia i usuwanie niepożądanych danych z manifestu.
+Jeśli program jest archiwizowany, dane testowe i niezawierające są również archiwizowane i uwzględniane w prezentacji. Te informacje nie powinny jednak być widoczne dla klientów. Za pomocą manifestu dynamicznego można utworzyć filtr czasu rozpoczęcia i usunąć niechciane dane z manifestu.
 
-![Przycinanie start][trim_filter]
+![Rozpoczęcie przycinania][trim_filter]
 
-## <a name="creating-subclips-views-from-a-live-archive"></a>Tworzenie subclips (widoki) z archiwum na żywo
+## <a name="creating-subclips-views-from-a-live-archive"></a>Tworzenie podklipów (widoków) z archiwum na żywo
 
-Wiele wydarzeń na żywo są długo działające i archiwum na żywo może zawierać wiele zdarzeń. Po zakończeniu wydarzenia na żywo, zastosowań studyjnych warto podzielić dynamiczne archiwum na uruchamianie programu logicznych i Zatrzymaj sekwencji. 
+Wiele wydarzeń na żywo jest długotrwałych, a Archiwum na żywo może zawierać wiele zdarzeń. Po zakończeniu wydarzenia na żywo nadawcy mogą chcieć podzielić Archiwum na żywo na uruchomienie programu logicznego i Zatrzymaj sekwencje. 
 
-Te programy wirtualnego można opublikować oddzielnie, bez wpis przetwarzania na żywo archiwum i nie są tworzone oddzielne zasoby (co nie możesz korzystać z istniejącej pamięci podręcznej fragmentów w sieci CDN). Przykładami takich wirtualnych programów są kwartałów football lub przeciwna gry, innings w mecz lub poszczególne zdarzenia programu sportu.
+Te programy wirtualne można opublikować oddzielnie bez przetwarzania na żywo Archiwum i bez tworzenia oddzielnych zasobów (co nie przynosi korzyści dla istniejących fragmentów pamięci podręcznej w sieci CDN). Przykładami takich programów wirtualnych są kwartały gry piłkarskiej lub Basketball, innings w siatkówki lub pojedyncze zdarzenia dowolnego programu sportowego.
 
-Za pomocą manifestów dynamicznych możesz tworzenie filtrów za pomocą godzin rozpoczęcia/zakończenia i tworzyć widoki wirtualnego w górnej części archiwum na żywo. 
+Za pomocą manifestu dynamicznego można tworzyć filtry przy użyciu godzin rozpoczęcia/zakończenia i tworzyć widoki wirtualne w górnej części archiwum na żywo. 
 
-![Filtr klipu podrzędnego][subclip_filter]
+![Filtr podklipu][subclip_filter]
 
-Poniżej przedstawiono przefiltrowane zasobów:
+Oto przefiltrowany element zawartości:
 
-![Nartach][skiing]
+![Narciarstwo][skiing]
 
 ## <a name="adjusting-the-presentation-window-dvr"></a>Dostosowywanie okna prezentacji (DVR)
 
-Obecnie usługa Azure Media Services oferuje cykliczne archiwum, w którym można skonfigurować czas trwania od 5 minut do 25 godzin. Filtrowanie manifestu można utworzyć stopniowe okna funkcji DVR w górnej części archiwum, bez usuwania nośnika. Istnieje wiele scenariuszy, w którym chcesz udostępnić ograniczone okno DVR, aby przenieść do krawędzi na żywo i jednocześnie zachować większe okna archiwizacji nadawców. Nadawca może wystąpić potrzeba użycia danych znajdujących się poza okna DVR, aby wyróżnić klipy lub chcą zapewniają różne DVR systemu windows na różnych urządzeniach. Na przykład większość urządzeń przenośnych nie obsługują duże okna DVR (użytkownik ma 2-minutowy okno DVR dla urządzeń przenośnych i godzinę dla klientów komputerów stacjonarnych).
+Obecnie Azure Media Services oferuje archiwum cykliczne, w którym można skonfigurować czas trwania od 5 minut do 25 godzin. Filtrowanie manifestu może służyć do tworzenia okna wycofywania DVR w górnej części archiwum, bez usuwania nośnika. Istnieje wiele scenariuszy, w których nadawcy chcą mieć ograniczone okno DVR, aby można je było przenieść razem z aktywną krawędzią i w tym samym czasie pozostawić większe okno archiwizowania. Nadawca może chcieć użyć danych znajdujących się poza oknem DVR, aby wyróżnić klipy, lub może chcieć udostępnić różne okna DVR dla różnych urządzeń. Na przykład w większości urządzeń przenośnych nie są obsługiwane duże okna DVR (w przypadku urządzeń przenośnych można korzystać z 2-minutowego okna DVR).
 
 ![Okno DVR][dvr_filter]
 
-## <a name="adjusting-livebackoff-live-position"></a>Dostosowywanie LiveBackoff (transmisji na żywo)
+## <a name="adjusting-livebackoff-live-position"></a>Dostosowywanie LiveBackoff (pozycja na żywo)
 
-Filtrowanie manifestu może służyć do usuwania kilka sekund na żywo krawędzi program na żywo. Filtrowanie dopuszcza nadawców, Obejrzyj prezentację na punkcie publikacji (wersja zapoznawcza) i utworzyć anons wstawiania punkty zanim widzów odbierać strumienia (wspierana przez 30 sekund). Zastosowań studyjnych następnie wypychać te anonse do ich struktur klienta w czasie ich do odbierania i przetwarzania informacji przed możliwości anonsu.
+Filtrowanie manifestu może służyć do usuwania kilku sekund od aktywnej krawędzi programu na żywo. Filtrowanie pozwala nadawcom oglądać prezentację w punkcie publikacji w wersji zapoznawczej i tworzyć punkty wstawiania anonsów przed odebraniem strumienia (za pomocą kopii zapasowej przez 30 sekund). Nadawcy mogą następnie wypchnąć te anonse do swoich platform klienta w czasie, aby mogły odbierać i przetwarzać informacje przed możliwością anonsowania.
 
-Oprócz obsługi anons można na żywo ustawienie wycofań dostosować położenie widzów tak, aby gdy klienci odstępstw i trafień na żywo krawędzi, mogą nadal uzyskiwać fragmentów z serwera. Dzięki temu klienci nie będą otrzymywać 412 Błąd lub błąd HTTP 404.
+Poza obsługą anonsów Ustawienia aktywnej kopii zapasowej można użyć do dostosowania położenia osób przeglądających, dzięki czemu klienci będą mogli odrywać i trafiać fragmenty z serwera. Dzięki temu klienci nie będą mogli uzyskać błędu HTTP 404 lub 412.
 
-![Filtr na żywo wycofań][livebackoff_filter]
+![Odfiltruj do aktywnej kopii zapasowej][livebackoff_filter]
 
-## <a name="combining-multiple-rules-in-a-single-filter"></a>Łączenie wielu reguł w jeden filtr
+## <a name="combining-multiple-rules-in-a-single-filter"></a>Łączenie wielu reguł w jednym filtrze
 
-Można połączyć wiele reguł filtrowania w jeden filtr. Na przykład można zdefiniować "reguła zakresu" Aby usunąć plansz z archiwum na żywo i również odfiltrować różnych dostępnych. Gdy w przypadku stosowania wielu reguł filtrowania, efekt jest wspólną wszystkich reguł.
+W jednym filtrze można połączyć wiele reguł filtrowania. Przykładowo można zdefiniować "regułę zakresu", aby usunąć z archiwum na żywo, a także odfiltrować dostępne szybkości transmisji bitów. W przypadku stosowania wielu reguł filtrowania wynik końcowy jest częścią wspólną wszystkich reguł.
 
 ![Wiele reguł filtrowania][multiple-rules]
 
-## <a name="combining-multiple-filters-filter-composition"></a>Łączenie wielu filtrów (skład filtru)
+## <a name="combining-multiple-filters-filter-composition"></a>Łączenie wielu filtrów (kompozycja filtrów)
 
-Można także połączyć wiele filtrów w pojedynczego adresu URL. Następujący scenariusz pokazuje, dlaczego warto połączyć filtrów:
+Można również połączyć wiele filtrów w jednym adresie URL. W poniższym scenariuszu przedstawiono, dlaczego warto połączyć filtry:
 
-1. Należy filtrować swoje jakość wideo dla urządzeń przenośnych, takich jak Android i urządzenie iPad (w celu ograniczenia jakość wideo). Aby usunąć niechciane jakość, należy utworzyć filtr konta odpowiednie dla profilów urządzeń. Za pomocą filtrów kont dla wszystkich zasobów w ramach tego samego konta usługi Media Services bez dalszej skojarzenia.
-1. Chcesz także trim godzina rozpoczęcia i zakończenia elementu zawartości. Aby to osiągnąć, możesz utworzyć filtr zasobów i ustawić czas rozpoczęcia i zakończenia. 
-1. Chcesz połączyć oba te filtry. Bez kombinacji musisz dodać filtrowanie jakości, aby filtrować przycinania, co spowoduje, że użycie filtru trudniejsze.
+1. Należy odfiltrować jakość wideo dla urządzeń przenośnych, takich jak Android lub iPad (w celu ograniczenia jakości wideo). Aby usunąć niepożądane jakości, należy utworzyć filtr konta odpowiedni dla profilów urządzeń. Filtry kont można używać dla wszystkich zasobów w ramach tego samego konta Media Services bez żadnych dalszych powiązań.
+1. Należy również przyciąć godzinę rozpoczęcia i zakończenia elementu zawartości. Aby to osiągnąć, należy utworzyć filtr zasobów i ustawić czas rozpoczęcia/zakończenia. 
+1. Chcesz połączyć oba te filtry. Bez kombinacji należy dodać filtrowanie jakości do filtru przycinania, co spowodowałoby trudniejsze użycie filtru.
 
 
-Aby połączyć filtry, musisz ustawić nazw filtrów do manifestu/odtwarzania adresu URL w formacie rozdzielone średnikami. Załóżmy, że masz filtr o nazwie *MyMobileDevice* która filtruje jakość, a inny o nazwie *MyStartTime* można ustawić określony czas rozpoczęcia. Można połączyć maksymalnie trzy filtry. 
+Aby połączyć filtry, należy ustawić nazwy filtrów na adres URL manifestu/listy odtwarzania w formacie rozdzielanym średnikami. Przyjmijmy, że masz filtr o nazwie *MyMobileDevice* , który filtruje różne właściwości, i masz inną nazwę " *StartTime* ", aby ustawić określony czas rozpoczęcia. Można połączyć maksymalnie trzy filtry. 
 
 Aby uzyskać więcej informacji, zobacz [ten wpis w blogu](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
 
-## <a name="considerations-and-limitations"></a>Istotne zagadnienia i ograniczenia
+## <a name="considerations-and-limitations"></a>Zagadnienia i ograniczenia
 
-- Wartości **forceEndTimestamp**, **presentationWindowDuration**, i **liveBackoffDuration** nie powinna być ustawiona dla filtru wideo na żądanie. Są one używane tylko na potrzeby scenariuszy filtru na żywo. 
--  Dynamiczne manifest działa w granicach GOP (klatek kluczowych), więc przycinania ma GOP dokładności.
--  Można użyć dla tej samej nazwy filtru filtry kont i zasobów. Filtry zasobów mają wyższy priorytet i spowoduje przesłonięcie filtrów kont.
-- Jeśli zaktualizujesz filtru, może potrwać do 2 minut, zanim punkt końcowy przesyłania strumieniowego odświeżyć zasady. Filtry są używane do udostępniania zawartości (buforowane zawartości serwerów proxy i usługa CDN buforuje), aktualizowanie te filtry może spowodować błędy odtwarzacza. Firma Microsoft zaleca, wyczyść pamięć podręczną po zaktualizowaniu filtru. Jeśli ta opcja nie jest możliwe, należy wziąć pod uwagę przy użyciu innego filtru.
-- Klienci musieli ręcznie Pobierz manifest i przeanalizować sygnatura czasowa rozpoczęcia dokładne i Skala czasu.
+- Wartości dla **forceEndTimestamp**, **presentationWindowDuration**i **liveBackoffDuration** nie należy ustawiać dla filtru VOD. Są one używane tylko w scenariuszach filtrowania na żywo. 
+-  Manifest dynamiczny działa w granicach grupę GOP (klatek kluczowych), dlatego przycinanie ma dokładność grupę GOP.
+-  Możesz użyć tej samej nazwy filtru dla kont i filtrów zasobów. Filtry zasobów mają wyższy priorytet i przesłonią filtry konta.
+- W przypadku aktualizacji filtru może upłynąć do 2 minut, zanim punkt końcowy przesyłania strumieniowego odświeża reguły. W przypadku użycia filtrów do obsłużenia zawartości (i przepełnienia zawartości w pamięci podręcznej serwerów proxy i sieci CDN) aktualizowanie tych filtrów może skutkować awariami odtwarzacza. Zalecamy wyczyszczenie pamięci podręcznej po zaktualizowaniu filtru. Jeśli ta opcja nie jest możliwa, należy rozważyć użycie innego filtru.
+- Klienci muszą ręcznie pobrać manifest i przeanalizować dokładną sygnaturę czasową rozpoczęcia i skalę czasu.
     
-    - Aby określić właściwości ścieżki w zasobie [get i zapoznaj się z plikiem manifestu](#get-and-examine-manifest-files).
-    - Można ustawić właściwości sygnatury czasowej filtru zasobów jest: <br/>startTimestamp = &lt;godzina rozpoczęcia w manifeście&gt; +  &lt;oczekiwany czas rozpoczęcia filtrowania w ciągu kilku sekund&gt; * Skala czasu
+    - Aby określić właściwości ścieżek w elemencie zawartości, [Pobierz i sprawdź plik manifestu](#get-and-examine-manifest-files).
+    - Formuła do ustawiania właściwości sygnatury czasowej filtru zasobów: <br/>startTimestamp = &lt;czas rozpoczęcia w manifeście +  &gt;&lt;oczekiwany czas rozpoczęcia filtru w sekundach&gt; * Skala czasu
 
 ## <a name="next-steps"></a>Następne kroki
 
-Następujące artykuły pokazują, jak programowo utworzyć filtry:  
+W poniższych artykułach pokazano, jak programowo utworzyć filtry:  
 
 - [Tworzenie filtrów za pomocą interfejsów API REST](filters-dynamic-manifest-rest-howto.md)
 - [Tworzenie filtrów za pomocą programu .NET](filters-dynamic-manifest-dotnet-howto.md)

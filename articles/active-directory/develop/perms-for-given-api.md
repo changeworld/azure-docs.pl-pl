@@ -1,6 +1,6 @@
 ---
-title: Jak wybrać uprawnienia dla danego interfejsu API | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o działaniu żądania dotyczące uprawnień dla aplikacji klienckich i zasobów dla aplikacji, które tworzysz
+title: Wybierz uprawnienia dla danego interfejsu API | Microsoft Docs
+description: Dowiedz się więcej na temat sposobu działania żądań uprawnień dla aplikacji klienta i zasobów dla aplikacji, które tworzysz
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -12,25 +12,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.date: 07/15/2019
 ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42d5ce8a890f6f02e03a16b60f358d9430a09f88
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: a209009615d703d87aeaddb81bfa263bec5c3296
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545832"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276812"
 ---
 # <a name="how-to-select-permissions-for-a-given-api"></a>Jak wybrać uprawnienia dla danego interfejsu API 
 
 ## <a name="recommended-documents"></a>Zalecane dokumenty
 
-- Dowiedz się więcej na temat sposobu użycia aplikacji klienckich [żądań dotyczących uprawnień delegowanych i aplikacji](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#permissions) uzyskują dostęp do zasobów.
-- Zobacz instrukcje krok po kroku dotyczące sposobu [skonfigurować żądań dotyczących uprawnień aplikacji klienckiej](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
-- Aby uzyskać bardziej szczegółowe informacje, Dowiedz się, jak udostępnianie zasobów aplikacji [zakresy](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#scopes) i [ról aplikacji](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#roles) aplikacje klienckie, które pojawiają się, jak delegować i uprawnienia odpowiednio na platformie Azure Portal. 
+- Dowiedz się więcej o sposobie używania przez aplikacje klienckie [żądań delegowania i](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#permissions) dostępu do zasobów.
+- Zobacz instrukcje krok po kroku dotyczące [konfigurowania żądań uprawnień aplikacji klienta](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
+- Aby uzyskać więcej informacji, Dowiedz się, jak aplikacje zasobów uwidaczniają [zakresy](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#scopes) i [role aplikacji](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#roles) dla aplikacji klienckich, które manifestuje odpowiednio uprawnienia delegowane i aplikacje w Azure Portal. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
 

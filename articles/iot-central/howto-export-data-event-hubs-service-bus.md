@@ -1,120 +1,120 @@
 ---
-title: Eksportuj dane do usługi Azure Event Hubs i Azure Service Bus | Dokumentacja firmy Microsoft
-description: Sposób eksportowania danych z usługi Azure IoT Central aplikacji do usługi Azure Event Hubs i Azure Service Bus
+title: Eksportuj dane do usługi Azure Event Hubs i Azure Service Bus | Microsoft Docs
+description: Jak wyeksportować dane z aplikacji IoT Central platformy Azure do usługi Azure Event Hubs i Azure Service Bus
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 03/20/2019
+ms.date: 07/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 78edeb0c418f5c426771d241464d389f8a632e96
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c6f10352646350152c5aac795885231697e81fe7
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65463981"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850188"
 ---
-# <a name="export-your-data-in-azure-iot-central"></a>Eksportowanie danych w usłudze Azure IoT Central
+# <a name="export-your-data-in-azure-iot-central"></a>Eksportowanie danych do usługi Azure IoT Central
 
-*W tym temacie mają zastosowanie do administratorów.*
+*Ten temat ma zastosowanie do administratorów.*
 
-W tym artykule opisano sposób używania funkcji eksportu ciągłego dane w usłudze Azure IoT Central Eksport danych w ramach swojej własnej **usługi Azure Event Hubs**, i **usługi Azure Service Bus** wystąpień. Możesz wyeksportować **pomiarów**, **urządzeń**, i **szablonów urządzeń** do docelowej dla analizy i szczegółowych informacji z ciepłej ścieżki. Obejmuje to wyzwolenie reguły niestandardowe w usłudze Azure Stream Analytics, wyzwalania niestandardowych przepływów pracy w usłudze Azure Logic Apps lub przekształcanie ich i przekazanie do niej za pomocą usługi Azure Functions. 
+W tym artykule opisano sposób używania funkcji ciągłego eksportu danych w usłudze Azure IoT Central do eksportowania danych do własnych **Event Hubs platformy Azure**i **Azure Service Bus** wystąpień. **Pomiary**, **urządzenia**i **Szablony urządzeń** można eksportować do własnych miejsc docelowych w celu przeanalizowania i analizy ścieżki ciepłej. Obejmuje to wyzwalanie reguł niestandardowych w Azure Stream Analytics, wyzwalanie niestandardowych przepływów pracy w programie Azure Logic Apps lub przekształcanie danych i przekazywanie ich przez Azure Functions. 
 
 > [!Note]
-> Jeszcze raz po włączeniu ciągły Eksport danych otrzymasz tylko dane od tej pory wartości. Obecnie nie można pobrać danych w czasie, gdy ciągły Eksport danych zostało wyłączone. Do przechowania większej ilości danych historycznych, należy włączyć funkcję ciągły Eksport danych z wcześniej.
+> Po włączeniu ciągłego eksportowania danych w tym momencie otrzymujesz tylko dane z tego momentu. Obecnie nie można pobrać danych przez czas, gdy ciągły eksport danych jest wyłączony. Aby zachować bardziej historyczne dane, należy wczesnie włączyć ciągły eksport danych.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Musisz być administratorem w Twojej aplikacji IoT Central
+- Musisz być administratorem w aplikacji IoT Central
 
 ## <a name="set-up-export-destination"></a>Skonfiguruj miejsce docelowe eksportu
 
-Jeśli nie masz istniejących zdarzeń koncentratory/usługi Service Bus można wyeksportować do, wykonaj następujące kroki:
+Jeśli nie masz istniejącego Event Hubs/Service Bus do eksportowania do programu, wykonaj następujące kroki:
 
-## <a name="create-event-hubs-namespace"></a>Tworzenie przestrzeni nazw usługi Event Hubs
+## <a name="create-event-hubs-namespace"></a>Tworzenie przestrzeni nazw Event Hubs
 
-1. Tworzenie [nowych nazw usługi Event Hubs w witrynie Azure portal](https://ms.portal.azure.com/#create/Microsoft.EventHub). Dowiedz się więcej w [dokumentacja usługi Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
+1. Utwórz [nową przestrzeń nazw Event Hubs w Azure Portal](https://ms.portal.azure.com/#create/Microsoft.EventHub). Więcej informacji można znaleźć w witrynie [Azure Event Hubs docs](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
 2. wybierz subskrypcję. 
 
     > [!Note] 
-    > Teraz możesz wyeksportować dane do innych subskrypcji, które są **nie sam** co dla twojej aplikacji płatność za rzeczywiste użycie IoT Central. Połączysz się przy użyciu parametrów połączenia, w tym przypadku.
-3. Tworzenie Centrum zdarzeń w przestrzeni nazw usługi Event Hubs. Przejdź do obszaru nazw, a następnie wybierz pozycję **+ Centrum zdarzeń** u góry, aby utworzyć wystąpienie Centrum zdarzeń.
+    > Teraz możesz eksportować dane do innych subskrypcji, które **nie są takie same** jak dla aplikacji z opcją płatność zgodnie z rzeczywistym użyciem IoT Central. W tym przypadku zostanie nawiązane połączenie przy użyciu parametrów połączenia.
+3. Utwórz centrum zdarzeń w przestrzeni nazw Event Hubs. Przejdź do obszaru nazw, a następnie wybierz pozycję **+ centrum zdarzeń** u góry, aby utworzyć wystąpienie centrum zdarzeń.
 
-## <a name="create-service-bus-namespace"></a>Tworzenie przestrzeni nazw usługi Service Bus
+## <a name="create-service-bus-namespace"></a>Tworzenie przestrzeni nazw Service Bus
 
-1. Tworzenie [nowej przestrzeni nazw magistrali usług w witrynie Azure portal](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5) . Dowiedz się więcej w [dokumentacja usługi Azure Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-create-namespace-portal).
+1. Utwórz [nową przestrzeń nazw Service Bus w Azure Portal](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5) . Więcej informacji można znaleźć w dokumentacji [Azure Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-create-namespace-portal).
 2. wybierz subskrypcję. 
 
     > [!Note] 
-    > Teraz możesz wyeksportować dane do innych subskrypcji, które są **nie sam** co dla twojej aplikacji płatność za rzeczywiste użycie IoT Central. Połączysz się przy użyciu parametrów połączenia, w tym przypadku.
+    > Teraz możesz eksportować dane do innych subskrypcji, które **nie są takie same** jak dla aplikacji z opcją płatność zgodnie z rzeczywistym użyciem IoT Central. W tym przypadku zostanie nawiązane połączenie przy użyciu parametrów połączenia.
 
-3. Przejdź do przestrzeni nazw usługi Service Bus i wybierz **+ kolejka** lub **+ temat** u góry, aby utworzyć kolejki lub tematu, aby wyeksportować do.
+3. Przejdź do przestrzeni nazw Service Bus, a następnie wybierz pozycję **+ Kolejka** lub **+ temat** u góry, aby utworzyć kolejkę lub temat do wyeksportowania.
 
 
-## <a name="set-up-continuous-data-export"></a>Konfigurowanie ciągły Eksport danych
+## <a name="set-up-continuous-data-export"></a>Konfigurowanie ciągłego eksportu danych
 
-Teraz, gdy docelowy usługi Event Hubs/Service Bus, aby wyeksportować dane, wykonaj następujące kroki, aby skonfigurować ciągły Eksport danych. 
+Teraz, gdy masz miejsce docelowe Event Hubs/Service Bus do eksportowania danych do programu, wykonaj następujące kroki, aby skonfigurować ciągły eksport danych. 
 
 1. Zaloguj się do aplikacji IoT Central.
 
-2. W menu po lewej stronie wybierz **ciągły Eksport danych**.
+2. W menu po lewej stronie wybierz pozycję **ciągły eksport danych**.
 
     > [!Note]
-    > Jeśli nie widzisz ciągły Eksport danych w menu po lewej stronie, nie jesteś administratorem w swojej aplikacji. Porozmawiaj z administratorem, aby skonfigurować Eksport danych.
+    > Jeśli nie widzisz ciągłego eksportu danych w menu po lewej stronie, nie jesteś administratorem w swojej aplikacji. Skontaktuj się z administratorem, aby skonfigurować eksportowanie danych.
 
-    ![Utwórz nowy CRP Centrum zdarzeń](media/howto-export-data/export_menu1.png)
+    ![Utwórz nowe centrum zdarzeń CDE](media/howto-export-data/export_menu1.png)
 
-3. Wybierz **+ nowy** przycisk w prawym górnym rogu. Wybierz jedną z **usługi Azure Event Hubs** lub **usługi Azure Service Bus** jako miejsce docelowe eksportu. 
-
-    > [!NOTE] 
-    > Maksymalna liczba eksportów aplikacji wynosi pięć. 
-
-    ![Utwórz nowy ciągły Eksport danych](media/howto-export-data/export_new1.png)
-
-4. W polu listy rozwijanej wybierz swoje **przestrzeni nazw magistrali przestrzeń nazw/usługi Event Hubs**. Można również wybrać na liście, która jest ostatnia opcja **wprowadź parametry połączenia**. 
+3. Wybierz przycisk **+ Nowy** w prawym górnym rogu. Wybierz jedną z **Event Hubs platformy Azure** lub **Azure Service Bus** jako lokalizację docelową eksportu. 
 
     > [!NOTE] 
-    > Widoczne są tylko magazyn kont/Event Hubs przestrzenie nazw/usługi Service Bus przestrzeniach nazw **tej samej subskrypcji co aplikacja IoT Central**. Jeśli chcesz wyeksportować do miejsca docelowego spoza tej subskrypcji, wybierz opcję **wprowadź parametry połączenia** i zobacz krok 5.
+    > Maksymalna liczba eksportów na aplikację wynosi pięć. 
+
+    ![Utwórz nowy ciągły eksport danych](media/howto-export-data/export_new1.png)
+
+4. W polu listy rozwijanej wybierz **Event Hubs przestrzeń nazw/Service Bus przestrzeń**nazw. Możesz również wybrać ostatnią opcję z listy, która jest wprowadzeniem **parametrów połączenia**. 
 
     > [!NOTE] 
-    > 7-dniowy, który eksportowania aplikacji w wersji próbnej, jedynym sposobem, aby skonfigurować ciągłe danych jest za pomocą parametrów połączenia. Jest to spowodowane 7-dniowy aplikacji w wersji próbnej nie mają skojarzonej subskrypcji platformy Azure.
+    > Będą widoczne tylko konta magazynu/Event Hubs przestrzenie nazw/Service Bus przestrzenie nazw w **tej samej subskrypcji,** w której znajduje się aplikacja IoT Central. Jeśli chcesz wyeksportować do lokalizacji docelowej poza tą subskrypcją, wybierz pozycję **wprowadź parametry połączenia** i zobacz krok 5.
 
-    ![Utwórz nowy CRP Centrum zdarzeń](media/howto-export-data/export_create1.png)
+    > [!NOTE] 
+    > W przypadku 7-dniowych aplikacji próbnych jedynym sposobem skonfigurowania ciągłego eksportu danych jest użycie parametrów połączenia. Wynika to z faktu, że 7-dniowe aplikacje próbne nie mają skojarzonej subskrypcji platformy Azure.
 
-5. (Opcjonalnie) Jeśli została wybrana opcja **wprowadź parametry połączenia**, nowe pole pojawia się należy wkleić parametry połączenia. Aby uzyskać parametry połączenia dla usługi:
-    - Usługa Event Hubs lub usługi Service Bus, przejdź do przestrzeni nazw w witrynie Azure portal.
-        - W obszarze **ustawienia**, wybierz opcję **współużytkowane zasady dostępu**
-        - Wybierz domyślne **RootManageSharedAccessKey** lub Utwórz nową
-        - Skopiuj parametry połączenia podstawowej lub dodatkowej
+    ![Utwórz nowe centrum zdarzeń CDE](media/howto-export-data/export_create1.png)
+
+5. Obowiązkowe W przypadku wybrania opcji **wprowadź parametry połączenia**pojawi się nowe pole umożliwiające wklejenie parametrów połączenia. Aby uzyskać parametry połączenia dla:
+    - Event Hubs lub Service Bus, przejdź do przestrzeni nazw w Azure Portal.
+        - W obszarze **Ustawienia**wybierz pozycję **zasady dostępu** współdzielonego.
+        - Wybierz domyślną **RootManageSharedAccessKey** lub Utwórz nową
+        - Skopiuj podstawowe lub pomocnicze parametry połączenia
  
-6. Wybierz Centrum zdarzeń/kolejki lub tematu w polu listy rozwijanej.
+6. W polu listy rozwijanej wybierz centrum zdarzeń/kolejkę lub temat.
 
-7. W obszarze **danych do wyeksportowania**, określ każdy rodzaj danych do wyeksportowania, ustawiając typ **na**.
+7. W obszarze **dane do eksportowania**Określ każdy typ danych do wyeksportowania, ustawiając typ na wartość **włączone**.
 
-6. Aby włączyć ciągły Eksport danych, upewnij się, **eksportu danych** jest **na**. Wybierz pozycję **Zapisz**.
+6. Aby włączyć funkcję ciągłego eksportowania danych, upewnij się, że **Eksportowanie danych** jest **włączone**. Wybierz pozycję **Zapisz**.
 
-    ![Konfigurowanie ciągły Eksport danych](media/howto-export-data/export_list1.png)
+    ![Konfigurowanie ciągłego eksportowania danych](media/howto-export-data/export_list1.png)
 
-7. Po kilku minutach danych pojawi się w wybranej lokalizacji docelowej.
+7. Po kilku minutach dane zostaną wyświetlone w wybranym miejscu docelowym.
 
 
-## <a name="export-to-azure-event-hubs-and-azure-service-bus"></a>Eksportowanie do usługi Azure Event Hubs i usługi Azure Service Bus
+## <a name="export-to-azure-event-hubs-and-azure-service-bus"></a>Eksportuj do usługi Azure Event Hubs i Azure Service Bus
 
-Pomiary, urządzeń i danych szablonów urządzeń zostaną wyeksportowane do usługi Centrum zdarzeń lub kolejki usługi Service Bus lub temat w czasie zbliżonym do rzeczywistego. Pomiary wyeksportowane dane zawiera materiałami komunikat urządzenia wysyłane do IoT Central, nie tylko wartości pomiarów samodzielnie. Dane wyeksportowane urządzenia zawierają zmiany właściwości i ustawienia wszystkie urządzenia, a szablony wyeksportowane urządzenia zawiera zmiany do wszystkich szablonów urządzenia. Wyeksportowane dane jest we właściwości "treść" i jest w formacie JSON.
+Dane pomiarów, urządzeń i szablonów urządzeń są eksportowane do centrum zdarzeń lub kolejki Service Bus lub tematu w niemal czasie rzeczywistym. Eksportowane dane pomiarów zawierają część komunikatów wysyłanych przez urządzenia do IoT Central, a nie tylko wartości pomiarów. Dane wyeksportowanych urządzeń zawierają zmiany właściwości i ustawień wszystkich urządzeń, a wyeksportowane szablony urządzeń zawierają zmiany we wszystkich szablonach urządzeń. Eksportowane dane są we właściwości "Body" i są w formacie JSON.
 
 > [!NOTE]
-> Wybierając jako miejsce docelowe eksportu, kolejek i tematów usługi Service Bus **nie może mieć sesji lub wykrywania duplikatów, włączone**. Jedną z tych opcji są włączone, niektóre wiadomość, nie pojawi się w Twojej kolejki lub tematu.
+> W przypadku wybrania Service Bus jako miejsca docelowego eksportu kolejki i tematy **nie mogą mieć włączonej sesji lub Wykrywanie duplikatów**. Jeśli jedna z tych opcji jest włączona, niektóre komunikaty nie docierają do kolejki lub tematu.
 
 ### <a name="measurements"></a>Miary
 
-Nowa wiadomość zostanie wyeksportowany szybko po IoT Central odbiera komunikaty z urządzenia. Każdy komunikat wyeksportowany w usłudze Event Hubs i Service Bus zawiera cały komunikat urządzeń, wysyłane we właściwości "treść" w formacie JSON. 
+Nowy komunikat jest eksportowany szybko po IoT Central otrzyma komunikat z urządzenia. Każdy wyeksportowany komunikat w Event Hubs i Service Bus zawiera pełną wiadomość wysłaną przez urządzenie we właściwości "Body" w formacie JSON. 
 
 > [!NOTE]
-> Urządzenia, które wysyłać pomiary są reprezentowane przez identyfikatory urządzeń (patrz poniżej). Aby uzyskać nazwy urządzenia, wyeksportować dane urządzeń i korelowanie każdy komunikat przy użyciu **connectionDeviceId** odpowiadający **deviceId** komunikatu urządzenia.
+> Urządzenia, które wysyłają pomiary, są reprezentowane przez identyfikatory urządzeń (zobacz następujące sekcje). Aby uzyskać nazwy urządzeń, wyeksportuj dane urządzenia i skorelowania poszczególnych komunikatów przy użyciu **connectionDeviceId** , który odpowiada identyfikatorowi **deviceId** komunikatu urządzenia.
 
-W poniższym przykładzie przedstawiono wiadomość o danych pomiarów odebrana w Centrum zdarzeń lub kolejki usługi Service Bus lub temat.
+Poniższy przykład przedstawia komunikat dotyczący danych pomiarów odebranych w centrum zdarzeń lub Service Bus kolejki lub tematu.
 
 ```json
 {
@@ -155,24 +155,24 @@ W poniższym przykładzie przedstawiono wiadomość o danych pomiarów odebrana 
 
 ### <a name="devices"></a>Urządzenia
 
-Komunikaty zawierające dane urządzenia są wysyłane do Centrum zdarzeń lub kolejki usługi Service Bus lub temat co kilka minut. Oznacza to, że co kilka minut, partię komunikatów zostaną dostarczone z danymi o
+Komunikaty zawierające dane urządzenia są wysyłane do centrum zdarzeń lub kolejki Service Bus lub tematu co kilka minut. Oznacza to, że co kilka minut zostanie odebrana partia komunikatów z danymi dotyczącymi
 - Nowe urządzenia, które zostały dodane
-- Urządzenia z właściwością zmienione i ustawianie wartości
+- Urządzenia ze zmienionymi wartościami właściwości i ustawień
 
-Każdy komunikat reprezentuje co najmniej jedną zmianę na urządzeniu, od momentu ostatniego komunikatu wyeksportowany. Zawiera informacje, które będą wysyłane w każdej wiadomości:
-- `id` z urządzeń IoT Central
-- `name` urządzenia
-- `deviceId` z [usługi Device Provisioning](https://aka.ms/iotcentraldocsdps)
+Każdy komunikat reprezentuje co najmniej jedną zmianę urządzenia od ostatniego wyeksportowanego komunikatu. Informacje wysyłane w poszczególnych wiadomościach obejmują:
+- `id`urządzenia w IoT Central
+- `name`urządzenia
+- `deviceId`z [usługi Device](https://aka.ms/iotcentraldocsdps) Provisioning
 - Informacje o szablonie urządzenia
 - Wartości właściwości
 - Ustawianie wartości
 
 > [!NOTE]
-> Urządzenia został usunięty, ponieważ nie są eksportowane ostatniej partii. Obecnie w nie ma żadnych wskaźników wyeksportowanego wiadomości dla usuniętego urządzenia.
+> Urządzenia usunięte od ostatniej partii nie są eksportowane. Obecnie nie ma żadnych wskaźników w wyeksportowanych komunikatach dotyczących usuniętych urządzeń.
 >
-> Każde urządzenie należy do szablonu urządzenia jest reprezentowany przez urządzenie identyfikatora szablonu. Aby uzyskać nazwę szablonu urządzenia, należy wyeksportować dane szablonu urządzeń zbyt.
+> Szablon urządzenia, do którego należy każde urządzenie, jest reprezentowany przez identyfikator szablonu urządzenia. Aby uzyskać nazwę szablonu urządzenia, należy również wyeksportować dane szablonu urządzenia.
 
-Poniższy przykład przedstawia komunikat o danych urządzenia w Centrum zdarzeń lub kolejki usługi Service Bus lub temat:
+Poniższy przykład przedstawia komunikat dotyczący danych urządzenia w centrum zdarzeń lub Service Bus kolejki lub tematu:
 
 
 ```json
@@ -214,24 +214,24 @@ Poniższy przykład przedstawia komunikat o danych urządzenia w Centrum zdarze�
 }
 ```
 
-### <a name="device-templates"></a>Szablony urządzenia
+### <a name="device-templates"></a>Szablony urządzeń
 
-Komunikaty zawierające dane szablony urządzenia są wysyłane do Centrum zdarzeń lub kolejki usługi Service Bus lub temat co kilka minut. Oznacza to, że co kilka minut, partię komunikatów zostaną dostarczone z danymi o
-- Nowe szablony urządzenia, które zostały dodane
-- Urządzenie szablonów przy użyciu zmienionego pomiarów, właściwości i ustawienia definicji
+Komunikaty zawierające szablony urządzeń są wysyłane do centrum zdarzeń lub kolejki Service Bus lub tematu co kilka minut. Oznacza to, że co kilka minut zostanie odebrana partia komunikatów z danymi dotyczącymi
+- Dodano nowe szablony urządzeń
+- Szablony urządzeń ze zmienionymi pomiarymi, właściwościami i definicjami ustawień
 
-Każdy komunikat reprezentuje co najmniej jedną zmianę w szablonie urządzenia od czasu ostatniego komunikatu wyeksportowany. Zawiera informacje, które będą wysyłane w każdej wiadomości:
-- `id` szablonu urządzenia
-- `name` szablonu urządzenia
-- `version` szablonu urządzenia
-- Typy danych pomiaru i minimalnej/maksymalnej wartości
+Każdy komunikat reprezentuje co najmniej jedną zmianę w szablonie urządzenia od ostatniego wyeksportowanego komunikatu. Informacje wysyłane w poszczególnych wiadomościach obejmują:
+- `id`szablonu urządzenia
+- `name`szablonu urządzenia
+- `version`szablonu urządzenia
+- Typy danych pomiarowych i wartości minimalne/maksymalne
 - Typy danych właściwości i wartości domyślne
-- Ustawianie typów danych i wartości domyślne
+- Ustawianie typów danych i wartości domyślnych
 
 > [!NOTE]
-> Szablony urządzenia usunięty od czasu ostatniej partii nie są eksportowane. Obecnie istnieją nie wskaźników w komunikatach wyeksportowane szablony usuniętego urządzenia.
+> Szablony urządzeń usunięte od momentu ostatniej partii nie są eksportowane. Obecnie nie ma żadnych wskaźników w wyeksportowanych komunikatach dla usuniętych szablonów urządzeń.
 
-Poniższy przykład przedstawia komunikat o danych szablony urządzenia w Centrum zdarzeń lub kolejki usługi Service Bus lub temat:
+Poniższy przykład przedstawia komunikat dotyczący danych szablonów urządzeń w centrum zdarzeń lub Service Bus kolejki lub tematu:
 
 ```json
 {
@@ -293,9 +293,9 @@ Poniższy przykład przedstawia komunikat o danych szablony urządzenia w Centru
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz gdy wiesz, jak wyeksportować dane do usługi Azure Event Hubs i Azure Service Bus, przejdź do następnego kroku:
+Teraz, gdy wiesz już, jak wyeksportować dane do usługi Azure Event Hubs i Azure Service Bus, przejdź do następnego kroku:
 
 > [!div class="nextstepaction"]
-> [Porady: wyzwalanie usługi Azure Functions](howto-trigger-azure-functions.md)
+> [Jak wyzwolić Azure Functions](howto-trigger-azure-functions.md)

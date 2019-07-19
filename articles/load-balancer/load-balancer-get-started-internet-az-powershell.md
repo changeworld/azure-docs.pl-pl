@@ -1,10 +1,10 @@
 ---
-title: Tworzenie modułu równoważenia obciążenia za pomocą frontonu strefowo nadmiarowe — Azure PowerShell
+title: Tworzenie Load Balancer za pomocą Strefowo nadmiarowego frontonu — Azure PowerShell
 titlesuffix: Azure Load Balancer
-description: Dowiedz się, jak utworzyć publiczny moduł równoważenia obciążenia standardowego za pomocą frontonu adres strefowo nadmiarowy publiczny adres IP przy użyciu programu PowerShell
+description: Dowiedz się, jak utworzyć publiczną usługa Load Balancer w warstwie Standardowa ze strefowo nadmiarowym publicznym adresem IP przy użyciu programu PowerShell
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 ms.service: load-balancer
 ms.devlang: na
@@ -13,17 +13,17 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
-ms.author: kumud
-ms.openlocfilehash: 9cee3b68273fe98e70d558b5d01232bedf113224
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 3ce14a0d9d5b9d5ef7ca7be34faad3fa60795ab9
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66122132"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275086"
 ---
 #  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-powershell"></a>Tworzenie standardowego modułu równoważenia obciążenia przy użyciu strefowo nadmiarowe frontonu przy użyciu programu Azure PowerShell
 
-W tym artykule opisano proces tworzenia publicznego [Balancer w warstwie standardowa](https://aka.ms/azureloadbalancerstandard) z strefowo nadmiarowe frontonu przy użyciu adresu publicznego adresu IP standardowych.
+W tym artykule opisano sposób tworzenia publicznej [Usługa Load Balancer w warstwie Standardowa](https://aka.ms/azureloadbalancerstandard) ze strefowo nadmiarowym adresem IP przy użyciu adresu w standardzie Public.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -89,7 +89,7 @@ $probe = New-AzLoadBalancerProbeConfig -Name 'myHealthProbe' -Protocol Http -Por
 ```
 
 ## <a name="create-a-load-balancer"></a>Tworzenie modułu równoważenia obciążenia
-Tworzenie standardowego modułu równoważenia obciążenia przy użyciu następującego polecenia:
+Utwórz usługa Load Balancer w warstwie Standardowa przy użyciu następującego polecenia:
 
 ```azurepowershell-interactive
 $lb = New-AzLoadBalancer -ResourceGroupName myResourceGroup -Name 'MyLoadBalancer' -Location westeurope `
@@ -97,5 +97,5 @@ $lb = New-AzLoadBalancer -ResourceGroupName myResourceGroup -Name 'MyLoadBalance
   -Probe $probe -LoadBalancingRule $rule -Sku Standard
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - Dowiedz się więcej o [standardowego modułu równoważenia obciążenia i dostępność strefy](load-balancer-standard-availability-zones.md).

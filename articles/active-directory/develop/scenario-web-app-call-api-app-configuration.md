@@ -1,6 +1,6 @@
 ---
-title: Aplikacja internetowa wywołuje interfejsy API (kod Konfiguracja) - sieci web platforma tożsamości firmy Microsoft
-description: Dowiedz się, jak utworzyć aplikację sieci Web wywołuje interfejsy API (konfiguracji kodu aplikacji) sieci web
+title: Aplikacja sieci Web, która wywołuje interfejsy API sieci Web (Konfiguracja kodu) — Microsoft Identity platform
+description: Dowiedz się, jak utworzyć aplikację sieci Web, która wywołuje interfejsy API sieci Web (Konfiguracja kodu aplikacji)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -11,40 +11,40 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c78a951258e3c279f96f44ceac469e4c38cf22c
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 15c12aebccf34957db8442034ebbcd6ac7c107e1
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785569"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276732"
 ---
-# <a name="web-app-that-calls-web-apis---code-configuration"></a>Aplikacja sieci Web, że wywołania sieci web interfejsy API — Konfiguracja kodu
+# <a name="web-app-that-calls-web-apis---code-configuration"></a>Aplikacja sieci Web, która wywołuje interfejsy API sieci Web — konfiguracja kodu
 
-Jak widać na [scenariusz logowania użytkowników w aplikacji sieci Web](scenario-web-app-sign-user-overview.md), biorąc pod uwagę, że logowanie użytkownika jest delegowane do Open ID connect (OIDC) w oprogramowaniu pośredniczącym, aby punktu zaczepienia w górę w procesie OIDC. Sposobem wykonania tego zadania różni się zależnie od używanego (tutaj ASP.NET i ASP.NET Core), ale w końcu zostanie subskrybowanie zdarzeń OIDC oprogramowania pośredniczącego. Zasada jest to, że:
+Jak widać w scenariuszu logowania [aplikacji sieci Web](scenario-web-app-sign-user-overview.md), jeśli użytkownik zalogowany jest delegowany do oprogramowania pośredniczącego Open ID Connect (OIDC), chcesz podpiąć w procesie OIDC. Sposób, w jaki można to zrobić, zależy od używanej platformy (w tym miejscu ASP.NET i ASP.NET Core), ale na końcu zasubskrybujesz zdarzenia pośredniczące OIDC. Zasada polega na tym, że:
 
-- Będziesz umożliwiają ASP.NET lub ASP.NET core żądania kodu autoryzacji. Wykonując spowoduje core ASP.NET/ASP.NET umożliwiają użytkownikowi, zaloguj się i wyrazić zgodę,
-- Będziesz subskrybować odbiór kod autoryzacji przez aplikację internetową.
-- Po odebraniu kodu uwierzytelniania użyjesz biblioteki MSAL do realizacji kodu i wynikowy tokenów dostępu, a następnie Odśwież magazyn tokenów w pamięci podręcznej tokenu. Z tego miejsca pamięci podręcznej może służyć w innych częściach aplikacji można uzyskać innych tokenów w trybie dyskretnym.
+- ASP.NET lub ASP.NET podstawowe żądanie kodu autoryzacji. Dzięki temu ASP.NET/ASP.NET rdzeń zezwoli użytkownikowi na logowanie i zgodę,
+- Zasubskrybujesz odbieranie kodu autoryzacji przez aplikację internetową.
+- Po odebraniu kodu uwierzytelniania należy użyć bibliotek MSAL do zrealizowania kodu i uzyskanych tokenów dostępu i odświeżenia magazynu tokenów w pamięci podręcznej tokenów. Z tego miejsca pamięć podręczna może być używana w innych częściach aplikacji, aby uzyskać inne tokeny dyskretnie.
 
-## <a name="libraries-supporting-web-app-scenarios"></a>Biblioteki wspiera scenariusze aplikacji sieci Web
+## <a name="libraries-supporting-web-app-scenarios"></a>Biblioteki obsługujące scenariusze aplikacji sieci Web
 
-Dostępne są następujące biblioteki obsługi przepływ kodu autoryzacji dla aplikacji sieci Web:
+Biblioteki obsługujące przepływ kodu autoryzacji dla Web Apps są następujące:
 
 | Biblioteka MSAL | Opis |
 |--------------|-------------|
-| ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Obsługiwane platformy to platformy .NET Framework i .NET Core (nie platformy uniwersalnej systemu Windows, platformy Xamarin.iOS i Xamarin.Android jako tych platform są używane do tworzenia aplikacji klienckich publiczny) |
-| ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL.Python | Programowanie w toku — w publicznej wersji zapoznawczej |
-| ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL.Java | Programowanie w toku — w publicznej wersji zapoznawczej |
+| ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Obsługiwane platformy to .NET Framework i platformy .NET Core (nie platformy UWP, Xamarin. iOS i Xamarin. Android, ponieważ te platformy są używane do tworzenia publicznych aplikacji klienckich). |
+| ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL. Python | Opracowywanie w toku — w publicznej wersji zapoznawczej |
+| ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL.Java | Opracowywanie w toku — w publicznej wersji zapoznawczej |
 
-## <a name="aspnet-core-configuration"></a>Konfiguracja platformy ASP.NET Core
+## <a name="aspnet-core-configuration"></a>Konfiguracja ASP.NET Core
 
-W programie ASP.NET Core dziać rzeczy `Startup.cs` pliku. Można subskrybować `OnAuthorizationCodeReceived` otworzyć o identyfikatorze zdarzenia połączenia i z tego wydarzenia, wywołaj MSAL. Metoda firmy NET `AcquireTokenFromAuthorizationCode` została przechowywania w pamięci podręcznej tokenu, token dostępu dla żądanego zakresów i token odświeżania, który będzie używany do odświeżenia tokenu dostępu, gdy jest bliski wygaśnięcia, lub można pobrać tokenu w imieniu tego samego użytkownika , ale do innego zasobu.
+W ASP.NET Core w `Startup.cs` pliku występują problemy. Chcesz subskrybować `OnAuthorizationCodeReceived` zdarzenie połączenia Open ID i z tego zdarzenia, wywołaj MSAL. Metoda `AcquireTokenFromAuthorizationCode` sieci, która ma wpływ na przechowywanie w pamięci podręcznej tokenów, token dostępu dla żądanych zakresów i token odświeżania, który zostanie użyty do odświeżenia tokenu dostępu, gdy jest bliski wygaśnięcia lub aby uzyskać token w imieniu tego samego użytkownika , ale dla innego zasobu.
 
-Komentarze w kodzie poniżej pomaga zrozumieć niektóre aspekty skomplikowanych tkania platformy MSAL.NET i ASP.NET Core. Szczegółowe informacje znajdują się w [aplikacji sieci Web platformy ASP.NET Core przyrostowe wirusowej rozdziału samouczków, 2](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)
+Komentarze w kodzie poniżej będą pomocne w zrozumieniu niektórych z lew MSAL.NET i ASP.NET Core. Pełne szczegóły znajdują się w [samouczku przyrostowym aplikacji sieci Web ASP.NET Core, rozdział 2](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)
 
 ```CSharp
   services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
@@ -88,7 +88,7 @@ Komentarze w kodzie poniżej pomaga zrozumieć niektóre aspekty skomplikowanych
    };
 ```
 
-W programie ASP.NET Core tworzenie aplikacji poufne klienta używa informacji w obiekcie HttpContext. Ten element HttpContext zna adres URL dla aplikacji sieci Web i zalogowanego użytkownika (w `ClaimsPrincipal`). Używa również konfiguracja platformy ASP.NET Core, która zawiera sekcja "AzureAD" i która jest powiązana `_applicationOptions` strukturę danych. Na koniec aplikacja musi do obsługi pamięci podręcznej tokenu.
+W ASP.NET Core tworzenia poufnej aplikacji klienckiej używa informacji znajdujących się w elemencie HttpContext. Ten element HttpContext wie o adresie URL aplikacji sieci Web oraz zalogowanym użytkowniku (w a `ClaimsPrincipal`). Używa również konfiguracji ASP.NET Core, która zawiera sekcję "AzureAD" i która jest powiązana ze `_applicationOptions` strukturą danych. Na koniec aplikacja musi obsługiwać pamięć podręczną tokenów.
 
 ```CSharp
 /// <summary>
@@ -128,11 +128,11 @@ private IConfidentialClientApplication BuildConfidentialClientApplication(HttpCo
 }
 ```
 
-`AcquireTokenByAuthorizationCode` tak naprawdę umarza kod autoryzacji wymagane przez platformę ASP.NET i pobiera tokenów, które są dodawane do platformy MSAL.NET pamięci podręcznej tokenu użytkownika. W tym miejscu, są one następnie używane w kontrolerów platformy ASP.NET Core.
+`AcquireTokenByAuthorizationCode`naprawdę realizuje kod autoryzacji wymagany przez ASP.NET i pobiera tokeny dodawane do pamięci podręcznej tokenów użytkownika MSAL.NET. Następnie są one używane w kontrolerach ASP.NET Core.
 
-## <a name="aspnet-configuration"></a>Konfiguracja platformy ASP.NET
+## <a name="aspnet-configuration"></a>Konfiguracja ASP.NET
 
-Sposób ASP.NET obsługuje rzeczy jest podobny, z tą różnicą, że konfiguracja OpenIdConnect i subskrypcję, której chcesz `OnAuthorizationCodeReceived` zdarzeń odbywa się w `App_Start\Startup.Auth.cs` pliku. Można znaleźć podobne pojęć związanych z tą różnicą, że w tym miejscu należy określić parametr RedirectUri w pliku konfiguracji, który jest nieco mniej niezawodne:
+Sposób, w jaki ASP.NET obsługuje rzeczy, jest podobny, z tą różnicą, że konfiguracja OpenIdConnect `OnAuthorizationCodeReceived` i subskrypcja zdarzenia wystąpi `App_Start\Startup.Auth.cs` w pliku. Podobne koncepcje znajdziesz w tym miejscu, z wyjątkiem sytuacji, w których należy określić RedirectUri w pliku konfiguracji, co jest nieco mniej niezawodne:
 
 ```CSharp
 private void ConfigureAuth(IAppBuilder app)
@@ -180,18 +180,21 @@ private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotifica
 }
 ```
 
-### <a name="msalnet-token-cache-for-a-aspnet-core-web-app"></a>Bufor platformy MSAL.NET tokenu dla aplikacji sieci Web platformy ASP.NET (rdzenie)
+Na koniec zamiast wpisu tajnego klienta poufna aplikacja kliencka może również potwierdzić swoją tożsamość przy użyciu certyfikatu klienta lub potwierdzenia klienta.
+Korzystanie z zatwierdzeń klientów jest zaawansowanym scenariuszem, szczegółowym w przypadku potwierdzeń [klienta](msal-net-client-assertions.md)
 
-W aplikacji sieci web (lub internetowych interfejsów API jako środek fakcie) implementacja pamięci podręcznej tokenu różni się od implementacji pamięci podręcznej tokenu aplikacje klasyczne (które są często [plikowym](scenario-desktop-acquire-token.md#file-based-token-cache). Może używać sesji ASP.NET/ASP.NET Core lub w pamięci podręcznej Redis, lub bazy danych lub nawet usługi Azure Blob storage. W kodzie fragment kodu powyżej to jest obiekt `EnablePersistence(HttpContext, clientApp.UserTokenCache, clientApp.AppTokenCache);` wywołania metody, powiązanej usługi cache service. Szczegółowych informacji o tym, co się dzieje, w tym miejscu wykracza poza zakres tego podręcznika scenariuszem, ale linki zostały podane poniżej.
+### <a name="msalnet-token-cache-for-a-aspnet-core-web-app"></a>Pamięć podręczna tokenów MSAL.NET dla aplikacji sieci Web ASP.NET (Core)
+
+W przypadku aplikacji sieci Web (lub interfejsów API sieci Web w rzeczywistości) implementacja pamięci podręcznej tokenów różni się od implementacji pamięci podręcznej tokenów aplikacji klasycznych (często [opartych na plikach](scenario-desktop-acquire-token.md#file-based-token-cache)). Może korzystać z sesji ASP.NET/ASP.NET Core lub pamięci podręcznej Redis lub bazy danych, a nawet magazynu obiektów blob platformy Azure. W powyższym fragmencie kodu jest to obiekt `EnablePersistence(HttpContext, clientApp.UserTokenCache, clientApp.AppTokenCache);` wywołania metody, które wiąże usługę pamięci podręcznej. Szczegółowe informacje o tym, co się dzieje, znajdują się poza zakresem tego przewodnika scenariusza, ale linki są podane poniżej.
 
 > [!IMPORTANT]
-> Bardzo ważne jest, aby weź pod uwagę to, że dla aplikacji sieci web i interfejsów API sieci web, powinien istnieć jeden pamięci podręcznej tokenu dla użytkownika (na konto). Należy serializować pamięci podręcznej tokenu dla każdego konta.
+> Istotną kwestią jest to, że w przypadku aplikacji sieci Web i interfejsów API sieci Web powinna istnieć jedna pamięć podręczna tokenów dla każdego użytkownika (na konto). Należy serializować pamięć podręczną tokenów dla każdego konta.
 
-Przykłady dotyczące używania pamięci podręczne tokenu dla aplikacji sieci Web i interfejsy API sieci web są dostępne w [samouczek dotyczący aplikacji sieci Web platformy ASP.NET Core](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) w fazie [pamięci podręcznej tokenu 2-2](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache). W celu implementacji mają przyjrzeć się następującym folderze [TokenCacheProviders](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web/TokenCacheProviders) w [microsoft uwierzytelniania rozszerzenia do dotnet](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet) biblioteki (w [ Microsoft.Identity.Client.Extensions.Web](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web) folderu.
+Przykłady użycia pamięci podręcznej tokenów dla aplikacji sieci Web i interfejsów API sieci Web są dostępne w [samouczku ASP.NET Core aplikacji sieci](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) Web w fazie [2-2 tokena w pamięci](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache)podręcznej. W przypadku implementacji zapoznaj się z następującym folderem [TokenCacheProviders](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web/TokenCacheProviders) w bibliotece [Microsoft-Authentication-Extensions-for-dotnet](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet) (w folderze [Microsoft. Identity. Client. Extensions. Web](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web) ).
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym momencie po zalogowaniu użytkownika tokenu jest przechowywany w pamięci podręcznej tokenu. Zobaczmy, jak są one następnie używane w innych częściach aplikacji sieci Web.
+W tym momencie podczas logowania użytkownika w pamięci podręcznej tokeny jest przechowywany token. Zobaczmy, w jaki sposób jest używany w innych częściach aplikacji sieci Web.
 
 > [!div class="nextstepaction"]
 > [Zaloguj się do aplikacji sieci Web](scenario-web-app-call-api-sign-in.md)

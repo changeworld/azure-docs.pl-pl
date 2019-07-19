@@ -1,7 +1,7 @@
 ---
-title: Konfigurowanie usługi Azure Application Insights do monitorowania Obiektywnych modeli uczenia maszynowego
+title: Konfigurowanie Application Insights platformy Azure do monitorowania modeli ML
 titleSuffix: Azure Machine Learning service
-description: Monitorowanie usług sieci web wdrażane za pomocą usługi Azure Machine Learning, za pomocą usługi Azure Application Insights
+description: Monitorowanie usług sieci Web wdrożonych za pomocą usługi Azure Machine Learning na platformie Azure Application Insights
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 04/02/2019
+ms.date: 07/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 2e481a388d8cbd6baf66b95c74449396b2e70f7d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1c12f55228d77656ef57598da0fb002fdea29bd4
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60820228"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871782"
 ---
 # <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>Monitoruj swoje modele usługi Azure Machine Learning z usługą Application Insights
 
@@ -36,7 +36,7 @@ W tym artykule dowiesz się, jak skonfigurować usługi Azure Application Insigh
 * Model uczenia maszynowego uczonego do wdrożenia usługi Azure Kubernetes Service (AKS) lub wystąpienia kontenera platformy Azure (ACI). Jeśli nie masz, zobacz [Train model klasyfikacji obrazów](tutorial-train-models-with-aml.md) samouczka.
 
 
-## <a name="use-sdk-to-configure"></a>Konfigurowanie przy użyciu zestawu SDK 
+## <a name="use-sdk-to-configure"></a>Użyj zestawu SDK, aby skonfigurować 
 
 ### <a name="update-a-deployed-service"></a>Aktualizowania wdrożonej usługi
 1. Zidentyfikuj usługi w obszarze roboczym. Wartość `ws` to nazwa obszaru roboczego.
@@ -77,7 +77,7 @@ Aby wyłączyć usługę Application Insights, użyj następującego kodu:
 <service_name>.update(enable_app_insights=False)
 ```
     
-## <a name="use-portal-to-configure"></a>Konfigurowanie za pomocą portalu
+## <a name="use-portal-to-configure"></a>Używanie portalu do konfigurowania
 
 Można włączyć i wyłączyć usługę Application Insights w witrynie Azure portal.
 
@@ -131,11 +131,11 @@ Aby dowiedzieć się więcej o tym, jak używać usługi Application Insights, z
 
 ## <a name="example-notebook"></a>Przykład notesu
 
-[How-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb) koncepcji w tym artykule pokazano, notesu. 
+W notesie [enable-App-Insights-in-Product-Service. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb) przedstawiono Koncepcje opisane w tym artykule. 
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Może również zbierać dane na modeli w produkcji. Przeczytaj artykuł [zbieranie danych dla modeli w środowisku produkcyjnym](how-to-enable-data-collection.md). 
 
-Przeczytaj również [usługi Azure Monitor dla kontenerów](https://docs.microsoft.com/azure/monitoring/monitoring-container-insights-overview?toc=%2fazure%2fmonitoring%2ftoc.json).
+Przeczytaj również [Azure monitor for Containers](https://docs.microsoft.com/azure/monitoring/monitoring-container-insights-overview?toc=%2fazure%2fmonitoring%2ftoc.json).

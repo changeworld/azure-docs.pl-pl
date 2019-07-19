@@ -1,6 +1,6 @@
 ---
-title: Ochrona zasobów sieciowych w usłudze Azure Security Center | Dokumentacja firmy Microsoft
-description: Adresy tego dokumentu, zalecenia w usłudze Azure Security Center, które ułatwiają ochronę zasobów sieci platformy Azure i pozostają zgodne z zasadami zabezpieczeń.
+title: Ochrona zasobów sieciowych w Azure Security Center | Microsoft Docs
+description: Ten dokument zawiera zalecenia dotyczące Azure Security Center, które pomagają chronić zasoby sieci platformy Azure i zachować zgodność z zasadami zabezpieczeń.
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -14,130 +14,140 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 6b3cef32cf79c2448d2e254e27c332e01ea83c62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fb91d6a9cdc56c88b424b7e0382f283c8b55dac9
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428365"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234326"
 ---
-# <a name="protect-your-network-resources-in-azure-security-center"></a>Ochrona zasobów sieciowych w usłudze Azure Security Center
-Usługa Azure Security Center w sposób ciągły analizuje stan zabezpieczeń zasobów platformy Azure najlepsze rozwiązania dotyczące zabezpieczeń sieci. Gdy usługa Security Center zidentyfikuje potencjalnych luk w zabezpieczeniach, tworzy zaleceń, które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek harden i chronić zasoby.
+# <a name="protect-your-network-resources-in-azure-security-center"></a>Ochrona zasobów sieciowych w Azure Security Center
+Azure Security Center stale analizuje stan zabezpieczeń zasobów platformy Azure pod kątem najlepszych rozwiązań z zakresu zabezpieczeń sieci. Gdy Security Center identyfikuje potencjalne luki w zabezpieczeniach, tworzy zalecenia, które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek do zabezpieczania i zabezpieczania zasobów.
 
-W tym artykule opisano zaleceń, które są stosowane do zasobów platformy Azure z punktu widzenia zabezpieczeń sieci. Sieć Centrum zalecenia dotyczące, wokół następnej generacji zapory, sieciowe grupy zabezpieczeń, reguły nadmiernie ograniczająca ruch przychodzący dostępu do maszyn wirtualnych JIT i. Aby uzyskać listę zaleceń dotyczących sieci i akcji korygowania, zobacz [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md).
+Ten artykuł dotyczy zaleceń, które dotyczą zasobów platformy Azure z punktu widzenia zabezpieczeń sieci. Centrum zaleceń dotyczących sieci wokół zapór nowej generacji, sieciowych grup zabezpieczeń, JIT dostęp do maszyny wirtualnej za pośrednictwem reguł ruchu przychodzącego i innych. Aby zapoznać się z listą zaleceń dotyczących sieci i akcji korygowania, zobacz [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w Azure Security Center](security-center-recommendations.md).
 
 > [!NOTE]
-> **Sieć** strona pozwala głębszej analizy usługi kondycji zasobów platformy Azure z punktu widzenia sieci. Mapa sieci oraz adaptacyjne kontrolki sieci są dostępne w usłudze Azure Security Center w warstwie standardowa tylko. [Jeśli używasz warstwy bezpłatnej, możesz kliknąć przycisk, aby **Wyświetl sieć starszych** otrzymasz zaleceń dotyczących zasobów sieci](#legacy-networking).
+> Strona **sieci** umożliwia głębokie szczegółowe usługi Azure Resource Health z perspektywy sieci. Mapy sieci i adaptacyjne kontrolki sieci są dostępne tylko dla Azure Security Center warstwy Standardowa. W [przypadku korzystania z warstwy Bezpłatna możesz kliknąć ten przycisk, aby **wyświetlić starszą sieć** i otrzymać zalecenia dotyczące zasobów sieciowych](#legacy-networking).
 >
 
-**Sieć** strona zawiera omówienie sekcji głębokiego możesz od razu, aby uzyskać więcej informacji na temat kondycji zasobów sieciowych:
+Strona **Sieć** zawiera przegląd sekcji, w których można szczegółowe, aby uzyskać więcej informacji na temat kondycji zasobów sieciowych:
 
-- Mapa sieci (tylko w warstwie standardowej usługi Azure Security Center)
+- Mapa sieci (tylko Azure Security Center warstwy Standardowa)
 - Adaptacyjne wzmocnienie zabezpieczeń sieci
 - Zalecenia dotyczące zabezpieczeń sieci.
-- Starsza wersja **sieć** bloku (poprzedniego bloku sieci) 
+- Blok starszej **sieci** (poprzedni blok sieci) 
  
-![Okienko sieci](./media/security-center-network-recommendations/networking-pane.png)
+![Okienko sieć](./media/security-center-network-recommendations/networking-pane.png)
 
 ## <a name="network-map"></a>Mapa sieci
-Mapa interaktywne sieci zawiera graficzne przedstawienie z nakładki zabezpieczeń, zapewniając zalecenia i szczegółowych informacji dotyczących wzmacniania ochrony zasobów sieciowych. Za pomocą mapy widać topologii sieci obciążeń platformy Azure, połączenia między maszynami wirtualnymi i podsieciami i możliwości, aby przejść do szczegółów z mapy do określonych zasobów i zalecenia dotyczące tych zasobów.
+Interaktywna mapa sieci zapewnia widok graficzny z nakładkami zabezpieczeń, które zapewniają zalecenia i szczegółowe informacje na potrzeby zabezpieczania zasobów sieciowych. Za pomocą mapy można zobaczyć topologię sieci obciążeń platformy Azure, połączenia między maszynami wirtualnymi i podsieciami oraz możliwość przechodzenia do szczegółów z mapy do określonych zasobów i zaleceń dotyczących tych zasobów.
 
-Aby otworzyć program Tablica sieci:
+Aby otworzyć mapę sieci:
 
-1. W usłudze Security Center w obszarze higieny zabezpieczeń zasobu, wybierz **sieć**.
-2. W obszarze **mapy sieci** kliknij **Zobacz topologii**.
+1. W Security Center w obszarze higiena zabezpieczeń zasobów wybierz pozycję **Sieć**.
+2. W obszarze **mapa sieci** kliknij pozycję **Zobacz topologia**.
  
-Wyświetla domyślny widok mapy topologii:
-- Subskrypcje, które wybrano na platformie Azure. Mapa obsługuje wiele subskrypcji.
-- Maszyny wirtualne, podsieci i sieci wirtualne typu zasobu usługi Resource Manager (klasycznym Azure zasoby nie są obsługiwane)
-- Wirtualne sieci równorzędne
-- Tylko zasoby, które mają [sieci zalecenia](security-center-recommendations.md) o wysokiej i średniej ważności  
-- Zasoby dostępnego z Internetu
-- Mapa jest zoptymalizowany dla subskrypcji, które wybrano na platformie Azure. W przypadku zmodyfikowania wybór mapy jest działaniem i ponownie zoptymalizowane pod kątem na podstawie nowych ustawień.  
+Zostanie wyświetlony domyślny widok mapy topologii:
 
-![Mapy topologii sieci](./media/security-center-network-recommendations/network-map-info.png)
+- Subskrypcje wybrane na platformie Azure. Mapa obsługuje wiele subskrypcji.
+- Maszyny wirtualne, podsieci i sieci wirtualnych typu zasobów Menedżer zasobów (klasyczne zasoby platformy Azure nie są obsługiwane)
+- Sieci wirtualnych komunikacji równorzędnej
+- Tylko zasoby mające [zalecenia dotyczące sieci](security-center-recommendations.md) o wysokiej lub średniej ważności  
+- Zasoby połączone z Internetem
+- Mapa jest zoptymalizowana pod kątem subskrypcji wybranych na platformie Azure. W przypadku zmodyfikowania zaznaczenia mapa zostanie ponownie obliczona i zoptymalizowana na podstawie nowych ustawień.  
 
-## <a name="understanding-the-network-map"></a>Informacje o mapie sieci
+![Mapa topologii sieci](./media/security-center-network-recommendations/network-map-info.png)
 
-Mapa sieci można wyświetlić zasobów platformy Azure w **topologii** widoku i **ruchu** widoku.
+## <a name="understanding-the-network-map"></a>Omówienie mapy sieci
+
+Mapa sieci może przedstawiać zasoby platformy Azure w widoku **topologii** i widoku **ruchu** .
 
 ### <a name="the-topology-view"></a>Widok topologii
 
-W **topologii** widoku mapy sieci, można wyświetlić poniższe szczegółowe informacje dotyczące zasobów sieciowych:
-- W wewnętrznego okręgu możesz zobaczyć wszystkie sieci wirtualne w ramach wybranej subskrypcji, okrąg dalej jest wszystkie podsieci się zewnętrznego okręgu wszystkich maszyn wirtualnych.
-- Wiersze, łączenie z zasobami w mapie pozwalają wiedzieć, jakie zasoby są skojarzone ze sobą i struktury sieci platformy Azure. 
-- Wskaźniki ważności umożliwiają szybko zapoznaj się z omówieniem, którego zasoby mają Otwórz zalecenia z usługi Security Center.
-- Możesz kliknąć dowolny z zasobów, aby przejść do nich i wyświetlić szczegóły tego zasobu i zalecenia bezpośrednio, a w kontekście sieci mapy.  
-- Jeśli jest ich zbyt wiele zasobów, które są wyświetlane na mapie, usługa Azure Security Center korzysta z jego algorytmu do inteligentnego klaster zasobów, wyróżnianie zasoby, które znajdują się w najbardziej krytyczny stan i mieć najbardziej wysokiej ważności zaleceń. 
+W widoku **topologii** mapy sieci można wyświetlić następujące informacje o zasobach sieciowych:
 
-Ponieważ mapy jest interakcyjny i dynamiczne, każdy węzeł jest aktywne i widoku można zmienić w oparciu filtrów:
+- W okręgu wewnętrznym można zobaczyć wszystkie sieci wirtualnych w wybranych subskrypcjach, następnym okręgiem są wszystkie podsieci, a zewnętrzny okrąg to wszystkie maszyny wirtualne.
+- Linie łączące zasoby w mapie informują o tym, które zasoby są ze sobą skojarzone, oraz o strukturze sieci platformy Azure. 
+- Użyj wskaźników ważności, aby szybko zapoznać się z tym, które zasoby mają otwarte zalecenia z Security Center.
+- Możesz kliknąć dowolny z zasobów, aby przejść do szczegółów i wyświetlić szczegóły tego zasobu oraz jego zalecenia bezpośrednio, a także w kontekście mapy sieci.  
+- Jeśli na mapie są wyświetlane zbyt wiele zasobów, Azure Security Center używa swojego algorytmu własnościowego do inteligentnego klastrowania zasobów, wyróżnienia zasobów, które znajdują się w najbardziej krytycznym stanie, i mają najwięcej zaleceń dotyczących ważności. 
 
-1. Możesz zmodyfikować wyświetlanych na mapie sieci przy użyciu filtrów u góry. Możesz skupić się mapy na podstawie:
-   -  **Kondycja zabezpieczeń**: Można filtrować mapy, w oparciu o ważności (wysoki, Średni, niski) zasobów platformy Azure.
-   - **Zalecenia dotyczące**: Można wybrać, które zasoby są wyświetlane, oparte na zalecenia, które są aktywne w odniesieniu do tych zasobów. Na przykład można wyświetlić tylko tych zasobów, dla których usługa Security Center zaleca Włączanie sieciowych grup zabezpieczeń.
-   - **Sieci stref**: Domyślnie mapa zawiera tylko zasoby dostępnego z Internetu, można wybrać także wewnętrznych maszyn wirtualnych.
+Ponieważ mapa jest interaktywna i dynamiczna, każdy węzeł jest klikany, a widok może ulec zmianie w zależności od filtrów:
+
+1. Można modyfikować elementy widoczne na mapie sieci przy użyciu filtrów znajdujących się na górze. Możesz skupić się na mapie na podstawie:
+
+   -  **Kondycja zabezpieczeń**: Mapę można filtrować na podstawie ważności (wysoka, średnia, niska) zasobów platformy Azure.
+   - **Zalecenia**: Możesz wybrać, które zasoby są wyświetlane na podstawie zaleceń, które są aktywne dla tych zasobów. Można na przykład wyświetlić tylko zasoby, dla których Security Center zaleca się włączenie sieciowych grup zabezpieczeń.
+   - **Strefy sieciowe**: Domyślnie mapa wyświetla tylko zasoby połączone z Internetem, można również wybrać wewnętrzne maszyny wirtualne.
  
-2. Możesz kliknąć pozycję **resetowania** w lewym górnym rogu w dowolnym momencie wrócić mapy do stanu domyślnego.
+2. Możesz kliknąć pozycję **Zresetuj** w lewym górnym rogu w dowolnym momencie, aby przywrócić mapę do stanu domyślnego.
 
-Aby przejść do zasobu:
-1. Po wybraniu określonego zasobu na mapie, w okienku po prawej stronie zostanie otwarty oraz udostępnia ogólne informacje o zasobie, rozwiązania zabezpieczeń połączone, jeśli istnieją i zalecenia, które są odpowiednie do zasobu. Jest to ten sam typ zachowanie dla każdego typu zasobu, którą wybierzesz. 
-2. Po najechaniu kursorem na węzeł na mapie, możesz wyświetlić ogólne informacje o zasobie, łącznie z subskrypcji, typ zasobu i grupy zasobów.
-3. Użyj linku, aby powiększenie etykietki narzędzia i ponowne skupienie mapy, w tym określonym węźle. 
-4. Aby ponowne skupienie Mapa od określonego węzła, pomniejszyć.
+Aby przejść do szczegółów zasobu:
+
+1. Po wybraniu określonego zasobu na mapie zostanie otwarte okienko po prawej stronie, w którym znajdują się ogólne informacje o zasobie, połączone rozwiązania zabezpieczeń, jeśli istnieją, a także zalecenia dotyczące zasobu. Jest to ten sam typ zachowania dla każdego typu zasobu, który został wybrany. 
+2. Po umieszczeniu wskaźnika myszy na węźle na mapie można wyświetlić ogólne informacje o zasobie, w tym o subskrypcji, typie zasobu i grupie zasobów.
+3. Użyj linku, aby powiększyć do etykietki narzędzia i ponownie umieścić mapę na tym konkretnym węźle. 
+4. Aby skoncentrować się na mapie od określonego węzła, Pomniejsz.
 
 ### <a name="the-traffic-view"></a>Widok ruchu
 
-**Ruchu** widok zawiera mapę wszystkich możliwych ruch między zasobami. Zapewnia to, że za pomocą wizualnej mapy wszystkich reguł, że został skonfigurowany, który zdefiniujesz zasoby mogą komunikować się za pomocą którego. Dzięki temu można zobaczyć istniejącą konfigurację grup zabezpieczeń sieci, a także szybko zidentyfikować możliwe konfiguracje ryzykowne w ramach Twoich obciążeń.
+Widok **ruch** udostępnia mapę całego możliwego ruchu między zasobami. Zapewnia to wizualną mapę wszystkich skonfigurowanych reguł, które definiują, które zasoby mogą komunikować się z tym, z którymi się komunikują. Dzięki temu można zobaczyć istniejącą konfigurację sieciowych grup zabezpieczeń, a także szybko identyfikować możliwe konfiguracje ryzykowne w ramach obciążeń.
 
-### <a name="uncover-unwanted-connections"></a>Odkryj niechciane połączenia
+### <a name="uncover-unwanted-connections"></a>Odkrywanie niechcianych połączeń
 
-Siła tego widoku jest możliwość Pokaż te dozwolone połączenia wraz z luk w zabezpieczeniach, które istnieją, aby można było używać ten szereg danymi, aby wykonać niezbędne zaostrzanie poziomu zabezpieczeń na zasoby. 
+Siła tego widoku pozwala na wyświetlanie tych dozwolonych połączeń wraz z lukami w zabezpieczeniach, dzięki czemu można użyć tej części danych w celu przeprowadzenia niezbędnej ochrony zasobów. 
 
-Na przykład użytkownik może wykryć komunikację dwóch maszyn, możesz nie wiedzieć, umożliwiając lepsze odizolować obciążenia i podsieci.
+Można na przykład wykryć dwie nieświadome komputery, które mogły się komunikować, co pozwala lepiej izolować obciążenia i podsieci.
 
-### <a name="investigate-resources"></a>Badanie zasobów
+### <a name="investigate-resources"></a>Zbadaj zasoby
 
-Aby przejść do zasobu:
-1. Po wybraniu określonego zasobu na mapie, w okienku po prawej stronie zostanie otwarty oraz udostępnia ogólne informacje o zasobie, rozwiązania zabezpieczeń połączone, jeśli istnieją i zalecenia, które są odpowiednie do zasobu. Jest to ten sam typ zachowanie dla każdego typu zasobu, którą wybierzesz. 
-2. Kliknij przycisk **ruchu** Aby wyświetlić listę możliwych ruchu wychodzącego i przychodzącego zasobu — jest to kompleksowe, który może komunikować się z zasobem i który może komunikować się z, a także za pośrednictwem protokołów i portów. Na przykład po wybraniu maszyny Wirtualnej, wszystkie maszyny wirtualne mogą komunikować są wyświetlane, a po wybraniu podsieci, są wyświetlane wszystkie podsieci, które może komunikować się z.
+Aby przejść do szczegółów zasobu:
 
-**Te dane są na podstawie analizy sieciowych grup zabezpieczeń, a także zaawansowane algorytmy, które analizują wiele reguł, aby zrozumieć ich rozjazdów i interakcje uczenia maszynowego.** 
+1. Po wybraniu określonego zasobu na mapie zostanie otwarte okienko po prawej stronie, w którym znajdują się ogólne informacje o zasobie, połączone rozwiązania zabezpieczeń, jeśli istnieją, a także zalecenia dotyczące zasobu. Jest to ten sam typ zachowania dla każdego typu zasobu, który został wybrany. 
+2. Kliknij pozycję **ruch** , aby wyświetlić listę możliwego ruchu wychodzącego i przychodzącego dla zasobu — jest to kompleksowa lista osób, które mogą komunikować się z zasobem i kto może się z nim komunikować oraz za pomocą których protokołów i portów. Na przykład po wybraniu maszyny wirtualnej są wyświetlane wszystkie maszyny wirtualne, z którymi mogą się komunikować, a po wybraniu podsieci są wyświetlane wszystkie podsieci, z którymi może się komunikować.
 
-![Mapa ruchu w sieci](./media/security-center-network-recommendations/network-map-traffic.png)
+**Dane te są oparte na analizie sieciowych grup zabezpieczeń, a także zaawansowanych algorytmów uczenia maszynowego, które analizują wiele reguł, aby zrozumieć ich skrzyżowania i interakcje.** 
 
-## Starsze sieci <a name ="legacy-networking"></a>
+![Mapa ruchu sieciowego](./media/security-center-network-recommendations/network-map-traffic.png)
 
-Jeśli nie masz Security Center w warstwie standardowa w tej sekcji opisano sposób wyświetlania bezpłatne zalecenia dotyczące sieci.
+## Starsze sieci<a name ="legacy-networking"></a>
 
-Dostęp do informacji, w bloku sieć, kliknij przycisk **Wyświetl sieć starszych**. 
+Jeśli nie masz Security Center warstwy Standardowa, w tej sekcji wyjaśniono, jak wyświetlić bezpłatne zalecenia dotyczące sieci.
+
+Aby uzyskać dostęp do tych informacji, w bloku sieć kliknij pozycję **Wyświetl starszą sieć**. 
 
 ![Starsze sieci](./media/security-center-network-recommendations/legacy-networking.png)
 
 ### <a name="internet-facing-endpoints-section"></a>Sekcja Internet facing endpoints (Punkty końcowe umożliwiające dostęp do Internetu)
-W **punktów końcowych z Internetem** sekcji, możesz zobaczyć maszyn wirtualnych, które są aktualnie skonfigurowane z Internetem, punkt końcowy i jego stan.
+W sekcji **punkty końcowe** połączone z Internetem można zobaczyć maszyny wirtualne, które są aktualnie skonfigurowane z punktem końcowym mającym dostęp do Internetu i jego stan.
 
-Ta tabela zawiera nazwę punktu końcowego, dostępny adres IP i bieżący stan ważności dla sieciowej grupy zabezpieczeń i zalecenia dotyczące zapory nowej generacji. W tabeli są posortowane według ważności.
+Ta tabela zawiera nazwę punktu końcowego, adres IP połączony z Internetem oraz bieżący stan ważności sieciowej grupy zabezpieczeń i rekomendacji zapory następnej generacji. Tabela jest posortowana według ważności.
 
 ### <a name="networking-topology-section"></a>Sekcja Topologia sieci
-**Topologia sieci** sekcja zawiera hierarchiczny widok zasobów.
+Sekcja **topologia sieci** zawiera hierarchiczny widok zasobów.
 
-Ta tabela jest sortowana według ważności (maszyny wirtualne i podsieci).
+Ta tabela jest posortowana (maszyny wirtualne i podsieci) według ważności.
 
-W tym widoku topologii pierwszy poziom Wyświetla sieci wirtualnych. Drugi Wyświetla obejmuje podsieci, natomiast trzeci poziom przedstawia maszyny wirtualne, które należą do tych podsieci. Prawa kolumna przedstawia bieżący stan zalecenia dotyczące grupy zabezpieczeń sieci dla tych zasobów.
+W tym widoku topologii pierwszy poziom wyświetla sieci wirtualnych. Drugie wyświetlenie zawiera podsieci, a trzeci poziom wyświetla maszyny wirtualne należące do tych podsieci. W prawej kolumnie jest wyświetlany bieżący stan zaleceń sieciowych grup zabezpieczeń dla tych zasobów.
 
-Trzeci poziom przedstawia maszyny wirtualne, co jest podobne do powyższego opisu. Możesz kliknąć dowolny zasób, aby dowiedzieć się więcej lub zastosować wymagane kontroli lub konfigurację zabezpieczeń.
+Trzeci poziom przedstawia maszyny wirtualne, które są podobne do opisanych wcześniej. Możesz kliknąć dowolny zasób, aby dowiedzieć się więcej lub zastosować wymaganą kontrolę zabezpieczeń lub konfigurację.
 
 ## <a name="network-recommendations"></a>Zalecenia dotyczące sieci
 
-|Typ zasobu|Wskaźnik bezpieczeństwa|Zalecenie|Opis|
-|----|----|----|----|
-|Machine|40|Grupy zabezpieczeń sieci dla maszyn wirtualnych powinna być włączona.|Włącz sieciowe grupy zabezpieczeń do kontrolowania dostępu do sieci maszyn wirtualnych.|
-|Podsieć|35|Sieciowe grupy zabezpieczeń na poziomie podsieci powinien być włączony|Włącz sieciowe grupy zabezpieczeń kontrolować dostęp do zasobów wdrożonych w podsieci sieci.|
-|Machine|30|Kontrola dostępu do sieci Just-In-Time powinny być stosowane w przypadku maszyn wirtualnych|Stosuje się tylko w kontroli dostępu maszyn wirtualnych czas trwale zablokować dostęp do wybranych portów i włączyć autoryzowanych użytkowników otworzyć je w ten sam mechanizm, jak i przez ograniczony czas.|
-|Machine|20|Ogranicz dostęp za pośrednictwem punktu końcowego z Internetem|Utrwalanie zezwolić grupy zabezpieczeń sieci z Internetem maszyn wirtualnych przez ograniczenie dostępu do istniejącej reguły.|
-|Machine|10|Dodawanie zapory nowej generacji|Dodaj rozwiązanie nowej następnej generacji zapory (NGFW) w celu zapewnienia lepszej ochrony maszyn wirtualnych z Internetem.|
-|Machine|5|Kierowanie ruchu przez sieci bramy tylko zapory|Aby można było ukończyć wdrożenie rozwiązania zapory następnej generacji, ruch do chronionego kontakt z Internetem maszyn wirtualnych należy używały tylko kolejnego rozwiązania zapory generacji.|
-|VNet|5|Włączanie standardu ochrony przed atakami DDoS|Aplikacje z publicznych adresów IP w tych sieciach wirtualnych nie są chronione przy użyciu standardowych usługi DDOS protection. Zaleca się, aby umożliwić włączanie łagodzenia pojemności sieci i ataki protokołu.|
+|Nazwa zalecenia|Opis|severity|Wskaźnik bezpieczeństwa|Typ zasobu|
+|----|----|----|----|----|----|
+|Sieciowe grupy zabezpieczeń na poziomie podsieci powinny być włączone|Włącz sieciowe grupy zabezpieczeń, aby kontrolować dostęp sieciowy do zasobów wdrożonych w podsieciach.|Wysoki/średni|30|Subnet|
+|Maszyny wirtualne powinny być skojarzone z sieciową grupą zabezpieczeń|Włącz sieciowe grupy zabezpieczeń, aby kontrolować dostęp sieciowy do maszyn wirtualnych.|Wysoki/średni|30|Maszyna wirtualna|
+|Dostęp powinien być ograniczony do ograniczeń sieciowych grup zabezpieczeń z maszynami wirtualnymi z Internetu|Podwyższenie poziomu bezpieczeństwa sieci maszyn wirtualnych połączonych z Internetem przez ograniczenie dostępu do istniejących reguł zezwalania.|Wysoka|20|Maszyna wirtualna|
+|Reguły dla aplikacji sieci Web na IaaS sieciowych grup zabezpieczeń powinny być zaostrzone|Zawzmacniaj grupę zabezpieczeń sieci (sieciowej grupy zabezpieczeń) dla maszyn wirtualnych, na których działają aplikacje sieci Web, z regułami sieciowej grupy zabezpieczeń, które są nadmiernie ograniczające w odniesieniu do portów aplikacji sieci Web.|Wysoka|20|Maszyna wirtualna|
+|Dostęp do App Services powinien być ograniczony|Ogranicz dostęp do App Services, zmieniając konfigurację sieci, aby odmówić ruchu przychodzącego z zakresów, które są zbyt szerokie.|Wysoka|10|App Service|
+|Porty zarządzania powinny być zamknięte na maszynach wirtualnych|Ogranicz grupę zabezpieczeń sieci maszyn wirtualnych, aby ograniczyć dostęp do portów zarządzania.|Wysoka|10|Maszyna wirtualna|
+Należy włączyć Standard DDoS Protection|Ochrona sieci wirtualnych zawierających aplikacje z publicznymi adresami IP przez włączenie usługi DDoS Protection Standard. Ochrona DDoS umożliwia łagodzenie ataków między pomiarami i protokołami sieciowymi.|Wysoka|10|Sieć wirtualna|
+|Przekazywanie adresów IP na maszynie wirtualnej powinno być wyłączone|Wyłącz przekazywanie adresów IP. Po włączeniu przekazywania adresów IP na karcie sieciowej maszyny wirtualnej komputer może odbierać ruch skierowany do innych miejsc docelowych. Przekazywanie adresów IP jest rzadko wymagane (np. w przypadku używania maszyny wirtualnej jako sieciowego urządzenia wirtualnego), dlatego należy je sprawdzić przez zespół ds. zabezpieczeń sieci.|Średni|10|Maszyna wirtualna|
+|Aplikacja sieci Web powinna być dostępna tylko za pośrednictwem protokołu HTTPS|Włącz dostęp tylko do protokołu HTTPS dla aplikacji sieci Web. Użycie protokołu HTTPS zapewnia uwierzytelnianie serwera/usługi i chroni dane podczas przesyłania przed atakami polegającymi na podsłuchu w warstwie sieciowej.|Średni|20|Aplikacja internetowa|
+|Kontrola dostępu do sieci just in Time powinna być stosowana na maszynach wirtualnych|Zastosuj kontrolę dostępu maszyny wirtualnej just-in-Time (JIT), aby trwale zablokować dostęp do wybranych portów i umożliwić autoryzowanym użytkownikom otwieranie ich za pośrednictwem JIT tylko przez ograniczoną ilość czasu.|Wysoka|20|Maszyna wirtualna|
+|Aplikacje funkcji powinny być dostępne tylko za pośrednictwem protokołu HTTPS|Włącz dostęp tylko do protokołu HTTPS dla aplikacji funkcji. Użycie protokołu HTTPS zapewnia uwierzytelnianie serwera/usługi i chroni dane podczas przesyłania przed atakami polegającymi na podsłuchu w warstwie sieciowej.|Średni|20|Aplikacja funkcji|
+|Należy włączyć bezpieczny transfer do kont magazynu|Włącz bezpieczny transfer do kont magazynu. Bezpieczny transfer to opcja, która wymusza akceptowanie przez konto magazynu żądań tylko z bezpiecznych połączeń (HTTPS). Użycie protokołu HTTPS zapewnia uwierzytelnianie między serwerem a usługą i chroni dane przesyłane przed atakami z warstwy sieci, takimi jak Man-in-the-Middle, podsłuchiwanie i przejmowanie sesji.|Wysoka|20|Konto magazynu|
 
 ## <a name="see-also"></a>Zobacz także
 Aby dowiedzieć się więcej na temat zalecenia, które mają zastosowanie do innych typów zasobów platformy Azure, zobacz następujące tematy:

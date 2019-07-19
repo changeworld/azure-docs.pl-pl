@@ -7,58 +7,58 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 07/10/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: bbab0d8d0947c18cf8e6c178d12fdbd7b335d2b6
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 822efe2534d49c0995a672232107cc322e547989
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485898"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227505"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>Instalowanie środowiska uruchomieniowego usługi Azure IoT Edge w systemie Linux (x64)
 
 Środowisko uruchomieniowe usługi Azure IoT Edge to, co jest przekształcany urządzenia urządzenia usługi IoT Edge. Środowisko uruchomieniowe można wdrożyć na urządzeniach jako małej, jak Raspberry Pi lub tak duże jak serwer przemysłowe. Gdy urządzenie zostanie skonfigurowany ze środowiskiem uruchomieniowym usługi IoT Edge, możesz rozpocząć wdrażanie logikę biznesową w chmurze.
 
-Aby dowiedzieć się więcej, zobacz [zrozumieć środowisko uruchomieniowe usługi Azure IoT Edge oraz jej architektury](iot-edge-runtime.md).
+Aby dowiedzieć się więcej, zobacz [Omówienie środowiska uruchomieniowego Azure IoT Edge i jego architektury](iot-edge-runtime.md).
 
-W tym artykule wymieniono kroki, aby zainstalować środowisko uruchomieniowe usługi Azure IoT Edge w systemie Linux x64 (Intel/AMD) Ubuntu urządzenie usługi IoT Edge. Zapoznaj się [usługi Azure IoT Edge obsługiwane systemy](support.md#operating-systems) Aby uzyskać listę obsługiwanych systemów operacyjnych AMD64.
+W tym artykule przedstawiono procedurę instalowania środowiska uruchomieniowego Azure IoT Edge na urządzeniu Ubuntu Linux x64 (Intel/AMD) IoT Edge. Listę obsługiwanych systemów operacyjnych AMD64 można znaleźć w [Azure IoT Edge obsługiwanych systemach](support.md#operating-systems) .
 
 > [!NOTE]
 > Są pakiety w repozytoriach oprogramowania systemu Linux, z zastrzeżeniem postanowień licencyjnych, znajduje się w każdym pakiecie (/ usr/udostępnianie/docs/*nazwy pakietu*). Przeczytaj postanowienia licencyjne przed przy użyciu pakietu. Twoja instalacja i używanie pakietu stanowi zaakceptowania przez korzystającego tych warunków. Jeśli nie zgadzasz się z warunkami licencji, nie należy używać pakietu.
 
 ## <a name="install-the-latest-version"></a>Zainstaluj najnowszą wersję
 
-Poniższe sekcje należy zainstalować najnowszą wersję usługi Azure IoT Edge na urządzeniach. 
+Skorzystaj z poniższych sekcji, aby zainstalować najnowszą wersję usługi Azure IoT Edge na urządzeniach. 
 
 ### <a name="register-microsoft-key-and-software-repository-feed"></a>Zarejestruj kanał repozytorium klucza i oprogramowania firmy Microsoft
 
-Przygotuj urządzenie usługi IoT Edge instalacji środowiska uruchomieniowego.
+Przygotuj urządzenie do instalacji środowiska uruchomieniowego IoT Edge.
 
 
-Zainstaluj Konfiguracja repozytorium. Wybierz opcję **16.04** lub **18.04** fragment kodu odpowiednie dla danej wersji systemu Ubuntu:
+Zainstaluj konfigurację repozytorium. Wybierz fragment kodu **16,04** lub **18,04** , który jest odpowiedni dla wydania Ubuntu:
 
 > [!NOTE]
-> Upewnij się, że wybrano fragment kodu z usługi box poprawny kod dla danej wersji systemu Ubuntu.
+> Upewnij się, że wybierasz fragment kodu z odpowiedniego pola kod dla używanej wersji programu Ubuntu.
 
-* Aby uzyskać **Ubuntu 16.04**:
+* Dla **Ubuntu 16,04**:
    ```bash
    curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > ./microsoft-prod.list
    ```
 
-* Aby uzyskać **Ubuntu 18.04**:
+* Dla **Ubuntu 18,04**:
    ```bash
    curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list > ./microsoft-prod.list
    ```
    
-Kopiowanie wygenerowanej listy.
+Skopiuj wygenerowaną listę.
 
    ```bash
    sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
    ```
 
-Zainstaluj klucz publiczny GPG firmy Microsoft
+Zainstaluj klucz publiczny programu Microsoft GPG
 
    ```bash
    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
@@ -67,9 +67,9 @@ Zainstaluj klucz publiczny GPG firmy Microsoft
 
 ### <a name="install-the-container-runtime"></a>Zainstaluj środowisko uruchomieniowe kontenera
 
-Usługa Azure IoT Edge opiera się na [zgodnego z OCI](https://www.opencontainers.org/) kontener środowiska uruchomieniowego. Na potrzeby scenariuszy produkcyjnych, firma Microsoft zaleca się używanie [na podstawie Moby](https://mobyproject.org/) aparatu przedstawione poniżej. Jest aparat tylko kontenera oficjalnie obsługiwana dzięki usłudze Azure IoT Edge. Obrazy usługi docker CE/EE kontenerów są zgodne ze środowiskiem uruchomieniowym Moby.
+Azure IoT Edge opiera się na zgodnym ze [sterownikiem](https://www.opencontainers.org/) środowiska uruchomieniowego kontenera. W przypadku scenariuszy produkcyjnych zaleca się użycie aparatu opartego [na Moby](https://mobyproject.org/) poniżej. Jest aparat tylko kontenera oficjalnie obsługiwana dzięki usłudze Azure IoT Edge. Obrazy usługi docker CE/EE kontenerów są zgodne ze środowiskiem uruchomieniowym Moby.
 
-Należy wykonać aktualizację apt.
+Wykonaj aktualizację apt.
 
    ```bash
    sudo apt-get update
@@ -87,9 +87,9 @@ Zainstaluj Moby interfejsu wiersza polecenia (CLI). Interfejs wiersza polecenia 
    sudo apt-get install moby-cli
    ```
 
-#### <a name="verify-your-linux-kernel-for-moby-compatibility"></a>Sprawdź swoje jądra systemu Linux w celu Moby zgodności
+#### <a name="verify-your-linux-kernel-for-moby-compatibility"></a>Weryfikacja jądra systemu Linux pod kątem zgodności Moby
 
-Wielu producentów urządzeń osadzonych dostarczane w obrazach urządzeń, które zawierają niestandardowe jądra systemu Linux, które może brakować funkcje wymagane przez kontener środowiska uruchomieniowego zgodności. Jeśli napotkasz problemy podczas instalowania zalecanych [Moby](https://github.com/moby/moby) kontener środowiska uruchomieniowego, można rozwiązywać problemy z systemem Linux jądra konfiguracji przy użyciu [wyboru config](https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh) skryptu podane w Oficjalna [repozytorium Moby Github](https://github.com/moby/moby) , uruchamiając następujące polecenia na urządzeniu.
+Wielu producentów urządzeń osadzonych dostarcza obrazy urządzeń, które zawierają niestandardowe jądra systemu Linux, które mogą nie zawierać funkcji wymaganych przez środowisko uruchomieniowe kontenera. Jeśli wystąpią problemy podczas instalowania zalecanego środowiska uruchomieniowego kontenera [Moby](https://github.com/moby/moby) , może być możliwe Rozwiązywanie problemów z konfiguracją jądra systemu Linux za pomocą skryptu [check-config](https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh) dostarczonego w oficjalnym [repozytorium usługi Moby](https://github.com/moby/moby) w witrynie GitHub. Uruchamianie następujących poleceń na urządzeniu.
 
    ```bash
    curl -sSL https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh -o check-config.sh
@@ -97,15 +97,15 @@ Wielu producentów urządzeń osadzonych dostarczane w obrazach urządzeń, któ
    ./check-config.sh
    ```
 
-Zapewni to szczegółowych danych wyjściowych, który zawiera stan funkcji jądra, które są używane przez środowisko uruchomieniowe Moby. Należy upewnić się, że wszystkie elementy w obszarze `Generally Necessary` i `Network Drivers` są włączone, aby upewnić się, że Twoje jądra jest w pełni zgodna ze środowiskiem uruchomieniowym Moby.  Po zidentyfikowaniu dowolnej brakujących funkcji mogą umożliwiać ich ponowne tworzenie usługi jądra ze źródła i wybierając skojarzone modułów do włączenia w .config jądra odpowiedni.  Podobnie jeśli używasz jądra generatora konfiguracji, takich jak defconfig lub menuconfig należy znaleźć i włączyć odpowiednie funkcje i odpowiednio odbudować usługi jądra.  Po wdrożeniu nowo zmodyfikowanych jądra, należy uruchomić skrypt konfiguracji wyboru ponownie, aby sprawdzić, czy określonych funkcji została pomyślnie włączona.
+Spowoduje to dostarczenie szczegółowych danych wyjściowych zawierających stan funkcji jądra, które są używane przez środowisko uruchomieniowe Moby. Upewnij się, że wszystkie elementy w obszarze `Generally Necessary` i `Network Drivers` są włączone, aby upewnić się, że jądro jest w pełni zgodne z Moby środowiska uruchomieniowego.  Jeśli zidentyfikowano brakujące funkcje, można je włączyć przez odbudowanie jądra ze źródła i wybranie skojarzonych modułów do uwzględnienia w odpowiednim pliku kernel. config.  Podobnie, jeśli używasz generatora konfiguracji jądra, takiego jak defconfig lub menuconfig, musisz znaleźć i włączyć odpowiednie funkcje i odpowiednio ponownie skompilować jądro.  Po wdrożeniu nowo zmodyfikowanego jądra ponownie uruchom skrypt Check-config, aby sprawdzić, czy zidentyfikowane funkcje zostały pomyślnie włączone.
 
 ### <a name="install-the-azure-iot-edge-security-daemon"></a>Instalowanie demona zabezpieczeń usługi Azure IoT Edge
 
-**Demona zabezpieczeń usługi IoT Edge** dostarcza i utrzymuje standardów zabezpieczeń na urządzeniu usługi IoT Edge. Demon jest uruchamiany w każdym rozruchu i używa do ładowania urządzenia przez uruchomienie pozostałych środowiska uruchomieniowego usługi IoT Edge.
+**Demon security IoT Edge** zapewnia i utrzymuje standardy zabezpieczeń na urządzeniu IoT Edge. Demon jest uruchamiany w każdym rozruchu i używa do ładowania urządzenia przez uruchomienie pozostałych środowiska uruchomieniowego usługi IoT Edge.
 
-Polecenie instalacji instaluje również standardowej wersji **libiothsm** Jeśli nie są już zainstalowane.
+Polecenie instalacji instaluje również wersję standardową **libiothsm** , jeśli jeszcze nie istnieje.
 
-Należy wykonać aktualizację apt.
+Wykonaj aktualizację apt.
 
    ```bash
    sudo apt-get update
@@ -117,55 +117,55 @@ Instalowanie demona zabezpieczeń. Pakiet jest zainstalowany na `/etc/iotedge/`.
    sudo apt-get install iotedge
    ```
 
-Po pomyślnym zainstalowaniu usługi IoT Edge, dane wyjściowe wyświetli monit można zaktualizować pliku konfiguracji. Postępuj zgodnie z instrukcjami w [skonfiguruj demona zabezpieczeń usługi Azure IoT Edge](#configure-the-azure-iot-edge-security-daemon) sekcji, aby zakończyć aprowizację urządzenia. 
+Po pomyślnym zainstalowaniu IoT Edge danych wyjściowych zostanie wyświetlony monit o zaktualizowanie pliku konfiguracji. Wykonaj kroki opisane w sekcji [Konfigurowanie demona zabezpieczeń Azure IoT Edge](#configure-the-azure-iot-edge-security-daemon) , aby zakończyć Inicjowanie obsługi urządzenia. 
 
-## <a name="install-a-specific-version"></a>Instalowanie określonej wersji
+## <a name="install-a-specific-version"></a>Zainstaluj określoną wersję
 
-Jeśli chcesz zainstalować określoną wersję usługi Azure IoT Edge, można wskazać pliki składników bezpośrednio z repozytorium usługi IoT Edge GitHub. Wykonaj następujące kroki, aby uzyskać wszystkie usługi IoT Edge składniki na urządzeniu: aparat Moby i interfejsu wiersza polecenia, libiothsm i na koniec demona zabezpieczeń usługi IoT Edge.
+Jeśli chcesz zainstalować określoną wersję Azure IoT Edge, możesz wskazać pliki składników bezpośrednio z repozytorium usługi IoT Edge GitHub. Wykonaj następujące kroki, aby uzyskać wszystkie składniki IoT Edge na urządzeniu: aparat Moby i interfejs wiersza polecenia, libiothsm i na końcu demona Security IoT Edge.
 
-1. Przejdź do [wersje usługi Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases)i Znajdź wersję, która ma pod kątem. 
+1. Przejdź do [wydań Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases)i Znajdź wersję wydania, która ma być docelowa. 
 
-2. Rozwiń **zasoby** sekcji dla danej wersji.
+2. Rozwiń sekcję **zasobów** dla tej wersji.
 
-3. Może istnieć lub może nie być aktualizacje aparatu Moby w dowolnym danej wersji. Jeśli widzisz pliki, które zaczyna się **aparatu moby** i **moby-cli**, użyj następujących poleceń, aby zaktualizować tych składników. Jeśli nie widzisz żadnych plików Moby i nie masz jeszcze Moby zainstalowana na urządzeniu, wrócić do starszej wersji zasoby do momentu znalezienia je. 
+3. W danej wersji mogą nie być dostępne aktualizacje aparatu Moby. Jeśli zobaczysz pliki, które zaczynają się od **Moby-Engine** i **Moby-CLI**, użyj następujących poleceń, aby zaktualizować te składniki. Jeśli nie widzisz żadnych plików Moby i nie masz jeszcze zainstalowanej Moby na urządzeniu, Wróć przez starsze zasoby wydania do momentu ich odnalezienia. 
 
-   1. Znajdź **moby aparatu** pliku, który odpowiada architekturze urządzenia usługi IoT Edge. Kliknij prawym przyciskiem myszy łącze pliku, a następnie skopiuj adres łącza.
+   1. Znajdź plik **Moby-Engine** pasujący do architektury urządzenia IoT Edge. Kliknij prawym przyciskiem myszy link do pliku i skopiuj adres łącza.
 
-   2. Aby zainstalować tę wersję aparatu Moby, użyj skopiowany link w następującym poleceniu: 
+   2. Użyj skopiowanego linku w poniższym poleceniu, aby zainstalować tę wersję aparatu Moby: 
 
       ```bash
       curl -L <moby-engine link> -o moby_engine.deb && sudo dpkg -i ./moby_engine.deb
       ```
 
-   3. Znajdź **moby-cli** pliku, który odpowiada architekturze urządzenia usługi IoT Edge. Moby interfejsu wiersza polecenia jest opcjonalny, ale może być przydatne podczas programowania. Kliknij prawym przyciskiem myszy łącze pliku, a następnie skopiuj adres łącza. 
+   3. Znajdź plik **Moby-CLI** zgodny z architekturą urządzenia IoT Edge. Interfejs wiersza polecenia Moby jest składnikiem opcjonalnym, ale może być przydatny podczas opracowywania. Kliknij prawym przyciskiem myszy link do pliku i skopiuj adres łącza. 
 
-   4. Aby zainstalować tę wersję interfejsu wiersza polecenia Moby, użyj skopiowany link w następującym poleceniu: 
+   4. Użyj skopiowanego linku w poniższym poleceniu, aby zainstalować tę wersję interfejsu wiersza polecenia Moby: 
 
       ```bash
       curl -L <moby-cli link> -o moby_cli.deb && sudo dpkg -i ./moby_cli.deb
       ```
 
-4. Każdej wersji powinien mieć nowych plików dla demona zabezpieczeń usługi IoT Edge i hsmlib. Użyj następujących poleceń, aby zaktualizować tych składników. 
+4. Każde wydanie powinno mieć nowe pliki dla IoT Edge Security daemon i hsmlib. Użyj następujących poleceń, aby zaktualizować te składniki. 
 
-   1. Znajdź **libiothsm standardowe** pliku, który odpowiada architekturze urządzenia usługi IoT Edge. Kliknij prawym przyciskiem myszy łącze pliku, a następnie skopiuj adres łącza. 
+   1. Znajdź plik **libiothsm-STD** zgodny z architekturą urządzenia IoT Edge. Kliknij prawym przyciskiem myszy link do pliku i skopiuj adres łącza. 
 
-   2. Aby zainstalować tę wersję hsmlib, użyj skopiowany link w następującym poleceniu:
+   2. Użyj skopiowanego linku w poniższym poleceniu, aby zainstalować tę wersję hsmlib:
 
       ```bash
       curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo dpkg -i ./libiothsm-std.deb
       ```
    
-   3. Znajdź **iotedge** pliku, który odpowiada architekturze urządzenia usługi IoT Edge. Kliknij prawym przyciskiem myszy łącze pliku, a następnie skopiuj adres łącza. 
+   3. Znajdź plik **iotedge** , który jest zgodny z architekturą urządzenia IoT Edge. Kliknij prawym przyciskiem myszy link do pliku i skopiuj adres łącza. 
 
-   4. Użyj skopiowany link w następującym poleceniu, aby zainstalować tę wersję demona zabezpieczeń usługi IoT Edge. 
+   4. Aby zainstalować tę wersję demona zabezpieczeń IoT Edge, użyj skopiowanego linku w poniższym poleceniu. 
 
       ```bash
       curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
       ```
 
-Po pomyślnym zainstalowaniu usługi IoT Edge, dane wyjściowe wyświetli monit można zaktualizować pliku konfiguracji. Wykonaj kroki opisane w następnej sekcji, aby zakończyć aprowizację urządzenia. 
+Po pomyślnym zainstalowaniu IoT Edge danych wyjściowych zostanie wyświetlony monit o zaktualizowanie pliku konfiguracji. Postępuj zgodnie z instrukcjami w następnej sekcji, aby zakończyć Inicjowanie obsługi urządzenia. 
 
-## <a name="configure-the-azure-iot-edge-security-daemon"></a>Skonfiguruj demona zabezpieczeń usługi Azure IoT Edge
+## <a name="configure-the-azure-iot-edge-security-daemon"></a>Konfigurowanie demona zabezpieczeń Azure IoT Edge
 
 Konfigurowanie środowiska uruchomieniowego usługi IoT Edge, aby połączyć urządzenia fizycznego przy użyciu tożsamości urządzenia, która znajduje się w usłudze Azure IoT hub.
 
@@ -173,7 +173,7 @@ Demon można skonfigurować przy użyciu pliku konfiguracji na `/etc/iotedge/con
 
 Pojedyncze urządzenie usługi IoT Edge mogą być udostępniane ręcznie przy użyciu parametrów połączenia urządzenia dostarczane przez usługę IoT Hub. Alternatywnie można użyć usługi Device Provisioning Service, aby automatycznie aprowizować urządzenia, co jest przydatne, jeśli masz wiele urządzeń do aprowizowania. W zależności od wybranego inicjowania obsługi administracyjnej wybierz skrypt instalacyjny odpowiedniego.
 
-### <a name="option-1-manual-provisioning"></a>Opcja 1: Aprowizacja ręczna
+### <a name="option-1-manual-provisioning"></a>Option 1: Ręczne inicjowanie obsługi
 
 Aby ręcznie zainicjować obsługę urządzeń, należy podać go [parametry połączenia urządzenia](how-to-register-device-portal.md) , możesz utworzyć przez zarejestrowanie nowego urządzenia w usłudze IoT hub.
 
@@ -183,19 +183,23 @@ Otwórz plik konfiguracji.
 sudo nano /etc/iotedge/config.yaml
 ```
 
-Znajdź inicjowania obsługi administracyjnej części pliku. Usuń znaczniki komentarza **ręczne** tryb obsługi administracyjnej i upewnij się, punktu dystrybucji, tryb obsługi administracyjnej jest opatrzona komentarzem. Zaktualizuj wartość **device_connection_string** przy użyciu parametrów połączenia z urządzenia usługi IoT Edge.
+Znajdź konfiguracje aprowizacji pliku i Usuń komentarz z sekcji **Ręczna konfiguracja inicjowania obsługi** . Zaktualizuj wartość **device_connection_string** przy użyciu parametrów połączenia z urządzenia usługi IoT Edge. Upewnij się, że wszystkie inne sekcje aprowizacji zostały oznaczone jako komentarze.
 
    ```yaml
+   # Manual provisioning configuration
    provisioning:
      source: "manual"
      device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
   
+   # DPS TPM provisioning configuration
    # provisioning:
    #   source: "dps"
    #   global_endpoint: "https://global.azure-devices-provisioning.net"
    #   scope_id: "{scope_id}"
-   #   registration_id: "{registration_id}"
-   ```
+   #   attestation:
+   #     method: "tpm"
+   #     registration_id: "{registration_id}"
+```
 
 Zapisz i zamknij plik.
 
@@ -207,9 +211,9 @@ Po wprowadzeniu informacji o udostępnianiu w pliku konfiguracji, należy ponown
 sudo systemctl restart iotedge
 ```
 
-### <a name="option-2-automatic-provisioning"></a>Opcja 2: Automatyczna aprowizacja
+### <a name="option-2-automatic-provisioning"></a>Opcja 2: Automatyczne Inicjowanie obsługi
 
-Aby automatycznie aprowizować urządzenia [Konfigurowanie usługi Device Provisioning i pobrania swój identyfikator rejestracji urządzenia](how-to-auto-provision-simulated-device-linux.md). Automatyczna aprowizacja działa tylko z urządzeń, które mają mikroukładu Trusted Platform Module (TPM). Na przykład urządzenia Raspberry Pi nie pochodzą z modułem TPM domyślnie.
+Aby automatycznie aprowizować urządzenia [Konfigurowanie usługi Device Provisioning i pobrania swój identyfikator rejestracji urządzenia](how-to-auto-provision-simulated-device-linux.md). Istnieje wiele mechanizmów zaświadczania obsługiwanych przez IoT Edge w przypadku korzystania z automatycznej obsługi administracyjnej, ale wymagania sprzętowe również mają wpływ na wybór. Na przykład urządzenia Raspberry Pi nie są domyślnie dołączone do układu moduł TPM (TPM).
 
 Otwórz plik konfiguracji.
 
@@ -217,18 +221,22 @@ Otwórz plik konfiguracji.
 sudo nano /etc/iotedge/config.yaml
 ```
 
-Znajdź inicjowania obsługi administracyjnej części pliku. Usuń znaczniki komentarza **dps** inicjowania obsługi trybu ujmij w komentarz ręczne części. Zaktualizuj wartości **scope_id** i **registration_id** wartościami z usługi IoT Hub Device Provisioning Service i urządzenia usługi IoT Edge przy użyciu modułu TPM.
+Znajdź konfiguracje aprowizacji pliku i usuń znaczniki komentarza odpowiednie dla mechanizmu zaświadczania. W przypadku korzystania z zaświadczania modułu TPM należy na przykład zaktualizować wartości **scope_id** i **registration_id** przy użyciu wartości z usługi IoT Hub Device Provisioning i urządzenia IoT Edge z modułem TPM.
 
    ```yaml
+   # Manual provisioning configuration
    # provisioning:
    #   source: "manual"
    #   device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
   
+   # DPS TPM provisioning configuration
    provisioning:
      source: "dps"
      global_endpoint: "https://global.azure-devices-provisioning.net"
      scope_id: "{scope_id}"
-     registration_id: "{registration_id}"
+     attestation:
+       method: "tpm"
+       registration_id: "{registration_id}"
    ```
 
 Zapisz i zamknij plik.
@@ -243,7 +251,7 @@ sudo systemctl restart iotedge
 
 ## <a name="verify-successful-installation"></a>Sprawdź pomyślnej instalacji
 
-Jeśli użyto **ręcznej konfiguracji** kroki opisane w poprzedniej sekcji, środowisko uruchomieniowe usługi IoT Edge należy pomyślnie aprowizacja i uruchomienie na urządzeniu. Jeśli użyto **automatycznej konfiguracji** kroki należy wykonać kilka dodatkowych kroków, środowisko uruchomieniowe można zarejestrować urządzenia za pomocą usługi IoT hub w Twoim imieniu. Dalsze czynności, zobacz [tworzenie i aprowizowanie symulowanego urządzenia TPM IoT Edge na maszynie wirtualnej systemu Linux](how-to-auto-provision-simulated-device-linux.md#give-iot-edge-access-to-the-tpm).
+Jeśli użyto **ręcznej konfiguracji** kroki opisane w poprzedniej sekcji, środowisko uruchomieniowe usługi IoT Edge należy pomyślnie aprowizacja i uruchomienie na urządzeniu. Jeśli użyto **automatycznej konfiguracji** kroki należy wykonać kilka dodatkowych kroków, środowisko uruchomieniowe można zarejestrować urządzenia za pomocą usługi IoT hub w Twoim imieniu. Aby uzyskać kolejne kroki, zobacz [Tworzenie i udostępnianie symulowanego urządzenia TPM IoT Edge na maszynie wirtualnej z systemem Linux](how-to-auto-provision-simulated-device-linux.md#give-iot-edge-access-to-the-tpm).
 
 Możesz sprawdzić stan, IoT Edge demona przy użyciu:
 
@@ -271,9 +279,9 @@ Na urządzeniach z zasobu ograniczone, zdecydowanie zaleca się ustawienie *Opti
 
 Jeśli sieci, na którym działa serwer proxy, wykonaj kroki opisane w [skonfigurować urządzenie usługi IoT Edge do komunikowania się za pośrednictwem serwera proxy](how-to-configure-proxy-support.md).
 
-## <a name="uninstall-iot-edge"></a>Odinstalowywanie usługi IoT Edge
+## <a name="uninstall-iot-edge"></a>Odinstaluj IoT Edge
 
-Jeśli chcesz usunąć instalację usługi IoT Edge na urządzeniu z systemem Linux, użyj następujących poleceń w wierszu polecenia.
+Jeśli chcesz usunąć instalację IoT Edge z urządzenia z systemem Linux, użyj następujących poleceń w wierszu polecenia.
 
 Usuń środowisko uruchomieniowe usługi IoT Edge.
 
@@ -281,29 +289,29 @@ Usuń środowisko uruchomieniowe usługi IoT Edge.
 sudo apt-get remove --purge iotedge
 ```
 
-Po usunięciu środowiska uruchomieniowego usługi IoT Edge kontenera, do którego utworzona zostaną zatrzymane, ale nadal istnieje na urządzeniu. Wyświetl wszystkie kontenery, aby zobaczyć, które pozostają.
+Po usunięciu IoT Edge środowiska uruchomieniowego tworzony kontener zostanie zatrzymany, ale nadal istnieje na urządzeniu. Wyświetl wszystkie kontenery, aby zobaczyć, które pozostaną.
 
 ```bash
 sudo docker ps -a
 ```
 
-Usuwanie kontenerów na urządzeniu, w tym dwóch kontenerów środowiska wykonawczego.
+Usuń kontenery z urządzenia, w tym dwa kontenery środowiska uruchomieniowego.
 
 ```bash
 sudo docker rm -f <container name>
 ```
 
-Na koniec usunąć kontener środowiska uruchomieniowego na urządzeniu.
+Na koniec Usuń środowisko uruchomieniowe kontenera z urządzenia.
 
 ```bash
 sudo apt-get remove --purge moby-cli
 sudo apt-get remove --purge moby-engine
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Teraz, gdy masz urządzenia usługi IoT Edge zaopatrzony zainstalowanego środowiska uruchomieniowego, można [wdrożyć moduły usługi IoT Edge](how-to-deploy-modules-portal.md).
 
-Jeśli problemy ze środowiskiem uruchomieniowym usługi IoT Edge instalacji prawidłowo, zapoznaj się z [Rozwiązywanie problemów z](troubleshoot.md) strony.
+Jeśli masz problemy z instalacją środowiska uruchomieniowego IoT Edge prawidłowo, zapoznaj się ze stroną [rozwiązywania problemów](troubleshoot.md) .
 
-Aby zaktualizować istniejącą instalację do najnowszej wersji usługi IoT Edge, zobacz [aktualizacji demona zabezpieczeń usługi IoT Edge i środowisko uruchomieniowe](how-to-update-iot-edge.md).
+Aby zaktualizować istniejącą instalację do najnowszej wersji IoT Edge, zobacz [Aktualizacja demona IoT Edge Security daemon i środowisko uruchomieniowe](how-to-update-iot-edge.md).

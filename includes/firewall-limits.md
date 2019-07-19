@@ -5,22 +5,23 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: include
-ms.date: 5/3/2019
+ms.date: 7/16/2019
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 8709d4d903bd31ff94d04ec61e226857e4190407
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: a42284765a46f4a000dc5b7fcf2867ef17d69570
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183606"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68229293"
 ---
 | Resource | Limit domyślny |
 | --- | --- |
 | Przepływność danych |30 GB/s<sup>1</sup> |
-|Reguły|10 000 operacji, wszystkie reguły, typy w połączeniu.|
+|Reguły|10 000 wszystkie typy reguł są łączone.|
 |Minimalny rozmiar AzureFirewallSubnet |/26|
-|Zakres portów w regułach sieci i aplikacji|0-64,000. Praca jest w toku złagodzenie tego ograniczenia.|
-|Tabela tras|Domyślnie AzureFirewallSubnet ma trasę 0.0.0.0/0, typ następnego przeskoku wartość **Internet**.<br><br>Zaporę platformy Azure musi mieć bezpośrednie połączenie z Internetem. Jeśli Twoje AzureFirewallSubnet uczy się trasę domyślną elementom sieci lokalnej za pośrednictwem protokołu BGP, konieczne jest przesłonięcie to za pomocą 0.0.0.0/0 trasy zdefiniowanej przez użytkownika za pomocą **Typ następnego przeskoku** wartość ustawiona jako **Internet** utrzymanie bezpośredniej Łączność z Internetem. Domyślnie Zapora usługi Azure nie obsługuje wymuszonego tunelowania do sieci lokalnej.<br><br>Jednak jeśli konfiguracja wymaga wymuszonego tunelowania do sieci lokalnej, Microsoft będzie obsługiwać go na podstawie przypadku. Się z pomocą techniczną, dzięki czemu możesz przejrzeć tej sprawy. Jeśli zaakceptowane, utworzymy dozwolonych subskrypcji i upewnij się, że połączenie z Internetem wymagany zapory są obsługiwane.|
+|Zakres portów w regułach sieci i aplikacji|0 – 64000. Trwają prace, aby osłabić to ograniczenie.|
+|Publiczne adresy IP|100 maksimum|
+|Tabela tras|Domyślnie AzureFirewallSubnet ma trasę 0.0.0.0/0 z wartością NextHopType ustawioną na wartość **Internet**.<br><br>Zapora platformy Azure musi mieć bezpośrednią łączność z Internetem. Jeśli AzureFirewallSubnet nauczy trasy domyślnej do sieci lokalnej za pośrednictwem protokołu BGP, należy przesłonić wartość przy użyciu wartości 0.0.0.0/0 UDR z wartością **NextHopType** ustawioną jako **Internet** , aby zachować bezpośrednią łączność z Internetem. Domyślnie Zapora platformy Azure nie obsługuje wymuszonego tunelowania do sieci lokalnej.<br><br>Jeśli jednak konfiguracja wymaga wymuszonego tunelowania do sieci lokalnej, firma Microsoft będzie obsługiwać ją w przypadku poszczególnych przypadków. Skontaktuj się z pomocą techniczną, aby umożliwić nam zapoznanie się z Twoim przypadkiem. Jeśli zostanie zaakceptowana, zezwolimy na subskrypcję i upewnimy się, że jest utrzymywana wymagana łączność internetowa zapory.|
 
-<sup>1</sup>Jeśli trzeba zwiększyć te limity, skontaktuj się z działem pomocy technicznej systemu Azure.
+<sup>1</sup> Jeśli musisz zwiększyć te limity, skontaktuj się z pomocą techniczną platformy Azure.

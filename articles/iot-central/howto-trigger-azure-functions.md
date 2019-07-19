@@ -1,59 +1,59 @@
 ---
-title: Wyzwalanie usługi Azure Functions przy użyciu elementów webhook w usłudze Azure IoT Central
-description: Tworzenie aplikacji funkcji, która działa z każdym razem, gdy reguła jest wyzwalana w usłudze Azure IoT Central.
+title: Wyzwalanie Azure Functions przy użyciu elementów webhook na platformie Azure IoT Central
+description: Utwórz aplikację funkcji, która jest uruchamiana przy każdym wyzwoleniu reguły na platformie Azure IoT Central.
 author: viv-liu
 ms.author: viviali
-ms.date: 03/26/2019
+ms.date: 07/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 0d92e9bdf8ec207e5ef0e3f891c162182b5a4fff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 92d6f005018040e20c2df72dbc608a47bc8d9f08
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60518325"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849024"
 ---
-# <a name="trigger-azure-functions-using-webhooks-in-azure-iot-central"></a>Wyzwalanie usługi Azure Functions przy użyciu elementów webhook w usłudze Azure IoT Central
+# <a name="trigger-azure-functions-using-webhooks-in-azure-iot-central"></a>Wyzwalanie Azure Functions przy użyciu elementów webhook na platformie Azure IoT Central
 
 *Ten temat dotyczy konstruktorów i administratorów.*
 
-Uruchamianie kodu bez serwera na dane wyjściowe elementu webhook z IoT Central reguły za pomocą usługi Azure Functions. Nie trzeba aprowizować maszynę Wirtualną lub publikowania aplikacji sieci web za pomocą usługi Azure Functions, ale zamiast tego możesz uruchomić ten kod bez użycia serwera. Przekształcanie ładunek elementu webhook przed wysłaniem ich do miejsca docelowego, takich jak bazy danych SQL lub usługi Event Grid przy użyciu usługi Azure Functions.
+Użyj Azure Functions, aby uruchomić kod bezserwerowy w danych wyjściowych elementu webhook z reguł IoT Central. Nie trzeba udostępniać maszyny wirtualnej ani publikować aplikacji sieci Web w celu używania Azure Functions, ale zamiast tego można uruchomić ten serwer kodu. Użyj Azure Functions, aby przekształcić ładunek elementu webhook przed wysłaniem go do ostatecznego miejsca docelowego, takiego jak baza danych SQL lub Event Grid.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="how-to-connect-azure-functions"></a>Sposób połączenia usługi Azure Functions
+## <a name="how-to-connect-azure-functions"></a>Jak nawiązać połączenie Azure Functions
 
-1. [Utwórz nową aplikację funkcji w witrynie Azure portal](https://ms.portal.azure.com/#create/Microsoft.FunctionApp).
+1. [Utwórz nową aplikację funkcji w Azure Portal](https://ms.portal.azure.com/#create/Microsoft.FunctionApp).
 
-    ![Utwórz nową aplikację funkcji w witrynie Azure portal](media/howto-trigger-azure-functions/createfunction.png)
+    ![Utwórz nową aplikację funkcji w Azure Portal](media/howto-trigger-azure-functions/createfunction.png)
 
-2. Rozwiń swoją aplikację funkcji, a następnie wybierz pozycję **przycisk +** obok funkcji. Jeśli ta funkcja jest pierwszy z nich w aplikacji funkcji, wybierz **w portalu** jako środowiska deweloperskiego i wybierz pozycję **Kontynuuj**.
+2. Rozwiń aplikację funkcji i wybierz **przycisk +** obok pozycji funkcje. Jeśli ta funkcja jest pierwszym z nich w aplikacji funkcji, wybierz **w portalu** jako środowisko programistyczne i wybierz pozycję **Kontynuuj**.
 
-    ![Wybierz funkcję niestandardowego w aplikacji funkcji](media/howto-trigger-azure-functions/customfunction.png)
+    ![Wybierz funkcję niestandardową w aplikacji funkcji](media/howto-trigger-azure-functions/customfunction.png)
 
-3. Wybierz **element Webhook i interfejs API** szablonu, a następnie wybierz **Utwórz**. W tym temacie użyto funkcji platformy Azure na podstawie .NET.
+3. Wybierz pozycję element webhook i szablon **interfejsu API** i wybierz pozycję **Utwórz**. W tym temacie jest stosowana oparta na platformie .NET funkcja Azure Functions.
 
-    ![Wybieranie wyzwalacza ogólnego elementu webhook](media/howto-trigger-azure-functions/genericwebhooktrigger.png)
+    ![Wybierz wyzwalacz ogólnego elementu webhook](media/howto-trigger-azure-functions/genericwebhooktrigger.png)
 
-4. W nowej funkcji, wybierz **<> / Pobierz adres URL funkcji**, a następnie skopiuj i Zapisz wartość. Będzie ona używana do skonfigurowania elementu webhook.
+4. W nowej funkcji wybierz pozycję **</> Pobierz adres URL funkcji**, a następnie skopiuj i Zapisz wartość. Będzie ona używana do skonfigurowania elementu webhook.
 
     ![Pobierz adres URL funkcji](media/howto-trigger-azure-functions/getfunctionurl.png)
 
-4. W IoT Central przejdź do reguły, którą chcesz nawiązać połączenie z aplikacją funkcji.
+4. W IoT Central przejdź do reguły, którą chcesz połączyć z aplikacją funkcji.
 
-5. Dodawanie akcji elementu webhook. Wprowadź **nazwę wyświetlaną** i wklej adres URL funkcji, które wcześniej zostały skopiowane do **adresów URL wywołania zwrotnego**.
+5. Dodaj akcję elementu webhook. Wprowadź **nazwę wyświetlaną** i wklej w adresie URL funkcji skopiowanej wcześniej do **adresu URL wywołania zwrotnego**.
 
     ![Wprowadź adres URL funkcji w polu adres URL wywołania zwrotnego](media/howto-trigger-azure-functions/configurewebhook.PNG)
 
-6. Zapisać reguły. Teraz po wyzwoleniu reguły, element webhook wywołuje aplikację funkcji, aby uruchomić. W aplikacji funkcji, można wybrać **Monitor** Aby wyświetlić historię wywołania funkcji. App Insights lub widok klasyczny umożliwia Przyjrzyj się historii.
+6. Zapisz regułę. Teraz, gdy reguła zostanie wyzwolona, element webhook wywoła aplikację funkcji do uruchomienia. W aplikacji funkcji można wybrać pozycję **monitor** , aby zobaczyć historię wywołania funkcji. Aby sprawdzić historię, możesz użyć usługi App Insights lub klasycznego widoku.
 
-    ![Monitorowanie historii wywołania funkcji](media/howto-trigger-azure-functions/monitorfunction.PNG)
+    ![Monitoruj historię wywołania funkcji](media/howto-trigger-azure-functions/monitorfunction.PNG)
 
-Więcej informacji można znaleźć w artykule usługi Azure Functions o [Tworzenie funkcji wyzwalanej przez ogólny element webhook](https://docs.microsoft.com/azure/azure-functions/functions-create-generic-webhook-triggered-function).
+Aby uzyskać więcej informacji, odwiedź artykuł Azure Functions dotyczący [tworzenia funkcji wyzwalanej przez ogólny element webhook](https://docs.microsoft.com/azure/azure-functions/functions-create-generic-webhook-triggered-function).
 
-## <a name="next-steps"></a>Kolejne kroki
-Teraz, gdy wiesz jak konfigurowanie i używanie elementów webhook sugerowane następnym krokiem jest Eksplorowanie [tworzenia przepływów pracy w programie Microsoft Flow](howto-add-microsoft-flow.md).
+## <a name="next-steps"></a>Następne kroki
+Teraz, gdy już wiesz, jak skonfigurować elementy webhook i korzystać z nich, sugerowanym następnym krokiem jest Eksplorowanie [przepływów pracy w Microsoft Flow](howto-add-microsoft-flow.md).

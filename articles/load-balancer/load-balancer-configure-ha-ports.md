@@ -13,20 +13,20 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
-ms.author: kumud
-ms.openlocfilehash: ec43b79109181457f8ef8e214e296969db5dcb26
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: c0cf1eb62c8e01988c9014478ff72816e45ea64c
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66122351"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275614"
 ---
 # <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>Konfigurowanie portów wysokiej dostępności dla wewnętrznego modułu równoważenia obciążenia
 
 Ten artykuł zawiera przykładowe wdrożenie portów wysokiej dostępności na wewnętrznego modułu równoważenia obciążenia. Aby uzyskać więcej informacji na temat konfiguracji specyficzne dla sieci wirtualnych urządzeń sieciowych (urządzeń WUS) zobacz odpowiedni witryn sieci Web dostawcy.
 
 >[!NOTE]
->Usługa Azure Load Balancer obsługuje dwa różne typy: Podstawowa i Standardowa. W tym artykule omówiono standardowego modułu równoważenia obciążenia. Aby uzyskać więcej informacji na temat podstawowego modułu równoważenia obciążenia, zobacz [omówienie Load Balancer](load-balancer-overview.md).
+>Azure Load Balancer obsługuje dwa różne typy: Podstawowa i Standardowa. W tym artykule omówiono standardowego modułu równoważenia obciążenia. Aby uzyskać więcej informacji na temat podstawowego modułu równoważenia obciążenia, zobacz [omówienie Load Balancer](load-balancer-overview.md).
 
 Na ilustracji przedstawiono następującą konfigurację przykład wdrożenia opisano w tym artykule:
 
