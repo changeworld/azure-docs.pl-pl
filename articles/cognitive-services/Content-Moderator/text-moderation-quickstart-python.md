@@ -10,15 +10,13 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 01c153f2f8836b7d99de57af60b8623e54c6d6fe
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
-ms.translationtype: HT
+ms.openlocfilehash: bb0e44f83e2101a7b21e7b7ec6fdc75974c6d6d8
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311925"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333613"
 ---
-[!code-python[import declarations](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=imports)]
-
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-python"></a>Szybki start: Analizowanie zawartości tekstowej pod kątem niepożądanego materiału za pomocą języka Python
 
 Ten artykuł zawiera informacje i przykłady kodu, które pomogą Ci rozpocząć korzystanie z zestawu SDK pakietu Content Moderator dla języka Python. Dowiesz się, jak przeprowadzać filtrowanie oparte na terminach w zawartości tekstowej oraz jej klasyfikację w celu moderowania potencjalnie niepożądanego materiału.
@@ -47,7 +45,7 @@ Utwórz nowy skrypt Python o nazwie _ContentModeratorQS.py_ i dodaj następując
 
 ## <a name="initialize-variables"></a>Inicjowanie zmiennych
 
-Następnie dodaj zmienne dla klucza subskrypcji Content Moderator i adresu URL punktu końcowego. Musisz dodać nazwę `CONTENT_MODERATOR_SUBSCRIPTION_KEY` do zmiennych środowiskowych i dodać swój klucz subskrypcji jako wartość. W przypadku podstawowego adresu URL punktu końcowego `CONTENT_MODERATOR_ENDPOINT` Dodaj do zmiennych środowiskowych adres URL specyficzny dla regionu jako jego wartość, na `https://westus.api.cognitive.microsoft.com`przykład. Klucze subskrypcji bezpłatnej wersji próbnej są generowane w regionie **westus**.
+Następnie dodaj zmienne dla klucza subskrypcji Content Moderator i adresu URL punktu końcowego. Dodaj nazwę `CONTENT_MODERATOR_SUBSCRIPTION_KEY` do zmiennych środowiskowych z kluczem subskrypcji jako wartość. W przypadku podstawowego adresu URL punktu końcowego `CONTENT_MODERATOR_ENDPOINT` Dodaj do zmiennych środowiskowych adres URL specyficzny dla regionu jako jego wartość, na `https://westus.api.cognitive.microsoft.com`przykład. Klucze subskrypcji bezpłatnej wersji próbnej są generowane w regionie **westus**.
 
 [!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/content_moderator_quickstart.py?name=authentication)]
 
@@ -67,9 +65,7 @@ Następnie użyj swojego klienta z wystąpieniem elementu członkowskiego **Text
 
 ## <a name="check-the-printed-response"></a>Sprawdź wydrukowaną odpowiedź
 
-Uruchom próbkę i Potwierdź odpowiedź. Powinno to zakończyć się pomyślnie i zwrócić wystąpienie **ekranu** . Następujący wynik jest drukowany poniżej:
-
-Przykładowy tekst używany w tym przewodniku Szybki start powoduje wygenerowanie następujących danych wyjściowych:
+Uruchom próbkę i Potwierdź odpowiedź. Po pomyślnym zakończeniu zostanie zwrócone wystąpienie **ekranu** . Prawidłowy wynik jest przedstawiony poniżej:
 
 ```console
 {'auto_corrected_text': '" Is this a garbage email abide@ abed. com, phone: '

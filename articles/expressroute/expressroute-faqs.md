@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 02f772d02f5cc6f188d69b5e79debc0013cf1faa
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: e5674ffb4325eb27af8d0673b2d6ad5ba3a6195e
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67488504"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854339"
 ---
 # <a name="expressroute-faq"></a>Usługa ExpressRoute — często zadawane pytania
 
@@ -27,7 +27,7 @@ Połączenia ExpressRoute nie odbywają się za pośrednictwem publicznego Inter
 
 ### <a name="where-is-the-service-available"></a>Gdy usługa jest dostępna
 
-Ta strona służy do lokalizacji usługi i dostępności: [Usługa ExpressRoute partnerzy i lokalizacje](expressroute-locations.md).
+Zobacz Tę stronę, aby poznać lokalizację i dostępność usługi: [ExpressRoute partnerzy i lokalizacje](expressroute-locations.md).
 
 ### <a name="how-can-i-use-expressroute-to-connect-to-microsoft-if-i-dont-have-partnerships-with-one-of-the-expressroute-carrier-partners"></a>Jak używać usługi ExpressRoute do łączenia się z firmą Microsoft, jeśli nie mam partnerstwa z jednym z partnerów operatora usługi ExpressRoute?
 
@@ -43,7 +43,7 @@ Nie. Połączenie sieci VPN, o dowolnym szybkości można kupić od dostawcy us�
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-burst-up-to-higher-speeds-if-necessary"></a>Jeśli płacisz obwód usługi ExpressRoute w danej przepustowości I masz opcję przejścia do większe szybkości, jeśli to konieczne?
 
-Tak. Obwody usługi ExpressRoute są skonfigurowane do umożliwiają serii maksymalnie dwa razy limit przepustowości, który został uzyskany bez dodatkowych kosztów. Skontaktuj się z dostawcą usługi, aby sprawdzić, czy obsługują one tę możliwość. To nie jest dłuższy czas i nie ma żadnej gwarancji. 
+Tak. Obwody usługi ExpressRoute są skonfigurowane do umożliwiają serii maksymalnie dwa razy limit przepustowości, który został uzyskany bez dodatkowych kosztów. Skontaktuj się z dostawcą usługi, aby sprawdzić, czy obsługują one tę możliwość. Nie jest to przez dłuższy czas i nie jest gwarantowane. 
 
 ### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>Czy mogę za pomocą tego samego połączenia sieci prywatnej sieci wirtualnej i innych usług platformy Azure jednocześnie?
 
@@ -72,7 +72,7 @@ Usługa ExpressRoute obsługuje [trzy domeny routingu](expressroute-circuit-peer
 * Większość usług platformy Azure są obsługiwane. Sprawdź, czy bezpośrednio z usługą, który chcesz użyć, aby sprawdzić, pomocy technicznej.<br><br>
   **Następujące usługi nie są obsługiwane**:
     * CDN
-    * Azure Front Door
+    * Moje drzwi platformy Azure
     * Multi-Factor Authentication
     * Traffic Manager
 
@@ -80,12 +80,12 @@ Usługa ExpressRoute obsługuje [trzy domeny routingu](expressroute-circuit-peer
 
 * [Office 365](https://aka.ms/ExpressRouteOffice365)
 * Dynamics 365 
-* Power BI — dostępny za pośrednictwem regionalnych społeczności platformy Azure, zobacz [tutaj](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) dotyczące dowiedzieć się, regionu dzierżawy usługi Power BI. 
+* Power BI — dostępne za pośrednictwem społeczności regionalnej platformy Azure, zobacz [tutaj](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) , jak sprawdzić region dzierżawy Power BI. 
 * Usługa Azure Active Directory
 * [Usługa Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (społeczność globalne usługi platformy Azure)
 * Większość usług platformy Azure są obsługiwane. Sprawdź, czy bezpośrednio z usługą, który chcesz użyć, aby sprawdzić, pomocy technicznej.<br><br>**Następujące usługi nie są obsługiwane**:
     * CDN
-    * Azure Front Door
+    * Moje drzwi platformy Azure
     * Multi-Factor Authentication
     * Traffic Manager
 
@@ -119,21 +119,27 @@ Tak. Każdy obwód usługi ExpressRoute ma nadmiarowej parze wielu połączeń s
 
 Nie nastąpi utrata połączenia w przypadku awarii jednego z wielu połączeń. Nadmiarowe połączenie jest dostępne do obsługi obciążenia sieci i zapewnić wysoką dostępność obwód usługi ExpressRoute. Ponadto można utworzyć obwodu, w innej lokalizacji komunikacji równorzędnej do osiągnięcia obwodu na poziomie odporności na błędy.
 
-### <a name="how-do-i-implement-redundancy-on-private-peering"></a>Jak wdrożyć nadmiarowości na prywatną komunikację równorzędną?
+### <a name="how-do-i-implement-redundancy-on-private-peering"></a>Jak mogę zaimplementować nadmiarowości prywatnej komunikacji równorzędnej?
 
-Wiele obwodów usługi ExpressRoute z różnych lokalizacji komunikacji równorzędnej może być połączona do tej samej sieci wirtualnej w celu zapewnienia wysokiej dostępności w przypadku niedostępny jednego obwodu. Następnie możesz [przypisać wagi wyższe](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection) połączeniu lokalnemu preferować preferowanie określonego obwodu. Zdecydowanie zaleca się, że klienci skonfigurować co najmniej dwa obwody usługi ExpressRoute w celu uniknięcia pojedynczych punktów awarii. 
+Wiele obwodów usługi ExpressRoute z różnych lokalizacji komunikacji równorzędnej można podłączyć do tej samej sieci wirtualnej, aby zapewnić wysoką dostępność w przypadku, gdy jeden obwód stanie się niedostępny. Następnie można [przypisać wyższe wagi](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection) do połączenia lokalnego, aby preferować preferowany obwód. Zdecydowanie zalecamy, aby klienci mogli skonfigurować co najmniej dwa obwody usługi ExpressRoute, aby uniknąć pojedynczych punktów awarii. 
 
-Zobacz [tutaj](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) do projektowania w celu zapewnienia wysokiej dostępności i [tutaj](https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering) do projektowania na potrzeby odzyskiwania po awarii.  
+Zobacz [tutaj](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) , aby zapoznać się z projektowaniem pod kątem wysokiej dostępności i w [tym miejscu](https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering) na potrzeby projektowania odzyskiwania po awarii.  
 
-### <a name="how-i-do-implement-redundancy-on-microsoft-peering"></a>Jak mogę wdrożyć nadmiarowości w komunikacji równorzędnej firmy Microsoft?
+### <a name="how-i-do-implement-redundancy-on-microsoft-peering"></a>Jak wdrożyć nadmiarowość w komunikacji równorzędnej firmy Microsoft?
 
-Zdecydowanie zaleca się, gdy klienci używają komunikacji równorzędnej dostępu usługi publiczne platformy Azure, takich jak Azure Storage lub Azure SQL, jak również klientów korzystających z komunikacji równorzędnej dla usługi Office 365 mogą zaimplementować wiele obwodów w różnych komunikacji równorzędnej firmy Microsoft do firmy Microsoft lokalizacje w celu uniknięcia pojedynczych punktów faiure. Klientów można anonsować ten sam prefiks dla obu obwodów i używać [dołączania ścieżki AS](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending) lub anonsować różnych prefiksów do określenia ścieżki ze środowiska lokalnego.
+Zdecydowanie zaleca się, aby klienci używali komunikacji równorzędnej firmy Microsoft w celu uzyskania dostępu do usług publicznych platformy Azure, takich jak Azure Storage lub Azure SQL, a także klientów korzystających z komunikacji równorzędnej firmy Microsoft dla pakietu Office 365, które implementują wiele obwodów w innej komunikacji równorzędnej lokalizacje, aby uniknąć pojedynczych punktów awarii. Klienci mogą anonsować ten sam prefiks na obu obwodach i używać [jako ścieżki oczekujących](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending) lub anonsować różne prefiksy w celu określenia ścieżki ze środowisk lokalnych.
 
-Zobacz [tutaj](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) do projektowania w celu zapewnienia wysokiej dostępności.
+Zobacz [tutaj](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) , aby zapoznać się z projektowaniem pod kątem wysokiej dostępności.
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Jak zapewnić wysoką dostępność w sieci wirtualnej, która jest połączona z usługą ExpressRoute?
 
 Wysoka dostępność można osiągnąć przez nawiązanie połączenia z siecią wirtualną obwodów usługi ExpressRoute w innej lokalizacji komunikacji równorzędnej (na przykład, Singapur, singapur2). Jeśli jeden obwód usługi ExpressRoute ulegnie awarii, połączenia zakończy się niepowodzeniem za pośrednictwem innego obwodu usługi ExpressRoute. Domyślnie ruchu wychodzącego z sieci wirtualnej odbywa się na podstawie na równy koszt wiele ścieżek routingu (ECMP). Waga połączenia służy do woli jednym obwodem łączącym. Aby uzyskać więcej informacji, zobacz [Optymalizacja routingu usługi ExpressRoute](expressroute-optimize-routing.md).
+
+### <a name="how-do-i-ensure-that-my-traffic-destined-for-azure-public-services-like-azure-storage-and-azure-sql-on-microsoft-or-public-peering-is-preferred-on-the-expressroute-path"></a>Jak mogę upewnij się, że mój ruch przeznaczony dla usług publicznych platformy Azure, takich jak Azure Storage i Azure SQL w firmie Microsoft lub publiczna Komunikacja równorzędna, jest preferowany na ścieżce ExpressRoute?
+
+Musisz zaimplementować lokalny atrybut *preferencji* na routerach, aby upewnić się, że ścieżka z lokalnego do platformy Azure jest zawsze preferowana w obwodach usługi ExpressRoute.
+
+Więcej [szczegółowych informacji](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#path-selection-of-microsoft-and-public-peerings) znajduje się w sekcji Wybór ścieżki BGP i typowe konfiguracje routera. 
 
 ### <a name="onep2plink"></a>Jeśli nie mam wspólnie w ramach wymiany w chmurze i usługodawcą oferuje połączenia punkt-punkt, czy muszę zamówić łączność obejmującą dwóch fizycznych połączeń między Moje między siecią lokalną a firmą Microsoft?
 
@@ -158,7 +164,7 @@ Jeśli usługodawca oferuje usługi ExpressRoute w obu lokacjach, możesz wspó�
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>W tym samym metro można mieć wiele obwodów usługi ExpressRoute? Czy można połączyć je z tej samej sieci wirtualnej?
 
-Tak. Masz wiele obwodów usługi ExpressRoute za pomocą tego samego lub innego usługodawcy. Jeżeli metro ma wiele lokalizacji komunikacji równorzędnej usługi ExpressRoute i obwodów tworzonych w różnych lokalizacjach komunikacji równorzędnej, możesz je połączyć do tej samej sieci wirtualnej. Jeśli obwodów tworzonych w tej samej lokalizacji komunikacji równorzędnej, możesz połączyć obwodów do 4 tej samej sieci wirtualnej.
+Tak. Masz wiele obwodów usługi ExpressRoute za pomocą tego samego lub innego usługodawcy. Jeżeli metro ma wiele lokalizacji komunikacji równorzędnej usługi ExpressRoute i obwodów tworzonych w różnych lokalizacjach komunikacji równorzędnej, możesz je połączyć do tej samej sieci wirtualnej. Jeśli obwody są tworzone w tej samej lokalizacji komunikacji równorzędnej, można połączyć maksymalnie 4 obwodów z tą samą siecią wirtualną.
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>Jak połączyć mojej sieci wirtualne z obwodem usługi ExpressRoute
 
@@ -180,7 +186,7 @@ Tak. Może mieć maksymalnie 10 połączeń sieci wirtualnych na standardowy obw
 
 ### <a name="i-have-multiple-azure-subscriptions-that-contain-virtual-networks-can-i-connect-virtual-networks-that-are-in-separate-subscriptions-to-a-single-expressroute-circuit"></a>Masz wiele subskrypcji platformy Azure, które zawierają sieci wirtualne. Czy można połączyć sieci wirtualne, które znajdują się w osobnych subskrypcji do jednego obwodu usługi ExpressRoute?
 
-Tak. Można połączyć więcej niż 10 sieciami wirtualnymi w innej subskrypcji niż obwód lub różnych subskrypcji przy użyciu jednego obwodu usługi ExpressRoute. Ten limit można zwiększyć przez włączenie funkcji premium usługi ExpressRoute.
+Tak. Możesz połączyć maksymalnie 10 sieci wirtualnych w tej samej subskrypcji co obwód lub różne subskrypcje, korzystając z pojedynczego obwodu usługi ExpressRoute. Ten limit można zwiększyć przez włączenie funkcji premium usługi ExpressRoute.
 
 Aby uzyskać więcej informacji, zobacz [udostępnianie obwodu usługi ExpressRoute w ramach wielu subskrypcji](expressroute-howto-linkvnet-arm.md).
 
@@ -196,7 +202,7 @@ Nie. Z punktu widzenia routingu wszystkie sieci wirtualne połączone z tym samy
 
 ### <a name="can-i-have-one-virtual-network-connected-to-more-than-one-expressroute-circuit"></a>Czy można mieć jedną sieć wirtualną podłączony do więcej niż jeden obwód usługi ExpressRoute?
 
-Tak. Można połączyć się z maksymalnie cztery obwodów usługi ExpressRoute w obu tych samych lub różnych lokalizacji komunikacji równorzędnej jednej sieci wirtualnej. 
+Tak. Można połączyć pojedynczą sieć wirtualną z maksymalnie czterema obwodami ExpressRoute w jednej lub innej lokalizacji komunikacji równorzędnej. 
 
 ### <a name="can-i-access-the-internet-from-my-virtual-networks-connected-to-expressroute-circuits"></a>Z mojej sieci wirtualnych, które zostały podłączone do obwodów usługi ExpressRoute ma dostęp do Internetu?
 
@@ -226,7 +232,7 @@ Tak. Akceptujemy do 4000 prefiksów tras do prywatnej komunikacji równorzędnej
 
 ### <a name="are-there-restrictions-on-ip-ranges-i-can-advertise-over-the-bgp-session"></a>Czy istnieją ograniczenia dotyczące zakresów adresów IP I można anonsować za pośrednictwem sesji protokołu BGP?
 
-Prefiksy prywatne (RFC1918) nie są akceptowane dla sesji protokołu BGP z komunikacji równorzędnej firmy Microsoft. Akceptujemy dowolnego rozmiaru prefiks (maksymalnie /32) zarówno firmy Microsoft, jak i prywatnej komunikacji równorzędnej.
+Prefiksy prywatne (RFC1918) nie są akceptowane dla sesji protokołu BGP z komunikacji równorzędnej firmy Microsoft. Akceptujemy każdy rozmiar prefiksu (do/32) zarówno przez firmę Microsoft, jak i prywatną komunikację równorzędną.
 
 ### <a name="what-happens-if-i-exceed-the-bgp-limits"></a>Co się stanie w przypadku przekroczenia Protokół BGP ogranicza?
 
@@ -290,25 +296,25 @@ Zapoznaj się [cennik](https://azure.microsoft.com/pricing/details/expressroute/
 
 Tak. ExpressRoute premium opłaty na podstawie obwodu usługi ExpressRoute opłaty za magazyn i wymagane przez dostawcę połączenia.
 
-## <a name="expressroute-local"></a>Lokalne usługi ExpressRoute
-### <a name="what-is-expressroute-local"></a>Co to jest lokalne usługi ExpressRoute?
-Lokalne usługi ExpressRoute jest obwodu jednostki SKU usługi ExpressRoute, dostępne na [ExpressRoute bezpośrednio](expressroute-erdirect-about.md). Kluczową funkcją lokalny jest, lokalne obwodu na zapewnia lokalizacji komunikacji równorzędnej usługi ExpressRoute dostępu do tylko do jednego lub dwóch regionach platformy Azure w lub w pobliżu tej samej metro. Z kolei obwód standardowy umożliwia dostęp do wszystkich regionów platformy Azure, w obszarze geopolitycznych i obwodu Premium we wszystkich regionach platformy Azure globalnie. 
+## <a name="expressroute-local"></a>ExpressRoute lokalny
+### <a name="what-is-expressroute-local"></a>Co to jest ExpressRoute Local?
+ExpressRoute Local to jednostka SKU obwodu ExpressRoute dostępnego na [ExpressRoute Direct](expressroute-erdirect-about.md). Kluczową funkcją lokalną jest to, że lokalny obwód w lokalizacji komunikacji równorzędnej ExpressRoute zapewnia dostęp tylko do jednego lub dwóch regionów świadczenia usługi Azure w lub w prawie jednej linii metra. Natomiast standardowy obwód zapewnia dostęp do wszystkich regionów świadczenia usługi Azure w obszarze geopolitycznym oraz obwodu Premium do wszystkich regionów świadczenia usługi Azure globalnie. 
 
-### <a name="what-are-the-benefits-of-expressroute-local"></a>Jakie są korzyści z lokalnej usługi ExpressRoute?
-Gdy trzeba płacić transfer danych wychodzących dla obwodu Standard lub Premium usługi ExpressRoute, transfer danych wychodzących nie płać oddzielnie dla obwodu usługi ExpressRoute lokalne. Innymi słowy ceny lokalne usługi ExpressRoute zawiera opłat za transfer danych. Lokalne usługi ExpressRoute jest to bardziej ekonomiczne rozwiązanie, jeśli mają ogromne ilości danych do przesłania i Ty przenosisz dane za pośrednictwem połączenia prywatnego do lokalizacji komunikacji równorzędnej usługi ExpressRoute, obok żądanego regionów świadczenia usługi Azure. 
+### <a name="what-are-the-benefits-of-expressroute-local"></a>Jakie korzyści wynikają z ExpressRoute lokalnego?
+Gdy musisz zapłacać transfer danych wychodzących dla obwodu usługi ExpressRoute w warstwie Standardowa lub Premium, nie płacisz transferów danych wychodzących oddzielnie dla lokalnego obwodu usługi ExpressRoute. Innymi słowy, Cena ExpressRoute lokalnego obejmuje opłaty za transfer danych. ExpressRoute Local to bardziej ekonomiczne rozwiązanie, jeśli masz ogromne ilości danych do przetransferowania, a dane można przenieść za pośrednictwem połączenia prywatnego do lokalizacji komunikacji równorzędnej ExpressRoute znajdującej się blisko żądanych regionów świadczenia usługi Azure. 
 
-### <a name="what-features-are-available-and-what-are-not-on-expressroute-local"></a>Jakie funkcje są dostępne, a co nie znajdują się w lokalnej usługi ExpressRoute?
-W porównaniu z obwodem usługi ExpressRoute standardowe obwodu lokalnego ma ten sam zestaw funkcji, z wyjątkiem:
-* Zakres dostępu do regionów platformy Azure zgodnie z opisem powyżej
-* Usługa ExpressRoute zasięgu globalnym nie jest dostępna w lokalnych
+### <a name="what-features-are-available-and-what-are-not-on-expressroute-local"></a>Jakie funkcje są dostępne i co nie jest ExpressRoute lokalne?
+W porównaniu do standardowego obwodu ExpressRoute, obwód lokalny ma ten sam zestaw funkcji, z wyjątkiem:
+* Zakres dostępu do regionów platformy Azure zgodnie z powyższym opisem
+* ExpressRoute Global Reach nie jest dostępna w lokalnym
 
-Lokalne usługi ExpressRoute ma również limity tych samych zasobów (np. liczba sieci wirtualnych na obwód) jako Standard. 
+ExpressRoute lokalna ma również te same limity dotyczące zasobów (np. liczbę sieci wirtualnych na obwód) jako standard. 
 
-### <a name="how-to-configure-expressroute-local"></a>Jak skonfigurować lokalne usługi ExpressRoute? 
-Lokalne usługi ExpressRoute znajduje się na bezpośrednie ExpressRoute tylko. Najpierw należy skonfigurować port usługi ExpressRoute bezpośrednio. Po utworzeniu bezpośredniej portów można utworzyć obwodu lokalny, postępując zgodnie z instrukcjami [tutaj](expressroute-howto-erdirect.md).
+### <a name="how-to-configure-expressroute-local"></a>Jak skonfigurować lokalne ExpressRoute? 
+ExpressRoute Local jest dostępny tylko w ExpressRoute bezpośredniej. Najpierw należy skonfigurować port Direct ExpressRoute. Po utworzeniu portu bezpośredniego można utworzyć obwód lokalny zgodnie z instrukcjami znajdującymi się [tutaj](expressroute-howto-erdirect.md).
 
-### <a name="where-is-expressroute-local-available-and-which-azure-regions-is-each-peering-location-mapped-to"></a>Gdzie jest lokalny usługi ExpressRoute i które regiony platformy Azure jest każdej lokalizacji komunikacji równorzędnej mapowane?
-Lokalne usługi ExpressRoute znajduje się w lokalizacji komunikacji równorzędnej, w których co najmniej dwóch regionach platformy Azure, Zamknij. Nie jest dostępne w komunikacji równorzędnej lokalizacji, w których nie regionu systemu Azure, w tym stanu lub prowincji lub kraju. Zapoznaj się dokładnie mapowania [stronie lokalizacje](expressroute-locations-providers.md).  
+### <a name="where-is-expressroute-local-available-and-which-azure-regions-is-each-peering-location-mapped-to"></a>Gdzie jest dostępna usługa ExpressRoute lokalna i które regiony platformy Azure są mapowane na poszczególne lokalizacje komunikacji równorzędnej?
+ExpressRoute Local jest dostępny w lokalizacjach komunikacji równorzędnej, w których jeden lub dwa regiony platformy Azure są zamknięte. Nie jest on dostępny w lokalizacji komunikacji równorzędnej, w której nie ma regionu świadczenia usługi Azure w tym stanie lub województwie lub kraju. Sprawdź dokładne mapowania na [stronie Lokalizacje](expressroute-locations-providers.md).  
 
 ## <a name="expressroute-for-office-365"></a>Usługa ExpressRoute dla usługi Office 365
 
@@ -377,10 +383,10 @@ Twój istniejący obwód będzie nadal anonsowania prefiksów dla usługi Office
 
 * Komunikacja równorzędna firmy Microsoft obwodów usługi ExpressRoute, skonfigurowanych po 1 sierpnia 2017 r. nie będzie miał wszelkie prefiksy anonsowane do czasu podłączenia filtru tras do obwodu. Domyślnie, zostanie wyświetlony bez prefiksów.
 
-## <a name="expressRouteDirect"></a>ExpressRoute Direct
+## <a name="expressRouteDirect"></a>ExpressRoute bezpośrednie
 
 [!INCLUDE [ExpressRoute Direct](../../includes/expressroute-direct-faq-include.md)]
 
-## <a name="globalreach"></a>Globalny zasięg
+## <a name="globalreach"></a>Global Reach
 
 [!INCLUDE [Global Reach](../../includes/expressroute-global-reach-faq-include.md)]

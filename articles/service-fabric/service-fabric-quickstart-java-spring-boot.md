@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 2c98b069e042f9cbd07ccee643028ac84b3471c6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f7cf3f4cc0ceba89c031f5c36e90bbd6ef3dd20a
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60728555"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68327161"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-application-to-service-fabric"></a>Szybki start: Wdrażanie aplikacji Java Spring Boot w usłudze Service Fabric
 
@@ -90,7 +90,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     java -jar gs-spring-boot-0.1.0.jar
     ```
 
-1. Dodaj zasób **Endpoints** w pliku `gs-spring-boot/SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/ServiceManifest.xml`
+1. Dodaj zasób **punktów końcowych** w pliku *GS-Spring-Boot/SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/servicemanifest. XML*
 
     ```xml 
         <Resources>
@@ -145,7 +145,7 @@ Na tym etapie utworzono aplikację usługi Service Fabric dla przykładu Wprowad
     docker run --name sftestcluster -d -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 -p 8080:8080 mysfcluster
     ```
 
-    Uruchamianie klastra lokalnego zajmuje nieco czasu. Aby potwierdzić, że klaster jest w pełni uruchomiony, otwórz narzędzie Service Fabric Explorer dostępne pod adresem **http://localhost:19080**. Pięć węzłów w dobrej kondycji oznacza, że klaster lokalny jest uruchomiony. 
+    Uruchamianie klastra lokalnego zajmuje nieco czasu. Aby potwierdzić, że klaster jest w pełni uruchomiony, otwórz narzędzie Service Fabric Explorer dostępne pod adresem **http://localhost:19080** . Pięć węzłów w dobrej kondycji oznacza, że klaster lokalny jest uruchomiony. 
     
     ![Klaster lokalny w dobrej kondycji](./media/service-fabric-quickstart-java-spring-boot/sfxlocalhost.png)
 
@@ -161,7 +161,7 @@ Na tym etapie utworzono aplikację usługi Service Fabric dla przykładu Wprowad
     ./install.sh
     ```
 
-1. Otwórz przeglądarkę internetową i Uzyskaj dostęp do aplikacji, uzyskując dostęp do `http://localhost:8080`.
+1. Otwórz ulubioną przeglądarkę internetową i uzyskaj dostęp do aplikacji `http://localhost:8080`przez uzyskanie dostępu do programu.
 
     ![Fronton aplikacji — lokalny](./media/service-fabric-quickstart-java-spring-boot/springbootsflocalhost.png)
 

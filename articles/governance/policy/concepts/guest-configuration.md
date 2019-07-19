@@ -1,5 +1,5 @@
 ---
-title: Dowiedz się, jak inspekcji zawartości maszyny wirtualnej
+title: Dowiedz się, jak przeprowadzić inspekcję zawartości maszyny wirtualnej
 description: Dowiedz się, jak korzysta z usługi Azure Policy konfiguracji gościa na Przeprowadź inspekcję ustawienia w ramach maszyny wirtualnej platformy Azure.
 author: DCtheGeek
 ms.author: dacoulte
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: c79a4907e277c337509bd362653cfb100c4bd39c
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 74e36d944450e1ce2c61481b2cb7e345860212af
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137439"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326878"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Omówienie usługi Azure Policy gościa konfiguracji
 
-Oprócz przeprowadzania inspekcji i [korygowanie](../how-to/remediate-resources.md) zasobów platformy Azure, usługi Azure Policy można przeprowadzać inspekcję ustawień na maszynie wirtualnej. Sprawdzanie poprawności jest wykonywane przez rozszerzenie konfiguracji gościa i klienta. Rozszerzenie, za pomocą klienta, sprawdza poprawność ustawień, takich jak konfiguracja systemu operacyjnego, Konfiguracja aplikacji lub obecności i ustawienia środowiska.
+Oprócz inspekcji i [korygowaniem](../how-to/remediate-resources.md) zasobów platformy Azure, Azure Policy może przeprowadzać inspekcję ustawień wewnątrz maszyny wirtualnej. Sprawdzanie poprawności jest wykonywane przez rozszerzenie konfiguracji gościa i klienta. Rozszerzenie, za pomocą klienta, sprawdza poprawność ustawień, takich jak konfiguracja systemu operacyjnego, Konfiguracja aplikacji lub obecności i ustawienia środowiska.
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
@@ -27,7 +27,7 @@ Inspekcja ustawień na maszynie wirtualnej [rozszerzenie maszyny wirtualnej](../
 
 ### <a name="register-guest-configuration-resource-provider"></a>Procedura Rejestruj dostawcę zasobów konfiguracji gościa
 
-Zanim użyjesz konfiguracji gościa, należy zarejestrować dostawcę zasobów. Możesz zarejestrować się za pośrednictwem portalu lub za pomocą programu PowerShell. Dostawca zasobów jest rejestrowane automatycznie, jeśli przypisanie zasad konfiguracji gościa jest wykonywane za pośrednictwem portalu.
+Zanim użyjesz konfiguracji gościa, należy zarejestrować dostawcę zasobów. Możesz zarejestrować się za pośrednictwem portalu lub za pomocą programu PowerShell. Dostawca zasobów jest automatycznie rejestrowany w przypadku przypisywania zasad konfiguracji gościa za pomocą portalu.
 
 #### <a name="registration---portal"></a>Rejestracja — Portal
 
@@ -61,9 +61,9 @@ W poniższej tabeli przedstawiono listę narzędzi lokalnego, używane we wszyst
 |Windows|[Microsoft Desired State Configuration](/powershell/dsc) v2| |
 |Linux|[Program chef InSpec](https://www.chef.io/inspec/)| Język Ruby i Python są instalowane przez rozszerzenie konfiguracji gościa. |
 
-### <a name="validation-frequency"></a>Częstotliwość sprawdzania poprawności
+### <a name="validation-frequency"></a>Częstotliwość walidacji
 
-Klient Configuration Gość sprawdza nowej zawartości co 5 minut. Po otrzymaniu przydziału gościa ustawienia są sprawdzane w 15-minutowych interwałach. Wyniki są wysyłane do dostawcy zasobów konfiguracji gościa, zaraz po ukończeniu inspekcji. Gdy zasady [wyzwalacza oceny](../how-to/get-compliance-data.md#evaluation-triggers) występuje i stan maszyny są zapisywane na potrzeby dostawcy zasobów gościa konfiguracji. To powoduje, że usługi Azure Policy do oceny właściwości usługi Azure Resource Manager. Ocena zasad platformy Azure na żądanie pobiera najnowszą wartość z dostawcy zasobów gościa konfiguracji. Jednak go nie wyzwala nowy inspekcji konfiguracji maszyny wirtualnej.
+Klient konfiguracji gościa sprawdza nową zawartość co 5 minut. Po odebraniu przypisania gościa ustawienia są sprawdzane w przedziale 15 minut. Wyniki są wysyłane do dostawcy zasobów konfiguracji gościa zaraz po zakończeniu inspekcji. Po wystąpieniu [wyzwalacza oceny](../how-to/get-compliance-data.md#evaluation-triggers) zasad stan maszyny jest zapisywana w dostawcy zasobów konfiguracji gościa. Powoduje Azure Policy ocenę Azure Resource Manager właściwości. Ocena Azure Policy na żądanie Pobiera najnowszą wartość z dostawcy zasobów konfiguracji gościa. Jednak nie wyzwala ona nowej inspekcji konfiguracji w ramach maszyny wirtualnej.
 
 ### <a name="supported-client-types"></a>Typy obsługiwanych klientów
 
@@ -80,24 +80,24 @@ W poniższej tabeli przedstawiono listę obsługiwanych systemów operacyjnych n
 |SUSE|SLES|12 Z DODATKIEM SP3|
 
 > [!IMPORTANT]
-> Konfiguracja gościa można przeprowadzać inspekcję węzły obsługiwanego systemu operacyjnego. Jeśli chcesz przeprowadzić inspekcję maszyn wirtualnych korzystających z niestandardowego obrazu, należy zduplikować **DeployIfNotExists** definicji i modyfikować **Jeśli** sekcji, aby uwzględnić właściwości obrazu.
+> Konfiguracja gościa może prowadzić inspekcję węzłów z obsługiwanym systemem operacyjnym. Aby przeprowadzić inspekcję maszyn wirtualnych korzystających z obrazu niestandardowego, należy zduplikować definicję **DeployIfNotExists** i zmodyfikować sekcję **if** w celu uwzględnienia właściwości obrazu.
 
 ### <a name="unsupported-client-types"></a>Typy klientów nieobsługiwanych
 
-Windows Server Nano Server nie jest obsługiwane w dowolnej wersji.
+System Windows Server nano Server nie jest obsługiwany w żadnej wersji.
 
 ### <a name="guest-configuration-extension-network-requirements"></a>Wymagania dotyczące sieci rozszerzenia konfiguracji gościa
 
-Aby komunikować się z dostawcą zasobów gościa konfiguracji na platformie Azure, maszyny wirtualne wymagają dostęp ruchu wychodzącego do centrów danych platformy Azure na porcie **443**. Jeśli używasz prywatnej sieci wirtualnej na platformie Azure, a nie zezwolić na ruch wychodzący, wyjątki musi być skonfigurowany przy użyciu [sieciowej grupy zabezpieczeń](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) reguły. W tej chwili tag usługi nie istnieje dla konfiguracji gościa zasad platformy Azure.
+Aby komunikować się z dostawcą zasobów konfiguracji gościa na platformie Azure, maszyny wirtualne wymagają dostępu wychodzącego do centrów danych platformy Azure na porcie **443**. Jeśli używasz prywatnej sieci wirtualnej na platformie Azure i nie zezwolisz na ruch wychodzący, należy skonfigurować wyjątki przy użyciu reguł [sieciowej grupy zabezpieczeń](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) . W tym momencie tag usługi nie istnieje dla Azure Policy konfiguracji gościa.
 
-Dla listy adresów IP, możesz pobrać [zakresów IP centrum danych Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653). Ten plik jest aktualizowana co tydzień i ma aktualnie wdrożone zakresy i wszystkie nadchodzące zmiany w zakresach adresów IP. Musisz zezwolić na dostęp ruchu wychodzącego do adresów IP w regionach, w których maszyny wirtualne są wdrażane.
+W przypadku list adresów IP można pobrać [Microsoft Azure zakresy adresów IP centrum](https://www.microsoft.com/download/details.aspx?id=41653)danych. Ten plik jest aktualizowany co tydzień i ma aktualnie wdrożone zakresy oraz wszystkie nadchodzące zmiany w zakresach adresów IP. Musisz zezwolić na dostęp wychodzący do adresów IP w regionach, w których wdrożono maszyny wirtualne.
 
 > [!NOTE]
-> Plik XML adres IP centrum danych platformy Azure zawiera listę zakresów adresów IP, które są używane w centrach danych platformy Microsoft Azure. Plik zawiera zakresy obliczeń, SQL i storage. Tydzień jest publikowany zaktualizowany plik. Plik odzwierciedla aktualnie wdrożone zakresy i wszystkie nadchodzące zmiany w zakresach adresów IP. Nowe zakresy, które pojawiają się w pliku nie są używane w centrach danych, przez co najmniej jeden tydzień. To dobry pomysł, aby pobrać nowy plik XML, co tydzień. Następnie należy zaktualizować lokację do prawidłowo identyfikować usługi uruchomione na platformie Azure. Użytkownicy usługi Azure ExpressRoute należy zauważyć, że ten plik jest używany do aktualizacji anonsu protokołu BGP (Border Gateway) miejsca platformy Azure w pierwszym tygodniu każdego miesiąca.
+> Plik XML adresu IP centrum danych platformy Azure zawiera zakresy adresów IP, które są używane w centrach danych Microsoft Azure. Plik zawiera zakresy obliczeń, SQL i magazynu. Zaktualizowany plik jest publikowany co tydzień. Plik odzwierciedla aktualnie wdrożone zakresy i wszystkie nadchodzące zmiany w zakresach adresów IP. Nowe zakresy, które pojawiają się w pliku nie są używane w centrach danych przez co najmniej jeden tydzień. Dobrym pomysłem jest pobranie nowego pliku XML co tydzień. Następnie zaktualizuj swoją witrynę, aby prawidłowo identyfikować usługi działające na platformie Azure. Użytkownicy usługi Azure ExpressRoute powinni pamiętać, że ten plik jest używany do aktualizacji anonsu usługi Border Gateway Protocol (BGP) w pierwszym tygodniu każdego miesiąca.
 
 ## <a name="guest-configuration-definition-requirements"></a>Wymagania dotyczące definicji konfiguracji gościa
 
-Każdy inspekcji uruchamiane przez gościa konfiguracji wymaga dwiema definicjami zasad **DeployIfNotExists** definicji i **inspekcji** definicji. **DeployIfNotExists** definicja jest używana do przygotowywanie maszyny wirtualnej za pomocą agenta gościa, konfiguracji i inne składniki do obsługi [narzędzia do sprawdzania poprawności](#validation-tools).
+Każde uruchomienie inspekcji według konfiguracji gościa wymaga dwóch definicji zasad, definicji **DeployIfNotExists** i definicji **inspekcji** . Definicja **DeployIfNotExists** służy do przygotowywania maszyny wirtualnej z agentem konfiguracji gościa i innymi składnikami do obsługi [narzędzi walidacji](#validation-tools).
 
 **DeployIfNotExists** definicji zasad sprawdza i naprawia następujące elementy:
 
@@ -106,42 +106,46 @@ Każdy inspekcji uruchamiane przez gościa konfiguracji wymaga dwiema definicjam
   - Instalowanie najnowszej wersji **Microsoft.GuestConfiguration** rozszerzenia
   - Instalowanie [narzędzia do sprawdzania poprawności](#validation-tools) i zależności, jeśli to konieczne
 
-Jeśli **DeployIfNotExists** przypisanie jest niezgodne, [zadań korygowania](../how-to/remediate-resources.md#create-a-remediation-task) mogą być używane.
+Jeśli przypisanie **DeployIfNotExists** jest niezgodne, może zostać użyte [zadanie korygowania](../how-to/remediate-resources.md#create-a-remediation-task) .
 
-Gdy **DeployIfNotExists** przypisanie jest zgodne, **inspekcji** przypisania zasad używa lokalna Weryfikacja narzędzi w celu ustalenia, czy przypisanie konfiguracji zgodne lub niezgodne.
+Gdy przypisanie **DeployIfNotExists** jest zgodne, przypisanie zasad **inspekcji** używa lokalnych narzędzi walidacji w celu ustalenia, czy przypisanie konfiguracji jest zgodne, czy niezgodne.
 Narzędzie sprawdzania poprawności zapewnia wyniki do klienta konfiguracji gościa. Klient przesyła wyniki z rozszerzeniem gościa i udostępnia je za pośrednictwem dostawcy zasobów gościa konfiguracji.
 
 Usługa Azure Policy korzysta z dostawców zasobów gościa konfiguracji **complianceStatus** właściwości raportu zgodności w **zgodności** węzła. Aby uzyskać więcej informacji, zobacz [pobierania danych zgodności](../how-to/getting-compliance-data.md).
 
 > [!NOTE]
-> **DeployIfNotExists** zasady są wymagane dla **inspekcji** zasad w celu zwracania wyników.
-> Bez **DeployIfNotExists**, **inspekcji** zasad zawiera "0 0" zasobów, jak w przypadku stanu.
+> Aby zasady **inspekcji** zwracały wyniki, wymagane są zasady **DeployIfNotExistsymi** .
+> Bez **DeployIfNotExists**zasady **inspekcji** są wyświetlane jako stan zasobów "0 z 0".
 
-Wszystkie wbudowane zasady konfiguracji gościa znajdują się w inicjatywy do grupy definicje służące do użycia w przypisaniach. Wbudowane inicjatywę o nazwie *[wersja zapoznawcza]: Przeprowadź inspekcję ustawienia zabezpieczeń hasła wewnątrz maszyn wirtualnych z systemem Linux i Windows* zawiera zasady 18. Sześć **DeployIfNotExists** i **inspekcji** pary dla Windows i trzy pary dla systemu Linux. W każdym przypadku logiki wewnątrz definicji sprawdza tylko element docelowy system operacyjny jest obliczana na podstawie [reguła zasad](definition-structure.md#policy-rule) definicji.
+Wszystkie wbudowane zasady konfiguracji gościa znajdują się w inicjatywy do grupy definicje służące do użycia w przypisaniach. Wbudowana inicjatywa o nazwie *[wersja zapoznawcza]: Ustawienia zabezpieczeń hasła inspekcji w systemach Linux i Windows Virtual* Machines zawierają 18 zasad. Istnieje sześć **DeployIfNotExists** i par **inspekcji** dla systemu Windows i trzech par w systemie Linux. W każdym przypadku logiki wewnątrz definicji sprawdza tylko element docelowy system operacyjny jest obliczana na podstawie [reguła zasad](definition-structure.md#policy-rule) definicji.
+
+## <a name="multiple-assignments"></a>Wiele przypisań
+
+Zasady konfiguracji gościa obsługują obecnie tylko jednokrotne przypisanie tego samego przypisania gościa na maszynę wirtualną, nawet jeśli przypisanie zasad używa różnych parametrów.
 
 ## <a name="client-log-files"></a>Pliki dziennika klienta
 
-Rozszerzenie konfiguracji gościa zapisuje pliki dziennika w następujących lokalizacjach:
+Rozszerzenie konfiguracji gościa zapisuje pliki dzienników w następujących lokalizacjach:
 
 Windows: `C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindows\<version>\dsc\logs\dsc.log`
 
 Linux: `/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-<version>/GCAgent/logs/dsc.log`
 
-Gdzie `<version>` odwołuje się do bieżący numer wersji.
+Gdzie `<version>` odwołuje się do bieżącego numeru wersji.
 
 ## <a name="guest-configuration-samples"></a>Przykłady konfiguracji gościa
 
-Przykłady dla konfiguracji gościa zasad są dostępne w następujących lokalizacjach:
+Przykłady konfiguracji gościa zasad są dostępne w następujących lokalizacjach:
 
-- [Indeks przykładów - gościa konfiguracji](../samples/index.md#guest-configuration)
-- [Usługa Azure Policy przykłady repozytorium GitHub](https://github.com/Azure/azure-policy/tree/master/samples/GuestConfiguration).
+- [Indeks przykładów — konfiguracja gościa](../samples/index.md#guest-configuration)
+- [Azure Policy przykłady repozytorium GitHub](https://github.com/Azure/azure-policy/tree/master/samples/GuestConfiguration).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Przejrzyj przykłady na [przykładów usługi Azure Policy](../samples/index.md).
+- Zapoznaj się z przykładami w [Azure Policy Samples](../samples/index.md).
 - Przejrzyj temat [Struktura definicji zasad Azure Policy](definition-structure.md).
 - Przejrzyj [wyjaśnienie działania zasad](effects.md).
-- Zrozumienie sposobu [programowe tworzenie zasad](../how-to/programmatically-create.md).
-- Dowiedz się, jak [Pobierz dane zgodności](../how-to/getting-compliance-data.md).
-- Dowiedz się, jak [korygowanie niezgodnych zasobów](../how-to/remediate-resources.md).
-- Przejrzyj grupy zarządzania jest [organizowanie zasobów przy użyciu grup zarządzania platformy Azure](../../management-groups/index.md).
+- Dowiedz się, jak [programowo utworzyć zasady](../how-to/programmatically-create.md).
+- Dowiedz się, jak [uzyskać dane zgodności](../how-to/getting-compliance-data.md).
+- Dowiedz się, jak [skorygować niezgodne zasoby](../how-to/remediate-resources.md).
+- Zapoznaj się z informacjami o tym, czym jest Grupa zarządzania, aby [zorganizować swoje zasoby za pomocą grup zarządzania platformy Azure](../../management-groups/index.md).

@@ -4,7 +4,7 @@ description: Opis funkcji usługi Batch i jej interfejsów API z punktu widzenia
 services: batch
 documentationcenter: .net
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 416b95f8-2d7b-4111-8012-679b0f60d204
 ms.service: batch
@@ -15,18 +15,18 @@ ms.workload: big-compute
 ms.date: 12/18/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 1fbe5b0a49960248133c35fb4a0401a31b95fb35
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bead5f0bec6d57c0f4aaddc6537e00c466d987f1
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64700935"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323871"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Tworzenie rozbudowanych rozwiązań przetwarzania równoległego przy użyciu usługi Batch
 
 W tym omówieniu podstawowych składników usługi Azure Batch przedstawiamy główne funkcje oraz zasoby, z których deweloperzy usługi Batch mogą korzystać w przypadku kompilowania rozwiązań do przetwarzania równoległego na dużą skalę.
 
-Bez względu na to, czy tworzysz aplikację do przetwarzania rozproszonego, usługę obsługującą bezpośrednie wywołania interfejsu [API REST][batch_rest_api], czy też korzystasz z jednego z [zestawów SDK usługi Batch](batch-apis-tools.md#azure-accounts-for-batch-development), będziesz używać wielu zasobów oraz funkcji omówionych w tym artykule.
+Bez względu na to, czy tworzysz rozproszoną aplikację obliczeniową lub usługę, która wystawia bezpośrednie wywołania [interfejsu API REST][batch_rest_api] , czy używasz jednego z [zestawów SDK usługi Batch](batch-apis-tools.md#azure-accounts-for-batch-development), będziesz używać wielu zasobów i funkcji omówionych w tym artykule.
 
 > [!TIP]
 > Bardziej szczegółowe wprowadzenie do usługi Batch można znaleźć w temacie [Podstawy usługi Azure Batch](batch-technical-overview.md). Zobacz też najnowsze [aktualizacje usługi Batch](https://azure.microsoft.com/updates/?product=batch).
@@ -36,7 +36,7 @@ Bez względu na to, czy tworzysz aplikację do przetwarzania rozproszonego, usł
 ## <a name="batch-service-workflow"></a>Przepływ pracy usługi Batch
 Poniższy ogólny przepływ pracy to typowy przykład dla niemal wszystkich aplikacji i usług, które korzystają z usługi Batch w przypadku obciążeń przetwarzania równoległego:
 
-1. Przekaż **pliki danych** do przetworzenia na konto usługi [Azure Storage][azure_storage]. Usługa Batch oferuje wbudowaną obsługę dostępu do usługi Azure Blob Storage, a podczas wykonywania zadań podrzędnych można pobierać te pliki do [węzłów obliczeniowych](#compute-node).
+1. Przekaż **pliki danych** do przetworzenia na konto [usługi Azure Storage][azure_storage] . Usługa Batch oferuje wbudowaną obsługę dostępu do usługi Azure Blob Storage, a podczas wykonywania zadań podrzędnych można pobierać te pliki do [węzłów obliczeniowych](#compute-node).
 2. Przekaż **pliki aplikacji**, które będą uruchamiane w ramach zadań podrzędnych. Mogą być to pliki binarne lub skrypty i ich zależności. Są one wykonywane w ramach zadań podrzędnych w zadaniach. W trakcie wykonywania zadań podrzędnych można pobierać te pliki z konta usługi Storage lub używać funkcji [pakietów aplikacji](#application-packages) usługi Batch na potrzeby zarządzania aplikacjami i ich wdrażania.
 3. Utwórz [pulę](#pool) węzłów obliczeniowych. Podczas tworzenia puli określ liczbę jej węzłów obliczeniowych, ich rozmiar oraz system operacyjny. Każde zadanie podrzędne uruchomione w ramach zadania jest przypisywane do wykonania w jednym z węzłów puli.
 4. Utwórz [zadanie](#job). Zadanie umożliwia zarządzanie kolekcją zadań podrzędnych. Każde zadanie jest kojarzone z określoną pulą, w której będą uruchamiane zadania podrzędne powiązane z tym zadaniem.
@@ -46,7 +46,7 @@ Poniższy ogólny przepływ pracy to typowy przykład dla niemal wszystkich apli
 W poniższych sekcjach omówiono te i inne zasoby usługi Batch, które umożliwiają pracę ze scenariuszem przetwarzania rozproszonego.
 
 > [!NOTE]
-> Do korzystania z usługi Batch niezbędne jest [konto usługi Batch](#account). Większość rozwiązań usługi Batch używa też skojarzonego konta usługi [Azure Storage][azure_storage] do przechowywania i pobierania plików. 
+> Do korzystania z usługi Batch niezbędne jest [konto usługi Batch](#account). Większość rozwiązań usługi Batch używa również skojarzonego konta [magazynu Azure][azure_storage] do przechowywania i pobierania plików. 
 >
 >
 
@@ -90,7 +90,7 @@ Aby uzyskać więcej informacji dotyczących kont magazynu, zobacz temat [Azure 
 Konto magazynu można skojarzyć z kontem usługi Batch podczas tworzenia konta usługi Batch lub później. Wybierając konto magazynu, należy wziąć pod uwagę wymagania dotyczące kosztów i wydajności. Na przykład opcje konta magazynu GPv2 i Blob Storage obsługują większe [limity wydajności i skalowalności](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/) w porównaniu z wersją GPv1. (Aby poprosić o zwiększenie limitu magazynu, skontaktuj się z działem pomocy technicznej platformy Azure). Te opcje konta mogą poprawić wydajność rozwiązań usługi Batch, które zawierają dużą liczbę równoległych zadań podrzędnych odczytujących lub zapisujących dane na koncie magazynu.
 
 ## <a name="compute-node"></a>Węzeł obliczeniowy
-Węzeł obliczeniowy jest maszyną wirtualną platformy Azure lub maszyną wirtualną dla usługi w chmurze przeznaczoną do przetwarzania części obciążenia danej aplikacji. Rozmiar węzła określa liczbę rdzeni procesora, pojemność pamięci oraz rozmiar lokalnego systemu plików przydzielony do tego węzła. Pule węzłów systemu Windows lub Linux można tworzyć przy użyciu usługi Azure Cloud Services, obrazów z witryny [Marketplace usługi Azure Virtual Machines][vm_marketplace] lub przygotowanych samodzielnie obszarów niestandardowych. Aby uzyskać więcej informacji na temat tych opcji, zobacz poniżej sekcję [Pula](#pool).
+Węzeł obliczeniowy jest maszyną wirtualną platformy Azure lub maszyną wirtualną dla usługi w chmurze przeznaczoną do przetwarzania części obciążenia danej aplikacji. Rozmiar węzła określa liczbę rdzeni procesora, pojemność pamięci oraz rozmiar lokalnego systemu plików przydzielony do tego węzła. Pule węzłów systemu Windows lub Linux można tworzyć przy użyciu usługi Azure Cloud Services, obrazów z [witryny azure Virtual Machines Marketplace][vm_marketplace]lub przygotowywanych obrazów niestandardowych. Aby uzyskać więcej informacji na temat tych opcji, zobacz poniżej sekcję [Pula](#pool).
 
 Węzły można uruchamiać przy użyciu dowolnego pliku wykonywalnego lub skryptu, który jest obsługiwany przez środowisko systemu operacyjnego węzła. Dotyczy to plików \*EXE, \*CMD, \*BAT i skryptów programu PowerShell dla systemu Windows — oraz plików binarnych, powłoki i skryptów języka Python dla systemu Linux.
 
@@ -132,7 +132,7 @@ Podczas tworzenia puli usługi Batch można określić konfigurację maszyny wir
 
 - **Konfiguracja maszyny wirtualnej**, która określa, że pula składa się z maszyn wirtualnych platformy Azure. Te maszyny wirtualne można tworzyć na podstawie obrazów systemu Windows albo Linux. 
 
-    Podczas tworzenia puli na podstawie konfiguracji usługi Virtual Machines należy określić nie tylko rozmiar węzłów i obrazów użytych do ich utworzenia, ale także **odwołanie do obrazu maszyny wirtualnej** i **jednostkę SKU węzła agenta** usługi Batch do zainstalowania w węzłach. Więcej informacji na temat określania powyższych właściwości puli znajduje się w artykule [Provision Linux compute nodes in Azure Batch pools](batch-linux-nodes.md) (Aprowizowanie węzłów obliczeniowych systemu Linux w pulach usługi Azure Batch). Możesz opcjonalnie dołączyć co najmniej jeden pusty dysk danych do puli maszyn wirtualnych utworzonej z obrazów witryny Marketplace lub uwzględnić dyski danych w niestandardowych obrazach używanych do tworzenia maszyn wirtualnych. Po tym dyski z danymi, musisz zainstalować i sformatować dyski z na maszynie wirtualnej, aby umożliwić ich używanie.
+    Podczas tworzenia puli na podstawie konfiguracji usługi Virtual Machines należy określić nie tylko rozmiar węzłów i obrazów użytych do ich utworzenia, ale także **odwołanie do obrazu maszyny wirtualnej** i **jednostkę SKU węzła agenta** usługi Batch do zainstalowania w węzłach. Więcej informacji na temat określania powyższych właściwości puli znajduje się w artykule [Provision Linux compute nodes in Azure Batch pools](batch-linux-nodes.md) (Aprowizowanie węzłów obliczeniowych systemu Linux w pulach usługi Azure Batch). Możesz opcjonalnie dołączyć co najmniej jeden pusty dysk danych do puli maszyn wirtualnych utworzonej z obrazów witryny Marketplace lub uwzględnić dyski danych w niestandardowych obrazach używanych do tworzenia maszyn wirtualnych. W przypadku dołączania dysków z danymi należy zainstalować i sformatować dyski z poziomu maszyny wirtualnej w celu ich użycia.
 
 - **Konfiguracja maszyny wirtualnej**, która określa, że pula składa się z węzłów usługi Azure Cloud Services. Usługi Cloud Services oferują *tylko* węzły obliczeniowe systemu Windows.
 
@@ -229,12 +229,12 @@ Zadanie to kolekcja zadań podrzędnych. Umożliwia ono zarządzanie sposobem wy
 
     Usługa Batch może wykrywać zadania podrzędne zakończone niepowodzeniem, a następnie ponownie próbować je uruchomić. Możesz określić **maksymalną liczbę ponownych prób wykonania zadania podrzędnego** jako ograniczenie decydujące m.in. o tym, czy ponowna próba wykonania zadania jest podejmowana *zawsze* czy *nigdy*. Ponawianie próby wykonania zadania podrzędnego oznacza, że zostaje ono jeszcze raz umieszczone w kolejce do ponownego uruchomienia.
 * Aplikacja kliencka może dodawać zadania podrzędne do zadania. Można również wybrać [zadanie podrzędne Menedżera zadań](#job-manager-task). Zadanie podrzędne Menedżera zadań zawiera informacje niezbędne do utworzenia wymaganych zadań podrzędnych danego zadania. Jest ono uruchamiane na jednym z węzłów obliczeniowych w puli. Zadanie podrzędne Menedżera zadań jest obsługiwane w usłudze Batch w sposób specjalny — jest umieszczane w kolejce natychmiast po utworzeniu zadania i uruchamiane ponownie, jeśli zakończy się niepowodzeniem. Zadanie podrzędne Menedżera zadań jest *wymagane* w przypadku zadań tworzonych w [harmonogramie zadań](#scheduled-jobs), ponieważ jest jedynym sposobem definiowania zadań podrzędnych przed utworzeniem wystąpienia zadania.
-* Domyślnie zadania pozostają aktywne do momentu ukończenia zdań podrzędnych odpowiadających danemu zadaniu. To zachowanie można zmienić tak, aby zadanie było automatycznie przerywane po ukończeniu wszystkich powiązanych z nim zadań podrzędnych. Ustaw dla właściwości **onAllTasksComplete** zadania ([OnAllTasksComplete][net_onalltaskscomplete] na platformie .NET w usłudze Batch) wartość *terminatejob*, aby automatycznie zakończyć zadanie po ukończeniu wszystkich powiązanych z nim zadań podrzędnych.
+* Domyślnie zadania pozostają aktywne do momentu ukończenia zdań podrzędnych odpowiadających danemu zadaniu. To zachowanie można zmienić tak, aby zadanie było automatycznie przerywane po ukończeniu wszystkich powiązanych z nim zadań podrzędnych. Ustaw właściwość **onAllTasksComplete** zadania ([OnAllTasksComplete][net_onalltaskscomplete] w usłudze Batch .NET) na wartość *terminatejob* , aby automatycznie kończyć zadanie, gdy wszystkie jego zadania są w stanie ukończone.
 
     Pamiętaj, że usługa Batch traktuje zadanie *bez* zadań podrzędnych, jakby wszystkie zadania podrzędne zostały ukończone. W związku z tym ta opcja jest najczęściej używana w przypadku [zadania podrzędnego Menedżera zadań](#job-manager-task). Jeśli chcesz użyć opcji automatycznego przerywania zadań bez Menedżera zadań, musisz początkowo ustawić właściwość **onAllTasksComplete** nowego zadania na wartość *noaction*. Po dodaniu wszystkich podrzędnych do zadania zmień tę wartość na *terminatejob*.
 
 ### <a name="job-priority"></a>Priorytet zadań
-Zadaniom tworzonym w usłudze Batch można nadać priorytet. Usługa Batch używa wartości priorytetu zadania do określania kolejności planowania zadań w ramach konta (nie należy mylić tego pojęcia z [zadaniem zaplanowanym](#scheduled-jobs)). Wartości priorytetu mieszczą się w zakresie od -1000 do 1000, gdzie -1000 oznacza najniższy priorytet, a 1000 najwyższy. Aby zaktualizować priorytet zadania, wywołaj operację [Aktualizuj właściwości zadania][rest_update_job] (interfejs REST usługi Batch) lub zmień właściwość [CloudJob.Priority][net_cloudjob_priority] (platforma .NET usługi Batch).
+Zadaniom tworzonym w usłudze Batch można nadać priorytet. Usługa Batch używa wartości priorytetu zadania do określania kolejności planowania zadań w ramach konta (nie należy mylić tego pojęcia z [zadaniem zaplanowanym](#scheduled-jobs)). Wartości priorytetu mieszczą się w zakresie od -1000 do 1000, gdzie -1000 oznacza najniższy priorytet, a 1000 najwyższy. Aby zaktualizować priorytet zadania, należy wywołać [aktualizację właściwości zadania][rest_update_job] operation (Batch REST), or modify the [CloudJob.Priority][net_cloudjob_priority] (Batch .NET).
 
 W ramach tego samego konta zadania o wyższym priorytecie mają pierwszeństwo planowania nad zadaniami o niższym priorytecie. Zadanie o wyższym priorytecie na jednym koncie nie ma pierwszeństwa planowania nad innym zadaniem o niższym priorytecie na innym koncie.
 
@@ -279,7 +279,7 @@ Kojarząc **zadanie podrzędne uruchamiania** z pulą, można przygotować środ
 
 Główną korzyścią płynącą z zadania podrzędnego uruchamiania jest to, że może ono zawierać wszystkie informacje niezbędne do konfiguracji węzła obliczeniowego oraz instalacji aplikacji potrzebnych do wykonania zadania podrzędnego. Dlatego zwiększenie liczby węzłów w puli wymaga tylko określenia nowej liczby węzłów docelowych. Zadanie podrzędne uruchamiania udostępnia usłudze Batch informacje wymagane do skonfigurowania nowych węzłów i przygotowania ich do akceptowania zadań podrzędnych.
 
-Podobnie jak w przypadku dowolnego zadania podrzędnego usługi Azure Batch, można określić listę **plików zasobów** w usłudze [Azure Storage][azure_storage] (oprócz **wiersza polecenia**) do wykonania. Usługa Batch najpierw kopiuje pliki zasobów do węzła z usługi Azure Storage, a następnie uruchamia wiersz polecenia. W przypadku zadania podrzędnego uruchamiania w puli lista plików zawiera zazwyczaj aplikacje zadania podrzędnego i jego zależności.
+Podobnie jak w przypadku każdego zadania Azure Batch można określić listę **plików zasobów** w [usłudze Azure Storage][azure_storage], a także **wiersz polecenia** do wykonania. Usługa Batch najpierw kopiuje pliki zasobów do węzła z usługi Azure Storage, a następnie uruchamia wiersz polecenia. W przypadku zadania podrzędnego uruchamiania w puli lista plików zawiera zazwyczaj aplikacje zadania podrzędnego i jego zależności.
 
 Jednak zadanie podrzędne uruchamiania może również uwzględnić dane odwołania do użycia przez wszystkie zadania podrzędne, które są uruchamiane w węźle obliczeniowym. Można na przykład w wierszu polecenia zadania podrzędnego uruchamiania wykonać operację `robocopy` w celu skopiowania plików aplikacji (które zostały określone jako pliki zasobów i pobrane do węzła) z poziomu [katalogu roboczego](#files-and-directories) zadania podrzędnego uruchamiania do [folderu udostępnionego](#files-and-directories), a następnie uruchomić instalatora MSI lub `setup.exe`.
 
@@ -335,16 +335,16 @@ Zależności zadań podrzędnych umożliwiają konfigurację takich scenariuszy 
 * *zadanie_podrzędne_C* zależy od *zadania_podrzędnego_A* i *zadania_podrzędnego_B*.
 * *zadanie_podrzędne_D* zależy od wcześniejszego wykonania zakresu zadań podrzędnych, np. zadań od *1* do *10*.
 
-Zapoznaj się z tematem [Task dependencies in Azure Batch](batch-task-dependencies.md) (Zależności zadań podrzędnych w usłudze Azure Batch) oraz przykładem kodu [TaskDependencies][github_sample_taskdeps] w repozytorium GitHub [azure-batch-samples][github_samples] w celu uzyskania szczegółowych informacji o tej funkcji.
+Zapoznaj się [z zależnościami zadań w Azure Batch](batch-task-dependencies.md) i repozytorium GitHub [TaskDependencies][github_sample_taskdeps] code sample in the [azure-batch-samples][github_samples] , aby uzyskać bardziej szczegółowe informacje dotyczące tej funkcji.
 
 ## <a name="environment-settings-for-tasks"></a>Ustawienia środowiska dla zadań
 Każde zadanie podrzędne wykonywane przez usługę Batch ma dostęp do zmiennych środowiskowych ustawionych w węzłach obliczeniowych. Obejmuje to zmienne środowiskowe zdefiniowane przez usługę Batch ([zdefiniowane przez usługę][msdn_env_vars]) i niestandardowe zmienne środowiskowe, które można zdefiniować dla zadań podrzędnych. Aplikacje i skrypty wykonywane przez zadania podrzędne mają dostęp do tych zmiennych środowiskowych podczas wykonywania.
 
-Można ustawić niestandardowe zmienne środowiskowe na poziomie zadania podrzędnego lub zadania, podając informacje o właściwości *ustawień środowiska* dla tych jednostek. Zobacz na przykład operację [Dodaj zadanie podrzędne do zadania][rest_add_task] (interfejs API REST usługi Batch) lub właściwości [CloudTask.EnvironmentSettings][net_cloudtask_env] i [CloudJob.CommonEnvironmentSettings][net_job_env] na platformie .NET usługi Batch.
+Można ustawić niestandardowe zmienne środowiskowe na poziomie zadania podrzędnego lub zadania, podając informacje o właściwości *ustawień środowiska* dla tych jednostek. Na przykład zapoznaj się z tematem [Dodawanie zadania do zadania][rest_add_task] operation (Batch REST API), or the [CloudTask.EnvironmentSettings][net_cloudtask_env] i [CloudJob. CommonEnvironmentSettings][net_job_env] właściwości w usłudze Batch .NET.
 
-Usługa lub aplikacja kliencka może pobrać zmienne środowiskowe zadania podrzędnego, zdefiniowane przez usługę i niestandardowe, za pomocą operacji [Uzyskaj informacje o zadaniu podrzędnym][rest_get_task_info] (interfejs API REST usługi Batch) lub uzyskując dostęp do właściwości [CloudTask.EnvironmentSettings][net_cloudtask_env] (platforma .NET usługi Batch). Procesy wykonywane w węźle obliczeniowym mają również dostęp do wszystkich zmiennych środowiskowych, np. przy użyciu znanej składni `%VARIABLE_NAME%` (Windows) lub `$VARIABLE_NAME` (Linux).
+Aplikacja lub usługa kliencka może uzyskać zmienne środowiskowe zadania, zarówno zdefiniowane przez usługę, jak i niestandardowe, za pomocą funkcji [Pobierz informacje o właściwości zadania][rest_get_task_info] operation (Batch REST) or by accessing the [CloudTask.EnvironmentSettings][net_cloudtask_env] (Batch .NET). Procesy wykonywane w węźle obliczeniowym mają również dostęp do wszystkich zmiennych środowiskowych, np. przy użyciu znanej składni `%VARIABLE_NAME%` (Windows) lub `$VARIABLE_NAME` (Linux).
 
-Pełna lista wszystkich zmiennych środowiskowych zdefiniowanych przez usługę jest dostępna w artykule dotyczącym [zmiennych środowiskowych węzłów obliczeniowych][msdn_env_vars].
+Pełną listę wszystkich zmiennych środowiskowych zdefiniowanych przez usługę można znaleźć w [zmiennych środowiskowych węzłów obliczeniowych][msdn_env_vars].
 
 ## <a name="files-and-directories"></a>Pliki i katalogi
 Każde zadanie podrzędne ma *katalog roboczy*, w którym tworzy pliki i katalogi (ich liczba może również wynosić zero). Ten katalog roboczy może służyć do przechowywania programu uruchamianego przez zadanie podrzędne, przetwarzania danych oraz danych końcowych przetwarzania. Wszystkie pliki i katalogi zadania podrzędnego należą do użytkownika zadania podrzędnego.
@@ -423,9 +423,9 @@ Więcej informacji na temat automatycznego skalowania aplikacji znajduje się w 
 >
 
 ## <a name="security-with-certificates"></a>Zabezpieczenia oparte na certyfikatach
-Zazwyczaj certyfikatów należy użyć podczas szyfrowania i odszyfrowywania poufnych informacji dotyczących zadań podrzędnych, np. klucza [konta usługi Azure Storage][azure_storage]. Aby to umożliwić, można zainstalować certyfikaty w węzłach. Zaszyfrowane klucze tajne są przekazywane do zadań za pomocą parametrów wiersza polecenia lub osadzane w jednym z zasobów zadań, a zainstalowanych certyfikatów można użyć do ich odszyfrowania.
+Zazwyczaj należy używać certyfikatów podczas szyfrowania lub odszyfrowywania poufnych informacji dotyczących zadań, takich jak klucz [konta usługi Azure Storage][azure_storage]. Aby to umożliwić, można zainstalować certyfikaty w węzłach. Zaszyfrowane klucze tajne są przekazywane do zadań za pomocą parametrów wiersza polecenia lub osadzane w jednym z zasobów zadań, a zainstalowanych certyfikatów można użyć do ich odszyfrowania.
 
-Aby dodać certyfikat do konta usługi Batch, należy użyć operacji [Dodaj certyfikat][rest_add_cert] (interfejs API REST usługi Batch) lub metody [CertificateOperations.CreateCertificate][net_create_cert] (platforma .NET usługi Batch). Następnie można skojarzyć certyfikat z nową lub istniejącą pulą. Gdy certyfikat zostaje skojarzony z pulą, usługa Batch instaluje certyfikat w każdym węźle w puli. Usługa Batch instaluje odpowiednie certyfikaty podczas uruchamiania węzła przed uruchomieniem dowolnych zadań podrzędnych (w tym zadania podrzędnego uruchamiania i zadania podrzędnego Menedżera zadań).
+Aby dodać certyfikat do konta w usłudze Batch, należy użyć metody [dodawania certyfikatu][rest_add_cert] operation (Batch REST) or [CertificateOperations.CreateCertificate][net_create_cert] (Batch .NET). Następnie można skojarzyć certyfikat z nową lub istniejącą pulą. Gdy certyfikat zostaje skojarzony z pulą, usługa Batch instaluje certyfikat w każdym węźle w puli. Usługa Batch instaluje odpowiednie certyfikaty podczas uruchamiania węzła przed uruchomieniem dowolnych zadań podrzędnych (w tym zadania podrzędnego uruchamiania i zadania podrzędnego Menedżera zadań).
 
 W przypadku dodawania certyfikatów do *istniejącej* puli należy ponownie uruchomić jej węzły obliczeniowe w celu zastosowania certyfikatów do węzłów.
 
@@ -462,7 +462,7 @@ Błędy zadań można podzielić na następujące kategorie:
 ### <a name="debugging-application-failures"></a>Błędy debugowania aplikacji
 * `stderr` i `stdout`
 
-    W czasie wykonywania aplikacja może tworzyć diagnostyczne dane wyjściowe, których można użyć do rozwiązywania problemów. Jak wspomniano we wcześniejszej sekcji [Pliki i katalogi](#files-and-directories), usługa Batch wysyła zapisuje standardowe dane wyjściowe i standardowe dane wyjściowe błędów w plikach `stdout.txt` i `stderr.txt` znajdujących się w katalogu zadań podrzędnych w węźle obliczeniowym. Aby pobrać te pliki, można użyć portalu Azure lub jednego z zestawów SDK usługi Batch. Te pliki można pobrać w celu rozwiązania problemów za pomocą elementów [ComputeNode.GetNodeFile][net_getfile_node] i [CloudTask.GetNodeFile][net_getfile_task] w bibliotece platformy .NET usługi Batch.
+    W czasie wykonywania aplikacja może tworzyć diagnostyczne dane wyjściowe, których można użyć do rozwiązywania problemów. Jak wspomniano we wcześniejszej sekcji [Pliki i katalogi](#files-and-directories), usługa Batch wysyła zapisuje standardowe dane wyjściowe i standardowe dane wyjściowe błędów w plikach `stdout.txt` i `stderr.txt` znajdujących się w katalogu zadań podrzędnych w węźle obliczeniowym. Aby pobrać te pliki, można użyć portalu Azure lub jednego z zestawów SDK usługi Batch. Można na przykład pobrać te i inne pliki do celów rozwiązywania problemów za pomocą [ComputeNode. GetNodeFile][net_getfile_node] and [CloudTask.GetNodeFile][net_getfile_task] w bibliotece Batch .NET.
 
 * **Kody zakończenia zadania podrzędnego**
 
@@ -471,13 +471,13 @@ Błędy zadań można podzielić na następujące kategorie:
 ### <a name="accounting-for-task-failures-or-interruptions"></a>Uwzględnianie błędów zadań lub przerw w zadaniach
 Od czasu do czasu zadania podrzędne mogą zakończyć się niepowodzeniem lub zostać przerwane. Awarii może ulec sama aplikacja zadania podrzędnego, może zostać przeprowadzony ponowny rozruch węzła, w którym zostało uruchomione zadanie podrzędne lub węzeł może zostać usunięty z puli podczas operacji zmiany rozmiaru, jeśli zasady cofania alokacji puli zostały ustawione na natychmiastowe usuwanie węzłów bez oczekiwania na zakończenie zadań podrzędnych. We wszystkich przypadkach zadanie podrzędne może zostać automatycznie ponownie umieszczone w kolejce przy użyciu usługi Batch do wykonania w innym węźle.
 
-Istnieje także możliwość wystąpienia sporadycznie problemu, że zadanie może przestać odpowiadać lub trwa zbyt długo, można wykonać. Można ustawić maksymalny interwał wykonywania zadania podrzędnego. Po jego przekroczeniu usługa Batch przerywa działanie aplikacji zadania podrzędnego.
+Istnieje również możliwość, że sporadyczny problem może przestać odpowiadać lub trwać zbyt długo. Można ustawić maksymalny interwał wykonywania zadania podrzędnego. Po jego przekroczeniu usługa Batch przerywa działanie aplikacji zadania podrzędnego.
 
 ### <a name="connecting-to-compute-nodes"></a>Nawiązywanie połączenia z węzłami obliczeniowymi
-Aby przeprowadzić dodatkowe debugowanie i rozwiązywanie problemów, można zalogować się zdalnie do węzła obliczeniowego. W witrynie Azure Portal można pobrać plik protokołu RDP w przypadku węzłów systemu Windows oraz uzyskać informacje o połączeniu z protokołem SSH w przypadku węzłów systemu Linux. Można to również zrobić przy użyciu interfejsów API usługi Batch — na przykład przy użyciu [platformy .NET w usłudze Batch][net_rdpfile] lub [języka Python w usłudze Batch](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh).
+Aby przeprowadzić dodatkowe debugowanie i rozwiązywanie problemów, można zalogować się zdalnie do węzła obliczeniowego. W witrynie Azure Portal można pobrać plik protokołu RDP w przypadku węzłów systemu Windows oraz uzyskać informacje o połączeniu z protokołem SSH w przypadku węzłów systemu Linux. Można to zrobić również przy użyciu interfejsów API usługi Batch — na przykład przy użyciu usługi [Batch .NET][net_rdpfile] lub usługi [Batch Python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh).
 
 > [!IMPORTANT]
-> Aby połączyć się z węzłem za pośrednictwem protokołu RDP lub SSH, musisz najpierw utworzyć użytkownika w węźle. W tym celu możesz użyć witryny Azure Portal, [dodać konto użytkownika do węzła][rest_create_user] za pomocą interfejsu API REST usługi Batch, wywołać metodę [ComputeNode.CreateComputeNodeUser][net_create_user] na platformie .NET usługi Batch lub wywołać metodę [add_user][py_add_user] w module języka Python usługi Batch.
+> Aby połączyć się z węzłem za pośrednictwem protokołu RDP lub SSH, musisz najpierw utworzyć użytkownika w węźle. W tym celu można użyć Azure Portal, [dodać konto użytkownika do metody węzła][rest_create_user] by using the Batch REST API, call the [ComputeNode.CreateComputeNodeUser][net_create_user] w usłudze Batch .NET lub wywołać metodę [add_user][py_add_user] w module Batch Python.
 >
 >
 
@@ -486,29 +486,29 @@ Jeśli chcesz ograniczyć lub wyłączyć dostęp do węzłów obliczeniowych za
 ### <a name="troubleshooting-problematic-compute-nodes"></a>Rozwiązywanie problemów z węzłami obliczeniowymi
 W sytuacjach, w których niektóre z zadań kończą się niepowodzeniem, aplikacja kliencka lub usługa Batch mogą badać metadane nieudanych zadań w celu identyfikacji nieprawidłowo funkcjonującego węzła. Każdemu węzłowi w puli zostaje nadany unikatowy identyfikator, a węzeł, w którym jest uruchomione zadanie, jest dołączany do metadanych zadania. Po zidentyfikowaniu problemu dotyczącego węzła można wykonać kilka powiązanych czynności:
 
-* **Ponownie uruchom węzeł** ([REST][rest_reboot] | [.NET][net_reboot])
+* **Ponowne uruchamianie węzła** ([Rest][rest_reboot] | [.NET][net_reboot])
 
     Ponowne uruchomienie węzła może czasami usunąć ukryte problemy, takie jak zablokowane procesy lub procesy, które uległy awarii. Jeśli pula używa zadania podrzędnego uruchamiania lub zadanie używa zadania podrzędnego przygotowania zadania, zostaną one wykonane po ponownym uruchomieniu węzła.
-* **Odtwórz węzeł z obrazu** ([REST][rest_reimage] | [.NET][net_reimage])
+* Odtwórz **węzeł z obrazu** ([Rest][rest_reimage] | [.NET][net_reimage])
 
     Spowoduje to ponowne zainstalowanie systemu operacyjnego w węźle. Podobnie jak w przypadku ponownego rozruchu węzła zadania uruchamiania i zadania przygotowania zadania są uruchamiane ponownie po odtworzeniu węzła z obrazu.
-* **Usuń węzeł z puli** ([REST][rest_remove] | [.NET][net_remove])
+* **Usuń węzeł z puli** ([Rest][rest_remove] | [.NET][net_remove])
 
     Czasami konieczne jest całkowite usunięcie węzła z puli.
-* **Wyłącz planowanie zadań podrzędnych w węźle** ([REST][rest_offline] | [.NET][net_offline])
+* **Wyłącz planowanie zadań w węźle** ([Rest][rest_offline] | [.NET][net_offline])
 
-    Ta czynność przełącza węzeł w tryb „offline”, aby nie zostały do niego przypisane żadne dalsze zadania podrzędne, ale pozwala na dalsze działanie węzła i jego obecność w puli. Dzięki temu można dalej badać przyczyny błędów bez utraty danych nieudanego zadania, podczas gdy węzeł nie powoduje dodatkowych błędów zadania. Można na przykład wyłączyć planowanie zadań podrzędnych w węźle, a następnie [zalogować się zdalnie](#connecting-to-compute-nodes), aby sprawdzić dzienniki zdarzeń węzła lub wykonać inne operacje związane z rozwiązywaniem problemów. Po zakończeniu sprawdzania można ponownie przełączyć węzeł w tryb online przez włączenie planowania zadań podrzędnych ([REST][rest_online] | [.NET][net_online]) lub wykonać jedną z innych akcji omówionych powyżej.
+    Ta czynność przełącza węzeł w tryb „offline”, aby nie zostały do niego przypisane żadne dalsze zadania podrzędne, ale pozwala na dalsze działanie węzła i jego obecność w puli. Dzięki temu można dalej badać przyczyny błędów bez utraty danych nieudanego zadania, podczas gdy węzeł nie powoduje dodatkowych błędów zadania. Można na przykład wyłączyć planowanie zadań podrzędnych w węźle, a następnie [zalogować się zdalnie](#connecting-to-compute-nodes), aby sprawdzić dzienniki zdarzeń węzła lub wykonać inne operacje związane z rozwiązywaniem problemów. Po zakończeniu badania można przenieść węzeł z powrotem do trybu online, włączając planowanie zadań ([rest][rest_online] | [.NET][net_online]) lub wykonując jedną z innych akcji omówionych wcześniej.
 
 > [!IMPORTANT]
-> Wszystkie akcje opisane w tej sekcji — ponowny rozruch, odtwarzanie z obrazu, usuwanie, wyłączanie planowania zadań podrzędnych — umożliwiają określenie sposobu obsługi zadań podrzędnych uruchomionych aktualnie w węźle podczas wykonywania akcji. Na przykład po wyłączeniu planowania zadań podrzędnych w węźle za pomocą biblioteki klienta platformy .NET w usłudze Batch można określić wartość wyliczeniową [DisableComputeNodeSchedulingOption][net_offline_option], aby wskazać, czy należy **przerwać** uruchomione zadania podrzędne, **umieścić je ponownie w kolejce** do planowania w innych węzłach lub zezwolić na ukończenie uruchomionych zadań przed wykonaniem akcji (**TaskCompletion**).
+> Wszystkie akcje opisane w tej sekcji — ponowny rozruch, odtwarzanie z obrazu, usuwanie, wyłączanie planowania zadań podrzędnych — umożliwiają określenie sposobu obsługi zadań podrzędnych uruchomionych aktualnie w węźle podczas wykonywania akcji. Na przykład po wyłączeniu planowania zadań w węźle przy użyciu biblioteki klienckiej usługi Batch .NET można określić wartość wyliczenia [wartość wyliczeniową disablecomputenodeschedulingoption][net_offline_option] , aby określić, **czy uruchamiać zadania** ponownie w **kolejce** Planowanie w innych węzłach lub zezwalanie na wykonywanie zadań przed wykonaniem akcji (**TaskCompletion**).
 >
 >
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Dowiedz się więcej o [interfejsach API i narzędziach usługi Batch](batch-apis-tools.md) umożliwiających tworzenie rozwiązań usługi Batch.
 * Poznaj podstawy tworzenia aplikacji wykorzystujących usługę Batch za pomocą biblioteki klienta [Batch .NET](quick-run-dotnet.md) lub języka [Python](quick-run-python.md). Te przewodniki Szybki start zawierają omówienie przykładowej aplikacji, która korzysta z usługi Batch do wykonywania obciążenia na wielu węzłach obliczeniowych i stosuje usługę Azure Storage do tymczasowego przechowywania i pobierania pliku obciążenia.
-* Pobierz i zainstaluj narzędzie [Batch Explorer][batch_labs], aby używać go podczas opracowywania rozwiązań usługi Batch. Użyj narzędzia Batch Explorer do tworzenia, debugowania i monitorowania aplikacji usługi Azure Batch. 
-* Zobacz zasoby społeczności: forum [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-batch), [repozytorium społeczności usługi Batch](https://github.com/Azure/Batch) oraz [forum usługi Azure Batch][batch_forum] w witrynie MSDN. 
+* Pobierz i zainstaluj [Batch Explorer][batch_labs] do użycia podczas tworzenia rozwiązań usługi Batch. Użyj narzędzia Batch Explorer do tworzenia, debugowania i monitorowania aplikacji usługi Azure Batch. 
+* Zobacz zasoby społecznościowe, w tym [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-batch), [repozytorium społeczności usługi Batch](https://github.com/Azure/Batch)i [forum Azure Batch][batch_forum] w witrynie MSDN. 
 
 [1]: ./media/batch-api-basics/node-folder-structure.png
 
