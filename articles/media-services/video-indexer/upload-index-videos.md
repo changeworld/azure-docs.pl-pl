@@ -10,35 +10,35 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: e92086ca18887b9b2c2362e97d855c33834b83bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e62eb862cf6d6760ca67b9e948a724b16303e89
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799213"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305638"
 ---
 # <a name="upload-and-index-your-videos"></a>Przekazywanie i indeksowanie plików wideo  
 
-Podczas przekazywania filmów wideo za pomocą interfejsu API indeksatora wideo, masz następujące opcje przekazywania: 
+Podczas przekazywania filmów wideo za pomocą interfejsu API Video Indexer dostępne są następujące opcje przekazywania: 
 
 * przekazywanie pliku wideo z adresu URL (opcja preferowana),
 * wysyłanie pliku wideo w postaci tablicy bajtów w treści żądania,
-* Użyj istniejącego zasobu usługi Azure Media Services, zapewniając [identyfikator elementu zawartości](https://docs.microsoft.com/azure/media-services/latest/assets-concept) (obsługiwane płatne tylko na kontach).
+* Użyj istniejącego elementu zawartości Azure Media Services, podając [Identyfikator elementu zawartości](https://docs.microsoft.com/azure/media-services/latest/assets-concept) (obsługiwane tylko w przypadku płatnych kont).
 
 W tym artykule pokazano, jak za pomocą interfejsu API [przekazywania pliku wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) przekazywać i indeksować pliki wideo na podstawie adresów URL. Przykładowy kod podany w artykule zawiera oznaczony jako komentarz kod, w którym pokazano, jak przekazać tablicę bajtów. <br/>W artykule omówiono też niektóre parametry, które można ustawić w interfejsie API, aby zmieniać przetwarzanie i dane wyjściowe interfejsu API.
 
-Po przekazaniu filmu wideo usługa Video Indexer opcjonalnie koduje wideo (omówionych w artykule). Podczas tworzenia konta w usłudze Video Indexer można wybrać konto bezpłatnej wersji próbnej (w ramach którego otrzymuje się określoną liczbę bezpłatnych minut indeksowania) lub opcję płatną (w przypadku której nie ma ograniczeń przydziału). Usługa Video Indexer w bezpłatnej wersji próbnej udostępnia do 600 minut bezpłatnego indeksowania u użytkowników witryn internetowych oraz do 2400 minut bezpłatnego indeksowania u użytkowników interfejsów API. W przypadku płatnych opcji tworzenia konta Video Indexer, który jest [połączony z subskrypcją platformy Azure oraz konta usługi Azure Media Services](connect-to-azure.md). Naliczane są opłaty za minuty indeksowania, a także opłaty powiązane z kontem usługi Media. 
+Po przekazaniu wideo Video Indexer opcjonalnie koduje wideo (omówione w artykule). Podczas tworzenia konta w usłudze Video Indexer można wybrać konto bezpłatnej wersji próbnej (w ramach którego otrzymuje się określoną liczbę bezpłatnych minut indeksowania) lub opcję płatną (w przypadku której nie ma ograniczeń przydziału). Usługa Video Indexer w bezpłatnej wersji próbnej udostępnia do 600 minut bezpłatnego indeksowania u użytkowników witryn internetowych oraz do 2400 minut bezpłatnego indeksowania u użytkowników interfejsów API. Opcja with płatna umożliwia utworzenie konta Video Indexer, które jest [połączone z subskrypcją platformy Azure i kontem Azure Media Services](connect-to-azure.md). Naliczane są opłaty za minuty indeksowania, a także opłaty powiązane z kontem usługi Media. 
 
 ## <a name="uploading-considerations"></a>Zagadnienia dotyczące przekazywania
 
 - W przypadku przekazywania pliku wideo na podstawie adresu URL (opcja preferowana) punkt końcowy musi być zabezpieczony za pomocą protokołu TLS 1.2 (lub nowszej wersji)
-- Rozmiar przekazywanych za pomocą opcji adres URL jest ograniczona do 30GB
+- Rozmiar przekazywania z adresem URL jest ograniczony do 30 GB
 - Długość adresu URL żądania jest ograniczona do 2048 znaków
-- Rozmiar przekazywanych z opcją tablicy bajtów jest ograniczona do 2GB
-- Opcja tablicy bajtów upłynie limit czasu po 30 min
+- Rozmiar przekazywania z opcją tablicy bajtowej jest ograniczony do 2 GB
+- Opcja tablicy bajtowej jest przekreślania po 30 minutach
 - Adres URL podany w parametrze `videoURL` musi być zakodowany
-- Indeksowanie zasobów usługi Media Services ma takie samo ograniczenie występuje jako indeksowania z adresu URL
-- Indeksator wideo ma limit maksymalny czas trwania pojedynczego pliku w ciągu 4 godzin
+- Indeksowanie Media Services elementów zawartości ma takie samo ograniczenie jak indeksowanie z adresu URL
+- Video Indexer ma maksymalny limit czasu trwania wynoszący 4 godziny dla pojedynczego pliku
 
 > [!Tip]
 > Zalecane jest korzystanie z platformy .NET w wersji 4.6.2. lub nowszej, ponieważ starsze wersje platformy .NET nie obsługują domyślnie protokołu TLS 1.2.
@@ -64,7 +64,7 @@ Adres URL używany do powiadamiania klienta (za pomocą żądania POST) o nastę
         |---|---|
         |id|Identyfikator wideo|
         |state|Stan wideo|  
-    - Przykład: https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
+    - Przykład: https:\//test.com/NotifyMe?projectName=MyProject&ID=1234abcd&State=processed
 - Osoba rozpoznana na filmie wideo:
   - Właściwości
     
@@ -75,7 +75,7 @@ Adres URL używany do powiadamiania klienta (za pomocą żądania POST) o nastę
       |knownPersonId|Identyfikator osoby, unikatowy w ramach danego modelu twarzy|
       |personName|Imię i nazwisko osoby|
         
-    - Przykład: https://test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
+    - Przykład: https:\//test.com/NotifyMe?projectName=MyProject&ID=1234abcd&FaceID=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
 
 #### <a name="notes"></a>Uwagi
 
@@ -92,9 +92,9 @@ Tego parametru należy użyć, jeśli nagrania nieprzetworzone lub zewnętrzne z
 
 Cena zależy od wybranej opcji indeksowania.  
 
-### <a name="priority"></a>priorytet
+### <a name="priority"></a>priority
 
-Usługa Video Indexer indeksuje filmy wideo zgodnie z ich priorytetem. Użyj parametru **priority**, aby określić priorytet indeksu. Następujące wartości są prawidłowe: **Niska**, **normalny** (ustawienie domyślne) i **wysokiej**.
+Usługa Video Indexer indeksuje filmy wideo zgodnie z ich priorytetem. Użyj parametru **priority**, aby określić priorytet indeksu. Następujące wartości są prawidłowe: **Niska**, **normalna** (domyślna) i **wysoka**.
 
 Parametr **priority** jest obsługiwany tylko w przypadku płatnych kont.
 
@@ -289,6 +289,6 @@ Kody stanu wymienione w poniższej tabeli mogą być zwracane przez operację pr
 |400|VIDEO_ALREADY_IN_PROGRESS|Ten sam plik wideo jest już w trakcie przetwarzania w ramach danego konta.|
 |400|VIDEO_ALREADY_FAILED|Tego samego pliku wideo nie udało się przetworzyć w ramach danego konta mniej niż 2 godziny temu. Klienci interfejsu API powinni poczekać co najmniej 2 godziny przed ponownym przekazaniem pliku wideo.|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Sprawdź dane wyjściowe Azure Video Indexer produkowane przez interfejs API](video-indexer-output-json-v2.md)
+[Sprawdzanie danych wyjściowych platformy Azure Video Indexer utworzonych przez interfejs API](video-indexer-output-json-v2.md)

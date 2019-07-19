@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie kontenery mowy
+title: Konfigurowanie kontenerów mowy
 titleSuffix: Azure Cognitive Services
 description: Kontener mowy
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: dapine
-ms.openlocfilehash: 2dd1769d2d0a940176fb51954f44859cb42f30d9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8a8b0e18c1db7a2e2fc08819aa2f2d64d650ded6
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072440"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321365"
 ---
-# <a name="configure-speech-service-containers"></a>Konfigurowanie kontenery usługi mowy
+# <a name="configure-speech-service-containers"></a>Konfigurowanie kontenerów usługi mowy
 
-Kontenery mowy Umożliwiaj klientom tworzenie jednego Architektura aplikacji mowy, zoptymalizowane pod kątem wykorzystać możliwości chmury niezawodne i lokalizacja krawędzi. Kontenery dwóch mowy, firma Microsoft obsługuje teraz są **mowy na tekst** i **zamiany tekstu na mowę**. 
+Kontenery mowy umożliwiają klientom tworzenie jednej architektury aplikacji mowy, która jest zoptymalizowana pod kątem wykorzystania zarówno niezawodnej możliwości chmury, jak i lokalizacji brzegowej. Obsługiwane są teraz dwa kontenery mowy **— Zamiana mowy na tekst** i **Zamiana tekstu na mowę**. 
 
-**Mowy** środowisko uruchomieniowe kontenera jest konfigurowana przy użyciu `docker run` argumenty polecenia. Ten kontener ma wymagane ustawienia, wraz z kilku ustawień opcjonalnych. Kilka [przykłady](#example-docker-run-commands) polecenia są dostępne. Ustawienia specyficzne dla kontenera są ustawienia rozliczeń. 
+Środowisko uruchomieniowe kontenera **mowy** jest konfigurowane przy użyciu `docker run` argumentów polecenia. Ten kontener ma kilka wymaganych ustawień oraz kilka opcjonalnych ustawień. Kilka [przykłady](#example-docker-run-commands) polecenia są dostępne. Ustawienia dotyczące rozliczeń dotyczą tylko kontenera. 
 
 # <a name="configuration-settings"></a>Ustawienia konfiguracji
 
@@ -32,11 +32,11 @@ Kontenery mowy Umożliwiaj klientom tworzenie jednego Architektura aplikacji mow
 
 ## <a name="apikey-configuration-setting"></a>Ustawienie konfiguracji ApiKey
 
-`ApiKey` Ustawienie umożliwia określenie klucza zasobów platformy Azure używane do śledzenia informacji rozliczeniowych dla kontenera. Należy określić wartość dla ApiKey i wartość musi być prawidłowy klucz dla _mowy_ zasób określony dla [ `Billing` ](#billing-configuration-setting) ustawienia konfiguracji.
+`ApiKey` Ustawienie umożliwia określenie klucza zasobów platformy Azure używane do śledzenia informacji rozliczeniowych dla kontenera. Należy określić wartość ApiKey, a wartość musi być prawidłowym kluczem dla zasobu _mowy_ określonego dla [`Billing`](#billing-configuration-setting) ustawienia konfiguracji.
 
-To ustawienie można znaleźć w tym miejscu następujące:
+To ustawienie można znaleźć w następujących miejscach:
 
-* Witryna Azure Portal: **Mowy firmy** zarządzanie zasobami w obszarze **kluczy**
+* Azure Portal: **Zamiana mowy** Zarządzanie zasobami w obszarze **klucze**
 
 ## <a name="applicationinsights-setting"></a>Ustawienie dotycząca usługi Application Insights
 
@@ -44,11 +44,11 @@ To ustawienie można znaleźć w tym miejscu następujące:
 
 ## <a name="billing-configuration-setting"></a>Ustawienie konfiguracji rozliczeń
 
-`Billing` Ustawienie określa identyfikator URI punktu końcowego z _mowy_ zasobów na platformie Azure używane do pomiarów informacji rozliczeniowych dla kontenera. Należy określić wartość dla tego ustawienia konfiguracji, a wartość musi być prawidłowy identyfikator URI punktu końcowego dla _mowy_ zasobów na platformie Azure. Kontener raportów użycia dotyczących co 10 do 15 minut.
+To `Billing` ustawienie określa identyfikator URI punktu końcowego zasobu _mowy_ na platformie Azure używany do mierzenia informacji rozliczeniowych dla kontenera. Należy określić wartość tego ustawienia konfiguracji, a wartość musi być prawidłowym identyfikatorem URI punktu końcowego dla zasobu _mowy_ na platformie Azure. Kontener zgłasza użycie co 10 do 15 minut.
 
-To ustawienie można znaleźć w tym miejscu następujące:
+To ustawienie można znaleźć w następujących miejscach:
 
-* Witryna Azure Portal: **Mowy firmy** Przegląd, etykietą `Endpoint`
+* Azure Portal: **Zamiana mowy** Omówienie, etykieta`Endpoint`
 
 |Wymagane| Name (Nazwa) | Typ danych | Opis |
 |--|------|-----------|-------------|
@@ -62,7 +62,7 @@ To ustawienie można znaleźć w tym miejscu następujące:
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
-## <a name="http-proxy-credentials-settings"></a>Ustawienia poświadczeń serwera proxy HTTP
+## <a name="http-proxy-credentials-settings"></a>Ustawienia poświadczeń serwera proxy http
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
@@ -74,45 +74,45 @@ To ustawienie można znaleźć w tym miejscu następujące:
 
 Użyj powiązania instaluje do odczytu i zapisu danych do i z kontenera. Można określić instalacji danych wejściowych lub wyjściowych instalacji, określając `--mount` opcji [platformy docker, uruchom](https://docs.docker.com/engine/reference/commandline/run/) polecenia.
 
-Kontenery mowy nie używaj danych wejściowych lub danych wyjściowych instaluje do przechowywania szkolenie i usługi danych. 
+Kontenery mowy nie używają instalacji wejścia lub wyjścia do przechowywania danych szkoleniowych lub usług. 
 
 Dokładna składnia lokalizację instalacji hosta różni się zależnie od systemu operacyjnego hosta. Ponadto [komputerze-hoście](speech-container-howto.md#the-host-computer)w lokalizacji instalacji może być niedostępna z powodu konfliktu między uprawnienia użyte dla konta usługi docker i hosta instalacji uprawnienia do lokalizacji. 
 
-|Optional (Opcjonalność)| Name (Nazwa) | Typ danych | Opis |
+|Optional| Name (Nazwa) | Typ danych | Opis |
 |-------|------|-----------|-------------|
-|Niedozwolone| `Input` | String | Kontenery mowy nie należy używać tego.|
-|Optional (Opcjonalność)| `Output` | String | Miejsce docelowe instalacji danych wyjściowych. Wartość domyślna to `/output`. Jest to Lokalizacja dzienników. W tym dzienniki kontenerów. <br><br>Przykład:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Niedozwolone| `Input` | String | Kontenery mowy nie używają tego programu.|
+|Optional| `Output` | String | Miejsce docelowe instalacji danych wyjściowych. Wartość domyślna to `/output`. Jest to Lokalizacja dzienników. Dotyczy to również dzienników kontenerów. <br><br>Przykład:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Przykład platformy docker, Uruchom polecenia 
 
 W poniższych przykładach używane ustawienia konfiguracji, aby zilustrować, jak pisać i użyj `docker run` poleceń.  Po uruchomieniu kontenera będzie działać do momentu [zatrzymać](speech-container-howto.md#stop-the-container) go.
 
-* **Znak kontynuacji wiersza**: Platformy Docker w poniższych sekcjach użyto ukośnika, `\`, jako znak kontynuacji wiersza. Zamień lub Usuń ten na podstawie wymagań systemu operacyjnego hosta. 
-* **Kolejność argumentów**: Nie należy zmieniać kolejność argumentów, jeśli nie znasz bardzo kontenerów platformy Docker.
+* **Znak kontynuacji wiersza**: Polecenia platformy Docker w poniższych sekcjach używają ukośnika odwrotnego `\`, jako znaku kontynuacji wiersza. Zamień lub Usuń ten na podstawie wymagań systemu operacyjnego hosta. 
+* **Kolejność argumentów**: Nie zmieniaj kolejności argumentów, o ile nie znasz już kontenerów platformy Docker.
 
 Zastąp {_argument_name_} własnymi wartościami:
 
 | Symbol zastępczy | Wartość | Format lub przykład |
 |-------------|-------|---|
-|{BILLING_KEY} | Klucz punktu końcowego zasobu mowy. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT_URI} | Rozliczeń wartości punktu końcowego, w tym regionie.|`https://westus.api.cognitive.microsoft.com/sts/v1.0`|
+|{API_KEY} | Klucz interfejsu API zasobu mowy. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|{ENDPOINT_URI} | Wartość punktu końcowego włącznie z regionem.|`https://westus.api.cognitive.microsoft.com/sts/v1.0`|
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, I `ApiKey` opcje muszą być określone w celu uruchomienia kontenera; w przeciwnym razie nie uruchamia się kontener.  Aby uzyskać więcej informacji, zobacz [rozliczeń](#billing-configuration-setting).
-> Wartość ApiKey **klucz** ze strony klucze w usłudze Azure Resource mowy. 
+> Wartość ApiKey jest **kluczem** ze strony klucze zasobów usługi Azure Speech. 
 
-## <a name="speech-container-docker-examples"></a>Przykłady Docker container mowy
+## <a name="speech-container-docker-examples"></a>Przykłady platformy Docker kontenera mowy
 
-Są w poniższych przykładach platformy Docker dla kontenera mowy. 
+Poniższe przykłady platformy Docker dotyczą kontenera mowy. 
 
-### <a name="basic-example-for-speech-to-text"></a>Podstawowy przykład mowy na tekst
+### <a name="basic-example-for-speech-to-text"></a>Podstawowy przykład zamiany mowy na tekst
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 \
 containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}   
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 ```
 
 ### <a name="basic-example-for-text-to-speech"></a>Podstawowy przykład zamiany tekstu na mowę
@@ -121,32 +121,32 @@ ApiKey={BILLING_KEY}
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 \
 containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}  
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 ```
 
-### <a name="logging-example-for-speech-to-text"></a>Rejestrowanie przykład mowy na tekst
+### <a name="logging-example-for-speech-to-text"></a>Przykład rejestrowania dla zamiany mowy na tekst
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 \
 containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}   
-  Logging:Console:LogLevel:Default=Information
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY} \
+Logging:Console:LogLevel:Default=Information
 ```
 
-### <a name="logging-example-for-text-to-speech"></a>Rejestrowanie przykład zamiany tekstu na mowę
+### <a name="logging-example-for-text-to-speech"></a>Przykład rejestrowania dla zamiany tekstu na mowę
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 \
 containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}  
-  Logging:Console:LogLevel:Default=Information
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY} \
+Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Przegląd [sposobu instalowania i uruchamiania kontenerów](speech-container-howto.md)

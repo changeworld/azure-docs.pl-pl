@@ -1,6 +1,6 @@
 ---
-title: Ustawienia zasad dla zapory aplikacji sieci web za pomocą usługi Azure drzwi
-description: Dowiedz się, zapory aplikacji sieci web (WAF).
+title: Ustawienia zasad zapory aplikacji sieci Web z usługami frontonu platformy Azure
+description: Poznaj zaporę aplikacji sieci Web (WAF).
 services: frontdoor
 author: KumudD
 ms.service: frontdoor
@@ -9,50 +9,51 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2019
-ms.author: tyao;kumud
-ms.openlocfilehash: 4c2f070e9b3c972f063008df8880b196ddb069cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: 8f51cb6944221416b098a9b953db417053155f1e
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61459372"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849103"
 ---
-# <a name="policy-settings-for-web-application-firewall-with-azure-front-door"></a>Ustawienia zasad dla zapory aplikacji sieci web za pomocą usługi Azure drzwi
+# <a name="policy-settings-for-web-application-firewall-with-azure-front-door"></a>Ustawienia zasad zapory aplikacji sieci Web z usługami frontonu platformy Azure
 
-Zasady zapory aplikacji sieci Web (WAF) umożliwia kontrolowanie dostępu do aplikacji sieci web przez zestaw reguł niestandardowych i zarządzane. Nazwa zasad zapory aplikacji sieci Web musi być unikatowa. Zostanie wyświetlony błąd sprawdzania poprawności, Jeśli spróbujesz użyć istniejącej nazwy. Istnieje wiele ustawień poziomu zasad, które są stosowane do wszystkich reguł określone dla tej zasady, zgodnie z opisem w tym artykule.
+Zasady zapory aplikacji sieci Web (WAF) umożliwiają kontrolowanie dostępu do aplikacji sieci Web za pomocą zestawu niestandardowych i zarządzanych reguł. Nazwa zasad WAF musi być unikatowa. Jeśli spróbujesz użyć istniejącej nazwy, zostanie wyświetlony błąd walidacji. Istnieje wiele ustawień poziomu zasad, które mają zastosowanie do wszystkich reguł określonych dla tych zasad, zgodnie z opisem w tym artykule.
 
-## <a name="waf-state"></a>Stan zapory aplikacji sieci Web
+## <a name="waf-state"></a>Stan WAF
 
-Zasady zapory aplikacji sieci Web drzwiami frontowymi może być w jednym z następujących dwóch stanów:
-- **Włączone:** Po włączeniu zasady zapory aplikacji sieci Web jest aktywnie sprawdzanie żądań przychodzących i pobiera odpowiednie działania zgodnie z definicjami reguł
-- **Wyłączone:** — w przypadku zasad jest wyłączona, zapory aplikacji sieci Web kontroli zostało wstrzymane. Przychodzące żądania pomijał zapory aplikacji sieci Web i są wysyłane do zaplecza, oparte na wejściu routingu.
+Zasady WAFymi dla drzwi przednich mogą znajdować się w jednym z następujących dwóch stanów:
+- **Dostępny** Gdy zasady są włączone, WAF aktywnie bada żądania przychodzące i podejmuje odpowiednie działania zgodnie z definicjami reguł
+- **Wyłączone:** — gdy zasady są wyłączone, inspekcja WAF jest wstrzymana. Żądania przychodzące spowodują obejście WAF i są wysyłane do zaplecza na podstawie routingu przed drzwiami.
 
-## <a name="waf-mode"></a>Tryb zapory aplikacji sieci Web
+## <a name="waf-mode"></a>Tryb WAF
 
-Zasady zapory aplikacji sieci Web można skonfigurować do uruchamiania w następujących dwóch trybach:
+Zasady WAF można skonfigurować tak, aby były uruchamiane w następujących dwóch trybach:
 
-- **Tryb wykrywania** uruchomiony w trybie wykrywania, zapory aplikacji sieci Web nie akcje inne niż monitora i logowania żądanie i jego dopasowane reguły zapory aplikacji sieci Web do dzienników zapory aplikacji sieci Web. Włącz rejestrowanie danych diagnostycznych dla drzwiami frontowymi (przy użyciu portalu, można to osiągnąć, przechodząc do **diagnostyki** sekcji w witrynie Azure portal).
+- **Tryb wykrywania** Po uruchomieniu w trybie wykrywania WAF nie przyjmuje żadnych akcji innych niż Monitor i rejestruje żądanie i dopasowaną regułę WAF do dzienników WAF. Włącz diagnostykę rejestrowania dla drzwi z przodu (w przypadku korzystania z portalu można to osiągnąć, przechodząc do sekcji **Diagnostyka** w Azure Portal).
 
-- **Tryb zapobiegania** po skonfigurowaniu do pracy w trybie zapobiegania zapory aplikacji sieci Web ma określoną akcję, jeśli żądanie jest zgodny z regułą. Wszelkie żądania dopasowane również są rejestrowane w dziennikach zapory aplikacji sieci Web.
+- **Tryb zapobiegania** Gdy program jest skonfigurowany do uruchamiania w trybie zapobiegania, WAF wykonuje określoną akcję, jeśli żądanie jest zgodne z regułą. Wszystkie dopasowane żądania są również rejestrowane w dziennikach WAF.
 
-## <a name="waf-response-for-blocked-requests"></a>Zapora aplikacji sieci Web odpowiedź zablokowane żądania
+## <a name="waf-response-for-blocked-requests"></a>WAF odpowiedź dla zablokowanych żądań
 
-Domyślnie blokowaniu przez zaporę aplikacji sieci Web żądania z powodu dopasowane reguły zwraca kod stanu 403 z - **żądania jest zablokowany** wiadomości. Ciąg odwołania jest także zwracany do rejestrowania.
+Domyślnie, gdy WAF blokuje żądanie ze względu na dopasowaną regułę, zwraca kod stanu 403 z- **żądanie jest zablokowane** . Ciąg odwołania jest również zwracany do rejestrowania.
 
-Gdy żądanie jest blokowany przez zaporę aplikacji sieci Web można zdefiniować kod stanu odpowiedzi niestandardowych i komunikatu odpowiedzi. Następujące kody stanu niestandardowe są obsługiwane:
+Można zdefiniować niestandardowy kod stanu odpowiedzi i komunikat odpowiedzi, gdy żądanie jest blokowane przez WAF. Obsługiwane są następujące niestandardowe kody stanu:
 
-- 200    OK
-- 403 Zabroniony
+- 200 OK
+- 403 Zabronione
 - Metoda 405 nie jest dozwolona
-- 406 Nie dopuszczalne
+- 406 nie akceptowalny
 - 429 zbyt wiele żądań
 
-Niestandardowe odpowiedzi kodu i odpowiedź komunikatu o stanie jest ustawienie poziomie zasad. Po skonfigurowaniu, wszystkie zablokowane żądania uzyskać samą stanu odpowiedzi niestandardowych i komunikatu odpowiedzi.
+Niestandardowy kod stanu odpowiedzi i komunikat odpowiedzi są ustawieniem poziomu zasad. Po jego skonfigurowaniu wszystkie zablokowane żądania otrzymują ten sam niestandardowy stan odpowiedzi i komunikat odpowiedzi.
 
-## <a name="uri-for-redirect-action"></a>Identyfikator URI przekierowania akcji
+## <a name="uri-for-redirect-action"></a>Identyfikator URI akcji przekierowania
 
-Konieczne jest określenie identyfikatora URI przekierowywania żądań do if **PRZEKIEROWANIA** wybrano akcję dla każdej z zasad zawartych w zasadach zapory aplikacji sieci Web. Przekierowanie to identyfikator URI musi być prawidłową witryną HTTP (S), a po skonfigurowaniu, wszystkie żądania reguł dopasowania za pomocą akcji "PRZEKIERUJ" nastąpi przekierowanie do określonej lokacji.
+Musisz zdefiniować identyfikator URI, aby przekierować żądania do, jeśli wybrano akcję **przekierowania** dla dowolnej reguły zawartej w zasadach WAF. Ten identyfikator URI przekierowania musi być prawidłową lokacją HTTP (S) i po skonfigurowaniu wszystkie żądania zgodne z akcją "REDIRECT" zostaną przekierowane do określonej lokacji.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się, jak zdefiniować zapory aplikacji sieci Web [odpowiedzi niestandardowych](waf-front-door-configure-custom-response-code.md)
+- Dowiedz się, jak definiować [odpowiedzi niestandardowe](waf-front-door-configure-custom-response-code.md) WAF

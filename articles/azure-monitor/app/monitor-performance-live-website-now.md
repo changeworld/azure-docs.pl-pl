@@ -1,6 +1,6 @@
 ---
 title: Monitorowanie działającej aplikacji internetowej platformy ASP.NET za pomocą usługi Application Insights | Microsoft Docs
-description: Monitorowanie wydajności witryny sieci Web bez jej ponownego wdrażania. Współpracuje z ASP.NET sieci web aplikacji hostowanych lokalnie lub na maszynach wirtualnych.
+description: Monitorowanie wydajności witryny sieci Web bez jej ponownego wdrażania. Współpracuje z usługą ASP.NET Web Apps hostowaną lokalnie lub na maszynach wirtualnych.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -12,33 +12,34 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: mbullwin
-ms.openlocfilehash: 6ad2ab00060528557f618eb684ccfa710c3f09b9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ea324d616928b0d517c00dc9cab3e282f1e3415e
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074175"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876434"
 ---
-# <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>Instrumentacja aplikacji sieci web w czasie wykonywania za pomocą Monitora stanu usługi Application Insights
+# <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Instrumentacja aplikacji sieci Web w środowisku uruchomieniowym z dołączaniem bez kodu Application Insights
 
 Możliwe jest instrumentowanie działającej aplikacji internetowej za pomocą usługi Azure Application Insights bez konieczności modyfikowania kodu ani jego ponownego wdrażania. Potrzebna jest subskrypcja platformy [Microsoft Azure](https://azure.com).
 
-Monitor stanu jest używany do instrumentacji aplikacji .NET hostowanych w usługach IIS lokalnie lub na maszynie wirtualnej.
+Monitor stanu służy do Instrumentacji aplikacji .NET hostowanej w usługach IIS lokalnie lub na maszynie wirtualnej.
 
-- Jeśli Twoja aplikacja jest wdrożona w usłudze Azure app services, postępuj zgodnie z [w instrukcjach](azure-web-apps.md).
-- Jeśli Twoja aplikacja jest wdrożona w Maszynie wirtualnej platformy Azure, możesz przełączyć się na monitorowanie usługi Application Insights z poziomu Panelu sterowania platformy Azure.
-- (Istnieją także osobne artykuły na temat Instrumentacji [usług Azure Cloud Services](../../azure-monitor/app/cloudservices.md).)
+- Jeśli aplikacja jest wdrażana na maszynie wirtualnej platformy Azure lub w zestawie skalowania maszyn wirtualnych platformy Azure, wykonaj [te instrukcje](azure-vm-vmss-apps.md).
+- Jeśli Twoja aplikacja jest wdrożona w usłudze Azure App Services, wykonaj [te instrukcje](azure-web-apps.md).
+- Jeśli aplikacja jest wdrożona na maszynie wirtualnej platformy Azure, możesz przełączyć się na Application Insights monitorowanie z poziomu panelu sterowania platformy Azure.
+- (Istnieją również osobne artykuły na temat Instrumentacji [Cloud Services platformy Azure](../../azure-monitor/app/cloudservices.md)).
 
 
 ![Zrzut ekranu usługi App Insights — Omówienie wykresów zawierających informacje dotyczące żądań zakończonych niepowodzeniem, czas odpowiedzi serwera i żądań serwera](./media/monitor-performance-live-website-now/overview-graphs.png)
 
-Dostępne są dwie trasy zastosowania usługi Application Insights do aplikacji sieci web platformy .NET:
+Dostępne są dwie trasy do zastosowania Application Insights do aplikacji sieci Web platformy .NET:
 
-* **Czas kompilacji:** [Dodaj zestaw Application Insights SDK] [ greenbrown] do kodu aplikacji sieci web.
-* **Czas wykonywania:** Instrumentacja aplikacji sieci web na serwerze, zgodnie z opisem poniżej, bez ponownego kompilowania lub wdrażania kodu.
+* **Czas kompilacji:** [Dodaj zestaw Application Insights SDK][greenbrown] do kodu aplikacji sieci Web.
+* **Czas wykonywania:** Instrumentacja aplikacji sieci Web na serwerze, jak opisano poniżej, bez konieczności odbudowywania i ponownego wdrożenia kodu.
 
 > [!NOTE]
-> Jeśli używasz Instrumentacja w czasie kompilacji, należy uruchomić razem, gdy Instrumentacji nie będzie działać nawet wtedy, gdy jest włączona.
+> W przypadku korzystania z Instrumentacji czasu kompilacji program nie będzie działać nawet wtedy, gdy jest włączony.
 
 Poniżej przedstawiono podsumowanie tego, co można uzyskać, korzystając z danej trasy:
 
@@ -47,8 +48,8 @@ Poniżej przedstawiono podsumowanie tego, co można uzyskać, korzystając z dan
 | Żądania i wyjątki |Yes |Yes |
 | [Bardziej szczegółowe wyjątki](../../azure-monitor/app/asp-net-exceptions.md) | |Yes |
 | [Diagnostyka zależności](../../azure-monitor/app/asp-net-dependencies.md) |Na platformie .NET 4.6 +, ale mniej szczegółów |Tak, kompletne szczegóły: kody wyników, tekst polecenia SQL, czasownik HTTP|
-| [Liczniki wydajności sytemu](../../azure-monitor/app/performance-counters.md) |Yes |Yes |
-| [Interfejs API dla telemetrii niestandardowej][api] |Yes |Nie |
+| [Liczniki wydajności sytemu](../../azure-monitor/app/performance-counters.md) |Yes |Tak |
+| [Interfejs API dla telemetrii niestandardowej][api] |Tak |Nie |
 | [Integracja dziennika śledzenia](../../azure-monitor/app/asp-net-trace-logs.md) |Yes |Nie |
 | [Widok strony i dane użytkownika](../../azure-monitor/app/javascript.md) |Yes |Nie |
 | Konieczność ponownej kompilacji kodu |Yes | Nie |
@@ -60,10 +61,10 @@ Poniżej przedstawiono podsumowanie tego, co można uzyskać, korzystając z dan
 Jeśli aplikacja jest hostowana na serwerze usług IIS, włącz usługę Application Insights przy użyciu monitora stanu.
 
 1. Zaloguj się na serwerze sieci Web usług IIS, używając poświadczeń administratora.
-2. Jeśli Monitor stanu usługi Application Insights nie jest już zainstalowany, [Pobierz i uruchom Instalatora](#download)
+2. Jeśli monitor stanu usługi Application Insights nie został jeszcze zainstalowany, [pobierz i uruchom instalatora](#download).
 3. W monitorze stanu wybierz zainstalowaną aplikację internetową lub witrynę internetową, którą chcesz monitorować. Zaloguj się przy użyciu poświadczeń platformy Azure.
 
-    Skonfiguruj zasób, w którym mają być wyświetlane wyniki w portalu usługi Application Insights. (Zazwyczaj najlepiej jest utworzyć nowy zasób. Wybierz istniejący zasób, jeśli masz już [testy sieci Web][availability] lub [monitorowanie klienta][client] dla tej aplikacji). 
+    Skonfiguruj zasób, w którym mają być wyświetlane wyniki w portalu usługi Application Insights. (Zazwyczaj najlepiej jest utworzyć nowy zasób. Wybierz istniejący zasób, jeśli masz już or [client monitoring][client] [testy sieci Web][availability] dla tej aplikacji. 
 
     ![Wybór aplikacji i zasobu.](./media/monitor-performance-live-website-now/appinsights-036-configAIC.png)
 
@@ -79,7 +80,7 @@ Włączenie usługi Application Insights powoduje dodanie plików DLL i pliku Ap
 
 ## <a name="when-you-re-publish-your-app-re-enable-application-insights"></a>Po ponownym opublikowaniu aplikacji ponownie włącz usługę Application Insights
 
-Przed ponownym opublikowaniem aplikacji rozważ [dodanie usługi Application Insights do kodu w programie Visual Studio][greenbrown]. Uzyskasz bardziej szczegółowe dane telemetryczne oraz możliwość zapisywania niestandardowych danych telemetrycznych.
+Przed ponownym opublikowaniem aplikacji Rozważ [dodanie Application Insights do kodu w programie Visual Studio][greenbrown]. Uzyskasz bardziej szczegółowe dane telemetryczne oraz możliwość zapisywania niestandardowych danych telemetrycznych.
 
 Jeśli chcesz ponownie przeprowadzić publikację bez dodawania usługi Application Insights do kodu, pamiętaj, że proces wdrażania może spowodować usunięcie plików DLL i pliku Application Insights z opublikowanej witryny sieci Web. Zatem:
 
@@ -91,18 +92,18 @@ Jeśli chcesz ponownie przeprowadzić publikację bez dodawania usługi Applicat
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
-### <a name="confirm-a-valid-installation"></a>Upewnij się, prawidłowej instalacji 
+### <a name="confirm-a-valid-installation"></a>Potwierdź prawidłową instalację 
 
-Oto kilka kroków, które należy wykonać, aby potwierdzić, że Twoja instalacja zakończyła się pomyślnie.
+Oto kilka kroków, które można wykonać, aby upewnić się, że instalacja zakończyła się pomyślnie.
 
-- Upewnij się, że plik applicationInsights.config znajduje się w katalogu aplikacji docelowej i zawiera ikey.
+- Upewnij się, że plik applicationInsights. config znajduje się w docelowym katalogu aplikacji i zawiera iKey.
 
-- Jeśli podejrzewasz, że brakuje danych można uruchomić proste zapytanie [Analytics](../log-query/get-started-portal.md) Aby wyświetlić listę wszystkich ról chmura obecnie wysyłania danych telemetrycznych.
+- Jeśli podejrzewasz, że brakuje danych, możesz uruchomić proste zapytanie w [analizie](../log-query/get-started-portal.md) , aby wyświetlić listę wszystkich ról w chmurze aktualnie wysyłających dane telemetryczne.
   ```Kusto
   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
   ```
 
-- Jeśli potrzebujesz upewnić się, że usługa Application Insights jest pomyślnie dołączono można uruchomić [uchwyt Sysinternals](https://docs.microsoft.com/sysinternals/downloads/handle) za pomocą polecenia okna, aby upewnić się, że applicationinsights.dll został załadowany przez usługi IIS.
+- Jeśli musisz potwierdzić, że Application Insights został pomyślnie dołączony, możesz uruchomić [uchwyt Sysinternals](https://docs.microsoft.com/sysinternals/downloads/handle) w oknie polecenia, aby potwierdzić, że ApplicationInsights. dll został załadowany przez usługi IIS.
   ```cmd
   handle.exe /p w3wp.exe
   ```
@@ -112,19 +113,19 @@ Oto kilka kroków, które należy wykonać, aby potwierdzić, że Twoja instalac
 
 * Aby umożliwić działanie monitora stanu, na zaporze serwera otwórz [wymagane porty wychodzące](../../azure-monitor/app/ip-addresses.md#outgoing-ports).
 
-### <a name="unable-to-login"></a>Nie można się zalogować
+### <a name="unable-to-login"></a>Nie można zalogować
 
-* Jeśli Monitor stanu nie mogą się zalogować, należy instalować wiersza polecenia zamiast tego. Monitor stanu próbuje zalogować się do zbierania z klucza ikey, ale można zapewnić to ręcznie przy użyciu polecenia:
+* Jeśli monitor stanu nie może się zalogować, zamiast tego należy zainstalować wiersz polecenia. Monitor stanu próbuje zalogować się, aby zebrać iKey, ale można je podać ręcznie przy użyciu polecenia:
 
 ```powershell
 Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'
 Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-000-000-000-0000000
 ```
 
-### <a name="could-not-load-file-or-assembly-systemdiagnosticsdiagnosticsource"></a>Nie można załadować pliku lub zestawu "System.Diagnostics.DiagnosticSource"
+### <a name="could-not-load-file-or-assembly-systemdiagnosticsdiagnosticsource"></a>Nie można załadować pliku lub zestawu "System. Diagnostics. DiagnosticSource"
 
-Ten błąd może wystąpić po włączeniu usługi Application Insights. Jest to spowodowane Instalator zastępuje tę bibliotekę dll w katalogu bin.
-Aby naprawić aktualizacji z pliku web.config:
+Ten błąd może wystąpić po włączeniu Application Insights. Wynika to z faktu, że Instalator zastępuje tę bibliotekę DLL w katalogu bin.
+Aby naprawić plik Web. config:
 
 ```xml
 <dependentAssembly>
@@ -133,10 +134,10 @@ Aby naprawić aktualizacji z pliku web.config:
 </dependentAssembly>
 ```
 
-Śledzimy ten problem [tutaj](https://github.com/Microsoft/ApplicationInsights-Home/issues/301).
+[Tutaj](https://github.com/Microsoft/ApplicationInsights-Home/issues/301)śledzimy ten problem.
 
 
-### <a name="application-diagnostic-messages"></a>Komunikaty diagnostyczne dla aplikacji
+### <a name="application-diagnostic-messages"></a>Komunikaty diagnostyczne aplikacji
 
 * Otwórz monitor stanu i wybierz swoją aplikację w lewym okienku. Sprawdź, czy w sekcji „Powiadomienia konfiguracyjne” występują komunikaty diagnostyczne dotyczące tej aplikacji:
 
@@ -144,12 +145,12 @@ Aby naprawić aktualizacji z pliku web.config:
   
 ### <a name="detailed-logs"></a>Szczegółowe dzienniki
 
-* Domyślnie Monitor stanu zwróci dzienniki diagnostyczne na: `C:\Program Files\Microsoft Application Insights\Status Monitor\diagnostics.log`
+* Domyślnie monitor stanu dane wyjściowe dzienników diagnostycznych znajdują się w:`C:\Program Files\Microsoft Application Insights\Status Monitor\diagnostics.log`
 
-* W danych wyjściowych pełne dzienniki, zmodyfikuj plik konfiguracji: `C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config` i Dodaj `<add key="TraceLevel" value="All" />` do `appsettings`.
-Następnie należy ponownie uruchomić monitor stanu.
+* Aby wyprowadzić pełne dzienniki, zmodyfikuj plik konfiguracji: `C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config` i Dodaj `<add key="TraceLevel" value="All" />` do `appsettings`.
+Następnie uruchom ponownie Monitor stanu.
 
-* Monitor stanu jest aplikacji .NET można również włączyć [śledzenia .net, dodając odpowiednie diagnostyki do pliku config](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element). Na przykład w niektórych scenariuszach może być przydatne zobaczyć, co dzieje się na poziomie sieci przez [Konfigurowanie śledzenia sieci](https://docs.microsoft.com/dotnet/framework/network-programming/how-to-configure-network-tracing)
+* Jako monitor stanu jest aplikacją platformy .NET, można również włączyć [śledzenie .NET, dodając odpowiednią diagnostykę do pliku konfiguracji](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element). Na przykład w niektórych scenariuszach może być przydatne, aby zobaczyć, co dzieje się na poziomie sieci przez [skonfigurowanie śledzenia sieci](https://docs.microsoft.com/dotnet/framework/network-programming/how-to-configure-network-tracing)
 
 ### <a name="insufficient-permissions"></a>Niewystarczające uprawnienia
   
@@ -157,25 +158,25 @@ Następnie należy ponownie uruchomić monitor stanu.
   * W Menedżerze usług IIS wybierz pulę aplikacji, otwórz **Ustawienia zaawansowane** i zapamiętaj tożsamość w obszarze **Model procesu**.
   * W panelu sterowania Zarządzanie komputerem dodaj tę tożsamość do grupy Użytkownicy monitora wydajności.
 
-### <a name="conflict-with-systems-center-operations-manager"></a>Konflikt z programem Systems Center Operations Manager
+### <a name="conflict-with-systems-center-operations-manager"></a>Konflikt z centrum systemów Operations Manager
 
 * Jeśli na serwerze jest zainstalowany agent MMA/SCOM (Systems Center Operations Manager), niektóre wersje mogą powodować konflikt. Odinstaluj oprogramowanie SCOM i monitor stanu, a następnie ponownie zainstaluj najnowsze wersje.
 
-### <a name="failed-or-incomplete-installation"></a>Nie powiodło się lub niekompletnej instalacji
+### <a name="failed-or-incomplete-installation"></a>Instalacja zakończona niepowodzeniem lub nieukończona
 
-Jeśli Monitor stanu zakończy się niepowodzeniem podczas instalacji, może się pozostać instalację niekompletne, który Monitor stanu nie jest w stanie odzyskać z. Będzie to wymagało resetowania ręcznego.
+Jeśli monitor stanu nie powiedzie się w trakcie instalacji, możesz pozostać z niekompletną instalacją, której monitor stanu nie można odzyskać z programu. Spowoduje to wymaganie resetowania ręcznego.
 
-Usuń wszystkie te pliki w katalogu aplikacji:
-- Każdej biblioteki dll w katalogu bin, począwszy od albo "Microsoft.AI". lub "Microsoft.ApplicationInsights.".
-- Ta biblioteka DLL w katalogu bin "Microsoft.Web.Infrastructure.dll"
-- Ta biblioteka DLL w katalogu bin "System.Diagnostics.DiagnosticSource.dll"
+Usuń dowolne z tych plików znajdujących się w katalogu aplikacji:
+- Wszystkie biblioteki DLL w katalogu bin zaczynają się od "Microsoft.AI". lub "Microsoft. ApplicationInsights.".
+- Ta biblioteka DLL w katalogu bin "Microsoft. Web. Infrastructure. dll"
+- Ta biblioteka DLL w katalogu bin "System. Diagnostics. DiagnosticSource. dll"
 - W katalogu aplikacji Usuń "App_Data\packages"
-- W katalogu aplikacji Usuń "w pliku applicationinsights.config"
+- W katalogu aplikacji Usuń plik "ApplicationInsights. config"
 
 
 ### <a name="additional-troubleshooting"></a>Dodatkowe procedury rozwiązywania problemów
 
-* Zobacz dodatkowe [Rozwiązywanie problemów z][qna].
+* Zobacz dodatkowe [Rozwiązywanie problemów][qna].
 
 ## <a name="system-requirements"></a>Wymagania systemowe
 Serwerowe systemy operacyjne obsługiwane przez monitor stanu usługi Application Insights:
@@ -186,11 +187,11 @@ Serwerowe systemy operacyjne obsługiwane przez monitor stanu usługi Applicatio
 * Windows Server 2012 R2
 * Windows Server 2016
 
-z najnowszym dodatkiem SP oraz .NET Framework 4.5 (Monitora stanu jest wbudowany w ramach tej wersji)
+z najnowszymi SP i .NET Framework 4,5 (monitor stanu jest oparta na tej wersji platformy)
 
-Po stronie klienta: Windows 7, 8, 8.1 i 10, ponownie przy użyciu programu .NET Framework 4.5
+Po stronie klienta: Windows 7, 8, 8,1 i 10, ponownie z .NET Framework 4,5
 
-Obsługa usług IIS jest: Usługi IIS 7, 7.5, 8, 8.5 (usługi IIS są wymagane)
+Obsługa usług IIS: IIS 7, 7,5, 8, 8,5 (wymagane są usługi IIS)
 
 ## <a name="automation-with-powershell"></a>Automatyzacja przy użyciu programu PowerShell
 Monitorowanie można uruchomić i zatrzymać przy użyciu programu PowerShell na serwerze usług IIS.
@@ -207,9 +208,9 @@ Dowiedz się, które aplikacje są monitorowane:
 * Wyświetla stan monitorowania usługi Application Insights dla każdej (lub wskazanej z nazwy) aplikacji internetowej na tym serwerze usług IIS.
 * Zwraca obiekt `ApplicationInsightsApplication` dla każdej aplikacji:
 
-  * `SdkState==EnabledAfterDeployment`: Aplikacja jest monitorowana, a Instrumentacja została przeprowadzona w czasie wykonywania za pomocą narzędzia Monitor stanu lub przez `Start-ApplicationInsightsMonitoring`.
-  * `SdkState==Disabled`: Nie ma instrumentacji aplikacji dla usługi Application Insights. Instrumentacja nie została nigdy przeprowadzona albo monitorowanie czasu wykonywania zostało wyłączone za pomocą monitora stanu lub polecenia `Stop-ApplicationInsightsMonitoring`.
-  * `SdkState==EnabledByCodeInstrumentation`: Wykonano Instrumentację aplikacji przez dodanie zestawu SDK do kodu źródłowego. Nie można zaktualizować ani zatrzymać tego zestawu SDK.
+  * `SdkState==EnabledAfterDeployment`: Aplikacja jest monitorowana i była Instrumentacją w czasie wykonywania za pomocą narzędzia monitor stanu lub przez `Start-ApplicationInsightsMonitoring`program.
+  * `SdkState==Disabled`: Aplikacja nie ma Instrumentacji dla Application Insights. Instrumentacja nie została nigdy przeprowadzona albo monitorowanie czasu wykonywania zostało wyłączone za pomocą monitora stanu lub polecenia `Stop-ApplicationInsightsMonitoring`.
+  * `SdkState==EnabledByCodeInstrumentation`: Aplikacja była Instrumentacją przez dodanie zestawu SDK do kodu źródłowego. Nie można zaktualizować ani zatrzymać tego zestawu SDK.
   * Zestaw `SdkVersion` wyświetla wersję używaną do monitorowania tej aplikacji.
   * Zestaw `LatestAvailableSdkVersion` wyświetla wersję aktualnie dostępną w galerii NuGet. Aby uaktualnić aplikację do tej wersji, użyj polecenia `Update-ApplicationInsightsMonitoring`.
 
@@ -242,7 +243,7 @@ Dowiedz się, które aplikacje są monitorowane:
 
 `Update-ApplicationInsightsMonitoring -Name appName [-InstrumentationKey "0000000-0000-000-000-0000"`]
 
-* `-Name`: Nazwa aplikacji sieci web w usługach IIS.
+* `-Name`: Nazwa aplikacji sieci Web w usługach IIS.
 * `-InstrumentationKey` (opcjonalnie). umożliwia zmianę zasobu, do którego wysyłana jest telemetria aplikacji.
 * To polecenie cmdlet:
   * Uaktualnia wskazaną aplikację do ostatniej wersji zestawu SDK pobranej na ten komputer. (Działa tylko wtedy, gdy `SdkState==EnabledAfterDeployment`)
@@ -280,7 +281,7 @@ Po wybraniu aplikacji internetowej do instrumentacji za pomocą monitora stanu:
 
 Aktualnie Monitora stanu można zainstalować tylko zestaw SDK usługi Application Insights w wersji 2.3 lub 2.4. 
 
-Application Insights SDK wersji 2.4 jest [ostatniej wersji do działu pomocy technicznej programu .NET 4.0](https://github.com/microsoft/ApplicationInsights-dotnet/releases/tag/v2.5.0-beta1) co było [EOL stycznia 2016 roku](https://devblogs.microsoft.com/dotnet/support-ending-for-the-net-framework-4-4-5-and-4-5-1/). Dlatego teraz Monitor stanu może służyć do instrumentacji aplikacji .NET 4.0. 
+Zestaw SDK Application Insights w wersji 2,4 to [Ostatnia wersja do obsługi platformy .net 4,0](https://github.com/microsoft/ApplicationInsights-dotnet/releases/tag/v2.5.0-beta1) , która była [EOL stycznia 2016](https://devblogs.microsoft.com/dotnet/support-ending-for-the-net-framework-4-4-5-and-4-5-1/). W związku z tym obecnie monitor stanu mogą służyć do instrumentowania aplikacji .NET 4,0. 
 
 ### <a name="do-i-need-to-run-status-monitor-whenever-i-update-the-app"></a>Czy monitor stanu należy uruchamiać podczas każdej aktualizacji aplikacji?
 
@@ -309,10 +310,11 @@ W przypadku aplikacji już instrumentowanych w czasie kompilacji:
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
-## <a name="download"></a>Pobierz Monitor stanu
+## <a name="download"></a>Pobierz monitor stanu
 
-- Pobierz i uruchom [Instalator Monitora stanu](https://go.microsoft.com/fwlink/?LinkId=506648)
-- Lub uruchom [Instalatora platformy sieci Web](https://www.microsoft.com/web/downloads/platform.aspx) i wyszukaj w nim Monitor stanu usługi Application Insights.
+- Użyj nowego [modułu programu PowerShell](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)
+- Pobieranie i uruchamianie [instalatora Monitor stanu](https://go.microsoft.com/fwlink/?LinkId=506648)
+- Lub uruchom [Instalatora platformy sieci Web](https://www.microsoft.com/web/downloads/platform.aspx) i wyszukaj go, aby uzyskać Monitor stanu usługi Application Insights.
 
 ## <a name="next"></a>Następne kroki
 
@@ -324,9 +326,9 @@ Wyświetlanie telemetrii:
 
 Dodawanie kolejnych funkcji telemetrii:
 
-* [Tworzenie testów sieci Web][availability], aby upewnić się, że witryna pozostaje aktywna.
-* [Dodawanie telemetrii klienta sieci Web][usage], aby zobaczyć wyjątki pochodzące z kodu strony sieci Web i umożliwić wstawianie wywołań śladu.
-* [Dodawanie zestawu SDK usługi Application Insights do kodu][greenbrown], aby móc wstawić ślad i rejestrować wywołania.
+* [Utwórz testy sieci Web][availability] , aby upewnić się, że witryna pozostaje aktywna.
+* [Dodaj telemetrię klienta sieci Web][usage] , aby zobaczyć wyjątki z kodu strony sieci Web i umożliwić Wstawianie wywołań śledzenia.
+* [Dodaj Application INSIGHTS SDK do kodu][greenbrown] , aby móc wstawiać śledzenie i rejestrowanie wywołań
 
 <!--Link references-->
 

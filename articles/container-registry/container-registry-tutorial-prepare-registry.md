@@ -3,17 +3,18 @@ title: Samouczek — tworzenie rejestru platformy Docker z replikacją geografic
 description: Tworzenie rejestru kontenerów platformy Azure, konfigurowanie replikacji geograficznej, przygotowanie obrazu platformy Docker i wdrożenie go w rejestrze. Pierwsza część trzyczęściowej serii.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 04/30/2017
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 7aec257335e3380fa99669c1191ee89857ec975d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 87746bd39e624699612bf5221258ad757cd462b3
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60870451"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309581"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Samouczek: Przygotowanie rejestru kontenerów platformy Azure z replikacją geograficzną
 
@@ -110,13 +111,13 @@ git clone https://github.com/Azure-Samples/acr-helloworld.git
 cd acr-helloworld
 ```
 
-Jeśli nie masz zainstalowanego narzędzia `git`, możesz [pobrać archiwum ZIP][acr-helloworld-zip] bezpośrednio z usługi GitHub.
+Jeśli nie masz `git` zainstalowanego programu, możesz [pobrać archiwum zip][acr-helloworld-zip] bezpośrednio z witryny GitHub.
 
 ## <a name="update-dockerfile"></a>Aktualizacja pliku Dockerfile
 
-Plik Dockerfile dołączony do przykładu przedstawia sposób tworzenia kontenera. Rozpoczyna się od oficjalnego obrazu [aspnetcore][dockerhub-aspnetcore], następnie pliki aplikacji są kopiowane do kontenera, instalowane są zależności, dane wyjściowe są kompilowane za pomocą oficjalnego obrazu [aspnetcore-build][dockerhub-aspnetcore-build] i w końcu jest kompilowany zoptymalizowany obraz aspnetcore.
+Plik Dockerfile dołączony do przykładu przedstawia sposób tworzenia kontenera. Zaczyna się od oficjalnego obrazu [aspnetcore][dockerhub-aspnetcore] image, copies the application files into the container, installs dependencies, compiles the output using the official [aspnetcore-build][dockerhub-aspnetcore-build] , a wreszcie kompiluje zoptymalizowany obraz aspnetcore.
 
-Plik [Dockerfile][dockerfile] znajduje się w lokalizacji `./AcrHelloworld/Dockerfile` w sklonowanym źródle.
+[Pliku dockerfile][dockerfile] znajduje się na `./AcrHelloworld/Dockerfile` sklonowanym źródle.
 
 ```Dockerfile
 FROM microsoft/aspnetcore:2.0 AS base

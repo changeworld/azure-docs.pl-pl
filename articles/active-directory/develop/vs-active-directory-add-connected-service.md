@@ -1,80 +1,81 @@
 ---
-title: Dodawanie usługi Azure Active Directory przy użyciu usług połączonych programu Visual Studio
-description: Dodawanie usługi Azure Active Directory za pomocą okna dialogowego programu Visual Studio Dodaj połączone usługi
+title: Dodawanie Azure Active Directory przy użyciu usług połączonych w programie Visual Studio
+description: Dodawanie Azure Active Directory przy użyciu okna dialogowego Dodawanie usług połączonych programu Visual Studio
 services: active-directory
+ms.subservice: develop
 author: ghogen
 manager: douge
 ms.assetid: f599de6b-e369-436f-9cdc-48a0165684cb
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.custom: vs-azure
+ms.custom: aaddev, vs-azure
 ms.workload: azure-vs
 ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bea0a870a6ef0685f4f4bce5ad3b0d1ff1f616a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: acd83b78537f526f5131a6eea585427ecefef0d1
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65414006"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320788"
 ---
-# <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Dodawanie usługi Azure Active Directory przy użyciu usług połączonych programu Visual Studio
+# <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Dodawanie Azure Active Directory przy użyciu usług połączonych w programie Visual Studio
 
-Za pomocą usługi Azure Active Directory (Azure AD), może obsługiwać pojedynczego logowania jednokrotnego (SSO) dla aplikacji sieci web platformy ASP.NET MVC lub uwierzytelniania usługi Active Directory, w usługach interfejsu API sieci Web. Dzięki uwierzytelnianiu Azure AD Twoje użytkownicy mogą używać swoich kont w usłudze Azure Active Directory, połączyć się z aplikacji sieci web. Zalety uwierzytelnianie usługi Azure AD za pomocą interfejsu API sieci Web obejmują zwiększone bezpieczeństwo danych podczas udostępniania interfejsu API z aplikacji sieci web. Z usługą Azure AD nie trzeba zarządzać oddzielnym systemem uwierzytelniania zawierającym swoje własne zarządzania kontami i użytkownikami.
+Korzystając z Azure Active Directory (Azure AD), można obsługiwać Logowanie jednokrotne (SSO) dla aplikacji sieci Web ASP.NET MVC lub Active Directory uwierzytelnianie w usługach interfejsu API sieci Web. Przy użyciu uwierzytelniania usługi Azure AD użytkownicy mogą łączyć się z aplikacjami sieci Web przy użyciu swoich kont z Azure Active Directory. Zalety uwierzytelniania usługi Azure AD za pomocą interfejsu API sieci Web obejmują ulepszone zabezpieczenia danych podczas ujawniania interfejsu API z aplikacji sieci Web. W usłudze Azure AD nie trzeba zarządzać osobnym systemem uwierzytelniania przy użyciu własnego konta i zarządzania użytkownikami.
 
-W tym artykule i umieszczanych tam artykułach pomocnika zapewniają szczegółowe informacje o za pomocą funkcji Visual Studio usługi połączonej dla usługi Active Directory. Ta funkcja jest dostępne w programie Visual Studio 2015 i nowszych wersjach.
+Ten artykuł i jego artykuły towarzyszące zawierają szczegółowe informacje dotyczące korzystania z funkcji usługi połączonej programu Visual Studio dla Active Directory. Ta funkcja jest dostępna w programie Visual Studio 2015 i nowszych.
 
-Obecnie usługa Active Directory połączone nie obsługuje aplikacje platformy ASP.NET Core.
+W tej chwili usługa połączona Active Directory nie obsługuje aplikacji ASP.NET Core.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Konto platformy Azure: Jeśli nie masz konta platformy Azure, możesz to zrobić [utworzyć konto bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) lub [aktywować korzyści dla subskrybentów programu Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
-- **Program Visual Studio 2015** lub nowszej. [Pobierz program Visual Studio teraz](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- Konto platformy Azure: Jeśli nie masz konta platformy Azure, możesz [zarejestrować się w celu uzyskania bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) lub [aktywować korzyści dla subskrybentów programu Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
+- **Program Visual Studio 2015** lub nowszy. [Pobierz teraz program Visual Studio](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
-### <a name="connect-to-azure-active-directory-using-the-connected-services-dialog"></a>Nawiązać połączenie z usługi Azure Active Directory za pomocą okna dialogowego podłączone usługi
+### <a name="connect-to-azure-active-directory-using-the-connected-services-dialog"></a>Łączenie się z usługą Azure Active Directory przy użyciu okna dialogowego połączone usługi
 
-1. W programie Visual Studio Utwórz lub Otwórz projekt składnika ASP.NET MVC lub projekt interfejsu API sieci Web platformy ASP.NET. Można użyć MVC, interfejsu API sieci Web, aplikacji jednostronicowej aplikacji interfejsu API platformy Azure, aplikacji mobilnej platformy Azure i szablonów usług Azure Mobile.
+1. W programie Visual Studio Utwórz lub Otwórz projekt ASP.NET MVC lub projekt internetowego interfejsu API ASP.NET. Można korzystać z szablonów MVC, Web API, aplikacji jednostronicowych, aplikacji interfejsu API platformy Azure, aplikacji mobilnej platformy Azure i usługi Azure Mobile Service.
 
-1. Wybierz **Projekt > Dodaj podłączoną usługę...**  polecenie menu lub kliknij dwukrotnie plik **podłączone usługi** nie znaleziono węzła w projekcie w Eksploratorze rozwiązań.
+1. Wybierz **projekt > Dodaj połączonej usługi..** . menu, lub kliknij dwukrotnie węzeł **usługi połączone** znajdujący się w projekcie w Eksplorator rozwiązań.
 
-1. Na **podłączone usługi** wybierz opcję **uwierzytelniania za pomocą usługi Azure Active Directory**.
+1. Na stronie **podłączone usługi** wybierz pozycję **uwierzytelnianie z Azure Active Directory**.
 
-    ![Strona usług połączonych](./media/vs-azure-active-directory/connected-services-add-active-directory.png)
+    ![Strona usługi połączone](./media/vs-azure-active-directory/connected-services-add-active-directory.png)
 
-1. Na **wprowadzenie** wybierz opcję **dalej**. Jeśli na tej stronie zostaną wyświetlone błędy, zajrzyj do [diagnozowanie błędów przy użyciu usługi Azure Active Directory połączone](vs-active-directory-error.md).
+1. Na stronie **wprowadzenie** wybierz pozycję **dalej**. Jeśli widzisz błędy na tej stronie, zapoznaj się z tematem [Diagnozowanie błędów za pomocą usługi połączonej Azure Active Directory](vs-active-directory-error.md).
 
     ![Strona wprowadzenia](./media/vs-azure-active-directory/configure-azure-ad-wizard-1.png)
 
-1. Na **logowania jednokrotnego na** wybierz domenę z **domeny** listy rozwijanej. Lista zawiera wszystkie domeny jest dostępny za pomocą kont wymienionych w oknie dialogowym Ustawienia konta programu Visual Studio (**Plik > Ustawienia konta...** ). Alternatywnie, można wprowadzić nazwę domeny, jeśli nie widzisz jeden, czego szukasz, takich jak `mydomain.onmicrosoft.com`. Można wybrać opcję, aby utworzyć aplikację usługi Azure Active Directory lub użyć ustawień z istniejącej aplikacji usługi Azure Active Directory. Wybierz **dalej** po zakończeniu.
+1. Na stronie **Logowanie** jednokrotne wybierz domenę z listy rozwijanej **domena** . Lista zawiera wszystkie domeny dostępne przez konta wymienione w oknie dialogowym Ustawienia konta w programie Visual Studio (**Ustawienia konta > plików...** ). Alternatywnie możesz wprowadzić nazwę domeny, jeśli nie znajdziesz tego, na czym szukasz, na przykład `mydomain.onmicrosoft.com`. Możesz wybrać opcję tworzenia aplikacji Azure Active Directory lub użyć ustawień z istniejącej aplikacji Azure Active Directory. Po zakończeniu wybierz pozycję **dalej** .
 
-    ![Pojedynczy znak na stronie](./media/vs-azure-active-directory/configure-azure-ad-wizard-2.png)
+    ![Strona logowania jednokrotnego](./media/vs-azure-active-directory/configure-azure-ad-wizard-2.png)
 
-1. Na **dostęp do katalogu** wybierz opcję **Odczyt danych katalogu** opcji zgodnie z potrzebami. Deweloperzy zazwyczaj obejmują tę opcję.
+1. Na stronie **dostęp do katalogu** wybierz opcję **Czytaj dane katalogu** zgodnie z potrzebami. Deweloperzy zazwyczaj obejmują tę opcję.
 
     ![Strona dostępu do katalogu](./media/vs-azure-active-directory/configure-azure-ad-wizard-3.png)
 
-1. Wybierz **Zakończ** można uruchomić zmiany do projektu w celu włączenia uwierzytelniania usługi Azure AD. Visual Studio Wyświetla postęp, w tym czasie:
+1. Wybierz pozycję **Zakończ** , aby rozpocząć modyfikacje projektu, aby włączyć uwierzytelnianie w usłudze Azure AD. Program Visual Studio pokazuje postęp w tym czasie:
 
-    ![Usługi Active Directory połączone usługi postępu](./media/vs-azure-active-directory/active-directory-connected-service-output.png)
+    ![Active Directory postęp usługi połączonej](./media/vs-azure-active-directory/active-directory-connected-service-output.png)
 
-1. Po zakończeniu procesu programu Visual Studio Otwiera przeglądarkę do jednej z następujących artykułów, odpowiednio do danego typu projektu:
+1. Po zakończeniu procesu program Visual Studio otwiera przeglądarkę w jednym z następujących artykułów zgodnie z wymaganiami typu projektu:
 
     - [Rozpoczynanie pracy z projektami .NET MVC](vs-active-directory-dotnet-getting-started.md)
     - [Wprowadzenie do projektów WebAPI](vs-active-directory-webapi-getting-started.md)
 
-1. Można również wyświetlić domeny usługi Active Directory na [witryny Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)można także zobaczyć domenę Active Directory.
 
 ## <a name="how-your-project-is-modified"></a>Jak jest modyfikowana projektu
 
-Po dodaniu usługi połączonej kreatora program Visual Studio dodaje Azure Active Directory i skojarzone odwołania do projektu. Pliki konfiguracyjne i pliki kodu w projekcie są również zmodyfikować, aby dodać obsługę usługi Azure AD. Określone zmiany, które sprawia, że program Visual Studio, zależą od typu projektu. Zobacz następujące artykuły, aby uzyskać szczegółowe informacje:
+Po dodaniu połączonej usługi Kreator programu Visual Studio dodaje Azure Active Directory i skojarzone odwołania do projektu. Pliki konfiguracji i pliki kodu w projekcie są również modyfikowane w celu dodania obsługi usługi Azure AD. Konkretne modyfikacje wprowadzane przez program Visual Studio zależą od typu projektu. Szczegółowe informacje znajdują się w następujących artykułach:
 
 - [Co się stało z moim projektem .NET MVC?](vs-active-directory-dotnet-what-happened.md)
 - [Co się stało z moim projektem interfejsu API sieci Web?](vs-active-directory-webapi-what-happened.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Scenariusze uwierzytelniania dla usługi Azure Active Directory](authentication-scenarios.md)
-- [Dodawanie logowania z firmą Microsoft do aplikacji sieci web platformy ASP.NET](quickstart-v1-aspnet-webapp.md)
+- [Scenariusze uwierzytelniania dla Azure Active Directory](authentication-scenarios.md)
+- [Dodawanie logowania z firmą Microsoft do aplikacji sieci Web ASP.NET](quickstart-v1-aspnet-webapp.md)

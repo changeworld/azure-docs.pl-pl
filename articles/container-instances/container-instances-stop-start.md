@@ -1,58 +1,59 @@
 ---
-title: Ręcznie zatrzymywać ani uruchamiać kontenery w usłudze Azure Container Instances
-description: Dowiedz się, jak ręcznie zatrzymywać ani uruchamiać grupy kontenerów w usłudze Azure Container Instances.
+title: Ręcznie Zatrzymaj lub Uruchom kontenery w Azure Container Instances
+description: Dowiedz się, jak ręcznie zatrzymać lub uruchomić grupę kontenerów w Azure Container Instances.
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: 8e62d106a42dfbec897e5e14cf68fd3d7fd823c4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c7d46ad8d935e28b5a24e48c85ac2464b55b2669
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65070812"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325639"
 ---
-# <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Ręcznie zatrzymywać ani uruchamiać kontenery w usłudze Azure Container Instances
+# <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Ręcznie Zatrzymaj lub Uruchom kontenery w Azure Container Instances
 
-[Zasady ponownego uruchamiania](container-instances-restart-policy.md) ustawienie grupy kontenerów Określa, jak uruchamianie lub zatrzymywanie domyślnie w wystąpienia kontenera. Można zastąpić domyślne ustawienie ręcznie zatrzymywania lub uruchamiania grupy kontenerów.
+Ustawienie [zasad ponownego uruchamiania](container-instances-restart-policy.md) grupy kontenerów określa sposób uruchamiania lub zatrzymywania wystąpień kontenerów domyślnie. Ustawienie domyślne można zastąpić ręcznie zatrzymywaniem lub uruchamianiem grupy kontenerów.
 
 ## <a name="stop"></a>Stop
 
-Ręcznie zatrzymaj uruchomionej grupy kontenerów — na przykład za pomocą [az container stop] [ az-container-stop] polecenia lub witryny Azure portal. Dla niektórych obciążeń kontenerów można zatrzymać grupy kontenerów długotrwałych po określonym przedziale czasu, aby zaoszczędzić na kosztach. 
+Ręcznie Zatrzymaj uruchomioną grupę kontenerów — na przykład przy użyciu polecenia [AZ Container Stop][az-container-stop] lub Azure Portal. W przypadku niektórych obciążeń kontenera można zatrzymać długotrwałą grupę kontenerów po upływie zdefiniowanego okresu, aby zaoszczędzić na kosztach. 
 
-*Gdy grupa kontenerów przechodzi do stanu zatrzymania, kończy działanie i jest odtwarzana wszystkich kontenerów w grupie. Nie pozwala zachować stan kontenera.*
+*Gdy grupa kontenerów przechodzi do stanu zatrzymanego, kończy i odtwarza wszystkie kontenery w grupie. Nie zachowuje stanu kontenera.*
 
-W przypadku kontenerów recyklingowi, [zasobów](container-instances-container-groups.md#resource-allocation) cofnięcia alokacji i rozliczeń zatrzymuje dla grupy kontenerów.
+Po ponownym przetworzeniu kontenerów [zasoby](container-instances-container-groups.md#resource-allocation) są cofane i rozliczane dla grupy kontenerów.
 
-Akcja zatrzymania nie obowiązuje, jeśli grupa kontenerów już zakończone. (jest w stanie powodzenie lub niepowodzenie). Na przykład grupę kontenerów przy użyciu zadania uruchom raz kontenera, które został uruchomiony pomyślnie kończy się w stanie Powodzenie. Podejmuje próby zatrzymania grupy, w tym stanie nie zmieniaj stanu. 
+Akcja zatrzymania nie ma żadnego wpływu, jeśli grupa kontenerów została już zakończona (jest w stanie sukces lub niepowodzenie). Na przykład grupa kontenerów z zadaniami kontenera uruchamiania, które zostały pomyślnie zakończone w stanie sukces. Próby zatrzymania grupy w tym stanie nie zmieniają stanu. 
 
-## <a name="start"></a>Uruchamianie
+## <a name="start"></a>Start
 
-Po zatrzymaniu grupy kontenerów —, albo ponieważ kontenery został przerwany w ich własnych lub grupa — zatrzymano ręcznie, kontenery można uruchomić. Na przykład użyć [az container start] [ az-container-start] polecenia lub witryny Azure portal, aby ręcznie uruchomić kontenerów w grupie. Jeśli zostanie zaktualizowany obraz kontenera dla dowolnego kontenera, zostanie ściągnięty nowego obrazu. 
+Po zatrzymaniu grupy kontenerów — ponieważ kontenery zostały zakończone lub ręcznie zatrzymana przez grupę — można uruchomić kontenery. Na przykład użyj polecenia [AZ Container Start][az-container-start] lub Azure Portal, aby ręcznie uruchomić kontenery w grupie. Jeśli obraz kontenera dla dowolnego kontenera zostanie zaktualizowany, zostanie pobrany nowy obraz. 
 
-Uruchamianie grupy kontenerów rozpoczyna nowe wdrożenie z taką samą konfiguracją kontenera. Ta akcja ułatwia szybkie ponowne zastosowanie konfiguracji grupy znanych kontenera, który działa zgodnie z oczekiwaniami. Nie trzeba utworzyć nową grupę kontenerów do uruchomienia tego samego obciążenia.
+Rozpoczęcie tworzenia grupy kontenerów rozpoczyna nowe wdrożenie z tą samą konfiguracją kontenera. Ta akcja może ułatwić Szybkie ponowne użycie znanej konfiguracji grupy kontenerów, która działa zgodnie z oczekiwaniami. Nie trzeba tworzyć nowej grupy kontenerów w celu uruchomienia tego samego obciążenia.
 
 Wszystkie kontenery w grupie kontenerów są uruchamiane przez tę akcję. Nie można uruchomić określonego kontenera w grupie.
 
-Po ręcznie uruchom lub uruchom ponownie grupę kontenerów, przebiegów grupy kontenera zgodnie ze skonfigurowanym ponownie uruchomić zasad.
+Po ręcznym uruchomieniu lub ponownym uruchomieniu grupy kontenerów Grupa kontenerów jest uruchamiana zgodnie ze skonfigurowanymi zasadami ponownego uruchamiania.
   
 ## <a name="restart"></a>Ponowne uruchamianie
 
-Możesz ponownie uruchomić grupy kontenerów jest uruchomiona — na przykład za pomocą [ponownego uruchomienia kontenera az] [ az-container-restart] polecenia. Ta akcja powoduje ponowne uruchomienie wszystkich kontenerów w grupie kontenerów. Jeśli zostanie zaktualizowany obraz kontenera dla dowolnego kontenera, zostanie ściągnięty nowego obrazu. 
+Można uruchomić ponownie grupę kontenerów, gdy jest ona uruchomiona — na przykład przy użyciu polecenia [AZ Container restart][az-container-restart] . Ta akcja spowoduje ponowne uruchomienie wszystkich kontenerów w grupie kontenerów. Jeśli obraz kontenera dla dowolnego kontenera zostanie zaktualizowany, zostanie pobrany nowy obraz. 
 
-Ponowne uruchamianie grupy kontenerów jest przydatne w przypadku, gdy chcesz rozwiązać problem z wdrożenia. Na przykład jeśli to ograniczenie zasobów zapobiega pomyślnemu kontenerów, ponowne uruchamianie grupy może rozwiązać problem.
+Ponowne uruchomienie grupy kontenerów jest przydatne, gdy chcesz rozwiązać problem z wdrożeniem. Na przykład jeśli tymczasowe ograniczenie zasobów uniemożliwia pomyślne uruchomienie kontenerów, ponowne uruchomienie grupy może rozwiązać problem.
 
-Ta akcja ponownego uruchomienia wszystkich kontenerów w grupie kontenerów. Nie można ponownie uruchomić określonego kontenera w grupie.
+Wszystkie kontenery w grupie kontenerów są ponownie uruchamiane przez tę akcję. Nie można ponownie uruchomić określonego kontenera w grupie.
 
-Po ponownym uruchomieniu ręcznie grupy kontenerów, przebiegów grupy kontenera zgodnie ze skonfigurowanym ponownie uruchomić zasad.
+Po ręcznym ponownym uruchomieniu grupy kontenerów Grupa kontenerów jest uruchamiana zgodnie ze skonfigurowanymi zasadami ponownego uruchamiania.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o [Uruchom ponownie ustawienia zasad](container-instances-restart-policy.md) w usłudze Azure Container Instances.
+Dowiedz się więcej o [ustawieniach zasad ponownego uruchamiania](container-instances-restart-policy.md) w Azure Container Instances.
 
-Oprócz ręcznie zatrzymywania i uruchamiania grupy kontenerów przy użyciu istniejącej konfiguracji, możliwe jest również [zaktualizuj ustawienia](container-instances-update.md) uruchomionej grupy kontenerów.
+Oprócz ręcznego zatrzymywania i uruchamiania grupy kontenerów z istniejącą konfiguracją można [zaktualizować ustawienia](container-instances-update.md) uruchomionej grupy kontenerów.
 
 <!-- LINKS - External -->
 

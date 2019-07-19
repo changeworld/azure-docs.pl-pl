@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: mbullwin
-ms.openlocfilehash: a233299b86100c7e43291ffb6448d576ef6072f0
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
-ms.translationtype: HT
+ms.openlocfilehash: c2f115564c81f38dd437f1d3ff1e33d7d162a42f
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302558"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326449"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Śledzenie zależności w usłudze Azure Application Insights 
 
@@ -103,7 +103,7 @@ W przypadku aplikacji ASP.NET pełnych zapytań SQL jest zbieranych za pomocą I
 | Platforma | Kroki, które trzeba wykonać, aby uzyskać pełne zapytanie SQL |
 | --- | --- |
 | Aplikacja sieci Web platformy Azure |W panelu sterowania aplikacji sieci Web [Otwórz blok Application Insights](../../azure-monitor/app/azure-web-apps.md) i Włącz polecenia SQL w obszarze .NET |
-| Serwer IIS (maszyna wirtualna platformy Azure, premium itd.) | [Zainstaluj Monitor stanu na serwerze, na którym działa aplikacja](../../azure-monitor/app/monitor-performance-live-website-now.md) , a następnie uruchom ponownie usługi IIS.
+| Serwer IIS (maszyna wirtualna platformy Azure, premium itd.) | Użyj modułu monitor stanu PowerShell, aby [zainstalować aparat Instrumentacji](../../azure-monitor/app/status-monitor-v2-api-enable-instrumentation-engine.md) i ponownie uruchomić usługi IIS. |
 | Usługa w chmurze platformy Azure | Dodaj [zadanie uruchamiania, aby zainstalować StatusMonitor](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> Twoja aplikacja powinna zostać dołączona do zestawu ApplicationInsights SDK w czasie kompilacji przez zainstalowanie pakietów NuGet dla aplikacji [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) lub [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) |
 | IIS Express | Nieobsługiwane
 

@@ -1,5 +1,5 @@
 ---
-title: Platforma tożsamości usługi Microsoft ASP.NET sieci web serwera Przewodnik Szybki Start | Azure
+title: Microsoft Identity platform ASP.NET Web Server — Szybki Start | Azure
 description: Dowiedz się, jak zaimplementować logowanie firmy Microsoft w aplikacji internetowej ASP.NET za pomocą protokołu OpenID Connect.
 services: active-directory
 documentationcenter: dev-center-name
@@ -8,6 +8,7 @@ manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,12 +17,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d813cea28d968ae7f14d55d47855b361141d6089
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
-ms.translationtype: MT
+ms.openlocfilehash: 8c6ec16d50990b066f8b5c487c5c1f5452622eaf
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565420"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321091"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Szybki start: Dodawanie logowania przy użyciu konta Microsoft do aplikacji internetowej ASP.NET
 
@@ -29,7 +30,7 @@ ms.locfileid: "67565420"
 
 W tym przewodniku Szybki start dowiesz się, w jaki sposób aplikacja internetowa ASP.NET może przeprowadzać logowanie kont osobistych (hotmail.com, outlook.com itp.) oraz kont służbowych z dowolnego wystąpienia usługi Azure Active Directory (Azure AD).
 
-![Pokazuje, jak działa przykładowej aplikacji wygenerowane przez ten przewodnik Szybki Start](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.svg)
+![Pokazuje sposób działania przykładowej aplikacji wygenerowanej przez ten przewodnik Szybki Start](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.svg)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Rejestrowanie i pobieranie aplikacji Szybki start
@@ -39,7 +40,7 @@ W tym przewodniku Szybki start dowiesz się, w jaki sposób aplikacja internetow
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Opcja 1: zarejestrowanie i automatyczne skonfigurowanie aplikacji, a następnie pobranie przykładowego kodu
 >
-> 1. Przejdź do nowego [witryna Azure portal — rejestracje aplikacji](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) okienka.
+> 1. Przejdź do nowego okienka [Azure Portal-rejestracje aplikacji](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) .
 > 1. Wprowadź nazwę aplikacji i kliknij pozycję **Zarejestruj**.
 > 1. Postępuj zgodnie z instrukcjami, aby jednym kliknięciem pobrać i automatycznie skonfigurować nową aplikację.
 >
@@ -50,11 +51,11 @@ W tym przewodniku Szybki start dowiesz się, w jaki sposób aplikacja internetow
 >
 > 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
 > 1. Jeśli Twoje konto umożliwia dostęp do więcej niż jednej dzierżawy, wybierz konto w prawym górnym rogu, a następnie ustaw sesję portalu na odpowiednią dzierżawę usługi Azure AD.
-> 1. Przejdź do platforma tożsamości firmy Microsoft dla deweloperów [rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) strony.
-> 1. Wybierz **nowej rejestracji**.
+> 1. Przejdź do strony Microsoft Identity Platform for Developers [rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) .
+> 1. Wybierz pozycję **Nowa rejestracja**.
 > 1. Po wyświetleniu strony **Rejestrowanie aplikacji** podaj informacje dotyczące rejestracji aplikacji:
 >      - W sekcji **Nazwa** podaj znaczącą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład `ASPNET-Quickstart`.
->      - Dodaj `https://localhost:44368/` w **identyfikator URI przekierowania**i kliknij przycisk **zarejestrować**.
+>      - Dodaj `https://localhost:44368/` w obszarze **URI przekierowania**, a następnie kliknij pozycję **zarejestruj**.
 Wybierz menu **Uwierzytelnianie**, ustaw wartość **Tokeny identyfikatorów** w obszarze **Niejawne przyznanie**, a następnie wybierz pozycję **Zapisz**.
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -68,14 +69,14 @@ Wybierz menu **Uwierzytelnianie**, ustaw wartość **Tokeny identyfikatorów** w
 
 #### <a name="step-2-download-your-project"></a>Krok 2: pobieranie projektu
 
-[Pobierz rozwiązanie Visual Studio 2019 r.](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
+[Pobierz rozwiązanie Visual Studio 2019](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: konfigurowanie projektu programu Visual Studio
 
 1. Wyodrębnij plik zip do folderu lokalnego bliższego folderowi głównemu, na przykład **C:\Azure-Samples**
 1. Otwórz rozwiązanie w programie Visual Studio (AppModelv2-WebApp-OpenIDConnect-DotNet.sln)
-1. W zależności od wersji programu Visual Studio, konieczne może być kliknij prawym przyciskiem myszy nad projektem `AppModelv2-WebApp-OpenIDConnect-DotNet` i **pakiety NuGet przywracania**
-1. Otwórz konsolę Menedżera pakietów (Widok -> inne Windows -> Konsola Menedżera pakietów) i uruchom `Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r`
+1. W zależności od wersji programu Visual Studio, może być konieczne kliknięcie prawym przyciskiem myszy projektu `AppModelv2-WebApp-OpenIDConnect-DotNet` i **przywrócenie pakietów NuGet**
+1. Otwórz konsolę Menedżera pakietów (Widok-> innej konsoli Menedżera pakietów systemu Windows — >) i uruchom`Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r`
 1. Przeprowadź edycję pliku **Web.config** i zastąp parametry `ClientId` oraz `Tenant` następującymi:
 
     ```xml
@@ -84,7 +85,7 @@ Wybierz menu **Uwierzytelnianie**, ustaw wartość **Tokeny identyfikatorów** w
     ```
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Ten przewodnik szybkiego startu obsługuje Enter_the_Supported_Account_Info_Here. 
+> > Ten przewodnik Szybki Start obsługuje Enter_the_Supported_Account_Info_Here. 
 
 > [!div renderon="docs"]
 > Gdzie:
@@ -99,7 +100,7 @@ Wybierz menu **Uwierzytelnianie**, ustaw wartość **Tokeny identyfikatorów** w
 
 ## <a name="more-information"></a>Więcej informacji
 
-Ta sekcja zawiera omówienie kodu wymaganego do logowania użytkowników. W tym omówieniu może być grupowaniu można sprawdzić, jak działa kod, głównym argumentów, a także jeśli chcesz dodać Zaloguj się do istniejącej aplikacji ASP.NET.
+Ta sekcja zawiera omówienie kodu wymaganego do logowania użytkowników. Ten przegląd może być przydatny do zrozumienia sposobu działania kodu, głównych argumentów oraz, jeśli chcesz dodać logowanie do istniejącej aplikacji ASP.NET.
 
 ### <a name="owin-middleware-nuget-packages"></a>Pakiety NuGet oprogramowania pośredniczącego OWIN
 
@@ -113,7 +114,7 @@ Install-Package Microsoft.Owin.Host.SystemWeb
 
 ### <a name="owin-startup-class"></a>Klasa początkowa OWIN
 
-Oprogramowanie pośredniczące OWIN używa *Klasa początkowa* , które jest uruchamiane podczas procesu hostingu jest inicjowana. W tym przewodniku Szybki Start *startup.cs* plik znajdujący się w folderze głównym. W poniższym kodzie przedstawiono parametr użyty w tym przewodniku Szybki start:
+Oprogramowanie pośredniczące OWIN używa *klasy uruchamiania* , która jest uruchamiana podczas inicjowania procesu hostingu. W tym przewodniku szybki start plik *Startup.cs* znajduje się w folderze głównym. W poniższym kodzie przedstawiono parametr użyty w tym przewodniku Szybki start:
 
 ```csharp
 public void Configuration(IAppBuilder app)
@@ -154,7 +155,7 @@ public void Configuration(IAppBuilder app)
 > |---------|---------|
 > | `ClientId`     | Identyfikator aplikacji z aplikacji zarejestrowanej w witrynie Azure Portal |
 > | `Authority`    | Punkt końcowy usługi STS na potrzeby uwierzytelnienia użytkownika. Zazwyczaj jest to adres <https://login.microsoftonline.com/{tenant}/v2.0> dla chmury publicznej, gdzie parametr {tenant} jest nazwą dzierżawy, identyfikatorem dzierżawy lub ma wartość *common* na potrzeby odwołania do wspólnego punktu końcowego (używany dla aplikacji z wieloma dzierżawami) |
-> | `RedirectUri`  | Adres URL, w których są odsyłani użytkownicy po uwierzytelniania względem punktu końcowego platformy tożsamości firmy Microsoft |
+> | `RedirectUri`  | Adres URL, pod który użytkownicy są wysyłani po uwierzytelnieniu względem punktu końcowego platformy tożsamości firmy Microsoft |
 > | `PostLogoutRedirectUri`     | Adres URL, do którego przekierowywani są użytkownicy po wylogowaniu |
 > | `Scope`     | Lista zażądanych zakresów oddzielonych spacjami |
 > | `ResponseType`     | Żądanie, którego odpowiedź z procesu uwierzytelniania zawiera identyfikator tokenu |
@@ -163,8 +164,8 @@ public void Configuration(IAppBuilder app)
 
 
 > [!NOTE]
-> Ustawienie `ValidateIssuer = false` jest uproszczenia w tym przewodniku Szybki Start. W rzeczywistych aplikacjach należy do weryfikowania wystawcy.
-> Zobacz przykłady, aby dowiedzieć się, jak to zrobić.
+> Ustawienie `ValidateIssuer = false` to uproszczenie dla tego przewodnika Szybki Start. W rzeczywistych aplikacjach należy sprawdzić poprawność wystawcy.
+> Zapoznaj się z przykładami, aby dowiedzieć się, jak to zrobić.
 
 ### <a name="initiate-an-authentication-challenge"></a>Inicjowanie żądania uwierzytelnienia
 

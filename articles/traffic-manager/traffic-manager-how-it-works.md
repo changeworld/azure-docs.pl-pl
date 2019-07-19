@@ -1,6 +1,6 @@
 ---
-title: Jak działa usługa Azure Traffic Manager | Dokumentacja firmy Microsoft
-description: Ten artykuł pomoże Ci zrozumieć, jak usługi Traffic Manager kieruje ruch, aby uzyskać wysoką wydajność i dostępność aplikacji sieci web
+title: Jak działa usługa Azure Traffic Manager | Microsoft Docs
+description: Ten artykuł pomoże Ci zrozumieć, jak Traffic Manager kieruje ruchem w celu uzyskania wysokiej wydajności i dostępności aplikacji sieci Web
 services: traffic-manager
 documentationcenter: ''
 author: asudbring
@@ -12,69 +12,92 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: allensu
-ms.openlocfilehash: a74af002dfdad5df9640be4b5fdd7f657b183bd4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 281e1e591d7c3cc31b77a116fb42af49dc27798c
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071185"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68312145"
 ---
-# <a name="how-traffic-manager-works"></a>Jak działa usługa Traffic Manager
+# <a name="how-traffic-manager-works"></a>Jak działa Traffic Manager
 
-Usługa Azure Traffic Manager umożliwia kontrolowanie dystrybucji ruchu między punktami końcowymi usługi aplikacji. Punkt końcowy to dowolna internetowa usługa hostowana wewnątrz platformy Azure lub poza nią.
+Usługa Azure Traffic Manager umożliwia kontrolowanie dystrybucji ruchu między punktami końcowymi aplikacji. Punkt końcowy to dowolna internetowa usługa hostowana wewnątrz platformy Azure lub poza nią.
 
-Usługa Traffic Manager zapewnia dwie kluczowe korzyści:
+Traffic Manager zapewnia dwie kluczowe korzyści:
 
-- Dystrybucja ruchu sieciowym pogrupowane według jedną z kilku [metody routingu ruchu](traffic-manager-routing-methods.md)
-- [Ciągłe monitorowanie kondycji punktu końcowego](traffic-manager-monitoring.md) i automatycznej pracy awaryjnej, gdy punkty końcowe się nie powieść.
+- Rozkład ruchu zgodnie z jedną z kilku [metod routingu ruchu](traffic-manager-routing-methods.md)
+- [Ciągłe monitorowanie kondycji punktów końcowych](traffic-manager-monitoring.md) i automatyczne przełączanie awaryjne w przypadku niepowodzenia punktów końcowych
 
-Gdy klient próbuje nawiązać połączenie z usługą, jego rozpoznać nazwy DNS usługi na adres IP. Klient następnie łączy się z tego adresu IP, aby uzyskać dostęp do usługi.
+Gdy klient próbuje nawiązać połączenie z usługą, musi najpierw rozpoznać nazwę DNS usługi na adres IP. Klient następnie łączy się z tym adresem IP w celu uzyskania dostępu do usługi.
 
-**Najważniejsze punktem jest zrozumienie, usługa Traffic Manager działa na poziomie usługi DNS.**  Przy użyciu DNS usługi Traffic Manager kieruje klientów do punktów końcowych określonej usługi na podstawie reguł metody routingu ruchu. Klienci łączą się wybrany punkt końcowy z **bezpośrednio**. Usługa Traffic Manager nie jest serwer proxy lub bramą. Usługa Traffic Manager nie widzi ruch przekazywanie między klientem a usługą.
+**Najważniejszym punktem, aby zrozumieć, jest to, że Traffic Manager działa na poziomie systemu DNS.**  Traffic Manager używa systemu DNS do kierowania klientów do określonych punktów końcowych usługi na podstawie reguł metody routingu ruchu. Klienci łączą się **bezpośrednio**z wybranym punktem końcowym. Traffic Manager nie jest serwerem proxy ani bramą. Traffic Manager nie widzi ruchu przechodzącego między klientem a usługą.
 
-## <a name="traffic-manager-example"></a>Przykład usługi Traffic Manager
+## <a name="traffic-manager-example"></a>Przykład Traffic Manager
 
-Firmy Contoso Corp opracowali nowego portalu dla partnerów. Adres URL dla tego portalu jest https://partners.contoso.com/login.aspx. Aplikacja jest obsługiwana w trzech regionach platformy Azure. Aby zwiększyć dostępność i zmaksymalizować wydajność globalnego, używają usługi Traffic Manager do rozproszenia ruchu klientów do najbliższego dostępnego punktu końcowego.
+Firma Contoso Corp opracowała nowy portal dla partnerów. Adres URL dla tego portalu to https://partners.contoso.com/login.aspx. Aplikacja jest hostowana w trzech regionach platformy Azure. Aby zwiększyć dostępność i zmaksymalizować wydajność globalną, wykorzystuje Traffic Manager do dystrybucji ruchu klientów do najbliższego dostępnego punktu końcowego.
 
-Aby uzyskać tę konfigurację, ich wykonaj następujące czynności:
+Aby osiągnąć tę konfigurację, wykonaj następujące czynności:
 
-1. Wdrażanie trzech wystąpień usługi. Nazwy DNS wdrożenia to "contoso-us.cloudapp .net", "contoso-eu.cloudapp .net" i ".net asia.cloudapp firmy contoso".
-1. Utwórz profil usługi Traffic Manager o nazwie "contoso.trafficmanager.net" i skonfiguruj ją w trzech punktów końcowych przy użyciu metody routingu ruchu "Wydajność".
-1. Konfigurowanie nazwy domeny znaczącej "partners.contoso.com", aby wskazywał "contoso.trafficmanager.net", przy użyciu rekordu CNAME systemu DNS.
+1. Wdróż trzy wystąpienia swojej usługi. Nazwy DNS tych wdrożeń to "contoso-us.cloudapp.net", "contoso-eu.cloudapp.net" i "contoso-asia.cloudapp.net".
+1. Utwórz profil Traffic Manager o nazwie "contoso.trafficmanager.net" i skonfiguruj go tak, aby korzystał z metody routingu ruchu "Performance" w trzech punktach końcowych.
+1. Skonfiguruj swoją nazwę domeny znaczącym "partners.contoso.com", aby wskazywała na "contoso.trafficmanager.net", przy użyciu rekordu CNAME DNS.
 
-![Konfiguracja DNS usługi Traffic Manager][1]
+![Traffic Manager Konfiguracja DNS][1]
 
 > [!NOTE]
-> Korzystając z domeną znaczącą za pomocą usługi Azure Traffic Manager, należy użyć rekordu CNAME, aby wskazywała nazwę domeny znaczącej nazwy domeny usługi Traffic Manager. Standardy systemu DNS nie pozwalają utworzyć rekord CNAME w "wierzchołku" (lub głównym) domeny. Dlatego nie można utworzyć rekord CNAME dla domeny "contoso.com" (nazywane czasem "naked" domeny). Można utworzyć tylko rekord CNAME dla domeny w strefie "contoso.com", takich jak "www.contoso.com". Aby obejść to ograniczenie, zalecamy hosting domeny DNS na [system DNS Azure](../dns/dns-overview.md) i przy użyciu [rekordów aliasów](../dns/tutorial-alias-tm.md) wskaż profilowi usługi traffic manager. Alternatywnie można użyć prostego przekierowania HTTP na bezpośrednie żądania dla domeny "contoso.com" alternatywnej nazwy, takie jak "www.contoso.com".
+> W przypadku korzystania z domeny znaczącym z usługą Azure Traffic Manager należy użyć rekordu CNAME do wskazywania nazwy domeny znaczącym do nazwy domeny Traffic Manager. Standardy DNS nie umożliwiają utworzenia rekordu CNAME w "wierzchołku" (lub korzeniu) domeny. W tym celu nie można utworzyć rekordu CNAME dla elementu "contoso.com" (czasami nazywanego "nie" domeną "). Można utworzyć rekord CNAME dla domeny w lokalizacji "contoso.com", na przykład "www.contoso.com". Aby obejść to ograniczenie, zalecamy Hostowanie domeny DNS na [Azure DNS](../dns/dns-overview.md) i używanie [rekordów aliasów](../dns/tutorial-alias-tm.md) w celu wskazywania profilu usługi Traffic Manager. Alternatywnie możesz użyć prostego przekierowania HTTP, aby skierować żądania dla "contoso.com" do alternatywnej nazwy, takiej jak "www.contoso.com".
 
-### <a name="how-clients-connect-using-traffic-manager"></a>Jak klienci łączą, za pomocą usługi Traffic Manager
+### <a name="how-clients-connect-using-traffic-manager"></a>Jak klienci łączą się za pomocą Traffic Manager
 
-Kontynuując poprzedni przykład, gdy klient żąda strony https://partners.contoso.com/login.aspx, klient wykonuje następujące kroki, aby rozpoznać nazwy DNS i nawiązania połączenia:
+Kontynuując z poprzedniego przykładu, gdy klient zażąda strony https://partners.contoso.com/login.aspx, klient wykona następujące czynności w celu rozpoznania nazwy DNS i ustanowienia połączenia:
 
-![Ustanawianie połączenia przy użyciu usługi Traffic Manager][2]
+![Ustanawianie połączenia przy użyciu Traffic Manager][2]
 
-1. Klient wysyła zapytanie DNS do jego skonfigurowanych rekursywnych usług DNS można rozpoznać nazwy "partners.contoso.com". Cyklicznej usługi DNS, czasami nazywane usługą "DNS lokalnym" nie obsługuje bezpośrednio domen DNS. Przeciwnie klient off-loads pracy kontaktowania się z pomocą różne autorytatywne usługi DNS w Internecie, potrzebne do rozpoznawania nazw DNS.
-2. Można rozpoznać nazwy DNS, rekursywnych usług DNS znajdzie serwery nazw dla domeny "contoso.com". Kontaktuje się następnie tych serwerów nazw, aby zażądać rekordu DNS "partners.contoso.com". Serwery DNS contoso.com zwraca rekord CNAME, który wskazuje na contoso.trafficmanager.net.
-3. Następnie rekursywnych usług DNS znajdzie serwery nazw dla domeny "trafficmanager.net", które są udostępniane przez usługę Azure Traffic Manager. Wysyła następnie żądanie dotyczące rekordu DNS "contoso.trafficmanager.net" na tych serwerach DNS.
-4. Serwery nazw usługi Traffic Manager otrzymają żądanie. Wybiera punkt końcowy na podstawie:
+1. Klient wysyła zapytanie DNS do skonfigurowanej cyklicznej usługi DNS w celu rozpoznania nazwy "partners.contoso.com". Cykliczna usługa DNS, czasami nazywana usługą "lokalna usługa DNS", nie hostuje bezpośrednio domen DNS. Klient jest wyłączony i nie ładuje pracy kontaktując się z różnymi autorytatywnymi usługami DNS w Internecie, które są konieczne do rozpoznania nazwy DNS.
+2. Aby można było rozpoznać nazwę DNS, cykliczna usługa DNS znajduje serwery nazw dla domeny "contoso.com". Następnie kontaktuje się z tymi serwerami nazw, aby zażądać rekordu DNS "partners.contoso.com". Serwery DNS contoso.com zwracają rekord CNAME wskazujący contoso.trafficmanager.net.
+3. Następnie cykliczna usługa DNS znajduje serwery nazw dla domeny "trafficmanager.net", które są udostępniane przez usługę Traffic Manager platformy Azure. Następnie wysyła żądanie dotyczące rekordu DNS "contoso.trafficmanager.net" do tych serwerów DNS.
+4. Traffic Manager serwery nazw odbierają żądanie. Wybierają punkt końcowy na podstawie:
 
     - Skonfigurowany stan każdego punktu końcowego (wyłączone punkty końcowe nie są zwracane)
-    - Bieżącą kondycję każdego punktu końcowego, zgodnie z ustaleniami kontrole kondycji usługi Traffic Manager. Aby uzyskać więcej informacji, zobacz [monitorowanie punktu końcowego usługi Traffic Manager](traffic-manager-monitoring.md).
-    - Wybranej metody routingu ruchu. Aby uzyskać więcej informacji, zobacz [metody routingu w usłudze Traffic Manager](traffic-manager-routing-methods.md).
+    - Bieżąca kondycja każdego punktu końcowego określona przez Traffic Manager sprawdzenia kondycji. Aby uzyskać więcej informacji, zobacz [Traffic Manager monitorowania punktów końcowych](traffic-manager-monitoring.md).
+    - Wybrana metoda routingu ruchu. Aby uzyskać więcej informacji, zobacz [Traffic Manager metod routingu](traffic-manager-routing-methods.md).
 
-5. Wybrany punkt końcowy jest zwracana jako innego rekordu CNAME systemu DNS. W tym przypadku Daj nam Załóżmy, że zwracany jest us.cloudapp.net firmy contoso.
-6. Następnie rekursywnych usług DNS znajdzie serwery nazw dla domeny "cloudapp.net". Kontaktuje się te serwery nazw na żądanie dla .net contoso us.cloudapp rekordu DNS. Jest zwracany rekord DNS "A", zawierający adres IP punktu końcowego usługi Stanach Zjednoczonych.
-7. Rekursywnych usług DNS konsoliduje wyniki i zwraca pojedynczą odpowiedź DNS do klienta.
-8. Klient otrzymuje wyniki DNS i nawiązanie połączenia z danego adresu IP. Klient łączy się z punktem końcowym usługi aplikacji bezpośrednio, nie za pomocą usługi Traffic Manager. Ponieważ jest punkt końcowy HTTPS, wykonuje niezbędne Uzgadnianie SSL/TLS klienta, a następnie tworzy żądanie HTTP GET "/ login.aspx" strony.
+5. Wybrany punkt końcowy jest zwracany jako inny rekord CNAME DNS. W takim przypadku powiadom nas o tym, że contoso-us.cloudapp.net jest zwracany.
+6. Następnie cykliczna usługa DNS znajduje serwery nazw dla domeny "cloudapp.net". Kontaktuje się z tymi serwerami nazw, aby zażądać rekordu DNS "contoso-us.cloudapp.net". Zwracany jest rekord "A" DNS zawierający adres IP usługi opartej na USA.
+7. Rekursywna usługa DNS konsoliduje wyniki i zwraca pojedynczą odpowiedź DNS do klienta.
+8. Klient odbiera wyniki DNS i łączy się z podanym adresem IP. Klient łączy się z punktem końcowym usługi aplikacji bezpośrednio, a nie za pomocą Traffic Manager. Ponieważ jest to punkt końcowy HTTPS, Klient wykonuje niezbędną uzgadnianie SSL/TLS, a następnie wysyła żądanie HTTP GET dla strony "/login.aspx".
 
-Rekursywnych usług DNS buforuje odbieranych odpowiedzi DNS. Program rozpoznawania nazw DNS na urządzeniu klienckim buforuje wynik. Pamięć podręczna umożliwia kolejnych zapytań DNS na udzielenie odpowiedzi szybciej przy użyciu danych z pamięci podręcznej, zamiast kwerendy innych serwerów nazw. Czas trwania pamięci podręcznej jest określany przez właściwość "time-to-live" (TTL) w poszczególnych rekordów DNS. Krótszej wartości spowodować szybsze wygaśnięcia pamięci podręcznej i dlatego więcej połączeń do serwerów nazw usługi Traffic Manager. Wartości dłuższe oznacza, że może to trwać dłużej do kierowania ruchu od punktu końcowego nie powiodło się. Usługa Traffic Manager można skonfigurować czas wygaśnięcia używana w odpowiedzi DNS usługi Traffic Manager jako jedyne 0 sekund oraz możliwie jak 2 147 483 647 sekund (zgodne z maksymalną wielkość zakresu [standardem RFC 1035](https://www.ietf.org/rfc/rfc1035.txt)), dzięki czemu można wybrać wartość najlepiej salda wymagań aplikacji.
+Rekursywna usługa DNS buforuje odpowiedzi DNS, które odbiera. Program rozpoznawania nazw DNS na urządzeniu klienckim buforuje również wynik. Buforowanie umożliwia szybsze odbieranie zapytań DNS przy użyciu danych z pamięci podręcznej, a nie wykonywanie zapytań dotyczących innych serwerów nazw. Czas trwania pamięci podręcznej zależy od właściwości "czas wygaśnięcia" (TTL) każdego rekordu DNS. Krótsze wartości powodują szybsze wygaśnięcie pamięci podręcznej, a tym samym więcej operacji rundy do serwerów nazw Traffic Manager. Więcej wartości oznacza, że może upłynąć dłużej, że ruch nie przeszedł do punktu końcowego. Traffic Manager umożliwia skonfigurowanie czasu wygaśnięcia Traffic Manager odpowiedzi DNS na wartość równą 0 sekund i maksymalnie 2 147 483 647 sekund (maksymalny zakres zgodny ze standardem [RFC-1035](https://www.ietf.org/rfc/rfc1035.txt)), dzięki czemu można wybrać wartość, która najlepiej równoważy potrzebom Twoja aplikacja.
 
+## <a name="faqs"></a>Często zadawane pytania
 
-## <a name="next-steps"></a>Kolejne kroki
+* [Jakiego adresu IP używa Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-ip-address-does-traffic-manager-use)
 
-Dowiedz się więcej o usłudze Traffic Manager [punktu końcowego monitorowaniu i automatycznemu trybu failover](traffic-manager-monitoring.md).
+* [Jakiego rodzaju ruch może być kierowany przy użyciu Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-types-of-traffic-can-be-routed-using-traffic-manager)
 
-Dowiedz się więcej o usłudze Traffic Manager [metody routingu ruchu](traffic-manager-routing-methods.md).
+* [Czy Traffic Manager obsługuje sesje "Sticky"?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-support-sticky-sessions)
+
+* [Dlaczego podczas korzystania z Traffic Manager pojawia się błąd HTTP?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-am-i-seeing-an-http-error-when-using-traffic-manager)
+
+* [Jaki jest wpływ na wydajność korzystania z Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-is-the-performance-impact-of-using-traffic-manager)
+
+* [Jakich protokołów aplikacji można używać z Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-application-protocols-can-i-use-with-traffic-manager)
+
+* [Czy można użyć Traffic Manager z "owies" nazwą domeny?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-a-naked-domain-name)
+
+* [Czy Traffic Manager uwzględnić adres podsieci klienta podczas obsługi zapytań DNS?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries)
+
+* [Co to jest czas wygaśnięcia systemu DNS i jak ma to wpływ na moich użytkowników?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-is-dns-ttl-and-how-does-it-impact-my-users)
+
+* [Jak wysoka lub niska można ustawić czas wygaśnięcia dla Traffic Manager odpowiedzi?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses)
+
+* [Jak zrozumieć ilość zapytań przesyłanych do mojego profilu?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-understand-the-volume-of-queries-coming-to-my-profile)
+
+## <a name="next-steps"></a>Następne kroki
+
+Dowiedz się więcej na temat Traffic Manager [monitorowania punktów końcowych i automatycznego przełączania do trybu failover](traffic-manager-monitoring.md).
+
+Dowiedz się więcej o [metodach routingu ruchu](traffic-manager-routing-methods.md)Traffic Manager.
 
 <!--Image references-->
 [1]: ./media/traffic-manager-how-traffic-manager-works/dns-configuration.png

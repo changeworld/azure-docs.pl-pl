@@ -1,40 +1,41 @@
 ---
-title: Jak wybrać uprawnienia dla danego interfejsu API | Dokumentacja firmy Microsoft
-description: Jak znaleźć punkty końcowe uwierzytelniania dla aplikacji niestandardowych, tworzysz lub rejestrowanie w usłudze Azure AD.
+title: Konfigurowanie punktów końcowych | Microsoft Docs
+description: Jak znaleźć punkty końcowe uwierzytelniania dla aplikacji niestandardowej, którą tworzysz lub rejestrujesz w usłudze Azure AD.
 services: active-directory
 documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: develop
+ms.custom: aaddev
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.date: 07/15/2019
 ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcfeec7e90f1c582a11889619811330bcf488bbf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c6547266b92cbeee2754871d4cdca7a2de261fc8
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545915"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325350"
 ---
 # <a name="how-to-configure-endpoints"></a>Jak skonfigurować punkty końcowe
 
-Punkty końcowe uwierzytelniania można znaleźć aplikacji na platformie [witryny Azure portal](https://portal.azure.com).
+Punkty końcowe uwierzytelniania dla aplikacji można znaleźć w [Azure Portal](https://portal.azure.com).
 
 -   Przejdź do witryny [Azure Portal](https://portal.azure.com).
 
--   W okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory**.
+-   W okienku nawigacji po lewej stronie kliknij pozycję **Azure Active Directory**.
 
--   Kliknij przycisk **rejestracje aplikacji** i wybierz polecenie **punktów końcowych**.
+-   Kliknij pozycję **rejestracje aplikacji** i wybierz **punkty końcowe**.
 
--   Otwórz ten **punktów końcowych** stronie listy wszystkie punkty końcowe uwierzytelniania dla dzierżawy.
+-   Spowoduje to otwarcie strony **punkty końcowe** , w której znajduje się lista wszystkich punktów końcowych uwierzytelniania dla dzierżawy.
 
--   Użyj punktu końcowego, które są specyficzne dla protokołu uwierzytelniania, którego używasz, w połączeniu z Identyfikatorem aplikacji w celu uwierzytelniania jednostki żądania dotyczące danej aplikacji.
+-   Użyj punktu końcowego specyficznego dla używanego protokołu uwierzytelniania, w połączeniu z IDENTYFIKATORem aplikacji, aby wysłać żądanie uwierzytelniania specyficzne dla aplikacji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 [Przewodnik dewelopera usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)

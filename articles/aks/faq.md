@@ -8,86 +8,86 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: mlearned
-ms.openlocfilehash: 495f182ed450d0fac69b31ea2996bacc60863fea
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 554eba87efc56e2dadb3fb2d0cb78cd8b7ea7237
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672779"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302722"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Często zadawane pytania dotyczące usługi Azure Kubernetes Service (AKS)
 
-Ten artykuł adresy częste pytania dotyczące usługi Azure Kubernetes Service (AKS).
+W tym artykule opisano często zadawane pytania dotyczące usługi Azure Kubernetes Service (AKS).
 
-## <a name="which-azure-regions-currently-provide-aks"></a>Które regiony platformy Azure jest obecnie świadczona AKS?
+## <a name="which-azure-regions-currently-provide-aks"></a>Które regiony platformy Azure obecnie udostępniają AKS?
 
 Aby uzyskać pełną listę dostępnych regionów, zobacz [AKS regiony i dostępność][aks-regions].
 
-## <a name="does-aks-support-node-autoscaling"></a>Usługa AKS obsługuje automatyczne skalowanie węzłów?
+## <a name="does-aks-support-node-autoscaling"></a>Czy AKS obsługuje automatyczne skalowanie węzła?
 
-Tak, możliwość automatyczne skalowanie węzłów agenta w poziomie w usłudze AKS jest obecnie dostępna w wersji zapoznawczej. Zobacz [automatyczne skalowanie klastra, aby spełniać wymagania aplikacji w usłudze AKS][aks-cluster-autoscaler] for instructions. AKS autoscaling is based on the [Kubernetes autoscaler][auto-scaler].
+Tak, możliwość automatycznego skalowania węzłów agentów w poziomie w AKS jest obecnie dostępna w wersji zapoznawczej. Zobacz [Automatyczne skalowanie klastra w celu spełnienia wymagań aplikacji w AKS][aks-cluster-autoscaler] for instructions. AKS autoscaling is based on the [Kubernetes autoscaler][auto-scaler].
 
-## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>Czy mogę wdrożyć usługi AKS w mojej istniejącej sieci wirtualnej?
+## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>Czy mogę wdrożyć AKS w istniejącej sieci wirtualnej?
 
-Tak, można wdrożyć klaster usługi AKS w istniejącej sieci wirtualnej za pomocą [zaawansowanych funkcji sieciowych][aks-advanced-networking].
+Tak, klaster AKS można wdrożyć w istniejącej sieci wirtualnej przy użyciu [funkcji zaawansowanej sieci][aks-advanced-networking].
 
-## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>Można ograniczyć dostęp do serwera interfejsu API Kubernetes?
+## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>Czy mogę ograniczyć dostęp do serwera interfejsu API Kubernetes?
 
-Tak, można ograniczyć dostęp do serwera interfejsu API rozwiązania Kubernetes za pomocą [interfejsu API serwera autoryzacji zakresów adresów IP][api-server-authorized-ip-ranges], który jest obecnie dostępna w wersji zapoznawczej.
+Tak, możesz ograniczyć dostęp do serwera interfejsu API Kubernetes przy użyciu [zakresów adresów IP autoryzowanych przez serwer interfejsu API][api-server-authorized-ip-ranges], które są obecnie dostępne w wersji zapoznawczej.
 
-## <a name="can-i-make-the-kubernetes-api-server-accessible-only-within-my-virtual-network"></a>Można utworzyć serwera interfejsu API rozwiązania Kubernetes dostępne tylko w obrębie sieci wirtualnej?
+## <a name="can-i-make-the-kubernetes-api-server-accessible-only-within-my-virtual-network"></a>Czy serwer interfejsu API Kubernetes może być dostępny tylko w ramach mojej sieci wirtualnej?
 
-W tej chwili nie, ale to jest planowane. Postęp można śledzić na [repozytorium GitHub usługi AKS][private-clusters-github-issue].
+W tej chwili nie jest to planowane. Postęp można śledzić w [repozytorium GitHub AKS][private-clusters-github-issue].
 
-## <a name="can-i-have-different-vm-sizes-in-a-single-cluster"></a>Czy można mieć różne rozmiary maszyn wirtualnych, w jednym klastrze?
+## <a name="can-i-have-different-vm-sizes-in-a-single-cluster"></a>Czy mogę mieć różne rozmiary maszyn wirtualnych w jednym klastrze?
 
-Tak, użyj różnych rozmiarów maszyn wirtualnych w klastrze AKS, tworząc [wiele pul węzłów][multi-node-pools], który jest obecnie dostępna w wersji zapoznawczej.
+Tak, możesz użyć różnych rozmiarów maszyn wirtualnych w klastrze AKS, tworząc [wiele pul węzłów][multi-node-pools], które są obecnie dostępne w wersji zapoznawczej.
 
-## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>Aktualizacje zabezpieczeń są stosowane do węzłów agentów AKS?
+## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>Czy aktualizacje zabezpieczeń są stosowane do węzłów agenta AKS?
 
-Azure automatycznie stosuje poprawki zabezpieczeń do węzłów systemu Linux w klastrze nocne zgodnie z harmonogramem. Jesteś odpowiedzialny za zapewnienie, że Linux, te węzły są ponownie uruchamiane jako wymagane. Masz kilka opcji ponownego uruchomienia węzłów:
+Platforma Azure automatycznie stosuje poprawki zabezpieczeń do węzłów systemu Linux w klastrze w porze nocnego harmonogramu. Jednak użytkownik jest odpowiedzialny za upewnienie się, że te węzły systemu Linux są ponownie uruchamiane zgodnie z potrzebami. Istnieje kilka opcji ponownego uruchamiania węzłów:
 
-- Ręcznie za pośrednictwem witryny Azure portal lub interfejsu wiersza polecenia platformy Azure.
-- Po uaktualnieniu klastra usługi AKS. Uaktualnianie klastra [odizolowywanie i opróżnianie węzłów][cordon-drain] automatically and then bring a new node online with the latest Ubuntu image and a new patch version or a minor Kubernetes version. For more information, see [Upgrade an AKS cluster][aks-upgrade].
-- Za pomocą [Kured](https://github.com/weaveworks/kured), demon ponowny rozruch typu open source dla platformy Kubernetes. Kured działa jako [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) i monitoruje każdy węzeł na obecność pliku, która wskazuje, że wymagane jest ponowne uruchomienie komputera. W klastrze, ponownego uruchamiania systemu operacyjnego są zarządzane przez ten sam [odizolowywanie i opróżnianie procesu][cordon-drain] jako uaktualniania klastra.
+- Ręcznie za pomocą Azure Portal lub interfejsu wiersza polecenia platformy Azure.
+- Uaktualniając klaster AKS. Klaster uaktualnia automatically and then bring a new node online with the latest Ubuntu image and a new patch version or a minor Kubernetes version. For more information, see [Upgrade an AKS cluster][aks-upgrade] [węzły Cordon i Drain][cordon-drain] .
+- Korzystając z [Kured](https://github.com/weaveworks/kured), demona ponownego uruchomienia Open Source dla Kubernetes. Kured działa jako [elementu daemonset](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) i monitoruje każdy węzeł pod kątem obecności pliku, który wskazuje, że wymagane jest ponowne uruchomienie. W klastrach ponowne uruchomienia systemu operacyjnego są zarządzane przez ten sam [proces Cordon i opróżnianie][cordon-drain] w ramach uaktualnienia klastra.
 
-Aby uzyskać więcej informacji na temat używania kured zobacz [stosowania aktualizacji zabezpieczeń i jądra dla węzłów w usłudze AKS][node-updates-kured].
+Aby uzyskać więcej informacji na temat korzystania z programu kured, zobacz temat [stosowanie aktualizacji zabezpieczeń i jądra do węzłów w AKS][node-updates-kured].
 
 ### <a name="windows-server-nodes"></a>Węzły systemu Windows Server
 
-W przypadku węzłów systemu Windows Server (obecnie dostępna w wersji zapoznawczej w usłudze AKS) aktualizacja Windows automatycznie uruchamiania i Zastosuj najnowsze aktualizacje. Zgodnie z ustalonym harmonogramem w całym cyklu tworzenia wydań Windows Update i procesu sprawdzania poprawności należy wykonać uaktualnienie na pule węzłów systemu Windows Server, w klastrze AKS. Ten proces uaktualnienia tworzy węzły, które Uruchom najnowszego obrazu systemu Windows Server i poprawkami, a następnie usuwa starszą węzły. Aby uzyskać więcej informacji na temat tego procesu, zobacz [uaktualnienia pulę węzłów w usłudze AKS][nodepool-upgrade].
+W przypadku węzłów systemu Windows Server (obecnie dostępnych w wersji zapoznawczej w AKS) Windows Update nie zostanie automatycznie uruchomiona i zastosuje najnowsze aktualizacje. Zgodnie z regularnym harmonogramem Windows Update cyklu wydania i procesu weryfikacji należy przeprowadzić uaktualnienie w puli węzłów systemu Windows Server w klastrze AKS. Ten proces uaktualniania tworzy węzły z zainstalowanym najnowszym obrazem systemu Windows Server i poprawkami, a następnie usuwa starsze węzły. Aby uzyskać więcej informacji na temat tego procesu, zobacz [uaktualnianie puli węzłów w AKS][nodepool-upgrade].
 
-## <a name="why-are-two-resource-groups-created-with-aks"></a>Dlaczego dwie grupy zasobów są tworzone za pomocą usługi AKS
+## <a name="why-are-two-resource-groups-created-with-aks"></a>Dlaczego są dwie grupy zasobów utworzone za pomocą AKS?
 
-Każde wdrożenie usługi AKS obejmuje dwie grupy zasobów:
+Każde wdrożenie AKS obejmuje dwie grupy zasobów:
 
-1. Utworzysz pierwszej grupy zasobów. Ta grupa zawiera zasób usługi Kubernetes. Dostawca zasobów usługi AKS automatycznie tworzy drugi grupy zasobów podczas wdrażania. Na przykład drugiej grupy zasobów *MC_myResourceGroup_myAKSCluster_eastus*. Aby uzyskać informacje dotyczące sposobu określania nazwy tej drugiej grupy zasobów, zobacz następną sekcję.
-1. Druga grupa zasobów, znane jako *grup zasobów dla węzłów*, zawiera wszystkie zasoby infrastruktury skojarzonego z klastrem. Te zasoby obejmują maszyny wirtualne z węzła usługi Kubernetes, sieci wirtualnych i magazynu. Domyślnie węzeł grupy zasobów ma nazwę, takich jak *MC_myResourceGroup_myAKSCluster_eastus*. AKS automatycznie usuwa zasób węzłów zawsze wtedy, gdy klaster jest usuwany, dzięki czemu można stosować tylko za zasoby, które mają cyklu życia klastra.
+1. Należy utworzyć pierwszą grupę zasobów. Ta grupa zawiera tylko zasób usługi Kubernetes. Dostawca zasobów AKS automatycznie tworzy drugą grupę zasobów podczas wdrażania. Przykładem drugiej grupy zasobów jest *MC_myResourceGroup_myAKSCluster_eastus*. Aby uzyskać informacje na temat sposobu określania nazwy tej drugiej grupy zasobów, zobacz następną sekcję.
+1. Druga grupa zasobów, znana jako *Grupa zasobów węzła*, zawiera wszystkie zasoby infrastruktury skojarzone z klastrem. Te zasoby obejmują maszyny wirtualne węzła Kubernetes, wirtualne sieci i magazyn. Domyślnie grupa zasobów węzła ma nazwę, taką jak *MC_myResourceGroup_myAKSCluster_eastus*. AKS automatycznie usuwa zasób węzła przy każdym usunięciu klastra, dlatego powinien być używany tylko w przypadku zasobów, które współdzielą cykl życia klastra.
 
-## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>Czy mogę przekazać własną nazwę grupy zasobów węzłów AKS
+## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>Czy mogę podać moją własną nazwę grupy zasobów węzła AKS?
 
-Tak. Domyślnie AKS zostanie nazwę grupy zasobów węzła *MC_clustername_resourcegroupname_location*, ale możesz też podać własną nazwę.
+Tak. Domyślnie AKS będzie nazwać węzeł grupy zasobów *MC_clustername_resourcegroupname_location*, ale można również podać własną nazwę.
 
-Aby określić własne nazwy grupy zasobów, należy zainstalować [podglądu usługi aks][aks-preview-cli] wiersza polecenia platformy Azure w wersji rozszerzenia *wersji 0.3.2* lub nowszej. Podczas tworzenia klastra usługi AKS przy użyciu [tworzenie az aks][az-aks-create] poleceń, użyj *— węzeł resource-group* parametru i określ nazwę grupy zasobów. Jeśli użytkownik [używania szablonu usługi Azure Resource Manager][aks-rm-template] wdrożyć klaster usługi AKS, można zdefiniować nazwę grupy zasobów za pomocą *nodeResourceGroup* właściwości.
+Aby określić własną nazwę grupy zasobów, zainstaluj rozszerzenie [AKS-Preview][aks-preview-cli] interfejsu wiersza polecenia platformy Azure w wersji *0.3.2* lub nowszej. Podczas tworzenia klastra AKS za pomocą polecenia [AZ AKS Create][az-aks-create] należy użyć parametru *--Node-Resource-Group* i określić nazwę grupy zasobów. W przypadku wdrażania klastra AKS za pomocą [szablonu Azure Resource Manager][aks-rm-template] można zdefiniować nazwę grupy zasobów za pomocą właściwości *nodeResourceGroup* .
 
-* Grupa zasobów dodatkowych jest automatycznie tworzona przez dostawcę zasobów platformy Azure w ramach własnej subskrypcji.
-* Można określić nazwę grupy zasobów niestandardowych, tylko wtedy, gdy tworzysz klaster.
+* Dodatkowa grupa zasobów jest automatycznie tworzona przez dostawcę zasobów platformy Azure we własnej subskrypcji.
+* Możesz określić niestandardową nazwę grupy zasobów tylko podczas tworzenia klastra.
 
-Podczas pracy z grupą zasobów węzła pamiętać, że nie możesz:
+Podczas pracy z grupą zasobów węzła należy pamiętać, że nie można:
 
-* Określ istniejącą grupę zasobów dla węzłów grupy zasobów.
-* Określ inną subskrypcję w węźle grupy zasobów.
-* Po utworzeniu klastra, należy zmienić nazwę grupy zasobów węzła.
+* Określ istniejącą grupę zasobów dla grupy zasobów węzła.
+* Określ inną subskrypcję dla grupy zasobów węzła.
+* Zmień nazwę grupy zasobów węzła po utworzeniu klastra.
 * Określ nazwy zarządzanych zasobów w grupie zasobów węzła.
-* Modyfikować ani usuwać znaczników zarządzane zasoby w grupie zasobów węzła. (Zobacz dodatkowe informacje w następnej sekcji).
+* Modyfikuj lub Usuń Tagi zarządzanych zasobów w grupie zasobów węzła. (Zobacz dodatkowe informacje w następnej sekcji).
 
-## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>Można zmodyfikować tagów i innych właściwości zasobów usługi AKS w węźle grupy zasobów?
+## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>Czy mogę modyfikować Tagi i inne właściwości zasobów AKS w grupie zasobów węzła?
 
-Jeśli zmodyfikujesz lub usuniesz tagi utworzone przez platformę Azure i innych właściwości zasobów, w węźle grupy zasobów, można uzyskać nieoczekiwane wyniki, takie jak skalowanie i uaktualnianie błędy. AKS umożliwia tworzenie i modyfikowanie tagów niestandardowych. Możesz chcieć, aby utworzyć lub zmodyfikować znaczniki niestandardowe, na przykład przypisać centrum kosztu lub jednostki biznesowej. Po zmodyfikowaniu zasoby w grupie zasobów węzła w klastrze AKS, możesz przerwać cel poziomu usług (SLO). Aby uzyskać więcej informacji, zobacz [AKS jest oferty z umową dotyczącą poziomu usług?](#does-aks-offer-a-service-level-agreement)
+W przypadku modyfikowania lub usuwania tagów utworzonych przez platformę Azure i innych właściwości zasobów w grupie zasobów węzła można uzyskać nieoczekiwane wyniki, takie jak skalowanie i uaktualnianie błędów. AKS umożliwia tworzenie i modyfikowanie tagów niestandardowych. Możesz chcieć utworzyć lub zmodyfikować niestandardowe znaczniki, na przykład, aby przypisać jednostkę biznesową lub centrum kosztów. Przez zmodyfikowanie zasobów w grupie zasobów węzła w klastrze AKS należy przerwać cel poziomu usługi (SLO). Aby uzyskać więcej informacji, zobacz [czy AKS oferuje umowę dotyczącą poziomu usług?](#does-aks-offer-a-service-level-agreement)
 
-## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>Jakie kontrolery dopuszczenie Kubernetes obsługuje AKS? Można kontrolerów dopuszczenie dodane lub usunięte?
+## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>Jakie kontrolery Kubernetes Admission są obsługiwane przez AKS? Czy można dodać lub usunąć kontrolery do przyjmowania?
 
-AKS obsługuje następujące [kontrolerów dopuszczenie][admission-controllers]:
+AKS obsługuje następujące [Kontrolery przyjęcia][admission-controllers]:
 
 - *NamespaceLifecycle*
 - *LimitRanger*
@@ -100,38 +100,46 @@ AKS obsługuje następujące [kontrolerów dopuszczenie][admission-controllers]:
 - *DenyEscalatingExec*
 - *AlwaysPullImages*
 
-Obecnie nie można zmodyfikować listę kontrolerów przyjęcia w usłudze AKS.
+Obecnie nie można modyfikować listy kontrolerów przyjmowania w AKS.
 
-## <a name="is-azure-key-vault-integrated-with-aks"></a>Czy usługa Azure Key Vault jest zintegrowana z usługą AKS?
+## <a name="is-azure-key-vault-integrated-with-aks"></a>Czy Azure Key Vault jest zintegrowany z AKS?
 
-AKS obecnie natywnie nie jest zintegrowana z usługą Azure Key Vault. Jednak [Azure klucza magazynu FlexVolume dla projektu Kubernetes][keyvault-flexvolume] umożliwia bezpośrednią integrację z zasobników Kubernetes do wpisów tajnych usługi Key Vault.
+AKS nie jest obecnie natywnie zintegrowana z Azure Key Vault. Jednak [Azure Key Vault FlexVolume for Kubernetes Project][keyvault-flexvolume] umożliwia bezpośrednią integrację z Kubernetesowych zasobników z Key Vaultymi kluczami tajnymi.
 
-## <a name="can-i-run-windows-server-containers-on-aks"></a>Czy można uruchamiać kontenery systemu Windows Server w usłudze AKS
+## <a name="can-i-run-windows-server-containers-on-aks"></a>Czy można uruchamiać kontenery systemu Windows Server na AKS?
 
-Tak, kontenery systemu Windows Server są dostępne w wersji zapoznawczej. Do uruchamiania kontenerów systemu Windows Server w usłudze AKS, możesz utworzyć pulę węzłów z systemem Windows Server jako system operacyjny gościa. Kontenery systemu Windows Server można użyć tylko 2019 serwera systemu Windows. Aby rozpocząć pracę, zobacz [Tworzenie klastra AKS z pulą węzłów systemu Windows Server][aks-windows-cli].
+Tak, kontenery systemu Windows Server są dostępne w wersji zapoznawczej. Aby uruchamiać kontenery systemu Windows Server w programie AKS, należy utworzyć pulę węzłów z systemem Windows Server jako system operacyjny gościa. Kontenery systemu Windows Server mogą korzystać tylko z systemu Windows Server 2019. Aby rozpocząć, zobacz [Tworzenie klastra AKS z pulą węzłów systemu Windows Server][aks-windows-cli].
 
-Okno obsługi serwera dla puli węzłów obejmuje pewne ograniczenia, które są częścią nadrzędnego serwera systemu Windows w projekcie platformy Kubernetes. Aby uzyskać więcej informacji na temat tych ograniczeń, zobacz [kontenery systemu Windows Server w usłudze AKS ograniczenia][aks-windows-limitations].
+Obsługa serwera okien dla puli węzłów obejmuje pewne ograniczenia, które są częścią nadrzędnego serwera systemu Windows w projekcie Kubernetes. Aby uzyskać więcej informacji o tych ograniczeniach, zobacz [kontenery systemu Windows Server w ograniczeniach AKS][aks-windows-limitations].
 
-## <a name="does-aks-offer-a-service-level-agreement"></a>AKS oferuje umowę dotyczącą poziomu usług?
+## <a name="does-aks-offer-a-service-level-agreement"></a>Czy AKS oferuje umowę dotyczącą poziomu usług?
 
-Umowy poziomu usług (SLA) dostawca zgadza się zwrotu klienta kosztu usługi, jeśli poziom opublikowanej usługi nie zostanie spełniony. Ponieważ AKS jest bezpłatna, bez kosztów dostępnej do zwrotu, więc nie AKS umowa SLA nie formalny. Jednak AKS dąży do zapewnienia dostępności co najmniej 99,5% do serwera interfejsu API rozwiązania Kubernetes.
+W umowie dotyczącej poziomu usług (SLA) dostawca zgadza się zwrócić klienta koszt usługi, jeśli nie jest spełniony opublikowany poziom usług. Ponieważ AKS jest bezpłatny, żaden koszt nie jest dostępny do zwrotu, więc AKS nie ma formalnej umowy SLA. AKS ma jednak na celu zachowanie dostępności co najmniej 99,5% dla serwera interfejsu API Kubernetes.
 
-## <a name="why-cant-i-set-maxpods-below-30"></a>Dlaczego nie można ustawić maxPods poniżej 30
+## <a name="why-cant-i-set-maxpods-below-30"></a>Dlaczego nie mogę ustawić maxPods poniżej 30?
 
-W usłudze AKS, można ustawić `maxPods` wartości podczas tworzenia klastra za korzystanie z szablonów interfejsu wiersza polecenia platformy Azure i usługi Azure Resource Manager. Jednak wymaga wtyczki Kubenet i wtyczki Azure CNI *minimalną wartość* (zweryfikowany w czasie tworzenia):
+W AKS można ustawić `maxPods` wartość podczas tworzenia klastra przy użyciu interfejsu wiersza polecenia platformy Azure i szablonów Azure Resource Manager. Jednak zarówno korzystającą wtyczki kubenet, jak i Azure CNI wymagają *wartości minimalnej* (zweryfikowany podczas tworzenia):
 
 | Networking | Minimalne | Maksimum |
 | -- | :--: | :--: |
 | Azure CNI | 30 | 250 |
-| Kubenet | 30 | 110 |
+| Korzystającą wtyczki kubenet | 30 | 110 |
 
-AKS to zarządzana usługa, możemy wdrożyć i zarządzać nią dodatki i zasobników w ramach klastra. W przeszłości, użytkownicy mogą definiować `maxPods` wartości mniejszej niż wartość, która zarządzanych zasobników wymagane do uruchomienia (na przykład, 30). Teraz AKS oblicza minimalną liczbę zasobników za pomocą następującej formuły: ((maxPods lub (maxPods * vm_count)) > minimum zasobników zarządzanych dodatku.
+Ponieważ AKS jest usługą zarządzaną, wdrażamy Dodatki i zasobniki oraz zarządzają nimi w ramach klastra. W przeszłości użytkownicy mogą definiować `maxPods` wartość niższą niż wartość, którą muszą używać zarządzane zasobniki (na przykład 30). AKS teraz oblicza minimalną liczbę zasobników przy użyciu tej formuły: (((maxPods lub (maxPods * vm_count)) >.
 
-Użytkownicy nie mogą przesłaniać minimum `maxPods` sprawdzania poprawności.
+Użytkownicy nie mogą zastąpić minimalnej `maxPods` weryfikacji.
 
-## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>Czy mogę zastosować rabaty rezerwacji platformy Azure do mojego węzłów agenta usługi AKS
+## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>Czy mogę zastosować rabaty rezerwacji platformy Azure do węzłów agenta AKS?
 
-Węzły agenta AKS są rozliczane jako standardowe maszyny wirtualne platformy Azure, więc jeśli została zakupiona [Azure rezerwacje][reservation-discounts] dla rozmiaru maszyny Wirtualnej, którego używasz w usłudze AKS, których rabaty są automatycznie stosowane.
+Węzły agenta AKS są rozliczane jako standardowe maszyny wirtualne platformy Azure, więc w przypadku zakupu [rezerwacji platformy Azure][reservation-discounts] dla rozmiaru maszyny wirtualnej, który jest używany w programie AKS, te rabaty są automatycznie stosowane.
+
+## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>Czy mogę przenieść lub migrować mój klaster między dzierżawami platformy Azure?
+
+Za `az aks update-credentials` pomocą polecenia można przenieść klaster AKS między dzierżawami platformy Azure. Postępuj zgodnie z instrukcjami w temacie [Wybierz, aby zaktualizować lub utworzyć nazwę główną usługi](https://docs.microsoft.com/azure/aks/update-credentials) , a następnie [zaktualizuj klaster AKS przy użyciu nowych poświadczeń](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-credentials).
+
+## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>Czy mogę przenieść klaster między subskrypcjami?
+
+Przenoszenie klastrów między subskrypcjami nie jest obecnie obsługiwane.
 
 <!-- LINKS - internal -->
 

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 7362bd5b4e15df516478ef4bef20d76fc46b326f
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 242f2fa9885f3f85439caddd061f650baafb8df4
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275363"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314413"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Usługa Azure Event Hubs — platforma przesyłania strumieniowego danych big data i usługa pozyskiwania zdarzeń
 Usługa Azure Event Hubs to platforma przesyłania strumieniowego danych big data i usługa pozyskiwania zdarzeń. Może odbierać i przetwarzać miliony zdarzeń na sekundę. Dane wysłane do centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania.
@@ -29,17 +29,19 @@ Następujące scenariusze to niektóre z możliwych zastosowań usługi Event Hu
 - Archiwizowanie danych
 - Przetwarzanie transakcji
 - Przetwarzanie dane telemetrycznych o użytkownikach
-- Strumieniowe przesyłanie danych telemetrycznych z urządzenia 
+- Strumieniowe przesyłanie danych telemetrycznych z urządzenia
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/45wgY-VSk9I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## <a name="why-use-event-hubs"></a>Dlaczego warto korzystać z usługi Event Hubs?
 
 Dane mają wartość tylko wtedy, gdy można łatwo przetwarzać dane z różnych źródeł i formułować na ich podstawie aktualne wnioski. Usługa Event Hubs to rozproszona platforma do przetwarzania strumieniowego z małymi opóźnieniami, którą można bezproblemowo integrować z usługami danych i analiz na platformie Azure i poza nią w celu utworzenia pełnego potoku danych big data.
 
-Usługa Event Hubs stanowi „drzwi wejściowe” dla potoku zdarzeń i jest często nazywana *systemem zbierania zdarzeń* w architekturach rozwiązań. System zbierania zdarzeń to składnik lub usługa, która znajduje się między wydawcami zdarzeń, a ich odbiorcami. Jego rolą jest oddzielenie procesu tworzenia strumienia zdarzeń od użycia tych zdarzeń. Usługa Event Hubs udostępnia ujednoliconą platformę przesyłania strumieniowego z buforem przechowywana czasowego, co umożliwia uniezależnienie wydawców i odbiorców zdarzeń. 
+Usługa Event Hubs stanowi „drzwi wejściowe” dla potoku zdarzeń i jest często nazywana *systemem zbierania zdarzeń* w architekturach rozwiązań. System zbierania zdarzeń to składnik lub usługa, która znajduje się między wydawcami zdarzeń, a ich odbiorcami. Jego rolą jest oddzielenie procesu tworzenia strumienia zdarzeń od użycia tych zdarzeń. Usługa Event Hubs udostępnia ujednoliconą platformę przesyłania strumieniowego z buforem przechowywana czasowego, co umożliwia uniezależnienie wydawców i odbiorców zdarzeń.
 
-W poniższych sekcjach opisano najważniejsze funkcje usługi Azure Event Hubs: 
+W poniższych sekcjach opisano najważniejsze funkcje usługi Azure Event Hubs:
 
-## <a name="fully-managed-paas"></a>W pełni zarządzana usługa PaaS 
+## <a name="fully-managed-paas"></a>W pełni zarządzana usługa PaaS
 
 Event Hubs to w pełni zarządzana usługa PaaS (Platform-as-a-Service), która wymaga niewielkich nakładów na konfigurację i zarządzanie, dzięki czemu możesz skoncentrować się na swoich rozwiązaniach biznesowych. [Usługa Event Hubs dla ekosystemów platformy Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) zapewnia środowisko platformy Kafka jako usługę bez konieczności konfigurowania i uruchamiania klastrów ani zarządzania nimi.
 
@@ -51,14 +53,14 @@ Funkcja [Capture](event-hubs-capture-overview.md) umożliwia przechwytywanie dan
 
 Usługę Azure Event Hubs można również zintegrować z usługą [Azure Functions](/azure/azure-functions/) w celu uzyskania architektury bezserwerowej.
 
-## <a name="scalable"></a>Skalowalność 
+## <a name="scalable"></a>Skalowalność
 
-Korzystając z usługi Event Hubs, możesz zacząć od strumieni danych liczonych w megabajtach i rozwijać je do rozmiaru gigabajtów, a nawet terabajtów. Funkcja [automatycznego rozszerzania](event-hubs-auto-inflate.md) jest jedną z wielu dostępnych opcji skalowania liczby jednostek przepływności odpowiednio do potrzeb użycia. 
+Korzystając z usługi Event Hubs, możesz zacząć od strumieni danych liczonych w megabajtach i rozwijać je do rozmiaru gigabajtów, a nawet terabajtów. Funkcja [automatycznego rozszerzania](event-hubs-auto-inflate.md) jest jedną z wielu dostępnych opcji skalowania liczby jednostek przepływności odpowiednio do potrzeb użycia.
 
 ## <a name="rich-ecosystem"></a>Zaawansowany ekosystem
 
 Usługa [Event Hubs dla ekosystemów platformy Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) umożliwia klientom i aplikacjom platformy [Apache Kafka (w wersji 1.0 lub nowszej)](https://kafka.apache.org/) komunikowanie się z usługą Event Hubs. Nie trzeba przy tym instalować i konfigurować własnych klastrów platformy Kafka ani zarządzać nimi.
- 
+
 Rozbudowany ekosystem dostępny za pomocą różnych [języków (.NET, Java, Python, Go, Node.js)](https://github.com/Azure/azure-event-hubs) umożliwia łatwe rozpoczęcie przetwarzania strumieni danych w usłudze Event Hubs. Wszystkie obsługiwane języki klienta zapewniają integrację niskiego poziomu. Ten ekosystem umożliwia również bezproblemową integrację z usługami platformy Azure, takimi jak Azure Stream Analytics i Azure Functions, umożliwiając w ten sposób tworzenie architektur bezserwerowych.
 
 ## <a name="key-architecture-components"></a>Główne składniki architektury
@@ -77,7 +79,7 @@ Na poniższym rysunku przedstawiono architekturę przetwarzania strumienia usłu
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby rozpocząć korzystanie z usługi Event Hubs, zobacz **wysyłania i odbierania zdarzeń** samouczków: 
+Aby rozpocząć korzystanie z Event Hubs, zobacz samouczki **wysyłania i odbierania zdarzeń** :
 
 - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
 - [.NET Framework](event-hubs-dotnet-framework-getstarted-send.md)
@@ -85,8 +87,8 @@ Aby rozpocząć korzystanie z usługi Event Hubs, zobacz **wysyłania i odbieran
 - [Python](event-hubs-python-get-started-send.md)
 - [Node.js](event-hubs-node-get-started-send.md)
 - [Go](event-hubs-go-get-started-send.md)
-- [C (tylko Wyślij)](event-hubs-c-getstarted-send.md)
-- [Apache Storm (tylko pobieranie)](event-hubs-storm-getstarted-receive.md)
+- [C (tylko wysyłanie)](event-hubs-c-getstarted-send.md)
+- [Apache Storm (tylko odbieranie)](event-hubs-storm-getstarted-receive.md)
 
 
 Więcej informacji na temat usługi Event Hubs zawierają następujące artykuły:

@@ -1,105 +1,112 @@
 ---
-title: Skalowanie klastra usługi Azure Eksplorator danych
-description: W tym artykule opisano kroki, aby skalować w poziomie i skalowanie w klastrze usługi Azure Eksplorator danych zależności od zmieniających się żądanie.
+title: Zarządzanie skalowaniem w poziomie klastra (skalowanie w dół) w usłudze Azure Eksplorator danych w celu uwzględnienia zmiany zapotrzebowania
+description: W tym artykule opisano kroki umożliwiające skalowanie w poziomie i skalowanie w klastrze usługi Azure Eksplorator danych w oparciu o zmieniające się zapotrzebowanie.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 06/30/2019
-ms.openlocfilehash: 29bfcc42462a667850f0b2e1bbda3d29cd1597ab
-ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
+ms.date: 07/14/2019
+ms.openlocfilehash: 70e6bdfcf9718244632ad02e09d3ddadee71a617
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67571519"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311576"
 ---
-# <a name="manage-cluster-horizontal-scaling-to-accommodate-changing-demand"></a>Zarządzanie, klaster skalowanie w poziomie do uwzględnienia zmiennym obciążeniem
+# <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>Zarządzanie skalowaniem w poziomie klastra (skalowanie w dół) w usłudze Azure Eksplorator danych w celu uwzględnienia zmiany zapotrzebowania
 
-Odpowiednio rozmiaru klastra ma kluczowe znaczenie dla wydajności Eksploratora danych usługi Azure. Jednak żądanie w klastrze nie można przewidzieć z dokładnością bezwzględne. Rozmiar klastra statyczne może prowadzić do niepełnego lub overutilization, z których żadna nie jest idealnym rozwiązaniem.
+Odpowiednio ustalanie wielkości klastra ma kluczowe znaczenie dla wydajności Eksplorator danych platformy Azure. Statyczny rozmiar klastra może prowadzić do użycia lub nadmiernego użycia, nie jest idealnym rozwiązaniem.
 
-Lepszym rozwiązaniem jest *skalowania* klastra, dodając i usuwając pojemności zmieniającymi się żądanie. Istnieją dwa przepływy pracy na potrzeby skalowania: 
-* Skalowanie w poziomie, nazywane również skalowaniem na zewnątrz i w.
-* Skalowanie w pionie, nazywane również skalowaniem w górę i w dół.
+Ze względu na to, że zapotrzebowanie w klastrze nie może być przewidywane z dokładnością bezwzględną, lepiej jest *skalować* klaster, dodawać i usuwać zasoby procesora CPU i zmieniać zapotrzebowanie. 
 
-W tym artykule opisano poziomy skalowania przepływu pracy.
+Istnieją dwa przepływy pracy umożliwiające skalowanie klastra Eksplorator danych platformy Azure: 
 
-Skalowanie w poziomie umożliwia skalowanie liczby wystąpień automatycznie na podstawie wstępnie zdefiniowanych reguł i harmonogramy. Określ ustawienia automatycznego skalowania klastra w witrynie Azure portal, zgodnie z opisem w tym artykule.
+* Skalowanie w poziomie, nazywane również skalowaniem do wewnątrz i na zewnątrz.
+* [Skalowanie](manage-cluster-vertical-scaling.md)w pionie, nazywane również skalowaniem w górę i w dół.
 
-## <a name="steps-to-configure-horizontal-scaling"></a>Kroki, aby skonfigurować skalowanie w poziomie
+W tym artykule opisano przepływ pracy skalowania w poziomie.
 
-W witrynie Azure portal przejdź do zasobu klastra Eksploratora danych. W obszarze **ustawienia** nagłówka, wybierz **skalowanie w poziomie**. 
+## <a name="configure-horizontal-scaling"></a>Konfiguruj skalowanie w poziomie
 
-Wybierz metodę odpowiednią skalowania automatycznego: **Skalowanie ręczne**, **zoptymalizowane pod kątem skalowania automatycznego** lub **niestandardowego automatycznego skalowania**.
+Używając skalowania w poziomie, można automatycznie skalować liczbę wystąpień na podstawie wstępnie zdefiniowanych reguł i harmonogramów. Aby określić ustawienia automatycznego skalowania dla klastra:
+
+1. W Azure Portal przejdź do zasobu klastra usługi Azure Eksplorator danych. W obszarze **Ustawienia**wybierz pozycję **Skaluj w poziomie**. 
+
+2. W oknie **skalowanie w poziomie** wybierz żądaną metodę skalowania automatycznego: **Skalowanie ręczne**, **zoptymalizowane automatyczne skalowanie**lub **niestandardowe skalowanie**automatyczne.
 
 ### <a name="manual-scale"></a>Skalowanie ręczne
 
-Skalowanie ręczne jest ustawieniem domyślnym z tworzenia klastra. Oznacza to, że klaster ma pojemność klastra statycznych, który nie zmieni się automatycznie. Możesz wybrać pojemność statyczne, korzystając z paska i nie zmieni się aż do następnego będzie zmiany skalowania klastra w poziomie ustawienie.
+Skalowanie ręczne jest ustawieniem domyślnym podczas tworzenia klastra. Klaster ma statyczną pojemność, która nie zmienia się automatycznie. Możesz wybrać pojemność statyczną za pomocą paska **Liczba wystąpień** . Skalowanie klastra pozostaje w tym ustawieniu do momentu wprowadzenia kolejnej zmiany.
 
-   ![Skalowanie ręczne — metoda](media/manage-cluster-horizontal-scaling/manual-scale-method.png)
+   ![Metoda skalowania ręcznego](media/manage-cluster-horizontal-scaling/manual-scale-method.png)
 
-### <a name="optimized-autoscale"></a>Zoptymalizowane automatycznego skalowania
+### <a name="optimized-autoscale"></a>Zoptymalizowane automatyczne skalowanie
 
-Zoptymalizowane skalowania automatycznego jest metodą zalecaną skalowania automatycznego. Kroki, aby skonfigurować automatyczne skalowanie zoptymalizowany pod kątem:
+Zoptymalizowane automatyczne skalowanie jest zalecaną metodą automatycznego skalowania. Ta metoda optymalizuje wydajność i koszty klastra. Jeśli klaster zbliża się do stanu pod kątem użycia, zostanie on przeskalowany w. Ta akcja obniża koszty, ale utrzymuje poziom wydajności. Jeśli klaster zbliża się do nadmiernego użycia, będzie skalowany w poziomie w celu zapewnienia optymalnej wydajności. Aby skonfigurować optymalizację skalowania automatycznego:
 
-1. Wybrana opcja automatycznego skalowania zoptymalizowany pod kątem i wybierz dolną granicę i górnego limitu ilości wystąpienia klastra, skalowania automatycznego zostanie wykonane między tymi limitami.
-2. Kliknij pozycję Zapisz.
+1. Wybierz pozycję **zoptymalizowane automatyczne skalowanie**. 
 
-   ![Metoda zoptymalizowane automatycznego skalowania](media/manage-cluster-horizontal-scaling/optimized-autoscale-method.png)
+1. Wybierz minimalną liczbę wystąpień i maksymalną liczbę wystąpień. Automatyczne skalowanie klastra między tymi dwoma liczbami jest zależne od obciążenia.
 
-Po kliknięcie przycisku Zapisz mechanizm skalowania automatycznego zoptymalizowany pod kątem rozpocznie się pracę i jest akcje będą widoczne w dzienniku aktywności klastra. Ta metoda skalowania automatycznego jest Optymalizacja wydajności klastra i koszty: klaster rozpocznie się uzyskać dostęp do stanu niepełnego go będzie można skalować w, co pozostawienie tej samej i niższe koszty wydajności, a klaster zostanie uruchomiony do stanu overutilization, będzie on skalowany w poziomie do upewnij się, że działa poprawnie
+1. Wybierz pozycję **Zapisz**.
 
-### <a name="custom-autoscale"></a>Niestandardowe automatyczne skalowanie
+   ![Zoptymalizowana metoda automatycznego skalowania](media/manage-cluster-horizontal-scaling/optimized-autoscale-method.png)
 
-Metoda niestandardowe automatyczne skalowanie pozwala skalowanie klastra dynamicznie na podstawie metryk, które określisz. Na poniższym rysunku przedstawiono przepływ i kroki, aby skonfigurować automatyczne skalowanie niestandardowe. Więcej szczegółów postępuj zgodnie z grafiki.
+Zoptymalizowana funkcja automatycznego skalowania jest uruchamiana. Jego działania są teraz widoczne w dzienniku aktywności platformy Azure klastra.
 
-1. W **Nazwa ustawienia skalowania automatycznego** Podaj nazwę, taką jak *skalowalnego w poziomie: wykorzystanie w pamięci podręcznej*. 
+### <a name="custom-autoscale"></a>Niestandardowe Skalowanie automatyczne
 
-   ![Reguły skalowania](media/manage-cluster-horizontal-scaling/custom-autoscale-method.png)
+Za pomocą niestandardowego skalowania automatycznego można skalować klaster dynamicznie na podstawie określonych metryk. Poniższa ilustracja przedstawia przepływ i kroki konfigurowania niestandardowego skalowania automatycznego. Więcej szczegółów znajduje się na ilustracji.
 
-2. Aby uzyskać **tryb skalowania**, wybierz opcję **skalowania na podstawie metryki**. Ten tryb zapewnia dynamiczne skalowanie. Możesz również wybrać **Skaluj do określonej liczby wystąpień**.
+1. W polu **Nazwa ustawienia automatycznego skalowania** wprowadź nazwę, na przykład skalowalny w *poziomie: użycie pamięci*podręcznej. 
 
-3. Wybierz **+ Dodaj regułę**.
+   ![Reguła skalowania](media/manage-cluster-horizontal-scaling/custom-autoscale-method.png)
 
-4. W **reguły skalowania** sekcji po prawej stronie, podaj wartości dla każdego ustawienia.
+2. W obszarze **tryb skalowania**wybierz pozycję **skalowanie na podstawie metryki**. Ten tryb zapewnia dynamiczne skalowanie. Możesz również wybrać **skalowanie do określonej liczby wystąpień**.
+
+3. Wybierz pozycję **+ Dodaj regułę**.
+
+4. W sekcji **reguła skalowania** po prawej stronie Wprowadź wartości dla każdego ustawienia.
 
     **Kryteria**
 
     | Ustawienie | Opis i wartość |
     | --- | --- |
-    | **Agregacja czasu** | Wybierz kryteria agregacji, takich jak **średni**. |
-    | **Nazwa metryki** | Wybierz metrykę, chcesz, aby operacja skalowania na podstawie, takich jak **wykorzystania pamięci podręcznej**. |
-    | **Statystyka ziarna czasu** | Wybór między **średni**, **Minimum**, **maksymalna**, i **suma**. |
-    | **Operator** | Wybierz odpowiednią opcję, takich jak **większa lub równa**. |
-    | **Próg** | Wybierz odpowiednią wartość. Na przykład o 80 procent wykorzystania pamięci podręcznej jest dobry punkt wyjścia. |
-    | **Czas trwania (w minutach)** | Wybierz odpowiednią ilość czasu, sprawdź ponownie, gdy trwa obliczanie metryki systemu. Rozpocznij od domyślnego 10 minut. |
+    | **Agregacja czasu** | Wybierz kryteria agregacji, takie jak **średnia**. |
+    | **Nazwa metryki** | Wybierz metrykę, na której ma być oparta Operacja skalowania, na przykład **użycie pamięci**podręcznej. |
+    | **Statystyka ziarna czasu** | Wybierz między **orednimi**, **minimum**, **maksimum**i **sum**. |
+    | **Operator** | Wybierz odpowiednią opcję, **na przykład większą lub równą**. |
+    | **Próg** | Wybierz odpowiednią wartość. Na przykład w przypadku użycia pamięci podręcznej 80 procent jest dobrym punktem początkowym. |
+    | **Czas trwania (w minutach)** | Wybierz odpowiedni czas na wyszukanie systemu podczas obliczania metryk. Rozpocznij od wartości domyślnej 10 minut. |
     |  |  |
 
     **Akcja**
 
     | Ustawienie | Opis i wartość |
     | --- | --- |
-    | **Operacja** | Wybierz odpowiednią opcję na skalowanie w pionie lub w poziomie. |
-    | **Liczba wystąpień** | Wybierz liczbę węzłów lub wystąpienia, które chcesz dodać lub usunąć po spełnieniu warunku metryki. |
-    | **Czas ochładzania (minuty)** | Wybierz odpowiedni interwał między operacji skalowania. Rozpocznij od domyślnego pięć minut. |
+    | **Operacja** | Wybierz odpowiednią opcję, aby skalować w poziomie lub na zewnątrz. |
+    | **Liczba wystąpień** | Wybierz liczbę węzłów lub wystąpień, które chcesz dodać lub usunąć po spełnieniu warunku metryki. |
+    | **Chłodnie (minuty)** | Wybierz odpowiedni przedział czasu, aby oczekiwać między operacjami skalowania. Zacznij od domyślnej wartości pięciu minut. |
     |  |  |
 
 5. Wybierz pozycję **Dodaj**.
 
-6. W **limity wystąpień** sekcji po lewej stronie, podaj wartości dla każdego ustawienia.
+6. W sekcji **limity wystąpień** po lewej stronie Wprowadź wartości dla każdego ustawienia.
 
     | Ustawienie | Opis i wartość |
     | --- | --- |
-    | **Minimum** | Liczba wystąpień skalowanych klastra nie będzie poniżej, niezależnie od użycia. |
-    | **Maksymalna** | Liczba wystąpień skalowanych klastra nie będzie powyżej, niezależnie od użycia. |
-    | **Domyślne** | Domyślna liczba wystąpień. To ustawienie jest używane, jeśli występują problemy z odczytaniem metryk zasobów. |
+    | **Minimum** | Liczba wystąpień, które nie będą skalowane przez klaster, niezależnie od użycia. |
+    | **Długość** | Liczba wystąpień, które nie będą skalowane przez klaster, niezależnie od użycia. |
+    | **Domyślne** | Domyślna liczba wystąpień. To ustawienie jest używane w przypadku problemów z odczytem metryk zasobów. |
     |  |  |
 
 7. Wybierz pozycję **Zapisz**.
 
-Operacja skalowania w poziomie, dla klastra Eksploratora danych usługi Azure został skonfigurowany. Dodaj inną regułę dla operacji skalowania na zewnątrz. Jeśli potrzebujesz pomocy w przypadku problemów skalowanie klastra [Otwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) w witrynie Azure portal.
+Skalowanie poziome dla klastra usługi Azure Eksplorator danych zostało już skonfigurowane. Dodaj kolejną regułę dla skalowania w pionie. Jeśli potrzebujesz pomocy w rozwiązywaniu problemów ze skalowaniem klastra, [Otwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) w Azure Portal.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Monitorowanie wydajności, kondycji i użycia za pomocą metryk Eksplorator danych platformy Azure](using-metrics.md)
-* [Zarządzanie klastrem skalowanie w pionie](manage-cluster-vertical-scaling.md) dla odpowiedniego rozmiaru klastra.
+* [Monitoruj wydajność, kondycję i użycie usługi Azure Eksplorator danych przy użyciu metryk](using-metrics.md)
+
+* [Zarządzanie skalowaniem](manage-cluster-vertical-scaling.md) w poziomie klastra w celu odpowiedniego ustalania rozmiarów klastra.

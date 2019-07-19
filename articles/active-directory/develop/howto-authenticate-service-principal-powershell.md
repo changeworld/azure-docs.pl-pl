@@ -8,6 +8,7 @@ manager: CelesteDG
 ms.assetid: d2caf121-9fbe-4f00-bf9d-8f3d1f00a6ff
 ms.service: active-directory
 ms.subservice: develop
+ms.custom: aaddev
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
@@ -16,12 +17,12 @@ ms.date: 10/24/2018
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6d6de5186b1906d56b5a43317d9c36ad1cc6aad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73033f91e9d20c56fedc6b4faf26dcf312fce1e1
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540409"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321111"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Instrukcje: Tworzenie jednostki usługi z certyfikatem przy użyciu programu Azure PowerShell
 
@@ -31,7 +32,7 @@ Jeśli masz aplikację lub skrypt, które potrzebują dostępu do zasobów, moż
 * Używanie certyfikatu do uwierzytelnienia podczas wykonywania skryptu nienadzorowanego.
 
 > [!IMPORTANT]
-> Zamiast tworzenia nazwy głównej usługi, należy wziąć pod uwagę przy użyciu zarządzanych tożsamości dla zasobów platformy Azure dla Twojej tożsamości aplikacji. Jeśli kod jest wykonywany na to usługa, która obsługuje zarządzanych tożsamości i uzyskuje dostęp do zasobów, które obsługują uwierzytelnianie usługi Azure Active Directory (Azure AD), zarządzanych tożsamości jest lepszym rozwiązaniem dla Ciebie. Aby dowiedzieć się więcej na temat zarządzanych tożsamości dla zasobów platformy Azure, w tym usług, które obecnie go obsługują, zobacz [co to jest zarządzanych tożsamości dla zasobów platformy Azure?](../managed-identities-azure-resources/overview.md).
+> Zamiast tworzyć jednostkę usługi, rozważ użycie zarządzanych tożsamości dla zasobów platformy Azure dla Twojej tożsamości aplikacji. Jeśli kod jest uruchamiany w usłudze, która obsługuje zarządzane tożsamości i uzyskuje dostęp do zasobów, które obsługują uwierzytelnianie Azure Active Directory (Azure AD), tożsamości zarządzane są dla Ciebie lepszym rozwiązaniem. Aby dowiedzieć się więcej na temat tożsamości zarządzanych dla zasobów platformy Azure, w tym usług, które są obecnie obsługiwane, zobacz temat [co to są tożsamości zarządzane dla zasobów platformy Azure?](../managed-identities-azure-resources/overview.md).
 
 W tym artykule przedstawiono sposób tworzenia jednostki usługi uwierzytelnianej przy użyciu certyfikatu. Aby skonfigurować jednostkę przy użyciu hasła, zobacz [Tworzenie jednostki usługi platformy Azure za pomocą programu Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
 
@@ -41,13 +42,13 @@ Aby wykonać czynności z tego artykułu, musisz mieć [najnowszą wersję](/pow
 
 ## <a name="required-permissions"></a>Wymagane uprawnienia
 
-Aby ukończyć ten artykuł, musi mieć wystarczające uprawnienia w zarówno usługi Azure AD i subskrypcji platformy Azure. W szczególności należy utworzyć aplikację w usłudze Azure AD i przypisania nazwy głównej usługi do roli.
+Aby ukończyć ten artykuł, musisz mieć wystarczające uprawnienia zarówno w usłudze Azure AD, jak i w ramach subskrypcji platformy Azure. W tym celu należy mieć możliwość tworzenia aplikacji w usłudze Azure AD i przypisywania jednostki usługi do roli.
 
 Najłatwiejszym sposobem sprawdzenia, czy Twoje konto ma odpowiednie uprawnienia, jest skorzystanie z portalu. Zobacz [Sprawdzanie wymaganego uprawnienia](howto-create-service-principal-portal.md#required-permissions).
 
 ## <a name="create-service-principal-with-self-signed-certificate"></a>Tworzenie jednostki usługi z certyfikatem z podpisem własnym
 
-Poniższy przykład przedstawia prosty scenariusz. Używa ona [New AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) do utworzenia jednostki usługi przy użyciu certyfikatu z podpisem własnym i używa [New-AzureRmRoleAssignment](/powershell/module/az.resources/new-azroleassignment) można przypisać [Współautor](../../role-based-access-control/built-in-roles.md#contributor) Rola do nazwy głównej usługi. Zakres przypisania roli to aktualnie wybrana subskrypcja platformy Azure. Aby wybrać inną subskrypcję, użyj [AzContext zestaw](/powershell/module/Az.Accounts/Set-AzContext).
+Poniższy przykład przedstawia prosty scenariusz. Używa polecenie [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) , aby utworzyć jednostkę usługi z certyfikatem z podpisem własnym, a następnie za pomocą właściwości [New-AzureRmRoleAssignment](/powershell/module/az.resources/new-azroleassignment) przypisać rolę [współautor](../../role-based-access-control/built-in-roles.md#contributor) do jednostki usługi. Zakres przypisania roli to aktualnie wybrana subskrypcja platformy Azure. Aby wybrać inną subskrypcję, użyj polecenie [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext).
 
 ```powershell
 $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" `
@@ -63,7 +64,7 @@ Sleep 20
 New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
 ```
 
-Przykład zostaje uśpione na 20 sekund, aby trochę czasu, Nowa usługa główna propagowane w całej usługi Azure AD. Jeśli skrypt nie czeka wystarczająco długi, pojawi się komunikatem o błędzie informującym: "Jednostki {ID} nie istnieje w katalogu {DIR-ID}". Aby rozwiązać ten problem, poczekaj chwilę, uruchom **New AzRoleAssignment** ponownie polecenie.
+Przykład uśpienia przez 20 sekund, aby umożliwić pewien czas propagacji nowej jednostki usługi w usłudze Azure AD. Jeśli skrypt nie czeka wystarczająco długo, zobaczysz komunikat o błędzie: "Podmiot zabezpieczeń {ID}" nie istnieje w katalogu {DIR-ID} ". Aby rozwiązać ten problem, poczekaj chwilę, a następnie ponownie uruchom polecenie **New-AzRoleAssignment** .
 
 Zakres przypisania roli do określonej grupy zasobów można określić za pomocą parametru **ResourceGroupName**. Zakres konkretnego zasobu można również określić za pomocą parametrów **ResourceType** i **ResourceName**. 
 
@@ -86,7 +87,7 @@ $cert = Get-ChildItem -path Cert:\CurrentUser\my | where {$PSitem.Subject -eq 'C
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>Udostępnianie certyfikatu za pośrednictwem zautomatyzowanego skryptu programu PowerShell
 
-Za każdym razem, gdy logujesz się jako jednostka usługi, musisz podać identyfikator dzierżawy katalogu aplikacji usługi AD. Dzierżawa to wystąpienie usługi Azure AD.
+Za każdym razem, gdy logujesz się jako jednostka usługi, musisz podać identyfikator dzierżawy katalogu aplikacji usługi AD. Dzierżawca jest wystąpieniem usługi Azure AD.
 
 ```powershell
 $TenantId = (Get-AzSubscription -SubscriptionName "Contoso Default").TenantId
@@ -146,7 +147,7 @@ Param (
 ```
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>Udostępnianie certyfikatu za pośrednictwem zautomatyzowanego skryptu programu PowerShell
-Za każdym razem, gdy logujesz się jako jednostka usługi, musisz podać identyfikator dzierżawy katalogu aplikacji usługi AD. Dzierżawa to wystąpienie usługi Azure AD.
+Za każdym razem, gdy logujesz się jako jednostka usługi, musisz podać identyfikator dzierżawy katalogu aplikacji usługi AD. Dzierżawca jest wystąpieniem usługi Azure AD.
 
 ```powershell
 Param (
@@ -190,7 +191,7 @@ Jeśli musisz pobrać identyfikator aplikacji, użyj polecenia:
 
 ## <a name="change-credentials"></a>Zmienianie poświadczeń
 
-Aby zmienić poświadczenia dla aplikacji usługi AD, albo z powodu złamania zabezpieczeń lub wygaśnięcie poświadczeń, należy użyć [AzADAppCredential Usuń](/powershell/module/az.resources/remove-azadappcredential) i [New AzADAppCredential](/powershell/module/az.resources/new-azadappcredential) polecenia cmdlet.
+Aby zmienić poświadczenia dla aplikacji usługi AD z powodu naruszenia zabezpieczeń lub wygaśnięcia poświadczeń, Użyj poleceń cmdlet [Remove-AzADAppCredential](/powershell/module/az.resources/remove-azadappcredential) i [New-AzADAppCredential](/powershell/module/az.resources/new-azadappcredential) .
 
 Aby usunąć wszystkie poświadczenia aplikacji, należy użyć polecenia:
 
@@ -211,11 +212,11 @@ Get-AzADApplication -DisplayName exampleapp | New-AzADAppCredential `
 
 Podczas tworzenia jednostki usługi mogą wystąpić następujące błędy:
 
-* **„Authentication_Unauthorized”** lub **„W kontekście nie znaleziono subskrypcji”** . — Zostanie wyświetlony ten błąd, gdy Twoje konto nie ma [wymagane uprawnienia](#required-permissions) w usłudze Azure AD, aby zarejestrować aplikację. Zazwyczaj ten błąd zostanie wyświetlony tylko Administrator użytkowników w usłudze Azure Active Directory mogą rejestrować aplikacje, gdy Twoje konto nie jest administratorem. Poproś administratora o przypisanie Cię do roli administratora lub o umożliwienie użytkownikom rejestrowania aplikacji.
+* **„Authentication_Unauthorized”** lub **„W kontekście nie znaleziono subskrypcji”** . — Ten błąd jest wyświetlany, gdy konto nie ma [wymaganych uprawnień](#required-permissions) do zarejestrowania aplikacji w usłudze Azure AD. Zazwyczaj ten błąd jest wyświetlany, gdy tylko użytkownicy administracyjni w Azure Active Directory mogą rejestrować aplikacje, a Twoje konto nie jest kontem administratora. Poproś administratora o przypisanie Cię do roli administratora lub o umożliwienie użytkownikom rejestrowania aplikacji.
 
-* Twoje konto **"nie ma autoryzacji do wykonania akcji"Microsoft.Authorization/roleAssignments/write"w zakresie"/ subscriptions / {guid}"."**  — Zostanie wyświetlony ten błąd, gdy Twoje konto nie ma wystarczających uprawnień, aby przypisać rolę do tożsamości usługi. Poproś administratora subskrypcji o dodanie Cię do roli Administrator dostępu użytkowników.
+* Twoje konto **"nie ma autoryzacji do wykonania akcji" Microsoft. Authorization/roleAssignments/Write "w zakresie"/subscriptions/{GUID} "."** — ten błąd jest wyświetlany, gdy konto nie ma wystarczających uprawnień do przypisania roli do Identity. Poproś administratora subskrypcji o dodanie Cię do roli Administrator dostępu użytkowników.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby skonfigurować jednostkę przy użyciu hasła, zobacz [Tworzenie jednostki usługi platformy Azure za pomocą programu Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
 * Aby uzyskać szczegółowe instrukcje dotyczące integrowania aplikacji na platformie Azure na potrzeby zarządzania zasobami, zobacz [Developer's guide to authorization with the Azure Resource Manager API (Przewodnik dewelopera dotyczący autoryzowania przy użyciu interfejsu API usługi Azure Resource Manager)](../../azure-resource-manager/resource-manager-api-authentication.md).

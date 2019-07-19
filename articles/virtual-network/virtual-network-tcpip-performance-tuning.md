@@ -1,16 +1,9 @@
 ---
-title: Dostrajanie wydajności protokołu TCP/IP dla maszyn wirtualnych platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, różnych typowych TCP/IP wydajności dostrajania technik i ich związek z maszyn wirtualnych platformy Azure.
+title: Dostrajanie wydajności TCP/IP dla maszyn wirtualnych platformy Azure | Microsoft Docs
+description: Poznaj różne metody dostrajania wydajności protokołu TCP/IP oraz ich relacje z maszynami wirtualnymi platformy Azure.
 services: virtual-network
 documentationcenter: na
-author:
-- rimayber
-- dgoddard
-- stegag
-- steveesp
-- minale
-- btalb
-- prachank
+author: rimayber
 manager: paragk
 editor: ''
 ms.assetid: ''
@@ -20,372 +13,366 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/02/2019
-ms.author:
-- rimayber
-- dgoddard
-- stegag
-- steveesp
-- minale
-- btalb
-- prachank
-ms.openlocfilehash: ad1a5b69e4ec7b44c0e61a5ddd2c06633464d31a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: rimayber
+ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
+ms.openlocfilehash: bb23484903ac3ce129c6e7a7a27e0765c227fb1d
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66234998"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297783"
 ---
-# <a name="tcpip-performance-tuning-for-azure-vms"></a>Wydajność protokołu TCP/IP automatycznego dostrajania dla maszyn wirtualnych platformy Azure
+# <a name="tcpip-performance-tuning-for-azure-vms"></a>Dostrajanie wydajności protokołu TCP/IP dla maszyn wirtualnych platformy Azure
 
-W tym artykule omówiono typowe metody dostrajania wydajności TCP/IP i niektóre kwestie, należy wziąć pod uwagę podczas korzystania z nich dla maszyn wirtualnych działających na platformie Azure. Wówczas zapewniają ogólne omówienie techniki i Poznaj, jak mogą być dostosowane.
+W tym artykule omówiono typowe techniki dostrajania wydajności protokołu TCP/IP i niektóre zagadnienia, które należy wziąć pod uwagę podczas korzystania z nich w przypadku maszyn wirtualnych działających na platformie Azure. Udostępnimy podstawowe Omówienie technik i dowiesz się, jak można je dostrajać.
 
-## <a name="common-tcpip-tuning-techniques"></a>Typowe metody dostosowywania TCP/IP
+## <a name="common-tcpip-tuning-techniques"></a>Typowe techniki strojenia protokołu TCP/IP
 
-### <a name="mtu-fragmentation-and-large-send-offload"></a>Rozmiar jednostki MTU fragmentacji oraz Odciążanie wysyłania dużej ilości danych
+### <a name="mtu-fragmentation-and-large-send-offload"></a>Jednostki MTU, fragmentacja i duże odciążanie wysyłania
 
-#### <a name="mtu"></a>ROZMIAR JEDNOSTKI MTU
+#### <a name="mtu"></a>ROZMIAR
 
-Maksymalna jednostka transmisji (MTU) jest największy ramki rozmiaru (pakiet) podany w bajtach, które mogą być wysyłane za pośrednictwem interfejsu sieciowego. Rozmiar jednostki MTU to ustawienie można skonfigurować. Domyślny rozmiar jednostki MTU używane na maszynach wirtualnych platformy Azure, a domyślne ustawienie na większości urządzeń sieciowych jest globalnie, 1500 bajtów.
+Maksymalna jednostka transmisji (MTU) to największy rozmiar ramki (pakiet) określony w bajtach, który można wysłać za pośrednictwem interfejsu sieciowego. Jednostka MTU jest ustawieniem konfigurowalnym. Domyślna Jednostka MTU używana na maszynach wirtualnych platformy Azure oraz domyślna wartość ustawienia na większości urządzeń sieciowych wynosi 1 500 bajtów.
 
-#### <a name="fragmentation"></a>Fragmentation
+#### <a name="fragmentation"></a>Fragmentacji
 
-Fragmentacja występuje, gdy pakiet jest wysyłany, która przekracza rozmiar jednostki MTU interfejsu sieciowego. Stos TCP/IP spowoduje uszkodzenie pakietu na mniejsze części (fragmentów), które są zgodne z rozmiar jednostki MTU interfejsu. Fragmentacja występuje w warstwie IP i jest niezależna od podstawowej protokołu (takich jak TCP). Gdy 2000-bajtowe są wysyłane za pośrednictwem karty sieciowej z rozmiar jednostki MTU 1500, pakiet zostanie podzielony na jeden pakiet 1500 bajtów i jeden pakiet 500-bajtowy.
+Fragmentacja występuje, gdy zostanie wysłany pakiet, który przekracza rozmiar jednostki MTU interfejsu sieciowego. Stos TCP/IP spowoduje przerwanie pakietu na mniejsze fragmenty (fragmenty), które są zgodne z rozmiarem MTU interfejsu. Fragmentacja występuje w warstwie IP i jest niezależna od bazowego protokołu (takiego jak TCP). Gdy pakiet 2 000-bajtowy jest przesyłany za pośrednictwem interfejsu sieciowego o identyfikatorze MTU 1 500, pakiet zostanie podzielony na pakiet 1 1 500-Byte i pakiet 1 500-Byte.
 
-Urządzenia sieciowe w ścieżce między źródłową i docelową można albo pakietów docelowej przekracza rozmiar jednostki MTU lub fragmenty pakietu na mniejsze części.
+Urządzenia sieciowe w ścieżce między źródłem a miejscem docelowym mogą porzucić pakiety, które przekraczają rozmiar jednostki MTU, lub podzielić pakiet na mniejsze części.
 
-#### <a name="the-dont-fragment-bit-in-an-ip-packet"></a>Fragment nie bit w pakiecie protokołu IP
+#### <a name="the-dont-fragment-bit-in-an-ip-packet"></a>Bit nie fragmentacji w pakiecie IP
 
-Bit nie fragmentu (DF) ma wartość flagi w nagłówku protokołu IP. DF bit wskazuje, że urządzenia sieciowe na ścieżce między nadawcą i odbiorcą nie musi fragmenty pakietu. Można ustawić tego bitu wielu powodów. (Zobacz sekcję "Path MTU Discovery" tego artykułu dla jednego przykładu). Gdy urządzenie sieciowe odbiera pakiet z bitem Fragment nie pakietu przekracza interfejsu urządzenia rozmiar jednostki MTU, standardowe zachowanie jest dla urządzenia, które można usunąć pakiet. Urządzenie wysyła komunikat ICMP fragmentacja potrzebny do oryginalnego źródła pakietu.
+Bit nie fragmentuj (DF) jest flagą w nagłówku protokołu IP. Bit DF wskazuje, że urządzenia sieciowe na ścieżce między nadawcą i odbiornikiem nie mogą fragmentować pakietu. Ten bit może być ustawiony z wielu powodów. (Zobacz sekcję "odnajdywanie MTU ścieżki" tego artykułu na jeden przykład). Gdy urządzenie sieciowe odbiera pakiet z ustawionym bitem braku fragmentacji, a ten pakiet przekracza jednostkę MTU interfejsu urządzenia, standardowe zachowanie dotyczy urządzenia do porzucenia pakietu. Urządzenie wysyła komunikat o fragmentacji protokołu ICMP z powrotem do oryginalnego źródła pakietu.
 
 #### <a name="performance-implications-of-fragmentation"></a>Wpływ na wydajność fragmentacji
 
-Fragmentacja może mieć wpływ na wydajność ujemna. Jest jednym z głównych powodów wpływ na wydajność Procesora/pamięci wpływ fragmentacji i ponowne składanie pakietów. Gdy urządzenie sieciowe musi fragmentu pakietu, będą musieli przydzielania zasobów Procesora i pamięci do wykonania fragmentacji.
+Fragmentacja może mieć negatywny wpływ na wydajność. Jednym z głównych przyczyn wpływu na wydajność jest wykorzystanie procesora CPU lub pamięci na potrzeby fragmentacji i ponownego montażu pakietów. Gdy urządzenie sieciowe musi fragmentować pakiet, konieczne będzie przydzielenie zasobów procesora/pamięci w celu przeprowadzenia fragmentacji.
 
-Tak samo występuje, gdy pakiet jest ponownie. Urządzenie sieciowe musi przechowywać wszystkie fragmenty, dopóki nie otrzymali więc je można ponownie połączyć je do oryginalnego pakietu. Ten proces fragmentacji i ponownego łączenia także może spowodować opóźnienia.
+Ta sama czynność ma miejsce, gdy pakiet jest ponownie składany. Urządzenie sieciowe musi przechowywać wszystkie fragmenty, dopóki nie zostaną odebrane, aby można je było ponownie połączyć z oryginalnym pakietem. Ten proces fragmentacji i ponownego montażu może również spowodować opóźnienia.
 
-Inne możliwe słabą wydajność domniemanie fragmentacji to, że pofragmentowane pakiety, może pojawić się poza kolejnością. Gdy pakiety są odebrane poza kolejnością, niektóre typy urządzeń sieciowych można upuścić je. Jeśli tak się stanie, cały pakiet musi zostać ponownie wysłane.
+Innym możliwym nieujemnym wpływem na wydajność fragmentacji jest to, że pofragmentowane pakiety mogą dotrzeć do nieuporządkowanej kolejności. Gdy pakiety są odbierane poza kolejnością, niektóre typy urządzeń sieciowych mogą je usunąć. W takim przypadku cały pakiet musi zostać ponownie przesłany.
 
-Fragmenty zwykle są odrzucane przez urządzenia zabezpieczeń, takiej jak zapory, sieci lub po otrzymaniu przez urządzenia sieciowego wyczerpania buforów. Po otrzymaniu przez urządzenia sieciowego wyczerpania buforów, urządzenie sieciowe próbuje ponownie połączyć podzielonej zawartości pakietu, ale nie ma zasobów do przechowywania i reassume pakiet.
+Fragmenty są zwykle opuszczane przez urządzenia zabezpieczeń, takie jak zapory sieciowe lub Bufory odbioru urządzenia sieciowego. Gdy Bufory odbioru urządzenia sieciowego są wyczerpane, urządzenie sieciowe próbuje ponownie połączyć pofragmentowany pakiet, ale nie ma zasobów do przechowywania i ponownego założenia pakietu.
 
-Fragmentacja może być traktowany jako działania negatywne, ale pomocy technicznej, fragmentacji jest niezbędne podczas łączenia różnych sieci za pośrednictwem Internetu.
+Fragmentacja może być traktowana jako operacja ujemna, ale Obsługa fragmentacji jest konieczna w przypadku łączenia różnorodnych sieci za pośrednictwem Internetu.
 
-#### <a name="benefits-and-consequences-of-modifying-the-mtu"></a>Korzyści z i skutków modyfikowanie rozmiar jednostki MTU
+#### <a name="benefits-and-consequences-of-modifying-the-mtu"></a>Zalety i konsekwencje modyfikacji jednostki MTU
 
-Ogólnie rzecz biorąc można utworzyć bardziej wydajne sieci, zwiększając rozmiar jednostki MTU. Każdy pakiet, który jest przekazywany ma informacje nagłówka, który jest dodawany do oryginalnego pakietu. Gdy fragmentacji tworzy więcej pakietów, ma więcej nagłówka obciążenie i sprawia to, że sieć mniej wydajne rozwiązanie.
+Ogólnie mówiąc, można utworzyć wydajniejszą sieć przez zwiększenie jednostki MTU. Każdy przesłany pakiet zawiera informacje nagłówka, które są dodawane do oryginalnego pakietu. Gdy fragmentacja tworzy więcej pakietów, istnieje więcej obciążeń związanych z nagłówkami, co sprawia, że sieć jest mniej wydajna.
 
-Oto przykład. Rozmiar nagłówka Ethernet jest 14 bajtów plus sekwencję wyboru ramka 4-bajtowych w celu zapewnienia spójności ramki. Jeśli jeden 2000 bajtowy pakiet jest wysyłany, 18 bajtów obciążenie sieci Ethernet jest dodawany do sieci. Jeśli pakiet jest pofragmentowana. pakiet 1500 bajtów i pakietów 500-bajtowych, każdy pakiet ma 18 bajtów nagłówek Ethernet, daje w sumie 36 bajtów.
+Oto przykład. Rozmiar nagłówka Ethernet to 14 bajtów i sekwencja kontroli klatek 4-bajtowych, aby zapewnić spójność ramek. Jeśli zostanie wysłany pakiet 1 2 000-bajtowy, w sieci zostanie dodany 18-bajtowe obciążenie sieci Ethernet. Jeśli pakiet jest pofragmentowany do 1 500-bajtowego pakietu i 500 bajtów, każdy pakiet będzie miał 18 bajtów nagłówka Ethernet, łącznie z 36 bajtów.
 
-Należy pamiętać, który zwiększa rozmiar jednostki MTU niekoniecznie będzie oznaczało tworzenia wydajniejsze sieci. Jeśli aplikacja wysyła tylko pakiety 500-bajtowych, obciążenie tego samego nagłówka będzie istnieć, czy rozmiar jednostki MTU jest 1500 lub 9000 bajtów. Staną się bardziej efektywne tylko wtedy, gdy używa ona większe rozmiary pakietów, które ma wpływ rozmiar jednostki MTU sieci.
+Należy pamiętać, że zwiększenie jednostki MTU nie będzie koniecznie tworzyć bardziej wydajną sieć. Jeśli aplikacja wysyła tylko 500-bajtowe pakiety, to samo obciążenie nagłówka będzie istnieć, czy rozmiar jednostki MTU to 1 500 bajtów czy 9 000 bajtów. Sieć stanie się bardziej wydajna tylko wtedy, gdy używa większych rozmiarów pakietów, na które ma wpływ Jednostka MTU.
 
-#### <a name="azure-and-vm-mtu"></a>Platforma Azure i rozmiar jednostki MTU maszyny Wirtualnej
+#### <a name="azure-and-vm-mtu"></a>Platforma Azure i Jednostka MTU maszyny wirtualnej
 
-Domyślny rozmiar jednostki MTU maszyn wirtualnych platformy Azure to 1500 bajtów. Stos sieci wirtualnej platformy Azure będzie podejmować próby fragmentu pakietów na 1400 bajtów.
+Domyślna Jednostka MTU dla maszyn wirtualnych platformy Azure to 1 500 bajtów. Stos Virtual Network platformy Azure podejmie próbę fragmentacji pakietu o 1 400 bajtów.
 
-Należy pamiętać, że stos sieci wirtualnej jest natury nieefektywne, ponieważ fragmenty pakietów na 1400 bajtów, nawet jeśli maszyny wirtualne mają rozmiar jednostki MTU 1500. Znaczną część pakietów sieciowych są znacznie mniejsze niż 1400 lub 1500 bajtów.
+Należy zauważyć, że stos Virtual Network nie jest nieefektywny, ponieważ zawiera fragmenty pakietów o 1 400 bajtów, nawet jeśli maszyny wirtualne mają rozmiar MTU równy 1 500. Duża część pakietów sieciowych jest znacznie mniejsza niż 1 400 lub 1 500 bajtów.
 
-#### <a name="azure-and-fragmentation"></a>Platforma Azure i fragmentacji
+#### <a name="azure-and-fragmentation"></a>Platforma Azure i fragmentacja
 
-Stos sieci wirtualnej skonfigurowano pomijać "poza kolejnością fragmentów," oznacza to, że pofragmentowane pakiety, które nie pojawić się w ich oryginalnej kolejności pofragmentowany. Te pakiety są porzucane przede wszystkim z powodu ogłoszeniem z listopada 2018 o nazwie FragmentSmack luki w zabezpieczeniach sieci.
+Stos Virtual Network został skonfigurowany tak, aby porzucić fragmenty "poza kolejnością", czyli pofragmentowanych pakietów, które nie dotarły do ich oryginalnej uporządkowanej kolejności. Te pakiety są usuwane głównie z powodu luki w zabezpieczeniach sieci ogłoszonej w listopadzie 2018 o nazwie FragmentSmack.
 
-FragmentSmack jest usterka w sposób jądra systemu Linux obsługiwane ponowne składanie pofragmentowane pakiety protokołów IPv4 i IPv6. Osoba atakująca może użyć tej wady do wyzwalacza kosztowne fragmentu ponownego asemblowania operacje, które może prowadzić do zwiększenia procesora CPU i typu "odmowa usługi" w systemie docelowym.
+FragmentSmack to wada w sposobie, w jaki jądro systemu Linux obsłużyć remontaż pofragmentowanych pakietów IPv4 i IPv6. Zdalna osoba atakująca może wykorzystać tę usterkę do wyzwolenia kosztownych operacji ponownego montażu fragmentów, co może prowadzić do zwiększonego procesora i odmowy usługi w systemie docelowym.
 
-#### <a name="tune-the-mtu"></a>Dostosuj rozmiar jednostki MTU
+#### <a name="tune-the-mtu"></a>Dostosuj jednostkę MTU
 
-Można skonfigurować MTU dla maszyny Wirtualnej platformy Azure, jak w przypadku dowolnego systemu operacyjnego. Należy jednak rozważyć fragmentacji, występujący na platformie Azure opisano powyżej, gdy konfigurujesz rozmiar jednostki MTU.
+Jednostkę MTU maszyny wirtualnej platformy Azure można skonfigurować w taki sam sposób, jak w przypadku każdego innego systemu operacyjnego. Należy jednak wziąć pod uwagę fragmentację występującą na platformie Azure, która została opisana powyżej podczas konfigurowania jednostki MTU.
 
-Firma Microsoft nie Zachęć klientów do zwiększenia MTU maszyny Wirtualnej. Oznacza, że tej dyskusji, wyjaśniono, jak Azure implementuje rozmiar jednostki MTU i wykonuje fragmentacji.
+Nie Zachęcamy klientów do zwiększenia MTUs maszyny wirtualnej. W tej dyskusji przedstawiono szczegółowe informacje na temat sposobu implementowania jednostki MTU przez platformę Azure i przeprowadzania fragmentacji.
 
 > [!IMPORTANT]
->Zwiększa rozmiar jednostki MTU nie jest znana w celu zwiększenia wydajności i może mieć negatywny wpływ na wydajność aplikacji.
+>Zwiększenie wydajności nie jest znane, aby zwiększyć wydajność i mieć negatywny wpływ na wydajność aplikacji.
 >
 >
 
-#### <a name="large-send-offload"></a>Odciążanie wysyłania dużej ilości danych
+#### <a name="large-send-offload"></a>Odciążanie dużego wysyłania
 
-Odciążanie wysyłania dużej ilości danych (LSO) może poprawić wydajność sieci, przenosząc segmentacji pakietów do karty Ethernet. Po włączeniu LSO stos TCP/IP tworzy duży pakiet TCP i wysyła je do karty Ethernet na segmentacji przed przesłaniem. Zaletą LSO jest bezpłatnie Procesora z segmentacji pakietów do rozmiarów, które są zgodne ze rozmiar jednostki MTU i odciążania przetworzenia do interfejsu Ethernet, w której jest przeprowadzane w sprzęt. Aby dowiedzieć się więcej na temat zalet LSO, zobacz [Odciążanie wysyłania dużej obsługi](https://docs.microsoft.com/windows-hardware/drivers/network/performance-in-network-adapters#supporting-large-send-offload-lso).
+Odciążanie wysyłania dużej liczby (LSO) może zwiększyć wydajność sieci, przenosząc segmentację pakietów na kartę Ethernet. Gdy jest włączona funkcja LSO, stos TCP/IP tworzy duży pakiet TCP i wysyła go do karty Ethernet w celu segmentacji przed przekazaniem go. Korzyść odciążania polega na tym, że może zwolnić procesor z segmentacji pakietów na rozmiary, które są zgodne z rozmiarem MTU i odciążać, które przetwarza w interfejsie Ethernet, w którym jest wykonywane na sprzęcie. Aby dowiedzieć się więcej o zaletach korzystania z dużej ilości pamięci, zobacz [Obsługa dużego wysyłania](https://docs.microsoft.com/windows-hardware/drivers/network/performance-in-network-adapters#supporting-large-send-offload-lso).
 
-Po włączeniu LSO Azure klienci mogą widzieć rozmiary duże ramki, gdy wykonują przechwytywania pakietów. Te rozmiary duże ramki może prowadzić niektórzy klienci myśl, że występuje fragmentacji lub że duży rozmiar jednostki MTU jest używana, gdy nie jest. Za pomocą LSO karta Ethernet można anonsować większy maksymalny rozmiar segmentu (MSS) na stos TCP/IP, aby utworzyć większy pakiet TCP. To całe ramki niepodzielony jest następnie przekazywany do karty Ethernet i będzie widoczny w przechwytywania pakietów, wykonywane na maszynie Wirtualnej. Ale pakiet zostanie podzielony na wiele mniejszych ramki przez kartę sieciową Ethernet, zgodnie z karty Ethernet rozmiar jednostki MTU.
+Po włączeniu obsługi dużej ilości danych klienci platformy Azure mogą widzieć duże rozmiary ramek podczas przeprowadzania przechwytywania pakietów. Duże rozmiary ramek mogą prowadzić do tego, że niektórzy klienci zapewnią fragmentację lub że jest używana duża Jednostka MTU, gdy nie jest. Dzięki użyciu dużej ilości odciążeń karta Ethernet może anonsować większy maksymalny rozmiar segmentu (w szczycie) do stosu TCP/IP, aby utworzyć większy pakiet TCP. Ta cała niesegmentacja ramka jest następnie przekazywana do karty Ethernet i będzie widoczna w przechwyceniu pakietu wykonywanym na maszynie wirtualnej. Ale pakiet zostanie podzielony na wiele mniejszych ramek przez kartę Ethernet, zgodnie z rozmiarem jednostki MTU karty Ethernet.
 
-### <a name="tcp-mss-window-scaling-and-pmtud"></a>Skalowanie okna TCP MSS i pmtud, PATH
+### <a name="tcp-mss-window-scaling-and-pmtud"></a>Skalowanie okna przez TCP/PMTUD
 
-#### <a name="tcp-maximum-segment-size"></a>TCP maksymalny rozmiar segmentu
+#### <a name="tcp-maximum-segment-size"></a>Maksymalny rozmiar segmentu TCP
 
-TCP maksymalny rozmiar segmentu (MSS) to ustawienie ogranicza rozmiar segmentów TCP, co pozwala uniknąć fragmentacji pakietów protokołu TCP. Systemy operacyjne zazwyczaj będzie używana następująca formuła można ustawić MSS:
+Maksymalny rozmiar segmentu TCP (Maximum) to ustawienie ograniczające rozmiar segmentów TCP, co pozwala uniknąć fragmentacji pakietów TCP. Systemy operacyjne zwykle używają tej formuły do ustawiania wartości:
 
 `MSS = MTU - (IP header size + TCP header size)`
 
-Nagłówek IP i nagłówek TCP to 20 bajtów lub łącznie 40 bajtów. Dlatego interfejsu o rozmiar jednostki MTU 1500 mają MSS 1,460. Ale MSS można konfigurować.
+Nagłówek IP i nagłówek TCP to 20 bajtów każdego lub 40 bajtów. Dzięki temu interfejs o identyfikatorze MTU 1 500 będzie miał rozmiar o wartości = 1 460. Jednak rozmiar tego samego poziomu można skonfigurować.
 
-To ustawienie jest uzgodniona trójstopniowego TCP podczas konfigurowania sesji TCP między źródłem i miejscem docelowym. Obie strony wysyłanie wartości MSS, a dolna dwa służy do połączenia TCP.
+To ustawienie jest uzgadniane z trzema uzgadnianiem TCP w przypadku skonfigurowania sesji protokołu TCP między źródłem a miejscem docelowym. Obie strony wysyłają wartość o przeciążeniu, a dolna część dwóch jest używana do połączenia TCP.
 
-Należy pamiętać, że MTU elementu źródłowego i docelowego nie są tylko czynniki, które określają wartości MSS. Urządzenia sieciowe pośrednie, takie jak bramy sieci VPN, w tym usługi Azure VPN Gateway, można dostosować rozmiar jednostki MTU niezależnie od źródłowego i docelowego zapewniające sieci optymalną wydajność.
+Należy pamiętać, że MTUs źródła i miejsca docelowego nie są jedynymi czynnikami, które określają wartość parametru. Pośredniczące urządzenia sieciowe, takie jak bramy sieci VPN, w tym Azure VPN Gateway, umożliwiają dostosowanie jednostki MTU niezależnie od źródła i miejsca docelowego w celu zapewnienia optymalnej wydajności sieci.
 
-#### <a name="path-mtu-discovery"></a>Path MTU Discovery
+#### <a name="path-mtu-discovery"></a>Odnajdywanie MTU ścieżki
 
-Jest negocjowane MSS, ale może wskazać MSS rzeczywistego, który może służyć. Jest to spowodowane innych urządzeń sieciowych w ścieżce między źródłową i docelową może mieć niższą wartość rozmiar jednostki MTU niż źródłowe i docelowe. W takim przypadku urządzenie, którego rozmiar jednostki MTU jest mniejszy niż pakietu będzie się zmniejszać pakiet. Urządzenie ponownie wyśle komunikat ICMP fragmentacja potrzebny (typ 3, 4 kodu) zawierający jego rozmiar jednostki MTU. Ten komunikat ICMP umożliwia hosta źródłowego zmniejszyć jego MTU ścieżki odpowiednio. Proces jest nazywany odnajdywania rozmiar jednostki MTU ścieżki (PMTUD).
+Rozmiar jest negocjowany, ale może nie wskazywać rzeczywistego, który może być używany. Wynika to z faktu, że inne urządzenia sieciowe w ścieżce między źródłem i lokalizacją docelową mogą mieć niższą wartość MTU niż źródłowa i docelowa. W takim przypadku urządzenie, którego Jednostka MTU jest mniejsza niż pakiet, spowoduje porzucenie pakietu. Urządzenie wyśle komunikat o fragmentacji protokołu ICMP (typ 3, kod 4), który zawiera jego jednostkę MTU. Ten komunikat ICMP umożliwia hostowi źródłowej zredukowanie odpowiedniej jednostki MTU ścieżki. Ten proces jest nazywany odnajdywaniem ścieżki MTU (PMTUD).
 
-Proces PMTUD jest nieefektywne i wpływa na wydajność sieci. Jeśli pakiety są wysyłane, że przekracza rozmiar jednostki MTU ścieżki sieciowej, pakiety muszą zostać ponownie wysłane z niższym MSS. Jeśli nadawca nie odbierze komunikatu protokołu ICMP fragmentacji potrzebne może być z powodu zapory sieciowej w ścieżce (często nazywany *należący PMTUD*), nadawca nie wie, należy zmniejszyć rozmiar MSS i będzie w sposób ciągły ponowne przesłanie pakietu. Jest to, dlatego nie zaleca się zwiększenie MTU maszyny Wirtualnej platformy Azure.
+Proces PMTUD jest nieefektywny i wpływa na wydajność sieci. Po wysłaniu pakietów, które przekraczają jednostkę MTU ścieżki sieciowej, pakiety muszą zostać ponownie przesłane przy użyciu mniejszego poziomu. Jeśli nadawca nie odbierze komunikatu o fragmentacji protokołu ICMP, może być spowodowany przez zaporę sieciową w ścieżce (nazywaną zwykle jako *PMTUD Blackhole*), nadawca nie wie, że musi obniżyć rozmiar pasma i ciągle ponownie przesyła pakiet. Dlatego nie zaleca się zwiększania jednostki MTU maszyny wirtualnej platformy Azure.
 
-#### <a name="vpn-and-mtu"></a>Sieci VPN i rozmiar jednostki MTU
+#### <a name="vpn-and-mtu"></a>Sieci VPN i MTU
 
-Jeśli używasz maszyn wirtualnych, które wykonują hermetyzacji (np. protokołu IPsec VPN), istnieją pewne dodatkowe uwagi dotyczące pakietu, rozmiar i rozmiar jednostki MTU. Sieci VPN dodać więcej nagłówków do pakietów, która zwiększa rozmiar pakietu i wymaga mniejszych MSS.
+W przypadku używania maszyn wirtualnych, które wykonują hermetyzację (na przykład sieci VPN z protokołem IPsec), istnieją pewne dodatkowe zagadnienia dotyczące rozmiaru pakietów i jednostki MTU. Sieci VPN dodają więcej nagłówków do pakietów, co zwiększa rozmiar pakietu i wymaga mniejszego rozmiaru.
 
-Dla platformy Azure firma Microsoft zaleca ustawione TCP MSS obcinanie równy 1350 bajtów, a następnie tunelowania interfejs rozmiar jednostki MTU 1400. Aby uzyskać więcej informacji, zobacz [sieci VPN urządzenia i strona parametrów protokołu IPSec/IKE](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices).
+W przypadku platformy Azure zaleca się ustawienie opcji Ogranicz ruch TCP do 1 350 bajtów i jednostki MTU interfejsu tunelu do 1 400. Aby uzyskać więcej informacji, zobacz [stronę sieci VPN i parametry protokołu IPSec/IKE](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices).
 
-### <a name="latency-round-trip-time-and-tcp-window-scaling"></a>Czas oczekiwania, czas błądzenia i skalowania okna TCP
+### <a name="latency-round-trip-time-and-tcp-window-scaling"></a>Skalowanie opóźnienia, czasu rundy i okna TCP
 
-#### <a name="latency-and-round-trip-time"></a>Czas opóźnienia i przesyłania danych
+#### <a name="latency-and-round-trip-time"></a>Opóźnienie i czas błądzenia
 
-Opóźnienie sieci podlega prędkość światła za pośrednictwem sieci światłowodowe włókien. Przepustowość sieci dla protokołu TCP jest również skutecznie regulowane przez czas Rundy (RTT) między dwoma urządzeniami sieciowymi.
+Opóźnienie sieci zależy od szybkości sieci światłowodowej. Przepustowość sieci TCP jest również efektywnie określana przez czas błądzenia (RTT) między dwoma urządzeniami sieciowymi.
 
 | | | | |
 |-|-|-|-|
-|**Route**|**odległość**|**Czas jednokierunkowe**|**RTT**|
-|Nowy Jork, aby San Francisco|4,148 km|21 ms|42 ms|
-|Nowy Jork do Londynu|5,585 km|28 ms|56 ms|
-|Nowy Jork, aby Sydney|15,993 km|80 ms|160 ms|
+|**Route**|**Miast**|**Czas jednorazowy**|**RTT**|
+|Nowy Jork do sieci San Francisco|4 148 km|21 MS|42 MS|
+|Nowy Jork do Londyn|5 585 km|28 MS|56 MS|
+|Nowy Jork do Sydney|15 993 km|80 MS|160 MS|
 
-W poniższej tabeli przedstawiono liniową odległość między dwiema lokalizacjami. W sieci jest zwykle dłuższe niż liniową odległości. Oto prostej formuły można obliczyć RTT minimalne zgodnie z zasadami prędkość światła:
+W tej tabeli przedstawiono prostą odległość między dwiema lokalizacjami. W sieciach odległość jest zazwyczaj większa od odległości liniowej. Oto prosta formuła służąca do obliczania minimalnego RTT, zgodnie z szybkością światła:
 
 `minimum RTT = 2 * (Distance in kilometers / Speed of propagation)`
 
-Można użyć 200 dla szybkości propagacji. To jest odległość, w metrach i że światło przybliżone ilości tych danych w 1 milisekundy.
+Aby uzyskać szybkość propagacji, można użyć 200. Jest to odległość w metrach, która to lekki ruch w 1 milisekundie.
 
-Jako przykład Weźmy Nowy Jork do sieci San Francisco. Liniowy jest 4,148 km. Podłączenie tę wartość do równania, uzyskujemy, następujące czynności:
+Na przykład przyjrzyjmy się nowemu Jorku do sieci San Francisco. Odległość liniowa to 4 148 km. Dołączenie tej wartości do równania zapewnia następujące korzyści:
 
 `Minimum RTT = 2 * (4,148 / 200)`
 
 Dane wyjściowe równania są w milisekundach.
 
-Jeśli chcesz uzyskać najlepszą wydajność sieci, opcja logicznych jest wybierz miejsc docelowych o najmniejszej między nimi. Należy również projektować sieci wirtualnej do optymalizacji ścieżki ruchu i zmniejszyć opóźnienie. Aby uzyskać więcej informacji zobacz sekcję "Uwagi dotyczące projektowania sieci" w tym artykule.
+Jeśli chcesz uzyskać najlepszą wydajność sieci, opcja logiczna polega na wybraniu lokalizacji docelowych z najkrótszą odległością między nimi. Należy również zaprojektować sieć wirtualną w celu optymalizacji ścieżki ruchu i zmniejszania opóźnień. Aby uzyskać więcej informacji, zobacz sekcję "zagadnienia dotyczące projektowania sieci" w tym artykule.
 
-#### <a name="latency-and-round-trip-time-effects-on-tcp"></a>Efekty czas opóźnienia i Rundy protokołu TCP
+#### <a name="latency-and-round-trip-time-effects-on-tcp"></a>Efekty opóźnienia i czasu rundy w przypadku protokołu TCP
 
-Czas błądzenia ma bezpośredni wpływ na maksymalną przepływność TCP. W protokole TCP *rozmiar okna* jest maksymalną ilość ruchu, które mogą być wysyłane za pośrednictwem połączenia protokołu TCP, zanim nadawca należy do otrzymania potwierdzenia od odbiornika. Jeśli TCP MSS jest ustawiona na 1,460 i rozmiar okna TCP jest ustawiony do 65 535 działań, nadawca wysłać 45 pakiety przed posiada do otrzymania potwierdzenia od odbiornika. Nadawca nie uzyskać potwierdzenie, będzie ponowne przesłanie danych. Oto formuła:
+Czas błądzenia ma bezpośredni wpływ na maksymalną przepływność TCP. W polu protokół TCP *rozmiar okna* jest maksymalną ilością ruchu sieciowego, który można wysłać za pośrednictwem połączenia TCP, zanim nadawca musi odebrać potwierdzenie z odbiornika. Jeśli wartość właściwości TCP/rozmiaru jest ustawiona na 1 460, a rozmiar okna TCP jest ustawiony na 65 535, nadawca może wysłać 45 pakietów, zanim będzie on otrzymywać potwierdzenie od odbiornika. Jeśli nadawca nie uzyska potwierdzenia, nastąpi ponowne przesłanie danych. Oto formuła:
 
 `TCP window size / TCP MSS = packets sent`
 
-W tym przykładzie 65 535 / 1,460 jest zaokrąglana do 45.
+W tym przykładzie 65 535/1 460 jest zaokrąglana do 45.
 
-Ten stan "Oczekiwanie na potwierdzenie", mechanizm, aby zapewnić niezawodne dostarczanie danych, jest to, co powoduje, że RTT wpływ na przepustowość TCP. Im dłużej nadawcy czeka na potwierdzenie, tym dłużej musi odczekać przez przesyłają więcej danych.
+W przypadku stanu "Oczekiwanie na potwierdzenie" mechanizm zapewnienia niezawodnego dostarczania danych jest taki sam, co powoduje, że RTT ma wpływ na przepływność TCP. Im dłużej nadawca czeka na potwierdzenie, tym dłużej musi czekać przed wysłaniem większej ilości danych.
 
-Oto formuła do obliczenia maksymalną przepływność pojedynczego połączenia TCP:
+Oto formuła służąca do obliczania maksymalnej przepływności pojedynczego połączenia TCP:
 
 `Window size / (RTT latency in milliseconds / 1,000) = maximum bytes/second`
 
-W poniższej tabeli przedstawiono maksymalną (MB) / zaufanie na drugim przepływność pojedynczego połączenia protokołu TCP. (Aby zwiększyć czytelność, jednostki miary jest używany w megabajtach).
+W tej tabeli przedstawiono maksymalną przepływność (w megabajtach/na sekundę) jednego połączenia TCP. (Na potrzeby odczytywania, megabajtów jest używany dla jednostki miary).
 
 | | | | |
 |-|-|-|-|
-|**Rozmiar okna TCP (w bajtach)**|**RTT opóźnienie (ms)**|**Maksymalna MB/s przepływności**|**Maksymalna megabitów/s przepływności**|
-|65,535|1|65.54|524.29|
-|65,535|30|2.18|17.48|
-|65,535|60|1.09|8.74|
-|65,535|90|.73|5.83|
+|**Rozmiar okna TCP (w bajtach)**|**Opóźnienie RTT (MS)**|**Maksymalna przepływność (MB/s)**|**Maksymalna przepływność w megabitach/sekundę**|
+|65,535|1|65,54|524,29|
+|65,535|30|2,18|17,48|
+|65,535|60|1,09|8,74|
+|65,535|90|.73|5,83|
 |65,535|120|.55|4.37|
 
-W przypadku utraty pakietów maksymalną przepływność połączenia protokołu TCP zmniejszy się podczas nadawcę ponownie wysyła dane, które już zostało wysłane.
+Jeśli pakiety zostaną utracone, maksymalna przepływność połączenia TCP zostanie zmniejszona, podczas gdy nadawca ponownie przesyła dane, które zostały już wysłane.
 
 #### <a name="tcp-window-scaling"></a>Skalowanie okna TCP
 
-Skalowania okna protokołu TCP jest techniką, która dynamicznie zwiększa rozmiar okna TCP, aby umożliwić większej ilości danych do wysłania, zanim wymagane jest potwierdzenie. W poprzednim przykładzie 45 pakiety będą wysyłane przed potwierdzeniem była wymagana. Jeśli zwiększysz liczbę pakietów, które mogą być wysyłane przed potwierdzenia jest potrzebny jest zmniejszenie liczby przypadków, gdy nadawcy czeka na potwierdzenie, co zwiększa maksymalną przepustowość TCP.
+Skalowanie okna TCP to technika, która dynamicznie zwiększa rozmiar okna TCP, aby umożliwić wysyłanie większej ilości danych, zanim będzie wymagane potwierdzenie. W poprzednim przykładzie pakiety 45 będą wysyłane przed potwierdzeniem. W przypadku zwiększenia liczby pakietów, które mogą być wysyłane przed potwierdzeniem, można skrócić, ile razy nadawca oczekuje na potwierdzenie, co zwiększa przepływność TCP.
 
-W tej tabeli przedstawiono te relacje:
+W tej tabeli przedstawiono relacje:
 
 | | | | |
 |-|-|-|-|
-|**Rozmiar okna TCP (w bajtach)**|**RTT opóźnienie (ms)**|**Maksymalna MB/s przepływności**|**Maksymalna megabitów/s przepływności**|
-|65,535|30|2.18|17.48|
-|131,070|30|4.37|34.95|
-|262,140|30|8.74|69.91|
-|524,280|30|17.48|139.81|
+|**Rozmiar okna TCP (w bajtach)**|**Opóźnienie RTT (MS)**|**Maksymalna przepływność (MB/s)**|**Maksymalna przepływność w megabitach/sekundę**|
+|65,535|30|2,18|17,48|
+|131 070|30|4.37|34,95|
+|262 140|30|8,74|69,91|
+|524 280|30|17,48|139,81|
 
-Ale wartość nagłówka TCP rozmiar okna TCP jest tylko 2 bajtów, co oznacza, że maksymalna wartość dla okna odbierania, wynosi 65 535. Aby zwiększyć maksymalny rozmiar okna, wprowadzono współczynnik skali okna TCP.
+Ale wartość nagłówka TCP dla rozmiaru okna TCP ma długość tylko 2 bajty, co oznacza, że maksymalna wartość okna odbierania to 65 535. Aby zwiększyć maksymalny rozmiar okna, wprowadzono współczynnik skalowania okna TCP.
 
-Współczynnik skali jest również ustawienie, które można skonfigurować w systemie operacyjnym. Oto formuła do obliczenia rozmiaru okna przy użyciu skale:
+Współczynnik skalowania jest również ustawieniem, które można skonfigurować w systemie operacyjnym. Oto formuła służąca do obliczania rozmiaru okna TCP przy użyciu czynników skalowania:
 
 `TCP window size = TCP window size in bytes \* (2^scale factor)`
 
-Poniżej przedstawiono obliczenia współczynnik skali okna 3 i rozmiar okna 65 535:
+Oto Obliczanie współczynnika skalowania okna o wartości 3 i rozmiaru okna 65 535:
 
 `65,535 \* (2^3) = 262,140 bytes`
 
-Współczynnik skali 14 powoduje powstanie rozmiar okna TCP 14 (maksymalne dozwolone przesunięcie). Rozmiar okna TCP będzie 1,073,725,440 bajtów (8,5 GB).
+Współczynnik skali wynoszący 14 skutkuje rozmiarem okna TCP wynoszącym 14 (dozwolone jest maksymalne przesunięcie). Rozmiar okna TCP będzie wynosił 1 073 725 440 bajtów (8,5 Gigabit).
 
 #### <a name="support-for-tcp-window-scaling"></a>Obsługa skalowania okna TCP
 
-Windows można ustawić różne czynniki skalowania dla różnych typów połączeń. (Klasy połączeń obejmuje centrum danych, internetowe i tak dalej). Możesz użyć `Get-NetTCPConnection` polecenie programu PowerShell, aby wyświetlić okno skalowanie typ połączenia:
+System Windows może ustawić różne czynniki skalowania dla różnych typów połączeń. (Klasy połączeń obejmują centrum danych, Internet i tak dalej). Aby wyświetlić typ `Get-NetTCPConnection` połączenia skalowania okna, należy użyć polecenia programu PowerShell:
 
 ```powershell
 Get-NetTCPConnection
 ```
 
-Możesz użyć `Get-NetTCPSetting` polecenia programu PowerShell, aby wyświetlić wartości każdej klasy:
+Możesz użyć polecenia programu `Get-NetTCPSetting` PowerShell, aby wyświetlić wartości każdej klasy:
 
 ```powershell
 Get-NetTCPSetting
 ```
 
-W Windows można ustawić początkowy rozmiar okna TCP i TCP współczynnik skalowania przy użyciu `Set-NetTCPSetting` polecenia programu PowerShell. Aby uzyskać więcej informacji, zobacz [NetTCPSetting zestaw](https://docs.microsoft.com/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps).
+Możesz ustawić początkowy rozmiar okna TCP i współczynnik skalowania TCP w systemie Windows za pomocą `Set-NetTCPSetting` polecenia programu PowerShell. Aby uzyskać więcej informacji, zobacz [Set-NetTCPSetting](https://docs.microsoft.com/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps).
 
 ```powershell
 Set-NetTCPSetting
 ```
 
-Są to efektywne ustawienia protokołu TCP dla `AutoTuningLevel`:
+Są to obowiązujące ustawienia protokołu TCP dla `AutoTuningLevel`:
 
 | | | | |
 |-|-|-|-|
-|**AutoTuningLevel**|**Współczynnik skalowania**|**Mnożnik skalowania**|**Formułę<br/>Oblicz maksymalny rozmiar okna**|
+|**AutoTuningLevel**|**Współczynnik skalowania**|**Mnożnik skalowania**|**Formuła do<br/>obliczenia maksymalnego rozmiaru okna**|
 |Wyłączone|Brak|Brak|Rozmiar okna|
-|Ograniczenia|4|2^4|Rozmiar okna * (2 ^ 4)|
-|Bardzo ograniczona|2|2^2|Rozmiar okna * (2 ^ 2)|
+|Ograniczenia|4|2 ^ 4|Rozmiar okna * (2 ^ 4)|
+|Wysoce ograniczone|2|2 ^ 2|Rozmiar okna * (2 ^ 2)|
 |Normalne|8|2^8|Rozmiar okna * (2 ^ 8)|
-|Eksperymentalne|14|2^14|Rozmiar okna * (2 ^ 14)|
+|Eksperymentalne|14|2 ^ 14|Rozmiar okna * (2 ^ 14)|
 
-Te ustawienia są najprawdopodobniej mają wpływ na wydajność protokołu TCP, ale należy pamiętać, że wiele czynników w Internecie, niezależnych od platformy Azure, może również wpływać na wydajność protokołu TCP.
+Te ustawienia najprawdopodobniej mają wpływ na wydajność protokołu TCP, ale należy pamiętać, że wiele innych czynników w Internecie, poza kontrolą platformy Azure, może również wpływać na wydajność protokołu TCP.
 
 #### <a name="increase-mtu-size"></a>Zwiększ rozmiar jednostki MTU
 
-Ponieważ większy rozmiar jednostki MTU oznacza większe MSS, być może zastanawiasz się czy zwiększyć rozmiar jednostki MTU może zwiększyć wydajność protokołu TCP. Prawdopodobnie nie. Istnieją zalety i wady, aby rozmiar pakietu przekracza tylko ruch TCP. Zgodnie z wcześniejszym opisem najważniejszych czynników wpływających na wydajność przepustowości TCP są rozmiar okna TCP, utraty pakietów i RTT.
+Ze względu na to, że większa Jednostka MTU oznacza większy rozmiar, może się zdarzyć, że zwiększenie wydajności może zwiększyć wydajność protokołu TCP. Prawdopodobnie nie. Nie tylko ruch TCP ma pewne wady i zalety rozmiaru pakietu. Jak wspomniano wcześniej, najważniejsze czynniki wpływające na wydajność przepływności TCP to rozmiar okna TCP, utrata pakietów i czas RTT.
 
 > [!IMPORTANT]
-> Nie zaleca się że klientów platformy Azure, zmienić domyślną wartość rozmiar jednostki MTU na maszynach wirtualnych.
+> Nie zalecamy, aby klienci platformy Azure mogli zmienić domyślną wartość MTU na maszynach wirtualnych.
 >
 >
 
-### <a name="accelerated-networking-and-receive-side-scaling"></a>Przyspieszoną sieć i skalowanie po stronie odbierania
+### <a name="accelerated-networking-and-receive-side-scaling"></a>Przyspieszanie sieci i skalowanie po stronie odbierającej
 
 #### <a name="accelerated-networking"></a>Wydajniejsze sieci
 
-Funkcje sieci maszyny wirtualnej w przeszłości były intensywnie z zarówno na maszynie Wirtualnej gościa i funkcji hypervisor/hosta Procesora. Każdy pakiet tranzytu za pośrednictwem hosta są przetwarzane w oprogramowaniu przez hosta procesora CPU, łącznie z wszystkich sieci wirtualnej hermetyzacji i dehermetyzacji. Dlatego więcej ruchu, który przechodzi przez hosta, załaduj większe zużycie Procesora. I Procesora hosta jest zajęty z innymi operacjami, który będzie również mieć wpływ na przepustowość sieci i czas oczekiwania. Azure rozwiązuje ten problem z przyspieszoną siecią.
+Funkcja sieci maszyn wirtualnych znacznie intensywnie korzysta z procesora dla maszyny wirtualnej gościa i funkcji hypervisor/hosta. Każdy pakiet, który jest przesyłany przez hosta, jest przetwarzany w oprogramowaniu przez procesor hosta, w tym wszystkie hermetyzacje i decapsulation sieci wirtualnej. Tym większym ruchem przechodzącym przez hosta jest wyższy poziom obciążenia procesora. A jeśli procesor CPU hosta jest zajęty innymi operacjami, to wpływa również na przepływność i opóźnienie sieci. Platforma Azure rozwiązuje ten problem przy użyciu przyspieszonej sieci.
 
-Przyspieszona sieć zapewnia opóźnienia spójnej ultralow sieci za pomocą wewnętrznych sprzętu programowalny platformy Azure i technologii, takich jak SR-IOV. Przyspieszona sieć przesuwa większość Azure zdefiniowanego programowo stosu sieciowego off procesorów CPU oraz SmartNICs na układach FPGA. Ta zmiana umożliwia aplikacji użytkownika końcowego w celu odzyskania cykli obliczeniowych, która umieszcza mniejszym obciążeniem na maszynie Wirtualnej zmniejszenie opóźnienia zakłócenia i niespójności. Innymi słowy wydajność może być bardziej.
+Przyspieszona sieć zapewnia spójne ultralow sieci w ramach programowalnego sprzętu platformy Azure i technologii, takich jak SR-IOV. Przyspieszona sieć przenosi wiele procesorów sieci zdefiniowanych przez oprogramowanie platformy Azure na platformę i na FPGA SmartNICs. Ta zmiana umożliwia aplikacjom użytkowników końcowych odzyskiwanie cykli obliczeniowych, co zmniejsza obciążenie maszyny wirtualnej, zmniejszając wahania i niespójności w czasie oczekiwania. Innymi słowy, wydajność może być bardziej deterministyczna.
 
-Przyspieszona sieć zwiększa wydajność, umożliwiając gościa maszyny Wirtualnej, aby pominąć hosta i określać ścieżki danych bezpośrednio z SmartNIC hosta. Poniżej przedstawiono niektóre zalety przyspieszonej łączności sieciowej:
+Przyspieszona sieć zwiększa wydajność, umożliwiając maszynie wirtualnej gościa obejście hosta i ustanowienie ścieżki danych bezpośrednio z SmartNIC hosta. Oto niektóre zalety przyspieszonej sieci:
 
-- **Zmniejszyć czas oczekiwania wyższe pakietów na sekundę (pps)** : Usunięcie przełącznika wirtualnego z ścieżki danych eliminuje razem pakietów, który możesz wydać na hoście dla przetwarzania zasad i zwiększa się liczba pakietów, które mogą być przetwarzane w maszynie Wirtualnej.
+- **Mniejsze opóźnienia/wyższe pakiety na sekundę (PPS)** : Usunięcie przełącznika wirtualnego ze ścieżki datapath eliminuje pakiety czasu spędzane na hoście w celu przetworzenia zasad i zwiększa liczbę pakietów, które można przetworzyć na maszynie wirtualnej.
 
-- **Zmniejszona zakłócenia**: Przełącznik wirtualny przetwarzania zależy od tego, liczbę zasad, która musi zostać zastosowana i obciążenie procesora CPU, który wykonuje przetwarzanie. Odciążanie wymuszania zasad do sprzętu usuwa tego zmienność, zapewniając pakietów bezpośrednio do maszyny Wirtualnej, eliminując łączności hosta do maszyny Wirtualnej i wszystkie przerwań oprogramowania oraz przełączeń kontekstu.
+- **Ograniczone wahania**: Przetwarzanie przełącznika wirtualnego zależy od ilości zasad, które należy zastosować, oraz obciążenia procesora, które przetwarza. Odciążanie wymuszania zasad sprzętowo eliminuje tę zmienność przez dostarczanie pakietów bezpośrednio do maszyny wirtualnej, eliminując komunikację między hostami i MASZYNami wirtualnymi oraz wszystkie przerwy w oprogramowaniu i przełączenia kontekstu.
 
-- **Zmniejszyć użycie procesora CPU**: Przełącznik wirtualny na hoście z pominięciem prowadzi do mniejsze wykorzystanie procesora CPU do przetwarzania ruchu sieciowego.
+- **Zmniejszone użycie procesora CPU**: Obejście przełącznika wirtualnego na hoście prowadzi do mniejszego użycia procesora CPU do przetwarzania ruchu sieciowego.
 
-Aby korzystać z przyspieszonej łączności sieciowej, musisz jawnie włączyć na każdym odpowiednią maszynę Wirtualną. Zobacz [Utwórz maszynę wirtualną systemu Linux przy użyciu Accelerated Networking](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) instrukcje.
+Aby korzystać z przyspieszonej sieci, należy jawnie włączyć ją na każdej odpowiedniej maszynie wirtualnej. Aby uzyskać instrukcje, zobacz temat [Tworzenie maszyny wirtualnej z systemem Linux przy użyciu przyspieszonej sieci](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) .
 
-#### <a name="receive-side-scaling"></a>Skalowanie po stronie odbierania
+#### <a name="receive-side-scaling"></a>Skalowanie po stronie odbierającej
 
-Odbieranie po stronie odbierającej (RSS) to technologia sterownika sieci bardziej efektywnie dystrybuuje odbieranie ruchu w sieci przez dystrybucję odbierać przetwarzania między wiele procesorów w systemie wieloprocesorowym. W prostych słowach RSS umożliwia systemowi przetwarzanie więcej odebrany ruch, ponieważ używa ona wszystkie dostępne procesory CPU zamiast jednego. Techniczne omówienie funkcji RSS, zobacz [wprowadzenie do skalowania po stronie odbierania](https://docs.microsoft.com/windows-hardware/drivers/network/introduction-to-receive-side-scaling).
+Skalowanie po stronie odbierającej (RSS) to technologia sterownika sieci, która dystrybuuje odbierający ruch sieciowy bardziej wydajnie przez dystrybucję przetwarzania odbierania między wieloma procesorami w systemie wieloprocesorowym. W prostych warunkach funkcja RSS umożliwia systemowi przetwarzanie większej liczby odbieranych danych, ponieważ używa ona wszystkich dostępnych procesorów, a nie tylko jednego. Aby zapoznać się z bardziej technicznym omówieniem funkcji RSS, zobacz [wprowadzenie do skalowania po stronie odbierającej](https://docs.microsoft.com/windows-hardware/drivers/network/introduction-to-receive-side-scaling).
 
-Aby uzyskać najlepszą wydajność, gdy przyspieszona sieć jest włączona na maszynie Wirtualnej, należy włączyć funkcję RSS. Funkcja RSS oferuje również, że korzyści na maszynach wirtualnych, które nie używają przyspieszoną sieć. Aby uzyskać omówienie sposobu ustalenia, czy jest włączona funkcja RSS i jak go włączyć, zobacz [optymalizacji przepływności sieci dla maszyn wirtualnych platformy Azure](https://aka.ms/FastVM).
+Aby uzyskać najlepszą wydajność, gdy na maszynie wirtualnej jest włączona przyspieszona sieć, należy włączyć funkcję RSS. Funkcja RSS może również zapewniać korzyści dotyczące maszyn wirtualnych, które nie używają przyspieszonej sieci. Aby dowiedzieć się, jak ustalić, czy funkcja RSS jest włączona i jak ją włączyć, zobacz [Optymalizowanie przepływności sieci dla maszyn wirtualnych platformy Azure](https://aka.ms/FastVM).
 
-### <a name="tcp-timewait-and-timewait-assassination"></a>Assassination TCP TIME_WAIT i TIME_WAIT
+### <a name="tcp-timewait-and-timewait-assassination"></a>TIME_WAIT TCP i TIME_WAIT Assassination
 
-TCP TIME_WAIT jest inne typowe ustawienie, który wpływa na wydajność sieci i aplikacji. Na obciążonych maszyn wirtualnych, których otwieranie i zamykanie wiele gniazd jako klientów lub serwerów (Port IP:Source źródłowy + Port IP:Destination docelowy), podczas normalnego działania protokołu TCP danego gniazda mogą znaleźć się w stanu TIME_WAIT przez długi czas. Stan TIME_WAIT jest przeznaczony do Zezwalaj na wszelkie dodatkowe dane mają zostać dostarczone na gniazdo przed jego zamknięciem. Dlatego stosów protokołu TCP/IP ogólnie Zapobiegaj ponownemu gniazdo upuszczając dyskretnie pakietu TCP SYN klienta.
+TCP TIME_WAIT to inne wspólne ustawienie, które ma wpływ na wydajność sieci i aplikacji. W przypadku zajętych maszyn wirtualnych otwierających i zamykających wiele gniazd jako klientów lub jako serwery (źródłowy adres IP: Port źródłowy + docelowy adres IP: Port docelowy) podczas normalnego działania protokołu TCP, dany gniazdo może kończyć się w stanie TIME_WAIT przez długi czas. Stan TIME_WAIT ma pozwolić na dostarczenie wszelkich dodatkowych danych w gnieździe przed jego zamknięciem. Dlatego stosy TCP/IP zwykle uniemożliwiają ponowne użycie gniazda przez dyskretne porzucenie pakietu TCP SYN klienta.
 
-Ilość czasu, w której TIME_WAIT gniazdo jest konfigurowany. 240 sekund może obejmować zarówno 30 sekund. Gniazda są ograniczone zasobów i konfiguruje się liczbę gniazd, które mogą być używane w danym momencie. (Liczba dostępnych gniazd jest zwykle około 30 000). Jeśli dostępnych gniazd są używane, lub klienci i serwery mają niezgodne ustawienia TIME_WAIT i maszyny Wirtualnej spróbuje ponownie użyć gniazdo w stanie TIME_WAIT, nowe połączenia zakończy się niepowodzeniem, jak TCP SYN pakiety dyskretnie są porzucane.
+Ilość czasu, w którym gniazdo jest w TIME_WAIT, można skonfigurować. Może to być z zakresu od 30 sekund do 240 sekund. Gniazda są ograniczonym zasobem, a liczba gniazd, które mogą być używane w danym momencie, można skonfigurować. (Liczba dostępnych gniazd jest zwykle około 30 000). Jeśli dostępne gniazda są używane lub jeśli klienci i serwery mają niezgodne ustawienia TIME_WAIT, a maszyna wirtualna próbuje ponownie użyć gniazda w stanie TIME_WAIT, nowe połączenia będą kończyć się niepowodzeniem, ponieważ pakiety TCP SYN są dyskretnie porzucone.
 
-Wartość dla zakresu portów dla ruchu wychodzącego gniazd jest zazwyczaj można skonfigurować w ramach stos TCP/IP systemu operacyjnego. To samo dotyczy ustawień TCP TIME_WAIT i ponowne używanie gniazd. Zmiana tych numerów potencjalnie może zwiększyć skalowalność. Jednak w zależności od sytuacji, tych zmian może spowodować problemy ze współdziałaniem. Należy zachować ostrożność, jeśli zmienisz tych wartości.
+Wartość zakresu portów dla gniazd wychodzących jest zazwyczaj konfigurowana w ramach stosu TCP/IP systemu operacyjnego. Ta sama wartość dotyczy ustawień TIME_WAIT protokołu TCP i ponownego użycia gniazda. Zmiana tych liczb może potencjalnie zwiększyć skalowalność. Jednak w zależności od sytuacji te zmiany mogą powodować problemy ze współdziałaniem. Należy zachować ostrożność w przypadku zmiany tych wartości.
 
-Aby rozwiązać ten limit skalowania, można użyć TIME_WAIT assassination. TIME_WAIT assassination umożliwia ponowne użycie w niektórych sytuacjach, takich jak numer sekwencyjny w pakiecie protokołu IP nowego połączenia przekroczy sekwencji liczbę ostatnich pakiet z poprzedniego połączenia gniazda. W takim przypadku system operacyjny umożliwi nowe połączenie nawiązane (będzie akceptować nowych SYN/potwierdzenia) i Wymuś zamknięcie poprzednie połączenie, który był w stanie TIME_WAIT. Ta funkcja jest obsługiwana na maszynach wirtualnych z Windows na platformie Azure. Aby dowiedzieć się więcej na temat pomocy technicznej na innych maszynach wirtualnych, skontaktuj się z dostawcą systemu operacyjnego.
+W celu rozwiązania tego ograniczenia skalowania można użyć TIME_WAIT Assassination. TIME_WAIT Assassination umożliwia ponowne użycie gniazda w pewnych sytuacjach, na przykład wtedy, gdy numer sekwencyjny w pakiecie IP nowego połączenia przekracza numer sekwencyjny ostatniego pakietu z poprzedniego połączenia. W takim przypadku system operacyjny zezwoli na nawiązanie nowego połączenia (zostanie zaakceptowana Nowa SYN/ACK) i Wymuś zamknięcie poprzedniego połączenia, które było w stanie TIME_WAIT. Ta funkcja jest obsługiwana na maszynach wirtualnych z systemem Windows na platformie Azure. Aby dowiedzieć się więcej o pomocy technicznej na innych maszynach wirtualnych, należy skontaktować się z dostawcą systemu operacyjnego.
 
-Aby dowiedzieć się więcej na temat konfigurowania ustawień TCP TIME_WAIT i zakres portów źródłowych, zobacz [ustawienia, które mogą być modyfikowane w celu zwiększenia wydajności sieci](https://docs.microsoft.com/biztalk/technical-guides/settings-that-can-be-modified-to-improve-network-performance).
+Aby dowiedzieć się więcej o konfigurowaniu ustawień TIME_WAIT protokołu TCP i zakresie portów źródłowych, zobacz [Ustawienia, które można zmodyfikować w celu zwiększenia wydajności sieci](https://docs.microsoft.com/biztalk/technical-guides/settings-that-can-be-modified-to-improve-network-performance).
 
-## <a name="virtual-network-factors-that-can-affect-performance"></a>Sieć wirtualna czynników, które mogą wpłynąć na wydajność
+## <a name="virtual-network-factors-that-can-affect-performance"></a>Czynniki sieci wirtualnej, które mogą mieć wpływ na wydajność
 
-### <a name="vm-maximum-outbound-throughput"></a>Maksymalna przepustowość ruchu wychodzącego maszyn wirtualnych
+### <a name="vm-maximum-outbound-throughput"></a>Maksymalna przepływność wychodząca maszyny wirtualnej
 
-System Azure oferuje szereg rozmiarów maszyn wirtualnych i typy, każdy z różne kombinacje wydajności. Jedną z tych funkcji jest sieci przepływności (lub przepustowości), który jest wyrażona w megabitach na sekundę (MB/s). Ponieważ maszyny wirtualne są hostowane na sprzęcie współużytkowanym, pojemność sieci musi być dość współużytkowane przez maszyny wirtualne, używając tego samego sprzętu. Większe maszyny wirtualne są przydzielane większej przepustowości niż mniejsze maszyny wirtualne.
+Platforma Azure udostępnia różne rozmiary i typy maszyn wirtualnych, z których każdy ma różne możliwości wydajności. Jedną z tych możliwości jest przepustowość sieci (lub przepustowość), która jest mierzona w megabitach na sekundę (MB/s). Ponieważ maszyny wirtualne są hostowane na udostępnionym sprzęcie, pojemność sieci musi być współużytkowana przez maszyny wirtualne korzystające z tego samego sprzętu. Większe maszyny wirtualne są przydzielono więcej przepustowości niż mniejsze maszyny wirtualne.
 
-Przepustowość sieci, przydzielone do każdej maszyny wirtualnej jest mierzone w (ruch wychodzący) ruch wychodzący z maszyny wirtualnej. Cały ruch sieciowy, pozostawiając maszyny wirtualnej jest liczony limitem przydzielone, niezależnie od docelowego. Na przykład jeśli maszyna wirtualna ma limit 1000 MB/s, ten limit dotyczy zarówno ruch wychodzący jest przeznaczony dla innej maszyny wirtualnej w tej samej sieci wirtualnej lub w jednym spoza platformy Azure.
+Przepustowość sieci przypisana do każdej maszyny wirtualnej jest naliczana na ruch wychodzący z maszyny wirtualnej. Cały ruch sieciowy opuszczający maszynę wirtualną jest liczony do przydzielonych limitów, niezależnie od miejsca docelowego. Na przykład jeśli maszyna wirtualna ma limit 1 000 MB/s, ten limit dotyczy tego, czy ruch wychodzący jest przeznaczony dla innej maszyny wirtualnej w tej samej sieci wirtualnej, czy też poza platformą Azure.
 
-Ruch przychodzący jest mierzone lub nie ograniczony bezpośrednio. Jednak istnieją inne czynniki, takie jak limity procesora CPU i pamięci masowej, które mogą wpłynąć na możliwość przetwarzania przychodzących danych maszyny wirtualnej.
+Ruch przychodzący nie jest naliczany ani ograniczony bezpośrednio. Istnieją jednak inne czynniki, takie jak limity procesora CPU i magazynu, które mogą mieć wpływ na możliwość przetwarzania przychodzących danych przez maszynę wirtualną.
 
-Przyspieszona sieć jest przeznaczony do poprawiania wydajności sieci, w tym czas oczekiwania, przepływność i użycie procesora CPU. Przyspieszona sieć może zwiększyć przepływność maszynę wirtualną, ale może to zrobić tylko do maszyny wirtualnej przydzielonej przepustowości.
+Przyspieszona sieć została zaprojektowana w celu poprawienia wydajności sieci, w tym opóźnienia, przepływności i użycia procesora CPU. Przyspieszona sieć może zwiększyć przepływność maszyny wirtualnej, ale może to zrobić tylko do przydzieloną przepustowość maszyny wirtualnej.
 
-Usługa Azure virtual machines ma co najmniej jeden interfejs sieciowy dołączony do nich. Mogą mieć kilka. Przepustowość przydzielona do maszyny wirtualnej jest sumą cały ruch wychodzący we wszystkich interfejsów sieciowych dołączonych do maszyny. Innymi słowy przepustowość jest przydzielany na podstawie na wirtualnej maszynie, niezależnie od tego, jak wiele interfejsów sieciowych dołączonych do maszyny.
+Do maszyn wirtualnych platformy Azure jest dołączony co najmniej jeden interfejs sieciowy. Mogą one mieć kilka. Przepustowość przypisana do maszyny wirtualnej to suma całego ruchu wychodzącego między wszystkimi interfejsami sieciowymi podłączonymi do maszyny. Innymi słowy, przepustowość jest alokowana na maszynę wirtualną, niezależnie od tego, ile interfejsów sieciowych jest dołączonych do maszyny.
 
-Oczekiwanej przepływności wychodzące i liczbę interfejsów sieciowych obsługiwanych przez każdego rozmiaru maszyny Wirtualnej są wyszczególnione w [rozmiary dla Windows maszyn wirtualnych na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Aby wyświetlić maksymalną przepustowość, wybierz typ, takie jak **ogólnego przeznaczenia**, a następnie znajdź sekcję dotyczącą serii rozmiar na wynikowej stronie (na przykład "serii Dv2"). Dla każdej serii jest tabela, która zapewnia sieci specyfikacji w ostatniej kolumnie, który jest zatytułowana "Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s)."
+Oczekiwana przepływność wychodząca i liczba interfejsów sieciowych obsługiwanych przez poszczególne rozmiary maszyn wirtualnych są szczegółowo opisane w obszarze [rozmiary dla maszyny wirtualnej z systemem Windows na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Aby zobaczyć maksymalną przepływność, wybierz typ, taki jak **ogólnego przeznaczenia**, a następnie znajdź sekcję dotyczącą serii rozmiarów na stronie wyników (na przykład "Dv2 Series"). Dla każdej serii istnieje tabela, która zawiera specyfikacje sieci w ostatniej kolumnie zatytułowane "Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s)".
 
-Limit przepływności stosuje się do maszyny wirtualnej. Przepływność nie ma wpływ następujące czynniki:
+Limit przepływności ma zastosowanie do maszyny wirtualnej. Te czynniki nie mają wpływ na przepływność:
 
-- **Liczba interfejsów sieciowych**: Limit przepustowości dotyczy sumę cały ruch wychodzący z maszyny wirtualnej.
+- **Liczba interfejsów sieciowych**: Limit przepustowości ma zastosowanie do sumy całego ruchu wychodzącego z maszyny wirtualnej.
 
-- **Przyspieszona sieć**: Chociaż ta funkcja może być pomocny w osiągnięcia limitu opublikowane, go nie zmienia limit.
+- **Przyspieszona sieć**: Chociaż ta funkcja może być przydatna w osiągnięciu opublikowanego limitu, nie zmienia limitu.
 
-- **Miejsce docelowe ruchu**: Wszystkie miejsca docelowe są wliczane do limitu ruchu wychodzącego.
+- **Miejsce docelowe ruchu**: Liczba wszystkich miejsc docelowych w kierunku limitu wychodzącego.
 
-- **Protokół**: Cały ruch wychodzący za pośrednictwem wszystkich protokołów, liczy się do limitu.
+- **Protokół**: Cały ruch wychodzący przez wszystkie protokoły jest liczony do limitu.
 
 Aby uzyskać więcej informacji, zobacz [przepustowość sieci maszyny wirtualnej](https://aka.ms/AzureBandwidth).
 
-### <a name="internet-performance-considerations"></a>Zagadnienia dotyczące wydajności w Internecie
+### <a name="internet-performance-considerations"></a>Zagadnienia dotyczące wydajności Internetu
 
-Zgodnie z opisem w tym artykule, czynniki w Internecie i na zewnątrz kontrolki, platformy Azure może wpłynąć na wydajność sieci. Oto niektóre z tych czynników:
+Jak opisano w tym artykule, czynniki w Internecie i poza kontrolą platformy Azure mogą mieć wpływ na wydajność sieci. Poniżej przedstawiono niektóre z tych czynników:
 
-- **Opóźnienie**: Może mieć wpływ na czas błądzenia między dwoma miejscami docelowymi, problemami w sieciach pośredniego, ruch, który nie przyjmuje "najkrótsze" ścieżki odległości i nieoptymalne ścieżki komunikacji równorzędnej.
+- **Opóźnienie**: Do czasu rundy między dwoma miejscami docelowymi mogą mieć wpływ problemy w sieciach pośrednich, ruch, który nie przyjmuje ścieżki odległości "najkrótszej" oraz przez nieoptymalne ścieżki komunikacji równorzędnej.
 
-- **Utrata pakietów**: Utrata pakietów może być spowodowany przeciążenie sieci, ścieżkę fizyczną problemów i urządzeń sieciowych o niskiej efektywności.
+- **Utrata pakietów**: Utrata pakietów może być spowodowana przez Przeciążenie sieci, problemy ze ścieżką fizyczną i przeprowadzeniem urządzeń sieciowych.
 
-- **Rozmiar jednostki MTU rozmiar/fragmentacji**: Fragmentacja wzdłuż ścieżki może prowadzić do opóźnienia w przybycia danych lub pakiety przychodzące poza kolejnością, co może wpłynąć na dostarczanie pakietów.
+- **Rozmiar jednostki MTU/fragmentacja**: Fragmentacja wzdłuż ścieżki może prowadzić do opóźnień w przybyciu danych lub w pakietach, które przechodzą z kolejności, co może mieć wpływ na dostarczanie pakietów.
 
-Polecenie traceroute jest dobrym narzędziem do pomiaru sieci charakterystyki (np. utraty pakietów i opóźnienia) co ścieżce sieciowej między urządzeniem źródła i urządzenie docelowe.
+Traceroute to dobre narzędzie do mierzenia charakterystyki wydajności sieci (na przykład utraty pakietów i opóźnień) w każdej ścieżce sieciowej między urządzeniem źródłowym a urządzeniem docelowym.
 
 ### <a name="network-design-considerations"></a>Zagadnienia dotyczące projektowania sieci
 
-Z uwzględnieniem zagadnień omówionych wcześniej w tym artykule topologię sieci wirtualnej może mieć wpływ na wydajność sieci. Na przykład projekt Gwiazda backhauls ruch globalny do sieci wirtualnej w jednym centrum wprowadzi opóźnienia sieci, która wpłynie na ogólną wydajność sieci.
+Wraz z zagadnieniami opisanymi wcześniej w tym artykule topologia sieci wirtualnej może mieć wpływ na wydajność sieci. Na przykład konstrukcja typu Hub i szprych polega na tym, że ruch wychodzący globalnie do jednowęzłowej sieci wirtualnej spowoduje opóźnienie sieci, co wpłynie na ogólną wydajność sieci.
 
-Liczba urządzeń sieciowych, które przekazuje ruch sieciowy może również wpływać na ogólny czas oczekiwania. Na przykład w projekcie Gwiazda — Jeśli ruch przechodzi przez wirtualne urządzenie sieciowe gwiazdy i urządzenia wirtualnego Centrum przed użyciem przejścia do Internetu, wirtualne urządzenia sieciowe może wprowadzić opóźnienie.
+Liczba urządzeń sieciowych, przez które przechodzi ruch sieciowy, może również wpływać na ogólne opóźnienia. Na przykład w przypadku projektu gwiazdy, jeśli ruch przechodzi przez wirtualne urządzenie sieciowe i urządzenie wirtualne koncentratora przed przekazaniem do Internetu, wirtualne urządzenia sieciowe mogą wprowadzać opóźnienia.
 
-### <a name="azure-regions-virtual-networks-and-latency"></a>Regiony platformy Azure, sieci wirtualnych i czas oczekiwania
+### <a name="azure-regions-virtual-networks-and-latency"></a>Regiony platformy Azure, sieci wirtualne i czas oczekiwania
 
-Regiony platformy Azure składają się z wielu centrów danych, który istnieje w ramach obszaru geograficznego. Te centra danych może nie być fizycznie obok siebie. W niektórych przypadkach są rozdzielone przez miarę 10 km. Sieć wirtualna jest logiczną nakładki na podstawie sieci fizycznych centrów danych platformy Azure. Sieć wirtualna nie pociąga za sobą topologii dowolnej określonej sieci w centrum danych.
+Regiony platformy Azure składają się z wielu centrów danych, które znajdują się w obszarze ogólnego obszaru geograficznego. Te centra danych mogą nie być fizycznie obok siebie. W niektórych przypadkach są one oddzielone o maksymalnie 10 kilometrów. Sieć wirtualna jest nałożeniem logicznym na podstawie fizycznej sieci centrów danych platformy Azure. Sieć wirtualna nie implikuje żadnej konkretnej topologii sieci w centrum danych.
 
-Na przykład dwie maszyny wirtualne, które znajdują się w tej samej sieci wirtualnej i podsieci może być w różnych stojakach, wiersze lub nawet centrów danych. Może być rozdzielone przez stopy kabel światłowodowy lub kilometrów kabel światłowodowy. Ta zmiana może wprowadzić zmienne opóźnienie (kilku milisekund różnicę) między różnych maszyn wirtualnych.
+Na przykład dwie maszyny wirtualne, które znajdują się w tej samej sieci wirtualnej i podsieci, mogą znajdować się w różnych stojakach, wierszach lub nawet centrach danych. Mogą one być oddzielone za pomocą kabla światłowodowego lub przez kilometry kabla światłowodowego. Ta odmiana może wprowadzać zmienne opóźnienie (kilka milisekund) między różnymi maszynami wirtualnymi.
 
-Geograficzne rozmieszczenie maszyn wirtualnych i potencjalne wynikłe opóźnienie między dwiema maszynami wirtualnymi, mogą być zależne od konfiguracji zestawy dostępności i strefy dostępności. Ale odległość między centrami danych w regionie jest specyficzne dla regionu i przede wszystkim ich według topologii centrum danych w regionie.
+Geograficzne rozmieszczenie maszyn wirtualnych oraz potencjalne opóźnienia między dwiema maszynami wirtualnymi mogą mieć wpływ na konfigurację zestawów dostępności i Strefy dostępności. Jednak odległość między centrami danych w regionie jest specyficzna dla regionu i przede wszystkim ma wpływ na topologię centrum danych w regionie.
 
-### <a name="source-nat-port-exhaustion"></a>Wyczerpanie portów translatora adresów Sieciowych źródła
+### <a name="source-nat-port-exhaustion"></a>Wyczerpanie portów źródłowego NAT
 
-Wdrożenie na platformie Azure mogą komunikować się z punktami końcowymi spoza platformy Azure w publicznej sieci internet i/lub publiczną przestrzeń adresów IP. Gdy wystąpienie inicjuje połączenia wychodzącego, Azure dynamicznie mapuje prywatny adres IP na publiczny adres IP. Po utworzeniu Azure to mapowanie, ruch powrotny dla ruchu wychodzącego przepływu pochodzącej może także łączyć prywatny adres IP skąd pochodzi przepływ.
+Wdrożenie na platformie Azure może komunikować się z punktami końcowymi poza platformą Azure w publicznej sieci Internet i/lub w publicznej przestrzeni adresów IP. Gdy wystąpienie inicjuje połączenie wychodzące, platforma Azure dynamicznie mapuje prywatny adres IP na publiczny adres IP. Po utworzeniu tego mapowania przez platformę Azure ruch powrotny dla wychodzącego przepływu można także uzyskać dostęp do prywatnego adresu IP, z którego pochodzi przepływ.
 
-Dla każdego połączenia wychodzącego modułu równoważenia obciążenia platformy Azure musi stosować to mapowanie przez pewien czas. Wielodostępne naturze platformy Azure utrzymywanie to mapowanie dla każdego przepływu wychodzącego dla każdej maszyny Wirtualnej może stanowić dużej ilości zasobów. Dlatego istnieją ograniczenia, które są ustawiane i na podstawie konfiguracji sieci wirtualnej platformy Azure. Lub oznacza, że bardziej precyzyjnie, Maszynie wirtualnej platformy Azure można wprowadzać tylko liczbę połączeń wychodzących w danym momencie. Po osiągnięciu limitów maszyna wirtualna nie będzie możliwe zapewnienie bardziej wychodzące połączenia.
+Dla każdego połączenia wychodzącego Azure Load Balancer musi zachować to mapowanie przez pewien czas. Z wielodostępnym charakterem platformy Azure utrzymywanie tego mapowania dla każdego przepływu wychodzącego dla każdej maszyny wirtualnej może być czasochłonne. W związku z tym obowiązują limity, które są ustawione na podstawie konfiguracji Virtual Network platformy Azure. Aby na przykład dokładniej określić, maszyna wirtualna platformy Azure może w danym momencie utworzyć tylko określoną liczbę połączeń wychodzących. Po osiągnięciu tych limitów maszyna wirtualna nie będzie mogła nawiązać większej liczby połączeń wychodzących.
 
-Ale to zachowanie można konfigurować. Aby uzyskać więcej informacji na temat SNAT i użyć funkcji SNAT względem portu wyczerpania, zobacz [w tym artykule](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections).
+Jednak to zachowanie można skonfigurować. Aby uzyskać więcej informacji o wykorzystaniu i wyczerpaniu portów przez przytranslatora adresów sieciowych, zobacz [ten artykuł](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections).
 
-## <a name="measure-network-performance-on-azure"></a>Zmierzyć wydajność sieci na platformie Azure
+## <a name="measure-network-performance-on-azure"></a>Mierzenie wydajności sieci na platformie Azure
 
-Liczba maksymalne wartości wydajności, w tym artykule są związane z opóźnieniem sieci / obustronne czasu (RTT) między dwiema maszynami wirtualnymi. Ta sekcja zawiera sugestie dotyczące sposobu testowania opóźnienia/RTT oraz testowania wydajności protokołu TCP i wydajność sieci maszyny Wirtualnej. Można dostrajanie i wydajność testowania wartości TCP/IP i sieci, omówionych wcześniej, korzystając z metod opisanych w tej sekcji. Można podłączyć opóźnienia, rozmiar jednostki MTU, MSS i okno wartości rozmiarów do obliczenia podany wcześniej i porównać teoretycznych maksymalne wartości z rzeczywistymi wartościami, których stosuje się podczas testowania.
+Liczba maksymalnych wydajności w tym artykule dotyczy opóźnienia sieci/czasu rundy (RTT) między dwiema maszynami wirtualnymi. Ta sekcja zawiera kilka sugestii dotyczących sposobu testowania opóźnień/czasu RTT i testowania wydajności sieci maszyn wirtualnych TCP. Można dostroić i testować wartości TCP/IP i sieci omówione wcześniej przy użyciu technik opisanych w tej sekcji. Wartości Opóźnij, MTU,/rozmiaru okna można podłączyć do określonych wcześniej obliczeń i porównać wartości teoretyczne z wartościami rzeczywistymi, które obserwujesz podczas testowania.
 
-### <a name="measure-round-trip-time-and-packet-loss"></a>Czas błądzenia miary i utraty pakietów
+### <a name="measure-round-trip-time-and-packet-loss"></a>Mierzenie czasu rundy i utraty pakietów
 
-Wydajność protokołu TCP intensywnie korzysta RTT i utraty pakietów. Najprostszym sposobem mierzyć utratę RTT i pakietów zapewnia narzędzie PING dostępne w Windows i Linux. Dane wyjściowe polecenia PING pokaże minimalna/maksymalna/średnia opóźnienia między źródłową i docelową. Można tam również sprawdzić utraty pakietów. Domyślnie polecenie PING używa protokołu ICMP. Narzędzie PsPing służy do testowania TCP RTT. Aby uzyskać więcej informacji, zobacz [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping).
+Wydajność TCP jest intensywnie oparta na RTT i utracie pakietów. Narzędzie PING dostępne w systemach Windows i Linux zapewnia najprostszy sposób mierzenia ubytku RTT i utraty pakietów. W danych wyjściowych polecenia PING będzie wyświetlane minimalne/maksymalne/Średnie opóźnienie między źródłem a miejscem docelowym. Zostanie również wyświetlona utrata pakietów. Polecenie PING domyślnie używa protokołu ICMP. Można użyć PsPing do testowania RTT protokołu TCP. Aby uzyskać więcej informacji, zobacz [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping).
 
-### <a name="measure-actual-throughput-of-a-tcp-connection"></a>Rzeczywista przepływność miary połączenia protokołu TCP
+### <a name="measure-actual-throughput-of-a-tcp-connection"></a>Mierzenie rzeczywistej przepływności połączenia TCP
 
-NTttcp to narzędzie do testowania wydajności protokołu TCP, systemu Linux lub Windows maszyny Wirtualnej. Można zmienić różne ustawienia protokołu TCP i ponownie przetestujesz korzyści za pomocą NTttcp. Aby uzyskać więcej informacji zobacz następujące zasoby:
+NTttcp to narzędzie do testowania wydajności TCP maszyny wirtualnej z systemem Linux lub Windows. Można zmienić różne ustawienia protokołu TCP, a następnie przetestować korzyści przy użyciu NTttcp. Aby uzyskać więcej informacji, zobacz następujące zasoby:
 
-- [Przepustowość/testowania (NTttcp)](https://aka.ms/TestNetworkThroughput)
+- [Testowanie przepustowości/przepływności (NTttcp)](https://aka.ms/TestNetworkThroughput)
 
-- [NTttcp Utility](https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769)
+- [Narzędzie NTttcp](https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769)
 
-### <a name="measure-actual-bandwidth-of-a-virtual-machine"></a>Miary rzeczywistej przepustowość maszyny wirtualnej
+### <a name="measure-actual-bandwidth-of-a-virtual-machine"></a>Mierzenie rzeczywistej przepustowości maszyny wirtualnej
 
-Testowanie wydajności różnych typach maszyn wirtualnych, accelerated networking i tak dalej, korzystając z narzędzia o nazwie dotyczące programu Iperf;. iPerf jest również dostępna w systemie Linux i Windows. dotyczące programu Iperf; służy do testowania ogólną przepustowość sieci TCP lub UDP. testy przepływności TCP dotyczące programu Iperf; wpływało czynników omówionych w tym artykule (np. czas oczekiwania i RTT). Może to prowadzić to UDP w poszukiwaniu lepszych wyników, po prostu chcesz przetestować maksymalną przepustowość.
+Za pomocą narzędzia o nazwie iPerf można testować wydajność różnych typów maszyn wirtualnych, przyspieszonej sieci i tak dalej. iPerf jest również dostępna w systemach Linux i Windows. iPerf może używać protokołu TCP lub UDP do testowania ogólnej przepływności sieci. testy przepływności TCP iPerf mają wpływ na czynniki omówione w tym artykule (takie jak opóźnienia i czas RTT). Dzięki temu protokół UDP może dać lepsze wyniki, jeśli chcesz przetestować maksymalną przepływność.
 
 Więcej informacji można znaleźć w tych artykułach:
 
-- [Rozwiązywanie problemów z wydajnością sieci usługi Expressroute](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-network-performance)
+- [Rozwiązywanie problemów z wydajnością sieci ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-network-performance)
 
 - [Jak zweryfikować przepływność sieci VPN do sieci wirtualnej](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-validate-throughput-to-vnet)
 
-### <a name="detect-inefficient-tcp-behaviors"></a>Wykrywać nieefektywne zachowań protokołu TCP
+### <a name="detect-inefficient-tcp-behaviors"></a>Wykrywanie nieefektywnych zachowań TCP
 
-Przechwytywanie pakietów klienci platformy Azure może zawierać pakiety TCP przy użyciu flag TCP (WOREK, potwierdzenia Zduplikowanej, RETRANSMISJI i szybkie ponowne przesłanie), które mogą wskazywać problemy z wydajnością sieci. Te pakiety wskazują specjalnie nieefektywności sieci, wynikających z utraty pakietów. Ale utraty pakietów niekoniecznie nie jest spowodowany przez problemy z wydajnością usługi Azure. Problemy z wydajnością może wynikać z problemy z aplikacjami, problemy z systemu operacyjnego lub innych problemów, które nie może być bezpośrednio związana z platformą Azure.
+W przypadku przechwytywania pakietów klienci platformy Azure mogą zobaczyć pakiety TCP z flagami TCP (Work, DUP ACK, retransmisja i szybkie ponowne przesyłanie), które mogą wskazywać na problemy z wydajnością sieci. Te pakiety wskazują na nieefektywność sieci, które wynikają z utraty pakietów. Jednak utrata pakietów nie musi być spowodowana przez problemy z wydajnością platformy Azure. Problemy z wydajnością mogą być spowodowane problemami z aplikacjami, problemami z systemem operacyjnym lub innymi problemami, które mogą nie być bezpośrednio związane z platformą Azure.
 
-Ponadto należy pamiętać o tym, że niektóre retransmisji i zduplikowane potwierdzenia jest to normalne zachowanie w sieci. Protokoły TCP zostały zbudowane wiarygodne. Dowód tych pakietów protokołu TCP w przechwytywania pakietów nie musi oznaczać problem z siecią systemowych, chyba że są one nadmierne.
+Należy również pamiętać, że niektóre retransmisje i duplikaty potwierdzeń są normalne w sieci. Protokoły TCP zostały skompilowane jako niezawodne. Dowody tych pakietów TCP w przechwyceniu pakietu nie zawsze wskazują na problem z siecią systemową, o ile nie są zbyt duże.
 
-Jednak te typy pakietów są wskazania, że przepustowość TCP nie osiąga zwiększyć wydajność, przyczyn omówionych w innych częściach tego artykułu.
+Mimo że te typy pakietów są wskazywane, że przepływność TCP nie osiąga maksymalnej wydajności, z powodów opisanych w innych sekcjach tego artykułu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz, kiedy znasz już o dostrajanie wydajności protokołu TCP/IP dla maszyn wirtualnych platformy Azure, warto przeczytać o inne uwagi dotyczące [Planowanie sieci wirtualnej](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm) lub [Dowiedz się więcej na temat łączenia i konfigurowanie sieci wirtualnych ](https://docs.microsoft.com/azure/virtual-network/).
+Teraz, gdy wiesz już, jak dostrajasz wydajność protokołu TCP/IP dla maszyn wirtualnych platformy Azure, możesz zapoznać się z innymi kwestiami dotyczącymi [planowania sieci wirtualnych](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm) lub [Dowiedz się więcej na temat łączenia i konfigurowania sieci wirtualnych](https://docs.microsoft.com/azure/virtual-network/).

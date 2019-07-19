@@ -1,6 +1,6 @@
 ---
-title: Przygotowywanie wirtualnego dysku twardego Windows do przekazania na platformę Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przygotować Windows dysku VHD lub VHDX go przekazać na platformę Azure
+title: Przygotowywanie wirtualnego dysku twardego systemu Windows do przekazania do platformy Azure | Microsoft Docs
+description: Dowiedz się, jak przygotować plik VHD lub VHDX systemu Windows w celu przekazania go do platformy Azure
 services: virtual-machines-windows
 documentationcenter: ''
 author: glimoli
@@ -15,71 +15,85 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: f40b3e0d2a49f6522149a977572d4f3c12e34255
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: a0cd2952633293bfa1d29bf3a399c67bf092d288
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67720052"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68318322"
 ---
-# <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Przygotowywanie wirtualnego dysku twardego Windows lub VHDX można przekazać na platformę Azure
+# <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Przygotuj plik VHD lub VHDX systemu Windows do przekazania do platformy Azure
 
-Przed przekazaniem Windows maszyny wirtualnej (VM) ze środowiska lokalnego do platformy Azure, należy przygotować wirtualny dysk twardy (VHD lub VHDX). Platforma Azure obsługuje zarówno generacji 1 i generacji 2 maszyn wirtualnych, które są w formacie pliku wirtualnego dysku twardego i mające dysk o stałym rozmiarze. Maksymalny dozwolony rozmiar wirtualnego dysku twardego jest 1,023 GB. 
+Przed przekazaniem maszyny wirtualnej z systemem Windows z lokalizacji lokalnej do platformy Azure należy przygotować wirtualny dysk twardy (VHD lub VHDX). Platforma Azure obsługuje maszyny wirtualne generacji 1 i 2, które są w formacie pliku VHD i mają dysk o stałym rozmiarze. Maksymalny dozwolony rozmiar dysku VHD to 1 023 GB. 
 
-W generacji 1 maszyny Wirtualnej, system plików VHDX można przekonwertować na wirtualny dysk twardy. Można również przeprowadzić konwersję dynamicznie powiększających dysku na dysk o stałym rozmiarze. Ale nie można zmienić generacji maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [generacji 1 lub 2 należy utworzyć maszyny Wirtualnej w funkcji Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) i [pomocy technicznej systemu Azure generacji 2 maszyny wirtualne (wersja zapoznawcza)](generation-2.md).
+Na maszynie wirtualnej generacji 1 można skonwertować system plików VHDX na dysk VHD. Możesz również skonwertować dynamicznie powiększający dysk na dysk o stałym rozmiarze. Ale nie można zmienić generacji maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz temat [jak utworzyć maszynę wirtualną generacji 1 lub 2 w funkcji Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) i obsłudze [platformy Azure dla maszyn wirtualnych 2. generacji (wersja zapoznawcza)](generation-2.md).
 
-Aby uzyskać informacji na temat zasady pomocy technicznej dla maszyn wirtualnych platformy Azure, zobacz [pomocy technicznej oprogramowanie serwera firmy Microsoft dla maszyn wirtualnych platformy Azure](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).
+Aby uzyskać informacje o zasadach pomocy technicznej dla maszyn wirtualnych platformy Azure, zobacz [Microsoft Server Software Support for Azure](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)Virtual Machines.
 
 > [!NOTE]
-> Instrukcje w tym artykule mają zastosowanie do 64-bitowej wersji systemu Windows Server 2008 R2 i nowszych systemach operacyjnych Windows Server. Aby uzyskać informacji na temat uruchamiania 32-bitowy system operacyjny na platformie Azure, zobacz [obsługa 32-bitowych systemach operacyjnych w maszynach wirtualnych platformy Azure](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines).
+> Instrukcje zawarte w tym artykule dotyczą:
+>1. 64-bitowa wersja systemu Windows Server 2008 R2 i nowszych systemów operacyjnych Windows Server. Aby uzyskać informacje o uruchamianiu 32-bitowego systemu operacyjnego na platformie Azure, zobacz [obsługa 32-bitowych systemów operacyjnych na maszynach wirtualnych platformy Azure](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines).
+>2. Jeśli do migracji obciążenia, takiego jak Azure Site Recovery lub Azure Migrate, zostanie użyte dowolne narzędzie do odzyskiwania po awarii, proces ten nadal wymaga wykonania i nastąpi w systemie operacyjnym gościa w celu przygotowania obrazu przed migracją.
 
-## <a name="convert-the-virtual-disk-to-a-fixed-size-and-to-vhd"></a>Konwertuj wirtualny dysk o stałym rozmiarze i wirtualnego dysku twardego 
-Jeśli zachodzi potrzeba Konwertuj wirtualny dysk z wymaganym formatem dla platformy Azure, należy użyć jednej z metod w tej sekcji. Utwórz kopię zapasową maszyny Wirtualnej, przed rozpoczęciem konwertowania dysku wirtualnego. Upewnij się, że wirtualny dysk twardy Windows działa poprawnie na serwerze lokalnym. Następnie rozwiązać wszelkie błędy w samej maszyny Wirtualnej, przed podjęciem próby konwersji lub przekaż go na platformę Azure.
+## <a name="convert-the-virtual-disk-to-a-fixed-size-and-to-vhd"></a>Konwertowanie dysku wirtualnego na stały rozmiar i na dysk VHD
 
-Po przekonwertowaniu dysku, utworzyć maszynę Wirtualną, która używa dysku. Uruchom i zaloguj się do maszyny Wirtualnej, aby zakończyć przygotowania go do przekazywania.
+Jeśli musisz skonwertować dysk wirtualny do wymaganego formatu dla platformy Azure, użyj jednej z metod opisanych w tej sekcji:
 
-### <a name="use-hyper-v-manager-to-convert-the-disk"></a>Konwertuj dysk przy użyciu Menedżera funkcji Hyper-V 
-1. Otwórz Menedżera funkcji Hyper-V, a następnie wybierz komputera lokalnego po lewej stronie. Wybierz z menu powyżej listy komputerów **akcji** > **Edytuj dysk**.
-2. Na **lokalizowanie wirtualnego dysku twardego** wybierz wirtualny dysk.
-3. Na **Wybieranie czynności** wybierz opcję **przekonwertować** > **dalej**.
-4. Jeśli potrzebujesz przekonwertować dysk VHDX, wybierz **wirtualnego dysku twardego** > **dalej**.
-5. Jeśli musisz przekonwertować z dynamicznie powiększających dysku, wybierz opcję **ustalony rozmiar** > **dalej**.
-6. Zlokalizuj i wybierz ścieżkę, aby zapisać nowy plik wirtualnego dysku twardego.
+1. Przed uruchomieniem procesu konwersji dysku wirtualnego wykonaj kopię zapasową maszyny wirtualnej.
+
+1. Upewnij się, że wirtualny dysk twardy systemu Windows działa poprawnie na serwerze lokalnym. Przed podjęciem próby konwersji lub przekazania na platformę Azure Usuń wszystkie błędy w samej maszynie wirtualnej.
+
+1. W odniesieniu do rozmiaru wirtualnego dysku twardego:
+
+   1. Wszystkie wirtualne dyski twarde na platformie Azure muszą mieć rozmiar wirtualny wyrównany do 1 MB. Podczas konwertowania z dysku surowego na dysk VHD należy upewnić się, że rozmiar dysku surowego jest wielokrotnością 1 MB przed konwersją. Ułamki megabajtów będą powodowały błędy podczas tworzenia obrazów na podstawie przekazanego wirtualnego dysku twardego.
+
+   2. Maksymalny dozwolony rozmiar wirtualnego dysku twardego systemu operacyjnego to 2 TB.
+
+
+Po konwersji dysku utwórz maszynę wirtualną, która używa tego dysku. Uruchom i zaloguj się na maszynie wirtualnej, aby zakończyć przygotowywanie jej do przekazania.
+
+### <a name="use-hyper-v-manager-to-convert-the-disk"></a>Konwertowanie dysku za pomocą Menedżera funkcji Hyper-V 
+1. Otwórz Menedżera funkcji Hyper-V i wybierz komputer lokalny po lewej stronie. W menu znajdującym się nad listą komputerów wybierz **Akcja** > **Edytuj dysk**.
+2. Na stronie **lokalizowanie wirtualnego dysku twardego** wybierz swój dysk wirtualny.
+3. Na stronie **Wybierz akcję** wybierz pozycję **Konwertuj** > **dalej**.
+4. Jeśli musisz skonwertować z dysku VHDX, wybierz pozycję **VHD** > **dalej**.
+5. Jeśli trzeba skonwertować dynamicznie powiększający się dysk, wybierz pozycję **stały rozmiar** > **dalej**.
+6. Znajdź i wybierz ścieżkę, w której ma zostać zapisany nowy plik VHD.
 7. Wybierz pozycję **Finish** (Zakończ).
 
 > [!NOTE]
-> Użyj sesję programu PowerShell z podwyższonym poziomem uprawnień, aby uruchamiać polecenia w tym artykule.
+> Użyj sesji programu PowerShell z podwyższonym poziomem uprawnień, aby uruchomić polecenia z tego artykułu.
 
-### <a name="use-powershell-to-convert-the-disk"></a>Aby przekonwertować dysk przy użyciu programu PowerShell 
-Można przekonwertować dysk wirtualny, używając [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) polecenia w programie Windows PowerShell. Wybierz **Uruchom jako administrator** podczas uruchamiania programu PowerShell. 
+### <a name="use-powershell-to-convert-the-disk"></a>Konwertowanie dysku przy użyciu programu PowerShell 
+Dysk wirtualny można skonwertować przy użyciu polecenia [convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) w programie Windows PowerShell. Wybierz opcję **Uruchom jako administrator** podczas uruchamiania programu PowerShell. 
 
-Następujące przykładowe polecenie konwertuje dysk z dysku VHDX na dysku VHD. Polecenie również konwertuje dysk z dynamicznie powiększających dysku na dysk o stałym rozmiarze.
+Poniższe przykładowe polecenie konwertuje dysk z dysku VHDX na dysk VHD. Polecenie umożliwia również Konwertowanie dysku z dynamicznie powiększanego dysku na dysk o stałym rozmiarze.
 
 ```Powershell
 Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd -VHDType Fixed
 ```
 
-W tym poleceniu, zastępując wartość `-Path` ze ścieżką do wirtualnego dysku twardego, który ma zostać przekonwertowany. Zastąp wartość `-DestinationPath` z nową ścieżkę i nazwę dysku przekonwertowana.
+W tym poleceniu Zastąp wartość `-Path` ścieżką do wirtualnego dysku twardego, który chcesz skonwertować. Zastąp wartość `-DestinationPath` nową ścieżką i nazwą konwertowanego dysku.
 
-### <a name="convert-from-vmware-vmdk-disk-format"></a>Konwersja z formatu dysku VMDK programu VMware
-W przypadku obrazu maszyny Wirtualnej Windows [format pliku VMDK](https://en.wikipedia.org/wiki/VMDK), użyj [Microsoft Virtual Machine Converter](https://www.microsoft.com/download/details.aspx?id=42497) Aby przekonwertować go na VHD format. Aby uzyskać więcej informacji, zobacz [sposób konwertowania VMDK programu VMware do wirtualnego dysku twardego funkcji Hyper-V](https://blogs.msdn.com/b/timomta/archive/2015/06/11/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd.aspx).
+### <a name="convert-from-vmware-vmdk-disk-format"></a>Konwertuj z formatu dysku VMware VMDK
+Jeśli masz obraz maszyny wirtualnej z systemem Windows w [formacie VMDK](https://en.wikipedia.org/wiki/VMDK), użyj konwertera [maszyny wirtualnej firmy Microsoft](https://www.microsoft.com/download/details.aspx?id=42497) , aby przekonwertować go na format VHD. Aby uzyskać więcej informacji, zobacz [jak skonwertować dysk VHD programu VMware VMDK na funkcję Hyper-V](https://blogs.msdn.com/b/timomta/archive/2015/06/11/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd.aspx).
 
-## <a name="set-windows-configurations-for-azure"></a>Ustawianie konfiguracji Windows na platformie Azure
+## <a name="set-windows-configurations-for-azure"></a>Ustawianie konfiguracji systemu Windows dla platformy Azure
 
-Na maszynie Wirtualnej, który chcesz przekazać na platformę Azure, uruchom następujące polecenia z [okna wiersza polecenia z podwyższonym poziomem uprawnień](https://technet.microsoft.com/library/cc947813.aspx):
+Na maszynie wirtualnej, która ma zostać przekazana na platformę Azure, uruchom następujące polecenia w [oknie wiersza polecenia z podwyższonym poziomem uprawnień](https://technet.microsoft.com/library/cc947813.aspx):
 
-1. Usuń wszystkie trasy statycznej trwałego w tabeli routingu:
+1. Usuń każdą statyczną trasę trwałą w tabeli routingu:
    
-   * Aby wyświetlić tabelę tras, uruchom `route print` w wierszu polecenia.
-   * Sprawdź `Persistence Routes` sekcje. Jeśli trasę, użyj `route delete` polecenie, aby go usunąć.
-2. Usuwanie serwera proxy WinHTTP:
+   * Aby wyświetlić tabelę tras, uruchom `route print` polecenie w wierszu polecenia.
+   * `Persistence Routes` Sprawdź sekcje. Jeśli istnieje trasa trwała, użyj `route delete` polecenia, aby je usunąć.
+2. Usuń serwer proxy WinHTTP:
    
     ```PowerShell
     netsh winhttp reset proxy
     ```
 
-    Jeśli maszyna wirtualna wymaga do pracy z określonego serwera proxy, należy dodać wyjątek serwera proxy na adres IP platformy Azure ([168.63.129.16](https://blogs.msdn.microsoft.com/mast/2015/05/18/what-is-the-ip-address-168-63-129-16/
-)) maszyny Wirtualnej do połączenia się do platformy Azure:
+    Jeśli maszyna wirtualna musi współpracować z określonym serwerem proxy, Dodaj wyjątek serwera proxy do adresu IP platformy Azure ([168.63.129.16](https://blogs.msdn.microsoft.com/mast/2015/05/18/what-is-the-ip-address-168-63-129-16/
+)), aby maszyna wirtualna mogła nawiązać połączenie z platformą Azure:
     ```
     $proxyAddress="<your proxy server>"
     $proxyBypassList="<your list of bypasses>;168.63.129.16"
@@ -87,7 +101,7 @@ Na maszynie Wirtualnej, który chcesz przekazać na platformę Azure, uruchom na
     netsh winhttp set proxy $proxyAddress $proxyBypassList
     ```
 
-3. Ustaw zasady sieci SAN dysku [ `Onlineall` ](https://technet.microsoft.com/library/gg252636.aspx):
+3. Ustaw [`Onlineall`](https://technet.microsoft.com/library/gg252636.aspx)następujące zasady sieci San:
    
     ```PowerShell
     diskpart 
@@ -99,19 +113,19 @@ Na maszynie Wirtualnej, który chcesz przekazać na platformę Azure, uruchom na
     exit   
     ```
 
-4. Ustaw czas uniwersalny czas koordynowany (UTC) Windows. Również ustawić automatyczny typ uruchamiania usługi Czas Windows (`w32time`) do `Automatic`:
+4. Ustawianie czasu uniwersalnego czasu koordynowanego (UTC) dla systemu Windows. Należy również ustawić typ uruchamiania usługi czas systemu Windows (`w32time`) na: `Automatic`
    
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation' -name "RealTimeIsUniversal" -Value 1 -Type DWord -force
 
     Set-Service -Name w32time -StartupType Automatic
     ```
-5. Ustaw profil zasilania o wysokiej wydajności:
+5. Ustaw profil zasilacza na wysoką wydajność:
 
     ```PowerShell
     powercfg /setactive SCHEME_MIN
     ```
-6. Upewnij się, że zmienne środowiskowe `TEMP` i `TMP` są ustawione na wartości domyślne:
+6. Upewnij się, że zmienne `TEMP` środowiskowe i `TMP` są ustawione na wartości domyślne:
 
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -name "TEMP" -Value "%SystemRoot%\TEMP" -Type ExpandString -force
@@ -119,8 +133,8 @@ Na maszynie Wirtualnej, który chcesz przekazać na platformę Azure, uruchom na
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -name "TMP" -Value "%SystemRoot%\TEMP" -Type ExpandString -force
     ```
 
-## <a name="check-the-windows-services"></a>Sprawdź usługi Windows
-Upewnij się, każdy z następujących usług Windows ustawiono na wartości domyślne Windows. Te usługi są minimum, które musi skonfigurować w celu zapewnienia łączności maszyny Wirtualnej. Aby zresetować ustawienia uruchamiania, uruchom następujące polecenia:
+## <a name="check-the-windows-services"></a>Sprawdź usługi systemu Windows
+Upewnij się, że dla każdej z poniższych usług systemu Windows ustawiono domyślne wartości systemu Windows. Te usługi są minimalne, które muszą zostać skonfigurowane w celu zapewnienia łączności z maszyną wirtualną. Aby zresetować ustawienia uruchamiania, uruchom następujące polecenia:
    
 ```PowerShell
 Set-Service -Name bfe -StartupType Automatic
@@ -136,13 +150,13 @@ Set-Service -Name MpsSvc -StartupType Automatic
 Set-Service -Name RemoteRegistry -StartupType Automatic
 ```
 
-## <a name="update-remote-desktop-registry-settings"></a>Aktualizowanie ustawień rejestru pulpitu zdalnego
+## <a name="update-remote-desktop-registry-settings"></a>Aktualizowanie ustawień rejestru zdalnego pulpitu
 Upewnij się, że następujące ustawienia są poprawnie skonfigurowane dla dostępu zdalnego:
 
 >[!NOTE] 
->Można otrzymać komunikat o błędzie, po uruchomieniu `Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -name &lt;object name&gt; -value &lt;value&gt;`. Można bezpiecznie zignorować ten komunikat. Oznacza to, tylko że domeny nie jest wypychanie tę konfigurację za pomocą obiektu zasad grupy.
+>Po uruchomieniu `Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -name &lt;object name&gt; -value &lt;value&gt;`programu może zostać wyświetlony komunikat o błędzie. Możesz bezpiecznie zignorować ten komunikat. Oznacza tylko, że domena nie wypychanie tej konfiguracji za pośrednictwem obiektu zasady grupy.
 
-1. Włączono protokół RDP (Remote Desktop):
+1. Remote Desktop Protocol (RDP) jest włączony:
    
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server' -name "fDenyTSConnections" -Value 0 -Type DWord -force
@@ -150,14 +164,14 @@ Upewnij się, że następujące ustawienia są poprawnie skonfigurowane dla dost
     Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -name "fDenyTSConnections" -Value 0 -Type DWord -force
     ```
    
-2. Portu RDP jest poprawnie skonfigurowany. Domyślnie jest to port 3389:
+2. Port RDP został prawidłowo skonfigurowany. Domyślnym portem jest 3389:
    
     ```PowerShell
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "PortNumber" -Value 3389 -Type DWord -force
     ```
-    Podczas wdrażania maszyny Wirtualnej, domyślne reguły są tworzone dla portu 3389. Jeśli chcesz zmienić numer portu to zrobić po wdrożeniu maszyny Wirtualnej na platformie Azure.
+    Podczas wdrażania maszyny wirtualnej reguły domyślne są tworzone na podstawie portu 3389. Jeśli chcesz zmienić numer portu, zrób to po wdrożeniu maszyny wirtualnej na platformie Azure.
 
-3. Odbiornik nasłuchuje w każdy interfejs sieciowy:
+3. Odbiornik nasłuchuje w każdym interfejsie sieciowym:
    
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "LanAdapter" -Value 0 -Type DWord -force
@@ -172,14 +186,14 @@ Upewnij się, że następujące ustawienia są poprawnie skonfigurowane dla dost
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "fAllowSecProtocolNegotiation" -Value 1 -Type DWord -force
      ```
 
-5. Ustaw wartość keep-alive:
+5. Ustaw wartość w polu Keep-Alive:
     
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -name "KeepAliveEnable" -Value 1  -Type DWord -force
     Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -name "KeepAliveInterval" -Value 1  -Type DWord -force
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "KeepAliveTimeout" -Value 1 -Type DWord -force
     ```
-6. Połącz ponownie:
+6. Połącz ponownie
     
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -name "fDisableAutoReconnect" -Value 0 -Type DWord -force
@@ -191,72 +205,72 @@ Upewnij się, że następujące ustawienia są poprawnie skonfigurowane dla dost
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "MaxInstanceCount" -Value 4294967295 -Type DWord -force
     ```
-8. Usuń wszystkie certyfikaty z podpisem własnym powiązane odbiornik protokołu RDP:
+8. Usuń wszystkie certyfikaty z podpisem własnym powiązane z odbiornikiem RDP:
     
     ```PowerShell
     Remove-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "SSLCertificateSHA1Hash" -force
     ```
-    Ten kod zapewnia, że możesz połączyć na początku podczas wdrażania maszyny Wirtualnej. Jeśli musisz sprawdzić to później, możesz to zrobić po wdrożeniu maszyny Wirtualnej na platformie Azure.
+    Ten kod umożliwia nawiązanie połączenia na początku podczas wdrażania maszyny wirtualnej. Jeśli chcesz przejrzeć to później, możesz to zrobić po wdrożeniu maszyny wirtualnej na platformie Azure.
 
-9. Jeśli maszyna wirtualna ma być częścią domeny, sprawdź następujące zasady, aby upewnić się, że wcześniejsze ustawień nie są przywracane. 
+9. Jeśli maszyna wirtualna będzie częścią domeny, sprawdź następujące zasady, aby upewnić się, że poprzednie ustawienia nie są przywrócone. 
     
     | Cel                                     | Zasady                                                                                                                                                       | Value                                                                                    |
     |------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
-    | Włączono protokół RDP                           | Komputera Konfiguracja komputera\Zasady\Ustawienia Settings\Administrative Templates\Components\Remote pulpitu usług sesji pulpitu zdalnego\Połączenia         | Umożliwiają użytkownikom zdalne łączenie się przy użyciu pulpitu zdalnego                                  |
-    | NLA zasad grupy                         | Settings\Administrative Templates\Components\Remote pulpitu pulpitu sesji usług zdalnego\Zabezpieczenia                                                    | Wymaganie uwierzytelniania użytkownika na potrzeby dostępu zdalnego przy użyciu uwierzytelniania na poziomie sieci |
-    | Ustawienia keep-alive                      | Komputera Konfiguracja komputera\Zasady\Ustawienia Settings\Administrative administracyjne\Składniki systemu Windows\Usługi pulpitu usług sesji pulpitu zdalnego\Połączenia | Skonfiguruj interwał utrzymywania aktywności połączenia                                                 |
-    | Połącz ponownie ustawienia                       | Komputera Konfiguracja komputera\Zasady\Ustawienia Settings\Administrative administracyjne\Składniki systemu Windows\Usługi pulpitu usług sesji pulpitu zdalnego\Połączenia | Ponowne łączenie                                                                   |
-    | Ograniczona liczba ustawień połączenia | Komputera Konfiguracja komputera\Zasady\Ustawienia Settings\Administrative administracyjne\Składniki systemu Windows\Usługi pulpitu usług sesji pulpitu zdalnego\Połączenia | Ogranicz liczbę połączeń                                                              |
+    | Włączono protokół RDP                           | Computer komputera\Zasady\Ustawienia Settings\Administrative Templates\Components\Remote Desktop Zdalnego\host sesji pulpitu Host\Connections         | Zezwalaj użytkownikom na zdalne nawiązywanie połączenia przy użyciu Pulpit zdalny                                  |
+    | Zasady grupy NLA                         | Settings\Administrative Templates\Components\Remote Desktop Zdalnego\host sesji pulpitu Host\Security                                                    | Wymagaj uwierzytelniania użytkownika na potrzeby dostępu zdalnego przy użyciu usługi NLA |
+    | Ustawienia utrzymywania aktywności                      | Komputer komputera\Zasady\Ustawienia Settings\Administrative administracyjne \ składniki systemu \ pulpit Zdalnego\host sesji pulpitu Host\Connections | Konfigurowanie interwału połączenia Keep-Alive                                                 |
+    | Ustawienia ponownego połączenia                       | Komputer komputera\Zasady\Ustawienia Settings\Administrative administracyjne \ składniki systemu \ pulpit Zdalnego\host sesji pulpitu Host\Connections | Połącz automatycznie ponownie                                                                   |
+    | Ograniczona liczba ustawień połączenia | Komputer komputera\Zasady\Ustawienia Settings\Administrative administracyjne \ składniki systemu \ pulpit Zdalnego\host sesji pulpitu Host\Connections | Ogranicz liczbę połączeń                                                              |
 
-## <a name="configure-windows-firewall-rules"></a>Konfigurowanie reguł zapory Windows
-1. Włącz zaporę Windows, na trzy profile (domena, standard i publicznego):
+## <a name="configure-windows-firewall-rules"></a>Konfigurowanie reguł zapory systemu Windows
+1. Włącz Zaporę systemu Windows na trzech profilach (domena, standardowa i publiczna):
 
    ```PowerShell
     Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled True
    ```
 
-2. Uruchom następujące polecenie w programie PowerShell, aby włączyć usługę WinRM za pośrednictwem trzech profili zapory (domena, prywatne i publiczne), a następnie włączyć usługi zdalnej programu PowerShell:
+2. Uruchom następujące polecenie w programie PowerShell, aby umożliwić usłudze WinRM przez trzy profile zapory (domena, prywatny i publiczny), a następnie Włącz usługę zdalną programu PowerShell:
    
    ```PowerShell
     Enable-PSRemoting -force
 
     Set-NetFirewallRule -DisplayName "Windows Remote Management (HTTP-In)" -Enabled True
    ```
-3. Włącz następujące reguły zapory zezwalające na ruch RDP:
+3. Włącz następujące reguły zapory, aby zezwolić na ruch RDP:
 
    ```PowerShell
     Set-NetFirewallRule -DisplayGroup "Remote Desktop" -Enabled True
    ```   
-4. Włącz regułę dla plików i drukarek, udostępnianie, tak aby maszyna wirtualna może odpowiadać na polecenia ping w sieci wirtualnej:
+4. Włącz regułę udostępniania plików i drukarek, aby maszyna wirtualna mogła odpowiedzieć na polecenie ping w sieci wirtualnej:
 
    ```PowerShell
    Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv4-In)" -Enabled True
    ``` 
-5. Jeśli maszyna wirtualna ma być częścią domeny, sprawdź następujące zasady usługi Azure AD, aby upewnić się, że wcześniejsze ustawień nie są przywracane. 
+5. Jeśli maszyna wirtualna będzie częścią domeny, sprawdź następujące zasady usługi Azure AD, aby upewnić się, że poprzednie ustawienia nie zostaną przywrócone. 
 
     | Cel                                 | Zasady                                                                                                                                                  | Value                                   |
     |--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|
-    | Włącz profil zapory Windows | Zapora Profile\Windows Firewall\Domain Connection\Windows administracyjne\Sieć\Połączenia komputera Konfiguracja komputera\Zasady\Ustawienia Settings\Administrative   | Chroń wszystkie połączenia sieciowe         |
-    | Włącz protokół RDP                           | Zapora Profile\Windows Firewall\Domain Connection\Windows administracyjne\Sieć\Połączenia komputera Konfiguracja komputera\Zasady\Ustawienia Settings\Administrative   | Zezwalaj na przychodzące wyjątki usług pulpitu zdalnego |
-    |                                      | Zapora Profile\Windows Firewall\Standard Connection\Windows administracyjne\Sieć\Połączenia komputera Konfiguracja komputera\Zasady\Ustawienia Settings\Administrative | Zezwalaj na przychodzące wyjątki usług pulpitu zdalnego |
-    | Włączanie protokołu ICMP V4                       | Zapora Profile\Windows Firewall\Domain Connection\Windows administracyjne\Sieć\Połączenia komputera Konfiguracja komputera\Zasady\Ustawienia Settings\Administrative   | Zezwalaj na wyjątki protokołu ICMP                   |
-    |                                      | Zapora Profile\Windows Firewall\Standard Connection\Windows administracyjne\Sieć\Połączenia komputera Konfiguracja komputera\Zasady\Ustawienia Settings\Administrative | Zezwalaj na wyjątki protokołu ICMP                   |
+    | Włączanie profilów zapory systemu Windows | Computer komputera\Zasady\Ustawienia Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows firewall   | Ochrona wszystkich połączeń sieciowych         |
+    | Włącz protokół RDP                           | Computer komputera\Zasady\Ustawienia Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows firewall   | Zezwalaj na wyjątki Pulpit zdalny dla ruchu przychodzącego |
+    |                                      | Computer komputera\Zasady\Ustawienia Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Standard Profile\Windows firewall | Zezwalaj na wyjątki Pulpit zdalny dla ruchu przychodzącego |
+    | Włącz protokół ICMP-v4                       | Computer komputera\Zasady\Ustawienia Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows firewall   | Zezwalaj na wyjątki protokołu ICMP                   |
+    |                                      | Computer komputera\Zasady\Ustawienia Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Standard Profile\Windows firewall | Zezwalaj na wyjątki protokołu ICMP                   |
 
-## <a name="verify-the-vm"></a>Sprawdź maszyny Wirtualnej 
+## <a name="verify-the-vm"></a>Weryfikowanie maszyny wirtualnej 
 
-Upewnij się, że maszyna wirtualna jest w dobrej kondycji, bezpieczne i RDP, dostępne: 
+Upewnij się, że maszyna wirtualna jest w dobrej kondycji, bezpieczna i RDP: 
 
-1. Aby upewnić się, że dysk jest w dobrej kondycji i spójny, sprawdzenie dysku przy następnym ponownym uruchomieniu maszyny Wirtualnej:
+1. Aby upewnić się, że dysk jest w dobrej kondycji i jest spójny, sprawdź, czy dysk przy następnym ponownym uruchomieniu maszyny wirtualnej:
 
     ```PowerShell
     Chkdsk /f
     ```
-    Upewnij się, że ten raport prezentuje dysku dobrej kondycji i przejrzysty.
+    Upewnij się, że raport zawiera dysk czyste i o dobrej kondycji.
 
-2. Określ ustawienia danych konfiguracji rozruchu (BCD). 
+2. Ustaw ustawienia Dane konfiguracji rozruchu (BCD). 
 
     > [!NOTE]
-    > Okno programu PowerShell z podwyższonym należy używać do uruchamiania tych poleceń.
+    > Użyj okna programu PowerShell z podwyższonym poziomem uprawnień, aby uruchomić te polecenia.
    
    ```powershell
     cmd
@@ -277,7 +291,7 @@ Upewnij się, że maszyna wirtualna jest w dobrej kondycji, bezpieczne i RDP, do
 
     exit
    ```
-3. Dziennik zrzutu może być pomocne w rozwiązywaniu problemów z awarii Windows. Włącz zbieranie danych dziennika zrzutu:
+3. Dziennik zrzutu może być przydatny podczas rozwiązywania problemów z awarią systemu Windows. Włącz zbieranie dzienników zrzutów:
 
     ```powershell
     # Set up the guest OS to collect a kernel dump on an OS crash event
@@ -293,83 +307,83 @@ Upewnij się, że maszyna wirtualna jest w dobrej kondycji, bezpieczne i RDP, do
     New-ItemProperty -Path $key -name DumpType -Type DWord -force -Value 2
     Set-Service -Name WerSvc -StartupType Manual
     ```
-4. Sprawdź, czy repozytorium Instrumentacji zarządzania Windows (WMI) jest spójne:
+4. Sprawdź, czy repozytorium Instrumentacja zarządzania Windows (WMI) jest spójne:
 
     ```PowerShell
     winmgmt /verifyrepository
     ```
-    Jeśli repozytorium jest uszkodzony, zobacz [WMI: Uszkodzenie repozytorium lub nie](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not).
+    Jeśli repozytorium jest uszkodzone, zobacz [WMI: Uszkodzenie repozytorium lub nie](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not).
 
-5. Upewnij się, że żadna inna aplikacja używa portu 3389. Port ten jest używany przez usługę protokołu RDP na platformie Azure. Aby sprawdzić, które porty są używane na maszynie Wirtualnej, uruchom `netstat -anob`:
+5. Upewnij się, że żadna inna aplikacja nie korzysta z portu 3389. Ten port jest używany dla usługi RDP na platformie Azure. Aby sprawdzić, które porty są używane na maszynie wirtualnej, `netstat -anob`Uruchom polecenie:
 
     ```PowerShell
     netstat -anob
     ```
 
-6. Przekazywanie wirtualnego dysku twardego Windows, który jest kontrolerem domeny:
+6. Aby przekazać wirtualny dysk twardy z systemem Windows, który jest kontrolerem domeny:
 
-   * Postępuj zgodnie z [te dodatkowe kroki](https://support.microsoft.com/kb/2904015) do przygotowania dysku.
+   * Postępuj zgodnie z [tymi dodatkowymi krokami](https://support.microsoft.com/kb/2904015) , aby przygotować dysk.
 
-   * Upewnij się, że znasz hasło trybu przywracania usług katalogowych (DSRM), w przypadku, gdy musisz uruchomić maszyny Wirtualnej w trybie DSRM w pewnym momencie. Aby uzyskać więcej informacji, zobacz [Ustaw hasło trybu DSRM](https://technet.microsoft.com/library/cc754363(v=ws.11).aspx).
+   * Upewnij się, że znasz hasło trybu przywracania usług katalogowych (DSRM) w przypadku, gdy musisz uruchomić maszynę wirtualną w trybie DSRM w pewnym momencie. Aby uzyskać więcej informacji, zobacz [Ustawianie hasła DSRM](https://technet.microsoft.com/library/cc754363(v=ws.11).aspx).
 
-7. Upewnij się, że znasz wbudowanego konta administratora i hasło. Można zresetować bieżące hasło administratora lokalnego i upewnij się, że to konto służy do logowania się do Windows za pośrednictwem połączenia RDP. To uprawnienie dostępu jest kontrolowane przez obiekt zasad grupy "Zezwalaj na logowanie za pomocą usług pulpitu zdalnego". Wyświetlenie tego obiektu w lokalnej edytorze zasad grupy w tym miejscu:
+7. Upewnij się, że znasz wbudowane konto administratora i hasło. Może zajść potrzeba zresetowania bieżącego hasła administratora lokalnego i upewnienia się, że można użyć tego konta do logowania się do systemu Windows za pomocą połączenia RDP. To uprawnienie dostępu jest kontrolowane przez obiekt zasady grupy "Zezwalaj na logowanie za pomocą Usługi pulpitu zdalnego". Wyświetl ten obiekt w Edytor lokalnych zasad grupy tutaj:
 
-    Komputera komputera\Ustawienia systemu Windows\Ustawienia zabezpieczeń\Zasady Lokalne\przypisywanie praw użytkownika
+    Komputer Komputera\ustawienia systemu Windows\Ustawienia zabezpieczeń \ zasady Lokalne\przypisanie prawa
 
-8. Sprawdź następujące zasady usługi Azure AD, aby upewnić się, że jesteś nie blokuje dostępu RDP za pośrednictwem protokołu RDP lub sieci:
+8. Sprawdź następujące zasady usługi Azure AD, aby upewnić się, że nie blokujesz dostępu do protokołu RDP za pośrednictwem protokołu RDP lub sieci:
 
-    - Komputera komputera\Ustawienia systemu Windows\Ustawienia zabezpieczeń\Zasady lokalne\przypisanie praw użytkownika\odmowa dostęp do tego komputera z sieci
+    - Komputer Komputera\ustawienia systemu Windows\Ustawienia zabezpieczeń \ zasady Lokalne\przypisanie Rights odmowa dostęp do tego komputera z sieci
 
-    - Komputera komputera\Ustawienia systemu Windows\Ustawienia zabezpieczeń\Zasady lokalne\przypisanie praw użytkownika\odmowa logowania za pomocą usług pulpitu zdalnego
+    - Komputer Komputera\ustawienia systemu Windows\Ustawienia zabezpieczeń \ zasady Lokalne\przypisanie Rights odmowa logowanie za Usługi pulpitu zdalnego
 
 
-9. Sprawdź następujące zasady usługi Azure AD, aby upewnić się, że usuwasz nie dowolnego konta wymagany dostęp:
+9. Sprawdź następujące zasady usługi Azure AD, aby upewnić się, że nie są usuwane żadne z wymaganych kont dostępu:
 
-   - Komputera komputera\Ustawienia systemu Windows\Ustawienia zabezpieczeń\Zasady lokalne\przypisanie praw Assignment\Access tego komputera z sieci
+   - Komputer Komputera\ustawienia systemu Windows\Ustawienia zabezpieczeń \ zasady Lokalne\przypisanie, Assignment\Access ten komputer z sieci
 
-   Zasady pomysłem jest wystawienie następujących grup:
+   Zasady powinny być wymienione w następujących grupach:
 
    - Administratorzy
 
    - Operatorzy kopii zapasowych
 
-   - Wszyscy
+   - Widzieć
 
    - Użytkownicy
 
-10. Uruchom ponownie maszynę Wirtualną, aby upewnić się, że Windows nadal działa prawidłowo i można z Tobą skontaktować za pośrednictwem połączenia RDP. W tym momencie można utworzyć Maszynę wirtualną w sieci lokalnej funkcji Hyper-V upewnij się, że maszyna wirtualna zacznie się całkowicie. Następnie test, aby upewnić się, że możesz połączyć maszynę Wirtualną za pośrednictwem protokołu RDP.
+10. Uruchom ponownie maszynę wirtualną, aby upewnić się, że system Windows jest nadal w dobrej kondycji i można go połączyć za pomocą połączenia RDP. W tym momencie możesz chcieć utworzyć maszynę wirtualną w lokalnej funkcji Hyper-V, aby upewnić się, że maszyna wirtualna jest uruchamiana w całości. Następnie przetestuj go, aby upewnić się, że można uzyskać dostęp do maszyny wirtualnej za pomocą protokołu RDP.
 
-11. Usuń wszystkie dodatkowe filtry interfejs sterownika transportu (TDI). Na przykład należy usunąć oprogramowanie, które analizuje TCP pakietów lub dodatkowe zapory. Jeśli musisz sprawdzić to później, możesz to zrobić po wdrożeniu maszyny Wirtualnej na platformie Azure.
+11. Usuń wszystkie filtry interfejsu dodatkowego sterownika transportu (TDI). Na przykład Usuń oprogramowanie, które analizuje pakiety TCP lub dodatkowe zapory. Jeśli chcesz przejrzeć to później, możesz to zrobić po wdrożeniu maszyny wirtualnej na platformie Azure.
 
-12. Należy odinstalować inne oprogramowanie innych firm lub sterownika, który jest składników powiązane z fizycznego lub jakakolwiek inna technologia wirtualizacji.
+12. Odinstaluj wszelkie inne oprogramowanie lub sterowniki innej firmy, które są powiązane ze składnikami fizycznymi lub innymi technologiami wirtualizacji.
 
-### <a name="install-windows-updates"></a>Instalowanie aktualizacji Windows
-W idealnym przypadku należy przechowywać maszyny aktualizowany *poziom poprawki*. Jeśli nie jest to możliwe, upewnij się, że są zainstalowane następujące aktualizacje:
+### <a name="install-windows-updates"></a>Zainstaluj aktualizacje systemu Windows
+W idealnym przypadku należy zachować aktualizację komputera na *poziomie poprawki*. Jeśli to nie jest możliwe, upewnij się, że zainstalowano następujące aktualizacje:
 
-| Składnik               | Binary         | Windows 7 z dodatkiem SP1, Windows Server 2008 R2 z dodatkiem SP1 | Windows 8, Windows Server 2012               | Windows 8.1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 | Windows 10 v1703    | Windows 10 v1709, Windows Server 2016 v1709 | V1803 systemu Windows 10, Windows Server 2016 v1803 |
+| Składnik               | Binary         | Windows 7 z dodatkiem SP1, Windows Server 2008 R2 z dodatkiem SP1 | Windows 8, Windows Server 2012               | Windows 8.1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 | V1703 systemu Windows 10    | Windows 10 v1709, Windows Server 2016 v1709 | Windows 10 v1803, Windows Server 2016 v1803 |
 |-------------------------|----------------|-------------------------------------------|---------------------------------------------|------------------------------------|---------------------------------------------------------|----------------------------|-------------------------------------------------|-------------------------------------------------|
-| Magazyn                 | Disk.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061         | -                                                       | -                          | -                                               | -                                               |
-|                         | storport.sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.332             | -                                               | -                                               |
+| Magazyn                 | dysk. sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061         | -                                                       | -                          | -                                               | -                                               |
+|                         | Storport. sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.332             | -                                               | -                                               |
 |                         | ntfs.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17623 / 6.2.9200.21743 - KB3121255 | 6.3.9600.18654 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
 |                         | Iologmsg.dll   | 6.1.7601.23403 - KB3125574                | 6.2.9200.16384 - KB2995387                  | -                                  | -                                                       | -                          | -                                               | -                                               |
-|                         | Classpnp.sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17061 / 6.2.9200.21180 - KB2995387 | 6.3.9600.18334 - KB3172614         | 10.0.14393.953 - KB4022715                              | -                          | -                                               | -                                               |
-|                         | Volsnap.sys    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17047 / 6.2.9200.21165 - KB2975331 | 6.3.9600.18265 - KB3145384         | -                                                       | 10.0.15063.0               | -                                               | -                                               |
-|                         | partmgr.sys    | 6.1.7601.23403 - KB3125574                | 6.2.9200.16681 - KB2877114                  | 6.3.9600.17401 - KB3000850         | 10.0.14393.953 - KB4022715                              | 10.0.15063.0               | -                                               | -                                               |
-|                         | volmgr.sys     |                                           |                                             |                                    |                                                         | 10.0.15063.0               | -                                               | -                                               |
-|                         | Volmgrx.sys    | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | 10.0.15063.0               | -                                               | -                                               |
-|                         | Msiscsi.sys    | 6.1.7601.23403 - KB3125574                | 6.2.9200.21006 - KB2955163                  | 6.3.9600.18624 - KB4022726         | 10.0.14393.1066 - KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
-|                         | Msdsm.sys      | 6.1.7601.23403 - KB3125574                | 6.2.9200.21474 - KB3046101                  | 6.3.9600.18592 - KB4022726         | -                                                       | -                          | -                                               | -                                               |
-|                         | Mpio.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.21190 - KB3046101                  | 6.3.9600.18616 - KB4022726         | 10.0.14393.1198 - KB4022715                             | -                          | -                                               | -                                               |
+|                         | Classpnp. sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17061 / 6.2.9200.21180 - KB2995387 | 6.3.9600.18334 - KB3172614         | 10.0.14393.953 - KB4022715                              | -                          | -                                               | -                                               |
+|                         | Volsnap. sys    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17047 / 6.2.9200.21165 - KB2975331 | 6.3.9600.18265 - KB3145384         | -                                                       | 10.0.15063.0               | -                                               | -                                               |
+|                         | partmgr. sys    | 6.1.7601.23403 - KB3125574                | 6.2.9200.16681 - KB2877114                  | 6.3.9600.17401 - KB3000850         | 10.0.14393.953 - KB4022715                              | 10.0.15063.0               | -                                               | -                                               |
+|                         | Volmgr. sys     |                                           |                                             |                                    |                                                         | 10.0.15063.0               | -                                               | -                                               |
+|                         | Volmgrx. sys    | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | 10.0.15063.0               | -                                               | -                                               |
+|                         | Msiscsi. sys    | 6.1.7601.23403 - KB3125574                | 6.2.9200.21006 - KB2955163                  | 6.3.9600.18624 - KB4022726         | 10.0.14393.1066 - KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
+|                         | MSDSM. sys      | 6.1.7601.23403 - KB3125574                | 6.2.9200.21474 - KB3046101                  | 6.3.9600.18592 - KB4022726         | -                                                       | -                          | -                                               | -                                               |
+|                         | MPIO. sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.21190 - KB3046101                  | 6.3.9600.18616 - KB4022726         | 10.0.14393.1198 - KB4022715                             | -                          | -                                               | -                                               |
 |                         | vmstorfl.sys   | 6.3.9600.18907 - KB4072650                | 6.3.9600.18080 - KB3063109                  | 6.3.9600.18907 - KB4072650         | 10.0.14393.2007 - KB4345418                             | 10.0.15063.850 - KB4345419 | 10.0.16299.371 - KB4345420                      | -                                               |
 |                         | Fveapi.dll     | 6.1.7601.23311 - KB3125574                | 6.2.9200.20930 - KB2930244                  | 6.3.9600.18294 - KB3172614         | 10.0.14393.576 - KB4022715                              | -                          | -                                               | -                                               |
 |                         | Fveapibase.dll | 6.1.7601.23403 - KB3125574                | 6.2.9200.20930 - KB2930244                  | 6.3.9600.17415 - KB3172614         | 10.0.14393.206 - KB4022715                              | -                          | -                                               | -                                               |
-| Sieć                 | netvsc.sys     | -                                         | -                                           | -                                  | 10.0.14393.1198 - KB4022715                             | 10.0.15063.250 - KB4020001 | -                                               | -                                               |
+| Sieć                 | netvsc. sys     | -                                         | -                                           | -                                  | 10.0.14393.1198 - KB4022715                             | 10.0.15063.250 - KB4020001 | -                                               | -                                               |
 |                         | mrxsmb10.sys   | 6.1.7601.23816 - KB4022722                | 6.2.9200.22108 - KB4022724                  | 6.3.9600.18603 - KB4022726         | 10.0.14393.479 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
 |                         | mrxsmb20.sys   | 6.1.7601.23816 - KB4022722                | 6.2.9200.21548 - KB4022724                  | 6.3.9600.18586 - KB4022726         | 10.0.14393.953 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
 |                         | mrxsmb.sys     | 6.1.7601.23816 - KB4022722                | 6.2.9200.22074 - KB4022724                  | 6.3.9600.18586 - KB4022726         | 10.0.14393.953 - KB4022715                              | 10.0.15063.0               | -                                               | -                                               |
 |                         | tcpip.sys      | 6.1.7601.23761 - KB4022722                | 6.2.9200.22070 - KB4022724                  | 6.3.9600.18478 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
 |                         | http.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17285 - KB3042553                  | 6.3.9600.18574 - KB4022726         | 10.0.14393.251 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
-|                         | vmswitch.sys   | 6.1.7601.23727 - KB4022719                | 6.2.9200.22117 - KB4022724                  | 6.3.9600.18654 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.138             | -                                               | -                                               |
+|                         | w pliku. sys   | 6.1.7601.23727 - KB4022719                | 6.2.9200.22117 - KB4022724                  | 6.3.9600.18654 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.138             | -                                               | -                                               |
 | Core                    | ntoskrnl.exe   | 6.1.7601.23807 - KB4022719                | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.483             | -                                               | -                                               |
 | Usługi pulpitu zdalnego | rdpcorets.dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.0               | -                                               | -                                               |
 |                         | termsrv.dll    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17048 - KB2973501                  | 6.3.9600.17415 - KB3000850         | 10.0.14393.0 - KB4022715                                | 10.0.15063.0               | -                                               | -                                               |
@@ -384,55 +398,55 @@ W idealnym przypadku należy przechowywać maszyny aktualizowany *poziom poprawk
 |                         | CVE-2018-0886  | KB4103718               | KB4103730                | KB4103725       | KB4103723                                               | KB4103731                  | KB4103727                                       | KB4103721                                       |
 |                         |                | KB4103712          | KB4103726          | KB4103715|                                                         |                            |                                                 |                                                 |
        
-### Ustalanie, kiedy należy użyć narzędzia Sysprep <a id="step23"></a>    
+### Ustalanie, kiedy należy używać narzędzia Sysprep<a id="step23"></a>    
 
-Narzędzie przygotowania systemu (Sysprep) to proces, można uruchomić, aby zresetować instalacji Windows. Narzędzie Sysprep zapewnia "fabrycznej" przez usunięcie wszystkich danych osobowych i zresetowanie kilka składników. 
+Narzędzie przygotowywania systemu (Sysprep) to proces, który można uruchomić w celu zresetowania instalacji systemu Windows. Program Sysprep udostępnia "środowisko pracy", usuwając wszystkie dane osobowe i instalując kilka składników. 
 
-Zazwyczaj uruchomić program Sysprep, aby utworzyć szablon, w którym można wdrożyć kilka innych maszyn wirtualnych, które mają określoną konfigurację. Szablon o nazwie *uogólniony obraz*.
+Zazwyczaj program Sysprep jest uruchamiany w celu utworzenia szablonu, na podstawie którego można wdrożyć kilka innych maszyn wirtualnych z określoną konfiguracją. Szablon jest nazywany uogólnionym *obrazem*.
 
-Jeśli chcesz utworzyć tylko jedną maszynę Wirtualną z jednego dysku, nie trzeba użyć narzędzia Sysprep. Zamiast tego można utworzyć maszynę Wirtualną z *obrazu wyspecjalizowanego*. Aby uzyskać informacje o tym, jak utworzyć maszynę Wirtualną na podstawie wyspecjalizowanego dysku Zobacz:
+Jeśli chcesz utworzyć tylko jedną maszynę wirtualną z jednego dysku, nie musisz używać narzędzia Sysprep. Zamiast tego można utworzyć maszynę wirtualną na podstawie *wyspecjalizowanego obrazu*. Aby uzyskać informacje dotyczące sposobu tworzenia maszyny wirtualnej na podstawie wyspecjalizowanego dysku, zobacz:
 
-- [Tworzenie maszyny Wirtualnej na podstawie wyspecjalizowanego dysku](create-vm-specialized.md)
-- [Tworzenie maszyny Wirtualnej na podstawie wyspecjalizowanego dysku wirtualnego dysku twardego](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal?branch=master)
+- [Tworzenie maszyny wirtualnej na podstawie wyspecjalizowanego dysku](create-vm-specialized.md)
+- [Tworzenie maszyny wirtualnej na podstawie wyspecjalizowanego dysku VHD](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal?branch=master)
 
-Jeśli chcesz utworzyć uogólnionego obrazu, należy uruchomić programu Sysprep. Aby uzyskać więcej informacji, zobacz [sposób używania programu Sysprep: Wprowadzenie](https://technet.microsoft.com/library/bb457073.aspx). 
+Jeśli chcesz utworzyć uogólniony obraz, musisz uruchomić program Sysprep. Aby uzyskać więcej informacji, [Zobacz jak używać narzędzia Sysprep: Wprowadzenie](https://technet.microsoft.com/library/bb457073.aspx). 
 
-Nie każda rola lub aplikacji, która jest zainstalowana na komputerze z systemem Windows obsługuje uogólniony. Dlatego przed uruchomieniem tej procedury upewnij się, że narzędzie Sysprep obsługuje rolę komputera. Aby uzyskać więcej informacji, zobacz [Obsługa narzędzia Sysprep dla ról serwera](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles).
+Nie każda rola lub aplikacja zainstalowana na komputerze z systemem Windows obsługuje uogólnione obrazy. Dlatego przed wykonaniem tej procedury upewnij się, że program Sysprep obsługuje rolę komputera. Aby uzyskać więcej informacji, zobacz [Obsługa programu Sysprep dla ról serwera](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles).
 
-### <a name="generalize-a-vhd"></a>Uogólnij dysk VHD
+### <a name="generalize-a-vhd"></a>Uogólnianie wirtualnego dysku twardego
 
 >[!NOTE]
-> Po uruchomieniu `sysprep.exe` w poniższych krokach, wyłącz maszynę Wirtualną. Nie włączyć ją ponownie do czasu utworzenia obrazu z niego na platformie Azure.
+> Po uruchomieniu wykonaj `sysprep.exe` następujące kroki, Wyłącz maszynę wirtualną. Nie włączaj jej ponownie, dopóki nie utworzysz obrazu na platformie Azure.
 
-1. Zaloguj się w usłudze Windows maszyny Wirtualnej.
-1. Uruchom **polecenia** jako administrator. 
+1. Zaloguj się do maszyny wirtualnej z systemem Windows.
+1. Uruchom **wiersz polecenia** jako administrator. 
 1. Zmień katalog na `%windir%\system32\sysprep`. Następnie należy uruchomić polecenie `sysprep.exe`.
 1. W oknie dialogowym **Narzędzie przygotowywania systemu** wybierz pozycję **Włącz systemowy tryb OOBE** i upewnij się, że pole wyboru **Uogólnij** jest zaznaczone.
 
-    ![Narzędzie przygotowania systemu](media/prepare-for-upload-vhd-image/syspre.png)
-1. W **opcje zamykania**, wybierz opcję **zamknięcia**.
+    ![Narzędzie przygotowywania systemu](media/prepare-for-upload-vhd-image/syspre.png)
+1. W obszarze **Opcje zamykania**wybierz pozycję **Zamknij**.
 1. Kliknij przycisk **OK**.
-1. Po zakończeniu zamknij maszynę Wirtualną. Nie używaj **ponowne uruchomienie** do zamykania maszyny Wirtualnej.
+1. Po zakończeniu działania narzędzia Sysprep Zamknij maszynę wirtualną. Nie używaj **ponownego uruchamiania** , aby zamknąć maszynę wirtualną.
 
-Teraz wirtualny dysk twardy jest gotowy do przekazania. Aby uzyskać więcej informacji o tym, jak utworzyć maszynę Wirtualną na podstawie uogólnionego dysku, zobacz [przekazywanie uogólnionego wirtualnego dysku twardego i użyć go do utworzenia nowej maszyny Wirtualnej na platformie Azure](sa-upload-generalized.md).
+Teraz dysk VHD jest gotowy do przekazania. Aby uzyskać więcej informacji na temat sposobu tworzenia maszyny wirtualnej na podstawie uogólnionego dysku, zobacz [przekazywanie uogólnionego wirtualnego dysku twardego i używanie go do tworzenia nowej maszyny wirtualnej na platformie Azure](sa-upload-generalized.md).
 
 
 >[!NOTE]
-> Niestandardowy *unattend.xml* plik nie jest obsługiwany. Mimo że firma Microsoft obsługuje `additionalUnattendContent` właściwość, która udostępnia tylko ograniczoną obsługę dodawania [microsoft-windows powłoki setup](https://docs.microsoft.com/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) opcje do *unattend.xml* pliku, który aprowizacja platformy Azure Agent korzysta. Możesz użyć, na przykład [additionalUnattendContent](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) dodać FirstLogonCommands i LogonCommands. Aby uzyskać więcej informacji, zobacz [przykład FirstLogonCommands additionalUnattendContent](https://github.com/Azure/azure-quickstart-templates/issues/1407).
+> Niestandardowy plik *Unattend. XML* nie jest obsługiwany. Chociaż obsługujemy `additionalUnattendContent` właściwość, która zapewnia tylko ograniczoną obsługę dodawania opcji [Instalatora Microsoft-Windows-Shell-Setup](https://docs.microsoft.com/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) do pliku *Unattend. XML* , który jest wykorzystywany przez agenta aprowizacji platformy Azure. Aby dodać FirstLogonCommands i LogonCommands, można użyć, na przykład [additionalUnattendContent](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) . Aby uzyskać więcej informacji, zobacz [AdditionalUnattendContent FirstLogonCommands example](https://github.com/Azure/azure-quickstart-templates/issues/1407).
 
 
 ## <a name="complete-the-recommended-configurations"></a>Wykonaj zalecane konfiguracje
-Następujące ustawienia nie wpływają na przekazywanie wirtualnego dysku twardego. Jednak zdecydowanie zaleca się je skonfigurować.
+Następujące ustawienia nie wpływają na przekazywanie wirtualnego dysku twardego. Zdecydowanie zaleca się jednak ich skonfigurowanie.
 
-* Zainstaluj [agenta maszyny wirtualnej platformy Azure](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Następnie można włączyć rozszerzenia maszyn wirtualnych. Rozszerzenia maszyn wirtualnych wdrożyć większość funkcjonalności krytyczne, które prawdopodobnie chcą korzystać z maszynami wirtualnymi. Konieczne będzie rozszerzenia, na przykład resetowania haseł lub skonfiguruj protokół RDP. Aby uzyskać więcej informacji, zobacz [agenta maszyny wirtualnej platformy Azure — omówienie](../extensions/agent-windows.md).
-* Po utworzeniu maszyny Wirtualnej na platformie Azure, zalecamy umieszczenie pliku stronicowania na *wolumin dysku danych czasowych* poprawić wydajność. Możesz skonfigurować położenie pliku w następujący sposób:
+* Zainstaluj [agenta maszyny wirtualnej platformy Azure](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Następnie można włączyć rozszerzenia maszyn wirtualnych. Rozszerzenia maszyn wirtualnych implementują większość krytycznych funkcji, których można chcieć używać z maszynami wirtualnymi. Wymagane są rozszerzenia, na przykład w celu resetowania haseł lub konfigurowania protokołu RDP. Aby uzyskać więcej informacji, zobacz [Omówienie agenta maszyny wirtualnej platformy Azure](../extensions/agent-windows.md).
+* Po utworzeniu maszyny wirtualnej na platformie Azure Zalecamy umieszczenie pliku stronicowania na *woluminie dysków* czasowych, aby zwiększyć wydajność. Umieszczanie plików można skonfigurować w następujący sposób:
 
    ```PowerShell
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -force
    ```
-  Jeśli dysk z danymi jest dołączony do maszyny Wirtualnej, literę dysku danych czasowych jest zazwyczaj *D*. Oznaczenie to może być różne w zależności od ustawień i liczby dostępnych dysków.
+  Jeśli dysk danych jest dołączony do maszyny wirtualnej, litera woluminu dysku czasowego jest zwykle *D*. To oznaczenie może różnić się w zależności od ustawień i liczby dostępnych dysków.
 
-## <a name="next-steps"></a>Kolejne kroki
-* [Przekazywanie obrazu maszyny Wirtualnej Windows Azure dla wdrożeń usługi Resource Manager](upload-generalized-managed.md)
-* [Rozwiązywanie problemów aktywacji maszyny Wirtualnej Windows Azure](troubleshoot-activation-problems.md)
+## <a name="next-steps"></a>Następne kroki
+* [Przekazywanie obrazu maszyny wirtualnej z systemem Windows na platformę Azure w celu wdrożenia Menedżer zasobów](upload-generalized-managed.md)
+* [Rozwiązywanie problemów z aktywacją maszyn wirtualnych systemu Windows Azure](troubleshoot-activation-problems.md)
 

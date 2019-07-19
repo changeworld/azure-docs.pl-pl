@@ -1,6 +1,6 @@
 ---
-title: Znasz warunki środowiska SAP Hana na platformie Azure (duże wystąpienia) | Dokumentacja firmy Microsoft
-description: Znasz warunki środowiska SAP Hana na platformie Azure (duże wystąpienia).
+title: Poznaj warunki SAP HANA na platformie Azure (duże wystąpienia) | Microsoft Docs
+description: Poznaj warunki SAP HANA na platformie Azure (duże wystąpienia).
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
@@ -12,38 +12,41 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/20/2018
-ms.author: saghorpa
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c069203e94872452c11a7e6cebccd213e0af639c
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 2564e0d34383f7c1daff5b02a871778fb90546cc
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706932"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868992"
 ---
 # <a name="know-the-terms"></a>Poznawanie warunków
 
-Kilka wspólnych definicji są powszechnie używane w zakresie architektury i technicznej Deployment Guide. Należy zwrócić uwagę, następujące warunki i ich znaczenie:
+Kilka typowych definicji jest szeroko używanych w przewodniku wdrażania architektury i techniczne. Należy zwrócić uwagę na następujące warunki i ich znaczenie:
 
 - **IaaS**: Infrastruktura jako usługa.
 - **PaaS**: Platforma jako usługa.
 - **SaaS**: Oprogramowanie jako usługa.
-- **Składnik SAP**: Poszczególnych aplikacji SAP, takich jak ERP i przeniesieniu jej centralnej składnika (ECC), Business Warehouse (BW), Menedżer rozwiązania lub Enterprise Portal (EP). Składniki SAP mogą być oparte na tradycyjnych technologii ABAP i Java lub aplikacji innych niż NetWeaver na podstawie takich jak obiekty biznesowych.
-- **Środowisko SAP**: Co najmniej jednego składnika SAP są logicznie pogrupowane w celu wykonywania funkcji biznesowych, takich jak rozwój, zapewniania jakości, szkolenia, odzyskiwania po awarii lub produkcji.
-- **Środowisko SAP**: Odnosi się do całego zasoby SAP w orientacji poziomej usługi IT. Środowisko SAP obejmuje wszystkie produkcji i środowisk nieprodukcyjnych.
-- **SAP system**: Kombinacja warstwy system DBMS i warstwy aplikacji, na przykład system rozwoju oprogramowania SAP ERP, SAP BW testu systemu i system produkcyjny SAP CRM. Wdrożeń platformy Azure nie obsługują dzielenia tych dwóch warstw między lokalną i platformą Azure. System SAP jest wdrożone w środowisku lokalnym lub w jego wdrożonych na platformie Azure. Możesz wdrożyć różnych systemów środowisko SAP na platformie Azure lub lokalnie. Na przykład można wdrożyć rozwoju SAP CRM i systemy testowe na platformie Azure, podczas wdrażania SAP CRM produkcji systemu lokalnego. Dla oprogramowania SAP HANA na platformie Azure (duże wystąpienia) jest on przeznaczony hosta z warstwy aplikacji SAP systemów SAP na maszynach wirtualnych i powiązanych wystąpienie SAP HANA na platformie SAP HANA na platformie Azure (duże wystąpienia) sygnatury jednostce.
-- **Duże wystąpienia sygnatury**: Stos infrastruktury sprzętu, który jest certyfikatem TDI i programu SAP HANA i dedykowane do uruchamiania wystąpień oprogramowania SAP HANA w systemie Azure.
-- **Oprogramowanie SAP HANA na platformie Azure (duże wystąpienia):** Oficjalna nazwa oferty na platformie Azure do uruchamiania wystąpień HANA w na sprzęcie z certyfikatem TDI i programu SAP HANA, które zostało wdrożone w dużych wystąpień sygnatury w różnych regionach platformy Azure. Powiązane termin *dużych wystąpień HANA* jest mała w przypadku *platformy SAP HANA na platformie Azure (duże wystąpienia)* i jest powszechnie używana w tym przewodniku wdrożenia technicznego.
-- **Między środowiskami lokalnymi**: W tym artykule opisano scenariusz, w której maszyny wirtualne są wdrażane z subskrypcją platformy Azure, site to site, obejmujące wiele lokacji lub połączenie usługi Azure ExpressRoute między centrami danych w środowisku lokalnym i platformą Azure. Dokumentacja wspólnych platformy Azure, tego rodzaju wdrożenia są również opisać jako scenariuszy obejmujących wiele lokalizacji. Przyczyna połączenie ma rozszerzone na platformę Azure w domenach lokalnych, lokalnej usługi Azure Active Directory/OpenLDAP i DNS w środowisku lokalnym. Pozioma w środowisku lokalnym jest rozszerzony do zasobów platformy Azure w subskrypcji platformy Azure. Dla tego rozszerzenia maszyn wirtualnych może być częścią domeny w środowisku lokalnym. 
+- **Składnik SAP**: Pojedyncza aplikacja SAP, taka jak ERP Central Component (ECC), Business Warehouse (BW), Menedżer rozwiązań lub Enterprise Portal (EP). Składniki SAP mogą opierać się na tradycyjnych technologiach ABAP lub Java lub aplikacjach nieopartych na NetWeaver, takich jak obiekty biznesowe.
+- **Środowisko SAP**: Co najmniej jeden składnik SAP logicznie zgrupowany do wykonywania funkcji biznesowej, takich jak programowanie, gwarancja jakości, szkolenia, odzyskiwanie po awarii lub produkcja.
+- **SAP pozioma**: Odnosi się do całego zasobu SAP w krajobrazu IT. System SAP zawiera wszystkie środowiska produkcyjne i nieprodukcyjne.
+- **System SAP**: Kombinacja warstwy systemu DBMS i warstwy aplikacji, na przykład system wdrażania SAP ERP, system testowy SAP BW i System produkcyjny SAP CRM. Wdrożenia platformy Azure nie obsługują dzielenia tych dwóch warstw między środowiskiem lokalnym i platformą Azure. System SAP został wdrożony lokalnie lub wdrożony na platformie Azure. Różne systemy oprogramowania SAP można wdrożyć na platformie Azure lub lokalnie. Można na przykład wdrożyć systemy deweloperskie i testowe oprogramowania SAP CRM na platformie Azure podczas wdrażania systemu produkcyjnego SAP CRM w środowisku lokalnym. W przypadku SAP HANA na platformie Azure (duże wystąpienia) zaplanowano hostowanie warstwy aplikacji SAP systemów SAP na maszynach wirtualnych i powiązanego wystąpienia SAP HANA w jednostce SAP HANA na platformie Azure (duże wystąpienia).
+- **Sygnatura dużej instancji**: Stos infrastruktury sprzętowej, który jest SAP HANA certyfikat TDI i przeznaczony do uruchamiania SAP HANA wystąpień na platformie Azure.
+- **SAP HANA na platformie Azure (duże wystąpienia):** Oficjalna nazwa oferty na platformie Azure służąca do uruchamiania wystąpień platformy HANA w systemie SAP HANA sprzętu z certyfikatem TDI, który jest wdrażany w sygnaturach dużych wystąpień w różnych regionach świadczenia usługi Azure. *Duże wystąpienie usługi Hana* jest krótkie dla *SAP HANA na platformie Azure (duże wystąpienia)* i jest szeroko używane w tym przewodniku wdrażania technicznego.
+- **Wiele**lokalizacji: Zawiera opis scenariusza, w którym maszyny wirtualne są wdrażane w ramach subskrypcji platformy Azure, która ma łączność obejmującą lokację, wiele witryn lub platformę Azure ExpressRoute między lokalnymi centrami danych i platformą Azure. W typowej dokumentacji platformy Azure te rodzaje wdrożeń są również opisane jako scenariusze obejmujące wiele lokalizacji. Przyczyną połączenia jest rozszerzonie domen lokalnych, lokalnych Azure Active Directory/OpenLDAP i lokalnych nazw DNS na platformę Azure. Lokalne poziomy są rozszerzane do zasobów platformy Azure w ramach subskrypcji platformy Azure. Dzięki temu rozszerzeniu maszyny wirtualne mogą być częścią domeny lokalnej. 
 
-   Użytkownicy domeny z domeny lokalnej można uzyskiwać dostęp do serwerów i uruchamiania usług na tych maszynach wirtualnych (takiej jak DBMS usługi). Komunikacja i rozpoznawanie nazw między maszynami wirtualnymi wdrożony w środowisku lokalnym i maszyn wirtualnych wdrożonych przez Azure jest możliwe. Ten scenariusz jest typowy sposób, w którym większość zasobów SAP są wdrażane. Aby uzyskać więcej informacji, zobacz [bramy Azure VPN Gateway](../../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) i [tworzenie sieci wirtualnej za pomocą połączenia typu lokacja lokacja przy użyciu witryny Azure portal](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-- **Dzierżawa**: Klient wdrożony w sygnaturze dużych wystąpień HANA pobiera izolowane do *dzierżawy.* Dzierżawa jest odizolowany w sieci, magazynu i warstwy obliczeniowej od pozostałych dzierżawców. Jednostki magazynu i mocy obliczeniowej, przypisane do różnych dzierżawach nie widzę, siebie nawzajem i komunikować się ze sobą na poziomie sygnatury dużych wystąpień HANA. Klient może wybrać wdrożenie w różnych dzierżawach. Nawet wówczas nie ma komunikacji między dzierżawami, na poziomie sygnatury dużych wystąpień HANA.
-- **Jednostka SKU kategorii**: Dla dużych wystąpień HANA są oferowane następujące dwie kategorie jednostek SKU:
-    - **Typ I klasa**: S72, S72m, S96 i S144, a także S144m, platformie S192, platformie S192m i S192xm
-    - **Typ klasy II**: S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm i S960m
+   Użytkownicy domeny lokalnej mogą uzyskać dostęp do serwerów i uruchamiać usługi na tych maszynach wirtualnych (na przykład w usługach DBMS). Możliwa jest komunikacja i rozpoznawanie nazw między maszynami wirtualnymi wdrożonymi lokalnie i maszynami wirtualnymi wdrożonymi na platformie Azure. Ten scenariusz jest typowym sposobem, w jaki są wdrażane większość zasobów SAP. Aby uzyskać więcej informacji, zobacz temat [Azure VPN Gateway](../../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) i [Tworzenie sieci wirtualnej z połączeniem lokacja-lokacja przy użyciu Azure Portal](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+- **Dzierżawa**: Klient wdrożony w sygnaturze dużego wystąpienia HANA zostanie odizolowany do *dzierżawy.* Dzierżawa jest odizolowana od sieci, magazynu i warstwy obliczeniowej od innych dzierżawców. Jednostki magazynowe i obliczeniowe przypisane do różnych dzierżawców nie są ze sobą widoczne ani nie komunikują się ze sobą na poziomie sygnatury dużego wystąpienia HANA. Klient może wybrać wdrożenie w różnych dzierżawach. Nawet nie ma żadnej komunikacji między dzierżawcami na poziomie sygnatury dużego wystąpienia HANA.
+- **Kategoria jednostki SKU**: W przypadku dużego wystąpienia HANA oferowane są następujące dwie kategorie jednostek SKU:
+    - **Typ I Klasa**: S72, S72m, s96, S144, S144m, S192, S192m i S192xm
+    - **Klasa typu II**: S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm i S960m
+- **Sygnatura**: Definiuje wewnętrzny rozmiar wdrożenia platformy HANA dla firmy Microsoft. Przed wdrożeniem jednostek dużego wystąpienia HANA należy wdrożyć sygnaturę dużego wystąpienia HANA składającą się z stojaków obliczeniowych, sieci i magazynu w lokalizacji centrum danych. Takie wdrożenie nazywa się sygnaturą dużego wystąpienia HANA lub z poprawką 4 (patrz poniżej), w którym jest używany alternatywny okres **dużego wystąpienia wiersza**
+- **Poprawka**: Istnieją dwie różne wersje sygnatury dla sygnatur dużych wystąpień usługi HANA. Różnią się one w architekturze i sąsiedztwie na hostach maszyn wirtualnych platformy Azure
+    - "Poprawka 3" (Rev. 3): to oryginalny projekt, który został wdrożony w połowie roku 2016
+    - "Wersja 4" (Rev. 4): to nowy projekt, który może zapewnić bliższą bliskość hostom maszyn wirtualnych platformy Azure, oraz to, co zmniejsza opóźnienie sieci między maszynami wirtualnymi platformy Azure i jednostkami dużej instancji HANA 
 
-
-Szereg dodatkowych zasobów są dostępne w sposób wdrażania obciążeń SAP w chmurze. Jeśli planujesz wykonać wdrożenie oprogramowania SAP Hana na platformie Azure, musisz być doświadczenie w pracy z i korzystają z zasadami modelu IaaS platformy Azure i wdrażanie obciążeń SAP na platformie IaaS Azure. Przed kontynuowaniem, zobacz [rozwiązania użycia adapterów SAP na maszynach wirtualnych Azure](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Aby uzyskać więcej informacji. 
+W przypadku wdrażania obciążeń SAP w chmurze dostępne są różne dodatkowe zasoby. Jeśli planujesz wykonać wdrożenie SAP HANA na platformie Azure, musisz mieć doświadczenie i wiedzieć o zasadach platformy Azure IaaS oraz o wdrażaniu obciążeń SAP na platformie Azure IaaS. Przed kontynuowaniem zobacz [Korzystanie z rozwiązań SAP na maszynach wirtualnych platformy Azure](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , aby uzyskać więcej informacji. 
 
 **Następne kroki**
-- Zapoznaj się [HLI certyfikacji](hana-certification.md)
+- Odwołaj się do [certyfikacji](hana-certification.md) .

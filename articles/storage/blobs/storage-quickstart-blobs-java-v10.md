@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start platformy Azure: Tworzenie obiektu blob w magazynie obiektów przy użyciu języka Java Storage SDK V10 | Dokumentacja firmy Microsoft'
+title: 'Przewodnik Szybki Start platformy Azure: Tworzenie obiektu BLOB w magazynie obiektów przy użyciu zestawu SDK magazynu Java v10 | Microsoft Docs'
 description: Ten przewodnik Szybki start przedstawia sposób tworzenia kontenera w magazynie obiektów (Azure Blob Storage), przekazywania pliku, wyświetlania listy obiektów i pobierania obiektów za pomocą zestawu SDK usługi Storage dla języka Java.
 services: storage
 author: mhopkins-msft
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: mhopkins
 ms.reviewer: seguler
-ms.openlocfilehash: f023f3fdbc82960f3994f8e5763310dc95ca1c2f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 2aa004ffa98730341c8de105f16feea6e3931a86
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65152795"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326679"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10"></a>Szybki start: Przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą V10 SDK magazynu w języku Java
+# <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10"></a>Szybki start: Przekazywanie, pobieranie i wyświetlanie listy obiektów BLOB przy użyciu zestawu SDK magazynu Java v10
 
 W tym przewodniku Szybki start dowiesz się, w jaki sposób za pomocą nowego zestawu SDK usługi Storage dla języka Java przekazywać, pobierać i wyświetlać listę blokowych obiektów blob w kontenerze usługi Azure Blob Storage. Nowy zestaw SDK dla języka Java używa modelu programowania reaktywnego z biblioteką RxJava zapewniającą operacje asynchroniczne. Dowiedz się więcej o [reaktywnych rozszerzeniach maszyny wirtualnej języka Java](https://github.com/ReactiveX/RxJava) w bibliotece RxJava. 
 
@@ -50,14 +50,14 @@ To rozwiązanie wymaga bezpiecznego przechowywania nazwy i klucza konta magazynu
 
 ### <a name="linux-example"></a>Przykład dla systemu Linux
 
-```
+```bash
 export AZURE_STORAGE_ACCOUNT="<youraccountname>"
 export AZURE_STORAGE_ACCESS_KEY="<youraccountkey>"
 ```
 
 ### <a name="windows-example"></a>Przykład dla systemu Windows
 
-```
+```CMD
 setx AZURE_STORAGE_ACCOUNT "<youraccountname>"
 setx AZURE_STORAGE_ACCESS_KEY "<youraccountkey>"
 ```
@@ -74,7 +74,7 @@ Jeśli chcesz uruchomić aplikację przykładową przy użyciu narzędzia Maven 
 
 Ten przykład przedstawia dane wyjściowe zwracane w przypadku uruchomienia aplikacji w systemie Windows.
 
-```
+```Output
 Created quickstart container
 Enter a command
 (P)utBlob | (L)istBlobs | (G)etBlob | (D)eleteBlobs | (E)xitSample
@@ -283,7 +283,7 @@ Jeśli nie potrzebujesz już obiektów blob przekazanych podczas pracy z tym prz
 containerURL.delete(null).blockingGet();
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start przedstawiono metodę transferowania plików między dyskiem lokalnym i usługą Azure Blob Storage przy użyciu języka Java. 
 

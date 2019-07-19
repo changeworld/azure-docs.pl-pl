@@ -1,10 +1,10 @@
 ---
-title: Wysoka dostępność i odzyskiwanie po awarii — Azure Batch | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak projektować aplikacje usługi Batch awarii regionalnej
+title: Wysoka dostępność i odzyskiwanie po awarii — Azure Batch | Microsoft Docs
+description: Dowiedz się, jak zaprojektować aplikację usługi Batch pod kątem awarii regionalnej
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -14,41 +14,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: lahugh
-ms.openlocfilehash: b863785575263fedd144b3d599962a8e1559e0a3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3c76a5100e6ac1db067ccdbd582ddf9adba946c1
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60549756"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322587"
 ---
 # <a name="design-your-application-for-high-availability"></a>Projektowanie aplikacji wysokiej dostępności
 
-Usługa Azure Batch to usługa regionalna. Usługi Batch jest dostępna we wszystkich regionach platformy Azure, ale po utworzeniu konta usługi Batch musi być skojarzone z regionem. Wszystkie operacje dla konta usługi Batch, która jest następnie zastosować do tego regionu. Na przykład pul i skojarzone maszyny wirtualne (VM) są tworzone w tym samym regionie co konto usługi Batch.
+Azure Batch to usługa regionalna. Usługa Batch jest dostępna we wszystkich regionach platformy Azure, ale po utworzeniu konta usługi Batch musi ono być skojarzone z regionem. Wszystkie operacje na koncie usługi Batch są następnie stosowane do tego regionu. Na przykład pule i skojarzone maszyny wirtualne są tworzone w tym samym regionie co konto usługi Batch.
 
-Podczas projektowania aplikacji, która używa usługi Batch, należy wziąć pod uwagę możliwości usługi Batch nie są dostępne w regionie. Użytkownik może wystąpić sytuacja, rzadko w przypadku problemu z regionem jako całości, całą partię usługi w regionie lub problem z określonym kontem usługi Batch.
+Podczas projektowania aplikacji korzystającej z programu Batch należy rozważyć możliwość, że partia nie jest dostępna w regionie. Istnieje możliwość wystąpienia rzadkich sytuacji, gdy występuje problem z regionem jako całość, cała usługa Batch w regionie lub problem z konkretnym kontem usługi Batch.
 
-Jeśli aplikacji lub rozwiązania za pomocą usługi Batch zawsze musi być dostępny, a następnie ją powinny zostać tak zaprojektowane, przejście w tryb failover do innego regionu lub zawsze mieć obciążenia podzielony między co najmniej dwóch regionach. Obie opcje wymagają co najmniej dwa konta usługi Batch w każdym z nich znajduje się w innym regionie.
+Jeśli aplikacja lub rozwiązanie korzystające z usługi Batch zawsze musi być dostępne, powinno być przeznaczone do pracy w trybie failover z innym regionem lub zawsze mają podział obciążenia między dwa lub więcej regionów. Oba podejścia wymagają co najmniej dwóch kont usługi Batch, przy czym każde konto znajduje się w innym regionie.
 
-## <a name="multiple-batch-accounts-in-multiple-regions"></a>Wiele kont usługi Batch w wielu regionach
+## <a name="multiple-batch-accounts-in-multiple-regions"></a>Wiele kont wsadowych w wielu regionach
 
-Używanie wielu kont usługi Batch w różnych regionach umożliwia aplikacji dalsze działanie, jeśli konto usługi Batch w innym regionie staje się niedostępny. Używanie wielu kont jest szczególnie ważne, jeśli aplikacja wymaga, by zapewnić wysoką dostępność.
+Używanie wielu kont usługi Batch w różnych regionach zapewnia możliwość kontynuowania działania aplikacji w przypadku niedostępności konta usługi Batch w innym regionie. Używanie wielu kont jest szczególnie ważne, jeśli aplikacja musi być wysoce dostępna.
 
-W niektórych przypadkach aplikacji mogą być przeznaczone do zawsze należy używać co najmniej dwóch regionach. Na przykład gdy będziesz potrzebować znaczną ilość miejsca, przy użyciu wielu regionów mogą być potrzebne do obsługi dużych aplikacji lub o pracownikach na przyszły rozwój.
+W niektórych przypadkach aplikacja może być zaprojektowana tak, aby zawsze korzystała z dwóch lub więcej regionów. Na przykład gdy potrzebna jest znaczna ilość pojemności, może być konieczne użycie wielu regionów w celu obsługi aplikacji o dużej skali lub zajęcie ich w przyszłości.
 
-## <a name="design-considerations-for-providing-failover"></a>Zagadnienia dotyczące projektowania zapewniające trybu failover
+## <a name="design-considerations-for-providing-failover"></a>Zagadnienia dotyczące projektowania związane z udostępnianiem trybu failover
 
-Kluczowym elementem do rozważenia po daje możliwość pracy awaryjnej w alternatywnym regionie wszystkich składników w ramach rozwiązania muszą być uwzględnione; nie wystarczy po prostu mają drugiego konta usługi Batch. Na przykład w większości aplikacji usługi Batch, konto magazynu platformy Azure jest wymagany, konto magazynu i konto usługi Batch musi znajdować się w tym samym regionie akceptowalny poziom wydajności.
+Kluczowym punktem, który należy wziąć pod uwagę w przypadku przejścia w tryb failover do alternatywnego regionu, jest to, że wszystkie składniki w rozwiązaniu należy rozważyć; nie wystarczy, aby po prostu mieć drugie konto w usłudze Batch. Na przykład w większości aplikacji wsadowych wymagane jest konto magazynu platformy Azure, a konto magazynu i konto usługi Batch muszą znajdować się w tym samym regionie, aby można było uzyskać akceptowalną wydajność.
 
-Podczas projektowania rozwiązania, która może być trybu failover, należy wziąć pod uwagę następujące kwestie:
+Podczas projektowania rozwiązania, które może przejść w tryb failover, należy wziąć pod uwagę następujące kwestie:
 
-- Wstępne tworzenie wszystkich wymaganych kont w poszczególnych regionach, takich jak konto usługi Batch i konta magazynu. Często nie ma opłaty za kont utworzonych, tylko wtedy, gdy istnieje przechowywanych danych lub konto jest używane.
-- Upewnij się, że przydziały są ustawiane na kontach wyprzedzeniem, dzięki czemu można przydzielić wymagana liczba rdzeni, przy użyciu konta usługi Batch.
-- Użyj szablonów i/lub skrypty, aby zautomatyzować wdrożenie aplikacji w regionie.
-- Aktualizowanie plików binarnych aplikacji i danych referencyjnych we wszystkich regionach. Uzyskuje pewność, że region może być udostępnione online, szybko bez potrzeby czekania na przekazywanie i wdrażanie plików. Na przykład w przypadku niestandardowych aplikacji do zainstalowania w węzłach puli usługi przechowywane i odwoływać się za pomocą pakietów aplikacji usługi Batch, następnie gdy nowa wersja aplikacji jest generowany, powinna być przekazany do każdego konta usługi Batch i przywoływany przez konfigurację puli (lub Wprowadź nową wersję domyślną wersję).
-- W aplikacji, wywołanie usługi Batch, magazynu i innych usług, łatwe przełączenie klientów lub obciążenia w innym regionie.
-- Najlepszym rozwiązaniem, aby upewnić się, że przejścia w tryb failover zakończy się pomyślnie jest często przełączenie w alternatywnym regionie w ramach normalnych operacji. Na przykład z dwoma wdrożeniami w oddzielnych regionach, przełączenie w alternatywnym regionie co miesiąc.
+- Przed utworzeniem wszystkich wymaganych kont w każdym regionie, takich jak konto i konto magazynu w usłudze Batch. W przypadku tworzenia kont często nie jest naliczana żadna opłata, tylko wtedy, gdy są przechowywane dane lub konto jest używane.
+- Upewnij się, że przydziały są ustawione na kontach z wyprzedzeniem, aby można było przydzielić wymaganą liczbę rdzeni przy użyciu konta usługi Batch.
+- Aby zautomatyzować wdrażanie aplikacji w regionie, użyj szablonów i/lub skryptów.
+- Utrzymywanie Aktualności plików binarnych aplikacji i danych referencyjnych we wszystkich regionach. Zadbaj o to, aby region można było szybko przełączyć do trybu online bez konieczności oczekiwania na przekazywanie i wdrażanie plików. Na przykład jeśli aplikacja niestandardowa do zainstalowania w węzłach puli jest przechowywana i ma odwołania przy użyciu pakietów aplikacji usługi Batch, wówczas po utworzeniu nowej wersji aplikacji należy ją przekazać do każdego konta usługi Batch i odwołać się do niej zgodnie z konfiguracją puli (lub Utwórz nową wersję jako wersję domyślną).
+- W aplikacji przetwarzanie wsadowe, magazyn i inne usługi można łatwo przełączeć klientów lub obciążenie do innego regionu.
+- Najlepszym rozwiązaniem w celu zapewnienia pomyślnego przełączenia w tryb failover będzie częste przełączenie do alternatywnego regionu w ramach normalnej operacji. Na przykład w przypadku dwóch wdrożeń w osobnych regionach przełączenie do regionu alternatywnego co miesiąc.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej na temat tworzenia konta usługi Batch z [witryny Azure portal](batch-account-create-portal.md), [wiersza polecenia platformy Azure](cli-samples.md), [Powershell](batch-powershell-cmdlets-get-started.md), lub [Batch management API](batch-management-dotnet.md).
-- Domyślne limity przydziałów są skojarzone z kontem usługi Batch; [w tym artykule](batch-quota-limit.md) szczegóły domyślny limit przydziału wartości, a w tym artykule opisano, jak można zwiększyć limity przydziału.
+- Dowiedz się więcej na temat tworzenia kont usługi Batch za pomocą [Azure Portal](batch-account-create-portal.md), interfejsu [wiersza polecenia platformy Azure](cli-samples.md), [programu PowerShell](batch-powershell-cmdlets-get-started.md)lub [API zarządzania usługą Batch](batch-management-dotnet.md).
+- Domyślne przydziały są skojarzone z kontem wsadowym; [ten artykuł](batch-quota-limit.md) zawiera szczegółowe informacje o domyślnych wartościach przydziału i opisuje, jak można zwiększyć limity przydziałów.

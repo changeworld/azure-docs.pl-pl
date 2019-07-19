@@ -408,7 +408,7 @@
         - name: Zmiany powodujące niezgodność
           href: reference-breaking-changes.md
 - name: Wersja 1.0
-  expanded: true
+  expanded: false
   items:
     - name: Omówienie
       href: v1-overview.md

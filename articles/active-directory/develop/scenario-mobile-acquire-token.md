@@ -1,9 +1,9 @@
 ---
-title: Aplikacja mobilna wywołuje interfejsy API — w uzyskanie tokenu dla aplikacji sieci web | Platforma tożsamości firmy Microsoft
-description: Dowiedz się, jak utworzyć aplikację mobilną, która wywołuje internetowych interfejsów API (uzyskanie tokenu dla aplikacji)
+title: Aplikacja mobilna, która wywołuje interfejsy API sieci Web — uzyskiwanie tokenu dla aplikacji | Platforma tożsamości firmy Microsoft
+description: Dowiedz się, jak utworzyć aplikację mobilną, która wywołuje interfejsy API sieci Web (Uzyskiwanie tokenu dla aplikacji)
 services: active-directory
 documentationcenter: dev-center-name
-author: danieldobalian
+author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -16,22 +16,22 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 590184c25fa0aa3cb3219aa9c185a31e62090ba9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5c1ac880aa8274cc9a4ea554de84dcb46476236f
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111145"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320908"
 ---
-# <a name="mobile-app-that-calls-web-apis---get-a-token"></a>Aplikacja mobilna, która wywołuje interfejsy API — w sieci web uzyskać token
+# <a name="mobile-app-that-calls-web-apis---get-a-token"></a>Aplikacja mobilna, która wywołuje interfejsy API sieci Web — uzyskiwanie tokenu
 
-Przed rozpoczęciem chronionego podczas wywoływania interfejsów API, aplikacji sieci web należy tokenu dostępu. W tym artykule przedstawiono proces pobierania tokenu przy użyciu Microsoft Authentication Library (MSAL).
+Aby można było rozpocząć wywoływanie chronionych interfejsów API sieci Web, aplikacja będzie potrzebować tokenu dostępu. W tym artykule omówiono proces uzyskiwania tokenu przy użyciu biblioteki uwierzytelniania firmy Microsoft (MSAL).
 
-## <a name="scopes-to-request"></a>Zakres żądania
+## <a name="scopes-to-request"></a>Zakresy do żądania
 
-W przypadku żądania tokenu, należy zdefiniować zakres. Zakres Określa, jakie dane mogą uzyskiwać dostęp do aplikacji.  
+Podczas żądania tokenu należy zdefiniować zakres. Zakres określa, jakie dane może uzyskać dostęp do aplikacji.  
 
-Jest to najłatwiejsza metoda, połączyć żądaną internetowego interfejsu API `App ID URI` z zakresem `.default`. Ten sposób nakazuje platformie tożsamości firmy Microsoft, wymaganych przez aplikację, że wszystkie zakresy są ustawione w portalu.
+Najprostszym podejściem jest łączenie żądanych interfejsów API `App ID URI` sieci Web z zakresem. `.default` W ten sposób mówimy platformę tożsamości firmy Microsoft, że aplikacja wymaga wszystkich zakresów ustawionych w portalu.
 
 #### <a name="android"></a>Android
 ```Java
@@ -48,11 +48,11 @@ let scopes: [String] = ["https://graph.microsoft.com/.default"]
 var scopes = new [] {"https://graph.microsoft.com/.default"};
 ```
 
-## <a name="get-tokens"></a>Uzyskiwanie tokenów
+## <a name="get-tokens"></a>Pobierz tokeny
 
 ### <a name="via-msal"></a>Via MSAL
 
-Biblioteka MSAL umożliwia aplikacjom uzyskiwanie tokenów dyskretnie interaktywnie. Po prostu wywoływanie tych metod i Biblioteka MSAL zwraca token dostępu dla żądanego zakresów. Prawidłowy wzorzec jest wykonywania żądaniem dyskretnej i wrócić do interaktywnego żądania.
+MSAL umożliwia aplikacjom uzyskiwanie tokenów dyskretnie i interaktywnie. Po prostu wywołaj te metody, a MSAL zwraca token dostępu dla żądanych zakresów. Prawidłowym wzorcem jest wykonanie żądania dyskretnego i powrót do interakcyjnego żądania.
 
 #### <a name="android"></a>Android
 
@@ -163,11 +163,11 @@ catch(MsalUiRequiredException e)
 
 ### <a name="via-the-protocol"></a>Za pośrednictwem protokołu
 
-Nie zaleca się bezpośrednio przy użyciu protokołu. Jeśli to zrobisz, aplikacja nie obsługuje niektórych logowania jednokrotnego (SSO), zarządzanie urządzeniami i scenariuszy dostępu warunkowego.
+Nie zalecamy użycia protokołu bezpośrednio. Jeśli to zrobisz, aplikacja nie będzie obsługiwać niektórych scenariuszy logowania jednokrotnego (SSO), zarządzania urządzeniami i dostępu warunkowego.
 
-Gdy używasz protokołu uzyskiwanie tokenów dla aplikacji mobilnych, należy wprowadzić dwa żądania: uzyskanie kodu autoryzacji i jego wymiany dla tokenu.
+W przypadku korzystania z protokołu do uzyskiwania tokenów dla aplikacji mobilnych należy wykonać dwa żądania: uzyskaj kod autoryzacji i wymieniaj go z tokenem.
 
-#### <a name="get-authorization-code"></a>Uzyskaj kod autoryzacji
+#### <a name="get-authorization-code"></a>Pobierz kod autoryzacji
 
 ```Text
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
@@ -179,7 +179,7 @@ client_id=<CLIENT_ID>
 &state=12345
 ```
 
-#### <a name="get-access-and-refresh-token"></a>Uzyskiwanie tokenu dostępu i odświeżanie
+#### <a name="get-access-and-refresh-token"></a>Uzyskaj dostęp i token odświeżania
 
 ```Text
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1
@@ -196,4 +196,4 @@ client_id=<CLIENT_ID>
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Wywoływanie interfejsu web API](scenario-mobile-call-api.md)
+> [Wywoływanie interfejsu API sieci Web](scenario-mobile-call-api.md)

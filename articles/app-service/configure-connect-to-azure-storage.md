@@ -1,52 +1,52 @@
 ---
-title: Konfigurowanie magazynu przy użyciu usługi Azure Files
-description: Jak skonfigurować i nawiązać połączenie z usługi Azure Files w kontenerze Windows w usłudze App Service.
+title: Konfigurowanie magazynu przy użyciu Azure Files
+description: Jak skonfigurować Azure Files w kontenerze systemu Windows w usłudze App Service i połączyć się z nią.
 author: msangapu-msft
 manager: gwallace
 ms.service: app-service
 ms.workload: web
 ms.topic: article
 ms.date: 7/01/2019
-ms.author: msangapu-msft
-ms.openlocfilehash: ea6555e8459b8f372a73d7f943e9a96523d4c791
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.author: msangapu
+ms.openlocfilehash: 2c12bf45c033fea185d976f1e9d644183407b5ac
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67789048"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297224"
 ---
-# <a name="configure-azure-files-in-a-windows-container-on-app-service"></a>Konfigurowanie usługi Azure Files w kontenerze Windows w usłudze App Service
+# <a name="configure-azure-files-in-a-windows-container-on-app-service"></a>Konfigurowanie Azure Files w kontenerze systemu Windows na App Service
 
 > [!NOTE]
-> Ten artykuł dotyczy niestandardowe kontenery Windows. Aby wdrożyć w usłudze App Service w systemie _Linux_, zobacz [obsługi zawartości z usługi Azure Storage](./containers/how-to-serve-content-from-azure-storage.md).
+> Ten artykuł dotyczy niestandardowych kontenerów systemu Windows. Aby wdrożyć program w celu App Service w systemie _Linux_, zobacz temat [obsługiwanie zawartości z usługi Azure Storage](./containers/how-to-serve-content-from-azure-storage.md).
 >
 
-Ten przewodnik pokazuje, jak dostęp do usługi Azure Storage w kontenerach Windows. Tylko [udziałów plików platformy Azure](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-cli) i [udziałów plików w warstwie Premium](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-premium-fileshare) są obsługiwane. Możesz użyć udziałów plików platformy Azure, w tym instruktażu. Korzyści to m.in. zabezpieczonej zawartości, zawartość przenośności, dostęp do wielu aplikacji i na wiele sposobów przesyłania.
+W tym przewodniku pokazano, jak uzyskać dostęp do usługi Azure Storage w kontenerach systemu Windows. Obsługiwane są tylko udziały [Azure Files udziały](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-cli) i [pliki w warstwie Premium](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-premium-fileshare) . W tej metodzie należy używać udziałów Azure Files. Korzyści obejmują bezpieczną zawartość, przenośność zawartości, dostęp do wielu aplikacji i wiele metod transferu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [Interfejs wiersza polecenia Azure](/cli/azure/install-azure-cli) (2.0.46 lub nowszej).
-- [Istniejącą aplikację Windows kontenera w usłudze Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-windows-container)
-- [Tworzenie udziału plików platformy Azure](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-cli)
-- [Przekazywanie plików do udziału plików platformy Azure](https://docs.microsoft.com/azure/storage/files/storage-files-deployment-guide)
+- [Interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) (2.0.46 lub nowszy).
+- [Istniejąca aplikacja kontenera systemu Windows w Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-windows-container)
+- [Utwórz udział plików platformy Azure](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-cli)
+- [Przekaż pliki do udziału plików platformy Azure](https://docs.microsoft.com/azure/storage/files/storage-files-deployment-guide)
 
 > [!NOTE]
-> Usługa Azure Files jest inny niż domyślny magazyn i rozliczane oddzielnie, nie jest dołączony do aplikacji sieci web. Nie obsługuje on za pomocą konfiguracji zapory, ze względu na ograniczenia infrastruktury.
+> Azure Files jest magazynem innym niż domyślne i są rozliczane oddzielnie, a nie dołączone do aplikacji sieci Web. Nie obsługuje ona konfigurowania zapory z powodu ograniczeń infrastruktury.
 >
 
-## <a name="link-storage-to-your-web-app-preview"></a>Magazyn Link do aplikacji sieci web (wersja zapoznawcza)
+## <a name="link-storage-to-your-web-app-preview"></a>Łączenie magazynu z aplikacją internetową (wersja zapoznawcza)
 
- Aby zainstalować udział plików platformy Azure do katalogu, w aplikacji usługi app Service, należy użyć [ `az webapp config storage-account add` ](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) polecenia. Magazyn musi być typu migracji.
+ Aby zainstalować udział Azure Files w katalogu w aplikacji App Service, użyj [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) polecenia. Typ magazynu musi być migracji pamięci.
 
 ```azurecli
 az webapp config storage-account add --resource-group <group_name> --name <app_name> --custom-id <custom_id> --storage-type AzureFiles --share-name <share_name> --account-name <storage_account_name> --access-key "<access_key>" --mount-path <mount_path_directory of form c:<directory name> >
 ```
 
-Należy to zrobić, aby udostępnić inne katalogi, które mają być połączone z usługą Azure Files.
+Należy to zrobić dla wszystkich innych katalogów, które mają być połączone z udziałem Azure Files.
 
 ## <a name="verify"></a>Weryfikuj
 
-Gdy udział plików platformy Azure jest połączona z aplikacji sieci web, można to sprawdzić, uruchamiając następujące polecenie:
+Gdy udział Azure Files jest połączony z aplikacją sieci Web, możesz to sprawdzić, uruchamiając następujące polecenie:
 
 ```azurecli
 az webapp config storage-account list --resource-group <resource_group> --name <app_name>
@@ -55,4 +55,4 @@ az webapp config storage-account list --resource-group <resource_group> --name <
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Migrowanie aplikacji ASP.NET w usłudze Azure App Service za pomocą konteneru Windows (wersja zapoznawcza)](app-service-web-tutorial-windows-containers-custom-fonts.md).
+- [Migrowanie aplikacji ASP.NET do Azure App Service przy użyciu kontenera systemu Windows (wersja zapoznawcza)](app-service-web-tutorial-windows-containers-custom-fonts.md).

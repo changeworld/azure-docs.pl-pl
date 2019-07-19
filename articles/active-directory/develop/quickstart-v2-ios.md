@@ -3,7 +3,7 @@ title: Microsoft Identity platform iOS — Szybki Start | Azure
 description: Dowiedz się, jak logować użytkowników i Microsoft Graph zapytań w aplikacji systemu iOS.
 services: active-directory
 documentationcenter: dev-center-name
-author: danieldobalian
+author: brandwe
 manager: CelesteDG
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.author: brandwe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a13142c6941ecc7bd2f96db923213dc9818afbb
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
-ms.translationtype: MT
+ms.openlocfilehash: 99fb7fad3e36ecee62bee404268525d4319b4f48
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311777"
+ms.locfileid: "68324380"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>Szybki start: Logowanie użytkowników i wywołanie interfejsu API programu Microsoft Graph z aplikacji systemu iOS
 
@@ -246,7 +246,7 @@ applicationContext.acquireTokenSilent(with: parameters) { (result, error) in /* 
 > | `scopes` | Zawiera żądane zakresy (czyli `[ "user.read" ]` dla Microsoft Graph lub `[ "<Application ID URL>/scope" ]` niestandardowych interfejsów API sieci Web (`api://<Application ID>/access_as_user`) |
 > | `account` | Konto, dla którego jest żądany token. Ten przewodnik Szybki Start jest aplikacją o pojedynczym koncie, jeśli chcesz utworzyć aplikację wielokontową, aby określić, które konto ma być używane dla żądań tokenów`applicationContext.account(forHomeAccountId: self.homeAccountId)` |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Wypróbuj Samouczek systemu iOS, aby zapoznać się z kompletnym przewodnikiem krok po kroku dotyczącym tworzenia aplikacji, w tym pełnym objaśnieniem tego samouczka Szybki Start.
 

@@ -15,31 +15,22 @@ ms.topic: quickstart
 ms.date: 05/18/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: df615b940873cd59341424d0b40a9e399d710126
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cf241b788c0027c6905c6898352bb3352da64825
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60553507"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326514"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Szybki start: Korzystanie z usługi Azure Cache for Redis przy użyciu aplikacji platformy .NET Core
 
-
-
-W tym przewodniku Szybki start opisano, jak rozpocząć pracę z usługą Microsoft Azure Cache for Redis na platformie .NET Core. Usługa Microsoft Azure Cache for Redis jest oparta na popularnym rozwiązaniu open source Azure Cache for Redis. Daje dostęp do zabezpieczonej, dedykowanej usługi Azure Cache for Redis, którą zarządza firma Microsoft. Pamięć podręczna utworzona przy użyciu usługi Azure Cache for Redis jest dostępna z poziomu dowolnej aplikacji w ramach platformy Microsoft Azure.
-
-W tym przewodniku Szybki start będziesz używać klienta [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) z kodem C\# w aplikacji konsolowej .NET Core. Utworzysz pamięć podręczną i skonfigurujesz aplikację kliencką platformy .NET Core. Następnie dodasz i zaktualizujesz obiekty w pamięci podręcznej. 
-
-Do wykonania kroków tego przewodnika Szybki start możesz użyć dowolnego edytora kodu. Doskonałym wyborem jest program [Visual Studio Code](https://code.visualstudio.com/), dostępny na platformach Windows, macOS i Linux.
-
-![Ukończono tworzenie aplikacji konsolowej](./media/cache-dotnet-core-quickstart/cache-console-app-complete.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+W tym przewodniku szybki start dodaliśmy usługę Azure cache for Redis do aplikacji platformy .NET Core w celu uzyskania dostępu do bezpiecznej, dedykowanej pamięci podręcznej dostępnej z dowolnej aplikacji na platformie Azure. Należy używać klienta [stackexchange. Redis](https://github.com/StackExchange/StackExchange.Redis) z C# kodem w aplikacji konsolowej platformy .NET Core. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Zestaw .NET SDK 2.0](https://www.microsoft.com/net/learn/get-started/windows) lub nowszej.
-* Klient StackExchange.Redis wymaga programu [.NET Framework 4 lub jego nowszej wersji](https://www.microsoft.com/net/download/dotnet-framework-runtime).
+- Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
+- [Zestaw SDK dla platformy .NET Core](https://dotnet.microsoft.com/download)
+- [.NET Framework 4 lub więcej](https://www.microsoft.com/net/download/dotnet-framework-runtime), co jest wymagane przez klienta StackEdchange. Redis.
 
 ## <a name="create-a-cache"></a>Tworzenie pamięci podręcznej
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -313,7 +304,7 @@ W przeciwnym razie po zakończeniu pracy z przykładową aplikacją poradnika Sz
 
 Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i kliknij pozycję **Grupy zasobów**.
 
-W polu tekstowym **Filtruj według nazwy...** wpisz nazwę grupy zasobów. Instrukcje w tym artykule używają grupy zasobów o nazwie *TestResources*. Dla grupy zasobów na liście wyników kliknij pozycję **...**, a następnie kliknij pozycję **Usuń grupę zasobów**.
+W polu tekstowym **Filtruj według nazwy...** wpisz nazwę grupy zasobów. Instrukcje w tym artykule używają grupy zasobów o nazwie *TestResources*. Dla grupy zasobów na liście wyników kliknij pozycję **...** , a następnie kliknij pozycję **Usuń grupę zasobów**.
 
 ![Usuwanie](./media/cache-dotnet-core-quickstart/cache-delete-resource-group.png)
 

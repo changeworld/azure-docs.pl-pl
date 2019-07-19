@@ -1,6 +1,6 @@
 ---
-title: Aplikacja sieci Web, logujący się użytkownicy (kod Konfiguracja) - Platforma tożsamości firmy Microsoft
-description: Dowiedz się, jak utworzyć aplikację sieci web, logujący się użytkownicy (Konfiguracja kodu)
+title: Aplikacja internetowa, która loguje użytkowników (Konfiguracja kodu) — platforma tożsamości firmy Microsoft
+description: Dowiedz się, jak utworzyć aplikację internetową, która loguje się do użytkowników (Konfiguracja kodu)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,37 +15,37 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7484b627d3bc3f26fa01d4c38ee96047c70d007
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: c962e95b3d213c4089b51f58139cab17a3332cbd
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785484"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67853067"
 ---
-# <a name="web-app-that-signs-in-users---code-configuration"></a>Aplikacja sieci Web przez logowania użytkowników — Konfiguracja kodu
+# <a name="web-app-that-signs-in-users---code-configuration"></a>Aplikacja internetowa, która loguje się do użytkowników — konfiguracja kodu
 
-Dowiedz się, jak skonfigurować kod dla aplikacji sieci Web logowania przez użytkowników.
+Dowiedz się, jak skonfigurować kod dla aplikacji sieci Web, które logują się do użytkowników.
 
-## <a name="libraries-used-to-protect-web-apps"></a>Biblioteki używane do ochrony aplikacji sieci Web
+## <a name="libraries-used-to-protect-web-apps"></a>Biblioteki używane do ochrony Web Apps
 
 <!-- This section can be in an include for Web App and Web APIs -->
-Dostępne są następujące biblioteki, umożliwia ochronę aplikacji sieci Web (i interfejs API sieci Web):
+Biblioteki używane do ochrony aplikacji sieci Web (i internetowego interfejsu API) są następujące:
 
 | Platforma | Biblioteka | Opis |
 |----------|---------|-------------|
-| ![.NET](media/sample-v2-code/logo_net.png) | [Tożsamość rozszerzeń modelu dla platformy .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Oprogramowanie Microsoft Identity Extensions dla platformy .NET jest używana bezpośrednio przez platformę ASP.NET i ASP.NET Core, i proponuje zbiór bibliotek DLL, uruchamiania na .NET Framework i .NET Core. Z aplikacji sieci Web Core ASP.NET/ASP.NET, można kontrolować za pomocą tokenu weryfikacji **TokenValidationParameters** klasy (w szczególności w niektórych przypadkach niezależny dostawca oprogramowania) |
+| ![.NET](media/sample-v2-code/logo_net.png) | [Rozszerzenia modelu tożsamości dla platformy .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Używane bezpośrednio przez ASP.NET i ASP.NET Core, rozszerzenia tożsamości Microsoft dla platformy .NET proponują zestaw bibliotek DLL działających zarówno na platformie .NET Framework, jak i .NET Core. Z poziomu aplikacji sieci Web ASP.NET/ASP.NET Core można kontrolować sprawdzanie poprawności tokenu przy użyciu klasy **TokenValidationParameters** (w szczególności w niektórych scenariuszach niezależnych dostawców oprogramowania) |
 
-## <a name="aspnet-core-configuration"></a>Konfiguracja platformy ASP.NET Core
+## <a name="aspnet-core-configuration"></a>Konfiguracja ASP.NET Core
 
-Fragmenty kodu, w tym artykule i poniżej są wyodrębniane z [aplikacji sieci Web platformy ASP.NET Core przyrostowe wirusowej rozdziale samouczków, 1](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg). Można odwoływać się do tego samouczka, aby uzyskać szczegółowe informacje z pełną implementację.
+Fragmenty kodu w tym artykule i następujące zostały wyodrębnione z samouczka [ASP.NET Core aplikacji sieci Web, rozdział 1](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg). Warto zapoznać się z tym samouczkiem, aby uzyskać szczegółowe informacje dotyczące implementacji.
 
-### <a name="application-configuration-files"></a>Pliki konfiguracyjne aplikacji
+### <a name="application-configuration-files"></a>Pliki konfiguracji aplikacji
 
-W programie ASP.NET Core Web logowanie użytkowników aplikacji z platformą tożsamości Microsoft są konfigurowane za pomocą `appsettings.json` pliku. Ustawienia, które należy wypełnić są następujące:
+W ASP.NET Core użytkownicy logujący aplikacje sieci Web z platformą tożsamości firmy Microsoft są konfigurowani za pomocą `appsettings.json` pliku. Ustawienia, które należy wypełnić:
 
-- Chmura `Instance` Jeśli chcesz, aby aplikacja ma działać w chmurach krajowych
-- grupy odbiorców w `tenantId`
-- `clientId` dla aplikacji, jak skopiować z witryny Azure portal.
+- Chmura `Instance` , jeśli chcesz, aby aplikacja działała w chmurach narodowych
+- odbiorcy w`tenantId`
+- `clientId` dla aplikacji, tak jak skopiowane z Azure Portal.
 
 ```JSon
 {
@@ -58,7 +58,7 @@ W programie ASP.NET Core Web logowanie użytkowników aplikacji z platformą to�
     "Instance": "https://login.microsoftonline.com/",
 
     // Azure AD Audience among:
-    // - the tenant Id as a a GUID obtained from the azure portal to sign-in users in your organization
+    // - the tenant Id as a GUID obtained from the azure portal to sign-in users in your organization
     // - "organizations" to sign-in users in any work or school accounts
     // - "common" to sign-in users with any work and school account or Microsoft personal account
     // - "consumers" to sign-in users with Microsoft personal account only
@@ -72,7 +72,7 @@ W programie ASP.NET Core Web logowanie użytkowników aplikacji z platformą to�
 }
 ```
 
-W programie ASP.NET Core jest inny plik, który zawiera adres URL (`applicationUrl`) i SSL Port (`sslPort`) dla aplikacji, a także różne profile.
+W ASP.NET Core istnieje inny plik, który zawiera adres URL (`applicationUrl`) i Port SSL (`sslPort`) dla aplikacji, a także różne profile.
 
 ```JSon
 {
@@ -104,16 +104,16 @@ W programie ASP.NET Core jest inny plik, który zawiera adres URL (`applicationU
 }
 ```
 
-W witrynie Azure portal, Odpowiedz identyfikatory URI, które należy zarejestrować w **uwierzytelniania** strony aplikacji musi być zgodna te adresy URL; oznacza to, powyższych plików dwóch konfiguracji mogą być `https://localhost:44321/signin-oidc` jako applicationUrl jest `http://localhost:3110` ale `sslPort` jest określony (44321), a `CallbackPath` jest `/signin-oidc` zgodnie z definicją w `appsettings.json`.
+W Azure Portal identyfikatory URI odpowiedzi, które należy zarejestrować na stronie **uwierzytelniania** dla aplikacji, muszą być zgodne z tymi adresami URL; oznacza to, że w przypadku dwóch powyższych plików konfiguracji byłyby `https://localhost:44321/signin-oidc` one `http://localhost:3110` applicationUrl, `sslPort` ale `CallbackPath` jest określony (44321) i jest `/signin-oidc` tak, jak zdefiniowano w `appsettings.json`.
   
-W ten sam sposób, będzie miał ustawienie Wyloguj URI `https://localhost:44321/signout-callback-oidc`.
+W ten sam sposób identyfikator URI wylogowania zostanie ustawiony na `https://localhost:44321/signout-callback-oidc`wartość.
 
-### <a name="initialization-code"></a>Kod inicjowania
+### <a name="initialization-code"></a>Kod inicjalizacji
 
-W aplikacji sieci Web programu ASP.NET Core i interfejsów API sieci Web, kod, wykonując Inicjowanie aplikacji znajduje się w `Startup.cs` pliku, a, aby dodać uwierzytelnianie przy użyciu programu Microsoft Identity platformy (dawniej Azure AD) w wersji 2.0, należy dodać następujący kod. Komentarze w kodzie powinno być oczywista.
+W ASP.NET Core Web Apps (i interfejsy API sieci Web) kod inicjujący aplikację znajduje się w `Startup.cs` pliku, a aby dodać uwierzytelnianie za pomocą platformy tożsamości firmy Microsoft (dawniej usługa Azure AD) v 2.0, należy dodać następujący kod. Komentarze w kodzie nie powinny mieć wyjaśnień.
 
   > [!NOTE]
-  > Po uruchomieniu projektu z projektu sieci web domyślnego platformy ASP.NET core w programie Visual studio lub za pomocą `dotnet new mvc` metoda `AddAzureAD` jest domyślnie dostępna, ponieważ powiązane pakiety są ładowane automatycznie. Jednak jeśli kompilacja projektu od podstaw i próbujesz użyć poniższego kodu, zalecamy, aby dodać pakiet NuGet **"Microsoft.AspNetCore.Authentication.AzureAD.UI"** do projektu, aby `AddAzureAD` dostępnej metody.
+  > Po rozpoczęciu projektu przy użyciu domyślnego projektu sieci Web ASP.NET Core w programie Visual `dotnet new mvc` Studio lub `AddAzureAD` użycia metody jest domyślnie dostępne, ponieważ pakiety powiązane są ładowane automatycznie. Jeśli jednak tworzysz projekt od podstaw i próbujesz użyć poniższego kodu, sugerujemy dodanie pakietu NuGet **"Microsoft. AspNetCore. Authentication. AzureAD. UI"** do projektu, aby udostępnić `AddAzureAD` metodę.
   
 ```CSharp
  services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
@@ -140,9 +140,9 @@ W aplikacji sieci Web programu ASP.NET Core i interfejsów API sieci Web, kod, w
   ...
 ```
 
-## <a name="aspnet-configuration"></a>Konfiguracja platformy ASP.NET
+## <a name="aspnet-configuration"></a>Konfiguracja ASP.NET
 
-W programie ASP.NET: aplikacja jest skonfigurowana za pośrednictwem `Web.Config` pliku
+W programie ASP.NET aplikacja jest konfigurowana za pomocą `Web.Config` pliku
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -164,7 +164,7 @@ W programie ASP.NET: aplikacja jest skonfigurowana za pośrednictwem `Web.Config
   </appSettings>
 ```
 
-Kod związane z uwierzytelnianiem w aplikacji sieci Web platformy ASP.NET / interfejsów API sieci Web znajduje się w `App_Start/Startup.Auth.cs` pliku.
+Kod związany z uwierzytelnianiem w programie ASP.NET Web App/interfejsy API sieci Web znajduje `App_Start/Startup.Auth.cs` się w pliku.
 
 ```CSharp
  public void ConfigureAuth(IAppBuilder app)
@@ -188,7 +188,7 @@ Kod związane z uwierzytelnianiem w aplikacji sieci Web platformy ASP.NET / inte
  }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Zaloguj się i wylogowywania](scenario-web-app-sign-user-sign-in.md)
+> [Logowanie i wylogowywanie](scenario-web-app-sign-user-sign-in.md)

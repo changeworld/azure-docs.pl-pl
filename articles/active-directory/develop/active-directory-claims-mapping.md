@@ -1,10 +1,12 @@
 ---
-title: Dostosowywanie oświadczeń emitowane w tokenach dla konkretnej aplikacji w dzierżawie usługi Azure AD (publiczna wersja zapoznawcza)
-description: Ta strona zawiera opis Mapowanie oświadczeń w usłudze Azure Active Directory.
+title: Dostosowywanie oświadczeń emitowanych w tokenach dla określonej aplikacji w dzierżawie usługi Azure AD (publiczna wersja zapoznawcza)
+description: Ta strona zawiera opis mapowania oświadczeń Azure Active Directory.
 services: active-directory
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
+ms.subservice: develop
+ms.custom: aaddev
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -13,46 +15,46 @@ ms.date: 03/28/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b770ee476fc5c1c334f53904539cc34cf962c62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e923cde3cfcffe594226f6b8b665053d1fc584f6
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65546205"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68324990"
 ---
-# <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Instrukcje: Dostosowywanie oświadczeń emitowane w tokenach dla konkretnej aplikacji w dzierżawie (wersja zapoznawcza)
+# <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Instrukcje: Dostosowywanie oświadczeń emitowanych w tokenach dla określonej aplikacji w dzierżawie (wersja zapoznawcza)
 
 > [!NOTE]
-> Ta funkcja zastępuje i zastępuje [oświadczeń dostosowywania](active-directory-saml-claims-customization.md) do obecnie oferowanych w portalu. W tej samej aplikacji Jeśli dostosujesz oświadczeń przy użyciu portalu, oprócz metoda wykres/programu PowerShell, szczegółowo opisanych w tym dokumencie tokenów wystawiony dla czy aplikacja będzie ignorować konfiguracji w portalu. Konfiguracje wprowadzone za pomocą metod podanych w tym dokumencie nie zostaną odzwierciedlone w portalu.
+> Ta funkcja zastępuje i zastępuje [dostosowanie oświadczeń](active-directory-saml-claims-customization.md) oferowane przez portal już dziś. W tej samej aplikacji w przypadku dostosowywania oświadczeń przy użyciu portalu oprócz metody Graf/PowerShell szczegółowej w tym dokumencie tokeny wystawione dla tej aplikacji będą ignorować konfigurację w portalu. Konfiguracje wykonane za pomocą metod opisanych w tym dokumencie nie zostaną odzwierciedlone w portalu.
 
-Ta funkcja jest używana przez administratorów dzierżawy, aby dostosować oświadczeń emitowane w tokenach dla określonej aplikacji w ramach ich dzierżawy. Możesz użyć zasad Mapowanie oświadczeń w celu:
+Ta funkcja jest używana przez administratorów dzierżawy do dostosowywania oświadczeń emitowanych w tokenach dla określonej aplikacji w swojej dzierżawie. Zasad mapowania oświadczeń można użyć do:
 
-- Wybierz, jakie oświadczenia są uwzględnione w tokenach.
-- Utworzyć typy oświadczeń, które jeszcze nie istnieje.
-- Wybierz lub Zmień źródło danych utworzonych w określonych oświadczeń.
+- Wybierz oświadczenia, które są zawarte w tokenach.
+- Utwórz nieistniejące typy, które jeszcze nie istnieją.
+- Wybierz lub Zmień źródło danych emitowanych w określonych oświadczeniach.
 
 > [!NOTE]
-> Ta funkcja jest obecnie w publicznej wersji zapoznawczej. Przygotuj się na przywracanie lub usuwanie wszelkich zmian. Ta funkcja jest dostępna w dowolnej subskrypcji usługi Azure Active Directory (Azure AD) w okresie publicznej wersji zapoznawczej. Gdy ta funkcja stanie się ogólnie dostępna, niektóre cechy funkcji mogą jednak wymagać subskrypcję usługi Azure AD premium. Ta funkcja obsługuje Konfigurowanie zasad Mapowanie oświadczeń dla protokołów WS-Fed, SAML, OAuth i OpenID Connect.
+> Ta funkcja jest obecnie dostępna w publicznej wersji zapoznawczej. Przygotuj się na przywracanie lub usuwanie wszelkich zmian. Ta funkcja jest dostępna w każdej subskrypcji usługi Azure Active Directory (Azure AD) w ramach publicznej wersji zapoznawczej. Jeśli jednak funkcja będzie ogólnie dostępna, niektóre aspekty funkcji mogą wymagać subskrypcji usługi Azure AD w wersji Premium. Ta funkcja obsługuje Konfigurowanie zasad mapowania roszczeń dla protokołów protokołu WS-in, SAML, OAuth i OpenID Connect Connect.
 
-## <a name="claims-mapping-policy-type"></a>Mapowanie typu zasad oświadczeń
+## <a name="claims-mapping-policy-type"></a>Typ zasad mapowania oświadczeń
 
-W usłudze Azure AD **zasad** obiekt reprezentuje zestaw reguł wymuszane na poszczególne aplikacje lub wszystkie aplikacje w organizacji. Każdego typu zasad ma unikatowy struktury, zestaw właściwości, które są następnie stosowane do obiektów, które są przypisane.
+W usłudze Azure AD obiekt **zasad** reprezentuje zestaw reguł wymuszanych w poszczególnych aplikacjach lub we wszystkich aplikacjach w organizacji. Każdy typ zasad ma unikatową strukturę z zestawem właściwości, które są następnie stosowane do obiektów, do których są przypisane.
 
-A oświadczeń mapowanie zasad jest typem **zasad** obiekt, który modyfikuje oświadczenia emitowane w tokeny wystawione dla określonych aplikacji.
+Zasady mapowania oświadczeń to typ obiektu **zasad** , który modyfikuje oświadczenia emitowane w tokenach wystawionych dla określonych aplikacji.
 
-## <a name="claim-sets"></a>W zestawie oświadczeń
+## <a name="claim-sets"></a>Zestawy roszczeń
 
-Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są one używane w tokeny.
+Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są używane w tokenach.
 
-| Zestaw oświadczeń | Opis |
+| Zestaw roszczeń | Opis |
 |---|---|
-| Podstawowy zestaw oświadczeń | Znajdują się w każdy token, niezależnie od zasady. Te oświadczenia również są traktowane jako ograniczone i nie może być modyfikowany. |
-| Zestaw oświadczeń podstawowe | Zawiera oświadczenia, które są emitowane przez domyślną tokeny (oprócz zestawu oświadczeń core). Można pominąć lub modyfikowania oświadczeń podstawowa przy użyciu oświadczeń mapowanie zasad. |
-| Zestaw oświadczeń z ograniczeniami | Nie można modyfikować za pomocą zasad. Nie można zmienić źródła danych, a nie transformacja jest stosowana podczas generowania te oświadczenia. |
+| Podstawowy zestaw roszczeń | Są obecne w każdym tokenie, niezależnie od zasad. Te oświadczenia są również uznawane za ograniczone i nie można ich modyfikować. |
+| Podstawowy zestaw roszczeń | Obejmuje oświadczenia, które są domyślnie emitowane dla tokenów (oprócz podstawowego zestawu oświadczeń). Możesz pominąć lub zmodyfikować podstawowe oświadczenia przy użyciu zasad mapowania oświadczeń. |
+| Zestaw ograniczonych roszczeń | Nie można zmodyfikować przy użyciu zasad. Nie można zmienić źródła danych, a podczas generowania tych oświadczeń nie jest stosowane przekształcenie. |
 
-### <a name="table-1-json-web-token-jwt-restricted-claim-set"></a>Tabela 1: Tokenu Web JSON (JWT) ograniczony zestaw oświadczeń
+### <a name="table-1-json-web-token-jwt-restricted-claim-set"></a>Tabela 1: Zestaw ograniczonego tokenu sieci Web JSON (JWT)
 
-| Typ oświadczenia (nazwa) |
+| Typ zgłoszenia (nazwa) |
 | ----- |
 | _claim_names |
 | _claim_sources |
@@ -123,7 +125,7 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są one u�
 | instance |
 | ipaddr |
 | isbrowserhostedapp |
-| iss |
+| ISS |
 | jwk |
 | key_id |
 | key_type |
@@ -157,7 +159,7 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są one u�
 | refreshtoken |
 | request_nonce |
 | resource |
-| rola |
+| role (rola) |
 | role |
 | scope |
 | scp |
@@ -175,7 +177,7 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są one u�
 | tokenAutologonEnabled |
 | trustedfordelegation |
 | unique_name |
-| upn |
+| głównej |
 | user_setting_sync_url |
 | username |
 | uti |
@@ -185,9 +187,9 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są one u�
 | wids |
 | win_ver |
 
-### <a name="table-2-saml-restricted-claim-set"></a>Tabela 2: SAML ograniczony zestaw oświadczeń
+### <a name="table-2-saml-restricted-claim-set"></a>Tabela 2: Zestaw ograniczonego żądania SAML
 
-| Typ oświadczenia (identyfikator URI) |
+| Typ zgłoszenia (URI) |
 | ----- |
 |`http://schemas.microsoft.com/ws/2008/06/identity/claims/expiration`|
 |`http://schemas.microsoft.com/ws/2008/06/identity/claims/expired`|
@@ -236,73 +238,73 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są one u�
 |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/privatepersonalidentifier`|
 |`http://schemas.microsoft.com/identity/claims/scope`|
 
-## <a name="claims-mapping-policy-properties"></a>Mapowanie właściwości zasad oświadczeń
+## <a name="claims-mapping-policy-properties"></a>Właściwości zasad mapowania oświadczeń
 
-Aby kontrolować, jakie oświadczenia są emitowane i skąd pochodzą dane, użyj właściwości mapowanie zasad oświadczeń. Jeśli nie ustawiono zasad, tokeny problemy z systemu, które obejmują podstawowe oświadczenia zestawu, do zestawu oświadczeń podstawowe i wszystkich [opcjonalnych oświadczeń](active-directory-optional-claims.md) wybrany aplikacji tak otrzymać.
+Aby kontrolować, jakie oświadczenia są emitowane i skąd pochodzą dane, użyj właściwości zasad mapowania oświadczeń. Jeśli nie ustawiono zasad, System wystawia tokeny, które obejmują podstawowy zestaw oświadczeń, podstawowy zestaw oświadczeń i wszelkie [opcjonalne oświadczenia](active-directory-optional-claims.md) , które aplikacja wybrała do odebrania.
 
-### <a name="include-basic-claim-set"></a>Obejmują zestaw oświadczeń podstawowe
+### <a name="include-basic-claim-set"></a>Uwzględnij podstawowy zestaw roszczeń
 
-**Ciąg:** IncludeBasicClaimSet
+**Parametry** IncludeBasicClaimSet
 
-**Typ danych:** Atrybut typu wartość logiczna (True lub False)
+**Typ danych:** Wartość logiczna (true lub false)
 
-**Podsumowanie:** Ta właściwość określa, czy zestaw oświadczeń podstawowe znajduje się w tokeny wpływ tych zasad.
+**Podsumowanie** Ta właściwość określa, czy podstawowy zestaw roszczeń jest uwzględniony w tokenach, których dotyczą te zasady.
 
-- Jeśli ustawiono wartość True, wszystkie oświadczenia w zestawie oświadczeń podstawowe są emitowane w tokenach objęte zasadami. 
-- Jeśli ma wartość False, oświadczenia w zestawie oświadczeń podstawowych nie są w tokenach, chyba że są one dodawane indywidualnie we właściwości schematu oświadczenia te same zasady.
+- W przypadku ustawienia wartości true wszystkie oświadczenia w podstawowym zestawie oświadczeń są emitowane w tokenach, których dotyczą zasady. 
+- W przypadku ustawienia wartości false oświadczenia w podstawowym zestawie oświadczeń nie znajdują się w tokenach, chyba że są one indywidualnie dodawane we właściwości schematu oświadczeń tych samych zasad.
 
 > [!NOTE] 
-> Oświadczenia w zestawie oświadczeń core znajdują się w każdy token, niezależnie od tego, co ta właściwość ma wartość. 
+> Oświadczenia w podstawowym zestawie oświadczeń są obecne w każdym tokenie, niezależnie od tego, jaka właściwość jest ustawiona na. 
 
 ### <a name="claims-schema"></a>Schemat oświadczeń
 
-**Ciąg:** ClaimsSchema
+**Parametry** ClaimsSchema
 
-**Typ danych:** Obiektu blob JSON za pomocą co najmniej jeden wpis schematu oświadczeń
+**Typ danych:** Obiekt BLOB JSON z co najmniej jednym wpisem schematu roszczeń
 
-**Podsumowanie:** Ta właściwość określa, jakie oświadczenia są obecne w tokeny, których dotyczą zasady, oprócz zestawu oświadczeń podstawowe i podstawowy zestaw oświadczeń.
-Dla każdego schematu oświadczenia wpisu zdefiniowane w tej właściwości niektóre informacje są wymagane. Określ, skąd pochodzą dane (**wartość** lub **par identyfikator/źródła**), i które roszczenie danych jest emitowany jako (**typu oświadczenia**).
+**Podsumowanie** Ta właściwość określa, które oświadczenia są obecne w tokenach, których dotyczą zasady, oprócz podstawowego zestawu oświadczeń i podstawowego zestawu oświadczeń.
+Niektóre informacje są wymagane dla każdego wpisu schematu roszczeń zdefiniowanego w tej właściwości. Określ miejsce, z którego pochodzą dane (para**wartości** lub **źródła/identyfikatora**), a które są emitowane jako (**Typ zgłoszenia**).
 
-### <a name="claim-schema-entry-elements"></a>Elementy wpis schematu oświadczeń
+### <a name="claim-schema-entry-elements"></a>Elementy wpisów schematu roszczeń
 
-**Wartość:** Element wartości definiuje wartość statyczną danych maszynowych w oświadczeniu.
+**Wartościami** Element Value definiuje wartość statyczną jako dane, które mają być emitowane w ramach tego żądania.
 
-**Para źródło/ID:** Elementy źródło i identyfikator definiują, gdzie źródło danych w oświadczeniu. 
+**Para Source/ID:** Elementy source i ID definiują lokalizację, z której pochodzą dane. 
 
-Ustaw element źródłowy do jednej z następujących wartości: 
+Ustaw element source na jedną z następujących wartości: 
 
-- "user": Dane w oświadczenie jest właściwością obiektu User. 
-- "aplikacja": Dane w oświadczenie jest właściwością nazwy głównej usługi aplikacji (klienta). 
-- "Zasób": Dane w oświadczenie jest właściwością jednostki usługi zasobów.
-- "audience": Dane w oświadczenie jest właściwością jednostki usługi, która jest odbiorców tokenu (klienta lub zasób nazwy głównej usługi).
-- "Firma": Dane w oświadczenie jest właściwością w obiekcie firmy dzierżawy zasobów.
-- "przekształcenia": Dane w oświadczeniu pochodzą przekształcania oświadczeń (zobacz sekcję "Przekształcania oświadczeń" w dalszej części tego artykułu).
+- "użytkownik": Dane w ramach tego żądania są właściwością obiektu użytkownika. 
+- "aplikacja": Dane w ramach tego żądania są właściwością w jednostce usługi aplikacji (klienta). 
+- "zasób": Dane w ramach tego żądania są właściwością jednostki usługi zasobów.
+- "odbiorcy": Dane w ramach tego żądania są właściwością jednostki usługi, która jest odbiorcami tokenu (jednostki usługi klienta lub zasobu).
+- "Firma": Dane w ramach tego żądania są właściwością obiektu firmy dzierżawcy zasobu.
+- "transformacja": Dane w ramach oświadczenia pochodzą z transformacji oświadczeń (zobacz sekcję "transformacja oświadczeń" w dalszej części tego artykułu).
 
-Jeśli źródło jest przekształcania **TransformationID** elementu muszą być zawarte w tej definicji oświadczenia.
+Jeśli źródło jest przekształcane, element **TransformationID** musi być również uwzględniony w tej definicji tego żądania.
 
-Elementu Identyfikatora Określa, która właściwość na "source" zawiera wartość oświadczenia. W poniższej tabeli wymieniono wartości Identyfikatora prawidłowy dla każdej wartości źródła.
+Element ID identyfikuje, która Właściwość źródła udostępnia wartość dla tego żądania. W poniższej tabeli wymieniono wartości identyfikatorów, które są prawidłowe dla każdej wartości źródła.
 
-#### <a name="table-3-valid-id-values-per-source"></a>Tabela 3: Prawidłowe wartości Identyfikatora dla każdego źródła
+#### <a name="table-3-valid-id-values-per-source"></a>Tabela 3: Prawidłowe wartości identyfikatorów na Źródło
 
-| Source | ID | Opis |
+| Source | id | Opis |
 |-----|-----|-----|
 | Użytkownik | nazwisko | Nazwa rodziny |
 | Użytkownik | Imię | Imię |
-| Użytkownik | Nazwa wyświetlana | Nazwa wyświetlana |
-| Użytkownik | Identyfikator obiektu | ObjectID |
+| Użytkownik | displayName | Nazwa wyświetlana |
+| Użytkownik | obiektu | Obiektu |
 | Użytkownik | poczta | Adres e-mail |
-| Użytkownik | userprincipalname | Nazwa główna użytkownika |
+| Użytkownik | userprincipalname | Główna nazwa użytkownika |
 | Użytkownik | Dział|Dział|
-| Użytkownik | onpremisessamaccountname | Nazwa konta SAM w środowisku lokalnym |
-| Użytkownik | netbiosname| NetBios Name |
-| Użytkownik | dnsdomainname | Nazwa domeny DNS |
-| Użytkownik | onpremisesecurityidentifier | Identyfikator zabezpieczeń w środowisku lokalnym |
+| Użytkownik | onpremisessamaccountname | Nazwa lokalnego konta SAM |
+| Użytkownik | NetBiosName| Nazwa NetBios |
+| Użytkownik | dnsdomainname | DNS Domain Name |
+| Użytkownik | onpremisesecurityidentifier | Lokalny identyfikator zabezpieczeń |
 | Użytkownik | companyname| Nazwa organizacji |
 | Użytkownik | streetaddress | Ulica i numer |
-| Użytkownik | KodPocztowy | Kod pocztowy |
+| Użytkownik | pocztowy | Kod pocztowy |
 | Użytkownik | preferredlanguange | Preferowany język |
-| Użytkownik | onpremisesuserprincipalname | Nazwa UPN w środowisku lokalnym |
-| Użytkownik | mailnickname | Pseudonim związany z pocztą |
+| Użytkownik | onpremisesuserprincipalname | Lokalna nazwa UPN |
+| Użytkownik | mailNickname | Pseudonim poczty |
 | Użytkownik | extensionattribute1 | Atrybut rozszerzenia 1 |
 | Użytkownik | extensionattribute2 | Atrybut rozszerzenia 2 |
 | Użytkownik | extensionattribute3 | Atrybut rozszerzenia 3 |
@@ -318,78 +320,78 @@ Elementu Identyfikatora Określa, która właściwość na "source" zawiera wart
 | Użytkownik | extensionattribute13 | Atrybut rozszerzenia 13 |
 | Użytkownik | extensionattribute14 | Atrybut rozszerzenia 14 |
 | Użytkownik | extensionattribute15 | Atrybut rozszerzenia 15 |
-| Użytkownik | othermail | Inne wiadomości E-mail |
-| Użytkownik | Kraj | Kraj |
-| Użytkownik | city | Miejscowość |
-| Użytkownik | stan | Stan |
-| Użytkownik | stanowisko | Stanowisko |
-| Użytkownik | EmployeeID | Identyfikator pracownika |
-| Użytkownik | facsimiletelephonenumber | Numer faksu |
-| Aplikacja zasobu, grupy odbiorców | Nazwa wyświetlana | Nazwa wyświetlana |
-| Aplikacja zasobu, grupy odbiorców | obiekty | ObjectID |
-| Aplikacja zasobu, grupy odbiorców | tags | Tag jednostki usługi |
-| Firma | tenantcountry | Kraju dzierżawy |
+| Użytkownik | othermail | Inna poczta |
+| Użytkownik | trzeciego | Country |
+| Użytkownik | city | City |
+| Użytkownik | state | Stan |
+| Użytkownik | stanowiska | Stanowisko |
+| Użytkownik | EmployeeID | IDENTYFIKATOR pracownika |
+| Użytkownik | facsimiletelephonenumber | Numer telefonu faksu |
+| aplikacja, zasób, odbiorcy | displayName | Nazwa wyświetlana |
+| aplikacja, zasób, odbiorcy | Obiekt | Obiektu |
+| aplikacja, zasób, odbiorcy | tags | Główny tag usługi |
+| Firmy | tenantcountry | Kraj dzierżawy |
 
-**TransformationID:** TransformationID element należy podać tylko wtedy, gdy element źródła jest ustawiony na wartość "transformacji".
+**TransformationID:** Element TransformationID musi być podany tylko wtedy, gdy element source ma wartość "Transformation".
 
-- Ten element musi być zgodny element identyfikator wpisu przekształcania w **ClaimsTransformation** właściwość, która definiuje, jak jest generowany danych dla tego oświadczenia.
+- Ten element musi być zgodny z elementem ID wpisu przekształcenia we właściwości **ClaimsTransformation** , który definiuje sposób generowania danych dla tego żądania.
 
-**Typ oświadczenia:** **JwtClaimType** i **SamlClaimType** zdefiniować elementy, które roszczenie, ten wpis schematu oświadczenia odnosi się do.
+**Typ zgłoszenia:** Elementy **JwtClaimType** i **SamlClaimType** definiują, do których odnosi się ten wpis schematu tego żądania.
 
-- JwtClaimType musi zawierać nazwy oświadczenia, który był emitowany w tokenów Jwt.
-- SamlClaimType musi zawierać identyfikator URI oświadczenia był emitowany w tokeny SAML.
+- JwtClaimType musi zawierać nazwę żądania, które ma być emitowane w JWTs.
+- SamlClaimType musi zawierać identyfikator URI żądania, które ma być emitowane w tokenach SAML.
 
 > [!NOTE]
-> Nie można użyć nazwy i identyfikatory URI oświadczeń w zestawie oświadczeń ograniczone dla elementów typu oświadczenia. Aby uzyskać więcej informacji zobacz sekcję "Wyjątki i ograniczenia" w dalszej części tego artykułu.
+> Nazwy i identyfikatory URI oświadczeń w zestawie oświadczeń z ograniczeniami nie mogą być używane dla elementów typu oświadczenia. Aby uzyskać więcej informacji, zobacz sekcję "wyjątki i ograniczenia" w dalszej części tego artykułu.
 
 ### <a name="claims-transformation"></a>Przekształcanie oświadczeń
 
-**Ciąg:** ClaimsTransformation
+**Parametry** ClaimsTransformation
 
-**Typ danych:** Obiektu blob JSON za pomocą co najmniej jeden wpis transformacji 
+**Typ danych:** Obiekt BLOB JSON z co najmniej jednym wpisem transformacji 
 
-**Podsumowanie:** Ta właściwość służy do stosowania typowych przekształceń do źródła danych, aby wygenerować dane wyjściowe do oświadczenia określone w schemacie oświadczeń.
+**Podsumowanie** Użyj tej właściwości, aby zastosować typowe przekształcenia do danych źródłowych w celu wygenerowania danych wyjściowych dla oświadczeń określonych w schemacie oświadczeń.
 
-**ID:** Użyj elementu ID, aby odwoływać się do tego wpisu przekształcania we wpisie TransformationID oświadczeń schematu. Ta wartość musi być unikatowy dla każdego wpisu transformacji, w ramach tych zasad.
+**#C1** Użyj elementu ID, aby odwołać się do tego wpisu przekształcenia we wpisie schematu oświadczeń TransformationID. Ta wartość musi być unikatowa dla każdego wpisu transformacji w ramach tych zasad.
 
-**TransformationMethod:** TransformationMethod element identyfikuje, które jest wykonywane na potrzeby generowania danych oświadczenia.
+**TransformationMethod:** Element TransformationMethod identyfikuje, która operacja jest wykonywana w celu wygenerowania danych dla tego żądania.
 
-Oparty na wybranej metody, oczekiwany jest zestaw danych wejściowych i wyjściowych. Zdefiniować dane wejściowe i wyjściowe przy użyciu **InputClaims**, **InputParameters** i **OutputClaims** elementów.
+W oparciu o wybraną metodę jest oczekiwany zestaw danych wejściowych i wyjściowych. Zdefiniuj dane wejściowe i wyjściowe przy użyciu elementów **InputClaims**, **InputParameters** i **OutputClaims** .
 
-#### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tabela 4: Metody przekształcania i oczekiwanych danych wejściowych i wyjściowych
+#### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tabela 4: Metody transformacji i oczekiwane dane wejściowe i wyjściowe
 
-|TransformationMethod|Oczekiwanych danych wejściowych|Oczekiwane dane wyjściowe|Opis|
+|TransformationMethod|Oczekiwane dane wejściowe|Oczekiwane dane wyjściowe|Opis|
 |-----|-----|-----|-----|
-|Dołączanie|ciąg1, ciąg2, separatora|oświadczenie outputClaim|Sprzężenia wejściowe ciągi przy użyciu separatora między. Na przykład: ciąg1: "foo@bar.com", ciąg2: "piaskownicy", separatora: "." skutkuje oświadczenie outputClaim: "foo@bar.com.sandbox"|
-|ExtractMailPrefix|poczta|oświadczenie outputClaim|Wyodrębnia lokalnym składniku adresu e-mail. Na przykład: wiadomości e-mail: "foo@bar.com" skutkuje oświadczenie outputClaim: "foo". Jeśli nie \@ logowania jest obecny, a następnie oryginalnego ciągu wejściowego jest zwracany, ponieważ jest.|
+|Join|ciąg1, ciąg2, separator|Oświadczenie outputclaim|Sprzęga ciągi wejściowe przy użyciu separatora między. Na przykład: ciąg1: "foo@bar.com", ciąg2: "piaskownica", separator: "." powoduje w oświadczenie outputclaim: "foo@bar.com.sandbox"|
+|ExtractMailPrefix|poczta|Oświadczenie outputclaim|Wyodrębnia lokalną część adresu e-mail. Na przykład: mail: "foo@bar.com" powoduje oświadczenie outputclaim: "foo". Jeśli znak \@ nie jest obecny, oryginalny ciąg wejściowy jest zwracany w postaci, w jakiej jest.|
 
-**InputClaims:** Użyj elementu InputClaims do przekazania danych z wpisu schematu oświadczenia do przekształcenia. Zawiera dwa atrybuty: **ClaimTypeReferenceId** i **TransformationClaimType**.
+**InputClaims:** Użyj elementu InputClaims, aby przekazać dane ze wpisu schematu roszczeń do transformacji. Ma dwa atrybuty: **ClaimTypeReferenceId** i **TransformationClaimType**.
 
-- **ClaimTypeReferenceId** sprzężony z elementem identyfikator wpisu schematu oświadczenia, można znaleźć odpowiednich oświadczeń przychodzących. 
-- **TransformationClaimType** służy do nadaj unikatową nazwę do tych danych wejściowych. Ta nazwa musi być zgodna oczekiwane dane wejściowe dla metody transformacji.
+- **ClaimTypeReferenceId** jest przyłączony do elementu ID wpisu schematu Claims w celu znalezienia odpowiedniego żądania wejściowego. 
+- **TransformationClaimType** służy do przydzielenia unikatowej nazwy do tej operacji. Ta nazwa musi być zgodna z jednym z oczekiwanych danych wejściowych dla metody transformacji.
 
-**InputParameters:** Element InputParameters służy do przekazywania wartości stałej do przekształcenia. Zawiera dwa atrybuty: **Wartość** i **identyfikator**.
+**InputParameters** Użyj elementu InputParameters, aby przekazać stałą wartość do transformacji. Ma dwa atrybuty: **Wartość** i **Identyfikator**.
 
-- **Wartość** jest rzeczywista stała wartość do przekazania.
-- **Identyfikator** służy do nadaj unikatową nazwę w danych wejściowych. Nazwa musi odpowiadać oczekiwane dane wejściowe dla metody transformacji.
+- **Wartość** to rzeczywista wartość stałej, która ma zostać przeniesiona.
+- **Identyfikator** jest używany do nadawania unikatowej nazwy dane wejściowe. Nazwa musi odpowiadać jednemu z oczekiwanych danych wejściowych dla metody transformacji.
 
-**OutputClaims:** Element OutputClaims służy do przechowywania danych generowanych przez przekształcenie i powiązanie ich wpis schematu oświadczenia. Zawiera dwa atrybuty: **ClaimTypeReferenceId** i **TransformationClaimType**.
+**OutputClaims:** Użyj elementu OutputClaims, aby przechowywać dane wygenerowane przez transformację i powiązać je z wpisem schematu roszczenia. Ma dwa atrybuty: **ClaimTypeReferenceId** i **TransformationClaimType**.
 
-- **ClaimTypeReferenceId** sprzężony z Identyfikatorem wpisu schematu oświadczenia odnaleźć oświadczenia właściwe dane wyjściowe.
-- **TransformationClaimType** służy do nadaj unikatową nazwę w danych wyjściowych. Nazwa musi odpowiadać jednej z oczekiwanych danych wyjściowych dla metody transformacji.
+- **ClaimTypeReferenceId** jest dołączany z identyfikatorem wpisu schematu roszczeń, aby znaleźć odpowiednie zgłoszenie wyjściowe.
+- **TransformationClaimType** jest używana do nadania unikatowej nazwy dane wyjściowe. Nazwa musi odpowiadać jednemu z oczekiwanych danych wyjściowych dla metody transformacji.
 
 ### <a name="exceptions-and-restrictions"></a>Wyjątki i ograniczenia
 
-**Identyfikatora SAML NameID i głównej nazwy użytkownika:** Atrybuty, z których źródła wartości NameID i głównej nazwy użytkownika i przekształcenia oświadczeń, które są dozwolone, ale są ograniczone. Zobacz tabele 5 i 6, aby wyświetlić dozwolone wartości.
+**NameID SAML i nazwa UPN:** Atrybuty, z których pochodzą wartości NameID i nazwy UPN, a dozwolone przekształcenia oświadczeń są ograniczone. Zobacz Tabela 5 i tabela 6, aby wyświetlić dozwolone wartości.
 
-#### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tabela 5: Atrybuty można użyć jako źródła danych dla identyfikatora SAML NameID
+#### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tabela 5: Atrybuty dozwolone jako źródło danych dla elementu SAML NameID
 
-|Source|ID|Opis|
+|Source|id|Opis|
 |-----|-----|-----|
 | Użytkownik | poczta|Adres e-mail|
-| Użytkownik | userprincipalname|Nazwa główna użytkownika|
-| Użytkownik | onpremisessamaccountname|Nazwy konta Sam lokalnie|
-| Użytkownik | EmployeeID|Identyfikator pracownika|
+| Użytkownik | userprincipalname|Główna nazwa użytkownika|
+| Użytkownik | onpremisessamaccountname|Nazwa lokalnego konta sam|
+| Użytkownik | EmployeeID|IDENTYFIKATOR pracownika|
 | Użytkownik | extensionattribute1 | Atrybut rozszerzenia 1 |
 | Użytkownik | extensionattribute2 | Atrybut rozszerzenia 2 |
 | Użytkownik | extensionattribute3 | Atrybut rozszerzenia 3 |
@@ -406,113 +408,113 @@ Oparty na wybranej metody, oczekiwany jest zestaw danych wejściowych i wyjścio
 | Użytkownik | extensionattribute14 | Atrybut rozszerzenia 14 |
 | Użytkownik | extensionattribute15 | Atrybut rozszerzenia 15 |
 
-#### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>Tabela 6: Metody przekształcania dozwolone dla identyfikatora SAML NameID
+#### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>Tabela 6: Metody transformacji dozwolone dla elementu SAML NameID
 
 | TransformationMethod | Ograniczenia |
 | ----- | ----- |
 | ExtractMailPrefix | Brak |
-| Dołączanie | Sufiks jest przyłączone do musi być zweryfikowaną domenę dzierżawy zasobów. |
+| Join | Dołączony sufiks musi być zweryfikowaną domeną dzierżawy zasobu. |
 
 ### <a name="custom-signing-key"></a>Niestandardowy klucz podpisywania
 
-Niestandardowego klucza podpisywania muszą być przypisane do obiektu jednostki usługi dla oświadczeń mapowania zasad, które zostały wprowadzone. Dzięki temu po potwierdzeniu, że tokeny zostały zmodyfikowane przez twórcę mapowanie zasad oświadczeń i chroni aplikacje z oświadczeń mapowanie zasad utworzonych przez uczestników złośliwych działań.  Aplikacje, które mają oświadczeń mapowanie włączone, należy zaznaczyć specjalne identyfikator URI dla tokenu, ich kluczy podpisywania, dodając `appid={client_id}` do ich [OpenID Connect żądania metadanych](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document).  
+Aby zasady mapowania oświadczeń zaczęły obowiązywać, należy przypisać niestandardowy klucz podpisywania do obiektu jednostki usługi. Zapewnia to potwierdzenie, że tokeny zostały zmodyfikowane przez twórcę zasad mapowania oświadczeń i chroni aplikacje przed zasadami mapowania oświadczeń utworzonymi przez złośliwe podmioty.  Aplikacje z włączonym mapowaniem oświadczeń muszą sprawdzać specjalny identyfikator URI dla swoich kluczy podpisywania tokenu przez `appid={client_id}` dołączenie do ich [żądań metadanych połączenia OpenID Connect](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document).  
 
-### <a name="cross-tenant-scenarios"></a>Scenariusze międzydzierżawowe
+### <a name="cross-tenant-scenarios"></a>Scenariusze dla wielu dzierżawców
 
-Mapowanie zasad oświadczeń nie dotyczą użytkowników-gości. Jeśli użytkownik-Gość spróbuje uzyskać dostęp do aplikacji przy użyciu oświadczeń mapowanie zasady przypisane do jego nazwy głównej usługi, domyślny token wystawiono (zasada nie ma znaczenia).
+Zasady mapowania oświadczeń nie są stosowane dla użytkowników-Gości. Jeśli użytkownik-Gość próbuje uzyskać dostęp do aplikacji z zasadami mapowania oświadczeń przypisanymi do jej nazwy głównej usługi, zostanie wystawiony token domyślny (zasady nie mają żadnego skutku).
 
-## <a name="claims-mapping-policy-assignment"></a>Mapowanie przypisania zasad oświadczeń
+## <a name="claims-mapping-policy-assignment"></a>Przypisanie zasad mapowania oświadczeń
 
-Mapowanie zasad oświadczeń można przypisać tylko do obiektów nazw głównych usług.
+Zasady mapowania oświadczeń można przypisywać tylko do obiektów głównych usługi.
 
-### <a name="example-claims-mapping-policies"></a>Przykład oświadczeń mapowania zasad
+### <a name="example-claims-mapping-policies"></a>Przykładowe zasady mapowania oświadczeń
 
-W usłudze Azure AD wiele scenariuszy są możliwe, gdy można dostosować emitowane w tokenach dla jednostek usług określonych oświadczeń. W tej sekcji części omówimy kilka typowych scenariuszy, które mogą pomóc w niejasny sposób używania Mapowanie typów zasad oświadczeń.
+W usłudze Azure AD wiele scenariuszy jest możliwe, gdy można dostosować oświadczenia emitowane w tokenach dla określonych podmiotów usługi. W tej sekcji omówiono kilka typowych scenariuszy, które mogą pomóc w opanujesz, jak używać typu zasad mapowania oświadczeń.
 
 #### <a name="prerequisites"></a>Wymagania wstępne
 
-Poniższe przykłady służy do tworzenia, aktualizacji, łączenie i usuwania zasad dla jednostki usługi. Jeśli jesteś nowym użytkownikiem usługi Azure AD, zalecamy możesz [Dowiedz się więcej o tym, jak uzyskać dzierżawę usługi Azure AD](quickstart-create-new-tenant.md) przed wykonaniem tych przykładów.
+W poniższych przykładach tworzysz, aktualizujesz, łączysz i usuwasz zasady dla podmiotów usługi. Jeśli dopiero zaczynasz korzystać z usługi Azure AD, zalecamy [zapoznanie się z tematem jak uzyskać dzierżawę usługi Azure AD](quickstart-create-new-tenant.md) przed wykonaniem tych przykładów.
 
-Aby rozpocząć pracę, wykonaj następujące czynności:
+Aby rozpocząć, wykonaj następujące czynności:
 
-1. Pobierz najnowszy [modułu Azure AD PowerShell publicznej wersji zapoznawczej](https://www.powershellgallery.com/packages/AzureADPreview).
-1. Uruchom polecenie Connect, aby zalogować się do konta administratora usługi Azure AD. Uruchom to polecenie za każdym razem, Rozpocznij nową sesję.
+1. Pobierz najnowszą [wersję publicznej wersji zapoznawczej modułu programu Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureADPreview).
+1. Uruchom polecenie Connect, aby zalogować się do konta administratora usługi Azure AD. Uruchom to polecenie przy każdym uruchomieniu nowej sesji.
 
    ``` powershell
    Connect-AzureAD -Confirm
    ```
-1. Aby wyświetlić wszystkie zasady, które zostały utworzone w Twojej organizacji, uruchom następujące polecenie. Zaleca się, że to polecenie jest uruchamiane po większość operacji w następujących scenariuszach, aby sprawdzić, czy zasady są tworzone zgodnie z oczekiwaniami.
+1. Aby wyświetlić wszystkie zasady, które zostały utworzone w organizacji, uruchom następujące polecenie. Zalecamy uruchomienie tego polecenia po większości operacji w następujących scenariuszach, aby sprawdzić, czy zasady są tworzone zgodnie z oczekiwaniami.
 
    ``` powershell
    Get-AzureADPolicy
    ```
 
-#### <a name="example-create-and-assign-a-policy-to-omit-the-basic-claims-from-tokens-issued-to-a-service-principal"></a>Przykład: Tworzenie i przypisywanie zasad, aby pominąć podstawowe oświadczeń z tokeny wystawione do nazwy głównej usługi
+#### <a name="example-create-and-assign-a-policy-to-omit-the-basic-claims-from-tokens-issued-to-a-service-principal"></a>Przykład: Utwórz i przypisz zasady, aby pominąć podstawowe oświadczenia z tokenów wystawionych dla jednostki usługi
 
-W tym przykładzie utworzysz zasady, które powoduje usunięcie podstawowego zestawu oświadczeń z tokeny wystawione do podmiotów połączonej usługi.
+W tym przykładzie utworzysz zasady, które usuwają podstawowy zestaw roszczeń z tokenów wystawionych dla powiązanych podmiotów usługi.
 
-1. Utwórz mapowanie zasad oświadczeń. Te zasady usługi połączonej do określonych jednostek, usuwa zestawu z tokenów oświadczeń podstawowe.
+1. Utwórz zasady mapowania oświadczeń. Te zasady, połączone z określonymi jednostkami usługi, usuwają podstawowy zestaw roszczeń z tokenów.
    1. Aby utworzyć zasady, uruchom następujące polecenie: 
     
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"false"}}') -DisplayName "OmitBasicClaims" -Type "ClaimsMappingPolicy"
       ```
-   2. Aby wyświetlić nowe zasady, a aby pobrać zasady wymagane ObjectId, uruchom następujące polecenie:
+   2. Aby wyświetlić nowe zasady i uzyskać identyfikator ObjectId zasad, uruchom następujące polecenie:
     
       ``` powershell
       Get-AzureADPolicy
       ```
-1. Przypisz zasady do jednostki usługi. Należy również pobrać ObjectId usługę podmiotu zabezpieczeń.
-   1. Aby wyświetlić nazwy główne usług wszystkich w organizacji, można tworzyć zapytania programu Microsoft Graph. Lub w programie Azure AD Graph Explorer Zaloguj się do swojego konta usługi Azure AD.
-   2. Jeśli masz identyfikator obiektu nazwy głównej usługi, uruchom następujące polecenie:  
+1. Przypisz zasady do nazwy głównej usługi. Należy również uzyskać identyfikator ObjectId nazwy głównej usługi.
+   1. Aby wyświetlić wszystkie nazwy główne usługi w organizacji, można zbadać Microsoft Graph. Lub w Eksploratorze Azure AD Graph Zaloguj się do konta usługi Azure AD.
+   2. Jeśli masz identyfikator ObjectId nazwy głównej usługi, uruchom następujące polecenie:  
      
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
 
-#### <a name="example-create-and-assign-a-policy-to-include-the-employeeid-and-tenantcountry-as-claims-in-tokens-issued-to-a-service-principal"></a>Przykład: Tworzenie i przypisywanie zasad, aby uwzględnić EmployeeID i TenantCountry jako oświadczenia w tokeny wystawione do nazwy głównej usługi
+#### <a name="example-create-and-assign-a-policy-to-include-the-employeeid-and-tenantcountry-as-claims-in-tokens-issued-to-a-service-principal"></a>Przykład: Utwórz i przypisz zasady, aby uwzględnić IDPracownika i TenantCountry jako oświadczenia w tokenach wystawionych dla jednostki usługi
 
-W tym przykładzie utworzysz zasadę, która dodaje EmployeeID i TenantCountry tokeny wystawione do podmiotów połączonej usługi. Identyfikatorem EmployeeID jest emitowany jako nazwa typ oświadczenia w tokeny SAML i tokenów Jwt. TenantCountry jest emitowany jako typ oświadczenia country zarówno w tokeny SAML, jak i tokenów Jwt. W tym przykładzie firma Microsoft nadal obejmują podstawowe oświadczenia w tokeny.
+W tym przykładzie utworzysz zasady, które dodają elementy IDPracownika i TenantCountry do tokenów wystawionych dla połączonych podmiotów usługi. Element IDPracownika jest emitowany jako nazwa typ wystąpienia w tokenach SAML i JWTs. TenantCountry jest emitowany jako typ roszczeń kraju w tokenach SAML i JWTs. W tym przykładzie nadal będziemy używać podstawowych oświadczeń ustawionych w tokenach.
 
-1. Utwórz mapowanie zasad oświadczeń. Ta zasada, połączone z jednostki określonej usługi, dodaje EmployeeID i TenantCountry oświadczenia na tokeny.
+1. Utwórz zasady mapowania oświadczeń. Te zasady połączone z określonymi jednostkami usługi dodają do tokenów oświadczenia IDPracownika i TenantCountry.
    1. Aby utworzyć zasady, uruchom następujące polecenie:  
      
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name","JwtClaimType":"name"},{"Source":"company","ID":"tenantcountry","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample" -Type "ClaimsMappingPolicy"
       ```
     
-   2. Aby wyświetlić nowe zasady, a aby pobrać zasady wymagane ObjectId, uruchom następujące polecenie:
+   2. Aby wyświetlić nowe zasady i uzyskać identyfikator ObjectId zasad, uruchom następujące polecenie:
      
       ``` powershell  
       Get-AzureADPolicy
       ```
-1. Przypisz zasady do jednostki usługi. Należy również pobrać ObjectId usługę podmiotu zabezpieczeń. 
-   1. Aby wyświetlić nazwy główne usług wszystkich w organizacji, można tworzyć zapytania programu Microsoft Graph. Lub w programie Azure AD Graph Explorer Zaloguj się do swojego konta usługi Azure AD.
-   2. Jeśli masz identyfikator obiektu nazwy głównej usługi, uruchom następujące polecenie:  
+1. Przypisz zasady do nazwy głównej usługi. Należy również uzyskać identyfikator ObjectId nazwy głównej usługi. 
+   1. Aby wyświetlić wszystkie nazwy główne usługi w organizacji, można zbadać Microsoft Graph. Lub w Eksploratorze Azure AD Graph Zaloguj się do konta usługi Azure AD.
+   2. Jeśli masz identyfikator ObjectId nazwy głównej usługi, uruchom następujące polecenie:  
      
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
 
-#### <a name="example-create-and-assign-a-policy-that-uses-a-claims-transformation-in-tokens-issued-to-a-service-principal"></a>Przykład: Tworzenie i przypisywanie zasad, które używa przekształcania oświadczenia w tokeny wystawione do nazwy głównej usługi
+#### <a name="example-create-and-assign-a-policy-that-uses-a-claims-transformation-in-tokens-issued-to-a-service-principal"></a>Przykład: Tworzenie i przypisywanie zasad korzystających z transformacji oświadczeń w tokenach wystawionych dla jednostki usługi
 
-W tym przykładzie należy utworzyć zasady, który emituje oświadczenia niestandardowego "JoinedData" do tokenów Jwt wystawione dla jednostki usługi połączonej. To oświadczenie zawiera wartość tworzony przez dołączenie danych przechowywanych w atrybucie extensionattribute1 w obiekcie użytkownika za pomocą ".sandbox". W tym przykładzie Wyłączamy podstawowe oświadczenia w tokeny.
+W tym przykładzie utworzysz zasady, które emitują niestandardową wartość "JoinedData" do JWTs wystawionego dla połączonych jednostek usługi. To zgłoszenie zawiera wartość utworzoną przez przyłączenie danych przechowywanych w atrybucie extensionAttribute1 obiektu użytkownika z "piaskownicy". W tym przykładzie wyłączono podstawowe oświadczenia ustawione w tokenach.
 
-1. Utwórz mapowanie zasad oświadczeń. Ta zasada, połączone z jednostki określonej usługi, dodaje EmployeeID i TenantCountry oświadczenia na tokeny.
+1. Utwórz zasady mapowania oświadczeń. Te zasady połączone z określonymi jednostkami usługi dodają do tokenów oświadczenia IDPracownika i TenantCountry.
    1. Aby utworzyć zasady, uruchom następujące polecenie:
      
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema":[{"Source":"user","ID":"extensionattribute1"},{"Source":"transformation","ID":"DataJoin","TransformationId":"JoinTheData","JwtClaimType":"JoinedData"}],"ClaimsTransformations":[{"ID":"JoinTheData","TransformationMethod":"Join","InputClaims":[{"ClaimTypeReferenceId":"extensionattribute1","TransformationClaimType":"string1"}], "InputParameters": [{"ID":"string2","Value":"sandbox"},{"ID":"separator","Value":"."}],"OutputClaims":[{"ClaimTypeReferenceId":"DataJoin","TransformationClaimType":"outputClaim"}]}]}}') -DisplayName "TransformClaimsExample" -Type "ClaimsMappingPolicy"
       ```
     
-   2. Aby wyświetlić nowe zasady, a aby pobrać zasady wymagane ObjectId, uruchom następujące polecenie: 
+   2. Aby wyświetlić nowe zasady i uzyskać identyfikator ObjectId zasad, uruchom następujące polecenie: 
      
       ``` powershell
       Get-AzureADPolicy
       ```
-1. Przypisz zasady do jednostki usługi. Należy również pobrać ObjectId usługę podmiotu zabezpieczeń. 
-   1. Aby wyświetlić nazwy główne usług wszystkich w organizacji, można tworzyć zapytania programu Microsoft Graph. Lub w programie Azure AD Graph Explorer Zaloguj się do swojego konta usługi Azure AD.
-   2. Jeśli masz identyfikator obiektu nazwy głównej usługi, uruchom następujące polecenie: 
+1. Przypisz zasady do nazwy głównej usługi. Należy również uzyskać identyfikator ObjectId nazwy głównej usługi. 
+   1. Aby wyświetlić wszystkie nazwy główne usługi w organizacji, można zbadać Microsoft Graph. Lub w Eksploratorze Azure AD Graph Zaloguj się do konta usługi Azure AD.
+   2. Jeśli masz identyfikator ObjectId nazwy głównej usługi, uruchom następujące polecenie: 
      
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
@@ -520,4 +522,4 @@ W tym przykładzie należy utworzyć zasady, który emituje oświadczenia niesta
 
 ## <a name="see-also"></a>Zobacz także
 
-Aby dowiedzieć się, jak dostosowywanie oświadczeń wystawionych w tokenie języka SAML w witrynie Azure portal, zobacz [jak: Dostosowywanie oświadczeń wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw](active-directory-saml-claims-customization.md)
+Aby dowiedzieć się, jak dostosować oświadczenia wystawione w tokenie SAML za [pomocą Azure Portal, zobacz How to: Dostosowywanie oświadczeń wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw](active-directory-saml-claims-customization.md)

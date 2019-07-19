@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: sdgilley
-ms.author: sgilleye
+ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: d38a5066304a11ff2cd53a0168e51a0d74fda555
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d9475b49b3ef8a2e672e1ce505a7d94d19cb14f
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751487"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875323"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Czy Twoje dane są gotowe na analizę danych?
 ## <a name="video-2-data-science-for-beginners-series"></a>Wideo 2: Analiza danych dla początkujących serii
@@ -31,13 +31,13 @@ Aby maksymalnie wykorzystać możliwości serii, obejrzyj je wszystkie. [Przejd�
 ## <a name="other-videos-in-this-series"></a>Inne filmy wideo w tej serii
 *Przetwarzanie danych dla początkujących* jest szybkie wprowadzenie do nauki o danych w pięciu krótkich filmach wideo.
 
-* Wideo 1: [5 pytań, analiza danych daje odpowiedzi](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 min 14 sek.)*
+* Wideo 1: [5 odpowiedzi na pytania naukowe dotyczące danych](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 min 14 sek.)*
 * Wideo 2: Czy Twoje dane są gotowe na analizę danych?
 * Wideo 3: [Zadaj pytanie, na które można odpowiedzieć za pomocą danych](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 min 17 sek.)*
-* Wideo 4: [Prognozowanie odpowiedzi za pomocą prostego modelu](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min 42 sek.)*
-* Wideo 5: [Kopiowanie pracy innych osób w celu przeprowadzenia analizy danych](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min 18 sek.)*
+* Wideo 4: [Prognozowanie odpowiedzi za pomocą prostego modelu](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min 42 s)*
+* Wideo 5: [Kopiowanie pracy innych osób w celu przeprowadzenia analizy danych](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 minuty 18 s)*
 
-## <a name="transcript-is-your-data-ready-for-data-science"></a>Zapis: Czy Twoje dane są gotowe na analizę danych?
+## <a name="transcript-is-your-data-ready-for-data-science"></a>Zapisy Czy Twoje dane są gotowe na analizę danych?
 "Czy dane są gotowe do analizy danych?" — Zapraszamy! drugi wideo z serii *przetwarzanie danych dla początkujących*.  
 
 Przed analiza danych daje odpowiedzi, który ma, należy nadać mu niektóre surowce wysokiej jakości do pracy z. Podobnie jak tworzenie głosi, tym lepsze składników, który jest uruchamiany z tym lepsze produktu końcowego. 
@@ -100,8 +100,8 @@ W miarę dodawania większej ilości danych obraz staje się bardziej zrozumiał
 
 Z danymi, które są istotne, połączone, dokładne i wystarczająco, możesz mieć wszystkie składniki wymagane do wykonania niektórych nauki o danych wysokiej jakości.
 
-Należy zapoznać się z czterech wideo w *przetwarzanie danych dla początkujących* z usługi Microsoft Azure Machine Learning Studio.
+Zapoznaj się z innymi czterema filmami wideo w *nauce danych dla początkujących* z Microsoft Azure Machine Learning Studio.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Spróbuj pierwszy eksperyment dotyczący przetwarzania danych, za pomocą usługi Machine Learning Studio](create-experiment.md)
 * [Wprowadzenie do usługi Machine Learning na Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)

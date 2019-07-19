@@ -1,43 +1,43 @@
 ---
-title: Reagowanie na zdarzenia usługi Azure SignalR Service
-description: Usługa Azure Event Grid do subskrybowania zdarzenia usługi Azure SignalR Service.
+title: Reagowanie na zdarzenia usługi Azure sygnalizujące
+description: Użyj Azure Event Grid, aby subskrybować zdarzenia usługi Azure Signal Service.
 services: azure-signalr,event-grid
 author: chenyl
 ms.author: chenyl
 ms.reviewer: zhshang
 ms.date: 06/12/2019
 ms.topic: conceptual
-ms.service: azure-signalr
-ms.openlocfilehash: 02f88c5953d499b30f2ea3408318f70a72f42b0f
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.service: signalr
+ms.openlocfilehash: a3d0669a1a89f2fc5aaca0a96e00b731d2d40830
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67789191"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296830"
 ---
-# <a name="reacting-to-azure-signalr-service-events"></a>Reagowanie na zdarzenia usługi Azure SignalR Service
+# <a name="reacting-to-azure-signalr-service-events"></a>Reagowanie na zdarzenia usługi Azure sygnalizujące
 
-Zdarzenia usługi Azure SignalR Service umożliwiają aplikacjom reagować na połączenia klienckie połączone lub odłączona przy użyciu nowoczesnych architektur bezserwerowych. Robi to bez konieczności skomplikowanego kodu lub sondowania kosztowne i nieefektywna usług.  Zamiast tego zdarzenia są przekazywane za pośrednictwem [usługi Azure Event Grid](https://azure.microsoft.com/services/event-grid/) dla subskrybentów, takie jak [usługi Azure Functions](https://azure.microsoft.com/services/functions/), [usługi Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/), lub nawet własne odbiornika http niestandardowego, a tylko płatność za rzeczywiste użycie.
+Zdarzenia usługi Azure sygnalizujące umożliwiają aplikacjom reagowanie na połączenia klienckie połączone lub rozłączone przy użyciu nowoczesnych architektur bezserwerowych. Robi to bez konieczności stosowania skomplikowanego kodu lub kosztownych i nieefektywnych usług sondowania.  Zamiast tego zdarzenia są wypychane za pośrednictwem [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) do subskrybentów, takich jak [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)lub nawet do własnego niestandardowego odbiornika HTTP i płacisz tylko za to, czego używasz.
 
-Azure SignalR Service — wydarzenia niezawodnie są wysyłane do usługi Event Grid, która zapewnia niezawodne dostarczanie usług do aplikacji dzięki rozbudowanym funkcjom ponawiania, zasad i dostarczania wiadomości utraconych. Aby dowiedzieć się więcej, zobacz [dostarczanie komunikatów usługi Event Grid i ponów próbę](https://docs.microsoft.com/azure/event-grid/delivery-and-retry).
+Zdarzenia usługi Azure sygnalizujące są niezawodnie wysyłane do usługi Event Grid, która zapewnia niezawodne usługi dostarczania dla aplikacji dzięki rozbudowanym zasadom ponawiania prób i dostarczaniu wiadomości utraconych. Aby dowiedzieć się więcej, zobacz [Event Grid dostarczania komunikatów i ponów próbę](https://docs.microsoft.com/azure/event-grid/delivery-and-retry).
 
-![Model siatki zdarzeń](https://docs.microsoft.com/azure/event-grid/media/overview/functional-model.png)
+![Model Event Grid](https://docs.microsoft.com/azure/event-grid/media/overview/functional-model.png)
 
-## <a name="serverless-state"></a>Bez użycia serwera stanu
-Azure SignalR Service zdarzenia są aktywne tylko w przypadku, gdy połączenia klientów znajdują się w stanie bez użycia serwera. Ogólnie rzecz biorąc Jeśli klient nie kierować do serwera centralnego, go przechodzi w stan bez użycia serwera. Praca z trybu klasycznego tylko wtedy, gdy koncentratora, w którym połączeń klienckich nawiązać połączenie, nie ma serwera koncentratora. Jednak aby uniknąć problemu, niektóre zalecany jest tryb bez użycia serwera. Aby uzyskać więcej informacji o trybie usługi, zobacz [jak wybrać tryb usługi](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose).
+## <a name="serverless-state"></a>Stan bezserwerowy
+Zdarzenia usługi Azure sygnalizujące są aktywne tylko wtedy, gdy połączenia klientów są w stanie bezserwerowym. Ogólnie mówiąc, jeśli klient nie jest kierowany do serwera Hub, przejdzie w stan bezserwerowy. Tryb klasyczny działa tylko wtedy, gdy koncentrator, z którym nawiąże połączenie z klientem, nie ma serwera centralnego. Jednak tryb bezserwerowy jest zalecany, aby uniknąć pewnego problemu. Aby uzyskać więcej informacji na temat trybu usługi, zobacz [jak wybrać tryb usługi](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose).
 
-## <a name="available-azure-signalr-service-events"></a>Dostępności zdarzenia usługi Azure SignalR Service
-Korzysta z usługi Event grid [subskrypcji zdarzeń](../event-grid/concepts.md#event-subscriptions) aby komunikaty o zdarzeniach trasy dla subskrybentów. Subskrypcje zdarzeń w usłudze Azure SignalR Service obsługuje dwa typy zdarzeń:  
+## <a name="available-azure-signalr-service-events"></a>Dostępne zdarzenia usługi Azure sygnalizujące
+Funkcja Event Grid używa [subskrypcji zdarzeń](../event-grid/concepts.md#event-subscriptions) do kierowania komunikatów o zdarzeniach do subskrybentów. Subskrypcje zdarzeń usługi Azure Signal Service obsługują dwa typy zdarzeń:  
 
 |Nazwa zdarzenia|Opis|
 |----------|-----------|
-|`Microsoft.SignalRService.ClientConnectionConnected`|Wywoływane, gdy połączenia klienta.|
-|`Microsoft.SignalRService.ClientConnectionDisconnected`|Wywoływane, gdy połączenie klienta jest odłączony.|
+|`Microsoft.SignalRService.ClientConnectionConnected`|Uruchamiany, gdy połączenie z klientem jest nawiązywane.|
+|`Microsoft.SignalRService.ClientConnectionDisconnected`|Uruchamiany, gdy połączenie z klientem zostanie odłączone.|
 
 ## <a name="event-schema"></a>Schemat zdarzeń
-Azure SignalR Service zdarzeń zawierają wszystkie informacje potrzebne do reagowania na zmiany w danych. Można zidentyfikować usługi Azure SignalR Service rozpoczęciu zdarzenia z właściwością typ zdarzenia za pomocą "Microsoft.SignalRService". Dodatkowe informacje na temat użycia właściwości zdarzeń usługi Event Grid jest udokumentowany na [schematu zdarzeń usługi Event Grid](../event-grid/event-schema.md).  
+Zdarzenia usługi Azure sygnalizujące zawierają wszystkie informacje potrzebne do reagowania na zmiany danych. Możesz zidentyfikować zdarzenie usługi platformy Azure z właściwością eventType rozpoczynającą się od "Microsoft. SignalRService". Dodatkowe informacje na temat użycia właściwości zdarzeń Event Grid są udokumentowane w [Event Grid schemacie zdarzeń](../event-grid/event-schema.md).  
 
-Oto przykład zdarzenia połączone połączenia klienta:
+Oto przykład zdarzenia połączonego z klientem:
 ```json
 [{
   "topic": "/subscriptions/{subscription-id}/resourceGroups/signalr-rg/providers/Microsoft.SignalRService/SignalR/signalr-resource",
@@ -56,12 +56,12 @@ Oto przykład zdarzenia połączone połączenia klienta:
 }]
 ```
 
-Aby uzyskać więcej informacji, zobacz [schematu zdarzeń usługi SignalR](../event-grid/event-schema-azure-signalr.md).
+Aby uzyskać więcej informacji, zobacz [schemat zdarzeń usługi sygnalizującej](../event-grid/event-schema-azure-signalr.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat usługi Event Grid i wypróbuj zdarzeń usługi Azure SignalR Service:
+Dowiedz się więcej o Event Grid i przekaż zdarzenia usługi Azure Signal Service:
 
 > [!div class="nextstepaction"]
-> [Wypróbuj przykładowe integracji usługi Event Grid, za pomocą usługi Azure SignalR Service](./signalr-howto-event-grid-integration.md)
-> [Event Grid](../event-grid/overview.md)
+> [Wypróbuj Event Grid integrację z usługą Azure Signal Service](./signalr-howto-event-grid-integration.md)
+> [o Event Grid](../event-grid/overview.md)

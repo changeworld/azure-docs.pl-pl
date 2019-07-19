@@ -1,53 +1,53 @@
 ---
-title: Konfigurowanie odzyskiwania po awarii dla wielowarstwowej aplikacji programu SharePoint przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób konfigurowania odzyskiwania po awarii dla wielowarstwowej aplikacji programu SharePoint przy użyciu możliwości usługi Azure Site Recovery.
+title: Konfigurowanie odzyskiwania po awarii dla wielowarstwowej aplikacji SharePoint przy użyciu Azure Site Recovery | Microsoft Docs
+description: W tym artykule opisano sposób konfigurowania odzyskiwania po awarii dla wielowarstwowej aplikacji SharePoint przy użyciu możliwości Azure Site Recovery.
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: 4b4edec43d01878bbc5899487f6ee1d2816eb135
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: bc6d9e7214d2b7cd009e7562357bed420e49f185
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491835"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325107"
 ---
-# <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Konfigurowanie odzyskiwania po awarii dla wielowarstwowej aplikacji programu SharePoint do odzyskiwania po awarii przy użyciu usługi Azure Site Recovery
+# <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Konfigurowanie odzyskiwania po awarii dla wielowarstwowej aplikacji SharePoint na potrzeby odzyskiwania po awarii przy użyciu Azure Site Recovery
 
-W tym artykule opisano szczegółowo sposobu ochrony aplikacji programu SharePoint przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md).
+W tym artykule szczegółowo opisano sposób ochrony aplikacji programu SharePoint przy użyciu [Azure Site Recovery](site-recovery-overview.md).
 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
-Microsoft SharePoint to zaawansowany aplikacja, która może pomóc grupy lub działu organizowania, współpracy i udostępniania informacji. Program SharePoint może zapewnić portali sieci intranet, dokumentów i plików zarządzania, współpracy, sieci społecznościowych, sieci ekstranet, witryn sieci Web, wyszukiwaniu korporacyjnemu i analizy biznesowej. Ma również integracji systemów, procesów i możliwości automatyzacji przepływu pracy. Zazwyczaj organizacji należy wziąć pod uwagę ją jako aplikację warstwy 1 wrażliwe na czas przestoju i utraty danych.
+Microsoft SharePoint to zaawansowana aplikacja, która może pomóc grupie lub działowi w organizowaniu, współpracy i udostępnianiu informacji. Program SharePoint może udostępniać portale intranetowe, zarządzanie dokumentami i plikami, współpracę, sieci społecznościowe, ekstranety, witryny sieci Web, wyszukiwanie w przedsiębiorstwie i analizę biznesową. Ma także integrację systemu, integrację procesów i możliwości automatyzacji przepływu pracy. Zazwyczaj organizacje traktują je jako wrażliwe na przestoje i utratę danych.
 
-Już dziś Microsoft SharePoint nie zapewnia wszystkie funkcje odzyskiwania po awarii poza pole. Niezależnie od typu i skalowania awarii odzyskiwanie obejmuje korzystanie z centrum danych wstrzymania, które można odzyskać do farmy. Centra danych wstrzymania są wymagane dla scenariuszy, w którym lokalnych systemów nadmiarowy i kopie zapasowe nie można odzyskać sprawności po awarii w podstawowym centrum danych.
+Obecnie program Microsoft SharePoint nie udostępnia wbudowanych możliwości odzyskiwania po awarii. Bez względu na typ i skalę awarii odzyskiwanie obejmuje użycie centrum danych w stanie wstrzymania, do którego można odzyskać farmę. Centra danych w stanie wstrzymania są wymagane dla scenariuszy, w których lokalne nadmiarowe systemy i kopie zapasowe nie mogą zostać odzyskane po awarii w podstawowym centrum danych.
 
-Rozwiązanie odzyskiwania po awarii w dobrej powinna zezwalać na modelowanie planów odzyskiwania dotyczące architektury aplikacji złożonych, takich jak program SharePoint. Powinien również mieć możliwość dodawania niestandardowych kroków do obsługi aplikacji mapowania między różnych warstw i dlatego dostarczanie przejścia w tryb failover jednym kliknięciem niższa wartość celu punktu odzyskiwania w przypadku awarii.
+Dobre rozwiązanie do odzyskiwania po awarii powinno umożliwić modelowanie planów odzyskiwania na podstawie złożonych architektur aplikacji, takich jak SharePoint. Powinna również mieć możliwość dodawania dostosowanych kroków do obsługi mapowań aplikacji między różnymi warstwami, a tym samym zapewniania trybu failover pojedynczego kliknięcia z niższą RTOą w przypadku awarii.
 
-W tym artykule opisano szczegółowo sposobu ochrony aplikacji programu SharePoint przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md). W tym artykule opisano najlepsze rozwiązania dotyczące replikowania trzy warstwy aplikacji programu SharePoint do platformy Azure, jak odzyskiwanie po awarii i jak możesz przełączyć działanie aplikacji na platformie Azure.
+W tym artykule szczegółowo opisano sposób ochrony aplikacji programu SharePoint przy użyciu [Azure Site Recovery](site-recovery-overview.md). W tym artykule opisano najlepsze rozwiązania dotyczące replikowania aplikacji programu SharePoint z trzema warstwami na platformę Azure, jak można przeprowadzić drążenie odzyskiwania po awarii oraz jak przełączać się do trybu failover aplikacji na platformie Azure.
 
-Możesz obejrzeć poniższy film o odzyskiwaniu wielowarstwową aplikację na platformie Azure.
+Możesz obejrzeć poniższy film wideo dotyczący odzyskiwania aplikacji wielowarstwowej na platformie Azure.
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/Disaster-Recovery-of-load-balanced-multi-tier-applications-using-Azure-Site-Recovery/player]
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że należy zrozumieć następujące kwestie:
+Przed rozpoczęciem upewnij się, że rozumiesz następujące kwestie:
 
-1. [Replikowanie maszyny wirtualnej na platformie Azure](site-recovery-vmware-to-azure.md)
-2. Jak [projektować sieć odzyskiwania](site-recovery-network-design.md)
-3. [Podczas testowania trybu failover na platformie Azure](site-recovery-test-failover-to-azure.md)
-4. [Przełączeniem w tryb failover na platformie Azure](site-recovery-failover.md)
-5. Jak [replikacji kontrolera domeny](site-recovery-active-directory.md)
-6. Jak [replikowanie programu SQL Server](site-recovery-sql.md)
+1. [Replikowanie maszyny wirtualnej na platformę Azure](site-recovery-vmware-to-azure.md)
+2. [Projektowanie sieci odzyskiwania](site-recovery-network-design.md)
+3. [Testowanie pracy w trybie failover na platformie Azure](site-recovery-test-failover-to-azure.md)
+4. [Przełączenie w tryb failover na platformie Azure](site-recovery-failover.md)
+5. Jak replikować [kontroler domeny](site-recovery-active-directory.md)
+6. Jak replikować [SQL Server](site-recovery-sql.md)
 
 ## <a name="sharepoint-architecture"></a>Architektura programu SharePoint
 
-Program SharePoint można wdrażać na co najmniej jeden serwer przy użyciu warstwowego topologii i ról serwera do implementacji projektu farmy, który spełnia określone cele i zamierzenia. Typowe dużych, ważnej farmy serwerów programu SharePoint obsługującej dużą liczbę równoczesnych użytkowników i dużą liczbę elementów zawartości użyć grupowania usługi jako część strategii ich skalowalność. Ta strategia polega na uruchamianie usług na dedykowanych serwerach grupowanie tych usług, a następnie skalowanie w poziomie serwerów jako grupa. Następująca topologia przedstawia usługi i grupowanie trójwarstwową farmy serwerów programu SharePoint server. Zajrzyj do dokumentacji programu SharePoint i architektury linii produktów szczegółowe wskazówki dotyczące różnych topologii programu SharePoint. Można znaleźć więcej szczegółów na temat wdrażania programu SharePoint 2013 w [w tym dokumencie](https://technet.microsoft.com/library/cc303422.aspx).
+Program SharePoint można wdrożyć na jednym lub większej liczbie serwerów przy użyciu topologii warstwowej i ról serwera, aby zaimplementować projekt farmy, który spełnia określone cele i cele. Typowa farma serwerów programu SharePoint o dużej pojemności, która obsługuje dużą liczbę równoczesnych użytkowników i dużą liczbę elementów zawartości używa grupowania usług w ramach strategii skalowalności. Takie podejście obejmuje uruchamianie usług na dedykowanych serwerach, grupowanie tych usług, a następnie skalowanie serwerów jako grupy. Poniższa topologia ilustruje grupowanie usługi i serwera dla trzech warstw farmy serwerów programu SharePoint. Aby uzyskać szczegółowe wskazówki dotyczące różnych topologii programu SharePoint, zapoznaj się z dokumentacją programu SharePoint i architekturami linii produktów. Więcej szczegółów na temat wdrożenia programu SharePoint 2013 można znaleźć w [tym dokumencie](https://technet.microsoft.com/library/cc303422.aspx).
 
 
 
@@ -56,155 +56,155 @@ Program SharePoint można wdrażać na co najmniej jeden serwer przy użyciu war
 
 ## <a name="site-recovery-support"></a>Obsługa usługi Site Recovery
 
-Do tworzenia w tym artykule, maszyn wirtualnych VMware z systemem Windows Server 2012 R2 Enterprise zostały użyte. Użyto programu SharePoint 2013 Enterprise edition od wersji programu SQL server 2014 Enterprise edition. Jak replikacji usługi Site Recovery jest niezależny od aplikacji, do przechowywania następujących scenariuszach również powinny zaleceń przedstawionych w tym miejscu.
+W przypadku tworzenia tego artykułu są używane maszyny wirtualne VMware z systemem Windows Server 2012 R2 Enterprise. Użyto programu SharePoint 2013 Enterprise Edition i programu SQL Server 2014 Enterprise Edition. Ponieważ Site Recovery replikacji jest niezależny od aplikacji, zalecenia podane w tym miejscu powinny być przechowywane na potrzeby następujących scenariuszy.
 
-### <a name="source-and-target"></a>Źródłowe i docelowe
+### <a name="source-and-target"></a>Źródło i cel
 
-**Scenariusz** | **Lokacja dodatkowa** | **Platforma Azure**
+**Scenariusz** | **Do lokacji dodatkowej** | **Platforma Azure**
 --- | --- | ---
-**Funkcja Hyper-V** | Tak | Yes
+**Funkcja Hyper-V** | Tak | Tak
 **VMware** | Tak | Tak
-**Serwer fizyczny** | Tak | Yes
+**Serwer fizyczny** | Tak | Tak
 **Azure** | Nie dotyczy | Yes
 
 ### <a name="sharepoint-versions"></a>Wersje programu SharePoint
-Obsługiwane są następujące wersje serwera programu SharePoint.
+Obsługiwane są następujące wersje programu SharePoint Server.
 
-* Program SharePoint server 2013 standardowe
+* Program SharePoint Server 2013 Standard
 * SharePoint server 2013 Enterprise
-* Program SharePoint server 2016 Standard
-* SharePoint server 2016 Enterprise
+* Program SharePoint Server 2016 Standard
+* SharePoint Server 2016 Enterprise
 
-### <a name="things-to-keep-in-mind"></a>Warto pamiętać o
+### <a name="things-to-keep-in-mind"></a>Kwestie, które należy wziąć pod uwagę
 
-Korzystając z udostępnionego klastra na dysku jako dowolną warstwę aplikacji następnie nie będziesz mógł używać replikacji usługi Site Recovery do replikowania tych maszyn wirtualnych. Możesz korzystać z natywnych replikacji udostępniany przez aplikację, a następnie użyć [planu odzyskiwania](site-recovery-create-recovery-plans.md) w tryb failover wszystkich warstwach.
+Jeśli w aplikacji jest używany udostępniony klaster oparty na dyskach, nie będzie można używać replikacji Site Recovery do replikowania tych maszyn wirtualnych. Możesz użyć natywnej replikacji dostarczonej przez aplikację, a następnie użyć [planu odzyskiwania](site-recovery-create-recovery-plans.md) w celu przełączenia w tryb failover wszystkich warstw.
 
 ## <a name="replicating-virtual-machines"></a>Replikowanie maszyn wirtualnych
 
-Postępuj zgodnie z [Niniejsze wskazówki](site-recovery-vmware-to-azure.md) do uruchamiania replikacji maszyny wirtualnej na platformie Azure.
+Postępuj zgodnie z [poniższymi wskazówkami](site-recovery-vmware-to-azure.md) , aby rozpocząć replikację maszyny wirtualnej na platformie Azure.
 
-* Po zakończeniu replikacji, upewnij się, przejdź do każdej maszyny wirtualnej dla każdej warstwy i wybierz ten sam zestaw dostępności w "zreplikowany element > Ustawienia > Właściwości > obliczenia i sieć". Na przykład jeśli 3 maszyn wirtualnych warstwy internetowej, upewnij się, że wszystkie 3 maszyny wirtualne są skonfigurowane jako część ten sam zestaw dostępności w usłudze Azure.
+* Po zakończeniu replikacji upewnij się, że przejdziesz do każdej maszyny wirtualnej każdej warstwy i wybierz ten sam zestaw dostępności w obszarze "zreplikowane elementy > Ustawienia > Właściwości > obliczenia i sieć". Jeśli na przykład warstwa sieci Web ma 3 maszyny wirtualne, upewnij się, że wszystkie 3 maszyny wirtualne są skonfigurowane jako należące do tego samego zestawu dostępności na platformie Azure.
 
     ![Set-Availability-Set](./media/site-recovery-sharepoint/select-av-set.png)
 
-* Aby uzyskać wskazówki na temat ochrony usługi Active Directory i DNS, zobacz [chronić Active Directory i DNS](site-recovery-active-directory.md) dokumentu.
+* Aby uzyskać wskazówki dotyczące ochrony Active Directory i systemu DNS, zobacz [ochrona Active Directory i dokumentu DNS](site-recovery-active-directory.md) .
 
-* Aby uzyskać wskazówki na temat ochrony warstwy bazy danych uruchomione w programie SQL server, zapoznaj się [ochrona programu SQL Server](site-recovery-active-directory.md) dokumentu.
+* Wskazówki dotyczące ochrony warstwy bazy danych działającej w programie SQL Server można znaleźć w temacie [ochrona SQL Server](site-recovery-active-directory.md) dokumentu.
 
 ## <a name="networking-configuration"></a>Konfiguracja sieci
 
 ### <a name="network-properties"></a>Właściwości sieci
 
-* Dla aplikacji i maszyn wirtualnych warstwy internetowej należy skonfigurować ustawienia sieciowe w witrynie Azure portal, aby maszyny wirtualne Pobierz podłączone z odpowiednią siecią odzyskiwania po awarii po włączeniu trybu failover.
+* W przypadku maszyn wirtualnych aplikacji i warstwy sieci Web Skonfiguruj ustawienia sieci w Azure Portal tak, aby maszyny wirtualne były dołączone do odpowiedniej sieci DR po przejściu w tryb failover.
 
-    ![Wybierz sieć](./media/site-recovery-sharepoint/select-network.png)
-
-
-* Jeśli używasz statycznych adresów IP, a następnie określ adres IP, który chcesz, aby maszyna wirtualna w **docelowy adres IP** pola
-
-    ![Ustawianie statycznego adresu IP](./media/site-recovery-sharepoint/set-static-ip.png)
-
-### <a name="dns-and-traffic-routing"></a>Usługi DNS i Routing ruchu
-
-Dla lokacji, z Internetem [Tworzenie profilu usługi Traffic Manager typu "Priority"](../traffic-manager/traffic-manager-create-profile.md) w subskrypcji platformy Azure. A następnie skonfiguruj DNS i usługi Traffic Manager profil w następujący sposób.
+    ![Wybieranie sieci](./media/site-recovery-sharepoint/select-network.png)
 
 
-| **Where** | **Element źródłowy** | **Docelowy**|
+* Jeśli używasz statycznego adresu IP, określ adres IP, który ma być pobierany przez maszynę wirtualną w polu **docelowy adres IP** .
+
+    ![Ustaw statyczny adres IP](./media/site-recovery-sharepoint/set-static-ip.png)
+
+### <a name="dns-and-traffic-routing"></a>Routing DNS i ruch sieciowy
+
+W przypadku witryn mających dostęp do Internetu [Utwórz profil Traffic Manager typu "Priority"](../traffic-manager/traffic-manager-create-profile.md) w subskrypcji platformy Azure. A następnie skonfiguruj profil DNS i Traffic Manager w następujący sposób.
+
+
+| **Where** | **Element źródłowy** | **Obiektów**|
 | --- | --- | --- |
-| Publiczna usługa DNS | Publiczna usługa DNS dla witryny programu SharePoint <br/><br/> Przykład: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
-| DNS w środowisku lokalnym | sharepointonprem.contoso.com | Publiczny adres IP w farmie w środowisku lokalnym |
+| Publiczna usługa DNS | Publiczna usługa DNS dla witryn programu SharePoint <br/><br/> Np.: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
+| Lokalna usługa DNS | sharepointonprem.contoso.com | Publiczny adres IP w farmie lokalnej |
 
 
-W profilu usługi Traffic Manager [tworzenie punktów końcowych podstawowymi i odzyskiwania](../traffic-manager/traffic-manager-configure-priority-routing-method.md). Użyj zewnętrzny punkt końcowy dla punktu końcowego w lokalnych i publiczny adres IP dla punktu końcowego platformy Azure. Upewnij się, że priorytet jest wyższa do punktu końcowego w środowisku lokalnym.
+W profilu Traffic Manager [Utwórz podstawowy i punkt końcowy odzyskiwania](../traffic-manager/traffic-manager-configure-priority-routing-method.md). Użyj zewnętrznego punktu końcowego dla lokalnego punktu końcowego i publicznego adresu IP dla punktu końcowego platformy Azure. Upewnij się, że priorytet jest ustawiony powyżej lokalnego punktu końcowego.
 
-Hostowanie strony testowej na określonym porcie (np. 800) w warstwie sieci web programu SharePoint, w kolejności dla usługi Traffic Manager próbę automatycznego wykrycia dostępności wpis w tryb failover. To obejście tego problemu w przypadku, gdy nie można włączyć anonimowego uwierzytelniania na żadnym z witryn programu SharePoint.
+Hostowanie strony testowej na określonym porcie (na przykład 800) w warstwie sieci Web programu SharePoint w celu Traffic Manager automatycznego wykrywania dostępności po przejściu w tryb failover. Jest to obejście w przypadku, gdy nie można włączyć uwierzytelniania anonimowego w żadnej z witryn programu SharePoint.
 
-[Konfigurowanie profilu usługi Traffic Manager](../traffic-manager/traffic-manager-configure-priority-routing-method.md) za pomocą poniższych ustawień.
+[Skonfiguruj profil Traffic Manager](../traffic-manager/traffic-manager-configure-priority-routing-method.md) przy użyciu poniższych ustawień.
 
-* Metody routingu — "Priority"
-* Czas wygaśnięcia (TTL) — 30 sekund DNS
-* Ustawienia monitora punktu końcowego — po włączeniu uwierzytelniania anonimowego, można udostępnić punkt końcowy określonej witryny sieci Web. Alternatywnie można użyć strony testowej na określonym porcie (np. 800).
+* Metoda routingu — "priorytet"
+* Czas wygaśnięcia (TTL) DNS — "30 s"
+* Ustawienia monitora punktu końcowego — Jeśli można włączyć uwierzytelnianie anonimowe, możesz nadać konkretnemu punktowi końcowemu witryny sieci Web. Lub można użyć strony testowej na określonym porcie (na przykład 800).
 
-## <a name="creating-a-recovery-plan"></a>Trwa tworzenie planu odzyskiwania
+## <a name="creating-a-recovery-plan"></a>Tworzenie planu odzyskiwania
 
-Plan odzyskiwania umożliwia sekwencjonowania pracy awaryjnej w różnych warstwach aplikacji wielowarstwowej, dlatego utrzymania spójności aplikacji. Wykonaj poniższe kroki, podczas tworzenia planu odzyskiwania w przypadku aplikacji sieci web z wieloma warstwami. [Dowiedz się więcej na temat tworzenia planu odzyskiwania](site-recovery-runbook-automation.md#customize-the-recovery-plan).
+Plan odzyskiwania umożliwia sekwencjonowanie trybu failover dla różnych warstw w aplikacji wielowarstwowej, w związku z czym zachowanie spójności aplikacji. Postępuj zgodnie z poniższymi instrukcjami podczas tworzenia planu odzyskiwania dla wielowarstwowej aplikacji sieci Web. [Dowiedz się więcej na temat tworzenia planu odzyskiwania](site-recovery-runbook-automation.md#customize-the-recovery-plan).
 
-### <a name="adding-virtual-machines-to-failover-groups"></a>Dodawanie maszyn wirtualnych do grupy trybu failover
+### <a name="adding-virtual-machines-to-failover-groups"></a>Dodawanie maszyn wirtualnych do grup trybu failover
 
-1. Przez dodanie aplikacji i maszyn wirtualnych warstwy internetowej, należy utworzyć plan odzyskiwania.
-2. Kliknij przycisk "Dostosuj", aby pogrupować maszyny wirtualne. Domyślnie wszystkie maszyny wirtualne są częścią "Grupa 1".
+1. Utwórz plan odzyskiwania, dodając maszyny wirtualne aplikacji i warstwy sieci Web.
+2. Kliknij przycisk "Dostosuj", aby zgrupować maszyny wirtualne. Domyślnie wszystkie maszyny wirtualne są częścią grupy 1.
 
-    ![Dostosuj jednostki Uzależnionej](./media/site-recovery-sharepoint/rp-groups.png)
+    ![Dostosuj RP](./media/site-recovery-sharepoint/rp-groups.png)
 
-3. Utworzyć inną grupę (Grupa 2) i przenoszenie maszyn wirtualnych warstwy internetowej do nowej grupy. Maszyn wirtualnych do warstwy aplikacji powinna być częścią "Grupa 1" i maszyn wirtualnych warstwy internetowej powinna być częścią "Grupa 2". Ma to upewnij się, że rozruch maszyny wirtualne warstwy aplikacji się najpierw następuje maszyn wirtualnych warstwy internetowej.
+3. Utwórz kolejną grupę (Grupa 2) i Przenieś maszyny wirtualne warstwy internetowej do nowej grupy. Maszyny wirtualne warstwy aplikacji powinny należeć do grupy "Grupa 1", a maszyny wirtualne warstwy sieci Web powinny należeć do grupy "Grupa 2". Jest to konieczne, aby upewnić się, że maszyny wirtualne warstwy aplikacji są uruchamiane najpierw przez maszyny wirtualne warstwy sieci Web.
 
 
 ### <a name="adding-scripts-to-the-recovery-plan"></a>Dodawanie skryptów do planu odzyskiwania
 
-Najczęściej używane skryptów usługi Azure Site Recovery można wdrożyć na koncie usługi Automation, klikając przycisk "Wdróż na platformie Azure" poniżej. Korzystając z dowolnego skryptu opublikowane, upewnij się, że należy postępować zgodnie ze wskazówkami w skrypcie.
+Najczęściej używane skrypty Azure Site Recovery można wdrożyć na koncie usługi Automation, klikając przycisk "wdróż na platformie Azure" poniżej. W przypadku korzystania z dowolnego opublikowanego skryptu upewnij się, że zostały podane wskazówki w skrypcie.
 
 [![Wdrażanie na platformie Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
-1. Dodać skrypt akcję wstępną "Grupa 1", aby przełączyć awaryjnie grupy dostępności programu SQL. Użyj skryptu "ASR-SQL-FailoverAG" opublikowany w przykładowych skryptach. Upewnij się, zgodnie z wytycznymi w skrypcie i wprowadź wymagane zmiany w skrypcie, odpowiednio.
+1. Dodaj skrypt przed akcją w grupie dostępności programu SQL do trybu failover. Użyj skryptu "ASR-SQL-FailoverAG" opublikowanego w przykładowych skryptach. Upewnij się, że postępuj zgodnie ze wskazówkami w skrypcie i wprowadź odpowiednio wymagane zmiany w skrypcie.
 
     ![Add-AG-Script-Step-1](./media/site-recovery-sharepoint/add-ag-script-step1.png)
 
     ![Add-AG-Script-Step-2](./media/site-recovery-sharepoint/add-ag-script-step2.png)
 
-2. Dodaj skrypt akcji post w celu dołączenia modułu równoważenia obciążenia w trybie za pośrednictwem maszyn wirtualnych warstwy internetowej (Grupa 2). Użyj skryptu "ASR-AddSingleLoadBalancer" opublikowany w przykładowych skryptach. Upewnij się, zgodnie z wytycznymi w skrypcie i wprowadź wymagane zmiany w skrypcie, odpowiednio.
+2. Dodaj skrypt akcji po stronie w celu dołączenia modułu równoważenia obciążenia do maszyn wirtualnych w trybie failover w warstwie sieci Web (Grupa 2). Użyj skryptu "ASR-AddSingleLoadBalancer" opublikowanego w przykładowych skryptach. Upewnij się, że postępuj zgodnie ze wskazówkami w skrypcie i wprowadź odpowiednio wymagane zmiany w skrypcie.
 
     ![Add-LB-Script-Step-1](./media/site-recovery-sharepoint/add-lb-script-step1.png)
 
     ![Add-LB-Script-Step-2](./media/site-recovery-sharepoint/add-lb-script-step2.png)
 
-3. Dodaj to krok wykonywany ręcznie do aktualizowania rekordów DNS, aby wskazywał nową farmę na platformie Azure.
+3. Dodaj krok ręczny, aby zaktualizować rekordy DNS w celu wskazywania nowej farmy na platformie Azure.
 
-    * W przypadku witryn Internetem żadnych aktualizacji DNS są wymagane po pracy awaryjnej. Wykonaj kroki opisane w sekcji "Wskazówki dotyczące sieci", aby skonfigurować usługi Traffic Manager. Jeśli profil usługi Traffic Manager została skonfigurowana zgodnie z opisem w poprzedniej sekcji, należy dodać skrypt, aby otworzyć port fikcyjnego (800 w przykładzie) na maszynie Wirtualnej platformy Azure.
+    * W przypadku witryn mających dostęp do Internetu żadne aktualizacje DNS nie są wymagane po przejściu w tryb failover. Aby skonfigurować Traffic Manager, wykonaj kroki opisane w sekcji "wskazówki dotyczące sieci". Jeśli profil Traffic Manager został skonfigurowany zgodnie z opisem w poprzedniej sekcji, Dodaj skrypt, aby otworzyć fikcyjny port (800 w przykładzie) na maszynie wirtualnej platformy Azure.
 
-    * W przypadku wewnętrznych witryn firmowych umożliwiający dostęp do Internetu należy dodać krok wykonywany ręcznie, aby zaktualizować rekord DNS, aby wskazywał nowy sieci Web warstwy maszyny Wirtualnej adresu IP modułu równoważenia obciążenia.
+    * W przypadku wewnętrznych witryn dodanych należy dodać krok ręczny, aby zaktualizować rekord DNS w taki sposób, aby wskazywał nowy adres IP modułu równoważenia obciążenia dla warstwy sieci Web.
 
-4. Dodaj to krok wykonywany ręcznie, aby przywrócić aplikację wyszukiwania z kopii zapasowej lub uruchomić nową usługę wyszukiwania.
+4. Dodaj ręczny krok do przywracania aplikacji wyszukiwania z kopii zapasowej lub uruchamiania nowej usługi wyszukiwania.
 
-5. Przywracanie aplikacji usługi wyszukiwania z kopii zapasowej, wykonaj poniższe kroki.
+5. Aby przywrócić aplikację usługi wyszukiwania z kopii zapasowej, wykonaj poniższe kroki.
 
-    * Ta metoda zakłada się, czy przed zdarzeniem krytycznego wykonano kopię zapasową aplikacji usługi wyszukiwania i kopii zapasowej jest dostępna w lokacji odzyskiwania po awarii.
-    * Łatwo można to osiągnąć przez planowanie tworzenia kopii zapasowej (na przykład raz dziennie) i umieszczenie kopii zapasowej lokacji odzyskiwania po awarii za pomocą procedury kopiowania. Kopiuj procedury mogą obejmować inicjowanych przez skrypty programów, takich jak narzędzia AzCopy (kopiowania na platformę Azure) lub konfigurowania DFSR (pliku usługi replikacji rozproszonego).
-    * Po farmy programu SharePoint jest uruchomiona, przejdź administracji centralnej, "Kopia zapasowa i przywracanie" i wybierz opcję przywracania. Przywracanie interrogates określona lokalizacja kopii zapasowej (może być konieczne zaktualizowanie wartości). Wybierz kopię zapasową aplikacji usługi wyszukiwania, który chcesz przywrócić.
-    * Wyszukiwanie zostanie przywrócony. Należy pamiętać, że przywracanie spodziewa się znaleźć takie same topologii (tej samej liczby serwerów) oraz takie same twarde litery dysków przypisane do tych serwerów. Aby uzyskać więcej informacji, zobacz ["Aplikacja usługi wyszukiwania przywracania w programie SharePoint 2013"](https://technet.microsoft.com/library/ee748654.aspx) dokumentu.
+    * W tej metodzie przyjęto założenie, że kopia zapasowa aplikacji Search Service była wykonywana przed katastrofalnym zdarzeniem i że kopia zapasowa jest dostępna w lokacji DR.
+    * Można to łatwo osiągnąć przez zaplanowanie kopii zapasowej (na przykład raz dziennie) i użycie procedury kopiowania w celu umieszczenia kopii zapasowej w lokacji odzyskiwania po awarii. Procedury kopiowania mogą obejmować programy skryptów, takie jak AzCopy (kopia platformy Azure) lub Konfigurowanie usługi DFSR (replikacja usług plików rozproszonych).
+    * Teraz, gdy farma programu SharePoint jest uruchomiona, przejdź do witryny Administracja centralna, "kopia zapasowa i przywracanie" i wybierz pozycję Przywróć. Przywracanie interrogates określoną lokalizację kopii zapasowej (może być konieczne zaktualizowanie wartości). Wybierz kopię zapasową aplikacji Search Service, którą chcesz przywrócić.
+    * Wyszukiwanie zostało przywrócone. Należy pamiętać, że przywracanie oczekuje na znalezienie tej samej topologii (tej samej liczby serwerów) i tych samych liter dysków twardych przypisanych do tych serwerów. Aby uzyskać więcej informacji, zobacz sekcję ["Przywracanie aplikacji usługi Search w programie SharePoint 2013"](https://technet.microsoft.com/library/ee748654.aspx) .
 
 
-6. Począwszy od nowej aplikacji usługi wyszukiwania, wykonaj poniższe kroki.
+6. Aby rozpocząć pracę z nową aplikacją usługi wyszukiwania, wykonaj poniższe czynności.
 
-    * Ta metoda zakłada, że kopię zapasową bazy danych "Administracja wyszukiwania" jest dostępna, w lokacji odzyskiwania po awarii.
-    * Ponieważ innych baz danych aplikacji usługi wyszukiwania nie są replikowane, muszą zostać ponownie utworzone. Aby to zrobić, przejdź do witryny Administracja centralna i usuwania aplikacji usługi wyszukiwania. Na wszystkich serwerach, które hostują indeksu wyszukiwania Usuń pliki indeksu.
-    * Ponownie utwórz aplikację usługi wyszukiwania i ponownie powstaje baz danych. Zaleca się mieć przygotowany skrypt, który tworzy ponownie tej aplikacji usługi, ponieważ nie jest możliwe wykonanie wszystkich akcji za pomocą graficznego interfejsu użytkownika. Na przykład lokalizacji dysku indeksu i konfigurowania topologię wyszukiwania są możliwe tylko przy użyciu poleceń cmdlet programu PowerShell programu SharePoint. Użyj polecenia cmdlet programu Windows PowerShell SPEnterpriseSearchServiceApplication przywracania i określ dziennikiem i replikowane Administracja wyszukiwania w bazie danych, Search_Service__DB. To polecenie cmdlet zapewnia konfiguracji wyszukiwania, schemat, właściwości zarządzane, reguł i źródeł i tworzy domyślny zestaw innych składników.
-    * Gdy aplikacja usługi wyszukiwania ma zostać utworzona ponownie, należy uruchomić pełne przeszukiwanie dla każdego źródła zawartości przywrócić usługę wyszukiwania. Niektóre informacje analizy z farmy serwerów lokalnych, takich jak zalecenia dotyczące wyszukiwania zostaną utracone.
+    * W tej metodzie przyjęto założenie, że kopia zapasowa bazy danych "Search Administration" jest dostępna w witrynie odzyskiwania po awarii.
+    * Ponieważ inne bazy danych aplikacji Search Service nie są replikowane, muszą zostać ponownie utworzone. W tym celu przejdź do okna Administracja centralna i Usuń aplikację Search Service. Na każdym serwerze, który hostuje indeks wyszukiwania, Usuń pliki indeksów.
+    * Utwórz ponownie aplikację Search Service i ponownie utworzy bazy danych. Zaleca się utworzenie przygotowanego skryptu, który odtwarza tę aplikację usługi, ponieważ nie jest możliwe wykonywanie wszystkich akcji za pośrednictwem graficznego interfejsu użytkownika. Na przykład ustawienie lokalizacji dysku indeksu i skonfigurowanie topologii wyszukiwania jest możliwe tylko przy użyciu poleceń cmdlet programu SharePoint PowerShell. Użyj polecenia cmdlet Restore-SPEnterpriseSearchServiceApplication programu Windows PowerShell i określ bazę danych z dziennikami i replikacją, Search_Service__DB. To polecenie cmdlet zapewnia konfigurację wyszukiwania, schemat, zarządzane właściwości, reguły i źródła, a następnie tworzy domyślny zestaw innych składników.
+    * Po ponownym utworzeniu aplikacji Search Service należy uruchomić pełne przeszukiwanie dla każdego źródła zawartości, aby przywrócić Search Service. Niektóre informacje o analizie są tracone z farmy lokalnej, na przykład na podstawie zaleceń dotyczących wyszukiwania.
 
-7. Po wykonaniu wszystkich kroków, Zapisz plan odzyskiwania i planu odzyskiwania końcowy będzie wyglądał jak poniżej.
+7. Po zakończeniu wszystkich kroków Zapisz plan odzyskiwania, a końcowy plan odzyskiwania będzie wyglądać następująco.
 
-    ![Zapisane RP](./media/site-recovery-sharepoint/saved-rp.png)
+    ![Zapisano RP](./media/site-recovery-sharepoint/saved-rp.png)
 
-## <a name="doing-a-test-failover"></a>Podczas testowania trybu failover
-Postępuj zgodnie z [Niniejsze wskazówki](site-recovery-test-failover-to-azure.md) celu testowy tryb failover.
+## <a name="doing-a-test-failover"></a>Przeprowadzenie testu pracy w trybie failover
+Postępuj zgodnie z [tymi wskazówkami](site-recovery-test-failover-to-azure.md) , aby przeprowadzić test pracy w trybie failover.
 
-1.  Przejdź do witryny Azure portal i wybierz swój magazyn usług odzyskiwania.
-2.  Kliknij w planie odzyskiwania, utworzony dla aplikacji programu SharePoint.
-3.  Kliknij pozycję "Testowanie trybu Failover".
-4.  Wybierz punkt odzyskiwania i siecią wirtualną platformy Azure, aby rozpocząć proces testu trybu failover.
-5.  Po skonfigurowaniu dodatkowej środowiska można wykonywać swoje operacji sprawdzania poprawności.
-6.  Po zakończeniu operacji sprawdzania poprawności, kliknij pozycję "Wyczyść test pracy awaryjnej" w planie odzyskiwania i testowe środowisko trybu failover jest czyszczona.
+1.  Przejdź do Azure Portal i wybierz magazyn usługi Recovery Service.
+2.  Kliknij plan odzyskiwania utworzony dla aplikacji programu SharePoint.
+3.  Kliknij pozycję "test pracy w trybie failover".
+4.  Wybierz pozycję punkt odzyskiwania i Sieć wirtualna platformy Azure, aby rozpocząć proces testowego przełączania do trybu failover.
+5.  Gdy środowisko pomocnicze będzie działać, można wykonać walidację.
+6.  Po zakończeniu walidacji można kliknąć pozycję "Oczyść test pracy w trybie failover" w planie odzyskiwania i wyczyścić środowisko testowego trybu failover.
 
-Wskazówki dotyczące przeprowadzasz test pracy awaryjnej dla usługi AD DNS, można znaleźć [testowanie trybu failover zagadnienia dotyczące usługi AD DNS i](site-recovery-active-directory.md#test-failover-considerations) dokumentu.
+Aby uzyskać wskazówki dotyczące testowania pracy w trybie failover dla usług AD i DNS, zobacz [uwagi dotyczące testowania pracy w trybie failover w przypadku dokumentów usług AD i DNS](site-recovery-active-directory.md#test-failover-considerations) .
 
-Aby uzyskać wskazówki dotyczące przeprowadzasz test trybu failover dla SQL zawsze włączone grupy dostępności, zapoznaj się [przeprowadzania odzyskiwania po awarii w aplikacji za pomocą usługi Azure Site Recovery i wykonywania testu trybu failover](site-recovery-sql.md#disaster-recovery-of-application) dokumentu.
+Aby uzyskać wskazówki dotyczące przeprowadzania testowej pracy w trybie failover dla zawsze włączonych grup dostępności programu SQL Server, zapoznaj się z tematem [wykonywanie operacji odzyskiwania po awarii aplikacji z Azure Site Recovery i](site-recovery-sql.md#disaster-recovery-of-an-application)
 
-## <a name="doing-a-failover"></a>Przełączeniem w tryb failover
-Postępuj zgodnie z [Niniejsze wskazówki](site-recovery-failover.md) dla przełączeniem w tryb failover.
+## <a name="doing-a-failover"></a>Przełączenie w tryb failover
+Postępuj zgodnie z [tymi wskazówkami](site-recovery-failover.md) , aby wykonać pracę w trybie failover.
 
-1.  Przejdź do witryny Azure portal i wybierz swój magazyn usługi Recovery Services.
-2.  Kliknij w planie odzyskiwania, utworzony dla aplikacji programu SharePoint.
-3.  Kliknij pozycję "Failover".
-4.  Wybierz punkt odzyskiwania, aby rozpocząć proces trybu failover.
+1.  Przejdź do Azure Portal i wybierz swój magazyn Recovery Services.
+2.  Kliknij plan odzyskiwania utworzony dla aplikacji programu SharePoint.
+3.  Kliknij pozycję "praca awaryjna".
+4.  Wybierz pozycję punkt odzyskiwania, aby rozpocząć proces przełączania do trybu failover.
 
-## <a name="next-steps"></a>Kolejne kroki
-Możesz dowiedzieć się więcej [replikacji z innych aplikacji](site-recovery-workload.md) przy użyciu Site Recovery.
+## <a name="next-steps"></a>Następne kroki
+Więcej informacji na temat [replikowania innych aplikacji](site-recovery-workload.md) można uzyskać przy użyciu Site Recovery.

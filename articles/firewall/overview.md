@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 7/10/2019
+ms.date: 07/19/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 2894af5f253e20b32dde0ecc5f658edff4814149
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 1349e07662504564fdf48a53f24525c4a16aa477
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868424"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326898"
 ---
 # <a name="what-is-azure-firewall"></a>Co to jest usługa Azure Firewall?
 
@@ -80,7 +80,7 @@ Ruch sieciowy przychodzący do publicznego adresu IP zapory jest przetwarzany pr
 ## <a name="multiple-public-ip-addresses"></a>Wiele publicznych adresów IP
 
 > [!IMPORTANT]
-> Zapora platformy Azure z wieloma publicznymi adresami IP jest dostępna za pośrednictwem Azure PowerShell, interfejsu wiersza polecenia platformy Azure, REST i szablonów. Interfejs użytkownika portalu jest dodawany do regionów przyrostowo i będzie dostępny we wszystkich regionach po zakończeniu wdrażania.
+> Zapora platformy Azure z wieloma publicznymi adresami IP jest dostępna za pośrednictwem Azure Portal, Azure PowerShell, interfejsu wiersza polecenia platformy Azure, REST i szablonów.
 
 
 Za pomocą zapory można skojarzyć wiele publicznych adresów IP (do 100).

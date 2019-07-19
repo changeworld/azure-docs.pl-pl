@@ -1,13 +1,14 @@
 ---
-title: Jak działa aplikacja zgody | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej na temat działania usługi Azure AD platformy wyrażania zgody, aby zobaczyć, jak możesz użyć go podczas tworzenia aplikacji w usłudze Azure AD
+title: Jak działa zgoda aplikacji | Microsoft Docs
+description: Dowiedz się więcej o tym, jak działa struktura zgody usługi Azure AD, aby zobaczyć, jak można jej używać podczas tworzenia aplikacji w usłudze Azure AD
 services: active-directory
 documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: develop
+ms.custom: aaddev
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,23 +16,23 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 766b7572ed54cc194dc28fce1ad7e4979f1af5a5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c5ccdce6ac9e3107e0cf4dd4b68b49918fffeae
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540133"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68324601"
 ---
-# <a name="how-application-consent-works"></a>Jak zgody dla aplikacji działa
+# <a name="how-application-consent-works"></a>Jak działa zgoda aplikacji
 
-W tym artykule jest ułatwią Ci dowiedzieć się więcej na temat sposobu działania platformy wyrażania zgody w usłudze Azure AD, dzięki czemu aplikacje można tworzyć bardziej efektywnie.
+Ten artykuł ma na celu ułatwienie Dowiedz się więcej o tym, jak działa struktura zgody na usługę Azure AD, dzięki czemu możesz bardziej efektywnie opracowywać aplikacje.
 
 ## <a name="recommended-documents"></a>Zalecane dokumenty
 
-- Pobierz ogólna wiedza o [sposób wyrażania zgody umożliwia właścicielom zasobów umożliwiają zarządzanie dostępem aplikacji do zasobów](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#consent).
-- Szczegółowe omówienie [jak platformy wyrażania zgody w usłudze Azure AD implementuje zgody](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
-- Aby uzyskać bardziej szczegółowe informacje, Dowiedz się, [użycia platformy wyrażania zgody aplikacji z wieloma dzierżawami](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) do zaimplementowania "user" i "admin" zgody, obsługa więcej zaawansowanych wzorce aplikacji wielowarstwowych.
-- Aby uzyskać bardziej szczegółowe informacje, Dowiedz się, [jak zgody jest obsługiwana na poziomie warstwy protokołu OAuth 2.0 w przepływie przyznawania kodu autoryzacji.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code#request-an-authorization-code)
+- Zapoznaj się z ogólnymi informacjami o tym, [jak zgoda Właściciel zasobu może zarządzać dostępem aplikacji do zasobów](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#consent).
+- Zapoznaj się z omówieniem krok po kroku [na temat sposobu, w jaki platforma zgody usługi Azure AD implementuje wyrażanie zgody](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
+- Aby uzyskać większą głębokość, Dowiedz się, w [jaki sposób aplikacja wielodostępna może używać struktury zgody](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) do implementowania zgody "User" i "admin", co pozwala na bardziej zaawansowane wzorce aplikacji wielowarstwowej.
+- Aby uzyskać więcej informacji, Dowiedz się, [jak zgoda jest obsługiwana w warstwie protokołu OAuth 2,0 podczas przepływu przydzielenia kodu autoryzacji.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code#request-an-authorization-code)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 [AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

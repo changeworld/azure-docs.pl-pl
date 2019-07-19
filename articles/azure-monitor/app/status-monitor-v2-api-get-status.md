@@ -1,6 +1,6 @@
 ---
-title: 'Dokumentacja interfejsu API w wersji 2 usługi Azure Monitor stanu: Pobierz stan | Dokumentacja firmy Microsoft'
-description: Dokumentacja interfejsu API w wersji 2 Monitor stanu. Get-ApplicationInsightsMonitoringStatus. Monitorowanie wydajności witryny sieci Web bez konieczności ponownego wdrażania witryny sieci Web. Działa z aplikacjami internetowymi platformy ASP.NET hostowanymi lokalnie na maszynach wirtualnych lub platformie Azure.
+title: 'Dokumentacja interfejsu API platformy Azure monitor stanu v2: Pobierz stan | Microsoft Docs'
+description: Dokumentacja interfejsu API monitor stanu v2. Get-ApplicationInsightsMonitoringStatus. Monitorowanie wydajności witryny sieci Web bez ponownego wdrażania witryny sieci Web. Działa z aplikacjami internetowymi platformy ASP.NET hostowanymi lokalnie na maszynach wirtualnych lub platformie Azure.
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -12,27 +12,22 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: e579db587d5f56aecd60f584ea4805dd4ac1bf98
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: b298d73620990dd8f6c6577818adaef9788122e9
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718360"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326321"
 ---
-# <a name="status-monitor-v2-api-get-applicationinsightsmonitoringstatus-v040-alpha"></a>Interfejs API w wersji 2 Monitora stanu: Get-ApplicationInsightsMonitoringStatus (v0.4.0-alpha)
+# <a name="status-monitor-v2-api-get-applicationinsightsmonitoringstatus"></a>Interfejs API monitor stanu v2: Get-ApplicationInsightsMonitoringStatus
 
-W tym artykule opisano polecenia cmdlet, które jest członkiem [modułu Az.ApplicationMonitor PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
-
-> [!IMPORTANT]
-> Monitor stanu w wersji 2 jest obecnie w publicznej wersji zapoznawczej.
-> Tej wersji zapoznawczej jest oferowana bez umowy dotyczącej poziomu usług, i firma Microsoft nie jest to zalecane w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, a niektóre mogą mieć ograniczone możliwości.
-> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+W tym artykule opisano polecenie cmdlet, które jest członkiem [modułu programu PowerShell AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
 ## <a name="description"></a>Opis
 
-To polecenie cmdlet udostępnia informacje dotyczące rozwiązywania problemów dotyczące Monitora stanu.
-Użyj tego polecenia cmdlet, aby zbadać stan monitorowania wersję modułu programu PowerShell i sprawdź uruchomionego procesu.
-To polecenie cmdlet będzie zgłaszać informacje o wersji i informacji o plikach kluczy, wymaganych na potrzeby monitorowania.
+To polecenie cmdlet zawiera informacje dotyczące rozwiązywania problemów dotyczących monitor stanu.
+Użyj tego polecenia cmdlet, aby sprawdzić stan monitorowania, wersję modułu programu PowerShell i sprawdzić uruchomiony proces.
+To polecenie cmdlet będzie zgłaszać informacje o wersji i informacje o plikach kluczy wymaganych do monitorowania.
 
 > [!IMPORTANT] 
 > To polecenie cmdlet wymaga sesji programu PowerShell z uprawnieniami administratora.
@@ -41,7 +36,7 @@ To polecenie cmdlet będzie zgłaszać informacje o wersji i informacji o plikac
 
 ### <a name="example-application-status"></a>Przykład: Stan aplikacji
 
-Uruchom polecenie `Get-ApplicationInsightsMonitoringStatus` do wyświetlania stanu monitorowania witryn sieci web.
+Uruchom polecenie `Get-ApplicationInsightsMonitoringStatus` , aby wyświetlić stan monitorowania witryn sieci Web.
 
 ```
 Machine Identifier:
@@ -78,17 +73,17 @@ ProcessId              : 5184
 AppAlreadyInstrumented : true
 ```
 
-W tym przykładzie;
-- **Identyfikator komputera** jest anonimowy identyfikator używany do unikatowego identyfikowania serwera. Jeśli utworzysz żądanie obsługi, będziemy potrzebować tego Identyfikatora można znaleźć dzienniki serwera.
-- **Domyślna witryna sieci Web** zostanie zatrzymana w usługach IIS
-- **DemoWebApp111** została uruchomiona w usługach IIS, ale nie odebrał żadnych żądań. Ten raport przedstawia to, że nie ma żadnych uruchomionych procesów (ProcessId: nie znaleziono).
-- **DemoWebApp222** działa i jest monitorowana (Instrumented: true). Na podstawie konfiguracji użytkownika, klucz Instrumentacji xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx123 zostały dopasowane do elementu dla tej lokacji.
-- **DemoWebApp333** czy został ręcznie instrumentowany przy użyciu zestawu SDK usługi Application Insights. Monitor stanu wykrył zestaw SDK i nie będzie monitorować tej lokacji.
+W tym przykładzie:
+- **Identyfikator maszyny** to anonimowy identyfikator używany do jednoznacznego identyfikowania Twojego serwera. Jeśli utworzysz żądanie pomocy technicznej, będziemy potrzebować tego identyfikatora, aby znaleźć dzienniki dla Twojego serwera.
+- **Domyślna witryna sieci Web** jest zatrzymana w usługach IIS
+- **DemoWebApp111** został uruchomiony w usługach IIS, ale nie otrzymał żadnych żądań. Ten raport pokazuje, że nie ma uruchomionego procesu (identyfikator procesu: nie znaleziono).
+- **DemoWebApp222** działa i jest monitorowany (Instrumentacja: true). W oparciu o konfigurację użytkownika klucz Instrumentacji xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx123 został dopasowany do tej witryny.
+- **DemoWebApp333** został ręcznie Instrumentacja przy użyciu zestawu SDK Application Insights. Monitor stanu wykrył zestaw SDK i nie będzie monitorował tej lokacji.
 
 
 ### <a name="example-powershell-module-information"></a>Przykład: Informacje o module programu PowerShell
 
-Uruchom polecenie `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` do wyświetlania informacji na temat bieżącego modułu:
+Uruchom polecenie `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` , aby wyświetlić informacje o bieżącym module:
 
 ```
 PS C:\> Get-ApplicationInsightsMonitoringStatus -PowerShellModule
@@ -140,9 +135,9 @@ ApplicationInsightsSdkPath (Exists: True)
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime\Microsoft.ApplicationInsights.dll
 ```
 
-### <a name="example-runtime-status"></a>Przykład: Stan czasu wykonywania
+### <a name="example-runtime-status"></a>Przykład: Stan środowiska uruchomieniowego
 
-Można sprawdzić procesu na komputerze instrumentowane, aby sprawdzić, czy wszystkie biblioteki DLL są ładowane. Jeśli działa monitorowania, co najmniej 12 biblioteki DLL powinny być załadowane.
+Możesz sprawdzić proces na komputerze z instrumentacją, aby sprawdzić, czy wszystkie biblioteki DLL zostały załadowane. Jeśli monitorowanie działa, należy załadować co najmniej 12 bibliotek DLL.
 
 Uruchom polecenie `Get-ApplicationInsightsMonitoringStatus -InspectProcess`:
 
@@ -182,33 +177,33 @@ listdlls64.exe -accepteula w3wp
 
 ### <a name="no-parameters"></a>(Brak parametrów)
 
-Domyślnie to polecenie cmdlet będzie zgłaszać stan monitorowania aplikacji sieci web.
-Użyj tej opcji, aby przejrzeć, jeśli aplikacja została pomyślnie.
-Możesz również przejrzeć którego klucz Instrumentacji został dopasowany do witryny.
+Domyślnie to polecenie cmdlet będzie zgłaszać stan monitorowania aplikacji sieci Web.
+Użyj tej opcji, aby sprawdzić, czy aplikacja została pomyślnie przeprowadzona.
+Możesz również sprawdzić, który klucz Instrumentacji został dopasowany do witryny.
 
 
 ### <a name="-powershellmodule"></a>-PowerShellModule
-**Opcjonalnie**. Raportowaniem numery wersji i ścieżki biblioteki DLL wymaganych na potrzeby monitorowania, należy użyć tego przełącznika.
-Użyj tej opcji, jeśli potrzebujesz do identyfikowania wersji dowolną biblioteką DLL, w tym zestaw SDK usługi Application Insights.
+**Opcjonalnie**. Użyj tego przełącznika, aby zgłosić numery wersji i ścieżki bibliotek DLL wymaganych do monitorowania.
+Użyj tej opcji, jeśli konieczne jest zidentyfikowanie wersji dowolnej biblioteki DLL, w tym zestawu SDK Application Insights.
 
 ### <a name="-inspectprocess"></a>-InspectProcess
 
-**Opcjonalnie**. Aby zgłosić, czy usługi IIS są uruchomione, należy użyć tego przełącznika.
-Również pobierze zewnętrznych narzędzi, aby ustalić, czy odpowiednie biblioteki DLL są ładowane w czasie wykonywania usług IIS.
+**Opcjonalnie**. Użyj tego przełącznika, aby zgłosić, czy usługi IIS są uruchomione.
+Zostaną również pobrane zewnętrzne narzędzia, aby określić, czy wymagane biblioteki DLL są ładowane do środowiska uruchomieniowego usług IIS.
 
 
-Jeśli ten proces nie powiedzie się z jakiegokolwiek powodu, możesz ręcznie uruchom następujące polecenia:
-- iisreset.exe /status
-- [handle64.exe](https://docs.microsoft.com/sysinternals/downloads/handle) w3wp -p | findstr /I "InstrumentationEngine sztucznej Inteligencji. ApplicationInsights"
-- [listdlls64.exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) w3wp | findstr /I "InstrumentationEngine AI ApplicationInsights"
+Jeśli ten proces nie powiedzie się z jakiegokolwiek powodu, można uruchomić następujące polecenia ręcznie:
+- iisreset. exe/status
+- [handle64. exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p w3wp | findstr/I "InstrumentationEngine AI. ApplicationInsights
+- [listdlls64. exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) w3wp | findstr/I "InstrumentationEngine AI ApplicationInsights"
 
 
 ### <a name="-force"></a>-Force
 
-**Opcjonalnie**. Używany tylko z InspectProcess. Aby pominąć monit użytkownika, który pojawia się przed są pobierane dodatkowe narzędzia, użyj tego przełącznika.
+**Opcjonalnie**. Używane tylko z InspectProcess. Użyj tego przełącznika, aby pominąć monit użytkownika, który pojawia się przed pobraniem dodatkowych narzędzi.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
- Wykonuj więcej zadań dzięki v2 Monitora stanu:
- - Użyj zapoznaj się z przewodnikiem [Rozwiązywanie problemów z](status-monitor-v2-troubleshoot.md) Monitora stanu w wersji 2.
+ Więcej informacji o monitor stanu v2:
+ - Skorzystaj z naszego przewodnika, aby [rozwiązywać problemy z](status-monitor-v2-troubleshoot.md) Monitor stanu v2.

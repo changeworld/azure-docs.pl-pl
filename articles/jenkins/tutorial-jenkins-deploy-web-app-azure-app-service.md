@@ -8,12 +8,12 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: 90f89f9ffb1d55e7621c87f168375251c78d9730
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 019c4a8f77f2664c68dcc6499fb2f27cc0d1447c
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60641832"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326927"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Samouczek: Wdrażanie z usługi GitHub do usługi Azure App Service przy użyciu funkcji ciągłej integracji i ciągłego wdrażania narzędzia Jenkins
 
@@ -61,7 +61,7 @@ Do ukończenia tego samouczka są potrzebne następujące elementy:
 
 1. Na karcie **Available** (Dostępne) wybierz następujące wtyczki:
 
-   - [Azure App Service](https://plugins.jenkins.io/azure-app-service)
+   - [Usługa Azure App Service](https://plugins.jenkins.io/azure-app-service)
    - [GitHub Branch Source](https://plugins.jenkins.io/github-branch-source)
    - [Environment Injector Plugin](https://plugins.jenkins.io/envinject) dla narzędzia Jenkins
    - [Azure Credentials](https://plugins.jenkins.io/azure-credentials)
@@ -122,7 +122,7 @@ Następnie utwórz jednostkę usługi platformy Azure, której narzędzie Jenkin
 
 ## <a name="create-service-principal"></a>Tworzenie jednostki usługi
 
-W dalszej sekcji utworzysz zadanie potoku narzędzia Jenkins, które kompiluje aplikację z usługi GitHub i wdraża ją w usłudze Azure App Service. Aby narzędzie Jenkins miało dostęp do platformy Azure bez konieczności wprowadzania poświadczeń, utwórz [jednostkę usługi](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) w usłudze Azure Active Directory dla narzędzia Jenkins. Jednostka usługi to osobna tożsamość, której narzędzie Jenkins może używać na potrzeby uwierzytelniania dostępu do zasobów platformy Azure. Aby utworzyć tę jednostkę usługi, uruchom polecenie interfejsu wiersza polecenia platformy Azure [**`az ad sp create-for-rbac`**](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) z poziomu lokalnego wiersza polecenia lub usługi Azure Cloud Shell, na przykład: 
+W dalszej sekcji utworzysz zadanie potoku narzędzia Jenkins, które kompiluje aplikację z usługi GitHub i wdraża ją w usłudze Azure App Service. Aby narzędzie Jenkins miało dostęp do platformy Azure bez konieczności wprowadzania poświadczeń, utwórz [jednostkę usługi](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) w usłudze Azure Active Directory dla narzędzia Jenkins. Jednostka usługi to osobna tożsamość, której narzędzie Jenkins może używać na potrzeby uwierzytelniania dostępu do zasobów platformy Azure. Aby utworzyć tę jednostkę usługi, uruchom polecenie interfejsu wiersza polecenia platformy Azure [ **`az ad sp create-for-rbac`** ](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) z poziomu lokalnego wiersza polecenia lub usługi Azure Cloud Shell, na przykład: 
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "yourAzureServicePrincipalName" --password yourSecurePassword
@@ -130,7 +130,7 @@ az ad sp create-for-rbac --name "yourAzureServicePrincipalName" --password yourS
 
 Upewnij się, że nazwa jednostki usługi jest podana w cudzysłowie. Utwórz także silne hasło zgodne z [regułami i ograniczeniami usługi Azure Active Directory dotyczącymi haseł](/azure/active-directory/active-directory-passwords-policy). Jeśli nie podasz hasła, interfejs wiersza polecenia platformy Azure utworzy hasło. 
 
-Oto dane wyjściowe wygenerowane przez polecenie **`create-for-rbac`**: 
+Oto dane wyjściowe wygenerowane przez polecenie **`create-for-rbac`** : 
 
 ```json
 {
@@ -162,14 +162,13 @@ Oto dane wyjściowe wygenerowane przez polecenie **`create-for-rbac`**:
 
    ![Dodawanie poświadczeń jednostki usługi platformy Azure](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-service-principal-credentials.png)
 
-   | Właściwość | Wartość | Opis | 
+   | Właściwość | Value | Opis | 
    |----------|-------|-------------| 
-   | **Subscription ID (Identyfikator subskrypcji)** | <*yourAzureSubscription-ID (Identyfikator Twojej subskrypcji platformy Azure)*> | Wartość identyfikatora GUID dla subskrypcji platformy Azure <p>**Porada**: jeśli nie znasz identyfikatora subskrypcji platformy Azure, uruchom następujące polecenie interfejsu wiersza polecenia platformy Azure z poziomu wiersza polecenia lub usługi Cloud Shell, a następnie użyj wartości identyfikatora GUID `id`: <p>`az account list` | 
-   | **Client ID (Identyfikator klienta)** | <*yourAzureServicePrincipal-ID (Identyfikator jednostki usługi platformy Azure)*> | Wartość identyfikatora GUID `appId` wygenerowanego wcześniej dla jednostki usługi platformy Azure | 
-   | **Client Secret (Wpis tajny klienta)** | <*yourSecurePassword (Hasło)*> | Wartość `password` lub „wpis tajny” określony dla jednostki usługi platformy Azure | 
-   | **Tenant ID (Identyfikator dzierżawy)** | <*yourAzureActiveDirectoryTenant-ID (Identyfikator dzierżawy usługi Azure Active Directory)*> | Wartość identyfikatora GUID `tenant` dla dzierżawy usługi Azure Active Directory | 
-   | **Identyfikator** | <*yourAzureServicePrincipalName (Nazwa jednostki usługi platformy Azure)*> | Wartość `displayName` jednostki usługi platformy Azure | 
-   |||| 
+   | **Subscription ID (Identyfikator subskrypcji)** | <*yourAzureSubscription-ID (Identyfikator Twojej subskrypcji platformy Azure)* > | Wartość identyfikatora GUID dla subskrypcji platformy Azure <p>**Porada**: jeśli nie znasz identyfikatora subskrypcji platformy Azure, uruchom następujące polecenie interfejsu wiersza polecenia platformy Azure z poziomu wiersza polecenia lub usługi Cloud Shell, a następnie użyj wartości identyfikatora GUID `id`: <p>`az account list` | 
+   | **Identyfikator klienta** | <*yourAzureServicePrincipal-ID (Identyfikator jednostki usługi platformy Azure)* > | Wartość identyfikatora GUID `appId` wygenerowanego wcześniej dla jednostki usługi platformy Azure | 
+   | **Client Secret (Wpis tajny klienta)** | <*yourSecurePassword (Hasło)* > | Wartość `password` lub „wpis tajny” określony dla jednostki usługi platformy Azure | 
+   | **Tenant ID (Identyfikator dzierżawy)** | <*yourAzureActiveDirectoryTenant-ID (Identyfikator dzierżawy usługi Azure Active Directory)* > | Wartość identyfikatora GUID `tenant` dla dzierżawy usługi Azure Active Directory | 
+   | **Identyfikator** | <*yourAzureServicePrincipalName (Nazwa jednostki usługi platformy Azure)* > | Wartość `displayName` jednostki usługi platformy Azure | 
 
 1. Aby potwierdzić, że jednostka usługi działa, wybierz pozycję **Verify Service Principal** (Weryfikuj jednostkę usługi). Gdy wszystko będzie gotowe, wybierz pozycję **OK**.
 
@@ -326,7 +325,7 @@ Następnie skompiluj i wdróż aplikację w usłudze Azure App Service.
 
 Jeśli napotkasz jakiekolwiek usterki we wtyczkach narzędzia Jenkins, prześlij zgłoszenie za pomocą narzędzia [Jenkins JIRA](https://issues.jenkins-ci.org/) dla określonego składnika.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Use Azure VMs as build agents (Używanie maszyn wirtualnych platformy Azure)](/azure/jenkins/jenkins-azure-vm-agents)

@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie tokenów — Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować ustawienia tokenu okres istnienia i zgodności w usłudze Azure Active Directory B2C.
+title: Konfigurowanie tokenów — Azure Active Directory B2C | Microsoft Docs
+description: Dowiedz się, jak skonfigurować okresy istnienia tokenu i ustawienia zgodności w programie Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,51 +10,51 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e1163c88a100ebb7500607475ab5740557904137
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2ed1426bea920d1ef30fb28ff4a975d1268c12ff
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511334"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846927"
 ---
-# <a name="configure-tokens-in-azure-active-directory-b2c"></a>Konfigurowanie tokenów w usłudze Azure Active Directory B2C
+# <a name="configure-tokens-in-azure-active-directory-b2c"></a>Konfigurowanie tokenów w Azure Active Directory B2C
 
-W tym artykule dowiesz się, jak skonfigurować [okres istnienia i zgodności tokenu](active-directory-b2c-reference-tokens.md) w usłudze Azure Active Directory (Azure AD) B2C.
+W tym artykule dowiesz się, jak skonfigurować [okres istnienia i zgodność tokenu](active-directory-b2c-reference-tokens.md) w Azure Active Directory (Azure AD) B2C.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-[Utwórz przepływ użytkownika](tutorial-create-user-flows.md) aby użytkownicy mogli zarejestrować się i zaloguj się do aplikacji.
+[Utwórz przepływ użytkownika](tutorial-create-user-flows.md) , aby umożliwić użytkownikom rejestrowanie się w aplikacji i logowanie się do niej.
 
 ## <a name="configure-token-lifetime"></a>Skonfiguruj okres istnienia tokenu
 
-Na dowolny przepływ użytkownika można skonfigurować okres istnienia tokenu.
+Okres istnienia tokenu można skonfigurować w dowolnym przepływie użytkownika.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Upewnij się, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C. Wybierz **filtr katalogów i subskrypcji** w górnym menu i wybierz katalog, który zawiera dzierżawy usługi Azure AD B2C.
+2. Upewnij się, że używasz katalogu zawierającego dzierżawcę Azure AD B2C. Wybierz pozycję **katalog i filtr subskrypcji** w górnym menu, a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
-4. Wybierz **przepływy użytkownika (zasady)** .
-5. Otwórz przepływ użytkownika, która została wcześniej utworzona. 
+4. Wybierz pozycję **przepływy użytkownika (zasady)** .
+5. Otwórz wcześniej utworzony przepływ użytkownika.
 6. Wybierz **właściwości**.
-7. W obszarze **okres istnienia tokenu**, dostosować do potrzeb swojej aplikacji następujące właściwości:
+7. W obszarze **okres istnienia tokenu**Dostosuj następujące właściwości, aby dopasować je do potrzeb aplikacji:
 
-    ![Skonfiguruj okres istnienia tokenu](./media/configure-tokens/token-lifetime.png)
+    ![Ustawienia właściwości okresu istnienia tokenu w Azure Portal](./media/configure-tokens/token-lifetime.png)
 
-8. Kliknij pozycję **Zapisz**.
+8. Kliknij polecenie **Zapisz**.
 
-## <a name="configure-token-compatibility"></a>Konfigurowanie zgodności tokenów
+## <a name="configure-token-compatibility"></a>Konfigurowanie zgodności tokenu
 
-1. Wybierz **przepływy użytkownika (zasady)** .
-2. Otwórz przepływ użytkownika, która została wcześniej utworzona. 
+1. Wybierz pozycję **przepływy użytkownika (zasady)** .
+2. Otwórz wcześniej utworzony przepływ użytkownika.
 3. Wybierz **właściwości**.
-4. W obszarze **ustawień zgodności tokenów**, dostosować do potrzeb swojej aplikacji następujące właściwości:
+4. W obszarze **Ustawienia zgodności tokenu**Dostosuj następujące właściwości, aby dopasować je do potrzeb aplikacji:
 
-    ![Konfigurowanie zgodności tokenów](./media/configure-tokens/token-compatibility.png)
+    ![Ustawienia właściwości zgodności tokenu w Azure Portal](./media/configure-tokens/token-compatibility.png)
 
-5. Kliknij pozycję **Zapisz**.
+5. Kliknij polecenie **Zapisz**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat [używanie tokenów dostępu](active-directory-b2c-access-tokens.md).
+Dowiedz się więcej na temat [używania tokenów dostępu](active-directory-b2c-access-tokens.md).
 
 
 

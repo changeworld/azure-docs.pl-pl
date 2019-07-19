@@ -3,17 +3,18 @@ title: Samouczek — przygotowywanie rejestru kontenerów dla usługi Azure Cont
 description: Samouczek usługi Azure Container Instances (część 2 z 3) — przygotowywanie usługi Azure Container Registry i wypychanie obrazu
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c1a4313f9a8174b9ea6e6cff694b9a0a9cf395d1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b3c907eacb14ed65410a60fcf22ebe99fd8cc3bb
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60685666"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325606"
 ---
 # <a name="tutorial-deploy-an-azure-container-registry-and-push-a-container-image"></a>Samouczek: Wdrażanie rejestru kontenerów platformy Azure i wypychanie obrazu kontenera
 
@@ -42,7 +43,7 @@ Utwórz grupę zasobów za pomocą polecenia [az group create][az-group-create].
 az group create --name myResourceGroup --location eastus
 ```
 
-Po utworzeniu grupy zasobów utwórz rejestr kontenerów platformy Azure za pomocą polecenia [az acr create][az-acr-create]. Nazwa rejestru kontenerów musi być unikatowa w obrębie platformy Azure i może zawierać od 5 do 50 znaków alfanumerycznych. Zamień wartość `<acrName>` na unikatową nazwę rejestru:
+Po utworzeniu grupy zasobów Utwórz usługę Azure Container Registry za pomocą polecenia [AZ ACR Create][az-acr-create] . Nazwa rejestru kontenerów musi być unikatowa w obrębie platformy Azure i może zawierać od 5 do 50 znaków alfanumerycznych. Zamień wartość `<acrName>` na unikatową nazwę rejestru:
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic --admin-enabled true
@@ -94,7 +95,7 @@ Login Succeeded
 
 Aby wypchnąć obraz kontenera do prywatnego rejestru, takiego jak usługa Azure Container Registry, najpierw musisz otagować obraz pełną nazwą serwera logowania rejestru.
 
-Najpierw pobierz pełną nazwę serwera logowania dla rejestru kontenerów platformy Azure. Uruchom następujące polecenie [az acr show][az-acr-show] i zastąp wartość `<acrName>` nazwą utworzonego rejestru:
+Najpierw pobierz pełną nazwę serwera logowania dla rejestru kontenerów platformy Azure. Uruchom następujące polecenie [AZ ACR show][az-acr-show] i Zamień `<acrName>` na nazwę właśnie utworzonego rejestru:
 
 ```azurecli
 az acr show --name <acrName> --query loginServer --output table
@@ -109,7 +110,7 @@ Result
 mycontainerregistry082.azurecr.io
 ```
 
-Teraz wyświetl listę obrazów lokalnych przy użyciu polecenia [docker images][docker-images]:
+Teraz Wyświetl listę obrazów lokalnych przy użyciu polecenia [Docker images][docker-images] :
 
 ```bash
 docker images
@@ -123,7 +124,7 @@ REPOSITORY          TAG       IMAGE ID        CREATED           SIZE
 aci-tutorial-app    latest    5c745774dfa9    39 minutes ago    68.1 MB
 ```
 
-Otaguj obraz *aci-tutorial-app* z wartością loginServer rejestru kontenerów. Ponadto dodaj tag `:v1` na końcu nazwy obrazu, aby wskazać numer wersji obrazu. Zastąp wartość `<acrLoginServer>` wynikiem polecenia [az acr show][az-acr-show], które zostało wykonane wcześniej.
+Otaguj obraz *aci-tutorial-app* z wartością loginServer rejestru kontenerów. Ponadto dodaj tag `:v1` na końcu nazwy obrazu, aby wskazać numer wersji obrazu. Zamień `<acrLoginServer>` na wynik polecenia [AZ ACR show][az-acr-show] wykonanego wcześniej.
 
 ```bash
 docker tag aci-tutorial-app <acrLoginServer>/aci-tutorial-app:v1
@@ -140,7 +141,7 @@ mycontainerregistry082.azurecr.io/aci-tutorial-app    v1        5c745774dfa9    
 
 ## <a name="push-image-to-azure-container-registry"></a>Wypychanie obrazu do usługi Azure Container Registry
 
-Teraz po otagowaniu obrazu *aci-tutorial-app* przy użyciu pełnej nazwy serwera logowania prywatnego rejestru możesz wypchnąć obraz do rejestru przy użyciu polecenia [docker push][docker-push]. Zastąp wartość `<acrLoginServer>` pełną nazwa serwera logowania uzyskaną we wcześniejszym kroku.
+Teraz po oznakowaniu obrazu *ACI-samouczek-App* z pełną nazwą serwera logowania w rejestrze prywatnym możesz wypchnąć ją do rejestru za pomocą polecenia [Docker push][docker-push] . Zastąp wartość `<acrLoginServer>` pełną nazwa serwera logowania uzyskaną we wcześniejszym kroku.
 
 ```bash
 docker push <acrLoginServer>/aci-tutorial-app:v1
@@ -162,13 +163,13 @@ v1: digest: sha256:ed67fff971da47175856505585dcd92d1270c3b37543e8afd46014d328f05
 
 ## <a name="list-images-in-azure-container-registry"></a>Wyświetlanie listy obrazów w usłudze Azure Container Registry
 
-Aby sprawdzić, czy właśnie wypchnięty obraz rzeczywiście znalazł się w rejestrze kontenerów platformy Azure, wyświetl listę obrazów w rejestrze, korzystając z polecenia [az acr repository list][az-acr-repository-list]. Zastąp wartość `<acrName>` nazwą rejestru kontenerów.
+Aby sprawdzić, czy właśnie wypychany obraz jest rzeczywiście w rejestrze kontenerów platformy Azure, Wyświetl listę obrazów w rejestrze za pomocą polecenia [AZ ACR Repository list][az-acr-repository-list] . Zastąp wartość `<acrName>` nazwą rejestru kontenerów.
 
 ```azurecli
 az acr repository list --name <acrName> --output table
 ```
 
-Na przykład:
+Przykład:
 
 ```console
 $ az acr repository list --name mycontainerregistry082 --output table
@@ -177,7 +178,7 @@ Result
 aci-tutorial-app
 ```
 
-Aby wyświetlić *tagi* dla określonego obrazu, użyj polecenia [az acr repository show-tags][az-acr-repository-show-tags].
+Aby wyświetlić *Tagi* dla określonego obrazu, użyj polecenia [AZ ACR Repository show-Tags][az-acr-repository-show-tags] .
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository aci-tutorial-app --output table
@@ -192,7 +193,7 @@ Result
 v1
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przygotowano rejestr kontenerów platformy Azure do używania z usługą Azure Container Instances oraz wypchnięto obraz kontenera do rejestru. Wykonano następujące czynności:
 

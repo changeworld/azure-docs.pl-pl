@@ -1,6 +1,6 @@
 ---
-title: 'Dokumentacja interfejsu API w wersji 2 usługi Azure Monitor stanu: Wyłącz aparat Instrumentacji | Dokumentacja firmy Microsoft'
-description: Dokumentacja interfejsu API w wersji 2 Monitor stanu. Disable-InstrumentationEngine. Monitorowanie wydajności witryny sieci Web bez konieczności ponownego wdrażania witryny sieci Web. Działa z aplikacjami sieci web platformy ASP.NET hostowanej lokalnie, na maszynach wirtualnych lub na platformie Azure.
+title: 'Dokumentacja interfejsu API platformy Azure monitor stanu v2: Wyłącz aparat Instrumentacji | Microsoft Docs'
+description: Dokumentacja interfejsu API monitor stanu v2. Disable-InstrumentationEngine. Monitorowanie wydajności witryny sieci Web bez ponownego wdrażania witryny sieci Web. Współpracuje z usługą ASP.NET Web Apps hostowaną lokalnie, na maszynach wirtualnych lub na platformie Azure.
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -12,25 +12,20 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: cd35af6ead2d734fa68b85b199aac219daf8dcd9
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 827f8555718a22979617c9b0794dce3bd92207f4
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807154"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326386"
 ---
-# <a name="status-monitor-v2-api-disable-instrumentationengine-v040-alpha"></a>Interfejs API w wersji 2 Monitora stanu: Disable-InstrumentationEngine (v0.4.0 alfa)
+# <a name="status-monitor-v2-api-disable-instrumentationengine"></a>Interfejs API monitor stanu v2: Disable-InstrumentationEngine
 
-W tym artykule opisano polecenia cmdlet, które jest członkiem [modułu Az.ApplicationMonitor PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
-
-> [!IMPORTANT]
-> Monitor stanu w wersji 2 jest obecnie w publicznej wersji zapoznawczej.
-> Tej wersji zapoznawczej jest oferowana bez umowy dotyczącej poziomu usług, i firma Microsoft nie jest to zalecane w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, a niektóre mogą mieć ograniczone możliwości.
-> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+W tym artykule opisano polecenie cmdlet, które jest członkiem [modułu programu PowerShell AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
 ## <a name="description"></a>Opis
-Wyłącza aparatu Instrumentacji przez usunięcie niektórych kluczy rejestru.
-Ponowne uruchomienie usług IIS, aby zmiany zaczęły obowiązywać.
+Wyłącza aparat instrumentacji, usuwając niektóre klucze rejestru.
+Uruchom ponownie usługi IIS, aby zmiany zaczęły obowiązywać.
 
 > [!IMPORTANT] 
 > To polecenie cmdlet wymaga sesji programu PowerShell z uprawnieniami administratora.
@@ -44,12 +39,12 @@ PS C:\> Disable-InstrumentationEngine
 ## <a name="parameters"></a>Parametry 
 
 ### <a name="-verbose"></a>-Verbose
-**Typowy parametr.** W danych wyjściowych szczegółowych dzienników, należy użyć tego przełącznika.
+**Wspólny parametr.** Ten przełącznik umożliwia wyprowadzanie szczegółowych dzienników.
 
 ## <a name="output"></a>Output
 
 
-#### <a name="example-output-from-successfully-disabling-the-instrumentation-engine"></a>Przykładowe dane wyjściowe z pomyślnie wyłączanie aparatu Instrumentacji
+#### <a name="example-output-from-successfully-disabling-the-instrumentation-engine"></a>Przykładowe dane wyjściowe pomyślnie wyłączające aparat Instrumentacji
 
 ```
 Configuring IIS Environment for instrumentation engine...
@@ -60,7 +55,7 @@ Configuring registry for instrumentation engine...
 ```
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
- Wykonuj więcej zadań dzięki v2 Monitora stanu:
- - Użyj zapoznaj się z przewodnikiem [Rozwiązywanie problemów z](status-monitor-v2-troubleshoot.md) Monitora stanu w wersji 2.
+ Więcej informacji o monitor stanu v2:
+ - Skorzystaj z naszego przewodnika, aby [rozwiązywać problemy z](status-monitor-v2-troubleshoot.md) Monitor stanu v2.

@@ -1,6 +1,6 @@
 ---
-title: Dowiedz się więcej o najnowszej wersji systemu operacyjnego gościa platformy Azure | Dokumentacja firmy Microsoft
-description: Najnowsze informacje o wersji i zgodność zestawu SDK dla systemu operacyjnego gościa usługi w chmurze platformy Azure.
+title: Poznaj najnowsze wersje systemu operacyjnego gościa platformy Azure | Microsoft Docs
+description: Najnowsze informacje o wersji i zgodność zestawu SDK dla systemu operacyjnego gościa platformy Azure Cloud Services.
 services: cloud-services
 documentationcenter: na
 author: raiye
@@ -11,234 +11,234 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/8/2019
+ms.date: 7/18/2019
 ms.author: raiye
-ms.openlocfilehash: 88c3cd0e07e207a8b5ae1c07d39c8829a531c743
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: edf120fa7997cf2d0381dcb7cd3ee0d4e16dd72b
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721122"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321418"
 ---
-# <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Wersje systemów operacyjnych gościa platformy Azure i zgodności zestawów SDK
-Zapewnia zwalnia z aktualne informacje o najnowszych systemu operacyjnego gościa platformy Azure dla usług w chmurze. Te informacje pomagają planowanie ścieżki uaktualnienia przed wyłączeniem systemie operacyjnym gościa. Jeśli konfigurujesz role do użycia *automatyczne* aktualizacji systemu operacyjnego gościa, zgodnie z opisem w [ustawienia aktualizacji systemu operacyjnego gościa Azure][Azure Guest OS Update Settings], nie jest istotne, przeczytanie na tej stronie.
+# <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Wersje systemu operacyjnego gościa platformy Azure i macierz zgodności zestawu SDK
+Program udostępnia aktualne informacje o najnowszych wersjach systemu operacyjnego gościa platformy Azure dla Cloud Services. Te informacje ułatwiają zaplanowanie ścieżki uaktualnienia przed wyłączeniem systemu operacyjnego gościa. Jeśli skonfigurujesz role do korzystania z *automatycznych* aktualizacji systemu operacyjnego gościa zgodnie z opisem w [ustawieniach aktualizacji systemu operacyjnego gościa platformy Azure][Azure Guest OS Update Settings], nie trzeba przeczytywać tej strony.
 
 > [!IMPORTANT]
-> Ta strona dotyczy usługi w chmurze ról sieć web i procesów roboczych uruchamianych na podstawie systemu operacyjnego gościa. Robi **nie stosuje się** do maszyn wirtualnych IaaS.
+> Ta strona ma zastosowanie do Cloud Services ról sieci Web i procesów roboczych, które działają w oparciu o system operacyjny gościa. Nie **dotyczy** to IaaS Virtual Machines.
 >
 >
 
 
 > [!TIP]
->  Subskrybuj [Kanał informacyjny RSS aktualizacji systemu operacyjnego gościa] otrzymywać powiadomienia o wszystkich zmianach systemu operacyjnego gościa.
+>  Zasubskrybuj [Kanał informacyjny RSS aktualizacji systemu operacyjnego gościa] , aby otrzymywać największe powiadomienia o zmianach wprowadzonych w systemie operacyjnym gościa.
 >
 >
 
 > [!IMPORTANT]
-> Tylko najnowsze 2 wersje systemu operacyjnego gościa będzie obsługiwana i dostępna w witrynie Azure portal.
+> Tylko najnowsze 2 wersje systemu operacyjnego gościa będą obsługiwane i dostępne w Azure Portal.
 >
 >
 
-Nie wiesz o tym, jak zaktualizować system operacyjny gościa? Sprawdź [to][cloud updates] się.
+Nie wiesz, jak zaktualizować system operacyjny gościa? Sprawdź [to][cloud updates] .
 
 ## <a name="news-updates"></a>Aktualizacje wiadomości
 
-###### <a name="july-8-2019"></a>**8 lipca 2019 r.**
-System operacyjny gościa czerwca został wydany.
+###### <a name="july-8-2019"></a>**8 lipca 2019**
+System operacyjny gościa z czerwca został opublikowany.
 
-###### <a name="june-6-2019"></a>**6 czerwca 2019 r.**
-System operacyjny gościa może został wydany.
+###### <a name="june-6-2019"></a>**6 czerwca 2019**
+Wydano system operacyjny gościa.
 
-###### <a name="may-7-2019"></a>**7 maja 2019 r.**
-Kwietnia system operacyjny gościa został wydany.
+###### <a name="may-7-2019"></a>**7 maja 2019**
+System operacyjny gościa w kwietniu został opublikowany.
 
-###### <a name="march-26-2019"></a>**26 marca 2019 r.**
-System operacyjny gościa marca został wydany.
+###### <a name="march-26-2019"></a>**26 marca 2019**
+Wydano system operacyjny gościa w marcu.
 
-###### <a name="march-12-2019"></a>**12 marca 2019 r.**
-System operacyjny gościa lutego został wydany.
+###### <a name="march-12-2019"></a>**12 marca 2019**
+System operacyjny gościa w lutym został opublikowany.
 
-###### <a name="february-5-2019"></a>**5 lutego 2019 r.**
-System operacyjny gościa stycznia został wydany.
+###### <a name="february-5-2019"></a>**5 lutego 2019**
+System operacyjny gościa w styczniu został opublikowany.
 
-###### <a name="january-24-2019"></a>**24 stycznia 2019 r.**
-Została wydana 6 z rodziny systemów operacyjnych gościa (2019 systemu Windows Server).
+###### <a name="january-24-2019"></a>**24 stycznia 2019**
+Wydano system operacyjny gościa w rodzinie 6 (Windows Server 2019).
 
-###### <a name="january-7-2019"></a>**7 stycznia 2019 r.**
-System operacyjny gościa grudnia został wydany.
+###### <a name="january-7-2019"></a>**7 stycznia 2019**
+System operacyjny gościa w grudniu został opublikowany.
 
-###### <a name="december-14-2018"></a>**14 grudnia 2018 r.**
-System operacyjny gościa listopada został wydany.
+###### <a name="december-14-2018"></a>**14 grudnia 2018**
+System operacyjny gościa w listopadzie został opublikowany.
 
-###### <a name="november-8-2018"></a>**8 listopada 2018 r.**
-System operacyjny gościa października został wydany.
+###### <a name="november-8-2018"></a>**8 listopada 2018**
+System operacyjny gościa w październiku został opublikowany.
 
-###### <a name="october-12-2018"></a>**12 października 2018 r.**
-System operacyjny gościa września został wydany.
+###### <a name="october-12-2018"></a>**12 października 2018**
+Wydano system operacyjny gościa w trybie gościnnym.
 
 ## <a name="releases"></a>Wydania
 
-## <a name="family-6-releases"></a>Zwalnia rodziny 6
+## <a name="family-6-releases"></a>Wydania z rodziny 6
 **Windows Server 2019**
 
-Zainstalowane środowisko .NET framework: 3.5, 4.7.2, 4.8
+.NET Framework zainstalowane: 3.5, 4.7.2
 
 > [!NOTE]
-> Zestaw Windows Azure SDK dla platformy .NET — 3.0 można pobrać [tutaj][Windows Azure SDK].
+> Zestaw Windows Azure SDK dla platformy .NET — 3,0 można pobrać [tutaj][Windows Azure SDK].
 >
 >Kroki instalacji:
->1. Odinstaluj wszystkie starsze wersje MicrosoftAzureAuthoringTools*.msi
->2. Zainstaluj [zestaw Azure SDK dla platformy .NET — 3.0][Windows Azure SDK]
->3. Uruchom ponownie komputer
+>1. Odinstaluj wszystkie starsze wersje programu MicrosoftAzureAuthoringTools*. msi
+>2. Instalowanie [zestawu Azure SDK dla platformy .NET — 3,0][Windows Azure SDK]
+>3. Uruchom ponownie maszynę
 >4. Utwórz nowy projekt usługi w chmurze i Dodaj jedną rolę procesu roboczego
->5. Zmień rodziny systemów operacyjnych na 6 i utworzyć pakiet
->6. Wdrażanie pakietu na platformie Azure przy użyciu witryny Azure portal lub programu Visual Studio
+>5. Zmień rodzinę systemów operacyjnych na 6 i skompiluj pakiet
+>6. Wdrażanie pakietu na platformie Azure przy użyciu Azure Portal lub programu Visual Studio
 >
 
 
-| Ciąg konfiguracji | Data wydania | Wyłącz daty |
+| Ciąg konfiguracji | Data wydania | Data wyłączenia |
 | --- | --- | --- |
-| WA-GUEST-OS-6.8_201906-01 |8 lipca 2019 r. |Wpis 6.10 |
-| WA-GUEST-OS-6.7_201905-01 |6 czerwca 2019 r. |Wpis 6,9 |
-|~~WA-GUEST-OS-6.6_201904-01~~ |7 maja 2019 r. |8 lipca 2019 r. |
-|~~WA-GUEST-OS-6.5_201903-01~~ |26 marca 2019 r. |6 czerwca 2019 r. |
-|~~WA-GUEST-OS-6.4_201902-01~~ |12 marca 2019 r. |7 maja 2019 r. |
-|~~WA-GUEST-OS-6.3_201901-01~~ |5 lutego 2019 r. |26 marca 2019 r. |
-|~~WA-GUEST-OS-6.2_201812-01~~ |24 stycznia 2019 r. |12 marca 2019 r. |
-|~~WA-GUEST-OS-6.1_201811-01~~ |24 stycznia 2019 r. |5 lutego 2019 r. |
+| WA-GUEST-OS-6.8_201906-01 |8 lipca 2019 |Wpis 6,10 |
+| WA-GUEST-OS-6.7_201905-01 |6 czerwca 2019 |Wpis 6,9 |
+|~~WA-GUEST-OS-6.6_201904-01~~ |7 maja 2019 |8 lipca 2019 |
+|~~WA-GUEST-OS-6.5_201903-01~~ |26 marca 2019 |6 czerwca 2019 |
+|~~WA-GUEST-OS-6.4_201902-01~~ |12 marca 2019 |7 maja 2019 |
+|~~WA-GUEST-OS-6.3_201901-01~~ |5 lutego 2019 |26 marca 2019 |
+|~~WA-GUEST-OS-6.2_201812-01~~ |24 stycznia 2019 |12 marca 2019 |
+|~~WA-GUEST-OS-6.1_201811-01~~ |24 stycznia 2019 |5 lutego 2019 |
 
-## <a name="family-5-releases"></a>Zwalnia Family 5
+## <a name="family-5-releases"></a>Wersje z rodziny 5
 **Windows Server 2016**
 
-Zainstalowane środowisko .NET framework: 3.5, 4.6.2, 4.7.2, 4.8
+.NET Framework zainstalowane: 3,5, 4.6.2, 4.7.2
 
 > [!NOTE]
-> Hasła protokołu RDP dla rodziny systemów operacyjnych 5 musi być co najmniej 10 znaków.
+> Hasło RDP rodziny systemów operacyjnych 5 musi składać się z co najmniej 10 znaków.
 >
 
 
-| Ciąg konfiguracji | Data wydania | Wyłącz daty |
+| Ciąg konfiguracji | Data wydania | Data wyłączenia |
 | --- | --- | --- |
-| WA-GUEST-OS-5.32_201906-01 |8 lipca 2019 r. |Wpis 5.34 |
-| WA-GUEST-OS-5.31_201905-01 |6 czerwca 2019 r. |Wpis 5.33 |
-|~~WA-GUEST-OS-5.30_201904-01~~ |7 maja 2019 r. |8 lipca 2019 r. |
-|~~WA-GUEST-OS-5.29_201903-01~~ |26 marca 2019 r. |6 czerwca 2019 r. |
-|~~WA-GUEST-OS-5.28_201902-01~~ |12 marca 2019 r. |7 maja 2019 r. |
-|~~WA-GUEST-OS-5.27_201901-01~~ |5 lutego 2019 r. |26 marca 2019 r. |
-|~~WA-GUEST-OS-5.26_201812-01~~ |7 stycznia 2019 r. |12 marca 2019 r. |
-|~~WA-GUEST-OS-5.25_201811-01~~ |14 grudnia 2018 r. |5 lutego 2019 r. |
-|~~WA-GUEST-OS-5.24_201810-01~~ |8 listopada 2018 r. |7 stycznia 2019 r. |
-|~~WA-GUEST-OS-5.23_201809-01~~ |12 października 2018 r. |14 grudnia 2018 r. |
+| WA-GUEST-OS-5.32_201906-01 |8 lipca 2019 |Wpis 5,34 |
+| WA-GUEST-OS-5.31_201905-01 |6 czerwca 2019 |Wpis 5,33 |
+|~~WA-GUEST-OS-5.30_201904-01~~ |7 maja 2019 |8 lipca 2019 |
+|~~WA-GUEST-OS-5.29_201903-01~~ |26 marca 2019 |6 czerwca 2019 |
+|~~WA-GUEST-OS-5.28_201902-01~~ |12 marca 2019 |7 maja 2019 |
+|~~WA-GUEST-OS-5.27_201901-01~~ |5 lutego 2019 |26 marca 2019 |
+|~~WA-GUEST-OS-5.26_201812-01~~ |7 stycznia 2019 |12 marca 2019 |
+|~~WA-GUEST-OS-5.25_201811-01~~ |14 grudnia 2018 |5 lutego 2019 |
+|~~WA-GUEST-OS-5.24_201810-01~~ |8 listopada 2018 |7 stycznia 2019 |
+|~~WA-GUEST-OS-5.23_201809-01~~ |12 października 2018 |14 grudnia 2018 |
 
-## <a name="family-4-releases"></a>Zwalnia rodziny w wersji 4
+## <a name="family-4-releases"></a>Wydania z rodziny 4
 **Windows Server 2012 R2**
 
-Zainstalowane środowisko .NET framework: 3.5, 4.5.1, 4.5.2
+.NET Framework zainstalowane: 3.5, 4.5.1, 4.5.2
 
-| Ciąg konfiguracji | Data wydania | Wyłącz daty |
+| Ciąg konfiguracji | Data wydania | Data wyłączenia |
 | --- | --- | --- |
-| WA-GUEST-OS-4.67_201906-01 |8 lipca 2019 r. |Wpis 4.69 |
-| WA-GUEST-OS-4.66_201905-01 |6 czerwca 2019 r. |Wpis 4.68 |
-|~~WA-GUEST-OS-4.65_201904-01~~ |7 maja 2019 r. |8 lipca 2019 r. |
-|~~WA-GUEST-OS-4.64_201903-01~~ |26 marca 2019 r. |6 czerwca 2019 r. |
-|~~WA-GUEST-OS-4.63_201902-01~~ |12 marca 2019 r. |7 maja 2019 r. |
-|~~WA-GUEST-OS-4.62_201901-01~~ |5 lutego 2019 r. |26 marca 2019 r. |
-|~~WA-GUEST-OS-4.61_201812-01~~ |7 stycznia 2019 r. |12 marca 2019 r. |
-|~~WA-GUEST-OS-4.60_201811-01~~ |14 grudnia 2018 r. |5 lutego 2019 r. |
-|~~WA-GUEST-OS-4.59_201810-01~~ |8 listopada 2018 r. |7 stycznia 2019 r. |
-|~~WA-GUEST-OS-4.58_201809-01~~ |12 października 2018 r. |14 grudnia 2018 r. |
+| WA-GUEST-OS-4.67_201906-01 |8 lipca 2019 |Wpis 4,69 |
+| WA-GOŚĆ-OS-4.66 _201905-01 |6 czerwca 2019 |Wpis 4,68 |
+|~~WA-GUEST-OS-4.65_201904-01~~ |7 maja 2019 |8 lipca 2019 |
+|~~WA-GUEST-OS-4.64_201903-01~~ |26 marca 2019 |6 czerwca 2019 |
+|~~WA-GUEST-OS-4.63_201902-01~~ |12 marca 2019 |7 maja 2019 |
+|~~WA-GUEST-OS-4.62_201901-01~~ |5 lutego 2019 |26 marca 2019 |
+|~~WA-GUEST-OS-4.61_201812-01~~ |7 stycznia 2019 |12 marca 2019 |
+|~~WA-GUEST-OS-4.60_201811-01~~ |14 grudnia 2018 |5 lutego 2019 |
+|~~WA-GUEST-OS-4.59_201810-01~~ |8 listopada 2018 |7 stycznia 2019 |
+|~~WA-GUEST-OS-4.58_201809-01~~ |12 października 2018 |14 grudnia 2018 |
 
-## <a name="family-3-releases"></a>Zwalnia rodziny 3
+## <a name="family-3-releases"></a>Wersje z rodziny 3
 **Windows Server 2012**
 
-Zainstalowane środowisko .NET framework: 3.5, 4.5
+.NET Framework zainstalowane: 3,5, 4,5
 
-| Ciąg konfiguracji | Data wydania | Wyłącz daty |
+| Ciąg konfiguracji | Data wydania | Data wyłączenia |
 | --- | --- | --- |
-| WA-GUEST-OS-3.74_201906-01 |8 lipca 2019 r. |Wpis 3.76 |
-| WA-GUEST-OS-3.73_201905-01 |6 czerwca 2019 r. |Wpis 3,75 |
-|~~WA-GUEST-OS-3.72_201904-01~~ |7 maja 2019 r. |8 lipca 2019 r. |
-|~~WA-GUEST-OS-3.71_201903-01~~ |26 marca 2019 r. |6 czerwca 2019 r. |
-|~~WA-GUEST-OS-3.70_201902-01~~ |12 marca 2019 r. |7 maja 2019 r. |
-|~~WA-GUEST-OS-3.69_201901-01~~ |5 lutego 2019 r. |26 marca 2019 r. |
-|~~WA-GUEST-OS-3.68_201812-01~~ |7 stycznia 2019 r. |12 marca 2019 r. |
-|~~WA-GUEST-OS-3.67_201811-01~~ |14 grudnia 2018 r. |5 lutego 2019 r. |
-|~~WA-GUEST-OS-3.66_201810-01~~ |8 listopada 2018 r. |7 stycznia 2019 r. |
-|~~WA-GUEST-OS-3.65_201809-01~~ |12 października 2018 r. |14 grudnia 2018 r. |
+| WA-GUEST-OS-3.74_201906-01 |8 lipca 2019 |Wpis 3,76 |
+| WA-GOŚĆ-OS-3.73 _201905-01 |6 czerwca 2019 |Wpis 3,75 |
+|~~WA-GUEST-OS-3.72_201904-01~~ |7 maja 2019 |8 lipca 2019 |
+|~~WA-GUEST-OS-3.71_201903-01~~ |26 marca 2019 |6 czerwca 2019 |
+|~~WA-GUEST-OS-3.70_201902-01~~ |12 marca 2019 |7 maja 2019 |
+|~~WA-GUEST-OS-3.69_201901-01~~ |5 lutego 2019 |26 marca 2019 |
+|~~WA-GUEST-OS-3.68_201812-01~~ |7 stycznia 2019 |12 marca 2019 |
+|~~WA-GUEST-OS-3.67_201811-01~~ |14 grudnia 2018 |5 lutego 2019 |
+|~~WA-GOŚĆ-OS-3.66 _201810-01~~ |8 listopada 2018 |7 stycznia 2019 |
+|~~WA-GOŚĆ-OS-3.65 _201809-01~~ |12 października 2018 |14 grudnia 2018 |
 
-## <a name="family-2-releases"></a>Zwalnia rodziny 2
-**Windows Server 2008 R2 SP1**
+## <a name="family-2-releases"></a>Wersje z rodziny 2
+**Windows Server 2008 R2 z dodatkiem SP1**
 
-Zainstalowane środowisko .NET framework: 3.5 (w tym w wersji 2.0 i 3.0), 4.5
+.NET Framework zainstalowane: 3,5 (obejmuje 2,0 i 3,0), 4,5
 
-| Ciąg konfiguracji | Data wydania | Wyłącz daty |
+| Ciąg konfiguracji | Data wydania | Data wyłączenia |
 | --- | --- | --- |
-| WA-GUEST-OS-2.87_201906-01 |8 lipca 2019 r. |Wpis 2.89 |
-| WA-GUEST-OS-2.86_201905-01 |6 czerwca 2019 r. |Wpis 2,88 |
-|~~WA-GUEST-OS-2.85_201904-01~~ |7 maja 2019 r. |8 lipca 2019 r. |
-|~~WA-GUEST-OS-2.84_201903-01~~ |26 marca 2019 r. |6 czerwca 2019 r. |
-|~~WA-GUEST-OS-2.83_201902-01~~ |12 marca 2019 r. |7 maja 2019 r. |
-|~~WA-GUEST-OS-2.82_201901-01~~ |5 lutego 2019 r. |26 marca 2019 r. |
-|~~WA-GUEST-OS-2.81_201812-01~~ |7 stycznia 2019 r. |12 marca 2019 r. |
-|~~WA-GUEST-OS-2.80_201811-01~~ |14 grudnia 2018 r. |5 lutego 2019 r. |
-|~~WA-GUEST-OS-2.79_201810-01~~ |8 listopada 2018 r. |7 stycznia 2019 r. |
-|~~WA-GUEST-OS-2.78_201809-01~~ |12 października 2018 r. |14 grudnia 2018 r. |
+| WA-GUEST-OS-2.87_201906-01 |8 lipca 2019 |Wpis 2,89 |
+| WA-GOŚĆ-OS-2.86 _201905-01 |6 czerwca 2019 |Wpis 2,88 |
+|~~WA-GUEST-OS-2.85_201904-01~~ |7 maja 2019 |8 lipca 2019 |
+|~~WA-GUEST-OS-2.84_201903-01~~ |26 marca 2019 |6 czerwca 2019 |
+|~~WA-GUEST-OS-2.83_201902-01~~ |12 marca 2019 |7 maja 2019 |
+|~~WA-GUEST-OS-2.82_201901-01~~ |5 lutego 2019 |26 marca 2019 |
+|~~WA-GUEST-OS-2.81_201812-01~~ |7 stycznia 2019 |12 marca 2019 |
+|~~WA-GUEST-OS-2.80_201811-01~~ |14 grudnia 2018 |5 lutego 2019 |
+|~~WA-GUEST-OS-2.79_201810-01~~ |8 listopada 2018 |7 stycznia 2019 |
+|~~WA-GUEST-OS-2.78_201809-01~~ |12 października 2018 |14 grudnia 2018 |
 
-## <a name="msrc-patch-updates"></a>Centrum MSRC poprawek i aktualizacji
-Lista poprawek, które są dołączone do wydania systemu operacyjnego gościa w każdym miesiącu jest dostępna [tutaj][patches].
+## <a name="msrc-patch-updates"></a>Aktualizacje poprawek MSRC
+Lista poprawek, które są dołączone do każdej comiesięcznej wersji systemu operacyjnego gościa, jest dostępna [tutaj][patches].
 
 ## <a name="sdk-support"></a>Obsługa zestawu SDK
-Mimo że [zasady wycofywania z zestawu Azure SDK][retire policy sdk] oznacza, że tylko wersje powyżej 2.2 są obsługiwane, określonej rodziny systemów operacyjnych gościa pozwalać pozwala korzystać z wcześniejszych wersji. Należy zawsze używać najnowszej obsługiwanym zestawem SDK.
+Mimo że zasady wycofywania [dla zestawu Azure SDK][retire policy sdk] wskazują, że obsługiwane są tylko wersje z przeznaczeniem 2,2, konkretne rodziny systemów operacyjnych gościa umożliwiają korzystanie z wcześniejszych wersji. Należy zawsze używać najnowszego obsługiwanego zestawu SDK.
 
 | Rodzina systemów operacyjnych gościa | Zgodne wersje zestawu SDK |
 | --- | --- |
-| 6 |Wersja 2.9.6+ |
-| 5 |Wersja 2.9.5.1+ |
-| 4 |W wersji 2.1 + |
-| 3 |W wersji 1.8 + |
-| 2 |W wersji 1.3 + |
-| 1 |W wersji 1.0 + |
+| 6 |Wersja 2.9.6 + |
+| 5 |Wersja 2.9.5.1 + |
+| 4 |Wersja 2.1 + |
+| 3 |Wersja 1.8 + |
+| 2 |Wersja 1.3 + |
+| 1 |Wersja 1.0 + |
 
 ## <a name="guest-os-release-information"></a>Informacje o wersji systemu operacyjnego gościa
-Istnieją trzy daty, które są istotne dla wersji systemu operacyjnego gościa: **wersji** daty, **wyłączone** datę i **wygaśnięcia** daty. System operacyjny gościa jest uważana za dostępną w portalu i można wybrać jako docelowy system operacyjny gościa. Gdy osiągnie systemie operacyjnym gościa **wyłączone** daty, zostanie ono usunięte z systemu Azure. Jednak dowolnej usługi w chmurze przeznaczonych dla tego systemu operacyjnego gościa nadal będzie działać w zwykły sposób.
+Istnieją trzy daty ważne dla wersji systemu operacyjnego gościa: Data **wydania** , Data **wyłączenia** i Data **wygaśnięcia** . System operacyjny gościa jest uznawany za dostępny, gdy znajduje się w portalu i może być wybrany jako docelowy system operacyjny gościa. Gdy system operacyjny gościa osiągnie datę **wyłączenia** , zostanie on usunięty z platformy Azure. Jednak każda usługa w chmurze, która określa, że system operacyjny gościa będzie nadal działać normalnie.
 
-Okno między **wyłączone** daty i **wygaśnięcia** Data zawiera bufor do łatwo przejścia z jednego systemu operacyjnego gościa do jednego, które są nowsze. Jeśli używasz *automatyczne* jako system operacyjny gościa, zawsze będzie w najnowszej wersji i nie trzeba już martwić się o jego wygaśnięcia.
+Okno między datą **wyłączenia** a datą **wygaśnięcia** umożliwia buforowi łatwe przejście z jednego systemu operacyjnego gościa do jednego nowszej. Jeśli używasz *automatycznie* jako systemu operacyjnego gościa, zawsze będziesz mieć najnowszą wersję i nie musisz martwić się o jego wygaśnięcie.
 
-Gdy **wygaśnięcia** data przekazuje dowolnej usługi w chmurze nadal przy użyciu tego systemu operacyjnego gościa zostaną zatrzymane, usunięte bądź zmuszeni do uaktualnienia. Możesz dowiedzieć się więcej o zasadach wycofanie [tutaj][retirepolicy].
+Po upływie daty **ważności** jakakolwiek usługa w chmurze nadal używa tego systemu operacyjnego gościa zostanie zatrzymana, usunięta lub wymuszona do uaktualnienia. Więcej informacji na temat zasad wycofania można znaleźć [tutaj][retirepolicy].
 
-## <a name="guest-os-family-version-explanation"></a>Wyjaśnienie wersji rodzin systemów operacyjnych gościa
-Rodzin systemów operacyjnych gościa są oparte na wydane wersje systemu Microsoft Windows Server. System operacyjny gościa jest uruchamiana w usługach Azure Cloud Services na system operacyjny. Każdy system operacyjny gościa ma rodziny, wersji i wydania numer.
+## <a name="guest-os-family-version-explanation"></a>Rodzina systemów operacyjnych gościa — wyjaśnienie wersji
+Rodziny systemów operacyjnych gościa są oparte na wydanych wersjach systemu Microsoft Windows Server. Systemem operacyjnym gościa jest podstawowy system operacyjny, na którym działa usługa Azure Cloud Services. Każdy system operacyjny gościa ma rodzinę, wersję i numer wersji.
 
 * **Rodzina systemów operacyjnych gościa**  
-  Wersja systemu operacyjnego Windows Server, opartego na systemie operacyjnym gościa. Na przykład *rodziny 3* jest oparty na systemie Windows Server 2012.
+  Wersja systemu operacyjnego Windows Server, na którym bazuje system operacyjny gościa. Na przykład *rodzina 3* jest oparta na systemie Windows Server 2012.
 * **Wersja systemu operacyjnego gościa**  
-  Specyficzne dla rodziny obraz systemu operacyjnego gościa oraz odpowiednie [Microsoft Security Response Center (MSRC)][msrc] poprawek, które są dostępne na datę produkowaną jest nowa wersja systemu operacyjnego gościa. Nie wszystkie poprawki mogą zostać uwzględnione.
+  Specyficzne dla obrazu rodziny systemu operacyjnego gościa oraz odpowiednie poprawki [Microsoft Security Response Center (MSRC)][msrc] , które są dostępne w dniu, w którym jest generowana Nowa wersja systemu operacyjnego gościa. Nie wszystkie poprawki mogą zostać uwzględnione.
 
-    Numery rozpoczynają się od 0 i Zwiększaj go o 1 w każdym razem, gdy zostanie dodany nowy zestaw aktualizacji. Zera końcowe są wyświetlane tylko jeśli jest to ważne. W wersji 2.10 jest nieco inny, znacznie nowszej niż wersja 2.1.
+    Liczby zaczynają się od 0 i zwiększają się o 1 za każdym razem, gdy dodawany jest nowy zestaw aktualizacji. Zera końcowe są wyświetlane tylko wtedy, gdy ważne. Oznacza to, że wersja 2,10 to inna, znacznie nowsza wersja niż wersja 2,1.
 * **Wersja systemu operacyjnego gościa**  
-  Ponowne wydanie wersji systemu operacyjnego gościa. Ponowne wydanie występuje wtedy, gdy Microsoft znalezione problemy podczas badania; konieczności wprowadzania zmian. Najnowsza wersja zawsze zastępuje wszystkie poprzednie wersje, publicznego lub nie. Witryna Azure portal będzie tylko zezwalać użytkownikom na wybranie najnowszej wersji dla danej wersji. Wdrożenia z systemem wcześniejszej wersji nie są zwykle życie uaktualnienia w zależności od ważności usterki.
+  Ponowna wersja systemu operacyjnego gościa. Ponowne wydanie występuje, jeśli firma Microsoft znajdzie problemy podczas testowania; wymaganie zmian. Najnowsza wersja zawsze zastępuje wszystkie poprzednie wersje, publiczne, czy nie. Azure Portal będzie zezwalać użytkownikom na wybranie najnowszej wersji dla danej wersji. Wdrożenia uruchomione w poprzedniej wersji nie są zwykle wymuszane w wersji zastosowanej w zależności od wagi błędu.
 
-W poniższym przykładzie 2 to rodzina, 12, jest to wersja i "rel2" jest to wersja.
+W poniższym przykładzie 2 jest rodziną, 12 jest wersją i "rel2" jest wydaniem.
 
-**Wersji systemu operacyjnego gościa** — 2.12 rel2
+**Wersja systemu operacyjnego gościa** — 2,12 rel2
 
-**Ciąg konfiguracji dla tej wersji** -WA-GOŚCIA — system operacyjny — 2.12_201208-02
+**Ciąg konfiguracyjny dla tej wersji Release** -wa-gość-OS-2.12 _201208-02
 
-Ciąg konfiguracji dla systemu operacyjnego gościa ma to te same informacje osadzone w nim, oraz Data pokazywanie poprawek MSRC, które zostały rozważone w tej wersji. W tym przykładzie MSRC poprawki wygenerowane dla systemu Windows Server 2008 R2 do i łącznie — sierpień 2012 zostały uwzględnione w. Uwzględniane są tylko poprawki specjalnie mające zastosowanie do tej wersji systemu Windows Server. Na przykład jeśli poprawka MSRC odnosi się do programu Microsoft Office, nie będzie uwzględniony, ponieważ ten produkt nie jest częścią obrazu podstawowego systemu Windows Server.
+Ciąg konfiguracyjny systemu operacyjnego gościa ma te same informacje, a także datę, w której zostały uwzględnione poprawki MSRC dla tej wersji. W tym przykładzie w celu uwzględnienia dołączenia do systemu Windows Server 2008 R2 do i włącznie z sierpnia 2012 zostały uwzględnione poprawki MSRC. Uwzględniono tylko poprawki, które mają zastosowanie do tej wersji systemu Windows Server. Na przykład jeśli poprawka MSRC ma zastosowanie do Microsoft Office, nie zostanie uwzględniona, ponieważ ten produkt nie jest częścią obrazu podstawowego systemu Windows Server.
 
-## <a name="guest-os-system-update-process"></a>Proces aktualizacji systemu systemu operacyjnego gościa
-Ta strona zawiera informacje na temat przyszłych wersji systemu operacyjnego gościa. Klienci wskazali, że chce wiedzieć, gdy wystąpi wydania, ponieważ ich ról usługi w chmurze zostanie ponownie uruchomiony, jeśli są one ustawione na "Automatyczny" Aktualizacja. Wersje systemu operacyjnego gościa występują zwykle 2 – 3 tygodnie po MSRC aktualizacji wersji, która występuje w drugi wtorek każdego miesiąca. Nowe wersje zawierają wszystkie odpowiednie poprawki MSRC dla każdej rodziny systemów operacyjnych gościa.
+## <a name="guest-os-system-update-process"></a>Proces aktualizacji systemu operacyjnego gościa
+Ta strona zawiera informacje o nadchodzących wersjach systemu operacyjnego gościa. Klienci wykazały, że chcą wiedzieć, kiedy występuje wydanie, ponieważ ich role usługi w chmurze zostaną ponownie wykonane, jeśli są ustawione na wartość "automatyczna". Wersje systemu operacyjnego gościa zwykle występują 2-3 tygodnie po wydaniu aktualizacji MSRC, które występuje w drugi wtorek każdego miesiąca. Nowe wersje obejmują wszystkie odpowiednie poprawki MSRC dla każdej rodziny systemów operacyjnych gościa.
 
-Microsoft Azure stale udostępnia aktualizacje. System operacyjny gościa jest tylko jeden taki aktualizacji w potoku. Wydanie mogą mieć wpływ wiele czynników za duża, aby wyświetlić listę w tym miejscu. Ponadto platforma Azure działa w dosłownie setki tysięcy maszyn. Oznacza to, że jest wręcz niemożliwe dokładnej daty i godziny, kiedy nastąpi ponowne uruchomienie komputera usługi ról. Pracujemy nad planem do ograniczenia lub czas ponownego uruchamiania.
+Microsoft Azure ciągle zwalnia aktualizacje. System operacyjny gościa to tylko jedna taka aktualizacja w potoku. Na wydanie może mieć wpływ wiele czynników, które są zbyt liczne do wyświetlenia w tym miejscu. Ponadto platforma Azure działa na dosłownie setki tysięcy maszyn. Oznacza to, że nie można podać dokładnej daty i godziny, gdy Twoje role zostaną ponownie rozruchowe. Pracujemy nad planem w celu ograniczenia lub przeprowadzenia ponownych uruchomień.
 
-Po opublikowaniu nowej wersji systemu operacyjnego gościa, może upłynąć czas pełni propagacji na platformie Azure. Ponieważ usługi są aktualizowane do nowego systemu operacyjnego gościa, ich wykonywany jest ponowny rozruch zapewniane domenach aktualizacji. Usługi skonfigurowane do korzystania z aktualizacji "Automatycznie", otrzyma pierwszego wydania. Po aktualizacji zostanie wyświetlony nowej wersji systemu operacyjnego gościa, na liście usługi w witrynie Azure portal. Ponownych wydań mogą wystąpić w trakcie tego okresu. Niektóre wersje mogą wdrożyć przez dłuższy czas i automatycznego ponownego uruchamiania uaktualniania nie może wystąpić wiele tygodni po dacie oficjalnym wydaniem. Po udostępnieniu systemu operacyjnego gościa, następnie jawnie można tę wersję z portalu lub w pliku konfiguracji.
+Po opublikowaniu nowej wersji systemu operacyjnego gościa może upłynąć trochę czasu, aby w pełni propagować dane na platformie Azure. Gdy usługi są aktualizowane w nowym systemie operacyjnym gościa, zostaną ponownie uruchomione przy użyciu domen aktualizacji. Usługi skonfigurowane do korzystania z aktualizacji "Automatyczne" uzyskają wydanie w pierwszej kolejności. Po aktualizacji zobaczysz nową wersję systemu operacyjnego gościa wymienioną dla danej usługi w Azure Portal. W tym okresie mogą wystąpić ponowne zwolnienia. Niektóre wersje mogą zostać wdrożone przez dłuższy okres czasu, a ponowne uruchomienia automatycznego uaktualniania mogą nie być wykonywane przez wiele tygodni po oficjalnej dacie wydania. Po udostępnieniu systemu operacyjnego gościa można jawnie wybrać tę wersję z portalu lub w pliku konfiguracji.
 
-Na dużym stopniem cennych informacji na temat ponownego uruchamiania i wskaźniki, aby uzyskać więcej szczegółów technicznych informacji o aktualizacji dla gościa i systemu operacyjnego hosta, zobacz zatytułowany post na blogu MSDN [roli wystąpienie powoduje ponowne uruchomienie z powodu uaktualnienia systemu operacyjnego][restarts].
+Aby uzyskać więcej informacji na temat dodatkowych informacji na temat ponownych uruchomień i wskaźników, aby uzyskać szczegółowe informacje techniczne dotyczące aktualizacji systemu operacyjnego gościa i hosta, zobacz wpis w blogu MSDN zatytułowany [Ponowne uruchamianie wystąpienia roli z powodu uaktualnień systemu operacyjnego][restarts].
 
-Jeśli ręcznie zaktualizować system operacyjny gościa, zobacz [zasady wycofywania systemu operacyjnego gościa][retirepolicy] Aby uzyskać dodatkowe informacje.
+Jeśli ręcznie zaktualizujesz system operacyjny gościa, zobacz [zasady wycofywania systemu operacyjnego gościa][retirepolicy] , aby uzyskać dodatkowe informacje.
 
-## <a name="guest-os-supportability-and-retirement-policy"></a>Zasady wycofywania i możliwości obsługi systemu operacyjnego gościa
-Zasady wycofywania i możliwości obsługi systemu operacyjnego gościa zostało wyjaśnione [tutaj][retirepolicy].
+## <a name="guest-os-supportability-and-retirement-policy"></a>Zasady dotyczące obsługi i wycofywania systemu operacyjnego gościa
+Zasady dotyczące obsługi i wycofywania systemu operacyjnego gościa są wyjaśnione w [tym miejscu][retirepolicy].
 
 [cloud updates]: https://docs.microsoft.com/azure/cloud-services/cloud-services-update-azure-service
 [Kanał informacyjny RSS aktualizacji systemu operacyjnego gościa]: https://raw.githubusercontent.com/MicrosoftDocs/azure-cloud-services-files/master/GuestOS/GuestOSFeed.xml

@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure AD v2.0 ASP.NET serwera sieci web wprowadzenie | Dokumentacja firmy Microsoft
-description: Implementowanie logowania firmy Microsoft na rozwiązanie platformy ASP.NET z aplikacji opartych na przeglądarce sieci web tradycyjnych przy użyciu standardowego protokołu OpenID Connect
+title: Wprowadzenie do usługi Azure AD v 2.0 ASP.NET Web Server | Microsoft Docs
+description: Implementowanie logowania firmy Microsoft w ramach rozwiązania ASP.NET z tradycyjną aplikacją opartą na przeglądarce sieci Web przy użyciu usługi OpenID Connect Connect Standard
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,12 +16,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 589554188bfe8bd53b5dd3adcd6d57abe95c2d23
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: da78ebfee642961ef0f34ab1088078d22539fbf8
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60298174"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334099"
 ---
 [!INCLUDE [1. Introduction](../../../includes/active-directory-develop-guidedsetup-aspnetwebapp-introduction.md)]
 [!INCLUDE [2. Setup](../../../includes/active-directory-develop-guidedsetup-aspnetwebapp-setup.md)]
@@ -29,13 +29,18 @@ ms.locfileid: "60298174"
 [!INCLUDE [4. Configure](../../../includes/active-directory-develop-guidedsetup-aspnetwebapp-configure.md)]
 [!INCLUDE [5. Test and Validate](../../../includes/active-directory-develop-guidedsetup-aspnetwebapp-test.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o usłudze Web apps wywoływania interfejsów API sieci web:.
+Informacje o usłudze Web Apps wywołujących interfejsy API sieci Web:.
 
 ### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Dowiedz się więcej na temat czynności, które są wymagane to utworzenia aplikacji użytej w tym przewodniku Szybki start
 
 > [!div class="nextstepaction"]
-> [Aplikacje sieci Web podczas wywoływania interfejsów API sieci Web]( https://aka.ms/msal-net-authorization-code)
+> [Aplikacje sieci Web wywołujące interfejsy API sieci Web]( https://aka.ms/msal-net-authorization-code)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
+Pomóż nam ulepszyć platformę tożsamości firmy Microsoft. Powiedz nam, co myślisz, wykonując krótką ankietę z dwoma pytaniami.
+
+> [!div class="nextstepaction"]
+> [Microsoft Identity platform — ankieta](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

@@ -1,29 +1,29 @@
 ---
-title: Zasady połączenia w usłudze Azure Cosmos DB wyzwalacza
-description: Informacje o sposobie konfigurowania zasad połączenia używane przez usługi Azure Cosmos DB wyzwalacza
+title: Wyzwalacz Azure Functions dla zasad połączenia Cosmos DB
+description: Dowiedz się, jak skonfigurować zasady połączenia używane przez wyzwalacz Azure Functions dla Cosmos DB
 author: ealsur
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 06/05/2019
+ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 584d59884b70d2ee8243216e6f907fc9ec2d8ad4
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 359b6a905e64046aad62b70ae53b993c86884ad2
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66755332"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335632"
 ---
-# <a name="how-to-configure-the-connection-policy-used-by-azure-cosmos-db-trigger"></a>Jak skonfigurować zasady połączenia używane przez usługi Azure Cosmos DB wyzwalacza
+# <a name="how-to-configure-the-connection-policy-used-by-azure-functions-trigger-for-cosmos-db"></a>Jak skonfigurować zasady połączenia używane przez wyzwalacz Azure Functions dla Cosmos DB
 
-W tym artykule opisano sposób konfigurowania zasad połączenia za pomocą wyzwalacza usługi Azure Cosmos DB, nawiąż połączenie z kontem usługi Azure Cosmos.
+W tym artykule opisano, jak można skonfigurować zasady połączenia przy użyciu wyzwalacza Azure Functions, aby Cosmos DB do nawiązywania połączenia z kontem usługi Azure Cosmos.
 
-## <a name="why-is-the-connection-policy-important"></a>Dlaczego ważne jest, zasady połączenia?
+## <a name="why-is-the-connection-policy-important"></a>Dlaczego zasady połączeń są ważne?
 
-Istnieją dwa tryby połączenia — w trybie bezpośrednim i tryb bramy. Aby dowiedzieć się więcej na temat trybów połączenia, zobacz [porady dotyczące wydajności](./performance-tips.md#networking) artykułu. Domyślnie **bramy** jest używany do ustanawiania wszystkich połączeń na wyzwalacz usługi Azure Cosmos DB. Jednak może nie być najlepszą opcją w przypadku scenariuszy opartych na wydajność.
+Istnieją dwa tryby połączeń — tryb bezpośredni i tryb bramy. Aby dowiedzieć się więcej na temat tych trybów połączeń, zobacz artykuł dotyczący [wskazówek dotyczących wydajności](./performance-tips.md#networking) . Domyślnie **brama** jest używana do ustanowienia wszystkich połączeń w wyzwalaczu Azure Functions dla Cosmos DB. Jednak może nie być najlepszą opcją dla scenariuszy opartych na wydajności.
 
-## <a name="changing-the-connection-mode-and-protocol"></a>Zmiana trybu połączenia i protokół
+## <a name="changing-the-connection-mode-and-protocol"></a>Zmiana trybu połączenia i protokołu
 
-Istnieją dwa ustawienia konfiguracji kluczy można skonfigurować zasady połączeń klientów — **tryb połączenia** i **Protokół połączenia**. Możesz zmienić domyślny tryb połączenia i protokół używany przez wyzwalacz usługi Azure Cosmos DB i wszystkich [powiązań usługi Azure Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2.md#output)). Aby zmienić ustawienia domyślne, musisz zlokalizować `host.json` pliku w projekcie usługi Azure Functions lub aplikacji usługi Azure Functions i Dodaj następujący kod [bardzo ustawienie](../azure-functions/functions-bindings-cosmosdb-v2.md#hostjson-settings):
+Dostępne są dwa ustawienia konfiguracji kluczy umożliwiające skonfigurowanie zasad połączenia klienta — **tryb połączenia** i **Protokół połączenia**. Można zmienić domyślny tryb połączenia i protokół używany przez wyzwalacz Azure Functions dla Cosmos DB i wszystkich [powiązań Azure Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2.md#output)). Aby zmienić ustawienia domyślne, należy zlokalizować `host.json` plik w projekcie Azure Functions lub w aplikacji Azure Functions i dodać następujące [dodatkowe ustawienie](../azure-functions/functions-bindings-cosmosdb-v2.md#hostjson-settings):
 
 ```js
 {
@@ -34,9 +34,9 @@ Istnieją dwa ustawienia konfiguracji kluczy można skonfigurować zasady połą
 }
 ```
 
-Gdzie `connectionMode` musi mieć tryb połączenie żądaną (bezpośrednio lub brama) i `protocol` żądane połączenie protokołu (Tcp lub Https). 
+Gdzie `connectionMode` musi mieć żądany tryb połączenia (Direct lub Gateway) i `protocol` wymagany protokół połączeń (TCP lub https). 
 
-Jeśli projekt funkcji platformy Azure działa ze środowiskiem uruchomieniowym usługi Azure Functions w wersji 1, konfiguracja zawiera różnica nieznaczne nazwy, należy użyć `documentDB` zamiast `cosmosDB`:
+Jeśli projekt Azure Functions działa w środowisku uruchomieniowym Azure Functions V1, konfiguracja ma niewielką różnicę nazw, należy użyć `documentDB` `cosmosDB`zamiast:
 
 ```js
 {
@@ -48,10 +48,10 @@ Jeśli projekt funkcji platformy Azure działa ze środowiskiem uruchomieniowym 
 ```
 
 > [!NOTE]
-> Podczas pracy z planem hostingu planu zużycie funkcji platformy Azure, każde wystąpienie ma limit ilości połączeń gniazda, która może obsługiwać. Podczas pracy z bezpośrednich / trafień trybu TCP, projektowania większej liczby połączeń są tworzone i może [Plan zużycie limit](../azure-functions/manage-connections.md#connection-limit), w którym to przypadku można użyć trybu bramy lub uruchamianie usługi Azure Functions w [tryb usługi aplikacji](../azure-functions/functions-scale.md#app-service-plan).
+> Podczas pracy z planem hostingu Azure Functions, każde wystąpienie ma limit liczby połączeń gniazda, które może obsłużyć. Podczas pracy z trybem Direct/TCP przez zaprojektowanie większej liczby połączeń są tworzone i można napotkać [Limit planu zużycia](../azure-functions/manage-connections.md#connection-limit), w takim przypadku można użyć trybu bramy lub uruchomić Azure Functions w [trybie App Service](../azure-functions/functions-scale.md#app-service-plan).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Limity połączeń w usłudze Azure Functions](../azure-functions/manage-connections.md#connection-limit)
-* [Porady dotyczące wydajności usługi Azure Cosmos DB](./performance-tips.md)
+* [Limity połączeń w Azure Functions](../azure-functions/manage-connections.md#connection-limit)
+* [Porady dotyczące wydajności Azure Cosmos DB](./performance-tips.md)
 * [Przykłady kodu](https://github.com/ealsur/serverless-recipes/tree/master/connectionmode)

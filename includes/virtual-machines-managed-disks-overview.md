@@ -8,87 +8,115 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 91e9d3a99224c09ecfb5cc3b477a71a7f7bfed7a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 444e64488b185b1ff2aa7cc63fbeffafc591dbfe
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65199343"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68319977"
 ---
-## <a name="benefits-of-managed-disks"></a>Korzyści z dyskami zarządzanymi
+## <a name="benefits-of-managed-disks"></a>Zalety dysków zarządzanych
 
-Zajmijmy niektóre korzyści, jakie możesz uzyskać przy użyciu dysków zarządzanych.
+Przejdźmy do niektórych korzyści z używania usługi Managed Disks.
 
 ### <a name="highly-durable-and-available"></a>Duża trwałość i wysoka dostępność
 
-Dyski zarządzane zostały zaprojektowane dla dostępność przez 99,999% czasu. Dyski zarządzane to osiągnąć, udostępniając trzy repliki danych, co zapewnia wysoką trwałość. Jeśli w jednej lub nawet w dwóch replikach wystąpią błędy, pozostałe repliki pomogą w zapewnieniu trwałości danych i dużej tolerancji w przypadku awarii. Ta architektura pomogła platformie Azure w przeznaczonych dla przedsiębiorstw dzięki wiodącej w branży trwałość infrastruktura jako usługa (IaaS) dysków ZEROWĄ stawkę wycena błąd %.
+Dyski zarządzane są przeznaczone do dostępności na 99,999%. Dyski zarządzane uzyskują się w ten sposób, dostarczając trzy repliki danych, co zapewnia wysoką trwałość. Jeśli w jednej lub nawet w dwóch replikach wystąpią błędy, pozostałe repliki pomogą w zapewnieniu trwałości danych i dużej tolerancji w przypadku awarii. Ta architektura umożliwiła platformę Azure spójnie dostarczać trwałość klasy korporacyjnej dla dysków infrastruktury jako usługi (IaaS), a wiodący w branży ZERO% stawka niepowodzeń.
 
-### <a name="simple-and-scalable-vm-deployment"></a>Proste i skalowalne wdrażanie maszyn wirtualnych
+### <a name="simple-and-scalable-vm-deployment"></a>Proste i skalowalne wdrożenie maszyny wirtualnej
 
-Używanie dysków zarządzanych, możesz utworzyć maksymalnie 50 000 maszyn wirtualnych **dysków** typu w subskrypcję w danym regionie, co pozwala na tworzenie tysięcy **maszyn wirtualnych** w ramach jednej subskrypcji. Tę funkcję również zwiększa skalowalność [zestawy skalowania maszyn wirtualnych](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) , dzięki czemu możesz utworzyć maksymalnie 1000 maszyn wirtualnych w maszyny wirtualnej zestawu skalowania przy użyciu obrazu portalu Marketplace.
+Korzystając z usługi Managed disks, można utworzyć do 50 000 **dysków** maszyn wirtualnych typu w ramach subskrypcji na region, co pozwala na tworzenie tysięcy **maszyn wirtualnych** w ramach jednej subskrypcji. Ta funkcja dodatkowo zwiększa skalowalność [zestawów skalowania maszyn wirtualnych](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) , umożliwiając tworzenie do 1 000 maszyn wirtualnych w zestawie skalowania maszyn wirtualnych przy użyciu obrazu portalu Marketplace.
 
 ### <a name="integration-with-availability-sets"></a>Integracja z zestawami dostępności
 
-Dyski zarządzane są zintegrowane z zestawami dostępności w celu zapewnienia, że dyski [maszyn wirtualnych w zestawie dostępności](../articles/virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) są wystarczająco odizolowane od siebie, aby uniknąć pojedynczego punktu awarii. Dyski są automatycznie umieszczane w różnych jednostkach skalowania magazynu (sygnatury). Sygnatura zakończy się niepowodzeniem z powodu awarii sprzętu lub oprogramowania, tylko wystąpienia maszyn wirtualnych z dyskami na tych sygnatur zakończyć się niepowodzeniem. Na przykład załóżmy, że masz aplikację działającą w pięciu maszyn wirtualnych i maszyny wirtualne znajdują się w zestawie dostępności. Dyski dla tych maszyn wirtualnych nie będzie można przechowywać w tej samej sygnaturze, więc jeśli jednej sygnatury ulegnie awarii, pozostałe wystąpienia aplikacji nadal działać.
+Dyski zarządzane są zintegrowane z zestawami dostępności, aby upewnić się, że dyski [maszyn wirtualnych w zestawie dostępności](../articles/virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) są wystarczająco odizolowane od siebie, aby uniknąć Single Point of Failure. Dyski są automatycznie umieszczane w różnych jednostkach skalowania magazynu (sygnatury). Jeśli sygnatura nie powiedzie się z powodu awarii sprzętu lub oprogramowania, tylko wystąpienia maszyn wirtualnych z dyskami w tych sygnaturach kończą się niepowodzeniem. Załóżmy na przykład, że aplikacja działa na pięciu maszynach wirtualnych, a maszyny wirtualne znajdują się w zestawie dostępności. Dyski dla tych maszyn wirtualnych nie będą przechowywane w tej samej sygnaturze, więc jeśli jedna sygnatura przestanie działać, inne wystąpienia aplikacji nadal będą uruchamiane.
 
-### <a name="integration-with-availability-zones"></a>Integracja z usługą strefy dostępności
+### <a name="integration-with-availability-zones"></a>Integracja z usługą Strefy dostępności
 
-Managed disks obsługuje [strefy dostępności](../articles/availability-zones/az-overview.md), czyli oferty o wysokiej dostępności, która chroni aplikacji przed awariami centrum danych. Strefy dostępności to unikatowe fizycznie lokalizacje w regionie platformy Azure. Każda strefa składa się z co najmniej jeden centrów danych, wyposażone w niezależne zasilanie, chłodzenie i usługi sieciowe. W celu zapewnienia odporności istnieją co najmniej trzy osobne strefy we wszystkich włączonych regionach. Dzięki strefom dostępności platforma Azure oferuje najlepszą w branży umowę dotycząca poziomu usług (SLA) gwarantującą czas działania na poziomie 99,99%.
+Usługa Managed disks obsługuje [strefy dostępności](../articles/availability-zones/az-overview.md), która jest ofertą wysokiej dostępności, która chroni aplikacje przed awariami centrów danych. Strefy dostępności to unikatowe fizycznie lokalizacje w regionie platformy Azure. Każda strefa składa się z co najmniej jeden centrów danych, wyposażone w niezależne zasilanie, chłodzenie i usługi sieciowe. W celu zapewnienia odporności istnieją co najmniej trzy osobne strefy we wszystkich włączonych regionach. Dzięki strefom dostępności platforma Azure oferuje najlepszą w branży umowę dotycząca poziomu usług (SLA) gwarantującą czas działania na poziomie 99,99%.
 
-### <a name="azure-backup-support"></a>Obsługa usługi Azure Backup
+### <a name="azure-backup-support"></a>Obsługa Azure Backup
 
-Aby zapewnić ochronę przed regionalnej awarii [kopia zapasowa Azure](../articles/backup/backup-introduction-to-azure-backup.md) może służyć do tworzenia zadania tworzenia kopii zapasowej za pomocą zasad przechowywania kopii zapasowych i kopii zapasowych opartych na czasie. Dzięki temu można łatwo przywracana maszyny Wirtualnej w momencie wykonywania. Usługa Azure Backup obsługuje obecnie rozmiary dysków maksymalnie cztery dyski tebibyte (TiB). Aby uzyskać więcej informacji, zobacz [przy użyciu usługi Azure Backup dla maszyn wirtualnych z dyskami zarządzanymi](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup).
+Aby chronić przed awariami regionalnymi, [Azure Backup](../articles/backup/backup-overview.md) może służyć do tworzenia zadania tworzenia kopii zapasowej z użyciem kopii zapasowych opartych na czasie i zasad przechowywania kopii zapasowych. Dzięki temu można wykonywać proste przywracanie maszyny wirtualnej. Obecnie Azure Backup obsługuje rozmiary dysków do czterech dysków tebibyte (TiB).  Azure Backup obsługuje tworzenie kopii zapasowych i przywracanie dysków zarządzanych. [Dowiedz się więcej](../articles/backup/backup-support-matrix-iaas.md) o obsłudze kopii zapasowych maszyny wirtualnej platformy Azure.
 
-### <a name="granular-access-control"></a>Szczegółową kontrolę dostępu
+### <a name="granular-access-control"></a>Szczegółowa kontrola dostępu
 
-Możesz użyć [kontroli dostępu opartej na rolach na platformie Azure (RBAC)](../articles/role-based-access-control/overview.md) przypisać określone uprawnienia dla dysku zarządzanego do co najmniej jednego użytkownika. Uwidacznianie dysków zarządzanych w różne operacje, w tym odczytu, zapisu (Tworzenie/aktualizowanie), usuwania i pobierania [sygnatury dostępu współdzielonego (SAS) identyfikator URI](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) dla dysku. Możesz udzielić dostępu do operacji tylko osoba potrzebuje do wykonywania ich zadań. Na przykład jeśli nie chcesz, aby osoby do kopiowania dysku zarządzanego do konta magazynu, możesz nie można udzielić dostępu do akcji eksportu dla dysku zarządzanego. Podobnie jeśli nie chcesz, aby osoba kopiowania dysku zarządzanego za pomocą identyfikatora URI sygnatury dostępu Współdzielonego, można nie przyznać to uprawnienie do dysków zarządzanych.
+Za pomocą [kontroli dostępu opartej na rolach (RBAC) platformy Azure](../articles/role-based-access-control/overview.md) można przypisać określone uprawnienia dla dysku zarządzanego do jednego lub większej liczby użytkowników. W przypadku dysków zarządzanych są dostępne różne operacje, takie jak Odczyt, zapis (Tworzenie/aktualizowanie), usuwanie i pobieranie [identyfikatora URI sygnatury dostępu współdzielonego (SAS)](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) dla dysku. Można udzielić dostępu tylko do operacji wykonywanych przez osobę. Na przykład, jeśli nie chcesz, aby użytkownik skopiował dysk zarządzany do konta magazynu, możesz zrezygnować z udzielenia dostępu do akcji eksportowania dla tego dysku zarządzanego. Podobnie, jeśli nie chcesz, aby użytkownik korzystał z identyfikatora URI sygnatury dostępu współdzielonego w celu skopiowania dysku zarządzanego, możesz zrezygnować z przyznania tego uprawnienia do dysku zarządzanego.
 
-## <a name="disk-roles"></a>Role dysku
+## <a name="encryption"></a>Szyfrowanie
 
-Istnieją trzy role głównego dysku na platformie Azure: dysk z danymi, dysk systemu operacyjnego i tymczasowy dysk. Te role są mapowane na dyskach, które są dołączone do maszyny wirtualnej.
+Dyski zarządzane oferują dwa różne rodzaje szyfrowania. Pierwszy jest szyfrowanie usługi Storage (SSE), który jest wykonywany przez usługę magazynu. Druga Azure Disk Encryption, którą można włączyć na dyskach systemu operacyjnego i danych dla maszyn wirtualnych.
 
-![Role dysku w działaniu](media/virtual-machines-managed-disks-overview/disk-types.png)
+### <a name="storage-service-encryption-sse"></a>Szyfrowanie usługi Storage (SSE)
+
+[Usługa Azure szyfrowanie usługi Storage](../articles/storage/common/storage-service-encryption.md) zapewnia szyfrowanie w spoczynku i zabezpiecza dane zgodnie ze zobowiązaniami dotyczącymi zabezpieczeń i zgodności w organizacji. Funkcja SSE jest domyślnie włączona dla wszystkich dysków zarządzanych, migawek i obrazów we wszystkich regionach, w których są dostępne usługi Managed Disks. Aby uzyskać więcej informacji, odwiedź [stronę Managed disks często zadawanych pytań](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) .
+
+### <a name="azure-disk-encryption-ade"></a>Azure Disk Encryption (ADE)
+
+Azure Disk Encryption pozwala na szyfrowanie dysków systemu operacyjnego i danych używanych przez maszynę wirtualną IaaS. To szyfrowanie obejmuje dyski zarządzane. W przypadku systemu Windows dyski są szyfrowane przy użyciu standardowej technologii szyfrowania funkcji BitLocker. W przypadku systemu Linux dyski są szyfrowane przy użyciu technologii DM-Crypt. Proces szyfrowania jest zintegrowany z Azure Key Vault, aby umożliwić kontrolowanie kluczy szyfrowania dysków i zarządzanie nimi. Aby uzyskać więcej informacji, zobacz [Azure Disk Encryption dla maszyn wirtualnych IaaS](../articles/security/azure-security-disk-encryption-overview.md).
+
+## <a name="disk-roles"></a>Role dysków
+
+Na platformie Azure istnieją trzy role dysków głównych: dysk danych, dysk systemu operacyjnego i dysk tymczasowy. Role te są mapowane na dyski dołączone do maszyny wirtualnej.
+
+![Role dysków w działaniu](media/virtual-machines-managed-disks-overview/disk-types.png)
 
 ### <a name="data-disk"></a>Dysk z danymi
 
-Dysk z danymi jest dysk zarządzany, który jest dołączony do maszyny wirtualnej do przechowywania danych aplikacji lub innymi danymi, które należy zachować. Dyski danych są rejestrowane jako dyski SCSI i są oznaczone literą, który wybierzesz. Każdy dysk z danymi ma maksymalną pojemność wynoszącą 32 767 gibibajtach (GiB). Rozmiar maszyny wirtualnej Określa, jak wiele dysków z danymi można dołączać i typ magazynu służy do obsługi dysków.
+Dysk danych to dysk zarządzany połączony z maszyną wirtualną w celu przechowywania danych aplikacji lub innych danych, które należy zachować. Dyski danych są rejestrowane jako dyski SCSI i są oznaczone wybraną literą. Każdy dysk z danymi ma maksymalną pojemność wynoszącą 32 767 gibibajtach (GiB). Rozmiar maszyny wirtualnej określa liczbę dysków z danymi, które można dołączyć do niej, oraz typ magazynu, którego można użyć do hostowania dysków.
 
 ### <a name="os-disk"></a>Dysk systemu operacyjnego
 
-Do każdej maszyny wirtualnej ma jeden dysk dołączony systemu operacyjnego. Ten dysk systemu operacyjnego został wstępnie zainstalowany system operacyjny, który został wybrany podczas tworzenia maszyny Wirtualnej.
+Każda maszyna wirtualna ma jeden dołączony dysk systemu operacyjnego. Ten dysk systemu operacyjnego ma wstępnie zainstalowany system operacyjny, który został wybrany podczas tworzenia maszyny wirtualnej.
 
-Ten dysk ma maksymalną pojemność wynoszącą 2048 GiB.
+Ten dysk ma maksymalną pojemność wynoszącą 2 048 GiB.
 
 ### <a name="temporary-disk"></a>Dysk tymczasowy
 
-Każda maszyna wirtualna zawiera dysk tymczasowy brak dysku zarządzanego. Dysk tymczasowy udostępnia krótkoterminowy magazyn dla aplikacji i procesów i jest przeznaczone do przechowywania tylko dane, takie jak stronicowania lub plik wymiany. Dane na dysku tymczasowym mogą zostać utracone podczas [zdarzeń związanych z konserwacją](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) zdarzenia lub gdy użytkownik [ponowne wdrożenie maszyny Wirtualnej](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json). Na maszynach wirtualnych z systemem Linux platformy Azure dysk tymczasowy to dysk /dev/sdb domyślnie, i na maszynach wirtualnych Windows dysk tymczasowy to dysk E: domyślnie. Podczas pomyślnego standardowa ponowny rozruch maszyny wirtualnej zostanie utrzymany danych na dysku tymczasowym.
+Każda maszyna wirtualna zawiera dysk tymczasowy, który nie jest dyskiem zarządzanym. Dysk tymczasowy zapewnia krótkoterminowe przechowywanie aplikacji i procesów. jest to przeznaczone tylko do przechowywania danych, takich jak pliki strony lub wymiany. Dane na dysku tymczasowym mogą zostać utracone podczas zdarzenia [konserwacji](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) lub w przypadku [ponownego wdrożenia maszyny wirtualnej](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json). Na maszynach wirtualnych systemu Linux na platformie Azure dysk tymczasowy jest domyślnie/dev/sdb i na maszynach wirtualnych z systemem Windows dysk tymczasowy jest D: domyślnie. Podczas pomyślnego standardowego ponownego uruchomienia maszyny wirtualnej dane na dysku tymczasowym będą utrwalane.
 
 ## <a name="managed-disk-snapshots"></a>Migawki dysków zarządzanych
 
-Migawki dysków zarządzanych jest tylko do odczytu pełnej kopii dysku zarządzanego, która jest przechowywana jako dysk zarządzany standardowy domyślnie. Przy użyciu migawek kopii zapasowych dysków zarządzanych w dowolnym momencie w czasie. Migawki te istnieć niezależnie od dysku źródłowego i można tworzyć nowe dyski zarządzane. One są rozliczane na podstawie rozmiaru używane. Na przykład jeśli utworzysz migawkę dysku zarządzanego z zaprowizowaną pojemnością 64 GiB i rzeczywistym użyciem danych rozmiaru 10 GiB tej migawki jest zapłacisz tylko za użyte dane o rozmiarze od 10 GiB.  
+Migawka dysku zarządzanego jest tylko do odczytu pełna kopia dysku zarządzanego, która jest domyślnie przechowywana jako standardowy dysk zarządzany. Za pomocą migawek można tworzyć kopie zapasowe dysków zarządzanych w dowolnym momencie. Te migawki istnieją niezależnie od dysku źródłowego i mogą być używane do tworzenia nowych dysków zarządzanych. Opłaty są naliczane na podstawie użytego rozmiaru. Na przykład, jeśli utworzysz migawkę dysku zarządzanego o pojemności 64 GiB i rzeczywistej używanej wielkości danych wynoszącej 10 GiB, ta migawka jest naliczana tylko za użyty rozmiar danych wynoszący 10 GiB.  
 
 Aby dowiedzieć się więcej na temat tworzenia migawek z dyskami zarządzanymi, zobacz następujące zasoby:
 
-* [Tworzenie kopii wirtualnego dysku twardego przechowywanej jako dysk zarządzany przy użyciu migawek w Windows](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
+* [Tworzenie kopii wirtualnego dysku twardego przechowywanego jako dysk zarządzany przy użyciu migawek w systemie Windows](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
 * [Tworzenie kopii wirtualnego dysku twardego przechowywanej jako dysk zarządzany przy użyciu migawek w systemie Linux](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
 
 ### <a name="images"></a>Obrazy
 
-Dyski zarządzane obsługują także tworzenie zarządzany obraz niestandardowy. Można utworzyć obrazu z niestandardowego dysku VHD na koncie magazynu lub bezpośrednio z uogólnionego (przetworzonego) maszyny Wirtualnej. Ten proces przechwytuje pojedynczego obrazu. Ten obraz zawiera wszystkie dyski zarządzane skojarzony z maszyną Wirtualną, w tym zarówno systemu operacyjnego i dysków z danymi. To zarządzany obraz niestandardowy umożliwia tworzenia setek maszyn wirtualnych przy użyciu niestandardowego obrazu bez konieczności kopiowania lub zarządzać wszystkie konta magazynu.
+Dyski zarządzane obsługują również tworzenie zarządzanego obrazu niestandardowego. Możesz utworzyć obraz z niestandardowego wirtualnego dysku twardego na koncie magazynu lub bezpośrednio z maszyny wirtualnej z uogólnioną (Sysprep). Ten proces przechwytuje pojedynczy obraz. Ten obraz zawiera wszystkie dyski zarządzane skojarzone z maszyną wirtualną, w tym dyski systemu operacyjnego i danych. Ten zarządzany obraz niestandardowy umożliwia tworzenie setek maszyn wirtualnych przy użyciu obrazu niestandardowego bez konieczności kopiowania kont magazynu i zarządzania nimi.
 
-Aby uzyskać informacje na temat tworzenia obrazów zobacz następujące artykuły:
+Aby uzyskać informacje na temat tworzenia obrazów, zobacz następujące artykuły:
 
-* [Jak przechwycić obrazu zarządzanego uogólnionej maszyny Wirtualnej na platformie Azure](../articles/virtual-machines/windows/capture-image-resource.md)
+* [Jak przechwycić zarządzany obraz uogólnionej maszyny wirtualnej na platformie Azure](../articles/virtual-machines/windows/capture-image-resource.md)
 * [Uogólnianie i przechwytywanie maszyny wirtualnej z systemem Linux przy użyciu wiersza polecenia platformy Azure](../articles/virtual-machines/linux/capture-image.md)
 
-#### <a name="images-versus-snapshots"></a>Obrazów i migawki
+#### <a name="images-versus-snapshots"></a>Obrazy i migawki
 
-Należy zrozumieć różnicę między migawki i obrazy. W przypadku dysków zarządzanych możesz korzystać z obrazu uogólnionej maszyny Wirtualnej, która została wycofana. Ten obraz zawiera wszystkie dyski dołączone do maszyny Wirtualnej. Można użyć tego obrazu, utworzyć maszynę Wirtualną i zawiera wszystkie dyski.
+Ważne jest, aby zrozumieć różnicę między obrazami i migawkami. Za pomocą dysków zarządzanych można utworzyć obraz uogólnionej maszyny wirtualnej, która została cofnięta. Ten obraz zawiera wszystkie dyski dołączone do maszyny wirtualnej. Ten obraz służy do tworzenia maszyny wirtualnej i zawiera wszystkie dyski.
 
-Migawka jest kopii dysku w punkcie w czasie migawki. Dotyczy tylko jeden dysk. W przypadku maszyny Wirtualnej, która ma jeden dysk (dysk systemu operacyjnego) można wykonać migawki lub obrazu ją i Utwórz Maszynę wirtualną z migawki lub obrazu.
+Migawka to kopia dysku w punkcie w czasie, w którym wykonywana jest migawka. Ma zastosowanie tylko do jednego dysku. Jeśli masz maszynę wirtualną, która ma jeden dysk (dysk systemu operacyjnego), możesz wykonać migawkę lub obraz, a następnie utworzyć maszynę wirtualną na podstawie migawki lub obrazu.
 
-Migawka nie ma świadomości każdego dysku, z wyjątkiem tego, jakie zawiera. Dzięki temu problematyczne do użycia w scenariuszach wymagających koordynacji wielu dysków, takich jak rozkładanie. Migawki musi być w stanie zapewnić koordynację ze sobą, i to nie jest obecnie obsługiwane.
+Migawka nie ma świadomości dotyczącej żadnego dysku z wyjątkiem tego, który zawiera. Sprawia to, że może to powodować problemy z użyciem w scenariuszach wymagających koordynacji wielu dysków, takich jak rozłożenie. Migawki muszą mieć możliwość koordynacji ze sobą i nie są obecnie obsługiwane.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="disk-allocation-and-performance"></a>Alokacja i wydajność dysku
 
-Dowiedz się więcej o typach poszczególnych dysków oferowanych na platformie Azure i jakiego typu jest odpowiednia dla Twoich potrzeb w naszym artykule typy dysków.
+Na poniższym diagramie przedstawiono alokację przepustowości i liczby operacji we/wy na sekundę w czasie rzeczywistym dla dysków przy użyciu systemu udostępniania trzech poziomów:
+
+![System obsługi administracyjnej trzech poziomów przedstawiający przepustowość i alokację IOPS](media/virtual-machines-managed-disks-overview/real-time-disk-allocation.png)
+
+Wstępne Inicjowanie obsługi określa liczbę operacji we/wy na dysku i przypisanie przepustowości.  Na drugim poziomie Host serwera obliczeniowego implementuje obsługę dysków SSD, stosując ją tylko do danych przechowywanych na dysku SSD serwera, który obejmuje dyski z buforowaniem (ReadWrite i ReadOnly), a także dyski lokalne i tymczasowe. Na koniec Inicjowanie obsługi sieci maszyn wirtualnych odbywa się na trzecim poziomie dla wszystkich operacji we/wy, które Host obliczeń wysyła do zaplecza usługi Azure Storage. W tym schemacie wydajność maszyny wirtualnej zależy od różnych czynników, od tego, jak maszyna wirtualna używa lokalnego dysku SSD, do liczby podłączonych dysków, a także typu wydajności i buforowania dysków, które zostały podłączone.
+
+Na przykład te ograniczenia: maszyna wirtualna Standard_DS1v1 jest niedostępna z powodu osiągnięcia możliwości 5 000 operacji we/wy dysku P30, niezależnie od tego, czy jest ona buforowana, czy nie, ze względu na limity na dyskach SSD i sieci.
+
+![Przykładowa alokacja Standard_DS1v1](media/virtual-machines-managed-disks-overview/example-vm-allocation.png)
+
+Platforma Azure używa priorytetowego kanału sieciowego dla ruchu dyskowego, który uzyskuje pierwszeństwo przed innym niskim priorytetem ruchu sieciowego. Ułatwia to dyskom zachowanie oczekiwanej wydajności w przypadku rywalizacji o sieć. Podobnie usługa Azure Storage obsługuje rywalizacje zasobów i inne problemy w tle z automatycznym równoważeniem obciążenia. Usługa Azure Storage przydziela wymagane zasoby podczas tworzenia dysku oraz stosuje aktywne i ponownie aktywne równoważenie zasobów w celu obsługi ruchu. Dzięki temu dyski mogą utrzymać oczekiwaną liczbę operacji we/wy na sekundę i przepływności. Możesz użyć metryk na poziomie maszyny wirtualnej i na poziomie dysku do śledzenia wydajności i konfiguracji alertów zgodnie z wymaganiami.
+
+Zapoznaj się z naszym [projektem w celu uzyskania wysokiej wydajności](../articles/virtual-machines/windows/premium-storage-performance.md) artykułu, aby poznać najlepsze rozwiązania dotyczące optymalizowania konfiguracji maszyn wirtualnych i dysków, dzięki czemu można osiągnąć żądaną wydajność
+
+## <a name="next-steps"></a>Następne kroki
+
+Dowiedz się więcej na temat poszczególnych typów dysków oferowanych przez platformę Azure, które są odpowiednie dla Twoich potrzeb, i poznaj ich cele wydajności w naszym artykule na temat typów dysków.

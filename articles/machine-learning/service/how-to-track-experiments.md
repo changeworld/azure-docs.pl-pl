@@ -1,26 +1,27 @@
 ---
-title: Rejestruj metryki podczas wysyłanie przebiegów szkoleniowych
+title: Metryki dzienników podczas przebiegów szkoleniowych
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak dodać rejestrowania skrypt szkolenia, jak przesyłanie eksperymentu, sprawdzanie postępu zadania uruchomione i jak wyświetlać wyniki przebiegu. Można śledzić eksperymenty i monitorować metryki, aby ulepszyć proces tworzenia modelu.
+description: Możesz śledzić eksperymenty i monitorować metryki, aby usprawnić proces tworzenia modelu. Dowiedz się, jak dodać rejestrowanie do skryptu szkoleniowego, jak przesłać eksperyment, jak sprawdzić postęp uruchomionego zadania i jak wyświetlić zarejestrowane wyniki przebiegu.
 services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
+ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 07/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: d3cbc2d5be1f7addf833162b23c5db0786e9d361
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 269568c172ff6c65c9877f9ad22067a11125b339
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66297478"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67847597"
 ---
-# <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Rejestruj metryki podczas szkolenia jest uruchamiany w usłudze Azure Machine Learning
+# <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Metryki dzienników podczas przebiegów szkoleniowych w Azure Machine Learning
 
-W tym artykule Dowiedz się, jak dodawanie rejestrowania do skryptu szkolenia, przesłać przebieg eksperymentu, monitorować działanie i wyświetlić wyniki przebiegu w usłudze Azure Machine Learning. Poszerz procesu tworzenia modeli, śledzenie eksperymenty i metryk monitorowania. 
+Usprawnij proces tworzenia modelu, śledząc eksperymenty i metryki monitorowania. W tym artykule dowiesz się, jak dodać rejestrowanie do skryptu szkoleniowego, przesłać przebieg eksperymentu, monitorować przebieg i przeglądać wyniki przebiegu Azure Machine Learning usługi.
 
 ## <a name="list-of-training-metrics"></a>Listy metryk szkolenia 
 
@@ -48,18 +49,16 @@ Jeśli chcesz śledzić lub monitorowania eksperymentu, należy dodać kod, aby 
 ## <a name="set-up-the-workspace"></a>Konfigurowanie obszaru roboczego
 Przed dodaniem rejestrowania i przesyłanie eksperymentu, należy skonfigurować obszar roboczy.
 
-1. Załaduj obszar roboczy. Aby dowiedzieć się więcej na temat ustawiania konfiguracji obszaru roboczego, wykonaj kroki opisane w [Utwórz obszar roboczy usługi Azure Machine Learning](setup-create-workspace.md#sdk).
+1. Załaduj obszar roboczy. Aby dowiedzieć się więcej na temat ustawiania konfiguracji obszaru roboczego, wykonaj kroki opisane w części [Tworzenie obszaru roboczego usługi Azure Machine Learning](setup-create-workspace.md#sdk).
 
    ```python
    from azureml.core import Experiment, Run, Workspace
    import azureml.core
   
-   ws = Workspace(workspace_name = <<workspace_name>>,
-               subscription_id = <<subscription_id>>,
-               resource_group = <<resource_group>>)
+   ws = Workspace.from_config()
    ```
   
-## <a name="option-1-use-startlogging"></a>Opcja 1: Użyj start_logging
+## <a name="option-1-use-startlogging"></a>Option 1: Użyj start_logging
 
 **start_logging** tworzy interakcyjnego wykonywania do użytku w scenariuszach takich jak notesy. Wszystkie metryki, które są rejestrowane w trakcie sesji są dodawane do rekordu uruchomienia w eksperymencie.
 
@@ -92,42 +91,44 @@ Poniższy przykład przygotowuje prosty model Ridge skryptu sklearn lokalnie w p
 2. Dodaj śledzenia eksperymentu przy użyciu zestawu SDK usługi Azure Machine Learning i przekazywanie utrwalonych modelu na uruchomienie rekordu eksperymentu. Poniższy kod dodaje znaczniki, dzienników i przekazuje plik modelu na uruchomienie eksperymentu.
 
    ```python
-   # Get an experiment object from Azure Machine Learning
-   experiment = Experiment(workspace = ws, name = "train-within-notebook")
-  
-   # Create a run object in the experiment
-   run = experiment.start_logging()# Log the algorithm parameter alpha to the run
-   run.log('alpha', 0.03)
-
-   # Create, fit, and test the scikit-learn Ridge regression model
-   regression_model = Ridge(alpha=0.03)
-   regression_model.fit(data['train']['X'], data['train']['y'])
-   preds = regression_model.predict(data['test']['X'])
-
-   # Output the Mean Squared Error to the notebook and to the run
-   print('Mean Squared Error is', mean_squared_error(data['test']['y'], preds))
-   run.log('mse', mean_squared_error(data['test']['y'], preds))
-
-   # Save the model to the outputs directory for capture
-   joblib.dump(value=regression_model, filename='outputs/model.pkl')
-
-   # Take a snapshot of the directory containing this notebook
-   run.take_snapshot('./')
-
-   # Complete the run
-   run.complete()
-  
+    # Get an experiment object from Azure Machine Learning
+    experiment = Experiment(workspace=ws, name="train-within-notebook")
+    
+    # Create a run object in the experiment
+    run =  experiment.start_logging()
+    # Log the algorithm parameter alpha to the run
+    run.log('alpha', 0.03)
+    
+    # Create, fit, and test the scikit-learn Ridge regression model
+    regression_model = Ridge(alpha=0.03)
+    regression_model.fit(data['train']['X'], data['train']['y'])
+    preds = regression_model.predict(data['test']['X'])
+    
+    # Output the Mean Squared Error to the notebook and to the run
+    print('Mean Squared Error is', mean_squared_error(data['test']['y'], preds))
+    run.log('mse', mean_squared_error(data['test']['y'], preds))
+    
+    # Save the model to the outputs directory for capture
+    model_file_name = 'outputs/model.pkl'
+    
+    joblib.dump(value = regression_model, filename = model_file_name)
+    
+    # upload the model file explicitly into artifacts 
+    run.upload_file(name = model_file_name, path_or_stream = model_file_name)
+    
+    # Complete the run
+    run.complete()
    ```
 
-Skrypt kończy się ```run.complete()```, która oznacza Uruchom jako ukończone.  Ta funkcja jest zwykle używana w scenariuszach notesu interakcyjnego.
+    Skrypt kończy się ```run.complete()```, która oznacza Uruchom jako ukończone.  Ta funkcja jest zwykle używana w scenariuszach notesu interakcyjnego.
 
 ## <a name="option-2-use-scriptrunconfig"></a>Opcja 2: Użyj ScriptRunConfig
 
-[**ScriptRunConfig** ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) jest klasą konfigurowania konfiguracje skrypt jest uruchamiany. Po wybraniu tej opcji można dodać kod monitorowania, aby otrzymywać powiadomienia o zakończeniu lub można pobrać visual widżetu do monitorowania.
+[**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) jest klasą do konfigurowania konfiguracji do uruchamiania skryptów. Po wybraniu tej opcji można dodać kod monitorowania, aby otrzymywać powiadomienia o zakończeniu lub można pobrać visual widżetu do monitorowania.
 
 W tym przykładzie stanowi rozszerzenie podstawowego modelu Ridge skryptu sklearn z góry. Proste parametru odchylenia do czyszczenia odbywa się za pośrednictwem wartości alfa modelu, aby przechwycić metryki i wytrenowane modele w działa w ramach eksperymentu. W przykładzie uruchamiane lokalnie przeciwko środowisku zarządzane przez użytkownika. 
 
-1. Utwórz skrypt szkolenia `train.py`.
+1. Utwórz skrypt `train.py`szkoleniowy.
 
    ```python
    # train.py
@@ -181,7 +182,7 @@ W tym przykładzie stanowi rozszerzenie podstawowego modelu Ridge skryptu sklear
   
    ```
 
-2. `train.py` Odwołania do skryptu `mylib.py` pozwalający na listę wartości alfa do użycia w modelu ridge.
+2. `train.py` Odwołania`mylib.py` do skryptów, które umożliwiają uzyskanie listy wartości alfa do użycia w modelu pierścieniowym.
 
    ```python
    # mylib.py
@@ -196,30 +197,31 @@ W tym przykładzie stanowi rozszerzenie podstawowego modelu Ridge skryptu sklear
 3. Konfigurowanie środowiska lokalnego z zarządzana przez użytkownika.
 
    ```python
-   from azureml.core.runconfig import RunConfiguration
-
+   from azureml.core import Environment
+    
    # Editing a run configuration property on-fly.
-   run_config_user_managed = RunConfiguration()
-
-   run_config_user_managed.environment.python.user_managed_dependencies = True
-
+   user_managed_env = Environment("user-managed-env")
+    
+   user_managed_env.python.user_managed_dependencies = True
+    
    # You can choose a specific Python environment by pointing to a Python path 
-   #run_config.environment.python.interpreter_path = '/home/user/miniconda3/envs/sdk2/bin/python'
+   #user_managed_env.python.interpreter_path = '/home/johndoe/miniconda3/envs/myenv/bin/python'
    ```
 
 4. Prześlij ```train.py``` skrypt do uruchomienia w środowisku zarządzane przez użytkownika. Ten folder cały skrypt jest przesyłany w celu szkolenia, w tym ```mylib.py``` pliku.
 
    ```python
    from azureml.core import ScriptRunConfig
-  
-   experiment = Experiment(workspace=ws, name="train-on-local")
-   src = ScriptRunConfig(source_directory = './', script = 'train.py', run_config = run_config_user_managed)
-   run = experiment.submit(src)
+    
+   exp = Experiment(workspace=ws, name="train-on-local")
+   src = ScriptRunConfig(source_directory='./', script='train.py')
+   src.run_config.environment = user_managed_env
+   run = exp.submit(src)
    ```
 
-## <a name="manage-a-run"></a>Zarządzanie przebiegu
+## <a name="manage-a-run"></a>Zarządzanie przebiegiem
 
-[Start, monitor i Anuluj wysyłanie przebiegów szkoleniowych](how-to-manage-runs.md) artykuł prezentuje określonej usługi Azure Machine Learning przepływy pracy dotyczące sposobu zarządzania eksperymenty.
+W artykule dotyczącym [uruchamiania, monitorowania i anulowania szkoleń zostanie](how-to-manage-runs.md) wyświetlona specjalna Azure Machine Learning przepływy pracy służące do zarządzania eksperymentami.
 
 ## <a name="view-run-details"></a>Wyświetl szczegóły przebiegu
 
@@ -233,9 +235,9 @@ Kiedy używasz **ScriptRunConfig** metodę, aby przesłać działa, możesz obse
    RunDetails(run).show()
    ```
 
-   ![Zrzut ekranu aplikacji Jupyter notebook widżetu](./media/how-to-track-experiments/widgets.PNG)
+   ![Zrzut ekranu aplikacji Jupyter notebook widżetu](./media/how-to-track-experiments/run-details-widget.png)
 
-2. **[Automatyczne uczenia maszynowego przebiegi]**  Dostęp do wykresów z poprzedniego uruchomienia. Zastąp `<<experiment_name>>` nazwą odpowiedniej eksperymentu:
+2. **[Automatyczne uczenia maszynowego przebiegi]**  Dostęp do wykresów z poprzedniego uruchomienia. Zamień `<<experiment_name>>` na odpowiednią nazwę eksperymentu:
 
    ``` 
    from azureml.widgets import RunDetails
@@ -263,14 +265,14 @@ Możesz wyświetlić metryki uczonego modelu przy użyciu ```run.get_metrics()``
 <a name="view-the-experiment-in-the-web-portal"></a>
 ## <a name="view-the-experiment-in-the-azure-portal"></a>Wyświetl eksperymentu w witrynie Azure portal
 
-Po zakończeniu eksperymentu, możesz przejść do zarejestrowanych uruchomienie rekordu eksperymentu. Możesz zrobić dostęp do historii na dwa sposoby:
+Po zakończeniu eksperymentu, możesz przejść do zarejestrowanych uruchomienie rekordu eksperymentu. Dostęp do historii można uzyskać na dwa sposoby:
 
 * Pobierz adres URL do uruchomienia bezpośrednio ```print(run.get_portal_url())```
 * Wyświetl szczegóły przebiegu, przesyłając do nazwa przebiegu (w tym przypadku ```run```). W ten sposób wskazuje nazwę eksperymentu identyfikator, typ, stan, strona szczegółów, łącze do witryny Azure portal oraz link do dokumentacji.
 
 Link do uruchomienia oferuje bezpośrednio do strony szczegółów przebiegu w witrynie Azure portal. Tutaj widać, właściwości, śledzonych metryki, obrazów i wykresów, które są rejestrowane w eksperymencie. W tym przypadku możemy rejestrowane MSE i wartości alfa.
 
-  ![Szczegóły przebiegu w witrynie Azure portal](./media/how-to-track-experiments/run-details-page-web.PNG)
+  ![Szczegóły przebiegu w witrynie Azure portal](./media/how-to-track-experiments/run-details-page.png)
 
 Można również wyświetlić wszystkie dane wyjściowe lub dzienniki dla uruchomienia lub Pobierz migawkę eksperymentu, przesłania więc folderu eksperymentu można udostępniać innym osobom.
 
@@ -302,19 +304,19 @@ Dowiedz się więcej o usługach:
 
 1. Wybierz **eksperymentów** skrajnie po lewej stronie panelu obszaru roboczego.
 
-   ![Zrzut ekranu przedstawiający menu eksperymentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_menu.PNG)
+   ![Zrzut ekranu przedstawiający menu eksperymentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-menu.png)
 
 1. Wybierz eksperyment, który Cię interesuje.
 
-   ![Lista eksperymentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_list.PNG)
+   ![Lista eksperymentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-list.png)
 
 1. W tabeli wybierz numer uruchomienia.
 
-   ![Uruchomienie eksperymentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_run.PNG)
+   ![Uruchomienie eksperymentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-run.png)
 
 1. W tabeli wybierz liczbę iteracji dla modelu, który chcesz dalszego zbadania.
 
-   ![Model doświadczenia](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_model.PNG)
+   ![Model doświadczenia](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-model.png)
 
 
 
@@ -334,9 +336,9 @@ Macierz pomyłek służy do opisywania wydajność model klasyfikacji. Każdy wi
 
 W przypadku problemów z klasyfikacji usługi Azure Machine Learning automatycznie zapewnia macierz pomyłek dla każdego modelu, który jest skompilowany. Dla każdego macierz pomyłek automatycznych ML zostaną wyświetlone poprawnie sklasyfikowane etykiety jako etykiety zielony i niepoprawnie sklasyfikowanych w kolorze czerwonym. Rozmiar koła reprezentuje liczbę próbek w nim. Ponadto liczba częstotliwość każdej etykiety przewidywane i każdej etykiety wartość true, znajduje się w sąsiadujących wykresów słupkowych. 
 
-Przykład 1: Model klasyfikacji o niskiej dokładność ![model klasyfikacji o niskiej dokładności](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion_matrix1.PNG)
+Przykład 1: Model klasyfikacji z niską dokładnością ![modelu klasyfikacji z niską dokładnością](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion-matrix1.png)
 
-Przykład 2: Model klasyfikacji o wysokiej dokładności (idealne) ![model klasyfikacji o wysokiej dokładności](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion_matrix2.PNG)
+Przykład 2: Model klasyfikacji z wysoką dokładnością (idealnym ![) modelem klasyfikacji o wysokiej dokładności](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion-matrix2.png)
 
 
 #### <a name="precision-recall-chart"></a>Precision-recall wykresu
@@ -345,17 +347,17 @@ Z tego wykresu można porównać krzywych precision-recall dla każdego modelu o
 
 Termin dokładności reprezentuje zdolność klasyfikatora poprawnie oznaczenie wszystkich wystąpień. Odwołania reprezentuje możliwości klasyfikatora znaleźć wszystkie wystąpienia określonej etykiecie. Krzywa precision-recall przedstawiono relację między tymi dwoma pojęciami. Najlepiej, jeśli model musi 100% dokładności i 100-procentową dokładnością.
 
-Przykład 1: Model klasyfikacji o niskiej dokładności i niski wycofaniu ![model klasyfikacji o niskim dokładności i niski odwołania](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision_recall1.PNG)
+Przykład 1: Model klasyfikacji z małą dokładnością i niskim odwołaniem ![modelu klasyfikacji z niską dokładnością i niskim wycofywaniem](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision-recall1.png)
 
-Przykład 2: Model klasyfikacji o ~ 100% dokładności i ~ 100% odwołania (idealne) ![dużej dokładności modelu klasyfikacji i odwołań](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision_recall2.PNG)
+Przykład 2: Model klasyfikacji o wartości ~ 100% Precision i ~ 100% (idealne) ![model klasyfikacji o wysokiej dokładności i odwołaniu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision-recall2.png)
 
 #### <a name="roc"></a>ROC
 
 Odbiornik operacyjnego cechy (lub ROC) jest wykres poprawnie sklasyfikowane etykiety, a niepoprawnie sklasyfikowane etykiety dla określonego modelu. Może być mniej informacyjne krzywej ROC, gdy szkolenie modeli w zestawach danych przy użyciu wysokie odchylenie, ponieważ nie będą widoczne fałszywie dodatnie etykiety.
 
-Przykład 1: Model klasyfikacji o niska wartość true, etykiety i wysoka etykiety false ![model klasyfikacji z niska wartość true, etykiety i wysoka etykiety false](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc1.PNG)
+Przykład 1: Model klasyfikacji z niską rzeczywistą etykietami i wysokimi fałszywymi ![etykietami model klasyfikacji z niską rzeczywistą etykietami i silnymi etykietami fałszywymi](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc-1.png)
 
-Przykład 2: Model klasyfikacji z wysoką wartość true, etykiety i niski etykiety false ![model klasyfikacji z wysoką wartość true, etykiety i niski etykiety wartość false](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc2.PNG)
+Przykład 2: Model klasyfikacji z wysoką prawdziwymi etykietami i niskimi ![etykietami fałszywych z modelem klasyfikacji z wysokimi etykietami i niskimi etykietami fałszywymi](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc-2.png)
 
 #### <a name="lift-curve"></a>Przenoszenie krzywej
 
@@ -363,9 +365,9 @@ Możesz porównać przyrostu modelu tworzone automatycznie za pomocą usługi Az
 
 Wykresy przyrostu służą do oceny wydajności model klasyfikacji. Pokazuje, ile lepiej można oczekiwać, że sposób korzystania z modelu, w porównaniu do bez modelu. 
 
-Przykład 1: Model wykonuje co gorsza niż model losowej ![model klasyfikacji, które co gorsza niż losowej modelu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-lift_curve1.PNG)
+Przykład 1: Model jest niezgodny z przypadkowym modelem ![wyboru model klasyfikacji, który jest niezgodny z losowym modelem wyboru](./media/how-to-track-experiments/azure-machine-learning-auto-ml-lift-curve1.png)
 
-Przykład 2: Model działa lepiej niż model losowej ![model klasyfikacji, który działa lepiej](./media/how-to-track-experiments/azure-machine-learning-auto-ml-lift_curve2.PNG)
+Przykład 2: Model jest lepszy niż losowy model ![wyboru modelu klasyfikacji, który wykonuje lepsze](./media/how-to-track-experiments/azure-machine-learning-auto-ml-lift-curve2.png)
 
 #### <a name="gains-curve"></a>Krzywa zysków
 
@@ -373,9 +375,9 @@ Wykres zyski ocenia wydajność model klasyfikacji przez każdy fragment danych.
 
 Użyj wykresu skumulowanego zyski ułatwiające wybór odcięcia Klasyfikacja za pomocą wartość procentową, która odnosi się do żądanego korzyści z modelu. Informacje te stanowią innym sposobem spojrzenie na wyniki na wykresie przyrostu towarzyszącej.
 
-Przykład 1: Model klasyfikacji o minimalnym zysk ![model klasyfikacji o minimalnym korzyści](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains_curve1.PNG)
+Przykład 1: Model klasyfikacji z minimalnym wzrostem ![modelu klasyfikacji z minimalnym wzrostem](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains-curve1.png)
 
-Przykład 2: Model klasyfikacji o znaczące korzyści ![model klasyfikacji o znaczące korzyści](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains_curve2.PNG)
+Przykład 2: Model klasyfikacji ze znaczącym wzrostem ![modelu klasyfikacji z znaczącym wzrostem](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains-curve2.png)
 
 #### <a name="calibration-plot"></a>Wykres odwzorowania
 
@@ -383,9 +385,9 @@ W przypadku wszystkich problemów klasyfikacji możesz przejrzeć odwzorowania l
 
 Wykres odwzorowania służy do wyświetlania zaufania modelu predykcyjnego. Odbywa się to poprzez przedstawiający relację między prawdopodobieństwa przewidywanych i rzeczywistych prawdopodobieństwo, gdzie "prawdopodobieństwo" oznacza prawdopodobieństwo, że konkretnego wystąpienia, należy w ramach niektóre etykiety. Dobrze pomiarowej modelu wyrównane y = x wiersza, gdzie jest względnie pewność, że jej prognozy. Model nadmiernego confident wyrównane y = 0 wiersza, w którym przewidywany prawdopodobieństwo, że jest zainstalowany, ale istnieje nie rzeczywiste prawdopodobieństwo.
 
-Przykład 1: Więcej dobrze pomiarowej modelu ![ bardziej dobrze pomiarowej modelu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib_curve1.PNG)
+Przykład 1: Bardziej dobrze skalibrowane ![ modele modelu bardziej dobrze skalibrowanego](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib-curve1.png)
 
-Przykład 2: Model nadmiernego confident ![nadmiernego confident modelu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib_curve2.PNG)
+Przykład 2: Model ![z nadmiernym priorytetem modelem o nadmiernej pewności](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib-curve2.png)
 
 ### <a name="regression"></a>Regresji
 Dla każdego modelu regresji kompilowania przy użyciu zautomatyzowanych maszyny możliwości usługi Azure Machine Learning uczenia, możesz zobaczyć następujące wykresy: 
@@ -400,9 +402,9 @@ Przewidywane programu vs. Wartość true przedstawiono relacje między wartości
 
 Po każdym uruchomieniu widać przewidywane a true wykresu dla każdego modelu regresji. Aby zapewnić ochronę prywatności danych, wartości są ze sobą kwanty, a rozmiar każdego kwantu jest wyświetlany jako wykres słupkowy w dolnej części obszaru wykresu. Model predykcyjny, można porównać z modułem jaśniejszy odcień marginesów błąd, względem idealne wartości, z którym model powinien być.
 
-Przykład 1: Model regresji, za pomocą niski dokładności prognozy ![modelu regresji przy niskim dokładności prognozy](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression1.PNG)
+Przykład 1: Model regresji z niską dokładnością ![w przypadku prognozowania modelu regresji z niską dokładnością w przewidywaniach](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression1.png)
 
-Przykład 2: Model regresji o wysokiej dokładności w jej prognozy ![modelu regresji przy użyciu wysokiej dokładności w jej prognozy](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression2.PNG)
+Przykład 2: Model regresji z wysoką dokładnością w prognozie ![modelu regresji o wysokiej dokładności w jej prognozach](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression2.png)
 
 <a name="histo"></a>
 
@@ -410,15 +412,15 @@ Przykład 2: Model regresji o wysokiej dokładności w jej prognozy ![modelu reg
 
 Pozostały reprezentuje obserwowanych y — prognozowanej wartości y. Aby pokazać marginesu błędu i odchylenie niski, histogram reszty powinny mieć kształt krzywą dzwonka skupia się wokół 0. 
 
-Przykład 1: Model regresji przy użyciu odchylenie w jego błędy ![SA modelu regresji przy użyciu odchylenie w jego błędy](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression3.PNG)
+Przykład 1: Model regresji z bias w jego błędach ![model regresji sa z odchyleniami w jego błędach](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression3.png)
 
-Przykład 2: Model regresji przy użyciu bardziej równomiernego rozłożenia błędy ![modelu regresji przy użyciu bardziej równomiernego rozłożenia błędy](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression4.PNG)
+Przykład 2: Model regresji z większą ilością równomiernej ![dystrybucji błędów modelu regresji z większą ilością nawet dystrybucji błędów](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression4.png)
 
 ### <a name="model-explain-ability-and-feature-importance"></a>Model znaczenie wyjaśniono możliwości i funkcji
 
 Znaczenie dla funkcji daje wynik, który wskazuje opowiadają została każda funkcja budowy modelu. Możesz przejrzeć wynik znaczenie funkcji dla modelu ogólny, jak również na klasę w modelu predykcyjnego. Możesz zobaczyć na funkcję porównanie znaczenie dla każdej klasy lub ogólnej.
 
-![Funkcja wyjaśnienia możliwości](./media/how-to-track-experiments/azure-machine-learning-auto-ml-feature_explain1.PNG)
+![Funkcja wyjaśnienia możliwości](./media/how-to-track-experiments/azure-machine-learning-auto-ml-feature-explain1.png)
 
 ## <a name="example-notebooks"></a>Przykład notesów
 Następujące notesów zademonstrowania koncepcji w tym artykule:

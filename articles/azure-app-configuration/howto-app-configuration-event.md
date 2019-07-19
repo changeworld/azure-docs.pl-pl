@@ -1,6 +1,6 @@
 ---
-title: Samouczek dotyczący konfigurowania konfiguracji aplikacji platformy Azure do wysyłania zdarzeń do punktu końcowego sieci web | Dokumentacja firmy Microsoft
-description: W tym samouczku dowiesz się, jak skonfigurować subskrypcje zdarzeń konfiguracji aplikacji platformy Azure do wysyłania zdarzeń modyfikacji pary klucz wartość do punktu końcowego sieci web.
+title: Samouczek dotyczący konfigurowania konfiguracji aplikacji platformy Azure w celu wysyłania zdarzeń do punktu końcowego sieci Web | Microsoft Docs
+description: W tym samouczku dowiesz się, jak skonfigurować subskrypcje zdarzeń konfiguracji aplikacji platformy Azure w celu wysyłania zdarzeń modyfikacji klucza do internetowego punktu końcowego.
 services: azure-app-configuration
 documentationcenter: ''
 author: jimmyca
@@ -13,24 +13,20 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 2cb9ad28a21842987f8c0f7c75151ab8c7fe6fa0
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: d41ce06279536e3479b96d8d7afedf81624dbc9b
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66735360"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326597"
 ---
-# <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Szybki start: Kierowanie zdarzeń usługi Azure konfiguracji aplikacji do punktu końcowego sieci web przy użyciu wiersza polecenia platformy Azure
+# <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Szybki start: Kierowanie zdarzeń konfiguracji aplikacji platformy Azure do punktu końcowego sieci Web przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Użytkownicy platformy Azure z konfiguracji aplikacji mogą subskrybować zdarzenia, które są emitowane zawsze wtedy, gdy wartości klucza są modyfikowane. Te zdarzenia mogą wyzwalać elementy webhook, usługi Azure Functions, kolejek usługi Azure Storage lub innych obsługi zdarzeń, który jest obsługiwany przez [usługi Azure Event Grid](https://docs.microsoft.com/azure/event-grid/event-handlers). W tym artykule dowiesz się, jak używać interfejsu wiersza polecenia platformy Azure do subskrybowania zdarzenia konfiguracji aplikacji platformy Azure.
+W tym przewodniku szybki start dowiesz się, jak skonfigurować subskrypcje zdarzeń konfiguracji aplikacji platformy Azure w celu wysyłania zdarzeń modyfikacji klucz-wartość do internetowego punktu końcowego. Użytkownicy usługi Azure App Configuration mogą subskrybować zdarzenia, które są emitowane za każdym razem, gdy wartości klucza są modyfikowane. Zdarzenia te mogą wyzwalać elementy webhook, Azure Functions, kolejki usługi Azure Storage lub inne procedury obsługi zdarzeń obsługiwane przez Azure Event Grid. Zazwyczaj użytkownik wysyła zdarzenia do punktu końcowego, w którym następuje przetwarzanie danych zdarzenia i są wykonywane akcje. Jednak aby uprościć ten artykuł, zdarzenia zostaną wysłane do aplikacji sieci Web, która zbiera i wyświetla komunikaty.
 
-Zazwyczaj użytkownik wysyła zdarzenia do punktu końcowego, w którym następuje przetwarzanie danych zdarzenia i są wykonywane akcje. Jednak aby uprościć ten artykuł, zdarzenia zostaną wysłane do aplikacji sieci Web, która zbiera i wyświetla komunikaty.
+## <a name="prerequisites"></a>Wymagania wstępne
 
-Po wykonaniu czynności opisanych w tym artykule dane powinny zostać wysłane do aplikacji internetowej.
-
-![Wyświetlanie zdarzenia subskrypcji](./media/quickstarts/event-grid/view-results.png)
-
-[!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
+- Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/). Opcjonalnie możesz użyć Azure Cloud Shell.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -44,15 +40,15 @@ Tematy usługi Event Grid to zasoby platformy Azure i muszą być umieszczone w 
 
 Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). 
 
-Poniższy przykład tworzy grupę zasobów o nazwie `<resource_group_name>` w *westus* lokalizacji.  Zamień `<resource_group_name>` na unikatową nazwę grupy zasobów.
+Poniższy przykład tworzy grupę zasobów o nazwie `<resource_group_name>` w lokalizacji *zachodniej* .  Zamień `<resource_group_name>` na unikatową nazwę grupy zasobów.
 
 ```azurecli-interactive
 az group create --name <resource_group_name> --location westus
 ```
 
-## <a name="create-an-app-configuration"></a>Tworzenie konfiguracji aplikacji
+## <a name="create-an-app-configuration"></a>Utwórz konfigurację aplikacji
 
-Zastąp `<appconfig_name>` unikatową nazwą dla danej konfiguracji aplikacji i `<resource_group_name>` z wcześniej utworzoną grupę zasobów. Nazwa musi być unikatowa, ponieważ jest on używany jako nazwa DNS.
+Zamień `<appconfig_name>` na unikatową nazwę konfiguracji aplikacji oraz `<resource_group_name>` utworzoną wcześniej grupę zasobów. Nazwa musi być unikatowa, ponieważ jest używana jako nazwa DNS.
 
 ```azurecli-interactive
 az appconfig create \
@@ -82,9 +78,9 @@ Powinna być widoczna witryna internetowa bez żadnych aktualnie wyświetlanych 
 
 [!INCLUDE [event-grid-register-provider-cli.md](../../includes/event-grid-register-provider-cli.md)]
 
-## <a name="subscribe-to-your-app-configuration"></a>Subskrybowanie do konfiguracji aplikacji
+## <a name="subscribe-to-your-app-configuration"></a>Subskrybowanie konfiguracji aplikacji
 
-Subskrybowanie tematu to dla usługi Event Grid informacja o tym, które zdarzenia chcesz śledzić i gdzie mają być one wysyłane. Poniższy przykład ilustruje subskrybowanie konfiguracji aplikacji został utworzony i przekazanie adresu URL z aplikacji sieci web jako punktu końcowego dla powiadomień o zdarzeniach. Zastąp element `<event_subscription_name>` nazwą Twojej subskrypcji zdarzeń. Jako parametrów `<resource_group_name>` i `<appconfig_name>` użyj utworzonych wcześniej wartości.
+Subskrybowanie tematu to dla usługi Event Grid informacja o tym, które zdarzenia chcesz śledzić i gdzie mają być one wysyłane. Poniższy przykład subskrybuje utworzoną konfigurację aplikacji i przekazuje adres URL z aplikacji sieci Web jako punkt końcowy dla powiadomienia o zdarzeniu. Zastąp element `<event_subscription_name>` nazwą Twojej subskrypcji zdarzeń. Jako parametrów `<resource_group_name>` i `<appconfig_name>` użyj utworzonych wcześniej wartości.
 
 Punkt końcowy dla aplikacji sieci Web musi zawierać sufiks `/api/updates/`.
 
@@ -102,9 +98,9 @@ Wyświetl aplikację sieci Web ponownie i zwróć uwagę, że zdarzenie sprawdza
 
 ![Wyświetlanie zdarzenia subskrypcji](./media/quickstarts/event-grid/view-subscription-event.png)
 
-## <a name="trigger-an-app-configuration-event"></a>Wyzwól zdarzenie konfiguracji aplikacji
+## <a name="trigger-an-app-configuration-event"></a>Wyzwalanie zdarzenia konfiguracji aplikacji
 
-Teraz wyzwólmy zdarzenie, aby zobaczyć, jak usługa Event Grid dystrybuuje komunikat do punktu końcowego. Tworzenie przy użyciu pary klucz wartość `<appconfig_name>` z wcześniej.
+Teraz wyzwólmy zdarzenie, aby zobaczyć, jak usługa Event Grid dystrybuuje komunikat do punktu końcowego. Utwórz klucz-wartość przy użyciu `<appconfig_name>` wcześniejszej.
 
 ```azurecli-interactive
 az appconfig kv set --name <appconfig_name> --key Foo --value Bar --yes
@@ -130,7 +126,7 @@ Zdarzenie zostało wyzwolone, a usługa Event Grid wysłała komunikat do punktu
 ```
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Jeśli planujesz kontynuować pracę z tym konfiguracji aplikacji i subskrypcji zdarzeń, nie usuwaj zasobów utworzonych w tym artykule. Jeśli nie planujesz kontynuowania pracy, użyj poniższego polecenia, aby usunąć zasoby utworzone w ramach tego artykułu.
+Jeśli planujesz kontynuować pracę z tą konfiguracją aplikacji i subskrypcją zdarzeń, nie czyść zasobów utworzonych w tym artykule. Jeśli nie planujesz kontynuowania pracy, użyj poniższego polecenia, aby usunąć zasoby utworzone w ramach tego artykułu.
 
 Zamień `<resource_group_name>` na utworzoną powyżej grupę zasobów.
 
@@ -140,7 +136,8 @@ az group delete --name <resource_group_name>
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Skoro już wiesz, jak tworzyć tematy i subskrypcje zdarzeń, Dowiedz się więcej o zdarzeniach pary klucz wartość i jakie usługi Event Grid pozwala wykonać:
+Teraz, gdy wiesz już, jak tworzyć tematy i subskrypcje zdarzeń, Dowiedz się więcej o zdarzeniach kluczowych wartości i jakie Event Grid mogą pomóc:
 
-- [Reagowanie na zdarzenia pary klucz wartość](concept-app-configuration-event.md)
+- [Oddziałanie z zdarzeniami klucz-wartość](concept-app-configuration-event.md)
 - [Event Grid — informacje](../event-grid/overview.md)
+- [Obsługa Azure Event Grid](../event-grid/event-handlers.md)

@@ -1,77 +1,103 @@
 ---
-title: Jak utworzyć konto handlowe portalu Marketplace w Centrum partnerskiego
-description: Dowiedz się, jak utworzyć konto handlowe portalu Marketplace w Centrum partnerskiego.
+title: Jak utworzyć komercyjne konto witryny Marketplace w centrum partnerskim
+description: Dowiedz się, jak utworzyć komercyjne konto witryny Marketplace w centrum partnerskim.
 author: mattwojo
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
-ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: f861a05bd369fb279ab82e230cad307a3569967e
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.topic: how-to
+ms.date: 07/05/2019
+ms.openlocfilehash: 24ed03cde967f0fef7abdc4c2df1f8e5d6bdb6ab
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619389"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68327123"
 ---
-# <a name="how-to-create-a-commercial-marketplace-account-in-partner-center"></a>Jak utworzyć konto handlowe portalu Marketplace w Centrum partnerskiego
+# <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Utwórz komercyjne konto witryny Marketplace w centrum partnerskim
 
-Aby opublikować oferty [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/) lub [AppSource](https://appsource.microsoft.com/) za pośrednictwem [portal Marketplace komercyjnych](https://partner.microsoft.com/dashboard/commercial-marketplace/offers), musisz utworzyć konto w Centrum partnerskim.  
+Aby opublikować oferty w [witrynie Azure Marketplace](https://azuremarketplace.microsoft.com/) lub [AppSource](https://appsource.microsoft.com/), musisz utworzyć konto w komercyjnym programie Marketplace w centrum partnerskim.
 
-W tym artykule omówiono sposób tworzenia konta w Centrum partnerskim, np.: 
+## <a name="create-a-partner-center-account"></a>Utwórz konto Centrum partnerskiego
 
-- [Zarejestruj się za pomocą strony rejestracji Centrum partnerskiego](#register-for-an-account-using-the-enrollment-page)
+W tym artykule omówiono sposób tworzenia konta Centrum partnerskiego, w tym: 
+
+- [Rejestrowanie przy użyciu strony rejestracji Centrum partnerskiego](#to-create-a-commercial-marketplace-account-in-partner-center)
 - [Zaloguj się przy użyciu konta służbowego](#sign-in-with-a-work-account)
-- [Zaakceptuj warunki i postanowienia](#agree-to-terms-and-conditions) 
-- [Podaj swojego profilu wydawcy](#provide-your-publisher-profile)
+- [Wyrażanie zgody na warunki i postanowienia](#agree-to-terms-and-conditions) 
+- [Podaj swój profil wydawcy](#provide-your-publisher-profile)
 
-Jeśli masz konto [Cloud Partner Portal (CPP)](https://cloudpartner.azure.com) , ma zostały poddane migracji do Centrum partnerskiego, nie musisz utworzyć nowe konto. Zobacz [wydawców migrowane z CPP](#publishers-migrated-from-cpp). 
+>[!Important]
+>Jeśli masz konto w [Portal Cloud partner (CPP)](https://cloudpartner.azure.com) , które zostało przeniesione do Centrum partnerskiego, nie musisz tworzyć nowego konta. Aby uzyskać więcej informacji, zobacz [wydawcy z programu CPP](#publishers-moving-from-cpp) . 
 
-## <a name="prerequisites"></a>Wymagania wstępne
+### <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Aby utworzyć konto w Centrum partnerskim, upewnij się, że masz:
+Aby utworzyć konto w centrum partnerskim, upewnij się, że masz:
 
-- Uprawnienia do podpisania Umowy prawne w imieniu firmy
-- Nazwa firmy prawnych w firmie, adres i głównej osoby kontaktowej (może to być użytkownik)
+- Urząd do podpisywania umów prawnych w imieniu firmy.
+- Służbowa nazwa firmy, adres i kontakt podstawowy (mogą to być).
 
-Firma Microsoft będzie zweryfikować te informacje podczas procesu tworzenia konta.
+Będziemy weryfikować te informacje podczas procesu tworzenia konta.
 
-## <a name="register-for-an-account-using-the-enrollment-page"></a>Zarejestruj się, aby konto usługi przy użyciu strony rejestracji 
+### <a name="to-create-a-commercial-marketplace-account-in-partner-center"></a>Aby utworzyć komercyjne konto witryny Marketplace w centrum partnerskim
 
-Odwiedź stronę [ **Center partnera firmy Microsoft — Zapraszamy** ](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) strony rejestracji i przejrzyj informacje o rejestracji znalezione.
+Przejrzyj informacje na stronie [**Zapraszamy do rejestracji w centrum partnerskim firmy Microsoft**](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) , a następnie zarejestruj się w celu uzyskania konta.
 
-### <a name="sign-in-with-a-work-account"></a>Zaloguj się przy użyciu konta służbowego
+#### <a name="sign-in-with-a-work-account"></a>Zaloguj się przy użyciu konta służbowego
 
-W ramach Twojej rejestracji w Centrum partnerskim poprosimy możesz połączyć domeny konta poczty e-mail w firmie w pracy z nowym kontem Centrum partnerskiego. Kojarząc tych kont, pracownicy firmy zalogować się do Centrum partnerskiego wraz z ich pracy konta użytkownika nazwy i hasła.
+Aby można było połączyć domenę służbowej poczty e-mail z firmą z nowym kontem Centrum partnerskiego. Kojarząc te konta, pracownicy firmy mogą logować się do Centrum partnerskiego przy użyciu nazw użytkowników i haseł konta służbowego.
 
-Aby uzyskać pomoc dotyczącą sposobu sprawdzania od tego, czy Twoja firma dysponuje już konto służbowe, jak utworzyć nowe konto służbowe lub sposób konfigurowania wielu kont służbowych za pomocą Centrum partnerskiego, odwiedź stronę [firmie konto służbowe i funkcja Centrum partnerskiego](./company-work-accounts.md). 
+>[!Note]
+>Aby sprawdzić, czy Twoja firma ma już konto służbowe, jak utworzyć nowe konto służbowe lub jak skonfigurować wiele kont służbowych do użycia z centrum partnerskim, odwiedź [konto służbowe firmy i centrum partnerskie](./company-work-accounts.md). 
 
-### <a name="agree-to-terms-and-conditions"></a>Zaakceptuj warunki i postanowienia
+#### <a name="agree-to-terms-and-conditions"></a>Wyrażanie zgody na warunki i postanowienia
 
-Musisz wyrazić zgodę na dwa zestawy warunków i postanowień, w tym [Microsoft Online Subscription — Umowa](https://go.microsoft.com/fwlink/?LinkId=870457) i [umowie wydawcy portalu Microsoft Marketplace](https://go.microsoft.com/fwlink/?linkid=843476).
+Musisz wyrazić zgodę na dwa zestawy warunków i postanowień, w tym [Umowa subskrypcyjna dotycząca usług online firmy Microsoft](https://go.microsoft.com/fwlink/?LinkId=870457)i [umowę wydawcy Microsoft Marketplace](https://go.microsoft.com/fwlink/?linkid=843476).
 
+#### <a name="provide-your-publisher-profile"></a>Podaj swój profil wydawcy
 
-### <a name="provide-your-publisher-profile"></a>Podaj swojego profilu wydawcy
+Twój profil wydawcy zawiera nazwę firmy i identyfikator MPN. Jeśli jeszcze tego nie zrobiono, należy dołączyć do [Microsoft Partner Network](https://partner.microsoft.com/commercial). Po dołączeniu do Microsoft Partner Network zostanie wyświetlony identyfikator MPN. 
 
-Twój profil wydawcy zawiera nazwy i firmy identyfikator MPN. Jeśli nie zostało to jeszcze zrobione, należy dołączyć [sieci Microsoft Partner Network](https://partner.microsoft.com/commercial). Dołączając do programu Microsoft Partner Network, otrzymasz identyfikator MPN. 
+Utwórz identyfikator wydawcy. IDENTYFIKATOR wydawcy jednoznacznie identyfikuje firmę i oferty w witrynie Marketplace i AppSource. 
 
-Należy również zadeklarować Identyfikatora wydawcy w tej chwili. Twój identyfikator wydawcy jednoznacznie identyfikują firmy w portalu Azure Marketplace i AppSource. 
+Po potwierdzeniu informacji o profilu wydawcy Zaakceptuj warunki i postanowienia i Utwórz konto Centrum partnerskiego, wybierając pozycję **Akceptuj i Kontynuuj**. 
 
-Po potwierdzeniu informacji o profilu wydawcy można wyrazić zgodę na warunki i postanowienia i utworzyć konto w Centrum partnerskim, wybierając **Akceptuj i kontynuować**. *Użytkownik musi być autoryzowana do działania w imieniu firmy, aby zaakceptować te warunki.*
+>[!Important]
+>*Aby zaakceptować te warunki, musisz mieć uprawnienia do działania w imieniu firmy.*
 
-Teraz ukończyć Twojej rejestracji Centrum partnerskiego i zostaną podjęte w celu [komercyjnych omówienie portalu Marketplace](./commercial-marketplace-overview.md) strony.
+Dziękujemy za utworzenie konta w centrum partnerskim. Nastąpi przekierowanie do strony [Przegląd komercyjnego portalu Marketplace](./commercial-marketplace-overview.md) .
 
+### <a name="publishers-moving-from-cpp"></a>Wydawcy przechodzą z CPP
 
-## <a name="publishers-migrated-from-cpp"></a>Wydawcy migrowane z CPP
+Jeśli Twoje konto zostało zmigrowane z [Portal Cloud partner (CPP)](https://cloudpartner.azure.com), nie musisz tworzyć nowego konta Centrum partnerskiego, ale otrzymasz dostosowany link do nowego konta Centrum partnerskiego za pośrednictwem poczty e-mail i w powiadomieniu o banerze wyświetlonym po Logowanie do istniejącego konta CPP.
 
-Jeśli Twoje konto zostało zmigrowane z [Cloud Partner Portal (CPP)](https://cloudpartner.azure.com), nie musisz utworzyć nowe Centrum partnerskiego konta, ale otrzymali dostosowane link do Centrum partnerskiego konta za pośrednictwem poczty e-mail i powiadomienie transparentu wyświetlane po zalogowaniu się do istniejącego konta CPP.
+Po włączeniu nowego konta Centrum partnerskiego, odwiedzając ten dostosowany link, możesz wrócić do swojego konta, odwiedzając [komercyjny pulpit nawigacyjny Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/) w centrum partnerskim.
 
-Po aktywowaniu nowego konta w Centrum partnerskim, odwiedzając ten link dostosowany, można było wrócić do swojego konta, odwiedzając [pulpit nawigacyjny handlowe Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/) Centrum partnerskiego.
+Informacje o umowie dotyczące publikowania i profilu firmy zostaną zmigrowane do nowego konta Centrum partnerskiego wraz z wcześniej skonfigurowanymi informacjami o profilu wypłaty konta, kontami użytkowników i uprawnieniami oraz aktywnymi ofertami skojarzonymi z kontem CPP. 
 
-Publikowanie informacji o profilu umowy i firmy zostaną zmigrowane do nowego konta Centrum partnerskiego, wraz z dowolnego uprzednio skonfigurowane konto informacje dotyczące wypłat — informacje o profilu, konta użytkowników i uprawnienia i aktywne oferuje skojarzonych z Twoim kontem CPP. 
+Po przeniesieniu informacji o koncie z przeglądarki CPP do Centrum partnerskiego nie będziesz już używać przeglądarki CPP do wprowadzania aktualizacji konta ani zarządzania użytkownikami, uprawnieniami i rozliczeniami. Przez ograniczony czas wszystkie aktualizacje konta wprowadzone w centrum partnerskim zostaną automatycznie zaktualizowane na koncie CPP tylko do odczytu, dopóki Portal CPP nie zostanie ostatecznie uznany za przestarzały.
 
-Gdy konto zostanie przeniesione z CPP do Centrum partnerskiego, konto w Centrum partnerskim staje się konto główne ma być używany do aktualizacji konta, zarządzanie użytkownikami, uprawnienia i informacje dotyczące wypłat zarządzania. Aktualizacje te konta automatycznie zostaną zsynchronizowane na Twoje konto CPP tylko do odczytu, dopóki CPP portal ostatecznie jest przestarzały. 
+## <a name="add-new-publishers-to-the-commercial-marketplace-program"></a>Dodaj nowych wydawców do komercyjnego programu Marketplace
 
-## <a name="next-steps"></a>Następne kroki
+Organizacja może mieć wielu wydawców skojarzonych z komercyjnym kontem witryny Marketplace. Istniejący użytkownik może dodać kolejnych wydawców po zalogowaniu się do Centrum partnerskiego, wybierając pozycję **Ustawienia** -> konta**wydawcy** -> **Dodaj**wydawcę.
 
-- [Zarządzanie kontem komercyjnych Marketplace Centrum partnerskiego](./manage-account.md) 
+>[!Note]
+>Przed dodaniem nowego wydawcy można przejrzeć istniejących wydawców, logując się do Centrum partnerskiego, a następnie wybierając pozycję **Ustawienia** -> konta**wydawcy** , aby wyświetlić listę istniejących wydawców.
+
+Inny użytkownik z tej samej dzierżawy Azure Active Directory może dodać nowego wydawcę, wykonując poniższe kroki:
+
+1. Rozpocznij pracę z przepływem rejestracji w [centrum partnerskim firmy Microsoft](https://partner.microsoft.com/en-us/dashboard/account/v3/enrollment/introduction/azureisv).
+1. Wybierz pozycję **Zaloguj się przy użyciu konta służbowego** i wprowadź swój służbowy adres e-mail.
+1. Wybierz przycisk **Dodaj** wydawcę.
+1. Wybierz identyfikator MPN, który chcesz skojarzyć z wydawcą.
+1. Zaktualizuj **szczegóły wydawcy** w formularzu. <br>
+
+   1. **Nazwa wydawcy**: Nazwa, która będzie wyświetlana w witrynie Azure Marketplace lub AppSource z ofertą. <br>
+   1. **PublisherID**: Identyfikator używany przez centrum partnerskie do unikatowego identyfikowania wydawcy. Wartość domyślna dla tego pola jest mapowana na istniejący i unikatowy `PublisherID` w systemie, którego nie można ponownie użyć, a tym samym pole należy zaktualizować. <br>
+   1. **Informacje kontaktowe**: W razie potrzeby Zaktualizuj informacje kontaktowe.
+
+1. Po zakończeniu procesu możesz zarządzać nowo utworzonym wydawcą, przechodząc do komercyjnego programu w **portalu Marketplace** wymienionym w menu nawigacji po lewej stronie. Jeśli nie widzisz komercyjnego programu **Marketplace** , Odśwież stronę.  Nowy Wydawca zostanie wyświetlony na liście **wydawcy** .
+
+## <a name="next-steps"></a>Kolejne kroki
+
+- [Zarządzanie kontem komercyjnej witryny Marketplace w centrum partnerskim](./manage-account.md) 

@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Jak skonfigurować protokołu DHCPv6 dla maszyn wirtualnych systemu Linux.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 keywords: Protokół IPv6, usługa azure load balancer, podwójnego stosu, publiczny adres ip, natywnego protokołu ipv6, aplikację mobilną, iot
 ms.service: load-balancer
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2019
-ms.author: kumud
-ms.openlocfilehash: 66777ec314e95d81a4be57082f06ef16dc170186
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 3e987b6718ead6b7014ec302d1a186dabef11126
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60516551"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274927"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>Konfigurowanie protokołu DHCPv6 dla maszyn wirtualnych systemu Linux
 
@@ -54,9 +54,9 @@ Ten dokument opisuje sposób włączania protokołu DHCPv6, tak aby maszyny wirt
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
     ```
-Począwszy od Ubuntu 17.10 domyślnego mechanizmu konfiguracja sieci jest [NETPLAN]( https://netplan.io).  W czasie instalacji/wystąpienia NETPLAN odczytuje konfigurację sieci z YAML pliki konfiguracyjne w tej lokalizacji: / {lib,etc,run}/netplan/*.yaml.
+Począwszy od Ubuntu 17,10, domyślnym mechanizmem konfiguracji sieci jest [Plan]( https://netplan.io).  W czasie instalacji/tworzenia wystąpienia, PLAN sieciowy odczytuje konfigurację sieci z plików konfiguracji YAML w tej lokalizacji:/{lib, itp., uruchom}/netplan/*. YAML.
 
-Zawsze podawaj *dhcp6:true* instrukcji dla każdego interfejsu ethernet w konfiguracji.  Na przykład:
+Dołącz instrukcję *dhcp6: true* dla każdego interfejsu Ethernet w konfiguracji.  Przykład:
   
         network:
           version: 2
@@ -64,7 +64,7 @@ Zawsze podawaj *dhcp6:true* instrukcji dla każdego interfejsu ethernet w konfig
             eno1:
               dhcp6: true
 
-Podczas rozruchu wczesne netplan "sieciowa modułu renderowania" zapisuje konfiguracji/uruchomić ręcznie, wyłącz kontrolę nad urządzeniami do określonego demona sieci, aby uzyskać informacje na temat NETPLAN, zobacz https://netplan.io/reference.
+Podczas wczesnego rozruchu, plan sieci "moduł renderowania sieciowego" zapisuje konfigurację, aby można było usunąć kontrolę nad urządzeniami do określonego demona sieci, aby uzyskać informacje referencyjne na https://netplan.io/reference temat planu, zobacz.
  
 ## <a name="debian"></a>Debian
 

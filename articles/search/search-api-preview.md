@@ -1,6 +1,6 @@
 ---
-title: Wersja zapoznawcza interfejsu API REST dla usługi Azure Search 2019-05-06-Preview — usługa Azure Search
-description: Platformy Azure REST usługi Search wersja interfejsu API 2019-05-06-Preview zawiera eksperymentalne funkcje, takie jak magazyn wiedzy i klucze szyfrowania zarządzanego przez klienta.
+title: Wersja zapoznawcza interfejsu API REST dla Azure Search 2019-05-06 — wersja zapoznawcza — Azure Search
+description: Interfejs API REST usługi Azure Search w wersji 2019-05-06 — wersja zapoznawcza obejmuje funkcje eksperymentalne, takie jak magazyn wiedzy i klucze szyfrowania zarządzane przez klienta.
 services: search
 author: HeidiSteen
 manager: cgronlun
@@ -10,50 +10,50 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: search
 ms.date: 05/02/2019
-ms.author: HeidiSteen
+ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5374ff896613dd8f8563a2054be8a92103e63fbb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29d079c4e21352ced5fdcde44acaee66b79f6af9
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523905"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876654"
 ---
-# <a name="azure-search-service-rest-api-version-2019-05-06-preview"></a>Usługa Azure Search REST api-version 2019-05-06-Preview
-W tym artykule opisano `api-version=2019-05-06-Preview` wersję usługi Azure Search REST API, oferty funkcji eksperymentalnych, które nie są jeszcze ogólnie dostępne.
+# <a name="azure-search-service-rest-api-version-2019-05-06-preview"></a>Interfejs API REST usługi Azure Search — wersja 2019-05-06-Preview
+W `api-version=2019-05-06-Preview` tym artykule opisano wersję interfejsu API REST usługi Azure Search, oferując funkcje eksperymentalne, które nie są jeszcze ogólnie dostępne.
 
 > [!NOTE]
-> Funkcje w wersji zapoznawczej są dostępne do testowania i eksperymentowania z celem zbierania opinii i mogą ulec zmianie. Zdecydowanie odradzamy przy użyciu wersji zapoznawczej interfejsów API w aplikacjach produkcyjnych.
+> Funkcje w wersji zapoznawczej są dostępne do testowania i eksperymentowania z celem zebrania opinii i mogą ulec zmianie. Zdecydowanie odradzamy korzystanie z interfejsów API w wersji zapoznawczej w aplikacjach produkcyjnych.
 
 
-## <a name="new-in-2019-05-06-preview"></a>Nowość w wersji 2019-05-06-Preview
+## <a name="new-in-2019-05-06-preview"></a>Nowość w 2019-05-06 — wersja zapoznawcza
 
-[**Magazyn wiedzy** ](knowledge-store-concept-intro.md) jest nowe miejsce docelowe jest oparte na sztucznej Inteligencji wzbogacony potok. Oprócz indeksu można teraz utrwalić struktur danych wypełnione utworzone podczas indeksowania w usłudze Azure storage. Struktury fizyczne swoich danych za pośrednictwem elementy zestawu umiejętności, takich jak ukształtowane dane, czy dane są przechowywane w magazynie tabel lub usługi Blob storage i czy istnieje wiele widoków możesz kontrolować.
+[**Magazyn wiedzy**](knowledge-store-concept-intro.md) to nowe miejsce docelowe potoku wzbogacania opartego na AI. Oprócz indeksu można teraz utrwalać wypełnione struktury danych utworzone podczas indeksowania w usłudze Azure Storage. Możesz kontrolować struktury fizyczne danych za pomocą elementów w zestawu umiejętności, w tym w jaki sposób dane są zapisywane, czy dane są przechowywane w magazynie tabel lub w magazynie obiektów blob, oraz czy istnieje wiele widoków.
 
-[**Klucze szyfrowania zarządzanego przez klienta** ](search-security-manage-encryption-keys.md) po stronie usługi szyfrowania podczas spoczynku również jest nową funkcją w wersji zapoznawczej. Oprócz wbudowanych szyfrowanie w spoczynku zarządzany przez firmę Microsoft można zastosować dodatkową warstwę, gdzie jesteś jedynym właścicielem kluczy szyfrowania.
+[**Klucze szyfrowania zarządzane przez klienta**](search-security-manage-encryption-keys.md) dla szyfrowania po stronie usługi — w trybie spoczynku są również nową funkcją w wersji zapoznawczej. Oprócz wbudowanego szyfrowania, które jest zarządzane przez firmę Microsoft, można zastosować dodatkową warstwę szyfrowania, w której jesteś jedynym właścicielem kluczy.
 
 ## <a name="other-preview-features"></a>Inne funkcje w wersji zapoznawczej
 
-Funkcje z ogłoszeniem z wcześniejszych wersji zapoznawczych są nadal w publicznej wersji zapoznawczej. Jeśli w przypadku wywoływania interfejsu API za pomocą wcześniejszych wersji zapoznawczej wersja interfejsu api, możesz nadal korzystać z tej wersji programu lub przełączanie `2019-05-06-Preview` bez wprowadzania zmian w oczekiwane zachowanie.
+Funkcje ogłoszone we wcześniejszych wersjach zapoznawczych nadal są w publicznej wersji zapoznawczej. Jeśli wywołujesz interfejs API z wcześniejszą wersją interfejsu API w wersji zapoznawczej, możesz nadal korzystać z tej wersji lub `2019-05-06-Preview` przełączać się do programu bez zmian w oczekiwanym zachowaniu.
 
-+ [parametr zapytania moreLikeThis](search-more-like-this.md) znajduje dokumenty, które mają zastosowanie do określonego dokumentu. Ta funkcja została w starszych wersjach. 
-* [Indeksowanie obiektów blob CSV](search-howto-index-csv-blobs.md) tworzy jeden dokument dla każdego wiersza, w przeciwieństwie do jednego dokumentu na obiekt blob tekstu.
-* [Obsługa interfejsu API usługi MongoDB dla indeksatorów usługi Cosmos DB](search-howto-index-cosmosdb.md) jest w wersji zapoznawczej.
++ [parametr zapytania moreLikeThis](search-more-like-this.md) wyszukuje dokumenty, które mają zastosowanie do określonego dokumentu. Ta funkcja została zamieszczona w wcześniejszych wersjach zapoznawczych. 
+* [Indeksowanie obiektów BLOB CSV](search-howto-index-csv-blobs.md) tworzy jeden dokument na wiersz, w przeciwieństwie do jednego dokumentu na obiekt BLOB tekstu.
+* [Obsługa interfejsu API MongoDB dla indeksatorów Cosmos DB](search-howto-index-cosmosdb.md) jest w wersji zapoznawczej.
 
 
-## <a name="how-to-call-a-preview-api"></a>Wywoływanie interfejsu API w wersji zapoznawczej
+## <a name="how-to-call-a-preview-api"></a>Jak wywołać interfejs API w wersji zapoznawczej
 
-Starsze wersje zapoznawcze są nadal działa, ale stają się nieaktualne wraz z upływem czasu. Jeśli Twój kod wywołuje `api-version=2016-09-01-Preview` lub `api-version=2017-11-11-Preview`, te wywołania są nadal ważne. Jednak tylko najnowsza wersja (wersja zapoznawcza) zostanie odświeżona i ulepszenia. 
+Starsze wersje zapoznawcze nadal działają, ale stają się nieodświeżone w czasie. Jeśli kod wywołuje `api-version=2016-09-01-Preview` lub `api-version=2017-11-11-Preview`, te wywołania są nadal ważne. Jednak tylko Najnowsza wersja zapoznawcza jest odświeżana z ulepszeniami. 
 
-Następująca składnia przykładzie pokazano wywołanie do wersji zapoznawczej interfejsu API.
+Poniższa przykładowa składnia ilustruje wywołanie wersji interfejsu API podglądu.
 
     GET https://[service name].search.windows.net/indexes/[index name]/docs?search=*&api-version=2019-05-06-Preview
 
-Usługa Azure Search jest dostępna w wielu wersji. Aby uzyskać więcej informacji, zobacz [wersji interfejsu API](search-api-versions.md).
+Usługa Azure Search jest dostępna w wielu wersjach. Aby uzyskać więcej informacji, zobacz [wersje interfejsu API](search-api-versions.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Przejrzyj Dokumentacja referencyjna interfejsu API REST usługi Azure Search. Jeśli napotkasz problemy, poproś nas o pomoc na [StackOverflow](https://stackoverflow.com/) lub [się z pomocą techniczną](https://azure.microsoft.com/support/community/?product=search).
+Zapoznaj się z dokumentacją interfejsu API REST usługi Azure Search. Jeśli wystąpią problemy, poproś nas o pomoc dotyczącą usługi [StackOverflow](https://stackoverflow.com/) lub [skontaktuj się z pomocą techniczną](https://azure.microsoft.com/support/community/?product=search).
 
 > [!div class="nextstepaction"]
-> [Dokumentacja interfejsu API REST usługi wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/)
+> [Dokumentacja interfejsu API REST usługi Search](https://docs.microsoft.com/rest/api/searchservice/)
