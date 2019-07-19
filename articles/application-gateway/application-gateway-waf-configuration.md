@@ -1,76 +1,79 @@
 ---
-title: Limity rozmiaru żądanie zapory aplikacji sieci Web i listy wykluczeń w usłudze Azure Application Gateway — witryna Azure portal
-description: Ten artykuł zawiera informacje dotyczące limitów rozmiarów żądania zapory aplikacji sieci web i listy wykluczeń w konfiguracji w usłudze Application Gateway przy użyciu witryny Azure portal.
+title: Limity rozmiaru żądań zapory aplikacji sieci Web i listy wykluczeń w usłudze Azure Application Gateway — Azure Portal
+description: Ten artykuł zawiera informacje na temat limitów rozmiaru żądań zapory aplikacji sieci Web i konfiguracji list wykluczeń w Application Gateway z Azure Portal.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 5/15/2019
+ms.date: 7/17/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 272c6d2de23b1e89caef3f9bee20a96c5c196cde
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
-ms.translationtype: MT
+ms.openlocfilehash: e13884fb0c39beabf543fd04c9808373a68ec26a
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275181"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304305"
 ---
-# <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Limity rozmiaru żądanie zapory aplikacji sieci Web i listy wykluczeń
+# <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Limity rozmiaru żądań zapory aplikacji sieci Web i listy wykluczeń
 
-Zapora aplikacji sieci web usługi Azure Application Gateway (WAF) zapewnia ochronę aplikacji sieci web. W tym artykule opisano limity rozmiaru żądanie zapory aplikacji sieci Web i listy wykluczeń w konfiguracji.
+Zapora aplikacji sieci Web Application Gateway Azure (WAF) zapewnia ochronę aplikacji sieci Web. W tym artykule opisano limity rozmiaru żądania WAF i konfigurację list wykluczeń.
 
-## <a name="waf-request-size-limits"></a>Limity rozmiaru żądanie zapory aplikacji sieci Web
+## <a name="waf-request-size-limits"></a>Limity rozmiaru żądania WAF
 
-![Limity rozmiaru żądania](media/application-gateway-waf-configuration/waf-requestsizelimit.png)
+![Limity rozmiaru żądań](media/application-gateway-waf-configuration/waf-requestsizelimit.png)
 
-Zapora aplikacji sieci Web pozwala skonfigurować limity rozmiaru żądania w ramach dolną i górną granicę. Dostępne są następujące konfiguracje limitów rozmiaru dwa:
+Zapora aplikacji sieci Web umożliwia skonfigurowanie limitów rozmiaru żądań w dolnej i górnej granicy. Dostępne są następujące dwa konfiguracje limitów rozmiaru:
 
-- Pola rozmiar treści żądania maksymalna jest określona w kilobajtach i kontrolek, który przekazuje ogólną limit rozmiaru żądania, z wyłączeniem żadnych plików. To pole można dostosować w zakresie od co najmniej 1 KB do wartości maksymalnej 128 KB. Wartością domyślną dla rozmiaru treść żądania jest 128 KB.
-- Pola limit przekazywania plików jest wyrażona w Megabajtach i określa maksymalny dozwolony rozmiar przekazywanych plików. To pole może mieć minimalną wartość 1 MB i maksymalnie 500 MB dla jednostki SKU dużych wystąpień, gdy średnie jednostki SKU może zawierać maksymalnie 100 MB. Wartość domyślna dla pliku przekazywania limit wynosi 100 MB.
+- Pole Maksymalny rozmiar treści żądania jest określone w kilobajtach i kontroluje ogólny limit rozmiaru żądania, wykluczając wszystkie operacje przekazywania plików. To pole może mieć wartość z zakresu od 1 do KB do 128 KB. Wartość domyślna dla rozmiaru treści żądania to 128 KB.
+- Pole limit przekazywania plików jest określone w MB i kontroluje maksymalny dozwolony rozmiar przekazywania plików. To pole może mieć minimalną wartość 1 MB i maksymalnie 500 MB dla dużych wystąpień jednostki SKU, podczas gdy średnia jednostka SKU ma maksymalnie 100 MB. Wartość domyślna dla limitu przekazywania plików to 100 MB.
 
-Zapora aplikacji sieci Web oferuje także można skonfigurować pokrętła, aby włączyć inspekcję treści żądania lub wyłączyć. Domyślnie włączona jest inspekcja treści żądania. Jeśli inspekcja treść żądania jest wyłączona, zapory aplikacji sieci Web nie szacuje zawartość treści komunikatu HTTP. W takich przypadkach zapory aplikacji sieci Web w dalszym ciągu wymuszania reguł zapory aplikacji sieci Web na nagłówki plików cookie i identyfikatora URI. Jeśli inspekcja treść żądania jest wyłączona, pole o rozmiarze treść żądania maksymalna nie ma zastosowania i nie można ustawić. Umożliwia wyłączenie inspekcji treść żądania dla wiadomości większych niż 128 KB do wysłania do zapory aplikacji sieci Web, ale treść komunikatu nie jest kontrolowane w zakresie luki w zabezpieczeniach.
+WAF oferuje również konfigurowalne pokrętło, aby włączyć lub wyłączyć inspekcję treści żądania. Domyślnie Inspekcja treści żądania jest włączona. Jeśli inspekcja treści żądania jest wyłączona, WAF nie oceni zawartości treści wiadomości HTTP. W takich przypadkach WAF nadal wymusza reguły WAF dla nagłówków, plików cookie i identyfikatora URI. Jeśli inspekcja treści żądania jest wyłączona, pole Maksymalny rozmiar treści żądania nie ma zastosowania i nie można go ustawić. Wyłączenie inspekcji treści żądania umożliwia wysłanie komunikatów o rozmiarze większym niż 128 KB do WAF, ale treść komunikatu nie jest sprawdzana pod kątem luk w zabezpieczeniach.
 
-## <a name="waf-exclusion-lists"></a>Listy wykluczeń zapory aplikacji sieci Web
+## <a name="waf-exclusion-lists"></a>Listy wykluczeń WAF
 
 ![waf-exclusion.png](media/application-gateway-waf-configuration/waf-exclusion.png)
 
-Listy wykluczeń zapory aplikacji sieci Web pozwala na pominięcie niektórych atrybutów żądania oceny zapory aplikacji sieci Web. Typowym przykładem jest, że usługi Active Directory włożony tokenów, które są używane do uwierzytelniania lub pola hasła. Takie atrybuty są podatne na zawierać znaków specjalnych, co może powodować wyzwalanie wynik fałszywie dodatni z reguł zapory aplikacji sieci Web. Gdy atrybut zostanie dodany do listy wykluczeń zapory aplikacji sieci Web, nie jest uznawane za przez żadną regułę zapory aplikacji sieci Web skonfigurowanych i aktywne. Listy wykluczeń są globalne w zakresie.
+Listy wykluczeń WAF umożliwiają pominięcie niektórych atrybutów żądania z oceny WAF. Typowym przykładem jest Active Directory wstawione tokeny, które są używane dla pól uwierzytelniania lub hasła. Takie atrybuty są podatne na zawiera znaki specjalne, które mogą wyzwalać wynik fałszywie dodatni z reguł WAF. Po dodaniu atrybutu do listy wykluczeń WAF nie jest on uznawany za żadną ze skonfigurowanych i aktywnych reguł WAF. Listy wykluczeń są globalne w zakresie.
 
-Następujące atrybuty można dodać do listy wykluczeń. Wartość wybranego pola nie są obliczane względem reguły zapory aplikacji sieci Web. Wykluczenie Wyświetla listę kontroli Usuń wartość pola.
+Następujące atrybuty można dodać do listy wykluczeń według nazwy. Wartości wybranego pola nie są oceniane względem reguł WAF, ale ich nazwy nadal są (patrz przykład 1 poniżej, wartość nagłówka User-Agent jest wykluczona z oceny WAF). Wykluczenie zawiera listę usuwania inspekcji wartości pola.
 
-* Nagłówki żądania
+* Nagłówki żądań
 * Pliki cookie żądania
-* Nazwa atrybutu żądania (argumenty) może być dodany jako element wykluczenia, takich jak:
+* Nazwę atrybutu żądania (args) można dodać jako element wykluczenia, na przykład:
 
    * Nazwa pola formularza
-   * Jednostki XML
-   * Jednostki JSON
-   * Argumenty ciągu zapytania adresu URL
+   * Jednostka XML
+   * Jednostka JSON
+   * Argumenty ciągu zapytania URL
 
-Określ nagłówek żądania dokładnie, treści, pliku cookie lub dopasowanie atrybut ciągu zapytania.  Alternatywnie można opcjonalnie określić częściowego dopasowania. Wykluczenie jest zawsze włączona pole nagłówka, nigdy na jego wartość. Reguły wykluczania mają zakres globalny i mają zastosowanie do wszystkich stron i wszystkie reguły.
+Można określić dokładny nagłówek żądania, treść, plik cookie lub dopasowanie atrybutu ciągu zapytania.  Alternatywnie możesz określić częściowe dopasowania. Reguły wykluczania są globalne w zakresie i są stosowane do wszystkich stron i wszystkich reguł.
 
-Operatory kryteria dopasowania obsługiwane są następujące:
+Poniżej przedstawiono operatory kryteriów dopasowania obsługiwane:
 
-- **Równa się**:  Ten operator jest używany dla dokładnego dopasowania. Przykład wybierania nagłówka o nazwie **bearerToken**, operatorem równa się za pomocą selektora ustawiony jako **bearerToken**.
-- **Rozpoczyna się od**: Ten operator pasuje do wszystkich pól, rozpoczynających się od wartości określonej selektora.
-- **Kończy się**:  Ten operator pasuje do wszystkich pól żądania, które kończy się wartość określony selektor.
-- **Zawiera**: Ten operator pasuje do wszystkich pól żądania, które zawierają wartość określony selektor.
-- **Równe wszystkim**: Ten operator pasuje do wszystkich pól żądania. * będzie wartości selektora.
+- **Równa się**:  Ten operator jest używany do dokładnego dopasowania. Przykładowo, aby wybrać nagłówek o nazwie **bearerToken**, użyj operatora Equals z selektorem ustawionym jako **bearerToken**.
+- **Rozpoczyna się od**: Ten operator dopasowuje wszystkie pola, które zaczynają się od określonej wartości selektora.
+- **Kończy się**:  Ten operator dopasowuje wszystkie pola żądań, które kończą się określoną wartością selektora.
+- **Zawiera**: Ten operator dopasowuje wszystkie pola żądania, które zawierają określoną wartość selektora.
+- **Równa**się: Ten operator dopasowuje wszystkie pola żądania. * będzie wartością selektora.
 
-We wszystkich przypadkach dopasowania jest uwzględniana wielkość liter i wyrażenie regularne nie są dozwolone jako selektorów.
+We wszystkich przypadkach dopasowanie nie uwzględnia wielkości liter i wyrażenie regularne nie jest dozwolone jako selektory.
+
+> [!NOTE]
+> Aby uzyskać więcej informacji i uzyskać pomoc dotyczącą rozwiązywania problemów, zobacz [WAF Rozwiązywanie problemów](web-application-firewall-troubleshoot.md).
 
 ### <a name="examples"></a>Przykłady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-W poniższych przykładach pokazano użycie wykluczeń.
+W poniższych przykładach przedstawiono sposób korzystania z wykluczeń.
 
 ### <a name="example-1"></a>Przykład 1
 
-W tym przykładzie chcesz wykluczyć nagłówka użytkownika agenta. Nagłówek żądania agenta użytkownika zawiera ciąg cech, który zezwala na elementy równorzędne protokołu sieciowego do identyfikowania typu aplikacji, system operacyjny, dostawca oprogramowania lub wersji oprogramowania agenta użytkownika żądania oprogramowania. Aby uzyskać więcej informacji, zobacz [User-Agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent).
+W tym przykładzie chcesz wykluczyć nagłówek User-Agent. Nagłówek żądania User-Agent zawiera ciąg charakterystyczny, który pozwala elementom równorzędnym protokołu sieciowego identyfikować typ aplikacji, system operacyjny, dostawca oprogramowania lub wersję oprogramowania żądającego agenta użytkownika oprogramowania. Aby uzyskać więcej informacji, zobacz [User-Agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent).
 
-Może to być dowolna liczba przyczyn można wyłączyć oceny tego pliku nagłówkowego. Może to być ciąg, który zapory aplikacji sieci Web będzie widział i przyjęto założenie, że jest złośliwy. Na przykład klasycznego ataku SQL "x = x" w ciągu. W niektórych przypadkach może to być uzasadnione ruchu. Dlatego może być konieczne spod tego pliku nagłówkowego oceny zapory aplikacji sieci Web.
+Istnieje wiele powodów, dla których można wyłączyć ocenianie tego nagłówka. Może być ciągiem, który WAF widzi i założono, że jest on złośliwy. Na przykład klasyczny atak SQL "x = x" w ciągu. W niektórych przypadkach może to być prawidłowy ruch. Może być konieczne wykluczenie tego nagłówka z oceny WAF.
 
-Następujące polecenie cmdlet programu Azure PowerShell z wyłączeniem nagłówka agenta użytkownika z wersji ewaluacyjnej:
+Następujące polecenie cmdlet Azure PowerShell wyklucza nagłówek User-Agent z oceny:
 
 ```azurepowershell
 $exclusion1 = New-AzApplicationGatewayFirewallExclusionConfig `
@@ -81,9 +84,9 @@ $exclusion1 = New-AzApplicationGatewayFirewallExclusionConfig `
 
 ### <a name="example-2"></a>Przykład 2
 
-W tym przykładzie nie obejmuje wartości w *użytkownika* parametr, który jest przekazywany w żądaniu za pośrednictwem adresu URL. Na przykład załóżmy, że jest typowe w danym środowisku dla pola użytkownika, aby zawierać ciąg, który zapory aplikacji internetowych widoków jako złośliwej zawartości, więc blokuje ją.  Parametr użytkownika można wykluczyć w tym przypadku tak, aby ocenić nie zapory aplikacji internetowych, wszystko w tym polu.
+Ten przykład wyklucza wartość w parametrze *użytkownika* , który jest przesyłany w żądaniu za pośrednictwem adresu URL. Załóżmy na przykład, że jest to typowy w Twoim środowisku, aby pole użytkownika zawierało ciąg, który WAF przegląda jako złośliwą zawartość, więc zablokuje go.  W tym przypadku można wykluczyć parametr użytkownika, tak aby WAF nie obliczał żadnych wartości w polu.
 
-Następujące polecenie cmdlet programu Azure PowerShell nie obejmuje parametr użytkownika z wersji ewaluacyjnej:
+Następujące polecenie cmdlet Azure PowerShell wyklucza parametr użytkownika z oceny:
 
 ```azurepowershell
 $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
@@ -91,8 +94,8 @@ $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
    -SelectorMatchOperator "Equals" `
    -Selector "user"
 ```
-Więc jeśli adres URL **http://www.contoso.com/?user=fdafdasfda** jest przekazywany do zapory aplikacji sieci Web, nie ocenia ciąg **fdafdasfda**.
+Dlatego jeśli adres URL **http://www.contoso.com/?user=fdafdasfda** jest przesyłany do WAF, nie będzie obliczany ciąg **fdafdasfda**.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Po skonfigurowaniu ustawień zapory aplikacji sieci Web, możesz dowiedzieć się, jak wyświetlić dzienniki zapory aplikacji sieci Web. Aby uzyskać więcej informacji, zobacz [diagnostyki usługi Application Gateway](application-gateway-diagnostics.md#diagnostic-logging).
+Po skonfigurowaniu ustawień WAF można dowiedzieć się, jak wyświetlać dzienniki WAF. Aby uzyskać więcej informacji, zobacz [Application Gateway Diagnostics](application-gateway-diagnostics.md#diagnostic-logging).

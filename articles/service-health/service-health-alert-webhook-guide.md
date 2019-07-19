@@ -1,75 +1,73 @@
 ---
-title: Konfigurowanie powiadomień dotyczących kondycji usługi platformy Azure istniejących systemów zarządzania problem przy użyciu elementu webhook
-description: Uzyskaj Spersonalizowane powiadomienia dotyczące zdarzenia dotyczące kondycji usługi do istniejącej systemie zarządzania problemami.
+title: Skonfiguruj powiadomienia Azure Service Health dla istniejących systemów zarządzania problemami przy użyciu elementu webhook
+description: Wysyłanie spersonalizowanych powiadomień o zdarzeniach dotyczących kondycji usługi do istniejącego systemu zarządzania problemami.
 author: stephbaron
 ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.workload: Supportability
 ms.date: 3/27/2018
-ms.openlocfilehash: 3e9a564310d750e63c9cf81d19f698e75712d09a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8f84b43519c197797b39397cfd15c4f90444177c
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067188"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854380"
 ---
-# <a name="configure-health-notifications-for-existing-problem-management-systems-using-a-webhook"></a>Konfigurowanie powiadomień dotyczących kondycji dla istniejących systemów zarządzania problem przy użyciu elementu webhook
+# <a name="use-a-webhook-to-configure-health-notifications-for-problem-management-systems"></a>Używanie elementu webhook do konfigurowania powiadomień o kondycji dla systemów zarządzania problemami
 
-W tym artykule pokazano, jak skonfigurować alerty usługi kondycji do przesyłania danych za pośrednictwem elementów Webhook do istniejącego systemu powiadomień.
+W tym artykule opisano sposób konfigurowania alertów Azure Service Health w celu wysyłania danych za poorednictwem elementów webhook do istniejącego systemu powiadomień.
 
-Obecnie można skonfigurować alerty dotyczące kondycji usługi, tak, że gdy zdarzenie w usłudze Azure wystąpi Odbieraj powiadomienia w wiadomościach SMS lub wiadomości e-mail.
-Jednak może masz już istniejący system powiadomienia zewnętrzne w miejscu, które chcesz użyć.
-W tym dokumencie przedstawiono najważniejsze elementy ładunek elementu webhook i jak można utworzyć niestandardowe alerty, które otrzymaj powiadomienie, gdy napotkasz problemy z usługą.
+Możesz skonfigurować alerty Service Health, aby powiadamiać użytkownika za pomocą wiadomości SMS lub wiadomości e-mail, gdy zdarzenie usługi platformy Azure ma wpływ na użytkownika.
 
-Jeśli chcesz korzystać z integracji wstępnie skonfigurowane, zobacz jak:
+Jednak prawdopodobnie masz już istniejący zewnętrzny system powiadomień, którego wolisz używać. W tym artykule opisano najważniejsze części ładunku elementu webhook. Zawiera opis sposobu tworzenia alertów niestandardowych w celu powiadomienia o wystąpieniu odpowiednich problemów z usługą.
+
+Jeśli chcesz użyć wstępnie skonfigurowanej integracji, zobacz:
 * [Konfigurowanie alertów za pomocą usługi ServiceNow](service-health-alert-webhook-servicenow.md)
 * [Konfigurowanie alertów za pomocą usługi PagerDuty](service-health-alert-webhook-pagerduty.md)
 * [Konfigurowanie alertów za pomocą OpsGenie](service-health-alert-webhook-opsgenie.md)
 
-### <a name="watch-an-introductory-video"></a>Obejrzyj klip wideo
+**Obejrzyj film wprowadzający:**
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUV]
 
-## <a name="configuring-a-custom-notification-using-the-service-health-webhook-payload"></a>Konfigurowanie niestandardowych powiadomienia za pomocą ładunek elementu webhook usługi kondycji
-Aby skonfigurować integrację własnych niestandardowych elementów webhook, należy przeanalizować ładunku JSON, który jest wysyłany podczas powiadomień dotyczących kondycji usługi.
+## <a name="configure-a-custom-notification-by-using-the-service-health-webhook-payload"></a>Skonfiguruj niestandardowe powiadomienie przy użyciu Service Health ładunku elementu webhook
+Aby skonfigurować własną niestandardową integrację elementów webhook, należy przeanalizować ładunek JSON, który jest wysyłany za pośrednictwem powiadomienia Service Health.
 
-Szukaj [tutaj, aby zobaczyć przykład](../azure-monitor/platform/activity-log-alerts-webhook.md) określenie, co `ServiceHealth` wygląda ładunek elementu webhook.
+Zobacz [przykładowy](../azure-monitor/platform/activity-log-alerts-webhook.md) `ServiceHealth` ładunek elementu webhook.
 
-Wykrywanie, jest to alert kondycji usługi, analizując `context.eventSource == "ServiceHealth"`. W tym miejscu właściwości, które są najbardziej odpowiednie do pozyskiwania to:
- * `data.context.activityLog.status`
- * `data.context.activityLog.level`
- * `data.context.activityLog.subscriptionId`
- * `data.context.activityLog.properties.title`
- * `data.context.activityLog.properties.impactStartTime`
- * `data.context.activityLog.properties.communication`
- * `data.context.activityLog.properties.impactedServices`
- * `data.context.activityLog.properties.trackingId`
+Możesz potwierdzić, że jest to alert kondycji usługi, sprawdzając `context.eventSource == "ServiceHealth"`. Najbardziej odpowiednie właściwości są następujące:
+- **Data. Context. activityLog. status**
+- **Data. Context. activityLog. Level**
+- **Data. Context. activityLog. Identyfikator subskrypcji**
+- **Data. Context. activityLog. Properties. title**
+- **Data. Context. activityLog. Properties. impactStartTime**
+- **Data. Context. activityLog. Properties. Communication**
+- **Data. Context. activityLog. Properties. impactedServices**
+- **Data. Context. activityLog. Properties. trackingId**
 
-## <a name="creating-a-direct-link-to-the-service-health-dashboard-for-an-incident"></a>Tworzenie bezpośredni link do pulpitu nawigacyjnego kondycji usług dla incydentu
-Aby utworzenie bezpośredniego łącza do pulpitu nawigacyjnego kondycji usług na komputerze lub urządzeniu przenośnym, generowanie wyspecjalizowane adresu URL. Użyj `trackingId`, a także pierwsze i ostatnie trzy cyfry Twojego `subscriptionId`, w celu utworzenia:
-```
-https://app.azure.com/h/<trackingId>/<first and last three digits of subscriptionId>
-```
+## <a name="create-a-link-to-the-service-health-dashboard-for-an-incident"></a>Tworzenie linku do pulpitu nawigacyjnego Service Health dla zdarzenia
+Możesz utworzyć bezpośredni link do pulpitu nawigacyjnego Service Health na pulpicie lub urządzeniu przenośnym, generując wyspecjalizowany adres URL. Użyj *trackingId* oraz pierwszych trzech i ostatnich trzech cyfr identyfikatora *subskrypcji* w tym formacie:
 
-Na przykład jeśli Twoja `subscriptionId` jest `bba14129-e895-429b-8809-278e836ecdb3` i `trackingId` jest `0DET-URB`, to jest adres URL Twojej usługi kondycji:
+https<i></i>://App.Azure.com/h/ *&lt;trackingId&gt;* /*pierwsze trzy i ostatnie trzy cyfry identyfikatora subskrypcji&gt; &lt;*
 
-```
-https://app.azure.com/h/0DET-URB/bbadb3
-```
+Na przykład jeśli identyfikator *subskrypcji* to bba14129-e895-429b-8809-278e836ecdb3, a *trackingId* to 0DET-URB, adres URL Service Health to:
 
-## <a name="using-the-level-to-detect-the-severity-of-the-issue"></a>Przy użyciu poziomu, aby wykryć ważność problemu
-Z ważność najniższej do najwyższej ważności `level` właściwość w ładunku może być dowolny z `Informational`, `Warning`, `Error`, i `Critical`.
+https<i></i>://App.Azure.com/h/0DET-URB/bbadb3
 
-## <a name="parsing-the-impacted-services-to-understand-the-full-scope-of-the-incident"></a>Podczas analizowania objęte wpływem usług, aby zrozumieć pełny zakres zdarzenia
-Alerty dotyczące kondycji usługi może wcześniej poinformować o problemach w wielu regionach i usług. Aby uzyskać szczegółowe informacje, należy przeanalizować wartości `impactedServices`.
-Zawartość wewnątrz [JSON poprzedzone znakiem zmiany znaczenia](https://json.org/) string, gdy o niezmienionym znaczeniu, zawiera inny obiekt JSON, który może zostać przeanalizowany regularnie.
+## <a name="use-the-level-to-detect-the-severity-of-the-issue"></a>Użyj poziomu, aby wykryć ważność problemu
+Od najmniejszej do najwyższej wagi Właściwość **Level** w ładunku może mieć wartość *informacyjną*, *Ostrzeżenie*, *błąd*lub *krytyczne*.
+
+## <a name="parse-the-impacted-services-to-determine-the-incident-scope"></a>Analizowanie usług, których dotyczy problem, w celu określenia zakresu incydentu
+Alerty Service Health mogą informować o problemach w wielu regionach i usługach. Aby uzyskać szczegółowe informacje, należy przeanalizować wartość `impactedServices`.
+
+Zawartość znajdująca się wewnątrz to zmieniony ciąg [JSON](https://json.org/) , który w przypadku braku ucieczki zawiera inny obiekt JSON, który można regularnie analizować. Na przykład:
 
 ```json
 {"data.context.activityLog.properties.impactedServices": "[{\"ImpactedRegions\":[{\"RegionName\":\"Australia East\"},{\"RegionName\":\"Australia Southeast\"}],\"ServiceName\":\"Alerts & Metrics\"},{\"ImpactedRegions\":[{\"RegionName\":\"Australia Southeast\"}],\"ServiceName\":\"App Service\"}]"}
 ```
 
-staje się:
+stanowi
 
 ```json
 [
@@ -95,13 +93,17 @@ staje się:
 ]
 ```
 
-Pokazuje to, że nie istnieją problemy z "Metryki i alerty" w południowo-wschodnia i Australia Wschodnia, jak również problemy z "App Service" w Australii południowo-wschodnia.
+Ten przykład przedstawia problemy dotyczące:
+- "Alerty & metryki" w Australii wschodniej i Australii Południowo-Wschodnia.
+- "App Service" w Australii Południowo-Wschodnia.
 
+## <a name="test-your-webhook-integration-via-an-http-post-request"></a>Przetestuj integrację elementu webhook za pośrednictwem żądania HTTP POST
 
-## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Testowanie integracji usługi elementu webhook, za pomocą żądania HTTP POST
-1. Utwórz ładunek kondycji usługi, które mają zostać wysłane. Można znaleźć, ładunek elementu webhook przykład usługi kondycji w [alerty dzienników elementy Webhook dla aktywności platformy Azure](../azure-monitor/platform/activity-log-alerts-webhook.md).
+Wykonaj następujące kroki:
 
-2. Utwórz żądanie HTTP POST w następujący sposób:
+1. Utwórz ładunek kondycji usługi, który chcesz wysłać. Zapoznaj się z przykładowym ładunkiem elementu webhook kondycji usługi w [elementach webhook dla alertów dziennika aktywności platformy Azure](../azure-monitor/platform/activity-log-alerts-webhook.md).
+
+1. Utwórz żądanie HTTP POST w następujący sposób:
 
     ```
     POST        https://your.webhook.endpoint
@@ -110,11 +112,11 @@ Pokazuje to, że nie istnieją problemy z "Metryki i alerty" w południowo-wscho
 
     BODY        <service health payload>
     ```
-3. Powinien zostać wyświetlony `2XX - Successful` odpowiedzi.
+   Powinna zostać wyświetlona odpowiedź "2XX-powodzenie".
 
-4. Przejdź do [PagerDuty](https://www.pagerduty.com/) aby upewnić się, że integracji usługi zostało pomyślnie skonfigurowane.
+1. Przejdź do [usługi PagerDuty](https://www.pagerduty.com/) , aby upewnić się, że integracja została pomyślnie skonfigurowana.
 
-## <a name="next-steps"></a>Kolejne kroki
-- Przegląd [schemat elementów webhook alertu dziennika aktywności](../azure-monitor/platform/activity-log-alerts-webhook.md). 
-- Dowiedz się więcej o [usługi powiadomień dotyczących kondycji](../azure-monitor/platform/service-notifications.md).
-- Dowiedz się więcej o [grup akcji](../azure-monitor/platform/action-groups.md).
+## <a name="next-steps"></a>Następne kroki
+- Przejrzyj [schemat elementu webhook alertu dziennika aktywności](../azure-monitor/platform/activity-log-alerts-webhook.md). 
+- Dowiedz się więcej o powiadomieniach o [kondycji usługi](../azure-monitor/platform/service-notifications.md).
+- Dowiedz się więcej na temat [grup akcji](../azure-monitor/platform/action-groups.md).

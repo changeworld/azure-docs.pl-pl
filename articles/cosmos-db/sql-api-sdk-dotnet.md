@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Cosmos DB Interfejs API SQL platformy .NET, zestaw SDK i zasoby
-description: Poznaj interfejs API SQL platformy .NET i zestawu SDK, w tym daty wydania, daty wycofania i zmiany między poszczególnymi wersjami zestawu SDK .NET usługi Azure Cosmos DB.
+title: Usługa Azure Cosmos DB Interfejs API programu SQL .NET, zasoby & zestawu SDK
+description: Dowiedz się więcej o interfejsie API programu SQL .NET i zestawie SDK, w tym o datach wydania, datach wycofania i zmianach między poszczególnymi wersjami Azure Cosmos DB .NET SDK.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,16 +8,17 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: 4f502984a09f81b5aaf0568c84b75832f8164151
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: d68e957ece5c634ed1ce069218df717a4fe0952f
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67541047"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68261265"
 ---
-# <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB zestawu .NET SDK interfejsu API SQL: Pobierz i informacje o wersji
+# <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK dla interfejsu API SQL: Informacje dotyczące pobierania i zwalniania
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
+> * [.NET](sql-api-sdk-dotnet-standard.md)
 > * [Kanał informacyjny zmian .NET](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
@@ -34,38 +35,34 @@ ms.locfileid: "67541047"
 |---|---|
 |**Zestaw SDK do pobrania**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)|
 |**Dokumentacja interfejsu API**|[Dokumentacja interfejsu API platformy .NET](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
-|**Przykłady**|[Przykłady kodu platformy .NET](sql-api-dotnet-samples.md)|
-|**Wprowadzenie**|[Wprowadzenie do zestawu SDK .NET usługi Azure Cosmos DB](sql-api-get-started.md)|
+|**Przykłady**|[Przykłady kodu platformy .NET](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples)|
+|**Wprowadzenie**|[Wprowadzenie do zestawu SDK platformy Azure Cosmos DB .NET](sql-api-get-started.md)|
 |**Samouczek dotyczący aplikacji sieci Web**|[Opracowywanie aplikacji sieci Web za pomocą usługi Azure Cosmos DB](sql-api-dotnet-application.md)|
 |**Bieżącej struktury obsługiwanej**|[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)|
 
 ## <a name="release-notes"></a>Informacje o wersji
 
-### <a name="a-name3001-preview3001-preview"></a><a name="3.0.0.1-preview"/>3.0.0.1-Preview
-* Wersja zapoznawcza 1 [wersji 3.0.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) zestawu SDK platformy .NET w wersji zapoznawczej.
-* Docelowy .NET Standard, która obsługuje .NET framework 4.6.1+ i .NET Core 2.0 +
-* Nowy model obiektów za pomocą metod CosmosClient najwyższego poziomu i Podziel na odpowiednich klas CosmosDatabases, CosmosContainers i CosmosItems. 
-* Obsługa strumieni. 
-* Zaktualizowano CosmosResponseMessage z serwera, aby zwrócić kod stanu, a tylko zgłosić wyjątek, gdy brak odpowiedzi jest zwracany. 
+> [!NOTE]
+> Jeśli używasz .NET Framework, zapoznaj się z najnowszą wersją 3. x [zestawu .NET SDK](sql-api-sdk-dotnet-standard.md), która jest przeznaczona dla .NET Standard. 
 
 ### <a name="a-name251251"></a><a name="2.5.1"/>2.5.1
 
-* Wersja System.Net.Http zestawu SDK jest dopasowana zdefiniowana w pakiecie NuGet.
-* Zezwalanie na żądania zapisu powrót do innego regionu, jeśli oryginalny jeden zakończy się niepowodzeniem.
+* Wersja systemu .NET. http zestawu SDK jest teraz zgodna z definicją w pakiecie NuGet.
+* Dopuszczaj żądania zapisu, aby powracać do innego regionu, jeśli oryginalne zakończyło się niepowodzeniem.
 * Dodaj zasady ponawiania sesji dla żądania zapisu.
 
 ### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
 
-* Poprawki śledzenia zapytań, które spowodowały puste strony sytuacja wyścigu
+* Rozwiązuje warunek wyścigu śledzenia dla zapytań, które spowodowały puste strony
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
 
-* Zwiększony rozmiar precyzja dziesiętna zapytań LINQ.
-* Dodano nowe klasy CompositePath, CompositePathSortOrder, SpatialSpec, SpatialType i PartitionKeyDefinitionVersion
-* Dodano TimeToLivePropertyPath do elementu DocumentCollection
+* Zwiększony rozmiar dokładności dla zapytań LINQ.
+* Dodano nowe klasy CompositePath, CompositePathSortOrder, SpatialSpec, Przestrzennytype i PartitionKeyDefinitionVersion
+* Dodano TimeToLivePropertyPath do Documentcollection
 * Dodano CompositeIndexes i SpatialIndexes do IndexPolicy
-* Dodano wersji PartitionKeyDefinition
-* Brak, aby PartitionKey dodane
+* Dodano wersję do PartitionKeyDefinition
+* Dodano brak do PartitionKey
 
 ### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
 
@@ -77,27 +74,27 @@ ms.locfileid: "67541047"
 
 ### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
 
-* Ustawienie zmiennej środowiska dodano "POCOSerializationOnly".
+* Dodano ustawienie zmiennej środowiskowej "POCOSerializationOnly".
 
-* Usunięte DocumentDB.Spatial.Sql.dll i teraz zawarta w Microsoft.Azure.Documents.ServiceInterop.dll
+* Usunięto DocumentDB. przestrzenny. SQL. dll i teraz zawarte w Microsoft. Azure. Documents. serviceinterop. dll
 
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
 
-* Poprawa Logika ponawiania podczas pracy awaryjnej dla StoredProcedure wykonać wywołań.
+* Poprawa logiki ponawiania podczas pracy w trybie failover dla wywołań StoredProcedure Execute.
 
-* Dokonano jeszcze DocumentClientEventSource pojedynczego wystąpienia. 
+* DocumentClientEventSource pojedynczo. 
 
-* Napraw GatewayAddressCache nie zapewniane ConnectionPolicy RequestTimeout przekroczenia limitu czasu.
+* Poprawka GatewayAddressCache przekroczenie limitu czasu ConnectionPolicy RequestTimeout.
 
 ### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
 
-* Diagnostykę transportu bezpośrednio/TCP należy dodać TransportException, typ wyjątku wewnętrznego zestawu SDK. Jeśli jest obecny w komunikaty o wyjątkach, ten typ Wyświetla dodatkowe informacje dotyczące rozwiązywania problemów z łącznością klienta.
+* W przypadku komunikacji bezpośredniej/TCP, dodano element transportexception, wewnętrzny typ wyjątku zestawu SDK. Ten typ wyświetla dodatkowe informacje na temat rozwiązywania problemów z łącznością klienta, gdy jest obecny w komunikatach o wyjątku.
 
-* Dodano nowe przeciążenia konstruktora przyjmująca klasa HttpMessageHandler, stos programu obsługi HTTP, używany do wysyłania żądań HttpClient (np. HttpClientHandler).
+* Dodano nowe przeciążenie konstruktora, które pobiera HttpMessageHandler, stos obsługi HTTP do wysyłania żądań HttpClient (np. HttpClientHandler).
 
-* Naprawiono błąd, w której nagłówek o wartości null zostały nie jest obsługiwany poprawnie.
+* Naprawianie usterki, w której nie został poprawnie obsłużony nagłówek z wartościami null.
 
-* Ulepszone sprawdzanie poprawności pamięci podręcznej kolekcji.
+* Ulepszono walidację pamięci podręcznej kolekcji.
 
 ### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
 
@@ -105,7 +102,7 @@ ms.locfileid: "67541047"
 
 ### <a name="a-name212212"></a><a name="2.1.2"/>2.1.2
 
-* Ulepszenia śledzenia diagnostycznego
+* Ulepszenia śledzenia diagnostyki
 
 ### <a name="a-name211211"></a><a name="2.1.1"/>2.1.1
 
@@ -146,11 +143,11 @@ ms.locfileid: "67541047"
 ### <a name="a-name12111211"></a><a name="1.21.1"/>1.21.1
 
 * Naprawiono wyjątek KeyNotFoundException dla wielu partycji zamówienia przez zapytania w przypadkach brzegowych.
-* Naprawiono usterkę, w którym atrybut JsonProperty w klauzuli select zapytań LINQ, został nie już brane pod uwagę.
+* Naprawiono usterkę, w której atrybut JsonProperty w klauzuli select dla zapytań LINQ nie został uznany.
 
 ### <a name="a-name12021202"></a><a name="1.20.2"/>1.20.2
 
-* Naprawiono usterkę, która tych limitów zostanie osiągnięty w niektórych sytuacjach wyścigu, dającą wynik sporadyczne "Microsoft.Azure.Documents.NotFoundException: Błędy odczytu sesji nie jest dostępna dla tokenu sesji wejściowego"korzystając z poziomu spójności sesji.
+* Rozwiązano problem, który został trafiony w pewnych warunkach wyścigu, co powoduje sporadyczne "Microsoft. Azure. Documents. NotFoundException: Sesja odczytu nie jest dostępna w przypadku błędów tokenu sesji wejściowej w przypadku używania poziomu spójności sesji.
 
 ### <a name="a-name12011201"></a><a name="1.20.1"/>1.20.1
 
@@ -173,7 +170,7 @@ ms.locfileid: "67541047"
 
 ### <a name="a-name11811181"></a><a name="1.18.1"/>1.18.1 
 
-* Wewnętrzny zmiany dla Microsoft znajomych zestawów.
+* Wewnętrzne zmiany dla zestawów zaprzyjaźnionych firmy Microsoft.
 
 ### <a name="a-name11801180"></a><a name="1.18.0"/>1.18.0 
 
@@ -188,14 +185,14 @@ ms.locfileid: "67541047"
 * Rozwiązano problem w klasie JsonSerializable, która może spowodować wyjątek przepełnienia stosu.
 
 ### <a name="a-name11601160"></a><a name="1.16.0"/>1.16.0
-*   Rozwiązano problem polegający na wymagające ponownego kompilowania aplikacji z powodu wprowadzenia JsonSerializerSettings jako opcjonalny parametr w Konstruktorze DocumentClient.
-* Oznaczony jako konstruktora DocumentClient przestarzały tego wymagane JsonSerializerSettings jako ostatni parametr, aby umożliwić wartościami domyślnymi ConnectionPolicy i parametry ConsistencyLevel podczas przekazywania w parametrze JsonSerializerSettings.
+*   Rozwiązano problem, który wymaga ponownego skompilowania aplikacji z powodu wprowadzenia JsonSerializerSettings jako parametru opcjonalnego w konstruktorze DocumentClient.
+* Oznaczono Konstruktor DocumentClient przestarzały, który wymaga JsonSerializerSettings jako ostatni parametr, aby zezwolić na domyślne wartości parametrów ConnectionPolicy i ConsistencyLevel podczas przekazywania w parametrze JsonSerializerSettings.
 
 ### <a name="a-name11501150"></a><a name="1.15.0"/>1.15.0
 *   Dodano obsługę określania niestandardowych JsonSerializerSettings podczas tworzenia wystąpienia [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient?view=azure-dotnet).
 
 ### <a name="a-name11411141"></a><a name="1.14.1"/>1.14.1
-*   Rozwiązano problem, który dotyczy x64 maszyn, które nie obsługują SSE4 instrukcji throw sehexception — podczas uruchamiania zapytań SQL usługi Azure Cosmos DB.
+*   Rozwiązano problem dotyczący maszyn x64, które nie obsługują instrukcji SSE4 i zgłaszają SEHException — podczas uruchamiania Azure Cosmos DB zapytań SQL.
 
 ### <a name="a-name11401140"></a><a name="1.14.0"/>1.14.0
 *   Dodano obsługę nowego poziomu spójności, nazywana ConsistentPrefix.
@@ -205,10 +202,10 @@ ms.locfileid: "67541047"
 *   Wprowadzone ulepszenia wydajności w zestawie SDK.
 
 ### <a name="a-name11341134"></a><a name="1.13.4"/>1.13.4
-* Funkcjonalnie identyczny z 1.13.3. Wprowadzone zmiany wewnętrznego.
+* Działa tak samo jak 1.13.3. Wprowadzono pewne zmiany wewnętrzne.
 
 ### <a name="a-name11331133"></a><a name="1.13.3"/>1.13.3
-* Funkcjonalnie identyczny z 1.13.2. Wprowadzone zmiany wewnętrznego.
+* Działa tak samo jak 1.13.2. Wprowadzono pewne zmiany wewnętrzne.
 
 ### <a name="a-name11321132"></a><a name="1.13.2"/>1.13.2
 * Rozwiązano problem, który jest ignorowana wartość PartitionKey udostępniane w FeedOptions dla zapytania zagregowane.
@@ -221,7 +218,7 @@ ms.locfileid: "67541047"
 * Rozwiązuje się zestaw SDK bardziej odporne na automatyczną pracę awaryjną pod pewnymi warunkami.
 
 ### <a name="a-name11221122"></a><a name="1.12.2"/>1.12.2
-* Poprawkę dla problemu, która czasami powoduje to klasa WebException: Nie można rozpoznać nazwy zdalnej.
+* Poprawka dotycząca problemu, który sporadycznie powoduje wystąpienie elementu WebException: Nie można rozpoznać nazwy zdalnej.
 * Dodano obsługę bezpośrednio odczytu dokumentu wpisane, dodając nowe przeciążenia do interfejsu API ReadDocumentAsync.
 
 ### <a name="a-name11211121"></a><a name="1.12.1"/>1.12.1
@@ -235,163 +232,163 @@ ms.locfileid: "67541047"
 * Obniżona minimalna przepływność na kolekcji podzielonych na partycje z 10,100 jednostek RU/s 2500 jednostek RU/s.
 
 ### <a name="a-name11141114"></a><a name="1.11.4"/>1.11.4
-* Poprawkę dla problemu polegającego niektórych zapytań między partycjami zakończone niepowodzeniem w procesie 32-bitowego hosta.
-* Poprawkę dla problemu polegającego kontenera sesji zostało nie są aktualizowane przy użyciu tokenu dla żądań zakończonych niepowodzeniem w trybie bramy.
-* W niektórych przypadkach nie mógł poprawkę dla problemu polegającego wywołuje zapytanie o funkcji zdefiniowanej przez użytkownika w projekcji.
-* Rozwiązuje wydajności po stronie klienta pozwalające zwiększyć przepływność odczytu i zapisu żądania.
+* Rozwiązanie problemu polegającego na tym, że niektóre zapytania między partycjami kończą się niepowodzeniem w procesie hosta 32-bitowego.
+* Rozwiązano problem związany z tym, że kontener sesji nie został zaktualizowany przy użyciu tokenu dla żądań zakończonych niepowodzeniem w trybie bramy.
+* Rozwiązanie problemu polegającego na tym, że zapytanie z wywołaniami UDF w projekcji zostało zakończone niepowodzeniem w niektórych przypadkach.
+* Poprawki wydajności po stronie klienta zwiększające przepływność odczytu i zapisu żądań.
 
 ### <a name="a-name11131113"></a><a name="1.11.3"/>1.11.3
-* Poprawkę dla problemu polegającego kontenera sesji zostało nie są aktualizowane przy użyciu tokenu dla żądań zakończonych niepowodzeniem.
-* Dodano obsługę zestawu SDK do pracy w procesie 32-bitowego hosta. Należy pamiętać, że jeśli używasz wielu partycji zapytań, 64-bitowego hosta przetwarzania jest zalecane w celu zwiększenia wydajności.
-* Zwiększono wydajność w scenariuszach obejmujących zapytania z dużą liczbą wartości klucza partycji w wyrażeniu w.
-* Wypełnione różne statystyki limitu przydziału zasobu w ResourceResponse dla kolekcji dokumentów żądań odczytu, gdy ustawiono opcję żądania PopulateQuotaInfo.
+* Rozwiązano problem związany z tym, że kontener sesji nie został zaktualizowany przy użyciu tokenu dla żądań zakończonych niepowodzeniem.
+* Dodano obsługę zestawu SDK do pracy w procesie hosta 32-bitowego. Należy pamiętać, że jeśli używasz zapytań między partycjami, 64-bitowe przetwarzanie hosta jest zalecane w celu zwiększenia wydajności.
+* Zwiększona wydajność dla scenariuszy obejmujących zapytania z dużą liczbą wartości kluczy partycji w wyrażeniu IN.
+* Wypełniono różne statystyki przydziału zasobów w ResourceResponse dla żądań odczytu kolekcji dokumentów, gdy opcja żądania PopulateQuotaInfo jest ustawiona.
 
 ### <a name="a-name11111111"></a><a name="1.11.1"/>1.11.1
-* Poprawka mniejszy przyrost wydajności dla interfejsu API CreateDocumentCollectionIfNotExistsAsync wprowadzona w 1.11.0.
-* Napraw wydajności w zestawie SDK dla scenariuszach, które wymagają wysokiego stopnia współbieżnych żądań.
+* Dodatkowa poprawka wydajności dla interfejsu API metody createdocumentcollectionifnotexistsasync wprowadzona w 1.11.0.
+* Poprawka wydajności w zestawie SDK dla scenariuszy obejmujących wysoki stopień współbieżnych żądań.
 
 ### <a name="a-name11101110"></a><a name="1.11.0"/>1.11.0
-* Obsługa nowe klasy i metody służące do przetwarzania [zestawienia zmian](change-feed.md) dokumentów w kolekcji.
-* Obsługa zapytań między partycjami kontynuacji i kilka ulepszeń wydajności zapytań między partycjami.
-* Dodawanie metody CreateDatabaseIfNotExistsAsync i CreateDocumentCollectionIfNotExistsAsync.
-* LINQ Obsługa funkcji systemu: IsDefined, IsNull i IsPrimitive.
-* Poprawka automatyczne binplacing Microsoft.Azure.Documents.ServiceInterop.dll i DocumentDB.Spatial.Sql.dll zestawów, aby otworzyć folder bin aplikacji w przypadku korzystania z pakietu Nuget z projektów, które mają narzędzi pliku project.json.
-* Obsługa emitowania śladów funkcji ETW po stronie klienta, które mogą być przydatne podczas debugowania scenariuszy.
+* Obsługa nowych klas i metod przetwarzania [źródła zmian](change-feed.md) dokumentów w ramach kolekcji.
+* Obsługa kontynuacji zapytań między partycjami i niektórych ulepszeń wydajności dla zapytań między partycjami.
+* Dodanie metod CreateDatabaseIfNotExistsAsync i metody createdocumentcollectionifnotexistsasync.
+* Obsługa LINQ dla funkcji systemowych: IsDefined, IsNull i isprymityw.
+* Poprawka do automatycznej binplacing zestawów Microsoft. Azure. Documents. serviceinterop. dll i DocumentDB. przestrzenny. SQL. dll do folderu bin aplikacji podczas korzystania z pakietu NuGet z projektami, które mają narzędzia Project. JSON.
+* Obsługa emitowania śladów ETW po stronie klienta, które mogą być przydatne w scenariuszach debugowania.
 
 ### <a name="a-name11001100"></a><a name="1.10.0"/>1.10.0
-* Dodano połączenie bezpośrednie wsparcie dla kolekcji podzielonych na partycje.
-* Zwiększona wydajność poziom spójności powiązana nieaktualność.
+* Dodano obsługę łączności bezpośredniej dla kolekcji partycjonowanych.
+* Ulepszona wydajność dla ograniczonego poziomu spójności o nieodświeżonej.
 * Dodano wielokąta i typy danych LineString, podczas określania zasad dla zapytań przestrzennych grodzenia indeksowania kolekcji.
-* Dodano obsługę LINQ StringEnumConverter, IsoDateTimeConverter i UnixDateTimeConverter podczas tłumaczenia predykatów.
+* Dodano obsługę LINQ dla StringEnumConverter, IsoDateTimeConverter i UnixDateTimeConverter podczas tłumaczenia predykatów.
 * Różne poprawki błędów zestawu SDK.
 
 ### <a name="a-name195195"></a><a name="1.9.5"/>1.9.5
-* Rozwiązano problem powodujący NotFoundException następujące: Przeczytaj sesji nie jest dostępna dla tokenu sesji danych wejściowych. W niektórych przypadkach wystąpił ten wyjątek, podczas wykonywania zapytania w regionie odczytu, geograficznie rozproszona konta.
-* Widoczne właściwości ResponseStream w klasie ResourceResponse umożliwia bezpośredni dostęp do źródłowego strumienia z odpowiedzi.
+* Rozwiązano problem, który spowodował następujące NotFoundException: Sesja odczytu nie jest dostępna dla tokenu sesji wejściowej. Ten wyjątek wystąpił w niektórych przypadkach podczas wykonywania zapytania dotyczącego regionu odczytu konta geograficznego.
+* Wyświetlona Właściwość ResponseStream w klasie ResourceResponse, która umożliwia bezpośredni dostęp do podstawowego strumienia z odpowiedzi.
 
 ### <a name="a-name194194"></a><a name="1.9.4"/>1.9.4
-* Zmodyfikowane ResourceResponse, FeedResponse, StoredProcedureResponse i MediaResponse klasy do zaimplementowania odpowiedniego interfejsu publicznego, tak aby ich postaci makiet dla testu opartego na wdrożenia (TDD).
-* Rozwiązano problem powodujący nagłówek klucza partycji źle sformułowane, korzystając z niestandardowych obiektów JsonSerializerSettings dla serializacji danych.
+* Zmodyfikowano klasy ResourceResponse, FeedResponse, StoredProcedureResponse i MediaResponse w celu zaimplementowania odpowiedniego interfejsu publicznego, aby można było je zasymulować dla wdrożenia sterowanego testem (TDD).
+* Rozwiązano problem, który spowodował nieprawidłowy nagłówek klucza partycji podczas używania niestandardowego obiektu JsonSerializerSettings do serializowania danych.
 
 ### <a name="a-name193193"></a><a name="1.9.3"/>1.9.3
-* Rozwiązano problem powodujący długotrwałe zapytania nie powiedzie się z powodu błędu: Token autoryzacji jest nieprawidłowy w bieżącym momencie.
-* Rozwiązano problem, który usunąć oryginalny SqlParameterCollection z wielu partycji top/według zapytania.
+* Rozwiązano problem, który spowodował długotrwałe wykonywanie zapytań zakończonych niepowodzeniem z powodu błędu: Token autoryzacji jest obecnie nieprawidłowy.
+* Rozwiązano problem polegający na tym, że usunięto oryginalny element SqlParameterCollection z zapytań o klauzuli TOP/order-by.
 
 ### <a name="a-name192192"></a><a name="1.9.2"/>1.9.2
-* Dodano obsługę równoległe zapytania dla kolekcji podzielonych na partycje.
-* Dodano obsługę dla wielu zapytań ORDER BY i klauzuli TOP partycji dla kolekcji podzielonych na partycje.
-* Naprawiono Brak odwołania do DocumentDB.Spatial.Sql.dll i Microsoft.Azure.Documents.ServiceInterop.dll, które są wymagane, gdy odwołanie do projektu usługi Azure Cosmos DB za pomocą odwołania do pakietu Nuget usługi Azure Cosmos DB.
-* Naprawiono możliwość korzystania z parametrami różnego typu, korzystając z funkcji zdefiniowanych przez użytkownika w składniku LINQ. 
-* Usunięto usterkę dla globalnie replikowanego konta, w której zostały kierowanie wywołań Upsert odczytać lokalizacje zamiast szukania w lokalizacjach zapisu.
-* Dodano metody interfejsu IDocumentClient, których brakowało: 
-  * Metoda UpsertAttachmentAsync, która przyjmuje mediaStream i opcje jako parametrów
-  * Metoda CreateAttachmentAsync, który przyjmuje opcje jako parametr
-  * Metoda CreateOfferQuery, która przyjmuje querySpec jako parametr.
-* Niezapieczętowane klasy publiczne, które są dostępne w interfejsie IDocumentClient.
+* Dodano obsługę zapytań równoległych dla kolekcji partycjonowanych.
+* Dodano obsługę PORZĄDKOWANIA między partycjami według i NAJPOPULARNIEJSZych zapytań dla kolekcji partycjonowanych.
+* Rozwiązano brakujące odwołania do DocumentDB. przestrzenny. SQL. dll i Microsoft. Azure. Documents. serviceinterop. dll, które są wymagane podczas odwoływania się do projektu Azure Cosmos DB z odwołaniem do pakietu NuGet Azure Cosmos DB.
+* Naprawiono możliwość używania parametrów różnych typów podczas korzystania z funkcji zdefiniowanych przez użytkownika w LINQ. 
+* Rozwiązano błąd dla kont replikowanych globalnie, gdzie wywołania upsert były kierowane do lokalizacji odczytu, a nie lokalizacji zapisu.
+* Dodano metody do nieobecnego interfejsu IDocumentClient: 
+  * Metoda UpsertAttachmentAsync, która pobiera mediaStream i opcje jako parametry
+  * Metoda CreateAttachmentAsync, która pobiera opcje jako parametr
+  * Metoda CreateOfferQuery, która pobiera querySpec jako parametr.
+* Niezapieczętowane klasy publiczne, które są widoczne w interfejsie IDocumentClient.
 
 ### <a name="a-name180180"></a><a name="1.8.0"/>1.8.0
 * Dodano obsługę multiregionalne konta baz danych.
-* Dodano obsługę ponowienie dotyczące żądania ograniczone.  Użytkownik może dostosować liczbę ponownych prób oraz maksymalny czas, przez skonfigurowanie właściwości ConnectionPolicy.RetryOptions.
-* Dodano nowy interfejs IDocumentClient, który definiuje podpisy wszystkich DocumentClient właściwości i metod.  W ramach tej zmiany należy również zmienić metody rozszerzenia, które utworzyć IQueryable i IOrderedQueryable do metod na samej klasy DocumentClient.
-* Opcja konfiguracji dodano można ustawić ServicePoint.ConnectionLimit dla danego punktu końcowego usługi Azure Cosmos DB identyfikatora Uri.  Aby zmienić wartość domyślna jest równa 50, należy użyć ConnectionPolicy.MaxConnectionLimit.
-* Przestarzałe IPartitionResolver i jego wykonania.  Obsługa IPartitionResolver jest obecnie przestarzała. Zaleca się używania podzielona na partycje kolekcji dla nowszej magazynu i przepływności.
+* Dodano obsługę ponawiania prób w przypadku żądań z ograniczeniami.  Użytkownik może dostosować liczbę ponownych prób i maksymalny czas oczekiwania przez skonfigurowanie właściwości ConnectionPolicy. RetryOptions.
+* Dodano nowy interfejs IDocumentClient, który definiuje sygnatury wszystkich właściwości DocumentClient i metod.  W ramach tej zmiany również zmieniono metody rozszerzające, które tworzą interfejs IQueryable i IOrderedQueryable, na metody klasy DocumentClient.
+* Dodano opcję konfiguracji w celu ustawienia ServicePoint. ConnectionLimit dla danego identyfikatora URI punktu końcowego Azure Cosmos DB.  Użyj ConnectionPolicy. MaxConnectionLimit, aby zmienić wartość domyślną, która jest ustawiona na 50.
+* Przestarzałe IPartitionResolver i jej implementacja.  Obsługa usługi IPartitionResolver jest obecnie przestarzała. Zaleca się używanie partycjonowanych kolekcji w celu zapewnienia większego magazynu i przepływności.
 
 ### <a name="a-name171171"></a><a name="1.7.1"/>1.7.1
-* Dodano przeciążenia do identyfikatora Uri na podstawie metody ExecuteStoredProcedureAsync, która przyjmuje RequestOptions jako parametr.
+* Dodano Przeciążenie metody ExecuteStoredProcedureAsync opartej na identyfikatorze URI, która pobiera RequestOptions jako parametr.
 
 ### <a name="a-name170170"></a><a name="1.7.0"/>1.7.0
 * Dodano czas live (TTL) — Pomoc techniczna dla dokumentów.
 
 ### <a name="a-name163163"></a><a name="1.6.3"/>1.6.3
-* Usunięto usterkę w pakietu Nuget zestawu .NET SDK dla pakowanie w ramach rozwiązania usługi w chmurze Azure.
+* Rozwiązano usterkę w pakiecie NuGet SDK platformy .NET do pakowania jej w ramach rozwiązania usługi w chmurze platformy Azure.
 
 ### <a name="a-name162162"></a><a name="1.6.2"/>1.6.2
 * Zaimplementowane [podzielona na partycje kolekcje](partition-data.md) i [poziomów wydajności zdefiniowanych przez użytkownika](performance-levels.md). 
 
 ### <a name="a-name153153"></a><a name="1.5.3"/>1.5.3
-* **[Naprawiono]**  Zgłasza punktu końcowego zapytań usługi Azure Cosmos DB: 'System.Net.Http.HttpRequestException: Wystąpił błąd podczas kopiowania zawartości do strumienia ".
+* **[Stałe]** Wykonywanie zapytania dotyczącego zgłaszania punktów końcowych Azure Cosmos DB: 'System.Net.Http.HttpRequestException: Wystąpił błąd podczas kopiowania zawartości do strumienia ".
 
 ### <a name="a-name152152"></a><a name="1.5.2"/>1.5.2
-* LINQ rozszerzonej obsługi, w tym nowe operatory dla wyrażeń stronicowania, warunkowe i zakresu porównania.
-  * Wykonaj operatora, aby włączyć zachowanie wybierz TOP w technologii LINQ
-  * Operator CompareTo, aby umożliwić porównań ciągów, w zakresie
-  * Warunkowy (?) i coalesce operatorów (?)
-* **[Naprawiono]**  Trwa wyjątku ArgumentOutOfRangeException podczas łączenia modelu projekcji o miejsce w w zapytaniu programu LINQ. [#81](https://github.com/Azure/azure-documentdb-dotnet/issues/81)
+* Rozszerzona obsługa LINQ obejmująca nowe operatory stronicowania, wyrażeń warunkowych i porównywania zakresu.
+  * Przejmij operator, aby włączyć wybór najlepszych zachowań w LINQ
+  * Operator CompareTo do włączania porównań zakresu ciągów
+  * Warunkowe (?) i operatory łączenia (??)
+* **[Stałe]** Wyjątku ArgumentOutOfRangeException podczas łączenia projekcji modelu z elementem WHERE w zapytaniu LINQ. [#81](https://github.com/Azure/azure-documentdb-dotnet/issues/81)
 
 ### <a name="a-name151151"></a><a name="1.5.1"/>1.5.1
-* **[Naprawiono]**  Jeśli wybierz opcję nie jest ostatniego wyrażenia dostawcy LINQ zakłada, że nie projekcji, a następnie wybierz utworzony * niepoprawnie.  [#58](https://github.com/Azure/azure-documentdb-dotnet/issues/58)
+* **[Stałe]** Jeśli opcja Select nie jest ostatnim wyrażeniem, przyjęto, że dostawca LINQ nie przetworzył projekcji i wygenerowało pozycję * nieprawidłowo.  [#58](https://github.com/Azure/azure-documentdb-dotnet/issues/58)
 
 ### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0
-* Zaimplementowano Upsert, dodano UpsertXXXAsync metody
+* Zaimplementowane Upsert, dodane metody UpsertXXXAsync
 * Ulepszenia wydajności dla wszystkich żądań
-* Obsługa dostawców LINQ dla warunkowego, coalesce oraz metody CompareTo dla ciągów
-* **[Naprawiono]**  Dostawcy LINQ--> zawiera implementacji metody na liście, aby wygenerować ten sam program SQL na IEnumerable i tablicy
-* **[Naprawiono]**  BackoffRetryUtility używa tego samego HttpRequestMessage ponownie zamiast tworzenia nowej po ponowieniu
-* **[Nieaktualne]**  UriFactory.CreateCollection--> teraz należy używać UriFactory.CreateDocumentCollection
+* Obsługa dostawcy LINQ dla metod warunkowych, łączenia i CompareTo dla ciągów
+* **[Stałe]** Dostawca LINQ — > implementacja zawiera metodę na liście w celu wygenerowania tego samego języka SQL jako interfejsu IEnumerable i Array
+* **[Stałe]** BackoffRetryUtility ponownie używa tego samego HttpRequestMessageu zamiast tworzenia nowego przy ponowieniu próby
+* **[Przestarzałe]** UriFactory. CreateCollection--> powinien teraz używać UriFactory. dbdocumentcollection
 
 ### <a name="a-name141141"></a><a name="1.4.1"/>1.4.1
-* **[Naprawiono]**  Lokalizacji problemy, korzystając z informacji kultury inne niż en, takich jak nl-NL, itp. 
+* **[Stałe]** Problemy z lokalizacją w przypadku korzystania z informacji o niezmienionej kulturze, takich jak NL-NL itp. 
 
 ### <a name="a-name140140"></a><a name="1.4.0"/>1.4.0
-* Dodano, routing oparty na identyfikatorze
-  * Nowy Pomocnik UriFactory na potrzeby tworzenia łączy na podstawie Identyfikatora zasobu
-  * Nowe przeciążenia na DocumentClient, aby móc w identyfikatorze URI
-* Dodano IsValid() i IsValidDetailed() w składniku LINQ dla danych geoprzestrzennych
-* Obsługa dostawcy LINQ, rozszerzone:
-  * **Matematyczne** -Abs, funkcje Acos, Asin, Atan, Ceiling, Cos, Exp, Floor, Log10, Sin, Pow, logowania, Log, Round, Sqrt, Tan, Truncate
-  * **Ciąg** -Concat, zawiera, EndsWith, IndexOf, Count, ToLower, trimstart —, Zastąp, odwrócić, trimend —, StartsWith, SubString, ToUpper
-  * **Tablica** -Concat, zawiera, liczba
-  * **W** — operator
+* Dodano routing oparty na IDENTYFIKATORach
+  * Nowy pomocnik UriFactory, który pomaga w tworzeniu linków zasobów opartych na IDENTYFIKATORach
+  * Nowe przeciążenia na DocumentClient w celu przejęcia identyfikatora URI
+* Dodano IsValid () i IsValidDetailed () w LINQ for-geograficzne
+* Ulepszona obsługa dostawcy LINQ:
+  * **Math** -ABS, acos, asin, atan, sufit, cos, exp, Floor, log, log10 —, pow, Round, Sign, Sin, sqrt, Tan, Truncate
+  * **Ciąg** -concat, Contains, EndsWith, IndexOf, Count, ToLower, TrimStart, Replace, Reverse, TrimEnd, StartsWith, podciąg, ToUpper
+  * **Array** -concat, Contains, Count
+  * **In** — operator
 
 ### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
-* Dodano obsługę modyfikowanie zasad indeksowania.
+* Dodano obsługę modyfikowania zasad indeksowania.
   * Nowa metoda ReplaceDocumentCollectionAsync w DocumentClient
-  * Nowe właściwości IndexTransformationProgress w ResourceResponse<T> dla śledzenia postępu procent zmian zasad indeksu
-  * DocumentCollection.IndexingPolicy teraz jest modyfikowalna
+  * Nowa właściwość IndexTransformationProgress w ResourceResponse\<T > na potrzeby śledzenia procentowej postępu zmian zasad indeksu
+  * Element documentcollection. IndexingPolicy jest teraz modyfikowalny
 * Dodano obsługę indeksowania przestrzennego i zapytania.
-  * Nowej Microsoft.Azure.Documents.Spatial przestrzeni nazw w celu serializacji/deserializacji typów przestrzennych, takich jak punktów i wielokątów
-  * Nowa klasa SpatialIndex indeksowania GeoJSON — dane przechowywane w usłudze Cosmos DB
-* **[Naprawiono]**  Zapytania SQL nieprawidłowy, generowany na podstawie wyrażenia LINQ [#38](https://github.com/Azure/azure-documentdb-net/issues/38).
+  * Nowa przestrzeń nazw Microsoft. Azure. Documents. przestrzenny do serializacji/deserializacji typów przestrzennych, takich jak punkt i Wielokąt
+  * Nowa Klasa SpatialIndex do indeksowania danych GEOJSON przechowywanych w Cosmos DB
+* **[Stałe]** Wyrażenie LINQ wygenerowało niepoprawną kwerendę SQL [#38](https://github.com/Azure/azure-documentdb-net/issues/38).
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
-* Dodaje zależność na Newtonsoft.Json v5.0.7.
-* Wprowadzone zmiany do obsługi Order By:
+* Dodano zależność w Newtonsoft. JSON v 5.0.7.
+* Wprowadzono zmiany w kolejności obsługi według:
   
-  * Obsługa dostawcy LINQ OrderBy() lub OrderByDescending()
-  * IndexingPolicy do obsługi klauzuli Order By 
+  * Obsługa dostawcy LINQ dla elementu OrderBy () lub OrderByDescending ()
+  * IndexingPolicy do obsługi kolejności według 
     
-    **Możliwych przełomowych zmian** 
+    **Możliwa przerwana zmiana** 
     
-    Jeśli masz istniejący kod w tej kolekcji przepisów za pomocą niestandardowych zasad indeksowania, istniejący kod musi zostać zaktualizowany do obsługi nowej klasy IndexingPolicy. Jeśli nie masz żadnych niestandardowych zasad indeksowania, następnie ta zmiana nie dotyczy.
+    Jeśli masz istniejący kod, który inicjuje obsługę kolekcji z niestandardowymi zasadami indeksowania, istniejący kod musi zostać zaktualizowany do obsługi nowej klasy IndexingPolicy. Jeśli nie masz niestandardowych zasad indeksowania, ta zmiana nie ma wpływu na użytkownika.
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
-* Dodano obsługę partycjonowania danych przy użyciu nowych klas HashPartitionResolver i RangePartitionResolver i IPartitionResolver.
-* Dodano DataContract serializacji.
-* Dodano GUID Obsługa dostawcy LINQ.
-* Dodano funkcji zdefiniowanej przez użytkownika obsługi w technologii LINQ.
+* Dodano obsługę partycjonowania danych przy użyciu nowych klas HashPartitionResolver i RangePartitionResolver oraz IPartitionResolver.
+* Dodano serializacji obiektu DataContract.
+* Dodano obsługę identyfikatora GUID w dostawcy LINQ.
+* Dodano obsługę systemu UDF w LINQ.
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 * ZESTAW SDK W WERSJI OGÓLNIE DOSTĘPNEJ
 
-## <a name="release--retirement-dates"></a>Daty wydania i wycofania
-Firma Microsoft zapewnia powiadomienie co najmniej **12 miesięcy** ewentualnej wycofanie zestawu SDK w celu złagodzenia przejścia do nowszych/obsługiwanych wersji.
+## <a name="release--retirement-dates"></a>Data wycofania &
+Firma Microsoft zapewnia powiadomienie co najmniej **12 miesięcy** przed WYCOFANIEM zestawu SDK w celu zapewnienia sprawnego przejścia do nowszej/obsługiwanej wersji.
 
-Nowe funkcje i funkcjonalność i optymalizacje są dodawane tylko do bieżącego zestawu SDK, w związku z tym zalecane jest, zawsze uaktualnienie do najnowszej wersji zestawu SDK tak szybko, jak to możliwe. 
+Nowe funkcje i funkcje i optymalizacje są dodawane tylko do bieżącego zestawu SDK, dlatego zaleca się, aby zawsze uaktualnić do najnowszej wersji zestawu SDK tak szybko, jak to możliwe. 
 
-Wszystkie żądania do usługi Azure Cosmos DB przy użyciu wycofane zestawu SDK są odrzucane przez usługę.
+Wszystkie żądania do Azure Cosmos DB za pomocą wycofanego zestawu SDK są odrzucane przez usługę.
 
 <br/>
 
 | Version | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
-| [2.5.1](#2.5.1) |02 lipca 2019 r. |--- |
-| [2.4.1](#2.4.1) |20 czerwca 2019 r. |--- |
-| [2.4.0](#2.4.0) |05 maja 2019 r. |--- |
-| [2.3.0](#2.3.0) |04 kwietnia 2019 r. |--- |
-| [2.2.3](#2.2.3) |11 lutego 2019 r. |--- |
-| [2.2.2](#2.2.2) |06 lutego 2019 r. |--- |
-| [2.2.1](#2.2.1) |24 grudnia 2018 r. |--- |
-| [2.2.0](#2.2.0) |07 grudnia 2018 r. |--- |
+| [2.5.1](#2.5.1) |02 lipca 2019 |--- |
+| [2.4.1](#2.4.1) |20 czerwca 2019 |--- |
+| [2.4.0](#2.4.0) |05 maja 2019 |--- |
+| [2.3.0](#2.3.0) |04, 2019 |--- |
+| [2.2.3](#2.2.3) |11 lutego 2019 |--- |
+| [2.2.2](#2.2.2) |06, 2019 |--- |
+| [2.2.1](#2.2.1) |24 grudnia 2018 |--- |
+| [2.2.0](#2.2.0) |07, 2018 |--- |
 | [2.1.3](#2.1.3) |15 października 2018 r. |--- |
 | [2.1.2](#2.1.2) |04 października 2018 r. |--- |
 | [2.1.1](#2.1.1) |27 września 2018 r. |--- |
@@ -403,46 +400,46 @@ Wszystkie żądania do usługi Azure Cosmos DB przy użyciu wycofane zestawu SDK
 | [1.20.1](#1.20.1) |05 lutego 2018 r. |--- |
 | [1.19.1](#1.19.1) |16 listopada 2017 r. |--- |
 | [1.19.0](#1.19.0) |10 listopada 2017 r. |--- |
-| [1.18.1](#1.18.1) |07 listopada 2017 r. |--- |
+| [1.18.1](#1.18.1) |07, 2017 |--- |
 | [1.18.0](#1.18.0) |17 października 2017 r. |--- |
 | [1.17.0](#1.17.0) |10 sierpnia 2017 r. |--- |
 | [1.16.1](#1.16.1) |07 sierpnia 2017 r. |--- |
 | [1.16.0](#1.16.0) |02 sierpnia 2017 r. |--- |
-| [1.15.0](#1.15.0) |30 czerwca 2017 r. |--- |
+| [1.15.0](#1.15.0) |30 czerwca 2017 |--- |
 | [1.14.1](#1.14.1) |23 maja 2017 r. |--- |
 | [1.14.0](#1.14.0) |10 maja 2017 |--- |
-| [1.13.4](#1.13.4) |09 maja 2017 r. |--- |
-| [1.13.3](#1.13.3) |06 maja 2017 r. |--- |
+| [1.13.4](#1.13.4) |09 maja 2017 |--- |
+| [1.13.3](#1.13.3) |06, 2017 |--- |
 | [1.13.2](#1.13.2) |19 kwietnia 2017 r. |--- |
 | [1.13.1](#1.13.1) |29 marca 2017 r. |--- |
-| [1.13.0](#1.13.0) |24 marca 2017 r. |--- |
+| [1.13.0](#1.13.0) |24 marca 2017 |--- |
 | [1.12.2](#1.12.2) |20 marca 2017 r. |--- |
 | [1.12.1](#1.12.1) |14 marca 2017 r. |--- |
-| [1.12.0](#1.12.0) |15 lutego 2017 r. |--- |
-| [1.11.4](#1.11.4) |06 lutego 2017 r. |--- |
-| [1.11.3](#1.11.3) |26 stycznia 2017 r. |--- |
+| [1.12.0](#1.12.0) |15 lutego 2017 |--- |
+| [1.11.4](#1.11.4) |06, 2017 |--- |
+| [1.11.3](#1.11.3) |26 stycznia 2017 |--- |
 | [1.11.1](#1.11.1) |21 grudnia 2016 r. |--- |
-| [1.11.0](#1.11.0) |08 grudnia 2016 r. |--- |
-| [1.10.0](#1.10.0) |27 września 2016 r. |--- |
-| [1.9.5](#1.9.5) |01 września 2016 r. |--- |
-| [1.9.4](#1.9.4) |24 sierpnia 2016 r. |--- |
-| [1.9.3](#1.9.3) |15 sierpnia 2016 r. |--- |
-| [1.9.2](#1.9.2) |23 lipca 2016 r. |--- |
+| [1.11.0](#1.11.0) |08, 2016 |--- |
+| [1.10.0](#1.10.0) |27 września, 2016 |--- |
+| [1.9.5](#1.9.5) |01, 2016 |--- |
+| [1.9.4](#1.9.4) |24 sierpnia 2016 |--- |
+| [1.9.3](#1.9.3) |15 sierpnia 2016 |--- |
+| [1.9.2](#1.9.2) |23 lipca 2016 |--- |
 | [1.8.0](#1.8.0) |14 czerwca 2016 r. |--- |
-| [1.7.1](#1.7.1) |06 maja 2016 r. |--- |
-| [1.7.0](#1.7.0) |26 kwietnia 2016 r. |--- |
-| [1.6.3](#1.6.3) |08 kwietnia 2016 r. |--- |
+| [1.7.1](#1.7.1) |06, 2016 |--- |
+| [1.7.0](#1.7.0) |26 kwietnia 2016 |--- |
+| [1.6.3](#1.6.3) |08 kwietnia, 2016 |--- |
 | [1.6.2](#1.6.2) |29 marca 2016 r. |--- |
-| [1.5.3](#1.5.3) |19 lutego 2016 r. |--- |
-| [1.5.2](#1.5.2) |14 grudnia 2015 r. |--- |
-| [1.5.1](#1.5.1) |23 listopada 2015 r. |--- |
+| [1.5.3](#1.5.3) |19 lutego 2016 |--- |
+| [1.5.2](#1.5.2) |14 grudnia 2015 |--- |
+| [1.5.1](#1.5.1) |23 listopada, 2015 |--- |
 | [1.5.0](#1.5.0) |05 października 2015 r. |--- |
-| [1.4.1](#1.4.1) |25 sierpnia 2015 r. |--- |
-| [1.4.0](#1.4.0) |13 sierpnia 2015 r. |--- |
+| [1.4.1](#1.4.1) |25 sierpnia 2015 |--- |
+| [1.4.0](#1.4.0) |13 sierpnia 2015 |--- |
 | [1.3.0](#1.3.0) |05 sierpnia 2015 r. |--- |
-| [1.2.0](#1.2.0) |06 lipca 2015 r. |--- |
-| [1.1.0](#1.1.0) |30 kwietnia 2015 r. |--- |
-| [1.0.0](#1.0.0) |08 kwietnia 2015 r. |--- |
+| [1.2.0](#1.2.0) |06, 2015 |--- |
+| [1.1.0](#1.1.0) |30 kwietnia 2015 |--- |
+| [1.0.0](#1.0.0) |08 kwietnia, 2015 |--- |
 
 
 ## <a name="faq"></a>Często zadawane pytania

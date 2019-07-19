@@ -1,6 +1,6 @@
 ---
-title: Dostosowywanie interfejsu użytkownika w usłudze Azure Active Directory B2C — informacje | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o dostosowywaniu interfejsu użytkownika dla aplikacji korzystających z usługi Azure Active Directory B2C.
+title: Informacje o dostosowywaniu interfejsu użytkownika w programie Azure Active Directory B2C | Microsoft Docs
+description: Dowiedz się więcej na temat dostosowywania interfejsu użytkownika dla aplikacji korzystających z Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,63 +10,63 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6c9109cf4d6d67d3d8001a9de1d54e24622a9286
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 13ae1b74acbcab8d623c24d6a7b8d7e1355b80e8
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511174"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227151"
 ---
-# <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Dostosowywanie interfejsu użytkownika w usłudze Azure Active Directory B2C — informacje
+# <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Informacje o dostosowywaniu interfejsu użytkownika w programie Azure Active Directory B2C
 
-Można oznaczyć i dostosowywanie interfejsu użytkownika (UI) Azure Active Directory (Azure AD) B2C służy do aplikacji jest ważne w przypadku zapewniając bezproblemowe środowisko do klienta. Te doświadczenia obejmują profilu rejestracji, logowania, edytowania i resetowania hasła. Ten artykuł zawiera informacje ułatwiające dostosowywanie interfejsu użytkownika aplikacji.
+Możliwość oznaczania i dostosowywania interfejsu użytkownika (UI), który Azure Active Directory (Azure AD) B2C do aplikacji, jest ważna dla zapewnienia bezproblemowego środowiska dla klienta. Te doświadczenia obejmują rejestrowanie, logowanie, edytowanie profilów i resetowanie hasła. Ten artykuł zawiera informacje ułatwiające dostosowanie interfejsu użytkownika aplikacji.
 
-Jeśli chodzi o tych środowisk, w zależności od potrzeb, możesz dostosować interfejsu użytkownika aplikacji na różne sposoby. Na przykład:
+W zależności od potrzeb, gdy chodzi o te środowiska, można dostosować interfejs użytkownika aplikacji na różne sposoby. Na przykład:
 
-- Jeśli używasz [przepływy użytkownika](active-directory-b2c-reference-policies.md) Podaj hasło rejestracji lub logowania, zresetuj lub edytowania profilu środowiska w aplikacji, należy użyć [witryny Azure portal, aby dostosować interfejs użytkownika](tutorial-customize-ui.md).
-- Jeśli używasz wersji 2 przepływ użytkownika, możesz użyć [szablon układu strony](#page-layout-templates) można zmienić wygląd stron przepływ użytkownika bez dalszego dostosowania. Na przykład można zastosować motyw niebieski oceanem lub tablecie szary do wszystkich stron w przepływie użytkownika.
-- Jeśli udostępniasz logowania tylko, strony resetowania jego hasła towarzyszący i weryfikacji wiadomości e-mail, użyj te same kroki dostosowywania, które są używane do [strony logowania usługi Azure AD](../active-directory/fundamentals/customize-branding.md).
-- Jeśli klienci spróbujesz edytować swój profil, aby się zalogować, zostanie przekierowany do strony można dostosować za pomocą te same kroki, które są używane do dostosowania strony logowania usługi Azure AD.
-- Jeśli używasz [zasady niestandardowe](active-directory-b2c-overview-custom.md) podać hasło rejestracji lub logowania, należy zresetować lub profilu edycji w aplikacji, możesz użyć [pliki zasad, aby dostosować interfejs użytkownika](active-directory-b2c-ui-customization-custom.md).
-- Jeśli konieczne jest zapewnienie dynamicznej zawartości, w oparciu o decyzji klienta, możesz użyć [zawartości strony zasad niestandardowych, które można zmienić](active-directory-b2c-ui-customization-custom-dynamic.md) w zależności od parametru, który będzie wysyłany w ciągu zapytania. Na przykład obraz tła na stronie tworzenia konta lub logowania usługi Azure AD B2C zmiany, na podstawie parametru, które przechodzą z sieci web lub aplikacji mobilnej.
-- Można włączyć kodu po stronie klienta JavaScript w usługi Azure AD B2C [przepływy użytkownika](user-flow-javascript-overview.md) lub [zasady niestandardowe](page-contract.md).
+- Jeśli używasz przepływów [użytkowników](active-directory-b2c-reference-policies.md) , aby zapewnić obsługę tworzenia konta lub logowania, resetowania haseł lub edytowania profilu w aplikacji, użyj [Azure Portal, aby dostosować interfejs użytkownika](tutorial-customize-ui.md).
+- Jeśli używasz przepływu użytkownika w wersji 2, możesz użyć [szablonu układu strony](#page-layout-templates) , aby zmienić wygląd stron przepływu użytkownika bez dalszych dostosowań. Na przykład można zastosować motyw Ocean niebieski lub ciemnoszary do wszystkich stron w przepływie użytkownika.
+- Jeśli udostępniasz tylko logowanie, na stronie resetowania hasła i wiadomości e-mail weryfikacyjnych należy użyć tych samych kroków dostosowania, które są używane dla [strony logowania usługi Azure AD](../active-directory/fundamentals/customize-branding.md).
+- Jeśli klienci próbują edytować swój profil przed zalogowaniem się, zostaną przekierowani do strony, którą można dostosować, przy użyciu tych samych kroków, które są używane do dostosowywania strony logowania usługi Azure AD.
+- Jeśli używasz [zasad niestandardowych](active-directory-b2c-overview-custom.md) w celu zapewnienia rejestracji lub logowania, resetowania haseł lub edytowania profilu w aplikacji, użyj [plików zasad, aby dostosować interfejs użytkownika](active-directory-b2c-ui-customization-custom.md).
+- Jeśli musisz dostarczyć zawartość dynamiczną na podstawie decyzji klienta, użyj [zasad niestandardowych, które mogą zmieniać zawartość strony](active-directory-b2c-ui-customization-custom-dynamic.md) w zależności od parametru, który jest wysyłany w ciągu zapytania. Na przykład obraz tła na stronie rejestracji i logowania Azure AD B2C zmienia się w oparciu o parametr przekazywany z aplikacji sieci Web lub mobilnej.
+- Kod po stronie klienta w języku JavaScript można włączyć w Azure AD B2C [przepływów użytkownika](user-flow-javascript-overview.md) lub [zasad niestandardowych](page-layout.md).
 
-Usługa Azure AD B2C kodu w przeglądarce klienta, korzysta z nowoczesnego podejścia o nazwie [udostępniania zasobów między źródłami (CORS)](https://www.w3.org/TR/cors/). W czasie wykonywania zawartość jest ładowany z adresu URL, który określisz w przepływ użytkownika lub zasad. Możesz określić inny adres URL dla różnych stronach. Po załadowaniu zawartości z adresu URL zostało scalone z fragment kodu HTML wstawione z usługi Azure AD B2C, a następnie wyświetlane do klienta.
+Azure AD B2C uruchamia kod w przeglądarce klienta i korzysta z nowoczesnego podejścia zwanego [współużytkowaniem zasobów między źródłami (CORS)](https://www.w3.org/TR/cors/). W czasie wykonywania zawartość jest ładowana z adresu URL określonego w przepływie lub zasadach użytkownika. Należy określić różne adresy URL dla różnych stron. Po załadowaniu zawartości z adresu URL jest on scalany ze fragmentem kodu HTML wstawionym z Azure AD B2C, a następnie wyświetlany dla klienta.
 
-Dostosowywanie interfejsu użytkownika za pomocą własnych plików HTML i CSS, przed rozpoczęciem należy przejrzeć poniższe wskazówki:
+Korzystając z własnych plików HTML i CSS, aby dostosować interfejs użytkownika, przed rozpoczęciem należy zapoznać się z poniższymi wskazówkami:
 
-- Usługa Azure AD B2C Scala zawartość HTML strony. Nie Kopiuj i spróbuj zmienić domyślnej zawartości, który zapewnia usługi Azure AD B2C. Najlepiej do tworzenia zawartości HTML od nowa i użyj domyślnej zawartości jako odwołanie.
-- JavaScript mogą być teraz dołączane w zawartości niestandardowej.
-- Dostępne są następujące wersje obsługiwanych przeglądarek: 
+- Azure AD B2C Scala zawartość HTML na stronach. Nie Kopiuj ani nie próbuj zmienić domyślnej zawartości dostarczanej przez Azure AD B2C. Najlepszym rozwiązaniem jest skompilowanie zawartości HTML od podstaw i użycie domyślnej zawartości jako odwołania.
+- Kod JavaScript można teraz dołączać do zawartości niestandardowej.
+- Obsługiwane wersje przeglądarek:
     - Internet Explorer 11, 10 i Microsoft Edge
     - Ograniczona obsługa programu Internet Explorer 9 i 8
-    - Google Chrome 42.0 i nowsze wersje
-    - Mozilla Firefox 38.0 i nowsze wersje
-- Upewnij się, że nie uwzględniono tagów w kodzie HTML ponieważ zakłócać operacji POST, generowanych przez wprowadzonego kodu HTML z usługi Azure AD B2C.
+    - Google Chrome 42,0 i nowsze
+    - Mozilla Firefox 38,0 i nowsze
+- Upewnij się, że nie dołączysz tagów formularza w kodzie HTML, ponieważ zakłóca operacje POST wygenerowane przez wprowadzony kod HTML z Azure AD B2C.
 
-## <a name="page-layout-templates"></a>Szablony układu strony
+## <a name="page-layout-templates"></a>Szablony układów stron
 
-Przepływy użytkownika w wersji 2 można wstępnie zdefiniowanych szablon, który zapewnia lepszą wygląd domyślnych stron i służy jako podstawa dobre dla własne dostosowania.
+W przypadku przepływów użytkownika w wersji 2 można wybrać wstępnie zaprojektowany szablon, który udostępnia stronom domyślnym lepszy wygląd i służy jako dobry sposób na własne dostosowanie.
 
-W menu po lewej stronie w obszarze **Dostosuj**, wybierz opcję **strony układów**. Następnie wybierz pozycję **szablonu (wersja zapoznawcza)** .
+W menu po lewej stronie w obszarze **Dostosuj**wybierz pozycję **układy strony**. Następnie wybierz pozycję **szablon (wersja zapoznawcza)** .
 
-![Wybierz szablon układu strony](media/customize-ui-overview/template.png)
+![Lista rozwijana wybierania szablonu na stronie przepływu użytkownika Azure Portal](media/customize-ui-overview/template.png)
 
-Wybierz szablon z listy. Na przykład **Ocean niebieski** szablonu dotyczy następujących układu strony przepływ użytkownika:
+Wybierz szablon z listy. Na przykład niebieski szablon **oceanu** stosuje następujący układ do stron przepływu użytkownika:
 
-![Szablon Ocean niebieski](media/customize-ui-overview/ocean-blue.png)
+![Przykład niebieskiego szablonu oceanu renderowany podczas rejestracji na stronie logowania](media/customize-ui-overview/ocean-blue.png)
 
-Wybierz szablon, wybrany układ jest stosowany do wszystkich stron w Twój przepływ użytkownika i identyfikator URI dla każdej strony jest widoczna w **identyfikator URI strony niestandardowe** pola.
+Po wybraniu szablonu wybrany układ zostanie zastosowany do wszystkich stron w przepływie użytkownika, a identyfikator URI dla każdej strony jest widoczny w polu **niestandardowy identyfikator URI strony** .
 
-## <a name="where-do-i-store-ui-content"></a>Gdzie przechowywać zawartość interfejsu użytkownika?
+## <a name="where-do-i-store-ui-content"></a>Gdzie mogę przechowywać zawartość interfejsu użytkownika?
 
-Dostosowywanie interfejsu użytkownika za pomocą własnych plików HTML i CSS, może obsługiwać interfejs użytkownika zawartości w dowolnym miejscu, takich jak na [usługi Azure Blob storage](../storage/blobs/storage-blobs-introduction.md), serwery usługi CDN, AWS S3 w sieci web lub systemów do udostępniania plików. Istotną kwestią jest to użytkownik obsługujących zawartość publicznie dostępnego punktu końcowego HTTPS z włączonym mechanizmem CORS. Po określeniu we własnych Treściach, należy użyć bezwzględnego adresu URL.
+W przypadku używania własnych plików HTML i CSS do dostosowywania interfejsu użytkownika można hostować zawartość interfejsu użytkownika w dowolnym miejscu, na przykład na [platformie Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md), serwerach sieci Web, sieci CDN, AWS S3 lub systemach udostępniania plików. Ważnym punktem jest hostowanie zawartości w publicznie dostępnym punkcie końcowym HTTPS z włączonym mechanizmem CORS. Musisz użyć bezwzględnego adresu URL, gdy określisz go w zawartości.
 
 ## <a name="how-do-i-get-started"></a>Jak rozpocząć?
 
-Należy wykonać następujące polecenie, aby dostosować interfejsu użytkownika:
+Aby dostosować interfejs użytkownika, wykonaj następujące czynności:
 
-- Tworzenie zawartości z pustą sformułowany HTML `<div id="api"></div>` element znajduje się gdzieś w `<body>`. Ten element znaczniki, polegający na wstawieniu zawartości usługi Azure AD B2C. Minimalna strona można znaleźć w poniższym przykładzie:
+- Utwórz poprawnie sformułowaną zawartość HTML z pustym `<div id="api"></div>` elementem znajdującym się `<body>`w miejscu. Ten element oznacza miejsce wstawienia zawartości Azure AD B2C. W poniższym przykładzie przedstawiono minimalną stronę:
 
     ```html
     <!DOCTYPE html>
@@ -82,16 +82,16 @@ Należy wykonać następujące polecenie, aby dostosować interfejsu użytkownik
     </html>
     ```
 
-- Hostowanie zawartości w punkcie końcowym protokołu HTTPS (przy użyciu mechanizmu CORS dozwolone). Pobierz zarówno i opcje żądania metody musi być włączona, podczas konfigurowania mechanizmu CORS.
-- Wykorzystanie arkuszy CSS do określania stylu elementy interfejsu użytkownika usługi Azure AD B2C wstawia na Twoją stronę. Poniższy przykład pokazuje prosty plik CSS, który również zawiera ustawienia dla rejestracji wprowadzonego elementów kodu HTML:
+- Hostowanie zawartości w punkcie końcowym HTTPS (z dozwolonym mechanizmem CORS). Podczas konfigurowania mechanizmu CORS należy włączyć obie metody żądania GET i OPTIONS.
+- Użyj CSS do stylu elementów interfejsu użytkownika, które Azure AD B2C wstawia do strony. Poniższy przykład pokazuje prosty plik CSS, który zawiera również ustawienia dla elementów z wprowadzonym kodem HTML:
 
-    ```css 
+    ```css
     h1 {
       color: blue;
       text-align: center;
     }
     .intro h2 {
-      text-align: center; 
+      text-align: center;
     }
     .entry {
       width: 400px ;
@@ -99,7 +99,7 @@ Należy wykonać następujące polecenie, aby dostosować interfejsu użytkownik
       margin-right: auto ;
     }
     .divider h2 {
-      text-align: center; 
+      text-align: center;
     }
     .create {
       width: 400px ;
@@ -108,32 +108,32 @@ Należy wykonać następujące polecenie, aby dostosować interfejsu użytkownik
     }
     ```
 
-- Tworzenie lub edytowanie zasad, aby korzystać z zawartości, który został utworzony.
+- Utwórz lub Edytuj zasady, aby użyć utworzonej zawartości.
 
-W poniższej tabeli przedstawiono fragmenty kodu HTML, które usługi Azure AD B2C, scala `<div id="api"></div>` element znajduje się w zawartości.
+W poniższej tabeli wymieniono fragmenty kodu HTML, które Azure AD B2C scalane `<div id="api"></div>` do elementu znajdującego się w zawartości.
 
-| Wstawiono strony | Opis elementu HTML |
+| Wstawiona Strona | Opis HTML |
 | ------------- | ------------------- |
-| Wybieranie dostawcy tożsamości | Zawiera listę przycisków dla dostawców tożsamości, które odbiorcy mogą wybierać podczas rejestracji lub logowania. Przyciski te obejmują dostawców tożsamości społecznościowych, takich jak Facebook, Google lub kont lokalnych (oparte na nazwę użytkownika lub adres e-mail). |
-| Konto lokalne, zarejestruj się | Zawiera formularz dla lokalnego konta, zarejestruj się na podstawie adresu e-mail lub nazwę użytkownika. Formularz może zawierać innej kontrolki wejściowe, takie jak pola wprowadzania tekstu, pole wprowadzania hasła, przycisk radiowy, wybieranych list rozwijanych i pól wyboru wielokrotnego wyboru. |
-| Zarejestruj się konta społecznościowego | Może pojawić się podczas logowania przy użyciu istniejącego konta z dostawcy tożsamości społecznościowych, takich jak Facebook lub Google. Jest używany podczas dodatkowe informacje muszą zostać pobrane od klientów, za pomocą formularza rejestracji. |
-| Ujednolicone rejestracji lub logowania | Obsługuje zarówno rejestracji i logowania klientów, którzy mogą korzystać z dostawców tożsamości społecznościowych, takich jak Facebook, Google lub kont lokalnych. |
-| Uwierzytelnianie wieloskładnikowe | Klientów można sprawdzić swoje numery telefonów (przy użyciu tekstowych lub głosowych), podczas tworzenia konta lub logowania. |
-| Błąd | Zawiera informacje o błędzie do klienta. |
+| Wybór dostawcy tożsamości | Zawiera listę przycisków dostawców tożsamości, z których może skorzystać klient podczas rejestracji lub logowania. Te przyciski obejmują dostawców tożsamości społecznościowych, takich jak Facebook, Google lub konta lokalne (na podstawie adresu e-mail lub nazwy użytkownika). |
+| Rejestracja konta lokalnego | Zawiera formularz rejestracji konta lokalnego na podstawie adresu e-mail lub nazwy użytkownika. Formularz może zawierać różne kontrolki wejściowe, takie jak pole wprowadzania tekstu, pole wprowadzania hasła, przycisk radiowy, pola rozwijane z pojedynczym wybieraniem i pola wyboru z zaznaczeniem wielu. |
+| Konto społecznościowe — Rejestracja | Może pojawić się podczas rejestracji przy użyciu istniejącego konta od dostawcy tożsamości społecznościowej, takiego jak Facebook lub Google. Jest on używany, gdy dodatkowe informacje muszą być zbierane z klienta przy użyciu formularza tworzenia konta. |
+| Ujednolicone rejestrowanie lub logowanie | Obsługuje zarówno rejestrowanie, jak i logowanie klientów, którzy mogą korzystać z dostawców tożsamości społecznościowych, takich jak Facebook, Google lub konta lokalnego. |
+| Uwierzytelnianie wieloskładnikowe | Klienci mogą weryfikować numery telefonów (przy użyciu tekstu lub głosu) podczas rejestracji lub logowania. |
+| Błąd | Zawiera informacje o błędach dla klienta. |
 
 
-## <a name="how-do-i-localize-content"></a>Jak zlokalizować zawartość?
+## <a name="how-do-i-localize-content"></a>Jak mogę lokalizować zawartości?
 
-Lokalizowanie zawartość HTML, należy włączyć [Dostosowywanie języka](active-directory-b2c-reference-language-customization.md) w dzierżawie usługi Azure AD B2C. Włączenie tej funkcji umożliwia usłudze Azure AD B2C do przekazywania parametru Open ID Connect `ui-locales` do punktu końcowego usługi. Serwer zawartości można użyć tego parametru zapewnienie specyficzny dla języka HTML strony.
+Zawartość HTML można zlokalizować, włączając [Dostosowywanie języka](active-directory-b2c-reference-language-customization.md) w dzierżawie Azure AD B2C. Włączenie tej funkcji zezwala Azure AD B2C na przekazywanie do punktu końcowego parametru `ui-locales` Open ID Connect. Twój serwer zawartości może użyć tego parametru, aby udostępnić strony HTML specyficzne dla języka.
 
-Zawartość może zostać pobrane z różnych miejsc, w oparciu o ustawienia regionalne, który jest używany. Punkt końcowy z obsługą mechanizmu CORS służy do konfigurowania strukturę folderów do hostowania zawartości dla określonych języków. Jeśli używasz wartość symbolu wieloznacznego {kultury: RFC5646} wywołasz właściwy. Na przykład swoją niestandardową stronę identyfikatora URI może wyglądać `https://contoso.blob.core.windows.net/{Culture:RFC5646}/myHTML/unified.html`. Możesz załadować strony w języku francuskim, ściągając zawartość z `https://contoso.blob.core.windows.net/fr/myHTML/unified.html`
+Zawartość można ściągnąć z różnych miejsc w oparciu o używane ustawienia regionalne. W punkcie końcowym z obsługą mechanizmu CORS można skonfigurować strukturę folderów, aby hostować zawartość dla określonych języków. Jeśli używasz wartości wieloznacznej {Culture: RFC5646}, nastąpi wywołanie tego samego. Na przykład identyfikator URI strony niestandardowej może wyglądać następująco `https://contoso.blob.core.windows.net/{Culture:RFC5646}/myHTML/unified.html`. Możesz załadować stronę w języku francuskim, pobierając zawartość z`https://contoso.blob.core.windows.net/fr/myHTML/unified.html`
 
 ## <a name="examples"></a>Przykłady
 
-Przykłady dostosowywania, Pobierz i przejrzyj te [przykładowe pliki szablonów](https://github.com/azureadquickstarts/b2c-azureblobstorage-client/archive/master.zip).
+Przykłady dostosowywania można pobrać i przejrzeć te [przykładowe pliki szablonów](https://github.com/azureadquickstarts/b2c-azureblobstorage-client/archive/master.zip).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Jeśli używasz przepływy użytkownika można zacząć Dostosowywanie interfejsu użytkownika za pomocą tego samouczka: [Dostosowywanie interfejsu użytkownika aplikacji w usłudze Azure Active Directory B2C](tutorial-customize-ui.md).
-- Jeśli używasz zasad niestandardowych, można zacząć Dostosowywanie interfejsu użytkownika z artykułem: [Dostosowywanie interfejsu użytkownika aplikacji za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).
+- Jeśli używasz przepływów użytkowników, możesz rozpocząć Dostosowywanie interfejsu użytkownika przy użyciu samouczka: [Dostosuj interfejs użytkownika aplikacji w Azure Active Directory B2C](tutorial-customize-ui.md).
+- Jeśli używasz zasad niestandardowych, możesz rozpocząć Dostosowywanie interfejsu użytkownika przy użyciu artykułu: [Dostosuj interfejs użytkownika aplikacji przy użyciu zasad niestandardowych w Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).
 

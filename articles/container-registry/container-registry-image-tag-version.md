@@ -1,63 +1,63 @@
 ---
-title: Wersja i tag obrazy w usłudze Azure Container Registry
-description: Najlepsze praktyki dla wersji platformy Docker i tagowania obrazów kontenerów
+title: Obrazy tagów i wersji w Azure Container Registry
+description: Najlepsze rozwiązania dotyczące tagowania i przechowywania wersji obrazów kontenerów platformy Docker
 services: container-registry
 author: stevelasker
 ms.service: container-registry
 ms.topic: article
 ms.date: 07/10/2019
-ms.author: steve.lasker
-ms.openlocfilehash: bd00fd4f8dd247c766eb34849ecf9de603c5171b
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.author: stevelas
+ms.openlocfilehash: ea7c0831f4ecc345cbcd8a9b8eb6d6566e8c5023
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67800395"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297763"
 ---
-# <a name="recommendations-for-tagging-and-versioning-container-images"></a>Zalecenia dotyczące obrazów kontenerów znakowanie i przechowywania wersji
+# <a name="recommendations-for-tagging-and-versioning-container-images"></a>Zalecenia dotyczące tagowania i przechowywania wersji obrazów kontenerów
 
-Podczas wypychania wdrażanie obrazów kontenera do rejestru kontenerów, a następnie wdrożenie ich, potrzebujesz strategii tagowanie obrazu oraz zarządzanie ich wersjami. W tym artykule omówiono dwa podejścia i gdzie każdy znajdzie się podczas cyklu życia kontenera:
+Podczas wypychania wdrażania obrazów kontenera do rejestru kontenerów, a następnie wdrażania ich, potrzebna jest strategia dla tagowania obrazów i przechowywania wersji. W tym artykule omówiono dwa podejścia i miejsce, w którym każdy z nich mieści się w cyklu życia kontenera:
 
-* **Czasu trwania stanu stabilnego tagi** — tagi, które możesz ponownie użyć, na przykład, aby wskazywać główny lub podrzędny numer wersji, takich jak *mycontainerimage:1.0*.
-* **Tagi unikatowy** — inny znacznik dla każdego obrazu wypchnąć do rejestru, takie jak *mycontainerimage:abc123*.
+* **Stałe znaczniki** — Tagi, których można użyć, na przykład, aby wskazać wersję główną lub pomocniczą, taką jak *mycontainerimage: 1.0*.
+* **Unikatowe Tagi** — inny tag dla każdego obrazu, który można wypchnąć do rejestru, taki jak *mycontainerimage: abc123*.
 
-## <a name="stable-tags"></a>Stabilna tagów
+## <a name="stable-tags"></a>Stałe Tagi
 
-**Zalecenie**: Obsługa za pomocą tagów stabilne **podstawowa obrazów** kompilacji kontenera. Unikaj wdrożeń przy użyciu tagów stabilny, ponieważ tych znaczników nadal otrzymywać aktualizacje i może powodować niespójności w środowiskach produkcyjnych.
+**Zalecenie**: Używaj stabilnych tagów do obsługi **obrazów podstawowych** dla kompilacji kontenerów. Unikaj wdrożeń z stabilnymi tagami, ponieważ te Tagi nadal odbierają aktualizacje i mogą wprowadzać niespójności w środowiskach produkcyjnych.
 
-*Czasu trwania stanu stabilnego tagi* oznacza deweloperem aplikacji lub systemu kompilacji, mogą w dalszym ściągnięcia konkretny tag, który będzie można pobrać aktualizacji. Wersja stabilna nie oznacza, że zawartość są zablokowane. Zamiast stabilny sugeruje, że obraz powinien być stabilna dla celem tej wersji. Na bieżąco "stałe", może być obsługiwane do zastosowania poprawek zabezpieczeń, lub aktualizacje framework.
+*Stałe znaczniki* oznaczają dewelopera lub system kompilacji, można kontynuować ściąganie określonego tagu, który będzie nadal otrzymywać aktualizacje. Stabilne nie oznacza, że zawartość jest zamrożona. Zamiast tego, stabilne oznacza, że obraz powinien być stabilny dla zamiaru tej wersji. Aby zachować stabilność, może być możliwe zastosowanie poprawek zabezpieczeń lub aktualizacji struktury.
 
 ### <a name="example"></a>Przykład
 
-Zespół framework jest dostarczany w wersji 1.0. Ich o tym, że będą one dostarczanie aktualizacji, w tym aktualizacje pomocnicze. Aby obsługiwać stabilne znaczników dla danej wersji głównych i pomocniczych, mają dwa rodzaje stabilne tagów.
+Zespół struktury dostarcza wersję 1,0. Wiedzą oni, że będą dostarczali aktualizacje, w tym drobne aktualizacje. Aby zapewnić obsługę stabilnych tagów dla danej wersji głównej i pomocniczej, mają dwa zestawy stabilnych tagów.
 
-* `:1` — stabilne tagu dla wersji głównej. `1` reprezentuje wersji 1.* "najnowsza" lub "najnowsza".
-* `:1.0`-stabilne tagu dla wersji 1.0, dzięki czemu Deweloper powiązać aktualizacji 1.0, a nie zostać przeniesiona do przodu 1.1 po jego udostępnieniu.
+* `:1`— stabilny tag wersji głównej. `1`reprezentuje "najnowszą" lub "najnowszą" wersję "1. *".
+* `:1.0`-stabilny tag dla wersji 1,0, który umożliwia deweloperom powiązanie z aktualizacjami 1,0 i nie jest przenoszone do przodu do 1,1 po jego udostępnieniu.
 
-Zespół używa również `:latest` znacznik, który wskazuje na najnowszy stabilny tagu, niezależnie od tego, jakie obecnie wersja główna jest.
+Zespół używa `:latest` również znacznika, który wskazuje na najnowszy stabilny tag, niezależnie od aktualnej wersji głównej.
 
-Jeśli są dostępne aktualizacje obrazu podstawowego lub dowolnego typu obsługi wersji Framework obrazów za pomocą tagów stabilne zostały zaktualizowane pod kątem najnowszych digest, reprezentujący stabilne najbardziej aktualną wersję tej wersji.
+Gdy dostępne są aktualizacje obrazu podstawowego lub dowolnego typu wersji obsługującej platformę, obrazy z stabilnymi tagami są aktualizowane do najnowszego podsumowania, które reprezentuje najbardziej aktualną, stabilną wersję tej wersji.
 
-W tym przypadku znaczniki główne i pomocnicze są stale serwisowana. W przypadku obrazu podstawowego dzięki temu właściciela obrazu, aby zapewnić obsługiwanych obrazów.
+W takim przypadku Tagi główne i pomocnicze są stale poddane obsłużeniu. W scenariuszu obrazu podstawowego umożliwia właścicielowi obrazu udostępnianie obrazów z obsługą.
 
-## <a name="unique-tags"></a>Unikatowe tagów
+## <a name="unique-tags"></a>Unikatowe Tagi
 
-**Zalecenie**: Za pomocą unikatowych tagów dla **wdrożeń**, szczególnie w środowisku, które można skalować w wielu węzłach. Prawdopodobnie zamierzonego wdrożeń spójne wersja składników. Jeśli ponownym uruchomieniu kontenera lub koordynatora skaluje większej liczby wystąpień hostów przypadkowo nie będzie ściągać nowszej wersji, niezgodne z innych węzłów.
+**Zalecenie**: Używaj unikatowych znaczników dla **wdrożeń**, szczególnie w środowisku, które może być skalowane na wielu węzłach. Możesz chcieć zamierzone wdrożenia spójnej wersji składników. Jeśli kontener zostanie ponownie uruchomiony lub program Orchestrator skaluje więcej wystąpień, hosty nie będą przypadkowo ściągać nowszej wersji, niespójn z innymi węzłami.
 
-Po prostu unikatowy znakowanie oznacza, że każdy obraz wypchnięty do rejestru ma unikatowych tagów. Tagi nie są używane ponownie. Istnieje kilka wzorców, które można wykonać w celu generowania unikatowych tagów, w tym:
+Unikatowe znakowanie oznacza po prostu, że każdy obraz wypychany do rejestru ma unikatowy tag. Tagi nie są ponownie używane. Istnieje kilka wzorców, które można wykonać, aby generować unikatowe Tagi, w tym:
 
-* **Sygnatura daty i godziny** — ta metoda jest dość typowy, ponieważ wyraźnie poinformuj, kiedy obraz, który został skompilowany. Jednak jak korelować je z powrotem do systemu kompilacji? Czy masz znajdowanie kompilacji, które zostało zakończone, w tym samym czasie? Strefy czasowej bierzesz udział? Wszystkie systemy kompilacji są kalibrowane na czas UTC?
-* **Zatwierdzenie Git** — ta metoda działa, dopóki nie zostanie uruchomiony, obsługa aktualizacji obrazu podstawowego. W przypadku aktualizacji obrazów podstawowych systemu kompilacji dotyczącego z tym samym zatwierdzeniu Git jako poprzednia kompilacja. Jednak obraz podstawowy ma nową zawartość. Ogólnie rzecz biorąc, zapewnia się zatwierdzenia Git *o częściowej lub*-czasu trwania stanu stabilnego tagu.
-* **Podsumowanie manifestu** — każdy obraz kontenera, wypychany do rejestru kontenera jest skojarzony z manifestem określona przez unikatowy skrót SHA-256, lub szyfrowane. Unikatowa, skrótu jest długa, trudne do odczytania i nieskorelowane za pomocą środowiska kompilacji.
-* **Identyfikator kompilacji** — ta opcja może być najlepszym, ponieważ prawdopodobnie przyrostowe, i umożliwia skorelowanych specyficznej kompilacji, aby znaleźć wszelkie artefakty i dzienniki. Jednak takie jak manifestu digest, może być trudne dla ludzi do odczytu.
+* **Sygnatura daty i godziny** — ta metoda jest dość powszechna, ponieważ można jasno określić, kiedy obraz został skompilowany. Ale jak skorelować ją z powrotem do systemu kompilacji? Czy musisz znaleźć kompilację, która została ukończona w tym samym czasie? W jakiej strefie czasowej jesteś? Czy wszystkie systemy kompilacji zostały skalibrowane do czasu UTC?
+* **Zatwierdzenie git** — to podejście działa do momentu rozpoczęcia obsługi aktualizacji obrazu podstawowego. W przypadku aktualizacji obrazu podstawowego system kompilacji rozpoczyna pracę z tym samym zatwierdzeniem git co poprzednią kompilację. Obraz podstawowy ma jednak nową zawartość. Ogólnie rzecz biorąc, zatwierdzenie git zawiera tag *częściowo*stabilny.
+* **Szyfrowanie manifestu** — każdy obraz kontenera wypychany do rejestru kontenerów jest skojarzony z manifestem, identyfikowanym przez unikatowy skrót SHA-256 lub skrótem. Chociaż unikatowy, skrót jest długi, trudny do odczytania i nieskorelowany ze środowiskiem kompilacji.
+* **Identyfikator kompilacji** — ta opcja może być Najlepsza, ponieważ jest najprawdopodobniej przyrostowa i umożliwia korelację z powrotem z konkretną kompilacją w celu znalezienia wszystkich artefaktów i dzienników. Jednak takie jak szyfrowanie manifestu może być trudne do odczytania przez człowieka.
 
-  Jeśli Twoja organizacja ma kilka systemów kompilacji, tworzenie prefiksu tagu o nazwie system kompilacji jest odmianą na temat tej opcji: `<build-system>-<build-id>`. Na przykład kompilacji można odróżnić od systemu kompilacji usługi Jenkins zespołu interfejsu API i systemu kompilacji zespół sieci web Azure potoków.
+  Jeśli organizacja ma kilka systemów kompilacji, poprzedź tag nazwą systemu kompilacji jest odmianą tej opcji: `<build-system>-<build-id>`. Na przykład można odróżnić kompilacje od systemu kompilacji Jenkins zespołu interfejsu API i systemu kompilacji Azure Pipelines zespołu internetowego.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać bardziej szczegółowe omówienie koncepcji, w tym artykule, zobacz wpis w blogu [znakowanie platformy Docker: Najlepsze rozwiązania dotyczące obrazów platformy docker przechowywanie wersji i tagowania](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/).
+Aby zapoznać się z bardziej szczegółowym omówieniem pojęć opisanych w tym artykule, zobacz wpis [w blogu: Najlepsze rozwiązania dotyczące tagowania i przechowywania wersji obrazów](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/)platformy Docker.
 
-Aby pomóc zmaksymalizować wydajność i oszczędność kosztów podczas korzystania z usługi Azure container registry, zobacz [najlepsze rozwiązania dotyczące usługi Azure Container Registry](container-registry-best-practices.md).
+Aby zwiększyć wydajność i ekonomiczne użycie usługi Azure Container Registry, zobacz [najlepsze rozwiązania dotyczące Azure Container Registry](container-registry-best-practices.md).
 
 <!-- IMAGES -->
 

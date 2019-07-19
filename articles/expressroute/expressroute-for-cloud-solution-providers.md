@@ -6,14 +6,14 @@ author: richcar
 ms.service: expressroute
 ms.topic: article
 ms.date: 10/10/2016
-ms.author: richcar
+ms.author: ricarlse
 ms.custom: seodec18
-ms.openlocfilehash: a03ab7bbdadad2728f54127583583c22bd2ec07a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a3bd48f32dfcee1a666ff842cfcab2384a5459ec
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60367595"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849258"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>Usługa ExpressRoute dla dostawców rozwiązań w chmurze (CSP)
 Firma Microsoft oferuje usługi w hiperskali dla tradycyjnych odsprzedawców i dystrybutorów (CSP), dzięki czemu użytkownicy mogą szybko aprowizować nowe usługi i rozwiązania dla klientów bez konieczności inwestowania w ich opracowywanie. Aby umożliwić dostawcy rozwiązań w chmurze (CSP) bezpośrednie zarządzanie tymi nowymi usługami, firma Microsoft udostępnia programy oraz interfejsy API, które pozwalają dostawcy CSP na zarządzanie zasobami Microsoft Azure w imieniu klientów. Jednym z tych zasobów jest usługa ExpressRoute. Usługa ExpressRoute umożliwia dostawcy CSP łączenie istniejących zasobów klienta z usługami Azure. Usługa ExpressRoute jest prywatnym łączem komunikacyjnym o dużej szybkości do usług w ramach platformy Azure. 
@@ -31,7 +31,7 @@ Firma Microsoft Azure oferuje coraz więcej usług, które można zaoferować kl
 Firma Microsoft udostępnia dostawcom CSP interfejsy API do zarządzania subskrypcjami klientów Azure przez umożliwienie programowej integracji z ich systemami zarządzania usługami. Obsługiwane funkcje zarządzania można znaleźć [tutaj](https://msdn.microsoft.com/library/partnercenter/dn974944.aspx).
 
 ## <a name="microsoft-azure-resource-management"></a>Zarządzanie zasobami Microsoft Azure
-Umowa z klientem określa, jak będzie zarządzana subskrypcja. Dostawca CSP może bezpośrednio zarządzać tworzeniem i obsługą zasobów lub klient może zachować kontrolę nad subskrypcją Microsoft Azure i tworzyć zasoby Azure zgodnie z zapotrzebowaniem. Jeśli klient zarządza tworzeniem zasobów w ramach swojej subskrypcji Microsoft Azure użyje jednego z dwóch modeli: "*Połącz przez*" model, lub "*bezpośrednio do*" model. Te modele zostały szczegółowo opisane w poniższych sekcjach.  
+Umowa z klientem określa, jak będzie zarządzana subskrypcja. Dostawca CSP może bezpośrednio zarządzać tworzeniem i obsługą zasobów lub klient może zachować kontrolę nad subskrypcją Microsoft Azure i tworzyć zasoby Azure zgodnie z zapotrzebowaniem. Jeśli klient zarządza tworzeniem zasobów w ramach subskrypcji Microsoft Azure, użyje jednego z dwóch modeli: Model "*connect-through*" lub "*Direct-to*". Te modele zostały szczegółowo opisane w poniższych sekcjach.  
 
 ### <a name="connect-through-model"></a>Model typu „połącz przez”
 ![tekst alternatywny](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
@@ -88,7 +88,7 @@ Możesz pomóc podczas konfigurowania połączenia i tras do zezwalania zasobom 
 ## <a name="expressroute-routing-domains"></a>Domeny routingu usługi ExpressRoute
 Usługa ExpressRoute oferuje trzy domeny routingu: publiczną, prywatną i komunikacji równorzędnej firmy Microsoft. Każda z domen routingu jest konfigurowana z identycznymi routerami w konfiguracji aktywny-aktywny w celu uzyskania wysokiej dostępności. Więcej szczegółowych informacji dotyczących domen routingu usługi ExpressRoute można znaleźć [tutaj](expressroute-circuit-peerings.md).
 
-Możesz zdefiniować filtry tras niestandardowych w taki sposób, aby zezwalać tylko na trasy, na które chcesz zezwolić lub których potrzebujesz. Aby uzyskać więcej informacji lub aby zobaczyć, jak do wprowadzenia tych zmian, zobacz artykuł: [Tworzenie i modyfikowanie routingu dla obwodu usługi ExpressRoute za pomocą programu PowerShell](expressroute-howto-routing-classic.md) więcej szczegółów dotyczących filtrów routingu.
+Możesz zdefiniować filtry tras niestandardowych w taki sposób, aby zezwalać tylko na trasy, na które chcesz zezwolić lub których potrzebujesz. Aby uzyskać więcej informacji lub dowiedzieć się, jak wprowadzić te zmiany, zobacz artykuł: [Utwórz i zmodyfikuj Routing dla obwodu usługi ExpressRoute przy użyciu programu PowerShell,](expressroute-howto-routing-classic.md) Aby uzyskać więcej informacji na temat filtrów routingu.
 
 > [!NOTE]
 > W przypadku firmy Microsoft i publicznej komunikacji równorzędnej połączenie musi odbywać się przez publiczny adres IP należący do klienta lub dostawcy CSP i musi być zgodne ze wszystkimi zdefiniowanymi regułami. Więcej informacji znajduje się na stronie [ExpressRoute Prerequisites](expressroute-prerequisites.md) (Wymagania wstępne usługi ExpressRoute).  
@@ -120,11 +120,11 @@ W zależności od tego, czy używany jest model „połącz z” czy „połącz
 1. **Izolacja klienta** — platforma Azure zapewnia izolację klienta przez przechowywanie identyfikatora klienta i informacji o sieci wirtualnej w bezpiecznej bazie danych, używanej do hermetyzacji ruchu poszczególnych klientów w tunelu GRE.
 2. Reguły **grupy zabezpieczeń sieci (NSG)** służą do definiowania dopuszczonego ruchu do i z podsieci w ramach sieci wirtualnych na platformie Azure. Domyślnie NSG obejmuje reguły blokowania do blokowania ruchu z Internetu do sieci wirtualnej oraz reguły zezwalania dla ruchu w ramach sieci wirtualnej. Więcej informacji na temat grup zabezpieczeń sieci znajduje się [tutaj](https://azure.microsoft.com/blog/network-security-groups/).
 3. **Tunelowanie wymuszone** — jest to opcja przekierowywania ruchu powiązanego z Internetem pochodzącego z platformy Azure za pośrednictwem połączenia usługi ExpressRoute do lokalnego centrum danych. Więcej informacji o na temat tunelowania wymuszonego można znaleźć [tutaj](expressroute-routing.md#advertising-default-routes).  
-4. **Szyfrowanie** — mimo że obwody usługi ExpressRoute są przeznaczone dla określonego klienta, istnieje możliwość naruszenia bezpieczeństwa dostawcy sieci, które pozwoliłoby intruzowi na sprawdzenie ruchu pakietu. Aby temu zapobiec, klient lub dostawca CSP może zaszyfrować ruch za pośrednictwem połączenia przez zdefiniowanie zasad trybu tunelu IPSec dla całego ruchu odbywającego się między zasobami lokalnymi i Azure zasoby (zobacz opcjonalne ochrony IPSec trybu tunelu dla klienta 1 na rysunku 5: Zabezpieczenia usługi ExpressRoute powyżej). Druga opcja polega na użyciu urządzenia zapory na każdym punkcie końcowym obwodu usługi ExpressRoute. Wymaga to zainstalowania dodatkowych maszyn wirtualnych/urządzeń zapory innych firm ma obu końcach w celu zaszyfrowania ruchu w ramach obwodu usługi ExpressRoute.
+4. **Szyfrowanie** — mimo że obwody usługi ExpressRoute są przeznaczone dla określonego klienta, istnieje możliwość naruszenia bezpieczeństwa dostawcy sieci, które pozwoliłoby intruzowi na sprawdzenie ruchu pakietu. Aby rozwiązać ten potencjał, klient lub dostawca usług kryptograficznych może szyfrować ruch przez połączenie przez zdefiniowanie zasad trybu tunelowania IPSec dla całego ruchu przechodzącego między zasobami lokalnymi i zasobami platformy Azure (zobacz opcjonalny Tryb tunelowania IPSec dla klienta 1 na rysunku). 5000 Zabezpieczenia ExpressRoute, powyżej). Druga opcja polega na użyciu urządzenia zapory na każdym punkcie końcowym obwodu usługi ExpressRoute. Wymaga to zainstalowania dodatkowych maszyn wirtualnych/urządzeń zapory innych firm ma obu końcach w celu zaszyfrowania ruchu w ramach obwodu usługi ExpressRoute.
 
 ![tekst alternatywny](./media/expressroute-for-cloud-solution-providers/expressroute-security.png)  
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Usługa dostawcy rozwiązań w chmurze zapewnia sposób na zwiększenie wartości dla klientów bez konieczności nabywania kosztownej infrastruktury i zakupów funkcji, z zachowaniem pozycji podstawowego dostawcy usług firmy zewnętrznej. Bezproblemową integrację z platformą Microsoft Azure można uzyskać przez interfejs API dostawcy CSP. Umożliwia on zintegrowanie zarządzania platformą Microsoft Azure w ramach istniejących struktur zarządzania.  
 
 Dodatkowe informacje można znaleźć, używając następujących linków:

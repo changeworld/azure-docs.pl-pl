@@ -1,68 +1,69 @@
 ---
-title: Uaktualnij rejestr kontenerów klasycznej platformie Azure
-description: Skorzystaj z zalet rozszerzonej zestawu funkcji komponentu Basic, Standard i Premium zarządzane rejestry kontenerów, uaktualniając niezarządzanych Classic rejestru kontenerów.
+title: Uaktualnianie klasycznego rejestru kontenerów platformy Azure
+description: Skorzystaj z rozszerzonego zestawu funkcji dla rejestrów kontenerów zarządzanych w warstwach Podstawowa, standardowa i Premium, uaktualniając niezarządzany klasyczny rejestr kontenerów.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: danlep
-ms.openlocfilehash: a5099feee34eb5497b68987485412e29ad5d5365
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 05c227e7de078c6bb371049f16e191598b9ca4e5
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60480336"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310376"
 ---
-# <a name="upgrade-a-classic-container-registry"></a>Uaktualnianie rejestru klasycznego kontenera
+# <a name="upgrade-a-classic-container-registry"></a>Uaktualnij klasyczny rejestr kontenerów
 
-Usługa Azure Container Registry (ACR) jest dostępna w kilku warstwach usługi, [znane jako jednostki SKU](container-registry-skus.md). Wstępną wersję ACR oferowane pojedynczej jednostki SKU i Model Klasyczny, który nie posiada kilka funkcji zarezerwowanymi podstawowa, standardowa i Premium jednostki SKU (łącznie znane jako *zarządzane* rejestrów).
+Azure Container Registry (ACR) jest dostępna w kilku warstwach usług, [znanych jako jednostki SKU](container-registry-skus.md). Początkowa wersja ACR oferuje pojedynczą jednostkę SKU, klasyczną, która nie ma kilku funkcji związanych z jednostkami SKU Basic, standard i Premium (zbiorowo znane jako rejestry *zarządzane* ).
 
-Klasyczne jednostki SKU jest wycofywany i będzie niedostępna po kwietnia 2019 r. Ten artykuł szczegółowo opisuje sposób migrowania niezarządzanych rejestru klasycznego do jednego z zarządzanymi jednostkami SKU, można korzystać z zalet ich zestaw rozszerzonych funkcji.
+Klasyczna jednostka SKU jest przestarzała i będzie niedostępna po 2019 kwietnia. W tym artykule szczegółowo opisano sposób migrowania niezarządzanego klasycznego rejestru do jednej z zarządzanych jednostek SKU, dzięki czemu można korzystać z rozszerzonego zestawu funkcji.
 
-## <a name="why-upgrade"></a>Dlaczego warto wykonać uaktualnienie?
+## <a name="why-upgrade"></a>Dlaczego warto przeprowadzić uaktualnienie?
 
-Rejestru klasycznego jest jednostka SKU **przestarzałe**, a będzie niedostępna po **2019 kwietnia**. Wszystkie istniejące rejestrów Classic powinny zostać uaktualnione przed kwietnia 2019 r. Funkcje zarządzania portalu klasycznego rejestrów będzie wycofać. Tworzenie nowych rejestrów klasyczny zostanie wyłączona po 2019 kwietnia.
+Jednostka SKU rejestru klasycznego jest **przestarzała**i będzie niedostępna po **2019 kwietnia**. Przed 2019 kwietnia należy uaktualnić wszystkie istniejące rejestry klasyczne. Funkcje zarządzania portalem dla klasycznych rejestrów będą stopniowo wycofywane. Tworzenie nowych rejestrów klasycznych zostanie wyłączone po kwietnia 2019.
 
-Ze względu na planowane wycofywania i ograniczone możliwości rejestrów Classic niezarządzanych wszystkich rejestrów Classic powinny zostać uaktualnione do rejestrów zarządzanych (podstawowa, standardowa lub Premium). Te wyższego poziomu jednostki SKU głębiej zintegrować rejestru możliwości platformy Azure. Aby uzyskać więcej informacji o cenach i możliwościach z różnymi warstwami usług, zobacz [jednostki SKU rejestru kontenerów](container-registry-skus.md).
+Ze względu na planowane wycofanie i ograniczone możliwości klasycznych niezarządzanych rejestrów należy uaktualnić wszystkie klasyczne rejestry do rejestrów zarządzanych (podstawowa, standardowa lub Premium). Te jednostki SKU wyższego poziomu bardziej głęboko integrują rejestr z możliwościami platformy Azure. Aby uzyskać więcej informacji na temat cen i możliwości różnych warstw usług, zobacz [Container Registry jednostek SKU](container-registry-skus.md).
 
-W rejestrze klasycznym zależy od konta magazynu, które platforma Azure udostępnia automatycznie w ramach subskrypcji platformy Azure podczas tworzenia rejestru. Z drugiej strony, podstawowa, standardowa i Premium jednostki SKU z zalet platformy Azure [zaawansowane funkcje magazynu](container-registry-storage.md) przez przejrzystą obsługę magazynu obrazów dla Ciebie. Oddzielne konto magazynu nie jest tworzony w ramach własnej subskrypcji.
+Klasyczny rejestr zależy od konta magazynu, które platforma Azure automatycznie inicjuje w Twojej subskrypcji platformy Azure podczas tworzenia rejestru. Z kolei jednostki SKU w warstwach Podstawowa, standardowa i Premium wykorzystują [Zaawansowane funkcje magazynu](container-registry-storage.md) platformy Azure, aby w sposób niewidoczny obsługiwać magazyn obrazów. Osobne konto magazynu nie jest tworzone w ramach własnej subskrypcji.
 
-Rejestru zarządzanego magazynu zapewnia następujące korzyści:
+Magazyn rejestru zarządzanego zapewnia następujące korzyści:
 
-* Obrazy kontenerów są [szyfrowane, gdy](container-registry-storage.md#encryption-at-rest).
-* Obrazy są przechowywane przy użyciu [magazyn geograficznie nadmiarowy](container-registry-storage.md#geo-redundant-storage), jego kopii zapasowej obrazów za pomocą replikacja w wielu regionach (tylko jednostki SKU Premium).
-* Możliwość swobodnie [przechodzenia między jednostkami SKU](container-registry-skus.md#changing-skus), umożliwiając wyższej przepustowości w przypadku wybrania wyższego poziomu jednostki SKU. Każdej jednostki SKU rejestru Azure container Registry można spełniać wymagań dotyczących przepływności zwiększania potrzeb.
-* Model zabezpieczeń ujednoliconego rejestru i jego magazyn zapewnia uproszczoną usługi rights management. Zarządzanie uprawnieniami odbywa się tylko dla rejestru kontenerów, bez konieczności również zarządzać uprawnieniami do oddzielnego konta magazynu.
+* Obrazy kontenerów są [szyfrowane w stanie spoczynku](container-registry-storage.md#encryption-at-rest).
+* Obrazy są przechowywane przy użyciu [magazynu geograficznie](container-registry-storage.md#geo-redundant-storage)nadmiarowego, dzięki czemu można tworzyć kopie zapasowe obrazów przy użyciu replikacji wieloregionowej (tylko wersja Premium).
+* Możliwość swobodnego [przenoszenia między](container-registry-skus.md#changing-skus)jednostkami SKU, co pozwala na większą przepływność po wybraniu jednostki SKU wyższego poziomu. W przypadku każdej jednostki SKU ACR może spełnić wymagania dotyczące przepływności w miarę wzrostu potrzeb.
+* Ujednolicony model zabezpieczeń dla rejestru i jego magazyn zawiera uproszczone zarządzanie prawami. Zarządzasz uprawnieniami tylko dla rejestru kontenerów, bez konieczności zarządzania uprawnieniami dla oddzielnego konta magazynu.
 
-Więcej informacji na temat przechowywania obrazu w rejestru Azure container Registry, zobacz [magazyn obrazów kontenerów w usłudze Azure Container Registry](container-registry-storage.md).
+Aby uzyskać dodatkowe informacje na temat przechowywania obrazów w programie ACR, zobacz temat [Container Image Storage w Azure Container Registry](container-registry-storage.md).
 
 ## <a name="migration-considerations"></a>Zagadnienia dotyczące migracji
 
-Po uaktualnieniu rejestru klasycznego do rejestru zarządzanego Azure należy skopiować wszystkich istniejących obrazów kontenera z rejestru Azure container Registry utworzone konto magazynu w ramach subskrypcji na koncie magazynu zarządzanych przez platformę Azure. W zależności od rozmiaru rejestru ten proces może potrwać kilka minut do kilku godzin. Do celów oszacowania oczekiwać czasu migracji GiB 0,5 około minutę.
+W przypadku uaktualniania klasycznego rejestru do rejestru zarządzanego platforma Azure musi skopiować wszystkie istniejące obrazy kontenerów z konta magazynu utworzonego przez ACR w ramach subskrypcji do konta magazynu zarządzanego przez platformę Azure. W zależności od rozmiaru rejestru ten proces może potrwać kilka minut do kilku godzin. W celach szacunkowych oczekiwany jest czas migracji o około 0,5 GiB na minutę.
 
-W procesie konwersji `docker push` operacje zostały wyłączone w ciągu ostatnich 10% migracji. `docker pull` w dalszym ciągu działać normalnie.
+Podczas procesu `docker push` konwersji operacje są wyłączone w trakcie ostatnich 10% migracji. `docker pull`kontynuuje normalne działanie.
 
-Nie należy usuwać ani modyfikować zawartość konta magazynu, kopii rejestru klasycznego w procesie konwersji. To może doprowadzić do uszkodzenia obrazów kontenerów.
+Nie usuwaj ani nie Modyfikuj zawartości konta magazynu tworzącego swój klasyczny rejestr w trakcie procesu konwersji. Wykonanie tej operacji może spowodować uszkodzenie obrazów kontenerów.
 
-Po zakończeniu migracji konta magazynu w ramach subskrypcji, która pierwotnie wspierana rejestru klasycznego jest już używany przez usługę Azure Container Registry. Po zweryfikowaniu, że migracja się powiodła, rozważ usunięcie konta magazynu, aby zminimalizować koszty.
+Po zakończeniu migracji konto magazynu w ramach subskrypcji, które początkowo utworzyła kopię zapasową klasycznego rejestru, nie jest już używane przez Azure Container Registry. Po zweryfikowaniu, że migracja zakończyła się pomyślnie, Rozważ usunięcie konta magazynu, aby zmniejszyć koszty.
 
 >[!IMPORTANT]
-> Uaktualnienie z wersji klasycznej do jednego z zarządzanymi jednostkami SKU jest **jednokierunkowe procesu**. Po konwersji klasyczny rejestr do warstwy podstawowa, standardowa lub Premium, nie można przywrócić do klasycznego modelu. Jednak dowolnie przenosić między zarządzanymi jednostkami SKU o wystarczającej pojemności dla rejestru.
+> Uaktualnianie z wersji klasycznej do jednej z zarządzanych jednostek SKU jest **procesem**jednokierunkowym. Po przekonwertowaniu klasycznego rejestru do warstwy Podstawowa, standardowa lub Premium nie można przywrócić klasycznej wersji. Możliwe jest jednak swobodne przechodzenie między zarządzanymi jednostkami SKU z wystarczającą pojemnością dla rejestru.
 
 ## <a name="how-to-upgrade"></a>Jak uaktualnić
 
-Niezarządzane rejestrze klasycznym można uaktualnić do jednego z zarządzanymi jednostkami SKU na kilka sposobów. W poniższych sekcjach opisano proces użycia [wiersza polecenia platformy Azure] [ azure-cli] i [witryny Azure portal][azure-portal].
+Niezarządzany rejestr klasyczny można uaktualnić do jednej z zarządzanych jednostek SKU na kilka sposobów. W poniższych sekcjach opisano proces korzystania z and the [Azure portal][azure-portal] [interfejsu wiersza polecenia platformy Azure][azure-cli] .
 
-## <a name="upgrade-in-azure-cli"></a>Uaktualnienia w wiersza polecenia platformy Azure
+## <a name="upgrade-in-azure-cli"></a>Uaktualnianie w interfejsie wiersza polecenia platformy Azure
 
-Aby uaktualnianie rejestru klasycznego w interfejsie wiersza polecenia platformy Azure, wykonaj [az acr update] [ az-acr-update] polecenia i określić nowej jednostki SKU dla rejestru. W poniższym przykładzie o nazwie rejestru klasycznego *myclassicregistry* została uaktualniona do wersji Premium:
+Aby uaktualnić rejestr klasyczny w interfejsie wiersza polecenia platformy Azure, wykonaj polecenie [AZ ACR Update][az-acr-update] i określ nową jednostkę SKU dla rejestru. W poniższym przykładzie rejestr klasyczny o nazwie *myclassicregistry* jest uaktualniany do jednostki SKU Premium:
 
 ```azurecli-interactive
 az acr update --name myclassicregistry --sku Premium
 ```
 
-Po zakończeniu migracji powinny być widoczne dane wyjściowe podobne do następujących. Należy zauważyć, że `sku` jest "Premium" i `storageAccount` jest `null`, wskazujący, że platforma Azure zarządza się teraz magazyn obrazów dla tego rejestru.
+Po zakończeniu migracji powinny zostać wyświetlone dane wyjściowe podobne do poniższych. Zwróć uwagę, `sku` że jest to "Premium" `storageAccount` i `null`"is", co oznacza, że platforma Azure zarządza teraz magazynem obrazów dla tego rejestru.
 
 ```JSON
 {
@@ -85,33 +86,33 @@ Po zakończeniu migracji powinny być widoczne dane wyjściowe podobne do nastę
 }
 ```
 
-Jeśli określisz rejestru zarządzanego jednostki SKU, których maksymalną pojemność jest mniejszy niż rozmiar rejestru klasycznego, otrzymasz komunikat o błędzie podobny do następującego.
+W przypadku określenia jednostki SKU zarządzanego rejestru, której Maksymalna pojemność jest mniejsza niż rozmiar Twojego rejestru klasycznego, zostanie wyświetlony komunikat o błędzie podobny do poniższego.
 
 `Cannot update the registry SKU due to reason: Registry size 12936251113 bytes exceeds the quota value 10737418240 bytes for SKU Basic. The suggested SKU is Standard.`
 
-Jeśli komunikat o błędzie podobny, uruchom [az acr update] [ az-acr-update] ponownie polecenie, a następnie określ sugerowane jednostki SKU, który jest następnego najwyższego poziomu jednostki SKU, która może pomieścić obrazów.
+Jeśli wystąpi podobny błąd, uruchom ponownie polecenie [AZ ACR Update][az-acr-update] i określ SUGEROWANĄ jednostkę SKU, która jest kolejną jednostką SKU, która może obsłużyć Twoje obrazy.
 
-## <a name="upgrade-in-azure-portal"></a>Uaktualnienie w witrynie Azure portal
+## <a name="upgrade-in-azure-portal"></a>Uaktualnianie w Azure Portal
 
-Kiedy uaktualniasz rejestrze klasycznym przy użyciu witryny Azure portal, Azure automatycznie wybiera Standard lub Premium jednostki SKU, w zależności od jednostki SKU może obsłużyć obrazów. Na przykład, jeśli rejestr zawiera mniej niż 100 GiB w obrazach, Azure automatycznie wybiera i konwertuje rejestru klasycznego do warstwy standardowa (maks. 100 GiB).
+W przypadku uaktualniania klasycznego rejestru przy użyciu Azure Portal platforma Azure automatycznie wybiera jednostkę SKU w warstwie Standardowa lub Premium, w zależności od tego, która jednostka SKU może obsłużyć Twoje obrazy. Na przykład jeśli Rejestr zawiera mniej niż 100 GiB w obrazach, platforma Azure automatycznie wybiera i konwertuje klasyczny rejestr na Standard (100 GiB maksimum).
 
-Aby uaktualnić rejestru klasycznego przy użyciu witryny Azure portal, przejdź do rejestru kontenerów **Przegląd** i wybierz **uaktualnianie do rejestru zarządzanego**.
+Aby uaktualnić rejestr klasyczny przy użyciu Azure Portal, przejdź do **omówienia** rejestru kontenerów i wybierz pozycję **Uaktualnij do rejestru zarządzanego**.
 
-![Klasyczny rejestr uaktualnienia przycisku w witrynie Azure portal, interfejsu użytkownika][update-classic-01-upgrade]
+![Klasyczny przycisk Uaktualnij rejestr w interfejsie użytkownika Azure Portal][update-classic-01-upgrade]
 
-Wybierz **OK** aby upewnić się, że chcesz uaktualnić do rejestru zarządzanego.
+Wybierz **przycisk OK** , aby potwierdzić, że chcesz przeprowadzić uaktualnienie do rejestru zarządzanego.
 
-Podczas migracji portalu oznacza, że w rejestrze **stan aprowizacji** jest *aktualizowanie*. Jak wspomniano wcześniej, `docker push` operacje zostały wyłączone w ciągu ostatnich 10% migracji. Nie delete lub update konto magazynu używane przez klasyczny rejestr, podczas gdy migracja jest w toku — w ten sposób może spowodować uszkodzenie obrazu.
+Podczas migracji Portal wskazuje, że **stan aprowizacji** rejestru jest *aktualizowany*. Jak wspomniano wcześniej `docker push` , operacje są wyłączone w trakcie ostatnich 10% migracji. Nie usuwaj ani nie Aktualizuj konta magazynu używanego przez rejestr klasyczny podczas migracji w toku — może to spowodować uszkodzenie obrazu.
 
-![Klasyczny rejestr postęp uaktualniania w witrynie Azure portal, interfejsu użytkownika][update-classic-03-updating]
+![Postęp uaktualniania rejestru klasycznego w interfejsie użytkownika Azure Portal][update-classic-03-updating]
 
-Po zakończeniu migracji **stan aprowizacji** wskazuje *Powodzenie*, i umożliwi wznowienie zwykłych operacji z rejestrem.
+Po zakończeniu migracji **stan aprowizacji** wskazuje *powodzenie*i można wznowić normalne operacje z rejestrem.
 
-![Stan ukończenia w witrynie Azure portal, interfejsu użytkownika uaktualnienia rejestru klasycznego][update-classic-04-updated]
+![Stan ukończenia uaktualniania rejestru klasycznego w interfejsie użytkownika Azure Portal][update-classic-04-updated]
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Po uaktualnieniu rejestru klasycznego do rejestru zarządzanego, platforma Azure używa już konta magazynu, która pierwotnie wspierana rejestru klasycznego. Aby zmniejszyć koszt, rozważ usunięcie konta magazynu lub kontenera obiektów Blob w ramach konta, który zawiera stary obrazów kontenerów.
+Po uaktualnieniu rejestru klasycznego do rejestru zarządzanego platforma Azure nie korzysta już z konta magazynu, które pierwotnie utworzyło kopię zapasową rejestru klasycznego. Aby obniżyć koszty, należy rozważyć usunięcie konta magazynu lub kontenera obiektów BLOB w ramach konta, które zawiera stare obrazy kontenerów.
 
 <!-- IMAGES -->
 [update-classic-01-upgrade]: ./media/container-registry-upgrade/update-classic-01-upgrade.png

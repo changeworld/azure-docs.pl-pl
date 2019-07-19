@@ -1,6 +1,6 @@
 ---
-title: Wykrywanie dla usług danych w usłudze Azure Security Center zagrożeń | Dokumentacja firmy Microsoft
-description: W tym temacie przedstawiono alertów usług danych dostępnych w usłudze Azure Security Center.
+title: Wykrywanie zagrożeń dla usług danych w Azure Security Center | Microsoft Docs
+description: W tym temacie przedstawiono alerty usług danych dostępne w Azure Security Center.
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -13,60 +13,60 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/02/2019
-ms.author: monhaber
-ms.openlocfilehash: 87cfd2769e473d26c2dcae1b7b418f6fb1739915
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.author: v-mohabe
+ms.openlocfilehash: 1cafd8a3c766e57aed67634d7da8498c9a6ee120
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626291"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295816"
 ---
-# <a name="threat-detection-for-data-services-in-azure-security-center"></a>Wykrywanie zagrożeń dla usług danych w usłudze Azure Security Center
+# <a name="threat-detection-for-data-services-in-azure-security-center"></a>Wykrywanie zagrożeń dla usług danych w Azure Security Center
 
- Usługa Security Center analizuje dzienniki usługi magazynu danych i wyzwalania alertów po wykryciu zagrożeniem dla zasobów danych. Ten temat zawiera listę alertów, które usługa Security Center generuje następujące usługi:
+ Security Center analizuje dzienniki usług magazynu danych i wyzwala alerty w przypadku wykrycia zagrożenia dla zasobów danych. Ten temat zawiera listę alertów generowanych przez Security Center dla następujących usług:
 
-* [Usługa Azure SQL Database i SQL Data Warehouse](#data-sql)
+* [Azure SQL Database i SQL Data Warehouse](#data-sql)
 * [Azure Storage](#azure-storage)
 
-## Usługa Azure SQL Database i SQL Data Warehouse <a name="data-sql"></a>
+## Azure SQL Database i SQL Data Warehouse<a name="data-sql"></a>
 
-Zagrożeń SQL wykrywa nietypowe działania wskazujące na nietypowe i potencjalnie szkodliwe, wykrywanie podejmie próbę dostępu lub wykorzystania baz danych. Usługa Security Center analizuje dzienniki inspekcji SQL i działa natywnie w aparacie programu SQL.
+Wykrywanie zagrożeń SQL wykrywa anomalie działania wskazujące nietypowe i potencjalnie szkodliwe próby uzyskania dostępu do baz danych lub ich wykorzystania. Security Center analizuje dzienniki inspekcji SQL i działa natywnie w aparacie SQL.
 
 |Alerty|Opis|
 |---|---|
-|**Podatność na iniekcję SQL**|Aplikacja wygenerowała błędnej instrukcji SQL w bazie danych. Może to oznaczać możliwe luki w zabezpieczeniach umożliwiające ataki przez wstrzyknięcie kodu SQL. Istnieją dwie możliwe przyczyny generowania błędnej instrukcji: Albo Usterka w kodzie aplikacji skonstruowane błędnej instrukcji SQL. Możesz też kod aplikacji lub procedury składowane nie oczyszczają danych wejściowych użytkownika, podczas tworzenia błędnej instrukcji SQL, które można wykorzystać do iniekcji SQL.|
-|**Potencjalna iniekcja SQL**|Aktywnego wykorzystania wystąpił w odniesieniu do określonych aplikacji podatny na iniekcji SQL. Oznacza to, osoba atakująca próbuje wstrzyknąć złośliwe instrukcje SQL przy użyciu podatnego kodu aplikacji lub procedur składowanych.|
-|**Dostęp z nietypowej lokalizacji**|Nastąpiła w przypadku zmiany wzorca dostępu do programu SQL server, gdy ktoś zalogował się z serwerem SQL z nietypowej lokalizacji geograficznej. W niektórych przypadkach ten alert wykrywa prawidłowe działanie (nowa aplikacja lub konserwacja przeprowadzana przez deweloperów). W innych przypadkach ten alert wykrywa złośliwe działanie (były pracownik, zewnętrzna osoba atakująca).|
-|**Dostęp z nieznanego podmiotu zabezpieczeń**|Wprowadzono w przypadku zmiany wzorca dostępu do programu SQL server — ktoś zalogował się do programu SQL server za pomocą nietypowego podmiotu zabezpieczeń (użytkownika SQL). W niektórych przypadkach ten alert wykrywa prawidłowe działanie (nowa aplikacja, konserwacja przeprowadzana przez deweloperów). W innych przypadkach ten alert wykrywa złośliwe działanie (były pracownik, zewnętrzna osoba atakująca).|
-|**Dostęp z potencjalnie szkodliwej aplikacji**|Potencjalnie szkodliwej aplikacji został użyty do dostępu do bazy danych. W niektórych przypadkach ten alert wykrywa przeprowadzany test penetracji. W innych przypadkach ten alert wykrywa atak przy użyciu typowych narzędzi ataku.|
-|**Atak siłowy na poświadczenia SQL**|Wystąpił błąd nietypowo dużej liczby nieudanych prób logowania przy użyciu różnych poświadczeń. W niektórych przypadkach ten alert wykrywa przeprowadzany test penetracji. W innych przypadkach ten alert wykrywa atak siłowy.|
+|**Luka w zabezpieczeniach dla iniekcji SQL**|Aplikacja wygenerowała błędną instrukcję SQL w bazie danych. Może to wskazywać na ewentualną lukę w zabezpieczeniach ataków iniekcji SQL. Istnieją dwie możliwe przyczyny generowania błędnej instrukcji: Usterka w kodzie aplikacji konstruuje błędną instrukcję języka SQL. Lub kod aplikacji lub procedury składowane nie oczyszczają danych wejściowych użytkownika podczas konstruowania nieprawidłowej instrukcji SQL, która może zostać wykorzystana do iniekcji SQL.|
+|**Potencjalna iniekcja SQL**|Nastąpiło aktywne wykorzystanie oprogramowania w odniesieniu do zidentyfikowanych aplikacji narażonych na wstrzyknięcie kodu SQL. Oznacza to, że osoba atakująca próbuje wstrzyknąć złośliwe instrukcje SQL przy użyciu kodu aplikacji lub procedur składowanych.|
+|**Dostęp z nietypowej lokalizacji**|Wzorzec dostępu został zmieniony na program SQL Server, w którym ktoś zalogował się do serwera SQL z nietypowej lokalizacji geograficznej. W niektórych przypadkach ten alert wykrywa prawidłowe działanie (nowa aplikacja lub konserwacja przeprowadzana przez deweloperów). W innych przypadkach ten alert wykrywa złośliwe działanie (były pracownik, zewnętrzna osoba atakująca).|
+|**Dostęp z nieznanego podmiotu zabezpieczeń**|Wzorzec dostępu został zmieniony na serwer SQL — ktoś zalogował się do programu SQL Server przy użyciu nietypowego podmiotu zabezpieczeń (użytkownika SQL). W niektórych przypadkach ten alert wykrywa prawidłowe działanie (nowa aplikacja, konserwacja przeprowadzana przez deweloperów). W innych przypadkach ten alert wykrywa złośliwe działanie (były pracownik, zewnętrzna osoba atakująca).|
+|**Dostęp z potencjalnie szkodliwej aplikacji**|Do uzyskiwania dostępu do bazy danych jest używana potencjalnie szkodliwa aplikacja. W niektórych przypadkach ten alert wykrywa przeprowadzany test penetracji. W innych przypadkach ten alert wykrywa atak przy użyciu typowych narzędzi ataku.|
+|**Wymuszanie poświadczeń SQL**|Wystąpił nietypowo dużą liczbę nieudanych logowań z innymi poświadczeniami. W niektórych przypadkach ten alert wykrywa przeprowadzany test penetracji. W innych przypadkach ten alert wykrywa atak siłowy.|
 
-Aby uzyskać więcej informacji na temat, zobacz alerty wykrywania zagrożeń SQL[wykrywania zagrożeń usługi Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)i zapoznaj się z sekcją alerty wykrywania zagrożeń. Zobacz też [jak usługa Azure Security Center pomaga ujawnić Cyberattack](https://azure.microsoft.com/blog/how-azure-security-center-helps-reveal-a-cyberattack/) Aby wyświetlić przykład sposobu użycia usługi Security Center wykrywanie złośliwego SQL do wykrywania ataków.
+Aby uzyskać więcej informacji na temat alertów dotyczących wykrywania zagrożeń SQL, zobacz[Azure SQL Database wykrywanie zagrożeń](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)i przeglądanie sekcji alerty dotyczące wykrywania zagrożeń. Zobacz również [, jak Azure Security Center pomaga odsłonić cybernetycznego,](https://azure.microsoft.com/blog/how-azure-security-center-helps-reveal-a-cyberattack/) aby zobaczyć przykład sposobu, w jaki Security Center użyć złośliwego wykrywania działań SQL w celu odnalezienia ataku.
 
 ## Azure Storage<a name="azure-storage"></a>
 
 >[!NOTE]
-> Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage jest obecnie dostępny dla magazynu obiektów Blob tylko. 
+> Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage jest obecnie dostępna tylko dla Blob Storage. 
 
-Usługa Advanced Threat Protection dla usługi Azure Storage zapewnia dodatkową warstwę analizy bezpieczeństwa, która wykrywa niezwykłe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystania kont magazynu. Ta warstwa ochrony pozwala reagowanie na zagrożenia bez konieczności dysponowania eksperta zabezpieczeń i zarządzania systemami monitorowania bezpieczeństwa.
+Usługa Advanced Threat Protection dla usługi Azure Storage zapewnia dodatkową warstwę analizy bezpieczeństwa, która wykrywa niezwykłe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystania kont magazynu. Ta warstwa ochrony pozwala na rozwiązywanie zagrożeń bez konieczności posiadania eksperta zabezpieczeń oraz zarządzania systemami monitorowania zabezpieczeń.
 
-Usługa Security Center analizuje dzienniki diagnostyczne, odczytu, zapisu i żądań delete do magazynu obiektów Blob w celu wykrywania zagrożeń i wyzwalania alertów, gdy wystąpią nieprawidłowości w działaniu. Aby uzyskać więcej informacji, zobacz do [skonfigurować rejestrowanie dla usługi Storage Analytics](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging) Aby uzyskać więcej informacji.
+Security Center analizuje dzienniki diagnostyczne żądań odczytu, zapisu i usuwania do magazynu obiektów BLOB w celu wykrywania zagrożeń i wyzwala alerty w przypadku wystąpienia anomalii w działaniu. Aby uzyskać więcej informacji, zobacz Aby [skonfigurować rejestrowanie analityka magazynu](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging) , aby uzyskać więcej informacji.
 
 > [!div class="mx-tableFixed"]
 
 |Alerty|Opis|
 |---|---|
-|**Anomalii dostępu do nietypowych lokalizacji**|Analiza ruchu próbkowanych sieci wykryła nietypową wychodzącą komunikację protokołu RDP (Remote Desktop) pochodzące z zasobów w danym wdrożeniu. To działanie jest uznawane za nietypowe w przypadku tego środowiska i może wskazywać, że zasób bezpieczeństwo zostało naruszone i obecnie jest używana do atak siłowy jest zewnętrzny punkt końcowy protokołu RDP. Należy pamiętać, że ten typ działań może powodować oflagowanie adresu IP jako złośliwego przez jednostki zewnętrzne.|
-|**Anomalii dostępu do aplikacji**|Wskazuje, że aplikacja nietypowe uzyskał dostęp do tego konta magazynu. Potencjalną przyczyną jest to, że osoba atakująca uzyskał dostęp do konta magazynu przy użyciu nowej aplikacji.|
-|**Dostęp anonimowy anomalii**|Wskazuje, że w przypadku zmiany wzorca dostępu do konta magazynu. Na przykład konto uzyskano dostęp anonimowo (bez żadnego uwierzytelniania), który jest nieoczekiwany w porównaniu z ostatnich wzorzec dostępu do tego konta. Potencjalną przyczyną jest, czy osoba atakująca luki publicznego dostępu do odczytu do kontenera, że przechowuje obiektów blob magazynu.|
-|**Anomalii wykradanie danych**|Wskazuje, że został wyodrębniony nietypowo dużej ilości danych w porównaniu do ostatnią aktywność, w tym kontenerze magazynu. Potencjalną przyczyną jest osoba atakująca ma wyodrębnione dużej ilości danych z kontenera, że przechowuje obiektów blob magazynu.|
-|**Nieoczekiwane usunięcie anomalii**|Wskazuje, że na koncie magazynu, w porównaniu z ostatnią aktywność na tym koncie wystąpił co najmniej jednej operacji usuwania nieoczekiwany. Potencjalną przyczyną jest osoba atakująca ma usunięte dane z konta magazynu.|
-|**Przekaż pakiet usługi w chmurze Azure**|Wskazuje, czy pakiet usługi w chmurze Azure (plik cspkg) został przekazany do konta magazynu w nietypowy sposób, w porównaniu do ostatnią aktywność na tym koncie. Potencjalną przyczyną jest to, że osoba atakująca ma zostały przygotowywanie do wdrożenia złośliwy kod z konta magazynu w usłudze w chmurze platformy Azure.|
-|**Uprawnienie dostępu anomalii**|Wskazuje, że uprawnienia dostępu do tego kontenera magazynu zostały zmienione w nietypowy sposób. Potencjalną przyczyną jest, że osoba atakująca zmieniła uprawnień kontenera obniżać jej poziom bezpieczeństwa lub uzyskaj trwałości.|
-|**Kontrola dostępu anomalii**|Wskazuje, że uprawnienia dostępu do konta magazynu zostały poddane w nietypowy sposób, w porównaniu do ostatnią aktywność na tym koncie. Potencjalną przyczyną jest osoba atakująca ma wykonać Rekonesans przyszłych ataku.|
-|**Anomalii Eksploracja danych**|Wskazuje, że obiekty BLOB i kontenery na koncie usługi storage została wyliczane w nietypowy sposób i w porównaniu z ostatnią aktywność na tym koncie. Potencjalną przyczyną jest osoba atakująca ma wykonać Rekonesans przyszłych ataku.|
+|**Anomalia nietypowego dostępu do lokalizacji**|Przykładowa analiza ruchu w sieci wykryła nietypową komunikację wychodzącą Remote Desktop Protocol (RDP) pochodzącą z zasobu we wdrożeniu. To działanie jest uznawane za nietypowe w przypadku tego środowiska i może wskazywać, że zabezpieczenia zostały naruszone i są teraz używane do rozważenia zewnętrznego punktu końcowego RDP. Należy pamiętać, że ten typ działań może powodować oflagowanie adresu IP jako złośliwego przez jednostki zewnętrzne.|
+|**Anomalia dostępu do aplikacji**|Wskazuje, że nietypowa aplikacja uzyskuje dostęp do tego konta magazynu. Potencjalną przyczyną jest to, że osoba atakująca uzyskuje dostęp do konta magazynu przy użyciu nowej aplikacji.|
+|**Anomalia dostępu anonimowego**|Wskazuje, że istnieje zmiana wzorca dostępu do konta magazynu. Na przykład konto jest uzyskiwane anonimowo (bez uwierzytelniania), które jest nieoczekiwane w porównaniu z ostatnim wzorcem dostępu na tym koncie. Potencjalną przyczyną jest to, że osoba atakująca korzystała z publicznego dostępu do odczytu do kontenera, który przechowuje magazyn obiektów BLOB.|
+|**Anomalia Eksfiltracjii danych**|Wskazuje, że nietypowo duża ilość danych została wyodrębniona w porównaniu do ostatnich działań w tym kontenerze magazynu. Potencjalną przyczyną jest to, że atakujący wyodrębnił dużą ilość danych z kontenera, który przechowuje magazyn obiektów BLOB.|
+|**Nieoczekiwana usuwanie anomalii**|Wskazuje, że co najmniej jedna Nieoczekiwana operacja usuwania została wystąpiła na koncie magazynu w porównaniu z ostatnią aktywnością na tym koncie. Potencjalną przyczyną jest to, że osoba atakująca usunęła dane z konta magazynu.|
+|**Przekaż pakiet usługi w chmurze platformy Azure**|Wskazuje, że pakiet usługi w chmurze platformy Azure (plik. cspkg) został przekazany do konta magazynu w nietypowy sposób w porównaniu z ostatnią aktywnością na tym koncie. Potencjalną przyczyną jest to, że osoba atakująca przygotowuje się do wdrożenia złośliwego kodu z konta magazynu w usłudze w chmurze platformy Azure.|
+|**Anomalia dostępu do uprawnień**|Wskazuje, że uprawnienia dostępu do tego kontenera magazynu zostały zmienione w nietypowy sposób. Potencjalną przyczyną jest to, że osoba atakująca zmieniła uprawnienia kontenera, aby osłabić stan zabezpieczeń lub uzyskać trwałość.|
+|**Anomalia dostępu do inspekcji**|Wskazuje, że uprawnienia dostępu do konta magazynu zostały sprawdzone w nietypowy sposób w porównaniu z ostatnią aktywnością na tym koncie. Potencjalną przyczyną jest to, że atakujący wykonał rekonesans w celu przyszłego ataku.|
+|**Anomalia eksploracji danych**|Wskazuje, że obiekty blob lub kontenery na koncie magazynu zostały wyliczone w nietypowy sposób, w porównaniu do ostatnich działań na tym koncie. Potencjalną przyczyną jest to, że atakujący wykonał rekonesans w celu przyszłego ataku.|
 
 >[!NOTE]
->Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage nie jest obecnie dostępna w regionach należących do suwerennej chmury i platformy Azure dla instytucji rządowych.
+>Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage jest obecnie niedostępna w regionach w chmurze platformy Azure dla instytucji rządowych.
 
-Aby uzyskać więcej informacji na temat alertów dotyczących magazynu, zobacz [zaawansowanej ochrony przed zagrożeniami dla usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection) artykuł i zapoznaj się z sekcją alertów ochrony.
+Aby uzyskać więcej informacji na temat alertów dotyczących magazynu, zobacz artykuł [Advanced Threat Protection for Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection) i zapoznaj się z sekcją alerty dotyczące ochrony.

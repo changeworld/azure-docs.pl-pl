@@ -12,12 +12,12 @@ ms.date: 02/08/2019
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f59cae87af5f29d900159639798f9cd031f3d765
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 7f695d9f0240f8c27ea0bedba7e532d37a177752
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67302384"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304742"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Plany wdrażania usługi Azure Active Directory
 Szukasz kompleksowych wskazówek dotyczących wdrażania niektórych funkcji usługi Azure Active Directory (Azure AD)? W następujących planach wdrażania przedstawiono wartość biznesową, zagadnienia dotyczące planowania, projektowanie i procedury operacyjne potrzebne do pomyślnego wdrożenia niektórych z najpopularniejszych funkcji usługi Azure AD. 
@@ -26,30 +26,30 @@ W tych dokumentach znajdziesz szablony wiadomości e-mail, diagramy architektury
 
 Chętnie poznamy Twoją opinię o tych dokumentach. Weź udział w tej krótkiej [ankiecie](https://aka.ms/deploymentplanfeedback) dotyczącej przydatności tych dokumentów. 
 
-## <a name="include-the-right-stakeholders"></a>Obejmują prawo uczestników projektu
+## <a name="include-the-right-stakeholders"></a>Uwzględnij odpowiednie strony zainteresowane
 
-Podczas rozpoczynania nową funkcję planowania wdrożenia, ważne jest uwzględnienie najważniejszych uczestników projektu w całej organizacji. Firma Microsoft zaleca identyfikować i udokumentować osoby lub osób, które spełniają wszystkich następujących ról i pracować z nimi, aby określić ich zaangażowania w projekcie.  
+Po rozpoczęciu planowania wdrożenia nowej możliwości należy uwzględnić najważniejszych uczestników w organizacji. Zalecamy określenie i udokumentowanie osoby lub osób, które spełniają każdą z następujących ról, i współpracują z nimi w celu określenia zaangażowania w projekt.  
 
-Role mogą obejmować następujące 
+Role mogą zawierać następujące elementy: 
 
-|Rola |Opis |
+|Role |Opis |
 |-|-|
-|End-user|Reprezentatywny grupy użytkowników, dla których będą wdrażane możliwości. Często zawiera wersje zapoznawcze zmiany programu pilotażowego.
-|Menedżer pomocy technicznej IT|Przedstawiciel organizacji pomocy technicznej IT, kto może udostępniać dane wejściowe na możliwość tej zmiany z punktu widzenia działu pomocy technicznej.  
-|Administrator globalny Architekt tożsamość lub na platformie Azure|Przedstawiciel zespołu zarządzania tożsamościami odpowiedzialnym za określające, jak ta zmiana jest powiązana z infrastrukturę zarządzania tożsamościami podstawowe w Twojej organizacji.|
-|Właściciel firmy aplikacji |Właściciel firmy ogólną dotyczy aplikacji, która może obejmować zarządzanie dostępem.  Mogą również zawierać dane wejściowe na środowisko pracy użytkownika i użyteczności ta zmiana z perspektywy użytkownika końcowego.
-|Właściciel zabezpieczeń|Przedstawiciel zespołu zabezpieczeń, który można wyrejestrować, planu spełni wymagania organizacji dotyczące zabezpieczeń.|
-|Menedżer zgodności|Osoby w organizacji jest odpowiedzialny za zapewnienie zgodności z firmowej, wymagania branżowe lub prawne rządowych.|
+|Użytkownik końcowy|Reprezentatywna Grupa użytkowników, dla których zostanie zaimplementowana funkcja. Często przegląda zmiany w programie pilotażowym.
+|Menedżer pomocy technicznej IT|Przedstawiciel działu pomocy technicznej IT, który może wprowadzić dane wejściowe dotyczące tej zmiany w perspektywie pomocy technicznej.  
+|Architekt tożsamości lub Administrator globalny platformy Azure|Przedstawiciel zespołu zarządzania tożsamościami odpowiedzialny za definiowanie sposobu wyrównywania tej zmiany z podstawową infrastrukturą zarządzania tożsamościami w organizacji.|
+|Właściciel firmy aplikacji |Ogólny właściciel firmy, których dotyczy ta aplikacja, która może obejmować zarządzanie dostępem.  Może również dostarczyć dane wejściowe dotyczące środowiska użytkownika i użyteczności tej zmiany z perspektywy użytkownika końcowego.
+|Właściciel zabezpieczeń|Przedstawiciel zespołu ds. zabezpieczeń, który może się wylogować, aby plan spełniał wymagania dotyczące bezpieczeństwa organizacji.|
+|Menedżer zgodności|Osoba w organizacji odpowiedzialna za zapewnienie zgodności z wymogami firmowymi, branżowymi lub rządowymi.|
 
-**Stopień zaangażowania mogą być następujące:**
+**Poziom zaangażowania może obejmować:**
 
-- **R**esponsible wykonania planu projektu i wynik 
+- **R**esponsible do implementacji planu i wyniku projektu 
 
-- **A**pproval plan projektu i wynik 
+- **Pproval planu**i wyniku projektu 
 
-- **C**ontributor plan projektu i wynik 
+- **C**ondystrybucyjny do planu i wyniku projektu 
 
-- **Czy mogę**nformed plan projektu i wynik
+- **Nformedm**planu i wyniku projektu
  
 ## <a name="deployment-plans"></a>Plany wdrożenia
 
@@ -58,10 +58,10 @@ Role mogą obejmować następujące
 |Scenariusz |Opis |
 |-|-|
 |[Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)|Azure Multi-Factor Authentication (MFA) to rozwiązanie firmy Microsoft służące do przeprowadzania weryfikacji dwuetapowej. Przy użyciu zatwierdzonych przez administratora metod uwierzytelniania usługa Azure MFA pomaga w zabezpieczaniu dostępu do danych i aplikacji, jednocześnie spełniając wymagania dotyczące prostoty procesu logowania.|
-|[Dostęp warunkowy](https://aka.ms/deploymentplans/ca)|Przy użyciu dostępu warunkowego można zaimplementować dla kto ma dostęp do aplikacji w chmurze, na podstawie warunków, decyzji dotyczących kontroli dostępu automatycznych.|
-|[Samoobsługowe resetowanie haseł](https://aka.ms/SSPRDPDownload)|Samoobsługowe resetowanie haseł ułatwia użytkownikom resetowanie ich haseł bez udziału administratora w dowolnym miejscu i czasie.|
-|[Privileged Identity Management](https://aka.ms/deploymentplans/pim)|Usługa Azure AD Privileged Identity Management (PIM) pomaga w zarządzaniu uprzywilejowanych ról administracyjnych w usłudze Azure AD i innych Microsoft Online Services zasobów platformy Azure. PIM udostępnia rozwiązań, takich jak dostęp just in time, przepływy pracy zatwierdzania żądania i w pełni zintegrowane dostępu, przeglądy, dzięki czemu można zidentyfikować odkryć i zapobiec złośliwej aktywności ról uprzywilejowanych w czasie rzeczywistym.|
-|[Logowanie jednokrotne](https://aka.ms/SSODPDownload)|Logowanie jednokrotne ułatwia dostęp do wszystkich aplikacji i zasobów potrzebnych do prowadzenia działalności, przy czym można logować się tylko raz, za pomocą jednego konta użytkownika. Po zalogowaniu się można przechodzić z pakietu Microsoft Office do usługi SalesForce lub Box bez konieczności ponownego uwierzytelniania się (na przykład przez wpisanie hasła).|
+|[Dostęp warunkowy](https://aka.ms/deploymentplans/ca)|Za pomocą dostępu warunkowego można zaimplementować zautomatyzowane decyzje dotyczące kontroli dostępu, które mogą uzyskiwać dostęp do aplikacji w chmurze na podstawie warunków.|
+|[Samoobsługowe resetowanie haseł](https://aka.ms/deploymentplans/sspr)|Samoobsługowe resetowanie haseł ułatwia użytkownikom resetowanie ich haseł bez udziału administratora w dowolnym miejscu i czasie.|
+|[Privileged Identity Management](https://aka.ms/deploymentplans/pim)|Azure AD Privileged Identity Management (PIM) ułatwia zarządzanie uprzywilejowanymi rolami administracyjnymi w usłudze Azure AD, zasobach platformy Azure i innych usługach online firmy Microsoft. PIM oferuje rozwiązania, takie jak dostęp just in Time, żądania przepływów pracy zatwierdzania i w pełni zintegrowane przeglądy dostępu, dzięki czemu można identyfikować, odkrywać i zapobiegać złośliwym działaniom uprzywilejowanych ról w czasie rzeczywistym.|
+|[Logowanie jednokrotne](https://aka.ms/deploymentplans/sso)|Logowanie jednokrotne ułatwia dostęp do wszystkich aplikacji i zasobów potrzebnych do prowadzenia działalności, przy czym można logować się tylko raz, za pomocą jednego konta użytkownika. Po zalogowaniu się można przechodzić z pakietu Microsoft Office do usługi SalesForce lub Box bez konieczności ponownego uwierzytelniania się (na przykład przez wpisanie hasła).|
 |[Bezproblemowe logowanie jednokrotne](https://aka.ms/SeamlessSSODPDownload)|Bezproblemowe logowanie jednokrotne w usłudze Azure Active Directory zapewnia automatyczne logowanie użytkowników, gdy ich urządzenia są połączone z siecią firmową. Po włączeniu tej funkcji użytkownicy nie muszą wpisywać haseł, aby logować się do usługi Azure AD, i zazwyczaj nie muszą nawet wpisywać swoich nazw użytkownika. Ta funkcja zapewnia użytkownikom łatwy dostęp do aplikacji w chmurze bez konieczności używania dodatkowych składników lokalnych.|
 |[Panel dostępu](https://aka.ms/AccessPanelDPDownload)|Oferuje użytkownikom proste koncentratora do odnajdywania i uzyskują dostęp do wszystkich aplikacji. Umożliwia im mu bardziej wydajnej pracy przy użyciu usługi możliwości samoobsługi, takie jak możliwość żądania dostępu do nowych aplikacji i grup, lub zarządzanie dostępem do tych zasobów w imieniu innych użytkowników.|
 |[Synchronizowanie skrótów haseł za pomocą usługi ADFS](https://aka.ms/deploymentplans/adfs2phs)|Funkcja synchronizacji skrótów zapewnia, że skróty haseł użytkowników są synchronizowane z lokalnej usługi Active Directory do usługi Azure AD, dzięki czemu usługa Azure AD może uwierzytelniać użytkowników bez interakcji z lokalną usługą Active Directory.|

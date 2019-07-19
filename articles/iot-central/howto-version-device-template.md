@@ -1,71 +1,71 @@
 ---
-title: Informacje o urządzeniu wersji szablonu dla Twoich aplikacji w usłudze Azure IoT Central | Dokumentacja firmy Microsoft
-description: Iteracja szablonów urządzenia, tworząc nowe wersje i bez wywierania wpływu na żywo połączonych urządzeń
+title: Informacje o wersji szablonów urządzeń dla aplikacji IoT Central platformy Azure | Microsoft Docs
+description: Wykonaj iterację szablonów urządzeń, tworząc nowe wersje i bez wpływu na urządzenia połączone na żywo
 author: sandeeppujar
 ms.author: sandeepu
-ms.date: 03/26/2019
+ms.date: 07/08/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: a53c1432ce4dc6be5dd15ee804cda6b00257ca0e
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 638be5e62c523c478f139f13185edeb24995ab3f
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509731"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67848981"
 ---
 # <a name="create-a-new-device-template-version"></a>Utwórz nową wersję szablonu urządzenia
 
-Usługa Azure IoT Central umożliwia szybkie opracowywanie aplikacji IoT. Projekty szablonu urządzenia można szybko iteracji poprzez dodawanie, edytowanie lub usuwanie pomiarów, ustawienia lub właściwości. Niektóre z tych zmian może być istotnych dla aktualnie połączonych urządzeń. Usługa Azure IoT Central identyfikuje te przełomowe zmiany i zapewnia sposób bezpiecznie wdrożyć aktualizacje na urządzeniach.
+Usługa Azure IoT Central umożliwia szybkie opracowywanie aplikacji IoT. Możesz szybko wykonać iterację w projektach szablonów urządzeń, dodając, edytując lub usuwając pomiary, ustawienia lub właściwości. Niektóre z tych zmian mogą być inwazyjne dla aktualnie połączonych urządzeń. Usługa Azure IoT Central identyfikuje te istotne zmiany i umożliwia bezpieczne wdrażanie tych aktualizacji na urządzeniach.
 
-Szablon urządzenia ma numer wersji, podczas jego tworzenia. Domyślnie numer wersji to 1.0.0. Edytuj szablon urządzenia, a ta zmiana może mieć wpływ na live połączonych urządzeń, usługi Azure IoT Central monit o utworzenie nowej wersji szablonu urządzenia.
-
-> [!NOTE]
-> Aby dowiedzieć się więcej na temat sposobu tworzenia szablonu urządzenia zobacz [Konfigurowanie szablonu urządzenia](howto-set-up-template.md)
-
-## <a name="changes-that-prompt-a-version-change"></a>Zmiany, które monit o zmianę wersji
-
-Ogólnie rzecz biorąc zmian ustawień lub właściwości szablonu urządzenia monit o zmianę wersji.
+Szablon urządzenia ma numer wersji podczas jego tworzenia. Domyślnie numer wersji to 1.0.0. Jeśli edytujesz szablon urządzenia, a zmiana ta mogłaby mieć wpływ na urządzenia połączone na żywo, usługa Azure IoT Central poprosi o utworzenie nowej wersji szablonu urządzenia.
 
 > [!NOTE]
-> Zmiany wprowadzone w szablonie urządzenia nie Monituj o utworzenie nowej wersji, gdy urządzenie nie lub na większości jedno urządzenie jest podłączone.
+> Aby dowiedzieć się więcej na temat tworzenia szablonu urządzenia, zobacz [Konfigurowanie szablonu urządzenia](howto-set-up-template.md)
 
-Na poniższej liście opisano akcje użytkownika, których może wymagać nowej wersji:
+## <a name="changes-that-prompt-a-version-change"></a>Zmiany, które monitują o zmianę wersji
 
-* Właściwości (wymagana)
+W obszarze Ogólne zmiany ustawień lub właściwości szablonu urządzenia zostanie wyświetlony monit o zmianę wersji.
+
+> [!NOTE]
+> Zmiany wprowadzone w szablonie urządzenia nie monitują o utworzenie nowej wersji, gdy nie jest połączone żadne urządzenie lub co najmniej jedno urządzenie.
+
+Poniższa lista zawiera opis akcji użytkownika, które mogą wymagać nowej wersji:
+
+* Właściwości (wymagane)
     * Dodawanie lub usuwanie wymaganej właściwości
-    * Zmiana nazwy pola, właściwości, nazwy pola, który jest używany przez urządzenia do wysyłania wiadomości.
+    * Zmiana nazwy pola właściwości, nazwy pola używanej przez urządzenia do wysyłania komunikatów.
 *  Właściwości (opcjonalnie)
-    * Usuwanie opcjonalną właściwością
-    * Zmiana nazwy pola, właściwości, nazwy pola, który jest używany przez urządzenia do wysyłania wiadomości.
-    * Zmiana opcjonalna właściwość wymaganej właściwości
+    * Usuwanie właściwości opcjonalnej
+    * Zmiana nazwy pola właściwości, nazwy pola używanej przez urządzenia do wysyłania komunikatów.
+    * Zmiana właściwości opcjonalnej na wymaganą Właściwość
 *  Ustawienia
     * Dodawanie lub usuwanie ustawienia
-    * Zmiana nazwy pola ustawienie, nazwy pola, który jest używany przez urządzenia do wysyłania i odbierania komunikatów.
+    * Zmiana nazwy pola ustawienia, nazwy pola używanego przez urządzenia do wysyłania i odbierania komunikatów.
 
 ## <a name="what-happens-on-version-change"></a>Co się stanie w przypadku zmiany wersji?
 
-Co się dzieje reguł i pulpitów nawigacyjnych z urządzenia po zmianie wersji?
+Co się stanie z regułami i pulpitami nawigacyjnymi urządzeń w przypadku zmiany wersji?
 
-**Reguły** może zawierać warunki, które są zależne od właściwości. Jeśli usunięto co najmniej jeden z tych właściwości, te reguły można zaburzyć w nowej wersji szablonu urządzenia. Można przejść do tych określone zasady i aktualizować warunki, aby rozwiązać reguły. Reguły dla poprzedniej wersji powinny współpracować z żadnego wpływu.
+**Reguły** mogą zawierać warunki, które są zależne od właściwości. Jeśli usunięto jedną lub więcej z tych właściwości, te reguły mogą zostać przerwane w nowej wersji szablonu urządzenia. Możesz przejść do tych konkretnych reguł i zaktualizować warunki, aby naprawić te reguły. Reguły poprzedniej wersji powinny funkcjonować bez wpływu.
 
-**Pulpity nawigacyjne urządzenia** może zawierać kilka typów kafelków. Niektóre z kafelków mogą zawierać, ustawień i właściwości. Usunięcie właściwości lub ustawienie używane we fragmencie Kafelek został w pełni lub częściowo przerwany. Można przejść do kafelka i rozwiązać ten problem przez usunięcie kafelka albo aktualizowania zawartość kafelka.
+**Pulpity nawigacyjne urządzeń** mogą zawierać kilka typów kafelków. Niektóre kafelki mogą zawierać ustawienia i właściwości. Gdy właściwość lub ustawienie użyte w kafelku zostanie usunięte, kafelek jest całkowicie lub częściowo uszkodzony. Możesz przejść do kafelka i rozwiązać problem, usuwając kafelek lub aktualizując zawartość kafelka.
 
-## <a name="migrate-a-device-across-device-template-versions"></a>Migrowanie urządzenia między wersje szablonów urządzenia
+## <a name="migrate-a-device-across-device-template-versions"></a>Migrowanie urządzenia w różnych wersjach szablonów urządzeń
 
-Możesz utworzyć wiele wersji szablonu urządzenia. Wraz z upływem czasu będziesz mieć wiele połączonych urządzeń, za pomocą tych szablonów urządzenia. Urządzenia można migrować z jednej wersji szablonu urządzenia do innego. W poniższych krokach opisano sposób migrowania urządzenia:
+Można utworzyć wiele wersji szablonu urządzenia. Z biegiem czasu będziesz mieć wiele połączonych urządzeń korzystających z tych szablonów urządzeń. Możliwe jest Migrowanie urządzeń z jednej wersji szablonu urządzenia do innej. W poniższych krokach opisano sposób migrowania urządzenia:
 
-1. Przejdź do **Device Explorer** strony.
-1. Wybierz urządzenie, którego chcesz przeprowadzić migrację do innej wersji.
-1. Wybierz **migracji urządzenia**.
-1. Wybierz numer wersji, aby migrować urządzenia, a następnie wybierz **migracji**.
+1. Przejdź do strony **Device Explorer** .
+1. Wybierz urządzenie, które ma być migrowane do innej wersji.
+1. Wybierz kolejno pozycje **Migruj urządzenie**.
+1. Wybierz numer wersji, do której chcesz przeprowadzić migrację urządzenia, a następnie wybierz pozycję **Migruj**.
 
-![Jak przeprowadzić migrację na urządzeniu](media/howto-version-device-template/pick-version.png)
+![Jak migrować urządzenie](media/howto-version-device-template/pick-version.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy wiesz jak używać wersji szablonów urządzenia w aplikacji usługi Azure IoT Central, poniżej przedstawiono sugerowany następnego kroku:
+Teraz, kiedy wiesz już, jak używać wersji szablonów urządzeń w aplikacji IoT Central platformy Azure, Oto sugerowany następny krok:
 
 > [!div class="nextstepaction"]
-> [Jak utworzyć zasady telemetrii](howto-create-telemetry-rules.md)
+> [Jak utworzyć reguły telemetrii](howto-create-telemetry-rules.md)

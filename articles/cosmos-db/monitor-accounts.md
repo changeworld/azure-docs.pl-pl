@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 02bbde9a2d744c79cc8a7e95b0732b775c4dc695
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.openlocfilehash: 1c12007e04ff8cd08ddb7afdf9a3c2add9638de3
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "66241622"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277445"
 ---
 # <a name="monitor-performance-and-storage-metrics-in-azure-cosmos-db"></a>Monitoruj metryki wydajności i magazynu w usłudze Azure Cosmos DB
 
@@ -27,7 +27,7 @@ Metryki można wyświetlić na stronie konta nową stronę metryk lub w usłudze
 
    Witryna Azure portal Wyświetla zestaw dostępnych metryk kolekcji. Należy pamiętać, że metryki przepływności, magazynu, dostępności, opóźnienia i spójności znajdują się na osobnych kartach. Aby uzyskać dodatkowe szczegóły dotyczące metryk, pod warunkiem, kliknij przycisk podwójnej strzałki w prawym górnym każdego metryki w okienku po prawej stronie.
 
-   ![Zrzut ekranu pokazujący zestaw metryk obiektywu monitorowanie](./media/monitor-accounts/metrics-suite.png)
+   ![Zrzut ekranu przedstawiający soczewkę monitorowania, który pokazuje pakiet metryk](./media/monitor-accounts/metrics-suite.png)
 
 ## <a name="view-performance-metrics-by-using-azure-monitoring"></a>Zobacz metryki wydajności za pomocą monitorowania platformy Azure
 1. W [witryny Azure portal](https://portal.azure.com/), kliknij przycisk **Monitor** na pasku po lewej stronie.
@@ -43,14 +43,18 @@ Metryki można wyświetlić na stronie konta nową stronę metryk lub w usłudze
    * Łączna liczba żądań dla bieżącego dnia.
    * Magazyn jest używany.
    
-   ![Zrzut ekranu przedstawiający obiektywu monitorowania, który pokazuje żądania i użycie magazynu](./media/monitor-accounts/documentdb-total-requests-and-usage.png)
+   ![Zrzut ekranu przedstawiający soczewkę monitorowania pokazującą żądania i użycie magazynu](./media/monitor-accounts/documentdb-total-requests-and-usage.png)
 3. Kliknięcie podwójnej strzałki w prawym górnym rogu **żądań** kafelka otwiera szczegółowe **metryki** strony.
 4. **Metryki** strony są wyświetlane szczegóły dotyczące łączna liczba żądań. 
 
 ## <a name="set-up-alerts-in-the-portal"></a>Konfigurowanie alertów w portalu
+
+> [!NOTE]
+> Klasyczne alerty w Azure Monitor zostaną wycofane 31 sierpnia 2019. Azure Portal oferuje [Narzędzie migracji](../azure-monitor/platform/alerts-using-migration-tool.md) do migracji klasycznych reguł alertów. Nie można jednak migrować wszystkich klasycznych alertów dotyczących metryk Azure Cosmos DB, ale istnieją pewne wyjątki, zobacz artykuł dotyczący [usługi Azure monitor](../azure-monitor/platform/alerts-understand-migration.md#cosmos-db-metrics) , aby uzyskać listę alertów klasycznych, których nie można zmigrować. 
+
 1. W [witryny Azure portal](https://portal.azure.com/), kliknij przycisk **wszystkich usług**, kliknij przycisk **usługi Azure Cosmos DB**, a następnie kliknij nazwę konta usługi Azure Cosmos DB, dla której chcesz skonfigurować wydajności alerty metryki.
 2. W menu zasobów kliknij pozycję **reguł alertów** aby otworzyć stronę reguł alertów.  
-   ![Wybrane zrzut ekranu przedstawiający część reguły alertów](./media/monitor-accounts/madocdb10.5.png)
+   ![Zrzut ekranu przedstawiający część reguły alertów](./media/monitor-accounts/madocdb10.5.png)
 3. W **reguły alertów** kliknij **Dodaj alert dotyczący**.  
    ![Zrzut ekranu przedstawiający stronę reguł alertów z wyróżnionym przyciskiem Dodaj Alert](./media/monitor-accounts/madocdb11.png)
 4. W **Dodawanie reguły alertów** określ:
@@ -61,7 +65,7 @@ Metryki można wyświetlić na stronie konta nową stronę metryk lub w usłudze
    * Warunek, próg i okres, które określają, kiedy aktywuje alertu. Na przykład błąd serwera liczba większa niż 5 w ciągu ostatnich 15 minut.
    * Czy administratora usługi i współadministratorów są wysłane pocztą e-mail po zgłoszeniu alertu.
    * Adresy e-mail dodatkowych powiadomień o alertach.  
-     ![Zrzut ekranu przedstawiający dodawanie reguły alertu](./media/monitor-accounts/madocdb12.png)
+     ![Zrzut ekranu przedstawiający stronę Dodawanie reguły alertu](./media/monitor-accounts/madocdb12.png)
 
 ## <a name="monitor-azure-cosmos-db-programmatically"></a>Programowe monitorowanie usługi Azure Cosmos DB
 Metryki poziomu konta dostępne w portalu, takich jak żądania użycia i łączna liczba kont magazynu, nie są dostępne za pośrednictwem interfejsów API SQL. Jednakże możesz pobrać dane użycia na poziomie kolekcji przy użyciu interfejsów API SQL. Aby pobrać danych na poziomie kolekcji, wykonaj następujące czynności:

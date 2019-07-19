@@ -1,6 +1,6 @@
 ---
 title: Zależność śledzenia w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
-description: Monitorowanie wywołań zależności od lokalnej lub aplikacji sieci web Microsoft Azure za pomocą usługi Application Insights.
+description: Monitoruj wywołania zależności z lokalnej lub Microsoft Azure aplikacji sieci Web z Application Insights.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -12,59 +12,59 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: mbullwin
-ms.openlocfilehash: d8ba5b19ad5d8f03203e9a028fbc5aec84e5ec06
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
-ms.translationtype: MT
+ms.openlocfilehash: a233299b86100c7e43291ffb6448d576ef6072f0
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565366"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302558"
 ---
-# <a name="dependency-tracking-in-azure-application-insights"></a>Zależność śledzenia w usłudze Azure Application Insights 
+# <a name="dependency-tracking-in-azure-application-insights"></a>Śledzenie zależności w usłudze Azure Application Insights 
 
-A *zależności* jest składnik zewnętrzny, która jest wywoływana przez aplikację. Zazwyczaj jest wywoływany przy użyciu protokołu HTTP lub bazy danych lub systemu plików usługi. [Usługa Application Insights](../../azure-monitor/app/app-insights-overview.md) mierzy czas trwania wywołania zależności, czy jego kończy się niepowodzeniem lub nie, wraz z dodatkowymi informacjami, takie jak nazwa zależności i tak dalej. Zbadaj wywołania określonej zależności i skoreluj je do żądań i wyjątków.
+A *zależności* jest składnik zewnętrzny, która jest wywoływana przez aplikację. Zazwyczaj jest wywoływany przy użyciu protokołu HTTP lub bazy danych lub systemu plików usługi. [Application Insights](../../azure-monitor/app/app-insights-overview.md) mierzy czas trwania wywołań zależności, bez względu na to, czy wystąpił błąd, czy nie, wraz z dodatkowymi informacjami, takimi jak nazwa zależności i tak dalej. Można zbadać konkretne wywołania zależności i skorelować je z żądaniami i wyjątkami.
 
 ## <a name="automatically-tracked-dependencies"></a>Automatycznie śledzone zależności
 
-Zestawy SDK usługi Application Insights dla platformy .NET i .NET Core dostarczany z `DependencyTrackingTelemetryModule` czyli moduł danych Telemetrycznych, który automatycznie zbiera zależności. Ta kolekcja zależności jest włączana automatycznie dla [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) i [platformy ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) aplikacji, w przypadku skonfigurowania dla każdego połączonego oficjalna dokumentacja. `DependencyTrackingTelemetryModule` jest dostarczany jako [to](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) pakietu NuGet i zostanie przełączony w tryb automatycznie przy użyciu jednej z pakietów NuGet `Microsoft.ApplicationInsights.Web` lub `Microsoft.ApplicationInsights.AspNetCore`.
+Zestawy SDK Application Insights dla platform .NET i .NET Core `DependencyTrackingTelemetryModule` , z którymi jest moduł telemetrii, który automatycznie zbiera zależności. Ta kolekcja zależności jest włączana automatycznie dla aplikacji [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) i [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) , gdy jest skonfigurowana zgodnie z powiązanymi oficjalnymi dokumentami. Program jest dostarczany [jako pakiet](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) NuGet i zostaje automatycznie uruchomiony w przypadku używania jednego z `Microsoft.ApplicationInsights.Web` pakietów NuGet lub `Microsoft.ApplicationInsights.AspNetCore`. `DependencyTrackingTelemetryModule`
 
- `DependencyTrackingTelemetryModule` obecnie automatycznie śledzi następujące zależności:
+ `DependencyTrackingTelemetryModule`obecnie śledzi następujące zależności automatycznie:
 
 |Zależności |Szczegóły|
 |---------------|-------|
 |Http/Https | Lokalne lub zdalne wywołania http/https |
-|Wywołania funkcji WCF| Tylko śledzone automatycznie w przypadku używania powiązań oparty na protokole Http.|
-|SQL | Wywołania z `SqlClient`. Zobacz [to](##advanced-sql-tracking-to-get-full-sql-query) przechwytywania SQL zapytań.  |
-|[Usługa Azure storage (Blob, tabeli, kolejki)](https://www.nuget.org/packages/WindowsAzure.Storage/) | Wywołania z klienta usługi Storage platformy Azure. |
-|[Zestaw SDK klienta usługi EventHub](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | Wersji 1.1.0 lub nowszej. |
-|[Zestaw SDK klienta usługi ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| W wersji 3.0.0 lub nowszej. |
-|Azure Cosmos DB | Tylko śledzone automatycznie w przypadku protokołu HTTP/HTTPS jest używany. Nie można przechwycić trybu TCP przez usługę Application Insights. |
+|Wywołania WCF| Śledzone automatycznie tylko w przypadku użycia powiązań opartych na protokole HTTP.|
+|SQL | Wywołania wykonane przy `SqlClient`użyciu. Zobacz [ten](#advanced-sql-tracking-to-get-full-sql-query) sposób przechwytywania zapytania SQL.  |
+|[Azure Storage (obiekt BLOB, tabela, kolejka)](https://www.nuget.org/packages/WindowsAzure.Storage/) | Wywołania wykonane za pomocą klienta usługi Azure Storage. |
+|[Zestaw SDK klienta EventHub](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | Wersja 1.1.0 i nowsza. |
+|[Zestaw SDK klienta ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| Wersja 3.0.0 i nowsza. |
+|Azure Cosmos DB | Śledzone automatycznie tylko wtedy, gdy jest używany protokół HTTP/HTTPS. Nie można przechwycić trybu TCP przez usługę Application Insights. |
 
 
-## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>Konfigurowanie automatycznego śledzenia w aplikacjach konsoli zależności
+## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>Skonfiguruj automatyczne śledzenie zależności w aplikacjach konsolowych
 
-Do automatycznego śledzenia zależności od aplikacji konsoli.NET/.NET Core, zainstaluj pakiet Nuget `Microsoft.ApplicationInsights.DependencyCollector`i zainicjuj `DependencyTrackingTelemetryModule` w następujący sposób:
+Aby automatycznie śledzić zależności od aplikacji konsolowych platformy .NET/.NET Core, należy zainstalować `Microsoft.ApplicationInsights.DependencyCollector`pakiet NuGet i `DependencyTrackingTelemetryModule` zainicjować go w następujący sposób:
 
 ```csharp
     DependencyTrackingTelemetryModule depModule = new DependencyTrackingTelemetryModule();
     depModule.Initialize(TelemetryConfiguration.Active);
 ```
 
-### <a name="how-automatic-dependency-monitoring-works"></a>Monitorowanie działa jak automatyczne zależności?
+### <a name="how-automatic-dependency-monitoring-works"></a>Jak działa automatyczne monitorowanie zależności?
 
-Zależności są zbierane automatycznie przy użyciu jednej z następujących technik:
+Zależności są zbierane automatycznie przy użyciu jednej z następujących metod:
 
-* Za pomocą Instrumentacji kodu bajt wokół Wybierz metody. (InstrumentationEngine z StatusMonitor lub rozszerzenia aplikacji sieci Web platformy Azure)
+* Używanie Instrumentacji kodu bajtowego dookoła metod SELECT. (InstrumentationEngine z StatusMonitor lub rozszerzenia aplikacji sieci Web platformy Azure)
 * Wywołania zwrotne EventSource
-* Wywołania zwrotne DiagnosticSource, (w najnowszej.NET/.NET podstawowych zestawach SDK)
+* Wywołania zwrotne DiagnosticSource (w najnowszych zestawach SDK .NET/.NET Core)
 
 ## <a name="manually-tracking-dependencies"></a>Ręczne śledzenie zależności
 
-Poniżej przedstawiono kilka przykładów zależności, które nie są automatycznie zbierane i dlatego wymagają ręcznego śledzenia.
+Poniżej przedstawiono kilka przykładów zależności, które nie są zbierane automatycznie, a tym samym wymagają śledzenia ręcznego.
 
 * Usługa Azure Cosmos DB są automatycznie śledzone tylko wtedy, gdy [HTTP/HTTPS](../../cosmos-db/performance-tips.md#networking) jest używany. Nie można przechwycić trybu TCP przez usługę Application Insights.
 * Redis
 
-Te zależności nie są automatycznie gromadzone przez zestaw SDK, można śledzić je ręcznie przy użyciu [TrackDependency API](api-custom-events-metrics.md#trackdependency) używanego przez automatycznie standardowych modułów gromadzenia.
+Dla tych zależności, które nie są automatycznie zbierane przez zestaw SDK, można je śledzić ręcznie przy użyciu [interfejsu API TrackDependency](api-custom-events-metrics.md#trackdependency) , który jest używany przez standardowe moduły automatycznego zbierania danych.
 
 Na przykład kompilowania kodu z zestawu, który nie zostały napisane samodzielnie, można czas wszystkie wywołania, aby dowiedzieć się, jakie wkład kieruje do Twoje czasy odpowiedzi. Aby uzyskać te dane wyświetlane na wykresach zależności w usłudze Application Insights, wyślij go za pomocą `TrackDependency`.
 
@@ -84,72 +84,72 @@ Na przykład kompilowania kodu z zestawu, który nie zostały napisane samodziel
     }
 ```
 
-Alternatywnie `TelemetryClient` udostępnia metody rozszerzenia `StartOperation` i `StopOperation` który może służyć do ręcznego śledzenia zależności, jak pokazano [tutaj](custom-operations-tracking.md#outgoing-dependencies-tracking)
+Alternatywnie, `TelemetryClient` `StartOperation` dostarcza [metody rozszerzające](custom-operations-tracking.md#outgoing-dependencies-tracking) , któremogąbyćużywanedoręcznegośledzeniazależności,jak`StopOperation` pokazano poniżej
 
-Jeśli chcesz wyłączyć modułu śledzenia zależności standardowe, Usuń odwołanie do DependencyTrackingTelemetryModule w [plik ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) dla aplikacji ASP.NET. Aplikacje platformy ASP.NET Core, postępuj zgodnie z instrukcjami [tutaj](asp-net-core.md#configuring-or-removing-default-telemetrymodules).
+Jeśli chcesz wyłączyć standardowy moduł śledzenia zależności, usuń odwołanie do DependencyTrackingTelemetryModule w [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) dla aplikacji ASP.NET. W przypadku aplikacji ASP.NET Core należy postępować zgodnie z instrukcjami znajdującymi się [tutaj](asp-net-core.md#configuring-or-removing-default-telemetrymodules).
 
-## <a name="tracking-ajax-calls-from-web-pages"></a>Śledzenie wywołania AJAX ze stron sieci Web
+## <a name="tracking-ajax-calls-from-web-pages"></a>Śledzenie wywołań AJAX ze stron sieci Web
 
-Dla stron sieci web, zestaw JavaScript SDK Application Insights automatycznie zbiera wywołania AJAX jako zależności zgodnie z opisem [tutaj](javascript.md#ajax-performance). Ten dokument koncentruje się na zależności z serwera składników.
+W przypadku stron sieci Web zestaw SDK Application Insights JavaScript automatycznie zbiera wywołania AJAX jako zależności, jak opisano [tutaj](javascript.md#ajax-performance). Ten dokument koncentruje się na zależnościach od składników serwera programu.
 
-## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>Zaawansowane SQL śledzenia, aby uzyskać pełne zapytanie SQL
+## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>Zaawansowane śledzenie SQL, aby uzyskać pełne zapytanie SQL
 
-Dla połączeń SQL, nazwę serwera i bazy danych jest zawsze zebrane i przechowywane jako nazwa zebranych `DependencyTelemetry`. Brak dodatkowego pola o nazwie "dane", który może zawierać pełnotekstowe zapytania SQL.
+W przypadku wywołań SQL nazwa serwera i bazy danych są zawsze zbierane i przechowywane jako nazwa zebranych `DependencyTelemetry`elementów. Istnieje dodatkowe pole o nazwie "Data", które może zawierać pełny tekst zapytania SQL.
 
-W przypadku aplikacji platformy ASP.NET Core nie ma żadnych dodatkowych czynności, wymagane, aby uzyskać pełne zapytanie SQL.
+W przypadku aplikacji ASP.NET Core nie jest wymagany żaden dodatkowy krok w celu uzyskania pełnego zapytania SQL.
 
-Aplikacji ASP.NET za pomocą Instrumentacji kodu bajtów, co wymaga Instrumentacji aparat są zbierane pełne zapytanie SQL. Dodatkowe kroki specyficzne dla platformy, jak opisano poniżej, są wymagane.
+W przypadku aplikacji ASP.NET pełnych zapytań SQL jest zbieranych za pomocą Instrumentacji kodu bajtowego, co wymaga aparatu Instrumentacji. Wymagane są dodatkowe czynności specyficzne dla platformy, zgodnie z poniższym opisem.
 
-| Platforma | Czynności wymagane, aby uzyskać pełne zapytanie SQL |
+| Platforma | Kroki, które trzeba wykonać, aby uzyskać pełne zapytanie SQL |
 | --- | --- |
-| Aplikacja sieci Web platformy Azure |W Panelu sterowania aplikacji sieci web [Otwórz blok usługi Application Insights](../../azure-monitor/app/azure-web-apps.md) i włączyć poleceń SQL w ramach platformy .NET |
-| Serwer IIS (maszyn wirtualnych platformy Azure, lokalnych i itd.) | [Zainstaluj Monitor stanu na serwerze, na którym uruchomiona jest aplikacja](../../azure-monitor/app/monitor-performance-live-website-now.md) i uruchom ponownie usługi IIS.
-| Azure Cloud Service | Dodaj [zadania uruchamiania, aby zainstalować StatusMonitor](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> Aplikacja powinna być dołączona do dotycząca usługi Application Insights SDK w czasie kompilacji przez zainstalowanie pakietów NuGet dla [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) lub [aplikacje platformy ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) |
+| Aplikacja sieci Web platformy Azure |W panelu sterowania aplikacji sieci Web [Otwórz blok Application Insights](../../azure-monitor/app/azure-web-apps.md) i Włącz polecenia SQL w obszarze .NET |
+| Serwer IIS (maszyna wirtualna platformy Azure, premium itd.) | [Zainstaluj Monitor stanu na serwerze, na którym działa aplikacja](../../azure-monitor/app/monitor-performance-live-website-now.md) , a następnie uruchom ponownie usługi IIS.
+| Usługa w chmurze platformy Azure | Dodaj [zadanie uruchamiania, aby zainstalować StatusMonitor](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> Twoja aplikacja powinna zostać dołączona do zestawu ApplicationInsights SDK w czasie kompilacji przez zainstalowanie pakietów NuGet dla aplikacji [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) lub [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) |
 | IIS Express | Nieobsługiwane
 
-W powyższych przypadkach prawidłowy sposób sprawdzania poprawności silnika Instrumentacji jest poprawnie zainstalowany jest weryfikując, czy wersja zestawu SDK są zbierane `DependencyTelemetry` jest "rddp". "rdddsd" lub "rddf" wskazuje zależności są zbierane za pomocą wywołania zwrotne DiagnosticSource lub źródła zdarzeń i dlatego nie będzie można przechwycić pełne zapytanie SQL.
+W powyższych przypadkach poprawna metoda sprawdzania poprawności aparatu Instrumentacji jest poprawnie zainstalowana, sprawdzając, czy wersja zestawu SDK zebrana `DependencyTelemetry` to "rddp". element "rdddsd" lub "rddf" wskazuje zależności, które są zbierane za pośrednictwem wywołania zwrotnego DiagnosticSource lub EventSource, i dlatego pełne zapytanie SQL nie zostanie przechwycone.
 
 ## <a name="where-to-find-dependency-data"></a>Gdzie można znaleźć dane zależności
 
 * [Mapa aplikacji](app-map.md) wizualizuje zależności między aplikacji i składników sąsiednich.
-* [Diagnostyka transakcji](transaction-diagnostics.md) pokazuje unified, skorelowanych danych serwera.
-* [Kartę przeglądarki](javascript.md#ajax-performance) przedstawia wywołania AJAX z przeglądarek użytkowników.
-* Klikaj elementy z żądań wolno lub nie powiodło się, aby sprawdzić, wywołania ich zależności.
+* [Diagnostyka transakcji](transaction-diagnostics.md) przedstawia ujednolicone, skorelowane dane serwera.
+* [Karta przeglądarki](javascript.md#ajax-performance) pokazuje wywołania AJAX z przeglądarek użytkowników.
+* Kliknij pozycję przez powolne lub Nieudane żądania, aby sprawdzić ich wywołania zależności.
 * [Analiza](#logs-analytics) może służyć do zależności zapytania o dane.
 
 ## <a name="diagnosis"></a> Diagnozowanie wolne żądania
 
-Każde zdarzenie żądania jest skojarzone z wywołania zależności, wyjątki i inne zdarzenia, które są śledzone podczas przetwarzania żądania przez aplikację. Dlatego jeśli niektóre żądania są nieprawidłowo w inny sposób, możesz dowiedzieć się czy jest to ze względu na powolne odpowiedzi od zależności.
+Każde zdarzenie żądania jest skojarzone z wywołaniami zależności, wyjątkami i innymi zdarzeniami, które są śledzone podczas przetwarzania żądania przez aplikację. Dlatego jeśli niektóre żądania są wykonywane nieprawidłowo, można sprawdzić, czy jest to spowodowane powolnymi odpowiedziami z zależności.
 
 ### <a name="tracing-from-requests-to-dependencies"></a>Śledzenie za pomocą żądań do zależności
 
-Otwórz **wydajności** kartę i przejdź do **zależności** karty u góry strony, obok operacji.
+Otwórz kartę **wydajność** i przejdź do karty **zależności** u góry obok pozycji operacje.
 
-Kliknij pozycję **Nazwa zależności** w ramach ogólnej. Po wybraniu zależność Wykres rozkładu czasów trwania tej zależności pojawią się po prawej stronie.
+Kliknij **nazwę zależności** w obszarze Ogólne. Po wybraniu zależności zostanie wyświetlony wykres rozkładu czasu trwania tej zależności po prawej stronie.
 
-![Wydajność karty kliknij kartę zależności u góry następnie nazwa zależności na wykresie](./media/asp-net-dependencies/2-perf-dependencies.png)
+![Na karcie Wydajność kliknij kartę zależność u góry, a następnie nazwę zależności na wykresie.](./media/asp-net-dependencies/2-perf-dependencies.png)
 
-Kliknij niebieski **przykłady** przycisk w prawym dolnym rogu, a następnie na przykład, aby zobaczyć szczegóły transakcji end-to-end.
+Kliknij przycisk niebieskich **przykładów** w prawym dolnym rogu, a następnie na przykład, aby wyświetlić szczegółowe informacje o transakcji.
 
-![Kliknij na przykład, aby zobaczyć szczegóły transakcji end-to-end](./media/asp-net-dependencies/3-end-to-end.png)
+![Kliknij przykład, aby wyświetlić szczegółowe informacje o transakcji](./media/asp-net-dependencies/3-end-to-end.png)
 
 ### <a name="profile-your-live-site"></a>Profil witryny na żywo
 
-Nie wiadomo, gdzie przejdzie czasu? [Profiler usługi Application Insights](../../azure-monitor/app/profiler.md) ślady protokołu HTTP wywołania witryny na żywo i przedstawiono funkcje w kodzie, który trwało najdłużej.
+Nie wiadomo, gdzie przejdzie czasu? [Profiler Application Insights](../../azure-monitor/app/profiler.md) śledzi połączenia HTTP z aktywną witryną i wyświetla funkcje w kodzie, które zajęły najdłuższy czas.
 
 ## <a name="failed-requests"></a>Żądania zakończone niepowodzeniem
 
 Żądania zakończone niepowodzeniem, może być również skojarzona z zakończonymi niepowodzeniem wywołaniami do zależności.
 
-Firma Microsoft może przejść do **błędów** karcie po lewej stronie, a następnie kliknij polecenie **zależności** kartę u góry.
+Możemy przejść do karty **Błędy** po lewej stronie, a następnie kliknąć kartę **zależności** u góry.
 
 ![Kliknij wykres, żądań zakończonych niepowodzeniem](./media/asp-net-dependencies/4-fail.png)
 
-W tym miejscu można wyświetlić liczbę zależność zakończona niepowodzeniem. Aby uzyskać więcej informacji na temat wystąpienia nie powiodło się, próby, klikając nazwę zależności w dolną tabelę. Możesz kliknąć niebieski **zależności** przycisk w prawym dolnym rogu, aby uzyskać szczegóły transakcji end-to-end.
+W tym miejscu będzie można zobaczyć liczbę nieudanych zależności. Aby uzyskać więcej szczegółów na temat wystąpienia awarii, spróbuj kliknąć nazwę zależności w dolnej tabeli. Możesz kliknąć przycisk niebieskie **zależności** w prawym dolnym rogu, aby uzyskać szczegółowe informacje o transakcjach.
 
 ## <a name="logs-analytics"></a>Dzienniki (analiza)
 
-Możesz śledzić zależności w [język zapytania Kusto](/azure/kusto/query/). Oto kilka przykładów.
+Zależności można śledzić w [języku zapytań Kusto](/azure/kusto/query/). Oto kilka przykładów.
 
 * Znajdź wszystkie nieudane wywołania zależności:
 
@@ -188,14 +188,14 @@ Możesz śledzić zależności w [język zapytania Kusto](/azure/kusto/query/). 
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-### <a name="how-does-automatic-dependency-collector-report-failed-calls-to-dependencies"></a>*Jak wywołania zależności nie ma zależności automatycznego modułu zbierającego raportu?*
+### <a name="how-does-automatic-dependency-collector-report-failed-calls-to-dependencies"></a>*Jak automatyczne wywołania raportu modułu zbierającego zależności nie powiodły się do zależności?*
 
-* Wywołania zależności zakończone niepowodzeniem mają pola 'success' ustawiony na wartość False. `DependencyTrackingTelemetryModule` nie raportuje `ExceptionTelemetry`. Opisano modelu pełnych danych dla zależności [tutaj](data-model-dependency-telemetry.md).
+* Wywołania zależności zakończone niepowodzeniem mają ustawioną wartość false dla pola "Success". `DependencyTrackingTelemetryModule`nie zgłasza `ExceptionTelemetry`. Pełen model danych dla zależności został opisany [tutaj](data-model-dependency-telemetry.md).
 
-## <a name="open-source-sdk"></a>Zestaw SDK typu open-source
-Podobnie jak każdy zestaw Application Insights SDK moduł zbierania zależności jest również typu open source. Odczyt i przyczynić się do kodu lub zgłosić problemy w czasie [oficjalne repozytorium GitHub](https://github.com/Microsoft/ApplicationInsights-dotnet-server).
+## <a name="open-source-sdk"></a>Zestaw SDK open source
+Podobnie jak w przypadku każdego zestawu Application Insights SDK, moduł kolekcji zależności jest również typu open source. Odczytaj i współtworzyj kod lub zgłoś problemy w [oficjalnym repozytorium GitHub](https://github.com/Microsoft/ApplicationInsights-dotnet-server).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Wyjątki](../../azure-monitor/app/asp-net-exceptions.md)
 * [Dane użytkownika i strony](../../azure-monitor/app/javascript.md)

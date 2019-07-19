@@ -1,40 +1,43 @@
 ---
-title: Mapowanie transformacji wybierz przepływ danych w usłudze Azure Data Factory
-description: Mapowanie transformacji wybierz przepływ danych w usłudze Azure Data Factory
+title: Mapowanie Azure Data Factory Wybieranie przepływu danych
+description: Mapowanie Azure Data Factory Wybieranie przepływu danych
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: bc83b41067d587adce41658a2c4b3d68969750ba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 15c74637a2dc42ec44f582878b5505d94637cd7b
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61364492"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314215"
 ---
-# <a name="azure-data-factory-mapping-data-flow-select-transformation"></a>Mapowanie transformacji wybierz przepływ danych w usłudze Azure Data Factory
-
+# <a name="azure-data-factory-mapping-data-flow-select-transformation"></a>Mapowanie Azure Data Factory Wybieranie przepływu danych
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Ta transformacja na użytek selektywność kolumny (zmniejszenie liczby kolumn) lub aliasu kolumny i nazwy strumienia.
+Użyj tej transformacji dla selektywnej kolumny (zmniejszając liczbę kolumn), kolumn aliasów i nazw strumieni oraz Zmień kolejność kolumn.
 
-Wybierz przekształcenie umożliwia alias strumień całej lub kolumny w strumieniu, przypisz różne nazwami (aliasami), a następnie Odwołaj te nowe nazwy w dalszej części przepływu danych. Ta transformacja jest przydatne w scenariuszach samosprzężenie. Sposób implementacji samosprzężenie w przepływ danych usługi ADF jest podjęcie strumień gałęzi ją dodać za pomocą "Nową gałąź", a następnie zaraz potem przekształcenie "Select". Strumieniu mają teraz nową nazwę, która służy do przyłączenia do oryginalnego strumienia tworzenia samosprzężenie:
+## <a name="how-to-use-select-transformation"></a>Jak używać transformacji SELECT
+Wybranie przekształcenia pozwala na aliasowanie całego strumienia lub kolumn w tym strumieniu, przypisywanie różnych nazw (aliasów), a następnie odwoływanie się do tych nowych nazw później w przepływie danych. To przekształcenie jest przydatne w scenariuszach samosprzężenia. Sposobem implementacji samosprzężenia w przepływie danych ADF jest wykonanie strumienia, rozgałęzienie go przy użyciu "nowej gałęzi", a następnie natychmiastowe dodanie przekształcenia "Select". Ten strumień będzie teraz miał nową nazwę, której można użyć do dołączenia do oryginalnego strumienia, tworząc samosprzężenie:
 
-![Samosprzężenie](media/data-flow/selfjoin.png "samosprzężenie")
+![] Samosprzężenie (media/data-flow/selfjoin.png "") Samosprzężenie
 
-Na powyższym diagramie Wybierz przekształcenie znajduje się na górze. To jest aliasowanie oryginalnego strumienia do "OrigSourceBatting". W przekształcenie sprzężenie higlighted poniżej można zobaczyć, że używamy tego strumienia wybierz aliasu jako sprzężenia po prawej stronie, może odwoływać się do tego samego klucza w lewej i prawej strony sprzężenia wewnętrznego.
+Na powyższym diagramie wybór przekształceń znajduje się u góry. Jest to alias oryginalnego strumienia do "OrigSourceBatting". W wyróżnionym przekształceniu Join poniżej można zobaczyć, że używamy tego strumienia SELECT aliasu jako sprzężenia po prawej stronie, umożliwiając nam odwoływanie się do tego samego klucza zarówno w lewej & po prawej stronie sprzężenia wewnętrznego.
 
-Wybierz opcję można również jako sposób Usuń zaznaczenie pola wyboru kolumn z przepływu danych. Na przykład jeśli zdefiniowano w ujściu usługi 6 kolumn, ale chcesz wybrać określone 3 do transformacji i następnie przepływać do ujścia, można wybrać tylko te 3 za pomocą wybierz transformacji.
+Opcji wybierz można także użyć jako sposobu usuwania kolumn z przepływu danych. Jeśli na przykład masz 6 kolumn zdefiniowanych w ujścia, ale chcesz tylko wybrać konkretny 3 do przekształcenia, a następnie przetworzyć przepływ do ujścia, możesz wybrać tylko te 3 przy użyciu opcji Przekształć.
 
 > [!NOTE]
-> Musisz przełączyć off "Zaznacz wszystko" w celu pobrania tylko określone kolumny
+> Aby wybierać tylko określone kolumny, należy wyłączyć opcję "Zaznacz wszystko"
 
-Opcje
+![Wybierz transformację](media/data-flow/select001.png "Wybierz alias")
 
-Ustawieniem domyślnym dla "Select" jest Uwzględnij wszystkie kolumny przychodzących i zachować oryginalne nazwy. Możesz alias strumienia, ustawiając nazwę, wybierz transformacji.
+## <a name="options"></a>Opcje
+* Ustawieniem domyślnym dla opcji "Select" jest uwzględnianie wszystkich kolumn przychodzących i zachowywanie tych oryginalnych nazw. Strumień można aliasować przez ustawienie nazwy przekształcenia SELECT.
+* Aby określić alias poszczególnych kolumn, usuń zaznaczenie opcji "Zaznacz wszystko" i użyj mapowania kolumn u dołu.
+* Wybierz pozycję Pomiń duplikaty, aby wyeliminować zduplikowane kolumny z metadanych wejściowych lub wyjściowych.
 
-Aby alias poszczególnych kolumn Usuń zaznaczenie opcji "Zaznacz wszystko" i użyj mapowanie kolumny u dołu.
+![Pomiń duplikaty](media/data-flow/select-skip-dup.png "Pomiń duplikaty")
 
-![Wybierz przekształcania](media/data-flow/select001.png "wybrać Alias")
+## <a name="next-steps"></a>Następne kroki
+* Po użyciu opcji wybierz, aby zmienić nazwę, kolejność i aliasowanie kolumn Użyj [transformacji ujścia](data-flow-sink.md) , aby wyrównać dane do magazynu danych.

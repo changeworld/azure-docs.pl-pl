@@ -1,7 +1,7 @@
 ---
-title: Rozpoznawanie drukowane odręcznego tekstu przetwarzania obrazów
+title: Rozpoznawaj tekst drukowany/odręczny, przetwarzanie obrazów
 titleSuffix: Azure Cognitive Services
-description: Pojęcia związane z rozpoznawanie tekstu drukowanego i pisma odręcznego na obrazach za pomocą interfejsu API przetwarzania obrazów.
+description: Koncepcje dotyczące rozpoznawania wydrukowanych i odręcznych tekstu w obrazach przy użyciu interfejs API przetwarzania obrazów.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,87 +11,87 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: bcaa990cc2186a5f1eecdbbca91804c92370277c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cfbbd0b353699c4b04ede07df0450e66bd59612f
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357182"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311967"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>Rozpoznawanie tekstu drukowanego i pisma odręcznego
 
-Przetwarzania obrazów udostępnia szereg usług, które wykrywanie i wyodrębnianie tekstu drukowanego na klawiaturze lub odręcznie, który pojawia się w obrazach. Jest to przydatne w różnych scenariuszy, takich jak notatek, dokumentacji medycznej, zabezpieczeń i bankowością. Następujące trzy sekcje szczegółów trzech różnych rozpoznawanie tekstu interfejsów API, każdy zoptymalizowane pod kątem różnych przypadków użycia.
+Przetwarzanie obrazów udostępnia wiele usług, które wykrywają i wyodrębniają tekst drukowany lub odręczny, który pojawia się w obrazach. Jest to przydatne w wielu scenariuszach, takich jak notowanie, rejestry medyczne, zabezpieczenia i bankowość. W poniższych trzech sekcjach szczegółowo opisano trzy różne interfejsy API rozpoznawania tekstu, które są zoptymalizowane pod kątem różnych przypadków użycia.
 
-## <a name="read-api"></a>Odczyt interfejsu API
+## <a name="read-api"></a>Odczytaj interfejs API
 
-Interfejs API odczytu wykrywa zawartość tekstową na obrazie za pomocą naszych najnowszych modeli rozpoznawania i konwertuje zidentyfikowany tekst do strumienia znaków czytelnych. Jest zoptymalizowany dla obrazów zawierające dużo tekstu (takich jak dokumenty, które zostały przeskanowane cyfrowo) i obrazów przy użyciu wiele szumu visual. Jego określi, który model rozpoznawania do użycia dla każdego wiersza tekstu, obsługi obrazów za pomocą tekstu odręcznego i drukować. Interfejs API odczytu wykonuje asynchronicznie, ponieważ większe dokumenty może potrwać kilka minut, aby zwrócić wynik.
+Interfejs API odczytu wykrywa zawartość tekstową w obrazie przy użyciu najnowszych modeli rozpoznawania i konwertuje zidentyfikowany tekst na strumień znaków do odczytu maszynowego. Są one zoptymalizowane pod kątem obrazów z dużym użyciem tekstu (takich jak dokumenty, które zostały przeskanowane cyfrowo) i obrazów z dużą ilością szumów wizualnych. Określi model rozpoznawania, który ma być używany dla każdego wiersza tekstu, obsługując obrazy zarówno w postaci tekstu, jak i w postaci odręcznej. Interfejs API odczytu jest wykonywany asynchronicznie, ponieważ w większych dokumentach można zwrócić wynik.
 
-Operacja odczytu zachowuje oryginalne grupowanie wiersza rozpoznane słowa w danych wyjściowych. Każdy wiersz zawiera współrzędne pola ograniczenia, a każdy wyraz w wierszu ma również swój własny współrzędnych. Jeśli wyraz został rozpoznany bez obaw niski, te informacje zamieszczono również. Zobacz [dokumentację referencyjną interfejsu API odczytu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) Aby dowiedzieć się więcej.
+Operacja odczytu zachowuje pierwotne Grupowanie wierszy w danych wyjściowych. Każdy wiersz zawiera współrzędne pola ograniczenia, a każdy wyraz w wierszu ma także własne współrzędne. Jeśli wyraz został rozpoznany z niskim poziomem pewności, te informacje są również przekazywane. Aby dowiedzieć się więcej, zobacz dokumentację [dokumentacji interfejsu API Read](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) .
 
 > [!NOTE]
 > Ta funkcja jest dostępna tylko dla tekstu w języku angielskim.
 
 ### <a name="image-requirements"></a>Wymagania obrazu
 
-Interfejs API odczytu współpracuje z obrazów, które spełniają następujące wymagania:
+Interfejs API odczytu działa z obrazami spełniającymi następujące wymagania:
 
-- Obraz, który przedstawia w formacie JPEG, PNG, BMP, plików PDF lub TIFF.
-- Wymiary obrazu musi mieć od 50 x 50 i 4200 x 4200 pikseli. Strony PDF muszą być 17 x 17 cali lub mniejsze.
-- Rozmiar pliku obrazu musi być mniejsza niż 20 megabajtów (MB).
+- Obraz musi być przedstawiony w formacie JPEG, PNG, BMP, PDF lub TIFF.
+- Wymiary obrazu muszą mieścić się w przedziale od 50 x 50 do 10000 x 10000 pikseli. Strony PDF muszą mieć 17 x 17 cali lub mniej.
+- Rozmiar pliku obrazu musi być mniejszy niż 20 megabajtów (MB).
 
 ### <a name="limitations"></a>Ograniczenia
 
-Jeśli używasz subskrypcji warstwy bezpłatna API odczytu będzie przetwarzać tylko pierwszych dwóch stron dokumentu PDF lub TIFF. Z subskrypcją płatną przetworzy maksymalnie 200 stron. Należy również zauważyć, że interfejs API wykryje maksymalnie 300 wierszy na stronie.
+Jeśli używasz subskrypcji warstwy Bezpłatna, interfejs API odczytu będzie przetwarzać tylko pierwsze dwie strony dokumentu PDF lub TIFF. Dzięki płatnej subskrypcji proces będzie przetwarzać do 200 stron. Należy również zauważyć, że interfejs API wykryje maksymalnie 300 wierszy na stronie.
 
-## <a name="ocr-optical-character-recognition-api"></a>Optyczne rozpoznawanie znaków (OCR) interfejsu API
+## <a name="ocr-optical-character-recognition-api"></a>Interfejs API OCR (optyczne rozpoznawanie znaków)
 
-Interfejs API optyczne rozpoznawanie znaków (OCR) przetwarzania obrazów jest podobny do interfejsu API odczytu, ale jest wykonywana synchronicznie i nie jest zoptymalizowany pod kątem dużych dokumentów. Używa starszej model uznawania osiągnięć, ale działa z innych języków; zobacz [języki](language-support.md#text-recognition) pełną listę obsługiwanych języków.
+Interfejs API optycznego rozpoznawania znaków (OCR) przetwarzanie obrazów jest podobny do interfejsu API odczytu, ale jest wykonywany synchronicznie i nie jest zoptymalizowany pod kątem dużych dokumentów. Używa wcześniejszego modelu rozpoznawania, ale współpracuje z większą liczbą języków; Zobacz [obsługę języka](language-support.md#text-recognition) , aby uzyskać pełną listę obsługiwanych języków.
 
-Jeśli to konieczne, optyczne rozpoznawanie znaków poprawia obrót rozpoznany, zwracając obrotowych przesunięcie w stopniach osi obraz w poziomie. Optyczne rozpoznawanie znaków także współrzędne ramki wystąpień poszczególnych wyrazów, jak pokazano na poniższej ilustracji.
+W razie potrzeby OCR koryguje obrót rozpoznanego tekstu, zwracając przesunięcie rotacyjne (w stopniach) o poziomą oś obrazu. OCR udostępnia również współrzędne ramki każdego wyrazu, jak pokazano na poniższej ilustracji.
 
-![Obraz jest obracana jego tekstu jest odczytywać i umieszczony](./Images/vision-overview-ocr.png)
+![Obraz, który jest obracany, a jego tekst jest odczytywany i zakreślony](./Images/vision-overview-ocr.png)
 
-Zobacz [dokumenty referencyjne optyczne rozpoznawanie znaków](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) Aby dowiedzieć się więcej.
+Zobacz [dokumenty referencyjne OCR](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) , aby dowiedzieć się więcej.
 
 ### <a name="image-requirements"></a>Wymagania obrazu
 
-Interfejs API Rozpoznawania działa na obrazach, które spełniają następujące wymagania:
+Interfejs API OCR działa na obrazach, które spełniają następujące wymagania:
 
-* Obraz, który przedstawia w formacie JPEG, PNG, GIF lub BMP.
-* Rozmiar obrazu wejściowego musi składać się 50 x 50 i 4200 x 4200 pikseli.
-* Tekst w obrazie można obracać o dowolnym wielu 90 stopni oraz małych kąt maksymalnie 40 stopni.
+* Obraz musi być przedstawiony w formacie JPEG, PNG, GIF lub BMP.
+* Rozmiar obrazu wejściowego musi mieścić się w przedziale od 50 x 50 do 4200 x 4200 pikseli.
+* Tekst w obrazie może być obrócony przez dowolną wielokrotność 90 stopni i niewielki kąt do 40 stopni.
 
 ### <a name="limitations"></a>Ograniczenia
 
-Na fotografii, gdzie jest tekst liczby wyników fałszywie dodatnich mogą pochodzić z częściowo rozpoznane słowa. W niektórych fotografii, szczególnie zdjęcia bez dowolny tekst dokładności mogą się różnić w zależności od typu obraz.
+Na fotografiach, w których tekst jest dominujący, fałszywe dodatnie mogą pochodzić z częściowo rozpoznanych wyrazów. W przypadku niektórych fotografii, zwłaszcza zdjęć bez żadnego tekstu, precyzja może się różnić w zależności od typu obrazu.
 
-## <a name="recognize-text-api"></a>Rozpoznaje interfejs API tłumaczenia tekstu
+## <a name="recognize-text-api"></a>Interfejs API Rozpoznawanie tekstu
 
 > [!NOTE]
-> Interfejs API tekstu rozpoznaje zostaje zastąpiona API odczytu. Interfejs API odczytu ma podobne funkcje i jest aktualizowana w celu obsługi plików PDF, TIFF i pliki stronicowania wielu.
+> Interfejs API Rozpoznawanie tekstu jest przestarzały na korzyść interfejsu API odczytu. Interfejs API odczytu ma podobne możliwości i jest aktualizowany do obsługi plików PDF, TIFF i wielostronicowych.
 
-Interfejs API rozpoznaje tekstu jest podobny do optyczne rozpoznawanie znaków, ale działa w sposób asynchroniczny oraz korzysta z modeli zaktualizowaną rozpoznawania. Zobacz [dokumentacja interfejsu API tłumaczenia tekstu rozpoznaje](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) Aby dowiedzieć się więcej.
+Interfejs API Rozpoznawanie tekstu jest podobny do OCR, ale jest wykonywany asynchronicznie i używa zaktualizowanych modeli rozpoznawania. Więcej informacji można znaleźć w [dokumentacji dotyczącej interfejsów API rozpoznawanie tekstu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) .
 
 ### <a name="image-requirements"></a>Wymagania obrazu
 
-Działa rozpoznawanie interfejsu API tłumaczenia tekstu przy użyciu obrazów, które spełniają następujące wymagania:
+Interfejs API Rozpoznawanie tekstu współpracuje z obrazami spełniającymi następujące wymagania:
 
-- Obraz, który przedstawia w formacie JPEG, PNG lub BMP.
-- Wymiary obrazu musi mieć od 50 x 50 i 4200 x 4200 pikseli.
+- Obraz musi być przedstawiony w formacie JPEG, PNG lub BMP.
+- Wymiary obrazu muszą mieścić się w przedziale od 50 x 50 do 4200 x 4200 pikseli.
 - Rozmiar pliku obrazu musi być mniejszy niż 4 megabajty (MB).
 
 ## <a name="limitations"></a>Ograniczenia
 
-Dokładność operacje rozpoznawanie tekstu, zależy od jakości obrazów. Następujące czynniki mogą spowodować niedokładne odczytu:
+Dokładność operacji rozpoznawania tekstu zależy od jakości obrazów. Następujące czynniki mogą spowodować niedokładne odczytywanie:
 
 * Rozmyte obrazy.
 * Tekst odręczny lub napisany kursywą.
 * Artystyczne style czcionki.
 * Mały rozmiar tekstu.
 * Złożone tła, cienie, oślepiające światło nad tekstem lub zniekształcenie perspektywy.
-* Zbyt duży lub brak wielkie litery na początku słów.
+* Na początku wyrazów lub brakuje wielkich liter.
 * Indeks dolny, indeks górny lub tekst przekreślony.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Postępuj zgodnie z [wyodrębnianie tekstu drukowanego (OCR)](./quickstarts/csharp-print-text.md) Szybki Start, aby zaimplementować rozpoznawanie tekstu w prostej C# aplikacji.
+Postępuj zgodnie z przewodnikiem Szybki Start wydrukowanym [tekstem (OCR)](./quickstarts/csharp-print-text.md) , C# aby zaimplementować rozpoznawanie tekstu w prostej aplikacji.

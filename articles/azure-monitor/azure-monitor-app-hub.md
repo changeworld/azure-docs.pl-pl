@@ -1,8 +1,8 @@
 ---
 layout: HubPage
 hide_bc: false
-title: Usługa Azure Monitor Application insights dokumentacja — samouczki i dokumentacja interfejsu API | Dokumentacja firmy Microsoft
-description: Usługa Azure Monitor Application Insights oferuje funkcje monitorowania wydajności głębokiego kodu na poziomie aplikacji.
+title: Azure Monitor dokumentacji usługi Application Insights — samouczki i dokumentacja interfejsu API | Microsoft Docs
+description: Azure Monitor Application Insights oferuje głębokie monitorowanie wydajności aplikacji na poziomie kodu.
 services: application-insights
 author: mrbullwinkle
 manager: carmonm
@@ -10,17 +10,17 @@ ms.service: application-insights
 ms.topic: landing-page
 ms.date: 01/15/2019
 ms.author: mbullwin
-ms.openlocfilehash: 451a2d6e658c08823d1629270bb7503ebd236c02
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5571f84de5c6dd4f5dffea5869c744b7e5c02e24
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255699"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875289"
 ---
 <div id="main" class="v2">
     <div class="container">
-        <h1>Dokumentacja usługi Azure Monitor usługi Application Insights</h1>
-        <p>Usługa Azure Monitor Application Insights oferuje funkcje monitorowania wydajności głębokiego kodu na poziomie aplikacji.</p>
+        <h1>Dokumentacja Application Insights Azure Monitor</h1>
+        <p>Azure Monitor Application Insights oferuje głębokie monitorowanie wydajności aplikacji na poziomie kodu.</p>
         <hr style="margin: 30px 0;" />
         <ul class="pivots">
             <li>
@@ -66,8 +66,9 @@ ms.locfileid: "66255699"
                                                     <div class="cardText">
                                                         <h3>Co nowego?</h3>
                                                         <p>
-                                                            <a href="./app/kubernetes.md">Monitorowanie aplikacji platformy Kubernetes</a><br>
-                                                            <a href="./app/status-monitor-v2-overview.md">Dla aplikacji usług IIS w wersji 2 Monitora stanu</a><br>
+                                                            <a href="./app/azure-vm-vmss-apps.md">Monitorowanie niezwiązane z kodem dla maszyn wirtualnych platformy Azure i aplikacji zestawu skalowania maszyn wirtualnych platformy Azure</a><br>
+                                                            <a href="./app/kubernetes.md">Monitorowanie aplikacji Kubernetes</a><br>
+                                                            <a href="./app/status-monitor-v2-overview.md">monitor stanu v2 dla aplikacji IIS</a><br>
                                                         </p>
                                                         <br><br>
                                                         <h3>Przewodniki Szybki start</h3>
@@ -77,7 +78,7 @@ ms.locfileid: "66255699"
                                                             <a href="./learn/nodejs-quick-start.md">Node.js</a><br>
                                                             <a href="./learn/java-quick-start.md">Java</a><br>
                                                             <a href="./learn/mobile-center-quickstart.md">Mobile</a><br>
-                                                            <a href="./app/website-monitoring.md">Monitorowanie przeglądarki/po stronie klienta</a>
+                                                            <a href="./app/website-monitoring.md">Monitorowanie po stronie klienta i przeglądarki</a>
                                                         </p>
                                                         <br><br>
                                                         <h3>Samouczki</h3>
@@ -85,34 +86,34 @@ ms.locfileid: "66255699"
                                                             <a href="./learn/tutorial-runtime-exceptions.md">Wyszukiwanie i diagnozowanie wyjątków w czasie wykonywania</a><br>
                                                             <a href="./learn/tutorial-performance.md">Wyszukiwanie i diagnozowanie problemów z wydajnością</a><br>
                                                             <a href="./learn/tutorial-alert.md">Monitorowanie kondycji aplikacji i powiązane alerty</a><br>
-                                                            <a href="./learn/tutorial-users.md">Poznanie zachowań użytkowników</a><br>
+                                                            <a href="./learn/tutorial-users.md">Zrozumienie zachowania użytkowników</a><br>
                                                             <a href="./learn/tutorial-app-dashboards.md">Tworzenie niestandardowych pulpitów nawigacyjnych</a>
                                                             </p>
                                                         <br><br>
                                                         <h3>Rozproszone śledzenie</h3>
                                                         <p>
-                                                            <a href="./app/distributed-tracing.md">Co to jest rozpowszechniana śledzenia?</a><br>
+                                                            <a href="./app/distributed-tracing.md">Co to jest śledzenie rozproszone?</a><br>
                                                             <a href="./app/opencensus-python.md">OpenCensus dla języka Python</a><br>
-                                                            <a href="./app/opencensus-go.md">OpenCensus for Go</a><br>
-                                                            <a href="./app/opencensus-local-forwarder.md">Lokalne usługi przesyłania dalej</a>
+                                                            <a href="./app/opencensus-go.md">OpenCensus dla języka go</a><br>
+                                                            <a href="./app/opencensus-local-forwarder.md">Lokalna usługa przesyłania dalej</a>
                                                             </p>
                                                         <br><br>
                                                         <h3>Automatyczne wykrywanie inteligentne</h3>
                                                         <p>
                                                             <a href="./app/proactive-failure-diagnostics.md">Anomalie błędów</a><br>
                                                             <a href="./app/proactive-performance-diagnostics.md">Anomalie wydajności</a><br>
-                                                            <a href="./app/proactive-trace-severity.md">Degradacja śladów</a><br>
-                                                            <a href="./app/proactive-exception-volume.md">Nietypowe wzrostami wyjątków</a><br>
+                                                            <a href="./app/proactive-trace-severity.md">Obniżenie wydajności śledzenia</a><br>
+                                                            <a href="./app/proactive-exception-volume.md">Nietypowe wzrosty w wyjątkach</a><br>
                                                             <a href="./app/proactive-potential-memory-leak.md">Przecieki pamięci</a><br>
-                                                            <a href="./app/proactive-low-utilization-cloud-resources.md">Niski poziom wykorzystania Procesora</a><br>
+                                                            <a href="./app/proactive-low-utilization-cloud-resources.md">Niskie użycie procesora CPU</a><br>
                                                             <a href="./app/proactive-application-security-detection-pack.md">Problemy z zabezpieczeniami</a><br>
                                                             <a href="./app/proactive-cloud-services.md">Azure Cloud Services</a><br>
-                                                            <a href="./app/proactive-arm-config.md">Zarządzanie wykrywania inteligentnego, za pomocą szablonów</a>
+                                                            <a href="./app/proactive-arm-config.md">Zarządzanie funkcją inteligentnego wykrywania przy użyciu szablonów</a>
                                                         </p>
                                                         <br><br>
                                                         <h3>Tematy pomocy</h3>
                                                         <p>
-                                                            <a href="./app/auto-collect-dependencies.md">Zależności automatycznego zbierania</a><br>
+                                                            <a href="./app/auto-collect-dependencies.md">Autozbieranie zależności</a><br>
                                                             <a href="./app/correlation.md">Korelacja telemetrii</a><br>
                                                             <a href="./app/nuget.md">Pakiety NuGet</a><br>
                                                             <a href="./app/azure-functions-supported-features.md">Azure Functions</a>
@@ -129,47 +130,48 @@ ms.locfileid: "66255699"
                                                     <div class="cardText">
                                                         <h3>Aplikacje Java</h3>
                                                         <p>
-                                                            <a href="./app/java-get-started.md">Szczegóły konfiguracji monitorowania</a><br>
-                                                            <a href="https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights?view=azure-java-stable">Spring Boot starter</a><br>
-                                                            <a href="./app/micrometer-java.md">Metryki mikrometryczne</a><br>
+                                                            <a href="./app/java-get-started.md">Szczegółowa konfiguracja monitorowania</a><br>
+                                                            <a href="https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights?view=azure-java-stable">Rozruch z sprężyną Starter</a><br>
+                                                            <a href="./app/micrometer-java.md">Metryki Micrometer</a><br>
                                                             <a href="./app/java-filter-telemetry.md">Filtrowanie telemetrii</a><br>
                                                             <a href="./app/java-trace-logs.md">Rejestrowanie śledzenia</a><br>
-                                                            <a href="./app/java-agent.md">Konfiguracja agenta dla śledzenia zależności</a><br>
+                                                            <a href="./app/java-agent.md">Konfiguracja agenta na potrzeby śledzenia zależności</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">Niestandardowe zdarzenia i metryki</a><br>
                                                             <a href="https://docs.microsoft.com/azure/azure-monitor/app/configuration-with-applicationinsights-config#channel-parameters-java
-">XML konfiguracji</a><br>
-                                                            <a href="https://github.com/Microsoft/ApplicationInsights-Java">Otwórz repozytorium GitHub zestawu SDK Java źródła</a>
+">Config. XML</a><br>
+                                                            <a href="https://github.com/Microsoft/ApplicationInsights-Java">Repozytorium usługi Java SDK usługi Open Source</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3>Aplikacje platformy .NET</h3>
+                                                        <h3>Aplikacje .NET</h3>
                                                         <p>
-                                                            <a href="./app/asp-net.md">Szczegóły konfiguracji monitorowania</a><br>
+                                                            <a href="./app/asp-net.md">Szczegółowa konfiguracja monitorowania</a><br>
                                                             <a href="./app/monitor-performance-live-website-now.md">Status Monitor (Monitor stanu)</a><br>
-                                                            <a href="./app/azure-web-apps.md">Monitorowanie w usłudze App Service</a><br>
+                                                            <a href="./app/azure-web-apps.md">Monitorowanie App Service</a><br>
+                                                            <a href="./app/azure-vm-vmss-apps.md">Monitorowanie aplikacji maszyny wirtualnej i zestawu skalowania maszyn wirtualnych</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">Niestandardowe zdarzenia i metryki</a><br>
-                                                            <a href="https://github.com/Microsoft/ApplicationInsights-dotnet">Otwórz repozytorium GitHub zestawu SDK .NET źródła</a>
+                                                            <a href="https://github.com/Microsoft/ApplicationInsights-dotnet">Repozytorium usługi .NET SDK usługi Open Source w witrynie GitHub</a>
                                                         </p>
                                                         <br><br>
-                                                          <h3>Aplikacje .NET core</h3>
+                                                          <h3>Aplikacje platformy .NET Core</h3>
                                                         <p>
-                                                            <a href="./app/asp-net-core.md">Szczegóły konfiguracji monitorowania</a><br>
-                                                            <a href="./app/profiler-aspnetcore-linux.md">Platforma ASP.NET Core profilowania</a><br>
+                                                            <a href="./app/asp-net-core.md">Szczegółowa konfiguracja monitorowania</a><br>
+                                                            <a href="./app/profiler-aspnetcore-linux.md">ASP.NET Core profilowania</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">Niestandardowe zdarzenia i metryki</a><br>
-                                                            <a href="https://github.com/Microsoft/ApplicationInsights-aspnetcore">Otwórz źródło .NET Core SDK w witrynie GitHub repozytorium</a>
+                                                            <a href="https://github.com/Microsoft/ApplicationInsights-aspnetcore">Repozytorium usługi Open Source zestaw .NET Core SDK GitHub</a>
                                                         </p>
                                                         <br><br>
-                                                          <h3>Aplikacje środowiska node.js</h3>
+                                                          <h3>Aplikacje Node. js</h3>
                                                         <p>
-                                                            <a href="./app/nodejs.md">Szczegóły konfiguracji monitorowania</a><br>
+                                                            <a href="./app/nodejs.md">Szczegółowa konfiguracja monitorowania</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">Niestandardowe zdarzenia i metryki</a><br>
-                                                            <a href="https://github.com/Microsoft/ApplicationInsights-node.js">Otwórz repozytorium GitHub zestawu SDK środowiska Node.js źródła</a>
+                                                            <a href="https://github.com/Microsoft/ApplicationInsights-node.js">Repozytorium GitHub zestawu SDK Node. js w usłudze Open Source</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3>Monitorowanie/przeglądarki po stronie klienta</h3>
+                                                        <h3>Monitorowanie po stronie klienta/przeglądarki</h3>
                                                         <p>
-                                                            <a href="./app/javascript.md">Szczegóły konfiguracji monitorowania</a><br>
+                                                            <a href="./app/javascript.md">Szczegółowa konfiguracja monitorowania</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">Niestandardowe zdarzenia i metryki</a><br>
-                                                            <a href="https://github.com/Microsoft/ApplicationInsights-JS">Otwórz repozytorium GitHub zestaw SDK JavaScript źródła</a><br>
+                                                            <a href="https://github.com/Microsoft/ApplicationInsights-JS">Repozytorium GitHub zestawu JavaScript SDK usługi Open Source</a><br>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -181,10 +183,10 @@ ms.locfileid: "66255699"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3>Analizy zachowania użytkowników</h3>
+                                                        <h3>Analiza zachowania użytkowników</h3>
                                                         <p>
                                                             <a href="./app/usage-overview.md">Omówienie</a><br>
-                                                            <a href="./app/usage-send-user-context.md">Kontekst użytkownika identyfikatory wysyłania</a><br>
+                                                            <a href="./app/usage-send-user-context.md">Wyślij identyfikatory kontekstu użytkownika</a><br>
                                                             <a href="./app/usage-segmentation.md">Użytkownicy, sesje i zdarzenia</a><br>
                                                             <a href="./app/usage-funnels.md">Lejki</a><br>
                                                             <a href="./app/usage-cohorts.md">Kohorty</a><br>
@@ -193,25 +195,25 @@ ms.locfileid: "66255699"
                                                             <a href="./app/usage-flows.md">Przepływy użytkownika</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3>Monitorowanie w czasie rzeczywistym<br> Wizualizacja, &amp; analizy</h3>
+                                                        <h3>Monitorowanie w czasie rzeczywistym,<br> Wizualizacja &amp; , analiza</h3>
                                                         <p>
-                                                            <a href="./app/overview-dashboard.md">Pulpit nawigacyjny przeglądu &amp; pulpit nawigacyjny aplikacji</a><br>
-                                                            <a href="./app/monitor-web-app-availability.md">Monitorowanie globalnej dostępności</a><br>
+                                                            <a href="./app/overview-dashboard.md">Pulpit nawigacyjny aplikacji pulpitu &amp; nawigacyjnego — Omówienie</a><br>
+                                                            <a href="./app/monitor-web-app-availability.md">Globalne monitorowanie dostępności</a><br>
                                                             <a href="./app/live-stream.md">Strumień metryk na żywo</a><br>
                                                             <a href="./app/app-map.md">Mapowanie aplikacji rozproszonej</a><br>
-                                                            <a href="../monitoring-and-diagnostics/resource-group-insights.md">Monitorowania na poziomie grupy zasobów</a><br>
+                                                            <a href="../monitoring-and-diagnostics/resource-group-insights.md">Monitorowanie poziomu grupy zasobów</a><br>
                                                             <a href="./app/usage-workbooks.md">Raportowanie interaktywne</a><br>
-                                                            <a href="./app/export-power-bi.md">Integracja usługi Power BI</a><br>
-                                                            <a href="https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-metric-charts">Badanie metryki</a>
+                                                            <a href="./app/export-power-bi.md">Integracja Power BI</a><br>
+                                                            <a href="https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-metric-charts">Zbadaj metryki</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3>Ochrona prywatności, zabezpieczeń, użycie &amp; kosztów</h3>
+                                                        <h3>Prywatność, bezpieczeństwo, koszt &amp; użycia</h3>
                                                         <p>
-                                                            <a href="https://docs.microsoft.com/azure/log-analytics/log-analytics-personal-data-mgmt">Postępowania z danymi osobowymi</a><br>
-                                                            <a href="./app/data-retention-privacy.md">Zbieranie danych, przechowywania, &amp; magazynu</a><br>
-                                                            <a href="./app/resources-roles-access-control.md">Dostępu opartego na rolach</a><br>
-                                                            <a href="./app/ip-addresses.md">Adres IP &amp; wyjątków zapory</a><br>
-                                                            <a href="https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs">Użycie i szacunkowe koszty</a>
+                                                            <a href="https://docs.microsoft.com/azure/log-analytics/log-analytics-personal-data-mgmt">Obsługa danych osobowych</a><br>
+                                                            <a href="./app/data-retention-privacy.md">Zbieranie, przechowywanie i &amp; magazynowanie danych</a><br>
+                                                            <a href="./app/resources-roles-access-control.md">Dostęp oparty na rolach</a><br>
+                                                            <a href="./app/ip-addresses.md">Wyjątki zapory &amp; adresów IP</a><br>
+                                                            <a href="https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs">Użycie i szacowane koszty</a>
                                                         </p>
                                                         <br><br>
                                                         <h3>Model danych</h3>
@@ -223,7 +225,7 @@ ms.locfileid: "66255699"
                                                             <a href="./app/data-model-trace-telemetry.md">Ślad</a><br>
                                                             <a href="./app/data-model-event-telemetry.md">Zdarzenie</a><br>
                                                             <a href="./app/data-model-metric-telemetry.md">Metryka</a><br>
-                                                            <a href="./app/data-model-context.md">Kontekst</a>
+                                                            <a href="./app/data-model-context.md">Context</a>
                                                             </p>
                                                         </p>
                                                     </div>

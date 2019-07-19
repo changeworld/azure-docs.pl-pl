@@ -1,69 +1,76 @@
 ---
-title: Jak używać niestandardowego NuGet źródła danych w obszarach deweloperów platformy Azure
+title: Jak używać niestandardowego źródła danych NuGet w Azure Dev Spaces
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-author: johnsta
-ms.author: johnsta
-ms.date: 05/11/2018
+author: zr-msft
+ms.author: zarhoads
+ms.date: 07/17/2019
 ms.topic: conceptual
-description: Za pomocą NuGet niestandardowego źródła danych do uzyskiwania dostępu i korzystania z pakietów NuGet przestrzeni deweloperów platformy Azure.
+description: Użyj niestandardowego źródła danych NuGet, aby uzyskać dostęp do pakietów NuGet i korzystać z nich w obszarze dev platformy Azure.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, containers
 manager: gwallace
-ms.openlocfilehash: ca1fee76dfe280322a39fad56b9f85ebe1a92d3b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 44a87491d276e09e1fa8fed3f5e6803648c3e4a2
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704036"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305396"
 ---
-#  <a name="use-a-custom-nuget-feed-in-an-azure-dev-space"></a>Użyj niestandardowych NuGet kanału informacyjnego przestrzeni deweloperów platformy Azure
+#  <a name="use-a-custom-nuget-feed-in-an-azure-dev-space"></a>Używanie niestandardowego źródła danych NuGet w obszarze deweloperskim platformy Azure
 
-Kanał informacyjny NuGet zapewnia wygodny sposób obejmują źródeł pakietów w projekcie. Azure Dev spacje, należy mieć możliwość dostępu do tego źródła danych, w kolejności zależności jest prawidłowo zainstalowany w kontenerze platformy Docker.
+Źródło danych NuGet zapewnia wygodny sposób dołączania źródeł pakietów do projektu. Azure Dev Spaces musi uzyskać dostęp do tego kanału informacyjnego, aby można było poprawnie zainstalować zależności w kontenerze platformy Docker.
 
-## <a name="set-up-a-nuget-feed"></a>Konfigurowanie źródła danych NuGet
+## <a name="set-up-a-nuget-feed"></a>Skonfiguruj źródło danych NuGet
 
-Aby skonfigurować NuGet źródła danych:
-1. Dodaj [pakietu odwołania](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files) w `*.csproj` plik `PackageReference` węzła.
+Dodaj [odwołanie do pakietu](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files) dla zależności w `*.csproj` pliku `PackageReference` w węźle. Przykład:
 
-   ```xml
-   <ItemGroup>
-       <!-- ... -->
-       <PackageReference Include="Contoso.Utility.UsefulStuff" Version="3.6.0" />
-       <!-- ... -->
-   </ItemGroup>
-   ```
+```xml
+<ItemGroup>
+    <!-- ... -->
+    <PackageReference Include="Contoso.Utility.UsefulStuff" Version="3.6.0" />
+    <!-- ... -->
+</ItemGroup>
+```
 
-2. Tworzenie [NuGet.Config](https://docs.microsoft.com/nuget/reference/nuget-config-file) plik w folderze projektu.
-     * Użyj `packageSources` sekcji, aby odwoływać się do usługi NuGet źródła danych lokalizacji. Ważne: Kanał informacyjny NuGet musi być dostępny publicznie.
-     * Użyj `packageSourceCredentials` sekcji, aby skonfigurować poświadczenia użytkownika i hasło. 
+Utwórz plik [NuGet. config](https://docs.microsoft.com/nuget/reference/nuget-config-file) w folderze projektu i ustaw `packageSources` sekcje i `packageSourceCredentials` dla źródła danych NuGet. `packageSources` Sekcja zawiera adres URL źródła danych, który musi być dostępny publicznie. `packageSourceCredentials` Są to poświadczenia do uzyskiwania dostępu do źródła danych. Na przykład:
 
-   ```xml
-   <packageSources>
-       <add key="Contoso" value="https://contoso.com/packages/" />
-   </packageSources>
+```xml
+<packageSources>
+    <add key="Contoso" value="https://contoso.com/packages/" />
+</packageSources>
 
-   <packageSourceCredentials>
-       <Contoso>
-           <add key="Username" value="user@contoso.com" />
-           <add key="ClearTextPassword" value="33f!!lloppa" />
-       </Contoso>
-   </packageSourceCredentials>
-   ```
+<packageSourceCredentials>
+    <Contoso>
+        <add key="Username" value="user@contoso.com" />
+        <add key="ClearTextPassword" value="33f!!lloppa" />
+    </Contoso>
+</packageSourceCredentials>
+```
 
-3. Jeśli używasz kontroli kodu źródłowego:
-    - Odwołanie `NuGet.Config` w swojej `.gitignore` pliku, dzięki czemu poświadczenia nie przypadkowo zatwierdzenia w repozytorium źródłowym.
-    - Otwórz `azds.yaml` pliku w projekcie, a następnie zlokalizuj `build` sekcji i Wstaw następujący fragment kodu, aby upewnić się, że `NuGet.Config` plik zostanie zsynchronizowany na platformie Azure, tak że użyta podczas procesu kompilacji obrazu kontenera. (Domyślnie Azure Dev miejsca do magazynowania nie synchronizuje pliki, które pasują `.gitignore` i `.dockerignore` reguły.)
+Zaktualizuj wieloetapowe dockerfile, `NuGet.Config` aby skopiować plik do obrazu. Przykład:
 
-        ```yaml
-        build:
-        useGitIgnore: true
-        ignore:
-        - “!NuGet.Config”
-        ```
+```console
+COPY ["<project folder>/NuGet.Config", "./NuGet.Config"]
+```
 
+> [!TIP]
+> W systemie Windows `NuGet.Config`, `Nuget.Config`,, `nuget.config` i wszystkie działają jako prawidłowe nazwy plików. W systemie Linux jest `NuGet.Config` tylko prawidłową nazwą pliku dla tego pliku. Ponieważ Azure Dev Spaces używa platform Docker i Linux, ten plik musi mieć `NuGet.Config`nazwę. Nazwę można naprawić ręcznie lub przez uruchomienie `dotnet restore --configfile nuget.config`.
+
+
+Jeśli używasz usługi git, nie musisz mieć poświadczeń dla źródła danych NuGet w kontroli wersji. Dodaj `NuGet.Config` `NuGet.Config` do projektu, tak aby plik nie został dodany do kontroli wersji. `.gitignore` Azure dev Spaces będzie potrzebował tego pliku podczas procesu kompilowania obrazu kontenera, ale domyślnie uwzględnia reguły zdefiniowane w `.gitignore` i `.dockerignore` podczas synchronizacji. Aby zmienić ustawienie domyślne i Zezwalaj Azure dev Spaces na synchronizowanie `NuGet.Config` pliku, `azds.yaml` Zaktualizuj plik:
+
+```yaml
+build:
+useGitIgnore: true
+ignore:
+- “!NuGet.Config”
+```
+
+Jeśli nie korzystasz z usługi git, możesz pominąć ten krok.
+
+Przy następnym uruchomieniu `azds up` lub trafieniu `F5` w programie Visual Studio Code lub Visual Studio `NuGet.Config` , Azure dev Spaces zsynchronizuje plik, użyje go do zainstalowania zależności pakietów.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po wykonaniu powyższych kroków przy następnym uruchomieniu `azds up` (lub kliknij przycisk `F5` w VSCode lub Visual Studio), usługi Azure Dev miejsca do magazynowania będą synchronizować `NuGet.Config` plików na platformę Azure, który następnie jest wykorzystywany przez `dotnet restore` można zainstalować pakietu zależności w kontenerze.
-
+Dowiedz się więcej o [NuGet i sposobie jego działania](https://docs.microsoft.com/nuget/what-is-nuget).

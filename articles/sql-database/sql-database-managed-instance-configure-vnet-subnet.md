@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie istniejącej sieci wirtualnej dla wystąpienia zarządzanego Azure SQL Database | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób konfigurowania istniejącą sieć wirtualną i podsieć, w którym można wdrożyć wystąpienia zarządzanego Azure SQL Database.
+title: Skonfiguruj istniejącą sieć wirtualną dla Azure SQL Database wystąpienia zarządzanego | Microsoft Docs
+description: W tym artykule opisano sposób konfigurowania istniejącej sieci wirtualnej i podsieci, w której można wdrożyć Azure SQL Database wystąpienie zarządzane.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,29 +12,31 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 01/15/2019
-ms.openlocfilehash: c4ff12f0c9adcb9943a6e2426eaf2740ba171e39
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 168068094761fd35bf0386f476fbdd1262e9643f
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60700483"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68228302"
 ---
-# <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>Konfigurowanie istniejącej sieci wirtualnej dla wystąpienia zarządzanego Azure SQL Database
+# <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>Konfigurowanie istniejącej sieci wirtualnej dla Azure SQL Database wystąpienia zarządzanego
 
-Wystąpienie usługi Azure SQL Database Managed musi zostać wdrożony w ramach platformy Azure [sieci wirtualnej](../virtual-network/virtual-networks-overview.md) i podsieć, w wersji dedykowanej dla wystąpień zarządzanych tylko. Jeśli jest skonfigurowany zgodnie z opisem w można użyć istniejącej sieci wirtualnej i podsieci [wymagania dotyczące sieci wirtualnej wystąpienia zarządzanego](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
+Azure SQL Database wystąpienie zarządzane musi być wdrożone w ramach [sieci wirtualnej](../virtual-network/virtual-networks-overview.md) platformy Azure i podsieć dedykowana tylko dla wystąpień zarządzanych. Możesz użyć istniejącej sieci wirtualnej i podsieci, jeśli jest skonfigurowana zgodnie z [wymaganiami sieci wirtualnej wystąpienia zarządzanego](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
 
-Jeśli jeden z następujących przypadków ma zastosowanie do Ciebie, można sprawdzić i modyfikować sieci przy użyciu skryptu opisanych w tym artykule:
+W przypadku zastosowania jednego z następujących przypadków można sprawdzić poprawność sieci i zmodyfikować ją przy użyciu skryptu opisanego w tym artykule:
 
-- Masz nowej podsieci, które nadal nie jest skonfigurowane.
-- Nie masz pewności, że podsieć jest powiązana z [wymagania](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
-- Aby sprawdzić, czy podsieci, spełnia [wymagania dotyczące sieciowej](sql-database-managed-instance-connectivity-architecture.md#network-requirements) po dokonaniu zmiany.
+- Masz nową podsieć, która nie jest jeszcze skonfigurowana.
+- Nie masz pewności, że podsieć jest zgodna z [wymaganiami](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
+- Należy sprawdzić, czy podsieć nadal spełnia [wymagania sieci](sql-database-managed-instance-connectivity-architecture.md#network-requirements) po wprowadzeniu zmian.
 
 > [!Note]
-> Można utworzyć wystąpienie zarządzane tylko w sieciach wirtualnych utworzonych za pomocą modelu wdrażania usługi Azure Resource Manager. Sieci wirtualne platformy Azure utworzonych za pomocą klasycznego modelu wdrażania nie są obsługiwane. Oblicz rozmiar podsieci, postępując zgodnie z wytycznymi podanymi w [określi rozmiar podsieci wystąpienia zarządzanego](sql-database-managed-instance-determine-size-vnet-subnet.md) artykułu. Po wdrożeniu zasobów w obrębie nie można zmienić rozmiaru tej podsieci.
+> Wystąpienie zarządzane można utworzyć tylko w sieciach wirtualnych utworzonych za pomocą modelu wdrażania Azure Resource Manager. Sieci wirtualne platformy Azure utworzone za pomocą klasycznego modelu wdrażania nie są obsługiwane. Oblicz rozmiar podsieci, postępując zgodnie z wytycznymi w artykule [Określanie rozmiaru podsieci dla wystąpień zarządzanych](sql-database-managed-instance-determine-size-vnet-subnet.md) . Nie można zmienić rozmiaru podsieci po wdrożeniu zasobów wewnątrz programu.
+>
+> Po utworzeniu wystąpienia zarządzanego przeniesienie wystąpienia zarządzanego lub sieci wirtualnej do innej grupy zasobów lub subskrypcji nie jest obsługiwane.
 
 ## <a name="validate-and-modify-an-existing-virtual-network"></a>Weryfikowanie i modyfikowanie istniejącej sieci wirtualnej
 
-Jeśli chcesz utworzyć wystąpienie zarządzane wewnątrz istniejącej podsieci, zaleca się poniższy skrypt programu PowerShell, aby przygotować się do podsieci:
+Jeśli chcesz utworzyć wystąpienie zarządzane wewnątrz istniejącej podsieci, zalecamy wykonanie następującego skryptu programu PowerShell w celu przygotowania podsieci:
 
 ```powershell
 $scriptUrlBase = 'https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/manage/azure-sql-db-managed-instance/prepare-subnet'
@@ -49,14 +51,14 @@ $parameters = @{
 Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/prepareSubnet.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters
 ```
 
-Skrypt przygotowuje podsieci w trzech krokach:
+Skrypt przygotowuje podsieć w trzech krokach:
 
-1. Sprawdzanie poprawności: Sprawdza poprawność wybranej sieci wirtualnej i podsieci dla wystąpienia zarządzanego wymagań sieciowych.
-2. Potwierdź: Użytkownik pokazuje zestaw zmian, które należy podjąć, przygotować podsieci do wdrożenia wystąpienia zarządzanego. Również prosi o ich zgodę.
-3. Przygotuj się: Prawidłowo skonfiguruje sieć wirtualną i podsieć.
+1. Legalizacj Sprawdza poprawność wybranej sieci wirtualnej i podsieci pod kątem wymagań dotyczących sieci wystąpień zarządzanych.
+2. Sprawdzenia Przedstawia on użytkownikowi zestaw zmian, które należy wykonać w celu przygotowania podsieci do wdrożenia wystąpienia zarządzanego. Prosi również o zgodę.
+3. Przygotowane Poprawnie konfiguruje sieć wirtualną i podsieć.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby uzyskać przegląd, zobacz [co to jest wystąpienie zarządzane?](sql-database-managed-instance.md).
-- Aby uzyskać samouczek, który pokazuje, jak utworzyć sieć wirtualną, utworzyć wystąpienie zarządzane i przywrócić bazę danych z kopii zapasowej bazy danych, zobacz [Tworzenie wystąpienia usługi Azure SQL Database Managed](sql-database-managed-instance-get-started.md).
-- W przypadku problemów DNS, zobacz [Konfigurowanie niestandardowych DNS](sql-database-managed-instance-custom-dns.md).
+- Aby zapoznać się z omówieniem, zobacz [co to jest wystąpienie zarządzane?](sql-database-managed-instance.md)
+- Samouczek pokazujący sposób tworzenia sieci wirtualnej, tworzenia wystąpienia zarządzanego i przywracania bazy danych z kopii zapasowej bazy danych znajduje się w temacie [tworzenie Azure SQL Database wystąpienia zarządzanego](sql-database-managed-instance-get-started.md).
+- W przypadku problemów z usługą DNS zobacz [Konfigurowanie niestandardowego serwera DNS](sql-database-managed-instance-custom-dns.md).

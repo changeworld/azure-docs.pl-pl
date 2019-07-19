@@ -1,6 +1,6 @@
 ---
-title: Użycie wewnętrznego serwera DNS do rozpoznawania nazw maszyn wirtualnych przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Jak utworzyć sieć wirtualną kart interfejsu i użycie wewnętrznego serwera DNS do rozpoznawania nazw maszyn wirtualnych na platformie Azure przy użyciu wiersza polecenia platformy Azure
+title: Korzystanie z wewnętrznego serwera DNS do rozpoznawania nazw maszyn wirtualnych za pomocą interfejsu wiersza polecenia platformy Azure | Microsoft Docs
+description: Jak utworzyć karty interfejsu sieci wirtualnej i używać wewnętrznego serwera DNS do rozpoznawania nazw maszyn wirtualnych na platformie Azure przy użyciu interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: vlivech
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
 ms.date: 02/16/2017
-ms.author: v-livech
-ms.openlocfilehash: c180c129e4e2c434cffe2ea2ca823904e8faae89
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.author: gwallace
+ms.openlocfilehash: d53c4c2120701ca99d0865e2c074c85e629ae81c
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708698"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875170"
 ---
-# <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>Tworzenie karty interfejsu sieci wirtualnej i używanie wewnętrznego serwera DNS dla rozpoznawania nazw maszyn wirtualnych na platformie Azure
+# <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>Tworzenie kart interfejsu sieci wirtualnej i używanie wewnętrznego serwera DNS do rozpoznawania nazw maszyn wirtualnych na platformie Azure
 
-W tym artykule pokazano, jak skonfigurować statyczne wewnętrzne nazwy DNS dla maszyn wirtualnych systemu Linux przy użyciu karty interfejsu sieci wirtualnej (vNics) i nazw etykiet DNS przy użyciu wiersza polecenia platformy Azure. Statyczne nazwy DNS są używane dla usług infrastruktury stałych, takich jak serwer kompilacji usługi Jenkins, który jest używany dla tego dokumentu lub serwerze usługi Git.
+W tym artykule opisano sposób ustawiania statycznych wewnętrznych nazw DNS dla maszyn wirtualnych z systemem Linux przy użyciu kart interfejsu sieci wirtualnej (vNics) i nazw etykiet DNS w interfejsie wiersza polecenia platformy Azure. Statyczne nazwy DNS są używane w przypadku trwałych usług infrastruktury, takich jak serwer kompilacji Jenkins, który jest używany dla tego dokumentu lub serwera git.
 
 Wymagania są następujące:
 
@@ -32,12 +32,12 @@ Wymagania są następujące:
 * [Pliki kluczy publicznych i prywatnych SSH](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="quick-commands"></a>Szybkie polecenia
-Jeśli musisz szybko wykonywać zadania w poniższej sekcji przedstawiono polecenia potrzebne. Więcej szczegółowych informacji i kontekst dla każdego kroku można znaleźć w pozostałej części dokumentu, [uruchamianie tutaj](#detailed-walkthrough). Aby wykonać te kroki, potrzebujesz najnowszej [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index).
+Aby szybko wykonać zadanie, w poniższej sekcji znajdują się szczegółowe informacje dotyczące wymaganych poleceń. Bardziej szczegółowe informacje i kontekst dla każdego kroku można znaleźć w pozostałej części dokumentu, [Zaczynając od tego miejsca](#detailed-walkthrough). Aby wykonać te kroki, należy zainstalować najnowszy [interfejs wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) i zalogować się na konto platformy Azure za pomocą polecenia [AZ login](/cli/azure/reference-index).
 
-Wymagania wstępne: Grupa zasobów, sieci wirtualnej i podsieci i sieciowej grupy zabezpieczeń przy użyciu protokołu SSH dla ruchu przychodzącego.
+Wymagania wstępne: Grupa zasobów, Sieć wirtualna i podsieć, sieciowa Grupa zabezpieczeń z protokołem SSH.
 
-### <a name="create-a-virtual-network-interface-card-with-a-static-internal-dns-name"></a>Utwórz wirtualną kartę sieciową z statyczne wewnętrzne nazwy DNS
-Tworzenie wirtualnej karty sieciowej z [tworzenie az sieciowego](/cli/azure/network/nic). `--internal-dns-name` Flaga interfejsu wiersza polecenia jest ustawienie etykiety DNS, który zawiera nazwę DNS statycznych dla wirtualnej karty sieciowej (vNic). Poniższy przykład tworzy wirtualną kartę sieciową o nazwie `myNic`, łączy się z `myVnet` sieci wirtualnej i tworzy wewnętrzny rekord nazwy DNS o nazwie `jenkins`:
+### <a name="create-a-virtual-network-interface-card-with-a-static-internal-dns-name"></a>Tworzenie karty interfejsu sieci wirtualnej ze statyczną wewnętrzną nazwą DNS
+Utwórz wirtualnej karty sieciowej za pomocą [AZ Network nic Create](/cli/azure/network/nic). Flaga `--internal-dns-name` interfejsu wiersza polecenia służy do ustawiania etykiety DNS, która zapewnia statyczną nazwę DNS karty interfejsu sieci wirtualnej (wirtualnej karty sieciowej). Poniższy przykład tworzy wirtualnej karty sieciowej o nazwie `myNic`, łączy go `myVnet` z siecią wirtualną i tworzy wewnętrzny rekord nazwy DNS o nazwie `jenkins`:
 
 ```azurecli
 az network nic create \
@@ -48,8 +48,8 @@ az network nic create \
     --internal-dns-name jenkins
 ```
 
-### <a name="deploy-a-vm-and-connect-the-vnic"></a>Wdrażanie maszyny Wirtualnej i połączenia wirtualnej karty sieciowej
-Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm). `--nics` Flagi nawiązanie połączenia z wirtualnej karty sieciowej maszyny Wirtualnej podczas wdrażania na platformie Azure. Poniższy przykład tworzy Maszynę wirtualną o nazwie `myVM` za pomocą usługi Azure Managed Disks i dołącza wirtualnej karty sieciowej o nazwie `myNic` z poprzedniego kroku:
+### <a name="deploy-a-vm-and-connect-the-vnic"></a>Wdróż maszynę wirtualną i Połącz wirtualnej karty sieciowej
+Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm). `--nics` Flaga łączy wirtualnej karty sieciowej z maszyną wirtualną podczas wdrażania na platformie Azure. Poniższy przykład tworzy maszynę wirtualną o `myVM` nazwie przy użyciu usługi Azure Managed disks i dołącza wirtualnej karty sieciowej `myNic` o nazwie z poprzedniego kroku:
 
 ```azurecli
 az vm create \
@@ -63,14 +63,14 @@ az vm create \
 
 ## <a name="detailed-walkthrough"></a>Szczegółowy przewodnik
 
-Ciągłej integracji i ciągłego wdrażania (CiCd) infrastruktury na platformie Azure wymaga określonych serwerów jako statyczne lub długotrwałe serwerów. Zalecane jest, że zasoby systemu Azure, takich jak sieci wirtualne i sieciowe grupy zabezpieczeń są statyczne i długo znajdowały się rzadko wdrożonych zasobów. Po wdrożeniu sieci wirtualnej może zostać użyte przez nowych wdrożeń bez żadnych negatywnie wpływa na infrastruktury. Możesz później dodać serwer repozytorium Git lub serwer automatyzacji Jenkins zapewnia CiCd z tą siecią wirtualną dla rozwoju lub środowisk testowych.  
+Infrastruktura z pełną integracją ciągłej integracji i ciągłego wdrażania (CiCd) na platformie Azure wymaga, aby niektóre serwery były serwerami statycznymi lub długotrwałymi. Zaleca się, aby zasoby platformy Azure, takie jak sieci wirtualne i sieciowe grupy zabezpieczeń, były zasobami statycznymi i długotrwałymi, które są rzadko wdrażane. Po wdrożeniu sieci wirtualnej może ona być ponownie używana przez nowe wdrożenia bez żadnego niekorzystnego wpływu na infrastrukturę. Później można dodać serwer repozytorium Git lub serwer Jenkins Automation CiCd do tej sieci wirtualnej w środowiskach programistycznych lub testowych.  
 
-Wewnętrzne nazwy DNS są tylko do rozpoznania wewnątrz sieci wirtualnej platformy Azure. Ponieważ wewnętrzne nazwy DNS, nie są one poza Internetem, zapewnienia większego poziomu zabezpieczeń infrastruktury do rozpoznania.
+Wewnętrzne nazwy DNS są rozpoznawane tylko w sieci wirtualnej platformy Azure. Ponieważ nazwy DNS są wewnętrzne, nie można ich rozpoznać do spoza Internetu, zapewniając dodatkowe zabezpieczenia infrastruktury.
 
-W poniższych przykładach należy zastąpić własnymi wartościami przykładowe nazwy parametru. Przykładowe nazwy parametru zawierają `myResourceGroup`, `myNic`, i `myVM`.
+W poniższych przykładach Zastąp przykładowe nazwy parametrów własnymi wartościami. Przykładowe nazwy parametrów obejmują `myResourceGroup`, `myNic`, i `myVM`.
 
 ## <a name="create-the-resource-group"></a>Tworzenie grupy zasobów
-Najpierw utwórz grupę zasobów za pomocą [Tworzenie grupy az](/cli/azure/group). Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myResourceGroup` w lokalizacji `westus`:
+Najpierw utwórz grupę zasobów za pomocą polecenie [AZ Group Create](/cli/azure/group). Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myResourceGroup` w lokalizacji `westus`:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -78,9 +78,9 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-the-virtual-network"></a>Tworzenie sieci wirtualnej
 
-Następnym krokiem jest do tworzenia sieci wirtualnej do maszyn wirtualnych do uruchomienia. Sieć wirtualna zawiera jedną podsieć w ramach tego przewodnika. Aby uzyskać więcej informacji na temat sieci wirtualnych platformy Azure, zobacz [tworzenie sieci wirtualnej](../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network). 
+Następnym krokiem jest skompilowanie sieci wirtualnej w celu uruchomienia maszyn wirtualnych. Sieć wirtualna zawiera jedną podsieć dla tego przewodnika. Aby uzyskać więcej informacji na temat sieci wirtualnych platformy Azure, zobacz [Tworzenie sieci wirtualnej](../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network). 
 
-Utwórz sieć wirtualną przy użyciu [tworzenie sieci wirtualnej sieci az](/cli/azure/network/vnet). Poniższy przykład tworzy sieć wirtualną o nazwie `myVnet` i podsieć o nazwie `mySubnet`:
+Utwórz sieć wirtualną za pomocą [AZ Network VNET Create](/cli/azure/network/vnet). Poniższy przykład tworzy sieć wirtualną o nazwie `myVnet` i podsieci o nazwie: `mySubnet`
 
 ```azurecli
 az network vnet create \
@@ -92,9 +92,9 @@ az network vnet create \
 ```
 
 ## <a name="create-the-network-security-group"></a>Utwórz sieciową grupę zabezpieczeń
-Sieciowe grupy zabezpieczeń platformy Azure są równoważne do zapory w warstwie sieciowej. Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń, zobacz [tworzenie sieciowych grup zabezpieczeń w interfejsie wiersza polecenia platformy Azure](../../virtual-network/tutorial-filter-network-traffic-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+Sieciowe grupy zabezpieczeń platformy Azure są równoważne zaporze w warstwie sieciowej. Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń, zobacz [jak utworzyć sieciowych grup zabezpieczeń w interfejsie wiersza polecenia platformy Azure](../../virtual-network/tutorial-filter-network-traffic-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 
-Utwórz sieciową grupę zabezpieczeń z [tworzenie az sieciowej](/cli/azure/network/nsg). Poniższy przykład tworzy sieciową grupę zabezpieczeń o nazwie `myNetworkSecurityGroup`:
+Utwórz sieciową grupę zabezpieczeń za pomocą [AZ Network sieciowej grupy zabezpieczeń Create](/cli/azure/network/nsg). Poniższy przykład tworzy sieciową grupę zabezpieczeń o nazwie `myNetworkSecurityGroup`:
 
 ```azurecli
 az network nsg create \
@@ -102,8 +102,8 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-## <a name="add-an-inbound-rule-to-allow-ssh"></a>Dodaj regułę ruchu przychodzącego, aby zezwolić na SSH
-Dodaj regułę ruchu przychodzącego dla sieciowej grupy zabezpieczeń z [Tworzenie reguły sieciowej grupy zabezpieczeń sieci az](/cli/azure/network/nsg/rule). Poniższy przykład tworzy regułę o nazwie `myRuleAllowSSH`:
+## <a name="add-an-inbound-rule-to-allow-ssh"></a>Dodawanie reguły ruchu przychodzącego zezwalającej na używanie protokołu SSH
+Dodaj regułę ruchu przychodzącego dla sieciowej grupy zabezpieczeń za pomocą [AZ Network sieciowej grupy zabezpieczeń Rule Create](/cli/azure/network/nsg/rule). Poniższy przykład tworzy regułę o nazwie `myRuleAllowSSH`:
 
 ```azurecli
 az network nsg rule create \
@@ -120,8 +120,8 @@ az network nsg rule create \
     --access allow
 ```
 
-## <a name="associate-the-subnet-with-the-network-security-group"></a>Skojarzenia podsieci z sieciową grupą zabezpieczeń
-Aby skojarzyć podsieci z sieciową grupą zabezpieczeń, należy użyć [aktualizacji podsieci sieci wirtualnej sieci az](/cli/azure/network/vnet/subnet). Poniższy przykład kojarzy nazwę podsieci `mySubnet` z sieciową grupą zabezpieczeń o nazwie `myNetworkSecurityGroup`:
+## <a name="associate-the-subnet-with-the-network-security-group"></a>Kojarzenie podsieci z grupą zabezpieczeń sieci
+Aby skojarzyć podsieć z grupą zabezpieczeń sieci, użyj polecenie [AZ Network VNET Subnet Update](/cli/azure/network/vnet/subnet). Poniższy przykład kojarzy nazwę `mySubnet` podsieci z grupą zabezpieczeń sieci o nazwie: `myNetworkSecurityGroup`
 
 ```azurecli
 az network vnet subnet update \
@@ -132,10 +132,10 @@ az network vnet subnet update \
 ```
 
 
-## <a name="create-the-virtual-network-interface-card-and-static-dns-names"></a>Utwórz wirtualną kartę sieciową i statyczne nazwy DNS
-Platforma Azure jest bardzo elastyczny, ale aby użyć nazwy DNS dla rozpoznawania nazw maszyn wirtualnych, należy utworzyć sieci wirtualnej karty interfejsu (vNics), które zawierają etykietę DNS. kart sieciowych są ważne, ponieważ użytkownik może korzystać z nich, łącząc je do różnych maszyn wirtualnych za pośrednictwem cyklu życia infrastruktury. To podejście zapewnia wirtualnej karty sieciowej jako zasób statyczny, maszyny wirtualne mogą być tymczasowe. Za pomocą DNS etykietowania w wirtualnej karty sieciowej, możemy włączyć rozpoznawanie nazw prostego z innymi maszynami wirtualnymi w sieci wirtualnej. Przy użyciu możliwej do rozpoznania nazwy temu pozostałe maszyny wirtualne na dostęp do serwera usługi automation o nazwie DNS `Jenkins` lub na serwerze usługi Git `gitrepo`.  
+## <a name="create-the-virtual-network-interface-card-and-static-dns-names"></a>Tworzenie karty interfejsu sieci wirtualnej i statycznych nazw DNS
+System Azure jest bardzo elastyczny, ale aby używać nazw DNS do rozpoznawania nazw maszyn wirtualnych, należy utworzyć karty interfejsu sieci wirtualnej (vNics), które zawierają etykietę DNS. vNics są ważne, ponieważ można je ponownie wykorzystać, łącząc je z różnymi maszynami wirtualnymi za pośrednictwem cyklu życia infrastruktury. Takie podejście utrzymuje wirtualnej karty sieciowej jako zasób statyczny, a maszyny wirtualne mogą być tymczasowe. Korzystając z etykiet DNS na wirtualnej karty sieciowej, możemy włączyć proste rozpoznawanie nazw z innych maszyn wirtualnych w sieci wirtualnej. Użycie nazw rozpoznawalnych umożliwia innym maszynom wirtualnym dostęp do serwera automatyzacji przez nazwę `Jenkins` DNS lub serwer git jako `gitrepo`.  
 
-Tworzenie wirtualnej karty sieciowej z [tworzenie az sieciowego](/cli/azure/network/nic). Poniższy przykład tworzy wirtualną kartę sieciową o nazwie `myNic`, łączy się z `myVnet` sieć wirtualną o nazwie `myVnet`i tworzy wewnętrzny rekord nazwy DNS o nazwie `jenkins`:
+Utwórz wirtualnej karty sieciowej za pomocą [AZ Network nic Create](/cli/azure/network/nic). Poniższy przykład `myNic`tworzy wirtualnej karty sieciowej o nazwie, łączy go `myVnet` z siecią wirtualną o nazwie `myVnet`i tworzy wewnętrzny rekord nazwy DNS o nazwie `jenkins`:
 
 ```azurecli
 az network nic create \
@@ -146,10 +146,10 @@ az network nic create \
     --internal-dns-name jenkins
 ```
 
-## <a name="deploy-the-vm-into-the-virtual-network-infrastructure"></a>Wdróż maszynę Wirtualną do infrastruktury sieci wirtualnej
-W efekcie powstał sieci wirtualnej i podsieci i sieciowej grupy zabezpieczeń działają jako zapora chronić nasze podsieci, blokuje cały ruch przychodzący z wyjątkiem port 22 dla protokołu SSH i wirtualną kartę sieciową. Teraz można wdrożyć Maszynę wirtualną wewnątrz tego istniejącej infrastrukturze sieci.
+## <a name="deploy-the-vm-into-the-virtual-network-infrastructure"></a>Wdróż MASZYNę wirtualną w infrastrukturze sieci wirtualnej
+Mamy już sieć wirtualną i podsieć, czyli grupę zabezpieczeń sieci działającą jako Zapora do ochrony naszej podsieci, blokując cały ruch przychodzący z wyjątkiem portu 22 dla protokołu SSH i wirtualnej karty sieciowej. Teraz można wdrożyć maszynę wirtualną w ramach istniejącej infrastruktury sieciowej.
 
-Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm). Poniższy przykład tworzy Maszynę wirtualną o nazwie `myVM` za pomocą usługi Azure Managed Disks i dołącza wirtualnej karty sieciowej o nazwie `myNic` z poprzedniego kroku:
+Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm). Poniższy przykład tworzy maszynę wirtualną o `myVM` nazwie przy użyciu usługi Azure Managed disks i dołącza wirtualnej karty sieciowej `myNic` o nazwie z poprzedniego kroku:
 
 ```azurecli
 az vm create \
@@ -161,8 +161,8 @@ az vm create \
     --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-Za pomocą flagi interfejsu wiersza polecenia do wyróżnienia istniejące zasoby, możemy poinstruować platformy Azure, aby wdrożyć maszynę Wirtualną w istniejącej sieci. Aby dobrze w przypadku, gdy wdrożono sieć wirtualną i podsieć, ich może pozostać jako statyczne lub trwałe zasobów w obrębie regionu platformy Azure.  
+Korzystając z flag interfejsu wiersza polecenia do wywoływania istniejących zasobów, firma Microsoft instruuje platformę Azure, aby wdrożyć maszynę wirtualną wewnątrz istniejącej sieci. Aby ponownie wykonać iterację, po wdrożeniu sieci wirtualnej i podsieci można je pozostawić jako zasoby statyczne lub stałe w regionie świadczenia usługi Azure.  
 
 ## <a name="next-steps"></a>Następne kroki
 * [Tworzenie niestandardowego środowiska dla maszyny wirtualnej z systemem Linux poprzez bezpośrednie użycie poleceń interfejsu wiersza polecenia platformy Azure](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Tworzenie maszyny Wirtualnej z systemem Linux na platformie Azure przy użyciu szablonów](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Tworzenie maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu szablonów](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

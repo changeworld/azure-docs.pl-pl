@@ -1,10 +1,10 @@
 ---
-title: Wdrażanie dostępnego z Internetu modułu równoważenia obciążenia przy użyciu protokołu IPv6 — szablon platformy Azure
+title: Wdrażanie modułu równoważenia obciążenia dostępnego z Internetu przy użyciu szablonu IPv6 — Azure
 titlesuffix: Azure Load Balancer
-description: Jak wdrożyć obsługę protokołu IPv6 dla usługi Azure Load Balancer i równoważenia obciążenia maszyn wirtualnych.
+description: Jak wdrożyć obsługę protokołu IPv6 dla Azure Load Balancer i maszyn wirtualnych o zrównoważonym obciążeniu.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 keywords: Protokół IPv6, usługa azure load balancer, podwójnego stosu, publiczny adres ip, natywnego protokołu ipv6, aplikację mobilną, iot
 ms.service: load-balancer
 ms.devlang: na
@@ -13,15 +13,15 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: 4a8c7309a07238ef3410e42c3d631ad525f023cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 4286879dc53cc835532c7a8243eaf88813545265
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61216859"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274993"
 ---
-# <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Wdróż rozwiązanie do równoważenia obciążenia dostępnego z Internetu przy użyciu protokołu IPv6 przy użyciu szablonu
+# <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Wdrażanie rozwiązania równoważenia obciążenia dostępnego z Internetu za pomocą protokołu IPv6 przy użyciu szablonu
 
 > [!div class="op_single_selector"]
 > * [Program PowerShell](load-balancer-ipv6-internet-ps.md)
@@ -34,106 +34,106 @@ Usługa Azure Load Balancer to moduł równoważenia obciążenia w warstwie 4 (
 
 ## <a name="example-deployment-scenario"></a>Przykładowy scenariusz wdrażania
 
-Na poniższym diagramie przedstawiono rozwiązanie do równoważenia obciążenia wdrażane przy użyciu przykładowy szablon opisanych w tym artykule.
+Na poniższym diagramie przedstawiono wdrożone rozwiązanie równoważenia obciążenia przy użyciu przykładowego szablonu opisanego w tym artykule.
 
 ![Scenariusz modułu równoważenia obciążenia](./media/load-balancer-ipv6-internet-template/lb-ipv6-scenario.png)
 
-W tym scenariuszu utworzysz następujących zasobów platformy Azure:
+W tym scenariuszu utworzysz następujące zasoby platformy Azure:
 
-* Interfejs sieci wirtualnej, dla każdej maszyny Wirtualnej przy użyciu adresów IPv4 i IPv6 przypisany
-* Moduł równoważenia obciążenia dostępnego z Internetu za pomocą protokołów IPv4 i IPv6 publiczny adres IP
-* Dwa obciążenia równoważenia reguł mapowania publicznych adresów VIP do prywatnych punktów końcowych
-* Zestawu dostępności zawierającego dwie maszyny wirtualne
-* Dwie maszyny wirtualne (VM)
+* Interfejs sieci wirtualnej dla każdej maszyny wirtualnej z przypisanymi adresami IPv4 i IPv6
+* Load Balancer dostępne z Internetu przy użyciu adresu IPv4 i publicznego protokołu IPv6
+* dwie reguły równoważenia obciążenia służące do mapowania publicznych adresów VIP na prywatne punkty końcowe
+* Zestaw dostępności zawierający dwie maszyny wirtualne
+* dwie maszyny wirtualne
 
-## <a name="deploying-the-template-using-the-azure-portal"></a>Wdrażanie szablonu przy użyciu witryny Azure portal
+## <a name="deploying-the-template-using-the-azure-portal"></a>Wdrażanie szablonu przy użyciu Azure Portal
 
-W tym artykule odwołuje się do szablonu, który został opublikowany w [szablony szybkiego startu platformy Azure](https://azure.microsoft.com/documentation/templates/201-load-balancer-ipv6-create/) galerii. Możesz pobrać szablon z galerii lub uruchamianie wdrożenia na platformie Azure bezpośrednio z galerii. W tym artykule przyjęto założenie, że szablon został pobrany na komputer lokalny.
+Ten artykuł zawiera odwołania do szablonu opublikowanego w galerii [szablonów szybkiego startu platformy Azure](https://azure.microsoft.com/documentation/templates/201-load-balancer-ipv6-create/) . Możesz pobrać szablon z galerii lub uruchomić wdrożenie na platformie Azure bezpośrednio z galerii. W tym artykule przyjęto założenie, że szablon został pobrany na komputer lokalny.
 
-1. Otwórz Azure portal i zaloguj się przy użyciu konta które ma uprawnienia do tworzenia maszyn wirtualnych i zasobów sieciowych w ramach subskrypcji platformy Azure. Ponadto chyba, że korzystasz z istniejących zasobów, konto wymaga uprawnień do utworzenia grupy zasobów i konto magazynu.
-2. Kliknij przycisk "+ New" z menu, a następnie wpisz ciąg "szablon" w polu wyszukiwania. Wybierz pozycję "Wdrożenie szablonu" z wyników wyszukiwania.
+1. Otwórz Azure Portal i zaloguj się przy użyciu konta z uprawnieniami do tworzenia maszyn wirtualnych i zasobów sieciowych w ramach subskrypcji platformy Azure. Ponadto, jeśli nie korzystasz z istniejących zasobów, konto musi mieć uprawnienia do tworzenia grupy zasobów i konta magazynu.
+2. Kliknij pozycję "+ nowy" w menu, a następnie w polu wyszukiwania wpisz ciąg "template". Wybierz pozycję "Template deployment" z wyników wyszukiwania.
 
     ![lb-ipv6-portal-step2](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
 
-3. W obszarze wszystko bloku, kliknij przycisk "Wdrożenie szablonu".
+3. W bloku wszystkiego kliknij pozycję "Template deployment".
 
     ![lb-ipv6-portal-step3](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step3.png)
 
-4. Kliknij przycisk "Utwórz".
+4. Kliknij pozycję "Utwórz".
 
     ![lb-ipv6-portal-step4](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
 
-5. Kliknij przycisk "Edytuj szablon". Usuń istniejącą zawartość i kopiowania/wklejania w całą zawartość pliku szablonu (Aby dołączyć rozpoczęcia i zakończenia {}), a następnie kliknij przycisk "Zapisz".
+5. Kliknij pozycję "Edytuj szablon". Usuń istniejącą zawartość i skopiuj/wklej zawartość do całej zawartości pliku szablonu (aby dołączyć początek i koniec {}), a następnie kliknij pozycję "Zapisz".
 
     > [!NOTE]
-    > Jeśli używasz programu Microsoft Internet Explorer możesz wkleić wyświetlane okno dialogowe z pytaniem, aby zezwolić na dostęp do Schowka Windows. Kliknij opcję "Zezwalaj na dostęp".
+    > W przypadku korzystania z programu Microsoft Internet Explorer po wklejeniu zostanie wyświetlone okno dialogowe z prośbą o zezwolenie na dostęp do Schowka systemu Windows. Kliknij pozycję "Zezwalaj na dostęp".
 
     ![lb-ipv6-portal-step5](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
 
-6. Kliknij pozycję "Edytuj parametry". W bloku parametry określ wartości zgodnie ze wskazówkami w sekcji parametrów szablonu, a następnie kliknij przycisk "Zapisz", aby zamknąć blok parametrów. W bloku wdrożenia niestandardowego wybierz swoją subskrypcję istniejącą grupę zasobów lub utworzyć nowe. Jeśli tworzysz grupę zasobów, wybierz lokalizację dla grupy zasobów. Następnie kliknij przycisk **postanowienia prawne**, następnie kliknij przycisk **zakupu** na postanowienia prawne. Azure rozpoczyna wdrażania zasobów. Trwa kilka minut, aby wdrożyć wszystkie zasoby.
+6. Kliknij pozycję "Edytuj parametry". W bloku parametry Określ wartości zgodnie ze wskazówkami w sekcji Parametry szablonu, a następnie kliknij przycisk "Zapisz", aby zamknąć Blok parametrów. W bloku wdrożenie niestandardowe wybierz swoją subskrypcję, istniejącą grupę zasobów lub utwórz ją. W przypadku tworzenia grupy zasobów wybierz lokalizację grupy zasobów. Następnie kliknij pozycję **postanowienia prawne**, a następnie kliknij pozycję **Kup** w przypadku postanowień prawnych. Platforma Azure rozpocznie wdrażanie zasobów. Wdrożenie wszystkich zasobów trwa kilka minut.
 
     ![lb-ipv6-portal-step6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
 
-    Aby uzyskać więcej informacji na temat tych parametrów, zobacz [zmienne i parametry szablonu](#template-parameters-and-variables) sekcję w dalszej części tego artykułu.
+    Aby uzyskać więcej informacji na temat tych parametrów, zobacz sekcję [Parametry szablonu i zmienne](#template-parameters-and-variables) w dalszej części tego artykułu.
 
-7. Aby wyświetlić zasoby utworzone przez szablon, kliknij przycisk Przeglądaj, przewiń w dół listy, dopóki nie można wyświetlić "Grupy zasobów", a następnie kliknij go.
+7. Aby wyświetlić zasoby utworzone przez szablon, kliknij przycisk Przeglądaj, przewiń w dół listę do momentu wyświetlenia okna "grupy zasobów", a następnie kliknij je.
 
     ![lb-ipv6-portal-step7](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
 
-8. W bloku grupy zasobów kliknij nazwę grupy zasobów, które określiłeś w kroku 6. Możesz wyświetlić listę wszystkich zasobów, które zostały wdrożone. Jeśli wszystko poszło dobrze, wyświetlony komunikat "Powodzenie" w obszarze "Ostatniego wdrożenia." Jeśli nie, upewnij się, że konto, którego używasz, ma uprawnienia do tworzenia niezbędnych zasobów.
+8. W bloku grupy zasobów kliknij nazwę grupy zasobów, która została określona w kroku 6. Zostanie wyświetlona lista wszystkich wdrożonych zasobów. Jeśli wszystko zostało wykonane prawidłowo, powinien powiedzieć "powodzenie" w "ostatnim wdrożeniu". Jeśli nie, upewnij się, że konto, którego używasz, ma uprawnienia do tworzenia niezbędnych zasobów.
 
     ![lb-ipv6-portal-step8](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
 
     > [!NOTE]
-    > Jeśli natychmiast po ukończeniu kroku 6 możesz przeglądać grup zasobów, "Ostatniego wdrożenia" będzie wyświetlany stan "Wdrażanie", podczas wdrażania zasobów.
+    > W przypadku przeglądania grup zasobów natychmiast po wykonaniu kroku 6 "ostatnie wdrożenie" spowoduje wyświetlenie stanu "wdrażanie" podczas wdrażania zasobów.
 
-9. Kliknij przycisk "myIPv6PublicIP" na liście zasobów. Zobaczysz, że ma on adres IPv6 w obszarze adres IP i nazwy DNS to wartość, która została określona dla parametru dnsNameforIPv6LbIP w kroku 6. Ten zasób to publiczny IPv6 adresów i nazwę który jest dostępny dla klientów internetowych.
+9. Na liście zasobów kliknij pozycję "myIPv6PublicIP". Zobaczysz, że ma on adres IPv6 w obszarze adres IP i że jego nazwa DNS jest wartością określoną dla parametru dnsNameforIPv6LbIP w kroku 6. Ten zasób to publiczny adres IPv6 i nazwa hosta, które są dostępne dla klientów internetowych.
 
-    ![lb-ipv6-portal-step9](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
+    ![LB-IPv6-Portal — step9](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
 
-## <a name="validate-connectivity"></a>Zweryfikuj łączność
+## <a name="validate-connectivity"></a>Sprawdź poprawność łączności
 
-Po pomyślnym wdrożeniu szablonu, można sprawdzić łączność, wykonując następujące czynności:
+Po pomyślnym wdrożeniu szablonu można sprawdzić poprawność łączności, wykonując następujące zadania:
 
-1. Zaloguj się do witryny Azure portal i połączyć się z poszczególnymi maszynami wirtualnymi, utworzone przez wdrożenie szablonu. Jeśli wdrożono maszynę Wirtualną serwera systemu Windows, uruchom polecenie ipconfig/wszystko w wierszu polecenia. Zobaczysz, że maszyny wirtualne mają adresy IPv4 i IPv6. Jeśli wdrożono maszyny wirtualne systemu Linux, należy skonfigurować systemu operacyjnego Linux, aby odbierać dynamicznych adresów IPv6 wykonując instrukcje podane dla Twojej dystrybucji systemu Linux.
-2. Z połączonym z Internetem IPv6 klienta należy zainicjować połączenie publiczny adres IPv6 modułu równoważenia obciążenia. Aby upewnić się, że moduł równoważenia obciążenia jest równoważenie między dwiema maszynami wirtualnymi, takich jak Microsoft Internet Information Services (IIS) serwera sieci web można zainstalować na wszystkich maszynach wirtualnych. Domyślna strona internetowa na każdym serwerze może zawierać tekst "Server0" lub "Server1", umożliwiającą jej jednoznaczną identyfikację. Następnie otwórz przeglądarkę internetową na komputerze klienckim połączonym z Internetem IPv6 i wskaż nazwa hosta określona dla parametru dnsNameforIPv6LbIP modułu równoważenia obciążenia, aby potwierdzić łączność IPv6 end-to-end do każdej maszyny Wirtualnej. Jeśli widzisz tylko strony sieci web z tylko jednego serwera, może być konieczne wyczyszczenie pamięci podręcznej przeglądarki. Otwórz wiele sesji przeglądania prywatnego. Powinna pojawić się odpowiedź, z każdego serwera.
-3. W kliencie podłączonej do Internetu IPv4 należy zainicjować połączenie jako publiczny adres IPv4 modułu równoważenia obciążenia. Aby potwierdzić, że moduł równoważenia obciążenia jest dwóch maszyn wirtualnych równoważenia obciążenia, można sprawdzić za pomocą usług IIS, zgodnie z opisem w kroku 2.
-4. Z każdej maszyny Wirtualnej należy zainicjować połączenie wychodzące do urządzenia z systemem IPv6 i IPv4 podłączonej do Internetu. W obu przypadkach źródłowy adres IP widzianych przez urządzenie docelowe jest publiczny adres IPv4 lub IPv6 modułu równoważenia obciążenia.
+1. Zaloguj się do Azure Portal i Połącz się z wszystkimi maszynami wirtualnymi utworzonymi w ramach wdrożenia szablonu. W przypadku wdrożenia maszyny wirtualnej z systemem Windows Server uruchom polecenie ipconfig/all w wierszu polecenia. Zobaczysz, że maszyny wirtualne mają zarówno adresy IPv4, jak i IPv6. W przypadku wdrożenia maszyn wirtualnych z systemem Linux należy skonfigurować system operacyjny Linux do odbierania dynamicznych adresów IPv6 przy użyciu instrukcji dostarczonych dla dystrybucji systemu Linux.
+2. Z klienta podłączonego do Internetu IPv6 należy zainicjować połączenie z publicznym adresem IPv6 modułu równoważenia obciążenia. Aby upewnić się, że moduł równoważenia obciążenia ma równoważenie między dwiema maszynami wirtualnymi, możesz zainstalować serwer sieci Web, taki jak Microsoft Internet Information Services (IIS) na każdej z maszyn wirtualnych. Domyślna strona sieci Web na każdym serwerze może zawierać tekst "Server0" lub "serwer1" w celu jego jednoznacznej identyfikacji. Następnie otwórz przeglądarkę internetową na kliencie podłączonym do Internetu IPv6 i przejdź do nazwy hosta określonej dla parametru dnsNameforIPv6LbIP modułu równoważenia obciążenia, aby potwierdzić, że połączenie z każdą maszyną wirtualną jest nawiązywane na trasie IPv6. Jeśli widzisz tylko stronę sieci Web tylko z jednego serwera, może być konieczne wyczyszczenie pamięci podręcznej przeglądarki. Otwórz wiele sesji przeglądania prywatnego. Powinna zostać wyświetlona odpowiedź z każdego serwera.
+3. Z klienta połączonego z Internetem IPv4, należy zainicjować połączenie z publicznym adresem IPv4 modułu równoważenia obciążenia. Aby upewnić się, że moduł równoważenia obciążenia ma Równoważenie obciążenia dwóch maszyn wirtualnych, można testować za pomocą usług IIS, zgodnie z opisem w kroku 2.
+4. Z każdej maszyny wirtualnej Zainicjuj połączenie wychodzące z urządzeniem internetowym połączonym z protokołem IPv6 lub IPv4. W obu przypadkach źródłowy adres IP widziany przez urządzenie docelowe jest publicznym adresem IPv4 lub IPv6 modułu równoważenia obciążenia.
 
 > [!NOTE]
-> Protokół ICMP dla IPv4 i IPv6 są zablokowane w sieci platformy Azure. W rezultacie narzędzia protokołu ICMP, takie jak ping zawsze zakończyć się niepowodzeniem. Aby przetestować łączność, należy użyć alternatywnej TCP, takie jak TCPing lub polecenia cmdlet programu PowerShell Test-NetConnection. Należy pamiętać, że adresy IP wyświetlane na diagramie przedstawiono wartości, które można napotkać. Ponieważ adresy IPv6 są przypisywane dynamicznie, adresy, które otrzymujesz różnią się i może różnić między regionami. Ponadto jest typowe dla publicznego adresu protokołu IPv6 modułu równoważenia obciążenia, można uruchomić z prefiksem innego niż prywatnymi adresami IPv6 w puli zaplecza.
+> Protokół ICMP dla protokołów IPv4 i IPv6 jest blokowany w sieci platformy Azure. W efekcie narzędzia ICMP, takie jak ping, zawsze kończą się niepowodzeniem. Aby przetestować łączność, użyj alternatywnej metody TCP, takiej jak TCPing lub polecenia cmdlet Test-NetConnection programu PowerShell. Należy zauważyć, że adresy IP wyświetlane na diagramie są przykładami wartości, które mogą zostać wyświetlone. Adresy IPv6 są przypisywane dynamicznie, a otrzymane adresy różnią się w zależności od regionu. Ponadto jest często stosowany dla publicznego adresu IPv6 w module równoważenia obciążenia, aby można było rozpocząć od innego prefiksu niż prywatne adresy IPv6 w puli zaplecza.
 
-## <a name="template-parameters-and-variables"></a>Zmienne i parametry szablonu
+## <a name="template-parameters-and-variables"></a>Parametry szablonu i zmienne
 
-Szablon usługi Azure Resource Manager zawiera wiele zmiennych i parametrów, które można dostosować do swoich potrzeb. Zmienne są używane dla wartości stałych, które nie chcesz, aby użytkownik mógł zmienić. Parametry są używane dla wartości ma użytkownika o podanie podczas wdrażania szablonu. Przykładowy szablon jest skonfigurowany na potrzeby scenariusza opisanego w tym artykule. Można to dostosować do potrzeb danego środowiska.
+Szablon Azure Resource Manager zawiera wiele zmiennych i parametrów, które można dostosować do własnych potrzeb. Zmienne są używane dla stałych wartości, które nie powinny być zmieniane przez użytkownika. Parametry są używane dla wartości, które użytkownik ma podawać podczas wdrażania szablonu. Przykładowy szablon został skonfigurowany dla scenariusza opisanego w tym artykule. Można dostosować ten sposób do potrzeb środowiska.
 
-Przykładowy szablon używane w tym artykule zawiera następujące zmienne i parametry:
+Przykładowy szablon używany w tym artykule zawiera następujące zmienne i parametry:
 
-| Parametr / zmiennej | Uwagi |
+| Parametr/zmienna | Uwagi |
 | --- | --- |
-| adminUsername |Określ nazwę użyte do zalogowania się do maszyn wirtualnych przy użyciu konta administratora. |
-| adminPassword |Określ hasło użyte do zalogowania się do maszyn wirtualnych przy użyciu konta administratora. |
-| dnsNameforIPv4LbIP |Określ nazwę hosta DNS, który ma zostać przypisany jako publiczna nazwa modułu równoważenia obciążenia. Ta nazwa jest rozpoznawany jako publiczny adres IPv4 modułu równoważenia obciążenia. Nazwa musi zawierać tylko litery i zgodny z wyrażeniem regularnym: ^ [a-z] [-z0 - 9-]{1,61}$ [a-z0-9]. |
-| dnsNameforIPv6LbIP |Określ nazwę hosta DNS, który ma zostać przypisany jako publiczna nazwa modułu równoważenia obciążenia. Ta nazwa jest rozpoznawany jako publiczny adres IPv6 modułu równoważenia obciążenia. Nazwa musi zawierać tylko litery i zgodny z wyrażeniem regularnym: ^ [a-z] [-z0 - 9-]{1,61}$ [a-z0-9]. Może to być taką samą nazwę jak adres IPv4. Gdy klient wysyła zapytanie DNS dla tej nazwy zwróci Azure A i AAAA są rejestrowane po udostępnieniu nazwę. |
-| vmNamePrefix |Określ prefiks nazwy maszyny Wirtualnej. Szablon dołącza numer (0, 1, itp.) do nazwy podczas tworzenia maszyn wirtualnych. |
-| nicNamePrefix |Określ prefiks nazwy interfejsu sieciowego. Szablon dołącza numer (0, 1, itp.) do nazwy podczas tworzenia interfejsów sieciowych. |
-| storageAccountName |Wprowadź nazwę istniejącego konta magazynu lub określ nazwę nową ma zostać utworzony przez szablon. |
-| availabilitySetName |Następnie wprowadź nazwę w zestawie dostępności, aby można używać z maszynami wirtualnymi |
-| addressPrefix |Prefiks adresu, używane do definiowania zakresu adresów sieci wirtualnej |
-| subnetName |Nazwa podsieci w utworzona dla sieci wirtualnej |
-| subnetPrefix |Prefiks adresu, używane do definiowania zakresu adresów podsieci |
-| vnetName |Określ nazwę dla sieci wirtualnej używane przez maszyny wirtualne. |
-| ipv4PrivateIPAddressType |Metodę alokacji dla prywatny adres IP (statyczne lub dynamiczne) |
-| ipv6PrivateIPAddressType |Metoda alokacji umożliwiający prywatny adres IP (dynamiczny). Protokół IPv6 obsługuje tylko dynamicznej alokacji. |
-| numberOfInstances |Liczba wystąpień ze zrównoważonym obciążeniem, wdrożonego w ramach szablonu |
-| ipv4PublicIPAddressName |Określ nazwę DNS, który chcesz używać do komunikowania się z publicznym adresem IPv4 modułu równoważenia obciążenia. |
-| ipv4PublicIPAddressType |Metodę alokacji dla publicznego adresu IP (statyczne lub dynamiczne) |
-| Ipv6PublicIPAddressName |Określ nazwę DNS, który chcesz używać do komunikowania się z publicznym adresem IPv6 modułu równoważenia obciążenia. |
-| ipv6PublicIPAddressType |Metoda alokacji używane dla publicznego adresu IP (dynamiczny). Protokół IPv6 obsługuje tylko dynamicznej alokacji. |
-| lbName |Określ nazwę modułu równoważenia obciążenia. Ta nazwa jest wyświetlana w portalu lub używana przy odwoływaniu się do niej przy użyciu polecenia interfejsu wiersza polecenia lub programu PowerShell. |
+| adminUsername |Określ nazwę konta administratora używanego do logowania się do maszyn wirtualnych za pomocą programu. |
+| adminPassword |Określ hasło dla konta administratora używanego do logowania się do maszyn wirtualnych za pomocą programu. |
+| dnsNameforIPv4LbIP |Określ nazwę hosta DNS, która ma zostać przypisana jako Nazwa publiczna modułu równoważenia obciążenia. Ta nazwa jest rozpoznawana jako publiczny adres IPv4 modułu równoważenia obciążenia. Nazwa musi być małą literą i być zgodna z wyrażeniem regularnym: ^ [a-z] [a-{1,61}Z0-9-] [a-Z0-9] $. |
+| dnsNameforIPv6LbIP |Określ nazwę hosta DNS, która ma zostać przypisana jako Nazwa publiczna modułu równoważenia obciążenia. Ta nazwa jest rozpoznawana jako publiczny adres IPv6 modułu równoważenia obciążenia. Nazwa musi być małą literą i być zgodna z wyrażeniem regularnym: ^ [a-z] [a-{1,61}Z0-9-] [a-Z0-9] $. Może to być taka sama nazwa, jak adres IPv4. Gdy klient wysyła zapytanie DNS dla tej nazwy, platforma Azure zwróci rekordy A i AAAA, gdy nazwa jest udostępniona. |
+| vmNamePrefix |Określ prefiks nazwy maszyny wirtualnej. Szablon dołącza liczbę (0, 1, itd.) do nazwy podczas tworzenia maszyn wirtualnych. |
+| nicNamePrefix |Określ prefiks nazwy interfejsu sieciowego. Po utworzeniu interfejsów sieciowych szablon dołącza do nazwy liczbę (0, 1, itp.). |
+| storageAccountName |Wprowadź nazwę istniejącego konta magazynu lub określ nazwę nowej nazwy, która ma zostać utworzona przez szablon. |
+| availabilitySetName |Wprowadź nazwę zestawu dostępności, który ma być używany z maszynami wirtualnymi |
+| addressPrefix |Prefiks adresu używany do definiowania zakresu adresów Virtual Network |
+| subnetName |Nazwa podsieci utworzonej dla sieci wirtualnej |
+| subnetPrefix |Prefiks adresu używany do definiowania zakresu adresów podsieci |
+| vnetName |Określ nazwę sieci wirtualnej używanej przez maszyny wirtualne. |
+| ipv4PrivateIPAddressType |Metoda alokacji używana dla prywatnego adresu IP (statyczna lub dynamiczna) |
+| ipv6PrivateIPAddressType |Metoda alokacji używana dla prywatnego adresu IP (dynamiczny). Protokół IPv6 obsługuje tylko dynamiczną alokację. |
+| numberOfInstances |Liczba wystąpień o zrównoważonym obciążeniu wdrożonych przez szablon |
+| ipv4PublicIPAddressName |Określ nazwę DNS, która ma być używana do komunikacji z publicznym adresem IPv4 modułu równoważenia obciążenia. |
+| ipv4PublicIPAddressType |Metoda alokacji używana dla publicznego adresu IP (statyczna lub dynamiczna) |
+| Ipv6PublicIPAddressName |Określ nazwę DNS, która ma być używana do komunikacji z publicznym adresem IPv6 modułu równoważenia obciążenia. |
+| ipv6PublicIPAddressType |Metoda alokacji używana dla publicznego adresu IP (dynamiczny). Protokół IPv6 obsługuje tylko dynamiczną alokację. |
+| lbName |Określ nazwę modułu równoważenia obciążenia. Ta nazwa jest wyświetlana w portalu lub używana w przypadku odwoływania się do niej przy użyciu interfejsu wiersza polecenia lub programu PowerShell. |
 
-Pozostałe zmienne w szablonie zawierają wartości pochodnych, które są przypisane, gdy platforma Azure utworzy zasoby. Nie należy zmieniać tych zmiennych.
+Pozostałe zmienne w szablonie zawierają wartości pochodne, które są przypisywane podczas tworzenia zasobów przez platformę Azure. Nie należy zmieniać tych zmiennych.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Składnię JSON i właściwości modułu równoważenia obciążenia w szablonie, zobacz [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).
+Aby poznać składnię i właściwości JSON modułu równoważenia obciążenia w szablonie, zobacz [Microsoft. Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).

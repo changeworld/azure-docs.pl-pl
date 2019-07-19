@@ -1,139 +1,139 @@
 ---
-title: Azure IoT Hub wysokiej dostępności i odzyskiwania po awarii | Dokumentacja firmy Microsoft
-description: Opisano funkcje platformy Azure i usługi IoT Hub, które ułatwiają tworzenie wysoko dostępnych rozwiązań Azure IoT przy użyciu po awarii możliwości odzyskiwania.
+title: Azure IoT Hub wysoka dostępność i odzyskiwanie po awarii | Microsoft Docs
+description: Opisuje funkcje platformy Azure i IoT Hub, które ułatwiają tworzenie rozwiązań usługi Azure IoT o wysokiej dostępności przy użyciu funkcji odzyskiwania po awarii.
 author: rkmanda
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/07/2018
-ms.author: rkmanda
-ms.openlocfilehash: 7479d9a230bd28c2ed2e4c8c79ba9301028af36c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: philmea
+ms.openlocfilehash: 32caebf8ea216050427f4400102cf56ffc657b55
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60779376"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875263"
 ---
-# <a name="iot-hub-high-availability-and-disaster-recovery"></a>Usługa IoT Hub o wysokiej dostępności i odzyskiwania po awarii
+# <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub wysokiej dostępności i odzyskiwania po awarii
 
-Jako pierwszy krok w kierunku implementacji IoT odporne na błędy rozwiązanie, architektów, deweloperzy i właściciele firm należy zdefiniować cele czasu rozwiązania, które jest tworzone. Tych celów można zdefiniować przede wszystkim oparte na cele biznesowe specyficzne dla każdego scenariusza. W tym kontekście, artykuł [wskazówek technicznych ciągłości biznesowej Azure](https://docs.microsoft.com/azure/architecture/resiliency/) opisano ogólne platformę, by pomóc myśleć o biznesowych ciągłości działania i odzyskiwania po awarii. [Odzyskiwania po awarii i wysoka dostępność dla aplikacji platformy Azure](https://msdn.microsoft.com/library/dn251004.aspx) dokument zawiera wskazówki dotyczące architektury, strategii dla aplikacji platformy Azure w celu zapewnienia wysokiej dostępności (HA) i odzyskiwania po awarii (DR).
+Pierwszy krok w kierunku implementacji odpornego rozwiązania IoT, architektów, deweloperów i właścicieli firmy musi definiować cele w zakresie czasu, w którym są tworzone. Cele te można definiować przede wszystkim w zależności od konkretnych celów firmy dla każdego scenariusza. W tym kontekście [Wskazówki techniczne dotyczące ciągłości biznesowej platformy Azure](https://docs.microsoft.com/azure/architecture/resiliency/) opisują ogólną strukturę ułatwiającą rozważanie ciągłości działania i odzyskiwania po awarii. Dokument dotyczący [odzyskiwania po awarii i wysokiej dostępności dla aplikacji platformy Azure](https://msdn.microsoft.com/library/dn251004.aspx) zawiera wskazówki dotyczące architektury dla aplikacji platformy Azure w celu zapewnienia wysokiej dostępności i odzyskiwania po awarii (Dr).
 
-W tym artykule omówiono funkcje wysokiej dostępności i odzyskiwania po awarii, oferowane specjalnie przez usługę IoT Hub. Dostępne są następujące obszary omówionych w tym artykule:
+W tym artykule omówiono funkcje HA i DR oferowane w ramach usługi IoT Hub. Rozległe obszary omówione w tym artykule są następujące:
 
-- Wewnątrz regionu wysokiej dostępności
-- Między regionami odzyskiwania po awarii
-- Obsługiwanie między regionami wysokiej dostępności
+- W regionie HA
+- Międzyregionowe odzyskiwanie po awarii
+- Osiągnięcie międzyregionowej wysokiej dostępności
 
-W zależności od celów czasu pracy zdefiniowanych dla rozwiązań IoT należy określić, które opcje opisane poniżej najlepsze sposób swoje cele biznesowe. Dołączanie dowolnego z tych możliwości wysokiej dostępności i odzyskiwania po awarii do swojego rozwiązania IoT wymaga dokładnej oceny kompromis między:
+W zależności od celów czasowych zdefiniowanych dla rozwiązań IoT należy określić, które z opcji opisanych poniżej najlepiej odpowiadają celom biznesowym. Dołączenie dowolnego z tych alternatyw w zakresie HA/DR do rozwiązania IoT wymaga starannej oceny zalet:
 
-- Poziom odporności, które są wymagane 
-- Złożoność implementacji i konserwacji
+- Wymagany poziom odporności 
+- Implementacja i złożoność konserwacji
 - Wpływ KWS
 
-## <a name="intra-region-ha"></a>Wewnątrz regionu wysokiej dostępności
+## <a name="intra-region-ha"></a>W regionie HA
 
-Usługi IoT Hub udostępnia wewnątrz regionu wysokiej dostępności poprzez implementację zwolnienia prawie wszystkich warstwach usługi. [SLA opublikowana przez usługę IoT Hub](https://azure.microsoft.com/support/legal/sla/iot-hub) jest osiągane poprzez użycie tych zwolnienia. Aby móc korzystać z tych funkcji wysokiej dostępności przez deweloperów rozwiązania IoT jest wymagane żadne działanie dodatkowe. Mimo że usługa IoT Hub jest objęta gwarancją jest wysoki czas dostępności, nadal można oczekiwać błędów przejściowych podobnie jak w przypadku dowolnego rozproszoną platformę obliczeniową. Jeśli po prostu rozpoczniesz pracę z migracji rozwiązania w chmurze z lokalnym rozwiązaniem, zespół musi przesunięcie z optymalizowaniu "średniego czasu między awariami" "Średni czas do odzyskania". Innymi słowy przejściowe awarie mają być traktowane jako normalny podczas pracy z chmurą w zestawie. Odpowiednie [zasady ponawiania](iot-hub-reliability-features-in-sdks.md) musi być zbudowany w składnikach interakcji z aplikacji w chmurze do obsługi błędów przejściowych.
+Usługa IoT Hub zapewnia międzyregionową HA przez implementację nadmiarowości w prawie wszystkich warstwach usługi. [Umowa SLA opublikowana przez usługę IoT Hub](https://azure.microsoft.com/support/legal/sla/iot-hub) jest realizowana przy użyciu tych nadmiarowości. Deweloperzy rozwiązania IoT nie muszą wykonywać żadnych dodatkowych czynności, aby korzystać z tych funkcji HA. Chociaż IoT Hub zapewnia rozsądną gwarancję o wysokiej dostępności, przejściowe błędy nadal mogą być uznawane za z każdą platformą rozproszoną. Jeśli dopiero zaczynasz Migrowanie rozwiązań do chmury z rozwiązania lokalnego, fokus musi przejść od optymalizacji "Średni czas między awariami" na "Średni czas do odzyskania". Inaczej mówiąc, przejściowe błędy są uważane za normalne podczas pracy z chmurą w połączeniu. Odpowiednie [zasady ponawiania](iot-hub-reliability-features-in-sdks.md) muszą być wbudowane w składniki, które współdziałają z aplikacją w chmurze, aby przejmować się błędami przejściowymi.
 
 > [!NOTE]
-> Niektóre usługi platformy Azure udostępniają dodatkowe warstwy dostępności w obrębie regionu dzięki integracji z usługą [strefach dostępności (AZs)](../availability-zones/az-overview.md). AZs nie są obecnie obsługiwane przez usługę IoT Hub.
+> Niektóre usługi platformy Azure oferują również dodatkowe warstwy dostępności w obrębie regionu przez integrację z usługą [strefy dostępności (AZs)](../availability-zones/az-overview.md). AZs nie są obecnie obsługiwane przez usługę IoT Hub.
 
-## <a name="cross-region-dr"></a>Między regionami odzyskiwania po awarii
+## <a name="cross-region-dr"></a>Międzyregionowe odzyskiwanie po awarii
 
-Może istnieć kilka rzadkich sytuacji, gdy centrum danych dochodzi rozszerzonej z powodu awarii zasilania lub inne błędy, obejmujące zasoby fizyczne. Takie zdarzenia występują rzadko, podczas którego regionu wewnątrz funkcji wysokiej dostępności opisanych powyżej może nie zawsze pomocy. IoT Hub udostępnia wiele rozwiązań do odzyskiwania z takich dłuższych przestojów. 
+Zdarza się sytuacje, w których wystąpiły przerwy w działaniu centrum danych z powodu awarii lub innych awarii dotyczących zasobów fizycznych. Takie zdarzenia są rzadkimi informacjami, w których opisana powyżej funkcja HA w regionie powyżej może nie zawsze pomóc. IoT Hub udostępnia wiele rozwiązań do odzyskiwania z takich rozszerzonych awarii. 
 
-Dostępne dla klientów w takiej sytuacji opcje odzyskiwania są ""inicjowane przez Microsoft Praca awaryjna i "Ręczna praca awaryjna". Podstawowa różnica między tymi dwoma jest firma Microsoft zainicjuje poprzednie i użytkownik zainicjuje te ostatnie. Również ręcznej pracy awaryjnej zapewnia niższe cel czasu odzyskiwania (RTO) w porównaniu do opcji/inicjowanych przez Microsoft trybu failover. W poniższych sekcjach omówiono określonego docelowego czasu odzyskiwania, oferowana w przypadku poszczególnych opcji. Po jednej z tych opcji, aby włączyć tryb failover z Centrum IoT hub z jego region podstawowy jest wykonywane, Centrum staje się w pełni funkcjonalne w odpowiednich [regionu sparowanego geograficznie Azure](../best-practices-availability-paired-regions.md).
+Opcjami odzyskiwania dostępnymi dla klientów w takiej sytuacji jest "inicjowanie trybu failover firmy Microsoft" i "ręczna praca awaryjna". Podstawowa różnica między nimi polega na tym, że firma Microsoft inicjuje pierwsze, a użytkownik inicjuje ten ostatni. Ponadto ręczna praca awaryjna zapewnia dolny cel czasu odzyskiwania (RTO) w porównaniu z opcją trybu failover zainicjowaną przez firmę Microsoft. Konkretne RTO dostępne dla każdej opcji zostały omówione w poniższych sekcjach. W przypadku korzystania z jednej z tych opcji w celu przełączenia w tryb failover Centrum IoT Hub z jego regionu podstawowego centrum będzie w pełni funkcjonalne w odpowiednim [regionie geograficznym platformy Azure](../best-practices-availability-paired-regions.md).
 
-Obie te opcje trybu failover mają następujące cele punktu odzyskiwania (RPO):
+Obie te opcje trybu failover oferują następujące cele punktu odzyskiwania (RPO):
 
 | Typ danych | Cele punktu odzyskiwania (RPO) |
 | --- | --- |
-| Rejestr tożsamości |0 – 5 minutach utraty danych |
-| Dane bliźniaczej reprezentacji urządzenia |0 – 5 minutach utraty danych |
-| Komunikaty z chmury do urządzenia<sup>1</sup> |0 – 5 minutach utraty danych |
-| Nadrzędny<sup>1</sup> i zadania urządzeń |0 – 5 minutach utraty danych |
+| Rejestr tożsamości |0-5 minut utrata danych |
+| Dane dotyczące sznurka urządzenia |0-5 minut utrata danych |
+| Komunikaty z chmury do urządzenia<sup>1</sup> |0-5 minut utrata danych |
+| Zadania nadrzędne<sup>1</sup> i urządzenia |0-5 minut utrata danych |
 | Komunikaty z urządzenia do chmury |Wszystkie nieprzeczytane wiadomości są tracone |
-| Monitorowanie komunikatów operacji |Wszystkie nieprzeczytane wiadomości są tracone |
-| Komunikatów zwrotnych chmury do urządzenia |Wszystkie nieprzeczytane wiadomości są tracone |
+| Komunikaty monitorowania operacji |Wszystkie nieprzeczytane wiadomości są tracone |
+| Wiadomości z opiniami z chmury do urządzeń |Wszystkie nieprzeczytane wiadomości są tracone |
 
-<sup>1</sup>komunikatów z chmury do urządzeń i zadania nadrzędnego nie uzyskać odzyskane w ramach ręcznej pracy awaryjnej w ramach oferty (wersja zapoznawcza) z tej funkcji.
+<sup>1</sup> Komunikaty z chmury do urządzenia i zadania nadrzędne nie są odzyskiwane w ramach ręcznego przełączania do trybu failover w ramach oferty wersji zapoznawczej tej funkcji.
 
-Po zakończeniu operacji trybu failover dla usługi IoT hub, aby kontynuować pracę bez konieczności ręcznej interwencji powinny wszystkie operacje z urządzeń i aplikacji zaplecza.
+Po zakończeniu operacji przejścia w tryb failover dla usługi IoT Hub należy oczekiwać, że wszystkie operacje z urządzenia i aplikacji zaplecza będą działać bez konieczności ręcznej interwencji.
 
 > [!CAUTION]
-> - Nazwa zgodnego z Centrum zdarzeń i punkt końcowy w punkcie końcowym usługi IoT Hub wbudowanych zdarzenia zmienia się po pracy awaryjnej. Gdy odbiera komunikaty telemetryczne z wbudowanego punktu końcowego przy użyciu klienta Centrum zdarzeń lub hosta procesora zdarzeń, wykonaj następujące czynności [Użyj parametrów połączenia Centrum IoT](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) do nawiązania połączenia. Dzięki temu, że serwer zaplecza w aplikacji będą nadal działać bez konieczności ręcznej interwencji wpis w tryb failover. Jeśli używasz nazwy zgodnego z Centrum zdarzeń i punkt końcowy w aplikacji zaplecza bezpośrednio, należy ponownie skonfigurować aplikację przez [pobieranie nowej nazwy zgodnego z Centrum zdarzeń i punkt końcowy](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) po włączeniu trybu failover, aby kontynuować operacje.
+> - Nazwa zgodna z centrum zdarzeń i punkt końcowy IoT Hub wbudowanego punktu końcowego zdarzeń po przejściu w tryb failover. Podczas otrzymywania komunikatów telemetrycznych z wbudowanego punktu końcowego przy użyciu klienta centrum zdarzeń lub hosta procesora zdarzeń należy [użyć parametrów połączenia usługi IoT Hub](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) w celu nawiązania połączenia. Dzięki temu aplikacje zaplecza będą nadal działały bez konieczności ręcznego wprowadzania interwencji w trybie failover. Jeśli używasz bezpośrednio nazwy i punktu końcowego zgodnego z centrum zdarzeń w aplikacji zaplecza, musisz ponownie skonfigurować aplikację, pobierając [nową nazwę i punkt końcowy zgodny z centrum zdarzeń](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) po przejściu w tryb failover w celu kontynuowania operacji.
 >
-> - Po przejściu w tryb failover zdarzenia emitowane przy użyciu usługi Event Grid mogą być wykorzystywane za pomocą tej samej subskrypcji, skonfigurowane wcześniej tak długo, jak te subskrypcje usługi Event Grid są nadal dostępne.
+> - Po przejściu w tryb failover zdarzenia emitowane za pośrednictwem Event Grid mogą być używane za pośrednictwem tych samych subskrypcji skonfigurowanych wcześniej, o ile te subskrypcje Event Grid nadal będą dostępne.
 >
-> - Routing do magazynu obiektów blob, firma Microsoft zaleca funkcji rejestrowanie obiektów blob, a następnie Iterowanie po nich, aby upewnić się, że wszystkie kontenery są odczytywane bez wprowadzania żadnych założeń partycji. Zakres partycji potencjalnie można zmienić podczas inicjowanych przez Microsoft trybu failover lub ręcznej pracy awaryjnej. Aby dowiedzieć się, jak wyliczyć listy obiektów blob, zobacz [routingu do magazynu obiektów blob](iot-hub-devguide-messages-d2c.md#azure-blob-storage).
+> - Podczas routingu do magazynu obiektów BLOB zalecamy zarejestrowanie obiektów blob, a następnie iterację ich, aby upewnić się, że wszystkie kontenery są odczytywane bez wprowadzania żadnych założeń partycji. Zakres partycji może ulec zmianie podczas pracy w trybie failover zainicjowanej przez firmę Microsoft lub ręcznego przejścia w tryb failover. Aby dowiedzieć się, jak wyliczyć listę obiektów blob, zobacz [routing do usługi BLOB Storage](iot-hub-devguide-messages-d2c.md#azure-blob-storage).
 
-### <a name="microsoft-initiated-failover"></a>Zainicjowane przez Microsoft trybu failover
+### <a name="microsoft-initiated-failover"></a>Tryb failover zainicjowany przez firmę Microsoft
 
-Zainicjowane przez Microsoft trybu failover jest wykonywane przez firmę Microsoft, w rzadkich sytuacjach do trybu failover wszystkich IoT hubs regionowi, których dotyczy problem do odpowiedniego regionu sparowanego geograficznie. Ten proces jest opcja domyślna (nie sposób użytkownicy mogą zrezygnować z nowego) i nie wymaga żadnej interwencji użytkownika. Firma Microsoft zastrzega sobie prawo do wprowadzania określenie, gdy ta opcja będzie wykonywane. Ten mechanizm nie wymaga zgody użytkownika, zanim Centrum użytkownika jest w trybie Failover. Zainicjowane przez Microsoft trybu failover ma cel czasu odzyskiwania (RTO) 2-26 godzin. 
+Zainicjowane przez firmę Microsoft tryb failover jest realizowane przez firmę Microsoft w rzadkich sytuacjach, gdy wszystkie centra IoT są przełączene z regionu, którego to dotyczy, do odpowiadającego mu regionu geograficznego. Ten proces jest opcją domyślną (brak sposobu, w jaki użytkownicy mogą zrezygnować) i nie wymaga interwencji użytkownika. Firma Microsoft zastrzega sobie prawo do określenia, kiedy ta opcja zostanie zrealizowana. Ten mechanizm nie obejmuje zgody użytkownika przed przełączeniem do trybu failover centrum użytkownika. Zainicjowana przez firmę Microsoft tryb failover ma cel czasu odzyskiwania (RTO) wynoszący 2-26 godzin. 
 
-Duży cel czasu odzyskiwania jest, ponieważ firmy Microsoft należy wykonać operację trybu failover w imieniu wszystkich klientów, których to dotyczy, w tym regionie. Jeśli korzystasz z mniej ważnych rozwiązanie IoT, które może wytrzymać bez przestojów około dnia, jest ok umożliwiające zależni tę opcję, aby spełnić ogólną celów odzyskiwania po awarii dla swojego rozwiązania IoT. Łączny czas wykonywania operacji funkcjonować pełni po wyzwoleniu tego procesu jest opisane w sekcji "Czas odzyskiwania".
+Duże RTO to spowodowane tym, że firma Microsoft musi wykonać operację przełączenia w tryb failover w imieniu wszystkich klientów, których dotyczy ten region. W przypadku korzystania z mniej krytycznych rozwiązań IoT, które mogą utrzymywać przestoje w ciągu dnia, jest to rozwiązanie, które pozwala na spełnienie tych opcji w celu spełnienia ogólnych celów odzyskiwania po awarii dla rozwiązania IoT. Łączny czas wykonywania operacji środowiska uruchomieniowego w pełni operacyjny po wyzwoleniu tego procesu został opisany w sekcji "czas do odzyskania".
 
 ### <a name="manual-failover-preview"></a>Ręczna praca awaryjna (wersja zapoznawcza)
 
-Jeśli celów biznesowych czasu nie są spełnione przez wartość celu punktu odzyskiwania, który zainicjował firmy Microsoft zapewnia pracy awaryjnej, należy rozważyć użycie ręcznej pracy awaryjnej do wyzwalania procesu pracy awaryjnej, samodzielnie. Cel czasu odzyskiwania przy użyciu tej opcji może być w dowolnym miejscu od 10 minut do kilku godzin. Cel czasu odzyskiwania jest obecnie funkcję liczbę urządzeń zarejestrowanych przed wystąpieniem Centrum IoT, przełączone w tryb failover. Można oczekiwać, że cel czasu odzyskiwania dla koncentratora hostingu około 100 000 urządzeń w ballpark 15 minut. Łączny czas wykonywania operacji funkcjonować pełni po wyzwoleniu tego procesu jest opisane w sekcji "Czas odzyskiwania".
+Jeśli cele działania Twojej firmy nie są spełnione przez RTO zainicjowanej przez firmę Microsoft w trybie failover, należy rozważyć użycie ręcznego trybu failover w celu samodzielnego uruchomienia procesu przełączania do trybu failover. RTO przy użyciu tej opcji może być dowolnym z zakresu od 10 minut do kilku godzin. RTO jest obecnie funkcją liczby urządzeń zarejestrowanych w usłudze IoT Hub przełączonej w tryb failover. Można spodziewać się, że RTO koncentratora hostuje około 100 000 urządzeń w przybliżoną 15 minut. Łączny czas wykonywania operacji środowiska uruchomieniowego w pełni operacyjny po wyzwoleniu tego procesu został opisany w sekcji "czas do odzyskania".
 
-Opcja ręcznego przełączania trybu failover jest zawsze dostępna do użycia niezależnie od tego, czy region podstawowy ma przestój lub nie. W związku z tym ta opcja potencjalnie może służyć do wykonywania planowanego przejścia w tryb failover. Przykład użytkowania planowanego przejścia w tryb failover jest przeprowadzanie okresowe trybu failover. Word ostrożności jednak jest to, że wyniki operacji planowany tryb failover spowoduje przestój dla koncentratora dla okresu zdefiniowanego za cel czasu odzyskiwania dla tej opcji, a także powoduje utratę danych, zgodnie z definicją w powyższej tabeli cel punktu odzyskiwania. Można rozważyć ustawienie testu IoT hub wystąpienia korzystają z możliwości planowanego trybu failover, okresowo, aby uzyskać zaufania do możliwości, aby rozpocząć rozwiązania end-to-end w górę sytuacji rzeczywistej awarii.
+Opcja ręcznego przełączania do trybu failover jest zawsze dostępna do użytku niezależnie od tego, czy w regionie podstawowym występuje przestój, czy nie. W związku z tym ta opcja może być używana do wykonywania planowanych przełączeń w tryb failover. Przykładem użycia planowanej pracy w trybie failover jest przeprowadzenie okresowych przechodzenia do trybu failover. Należy zachować ostrożność w przypadku, gdy planowana operacja trybu failover powoduje przestoje dla centrum przez okres zdefiniowany przez RTO dla tej opcji, a także powoduje utratę danych zgodnie z definicją powyższą w tabeli celu. Można rozważyć skonfigurowanie przykładowego wystąpienia Centrum IoT Hub, aby okresowo korzystać z opcji planowanej pracy w trybie failover w celu uzyskania pewności, że masz pewność, że kompleksowe rozwiązania mają być w stanie działać w przypadku rzeczywistej awarii.
 
 > [!IMPORTANT]
-> - Test awarii nie należy wykonać w centrach IoT, które są używane w środowiskach produkcyjnych.
+> - Testów testowych nie należy wykonywać w centrach IoT, które są używane w środowiskach produkcyjnych.
 >
-> - Ręczna praca awaryjna nie należy jako mechanizm trwale migracji Centrum między regionów geograficznych platformy Azure, w połączeniu. To spowoduje, że zwiększenie opóźnienia dla operacji, które wykonywanych względem Centrum z urządzenia umieszczone w starym regionu podstawowego.
+> - Ręczne przełączenie w tryb failover nie powinno być stosowane jako mechanizm trwałej migracji centrum między różnymi regionami geograficznymi platformy Azure. Takie działanie spowodowałoby zwiększone opóźnienie operacji wykonywanych względem centrum z urządzeń znajdujących się w starym regionie podstawowym.
 
 ### <a name="failback"></a>Powrót po awarii
 
-Niepowodzenie powrót do starych regionu podstawowego można osiągnąć, wyzwalając działania trybu failover inną godzinę. W przypadku operacji pierwotnej trybu failover odzyskiwania sprawności po awarii rozszerzonej w regionie podstawowym, oryginalnym zaleca się, że koncentratora powinny nie do oryginalnej lokalizacji po tej lokalizacji odzyskał sprawność sytuacji awarii.
+Powrót po awarii do starego regionu podstawowego można osiągnąć, wyzwalając akcję trybu failover w innym czasie. Jeśli pierwotna Operacja trybu failover została wykonana w celu odzyskania po awarii rozszerzonej w pierwotnym regionie podstawowym, zaleca się powrót po awarii centrum do oryginalnej lokalizacji po odzyskaniu tej lokalizacji po awarii.
 
 > [!IMPORTANT]
-> - Użytkownicy mogą się tylko do wykonania 2 pracę w trybie failover i 2 operacji pomyślne powrotu po awarii na dzień.
+> - Użytkownicy mogą wykonywać dwie pomyślne przełączenia w tryb failover i 2 pomyślne operacje powrotu po awarii dziennie.
 >
-> - Symetryczne operacje trybu failover/powrotu po awarii nie są dozwolone. Użytkownicy będą musieli czekać na 1 godzinę między tymi operacjami.
+> - Powrót do trybu failover/operacji powrotu po awarii jest niedozwolony. Użytkownicy będą musieli czekać przez 1 godzinę między tymi operacjami.
 
 ### <a name="time-to-recover"></a>Czas do odzyskania
 
-Gdy nazwa FQDN (i w związku z tym parametry połączenia) wystąpieniem Centrum IoT pozostaje tego samego trybu failover post, podstawowy adres IP ulegnie zmianie. W związku z tym całkowity czas operacji środowiska uruchomieniowego wykonywanych względem wystąpienia Centrum IoT funkcjonować pełni po wyzwoleniu procesu pracy awaryjnej można wyrazić przy użyciu następujących funkcji.
+Podczas gdy nazwa FQDN (i w związku z tym parametry połączenia) wystąpienia usługi IoT Hub pozostaje na tym samym wpisem w trybie failover, zostanie zmieniony źródłowy adres IP. W związku z tym łączny czas wykonywania operacji środowiska uruchomieniowego względem wystąpienia usługi IoT Hub, aby stał się w pełni funkcjonalny po wyzwoleniu procesu przejścia w tryb failover, można wyrazić przy użyciu następującej funkcji.
 
-Czas do odzyskania = wartość celu punktu odzyskiwania [10-minutowy materiał - 2 godziny w celu ręcznej pracy awaryjnej | 2-26 godzin inicjowanych przez Microsoft trybu failover] + opóźnienia propagacji DNS + czas poświęcony przez aplikację klienta, aby odświeżyć dowolne pamięci podręcznej adres IP Centrum IoT.
+Czas do odzyskania = RTO [10 minut w przypadku ręcznego przełączania do trybu failover | 2-26 godzin dla zainicjowanej pracy w trybie failover przez firmę Microsoft] + opóźnienie propagacji systemu DNS + czas podejmowane przez aplikację kliencką w celu odświeżenia zbuforowanego IoT Hub adresu IP.
 
 > [!IMPORTANT]
-> Zestawy SDK IoT nie buforują adres IP usługi IoT hub. Firma Microsoft zaleca kod użytkownika komunikowanie się z zestawami SDK powinno buforują adres IP usługi IoT hub.
+> Zestawy SDK IoT nie buforują adresu IP Centrum IoT Hub. Zalecamy, aby kod użytkownika, który wchodzi w skład zestawów SDK, nie powinien buforować adresu IP Centrum IoT Hub.
 
-## <a name="achieve-cross-region-ha"></a>Osiągnięcia między regionami wysokiej dostępności
+## <a name="achieve-cross-region-ha"></a>Osiągnięcie międzyregionowej wysokiej dostępności
 
-Jeśli cele czasu działania biznesowe nie są spełnione przez czas RTO, podaj inicjowanych przez Microsoft trybu failover lub opcji ręcznej pracy awaryjnej, należy rozważyć Implementowanie mechanizm trybu failover na urządzenie automatyczne między regionami.
-Pełne traktowania topologie wdrożenia w rozwiązaniach IoT znajduje się poza zakres tego artykułu. W tym artykule omówiono *rozwiązania regionalnej pracy awaryjnej* modelu wdrażania na potrzeby wysokiej dostępności i odzyskiwania po awarii.
+Jeśli cele działania Twojej firmy nie są spełnione przez RTO, że opcje trybu failover zainicjowane przez firmę Microsoft lub ręczne przełączenia w tryb failover, należy rozważyć implementację mechanizmu trybu failover dla poszczególnych urządzeń.
+Pełne podejście do topologii wdrożenia w rozwiązaniach IoT wykracza poza zakres tego artykułu. W tym artykule omówiono model wdrażania w *trybie failover* w celu zapewnienia wysokiej dostępności i odzyskiwania po awarii.
 
-W modelu rozwiązania regionalnej pracy awaryjnej rozwiązania, należy utworzyć kopię końcowy uruchomień głównie w jednej lokalizacji centrum danych. Pomocnicze Centrum IoT i zapleczem są wdrażane w innej lokalizacji centrum danych. Jeśli usługi IoT hub w regionie podstawowym wystąpi awaria lub zostało przerwane połączenie sieciowe z urządzenia do regionu podstawowego, urządzenia używają punktu końcowego usługi dodatkowej. Może zwiększyć dostępność rozwiązanie z zastosowaniem modelu trybu failover między regionami, zamiast pozostając w jednym regionie. 
+W modelu regionalnej pracy awaryjnej zaplecze rozwiązania działa głównie w jednej lokalizacji centrum danych. Pomocnicze Centrum IoT i zaplecza są wdrażane w innej lokalizacji centrum danych. Jeśli Centrum IoT w regionie podstawowym spada na awarię lub połączenie sieciowe z urządzenia do regionu podstawowego zostanie przerwane, urządzenia będą używać punktu końcowego usługi pomocniczej. Dostępność rozwiązania można poprawić, implementując model trybu failover między regionami, a nie w obrębie jednego regionu. 
 
-Na wysokim poziomie do wdrożenia modelu rozwiązania regionalnej pracy awaryjnej przy użyciu usługi IoT Hub, musisz wykonać następujące czynności:
+Na wysokim poziomie, aby zaimplementować regionalny model trybu failover z IoT Hub, należy wykonać następujące czynności:
 
-* **Pomocnicze Centrum IoT i urządzenia routingu logiki**: Jeśli usługa w regionie podstawowym jest zakłócona, urządzenia należy uruchomić nawiązywania połączenia z regionu pomocniczego. Ze względu na charakter rozpoznawaniem stanu większości usług zaangażowani, jest typowe dla administratorów rozwiązania do wyzwalania procesu trybu failover między regionami. Najlepszym sposobem komunikacji nowego punktu końcowego na urządzeniach, przy jednoczesnym zachowaniu kontroli procesu, jest do nich regularnie sprawdzać *concierge* usługi, aby aktywny punkt końcowy. Usługi Konsjerż może być aplikacja sieci web, które są replikowane i przechowywane dostępny przy użyciu technik przekierowania DNS (na przykład za pomocą [usługi Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)).
+* **Dodatkowa logika usługi IoT Hub i routingu urządzeń**: Jeśli usługa w regionie podstawowym zostanie zakłócona, urządzenia muszą rozpocząć łączenie się z regionem pomocniczym. Mając na uwadze charakter większości usług, które są wykorzystywane, często Administratorzy rozwiązań mogą wyzwalać proces trybu failover między regionami. Najlepszym sposobem na przekazanie nowego punktu końcowego do urządzeń przy zachowaniu kontroli nad procesem jest regularne sprawdzenie usługi *Concierge* dla bieżącego aktywnego punktu końcowego. Usługa Concierge może być aplikacją sieci Web, która jest replikowana i dostępna przy użyciu technik przekierowywania DNS (na przykład przy użyciu [usługi Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)).
 
    > [!NOTE]
-   > Usługi IoT hub nie jest typem obsługiwanych punktu końcowego w usłudze Azure Traffic Manager. Zalecane jest, aby zintegrować usługi Konsjerż proponowane z usługą Azure traffic manager czyniąc ją zaimplementować sondy kondycji punktu końcowego interfejsu API.
+   > Usługa IoT Hub nie jest obsługiwanym typem punktu końcowego w usłudze Azure Traffic Manager. Zalecenie polega na zintegrowaniu proponowanej usługi Concierge z usługą Azure Traffic Manager, implementując interfejs API sondowania kondycji punktu końcowego.
 
-* **Replikacja rejestru tożsamości**: Może być używany, pomocniczego Centrum IoT hub musi zawierać wszystkie tożsamości urządzeń, które można połączyć z rozwiązaniem. Rozwiązanie powinno replikowanej geograficznie dane o tożsamości urządzeń i przekazać je do pomocniczego Centrum IoT, przed zmianą aktywny punkt końcowy dla urządzeń. Funkcja eksportu tożsamość urządzenia usługi IoT Hub przydaje się w tym kontekście. Aby uzyskać więcej informacji, zobacz [usługi IoT Hub developer guide - rejestr tożsamości](iot-hub-devguide-identity-registry.md).
+* **Replikacja rejestru tożsamości**: Aby można było korzystać z programu, pomocnicze Centrum IoT Hub musi zawierać wszystkie tożsamości urządzeń, które mogą łączyć się z rozwiązaniem. Rozwiązanie powinno zachować kopie zapasowe replikowanych tożsamości urządzeń i przekazać je do pomocniczego Centrum IoT przed przełączeniem aktywnego punktu końcowego dla urządzeń. Funkcja eksportowania tożsamości urządzeń IoT Hub jest przydatna w tym kontekście. Aby uzyskać więcej informacji, zobacz [IoT Hub przewodnik dewelopera — rejestr tożsamości](iot-hub-devguide-identity-registry.md).
 
-* **Scalanie logiki**: Gdy region podstawowy staje się ponownie dostępny, stan i dane, które zostały utworzone w lokacji dodatkowej muszą być migrowane do regionu podstawowego. Ten stan i dane odnoszą się przede wszystkim do tożsamości urządzeń i metadanych aplikacji, które muszą zostać połączone z głównej usługi IoT hub i innych magazynach specyficzne dla aplikacji w regionie podstawowym. 
+* **Scalanie logiki**: Po ponownym udostępnieniu regionu podstawowego wszystkie Stany i dane, które zostały utworzone w lokacji dodatkowej, muszą zostać zmigrowane z powrotem do regionu podstawowego. Ten stan i dane odnoszą się głównie do tożsamości urządzeń i metadanych aplikacji, które muszą zostać scalone z podstawowym Centrum IoT i innymi magazynami specyficznymi dla aplikacji w regionie podstawowym. 
 
-Aby uprościć ten krok, należy użyć operacje idempotentne. Operacje Idempotentne zminimalizować skutki uboczne, z ostateczną spójne dystrybucję zdarzeń oraz duplikatów lub dostarczania zdarzeń poza kolejnością. Ponadto logiki aplikacji powinny zostać tak zaprojektowane, tolerować potencjalne niezgodności lub nieco nieaktualne stanu. Taka sytuacja może wystąpić z powodu dodatkowy czas, jaki zajmuje systemowi poprawianie w oparciu o cele punktu odzyskiwania (RPO).
+Aby uprościć ten krok, należy użyć operacji idempotentne. Operacje idempotentne minimalizują efekty uboczne od ostatecznego rozkładu zdarzeń oraz ze zduplikowanych lub niezamówionych dostaw zdarzeń. Ponadto logika aplikacji powinna być zaprojektowana w celu tolerowania potencjalnych niespójności lub nieaktualnego stanu. Taka sytuacja może wystąpić z powodu dodatkowego czasu, który jest potrzebny, aby system mógł zostać zaleczony w oparciu o cele punktu odzyskiwania (RPO).
 
-## <a name="choose-the-right-hadr-option"></a>Wybieranie odpowiedniej opcji wysokiej dostępności i odzyskiwania po awarii
+## <a name="choose-the-right-hadr-option"></a>Wybierz odpowiednią opcję HA/DR
 
-Oto podsumowanie opcji wysokiej dostępności i odzyskiwania po awarii, przedstawione w tym artykule, który może służyć jako odwołanie do ramki o wybranie odpowiedniej opcji dla rozwiązania.
+Poniżej znajduje się podsumowanie opcji HA/DR przedstawionych w tym artykule, których można użyć jako ramki odwołania w celu wybrania odpowiedniej opcji, która działa dla danego rozwiązania.
 
-| Opcja wysokiej dostępności i odzyskiwania po awarii | CEL CZASU ODZYSKIWANIA | RPO | Wymaga ręcznej interwencji? | Złożoność wdrożenia | Wpływ dodatkowych kosztów|
+| HA/DR — opcja | RTO | RPO | Czy wymaga ręcznej interwencji? | Złożoność implementacji | Dodatkowy wpływ na koszty|
 | --- | --- | --- | --- | --- | --- |
-| Zainicjowane przez Microsoft trybu failover |2 - 26 godzin|Zapoznaj się z powyższej tabeli cel punktu odzyskiwania|Nie|Brak|Brak|
-| Ręczna praca awaryjna |10-minutowy materiał - 2 godziny|Zapoznaj się z powyższej tabeli cel punktu odzyskiwania|Tak|Bardzo niskie. Wystarczy wyzwalać tę operację z portalu.|Brak|
-| Obejmujące wiele regionów wysokiej dostępności |< 1 min|Zależy od częstotliwości replikacji, niestandardowego rozwiązania wysokiej dostępności|Nie|Wysoka|1 > x koszt 1 usługi IoT hub|
+| Tryb failover zainicjowany przez firmę Microsoft |2-26 godzin|Odwołaj się do tabeli celu punktu odzyskiwania|Nie|Brak|Brak|
+| Ręczna praca awaryjna |10 min-2 godz.|Odwołaj się do tabeli celu punktu odzyskiwania|Tak|Bardzo niska. Musisz tylko wyzwolić tę operację z portalu.|Brak|
+| HA w różnych regionach |< 1 min|Zależy od częstotliwości replikacji niestandardowego rozwiązania o wysokiej dostępności|Nie|Wysoka|> 1x koszt 1 IoT Hub|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Skorzystaj z poniższych linków, aby dowiedzieć się więcej na temat usługi Azure IoT Hub:
+Skorzystaj z poniższych linków, aby dowiedzieć się więcej o usłudze Azure IoT Hub:
 
-* [Rozpoczynanie pracy z usługą IoT Hub (Szybki Start)](quickstart-send-telemetry-dotnet.md)
+* [Wprowadzenie do centrów IoT Hub (Szybki Start)](quickstart-send-telemetry-dotnet.md)
 * [Co to jest usługa Azure IoT Hub?](about-iot-hub.md)

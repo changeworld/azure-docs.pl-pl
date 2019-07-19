@@ -1,58 +1,58 @@
 ---
-title: Konfigurowanie tunelu zawsze włączona sieć VPN dla bramy sieci VPN
-description: Kroki, aby skonfigurować tunel zawsze włączona sieć VPN dla bramy sieci VPN
+title: Konfigurowanie tunelu zawsze włączone VPN dla VPN Gateway
+description: Procedura konfigurowania zawsze włączone tunel VPN dla VPN Gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptional
+ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 81822297dcf9370fc8ce7f7ce0285689c31606ce
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 98d8c2f6870be16f3eb92219fc3d02f988390a41
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67695790"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295462"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>Konfigurowanie tunelu zawsze włączonego urządzenia sieci VPN
 
-Jedną z nowych funkcji klienta systemu Windows 10 wirtualnej sieci prywatnej (VPN) jest możliwość utrzymywania połączenia sieci VPN. Jest zawsze włączona funkcja systemu Windows 10, która umożliwia aktywne profilu sieci VPN, Połącz automatycznie, a pozostały połączone w oparciu o wyzwalaczach — to znaczy, logowania użytkownika, zmiany stanu sieci lub aktywny ekran urządzenia.
+Jedną z nowych funkcji klienta wirtualnej sieci prywatnej (VPN) systemu Windows 10 jest możliwość utrzymania połączenia sieci VPN. Funkcja Always On jest funkcją systemu Windows 10, która umożliwia automatyczne łączenie się z aktywnym profilem sieci VPN i pozostanie połączona na podstawie wyzwalaczy — w tym, logowania użytkownika, zmiany stanu sieci lub aktywności ekranu urządzenia.
 
-Bramy sieci wirtualnej platformy Azure może służyć za pomocą systemu Windows 10 zawsze włączone można ustanowić tuneli trwałego użytkownika, a także tuneli urządzenie na platformie Azure. Ten artykuł pomaga skonfigurować tunelu zawsze sieci VPN na urządzeniu.
+Bramy sieci wirtualnej platformy Azure mogą być używane z systemem Windows 10, które są zawsze włączone, aby nawiązywać trwałe tunele użytkowników oraz tunele urządzeń na platformie Azure. Ten artykuł pomoże Ci skonfigurować tunel urządzenia sieci VPN zawsze włączony.
 
-Zawsze włączona sieć VPN połączenia obejmują dwa typy tuneli:
+Zawsze włączone połączenia sieci VPN obejmują dwa typy tuneli:
 
-* **Tunel urządzenia** łączy do określonych serwerów sieci VPN, zanim użytkownicy logują się urządzenia. Scenariusze łączności przed logowaniem i celów zarządzania urządzeniem używają urządzeń tunelu.
+* **Tunel urządzenia** łączy się z określonymi serwerami sieci VPN przed zalogowaniem się użytkownika na urządzeniu. Scenariusze łączności przed zalogowaniem i cele zarządzania urządzeniami używają tunelu urządzenia.
 
-* **Użytkownika tunelu** łączy dopiero po logowania użytkownika na urządzeniu. Tunel użytkownika umożliwia użytkownikom dostęp do zasobów organizacji za pośrednictwem serwerów sieci VPN.
+* **Tunel użytkownika** łączy się tylko po zalogowaniu się użytkownika na urządzeniu. Tunel użytkownika umożliwia użytkownikom dostęp do zasobów organizacji za pośrednictwem serwerów sieci VPN.
 
-Tunel urządzenia i użytkownika tunelu działać niezależnie i z ich profilów sieci VPN. Mogą być połączone w tym samym czasie i można użyć różnych metod uwierzytelniania i inne ustawienia konfiguracji sieci VPN zgodnie z potrzebami.
+Tunel urządzenia i tunel użytkownika działają niezależnie od profilów sieci VPN. Mogą być połączone w tym samym czasie i mogą korzystać z innych metod uwierzytelniania i innych ustawień konfiguracji sieci VPN zgodnie z potrzebami.
 
 ## <a name="1-configure-the-gateway"></a>1. Konfigurowanie bramy
 
-Konfigurowanie bramy sieci VPN IKEv2 i uwierzytelniania opartego na certyfikatach, za pomocą tego [artykułu point-to-site](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
+Skonfiguruj bramę sieci VPN do korzystania z protokołu IKEv2 i uwierzytelniania opartego na certyfikatach przy użyciu tego [artykułu punkt-lokacja](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
 
 ## <a name="2-configure-the-user-tunnel"></a>2. Konfigurowanie tunelu użytkownika
 
-1. Instalowanie certyfikatów klienta na kliencie systemu Windows 10, jak pokazano w tym [artykułu klienta sieci VPN typu punkt lokacja](point-to-site-how-to-vpn-client-install-azure-cert.md). Ten certyfikat musi znajdować się w bieżącej Store użytkownika
-2. Konfigurowanie klienta zawsze włączona sieć VPN za pomocą programu PowerShell, programu SCCM lub usługi Intune przy użyciu [w instrukcjach](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections).
+1. Zainstaluj certyfikaty klienta na kliencie systemu Windows 10, jak pokazano w tym artykule dotyczącym [klienta sieci VPN typu punkt-lokacja](point-to-site-how-to-vpn-client-install-azure-cert.md). Certyfikat musi znajdować się w bieżącym magazynie użytkownika
+2. Użyj [tych instrukcji](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections), aby skonfigurować klienta usługi Always On VPN za pomocą programu PowerShell, oprogramowania SCCM lub usługi Intune.
 
 ## <a name="3-configure-the-device-tunnel"></a>3. Konfigurowanie tunelu urządzenia
 
-W celu pomyślnego ustanowienia tuneli urządzenia, muszą być spełnione następujące wymagania:
+Aby można było pomyślnie ustanowić tunel urządzenia, muszą zostać spełnione następujące wymagania:
 
-* Urządzenie musi być komputerem przyłączonym do domeny systemem Windows 10 Enterprise lub Education wersja 1709 lub nowszej.
-* Tunel tylko można skonfigurować dla wbudowanego rozwiązania Windows w sieci VPN, zostanie nawiązane za pomocą protokołu IKEv2 przy użyciu uwierzytelniania certyfikatów komputerów. 
-* Tylko jedno urządzenie tunelu można skonfigurować na każdym urządzeniu.
+* Urządzenie musi być komputerem przyłączonym do domeny z systemem Windows 10 Enterprise lub Education w wersji 1709 lub nowszej.
+* Tunel można skonfigurować tylko dla wbudowanego rozwiązania sieci VPN systemu Windows i jest ustanawiany przy użyciu protokołu IKEv2 z uwierzytelnianiem certyfikatu komputera. 
+* Na urządzenie można skonfigurować tylko jeden tunel urządzenia.
 
-1. Instalowanie certyfikatów klienta na kliencie systemu Windows 10, jak pokazano w tym [artykułu klienta sieci VPN typu punkt lokacja](point-to-site-how-to-vpn-client-install-azure-cert.md). Ten certyfikat musi znajdować się w magazynie komputera lokalnego.
-1. Użyj [w instrukcjach](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/vpn-device-tunnel-config#vpn-device-tunnel-configuration) tworzenia profilu sieci VPN i skonfigurować urządzenie tunelu w kontekście lokalnego konta SYSTEMOWEGO.
+1. Zainstaluj certyfikaty klienta na kliencie systemu Windows 10, jak pokazano w tym artykule dotyczącym [klienta sieci VPN typu punkt-lokacja](point-to-site-how-to-vpn-client-install-azure-cert.md). Certyfikat musi znajdować się w magazynie komputera lokalnego.
+1. Użyj [tych instrukcji](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/vpn-device-tunnel-config#vpn-device-tunnel-configuration) , aby utworzyć profil sieci VPN i skonfigurować tunel urządzenia w kontekście lokalnego konta systemowego.
 
-### <a name="configuration-example-for-device-tunnel"></a>Przykład konfiguracji dla urządzeń tunelu
+### <a name="configuration-example-for-device-tunnel"></a>Przykład konfiguracji dla tunelu urządzenia
 
-Po skonfigurowaniu bramy sieci wirtualnej i zainstalowany certyfikat klienta w magazynie komputera lokalnego na komputerze klienckim systemu Windows 10 umożliwiają konfigurowanie tunelu urządzenia klienta poniższych przykładach.
+Po skonfigurowaniu bramy sieci wirtualnej i zainstalowaniu certyfikatu klienta w magazynie komputera lokalnego na kliencie systemu Windows 10 Użyj następujących przykładów, aby skonfigurować tunel urządzenia klienckiego.
 
-1. Skopiuj poniższy tekst i zapisz go jako ***devicecert.ps1***.
+1. Skopiuj poniższy tekst i Zapisz go jako ***devicecert. ps1***.
 
    ```
    Param(
@@ -104,7 +104,7 @@ Po skonfigurowaniu bramy sieci wirtualnej i zainstalowany certyfikat klienta w m
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. Skopiuj poniższy tekst i zapisz go jako ***VPNProfile.xml*** w tym samym folderze co **devicecert.ps1**. Edytuj następujący tekst pod kątem danego środowiska.
+1. Skopiuj poniższy tekst i Zapisz go jako ***VPNProfile. XML*** w tym samym folderze, co **devicecert. ps1**. Edytuj następujący tekst, aby dopasować go do środowiska.
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers>`
    * `<Address>192.168.3.5</Address>`
@@ -139,29 +139,29 @@ Po skonfigurowaniu bramy sieci wirtualnej i zainstalowany certyfikat klienta w m
    <RegisterDNS>true</RegisterDNS>
    </VPNProfile>
    ```
-1. Pobierz **PsExec** z [Sysinternals](https://docs.microsoft.com/sysinternals/downloads/psexec) i Wyodrębnij pliki do **C:\PSTools**.
-1. W wierszu polecenia administratora uruchom program PowerShell przez uruchomienie:
+1. Pobierz **PsExec** z programu [Sysinternals](https://docs.microsoft.com/sysinternals/downloads/psexec) i Wyodrębnij pliki do **C:\PSTools**.
+1. W wierszu polecenia administratora uruchom program PowerShell, uruchamiając polecenie:
 
    ```
    C:\PsTools\PsExec.exe Powershell for 32-bit Windows
    C:\PsTools\PsExec64.exe Powershell for 64-bit Windows
    ```
 
-   ![Program PowerShell](./media/vpn-gateway-howto-always-on-device-tunnel/powershell.png)
-1. W programie PowerShell przejdź do folderu, gdzie **devicecert.ps1** i **VPNProfile.xml** znajdują, i uruchom następujące polecenie:
+   ![narzędzia](./media/vpn-gateway-howto-always-on-device-tunnel/powershell.png)
+1. W programie PowerShell przejdź do folderu, w którym znajdują się **devicecert. ps1** i **VPNProfile. XML** , a następnie uruchom następujące polecenie:
 
    ```powershell
    C:\> .\devicecert.ps1 .\VPNProfile.xml MachineCertTest
    ```
    
    ![MachineCertTest](./media/vpn-gateway-howto-always-on-device-tunnel/machinecerttest.png)
-1. Uruchom **rasphone**.
+1. Uruchom **Rasphone**.
 
-   ![Rasphone](./media/vpn-gateway-howto-always-on-device-tunnel/rasphone.png)
-1. Wyszukaj **MachineCertTest** wpis, a następnie kliknij przycisk **Connect**.
+   ![pliku](./media/vpn-gateway-howto-always-on-device-tunnel/rasphone.png)
+1. Wyszukaj wpis **MachineCertTest** , a następnie kliknij przycisk **Połącz**.
 
    ![Połączenie](./media/vpn-gateway-howto-always-on-device-tunnel/connect.png)
-1. Połączenie powiedzie się, należy ponownie uruchomić komputer. Tunel połączy się automatycznie.
+1. Jeśli połączenie zakończy się pomyślnie, należy ponownie uruchomić komputer. Tunel zostanie automatycznie nawiązane.
 
 ## <a name="cleanup"></a>Czyszczenie
 
@@ -169,6 +169,6 @@ Aby usunąć profil, uruchom następujące polecenie:
 
 ![Czyszczenie](./media/vpn-gateway-howto-always-on-device-tunnel/cleanup.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Do rozwiązywania problemów, zobacz [problemy z połączeniem usługi Azure point-to-site](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
+Aby uzyskać informacje na temat rozwiązywania problemów, zobacz [problemy z połączeniem punkt-lokacja platformy Azure](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)

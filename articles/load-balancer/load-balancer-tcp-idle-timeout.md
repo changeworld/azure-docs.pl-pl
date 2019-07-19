@@ -1,10 +1,10 @@
 ---
-title: Konfigurowanie limitu czasu bezczynności protokołu TCP modułu równoważenia obciążenia na platformie Azure
+title: Konfigurowanie Load Balancer limitu czasu bezczynności protokołu TCP na platformie Azure
 titlesuffix: Azure Load Balancer
-description: Konfigurowanie limitu czasu bezczynności protokołu TCP modułu równoważenia obciążenia
+description: Skonfiguruj limit czasu bezczynności protokołu TCP Load Balancer
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: asudbring
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
@@ -12,49 +12,49 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: 0c57eec4d739da13d98099a6b2f01fbf0ad0051c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: b3df1ead7a3164ffd9a4b4acf8820d0f5b82cee3
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60734608"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274178"
 ---
-# <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Skonfiguruj ustawienia limitu czasu bezczynności TCP dla modułu równoważenia obciążenia platformy Azure
+# <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Skonfiguruj ustawienia limitu czasu bezczynności protokołu TCP dla Azure Load Balancer
 
 [!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
-W konfiguracji domyślnej usługa Azure Load Balancer ma ustawienie limitu czasu bezczynności trwający 4 min. Jeśli w okresie braku aktywności jest dłuższa niż wartość limitu czasu, nie ma gwarancji, TCP lub HTTP w sesji jest utrzymywany między klientem i usługi w chmurze.
+W konfiguracji domyślnej Azure Load Balancer ma ustawienie limitu czasu bezczynności wynoszące 4 minuty. Jeśli okres braku aktywności jest dłuższy niż wartość limitu czasu, nie ma gwarancji, że sesja TCP lub HTTP jest utrzymywana między klientem a usługą w chmurze.
 
-Gdy połączenie jest zamknięte, Twoja aplikacja kliencka może zostać wyświetlony następujący komunikat o błędzie: "Połączenie podstawowe zostało zamknięte: Oczekiwano życiu połączenie zostało zamknięte przez serwer."
+Gdy połączenie zostanie zamknięte, aplikacja kliencka może otrzymać następujący komunikat o błędzie: "Połączenie podstawowe zostało zamknięte: Połączenie, które miało być utrzymywane w stanie aktywności, zostało zamknięte przez serwer ".
 
-Powszechną praktyką jest, aby użyć TCP keep-alive. Praktyka ta przechowuje połączenia aktywne przez dłuższy czas. Aby uzyskać więcej informacji, zobacz te [przykłady .NET](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx). Włączone keep-alive, pakiety są wysyłane w czasie nieaktywności w połączeniu. Te pakiety utrzymywania aktywności upewnij się, że wartości limitu czasu bezczynności nigdy nie zostanie osiągnięty, a połączenie jest utrzymywane przez długi czas.
+Typowym zastosowaniem jest utrzymywanie aktywności protokołu TCP. Ta metoda utrzymuje, że połączenie jest aktywne przez dłuższy czas. Aby uzyskać więcej informacji, zobacz te [przykłady dla platformy .NET](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx). Gdy włączona jest funkcja Keep-Alive, pakiety są wysyłane w trakcie okresów braku aktywności w ramach połączenia. Te pakiety Keep-Alive zapewniają, że wartość limitu czasu bezczynności nigdy nie zostanie osiągnięta, a połączenie jest utrzymywane przez długi czas.
 
-To ustawienie działa tylko w przypadku połączeń przychodzących. Aby uniknąć utraty połączenia, możesz skonfigurować keep-alive TCP w odstępie czasu mniejsze niż ustawienie limitu czasu bezczynności lub zwiększ wartość limitu czasu bezczynności. Aby zapewnić obsługę takich scenariuszy, Dodaliśmy obsługę można skonfigurować limit czasu bezczynności. Można teraz ustawić czas od 4 do 30 minut.
+To ustawienie działa tylko dla połączeń przychodzących. Aby uniknąć utraty połączenia, należy skonfigurować opcję utrzymywania aktywności TCP z interwałem mniejszym niż limit czasu bezczynności lub zwiększyć wartość limitu czasu bezczynności. Aby obsługiwać takie scenariusze, dodaliśmy obsługę dla konfigurowalnego limitu czasu bezczynności. Teraz można ustawić ją na czas trwania od 4 do 30 minut.
 
-TCP keep-alive działa dobrze w przypadku scenariuszy, w której czas pracy baterii nie jest ograniczeniem. Nie jest zalecane dla aplikacji mobilnych. Za pomocą protokołu TCP keep-alive w aplikacji mobilnej można szybciej wyczerpania baterii urządzenia.
+Utrzymywanie aktywności TCP działa dobrze w przypadku scenariuszy, w których cykl życia baterii nie jest ograniczeniem. Nie jest to zalecane w przypadku aplikacji mobilnych. Korzystanie z funkcji utrzymywania połączenia TCP w aplikacji mobilnej umożliwia szybsze opróżnianie baterii urządzenia.
 
-![Limit czasu protokołu TCP](./media/load-balancer-tcp-idle-timeout/image1.png)
+![Limit czasu TCP](./media/load-balancer-tcp-idle-timeout/image1.png)
 
-Jak zmienić ustawienia limitu czasu bezczynności w przypadku maszyn wirtualnych i usług w chmurze można znaleźć w następujących sekcjach.
+W poniższych sekcjach opisano, jak zmienić ustawienia limitu czasu bezczynności w maszynach wirtualnych i usługach w chmurze.
 
-## <a name="configure-the-tcp-timeout-for-your-instance-level-public-ip-to-15-minutes"></a>Konfigurowanie limitu czasu protokołu TCP dla usługi na poziomie wystąpienia publiczny adres IP na 15 minut
+## <a name="configure-the-tcp-timeout-for-your-instance-level-public-ip-to-15-minutes"></a>Skonfiguruj limit czasu protokołu TCP dla publicznego adresu IP na poziomie wystąpienia na 15 minut
 
 ```powershell
 Set-AzurePublicIP -PublicIPName webip -VM MyVM -IdleTimeoutInMinutes 15
 ```
 
-Parametr `IdleTimeoutInMinutes` jest opcjonalny. Jeśli nie jest ustawiona, domyślna wartość limitu czasu jest 4 minuty. Zakres dopuszczalny limit czasu wynosi 4 do 30 minut.
+Parametr `IdleTimeoutInMinutes` jest opcjonalny. Jeśli nie jest ustawiona, domyślny limit czasu wynosi 4 minuty. Akceptowalny zakres limitu czasu wynosi od 4 do 30 minut.
 
-## <a name="set-the-idle-timeout-when-creating-an-azure-endpoint-on-a-virtual-machine"></a>Ustaw limit czasu bezczynności, podczas tworzenia punktu końcowego platformy Azure na maszynie wirtualnej
+## <a name="set-the-idle-timeout-when-creating-an-azure-endpoint-on-a-virtual-machine"></a>Ustaw limit czasu bezczynności podczas tworzenia punktu końcowego platformy Azure na maszynie wirtualnej
 
-Aby zmienić ustawienia limitu czasu dla punktu końcowego, użyj następującego polecenia:
+Aby zmienić ustawienie limitu czasu dla punktu końcowego, należy użyć następujących opcji:
 
 ```powershell
 Get-AzureVM -ServiceName "mySvc" -Name "MyVM1" | Add-AzureEndpoint -Name "HttpIn" -Protocol "tcp" -PublicPort 80 -LocalPort 8080 -IdleTimeoutInMinutes 15| Update-AzureVM
 ```
 
-Aby pobrać konfigurację limitu czasu bezczynności, użyj następującego polecenia:
+Aby pobrać nieczynną konfigurację limitu czasu, użyj następującego polecenia:
 
     PS C:\> Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Get-AzureEndpoint
     VERBOSE: 6:43:50 PM - Completed Operation: Get Deployment
@@ -74,19 +74,19 @@ Aby pobrać konfigurację limitu czasu bezczynności, użyj następującego pole
     InternalLoadBalancerName :
     IdleTimeoutInMinutes : 15
 
-## <a name="set-the-tcp-timeout-on-a-load-balanced-endpoint-set"></a>Ustawianie limitu czasu protokołu TCP w zestawie końcowy z równoważeniem obciążenia
+## <a name="set-the-tcp-timeout-on-a-load-balanced-endpoint-set"></a>Ustawianie limitu czasu protokołu TCP dla zestawu punktów końcowych ze zrównoważonym obciążeniem
 
-Jeśli punkty końcowe są częścią zestawu końcowy z równoważeniem obciążenia, w zestawie końcowy z równoważeniem obciążenia należy ustawić limitu czasu protokołu TCP. Na przykład:
+Jeśli punkty końcowe są częścią zestawu punktów końcowych ze zrównoważonym obciążeniem, należy ustawić limit czasu protokołu TCP dla zestawu punktów końcowych ze zrównoważonym obciążeniem. Na przykład:
 
 ```powershell
 Set-AzureLoadBalancedEndpoint -ServiceName "MyService" -LBSetName "LBSet1" -Protocol tcp -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 -IdleTimeoutInMinutes 15
 ```
 
-## <a name="change-timeout-settings-for-cloud-services"></a>Zmienić ustawienia limitu czasu dla usług w chmurze
+## <a name="change-timeout-settings-for-cloud-services"></a>Zmień ustawienia limitu czasu dla usług Cloud Services
 
-Zestaw Azure SDK umożliwia aktualizowanie usługi w chmurze. Wprowadzone ustawienia punktu końcowego usług w chmurze w pliku csdef. Aktualizowanie limitu czasu protokołu TCP dla wdrożenia usługi w chmurze wymaga uaktualnienia wdrożenia. Wyjątkiem jest, jeśli określono limitu czasu protokołu TCP, tylko w przypadku publicznego adresu IP. Ustawienia publicznego adresu IP znajdują się w pliku .cscfg. Ponadto można aktualizować za pośrednictwem aktualizacji wdrażania i uaktualniania.
+Możesz użyć zestawu Azure SDK, aby zaktualizować usługę w chmurze. Ustawienia punktu końcowego dla usług w chmurze są wprowadzane w pliku csdef. Aktualizacja limitu czasu TCP na potrzeby wdrożenia usługi w chmurze wymaga uaktualnienia wdrożenia. Wyjątek polega na tym, że limit czasu TCP jest określony tylko dla publicznego adresu IP. Ustawienia publicznego adresu IP znajdują się w pliku. cscfg i można je zaktualizować za pomocą aktualizacji i uaktualnienia wdrożenia.
 
-Zmiany .csdef ustawień punktu końcowego są następujące:
+Csdef zmiany ustawień punktu końcowego są następujące:
 
 ```xml
 <WorkerRole name="worker-role-name" vmsize="worker-role-size" enableNativeCodeExecution="[true|false]">
@@ -96,7 +96,7 @@ Zmiany .csdef ustawień punktu końcowego są następujące:
 </WorkerRole>
 ```
 
-Zmiany .cscfg ustawienia limitu czasu na publiczne adresy IP są następujące:
+Zmiany w pliku cscfg dla ustawienia limitu czasu dla publicznych adresów IP to:
 
 ```xml
 <NetworkConfiguration>
@@ -113,7 +113,7 @@ Zmiany .cscfg ustawienia limitu czasu na publiczne adresy IP są następujące:
 
 ## <a name="rest-api-example"></a>Przykład interfejsu API REST
 
-Limit czasu bezczynności protokołu TCP można skonfigurować za pomocą interfejsu API zarządzania usługami. Upewnij się, że `x-ms-version` nagłówka ustawiono wersję `2014-06-01` lub nowszej. Zaktualizuj konfigurację określonego ze zrównoważonym obciążeniem wejściowych punktów końcowych na wszystkich maszynach wirtualnych w ramach wdrożenia.
+Limit czasu bezczynności protokołu TCP można skonfigurować przy użyciu interfejsu API zarządzania usługami. Upewnij się, że `x-ms-version` nagłówek jest ustawiony na wersję `2014-06-01` lub nowszą. Zaktualizuj konfigurację określonych punktów końcowych ze zrównoważonym obciążeniem na wszystkich maszynach wirtualnych we wdrożeniu.
 
 ### <a name="request"></a>Żądanie
 
@@ -154,7 +154,7 @@ Limit czasu bezczynności protokołu TCP można skonfigurować za pomocą interf
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Omówienie modułu równoważenia obciążenia wewnętrznego](load-balancer-internal-overview.md)
+[Przegląd wewnętrznego modułu równoważenia obciążenia](load-balancer-internal-overview.md)
 
 [Wprowadzenie do konfigurowania modułu równoważenia obciążenia dostępnego z Internetu](load-balancer-get-started-internet-arm-ps.md)
 

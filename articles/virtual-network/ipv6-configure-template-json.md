@@ -1,7 +1,7 @@
 ---
-title: Wdróż aplikację podwójnego stosu protokołu IPv6 w sieci wirtualnej platformy Azure — Menedżer zasobów szablonu (wersja zapoznawcza)
+title: Wdrażanie aplikacji dwustosowej IPv6 przy użyciu podstawowego Load Balancer w usłudze Azure Virtual Network — szablon usługi Resource Manager (wersja zapoznawcza)
 titlesuffix: Azure Virtual Network
-description: W tym artykule przedstawiono sposób wdrażania aplikacji podwójnego stosu protokołu IPv6 w sieci wirtualnej platformy Azure za pomocą szablonów maszyn wirtualnych platformy Azure Resource Manager.
+description: W tym artykule pokazano, jak wdrożyć aplikację dwustosową protokołu IPv6 w usłudze Azure Virtual Network przy użyciu szablonów maszyn wirtualnych Azure Resource Manager.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -10,26 +10,26 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 04/22/2019
+ms.date: 06/26/2019
 ms.author: kumud
-ms.openlocfilehash: ae90bc4a12763803f38224d917c4644a68ae7d6b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e97a5a478871d94e074b59558a11df1ec752b0f9
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62131031"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249840"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-in-azure---template-preview"></a>Wdrażanie aplikacji podwójnego stosu protokołu IPv6 na platformie Azure — szablon (wersja zapoznawcza)
+# <a name="deploy-an-ipv6-dual-stack-application-with-basic-load-balancer-in-azure---template-preview"></a>Wdrażanie aplikacji podwójnego stosu IPv6 przy użyciu podstawowego Load Balancer na platformie Azure — szablon (wersja zapoznawcza)
 
-Ten artykuł zawiera listę zadań konfiguracji protokołu IPv6 przy użyciu części szablonu maszyny Wirtualnej platformy Azure Resource Manager, który dotyczy. Szablon opisanych w tym artykule umożliwia wdrażanie aplikacji na platformie Azure, która obejmuje podwójnego stosu sieci wirtualnej z podsieci IPv4 i IPv6, moduł równoważenia obciążenia z konfiguracji frontonu podwójnego (IPv4 + IPv6), maszyny wirtualne z kartami sieciowymi, które mają dwuwarstwowa protokołu IP podwójny stos (IPv4 + IPv6) konfigurację sieciową grupę zabezpieczeń i publicznych adresów IP. 
+Ten artykuł zawiera listę zadań konfiguracyjnych IPv6 z częścią szablonu maszyny wirtualnej Azure Resource Manager, która ma zastosowanie do. Użyj szablonu opisanego w tym artykule, aby wdrożyć aplikację podwójnego stosu (IPv4 + IPv6) na platformie Azure, która obejmuje sieć wirtualną o podwójnej stercie z podsieciami IPv4 i IPv6, moduł równoważenia obciążenia z podwójnymi konfiguracjami frontonu (IPv4 + IPv6), maszyny wirtualne z kartami sieciowymi z podwójnym adresem IP Konfiguracja, sieciowa Grupa zabezpieczeń i publiczne adresy IP. 
 
 ## <a name="required-configurations"></a>Wymagane konfiguracje
 
-Wyszukaj sekcje szablonu w szablonie, aby zobaczyć, których powinien wystąpić.
+Wyszukaj sekcje szablonu w szablonie, aby zobaczyć, gdzie powinny wystąpić.
 
-### <a name="ipv6-addressspace-for-the-virtual-network"></a>Element addressSpace IPv6 w sieci wirtualnej
+### <a name="ipv6-addressspace-for-the-virtual-network"></a>AddressSpace IPv6 dla sieci wirtualnej
 
-Dodaj sekcję szablonu:
+Sekcja szablonu do dodania:
 
 ```JSON
         "addressSpace": {
@@ -38,9 +38,9 @@ Dodaj sekcję szablonu:
             "[variables('vnetv6AddressRange')]"    
 ```
 
-### <a name="ipv6-subnet-within-the-ipv6-virtual-network-addressspace"></a>Podsieci IPv6 w element addressSpace sieci wirtualnej IPv6
+### <a name="ipv6-subnet-within-the-ipv6-virtual-network-addressspace"></a>Podsieć IPv6 w sieci wirtualnej IPv6 addressSpace
 
-Dodaj sekcję szablonu:
+Sekcja szablonu do dodania:
 ```JSON
           {
             "name": "V6Subnet",
@@ -50,9 +50,9 @@ Dodaj sekcję szablonu:
 
 ```
 
-### <a name="ipv6-configuration-for-the-nic"></a>Konfiguracja protokołu IPv6 dla karty Sieciowej
+### <a name="ipv6-configuration-for-the-nic"></a>Konfiguracja protokołu IPv6 dla karty sieciowej
 
-Dodaj sekcję szablonu:
+Sekcja szablonu do dodania:
 ```JSON
           {
             "name": "ipconfig-v6",
@@ -68,7 +68,7 @@ Dodaj sekcję szablonu:
                 }
 ```
 
-### <a name="ipv6-network-security-group-nsg-rules"></a>Reguły Sieciowej grupy zabezpieczeń sieci IPv6
+### <a name="ipv6-network-security-group-nsg-rules"></a>Reguły sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) IPv6
 
 ```JSON
           {
@@ -86,9 +86,9 @@ Dodaj sekcję szablonu:
             }
 ```
 
-## <a name="conditional-configuration"></a>Konfiguracja warunkowe
+## <a name="conditional-configuration"></a>Konfiguracja warunkowa
 
-Jeśli używasz sieciowego urządzenia wirtualnego należy dodać trasy protokołu IPv6 w tabeli tras. W przeciwnym razie ta konfiguracja jest opcjonalne.
+Jeśli używasz sieciowego urządzenia wirtualnego, Dodaj trasy IPv6 w tabeli tras. W przeciwnym razie ta konfiguracja jest opcjonalna.
 
 ```JSON
     {
@@ -120,7 +120,7 @@ Jeśli używasz sieciowego urządzenia wirtualnego należy dodać trasy protoko�
               }
 ```
 
-### <a name="ipv6-public-ip-addresses"></a>Protokół IPv6 publicznych adresów IP
+### <a name="ipv6-public-ip-addresses"></a>Publiczne adresy IP protokołu IPv6
 
 ```JSON
     {
@@ -134,7 +134,7 @@ Jeśli używasz sieciowego urządzenia wirtualnego należy dodać trasy protoko�
       }
 ```
 
-### <a name="ipv6-front-end-for-load-balancer"></a>Protokół IPv6 frontonu modułu równoważenia obciążenia
+### <a name="ipv6-front-end-for-load-balancer"></a>Fronton IPv6 dla Load Balancer
 
 ```JSON
           {
@@ -145,7 +145,7 @@ Jeśli używasz sieciowego urządzenia wirtualnego należy dodać trasy protoko�
               }
 ```
 
-### <a name="ipv6-back-end-address-pool-for-load-balancer"></a>Pula adresów IPv6 zaplecza dla modułu równoważenia obciążenia
+### <a name="ipv6-back-end-address-pool-for-load-balancer"></a>Pula adresów zaplecza IPv6 dla Load Balancer
 
 ```JSON
               "backendAddressPool": {
@@ -158,7 +158,7 @@ Jeśli używasz sieciowego urządzenia wirtualnego należy dodać trasy protoko�
             "name": "lbrule-v6"
 ```
 
-### <a name="ipv6-load-balancer-rules-to-associate-incoming-and-outgoing-ports"></a>Reguły modułu równoważenia skojarzyć porty przychodzące i wychodzące obciążenia protokołu IPv6
+### <a name="ipv6-load-balancer-rules-to-associate-incoming-and-outgoing-ports"></a>Reguły modułu równoważenia obciążenia IPv6 do kojarzenia portów przychodzących i wychodzących
 
 ```JSON
           {
@@ -175,9 +175,9 @@ Jeśli używasz sieciowego urządzenia wirtualnego należy dodać trasy protoko�
                 }
 ```
 
-## <a name="sample-vm-template-json"></a>Przykładowy kod JSON szablonu maszyny Wirtualnej
-Kliknij przycisk [tutaj](https://azure.microsoft.com/resources/templates/ipv6-in-vnet/) wdrożyć aplikację podwójnego stosu protokołu IPv6 w sieci wirtualnej platformy Azure przy użyciu szablonu usługi Azure Resource Manager.
+## <a name="sample-vm-template-json"></a>Przykładowy kod JSON szablonu maszyny wirtualnej
+Aby wdrożyć aplikację dwustosową protokołu IPv6 w usłudze Azure Virtual Network przy użyciu szablonu Azure Resource Manager, Wyświetl przykładowy szablon w [tym miejscu](https://azure.microsoft.com/resources/templates/ipv6-in-vnet/).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Można znaleźć szczegółowe informacje na temat cen [publiczne adresy IP](https://azure.microsoft.com/pricing/details/ip-addresses/), [przepustowość sieci](https://azure.microsoft.com/pricing/details/bandwidth/), lub [modułu równoważenia obciążenia](https://azure.microsoft.com/pricing/details/load-balancer/).
+Możesz znaleźć szczegółowe informacje o cenach [publicznych adresów IP](https://azure.microsoft.com/pricing/details/ip-addresses/), [przepustowości sieci](https://azure.microsoft.com/pricing/details/bandwidth/)lub [Load Balancer](https://azure.microsoft.com/pricing/details/load-balancer/).

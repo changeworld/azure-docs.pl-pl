@@ -1,6 +1,6 @@
 ---
-title: Demon aplikacji wywoływania interfejsów API sieci web (Konfiguracja aplikacji) — Platforma tożsamości firmy Microsoft
-description: Dowiedz się, jak utworzyć aplikację demona wywołuje interfejsy API (Konfiguracja aplikacji) sieci web
+title: Aplikacja demona wywołująca interfejsy API sieci Web (Konfiguracja aplikacji) — platforma tożsamości firmy Microsoft
+description: Dowiedz się, jak utworzyć aplikację demona, która wywołuje interfejsy API sieci Web (Konfiguracja aplikacji)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -12,63 +12,63 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd2da6baecdce3ab85a45347f27f573bf814445d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 705545fd5167087be1a001c45f58907d6ff225e8
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055754"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277822"
 ---
-# <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Demon aplikacji, że wywołania sieci web interfejsy API — Konfiguracja kodu
+# <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Aplikacja demona, która wywołuje interfejsy API sieci Web — konfiguracja kodu
 
-Dowiedz się, jak skonfigurować kod aplikacji demona wywołuje interfejsy API sieci web.
+Dowiedz się, jak skonfigurować kod dla aplikacji demona, która wywołuje interfejsy API sieci Web.
 
-## <a name="msal-libraries-supporting-daemon-apps"></a>Aplikacje demona z pomocniczych biblioteki MSAL
+## <a name="msal-libraries-supporting-daemon-apps"></a>Biblioteki MSAL obsługujące aplikacje demona
 
-Biblioteki Microsoft Obsługa demonem aplikacje są:
+Biblioteki firmy Microsoft obsługujące aplikacje demona są następujące:
 
   Biblioteka MSAL | Opis
   ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Obsługiwane platformy do tworzenia aplikacji demona to platformy .NET Framework i .NET Core (nie platformy uniwersalnej systemu Windows, platformy Xamarin.iOS i Xamarin.Android jako tych platform są używane do tworzenia aplikacji klienckich publiczny)
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL.Python | Programowanie w toku — w publicznej wersji zapoznawczej
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL.Java | Programowanie w toku — w publicznej wersji zapoznawczej
+  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Obsługiwane platformy do kompilowania aplikacji demona są .NET Framework i platformy .NET Core (nie platformy UWP, Xamarin. iOS i Xamarin. Android, ponieważ te platformy są używane do tworzenia publicznych aplikacji klienckich).
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL. Python | Opracowywanie w toku — w publicznej wersji zapoznawczej
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL.Java | Opracowywanie w toku — w publicznej wersji zapoznawczej
 
 ## <a name="configuration-of-the-authority"></a>Konfiguracja urzędu
 
-Biorąc pod uwagę, że aplikacje demona nie należy używać uprawnień delegowanych, ale uprawnienia aplikacji ich *obsługiwany typ konta* nie może być *kont w dowolnym katalogu organizacji i Microsoft osobistych kont () na przykład, Skype, Xbox, Outlook.com)* . W rzeczywistości jest Brak administratora dzierżawy do udzielania zgody aplikacji demona dla osobistych kont Microsoft. Musisz wybrać *kont w mojej organizacji* lub *kont w dowolnej organizacji*.
+Mając na uwadze, że aplikacje demona nie korzystają z uprawnień delegowanych, ale uprawnienia aplikacji, ich *obsługiwany typ konta* nie może być *kontami w żadnym katalogu organizacyjnym i osobistymi kontami Microsoft (na przykład Skype, Xbox, Outlook.com)* . W rzeczywistości nie istnieje Administrator dzierżawy, który może udzielić zgody na aplikację demona dla kont osobistych firmy Microsoft. Musisz wybrać *konta w mojej organizacji* lub *kontach w dowolnej organizacji*.
 
-W związku z tym urząd określony w konfiguracji aplikacji powinna być dzierżawy ed (określenia Identyfikatora dzierżawy lub nazwy domeny skojarzonego z Twoją organizacją).
+W związku z tym Urząd określony w konfiguracji aplikacji powinien mieć wartość dzierżawca (określając identyfikator dzierżawy lub nazwę domeny skojarzoną z Twoją organizacją).
 
-Jeśli jesteś niezależnym dostawcą oprogramowania i chcesz zapewniają narzędzie wielodostępnych, możesz użyć `organizations`. Jednak należy pamiętać o tym, należy również do wyjaśnienia dla klientów, jak udzielić zgody administratora. Zobacz [żądanie zgody na całej dzierżawie](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) Aby uzyskać szczegółowe informacje. Również ma ograniczenia w MSAL, `organizations` jest dozwolona tylko w przypadku poświadczeń klienta klucz tajny aplikacji (nie certyfikat). Zobacz [usterkę platformy MSAL.NET #891](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/891)
+Jeśli jesteś niezależnym dostawcą oprogramowania i chcesz udostępnić narzędzie z wieloma dzierżawcami, możesz użyć `organizations`programu. Należy jednak pamiętać, że należy również wyjaśnić swoim klientom sposób udzielania zgody administratora. Aby uzyskać szczegółowe informacje, zobacz prośba o [zgodę na całą dzierżawę](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) . Ponadto jest obecnie ograniczenie w MSAL, które `organizations` jest dozwolone tylko wtedy, gdy poświadczenia klienta są wpisem tajnym aplikacji (nie certyfikatem). Zobacz [MSAL.NET usterek #891](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/891)
 
-## <a name="application-configuration-and-instantiation"></a>Konfiguracja aplikacji i wystąpienia
+## <a name="application-configuration-and-instantiation"></a>Konfiguracja i tworzenie aplikacji
 
-W bibliotekach MSAL poświadczeń klienta (hasło lub certyfikat) są przekazywane jako parametr do budowy aplikacji poufne klienta.
+W bibliotekach MSAL poświadczenia klienta (klucz tajny lub certyfikat) są przesyłane jako parametr konstrukcji poufnej aplikacji klienckiej.
 
 > [!IMPORTANT]
-> Nawet jeśli Twoja aplikacja jest aplikacją konsoli uruchamianie jako usługi, jeśli jest to aplikacja demona musi to być aplikacja poufne klienta.
+> Nawet jeśli aplikacja jest aplikacją konsolową działającą jako usługa, to aplikacja demona musi być poufną aplikacją kliencką.
 
 ### <a name="msalnet"></a>MSAL.NET
 
-Dodaj [Microsoft.IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) pakiet NuGet do aplikacji.
+Dodaj pakiet NuGet [Microsoft. IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) do swojej aplikacji.
 
-Użyj platformy MSAL.NET przestrzeni nazw
+Użyj przestrzeni nazw MSAL.NET
 
 ```CSharp
 using Microsoft.Identity.Client;
 ```
 
-Demon aplikacji zostanie wyświetlony przez `IConfidentialClientApplication`
+Aplikacja demona będzie wyświetlana przez`IConfidentialClientApplication`
 
 ```CSharp
 IConfidentialClientApplication app;
 ```
 
-Poniżej przedstawiono kod, aby skompilować aplikację przy użyciu klucza tajnego aplikacji:
+Oto kod do kompilowania aplikacji przy użyciu klucza tajnego aplikacji:
 
 ```CSharp
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
@@ -77,7 +77,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
            .Build();
 ```
 
-Poniżej przedstawiono kod, aby skompilować aplikację przy użyciu certyfikatu:
+Oto kod służący do kompilowania aplikacji z certyfikatem:
 
 ```CSharp
 X509Certificate2 certificate = ReadCertificate(config.CertificateName);
@@ -87,7 +87,10 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
     .Build();
 ```
 
-### <a name="msalpython"></a>MSAL.Python
+Na koniec zamiast klucza tajnego klienta lub certyfikatu poufna aplikacja kliencka może również udowodnić swoją tożsamość za pomocą potwierdzeń klientów. Ten zaawansowany scenariusz jest szczegółowo opisany w potwierdzeniach [klienta](msal-net-client-assertions.md)
+
+
+### <a name="msalpython"></a>MSAL. Python
 
 ```Python
 # Create a preferably long-lived app instance which maintains a token cache.
@@ -117,7 +120,7 @@ ConfidentialClientApplication cca = ConfidentialClientApplication
   .build();
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Demon aplikacji — uzyskiwania tokenów dla aplikacji](./scenario-daemon-acquire-token.md)
+> [Aplikacja demona — uzyskiwanie tokenów dla aplikacji](./scenario-daemon-acquire-token.md)

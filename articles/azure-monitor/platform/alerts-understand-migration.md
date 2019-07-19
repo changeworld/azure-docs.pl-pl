@@ -1,206 +1,270 @@
 ---
-title: Zrozumienie sposobu działania narzędzia migracji dobrowolne alertów usługi Azure Monitor
-description: Zrozumienie sposobu działania narzędzia migracji alerty i rozwiązywanie problemów.
+title: Informacje o tym, jak działa narzędzie do migracji dobrowolnej dla Azure Monitor alertów
+description: Informacje o sposobie działania narzędzia migracji alertów i rozwiązywaniu problemów.
 author: snehithm
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 07/10/2019
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 015000388c5629dbd8ed8833931a809ebd738bd6
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: f981c14e26c51c427dab6b418cab8df46b1bb026
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295523"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302245"
 ---
-# <a name="understand-how-the-migration-tool-works"></a>Zrozumienie sposobu działania narzędzia migracji
+# <a name="understand-how-the-migration-tool-works"></a>Informacje o działaniu narzędzia migracji
 
-Jako [ogłoszonej wcześniej](monitoring-classic-retirement.md), alertów klasycznych w usłudze Azure Monitor są zostanie wycofana 31 sierpnia 2019 r (został pierwotnie 30 czerwca maja 2019 r). Narzędzie migracji jest dostępne w portalu Azure, aby klienci używają reguł alertów klasycznych i którzy chcą wyzwolić migrację samodzielnie.
+Zgodnie z [dotychczas ogłoszone](monitoring-classic-retirement.md), klasyczne alerty w Azure monitor są wycofywane 31 sierpnia 2019 (pierwotnie 30 czerwca 2019). Narzędzie do migracji jest dostępne w Azure Portal do klientów korzystających z klasycznych reguł alertów i którzy chcą wyzwolić migrację.
 
-W tym artykule opisano, jak działa narzędzie dobrowolne migracji. Omówiono także środki zaradcze dla niektórych typowych problemów.
+W tym artykule wyjaśniono, jak działa narzędzie do migracji dobrowolnej. Opisano w nim również sposoby rozwiązywania niektórych typowych problemów.
 
 > [!NOTE]
-> Ze względu na opóźnienie wdrożenie narzędzie do migracji została dacie wycofania migracji alertów klasycznych [rozszerzony do 31 sierpnia 2019](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/) od daty pierwotnie ogłoszone się 30 czerwca 2019 r.
+> Z powodu opóźnienia w wycofywaniu narzędzia migracji Data wycofania migracji klasycznych alertów została [rozszerzona do 31 sierpnia 2019](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/) od pierwotnie ogłoszonej daty 30 czerwca 2019.
 
 ## <a name="classic-alert-rules-that-will-not-be-migrated"></a>Klasyczne reguły alertów, które nie zostaną zmigrowane
 
 > [!IMPORTANT]
-> Alerty dziennika aktywności (takie jak usługa alerty dotyczące kondycji) i alertów usługi Log nie podlegają migracji. Migracja dotyczy tylko klasyczne reguły alertów opisem [tutaj](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform).
+> Migracja nie ma wpływu na alerty dziennika aktywności (w tym alerty kondycji usługi) i alerty dziennika. Migracja dotyczy tylko klasycznych reguł alertów opisanych [tutaj](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform).
 
-Mimo że narzędzia można migrować prawie wszystkie [klasycznej reguły alertu](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform), istnieje kilka wyjątków. Następujące reguły alertu nie będą migrowane przy użyciu narzędzia (lub podczas migracji automatyczne uruchamianie 2019 września):
+Mimo że narzędzie może migrować niemal wszystkie [klasyczne reguły alertów](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform), istnieją pewne wyjątki. Następujące reguły alertów nie zostaną zmigrowane przy użyciu narzędzia (lub podczas automatycznej migracji od września 2019):
 
-- Klasyczne reguły alertów dotyczących metryk gościa maszyny wirtualnej (Windows i Linux). Zobacz [wskazówki dotyczące ponownego tworzenia tych reguł alertów w nowych alertów dotyczących metryk](#guest-metrics-on-virtual-machines) w dalszej części tego artykułu.
-- Klasyczne reguły alertów dotyczących metryk klasycznego magazynu. Zobacz [wskazówki dotyczące monitorowania sieci klasycznych kont magazynu](https://azure.microsoft.com/blog/modernize-alerting-using-arm-storage-accounts/).
-- Klasyczne reguły alertów na niektóre metryki konta magazynu. Zobacz [szczegóły](#storage-account-metrics) w dalszej części tego artykułu.
-- Klasyczne reguły alertów na niektóre metryki usługi Cosmos DB. Szczegóły zostanie dodana w przyszłej aktualizacji.
+- Klasyczne reguły alertów na metrykach gościa maszyn wirtualnych (zarówno w systemie Windows, jak i Linux). Zapoznaj się ze [wskazówkami dotyczącymi ponownego tworzenia reguł alertów w nowych alertach metryk](#guest-metrics-on-virtual-machines) w dalszej części tego artykułu.
+- Klasyczne reguły alertów na klasycznych metrykach magazynu. Zapoznaj się ze [wskazówkami dotyczącymi monitorowania klasycznych kont magazynu](https://azure.microsoft.com/blog/modernize-alerting-using-arm-storage-accounts/).
+- Klasyczne reguły alertów na niektórych metrykach konta magazynu. Zobacz [szczegóły](#storage-account-metrics) w dalszej części tego artykułu.
+- Reguły klasycznego alertu dotyczące niektórych metryk Cosmos DB. Zobacz [szczegóły](#cosmos-db-metrics) w dalszej części tego artykułu.
+- Klasyczne reguły alertów dla wszystkich klasycznych maszyn wirtualnych i metryk usług Cloud Services (Microsoft. ClassicCompute/virtualMachines i Microsoft. ClassicCompute/domainNames/Slots/role). Zobacz [szczegóły](#classic-compute-metrics) w dalszej części tego artykułu.
 
-Jeśli Twoja subskrypcja obejmuje takie zasady klasyczne, można migrować je ręcznie. Ponieważ firma Microsoft nie udostępnia automatyczną migrację, wszelkie istniejące, klasyczne alertów dotyczących metryk z tych typów będą nadal działać do momentu 2020 czerwca. To rozszerzenie zapewnia czasu, należy przenieść do nowych alertów. Jednak nowe alerty klasyczne nie mogą być tworzone po sierpniu 2019 r.
+Jeśli Twoja subskrypcja ma takie reguły klasyczne, należy przeprowadzić migrację ręcznie. Ze względu na to, że nie możemy zapewnić automatycznej migracji, wszystkie istniejące, klasyczne alerty metryk tego typu będą nadal działały do 2020 czerwca. To rozszerzenie zapewnia czas na przejście do nowych alertów. Jednak po 2019 sierpnia nie można utworzyć nowych alertów klasycznych.
 
 > [!NOTE]
-> Oprócz powyższej listy wyjątków, jeśli klasyczne reguł alertu są niepoprawne tj znajdują się w [przestarzałe metryki](#classic-alert-rules-on-deprecated-metrics) lub zasobów, które zostały usunięte, nie zostaną zmigrowane podczas migracji dobrowolne. Wszystkie takie nieprawidłowy klasyczne reguły alertów zostaną usunięte w sytuacji automatyczną migrację.
+> Poza wymienionymi wyjątkami, jeśli klasyczne reguły alertów są nieprawidłowe, tj. na [przestarzałe metryki](#classic-alert-rules-on-deprecated-metrics) lub zasoby, które zostały usunięte, nie będą migrowane podczas dobrowolnej migracji. Wszystkie takie nieprawidłowe reguły alertów klasycznych zostaną usunięte podczas migracji automatycznej.
 
 ### <a name="guest-metrics-on-virtual-machines"></a>Metryki gościa na maszynach wirtualnych
 
-Przed utworzeniem nowych alertów dotyczących metryk na metryki gościa, metryk gościa muszą być wysyłane do magazynu usługi Azure Monitor metryki niestandardowe. Wykonaj te instrukcje, aby umożliwić ujścia usługi Azure Monitor w ustawieniach diagnostycznych:
+Aby można było tworzyć nowe alerty metryki dla metryk gościa, należy wysłać metryki gościa do magazynu metryk niestandardowych Azure Monitor. Postępuj zgodnie z poniższymi instrukcjami, aby włączyć ujścia Azure Monitor w ustawieniach diagnostycznych:
 
-- [Włączanie metryki gościa dla maszyn wirtualnych Windows](collect-custom-metrics-guestos-resource-manager-vm.md)
-- [Włączanie metryki gościa dla maszyn wirtualnych systemu Linux](collect-custom-metrics-linux-telegraf.md)
+- [Włączanie metryk gościa dla maszyn wirtualnych z systemem Windows](collect-custom-metrics-guestos-resource-manager-vm.md)
+- [Włączanie metryk gościa dla maszyn wirtualnych z systemem Linux](collect-custom-metrics-linux-telegraf.md)
 
-Po te kroki są wykonywane, można utworzyć nowych alertów dotyczących metryk na metryki gościa. I po utworzeniu nowych alertów dotyczących metryk, możesz usunąć alertów klasycznych.
+Po wykonaniu tych kroków można utworzyć nowe alerty metryki dla metryk gościa. Po utworzeniu nowych alertów metryk można usunąć alerty klasyczne.
 
 ### <a name="storage-account-metrics"></a>Metryki konta magazynu
 
-Oprócz alertów dotyczących tych metryk można poddać migracji wszystkich alertów klasycznych na kontach magazynu:
+Wszystkie klasyczne alerty na kontach magazynu można migrować z wyjątkiem alertów dotyczących tych metryk:
 
 - PercentAuthorizationError
 - PercentClientOtherError
-- PercentNetworkError
+- Wzrost percentnetworkerror
 - PercentServerOtherError
 - PercentSuccess
-- PercentThrottlingError
-- Wartości PercentTimeoutError
+- Wzrost percentthrottlingerror
+- Wzrost percenttimeouterror
 - AnonymousThrottlingError
 - SASThrottlingError
 - ThrottlingError
 
-Klasyczny alert zasad dotyczących metryki procent muszą być migrowane na podstawie [mapowanie między metryk magazynowania stare i nowe](https://docs.microsoft.com/azure/storage/common/storage-metrics-migration#metrics-mapping-between-old-metrics-and-new-metrics). Wartości progowe, będzie konieczne odpowiednio można modyfikować, ponieważ nowy dostępnych metryk jest bezwzględna.
+Reguły alertów klasycznych na metrykach procentowych muszą zostać zmigrowane na podstawie [mapowania między starymi i nowymi metrykami magazynu](https://docs.microsoft.com/azure/storage/common/storage-metrics-migration#metrics-mapping-between-old-metrics-and-new-metrics). Wartości progowe muszą być odpowiednio modyfikowane, ponieważ nowa Metryka jest dostępna jako wartość bezwzględna.
 
-Klasyczne reguły alertów na AnonymousThrottlingError, SASThrottlingError i ThrottlingError musi zostać podzielony na dwa nowe alerty, ponieważ nie istnieje żadne połączone metrykę, która zawiera te same funkcje. Progi musi być odpowiednio dostosowane.
+Klasyczne reguły alertów w AnonymousThrottlingError, SASThrottlingError i ThrottlingError muszą zostać podzielone na dwa nowe alerty, ponieważ nie ma żadnej połączonej metryki, która zapewnia te same funkcje. Progi należy odpowiednio dostosować.
 
-### <a name="classic-alert-rules-on-deprecated-metrics"></a>Klasyczne reguły alertów dotyczących metryk przestarzałe
+### <a name="cosmos-db-metrics"></a>Metryki usługi Cosmos DB
 
-Są to klasyczne reguły alertów dotyczących metryk, które były wcześniej obsługiwane, ale ostatecznie zostały zaniechane. Na niewielkim odsetku klientów może mieć nieprawidłowy klasyczne reguły alertów na takie metryki. Ponieważ te reguły alertów są nieprawidłowe, nie będą migrowane.
+Wszystkie klasyczne alerty dotyczące Cosmos DB metryk można migrować z wyjątkiem alertów dotyczących tych metryk:
 
-| Typ zasobu| Przestarzałe metric(s) |
+- Średnia liczba żądań na sekundę
+- Poziom spójności
+- Http 2xx
+- Http 3xx
+- Http 400
+- HTTP 401
+- Wewnętrzny błąd serwera
+- Maksymalna liczba zużytych promocja na minutę
+- Maksymalna liczba jednostek ru na sekundę
+- Liczba żądań zakończonych niepowodzeniem Mongo
+- Mongo Usuń Nieudane żądania
+- Mongo Wstawianie nieudanych żądań
+- Mongo inne żądania zakończone niepowodzeniem
+- Mongo inne żądania
+- Mongo inną liczbę żądań
+- Nieudane żądania zapytania Mongo
+- Nieudane żądania aktualizacji Mongo
+- Obserwowane opóźnienie odczytu
+- Obserwowane opóźnienie zapisu
+- Dostępność usługi
+- Pojemność magazynu
+- Ograniczone żądania
+- Łączna liczba żądań
+
+Średnia liczba żądań na sekundę, poziom spójności, Maksymalna liczba zużytych promocja na minutę, maksymalna jednostek ru na sekundę, obserwowane opóźnienie odczytu, zaobserwowane opóźnienie zapisu, pojemność magazynu nie jest obecnie dostępna w [nowym systemie](metrics-supported.md#microsoftdocumentdbdatabaseaccounts).
+
+Alerty dotyczące metryk żądania, takich jak http 2xx, http 3xx, http 400, HTTP 401, wewnętrzny błąd serwera, dostępność usługi, żądania ograniczające i łączna liczba żądań nie są migrowane, ponieważ sposób liczenia żądań różni się od klasycznych metryk i nowych metryk. Alerty na tych należy ręcznie odtworzyć z uwzględnieniem progów.
+
+Alerty w przypadku żądań Mongo zakończonych niepowodzeniem muszą być podzielone na wiele alertów, ponieważ nie ma żadnej połączonej metryki, która zapewnia te same funkcje. Progi należy odpowiednio dostosować.
+
+### <a name="classic-compute-metrics"></a>Klasyczne metryki obliczeń
+
+Jakiekolwiek alerty dotyczące klasycznych metryk obliczeniowych nie będą migrowane przy użyciu narzędzia migracji, ponieważ klasyczne zasoby obliczeniowe nie są jeszcze obsługiwane w przypadku nowych alertów. Obsługa nowych alertów dotyczących tych typów zasobów zostanie dodana w przyszłości. Po udostępnieniu programu klienci muszą ponownie utworzyć nowe równoważne reguły alertów na podstawie ich klasycznych reguł alertów przed 2020 czerwca.
+
+### <a name="classic-alert-rules-on-deprecated-metrics"></a>Klasyczne reguły alertów dla przestarzałych metryk
+
+Są to klasyczne reguły alertów dotyczące metryk, które były wcześniej obsługiwane, ale były ostatecznie przestarzałe. Niewielki odsetek klientów może mieć nieprawidłowe reguły klasycznego alertu na takich metrykach. Ponieważ te reguły alertów są nieprawidłowe, nie będą migrowane.
+
+| Typ zasobu| Przestarzałe metryki |
 |-------------|----------------- |
 | Microsoft.DBforMySQL/servers | compute_consumption_percent, compute_limit |
 | Microsoft.DBforPostgreSQL/servers | compute_consumption_percent, compute_limit |
 | Microsoft.Network/publicIPAddresses | defaultddostriggerrate |
-| Microsoft.SQL/servers/databases | service_level_objective storage_limit, storage_used, ograniczanie przepustowości, dtu_consumption_percent, storage_used |
-| Microsoft.Web/hostingEnvironments/multirolepools | averagememoryworkingset |
-| Microsoft.Web/hostingEnvironments/workerpools | BytesReceived, httpqueuelength |
+| Microsoft.SQL/servers/databases | service_level_objective, storage_limit, storage_used, ograniczanie, dtu_consumption_percent, storage_used |
+| Microsoft. Web/hostingEnvironments/multirolepools | averagememoryworkingset |
+| Microsoft. Web/hostingEnvironments/workerpools | BytesReceived, httpqueuelength |
 
-## <a name="how-equivalent-new-alert-rules-and-action-groups-are-created"></a>Jak są tworzone równoważne nowe reguły alertów i grup akcji
+## <a name="how-equivalent-new-alert-rules-and-action-groups-are-created"></a>Jak są tworzone równoważne nowe reguły alertów i grupy akcji
 
-Narzędzie migracji konwertuje regułami alertów klasycznych równoważne nowe reguły alertów i grup akcji. Dla większości reguł alertów klasycznych, równoważne nowe reguły alertu znajdują się na tym samym metryki z tymi samymi właściwościami takich jak `windowSize` i `aggregationType`. Istnieją jednak pewne klasycznego alertu, który zasady znajdują się na metryki, które mają inną, równoważne metryki w nowym systemie. Następujące zasady mają zastosowanie w przypadku migracji alertów klasycznych, o ile nie określono w dalszej części tego artykułu:
+Narzędzie migracji umożliwia konwertowanie klasycznych reguł alertów na równoważne nowe reguły alertów i grupy akcji. W przypadku większości klasycznych reguł alertów równoważne nowe reguły alertów mają tę samą metrykę z tymi samymi `aggregationType`właściwościami, takimi jak `windowSize` i. Istnieje jednak kilka klasycznych reguł alertów dotyczących metryk, które mają inną równoważną metrykę w nowym systemie. Następujące zasady mają zastosowanie do migracji klasycznych alertów, chyba że określono w poniższej sekcji:
 
-- **Częstotliwość**: Definiuje, jak często sprawdza klasycznego lub nowego regułę alertu dla warunku. `frequency` w klasycznej reguły alertów nie można konfigurować przez użytkownika i był to zawsze 5 minut dla wszystkich typów zasobów, z wyjątkiem składników usługi Application Insights, dla których był 1 min. Dlatego częstotliwość równoważne zasad jest również ustawiona na 5 min i 1 min odpowiednio.
-- **Typ agregacji**: Definiuje, jak metryki są agregowane w przedziale zainteresowania. `aggregationType` Również jest taki sam, między alertów klasycznych i nowych alertów dla większości metryk. W niektórych przypadkach, ponieważ Metryka różni się między alertów klasycznych i nowych alertów równoważne `aggregationType` lub `primary Aggregation Type` zdefiniowany dla metryka jest używana.
-- **Jednostki**: Właściwość metryki, na którym tworzony jest alert. Niektóre metryki równoważne mają różne jednostki. Próg jest dostosowywany odpowiednio zgodnie z potrzebami. Na przykład jeśli oryginalny metryki ma sekundy jako jednostki, ale równoważne nową metrykę ma milisekund jako liczba jednostek, oryginalna wartość progową jest mnożony przez 1000, aby upewnić się, takie samo zachowanie.
-- **Rozmiar okna**: Definiuje okno, przez które metryki są agregowane do porównania z wartością progową. Dla warstwy standardowej `windowSize` wartości, takich jak 5mins 15mins, 30 minut, 1 godziny, 3 godzin, 6, 12 godzin, 1 dzień nastąpiła żadna zmiana dla równoważnych Nowa reguła alertu. Aby uzyskać inne wartości, znajdujący się najbliżej `windowSize` została wybrana do użycia. W przypadku większości klientów nie ma to wpływu dzięki tej zmianie. W przypadku niewielkiego odsetka klientów może być trzeba dostosować próg, aby uzyskać dokładnie takie samo zachowanie.
+- **Częstotliwość**: Definiuje, jak często klasyczna lub Nowa reguła alertu sprawdza warunek. `frequency` Reguły alertów klasycznych nie zostały konfigurowalne przez użytkownika i zawsze zostały 5 minut dla wszystkich typów zasobów, z wyjątkiem składników Application Insights, dla których miało 1 min. Tak więc częstotliwość równoważnych reguł jest również ustawiona na odpowiednio 5 minut i 1 min.
+- **Typ agregacji**: Definiuje sposób agregowania metryki w oknie zainteresowań. `aggregationType` Jest również taka sama między klasycznymi alertami i nowymi alertami dla większości metryk. W niektórych przypadkach, ponieważ Metryka różni się od alertów klasycznych, a nowe `aggregationType` alerty, `primary Aggregation Type` są równoważne lub zdefiniowane dla metryki.
+- **Jednostki**: Właściwość metryki, w której tworzony jest alert. Niektóre równoważne metryki mają różne jednostki. Próg jest odpowiednio dostosowany zgodnie z wymaganiami. Na przykład jeśli oryginalna Metryka zawiera sekundy jako jednostki, ale równoważna Nowa Metryka ma liczbę milisekund jako jednostki, pierwotny próg jest mnożony przez 1000 w celu zapewnienia tego samego zachowania.
+- **Rozmiar okna**: Definiuje okno, w którym dane metryk są agregowane w celu porównania z progiem. W przypadku `windowSize` wartości standardowych, takich jak 5mins, 15mins, 30mins, 1-godzinnego, 3hours, 6 godzin, 12 godzin, 1 dzień, nie wprowadzono zmian w przypadku równoważnej nowej reguły alertu. W przypadku innych wartości jest wybierany najbliższy `windowSize` , który ma być używany. W przypadku większości klientów nie ma to wpływu na tę zmianę. W przypadku niewielkiej części klientów może być konieczne dostosowanie progu w celu uzyskania dokładnego zachowania.
 
-W poniższych sekcjach szczegółowo firma Microsoft, metryki, które mają inną, równoważne metryki w nowym systemie. Nie ma na liście dowolnej metryce, która pozostaje taki sam dla klasycznych i nowych reguł alertów. Można znaleźć listę obsługiwanych w nowym systemie metryk [tutaj](metrics-supported.md).
+W poniższych sekcjach podano szczegółowe informacje o metrykach, które mają inną równoważną metrykę w nowym systemie. Wszystkie metryki, które pozostają takie same dla klasycznych i nowych reguł alertów, nie są wymienione na liście. Listę metryk obsługiwanych w nowym systemie można znaleźć [tutaj](metrics-supported.md).
 
-### <a name="microsoftstorageaccountsservices"></a>Microsoft.StorageAccounts/services
+### <a name="microsoftstorageaccountsservices"></a>Microsoft. StorageAccounts/usługi
 
-Dla usług konta magazynu, takich jak obiektów blob, tabel, plików i kolejek następujące metryki są mapowane na równoważne metryki, jak pokazano poniżej:
+W przypadku usług konta magazynu, takich jak obiekty blob, tabele, pliki i kolejki, następujące metryki są mapowane na równoważne metryki, jak pokazano poniżej:
 
-| Metryki w alertów klasycznych | Równoważne metryką przy podejmowaniu nowe alerty | Komentarze|
+| Metryka w klasycznych alertach | Równoważna Metryka w nowych alertach | Komentarze|
 |--------------------------|---------------------------------|---------|
-| AnonymousAuthorizationError| Metryka transakcji z wymiarami "ResponseType" = "AuthorizationError" i "Authentication" = "Anonymous"| |
-| AnonymousClientOtherError | Metryka transakcji z wymiarami "ResponseType" = "ClientOtherError" i "Authentication" = "Anonymous" | |
-| AnonymousClientTimeOutError| Metryka transakcji z wymiarami "ResponseType" = "ClientTimeOutError" i "Authentication" = "Anonymous" | |
-| AnonymousNetworkError | Metryka transakcji z wymiarami "ResponseType" = "NetworkError" i "Authentication" = "Anonymous" | |
-| AnonymousServerOtherError | Metryka transakcji z wymiarami "ResponseType" = "ServerOtherError" i "Authentication" = "Anonymous" | |
-| AnonymousServerTimeOutError | Metryka transakcji z wymiarami "ResponseType" = "ServerTimeOutError" i "Authentication" = "Anonymous" | |
-| AnonymousSuccess | Metryka transakcji z wymiarami "ResponseType" = "Powodzenie" i "Authentication" = "Anonymous" | |
-| AuthorizationError | Metryka transakcji z wymiarami "ResponseType" = "AuthorizationError" | |
-| AverageE2ELatency | SuccessE2ELatency | |
+| AnonymousAuthorizationError| Metryka transakcji z wymiarami "responsetype" = "AuthorizationError" i "Authentication" = "Anonymous"| |
+| AnonymousClientOtherError | Metryka transakcji z wymiarami "responsetype" = "ClientOtherError" i "Authentication" = "Anonymous" | |
+| AnonymousClientTimeOutError| Metryka transakcji z wymiarami "responsetype" = "ClientTimeOutError" i "Authentication" = "Anonymous" | |
+| AnonymousNetworkError | Metryka transakcji z wymiarami "responsetype" = "NetworkError" i "Authentication" = "Anonymous" | |
+| AnonymousServerOtherError | Metryka transakcji z wymiarami "responsetype" = "ServerOtherError" i "Authentication" = "Anonymous" | |
+| AnonymousServerTimeOutError | Metryka transakcji z wymiarami "responsetype" = "ServerTimeOutError" i "Authentication" = "Anonymous" | |
+| AnonymousSuccess | Metryka transakcji z wymiarami "responsetype" = "Success" i "Authentication" = "Anonymous" | |
+| AuthorizationError | Metryka transakcji z wymiarami "responsetype" = "AuthorizationError" | |
+| Niską averagee2elatency | SuccessE2ELatency | |
 | AverageServerLatency | SuccessServerLatency | |
-| Pojemność | BlobCapacity | Użyj `aggregationType` "średnia" zamiast "last". Metryka ma zastosowanie tylko do usług obiektów Blob |
-| ClientOtherError | Metryka transakcji z wymiarami "ResponseType" = "ClientOtherError"  | |
-| ClientTimeoutError | Metryka transakcji z wymiarami "ResponseType" = "ClientTimeOutError" | |
-| ContainerCount | ContainerCount | Użyj `aggregationType` "średnia" zamiast "last". Metryka ma zastosowanie tylko do usług obiektów Blob |
-| NetworkError | Metryka transakcji z wymiarami "ResponseType" = "NetworkError" | |
-| ObjectCount | BlobCount| Użyj `aggregationType` "średnia" zamiast "last". Metryka ma zastosowanie tylko do usług obiektów Blob |
-| SASAuthorizationError | Metryka transakcji z wymiarami "ResponseType" = "AuthorizationError" i "Authentication" = "Sygnatury dostępu Współdzielonego" | |
-| SASClientOtherError | Metryka transakcji z wymiarami "ResponseType" = "ClientOtherError" i "Authentication" = "Sygnatury dostępu Współdzielonego" | |
-| SASClientTimeOutError | Metryka transakcji z wymiarami "ResponseType" = "ClientTimeOutError" i "Authentication" = "Sygnatury dostępu Współdzielonego" | |
-| SASNetworkError | Metryka transakcji z wymiarami "ResponseType" = "NetworkError" i "Authentication" = "Sygnatury dostępu Współdzielonego" | |
-| SASServerOtherError | Metryka transakcji z wymiarami "ResponseType" = "ServerOtherError" i "Authentication" = "Sygnatury dostępu Współdzielonego" | |
-| SASServerTimeOutError | Metryka transakcji z wymiarami "ResponseType" = "ServerTimeOutError" i "Authentication" = "Sygnatury dostępu Współdzielonego" | |
-| SASSuccess | Metryka transakcji z wymiarami "ResponseType" = "Powodzenie" i "Authentication" = "Sygnatury dostępu Współdzielonego" | |
-| ServerOtherError | Metryka transakcji z wymiarami "ResponseType" = "ServerOtherError" | |
-| ServerTimeOutError | Metryka transakcji z wymiarami "ResponseType" = "ServerTimeOutError"  | |
-| Powodzenie | Metryka transakcji z wymiarami "ResponseType" = "Powodzenie" | |
+| Pojemność | BlobCapacity | Użyj `aggregationType` elementu "Average" zamiast "Last". Metryka dotyczy tylko usługi BLOB Services |
+| ClientOtherError | Metryka transakcji z wymiarami "responsetype" = "ClientOtherError"  | |
+| ClientTimeoutError | Metryka transakcji z wymiarami "responsetype" = "ClientTimeOutError" | |
+| ContainerCount | ContainerCount | Użyj `aggregationType` elementu "Average" zamiast "Last". Metryka dotyczy tylko usługi BLOB Services |
+| NetworkError | Metryka transakcji z wymiarami "responsetype" = "NetworkError" | |
+| ObjectCount | BlobCount| Użyj `aggregationType` elementu "Average" zamiast "Last". Metryka dotyczy tylko usługi BLOB Services |
+| SASAuthorizationError | Metryka transakcji z wymiarami "responsetype" = "AuthorizationError" i "Authentication" = "SAS" | |
+| SASClientOtherError | Metryka transakcji z wymiarami "responsetype" = "ClientOtherError" i "Authentication" = "SAS" | |
+| SASClientTimeOutError | Metryka transakcji z wymiarami "responsetype" = "ClientTimeOutError" i "Authentication" = "SAS" | |
+| SASNetworkError | Metryka transakcji z wymiarami "responsetype" = "NetworkError" i "Authentication" = "SAS" | |
+| SASServerOtherError | Metryka transakcji z wymiarami "responsetype" = "ServerOtherError" i "Authentication" = "SAS" | |
+| SASServerTimeOutError | Metryka transakcji z wymiarami "responsetype" = "ServerTimeOutError" i "Authentication" = "SAS" | |
+| SASSuccess | Metryka transakcji z wymiarami "responsetype" = "Success" i "Authentication" = "SAS" | |
+| ServerOtherError | Metryka transakcji z wymiarami "responsetype" = "ServerOtherError" | |
+| ServerTimeOutError | Metryka transakcji z wymiarami "responsetype" = "ServerTimeOutError"  | |
+| Powodzenie | Metryka transakcji z wymiarami "responsetype" = "Success" | |
 | TotalBillableRequests| Transakcje | |
 | TotalEgress | Ruch wychodzący | |
 | TotalIngress | Ruch przychodzący | |
 | TotalRequests | Transakcje | |
 
-### <a name="microsoftinsightscomponents"></a>Microsoft.insights/Components
+### <a name="microsoftinsightscomponents"></a>Microsoft. Insights/składniki
 
-Dla usługi Application Insights równoważne metryki są, jak pokazano poniżej:
+W przypadku Application Insights równoważne metryki są przedstawione poniżej:
 
-| Metryki w alertów klasycznych | Równoważne metryką przy podejmowaniu nowe alerty | Komentarze|
+| Metryka w klasycznych alertach | Równoważna Metryka w nowych alertach | Komentarze|
 |--------------------------|---------------------------------|---------|
-| availability.availabilityMetric.value | availabilityResults/availabilityPercentage|   |
-| availability.durationMetric.value | availabilityResults/czas trwania| Należy pomnożyć oryginalnej wartości progowej przez 1000 jednostek dla klasycznego metryki są w ciągu kilku sekund i nowych jednego są podawane w milisekundach.  |
-| basicExceptionBrowser.count | Wyjątki/przeglądarki|  Użyj `aggregationType` "count" zamiast "Suma". |
-| basicExceptionServer.count | Wyjątki serwera| Użyj `aggregationType` "count" zamiast "Suma".  |
-| clientPerformance.clientProcess.value | browserTimings/processingDuration| Należy pomnożyć oryginalnej wartości progowej przez 1000 jednostek dla klasycznego metryki są w ciągu kilku sekund i nowych jednego są podawane w milisekundach.  |
-| clientPerformance.networkConnection.value | browserTimings/networkDuration|  Należy pomnożyć oryginalnej wartości progowej przez 1000 jednostek dla klasycznego metryki są w ciągu kilku sekund i nowych jednego są podawane w milisekundach. |
-| clientPerformance.receiveRequest.value | browserTimings/receiveDuration| Należy pomnożyć oryginalnej wartości progowej przez 1000 jednostek dla klasycznego metryki są w ciągu kilku sekund i nowych jednego są podawane w milisekundach.  |
-| clientPerformance.sendRequest.value | browserTimings/sendDuration| Należy pomnożyć oryginalnej wartości progowej przez 1000 jednostek dla klasycznego metryki są w ciągu kilku sekund i nowych jednego są podawane w milisekundach.  |
-| clientPerformance.total.value | browserTimings/totalDuration| Należy pomnożyć oryginalnej wartości progowej przez 1000 jednostek dla klasycznego metryki są w ciągu kilku sekund i nowych jednego są podawane w milisekundach.  |
-| performanceCounter.available_bytes.value | liczniki wydajności/memoryAvailableBytes|   |
-| performanceCounter.io_data_bytes_per_sec.value | liczniki wydajności/processIOBytesPerSecond|   |
-| performanceCounter.number_of_exceps_thrown_per_sec.value | performanceCounters/exceptionsPerSecond|   |
-| performanceCounter.percentage_processor_time_normalized.value | liczniki wydajności/processCpuPercentage|   |
-| performanceCounter.percentage_processor_time.value | liczniki wydajności/processCpuPercentage| Próg, należy odpowiednio można modyfikować, ponieważ oryginalne metryki była ze wszystkich rdzeni i nową metrykę jest znormalizować do jednego rdzenia. Narzędzie do migracji nie zmienia wartości progowe.  |
-| performanceCounter.percentage_processor_total.value | liczniki wydajności/processorCpuPercentage|   |
-| performanceCounter.process_private_bytes.value | liczniki wydajności/processPrivateBytes|   |
-| performanceCounter.request_execution_time.value | performanceCounters/requestExecutionTime|   |
+| Availability. availabilityMetric. Value | availabilityResults/availabilityPercentage|   |
+| Availability. durationMetric. Value | availabilityResults/czas trwania| Pomnóż pierwotny próg o 1000, ponieważ jednostki dla metryki klasycznej są w sekundach, a nowe są w milisekundach.  |
+| basicExceptionBrowser.count | wyjątki/przeglądarka|  Użyj `aggregationType` elementu "Count" zamiast elementu "Sum". |
+| basicExceptionServer.count | wyjątki/serwer| Użyj `aggregationType` elementu "Count" zamiast elementu "Sum".  |
+| clientPerformance. clientProcess. Value | browserTimings/processingDuration| Pomnóż pierwotny próg o 1000, ponieważ jednostki dla metryki klasycznej są w sekundach, a nowe są w milisekundach.  |
+| clientPerformance.networkConnection.value | browserTimings/networkDuration|  Pomnóż pierwotny próg o 1000, ponieważ jednostki dla metryki klasycznej są w sekundach, a nowe są w milisekundach. |
+| clientPerformance.receiveRequest.value | browserTimings/receiveDuration| Pomnóż pierwotny próg o 1000, ponieważ jednostki dla metryki klasycznej są w sekundach, a nowe są w milisekundach.  |
+| clientPerformance.sendRequest.value | browserTimings/sendDuration| Pomnóż pierwotny próg o 1000, ponieważ jednostki dla metryki klasycznej są w sekundach, a nowe są w milisekundach.  |
+| clientPerformance. Total. Value | browserTimings/totalDuration| Pomnóż pierwotny próg o 1000, ponieważ jednostki dla metryki klasycznej są w sekundach, a nowe są w milisekundach.  |
+| performanceCounter. available_bytes. Value | Liczniki wydajności/memoryAvailableBytes|   |
+| performanceCounter.io_data_bytes_per_sec.value | Liczniki wydajności/processIOBytesPerSecond|   |
+| performanceCounter. number_of_exceps_thrown_per_sec. Value | Liczniki wydajności/exceptionsPerSecond|   |
+| performanceCounter.percentage_processor_time_normalized.value | Liczniki wydajności/processCpuPercentage|   |
+| performanceCounter. percentage_processor_time. Value | Liczniki wydajności/processCpuPercentage| Próg musi być odpowiednio zmodyfikowany, ponieważ oryginalna Metryka była dla wszystkich rdzeni, a nowa Metryka jest znormalizowana do jednego rdzenia. Narzędzie migracji nie zmienia progów.  |
+| performanceCounter.percentage_processor_total.value | Liczniki wydajności/processorCpuPercentage|   |
+| performanceCounter.process_private_bytes.value | Liczniki wydajności/processPrivateBytes|   |
+| performanceCounter. request_execution_time. Value | Liczniki wydajności/requestExecutionTime|   |
 | performanceCounter.requests_in_application_queue.value | performanceCounters/requestsInQueue|   |
 | performanceCounter.requests_per_sec.value | performanceCounters/requestsPerSecond|   |
-| request.duration | żądania/czas trwania| Należy pomnożyć oryginalnej wartości progowej przez 1000 jednostek dla klasycznego metryki są w ciągu kilku sekund i nowych jednego są podawane w milisekundach.  |
-| request.rate | requests/rate|   |
-| requestFailed.count | requests/failed| Użyj `aggregationType` "count" zamiast "Suma".   |
-| view.count | Liczba/wyświetleń stron| Użyj `aggregationType` "count" zamiast "Suma".   |
+| żądanie. czas trwania | żądania/czas trwania| Pomnóż pierwotny próg o 1000, ponieważ jednostki dla metryki klasycznej są w sekundach, a nowe są w milisekundach.  |
+| żądanie. rate | żądania/częstotliwość|   |
+| requestFailed. Count | żądania/niepowodzenie| Użyj `aggregationType` elementu "Count" zamiast elementu "Sum".   |
+| widok. Count | pageViews/liczba| Użyj `aggregationType` elementu "Count" zamiast elementu "Sum".   |
 
-### <a name="how-equivalent-action-groups-are-created"></a>W jaki sposób tworzone są równoważne działania grupy
+### <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
-Klasyczne reguły żadnego adresu e-mail, element webhook, logiki aplikacji i elementów runbook akcje powiązane z alertem regułę alertu sam. Nowe reguły alertu korzystanie z grup akcji, które mogą być ponownie używane w wielu reguł alertów. Narzędzie migracji tworzy grupę jednej akcji dla tych samych czynności niezależnie od tego, jak wiele reguł alertów są za pomocą akcji. Utworzone przez narzędzie do migracji grupy akcji formatu nazewnictwa "Migrated_AG *".
+W przypadku Cosmos DB równoważne metryki są przedstawione poniżej:
+
+| Metryka w klasycznych alertach | Równoważna Metryka w nowych alertach | Komentarze|
+|--------------------------|---------------------------------|---------|
+| AvailableStorage     |AvailableStorage|   |
+| Rozmiar danych | Datausage| |
+| Liczba dokumentów | DocumentCount||
+| Rozmiar indeksu | IndexUsage||
+| Opłata żądania liczby Mongo| MongoRequestCharge z wymiarem "CommandName" = "Count"||
+| Częstotliwość żądania liczby Mongo | MongoRequestsCount z wymiarem "CommandName" = "Count"||
+| Opłata za żądanie usunięcia Mongo | MongoRequestCharge z wymiarem "CommandName" = "Delete"||
+| Mongo — wskaźnik żądania usunięcia | MongoRequestsCount z wymiarem "CommandName" = "Delete"||
+| Mongo | MongoRequestCharge z wymiarem "CommandName" = "INSERT"||
+| Liczba żądań wstawienia Mongo | MongoRequestsCount z wymiarem "CommandName" = "INSERT"||
+| Opłata za żądanie zapytania Mongo | MongoRequestCharge z wymiarem "CommandName" = "Find"||
+| Częstotliwość żądań zapytań Mongo | MongoRequestsCount z wymiarem "CommandName" = "Find"||
+| Opłata za żądanie aktualizacji Mongo | MongoRequestCharge z wymiarem "CommandName" = "Update"||
+| Usługa jest niedostępna| Dostępność||
+| TotalRequestUnits | TotalRequestUnits||
+
+### <a name="how-equivalent-action-groups-are-created"></a>Jak są tworzone równoważne grupy akcji
+
+Klasyczne reguły alertów mają akcje poczty e-mail, elementu webhook, aplikacji logiki i elementu Runbook powiązane z samą regułą alertu. Nowe reguły alertów używają grup akcji, które mogą być ponownie używane dla wielu reguł alertów. Narzędzie migracji tworzy jedną grupę akcji dla tych samych akcji, niezależnie od liczby reguł alertów korzystających z tej akcji. Grupy akcji utworzone za pomocą narzędzia migracji używają formatu nazewnictwa "Migrated_AG *".
+
+> [!NOTE]
+> Klasyczne alerty wysyłają zlokalizowane wiadomości e-mail na podstawie ustawień regionalnych administratora klasycznego, gdy są używane do powiadamiania klasycznych ról administratora. Nowe wiadomości e-mail dotyczące alertów są wysyłane za pośrednictwem grup akcji i są tylko w języku angielskim.
 
 ## <a name="rollout-phases"></a>Etapy wdrażania
 
-Narzędzie do migracji jest wprowadzane w fazach klientów korzystających z klasycznej reguły alertu. Właściciele subskrypcji otrzymają wiadomość e-mail, gdy subskrypcja będzie gotowa do migracji za pomocą narzędzia.
+Narzędzie migracji jest wdrażane w fazach dla klientów korzystających z klasycznych reguł alertów. Właściciele subskrypcji otrzymają wiadomość e-mail, gdy subskrypcja będzie gotowa do migracji za pomocą narzędzia.
 
 > [!NOTE]
-> Ponieważ narzędzie jest wdrażana w fazach, może pojawić się, że niektóre z Twoich subskrypcji nie są jeszcze gotowe do migracji podczas wczesnych faz.
+> Ponieważ narzędzie jest wdrażane w fazach, może się okazać, że niektóre subskrypcje nie są jeszcze gotowe do migracji w trakcie wczesnych faz.
 
-Większość subskrypcje są obecnie oznaczone jako gotowe do migracji. Tylko subskrypcje alertów klasycznych na następujących typów zasobów są wciąż brak gotowości do migracji.
+Większość subskrypcji jest obecnie oznaczona jako gotowa do migracji. Tylko subskrypcje, które mają klasyczne alerty dla następujących typów zasobów, nadal nie są gotowe do migracji.
 
-- Microsoft.classicCompute/domainNames/slots/roles
-- Microsoft.documentDB/databases
-- Microsoft.insights/Components
+- Microsoft. classicCompute/domainNames/gniazda/role
+- Microsoft. Insights/składniki
 
-## <a name="who-can-trigger-the-migration"></a>Kto może wyzwalać migracji?
+## <a name="who-can-trigger-the-migration"></a>Kto może wyzwolić migrację?
 
-Każdy użytkownik mający wbudowana rola Współautor monitorowania na poziomie subskrypcji można uruchomić migracji. Użytkownicy, którzy mają rolę niestandardową z następującymi uprawnieniami może także wyzwolić migracji:
+Każdy użytkownik, który ma wbudowaną rolę współautor monitorowania na poziomie subskrypcji, może wyzwolić migrację. Użytkownicy, którzy mają rolę niestandardową z następującymi uprawnieniami, mogą również wyzwolić migrację:
 
 - */read
-- Microsoft.Insights/actiongroups/*
+- Microsoft. Insights/actiongroups/*
 - Microsoft.Insights/AlertRules/*
-- Microsoft.Insights/metricAlerts/*
+- Microsoft. Insights/metricAlerts/*
+- Microsoft. AlertsManagement/smartDetectorAlertRules/*
 
 > [!NOTE]
-> Oprócz wyżej uprawnienia, Twoja subskrypcja Dodatkowo można zarejestrować za pomocą dostawcy zasobów Microsoft.AlertsManagement. Jest to wymagane do pomyślnej migracji alertów niepowodzenia anomalii w usłudze Application Insights. 
+> Oprócz powyższych uprawnień subskrypcja powinna być dodatkowo rejestrowana przy użyciu dostawcy zasobów Microsoft. AlertsManagement. Jest to wymagane do pomyślnej migracji alertów anomalii błędów w Application Insights. 
 
 ## <a name="common-problems-and-remedies"></a>Typowe problemy i środki zaradcze
 
-Po zakończeniu [wyzwolić migracji](alerts-using-migration-tool.md), otrzymasz wiadomość e-mail na adresy podane informujące, że migracja została zakończona lub jeśli wymaga żadnych akcji ze strony użytkownika. W tej sekcji opisano niektóre typowe problemy i radzenia sobie z nimi.
+Po zainicjowaniu [migracji](alerts-using-migration-tool.md)otrzymasz wiadomości e-mail pod podanymi adresami, aby powiadomić, że migracja została ukończona, lub jeśli jest wymagana jakakolwiek akcja. W tej sekcji opisano niektóre typowe problemy i sposoby postępowania z nimi.
 
-### <a name="validation-failed"></a>Walidacja nie powiodła się
+### <a name="validation-failed"></a>Weryfikacja nie powiodła się
 
-Ze względu na pewne ostatnie zmiany klasyczne reguły alertów w ramach subskrypcji nie można zmigrować subskrypcji. Ten problem jest tymczasowy. Możesz ponownie uruchomić migrację po przechodzi w stan migracji **gotowe do migracji** w ciągu kilku dni.
+Ze względu na ostatnie zmiany reguł alertów klasycznych w Twojej subskrypcji nie można zmigrować subskrypcji. Ten problem jest tymczasowy. Możesz ponownie uruchomić migrację po przeniesieniu stanu migracji **do tyłu w** ciągu kilku dni.
 
-### <a name="policy-or-scope-lock-preventing-us-from-migrating-your-rules"></a>Zasad lub w zakresie blokada uniemożliwia migracji reguł
+### <a name="policy-or-scope-lock-preventing-us-from-migrating-your-rules"></a>Blokada zasad lub zakresu uniemożliwia nam Migrowanie reguł
 
-W ramach migracji można utworzyć nowych alertów dotyczących metryk i nowych grup akcji, a następnie zostaną usunięte klasycznej reguły alertu. Istnieje jednak zasad lub zakres blokada uniemożliwia tworzenie zasobów. W zależności od zasad lub zakres blokady nie można migrować niektóre lub wszystkie reguły. Ten problem można rozwiązać przez tymczasowe usunięcie blokady zakresu lub zasad i wyzwalając próbę wykonania migracji.
+W ramach migracji zostaną utworzone nowe alerty metryki i nowe grupy akcji, a następnie zostaną usunięte reguły klasycznego alertu. Istnieje jednak zasada lub blokada zakresu uniemożliwiające tworzenie zasobów. W zależności od zasad lub blokady zakresu nie można migrować niektórych lub wszystkich reguł. Możesz rozwiązać ten problem, usuwając tymczasowo blokadę lub zasady zakresu, a następnie ponownie wyzwalając proces migracji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Sposób użycia narzędzia migracji](alerts-using-migration-tool.md)
+- [Jak korzystać z narzędzia do migracji](alerts-using-migration-tool.md)
 - [Przygotowanie do migracji](alerts-prepare-migration.md)

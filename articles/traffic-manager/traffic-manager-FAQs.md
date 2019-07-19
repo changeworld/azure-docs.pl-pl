@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Traffic Manager — często zadawane pytania
-description: Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Traffic Manager
+title: Traffic Manager platformy Azure — często zadawane pytania
+description: Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące Traffic Manager
 services: traffic-manager
 documentationcenter: ''
 author: asudbring
@@ -11,498 +11,498 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
-ms.openlocfilehash: 640d36649f59842a740b4c12b4e3ab39a6d98c13
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c2bff5749ab833efcb252d3fafb5d38cfbc8691e
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050952"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310278"
 ---
-# <a name="traffic-manager-frequently-asked-questions-faq"></a>Usługa Traffic Manager — często zadawane pytania (FAQ)
+# <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager często zadawane pytania
 
-## <a name="traffic-manager-basics"></a>Podstawy usługi Traffic Manager
+## <a name="traffic-manager-basics"></a>Podstawowe informacje Traffic Manager
 
-### <a name="what-ip-address-does-traffic-manager-use"></a>Jakiego adresu IP używa usługi Traffic Manager?
+### <a name="what-ip-address-does-traffic-manager-use"></a>Jakiego adresu IP używa Traffic Manager?
 
-Jak wyjaśniono w [jak działa usługa Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), usługa Traffic Manager działa na poziomie usługi DNS. Wysyła odpowiedzi DNS klientów bezpośrednich do endpoint odpowiednią usługę. Klienci następnie łączą się z punktu końcowego usługi bezpośrednio, nie za pomocą usługi Traffic Manager.
+Zgodnie z opisem w temacie [jak działa Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), Traffic Manager działa na poziomie systemu DNS. Wysyła odpowiedzi DNS do bezpośrednich klientów do odpowiedniego punktu końcowego usługi. Następnie klienci nawiązują połączenie z punktem końcowym usługi bezpośrednio, a nie za pomocą Traffic Manager.
 
-W związku z tym usługi Traffic Manager nie zapewnia punkt końcowy, czyli adres IP, aby klienci mogli nawiązać połączenie. Jeśli potrzebujesz statycznego adresu IP dla usługi, która musi być skonfigurowana w usłudze, a nie w usłudze Traffic Manager.
+W związku z tym Traffic Manager nie zapewnia punktu końcowego ani adresu IP, z którym klienci mogą się połączyć. Jeśli chcesz mieć statyczny adres IP dla usługi, który musi być skonfigurowany w usłudze, a nie w Traffic Manager.
 
-### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>Jakie rodzaje ruchu może być kierowany za pomocą usługi Traffic Manager?
-Jak wyjaśniono w [jak działa usługa Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), punkt końcowy usługi Traffic Manager może być dowolnym połączenie z Internetem usługi hostowanej wewnątrz lub na zewnątrz systemu Azure. Dzięki temu usługi Traffic Manager może kierować ruch pochodzący z publicznego Internetu do zestawu punktów końcowych, są również nakierowany na internet. W przypadku punktów końcowych znajdujących się w sieci prywatnej (na przykład wewnętrzny wersję [usługi Azure Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer)) lub nie można użyć usługi Traffic Manager kierować ruchem to użytkownikom wysyłającym żądania DNS z takich sieci wewnętrznych.
+### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>Jakiego rodzaju ruch może być kierowany przy użyciu Traffic Manager?
+Zgodnie z opisem w temacie [jak działa Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), punkt końcowy Traffic Manager może być dowolną usługą internetową hostowaną w ramach platformy Azure lub poza nią. W związku z tym Traffic Manager może kierować ruch pochodzący z publicznej sieci Internet do zestawu punktów końcowych, które są również połączone z Internetem. Jeśli masz punkty końcowe, które znajdują się w sieci prywatnej (na przykład w wewnętrznej wersji programu [Azure Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer)) lub użytkownicy wprowadzają żądania DNS z takich sieci wewnętrznych, nie możesz użyć Traffic Manager do skierowania tego ruchu.
 
-### <a name="does-traffic-manager-support-sticky-sessions"></a>Usługa Traffic Manager obsługuje "trwałych" sesji?
+### <a name="does-traffic-manager-support-sticky-sessions"></a>Czy Traffic Manager obsługuje sesje "Sticky"?
 
-Jak wyjaśniono w [jak działa usługa Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), usługa Traffic Manager działa na poziomie usługi DNS. Odpowiedzi DNS używa klientów bezpośrednich do endpoint odpowiednią usługę. Klienci łączą się z punktu końcowego usługi bezpośrednio, nie za pomocą usługi Traffic Manager. W związku z tym usługi Traffic Manager nie widzi ruch HTTP między klientem a serwerem.
+Zgodnie z opisem w temacie [jak działa Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), Traffic Manager działa na poziomie systemu DNS. Używa odpowiedzi DNS do kierowania klientów do odpowiedniego punktu końcowego usługi. Klienci łączą się bezpośrednio z punktem końcowym usługi, a nie za pomocą Traffic Manager. W związku z tym Traffic Manager nie widzi ruchu HTTP między klientem a serwerem.
 
-Ponadto adres IP źródła zapytania DNS odebranych przez usługę Traffic Manager należy do cyklicznej usługi DNS, nie klienta. W związku z tym Traffic Manager nie ma możliwości śledzenia poszczególnych klientów i nie może implementować "trwałych" sesji. To ograniczenie jest wspólny dla wszystkich systemów zarządzania ruchu oparte na systemie DNS i nie jest specyficzne dla Menedżera ruchu.
+Ponadto źródłowy adres IP zapytania DNS odbieranego przez Traffic Manager należy do cyklicznej usługi DNS, a nie do klienta programu. W związku z tym Traffic Manager nie ma możliwości śledzenia poszczególnych klientów i nie może implementować sesji "Sticky". To ograniczenie jest wspólne dla wszystkich systemów zarządzania ruchem opartym na systemie DNS i nie jest specyficzne dla Traffic Manager.
 
-### <a name="why-am-i-seeing-an-http-error-when-using-traffic-manager"></a>Dlaczego widzę błąd HTTP podczas korzystania z usługi Traffic Manager?
+### <a name="why-am-i-seeing-an-http-error-when-using-traffic-manager"></a>Dlaczego podczas korzystania z Traffic Manager pojawia się błąd HTTP?
 
-Jak wyjaśniono w [jak działa usługa Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), usługa Traffic Manager działa na poziomie usługi DNS. Odpowiedzi DNS używa klientów bezpośrednich do endpoint odpowiednią usługę. Klienci następnie łączą się z punktu końcowego usługi bezpośrednio, nie za pomocą usługi Traffic Manager. Usługa Traffic Manager nie Zobacz ruch HTTP między klientem i serwerem. W związku z tym wszelkie błędy HTTP, widocznej musi pochodzić z aplikacji. Dla klienta w celu połączenia się z aplikacją wszystkie kroki rozwiązania DNS są kompletne. Obejmuje to dowolna interakcja, które usługi Traffic Manager ma na przepływ ruchu aplikacji.
+Zgodnie z opisem w temacie [jak działa Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), Traffic Manager działa na poziomie systemu DNS. Używa odpowiedzi DNS do kierowania klientów do odpowiedniego punktu końcowego usługi. Następnie klienci nawiązują połączenie z punktem końcowym usługi bezpośrednio, a nie za pomocą Traffic Manager. Traffic Manager nie widzi ruchu HTTP między klientem i serwerem. W związku z tym wszelkie widoczne błędy HTTP muszą pochodzić z aplikacji. Aby klient mógł połączyć się z aplikacją, wszystkie kroki rozpoznawania nazw DNS są kompletne. Obejmuje wszelkie interakcje Traffic Manager w przepływie ruchu aplikacji.
 
-Bliższe zbadanie tej sprawy w związku z tym należy skoncentrować się na aplikacji.
+W związku z tym należy skoncentrować się na aplikacji.
 
-Nagłówka hosta HTTP wysyłane z przeglądarki klienta jest najbardziej typowe źródła problemów z. Upewnij się, że aplikacja jest skonfigurowana do akceptowania nagłówek hosta poprawny dla nazwy domeny, którego używasz. Dla punktów końcowych przy użyciu usługi Azure App Service, zobacz [Konfigurowanie niestandardowej nazwy domeny dla aplikacji sieci web w usłudze Azure App Service przy użyciu usługi Traffic Manager](../app-service/web-sites-traffic-manager-custom-domain-name.md).
+Nagłówek hosta HTTP wysłany z przeglądarki klienta to najbardziej typowe Źródło problemów. Upewnij się, że aplikacja jest skonfigurowana do akceptowania poprawnego nagłówka hosta dla używanej nazwy domeny. Dla punktów końcowych używających Azure App Service, zobacz [Konfigurowanie niestandardowej nazwy domeny dla aplikacji sieci Web w Azure App Service przy użyciu Traffic Manager](../app-service/web-sites-traffic-manager-custom-domain-name.md).
 
-### <a name="what-is-the-performance-impact-of-using-traffic-manager"></a>Co to jest wpływ wydajności przy użyciu usługi Traffic Manager?
+### <a name="what-is-the-performance-impact-of-using-traffic-manager"></a>Jaki jest wpływ na wydajność korzystania z Traffic Manager?
 
-Jak wyjaśniono w [jak działa usługa Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), usługa Traffic Manager działa na poziomie usługi DNS. Ponieważ klienci łączą się z punktów końcowych usługi bezpośrednio, nie ma wpływu na wydajność ponoszony, gdy za pomocą usługi Traffic Manager, po nawiązaniu połączenia.
+Zgodnie z opisem w temacie [jak działa Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), Traffic Manager działa na poziomie systemu DNS. Ze względu na to, że klienci łączą się bezpośrednio z punktami końcowymi usługi, nie ma wpływu na wydajność podczas korzystania z Traffic Manager po nawiązaniu połączenia.
 
-Ponieważ usługa Traffic Manager integruje się z aplikacjami na poziomie usługi DNS, jest wymagane dodatkowe wyszukiwania DNS, który ma zostać wstawiony do łańcucha rozpoznawania DNS. Usługi Traffic Manager negatywny wpływ na czas rozpoznawania nazw DNS jest minimalny. Usługa Traffic Manager korzysta z globalnej sieci serwerów nazw i używa [emisji dowolnej](https://en.wikipedia.org/wiki/Anycast) sieć w celu zapewnienia DNS zapytania są zawsze kierowane do najbliższego serwera dostępnych nazw. Ponadto buforowanie odpowiedzi DNS oznacza, że dodatkowe opóźnienie DNS naliczane przy użyciu usługi Traffic Manager ma zastosowanie tylko do końcowej sesji.
+Ponieważ Traffic Manager integruje się z aplikacjami na poziomie systemu DNS, do łańcucha rozpoznawania nazw DNS trzeba wstawiać dodatkowe wyszukiwanie DNS. Wpływ Traffic Manager na czas rozpoznawania nazw DNS jest minimalny. Traffic Manager korzysta z globalnej sieci serwerów nazw i korzysta z sieci [emisji](https://en.wikipedia.org/wiki/Anycast) pojedynczej, aby zapewnić, że zapytania DNS są zawsze kierowane do najbliższego dostępnego serwera nazw. Ponadto buforowanie odpowiedzi DNS oznacza, że dodatkowe opóźnienie DNS wynikające z używania Traffic Manager ma zastosowanie tylko do części sesji.
 
-Metoda wydajności kieruje ruch do najbliższego dostępnego punktu końcowego. Wynikiem jest, że należy minimalny wpływ na ogólną wydajność, skojarzone z tą metodą. Każde zwiększenie liczby opóźnienia systemu DNS powinien przesunięcia, mniejsze opóźnienia sieciowe do punktu końcowego.
+Metoda wydajności kieruje ruch do najbliższego dostępnego punktu końcowego. Wynikiem jest fakt, że ogólny wpływ na wydajność związany z tą metodą powinien być minimalny. Każdy wzrost opóźnienia DNS powinien być przesunięty o mniejsze opóźnienie sieci do punktu końcowego.
 
-### <a name="what-application-protocols-can-i-use-with-traffic-manager"></a>Jakie protokoły aplikacji można używać z usługą Traffic Manager?
+### <a name="what-application-protocols-can-i-use-with-traffic-manager"></a>Jakich protokołów aplikacji można używać z Traffic Manager?
 
-Jak wyjaśniono w [jak działa usługa Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), usługa Traffic Manager działa na poziomie usługi DNS. Po wykonaniu wyszukiwania DNS klienci łączą się z punktu końcowego aplikacji bezpośrednio, nie za pomocą usługi Traffic Manager. W związku z tym połączenia, można użyć dowolnego protokołu aplikacji. Jeśli wybierzesz TCP jako protokół monitorowania, usługa Traffic Manager firmy monitorowania kondycji punktu końcowego może odbywać się bez korzystania z protokołów aplikacji. Jeśli zdecydujesz się kondycja weryfikowane przy użyciu protokołu aplikacji, punkt końcowy musi być w stanie odpowiadać na żądania HTTP lub HTTPS GET.
+Zgodnie z opisem w temacie [jak działa Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), Traffic Manager działa na poziomie systemu DNS. Po zakończeniu wyszukiwania DNS klienci łączą się bezpośrednio z punktem końcowym aplikacji, a nie za pomocą Traffic Manager. W związku z tym połączenie może korzystać z dowolnego protokołu aplikacji. W przypadku wybrania opcji TCP jako protokołu monitorowania można wykonać Traffic Manager monitorowania kondycji punktu końcowego bez użycia żadnych protokołów aplikacji. Jeśli zdecydujesz się na zweryfikowanie kondycji przy użyciu protokołu aplikacji, punkt końcowy musi być w stanie odpowiedzieć na żądania HTTP lub HTTPS GET.
 
-### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>Nazwa domeny "naked" można używać usługi Traffic Manager?
+### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>Czy można użyć Traffic Manager z "owies" nazwą domeny?
 
-Tak. Aby dowiedzieć się, jak utworzyć rekord aliasu dla Twojego wierzchołku nazwy domeny można odwoływać się do profilu usługi Azure Traffic Manager, zobacz [Konfigurowanie rekordu aliasu do obsługi języka apex nazw domen przy użyciu usługi Traffic Manager](../dns/tutorial-alias-tm.md).
+Tak. Aby dowiedzieć się, jak utworzyć rekord aliasu dla nazwy domeny wierzchołka, aby odwołać się do profilu usługi Azure Traffic Manager, zobacz [Konfigurowanie rekordu aliasu w celu obsługi nazw domen wierzchołków z Traffic Manager](../dns/tutorial-alias-tm.md).
 
-### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>Usługa Traffic Manager za adres podsieci klienta podczas przetwarzania zapytań DNS? 
+### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>Czy Traffic Manager uwzględnić adres podsieci klienta podczas obsługi zapytań DNS? 
 
-Tak, oprócz adres IP źródła zapytania DNS otrzymuje (co zwykle jest adres IP programu rozpoznawania nazw DNS), podczas przeprowadzania wyszukiwania dla metody routingu Geographic, wydajności i podsieci, usługa traffic manager również uwzględnia adres podsieci klienta, jeśli uwzględnione w zapytaniu przez program rozpoznawania nazw, dzięki czemu żądania w imieniu użytkownika końcowego.  
-W szczególności [7871 RFC — podsieci klienta DNS zapytań](https://tools.ietf.org/html/rfc7871) zapewniający [mechanizmu rozszerzenia DNS (EDNS0)](https://tools.ietf.org/html/rfc2671) które można przekazać na adres podsieci klienta z rozpoznawania nazw, które go obsługują.
+Tak, oprócz źródłowego adresu IP zapytania DNS, które otrzymuje (zazwyczaj jest to adres IP programu rozpoznawania nazw DNS), podczas wyszukiwania dla metod routingu geograficznego, wydajności i podsieci, Usługa Traffic Manager traktuje także adres podsieci klienta, jeśli jest ona uwzględniona w zapytaniu przez program rozpoznawania nazw wykonujący żądanie w imieniu użytkownika końcowego.  
+W odniesieniu do programu [RFC 7871 — podsieć klienta w zapytaniach DNS](https://tools.ietf.org/html/rfc7871) , które udostępnia [mechanizm rozszerzenia dla systemu DNS (EDNS0)](https://tools.ietf.org/html/rfc2671) , który może przekazać adres podsieci klienta z resolverów, które je obsługują.
 
-### <a name="what-is-dns-ttl-and-how-does-it-impact-my-users"></a>Co to jest czas wygaśnięcia DNS oraz jak ma ona wpływu na moich użytkowników?
+### <a name="what-is-dns-ttl-and-how-does-it-impact-my-users"></a>Co to jest czas wygaśnięcia systemu DNS i jak ma to wpływ na moich użytkowników?
 
-Gdy zapytanie DNS umieszczać swoje dokumenty w usłudze Traffic Manager, ustawia wartość w odpowiedzi o nazwie czas wygaśnięcia (TTL). Tę wartość, w której jednostka jest w ciągu kilku sekund, wskazuje do rozpoznawania nazw DNS podrzędne na jak długo w pamięci podręcznej tej odpowiedzi. Podczas rozpoznawania nazw DNS nie ma gwarancji, ten wynik w pamięci podręcznej, buforowanie ich pozwoli na odpowiadać na żadne kolejne zapytania wyłączanie pamięci podręcznej, zamiast przechodzić do serwerów DNS usługi Traffic Manager. Ma to wpływ na odpowiedzi w następujący sposób:
+Gdy zapytanie DNS jest gruntem Traffic Manager, ustawia wartość w odpowiedzi o nazwie czas wygaśnięcia (TTL). Ta wartość, której jednostka jest w sekundach, wskazuje na rozpoznawanie nazw DNS w czasie, gdy ta odpowiedź jest buforowana. Chociaż funkcje rozpoznawania nazw DNS nie są gwarantowane w celu buforowania tego wyniku, buforowanie umożliwia reagowanie na jakiekolwiek kolejne zapytania poza pamięć podręczną, a nie Traffic Manager serwerów DNS. Ma to wpływ na odpowiedzi w następujący sposób:
 
-- wyższa wartość TTL zmniejsza liczbę zapytań, które przejście na serwerach DNS usługi Traffic Manager, które można zredukować koszty dla klientów, ponieważ liczba zapytań, obsługiwane jest użycie płatnych.
-- wyższa wartość TTL potencjalnie skrócić czas potrzebny do czy wyszukiwania DNS.
-- wyższa wartość TTL oznacza również danych nie będzie odzwierciedlał najnowsze informacje o kondycji usługi Traffic Manager ma uzyskane za pośrednictwem jego agenci badania.
+- wyższy czas TTL zmniejsza liczbę zapytań, które są używane na serwerach DNS Traffic Manager, co może zmniejszyć koszt dla klienta, ponieważ Liczba obsłużonych zapytań to użycie płatne.
+- wyższa wartość czasu wygaśnięcia może potencjalnie skrócić czas potrzebny do przeprowadzenia wyszukiwania DNS.
+- wyższy czas TTL oznacza również, że dane nie odzwierciedlają najnowszych informacji o kondycji, które Traffic Manager uzyskane za pośrednictwem agentów sondowania.
 
-### <a name="how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses"></a>Jak wysokie lub niskie można ustawić czasu wygaśnięcia dla usługi Traffic Manager odpowiedzi?
+### <a name="how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses"></a>Jak wysoka lub niska można ustawić czas wygaśnięcia dla Traffic Manager odpowiedzi?
 
-Można ustawić na na poziomie profilu, czasu wygaśnięcia DNS jako jedyne 0 sekund oraz możliwie jak 2 147 483 647 sekund (zgodne z maksymalną wielkość zakresu [standardem RFC 1035](https://www.ietf.org/rfc/rfc1035.txt )). Wartością TTL równą 0 oznacza, że podrzędnego rozpoznawania nazw DNS nie buforują odpowiedzi na kwerendy i oczekują, że wszystkie zapytania dotrzeć do serwerów w celu rozpoznawania DNS usługi Traffic Manager.
+Można ustawić, na poziomie profilu, wartość czasu wygaśnięcia DNS na wartość równą 0 sekund i maksymalnie 2 147 483 647 sekund (maksymalny zakres zgodny ze standardem [RFC-1035](https://www.ietf.org/rfc/rfc1035.txt )). Czas wygaśnięcia równy 0 oznacza, że podrzędne rozpoznawania nazw DNS nie buforują odpowiedzi zapytań, a wszystkie zapytania powinny dotrzeć do Traffic Manager serwerów DNS w celu rozpoznania.
 
-### <a name="how-can-i-understand-the-volume-of-queries-coming-to-my-profile"></a>Jak wyjaśnić woluminu kwerendy mieszczących się do swojego profilu? 
+### <a name="how-can-i-understand-the-volume-of-queries-coming-to-my-profile"></a>Jak zrozumieć ilość zapytań przesyłanych do mojego profilu? 
 
-Jednej z metryk udostępniane przez usługę Traffic Manager jest liczba zapytań wypełniona przez profil. Możesz uzyskać te informacje na poziomie agregacji profilu lub można podzielić ją aby zobaczyć wolumin zapytań, gdzie punkty końcowe zostały zwrócone. Ponadto użytkownik może skonfigurować alerty Powiadomienie, jeśli wolumin odpowiedzi zapytania przecina warunki, które zostały ustawione. Aby uzyskać więcej informacji [alerty i metryki usługi Traffic Manager](traffic-manager-metrics-alerts.md).
+Jedną z metryk dostarczonych przez Traffic Manager jest liczba zapytań wysłanych przez profil. Te informacje można uzyskać przy użyciu agregacji poziomu profilu lub można je podzielić w celu wyświetlenia ilości zapytań, w których zostały zwrócone określone punkty końcowe. Ponadto można skonfigurować alerty, które będą powiadamiać o tym, czy wolumin odpowiedzi zapytania przekracza ustawione warunki. Aby uzyskać więcej informacji, [Traffic Manager metryki i alerty](traffic-manager-metrics-alerts.md).
 
-## <a name="traffic-manager-geographic-traffic-routing-method"></a>Metody routingu ruchu Geographic usługi Traffic Manager
+## <a name="traffic-manager-geographic-traffic-routing-method"></a>Traffic Manager Metoda routingu ruchu geograficznego
 
-### <a name="what-are-some-use-cases-where-geographic-routing-is-useful"></a>Jakie są niektóre przypadki użycia, w których jest użyteczny geograficznego routingu?
+### <a name="what-are-some-use-cases-where-geographic-routing-is-useful"></a>Jakie są przypadki użycia, w których funkcja routingu geograficznego jest przydatna?
 
-Typ routingu geograficznego może służyć w każdym scenariuszu których klient korzystający z systemu Azure wymaga do rozróżniania użytkowników na podstawie regionów geograficznych. Na przykład przy użyciu metody geograficznego routingu ruchu, użytkownicy mogli z regionów określonych interfejs użytkownika innego niż te, które z innych regionów. Innym przykładem jest zgodne z oczekuje się niezależność danych lokalnych, które wymagają, że użytkownicy z określonym regionie obsługiwane tylko przez punkty końcowe, w tym regionie.
+Typ routingu geograficznego może być używany w każdym scenariuszu, w którym klient platformy Azure musi odróżnić swoich użytkowników na podstawie regionów geograficznych. Na przykład przy użyciu metody routingu ruchu geograficznego można dać użytkownikom z określonych regionów inne środowisko użytkownika niż te z innych regionów. Inny przykład jest zgodny z przydziałami lokalnych danych, które wymagają, aby użytkownicy z określonego regionu byli obsługiwani tylko przez punkty końcowe w tym regionie.
 
-### <a name="how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method"></a>Jak zdecydować, jeśli należy użyć metody routingu opartego na wydajności lub metody routingu geograficznego
+### <a name="how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method"></a>Jak mogę zdecydować, czy należy użyć metody routingu wydajności czy metody routingu geograficznego?
 
-Główną różnicą między te dwie metody routingu popularne jest to, że wydajność przez Ciebie głównej dowiesz się, jak przesyłać dane do punktu końcowego, który zapewnia najniższe opóźnienie do obiektu wywołującego, Geographic routingu podstawowym celem jest w celu wymuszenia georegionu metody routingu ogrodzenia dla wywoływania usługi, dzięki czemu może świadomie kierować do określonego punktu końcowego. Nakładanie się odbywa się, ponieważ istnieje korelacja między bliskość geograficzne i mniejsze opóźnienia, chociaż nie zawsze jest to wartość true. Może być punkt końcowy w innej lokalizacji geograficznej, która może zapewnić lepsze środowisko opóźnienie do obiektu wywołującego i w takiej sytuacji wydajności routingu będzie wysłać użytkownika do tego punktu końcowego, ale geograficznego routingu zawsze będzie wysyłać je do punktu końcowego, które mają być mapowane do ich region geograficzny. Dodatkowo charakteryzowanych wyczyścić, rozważmy następujący przykład — za pomocą Geographic routingu, możesz wprowadzać nietypowe mapowania, takie jak Wyślij cały ruch z Azji do punktów końcowych w Stanach Zjednoczonych i cały ruch Stanów Zjednoczonych do punktów końcowych w Azji. W takim przypadku geograficznego routingu celowo wykona dokładnie co skonfigurowano mu i optymalizacji wydajności nie jest brany pod uwagę. 
+Kluczową różnicą między tymi dwiema popularnymi metodami routingu jest to, że w metodzie routingu wydajności podstawowy cel polega na wysłaniu ruchu do punktu końcowego, który może zapewnić najniższe opóźnienie do obiektu wywołującego, natomiast w przypadku routingu geograficznego głównym celem jest wymuszenie lokalizacji geograficznej horyzont dla obiektów wywołujących, dzięki czemu można celowo kierować je do określonego punktu końcowego. Nakładanie się odbywa, ponieważ istnieje korelacja między bliskością geograficzną i niższym opóźnieniem, chociaż nie jest to zawsze prawdziwe. Może istnieć punkt końcowy w różnych lokalizacjach geograficznych, które mogą zapewnić lepszy czas oczekiwania dla obiektu wywołującego, a w takim przypadku Routing geograficzny będzie wysyłany do tego punktu końcowego, ale funkcja routingu geograficznego zawsze wyśle je do punktu końcowego zamapowanego na ich region geograficzny. Aby dodatkowo uczynić to jasne, rozważmy poniższy przykład — z routingiem geograficznym można tworzyć nietypowe mapowania, takie jak wysyłanie całego ruchu z Azji do punktów końcowych w Stanach Zjednoczonych i cały ruch w Stanach Zjednoczonych do punktów końcowych w Azji. W takim przypadku funkcja routingu geograficznego będzie świadomie wykonywać dokładnie te elementy, które zostały skonfigurowane, a Optymalizacja wydajności nie jest brana pod uwagę. 
 >[!NOTE]
->Może to być scenariuszach, gdzie możesz potrzebować zarówno wydajności i geograficzne możliwości routingu dla profilów zagnieżdżonych w tych scenariuszach może być doskonałym wyborem. Na przykład można skonfigurować profil nadrzędnej z geograficznego routingu, w którym Wyślij cały ruch z Ameryki Północnej zagnieżdżonych profilu, który ma punkty końcowe w Stanach Zjednoczonych i korzystać z wydajności routing wysyłać te ruch optymalny punkt końcowy w ramach tego zestawu. 
+>Mogą istnieć sytuacje, w których mogą być potrzebne zarówno możliwości routingu w zakresie wydajności, jak i geograficznej, w tych scenariuszach zagnieżdżone profile mogą być doskonałym wyborem. Można na przykład skonfigurować profil nadrzędny przy użyciu routingu geograficznego, w którym można wysłać cały ruch z Ameryka Północna do profilu zagnieżdżonego, który ma punkty końcowe w Stanach Zjednoczonych, i użyć routingu wydajności, aby wysłać ten ruch do najlepszego punktu końcowego w tym zestawie. 
 
-### <a name="what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing"></a>Co to są regiony, które są obsługiwane przez usługę Traffic Manager w przypadku geograficznego routingu?
+### <a name="what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing"></a>Jakie regiony są obsługiwane przez Traffic Manager na potrzeby routingu geograficznego?
 
-Hierarchia krajów/regionów, które jest używane przez usługę Traffic Manager można znaleźć [tutaj](traffic-manager-geographic-regions.md). Gdy ta strona jest zawsze na bieżąco ze wszystkimi zmianami, także programowo można pobrać te same informacje za pomocą [interfejsu REST API usługi Azure Traffic Manager](https://docs.microsoft.com/rest/api/trafficmanager/). 
+Hierarchia krajów/regionów używana przez Traffic Manager można znaleźć [tutaj](traffic-manager-geographic-regions.md). Gdy ta strona jest aktualna wraz ze zmianami, można również programowo pobrać te same informacje przy użyciu [interfejsu API REST usługi Azure Traffic Manager](https://docs.microsoft.com/rest/api/trafficmanager/). 
 
-### <a name="how-does-traffic-manager-determine-where-a-user-is-querying-from"></a>Jak usługa traffic manager ustalić, gdzie użytkownik jest badanie od?
+### <a name="how-does-traffic-manager-determine-where-a-user-is-querying-from"></a>Jak Usługa Traffic Manager określa, skąd użytkownik wykonuje zapytania?
 
-Usługa Traffic Manager analizuje adres IP źródła zapytania (najprawdopodobniej jest to lokalnego rozpoznawania nazw DNS wykonywania zapytań w imieniu użytkownika) i używa wewnętrznym adresem IP do regionu mapy do określenia lokalizacji. Ta mapa jest aktualizowany na bieżąco, aby uwzględnić zmiany w Internecie. 
+Traffic Manager sprawdza źródłowy adres IP zapytania (najprawdopodobniej jest to lokalny program rozpoznawania nazw DNS wykonujący zapytania w imieniu użytkownika) i używa wewnętrznej sieci IP do mapowania regionów w celu określenia lokalizacji. Ta mapa jest regularnie aktualizowana w celu uwzględnienia zmian w Internecie. 
 
-### <a name="is-it-guaranteed-that-traffic-manager-can-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case"></a>Jest on gwarantowane, usługa Traffic Manager prawidłowo określić dokładną lokalizację geograficzną użytkownika w każdym przypadku
+### <a name="is-it-guaranteed-that-traffic-manager-can-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case"></a>Czy jest gwarantowane, że Traffic Manager może prawidłowo określić dokładną lokalizację geograficzną użytkownika w każdym przypadku?
 
-Nie, usługa Traffic Manager nie może zagwarantować, że regionu geograficznego, które możemy wyciągnąć z adres IP źródła zapytania DNS będzie zawsze odpowiadają od lokalizacji użytkownika z następujących przyczyn:
+Nie, Traffic Manager nie może zagwarantować, że region geograficzny, który zostanie wywnioskowany ze źródłowego adresu IP zapytania DNS, będzie zawsze odpowiadał lokalizacji użytkownika z następujących powodów:
 
-- Po pierwsze zgodnie z opisem w poprzedniej odpowiedzi na pytanie, źródłowy adres IP, którego firma Microsoft jest program rozpoznawania nazw DNS podczas wyszukiwania w imieniu użytkownika. Gdy program rozpoznawania nazw DNS lokalizacja geograficzna jest dobrym serwera proxy dla lokalizacji geograficznej użytkownika, również można różne w zależności od śladu usługi rozpoznawania nazw DNS i określonych usługa rozpoznawania nazw DNS, który klient ma wybranego do użycia. Na przykład klient znajduje się w Malezji można określić w użyciu ustawienia swoich urządzeń usługa rozpoznawania nazw DNS, których serwer DNS w Singapurze może uzyskać wybrany do obsługi rozwiązania zapytania dla tego użytkownika/urządzenia. W takim przypadku usługa Traffic Manager może zobaczyć tylko adresu IP programu rozpoznawania nazw, który odnosi się do lokalizacji Singapur. Zobacz też wcześniej — często zadawane pytania dotyczące pomocy technicznej adres podsieci klienta na tej stronie.
+- Najpierw zgodnie z opisem w poprzednich często zadawanych pytaniach źródłowy adres IP jest używany przez program rozpoznawania nazw DNS w celu przeszukania w imieniu użytkownika. Lokalizacja geograficzna programu rozpoznawania nazw DNS jest dobrym serwerem proxy dla lokalizacji geograficznej użytkownika, ale może być również inna w zależności od wielkości usługi rozpoznawania nazw DNS i określonej usługi rozpoznawania nazw DNS, którą klient wybrał do użycia. Na przykład klient znajdujący się w Malezji może określić w ustawieniach urządzenia użycie usługi rozpoznawania nazw DNS, której serwer DNS w Singapurze może zostać pobrany do obsługi rozdzielczości zapytania dla tego użytkownika/urządzenia. W takim przypadku Traffic Manager może zobaczyć tylko adres IP programu rozpoznawania nazw, który odpowiada lokalizacji Singapuru. Zobacz również poprzednie często zadawane pytania dotyczące obsługi adresów podsieci klienta na tej stronie.
 
-- Po drugie usługi Traffic Manager używa wewnętrznego mapy celu adres IP do tłumaczenia z regionów geograficznych. To mapowanie jest zweryfikowana i aktualizowane na bieżąco, aby zwiększyć jego dokładność oraz konto do stale rosnących potrzeb charakteru Internetu, nadal jest możliwość, że nasze informacje nie są dokładnie reprezentacja lokalizacja geograficzna wszystkich adresów IP adresy.
+- Następnie Traffic Manager używa mapy wewnętrznej do przeprowadzenia translacji adresów IP do obszaru geograficznego. Mimo że ta mapa jest sprawdzana i aktualizowana w sposób ciągły, aby zwiększyć jej dokładność i obsłużyć rosnący charakter Internetu, nadal istnieje możliwość, że nasze informacje nie są dokładną reprezentacją lokalizacji geograficznej całego adresu IP adres.
 
-###  <a name="does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing"></a>Czy punkt końcowy musi się znajdować w tym samym regionie, który jest skonfigurowany przy użyciu dla geograficznego routingu?
+###  <a name="does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing"></a>Czy punkt końcowy musi być fizycznie zlokalizowany w tym samym regionie, w którym jest skonfigurowany do routingu geograficznego?
 
-Nie, lokalizacja punktu końcowego nakłada żadnych ograniczeń, w których regionach mogą być mapowane do niego. Na przykład punkt końcowy w regionie środkowe stany USA Azure może mieć wszystkich użytkowników z Indii skierowany do niego.
+Nie, Lokalizacja punktu końcowego nie nakłada żadnych ograniczeń dotyczących tego, które regiony można zamapować na nie. Na przykład punkt końcowy w regionie usługi USA — centralnie może mieć do niego kierowany wszyscy użytkownicy z Indii.
 
-### <a name="can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing"></a>Regiony geograficzne można przypisać do punktów końcowych w profilu, który nie jest skonfigurowany w celu geograficznego routingu?
+### <a name="can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing"></a>Czy można przypisywać regiony geograficzne do punktów końcowych w profilu, który nie jest skonfigurowany do routingu geograficznego?
 
-Tak, jeśli metody routingu w profilu nie jest geograficznego, możesz użyć [interfejsu REST API usługi Azure Traffic Manager](https://docs.microsoft.com/rest/api/trafficmanager/) można przypisać regionów geograficznych do punktów końcowych w tym profilu. W przypadku profilów typu routingu geograficznie rozproszona ta konfiguracja jest ignorowana. Jeśli zmienisz takiego profilu typowi geograficznego routingu w późniejszym czasie, Traffic Manager może użyć tych mapowania.
+Tak, jeśli metoda routingu profilu nie jest geograficzna, można użyć [interfejsu API REST platformy Azure Traffic Manager](https://docs.microsoft.com/rest/api/trafficmanager/) do przypisywania regionów geograficznych do punktów końcowych w tym profilu. W przypadku profilów typu routingu geograficznego ta konfiguracja jest ignorowana. Jeśli zmienisz taki profil na typ routingu geograficznego w późniejszym czasie, Traffic Manager mogą używać tych mapowań.
 
-### <a name="why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic"></a>Dlaczego otrzymuję błąd przy próbie zmienić metodę routingu istniejący profil do Geographic?
+### <a name="why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic"></a>Dlaczego otrzymuję błąd podczas próby zmiany metody routingu istniejącego profilu na geograficzny?
 
-Wszystkie punkty końcowe w ramach profilu geograficznego routingu, muszą mieć przynajmniej jednego regionu do niej przyporządkowany. Aby przekonwertować istniejącego profilu geograficznego typu routingu, najpierw musisz skojarzyć regionów geograficznych, aby wszystkie jego punktów końcowych przy użyciu [interfejsu REST API usługi Azure Traffic Manager](https://docs.microsoft.com/rest/api/trafficmanager/) przed zmianą typu routingu geograficznego. Jeśli przy użyciu portalu, najpierw usunąć punkty końcowe, zmień metodę routingu profilu na geograficznych, a następnie dodaj punktów końcowych wraz z ich mapowania z regionów geograficznych.
+Wszystkie punkty końcowe w profilu z routingiem geograficznym muszą mieć zamapowane co najmniej jeden region. Aby przekonwertować istniejący profil na typ routingu geograficznego, najpierw musisz skojarzyć regiony geograficzne ze wszystkimi punktami końcowymi przy użyciu [interfejsu API REST platformy Azure Traffic Manager](https://docs.microsoft.com/rest/api/trafficmanager/) przed zmianą typu routingu na geograficzny. Jeśli używasz portalu, najpierw usuń punkty końcowe, Zmień metodę routingu profilu na geograficzną, a następnie Dodaj punkty końcowe wraz z ich mapowaniem regionu geograficznego.
 
-### <a name="why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled"></a>Dlaczego jest zalecane użytkownikom utworzenie profilów zagnieżdżonych zamiast punktów końcowych w ramach profilu z włączonym routingiem geograficzne?
+### <a name="why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled"></a>Dlaczego zdecydowanie zaleca się, aby klienci utworzyli profile zagnieżdżone zamiast punktów końcowych w ramach profilu z włączonym routingiem geograficznym?
 
-Jeśli używane są metody routingu geograficznego regionu można przypisać do tylko jeden punkt końcowy w profilu. Jeśli punkt końcowy nie jest typem zagnieżdżonym z profilem podrzędnych, dołączone do niego, jeśli ruch tego punktu końcowego, przechodząc w złej kondycji, Menedżer w dalszym ciągu przesyłać do niego od alternatywne nie wysyła cały ruch nie jest żadnym lepsze. Usługa Traffic Manager nie nie trybu failover do innego punktu końcowego, nawet w przypadku, gdy region przypisany jest "elementem nadrzędnym" regionu przypisana do punktu końcowego, który wystąpił w złej kondycji, (na przykład, jeśli punkt końcowy, który ma Hiszpania region przechodzi w złej kondycji nie trybu failover do innego punktu końcowego czynność tę możemy wykonać został wybrany region Europa przypisane do niego). Odbywa się, aby upewnić się, że usługa Traffic Manager szanuje granicami geograficznymi, że klient ma ustawienia w swoim profilu. Aby skorzystać z zalet przechodzenie w tryb failover do innego punktu końcowego, gdy punkt końcowy przechodzi w złej kondycji, zalecane jest, że regionów geograficznych można przypisać do profilów zagnieżdżonych z wieloma punktami końcowymi w nim zamiast poszczególne punkty końcowe. W ten sposób w przypadku awarii punktu końcowego w profilu zagnieżdżonych elementów podrzędnych ruch można trybu failover do innego punktu końcowego w ramach tego samego profilu zagnieżdżonych elementów podrzędnych.
+Region można przypisać tylko do jednego punktu końcowego w ramach profilu, jeśli jest on używany przy użyciu metody routingu geograficznego. Jeśli ten punkt końcowy nie jest zagnieżdżonym typem z dołączonym do niego profilem podrzędnym, jeśli ten punkt końcowy przestanie być w złej kondycji, Traffic Manager nadal wysyła ruch do niego, ponieważ alternatywa niewysyłania żadnego ruchu nie jest lepsza. Traffic Manager nie przejdzie w tryb failover do innego punktu końcowego, nawet jeśli przypisany region jest "nadrzędny" regionu przypisanego do punktu końcowego, który przeszedł w stan złej kondycji (na przykład jeśli punkt końcowy, który ma region Hiszpania ma złą kondycję, nie przejdzie w tryb failover do innego punktu końcowego, który ma przypisany region Europe). W tym celu należy się upewnić, że Traffic Manager uwzględnia granice geograficzne, które klient skonfigurował w swoich profilach. Aby skorzystać z przełączenia w tryb failover do innego punktu końcowego, gdy punkt końcowy jest w złej kondycji, zaleca się, aby regiony geograficzne były przypisywane do zagnieżdżonych profilów z wieloma punktami końcowymi, a nie z poszczególnych punktów końcowych. W ten sposób, jeśli punkt końcowy w zagnieżdżonym profilu podrzędnym ulegnie awarii, ruch może przechodzić w tryb failover do innego punktu końcowego w tym samym zagnieżdżonym profilu podrzędnym.
 
 ### <a name="are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type"></a>Czy istnieją jakieś ograniczenia dotyczące wersji interfejsu API, która obsługuje ten typ routingu?
 
-Tak, tylko interfejsu API w wersji 2017-03-01 i nowszych obsługuje geograficznego routingu typu. Starsze wersje interfejsu API nie może służyć do utworzone profile typu routingu geograficznego lub przypisać regionów geograficznych do punktów końcowych. Jeśli starszej wersji interfejsu API jest używany do pobierania profilów z subskrypcją platformy Azure, dowolny profil geograficzny typu routingu nie są zwracane. Ponadto przy użyciu starszych wersji interfejsu API żadnego profilu zwracane, ma punkty końcowe z przypisaniem region geograficzny, nie ma przypisania region geograficzny, wyświetlane.
+Tak, tylko interfejs API w wersji 2017-03-01 i nowszej obsługuje typ routingu geograficznego. Wszystkie starsze wersje interfejsów API nie mogą być używane do tworzenia profilów typu routingu geograficznego lub przypisywania regionów geograficznych do punktów końcowych. Jeśli starsza wersja interfejsu API jest używana do pobierania profilów z subskrypcji platformy Azure, żaden profil typu routingu geograficznego nie jest zwracany. Ponadto w przypadku korzystania ze starszych wersji interfejsu API każdy zwrócony profil, który ma punkty końcowe z przypisaniem regionu geograficznego, nie ma pokazywanego przypisania regionu geograficznego.
 
-## <a name="traffic-manager-subnet-traffic-routing-method"></a>Metody routingu ruchu podsieci usługi Traffic Manager
+## <a name="traffic-manager-subnet-traffic-routing-method"></a>Metoda routingu ruchu podsieci Traffic Manager
 
-### <a name="what-are-some-use-cases-where-subnet-routing-is-useful"></a>Jakie są niektóre przypadki użycia, w której podsieci routing jest przydatne?
+### <a name="what-are-some-use-cases-where-subnet-routing-is-useful"></a>Jakie są przypadki użycia, w których Routing podsieci jest przydatny?
 
-Podsieć routingu pozwala odróżnić doświadczenie w zakresie dostarczania dla konkretnych zestawów użytkowników identyfikowanych na podstawie źródłowego adresu IP z ich adres IP żądania DNS. Przykładem może być przedstawiający różną zawartość, jeśli użytkownicy nawiązują połączenie z witryną sieci Web w swojej Centrali firmy. Inny będzie ograniczenie dostępu użytkowników z określonych usługodawców internetowych, aby uzyskać dostęp tylko do punktów końcowych, które obsługują tylko połączeń IPv4, jeśli te usługodawców internetowych mają podrzędnych par wydajność, gdy używany jest protokół IPv6.
-Kolejny powód, aby użyć metody routingu dla podsieci w połączeniu z innych profilów zagnieżdżonych profilu ustawiono. Na przykład jeśli chcesz użyć metody routingu geograficznego dla grodzenia użytkowników, ale dla określonego usługodawcę internetowego chcesz wykonać inną metodę routingu, możesz mieć profil withy podsieci metody routingu jako profil nadrzędnego i zastąpienie tego usługodawcy internetowego, aby użyć element podrzędny określonego pro plik, a ma standardowy profil geograficzny wszystkim innym użytkownikom.
+Routing podsieci pozwala odróżnić środowisko użytkownika dla konkretnych zestawów użytkowników identyfikowane przez źródłowy adres IP żądań DNS. Przykładem będzie pokazywane inne treści, jeśli użytkownicy nawiązują połączenie z witryną internetową z CENTRALĄ firmowej. Innym z nich będzie ograniczać dostęp użytkowników z określonych usługodawców do punktów końcowych, które obsługują tylko połączenia IPv4, jeśli te usługodawcy mają wydajność podrzędną w przypadku użycia protokołu IPv6.
+Kolejną przyczyną użycia metody routingu podsieci jest w połączeniu z innymi profilami w zagnieżdżonym zestawie profilów. Na przykład, jeśli chcesz używać metody routingu geograficznego dla użytkowników z ogrodzeniem geograficznym, ale dla konkretnego usługodawcy internetowego chcesz wykonać inną metodę routingu, możesz mieć profil z metodą routingu podsieci jako profil nadrzędny i przesłonić tego usługodawcę internetowego do korzystania z określonego elementu podrzędnego Pro plik i ma standardowy profil geograficzny dla wszystkich innych.
 
-### <a name="how-does-traffic-manager-know-the-ip-address-of-the-end-user"></a>Jak usługa Traffic Manager znać adres IP użytkownika końcowego?
+### <a name="how-does-traffic-manager-know-the-ip-address-of-the-end-user"></a>Jak Traffic Manager znać adres IP użytkownika końcowego?
 
-Urządzenia użytkowników końcowych zwykle używać programu rozpoznawania nazw DNS do wyszukiwania DNS w ich imieniu. Wychodzący adres IP takiego rozpoznawania nazw jest usługa Traffic Manager widzi jako źródłowy adres IP. Ponadto metody routingu dla podsieci również sprawdza, czy informacje EDNS0 rozszerzone klienta podsieci (ECS), który został przekazany z żądaniem. Jeśli informacje o ECS, to adres używany do określenia routingu. W przypadku braku informacji ECS adres IP źródła zapytania jest używana do celów routingu.
+Urządzenia użytkowników końcowych zazwyczaj używają programu rozpoznawania nazw DNS do przeszukiwania DNS w ich imieniu. Wychodzący adres IP takich resolverów jest Traffic Manager, który jest widoczny jako źródłowy adres IP. Ponadto Metoda routingu podsieci sprawdza także, czy istnieją informacje o rozszerzonych podsieciach klienta (ECS), które zostały przesłane do żądania. Jeśli są obecne informacje ECS, jest to adres używany do określenia routingu. W przypadku braku informacji ECS źródłowy adres IP zapytania jest używany do celów routingu.
 
-### <a name="how-can-i-specify-ip-addresses-when-using-subnet-routing"></a>Jak można określić adresy IP, przy użyciu routingu podsieci?
+### <a name="how-can-i-specify-ip-addresses-when-using-subnet-routing"></a>Jak można określić adresy IP w przypadku używania routingu podsieci?
 
-Adresy IP można skojarzyć z punktem końcowym usługi można określić na dwa sposoby. Po pierwsze służy notacji poczwórnej kropkowana octet dziesiętną z początkowy i końcowy adres do określania zakresu (na przykład 1.2.3.4-5.6.7.8 lub 3.4.5.6-3.4.5.6). Po drugie umożliwia notacji CIDR Określ zakres (na przykład 1.2.3.0/24). Można określić wiele zakresów i można użyć obu typów notacji w zestawie zakresu. Kilka ograniczenia mają zastosowanie.
+Adresy IP do skojarzenia z punktem końcowym można określić na dwa sposoby. Aby określić zakres (na przykład 1.2.3.4-5.6.7.8 lub 3.4.5.6-3.4.5.6), w pierwszej kolejności można użyć notacji z kropkami dziesiętnymi w formacie czterech kropek z adresami początkowymi i końcowymi. Następnie można użyć notacji CIDR, aby określić zakres (na przykład 1.2.3.0/24). Można określić wiele zakresów i można użyć obu typów notacji w zestawie zakresów. Obowiązuje kilka ograniczeń.
 
--   Nie może mieć nakładanie się zakresów adresów, ponieważ każdego adresu IP musi być mapowane na tylko jeden punkt końcowy
--   Adres początkowy nie może być większa niż adres końcowy
--   W przypadku notacji CIDR, adres IP przed '/' powinien być adres początkowy zakresu (na przykład 1.2.3.0/24 jest prawidłowy, ale 1.2.3.4.4/24 nie jest prawidłową)
+-   Nie można nakładać się na zakresy adresów, ponieważ każdy adres IP musi być zamapowany na tylko jeden punkt końcowy
+-   Adres początkowy nie może być większy niż adres końcowy
+-   W przypadku notacji CIDR adres IP przed "/" powinien być adresem początkowym tego zakresu (na przykład 1.2.3.0/24 jest prawidłowy, ale 1.2.3.4.4/24 jest nieprawidłowy)
 
-### <a name="how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing"></a>Jak można określić rezerwowy punkt końcowy przy użyciu routingu podsieci?
+### <a name="how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing"></a>Jak określić rezerwowy punkt końcowy w przypadku używania routingu podsieci?
 
-W profilu z routingiem podsieci w przypadku punktu końcowego z podsieciami, nie mapowanego, każde żądanie, które nie jest zgodny z innych punktów końcowych nastąpi przekierowanie do tego miejsca. Zdecydowanie zaleca się mieć taki rezerwowego punktu końcowego w Twoim profilu, ponieważ usługi Traffic Manager zwróci odpowiedź NXDOMAIN, jeśli żądanie jest oferowana w i nie została zamapowana na żadnych punktów końcowych lub jeśli jest mapowany do punktu końcowego, ale ten punkt końcowy jest w złej kondycji.
+W profilu z routingiem podsieci, jeśli masz punkt końcowy bez zmapowanych podsieci, wszystkie żądania, które nie są zgodne z innymi punktami końcowymi, będą kierowane do tego miejsca. Zdecydowanie zaleca się, aby w Twoim profilu był używany rezerwowy punkt końcowy, ponieważ Traffic Manager zwróci odpowiedź NXDOMAIN, jeśli żądanie się znajdzie, i nie jest zamapowana na żadne punkty końcowe lub jest zamapowana na punkt końcowy, ale ten punkt końcowy ma złą kondycję.
 
-### <a name="what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile"></a>Co się stanie, jeśli punkt końcowy jest wyłączony w podsieci routingu typu profilu?
+### <a name="what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile"></a>Co się stanie, jeśli punkt końcowy jest wyłączony w profilu typu routingu podsieci?
 
-W profilu z routingiem podsieci w przypadku punktu końcowego, z którego jest wyłączona, usługi Traffic Manager będzie zachowywać się tak, jakby punkt końcowy i mapowania podsieci, których nie istnieje. Jeśli zostanie odebrana zapytania, które mogłyby zostały dopasowane do jego mapowania adresów IP, a punkt końcowy jest wyłączona, usługa Traffic Manager zwróci rezerwowego punktu końcowego, (jeden z Brak mapowań) lub jeśli punkt końcowy nie jest obecny, zwróci odpowiedź NXDOMAIN.
+Jeśli istnieje punkt końcowy z wyłączonym profilem z routingiem podsieci, Traffic Manager będzie zachowywać się tak, jakby ten punkt końcowy i mapowania podsieci nie istnieją. Jeśli zostanie odebrane zapytanie, które byłoby dopasowane do mapowania adresów IP, a punkt końcowy jest wyłączony, Traffic Manager zwróci rezerwowy punkt końcowy (jeden bez mapowań) lub jeśli taki punkt końcowy nie istnieje, zwróci odpowiedź NXDOMAIN.
 
-## <a name="traffic-manager-multivalue-traffic-routing-method"></a>Metody routingu ruchu atrybut wielowartościowy elementu usługi Traffic Manager
+## <a name="traffic-manager-multivalue-traffic-routing-method"></a>Traffic Manager wielowartościowa Metoda routingu ruchu
 
-### <a name="what-are-some-use-cases-where-multivalue-routing-is-useful"></a>Co to są niektórych przypadków użycia, w których wielu wartości routing jest przydatne?
+### <a name="what-are-some-use-cases-where-multivalue-routing-is-useful"></a>Jakie są przypadki użycia, w których Routing z wieloma wartościami jest przydatny?
 
-Routing wielowartościowe zwraca wiele punktów końcowych w dobrej kondycji w odpowiedzi na jedno zapytanie. Główną zaletą to to, że jeśli punkt końcowy jest w złej kondycji, klient ma więcej opcji, aby ponowić próbę bez wprowadzania inne wywołanie DNS (która może zwrócić tę samą wartość z nadrzędnego pamięci podręcznej). Ma to zastosowanie dla dostępności aplikacji zawierających poufne dane, których chcesz skrócić czas przestoju.
-Innym zastosowaniem dla metody routingu opartego na wielu wartości jest, jeśli punkt końcowy jest "dwukierunkowy" do obu protokołu IPv4 i IPv6 adresów, a chcesz nadać obiekt wywołujący obie opcje do wyboru gdy inicjuje on połączenie z punktem końcowym.
+Routing z wieloma wartościami zwraca wiele prawidłowych punktów końcowych w pojedynczej odpowiedzi na zapytanie. Główną zaletą jest to, że jeśli punkt końcowy jest w złej kondycji, klient programu ma więcej opcji, aby ponowić próbę bez tworzenia innego wywołania DNS (które może zwracać tę samą wartość z nadrzędnej pamięci podręcznej). Ma to zastosowanie w przypadku aplikacji wrażliwych na dostępność, które chcą zminimalizować przestoje.
+Innym zastosowaniem metody routingu z wieloma wartościami jest to, że punkt końcowy jest "dwuadresowy" do adresów IPv4 i IPv6 i chcesz nadać obiektowi wywołującemu obie opcje do wyboru, gdy inicjuje połączenie z punktem końcowym.
 
-### <a name="how-many-endpoints-are-returned-when-multivalue-routing-is-used"></a>Ile punktów końcowych są zwracane, gdy wielu wartości routing jest używany?
+### <a name="how-many-endpoints-are-returned-when-multivalue-routing-is-used"></a>Ile punktów końcowych jest zwracanych w przypadku użycia routingu wielowartościowego?
 
-Można określić maksymalną liczbę punktów końcowych do zwrócenia, a atrybut wielowartościowy elementu zwróci nie częściej niż wiele punktów końcowych w dobrej kondycji po otrzymaniu kwerendy. Maksymalnej możliwej wartości dla tej konfiguracji wynosi 10.
+Można określić maksymalną liczbę punktów końcowych do zwrócenia, a wiele z nich będzie zwracać nie więcej niż w przypadku odebrania zapytania. Maksymalna możliwa wartość tej konfiguracji to 10.
 
-### <a name="will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used"></a>Ten sam zestaw punktów końcowych będzie uzyskać po wielu wartości routing jest używany?
+### <a name="will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used"></a>Czy w przypadku użycia routingu wielowartościowego otrzymasz ten sam zestaw punktów końcowych?
 
-Nie możemy zagwarantować, że ten sam zestaw punktów końcowych zostanie zwrócone w każdym zapytaniu. Dotyczy to również fakt, że niektóre z punktów końcowych, które mogą zostać przekazane złej kondycji, w tym momencie nie zostaną uwzględnione w odpowiedzi
+Nie możemy zagwarantować, że w każdym zapytaniu zostanie zwrócony ten sam zestaw punktów końcowych. Dotyczy to również faktu, że niektóre punkty końcowe mogą działać w złej kondycji, w którym punkt nie zostanie uwzględniony w odpowiedzi.
 
 ## <a name="real-user-measurements"></a>Pomiary rzeczywistego użytkownika
 
-### <a name="what-are-the-benefits-of-using-real-user-measurements"></a>Jakie są korzyści z używania pomiarów rzeczywistego użytkownika?
+### <a name="what-are-the-benefits-of-using-real-user-measurements"></a>Jakie korzyści wynikają z używania Pomiary rzeczywistego użytkownika?
 
-Korzystając z metody routingu opartego na wydajności usługi Traffic Manager wybiera najlepsze region platformy Azure dla usługi użytkownika końcowego nawiązać połączenie, sprawdzając źródłowy adres IP i podsieci klienta mechanizmów EDNS (jeśli przekazany) i obsługuje sprawdzanie go przed analiza opóźnienia sieci usługi. Pomiary dotyczące prawdziwych użytkowników podnosi poziom to dla użytkownika końcowego podstawowego o ich środowisko pracy, które przyczyniają się do tej tabeli opóźnienie Oprócz zapewniania, które w tej tabeli adekwatnie obejmuje sieci użytkowników końcowych, z którym użytkownikom końcowym łączenie się z platformą Azure. Prowadzi to do zwiększenia dokładności w routingu użytkownikowi końcowemu.
+W przypadku korzystania z metody routingu wydajności Traffic Manager wybiera najlepszy region platformy Azure dla użytkownika końcowego, aby mógł nawiązać połączenie, sprawdzając źródłową wartość IP i podsieć klienta mechanizmów EDNS (jeśli została przeniesiona) i sprawdzając ją względem analizy opóźnienia sieci obsługiwanej przez usługę. Pomiary rzeczywistego użytkownika rozszerza to na bazę użytkowników końcowych, ponieważ ich środowisko wpływa na tę tabelę opóźnień, a także zapewnia, że ta tabela odpowiednio obejmuje sieci użytkowników końcowych, z których użytkownicy końcowi łączą się z platformą Azure. Prowadzi to do zwiększonej dokładności routingu użytkownika końcowego.
 
-### <a name="can-i-use-real-user-measurements-with-non-azure-regions"></a>Dzięki regionom platformy Azure można używać pomiarów rzeczywistego użytkownika?
+### <a name="can-i-use-real-user-measurements-with-non-azure-regions"></a>Czy mogę używać Pomiary rzeczywistego użytkownika z regionami nienależącymi do platformy Azure?
 
-Pomiary dotyczące prawdziwych użytkowników mierzy i raportuje tylko z opóźnieniem w nawiązać regiony platformy Azure. Jeśli używane są oparte na wydajności routing za pomocą punktów końcowych hostowanej w regionach spoza platformy Azure, możesz nadal korzystać z tej funkcji przez o zwiększenie opóźnienia informacje o reprezentatywny regionu platformy Azure został wybrany do skojarzenia z tym punktem końcowym.
+Pomiary rzeczywistego użytkownika miary i raporty dotyczące tylko opóźnień, aby osiągnąć regiony platformy Azure. Jeśli używasz routingu opartego na wydajności dla punktów końcowych hostowanych w regionach spoza platformy Azure, możesz skorzystać z tej funkcji, wprowadzając zwiększone informacje o opóźnieniu dotyczące reprezentatywnego regionu platformy Azure, który został wybrany do skojarzenia z tym punktem końcowym.
 
-### <a name="which-routing-method-benefits-from-real-user-measurements"></a>Które metody routingu korzyści płynące z pomiarów rzeczywistego użytkownika?
+### <a name="which-routing-method-benefits-from-real-user-measurements"></a>Która metoda routingu przynosi korzyści z Pomiary rzeczywistego użytkownika?
 
-Dodatkowe informacje uzyskane za pośrednictwem pomiarów rzeczywistego użytkownika mają zastosowanie tylko w przypadku profilów, które należy użyć metody routingu wydajności. Łącze pomiarów rzeczywistego użytkownika jest dostępny w wszystkich profilów, podczas wyświetlania w witrynie Azure portal.
+Dodatkowe informacje uzyskane za pomocą Pomiary rzeczywistego użytkownika są stosowane tylko w przypadku profilów korzystających z metody routingu wydajności. Łącze Pomiary rzeczywistego użytkownika jest dostępne ze wszystkich profilów podczas wyświetlania go za pośrednictwem Azure Portal.
 
-### <a name="do-i-need-to-enable-real-user-measurements-each-profile-separately"></a>Należy włączyć pomiarów rzeczywistego użytkownika osobno każdy profil?
+### <a name="do-i-need-to-enable-real-user-measurements-each-profile-separately"></a>Czy muszę włączyć Pomiary rzeczywistego użytkownika każdy profil osobno?
 
-Nie, musisz ją włączyć raz na subskrypcję, wszystkie informacje opóźnienie mierzona i zgłaszane są dostępne dla wszystkich profilów.
+Nie, wystarczy włączyć ją raz na subskrypcję, a wszystkie informacje o opóźnieniu mierzone i raportowane są dostępne dla wszystkich profilów.
 
-### <a name="how-do-i-turn-off-real-user-measurements-for-my-subscription"></a>Jak wyłączyć pomiarów rzeczywistego użytkownika dla mojej subskrypcji?
+### <a name="how-do-i-turn-off-real-user-measurements-for-my-subscription"></a>Jak mogę wyłączyć Pomiary rzeczywistego użytkownika dla mojej subskrypcji?
 
-Można Naliczanie opłat związanych z pomiarów rzeczywistego użytkownika, gdy możesz zatrzymać zbieranie i wysyłanie pomiarów opóźnienia wstecz od aplikacji klienckiej. Na przykład gdy pomiaru JavaScript osadzone w stronach sieci web, można zatrzymać za pomocą tej funkcji, usuwając JavaScript lub przez wyłączenie swojego wywołania, gdy strona jest wyświetlana.
+Można zatrzymać naliczanie opłat związanych z Pomiary rzeczywistego użytkownika po zatrzymaniu zbierania i wysyłania pomiarów opóźnienia z aplikacji klienckiej. Na przykład podczas mierzenia kodu JavaScript osadzonego na stronach sieci Web można zatrzymać korzystanie z tej funkcji, usuwając kod JavaScript lub wyłączając jego wywołanie, gdy strona jest renderowana.
 
-Pomiary dotyczące prawdziwych użytkowników można także wyłączyć, usuwając klucz. Po usunięciu klucz wszelkie pomiary wysyłane do usługi Traffic Manager za pomocą tego klucza, zostaną odrzucone.
+Możesz również wyłączyć Pomiary rzeczywistego użytkownika, usuwając klucz. Po usunięciu klucza wszystkie pomiary wysyłane do Traffic Manager z tym kluczem są odrzucane.
 
-### <a name="can-i-use-real-user-measurements-with-client-applications-other-than-web-pages"></a>Przy użyciu aplikacji klienckich niż stron sieci web można używać pomiarów rzeczywistego użytkownika?
+### <a name="can-i-use-real-user-measurements-with-client-applications-other-than-web-pages"></a>Czy mogę używać Pomiary rzeczywistego użytkownika z aplikacjami klienckimi innymi niż strony sieci Web?
 
-Tak, pomiarów rzeczywistego użytkownika zaprojektowano w celu pozyskiwania danych zbieranych za pośrednictwem innego typu klientów użytkownika końcowego. Często zadawane pytania zostanie zaktualizowany, jako nowe typy aplikacji klienckich Pobierz obsługiwane.
+Tak, Pomiary rzeczywistego użytkownika zaprojektowano w celu pozyskiwania danych zebranych przez innego typu klientów końcowych. Te często zadawane pytania zostaną zaktualizowane w miarę obsługi nowych typów aplikacji klienckich.
 
-### <a name="how-many-measurements-are-made-each-time-my-real-user-measurements-enabled-web-page-is-rendered"></a>Ile pomiarów każdorazowo Moje pomiarów rzeczywistego użytkownika włączone strony sieci web jest renderowany?
+### <a name="how-many-measurements-are-made-each-time-my-real-user-measurements-enabled-web-page-is-rendered"></a>Ile pomiarów jest wykonywanych za każdym razem, gdy jest renderowana Strona sieci Web z włączonymi Pomiary rzeczywistego użytkownikaami?
 
-Pomiary dotyczące prawdziwych użytkowników jest używana z pomiaru JavaScript, pod warunkiem, każdy renderowanie strony skutkuje sześć pomiarów. Następnie są one raportowane powrót do usługi Traffic Manager. Opłaty są naliczane dla tej funkcji, na podstawie liczby pomiarów zgłoszone do usługi Traffic Manager. Na przykład jeśli użytkownik przejdzie od strony sieci Web, gdy są wykonywane pomiary, ale przed jego został zgłoszony, pomiarów nie są uwzględniane na potrzeby rozliczeń.
+Gdy Pomiary rzeczywistego użytkownika jest używany z pomiarem języka JavaScript dostarczone, każda strona renderuje wyniki w sześciu pomiarach. Następnie są one raportowane z powrotem do usługi Traffic Manager. Opłata jest naliczana za tę funkcję na podstawie liczby pomiarów raportowanych do Traffic Manager usługi. Na przykład jeśli użytkownik wychodzi poza stronę sieci Web, podczas gdy pomiary są wykonywane, ale przed zgłoszeniem, te pomiary nie są brane pod uwagę na potrzeby rozliczania.
 
-### <a name="is-there-a-delay-before-real-user-measurements-script-runs-in-my-webpage"></a>Czy istnieje opóźnienie przed uruchomieniem skryptu pomiarów rzeczywistego użytkownika w mojej stronie sieci Web?
+### <a name="is-there-a-delay-before-real-user-measurements-script-runs-in-my-webpage"></a>Czy istnieje opóźnienie przed uruchomieniem skryptu Pomiary rzeczywistego użytkownika na mojej stronie sieci Web?
 
-Nie, nie ma żadnego zaprogramowanych opóźnienia przed wywołaniem skryptu.
+Nie, nie ma opóźnienia programowego przed wywołaniem skryptu.
 
-### <a name="can-i-use-real-user-measurements-with-only-the-azure-regions-i-want-to-measure"></a>Za pomocą tylko wybrane do mierzenia regiony platformy Azure można używać pomiarów rzeczywistego użytkownika?
+### <a name="can-i-use-real-user-measurements-with-only-the-azure-regions-i-want-to-measure"></a>Czy mogę używać Pomiary rzeczywistego użytkownika tylko z regionami platformy Azure, które mają być mierzone?
 
-Nie, każdy razem, gdy jest wywoływana, skrypt pomiarów rzeczywistego użytkownika mierzy zbiór sześciu regionach platformy Azure zgodnie z ustaleniami usługi. To ustawienie zmiany między różnymi wywołaniami i gdy wystąpi dużą liczbę tych wywołań, pokrycia pomiaru rozciąga się w różnych regionach platformy Azure.
+Nie, za każdym razem, gdy jest wywoływany, skrypt Pomiary rzeczywistego użytkownika mierzy zestaw sześciu regionów świadczenia usługi Azure określony przez usługę. Ten zestaw zmienia się między różnymi wywołaniami i gdy występuje duża liczba takich wywołań, pokrycie pomiaru obejmuje różne regiony platformy Azure.
 
-### <a name="can-i-limit-the-number-of-measurements-made-to-a-specific-number"></a>Czy można ograniczyć liczbę pomiarów dokonanych na określony numer?
+### <a name="can-i-limit-the-number-of-measurements-made-to-a-specific-number"></a>Czy mogę ograniczyć liczbę pomiarów wprowadzonych do określonego numeru?
 
-Miary, którą JavaScript jest osadzony na stronie sieci Web oraz mają pełną kontrolę nad podczas rozpoczęcie i Zakończenie korzystania z niego. Tak długo, jak usługa Traffic Manager odbiera żądanie listę regionów świadczenia usługi Azure, które ma być mierzony, zestawie regionów są zwracane.
+Pomiar JavaScript jest osadzony w stronie sieci Web i masz pełną kontrolę nad rozpoczęciem i zatrzymywaniem korzystania z niego. Tak długo, jak Usługa Traffic Manager otrzymuje żądanie dotyczące listy regionów platformy Azure, które mają być mierzone, zostanie zwrócony zestaw regionów.
 
-### <a name="can-i-see-the-measurements-taken-by-my-client-application-as-part-of-real-user-measurements"></a>Może wyświetlać pomiarów dokonanych przez aplikację klienta jako część pomiarów rzeczywistego użytkownika?
+### <a name="can-i-see-the-measurements-taken-by-my-client-application-as-part-of-real-user-measurements"></a>Czy mogę zobaczyć pomiary wykonywane przez aplikację kliencką w ramach Pomiary rzeczywistego użytkownika?
 
-Ponieważ logiki miary jest uruchamiany z aplikacji klienckiej, masz pełną kontrolę określenie, co się stanie, obejmującymi pomiary opóźnienia między innymi. Usługa Traffic Manager nie raportuje zagregowany widok pomiarów odebrane w kluczu połączone z subskrypcją.
+Ponieważ logika pomiaru jest uruchamiana z poziomu aplikacji klienckiej, masz pełną kontrolę nad tym, co się dzieje, w tym zobaczą pomiary opóźnienia. Traffic Manager nie zgłasza zagregowanego widoku pomiarów otrzymanych w ramach klucza połączonego z subskrypcją.
 
-### <a name="can-i-modify-the-measurement-script-provided-by-traffic-manager"></a>Można zmodyfikować skrypt pomiaru dostarczane przez usługę Traffic Manager?
+### <a name="can-i-modify-the-measurement-script-provided-by-traffic-manager"></a>Czy mogę zmodyfikować skrypt pomiarowy dostarczony przez Traffic Manager?
 
-Podczas, gdy masz kontrolę nad co to jest osadzony na stronie sieci web, firma Microsoft zdecydowanie odradzamy możesz z wprowadzeniem jakichkolwiek zmian do skryptu pomiaru zapewnienie mierzy i raportuje opóźnienia poprawnie.
+Mimo że masz kontrolę nad tym, co jest osadzone na stronie sieci Web, zdecydowanie odradzamy wprowadzanie zmian do skryptu pomiarowego, aby upewnić się, że środki IT i poprawnie zgłaszają opóźnienia.
 
-### <a name="will-it-be-possible-for-others-to-see-the-key-i-use-with-real-user-measurements"></a>Jej będzie możliwe dla innych użytkowników wyświetlić klucz, używane z pomiarów rzeczywistego użytkownika?
+### <a name="will-it-be-possible-for-others-to-see-the-key-i-use-with-real-user-measurements"></a>Czy będzie możliwe, aby inni mogli zobaczyć klucz, z którego korzystam z Pomiary rzeczywistego użytkownika?
 
-Podczas osadzania skryptu miary do strony sieci web będzie to możliwe, aby inne osoby zobaczyły skrypt, a klucz rzeczywistego użytkownika pomiarów (RUM). Ale ważne jest, aby wiedzieć, że ten klucz jest inny niż identyfikator subskrypcji i jest generowany przez usługę Traffic Manager ma być używany tylko do tego celu. Wiedząc, uruchamianie klucza nie wpłynie na bezpieczeństwo Twojego konta platformy Azure.
+Po osadzeniu skryptu pomiaru na stronie sieci Web będzie możliwe wyświetlenie skryptu i klucza Pomiary rzeczywistego użytkownika (RUM) przez inne osoby. Należy jednak pamiętać, że ten klucz różni się od identyfikatora subskrypcji i jest generowany przez Traffic Manager do użycia tylko do tego celu. Znajomość klucza RUM nie spowoduje naruszenia bezpieczeństwa konta platformy Azure.
 
-### <a name="can-others-abuse-my-rum-key"></a>Inne gróźb mój klucz uruchamianie?
+### <a name="can-others-abuse-my-rum-key"></a>Czy inne osoby mogą używać klucza rumu?
 
-Choć jest możliwe dla innych użytkowników do użycia tego klucza do wysyłania informacji problem na platformie Azure, kilka niewłaściwego pomiarów nie ulegnie zmianie routingu, ponieważ jest on brane pod uwagę wraz z innymi pomiarów, że firma Microsoft otrzyma. Jeśli potrzebujesz zmienić klucze, można ponownie wygenerować klucza w tym momencie stary klucz staje się odrzucone.
+Chociaż jest możliwe, że inne osoby mogą korzystać z klucza w celu wysyłania nieprawidłowych informacji do platformy Azure, to niektóre błędne pomiary nie zmienią trasy, ponieważ są brane pod uwagę wraz ze wszystkimi innymi pomiarami, które otrzymamy. Jeśli musisz zmienić klucze, możesz ponownie wygenerować klucz, w którym zostanie odrzucony stary klucz.
 
-### <a name="do-i-need-to-put-the-measurement-javascript-in-all-my-web-pages"></a>Należy umieścić miary języka JavaScript w wszystkich stron sieci web?
+### <a name="do-i-need-to-put-the-measurement-javascript-in-all-my-web-pages"></a>Czy muszę umieścić miarę JavaScript na wszystkich moich stronach sieci Web?
 
-Pomiary dotyczące prawdziwych użytkowników zapewnia większą wartość jako liczba pomiarów wzrost. Tym niemniej jest decyzji odnośnie tego, czy należy umieścić go w wszystkich stron sieci web lub wybierz kilka. Nasze zalecenie, jest uruchomienie przez umieszczenie go na stronie najczęściej odwiedzanych gdzie użytkownik powinien pozostać na tej stronie pięć sekund lub więcej.
+Pomiary rzeczywistego użytkownika zapewnia większą wartość w miarę wzrostu liczby pomiarów. Z tego względu należy podjąć decyzję, czy należy umieścić ją we wszystkich stronach sieci Web, czy na kilka wybranych. Zalecamy rozpoczęcie od umieszczenia go na najbardziej odwiedzonej stronie, w której użytkownik powinien pozostać na tej stronie pięć sekund lub dłużej.
 
-### <a name="can-information-about-my-end-users-be-identified-by-traffic-manager-if-i-use-real-user-measurements"></a>Informacje dla użytkowników końcowych można zidentyfikować przez usługę Traffic Manager użycie pomiarów rzeczywistego użytkownika?
+### <a name="can-information-about-my-end-users-be-identified-by-traffic-manager-if-i-use-real-user-measurements"></a>Czy informacje o użytkownikach końcowych są identyfikowane przez Traffic Manager, jeśli używam Pomiary rzeczywistego użytkownika?
 
-Podana pomiaru JavaScript jest używany, usługi Traffic Manager ma widoczność adres IP klienta przez użytkownika końcowego i źródłowy adres IP lokalnego rozpoznawania nazw DNS, używane. Usługi Traffic Manager korzysta z adresu IP klienta dopiero po on obcięty, to nie można rozpoznać określonego użytkownika końcowego, która wysłała pomiarów.
+W przypadku użycia dostarczonego pomiaru języka JavaScript Traffic Manager będzie miał wgląd w adres IP klienta użytkownika końcowego i źródłowy adres IP lokalnego programu rozpoznawania nazw DNS, których używają. Traffic Manager używa adresu IP klienta tylko po jego obcięciu, aby nie mógł identyfikować określonego użytkownika końcowego, który wysłał pomiary.
 
-### <a name="does-the-webpage-measuring-real-user-measurements-need-to-be-using-traffic-manager-for-routing"></a>Czy strony sieci Web pomiarowe dotyczące prawdziwych użytkowników musi używać routingu usługi Traffic Manager?
+### <a name="does-the-webpage-measuring-real-user-measurements-need-to-be-using-traffic-manager-for-routing"></a>Czy funkcja mierzenia Pomiary rzeczywistego użytkownika musi używać Traffic Manager do routingu?
 
-Nie, nie trzeba używać usługi Traffic Manager. Routing po stronie usługi Traffic Manager działa niezależnie od rzeczywistych użytkowników pomiaru części i świetny pomysł, aby obie były w tej samej właściwości sieci web, ale nie muszą być.
+Nie, nie trzeba używać Traffic Manager. Strona Routing Traffic Manager działa niezależnie od części pomiarowej rzeczywistego użytkownika i chociaż jest dobrym pomysłem, aby były one zarówno w tej samej właściwości sieci Web, jak i nie muszą być.
 
-### <a name="do-i-need-to-host-any-service-on-azure-regions-to-use-with-real-user-measurements"></a>Należy do obsługi dowolnej usługi w regionach platformy Azure za pomocą pomiarów rzeczywistego użytkownika?
+### <a name="do-i-need-to-host-any-service-on-azure-regions-to-use-with-real-user-measurements"></a>Czy muszę hostować każdą usługę w regionach platformy Azure, która ma być używana z Pomiary rzeczywistego użytkownika?
 
-Nie, nie potrzebujesz do obsługi dowolny składnik po stronie serwera na platformie Azure pomiarów rzeczywistego użytkownika do pracy. Obraz piksela pobierany przez pomiar JavaScript i usługi, uruchamiając go w różnych regionach platformy Azure jest hostowaną i zarządzaną przez platformę Azure. 
+Nie musisz hostować żadnego składnika po stronie serwera na platformie Azure, aby Pomiary rzeczywistego użytkownika do pracy. Obraz o pojedynczym pikselach pobrany przez miarę JavaScript i usługa, która działa w różnych regionach świadczenia usługi Azure, jest hostowany i zarządzany przez platformę Azure. 
 
-### <a name="will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements"></a>Moje Azure przepustowości zwiększy podczas używania pomiarów rzeczywistego użytkownika?
+### <a name="will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements"></a>Czy moja przepustowość platformy Azure zwiększa się, gdy używam Pomiary rzeczywistego użytkownika?
 
-Jak wspomniano w poprzedniej odpowiedzi, składniki po stronie serwera pomiarów rzeczywistego użytkownika są własnością i zarządzane przez platformę Azure. Oznacza to, że nie zwiększy wykorzystanie przepustowości platformy Azure, ponieważ używasz pomiarów rzeczywistego użytkownika. Nie ma żadnych przepustowości poza jakie opłaty usługi Azure. Firma Microsoft zminimalizować przepustowość wykorzystywaną przez pobieranie tylko obraz piksela do pomiaru czas oczekiwania na region platformy Azure. 
+Jak wspomniano w poprzedniej odpowiedzi, składniki po stronie serwera Pomiary rzeczywistego użytkownika są własnością i są zarządzane przez platformę Azure. Oznacza to, że użycie przepustowości platformy Azure nie zwiększy się, ponieważ używasz Pomiary rzeczywistego użytkownika. Nie obejmuje to żadnego użycia przepustowości poza obciążeniami platformy Azure. Minimalizujemy przepustowość używaną przez pobranie tylko jednego obrazu pikselowego w celu zmierzenia opóźnienia w regionie świadczenia usługi Azure. 
 
 ## <a name="traffic-view"></a>Widok ruchu
 
-### <a name="what-does-traffic-view-do"></a>Do czego służy widok ruchu?
+### <a name="what-does-traffic-view-do"></a>Co robią Widok ruchu?
 
-Widok ruchu jest funkcją usługi Traffic Manager, który pomoże Ci dowiedzieć się więcej o użytkowników i czym się ich środowisko pracy. Używa zapytania odebrane przez usługi Traffic Manager i tabel analizy opóźnienia sieci, które usługa zapewnia do przedstawienia następujące czynności:
+Widok ruchu to funkcja Traffic Manager, która pomaga zrozumieć więcej informacji o użytkownikach i sposobie ich działania. Używa zapytań odebranych przez Traffic Manager i tabel analizy opóźnienia sieci, które obsługuje usługa, w celu zapewnienia następujących danych:
 
-- Regiony, z której użytkownicy nawiązywane jest połączenie z punktami końcowymi usługi platformy Azure.
-- Wolumin użytkowników łączących się z tych regionów.
-- Regiony platformy Azure, do których są wprowadzenie kierowane do.
-- Środowiska opóźnienia w tych regionach platformy Azure.
+- Regiony, z których użytkownicy nawiązują połączenie z punktami końcowymi na platformie Azure.
+- Liczba użytkowników łączących się z tych regionów.
+- Regiony platformy Azure, do których są kierowane.
+- Ich czas opóźnienia w tych regionach świadczenia usługi Azure.
 
-Te informacje są dostępne dzięki mapie geograficznej nakładki i widoków tabelarycznych w portalu są dostępne jako nieprzetworzone dane do pobrania oraz.
+Te informacje są dostępne do użycia w ramach nakładki mapy geograficznej i widoków tabelarycznych w portalu, a także dostępne jako pierwotne dane do pobrania.
 
-### <a name="how-can-i-benefit-from-using-traffic-view"></a>Jak mogę korzystać z widok ruchu
+### <a name="how-can-i-benefit-from-using-traffic-view"></a>Jak mogę skorzystać z Widok ruchu?
 
-Widok ruchu pozwala ogólny widok ruchu, otrzymany profilów usługi Traffic Manager. W szczególności może służyć, aby zrozumieć gdzie podstawa użytkownik łączy się z poziomu, i równie ważne jest ich doświadczeń Średni czas oczekiwania. Te informacje można następnie umożliwia znajdowanie obszarów, w których należy skoncentrować się na przykład, rozwijając swoje zasięgiem platformy Azure w regionie, który może służyć tych użytkowników z mniejszymi opóźnieniami. Szczegółowe informacje o innym mogą pochodzić z przy użyciu widoku ruchu jest, aby zobaczyć wzorców ruchu do różnych regionów, które z kolei może ułatwić podjęcie decyzji na zwiększenie lub zmniejszenie wymyślić w tych regionach.
+Widok ruchu zapewnia ogólny widok ruchu, który odbiera Traffic Manager profilów. W szczególności można go użyć, aby zrozumieć, w jaki sposób baza użytkownika nawiązuje połączenie z usługą i równie ważne. Możesz następnie użyć tych informacji, aby znaleźć obszary, w których należy skoncentrować się na przykład przez zwiększenie zasięgu platformy Azure do regionu, który może obsłużyć te użytkowników z mniejszym opóźnieniem. Innym wglądem, z którego można skorzystać, Widok ruchu jest wyświetlenie wzorców ruchu do różnych regionów, które z kolei mogą pomóc w podejmowaniu decyzji o zwiększeniu lub zmniejszeniu możliwości w tych regionach.
 
-### <a name="how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor"></a>Czym różni się widok ruchu z dostępnych za pośrednictwem usługi Azure monitor metryk usługi Traffic Manager?
+### <a name="how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor"></a>Jak różnią się Widok ruchu od metryk Traffic Manager dostępnych za pośrednictwem usługi Azure monitor?
 
-Usługa Azure Monitor może służyć do zrozumienia na poziomie agregacji ruchu odbieranego przez Twojego profilu i jego punkty końcowe. W tym obszarze pozwala również śledzić stan kondycji punktów końcowych, zapewniając wyniki sprawdzania kondycji. Jeśli potrzebujesz czegoś więcej niż te i zrozumienie środowisko użytkownika końcowego, łączenie z platformą Azure na poziomie regionalnym, widok ruchu można osiągnąć.
+Azure Monitor może służyć do zrozumienia na zagregowanym poziomie ruchu odbieranego przez profil i jego punkty końcowe. Umożliwia również śledzenie stanu kondycji punktów końcowych przez ujawnienie wyników kontroli kondycji. Jeśli musisz przekroczyć te i zrozumieć środowisko użytkownika końcowego łączące się z platformą Azure na poziomie regionalnym, Widok ruchu mogą być używane do osiągnięcia tego.
 
-### <a name="does-traffic-view-use-edns-client-subnet-information"></a>Widok ruchu używa informacji o podsieci klienta mechanizmów EDNS?
+### <a name="does-traffic-view-use-edns-client-subnet-information"></a>Czy Widok ruchu używać informacji o podsieci klienta mechanizmów EDNS?
 
-Zapytania DNS, obsługiwane przez usługę Azure Traffic Manager, należy wziąć pod uwagę ECS informacje, aby zwiększyć dokładność routingu. Jednak po utworzeniu zestawu danych, który pokazuje, gdzie użytkownicy łączą się na widok ruchu przy użyciu tylko adresu IP programu rozpoznawania nazw DNS.
+Zapytania DNS obsługiwane przez platformę Azure Traffic Manager należy wziąć pod uwagę ECS informacji w celu zwiększenia dokładności routingu. Ale podczas tworzenia zestawu danych, który pokazuje, z których użytkowników nawiązuje połączenie, Widok ruchu używa tylko adresu IP programu rozpoznawania nazw DNS.
 
-### <a name="how-many-days-of-data-does-traffic-view-use"></a>Ile dni dla danych używa widok ruchu?
+### <a name="how-many-days-of-data-does-traffic-view-use"></a>Ile dni danych używa Widok ruchu?
 
-Widok ruchu tworzy dane wyjściowe za przetwarzanie danych z siedmiu dni poprzedzających dzień przed widzianego przez użytkownika. To okno ruchome i najnowsze dane będą używane przy każdym razem, gdy użytkownik odwiedza.
+Widok ruchu tworzy dane wyjściowe przez przetwarzanie danych z siedmiu dni poprzedzających dzień przed wyświetleniem go. Jest to przenoszone okno, a najnowsze dane będą używane przy każdym odwiedzeniu.
 
-### <a name="how-does-traffic-view-handle-external-endpoints"></a>Jak widok ruchu obsługuje zewnętrzne punkty końcowe?
+### <a name="how-does-traffic-view-handle-external-endpoints"></a>Jak Widok ruchu obsługiwać zewnętrzne punkty końcowe?
 
-Gdy używasz zewnętrzne punkty końcowe umieszczonego poza regionów platformy Azure w profilu usługi Traffic Manager można jest mapowany do regionu platformy Azure, która jest serwer proxy dla jego właściwości opóźnienia (jest to w rzeczywistości potrzebne, jeśli używasz metody routingu opartego na wydajności). Jeśli ma to mapowanie region platformy Azure, metryki opóźnienia tego regionu platformy Azure będą używane podczas tworzenia danych wyjściowych widok ruchu. Jeśli określono nie regionu platformy Azure, informacje opóźnienia jest pusta w danych dla tych zewnętrzne punkty końcowe.
+W przypadku korzystania z zewnętrznych punktów końcowych hostowanych poza regionami platformy Azure w profilu Traffic Manager można wybrać opcję mapowania do regionu platformy Azure, który jest serwerem proxy dla jego charakterystyki opóźnienia (jest to konieczne w przypadku używania metody routingu wydajności). Jeśli ma to mapowanie regionów platformy Azure, to metryki opóźnienia regionu platformy Azure będą używane podczas tworzenia Widok ruchu danych wyjściowych. Jeśli nie określono żadnego regionu platformy Azure, informacje o opóźnieniu będą puste w danych dla tych zewnętrznych punktów końcowych.
 
-### <a name="do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription"></a>Czy muszę włączyć funkcję Widok ruchu dla każdego profilu w mojej subskrypcji?
+### <a name="do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription"></a>Czy muszę włączyć Widok ruchu dla każdego profilu w mojej subskrypcji?
 
-W okresie zapoznawczym widok ruchu została włączona na poziomie subskrypcji. Jako część ulepszeń, które wprowadziliśmy przed ogólnie dostępne można teraz włączyć funkcję Widok ruchu na poziomie profilu, dzięki czemu możesz mieć bardziej szczegółowego włączenie tej funkcji. Domyślnie widok ruchu zostanie wyłączony dla profilu.
+W okresie zapoznawczym Widok ruchu była włączona na poziomie subskrypcji. W ramach ulepszeń wprowadzonych przed ogólną dostępnością można teraz włączyć Widok ruchu na poziomie profilu, co pozwala na bardziej szczegółowe włączenie tej funkcji. Domyślnie Widok ruchu zostanie wyłączona dla profilu.
 
 >[!NOTE]
->Jeśli włączono funkcję Widok ruchu na poziomie subskrypcji w czasie (wersja zapoznawcza), teraz należy ją ponownie włączyć dla każdego profilu w ramach tej subskrypcji.
+>Jeśli w trakcie okresu zapoznawczego włączono Widok ruchu na poziomie subskrypcji, musisz teraz ponownie włączyć go dla każdego profilu w ramach tej subskrypcji.
  
-### <a name="how-can-i-turn-off-traffic-view"></a>Jak można wyłączyć funkcję Widok ruchu?
+### <a name="how-can-i-turn-off-traffic-view"></a>Jak mogę wyłączyć Widok ruchu?
 
-Możesz wyłączyć funkcję Widok ruchu dla dowolnego profilu za pomocą portalu lub interfejsu API REST. 
+Widok ruchu dla dowolnego profilu można wyłączyć przy użyciu portalu lub interfejsu API REST. 
 
-### <a name="how-does-traffic-view-billing-work"></a>Jak działa rozliczanie widok ruchu
+### <a name="how-does-traffic-view-billing-work"></a>Jak działa rozliczanie Widok ruchu?
 
-Ruch Wyświetl cennik opiera się na liczbę punktów danych, które umożliwia utworzenie danych wyjściowych. Obecnie typ jedyny obsługiwany jest zapytań, które otrzymuje swój profil. Ponadto możesz ponosić dodatkowe opłaty jedynie do przetwarzania, która została wykonana, jeśli masz włączoną funkcję Widok ruchu. Oznacza to, że jeśli Włącz widok ruchu przez pewien czas w danym miesiącu, a następnie ją wyłączyć w pozostałym czasie, tylko te punkty danych, które są przetwarzane, gdy trzeba było funkcji liczba z włączoną na rachunku.
+Cennik Widok ruchu jest określany na podstawie liczby punktów danych użytych do utworzenia danych wyjściowych. Obecnie jedynym obsługiwanym typem danych jest zapytanie odbierane przez profil. Dodatkowo opłaty są naliczane tylko za przetwarzanie, które zostało wykonane po włączeniu Widok ruchu. Oznacza to, że jeśli włączysz Widok ruchu przez pewien czas w miesiącu i wyłączysz ją w inny sposób, tylko te punkty danych zostały przetworzone w ramach liczby włączonych funkcji do rozliczenia.
 
 ## <a name="traffic-manager-endpoints"></a>Punkty końcowe usługi Traffic Manager
 
-### <a name="can-i-use-traffic-manager-with-endpoints-from-multiple-subscriptions"></a>Za pomocą punktów końcowych z wieloma subskrypcjami można używać usługi Traffic Manager?
+### <a name="can-i-use-traffic-manager-with-endpoints-from-multiple-subscriptions"></a>Czy można używać Traffic Manager z punktami końcowymi z wielu subskrypcji?
 
-Za pomocą punktów końcowych z wieloma subskrypcjami nie jest możliwe dzięki usłudze Azure Web Apps. Usługa Azure Web Apps wymaga, że dowolną nazwę domeny niestandardowej, wykorzystywanych z aplikacjami sieci Web jest używany tylko w ramach jednej subskrypcji. Nie jest możliwe użycie aplikacji sieci Web z wieloma subskrypcjami, z tą samą nazwą domeny.
+Korzystanie z punktów końcowych z wielu subskrypcji nie jest możliwe za pomocą usługi Azure Web Apps. Usługa Azure Web Apps wymaga, aby dowolna nazwa domeny niestandardowej użyta z Web Apps była używana tylko w ramach jednej subskrypcji. Nie można używać Web Apps z wielu subskrypcji o tej samej nazwie domeny.
 
-Dla innych typów punktu końcowego jest możliwość użycia usługi Traffic Manager za pomocą punktów końcowych z więcej niż jedną subskrypcję. W usłudze Resource Manager, punkty końcowe z każdej subskrypcji można dodać do usługi Traffic Manager, tak długo, jak osoby, Konfigurowanie profilu usługi Traffic Manager ma dostęp do odczytu do punktu końcowego. Te uprawnienia można przyznać za pomocą [kontroli dostępu opartej na rolach usługi Azure Resource Manager (RBAC)](../role-based-access-control/role-assignments-portal.md).
+W przypadku innych typów punktów końcowych można użyć Traffic Manager z punktami końcowymi z więcej niż jednej subskrypcji. W Menedżer zasobów punkty końcowe z dowolnych subskrypcji można dodać do Traffic Manager, o ile osoba konfigurująca profil Traffic Manager ma dostęp do odczytu do punktu końcowego. Te uprawnienia można przyznawać przy użyciu [Azure Resource Manager kontroli dostępu opartej na rolach (RBAC)](../role-based-access-control/role-assignments-portal.md).
 
-### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>Gniazda "Staging" usługi w chmurze można używać usługi Traffic Manager?
+### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>Czy można użyć Traffic Manager z gniazdami "przemieszczania" usługi w chmurze?
 
-Tak. "Staging" miejsca usługi w chmurze można skonfigurować w usłudze Traffic Manager jako zewnętrzne punkty końcowe. Kontrole kondycji są nadal naliczane opłaty punkty końcowe platformy Azure.
+Tak. Miejsca przejściowe usługi w chmurze można skonfigurować w Traffic Manager jako zewnętrzne punkty końcowe. Opłaty za sprawdzanie kondycji są nadal naliczane według stawki za Punkty końcowe platformy Azure.
 
-### <a name="does-traffic-manager-support-ipv6-endpoints"></a>Usługa Traffic Manager obsługuje punktów końcowych protokołu IPv6?
+### <a name="does-traffic-manager-support-ipv6-endpoints"></a>Czy Traffic Manager obsługuje punkty końcowe protokołu IPv6?
 
-Usługa Traffic Manager nie zapewnia obecnie adresy IPv6 serwerów nazw. Jednak usługa Traffic Manager można jej użyć protokołu IPv6 klientom nawiązywanie połączenia z punktów końcowych protokołu IPv6. Klient nie powoduje żądania DNS bezpośrednio do usługi Traffic Manager. Zamiast tego klient korzysta z rekursywnych usług DNS. Tylko protokół IPv6 klienta wysyła żądania do rekursywnych usług DNS za pomocą protokołu IPv6. Następnie usługa cykliczne, powinno być możliwe do kontaktowania się z serwerami nazw usługi Traffic Manager przy użyciu protokołu IPv4.
+Traffic Manager obecnie nie udostępnia serwerów nazw z adresami IPv6. Jednak Traffic Manager nadal mogą być używane przez klientów IPv6 łączących się z punktami końcowymi protokołu IPv6. Klient nie wysyła żądań DNS bezpośrednio do Traffic Manager. Zamiast tego klient używa cyklicznej usługi DNS. Klient korzystający z protokołu IPv6 wysyła żądania do cyklicznej usługi DNS za pośrednictwem protokołu IPv6. Następnie usługa cykliczna powinna mieć możliwość kontaktowania się z serwerami nazw Traffic Manager przy użyciu protokołu IPv4.
 
-Usługa Traffic Manager odpowiada za pomocą nazwy DNS lub adres IP punktu końcowego. Aby zapewnić obsługę punktu końcowego protokołu IPv6, dostępne są dwie opcje. Możesz dodać punkt końcowy jako nazwy DNS, który ma skojarzony rekord AAAA i Traffic Manager będzie sprawdzenie kondycji, ten punkt końcowy i zwracany typ go jako rekord CNAME w odpowiedzi na zapytanie. Można również dodać punkt końcowy bezpośrednio przy użyciu adresu IPv6 i usługi Traffic Manager zwróci rekord AAAA typu w odpowiedzi na zapytanie.
+Traffic Manager reaguje na nazwę DNS lub adres IP punktu końcowego. Aby obsługiwać punkt końcowy IPv6, dostępne są dwie opcje. Możesz dodać punkt końcowy jako nazwę DNS, która ma skojarzony rekord AAAA, a Traffic Manager będzie sprawdzić kondycję tego punktu końcowego i zwrócić go jako typ rekordu CNAME w odpowiedzi na zapytanie. Możesz również dodać ten punkt końcowy bezpośrednio przy użyciu adresu IPv6, a Traffic Manager zwróci rekord typu AAAA w odpowiedzi na zapytanie.
 
-### <a name="can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region"></a>Czy można używać usługi Traffic Manager, za pomocą więcej niż jednej aplikacji sieci Web, w tym samym regionie?
+### <a name="can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region"></a>Czy można użyć Traffic Manager z więcej niż jedną aplikacją sieci Web w tym samym regionie?
 
-Zazwyczaj usługa Traffic Manager jest używany do kierowania ruchu do aplikacji wdrożonych w różnych regionach. Jednak może również służyć, którym aplikacja ma więcej niż jedno wdrożenie w tym samym regionie. Punkt końcowy usługi Traffic Manager platformy Azure nie zezwalają na więcej niż jeden punkt końcowy aplikacji sieci Web z tego samego regionu systemu Azure, które mają zostać dodane do tego samego profilu usługi Traffic Manager.
+Zwykle Traffic Manager jest używany do kierowania ruchu do aplikacji wdrożonych w różnych regionach. Można go jednak również używać w przypadku, gdy aplikacja ma więcej niż jedno wdrożenie w tym samym regionie. Traffic Manager punkty końcowe platformy Azure nie zezwalają na dodanie do tego samego profilu Traffic Manager więcej niż jednego punktu końcowego aplikacji sieci Web z tego samego regionu platformy Azure.
 
-### <a name="how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group"></a>Jak przenieść punkty końcowe platformy Azure na mój profil usługi Traffic Manager do innej grupy zasobów?
+### <a name="how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group"></a>Jak mogę przenieść punkty końcowe platformy Azure profilu Traffic Manager do innej grupy zasobów?
 
-Punkty końcowe platformy Azure, które są skojarzone z profilem usługi Traffic Manager są śledzone, przy użyciu ich identyfikatorów zasobów. Gdy zasobów platformy Azure, który jest używany jako punkt końcowy (na przykład publiczny adres IP, klasyczne usługi w chmurze, aplikacji sieci Web lub innego profilu usługi Traffic Manager w sposób zagnieżdżony) jest przenoszony do innej grupy zasobów, jego zmiany Identyfikatora zasobu. W tym scenariuszu aktualnie, należy zaktualizować profilu usługi Traffic Manager wcześniejszym usunięciu, a następnie dodając ponownie punkty końcowe do profilu.
+Punkty końcowe platformy Azure skojarzone z profilem Traffic Manager są śledzone przy użyciu ich identyfikatorów zasobów. Gdy zasób platformy Azure używany jako punkt końcowy (na przykład publiczny adres IP, klasyczna usługa w chmurze, WebApp lub inny profil Traffic Manager używany w sposób zagnieżdżony) jest przenoszony do innej grupy zasobów, jego identyfikator zasobu ulegnie zmianie. W tym scenariuszu należy obecnie zaktualizować profil Traffic Manager, usuwając najpierw, a następnie dodając punkty końcowe do profilu.
 
-## <a name="traffic-manager-endpoint-monitoring"></a>Monitorowanie punktu końcowego usługi Traffic Manager
+## <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager monitorowanie punktu końcowego
 
-### <a name="is-traffic-manager-resilient-to-azure-region-failures"></a>Jest odporna na awarie regionu świadczenia usługi Azure Traffic Manager?
+### <a name="is-traffic-manager-resilient-to-azure-region-failures"></a>Czy Traffic Manager jest odporny na awarie regionu platformy Azure?
 
 Traffic Manager to kluczowy składnik dostarczania aplikacji o wysokiej dostępności na platformie Azure.
-Aby zapewnić wysoką dostępność, usługa Traffic Manager jest posiadanie wyjątkowo wysoki poziom dostępności oraz była odporna na awarie regionalne.
+Aby zapewnić wysoką dostępność, Traffic Manager musi mieć wyjątkowo wysoki poziom dostępności i być odporny na awarie regionalne.
 
-Zgodnie z projektem składników usługi Traffic Manager są odporne na całkowitej awarii dowolnego regionu systemu Azure. Odporność to ma zastosowanie do wszystkich składników usługi Traffic Manager: nazwa DNS, serwery, interfejsu API, warstwa magazynu i punktu końcowego usługi monitorowania.
+Po zaprojektowaniu składniki Traffic Manager są odporne na pełną awarię dowolnego regionu platformy Azure. Ta odporność dotyczy wszystkich składników Traffic Manager: serwerów nazw DNS, interfejsu API, warstwy magazynu i usługi monitorowania punktów końcowych.
 
-W przypadku mało prawdopodobnego wystąpienia awarii całego regionu świadczenia usługi Azure Traffic Manager oczekuje się, w dalszym ciągu działać normalnie. Aplikacje wdrożone w wielu regionach platformy Azure można polegać w usłudze Traffic Manager kierować ruch do dostępnego wystąpienia swojej aplikacji.
+W mało prawdopodobnym przypadku awarii całego regionu świadczenia usługi Azure oczekuje się, że Traffic Manager nadal działają normalnie. Aplikacje wdrożone w wielu regionach platformy Azure mogą polegać na Traffic Manager, aby skierować ruch do dostępnego wystąpienia aplikacji.
 
-### <a name="how-does-the-choice-of-resource-group-location-affect-traffic-manager"></a>Jak wybór lokalizacji grupy zasobów wpłynie na usługi Traffic Manager?
+### <a name="how-does-the-choice-of-resource-group-location-affect-traffic-manager"></a>Jak wybór lokalizacji grupy zasobów ma wpływ na Traffic Manager?
 
-Usługa Traffic Manager to usługa pojedynczego, globalnego. Nie jest regionalne. Wybór lokalizacji grupy zasobów nie ma wpływu na profile usługi Traffic Manager wdrożonych w danej grupie zasobów.
+Traffic Manager jest pojedynczą globalną usługą. Nie jest regionalna. Wybór lokalizacji grupy zasobów nie powoduje żadnych różnic Traffic Manager profilów wdrożonych w tej grupie zasobów.
 
-Usługa Azure Resource Manager wymaga wszystkich grup zasobów określić lokalizację, która określa domyślną lokalizację dla zasobów wdrożonych w danej grupie zasobów. Podczas tworzenia profilu usługi Traffic Manager zostanie utworzony w grupie zasobów. Użyj wszystkich profilów usługi Traffic Manager **globalnego** jako ich lokalizacji, zastąpienie domyślnej grupy zasobów.
+Azure Resource Manager wymaga, aby wszystkie grupy zasobów określiły lokalizację, która określa domyślną lokalizację zasobów wdrożonych w danej grupie zasobów. Podczas tworzenia profilu Traffic Manager jest on tworzony w grupie zasobów. Wszystkie profile Traffic Manager używają **globalnej** jako lokalizacji, zastępując domyślną grupę zasobów.
 
-### <a name="how-do-i-determine-the-current-health-of-each-endpoint"></a>Jak ustalić bieżącą kondycję każdego punktu końcowego?
+### <a name="how-do-i-determine-the-current-health-of-each-endpoint"></a>Jak mogę określić aktualną kondycję każdego punktu końcowego?
 
-Bieżący stan monitorowania każdego punktu końcowego, oprócz ogólny profil jest wyświetlany w witrynie Azure portal. Te informacje są również dostępne za pośrednictwem Monitora ruchu [interfejsu API REST](https://msdn.microsoft.com/library/azure/mt163667.aspx), [poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/az.trafficmanager), i [interfejsu wiersza polecenia dla wielu platform Azure](../cli-install-nodejs.md).
+Bieżący stan monitorowania każdego punktu końcowego, oprócz ogólnego profilu, jest wyświetlany w Azure Portal. Te informacje są również dostępne za pośrednictwem [interfejsu API REST](https://msdn.microsoft.com/library/azure/mt163667.aspx)monitora ruchu, [poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/az.trafficmanager)i międzyplatformowego [interfejsu wiersza polecenia platformy Azure](../cli-install-nodejs.md).
 
-Usługa Azure Monitor umożliwia również śledzenie kondycji punktów końcowych i zobaczyć graficzną reprezentację z nich. Aby uzyskać więcej informacji o korzystaniu z usługi Azure Monitor, zobacz [dokumentacja usługi Azure Monitoring](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics).
+Możesz również użyć Azure Monitor do śledzenia kondycji punktów końcowych i wyświetlania wizualnej reprezentacji. Aby uzyskać więcej informacji na temat korzystania z Azure Monitor, zobacz [dokumentację dotyczącą monitorowania platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics).
 
-### <a name="can-i-monitor-https-endpoints"></a>Czy można monitorować punktów końcowych HTTPS?
+### <a name="can-i-monitor-https-endpoints"></a>Czy mogę monitorować punkty końcowe HTTPS?
 
-Tak. Usługa Traffic Manager obsługuje sondowania przy użyciu protokołu HTTPS. Konfigurowanie **HTTPS** jako protokół monitorowania konfiguracji.
+Tak. Traffic Manager obsługuje sondowanie za pośrednictwem protokołu HTTPS. Skonfiguruj **https** jako protokół w konfiguracji monitorowania.
 
-Usługa Traffic manager nie może dostarczyć wszelkie weryfikację certyfikatu, w tym:
+Menedżer ruchu nie może zapewnić żadnej weryfikacji certyfikatu, w tym:
 
-* Certyfikaty po stronie serwera nie są weryfikowane.
-* Certyfikaty po stronie serwera SNI nie są weryfikowane.
-* Certyfikaty klienta nie są obsługiwane.
+* Certyfikaty po stronie serwera nie są weryfikowane
+* SNI certyfikaty po stronie serwera nie są sprawdzane
+* Certyfikaty klienta nie są obsługiwane
 
-### <a name="do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint"></a>Używać adresu IP lub nazwy DNS podczas dodawania punktu końcowego?
+### <a name="do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint"></a>Czy podczas dodawania punktu końcowego używam adresu IP lub nazwy DNS?
 
-Usługa Traffic Manager obsługuje dodawanie punktów końcowych, za pomocą trzy sposoby, aby znaleźć je — jako nazwy DNS, jako adres IPv4, a jako adres IPv6. Jeśli punkt końcowy został dodany jako adres IPv4 lub IPv6 odpowiedzi na zapytanie będzie typ rekordu A lub AAAA, odpowiednio. Jeśli punkt końcowy został dodany jako nazwa DNS, to odpowiedź na zapytanie będą typu rekordu CNAME. Dodawanie punktów końcowych, ponieważ adres IPv4 lub IPv6 jest dozwolone tylko wtedy, gdy punkt końcowy jest typu **zewnętrznych**.
-Wszystkie metody routingu oraz ustawień monitorowania są obsługiwane przez trzy typy adresowania punktów końcowych.
+Traffic Manager obsługuje dodawanie punktów końcowych przy użyciu trzech sposobów odwoływania się do nich — jako nazwę DNS jako adres IPv4 i jako adres IPv6. Jeśli punkt końcowy zostanie dodany jako adres IPv4 lub IPv6, odpowiedź na zapytanie będzie dotyczyć rekordu typu A lub AAAA. Jeśli punkt końcowy został dodany jako nazwa DNS, odpowiedź na zapytanie będzie mieć typ rekordu CNAME. Dodawanie punktów końcowych jako adresów IPv4 lub IPv6 jest dozwolone tylko wtedy, gdy punkt końcowy jest typu **zewnętrznego**.
+Wszystkie metody routingu i ustawienia monitorowania są obsługiwane przez trzy typy adresów punktu końcowego.
 
-### <a name="what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint"></a>Jakie typy adresów IP można użyć podczas dodawania punktu końcowego?
+### <a name="what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint"></a>Jakiego typu adresy IP można używać podczas dodawania punktu końcowego?
 
-Traffic Manager umożliwia określanie punktów końcowych przy użyciu adresów IPv4 lub IPv6. Istnieje kilka ograniczeń, które są wymienione poniżej:
+Traffic Manager pozwala określić punkty końcowe przy użyciu adresów IPv4 lub IPv6. Istnieje kilka ograniczeń, które są wymienione poniżej:
 
-- Adresy, które odpowiadają zarezerwowanych prywatnych przestrzeni adresów IP nie są dozwolone. Te adresy obejmują przywołane w dokumencie RFC 1918, RFC 6890, RFC 5737, RFC 3068 RFC 2544 i RFC 5771
-- Adres nie może zawierać żadnych numerów portów (można określić porty, które mają zostać użyte w ustawieniach profilu konfiguracji)
-- Nie dwa punkty końcowe, w tym samym profilu może mieć ten sam docelowy adres IP
+- Adresy odnoszące się do zarezerwowanych prywatnych przestrzeni adresowych IP są niedozwolone. Te adresy obejmują te, które zostały wywołane w dokumencie RFC 1918, RFC 6890, RFC 5737, RFC 3068, RFC 2544 i RFC 5771
+- Adres nie może zawierać żadnych numerów portów (można określić porty, które mają być używane w ustawieniach konfiguracji profilu).
+- Żadne dwa punkty końcowe w tym samym profilu nie mogą mieć tego samego docelowego adresu IP
 
-### <a name="can-i-use-different-endpoint-addressing-types-within-a-single-profile"></a>Można użyć innego punktu końcowego adresowania typów w jednym profilu?
+### <a name="can-i-use-different-endpoint-addressing-types-within-a-single-profile"></a>Czy można używać różnych typów adresowania punktów końcowych w ramach jednego profilu?
 
-Nie, usługi Traffic Manager umożliwia mieszanie adresowania typy punktów końcowych w profilu, z wyjątkiem w przypadku profilu z wieloma wartościami typu routingu, gdzie można łączyć IPv4 i typy adresów IPv6
+Nie, Traffic Manager nie zezwala na mieszanie typów adresowania punktów końcowych w ramach profilu, z wyjątkiem sytuacji, gdy profil ma typ routingu o wartości wielowartościowej, w którym można mieszać typy adresów IPv4 i IPv6
 
-### <a name="what-happens-when-an-incoming-querys-record-type-is-different-from-the-record-type-associated-with-the-addressing-type-of-the-endpoints"></a>Co się stanie, gdy typ rekordu przychodzące zapytania jest inny niż typ rekordu, skojarzone z typem adresowania punkty końcowe?
+### <a name="what-happens-when-an-incoming-querys-record-type-is-different-from-the-record-type-associated-with-the-addressing-type-of-the-endpoints"></a>Co się stanie, gdy typ rekordu zapytania przychodzącego różni się od typu rekordu skojarzonego z typem adresowania punktów końcowych?
 
-Po odebraniu zapytania względem profilu usługi Traffic Manager umożliwia znalezienie najpierw, punkt końcowy, który musi być zwracane zgodnie z określonej metody routingu i stan kondycji punktów końcowych. Następnie przeszukuje na żądany w zapytaniu przychodzących typ rekordu i typ rekordu, skojarzone z punktem końcowym przed zwróceniem odpowiedzi na podstawie poniższej tabeli.
+Po odebraniu zapytania dotyczącego profilu Traffic Manager najpierw znaleźć punkt końcowy, który musi zostać zwrócony zgodnie z określoną metodą routingu, oraz stan kondycji punktów końcowych. Następnie szuka typu rekordu żądanego w zapytaniu przychodzącym i typu rekordu skojarzonego z punktem końcowym przed zwróceniem odpowiedzi na podstawie poniższej tabeli.
 
-Dla profilów przy użyciu dowolnej metody routingu w innych niż atrybut wielowartościowy elementu:
+W przypadku profilów z dowolną metodą routingu inną niż wielowartościowy:
 
-|Przychodzące żądania zapytania|    Typ punktu końcowego|  Podany odpowiedź|
+|Przychodzące żądanie zapytania|    Typ punktu końcowego|  Podano odpowiedź|
 |--|--|--|
-|ANY |  A / AAAA / CNAME |  Docelowy punkt końcowy| 
-|A |    A / CNAME | Docelowy punkt końcowy|
+|ILE |  A/AAAA/CNAME |  Docelowy punkt końcowy| 
+|A |    A/CNAME | Docelowy punkt końcowy|
 |A |    AAAA |  NODATA |
-|AAAA | AAAA / CNAME |  Docelowy punkt końcowy|
+|AAAA | AAAA/CNAME |  Docelowy punkt końcowy|
 |AAAA | A | NODATA |
 |CNAME |    CNAME | Docelowy punkt końcowy|
 |CNAME  |A / AAAA | NODATA |
 |
 
-Dla profilów za pomocą metody routingu opartego na ustawić atrybut wielowartościowy elementu:
+W przypadku profilów z metodą routingu ustawioną na wartość z wieloma wartościami:
 
-|Przychodzące żądania zapytania|    Typ punktu końcowego | Podany odpowiedź|
+|Przychodzące żądanie zapytania|    Typ punktu końcowego | Podano odpowiedź|
 |--|--|--|
-|ANY |  Kombinacja A i AAAA | Miejsce docelowe punktów końcowych|
-|A |    Kombinacja A i AAAA | Tylko docelowych punktów końcowych, wpisz|
-|AAAA   |Kombinacja A i AAAA|     Tylko docelowych punktów końcowych typu AAAA|
-|CNAME |    Kombinacja A i AAAA | NODATA |
+|ILE |  Mieszanie a i AAAA | Docelowe punkty końcowe|
+|A |    Mieszanie a i AAAA | Tylko docelowe punkty końcowe typu A|
+|AAAA   |Mieszanie a i AAAA|     Tylko docelowe punkty końcowe typu AAAA|
+|CNAME |    Mieszanie a i AAAA | NODATA |
 
-### <a name="can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile"></a>Można używać profilu z połączeniami IPv4 / IPv6 rozwiązane punktów końcowych w profilu zagnieżdżone?
+### <a name="can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile"></a>Czy mogę użyć profilu z adresami końcowymi IPv4/IPv6 w profilu zagnieżdżonym?
 
-Tak, z wyjątkiem, że profil typu atrybut wielowartościowy elementu nie może być profil nadrzędnego w profilu zagnieżdżone skonfigurowaniem.
+Tak, można z wyjątkiem, że profil typu wielowartościowego nie może być profilem nadrzędnym w zagnieżdżonym zestawie profilów.
 
-### <a name="i-stopped-an-web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>Zatrzymano punkt końcowy aplikacji sieci web w moim profilu usługi Traffic Manager, ale nie otrzymuję cały ruch nawet w przypadku, gdy I ponownie uruchomiony. Jak można to naprawić?
+### <a name="i-stopped-an-web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>Punkt końcowy aplikacji sieci Web został zatrzymany w profilu Traffic Manager, ale nie odbieram żadnego ruchu nawet po ponownym uruchomieniu. Jak można to naprawić?
 
-Po zatrzymaniu punkt końcowy aplikacji sieci web platformy Azure Traffic Manager zatrzymuje proces sprawdzania kondycji jego i ponownie uruchamia kontrole kondycji, tylko wtedy, gdy wykryje, że uruchomieniu punktu końcowego. Aby uniknąć tego opóźnienia, wyłącz i ponownie włączyć punkt końcowy w profilu usługi Traffic Manager, po ponownym uruchomieniu punktu końcowego.
+Gdy punkt końcowy aplikacji sieci Web platformy Azure zostanie zatrzymany Traffic Manager zatrzymuje Sprawdzanie kondycji i ponownie uruchamia testy kondycji po wykryciu, że punkt końcowy został ponownie uruchomiony. Aby zapobiec tym opóźnieniu, należy wyłączyć i ponownie włączyć ten punkt końcowy w profilu Traffic Manager po ponownym uruchomieniu punktu końcowego.
 
-### <a name="can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https"></a>Usługa Traffic Manager można używać nawet, jeśli Moja aplikacja nie ma obsługę protokołu HTTP lub HTTPS?
+### <a name="can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https"></a>Czy mogę używać Traffic Manager, nawet jeśli moja aplikacja nie obsługuje protokołu HTTP lub HTTPS?
 
-Tak. Można określić TCP jako protokół monitorowania i zainicjować połączenie TCP oraz oczekiwania na odpowiedź z punktu końcowego usługi Traffic Manager. Jeśli punkt końcowy odpowiada na żądanie połączenia przy użyciu odpowiedzi, aby nawiązać połączenie przed upływem limitu czasu, punkt końcowy jest oznaczony jako w dobrej kondycji.
+Tak. Możesz określić TCP jako protokół monitorowania i Traffic Manager może zainicjować połączenie TCP i poczekać na odpowiedź z punktu końcowego. Jeśli punkt końcowy odpowie na żądanie połączenia z odpowiedzią na nawiązanie połączenia, w ramach przekroczenia limitu czasu ten punkt końcowy jest oznaczony jako w dobrej kondycji.
 
-### <a name="what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring"></a>Jakie określone odpowiedzi są wymagane z punktu końcowego w przypadku, gdy za pomocą funkcji monitorowania TCP?
+### <a name="what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring"></a>Jakie konkretne odpowiedzi są wymagane z punktu końcowego w przypadku korzystania z funkcji monitorowania protokołu TCP?
 
-W przypadku protokołu TCP monitorowania usługi Traffic Manager rozpoczyna się TCP trójstopniowego polega na wysyłaniu żądania SYN do punktu końcowego na określonym porcie. Następnie czeka na okres (jak określono w ustawieniach limitu czasu) na odpowiedź z punktu końcowego. Jeśli punkt końcowy odpowie na żądanie SYN przy użyciu SYN ACK odpowiedzi przed upływem limitu czasu określonego w ustawieniach monitorowania, punkt końcowy będzie traktowany dobrej kondycji. Jeśli zostanie odebrana odpowiedź SYN potwierdzenia, usługi Traffic Manager resetuje połączenie odpowiedzi z powrotem RST.
+Gdy jest używane monitorowanie TCP, Traffic Manager uruchamia trzykrotne uzgadnianie TCP, wysyłając żądanie SYN do punktu końcowego na określonym porcie. Następnie czeka przez pewien czas (określony w ustawieniach limitu czasu) dla odpowiedzi z punktu końcowego. Jeśli punkt końcowy odpowiada na żądanie SYN z odpowiedzią SYN-ACK w ramach limitu czasu określonego w ustawieniach monitorowania, ten punkt końcowy jest traktowany jako zdrowy. Jeśli otrzymasz odpowiedź SYN-ACK, Traffic Manager resetuje połączenie, reagując z powrotem z parametrem RST.
 
-### <a name="how-fast-does-traffic-manager-move-my-users-away-from-an-unhealthy-endpoint"></a>Jak szybko usługi Traffic Manager może przenieść Moi użytkownicy w złej kondycji punktu końcowego?
+### <a name="how-fast-does-traffic-manager-move-my-users-away-from-an-unhealthy-endpoint"></a>Jak szybko Traffic Manager przenieść moich użytkowników poza punkt końcowy w złej kondycji?
 
-Usługa Traffic Manager udostępnia wiele ustawień, które mogą pomóc Ci kontrolować zachowanie trybu failover w profilu usługi Traffic Manager w następujący sposób:
+Traffic Manager udostępnia wiele ustawień, które mogą ułatwić sterowanie zachowaniem trybu failover profilu Traffic Manager w następujący sposób:
 
-- można określić, że usługi Traffic Manager sondy punktów końcowych częściej przez ustawienie interwału sondowania na 10 sekund. Dzięki temu, jak najszybciej wykryto dowolnego punktu końcowego, przechodząc w złej kondycji. 
-- można określić, jak długo czekać przed kondycji Sprawdź czas żądania (wartość minimalna limit czasu to 5 s).
-- można określić, jak wiele błędów może wystąpić, zanim punkt końcowy jest oznaczony jako w złej kondycji. Ta wartość może być niski jako 0, w którym przypadek punkt końcowy jest oznaczony złej kondycji, tak szybko, jak nie powiedzie się pierwsze sprawdzenie kondycji. Jednak przy użyciu minimalna wartość 0 dla tolerowana liczba niepowodzeń może prowadzić do punktów końcowych jest wykluczana z rotacji ze względu na problemy przejściowe, które mogą wystąpić w czasie badania.
-- można określić czasu wygaśnięcia (TTL) to odpowiedź DNS do być możliwie jak 0. Robi oznacza, że rozpoznawania nazw DNS nie można buforować odpowiedzi i każde nowe zapytanie pobiera odpowiedź, która zawiera najbardziej aktualne informacje kondycji, który ma usługi Traffic Manager.
+- można określić, że Traffic Manager sondować punkty końcowe częściej, ustawiając interwał sondowania o 10 sekund. Dzięki temu można wykryć dowolny punkt końcowy w złej kondycji, jak najszybciej. 
+- Możesz określić czas oczekiwania przed upływem limitu czasu żądania sprawdzenia kondycji (minimalny limit czasu wynosi 5 sekund).
+- Możesz określić liczbę błędów, które mogą wystąpić, zanim punkt końcowy zostanie oznaczony jako w złej kondycji. Ta wartość może być niska jako 0. w takim przypadku punkt końcowy jest oznaczony jako w złej kondycji, gdy tylko zakończy się niepowodzeniem pierwszego sprawdzania kondycji. Jednak użycie minimalnej wartości 0 w przypadku tolerowanej liczby błędów może prowadzić do wypróbowania punktów końcowych z powodu wszelkich przejściowych problemów, które mogą wystąpić podczas sondowania.
+- Możesz określić czas wygaśnięcia (TTL) odpowiedzi systemu DNS na wartość równą 0. Oznacza to, że resolvery DNS nie mogą buforować odpowiedzi, a każde nowe zapytanie otrzymuje odpowiedź, która zawiera najnowsze informacje o kondycji, które ma Traffic Manager.
 
-Za pomocą tych ustawień, usługa Traffic Manager może zapewnić przejścia w tryb failover w obszarze po 10 sekundach od punktu końcowego przechodzi w złej kondycji i zapytanie DNS jest wykonywane względem odpowiedni profil.
+Korzystając z tych ustawień, Traffic Manager może zapewnić tryb failover w ciągu 10 sekund, gdy punkt końcowy jest w złej kondycji, a zapytanie DNS jest nawiązywane z odpowiednim profilem.
 
-### <a name="how-can-i-specify-different-monitoring-settings-for-different-endpoints-in-a-profile"></a>Jak określić różne ustawienia monitorowania dla różnych punktów końcowych w profilu
+### <a name="how-can-i-specify-different-monitoring-settings-for-different-endpoints-in-a-profile"></a>Jak można określić różne ustawienia monitorowania dla różnych punktów końcowych w profilu?
 
-Usługa Traffic Manager są ustawienia monitorowania na poziomie profilu. Jeśli potrzebujesz użyć innego ustawienia monitorowania dla tylko jeden punkt końcowy, może to nastąpić przez punkt końcowy jako [zagnieżdżone profilu](traffic-manager-nested-profiles.md) którego ustawienia monitorowania różnią się od profilu nadrzędnej.
+Ustawienia monitorowania Traffic Manager są na poziomie profilu. Jeśli konieczne jest użycie innego ustawienia monitorowania tylko dla jednego punktu końcowego, można to zrobić, korzystając z tego punktu końcowego jako [profilu zagnieżdżonego](traffic-manager-nested-profiles.md) , którego ustawienia monitorowania są inne niż w profilu nadrzędnym.
 
-### <a name="how-can-i-assign-http-headers-to-the-traffic-manager-health-checks-to-my-endpoints"></a>Jak można przypisać nagłówków HTTP do usługi Traffic Manager kontroli kondycji moje punkty końcowe?
+### <a name="how-can-i-assign-http-headers-to-the-traffic-manager-health-checks-to-my-endpoints"></a>Jak mogę przypisać nagłówki HTTP do punktów końcowych Traffic Managerych kontroli kondycji?
 
-Usługa Traffic Manager umożliwia określenie niestandardowych nagłówków w tym HTTP (S) kontroli kondycji, inicjuje go do punktów końcowych. Jeśli chcesz określić niestandardowy nagłówek, możesz to zrobić na poziomie profilu (ma zastosowanie do wszystkich punktów końcowych) lub je określić na poziomie punktu końcowego. Jeśli nagłówek jest zdefiniowany na obu poziomach, określona na poziomie punktu końcowego spowoduje przesłonięcie poziomu profile, jeden.
-Jeden typowy przypadek użycia tego jest określenie nagłówki hosta tak, aby żądania usługi Traffic Manager może uzyskać prawidłowo kierowane do punktu końcowego usługi hostowanej w środowisku wielodostępnym. Innym przypadku użycia tego jest zidentyfikowanie żądania usługi Traffic Manager z dzienników żądania HTTP (S) punktu końcowego
+Traffic Manager pozwala określić niestandardowe nagłówki w testach kondycji HTTP (S), które są inicjowane dla punktów końcowych. Jeśli chcesz określić niestandardowy nagłówek, możesz to zrobić na poziomie profilu (odpowiednie dla wszystkich punktów końcowych) lub określić na poziomie punktu końcowego. Jeśli nagłówek jest zdefiniowany na obu poziomach, to jeden z nich zostanie przesłonięty poziomu profilu.
+Jeden typowy przypadek użycia dla tego Określa nagłówki hosta, aby żądania Traffic Manager mogły być prawidłowo kierowane do punktu końcowego hostowanego w środowisku wielodostępnym. Innym przypadkiem użycia jest zidentyfikowanie Traffic Manager żądań z dzienników żądań HTTP (S) punktu końcowego
 
-## <a name="what-host-header-do-endpoint-health-checks-use"></a>Jakie kondycja punktu końcowego nagłówka hosta sprawdza, czy użycie?
+## <a name="what-host-header-do-endpoint-health-checks-use"></a>Z jakiego nagłówka hosta korzystają Sprawdzanie kondycji punktów końcowych?
 
-Jeśli nie podano żadnego ustawienia nagłówka niestandardowego hosta, nagłówek hosta, używane przez usługę Traffic Manager jest nazwą DNS skonfigurowanych w profilu, obiektu docelowego punktu końcowego, jeśli jest dostępny.
+Jeśli nie podano niestandardowego ustawienia nagłówka hosta, nagłówek hosta używany przez Traffic Manager jest nazwą DNS docelowego punktu końcowego skonfigurowanego w profilu, jeśli jest dostępny.
 
-### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>Jakie są adresy IP, z których pochodzą kontroli kondycji?
+### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>Jakie są adresy IP, z których pochodzą kontrole kondycji?
 
-Kliknij przycisk [tutaj](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json) do wyświetlenia pliku JSON, który zawiera listę adresów IP, z której usługi Traffic Manager mogą pochodzić kontrole kondycji. Przejrzyj wymienione w pliku JSON adresy IP na potrzeby upewnij się, że mogą przyjmować połączenia przychodzące z tych adresów IP w punktach końcowych sprawdzić jego stan kondycji.
+Kliknij [tutaj](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json) , aby wyświetlić plik JSON zawierający listę adresów IP, z których mogą pochodzić Traffic Manager kontrole kondycji. Sprawdź adresy IP wymienione w pliku JSON, aby upewnić się, że połączenia przychodzące z tych adresów IP są dozwolone w punktach końcowych, aby sprawdzić stan kondycji.
 
-### <a name="how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager"></a>Ile kontrole kondycji do mojego punktu końcowego można oczekiwać od usługi Traffic Manager?
+### <a name="how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager"></a>Ile testów kondycji w punkcie końcowym można oczekiwać od Traffic Manager?
 
-Liczba kondycji usługi Traffic Manager sprawdza, czy docieranie do punktu końcowego usługi jest zależna od następujących czynników:
+Liczba Traffic Manager kontroli kondycji docierających do punktu końcowego zależy od następujących czynników:
 
-- wartość ustawioną dla interwału monitorowania (mniejszy przedział oznacza liczby żądań kierowanych na punkt końcowy usługi w dowolnym danym okresie czasu).
-- Liczba lokalizacji, z którego pochodzą przez kontrole kondycji (adresy IP, z których można oczekiwać, że te sprawdzenia znajduje się w poprzednim często zadawane pytania).
+- wartość ustawiona dla interwału monitorowania (mniejszy interwał oznacza więcej żądań, które są wydawane w punkcie końcowym w danym okresie).
+- Liczba lokalizacji, z których pochodzą kontrole kondycji (adresy IP, z których można oczekiwać, są wymienione w powyższych często zadawanych pytaniach).
 
-### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>Jak można otrzymywać powiadomienia jeśli ulegnie awarii jednej z moich punkty końcowe?
+### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>Jak mogę otrzymywać powiadomienia, jeśli jeden z punktów końcowych ulegnie awarii?
 
-Jednym z metryki udostępniane przez usługę Traffic Manager jest stan kondycji punktów końcowych w profilu. Można to zobaczyć jak zagregowanych, wszystkie punkty końcowe w ramach profilu (na przykład 75% punktów końcowych są w dobrej kondycji), lub, co na poziomie punktu końcowego. Metryki usługi Traffic Manager są udostępniane za pośrednictwem usługi Azure Monitor i używać jej [alertów](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) Aby otrzymywać powiadomienia, gdy nie nastąpiła zmiana stanu kondycji punktu końcowego usługi. Aby uzyskać więcej informacji, zobacz [alerty i metryki usługi Traffic Manager](traffic-manager-metrics-alerts.md).  
+Jedną z metryk dostarczonych przez Traffic Manager jest stan kondycji punktów końcowych w profilu. Można to zobaczyć jako zagregowane wszystkie punkty końcowe w profilu (na przykład 75% punktów końcowych jest w dobrej kondycji) lub, na poziomie na punkt końcowy. Metryki Traffic Manager są udostępniane za pomocą Azure Monitor i można korzystać z [funkcji alertów](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) , aby otrzymywać powiadomienia o zmianie stanu kondycji punktu końcowego. Aby uzyskać więcej informacji, zobacz [Traffic Manager metryki i alerty](traffic-manager-metrics-alerts.md).  
 
-## <a name="traffic-manager-nested-profiles"></a>Usługa Traffic Manager zagnieżdżone profile
+## <a name="traffic-manager-nested-profiles"></a>Traffic Manager zagnieżdżonych profilów
 
-### <a name="how-do-i-configure-nested-profiles"></a>Jak skonfigurować profile zagnieżdżone
+### <a name="how-do-i-configure-nested-profiles"></a>Jak mogę skonfigurować profile zagnieżdżone?
 
-Zagnieżdżone profile usługi Traffic Manager można skonfigurować przy użyciu usługi Azure Resource Manager i klasycznym Azure interfejsów API REST, poleceń cmdlet programu Azure PowerShell i polecenia wiersza polecenia platformy Azure dla wielu platform. Są one również obsługiwane za pomocą nowej witryny Azure portal.
+Zagnieżdżone profile Traffic Manager można skonfigurować przy użyciu Azure Resource Manager i klasycznych interfejsów API REST platformy Azure, Azure PowerShell poleceń cmdlet i międzyplatformowych poleceń interfejsu wiersza polecenia platformy Azure. Są one również obsługiwane przez nowe Azure Portal.
 
-### <a name="how-many-layers-of-nesting-does-traffic-manger-support"></a>Obsługuje liczbę warstw zagnieżdżenia ma Traffic Manager?
+### <a name="how-many-layers-of-nesting-does-traffic-manger-support"></a>Ile warstw zagnieżdżenia jest obsługiwana przez program Traffic Manager?
 
-Można zagnieżdżać profile maksymalnie 10 poziomów w głąb. "W pętli" są niedozwolone.
+Profile można zagnieżdżać do 10 poziomów głębokości. "Pętle" są niedozwolone.
 
-### <a name="can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile"></a>Czy można łączyć inne typy punktów końcowych, przy użyciu profilów zagnieżdżonych elementów podrzędnych, w tym samym profilu usługi Traffic Manager?
+### <a name="can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile"></a>Czy można mieszać inne typy punktów końcowych z zagnieżdżonymi profilami podrzędnymi w tym samym profilu Traffic Manager?
 
-Tak. Nie ma żadnych ograniczeń, w jak połączyć punktów końcowych o różnych typach w profilu.
+Tak. Nie ma żadnych ograniczeń dotyczących sposobu łączenia punktów końcowych różnych typów w profilu.
 
-### <a name="how-does-the-billing-model-apply-for-nested-profiles"></a>Jak stosuje model rozliczeń dla profile zagnieżdżone
+### <a name="how-does-the-billing-model-apply-for-nested-profiles"></a>Jak ma zastosowanie model rozliczeń dla zagnieżdżonych profilów?
 
-Istnieje nie ujemna, cennik wpływ przy użyciu profilów zagnieżdżonych.
+Korzystanie z zagnieżdżonych profilów nie ma negatywnego wpływu na ceny.
 
-Rozliczanie usługi Traffic Manager ma dwa składniki: kontrole kondycji punktów końcowych i miliony zapytań DNS
+Rozliczanie Traffic Manager ma dwa składniki: kontrole kondycji punktów końcowych i miliony zapytań DNS
 
-* Kontrole kondycji punktów końcowych: Nie ma opłat dla profilu podrzędnych, gdy usługa skonfigurowany jako punkt końcowy w profilu nadrzędnej. Monitorowanie punktów końcowych w profilu podrzędnej jest rozliczana w zwykły sposób.
-* Zapytania DNS: Każde zapytanie są traktowane jako jeden raz. Zapytanie profil nadrzędnego, który zwraca punktu końcowego z profilu podrzędnej jest przeliczane względem nadrzędnego tylko w przypadku profilu.
+* Kontrole kondycji punktów końcowych: Za profil podrzędny skonfigurowany jako punkt końcowy w profilu nadrzędnym nie jest naliczana opłata. Monitorowanie punktów końcowych w profilu podrzędnym jest rozliczane w zwykły sposób.
+* Zapytania DNS: Każde zapytanie jest zliczane tylko raz. Zapytanie względem profilu nadrzędnego zwracające punkt końcowy z profilu podrzędnego jest zliczane tylko względem profilu nadrzędnego.
 
-Aby uzyskać szczegółowe informacje, zobacz [usługi Traffic Manager stronę z cennikiem](https://azure.microsoft.com/pricing/details/traffic-manager/).
+Aby uzyskać szczegółowe informacje, zobacz [stronę z cennikiem Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager/).
 
-### <a name="is-there-a-performance-impact-for-nested-profiles"></a>Ma wpływ na wydajność dla profilów zagnieżdżonych?
+### <a name="is-there-a-performance-impact-for-nested-profiles"></a>Czy istnieje wpływ na wydajność profilów zagnieżdżonych?
 
-Nie. Brak wpływu na wydajność ponoszony, gdy użycie profilów zagnieżdżonych.
+Nie. W przypadku korzystania z profilów zagnieżdżonych nie ma wpływu na wydajność.
 
-Serwery nazw usługi Traffic Manager przechodzenie przez hierarchię profilu wewnętrznie podczas przetwarzania każdego zapytania DNS. Zapytanie DNS do profilu nadrzędnego może odbierać odpowiedzi DNS przy użyciu punktu końcowego z profilu podrzędnych. Pojedynczy rekord CNAME jest używany, czy używasz jeden profil lub profile zagnieżdżone. Nie ma potrzeby utworzyć rekord CNAME dla każdego profilu w hierarchii.
+Serwery nazw Traffic Manager przechodzą wewnętrznie hierarchię profilu podczas przetwarzania każdego zapytania DNS. Zapytanie DNS do profilu nadrzędnego może odebrać odpowiedź DNS z punktem końcowym z profilu podrzędnego. Pojedynczy rekord CNAME jest używany niezależnie od tego, czy jest używany profil zagnieżdżony. Nie ma potrzeby tworzenia rekordu CNAME dla każdego profilu w hierarchii.
 
-### <a name="how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile"></a>Jak usługa Traffic Manager obliczenia kondycji zagnieżdżony punkt końcowy w profilu nadrzędnego?
+### <a name="how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile"></a>Jak Traffic Manager obliczać kondycję zagnieżdżonego punktu końcowego w profilu nadrzędnym?
 
-Profil nadrzędnego nie sprawdzać kondycję w elemencie podrzędnym bezpośrednio. Zamiast tego kondycję profilu podrzędnych punktów końcowych są używane do obliczenia ogólnej kondycji profilu podrzędnych. Te informacje są propagowane w górę hierarchii zagnieżdżonych profilów, które można określić kondycji zagnieżdżony punkt końcowy. Profil nadrzędnego używa ten zagregowaną kondycję, aby ustalić, czy ruch może zostać skierowany do elementu podrzędnego.
+Profil nadrzędny nie przeprowadza bezpośrednio kontroli kondycji elementu podrzędnego. W zamian kondycja punktów końcowych w profilu podrzędnym służy do obliczania ogólnej kondycji profilu podrzędnego. Te informacje są propagowane w hierarchii profilów zagnieżdżonych w celu określenia kondycji zagnieżdżonego punktu końcowego. Profil nadrzędny używa tej zagregowanej kondycji, aby określić, czy ruch może być kierowany do elementu podrzędnego.
 
-W poniższej tabeli opisano zachowanie usługi Traffic Manager kontroli kondycji dla zagnieżdżonych punktu końcowego.
+W poniższej tabeli opisano zachowanie Traffic Manager Sprawdzanie kondycji dla zagnieżdżonego punktu końcowego.
 
-| Stan monitora profilowania podrzędne | Stan monitorowania punktu końcowego nadrzędnej | Uwagi |
+| Stan monitora podrzędnego | Stan monitora nadrzędnego punktu końcowego | Uwagi |
 | --- | --- | --- |
-| Wyłączone. Wyłączono profil podrzędnych. |Zatrzymano |Stan punktu końcowego nadrzędnego jest zatrzymana, nie jest wyłączona. Stan wyłączenia jest zarezerwowana dla wskazujący wyłączono punktu końcowego w profilu nadrzędnej. |
-| Negatywny wpływ na dostępność. Co najmniej jeden element podrzędny punktu końcowego z profilu jest w stanie obniżony. |Online: liczba Online punktów końcowych w profilu podrzędnej jest co najmniej wartość elementu MinChildEndpoints.<BR>CheckingEndpoint: liczba Online, a także CheckingEndpoint punktów końcowych w profilu podrzędnych jest co najmniej wartość elementu MinChildEndpoints.<BR>Negatywny wpływ na dostępność: w przeciwnym razie. |Ruch jest kierowany do punktu końcowego stanu CheckingEndpoint. Jeśli MinChildEndpoints zostanie ustawiona zbyt wysoka, punkt końcowy zawsze ma obniżoną wydajność. |
-| Online. Punktu końcowego profilu co najmniej jeden element podrzędny jest w stanie Online. Nie ma punktu końcowego jest w stanie obniżony. |Zobacz powyżej. | |
-| CheckingEndpoints. Punktu końcowego profilu co najmniej jeden element podrzędny jest "CheckingEndpoint". Brak punktów końcowych są "Online" lub "Negatywny wpływ na dostępność" |Wartość taka sama jak powyżej. | |
-| Nieaktywne. Profil wszystkich podrzędnych punktów końcowych są wyłączone lub zatrzymana lub ten profil nie ma punktów końcowych. |Zatrzymano | |
+| Wyłączony. Profil podrzędny został wyłączony. |Zatrzymano |Stan nadrzędnego punktu końcowego jest zatrzymany, nie jest wyłączony. Stan wyłączony jest zarezerwowany dla wskazywania, że punkt końcowy został wyłączony w profilu nadrzędnym. |
+| Pogorszenie. Co najmniej jeden punkt końcowy profilu podrzędnego jest w stanie obniżonej wydajności. |Online: liczba punktów końcowych w trybie online w profilu podrzędnym jest równa co najmniej wartości MinChildEndpoints.<BR>CheckingEndpoint: liczba punktów końcowych w trybie online i CheckingEndpoint w profilu podrzędnym jest równa co najmniej wartości MinChildEndpoints.<BR>Obniżona wydajność: w przeciwnym razie. |Ruch jest kierowany do punktu końcowego stanu CheckingEndpoint. Jeśli wartość MinChildEndpoints jest zbyt wysoka, punkt końcowy ma zawsze obniżony poziom. |
+| Online. Co najmniej jeden punkt końcowy profilu podrzędnego jest stanem online. Brak punktu końcowego w stanie obniżonej wydajności. |Zobacz powyżej. | |
+| CheckingEndpoints. Co najmniej jeden punkt końcowy profilu podrzędnego to "CheckingEndpoint". Żadne punkty końcowe nie są w trybie online ani nie zostały obniżone. |Tak samo jak powyżej. | |
+| Nieaktywne. Wszystkie punkty końcowe profilu podrzędnego są wyłączone lub zatrzymane albo ten profil nie ma punktów końcowych. |Zatrzymano | |
 
 ## <a name="next-steps"></a>Następne kroki:
 
-- Dowiedz się więcej o usłudze Traffic Manager [punktu końcowego monitorowaniu i automatycznemu trybu failover](../traffic-manager/traffic-manager-monitoring.md).
-- Dowiedz się więcej o usłudze Traffic Manager [metody routingu ruchu](../traffic-manager/traffic-manager-routing-methods.md).
+- Dowiedz się więcej na temat Traffic Manager [monitorowania punktów końcowych i automatycznego przełączania do trybu failover](../traffic-manager/traffic-manager-monitoring.md).
+- Dowiedz się więcej o [metodach routingu ruchu](../traffic-manager/traffic-manager-routing-methods.md)Traffic Manager.

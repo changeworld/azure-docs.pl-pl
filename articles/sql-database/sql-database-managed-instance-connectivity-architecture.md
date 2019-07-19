@@ -1,6 +1,6 @@
 ---
-title: Architektura łączności dla wystąpienia zarządzanego usługi Azure SQL Database | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o komunikacji wystąpienia usługi Azure SQL Database, zarządzanego i architektura łączności również jak składniki kierować ruch do wystąpienia zarządzanego.
+title: Architektura łączności dla wystąpienia zarządzanego w Azure SQL Database | Microsoft Docs
+description: Dowiedz się więcej o Azure SQL Database architekturze komunikacji i łączności wystąpienia zarządzanego oraz o tym, jak składniki kierują ruch do wystąpienia zarządzanego.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,231 +12,231 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 04/16/2019
-ms.openlocfilehash: dbb5ee122e715aeaa66d786f02966beedd2447c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 960320e280a613a537f1918d93e4584a13a0b374
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522331"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309976"
 ---
-# <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Architektura łączności dla wystąpienia zarządzanego usługi Azure SQL Database
+# <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Architektura łączności dla wystąpienia zarządzanego w Azure SQL Database
 
-W tym artykule opisano komunikację w wystąpieniu zarządzanym usługi Azure SQL Database. Omówiono także architekturę łączności i jak składniki kierować ruch do wystąpienia zarządzanego.  
+W tym artykule opisano komunikację w Azure SQL Database wystąpienia zarządzanego. Opisano w nim również architekturę łączności i sposób, w jaki składniki kierują ruch do wystąpienia zarządzanego.  
 
-Wystąpienie zarządzane bazy danych SQL jest umieszczony wewnątrz sieci wirtualnej platformy Azure i podsieć, która jest przeznaczona do wystąpienia zarządzanego. To wdrożenie zapewnia:
+SQL Database wystąpienie zarządzane jest umieszczane w sieci wirtualnej platformy Azure i podsieć, która jest przeznaczona dla wystąpień zarządzanych. To wdrożenie oferuje następujące informacje:
 
-- Bezpieczne prywatny adres IP.
-- Możliwość łączenia z siecią lokalną do wystąpienia zarządzanego.
-- Możliwość łączenia wystąpienia zarządzanego z połączonego serwera lub innego lokalnego magazynu danych.
-- Możliwość łączenia z wystąpienia zarządzanego z zasobami platformy Azure.
+- Bezpieczny prywatny adres IP.
+- Możliwość połączenia sieci lokalnej z wystąpieniem zarządzanym.
+- Możliwość połączenia wystąpienia zarządzanego z serwerem połączonym lub innym lokalnym magazynem danych.
+- Możliwość łączenia wystąpienia zarządzanego z zasobami platformy Azure.
 
 ## <a name="communication-overview"></a>Omówienie komunikacji
 
-Na poniższym diagramie przedstawiono jednostek, które nawiąż połączenie z wystąpieniem zarządzanym. Pokazuje również zasoby, które muszą komunikować się z wystąpieniem zarządzanym. Proces komunikacji w dolnej części diagramu reprezentuje klienta aplikacji i narzędzi, łączących się z wystąpienia zarządzanego jako źródła danych.  
+Na poniższym diagramie przedstawiono jednostki, które łączą się z wystąpieniem zarządzanym. Przedstawiono w nim również zasoby, które muszą komunikować się z wystąpieniem zarządzanym. Proces komunikacji w dolnej części diagramu reprezentuje aplikacje i narzędzia klienta, które łączą się z wystąpieniem zarządzanym jako źródła danych.  
 
-![Jednostki w architektura łączności](./media/managed-instance-connectivity-architecture/connectivityarch001.png)
+![Jednostki w architekturze łączności](./media/managed-instance-connectivity-architecture/connectivityarch001.png)
 
-Wystąpienie zarządzane to platforma jako oferty usługi (PaaS). Firma Microsoft używa automatycznych agents (zarządzanie, wdrażania i konserwacji) do zarządzania tej usługi, w oparciu strumieni danych telemetrii. Ponieważ firma Microsoft jest odpowiedzialna za zarządzanie, klienci nie mogą uzyskiwać dostęp do maszyn wirtualnych klastra wystąpienia zarządzanego za pośrednictwem protokołu RDP (Remote Desktop).
+Wystąpienie zarządzane to oferta platformy jako usługi (PaaS). Firma Microsoft używa zautomatyzowanych agentów (zarządzania, wdrażania i konserwacji) do zarządzania tą usługą w oparciu o strumienie danych telemetrii. Ponieważ firma Microsoft jest odpowiedzialna za zarządzanie, klienci nie mogą uzyskać dostępu do maszyn wirtualnych klastra wystąpień zarządzanych za pomocą Remote Desktop Protocol (RDP).
 
-Niektóre programu SQL Server, których może wymagać operacji uruchamiane przez użytkowników końcowych lub aplikacje zarządzane wystąpienia do interakcji z platformą. Jeden przypadek jest tworzenia zarządzanego wystąpienia bazy danych. Ten zasób jest dostępna za pośrednictwem witryny Azure portal, programu PowerShell, interfejsu wiersza polecenia platformy Azure i interfejsu API REST.
+Niektóre operacje SQL Server uruchomione przez użytkowników końcowych lub aplikacje mogą wymagać, aby wystąpienia zarządzane mogły współdziałać z platformą. Jednym z przypadków jest utworzenie bazy danych wystąpienia zarządzanego. Ten zasób jest dostępny za pomocą Azure Portal, programu PowerShell, interfejsu wiersza polecenia platformy Azure i interfejsu API REST.
 
-Wystąpienia zarządzane są zależne od usług platformy Azure, takich jak Azure Storage do przechowywania kopii zapasowych, Azure Event Hubs dla telemetrii, usługi Azure Active Directory do uwierzytelniania usługi Azure Key Vault dla przezroczystego szyfrowania danych (TDE) i kilka usług platformy Azure, które zapewniają funkcje zabezpieczeń i możliwości obsługi. Wystąpienia zarządzane umożliwia nawiązanie połączenia z tymi usługami.
+Wystąpienia zarządzane są zależne od usług platformy Azure, takich jak Azure Storage, na potrzeby tworzenia kopii zapasowych, Event Hubs platformy Azure do telemetrii, Azure Active Directory uwierzytelniania, Azure Key Vault dla Transparent Data Encryption (TDE) oraz kilka usług platformy Azure, które zapewniają funkcje zabezpieczeń i obsługi. Wystąpienia zarządzane udostępniają połączenia z tymi usługami.
 
-Cała komunikacja są szyfrowane i podpisany przy użyciu certyfikatów. Aby sprawdzić wiarygodności komunikujące się strony, zarządzane wystąpienia stale Sprawdź te certyfikaty za pośrednictwem list odwołań certyfikatów. Jeśli certyfikaty zostaną odwołane, wystąpienia zarządzanego zamyka połączenia, aby chronić dane.
+Cała komunikacja jest zaszyfrowana i podpisana przy użyciu certyfikatów. Aby sprawdzić wiarygodność komunikujących się stron, wystąpienia zarządzane stale weryfikują te certyfikaty za pomocą list odwołania certyfikatów. Jeśli certyfikaty zostaną odwołane, wystąpienie zarządzane zamknie połączenia w celu ochrony danych.
 
-## <a name="high-level-connectivity-architecture"></a>Architektura wysokiego poziomu łączności
+## <a name="high-level-connectivity-architecture"></a>Architektura łączności wysokiego poziomu
 
-Na wysokim poziomie wystąpienie zarządzane to zestaw składników usługi. Te składniki są hostowane na dedykowany zestaw izolowanych maszyn wirtualnych, które są uruchamiane w podsieci sieci wirtualnej klienta. Te maszyny tworzą klaster wirtualny.
+Na wysokim poziomie wystąpienie zarządzane jest zestawem składników usługi. Te składniki są hostowane w dedykowanym zestawie izolowanych maszyn wirtualnych, które działają w podsieci sieci wirtualnej klienta. Te maszyny tworzą klaster wirtualny.
 
-Klaster wirtualny może obsługiwać wiele wystąpień zarządzanych. W razie potrzeby klastra automatycznie rozszerza się lub umów zmianie liczby wystąpień aprowizowane w podsieci klienta.
+Klaster wirtualny może obsługiwać wiele wystąpień zarządzanych. W razie konieczności klaster automatycznie rozszerza lub kontraktuje, gdy klient zmieni liczbę wystąpień zainicjowanych w podsieci.
 
-Klienta aplikacji można łączyć się z wystąpieniami zarządzanych można zapytania, a aktualizacji baz danych w sieci wirtualnej, równorzędnej sieci wirtualnej, lub sieci połączonych przez sieć VPN lub usługi Azure ExpressRoute. Punkt końcowy i prywatnego adresu IP, należy użyć tej sieci.  
+Aplikacje klienta mogą łączyć się z wystąpieniami zarządzanymi i wykonywać zapytania i aktualizować bazy danych wewnątrz sieci wirtualnej, równorzędnej sieci wirtualnej lub sieci połączonej przez sieć VPN lub usługę Azure ExpressRoute. Ta sieć musi używać punktu końcowego i prywatnego adresu IP.  
 
-![diagram architektury łączności](./media/managed-instance-connectivity-architecture/connectivityarch002.png)
+![Diagram architektury łączności](./media/managed-instance-connectivity-architecture/connectivityarch002.png)
 
-Uruchom zarządzanie i wdrażanie usług firmy Microsoft poza siecią wirtualną. Wystąpienie zarządzane i usług firmy Microsoft connect za pośrednictwem punktów końcowych, które mają publiczne adresy IP. Gdy wystąpienie zarządzane tworzy połączenie wychodzące, po stronie odbierającej sprawia, że translacji adresów sieciowych (NAT) podoba Ci się wygląd połączenie pochodzi ten publiczny adres IP.
+Usługi zarządzania i wdrażania firmy Microsoft działają poza siecią wirtualną. Wystąpienie zarządzane i usługi firmy Microsoft łączą się za pośrednictwem punktów końcowych, które mają publiczne adresy IP. Gdy zarządzane wystąpienie tworzy połączenie wychodzące, po odebraniu translacji adresów sieciowych (NAT), połączenie będzie wyglądać tak, jakby pochodzi z tego publicznego adresu IP.
 
-Ruch zarządzania odbywa się za pośrednictwem sieci wirtualnej klienta. Oznacza to elementy infrastruktury sieci wirtualnej mogą uszkodzić ruch związany z zarządzaniem, wprowadzając wystąpienia zakończyć się niepowodzeniem i staną się niedostępne.
+Ruch związany z zarządzaniem odbywa się za pomocą sieci wirtualnej klienta. Oznacza to, że elementy infrastruktury sieci wirtualnej mogą uszkodzić ruch związany z zarządzaniem, co sprawia, że wystąpienie nie powiedzie się i stanie się niedostępne.
 
 > [!IMPORTANT]
-> Do poprawy jakości obsługi klienta oraz dostępności usług Microsoft stosuje zasady intencji sieci na elementy infrastruktury sieci wirtualnej platformy Azure. Zasady mogą wpłynąć na działanie wystąpienia zarządzanego. Ten mechanizm platformy w sposób niewidoczny dla użytkownika komunikuje się wymagania sieciowe dla użytkowników. Głównym celem tej zasady jest zapobiec błędnej konfiguracji sieci i zapewnić operacji normalnego wystąpienia zarządzanego. Po usunięciu wystąpienia zarządzanego intencji zasad sieciowych zostaną również usunięte.
+> Aby ulepszyć obsługę klienta i dostępność usług, firma Microsoft stosuje zasady dotyczące opcji sieci w elementach infrastruktury sieci wirtualnej platformy Azure. Zasady mogą mieć wpływ na sposób działania wystąpienia zarządzanego. Ten mechanizm platformy w sposób przezroczysty komunikuje wymagania sieciowe z użytkownikami. Głównym celem zasad jest uniknięcie nieprawidłowej konfiguracji sieci i zapewnienia normalnych operacji wystąpienia zarządzanego. Usunięcie wystąpienia zarządzanego spowoduje również usunięcie zasad dotyczących opcji sieci.
 
-## <a name="virtual-cluster-connectivity-architecture"></a>Architektura łączności klaster wirtualny
+## <a name="virtual-cluster-connectivity-architecture"></a>Architektura łączności klastra wirtualnego
 
-Przyjrzyjmy się szczegółowo z wizualizacją do architektura łączności dla wystąpienia zarządzanego. Na poniższym diagramie przedstawiono koncepcyjny układ klaster wirtualny.
+Przyjrzyjmy się bardziej szczegółowo szczegółowe architektury łączności dla wystąpień zarządzanych. Na poniższym diagramie przedstawiono układ koncepcyjny klastra wirtualnego.
 
 ![Architektura łączności klastra wirtualnego](./media/managed-instance-connectivity-architecture/connectivityarch003.png)
 
-Klienci łączą się wystąpienia zarządzanego z przy użyciu nazwy hosta, który ma postać `<mi_name>.<dns_zone>.database.windows.net`. Ta nazwa hosta jest rozpoznawany jako prywatny adres IP jest zarejestrowany w strefie systemu nazw domen (DNS) domeny publicznej, i jest rozpoznania publicznie. `zone-id` Jest generowana automatycznie podczas tworzenia klastra. Jeśli nowo utworzony klaster hostów dodatkowej wystąpienia zarządzanego, udostępnia Identyfikatora strefy za pomocą klastra podstawowego. Aby uzyskać więcej informacji, zobacz [umożliwiają automatyczne grupy trybu failover można weryfikować i skoordynowany pracy w trybie failover wielu baz danych](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets).
+Klienci łączą się z wystąpieniem zarządzanym przy użyciu nazwy hosta z formularzem `<mi_name>.<dns_zone>.database.windows.net`. Ta nazwa hosta jest rozpoznawana jako prywatny adres IP, mimo że jest zarejestrowana w publicznej strefie systemu nazw domen (DNS) i jest publicznie rozpoznawalna. `zone-id` Jest generowany automatycznie podczas tworzenia klastra. Jeśli nowo utworzony klaster obsługuje pomocnicze wystąpienie zarządzane, jego identyfikator strefy jest udostępniany klastrowi podstawowemu. Aby uzyskać więcej informacji, zobacz [Korzystanie z grup autotrybu failover w celu zapewnienia przezroczystej i skoordynowanej pracy w trybie failover wielu baz danych](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets).
 
-Ten prywatny adres IP należy do wystąpienia zarządzanego wewnętrznego modułu równoważenia obciążenia. Moduł równoważenia obciążenia kieruje ruch do wystąpienia zarządzanego bramy. Ponieważ w tym samym klastrze można uruchomić wiele wystąpień zarządzanych, brama używa nazwy hosta wystąpienia zarządzanego przekierowywanie ruchu na prawidłowe usługi aparatu programu SQL.
+Ten prywatny adres IP należy do wewnętrznego modułu równoważenia obciążenia wystąpienia zarządzanego. Moduł równoważenia obciążenia kieruje ruch do bramy wystąpienia zarządzanego. Ponieważ wiele wystąpień zarządzanych może działać w tym samym klastrze, brama używa nazwy hosta wystąpienia zarządzanego w celu przekierowania ruchu do odpowiedniej usługi aparatu SQL.
 
-Usługi zarządzania i wdrażania nawiązać wystąpienia zarządzanego przy użyciu [punkt końcowy zarządzania](#management-endpoint) mapuje do zewnętrznego modułu równoważenia obciążenia. Ruch jest kierowany do węzłów, tylko wtedy, gdy zostanie odebrane zestaw wstępnie zdefiniowanych portów, które używają tylko składniki zarządzania wystąpienia zarządzanego. Wbudowane zapory w węzłach skonfigurowano zezwalająca na ruch tylko z zakresów adresów IP firmy Microsoft. Certyfikaty wzajemnego uwierzytelniania, cała komunikacja między składniki zarządzania i płaszczyzny zarządzania.
+Usługi zarządzania i wdrażania nawiązują połączenie z wystąpieniem zarządzanym przy użyciu [punktu końcowego zarządzania](#management-endpoint) , który jest mapowany na zewnętrzny moduł równoważenia obciążenia. Ruch jest kierowany do węzłów tylko wtedy, gdy jest odbierany ze wstępnie zdefiniowanym zestawem portów, których używają tylko składniki zarządzania wystąpienia zarządzanego. Wbudowana zapora w węzłach jest skonfigurowana tak, aby zezwalała na ruch tylko z zakresów adresów IP firmy Microsoft. Certyfikaty wzajemnie uwierzytelniają całą komunikację między składnikami zarządzania a płaszczyzną zarządzania.
 
 ## <a name="management-endpoint"></a>Punkt końcowy zarządzania
 
-Firma Microsoft zarządza wystąpienia zarządzanego przy użyciu punktu końcowego zarządzania. Ten punkt końcowy znajduje się wewnątrz klastra wirtualnego wystąpienia programu. Punkt końcowy zarządzania jest chroniony przez wbudowane zapory na poziomie sieci. Na poziomie aplikacji jest chroniony przez wzajemne certyfikatu weryfikacji. Aby znaleźć adres IP punktu końcowego, zobacz [określić adres IP punktu końcowego zarządzania](sql-database-managed-instance-find-management-endpoint-ip-address.md).
+Firma Microsoft zarządza wystąpieniem zarządzanym przy użyciu punktu końcowego zarządzania. Ten punkt końcowy znajduje się w klastrze wirtualnym tego wystąpienia. Punkt końcowy zarządzania jest chroniony przez wbudowaną zaporę na poziomie sieci. Na poziomie aplikacji jest on chroniony przez wzajemne weryfikację certyfikatu. Aby znaleźć adres IP punktu końcowego, zobacz [Określanie adresu IP punktu końcowego zarządzania](sql-database-managed-instance-find-management-endpoint-ip-address.md).
 
-Podczas połączenia start wewnątrz wystąpienia zarządzanego (podobnie jak w przypadku tworzenia kopii zapasowych i dzienników inspekcji), ruch jest wyświetlana do uruchamiania z punktu końcowego zarządzania publicznego adresu IP. Można ograniczyć dostęp do usług publicznych z wystąpienia zarządzanego przez ustawienie reguły zapory zezwalające na tylko adres IP wystąpienia zarządzanego. Aby uzyskać więcej informacji, zobacz [Sprawdź wystąpienia zarządzanego wbudowanej zapory](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md).
+Po rozpoczęciu połączeń wewnątrz wystąpienia zarządzanego (podobnie jak w przypadku kopii zapasowych i dzienników inspekcji) ruch zaczyna się od publicznego adresu IP punktu końcowego zarządzania. Możesz ograniczyć dostęp do usług publicznych z wystąpienia zarządzanego, ustawiając reguły zapory tak, aby zezwalać tylko na adres IP wystąpienia zarządzanego. Aby uzyskać więcej informacji, zobacz [Weryfikowanie wbudowanej zapory wystąpienia zarządzanego](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md).
 
 > [!NOTE]
-> Zoptymalizowane pod kątem ruchu, który prowadzi do usług platformy Azure, które znajdują się w regionie wystąpienia zarządzanego i z tego powodu nie NATed do zarządzanego wystąpienia zarządzania punktu końcowego publicznego adresu IP. Dlatego jeśli musisz użyć adresu IP na podstawie reguł zapory, najczęściej w celu skorzystania z magazynu usługi musi być w innym regionie z wystąpienia zarządzanego.
+> Ruch kierowany do usług platformy Azure, które znajdują się w regionie wystąpienia zarządzanego, jest zoptymalizowany i z tego powodu nie jest przeznaczony dla publicznego adresu IP punktu końcowego zarządzania wystąpieniami zarządzanymi. Z tego powodu, jeśli musisz użyć reguł zapory opartych na protokole IP, najczęściej dla magazynu, usługa musi znajdować się w innym regionie niż wystąpienie zarządzane.
 
 ## <a name="network-requirements"></a>Wymagania dotyczące sieci
 
-Wdrażanie wystąpienia zarządzanego w dedykowanej podsieci w sieci wirtualnej. Podsieć musi mieć następującą charakterystykę:
+Wdróż wystąpienie zarządzane w dedykowanej podsieci w sieci wirtualnej. Podsieć musi mieć następującą charakterystykę:
 
-- **Dedykowanej podsieci:** Podsieci wystąpienia zarządzanego nie może zawierać wszystkie inne usługi w chmurze skojarzonej z nim, a nie może być podsieć bramy. Podsieci nie może zawierać żadnych zasobów, ale wystąpienia zarządzanego, a nie można później dodać inne typy zasobów w podsieci.
-- **Sieciowa grupa zabezpieczeń (NSG):** Sieciowa grupa zabezpieczeń, która jest skojarzona z siecią wirtualną należy zdefiniować [reguły zabezpieczeń dla ruchu przychodzącego](#mandatory-inbound-security-rules) i [reguły zabezpieczeń dla ruchu wychodzącego](#mandatory-outbound-security-rules) przed innymi regułami. Sieciowa grupa zabezpieczeń służy do kontrolowania dostępu do endpoint danych wystąpienia zarządzanego, filtrując ruch na porcie 1433, a porty 11999 11000, jeśli wystąpienie zarządzane jest skonfigurowany do przekierowywać połączeń.
-- **Tabela tras definiowanych przez (UDR) użytkownika:** Tabeli trasy zdefiniowanej przez użytkownika, która jest skojarzona z siecią wirtualną, musi zawierać określone [wpisy](#user-defined-routes).
-- **Brak punktów końcowych usługi:** Nie punktu końcowego usługi powinna być skojarzona z podsiecią wystąpienia zarządzanego. Upewnij się, wyłączenia opcji punktów końcowych usługi podczas tworzenia sieci wirtualnej.
-- **Wystarczającą liczbą adresów IP:** Podsieci wystąpienia zarządzanego musi mieć co najmniej 16 adresów IP. Minimalna zalecana jest 32 adresów IP. Aby uzyskać więcej informacji, zobacz [określi rozmiar podsieci dla wystąpienia zarządzanego](sql-database-managed-instance-determine-size-vnet-subnet.md). Można wdrożyć wystąpienia zarządzanego w [istniejąca sieć](sql-database-managed-instance-configure-vnet-subnet.md) po skonfigurowaniu go do zaspokojenia [wymagania sieciowe dla wystąpienia zarządzanego](#network-requirements). W przeciwnym razie utwórz [nowej sieci i podsieci](sql-database-managed-instance-create-vnet-subnet.md).
+- **Dedykowana podsieć:** Podsieć wystąpienia zarządzanego nie może zawierać żadnej innej usługi w chmurze, która jest skojarzona z nią, i nie może być podsiecią bramy. Podsieć nie może zawierać żadnego zasobu, ale wystąpienia zarządzanego i nie można później dodać innych typów zasobów w podsieci.
+- **Sieciowa Grupa zabezpieczeń (sieciowej grupy zabezpieczeń):** SIECIOWEJ grupy zabezpieczeń, który jest skojarzony z siecią wirtualną, musi definiować [reguły zabezpieczeń dla ruchu przychodzącego](#mandatory-inbound-security-rules) i [reguły zabezpieczeń dla ruchu](#mandatory-outbound-security-rules) wychodzącego przed innymi regułami. Można użyć sieciowej grupy zabezpieczeń, aby kontrolować dostęp do punktu końcowego danych wystąpienia zarządzanego przez filtrowanie ruchu na porcie 1433 i port 11000-11999, gdy wystąpienie zarządzane jest skonfigurowane do przekierowania połączeń.
+- **Tabela zdefiniowana przez użytkownika trasa (UDR):** Tabela UDR, która jest skojarzona z siecią wirtualną, musi zawierać określone [wpisy](#user-defined-routes).
+- **Brak punktów końcowych usługi:** Żadna z punktów końcowych usługi nie powinna być skojarzona z podsiecią wystąpienia zarządzanego. Upewnij się, że opcja punkty końcowe usługi jest wyłączona podczas tworzenia sieci wirtualnej.
+- **Wystarczające adresy IP:** Podsieć wystąpienia zarządzanego musi mieć co najmniej 16 adresów IP. Zalecane minimum to 32 adresów IP. Aby uzyskać więcej informacji, zobacz [Określanie rozmiaru podsieci dla wystąpień zarządzanych](sql-database-managed-instance-determine-size-vnet-subnet.md). Wystąpienia zarządzane można wdrożyć w [istniejącej sieci](sql-database-managed-instance-configure-vnet-subnet.md) po jej skonfigurowaniu w celu spełnienia [wymagań sieci dla wystąpień zarządzanych](#network-requirements). W przeciwnym razie Utwórz [nową sieć i podsieć](sql-database-managed-instance-create-vnet-subnet.md).
 
 > [!IMPORTANT]
-> Nie można wdrożyć nowe wystąpienia zarządzanego, jeśli podsieci docelowej nie ma następujące cechy. Podczas tworzenia wystąpienia zarządzanego intencji zasad sieciowych została zastosowana w tej podsieci, aby uniemożliwić niezgodnych zmiany w konfiguracji sieci. Po usunięciu ostatniego wystąpienia z podsieci, zasady intencji sieci zostaną również usunięte.
+> Nie można wdrożyć nowego wystąpienia zarządzanego, jeśli podsieć docelowa nie ma tych cech. Podczas tworzenia wystąpienia zarządzanego w podsieci są stosowane zasady konwersji sieci, które uniemożliwiają niezgodne zmiany konfiguracji sieci. Po usunięciu ostatniego wystąpienia z podsieci zostaną również usunięte zasady dotyczące opcji sieci.
 
-### <a name="mandatory-inbound-security-rules"></a>Reguły zabezpieczeń ruchu przychodzącego obowiązkowe
+### <a name="mandatory-inbound-security-rules"></a>Obowiązkowe reguły zabezpieczeń dla ruchu przychodzącego
 
-| Name (Nazwa)       |Port                        |Protocol|Obiekt źródłowy           |Miejsce docelowe|Akcja|
+| Name (Nazwa)       |Port                        |Protocol|Obiekt źródłowy           |Miejsce docelowe|Action|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|zarządzanie  |9000, 9003, 1438, 1440, 1452|TCP     |Dowolne              |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO  |Zezwalaj |
-|mi_subnet   |Dowolne                         |Dowolne     |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO        |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO  |Zezwalaj |
-|health_probe|Dowolne                         |Dowolne     |AzureLoadBalancer|PODSIECI WYSTĄPIENIA ZARZĄDZANEGO  |Zezwalaj |
+|zarządzanie  |9000, 9003, 1438, 1440, 1452|TCP     |Any              |MI PODSIEĆ  |Allow |
+|mi_subnet   |Any                         |Any     |MI PODSIEĆ        |MI PODSIEĆ  |Allow |
+|health_probe|Any                         |Any     |AzureLoadBalancer|MI PODSIEĆ  |Allow |
 
-### <a name="mandatory-outbound-security-rules"></a>Reguły zabezpieczeń dla ruchu wychodzącego obowiązkowe
+### <a name="mandatory-outbound-security-rules"></a>Obowiązkowe reguły zabezpieczeń dla ruchu wychodzącego
 
-| Name (Nazwa)       |Port          |Protocol|Obiekt źródłowy           |Miejsce docelowe|Akcja|
+| Name (Nazwa)       |Port          |Protocol|Obiekt źródłowy           |Miejsce docelowe|Action|
 |------------|--------------|--------|-----------------|-----------|------|
-|zarządzanie  |80, 443, 12000|TCP     |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO        |AzureCloud |Zezwalaj |
-|mi_subnet   |Dowolne           |Dowolne     |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO        |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO  |Zezwalaj |
+|zarządzanie  |80, 443, 12000|TCP     |MI PODSIEĆ        |AzureCloud |Allow |
+|mi_subnet   |Any           |Any     |MI PODSIEĆ        |MI PODSIEĆ  |Allow |
 
 > [!IMPORTANT]
-> Upewnij się, istnieje tylko jedna reguła ruchu przychodzącego dla portów 9000, 9003, 1438 1440, 1452 i jednej reguły ruchu wychodzącego dla portów 80, 443, 12000. Zarządzane wystąpienia inicjowania obsługi administracyjnej za pomocą usługi Azure Resource Manager wdrożenie zakończy się niepowodzeniem, jeśli reguły ruchu przychodzącego i wychodzącego są skonfigurowane osobno dla poszczególnych portów. Jeśli te porty są oddzielne zasady, wdrożenie zakończy się niepowodzeniem z kodem błędu `VnetSubnetConflictWithIntendedPolicy`
+> Upewnij się, że istnieje tylko jedna Reguła ruchu przychodzącego dla portów 9000, 9003, 1438, 1440, 1452 i jednej reguły ruchu wychodzącego dla portów 80, 443, 12000. Inicjowanie obsługi administracyjnej wystąpienia zarządzanego przy użyciu wdrożeń Azure Resource Manager zakończy się niepowodzeniem, jeśli reguły ruchu przychodzącego i wychodzącego są konfigurowane osobno dla każdego portu. Jeśli te porty są w osobnych regułach, wdrożenie zakończy się niepowodzeniem z kodem błędu`VnetSubnetConflictWithIntendedPolicy`
 
-\* PODSIECI wystąpienia Zarządzanego odnosi się do zakresu adresów IP dla podsieci w 10.x.x.x/y formularza. Te informacje można znaleźć w witrynie Azure portal, w oknie właściwości podsieci.
+\*Ta podsieć odnosi się do zakresu adresów IP podsieci w postaci 10. x. x. x/y. Te informacje można znaleźć w Azure Portal, we właściwościach podsieci.
 
 > [!IMPORTANT]
-> Chociaż zasady zabezpieczeń dla ruchu przychodzącego zezwalającą na ruch z _wszelkie_ źródła na portach 9000, 9003, 1438, 1440 i 1452, te porty są chronione przez zaporę wbudowanych. Aby uzyskać więcej informacji, zobacz [ustalić adres punktu końcowego zarządzania](sql-database-managed-instance-find-management-endpoint-ip-address.md).
+> Chociaż wymagane reguły zabezpieczeń dla ruchu przychodzącego zezwalają na ruch z _dowolnego_ źródła na portach 9000, 9003, 1438, 1440 i 1452, te porty są chronione przez wbudowaną zaporę. Aby uzyskać więcej informacji, zobacz [Określanie adresu punktu końcowego zarządzania](sql-database-managed-instance-find-management-endpoint-ip-address.md).
 > [!NOTE]
-> Jeśli korzystanie z replikacji transakcyjnej w zarządzanym wystąpieniu i można użyć dowolnej bazy danych wystąpienia jako wydawca lub dystrybutora, należy otworzyć port 445 (ruch wychodzący protokołu TCP) w regułach zabezpieczeń tej podsieci. Tego portu umożliwi dostęp do udziału plików platformy Azure.
+> Jeśli używasz replikacji transakcyjnej w wystąpieniu zarządzanym, a jeśli korzystasz z innej bazy danych wystąpienia jako Wydawca lub dystrybutor, otwórz port 445 (ruch wychodzący TCP) w regułach zabezpieczeń podsieci. Ten port zezwoli na dostęp do udziału plików platformy Azure.
 
 ### <a name="user-defined-routes"></a>Trasy zdefiniowane przez użytkownika
 
 |Name (Nazwa)|Prefiks adresu|Następny przeskok|
 |----|--------------|-------|
-|subnet_to_vnetlocal|PODSIECI WYSTĄPIENIA ZARZĄDZANEGO|Sieć wirtualna|
-|mi-13-64-11-nexthop-Internet|13.64.0.0/11|Internet|
-|mi-13-96-13-nexthop-Internet|13.96.0.0/13|Internet|
-|mi-13-104-14-nexthop-Internet|13.104.0.0/14|Internet|
-|mi-20-8-następnego skoku — internet|20.0.0.0/8|Internet|
-|mi-23-96-13-nexthop-Internet|23.96.0.0/13|Internet|
-|mi-40-64-10-nexthop-Internet|40.64.0.0/10|Internet|
-|mi-42-159-16-nexthop-internet|42.159.0.0/16|Internet|
-|mi-51-8-następnego skoku — internet|51.0.0.0/8|Internet|
-|mi-52-8-następnego skoku — internet|52.0.0.0/8|Internet|
-|mi-64-4-18-nexthop-Internet|64.4.0.0/18|Internet|
-|mi-65-52-14-nexthop-Internet|65.52.0.0/14|Internet|
-|mi-66-119-144-20-nexthop-Internet|66.119.144.0/20|Internet|
-|mi-70-37-17-nexthop-Internet|70.37.0.0/17|Internet|
-|mi-70-37-128-18-nexthop-internet|70.37.128.0/18|Internet|
-|mi-91-190-216-21-nexthop-Internet|91.190.216.0/21|Internet|
-|mi-94-245-64-18-nexthop-Internet|94.245.64.0/18|Internet|
-|mi-103-9-8-22-nexthop-Internet|103.9.8.0/22|Internet|
-|mi-103-25-156-22-nexthop-Internet|103.25.156.0/22|Internet|
-|mi-103-36-96-22-nexthop-Internet|103.36.96.0/22|Internet|
-|mi-103-255-140-22-nexthop-Internet|103.255.140.0/22|Internet|
-|mi-104-40-13-nexthop-Internet|104.40.0.0/13|Internet|
-|mi-104-146-15-nexthop-internet|104.146.0.0/15|Internet|
-|mi-104-208-13-nexthop-Internet|104.208.0.0/13|Internet|
-|mi-111-221-16-20-nexthop-Internet|111.221.16.0/20|Internet|
-|mi-111-221-64-18-nexthop-Internet|111.221.64.0/18|Internet|
-|mi-129-75-16-nexthop-internet|129.75.0.0/16|Internet|
-|mi-131-253-16-nexthop-Internet|131.253.0.0/16|Internet|
-|mi-132-245-16-nexthop-Internet|132.245.0.0/16|Internet|
-|mi-134-170-16-nexthop-internet|134.170.0.0/16|Internet|
-|mi-134-177-16-nexthop-internet|134.177.0.0/16|Internet|
-|mi-137-116-15-nexthop-Internet|137.116.0.0/15|Internet|
-|mi-137-135-16-nexthop-Internet|137.135.0.0/16|Internet|
-|mi-138-91-16-nexthop-internet|138.91.0.0/16|Internet|
-|mi-138-196-16-nexthop-internet|138.196.0.0/16|Internet|
-|mi-139-217-16-nexthop-internet|139.217.0.0/16|Internet|
-|mi-139-219-16-nexthop-internet|139.219.0.0/16|Internet|
-|mi-141-251-16-nexthop-Internet|141.251.0.0/16|Internet|
-|mi-146-147-16-nexthop-internet|146.147.0.0/16|Internet|
-|mi-147-243-16-nexthop-Internet|147.243.0.0/16|Internet|
-|mi-150-171-16-nexthop-internet|150.171.0.0/16|Internet|
-|mi-150-242-48-22-nexthop-internet|150.242.48.0/22|Internet|
-|mi-157-54-15-nexthop-Internet|157.54.0.0/15|Internet|
-|mi-157-56-14-nexthop-Internet|157.56.0.0/14|Internet|
-|mi-157-60-16-nexthop-internet|157.60.0.0/16|Internet|
-|mi-167-220-16-nexthop-internet|167.220.0.0/16|Internet|
-|mi-168-61-16-nexthop-internet|168.61.0.0/16|Internet|
-|mi-168-62-15-nexthop-Internet|168.62.0.0/15|Internet|
-|mi-191-232-13-nexthop-Internet|191.232.0.0/13|Internet|
-|mi-192-32-16-nexthop-Internet|192.32.0.0/16|Internet|
-|mi-192-48-225-24-nexthop-Internet|192.48.225.0/24|Internet|
-|mi-192-84-159-24-nexthop-Internet|192.84.159.0/24|Internet|
-|mi-192-84-160-23-nexthop-Internet|192.84.160.0/23|Internet|
-|mi-192-100-102-24-nexthop-Internet|192.100.102.0/24|Internet|
-|mi-192-100-103-24-nexthop-Internet|192.100.103.0/24|Internet|
-|mi-192-197-157-24-nexthop-Internet|192.197.157.0/24|Internet|
-|mi-193-149-64-19-nexthop-Internet|193.149.64.0/19|Internet|
-|mi-193-221-113-24-nexthop-Internet|193.221.113.0/24|Internet|
-|mi-194-69-96-19-nexthop-Internet|194.69.96.0/19|Internet|
-|mi-194-110-197-24-nexthop-Internet|194.110.197.0/24|Internet|
-|mi-198-105-232-22-nexthop-Internet|198.105.232.0/22|Internet|
-|mi-198-200-130-24-nexthop-internet|198.200.130.0/24|Internet|
-|mi-198-206-164-24-nexthop-Internet|198.206.164.0/24|Internet|
-|mi-199-60-28-24-nexthop-Internet|199.60.28.0/24|Internet|
-|mi-199-74-210-24-nexthop-internet|199.74.210.0/24|Internet|
-|mi-199-103-90-23-nexthop-Internet|199.103.90.0/23|Internet|
-|mi-199-103-122-24-nexthop-Internet|199.103.122.0/24|Internet|
-|mi-199-242-32-20-nexthop-internet|199.242.32.0/20|Internet|
-|mi-199-242-48-21-nexthop-internet|199.242.48.0/21|Internet|
-|mi-202-89-224-20-nexthop-Internet|202.89.224.0/20|Internet|
-|mi-204-13-120-21-nexthop-Internet|204.13.120.0/21|Internet|
-|mi-204-14-180-22-nexthop-Internet|204.14.180.0/22|Internet|
-|mi-204-79-135-24-nexthop-Internet|204.79.135.0/24|Internet|
-|mi-204-79-179-24-nexthop-Internet|204.79.179.0/24|Internet|
-|mi-204-79-181-24-nexthop-Internet|204.79.181.0/24|Internet|
-|mi-204-79-188-24-nexthop-Internet|204.79.188.0/24|Internet|
-|mi-204-79-195-24-nexthop-Internet|204.79.195.0/24|Internet|
-|mi-204-79-196-23-nexthop-Internet|204.79.196.0/23|Internet|
-|mi-204-79-252-24-nexthop-Internet|204.79.252.0/24|Internet|
-|mi-204-152-18-23-nexthop-Internet|204.152.18.0/23|Internet|
-|mi-204-152-140-23-nexthop-Internet|204.152.140.0/23|Internet|
-|mi-204-231-192-24-nexthop-Internet|204.231.192.0/24|Internet|
-|mi-204-231-194-23-nexthop-Internet|204.231.194.0/23|Internet|
-|mi-204-231-197-24-nexthop-Internet|204.231.197.0/24|Internet|
-|mi-204-231-198-23-nexthop-Internet|204.231.198.0/23|Internet|
-|mi-204-231-200-21-nexthop-Internet|204.231.200.0/21|Internet|
-|mi-204-231-208-20-nexthop-Internet|204.231.208.0/20|Internet|
-|mi-204-231-236-24-nexthop-Internet|204.231.236.0/24|Internet|
-|mi-205-174-224-20-nexthop-Internet|205.174.224.0/20|Internet|
-|mi-206-138-168-21-nexthop-Internet|206.138.168.0/21|Internet|
-|mi-206-191-224-19-nexthop-Internet|206.191.224.0/19|Internet|
-|mi-207-46-16-nexthop-internet|207.46.0.0/16|Internet|
-|mi-207-68-128-18-nexthop-internet|207.68.128.0/18|Internet|
-|mi-208-68-136-21-nexthop-Internet|208.68.136.0/21|Internet|
-|mi-208-76-44-22-nexthop-internet|208.76.44.0/22|Internet|
-|mi-208-84-21-nexthop-Internet|208.84.0.0/21|Internet|
-|mi-209-240-192-19-nexthop-internet|209.240.192.0/19|Internet|
-|mi-213-199-128-18-nexthop-Internet|213.199.128.0/18|Internet|
-|mi-216-32-180-22-nexthop-Internet|216.32.180.0/22|Internet|
-|mi-216-220-208-20-nexthop-Internet|216.220.208.0/20|Internet|
+|subnet_to_vnetlocal|MI PODSIEĆ|Sieć wirtualna|
+|mi-13-64-11-skoku — Internet|13.64.0.0/11|Internet|
+|mi-13-96-13-skoku — Internet|13.96.0.0/13|Internet|
+|mi-13-104-14-skoku — Internet|13.104.0.0/14|Internet|
+|mi-20-8-skoku — Internet|20.0.0.0/8|Internet|
+|mi-23-96-13-skoku — Internet|23.96.0.0/13|Internet|
+|mi-40-64-10-skoku — Internet|40.64.0.0/10|Internet|
+|mi-42-159-16-skoku — Internet|42.159.0.0/16|Internet|
+|mi-51-8-skoku — Internet|51.0.0.0/8|Internet|
+|mi-52-8-skoku — Internet|52.0.0.0/8|Internet|
+|mi-64-4-18-skoku — Internet|64.4.0.0/18|Internet|
+|mi-65-52-14-skoku — Internet|65.52.0.0/14|Internet|
+|mi-66-119-144-20-skoku — Internet|66.119.144.0/20|Internet|
+|mi-70-37-17-skoku — Internet|70.37.0.0/17|Internet|
+|mi-70-37-128-18-skoku — Internet|70.37.128.0/18|Internet|
+|mi-91-190-216-21-skoku — Internet|91.190.216.0/21|Internet|
+|mi-94-245-64-18-skoku — Internet|94.245.64.0/18|Internet|
+|mi-103-9-8-22-skoku — Internet|103.9.8.0/22|Internet|
+|mi-103-25-156-22-skoku — Internet|103.25.156.0/22|Internet|
+|mi-103-36-96-22-skoku — Internet|103.36.96.0/22|Internet|
+|mi-103-255-140-22-skoku — Internet|103.255.140.0/22|Internet|
+|mi-104-40-13-skoku — Internet|104.40.0.0/13|Internet|
+|mi-104-146-15-skoku — Internet|104.146.0.0/15|Internet|
+|mi-104-208-13-skoku — Internet|104.208.0.0/13|Internet|
+|mi-111-221-16-20-skoku — Internet|111.221.16.0/20|Internet|
+|mi-111-221-64-18-skoku — Internet|111.221.64.0/18|Internet|
+|mi-129-75-16-skoku — Internet|129.75.0.0/16|Internet|
+|mi-131-253-16-skoku — Internet|131.253.0.0/16|Internet|
+|mi-132-245-16-skoku — Internet|132.245.0.0/16|Internet|
+|mi-134-170-16-skoku — Internet|134.170.0.0/16|Internet|
+|mi-134-177-16-skoku — Internet|134.177.0.0/16|Internet|
+|mi-137-116-15-skoku — Internet|137.116.0.0/15|Internet|
+|mi-137-135-16-skoku — Internet|137.135.0.0/16|Internet|
+|mi-138-91-16-skoku — Internet|138.91.0.0/16|Internet|
+|mi-138-196-16-skoku — Internet|138.196.0.0/16|Internet|
+|mi-139-217-16-skoku — Internet|139.217.0.0/16|Internet|
+|mi-139-219-16-skoku — Internet|139.219.0.0/16|Internet|
+|mi-141-251-16-skoku — Internet|141.251.0.0/16|Internet|
+|mi-146-147-16-skoku — Internet|146.147.0.0/16|Internet|
+|mi-147-243-16-skoku — Internet|147.243.0.0/16|Internet|
+|mi-150-171-16-skoku — Internet|150.171.0.0/16|Internet|
+|mi-150-242-48-22-skoku — Internet|150.242.48.0/22|Internet|
+|mi-157-54-15-skoku — Internet|157.54.0.0/15|Internet|
+|mi-157-56-14-skoku — Internet|157.56.0.0/14|Internet|
+|mi-157-60-16-skoku — Internet|157.60.0.0/16|Internet|
+|mi-167-220-16-skoku — Internet|167.220.0.0/16|Internet|
+|mi-168-61-16-skoku — Internet|168.61.0.0/16|Internet|
+|mi-168-62-15-skoku — Internet|168.62.0.0/15|Internet|
+|mi-191-232-13-skoku — Internet|191.232.0.0/13|Internet|
+|mi-192-32-16-skoku — Internet|192.32.0.0/16|Internet|
+|mi-192-48-225-24-skoku — Internet|192.48.225.0/24|Internet|
+|mi-192-84-159-24-skoku — Internet|192.84.159.0/24|Internet|
+|mi-192-84-160-23-skoku — Internet|192.84.160.0/23|Internet|
+|mi-192-100-102-24-skoku — Internet|192.100.102.0/24|Internet|
+|mi-192-100-103-24-skoku — Internet|192.100.103.0/24|Internet|
+|mi-192-197-157-24-skoku — Internet|192.197.157.0/24|Internet|
+|mi-193-149-64-19-skoku — Internet|193.149.64.0/19|Internet|
+|mi-193-221-113-24-skoku — Internet|193.221.113.0/24|Internet|
+|mi-194-69-96-19-skoku — Internet|194.69.96.0/19|Internet|
+|mi-194-110-197-24-skoku — Internet|194.110.197.0/24|Internet|
+|mi-198-105-232-22-skoku — Internet|198.105.232.0/22|Internet|
+|mi-198-200-130-24-skoku — Internet|198.200.130.0/24|Internet|
+|mi-198-206-164-24-skoku — Internet|198.206.164.0/24|Internet|
+|mi-199-60-28-24-skoku — Internet|199.60.28.0/24|Internet|
+|mi-199-74-210-24-skoku — Internet|199.74.210.0/24|Internet|
+|mi-199-103-90-23-skoku — Internet|199.103.90.0/23|Internet|
+|mi-199-103-122-24-skoku — Internet|199.103.122.0/24|Internet|
+|mi-199-242-32-20-skoku — Internet|199.242.32.0/20|Internet|
+|mi-199-242-48-21-skoku — Internet|199.242.48.0/21|Internet|
+|mi-202-89-224-20-skoku — Internet|202.89.224.0/20|Internet|
+|mi-204-13-120-21-skoku — Internet|204.13.120.0/21|Internet|
+|mi-204-14-180-22-skoku — Internet|204.14.180.0/22|Internet|
+|mi-204-79-135-24-skoku — Internet|204.79.135.0/24|Internet|
+|mi-204-79-179-24-skoku — Internet|204.79.179.0/24|Internet|
+|mi-204-79-181-24-skoku — Internet|204.79.181.0/24|Internet|
+|mi-204-79-188-24-skoku — Internet|204.79.188.0/24|Internet|
+|mi-204-79-195-24-skoku — Internet|204.79.195.0/24|Internet|
+|mi-204-79-196-23-skoku — Internet|204.79.196.0/23|Internet|
+|mi-204-79-252-24-skoku — Internet|204.79.252.0/24|Internet|
+|mi-204-152-18-23-skoku — Internet|204.152.18.0/23|Internet|
+|mi-204-152-140-23-skoku — Internet|204.152.140.0/23|Internet|
+|mi-204-231-192-24-skoku — Internet|204.231.192.0/24|Internet|
+|mi-204-231-194-23-skoku — Internet|204.231.194.0/23|Internet|
+|mi-204-231-197-24-skoku — Internet|204.231.197.0/24|Internet|
+|mi-204-231-198-23-skoku — Internet|204.231.198.0/23|Internet|
+|mi-204-231-200-21-skoku — Internet|204.231.200.0/21|Internet|
+|mi-204-231-208-20-skoku — Internet|204.231.208.0/20|Internet|
+|mi-204-231-236-24-skoku — Internet|204.231.236.0/24|Internet|
+|mi-205-174-224-20-skoku — Internet|205.174.224.0/20|Internet|
+|mi-206-138-168-21-skoku — Internet|206.138.168.0/21|Internet|
+|mi-206-191-224-19-skoku — Internet|206.191.224.0/19|Internet|
+|mi-207-46-16-skoku — Internet|207.46.0.0/16|Internet|
+|mi-207-68-128-18-skoku — Internet|207.68.128.0/18|Internet|
+|mi-208-68-136-21-skoku — Internet|208.68.136.0/21|Internet|
+|mi-208-76-44-22-skoku — Internet|208.76.44.0/22|Internet|
+|mi-208-84-21-skoku — Internet|208.84.0.0/21|Internet|
+|mi-209-240-192-19-skoku — Internet|209.240.192.0/19|Internet|
+|mi-213-199-128-18-skoku — Internet|213.199.128.0/18|Internet|
+|mi-216-32-180-22-skoku — Internet|216.32.180.0/22|Internet|
+|mi-216-220-208-20-skoku — Internet|216.220.208.0/20|Internet|
 ||||
 
-Ponadto można dodać wpisów do tabeli tras do kierowania ruchu z zakresów IP prywatnych w środowisku lokalnym jako miejsce docelowe za pośrednictwem bramy sieci wirtualnej lub sieci wirtualne urządzenie sieciowe.
+Ponadto można dodać pozycje do tabeli tras, aby skierować ruch, który ma lokalne prywatne zakresy adresów IP jako miejsce docelowe za pomocą bramy sieci wirtualnej lub urządzenia sieci wirtualnej (urządzenie WUS).
 
-Jeśli sieć wirtualna zawiera niestandardowe DNS, niestandardowego serwera DNS musi być w stanie rozpoznać nazwy hosta w \*. core.windows.net strefy. Za pomocą dodatkowych funkcji, takich jak uwierzytelnianie usługi Azure AD mogą wymagać dodatkowych nazw FQDN rozpoznawania. Aby uzyskać więcej informacji, zobacz [skonfigurować niestandardowe DNS](sql-database-managed-instance-custom-dns.md).
+Jeśli sieć wirtualna zawiera niestandardowy system DNS, niestandardowy serwer DNS musi być w stanie rozpoznać publiczne rekordy DNS. Korzystanie z dodatkowych funkcji, takich jak uwierzytelnianie w usłudze Azure AD, może wymagać rozpoznawania dodatkowych nazw FQDN. Aby uzyskać więcej informacji, zobacz [Konfigurowanie niestandardowego serwera DNS](sql-database-managed-instance-custom-dns.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby uzyskać przegląd, zobacz [zaawansowanych zabezpieczeń danych bazy danych SQL](sql-database-managed-instance.md).
-- Dowiedz się, jak [skonfigurować nową sieć wirtualną platformy Azure](sql-database-managed-instance-create-vnet-subnet.md) lub [istniejącej sieci wirtualnej platformy Azure](sql-database-managed-instance-configure-vnet-subnet.md) którym można wdrożyć wystąpienia zarządzanego.
-- [Oblicz rozmiar podsieci](sql-database-managed-instance-determine-size-vnet-subnet.md) potrzebne do wdrożenia wystąpienia zarządzanego.
+- Aby zapoznać się z omówieniem, zobacz [SQL Database Advanced Data Security](sql-database-managed-instance.md).
+- Dowiedz się, jak [skonfigurować nową sieć wirtualną platformy Azure](sql-database-managed-instance-create-vnet-subnet.md) lub [istniejącą sieć wirtualną platformy Azure](sql-database-managed-instance-configure-vnet-subnet.md) , w której można wdrażać wystąpienia zarządzane.
+- [Oblicz rozmiar podsieci](sql-database-managed-instance-determine-size-vnet-subnet.md) , w której chcesz wdrożyć wystąpienia zarządzane.
 - Dowiedz się, jak utworzyć wystąpienie zarządzane:
-  - Z [witryny Azure portal](sql-database-managed-instance-get-started.md).
-  - Za pomocą [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md).
-  - Za pomocą [szablonu usługi Azure Resource Manager](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/).
-  - Za pomocą [szablonu usługi Azure Resource Manager (przy użyciu serwera Przesiadkowego, za pomocą programu SSMS uwzględnione)](https://portal.azure.com/). 
+  - Z [Azure Portal](sql-database-managed-instance-get-started.md).
+  - Za pomocą [programu PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md).
+  - Przy użyciu [szablonu Azure Resource Manager](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/).
+  - Przy użyciu [szablonu Azure Resource Manager (za pomocą serwera przesiadkowego, z uwzględnieniem programu SSMS)](https://portal.azure.com/). 

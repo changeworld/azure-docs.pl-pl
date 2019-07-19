@@ -1,32 +1,42 @@
 ---
-title: Mapowanie wzorców kolumny przepływu danych w usłudze Azure Data Factory
-description: Dowiedz się, jak używać wzorców kolumny fabryki danych Azure w mapowanie przepływu danych w celu utworzenia wzorców uogólnionego szablonów do przekształcania pola do przepływu danych, bez względu na odpowiednie metadane schematu
+title: Azure Data Factory mapowanie wzorców kolumn przepływu danych
+description: Tworzenie uogólnionych wzorców transformacji danych przy użyciu Azure Data Factory wzorców kolumn w mapowaniu przepływów danych
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 08cdaafe00b7dc586ea75f6ff03fdb89107edee9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d24988dfd5cbaf20e92c5afbbc39dc0c78e3ef6a
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66430756"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314856"
 ---
-# <a name="azure-data-factory-mapping-data-flows-column-patterns"></a>Usługi Azure data factory mapowanie danych przepływów wzorców kolumny
+# <a name="azure-data-factory-mapping-data-flows-column-patterns"></a>Wzorce kolumn przepływów danych mapowania usługi Azure Data Factory
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Kilka przekształcenia przepływ danych fabryki danych platformy Azure obsługuje pomysł wzorców"kolumny", w którym można utworzyć kolumny szablonu na podstawie wzorców zamiast nazwy ustalonych kolumn. Można użyć tej funkcji w ramach Konstruktor wyrażeń wzorce, aby dopasować kolumny dla transformacji zamiast nazwy dokładnie tak samo, określonych pól. Wzorce są przydatne w przypadku przychodzących pola źródłowego zmieniają się często, szczególnie w przypadku zmiany kolumny w plikach tekstowych lub bazy danych NoSQL. Ten stan jest czasami określane jako "Schematu dryfu".
+Niektóre przekształcenia przepływu danych Azure Data Factory obsługują koncepcję "wzorców kolumn", dzięki czemu można tworzyć kolumny szablonów na podstawie wzorców zamiast zakodowanych nazw kolumn. Za pomocą tej funkcji w Konstruktorze wyrażeń można definiować wzorce w celu dopasowania do kolumn na potrzeby transformacji zamiast konieczności dokładnej, konkretnych nazw pól. Wzorce są przydatne, jeśli przychodzące pola źródłowe zmieniają się często, szczególnie w przypadku zmiany kolumn w plikach tekstowych lub bazach danych NoSQL. Ten stan jest czasami określany jako "dryfowanie schematu".
 
-![wzorce kolumny](media/data-flow/columnpattern2.png "wzorców kolumny")
+![wzorce kolumn](media/data-flow/columnpattern2.png "Wzorce kolumn")
 
-Wzorce kolumny są przydatne do obsługi zarówno schematu kilka scenariuszy, a także Ogólne scenariusze. To rozwiązanie dobre dla warunków gdzie nie jest możliwe w pełni znać nazwę każdej kolumny. Można wzorca dopasowania nazwy kolumny i typ danych kolumny i utworzyć wyrażenie dla transformacji, która umożliwia wykonanie tej operacji względem dowolnego pola w strumień danych, który jest zgodny z `name`  &  `type` wzorców.
+Wzorce kolumn są przydatne do obsługi zarówno scenariuszy dryfowania schematu, jak i ogólnych scenariuszy. Jest to dobre w przypadku warunków, w których nie można w pełni znać nazw kolumn. Można dopasować wzorzec do nazwy kolumny i typu danych kolumny i utworzyć wyrażenie do przekształcenia, które wykona tę operację względem dowolnego pola w strumieniu danych, który jest zgodny ze `name`  &  `type` wzorcem.
 
-Podczas dodawania wyrażenia do transformacji, który akceptuje wzorców, wybierz pozycję "Dodaj kolumnę wzorzec". Wzorce kolumny pozwala wzorce dopasowania schematu kilka kolumn.
+Dodając wyrażenie do przekształcenia, które akceptuje wzorce, wybierz pozycję "Dodaj wzorzec kolumny". Wzorce kolumn umożliwiają wzorce dopasowywania do kolumn dryfu schematu.
 
-Podczas kompilowania wzorców kolumny szablonów, należy użyć `$$` w wyrażeniu do reprezentowania odwołań do każdego pola dopasowane ze strumienia danych wejściowych.
+Podczas kompilowania wzorców kolumn szablonu Użyj `$$` w wyrażeniu, aby reprezentować odwołanie do każdego dopasowanego pola ze strumienia danych wejściowych.
 
-Jeśli zdecydujesz się użyć jednej z funkcji wyrażenia regularnego Konstruktor wyrażeń, następnie później można $1, 2 USD $3... można odwoływać się do podrzędnego wzorców zgodny z z wyrażeniem regularnym.
+Jeśli zdecydujesz się użyć jednej z funkcji wyrażenia regularnego konstruktora wyrażeń, możesz następnie użyć $1, $2, $3... Aby odwołać się do podwzorców pasujących do wyrażenia regularnego.
 
-Przykładem scenariusza wzorzec kolumny używa SUM z serią przychodzących pola. Łączny obliczenia SUM w agregacji są transformacji. Następnie można suma każdego dopasowania typy pól, które odpowiada "integer", a następnie użyj $$ można odwoływać się do każdego dopasowania w wyrażeniu.
+Przykładowy scenariusz wzorca kolumny korzysta z SUM z serią pól przychodzących. Obliczenia SUM zagregowanych są w transformacji agregowanej. Następnie można użyć SUM dla każdego dopasowania typów pól, które pasują do wartości "Integer", a następnie użyć $ $, aby odwołać się do każdego dopasowania w wyrażeniu.
+
+## <a name="match-columns"></a>Dopasuj kolumny
+![typy wzorców kolumn](media/data-flow/pattern2.png "Typy wzorców")
+
+Aby kompilować wzorce na podstawie kolumn, można dopasować nazwę kolumny, typ, strumień lub pozycję i użyć dowolnej kombinacji z funkcjami wyrażeń i wyrażeniami regularnymi.
+
+![położenie kolumny](media/data-flow/position.png "Położenie kolumny")
+
+## <a name="next-steps"></a>Następne kroki
+Dowiedz się więcej o [języku wyrażeń](http://aka.ms/dataflowexpressions) przepływu danych mapowania ADF na potrzeby transformacji danych

@@ -1,9 +1,8 @@
 ---
-title: Usuwanie podsieci po usunięcie usługi Azure SQL Database wystąpienie zarządzane | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak można usunąć sieci wirtualnej platformy Azure po usunięcie usługi Azure SQL Database wystąpienie zarządzane.
+title: Usuń podsieć po usunięciu Azure SQL Database wystąpienia zarządzanego | Microsoft Docs
+description: Dowiedz się, jak usunąć usługę Azure Virtual Network po usunięciu Azure SQL Database wystąpienia zarządzanego.
 services: sql-database
 ms.service: sql-database
-ms.subservice: management
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,47 +11,47 @@ ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
 manager: craigg
 ms.date: 06/26/2019
-ms.openlocfilehash: 4679ecda210fa78aad4315bc6602b67dd1795ce9
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ead7ea91e172f608c5364e4d5164d2a71dbf2f5f
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67427970"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297621"
 ---
-# <a name="delete-a-subnet-after-deleting-an-azure-sql-database-managed-instance"></a>Usuwanie podsieci po usunięcie usługi Azure SQL Database wystąpienie zarządzane
+# <a name="delete-a-subnet-after-deleting-an-azure-sql-database-managed-instance"></a>Usuń podsieć po usunięciu Azure SQL Database wystąpienia zarządzanego
 
-Ten artykuł zawiera wskazówki dotyczące sposobu ręcznie usunąć podsieć po usunięcie ostatniej usługi Azure SQL Database managed wystąpienia znajdujących się w nim.
+Ten artykuł zawiera wskazówki dotyczące ręcznego usuwania podsieci po usunięciu ostatniego wystąpienia zarządzanego Azure SQL Database znajdującego się w nim.
 
-SQL Database przy użyciu [klastra wirtualnego](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture) zawierać usunięto wystąpienie zarządzane. Klaster wirtualny będzie się powtarzał przez 12 godzin po usunięciu wystąpienia, aby umożliwić szybkie tworzenie zarządzanych wystąpień w tej samej podsieci. Brak opłat za utrzymywanie pusty klaster wirtualny. W tym okresie nie można usunąć podsieci skojarzonej z klastrem wirtualnym.
+SQL Database używa [klastra wirtualnego](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture) , aby zawierał usunięte wystąpienie zarządzane. Klaster wirtualny utrzymuje przez 12 godzin po usunięciu wystąpienia, aby umożliwić szybkie tworzenie wystąpień zarządzanych w tej samej podsieci. Nie jest naliczana opłata za utrzymywanie pustego klastra wirtualnego. W tym okresie nie można usunąć podsieci skojarzonej z klastrem wirtualnym.
 
-Jeśli nie chcesz czekać na 12 godzin, a chcesz natychmiast usunąć klaster wirtualny i jej podsieci, możesz to zrobić ręcznie. Usuń klaster wirtualny ręcznie przy użyciu witryny Azure portal lub klastry wirtualne interfejsu API.
+Jeśli nie chcesz czekać 12 godzin i wolisz natychmiast usunąć klaster wirtualny i jego podsieć, możesz to zrobić ręcznie. Ręcznie usuń klaster wirtualny przy użyciu Azure Portal lub interfejsu API klastrów wirtualnych.
 
 > [!NOTE]
-> Klaster wirtualny powinna zawierać żadnych wystąpień zarządzanych do usunięcia zakończy się powodzeniem.
+> Klaster wirtualny nie powinien zawierać żadnych wystąpień zarządzanych, aby usuwanie powiodło się.
 
-## <a name="delete-virtual-cluster-from-the-azure-portal"></a>Usuń klaster wirtualny w witrynie Azure portal
+## <a name="delete-virtual-cluster-from-the-azure-portal"></a>Usuwanie klastra wirtualnego z Azure Portal
 
-Aby usunąć klaster wirtualny za pomocą witryny Azure portal, wyszukiwanie zasobów klastra wirtualnego.
+Aby usunąć klaster wirtualny przy użyciu Azure Portal, wyszukaj zasoby klastra wirtualnego.
 
-![Zrzut ekranu witryny Azure Portal, za pomocą pola wyszukiwania wyróżniony](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-search.png)
+![Zrzut ekranu przedstawiający Azure Portal z wyróżnionym polem wyszukiwania](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-search.png)
 
-Po zlokalizowaniu klaster wirtualny ma zostać usunięty, wybierz ten zasób, a wybierz **Usuń**. Monit o potwierdzenie usunięcia klaster wirtualny.
+Po znalezieniu klastra wirtualnego, który chcesz usunąć, wybierz pozycję ten zasób, a następnie wybierz pozycję **Usuń**. Zostanie wyświetlony monit o potwierdzenie usunięcia klastra wirtualnego.
 
-![Zrzut ekranu witryny Azure Portal, wirtualne klastrów pulpitu nawigacyjnego, z podświetloną opcją Delete](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-delete.png)
+![Zrzut ekranu pulpitu nawigacyjnego Azure Portal klastrów wirtualnych z wyróżnioną opcją usuwania](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-delete.png)
 
-Obszar powiadomień portalu platformy Azure pokazuje potwierdzenie, że klaster wirtualny został usunięty. Skuteczne usunięcie klastra wirtualnego natychmiast zwalnia podsieci do ponownego wykorzystania.
+Obszar powiadomienia Azure Portal pokazuje, że klaster wirtualny został usunięty. Pomyślne usunięcie klastra wirtualnego natychmiast zwolni podsieć do ponownego użycia.
 
 > [!TIP]
-> Jeśli żadnych wystąpień zarządzanych objętego klaster wirtualny, a nie można usunąć klastra wirtualnego, należy się upewnić, że ma wdrożenia bieżące wystąpienie w toku. Obejmuje to rozpoczęcie pracy i anulowanych wdrożenia, które są nadal w toku. Przegląd wdrożenia karty, grupy zasobów, wystąpienie został wdrożony na poinformuje wszystkich wdrożeń w toku. W tym przypadku await dla wdrożenia w celu ukończenia, usuń wystąpienia zarządzanego, a następnie klaster wirtualny.
+> Jeśli w klastrze wirtualnym nie są wyświetlane żadne wystąpienia zarządzane i nie można usunąć klastra wirtualnego, upewnij się, że nie ma trwającego wdrożenia w toku. Obejmuje to uruchomione i anulowane wdrożenia, które nadal są w toku. Karta przeglądanie wdrożeń w grupie zasobów, w której wdrożono wystąpienie, będzie wskazywać wszystkie wdrożenia w toku. W tym przypadku oczekiwanie na ukończenie wdrożenia, Usuń wystąpienie zarządzane, a następnie klaster wirtualny.
 
-## <a name="delete-virtual-cluster-by-using-the-api"></a>Usuń klaster wirtualny za pomocą interfejsu API
+## <a name="delete-virtual-cluster-by-using-the-api"></a>Usuwanie klastra wirtualnego przy użyciu interfejsu API
 
-Aby usunąć klaster wirtualny za pomocą interfejsu API, użyj parametrów identyfikatora URI określonego w [klastrów wirtualnych delete, Metoda](https://docs.microsoft.com/rest/api/sql/virtualclusters/delete).
+Aby usunąć klaster wirtualny za pomocą interfejsu API, użyj parametrów identyfikatora URI określonych w [metodzie Delete klastrów wirtualnych](https://docs.microsoft.com/rest/api/sql/virtualclusters/delete).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby uzyskać przegląd, zobacz [co to jest wystąpienie zarządzane?](sql-database-managed-instance.md).
-- Dowiedz się więcej o [architektura łączności w wystąpieniu zarządzanym](sql-database-managed-instance-connectivity-architecture.md).
+- Aby zapoznać się z omówieniem, zobacz [co to jest wystąpienie zarządzane?](sql-database-managed-instance.md)
+- Dowiedz się więcej o [architekturze łączności w wystąpieniu zarządzanym](sql-database-managed-instance-connectivity-architecture.md).
 - Dowiedz się, jak [zmodyfikować istniejącą sieć wirtualną dla wystąpienia zarządzanego](sql-database-managed-instance-configure-vnet-subnet.md).
-- Aby uzyskać samouczek, który pokazuje, jak utworzyć sieć wirtualną, utworzyć wystąpienie zarządzane i przywrócić bazę danych z kopii zapasowej bazy danych, zobacz [Tworzenie wystąpienia usługi Azure SQL Database Managed](sql-database-managed-instance-get-started.md).
-- W przypadku problemów DNS, zobacz [Konfigurowanie niestandardowych DNS](sql-database-managed-instance-custom-dns.md).
+- Samouczek pokazujący sposób tworzenia sieci wirtualnej, tworzenia wystąpienia zarządzanego i przywracania bazy danych z kopii zapasowej bazy danych znajduje się w temacie [tworzenie Azure SQL Database wystąpienia zarządzanego](sql-database-managed-instance-get-started.md).
+- W przypadku problemów z usługą DNS zobacz [Konfigurowanie niestandardowego serwera DNS](sql-database-managed-instance-custom-dns.md).

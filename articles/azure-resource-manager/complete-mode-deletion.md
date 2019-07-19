@@ -1,1286 +1,1535 @@
 ---
-title: Usługi Azure Resource Manager w trybie usunięcia według typu zasobów
-description: Pokazuje, jak typy zasobów obsługuje usuwania w trybie w szablonach usługi Azure Resource Manager.
+title: Azure Resource Manager usuwania trybu pełnego według typu zasobu
+description: Pokazuje, jak typy zasobów obsługują usuwanie w trybie pełnym w szablonach Azure Resource Manager.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 04/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: 21b3972a96c1601b15c403275474d58873753b08
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ac442c0ae1e397fd1e8b58fdbcf61eb8712046c
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64712995"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302840"
 ---
-# <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Usuwanie zasobów platformy Azure w przypadku wdrożeń w trybie
-W tym artykule opisano, jak typy zasobów obsługuje usuwania, gdy nie w szablonie, które zostało wdrożone w trybie.
+# <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Usuwanie zasobów platformy Azure na potrzeby wdrożeń w trybie pełnym
+W tym artykule opisano sposób, w jaki typy zasobów obsługują usuwanie, gdy nie znajduje się w szablonie wdrożonym w trybie kompletnym.
 
-Typy zasobów oznaczone `Yes` są usuwane, gdy typ nie jest w szablonie wdrażane w trybie. 
+Typy zasobów oznaczone za pomocą `Yes` są usuwane, gdy typ nie znajduje się w szablonie wdrożonym z trybem kompletnym. 
 
-Typy zasobów oznaczone `No` nie są automatycznie usuwane nie w tym szablonie; jednak są one usunięte usunięcie zasobu nadrzędnego. Aby uzyskać pełny opis zachowania, zobacz [tryby wdrażania usługi Azure Resource Manager](deployment-modes.md).
+Typy zasobów oznaczone atrybutem `No` nie są automatycznie usuwane, gdy nie znajdują się w szablonie, jednak są usuwane, jeśli zasób nadrzędny zostanie usunięty. Pełny opis zachowania można znaleźć w temacie [Azure Resource Manager Modes Deployments](deployment-modes.md).
 
-Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobierz [ukończenia — tryb deletion.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/complete-mode-deletion.csv).
 
 ## <a name="microsoftaad"></a>Microsoft.AAD
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| DomainServices | Tak | 
-| DomainServices/oucontainer | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | DomainServices | Yes | 
+> | DomainServices/oucontainer | Nie | 
 
 ## <a name="microsoftaadiam"></a>microsoft.aadiam
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| diagnosticSettings | Nie | 
-| diagnosticSettingsCategories | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | diagnosticSettings | Nie | 
+> | diagnosticSettingsCategories | Nie | 
 
 ## <a name="microsoftaddons"></a>Microsoft.Addons
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| supportProviders | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | supportProviders | Nie | 
 
 ## <a name="microsoftadhybridhealthservice"></a>Microsoft.ADHybridHealthService
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| aadsupportcases | Nie | 
-| addsservices | Nie | 
-| Agenci | Nie | 
-| anonymousapiusers | Nie | 
-| konfiguracja | Nie | 
-| logs | Nie | 
-| raporty | Nie | 
-| services | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | aadsupportcases | Nie | 
+> | addsservices | Nie | 
+> | pracownicy | Nie | 
+> | anonymousapiusers | Nie | 
+> | konfiguracja | Nie | 
+> | logs | Nie | 
+> | raporty | Nie | 
+> | services | Nie | 
 
 ## <a name="microsoftadvisor"></a>Microsoft.Advisor
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Konfiguracje | Nie | 
-| generateRecommendations | Nie | 
-| Zalecenia | Nie | 
-| pominięć | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | komputerów | Nie | 
+> | generateRecommendations | Nie | 
+> | Zalecenia | Nie | 
+> | pominięć | Nie | 
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| actionRules | Nie | 
-| alerts | Nie | 
-| alertsList | Nie | 
-| alertsSummary | Nie | 
-| alertsSummaryList | Nie | 
-| smartDetectorAlertRules | Nie | 
-| smartDetectorRuntimeEnvironments | Nie | 
-| smartGroups | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | actionRules | Nie | 
+> | alerts | Nie | 
+> | alertsList | Nie | 
+> | alertsSummary | Nie | 
+> | alertsSummaryList | Nie | 
+> | smartDetectorAlertRules | Nie | 
+> | smartDetectorRuntimeEnvironments | Nie | 
+> | smartGroups | Nie | 
 
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Serwery | Tak | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | Serwerem | Tak | 
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| reportFeedback | Nie | 
-| usługa | Yes | 
-| validateServiceName | Nie | 
 
-## <a name="microsoftattestation"></a>Microsoft.Attestation
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| attestationProviders | Nie | 
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | reportFeedback | Nie | 
+> | usługa | Tak | 
+> | validateServiceName | Nie | 
+
+## <a name="microsoftattestation"></a>Microsoft. zaświadczanie
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | attestationProviders | Nie | 
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| classicAdministrators | Nie | 
-| denyAssignments | Nie | 
-| elevateAccess | Nie | 
-| Blokady | Nie | 
-| uprawnienia | Nie | 
-| policyAssignments | Nie | 
-| policyDefinitions | Nie | 
-| policySetDefinitions | Nie | 
-| providerOperations | Nie | 
-| Liczba przypisań ról | Nie | 
-| roleDefinitions | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | classicAdministrators | Nie | 
+> | denyAssignments | Nie | 
+> | elevateAccess | Nie | 
+> | Zamki | Nie | 
+> | uprawnienia | Nie | 
+> | policyAssignments | Nie | 
+> | policyDefinitions | Nie | 
+> | policySetDefinitions | Nie | 
+> | providerOperations | Nie | 
+> | roleAssignments | Nie | 
+> | roleDefinitions | Nie | 
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| automationAccounts | Yes | 
-| automationAccounts/configurations | Tak | 
-| automationAccounts/zadań | Nie | 
-| automationAccounts/runbooks | Tak | 
-| automationAccounts/softwareUpdateConfigurations | Nie | 
-| automationAccounts/webhooks | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | automationAccounts | Yes | 
+> | automationAccounts/konfiguracje | Tak | 
+> | automationAccounts/zadania | Nie | 
+> | automationAccounts/elementy Runbook | Tak | 
+> | automationAccounts/softwareUpdateConfigurations | Nie | 
+> | automationAccounts/elementy webhook | Nie | 
 
 ## <a name="microsoftazuregeneva"></a>Microsoft.Azure.Geneva
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Środowiska | Nie | 
-| środowiska/kont | Nie | 
-| środowiska/kont/przestrzeni nazw | Nie | 
-| środowiska/kont/przestrzenie nazw/konfiguracji | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | wiejski | Nie | 
+> | środowiska/konta | Nie | 
+> | środowiska/konta/przestrzenie nazw | Nie | 
+> | środowiska/konta/przestrzenie nazw/konfiguracje | Nie | 
 
 ## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| b2cDirectories | Tak | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | b2cDirectories | Tak | 
 
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| rejestracje | Tak | 
-| registrations/customerSubscriptions | Nie | 
-| rejestracje/produktów | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | rejestracje | Tak | 
+> | rejestracje/customerSubscriptions | Nie | 
+> | rejestracje/produkty | Nie | 
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| batchAccounts | Tak | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | batchAccounts | Tak | 
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| billingAccounts | Nie | 
-| billingAccounts/billingProfiles | Nie | 
-| billingAccounts/billingProfiles/billingSubscriptions | Nie | 
-| billingAccounts/billingProfiles/invoices | Nie | 
-| billingAccounts/billingProfiles/invoices/pricesheet | Nie | 
-| billingAccounts/billingProfiles/operationStatus | Nie | 
-| billingAccounts/billingProfiles/paymentMethods | Nie | 
-| billingAccounts/billingProfiles/policies | Nie | 
-| billingAccounts/billingProfiles/pricesheet | Nie | 
-| billingAccounts/billingProfiles/products | Nie | 
-| billingAccounts/billingProfiles/transactions | Nie | 
-| billingAccounts/billingSubscriptions | Nie | 
-| billingAccounts/działów | Nie | 
-| billingAccounts/eligibleOffers | Nie | 
-| billingAccounts/enrollmentAccounts | Nie | 
-| billingAccounts/invoices | Nie | 
-| billingAccounts/invoiceSections | Nie | 
-| billingAccounts/invoiceSections/billingSubscriptions | Nie | 
-| billingAccounts/invoiceSections/billingSubscriptions/transfer | Nie | 
-| billingAccounts/invoiceSections/importRequests | Nie | 
-| billingAccounts/invoiceSections/initiateImportRequest | Nie | 
-| billingAccounts/invoiceSections/initiateTransfer | Nie | 
-| billingAccounts/invoiceSections/operationStatus | Nie | 
-| billingAccounts/invoiceSections/products | Nie | 
-| billingAccounts/invoiceSections/transfers | Nie | 
-| billingAccounts/products | Nie | 
-| billingAccounts/projects | Nie | 
-| billingAccounts/projects/billingSubscriptions | Nie | 
-| billingAccounts/projects/importRequests | Nie | 
-| billingAccounts/projects/initiateImportRequest | Nie | 
-| billingAccounts/projects/operationStatus | Nie | 
-| billingAccounts/projects/products | Nie | 
-| billingAccounts/transakcje | Nie | 
-| billingPeriods | Nie | 
-| BillingPermissions | Nie | 
-| billingProperty | Nie | 
-| BillingRoleAssignments | Nie | 
-| BillingRoleDefinitions | Nie | 
-| CreateBillingRoleAssignment | Nie | 
-| działy | Nie | 
-| enrollmentAccounts | Nie | 
-| importRequests | Nie | 
-| importRequests/acceptImportRequest | Nie | 
-| importRequests/declineImportRequest | Nie | 
-| Faktury | Nie | 
-| Transfery | Nie | 
-| transfery/acceptTransfer | Nie | 
-| transfery/declineTransfer | Nie | 
-| transfers/operationStatus | Nie | 
-| usagePlans | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | billingAccounts | Nie | 
+> | billingAccounts/billingProfiles | Nie | 
+> | billingAccounts/billingProfiles/billingSubscriptions | Nie | 
+> | billingAccounts/billingProfiles/faktury | Nie | 
+> | billingAccounts/billingProfiles/faktury/arkusza cen | Nie | 
+> | billingAccounts/billingProfiles/operationStatus | Nie | 
+> | billingAccounts/billingProfiles/paymentMethods | Nie | 
+> | billingAccounts/billingProfiles/zasady | Nie | 
+> | billingAccounts/billingProfiles/pricesheet | Nie | 
+> | billingAccounts/billingProfiles/produkty | Nie | 
+> | billingAccounts/billingProfiles/Transactions | Nie | 
+> | billingAccounts/billingSubscriptions | Nie | 
+> | billingAccounts/działy | Nie | 
+> | billingAccounts/eligibleOffers | Nie | 
+> | billingAccounts/enrollmentAccounts | Nie | 
+> | billingAccounts/faktury | Nie | 
+> | billingAccounts/invoiceSections | Nie | 
+> | billingAccounts/invoiceSections/billingSubscriptions | Nie | 
+> | billingAccounts/invoiceSections/billingSubscriptions/transfer | Nie | 
+> | billingAccounts/invoiceSections/importRequests | Nie | 
+> | billingAccounts/invoiceSections/initiateImportRequest | Nie | 
+> | billingAccounts/invoiceSections/initiateTransfer | Nie | 
+> | billingAccounts/invoiceSections/operationStatus | Nie | 
+> | billingAccounts/invoiceSections/products | Nie | 
+> | billingAccounts/invoiceSections/transfery | Nie | 
+> | billingAccounts/produkty | Nie | 
+> | billingAccounts/projekty | Nie | 
+> | billingAccounts/projects/billingSubscriptions | Nie | 
+> | billingAccounts/projects/importRequests | Nie | 
+> | billingAccounts/projects/initiateImportRequest | Nie | 
+> | billingAccounts/projects/operationStatus | Nie | 
+> | billingAccounts/projekty/produkty | Nie | 
+> | billingAccounts/transakcje | Nie | 
+> | billingPeriods | Nie | 
+> | BillingPermissions | Nie | 
+> | billingProperty | Nie | 
+> | BillingRoleAssignments | Nie | 
+> | BillingRoleDefinitions | Nie | 
+> | CreateBillingRoleAssignment | Nie | 
+> | działów | Nie | 
+> | enrollmentAccounts | Nie | 
+> | importRequests | Nie | 
+> | importRequests/acceptImportRequest | Nie | 
+> | importRequests/declineImportRequest | Nie | 
+> | faktur | Nie | 
+> | sunięcia | Nie | 
+> | transfery/acceptTransfer | Nie | 
+> | transfery/declineTransfer | Nie | 
+> | transfery/operationStatus | Nie | 
+> | usagePlans | Nie | 
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| mapApis | Tak | 
-| updateCommunicationPreference | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | mapApis | Yes | 
+> | updateCommunicationPreference | Nie | 
 
 ## <a name="microsoftbiztalkservices"></a>Microsoft.BizTalkServices
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| BizTalk | Tak | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | BizTalk | Tak | 
 
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| blueprintAssignments | Nie | 
-| blueprintAssignments/assignmentOperations | Nie | 
-| blueprintAssignments/operations | Nie | 
-| Plany | Nie | 
-| schematy/artefaktów | Nie | 
-| schematy/wersji | Nie | 
-| schematy/wersji/artefaktów | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | blueprintAssignments | Nie | 
+> | blueprintAssignments/assignmentOperations | Nie | 
+> | blueprintAssignments/operacje | Nie | 
+> | plany | Nie | 
+> | plany/artefakty | Nie | 
+> | plany/wersje | Nie | 
+> | plany/wersje/artefakty | Nie | 
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| botServices | Tak | 
-| botServices/kanałów | Nie | 
-| botServices/połączeń | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | botServices | Tak | 
+> | botServices/kanały | Nie | 
+> | botServices/połączenia | Nie | 
 
 ## <a name="microsoftcache"></a>Microsoft.Cache
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Redis | Yes | 
-| RedisConfigDefinition | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | Redis | Tak | 
+> | RedisConfigDefinition | Nie | 
 
 ## <a name="microsoftcapacity"></a>Microsoft.Capacity
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| appliedReservations | Nie | 
-| calculatePrice | Nie | 
-| katalogi | Nie | 
-| commercialReservationOrders | Nie | 
-| reservationOrders | Nie | 
-| reservationOrders/calculateRefund | Nie | 
-| reservationOrders/merge | Nie | 
-| reservationOrders/rezerwacji | Nie | 
-| reservationOrders/reservations/revisions | Nie | 
-| reservationOrders/return | Nie | 
-| reservationOrders/split | Nie | 
-| reservationOrders/wymiany | Nie | 
-| zastrzeżenia | Nie | 
-| Zasoby | Nie | 
-| validateReservationOrder | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | appliedReservations | Nie | 
+> | calculatePrice | Nie | 
+> | wykazy | Nie | 
+> | commercialReservationOrders | Nie | 
+> | reservationOrders | Nie | 
+> | reservationOrders/calculateRefund | Nie | 
+> | reservationOrders/Scal | Nie | 
+> | reservationOrders/rezerwacje | Nie | 
+> | reservationOrders/rezerwacje/poprawki | Nie | 
+> | reservationOrders/Return | Nie | 
+> | reservationOrders/Split | Nie | 
+> | reservationOrders/swap | Nie | 
+> | dokonując | Nie | 
+> | Produkcyjnych | Nie | 
+> | validateReservationOrder | Nie | 
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| edgenodes | Nie | 
-| Profile | Tak | 
-| Profile/punktów końcowych | Tak | 
-| punkty końcowe/profile/customdomains | Nie | 
-| punkty końcowe/profile/źródła | Nie | 
-| validateProbe | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | edgenodes | Nie | 
+> | profiles | Tak | 
+> | Profile/punkty końcowe | Tak | 
+> | Profile/punkty końcowe/customdomains | Nie | 
+> | Profile/punkty końcowe/źródła | Nie | 
+> | validateProbe | Nie | 
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| certificateOrders | Tak | 
-| zamówień certyfikatów/certyfikaty | Nie | 
-| validateCertificateRegistrationInformation | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | certificateOrders | Tak | 
+> | certificateOrders/certyfikaty | Nie | 
+> | validateCertificateRegistrationInformation | Nie | 
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Możliwości | Nie | 
-| domainNames | Nie | 
-| domainNames/funkcji | Nie | 
-| domainNames/internalLoadBalancers | Nie | 
-| domainNames/serviceCertificates | Nie | 
-| domainNames/miejsca | Nie | 
-| domainNames/miejsc/role | Nie | 
-| moveSubscriptionResources | Nie | 
-| operatingSystemFamilies | Nie | 
-| operatingSystems | Nie | 
-| quotas | Nie | 
-| resourceTypes | Nie | 
-| validateSubscriptionMoveAvailability | Nie | 
-| maszyn wirtualnych | Nie | 
-| maszyn wirtualnych/diagnosticSettings | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | możliwość | Nie | 
+> | domainNames | Nie | 
+> | domainNames/możliwości | Nie | 
+> | domainNames/internalLoadBalancers | Nie | 
+> | domainNames/servicecertificates | Nie | 
+> | domainNames/miejsca | Nie | 
+> | domainNames/gniazda/role | Nie | 
+> | moveSubscriptionResources | Nie | 
+> | operatingSystemFamilies | Nie | 
+> | operatingSystems | Nie | 
+> | quotas | Nie | 
+> | resourceTypes | Nie | 
+> | validateSubscriptionMoveAvailability | Nie | 
+> | VirtualMachines | Nie | 
+> | virtualMachines/diagnosticSettings | Nie | 
 
 ## <a name="microsoftclassicinfrastructuremigrate"></a>Microsoft.ClassicInfrastructureMigrate
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| classicInfrastructureResources | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | classicInfrastructureResources | Nie | 
 
 ## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Możliwości | Nie | 
-| expressRouteCrossConnections | Nie | 
-| expressRouteCrossConnections/peerings | Nie | 
-| gatewaySupportedDevices | Nie | 
-| networkSecurityGroups | Nie | 
-| quotas | Nie | 
-| reservedIps | Nie | 
-| virtualNetworks | Nie | 
-| virtualNetworks/remoteVirtualNetworkPeeringProxies | Nie | 
-| virtualNetworks/virtualNetworkPeerings | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | możliwość | Nie | 
+> | expressRouteCrossConnections | Nie | 
+> | expressRouteCrossConnections/peerings | Nie | 
+> | gatewaySupportedDevices | Nie | 
+> | networkSecurityGroups | Nie | 
+> | quotas | Nie | 
+> | reservedIps | Nie | 
+> | virtualNetworks | Nie | 
+> | virtualNetworks/remoteVirtualNetworkPeeringProxies | Nie | 
+> | virtualNetworks/virtualNetworkPeerings | Nie | 
 
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Możliwości | Nie | 
-| Dyski | Nie | 
-| images | Nie | 
-| osImages | Nie | 
-| osPlatformImages | Nie | 
-| publicImages | Nie | 
-| quotas | Nie | 
-| storageAccounts | Nie | 
-| storageAccounts/services | Nie | 
-| storageAccounts/services/diagnosticSettings | Nie | 
-| storageAccounts/vmImages | Nie | 
-| Dozwolona | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | możliwość | Nie | 
+> | Dysku | Nie | 
+> | images | Nie | 
+> | osImages | Nie | 
+> | osPlatformImages | Nie | 
+> | publicImages | Nie | 
+> | quotas | Nie | 
+> | storageAccounts | Nie | 
+> | storageAccounts/usługi | Nie | 
+> | storageAccounts/usługi/diagnosticSettings | Nie | 
+> | storageAccounts/vmImages | Nie | 
+> | vmImages | Nie | 
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| accounts | Yes | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | accounts | Yes | 
 
 ## <a name="microsoftcommerce"></a>Microsoft.Commerce
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Usługi RateCard | Nie | 
-| UsageAggregates | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | RateCard | Nie | 
+> | UsageAggregates | Nie | 
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| availabilitySets | Yes | 
-| Dyski | Tak | 
-| images | Tak | 
-| restorePointCollections | Tak | 
-| restorePointCollections/restorePoints | Nie | 
-| sharedVMImages | Yes | 
-| sharedVMImages/wersji | Tak | 
-| Migawki | Tak | 
-| maszyn wirtualnych | Yes | 
-| maszyn wirtualnych/diagnosticSettings | Nie | 
-| virtualMachines/extensions | Tak | 
-| virtualMachineScaleSets | Tak | 
-| virtualMachineScaleSets/extensions | Nie | 
-| virtualMachineScaleSets/networkInterfaces | Nie | 
-| virtualMachineScaleSets/publicIPAddresses | Nie | 
-| virtualMachineScaleSets/virtualMachines | Nie | 
-| virtualMachineScaleSets/virtualMachines/networkInterfaces | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | availabilitySets | Yes | 
+> | Dysku | Yes | 
+> | images | Tak | 
+> | restorePointCollections | Tak | 
+> | restorePointCollections/restorePoints | Nie | 
+> | sharedVMImages | Tak | 
+> | sharedVMImages/wersje | Yes | 
+> | Migawki | Yes | 
+> | VirtualMachines | Tak | 
+> | virtualMachines/diagnosticSettings | Nie | 
+> | virtualMachines/rozszerzenia | Tak | 
+> | virtualMachineScaleSets | Tak | 
+> | virtualMachineScaleSets/rozszerzenia | Nie | 
+> | virtualMachineScaleSets/networkInterfaces | Nie | 
+> | virtualMachineScaleSets/publicIPAddresses | Nie | 
+> | virtualMachineScaleSets/virtualMachines | Nie | 
+> | virtualMachineScaleSets/virtualMachines/networkInterfaces | Nie | 
 
 ## <a name="microsoftconsumption"></a>Microsoft.Consumption
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| AggregatedCost | Nie | 
-| Salda | Nie | 
-| Budżety | Nie | 
-| Opłaty za | Nie | 
-| CostTags | Nie | 
-| Środki na korzystanie z | Nie | 
-| zdarzenia | Nie | 
-| Prognozy | Nie | 
-| partie | Nie | 
-| Marketplaces | Nie | 
-| Pricesheets | Nie | 
-| Produkty | Nie | 
-| ReservationDetails | Nie | 
-| ReservationRecommendations | Nie | 
-| ReservationSummaries | Nie | 
-| ReservationTransactions | Nie | 
-| `Tags` | Nie | 
-| Warunki | Nie | 
-| UsageDetails | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | AggregatedCost | Nie | 
+> | Salda | Nie | 
+> | Budżety | Nie | 
+> | Odsetk | Nie | 
+> | CostTags | Nie | 
+> | środki | Nie | 
+> | zdarzenia | Nie | 
+> | Prognozy | Nie | 
+> | ilości | Nie | 
+> | Platform handlowych | Nie | 
+> | Pricesheets | Nie | 
+> | wyrobów | Nie | 
+> | ReservationDetails | Nie | 
+> | ReservationRecommendations | Nie | 
+> | ReservationSummaries | Nie | 
+> | ReservationTransactions | Nie | 
+> | `Tags` | Nie | 
+> | Warunki | Nie | 
+> | UsageDetails | Nie | 
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| containerGroups | Tak | 
-| serviceAssociationLinks | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | containerGroups | Tak | 
+> | serviceAssociationLinks | Nie | 
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| rejestry | Yes | 
-| rejestry/kompilacji | Nie | 
-| rejestry/kompilacji/anulować | Nie | 
-| registries/builds/getLogLink | Nie | 
-| registries/buildTasks | Yes | 
-| registries/buildTasks/steps | Nie | 
-| registries/eventGridFilters | Nie | 
-| registries/getBuildSourceUploadUrl | Nie | 
-| registries/GetCredentials | Nie | 
-| registries/importImage | Nie | 
-| rejestry/queueBuild | Nie | 
-| registries/regenerateCredential | Nie | 
-| registries/regenerateCredentials | Nie | 
-| rejestry/replikacji | Yes | 
-| rejestry/przebiegów | Nie | 
-| rejestry/uruchomienia/anulować | Nie | 
-| registries/scheduleRun | Nie | 
-| rejestry/zadań | Tak | 
-| registries/updatePolicies | Nie | 
-| rejestry/elementów webhook | Tak | 
-| registries/webhooks/getCallbackConfig | Nie | 
-| elementy webhook/rejestrów/ping | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | wołuje | Tak | 
+> | rejestry/kompilacje | Nie | 
+> | rejestry/kompilacje/anulowanie | Nie | 
+> | rejestry/kompilacje/getLogLink | Nie | 
+> | rejestry/buildTasks | Yes | 
+> | registries/buildTasks/steps | Nie | 
+> | registries/eventGridFilters | Nie | 
+> | registries/getBuildSourceUploadUrl | Nie | 
+> | rejestry/getpoświadczenia | Nie | 
+> | registries/importImage | Nie | 
+> | rejestry/queueBuild | Nie | 
+> | registries/regenerateCredential | Nie | 
+> | rejestry/regenerateCredentials | Nie | 
+> | rejestry/replikacje | Yes | 
+> | rejestry/uruchomienia | Nie | 
+> | rejestry/uruchomienia/Anuluj | Nie | 
+> | rejestry/scheduleRun | Nie | 
+> | rejestry/zadania | Tak | 
+> | registries/updatePolicies | Nie | 
+> | rejestry/elementy webhook | Tak | 
+> | registries/webhooks/getCallbackConfig | Nie | 
+> | rejestry/elementy webhook/polecenie ping | Nie | 
 
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| containerServices | Tak | 
-| managedClusters | Yes | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | containerServices | Yes | 
+> | managedClusters | Yes | 
 
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| aplikacje | Tak | 
-| updateCommunicationPreference | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | aplikacje | Tak | 
+> | updateCommunicationPreference | Nie | 
 
 ## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| accounts | Yes | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | accounts | Tak | 
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Alerty | Nie | 
-| BillingAccounts | Nie | 
-| Łączniki | Tak | 
-| działy | Nie | 
-| Wymiary | Nie | 
-| enrollmentAccounts | Nie | 
-| Zapytanie | Nie | 
-| register | Nie | 
-| Reportconfigs | Nie | 
-| Raporty | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | Alerty | Nie | 
+> | billingAccounts | Nie | 
+> | Łączniki | Tak | 
+> | działów | Nie | 
+> | Wymiary | Nie | 
+> | enrollmentAccounts | Nie | 
+> | Zapytanie | Nie | 
+> | Zarejestrować | Nie | 
+> | Reportconfigs | Nie | 
+> | Raporty | Nie | 
 
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Koncentratory | Yes | 
-| hubs/authorizationPolicies | Nie | 
-| Koncentratory/łączników | Nie | 
-| Koncentratory/łączników/mapowania | Nie | 
-| hubs/interactions | Nie | 
-| hubs/kpi | Nie | 
-| hubs/links | Nie | 
-| Koncentratory/profile | Nie | 
-| Koncentratory/liczba przypisań ról | Nie | 
-| Koncentratory/role | Nie | 
-| hubs/suggestTypeSchema | Nie | 
-| Koncentratory/widoków | Nie | 
-| hubs/widgetTypes | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | węzłów | Tak | 
+> | Centra/authorizationPolicies | Nie | 
+> | Centra/łączniki | Nie | 
+> | Centra/łączniki/mapowania | Nie | 
+> | Centra/interakcje | Nie | 
+> | hubs/kpi | Nie | 
+> | Centra/linki | Nie | 
+> | Centra/profile | Nie | 
+> | Centra/roleAssignments | Nie | 
+> | Centra/role | Nie | 
+> | hubs/suggestTypeSchema | Nie | 
+> | Centra/widoki | Nie | 
+> | hubs/widgetTypes | Nie | 
 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Zadania | Tak | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | zadania | Tak | 
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| DataBoxEdgeDevices | Yes | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | DataBoxEdgeDevices | Tak | 
 
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Obszary robocze | Yes | 
-| workspaces/virtualNetworkPeerings | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | Obszarów roboczych | Yes | 
+> | workspaces/virtualNetworkPeerings | Nie | 
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| katalogi | Tak | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | wykazy | Tak | 
 
 ## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| connectionManagers | Yes | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | connectionManagers | Tak | 
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| dataFactories | Yes | 
-| dataFactories/diagnosticSettings | Nie | 
-| dataFactorySchema | Nie | 
-| fabryki | Tak | 
-| fabryki/integrationRuntimes | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | Fabryki datafactors | Tak | 
+> | datafactors/diagnosticSettings | Nie | 
+> | dataFactorySchema | Nie | 
+> | fabryki | Tak | 
+> | fabryki/integrationRuntimes | Nie | 
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| accounts | Tak | 
-| accounts/dataLakeStoreAccounts | Nie | 
-| accounts/storageAccounts | Nie | 
-| accounts/storageAccounts/containers | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | accounts | Yes | 
+> | accounts/dataLakeStoreAccounts | Nie | 
+> | konta/storageAccounts | Nie | 
+> | konta/storageAccounts/kontenery | Nie | 
 
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| accounts | Tak | 
-| accounts/eventGridFilters | Nie | 
-| konta/firewallRules | Nie | 
 
-## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| services | Tak | 
-| usługi/projekty | Tak | 
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | accounts | Yes | 
+> | accounts/eventGridFilters | Nie | 
+> | konta/firewallRules | Nie | 
+
+## <a name="microsoftdatamigration"></a>Migracja Microsoft.
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | services | Tak | 
+> | usługi/projekty | Tak | 
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Serwery | Yes | 
-| servers/recoverableServers | Nie | 
-| servers/virtualNetworkRules | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | Serwerem | Tak | 
+> | serwery/recoverableServers | Nie | 
+> | servers/virtualNetworkRules | Nie | 
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Serwery | Tak | 
-| servers/recoverableServers | Nie | 
-| servers/virtualNetworkRules | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | Serwerem | Tak | 
+> | serwery/recoverableServers | Nie | 
+> | servers/virtualNetworkRules | Nie | 
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Serwery | Tak | 
-| serwery/doradców | Nie | 
-| serwery/queryTexts | Nie | 
-| servers/recoverableServers | Nie | 
-| servers/topQueryStatistics | Nie | 
-| servers/virtualNetworkRules | Nie | 
-| serwery/waitStatistics | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | Serwerem | Tak | 
+> | serwery/doradcy | Nie | 
+> | serwery/queryTexts | Nie | 
+> | serwery/recoverableServers | Nie | 
+> | servers/topQueryStatistics | Nie | 
+> | servers/virtualNetworkRules | Nie | 
+> | serwery/waitStatistics | Nie | 
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| IotHubs | Tak | 
-| IotHubs/eventGridFilters | Nie | 
-| ProvisioningServices | Yes | 
-| Sposoby użycia | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | IotHubs | Tak | 
+> | IotHubs/eventGridFilters | Nie | 
+> | ProvisioningServices | Tak | 
+> | użycia | Nie | 
 
 ## <a name="microsoftdevspaces"></a>Microsoft.DevSpaces
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Kontrolery | Tak | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | Rejestrowanie | Tak | 
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Warsztaty | Tak | 
-| labs/serviceRunners | Tak | 
-| laboratoria/maszyn wirtualnych | Yes | 
-| Harmonogramy | Tak | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | Labs | Yes | 
+> | labs/serviceRunners | Yes | 
+> | Labs/virtualMachines | Tak | 
+> | Uruchamianie | Yes | 
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| databaseAccountNames | Nie | 
-| databaseAccounts | Tak | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | databaseAccountNames | Nie | 
+> | databaseAccounts | Tak | 
 
 ## <a name="microsoftdomainregistration"></a>Microsoft.DomainRegistration
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| domeny | Tak | 
-| domeny/domainOwnershipIdentifiers | Nie | 
-| generateSsoRequest | Nie | 
-| topLevelDomains | Nie | 
-| validateDomainRegistrationInformation | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | domeny | Tak | 
+> | domeny/domainOwnershipIdentifiers | Nie | 
+> | generateSsoRequest | Nie | 
+> | topLevelDomains | Nie | 
+> | validateDomainRegistrationInformation | Nie | 
 
 ## <a name="microsoftdynamicslcs"></a>Microsoft.DynamicsLcs
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| lcsprojects | Nie | 
-| lcsprojects/clouddeployments | Nie | 
-| lcsprojects/łączników | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | lcsprojects | Nie | 
+> | lcsprojects/clouddeployments | Nie | 
+> | lcsprojects/łączniki | Nie | 
 
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| domeny | Yes | 
-| domeny/tematów | Nie | 
-| eventSubscriptions | Nie | 
-| extensionTopics | Nie | 
-| Tematy | Tak | 
-| topicTypes | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | domeny | Tak | 
+> | domeny/tematy | Nie | 
+> | eventSubscriptions | Nie | 
+> | extensionTopics | Nie | 
+> | opisano | Tak | 
+> | topicTypes | Nie | 
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Klastry | Tak | 
-| Przestrzenie nazw | Tak | 
-| przestrzenie nazw/reguł autoryzacji | Nie | 
-| przestrzenie nazw/disasterrecoveryconfigs | Nie | 
-| przestrzenie nazw/eventhubs | Nie | 
-| przestrzenie nazw/eventhubs/reguł autoryzacji | Nie | 
-| przestrzenie nazw/eventhubs/consumergroups | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | oparty | Tak | 
+> | Przestrzeni | Tak | 
+> | przestrzenie nazw/reguł autoryzacji | Nie | 
+> | przestrzenie nazw/disasterrecoveryconfigs | Nie | 
+> | przestrzenie nazw/eventhubs | Nie | 
+> | przestrzenie nazw/eventhubs/reguł autoryzacji | Nie | 
+> | przestrzenie nazw/eventhubs/consumergroups | Nie | 
 
 ## <a name="microsoftfeatures"></a>Microsoft.Features
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| danych | Nie | 
-| dostawcy | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | danych | Nie | 
+> | dostawcy | Nie | 
 
 ## <a name="microsoftgallery"></a>Microsoft.Gallery
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Rejestrowanie | Nie | 
-| galleryitems | Nie | 
-| generateartifactaccessuri | Nie | 
-| myareas | Nie | 
-| myareas/obszarów | Nie | 
-| myareas/obszarów/obszarów | Nie | 
-| myareas/areas/areas/galleryitems | Nie | 
-| myareas/areas/galleryitems | Nie | 
-| myareas/galleryitems | Nie | 
-| register | Nie | 
-| Zasoby | Nie | 
-| retrieveresourcesbyid | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | pisaną | Nie | 
+> | galleryitems | Nie | 
+> | generateartifactaccessuri | Nie | 
+> | Moje obszary | Nie | 
+> | Moje obszary/obszary | Nie | 
+> | Moje obszary/obszary/obszary | Nie | 
+> | Moje obszary/obszary/obszary/galleryitems | Nie | 
+> | Moje obszary/obszary/galleryitems | Nie | 
+> | Moje obszary/galleryitems | Nie | 
+> | Zarejestrować | Nie | 
+> | Produkcyjnych | Nie | 
+> | retrieveresourcesbyid | Nie | 
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| guestConfigurationAssignments | Nie | 
-| Oprogramowanie | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | guestConfigurationAssignments | Nie | 
+> | Programy | Nie | 
 
 ## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| hanaInstances | Tak | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | hanaInstances | Yes | 
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Klastry | Tak | 
-| klastry/aplikacji | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | oparty | Tak | 
+> | klastry/aplikacje | Nie | 
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Zadania | Yes | 
 
-## <a name="microsoftinformationprotection"></a>Microsoft.InformationProtection
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| labelGroups | Nie | 
-| labelGroups/etykiety | Nie | 
-| labelGroups/labels/conditions | Nie | 
-| labelGroups/labels/subLabels | Nie | 
-| labelGroups/labels/subLabels/conditions | Nie | 
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | zadania | Yes | 
 
-## <a name="microsoftinsights"></a>microsoft.insights
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| actiongroups | Yes | 
-| activityLogAlerts | Yes | 
-| alertrules | Yes | 
-| automatedExportSettings | Nie | 
-| wartość autoscalesettings | Yes | 
-| Punkt odniesienia | Nie | 
-| calculatebaseline | Nie | 
-| Składniki | Tak | 
-| składniki/zdarzenia | Nie | 
-| składniki/pricingPlans | Nie | 
-| składniki/zapytania | Nie | 
-| diagnosticSettings | Nie | 
-| diagnosticSettingsCategories | Nie | 
-| eventCategories | Nie | 
-| eventtypes | Nie | 
-| extendedDiagnosticSettings | Nie | 
-| logDefinitions | Nie | 
-| logprofiles | Nie | 
-| logs | Nie | 
-| metricAlerts | Tak |
-| migrateToNewPricingModel | Nie | 
-| myWorkbooks | Nie | 
-| — zapytania | Nie | 
-| rollbackToLegacyPricingModel | Nie | 
-| scheduledqueryrules | Tak | 
-| vmInsightsOnboardingStatuses | Nie | 
-| testy internetowe | Yes | 
-| Skoroszyty | Yes | 
+## <a name="microsoftinformationprotection"></a>Microsoft. InformationProtection
 
-## <a name="microsoftintune"></a>Microsoft.Intune
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| diagnosticSettings | Nie | 
-| diagnosticSettingsCategories | Nie | 
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | labelGroups | Nie | 
+> | labelGroups/etykiety | Nie | 
+> | labelGroups/etykiety/warunki | Nie | 
+> | labelGroups/etykiety/etykiety | Nie | 
+> | labelGroups/labels/subLabels/conditions | Nie | 
+
+## <a name="microsoftinsights"></a>Microsoft. Insights
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | actiongroups | Yes | 
+> | activityLogAlerts | Tak | 
+> | alertrules | Tak | 
+> | automatedExportSettings | Nie | 
+> | autoscalesettings | Yes | 
+> | punkcie | Nie | 
+> | calculatebaseline | Nie | 
+> | Komponentów | Tak | 
+> | składniki/zdarzenia | Nie | 
+> | składniki/pricingPlans | Nie | 
+> | składniki/zapytanie | Nie | 
+> | diagnosticSettings | Nie | 
+> | diagnosticSettingsCategories | Nie | 
+> | eventCategories | Nie | 
+> | Typ zdarzenia | Nie | 
+> | extendedDiagnosticSettings | Nie | 
+> | logDefinitions | Nie | 
+> | logprofiles | Nie | 
+> | logs | Nie | 
+> | metricAlerts | Tak |
+> | migrateToNewPricingModel | Nie | 
+> | Moje skoroszyty | Nie | 
+> | — zapytania | Nie | 
+> | rollbackToLegacyPricingModel | Nie | 
+> | scheduledqueryrules | Yes | 
+> | vmInsightsOnboardingStatuses | Nie | 
+> | testów internetowych | Tak | 
+> | Otwiera | Tak | 
+
+## <a name="microsoftintune"></a>Microsoft. Intune
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | diagnosticSettings | Nie | 
+> | diagnosticSettingsCategories | Nie | 
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| IoTApps | Yes | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | IoTApps | Yes | 
 
 ## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Graph | Tak | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | Graph | Tak | 
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| deletedVaults | Nie | 
-| Magazyny | Tak | 
-| Magazyny/accessPolicies | Nie | 
-| Magazyny/klucze tajne | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | deletedVaults | Nie | 
+> | magazynów | Yes | 
+> | magazyny/accessPolicies | Nie | 
+> | magazyny/wpisy tajne | Nie | 
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Klastry | Tak | 
-| klastry/baz danych | Nie | 
-| klastry/baz danych/połączeń danych | Nie | 
-| klastry/baz danych/eventhubconnections | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | oparty | Yes | 
+> | klastry/bazy danych | Nie | 
+> | klastry/bazy danych/połączenia Databases | Nie | 
+> | klastry/bazy danych/eventhubconnections | Nie | 
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| labaccounts | Tak | 
-| użytkownicy | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | labaccounts | Yes | 
+> | użytkownicy | Nie | 
 
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| accounts | Tak | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | accounts | Tak | 
 
 ## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| accounts | Tak | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | accounts | Yes | 
 
 ## <a name="microsoftloganalytics"></a>Microsoft.LogAnalytics
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| logs | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | logs | Nie | 
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| integrationAccounts | Tak | 
-| Przepływy pracy | Yes | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | integrationAccounts | Tak | 
+> | przebieg | Tak | 
 
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| commitmentPlans | Tak | 
-| webServices | Tak | 
-| Obszary robocze | Tak | 
 
-## <a name="microsoftmachinelearningexperimentation"></a>Microsoft.MachineLearningExperimentation
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| accounts | Tak | 
-| konta/obszarów roboczych | Tak | 
-| obszary robocze/kont/projektów | Tak | 
-| teamAccounts | Tak | 
-| teamAccounts/obszarów roboczych | Yes | 
-| obszary robocze/teamAccounts/projektów | Tak | 
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | commitmentPlans | Tak | 
+> | webServices | Tak | 
+> | Obszary robocze | Tak | 
+
+## <a name="microsoftmachinelearningexperimentation"></a>Microsoft. MachineLearningExperimentation
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | accounts | Yes | 
+> | konta/obszary robocze | Yes | 
+> | konta/obszary robocze/projekty | Tak | 
+> | teamAccounts | Tak | 
+> | teamAccounts/obszary robocze | Yes | 
+> | teamAccounts/obszary robocze/projekty | Yes | 
 
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| accounts | Tak | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | accounts | Tak | 
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Obszary robocze | Tak | 
-| obszary robocze/usługi obliczeniowe | Nie | 
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | Obszarów roboczych | Tak | 
+> | obszary robocze/obliczenia | Nie | 
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Tożsamości | Nie | 
-| userAssignedIdentities | Tak | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | Osob | Nie | 
+> | Resourceidentity | Tak | 
 
 ## <a name="microsoftmanagement"></a>Microsoft.Management
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| getEntities | Nie | 
-| managementGroups | Nie | 
-| Zasoby | Nie | 
-| startTenantBackfill | Nie | 
-| tenantBackfillStatus | Nie | 
 
-## <a name="microsoftmaps"></a>Microsoft.Maps
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| accounts | Yes | 
-| accounts/eventGridFilters | Nie | 
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | getentities | Nie | 
+> | managementGroups | Nie | 
+> | Produkcyjnych | Nie | 
+> | startTenantBackfill | Nie | 
+> | tenantBackfillStatus | Nie | 
+
+## <a name="microsoftmaps"></a>Microsoft. Maps
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | accounts | Yes | 
+> | accounts/eventGridFilters | Nie | 
 
 ## <a name="microsoftmarketplace"></a>Microsoft.Marketplace
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Oferty | Nie | 
-| offerTypes | Nie | 
-| offerTypes/wydawcy | Nie | 
-| wydawcy/offerTypes/oferty | Nie | 
-| offerTypes/wydawcy/oferty/plany | Nie | 
-| offerTypes/wydawcy/oferty/planów/umowy | Nie | 
-| offerTypes/publishers/offers/plans/configs | Nie | 
-| offerTypes/publishers/offers/plans/configs/importImage | Nie | 
-| privategalleryitems | Nie | 
-| Produkty | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | Otrzymane | Nie | 
+> | offerTypes | Nie | 
+> | offerTypes/wydawcy | Nie | 
+> | offerTypes/wydawcy/oferty | Nie | 
+> | offerTypes/wydawcy/oferty/plany | Nie | 
+> | offerTypes/wydawcy/oferty/plany/umowy | Nie | 
+> | offerTypes/wydawcy/oferty/plany/konfiguracje | Nie | 
+> | offerTypes/publishers/offers/plans/configs/importImage | Nie | 
+> | privategalleryitems | Nie | 
+> | wyrobów | Nie | 
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| classicDevServices | Tak | 
-| updateCommunicationPreference | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | classicDevServices | Yes | 
+> | updateCommunicationPreference | Nie | 
 
 ## <a name="microsoftmarketplaceordering"></a>Microsoft.MarketplaceOrdering
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Umowy | Nie | 
-| offertypes | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | kontrakt | Nie | 
+> | offertypes | Nie | 
 
 ## <a name="microsoftmedia"></a>Microsoft.Media
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| mediaservices | Tak | 
-| mediaservices/accountFilters | Nie | 
-| mediaservices/zasobów | Nie | 
-| zasobów/mediaservices/assetFilters | Nie | 
-| mediaservices/contentKeyPolicies | Nie | 
-| mediaservices/eventGridFilters | Nie | 
-| mediaservices/liveEventOperations | Nie | 
-| mediaservices/liveEvents | Tak | 
-| mediaservices/liveEvents/liveOutputs | Nie | 
-| mediaservices/liveOutputOperations | Nie | 
-| mediaservices/streamingEndpointOperations | Nie | 
-| mediaservices/punkty | Tak | 
-| mediaservices/streamingLocators | Nie | 
-| mediaservices/streamingPolicies | Nie | 
-| mediaservices/przekształceń | Nie | 
-| zadania mediaservices/przekształceń | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | MediaServices | Yes | 
+> | MediaServices/accountFilters | Nie | 
+> | MediaServices/zasoby | Nie | 
+> | MediaServices/assetFilters | Nie | 
+> | MediaServices/contentKeyPolicies | Nie | 
+> | MediaServices/eventGridFilters | Nie | 
+> | mediaservices/liveEventOperations | Nie | 
+> | MediaServices/liveEvents | Tak | 
+> | MediaServices/liveEvents/liveOutputs | Nie | 
+> | MediaServices/liveOutputOperations | Nie | 
+> | MediaServices/streamingEndpointOperations | Nie | 
+> | MediaServices/streamingEndpoints | Tak | 
+> | MediaServices/streamingLocators | Nie | 
+> | MediaServices/streamingPolicies | Nie | 
+> | MediaServices/transformacje | Nie | 
+> | MediaServices/transformacje/zadania | Nie | 
 
 ## <a name="microsoftmigrate"></a>Microsoft.Migrate
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Projekty | Yes | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | projektami | Yes | 
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| applicationGateways | Tak | 
-| applicationSecurityGroups | Tak | 
-| azureFirewallFqdnTags | Nie | 
-| azureFirewalls | Yes | 
-| bgpServiceCommunities | Nie | 
-| Połączenia | Yes | 
-| ddosCustomPolicies | Tak | 
-| ddosProtectionPlans | Tak | 
-| dnsOperationStatuses | Nie | 
-| dnszones | Tak | 
-| dnszones/A | Nie | 
-| dnszones/AAAA | Nie | 
-| dnszones/all | Nie | 
-| dnszones/CAA | Nie | 
-| dnszones/CNAME | Nie | 
-| dnszones/MX | Nie | 
-| dnszones/NS | Nie | 
-| dnszones/PTR | Nie | 
-| dnszones/recordsets | Nie | 
-| dnszones/SOA | Nie | 
-| dnszones/SRV | Nie | 
-| dnszones/TXT | Nie | 
-| expressRouteCircuits | Yes | 
-| expressRouteServiceProviders | Nie | 
-| frontdoors | Yes | 
-| frontdoorWebApplicationFirewallPolicies | Yes | 
-| getDnsResourceReference | Nie | 
-| interfaceEndpoints | Yes | 
-| internalNotify | Nie | 
-| loadBalancers | Tak | 
-| localNetworkGateways | Tak | 
-| natGateways | Tak | 
-| networkIntentPolicies | Tak | 
-| Interfejsy | Tak | 
-| networkProfiles | Tak | 
-| networkSecurityGroups | Tak | 
-| networkWatchers | Yes | 
-| networkWatchers/connectionMonitors | Tak | 
-| networkWatchers/lenses | Yes | 
-| networkWatchers/pingMeshes | Tak | 
-| privateLinkServices | Yes | 
-| publicIPAddresses | Tak | 
-| publicIPPrefixes | Tak | 
-| routeFilters | Tak | 
-| routeTables | Tak | 
-| serviceEndpointPolicies | Tak | 
-| trafficManagerGeographicHierarchies | Nie | 
-| trafficmanagerprofiles | Yes | 
-| trafficmanagerprofiles/heatMaps | Nie | 
-| virtualHubs | Yes | 
-| virtualNetworkGateways | Tak | 
-| virtualNetworks | Yes | 
-| virtualNetworkTaps | Tak | 
-| virtualWans | Yes | 
-| vpnGateways | Tak | 
-| vpnSites | Tak | 
-| webApplicationFirewallPolicies | Tak | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | applicationGateways | Yes | 
+> | applicationSecurityGroups | Tak | 
+> | azureFirewallFqdnTags | Nie | 
+> | azureFirewalls | Tak | 
+> | bgpServiceCommunities | Nie | 
+> | Licznik | Tak | 
+> | ddosCustomPolicies | Tak | 
+> | ddosProtectionPlans | Tak | 
+> | dnsOperationStatuses | Nie | 
+> | dnszones | Tak | 
+> | dnszones/A | Nie | 
+> | dnszones/AAAA | Nie | 
+> | dnszones/wszystkie | Nie | 
+> | dnszones/CAA | Nie | 
+> | dnszones/CNAME | Nie | 
+> | dnszones/MX | Nie | 
+> | dnszones/NS | Nie | 
+> | dnszones/PTR | Nie | 
+> | dnszones/zestawy rekordów | Nie | 
+> | dnszones/SOA | Nie | 
+> | dnszones/SRV | Nie | 
+> | dnszones/TXT | Nie | 
+> | expressRouteCircuits | Yes | 
+> | expressRouteServiceProviders | Nie | 
+> | usługi frontdoor | Yes | 
+> | frontdoorWebApplicationFirewallPolicies | Yes | 
+> | getDnsResourceReference | Nie | 
+> | interfaceEndpoints | Yes | 
+> | internalNotify | Nie | 
+> | loadBalancers | Tak | 
+> | localNetworkGateways | Tak | 
+> | natGateways | Tak | 
+> | networkIntentPolicies | Yes | 
+> | networkInterfaces | Yes | 
+> | networkProfiles | Tak | 
+> | networkSecurityGroups | Tak | 
+> | networkWatchers | Tak | 
+> | networkWatchers/connectionMonitors | Tak | 
+> | networkWatchers/soczewki | Yes | 
+> | networkWatchers/pingMeshes | Tak | 
+> | privateLinkServices | Tak | 
+> | publicIPAddresses | Tak | 
+> | publicIPPrefixes | Tak | 
+> | routeFilters | Tak | 
+> | routeTables | Yes | 
+> | serviceEndpointPolicies | Tak | 
+> | trafficManagerGeographicHierarchies | Nie | 
+> | trafficmanagerprofiles | Yes | 
+> | trafficmanagerprofiles/map cieplnych | Nie | 
+> | virtualHubs | Tak | 
+> | virtualNetworkGateways | Tak | 
+> | virtualNetworks | Yes | 
+> | virtualNetworkTaps | Yes | 
+> | virtualWans | Tak | 
+> | vpnGateways | Tak | 
+> | vpnSites | Tak | 
+> | webApplicationFirewallPolicies | Yes | 
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Przestrzenie nazw | Yes | 
-| namespaces/notificationHubs | Tak | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | Przestrzeni | Yes | 
+> | przestrzenie nazw/notificationHubs | Tak | 
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| urządzenia | Nie | 
-| linkTargets | Nie | 
-| storageInsightConfigs | Nie | 
-| Obszary robocze | Tak | 
-| workspaces/dataSources | Nie | 
-| workspaces/linkedServices | Nie | 
-| workspaces/query | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | urządzenia | Nie | 
+> | linkTargets | Nie | 
+> | storageInsightConfigs | Nie | 
+> | Obszarów roboczych | Yes | 
+> | obszary robocze/źródła danych | Nie | 
+> | workspaces/linkedServices | Nie | 
+> | obszary robocze/zapytanie | Nie | 
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| managementassociations | Nie | 
-| managementconfigurations | Yes | 
-| rozwiązania | Tak | 
-| Widoki | Yes | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | managementassociations | Nie | 
+> | managementconfigurations | Tak | 
+> | rozwiązania | Tak | 
+> | Widoki | Yes | 
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| policyEvents | Nie | 
-| policyStates | Nie | 
-| policyTrackedResources | Nie | 
-| korygowania funkcję | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | policyEvents | Nie | 
+> | policyStates | Nie | 
+> | policyTrackedResources | Nie | 
+> | korygowania | Nie | 
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| konsole | Nie | 
-| Pulpity nawigacyjne | Tak | 
-| userSettings | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | konsol | Nie | 
+> | Pulpitów nawigacyjnych | Tak | 
+> | userSettings | Nie | 
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| workspaceCollections | Yes | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | workspaceCollections | Yes | 
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Pojemności | Tak | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | produkcyjnych | Tak | 
 
 ## <a name="microsoftprojectoxford"></a>Microsoft.ProjectOxford
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| accounts | Yes | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | accounts | Tak | 
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| backupProtectedItems | Nie | 
-| Magazyny | Tak | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | backupProtectedItems | Nie | 
+> | magazynów | Tak | 
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Przestrzenie nazw | Tak | 
-| przestrzenie nazw/reguł autoryzacji | Nie | 
-| przestrzenie nazw/hybridconnections | Nie | 
-| przestrzenie nazw/hybridconnections/reguł autoryzacji | Nie | 
-| namespaces/wcfrelays | Nie | 
-| przestrzenie nazw/wcfrelays/reguł autoryzacji | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | Przestrzeni | Yes | 
+> | przestrzenie nazw/reguł autoryzacji | Nie | 
+> | przestrzenie nazw/hybridconnections | Nie | 
+> | przestrzenie nazw/hybridconnections/reguł autoryzacji | Nie | 
+> | przestrzenie nazw/wcfrelays | Nie | 
+> | przestrzenie nazw/wcfrelays/reguł autoryzacji | Nie | 
 
 ## <a name="microsoftresourcegraph"></a>Microsoft.ResourceGraph
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Zasoby | Nie | 
-| subscriptionsStatus | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | Produkcyjnych | Nie | 
+> | subscriptionsStatus | Nie | 
 
 ## <a name="microsoftresourcehealth"></a>Microsoft.ResourceHealth
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| availabilityStatuses | Nie | 
-| childAvailabilityStatuses | Nie | 
-| childResources | Nie | 
-| zdarzenia | Nie | 
-| impactedResources | Nie | 
-| Powiadomienia | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | availabilityStatuses | Nie | 
+> | childAvailabilityStatuses | Nie | 
+> | childResources | Nie | 
+> | zdarzenia | Nie | 
+> | impactedResources | Nie | 
+> | Złożone | Nie | 
 
 ## <a name="microsoftresources"></a>Microsoft.Resources
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Wdrożenia | Nie | 
-| Wdrożenia/operations | Nie | 
-| Łącza | Nie | 
-| notifyResourceJobs | Nie | 
-| dostawcy | Nie | 
-| resourceGroups | Nie | 
-| Zasoby | Nie | 
-| Subskrypcje | Nie | 
-| Subskrypcje/dostawców | Nie | 
-| subscriptions/resourceGroups | Nie | 
-| zasobów/resourcegroups/subskrypcji | Nie | 
-| Zasobów/subskrypcji | Nie | 
-| subscriptions/tagnames | Nie | 
-| subscriptions/tagNames/tagValues | Nie | 
-| Dzierżaw | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | komputerów | Nie | 
+> | wdrożenia/operacje | Nie | 
+> | linki | Nie | 
+> | notifyResourceJobs | Nie | 
+> | dostawcy | Nie | 
+> | resourceGroups | Nie | 
+> | Produkcyjnych | Nie | 
+> | opłaty | Nie | 
+> | subskrypcje/dostawcy | Nie | 
+> | subskrypcje/resourceGroups | Nie | 
+> | subskrypcje/ResourceGroups/zasoby | Nie | 
+> | subskrypcje/zasoby | Nie | 
+> | subskrypcje/TagName | Nie | 
+> | subscriptions/tagNames/tagValues | Nie | 
+> | dzierżaw | Nie | 
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| aplikacje | Tak | 
-| saasresources | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | aplikacje | Tak | 
+> | saasresources | Nie | 
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| przepływy | Tak | 
-| kolekcjach | Yes | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | przekazywania | Tak | 
+> | jobcollections | Tak | 
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| resourceHealthMetadata | Nie | 
-| searchServices | Tak | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | resourceHealthMetadata | Nie | 
+> | searchServices | Tak | 
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| advancedThreatProtectionSettings | Nie | 
-| alerts | Nie | 
-| allowedConnections | Nie | 
-| urządzenia | Nie | 
-| applicationWhitelistings | Nie | 
-| AutoProvisioningSettings | Nie | 
-| Zachowania zgodności z prawnymi | Nie | 
-| dataCollectionAgents | Nie | 
-| discoveredSecuritySolutions | Nie | 
-| externalSecuritySolutions | Nie | 
-| InformationProtectionPolicies | Nie | 
-| jitNetworkAccessPolicies | Nie | 
-| Monitorowanie | Nie | 
-| monitorowanie/ochrony przed złośliwym kodem | Nie | 
-| monitorowanie/punkt odniesienia | Nie | 
-| monitorowanie poprawki | Nie | 
-| Zasady | Nie | 
-| cen | Nie | 
-| securityContacts | Nie | 
-| securitySolutions | Nie | 
-| securitySolutionsReferenceData | Nie | 
-| securityStatus | Nie | 
-| securityStatus/punktów końcowych | Nie | 
-| securityStatus/subnets | Nie | 
-| securityStatus/maszyn wirtualnych | Nie | 
-| securityStatuses | Nie | 
-| securityStatusesSummaries | Nie | 
-| settings | Nie | 
-| zadania | Nie | 
-| Topologie | Nie | 
-| workspaceSettings | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | advancedThreatProtectionSettings | Nie | 
+> | alerts | Nie | 
+> | allowedConnections | Nie | 
+> | gotowania | Nie | 
+> | applicationWhitelistings | Nie | 
+> | AutoProvisioningSettings | Nie | 
+> | Zachowania zgodności prawnymi | Nie | 
+> | dataCollectionAgents | Nie | 
+> | discoveredSecuritySolutions | Nie | 
+> | externalSecuritySolutions | Nie | 
+> | InformationProtectionPolicies | Nie | 
+> | jitNetworkAccessPolicies | Nie | 
+> | Kontrolą | Nie | 
+> | monitorowanie/złośliwe oprogramowanie | Nie | 
+> | monitorowanie/linia bazowa | Nie | 
+> | monitorowanie/poprawka | Nie | 
+> | Jazd | Nie | 
+> | cen | Nie | 
+> | securityContacts | Nie | 
+> | securitySolutions | Nie | 
+> | securitySolutionsReferenceData | Nie | 
+> | securityStatus | Nie | 
+> | securityStatus/punkty końcowe | Nie | 
+> | securityStatus/podsieci | Nie | 
+> | securityStatus/virtualMachines | Nie | 
+> | securityStatuses | Nie | 
+> | securityStatusesSummaries | Nie | 
+> | settings | Nie | 
+> | zadania | Nie | 
+> | replikacji | Nie | 
+> | workspaceSettings | Nie | 
 
 ## <a name="microsoftsecuritygraph"></a>Microsoft.SecurityGraph
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| diagnosticSettings | Nie | 
-| diagnosticSettingsCategories | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | diagnosticSettings | Nie | 
+> | diagnosticSettingsCategories | Nie | 
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Przestrzenie nazw | Tak | 
-| przestrzenie nazw/reguł autoryzacji | Nie | 
-| przestrzenie nazw/disasterrecoveryconfigs | Nie | 
-| przestrzenie nazw/eventgridfilters | Nie | 
-| namespaces/queues | Nie | 
-| przestrzenie nazw/kolejki/reguł autoryzacji | Nie | 
-| przestrzenie nazw/tematów | Nie | 
-| przestrzenie nazw/tematów/reguł autoryzacji | Nie | 
-| przestrzenie nazw/tematów/subskrypcji | Nie | 
-| przestrzenie nazw/tematów/subskrypcji/reguły | Nie | 
-| premiumMessagingRegions | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | Przestrzeni | Yes | 
+> | przestrzenie nazw/reguł autoryzacji | Nie | 
+> | przestrzenie nazw/disasterrecoveryconfigs | Nie | 
+> | przestrzenie nazw/eventgridfilters | Nie | 
+> | przestrzenie nazw/kolejki | Nie | 
+> | przestrzenie nazw/kolejki/reguł autoryzacji | Nie | 
+> | obszary nazw/tematy | Nie | 
+> | przestrzenie nazw/tematy/reguł autoryzacji | Nie | 
+> | obszary nazw/tematy/subskrypcje | Nie | 
+> | obszary nazw/tematy/subskrypcje/reguły | Nie | 
+> | premiumMessagingRegions | Nie | 
 
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Klastry | Tak | 
-| klastry/aplikacji | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | oparty | Yes | 
+> | klastry/aplikacje | Nie | 
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| aplikacje | Tak | 
-| Bramy | Tak | 
-| Sieci | Yes | 
-| wpisy tajne | Yes | 
-| volumes | Tak | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | aplikacje | Tak | 
+> | bram | Tak | 
+> | sieci | Tak | 
+> | wpisy tajne | Yes | 
+> | volumes | Tak | 
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| SignalR | Tak | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | SignalR | Yes | 
 
 ## <a name="microsoftsolutions"></a>Microsoft.Solutions
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| applianceDefinitions | Yes | 
-| urządzenia | Tak | 
-| applicationDefinitions | Yes | 
-| aplikacje | Tak | 
-| jitRequests | Yes | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | applianceDefinitions | Tak | 
+> | gotowania | Yes | 
+> | applicationDefinitions | Tak | 
+> | aplikacje | Tak | 
+> | jitRequests | Yes | 
 
 ## <a name="microsoftsql"></a>Microsoft.SQL
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| managedInstances | Tak |
-| managedInstances/baz danych | Tak (zobacz uwaga poniżej) |
-| managedInstances/databases/backupShortTermRetentionPolicies | Nie |
-| managedInstances/databases/schemas/tables/columns/sensitivityLabels | Nie |
-| managedInstances/databases/vulnerabilityAssessments | Nie |
-| managedInstances/databases/vulnerabilityAssessments/rules/baselines | Nie |
-| managedInstances/encryptionProtector | Nie |
-| managedInstances/kluczy | Nie |
-| managedInstances/restorableDroppedDatabases/backupShortTermRetentionPolicies | Nie |
-| managedInstances/vulnerabilityAssessments | Nie |
-| Serwery | Tak | 
-| serwery/administratorów | Nie | 
-| serwery/communicationLinks | Nie | 
-| serwery/baz danych | Tak (zobacz uwaga poniżej) | 
-| servers/encryptionProtector | Nie | 
-| serwery/firewallRules | Nie | 
-| serwery/kluczy | Nie | 
-| servers/restorableDroppedDatabases | Nie | 
-| serwery/serviceobjectives | Nie | 
-| serwery/tdeCertificates | Nie | 
 
-> [!NOTE]
-> Wzorzec bazy danych nie obsługuje tagi, ale innych baz danych, w tym w przypadku baz danych magazynu danych obsługuje tagi.
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | managedInstances | Tak |
+> | managedInstances/bazy danych | Tak |
+> | managedInstances/databases/backupShortTermRetentionPolicies | Nie |
+> | managedInstances/bazy danych/schematy/tabele/kolumny/sensitivityLabels | Nie |
+> | managedInstances/Databases/vulnerabilityAssessments | Nie |
+> | managedInstances/bazy danych/vulnerabilityAssessments/reguły/linie bazowe | Nie |
+> | managedInstances/encryptionProtector | Nie |
+> | managedInstances/klucze | Nie |
+> | managedInstances/restorableDroppedDatabases/backupShortTermRetentionPolicies | Nie |
+> | managedInstances/vulnerabilityAssessments | Nie |
+> | Serwerem | Tak | 
+> | serwery/Administratorzy | Nie | 
+> | serwery/communicationLinks | Nie | 
+> | Serwery/bazy danych | Tak | 
+> | serwery/encryptionProtector | Nie | 
+> | serwery/firewallRules | Nie | 
+> | serwery/klucze | Nie | 
+> | servers/restorableDroppedDatabases | Nie | 
+> | serwery/cele | Nie | 
+> | serwery/tdeCertificates | Nie | 
 
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| SqlVirtualMachineGroups | Tak | 
-| SqlVirtualMachineGroups/AvailabilityGroupListeners | Nie | 
-| SqlVirtualMachines | Yes | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | SqlVirtualMachineGroups | Tak | 
+> | SqlVirtualMachineGroups/AvailabilityGroupListeners | Nie | 
+> | SqlVirtualMachines | Tak | 
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| storageAccounts | Tak | 
-| storageAccounts/blobServices | Nie | 
-| storageAccounts/fileServices | Nie | 
-| storageAccounts/queueServices | Nie | 
-| storageAccounts/services | Nie | 
-| storageAccounts/tableServices | Nie | 
-| Sposoby użycia | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | storageAccounts | Tak | 
+> | storageAccounts/blobServices | Nie | 
+> | storageAccounts/fileServices | Nie | 
+> | storageAccounts/queueServices | Nie | 
+> | storageAccounts/usługi | Nie | 
+> | storageAccounts/tableServices | Nie | 
+> | użycia | Nie | 
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| storageSyncServices | Yes | 
-| storageSyncServices/registeredServers | Nie | 
-| storageSyncServices/syncGroups | Nie | 
-| storageSyncServices/syncGroups/cloudEndpoints | Nie | 
-| storageSyncServices/syncGroups/serverEndpoints | Nie | 
-| storageSyncServices/workflows | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | storageSyncServices | Yes | 
+> | storageSyncServices/registeredServers | Nie | 
+> | storageSyncServices/syncGroups | Nie | 
+> | storageSyncServices/syncGroups/cloudEndpoints | Nie | 
+> | storageSyncServices/syncGroups/serverEndpoints | Nie | 
+> | storageSyncServices/przepływy pracy | Nie | 
 
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Menedżerowie | Yes | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | skonfigurowany | Yes | 
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| streamingjobs | Tak (zobacz uwaga poniżej) | 
-| streamingjobs/diagnosticSettings | Nie | 
 
-> [!NOTE]
-> Nie można dodać tag, gdy streamingjobs jest uruchomiony. Zatrzymaj zasobów, aby dodać tag.
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | streamingjobs | Tak | 
+> | streamingjobs/diagnosticSettings | Nie | 
 
 ## <a name="microsoftsubscription"></a>Microsoft.Subscription
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| CreateSubscription | Nie | 
-| SubscriptionDefinitions | Nie | 
-| SubscriptionOperations | Nie | 
 
-## <a name="microsoftsupport"></a>microsoft.support
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| supporttickets | Nie | 
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | Anulowanie subskrypcji | Nie | 
+> | SubscriptionDefinitions | Nie | 
+> | SubscriptionOperations | Nie | 
+
+## <a name="microsoftsupport"></a>Microsoft. Support
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | supporttickets | Nie | 
 
 ## <a name="microsoftterraformoss"></a>Microsoft.TerraformOSS
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| providerRegistrations | Yes | 
-| Zasoby | Tak | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | providerRegistrations | Tak | 
+> | Produkcyjnych | Tak | 
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Środowiska | Tak | 
-| środowiska/accessPolicies | Nie | 
-| środowiska/eventsources | Tak | 
-| environments/referenceDataSets | Tak | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | wiejski | Yes | 
+> | środowiska/accessPolicies | Nie | 
+> | środowiska/źródła zdarzeń | Tak | 
+> | environments/referenceDataSets | Tak | 
 
 ## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| account | Tak | 
-| konta i rozszerzeń | Tak | 
-| konto lub projekt docelowy | Tak | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | account | Yes | 
+> | konto/rozszerzenie | Tak | 
+> | konto/projekt | Tak | 
 
 ## <a name="microsoftweb"></a>Microsoft.Web
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| apiManagementAccounts | Nie | 
-| apiManagementAccounts/apiAcls | Nie | 
-| apiManagementAccounts/apis | Nie | 
-| apiManagementAccounts/apis/apiAcls | Nie | 
-| apiManagementAccounts/apis/connectionAcls | Nie | 
-| apiManagementAccounts/apis/connections | Nie | 
-| apiManagementAccounts/apis/connections/connectionAcls | Nie | 
-| apiManagementAccounts/apis/localizedDefinitions | Nie | 
-| apiManagementAccounts/connectionAcls | Nie | 
-| apiManagementAccounts/connections | Nie | 
-| billingMeters | Nie | 
-| Certyfikaty | Tak | 
-| connectionGateways | Yes | 
-| Połączenia | Yes | 
-| customApis | Tak | 
-| deletedSites | Nie | 
-| — funkcje | Nie | 
-| hostingEnvironments | Yes | 
-| hostingEnvironments/multiRolePools | Nie | 
-| hostingEnvironments/multiRolePools/wystąpieniach | Nie | 
-| hostingEnvironments/workerPools | Nie | 
-| hostingEnvironments/workerPools/instances | Nie | 
-| publishingUsers | Nie | 
-| Zalecenia | Nie | 
-| resourceHealthMetadata | Nie | 
-| środowiska uruchomieniowe | Nie | 
-| farm serwerów | Tak | 
-| farm serwerów/procesów roboczych | Nie | 
-| Lokacje | Yes | 
-| Lokacje/domainOwnershipIdentifiers | Nie | 
-| sites/hostNameBindings | Nie | 
-| Lokacje/wystąpieniach | Nie | 
-| / wystąpień/rozszerzenia usługi witryny | Nie | 
-| sites/premieraddons | Tak | 
-| Lokacje/zalecenia | Nie | 
-| sites/resourceHealthMetadata | Nie | 
-| Lokacje/miejsca | Tak | 
-| sites/slots/hostNameBindings | Nie | 
-| Lokacje/miejsc/wystąpieniach | Nie | 
-| / miejsc/wystąpień/rozszerzenia usługi witryny | Nie | 
-| sourceControls | Nie | 
-| Sprawdzanie poprawności | Nie | 
-| verifyHostingEnvironmentVnet | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | apiManagementAccounts | Nie | 
+> | apiManagementAccounts/apiAcls | Nie | 
+> | apiManagementAccounts/apis | Nie | 
+> | apiManagementAccounts/apis/apiAcls | Nie | 
+> | apiManagementAccounts/apis/connectionAcls | Nie | 
+> | apiManagementAccounts/apis/connections | Nie | 
+> | apiManagementAccounts/apis/connections/connectionAcls | Nie | 
+> | apiManagementAccounts/apis/localizedDefinitions | Nie | 
+> | apiManagementAccounts/connectionAcls | Nie | 
+> | apiManagementAccounts/connections | Nie | 
+> | billingMeters | Nie | 
+> | Przystawki | Tak | 
+> | connectionGateways | Tak | 
+> | Licznik | Tak | 
+> | customApis | Tak | 
+> | deletedSites | Nie | 
+> | — funkcje | Nie | 
+> | hostingEnvironments | Tak | 
+> | hostingEnvironments/multiRolePools | Nie | 
+> | hostingEnvironments/multiRolePools/Instances | Nie | 
+> | hostingEnvironments/workerPools | Nie | 
+> | hostingEnvironments/workerPools/Instances | Nie | 
+> | publishingUsers | Nie | 
+> | Zalecenia | Nie | 
+> | resourceHealthMetadata | Nie | 
+> | Runtime | Nie | 
+> | Dopuszczalna | Tak | 
+> | Dopuszczalna/procesy robocze | Nie | 
+> | teren | Yes | 
+> | Lokacje/domainOwnershipIdentifiers | Nie | 
+> | sites/hostNameBindings | Nie | 
+> | Lokacje/wystąpienia | Nie | 
+> | Lokacje/wystąpienia/rozszerzenia | Nie | 
+> | sites/premieraddons | Tak | 
+> | Lokacje/zalecenia | Nie | 
+> | sites/resourceHealthMetadata | Nie | 
+> | Lokacje/miejsca | Tak | 
+> | sites/slots/hostNameBindings | Nie | 
+> | Lokacje/miejsca/wystąpienia | Nie | 
+> | Lokacje/miejsca/wystąpienia/rozszerzenia | Nie | 
+> | sourceControls | Nie | 
+> | legalizacj | Nie | 
+> | verifyHostingEnvironmentVnet | Nie | 
 
 ## <a name="microsoftwindowsdefenderatp"></a>Microsoft.WindowsDefenderATP
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| diagnosticSettings | Nie | 
-| diagnosticSettingsCategories | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | diagnosticSettings | Nie | 
+> | diagnosticSettingsCategories | Nie | 
 
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| DeviceServices | Tak | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | DeviceServices | Tak | 
 
 ## <a name="microsoftworkloadmonitor"></a>Microsoft.WorkloadMonitor
-| Typ zasobu | Usuwanie w trybie pełnym |
-| ------------- | ----------- |
-| Składniki | Nie | 
-| componentsSummary | Nie | 
-| monitorInstances | Nie | 
-| monitorInstancesSummary | Nie | 
-| Monitory | Nie | 
-| notificationSettings | Nie | 
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | Komponentów | Nie | 
+> | componentsSummary | Nie | 
+> | monitorInstances | Nie | 
+> | monitorInstancesSummary | Nie | 
+> | monitora | Nie | 
+> | notificationSettings | Nie | 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby dowiedzieć się, jak stosowanie tagów do zasobów, zobacz [organizowania zasobów platformy Azure za pomocą tagów](resource-group-using-tags.md).
+
+Aby uzyskać te same dane jak plik z wartościami rozdzielanymi przecinkami, Pobierz [Complete-Mode-deletion. csv](https://github.com/tfitzmac/resource-capabilities/blob/master/complete-mode-deletion.csv).

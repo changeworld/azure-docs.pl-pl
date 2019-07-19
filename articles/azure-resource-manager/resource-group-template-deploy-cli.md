@@ -1,57 +1,57 @@
 ---
-title: Wdrażanie zasobów przy użyciu wiersza polecenia platformy Azure i szablonu | Dokumentacja firmy Microsoft
-description: Użyj usługi Azure Resource Manager i interfejsu wiersza polecenia platformy Azure do wdrażania zasobów platformy Azure. Zasoby są zdefiniowane w szablonie usługi Resource Manager.
+title: Wdrażanie zasobów przy użyciu interfejsu wiersza polecenia platformy Azure i szablonu | Microsoft Docs
+description: Użyj Azure Resource Manager i interfejsu wiersza polecenia platformy Azure, aby wdrożyć zasoby na platformie Azure. Zasoby są zdefiniowane w szablonie usługi Resource Manager.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 03/28/2019
+ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 11d5b174dc21392df89def8e91847e8a0dd12562
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 93b1b16776bac6cb24996d6fa08a547318802f32
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206539"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67853827"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Deploy resources with Resource Manager templates and Azure CLI (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure)
 
-W tym artykule wyjaśniono, jak używać wiersza polecenia platformy Azure przy użyciu szablonów usługi Resource Manager do wdrażania zasobów na platformie Azure. Jeśli nie znasz pojęć dotyczących wdrażania i zarządzania Twoich rozwiązań platformy Azure, zobacz [Omówienie usługi Azure Resource Manager](resource-group-overview.md).  
+W tym artykule wyjaśniono, jak używać interfejsu wiersza polecenia platformy Azure z szablonami Menedżer zasobów do wdrażania zasobów na platformie Azure. Jeśli nie znasz pojęć związanych z wdrażaniem rozwiązań platformy Azure i zarządzaniem nimi, zobacz [Azure Resource Manager omówienie](resource-group-overview.md).  
 
 [!INCLUDE [sample-cli-install](../../includes/sample-cli-install.md)]
 
-Jeśli nie masz zainstalowany interfejs wiersza polecenia platformy Azure, możesz użyć [Cloud Shell](#deploy-template-from-cloud-shell).
+Jeśli nie masz zainstalowanego interfejsu wiersza polecenia platformy Azure, możesz użyć [Cloud Shell](#deploy-template-from-cloud-shell).
 
 ## <a name="deployment-scope"></a>Zakres wdrożenia
 
-Można wskazać wdrożenia do subskrypcji platformy Azure lub grupy zasobów w ramach subskrypcji. W większości przypadków będzie wskazywać wdrożenie w grupie zasobów. Subskrypcja wdrożeń umożliwiają stosowanie zasad i przypisań ról w ramach subskrypcji. Subskrypcja wdrożeń możesz także użyć do tworzenia grupy zasobów i wdrażania zasobów. W zależności od zakresu wdrożenia możesz używać różnych poleceń.
+Wdrożenie można określić w ramach subskrypcji platformy Azure lub grupy zasobów w ramach subskrypcji. W większości przypadków wdrożenie zostanie ukierunkowane na grupę zasobów. Wdrożenia subskrypcji umożliwiają stosowanie zasad i przypisań ról w ramach subskrypcji. W celu utworzenia grupy zasobów i wdrożenia do niej zasobów należy również użyć wdrożeń subskrypcji. W zależności od zakresu wdrożenia używane są inne polecenia.
 
-Aby wdrożyć **grupy zasobów**, użyj [Utwórz wdrożenie grupy az](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create):
+Aby wdrożyć w **grupie zasobów**, użyj polecenie [AZ Group Deployment Create](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create):
 
 ```azurecli
 az group deployment create --resource-group <resource-group-name> --template-file <path-to-template>
 ```
 
-Aby wdrożyć **subskrypcji**, użyj [tworzenia wdrożenia az](/cli/azure/deployment?view=azure-cli-latest#az-deployment-create):
+Aby wdrożyć w **ramach subskrypcji**, użyj polecenie [AZ Deployment Create](/cli/azure/deployment?view=azure-cli-latest#az-deployment-create):
 
 ```azurecli
 az deployment create --location <location> --template-file <path-to-template>
 ```
 
-Wdrożenia grup zarządzania są obecnie obsługiwane tylko za pośrednictwem interfejsu API REST. Zobacz [wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i interfejsu REST API usługi Resource Manager](resource-group-template-deploy-rest.md).
+Obecnie wdrożenia grup zarządzania są obsługiwane tylko za pomocą interfejsu API REST. Zobacz [wdrażanie zasobów za pomocą szablonów Menedżer zasobów i Menedżer zasobów interfejsu API REST](resource-group-template-deploy-rest.md).
 
-W przykładach w tym artykule używany wdrożenia grupy zasobów. Aby uzyskać więcej informacji o wdrożeniach subskrypcji, zobacz [tworzenia grupy zasobów i zasobów na poziomie subskrypcji](deploy-to-subscription.md).
+W przykładach w tym artykule są używane wdrożenia grup zasobów. Aby uzyskać więcej informacji na temat wdrożeń subskrypcji, zobacz [Tworzenie grup zasobów i zasobów na poziomie subskrypcji](deploy-to-subscription.md).
 
-## <a name="deploy-local-template"></a>Wdrażanie lokalnego szablonu
+## <a name="deploy-local-template"></a>Wdróż szablon lokalny
 
-Podczas wdrażania zasobów na platformie Azure, możesz:
+Podczas wdrażania zasobów na platformie Azure:
 
 1. Zaloguj się do swojego konta platformy Azure
-2. Utwórz grupę zasobów, która służy jako kontener dla wdrożonych zasobów. Nazwa grupy zasobów może zawierać tylko znaki alfanumeryczne, kropki, podkreślenia, łączniki i nawiasy. Może być maksymalnie 90 znaków. Nie może kończyć się kropką.
-3. Wdrożyć szablon który definiuje zasoby do utworzenia grupy zasobów
+2. Utwórz grupę zasobów, która służy jako kontener dla wdrożonych zasobów. Nazwa grupy zasobów może zawierać tylko znaki alfanumeryczne, kropki, podkreślenia, łączniki i nawiasy. Może składać się z maksymalnie 90 znaków. Nie może kończyć się kropką.
+3. Wdróż w grupie zasobów szablon definiujący zasoby do utworzenia
 
-Szablon może zawierać parametrów, które umożliwiają dostosowanie wdrożenia. Na przykład możesz podać wartości, które są dostosowane dla określonego środowiska (na przykład deweloperskim, testowym i produkcyjnym). Przykładowy szablon definiuje parametr dla jednostki SKU konta magazynu. 
+Szablon może zawierać parametry, które umożliwiają dostosowanie wdrożenia. Na przykład można podać wartości, które są dostosowane do określonego środowiska (np. deweloperskiego, testowego i produkcyjnego). Przykładowy szablon definiuje parametr dla jednostki SKU konta magazynu. 
 
-Poniższy przykład tworzy grupę zasobów i służy do wdrażania szablonu z komputera lokalnego:
+Poniższy przykład tworzy grupę zasobów i wdraża szablon z komputera lokalnego:
 
 ```azurecli-interactive
 az group create --name ExampleGroup --location "Central US"
@@ -62,17 +62,17 @@ az group deployment create \
   --parameters storageAccountType=Standard_GRS
 ```
 
-Wdrożenie może potrwać kilka minut. Po zakończeniu zostanie wyświetlony komunikat, który zawiera wynik:
+Wdrożenie może potrwać kilka minut. Po zakończeniu zobaczysz komunikat, który zawiera wynik:
 
 ```azurecli
 "provisioningState": "Succeeded",
 ```
 
-## <a name="deploy-remote-template"></a>Wdrażanie szablonu zdalnego
+## <a name="deploy-remote-template"></a>Wdróż zdalny szablon
 
-Zamiast przechowywać szablonów usługi Resource Manager na komputerze lokalnym, użytkownik może chcieć przechowywać je w lokalizacji zewnętrznej. Szablony można przechowywać w repozytorium kontroli źródła (na przykład GitHub). Lub można przechowywać na koncie magazynu platformy Azure w celu zapewnienia dostępu współdzielonego w Twojej organizacji.
+Zamiast przechowywania szablonów Menedżer zasobów na komputerze lokalnym, warto przechowywać je w lokalizacji zewnętrznej. Szablony można przechowywać w repozytorium kontroli źródła (na przykład GitHub). Możesz również przechowywać je na koncie usługi Azure Storage w celu uzyskania dostępu współdzielonego w organizacji.
 
-Aby wdrożyć szablon zewnętrznego, użyj **identyfikator uri szablonu** parametru. Użyj identyfikatora URI w przykładzie, aby wdrożyć przykładowy szablon z serwisu GitHub.
+Aby wdrożyć szablon zewnętrzny, użyj parametru **Template-URI** . Użyj identyfikatora URI w przykładzie, aby wdrożyć przykładowy szablon z usługi GitHub.
 
 ```azurecli-interactive
 az group create --name ExampleGroup --location "Central US"
@@ -83,11 +83,11 @@ az group deployment create \
   --parameters storageAccountType=Standard_GRS
 ```
 
-Poprzedni przykład wymaga publicznie identyfikator URI dla szablonu, który działa w przypadku większości scenariuszy, ponieważ szablon nie powinna zawierać dane poufne. Jeśli musisz określić dane poufne (na przykład hasło administratora), należy przekazać tę wartość jako parametru secure. Jednak jeśli nie chcesz, aby szablon był dostępny publicznie, można go chronić dzięki przechowywaniu go w kontenerze magazynu prywatnego. Aby uzyskać informacji o wdrażaniu szablonu, który wymaga tokenu (SAS) sygnatury dostępu współdzielonego, zobacz [wdrażanie prywatnego szablonu przy użyciu tokenu sygnatury dostępu Współdzielonego](resource-manager-cli-sas-token.md).
+Poprzedni przykład wymaga publicznie dostępnego identyfikatora URI dla szablonu, który działa w większości scenariuszy, ponieważ szablon nie powinien zawierać poufnych danych. Jeśli musisz określić dane poufne (na przykład hasło administratora), przekaż tę wartość jako bezpieczny parametr. Jeśli jednak nie chcesz, aby szablon był dostępny publicznie, możesz go chronić, przechowując go w prywatnym kontenerze magazynu. Informacje o wdrażaniu szablonu wymagającego tokenu sygnatury dostępu współdzielonego (SAS) znajdują się w temacie [Deploy Private Template with SAS token](resource-manager-cli-sas-token.md).
 
 [!INCLUDE [resource-manager-cloud-shell-deploy.md](../../includes/resource-manager-cloud-shell-deploy.md)]
 
-W usłudze Cloud Shell Użyj następujących poleceń:
+W Cloud Shell Użyj następujących poleceń:
 
 ```azurecli-interactive
 az group create --name examplegroup --location "South Central US"
@@ -96,18 +96,18 @@ az group deployment create --resource-group examplegroup \
   --parameters storageAccountType=Standard_GRS
 ```
 
-## <a name="redeploy-when-deployment-fails"></a>Wdróż ponownie, gdy wdrożenie zakończy się niepowodzeniem
+## <a name="redeploy-when-deployment-fails"></a>Wdróż ponownie w przypadku niepowodzenia wdrożenia
 
-Ta funkcja jest nazywana *wycofywania w przypadku błędu*. Jeśli wdrożenie zakończy się niepowodzeniem, można automatycznie wdrożyć ponownie wcześniej pomyślnego wdrażania z historii wdrożenia. Aby określić ponowne wdrożenie, użyj `--rollback-on-error` parametr w poleceniu wdrożenia. Ta funkcja jest przydatna, jeśli coś znanego, dobrego stanu dla danego wdrożenia infrastruktury, a chcesz przywrócić ten stan. Kilka ograniczeń i ostrzeżenia:
+Ta funkcja jest również znana jako *Rollback w przypadku błędu*. W przypadku niepowodzenia wdrożenia można automatycznie ponownie wdrożyć wcześniejsze, pomyślne wdrożenie z historii wdrożenia. Aby określić ponowne wdrożenie, użyj `--rollback-on-error` parametru w poleceniu wdrażania. Ta funkcja jest przydatna, jeśli masz znany dobry stan wdrożenia infrastruktury i chcesz przywrócić ten stan. Istnieje wiele zastrzeżeń i ograniczeń:
 
-- Ponownego wdrożenia komputera jest uruchamiany, dokładnie tak, jak została poprzednio uruchomiona z tymi samymi parametrami. Nie można zmienić parametry.
-- Poprzedniego wdrożenia zostanie uruchomiony z użyciem [w trybie](./deployment-modes.md#complete-mode). Zostaną usunięte wszystkie zasoby, które nie są uwzględnione w poprzednim wdrożeniu, a wszystkie konfiguracje zasobów są ustawione do poprzedniego stanu. Upewnij się, w pełni rozumiesz [tryby wdrażania](./deployment-modes.md).
-- Ponownego wdrożenia komputera ma wpływ tylko na zasoby, nie ma wpływu na wszelkie zmiany danych.
-- Ta funkcja jest obsługiwana tylko we wdrożeniach grupy zasobów, nie wdrożeń poziomu subskrypcji. Aby uzyskać więcej informacji na temat wdrażania poziomu subskrypcji zobacz [tworzenia grupy zasobów i zasobów na poziomie subskrypcji](./deploy-to-subscription.md).
+- Ponowne wdrożenie jest uruchamiane dokładnie tak, jak zostało wcześniej uruchomione z tymi samymi parametrami. Nie można zmienić parametrów.
+- Poprzednie wdrożenie jest uruchamiane przy użyciu [trybu kompletnego](./deployment-modes.md#complete-mode). Wszystkie zasoby, które nie są uwzględnione w poprzednim wdrożeniu, są usuwane, a wszystkie konfiguracje zasobów są ustawione na ich poprzedni stan. Upewnij się, że w pełni rozumiesz [tryby wdrażania](./deployment-modes.md).
+- Ponowne wdrożenie ma wpływ tylko na zasoby, a zmiany danych nie są modyfikowane.
+- Ta funkcja jest obsługiwana tylko w przypadku wdrożeń grup zasobów, a nie wdrożeń na poziomie subskrypcji. Aby uzyskać więcej informacji na temat wdrażania na poziomie subskrypcji, zobacz [Tworzenie grup zasobów i zasobów na poziomie subskrypcji](./deploy-to-subscription.md).
 
-Aby użyć tej opcji, wdrożeń muszą mieć unikatowe nazwy, dzięki czemu można je zidentyfikować w historii. Jeśli nie masz unikatowe nazwy bieżącego wdrożenia nie powiodło się może spowodować zastąpienie wcześniej pomyślnego wdrożenia w historii. Tej opcji można używać tylko w przypadku wdrożeń poziomu głównego. Wdrożenia z szablonów zagnieżdżonych nie są dostępne dla ponownego wdrażania.
+Aby użyć tej opcji, wdrożenia muszą mieć unikatowe nazwy, aby można je było zidentyfikować w historii. Jeśli nie masz unikatowych nazw, bieżące wdrożenie nie powiodło się w historii. Tej opcji można używać tylko z wdrożeniami na poziomie głównym. Wdrożenia z zagnieżdżonego szablonu nie są dostępne do ponownego wdrożenia.
 
-Aby przeprowadzić ponowne wdrożenie ostatniego pomyślnego wdrożenia, należy dodać `--rollback-on-error` parametr jako flagi.
+Aby ponownie wdrożyć ostatnie pomyślne wdrożenie, Dodaj `--rollback-on-error` parametr jako flagę.
 
 ```azurecli-interactive
 az group deployment create \
@@ -118,7 +118,7 @@ az group deployment create \
   --rollback-on-error
 ```
 
-Aby przeprowadzić ponowne wdrożenie określonego wdrożenia, należy użyć `--rollback-on-error` parametru i podaj nazwę wdrożenia.
+Aby ponownie wdrożyć określone wdrożenie, użyj `--rollback-on-error` parametru i podaj nazwę wdrożenia.
 
 ```azurecli-interactive
 az group deployment create \
@@ -129,15 +129,15 @@ az group deployment create \
   --rollback-on-error ExampleDeployment01
 ```
 
-Zakończyły się powodzeniem określonego wdrożenia.
+Określone wdrożenie musi się powieść.
 
 ## <a name="parameters"></a>Parametry
 
-Aby przekazać wartości parametrów, można użyć wbudowanego parametrów lub plik parametrów. Powyższych przykładach w tym artykule Pokaż parametry w tekście.
+Aby przekazać wartości parametrów, można użyć parametrów wbudowanych lub pliku parametrów. W powyższych przykładach w tym artykule przedstawiono parametry wbudowane.
 
 ### <a name="inline-parameters"></a>Parametry wbudowane
 
-Aby przekazać parametry wbudowane, podaj wartości w `parameters`. Na przykład, aby przekazać ciąg i Tablica do szablonu jest powłoką Bash, użyj:
+Aby przekazać parametry wbudowane, podaj wartości w `parameters`. Na przykład, aby przekazać ciąg i tablicę do szablonu, jest powłoką bash, użyj:
 
 ```azurecli
 az group deployment create \
@@ -146,7 +146,9 @@ az group deployment create \
   --parameters exampleString='inline string' exampleArray='("value1", "value2")'
 ```
 
-Możesz również uzyskać zawartość pliku i podaj tę zawartość jako parametr w tekście.
+Jeśli używasz interfejsu wiersza polecenia platformy Azure z wierszem poleceń systemu Windows (CMD) lub PowerShell, Przekaż tablicę w `exampleArray="['value1','value2']"`formacie:.
+
+Możesz również pobrać zawartość pliku i podać tę zawartość jako parametr wbudowany.
 
 ```azurecli
 az group deployment create \
@@ -155,9 +157,9 @@ az group deployment create \
   --parameters exampleString=@stringContent.txt exampleArray=@arrayContent.json
 ```
 
-Wprowadzenie wartości parametru z pliku jest przydatne, gdy trzeba określić wartości konfiguracji. Na przykład można podać [wartości pakietu cloud-init dla maszyny wirtualnej Linux](../virtual-machines/linux/using-cloud-init.md).
+Pobieranie wartości parametru z pliku jest przydatne, gdy trzeba podać wartości konfiguracyjne. Można na przykład udostępnić [wartości z usługi Cloud-init dla maszyny wirtualnej z systemem Linux](../virtual-machines/linux/using-cloud-init.md).
 
-ArrayContent.json format jest następujący:
+Format arrayContent. JSON to:
 
 ```json
 [
@@ -168,9 +170,9 @@ ArrayContent.json format jest następujący:
 
 ### <a name="parameter-files"></a>Pliki parametrów
 
-Zamiast przekazywania parametrów jako wartości wbudowanych w skrypcie, użytkownik może okazać się łatwiejszy w obsłudze pliku JSON, który zawiera wartości parametrów. Plik parametrów musi być plikiem lokalnym. Pliki parametrów zewnętrznych nie są obsługiwane przy użyciu wiersza polecenia platformy Azure.
+Zamiast przekazywać parametry jako wartości wbudowane w skrypcie, można ułatwić korzystanie z pliku JSON, który zawiera wartości parametrów. Plik parametru musi być plikiem lokalnym. Zewnętrzne pliki parametrów nie są obsługiwane w interfejsie wiersza polecenia platformy Azure.
 
-Plik parametrów musi być w następującym formacie:
+Plik parametru musi mieć następujący format:
 
 ```json
 {
@@ -184,11 +186,11 @@ Plik parametrów musi być w następującym formacie:
 }
 ```
 
-Należy zauważyć, że w sekcji parametrów zawiera nazwę parametru, która pasuje do parametrów zdefiniowanych w szablonie (storageAccountType). Plik parametrów zawiera wartość dla parametru. Ta wartość jest automatycznie przekazanych do szablonu podczas wdrażania. Można utworzyć więcej niż jeden plik parametrów i następnie przekazać plik parametrów właściwe dla scenariusza. 
+Zwróć uwagę, że sekcja Parameters zawiera nazwę parametru, która pasuje do parametru zdefiniowanego w szablonie (storageAccountType). Plik parametrów zawiera wartość parametru. Ta wartość jest automatycznie przenoszona do szablonu podczas wdrażania. Można utworzyć więcej niż jeden plik parametrów, a następnie przekazać odpowiedni plik parametru dla scenariusza. 
 
-Poprzedni przykład skopiuj i zapisz go jako plik o nazwie `storage.parameters.json`.
+Skopiuj poprzedni przykład i Zapisz go jako plik o nazwie `storage.parameters.json`.
 
-Aby przekazać plik parametrów lokalnych, należy użyć `@` do określenia pliku lokalnego o nazwie storage.parameters.json.
+Aby przekazać lokalny plik parametrów, użyj `@` , aby określić plik lokalny o nazwie Storage. Parameters. JSON.
 
 ```azurecli-interactive
 az group deployment create \
@@ -198,9 +200,9 @@ az group deployment create \
   --parameters @storage.parameters.json
 ```
 
-### <a name="parameter-precedence"></a>Parametr pierwszeństwo
+### <a name="parameter-precedence"></a>Pierwszeństwo parametrów
 
-Można użyć wbudowanego parametrów i pliku parametrów lokalnych w tej samej operacji wdrożenia. Na przykład można określić niektóre wartości w pliku parametrów lokalnych i dodać inne wbudowane wartości podczas wdrażania. Jeśli możesz podać wartości parametrów w pliku parametrów lokalnych i wbudowane, pierwszeństwo ma wartość wbudowanej.
+W tej samej operacji wdrażania można używać wbudowanych parametrów i pliku parametrów lokalnych. Na przykład można określić niektóre wartości w lokalnym pliku parametrów i dodać inne wartości w tekście podczas wdrażania. Jeśli podano wartości dla parametru zarówno w pliku parametrów lokalnych, jak i wewnętrznie, wartość śródwierszowa ma pierwszeństwo.
 
 ```azurecli
 az group deployment create \
@@ -210,9 +212,9 @@ az group deployment create \
   --parameters exampleArray=@arrtest.json
 ```
 
-## <a name="test-a-template-deployment"></a>Testowanie wdrażania szablonu
+## <a name="test-a-template-deployment"></a>Testowanie wdrożenia szablonu
 
-Aby przetestować wartości szablonu oraz parametrów bez faktycznego wdrażania zasobów, użyj [zweryfikować wdrożenie grupy az](/cli/azure/group/deployment#az-group-deployment-validate). 
+Aby przetestować wartości szablonu i parametrów bez faktycznego wdrażania zasobów, użyj [AZ Group Deployment Validate](/cli/azure/group/deployment#az-group-deployment-validate). 
 
 ```azurecli-interactive
 az group deployment validate \
@@ -221,7 +223,7 @@ az group deployment validate \
   --parameters @storage.parameters.json
 ```
 
-Jeśli zostaną wykryte żadne błędy, polecenie zwraca informacje o wdrożeniu testu. W szczególności zwróć uwagę, że **błąd** ma wartość null.
+Jeśli nie wykryto żadnych błędów, polecenie zwraca informacje o wdrożeniu testowym. W szczególności Zwróć uwagę na to, że wartość **błędu** to null.
 
 ```azurecli
 {
@@ -230,7 +232,7 @@ Jeśli zostaną wykryte żadne błędy, polecenie zwraca informacje o wdrożeniu
       ...
 ```
 
-Jeśli zostanie wykryty błąd, to polecenie zwraca komunikat o błędzie. Na przykład przekazując niepoprawną wartość dla konta magazynu jednostki SKU i zwraca następujący błąd:
+Jeśli zostanie wykryty błąd, polecenie zwróci komunikat o błędzie. Na przykład przekazanie nieprawidłowej wartości dla jednostki SKU konta magazynu zwróci następujący błąd:
 
 ```azurecli
 {
@@ -246,7 +248,7 @@ Jeśli zostanie wykryty błąd, to polecenie zwraca komunikat o błędzie. Na pr
 }
 ```
 
-Jeśli szablon zawiera błąd składniowy, polecenie zwraca komunikat o błędzie informujący, że nie można go przeanalizować szablonu. Komunikat wskazuje, numer wiersza i położenie błąd analizy.
+Jeśli szablon zawiera błąd składniowy, polecenie zwróci błąd wskazujący, że nie można przeanalizować szablonu. Komunikat wskazuje numer wiersza i położenie błędu analizy.
 
 ```azurecli
 {
@@ -261,11 +263,11 @@ Jeśli szablon zawiera błąd składniowy, polecenie zwraca komunikat o błędzi
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Przykłady w niniejszym artykule wdrażanie zasobów w grupie zasobów w subskrypcji domyślnej. Aby użyć innej subskrypcji, zobacz [Zarządzanie wieloma subskrypcjami platformy Azure](/cli/azure/manage-azure-subscriptions-azure-cli).
-- Aby określić sposób obsługi zasobów, które istnieją w grupie zasobów, ale nie są zdefiniowane w szablonie, zobacz [tryby wdrażania usługi Azure Resource Manager](deployment-modes.md).
-- Aby dowiedzieć się, jak zdefiniować parametry w szablonie, zobacz [Omówienie struktury i składni szablonów usługi Azure Resource Manager](resource-group-authoring-templates.md).
-- Aby uzyskać porady dotyczące rozwiązywania typowych problemów wdrażania, zobacz [Rozwiązywanie typowych problemów wdrażania na platformie Azure przy użyciu usługi Azure Resource Manager](resource-manager-common-deployment-errors.md).
-- Aby uzyskać informacje o wdrażaniu szablonu, który wymaga tokenu sygnatury dostępu Współdzielonego, zobacz [wdrażanie prywatnego szablonu przy użyciu tokenu sygnatury dostępu Współdzielonego](resource-manager-cli-sas-token.md).
-- Aby bezpiecznie wdrożyć usługę do więcej niż jednym regionie, zobacz [Azure Deployment Manager](deployment-manager-overview.md).
+- W przykładach w tym artykule opisano wdrażanie zasobów w grupie zasobów w domyślnej subskrypcji. Aby użyć innej subskrypcji, zobacz [Zarządzanie wieloma subskrypcjami platformy Azure](/cli/azure/manage-azure-subscriptions-azure-cli).
+- Aby określić sposób obsługi zasobów, które istnieją w grupie zasobów, ale nie są zdefiniowane w szablonie, zobacz [Azure Resource Manager trybami wdrożenia](deployment-modes.md).
+- Aby zrozumieć, jak definiować parametry w szablonie, zobacz [Opis struktury i składni szablonów Azure Resource Manager](resource-group-authoring-templates.md).
+- Aby uzyskać wskazówki dotyczące rozwiązywania typowych błędów wdrażania, zobacz [Rozwiązywanie typowych błędów wdrażania platformy Azure przy użyciu Azure Resource Manager](resource-manager-common-deployment-errors.md).
+- Informacje o wdrażaniu szablonu wymagającego tokenu SAS można znaleźć w temacie [Deploy Private Template with SAS token](resource-manager-cli-sas-token.md).
+- Aby bezpiecznie wdrożyć usługę w więcej niż jednym regionie, zobacz [Azure Menedżer wdrażania](deployment-manager-overview.md).

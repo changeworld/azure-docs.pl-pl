@@ -1,112 +1,112 @@
 ---
-title: Eksportuj dane do usługi Azure Blob Storage | Dokumentacja firmy Microsoft
-description: Sposób eksportowania danych z usługi Azure IoT Central aplikacji do usługi Azure Blob Storage
+title: Eksportowanie danych do usługi Azure Blob Storage | Microsoft Docs
+description: Jak wyeksportować dane z aplikacji IoT Central platformy Azure do platformy Azure Blob Storage
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 03/20/2019
+ms.date: 07/08/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 9ae57b8ab26780ea975ad74f3348a0deaf8c9cc8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 609d16994cf88f1777584243b1031368ddc79724
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65464643"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849067"
 ---
-# <a name="export-your-data-to-azure-blob-storage"></a>Eksportuj dane do usługi Azure Blob Storage
+# <a name="export-your-data-to-azure-blob-storage"></a>Eksportowanie danych do usługi Azure Blob Storage
 
-*W tym temacie mają zastosowanie do administratorów.*
+*Ten temat ma zastosowanie do administratorów.*
 
-W tym artykule opisano, jak używać funkcji eksportu ciągłymi danymi w usłudze Azure IoT Central, aby okresowo eksportowały dane do swojej **konta usługi Azure Blob storage**. Możesz wyeksportować **pomiarów**, **urządzeń**, i **szablonów urządzeń** do plików w formacie Apache Avro. Wyeksportowane dane, może służyć do ścieżki nieaktywnej analizy, takich jak szkolenia modeli w usłudze Azure Machine Learning lub długoterminowej analizy trendu w usłudze Microsoft Power BI.
+W tym artykule opisano sposób korzystania z funkcji ciągłego eksportu danych w usłudze Azure IoT Central w celu okresowego eksportowania danych do **konta usługi Azure Blob Storage**. **Pomiary**, **urządzenia**i **Szablony urządzeń** można eksportować do plików w formacie Apache Avro. Wyeksportowane dane mogą służyć do analizy ścieżki zimnej, takiej jak modele szkoleniowe w Azure Machine Learning lub długoterminowej analizie trendów w programie Microsoft Power BI.
 
 > [!Note]
-> Jeszcze raz po włączeniu ciągły Eksport danych otrzymasz tylko dane od tej pory wartości. Obecnie nie można pobrać danych w czasie, gdy ciągły Eksport danych zostało wyłączone. Do przechowania większej ilości danych historycznych, należy włączyć funkcję ciągły Eksport danych z wcześniej.
+> Po włączeniu ciągłego eksportowania danych w tym momencie otrzymujesz tylko dane z tego momentu. Obecnie nie można pobrać danych przez czas, gdy ciągły eksport danych jest wyłączony. Aby zachować bardziej historyczne dane, należy wczesnie włączyć ciągły eksport danych.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Musisz być administratorem w Twojej aplikacji IoT Central
+- Musisz być administratorem w aplikacji IoT Central
 
 
 ## <a name="set-up-export-destination"></a>Skonfiguruj miejsce docelowe eksportu
 
-Jeśli nie masz istniejącego magazynu, aby wyeksportować do, wykonaj następujące kroki:
+Jeśli nie masz istniejącego magazynu do eksportowania, wykonaj następujące kroki:
 
-## <a name="create-storage-account"></a>Tworzenie konta magazynu
+## <a name="create-storage-account"></a>Utwórz konto magazynu
 
-1. Tworzenie [nowe konto magazynu w witrynie Azure portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Dowiedz się więcej w [dokumentacja usługi Azure Storage](https://aka.ms/blobdocscreatestorageaccount).
-2. Dla typu konta, wybierz **ogólnego przeznaczenia** lub **magazynu obiektów Blob**.
+1. Utwórz [nowe konto magazynu w Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Więcej informacji można znaleźć w dokumentacji [usługi Azure Storage](https://aka.ms/blobdocscreatestorageaccount).
+2. W polu Typ konta wybierz pozycję **ogólnego przeznaczenia** lub **magazynu obiektów BLOB**.
 3. wybierz subskrypcję. 
 
     > [!Note] 
-    > Teraz możesz wyeksportować dane do innych subskrypcji, które są **nie sam** co dla twojej aplikacji płatność za rzeczywiste użycie IoT Central. Połączysz się przy użyciu parametrów połączenia, w tym przypadku.
+    > Teraz możesz eksportować dane do innych subskrypcji, które **nie są takie same** jak dla aplikacji z opcją płatność zgodnie z rzeczywistym użyciem IoT Central. W tym przypadku zostanie nawiązane połączenie przy użyciu parametrów połączenia.
 
-4. Utwórz kontener na koncie magazynu. Przejdź do swojego konta magazynu. W obszarze **usługę Blob Service**, wybierz opcję **Przeglądaj obiekty BLOB**. Wybierz **+ kontener** u góry, aby utworzyć nowy kontener
+4. Utwórz kontener na koncie magazynu. Przejdź do swojego konta magazynu. W obszarze **BLOB Service**wybierz pozycję **Przeglądaj obiekty blob**. Wybierz pozycję **+ kontener** u góry, aby utworzyć nowy kontener
 
 
-## <a name="set-up-continuous-data-export"></a>Konfigurowanie ciągły Eksport danych
+## <a name="set-up-continuous-data-export"></a>Konfigurowanie ciągłego eksportu danych
 
-Teraz, gdy masz magazynu lokalizację docelową, aby wyeksportować dane, wykonaj następujące kroki, aby skonfigurować ciągły Eksport danych. 
+Teraz, gdy masz miejsce docelowe magazynu, do którego chcesz wyeksportować dane, wykonaj następujące kroki, aby skonfigurować ciągły eksport danych. 
 
 1. Zaloguj się do aplikacji IoT Central.
 
-2. W menu po lewej stronie wybierz **ciągły Eksport danych**.
+2. W menu po lewej stronie wybierz pozycję **ciągły eksport danych**.
 
     > [!Note]
-    > Jeśli nie widzisz ciągły Eksport danych w menu po lewej stronie, nie jesteś administratorem w swojej aplikacji. Porozmawiaj z administratorem, aby skonfigurować Eksport danych.
+    > Jeśli nie widzisz ciągłego eksportu danych w menu po lewej stronie, nie jesteś administratorem w swojej aplikacji. Skontaktuj się z administratorem, aby skonfigurować eksportowanie danych.
 
-    ![Utwórz nowy CRP Centrum zdarzeń](media/howto-export-data/export_menu1.png)
+    ![Utwórz nowe centrum zdarzeń CDE](media/howto-export-data/export_menu1.png)
 
-3. Wybierz **+ nowy** przycisk w prawym górnym rogu. Wybierz **usługi Azure Blob Storage** jako miejsce docelowe eksportu. 
-
-    > [!NOTE] 
-    > Maksymalna liczba eksportów aplikacji wynosi pięć. 
-
-    ![Utwórz nowy ciągły Eksport danych](media/howto-export-data/export_new1.png)
-
-4. W polu listy rozwijanej wybierz swoje **konta magazynu, obszaru nazw**. Można również wybrać na liście, która jest ostatnia opcja **wprowadź parametry połączenia**. 
+3. Wybierz przycisk **+ Nowy** w prawym górnym rogu. Wybierz pozycję **Azure Blob Storage** jako lokalizację docelową eksportu. 
 
     > [!NOTE] 
-    > Zostanie wyświetlony tylko w przestrzeniach nazw kont magazynu **tej samej subskrypcji co aplikacja IoT Central**. Jeśli chcesz wyeksportować do miejsca docelowego spoza tej subskrypcji, wybierz opcję **wprowadź parametry połączenia** i zobacz krok 5.
+    > Maksymalna liczba eksportów na aplikację wynosi pięć. 
+
+    ![Utwórz nowy ciągły eksport danych](media/howto-export-data/export_new1.png)
+
+4. W polu listy rozwijanej wybierz **przestrzeń nazw konta magazynu**. Możesz również wybrać ostatnią opcję z listy, która jest wprowadzeniem **parametrów połączenia**. 
 
     > [!NOTE] 
-    > 7-dniowy, który eksportowania aplikacji w wersji próbnej, jedynym sposobem, aby skonfigurować ciągłe danych jest za pomocą parametrów połączenia. Jest to spowodowane 7-dniowy aplikacji w wersji próbnej nie mają skojarzonej subskrypcji platformy Azure.
+    > W **tej samej subskrypcji,** w której znajduje się aplikacja IoT Central, zobaczysz tylko przestrzenie nazw kont magazynu. Jeśli chcesz wyeksportować do lokalizacji docelowej poza tą subskrypcją, wybierz pozycję **wprowadź parametry połączenia** i zobacz krok 5.
 
-    ![Utwórz nowy CRP Centrum zdarzeń](media/howto-export-data/export-create-blob.png)
+    > [!NOTE] 
+    > W przypadku 7-dniowych aplikacji próbnych jedynym sposobem skonfigurowania ciągłego eksportu danych jest użycie parametrów połączenia. Wynika to z faktu, że 7-dniowe aplikacje próbne nie mają skojarzonej subskrypcji platformy Azure.
 
-5. (Opcjonalnie) Jeśli została wybrana opcja **wprowadź parametry połączenia**, nowe pole pojawia się należy wkleić parametry połączenia. Aby uzyskać parametry połączenia dla usługi:
-    - Konto magazynu, przejdź do konta magazynu w witrynie Azure portal.
-        - W obszarze **ustawienia**, wybierz opcję **klucze dostępu**
-        - Skopiuj parametry połączenia klucz1 lub klucz2 parametry połączenia
+    ![Utwórz nowe centrum zdarzeń CDE](media/howto-export-data/export-create-blob.png)
+
+5. Obowiązkowe W przypadku wybrania opcji **wprowadź parametry połączenia**pojawi się nowe pole umożliwiające wklejenie parametrów połączenia. Aby uzyskać parametry połączenia dla:
+    - Konto magazynu przejdź do konta magazynu w Azure Portal.
+        - W obszarze **Ustawienia**wybierz pozycję **klucze dostępu** .
+        - Skopiuj parametry połączenia Klucz1 lub parametry połączenia klucz2
  
-6. Wybierz kontener, w polu listy rozwijanej.
+6. Wybierz kontener z listy rozwijanej.
 
-7. W obszarze **danych do wyeksportowania**, określ każdy rodzaj danych do wyeksportowania, ustawiając typ **na**.
+7. W obszarze **dane do eksportowania**Określ każdy typ danych do wyeksportowania, ustawiając typ na wartość **włączone**.
 
-6. Aby włączyć ciągły Eksport danych, upewnij się, **eksportu danych** jest **na**. Wybierz pozycję **Zapisz**.
+6. Aby włączyć funkcję ciągłego eksportowania danych, upewnij się, że **Eksportowanie danych** jest **włączone**. Wybierz pozycję **Zapisz**.
 
-   ![Konfigurowanie ciągły Eksport danych](media/howto-export-data/export-list-blob.png)
+   ![Konfigurowanie ciągłego eksportowania danych](media/howto-export-data/export-list-blob.png)
 
-7. Po kilku minutach danych pojawi się w wybranej lokalizacji docelowej.
+7. Po kilku minutach dane zostaną wyświetlone w wybranym miejscu docelowym.
 
 
-## <a name="export-to-azure-blob-storage"></a>Eksportowanie do usługi Azure Blob Storage
+## <a name="export-to-azure-blob-storage"></a>Eksportuj do Blob Storage platformy Azure
 
-Pomiary, urządzeń i danych szablonów urządzeń zostaną wyeksportowane do swojego konta magazynu, raz na minutę, z każdego pliku, zawierającego partii zmiany od ostatniego wyeksportowany plik. Wyeksportowane dane znajdują się w [Apache Avro](https://avro.apache.org/docs/current/index.html) formatowania i mają zostać wyeksportowane w trzy foldery. Ścieżki domyślnej w ramach konta magazynu są:
-- Komunikaty: {container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
-- Urządzenia: {container}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
-- Szablony urządzenia: {container}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+Dane pomiarów, urządzeń i szablonów urządzeń są eksportowane do konta magazynu raz na minutę, przy czym każdy plik zawierający partię zmian od ostatniego wyeksportowanego pliku. Eksportowane dane są w formacie [Apache Avro](https://avro.apache.org/docs/current/index.html) i zostaną wyeksportowane do trzech folderów. Domyślne ścieżki na koncie magazynu:
+- Komunikaty: {Container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+- Urządzenia: {Container}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+- Szablony urządzeń: {Container}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
 
 ### <a name="measurements"></a>Miary
 
-Dane pomiarów wyeksportowanego mają nowe komunikaty odbierane przez IoT Central ze wszystkich urządzeń, w tym czasie. Wyeksportowane pliki pełnić plików wiadomości wyeksportowany przez ten sam format [routing komunikatów usługi IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-csharp-csharp-process-d2c) do magazynu obiektów Blob.
+Eksportowane dane pomiarów zawierają wszystkie nowe komunikaty odebrane przez IoT Central ze wszystkich urządzeń w tym czasie. Eksportowane pliki używają tego samego formatu co pliki komunikatów wyeksportowane przez [IoT Hub Routing komunikatów](https://docs.microsoft.com/azure/iot-hub/iot-hub-csharp-csharp-process-d2c) do magazynu obiektów BLOB.
 
 > [!NOTE]
-> Urządzenia, które wysyłać pomiary są reprezentowane przez identyfikatory urządzeń (patrz poniżej). Aby uzyskać nazwy urządzenia, należy wyeksportować migawki urządzenia. Korelowanie poszczególnych rekordów komunikatów za pomocą **connectionDeviceId** odpowiadający **deviceId** rekordu urządzenia.
+> Urządzenia, które wysyłają pomiary, są reprezentowane przez identyfikatory urządzeń (zobacz następujące sekcje). Aby uzyskać nazwy urządzeń, wyeksportuj migawki urządzeń. Należy skorelować każdy rekord komunikatu przy użyciu **connectionDeviceId** , który odpowiada identyfikatorowi **deviceId** rekordu urządzenia.
 
-Poniższy przykład przedstawia rekord w pliku Avro zdekodowany:
+Poniższy przykład przedstawia rekord w zdekodowanym pliku Avro:
 
 ```json
 {
@@ -124,25 +124,25 @@ Poniższy przykład przedstawia rekord w pliku Avro zdekodowany:
 
 ### <a name="devices"></a>Urządzenia
 
-Po pierwszym włączeniu ciągły Eksport danych migawki jednego ze wszystkimi urządzeniami są eksportowane. Każde urządzenie obejmuje:
-- `id` z urządzeń IoT Central
-- `name` urządzenia
-- `deviceId` z [usługi Device Provisioning](https://aka.ms/iotcentraldocsdps)
+Gdy ciągły eksport danych jest najpierw włączony, wyeksportowana jest pojedyncza migawka ze wszystkimi urządzeniami. Każde urządzenie obejmuje:
+- `id`urządzenia w IoT Central
+- `name`urządzenia
+- `deviceId`z [usługi Device](https://aka.ms/iotcentraldocsdps) Provisioning
 - Informacje o szablonie urządzenia
 - Wartości właściwości
 - Ustawianie wartości
 
-Nowa migawka są zapisywane jeden raz na minutę. Migawka zawiera:
+Nowa migawka jest zapisywana raz na minutę. Migawka obejmuje następujące:
 
-- Dodane od czasu ostatniego migawki nowych urządzeń.
-- Urządzenia z właściwością zmienione i ustawienia wartości, ponieważ ostatnia migawka.
+- Dodano nowe urządzenia od ostatniej migawki.
+- Urządzenia ze zmienioną właściwością i wartościami ustawień od momentu ostatniej migawki.
 
 > [!NOTE]
-> Urządzenia został usunięty, ponieważ ostatnia migawka nie są eksportowane. Obecnie migawek nie mają wskaźników dla usuniętego urządzenia.
+> Urządzenia usunięte od ostatniej migawki nie są eksportowane. Obecnie migawki nie mają wskaźników dla usuniętych urządzeń.
 >
-> Każde urządzenie należy do szablonu urządzenia jest reprezentowany przez urządzenie identyfikatora szablonu. Aby uzyskać nazwę szablonu urządzenia, należy wyeksportować migawek szablonu urządzenia.
+> Szablon urządzenia, do którego należy każde urządzenie, jest reprezentowany przez identyfikator szablonu urządzenia. Aby uzyskać nazwę szablonu urządzenia, wyeksportuj migawki szablonów urządzeń.
 
-Rekord w plik zdekodowany Avro może wyglądać następująco:
+Rekord w zdekodowanym pliku Avro może wyglądać następująco:
 
 ```json
 {
@@ -172,25 +172,25 @@ Rekord w plik zdekodowany Avro może wyglądać następująco:
 }
 ```
 
-### <a name="device-templates"></a>Szablony urządzenia
+### <a name="device-templates"></a>Szablony urządzeń
 
-Po pierwszym włączeniu ciągły Eksport danych pojedynczego migawki przy użyciu wszystkich szablonów urządzenia są eksportowane. Każdy szablon urządzenia obejmują:
-- `id` szablonu urządzenia
-- `name` szablonu urządzenia
-- `version` szablonu urządzenia
-- Typy danych pomiaru i minimalnej/maksymalnej wartości.
+Gdy ciągły eksport danych jest najpierw włączony, wyeksportowana jest pojedyncza migawka ze wszystkimi szablonami urządzeń. Każdy szablon urządzenia zawiera:
+- `id`szablonu urządzenia
+- `name`szablonu urządzenia
+- `version`szablonu urządzenia
+- Typy danych pomiarów oraz wartości minimalne/maksymalne.
 - Typy danych właściwości i wartości domyślne.
-- Ustawianie typów danych i wartości domyślne.
+- Ustawianie typów danych i wartości domyślnych.
 
-Nowa migawka są zapisywane jeden raz na minutę. Migawka zawiera:
+Nowa migawka jest zapisywana raz na minutę. Migawka obejmuje następujące:
 
-- Nowe szablony urządzenie dodane od czasu ostatniego migawki.
-- Szablony urządzenia przy użyciu zmienionego pomiarów, właściwości i ustawienia definicji, ponieważ ostatnia migawka.
+- Dodano nowe szablony urządzeń od ostatniej migawki.
+- Szablony urządzeń ze zmienionymi pomiarami, właściwościami i definicjami ustawień od momentu ostatniej migawki.
 
 > [!NOTE]
-> Szablony urządzenia usunięty od czasu ostatniego migawki nie są eksportowane. Obecnie migawek nie mają wskaźników dla szablonów usuniętego urządzenia.
+> Szablony urządzeń usunięte od momentu ostatniej migawki nie są eksportowane. Obecnie migawki nie mają wskaźników dla usuniętych szablonów urządzeń.
 
-Rekord w plik zdekodowany Avro może wyglądać następująco:
+Rekord w zdekodowanym pliku Avro może wyglądać następująco:
 
 ```json
 {
@@ -266,20 +266,20 @@ Rekord w plik zdekodowany Avro może wyglądać następująco:
 }
 ```
 
-## <a name="read-exported-avro-files"></a>Odczyt wyeksportowane pliki Avro
+## <a name="read-exported-avro-files"></a>Odczytaj wyeksportowane pliki Avro
 
-Avro jest format binarny, więc nie można odczytać plików w ich stanie raw. Może zostać odczytany plików do formatu JSON. Poniższe przykłady pokazują, jak można przeanalizować pomiarów, urządzeń i szablony urządzenia pliki Avro. Przykłady odpowiadają przykłady opisanego w poprzedniej sekcji.
+Avro to format binarny, więc plików nie można odczytać w ich pierwotnym stanie. Pliki można zdekodować do formatu JSON. W poniższych przykładach pokazano, jak przeanalizować pomiary, urządzenia i Avro pliki szablonów urządzeń. Przykłady są zgodne z przykładami opisanymi w poprzedniej sekcji.
 
-### <a name="read-avro-files-by-using-python"></a>Odczytuj pliki Avro przy użyciu języka Python
+### <a name="read-avro-files-by-using-python"></a>Odczytywanie plików Avro przy użyciu języka Python
 
-#### <a name="install-pandas-and-the-pandavro-package"></a>Zainstalować pandas i pakiet pandavro
+#### <a name="install-pandas-and-the-pandavro-package"></a>Zainstaluj Pandas i pakiet pandavro
 
 ```python
 pip install pandas
 pip install pandavro
 ```
 
-#### <a name="parse-a-measurements-avro-file"></a>Analizowanie plików Avro pomiarów
+#### <a name="parse-a-measurements-avro-file"></a>Analizowanie pliku pomiarów Avro
 
 ```python
 import json
@@ -309,7 +309,7 @@ def parse(filePath):
 
 ```
 
-#### <a name="parse-a-devices-avro-file"></a>Analizowanie plików Avro urządzeń
+#### <a name="parse-a-devices-avro-file"></a>Analizowanie pliku Avro urządzeń
 
 ```python
 import json
@@ -343,7 +343,7 @@ def parse(filePath):
 
 ```
 
-#### <a name="parse-a-device-templates-avro-file"></a>Przeanalizować plik Avro szablony urządzenia
+#### <a name="parse-a-device-templates-avro-file"></a>Analizowanie pliku Avro szablonów urządzeń
 
 ```python
 import json
@@ -372,15 +372,15 @@ def parse(filePath):
     print(transformed)
 ```
 
-### <a name="read-avro-files-by-using-c"></a>Pliki Avro odczytu przy użyciuC#
+### <a name="read-avro-files-by-using-c"></a>Odczytaj pliki Avro za pomocąC#
 
-#### <a name="install-the-microsofthadoopavro-package"></a>Zainstaluj pakiet Microsoft.Hadoop.Avro
+#### <a name="install-the-microsofthadoopavro-package"></a>Zainstaluj pakiet Microsoft. Hadoop. avro
 
 ```csharp
 Install-Package Microsoft.Hadoop.Avro -Version 1.5.6
 ```
 
-#### <a name="parse-a-measurements-avro-file"></a>Analizowanie plików Avro pomiarów
+#### <a name="parse-a-measurements-avro-file"></a>Analizowanie pliku pomiarów Avro
 
 ```csharp
 using Microsoft.Hadoop.Avro;
@@ -420,7 +420,7 @@ public static async Task Run(string filePath)
 }
 ```
 
-#### <a name="parse-a-devices-avro-file"></a>Analizowanie plików Avro urządzeń
+#### <a name="parse-a-devices-avro-file"></a>Analizowanie pliku Avro urządzeń
 
 ```csharp
 using Microsoft.Hadoop.Avro;
@@ -471,7 +471,7 @@ public static async Task Run(string filePath)
 
 ```
 
-#### <a name="parse-a-device-templates-avro-file"></a>Przeanalizować plik Avro szablony urządzenia
+#### <a name="parse-a-device-templates-avro-file"></a>Analizowanie pliku Avro szablonów urządzeń
 
 ```csharp
 using Microsoft.Hadoop.Avro;
@@ -515,15 +515,15 @@ public static async Task Run(string filePath)
 }
 ```
 
-### <a name="read-avro-files-by-using-javascript"></a>Odczytuj pliki Avro przy użyciu języka Javascript
+### <a name="read-avro-files-by-using-javascript"></a>Odczytywanie plików Avro przy użyciu języka JavaScript
 
-#### <a name="install-the-avsc-package"></a>Zainstaluj pakiet avsc
+#### <a name="install-the-avsc-package"></a>Instalowanie pakietu AVSC
 
 ```javascript
 npm install avsc
 ```
 
-#### <a name="parse-a-measurements-avro-file"></a>Analizowanie plików Avro pomiarów
+#### <a name="parse-a-measurements-avro-file"></a>Analizowanie pliku pomiarów Avro
 
 ```javascript
 const avro = require('avsc');
@@ -560,7 +560,7 @@ function load(filePath) {
 }
 ```
 
-#### <a name="parse-a-devices-avro-file"></a>Analizowanie plików Avro urządzeń
+#### <a name="parse-a-devices-avro-file"></a>Analizowanie pliku Avro urządzeń
 
 ```javascript
 const avro = require('avsc');
@@ -598,7 +598,7 @@ function load(filePath) {
 }
 ```
 
-#### <a name="parse-a-device-templates-avro-file"></a>Przeanalizować plik Avro szablony urządzenia
+#### <a name="parse-a-device-templates-avro-file"></a>Analizowanie pliku Avro szablonów urządzeń
 
 ```javascript
 const avro = require('avsc');
@@ -635,7 +635,7 @@ function load(filePath) {
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz gdy wiesz, jak wyeksportować dane, przejdź do następnego kroku:
+Teraz, gdy wiesz już, jak wyeksportować dane, przejdź do następnego kroku:
 
 > [!div class="nextstepaction"]
-> [Jak wizualizować dane w usłudze Power BI](howto-connect-powerbi.md)
+> [Jak wizualizować dane w Power BI](howto-connect-powerbi.md)

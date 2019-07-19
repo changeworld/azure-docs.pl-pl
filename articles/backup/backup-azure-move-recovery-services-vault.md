@@ -1,6 +1,6 @@
 ---
-title: Przenieś magazyn usługi Recovery Services między subskrypcjami platformy Azure lub do innej grupy zasobów
-description: Instrukcje dotyczące przenoszenia usługi recovery services magazynu między subskrypcjami platformy azure i grup zasobów.
+title: Przenoszenie magazynu Recovery Services w ramach subskrypcji platformy Azure lub innej grupy zasobów
+description: Instrukcje dotyczące przenoszenia magazynu usługi Recovery Services między subskrypcjami i grupami zasobów platformy Azure.
 services: backup
 author: sogup
 manager: vijayts
@@ -8,109 +8,109 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sogup
-ms.openlocfilehash: 72bfbc34f57e7725ae9556e893825900474317cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57263dfd1e226f2ff4321b2d097d30106fae87fa
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64876847"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304920"
 ---
-# <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Przenoszenie magazynu usługi Recovery Services między subskrypcjami platformy Azure i grup zasobów
+# <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Przenoszenie magazynu Recovery Services w ramach subskrypcji i grup zasobów platformy Azure
 
-W tym artykule opisano sposób przenoszenia magazynu usługi Recovery Services, skonfigurowany dla usługi Azure Backup, między subskrypcjami platformy Azure lub do innej grupy zasobów w tej samej subskrypcji. Aby przenieść magazyn usługi Recovery Services, można użyć witryny Azure portal lub programu PowerShell.
+W tym artykule wyjaśniono, jak przenieść magazyn Recovery Services skonfigurowany pod kątem Azure Backup między subskrypcjami platformy Azure lub z inną grupą zasobów w ramach tej samej subskrypcji. Aby przenieść magazyn Recovery Services, można użyć Azure Portal lub programu PowerShell.
 
 ## <a name="supported-region"></a>Obsługiwany region
 
-Przenoszenie zasobów magazynu usługi Recovery Services jest obsługiwane w Australia Wschodnia, Australia Wschodnia Południowa, Kanada Środkowa, Kanada Wschodnia, Azja południowo-wschodnia, Azja Wschodnia, środkowe stany USA, północno-środkowe stany USA, wschodnie stany USA, wschodnie stany USA 2, południowo centralnej USA, zachodnio-środkowe stany USA, centralnej zachodnie stany USA 2, zachodnie stany USA, Indie środkowe, Indie Południowe, Japonia, część wschodnia, Japonia, część zachodnia, Korea środkowa, Korea Południowa, Europa Północna, Europa Zachodnia, Północna RPA, Republika Południowej Afryki Zachodnia, południowe Zjednoczone Królestwo i zachodnie Zjednoczone Królestwo.
+Przenoszenie zasobów dla magazynu Recovery Services jest obsługiwane w Australii Wschodniej, Australia Południowo-Wschodnia, Kanada środkowa, Kanada Wschodnia, Południowe Azja Wschodnia, Azja Wschodnia, środkowe stany USA, Północno-środkowe stany USA, Wschodnie stany USA, Wschodnie stany USA 2, Południowe stany USA Indie Środkowe, Indie Południowe, Japonia Wschodnia, Japonia Zachodnia, Korea środkowa, Korea Południowa, Europa Północna, Europa Zachodnia, Północna Republika Południowej Afryki, Zachodnia Republika Południowej Afryki, Południowe Zjednoczone Królestwo i Zachodnie Zjednoczone Królestwo.
 
-## <a name="prerequisites-for-moving-recovery-services-vault"></a>Wymagania wstępne dotyczące przenoszenia magazynu usługi Recovery Services
+## <a name="prerequisites-for-moving-recovery-services-vault"></a>Wymagania wstępne dotyczące przeniesienia magazynu Recovery Services
 
-- W magazynie przenosić między grupami zasobów źródłowej i docelowej grupy zasobów są zablokowane, co uniemożliwia zapis operacji i usuwania. Aby uzyskać więcej informacji, zobacz ten [artykułu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
-- Tylko administrator subskrypcji ma uprawnień do przeniesienia w magazynie.
-- Przenoszenia magazynu między subskrypcjami, subskrypcji docelowej musi znajdować się w tej samej dzierżawie, co w przypadku subskrypcji źródłowej i jego stan powinno być włączone.
-- Musi mieć uprawnienia do wykonywania operacji zapisu na docelową grupę zasobów.
-- Przenoszenie magazynu zmienia tylko grupę zasobów. Magazyn usługi Recovery Services będą znajdować się w tej samej lokalizacji i nie można jej zmienić.
-- Tylko jeden magazyn usługi Recovery Services, można przenieść na region, w danym momencie.
-- Jeśli Maszynę wirtualną nie przenieść przy użyciu magazynu usługi Recovery Services, subskrypcji lub do nowej grupy zasobów, bieżących punktów odzyskiwania maszyny Wirtualnej pozostaną nienaruszone w magazynie, dopóki nie wygasną.
-- Czy maszyna wirtualna zostanie przeniesiona z magazynem, czy nie, zawsze można przywrócić maszynę Wirtualną z zachowanej historii kopii zapasowych w magazynie.
-- Usługa Azure Disk Encryption wymaga, że magazyn kluczy i maszyny wirtualne znajdują się w tym samym regionie platformy Azure i subskrypcji.
-- Aby przenieść maszynę wirtualną z dyskami zarządzanymi, zobacz ten [artykułu](https://azure.microsoft.com/blog/move-managed-disks-and-vms-now-available/).
-- Opcje przenoszenia zasobów wdrożonych za pośrednictwem klasycznego modelu różnią się w zależności od tego, czy przenosisz zasoby w ramach subskrypcji lub do nowej subskrypcji. Aby uzyskać więcej informacji, zobacz ten [artykułu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources#classic-deployment-limitations).
-- Zasady tworzenia kopii zapasowych zdefiniowane dla magazynu zostaną zachowane, gdy magazyn zostanie przeniesiona w subskrypcjach lub do nowej grupy zasobów.
-- Przenoszenie magazynu za pomocą usługi Azure Files, usługi Azure File Sync lub SQL na maszynach wirtualnych IaaS w subskrypcji i grup zasobów nie jest obsługiwane.
-- Po przeniesieniu Magazyn zawierający dane kopii zapasowej maszyn wirtualnych, między subskrypcjami, możesz przenosić maszyny wirtualne z tą samą subskrypcją i Użyj tej samej grupie zasobów docelowych, aby kontynuować tworzenie kopii zapasowych.<br>
+- Podczas przenoszenia magazynu między grupami zasobów zarówno źródłowa, jak i docelowa Grupa zasobów są blokowane, co uniemożliwia wykonywanie operacji zapisu i usuwania. Więcej informacji znajduje się w [tym](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources) artykule.
+- Tylko subskrypcja administratora ma uprawnienia do przenoszenia magazynu.
+- W przypadku przeniesienia magazynu między subskrypcjami subskrypcja docelowa musi znajdować się w tej samej dzierżawie co subskrypcja źródłowa, a jej stan powinien być włączony.
+- Musisz mieć uprawnienia do wykonywania operacji zapisu w docelowej grupie zasobów.
+- Przeniesienie magazynu powoduje jedynie zmianę grupy zasobów. Magazyn Recovery Services będzie znajdował się w tej samej lokalizacji i nie można go zmienić.
+- W danym momencie można przenieść tylko jeden magazyn Recovery Services na region.
+- Jeśli maszyna wirtualna nie jest przenoszona do magazynu Recovery Services między subskrypcjami ani do nowej grupy zasobów, bieżące punkty odzyskiwania maszyny wirtualnej pozostaną nienaruszone w magazynie do momentu ich wygaśnięcia.
+- Niezależnie od tego, czy maszyna wirtualna jest przenoszona z magazynem, czy nie, możesz zawsze przywrócić maszynę wirtualną z zachowanej historii kopii zapasowych w magazynie.
+- Azure Disk Encryption wymaga, aby Magazyn kluczy i maszyny wirtualne znajdowały się w tym samym regionie i subskrypcji platformy Azure.
+- Aby przenieść maszynę wirtualną z dyskami zarządzanymi, zobacz ten [artykuł](https://azure.microsoft.com/blog/move-managed-disks-and-vms-now-available/).
+- Opcje przeniesienia zasobów wdrożonych za pomocą modelu klasycznego różnią się w zależności od tego, czy przenosisz zasoby w ramach subskrypcji, czy na nową subskrypcję. Więcej informacji znajduje się w [tym](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources) artykule.
+- Zasady tworzenia kopii zapasowych zdefiniowane dla magazynu są zachowywane po przejściu magazynu między subskrypcjami lub nową grupą zasobów.
+- Przeniesienie magazynu z użyciem Azure Files, Azure File Sync lub SQL na maszynach wirtualnych IaaS w ramach subskrypcji i grup zasobów nie jest obsługiwane.
+- W przypadku przenoszenia magazynu zawierającego dane kopii zapasowej maszyny wirtualnej między subskrypcjami należy przenieść maszyny wirtualne do tej samej subskrypcji, a następnie użyć tej samej docelowej grupy zasobów do kontynuowania wykonywania kopii zapasowych.<br>
 
 > [!NOTE]
 >
-> Magazyny usługi Recovery Services skonfigurowane do korzystania z **usługi Azure Site Recovery** nie można przenieść jeszcze. Jeśli skonfigurowano żadnych maszyn wirtualnych (IaaS platformy Azure, funkcji Hyper-V, VMware) lub komputerów fizycznych dla za pomocą odzyskiwania po awarii **usługi Azure Site Recovery**, operację przenoszenia, będą blokowane. Funkcji przenoszenia zasobów dla usługi Site Recovery nie jest jeszcze dostępna.
+> Nie można jeszcze przenieść Recovery Services magazynów skonfigurowanych do użycia z **Azure Site Recovery** . W przypadku skonfigurowania maszyn wirtualnych (Azure IaaS, Hyper-V, VMware) lub fizycznych na potrzeby odzyskiwania po awarii przy użyciu **Azure Site Recovery**Operacja przenoszenia zostanie zablokowana. Funkcja przenoszenia zasobów dla usługi Site Recovery nie jest jeszcze dostępna.
 
 
-## <a name="use-azure-portal-to-move-recovery-services-vault-to-different-resource-group"></a>Przenieś magazyn usługi Recovery Services do innej grupy zasobów za pomocą witryny Azure portal
+## <a name="use-azure-portal-to-move-recovery-services-vault-to-different-resource-group"></a>Przenoszenie magazynu Recovery Services do innej grupy zasobów przy użyciu Azure Portal
 
-Aby przenieść odzyskiwania usług magazynu i skojarzone z nią zasoby do innej grupy zasobów
+Aby przenieść magazyn usługi Recovery Services i skojarzone z nim zasoby do innej grupy zasobów
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
-2. Otwórz listę **Magazyny usługi Recovery Services** i wybierz magazyn, którą chcesz przenieść. Po otwarciu pulpitu nawigacyjnego magazynu pojawia się, jak pokazano na poniższej ilustracji.
+2. Otwórz listę magazynów **Recovery Services** i wybierz magazyn, który chcesz przenieść. Gdy zostanie otwarty pulpit nawigacyjny magazynu, zostanie on wyświetlony jak pokazano na poniższej ilustracji.
 
-   ![Odzyskaj Otwórz magazyn usługi](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
+   ![Otwórz magazyn usługi odzyskiwania](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
-   Jeśli nie widzisz **Essentials** informacje dla swojego magazynu, kliknij ikonę listy rozwijanej. Powinien zostać wyświetlony informacji podstawy dla magazynu.
+   Jeśli nie widzisz informacji **podstawowe** dla swojego magazynu, kliknij ikonę listy rozwijanej. Należy teraz zobaczyć podstawowe informacje dotyczące magazynu.
 
-   ![Informacje o karcie danych podstawowych](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
+   ![Karta informacji o Essentials](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
-3. W menu przegląd magazynu, kliknij przycisk **zmienić** obok **grupy zasobów**, aby otworzyć **przenoszenia zasobów** bloku.
+3. W menu przegląd magazynu kliknij pozycję **Zmień** obok **grupy zasobów**, aby otworzyć blok **przenoszenie zasobów** .
 
    ![Zmień grupę zasobów](./media/backup-azure-move-recovery-services/change-resource-group.png)
 
-4. W **przenoszenia zasobów** bloku wybranego magazynu zaleca przenieść opcjonalne powiązane zasoby, zaznaczając pole wyboru, jak pokazano na poniższej ilustracji.
+4. W bloku **przenoszenie zasobów** dla wybranego magazynu zaleca się przeniesienie opcjonalnych powiązanych zasobów, zaznaczając pole wyboru, jak pokazano na poniższej ilustracji.
 
-   ![Przeniesienie subskrypcji](./media/backup-azure-move-recovery-services/move-resource.png)
+   ![Przenieś subskrypcję](./media/backup-azure-move-recovery-services/move-resource.png)
 
-5. Aby dodać docelową grupę zasobów w **grupy zasobów** listy rozwijanej wybierz istniejący zasób grupy, lub kliknij przycisk **Utwórz nową grupę** opcji.
+5. Aby dodać docelową grupę zasobów, z listy rozwijanej **Grupa zasobów** wybierz istniejącą grupę zasobów lub kliknij opcję **Utwórz nową grupę** .
 
    ![Utwórz zasób](./media/backup-azure-move-recovery-services/create-a-new-resource.png)
 
-6. Po dodaniu grupy zasobów, upewnij się, **zdaję sobie sprawę, że narzędzia i skrypty skojarzone z przeniesionymi zasobami nie będą działać dopóki nie Zaktualizuję ich do używania nowych identyfikatorów zasobów** opcji, a następnie kliknij przycisk **OK** do ukończenia Przenoszenie magazynu.
+6. Po dodaniu grupy zasobów upewnij **się, że narzędzia i skrypty skojarzone z przeniesionymi zasobami nie będą działały, dopóki nie zaktualizuję ich do używania nowych identyfikatorów zasobów** , a następnie kliknij przycisk **OK** , aby zakończyć przenoszenie magazynu.
 
    ![Komunikat z potwierdzeniem](./media/backup-azure-move-recovery-services/confirmation-message.png)
 
 
-## <a name="use-azure-portal-to-move-recovery-services-vault-to-a-different-subscription"></a>Przenieś magazyn usługi Recovery Services do innej subskrypcji za pomocą witryny Azure portal
+## <a name="use-azure-portal-to-move-recovery-services-vault-to-a-different-subscription"></a>Przenoszenie magazynu Recovery Services do innej subskrypcji za pomocą Azure Portal
 
-Magazyn usługi Recovery Services i skojarzone z nią zasoby można przenieść do innej subskrypcji
+Magazyn Recovery Services i powiązane z nim zasoby można przenieść do innej subskrypcji
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
-2. Otwieranie listy magazynów usługi Recovery Services i wybierz magazyn, który chcesz przenieść. Po otwarciu pulpitu nawigacyjnego magazynu pojawia się, jak pokazano na poniższej ilustracji.
+2. Otwórz listę magazynów Recovery Services i wybierz magazyn, który chcesz przenieść. Po otwarciu pulpitu nawigacyjnego magazynu pojawia się on jak pokazano na poniższej ilustracji.
 
-    ![Odzyskaj Otwórz magazyn usługi](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
+    ![Otwórz magazyn usługi odzyskiwania](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
-    Jeśli nie widzisz **Essentials** informacje dla swojego magazynu, kliknij ikonę listy rozwijanej. Powinien zostać wyświetlony informacji podstawy dla magazynu.
+    Jeśli nie widzisz informacji **podstawowe** dla swojego magazynu, kliknij ikonę listy rozwijanej. Należy teraz zobaczyć podstawowe informacje dotyczące magazynu.
 
-    ![Informacje o karcie danych podstawowych](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
+    ![Karta informacji o Essentials](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
-3. W menu przegląd magazynu, kliknij przycisk **zmienić** obok **subskrypcji**, aby otworzyć **przenoszenia zasobów** bloku.
+3. W menu przegląd magazynu kliknij pozycję **Zmień** obok pozycji **subskrypcja**, aby otworzyć blok **przenoszenie zasobów** .
 
    ![Zmień subskrypcję](./media/backup-azure-move-recovery-services/change-resource-subscription.png)
 
-4. Wybierz zasoby do przeniesienia, w tym miejscu zalecamy używać **Zaznacz wszystko** możliwość dokonania wyboru z listy opcjonalnych zasobów.
+4. Wybierz zasoby do przeniesienia. w tym miejscu zalecamy użycie opcji **Zaznacz wszystko** , aby wybrać wszystkie zasoby opcjonalne.
 
-   ![Przenoszenie zasobów](./media/backup-azure-move-recovery-services/move-resource-source-subscription.png)
+   ![Przenieś zasób](./media/backup-azure-move-recovery-services/move-resource-source-subscription.png)
 
-5. Wybierz subskrypcję docelową z **subskrypcji** listy rozwijanej, którego magazynu do przeniesienia.
-6. Aby dodać docelową grupę zasobów w **grupy zasobów** listy rozwijanej wybierz istniejący zasób grupy, lub kliknij przycisk **Utwórz nową grupę** opcji.
+5. Wybierz subskrypcję docelową z listy rozwijanej **subskrypcja** , w której chcesz przenieść magazyn.
+6. Aby dodać docelową grupę zasobów, z listy rozwijanej **Grupa zasobów** wybierz istniejącą grupę zasobów lub kliknij opcję **Utwórz nową grupę** .
 
    ![Dodaj subskrypcję](./media/backup-azure-move-recovery-services/add-subscription.png)
 
-7. Kliknij przycisk **zdaję sobie sprawę, że narzędzia i skrypty skojarzone z przeniesionymi zasobami nie będą działać dopóki nie Zaktualizuję ich do używania nowych identyfikatorów zasobów** opcję, aby potwierdzić, a następnie kliknij przycisk **OK**.
+7. Kliknij przycisk **rozumiem, że narzędzia i skrypty skojarzone z przeniesionymi zasobami nie będą działały, dopóki nie zaktualizuję do nich opcji Użyj nowych identyfikatorów zasobów** , aby potwierdzić, a następnie kliknij przycisk **OK**.
 
 > [!NOTE]
-> Krzyżowe subskrypcji kopii zapasowej (RS magazynu i chronionych maszyn wirtualnych znajdują się w różnych subskrypcjach) nie jest obsługiwanym scenariuszem. Ponadto nadmiarowości magazynu opcję lokalnie nadmiarowym (LRS) do globalnego magazyn nadmiarowy (GRS) i na odwrót nie może być modyfikowany podczas operacji przenoszenia magazynu.
+> Kopia zapasowa między subskrypcjami (magazyn RS i chronione maszyny wirtualne znajdują się w różnych subskrypcjach) nie jest obsługiwanym scenariuszem. Ponadto opcja nadmiarowości magazynu z lokalnego nadmiarowego magazynu (LRS) na globalnie nadmiarowy magazyn (GRS) i na odwrót nie może zostać zmodyfikowana podczas operacji przenoszenia magazynu.
 >
 >
 
-## <a name="use-powershell-to-move-recovery-services-vault"></a>Przenieś magazyn usługi Recovery Services za pomocą programu PowerShell
+## <a name="use-powershell-to-move-recovery-services-vault"></a>Przenoszenie magazynu Recovery Services przy użyciu programu PowerShell
 
-Aby przenieść magazyn usługi Recovery Services do innej grupy zasobów, użyj `Move-AzureRMResource` polecenia cmdlet. `Move-AzureRMResource` wymaga nazwy zasobów i typu zasobu. Możesz uzyskać zarówno z poziomu `Get-AzureRmRecoveryServicesVault` polecenia cmdlet.
+Aby przenieść magazyn Recovery Services do innej grupy zasobów, użyj `Move-AzureRMResource` polecenia cmdlet. `Move-AzureRMResource`wymaga nazwy zasobu i typu zasobu. Oba te `Get-AzureRmRecoveryServicesVault` elementy można pobrać z polecenia cmdlet.
 
 ```
 $destinationRG = "<destinationResourceGroupName>"
@@ -118,17 +118,17 @@ $vault = Get-AzureRmRecoveryServicesVault -Name <vaultname> -ResourceGroupName <
 Move-AzureRmResource -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
 ```
 
-Aby przenieść zasoby do innej subskrypcji, należy dołączyć `-DestinationSubscriptionId` parametru.
+Aby przenieść zasoby do innej subskrypcji, Dołącz `-DestinationSubscriptionId` parametr.
 
 ```
 Move-AzureRmResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
 ```
 
-Po wykonaniu powyższych poleceń cmdlet, użytkownik jest proszony o upewnij się, że chcesz przenieść określonych zasobów. Typ **Y** o potwierdzenie. Po pomyślnej weryfikacji zasób zostanie przeniesiony.
+Po wykonaniu powyższych poleceń cmdlet zostanie wyświetlony monit o potwierdzenie, że chcesz przenieść określone zasoby. Wpisz **Y** , aby potwierdzić. Po pomyślnej weryfikacji zasób jest przenoszony.
 
-## <a name="use-cli-to-move-recovery-services-vault"></a>Korzystanie z interfejsu wiersza polecenia w celu przeniesienia magazynu usług Recovery Services
+## <a name="use-cli-to-move-recovery-services-vault"></a>Przenoszenie magazynu Recovery Services przy użyciu interfejsu wiersza polecenia
 
-Aby przenieść magazyn usługi Recovery Services do innej grupy zasobów, użyj następującego polecenia cmdlet:
+Aby przenieść magazyn Recovery Services do innej grupy zasobów, użyj następującego polecenia cmdlet:
 
 ```
 az resource move --destination-group <destinationResourceGroupName> --ids <VaultResourceID>
@@ -136,15 +136,15 @@ az resource move --destination-group <destinationResourceGroupName> --ids <Vault
 
 Aby przejść do nowej subskrypcji, podać `--destination-subscription-id` parametru.
 
-## <a name="post-migration"></a>Zadania po migracji
+## <a name="post-migration"></a>Po migracji
 
-1. Musisz set/weryfikowania kontroli dostępu dla grup zasobów.  
-2. Raportowanie kopii zapasowych i funkcja monitorowania należy skonfigurować ponownie dla wpisu magazynu, w których przeniesienie kończy. Poprzedniej konfiguracji zostaną utracone podczas operacji przenoszenia.
+1. Należy ustawić/sprawdzić kontrolę dostępu dla grup zasobów.  
+2. Funkcja raportowania i monitorowania kopii zapasowych musi zostać skonfigurowana ponownie dla magazynu po zakończeniu przenoszenia. Poprzednia konfiguracja zostanie utracona podczas operacji przenoszenia.
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Wiele różnych typów zasobów można przenosić między grupami zasobów i subskrypcji.
+Wiele różnych typów zasobów można przenosić między grupami zasobów i subskrypcjami.
 
 Aby uzyskać więcej informacji, zobacz [Move resources to new resource group or subscription](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources) (Przenoszenie zasobów do nowej grupy lub subskrypcji).

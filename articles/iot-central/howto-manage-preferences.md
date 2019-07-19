@@ -1,42 +1,42 @@
 ---
-title: Zarządzać swoimi preferencjami dotyczącymi aplikacji, na IoT Central | Dokumentacja firmy Microsoft
-description: Jak zarządzać aplikacji i preferencji na IoT Central
+title: Zarządzaj preferencjami aplikacji na IoT Central | Microsoft Docs
+description: Jak zarządzać aplikacją i preferencjami osobistymi dotyczącymi IoT Central
 author: lmasieri
 ms.author: lmasieri
-ms.date: 02/20/2019
+ms.date: 07/10/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 00d40b9910f9b549443373c84b079c543037ce62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c5c0dbcb1c1f483bd7499de08c9f1949adff415b
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65236321"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850143"
 ---
-# <a name="manage-your-application-preferences"></a>Zarządzać swoimi preferencjami dotyczącymi aplikacji
+# <a name="manage-your-application-preferences"></a>Zarządzanie preferencjami aplikacji
 
 *Ten artykuł dotyczy operatorów, konstruktorów i administratorów.*
 
-IoT Central zapewnia elastyczność dostosowywanie aplikacji do swoich potrzeb. Oferujemy również pewną swobodę określania na poszczególnych użytkowników, aby dostosować własnego widoku. W tym artykule opisano różne opcje dostosowywania, które użytkownik może dotyczyć swój profil.
+IoT Central zapewnia elastyczność dostosowywania aplikacji do własnych potrzeb. Zapewniamy również pewną elastyczność dla poszczególnych użytkowników, aby dostosować swój własny widok. W tym artykule opisano różne opcje dostosowywania, które użytkownik może zastosować do swojego profilu.
 
 ## <a name="changing-language"></a>Zmiana języka
 
-IoT Central jest obsługiwana w wielu językach. Można przełączyć preferowanego języka, używając **selektor języka** ikonę ustawień na górnym pasku nawigacyjnym. Po zmianie języka, IoT Central pamięta wybór i stosuje go we wszystkich aplikacjach. Możliwość dostosowania w aplikacji, które nie są zlokalizowane takich obrazów pulpitu nawigacyjnego.
+IoT Central jest obsługiwany w wielu językach. Preferowany język można zmienić za pomocą selektora **języka** na ikonie ustawień na górnym pasku nawigacyjnym. Po zmianie języka IoT Central zapamiętuje wybór i stosuje go we wszystkich aplikacjach. Dostosowanie w aplikacji takie obrazy pulpitu nawigacyjnego nie są zlokalizowane.
 
-## <a name="changing-theme"></a>Trwa zmienianie motywu
+## <a name="changing-theme"></a>Zmienianie motywu
 
-Oferujemy obsługę motyw jasny i ciemny motyw. Motyw jasny jest wartość domyślna, motyw można zmienić, wybierając ikonę ustawienia, na górnym pasku nawigacyjnym.
+Obsługujemy motyw ciemny i jasny. Gdy motyw jasny jest domyślny, można zmienić motyw, wybierając ikonę ustawienia na górnym pasku nawigacyjnym.
 
 ![Selektor motywu IoT Central](media/howto-manage-preferences/settings.png)
 
 > [!NOTE]
-> Możliwość wyboru między motywy jasny i ciemny jest niedostępna, jeśli administrator skonfigurował motywu niestandardowego dla aplikacji.
+> Opcja wyboru między jasnym i ciemnym motywem nie jest dostępna, jeśli administrator skonfigurował niestandardowy motyw dla aplikacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, kiedy znasz sposób zarządzania swój profil w usłudze Azure IoT Central, poniżej przedstawiono sugerowany następny krok:
+Teraz, gdy wiesz już, jak zarządzać profilem w usłudze Azure IoT Central, poniżej przedstawiono sugerowany następny krok:
 
 > [!div class="nextstepaction"]
-> [Przełącz Czat na żywo](howto-show-hide-chat.md)
+> [Przełącz czat na żywo](howto-show-hide-chat.md)

@@ -1,45 +1,45 @@
 ---
-title: Zrozumienie kontroli dostępu opartej na rolach Twins cyfrowych platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, uwierzytelnianie w reprezentacji urządzeń cyfrowych przy użyciu kontroli dostępu opartej na rolach.
+title: Opis kontroli dostępu opartej na rolach w usłudze Azure Digital bliźniaczych reprezentacji | Microsoft Docs
+description: Poznaj uwierzytelnianie w programie Digital bliźniaczych reprezentacji z kontrolą dostępu opartą na rolach.
 author: lyrana
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 12/27/2018
-ms.author: lyrana
-ms.openlocfilehash: bfc73a71a0ccda5c135e6a740d6f63bd37522a9b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: lyhughes
+ms.openlocfilehash: 33e09ad52722665e6162b18159012d69ec1463bd
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60534134"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849278"
 ---
-# <a name="role-based-access-control-in-azure-digital-twins"></a>Kontrola dostępu oparta na rolach w reprezentacji urządzeń cyfrowych platformy Azure
+# <a name="role-based-access-control-in-azure-digital-twins"></a>Kontrola dostępu oparta na rolach w usłudze Azure Digital bliźniaczych reprezentacji
 
-Twins cyfrowych platformy Azure umożliwia kontrolowanie precyzyjnego dostępu do określonych danych, zasobów i akcji w grafie przestrzennych. Robi to za pośrednictwem szczegółowe zarządzanie rolami i uprawnieniami o nazwie kontroli dostępu opartej na rolach (RBAC). RBAC składa się z _role_ i _przypisań ról_. Role Określ poziom uprawnień. Przypisania ról skojarzyć roli z użytkowników lub urządzeń.
+Usługa Azure Digital bliźniaczych reprezentacji umożliwia precyzyjne sterowanie dostępem do określonych danych, zasobów i akcji w grafie przestrzennym. Odbywa się to za pośrednictwem szczegółowego zarządzania rolami i uprawnieniami o nazwie kontroli dostępu opartej na rolach (RBAC). RBAC składa się z _ról_ i przypisań _ról_. Role identyfikują poziom uprawnień. Przypisania ról kojarzą rolę z użytkownikiem lub urządzeniem.
 
-Korzystając z modelu RBAC uprawnienia nadane:
+Przy użyciu RBAC można udzielić uprawnienia do:
 
 - Użytkownik.
 - Urządzenie.
-- Jednostki usługi.
+- Nazwa główna usługi.
 - Funkcja zdefiniowana przez użytkownika.
 - Wszyscy użytkownicy, którzy należą do domeny.
-- Dzierżawca.
+- Dzierżawa.
 
-Można także dostosować stopień dostępu.
+Stopień dostępu może być również dostosowany.
 
-RBAC jest unikatowa, w tym, że uprawnienia są dziedziczone w dół przestrzenne programu graph.
+RBAC jest unikatowy w tym, że uprawnienia są dziedziczone jako wykres przestrzenny.
 
 ## <a name="what-can-i-do-with-rbac"></a>Co można zrobić za pomocą kontroli dostępu opartej na rolach?
 
-Deweloper może używać funkcji RBAC w usłudze:
+Deweloper może używać RBAC, aby:
 
-- Udzielić użytkownikowi możliwość zarządzania urządzeniami dla całego kompilowania lub tylko dla konkretnego pomieszczenia lub piętra.
-- Udziel administrator globalny dostęp do wszystkich węzłów przestrzenne wykresu cały wykres, czy tylko w części wykresu.
-- Udzielanie dostępu Odczyt specjalista ds. pomocy technicznej do grafu, z wyjątkiem klucze dostępu.
-- Przyznaj każdy członek domeny do odczytu wszystkich obiektów grafu.
+- Przyznaj użytkownikowi możliwość zarządzania urządzeniami w całym budynku lub tylko dla określonego pokoju lub podłogi.
+- Przyznaj administratorowi globalny dostęp do wszystkich węzłów wykresu przestrzennego dla całego wykresu lub tylko dla sekcji grafu.
+- Przyznaj specjalistom pomocy technicznej dostęp do odczytu do grafu, z wyjątkiem kluczy dostępu.
+- Przyznaj wszystkim członkom domeny dostęp do odczytu do wszystkich obiektów grafu.
 
 ## <a name="rbac-best-practices"></a>Najlepsze rozwiązania RBAC
 
@@ -49,38 +49,38 @@ Deweloper może używać funkcji RBAC w usłudze:
 
 ### <a name="role-definitions"></a>Definicje ról
 
-Definicja roli to zbiór uprawnień i inne atrybuty wchodzących w skład roli. Definicja roli Wyświetla dozwolone operacje, które obejmują *Utwórz*, *odczytu*, *aktualizacji*, i *Usuń* , dowolnego obiektu, korzystając z niego Rola może wykonywać. Określa również, do którego dotyczą uprawnień typów obiektu.
+Definicja roli jest kolekcją uprawnień i innych atrybutów, które stanowią rolę. Definicja roli zawiera listę dozwolonych operacji, takich jak *Tworzenie*, *odczytywanie*, *Aktualizowanie*i *usuwanie* dowolnego obiektu z tą rolą. Określa również, do których typów obiektów odnoszą się uprawnienia.
 
 [!INCLUDE [digital-twins-roles](../../includes/digital-twins-roles.md)]
 
 >[!NOTE]
-> Aby pobrać pełną definicje ról poprzedniej, zapytania systemu/role interfejsu API.
-> Dowiedz się więcej, czytając [tworzenie i Zarządzanie przypisaniami ról](./security-create-manage-role-assignments.md#all).
+> Aby pobrać pełne definicje dla poprzednich ról, wykonaj zapytanie do interfejsu API System/role.
+> Dowiedz się więcej, odczytując [Tworzenie przypisań ról i zarządzanie nimi](./security-create-manage-role-assignments.md#all).
 
 ### <a name="object-identifier-types"></a>Typy identyfikatorów obiektów
 
 [!INCLUDE [digital-twins-object-types](../../includes/digital-twins-object-id-types.md)]
 
 >[!TIP]
-> Dowiedz się, jak udzielić uprawnień do jednostki usługi, czytając [tworzenie i Zarządzanie przypisaniami ról](./security-create-manage-role-assignments.md#grant).
+> Dowiedz się, jak przyznać uprawnienia do nazwy głównej usługi, odczytując [Tworzenie przypisań ról i zarządzanie nimi](./security-create-manage-role-assignments.md#grant).
 
-Opisano w następujących artykułach dokumentacji odwołania:
+W poniższych artykułach dokumentacji referencyjnej opisano:
 
-- Jak [zapytania lub identyfikator obiektu użytkownika](https://docs.microsoft.com/powershell/module/azuread/get-azureaduser?view=azureadps-2.0).
+- Jak [wykonać zapytanie lub identyfikator obiektu dla użytkownika](https://docs.microsoft.com/powershell/module/azuread/get-azureaduser?view=azureadps-2.0).
 - Jak [uzyskać identyfikator obiektu dla jednostki usługi](https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal).
 - Jak [pobrać identyfikator obiektu dla dzierżawy usługi Azure AD](../active-directory/develop/quickstart-create-new-tenant.md).
 
 ## <a name="role-assignments"></a>Przypisania ról
 
-Przypisanie roli Azure cyfrowego bliźniaczych reprezentacji kojarzy obiekt, na przykład użytkownik lub dzierżawę usługi Azure AD z roli i spację. Uprawnienia są przyznawane wszystkie obiekty, które należą do tego miejsca. Miejsce obejmuje cały wykres przestrzenne znajdujące się poniżej.
+Przypisanie roli bliźniaczych reprezentacji Digital Azure kojarzy obiekt, taki jak użytkownik lub dzierżawa usługi Azure AD, z rolą i spacją. Uprawnienia są przyznawane wszystkim obiektom należącym do tego miejsca. Przestrzeń zawiera cały wykres przestrzenny poniżej.
 
-Na przykład, użytkownik otrzyma przypisania roli z rolą `DeviceInstaller` dla węzła głównego przestrzenne programu graph, która reprezentuje budynku. Użytkownik, a następnie może odczytywać i zaktualizuj urządzenia dla tego węzła i wszystkich innych podrzędnych miejsca do magazynowania w budynku.
+Na przykład użytkownik otrzymuje przypisanie roli z rolą `DeviceInstaller` dla głównego węzła wykresu przestrzennego, który reprezentuje Kompilowanie. Użytkownik może następnie odczytywać i aktualizować urządzenia dla tego węzła oraz wszystkie inne miejsca podrzędne w budynku.
 
-Aby udzielić uprawnień do adresata, Utwórz przypisanie roli. Aby odwołać uprawnienia, usunąć przypisanie roli.
+Aby udzielić uprawnień do adresata, Utwórz przypisanie roli. Aby odwołać uprawnienia, usuń przypisanie roli.
 
 >[!IMPORTANT]
-> Więcej informacji na temat przypisania ról, czytając [tworzenie i Zarządzanie przypisaniami ról](./security-create-manage-role-assignments.md).
+> Dowiedz się więcej o przypisaniach ról, odczytując informacje o [tworzeniu przypisań ról i zarządzaniu nimi](./security-create-manage-role-assignments.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się więcej na temat tworzenia i zarządzania przypisaniami ról Twins cyfrowych platformy Azure, przeczytaj [tworzenie i Zarządzanie przypisaniami ról](./security-create-manage-role-assignments.md).
+- Aby dowiedzieć się więcej na temat tworzenia przypisań ról bliźniaczych reprezentacji cyfrowych platformy Azure i zarządzania nimi, zobacz [Tworzenie przypisań ról i zarządzanie nimi](./security-create-manage-role-assignments.md).

@@ -1,43 +1,44 @@
 ---
-title: Sprawdzanie kondycji rejestru w usłudze Azure Container Registry
-description: Dowiedz się, jak uruchomić szybkie polecenia diagnostycznego w celu zidentyfikowania często występujących problemów w przypadku korzystania z usługi Azure container registry, łącznie z lokalnej konfiguracji platformy Docker i łączność z rejestru
+title: Sprawdź kondycję rejestru w Azure Container Registry
+description: Dowiedz się, jak uruchomić szybkie polecenie diagnostyczne, aby zidentyfikować typowe problemy występujące podczas korzystania z usługi Azure Container Registry, w tym konfiguracji lokalnej platformy Docker i łączności z rejestrem.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: danlep
-ms.openlocfilehash: 3e5b5467f9fa25e23f6661c6630d346aa85e2205
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 3511655d220ee85ce6b5744612e5d6fddafbe877
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67555100"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309732"
 ---
-# <a name="check-the-health-of-an-azure-container-registry"></a>Sprawdzanie kondycji usługi Azure container registry
+# <a name="check-the-health-of-an-azure-container-registry"></a>Sprawdzanie kondycji usługi Azure Container Registry
 
-Korzystając z usługi Azure container registry, czasami mogą wystąpić problemy. Na przykład nie można ściągnąć obrazu kontenera ze względu na problem z platformą Docker w środowisku lokalnym. Lub problem z siecią może uniemożliwić nawiązywania połączenia z rejestru. 
+W przypadku korzystania z usługi Azure Container Registry czasami mogą wystąpić problemy. Na przykład może nie być możliwe odtworzenie obrazu kontenera z powodu problemu z platformą Docker w środowisku lokalnym. Problem z siecią może również uniemożliwić połączenie się z rejestrem. 
 
-Pierwszym krokiem diagnostycznych, należy uruchomić [kondycja sprawdzania az acr][az-acr-check-health] command to get information about the health of the environment and optionally access to a target registry. This command is available in Azure CLI version 2.0.67 or later. If you need to install or upgrade, see [Install Azure CLI][azure-cli].
+Jako pierwszy krok diagnostyczny Uruchom polecenie [AZ ACR Check-Health][az-acr-check-health] command to get information about the health of the environment and optionally access to a target registry. This command is available in Azure CLI version 2.0.67 or later. If you need to install or upgrade, see [Install Azure CLI][azure-cli].
 
-## <a name="run-az-acr-check-health"></a>Uruchom kondycja sprawdzania az acr
+## <a name="run-az-acr-check-health"></a>Uruchom AZ ACR Check-Health
 
-Przykładach przedstawiono różne sposoby, aby uruchomić `az acr check-health` polecenia.
+W poniższych przykładach pokazano różne sposoby uruchomienia `az acr check-health` polecenia.
 
 > [!NOTE]
-> Po uruchomieniu polecenia w usłudze Azure Cloud Shell w środowisku lokalnym nie jest zaznaczone. Jednak można sprawdzić dostępu do rejestru docelowego.
+> Jeśli uruchomisz polecenie w Azure Cloud Shell, lokalne środowisko nie jest zaznaczone. Można jednak sprawdzić dostęp do rejestru docelowego.
 
-### <a name="check-the-environment-only"></a>Sprawdź środowisko tylko
+### <a name="check-the-environment-only"></a>Sprawdź tylko środowisko
 
-Aby sprawdzić lokalnej platformy Docker demona, wersję interfejsu wiersza polecenia i narzędzia Helm konfiguracji klienta, uruchom polecenie bez dodatkowych parametrów:
+Aby sprawdzić lokalny demon platformy Docker, wersję interfejsu wiersza polecenia i konfigurację klienta Helm, uruchom polecenie bez dodatkowych parametrów:
 
 ```azurecli
 az acr check-health
 ```
 
-### <a name="check-the-environment-and-a-target-registry"></a>Sprawdź środowisko i rejestru docelowego
+### <a name="check-the-environment-and-a-target-registry"></a>Sprawdź środowisko i rejestr docelowy
 
-Aby Sprawdź dostęp do rejestru także wykonywać testy w środowisku lokalnym, należy przekazać nazwę rejestru docelowego. Na przykład:
+Aby sprawdzić dostęp do rejestru, a także przeprowadzić testy środowiska lokalnego, należy przekazać nazwę docelowego rejestru. Przykład:
 
 ```azurecli
 az acr check-health --name myregistry
@@ -45,9 +46,9 @@ az acr check-health --name myregistry
 
 ## <a name="error-reporting"></a>Raportowanie błędów
 
-Polecenie rejestruje informacje do wyjścia standardowego. Jeśli zostanie wykryty problem, zawiera kod błędu i opis. Aby uzyskać więcej informacji na temat kodów i możliwe rozwiązania, zobacz [informacje o błędzie](container-registry-health-error-reference.md).
+Polecenie rejestruje informacje w standardowym wyjściu. Jeśli problem zostanie wykryty, zawiera kod błędu i opis. Aby uzyskać więcej informacji o kodach i możliwych rozwiązaniach, zobacz [Informacje o błędzie](container-registry-health-error-reference.md).
 
-Domyślnie polecenie zatrzymuje zawsze wtedy, gdy znajdzie się błąd. Możesz również uruchomić polecenie tak, aby wszystkie kontrole kondycji, zapewnia dane wyjściowe nawet wtedy, gdy wystąpią błędy. Dodaj `--ignore-errors` parametru, jak pokazano w poniższych przykładach:
+Domyślnie polecenie jest przerywane za każdym razem, gdy odnajdzie błąd. Możesz również uruchomić polecenie, aby dostarczać dane wyjściowe dla wszystkich kontroli kondycji, nawet jeśli zostaną znalezione błędy. `--ignore-errors` Dodaj parametr, jak pokazano w następujących przykładach:
 
 ```azurecli
 # Check environment only
@@ -78,9 +79,9 @@ Fetch access token for registry 'myregistry.azurecr.io' : OK
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Szczegółowe informacje na temat kodów błędów zwróconych przez [kondycja sprawdzania az acr][az-acr-check-health] polecenia, zobacz [informacje o błędzie sprawdzania kondycji](container-registry-health-error-reference.md).
+Aby uzyskać szczegółowe informacje o kodach błędów zwracanych przez polecenie [AZ ACR Check-Health][az-acr-check-health] , zobacz [Informacje o błędzie sprawdzania kondycji](container-registry-health-error-reference.md).
 
-Zobacz [— często zadawane pytania](container-registry-faq.md) często zadawane pytania i inne znane problemy dotyczące usługi Azure Container Registry.
+Zapoznaj się z [często](container-registry-faq.md) zadawanymi pytaniami i innymi znanymi problemami dotyczącymi Azure Container Registry.
 
 
 

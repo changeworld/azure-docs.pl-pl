@@ -1,32 +1,33 @@
 ---
-title: Uwierzytelnianie za pomocą usługi Azure Container Registry z usługi Azure Kubernetes Service
-description: Dowiedz się, jak zapewnić dostęp do obrazów w prywatnego rejestru kontenera z usługi Azure Kubernetes Service za pomocą jednostki usługi Azure Active Directory.
+title: Uwierzytelnianie za pomocą Azure Container Registry z usługi Azure Kubernetes
+description: Dowiedz się, jak zapewnić dostęp do obrazów w prywatnym rejestrze kontenerów z usługi Azure Kubernetes Service przy użyciu nazwy głównej usługi Azure Active Directory.
 services: container-service
 author: dlepow
+manager: gwallace
 ms.service: container-service
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: danlep
-ms.openlocfilehash: a541af77daf4136c0056cf9919d69c538d1dc5b6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9690f900b6fe8d81fbebc3fcf5b7022b12bc3b96
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754462"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310257"
 ---
-# <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Uwierzytelnianie za pomocą usługi Azure Container Registry z usługi Azure Kubernetes Service
+# <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Uwierzytelnianie za pomocą Azure Container Registry z usługi Azure Kubernetes
 
-Podczas korzystania z usługi Azure Container Registry (ACR) przy użyciu usługi Azure Kubernetes Service (AKS), mechanizm uwierzytelniania musi zostać ustanowione. Ten artykuł szczegółowo opisuje zalecanym konfiguracjom dotyczącym uwierzytelniania między tymi dwoma usługami platformy Azure.
+W przypadku korzystania z Azure Container Registry (ACR) z usługą Azure Kubernetes Service (AKS) należy nawiązać mechanizm uwierzytelniania. W tym artykule opisano zalecane konfiguracje uwierzytelniania między tymi dwiema usługami platformy Azure.
 
-Musisz skonfigurować jedną z następujących metod uwierzytelniania. Najbardziej typowym podejściem jest [udzielić dostępu przy użyciu jednostki usługi AKS](#grant-aks-access-to-acr). Jeśli użytkownik ma określone potrzeby, możesz opcjonalnie [udzielić dostępu przy użyciu kluczy tajnych Kubernetes](#access-with-kubernetes-secret).
+Wystarczy tylko skonfigurować jedną z tych metod uwierzytelniania. Najbardziej typowym podejściem jest [przyznanie dostępu przy użyciu nazwy głównej usługi AKS](#grant-aks-access-to-acr). Jeśli masz określone potrzeby, możesz opcjonalnie [udzielić dostępu przy użyciu wpisów tajnych Kubernetes](#access-with-kubernetes-secret).
 
-W tym artykule przyjęto założenie, że utworzono już klaster AKS i będą mogli uzyskiwać dostęp do klastra za pomocą `kubectl` klienta wiersza polecenia.
+W tym artykule przyjęto założenie, że klaster AKS został już utworzony i można uzyskać dostęp do klastra przy `kubectl` użyciu wiersza polecenia.
 
-## <a name="grant-aks-access-to-acr"></a>AKS udzielanie dostępu do usługi ACR
+## <a name="grant-aks-access-to-acr"></a>Przyznaj AKS dostęp do ACR
 
-Podczas tworzenia klastra usługi AKS Azure tworzy również usługę jednostki do obsługi klastra sprawność działania, za pomocą innych zasobów platformy Azure. Ta jednostka usługi generowanych automatycznie służy do uwierzytelniania za pomocą rejestru ACR. Aby to zrobić, należy utworzyć usługę Azure AD [przypisania roli](../role-based-access-control/overview.md#role-assignments) która przyznaje klastra jednostce usługi dostępu do rejestru kontenerów.
+Podczas tworzenia klastra AKS, platforma Azure tworzy również jednostkę usługi, aby zapewnić obsługę gotowości klastra z innymi zasobami platformy Azure. Tej automatycznie generowanej jednostki usługi można użyć do uwierzytelniania za pomocą rejestru ACR. W tym celu należy utworzyć [przypisanie roli](../role-based-access-control/overview.md#role-assignments) usługi Azure AD, które przyznaje głównej nazwy klastra dostępu do rejestru kontenerów.
 
-Użyj następującego skryptu, aby udzielić dostępu ściągnięcia jednostki usługi AKS, wygenerowane do usługi Azure container registry. Modyfikowanie `AKS_*` i `ACR_*` zmiennych w danym środowisku przed uruchomieniem skryptu.
+Użyj poniższego skryptu, aby przyznać jednostce usługi wygenerowanej przez AKS dostęp ściągający do rejestru kontenerów platformy Azure. Przed uruchomieniem `ACR_*` skryptu zmodyfikuj zmienne idlaśrodowiska.`AKS_*`
 
 ```bash
 #!/bin/bash
@@ -46,11 +47,11 @@ ACR_ID=$(az acr show --name $ACR_NAME --resource-group $ACR_RESOURCE_GROUP --que
 az role assignment create --assignee $CLIENT_ID --role acrpull --scope $ACR_ID
 ```
 
-## <a name="access-with-kubernetes-secret"></a>Dostęp za pomocą wpisie tajnym rozwiązania Kubernetes
+## <a name="access-with-kubernetes-secret"></a>Dostęp za pomocą klucza tajnego Kubernetes
 
-W niektórych przypadkach nie można przypisać rolę wymagane do udostępnienie go do usługi ACR jednostki generowane automatycznie usługi AKS. Na przykład ze względu na model zabezpieczeń w organizacji, nie masz wystarczających uprawnień w dzierżawie usługi Azure Active Directory do przypisywania roli do jednostki usługi generowanych przez usługi AKS. Przypisywanie roli do nazwy głównej usługi wymaga kontem usługi Azure AD, aby mieć uprawnienia do zapisu do dzierżawy usługi Azure AD. Jeśli nie masz uprawnień, możesz utworzyć nową jednostkę usługi, a następnie przyznać jej dostęp do rejestru kontenerów, za pomocą wpisu tajnego ściągania obrazów platformy Kubernetes.
+W niektórych przypadkach może być niemożliwe przypisanie wymaganej roli do automatycznie generowanej nazwy głównej usługi AKS udzielenie dostępu do ACR. Na przykład ze względu na model zabezpieczeń organizacji, możesz nie mieć wystarczających uprawnień w dzierżawie Azure Active Directory, aby przypisać rolę do jednostki usługi wygenerowanej przez AKS. Przypisanie roli do jednostki usługi wymaga, aby konto usługi Azure AD miało uprawnienie do zapisu w dzierżawie usługi Azure AD. Jeśli nie masz uprawnień, możesz utworzyć nową nazwę główną usługi, a następnie udzielić jej dostępu do rejestru kontenerów przy użyciu klucza tajnego Kubernetes obrazu.
 
-Użyj następującego skryptu, aby utworzyć nową jednostkę usługi, (użyjesz jej poświadczenia wpisie tajnym rozwiązania Kubernetes obraz ściągnięcia). Modyfikowanie `ACR_NAME` zmiennej w środowisku przed uruchomieniem skryptu.
+Użyj poniższego skryptu, aby utworzyć nową nazwę główną usługi (użyjesz swoich poświadczeń dla klucza tajnego ściągania obrazu Kubernetes). `ACR_NAME` Zmodyfikuj zmienną dla środowiska przed uruchomieniem skryptu.
 
 ```bash
 #!/bin/bash
@@ -73,15 +74,15 @@ echo "Service principal ID: $CLIENT_ID"
 echo "Service principal password: $SP_PASSWD"
 ```
 
-Można teraz przechowywać poświadczenia nazwy głównej usługi w usłudze Kubernetes [klucz tajny ściągania obrazów][image-pull-secret], która będzie stanowiła odwołanie klastra usługi AKS, podczas uruchamiania kontenerów.
+Teraz można przechowywać poświadczenia jednostki usługi w [kluczu tajnym ściągania obrazu][image-pull-secret]Kubernetes, którego klaster AKS będzie odwoływać się w przypadku uruchamiania kontenerów.
 
-Należy użyć następującego **kubectl** polecenie, aby utworzyć wpisu tajnego rozwiązania Kubernetes. Zastąp `<acr-login-server>` z w pełni kwalifikowanej nazwy usługi Azure container registry (jest w formacie "acrname.azurecr.io"). Zastąp `<service-principal-ID>` i `<service-principal-password>` przy użyciu wartości uzyskanych przez uruchomienie skryptu poprzedniego. Zastąp `<email-address>` z dowolnego adresu e-mail poprawnie sformułowany.
+Aby utworzyć wpis tajny Kubernetes, użyj następującego polecenia **polecenia kubectl** . Zamień `<acr-login-server>` na w pełni kwalifikowaną nazwę usługi Azure Container Registry (w formacie "acrname.azurecr.IO"). `<service-principal-ID>` Zastąp `<service-principal-password>` wartości i wartościami uzyskanymi w wyniku uruchomienia poprzedniego skryptu. Zamień `<email-address>` na dowolny poprawnie sformułowany adres e-mail.
 
 ```bash
 kubectl create secret docker-registry acr-auth --docker-server <acr-login-server> --docker-username <service-principal-ID> --docker-password <service-principal-password> --docker-email <email-address>
 ```
 
-Wpisie tajnym rozwiązania Kubernetes można teraz używać we wdrożeniach pod, określając jej nazwę (w tym przypadku "acr-auth") w `imagePullSecrets` parametru:
+Możesz teraz użyć wpisu tajnego Kubernetes w ramach wdrożeń pod, określając jego nazwę (w tym przypadku "ACR-auth") w `imagePullSecrets` parametrze:
 
 ```yaml
 apiVersion: apps/v1beta1

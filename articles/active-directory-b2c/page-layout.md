@@ -1,0 +1,99 @@
+---
+title: Wybierz układ strony — Azure Active Directory B2C
+description: Dowiedz się więcej na temat wybierania układu strony w Azure Active Directory B2C.
+services: active-directory-b2c
+author: mmacy
+manager: celestedg
+ms.service: active-directory
+ms.workload: identity
+ms.topic: conceptual
+ms.date: 07/04/2019
+ms.author: marsma
+ms.subservice: B2C
+ms.openlocfilehash: 011fb262ff91c56269c5b7dc9adf4aaeab9acbd5
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68229052"
+---
+# <a name="select-a-page-layout-in-azure-active-directory-b2c-using-custom-policies"></a>Wybieranie układu strony w Azure Active Directory B2C przy użyciu zasad niestandardowych
+
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
+
+Kod po stronie klienta w języku JavaScript można włączyć w zasadach B2C (Azure AD) w Azure Active Directory systemie, niezależnie od tego, czy używasz przepływów użytkowników, czy zasad niestandardowych. Aby włączyć obsługę języka JavaScript dla aplikacji, musisz dodać element do [zasad niestandardowych](active-directory-b2c-overview-custom.md), wybrać układ strony i użyć [b2clogin.com](b2clogin.md) w swoich żądaniach.
+
+Układ strony to skojarzenie elementów udostępnianych Azure AD B2C i zawartości.
+
+W tym artykule omówiono sposób wybierania układu strony w Azure AD B2C przez skonfigurowanie go w niestandardowych zasadach.
+
+> [!NOTE]
+> Jeśli chcesz włączyć język JavaScript dla przepływów użytkownika, zobacz [wersje JavaScript i układ strony w Azure Active Directory B2C](user-flow-javascript-overview.md).
+
+## <a name="replace-datauri-values"></a>Zastąp wartości Identyfikator URI
+
+W przypadku zasad niestandardowych, konieczne może być [ContentDefinitions](contentdefinitions.md) definiują szablony HTML używane w podróży użytkownika. **ContentDefinition** zawiera **identyfikator URI** odwołujący się do elementów strony udostępniane przez usługę Azure AD B2C. **Parametr LoadUri** jest ścieżką względną do zawartości HTML i CSS, która należy podać.
+
+```XML
+<ContentDefinition Id="api.idpselections">
+  <LoadUri>~/tenant/default/idpSelector.cshtml</LoadUri>
+  <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+  <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0</DataUri>
+  <Metadata>
+    <Item Key="DisplayName">Idp selection page</Item>
+    <Item Key="language.intro">Sign in</Item>
+  </Metadata>
+</ContentDefinition>
+```
+
+Aby wybrać układ strony, należy zmienić wartości **DataUri** w [ContentDefinitions](contentdefinitions.md) w zasadach. Przełączając się ze starego **identyfikator URI** wartości z nowymi wartościami miar, w przypadku zaznaczenia niemodyfikowalny pakiet. Zaletą używania tego pakietu jest wiadomo nie zmienić i spowodować nieoczekiwane zachowanie na stronie.
+
+Aby skonfigurować układ strony, Skorzystaj z poniższej tabeli, aby znaleźć wartości **DataUri** .
+
+| Stara wartość identyfikator URI | Nowa wartość identyfikator URI |
+| ----------------- | ----------------- |
+| `urn:com:microsoft:aad:b2c:elements:claimsconsent:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:claimsconsent:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:globalexception:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.1.0` |
+| `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:multifactor:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.1.0` |
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.1.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssd:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.1.0` |
+
+## <a name="version-change-log"></a>Dziennik zmian wersji
+
+Pakiety układów stron są okresowo aktualizowane w celu uwzględnienia poprawek i ulepszeń w ich elementach strony. Następujący dziennik zmian określa zmiany wprowadzone w każdej wersji.
+
+### <a name="110"></a>1.1.0
+
+- Strona wyjątku (globalexception)
+  - Poprawka ułatwień dostępu
+  - Usunięto komunikat domyślny, gdy nie ma kontaktu z zasad
+  - Usunięto domyślny kod CSS
+- Strona usługi MFA (wieloskładnikowa)
+  - Przycisk "Potwierdź kod" został usunięty
+  - Pole wejściowe dla kodu przyjmuje teraz tylko dane wejściowe z maksymalnie sześciu (6) znaków
+  - Strona automatycznie podejmie próbę zweryfikowania kodu wprowadzonego po wprowadzeniu 6-cyfrowy kod bez kliknięcia przycisku
+  - Jeśli kod jest nieprawidłowy, pole danych wejściowych zostanie automatycznie wyczyszczone
+  - Po trzech (3) próbach z nieprawidłowym kodem B2C wysyła błąd z powrotem do jednostki uzależnionej
+  - Poprawki ułatwień dostępu
+  - Usunięto domyślny kod CSS
+- Strona z własnym potwierdzeniem (selfasserted)
+  - Usunięto alert dotyczący anulowania
+  - Klasa CSS dla elementów Error
+  - Ulepszone wyświetlanie/ukrywanie logiki błędów
+  - Usunięto domyślny kod CSS
+- Ujednolicony Dostawca SSP (unifiedssp)
+  - Dodano kontrolkę nie wylogowuj mnie (KMSI)
+
+### <a name="100"></a>1.0.0
+
+- Wersja początkowa
+
+## <a name="next-steps"></a>Następne kroki
+
+Znajdź więcej informacji na temat w jaki sposób dostosować interfejs użytkownika aplikacji w [Dostosowywanie interfejsu użytkownika aplikacji za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).

@@ -1,6 +1,6 @@
 ---
-title: Inteligentne korelacji alertów w usłudze Azure Security Center (zdarzenia) w chmurze | Dokumentacja firmy Microsoft
-description: W tym temacie wyjaśniono, jak fusion używa chmury inteligentne korelacji alertów pod kątem generowania zdarzeń zabezpieczeń znajdują się w usłudze Azure Security Center.
+title: Korelacja inteligentnego alertu w chmurze w Azure Security Center (zdarzenia) | Microsoft Docs
+description: W tym temacie opisano sposób, w jaki funkcja Fusion używa korelacji alertów inteligentnych w chmurze w celu wygenerowania zdarzeń zabezpieczeń w Azure Security Center.
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -13,31 +13,31 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/02/2019
-ms.author: monhaber
-ms.openlocfilehash: 2ab4dab8cb7729b0c2ca023f22066f7b5d166a02
-ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
+ms.author: v-mohabe
+ms.openlocfilehash: 7ba2cf14d9fac100f44a1ef23997b27ba062bee0
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67571779"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295859"
 ---
-# <a name="cloud-smart-alert-correlation-in-azure-security-center-incidents"></a>Inteligentne korelacji alertów w usłudze Azure Security Center (zdarzenia) w chmurze
+# <a name="cloud-smart-alert-correlation-in-azure-security-center-incidents"></a>Korelacja inteligentnego alertu w chmurze w Azure Security Center (zdarzenia)
 
-Usługa Security Center w sposób ciągły analizuje obciążeniach chmury hybrydowej przy użyciu zaawansowanej analizy i analizy zagrożeń ostrzega o złośliwych działań.
+Security Center stale analizuje obciążenia chmury hybrydowej za pomocą zaawansowanej analizy i analizy zagrożeń, aby ostrzec o złośliwych działaniach.
 
-Szerokość pokrycia zagrożeń wraz ze wzrostem, i konieczność wykryć nawet najmniejszych oznaczenie naruszenia zabezpieczeń rośnie, może być trudne dla analityków zabezpieczeń do klasyfikowania różnych alertów i identyfikowania rzeczywistego ataku. Usługa Security Center pomaga analitykom poradzić sobie z zmęczenie alertów i diagnozowania ataków w miarę ich występowania, przez skorelowanie sygnałów o niskiej wierności i różne alerty na zdarzenia związane z bezpieczeństwem.
+W miarę zwiększania się zakresu zagrożeń i konieczności wykrywania nawet niewielkiej wartości zwiększonych naruszeń, może być trudne dla analityków zabezpieczeń, aby klasyfikacja różne alerty i identyfikować faktyczny atak. Security Center ułatwia analitykom radzenie sobie z zmęczeniem alertów i diagnozowanie ataków w miarę ich występowania, przez skorelowanie różnych alertów i słabych sygnałów w zdarzenia dotyczące zabezpieczeń.
 
-Łączenia jest technologia i analitycznych zaplecza z użyciem tego uprawnienia zdarzenia usługi Security Center, co umożliwia korelowanie różnych alertów i kontekstowych sygnały razem. Działania syntezy jądrowej, analizując różnym sygnałom zgłoszone w ramach subskrypcji w zasobach i znalezienie powszechnie znane wzorce, które pokazuje postęp ataku lub sygnalizuje udostępnione informacje kontekstowe, które wskazuje procedurę ujednoliconego odpowiedzi powinna być przekierowanie dla nich.
+Fusion to technologia i zaplecze analityczne, które ułatwiają Security Center incydenty, dzięki czemu mogą skorelować różne alerty i sygnały kontekstowe. Fuzja działa przez przeglądanie różnych sygnałów raportowanych w ramach subskrypcji w ramach zasobów i znalezienie nierozpowszechnionych wzorców, które pokazują postęp ataków lub sygnały z udostępnionymi informacjami kontekstowymi, które wskazują na ujednoliconą procedurę odpowiedzi. dla nich wykonane.
 
-Analizy Fusion łączyć znajomość domeny zabezpieczeń dzięki sztucznej Inteligencji do analizowania alertów, odnajdywanie nowe wzorce ataków w miarę ich występowania. 
+Fusion Analytics łączy informacje o domenie zabezpieczeń z AI, aby analizować alerty, odkrywając nowe wzorce ataku w miarę ich występowania. 
 
-Usługa Security Center korzysta macierzy ataku MITRE skojarzyć alerty z ich zamiar postrzegany, pomagając formalnego znajomość domeny zabezpieczeń. Ponadto korzystając z informacji zebranych dla każdego kroku ataku, usługa Security Center można wykluczyć działanie, które wydaje się być kroki ataku, ale nie jest.  
+Security Center korzysta z macierzy ataków MITRE do kojarzenia alertów z ich zamiarem, pomagając w prace prowadzone informacji o domenie zabezpieczeń. Ponadto, korzystając z informacji zebranych dla każdego kroku ataku, Security Center może wyrównać działanie, które wydaje się być czynnościami ataku, ale nie jest.  
 
-Ponieważ ataków często występują w wielu różnych dzierżawach, usługa Security Center można połączyć algorytmów sztucznej Inteligencji do analizowania sekwencje ataków, które są zgłaszane w ramach każdej subskrypcji, aby zidentyfikować ich jako powszechnie znane wzorce alertu zamiast trwa przy okazji związany z każdą inne.
+Ponieważ ataki często występują między różnymi dzierżawcami, Security Center mogą łączyć algorytmy AI, aby analizować sekwencje ataków, które są zgłaszane w każdej subskrypcji, aby identyfikować je jako wzorce alertów, a nie tylko incydenty skojarzone z każdym różnych.
 
-Podczas badania incydentu analitycy często muszą dodatkowego kontekstu w celu określenia rodzaju zagrożenia i sposobu jego wyeliminowania. Na przykład nawet w przypadku wykrycia anomalii sieci bez zrozumienia, co jeszcze jest wykonywane w sieci lub w odniesieniu do zasobów docelowych trudno jest zrozumieć, jakie działania należy podjąć w następnej kolejności. Aby ułatwić, zdarzenie naruszenia zabezpieczeń może zawierać artefakty, powiązane zdarzenia i informacje. Dodatkowe informacje dostępne dla zdarzenia związane z bezpieczeństwem różni się zależnie od typu wykrytego zagrożenia i konfiguracji środowiska. 
+Podczas badania zdarzenia analitykowie często potrzebują dodatkowego kontekstu, aby dotrzeć do Verdict o charakterze zagrożenia i sposobach ich rozwiązywania. Na przykład nawet w przypadku wykrycia nietypowej sieci, bez zrozumienia, co się dzieje w sieci, lub w odniesieniu do zasobu, trudno zrozumieć, jakie akcje należy podjąć dalej. Aby pomóc, zdarzenie zabezpieczeń może obejmować artefakty, powiązane zdarzenia i informacje. Dodatkowe informacje dostępne dla zdarzeń związanych z zabezpieczeniami różnią się w zależności od typu wykrytego zagrożenia i konfiguracji środowiska. 
 
-![Szczegóły zdarzenia zabezpieczeń](./media/security-center-alerts-cloud-smart/security-incident.png)
+![Szczegóły zdarzenia dotyczącego zabezpieczeń](./media/security-center-alerts-cloud-smart/security-incident.png)
 
-Aby lepiej zrozumieć związane z bezpieczeństwem, zobacz [sposób obsługi zdarzeń naruszenia zabezpieczeń w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-incident).
+Aby lepiej zrozumieć zdarzenia związane z zabezpieczeniami, zobacz [jak obsłużyć zdarzenia zabezpieczeń w Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-incident).
 

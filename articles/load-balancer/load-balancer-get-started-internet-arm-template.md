@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Dowiedz się, jak utworzyć publiczny moduł równoważenia obciążenia w usłudze Resource Manager za pomocą szablonu
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -12,13 +12,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: 7d8997b6c4ee68ae6857d2a1605277fc7d5f7a0a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: a94c7d1b5d1ecd11dd213eccf2354e943a96cabd
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66122223"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275290"
 ---
 # <a name="creating-a-public-load-balancer-using-a-template"></a>Tworzenie publicznego modułu równoważenia obciążenia przy użyciu szablonu
 
@@ -43,7 +43,7 @@ Przykładowy szablon dostępny w repozytorium publicznym korzysta z pliku parame
 Aby wdrożyć pobrany szablon przy użyciu programu PowerShell, wykonaj poniższe kroki.
 
 1. Jeśli nie znasz programu Azure PowerShell, zapoznaj się z artykułem [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview) i postępuj zgodnie z instrukcjami aż do momentu logowania się w programie Azure i wyboru subskrypcji.
-2. Uruchom **New AzResourceGroupDeployment** polecenia cmdlet, aby utworzyć grupę zasobów za pomocą tego szablonu.
+2. Uruchom polecenie cmdlet **New-AzResourceGroupDeployment** , aby utworzyć grupę zasobów przy użyciu szablonu.
 
     ```powershell
     New-AzResourceGroupDeployment -Name TestRG -Location uswest `
@@ -81,4 +81,4 @@ Aby wdrożyć szablon przy użyciu interfejsu wiersza polecenia platformy Azure,
 
 [Configure idle TCP timeout settings for your load balancer](load-balancer-tcp-idle-timeout.md) (Konfigurowanie ustawień limitu czasu bezczynności protokołu TCP dla modułu równoważenia obciążenia)
 
-Składnię JSON i właściwości modułu równoważenia obciążenia w szablonie, zobacz [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).
+Aby poznać składnię i właściwości JSON modułu równoważenia obciążenia w szablonie, zobacz [Microsoft. Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).

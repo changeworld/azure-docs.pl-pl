@@ -1,6 +1,6 @@
 ---
-title: Omówienie środowiska SAP Hana na platformie Azure (duże wystąpienia) | Dokumentacja firmy Microsoft
-description: Omówienie sposobu wdrażania oprogramowania SAP HANA na platformie Azure (duże wystąpienia).
+title: Omówienie SAP HANA na platformie Azure (duże wystąpienia) | Microsoft Docs
+description: Omówienie sposobu wdrażania SAP HANA na platformie Azure (duże wystąpienia).
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
@@ -11,42 +11,52 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/04/2018
-ms.author: saghorpa
+ms.date: 07/12/2019
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a8662ef3aa7002ede0b183d72e7278d02c551c33
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: b2076778751161d5763d7bd0643cfe8f71a5f522
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707340"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67869200"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Co to jest oprogramowanie SAP HANA na platformie Azure — duże wystąpienia?
 
-Oprogramowanie SAP HANA na platformie Azure (duże wystąpienia) to unikatowe rozwiązanie na platformie Azure. Oprócz zapewniania maszyn wirtualnych umożliwiające wdrażanie i uruchamianie oprogramowania SAP HANA, platforma Azure oferuje możliwość uruchamiania i wdrażania oprogramowania SAP HANA na serwerach bez systemu operacyjnego, które są przeznaczone dla Ciebie. SAP HANA na platformie Azure (duże wystąpienia) rozwiązanie opiera się na sprzętu bez systemu operacyjnego hosta nieudostępniane/serwer, który jest przypisany do Ciebie. Sprzęt serwera jest osadzony w większych sygnatur, zawierające obliczeń/serwera, sieci i infrastruktury magazynu. Jako połączenie jest HANA dostosowane Centrum integracji danych (TDI) certyfikat. Oprogramowanie SAP HANA na platformie Azure (duże wystąpienia) oferuje jednostki SKU z innego serwera lub rozmiarów. Jednostki może mieć 36 rdzeni procesora CPU Intel i 768 GB pamięci, a następnie przejść do jednostek, które mają maksymalnie 480 rdzeni procesora CPU Intel i maksymalnie 24 TB pamięci.
+SAP HANA na platformie Azure (duże wystąpienia) to unikatowe rozwiązanie na platformie Azure. Oprócz zapewniania maszyn wirtualnych do wdrażania i uruchamiania SAP HANA system Azure oferuje możliwość uruchamiania i wdrażania SAP HANA na serwerach bez systemu operacyjnego, które są przeznaczone dla Ciebie. Rozwiązanie SAP HANA na platformie Azure (duże wystąpienia) kompiluje się w przypadku nieudostępnionego sprzętu hosta/serwera bez systemu operacyjnego, który jest przypisany do użytkownika. Sprzęt serwera jest osadzony w większych sygnaturach, które zawierają infrastrukturę obliczeniową/serwerową, sieciową i magazynową. W ramach tej kombinacji jest certyfikowana integracja centrów danych platformy HANA (TDI). SAP HANA na platformie Azure (duże wystąpienia) oferuje różne jednostki SKU serwera lub rozmiary. Jednostki mogą mieć 36 rdzeni procesora CPU firmy Intel i 768 GB pamięci i znajdować się w jednostkach, które mają do 480 rdzenie procesora Intel i do 24 TB pamięci.
 
-Izolacja klienta w ramach sygnatury infrastruktury odbywa się w dzierżawach, który wygląda następująco:
+Izolacja klienta w ramach sygnatury infrastruktury jest wykonywana w dzierżawach, które wyglądają następująco:
 
-- **Sieć**: Izolacja klientów w ramach infrastruktury stack za pośrednictwem sieci wirtualnych na klienta przypisany dzierżawy. Dzierżawa jest przypisany do jednego klienta. Klient może mieć wielu dzierżaw. Izolacja sieci dzierżaw zabrania komunikacji sieciowej między dzierżawami, na poziomie sygnatury infrastruktury, nawet, jeśli dzierżawcy należą do tego samego klienta.
-- **Składniki magazynu**: Izolacja za pośrednictwem magazynu maszyn wirtualnych, które mają woluminy magazynu przypisane do nich. Woluminy magazynu można przypisać do jednego magazynu tylko maszyny wirtualnej. Magazyn maszyny wirtualnej jest przypisane wyłącznie do jednego pojedynczej dzierżawy w stosie certyfikowanych infrastruktury SAP HANA TDI. W rezultacie woluminów magazynu przypisane do maszyny wirtualnej magazynu są dostępne w jednej określonej i pokrewnych dzierżawy tylko. Nie są one widoczne między różnych dzierżawach wdrożone.
-- **Serwera lub hosta**: Serwer lub jednostki hosta nie jest udostępniana między klientami lub dzierżawcy. Serwer lub hoście z klientem jest jednostki atomic obliczeń bez systemu operacyjnego, przypisany do jednego pojedynczej dzierżawy. *Nie* partycjonowanie sprzętowe lub nietrwałego Partycjonowanie jest używany, może prowadzić do współużytkowania hosta lub serwer z innego klienta. Woluminy magazynu, które są przypisane do magazynu maszyny wirtualnej określonej dzierżawy są instalowane do takiego serwera. Dzierżawca może mieć jeden do wielu jednostek serwera różne jednostki SKU przypisana wyłącznie.
-- W ramach oprogramowania SAP HANA w sygnaturze infrastruktury platformy Azure (duże wystąpienia) wielu różnych dzierżawach są wdrażane i odizolowane od siebie wzajemnie koncepcjami dzierżawy w sieci, magazynu i poziomu obliczeniowego. 
-
-
-Te jednostki bez systemu operacyjnego serwera są obsługiwane tylko uruchamianie oprogramowania SAP HANA. Warstwy aplikacji SAP lub warstwy pośredniczącym obciążenie działa na maszynach wirtualnych. Sygnatury infrastruktury z systemem SAP HANA na platformie Azure (duże wystąpienia) jednostki są podłączone do szkieletowymi usług sieci platformy Azure. W ten sposób znajduje się połączenie o małych opóźnieniach między maszyny wirtualne i SAP HANA na platformie Azure (duże wystąpienia) jednostki.
-
-W tym dokumencie jest jednym z kilku dokumentów, które obejmują oprogramowanie SAP HANA na platformie Azure (duże wystąpienia). Ten dokument wprowadza podstawowej architektury, obowiązkach i usług udostępnianych przez to rozwiązanie. Omówiono także ogólne możliwości rozwiązania. Dla większości innych obszarów, takich jak sieć i łączność cztery inne dokumenty, które obejmują szczegółowe informacje o Przechodzenie do szczegółów i. Dokumentacja środowiska SAP Hana na platformie Azure (duże wystąpienia) nie obejmuje aspektów instalacji oprogramowania SAP NetWeaver lub wdrożenia oprogramowania SAP NetWeaver na maszynach wirtualnych. Oprogramowanie SAP NetWeaver na platformie Azure są omówione w osobnych dokumentów, w tym samym kontenerze dokumentacji platformy Azure. 
+- **Sieć**: Izolacja klientów w stosie infrastruktury za pomocą sieci wirtualnych dla dzierżawy przypisanej do klienta. Dzierżawa jest przypisana do jednego klienta. Klient może mieć wielu dzierżawców. Izolacja sieci dzierżawców zabrania komunikacji sieciowej między dzierżawcami na poziomie sygnatury infrastruktury, nawet jeśli dzierżawy należą do tego samego klienta.
+- **Składniki magazynu**: Izolacja przy użyciu maszyn wirtualnych magazynu z przypisanymi woluminami magazynu. Woluminy magazynu można przypisywać tylko do jednej maszyny wirtualnej magazynu. Maszyna wirtualna magazynu jest przypisana wyłącznie do jednej dzierżawy w stosie certyfikowanej infrastruktury SAP HANA TDI. W związku z tym woluminy magazynu przypisane do maszyny wirtualnej magazynu są dostępne tylko w jednej określonej i powiązanej dzierżawie. Nie są one widoczne między różnymi wdrożonymi dzierżawcami.
+- **Serwer lub host**: Serwer lub jednostka hosta nie są współużytkowane przez klientów ani dzierżawców. Serwer lub host wdrożony dla klienta to niepodzielna jednostka obliczeniowa bez systemu operacyjnego, która jest przypisana do jednej dzierżawy. *Nie* jest używane żadne partycjonowanie sprzętowe ani partycjonowanie, które może spowodować udostępnienie hosta lub serwera innemu klientowi. Woluminy magazynu przypisane do maszyny wirtualnej magazynu określonej dzierżawy są instalowane na takim serwerze. Dzierżawca może mieć jeden do wielu jednostek serwera z różnymi jednostkami SKU przypisanymi wyłącznie.
+- Za pomocą sygnatury infrastruktury w ramach SAP HANA na platformie Azure (duże wystąpienia) wiele różnych dzierżawców jest wdrażanych i izolowanych nawzajem w oparciu o koncepcje dotyczące sieci, magazynu i mocy obliczeniowej. 
 
 
-Różne dokumenty wskazówek dotyczących dużych wystąpień HANA obejmują następujące obszary:
+Te jednostki serwera bez systemu operacyjnego są obsługiwane do uruchamiania tylko SAP HANA. Warstwa aplikacji SAP lub warstwa oprogramowania do obsługi obciążeń są uruchamiane na maszynach wirtualnych. Sygnatury infrastruktury, które uruchamiają SAP HANA na platformie Azure (duże wystąpienia), są połączone z kością usług sieciowych platformy Azure. W ten sposób zapewniona jest łączność z niską opóźnieniami między jednostkami SAP HANA na platformie Azure (duże wystąpienia) i na maszynach wirtualnych.
 
-- [Omówienie platformy SAP HANA (duże wystąpienia) i architektury na platformie Azure](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Infrastrukturę SAP HANA (duże wystąpienia) i łączności na platformie Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Instalowanie i konfigurowanie oprogramowania SAP HANA (duże wystąpienia) na platformie Azure](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [SAP HANA (duże wystąpienia) o wysokiej dostępności i odzyskiwania po awarii na platformie Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Rozwiązywanie problemów z platformą SAP HANA (duże wystąpienia) i monitorowania na platformie Azure](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Wysoka dostępność, skonfigurować w systemie SUSE przy użyciu pomocą metody STONITH](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/ha-setup-with-stonith)
-- [Kopia zapasowa i przywracanie systemu operacyjnego dla jednostek SKU typu II](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-backup-type-ii-skus)
+Od lipca 2019 różnice między dwiema różnymi zmianami sygnatur dużych wystąpień platformy HANA i lokalizacją wdrożeń:
+
+- "Wersja 3" (rev 3): To sygnatury, które zostały udostępnione Klientowi do wdrożenia przed lipca 2019
+- "Wersja 4" (rev 4): Nowy projekt sygnatury, który jest wdrażany w pobliżu hostów maszyn wirtualnych platformy Azure, a do tej pory są udostępniane w regionach świadczenia usługi Azure:
+    -  Zachodnie stany USA 2 
+    -  East US 
+    -  Europa Zachodnia
+    -  Europa Północna
+
+
+Ten dokument jest jednym z kilku dokumentów, które obejmują SAP HANA na platformie Azure (duże wystąpienia). W tym dokumencie przedstawiono podstawową architekturę, obowiązki i usługi udostępniane przez rozwiązanie. Omówiono również możliwości wysokiego poziomu rozwiązania. W przypadku większości innych obszarów, takich jak sieć i łączność, cztery inne dokumenty obejmują szczegóły i informacje dotyczące przechodzenia do szczegółów. Dokumentacja SAP HANA na platformie Azure (duże wystąpienia) nie obejmuje aspektów instalacji i wdrożeń oprogramowania SAP NetWeaver na maszynach wirtualnych. Oprogramowanie SAP NetWeaver na platformie Azure jest omówione w oddzielnych dokumentach, które znajdują się w tym samym kontenerze dokumentacji platformy Azure. 
+
+
+Różne dokumenty dotyczące dużych wystąpień programu HANA obejmują następujące obszary:
+
+- [Omówienie i architektura SAP HANA (duże wystąpienia) na platformie Azure](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Infrastruktura i łączność SAP HANA (duże wystąpienia) na platformie Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Instalowanie i Konfigurowanie SAP HANA (duże wystąpienia) na platformie Azure](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [SAP HANA (duże wystąpienia) wysoka dostępność i odzyskiwanie po awarii na platformie Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [SAP HANA (duże wystąpienia) Rozwiązywanie problemów i monitorowanie na platformie Azure](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Wysoka dostępność skonfigurowana w SUSE przy użyciu STONITH](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/ha-setup-with-stonith)
+- [Kopia zapasowa i przywracanie systemu operacyjnego dla jednostek SKU typu II poprawki 3](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-backup-type-ii-skus)
 
 **Następne kroki**
-- Zapoznaj się [znasz warunki](hana-know-terms.md)
+- Zapoznaj się [z postanowieniami](hana-know-terms.md)

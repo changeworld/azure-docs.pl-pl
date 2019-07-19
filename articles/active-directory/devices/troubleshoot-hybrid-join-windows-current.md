@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z hybrydowej usługi Azure Active Directory urządzenia z systemem Windows 10 i Windows Server 2016 przyłączone do | Dokumentacja firmy Microsoft
-description: Rozwiązywanie problemów z hybrydowej usługi Azure Active Directory przyłączone do urządzeń z systemem Windows 10 i Windows Server 2016.
+title: Rozwiązywanie problemów z przyłączonymi do Azure Active Directory urządzeniami hybrydowymi — Azure Active Directory
+description: Rozwiązywanie problemów hybrydowych Azure Active Directory dołączonych do urządzeń z systemami Windows 10 i Windows Server 2016.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,39 +11,37 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfb4b03fb57efecff587a91dfc2ad293be96d9ba
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: c4b0b5bd5972e544c4254ee0f425e27cc8c465f0
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481606"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297570"
 ---
-# <a name="troubleshooting-hybrid-azure-active-directory-joined-windows-10-and-windows-server-2016-devices"></a>Rozwiązywanie problemów z hybrydowej usługi Azure Active Directory urządzenia z systemem Windows 10 i Windows Server 2016 przyłączone do 
+# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Rozwiązywanie problemów z przyłączonymi urządzeniami hybrydowymi Azure Active Directory 
 
-Ten artykuł ma zastosowanie do następujących klientów:
+Zawartość tego artykułu dotyczy urządzeń z systemem Windows 10 lub Windows Server 2016.
 
--   Windows 10
--   Windows Server 2016
+W przypadku innych klientów z systemem Windows Zapoznaj się z artykułem [Rozwiązywanie problemów z Azure Active Directory hybrydowych podłączonych do urządzeń niższego poziomu](troubleshoot-hybrid-join-windows-legacy.md)
 
-Dla innych klientów Windows zobacz [niższego poziomu urządzenia przyłączone do hybrydowej Rozwiązywanie problemów z usługi Azure Active Directory](troubleshoot-hybrid-join-windows-legacy.md).
+W tym artykule przyjęto założenie, że [skonfigurowano urządzenia hybrydowe Azure Active Directory dołączone](hybrid-azuread-join-plan.md) do obsługi następujących scenariuszy:
 
-W tym artykule założono, że masz [urządzenia przyłączone do hybrydowej skonfigurowanego w usłudze Azure Active Directory](hybrid-azuread-join-plan.md) na potrzeby następujących scenariuszy:
-
-- Dostęp warunkowy oparty na urządzeniu
-- [Mobilny dostęp firmowy do ustawień](../active-directory-windows-enterprise-state-roaming-overview.md)
+- Dostęp warunkowy oparty na urządzeniach
+- [Roaming ustawień przedsiębiorstwa](../active-directory-windows-enterprise-state-roaming-overview.md)
 - [Windows Hello dla firm](../active-directory-azureadjoin-passport-deployment.md)
 
-Ten dokument zawiera wskazówki dotyczące rozwiązywania problemów dotyczące rozwiązywania potencjalnych problemów. 
+Ten dokument zawiera wskazówki dotyczące rozwiązywania problemów w celu rozwiązania potencjalnych problemów. 
 
-Dla systemu Windows 10 i Windows Server 2016, hybrydowe przyłączanie do usługi Azure Active Directory obsługuje systemu Windows 10 listopada 2015 r. Zaktualizuj i nowsze wersje. Zalecamy używanie Rocznicowej aktualizacji.
+W przypadku systemów Windows 10 i Windows Server 2016 sprzężenie hybrydowe Azure Active Directory obsługuje aktualizację systemu Windows 10 listopad 2015 lub nowszą.
 
-## <a name="step-1-retrieve-the-join-status"></a>Krok 1: Pobierz stan dołączania 
+## <a name="troubleshoot-join-failures"></a>Rozwiązywanie problemów z błędami sprzężeń
 
-**Aby pobrać stan dołączania:**
+### <a name="step-1-retrieve-the-join-status"></a>Krok 1: Pobieranie stanu sprzężenia 
+
+**Aby pobrać stan sprzężenia:**
 
 1. Otwórz wiersz polecenia jako administrator
-
-2. Typ **dsregcmd parametru/status**
+2. Typ `dsregcmd /status`
 
 ```
 +----------------------------------------------------------------------+
@@ -59,7 +57,7 @@ Dla systemu Windows 10 i Windows Server 2016, hybrydowe przyłączanie do usług
      TpmProtected: YES
      KeySignTest: : MUST Run elevated to test.
               Idp: login.windows.net
-         TenantId: 72b988bf-86f1-41af-91ab-2d7cd011db47
+         TenantId: 72b988bf-xxxx-xxxx-xxxx-2d7cd011xxxx
        TenantName: Contoso
       AuthCodeUrl: https://login.microsoftonline.com/msitsupp.microsoft.com/oauth2/authorize
    AccessTokenUrl: https://login.microsoftonline.com/msitsupp.microsoft.com/oauth2/token
@@ -90,48 +88,324 @@ WamDefaultAuthority: organizations
          AzureAdPrt: YES
 ```
 
-## <a name="step-2-evaluate-the-join-status"></a>Krok 2: Oceń stan dołączania 
+### <a name="step-2-evaluate-the-join-status"></a>Krok 2: Oceń stan sprzężenia 
 
 Przejrzyj poniższe pola i upewnij się, że mają one oczekiwane wartości:
 
-### <a name="azureadjoined--yes"></a>AzureAdJoined : TAK  
+#### <a name="domainjoined--yes"></a>DomainJoined : OPCJĘ  
 
-To pole wskazuje, czy urządzenie jest połączone z usługą Azure AD. Jeśli wartość jest **nie**, dołączania do usługi Azure AD nie została jeszcze ukończona. 
+To pole wskazuje, czy urządzenie jest przyłączone do lokalnego Active Directory, czy nie. Jeśli wartość **nie**jest równa, urządzenie nie może wykonać sprzężenia hybrydowego usługi Azure AD.  
 
-**Możliwe przyczyny:**
+#### <a name="workplacejoined--no"></a>WorkplaceJoined : NO  
 
-- Nie można uwierzytelnić komputera w celu utworzenia sprzężenia.
-- W organizacji, która nie może być odnajdywane przez komputer znajduje się serwer proxy HTTP
-- Komputer nie może nawiązać połączenia usługi Azure AD do uwierzytelniania lub Azure usługi rejestracji urządzeń do rejestracji
-- Komputer może nie być w sieci wewnętrznej organizacji lub sieci VPN, za pomocą bezpośredniego linii wzroku do lokalnego kontrolera domeny usługi AD.
-- Jeśli komputer ma modułu TPM, może być w nieprawidłowym stanie.
-- Może być błędnej konfiguracji w usługach zanotowanej w dokumencie wcześniej, trzeba będzie ponownie zweryfikować prawo. Typowe przykłady:
-   - Serwerze federacyjnym nie ma włączonych punktów końcowych usługi WS-Trust
-   - Serwerze federacyjnym nie zezwala na przychodzący uwierzytelnienia z komputerów w sieci przy użyciu zintegrowanego uwierzytelniania Windows.
-   - Nie ma żadnego obiektu punktu połączenia usługi, który wskazuje nazwę zweryfikowanej domeny w usłudze Azure AD w lesie usługi AD, w którym komputer należy do
+To pole wskazuje, czy urządzenie jest zarejestrowane w usłudze Azure AD jako urządzenie osobiste (oznaczone jako *dołączone do miejsca pracy*). Ta wartość powinna być **nie** dla komputera przyłączonego do domeny, który jest również przyłączony do hybrydowej usługi Azure AD. Jeśli wartość to **tak**, konto służbowe zostało dodane przed ukończeniem hybrydowego sprzężenia usługi Azure AD. W takim przypadku konto jest ignorowane w przypadku korzystania z aktualizacji z rocznicą systemu Windows 10 (1607).
 
----
+#### <a name="azureadjoined--yes"></a>AzureAdJoined : OPCJĘ  
 
-### <a name="domainjoined--yes"></a>DomainJoined : TAK  
+To pole wskazuje, czy urządzenie jest przyłączone do usługi Azure AD. Jeśli wartość **nie**jest, przyłączenie do usługi Azure AD nie zostało jeszcze ukończone. 
 
-To pole wskazuje, czy urządzenie jest przyłączone do usługi Active Directory w środowisku lokalnym, czy nie. Jeśli wartość jest **nie**, urządzenie nie może wykonać dołączenie do hybrydowej usługi Azure AD.  
+Przejdź do następnych kroków w celu dalszego rozwiązywania problemów.
 
----
+### <a name="step-3-find-the-phase-in-which-join-failed-and-the-errorcode"></a>Krok 3: Znajdź fazę, w której dołączenie nie powiodło się i kod błędu
 
-### <a name="workplacejoined--no"></a>WorkplaceJoined: NO  
+#### <a name="windows-10-1803-and-above"></a>Windows 10 1803 i nowsze
 
-To pole wskazuje, czy urządzenie jest zarejestrowane w usłudze Azure AD jako urządzenie osobiste (oznaczone jako *dołączone do miejsca pracy*). Ta wartość powinna być **nie** na komputerze przyłączonym do domeny, który jest przyłączone do hybrydowej usługi Azure AD. Jeśli wartość jest **tak**, dodano konto służbowe lub szkolne przed ukończeniem dołączenie do hybrydowej usługi Azure AD. W tym przypadku to konto jest ignorowana, gdy używana wersja Rocznicowej aktualizacji systemu Windows 10 (1607).
+Wyszukaj podsekcję "poprzednia rejestracja" w sekcji "dane diagnostyczne" danych wyjściowych stanu sprzężenia.
+W polu "faza błędu" jest wskazywana faza błędu sprzężenia, podczas gdy "kod błędu klienta" oznacza kod błędu operacji JOIN.
 
----
+```
++----------------------------------------------------------------------+
+     Previous Registration : 2019-01-31 09:16:43.000 UTC
+         Registration Type : sync
+               Error Phase : join
+          Client ErrorCode : 0x801c03f2
+          Server ErrorCode : DirectoryError
+            Server Message : The device object by the given id (e92325d0-xxxx-xxxx-xxxx-94ae875d5245) is not found.
+              Https Status : 400
+                Request Id : 6bff0bd9-820b-484b-ab20-2a4f7b76c58e
++----------------------------------------------------------------------+
+```
 
-### <a name="wamdefaultset--yes-and-azureadprt--yes"></a>WamDefaultSet : TAK i AzureADPrt: TAK
+#### <a name="older-windows-10-versions"></a>Starsze wersje systemu Windows 10
+
+Użyj dzienników Podgląd zdarzeń, aby zlokalizować fazę i kod błędu dla błędów sprzężenia.
+
+1. Otwórz dzienniki zdarzeń **rejestracji urządzeń użytkowników** w Podglądzie zdarzeń. Znajduje się w obszarze >  **Dziennik aplikacji i usług** **rejestracja urządzeń użytkowników** w systemie**Microsoft** > **Windows** > 
+2. Poszukaj zdarzeń o następujących eventIDs 304, 305, 307.
+
+![Zdarzenie dziennika błędów](./media/troubleshoot-hybrid-join-windows-current/1.png)
+
+![Zdarzenie dziennika błędów](./media/troubleshoot-hybrid-join-windows-current/2.png)
+
+### <a name="step-4-check-for-possible-causes-and-resolutions-from-the-lists-below"></a>Krok 4: Sprawdź możliwe przyczyny i rozwiązania z poniższych list
+
+#### <a name="pre-check-phase"></a>Faza przed sprawdzeniem
+
+Możliwe przyczyny niepowodzenia:
+
+- Urządzenie nie ma wglądu w szczegółowe dane kontrolera domeny.
+   - Urządzenie musi znajdować się w sieci wewnętrznej organizacji lub w sieci VPN z obsługą sieci na lokalnym kontrolerze domeny Active Directory (AD).
+
+#### <a name="discover-phase"></a>Faza odnajdywania
+
+Możliwe przyczyny niepowodzenia:
+
+- Obiekt punktu połączenia z usługą został niepoprawnie skonfigurowany/nie można odczytać obiektu SCP z kontrolera domeny.
+   - Wymagany jest prawidłowy obiekt SCP w lesie usługi AD, do którego należy urządzenie, wskazujący na zweryfikowaną nazwę domeny w usłudze Azure AD.
+   - Szczegółowe informacje znajdują się w sekcji [konfigurowanie punktu połączenia z usługą](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join).
+- Nie można nawiązać połączenia i pobrać metadanych odnajdywania z punktu końcowego odnajdywania.
+   - Urządzenie powinno mieć dostęp `https://enterpriseregistration.windows.net`w kontekście systemu w celu odnajdywania punktów końcowych rejestracji i autoryzacji. 
+   - Jeśli środowisko lokalne wymaga serwera proxy wychodzącego, administrator IT musi upewnić się, że konto komputera urządzenia może odnajdywać i dyskretnie uwierzytelniać się na wychodzącym serwerze proxy.
+- Nie można połączyć się z punktem końcowym obszaru użytkownika i przeprowadzić odnajdywanie obszaru. (Tylko system Windows 10 w wersji 1809 lub nowszej)
+   - Urządzenie powinno mieć dostęp `https://login.microsoftonline.com`w kontekście systemu, aby przeprowadzić odnajdywanie obszarów dla zweryfikowanej domeny i określić typ domeny (zarządzany/federacyjny).
+   - Jeśli środowisko lokalne wymaga serwera proxy wychodzącego, administrator IT musi upewnić się, że kontekst systemu na urządzeniu może odnajdywać i dyskretnie uwierzytelniać się na wychodzącym serwerze proxy.
+
+**Typowe kody błędów:**
+
+- **DSREG_AUTOJOIN_ADCONFIG_READ_FAILED** (0x801c001d/-2145648611)
+   - Dotycząca Nie można odczytać obiektu SCP i uzyskać informacji o dzierżawie usługi Azure AD.
+   - Rozwiązanie: Zapoznaj się z sekcją [konfigurowanie punktu połączenia z usługą](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join).
+- **DSREG_AUTOJOIN_DISC_FAILED** (0x801c0021/-2145648607)
+   - Dotycząca Ogólny błąd odnajdywania. Nie można pobrać metadanych odnajdywania z DRS.
+   - Rozwiązanie: Znajdź Poniższy błąd, aby dokładniej zbadać.
+- **DSREG_AUTOJOIN_DISC_WAIT_TIMEOUT**  (0x801c001f/-2145648609)
+   - Dotycząca Przekroczono limit czasu operacji podczas odnajdywania.
+   - Rozwiązanie: Upewnij się `https://enterpriseregistration.windows.net` , że jest dostępny w kontekście systemu. Aby uzyskać więcej informacji, zapoznaj się z sekcją [wymagania dotyczące łączności sieciowej](hybrid-azuread-join-managed-domains.md#prerequisites).
+- **DSREG_AUTOJOIN_USERREALM_DISCOVERY_FAILED** (0x801c0021/-2145648611)
+   - Dotycząca Niepowodzenie wykrywania obszaru ogólnego. Nie można określić typu domeny (zarządzane/federacyjne) z usługi STS. 
+   - Rozwiązanie: Znajdź Poniższy błąd, aby dokładniej zbadać.
+
+**Popularne kody błędów:**
+
+Aby znaleźć kod błędu dla kodu błędu odnajdowania, należy użyć jednej z następujących metod.
+
+##### <a name="windows-10-1803-and-above"></a>Windows 10 1803 i nowsze
+
+Wyszukaj "DRS Discovery test" w sekcji "dane diagnostyczne" w danych wyjściowych stanu sprzężenia.
+
+```
++----------------------------------------------------------------------+
+| Diagnostic Data                                                      |
++----------------------------------------------------------------------+
+
+     Diagnostics Reference : www.microsoft.com/aadjerrors
+              User Context : UN-ELEVATED User
+               Client Time : 2019-06-05 08:25:29.000 UTC
+      AD Connectivity Test : PASS
+     AD Configuration Test : PASS
+        DRS Discovery Test : FAIL [0x801c0021/0x80072ee2]
+     DRS Connectivity Test : SKIPPED
+    Token acquisition Test : SKIPPED
+     Fallback to Sync-Join : ENABLED
+
++----------------------------------------------------------------------+
+```
+
+##### <a name="older-windows-10-versions"></a>Starsze wersje systemu Windows 10
+
+Użyj dzienników Podgląd zdarzeń, aby zlokalizować fazę i kod błędu dla błędów sprzężenia.
+
+1. Otwórz dzienniki zdarzeń **rejestracji urządzeń użytkowników** w Podglądzie zdarzeń. Znajduje się w obszarze >  **Dziennik aplikacji i usług** **rejestracja urządzeń użytkowników** w systemie**Microsoft** > **Windows** > 
+2. Wyszukaj zdarzenia z następującym eventIDs 201
+
+![Zdarzenie dziennika błędów](./media/troubleshoot-hybrid-join-windows-current/5.png)
+
+###### <a name="network-errors"></a>Błędy sieci
+
+- **WININET_E_CANNOT_CONNECT** (0x80072efd/-2147012867)
+   - Dotycząca Nie można nawiązać połączenia z serwerem
+   - Rozwiązanie: Zapewnianie łączności sieciowej z wymaganymi zasobami firmy Microsoft. Aby uzyskać więcej informacji, zobacz [wymagania dotyczące łączności sieciowej](hybrid-azuread-join-managed-domains.md#prerequisites).
+- **WININET_E_TIMEOUT** (0x80072EE2/-2147012894)
+   - Dotycząca Ogólny limit czasu sieci.
+   - Rozwiązanie: Zapewnianie łączności sieciowej z wymaganymi zasobami firmy Microsoft. Aby uzyskać więcej informacji, zobacz [wymagania dotyczące łączności sieciowej](hybrid-azuread-join-managed-domains.md#prerequisites).
+- **WININET_E_DECODING_FAILED** (0x80072f8f/-2147012721)
+   - Dotycząca Stos sieciowy nie mógł zdekodować odpowiedzi z serwera.
+   - Rozwiązanie: Upewnij się, że serwer proxy sieci nie zakłóca i nie modyfikuje odpowiedzi serwera.
+
+###### <a name="http-errors"></a>Błędy HTTP
+
+- **DSREG_DISCOVERY_TENANT_NOT_FOUND** (0x801c003a/-2145648582)
+   - Dotycząca Obiekt SCP został skonfigurowany z nieprawidłowym IDENTYFIKATORem dzierżawy. Nie znaleziono aktywnych subskrypcji w dzierżawie.
+   - Rozwiązanie: Upewnij się, że obiekt SCP jest skonfigurowany z prawidłowym IDENTYFIKATORem dzierżawy usługi Azure AD i aktywnymi subskrypcjami lub obecnymi w dzierżawie.
+- **DSREG_SERVER_BUSY** (0x801c0025/-2145648603)
+   - Dotycząca HTTP 503 z serwera DRS.
+   - Rozwiązanie: Serwer jest obecnie niedostępny. przyszłe próby dołączenia prawdopodobnie zakończą się powodzeniem po ponownym uruchomieniu serwera w trybie online.
+
+###### <a name="other-errors"></a>Inne błędy
+
+- **E_INVALIDDATA** (0x8007000d/-2147024883)
+   - Dotycząca Nie można przeanalizować pliku JSON odpowiedzi serwera. Prawdopodobnie z powodu powrotu serwera proxy HTTP 200 przy użyciu strony uwierzytelniania HTML.
+   - Rozwiązanie: Jeśli środowisko lokalne wymaga serwera proxy wychodzącego, administrator IT musi upewnić się, że kontekst systemu na urządzeniu może odnajdywać i dyskretnie uwierzytelniać się na wychodzącym serwerze proxy.
+
+#### <a name="authentication-phase"></a>Faza uwierzytelniania
+
+Dotyczy tylko kont domeny federacyjnej.
+
+Przyczyny niepowodzenia:
+
+- Nie można uzyskać tokenu dostępu w trybie dyskretnym dla zasobu DRS.
+   - Urządzenia z systemem Windows 10 uzyskują token uwierzytelniania z usługi federacyjnej przy użyciu zintegrowanego uwierzytelniania systemu Windows w aktywnym punkcie końcowym usługi WS-Trust. Szczegóły: [Konfiguracja usługa federacyjna](hybrid-azuread-join-manual.md##set-up-issuance-of-claims)
+
+**Typowe kody błędów:**
+
+Użyj dzienników Podgląd zdarzeń, aby znaleźć kod błędu, kod błędu, kod błędu serwera i komunikat o błędzie serwera.
+
+1. Otwórz dzienniki zdarzeń **rejestracji urządzeń użytkowników** w Podglądzie zdarzeń. Znajduje się w obszarze >  **Dziennik aplikacji i usług** **rejestracja urządzeń użytkowników** w systemie**Microsoft** > **Windows** > 
+2. Wyszukaj zdarzenia z następującym eventID 305
+
+![Zdarzenie dziennika błędów](./media/troubleshoot-hybrid-join-windows-current/3.png)
+
+##### <a name="configuration-errors"></a>Błędy konfiguracji
+
+- **ERROR_ADAL_PROTOCOL_NOT_SUPPORTED** (0xcaa90017/-894894057)
+   - Dotycząca Protokół uwierzytelniania nie jest protokołem WS-Trust.
+   - Rozwiązanie: Lokalny dostawca tożsamości musi obsługiwać usługę WS-Trust 
+- **ERROR_ADAL_FAILED_TO_PARSE_XML** (0xcaa9002c/-894894036)
+   - Dotycząca Lokalna usługa federacyjna nie zwróciła odpowiedzi XML.
+   - Rozwiązanie: Upewnij się, że punkt końcowy MEX zwraca prawidłowy kod XML. Upewnij się, że serwer proxy nie zakłóca i nie zwraca odpowiedzi z nieprawidłowym kodem XML.
+- **ERROR_ADAL_COULDNOT_DISCOVER_USERNAME_PASSWORD_ENDPOINT** (0xcaa90023/-894894045)
+   - Dotycząca Nie można odnaleźć punktu końcowego na potrzeby uwierzytelniania nazwy użytkownika/hasła.
+   - Rozwiązanie: Sprawdź ustawienia lokalnego dostawcy tożsamości. Upewnij się, że punkty końcowe protokołu WS-Trust są włączone i upewnij się, że odpowiedź MEX zawiera te poprawne punkty końcowe.
+
+##### <a name="network-errors"></a>Błędy sieci
+
+- **ERROR_ADAL_INTERNET_TIMEOUT** (0xcaa82ee2/-894947614)
+   - Dotycząca Ogólny limit czasu sieci.
+   - Rozwiązanie: Upewnij się `https://login.microsoftonline.com` , że jest dostępny w kontekście systemu. Upewnij się, że lokalny dostawca tożsamości jest dostępny w kontekście systemu. Aby uzyskać więcej informacji, zobacz [wymagania dotyczące łączności sieciowej](hybrid-azuread-join-managed-domains.md#prerequisites).
+- **ERROR_ADAL_INTERNET_CONNECTION_ABORTED** (0xcaa82efe/-894947586)
+   - Dotycząca Połączenie z punktem końcowym uwierzytelniania zostało przerwane.
+   - Rozwiązanie: Ponów próbę po upływie pewnego czasu lub spróbuj połączyć się z alternatywną stabilną lokalizacją sieciową.
+- **ERROR_ADAL_INTERNET_SECURE_FAILURE** (0xcaa82f8f/-894947441)
+   - Dotycząca Nie można zweryfikować certyfikatu SSL (SSL) wysyłanego przez serwer.
+   - Rozwiązanie: Sprawdź pochylenie czasu klienta. Ponów próbę po upływie pewnego czasu lub spróbuj połączyć się z alternatywną stabilną lokalizacją sieciową. 
+- **ERROR_ADAL_INTERNET_CANNOT_CONNECT** (0xcaa82efd/-894947587)
+   - Dotycząca Próba nawiązania połączenia `https://login.microsoftonline.com` nie powiodła się.
+   - Rozwiązanie: Sprawdź połączenie `https://login.microsoftonline.com`sieciowe.
+
+##### <a name="other-errors"></a>Inne błędy
+
+- **ERROR_ADAL_SERVER_ERROR_INVALID_GRANT** (0xcaa20003/-895352829)
+   - Dotycząca Token SAML od lokalnego dostawcy tożsamości nie został zaakceptowany przez usługę Azure AD.
+   - Rozwiązanie: Sprawdź ustawienia serwera federacyjnego. Wyszukaj kod błędu serwera w dziennikach uwierzytelniania.
+- **ERROR_ADAL_WSTRUST_REQUEST_SECURITYTOKEN_FAILED** (0xcaa90014/-894894060)
+   - Dotycząca Serwer WS-Trust odpowiedzi zgłosił wyjątek błędu i nie powiodło się uzyskanie potwierdzenia
+   - Rozwiązanie: Sprawdź ustawienia serwera federacyjnego. Wyszukaj kod błędu serwera w dziennikach uwierzytelniania.
+- **ERROR_ADAL_WSTRUST_TOKEN_REQUEST_FAIL** (0xcaa90006/-894894074)
+   - Dotycząca Podczas próby pobrania tokenu dostępu z punktu końcowego tokenu Wystąpił błąd.
+   - Rozwiązanie: Poszukaj podstawowego błędu w dzienniku ADAL. 
+- **ERROR_ADAL_OPERATION_PENDING** (0xcaa1002d/-895418323)
+   - Dotycząca Ogólny błąd biblioteki ADAL
+   - Rozwiązanie: Wyszukaj kod błędu lub kod błędu serwera z dzienników uwierzytelniania.
+    
+#### <a name="join-phase"></a>Faza sprzężenia
+
+Przyczyny niepowodzenia:
+
+Znajdź Typ rejestracji i wyszukaj kod błędu z poniższej listy.
+
+#### <a name="windows-10-1803-and-above"></a>Windows 10 1803 i nowsze
+
+Wyszukaj podsekcję "poprzednia rejestracja" w sekcji "dane diagnostyczne" danych wyjściowych stanu sprzężenia.
+Pole "typ rejestracji" oznacza typ wykonanego sprzężenia.
+
+```
++----------------------------------------------------------------------+
+     Previous Registration : 2019-01-31 09:16:43.000 UTC
+         Registration Type : sync
+               Error Phase : join
+          Client ErrorCode : 0x801c03f2
+          Server ErrorCode : DirectoryError
+            Server Message : The device object by the given id (e92325d0-7ac4-4714-88a1-94ae875d5245) is not found.
+              Https Status : 400
+                Request Id : 6bff0bd9-820b-484b-ab20-2a4f7b76c58e
++----------------------------------------------------------------------+
+```
+
+#### <a name="older-windows-10-versions"></a>Starsze wersje systemu Windows 10
+
+Użyj dzienników Podgląd zdarzeń, aby zlokalizować fazę i kod błędu dla błędów sprzężenia.
+
+1. Otwórz dzienniki zdarzeń **rejestracji urządzeń użytkowników** w Podglądzie zdarzeń. Znajduje się w obszarze >  **Dziennik aplikacji i usług** **rejestracja urządzeń użytkowników** w systemie**Microsoft** > **Windows** > 
+2. Wyszukaj zdarzenia z następującym eventIDs 204
+
+![Zdarzenie dziennika błędów](./media/troubleshoot-hybrid-join-windows-current/4.png)
+
+##### <a name="http-errors-returned-from-drs-server"></a>Błędy HTTP zwrócone z serwera DRS
+
+- **DSREG_E_DIRECTORY_FAILURE** (0x801c03f2/-2145647630)
+   - Dotycząca Odebrano odpowiedź o błędzie z DRS z ErrorCode: DirectoryError
+   - Rozwiązanie: Zapoznaj się z kodem błędu serwera, aby zapoznać się z możliwymi przyczynami i rozwiązaniami.
+- **DSREG_E_DEVICE_AUTHENTICATION_ERROR** (0x801c0002/-2145648638)
+   - Dotycząca Odebrano odpowiedź o błędzie z DRS z ErrorCode: "AuthenticationError" i ErrorSubCode nie są "DeviceNotFound". 
+   - Rozwiązanie: Zapoznaj się z kodem błędu serwera, aby zapoznać się z możliwymi przyczynami i rozwiązaniami.
+- **DSREG_E_DEVICE_INTERNALSERVICE_ERROR** (0x801c0006/-2145648634)
+   - Dotycząca Odebrano odpowiedź o błędzie z DRS z ErrorCode: DirectoryError
+   - Rozwiązanie: Zapoznaj się z kodem błędu serwera, aby zapoznać się z możliwymi przyczynami i rozwiązaniami.
+
+##### <a name="tpm-errors"></a>Błędy modułu TPM
+
+- **NTE_BAD_KEYSET** (0x80090016/-2146893802)
+   - Dotycząca Nie można wykonać operacji modułu TPM lub jest ona nieprawidłowa
+   - Rozwiązanie: Prawdopodobnie z powodu nieprawidłowego obrazu programu Sysprep. Upewnij się, że maszyna, z której utworzono obraz programu Sysprep, nie jest przyłączona do usługi Azure AD, dołączona do hybrydowej usługi Azure AD lub zarejestrowana usługa Azure AD.
+- **TPM_E_PCP_INTERNAL_ERROR** (0x80290407/-2144795641)
+   - Dotycząca Ogólny błąd modułu TPM. 
+   - Rozwiązanie: Wyłącz moduł TPM na urządzeniach z tym błędem. System Windows 10 w wersji 1809 lub nowszej automatycznie wykrywa błędy modułu TPM i wykonuje sprzężenie hybrydowe usługi Azure AD bez użycia modułu TPM.
+- **TPM_E_NOTFIPS** (0x80280036/-2144862154)
+   - Dotycząca Moduł TPM w trybie FIPS nie jest obecnie obsługiwany.
+   - Rozwiązanie: Wyłącz moduł TPM na urządzeniach z tym błędem. System Windows 1809 automatycznie wykrywa awarie modułu TPM i wykonuje sprzężenie hybrydowe usługi Azure AD bez użycia modułu TPM.
+- **NTE_AUTHENTICATION_IGNORED** (0x80090031/-2146893775)
+   - Dotycząca Moduł TPM został zablokowany.
+   - Rozwiązanie: Błąd przejściowy. Poczekaj na cooldown okres. Próba dołączenia po pewnym czasie powinna się powieść. Więcej informacji można znaleźć w artykule podstawowe informacje dotyczące [modułów TPM](https://docs.microsoft.com/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering)
+
+##### <a name="network-errors"></a>Błędy sieci
+
+- **WININET_E_TIMEOUT** (0x80072EE2/-2147012894)
+   - Dotycząca Ogólny limit czasu sieci podczas próby zarejestrowania urządzenia w usłudze DRS
+   - Rozwiązanie: Sprawdź łączność `https://enterpriseregistration.windows.net`sieciową.
+- **WININET_E_NAME_NOT_RESOLVED** (0x80072ee7/-2147012889)
+   - Dotycząca Nie można rozpoznać nazwy lub adresu serwera.
+   - Rozwiązanie: Sprawdź łączność `https://enterpriseregistration.windows.net`sieciową. Upewnij się, że rozpoznawanie nazw DNS dla nazwy hosta jest dokładne w n/w i na urządzeniu.
+- **WININET_E_CONNECTION_ABORTED** (0x80072efe/-2147012866)
+   - Dotycząca Połączenie z serwerem zostało nieprawidłowo przerwane.
+   - Rozwiązanie: Ponów próbę po upływie pewnego czasu lub spróbuj połączyć się z alternatywną stabilną lokalizacją sieciową.
+
+##### <a name="federated-join-server-errors"></a>Błędy serwera dołączania federacyjnego
+
+| Kod błędu serwera | Komunikat o błędzie serwera | Możliwe przyczyny | Rozwiązanie |
+| --- | --- | --- | --- |
+| DirectoryError | Twoje żądanie zostało tymczasowo ograniczone. Spróbuj ponownie za 300 sekund. | Oczekiwany błąd. Prawdopodobnie z powodu wykonywania wielu żądań rejestracji w krótkim sukcesie. | Ponów próbę przyłączenia po okresie cooldown |
+
+##### <a name="sync-join-server-errors"></a>Błędy serwera łączenia z synchronizacją
+
+| Kod błędu serwera | Komunikat o błędzie serwera | Możliwe przyczyny | Rozwiązanie |
+| --- | --- | --- | --- |
+| DirectoryError | AADSTS90002: Nie <UUID> znaleziono dzierżawy. Ten błąd może wystąpić, jeśli nie ma aktywnych subskrypcji dla dzierżawy. Skontaktuj się z administratorem subskrypcji. | Identyfikator dzierżawy w obiekcie SCP jest nieprawidłowy | Upewnij się, że obiekt SCP jest skonfigurowany z prawidłowym IDENTYFIKATORem dzierżawy usługi Azure AD i aktywnymi subskrypcjami, które znajdują się w dzierżawie. |
+| DirectoryError | Nie znaleziono obiektu urządzenia o podanym IDENTYFIKATORze. | Oczekiwany błąd podczas przyłączania do synchronizacji. Obiekt urządzenia nie został zsynchronizowany z usługi AD z usługą Azure AD | Poczekaj na zakończenie synchronizacji Azure AD Connect, a kolejna próba sprzężenia po zakończeniu synchronizacji rozwiąże problem |
+| AuthenticationError | Weryfikacja identyfikatora SID komputera docelowego | Certyfikat na urządzeniu usługi Azure AD nie jest zgodny z certyfikatem używanym do podpisywania obiektu BLOB podczas przyłączania do synchronizacji. Ten błąd zazwyczaj oznacza, że synchronizacja nie została jeszcze ukończona. |  Poczekaj na zakończenie synchronizacji Azure AD Connect, a kolejna próba sprzężenia po zakończeniu synchronizacji rozwiąże problem |
+
+### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>Krok 5. Zbierz dzienniki i pomoc techniczna firmy Microsoft kontaktu
+
+Pobierz skrypty publiczne tutaj: [ https://1drv.ms/u/s! AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ]( https://1drv.ms/u/s!AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ)
+
+1. Otwórz wiersz polecenia administratora i uruchom `start_ngc_tracing_public.cmd`polecenie.
+2. Wykonaj kroki, aby odtworzyć problem.
+3. Zatrzymaj uruchamianie skryptu rejestrowania przez wykonanie `stop_ngc_tracing_public.cmd`.
+4. Pliki `%SYSTEMDRIVE%\TraceDJPP\*` zip i Wyślij do analizy.
+
+## <a name="troubleshoot-post-join-issues"></a>Rozwiązywanie problemów z przyłączaniem
+
+### <a name="retrieve-the-join-status"></a>Pobieranie stanu sprzężenia 
+
+#### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet: TAK i AzureADPrt: OPCJĘ
   
-Te pola wskazuje, czy użytkownik został pomyślnie uwierzytelniony do usługi Azure AD podczas logowania się do urządzenia. Jeśli wartości są **nie**, może to być termin:
+Te pola wskazują, czy użytkownik pomyślnie uwierzytelnił się w usłudze Azure AD podczas logowania się do urządzenia. Jeśli wartości **nie**są, może to być spowodowane:
 
-- Klucz magazynu zły (STK) w module TPM skojarzony z urządzeniem przy rejestracji (sprawdzanie KeySignTest uruchomionej z podwyższonym poziomem uprawnień).
-- Identyfikatora logowania alternatywnej
-- Nie można odnaleźć serwera HTTP Proxy
+- Zły klucz magazynu w module TPM skojarzonym z urządzeniem po rejestracji (Sprawdź KeySignTest, gdy działa podwyższony poziom).
+- Alternatywny identyfikator logowania
+- Nie znaleziono serwera proxy HTTP
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Masz pytania, zobacz [zarządzanie urządzeniami — często zadawane pytania](faq.md) 
+Kontynuuj [Rozwiązywanie problemów z urządzeniami za pomocą polecenia dsregcmd](troubleshoot-device-dsregcmd.md)
+
+Pytania można znaleźć w temacie [często zadawane pytania dotyczące zarządzania urządzeniami](faq.md)

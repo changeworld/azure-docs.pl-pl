@@ -1,23 +1,23 @@
 ---
-title: 'Samouczek: Ładowanie danych do usługi Azure SQL Data Warehouse | Dokumentacja firmy Microsoft'
-description: Samouczek korzysta z platformy Azure portal i programu SQL Server Management Studio ładowanie magazynu danych WideWorldImportersDW z globalnej usługi Azure blob do usługi Azure SQL Data Warehouse.
+title: 'Samouczek: Ładowanie danych do Azure SQL Data Warehouse | Microsoft Docs'
+description: Samouczek używa Azure Portal i SQL Server Management Studio do załadowania magazynu danych WideWorldImportersDW z globalnego obiektu blob platformy Azure do Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 04/17/2018
+ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e20667c0414f551a545e66b84da31c873c96dc48
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 30b4009b2f52f4949a380f0fc51b02f94c98d966
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67589017"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304290"
 ---
-# <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Samouczek: Ładowanie danych do usługi Azure SQL Data Warehouse
+# <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Samouczek: Załaduj dane do Azure SQL Data Warehouse
 
 W tym samouczku magazyn danych WideWorldImportersDW jest ładowany z usługi Azure Blob Storage do usługi Azure SQL Data Warehouse za pomocą programu PolyBase. W tym samouczku użyto witryny [Azure Portal](https://portal.azure.com) i programu [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS), aby wykonać następujące czynności:
 
@@ -78,9 +78,9 @@ Wykonaj poniższe czynności, aby utworzyć pusty magazyn danych SQL.
 
 5. Kliknij przycisk **wybierz**.
 
-6. Kliknij pozycję **Warstwa wydajności**, aby określić, czy magazyn danych jest zoptymalizowany pod kątem elastyczności, czy obliczeń, oraz podać liczbę jednostek magazynu danych. 
+6. Kliknij pozycję **warstwa wydajności** , aby określić, czy magazyn danych to Gen1, czy Gen2, oraz liczbę jednostek magazynu danych. 
 
-7. Na potrzeby tego samouczka wybierz warstwę usługi **Optymalizacja pod kątem elastyczności**. Suwak jest domyślnie ustawiony na pozycję **DW400**.  Spróbuj przesunąć go w górę i w dół, aby zobaczyć, jak działa. 
+7. Na potrzeby tego samouczka wybierz warstwę usług **Gen1** . Suwak jest domyślnie ustawiony na pozycję **DW400**.  Spróbuj przesunąć go w górę i w dół, aby zobaczyć, jak działa. 
 
     ![konfigurowanie wydajności](media/load-data-wideworldimportersdw/configure-performance.png)
 
@@ -158,7 +158,7 @@ W tej sekcji używany jest program [SQL Server Management Studio](/sql/ssms/down
 
 4. Kliknij przycisk **Połącz**. W programie SSMS zostanie otwarte okno Eksplorator obiektów. 
 
-5. W Eksploratorze obiektów rozwiń pozycję **Bazy danych**. Następnie rozwiń węzły **Systemowe bazy danych** i **master**, aby wyświetlić obiekty w bazie danych master.  Rozwiń **SampleDW** Aby wyświetlić obiekty w nowej bazy danych.
+5. W Eksploratorze obiektów rozwiń pozycję **Bazy danych**. Następnie rozwiń węzły **Systemowe bazy danych** i **master**, aby wyświetlić obiekty w bazie danych master.  Rozwiń węzeł **SampleDW** , aby wyświetlić obiekty w nowej bazie danych.
 
     ![obiekty bazy danych](media/load-data-wideworldimportersdw/connected.png) 
 
@@ -217,7 +217,7 @@ Pierwszym krokiem do załadowania danych jest zalogowanie się jako użytkownik 
 
 Wszystko jest gotowe do rozpoczęcia procesu ładowania danych do nowego magazynu danych. Aby dowiedzieć się, jak przesłać dane do usługi Azure Blob Storage lub załadować je bezpośrednio ze źródła do usługi SQL Data Warehouse, zobacz [omówienie ładowania](sql-data-warehouse-overview-load.md).
 
-Uruchom następujące skrypty SQL, aby podać informacje o danych do załadowania. Informacje te obejmują obecną lokalizację danych, format zawartości danych i definicję tabel dla danych. Dane znajdują się w globalnej usługi Azure Blob.
+Uruchom następujące skrypty SQL, aby podać informacje o danych do załadowania. Informacje te obejmują obecną lokalizację danych, format zawartości danych i definicję tabel dla danych. Dane znajdują się w globalnym obiekcie blob platformy Azure.
 
 1. W poprzedniej sekcji zalogowano się do magazynu danych jako użytkownik LoaderRC60. W programie SSMS kliknij prawym przyciskiem myszy pozycję **SampleDW** w ramach połączenia użytkownika LoaderRC60, a następnie wybierz polecenie **Nowe zapytanie**.  Zostanie otwarte okno nowego zapytania. 
 
@@ -231,7 +231,7 @@ Uruchom następujące skrypty SQL, aby podać informacje o danych do załadowani
     CREATE MASTER KEY;
     ```
 
-4. Uruchom następującą instrukcję [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql), aby określić lokalizację obiektu blob platformy Azure. Jest to lokalizacja danych zewnętrznych importerów na całym świecie.  Aby uruchomić polecenie dołączone do okna zapytania, wyróżnij polecenia, które chcesz uruchomić, a następnie kliknij przycisk **Wykonaj**.
+4. Uruchom następującą instrukcję [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql), aby określić lokalizację obiektu blob platformy Azure. Jest to lokalizacja zewnętrznych danych na całym świecie.  Aby uruchomić polecenie dołączone do okna zapytania, wyróżnij polecenia, które chcesz uruchomić, a następnie kliknij przycisk **Wykonaj**.
 
     ```sql
     CREATE EXTERNAL DATA SOURCE WWIStorage
@@ -540,13 +540,13 @@ Uruchom następujące skrypty SQL, aby podać informacje o danych do załadowani
     );
     ```
 
-8. W Eksploratorze obiektów rozwiń węzeł SampleDW, aby wyświetlić listę utworzonych tabel zewnętrznych.
+8. W Eksplorator obiektów rozwiń węzeł SampleDW, aby wyświetlić listę utworzonych tabel zewnętrznych.
 
     ![Wyświetlanie tabel zewnętrznych](media/load-data-wideworldimportersdw/view-external-tables.png)
 
 ## <a name="load-the-data-into-your-data-warehouse"></a>Ładowanie danych do magazynu danych
 
-Ta sekcja używa tabel zewnętrznych, zdefiniowane w celu załadowania przykładowych danych z magazynu obiektów Blob usługi Azure SQL Data Warehouse.  
+W tej sekcji są stosowane tabele zewnętrzne zdefiniowane w celu załadowania przykładowych danych z obiektu blob platformy Azure do SQL Data Warehouse.  
 
 > [!NOTE]
 > W tym samouczku dane są ładowane bezpośrednio do tabeli końcowej. W środowisku produkcyjnym zazwyczaj używa się instrukcji CREATE TABLE AS SELECT, aby załadować dane do tabeli przejściowej. Gdy dane znajdują się w tabeli przejściowej, można wykonać wszelkie niezbędne przekształcenia. Aby dołączyć dane z tabeli przejściowej do tabeli produkcyjnej, można użyć instrukcji INSERT...SELECT. Aby uzyskać więcej informacji, zobacz [Wstawianie danych do tabeli produkcyjnej](guidance-for-loading-data.md#inserting-data-into-a-production-table).
@@ -554,7 +554,7 @@ Ta sekcja używa tabel zewnętrznych, zdefiniowane w celu załadowania przykład
 
 W skrypcie użyto instrukcji języka T-SQL [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse), aby załadować dane z usługi Azure Storage Blob do nowych tabel w magazynie danych. Instrukcja CTAS tworzy nową tabelę na podstawie wyników instrukcji select. Nowa tabela ma takie same kolumny i typy danych jak wyniki instrukcji select. Gdy instrukcja select wybiera dane z tabeli zewnętrznej, usługa SQL Data Warehouse importuje dane do tabeli relacyjnej w magazynie danych. 
 
-Ten skrypt nie ładuje danych do tabel wwi.dimension_Date i wwi.fact_Sale. Te tabele są generowane w późniejszym kroku, aby mogły mieć znaczną liczbę wierszy.
+Ten skrypt nie ładuje danych do tabel WWI. dimension_Date i WWI. fact_Sale. Te tabele są generowane w późniejszym kroku, aby mogły mieć znaczną liczbę wierszy.
 
 1. Uruchom następujący skrypt, aby załadować dane do nowych tabel w magazynie danych.
 
@@ -750,7 +750,7 @@ Ten skrypt nie ładuje danych do tabel wwi.dimension_Date i wwi.fact_Sale. Te ta
 
 ## <a name="create-tables-and-procedures-to-generate-the-date-and-sales-tables"></a>Tworzenie tabel i procedur w celu wygenerowania tabel dat i sprzedaży
 
-W tej sekcji tworzy tabele wwi.dimension_Date i wwi.fact_Sale. Tworzy również procedury składowane, które mogą generować miliony wierszy w tabelach wwi.dimension_Date i wwi.fact_Sale.
+Ta sekcja tworzy tabele WWI. dimension_Date i WWI. fact_Sale. Tworzy również procedury składowane, które mogą generować miliony wierszy w tabelach WWI. dimension_Date i WWI. fact_Sale.
 
 1. Utwórz tabele dimension_Date i fact_Sale.  
 
@@ -893,7 +893,7 @@ W tej sekcji tworzy tabele wwi.dimension_Date i wwi.fact_Sale. Tworzy również 
     DROP table #days;
     END;
     ```
-4. Utwórz tę procedurę, która wypełnia tabele wwi.dimension_Date i wwi.fact_Sale. Wywołuje ona procedurę [wwi].[PopulateDateDimensionForYear] w celu wypełnienia tabeli wwi.dimension_Date.
+4. Utwórz tę procedurę, która wypełnia tabele WWI. dimension_Date i WWI. fact_Sale. Wywołuje ona procedurę [wwi].[PopulateDateDimensionForYear] w celu wypełnienia tabeli wwi.dimension_Date.
 
     ```sql
     CREATE PROCEDURE [wwi].[Configuration_PopulateLargeSaleTable] @EstimatedRowsPerDay [bigint],@Year [int] AS
@@ -949,7 +949,7 @@ W tej sekcji tworzy tabele wwi.dimension_Date i wwi.fact_Sale. Tworzy również 
     ```
 
 ## <a name="generate-millions-of-rows"></a>Generowanie milionów wierszy
-Użyj utworzonych procedur składowanych, aby wygenerować miliony wierszy w tabeli wwi.fact_Sale i odpowiadające im dane w tabeli wwi.dimension_Date. 
+Użyj utworzonych procedur składowanych w celu wygenerowania milionów wierszy w tabeli WWI. fact_Sale i odpowiednich danych w tabeli WWI. dimension_Date. 
 
 
 1. Uruchom tę procedurę w celu umieszczenia w tabeli [wwi].[seed_Sale] większej liczby wierszy.
@@ -958,7 +958,7 @@ Użyj utworzonych procedur składowanych, aby wygenerować miliony wierszy w tab
     EXEC [wwi].[InitialSalesDataPopulation]
     ```
 
-2. Uruchom tę procedurę, aby wypełnić wwi.fact_Sale 100 000 wierszy na dzień dla każdego dnia w roku 2000.
+2. Uruchom tę procedurę, aby wypełnić WWI. fact_Sale za pomocą 100 000 wierszy dziennie dla każdego dnia w roku 2000.
 
     ```sql
     EXEC [wwi].[Configuration_PopulateLargeSaleTable] 100000, 2000
@@ -1098,7 +1098,7 @@ Wykonaj następujące kroki, aby wyczyścić zasoby zgodnie z potrzebami.
 
     ![Oczyszczanie zasobów](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. Jeśli chcesz przechowywać dane w magazynie, możesz wstrzymać obliczenia, gdy nie korzystasz z magazynu danych. Dzięki wstrzymaniu obliczeń, można tylko będą naliczane opłaty za magazyn danych i obliczenia możesz wstrzymać w każdym przypadku, gdy wszystko będzie gotowe do pracy z danymi. Aby wstrzymać obliczenia, kliknij przycisk **Wstrzymaj**. Gdy magazyn danych jest wstrzymany, widoczny jest przycisk **Uruchom**.  Aby wznowić obliczenia, kliknij przycisk **Uruchom**.
+2. Jeśli chcesz przechowywać dane w magazynie, możesz wstrzymać obliczenia, gdy nie korzystasz z magazynu danych. Dzięki wstrzymaniu obliczeń opłaty są naliczane tylko za magazyn danych i można wznowić obliczenia za każdym razem, gdy wszystko będzie gotowe do pracy z danymi. Aby wstrzymać obliczenia, kliknij przycisk **Wstrzymaj**. Gdy magazyn danych jest wstrzymany, widoczny jest przycisk **Uruchom**.  Aby wznowić obliczenia, kliknij przycisk **Uruchom**.
 
 3. Aby uniknąć opłat w przyszłości, możesz usunąć magazyn danych. Aby usunąć magazyn danych i nie płacić za obliczenia oraz magazynowanie, kliknij przycisk **Usuń**.
 
@@ -1106,7 +1106,7 @@ Wykonaj następujące kroki, aby wyczyścić zasoby zgodnie z potrzebami.
 
 5. Aby usunąć grupę zasobów, kliknij pozycję **SampleRG**, a następnie kliknij pozycję **Usuń grupę zasobów**.
 
-## <a name="next-steps"></a>Kolejne kroki 
+## <a name="next-steps"></a>Następne kroki 
 W tym samouczku przedstawiono sposób tworzenia magazynu danych i tworzenia użytkownika wyznaczonego do ładowania danych. Utworzono tabele zewnętrzne w celu zdefiniowania struktury danych przechowywanych w usłudze Azure Storage Blob, a następnie użyto instrukcji CREATE TABLE AS SELECT technologii PolyBase w celu załadowania danych do magazynu danych. 
 
 Zostały wykonane następujące zadania:
@@ -1120,7 +1120,7 @@ Zostały wykonane następujące zadania:
 > * Wyświetlenie postępu ładowania danych
 > * Utworzenie statystyk dotyczących nowo załadowanych danych
 
-Przejdź do omówienia rozwoju, aby dowiedzieć się, jak przeprowadzić migrację istniejącej bazy danych SQL Data Warehouse.
+Przejdź do omówienia opracowywania, aby dowiedzieć się, jak przeprowadzić migrację istniejącej bazy danych do SQL Data Warehouse.
 
 > [!div class="nextstepaction"]
->[Decyzje projektowe, aby przeprowadzić migrację istniejącej bazy danych SQL Data Warehouse](sql-data-warehouse-overview-develop.md)
+>[Podejmowanie decyzji projektowych dotyczących migracji istniejącej bazy danych do SQL Data Warehouse](sql-data-warehouse-overview-develop.md)

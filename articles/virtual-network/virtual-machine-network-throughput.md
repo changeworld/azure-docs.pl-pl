@@ -1,6 +1,6 @@
 ---
-title: Przepływność sieci maszyny wirtualnej platformy Azure | Dokumentacja firmy Microsoft
-description: Więcej informacji o przepływności sieci maszyny wirtualnej platformy Azure.
+title: Przepływność sieci maszyn wirtualnych platformy Azure | Microsoft Docs
+description: Dowiedz się więcej o przepływności sieci maszyn wirtualnych platformy Azure.
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -13,61 +13,62 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/26/2019
-ms.author: kumud,steveesp, mareat
-ms.openlocfilehash: 9d74e53c754367ecfa63642514db93354fcadf25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: steveesp
+ms.reviewer: kumud, mareat
+ms.openlocfilehash: f5694e18d5743118e2b6e73708dd3acb17151198
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153734"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67874939"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Przepustowość sieci maszyny wirtualnej
 
-Platforma Azure oferuje szereg rozmiarów maszyn wirtualnych i typy, każdy z różne kombinacje wydajności. Możliwość jeden jest sieci przepływności (lub przepustowości), wyrażona w megabitach na sekundę (MB/s). Ponieważ maszyny wirtualne są hostowane na sprzęcie współużytkowanym, pojemność sieci musi być udostępniona dość między maszynami wirtualnymi, udostępnianie tego samego sprzętu. Większe maszyny wirtualne są przydzielane stosunkowo większej przepustowości niż mniejsze maszyny wirtualne.
+Platforma Azure oferuje różne rozmiary i typy maszyn wirtualnych, z których każdy ma inne możliwości wydajności. Jedną z możliwości jest przepustowość sieci (lub przepustowość) mierzona w megabitach na sekundę (MB/s). Ze względu na to, że maszyny wirtualne są hostowane na udostępnionym sprzęcie, pojemność sieci musi być współdzielona przez maszyny wirtualne korzystające z tego samego sprzętu. Większe maszyny wirtualne są przydzieloną stosunkowo większą przepustowością niż mniejsze maszyny wirtualne.
  
-Przepustowość sieci, przydzielone do każdej maszyny wirtualnej jest mierzone w (ruch wychodzący) ruch wychodzący z maszyny wirtualnej. Cały ruch sieciowy, pozostawiając maszyny wirtualnej jest liczony limitem przydzielone, niezależnie od docelowego. Na przykład jeśli maszyna wirtualna ma limit 1000 MB/s, ten limit dotyczy zarówno ruch wychodzący jest przeznaczony dla innej maszyny wirtualnej w tej samej sieci wirtualnej lub poza platformą Azure.
+Przepustowość sieci przypisana do każdej maszyny wirtualnej jest naliczana na ruch wychodzący z maszyny wirtualnej. Cały ruch sieciowy opuszczający maszynę wirtualną jest liczony do przydzielonych limitów, niezależnie od miejsca docelowego. Na przykład jeśli maszyna wirtualna ma limit 1 000 MB/s, ten limit dotyczy tego, czy ruch wychodzący jest przeznaczony dla innej maszyny wirtualnej w tej samej sieci wirtualnej, czy poza platformą Azure.
  
-Ruch przychodzący jest mierzone lub nie ograniczony bezpośrednio. Istnieją jednak inne czynniki, takie jak limity procesora CPU i pamięci masowej, które mogą wpłynąć na możliwość przetwarzania przychodzących danych maszyny wirtualnej.
+Ruch przychodzący nie jest naliczany ani ograniczony bezpośrednio. Istnieją jednak inne czynniki, takie jak limity procesora CPU i magazynu, które mogą mieć wpływ na możliwość przetwarzania danych przychodzących przez maszynę wirtualną.
 
-Przyspieszona sieć jest funkcją pozwalające zwiększyć wydajność sieci, w tym czas oczekiwania, przepływność i użycie procesora CPU. Gdy przyspieszonej łączności sieciowej, można zwiększyć przepływność maszynę wirtualną, go to zrobić tylko przepustowość przydzielona do maszyny wirtualnej w górę. Aby dowiedzieć się więcej na temat Accelerated networking, zobacz temat dotyczący usługi Accelerated networking for [Windows](create-vm-accelerated-networking-powershell.md) lub [Linux](create-vm-accelerated-networking-cli.md) maszyn wirtualnych.
+Przyspieszona sieć to funkcja przeznaczona do poprawy wydajności sieci, w tym opóźnienia, przepływności i użycia procesora CPU. Przyspieszona sieć może zwiększyć przepływność maszyny wirtualnej, więc może to zrobić tylko do przydzieloną przepustowość maszyny wirtualnej. Aby dowiedzieć się więcej o przyspieszonej sieci, zobacz przyspieszone sieci dla maszyn wirtualnych z [systemem Windows](create-vm-accelerated-networking-powershell.md) lub [Linux](create-vm-accelerated-networking-cli.md) .
  
-Maszyny wirtualne platformy Azure musi mieć jedną, ale może mieć kilka, dołączonych do nich interfejsy sieciowe. Przepustowość przydzielona do maszyny wirtualnej jest sumą cały ruch wychodzący we wszystkich interfejsów sieciowych dołączonych do maszyny wirtualnej. Innymi słowy przydzielonej przepustowości odbywa się dla maszyny wirtualnej, niezależnie od tego, jak wiele interfejsów sieciowych dołączonych do maszyny wirtualnej. Aby dowiedzieć się, ile interfejsy różnych Obsługa rozmiarów maszyn wirtualnych platformy Azure, zobacz platformę Azure [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) i [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rozmiarów maszyn wirtualnych. 
+Usługi Azure Virtual Machines muszą mieć jeden, ale może mieć kilka podłączonych do nich interfejsów sieciowych. Przepustowość przypisana do maszyny wirtualnej to suma całego ruchu wychodzącego między wszystkimi interfejsami sieciowymi podłączonymi do maszyny wirtualnej. Innymi słowy, przydzieloną przepustowość dotyczy każdej maszyny wirtualnej, niezależnie od liczby interfejsów sieciowych dołączonych do maszyny wirtualnej. Aby dowiedzieć się, ile interfejsów sieciowych obsługuje różne rozmiary maszyn wirtualnych platformy Azure, zobacz rozmiary maszyn wirtualnych z [systemami Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) i [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) . 
 
-## <a name="expected-network-throughput"></a>Przepływność sieci oczekiwane
+## <a name="expected-network-throughput"></a>Oczekiwana przepływność sieci
 
-Oczekiwanej przepływności wychodzące i liczbę interfejsów sieciowych obsługiwanych przez każdego rozmiaru maszyny Wirtualnej została szczegółowo opisana na platformie Azure [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) i [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rozmiarów maszyn wirtualnych. Wybierz typ, takich jak ogólnego przeznaczenia, a następnie wybierz serię rozmiar na stronie wynikowe, np. zalecamy używanie serii Dv2. Każda seria ma jedną tabelę z sieci specyfikacji w ostatniej kolumnie pod tytułem **maksymalna liczba kart sieciowych / oczekiwana wydajność sieci (MB/s)** . 
+Oczekiwana przepływność wychodząca i liczba interfejsów sieciowych obsługiwanych przez poszczególne rozmiary maszyn wirtualnych są szczegółowo opisane w obszarze rozmiary maszyn wirtualnych w [systemie Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) i [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) . Wybierz typ, taki jak ogólnego przeznaczenia, a następnie wybierz serię rozmiarów na stronie wyników, na przykład Dv2. Każda seria zawiera tabelę z specyfikacjami sieci w ostatniej kolumnie zatytułowaną, **Maksymalna liczba kart sieciowych/oczekiwana wydajność sieci (MB/s)** . 
 
-Limit przepływności stosuje się do maszyny wirtualnej. Przepływność jest zależny od następujących czynników:
-- **Liczba interfejsów sieciowych**: Limit przepustowości jest zbiorcze z całego ruchu wychodzącego z maszyny wirtualnej.
-- **Przyspieszona sieć**: Chociaż ta funkcja może być pomocny w osiągnięcia limitu opublikowane, nie powoduje zmiany limitu.
-- **Miejsce docelowe ruchu**: Wszystkie miejsca docelowe są wliczane do limitu ruchu wychodzącego.
-- **Protokół**: Cały ruch wychodzący za pośrednictwem wszystkich protokołów, liczy się do limitu.
+Limit przepływności ma zastosowanie do maszyny wirtualnej. Następujące czynniki nie mają wpływ na przepływność:
+- **Liczba interfejsów sieciowych**: Limit przepustowości jest kumulowany dla całego ruchu wychodzącego z maszyny wirtualnej.
+- **Przyspieszona sieć**: Chociaż ta funkcja może być przydatna w osiągnięciu opublikowanego limitu, nie powoduje zmiany limitu.
+- **Miejsce docelowe ruchu**: Liczba wszystkich miejsc docelowych w kierunku limitu wychodzącego.
+- **Protokół**: Cały ruch wychodzący przez wszystkie protokoły jest liczony do limitu.
 
-## <a name="network-flow-limits"></a>Limity usługi Flow w sieci
+## <a name="network-flow-limits"></a>Limity przepływu sieci
 
-Oprócz przepustowość liczba połączeń sieciowych, które są obecne na maszynie Wirtualnej w danym momencie może wpłynąć na wydajność sieci. Usługa Azure stack sieci zachowuje stan dla każdego kierunku połączenia TCP/UDP w strukturach danych o nazwie "przepływy". Typowe połączenie TCP/UDP będzie miał 2 przepływy utworzone, jeden dla ruchu przychodzącego i inny wpis dla kierunku wychodzącego. 
+Oprócz przepustowości liczba połączeń sieciowych znajdujących się na maszynie wirtualnej może mieć wpływ na wydajność sieci. Stos sieci platformy Azure zachowuje stan dla każdego kierunku połączenia TCP/UDP w strukturach danych o nazwie "Flows". Typowe połączenie TCP/UDP będzie miało 2 utworzone przepływy, jeden dla ruchu przychodzącego i innego dla kierunku wychodzącego. 
 
-Transfer danych między punktami końcowymi wymaga tworzenia kilku przepływów, oprócz tych, które transferu danych. Niektóre przykłady są przepływy utworzone dla rozpoznawania nazw DNS i przepływów utworzonych dla sondy kondycji modułu równoważenia obciążenia. Należy pamiętać, że sieciowych urządzeń wirtualnych (urządzeń WUS), takich jak bram, serwery proxy i zapory, zobaczą również przepływy tworzone dla połączeń została przerwana na urządzenie i zainicjowany przez urządzenie. 
+Transfer danych między punktami końcowymi wymaga utworzenia kilku przepływów oprócz tych, które wykonują transfer danych. Niektóre przykłady to przepływy utworzone dla rozpoznawania DNS i przepływów utworzonych dla sond kondycji modułu równoważenia obciążenia. Należy również zauważyć, że wirtualne urządzenia sieciowe (urządzeń WUS), takie jak bramy, serwery proxy, zapory, będą widzieć przepływy tworzone dla połączeń zakończonych na urządzeniu i pochodzące z urządzenia. 
 
-![Liczba przepływów dla konwersacji TCP za pośrednictwem urządzenia przekazywania](media/virtual-machine-network-throughput/flow-count-through-network-virtual-appliance.png)
+![Liczba przepływów dla konwersacji TCP za pośrednictwem urządzenia przekazującego](media/virtual-machine-network-throughput/flow-count-through-network-virtual-appliance.png)
 
 ## <a name="flow-limits-and-recommendations"></a>Limity przepływu i zalecenia
 
-Dziś Azure stosu sieciowego obsługuje przepływów sieci Całkowita 250 tys dobrą wydajność w przypadku maszyn wirtualnych o rozmiarze większym niż 8 rdzeni procesora CPU i 100 KB łączna liczba przepływów z dobrą wydajność w przypadku maszyn wirtualnych z mniej niż 8 rdzeni procesora CPU. Ostatnie tej sieci limit spadku wydajności bez problemu zmieniała dla przydzielenie dodatkowych przepływów maksymalnie stały limit 1 mln łączna liczba przepływów, K 500 dla ruchu przychodzącego i 500 KB ruchu wychodzącego, po których przydzielenie dodatkowych przepływów są porzucane.
+Obecnie stos sieci platformy Azure obsługuje 250 000 łączne przepływy sieciowe z dobrą wydajnością dla maszyn wirtualnych z ponad 8 rdzeniami procesora i łącznym przepływem, dzięki czemu maszyny wirtualne mają mniej niż 8 rdzeni procesora. Dzięki temu ograniczenie wydajności sieci jest bezpieczne w przypadku dodatkowych przepływów, aż do sztywnego limitu całkowitej liczby przepływów, 500 000 ruchu przychodzącego i 500 000 wychodzącego, po którym są porzucane dodatkowe przepływy.
 
-||Maszyny wirtualne za pomocą < 8 rdzeni procesora CPU|Maszyny wirtualne z 8 + liczba rdzeni procesora CPU|
+||Maszyny wirtualne z < 8 rdzeni procesora CPU|Maszyny wirtualne z 8 rdzeniami procesora CPU|
 |---|---|---|
-|<b>Dobra wydajność</b>|Przepływy 100 KB |Przepływy 250 tys.|
-|<b>Pogorszenie wydajności</b>|Powyżej 100 tysięcy przepływów|Ponad 250 KB przepływów|
-|<b>Limit przepływu</b>|1 mln przepływów|1 mln przepływów|
+|<b>Dobra wydajność</b>|Przepływy 100 000 |Przepływy 250 000|
+|<b>Wydajność obniżona</b>|Powyżej przepływy 100 000|Powyżej przepływy 250 000|
+|<b>Limit przepływu</b>|1M przepływów|1M przepływów|
 
-Metryki są dostępne w [usługi Azure Monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) śledzić liczbę przepływów sieci i szybkość Tworzenie przepływu na wystąpień maszyny Wirtualnej lub zestawu skalowania maszyn wirtualnych.
+Metryki są dostępne w [Azure monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) , aby śledzić liczbę przepływów sieciowych i szybkość tworzenia przepływu na maszynach wirtualnych lub wystąpieniach VMSS.
 
 ![azure-monitor-flow-metrics.png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
 
-Stawki za ustanawianie połączenia może również wpływać na wydajność sieci jako połączenie ustanawianie udziałów procesora CPU za pomocą procedury przetwarzania pakietów. Firma Microsoft zaleca benchmark obciążeń pod kątem wzorców oczekiwanego natężenia ruchu i skalowania obciążeń odpowiednio do potrzeb w zakresie wydajności. 
+Stawki za połączenia i zwolnienia mogą również wpływać na wydajność sieci, ponieważ ustanowienie połączenia i zakończenie współużytkują procesor z procedurami przetwarzania pakietów. Firma Microsoft zaleca, aby przeprowadzić testy porównawcze względem oczekiwanych wzorców ruchu i odpowiednio skalować obciążenia w celu dopasowania do potrzeb związanych z wydajnością. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Optymalizowanie przepływności sieci dla systemu operacyjnego maszyny wirtualnej](virtual-network-optimize-network-bandwidth.md)
-- [Przepływność sieci testu](virtual-network-bandwidth-testing.md) dla maszyny wirtualnej.
+- [Przetestuj przepływność sieci](virtual-network-bandwidth-testing.md) dla maszyny wirtualnej.

@@ -1,6 +1,6 @@
 ---
-title: Jak rejestrować biletu pomocy technicznej zdarzenia zabezpieczeń — Azure | Dokumentacja firmy Microsoft
-description: Jako sprzedawcy w witrynie Azure Marketplace, posiadające zidentyfikować potencjalne zdarzenie zabezpieczeń musisz wiedzieć, jak odpowiednie zgłoszenie.
+title: Jak zarejestrować bilet pomocy technicznej dla zdarzeń zabezpieczeń — Azure | Microsoft Docs
+description: Jako sprzedawca w portalu Azure Marketplace po zidentyfikowaniu potencjalnego zdarzenia zabezpieczeń należy wiedzieć, jak zarejestrować odpowiedni bilet.
 services: security
 documentationcenter: na
 author: DavidBosland
@@ -13,40 +13,40 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2017
-ms.author: v-dabosl
-ms.openlocfilehash: 243b6b7846719d3f848073e3aa973c9406ca59c7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: barclayn
+ms.openlocfilehash: 80ce352a9033b2da1db16643d07eab9eff70eb0a
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60586605"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875679"
 ---
-# <a name="how-to-log-a-security-event-support-ticket"></a>Jak logować biletu pomocy technicznej zdarzenia zabezpieczeń
+# <a name="how-to-log-a-security-event-support-ticket"></a>Jak zarejestrować bilet pomocy technicznej dla zdarzeń zabezpieczeń
 
 1. Przejdź do [pomocy technicznej wydawcy](https://support.microsoft.com/en-us/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636450758943226673) i zaloguj się przy użyciu poświadczeń firmy Microsoft.
-2. Jako typ problemu wybierz pozycję "Zdarzenie zabezpieczeń", a następnie wybranie kategorii "Zdarzenie zabezpieczeń" i "Luk w zabezpieczeniach".
+2. Wybierz pozycję "zdarzenie zabezpieczeń" jako typ problemu i wybierz opcję między kategoriami "zdarzenie zabezpieczeń" i "Usterka".
 
-    ![Typ zdarzenia i definicji][1]
+    ![Typ i definicja zdarzenia][1]
 
-3. Po wybraniu, typ i kategorię problemu, kliknij przycisk "**żądanie uruchomienia**" przycisk. Podaj następujące informacje, aby pomóc nam lepsze zrozumienie problemu.
+3. Po wybraniu typu problemu i kategorii kliknij przycisk "**Uruchom żądanie**". Podaj następujące informacje, aby pomóc nam w lepszym zrozumieniu problemu.
 
-    i. Co to jest problem i/lub luk w zabezpieczeniach?
+    i. Jaki jest problem i/lub usterka?
 
-    ii. Dla luki w zabezpieczeniach, podaj CVE (mitre.org) lub wypełniony się Kalkulator v3 CVSS3 (https://www.first.org/cvss/calculator/3.0).
+    ii. W przypadku luk w zabezpieczeniach podaj wartość CVE (mitre.org) lub wypełnienie CVSS3 v3 (https://www.first.org/cvss/calculator/3.0).
 
-    III. Czy istnieje rozpoznawania lub migracji? Jeśli tak, następnie podaj czynności zaradczych.
+    III. Czy istnieje rozwiązanie lub środki zaradcze? Jeśli tak, podaj czynności zaradcze.
 
-    IV. Czy masz komunikat, który chcesz wysłać do klientów? Firma Microsoft będzie współpraca z Tobą sformułować odpowiedni komunikat, jeśli ma to zastosowanie.
+    IV. Czy masz komunikat, który chcesz wysłać do klientów? W razie potrzeby będziemy współpracować z tym rozwiązaniem.
 
-4. Potwierdzenie przesłania zawartości — po przesłaniu problemu, firma Microsoft będzie otrzymanie w ciągu jednego dnia i przypisz problemu priorytetu i wagi.
+4. Potwierdzenie przesyłania — po przesłaniu problemu otrzymamy potwierdzenie w ciągu jednego dnia roboczego i przypiszesz mu priorytet i ważność.
 
-    - Jeśli potrzebujesz nawiązać połączenia z usługą nam o swoim problemie, należy użyć numeru potwierdzenie, prowadząc korespondencję.
-    - Możesz wyświetlić postęp na swój problem w dowolnym momencie.
+    - Jeśli musisz skontaktować się z nami o swoim problemie, użyj numeru potwierdzenia w całej korespondencji.
+    - Postęp problemu można zobaczyć w dowolnym momencie.
 
-5. Co dalej? W zależności od problemu i ważność mogą zostać podjęte następujące czynności:
+5. Co się stanie w następnej kolejności? W zależności od problemu i ważności można wykonać następujące czynności:
 
-    - Firma Microsoft przekaże wynik nasze oceny dla Ciebie. W zależności od wyniku możemy usunąć lub żądania, należy zmodyfikować oferty. W takiej sytuacji firma Microsoft będzie działać z Tobą w celu zapewnienia zminimalizowane przerwie w dostępie do pomagać klientom.
-    - Firma Microsoft będzie działać z Tobą, aby ułatwić uniknięcie wpływu zdarzenia/luki w zabezpieczeniach dla naszych wspólnych klientów.
+    - Będziemy informować o wynikach naszych ocen. W zależności od wyniku firma Microsoft może usunąć ofertę lub zażądać jej modyfikacji. W tym zdarzeniu będziemy współpracować ze swoimi zadaniami, aby mieć pewność, że zakłócenia wpływające na klientów zostanie zminimalizowane.
+    - Będziemy współpracować z ty, aby pomóc w ograniczeniu wpływu incydentu/luki w zabezpieczeniach naszych klientów.
 
 
 [1]: ./media/azure-security-event-support-ticket/chart.png

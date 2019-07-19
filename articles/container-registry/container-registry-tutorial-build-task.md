@@ -3,23 +3,24 @@ title: Samouczek — Automatyzowanie kompilacji obrazu kontenera — Azure Conta
 description: Z tego samouczka dowiesz się, jak skonfigurować usługę Azure Container Registry Task w celu automatycznego wyzwalania kompilacji obrazu kontenera w chmurze, gdy zatwierdzasz kod źródłowy do repozytorium Git.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 05/04/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 7a9a1e3d3c92f43d19a75e7cd0e10b3fd395a9b5
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: ea3f4f295da747b3a53956c0888797a5f8607d6e
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544998"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310472"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Samouczek: Automatyzowanie kompilacji obrazu kontenera w chmurze po zatwierdzeniu kodu źródłowego
 
-Oprócz [szybkich zadań](container-registry-tutorial-quick-task.md), zadania rejestru Azure container Registry obsługuje automatyczne Docker kompilacji obrazu kontenera w chmurze, gdy zatwierdzisz kod źródłowy do repozytorium Git.
+Oprócz [szybkiego zadania](container-registry-tutorial-quick-task.md)zadania ACR obsługują zautomatyzowane kompilacje obrazów kontenerów platformy Docker w chmurze podczas zatwierdzania kodu źródłowego w repozytorium git.
 
-W tym samouczku zadanie rejestru Azure container Registry kompiluje i wypycha obraz kontenera pojedynczego określonego w pliku Dockerfile, gdy zatwierdzisz kod źródłowy w repozytorium usługi Git. Aby utworzyć [zadania wieloetapowe](container-registry-tasks-multi-step.md) pliku YAML, używa w celu zdefiniowania kroki w celu kompilacji, wypychania i opcjonalnie przetestować wielu kontenerów przy zatwierdzeniu kodu, zobacz [samouczka: Uruchamianie kontenera wieloetapowy przepływ pracy w chmurze, gdy zatwierdzisz kod źródłowy](container-registry-tutorial-multistep-task.md). Omówienie zadań rejestru Azure container Registry, zobacz [automatyzacji systemu operacyjnego i framework poprawek za pomocą zadań usługi ACR](container-registry-tasks-overview.md)
+W tym samouczku zadanie ACR kompiluje i wypycha pojedynczy obraz kontenera określony w pliku dockerfile podczas zatwierdzania kodu źródłowego w repozytorium git. Aby utworzyć [zadanie](container-registry-tasks-multi-step.md) wieloetapowe używające pliku YAML do definiowania kroków do kompilowania, wypychania i opcjonalnego testowania wielu kontenerów przy przekazywaniu kodu [, zobacz Samouczek: Uruchamianie wieloetapowego przepływu pracy kontenera w chmurze podczas zatwierdzania kodu](container-registry-tutorial-multistep-task.md)źródłowego. Aby zapoznać się z omówieniem zadań ACR, zobacz [Automatyzowanie poprawek systemu operacyjnego i platformy przy użyciu zadań ACR](container-registry-tasks-overview.md)
 
 W tym samouczku:
 
@@ -33,7 +34,7 @@ W samouczku założono, że zostały już wykonane kroki z [poprzedniego samoucz
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Jeśli chcesz użyć interfejsu wiersza polecenia platformy Azure lokalnie, musisz zainstalować jego wersję **2.0.46** lub nowszą i zalogować się za pomocą polecenia [az login][az-login]. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja interfejsu wiersza polecenia lub jego uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli].
+Jeśli chcesz korzystać z interfejsu wiersza polecenia platformy Azure lokalnie, musisz mieć zainstalowany interfejs wiersza polecenia platformy Azure w wersji **2.0.46** lub nowszej i zalogować się przy użyciu [AZ login][az-login]. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne jest zainstalowanie lub uaktualnienie interfejsu wiersza polecenia, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli].
 
 [!INCLUDE [container-registry-task-tutorial-prereq.md](../../includes/container-registry-task-tutorial-prereq.md)]
 
@@ -41,7 +42,7 @@ Jeśli chcesz użyć interfejsu wiersza polecenia platformy Azure lokalnie, musi
 
 Po ukończeniu kroków wymaganych do włączenia usługi ACR Tasks w celu odczytywania stanu zatwierdzenia i tworzenia elementów webhook w repozytorium możesz utworzyć zadanie, które wyzwala kompilację obrazu kontenera po zatwierdzeniu do repozytorium.
 
-Najpierw wypełnij te zmienne środowiskowe powłoki przy użyciu wartości odpowiednich dla danego środowiska. Ten krok nie jest ściśle wymagany, ale trochę ułatwia wykonywanie przedstawionych w tym samouczku wielowierszowych poleceń interfejsu wiersza polecenia platformy Azure. Jeśli nie możesz wypełnić te zmienne środowiskowe, można ręcznie zastąpić każdej wartości, wszędzie tam, gdzie pojawia się w przykładowe polecenia.
+Najpierw wypełnij te zmienne środowiskowe powłoki przy użyciu wartości odpowiednich dla danego środowiska. Ten krok nie jest ściśle wymagany, ale trochę ułatwia wykonywanie przedstawionych w tym samouczku wielowierszowych poleceń interfejsu wiersza polecenia platformy Azure. Jeśli te zmienne środowiskowe nie zostaną wypełnione, należy ręcznie zastąpić każdą wartość w dowolnym miejscu w przykładowych poleceniach.
 
 ```azurecli-interactive
 ACR_NAME=<registry-name>        # The name of your Azure container registry
@@ -49,7 +50,7 @@ GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
 ```
 
-Utwórz zadanie, wykonując następujące [az acr zadanie Tworzenie] [ az-acr-task-create] polecenia:
+Teraz Utwórz zadanie, wykonując następujące polecenie [AZ ACR Task Create][az-acr-task-create] :
 
 ```azurecli-interactive
 az acr task create \
@@ -63,11 +64,11 @@ az acr task create \
 ```
 
 > [!IMPORTANT]
-> Jeśli wcześniej utworzono zadania za pomocą wersji zapoznawczej przy użyciu polecenia `az acr build-task`, trzeba je utworzyć ponownie przy użyciu polecenia [az acr task][az-acr-task].
+> Jeśli wcześniej utworzono zadania w wersji zapoznawczej przy `az acr build-task` użyciu polecenia, należy ponownie utworzyć te zadania za pomocą polecenia [AZ ACR Task][az-acr-task] .
 
 To zadanie określa, że za każdym razem, gdy kod jest zatwierdzany do *głównej* gałęzi w repozytorium określonym przez element `--context`, usługa ACR Tasks skompiluje obraz kontenera z kodu w tej gałęzi. Do kompilowania obrazu jest używany plik Dockerfile określony przez parametr `--file` z katalogu głównego repozytorium. Argument `--image` określa wartość sparametryzowaną elementu `{{.Run.ID}}` dla części wersji tagu obrazu, zapewniając, że skompilowany obraz jest powiązany z określoną kompilacją i jest jednoznacznie oznakowany.
 
-Dane wyjściowe z pomyślnie wykonanego polecenia [az acr task create][az-acr-task-create] przypominają następujące dane:
+Dane wyjściowe z pomyślnego polecenia [AZ ACR Task Create][az-acr-task-create] są podobne do następujących:
 
 ```console
 {
@@ -128,7 +129,7 @@ Dane wyjściowe z pomyślnie wykonanego polecenia [az acr task create][az-acr-ta
 
 ## <a name="test-the-build-task"></a>Testowanie zadania kompilacji
 
-Masz teraz zadanie, które definiuje kompilację. Aby przetestować potok kompilacji, należy ręcznie wyzwolić kompilację, wykonując polecenie [az acr task run][az-acr-task-run]:
+Masz teraz zadanie, które definiuje kompilację. Aby przetestować potok kompilacji, wyzwól kompilację ręcznie przez wykonanie polecenia [AZ ACR Task Run][az-acr-task-run] :
 
 ```azurecli-interactive
 az acr task run --registry $ACR_NAME --name taskhelloworld
@@ -251,7 +252,7 @@ Run ID: da4 was successful after 38s
 
 ## <a name="list-builds"></a>Lista kompilacji
 
-Aby wyświetlić listę przebiegów zadań, które usługa ACR Tasks wykonała dla rejestru, uruchom polecenie [az acr task list-runs][az-acr-task-list-runs]:
+Aby wyświetlić listę zadań, które ACR zadania zostały wykonane dla rejestru, uruchom polecenie [AZ ACR Task List-][az-acr-task-list-runs] Run:
 
 ```azurecli-interactive
 az acr task list-runs --registry $ACR_NAME --output table

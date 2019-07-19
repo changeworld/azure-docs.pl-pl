@@ -1,36 +1,36 @@
 ---
-title: Przekazywanie obrazów do aplikacji usługi Azure IoT Central | Dokumentacja firmy Microsoft
-description: Jako Konstruktor Dowiedz się, jak przygotować i przekazać obrazy do aplikacji usługi Azure IoT Central.
+title: Przekazywanie obrazów do aplikacji usługi Azure IoT Central | Microsoft Docs
+description: Jako Konstruktor zapoznaj się z tematem przygotowywanie i przekazywanie obrazów do aplikacji IoT Central platformy Azure.
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/05/2019
+ms.date: 07/11/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: a20662c2fc9b416fefce89a6ebe706307ee71bb7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 255033f03acd40580fb4d4a92b0aa9b3e16969f3
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65236468"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850160"
 ---
-# <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>Przygotuj i przekazywać obrazy do aplikacji usługi Azure IoT Central
+# <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>Przygotowywanie i przekazywanie obrazów do aplikacji IoT Central platformy Azure
 
-W tym artykule opisano, jak to zrobić, w jako konstruktor, przekazując obrazów niestandardowych można dostosować aplikację usługi Azure IoT Central. Na przykład można dostosować pulpit nawigacyjny urządzenia przy użyciu obrazu urządzenia.
+W tym artykule opisano, jak w konstruktorze można dostosować aplikację IoT Central platformy Azure, przekazując obrazy niestandardowe. Na przykład możesz dostosować pulpit nawigacyjny urządzenia za pomocą obrazu urządzenia.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 Do wykonania kroków opisanych w tym artykule potrzebne są:
 
-1. Aplikacja usługi Azure IoT Central. Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
-1. Narzędzie służące do skalowania i zmienianie rozmiaru obrazów, plików.
+1. Aplikacja IoT Central platformy Azure. Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
+1. Narzędzie do skalowania i zmiany rozmiarów plików obrazów.
 
-## <a name="choose-where-to-use-custom-images"></a>Wybierz miejsce używać obrazów niestandardowych
+## <a name="choose-where-to-use-custom-images"></a>Wybieranie miejsca używania obrazów niestandardowych
 
-Możesz dodać niestandardowe obrazy w następujących lokalizacjach w aplikacji usługi Azure IoT Central:
+Możesz dodać niestandardowe obrazy do następujących lokalizacji w aplikacji IoT Central platformy Azure:
 
-* **Aplikacje** strony
+* Strona **Moje aplikacje**
 
     ![Obraz na stronie Menedżera aplikacji](media/howto-prepare-images/applicationmanager.png)
 
@@ -40,11 +40,11 @@ Możesz dodać niestandardowe obrazy w następujących lokalizacjach w aplikacji
 
 * Szablon urządzenia
 
-    ![Obraz na szablon urządzenia](media/howto-prepare-images/devicetemplate.png)
+    ![Obraz w szablonie urządzenia](media/howto-prepare-images/devicetemplate.png)
 
 * Kafelek na pulpicie nawigacyjnym urządzenia
 
-    ![Obraz na Kafelek urządzenia](media/howto-prepare-images/devicetile.png)
+    ![Obraz na kafelku urządzenia](media/howto-prepare-images/devicetile.png)
 
 * Kafelek na pulpicie nawigacyjnym zestawu urządzeń
 
@@ -54,70 +54,70 @@ Możesz dodać niestandardowe obrazy w następujących lokalizacjach w aplikacji
 
 We wszystkich czterech lokalizacjach można używać obrazów PNG, GIF lub JPEG.
 
-W poniższej tabeli przedstawiono rozmiary obrazów, których można użyć:
+W poniższej tabeli zestawiono rozmiary obrazów, których można użyć:
 
-| Lokalizacja | Rozmiary |
+| Location | Rozmiary |
 | -------- | ------ |
 | Menedżer aplikacji | 268x160 px |
 | Szablon urządzenia | 64x64 px |
-| Kafelki pulpitu nawigacyjnego | Najmniejszy rozmiar kafelka jest 200 x 200 pikseli, większy kafelków może być kwadratowe lub prostokątny wielokrotności małych fragmentów. Na przykład 200 x 400 pikseli, 400 x 200 pikseli lub 400 x 400 piks. |
+| Kafelki pulpitu nawigacyjnego | Kafelek o najmniejszym rozmiarze to 200x200 piks. większe kafelki mogą być kwadratowe lub prostokątne wielokrotności małych fragmentów. Na przykład 200x400 px, 400x200 px lub 400x400 pikseli |
 
-Najlepsze wyświetlania w aplikacji należy utworzyć obrazy, które odpowiadają wymiarów przedstawionych w powyższej tabeli.
+Aby najlepiej wyświetlać w aplikacji, należy utworzyć obrazy zgodne z wymiarami podanymi w poprzedniej tabeli.
 
-## <a name="upload-the-images"></a>Przekazywanie obrazów
+## <a name="upload-the-images"></a>Przekaż obrazy
 
-W poniższych sekcjach opisano sposób przekazywania obrazów w różnych miejscach:
+W poniższych sekcjach opisano sposób przekazywania obrazów w różnych lokalizacjach:
 
 ### <a name="application-manager"></a>Menedżer aplikacji
 
-Do przekazania obrazu do użycia na **aplikacje** stronie, przejść do **ustawienia aplikacji** strony w **administracji** sekcji. Musisz być administratorem, aby zakończyć to zadanie:
+Aby przekazać obraz do użycia na stronie **Moje aplikacje** , przejdź do strony **Ustawienia aplikacji** w sekcji **Administracja** . Aby wykonać to zadanie, musisz być administratorem:
 
-![Przekaż obraz aplikacji](media/howto-prepare-images/uploadapplicationmanager.png)
+![Załaduj obraz aplikacji](media/howto-prepare-images/uploadapplicationmanager.png)
 
-Wybierz **obrazu aplikacji** Kafelek, aby przekazać obraz (268 x 160 pikseli) z komputera lokalnego.
+Wybierz kafelek **obraz aplikacji** , aby przekazać obraz (268x160 px) z komputera lokalnego.
 
 ### <a name="application-dashboard"></a>Pulpit nawigacyjny aplikacji
 
-Aby przekazać obraz na pulpicie nawigacyjnym aplikacji, przejdź do **pulpit nawigacyjny** strony aplikacji i wybierz **Edytuj**. Konstruktor, aby zakończyć to zadanie, musisz być:
+Aby przekazać obraz na pulpicie nawigacyjnym aplikacji, przejdź do strony **pulpit nawigacyjny** aplikacji i wybierz pozycję **Edytuj**. Aby wykonać to zadanie, musisz być konstruktorem:
 
 ![Przekaż obraz pulpitu nawigacyjnego](media/howto-prepare-images/uploadhomepage.png)
 
-W obszarze **skonfigurować obraz**, wybierz opcję **obraz** Kafelek, aby przekazać obraz z komputera lokalnego. Najmniejszy rozmiar kafelka jest 200 x 200 pikseli, większy kafelków może być kwadratowe lub prostokątny wielokrotności małych fragmentów. Na przykład 200 x 400 pikseli, 400 x 200 pikseli lub 400 x 400 piks.
+W obszarze **Konfigurowanie obrazu**wybierz kafelek **obraz** , aby przekazać obraz z komputera lokalnego. Kafelek o najmniejszym rozmiarze to 200x200 piks. większe kafelki mogą być kwadratowe lub prostokątne wielokrotności małych fragmentów. Na przykład 200x400 px, 400x200 px lub 400x400 pikseli.
 
-**Zapisz** przekazanego obrazu. Możesz zmienić jego rozmiar w trybie edycji. Wybierz **gotowe** po zakończeniu.
+**Zapisz** przekazany obraz. Można zmienić jego rozmiar w trybie edycji. Po zakończeniu wybierz pozycję **gotowe** .
 
 ### <a name="device-template"></a>Szablon urządzenia
 
-Aby przekazać obraz na podstawie szablonu urządzenia, przejdź do **szablonów urządzeń** i wybierz szablon urządzenia. Konstruktor, aby zakończyć to zadanie, musisz być:
+Aby przekazać obraz do szablonu urządzenia, przejdź do **szablonów urządzeń** i wybierz szablon urządzenia. Aby wykonać to zadanie, musisz być konstruktorem:
 
-![Przekazywanie obrazu szablonu urządzenia](media/howto-prepare-images/uploaddevicetemplate.png)
+![Załaduj obraz szablonu urządzenia](media/howto-prepare-images/uploaddevicetemplate.png)
 
-Wybierz Kafelek obrazu, aby przekazać obraz (64 x 64 pikseli) z komputera lokalnego.
+Wybierz kafelek obrazu, aby przekazać obraz (64x64 px) z komputera lokalnego.
 
 ### <a name="device-dashboard"></a>Pulpit nawigacyjny urządzenia
 
-Aby przekazać obraz na pulpicie nawigacyjnym urządzenia, przejdź do **szablonów urządzeń** i wybierz szablon urządzenia. Następnie wybierz **pulpit nawigacyjny** kartę. Konstruktor, aby zakończyć to zadanie, musisz być:
+Aby przekazać obraz na pulpicie nawigacyjnym urządzenia, przejdź do **szablonów urządzeń** i wybierz szablon urządzenia. Następnie wybierz kartę **pulpit nawigacyjny** . Aby wykonać to zadanie, musisz być konstruktorem:
 
-![Przekazywanie obrazu do pulpitu nawigacyjnego urządzeń](media/howto-prepare-images/uploaddevicedashboard.png)
+![Przekaż obraz pulpitu nawigacyjnego urządzenia](media/howto-prepare-images/uploaddevicedashboard.png)
 
-W obszarze **skonfigurować obraz**, wybierz opcję **obraz** kafelka, a następnie wybierz plik do przekazania z komputera lokalnego. Najmniejszy rozmiar kafelka jest 200 x 200 pikseli, większy kafelków może być kwadratowe lub prostokątny wielokrotności małych fragmentów. Na przykład 200 x 400 pikseli, 400 x 200 pikseli lub 400 x 400 piks.
+W obszarze **Konfigurowanie obrazu**wybierz kafelek **obraz** , a następnie wybierz plik do przekazania z komputera lokalnego. Kafelek o najmniejszym rozmiarze to 200x200 piks. większe kafelki mogą być kwadratowe lub prostokątne wielokrotności małych fragmentów. Na przykład 200x400 px, 400x200 px lub 400x400 pikseli.
 
-**Zapisz** przekazanego obrazu. Można zmienić rozmiar i zmienić położenie go w trybie edycji. Wybierz **gotowe** po zakończeniu.
+**Zapisz** przekazany obraz. Można zmienić rozmiar i położenie go w trybie edycji. Po zakończeniu wybierz pozycję **gotowe** .
 
 ### <a name="device-set-dashboard"></a>Pulpit nawigacyjny zestawu urządzeń
 
-Aby przekazać obraz na pulpicie nawigacyjnym zestawu urządzeń, przejdź do **zestawy urządzeń** i wybierz zestaw urządzeń, a następnie urządzenia. Następnie wybierz **pulpit nawigacyjny** strony i wybierz **Edytuj**:
+Aby przekazać obraz na pulpicie nawigacyjnym zestawu urządzeń, przejdź do opcji **Zestawy urządzeń** i wybierz zestaw urządzeń, a następnie urządzenie. Następnie wybierz stronę **pulpit nawigacyjny** i wybierz pozycję **Edytuj**:
 
-![Przekaż obraz pulpitu nawigacyjnego zestawu urządzeń](media/howto-prepare-images/uploaddevicesetdashboard.png)
+![Obraz pulpitu nawigacyjnego przekazywania zestawu urządzeń](media/howto-prepare-images/uploaddevicesetdashboard.png)
 
-W obszarze **skonfigurować obraz**, wybierz opcję **obraz** Kafelek, aby przekazać obraz z komputera lokalnego. Najmniejszy rozmiar kafelka jest 200 x 200 pikseli, większy kafelków może być kwadratowe lub prostokątny wielokrotności małych fragmentów. Na przykład 200 x 400 pikseli, 400 x 200 pikseli lub 400 x 400 piks.
+W obszarze **Konfigurowanie obrazu**wybierz kafelek **obraz** , aby przekazać obraz z komputera lokalnego. Kafelek o najmniejszym rozmiarze to 200x200 piks. większe kafelki mogą być kwadratowe lub prostokątne wielokrotności małych fragmentów. Na przykład 200x400 px, 400x200 px lub 400x400 pikseli.
 
-**Zapisz** przekazanego obrazu. Można zmienić rozmiar i zmienić położenie go w trybie edycji. Wybierz **gotowe** po zakończeniu.
+**Zapisz** przekazany obraz. Można zmienić rozmiar i położenie go w trybie edycji. Po zakończeniu wybierz pozycję **gotowe** .
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, gdy wiesz jak przygotować i przekazywać obrazy do aplikacji usługi Azure IoT Central, Oto zalecane kolejne kroki:
+Teraz, gdy wiesz już, jak przygotować i przekazać obrazy do aplikacji IoT Central platformy Azure, poniżej przedstawiono sugerowane następne kroki:
 
-* [Dostosowywanie usługi Azure IoT Central interfejsu użytkownika](./howto-customize-ui.md)
-* [Konfigurowanie pulpit nawigacyjny aplikacji](./howto-configure-homepage.md)
-* [Zarządzanie urządzeniami w usłudze Azure IoT Central aplikacji](howto-manage-devices.md)
+* [Dostosowywanie interfejsu użytkownika usługi Azure IoT Central](./howto-customize-ui.md)
+* [Konfigurowanie pulpitu nawigacyjnego aplikacji](./howto-configure-homepage.md)
+* [Zarządzanie urządzeniami w aplikacji IoT Central platformy Azure](howto-manage-devices.md)

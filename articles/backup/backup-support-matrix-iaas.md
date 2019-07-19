@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure macierz obsługi kopii zapasowych dla kopii zapasowej maszyny Wirtualnej platformy Azure
-description: Zawiera podsumowanie ustawień pomocy technicznej i ograniczenia, podczas wykonywania kopii zapasowej maszyn wirtualnych platformy Azure przy użyciu usługi Azure Backup.
+title: Macierz obsługi Azure Backup dla kopii zapasowej maszyny wirtualnej platformy Azure
+description: Zawiera podsumowanie ustawień i ograniczeń pomocy technicznej podczas tworzenia kopii zapasowych maszyn wirtualnych platformy Azure przy użyciu usługi Azure Backup.
 services: backup
 author: rayne-wiselman
 manager: carmonm
@@ -8,228 +8,226 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: raynew
-ms.openlocfilehash: e395b10d9a99fdb454f3f02c7027e7acff64b434
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 3823bca0601f825323a44773f8c70be371ec8781
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508187"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311649"
 ---
-# <a name="support-matrix-for-azure-vm-backup"></a>Macierz obsługi kopii zapasowej maszyny Wirtualnej platformy Azure
-Możesz użyć [usługi Azure Backup](backup-overview.md) do tworzenia kopii zapasowych maszyn lokalnych i obciążeń i Azure virtual machines (VMs). Ten artykuł zawiera podsumowanie ustawień obsługi i ograniczenia, podczas wykonywania kopii zapasowych maszyn wirtualnych platformy Azure z usługą Azure Backup.
+# <a name="support-matrix-for-azure-vm-backup"></a>Macierz obsługi dla kopii zapasowej maszyny wirtualnej platformy Azure
+Za pomocą [usługi Azure Backup](backup-overview.md) można tworzyć kopie zapasowe maszyn i obciążeń lokalnych oraz maszyn wirtualnych platformy Azure. Ten artykuł zawiera podsumowanie ustawień i ograniczeń pomocy technicznej podczas tworzenia kopii zapasowych maszyn wirtualnych platformy Azure przy użyciu Azure Backup.
 
 Inne macierze pomocy technicznej:
 
-- [Macierz obsługi ogólne](backup-support-matrix.md) dla usługi Azure Backup
-- [Macierz obsługi](backup-support-matrix-mabs-dpm.md) dla usługi Azure Backup server/System Center Data Protection Manager (DPM) należy utworzyć kopię zapasową
-- [Macierz obsługi](backup-support-matrix-mars-agent.md) do utworzenia kopii zapasowej za pomocą agenta usługi Microsoft Azure Recovery Services (MARS)
+- [Macierz obsługi ogólnej](backup-support-matrix.md) dla Azure Backup
+- [Macierz obsługi](backup-support-matrix-mabs-dpm.md) dla Azure Backup serwera/programu System Center Data Protection Manager (DPM)
+- [Macierz obsługi](backup-support-matrix-mars-agent.md) kopii zapasowej za pomocą agenta Microsoft Azure Recovery Services (MARS)
 
 ## <a name="supported-scenarios"></a>Obsługiwane scenariusze
 
-Oto, jak tworzenie kopii zapasowej i przywracanie maszyn wirtualnych platformy Azure przy użyciu usługi Azure Backup.
+Oto jak można tworzyć kopie zapasowe maszyn wirtualnych platformy Azure i przywracać je za pomocą usługi Azure Backup.
 
-**Scenariusz** | **Tworzenie kopii zapasowych** | **Agent** |**Przywracanie**
+**Scenariusz** | **Tworzenie kopii zapasowych** | **Agent** |**Przywróć**
 --- | --- | --- | ---
-Bezpośrednie tworzenie kopii zapasowych maszyn wirtualnych platformy Azure  | Utwórz kopię zapasową całej maszyny Wirtualnej.  | Agent nie jest potrzebna na maszynie Wirtualnej platformy Azure. Usługa Azure Backup instaluje i używa rozszerzenia [agenta maszyny Wirtualnej platformy Azure](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) uruchomionym na maszynie Wirtualnej. | Przywróć w następujący sposób:<br/><br/> - **Tworzenie podstawowej maszyny Wirtualnej**. Jest to przydatne, jeśli żadna specjalna konfiguracja, takich jak wiele adresów IP na maszynie Wirtualnej.<br/><br/> - **Przywracanie dysku maszyny Wirtualnej**. Przywróć dysk. Następnie dołącz je do istniejącej maszyny Wirtualnej lub Utwórz nową maszynę Wirtualną z dysku przy użyciu programu PowerShell.<br/><br/> - **Wymiana dysku maszyny Wirtualnej**. Jeśli maszyna wirtualna istnieje, a następnie używa dysków zarządzanych (bez szyfrowania), możesz przywrócić dysk i użyj go, aby zamienić istniejący dysk na maszynie Wirtualnej.<br/><br/> - **Przywracanie plików/folderów określonych**. Możesz przywrócić pliki i foldery z maszyny Wirtualnej zamiast z całej maszyny Wirtualnej.
-Bezpośrednie tworzenie kopii zapasowych maszyn wirtualnych platformy Azure (tylko Windows)  | Utwórz kopię zapasową określonych plików/folderów/woluminów. | Zainstaluj [agenta usług odzyskiwania Azure](backup-azure-file-folder-backup-faq.md).<br/><br/> Można uruchomić agenta usług MARS obok zapasowy numer wewnętrzny dla agenta maszyny Wirtualnej platformy Azure do tworzenia kopii zapasowych maszyn wirtualnych na poziomie plików/folderów. | Przywracanie plików/folderów określonych.
-Tworzenie kopii zapasowej maszyny Wirtualnej platformy Azure do tworzenia kopii zapasowej serwera  | Tworzenie kopii zapasowej plików/folderów/woluminów; Stan/bez systemu operacyjnego pliki systemowe; dane aplikacji do programu System Center DPM lub do firmy Microsoft Azure Backup Server (MABS).<br/><br/> Program DPM/serwera usługi Mab następnie wykonuje kopię zapasową magazynu kopii zapasowych. | Zainstaluj agenta ochrony programu DPM/serwera usługi Mab na maszynie Wirtualnej. Agent usług MARS jest zainstalowany na program DPM/serwera usługi MAB.| Przywracanie plików/folderów/woluminów; Stan/bez systemu operacyjnego pliki systemowe; dane aplikacji.
+Bezpośrednie tworzenie kopii zapasowych maszyn wirtualnych platformy Azure  | Wykonaj kopię zapasową całej maszyny wirtualnej.  | Na maszynie wirtualnej platformy Azure nie jest wymagany żaden Agent. Azure Backup instaluje i używa rozszerzenia [agenta maszyny wirtualnej platformy Azure](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) uruchomionego na maszynie wirtualnej. | Przywróć w następujący sposób:<br/><br/> - **Utwórz podstawową maszynę wirtualną**. Jest to przydatne, jeśli maszyna wirtualna nie ma specjalnej konfiguracji, takiej jak wiele adresów IP.<br/><br/> - **Przywróć dysk maszyny wirtualnej**. Przywróć dysk. Następnie Dołącz ją do istniejącej maszyny wirtualnej lub Utwórz nową maszynę wirtualną z dysku przy użyciu programu PowerShell.<br/><br/> - **Zastąp dysk maszyny wirtualnej**. Jeśli maszyna wirtualna istnieje i korzysta z dysków zarządzanych (nieszyfrowanych), można przywrócić dysk i użyć go w celu zastąpienia istniejącego dysku na maszynie wirtualnej.<br/><br/> - **Przywracanie określonych plików/folderów**. Pliki/foldery można przywrócić z maszyny wirtualnej, a nie z całej maszyny wirtualnej.
+Bezpośrednie tworzenie kopii zapasowych maszyn wirtualnych platformy Azure (tylko system Windows)  | Utwórz kopię zapasową określonych plików/folderów/woluminów. | Zainstaluj [agenta Recovery Services platformy Azure](backup-azure-file-folder-backup-faq.md).<br/><br/> Agenta MARS można uruchomić wraz z rozszerzeniem kopii zapasowej agenta maszyny wirtualnej platformy Azure, aby utworzyć kopię zapasową maszyny wirtualnej na poziomie pliku/folderu. | Przywracanie określonych folderów/plików.
+Tworzenie kopii zapasowej maszyny wirtualnej platformy Azure na serwerze kopii zapasowej  | Tworzenie kopii zapasowej plików/folderów/woluminów; pliki stanu systemu/systemu operacyjnego; dane aplikacji do programu System Center DPM lub do Microsoft Azure Backup Server (serwera usługi MAB).<br/><br/> Program DPM/serwera usługi MAB następnie tworzy kopię zapasową magazynu z usługą Backup. | Zainstaluj agenta ochrony programu DPM/serwera usługi MAB na maszynie wirtualnej. Agent MARS jest instalowany na serwerze DPM/serwera usługi MAB.| Przywracanie plików/folderów/woluminów; pliki stanu systemu/systemu operacyjnego; dane aplikacji.
 
-Dowiedz się więcej o usłudze backup [przy użyciu kopii zapasowej serwera](backup-architecture.md#architecture-back-up-to-dpmmabs) i o [obsługi wymagań związanych z](backup-support-matrix-mabs-dpm.md).
+Dowiedz się więcej o usłudze Backup [przy użyciu serwera zapasowego](backup-architecture.md#architecture-back-up-to-dpmmabs) i o wymaganiach dotyczących [pomocy technicznej](backup-support-matrix-mabs-dpm.md).
 
-## <a name="supported-backup-actions"></a>Obsługiwane operacje tworzenia kopii zapasowej
+## <a name="supported-backup-actions"></a>Obsługiwane akcje tworzenia kopii zapasowych
 
 **Akcja** | **Pomoc techniczna**
 --- | ---
-Włącz wykonywanie kopii zapasowej po utworzeniu maszyny Wirtualnej platformy Azure z systemem Windows | Obsługiwane w przypadku: <br/><br/> -Windows Server 2019 r (podstawowe centrum danych/Datacenter/Standard) <br/><br/> -Windows Server 2016 (podstawowe centrum danych/Datacenter/Standard) <br/><br/> -Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> -Windows Server 2008 R2 (RTM i Standard z dodatkiem SP1)
-Włącz wykonywanie kopii zapasowej po utworzeniu maszyny Wirtualnej z systemem Linux | Obsługiwane w przypadku:<br/><br/> — Ubuntu Server: 18.04, 17.10, 17.04, 16.04 (LTS), 14.04 (LTS)<br/><br/> - Red Hat: RHEL 6.7, 6.8 6,9, 7.2, 7.3, WERSJI 7.4<br/><br/> - SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3, 15 <br/><br/> -Debian: 8, 9<br/><br/> - CentOS: 6.9, 7.3<br/><br/> -Oracle Linux: 6.7, 6.8, 6.9, 7.2, 7.3
-Tworzenie kopii zapasowej maszyny Wirtualnej, która jest shutdown/offline maszyny Wirtualnej | Obsługiwane.<br/><br/> Migawka jest spójna w razie awarii tylko, nie spójny na poziomie aplikacji.
-Wykonywanie kopii zapasowych dysków, po migracji do usługi managed disks | Obsługiwane.<br/><br/> Kopia zapasowa, będą nadal działać. Nie jest wymagana żadna akcja.
-Tworzenie kopii zapasowych dysków zarządzanych, po włączeniu blokady grupy zasobów | Nieobsługiwane.<br/><br/> Usługa Azure Backup nie można usunąć starsze punkty zasobów i kopie zapasowe będą kończyć się niepowodzeniem, jeśli osiągnięto maksymalny limit punktów przywracania.
-Modyfikowanie zasad tworzenia kopii zapasowej dla maszyny Wirtualnej | Obsługiwane.<br/><br/> Maszyna wirtualna zostanie skopiowana za pomocą ustawień harmonogram i okres przechowywania w nowych zasad. Jeśli ustawienia przechowywania są przedłużony, istniejące punkty odzyskiwania są oznaczone i przechowywane. One zostały obniżone, istniejące punkty odzyskiwania będą usuwane w ramach następnego zadania oczyszczania i usunięte po pewnym czasie.
-Anuluj zadanie tworzenia kopii zapasowej | Obsługiwane, podczas procesu migawki.<br/><br/> Nieobsługiwane, gdy migawki są przesyłane do magazynu.
-Tworzenie kopii zapasowej maszyny Wirtualnej do innego regionu lub subskrypcji |  Nieobsługiwane.
-Kopie zapasowe dziennie (za pośrednictwem rozszerzenia maszyny Wirtualnej platformy Azure) | Jeden zaplanowane tworzenie kopii zapasowej na dzień.<br/><br/> Można wprowadzić do czterech kopii zapasowych na żądanie na dzień.
-Kopie zapasowe dziennie (za pośrednictwem agenta usług MARS) | Trzy zaplanowanych kopii zapasowych dziennie.
-Kopie zapasowe dziennie (przy użyciu programu DPM/MABS) | Dwa zaplanowane kopie zapasowe dziennie.
-Kopia zapasowa co miesiąc/rok   | Nie jest obsługiwana podczas wykonywania kopii zapasowej za pomocą rozszerzenia maszyny Wirtualnej platformy Azure. Obsługiwane jest tylko dziennego i tygodniowego.<br/><br/> Można ustawić zasady przechowywania kopii zapasowych codziennie/co tydzień na okres przechowywania co miesiąc/rok.
-Korekta automatyczna zegara | Nieobsługiwane.<br/><br/> Usługa Azure Backup nie automatycznie Dostosuj zmiany czasu letniego, podczas tworzenia kopii zapasowej maszyny Wirtualnej.<br/><br/>  Zmodyfikuj zasady ręcznego zgodnie z potrzebami.
-[Funkcje zabezpieczeń dla hybrydowych kopii zapasowych](https://docs.microsoft.com/azure/backup/backup-azure-security-feature) |  Wyłączanie funkcji zabezpieczeń nie jest obsługiwane.
-Kopia zapasowa maszyny Wirtualnej, w których czas maszyny zostanie zmieniona. | Nieobsługiwane.<br/><br/> Jeśli czas maszyny jest zmieniana na przyszłe daty i godziny po włączeniu kopii zapasowej dla tej maszyny Wirtualnej; Jednak nawet jeśli zmiany czasu zostanie wycofana, pomyślne tworzenie kopii zapasowych nie jest gwarantowana.  
+Włącz tworzenie kopii zapasowej podczas tworzenia maszyny wirtualnej z systemem Windows Azure | Obsługiwane dla: <br/><br/> -Windows Server 2019 (Datacenter/Datacenter/standard) <br/><br/> -Windows Server 2016 (Datacenter/Datacenter/standard) <br/><br/> — Windows Server 2012 R2 (Datacenter/standard) <br/><br/> -Windows Server 2008 R2 (wersja RTM i SP1 standard)
+Włączanie tworzenia kopii zapasowej podczas tworzenia maszyny wirtualnej z systemem Linux | Obsługiwane dla:<br/><br/> -Ubuntu serwer: 18,04, 17,10, 17,04, 16,04 (LTS), 14,04 (LTS)<br/><br/> -Red Hat: RHEL 6,7, 6,8, 6,9, 7,2, 7,3, 7,4<br/><br/> -SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3, 15 <br/><br/> Debian 8, 9<br/><br/> - CentOS: 6,9, 7,3<br/><br/> -Oracle Linux: 6,7, 6,8, 6,9, 7,2, 7,3
+Tworzenie kopii zapasowej maszyny wirtualnej, która jest zamykana/maszyną wirtualną w trybie offline | Obsługiwane.<br/><br/> Migawka jest tylko w przypadku awarii, a nie spójna z aplikacją.
+Tworzenie kopii zapasowych dysków po migracji na dyski zarządzane | Obsługiwane.<br/><br/> Kopia zapasowa będzie nadal działała. Nie jest wymagana żadna akcja.
+Tworzenie kopii zapasowych dysków zarządzanych po włączeniu blokady grupy zasobów | Nieobsługiwane.<br/><br/> Azure Backup nie może usunąć starszych punktów przywracania, a kopie zapasowe rozpoczną się niepowodzeniem po osiągnięciu maksymalnego limitu punktów przywracania.
+Modyfikowanie zasad tworzenia kopii zapasowej dla maszyny wirtualnej | Obsługiwane.<br/><br/> Kopia zapasowa maszyny wirtualnej zostanie utworzona przy użyciu ustawień harmonogram i przechowywanie w obszarze nowe zasady. Jeśli ustawienia przechowywania są rozszerzone, istniejące punkty odzyskiwania zostaną oznaczone i zachowane. Jeśli są one zmniejszone, istniejące punkty odzyskiwania zostaną oczyszczone w następnym zadaniu oczyszczania i ostatecznie usunięte.
+Anulowanie zadania tworzenia kopii zapasowej | Obsługiwane podczas procesu tworzenia migawek.<br/><br/> Nieobsługiwane w przypadku przesyłania migawki do magazynu.
+Tworzenie kopii zapasowej maszyny wirtualnej w innym regionie lub subskrypcji |  Nieobsługiwane.
+Kopie zapasowe dziennie (za pomocą rozszerzenia maszyny wirtualnej platformy Azure) | Jedna zaplanowana kopia zapasowa dziennie.<br/><br/> Możesz wprowadzić maksymalnie cztery kopie zapasowe na żądanie dziennie.
+Kopie zapasowe dziennie (za pośrednictwem agenta MARS) | Trzy zaplanowane kopie zapasowe dziennie.
+Kopie zapasowe dziennie (za pośrednictwem programu DPM/serwera usługi MAB) | Dwa zaplanowane kopie zapasowe dziennie.
+Kopia zapasowa co miesiąc/co rok   | Nieobsługiwane podczas tworzenia kopii zapasowej przy użyciu rozszerzenia maszyny wirtualnej platformy Azure. Obsługiwane są tylko codziennie i co tydzień.<br/><br/> Można skonfigurować zasady, aby zachować codzienne/cotygodniowe kopie zapasowe w okresie przechowywania miesięcznego/rocznego.
+Automatyczne dostosowanie zegara | Nieobsługiwane.<br/><br/> Podczas tworzenia kopii zapasowej maszyny wirtualnej Azure Backup nie jest automatycznie dostosowywana do zmian czasu letniego.<br/><br/>  Zmodyfikuj zasady ręcznie w razie konieczności.
+[Funkcje zabezpieczeń hybrydowej kopii zapasowej](https://docs.microsoft.com/azure/backup/backup-azure-security-feature) |  Wyłączenie funkcji zabezpieczeń nie jest obsługiwane.
+Tworzenie kopii zapasowej maszyny wirtualnej, której czas maszyny został zmieniony | Nieobsługiwane.<br/><br/> Jeśli czas komputera zostanie zmieniony na przyszłą datę i godzinę po włączeniu kopii zapasowej dla tej maszyny wirtualnej; Jednak nawet jeśli zmiana czasu zostanie wycofana, powodzenie tworzenia kopii zapasowej nie jest gwarantowane.  
 
 
 ## <a name="operating-system-support-windows"></a>Obsługa systemu operacyjnego (Windows)
 
-W poniższej tabeli przedstawiono obsługiwane systemy operacyjne, podczas wykonywania kopii zapasowych maszyn wirtualnych Windows.
+Poniższa tabela zawiera podsumowanie obsługiwanych systemów operacyjnych podczas tworzenia kopii zapasowych maszyn wirtualnych z systemem Windows Azure.
 
 **Scenariusz** | **Obsługa systemu operacyjnego**
 --- | ---
-Tworzenie kopii zapasowej za pomocą rozszerzenia agenta maszyny Wirtualnej platformy Azure | Klient Windows: Nieobsługiwane<br/><br/>-Windows Server 2019 r (podstawowe centrum danych/Datacenter/Standard) <br/><br/> -Windows Server 2016 (podstawowe centrum danych/Datacenter/Standard) <br/><br/> -Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> -Windows Server 2008 R2 (RTM i Standard z dodatkiem SP1)
-Tworzenie kopii za pomocą agenta usług MARS | [Obsługiwane](backup-support-matrix-mars-agent.md#support-for-direct-backups) systemów operacyjnych.
-Tworzenie kopii zapasowej z programu DPM/serwera usługi Mab | Obsługiwane systemy operacyjne dla kopii zapasowych z użyciem [serwera usługi Mab](backup-mabs-protection-matrix.md) i [DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807).
+Tworzenie kopii zapasowej przy użyciu rozszerzenia agenta maszyny wirtualnej platformy Azure | Klient systemu Windows: Nieobsługiwane<br/><br/>-Windows Server 2019 (Datacenter/Datacenter/standard) <br/><br/> -Windows Server 2016 (Datacenter/Datacenter/standard) <br/><br/> — Windows Server 2012 R2 (Datacenter/standard) <br/><br/> -Windows Server 2008 R2 (wersja RTM i SP1 standard)
+Tworzenie kopii zapasowej przy użyciu agenta MARS | [Obsługiwane](backup-support-matrix-mars-agent.md#support-for-direct-backups) systemy operacyjne.
+Tworzenie kopii zapasowej za pomocą programu DPM/serwera usługi MAB | Obsługiwane systemy operacyjne na potrzeby tworzenia kopii zapasowych za pomocą [serwera usługi MAB](backup-mabs-protection-matrix.md) i [programu DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807).
 
-## <a name="support-for-linux-backup"></a>Obsługa kopia zapasowa systemu Linux
+## <a name="support-for-linux-backup"></a>Obsługa kopii zapasowych systemu Linux
 
 W przypadku kopii zapasowych maszyn z systemem Linux są obsługiwane poniższe elementy.
 
 **Akcja** | **Pomoc techniczna**
 --- | ---
-Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure z systemem Linux z agentem maszyny Wirtualnej platformy Azure z systemem Linux | Spójne tworzenie kopii zapasowej plików.<br/><br/> Spójna na poziomie aplikacji kopia zapasowa wykonywana przy użyciu [skryptów niestandardowych](backup-azure-linux-app-consistent.md).<br/><br/> Podczas przywracania można utworzyć nową maszynę Wirtualną, przywracanie dysku i użyć go do tworzenia maszyny Wirtualnej, lub przywrócić dysk i przy jego użyciu wymiana dysku, istniejącej maszyny wirtualnej. Możesz też przywrócić pojedyncze pliki i foldery.
-Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure z systemem Linux za pomocą agenta usług MARS | Nieobsługiwane.<br/><br/> Agenta usługi MARS można zainstalować tylko na maszynach z systemem Windows.
-Tworzenie kopii zapasowych maszyn wirtualnych systemu Linux przy użyciu programu DPM/serwera usługi Mab | Nieobsługiwane.
+Tworzenie kopii zapasowych maszyn wirtualnych systemu Linux Azure przy użyciu agenta maszyny wirtualnej systemu Linux | Kopia zapasowa spójna z plikiem.<br/><br/> Spójna na poziomie aplikacji kopia zapasowa wykonywana przy użyciu [skryptów niestandardowych](backup-azure-linux-app-consistent.md).<br/><br/> Podczas przywracania można utworzyć nową maszynę wirtualną, przywrócić dysk i użyć jej do utworzenia maszyny wirtualnej lub przywrócić dysk i użyć go do zastąpienia dysku na istniejącej maszynie wirtualnej. Można również przywrócić poszczególne pliki i foldery.
+Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure z systemem Linux przy użyciu agenta MARS | Nieobsługiwane.<br/><br/> Agenta usługi MARS można zainstalować tylko na maszynach z systemem Windows.
+Tworzenie kopii zapasowych maszyn wirtualnych systemu Linux platformy Azure przy użyciu programu DPM/serwera usługi MAB | Nieobsługiwane.
 
 ## <a name="operating-system-support-linux"></a>Obsługa systemu operacyjnego (Linux)
 
-Dla kopii zapasowych systemu Linux maszyny Wirtualnej platformy Azure, Azure Backup obsługuje systemu Linux [dystrybucje zalecane dla platformy Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros). Pamiętaj o następujących kwestiach:
+W przypadku kopii zapasowych w systemie Linux dla maszyny wirtualnej platformy Azure Azure Backup obsługuje listę [dystrybucji systemu Linux potwierdzonych przez platformę Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros). Należy pamiętać o następujących kwestiach:
 
-- Usługa Azure Backup nie obsługuje systemu operacyjnego Linux Core.
-- Usługa Azure Backup nie obsługuje 32-bitowych systemach operacyjnych.
-- Inne dystrybucje systemu Linux bring your own może działać tak długo, jak [agenta maszyny Wirtualnej platformy Azure dla systemu Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) jest dostępny na maszynie Wirtualnej i tak długo, jak obsługuje język Python.
-- Usługa Azure Backup nie obsługuje Maszynę wirtualną systemu Linux skonfigurowany serwer proxy, jeśli nie ma języka Python w wersji 2.7 zainstalowane.
+- Azure Backup nie obsługuje podstawowego systemu operacyjnego Linux.
+- Azure Backup nie obsługuje 32-bitowych systemów operacyjnych.
+- Inne dystrybucje systemu Linux mogą współdziałać, o ile [Agent maszyny wirtualnej platformy Azure dla systemu Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) jest dostępny na maszynie wirtualnej, o ile Język Python jest obsługiwany.
+- Azure Backup nie obsługuje maszyny wirtualnej z systemem Linux skonfigurowanej przez serwer proxy, jeśli nie ma zainstalowanej wersji 2,7 języka Python.
 
 
-## <a name="backup-frequency-and-retention"></a>Częstotliwość wykonywania kopii zapasowych i przechowywanie
+## <a name="backup-frequency-and-retention"></a>Częstotliwość i przechowywanie kopii zapasowych
 
 **Ustawienie** | **Limity**
 --- | ---
-Maksymalna liczba punktów odzyskiwania na chronione wystąpienie (machine/obciążenie) | 9999.
-Maksymalny czas wygaśnięcia punktu odzyskiwania | Brak limitu.
-Maksymalna częstotliwość wykonywania kopii zapasowych w magazynie (rozszerzenie maszyny Wirtualnej platformy Azure) | Raz dziennie.
-Maksymalna częstotliwość wykonywania kopii zapasowych w magazynie (agenta usług MARS) | Trzy kopie zapasowe dziennie.
-Maksymalna częstotliwość wykonywania kopii zapasowych w programie DPM/usłudze MABS | Co 15 minut dla programu SQL Server.<br/><br/> Co godzinę dla innych obciążeń.
-Przechowywanie punktów odzyskiwania | Codziennie, cotygodniowych, comiesięcznych i corocznych.
+Maksymalna liczba punktów odzyskiwania na chronione wystąpienie (maszyna/obciążenie) | 9999.
+Maksymalny czas wygaśnięcia dla punktu odzyskiwania | Brak limitu.
+Maksymalna częstotliwość tworzenia kopii zapasowych w magazynie (rozszerzenie maszyny wirtualnej platformy Azure) | Raz dziennie.
+Maksymalna częstotliwość tworzenia kopii zapasowych w magazynie (Agent MARS) | Trzy kopie zapasowe dziennie.
+Maksymalna częstotliwość wykonywania kopii zapasowych w programie DPM/usłudze MABS | Co 15 minut dla SQL Server.<br/><br/> Raz na godzinę dla innych obciążeń.
+Przechowywanie punktów odzyskiwania | Codziennie, co tydzień, co miesiąc i co rok.
 Maksymalny okres przechowywania | Zależnie od częstotliwości wykonywania kopii zapasowych.
 Punkty odzyskiwania na dysku programu DPM/usługi MABS | 64 dla serwerów plików i 448 dla serwerów aplikacji.<br/><br/> Punkty odzyskiwania na taśmie nie mają ograniczeń w przypadku lokalnego programu DPM.
 
-## <a name="supported-restore-methods"></a>Obsługiwane metody
+## <a name="supported-restore-methods"></a>Obsługiwane metody przywracania
 
-**Przywracanie — metoda** | **Szczegóły**
+**Restore — Metoda** | **Szczegóły**
 --- | ---
-Utwórz nową maszynę Wirtualną | Możesz utworzyć Maszynę wirtualną podczas procesu przywracania. <br/><br/> Ta opcja pobiera podstawowej maszyny Wirtualnej, skonfigurowaniu i uruchomieniu. Można określić maszyny Wirtualnej nazwę, grupę zasobów, sieci wirtualnej, podsieci i magazynu.  
-Przywracanie dysku | Można przywrócić dysk i użyć go do utworzenia maszyny Wirtualnej.<br/><br/> Po wybraniu tej opcji, kopia zapasowa Azure kopiuje dane z magazynu do wybranego konta magazynu. Zadania przywracania generuje szablon. Można pobrać tego szablonu, użyj go, aby określić niestandardowe ustawienia maszyny Wirtualnej i tworzenie maszyny Wirtualnej.<br/><br/> Ta opcja umożliwia określenie więcej ustawień, poprzedniej opcji, aby utworzyć Maszynę wirtualną.<br/><br/>
-Zastąp istniejący dysk | Można przywrócić dysk, a następnie użyć przywróconego dysku, aby zastąpić dysk, który jest aktualnie na maszynie Wirtualnej.
-Przywracanie plików | Można odzyskiwać pliki z wybranego punktu odzyskiwania. Możesz pobrać skrypt, aby zainstalować dysk maszyny Wirtualnej z punktu odzyskiwania. Następnie możesz przeglądać za pomocą woluminów dysku, aby znaleźć pliki/foldery, które chcesz odzyskać, a następnie odinstaluj dysk, gdy wszystko będzie gotowe.
+Utwórz nową maszynę wirtualną | Podczas procesu przywracania można utworzyć maszynę wirtualną. <br/><br/> Ta opcja pobiera podstawową maszynę wirtualną w górę i w działaniu. Możesz określić nazwę maszyny wirtualnej, grupę zasobów, sieć wirtualną, podsieć i magazyn.  
+Przywracanie dysku | Można przywrócić dysk i użyć go do utworzenia maszyny wirtualnej.<br/><br/> Po wybraniu tej opcji Azure Backup kopiuje dane z magazynu na wybrane konto magazynu. Zadanie przywracania generuje szablon. Możesz pobrać ten szablon, użyć go do określenia niestandardowych ustawień maszyny wirtualnej i utworzyć maszynę wirtualną.<br/><br/> Ta opcja pozwala określić więcej ustawień, które poprzednią opcję tworzenia maszyny wirtualnej.<br/><br/>
+Zastępowanie istniejącego dysku | Można przywrócić dysk, a następnie użyć przywróconego dysku, aby zastąpić dysk, który znajduje się obecnie na maszynie wirtualnej.
+Przywróć pliki | Można odzyskać pliki z wybranego punktu odzyskiwania. Pobierz skrypt, aby zainstalować dysk maszyny wirtualnej z punktu odzyskiwania. Następnie przejrzyj woluminy dysków, aby znaleźć pliki/foldery, które chcesz odzyskać, i Odinstaluj dysk po zakończeniu.
 
 ## <a name="support-for-file-level-restore"></a>Obsługa przywracania na poziomie plików
 
-**Przywracanie** | **Obsługiwane**
+**Przywróć** | **Obsługiwane**
 --- | ---
-Przywracanie plików w różnych systemach operacyjnych | Możesz przywrócić pliki na dowolnym komputerze, który ma ten sam (lub zgodny) systemu operacyjnego jako kopii zapasowej maszyny Wirtualnej. zobacz [tabeli zgodny system operacyjny](backup-azure-restore-files-from-vm.md#system-requirements).
-Przywracanie plików na klasycznych maszyn wirtualnych | Nieobsługiwane.
-Przywracanie plików z zaszyfrowanych maszyn wirtualnych | Nieobsługiwane.
-Przywracanie plików z konta magazynu z ograniczeniami w sieci | Nieobsługiwane.
-Przywracanie plików na maszynach wirtualnych przy użyciu funkcji miejsca do magazynowania systemu Windows | Przywracanie nie są obsługiwane w tej samej maszyny Wirtualnej.<br/><br/> Zamiast tego należy przywrócić pliki na zgodnej maszyny Wirtualnej.
-Przywracanie plików na maszynie Wirtualnej systemu Linux za pomocą macierzy LVM/raid | Przywracanie nie są obsługiwane w tej samej maszyny Wirtualnej.<br/><br/> Przywracanie zgodnej maszyny Wirtualnej.
-Przywracanie plików z ustawieniami sieci specjalne | Przywracanie nie są obsługiwane w tej samej maszyny Wirtualnej. <br/><br/> Przywracanie zgodnej maszyny Wirtualnej.
+Przywracanie plików w różnych systemach operacyjnych | Można przywracać pliki na dowolnym komputerze, który ma ten sam (lub zgodny) system operacyjny, co maszyna wirtualna z kopią zapasową. Zobacz [tabelę zgodnych systemów operacyjnych](backup-azure-restore-files-from-vm.md#system-requirements).
+Przywracanie plików na klasycznych maszynach wirtualnych | Nieobsługiwane.
+Przywracanie plików z szyfrowanych maszyn wirtualnych | Nieobsługiwane.
+Przywracanie plików z kont magazynu z ograniczeniami w sieci | Nieobsługiwane.
+Przywracanie plików na maszynach wirtualnych przy użyciu funkcji miejsca do magazynowania systemu Windows | Przywracanie nie jest obsługiwane na tej samej maszynie wirtualnej.<br/><br/> Zamiast tego należy przywrócić pliki na zgodnej maszynie wirtualnej.
+Przywracanie plików na maszynie wirtualnej z systemem Linux przy użyciu tablic LVM/RAID | Przywracanie nie jest obsługiwane na tej samej maszynie wirtualnej.<br/><br/> Przywracanie na zgodnej maszynie wirtualnej.
+Przywracanie plików przy użyciu specjalnych ustawień sieci | Przywracanie nie jest obsługiwane na tej samej maszynie wirtualnej. <br/><br/> Przywracanie na zgodnej maszynie wirtualnej.
 
-## <a name="support-for-vm-management"></a>Obsługa zarządzania maszyny Wirtualnej
+## <a name="support-for-vm-management"></a>Obsługa zarządzania maszyną wirtualną
 
-W poniższej tabeli przedstawiono obsługę kopii zapasowych podczas zadania zarządzania maszyny Wirtualnej, takie jak dodawanie lub zastępowanie dysków maszyny Wirtualnej.
+Poniższa tabela zawiera podsumowanie obsługi kopii zapasowych podczas zadań zarządzania maszyną wirtualną, takich jak dodawanie lub zastępowanie dysków maszyn wirtualnych.
 
-**Przywracanie** | **Obsługiwane**
+**Przywróć** | **Obsługiwane**
 --- | ---
-Przywracanie w subskrypcji lub regionu/strefy. | Nieobsługiwane.
-Przywracanie do istniejącej maszyny Wirtualnej | Opcja Zastąp dysku.
-Przywracanie dysku z kontem magazynu, włączone dla szyfrowania usługi Azure Storage (SSE) | Nieobsługiwane.<br/><br/> Przywróć do konta które nie zostały włączone SSE.
-Przywracanie do kont magazynu mieszanych | Nieobsługiwane.<br/><br/> Oparte na typ konta magazynu, wszystkie przywróconych dysków będzie premium lub standardowa i nie mieszanych.
-Przywracanie do konta magazynu przy użyciu magazynu strefowo nadmiarowego (ZRS) | Obsługiwane (dla maszyny Wirtualnej, który są kopie zapasowe po 2019 sty i gdzie [strefy dostępności](https://azure.microsoft.com/global-infrastructure/availability-zones/) są dostępne)
-Przywracanie maszyny Wirtualnej bezpośrednio do zestawu dostępności | Za dyski zarządzane można przywrócić dysk i użyj opcji zestaw dostępności w szablonie.<br/><br/> Nie jest obsługiwane dla dysków niezarządzanych. W przypadku dysków niezarządzanych przywrócić dysk, a następnie utwórz Maszynę wirtualną w zestawie dostępności.
-Przywracanie kopii zapasowej niezarządzanych maszyn wirtualnych, po uaktualnieniu do zarządzania maszyny Wirtualnej| Obsługiwane.<br/><br/> Przywróć dyski i następnie utworzyć zarządzanej maszyny Wirtualnej.
-Przywracanie maszyny Wirtualnej, aby punkt przywracania, zanim maszyna wirtualna została zmigrowana do usługi managed disks | Obsługiwane.<br/><br/> Przywracanie do dysków niezarządzanych (ustawienie domyślne), Konwertuj przywróconych dysków na dyskach zarządzanych i Utwórz Maszynę wirtualną z dyskami zarządzanymi.
-Przywracanie maszyny Wirtualnej, który jest usunięty. | Obsługiwane.<br/><br/> Możesz przywrócić maszynę Wirtualną z punktu odzyskiwania.
-Przywracanie kontrolera domeny (DC) maszyny Wirtualnej, która jest częścią konfiguracji kontrolera domeny multi, za pośrednictwem portalu | Obsługiwane w przypadku przywracania dysku i tworzenie maszyny Wirtualnej przy użyciu programu PowerShell.
-Przywróć maszynę Wirtualną w innej sieci wirtualnej |   Obsługiwane.<br/><br/> Sieć wirtualna musi znajdować się w tej samej subskrypcji i regionu.
+Przywróć w ramach subskrypcji/regionu/strefy. | Nieobsługiwane.
+Przywracanie do istniejącej maszyny wirtualnej | Użyj opcji Zamień dysk.
+Przywróć dysk z włączonym kontem magazynu dla usługi Azure szyfrowanie usługi Storage (SSE) | Nieobsługiwane.<br/><br/> Przywracanie do konta, które nie ma włączonej funkcji SSE.
+Przywracanie do mieszanych kont magazynu | Nieobsługiwane.<br/><br/> Na podstawie typu konta magazynu wszystkie przywrócone dyski będą w warstwie Premium lub standardowa, a nie mieszane.
+Przywracanie do konta magazynu przy użyciu magazynu Strefowo nadmiarowego (ZRS) | Obsługiwane (w przypadku maszyny wirtualnej, której kopia zapasowa jest wykonywana po 2019 Jan, a [strefa dostępności](https://azure.microsoft.com/global-infrastructure/availability-zones/) jest dostępna)
+Przywracanie maszyny wirtualnej bezpośrednio do zestawu dostępności | W przypadku dysków zarządzanych można przywrócić dysk i użyć opcji zestawu dostępności w szablonie.<br/><br/> Nieobsługiwane w przypadku dysków niezarządzanych. W przypadku dysków niezarządzanych Przywróć dysk, a następnie utwórz maszynę wirtualną w zestawie dostępności.
+Przywróć kopię zapasową niezarządzanych maszyn wirtualnych po uaktualnieniu do zarządzanej maszyny wirtualnej| Obsługiwane.<br/><br/> Można przywrócić dyski, a następnie utworzyć zarządzaną maszynę wirtualną.
+Przywróć maszynę wirtualną do punktu przywracania przed przeprowadzeniem migracji maszyny wirtualnej na dyski zarządzane | Obsługiwane.<br/><br/> Przywracasz do dysków niezarządzanych (domyślnie), przekonwertuj przywrócone dyski na dysk zarządzany i Utwórz maszynę wirtualną z dyskami zarządzanymi.
+Przywróć maszynę wirtualną, która została usunięta. | Obsługiwane.<br/><br/> Można przywrócić maszynę wirtualną z punktu odzyskiwania.
+Przywracanie maszyny wirtualnej kontrolera domeny (DC), która jest częścią konfiguracji z obsługą kilku kontrolerów domeny za pomocą portalu | Obsługiwane w przypadku przywracania dysku i tworzenia maszyny wirtualnej przy użyciu programu PowerShell.
+Przywróć MASZYNę wirtualną w innej sieci wirtualnej |   Obsługiwane.<br/><br/> Sieć wirtualna musi znajdować się w tej samej subskrypcji i regionie.
 
-## <a name="vm-compute-support"></a>Obsługa obliczeń maszyny Wirtualnej
+## <a name="vm-compute-support"></a>Obsługa obliczeń maszyn wirtualnych
 
 **Obliczanie** | **Pomoc techniczna**
 --- | ---
-Rozmiar maszyny wirtualnej |   Dowolnego rozmiaru maszyny Wirtualnej platformy Azure z co najmniej 2 rdzeni procesora CPU i 1 GB pamięci RAM.<br/><br/> [Dowiedz się więcej.](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
-Tworzenie kopii zapasowych maszyn wirtualnych w [zestawów dostępności](https://docs.microsoft.com/azure/virtual-machines/windows/regions-and-availability#availability-sets) | Obsługiwane.<br/><br/> Nie można przywrócić Maszynę wirtualną w zestawie dostępności za pomocą opcji, aby szybko utworzyć Maszynę wirtualną. Zamiast tego podczas przywracania maszyny Wirtualnej przywracania dysku i użyj go, aby wdrożyć Maszynę wirtualną, lub przywrócić dysk i użyć go do zastąpienia istniejącego dysku.
-Tworzenie kopii zapasowych maszyn wirtualnych w [strefy dostępności](https://docs.microsoft.com/azure/availability-zones/az-overview) |  Nieobsługiwane.
-Tworzenie kopii zapasowych maszyn wirtualnych, które są wdrażane przy użyciu [korzyść użycia hybrydowego (HUB)](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) | Obsługiwane.
-Tworzenie kopii zapasowych maszyn wirtualnych, które są wdrożone w [zestawu skalowania](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview) |  Nieobsługiwane.
-Tworzenie kopii zapasowych maszyn wirtualnych, które są wdrażane z [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=virtual-machine-images)<br/><br/> (Opublikowanych przez firmę Microsoft i innych firm) |  Obsługiwane.<br/><br/> Maszyna wirtualna musi działać obsługiwany system operacyjny.<br/><br/> W przypadku odzyskiwania plików na maszynie Wirtualnej, można przywrócić tylko do zgodnych systemów operacyjnych (nie poprzedni system operacyjny). Nie należy przywracać kopie jako maszyny wirtualne, jak o zakupach te potrzeby, ale tylko jako dyski maszyn wirtualnych portalu Marketplace platformy Azure.
-Tworzenie kopii zapasowych maszyn wirtualnych, które są wdrażane na podstawie niestandardowego obrazu (innej firmy) |   Obsługiwane.<br/><br/> Maszyna wirtualna musi działać obsługiwany system operacyjny.<br/><br/> W przypadku odzyskiwania plików na maszynie Wirtualnej, można przywrócić tylko do zgodnych systemów operacyjnych (nie poprzedni system operacyjny).
-Tworzenie kopii zapasowych maszyn wirtualnych, które są migrowane na platformie Azure  | Obsługiwane.<br/><br/> Aby utworzyć kopię zapasową maszyny Wirtualnej, musi być zainstalowany agent maszyny Wirtualnej, na zmigrowanej maszynie.
-Tworzenie kopii zapasowych wielu maszyn wirtualnych | Usługa Azure Backup nie zapewnia spójności danych i aplikacji na wielu maszynach wirtualnych.
-Kopia zapasowa w systemie [ustawień diagnostycznych](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)  | Nieobsługiwane. <br/><br/> W przypadku przywracania maszyny Wirtualnej platformy Azure za pomocą ustawień diagnostycznych jest wywołany za pomocą [Utwórz nowy](backup-azure-arm-restore-vms.md#create-a-vm) opcji, a następnie przywracania kończy się niepowodzeniem.
+Rozmiar maszyny wirtualnej |   Rozmiar maszyny wirtualnej platformy Azure z co najmniej 2 rdzeniami procesora i 1 GB pamięci RAM.<br/><br/> [Dowiedz się więcej.](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
+Tworzenie kopii zapasowych maszyn wirtualnych w [zestawach dostępności](https://docs.microsoft.com/azure/virtual-machines/windows/regions-and-availability#availability-sets) | Obsługiwane.<br/><br/> Nie można przywrócić maszyny wirtualnej w dostępnym zestawie przy użyciu opcji, aby szybko utworzyć maszynę wirtualną. Zamiast tego, podczas przywracania maszyny wirtualnej Przywróć dysk i użyj go do wdrożenia maszyny wirtualnej lub Przywróć dysk i użyj go, aby zastąpić istniejący dysk.
+Tworzenie kopii zapasowych maszyn wirtualnych w [strefach dostępności](https://docs.microsoft.com/azure/availability-zones/az-overview) |  Nieobsługiwane.
+Tworzenie kopii zapasowych maszyn wirtualnych wdrożonych przy użyciu [korzyści z używania hybrydowego (centrum)](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) | Obsługiwane.
+Tworzenie kopii zapasowych maszyn wirtualnych wdrożonych w [zestawie skalowania](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview) |  Nieobsługiwane.
+Tworzenie kopii zapasowych maszyn wirtualnych wdrażanych z poziomu [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=virtual-machine-images)<br/><br/> (Opublikowane przez firmę Microsoft, inna firma) |  Obsługiwane.<br/><br/> Na maszynie wirtualnej musi być uruchomiony obsługiwany system operacyjny.<br/><br/> Podczas odzyskiwania plików na maszynie wirtualnej można przywrócić tylko zgodny system operacyjny (nie wcześniejszy niż starszy lub nowszy). Nie przywracamy maszyn wirtualnych portalu Azure Marketplace jako maszyn wirtualnych, ponieważ wymagają one informacji o zakupie, ale tylko w postaci dysków.
+Tworzenie kopii zapasowych maszyn wirtualnych wdrożonych z obrazu niestandardowego (innych firm) |   Obsługiwane.<br/><br/> Na maszynie wirtualnej musi być uruchomiony obsługiwany system operacyjny.<br/><br/> Podczas odzyskiwania plików na maszynie wirtualnej można przywrócić tylko zgodny system operacyjny (nie wcześniejszy niż starszy lub nowszy).
+Tworzenie kopii zapasowych maszyn wirtualnych migrowanych do platformy Azure  | Obsługiwane.<br/><br/> Aby można było utworzyć kopię zapasową maszyny wirtualnej, Agent maszyny wirtualnej musi być zainstalowany na migrowanej maszynie.
+Tworzenie kopii zapasowej spójności między MASZYNami wirtualnymi | Azure Backup nie zapewnia spójności danych i aplikacji na wielu maszynach wirtualnych.
+Tworzenie kopii zapasowej przy użyciu [ustawień diagnostycznych](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)  | Ich. <br/><br/> Jeśli przywracanie maszyny wirtualnej platformy Azure z ustawieniami diagnostycznymi jest wyzwalane przy użyciu opcji [Utwórz nową](backup-azure-arm-restore-vms.md#create-a-vm) , przywracanie nie powiedzie się.
 
 
-## <a name="vm-storage-support"></a>Obsługa magazynu maszyny Wirtualnej
+## <a name="vm-storage-support"></a>Obsługa magazynu maszyn wirtualnych
 
 **Składnik** | **Pomoc techniczna**
 --- | ---
-Dyski z danymi maszyn wirtualnych platformy Azure | Utwórz kopię zapasową maszyny Wirtualnej z dyskami danych 16 lub mniej. <br/><br/> Obsługa dysków o rozmiarach do 4 TB.
-Rozmiar dysku danych | Każdy dysk może mieć rozmiar do 4095 GB.<br/><br/> Jeśli Twoich magazynów jest najnowszą wersją programu Kopia zapasowa Azure (nazywanych, natychmiastowe przywracanie), dysków o rozmiarach do 4 TB są obsługiwane. [Dowiedz się więcej](backup-instant-restore-capability.md).  
-Typ magazynu | Standardowa HDD i SSD w warstwie standardowa, premium SSD. <br/><br/> SSD w warstwie standardowa jest obsługiwany, jeśli Twoich magazynów zostaną uaktualnione do najnowszej wersji kopii zapasowej maszyny Wirtualnej platformy Azure (nazywane natychmiastowe przywracanie). [Dowiedz się więcej](backup-instant-restore-capability.md).
+Dyski z danymi maszyn wirtualnych platformy Azure | Utwórz kopię zapasową maszyny wirtualnej z 16 lub mniej dyskami danych. <br/><br/> Obsługuje rozmiary dysków do 4 TB.
+Rozmiar dysku danych | Każdy dysk może mieć rozmiar do 4095 GB.<br/><br/> Jeśli magazyny korzystają z najnowszej wersji Azure Backup (nazywanej natychmiastowym przywracaniem), obsługiwane są rozmiary dysków do 4 TB. [Dowiedz się więcej](backup-instant-restore-capability.md).  
+Typ magazynu | HDD w warstwie Standardowa, standardowy dysk SSD, dysk SSD Premium. <br/><br/> SSD w warstwie Standardowa jest obsługiwana, jeśli Twoje magazyny są uaktualnione do najnowszej wersji kopii zapasowej maszyny wirtualnej platformy Azure (nazywanej natychmiastowym przywracaniem). [Dowiedz się więcej](backup-instant-restore-capability.md).
 Dyski zarządzane | Obsługiwane.
-Zaszyfrowanych dysków | Obsługiwane.<br/><br/> Maszyny wirtualne platformy Azure, włączyć za pomocą usługi Azure Disk Encryption utworzeniem kopii zapasowej (z lub bez aplikację usługi Azure AD).<br/><br/> Nie można odzyskać zaszyfrowanych maszyn wirtualnych na poziomie plików/folderów. Odzyskaj całą maszynę Wirtualną.<br/><br/> Użytkownik może włączyć szyfrowanie na maszynach wirtualnych, które są już chronione przez usługę Azure Backup.
-Dysków z włączonym akceleratorem zapisu | Nieobsługiwane.<br/><br/> Usługa Azure backup automatycznie wyklucza dysków z włączonym podczas tworzenia kopii zapasowej akceleratorem zapisu. Ponieważ nie są one kopię zapasową, nie będzie można przywrócić te dyski z punktów odzyskiwania maszyny wirtualnej.
-Wykonywanie kopii zapasowych deduplikowanych dysków | Nieobsługiwane.
-Dodaj dysk do chronionej maszyny Wirtualnej | Obsługiwane.
-Zmiana rozmiaru dysku na chronionej maszynie Wirtualnej | Obsługiwane.
-Magazyn udostępniony| Nie zaleca się tworzenie kopii zapasowych maszyn wirtualnych przy użyciu udostępnionego woluminu klastra (CSV) lub serwera plików skalowalnego w poziomie. Autorzy CSV są mogą kończyć się niepowodzeniem podczas wykonywania kopii zapasowej. Podczas przywracania dyski zawierające woluminów CSV może nie wróć w górę.
-
-> [!NOTE]
-> Zmiana rozmiaru dysku nie jest zalecane przez usługę Azure Backup.
+Zaszyfrowane dyski | Obsługiwane.<br/><br/> Można utworzyć kopię zapasową maszyn wirtualnych platformy Azure z włączonym Azure Disk Encryption (z aplikacją usługi Azure AD lub bez niej).<br/><br/> Zaszyfrowane maszyny wirtualne nie mogą zostać odzyskane na poziomie plików/folderów. Należy odzyskać całą maszynę wirtualną.<br/><br/> Możesz włączyć szyfrowanie na maszynach wirtualnych, które są już chronione przez Azure Backup.
+Dyski z włączonym akcelerator zapisu | Nieobsługiwane.<br/><br/> Usługa Azure Backup automatycznie wyklucza dyski z akcelerator zapisu włączony podczas tworzenia kopii zapasowej. Ponieważ nie są one tworzone w ramach kopii zapasowej, nie będzie można przywrócić tych dysków z punktów odzyskiwania maszyny wirtualnej.
+Tworzenie kopii zapasowej deduplikowanych dysków | Nieobsługiwane.
+Dodawanie dysku do chronionej maszyny wirtualnej | Obsługiwane.
+Zmień rozmiar dysku na chronionej maszynie wirtualnej | Obsługiwane.
+Magazyn udostępniony| Nie zaleca się tworzenia kopii zapasowych maszyn wirtualnych przy użyciu udostępniony wolumin klastra (CSV) lub serwera plików skalowalnego w poziomie. Podczas tworzenia kopii zapasowej mogą wystąpić błędy autorów woluminów. W przypadku przywracania dyski zawierające woluminy woluminów CSV mogą nie zostać dołączone.
 
 
-## <a name="vm-network-support"></a>Obsługa sieci maszyny Wirtualnej
+
+## <a name="vm-network-support"></a>Obsługa sieci maszyn wirtualnych
 
 **Składnik** | **Pomoc techniczna**
 --- | ---
-Liczba interfejsów sieciowych (NIC) | Maksymalnie maksymalna liczba kart sieciowych obsługiwanych dla określonego rozmiaru maszyny Wirtualnej platformy Azure.<br/><br/> Karty sieciowe są tworzone podczas tworzenia maszyny Wirtualnej podczas procesu przywracania.<br/><br/> Liczba kart sieciowych do przywróconej maszyny wirtualnej odzwierciedla liczbę kart sieciowych na maszynie Wirtualnej, po włączeniu ochrony. Usuwanie karty sieciowe, po włączeniu ochrony nie ma wpływu na liczbę.
-Zewnętrzne/wewnętrznego modułu równoważenia obciążenia |   Obsługiwane. <br/><br/> [Dowiedz się więcej](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) dotyczące przywracania maszyn wirtualnych przy użyciu ustawień sieciowych.
-Wielu zastrzeżonych adresów IP |    Obsługiwane. <br/><br/> [Dowiedz się więcej](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) dotyczące przywracania maszyn wirtualnych przy użyciu ustawień sieciowych.
-Maszyny wirtualne z wieloma kartami sieciowymi  | Obsługiwane. <br/><br/> [Dowiedz się więcej](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) dotyczące przywracania maszyn wirtualnych przy użyciu ustawień sieciowych.
-Maszyny wirtualne z publicznych adresów IP    | Obsługiwane.<br/><br/> Kojarzenie istniejącego publicznego adresu IP z karty Sieciowej, lub utworzyć adres i skojarzyć ją z kartą Sieciową, po zakończeniu przywracania.
-Sieciowa grupa zabezpieczeń (NSG) w kart Sieciowych/podsieci. |   Obsługiwane.
-Zastrzeżony adres IP (statyczne) | Nieobsługiwane.<br/><br/> Nie można utworzyć kopii zapasowej maszyny Wirtualnej za pomocą zastrzeżonego adresu IP i nie ma zdefiniowanego punktu końcowego.
-Dynamiczny adres IP |    Obsługiwane.<br/><br/> Jeśli karta sieciowa na "source" maszyna wirtualna używa dynamicznego adresowania IP, domyślnie kartę Sieciową do przywróconej maszyny wirtualnej użyje on zbyt.
-Azure Traffic Manager   | Obsługiwane.<br/><br/>Jeśli kopia zapasowa maszyny Wirtualnej znajduje się w usłudze Traffic Manager, należy ręcznie dodać przywróconej maszyny Wirtualnej do tego samego wystąpienia usługi Traffic Manager.
+Liczba interfejsów sieciowych (nic) | Maksymalna liczba kart sieciowych obsługiwanych przez określony rozmiar maszyny wirtualnej platformy Azure.<br/><br/> Karty sieciowe są tworzone podczas tworzenia maszyny wirtualnej podczas procesu przywracania.<br/><br/> Liczba kart sieciowych na przywracanej maszynie wirtualnej odzwierciedla liczbę kart sieciowych w maszynie wirtualnej po włączeniu ochrony. Usuwanie kart sieciowych po włączeniu ochrony nie ma wpływu na liczbę.
+Zewnętrzny/wewnętrzny moduł równoważenia obciążenia |   Obsługiwane. <br/><br/> [Dowiedz się więcej](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) o przywracaniu maszyn wirtualnych przy użyciu specjalnych ustawień sieci.
+Wiele zarezerwowanych adresów IP |    Obsługiwane. <br/><br/> [Dowiedz się więcej](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) o przywracaniu maszyn wirtualnych przy użyciu specjalnych ustawień sieci.
+Maszyny wirtualne z wieloma kartami sieciowymi  | Obsługiwane. <br/><br/> [Dowiedz się więcej](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) o przywracaniu maszyn wirtualnych przy użyciu specjalnych ustawień sieci.
+Maszyny wirtualne z publicznymi adresami IP    | Obsługiwane.<br/><br/> Skojarz istniejący publiczny adres IP z kartą sieciową lub Utwórz adres i skojarz go z kartą sieciową po zakończeniu przywracania.
+Sieciowa Grupa zabezpieczeń (sieciowej grupy zabezpieczeń) na karcie sieciowej/podsieci. |   Obsługiwane.
+Adres Zastrzeżony adres IP (statyczny) | Nieobsługiwane.<br/><br/> Nie można utworzyć kopii zapasowej maszyny wirtualnej z zastrzeżonym adresem IP i bez zdefiniowanego punktu końcowego.
+Dynamiczny adres IP |    Obsługiwane.<br/><br/> Jeśli karta sieciowa na źródłowej maszynie wirtualnej używa dynamicznego adresowania IP, domyślnie karta sieciowa na przywróconej maszynie wirtualnej będzie używać tego programu.
+Azure Traffic Manager   | Obsługiwane.<br/><br/>Jeśli kopia zapasowa maszyny wirtualnej znajduje się w Traffic Manager, ręcznie Dodaj przywróconą maszynę wirtualną do tego samego wystąpienia Traffic Manager.
 System DNS platformy Azure | Obsługiwane.
 Niestandardowe DNS |    Obsługiwane.
-Łączności wychodzącej za pośrednictwem serwera proxy HTTP | Obsługiwane.<br/><br/> Uwierzytelnionego serwera proxy nie jest obsługiwane.
-Punkty końcowe usługi dla sieci wirtualnej   | Obsługiwane.<br/><br/> Zapory i ustawienia konta magazynu w sieci wirtualnej powinna zezwalać na dostęp ze wszystkich sieci.
+Łączność wychodząca za pośrednictwem serwera proxy HTTP | Obsługiwane.<br/><br/> Uwierzytelniony serwer proxy nie jest obsługiwany.
+Punkty końcowe usługi dla sieci wirtualnej   | Obsługiwane.<br/><br/> Ustawienia zapory i konta magazynu sieci wirtualnej powinny zezwalać na dostęp ze wszystkich sieci.
 
 
 
-## <a name="vm-security-and-encryption-support"></a>Obsługa zabezpieczeń i szyfrowania maszyny Wirtualnej
+## <a name="vm-security-and-encryption-support"></a>Obsługa zabezpieczeń i szyfrowania maszyn wirtualnych
 
 Usługa Azure Backup obsługuje szyfrowanie danych podczas przesyłania i danych magazynowanych:
 
 Ruch sieciowy do platformy Azure:
 
-- Kopii zapasowej ruch z serwerów w magazynie usługi Recovery Services jest szyfrowany przy użyciu algorytmu Advanced Encryption Standard 256.
+- Ruch kopii zapasowych z serwerów do magazynu Recovery Services jest szyfrowany przy użyciu Advanced Encryption Standard 256.
 - Dane kopii zapasowej są przesyłane za pośrednictwem bezpiecznego połączenia HTTPS.
 - W magazynie usługi Recovery Services dane kopii zapasowych są przechowywane w postaci zaszyfrowanej.
 - Tylko Ty dysponujesz hasłem do odblokowania tych danych. Firma Microsoft nie może odszyfrować danych kopii zapasowej w żadnym punkcie.
 
   > [!WARNING]
-  > Po skonfigurowaniu magazynu tylko Ty masz dostęp do klucza szyfrowania. Firma Microsoft nigdy nie przechowuje kopii i nie ma dostępu do klucza. W przypadku utraty klucza firma Microsoft nie może odzyskać danych kopii zapasowej.
+  > Po skonfigurowaniu magazynu tylko ty masz dostęp do klucza szyfrowania. Firma Microsoft nigdy nie przechowuje kopii i nie ma dostępu do klucza. W przypadku utraty klucza firma Microsoft nie może odzyskać danych kopii zapasowej.
 
 Bezpieczeństwo danych:
 
-- Podczas tworzenia kopii zapasowych maszyn wirtualnych platformy Azure, musisz skonfigurować szyfrowanie *w ramach* maszyny wirtualnej.
-- Usługa Azure Backup obsługuje szyfrowania dysków Azure, która używa funkcji BitLocker na maszynach wirtualnych Windows i nam **dm-crypt** maszyn wirtualnych systemu Linux.
+- Podczas tworzenia kopii zapasowych maszyn wirtualnych platformy Azure należy skonfigurować szyfrowanie *w ramach* maszyny wirtualnej.
+- Azure Backup obsługuje Azure Disk Encryption, który używa funkcji BitLocker na maszynach wirtualnych z systemem Windows oraz zarządzania urządzeniami **Crypt** na komputerach z systemem Linux.
 - Na zapleczu usługa Azure Backup używa [szyfrowania usługi Azure Storage](../storage/common/storage-service-encryption.md), które chroni dane magazynowane.
 
 
 **Maszyna** | **Przesyłanie** | **Magazynowanie**
 --- | --- | ---
-Lokalne maszyny z systemem Windows bez programu DPM/usługi MABS | ![Yes][green] | ![Yes][green]
-Maszyny wirtualne platformy Azure | ![Yes][green] | ![Yes][green]
+Lokalne maszyny z systemem Windows bez programu DPM/usługi MABS | ![Tak][green] | ![Yes][green]
+Maszyny wirtualne platformy Azure | ![Tak][green] | ![Tak][green]
 Lokalne maszyny wirtualne/maszyny wirtualne platformy Azure z programem DPM | ![Yes][green] | ![Yes][green]
-Lokalne maszyny wirtualne/maszyny wirtualne platformy Azure z usługą MABS | ![Yes][green] | ![Yes][green]
+Lokalne maszyny wirtualne/maszyny wirtualne platformy Azure z usługą MABS | ![Yes][green] | ![Tak][green]
 
 
 
-## <a name="vm-compression-support"></a>Obsługa kompresji maszyny Wirtualnej
+## <a name="vm-compression-support"></a>Obsługa kompresji maszyny wirtualnej
 
-Backup obsługuje kompresję kopii zapasowej ruchu, zgodnie z opisem w poniższej tabeli. Pamiętaj o następujących kwestiach:
+Funkcja Backup obsługuje kompresję ruchu kopii zapasowej, jak przedstawiono w poniższej tabeli. Należy pamiętać o następujących kwestiach:
 
-- W przypadku maszyn wirtualnych platformy Azure z rozszerzenia maszyny Wirtualnej odczytuje dane bezpośrednio z konta usługi Azure storage za pośrednictwem sieci magazynowania. Nie jest konieczne Kompresja tego ruchu.
-- Jeśli używasz programu DPM lub MABS, możesz oszczędzić przepustowość, kompresji danych, przed jej kopii zapasowej, aby program DPM/serwera usługi MAB.
+- W przypadku maszyn wirtualnych platformy Azure rozszerzenie maszyny wirtualnej odczytuje dane bezpośrednio z konta usługi Azure Storage w sieci magazynowania. Nie jest konieczne kompresowanie tego ruchu.
+- Jeśli używasz programu DPM lub serwera usługi MAB, możesz zaoszczędzić przepustowość, kompresując dane przed utworzeniem ich kopii zapasowej w programie DPM/serwera usługi MAB.
 
 **Maszyna** | **Kompresja do usługi MABS/programu DPM (TCP)** | **Kompresuj do magazynu (HTTPS)**
 --- | --- | ---

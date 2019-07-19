@@ -1,6 +1,6 @@
 ---
-title: 'Azure Active Directory Domain Services: Rozwiązywania problemów z Secure konfigurację protokołu LDAP | Dokumentacja firmy Microsoft'
-description: Rozwiązywanie problemów z bezpiecznego protokołu LDAP dla usług domenowych Azure AD
+title: 'Azure Active Directory Domain Services: Rozwiązywanie problemów z bezpiecznym protokołem LDAP | Microsoft Docs'
+description: Secure LDAP rozwiązywania problemów Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: iainfoulds
@@ -15,54 +15,54 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 453018f486ca3fda91d8447208fe3d936722522e
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 8a542f7927ddd834c7273f6ef8b251ddc35e8436
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473951"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234187"
 ---
-# <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure AD Domain Services — Konfiguracja Rozwiązywanie problemów z bezpiecznego protokołu LDAP
+# <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure AD Domain Services — Rozwiązywanie problemów z konfiguracją Secure LDAP
 
-Ten artykuł zawiera rozwiązania typowych problemów, gdy [Konfigurowanie protokołu secure LDAP](configure-ldaps.md) dla usług domenowych Azure AD.
+Ten artykuł zawiera rozwiązania typowych problemów podczas [konfigurowania bezpiecznego protokołu LDAP](configure-ldaps.md) dla Azure AD Domain Services.
 
-## <a name="aadds101-secure-ldap-network-security-group-configuration"></a>AADDS101: Secure LDAP konfiguracją sieciowej grupy zabezpieczeń
+## <a name="aadds101-secure-ldap-network-security-group-configuration"></a>AADDS101: Konfiguracja sieciowej grupy zabezpieczeń Secure LDAP
 
 **Komunikat alertu:**
 
-*Dla domeny zarządzanej włączono protokół Secure LDAP przez internet. Dostęp do portu 636 nie jest zablokowany za pomocą sieciowej grupy zabezpieczeń. Może to wystawić konta użytkowników w domenie zarządzanej na próby ataków siłowych hasła.*
+*Secure LDAP przez Internet jest włączony dla domeny zarządzanej. Jednak dostęp do portu 636 nie jest zablokowany przy użyciu sieciowej grupy zabezpieczeń. Może to spowodować ujawnienie kont użytkowników w domenie zarządzanej w celu wymuszenia hasła.*
 
-### <a name="secure-ldap-port"></a>Bezpieczny port LDAP
+### <a name="secure-ldap-port"></a>Port Secure LDAP
 
-Po włączeniu protokołu secure LDAP, zaleca się utworzenie dodatkowe zasady w celu umożliwienia dostępu przychodzącego protokołu LDAPS tylko z określonych adresów IP. Te zasady chronią domeny przed atakami, które mogą stanowić zagrożenie bezpieczeństwa. Portu 636 umożliwia dostęp do Twojej domeny zarządzanej. Oto jak można zaktualizować usługi sieciowej grupy zabezpieczeń, aby umożliwić dostęp do bezpiecznego protokołu LDAP:
+Po włączeniu bezpiecznego protokołu LDAP zalecamy utworzenie dodatkowych reguł zezwalających na dostęp do ruchu przychodzącego LDAP tylko z określonych adresów IP. Te reguły chronią domenę przed atakami polegającymi na wymuszeniu, które mogą stanowić zagrożenie dla bezpieczeństwa. Port 636 zezwala na dostęp do domeny zarządzanej. Oto jak zaktualizować sieciowej grupy zabezpieczeń, aby zezwolić na dostęp do Secure LDAP:
 
-1. Przejdź do [karty sieciowe grupy zabezpieczeń](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups) w witrynie Azure portal
-2. Wybierz grupy zabezpieczeń sieci skojarzonych z Twoją domeną z tabeli.
+1. Przejdź do [karty sieciowe grupy zabezpieczeń](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups) w Azure Portal
+2. Wybierz sieciowej grupy ZABEZPIECZEŃą skojarzoną z domeną z tabeli.
 3. Kliknij pozycję **reguły zabezpieczeń dla ruchu przychodzącego**
 4. Tworzenie reguły portu 636
    1. Kliknij przycisk **Dodaj** na górnym pasku nawigacyjnym.
-   2. Wybierz **adresów IP** dla źródła.
-   3. Określanie zakresów portów źródłowych dla tej reguły.
-   4. Dane wejściowe "636" na potrzeby docelowe zakresy portów.
-   5. Protokół jest **TCP**.
-   6. Nadaj regule odpowiednią nazwę, opis i priorytet. Priorytet tej reguły powinien być większy niż priorytet reguły "Deny wszystkie", jeśli nie masz.
+   2. Wybierz **adresy IP** dla źródła.
+   3. Określ zakresy portów źródłowych dla tej reguły.
+   4. Wprowadź "636" dla docelowych zakresów portów.
+   5. Protokół to **TCP**.
+   6. Nadaj regule odpowiednią nazwę, opis i priorytet. Priorytet tej reguły powinien być wyższy niż priorytet reguły "Odmów wszystkiego", jeśli istnieje.
    7. Kliknij przycisk **OK**.
 5. Sprawdź, czy reguła została utworzona.
-6. Sprawdzanie kondycji domeny w ciągu dwóch godzin, aby upewnić się, że czynności zostały wykonane poprawnie.
+6. Sprawdź kondycję domeny w ciągu dwóch godzin, aby upewnić się, że kroki zostały wykonane prawidłowo.
 
 > [!TIP]
-> Portu 636 nie jest tylko reguły służące do usług domenowych Azure AD gwarantującego bezproblemowe działanie. Aby dowiedzieć się więcej, odwiedź stronę [wytyczne dotyczące sieci](network-considerations.md) lub [konfiguracji sieciowej grupy zabezpieczeń z Rozwiązywanie problemów z](alert-nsg.md) artykułów.
+> Port 636 nie jest jedyną regułą wymaganą do bezproblemowego uruchamiania Azure AD Domain Services. Aby dowiedzieć się więcej, zobacz [wytyczne dotyczące sieci](network-considerations.md) lub [Rozwiązywanie problemów z artykułami konfiguracji sieciowej grupy zabezpieczeń](alert-nsg.md) .
 >
 
-## <a name="aadds502-secure-ldap-certificate-expiring"></a>AADDS502: Secure LDAP wygaśnięcia ważności certyfikatu
+## <a name="aadds502-secure-ldap-certificate-expiring"></a>AADDS502: Secure LDAP wygaśnięcia certyfikatu
 
 **Komunikat alertu:**
 
-*Certyfikat secure LDAP dla domeny zarządzanej wygaśnie w dniu [date]].*
+*Certyfikat bezpiecznego protokołu LDAP dla domeny zarządzanej wygaśnie w dniu [Date]].*
 
-**Rozwiązanie:**
+**Tłumaczenia**
 
-Utwórz nowy certyfikat secure LDAP, wykonując czynności opisane w temacie [Konfiguracja protokołu secure LDAP](configure-ldaps.md) artykułu.
+Utwórz nowy certyfikat bezpiecznego protokołu LDAP, wykonując czynności opisane w artykule [Konfigurowanie bezpiecznego protokołu LDAP](configure-ldaps.md) .
 
 ## <a name="contact-us"></a>Skontaktuj się z nami
-Skontaktuj się z zespołem produktu usługi Azure Active Directory Domain Services, aby [Podziel się opinią lub pomocy technicznej](contact-us.md).
+Skontaktuj się z zespołem pomocy technicznej Azure Active Directory Domain Services, aby [udostępnić opinię lub pomoc techniczną](contact-us.md).

@@ -1,10 +1,10 @@
 ---
-title: Użyj usługi Azure Load Balancer sondy kondycji do skalowania i zapewnić wysoką dostępność usługi
+title: Używanie sond kondycji Azure Load Balancer do skalowania i zapewnienia wysokiej dostępności dla usługi
 titlesuffix: Azure Load Balancer
 description: Dowiedz się, jak korzystać z sondy kondycji do monitorowania wystąpień za modułem równoważenia obciążenia
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 ms.service: load-balancer
 ms.devlang: na
@@ -13,19 +13,19 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2019
-ms.author: kumud
-ms.openlocfilehash: e488a4a6438279270f3d86dafa16c45eda184059
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 75009530940a0cce7adb8469ead5f55f509a1faa
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65415702"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275348"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy kondycji modułu równoważenia obciążenia
 
-Usługa Azure Load Balancer zapewnia sondy kondycji do użycia za pomocą reguł równoważenia obciążenia.  Odpowiedzi sond kondycji konfiguracji i badania określają, które wystąpienia puli zaplecza będą otrzymywać nowych przepływów. Za pomocą sondy kondycji do wykrywania awarii aplikacji na wystąpienie wewnętrznej bazy danych. Można również generować niestandardowe odpowiedzi na sondę kondycji i używaj sondy kondycji sterowania przepływem do zarządzania obciążenia lub planowanych przestojów. W przypadku awarii sondę kondycji modułu równoważenia obciążenia zatrzymuje wysyłanie nowych przepływów do odpowiednich wystąpień złej kondycji.
+Azure Load Balancer zapewnia sondy kondycji do użycia z regułami równoważenia obciążenia.  Konfiguracja sondy kondycji i odpowiedzi sondy określają, które wystąpienia puli zaplecza będą odbierać Nowe przepływy. Za pomocą sondy kondycji do wykrywania awarii aplikacji na wystąpienie wewnętrznej bazy danych. Możesz również wygenerować niestandardową odpowiedź na sondę kondycji i użyć sondy kondycji do sterowania przepływem, aby zarządzać obciążeniem lub planowanym przestojem. W przypadku awarii sondę kondycji modułu równoważenia obciążenia zatrzymuje wysyłanie nowych przepływów do odpowiednich wystąpień złej kondycji.
 
-Sondy kondycji obsługują wiele protokołów. Dostępność dla określonego typu sondy kondycji do obsługi określonego protokołu, zależy od jednostki SKU modułu równoważenia obciążenia.  Ponadto zachowanie usługi jest zależna od jednostki SKU modułu równoważenia obciążenia.
+Sondy kondycji obsługują wiele protokołów. Dostępność określonego typu sondy kondycji do obsługi określonego protokołu różni się w zależności od Load Balancer jednostki SKU.  Ponadto zachowanie usługi różni się w zależności od Load Balancer jednostki SKU.
 
 | | Standardowy SKU | Podstawowy SKU |
 | --- | --- | --- |
@@ -33,11 +33,11 @@ Sondy kondycji obsługują wiele protokołów. Dostępność dla określonego ty
 | [Badanie zachowania w dół](#probedown) | Wszystkie sondy, wszystkie przepływy TCP nadal. | Wszystkie sondy w dół, wszystkie przepływy TCP wygasają. | 
 
 > [!IMPORTANT]
-> Sondy kondycji modułu równoważenia obciążenia pochodzą z adresu IP 168.63.129.16 i nie musi zostać zablokowany dla sondy do oznaczania wystąpienia usługi.  Przegląd [źródłowego adresu IP sondy](#probesource) Aby uzyskać szczegółowe informacje.
+> Sondy kondycji Load Balancer pochodzą z adresu IP 168.63.129.16 i nie mogą być blokowane w przypadku sondowania do oznaczania wystąpienia.  Przegląd [źródłowego adresu IP sondy](#probesource) Aby uzyskać szczegółowe informacje.
 
 ## <a name="types"></a>Typy sondy
 
-Sonda kondycji można skonfigurować dla obiektów nasłuchujących przy użyciu następujących trzech protokołów:
+Sondę kondycji można skonfigurować dla odbiorników przy użyciu następujących trzech protokołów:
 
 - [Odbiorniki TCP](#tcpprobe)
 - [Punktów końcowych HTTP](#httpprobe)
@@ -50,16 +50,16 @@ Dostępne typy sond kondycji różnią się w zależności od jednostki SKU modu
 | Standardowy SKU |    &#9989; |   &#9989; |   &#9989; |
 | Podstawowy SKU |   &#9989; |   &#9989; | &#10060; |
 
-Niezależnie od tego, jakiego typu sondowania, możesz wybrać sond kondycji można obserwować dowolnego portu wystąpieniu wewnętrznej bazy danych, w tym port, na którym znajduje się nazwa rzeczywistej usługi.
+Niezależnie od tego, który typ sondy wybierzesz, sondy kondycji mogą obserwować dowolny port w wystąpieniu zaplecza, w tym port, na którym podano rzeczywistą usługę.
 
 ### <a name="tcpprobe"></a> Sonda TCP
 
-Sondy protokołu TCP zainicjować połączenie, wykonując trzy kierunkową Otwórz TCP uzgadniania z zdefiniowany port.  Sondy protokołu TCP zakończyć połączenie z uzgadniania czterokierunkowego Zamknij TCP.
+Sondy protokołu TCP zainicjować połączenie, wykonując trzy kierunkową Otwórz TCP uzgadniania z zdefiniowany port.  Sondy TCP przerywają połączenie z czterema sposobem zamykania protokołu TCP.
 
-Interwał sondy minimalna to 5 sekund, a minimalna liczba odpowiedzi w złej kondycji wynosi 2.  Łączny czas trwania wszystkich interwałów nie może przekraczać 120 sekund.
+Interwał sondy minimalna to 5 sekund, a minimalna liczba odpowiedzi w złej kondycji wynosi 2.  Łączny czas trwania wszystkich interwałów nie może przekroczyć 120 sekund.
 
 Sonda TCP kończy się niepowodzeniem kiedy:
-* Odbiornik TCP w wystąpieniu nie odpowiada w określonym przedziale czasu.  Sonda jest oznaczony jako w dół na podstawie liczby sondy zakończone niepowodzeniem żądania, które zostały skonfigurowane do bez odpowiedzi zanim oznaczysz dół sondy.
+* Odbiornik TCP w wystąpieniu nie odpowiada w określonym przedziale czasu.  Sonda jest oznaczona w dół w oparciu o liczbę nieudanych żądań sondowania, które zostały skonfigurowane w taki sposób, aby nie odpowiadały przed oznaczeniem sondy.
 * Sonda odbiera TCP, zresetuj z wystąpienia.
 
 #### <a name="resource-manager-template"></a>Szablon usługi Resource Manager
@@ -80,15 +80,15 @@ Sonda TCP kończy się niepowodzeniem kiedy:
 > [!NOTE]
 > Sondy protokołu HTTPS jest dostępna tylko dla [Balancer w warstwie standardowa](load-balancer-standard-overview.md).
 
-Sondy HTTP i HTTPS rozwijać sonda TCP i wystawić żądania HTTP GET z określoną ścieżką. Obsługa obu tych sond HTTP GET ścieżek względnych. Sondy protokołu HTTPS są takie same jak sondy HTTP, dodając Transport Layer Security (TLS, znana wcześniej jako SSL) otoki. Sonda kondycji jest oznaczony jako, gdy wystąpienie odpowiada ze stanem HTTP 200 przed upływem limitu czasu.  Sonda kondycji próbuje sprawdzić port sondy kondycji skonfigurowane co 15 sekund domyślnie. Interwał sondy minimalna to 5 sekund. Łączny czas trwania wszystkich interwałów nie może przekraczać 120 sekund.
+Sondy protokołu HTTP i HTTPS kompilują sondę TCP i wystawią HTTP GET z określoną ścieżką. Obsługa obu tych sond HTTP GET ścieżek względnych. Sondy protokołu HTTPS są takie same jak sondy HTTP, dodając Transport Layer Security (TLS, znana wcześniej jako SSL) otoki. Sonda kondycji jest oznaczony jako, gdy wystąpienie odpowiada ze stanem HTTP 200 przed upływem limitu czasu.  Sonda kondycji próbuje domyślnie sprawdzić skonfigurowany port sondy kondycji co 15 sekund. Interwał sondy minimalna to 5 sekund. Łączny czas trwania wszystkich interwałów nie może przekroczyć 120 sekund.
 
-HTTP / HTTPS sond może być również przydatne, jeśli chcesz wyrazić sondy kondycji.  Implementowanie własnej logiki, aby usunąć wystąpienia z rotacji modułu równoważenia obciążenia, jeśli port sondy jest również detektorów za samą usługę. Na przykład możesz zdecydować usunąć wystąpienie, gdy przekracza 90% zasobów Procesora i zwrócenia stanu 200 HTTP. 
+Sondy protokołu HTTP/HTTPS mogą być również przydatne, jeśli chcesz wypróbować sondę kondycji.  Zaimplementuj własną logikę, aby usunąć wystąpienia z rotacji modułu równoważenia obciążenia, jeśli port sondy jest również odbiornikiem dla samej usługi. Na przykład możesz zdecydować usunąć wystąpienie, gdy przekracza 90% zasobów Procesora i zwrócenia stanu 200 HTTP. 
 
 Jeśli korzystasz z usług w chmurze i mieć role sieci web, które używają w3wp.exe, możesz również uzyskać automatyczne monitorowanie witryny sieci Web. Błędy w kodzie witryny sieci Web zwrócenia stanu – 200 do sondy modułu równoważenia obciążenia.
 
 HTTP / sondy protokołu HTTPS nie powiedzie się po:
-* Końcowego sondy zwraca kod odpowiedzi HTTP inne niż 200 (na przykład, 403, 404 lub 500). Spowoduje to oznaczenie dół sondy kondycji natychmiast. 
-* Punkt końcowy sonda nie odpowiada w okresie 31-sekundowy limit. Wielokrotne żądania sondowania mogą zostać przekazane bez odpowiedzi zanim sondy zostanie oznaczone jako nie jest uruchomiona, i do czasu osiągnięcia sumę wszystkich interwałów czasu.
+* Końcowego sondy zwraca kod odpowiedzi HTTP inne niż 200 (na przykład, 403, 404 lub 500). Spowoduje to natychmiastowe oznaczenie sondy kondycji. 
+* Punkt końcowy sondy nie reaguje w ogóle w okresie 31-sekundowego limitu czasu. Jeśli sonda zostanie oznaczona jako Nieuruchomiona i zostanie osiągnięta suma wszystkich przedziałów czasu, nie ma odpowiedzi na wiele żądań sondowania.
 * Końcowego sondy zamyka połączenie za pośrednictwem resetowania TCP.
 
 #### <a name="resource-manager-templates"></a>Szablony usługi Resource Manager
@@ -119,7 +119,7 @@ HTTP / sondy protokołu HTTPS nie powiedzie się po:
 
 ### <a name="guestagent"></a>Sondowanie agenta gościa (tylko wersja klasyczna)
 
-Role usługi w chmurze (role procesu roboczego i role sieci web) używać agenta gościa na potrzeby sondy monitorowania domyślnie.  Sondowanie agenta gościa jest ostatnia Konfiguracja czynność.  Zawsze używaj sondy kondycji jawnie przy użyciu protokołu TCP lub HTTP sondowania. Sondowanie agenta gościa nie jest tak skuteczne, jak sondy jawnie zdefiniowane w przypadku większości scenariuszy aplikacji.
+Role usługi w chmurze (role procesu roboczego i role sieci web) używać agenta gościa na potrzeby sondy monitorowania domyślnie.  Sonda agenta gościa jest ostatnią konfiguracją.  Zawsze używaj sondy kondycji jawnie z sondą TCP lub HTTP. Sondowanie agenta gościa nie jest tak skuteczne, jak sondy jawnie zdefiniowane w przypadku większości scenariuszy aplikacji.
 
 Sondowanie agenta gościa jest wyboru agenta gościa wewnątrz maszyny Wirtualnej. Następnie odbiera i odpowiada za pomocą odpowiedź HTTP 200 OK, tylko wtedy, gdy wystąpienie jest w stanie gotowe. (Inne stany są zajęte, odtwarzanie lub zatrzymywania).
 
@@ -136,11 +136,11 @@ Korzystając z roli sieci web, kod witryny sieci Web jest zwykle działa w w3wp.
 
 Sondy kondycji TCP, HTTP i HTTPS są traktowane jako zdrowych i Oznacz wystąpienia roli, co działa prawidłowo, gdy:
 
-* Sonda kondycji zakończy się jeden raz po uruchomieniu maszyny Wirtualnej.
-* Został osiągnięty określoną liczbę sond wymagane w celu oznaczenia wystąpienia roli jako w dobrej kondycji.
+* Sonda kondycji kończy się pomyślnie po uruchomieniu maszyny wirtualnej.
+* Określona liczba sond wymaganych do oznaczania wystąpienia roli w miarę osiągnięcia w dobrej kondycji.
 
 > [!NOTE]
-> Jeśli zmienia się sondy kondycji modułu równoważenia obciążenia już przed oczekuje umieszcza wystąpienia roli w dobrej kondycji. Czas oczekiwania dodatkowe chroni użytkownika i infrastruktura i zamierzone zasady.
+> Jeśli sonda kondycji jest zmieniana, moduł równoważenia obciążenia czeka dłużej przed ponownym umieszczeniem wystąpienia roli w dobrej kondycji. Czas oczekiwania dodatkowe chroni użytkownika i infrastruktura i zamierzone zasady.
 
 ## <a name="probe-count-and-timeout"></a>Limit czasu i liczba sondy
 
@@ -149,19 +149,19 @@ Zachowanie sondy zależy od:
 * Liczba pomyślnych sond, zezwalających na wystąpienie, które można oznaczyć jako czas.
 * Liczba nieudanych sond, powodujące wystąpienie był oznaczony jako w dół.
 
-Określone wartości limitu czasu i interwał ustalić, czy wystąpienie jest oznaczony jako w górę lub w dół.
+Określone wartości limitu czasu i interwału określają, czy wystąpienie jest oznaczone jako w górę czy w dół.
 
 ## <a name="probedown"></a>Badanie zachowania w dół
 
 ### <a name="tcp-connections"></a>Połączenia protokołu TCP
 
-Nowe połączenia TCP zakończy się pomyślnie do pozostałych wystąpień zaplecza w dobrej kondycji.
+Nowe połączenia TCP będą pomyślnie pozostawać pozostałe wystąpienia zaplecza w dobrej kondycji.
 
 Jeśli sonda kondycji przypadkiem wewnętrznej bazy danych nie powiedzie się, ustanowionych połączeń TCP dla tego wystąpienia wewnętrznej bazy danych jest kontynuowane.
 
 W przypadku awarii wszystkich sondy dla wszystkich wystąpień w puli zaplecza, do puli zaplecza będą wysyłane nie nowych przepływów. Load Balancer w warstwie standardowa pozwoli na ustanowionych przepływy TCP, aby kontynuować.  Podstawowy moduł równoważenia obciążenia utracą wszystkie istniejące przepływy TCP do puli zaplecza.
  
-Moduł równoważenia obciążenia jest przekazywania service (nie kończy połączeń TCP) i przepływ będzie zawsze między klientem i systemu operacyjnego gościa i aplikacji maszyny Wirtualnej. Puli za pomocą sondy wszystkich szczegółów spowoduje, że frontonu nie odpowiada na połączenie TCP próby otwarcia (SYN) się żadne wystąpienie zaplecza w dobrej kondycji do odbierania przepływ i elastyczniejsze SYN ACK.
+Load Balancer to usługa przekazująca (nie przerywa połączeń TCP), a przepływ jest zawsze między klientem i systemem operacyjnym gościa maszyny wirtualnej i aplikacją. Pula ze wszystkimi sondami w dół spowoduje, że fronton nie odpowie na otwarte próby połączenia TCP (SYN), ponieważ nie istnieje żadne wystąpienie wewnętrznej bazy danych do odbierania przepływu i odpowiada przy użyciu metody SYN-ACK.
 
 ### <a name="udp-datagrams"></a>Datagramy protokołu UDP
 
@@ -174,54 +174,54 @@ W przypadku awarii wszystkich sondy dla wszystkich wystąpień w puli zaplecza, 
 <a name="source"></a>
 ## <a name="probesource"></a>Źródłowy adres IP sondy
 
-Moduł równoważenia obciążenia używa usługami rozproszonymi badania swój model kondycji wewnętrznego. Usługa badania znajdują się na każdym hoście gdzie maszyn wirtualnych i może być zaplanowany na żądanie, aby wygenerować sond kondycji dla konfiguracji klienta. Ruch sondy kondycji jest bezpośrednio między sondowania usługa, która generuje sondy kondycji i klienta maszyny Wirtualnej. Wszystkie sondy kondycji modułu równoważenia obciążenia pochodzą z adresu IP 168.63.129.16 jako źródła.  Możesz użyć przestrzeni adresów IP w sieci wirtualnej, która nie ma miejsca RFC1918.  Za pomocą globalnie zarezerwowane, Microsoft należące do adresu IP zmniejsza prawdopodobieństwo konfliktu adresu IP z obszaru adresów IP, którego używasz wewnątrz sieci wirtualnej.  Ten adres IP jest taka sama we wszystkich regionach i nie zmienia się i nie jest to zagrożenie bezpieczeństwa, ponieważ źródeł pakietów z tego adresu IP mogą być tylko składnik wewnętrznych platformy Azure. 
+Moduł równoważenia obciążenia używa usługami rozproszonymi badania swój model kondycji wewnętrznego. Usługa Bing znajduje się na każdym hoście, na którym maszyny wirtualne i może być zaprogramowana na żądanie w celu wygenerowania sond kondycji zgodnie z konfiguracją klienta. Ruch sondy kondycji jest bezpośrednio między usługą sondowania, która generuje sondę kondycji i maszynę wirtualną klienta. Wszystkie sondy kondycji modułu równoważenia obciążenia pochodzą z adresu IP 168.63.129.16 jako źródła.  Możesz użyć przestrzeni adresów IP wewnątrz sieci wirtualnej, która nie jest RFC1918.  Użycie zastrzeżonej globalnie adresu IP firmy Microsoft zmniejsza szansę, że adres IP jest w konflikcie z przestrzenią adresów IP używaną wewnątrz sieci wirtualnej.  Ten adres IP jest taki sam we wszystkich regionach i nie jest narażony na bezpieczeństwo, ponieważ tylko wewnętrzny składnik platformy platformy Azure może posłużyć do podzielenia pakietu z tego adresu IP. 
 
-Numer seryjny AzureLoadBalancer identyfikuje ten źródłowy adres IP w sieci [sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md) i zezwala na ruch sondy kondycji, domyślnie.
+Tag usługi AzureLoadBalancer identyfikuje ten źródłowy adres IP w [sieciowych grupach zabezpieczeń](../virtual-network/security-overview.md) i domyślnie zezwala na ruch sondy kondycji.
 
-Oprócz sondy kondycji modułu równoważenia obciążenia [następujące operacje używają tego adresu IP](../virtual-network/what-is-ip-address-168-63-129-16.md):
+Oprócz Load Balancer sond kondycji [następujące operacje używają tego adresu IP](../virtual-network/what-is-ip-address-168-63-129-16.md):
 
 - Włącza agenta maszyny wirtualnej do komunikowania się z platformą do sygnalizowania, że jest on w stanie "Gotowe"
 - Umożliwia komunikację z serwerem wirtualnym DNS, aby zapewnić rozpoznawanie nazw filtrowane do klientów, którzy nie zdefiniujesz niestandardowe serwery DNS.  Filtrowanie gwarantuje, że klienci tylko może rozpoznać nazwy hostów ich wdrożenia.
-- Umożliwia maszynie Wirtualnej można uzyskać dynamicznego adresu IP z usługi DHCP w systemie Azure.
+- Umożliwia maszynie wirtualnej uzyskanie dynamicznego adresu IP z usługi DHCP na platformie Azure.
 
-## <a name="design"></a> Wskazówki dotyczące projektowania
+## <a name="design"></a>Wskazówki dotyczące projektowania
 
-Sondy kondycji są używane usługi odporne na błędy i zezwolić na jego skalowanie. Błędnej konfiguracji lub wzorzec projektowy zły może mieć wpływ na dostępność i skalowalność usługi. Przejrzyj to całego dokumentu, a następnie należy wziąć pod uwagę co wpływ w przypadku Twojego scenariusza jest w przypadku tej odpowiedzi sondowania jest oznaczony w dół lub oznaczone i jak wpływa na dostępność scenariusz aplikacji.
+Sondy kondycji są używane do odporności usługi i umożliwienia jej skalowania. Niepoprawna konfiguracja lub nieodpowiedni Wzorzec projektowy może mieć wpływ na dostępność i skalowalność usługi. Zapoznaj się z tym całym dokumentem i zastanów się, co ma wpływ na Twój scenariusz, gdy ta odpowiedź sondy jest oznaczona jako wyłączona lub oznaczona jako taka, jak ma to wpływ na dostępność scenariusza aplikacji.
 
-Podczas projektowania modelu kondycji dla aplikacji, należy sondowania portu w wystąpieniu wewnętrznej bazy danych, które odzwierciedla kondycję tego wystąpienia __i__ usługi aplikacji, które mają być udostępniane.  Port aplikacji i port sondy nie muszą być takie same.  W niektórych scenariuszach może być pożądane, jeśli port sondy jest inny niż port, który aplikacja udostępnia usługi na.  
+Podczas projektowania modelu kondycji aplikacji należy sondować port w wystąpieniu zaplecza, który odzwierciedla kondycję tego wystąpienia __i__ udostępnianą usługę aplikacji.  Port aplikacji i port sondy nie muszą być takie same.  W niektórych scenariuszach może być pożądane, aby port sondy był różny od portu, w którym usługa jest udostępniana przez aplikację.  
 
-Czasami może być przydatne w przypadku aplikacji do generowania odpowiedzi sonda kondycji nie tylko wykrywania kondycji aplikacji, ale także sygnał bezpośrednio do modułu równoważenia obciążenia, czy wystąpienie powinno odbierać lub nie otrzymywać nowych przepływów.  Możesz manipulować odpowiedzi sondowania, aby umożliwić aplikacji Utwórz wsteczne i ograniczenia dostarczania nowych przepływów na wystąpienie nie sondy kondycji lub przygotowania do obsługi aplikacji i Inicjowanie opróżniania danego scenariusza.  Gdy użycie standardowego modułu równoważenia obciążenia [sondowania w dół](#probedown) sygnału zawsze będzie dopuszczany przepływy TCP, aby kontynuować do czasu bezczynności połączenia lub limit czasu zamknięcia. 
+Czasami może być przydatne, aby aplikacja mogła wygenerować odpowiedź sondy kondycji, aby nie tylko wykrywać kondycję aplikacji, ale również sygnalizować bezpośrednio Load Balancer, czy Twoje wystąpienie powinno otrzymywać i nie odbierać nowych przepływów.  Można manipulować odpowiedzią sondy, aby umożliwić aplikacji Tworzenie i ograniczanie dostarczania nowych przepływów do wystąpienia przez niepowodzenie sondy kondycji lub przygotowanie do konserwacji aplikacji i Inicjowanie opróżniania scenariusza.  W przypadku korzystania z usługa Load Balancer w warstwie Standardowa sygnał [w dół sondowania](#probedown) będzie zawsze zezwalał na kontynuowanie PRZEPŁYWów TCP do momentu upłynięcia limitu czasu bezczynności lub zamknięcia połączenia. 
 
-UDP równoważenia obciążenia, należy wygenerować sygnał sondy kondycji niestandardowe z wystąpienia wewnętrznej bazy danych i użyć sondę kondycji TCP, HTTP lub HTTPS, przeznaczone dla odpowiedniego odbiornika w celu odzwierciedlenia kondycji aplikacji UDP.
+W przypadku równoważenia obciążenia UDP należy wygenerować niestandardowy sygnał sondy kondycji z wystąpienia zaplecza i użyć sondy kondycji TCP, HTTP lub HTTPS dla odpowiedniego odbiornika, aby odzwierciedlić kondycję aplikacji UDP.
 
-Korzystając z [reguł równoważenia obciążenia porty wysokiej dostępności](load-balancer-ha-ports-overview.md) z [Standard Load Balancer](load-balancer-standard-overview.md), wszystkie porty są równoważeniem obciążenia i odpowiedzi sondy kondycji jednego muszą odzwierciedlać stan całego wystąpienia.
+W przypadku używania [portów ha zasad równoważenia obciążenia](load-balancer-ha-ports-overview.md) z [Usługa Load Balancer w warstwie Standardowa](load-balancer-standard-overview.md)wszystkie porty są zrównoważone obciążenie, a pojedyncza odpowiedź sondy kondycji musi odzwierciedlać stan całego wystąpienia.
 
-Tłumaczy lub serwera proxy sondę kondycji za pomocą wystąpienia, które odbiera sondy kondycji do innego wystąpienia w sieci wirtualnej, ponieważ ta konfiguracja może prowadzić do błędów kaskadowych w danym scenariuszu.  Rozważmy następujący scenariusz: zestawu urządzeń innej firmy jest wdrożona w puli zaplecza zasobu modułu równoważenia obciążenia w celu zapewnienia skalowalności i nadmiarowości dla urządzeń i sondy kondycji jest skonfigurowany do sondowania portu, serwery proxy urządzenia innych firm lub przekłada się maszynami wirtualnymi za urządzenie.  Jeśli badanie jest tego samego portu, którego używasz do tłumaczenia lub żądania serwera proxy dla innych maszyn wirtualnych za modułem urządzenia, sondy odpowiedzi od jednej maszyny wirtualnej za modułem urządzenia spowoduje oznaczenie urządzenia, sama martwe. Ta konfiguracja może prowadzić do awarii kaskadowych scenariusza całej aplikacji, w wyniku wystąpienia pojedynczego zaplecza za urządzenie.  Wyzwalacz może być awaria sporadyczne sondowania spowoduje, że moduł równoważenia obciążenia oznaczyć w dół do początkowego miejsca docelowego (wystąpienia urządzenia), która z kolei może wyłączyć scenariusz całej aplikacji. Zamiast tego sondy kondycji urządzenia, sam. Wybór sondowania, aby określić sygnał kondycji jest ważną kwestią sieci wirtualnych urządzeń sieciowych (WUS w) scenariuszach i należy zapoznać się z dostawcą aplikacji przygotujmy się sygnał kondycji odpowiednie w przypadku takich scenariuszy.
+Nie należy tłumaczyć ani proxy sondy kondycji za pomocą wystąpienia, które odbiera sondę kondycji z innym wystąpieniem w sieci wirtualnej, ponieważ ta konfiguracja może prowadzić do błędów kaskadowych w Twoim scenariuszu.  Rozważmy następujący scenariusz: zestaw urządzeń innych firm jest wdrażany w puli zaplecza zasobu Load Balancer w celu zapewnienia skalowalności i nadmiarowości dla urządzeń, a sonda kondycji jest skonfigurowana do sondowania portu, który jest używany przez serwery proxy urządzenia innej firmy lub tłumaczy na inne maszyny wirtualne znajdujące się za urządzeniem.  W przypadku sondowania tego samego portu, który jest używany do tłumaczenia lub żądania proxy na inne maszyny wirtualne za urządzeniem, Każda odpowiedź sondy z pojedynczej maszyny wirtualnej za urządzeniem spowoduje oznaczenie samego urządzenia jako nieaktywnego. Ta konfiguracja może prowadzić do niepowodzenia kaskadowego całego scenariusza aplikacji w wyniku pojedynczego wystąpienia zaplecza za urządzeniem.  Wyzwalacz może być sporadycznym błędem sondy, co spowoduje, że Load Balancer oznaczyć pierwotne miejsce docelowe (wystąpienie urządzenia) i z kolei może wyłączyć cały scenariusz aplikacji. Należy sondować kondycję samego urządzenia. Wybór sondy do określenia sygnału kondycji jest ważnym zagadnieniem dotyczącym scenariuszy sieciowych urządzeń wirtualnych (urządzenie WUS) i należy skontaktować się z dostawcą aplikacji w celu uzyskania odpowiedniego sygnału kondycji dla takich scenariuszy.
 
-Jeśli nie zezwalaj na [źródłowy adres IP](#probesource) sondy w zasadach zapory sonda kondycji nie powiedzie się nie można nawiązać połączenia z wystąpieniem usługi.  Z kolei modułu równoważenia obciążenia spowoduje oznaczenie dół wystąpienie usługi z powodu błędu sondy kondycji.  Ten błąd konfiguracji może spowodować scenariusz aplikacji równoważenia obciążenia nie powiedzie się.
+Jeśli nie zezwolisz na [źródłowy adres IP](#probesource) sondy w zasadach zapory, sonda kondycji zakończy się niepowodzeniem, ponieważ nie można nawiązać połączenia z wystąpieniem.  Z kolei modułu równoważenia obciążenia spowoduje oznaczenie dół wystąpienie usługi z powodu błędu sondy kondycji.  Ta niepowodzna konfiguracja może spowodować niepowodzenie scenariusza aplikacji ze zrównoważonym obciążeniem.
 
-Sondy kondycji modułu równoważenia obciążenia do oznaczania wystąpienia możesz **musi** zezwolić na ten adres IP na dowolnej platformie Azure [sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md) i zasady lokalne zapory.  Domyślnie co sieciowa grupa zabezpieczeń zawiera [tag usługi](../virtual-network/security-overview.md#service-tags) AzureLoadBalancer, aby zezwalać na ruch sondy kondycji.
+Aby można było oznaczyć wystąpienie Load Balancer sondy kondycji, **należy** zezwolić na ten adres IP w dowolnych [grupach zabezpieczeń sieci](../virtual-network/security-overview.md) platformy Azure i lokalnych zasadach zapory.  Domyślnie każda sieciowa Grupa zabezpieczeń zawiera [tag usługi](../virtual-network/security-overview.md#service-tags) AzureLoadBalancer, aby zezwolić na ruch sondy kondycji.
 
-Jeśli chcesz przetestować błędu sondy kondycji lub oznaczyć szczegółów poszczególnych wystąpień, możesz użyć [sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md) jawnie zablokować sondy kondycji (portu docelowego lub [źródłowy adres IP](#probesource)) i symulować Błąd sondy.
+Jeśli chcesz przetestować błąd sondy kondycji lub oznaczyć pojedyncze wystąpienie, możesz użyć [sieciowych grup zabezpieczeń](../virtual-network/security-overview.md) , aby jawnie zablokować sondę kondycji (port docelowy lub [źródłowy adres IP](#probesource)) i symulować awarię sondy.
 
-Nie należy konfigurować sieci wirtualnej z firmą Microsoft należące do zakresu adresów IP, który zawiera 168.63.129.16.  Takie konfiguracje będą kolidować z adresu IP sondy kondycji i może spowodować, że scenariusza nie powiedzie się.
+Nie należy konfigurować sieci wirtualnej z zakresem adresów IP należącym do firmy Microsoft, który zawiera 168.63.129.16.  Takie konfiguracje kolidują z adresem IP sondy kondycji i mogą spowodować niepowodzenie scenariusza.
 
-Jeśli masz wiele interfejsów na maszynie Wirtualnej, należy upewnić się, że możesz odpowiedzieć na sondę na interfejs, który zostało ono dostarczone licencjobiorcy na.  Konieczne może być Sieć źródłowa adres tłumaczą ten adres na maszynie Wirtualnej na podstawie poszczególnych interfejsu.
+Jeśli masz wiele interfejsów na maszynie Wirtualnej, należy upewnić się, że możesz odpowiedzieć na sondę na interfejs, który zostało ono dostarczone licencjobiorcy na.  Może być konieczne założenie, że adres sieciowy będzie przetłumaczyć ten adres na maszynę wirtualną dla poszczególnych interfejsów.
 
-Nie włączaj [sygnatury czasowe TCP](https://tools.ietf.org/html/rfc1323).  Włączenie protokołu TCP sygnatur czasowych spowoduje, że sondy kondycji zakończyć się niepowodzeniem z powodu pakiety TCP pomijanego przez gościa maszyny Wirtualnej dotyczącą stosu TCP systemu operacyjnego, co skutkuje oznaczanie szczegółów odpowiedniego punktu końcowego modułu równoważenia obciążenia.  Sygnatury czasowe TCP rutynowo są włączone domyślnie w systemie zabezpieczeń wzmocnione obrazy maszyn wirtualnych i musi zostać wyłączona.
+Nie włączaj [sygnatur czasowych protokołu TCP](https://tools.ietf.org/html/rfc1323).  Włączenie sygnatur czasowych protokołu TCP spowoduje, że sondy kondycji zakończą się niepowodzeniem z powodu porzucenia pakietów TCP przez stos TCP systemu operacyjnego gościa maszyny wirtualnej, co powoduje Load Balancer oznaczania odpowiednich punktów końcowych.  Sygnatury czasowe protokołu TCP są rutynowo włączane domyślnie w obrazach maszyny wirtualnej z zaostrzonymi zabezpieczeniami i muszą zostać wyłączone.
 
 ## <a name="monitoring"></a>Monitorowanie
 
-Zarówno public i internal [Balancer w warstwie standardowa](load-balancer-standard-overview.md) uwidocznić na stan sondy kondycji wystąpienie punktu końcowego i wewnętrznej bazy danych jako metryk wielowymiarowych za pomocą usługi Azure Monitor. Metryki te mogą być używane przez inne usługi platformy Azure lub aplikacje partnerów. 
+Zarówno public i internal [Balancer w warstwie standardowa](load-balancer-standard-overview.md) uwidocznić na stan sondy kondycji wystąpienie punktu końcowego i wewnętrznej bazy danych jako metryk wielowymiarowych za pomocą usługi Azure Monitor. Te metryki mogą być używane przez inne usługi platformy Azure lub Aplikacje partnerskie. 
 
-Podstawowe publicznej usługi Load Balancer udostępnia podsumowywane na pulę zaplecza przy użyciu dzienników usługi Azure Monitor stanu sondy kondycji.  Dzienniki platformy Azure Monitor nie są dostępne dla wewnętrznych modułów równoważenia obciążenia podstawowe.  Możesz użyć [dzienniki usługi Azure Monitor](load-balancer-monitor-log.md) można sprawdzić stanu zdrowia sondy modułu równoważenia obciążenia publiczny i sondowania count. Rejestrowanie może służyć za pomocą usługi Power BI lub usługi Azure Operational Insights umożliwia statystyki dotyczące stanu kondycji modułu równoważenia obciążenia.
+Podstawowa Publiczna Load Balancer udostępnia stan sondy kondycji podsumowany dla puli zaplecza za pośrednictwem dzienników Azure Monitor.  Dzienniki Azure Monitor nie są dostępne dla wewnętrznych podstawowych modułów równoważenia obciążenia.  Możesz użyć [dzienników Azure monitor](load-balancer-monitor-log.md) , aby sprawdzić stan kondycji sondowania publicznego modułu równoważenia obciążenia i liczbę sond. Rejestrowanie może służyć za pomocą usługi Power BI lub usługi Azure Operational Insights umożliwia statystyki dotyczące stanu kondycji modułu równoważenia obciążenia.
 
 ## <a name="limitations"></a>Ograniczenia
 
 - Sondy protokołu HTTPS nie obsługują wzajemnego uwierzytelniania przy użyciu certyfikatu klienta.
-- Sondy kondycji zakończy się niepowodzeniem, gdy włączone są sygnatury czasowe TCP.
+- Sondy kondycji zakończą się niepowodzeniem, gdy są włączone sygnatury czasowe protokołu TCP.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o [usłudze Load Balancer w warstwie Standardowa](load-balancer-standard-overview.md)
 - [Wprowadzenie do tworzenia publicznego modułu równoważenia obciążenia w usłudze Resource Manager przy użyciu programu PowerShell](load-balancer-get-started-internet-arm-ps.md)

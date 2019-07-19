@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: wyodrębnianie tekstu odręcznego — JavaScript'
+title: 'Szybki start: Wyodrębnij tekst drukowany i napisany ręcznie — REST, JavaScript'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku Szybki start wyodrębnisz z obrazu tekst odręczny przy użyciu interfejsu API przetwarzania obrazów i języka JavaScript.
+description: W tym przewodniku szybki start wyodrębnisz drukowany i odręczny tekst z obrazu przy użyciu interfejs API przetwarzania obrazów z JavaScript.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,25 +11,25 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: f4e627286f6a32816eafa84e860cb8eb49111f67
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 42bb85b5dfab6c9799d89ff92ab5e5b3c0230019
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604341"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311987"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>Szybki start: Wyodrębnianie tekstu odręcznego za pomocą interfejsu REST API przetwarzania obrazów i JavaScript
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>Szybki start: Wyodrębnij tekst drukowany i odręczny przy użyciu interfejsu API REST przetwarzanie obrazów i języka JavaScript
 
-W tym przewodniku Szybki start wyodrębnisz tekst odręczny z obrazu przy użyciu interfejsu API REST przetwarzania obrazów. Za pomocą [odczytu wsadowego](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) interfejsu API i [wynik operacji odczytu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) interfejsu API, można wykryć tekstu odręcznego na obrazie, a następnie Wyodrębnij rozpoznane znaki do strumienia znaków, można używać maszyny.
+W tym przewodniku szybki start wyodrębnisz drukowany i/lub odręczny tekst z obrazu za pomocą interfejsu API REST przetwarzanie obrazów. Przy użyciu metod operacji odczytu i [odczytu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) [partii](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) możesz wykryć tekst w obrazie i wyodrębnić rozpoznane znaki do strumienia znaków, który można odczytać. Interfejs API określi model rozpoznawania, który ma być używany dla każdego wiersza tekstu, aby obsługiwał obrazy zarówno w postaci tekstu, jak i w postaci odręcznej.
 
 > [!IMPORTANT]
-> W odróżnieniu od [optyczne rozpoznawanie znaków](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) metody [odczytu wsadowego](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) metody jest uruchamiane asynchronicznie. Ta metoda nie zwraca żadnych informacji w treści pomyślnej odpowiedzi. Zamiast tego metody odczytu wsadowego zwraca identyfikator URI w wartości `Operation-Content` pole nagłówka odpowiedzi. Następnie możesz wywołać ten identyfikator URI, który reprezentuje [wynik operacji odczytu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) metody, aby sprawdzić stan i zwracają wyniki wywołania metody odczytu wsadowego.
+> W przeciwieństwie do metody [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) Metoda [odczytywania wsadowego](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) jest uruchamiana asynchronicznie. Ta metoda nie zwraca żadnych informacji w treści pomyślnej odpowiedzi. Zamiast tego metoda odczytywania wsadowego zwraca identyfikator URI w wartości `Operation-Content` pola nagłówka odpowiedzi. Następnie można wywołać ten identyfikator URI, który reprezentuje metodę [odczytu wynik operacji](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) , aby sprawdzić stan i zwrócić wyniki wywołania metody odczytu wsadowego.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Możesz uzyskać bezpłatnej wersji próbnej klucza z [spróbuj usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub, postępuj zgodnie z instrukcjami w [Tworzenie konta usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) subskrybować przetwarzania obrazów, i Uzyskaj klucz.
+Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Możesz uzyskać bezpłatny klucz wersji próbnej z usługi [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować przetwarzanie obrazów i uzyskać klucz.
 
 ## <a name="create-and-run-the-sample"></a>Tworzenie i uruchamianie przykładowego kodu
 
@@ -38,9 +38,9 @@ Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 1. Skopiuj następujący kod do edytora tekstów.
 1. W razie potrzeby wprowadź następujące zmiany w kodzie:
     1. Zastąp wartość `subscriptionKey` kluczem subskrypcji.
-    1. Zastąp wartość `uriBase` przy użyciu adresu URL punktu końcowego dla [odczytu wsadowego](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) metody z regionu platformy Azure, gdzie uzyskać klucze subskrypcji, jeśli to konieczne.
-    1. Opcjonalnie zastąp wartość atrybutu `value` kontrolki `inputImage` adresem URL innego obrazu, z którego chcesz wyodrębnić tekst odręczny.
-1. Zapisz kod jako plik z rozszerzeniem `.html`. Na przykład `get-handwriting.html`.
+    1. Zastąp wartość wartością `uriBase` z adresem URL punktu końcowego dla metody [odczytu partii](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) z regionu platformy Azure, w którym zostały uzyskane klucze subskrypcji, w razie potrzeby.
+    1. Opcjonalnie należy zamienić wartość `value` atrybutu `inputImage` dla formantu na adres URL innego obrazu, z którego ma zostać wyodrębniony tekst.
+1. Zapisz kod jako plik z rozszerzeniem `.html`. Na przykład `get-text.html`.
 1. Otwórz okno przeglądarki.
 1. W przeglądarce przeciągnij plik i upuść go w oknie przeglądarki.
 1. Po wyświetleniu strony sieci Web w przeglądarce wybierz przycisk **Read image** (Odczytaj obraz).
@@ -49,7 +49,7 @@ Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Handwriting Sample</title>
+    <title>Text Recognition Sample</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 </head>
 <body>
@@ -99,10 +99,10 @@ Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 
         .done(function(data, textStatus, jqXHR) {
             // Show progress.
-            $("#responseTextArea").val("Handwritten text submitted. " +
+            $("#responseTextArea").val("Text submitted. " +
                 "Waiting 10 seconds to retrieve the recognized text.");
 
-            // Note: The response may not be immediately available. Handwriting
+            // Note: The response may not be immediately available. Text
             // recognition is an asynchronous operation that can take a variable
             // amount of time depending on the length of the text you want to
             // recognize. You may need to wait or retry the GET operation.
@@ -160,8 +160,8 @@ Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
         });
     };
 </script>
-<h1>Read handwritten image:</h1>
-Enter the URL to an image of handwritten text, then click
+<h1>Read text from image:</h1>
+Enter the URL to an image of text, then click
 the <strong>Read image</strong> button.
 <br><br>
 Image to read:

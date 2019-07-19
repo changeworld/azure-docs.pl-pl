@@ -1,37 +1,38 @@
 ---
-title: Przewodnik Szybki Start — zdarzenia wysyłania usługi Azure Container Registry do usługi Event Grid
-description: W tym przewodniku Szybki Start Włącz zdarzeń usługi Event Grid dla usługi container registry, Wyślij wypychania obraz kontenera i Usuń zdarzenia do przykładowej aplikacji.
+title: Szybki Start — wysyłanie zdarzeń Azure Container Registry do Event Grid
+description: W tym przewodniku szybki start włączasz zdarzenia Event Grid dla rejestru kontenerów, a następnie wysyłamy zdarzenia wypychania i usuwania obrazu kontenera do aplikacji przykładowej.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: danlep
 ms.custom: seodec18
-ms.openlocfilehash: f5c075942a29968ea57c684cd817e578df951989
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 49ee9a7f12601b0d93e320ab797be4a1ada41c04
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60427695"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309796"
 ---
-# <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Szybki start: Wysyłanie zdarzeń z prywatnego rejestru kontenerów do usługi Event Grid
+# <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Szybki start: Wysyłaj zdarzenia z rejestru kontenerów prywatnych do Event Grid
 
-Azure Event Grid to w pełni zarządzanej usługi routingu zdarzeń, która umożliwia ujednolicone używanie zdarzeń przy użyciu funkcji publikowania-subskrypcji modelu. Tworzenie rejestru kontenerów, subskrybowanie zdarzeń rejestru, a następnie wdrożysz przykładową aplikację sieci web do odbierania zdarzeń, w tym przewodniku Szybki Start Użyj wiersza polecenia platformy Azure. Na koniec możesz wyzwolić obraz kontenera `push` i `delete` zdarzeń i widok ładunek zdarzenia w przykładowej aplikacji.
+Azure Event Grid to w pełni zarządzana usługa routingu zdarzeń, która zapewnia jednorodne użycie zdarzeń przy użyciu modelu publikowania/subskrybowania. W tym przewodniku szybki start utworzysz rejestr kontenerów za pomocą interfejsu wiersza polecenia platformy Azure, zasubskrybujesz zdarzenia rejestru, a następnie wdrożono przykładową aplikację sieci Web do odbierania zdarzeń. Na koniec Wyzwalasz obraz `push` kontenera i `delete` zdarzenia i wyświetlasz ładunek zdarzenia w przykładowej aplikacji.
 
-Po wykonaniu kroków opisanych w tym artykule, w przykładowej aplikacji sieci web wyświetlane są zdarzenia wysyłane z usługi container registry do usługi Event Grid:
+Po wykonaniu kroków opisanych w tym artykule zdarzenia wysyłane z rejestru kontenerów do Event Grid są wyświetlane w przykładowej aplikacji sieci Web:
 
-![Przeglądarki sieci Web, renderowanie przykładowej aplikacji sieci web z trzema odebranych zdarzeń.][sample-app-01]
+![Przeglądarka sieci Web renderuje przykładową aplikację internetową przy użyciu trzech odebranych zdarzeń][sample-app-01]
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto][azure-account].
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Polecenia wiersza polecenia platformy Azure, w tym artykule są sformatowane, aby **Bash** powłoki. Jeśli używasz innego powłoki, takich jak program PowerShell lub wierszu polecenia, może być konieczne odpowiednio dostosować znaki kontynuacji wiersza lub przypisanie zmiennej wierszy. W tym artykule używa zmiennych, aby zminimalizować ilość polecenia edycji wymagane.
+Polecenie interfejsu wiersza polecenia platformy Azure w tym artykule jest sformatowane dla powłoki **bash** . Jeśli używasz innej powłoki, na przykład programu PowerShell lub wiersza polecenia, konieczne może być odpowiednio dostosowanie wierszy kontynuacji wiersza lub zmiennych przypisanie. W tym artykule zastosowano zmienne, aby zminimalizować ilość wymagane do edycji poleceń.
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Grupę zasobów platformy Azure to logiczny kontener, w którym wdrażania i zarządzania zasobami platformy Azure. Następujące [Tworzenie grupy az] [ az-group-create] polecenie tworzy grupę zasobów o nazwie *myResourceGroup* w *eastus* regionu. Jeśli chcesz użyć innej nazwy grupy zasobów, ustaw `RESOURCE_GROUP_NAME` na inną wartość.
+Grupa zasobów platformy Azure to logiczny kontener służący do wdrażania zasobów platformy Azure i zarządzania nimi. Następujące polecenie [AZ Group Create][az-group-create] tworzy grupę zasobów o nazwie Moja *resourceName* w regionie *wschodnim* . Jeśli chcesz użyć innej nazwy dla grupy zasobów, ustaw `RESOURCE_GROUP_NAME` inną wartość.
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=myResourceGroup
@@ -41,7 +42,7 @@ az group create --name $RESOURCE_GROUP_NAME --location eastus
 
 ## <a name="create-a-container-registry"></a>Tworzenie rejestru kontenerów
 
-Następnie Wdróż rejestru kontenerów w grupie zasobów za pomocą następujących poleceń. Przed uruchomieniem [tworzenie az acr] [ az-acr-create] polecenia, należy ustawić `ACR_NAME` nazwy dla rejestru. Nazwa musi być unikatowa w obrębie platformy Azure i jest ograniczona do 5 do 50 znaków alfanumerycznych.
+Następnie wdróż rejestr kontenerów w grupie zasobów przy użyciu następujących poleceń. Przed uruchomieniem polecenia [AZ ACR Create][az-acr-create] Ustaw `ACR_NAME` jako nazwę rejestru. Nazwa musi być unikatowa w ramach platformy Azure i jest ograniczona do 5-50 znaków alfanumerycznych.
 
 ```azurecli-interactive
 ACR_NAME=<acrName>
@@ -73,11 +74,11 @@ Po utworzeniu rejestru interfejs wiersza polecenia platformy Azure zwraca dane w
 
 ```
 
-## <a name="create-an-event-endpoint"></a>Tworzenie punktu końcowego zdarzeń
+## <a name="create-an-event-endpoint"></a>Tworzenie punktu końcowego zdarzenia
 
-W tej sekcji używasz szablon usługi Resource Manager znajduje się w repozytorium GitHub do wdrożenia aplikacji sieci web wstępnie utworzonych przykładowych w usłudze Azure App Service. Później subskrybowanie zdarzeń usługi Event Grid w rejestrze i określić tę aplikację jako punkt końcowy, do którego są wysyłane zdarzenia.
+W tej sekcji użyjesz szablonu Menedżer zasobów znajdującego się w repozytorium GitHub do wdrożenia wstępnie skompilowanej przykładowej aplikacji sieci Web do Azure App Service. Później można subskrybować zdarzenia Event Grid w rejestrze i określić tę aplikację jako punkt końcowy, do którego są wysyłane zdarzenia.
 
-Aby wdrożyć przykładową aplikację, należy ustawić `SITE_NAME` na unikatową nazwę aplikacji sieci web, a następnie wykonaj następujące polecenia. Nazwa witryny musi być unikatowa na platformie Azure, ponieważ stanowi ona część w pełni kwalifikowana nazwa domeny (FQDN) aplikacji sieci web. W dalszej części tego tematu przejdź do nazwy FQDN aplikacji w przeglądarce sieci web do wyświetlania zdarzeń w rejestrze.
+Aby wdrożyć przykładową aplikację, ustaw `SITE_NAME` jako unikatową nazwę aplikacji sieci Web i wykonaj następujące polecenia. Nazwa witryny musi być unikatowa w ramach platformy Azure, ponieważ stanowi część w pełni kwalifikowanej nazwy domeny (FQDN) aplikacji sieci Web. W dalszej części możesz przejść do nazwy FQDN aplikacji w przeglądarce sieci Web, aby wyświetlić zdarzenia rejestru.
 
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
@@ -88,19 +89,19 @@ az group deployment create \
     --parameters siteName=$SITE_NAME hostingPlanName=$SITE_NAME-plan
 ```
 
-Po pomyślnym wdrożeniu (może upłynąć kilka minut), otwórz przeglądarkę i przejdź do aplikacji sieci web, aby upewnić się, że jest uruchomiona:
+Gdy wdrożenie zakończyło się pomyślnie (może to potrwać kilka minut), Otwórz przeglądarkę i przejdź do aplikacji sieci Web, aby upewnić się, że jest uruchomiona:
 
 `http://<your-site-name>.azurewebsites.net`
 
-Powinny zostać wyświetlone przykładową aplikację, renderowane przy użyciu wyświetlane nie komunikaty o zdarzeniach:
+Powinna zostać wyświetlona Przykładowa aplikacja renderowana bez wyświetlonych komunikatów o zdarzeniach:
 
-![W sieci Web przeglądarce przedstawiający przykładową aplikację sieci web za pomocą żadne zdarzenia wyświetlane][sample-app-02]
+![Przeglądarka sieci Web przedstawiająca przykładową aplikację internetową bez wyświetlania zdarzeń][sample-app-02]
 
 [!INCLUDE [event-grid-register-provider-cli.md](../../includes/event-grid-register-provider-cli.md)]
 
-## <a name="subscribe-to-registry-events"></a>Subskrybowanie do zdarzeń rejestru
+## <a name="subscribe-to-registry-events"></a>Subskrybowanie zdarzeń rejestru
 
-W usłudze Event Grid, możesz zasubskrybować *tematu* stwierdzenie, które zdarzenia chcesz śledzić i gdzie można je wysłać. Następujące [Tworzenie subskrypcji zdarzeń az eventgrid] [ az-eventgrid-event-subscription-create] polecenia subskrybuje rejestru kontenerów, utworzono i określa adres URL aplikacji sieci web jako punkt końcowy, do którego jest w stanie wysyłać zdarzenia. Zmienne środowiskowe, które wypełnione we wcześniejszych sekcjach są używane w tym miejscu ponownie, więc zmiany nie są wymagane
+W Event Grid zasubskrybujesz *temat* , który ma poinformowanie o zdarzeniach, które chcesz śledzić, i o tym, gdzie je wysłać. Następujące polecenie [AZ eventgrid Event-Subscription Create][az-eventgrid-event-subscription-create] subskrybuje utworzony rejestr kontenerów i określa adres URL aplikacji sieci Web jako punkt końcowy, do którego powinny wysyłać zdarzenia. Zmienne środowiskowe, które zostały wypełnione we wcześniejszych sekcjach, są ponownie używane w tym miejscu, dlatego nie są wymagane żadne zmiany.
 
 ```azurecli-interactive
 ACR_REGISTRY_ID=$(az acr show --name $ACR_NAME --query id --output tsv)
@@ -112,7 +113,7 @@ az eventgrid event-subscription create \
     --endpoint $APP_ENDPOINT
 ```
 
-Po zakończeniu subskrypcji, powinny pojawić się dane wyjściowe podobne do następujących:
+Po zakończeniu subskrypcji powinny zostać wyświetlone dane wyjściowe podobne do następujących:
 
 ```JSON
 {
@@ -139,19 +140,19 @@ Po zakończeniu subskrypcji, powinny pojawić się dane wyjściowe podobne do na
 }
 ```
 
-## <a name="trigger-registry-events"></a>Wyzwalacz zdarzenia rejestru
+## <a name="trigger-registry-events"></a>Wyzwalanie zdarzeń rejestru
 
-Przykładowa aplikacja jest włączony i uruchomiony i że zasubskrybował w rejestrze, korzystając z usługi Event Grid, możesz generować niektóre zdarzenia. W tej sekcji używasz zadań usługi ACR do tworzenia i wypchniesz obraz kontenera do rejestru. Zadania usługi ACR jest funkcją usługi Azure Container Registry, która pozwala na tworzenie obrazów kontenerów w chmurze, bez konieczności aparat platformy Docker zainstalowany na komputerze lokalnym.
+Teraz, gdy Przykładowa aplikacja jest uruchomiona i subskrybujesz rejestr za pomocą Event Grid, możesz wygenerować niektóre zdarzenia. W tej sekcji użyjesz zadań ACR do kompilowania i wypychania obrazu kontenera do rejestru. ACR Tasks to funkcja Azure Container Registry, która umożliwia tworzenie obrazów kontenerów w chmurze bez konieczności instalowania aparatu platformy Docker na komputerze lokalnym.
 
-### <a name="build-and-push-image"></a>Zbuduj i Wypchnij obraz
+### <a name="build-and-push-image"></a>Kompilowanie i wypychanie obrazu
 
-Wykonaj następujące polecenie interfejsu wiersza polecenia platformy Azure, aby utworzyć obraz kontenera z zawartości repozytorium GitHub. Domyślnie zadania ACR automatycznie wypycha dane pomyślnie skompilowany obraz do rejestru, która powoduje wygenerowanie `ImagePushed` zdarzeń.
+Wykonaj następujące polecenie interfejsu wiersza polecenia platformy Azure, aby skompilować obraz kontenera z zawartości repozytorium GitHub. Domyślnie zadania ACR automatycznie wypchnięcia pomyślnie skompilowanego obrazu do rejestru, co spowoduje wygenerowanie `ImagePushed` zdarzenia.
 
 ```azurecli-interactive
 az acr build --registry $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
 ```
 
-Dane wyjściowe powinny być podobne do następującego podczas ACR zadania kompilacji, a następnie wypycha obraz. Następujące przykładowe dane wyjściowe zostały obcięte w celu skrócenia programu.
+Dane wyjściowe powinny być podobne do następujących, podczas gdy ACR zadania kompilują i wypychają obraz. Następujące przykładowe dane wyjściowe zostały obcięte dla zwięzłości.
 
 ```console
 $ az acr build -r $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
@@ -168,13 +169,13 @@ Step 1/5 : FROM node:9-alpine
 ...
 ```
 
-Aby sprawdzić, czy skompilowany obraz w rejestrze, wykonaj następujące polecenie, aby wyświetlić tagi w repozytorium "myimage":
+Aby sprawdzić, czy skompilowany obraz znajduje się w rejestrze, wykonaj następujące polecenie, aby wyświetlić Tagi w repozytorium "Moje obrazy":
 
 ```azurecli-interactive
 az acr repository show-tags --name $ACR_NAME --repository myimage
 ```
 
-Tag "v1" obraz, który utworzoną powinna zostać wyświetlona w danych wyjściowych podobny do następującego:
+W danych wyjściowych powinien zostać wyświetlony tag "v1" tworzonego obrazu, podobny do następującego:
 
 ```console
 $ az acr repository show-tags --name $ACR_NAME --repository myimage
@@ -185,13 +186,13 @@ $ az acr repository show-tags --name $ACR_NAME --repository myimage
 
 ### <a name="delete-the-image"></a>Usuń obraz
 
-Teraz wygenerować `ImageDeleted` zdarzeń przez usunięcie obrazu z [az acr repozytorium delete] [ az-acr-repository-delete] polecenia:
+Teraz Wygeneruj `ImageDeleted` zdarzenie, usuwając obraz za pomocą polecenia [AZ ACR Repository Delete][az-acr-repository-delete] :
 
 ```azurecli-interactive
 az acr repository delete --name $ACR_NAME --image myimage:v1
 ```
 
-Dane wyjściowe podobne do następujących, powinny być monitowania o potwierdzenie usunięcia manifestu i skojarzone obrazy:
+Powinny pojawić się dane wyjściowe podobne do następujących, z prośbą o potwierdzenie usunięcia manifestu i skojarzonych obrazów:
 
 ```console
 $ az acr repository delete --name $ACR_NAME --image myimage:v1
@@ -199,38 +200,38 @@ This operation will delete the manifest 'sha256:f15fa9d0a69081ba93eee308b0e475a5
 Are you sure you want to continue? (y/n): y
 ```
 
-## <a name="view-registry-events"></a>Wyświetl zdarzenia dotyczące rejestru
+## <a name="view-registry-events"></a>Wyświetlanie zdarzeń rejestru
 
-Już teraz wypchnięto obraz do rejestru, a następnie usuwany go. Przejdź do aplikacji sieci web podglądu siatki zdarzeń i powinny być widoczne oba `ImageDeleted` i `ImagePushed` zdarzenia. Może być również wyświetlany subskrypcji zdarzeń sprawdzania poprawności, generowane przez wykonanie polecenia w [subskrybowanie zdarzeń rejestru](#subscribe-to-registry-events) sekcji.
+Teraz można wypchnąć obraz do rejestru, a następnie go usunąć. Przejdź do aplikacji sieci Web w przeglądarce Event Grid i zobacz oba `ImageDeleted` zdarzenia i. `ImagePushed` Możesz również zobaczyć zdarzenie weryfikacji subskrypcji wygenerowane przez wykonanie polecenia w sekcji subskrybowanie [zdarzeń rejestru](#subscribe-to-registry-events) .
 
-Poniższy zrzut ekranu przedstawia przykładową aplikację przy użyciu trzech zdarzeń i `ImageDeleted` zdarzenie zostanie rozszerzona, aby wyświetlić jego szczegóły.
+Poniższy zrzut ekranu przedstawia przykładową aplikację z trzema zdarzeniami, a `ImageDeleted` zdarzenie jest rozwinięte, aby wyświetlić jego szczegóły.
 
-![Przeglądarki sieci Web, przedstawiający przykładową aplikację przy użyciu zdarzenia ImagePushed i ImageDeleted][sample-app-03]
+![Przeglądarka sieci Web przedstawiająca przykładową aplikację ze zdarzeniami ImagePushed i ImageDeleted][sample-app-03]
 
-Gratulacje! Jeśli widzisz `ImagePushed` i `ImageDeleted` zdarzenia, rejestru wysyła zdarzenia do usługi Event Grid i przekazuje te zdarzenia do punktu końcowego usługi sieci web aplikacji usługi Event Grid.
+Gratulacje! Jeśli widzisz `ImagePushed` zdarzenia i `ImageDeleted` , rejestr wysyła zdarzenia do Event Grid, a Event Grid przekazuje te zdarzenia do punktu końcowego aplikacji sieci Web.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Po zakończeniu korzystania z zasobów utworzonych w tym przewodniku Szybki Start, możesz je usunąć wszystkie za pomocą następującego polecenia wiersza polecenia platformy Azure. Podczas usuwania grupy zasobów są wszystkie zasoby, zawartych w nim trwale usunięte.
+Po wykonaniu zasobów utworzonych w ramach tego przewodnika Szybki Start można je usunąć za pomocą poniższego polecenia platformy Azure. Po usunięciu grupy zasobów wszystkie zawarte w niej zasoby są trwale usuwane.
 
-**OSTRZEŻENIE**: Ta operacja jest nieodwracalna. Upewnij się, że nie są już potrzebne żadne zasoby w grupie przed uruchomieniem polecenia.
+**OSTRZEŻENIE**: Ta operacja jest nieodwracalna. Przed uruchomieniem polecenia upewnij się, że żaden z zasobów w grupie nie jest już potrzebny.
 
 ```azurecli-interactive
 az group delete --name $RESOURCE_GROUP_NAME
 ```
 
-## <a name="event-grid-event-schema"></a>Schemat zdarzeń siatki zdarzeń
+## <a name="event-grid-event-schema"></a>Schemat zdarzeń Event Grid
 
-Odwołanie do schematu komunikatów usługi Azure Container Registry zdarzenia można znaleźć w dokumentacji usługi Event Grid:
+Informacje o schemacie komunikatu o zdarzeniu Azure Container Registry można znaleźć w dokumentacji Event Grid:
 
-[Schemat zdarzeń Azure Event Grid dla rejestru kontenerów](../event-grid/event-schema-container-registry.md)
+[Schemat zdarzeń Azure Event Grid dla Container Registry](../event-grid/event-schema-container-registry.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki Start wdrożono rejestru kontenerów, utworzono obraz rekordu ACR zadania związane z, usunięty oraz użytych w rejestrze zdarzeń z usługi Event Grid, z przykładową aplikacją. Następnie przejdź do samouczka usługi ACR zadania do dalszych informacji na temat tworzenia obrazów kontenerów w chmurze, w tym zautomatyzowane kompilacje w aktualizacji obrazów podstawowych:
+W tym przewodniku szybki start wdrożono rejestr kontenerów, utworzono obraz z zadaniami ACR, usunięto go i wykorzystano zdarzenia rejestru z Event Grid z przykładową aplikacją. Następnie przejdź do samouczka ACR Tasks, aby dowiedzieć się więcej na temat tworzenia obrazów kontenerów w chmurze, w tym zautomatyzowanych kompilacji w ramach aktualizacji obrazu podstawowego:
 
 > [!div class="nextstepaction"]
-> [Kompilowanie obrazów kontenerów w chmurze za pomocą zadań usługi ACR](container-registry-tutorial-quick-task.md)
+> [Tworzenie obrazów kontenerów w chmurze za pomocą zadań ACR](container-registry-tutorial-quick-task.md)
 
 <!-- IMAGES -->
 [sample-app-01]: ./media/container-registry-event-grid-quickstart/sample-app-01.png

@@ -1,6 +1,6 @@
 ---
-title: Konfiguracje obciążeń SAP o strefy dostępności platformy Azure | Dokumentacja firmy Microsoft
-description: Architektura wysokiej dostępności i scenariusze SAP NetWeaver przy użyciu strefy dostępności platformy Azure
+title: Konfiguracje obciążeń SAP z Strefy dostępności platformy Azure | Microsoft Docs
+description: Architektura i scenariusze wysokiej dostępności dla oprogramowania SAP NetWeaver przy użyciu Strefy dostępności platformy Azure
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: msjuergent
@@ -14,171 +14,172 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/03/2019
+ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3772dbdc8582eea1b2eac368784878a8a36d34ad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ead1dfdce4bf3a803eee46a536dc7062626640d9
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62125322"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234236"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Konfiguracje obciążenia SAP ze strefami dostępności platformy Azure
-[Strefy dostępności platformy Azure](https://docs.microsoft.com/azure/availability-zones/az-overview) to jedna z funkcji wysokiej dostępności, zapewnianymi przez platformę Azure. Przy użyciu stref dostępności zwiększa ogólną dostępność obciążeń SAP na platformie Azure. Ta funkcja jest już dostępna w niektórych [regionów świadczenia usługi Azure](https://azure.microsoft.com/global-infrastructure/regions/). W przyszłości będzie on dostępny w większej liczbie regionów.
+[Strefy dostępności platformy Azure](https://docs.microsoft.com/azure/availability-zones/az-overview) to jedna z funkcji wysokiej dostępności udostępniana przez platformę Azure. Użycie Strefy dostępności zwiększa ogólną dostępność obciążeń SAP na platformie Azure. Ta funkcja jest już dostępna w niektórych [regionach świadczenia usługi Azure](https://azure.microsoft.com/global-infrastructure/regions/). W przyszłości będzie ona dostępna w większej liczbie regionów.
 
-Podstawowa architektura wysokiej dostępności SAP pokazano na tym rysunku:
+Ta ilustracja przedstawia podstawową architekturę rozwiązania SAP High Availability:
 
-![Konfiguracja standardowa wysokiej dostępności](./media/sap-ha-availability-zones/standard-ha-config.png)
+![Standardowa konfiguracja wysokiej dostępności](./media/sap-ha-availability-zones/standard-ha-config.png)
 
-Warstwa aplikacji SAP jest wdrażana na platformie Azure w jeden [zestaw dostępności](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability). Aby zapewnić wysoką dostępność usług SAP Central Services można wdrożyć dwóch maszyn wirtualnych w osobnym zestawie dostępności. Jako platforma o wysokiej dostępności za pomocą automatycznej pracy awaryjnej w przypadku infrastruktury ani oprogramowania, problem, należy użyć klastra trybu Failover w systemie Windows Server lub program Pacemaker (Linux). Aby dowiedzieć się więcej na temat tych wdrożeń, zobacz:
+Warstwa aplikacji SAP jest wdrażana w ramach jednego [zestawu dostępności](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)platformy Azure. Aby zapewnić wysoką dostępność usług SAP Central, można wdrożyć dwie maszyny wirtualne w osobnym zestawie dostępności. Użyj usługi Windows Server Failover Clustering lub Pacemaker (Linux) jako platformy wysokiej dostępności z automatyczną obsługą trybu failover w przypadku wystąpienia problemu dotyczącego infrastruktury lub oprogramowania. Aby dowiedzieć się więcej o tych wdrożeniach, zobacz:
 
-- [Klaster wystąpienie SAP ASCS/SCS na klastrze pracy awaryjnej Windows przy użyciu udostępnionego dysku klastra](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
-- [Klaster wystąpienie SAP ASCS/SCS na klastrze pracy awaryjnej Windows przy użyciu udziału plików](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share)
-- [Wysoka dostępność środowiska SAP NetWeaver na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server dla aplikacji SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)
-- [Azure maszyny wirtualne wysokiej dostępności dla oprogramowania SAP NetWeaver w systemie Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)
+- [Klastrowanie wystąpienia SAP ASCS/SCS w klastrze trybu failover systemu Windows przy użyciu udostępnionego dysku klastra](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
+- [Klastrowanie wystąpienia SAP ASCS/SCS w klastrze trybu failover systemu Windows przy użyciu udziału plików](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share)
+- [Wysoka dostępność dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server dla aplikacji SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)
+- [Platforma Azure Virtual Machines wysoka dostępność dla oprogramowania SAP NetWeaver na Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)
 
-Podobną architekturę ma zastosowanie do warstwy system DBMS oprogramowanie SAP NetWeaver, S/4HANA lub Hybris systemów. Możesz wdrożyć warstwy system DBMS w trybie aktywny/pasywny z rozwiązań klastrowych trybu failover, aby zapewnić ochronę przed awarią infrastruktury ani oprogramowania. Rozwiązanie klastra trybu failover może być specyficzne dla systemu DBMS framework trybu failover systemu Windows Server Failover Clustering i program Pacemaker.
+Podobna architektura dotyczy warstwy DBMS systemów SAP NetWeaver, S/4HANA i Hybris. Warstwę DBMS można wdrożyć w trybie aktywny/pasywny z rozwiązaniem klastra trybu failover w celu ochrony przed awariami infrastruktury lub oprogramowania. Rozwiązanie klastra trybu failover może być strukturą trybu failover specyficzną dla systemu DBMS, klastrem trybu failover z systemem Windows Server lub Pacemaker.
 
-Aby wdrożyć taką samą architekturę przy użyciu strefy dostępności platformy Azure, musisz wprowadzić pewne zmiany na architekturę opisane wcześniej. W tym artykule opisano te zmiany.
+Aby wdrożyć tę samą architekturę przy użyciu Strefy dostępności platformy Azure, należy wprowadzić pewne zmiany w architekturze opisane wcześniej. W tym artykule opisano te zmiany.
 
-## <a name="considerations-for-deploying-across-availability-zones"></a>Zagadnienia dotyczące wdrażania w różnych strefach dostępności
-
-
-Gdy używasz strefy dostępności, należy wziąć pod uwagę następujące czynności:
-
-- Nie ma żadnych gwarancji dotyczących odległości między różnych strefach dostępności w obrębie regionu platformy Azure.
-- Strefy dostępności nie są idealnym rozwiązaniem odzyskiwania po awarii. Klęskami żywiołowymi może spowodować zniszczenia w świecie regionów, w tym duże uszkodzenia infrastruktury w programie power. Odległości między różnymi strefami może nie być wystarczająco duży, aby stanowić odpowiednie rozwiązanie odzyskiwania po awarii.
-- Opóźnienie sieci w różnych strefach dostępności nie jest taka sama we wszystkich regionach platformy Azure. W niektórych przypadkach możesz wdrażać i uruchamiać warstwie aplikacji SAP w różnych strefach, ponieważ opóźnienia sieci z jedną strefę do aktywnej maszyny Wirtualnej systemu DBMS jest dopuszczalna. Jednak w niektórych regionach platformy Azure, opóźnienie między aktywnej maszyny Wirtualnej systemu DBMS i wystąpienia aplikacji SAP, podczas wdrażania w różnych strefach, może nie być możliwa do procesów biznesowych SAP. W takich przypadkach architektura wdrożenia powinien być inny, za pomocą architektury aktywny/aktywny dla aplikacji lub architekturę aktywny/pasywny, gdzie jest zbyt duże opóźnienie sieci między strefami.
-- Podejmując decyzję o korzystać ze stref dostępności, oparty na decyzję dotyczącą opóźnienie sieci między strefą. Opóźnienie sieci odgrywa ważną rolę w dwóch obszarach:
-    - Opóźnienie między dwoma wystąpieniami systemu DBMS, które muszą mieć Replikacja synchroniczna. Im wyższa opóźnienia sieci, tym bardziej prawdopodobne będzie miało wpływ na skalowalność obciążenia.
-    - Różnią się w opóźnienia sieci maszyny Wirtualnej z systemem SAP okna dialogowego wystąpienia w strefie przy użyciu aktywnego wystąpienia systemu DBMS i podobne maszyny Wirtualnej w innej strefie. W miarę zwiększania różnica ta wpływ na czas wykonywania procesów biznesowych i partii zadań również zwiększa zależy od tego, czy działają w strefie z bazami danych lub w innej strefie.
-
-W przypadku wdrażania maszyn wirtualnych platformy Azure w strefach dostępności i ustanowić w tym samym regionie platformy Azure przy użyciu rozwiązania pracy awaryjnej, obowiązują pewne ograniczenia:
-
-- Należy użyć [usługi Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) podczas wdrażania strefy dostępności platformy Azure. 
-- Mapowanie wyliczenia strefy dla stref fizycznych jest ustalana na podstawie subskrypcji platformy Azure. Jeśli używasz różnych subskrypcji do wdrażania systemów SAP, musisz zdefiniować stref idealne rozwiązanie dla każdej subskrypcji.
-- Nie można wdrożyć zestawy dostępności platformy Azure w ramach strefy dostępności platformy Azure. Wybierz jednego lub drugiego jako struktura wdrożenia dla maszyn wirtualnych.
-- Nie można użyć [podstawowa usługi Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) tworzenia rozwiązań klastrów opartych na systemie Windows Server Failover Clustering lub program Pacemaker w systemie Linux, trybu failover. Zamiast tego należy użyć [standardowy SKU modułu równoważenia obciążenia Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones).
+## <a name="considerations-for-deploying-across-availability-zones"></a>Zagadnienia dotyczące wdrażania między Strefy dostępności
 
 
+Korzystając z Strefy dostępności, należy wziąć pod uwagę następujące kwestie:
 
-## <a name="the-ideal-availability-zones-combination"></a>Idealne połączenie strefy dostępności
-Zanim zdecydujesz, jak korzystać ze stref dostępności, należy określić:
+- Nie ma żadnych gwarancji dotyczących odległości między różnymi Strefy dostępności w regionie świadczenia usługi Azure.
+- Strefy dostępności nie są idealnym rozwiązaniem odzyskiwania po awarii. Naturalne katastrofy mogą spowodować rozległe szkody w regionach świata, w tym duże szkody związane z infrastrukturą elektryczną. Odległości między różnymi strefami mogą nie być wystarczająco duże, aby stworzyć odpowiednie rozwiązanie DR.
+- Opóźnienie sieci w Strefy dostępności nie jest takie samo we wszystkich regionach świadczenia usługi Azure. W niektórych przypadkach można wdrożyć i uruchomić warstwę aplikacji SAP w różnych strefach, ponieważ opóźnienie sieci z jednej strefy do aktywnej maszyny wirtualnej systemu DBMS jest dopuszczalne. Jednak w niektórych regionach świadczenia usługi Azure opóźnienie między aktywną maszyną wirtualną DBMS a wystąpieniem aplikacji SAP w przypadku wdrożenia w różnych strefach może nie być akceptowalne dla procesów firmy SAP Business. W takich przypadkach architektura wdrożenia musi być inna, z aktywną/aktywną architekturą aplikacji lub aktywną/pasywną architekturą, w której opóźnienie sieci między strefami jest zbyt wysokie.
+- Podczas decydowania, gdzie należy używać Strefy dostępności, należy oprzeć swoją decyzję o opóźnieniu sieci między strefami. Opóźnienie sieci odgrywa ważną rolę w dwóch obszarach:
+    - Opóźnienie między dwoma wystąpieniami systemu DBMS, które muszą mieć replikację synchroniczną. Im wyższe opóźnienie sieci, tym bardziej prawdopodobnie będzie to miało wpływ na skalowalność obciążenia.
+    - Różnica w opóźnieniu sieci między maszyną wirtualną z uruchomionym wystąpieniem okna dialogowego SAP a aktywnym wystąpieniem DBMS i podobną maszyną wirtualną w innej strefie. W miarę wzrostu tej różnicy wpływ na czas działania procesów biznesowych i zadań wsadowych rośnie również, zależnie od tego, czy są one uruchamiane w strefie w systemie DBMS, czy w innej strefie.
 
-- Opóźnienie sieci między trzy strefy region platformy Azure. Spowoduje to włączenie można wybrać strefy z najniższych opóźnieniem sieci międzystrefowego ruchu w sieci.
-- Różnica między opóźnienia maszyny Wirtualnej do maszyny Wirtualnej w ramach jednej ze stref, wybrane i opóźnienie sieci w dwóch strefach wybrane.
-- Określenie tego, czy typy maszyn wirtualnych, które są potrzebne do wdrożenia są dostępne w dwóch strefach, które zostały wybrane. Przy użyciu maszyn wirtualnych, szczególnie maszyny wirtualne serii M, mogą wystąpić sytuacje, w których niektórych jednostek SKU są dostępne w dwóch trzy strefy.
+Podczas wdrażania maszyn wirtualnych platformy Azure w ramach Strefy dostępności i ustanowienia rozwiązań trybu failover w tym samym regionie świadczenia usługi Azure obowiązują pewne ograniczenia:
 
-## <a name="network-latency-between-and-within-zones"></a>Opóźnienie sieci między oraz w obrębie strefy
-Aby określić opóźnienie między różnymi strefami, należy:
+- Podczas wdrażania programu do Strefy dostępności platformy Azure należy użyć [usługi Azure Managed disks](https://azure.microsoft.com/services/managed-disks/) . 
+- Mapowanie wyliczeń stref na strefy fizyczne zostało rozwiązane w oparciu o subskrypcję platformy Azure. Jeśli używasz różnych subskrypcji do wdrażania systemów SAP, musisz zdefiniować idealne strefy dla każdej subskrypcji.
+- Zestawów dostępności platformy Azure nie można wdrażać w ramach strefy dostępności platformy Azure, chyba że zostanie użyta [Grupa umieszczania usługi Azure zbliżeniowe](https://docs.microsoft.com/azure/virtual-machines/linux/co-location). Sposób wdrażania warstwy systemu SAP DBMS i centralnych usług w różnych strefach i w tym samym czasie wdrażania warstwy aplikacji SAP przy użyciu zestawów dostępności i nadal osiąganie bliskiej bliskości maszyn wirtualnych jest udokumentowane w artykule o [rozmieszczeniu bliskości platformy Azure Grupy w celu uzyskania optymalnego opóźnienia sieci przy użyciu aplikacji SAP](sap-proximity-placement-scenarios.md). Jeśli nie korzystasz z grup umieszczania bliskości platformy Azure, musisz wybrać jedną lub drugą jako strukturę wdrażania dla maszyn wirtualnych.
+- Nie można użyć [podstawowego Load Balancer platformy Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) do tworzenia rozwiązań klastra trybu failover opartych na systemie Windows Server Failover Clustering lub Linux Pacemaker. Zamiast tego należy użyć [jednostki SKU usługa Load Balancer w warstwie Standardowa platformy Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones).
 
-- Wdrażanie jednostki SKU maszyny Wirtualnej, którego chcesz użyć wystąpienia systemu DBMS w wszystkie trzy strefy. Upewnij się, że [usługę Azure Accelerated Networking](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) jest włączane, gdy zapoznasz się z tym miary.
-- Po znalezieniu dwie strefy z najniższych opóźnieniem sieci, należy wdrożyć kolejnych trzech maszyn wirtualnych jednostki SKU maszyny Wirtualnej, który chcesz użyć jako warstwa aplikacji maszyn wirtualnych w trzech strefach dostępności. Zmierz opóźnienia sieci dla dwóch maszyn wirtualnych systemu DBMS, w dwóch strefach DBMS, które zostały wybrane. 
-- Użyj **niping** jako narzędzie pomiarowych. Tego narzędzia, SAP, opisano w sekcji SAP notes pomocy technicznej [#500235](https://launchpad.support.sap.com/#/notes/500235) i [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Skup się na polecenia udokumentowane do pomiarów opóźnienia. Ponieważ **ping** nie działa poprzez usługę Azure Accelerated Networking ścieżki kodu, nie zaleca się używania jej.
 
-Na podstawie miar i dostępność swojej wersji SKU maszyn wirtualnych w strefach dostępności, należy podjąć pewne decyzje:
 
-- Zdefiniuj stref idealne rozwiązanie dla warstwy system DBMS.
-- Określ, czy chcesz rozprowadzić active warstwie aplikacji SAP na jednej, dwóch lub wszystkie trzy strefy, oparte na różnice sieci opóźnienia w strefie i w różnych strefach.
-- Określ, czy chcesz wdrożyć w konfiguracji aktywny/pasywny lub w konfiguracji aktywny/aktywny z punktu widzenia w aplikacji. (Te konfiguracje są wyjaśnione w dalszej części tego artykułu).
+## <a name="the-ideal-availability-zones-combination"></a>Idealna kombinacja Strefy dostępności
+Przed podjęciem decyzji o sposobie używania Strefy dostępności należy określić:
 
-Podejmując decyzje te, również wziąć pod uwagę SAP zalecenia dotyczące opóźnienia sieci, zgodnie z opisem w Uwaga SAP [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E).
+- Opóźnienie sieci między trzema strefami w regionie świadczenia usługi Azure. Pozwoli to wybrać strefy z najmniejszym opóźnieniem sieci w ruchu sieciowym między strefami.
+- Różnica między opóźnieniami między MASZYNami wirtualnymi w ramach jednej z tych stref, wybór i opóźnienie sieci w dwóch strefach wyboru.
+- Określenie, czy typy maszyn wirtualnych, które należy wdrożyć, są dostępne w dwóch wybranych strefach. W przypadku niektórych maszyn wirtualnych, w szczególności maszyn wirtualnych serii M, mogą wystąpić sytuacje, w których niektóre jednostki SKU są dostępne tylko w dwóch z tych trzech stref.
 
-> [!IMPORTANT]
-> Pomiary i decyzje podjęte przez użytkownika są prawidłowe dla subskrypcji platformy Azure użytą podczas trwania pomiarów. Jeśli używasz innej subskrypcji platformy Azure, należy powtórzyć pomiarów. Mapowania stref wyliczenia mogą być różne dla innej subskrypcji platformy Azure.
+## <a name="network-latency-between-and-within-zones"></a>Opóźnienie sieci między i w obrębie stref
+Aby określić opóźnienie między różnymi strefami, należy wykonać następujące:
 
+- Wdróż jednostkę SKU maszyny wirtualnej, której chcesz użyć dla wystąpienia systemu DBMS we wszystkich trzech strefach. Upewnij się, że [usługa Azure przyspieszone sieci](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) jest włączona po przemierzeniu tej miary.
+- Po znalezieniu dwóch stref o najmniejszej opóźnieniu sieci należy wdrożyć inne trzy maszyny wirtualne jednostki SKU maszyny wirtualnej, która ma być używana jako maszyna wirtualna warstwy aplikacji dla trzech Strefy dostępności. Zmierz opóźnienie sieci w odniesieniu do dwóch maszyn wirtualnych systemu DBMS w dwóch wybranych strefach DBMS. 
+- Użyj **niping** jako narzędzia pomiarowego. To narzędzie z oprogramowania SAP jest opisane w uwagi dotyczące pomocy technicznej SAP [#500235](https://launchpad.support.sap.com/#/notes/500235) i [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Skup się na poleceniach udokumentowanych dla pomiarów opóźnienia. Ponieważ **polecenie ping** nie działa przez przyspieszone ścieżki kodu sieciowego platformy Azure, nie zalecamy jej używania.
+
+W oparciu o pomiary i dostępność jednostek SKU maszyn wirtualnych w Strefy dostępności należy podjąć pewne decyzje:
+
+- Zdefiniuj idealne strefy dla warstwy DBMS.
+- Określ, czy chcesz rozpowszechnić aktywną warstwę aplikacji SAP w jednej, dwóch lub wszystkich trzech strefach, w zależności od różnic między strefami w strefie.
+- Ustal, czy chcesz wdrożyć aktywną/pasywną konfigurację lub aktywną/aktywną konfigurację z punktu widzenia aplikacji. (Te konfiguracje są wyjaśnione w dalszej części tego artykułu).
+
+W podejmowaniu tych decyzji należy również wziąć pod uwagę zalecenia dotyczące opóźnień sieci SAP, zgodnie z opisem w temacie SAP uwagi [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E).
 
 > [!IMPORTANT]
-> Oczekuje się, zapewnia pomiary, opisanych wcześniej różne wyniki w każdym regionie platformy Azure, która obsługuje [strefy dostępności](https://docs.microsoft.com/azure/availability-zones/az-overview). Nawet jeśli wymagań opóźnienia sieci są takie same, może być konieczne przyjęcie strategii wdrażania różne w różnych regionach platformy Azure, ponieważ opóźnienie sieci między strefami mogą być różne. W niektórych regionach platformy Azure opóźnienie sieci między trzy strefy może być bardzo różne. W innych regionach opóźnienie sieci między trzy strefy może być bardziej jednolite. Oświadczenie, które zawsze istnieje opóźnienie sieciowe między 1 i 2 milisekund jest nieprawidłowy. Opóźnienie sieci w różnych strefach dostępności w regionach platformy Azure nie może być uogólniony.
+> Wprowadzone pomiary i decyzje są prawidłowe dla subskrypcji platformy Azure, która została użyta podczas przeprowadzonych pomiarów. Jeśli używasz innej subskrypcji platformy Azure, musisz powtórzyć pomiary. Mapowanie wyliczonych stref może być inne dla innej subskrypcji platformy Azure.
 
-## <a name="activeactive-deployment"></a>Wdrożenie aktywny/aktywny
-Ta architektura wdrożenia jest nazywany aktywny/aktywny, ponieważ wdrożenia aktywnych serwerów aplikacji SAP w dwóch lub trzech strefach. Wystąpienie usług SAP Central Services, który używa umieścić w kolejce replikacji będą wdrażane między dwiema strefami. Dotyczy to także warstwy system DBMS, która zostanie wdrożony w tej samej strefach jako usługi centralne SAP.
 
-Rozważając tę konfigurację, trzeba znaleźć dwóch strefach dostępności w Twoim regionie tego opóźnienia sieci między strefami oferty, który jest dopuszczalny dla obciążenia i usługi replikacji synchronicznej DBMS. Należy zawsze mieć pewność, że różnica między opóźnienia sieci w ramach stref, które wybrano i opóźnienie sieci między strefami nie jest zbyt duży. Jest to, ponieważ nie ma duże różnice, w zależności od tego, czy zadanie jest uruchamiane w strefie z serwerem systemu DBMS lub na strefy, w razie uruchomione zadania wsadowe lub procesami biznesowymi. Niektóre zmiany są akceptowane, ale nie czynniki różnica.
+> [!IMPORTANT]
+> Oczekuje się, że pomiary opisane wcześniej będą zapewniały różne wyniki w każdym regionie świadczenia usługi Azure, który obsługuje [strefy dostępności](https://docs.microsoft.com/azure/availability-zones/az-overview). Nawet jeśli wymagania dotyczące opóźnień sieci są takie same, może być konieczne przyjęcie różnych strategii wdrażania w różnych regionach świadczenia usługi Azure, ponieważ opóźnienie sieci między strefami może być różne. W niektórych regionach świadczenia usługi Azure opóźnienie sieci między trzema różnymi strefami może być bardzo zróżnicowane. W innych regionach opóźnienie sieci między trzema różnymi strefami może być bardziej jednorodne. To, że zawsze opóźnienie sieci należy do przedziału od 1 do 2 milisekund. Nie można uogólnionie opóźniać sieci między Strefy dostępności w regionach platformy Azure.
 
-Uproszczony schemat wdrożenia aktywny/aktywny w dwóch strefach może wyglądać następująco:
+## <a name="activeactive-deployment"></a>Wdrożenie aktywne/aktywne
+Ta architektura wdrażania jest nazywana aktywnym/aktywnym ze względu na wdrożenie aktywnych serwerów aplikacji SAP w dwóch lub trzech strefach. Wystąpienie usług SAP Central, które używa replikacji z kolejki zostanie wdrożone między dwoma strefami. Ta sama wartość dotyczy warstwy DBMS, która zostanie wdrożona w tych samych strefach co usługa SAP Central.
 
-![Wdrożenie strefy aktywny/aktywny](./media/sap-ha-availability-zones/active_active_zones_deployment.png)
+Biorąc pod uwagę tę konfigurację, należy znaleźć dwie Strefy dostępności w Twoim regionie, które oferują opóźnienia sieci między strefami, które są akceptowalne dla obciążenia i synchronicznej replikacji systemu DBMS. Należy również upewnić się, że różnica między opóźnieniami sieci w wybranych strefach i opóźnieniu sieci między strefami nie jest zbyt duża. Jest to spowodowane tym, że nie potrzebujesz dużych odmian, w zależności od tego, czy zadanie jest uruchamiane w strefie z serwerem DBMS lub w różnych strefach, w czasie wykonywania procesów firmy lub zadań wsadowych. Niektóre odmiany są akceptowalne, ale nie są to czynniki różnic.
 
-W przypadku tej konfiguracji obowiązują następujące zastrzeżenia:
+Uproszczony schemat aktywnego/aktywnego wdrożenia w dwóch strefach może wyglądać następująco:
 
-- Możesz traktować strefy dostępności platformy Azure jako domenach błędów i aktualizacji dla wszystkich maszyn wirtualnych, ponieważ nie można wdrożyć zestawy dostępności w strefach dostępności platformy Azure.
-- Dla klastrów trybu failover usług SAP Central Services i warstwy system DBMS usług równoważenia obciążenia, należy użyć [standardowych jednostek SKU usługi Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones). Podstawowy moduł równoważenia obciążenia nie będą działać w różnych strefach.
-- Sieć wirtualna platformy Azure, która została wdrożona do hostowania systemu SAP, wraz z jej podsieci jest rozciągnięty w różnych strefach. Nie potrzebujesz oddzielnych sieci wirtualnych w każdej strefie.
-- Dla wszystkich maszyn wirtualnych, wdrażania, należy użyć [usługi Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/). Dyski niezarządzane nie są obsługiwane w przypadku wdrożeń strefowych.
-- Usługa Azure Premium Storage i [magazyn Ultra SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd) nie obsługuje żadnego typu replikacji magazynu w różnych strefach. Ważne dane muszą być replikowane w aplikacji (DBMS lub usług SAP Central Services).
-- Dotyczy to do katalogu udostępnionego sapmnt, który jest udostępniony dysk (Windows), udział CIFS (Windows) lub udziału NFS (Linux). Należy użyć technologii, która replikuje tych udostępnionych dysków lub udziałów między strefą. Te technologie są obsługiwane:
-  - Dla Windows, rozwiązanie klastra, używa oprogramowanie SIOS DataKeeper zgodnie z opisem w [klastra wystąpienie SAP ASCS/SCS na klastrze pracy awaryjnej Windows przy użyciu udostępnionego dysku klastra na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk).
-  - W systemie SUSE Linux, systemu plików NFS udostępniania, które jest skompilowane, zgodnie z opisem w [wysoka dostępność systemu NFS na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs).
+![Wdrożenie strefy aktywne/aktywne](./media/sap-ha-availability-zones/active_active_zones_deployment.png)
+
+W tej konfiguracji są stosowane następujące zagadnienia:
+
+- Nie przy użyciu [grupy umieszczania usługi Azure zbliżeniowe](https://docs.microsoft.com/azure/virtual-machines/linux/co-location), strefy dostępności platformy Azure jako domeny błędów i aktualizacji dla wszystkich maszyn wirtualnych, ponieważ zestawy dostępności nie mogą zostać wdrożone w strefy dostępności platformy Azure.
+- Jeśli chcesz połączyć wdrożenia stref dla warstwy DBMS i usług centralnych, ale chcesz korzystać z zestawów dostępności platformy Azure dla warstwy aplikacji, musisz użyć grup bliskości platformy Azure, zgodnie z opisem w artykule dotyczącej scentralizowanych [grup umieszczania na platformie Azure. opóźnienie sieci przy użyciu aplikacji SAP](sap-proximity-placement-scenarios.md).
+- W przypadku modułów równoważenia obciążenia klastrów pracy awaryjnej usług SAP Central i warstwy DBMS należy użyć [standardowej jednostki SKU Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones). Podstawowa Load Balancer nie będzie działała między strefami.
+- Sieć wirtualna platformy Azure wdrożona w celu hostowania systemu SAP wraz z jego podsieciami jest rozciągana między strefami. Dla każdej strefy nie są potrzebne oddzielne sieci wirtualne.
+- W przypadku wszystkich wdrażanych maszyn wirtualnych należy użyć [usługi Azure Managed disks](https://azure.microsoft.com/services/managed-disks/). Dyski niezarządzane nie są obsługiwane dla wdrożeń strefowych.
+- Usługi Azure Premium Storage i [SSD w warstwie Ultra Storage](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd) nie obsługują żadnego typu replikacji magazynu w różnych strefach. Aplikacja (system DBMS lub SAP Central Services) musi replikować ważne dane.
+- Ta sama wartość dotyczy udostępnionego katalogu sapmnt, który jest dyskiem współdzielonym (Windows), udziałem CIFS (Windows) lub udziałem NFS (Linux). Należy użyć technologii, która replikuje te udostępnione dyski lub udziały między strefami. Te technologie są obsługiwane:
+  - W przypadku systemu Windows rozwiązanie klastra korzystające z usługi oprogramowanie SIOS DataKeeper, zgodnie z opisem w [klastrze, wystąpienia SAP ASCS/SCS w klastrze trybu failover systemu Windows przy użyciu udostępnionego dysku klastra na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk).
+  - W przypadku systemu SUSE Linux udział NFS, który jest skompilowany jako opisany w [wysokiej dostępności dla systemu plików NFS na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs).
     
-    Obecnie rozwiązania, który używa serwera plików skalowalnego w poziomie firmy Microsoft, zgodnie z opisem w [przygotować infrastrukturę platformy Azure SAP wysokiej dostępności przy użyciu Windows trybu failover klastra i udział plików dla wystąpień SAP ASCS/SCS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share), nie jest obsługiwane w różnych strefach.
-- Trzeci strefa jest używana do obsługi urządzeń interwencja w przypadku, gdy tworzysz [klastra program Pacemaker systemu Linux SUSE](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) lub wystąpień dodatkowych aplikacji.
-- Aby osiągnąć spójność kluczowych procesów biznesowych w czasie wykonywania, możesz spróbować bezpośrednie niektórych zadań wsadowych i użytkowników do wystąpienia aplikacji, które są w strefie przy użyciu aktywnego wystąpienia systemu DBMS, za pomocą SAP batch grup serwerów, grup logowania lub RFC grup. Jednak w przypadku strefowych przejściu w tryb failover, należy ręcznie przenieść te grupy do wystąpień działających na maszynach wirtualnych, które są w strefie przy użyciu aktywnej maszyny Wirtualnej bazy danych.  
-- Można wdrożyć jedno okno nieaktywni we wszystkich strefach. To jest umożliwienie natychmiastowy powrót do pojemności zasobu poprzedniej wersji portalu w przypadku strefy używane przez części wystąpień aplikacji usługi.
+    Obecnie rozwiązanie, w którym jest używany serwer plików skalowalny w poziomie firmy Microsoft, zgodnie z opisem w temacie [Przygotowanie infrastruktury platformy Azure do usługi SAP High Availability przy użyciu klastra trybu failover systemu Windows i udziału plików dla wystąpień oprogramowania SAP ASCS/SCS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share), nie jest obsługiwane w różnych strefach.
+- Trzecia Strefa jest używana do hostowania urządzenia SBD na wypadek skompilowania [klastra systemu SUSE Linux Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) lub dodatkowych wystąpień aplikacji.
+- Aby osiągnąć spójność czasu wykonywania dla krytycznych procesów firmy, możesz spróbować skierować określone zadania usługi Batch i użytkowników do wystąpień aplikacji znajdujących się w strefie z aktywnym wystąpieniem DBMS przy użyciu grup serwera SAP Batch, grup logowania SAP lub grup RFC. Jednak w przypadku trybu failover strefy należy ręcznie przenieść te grupy do wystąpień uruchomionych na maszynach wirtualnych, które znajdują się w strefie z maszyną wirtualną usługi Active DB.  
+- Możesz chcieć wdrożyć nieaktywne wystąpienia okna dialogowego w każdej z tych stref. Jest to umożliwienie natychmiastowego powrotu do dawnej pojemności zasobów, jeśli strefa używana przez część wystąpień aplikacji jest poza usługą.
 
 
-## <a name="activepassive-deployment"></a>Aktywny/pasywny wdrożenia
-Jeśli nie możesz znaleźć dopuszczalne różnica między opóźnienie sieci, w jednej strefie i opóźnienia w ruchu sieciowego między strefami, można wdrożyć architekturę, która zawiera znak aktywny/pasywny z SAP aplikacji warstwy punktu widzenia. Należy zdefiniować *active* strefy, który jest strefy, w przypadku, gdy wdrażanie warstwy kompletnej aplikacji, a w przypadku, gdy użytkownik spróbuje uruchomić zarówno active DBMS, jak i wystąpienia usług SAP Central Services. Dzięki takiej konfiguracji musisz upewnij się, że nie masz czasu wykonywania extreme odmiany w zależności od tego, czy zadanie jest uruchamiane w strefie z aktywnego wystąpienia systemu DBMS lub nie za transakcje biznesowe i zadania usługi batch.
+## <a name="activepassive-deployment"></a>Wdrożenie aktywne/pasywne
+Jeśli nie możesz znaleźć akceptowalnej różnicy między opóźnieniem sieci w jednej strefie a opóźnieniem ruchu sieciowego między strefami, możesz wdrożyć architekturę, która ma aktywny/pasywny znak z punktu widzenia warstwy aplikacji SAP. Należy zdefiniować *aktywną* strefę, czyli strefę, w której wdrażana jest kompletna warstwa aplikacji, oraz miejsce, w którym próbujesz uruchomić zarówno aktywny system DBMS, jak i wystąpienie usług SAP Central Services. W przypadku takiej konfiguracji należy upewnić się, że nie masz skrajnych różnic czasu wykonywania, w zależności od tego, czy zadanie jest uruchamiane w strefie z aktywnym wystąpieniem systemu DBMS, czy nie, w transakcjach roboczych i zadaniach wsadowych.
 
 Podstawowy układ architektury wygląda następująco:
 
-![Wdrożenie strefy aktywny/pasywny](./media/sap-ha-availability-zones/active_passive_zones_deployment.png)
+![Wdrożenie strefy aktywne/pasywne](./media/sap-ha-availability-zones/active_passive_zones_deployment.png)
 
-W przypadku tej konfiguracji obowiązują następujące zastrzeżenia:
+W tej konfiguracji są stosowane następujące zagadnienia:
 
-- Zestawy dostępności nie można wdrożyć w strefach dostępności platformy Azure. Tak w tym przypadku masz jedną domenę aktualizacji i błędów na warstwie aplikacji. To, ponieważ jest ona wdrożona tylko w jednej strefie. Ta konfiguracja jest pożądane, nieco mniej niż architektury referencyjnej sugeruje wdrażania warstwy aplikacji w zestawie dostępności platformy Azure.
-- Gdy używasz tej architektury, musisz uważnie monitorować stan i próbować zachować aktywnych wystąpień system DBMS i usług SAP Central Services w tej samej strefie jako warstwa Twojej wdrożonej aplikacji. W przypadku pracy awaryjnej usługi centralne SAP lub wystąpienia systemu DBMS chcesz upewnić się, że możesz ręcznie przełączać do strefy z warstwą aplikacji SAP, które są wdrażane tak szybko, jak to możliwe.
-- Dla klastrów trybu failover usług SAP Central Services i warstwy system DBMS usług równoważenia obciążenia, należy użyć [standardowych jednostek SKU usługi Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones). Podstawowy moduł równoważenia obciążenia nie będą działać w różnych strefach.
-- Sieć wirtualna platformy Azure, która została wdrożona do hostowania systemu SAP, wraz z jej podsieci jest rozciągnięty w różnych strefach. Nie potrzebujesz oddzielnych sieci wirtualnych w każdej strefie.
-- Dla wszystkich maszyn wirtualnych, wdrażania, należy użyć [usługi Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/). Dyski niezarządzane nie są obsługiwane w przypadku wdrożeń strefowych.
-- Usługa Azure Premium Storage i [magazyn Ultra SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd) nie obsługuje żadnego typu replikacji magazynu w różnych strefach. Ważne dane muszą być replikowane w aplikacji (DBMS lub usług SAP Central Services).
-- Dotyczy to do katalogu udostępnionego sapmnt, który jest udostępniony dysk (Windows), udział CIFS (Windows) lub udziału NFS (Linux). Należy użyć technologii, która replikuje tych udostępnionych dysków lub udziałów między strefą. Te technologie są obsługiwane:
-    - Dla Windows, rozwiązanie klastra, używa oprogramowanie SIOS DataKeeper zgodnie z opisem w [klastra wystąpienie SAP ASCS/SCS na klastrze pracy awaryjnej Windows przy użyciu udostępnionego dysku klastra na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk).
-    - W systemie SUSE Linux, systemu plików NFS udostępniania, które jest skompilowane, zgodnie z opisem w [wysoka dostępność systemu NFS na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs).
+- Zestawów dostępności nie można wdrożyć w Strefy dostępności platformy Azure. Aby wyrównać tę wartość, możesz użyć grup umieszczania sąsiedztwa platformy Azure, jak opisano w temacie [grupy umieszczania bliskości platformy Azure w celu uzyskania optymalnego opóźnienia sieci przy użyciu aplikacji SAP](sap-proximity-placement-scenarios.md).
+- W przypadku korzystania z tej architektury należy uważnie monitorować stan i próbować utrzymywać aktywne wystąpienia usług DBMS i SAP Central w tej samej strefie co wdrożona warstwa aplikacji. W przypadku przejścia w tryb failover usługi SAP Central lub systemu DBMS, należy się upewnić, że można ręcznie wrócić do strefy z użyciem warstwy aplikacji SAP wdrożonej jak najszybciej.
+- W przypadku modułów równoważenia obciążenia klastrów pracy awaryjnej usług SAP Central i warstwy DBMS należy użyć [standardowej jednostki SKU Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones). Podstawowa Load Balancer nie będzie działała między strefami.
+- Sieć wirtualna platformy Azure wdrożona w celu hostowania systemu SAP wraz z jego podsieciami jest rozciągana między strefami. Dla każdej strefy nie są potrzebne oddzielne sieci wirtualne.
+- W przypadku wszystkich wdrażanych maszyn wirtualnych należy użyć [usługi Azure Managed disks](https://azure.microsoft.com/services/managed-disks/). Dyski niezarządzane nie są obsługiwane dla wdrożeń strefowych.
+- Usługi Azure Premium Storage i [SSD w warstwie Ultra Storage](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd) nie obsługują żadnego typu replikacji magazynu w różnych strefach. Aplikacja (system DBMS lub SAP Central Services) musi replikować ważne dane.
+- Ta sama wartość dotyczy udostępnionego katalogu sapmnt, który jest dyskiem współdzielonym (Windows), udziałem CIFS (Windows) lub udziałem NFS (Linux). Należy użyć technologii, która replikuje te udostępnione dyski lub udziały między strefami. Te technologie są obsługiwane:
+    - W przypadku systemu Windows rozwiązanie klastra korzystające z usługi oprogramowanie SIOS DataKeeper, zgodnie z opisem w [klastrze, wystąpienia SAP ASCS/SCS w klastrze trybu failover systemu Windows przy użyciu udostępnionego dysku klastra na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk).
+    - W przypadku systemu SUSE Linux udział NFS, który jest skompilowany jako opisany w [wysokiej dostępności dla systemu plików NFS na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs).
     
-  Obecnie rozwiązania, który używa serwera plików skalowalnego w poziomie firmy Microsoft, zgodnie z opisem w [przygotować infrastrukturę platformy Azure SAP wysokiej dostępności przy użyciu Windows trybu failover klastra i udział plików dla wystąpień SAP ASCS/SCS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share), nie jest obsługiwane w różnych strefach.
-- Trzeci strefa jest używana do obsługi urządzeń interwencja w przypadku, gdy tworzysz [klastra program Pacemaker systemu Linux SUSE](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) lub wystąpień dodatkowych aplikacji.
-- Należy wdrożyć nieaktywni maszyn wirtualnych na platformie pasywne strefy (z punktu widzenia DBMS), aby można było zacząć zasobów aplikacji w razie awarii strefy.
-    - [Usługa Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) nie może obecnie aktywne maszyny wirtualne można replikować do nieaktywni maszyn wirtualnych między strefami. 
-- Kolejności należy zainwestować w usłudze automation, która pozwala, w razie awarii strefy, aby automatycznie rozpocząć warstwie aplikacji SAP w drugiej strefie.
+  Obecnie rozwiązanie, w którym jest używany serwer plików skalowalny w poziomie firmy Microsoft, zgodnie z opisem w temacie [Przygotowanie infrastruktury platformy Azure do usługi SAP High Availability przy użyciu klastra trybu failover systemu Windows i udziału plików dla wystąpień oprogramowania SAP ASCS/SCS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share), nie jest obsługiwane w różnych strefach.
+- Trzecia Strefa jest używana do hostowania urządzenia SBD na wypadek skompilowania [klastra systemu SUSE Linux Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) lub dodatkowych wystąpień aplikacji.
+- Należy wdrożyć nieaktywne maszyny wirtualne w strefie pasywnej (z punktu widzenia systemu DBMS), aby umożliwić uruchamianie zasobów aplikacji w przypadku awarii strefy.
+    - [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) nie jest obecnie w stanie replikować aktywnych maszyn wirtualnych do nieaktywnych maszyn wirtualnych między strefami. 
+- Należy zainwestować w automatyzację, która umożliwia w przypadku awarii strefy automatyczne uruchamianie warstwy aplikacji SAP w drugiej strefie.
 
-## <a name="combined-high-availability-and-disaster-recovery-configuration"></a>Połączone wysokiej dostępności i Konfiguracja odzyskiwania po awarii
-Firma Microsoft nie udostępnia żadnych informacji na temat geograficznej odległości między obiektami tego hosta innej strefy dostępności platformy Azure w regionie platformy Azure. Jednak niektórzy klienci używają stref połączone konfiguracji wysokiej dostępności i odzyskiwania po awarii, która zapewnia cel punktu odzyskiwania (RPO) o wartości zero. Oznacza to, że nie może utracić wszelkie transakcje zatwierdzone bazy danych, nawet w przypadku odzyskiwania po awarii. 
+## <a name="combined-high-availability-and-disaster-recovery-configuration"></a>Połączona Konfiguracja wysokiej dostępności i odzyskiwania po awarii
+Firma Microsoft nie udostępnia żadnych informacji o odległościach geograficznych między obiektami, które obsługują różne Strefy dostępności platformy Azure w regionie świadczenia usługi Azure. Mimo że niektórzy klienci używają stref dla połączonej konfiguracji HA i DR, która niesie obietnice zwiększenia cel punktu odzyskiwania (RPO) o wartości zero. Oznacza to, że nie należy tracić żadnych zatwierdzonych transakcji bazy danych nawet w przypadku odzyskiwania po awarii. 
 
 > [!NOTE]
-> Zaleca się użycie konfiguracji takich jak to tylko w pewnych okolicznościach. Na przykład użytkownik może użyć, jeśli dane nie mogą opuścić region platformy Azure ze względów bezpieczeństwa i zgodności. 
+> Zalecamy użycie konfiguracji podobnej do tej w pewnych okolicznościach. Można na przykład użyć go, gdy dane nie mogą opuścić regionu platformy Azure ze względów bezpieczeństwa lub zgodności. 
 
-Poniżej przedstawiono przykładowy wygląd takiej konfiguracji:
+Oto przykład tego, jak taka konfiguracja może wyglądać w następujący sposób:
 
-![Łączny koszt wysokiej dostępności w strefach](./media/sap-ha-availability-zones/combined_ha_dr_in_zones.png)
+![Połączenie odzyskiwania po awarii o wysokiej dostępności w strefach](./media/sap-ha-availability-zones/combined_ha_dr_in_zones.png)
 
-W przypadku tej konfiguracji obowiązują następujące zastrzeżenia:
+W tej konfiguracji są stosowane następujące zagadnienia:
 
-- Jesteś jedną przy założeniu, że ma znaczną odległość między obiektami hostujące strefę dostępności lub jest wymuszone w celu pozostania w danym regionie platformy Azure. Zestawy dostępności nie można wdrożyć w strefach dostępności platformy Azure. Tak w tym przypadku masz jedną domenę aktualizacji i błędów na warstwie aplikacji. To, ponieważ jest ona wdrożona tylko w jednej strefie. Ta konfiguracja jest pożądane, nieco mniej niż architektury referencyjnej sugeruje wdrażania warstwy aplikacji w zestawie dostępności platformy Azure.
-- Gdy używasz tej architektury, musisz uważnie monitorować stan i próbować zachować aktywnych wystąpień system DBMS i usług SAP Central Services w tej samej strefie jako warstwa Twojej wdrożonej aplikacji. W przypadku pracy awaryjnej usługi centralne SAP lub wystąpienia systemu DBMS chcesz upewnić się, że możesz ręcznie przełączać do strefy z warstwą aplikacji SAP, które są wdrażane tak szybko, jak to możliwe.
-- Musisz mieć wystąpienia aplikacji produkcyjnych wstępnie zainstalowane na maszynach wirtualnych, systemem aktywnych wystąpień pytań i odpowiedzi w aplikacji.
-- W przypadku awarii strefy wyłączenie wystąpień aplikacji pytań i odpowiedzi, a zamiast tego uruchomić wystąpień produkcyjnych. Należy pamiętać o tym, czy należy użyć nazwy wirtualnego wystąpienia aplikacji, aby umożliwić.
-- Dla klastrów trybu failover usług SAP Central Services i warstwy system DBMS usług równoważenia obciążenia, należy użyć [standardowych jednostek SKU usługi Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones). Podstawowy moduł równoważenia obciążenia nie będą działać w różnych strefach.
-- Sieć wirtualna platformy Azure, która została wdrożona do hostowania systemu SAP, wraz z jej podsieci jest rozciągnięty w różnych strefach. Nie potrzebujesz oddzielnych sieci wirtualnych w każdej strefie.
-- Dla wszystkich maszyn wirtualnych, wdrażania, należy użyć [usługi Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/). Dyski niezarządzane nie są obsługiwane w przypadku wdrożeń strefowych.
-- Usługa Azure Premium Storage i [magazyn Ultra SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd) nie obsługuje żadnego typu replikacji magazynu w różnych strefach. Ważne dane muszą być replikowane w aplikacji (DBMS lub usług SAP Central Services).
-- Dotyczy to do katalogu udostępnionego sapmnt, który jest udostępniony dysk (Windows), udział CIFS (Windows) lub udziału NFS (Linux). Należy użyć technologii, która replikuje tych udostępnionych dysków lub udziałów między strefą. Te technologie są obsługiwane:
-    - Dla Windows, rozwiązanie klastra, używa oprogramowanie SIOS DataKeeper zgodnie z opisem w [klastra wystąpienie SAP ASCS/SCS na klastrze pracy awaryjnej Windows przy użyciu udostępnionego dysku klastra na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk).
-    - W systemie SUSE Linux, systemu plików NFS udostępniania, które jest skompilowane, zgodnie z opisem w [wysoka dostępność systemu NFS na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs).
+- Przyjęto założenie, że istnieje znacząca odległość między obiektami, które obsługują strefę dostępności, lub że wymuszone pozostawanie w obrębie pewnego regionu świadczenia usługi Azure. Zestawów dostępności nie można wdrożyć w Strefy dostępności platformy Azure. Aby wyrównać tę wartość, możesz użyć grup umieszczania sąsiedztwa platformy Azure, jak opisano w temacie [grupy umieszczania bliskości platformy Azure w celu uzyskania optymalnego opóźnienia sieci przy użyciu aplikacji SAP](sap-proximity-placement-scenarios.md).
+- W przypadku korzystania z tej architektury należy uważnie monitorować stan i próbować utrzymywać aktywne wystąpienia usług DBMS i SAP Central w tej samej strefie co wdrożona warstwa aplikacji. W przypadku przejścia w tryb failover usługi SAP Central lub systemu DBMS, należy się upewnić, że można ręcznie wrócić do strefy z użyciem warstwy aplikacji SAP wdrożonej jak najszybciej.
+- Na maszynach wirtualnych, na których działają aktywne wystąpienia aplikacji usługi pytań i odpowiedzi, powinny być wstępnie zainstalowane wystąpienia aplikacji produkcyjnej.
+- W przypadku awarii strefy Zamknij wystąpienia aplikacji do kontroli jakości i zamiast tego Uruchom wystąpienia produkcyjne. Należy pamiętać, że w celu wykonania tej czynności należy użyć nazw wirtualnych dla wystąpień aplikacji.
+- W przypadku modułów równoważenia obciążenia klastrów pracy awaryjnej usług SAP Central i warstwy DBMS należy użyć [standardowej jednostki SKU Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones). Podstawowa Load Balancer nie będzie działała między strefami.
+- Sieć wirtualna platformy Azure wdrożona w celu hostowania systemu SAP wraz z jego podsieciami jest rozciągana między strefami. Dla każdej strefy nie są potrzebne oddzielne sieci wirtualne.
+- W przypadku wszystkich wdrażanych maszyn wirtualnych należy użyć [usługi Azure Managed disks](https://azure.microsoft.com/services/managed-disks/). Dyski niezarządzane nie są obsługiwane dla wdrożeń strefowych.
+- Usługi Azure Premium Storage i [SSD w warstwie Ultra Storage](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd) nie obsługują żadnego typu replikacji magazynu w różnych strefach. Aplikacja (system DBMS lub SAP Central Services) musi replikować ważne dane.
+- Ta sama wartość dotyczy udostępnionego katalogu sapmnt, który jest dyskiem współdzielonym (Windows), udziałem CIFS (Windows) lub udziałem NFS (Linux). Należy użyć technologii, która replikuje te udostępnione dyski lub udziały między strefami. Te technologie są obsługiwane:
+    - W przypadku systemu Windows rozwiązanie klastra korzystające z usługi oprogramowanie SIOS DataKeeper, zgodnie z opisem w [klastrze, wystąpienia SAP ASCS/SCS w klastrze trybu failover systemu Windows przy użyciu udostępnionego dysku klastra na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk).
+    - W przypadku systemu SUSE Linux udział NFS, który jest skompilowany jako opisany w [wysokiej dostępności dla systemu plików NFS na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs).
 
-  Obecnie rozwiązania, który używa serwera plików skalowalnego w poziomie firmy Microsoft, zgodnie z opisem w [przygotować infrastrukturę platformy Azure SAP wysokiej dostępności przy użyciu Windows trybu failover klastra i udział plików dla wystąpień SAP ASCS/SCS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share), nie jest obsługiwane w różnych strefach.
-- Trzeci strefa jest używana do obsługi urządzeń interwencja w przypadku, gdy tworzysz [klastra program Pacemaker systemu Linux SUSE](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) lub wystąpień dodatkowych aplikacji.
-
-
+  Obecnie rozwiązanie, w którym jest używany serwer plików skalowalny w poziomie firmy Microsoft, zgodnie z opisem w temacie [Przygotowanie infrastruktury platformy Azure do usługi SAP High Availability przy użyciu klastra trybu failover systemu Windows i udziału plików dla wystąpień oprogramowania SAP ASCS/SCS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share), nie jest obsługiwane w różnych strefach.
+- Trzecia Strefa jest używana do hostowania urządzenia SBD na wypadek skompilowania [klastra systemu SUSE Linux Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) lub dodatkowych wystąpień aplikacji.
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
-Poniżej przedstawiono niektóre kolejne kroki dotyczące wdrażania w różnych strefach dostępności platformy Azure:
 
-- [Klaster wystąpienie SAP ASCS/SCS na klastrze pracy awaryjnej Windows przy użyciu udostępnionego dysku klastra na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
-- [Przygotowywanie infrastruktury platformy Azure SAP wysokiej dostępności przy użyciu Windows trybu failover klastra i udział plików dla wystąpień SAP ASCS/SCS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)
+
+## <a name="next-steps"></a>Następne kroki
+Oto kilka następnych kroków do wdrożenia między Strefy dostępności platformy Azure:
+
+- [Klastrowanie wystąpienia SAP ASCS/SCS w klastrze trybu failover systemu Windows przy użyciu udostępnionego dysku klastra na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
+- [Przygotowanie infrastruktury platformy Azure pod kątem wysokiej dostępności SAP przy użyciu klastra trybu failover systemu Windows i udziału plików dla wystąpień oprogramowania SAP ASCS/SCS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)
 
 
 

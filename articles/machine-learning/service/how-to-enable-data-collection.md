@@ -1,5 +1,5 @@
 ---
-title: Zbieranie danych na swoje modele do produkcji
+title: Zbieranie danych z modeli produkcyjnych
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak zbierać dane wejściowe modelu usługi Azure Machine Learning w usłudze Azure Blob storage.
 services: machine-learning
@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 12/03/2018
+ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: f596fb3a066017f0236de5b79586891dd21efb11
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 81ffe8618e07f2e49e4439ea57e254e5d37974f9
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443975"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227944"
 ---
 # <a name="collect-data-for-models-in-production"></a>Zbieranie danych dla modeli w środowisku produkcyjnym
 
 W tym artykule możesz dowiedzieć się, jak można zbierać dane w modelu wejściowym z usługi Azure Machine Learning, który został wdrożony do klastra Kubernetes usługi Azure (AKS) do usługi Azure Blob storage. 
 
 Po włączeniu tych danych, które są zbierane pomoże Ci:
-* [Monitorowanie danych drifts](how-to-monitor-data-drift.md) zgodnie z danymi produkcyjnymi wprowadza modelu
+* [Monitoruj dryfy danych](how-to-monitor-data-drift.md) w miarę wprowadzania danych produkcyjnych do modelu
 
 * Podejmowanie lepszych decyzji o tym, kiedy ponowne szkolenie lub optymalizowanie modelu
 
@@ -81,7 +81,7 @@ Aby ją włączyć, należy:
     prediction_dc = ModelDataCollector("best_model", identifier="predictions", feature_names=["prediction1", "prediction2"])
     ```
 
-    *Identyfikator korelacji* jest parametrem opcjonalnym, nie trzeba skonfigurować, jeśli model nie wymagają tego. Masz identyfikator korelacji w miejscu pomoc dotyczącą ułatwia mapowanie z innymi danymi. (Przykłady: LoanNumber CustomerId, itp.)
+    *Identyfikator korelacji* jest parametrem opcjonalnym, nie trzeba skonfigurować, jeśli model nie wymagają tego. Masz identyfikator korelacji w miejscu pomoc dotyczącą ułatwia mapowanie z innymi danymi. (Przykłady obejmują: LoanNumber, CustomerId itd.)
     
     *Identyfikator* jest późniejsza używany do tworzenia struktury folderów w obiekt Blob, może służyć do podzielenia danych "pierwotne" i "przetworzona".
 

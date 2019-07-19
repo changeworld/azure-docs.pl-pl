@@ -1,57 +1,57 @@
 ---
-title: Rozwiązywanie problemów z programu Hive przy użyciu usługi Azure HDInsight
-description: Uzyskaj odpowiedzi na często zadawane pytania na temat pracy z usługą Apache Hive i usługi Azure HDInsight.
-keywords: Usługa Azure HDInsight, Hive, często zadawane pytania, przewodnik, często zadawane pytania dotyczące rozwiązywania problemów
+title: Rozwiązywanie problemów z programem Hive przy użyciu usługi Azure HDInsight
+description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące pracy z usługami Apache Hive i Azure HDInsight.
+keywords: Azure HDInsight, Hive, często zadawane pytania, Przewodnik rozwiązywania problemów, często zadawane pytania
 ms.service: hdinsight
 author: dharmeshkakadia
-ms.author: dharmeshkakadia
+ms.author: dkakadia
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: 43886a132f2f3cf75f0ec7a0b2dc0680a0f69589
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 91e6803e0a1302a33a3bf176ad84d0b0e0c8c5b6
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64712484"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875942"
 ---
-# <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z Apache Hive za pomocą usługi Azure HDInsight
+# <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z Apache Hive przy użyciu usługi Azure HDInsight
 
-Dowiedz się więcej o najczęściej zadawane pytania oraz dostępnych rozwiązaniach poszczególnych problemów podczas pracy z usługą Apache Hive ładunków w Apache Ambari.
+Zapoznaj się z najważniejszymi pytaniami i ich rozwiązaniami podczas pracy z Apache Hive ładunku w programie Apache Ambari.
 
 
-## <a name="how-do-i-export-a-hive-metastore-and-import-it-on-another-cluster"></a>Jak wyeksportować Magazyn metadanych Hive i zaimportować go do innego klastra
+## <a name="how-do-i-export-a-hive-metastore-and-import-it-on-another-cluster"></a>Jak mogę wyeksportować magazyn metadanych Hive i zaimportować go do innego klastra?
 
 
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
 1. Nawiąż połączenie z klastrem HDInsight przy użyciu klienta Secure Shell (SSH). Aby uzyskać więcej informacji, zobacz [dodatkowe materiały](#additional-reading-end).
 
-2. Uruchom następujące polecenie w klastrze HDInsight, z którego chcesz wyeksportować magazynu metadanych:
+2. Uruchom następujące polecenie w klastrze usługi HDInsight, z którego chcesz wyeksportować magazyn metadanych:
 
     ```apache
     for d in `hive -e "show databases"`; do echo "create database $d; use $d;" >> alltables.sql ; for t in `hive --database $d -e "show tables"` ; do ddl=`hive --database $d -e "show create table $t"`; echo "$ddl ;" >> alltables.sql ; echo "$ddl" | grep -q "PARTITIONED\s*BY" && echo "MSCK REPAIR TABLE $t ;" >> alltables.sql ; done; done
     ```
 
-   To polecenie spowoduje wygenerowanie pliku o nazwie allatables.sql.
+   To polecenie generuje plik o nazwie allatables. SQL.
 
-3. Skopiuj alltables.sql plików do nowego klastra HDInsight, a następnie uruchom następujące polecenie:
+3. Skopiuj plik alltables. SQL do nowego klastra usługi HDInsight, a następnie uruchom następujące polecenie:
 
    ```apache
    hive -f alltables.sql
    ```
 
-Kod w kroki rozwiązania przyjęto założenie, że ścieżki danych w nowym klastrze są takie same jak ścieżki danych w starym klastrze. Jeśli ścieżki danych są różne, należy ręcznie zmodyfikować pliku wygenerowanego alltables.sql, aby odzwierciedlić zmiany.
+Kod w krokach rozwiązania założono, że ścieżki danych w nowym klastrze są takie same jak ścieżki danych w starym klastrze. Jeśli ścieżki danych są różne, można ręcznie edytować wygenerowany plik alltables. SQL w celu odzwierciedlenia wszelkich zmian.
 
 ### <a name="additional-reading"></a>Materiały uzupełniające
 
-- [Łączenie z klastrem usługi HDInsight przy użyciu protokołu SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
+- [Nawiązywanie połączenia z klastrem usługi HDInsight przy użyciu protokołu SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 
-## <a name="how-do-i-locate-hive-logs-on-a-cluster"></a>Jak znaleźć dzienniki programu Hive w klastrze?
+## <a name="how-do-i-locate-hive-logs-on-a-cluster"></a>Jak mogę zlokalizować dzienników Hive w klastrze?
 
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
-1. Nawiąż połączenie z klastrem HDInsight przy użyciu protokołu SSH. Aby uzyskać więcej informacji, zobacz **dodatkowe materiały**.
+1. Połącz się z klastrem usługi HDInsight przy użyciu protokołu SSH. Aby uzyskać więcej informacji, zobacz **dodatkowe materiały**.
 
 2. Aby wyświetlić dzienniki klienta programu Hive, użyj następującego polecenia:
 
@@ -59,7 +59,7 @@ Kod w kroki rozwiązania przyjęto założenie, że ścieżki danych w nowym kla
    /tmp/<username>/hive.log 
    ```
 
-3. Aby wyświetlić dzienniki magazynu metadanych Hive, użyj następującego polecenia:
+3. Aby wyświetlić dzienniki magazyn metadanych Hive, użyj następującego polecenia:
 
    ```apache
    /var/log/hive/hivemetastore.log 
@@ -73,26 +73,26 @@ Kod w kroki rozwiązania przyjęto założenie, że ścieżki danych w nowym kla
 
 ### <a name="additional-reading"></a>Materiały uzupełniające
 
-- [Łączenie z klastrem usługi HDInsight przy użyciu protokołu SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
+- [Nawiązywanie połączenia z klastrem usługi HDInsight przy użyciu protokołu SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 
-## <a name="how-do-i-launch-the-hive-shell-with-specific-configurations-on-a-cluster"></a>Jak uruchomić powłoki usługi Hive przy użyciu określonej konfiguracji w klastrze?
+## <a name="how-do-i-launch-the-hive-shell-with-specific-configurations-on-a-cluster"></a>Jak mogę uruchomić powłokę programu Hive z określonymi konfiguracjami w klastrze?
 
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
-1. Określ pary klucz wartość konfiguracji podczas uruchamiania powłoki usługi Hive. Aby uzyskać więcej informacji, zobacz [dodatkowe materiały](#additional-reading-end).
+1. Określ parę klucz-wartość konfiguracji podczas uruchamiania powłoki programu Hive. Aby uzyskać więcej informacji, zobacz [dodatkowe materiały](#additional-reading-end).
 
    ```apache
    hive -hiveconf a=b 
    ```
 
-2. Aby wyświetlić listę wszystkich konfiguracje skuteczne na powłokę programu Hive, użyj następującego polecenia:
+2. Aby wyświetlić listę wszystkich efektywnych konfiguracji w usłudze Hive Shell, użyj następującego polecenia:
 
    ```apache
    hive> set;
    ```
 
-   Na przykład następujące polecenie do Uruchom powłokę programu Hive za pomocą funkcji rejestrowania debugowania, włączone na konsoli:
+   Na przykład użyj następującego polecenia, aby uruchomić powłokę programu Hive z włączonym rejestrowaniem debugowania w konsoli programu:
 
    ```apache
    hive -hiveconf hive.root.logger=ALL,console 
@@ -100,15 +100,15 @@ Kod w kroki rozwiązania przyjęto założenie, że ścieżki danych w nowym kla
 
 ### <a name="additional-reading"></a>Materiały uzupełniające
 
-- [Właściwości konfiguracji programu hive](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties)
+- [Właściwości konfiguracji programu Hive](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties)
 
 
-## <a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>Jak analizować dane Apache Tez DAG na ścieżkę krytyczną klastra?
+## <a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>Jak mogę analizować Apache Tez DAG danych w ścieżce krytycznej dla klastra?
 
 
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
  
-1. Aby analizować Apache Tez skierowanym grafie acyklicznym (DAG) na wykresie klastra o znaczeniu krytycznym, łączenia z klastrem HDInsight przy użyciu protokołu SSH. Aby uzyskać więcej informacji, zobacz [dodatkowe materiały](#additional-reading-end).
+1. Aby analizować Apache Tez ukierunkowany wykres (DAG) na wykresie krytycznym dla klastra, Połącz się z klastrem usługi HDInsight przy użyciu protokołu SSH. Aby uzyskać więcej informacji, zobacz [dodatkowe materiały](#additional-reading-end).
 
 2. W wierszu polecenia uruchom następujące polecenie:
    
@@ -116,58 +116,58 @@ Kod w kroki rozwiązania przyjęto założenie, że ścieżki danych w nowym kla
    hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar CriticalPath --saveResults --dagId <DagId> --eventFileName <DagData.zip> 
    ```
 
-3. Aby wyświetlić listę innych analizatorów, które mogą służyć do analizowania aplikacji Tez w grupie DAG, użyj następującego polecenia:
+3. Aby wyświetlić listę innych analizatorów, których można użyć do analizowania tez DAG, użyj następującego polecenia:
 
    ```apache
    hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar
    ```
 
-   Należy podać przykładowy program jako pierwszy argument.
+   Musisz podać Przykładowy program jako pierwszy argument.
 
-   Program prawidłowe nazwy zawierają:
-    - **ContainerReuseAnalyzer**: Drukowanie szczegółów ponowne użycie kontenerów w grupie DAG
-    - **CriticalPath**: Znajdź ścieżki krytycznej do grupy DAG
-    - **LocalityAnalyzer**: Drukowanie szczegółów lokalizacji, w grupie DAG
-    - **ShuffleTimeAnalyzer**: Analizowanie szczegółów czasu shuffle w grupie DAG
-    - **SkewAnalyzer**: Analizowanie szczegółów niesymetryczność, w grupie DAG
-    - **SlowNodeAnalyzer**: Szczegóły węzła wydruku w grupie DAG
-    - **SlowTaskIdentifier**: Drukowanie szczegółów zadania powolnego w grupie DAG
-    - **SlowestVertexAnalyzer**: Drukowanie najwolniejsze szczegółów wierzchołka w grupie DAG
-    - **SpillAnalyzer**: Drukowanie rozlania szczegółów w grupie DAG
-    - **TaskConcurrencyAnalyzer**: Drukowanie szczegółów współbieżności zadań w grupie DAG
-    - **VertexLevelCriticalPathAnalyzer**: Znajdź ścieżkę krytyczną na poziomie wierzchołka w grupie DAG
+   Prawidłowe nazwy programów to:
+    - **ContainerReuseAnalyzer**: Szczegóły ponownego użycia kontenera drukowania w DAG
+    - **CriticalPath**: Znajdowanie ścieżki krytycznej DAG
+    - **LocalityAnalyzer**: Szczegóły lokalnego drukowania w DAG
+    - **ShuffleTimeAnalyzer**: Analizuj szczegóły czasu losowego w DAG
+    - **SkewAnalyzer**: Analizowanie szczegółów pochylenia w DAG
+    - **SlowNodeAnalyzer**: Drukowanie szczegółów węzła w DAG
+    - **SlowTaskIdentifier**: Drukuj wolne szczegóły zadania w DAG
+    - **SlowestVertexAnalyzer**: Drukuj najwolniejsze szczegóły wierzchołka w DAG
+    - **SpillAnalyzer**: Drukuj szczegóły rozlania w DAG
+    - **TaskConcurrencyAnalyzer**: Drukuj szczegóły współbieżności zadania w DAG
+    - **VertexLevelCriticalPathAnalyzer**: Znajdowanie ścieżki krytycznej na poziomie wierzchołka w DAG
 
 
 ### <a name="additional-reading"></a>Materiały uzupełniające
 
-- [Łączenie z klastrem usługi HDInsight przy użyciu protokołu SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
+- [Nawiązywanie połączenia z klastrem usługi HDInsight przy użyciu protokołu SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 
-## <a name="how-do-i-download-tez-dag-data-from-a-cluster"></a>Jak pobrać dane w aplikacji Tez DAG z klastra?
+## <a name="how-do-i-download-tez-dag-data-from-a-cluster"></a>Jak mogę pobrać danych tez DAG z klastra?
 
 
 #### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
-Istnieją dwa sposoby na zbieranie danych Tez DAG:
+Istnieją dwa sposoby zbierania danych tez DAG:
 
 - W wierszu polecenia:
  
-    Nawiąż połączenie z klastrem HDInsight przy użyciu protokołu SSH. W wierszu polecenia Uruchom następujące polecenie:
+    Połącz się z klastrem usługi HDInsight przy użyciu protokołu SSH. W wierszu polecenia Uruchom następujące polecenie:
 
   ```apache
   hadoop jar /usr/hdp/current/tez-client/tez-history-parser-*.jar org.apache.tez.history.ATSImportTool -downloadDir . -dagId <DagId> 
   ```
 
-- Użyj widoku Ambari Tez:
+- Użyj widoku Ambari tez:
    
-  1. Przejdź do narzędzia Ambari. 
-  2. Przejdź do widoku aplikacji Tez (w obszarze Kafelki ikonę w prawym górnym rogu). 
-  3. Wybierz grupy DAG, którą chcesz wyświetlić.
-  4. Wybierz **pobierania danych**.
+  1. Przejdź do Ambari. 
+  2. Przejdź do widoku tez (w obszarze ikony kafelków w prawym górnym rogu). 
+  3. Wybierz DAG, które chcesz wyświetlić.
+  4. Wybierz pozycję **Pobierz dane**.
 
 ### <a name="additional-reading-end"></a>Materiały uzupełniające
 
-[Łączenie z klastrem usługi HDInsight przy użyciu protokołu SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
+[Nawiązywanie połączenia z klastrem usługi HDInsight przy użyciu protokołu SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 
 ### <a name="see-also"></a>Zobacz też

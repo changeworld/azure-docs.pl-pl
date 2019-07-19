@@ -1,24 +1,24 @@
 ---
-title: Reguły ruchu wychodzącego w module równoważenia obciążenia platformy Azure
+title: Reguły ruchu wychodzącego w Azure Load Balancer
 titlesuffix: Azure Load Balancer
 description: Użyj reguł dla ruchu wychodzącego do definiowania tłumaczenia adresu sieciowego ruchu wychodzącego
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/19/2018
-ms.author: kumud
-ms.openlocfilehash: 52fafa7e9dd46b6c78af3776797bae48b22ea8df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 7/17/2019
+ms.author: allensu
+ms.openlocfilehash: 39a23fa277d7bb389098674556b65b1b13676ead
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64698431"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305576"
 ---
 # <a name="load-balancer-outbound-rules"></a>Reguły ruchu wychodzącego modułu równoważenia obciążenia
 
@@ -34,7 +34,7 @@ Reguły ruchu wychodzącego umożliwiają kontrolowanie:
 - maszyn wirtualnych powinny być przekonwertowana na której publiczne adresy IP. 
 - jak [portów SNAT wychodzących](load-balancer-outbound-connections.md#snat) powinna zostać przydzielona.
 - zapewnienie wychodzącego Translacja protokołów.
-- jakie czas trwania dla limitu czasu bezczynności połączenia wychodzące (4-120 minut).
+- czas trwania okresu bezczynności połączenia wychodzącego (4-120 minut).
 - Określa, czy wysłać TCP Reset przy użyciu limitu czasu bezczynności (w publicznej wersji zapoznawczej). 
 
 Rozwiń węzeł reguł dla ruchu wychodzącego [Scenariusz 2](load-balancer-outbound-connections.md#lb) w opisanych w [połączeń wychodzących](load-balancer-outbound-connections.md) artykułu i pierwszeństwo scenariusz pozostaje jako — jest.
@@ -84,13 +84,13 @@ Użyj następującego parametru przydzielić SNAT 10 000 portów dla maszyny Wir
 
           "allocatedOutboundPorts": 10000
 
-Każdy publiczny adres IP z frontonów wszystkie reguły ruchu wychodzącego przyczynia się do 51,200 portów tymczasowych do użycia jako SNAT porty.  Moduł równoważenia obciążenia przydziela SNAT porty wielokrotność liczby 8. Jeśli podasz wartość nie podzielna przez 8 operacja konfiguracji jest odrzucane.  Jeśli użytkownik spróbuje przydzielić więcej SNAT portów, niż jest dostępnych na podstawie liczby publicznych adresów IP, operacja konfiguracji zostanie odrzucone.  Na przykład jeśli przydzielisz 10 000 portów dla maszyny Wirtualnej i 7 maszyn wirtualnych w wewnętrznej bazie danych będzie udostępnianie jednego publicznego adresu IP puli, konfiguracja zostanie odrzucone (7 x 10 000 SNAT porty > 51,200 SNAT porty).  Możesz dodać więcej publiczne adresy IP do serwera sieci Web, reguły ruchu wychodzącego do scenariusza.
+Każdy publiczny adres IP z frontonów wszystkie reguły ruchu wychodzącego przyczynia się do 51,200 portów tymczasowych do użycia jako SNAT porty.  Moduł równoważenia obciążenia przydziela SNAT porty wielokrotność liczby 8. Jeśli podasz wartość nie podzielna przez 8 operacja konfiguracji jest odrzucane.  Jeśli użytkownik spróbuje przydzielić więcej SNAT portów, niż jest dostępnych na podstawie liczby publicznych adresów IP, operacja konfiguracji zostanie odrzucone.  Na przykład w przypadku przydzielenia 10 000 portów na maszynę wirtualną i 7 maszyn wirtualnych w puli zaplecza współużytkują jeden publiczny 51 200 > 10 000 adres IP  Możesz dodać więcej publiczne adresy IP do serwera sieci Web, reguły ruchu wychodzącego do scenariusza.
 
 Można powrócić do [automatyczna alokacja portu SNAT oparte na rozmiar puli zaplecza](load-balancer-outbound-connections.md#preallocatedports) , określając 0 dla liczby portów.
 
 ### <a name="idletimeout"></a> Limit czasu bezczynności przepływu wychodzącego kontroli
 
-Reguły ruchu wychodzącego zapewniają parametru konfiguracji do kontrolowania limitu czasu bezczynności przepływu wychodzącego i dopasować go do potrzeb aplikacji.  Domyślnie wychodzącego przekroczeń limitu czasu bezczynności 4 minuty.  Parametr przyjmuje wartość od 4 do 120 do określonych minutach limitu czasu bezczynności dla przepływów pasujące do tej określonej reguły.
+Reguły ruchu wychodzącego zapewniają parametru konfiguracji do kontrolowania limitu czasu bezczynności przepływu wychodzącego i dopasować go do potrzeb aplikacji.  Domyślnie wychodzącego przekroczeń limitu czasu bezczynności 4 minuty.  Parametr przyjmuje wartość od 4 do 120 do określonej liczby minut dla limitu czasu bezczynności dla przepływów pasujących do tej konkretnej reguły.
 
 Aby ustawić limit czasu bezczynności ruchu wychodzącego do 1 godziny, należy użyć następującego parametru:
 
@@ -193,24 +193,24 @@ Korzystając z wewnętrznego standardowego modułu równoważenia obciążenia, 
    1. Wyłącz SNAT wychodzących na reguły równoważenia obciążenia.
    2. Skonfiguruj regułę dla ruchu wychodzącego w tym samym module równoważenia obciążenia.
    3. Ponowne użycie puli zaplecza, już używane przez maszyny wirtualne.
-   4. Określ "Protokół": "All" w ramach reguły ruchu wychodzącego.
+   4. Określ "Protokół": "All" jako część reguły ruchu wychodzącego.
 
 - Gdy używane są tylko reguły dla ruchu przychodzącego translatora adresów Sieciowych, znajduje się nie NAT dla ruchu wychodzącego.
 
    1. Umieść maszyny wirtualne w puli zaplecza.
    2. Należy zdefiniować co najmniej jeden konfiguracji adresów IP frontonu z publicznych adresów IP lub publiczny prefiks adresu IP.
    3. Skonfiguruj regułę dla ruchu wychodzącego w tym samym module równoważenia obciążenia.
-   4. Określ "Protokół": "All" w ramach reguły ruchu wychodzącego
+   4. Określ "Protokół": "All" jako część reguły ruchu wychodzącego
 
 ## <a name="limitations"></a>Ograniczenia
 
 - Maksymalna liczba można używać portów tymczasowych dla adresu IP frontonu jest 51,200.
-- Zakres konfigurowalnych limitu czasu bezczynności ruchu wychodzącego jest 4 do 120 minut (240 do 7200 sekund).
+- Zakres konfigurowalnego limitu czasu bezczynności wynosi od 4 do 120 minut (240 do 7200 sekund).
 - Moduł równoważenia obciążenia nie obsługuje protokołu ICMP dla wychodzących reguł NAT.
 - Portal nie można skonfigurować lub wyświetlać reguły dla ruchu wychodzącego.  Zamiast tego użyj szablonów, interfejs API REST, Az interfejsu wiersza polecenia w wersji 2.0 lub programu PowerShell.
-- Reguły ruchu wychodzącego jest stosowane tylko do podstawowej karty Sieciowej i podstawowa konfiguracja adresu IP.
+- Reguły ruchu wychodzącego mogą być stosowane tylko do podstawowej konfiguracji adresu IP karty sieciowej.  Obsługiwane są wiele kart sieciowych.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o korzystaniu z [modułu równoważenia obciążenia dla połączeń wychodzących](load-balancer-outbound-connections.md).
 - Dowiedz się więcej o [standardowego modułu równoważenia obciążenia](load-balancer-standard-overview.md).
