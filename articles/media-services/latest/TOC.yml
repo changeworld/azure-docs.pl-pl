@@ -93,12 +93,13 @@
           href: streaming-policy-concept.md
         - name: Kody błędów punktu końcowego przesyłania strumieniowego
           href: streaming-endpoint-error-codes.md
-    - name: Szyfrowanie dynamiczne i dostarczanie kluczy
+    - name: Ochrona zawartości
       items:
-        - name: Protokoły przesyłania strumieniowego i typy szyfrowania
-          displayName: 'dynamic, encryption, content protection, PlayReady, Widevine, FairPlay'
+        - name: Szyfrowanie dynamiczne i dostarczanie kluczy
+          displayName: 'content protection, streaming protocols, encryption types, content protection, PlayReady, Widevine, FairPlay'
           href: content-protection-overview.md
-        - name: System z wieloma mechanizmami DRM i kontrolą dostępu
+        - name: Projektowanie systemu z wieloma mechanizmami DRM
+          displayName: 'drm, access control'
           href: design-multi-drm-system-with-access-control.md
         - name: Licencje DRM
           items:
