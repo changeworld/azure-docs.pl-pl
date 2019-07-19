@@ -55,12 +55,12 @@ Logika biznesowa aplikacji może być modelowane jako automatu stanów, których
 
 | Pole | Description | Wymagane | Maksymalna długość |
 |-------|-------------|:--------:|-----------:|
-| Name (Nazwa) | Nazwa unikatowa przepływu pracy. Odpowiedni kontrakt inteligentnych muszą używać tego samego **nazwa** dla klasy stosownej umowy. | Yes | 50 |
+| Name | Nazwa unikatowa przepływu pracy. Odpowiedni kontrakt inteligentnych muszą używać tego samego **nazwa** dla klasy stosownej umowy. | Yes | 50 |
 | DisplayName | Przyjazną nazwę wyświetlaną przepływu pracy. | Yes | 255 |
 | Description | Opis przepływu pracy. | Nie | 255 |
 | Inicjatory | Kolekcja [ApplicationRoles](#application-roles). Role, które są przypisane do użytkowników autoryzowanych do utworzenia kontraktów w przepływie pracy. | Tak | |
 | StartState | Nazwa stanu początkowego przepływu pracy. | Tak | |
-| Właściwości | Kolekcja [identyfikatory](#identifiers). Reprezentuje dane mogą być odczytywane poza łańcuchem i wizualizowany w użytkownika środowiska narzędzi. | Yes | |
+| Properties | Kolekcja [identyfikatory](#identifiers). Reprezentuje dane mogą być odczytywane poza łańcuchem i wizualizowany w użytkownika środowiska narzędzi. | Yes | |
 | Konstruktor | Definiuje parametry wejściowe w celu utworzenia wystąpienia przepływu pracy. | Tak | |
 | Funkcje | Kolekcja [funkcje](#functions) mogą być wykonywane w przepływie pracy. | Yes | |
 | Stany | Kolekcja przepływu pracy [stany](#states). | Tak | |
