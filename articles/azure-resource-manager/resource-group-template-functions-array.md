@@ -17,23 +17,23 @@ ms.locfileid: "67206388"
 
 Resource Manager zapewnia kilka funkcji do pracy z tablicami i obiektami.
 
-* [Tablica](#array)
+* [array](#array)
 * [coalesce](#coalesce)
 * [concat](#concat)
-* [zawiera](#contains)
+* [contains](#contains)
 * [createArray](#createarray)
-* [pusty](#empty)
-* [pierwszy](#first)
-* [Część wspólna](#intersection)
+* [empty](#empty)
+* [first](#first)
+* [intersection](#intersection)
 * [json](#json)
 * [last](#last)
-* [Długość](#length)
+* [length](#length)
 * [max](#max)
 * [min](#min)
 * [range](#range)
 * [skip](#skip)
-* [Wypełnij](#take)
-* [Unia](#union)
+* [take](#take)
+* [union](#union)
 
 Aby uzyskać tablicę wartości ciągu, rozdzielone wartości, zobacz [podziału](resource-group-template-functions-string.md#split).
 
