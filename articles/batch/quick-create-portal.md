@@ -3,19 +3,19 @@ title: Szybki start na platformie Azure — uruchamianie zadania usługi Batch �
 description: Szybko naucz się uruchamiać zadanie usługi Batch za pomocą witryny Azure Portal.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: d478307ff4393d84a854fcd3b2ea0efd77de7135
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 33455a95dff946676e3dfffbd2737ed36be59c64
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60619923"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322365"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Szybki start: Uruchamianie pierwszego zadania usługi Batch w witrynie Azure Portal
 
@@ -57,10 +57,10 @@ Teraz, gdy masz już konto usługi Batch, utwórz przykładową pulę węzłów 
 
 3. W obszarze **System operacyjny** wybierz następujące ustawienia (możesz eksplorować pozostałe opcje).
   
-   |Ustawienie  |Wartość  |
+   |Ustawienie  |Value  |
    |---------|---------|
    |**Typ obrazu**|Witryna Marketplace (Linux/Windows)|
-   |**Wydawca**     |MicrosoftWindowsServer|
+   |**Publisher**     |MicrosoftWindowsServer|
    |**Oferta**     |WindowsServer|
    |**Jednostka SKU**     |2012-R2-Datacenter-smalldisk|
 
@@ -68,7 +68,7 @@ Teraz, gdy masz już konto usługi Batch, utwórz przykładową pulę węzłów 
 
 4. Przewiń w dół, aby wprowadzić wartości ustawień **Rozmiar węzła** i **Skala**. Sugerowany rozmiar węzłów oferuje dobry kompromis między wydajnością a kosztem na potrzeby tego krótkiego przykładu.
   
-   |Ustawienie  |Wartość  |
+   |Ustawienie  |Value  |
    |---------|---------|
    |**Warstwa cenowa węzła**     |Standardowa_A1|
    |**Docelowe węzły dedykowane**     |2|
@@ -109,7 +109,7 @@ Aby utworzyć pierwsze zadanie podrzędne:
 
 3. W polu **Wiersz polecenia** wprowadź wartość `cmd /c "set AZ_BATCH & timeout /t 90 > NUL"`. Zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz przycisk **OK**.
 
-   ![Tworzenie zadania podrzędnego][task_create]
+   ![Utwórz zadanie][task_create]
 
 Po utworzeniu zadania podrzędnego usługa Batch umieszcza je w kolejce w celu uruchomienia w puli. Zadanie podrzędne zostanie uruchomione, gdy odpowiedni węzeł stanie się dostępny.
 
@@ -131,7 +131,7 @@ Opłaty za pulę są naliczane, dopóki węzły działają, nawet jeśli nie zos
 
 Gdy grupa zasobów, konto usługi Batch i wszystkie pokrewne zasoby nie będą już potrzebne, usuń je. W tym celu zaznacz grupę zasobów konta usługi Batch i wybierz pozycję **Usuń grupę zasobów**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start utworzono konto usługi Batch, pulę usługi Batch i zadanie usługi Batch. Zadanie uruchomiło przykładowe zadania podrzędne i wyświetlono dane wyjściowe utworzone w jednym z węzłów. Teraz, gdy już rozumiesz kluczowe pojęcia związane z usługą Batch, możesz wypróbować tę usługę z bardziej realistycznymi obciążeniami na większą skalę. Aby dowiedzieć się więcej o usłudze Azure Batch, kontynuuj naukę w ramach samouczków usługi Azure Batch. 
 

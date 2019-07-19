@@ -3,21 +3,21 @@ title: Szybki start na platformie Azure — uruchamianie zadania usługi Batch �
 description: Szybko uruchamiaj zadania i zadania podrzędne usługi Batch za pomocą biblioteki klienta .NET usługi Batch.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: b8d7556607cdb73c3e3ae19109bcbf34b72b0915
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 37cd6fdd2f82af581e27f9341292c484b1cc601e
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595351"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322323"
 ---
-# <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Szybki start: Uruchamianie pierwszego zadania usługi Azure Batch przy użyciu interfejsu API platformy .NET
+# <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Szybki start: Uruchamianie pierwszego zadania Azure Batch za pomocą interfejsu API platformy .NET
 
 Ten przewodnik Szybki start przedstawia uruchamianie zadania usługi Azure Batch z poziomu aplikacji w języku C# utworzonej w oparciu o interfejs API platformy .NET usługi Azure Batch. Aplikacja przekazuje kilka plików danych wejściowych do usługi Azure Storage oraz tworzy *pulę* węzłów obliczeniowych (maszyn wirtualnych) usługi Batch. Następnie aplikacja tworzy przykładowe *zadanie*, które uruchamia *zadania podrzędne* w celu przetworzenia każdego pliku wejściowego w puli przy użyciu podstawowego polecenia. Po ukończeniu tego przewodnika Szybki start będziesz rozumieć kluczowe pojęcia związane z usługą Batch, co pozwoli na wypróbowanie tej usługi z bardziej realistycznymi obciążeniami na większą skalę.
 
@@ -27,7 +27,7 @@ Ten przewodnik Szybki start przedstawia uruchamianie zadania usługi Azure Batch
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Program Visual Studio 2017 lub nowszego](https://www.visualstudio.com/vs), lub [platformy .NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) dla systemu Linux, macOS lub Windows. 
+* [Program Visual Studio 2017 lub nowszy](https://www.visualstudio.com/vs)lub [.NET Core 2,1](https://www.microsoft.com/net/download/dotnet-core/2.1) dla systemów Linux, macOS i Windows. 
 
 * Konto usługi Batch i połączone konto usługi Azure Storage. Aby utworzyć te konta, skorzystaj z przewodników Szybki start dla usługi Batch i [witryny Azure Portal](quick-create-portal.md) lub [interfejsu wiersza polecenia platformy Azure](quick-create-cli.md). 
 
@@ -47,7 +47,7 @@ git clone https://github.com/Azure-Samples/batch-dotnet-quickstart.git
 
 Przejdź do katalogu, który zawiera plik rozwiązania programu Visual Studio `BatchDotNetQuickstart.sln`.
 
-Otwórz plik rozwiązania w programie Visual Studio i zaktualizuj ciągi poświadczeń w pliku `Program.cs`, wprowadzając wartości uzyskane dla kont. Na przykład:
+Otwórz plik rozwiązania w programie Visual Studio i zaktualizuj ciągi poświadczeń w pliku `Program.cs`, wprowadzając wartości uzyskane dla kont. Przykład:
 
 ```csharp
 // Batch account credentials

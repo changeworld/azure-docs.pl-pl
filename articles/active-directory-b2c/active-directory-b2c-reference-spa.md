@@ -1,6 +1,6 @@
 ---
-title: Jednostronicowych zalogować się przy użyciu niejawnego przepływu — Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak dodać jedną stronę logowania przy użyciu niejawnego przepływu OAuth 2.0 usługa Azure Active Directory B2C.
+title: Logowanie jednostronicowe przy użyciu niejawnego przepływu — Azure Active Directory B2C | Microsoft Docs
+description: Dowiedz się, jak dodać jednostronicowe Logowanie przy użyciu niejawnego przepływu OAuth 2,0 z Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,36 +10,36 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a9eadabcedc9d5fd1baedb6cd893e6f7829c5ca8
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: ade9740d6c5e9edcda4a01c72b94c6f84686447d
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835733"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248791"
 ---
-# <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Jednostronicowych zalogować się przy użyciu niejawnego przepływu OAuth 2.0 w usłudze Azure Active Directory B2C
+# <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Jednostronicowe Logowanie przy użyciu niejawnego przepływu OAuth 2,0 w Azure Active Directory B2C
 
-Wiele nowoczesnych aplikacji ma aplikacja jednostronicowa fronton, który jest napisany głównie w języku JavaScript. Często przy użyciu struktury, takich jak platformy React, Angular lub Vue.js napisano aplikację. Aplikacje jednostronicowe i innych aplikacji JavaScript, które działają głównie w przeglądarce mają pewne dodatkowe problemy dotyczące uwierzytelniania:
+Wiele nowoczesnych aplikacji ma fronton aplikacji jednostronicowej, który jest przeznaczony głównie do pisania w języku JavaScript. Często aplikacja jest zapisywana przy użyciu struktury, takiej jak reaguje, kątowe lub Vue. js. Aplikacje jednostronicowe i inne aplikacje JavaScript, które są uruchamiane głównie w przeglądarce, mają kilka dodatkowych wyzwań związanych z uwierzytelnianiem:
 
-- Właściwości zabezpieczeń tych aplikacji różnią się od tradycyjnych oparte na serwerze sieci web aplikacji.
-- Wiele serwerów autoryzacji i dostawców tożsamości nie obsługują współużytkowanie zasobów (między źródłami CORS) żądania udostępniania.
-- Przekierowuje przeglądarki postać od aplikacji może być inwazyjne do środowiska użytkownika.
+- Charakterystyki zabezpieczeń tych aplikacji różnią się od tradycyjnych aplikacji sieci Web opartych na serwerze.
+- Wiele serwerów autoryzacji i dostawców tożsamości nie obsługuje żądań funkcji udostępniania zasobów między źródłami (CORS).
+- Przeglądarka oparta na pełnej stronie przekieruje się do aplikacji.
 
-Aby umożliwić obsługę tych aplikacji usługi Azure Active Directory B2C (Azure AD B2C) używa niejawnego przepływu OAuth 2.0. Przepływ przyznawanie niejawne autoryzacji OAuth 2.0 opisano w [sekcji 4.2 specyfikacji protokołu OAuth 2.0](https://tools.ietf.org/html/rfc6749). W niejawny przepływ aplikacja odbiera tokenów, bezpośrednio z usługi Azure Active Directory (Azure AD) autoryzować punktu końcowego, bez żadnych serwer do serwera programu exchange. Wszystkie logiki uwierzytelniania i obsługi sesji są wykonywane tylko w całości klienta JavaScript bez dodatkowa strona przekierowania.
+W celu obsługi tych aplikacji Azure Active Directory B2C (Azure AD B2C) używa niejawnego przepływu OAuth 2,0. Niejawny zakres autoryzacji uwierzytelniania OAuth 2,0 został opisany w [sekcji 4,2 specyfikacji OAuth 2,0](https://tools.ietf.org/html/rfc6749). W niejawnym przepływie aplikacja otrzymuje tokeny bezpośrednio z Azure Active Directory (Azure AD) autoryzuje punkt końcowy, bez żadnej wymiany serwer-serwer. Wszystkie logiky uwierzytelniania i obsługa sesji są wykonywane całkowicie w kliencie JavaScript bez dodatkowych przekierowań stron.
 
-Usługa Azure AD B2C rozszerza standardowe niejawnego przepływu OAuth 2.0 do więcej niż proste uwierzytelnianie i autoryzacja. Usługa Azure AD B2C wprowadza [parametru zasad](active-directory-b2c-reference-policies.md). Za pomocą parametru zasad można użyć protokołu OAuth 2.0 Aby dodać zasady do aplikacji, takich jak rejestracji, logowania i profil zarządzania przepływy użytkownika. W żądaniach przykład HTTP, w tym artykule **fabrikamb2c.onmicrosoft.com** służy jako przykład. Możesz zastąpić `fabrikamb2c` nazwą dzierżawy, jeśli masz i utworzono przepływ użytkownika.
+Azure AD B2C rozszerza standardowy przepływ niejawny protokołu OAuth 2,0 na więcej niż proste uwierzytelnianie i autoryzację. Azure AD B2C wprowadza [parametr Policy](active-directory-b2c-reference-policies.md). Za pomocą parametru Policy można użyć protokołu OAuth 2,0 do dodawania zasad do aplikacji, takich jak rejestrowanie, logowanie i przepływy użytkowników zarządzania profilami. W przykładowych żądaniach HTTP w tym artykule **fabrikamb2c.onmicrosoft.com** jest używany jako przykład. Możesz zamienić `fabrikamb2c` na nazwę dzierżawy, jeśli istnieje, i utworzyć przepływ użytkownika.
 
-Niejawny przepływ logowania wygląda podobnie jak na poniższej ilustracji. Każdy krok jest opisane szczegółowo w dalszej części tego artykułu.
+Niejawny przepływ logowania wygląda podobnie do poniższej ilustracji. Każdy krok został szczegółowo opisany w dalszej części artykułu.
 
-![Schemat tor styl niejawny przepływ protokołu OpenID Connect](../media/active-directory-v2-flows/convergence_scenarios_implicit.png)
+![Diagram stylu toru przedstawiający niejawny przepływ OpenID Connect Connect](../media/active-directory-v2-flows/convergence_scenarios_implicit.png)
 
 ## <a name="send-authentication-requests"></a>Wysyłanie żądań uwierzytelniania
 
-W przypadku aplikacji sieci web wymaga uwierzytelnienia użytkownika i uruchomić przepływ użytkownika, można je skierować użytkownika `/authorize` punktu końcowego. Użytkownik wykonuje akcję, zależnie od przepływu użytkownika.
+Gdy aplikacja sieci Web wymaga uwierzytelnienia użytkownika i uruchomienia przepływu użytkownika, może kierować użytkownika do `/authorize` punktu końcowego. Użytkownik wykonuje akcję w zależności od przepływu użytkownika.
 
-W tym żądaniu klient wskazuje uprawnienia, których potrzebuje, aby pobierać z użytkownikiem w `scope` parametr i przepływ użytkownika do uruchamiania w `p` parametru. Trzy przykłady znajdują się w poniższych sekcjach (z podziały wierszy dla czytelności), używając przepływu innego użytkownika. Aby uzyskać pewne pojęcie dla działania każdego żądania, spróbuj wklejanie żądania do przeglądarki i uruchomiania go. Możesz zastąpić `fabrikamb2c` nazwą dzierżawy, jeśli masz i utworzono przepływ użytkownika.
+W tym żądaniu klient wskazuje uprawnienia wymagane do uzyskania od użytkownika w `scope` parametrze i przepływ użytkownika do uruchomienia `p` w parametrze. Trzy przykłady są podane w poniższych sekcjach (z podziałami wierszy na potrzeby czytelności), z których każdy korzysta z innego przepływu użytkownika. Aby poznać sposób działania poszczególnych żądań, spróbuj wkleić żądanie do przeglądarki i uruchomić ją. Możesz zamienić `fabrikamb2c` na nazwę dzierżawy, jeśli istnieje, i utworzyć przepływ użytkownika.
 
-### <a name="use-a-sign-in-user-flow"></a>Za pomocą przepływu logowania użytkownika
+### <a name="use-a-sign-in-user-flow"></a>Korzystanie z przepływu użytkownika logowania
 
 ```
 GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
@@ -53,7 +53,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &p=b2c_1_sign_in
 ```
 
-### <a name="use-a-sign-up-user-flow"></a>Za pomocą przepływu rejestracji użytkownika
+### <a name="use-a-sign-up-user-flow"></a>Korzystanie z przepływu użytkownika rejestracji
 ```
 GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
@@ -66,7 +66,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &p=b2c_1_sign_up
 ```
 
-### <a name="use-an-edit-profile-user-flow"></a>Użyj profilu edycji przepływu użytkownika
+### <a name="use-an-edit-profile-user-flow"></a>Korzystanie z przepływu edycji profilu użytkownika
 ```
 GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
@@ -81,22 +81,22 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 | Parametr | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| client_id | Tak | Identyfikator aplikacji [witryny Azure portal](https://portal.azure.com/) przypisane do aplikacji. |
-| response_type | Yes | Musi zawierać `id_token` dla logowania OpenID Connect. To również obejmować opcję Typ odpowiedzi `token`. Jeśli używasz `token`, aplikacja może bezpośrednio odbierać token dostępu z punktu końcowego autoryzacji, bez konieczności szukania drugie żądanie do punktu końcowego autoryzacji.  Jeśli używasz `token` typ odpowiedzi `scope` parametr musi zawierać zakres, który wskazuje, którego zasobu należy wystawić token dla. |
-| redirect_uri | Nie | Przekierowania URI aplikacji, gdzie odpowiedzi uwierzytelniania mogą być wysyłane i odbierane przez aplikację. Jego musi dokładnie odpowiadać jeden przekierowania identyfikatory URI, który został zarejestrowany w portalu, z tą różnicą, że musi być zakodowane w adresie URL. |
-| response_mode | Nie | Określa metodę używaną do wysyłania wynikowy token wstecz do swojej aplikacji.  Niejawne przepływów, można użyć `fragment`. |
-| scope | Yes | Rozdzielonej spacjami listy zakresów. Wskazuje wartość pojedynczy zakres do usługi Azure AD zarówno uprawnień, które są żądane. `openid` Zakresu wskazuje uprawnienia, aby zalogować użytkownika i pobieranie danych o użytkowniku w formie tokenów Identyfikatora. `offline_access` Zakres jest opcjonalny w przypadku aplikacji sieci web. Oznacza to, że Twoja aplikacja wymaga tokenu odświeżania długotrwałe dostępu do zasobów. |
-| state | Nie | Wartość uwzględnione w żądaniu, który jest zwracany w odpowiedzi tokenu. Może być ciągiem żadnej zawartości, którego chcesz używać. Zazwyczaj wartość losowo generowany, unikatowy służy, aby zapobiec atakom fałszowanie żądań między witrynami. Stan jest również używane do kodowania informacje o stanie użytkownika w aplikacji, zanim żądanie uwierzytelniania wystąpił, takich jak strony znajdowały się w. |
-| nonce | Yes | Wartość uwzględnione w żądaniu (generowany przez aplikację), który znajduje się w jego identyfikator tokenu jako oświadczenia. Aplikacja może zweryfikować tę wartość, aby uniknąć powtarzania tokenu ataków. Zazwyczaj wartość jest losowego, unikatowy ciąg, który może służyć do identyfikowania pochodzenia żądania. |
-| p | Tak | Zasady do wykonania. Jest to nazwa, zasad (przepływ użytkownika), który jest tworzony w dzierżawie usługi Azure AD B2C. Wartość nazwy zasad powinien zaczynać się od **b2c\_1\_** . |
-| wiersz | Nie | Typ interakcji z użytkownikiem, który jest wymagany. Obecnie jest jedyną prawidłową wartością `login`. Ten parametr wymusza na użytkowniku, aby wprowadzić swoje poświadczenia dla tego żądania. Logowanie jednokrotne nie zaczęły obowiązywać. |
+| client_id | Tak | Identyfikator aplikacji, który [Azure Portal](https://portal.azure.com/) przypisany do aplikacji. |
+| response_type | Tak | Musi zawierać `id_token` do logowania za OpenID Connect Connect. Może również zawierać typ `token`odpowiedzi. Jeśli używasz `token`programu, aplikacja może natychmiast odebrać token dostępu od autoryzowanego punktu końcowego, bez wykonywania drugiego żądania do autoryzowanego punktu końcowego.  W przypadku użycia `token` typu `scope` odpowiedzi parametr musi zawierać zakres, który wskazuje zasób, dla którego ma zostać wystawiony token. |
+| redirect_uri | Nie | Identyfikator URI przekierowania aplikacji, w którym odpowiedzi uwierzytelniania mogą być wysyłane i odbierane przez aplikację. Musi dokładnie pasować do jednego z identyfikatorów URI przekierowania zarejestrowanych w portalu, z tą różnicą, że musi być zakodowany w adresie URL. |
+| response_mode | Nie | Określa metodę, która ma zostać użyta do wysłania zwróconego tokenu z powrotem do aplikacji.  W przypadku niejawnych `fragment`przepływów Użyj. |
+| scope | Tak | Rozdzielana spacjami lista zakresów. Pojedyncza wartość zakresu wskazuje na usługę Azure AD oba wymagane uprawnienia. `openid` Zakres wskazuje uprawnienia do logowania użytkownika i pobieranie danych o użytkowniku w postaci tokenów identyfikatorów. `offline_access` Zakres jest opcjonalny dla aplikacji sieci Web. Oznacza to, że aplikacja wymaga tokenu odświeżania na potrzeby długotrwałego dostępu do zasobów. |
+| state | Nie | Wartość zawarta w żądaniu, która również jest zwracana w odpowiedzi tokenu. Może to być ciąg dowolnej zawartości, która ma być używana. Zwykle jest używana losowo generowana wartość unikatowa, aby zapobiec atakom na fałszerstwo żądań między lokacjami. Ten stan jest również używany do kodowania informacji o stanie użytkownika w aplikacji przed wystąpieniem żądania uwierzytelnienia, np. na stronie, w której znajdowały się. |
+| nonce | Tak | Wartość dołączona do żądania (wygenerowanego przez aplikację), która jest uwzględniona w tokenie zwracanego identyfikatora jako jako element Claim. Następnie aplikacja może zweryfikować tę wartość, aby zmniejszyć ataki metodą powtórzeń tokenu. Zazwyczaj wartość jest wartością losową i unikatowym ciągiem, który może służyć do identyfikowania pochodzenia żądania. |
+| p | Tak | Zasady do wykonania. Jest to nazwa zasad (przepływ użytkownika), które są tworzone w dzierżawie Azure AD B2C. Wartość nazwy zasad powinna rozpoczynać się **od\_B2C\_1**. |
+| pytać | Nie | Typ interakcji z użytkownikiem, która jest wymagana. Obecnie jedyna prawidłowa wartość to `login`. Ten parametr wymusza, aby użytkownik wprowadził swoje poświadczenia dla tego żądania. Logowanie jednokrotne nie obowiązuje. |
 
-W tym momencie użytkownik jest monitowany do ukończenia przepływu pracy zasad. Użytkownik może być konieczne wprowadzanie nazwy użytkownika i hasła, zaloguj się przy użyciu tożsamości społecznościowej, zaloguj w katalogu lub dowolną liczbę kroków. Akcje użytkownika, zależą od tego, jak jest zdefiniowany przepływu użytkownika.
+W tym momencie użytkownik zostanie poproszony o ukończenie przepływu pracy zasad. Użytkownik może wprowadzić nazwę użytkownika i hasło, zalogować się przy użyciu tożsamości społecznościowej, utworzyć konto w katalogu lub dowolną inną liczbę kroków. Akcje użytkownika zależą od sposobu definiowania przepływu użytkownika.
 
-Po użytkownik kończy przepływ użytkownika, usługi Azure AD, zwraca odpowiedź do aplikacji w wartości używane dla `redirect_uri`. Używa metody podanej w `response_mode` parametru. Odpowiedź jest dokładnie taka sama dla wszystkich scenariuszy akcji użytkownika, niezależnie od przepływu użytkownika, który został wykonany.
+Po zakończeniu przepływu użytkownika usługa Azure AD zwróci odpowiedź do aplikacji na wartość użytą przez `redirect_uri`użytkownika. Używa metody określonej w `response_mode` parametrze. Odpowiedź jest dokładnie taka sama dla każdego scenariusza akcji użytkownika, niezależnie od przepływu użytkownika, który został wykonany.
 
-### <a name="successful-response"></a>Odpowiedź oznaczająca Powodzenie
-Odpowiedź oznaczająca Powodzenie, który używa `response_mode=fragment` i `response_type=id_token+token` wygląda podobnie do następujących, podziałami wierszy w celu uzyskania czytelności:
+### <a name="successful-response"></a>Pomyślna odpowiedź
+Pomyślna odpowiedź, `response_mode=fragment` która `response_type=id_token+token` używa i wygląda następująco, z podziałami wierszy na czytelność:
 
 ```
 GET https://aadb2cplayground.azurewebsites.net/#
@@ -110,15 +110,15 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 
 | Parametr | Opis |
 | --------- | ----------- |
-| access_token | Token dostępu, który zażądał aplikacji. |
-| token_type | Wartość atrybutu typ tokenu. Jedynym typem, który obsługuje usługi Azure AD jest elementu nośnego. |
-| expires_in | Długość czasu, przez jaki token dostępu jest prawidłowy (w sekundach). |
-| scope | Token jest prawidłowy dla zakresów. Również zakresów można użyć do tokenów pamięci podręcznej do późniejszego użycia. |
-| id_token | Identyfikator tokenu, który zażądał aplikacji. Identyfikator tokenu można użyć do zweryfikowania tożsamości użytkownika i rozpocząć sesję z użytkownikiem. Aby uzyskać więcej informacji o identyfikatorze tokeny i ich zawartość, zobacz [odwołania do tokenu usługi Azure AD B2C](active-directory-b2c-reference-tokens.md). |
-| state | Jeśli `state` parametru jest uwzględnione w żądaniu, tę samą wartość powinna zostać wyświetlona w odpowiedzi. Aplikacja powinna upewnij się, że `state` wartości żądania i odpowiedzi są identyczne. |
+| access_token | Token dostępu, którego żądała aplikacja. |
+| token_type | Wartość typu tokenu. Jedynym typem obsługiwanym przez usługę Azure AD jest znak. |
+| expires_in | Długość czasu ważności tokenu dostępu (w sekundach). |
+| scope | Zakresy, dla których token jest ważny. Można również użyć zakresów do buforowania tokenów do późniejszego użycia. |
+| id_token | Token identyfikatora, którego żądała aplikacja. Możesz użyć tokenu identyfikatora, aby zweryfikować tożsamość użytkownika i rozpocząć sesję z użytkownikiem. Aby uzyskać więcej informacji o tokenach identyfikatorów i ich zawartości, zobacz [Informacje o tokenach Azure AD B2C](active-directory-b2c-reference-tokens.md). |
+| state | `state` Jeśli parametr zostanie uwzględniony w żądaniu, ta sama wartość powinna pojawić się w odpowiedzi. Aplikacja powinna sprawdzić, czy `state` wartości w żądaniu i odpowiedzi są identyczne. |
 
-### <a name="error-response"></a>Odpowiedzi na błąd
-Odpowiedzi na błędy również mogą być wysyłane do identyfikatora URI przekierowania, dzięki czemu aplikacja może je odpowiednio obsługiwać:
+### <a name="error-response"></a>Odpowiedź na błąd
+Odpowiedzi na błędy można także wysyłać do identyfikatora URI przekierowania, aby aplikacja mogła je odpowiednio obsłużyć:
 
 ```
 GET https://aadb2cplayground.azurewebsites.net/#
@@ -129,51 +129,51 @@ error=access_denied
 
 | Parametr | Opis |
 | --------- | ----------- |
-| error | Kod służący do klasyfikowania typy występujące błędy. |
-| error_description | Komunikat błędu, który pomoże Ci identyfikować przyczyny błędu uwierzytelniania. |
-| state | Jeśli `state` parametru jest uwzględnione w żądaniu, tę samą wartość powinna zostać wyświetlona w odpowiedzi. Aplikacja powinna upewnij się, że `state` wartości żądania i odpowiedzi są identyczne.|
+| error | Kod używany do klasyfikowania typów błędów, które występują. |
+| error_description | Konkretny komunikat o błędzie, który może pomóc w zidentyfikowaniu głównej przyczyny błędu uwierzytelniania. |
+| state | `state` Jeśli parametr zostanie uwzględniony w żądaniu, ta sama wartość powinna pojawić się w odpowiedzi. Aplikacja powinna sprawdzić, czy `state` wartości w żądaniu i odpowiedzi są identyczne.|
 
-## <a name="validate-the-id-token"></a>Sprawdzanie poprawności tokenu Identyfikacyjnego
+## <a name="validate-the-id-token"></a>Weryfikowanie tokenu identyfikatora
 
-Odbieranie tokenu Identyfikacyjnego nie wystarcza do uwierzytelnienia użytkownika. Weryfikowanie podpisu tokenu Identyfikacyjnego i sprawdź oświadczenia w tokenie na wymagania dotyczące Twojej aplikacji. Usługa Azure AD B2C używa [tokenów sieci Web JSON (tokenów Jwt)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) i kryptografii klucza publicznego do podpisywania tokenów i sprawdź, czy są prawidłowe.
+Odebranie tokenu identyfikatora jest za mało, aby można było uwierzytelnić użytkownika. Sprawdź poprawność podpisu tokenu identyfikatora i sprawdź oświadczenia w tokenie według wymagań aplikacji. Azure AD B2C używa [tokenów sieci Web JSON (JWTs)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) i kryptografii klucza publicznego do podpisywania tokenów i sprawdzania, czy są one prawidłowe.
 
-Wiele bibliotek typu open source są dostępne do weryfikacji tokenów Jwt, w zależności od języka, którego chcesz użyć. Należy wziąć pod uwagę Eksplorowanie dostępnych bibliotek typu open source, a nie Implementowanie logiki walidacji. Aby uzyskać więcej informacji, jak prawidłowo używać tych bibliotek znajdziesz informacje w tym artykule.
+Wiele bibliotek typu open source jest dostępnych do sprawdzania poprawności JWTs, w zależności od języka, którego wolisz używać. Rozważ możliwość eksplorowania dostępnych bibliotek Open Source zamiast implementowania własnej logiki walidacji. Aby dowiedzieć się, jak prawidłowo korzystać z tych bibliotek, można użyć informacji zawartych w tym artykule.
 
-Usługa Azure AD B2C ma punkt końcowy metadanych OpenID Connect. Aplikacja może używać punktu końcowego można pobrać informacji na temat usługi Azure AD B2C w środowisku uruchomieniowym. Informacje te obejmują punkty końcowe, zawartość tokenów i tokenów kluczy podpisywania. Brak dokumentu metadanych JSON dla każdego przepływu użytkownika w dzierżawie usługi Azure AD B2C. Na przykład w dokumencie metadanych b2c_1_sign_in przepływ użytkownika w dzierżawie fabrikamb2c.onmicrosoft.com wygląda następująco:
+Azure AD B2C ma punkt końcowy metadanych połączenia OpenID Connect. Aplikacja może używać punktu końcowego do pobierania informacji o Azure AD B2C w czasie wykonywania. Te informacje obejmują punkty końcowe, zawartość tokenu i klucze podpisywania tokenu. Istnieje dokument metadanych JSON dla każdego przepływu użytkownika w dzierżawie Azure AD B2C. Na przykład dokument metadanych przepływu użytkownika b2c_1_sign_in w dzierżawie fabrikamb2c.onmicrosoft.com znajduje się w lokalizacji:
 
 `https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_sign_in`
 
-Jedna z właściwości tego dokumentu konfiguracji jest `jwks_uri`. Wartość dla tego samego przepływu użytkownika będzie:
+Jedną z właściwości tego dokumentu konfiguracji jest `jwks_uri`. Wartością tego samego przepływu użytkownika będzie:
 
 `https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_sign_in`
 
-Aby określić przepływ użytkownika, który został użyty do podpisania tokenu Identyfikacyjnego (i gdzie można pobrać metadanych z), masz dwie opcje. Po pierwsze, przepływ użytkownika znajduje się w `acr` oświadczenia w `id_token`. Aby dowiedzieć się, jak analizować oświadczeń z tokenu Identyfikatora, zobacz [odwołania do tokenu usługi Azure AD B2C](active-directory-b2c-reference-tokens.md). Drugą opcją jest do zakodowania przepływu użytkownika w wartości `state` parametru w przypadku wysyłania żądania. Następnie dekodowania `state` parametru, aby ustalić, które przepływ użytkownika zostało użyte. Każda z tych metod jest prawidłowy.
+Aby określić, który przepływ użytkownika był używany do podpisywania tokenu identyfikatora (i miejsca pobierania metadanych z), dostępne są dwie opcje. Najpierw nazwa przepływu użytkownika jest uwzględniona w podanym `acr` `id_token`w temacie. Aby uzyskać informacje na temat sposobu analizowania oświadczeń z tokenu identyfikatora, zobacz informacje o [tokenach Azure AD B2C](active-directory-b2c-reference-tokens.md). Innym rozwiązaniem jest zakodowanie przepływu użytkownika w wartości `state` parametru podczas wysyłania żądania. Następnie należy zdekodować `state` parametr, aby określić, który przepływ użytkownika był używany. Każda metoda jest prawidłowa.
 
-Po nabyciu dokumentu metadanych z punktu końcowego metadanych OpenID Connect, służy klucze publiczne RSA-256 (znajdujący się w tym punkcie końcowym) można zweryfikować podpisu tokenu Identyfikacyjnego. Może istnieć wiele kluczy wymienione w tym punkcie końcowym w dowolnym momencie, identyfikowanych przez `kid`. Nagłówek `id_token` zawiera także `kid` oświadczenia. Wskazuje, które z tych kluczy był używany do podpisywania tokenu Identyfikacyjnego. Aby uzyskać więcej informacji, w tym zapoznać się z platformą [sprawdzanie poprawności tokenów](active-directory-b2c-reference-tokens.md), zobacz [odwołania do tokenu usługi Azure AD B2C](active-directory-b2c-reference-tokens.md).
+Po pobraniu dokumentu metadanych z punktu końcowego metadanych OpenID Connect Connect można użyć kluczy publicznych RSA-256 (znajdujących się w tym punkcie końcowym), aby zweryfikować podpis tokenu identyfikatora. W tym punkcie końcowym może istnieć wiele kluczy, z których każdy jest identyfikowany przez `kid`. Nagłówek `id_token` zawiera również element `kid` Claim. Wskazuje, które z tych kluczy użyto do podpisania tokenu identyfikatora. Aby uzyskać więcej informacji, w tym informacje dotyczące [sprawdzania poprawności tokenów](active-directory-b2c-reference-tokens.md), zobacz [Informacje o tokenach Azure AD B2C](active-directory-b2c-reference-tokens.md).
 <!--TODO: Improve the information on this-->
 
-Po sprawdzeniu podpis tokenu Identyfikacyjnego kilka oświadczeń wymagają weryfikacji. Przykład:
+Po sprawdzeniu podpisu tokenu identyfikatora kilka oświadczeń wymaga weryfikacji. Na przykład:
 
-* Sprawdź poprawność `nonce` oświadczenia zapobiec atakom powtarzania tokenu. Wartość powinna być określona w żądaniu logowania.
-* Sprawdź poprawność `aud` oświadczenia upewnić się, czy token identyfikator został wystawiony dla aplikacji. Jej wartość powinna być identyfikator aplikacji dla swojej aplikacji.
-* Sprawdź poprawność `iat` i `exp` oświadczeń upewnić się, że tokenu Identyfikacyjnego nie wygasł.
+* Sprawdź poprawność roszczeń, `nonce` aby zapobiec atakom metodą powtórzeń tokenu. Jej wartość powinna być określona w żądaniu logowania.
+* Sprawdź poprawność `aud` roszczeń, aby upewnić się, że token identyfikatora został wystawiony dla aplikacji. Wartość powinna być IDENTYFIKATORem aplikacji w aplikacji.
+* Zweryfikuj oświadczenia `exp` i, aby upewnić się, że token identyfikatora nie wygasł. `iat`
 
-Kilka więcej operacji sprawdzania poprawności, które należy wykonać są szczegółowo opisane w [OpenID Connect podstawowej specyfikacji](https://openid.net/specs/openid-connect-core-1_0.html). Można również sprawdzić dodatkowe oświadczenia, zależnie od scenariusza. Niektórych typowych operacji sprawdzania poprawności obejmują:
+Więcej informacji, które należy wykonać, są szczegółowo opisane w [specyfikacji OpenID Connect Connect Core](https://openid.net/specs/openid-connect-core-1_0.html). Możesz również chcieć sprawdzić poprawność dodatkowych oświadczeń, w zależności od danego scenariusza. Niektóre typowe walidacje obejmują:
 
-* Zapewnienie, że użytkownika lub organizacja zarejestrowała się w aplikacji.
-* Zapewnienie, że użytkownik ma odpowiednią autoryzacją i uprawnień.
-* Zapewnienie, że siły uwierzytelniania wystąpił, takie jak za pomocą usługi Azure Multi-Factor Authentication.
+* Upewnienie się, że użytkownik lub organizacja zarejestrowali się w aplikacji.
+* Upewnienie się, że użytkownik ma odpowiednie uprawnienia i autoryzację.
+* Upewnienie się, że wystąpiła pewna siła uwierzytelniania, na przykład przy użyciu uwierzytelniania wieloskładnikowego systemu Azure.
 
-Aby uzyskać więcej informacji na temat oświadczenia w tokenie identyfikator zobacz [odwołania do tokenu usługi Azure AD B2C](active-directory-b2c-reference-tokens.md).
+Aby uzyskać więcej informacji o oświadczeniach w tokenie identyfikatora, zobacz [Informacje o tokenach Azure AD B2C](active-directory-b2c-reference-tokens.md).
 
-Po zweryfikowaniu tokenu Identyfikacyjnego, można rozpocząć sesji z użytkownikiem. W swojej aplikacji użyj oświadczenia w tokenie identyfikator, aby uzyskać informacje o użytkowniku. Te informacje mogą służyć ekranu, rekordy, autoryzacji i tak dalej.
+Po sprawdzeniu poprawności tokenu identyfikatora można rozpocząć sesję z użytkownikiem. W aplikacji użyj oświadczeń w tokenie identyfikatora, aby uzyskać informacje o użytkowniku. Te informacje mogą służyć do wyświetlania, rekordów, autoryzacji i tak dalej.
 
-## <a name="get-access-tokens"></a>Uzyskiwanie tokenów dostępu
-W przypadku jedyną czynnością, aplikacji sieci web musi wykonać wykonania przepływy użytkownika, możesz pominąć kilka następnych sekcji. Informacje przedstawione w poniższych sekcjach ma zastosowanie tylko do aplikacji sieci web, które mają wykonywanie uwierzytelnionych wywołań interfejsu API sieci web i które są chronione przez usługę Azure AD B2C.
+## <a name="get-access-tokens"></a>Uzyskaj tokeny dostępu
+Jeśli Jedyną czynnością, jaką musi wykonać aplikacja sieci Web, jest wykonywanie przepływów użytkownika, możesz pominąć kilka następnych sekcji. Informacje zawarte w poniższych sekcjach dotyczą tylko aplikacji sieci Web, które muszą wykonywać uwierzytelnione wywołania do internetowego interfejsu API, a które są chronione przez Azure AD B2C.
 
-Skoro po zalogowaniu się użytkownika do aplikacji jednostronicowej, mogą uzyskiwać tokeny dostępu, wywoływania internetowych interfejsów API, które są zabezpieczone przez usługę Azure AD. Nawet wtedy, gdy już uzyskały tokenu przy użyciu `token` typ odpowiedzi można użyć tej metody można uzyskać tokenów, aby uzyskać dodatkowe zasoby bez przekierowanie użytkownika do logowania się ponownie.
+Teraz, gdy użytkownik został zarejestrowany w aplikacji jednostronicowej, można uzyskać tokeny dostępu do wywoływania interfejsów API sieci Web zabezpieczonych przez usługę Azure AD. Nawet jeśli token został już odebrany przy użyciu `token` typu odpowiedzi, można użyć tej metody do uzyskania tokenów dla dodatkowych zasobów bez przekierowania użytkownika, aby ponownie się zalogować.
 
-W ramach przepływu aplikacji typowej sieci web może zgłosić wniosek o `/token` punktu końcowego. Punkt końcowy nie obsługuje jednak żądań CORPS, więc wykonywanie wywołań AJAX, pobieranie i tokenów odświeżania nie jest opcją. Zamiast tego służy niejawny przepływ w ukrytym elemencie iframe kodu HTML w celu uzyskania nowych tokenów innych interfejsów API sieci web. Oto przykład z podziały wiersza w celu uzyskania czytelności:
+W typowym przepływie aplikacji sieci Web należy wysłać żądanie do `/token` punktu końcowego. Jednak punkt końcowy nie obsługuje żądań CORS, dlatego nie jest możliwe wywołanie AJAX w celu uzyskania tokenu odświeżania. Zamiast tego można użyć niejawnego przepływu w ukrytym elemencie iframe HTML, aby uzyskać nowe tokeny dla innych interfejsów API sieci Web. Oto przykład z podziałami wierszy na potrzeby czytelności:
 
 ```
 
@@ -193,21 +193,21 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 | Parametr | Wymagana? | Opis |
 | --- | --- | --- |
-| client_id |Wymagane |Identyfikator aplikacji przypisany do aplikacji w [witryny Azure portal](https://portal.azure.com). |
-| response_type |Wymagane |Musi zawierać `id_token` dla logowania OpenID Connect.  Typ odpowiedzi może również zawierać `token`. Jeśli używasz `token` , aplikacja może bezpośrednio odbierać token dostępu z punktu końcowego autoryzacji bez wprowadzania drugie żądanie do punktu końcowego autoryzacji. Jeśli używasz `token` typ odpowiedzi `scope` parametr musi zawierać zakres, który wskazuje, którego zasobu należy wystawić token dla. |
-| redirect_uri |Zalecane |Przekierowania URI aplikacji, gdzie odpowiedzi uwierzytelniania mogą być wysyłane i odbierane przez aplikację. Jego musi dokładnie odpowiadać jeden zarejestrowany w portalu, identyfikatory URI przekierowania z tym wyjątkiem, że musi być zakodowane w adresie URL. |
-| scope |Wymagane |Rozdzielonej spacjami listy zakresów.  W celu uzyskania tokenów, obejmują wszystkie zakresy, które wymagają zamierzony zasobu. |
-| response_mode |Zalecane |Określa metodę, która służy do wysyłania wynikowy token wstecz do swojej aplikacji.  Może być `query`, `form_post`, lub `fragment`. |
-| state |Zalecane |Wartość uwzględnione w żądaniu, który jest zwracany w odpowiedzi tokenu.  Może być ciągiem żadnej zawartości, którego chcesz używać.  Zazwyczaj wartość losowo generowany, unikatowy służy, aby zapobiec atakom fałszowanie żądań między witrynami.  Stan jest również używane do kodowania informacje o stanie użytkownika w aplikacji przed wystąpieniem żądania uwierzytelnienia. Na przykład strony lub widoku użytkownik był na. |
-| nonce |Wymagane |Wartości zawarte w żądaniu wygenerowane przez aplikację, który znajduje się w jego identyfikator tokenu jako oświadczenia.  Aplikacja może zweryfikować tę wartość, aby uniknąć powtarzania tokenu ataków. Zazwyczaj wartość jest losowego, unikatowy ciąg, który identyfikuje pochodzenia żądania. |
-| wiersz |Wymagane |Odświeżanie i uzyskiwanie tokenów w ukrytym elemencie iframe, użyj `prompt=none` do upewnij się, że element iframe nie zatrzymywane na stronie logowania, zwraca natychmiast. |
-| login_hint |Wymagane |Odświeżanie i uzyskiwanie tokenów w ukrytym elemencie iframe, nazwa użytkownika, należy uwzględnić w niej tę wskazówkę rozróżnienie między wiele sesji, które użytkownik może mieć w danym momencie. Można wyodrębnić nazwy użytkownika z wcześniejszych logowania za pomocą `preferred_username` oświadczenia. |
-| Element domain_hint |Wymagane |Możliwe wartości to `consumers` i `organizations`.  Odświeżanie i uzyskiwanie tokenów w ukrytym elemencie iframe, obejmują `domain_hint` wartość w żądaniu.  Wyodrębnij `tid` oświadczeń z tokenu Identyfikatora wcześniej logowania można określić wartość, która do użycia.  Jeśli `tid` oświadczenia, wartość jest `9188040d-6c67-4c5b-b112-36a304b66dad`, użyj `domain_hint=consumers`.  W przeciwnym razie użyj `domain_hint=organizations`. |
+| client_id |Wymagane |Identyfikator aplikacji przypisany do aplikacji w [Azure Portal](https://portal.azure.com). |
+| response_type |Wymagane |Musi zawierać `id_token` do logowania za OpenID Connect Connect.  Może również zawierać typ `token`odpowiedzi. Jeśli używasz `token` tego miejsca, aplikacja może natychmiast odebrać token dostępu od autoryzowanego punktu końcowego, bez wykonywania drugiego żądania do autoryzowanego punktu końcowego. W przypadku użycia `token` typu `scope` odpowiedzi parametr musi zawierać zakres, który wskazuje zasób, dla którego ma zostać wystawiony token. |
+| redirect_uri |Zalecane |Identyfikator URI przekierowania aplikacji, w którym odpowiedzi uwierzytelniania mogą być wysyłane i odbierane przez aplikację. Musi dokładnie pasować do jednego z identyfikatorów URI przekierowania zarejestrowanych w portalu, z tą różnicą, że musi być zakodowany w adresie URL. |
+| scope |Wymagane |Rozdzielana spacjami lista zakresów.  W przypadku uzyskiwania tokenów Uwzględnij wszystkie zakresy wymagane dla zamierzonego zasobu. |
+| response_mode |Zalecane |Określa metodę, która jest używana do wysyłania zwróconego tokenu z powrotem do aplikacji.  Może być `query`, `form_post`lub. `fragment` |
+| state |Zalecane |Wartość zawarta w żądaniu, która jest zwracana w odpowiedzi tokenu.  Może to być ciąg dowolnej zawartości, która ma być używana.  Zwykle jest używana losowo generowana wartość unikatowa, aby zapobiec atakom na fałszerstwo żądań między lokacjami.  Ten stan jest również używany do kodowania informacji o stanie użytkownika w aplikacji przed wystąpieniem żądania uwierzytelnienia. Na przykład strona lub widok użytkownika. |
+| nonce |Wymagane |Wartość uwzględniona w żądaniu wygenerowanym przez aplikację, która jest uwzględniona w tokenie zwracanego identyfikatora jako jako element Claim.  Następnie aplikacja może zweryfikować tę wartość, aby zmniejszyć ataki metodą powtórzeń tokenu. Zazwyczaj wartość jest losowo unikatowym ciągiem, który identyfikuje źródło żądania. |
+| pytać |Wymagane |Aby odświeżyć i uzyskać tokeny w ukrytym elemencie iframe `prompt=none` , użyj, aby upewnić się, że element IFRAME nie zostanie zablokowany na stronie logowania i natychmiast zwraca wartość. |
+| login_hint |Wymagane |Aby odświeżyć i uzyskać tokeny w ukrytym elemencie iframe, należy dołączyć nazwę użytkownika w tej instrukcji w celu rozróżnienia między wieloma sesjami, które użytkownik może mieć w danym momencie. Można wyodrębnić nazwę użytkownika ze starszej rejestracji przy użyciu tego `preferred_username` żądania. |
+| domain_hint |Wymagane |Możliwe wartości to `consumers` i `organizations`.  Aby odświeżyć i uzyskać tokeny w ukrytym elemencie iframe, `domain_hint` należy uwzględnić wartość w żądaniu.  Wyodrębnij `tid` z tokenu ID wcześniejszego logowania, aby określić, która wartość ma być używana.  Jeśli jest `9188040d-6c67-4c5b-b112-36a304b66dad`to wartość, użyj `domain_hint=consumers`. `tid`  W przeciwnym razie `domain_hint=organizations`Użyj. |
 
-Ustawiając `prompt=none` parametr, to żądanie albo kończy się powodzeniem lub natychmiast kończy się niepowodzeniem i zwraca do aplikacji.  Odpowiedź oznaczająca Powodzenie są wysyłane do aplikacji na wskazanych przekierowania URI, korzystając z metody podanej w `response_mode` parametru.
+Po ustawieniu `prompt=none` parametru to żądanie zakończy się pomyślnie lub natychmiast zakończy się niepowodzeniem, a następnie zwraca do aplikacji.  Pomyślna odpowiedź jest wysyłana do aplikacji na wskazanym identyfikatorze URI przekierowania przy użyciu metody określonej `response_mode` w parametrze.
 
-### <a name="successful-response"></a>Odpowiedź oznaczająca Powodzenie
-Odpowiedź oznaczająca Powodzenie za pomocą `response_mode=fragment` wygląda następująco:
+### <a name="successful-response"></a>Pomyślna odpowiedź
+Pomyślna odpowiedź przy `response_mode=fragment` użyciu wygląda podobnie do tego przykładu:
 
 ```
 GET https://aadb2cplayground.azurewebsites.net/#
@@ -220,14 +220,14 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 
 | Parametr | Opis |
 | --- | --- |
-| access_token |Token, który zażądał aplikacji. |
-| token_type |Typ tokenu zawsze będzie elementu nośnego. |
-| state |Jeśli `state` parametru jest uwzględnione w żądaniu, tę samą wartość powinna zostać wyświetlona w odpowiedzi. Aplikacja powinna upewnij się, że `state` wartości żądania i odpowiedzi są identyczne. |
+| access_token |Token żądany przez aplikację. |
+| token_type |Typ tokenu zawsze będzie miał wartość Bearer. |
+| state |`state` Jeśli parametr zostanie uwzględniony w żądaniu, ta sama wartość powinna pojawić się w odpowiedzi. Aplikacja powinna sprawdzić, czy `state` wartości w żądaniu i odpowiedzi są identyczne. |
 | expires_in |Jak długo token dostępu jest prawidłowy (w sekundach). |
-| scope |Token dostępu jest prawidłowy dla zakresów. |
+| scope |Zakresy, dla których token dostępu jest prawidłowy. |
 
-### <a name="error-response"></a>Odpowiedzi na błąd
-Odpowiedzi na błędy również mogą być wysyłane do identyfikatora URI przekierowania, aby mógł być je obsłużyć odpowiednio w aplikacji.  Aby uzyskać `prompt=none`, oczekiwany błąd wygląda następująco:
+### <a name="error-response"></a>Odpowiedź na błąd
+Odpowiedzi na błędy można także wysyłać do identyfikatora URI przekierowania, aby aplikacja mogła je odpowiednio obsłużyć.  W `prompt=none`przypadku, oczekiwany błąd wygląda podobnie do tego przykładu:
 
 ```
 GET https://aadb2cplayground.azurewebsites.net/#
@@ -237,18 +237,18 @@ error=user_authentication_required
 
 | Parametr | Opis |
 | --- | --- |
-| error |Ciągu kodu błędu, który może służyć do klasyfikowania typy błędów, które występują. Możesz również użyć ciągu, aby reagować na błędy. |
-| error_description |Komunikat błędu, który pomoże Ci identyfikować przyczyny błędu uwierzytelniania. |
+| error |Ciąg kodu błędu, który może służyć do klasyfikowania typów błędów, które występują. Można również użyć ciągu do reagowania na błędy. |
+| error_description |Konkretny komunikat o błędzie, który może pomóc w zidentyfikowaniu głównej przyczyny błędu uwierzytelniania. |
 
-Jeśli ten błąd jest wyświetlany w żądaniu iframe, użytkownik interakcyjnie zalogować się ponownie do pobrania nowego tokenu.
+Jeśli ten błąd wystąpi w żądaniu iframe, użytkownik musi interaktywnie zalogować się ponownie, aby pobrać nowy token.
 
-## <a name="refresh-tokens"></a>Tokenów odświeżania
-Identyfikator tokenów i tokenów dostępu wygasa po krótkim czasie. Aplikacja musi być przygotowany do tych tokenów odświeżania okresowo.  Aby odświeżyć albo typ tokenu, użyto tego samego żądania ukrytego elementu iframe w wykonać poprzedniego przykładu, przy użyciu `prompt=none` parametru do kontrolowania kroków w usłudze Azure AD.  Aby otrzymać nowy `id_token` wartość, należy użyć `response_type=id_token` i `scope=openid`, a `nonce` parametru.
+## <a name="refresh-tokens"></a>Odśwież tokeny
+Tokeny identyfikatorów i tokeny dostępu wygasają po krótkim czasie. Aby okresowo odświeżać te tokeny, należy przygotować aplikację.  Aby odświeżyć każdy typ tokenu, należy wykonać to samo ukryte żądanie iframe używane we wcześniejszym przykładzie przy użyciu `prompt=none` parametru do kontrolowania kroków usługi Azure AD.  Aby otrzymać nową `id_token` wartość, należy użyć `response_type=id_token` `nonce` parametrów i `scope=openid`i parametru.
 
 ## <a name="send-a-sign-out-request"></a>Wyślij żądanie wylogowania
-Do logowania użytkownika z aplikacji, należy przekierować użytkownika do usługi Azure AD, aby się wylogować. Jeśli nie przekierowuje użytkownika, może być możliwe ponowne uwierzytelnianie do aplikacji bez konieczności ponownego wprowadzania poświadczeń, ponieważ mają one nieprawidłowy pojedynczego logowania jednokrotnego sesji z usługą Azure AD.
+Aby podpisać użytkownika poza aplikacją, należy przekierować użytkownika do usługi Azure AD w celu wylogowania. Jeśli nie przekierujesz użytkownika, może być możliwe ponowne uwierzytelnienie w aplikacji bez konieczności ponownego wprowadzania poświadczeń, ponieważ mają ważną sesję logowania jednokrotnego z usługą Azure AD.
 
-Możesz po prostu przekierować użytkownika do `end_session_endpoint` , znajduje się w tej samej OpenID Connect dokument metadanych opisane w [weryfikacji tokenu Identyfikacyjnego](#validate-the-id-token). Na przykład:
+Można po prostu przekierować użytkownika do programu `end_session_endpoint` , który znajduje się na liście w tym samym dokumencie metadanych OpenID Connect Connect opisanym w [Zweryfikuj token ID](#validate-the-id-token). Na przykład:
 
 ```
 GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/logout?
@@ -258,10 +258,10 @@ p=b2c_1_sign_in
 
 | Parametr | Wymagana? | Opis |
 | --- | --- | --- |
-| p |Wymagane |Zasady służące do logowania użytkownika z aplikacji. |
-| post_logout_redirect_uri |Zalecane |Adres URL, który użytkownik powinno zostać przekierowane do po pomyślnym wylogowania. Jeśli nie jest uwzględniony, usługi Azure AD B2C wyświetla ogólny komunikat dla użytkownika. |
+| p |Wymagane |Zasady, które mają być używane do podpisywania użytkownika z aplikacji. |
+| post_logout_redirect_uri |Zalecane |Adres URL, do którego użytkownik powinien zostać przekierowany po pomyślnym wylogowaniu. Jeśli nie jest uwzględniony, Azure AD B2C wyświetla komunikat generyczny dla użytkownika. |
 
 > [!NOTE]
-> Kierowanie użytkowników do `end_session_endpoint` czyści część użytkownika pojedynczego logowania jednokrotnego stanu za pomocą usługi Azure AD B2C. Jednak go nie Zaloguj użytkownika z sesji dostawcy tożsamości społecznościowych użytkownika. Jeśli użytkownik wybierze takie same dostawcy podczas kolejne logowania, zaleceniem użytkownika jest ponownie uwierzytelniane — bez konieczności wprowadzania swoich poświadczeń. Jeśli użytkownik chce Wyloguj się z aplikacji usługi Azure AD B2C, go nie musi oznaczać, że mają być całkowicie Wyloguj się ze swojego konta w serwisie Facebook, na przykład. Jednak w przypadku kont lokalnych sesji użytkownika zostanie zakończona prawidłowo.
+> Nakazuje użytkownikowi `end_session_endpoint` wyczyszczenie stanu logowania jednokrotnego użytkownika przy użyciu Azure AD B2C. Nie jest on jednak podpisywany użytkownikowi z sesji dostawcy tożsamości społecznościowej użytkownika. Jeśli użytkownik wybierze tego samego identyfikowanie dostawcę podczas kolejnego logowania, użytkownik zostanie uwierzytelniony ponownie, bez wprowadzania poświadczeń. Jeśli użytkownik chce wylogować się z aplikacji Azure AD B2C, nie musi oznaczać, że chcą całkowicie wylogować się z konta w serwisie Facebook, na przykład. Jednak w przypadku kont lokalnych sesja użytkownika zostanie zakończona prawidłowo.
 >
 

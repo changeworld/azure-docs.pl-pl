@@ -1,6 +1,6 @@
 ---
-title: Azure Windows rozmiarów maszyn wirtualnych — HPC | Dokumentacja firmy Microsoft
-description: Wyświetla listę różnych rozmiarów dostępnych Windows komputerowych o wysokiej wydajności maszyn wirtualnych na platformie Azure. Wyświetla informacje o liczbie procesorów wirtualnych, dysków z danymi i kart sieciowych, a także magazynu przepustowości przepływność i sieci dla rozmiarów w tej serii.
+title: Rozmiary maszyn wirtualnych z systemem Windows Azure — HPC | Microsoft Docs
+description: Wyświetla różne rozmiary dostępne dla maszyn wirtualnych o wysokiej wydajności systemu Windows na platformie Azure. Wyświetla informacje o liczbie procesorów wirtualnych vCPU, dyskach danych i kartach sieciowych oraz o przepływności magazynu i przepustowości sieci dla rozmiarów w tej serii.
 services: virtual-machines-windows
 documentationcenter: ''
 author: vermagit
@@ -14,15 +14,16 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
-ms.author: jonbeck;amverma
-ms.openlocfilehash: 62c6bb906d9c9935be2da148f24d5285cbf0ed67
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.author: amverma
+ms.reviewer: jonbeck
+ms.openlocfilehash: 6fd08ca912c14a50064f4b6da18334d8bf9df0ca
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710341"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871589"
 ---
-# <a name="high-performance-compute-vm-sizes"></a>Rozmiary maszyn wirtualnych obliczeń o wysokiej wydajności
+# <a name="high-performance-compute-vm-sizes"></a>Rozmiary maszyn wirtualnych o wysokiej wydajności
 
 [!INCLUDE [virtual-machines-common-sizes-hpc](../../../includes/virtual-machines-common-sizes-hpc.md)]
 
@@ -31,20 +32,20 @@ ms.locfileid: "67710341"
 [!INCLUDE [virtual-machines-common-a8-a9-a10-a11-specs](../../../includes/virtual-machines-common-a8-a9-a10-a11-specs.md)]
 
 
-* **System operacyjny** — system Windows Server 2016 na wszystkie powyższe HPC serie maszyn wirtualnych. Windows Server 2012 R2, Windows Server 2012 są również obsługiwane na maszynach wirtualnych włączone bez do funkcji SR-IOV (dlatego bez HB i HC).
+* **System operacyjny** — Windows Server 2016 na wszystkich powyższych maszynach wirtualnych serii HPC. System Windows Server 2012 R2, Windows Server 2012 są również obsługiwane na maszynach wirtualnych z obsługą wirtualizacji SR-IOV (z tym wyjątkiem HB i HC).
 
-* **MPI** — włączone rozmiarów maszyn wirtualnych na platformie Azure (HB, HC) Zezwalaj na prawie każdym flavor MPI, które ma być używany z Mellanox OFED SR-IOV.
-Na maszynach wirtualnych włączone bez do funkcji SR-IOV obsługiwane implementacje MPI, należy użyć interfejsu bezpośredniego sieci firmy Microsoft (ND) do komunikacji między wystąpieniami. Dzięki temu tylko Microsoft MPI (MS-MPI) 2012 R2 lub nowszym i są obsługiwane w wersji 5.x Intel MPI. Nowsze wersje (2017, 2018 r.) środowiska uruchomieniowego Intel MPI biblioteki może lub mogą nie być zgodne ze sterownikami RDMA na platformie Azure.
+* **MPI** — rozmiary maszyn wirtualnych z obsługą wirtualizacji SR-IOV na platformie Azure (HB, HC) umożliwiają użycie niemal wszystkich wersji MPI, które mają być używane z Mellanox OFED.
+W przypadku maszyn wirtualnych z obsługą funkcji SR-IOV obsługiwane implementacje MPI używają interfejsu Microsoft Network Direct (ND) do komunikacji między wystąpieniami. W związku z tym obsługiwane są tylko programy Microsoft MPI (MS-MPI) 2012 R2 lub nowsze i Intel MPI 5. x. Nowsze wersje (2017, 2018) biblioteki środowiska uruchomieniowego Intel MPI mogą być niezgodne ze sterownikami usługi Azure RDMA.
 
-* **Rozszerzenie maszyny Wirtualnej InfiniBandDriverWindows** — na maszynach wirtualnych z funkcją RDMA, Dodaj rozszerzenie InfiniBandDriverWindows, aby umożliwić InfiniBand. To rozszerzenie maszyny Wirtualnej Windows instaluje interfejsu Network Direct Windows sterowników (na maszynach wirtualnych z innych niż-funkcja SR-IOV) lub sterowniki Mellanox OFED (na maszynach wirtualnych z funkcji SR-IOV) dla łączności RDMA.
-W przypadku niektórych wdrożeń wystąpienia A8 i A9 rozszerzenia HpcVmDrivers jest automatycznie dodawany. Należy pamiętać, że jest on przestarzały z rozszerzenia maszyny Wirtualnej HpcVmDrivers; nie będzie można zaktualizować. Aby dodać rozszerzenie maszyny Wirtualnej do maszyny Wirtualnej, można użyć [programu Azure PowerShell](/powershell/azure/overview) polecenia cmdlet. 
+* **Rozszerzenie maszyny wirtualnej InfiniBandDriverWindows** — na maszynach wirtualnych obsługujących funkcję RDMA Dodaj rozszerzenie InfiniBandDriverWindows, aby włączyć funkcję InfiniBand. To rozszerzenie maszyny wirtualnej systemu Windows instaluje sterowniki funkcji bezpośrednie sieci systemu Windows (na maszynach wirtualnych innych niż SR-IOV) lub sterowniki Mellanox OFED (na maszynach wirtualnych SR-IOV) na potrzeby łączności RDMA.
+W niektórych wdrożeniach wystąpień A8 i A9 rozszerzenie HpcVmDrivers jest dodawane automatycznie. Należy pamiętać, że rozszerzenie maszyny wirtualnej HpcVmDrivers jest przestarzałe; nie zostanie ona zaktualizowana. Aby dodać rozszerzenie maszyny wirtualnej do maszyny wirtualnej, można użyć poleceń cmdlet [Azure PowerShell](/powershell/azure/overview) . 
 
-  Poniższe polecenie instaluje najnowsze rozszerzenia w wersji 1.0 w InfiniBandDriverWindows istniejącej obsługą dostępu RDMA maszyny wirtualnej o nazwie *myVM* wdrożone w grupie zasobów o nazwie *myResourceGroup* w  *Zachodnie stany USA* regionu:
+  Następujące polecenie instaluje najnowszą wersję 1,0 rozszerzenia InfiniBandDriverWindows na istniejącej maszynie wirtualnej obsługującej funkcję RDMA o nazwie *myVM* wdrożonej w grupie zasobów o nazwie Moja *zasobów* w regionie *zachodnie stany USA* :
 
   ```powershell
   Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "InfiniBandDriverWindows" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverWindows" -TypeHandlerVersion "1.0"
   ```
-  Alternatywnie rozszerzenia maszyn wirtualnych może obejmować w szablonach usługi Azure Resource Manager w celu łatwiejszego wdrażania przy użyciu następującego elementu JSON:
+  Alternatywnie rozszerzenia maszyn wirtualnych można dołączać do szablonów Azure Resource Manager, aby ułatwić wdrażanie, z następującym elementem JSON:
   ```json
   "properties":{
   "publisher": "Microsoft.HpcCompute",
@@ -53,7 +54,7 @@ W przypadku niektórych wdrożeń wystąpienia A8 i A9 rozszerzenia HpcVmDrivers
   } 
   ```
 
-  Poniższe polecenie instaluje najnowsze rozszerzenia InfiniBandDriverWindows w wersji 1.0 na wszystkich maszynach wirtualnych z funkcją RDMA w istniejącej maszyny Wirtualnej zestawu skalowania o nazwie *myVMSS* wdrożone w grupie zasobów o nazwie *myResourceGroup*:
+  Następujące polecenie instaluje najnowszą wersję 1,0 rozszerzenia InfiniBandDriverWindows na wszystkich maszynach wirtualnych z obsługą funkcji RDMA w istniejącym zestawie skalowania maszyn wirtualnych o nazwie *myVMSS* wdrożoną w grupie zasobów o nazwie Moja *zasobów*:
 
   ```powershell
   $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
@@ -62,28 +63,28 @@ W przypadku niektórych wdrożeń wystąpienia A8 i A9 rozszerzenia HpcVmDrivers
   Update-AzVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -InstanceId "*"
   ```
 
-  Aby uzyskać więcej informacji, zobacz [rozszerzeniach i funkcjach maszyn wirtualnych](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Możesz także pracować z rozszerzeniami dla maszyn wirtualnych wdrożonych w [klasycznego modelu wdrażania](classic/manage-extensions.md).
+  Aby uzyskać więcej informacji, zobacz [rozszerzenia i funkcje maszyny wirtualnej](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Możesz również korzystać z rozszerzeń dla maszyn wirtualnych wdrożonych w [klasycznym modelu wdrażania](classic/manage-extensions.md).
 
-* **Przestrzeń adresowa sieci RDMA** — sieci RDMA na platformie Azure rezerwuje 172.16.0.0/16 przestrzeni adresowej. Do uruchamiania aplikacji MPI w wystąpieniach wdrożonych w sieci wirtualnej platformy Azure, upewnij się, przestrzeń adresową sieci wirtualnej nie nakłada sieci RDMA.
+* **Przestrzeń adresów sieciowych RDMA** — sieć RDMA na platformie Azure rezerwuje przestrzeń adresową 172.16.0.0/16. Aby uruchamiać aplikacje MPI w wystąpieniach wdrożonych w sieci wirtualnej platformy Azure, upewnij się, że przestrzeń adresowa sieci wirtualnej nie nakłada się na sieć RDMA.
 
 
 ### <a name="cluster-configuration-options"></a>Opcje konfiguracji klastra
 
-System Azure oferuje kilka opcji tworzenia klastrów HPC maszyn wirtualnych Windows, który może komunikować się za pośrednictwem sieci RDMA, w tym: 
+Platforma Azure oferuje kilka opcji tworzenia klastrów maszyn wirtualnych z systemem Windows HPC, które mogą komunikować się za pomocą sieci RDMA, w tym: 
 
-* **Maszyny wirtualne** — wdrażanie maszyn wirtualnych z funkcją RDMA HPC w ten sam zestaw dostępności (podczas użycie modelu wdrażania usługi Azure Resource Manager). Jeśli używasz klasycznego modelu wdrażania, należy wdrożyć maszyny wirtualne w tej samej usłudze w chmurze. 
+* **Maszyny wirtualne** — Wdróż maszyny wirtualne z obsługą funkcji RDMA w tym samym zestawie dostępności (w przypadku korzystania z Azure Resource Manager modelu wdrażania). W przypadku korzystania z klasycznego modelu wdrażania należy wdrożyć maszyny wirtualne w tej samej usłudze w chmurze. 
 
-* **Zestawy skalowania maszyn wirtualnych** — zestaw skalowania maszyn wirtualnych zestawu, upewnij się, ograniczenie wdrożenia do pojedynczej grupy umieszczania. Na przykład w szablonie usługi Resource Manager, należy ustawić `singlePlacementGroup` właściwość `true`. 
+* **Zestawy skalowania maszyn wirtualnych** — w zestawie skalowania maszyn wirtualnych należy ograniczyć wdrożenie do pojedynczej grupy umieszczania. Na przykład w szablonie Menedżer zasobów Ustaw `singlePlacementGroup` właściwość na. `true` 
 
-* **MPI między maszynami wirtualnymi** — w przypadku komunikacji MPI w razie potrzeby między maszyny wirtualne (VM), upewnij się, że maszyny wirtualne są w tym samym zestawie dostępności lub maszynę wirtualną, takie same zestawu skalowania.
+* **MPI między maszynami wirtualnymi** — jeśli jest to wymagane między maszynami wirtualnymi, upewnij się, że maszyny wirtualne znajdują się w tym samym zestawie dostępności lub na maszynie wirtualnej tego samego zestawu skalowania.
 
-* **Azure CycleCloud** — Tworzenie klastra HPC w [Azure CycleCloud](/azure/cyclecloud/) do uruchamiania zadań MPI w węzłach Windows.
+* **Azure CycleCloud** — Tworzenie klastra HPC w [usłudze Azure CycleCloud](/azure/cyclecloud/) w celu uruchamiania zadań MPI w węzłach systemu Windows.
 
-* **Usługa Azure Batch** — tworzenie [usługi Azure Batch](/azure/batch/) węzłów obliczeniowych w puli w celu uruchamiania obciążeń MPI w systemie Windows Server. Aby uzyskać więcej informacji, zobacz [Użyj obsługą dostępu RDMA lub włączonymi procesorami GPU wystąpień w pulach usługi Batch](../../batch/batch-pool-compute-intensive-sizes.md). Zobacz też [usługa Batch Shipyard](https://github.com/Azure/batch-shipyard) projektu do uruchamiania obciążeń opartych na kontenerach w usłudze Batch.
+* **Azure Batch** — utwórz pulę [Azure Batch](/azure/batch/) do uruchamiania obciążeń MPI w węzłach obliczeniowych systemu Windows Server. Aby uzyskać więcej informacji, zobacz [Korzystanie z wystąpień obsługujących funkcję RDMA lub GPU w pulach usługi Batch](../../batch/batch-pool-compute-intensive-sizes.md). Zobacz również projekt [stoczni usługi Batch](https://github.com/Azure/batch-shipyard) do uruchamiania obciążeń opartych na kontenerach w usłudze Batch.
 
-* **Pakiet Microsoft HPC Pack** - [pakietu HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) zawiera środowiska uruchomieniowego MPI MS, który używa sieci Azure RDMA po wdrożeniu na maszynach wirtualnych z funkcją RDMA Windows. Na przykład wdrożenia, zobacz [Konfigurowanie klastra Windows RDMA za pomocą pakietu HPC Pack do uruchamiania aplikacji MPI](classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+* **Pakiet Microsoft HPC Pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) zawiera środowisko uruchomieniowe dla MS-MPI, które używa sieci usługi Azure RDMA w przypadku wdrożenia na maszynach wirtualnych z systemem Windows z obsługą funkcji RDMA. Na przykład wdrożenia, zobacz [Konfigurowanie klastra funkcji Windows RDMA przy użyciu pakietu HPC Pack do uruchamiania aplikacji MPI](classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-## <a name="other-sizes"></a>O innych rozmiarach
+## <a name="other-sizes"></a>Inne rozmiary
 - [Zastosowania ogólne](sizes-general.md)
 - [Optymalizacja pod kątem obliczeń](sizes-compute.md)
 - [Optymalizacja pod kątem pamięci](../virtual-machines-windows-sizes-memory.md)
@@ -91,10 +92,10 @@ System Azure oferuje kilka opcji tworzenia klastrów HPC maszyn wirtualnych Wind
 - [Optymalizacja pod kątem procesora GPU](sizes-gpu.md)
 - [Poprzednie generacje](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-- Aby uzyskać listy kontrolne do wystąpień obliczeniowych za pomocą pakietu HPC Pack w systemie Windows Server, zobacz [Konfigurowanie klastra Windows RDMA za pomocą pakietu HPC Pack do uruchamiania aplikacji MPI](classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+- Aby wyświetlić listy kontrolne do używania wystąpień intensywnie korzystających z obliczeń z pakietem HPC Pack w systemie Windows Server, zobacz [Konfigurowanie klastra funkcji Windows RDMA przy użyciu pakietu HPC Pack w celu uruchamiania aplikacji MPI](classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-- Aby korzystać z wystąpień obliczeniowych, podczas uruchamiania aplikacji MPI w usłudze Azure Batch, zobacz [użyć zadania obejmujące wiele wystąpień do uruchamiania aplikacji interfejsu przekazywania komunikatów (MPI) w usłudze Azure Batch](../../batch/batch-mpi.md).
+- Aby korzystać z wystąpień intensywnie korzystających z obliczeń podczas uruchamiania aplikacji MPI przy użyciu Azure Batch, zobacz temat [Używanie zadań z wielu wystąpień w celu uruchamiania aplikacji interfejsu przekazywania komunikatów (MPI) w programie Azure Batch](../../batch/batch-mpi.md).
 
-- Dowiedz się więcej o tym, jak [usługi Azure compute jednostki (ACU)](acu.md) pozwalają porównać wydajności obliczeń w jednostkach SKU platformy Azure.
+- Dowiedz się więcej o tym, jak [usługa Azure COMPUTE units (ACU)](acu.md) może pomóc w porównaniu wydajności obliczeniowej w ramach jednostek SKU platformy Azure.

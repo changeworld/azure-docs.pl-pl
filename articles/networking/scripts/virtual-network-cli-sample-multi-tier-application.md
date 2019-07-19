@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
-ms.author: jdial
-ms.openlocfilehash: 685896cdbd74788f138b8b9dc09efbcd68a5b565
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: timlt
+ms.openlocfilehash: 1cdc10157fb324ac9167860b9786f4902b1b8b81
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60624451"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295572"
 ---
 # <a name="create-a-network-for-multi-tier-applications"></a>Tworzenie sieci dla aplikacji wielowarstwowych
 
@@ -53,7 +53,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [az group create](/cli/azure/group) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
 | [az network vnet create](/cli/azure/network/vnet) | Tworzy sieć wirtualną i podsieć frontonu platformy Azure. |
 | [az network subnet create](/cli/azure/network/vnet/subnet) | Tworzy podsieć zaplecza. |
-| [az network public-ip create](/cli/azure/network/public-ip) | Tworzy publiczny adres IP, dostęp do maszyny Wirtualnej z Internetu. |
+| [az network public-ip create](/cli/azure/network/public-ip) | Tworzy publiczny adres IP, aby uzyskać dostęp do maszyny wirtualnej z Internetu. |
 | [az network nic create](/cli/azure/network/nic) | Tworzy interfejsy sieci wirtualnej i dołącza je do podsieci frontonu i zaplecza sieci wirtualnej. |
 | [az network nsg create](/cli/azure/network/nsg) | Tworzy sieciowe grupy zabezpieczeń, które zostały skojarzone z podsieciami frontonu i zaplecza. |
 | [az network nsg rule create](/cli/azure/network/nsg/rule) |Tworzy reguły sieciowych grup zabezpieczeń, które zezwalają na użycie określonych portów w wybranych sieciach lub blokują te porty. |
@@ -64,4 +64,4 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](/cli/azure).
 
-Więcej przykładowych skryptów interfejsu wiersza polecenia platformy sieci można znaleźć w [dokumentacji platformy Azure, omówienie sieci](../cli-samples.md)
+Dodatkowe przykłady skryptów interfejsu wiersza polecenia sieci można znaleźć w [dokumentacji usługi Azure Networking Overview](../cli-samples.md)

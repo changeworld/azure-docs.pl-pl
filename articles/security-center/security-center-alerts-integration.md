@@ -1,6 +1,6 @@
 ---
-title: Integracja usługi Security Center z produktami zabezpieczeń platformy Azure | Dokumentacja firmy Microsoft
-description: Ten temat przedstawia informacje o produktów zabezpieczeń platformy Azure, które zostały zintegrowane z usługą Azure Security Center.
+title: Security Center integrację z produktami zabezpieczeń platformy Azure | Microsoft Docs
+description: W tych tematach przedstawiono produkty zabezpieczeń platformy Azure, które zostały zintegrowane z usługą Azure Security Center.
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -13,41 +13,41 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/02/2019
-ms.author: monhaber
-ms.openlocfilehash: 805c770f1a7e9bb4e0619b27ac937a2451421dc6
-ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
-ms.translationtype: MT
+ms.author: v-mohabe
+ms.openlocfilehash: 64a636cc4452de1ef4a2d0e94629e7d8e3a5878d
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67571740"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295734"
 ---
-# <a name="security-center-integration-with-azure-security-products-in-asc"></a>Usługa Security Center integracji z produktami zabezpieczeń platformy Azure z usługą ASC
+# <a name="security-center-integration-with-azure-security-products-in-asc"></a>Security Center integrację z produktami zabezpieczeń platformy Azure w języku ASC
 
-Security Center zapewnia klientom dodatkowe licencje firmy Microsoft, aby dołączyć ich wyników do usługi Security Center i wyświetlać je w sposób skonsolidowany.
+Security Center oferuje klientom z dodatkowymi licencjami firmy Microsoft, którzy mogą dołączać swoje wnioski do Security Center i wyświetlać je w sposób skonsolidowany.
 
-* [Usługa Azure zapory aplikacji sieci Web](#azure-waf)
+* [Azure WAF](#azure-waf)
 * [Azure DDoS](#azure-ddos)
 
-## Usługa Azure zapory aplikacji sieci Web <a name="azure-waf"></a>
+## Azure WAF<a name="azure-waf"></a>
 
 Usługa Azure Application Gateway oferuje zaporę aplikacji internetowej (WAF), która zapewnia scentralizowaną ochronę aplikacji internetowych przed typowymi programami wykorzystującymi luki i lukami w zabezpieczeniach.
 
-Aplikacje internetowe coraz częściej są objęci złośliwych ataków wykorzystujących powszechnie znane luki w zabezpieczeniach. Brama aplikacji zapory aplikacji internetowych opiera się na podstawowych reguł Ustaw (CRS) 3.0 lub 2.2.9 z Otwórz sieci Web aplikacji Security Project (OWASP). Zapory aplikacji internetowych jest aktualizowana automatycznie, aby zapewnić ochronę przed nowych luk w zabezpieczeniach przy użyciu nie wykonywania dodatkowych czynności konfiguracyjnych. Alerty wygenerowane przez zaporę aplikacji sieci Web są przesyłane strumieniowo do usługi Security Center. Aby uzyskać więcej informacji na temat alertów generowanych przez zaporę aplikacji sieci Web, zobacz ten [artykułu](https://docs.microsoft.com/azure/application-gateway/application-gateway-crs-rulegroups-rules?tabs=owasp3#crs911).
+Aplikacje sieci Web są coraz bardziej przeznaczone dla złośliwych ataków wykorzystujących często znane luki w zabezpieczeniach. Application Gateway WAF opiera się na podstawowym zestawie reguł (KSR) 3,0 lub 2.2.9 w programie Open Web Application Security Project (OWASP). WAF jest automatycznie aktualizowana w celu ochrony przed nowymi lukami w zabezpieczeniach, bez konieczności dodatkowej konfiguracji. Alerty wygenerowane przez WAF są przesyłane strumieniowo do Security Center. Aby uzyskać więcej informacji na temat alertów wygenerowanych przez WAF, zobacz ten [artykuł](https://docs.microsoft.com/azure/application-gateway/application-gateway-crs-rulegroups-rules?tabs=owasp3#crs911).
 
-## Azure DDoS <a name="azure-ddos"></a>
+## Azure DDoS<a name="azure-ddos"></a>
 
-Service (DDoS) ataków Distributed denial of są znane, aby były łatwe do wykonania. W związku z tym stają się kwestią doskonałe zabezpieczenia w przypadku klientów, którzy są przenoszone do ich aplikacji w chmurze. 
+Ataki rozproszonego typu "odmowa usługi" (DDoS) są znane, aby można je było łatwo wykonywać. W związku z tym staną się bardzo doskonałym problemem z zabezpieczeniami w przypadku klientów, którzy przenosili swoje aplikacje do chmury. 
 
-Atak DDoS polega na próbie wyczerpania zasobów aplikacji, przez co aplikacja staje się niedostępna dla zwykłych użytkowników. Ataki DDoS mogą określać docelową dowolnego punktu końcowego, w którym można się skontaktować za pośrednictwem Internetu.
+Atak DDoS polega na próbie wyczerpania zasobów aplikacji, przez co aplikacja staje się niedostępna dla zwykłych użytkowników. Ataki DDoS mogą wskazywać każdy punkt końcowy, który można uzyskać za pomocą Internetu.
 
-Usługa Azure DDoS protection, w połączeniu z najlepszych rozwiązań projektowania aplikacji zapewniają ochronę przed atakami DDoS. Usługa Azure DDoS protection zapewnia różnych warstwach usług. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure DDoS Protection](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview).
+Usługa Azure DDoS Protection, w połączeniu z najlepszymi rozwiązaniami dotyczącymi projektowania aplikacji, zapewnia ochronę przed atakami na DDoS. Usługa Azure DDoS Protection oferuje różne warstwy usług. Aby uzyskać więcej informacji, zobacz [Azure DDoS Protection przegląd](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview).
 
-Standard ochrony przed atakami DDoS pozwala ograniczyć następujące rodzaje ataków:
+Standard DDoS Protection może ograniczyć ataki następujących typów:
 
 > [!div class="mx-tableFixed"]
 
 |Alerty|Opis|
 |---|---|
-|**Wykryto atak pojemności**|Celem takiego ataku jest zalać warstwy sieciowej znaczną ilość ruchu pozornie uzasadnione. Zawiera powodzie, powodzie wzmocnienia i innych powodzie sfałszowane pakietów UDP. Standard ochrony przed atakami DDoS zmniejsza tych potencjalnych ataków wielu gigabajtów, przejmowania i czyszczenia danych, w skali globalnej sieci platformy Azure, automatycznie.|
-|**Wykryto atak protokołu**|Te ataki obiekt docelowy renderowania niedostępne przez wykorzystanie słabości w warstwie 3 i stosu protokołu 4 warstwy. Obejmuje, SYN ataków powódź odbicie ataków i inne ataki protokołu. Standard ochrony przed atakami DDoS zmniejsza te ataki rozróżnianiu ruchu złośliwego i uzasadnione, interakcji z klientem i blokowania złośliwego ruchu.|
-|**Wykryto atak warstwy zasobu (aplikacji)**|Te ataki docelowych, pakiety aplikacji sieci web, w celu zakłócania przesyłania danych między hostami. Przed atakami obejmują HTTP naruszeniami protokołu, SQL iniekcji, skryptów między witrynami i inne ataki warstwy 7. Za pomocą usługi Azure Application Gateway zapory aplikacji sieci web, przed atakami DDoS Protection w warstwie standardowa do obrony przed te ataki. Brak dostępnych również ofert zapory aplikacji sieci web innych firm w witrynie Azure Marketplace.|
+|**Wykryto atak objętościowy**|Celem tego ataku jest zalanie warstwy sieci przy użyciu dużej ilości pozornie uzasadnionego ruchu. Obejmuje to zalewania protokołu UDP, zalewania wzpełnień oraz inne zalewania pakietów sfałszowanych. DDoS Protection Standard ogranicza te potencjalne ataki z obsługą wielodostępności przez przeabsorbowanie i ich kontrolę przy użyciu globalnej skali sieci platformy Azure.|
+|**Wykryto atak z wykorzystaniem protokołu**|Te ataki sprawiają, że element docelowy jest niedostępny, wykorzystując słabą lukę w stosie protokołu warstwy 3 i 4. Obejmuje to ataki, ataki na zalanie się w przypadku zalewania i ataków. DDoS Protection Standard ogranicza te ataki, różnią się od złośliwego i wiarygodnego ruchu, współpracując z klientem i blokując złośliwy ruch.|
+|**Wykryto atak na warstwę zasobów (aplikacji)**|Te ataki są docelowymi pakietami aplikacji sieci Web, aby przerwać przesyłanie danych między hostami. Ataki obejmują naruszenia protokołu HTTP, wstrzykiwanie kodu SQL, skrypty między lokacjami i inne ataki warstwy 7. Aby chronić przed atakami, użyj zapory aplikacji sieci Web platformy Azure Application Gateway ze standardem DDoS Protection. Istnieją także oferty zapory aplikacji sieci Web innych firm dostępne w portalu Azure Marketplace.|

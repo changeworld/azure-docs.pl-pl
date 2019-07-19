@@ -1,77 +1,86 @@
 ---
-title: Połącz dane firmy Symantec w usłudze AWS do platformy Azure przez wartownika w wersji zapoznawczej | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak nawiązać połączenie z danych usługi AWS firmy Symantec przez wartownika platformy Azure.
+title: Połącz dane Symantec AWS z podglądem platformy Azure — Wersja zapoznawcza | Microsoft Docs
+description: Dowiedz się, jak nawiązać połączenie z danymi firmy Symantec AWS z platformą Azure.
 services: sentinel
 documentationcenter: na
 author: rkarlin
 manager: rkarlin
 editor: ''
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/04/2019
+ms.date: 07/10/2019
 ms.author: rkarlin
-ms.openlocfilehash: 214269bc5c854aa4d3bfd508b0adb5a53ec096df
-ms.sourcegitcommit: 80aaf27e3ad2cc4a6599a3b6af0196c6239e6918
+ms.openlocfilehash: 246d4cd7d64554ae575767cdba2e26066ad1720d
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673975"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295616"
 ---
-# <a name="connect-azure-sentinel-to-aws"></a>Azure wartownik nawiązać połączenie usług AWS
+# <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Połącz wskaźnik platformy Azure z usługą AWS CloudTrail
 
-Umożliwia przesyłanie strumieniowe zdarzeń narzędzie CloudTrail usług AWS do platformy Azure przez wartownika łącznika usług AWS. Ten proces połączenia deleguje dostęp do platformy Azure przez wartownika do dzienników zasobów AWS, utworzenie relacji zaufania między narzędzie CloudTrail usług AWS i Azure przez wartownika. Jest to realizowane na platformie AWS, tworząc rolę, która zapewnia uprawnienia do platformy Azure przez wartownika na uzyskiwanie dostępu do usług AWS dzienników.
+Za pomocą łącznika AWS można przesyłać strumieniowo wszystkie zdarzenia CloudTrail AWS do platformy Azure. Ten proces połączenia deleguje dostęp do dzienników zasobów usługi Azure AWS, tworząc relacje zaufania między AWS CloudTrail i platformą Azure. Jest to realizowane w witrynie AWS, tworząc rolę, która przyznaje uprawnienia do uzyskiwania dostępu do dzienników AWS na platformie Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W obszarze roboczym usługi Azure przez wartownika, musi mieć uprawnienia do zapisu.
+Musisz mieć uprawnienie do zapisu w obszarze roboczym wskaźnik platformy Azure.
+
+> [!NOTE]
+> Na platformie Azure wskaźnik zbiera zdarzenia CloudTrail ze wszystkich regionów. Zaleca się, aby nie przesyłać strumieniowo zdarzeń z jednego regionu do innego.
 
 ## <a name="connect-aws"></a>Łączenie usługi AWS 
+
+
+1. W obszarze wskaźnik platformy Azure wybierz pozycję **Łączniki danych** , a następnie wybierz wiersz **Amazon Web Services** w tabeli i w okienku AWS z prawej strony kliknij pozycję **Otwórz stronę łącznika**.
+
+1. Postępuj zgodnie z instrukcjami w sekcji **Konfiguracja** , wykonując następujące kroki.
  
-1.  W swojej usługi Amazon Web Services konsoli, w obszarze **Security, Identity & Compliance**, kliknij pozycję **IAM**.
+1.  W konsoli Amazon Web Services w obszarze **zabezpieczenia, tożsamość & zgodność**, wybierz pozycję **IAM**.
 
     ![AWS1](./media/connect-aws/aws-1.png)
 
-2.  Wybierz **role** i kliknij przycisk **tworzenia ról**.
+1.  Wybierz **role** i wybierz pozycję **Utwórz rolę**.
 
     ![AWS2](./media/connect-aws/aws-2.png)
 
-3.  Wybierz **AWS innego konta.** W **Accountid** wprowadź **identyfikator konta Microsoft** (**123412341234**), można znaleźć na stronie łącznika usługi AWS w portalu Azure przez wartownika.
+1.  Wybierz **inne konto AWS.** W polu **Identyfikator konta** wprowadź **Identyfikator konta Microsoft** (**123412341234**), który można znaleźć na stronie łącznika AWS w portalu Azure.
 
     ![AWS3](./media/connect-aws/aws-3.png)
 
-4.  Upewnij się, że **wymagają Identyfikatora zewnętrznego** jest zaznaczone i następnie i wprowadź identyfikator zewnętrzny (identyfikator obszaru roboczego), którą można znaleźć na stronie łącznika usługi AWS w portalu Azure przez wartownika.
+1.  Upewnij się, że wybrano opcję **Wymagaj identyfikatora zewnętrznego** , a następnie wprowadź identyfikator zewnętrzny (identyfikator obszaru roboczego), który można znaleźć na stronie łącznika AWS w portalu Azure.
 
     ![AWS4](./media/connect-aws/aws-4.png)
 
-5.  W obszarze **Dołączanie zasad uprawnień** wybierz **AWSCloudTrailReadOnlyAccess**.
+1.  W obszarze **Dołącz uprawnienia zasady** wybierz pozycję **AWSCloudTrailReadOnlyAccess**.
 
     ![AWS5](./media/connect-aws/aws-5.png)
 
-6.  Wprowadź numer seryjny (opcjonalnie).
+1.  Wprowadź tag (opcjonalnie).
 
     ![AWS6](./media/connect-aws/aws-6.png)
 
-7.  Następnie wprowadź **nazwy roli** i kliknij przycisk **tworzenia ról** przycisku.
+1.  Następnie wprowadź **nazwę roli** i wybierz przycisk **Utwórz rolę** .
 
     ![AWS7](./media/connect-aws/aws-7.png)
 
-8.  Na liście ról wybierz rolę, którą utworzono.
+1.  Na liście role Wybierz utworzoną rolę.
 
     ![AWS8](./media/connect-aws/aws-8.png)
 
-9.  Kopiuj **ARN roli** i wklej go w **roli, aby dodać** pola w witrynie Azure Portal przez wartownika.
+1.  Skopiuj **rolę ARN**. W portalu badania na platformie Azure na ekranie Amazon Web Services łącznika wklej go do roli, **Aby dodać** pole, a następnie kliknij przycisk **Dodaj**.
 
     ![AWS9](./media/connect-aws/aws-9.png)
 
-10. Aby użyć odpowiednich schematu w usłudze Log Analytics dla zdarzeń usługi AWS, możesz wyszukać **AWSCloudTrail**.
+1. Aby użyć odpowiedniego schematu w Log Analytics dla zdarzeń AWS, Wyszukaj **AWSCloudTrail**.
 
 
 
 ## <a name="next-steps"></a>Następne kroki
-W tym dokumencie przedstawiono sposób nawiązywania połączeń narzędzie CloudTrail usług AWS do platformy Azure przez wartownika. Aby dowiedzieć się więcej na temat platformy Azure przez wartownika, zobacz następujące artykuły:
-- Dowiedz się, jak [Uzyskaj wgląd w dane i potencjalne zagrożenia](quickstart-get-visibility.md).
-- Rozpoczynanie pracy [wykrywanie zagrożeń za pomocą platformy Azure przez wartownika](tutorial-detect-threats.md).
+W tym dokumencie przedstawiono sposób łączenia AWS CloudTrail z platformą Azure. Aby dowiedzieć się więcej na temat platformy Azure, zobacz następujące artykuły:
+- Dowiedz się [, jak uzyskać wgląd w dane oraz potencjalne zagrożenia](quickstart-get-visibility.md).
+- Rozpocznij [wykrywanie zagrożeń za pomocą platformy Azure — wskaźnik](tutorial-detect-threats.md).
 

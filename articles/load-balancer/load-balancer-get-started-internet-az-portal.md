@@ -1,10 +1,10 @@
 ---
-title: Tworzenie modułu równoważenia obciążenia za pomocą frontonu strefowo nadmiarowe — witryna Azure portal
+title: Tworzenie Load Balancer za pomocą Strefowo nadmiarowego frontonu — Azure Portal
 titlesuffix: Azure Load Balancer
 description: Dowiedz się, jak utworzyć publiczny moduł równoważenia obciążenia standardowego przy użyciu strefowo nadmiarowy publiczny adres IP adres serwera sieci Web za pomocą witryny Azure portal
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 ms.service: load-balancer
 ms.devlang: na
@@ -13,17 +13,17 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
-ms.author: kumud
-ms.openlocfilehash: 448ae5f8a615a526460ac92eaaf6c7d16761aec2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: a875fc3446944b8a39f43b29440ab1d7179b847d
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60684921"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275080"
 ---
 #  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-portal"></a>Tworzenie standardowego modułu równoważenia obciążenia za pomocą frontonu strefowo nadmiarowy za pomocą witryny Azure portal
 
-W tym artykule opisano proces tworzenia publicznego [Balancer w warstwie standardowa](https://aka.ms/azureloadbalancerstandard) z strefowo nadmiarowe frontonu przy użyciu adresu publicznego adresu IP standardowych. Strefowo nadmiarowe domyślnie jest adresu IP frontonu jednego standardowego modułu równoważenia obciążenia.
+W tym artykule opisano sposób tworzenia publicznej [Usługa Load Balancer w warstwie Standardowa](https://aka.ms/azureloadbalancerstandard) ze strefowo nadmiarowym adresem IP przy użyciu adresu w standardzie Public. Strefowo nadmiarowe domyślnie jest adresu IP frontonu jednego standardowego modułu równoważenia obciążenia.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
-ms.author: jdial
-ms.openlocfilehash: f077080793ef595019667028188a2a98dcbd2c0c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: timlt
+ms.openlocfilehash: f2ba4d919cc17d1c454a39490377477e99aa17e2
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60624466"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875510"
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance"></a>Kierowanie ruchu przez wirtualne urządzenie sieciowe
 
@@ -53,18 +53,18 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [az group create](/cli/azure/group) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
 | [az network vnet create](/cli/azure/network/vnet) | Tworzy sieć wirtualną i podsieć frontonu platformy Azure. |
 | [az network subnet create](/cli/azure/network/vnet/subnet) | Tworzy zaplecza i sieć obwodową podsieci. |
-| [az network public-ip create](/cli/azure/network/public-ip) | Tworzy publiczny adres IP, dostęp do maszyny Wirtualnej z Internetu. |
+| [az network public-ip create](/cli/azure/network/public-ip) | Tworzy publiczny adres IP, aby uzyskać dostęp do maszyny wirtualnej z Internetu. |
 | [az network nic create](/cli/azure/network/nic) | Tworzy interfejs sieci wirtualnej i włącza przekazywanie adresów IP. |
 | [az network nsg create](/cli/azure/network/nsg) | Tworzy sieciową grupę zabezpieczeń. |
 | [az network nsg rule create](/cli/azure/network/nsg/rule) | Tworzy reguły sieciowych grup zabezpieczeń, które zezwalają na użycie portów HTTP i HTTPS dla ruchu przychodzącego do maszyny wirtualnej. |
 | [az network vnet subnet update](/cli/azure/network/vnet/subnet)| Tworzy skojarzenie sieciowych grup zabezpieczeń i tabel tras z podsieciami. |
 | [az network route-table create](/cli/azure/network/route-table#az-network-route-table-create)| Tworzy tabelę tras dla wszystkich tras. |
-| [az network route-table route create](/cli/azure/network/route-table/route#az-network-route-table-route-create)| Tworzy trasy, aby kierować ruchem między podsieciami i Internetem za pośrednictwem maszyny Wirtualnej. |
+| [az network route-table route create](/cli/azure/network/route-table/route#az-network-route-table-route-create)| Tworzy trasy do kierowania ruchem między podsieciami i Internetem za pomocą maszyny wirtualnej. |
 | [az vm create](/cli/azure/vm) | Tworzy maszynę wirtualną i dołącza do niej kartę sieciową. To polecenie określa również obraz maszyny wirtualnej do użycia oraz poświadczenia administracyjne. |
 | [az group delete](/cli/azure/group) | Usuwa grupę zasobów i wszystkie zasoby, które zawiera. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](/cli/azure).
 
-Więcej przykładowych skryptów interfejsu wiersza polecenia platformy sieci można znaleźć w [dokumentacji platformy Azure, omówienie sieci](../cli-samples.md)
+Dodatkowe przykłady skryptów interfejsu wiersza polecenia sieci można znaleźć w [dokumentacji usługi Azure Networking Overview](../cli-samples.md)

@@ -1,54 +1,55 @@
 ---
-title: Przykłady szablonów usługi Resource Manager platformy Azure — usłudze Azure Container Instances
-description: Przykłady szablonów usługi Azure Resource Manager dla usługi Azure Container Instances
+title: Przykłady szablonów Azure Resource Manager — Azure Container Instances
+description: Przykłady szablonów Azure Resource Manager dla Azure Container Instances
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 03/07/2019
 ms.author: danlep
-ms.openlocfilehash: 3d73d05c64f4b4867c69a15089c19ab8c320b9a8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2089f024e1de2e92f6e401549c5876e26db17ebb
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60537959"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325697"
 ---
-# <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Szablony usługi Azure Resource Manager dla usługi Azure Container Instances
+# <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Szablony Azure Resource Manager dla Azure Container Instances
 
-Następujące przykładowe szablony wdrażanie wystąpień kontenerów w różnych konfiguracjach.
+Następujące przykładowe szablony wdrażają wystąpienia kontenerów w różnych konfiguracjach.
 
-Dla opcji wdrażania, zobacz [wdrożenia](#deployment) sekcji. Jeśli chcesz tworzyć własne szablony usługi Azure Container Instances [odwołanie do szablonu usługi Resource Manager] [ ref] szczegółowo określa najważniejsze formacie szablonu i dostępnych właściwości.
+Aby zapoznać się z opcjami wdrażania, zobacz sekcję [wdrażanie](#deployment) . Jeśli chcesz utworzyć własne szablony, Azure Container Instances szablonu [Menedżer zasobów szczegóły odwołania szablonu][ref] i dostępne właściwości.
 
 ## <a name="sample-templates"></a>Przykładowe szablony
 
 | | |
 |-|-|
 | **Aplikacje** ||
-| [WordPress][app-wp] | Tworzy witrynę sieci Web WordPress i jego bazę danych MySQL w grupie kontenerów. Zawartość witryny WordPress i baza danych MySQL zostaną utrwalone w usłudze Azure Files udostępniania. Tworzy również bramy aplikacji, aby uwidocznić dostęp do sieci publicznej systemu WordPress. |
-| [MS NAV przy użyciu programu SQL Server i usług IIS][app-nav] | Wdraża jeden kontener Windows za pomocą w pełni wyposażone niezależna Dynamics NAV / środowiska Dynamics 365 Business Central. |
-| **Woluminy** ||
-| [emptyDir][vol-emptydir] | Wdraża dwóch kontenerów systemu Linux, które współużytkują woluminu emptyDir. |
-| [gitRepo][vol-gitrepo] | Wdraża klonuje repozytorium GitHub, która instaluje ją jako wolumin kontenera systemu Linux. |
-| [secret][vol-secret] | Służy do wdrażania kontenerów systemu Linux przy użyciu certyfikatu PFX, zainstalowany jako wolumin tajny. |
+| [WordPress][app-wp] | Tworzy witrynę sieci Web WordPress i jej bazę danych MySQL w grupie kontenerów. Zawartość witryny WordPress i baza danych MySQL są utrwalane w udziale Azure Files. Program tworzy również bramę aplikacji, aby udostępnić publiczny dostęp do sieci WordPress. |
+| [MS NAV z SQL Server i IIS][app-nav] | Wdraża pojedynczy kontener systemu Windows z w pełni wyróżnionym własnym środowiskiem programu Dynamics NAV/Dynamics 365 Business Central. |
+| **Objętości** ||
+| [emptyDir][vol-emptydir] | Wdraża dwa kontenery systemu Linux, które współużytkują wolumin emptyDir. |
+| [gitRepo][vol-gitrepo] | Wdraża kontener systemu Linux, który klonuje repozytorium GitHub i instaluje go jako wolumin. |
+| [wpisu][vol-secret] | Wdraża kontener systemu Linux z certyfikatem PFX zainstalowanym jako wolumin tajny. |
 | **Sieć** ||
-| [Kontener dostępne za pośrednictwem protokołu UDP][net-udp] | Służy do wdrażania kontenerów Windows lub Linux, która uwidacznia UDP port. |
-| [Kontener systemu Linux z publicznym adresem IP][net-publicip] | Wdraża jednego kontenera systemu Linux dostępnych za pośrednictwem publicznego adresu IP. |
-| [Wdrożyć grupę kontenerów z siecią wirtualną (wersja zapoznawcza)][net-vnet] | Wdraża nową sieć wirtualną, podsiecią, profil sieci i grupy kontenerów. |
+| [Kontener narażony na ruch UDP][net-udp] | Wdraża kontener systemu Windows lub Linux, który uwidacznia port UDP. |
+| [Kontener systemu Linux z publicznym adresem IP][net-publicip] | Wdraża pojedynczy kontener systemu Linux dostępny za pośrednictwem publicznego adresu IP. |
+| [Wdrażanie grupy kontenerów za pomocą sieci wirtualnej (wersja zapoznawcza)][net-vnet] | Wdraża nową sieć wirtualną, podsieć, profil sieci i grupę kontenerów. |
 | **Zasoby platformy Azure** ||
-| [Tworzenie konta usługi Azure Storage i udostępnianie plików][az-files] | Używa wiersza polecenia platformy Azure w wystąpieniu kontenera, aby utworzyć konto magazynu i udział plików platformy Azure.
+| [Utwórz udział plików i konta usługi Azure Storage][az-files] | Używa interfejsu wiersza polecenia platformy Azure w wystąpieniu kontenera, aby utworzyć konto magazynu i udział Azure Files.
 
 ## <a name="deployment"></a>Wdrożenie
 
-Masz kilka opcji wdrożenia zasobów przy użyciu szablonów usługi Resource Manager:
+Istnieje kilka opcji wdrażania zasobów przy użyciu szablonów Menedżer zasobów:
 
-[Wiersza polecenia platformy Azure][deploy-cli]
+[Interfejs wiersza polecenia platformy Azure][deploy-cli]
 
 [Azure PowerShell][deploy-powershell]
 
-[Witryna Azure portal][deploy-portal]
+[Azure Portal][deploy-portal]
 
-[INTERFEJS API REST][deploy-rest]
+[REST API][deploy-rest]
 
 <!-- LINKS - External -->
 [app-nav]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-dynamicsnav

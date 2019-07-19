@@ -1,25 +1,26 @@
 ---
-title: Przewodnik Szybki Start — wdrażanie kontenera platformy Docker w usłudze Azure Container Instances — interfejs wiersza polecenia
-description: W tym przewodniku Szybki Start Użyj wiersza polecenia platformy Azure do szybkiego wdrażania aplikacji konteneryzowanych sieci web uruchomioną w wystąpieniu izolowanego kontenera platformy Azure
+title: Szybki Start — wdrażanie kontenera platformy Docker w Azure Container Instances — interfejs wiersza polecenia
+description: W tym przewodniku szybki start użyjesz interfejsu wiersza polecenia platformy Azure, aby szybko wdrożyć aplikację sieci Web, która działa w izolowanym wystąpieniu kontenera platformy Azure
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: quickstart
 ms.date: 03/21/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 8e504a081f8685107871aed920077dd75a70dfa7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7a4a1c24211e644a796b4e60537978c327501383
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65908095"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325783"
 ---
-# <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>Szybki start: Wdrożenia wystąpienia kontenera na platformie Azure przy użyciu wiersza polecenia platformy Azure
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>Szybki start: Wdrażanie wystąpienia kontenera na platformie Azure przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Usługi Azure Container Instances umożliwia uruchamianie bez użycia serwera kontenerów platformy Docker na platformie Azure z prostotą i szybkością. Wdrażanie aplikacji kontenera wystąpienia na żądanie, jeśli nie potrzebujesz pełnej kontenera platformę koordynacji, takich jak usługi Azure Kubernetes Service.
+Używanie Azure Container Instances do uruchamiania kontenerów platformy Docker bez serwera na platformie Azure z prostotą i szybkością. Wdróż aplikację w wystąpieniu kontenera na żądanie, gdy nie potrzebujesz pełnej platformy aranżacji kontenerów, takiej jak usługa Azure Kubernetes.
 
-Wdrażanie izolowanego kontenera platformy Docker i udostępnić swoją aplikację z w pełni kwalifikowaną nazwą domeny (FQDN), w tym przewodniku Szybki Start Użyj wiersza polecenia platformy Azure. Kilka sekund po wykonaniu polecenia pojedyncze wdrożenie, możesz przejść do aplikacji działającej w kontenerze:
+W tym przewodniku szybki start użyjesz interfejsu wiersza polecenia platformy Azure, aby wdrożyć izolowany kontener platformy Docker i udostępnić swoją aplikację za pomocą w pełni kwalifikowanej nazwy domeny (FQDN). Kilka sekund po wykonaniu jednego polecenia wdrożenia można przejść do aplikacji działającej w kontenerze:
 
 ![Aplikacja wdrożona w usłudze Azure Container Instances widziana w przeglądarce][aci-app-browser]
 
@@ -27,13 +28,13 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Podczas pracy z tym przewodnikiem Szybki start możesz użyć usługi Azure Cloud Shell lub lokalnej instalacji interfejsu wiersza polecenia platformy Azure. Jeśli chcesz używać go lokalnie, wersja 2.0.55 lub nowszy, jest zalecane. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
+Podczas pracy z tym przewodnikiem Szybki start możesz użyć usługi Azure Cloud Shell lub lokalnej instalacji interfejsu wiersza polecenia platformy Azure. Jeśli chcesz używać go lokalnie, zalecana jest wersja 2.0.55 lub nowsza. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 Wystąpienia kontenerów platformy Azure, tak jak wszystkie zasoby platformy Azure, muszą zostać wdrożone w grupie zasobów. Grupy zasobów umożliwiają organizowanie powiązanych zasobów platformy Azure i zarządzanie nimi.
 
-Najpierw utwórz grupę zasobów o nazwie *myResourceGroup* w lokalizacji *eastus* za pomocą następującego polecenia [az group create][az-group-create]:
+Najpierw utwórz grupę zasobów o nazwie Moja *zasobów* w lokalizacji *Wschodnie* przy użyciu następującego polecenia [AZ Group Create][az-group-create] :
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -41,17 +42,17 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container"></a>Tworzenie kontenera
 
-Teraz, gdy masz już grupę zasobów, możesz uruchomić kontener na platformie Azure. Aby utworzyć wystąpienie kontenera przy użyciu interfejsu wiersza polecenia platformy Azure, podaj nazwę grupy zasobów, nazwę wystąpienia kontenera i obraz kontenera Docker w poleceniu [az container create][az-container-create]. W tym przewodniku Szybki Start użyjesz publicznie `mcr.microsoft.com/azuredocs/aci-helloworld` obrazu. Ten obraz zawiera małą aplikację internetową napisaną w języku Node.js, która udostępnia statyczną stronę HTML.
+Teraz, gdy masz już grupę zasobów, możesz uruchomić kontener na platformie Azure. Aby utworzyć wystąpienie kontenera za pomocą interfejsu wiersza polecenia platformy Azure, podaj nazwę grupy zasobów, nazwę wystąpienia kontenera i obraz kontenera Docker do polecenia [AZ Container Create][az-container-create] . W tym przewodniku szybki start użyjesz `mcr.microsoft.com/azuredocs/aci-helloworld` obrazu publicznego. Ten obraz zawiera małą aplikację internetową napisaną w języku Node.js, która udostępnia statyczną stronę HTML.
 
 Możesz uwidocznić swoje kontenery w Internecie, określając co najmniej jeden port do otworzenia, etykietę nazwy DNS lub obie te informacje. W tym przewodniku Szybki start wdrożysz kontener z etykietą nazwy DNS, aby skonfigurować tę aplikację internetową jako publicznie dostępną.
 
-Wykonaj polecenie podobne do następujących, aby uruchomić wystąpienie kontenera. Ustaw `--dns-name-label` wartość, która jest unikatowa w obrębie regionu świadczenia usługi Azure, w której utworzono wystąpienie. Jeśli zostanie wyświetlony komunikat o błędzie „Etykieta nazwy DNS nie jest dostępna”, spróbuj użyć innej etykiety nazwy DNS.
+Wykonaj polecenie podobne do poniższego, aby uruchomić wystąpienie kontenera. `--dns-name-label` Ustaw wartość unikatową w regionie świadczenia usługi Azure, w którym tworzysz wystąpienie. Jeśli zostanie wyświetlony komunikat o błędzie „Etykieta nazwy DNS nie jest dostępna”, spróbuj użyć innej etykiety nazwy DNS.
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld --dns-name-label aci-demo --ports 80
 ```
 
-W ciągu kilku sekund powinna pojawić się odpowiedź z interfejsu wiersza polecenia platformy Azure, wskazująca ukończenie wdrażania. Sprawdź jego stan za pomocą polecenia [az container show][az-container-show]:
+W ciągu kilku sekund powinna pojawić się odpowiedź z interfejsu wiersza polecenia platformy Azure, wskazująca ukończenie wdrażania. Sprawdź swój stan za pomocą polecenia [AZ Container show][az-container-show] :
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name mycontainer --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" --out table
@@ -76,7 +77,7 @@ Jeśli początkowo aplikacja nie jest widoczna, być może trzeba poczekać kilk
 
 Jeśli trzeba rozwiązać problem z kontenerem lub z uruchomioną na nim aplikacją (lub po prostu wyświetlić dane wyjściowe), zacznij od wyświetlenia dzienników wystąpienia kontenera.
 
-Dzienniki wystąpienia kontenera można ściągnąć przy użyciu polecenia [az container logs][az-container-logs]:
+Pobierz dzienniki wystąpienia kontenera za pomocą polecenia [AZ Container Logs][az-container-logs] :
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer
@@ -96,7 +97,7 @@ listening on port 80
 
 Oprócz wyświetlenia dzienników można dołączyć lokalne strumienie Standardowe wyjście i Błąd standardowy do ich odpowiedników należących do kontenera.
 
-Najpierw wykonaj polecenie [az container attach][az-container-attach], aby dołączyć konsolę lokalną do strumieni danych wyjściowych kontenera:
+Najpierw uruchom polecenie [AZ Container Attach][az-container-attach] , aby dołączyć konsolę lokalną do strumieni wyjściowych kontenera:
 
 ```azurecli-interactive
 az container attach --resource-group myResourceGroup --name mycontainer
@@ -124,7 +125,7 @@ listening on port 80
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Po zakończeniu pracy z kontenerem możesz go usunąć przy użyciu polecenia [az container delete][az-container-delete]:
+Po zakończeniu pracy z kontenerem usuń go przy użyciu polecenia [AZ Container Delete][az-container-delete] :
 
 ```azurecli-interactive
 az container delete --resource-group myResourceGroup --name mycontainer
@@ -138,7 +139,7 @@ az container list --resource-group myResourceGroup --output table
 
 W danych wyjściowych polecenia nie powinien pojawić się kontener **mycontainer**. Jeśli nie ma innych kontenerów w grupie zasobów, nie powinny zostać wyświetlone żadne dane wyjściowe.
 
-Gdy skończysz pracę z grupą zasobów *myResourceGroup* i wszystkimi zawartymi w niej zasobami, usuń ją za pomocą polecenia [az group delete][az-group-delete]:
+Jeśli skończysz z grupą zasobów *i* wszystkie zawarte w niej zasoby, usuń je za pomocą polecenia [AZ Group Delete][az-group-delete] :
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
@@ -146,12 +147,12 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym przewodniku Szybki Start utworzono wystąpienie kontenera platformy Azure przy użyciu obrazu publicznego firmy Microsoft. Jeśli chcesz skompilować obraz kontenera i wdrożyć go za pomocą prywatnej usługi Azure Container Registry, przejdź do samouczka dotyczącego usługi Azure Container Instances.
+W tym przewodniku szybki start utworzono wystąpienie kontenera platformy Azure przy użyciu publicznego obrazu firmy Microsoft. Jeśli chcesz skompilować obraz kontenera i wdrożyć go za pomocą prywatnej usługi Azure Container Registry, przejdź do samouczka dotyczącego usługi Azure Container Instances.
 
 > [!div class="nextstepaction"]
 > [Samouczek dotyczący usługi Azure Container Instances](./container-instances-tutorial-prepare-app.md)
 
-Aby wypróbować opcje uruchamiania kontenerów w systemie aranżacji na platformie Azure, zobacz przewodnik Szybki start [Azure Kubernetes Service (AKS)][container-service].
+Aby wypróbować opcje uruchamiania kontenerów w systemie aranżacji na platformie Azure, zobacz Przewodniki Szybki Start dotyczący [usługi Azure Kubernetes Service (AKS)][container-service] .
 
 <!-- IMAGES -->
 [aci-app-browser]: ./media/container-instances-quickstart/aci-app-browser.png

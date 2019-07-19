@@ -1,6 +1,6 @@
 ---
-title: Autoryzowanie kont deweloperów za pomocą protokołu OAuth 2.0 w usłudze Azure API Management | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak autoryzować użytkowników w usłudze API Management przy użyciu protokołu OAuth 2.0.
+title: Autoryzuj konta dewelopera przy użyciu protokołu OAuth 2,0 na platformie Azure API Management | Microsoft Docs
+description: Dowiedz się, jak autoryzować użytkowników przy użyciu protokołu OAuth 2,0 w API Management.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -13,119 +13,119 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: b195271edeea6cd5ea527454ad1615ac85a32138
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b7b003c588d7b079823bb046676a1226828fcae2
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60658687"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249857"
 ---
-# <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Jak autoryzowanie kont deweloperów w usłudze Azure API Management przy użyciu protokołu OAuth 2.0
+# <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Jak autoryzować konta dewelopera przy użyciu protokołu OAuth 2,0 na platformie Azure API Management
 
-Obsługuje wiele interfejsów API [OAuth 2.0](https://oauth.net/2/) zabezpieczanie interfejsu API i upewnij się, że tylko uprawnieni użytkownicy mają dostęp i mają dostęp tylko zasoby, do których masz prawo. Aby można było używać interakcyjnej konsoli dla deweloperów usługi Azure API Management za pomocą tych interfejsów API, usługa pozwala na skonfigurowanie wystąpienia usługi chcesz pracować z protokołu OAuth 2.0 włączony interfejs API.
+Wiele interfejsów API obsługuje protokół [OAuth 2,0](https://oauth.net/2/) , aby zabezpieczyć interfejs API i upewnić się, że tylko Prawidłowi użytkownicy mają dostęp, i mogą uzyskać dostęp tylko do zasobów, do których są uprawnieni. Aby można było używać interaktywnej konsoli dewelopera platformy Azure API Management z takimi interfejsami API, Usługa umożliwia skonfigurowanie wystąpienia usługi do pracy z interfejsem API z włączonym protokołem OAuth 2,0.
 
 ## <a name="prerequisites"> </a>Wymagania wstępne
 
-Ten przewodnik pokazuje, jak skonfigurować wystąpienia usługi API Management na potrzeby autoryzacji OAuth 2.0 konta dewelopera, ale nie pokazują, jak skonfigurować dostawcę uwierzytelniania OAuth 2.0. Konfiguracja dla każdego dostawcy uwierzytelniania OAuth 2.0 jest inny, chociaż kroki są podobne i wymagane elementy informacje używane do konfigurowania protokołu OAuth 2.0 w wystąpienia usługi API Management są takie same. W tym temacie przedstawiono przykłady użycia usługi Azure Active Directory jako dostawcy uwierzytelniania OAuth 2.0.
+W tym przewodniku pokazano, jak skonfigurować wystąpienie usługi API Management do korzystania z autoryzacji OAuth 2,0 dla kont deweloperów, ale nie pokazuje, jak skonfigurować dostawcę OAuth 2,0. Konfiguracja dla każdego dostawcy OAuth 2,0 jest różna, chociaż czynności są podobne, a wymagane fragmenty informacji używane podczas konfigurowania uwierzytelniania OAuth 2,0 w wystąpieniu usługi API Management są takie same. W tym temacie przedstawiono przykłady użycia Azure Active Directory jako dostawcy protokołu OAuth 2,0.
 
 > [!NOTE]
-> Aby uzyskać więcej informacji na temat konfigurowania uwierzytelniania OAuth 2.0 przy użyciu usługi Azure Active Directory, zobacz [aplikacji sieci Web-GraphAPI-DotNet] [ WebApp-GraphAPI-DotNet] próbki.
+> Aby uzyskać więcej informacji na temat konfigurowania protokołu OAuth 2,0 przy użyciu Azure Active Directory, zobacz przykład [webapp-GraphAPI-dotnet][WebApp-GraphAPI-DotNet] .
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="step1"> </a>Skonfiguruj serwer autoryzacji OAuth 2.0 w usłudze API Management
+## <a name="step1"> </a>Konfigurowanie serwera autoryzacji OAuth 2,0 w API Management
 
 > [!NOTE]
-> Jeśli jeszcze nie utworzono wystąpienia usługi API Management, zobacz [Tworzenie wystąpienia usługi API Management][Create an API Management service instance].
+> Jeśli nie utworzono jeszcze wystąpienia usługi API Management, zobacz [Tworzenie wystąpienia usługi API Management][Create an API Management service instance].
 
-1. Kliknij kartę OAuth 2.0, w menu po lewej stronie i kliknij **+ Dodaj**.
+1. Kliknij kartę OAuth 2,0 w menu po lewej stronie i kliknij pozycję **+ Dodaj**.
 
-    ![Menu OAuth 2.0](./media/api-management-howto-oauth2/oauth-01.png)
+    ![Menu OAuth 2,0](./media/api-management-howto-oauth2/oauth-01.png)
 
-2. Wprowadź nazwę i opcjonalny opis w **nazwa** i **opis** pola.
+2. Wprowadź nazwę i opcjonalny opis w polach **Nazwa** i **Opis** .
 
     > [!NOTE]
-    > Te pola są używane do identyfikowania serwera autoryzacji OAuth 2.0, w ramach bieżącego wystąpienia usługi API Management i ich wartości nie są udzielane przez firmę serwer OAuth 2.0.
+    > Te pola służą do identyfikowania serwera autoryzacji OAuth 2,0 w ramach bieżącego wystąpienia usługi API Management i ich wartości nie pochodzą z serwera OAuth 2,0.
 
-3. Wprowadź **adres URL strony rejestracji klienta**. Ta strona jest, gdzie użytkownicy mogą tworzyć i zarządzać swoimi kontami i różni się zależnie od dostawcy uwierzytelniania OAuth 2.0 używane. **Adres URL strony rejestracji klienta** wskazuje stronę która umożliwia użytkownikom tworzenie i konfigurowanie własnych kont dla dostawców OAuth 2.0, które obsługują zarządzanie kontami użytkowników. W niektórych organizacjach skonfigurować lub nie korzystać z tej funkcji, nawet wtedy, gdy dostawca uwierzytelniania OAuth 2.0 obsługuje tę funkcję. Jeśli Twój dostawca uwierzytelniania OAuth 2.0 nie Zarządzanie skonfigurowanych kont, wprowadź symbolu zastępczego adresu URL w tym miejscu takie jak adres URL Twojej firmy lub adresu URL takich jak `https://placeholder.contoso.com`.
+3. Wprowadź **adres URL strony rejestracji klienta**. Na tej stronie można tworzyć konta i zarządzać nimi oraz zmieniać się w zależności od używanego dostawcy protokołu OAuth 2,0. **Adres URL strony rejestracji klienta** wskazuje na stronę, za pomocą której użytkownicy mogą tworzyć i konfigurować własne konta dla dostawców OAuth 2,0, którzy obsługują zarządzanie kontami użytkowników. Niektóre organizacje nie konfigurują ani nie używają tej funkcji, nawet jeśli obsługują ją dostawca OAuth 2,0. Jeśli dostawca OAuth 2,0 nie ma skonfigurowanych kont zarządzanie użytkownikami, wprowadź w tym miejscu zastępczy adres URL, na przykład adres URL firmy lub adres URL, taki jak `https://placeholder.contoso.com`.
 
-    ![Nowy serwer OAuth 2.0](./media/api-management-howto-oauth2/oauth-02.png)
+    ![Nowy serwer OAuth 2,0](./media/api-management-howto-oauth2/oauth-02.png)
 
-4. Następna sekcja formularza zawiera **typy przydziałów autoryzacji**, **adresu URL punktu końcowego autoryzacji**, i **metoda żądania autoryzacji** ustawienia.
+4. Następna sekcja formularza zawiera **typy przyzwoleń autoryzacji**, **adres URL punktu końcowego autoryzacji**i ustawienia **metody żądania autoryzacji** .
 
-    Określ **typy przydziałów autoryzacji** , sprawdzając żądanego typu. **Kod autoryzacji** jest określony, domyślnie.
+    Określ **typy przyzwoleń autoryzacji** , sprawdzając odpowiednie typy. **Kod autoryzacji** jest domyślnie określony.
 
-    Wprowadź **adresu URL punktu końcowego autoryzacji**. Usługi Azure Active Directory, ten adres URL będzie podobny do następującego adresu URL, gdzie `<client_id>` jest zastępowana identyfikatorem klienta, który identyfikuje aplikację, aby serwer OAuth 2.0.
+    Wprowadź **adres URL punktu końcowego autoryzacji**. W przypadku Azure Active Directory ten adres URL będzie podobny do następującego adresu URL, gdzie `<tenant_id>` jest zastępowany identyfikatorem dzierżawy usługi Azure AD.
 
-    `https://login.microsoftonline.com/<client_id>/oauth2/authorize`
+    `https://login.microsoftonline.com/<tenant_id>/oauth2/authorize`
 
-    **Metoda żądania autoryzacji** Określa, jak żądanie autoryzacji są wysyłane do serwera protokołu OAuth 2.0. Domyślnie **UZYSKAĆ** jest zaznaczone.
+    **Metoda żądania autoryzacji** określa, w jaki sposób żądanie autoryzacji jest wysyłane do serwera OAuth 2,0. Domyślnie jest wybrana wartość **Pobierz** .
 
-5. Następnie **adresu URL punktu końcowego tokenu**, **metod uwierzytelniania klienta**, **Metoda wysyłania tokenu dostępu** i **zakresu domyślnego** muszą być określona.
+5. Następnie należy określić **adres URL punktu końcowego tokenu**, **metody uwierzytelniania klienta**, **metodę wysyłania tokenu dostępu** i **zakres domyślny** .
 
-    ![Nowy serwer OAuth 2.0](./media/api-management-howto-oauth2/oauth-03.png)
+    ![Nowy serwer OAuth 2,0](./media/api-management-howto-oauth2/oauth-03.png)
 
-    Dla serwera usługi Azure Active Directory OAuth 2.0 **adresu URL punktu końcowego tokenu** będzie mieć następujący format, gdzie `<TenantID>` ma format `yourapp.onmicrosoft.com`.
+    W przypadku serwera Azure Active Directory OAuth 2,0 **adres URL punktu końcowego tokenu** będzie miał następujący format, gdzie `<TenantID>` `yourapp.onmicrosoft.com`ma format.
 
     `https://login.microsoftonline.com/<TenantID>/oauth2/token`
 
-    Ustawieniem domyślnym dla **metod uwierzytelniania klienta** jest **podstawowe**, i **Metoda wysyłania tokenu dostępu** jest **nagłówek autoryzacji**. Te wartości są skonfigurowane w tej części formularza, wraz z **zakresu domyślnego**.
+    Domyślnym ustawieniem dla **metod uwierzytelniania klienta** jest **podstawowa**, a **metoda wysyłania tokenu dostępu** jest **nagłówkiem autoryzacji**. Te wartości są konfigurowane w tej sekcji formularza wraz z **zakresem domyślnym**.
 
-6. **Poświadczeń klienta** sekcja zawiera **identyfikator klienta** i **klucz tajny klienta**, które są uzyskiwane podczas procesu tworzenia i konfiguracji serwera protokołu OAuth 2.0 . Raz **identyfikator klienta** i **klucz tajny klienta** są określone, **redirect_uri** dla **kod autoryzacji** jest generowany. Ten identyfikator URI jest używany do konfigurowania adresu URL odpowiedzi w konfiguracji serwera protokołu OAuth 2.0.
+6. Sekcja **poświadczenia klienta** zawiera **Identyfikator klienta** i **klucz tajny klienta**, które są uzyskiwane podczas procesu tworzenia i konfiguracji serwera OAuth 2,0. Po określeniu **identyfikatora klienta** i **klucza tajnego klienta** zostanie wygenerowany **parametr redirect_uri** dla **kodu autoryzacji** . Ten identyfikator URI służy do konfigurowania adresu URL odpowiedzi w konfiguracji serwera OAuth 2,0.
 
-    ![Nowy serwer OAuth 2.0](./media/api-management-howto-oauth2/oauth-04.png)
+    ![Nowy serwer OAuth 2,0](./media/api-management-howto-oauth2/oauth-04.png)
 
-    Jeśli **typy przydziałów autoryzacji** ustawiono **hasło właściciela zasobu**, **poświadczenia hasła właściciela zasobu** sekcja jest używana do określenia tych poświadczeń, a w przeciwnym może pozostać puste.
+    Jeśli **Typ przydzielenia autoryzacji** jest ustawiony na **hasło właściciela zasobu**, sekcja **poświadczeń hasła właściciela zasobu** służy do określania tych poświadczeń. w przeciwnym razie można pozostawić to pole puste.
 
-    Po zakończeniu formularza kliknij **Utwórz** Aby zapisać konfigurację serwera autoryzacji interfejsu API zarządzania protokołu OAuth 2.0. Po zapisaniu konfiguracji serwera można skonfigurować interfejsów API, aby użyć tej konfiguracji, jak pokazano w następnej sekcji.
+    Po zakończeniu formularza kliknij pozycję **Utwórz** , aby zapisać konfigurację serwera autoryzacji API Management OAuth 2,0. Po zapisaniu konfiguracji serwera można skonfigurować interfejsy API do korzystania z tej konfiguracji, jak pokazano w następnej sekcji.
 
-## <a name="step2"> </a>Konfigurowanie interfejsu API do użycia autoryzacji użytkownika OAuth 2.0
+## <a name="step2"> </a>Konfigurowanie interfejsu API do korzystania z autoryzacji użytkownika OAuth 2,0
 
-1. Kliknij przycisk **interfejsów API** z **usługi API Management** menu po lewej stronie.
+1. Kliknij pozycję **interfejsy API** w menu **API Management** po lewej stronie.
 
-    ![Interfejsy API protokołu OAuth 2.0](./media/api-management-howto-oauth2/oauth-05.png)
+    ![Interfejsy API protokołu OAuth 2,0](./media/api-management-howto-oauth2/oauth-05.png)
 
-2. Kliknij nazwę żądanego interfejsu API i kliknij przycisk **ustawienia**. Przewiń do **zabezpieczeń** sekcji, a następnie zaznacz pole wyboru, aby uzyskać **OAuth 2.0**.
+2. Kliknij nazwę żądanego interfejsu API, a następnie kliknij pozycję **Ustawienia**. Przewiń do sekcji **zabezpieczenia** , a następnie zaznacz pole wyboru **OAuth 2,0**.
 
-    ![Ustawienia protokołu OAuth 2.0](./media/api-management-howto-oauth2/oauth-06.png)
+    ![Ustawienia protokołu OAuth 2,0](./media/api-management-howto-oauth2/oauth-06.png)
 
-3. Wybierz żądany **serwera autoryzacji** z listy rozwijanej, a następnie kliknij przycisk **Zapisz**.
+3. Wybierz żądany **serwer autoryzacji** z listy rozwijanej, a następnie kliknij przycisk **Zapisz**.
 
-    ![Ustawienia protokołu OAuth 2.0](./media/api-management-howto-oauth2/oauth-07.png)
+    ![Ustawienia protokołu OAuth 2,0](./media/api-management-howto-oauth2/oauth-07.png)
 
-## <a name="step3"> </a>Testowanie autoryzacji użytkownika OAuth 2.0 w portalu dla deweloperów
+## <a name="step3"> </a>Testowanie autoryzacji użytkownika protokołu OAuth 2,0 w portalu dla deweloperów
 
-Po skonfigurowaniu serwera autoryzacji OAuth 2.0 i skonfigurować ten serwer jest używany przez interfejs API, można ją przetestować, przechodząc do portalu dla deweloperów i wywoływanie interfejsu API.  Kliknij przycisk **portalu dla deweloperów** w górnym menu z wystąpienia usługi Azure API Management **Przegląd** strony.
+Po skonfigurowaniu serwera autoryzacji OAuth 2,0 i skonfigurowaniu interfejsu API do korzystania z tego serwera można go przetestować, przechodząc do portalu dla deweloperów i wywołując interfejs API.  Kliknij przycisk **Portal dla deweloperów** w górnym menu na stronie **Przegląd** wystąpienia usługi Azure API Management.
 
 ![Portal dla deweloperów][api-management-developer-portal-menu]
 
-Kliknij przycisk **interfejsów API** w górnym menu i wybierz pozycję **interfejsu Echo API**.
+Kliknij pozycję **interfejsy API** w górnym menu i wybierz pozycję **echo API**.
 
 ![Interfejs Echo API][api-management-apis-echo-api]
 
 > [!NOTE]
 > Jeśli istnieje tylko jeden interfejs API skonfigurowany lub widoczny dla Twojego konta, kliknięcie opcji Interfejsy API powoduje przejście bezpośrednio do operacji dla tego interfejsu API.
 
-Wybierz **GET Resource** operacji, kliknij przycisk **Otwórz konsolę**, a następnie wybierz pozycję **kod autoryzacji** z listy rozwijanej.
+Wybierz operację **Pobierz zasób** , kliknij pozycję **Otwórz konsolę**, a następnie z listy rozwijanej wybierz pozycję **kod autoryzacji** .
 
 ![Otwarta konsola][api-management-open-console]
 
-Gdy **kod autoryzacji** jest zaznaczone, okno podręczne jest wyświetlany z formularzem logowania dostawcy uwierzytelniania OAuth 2.0. W tym przykładzie formularzem logowania jest zapewniana przez usługę Azure Active Directory.
+Po wybraniu **kodu autoryzacji** zostanie wyświetlone okno podręczne z formularzem logowania dostawcy OAuth 2,0. W tym przykładzie formularz logowania jest dostarczany przez Azure Active Directory.
 
 > [!NOTE]
-> Jeśli masz wyłączone wyskakujące okienka zostanie wyświetlony monit, aby je włączyć przez przeglądarkę. Po włączeniu ich wybierz **kod autoryzacji** ponownie i zostanie wyświetlony formularz logowania.
+> Jeśli wyskakujące okienka zostały wyłączone, zostanie wyświetlony monit o włączenie ich przez przeglądarkę. Po ich włączeniu ponownie wybierz pozycję **kod autoryzacji** , a zostanie wyświetlony formularz logowania.
 
 ![Logowanie][api-management-oauth2-signin]
 
-Po zalogowaniu, **nagłówki żądań** są wypełniane przy użyciu `Authorization : Bearer` nagłówek, który autoryzuje żądanie.
+Po zalogowaniu **nagłówki żądań** są wypełniane `Authorization : Bearer` nagłówkiem, który autoryzuje żądanie.
 
 ![Token nagłówka żądania][api-management-request-header-token]
 
-W tym momencie możesz skonfigurować odpowiednie wartości dla pozostałych parametrów i prześlij żądanie.
+W tym momencie można skonfigurować odpowiednie wartości dla pozostałych parametrów i przesłać żądanie.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji na temat korzystania z protokołu OAuth 2.0 i usługi API Management, zapoznaj się z poniższymi, wideo i towarzyszące [artykułu](api-management-howto-protect-backend-with-aad.md).
+Aby uzyskać więcej informacji na temat korzystania z protokołu OAuth 2,0 i API Management, zobacz następujący film wideo i towarzyszący [artykuł](api-management-howto-protect-backend-with-aad.md).
 
 [api-management-oauth2-signin]: ./media/api-management-howto-oauth2/api-management-oauth2-signin.png
 [api-management-request-header-token]: ./media/api-management-howto-oauth2/api-management-request-header-token.png

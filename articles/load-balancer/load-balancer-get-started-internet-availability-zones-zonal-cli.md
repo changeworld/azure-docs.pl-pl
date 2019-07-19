@@ -1,10 +1,10 @@
 ---
-title: Tworzenie modułu równoważenia obciążenia za pomocą frontonu strefowych — interfejs wiersza polecenia platformy Azure
+title: Tworzenie Load Balancer ze strefą frontonu — interfejs wiersza polecenia platformy Azure
 titlesuffix: Azure Load Balancer
-description: Dowiedz się, jak tworzenie standardowego modułu równoważenia obciążenia za pomocą frontonu strefowych przy użyciu wiersza polecenia platformy Azure
+description: Dowiedz się, jak utworzyć usługa Load Balancer w warstwie Standardowa z strefą frontonu przy użyciu interfejsu wiersza polecenia platformy Azure
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 ms.service: load-balancer
 ms.devlang: na
@@ -12,17 +12,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
-ms.author: kumud
-ms.openlocfilehash: 3b89c11c11276781ec63367247601fccfd2fa858
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 663567f6e3b078c1cb2afc60c3aaa9fcfb7af4dd
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66122200"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275239"
 ---
-#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-cli"></a>Tworzenie standardowego modułu równoważenia obciążenia za pomocą frontonu strefowych przy użyciu wiersza polecenia platformy Azure
+#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-cli"></a>Tworzenie usługa Load Balancer w warstwie Standardowa z strefą frontonu przy użyciu interfejsu wiersza polecenia platformy Azure
 
-W tym artykule opisano proces tworzenia publicznego [Balancer w warstwie standardowa](https://aka.ms/azureloadbalancerstandard) za pomocą frontonu strefowych. Posiadanie strefowych frontonu oznacza dowolnego przepływu ruchu przychodzącego lub wychodzącego jest obsługiwany przez jedną strefę, w regionie. Za pomocą strefowych standardowego publicznego adresu IP w konfiguracji serwera sieci Web, można utworzyć moduł równoważenia obciążenia za pomocą frontonu strefowych. Aby dowiedzieć się, jak działają strefach dostępności przy użyciu standardowego modułu równoważenia obciążenia, zobacz [standardowego modułu równoważenia obciążenia i dostępność strefy](load-balancer-standard-availability-zones.md). 
+W tym artykule opisano sposób tworzenia [Usługa Load Balancer w warstwie Standardowa](https://aka.ms/azureloadbalancerstandard) publicznego z strefą frontonu. Istnienie strefowych frontonu oznacza, że każdy przepływ ruchu przychodzącego lub wychodzącego jest obsługiwany przez jedną strefę w regionie. Moduł równoważenia obciążenia można utworzyć z strefą frontonu przy użyciu standardowego publicznego adresu IP w ramach stref w konfiguracji frontonu. Aby dowiedzieć się, jak działają strefach dostępności przy użyciu standardowego modułu równoważenia obciążenia, zobacz [standardowego modułu równoważenia obciążenia i dostępność strefy](load-balancer-standard-availability-zones.md). 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -44,7 +44,7 @@ az group create --name myResourceGroupZLB --location westeurope
 
 ## <a name="create-a-public-standard-ip-address"></a>Tworzenie publicznego adresu IP w warstwie Standardowa
 
-Tworzenie strefowej standardowego publicznego adresu IP za pomocą następującego polecenia:
+Utwórz strefowy publiczny adres IP w warstwie Standardowa przy użyciu następującego polecenia:
 
 ```azurecli-interactive
 az network public-ip create --resource-group myResourceGroupZLB --name myPublicIPZonal --sku Standard --zone 1
@@ -52,7 +52,7 @@ az network public-ip create --resource-group myResourceGroupZLB --name myPublicI
 
 ## <a name="create-a-load-balancer"></a>Tworzenie modułu równoważenia obciążenia
 
-Tworzenie publicznego modułu równoważenia obciążenia standardowego przy użyciu standardowego publicznego adresu IP, który został utworzony w poprzednim kroku, używając następującego polecenia:
+Utwórz publiczną usługa Load Balancer w warstwie Standardowa ze standardowym publicznym adresem IP utworzonym w poprzednim kroku przy użyciu następującego polecenia:
 
 ```azurecli-interactive
 az network lb create --resource-group myResourceGroupZLB --name myLoadBalancer --public-ip-address myPublicIPZonal --frontend-ip-name myFrontEnd --backend-pool-name myBackEndPool --sku Standard

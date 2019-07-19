@@ -1,24 +1,25 @@
 ---
 title: Rejestrowanie wystąpienia kontenera za pomocą dzienników usługi Azure Monitor
-description: Dowiedz się, jak wysyłać dzienniki z usługi Azure container instances do dzienników usługi Azure Monitor.
+description: Dowiedz się, jak wysyłać dzienniki z usługi Azure Container Instances do dzienników Azure Monitor.
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: overview
 ms.date: 07/09/2019
 ms.author: danlep
-ms.openlocfilehash: cab0bc4d2d0491c70a1d2f11f3a5d5d831ade6cf
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 4099bc0b15f02faade02f47aeb00fb7c4b4a3332
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722651"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325879"
 ---
 # <a name="container-instance-logging-with-azure-monitor-logs"></a>Rejestrowanie wystąpienia kontenera za pomocą dzienników usługi Azure Monitor
 
-Obszary robocze usługi log Analytics, zapewniają centralną lokalizację służącą do przechowywania i wykonywania zapytań względem danych dziennika z nie tylko zasobów platformy Azure, ale także zasobów lokalnych i zasobów w innych chmurach. Usługa Azure Container Instances obejmuje wbudowaną obsługę wysyłania danych do dzienników usługi Azure Monitor.
+Obszary robocze Log Analytics zapewniają scentralizowaną lokalizację do przechowywania i wykonywania zapytań dotyczących danych dzienników tylko z zasobów platformy Azure, ale także zasobów i zasobów lokalnych w innych chmurach. Usługa Azure Container Instances obejmuje wbudowaną obsługę wysyłania danych do dzienników usługi Azure Monitor.
 
-Aby wysyłać dane do wystąpienia kontenera do dzienników usługi Azure Monitor, należy określić obszar roboczy usługi Log Analytics klucz identyfikator i obszaru roboczego podczas tworzenia grupy kontenerów. W poniższych sekcjach opisano tworzenie grupy kontenerów z włączonym rejestrowaniem oraz dzienników wykonujących zapytania.
+Aby wysłać dane wystąpienia kontenera do dzienników Azure Monitor, należy określić identyfikator obszaru roboczego Log Analytics i klucz obszaru roboczego podczas tworzenia grupy kontenerów. W poniższych sekcjach opisano tworzenie grupy kontenerów z włączonym rejestrowaniem oraz dzienników wykonujących zapytania.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -36,7 +37,7 @@ Usługa Azure Container Instances wymaga uprawnień do wysyłania danych do obsz
 Aby uzyskać identyfikator obszaru roboczego analizy dzienników i klucz podstawowy:
 
 1. W witrynie Azure Portal przejdź do obszaru roboczego usługi Log Analytics
-1. W obszarze **ustawienia**, wybierz opcję **ustawienia zaawansowane**
+1. W obszarze **Ustawienia**wybierz pozycję **Ustawienia zaawansowane** .
 1. Wybierz opcje **Połączone źródła** > **Serwery z systemem Windows** (lub **Serwery z systemem Linux** — identyfikator i klucze są takie same dla obu opcji)
 1. Zwróć uwagę na następujące elementy:
    * **WORKSPACE ID** (IDENTYFIKATOR OBSZARU ROBOCZEGO)
@@ -46,11 +47,11 @@ Aby uzyskać identyfikator obszaru roboczego analizy dzienników i klucz podstaw
 
 Teraz, gdy masz identyfikator obszaru roboczego analizy dzienników i klucz podstawowy, możesz utworzyć grupę kontenerów z włączonym rejestrowaniem.
 
-W poniższych przykładach pokazano dwa sposoby tworzenia grupy kontenerów za pomocą jednego [fluentd][fluentd] kontenera: za pomocą interfejsu wiersza polecenia platformy Azure i interfejsu wiersza polecenia platformy Azure przy użyciu szablonu YAML. Kontener Fluentd tworzy kilka wierszy danych wyjściowych w konfiguracji domyślnej. Ponieważ te dane wyjściowe są wysyłane do obszaru roboczego usługi Log Analytics, są przydatne do przedstawiania wyświetlania i wykonywania zapytań przez dzienniki.
+W poniższych przykładach pokazano dwa sposoby tworzenia grupy kontenerów [z pojedynczym][fluentd] postawionym kontenerem: za pomocą interfejsu wiersza polecenia platformy Azure i interfejsu wiersza polecenia platformy Azure przy użyciu szablonu YAML. Kontener Fluentd tworzy kilka wierszy danych wyjściowych w konfiguracji domyślnej. Ponieważ te dane wyjściowe są wysyłane do obszaru roboczego usługi Log Analytics, są przydatne do przedstawiania wyświetlania i wykonywania zapytań przez dzienniki.
 
 ### <a name="deploy-with-azure-cli"></a>Wdrażanie przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Aby wdrożyć przy użyciu wiersza polecenia platformy Azure, należy określić `--log-analytics-workspace` i `--log-analytics-workspace-key` parametrów w [utworzyć kontener az][az-container-create] polecenia. Przed uruchomieniem następującego polecenia należy zastąpić te dwie wartości obszaru roboczego wartościami uzyskanymi w poprzednim kroku (i zaktualizować nazwę grupy zasobów).
+Aby wdrożyć za pomocą interfejsu wiersza polecenia platformy Azure `--log-analytics-workspace` , `--log-analytics-workspace-key` Określ parametry i w poleceniu [AZ Container Create][az-container-create] . Przed uruchomieniem następującego polecenia należy zastąpić te dwie wartości obszaru roboczego wartościami uzyskanymi w poprzednim kroku (i zaktualizować nazwę grupy zasobów).
 
 ```azurecli-interactive
 az container create \
@@ -90,7 +91,7 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Następnie wykonaj następujące polecenie, aby wdrożyć grupę kontenerów. Zastąp `myResourceGroup` zasób grupy w ramach subskrypcji (lub najpierw utwórz grupę zasobów o nazwie "myResourceGroup"):
+Następnie wykonaj następujące polecenie, aby wdrożyć grupę kontenerów. Zamień `myResourceGroup` na grupę zasobów w ramach subskrypcji (lub najpierw utwórz grupę zasobów o nazwie "Grupa zasobów"):
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --name mycontainergroup001 --file deploy-aci.yaml
@@ -103,17 +104,17 @@ Zaraz po wykonaniu polecenia powinna pojawić się odpowiedź z usługi Azure za
 Po wdrożeniu grupy kontenerów, może upłynąć kilka minut (do 10), zanim pierwsze wpisy dziennika będą widoczne w witrynie Azure Portal. Aby wyświetlić dzienniki grupy kontenerów:
 
 1. W witrynie Azure Portal przejdź do obszaru roboczego usługi Log Analytics
-1. W obszarze **ogólne**, wybierz opcję **dzienników**  
-1. Wpisz następujące zapytanie: `search *`
-1. Wybierz **uruchamiania**
+1. W obszarze **Ogólne**wybierz pozycję **dzienniki** .  
+1. Wpisz następujące zapytanie:`search *`
+1. Wybierz pozycję **Uruchom**
 
-Powinno pojawić się kilka wyników dla każdego zapytania `search *`. Jeśli nie widzisz żadnych wyników, na początku, poczekaj kilka minut, a następnie wybierz **Uruchom** przycisk, aby wykonać zapytanie ponownie. Domyślnie wpisy dziennika są wyświetlane w **tabeli** formatu. Następnie możesz rozwijać wiersze, aby wyświetlić zawartość poszczególnych wpisów dziennika.
+Powinno pojawić się kilka wyników dla każdego zapytania `search *`. Jeśli pierwsze wyniki nie są widoczne, odczekaj kilka minut, a następnie wybierz przycisk **Uruchom** , aby ponownie uruchomić zapytanie. Domyślnie wpisy dziennika są wyświetlane w formacie **tabeli** . Następnie możesz rozwijać wiersze, aby wyświetlić zawartość poszczególnych wpisów dziennika.
 
 ![Wyniki przeszukiwania dzienników w witrynie Azure Portal][log-search-01]
 
 ## <a name="query-container-logs"></a>Wykonywanie zapytań dla dzienników kontenerów
 
-Dzienniki platformy Azure Monitor zawiera obszerny [języka zapytań][query_lang] dla obejmują zarówno ściąganie informacji z potencjalnie tysięcy wierszy dziennika danych wyjściowych.
+Dzienniki Azure Monitor zawierają obszerny [język zapytań][query_lang] służący do ściągania informacji z potencjalnie tysięcy wierszy danych wyjściowych dziennika.
 
 Agent rejestrowania usługi Azure Container Instances wysyła wpisy do tabeli `ContainerInstanceLog_CL` w obszarze roboczym usługi Log Analytics. Podstawową strukturę zapytania stanowi tabela źródłowa (`ContainerInstanceLog_CL`), po której następuje szereg operatorów oddzielonych znakiem potoku (`|`). Można połączyć kilka operatorów, aby dostosować wyniki i wykonać funkcje zaawansowane.
 
@@ -132,7 +133,7 @@ ContainerInstanceLog_CL
 | where (TimeGenerated > ago(1h))
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 ### <a name="azure-monitor-logs"></a>Dzienniki usługi Azure Monitor
 

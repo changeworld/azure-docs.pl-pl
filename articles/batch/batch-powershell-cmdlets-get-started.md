@@ -4,7 +4,7 @@ description: Krótkie wprowadzenie do poleceń cmdlet programu Azure PowerShell,
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 01/15/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: a98a98eea1b5c2824c1c54169c5c71456f3a2a64
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 21930d5240225540159fa425d9d9fa518a1b19d5
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704785"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323077"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Zarządzanie zasobami usługi Batch za pomocą poleceń cmdlet programu PowerShell
 
@@ -125,7 +125,7 @@ Podczas korzystania z wielu tych poleceń cmdlet oprócz przekazywania obiektu B
 
 ### <a name="create-a-batch-pool"></a>Tworzenie puli usługi Batch
 
-Podczas tworzenia lub aktualizowania puli usługi Batch należy wybrać konfigurację usług w chmurze lub konfigurację maszyny wirtualnej dla systemu operacyjnego węzłów obliczeniowych — zobacz [Omówienie funkcji usługi Batch](batch-api-basics.md#pool). Jeśli wybierzesz konfigurację usług w chmurze, węzły obliczeniowe będą obrazami z jednej z [wersji systemu operacyjnego gościa platformy Azure](../cloud-services/cloud-services-guestos-update-matrix.md#releases). Jeśli określisz konfigurację maszyny wirtualnej, można określić jedną z obsługiwanych systemu Linux lub obrazów maszyn wirtualnych Windows wymienionych w [Azure Virtual Machines Marketplace][vm_marketplace], albo podać niestandardowy obraz, którego zostały przygotowane.
+Podczas tworzenia lub aktualizowania puli usługi Batch należy wybrać konfigurację usług w chmurze lub konfigurację maszyny wirtualnej dla systemu operacyjnego węzłów obliczeniowych — zobacz [Omówienie funkcji usługi Batch](batch-api-basics.md#pool). Jeśli wybierzesz konfigurację usług w chmurze, węzły obliczeniowe będą obrazami z jednej z [wersji systemu operacyjnego gościa platformy Azure](../cloud-services/cloud-services-guestos-update-matrix.md#releases). W przypadku określenia konfiguracji maszyny wirtualnej można określić jeden z obsługiwanych obrazów maszyn wirtualnych z systemem Linux lub Windows znajdujący się w [witrynie Azure Virtual Machines Marketplace][vm_marketplace]lub udostępnić przygotowany obraz niestandardowy.
 
 Po uruchomieniu polecenia **New-AzBatchPool** należy przekazać ustawienia systemu operacyjnego w obiekcie PSCloudServiceConfiguration lub PSVirtualMachineConfiguration. Na przykład poniższy fragment kodu tworzy pulę usługi Batch z węzłami obliczeniowymi o rozmiarze Standardowa_A1 w konfiguracji maszyny wirtualnej, z obrazami systemu Ubuntu Server 18.04-LTS. W tym miejscu parametr **VirtualMachineConfiguration** określa zmienną *$configuration* jako obiekt PSVirtualMachineConfiguration. Parametr **BatchContext** określa uprzednio zdefiniowaną zmienną *$context* jako obiekt BatchAccountContext.
 

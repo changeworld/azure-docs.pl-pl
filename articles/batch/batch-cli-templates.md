@@ -1,9 +1,9 @@
 ---
-title: Uruchamianie zadań przy użyciu szablonów — Azure Batch end-to-end | Dokumentacja firmy Microsoft
-description: Tworzenie pul, zadań i zadania usługi Batch za pomocą plików szablonów i interfejsu wiersza polecenia platformy Azure.
+title: Uruchamianie zadań na koniec do końca przy użyciu szablonów — Azure Batch | Microsoft Docs
+description: Tworzenie pul usługi Batch, zadań i zadań przy użyciu plików szablonów i interfejsu wiersza polecenia platformy Azure.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: na
@@ -12,86 +12,86 @@ ms.workload: big-compute
 ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 80d2e995a18a2d6dafbb8d92fdd5996b10eab17c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5e5ed8a69d5140814899c24e96eded6dc61e5908
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60783742"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323671"
 ---
-# <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Użyj szablonów interfejsu wiersza polecenia usługi Azure Batch i transferu plików
+# <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Użyj Azure Batch szablonów interfejsu wiersza polecenia i transferu plików
 
-Za pomocą rozszerzenia wiersza polecenia platformy Azure dla usługi Azure Batch, jest możliwe uruchamianie zadań wsadowych bez konieczności pisania kodu.
+Korzystając z rozszerzenia Azure Batch w interfejsie wiersza polecenia platformy Azure, możliwe jest uruchamianie zadań wsadowych bez pisania kodu.
 
-Tworzenie i używanie plików szablonów JSON przy użyciu wiersza polecenia platformy Azure, do tworzenia pul, zadań i zadania usługi Batch. Używanie interfejsu wiersza polecenia rozszerzenia poleceń, aby łatwo przekazywać plików wejściowych zadania do konta magazynu skojarzone z kontem usługi Batch i zadanie pobierania plików wyjściowych.
+Twórz i używaj plików szablonów JSON przy użyciu interfejsu wiersza polecenia platformy Azure, aby tworzyć pule, zadania i zadania usługi Batch. Użyj poleceń rozszerzenia interfejsu wiersza polecenia, aby łatwo przekazywać pliki wejściowe zadań do konta magazynu skojarzonego z kontem wsadowym, a następnie pobierać pliki wyjściowe zadania.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
-Rozszerzenie interfejsu wiersza polecenia platformy Azure umożliwia usługi Batch jako używane end-to-end osoby niebędące deweloperami. Za pomocą tylko polecenia interfejsu wiersza polecenia można utworzyć pulę, przekazywanie danych wejściowych, tworzenie zadań i skojarzonych zadań i pobrać wynikowe dane wyjściowe. Żaden dodatkowy kod nie jest wymagana. Do uruchamiania poleceń interfejsu wiersza polecenia, bezpośrednio lub zintegrować skryptów.
+Rozszerzenie interfejsu wiersza polecenia platformy Azure umożliwia kompleksowe przetwarzanie wsadowe przez użytkowników, którzy nie są deweloperami. Korzystając tylko z poleceń interfejsu wiersza polecenia, można utworzyć pulę, przekazać dane wejściowe, utworzyć zadania i skojarzone zadania i pobrać wynikowe dane wyjściowe. Żaden dodatkowy kod nie jest wymagany. Bezpośrednie uruchamianie poleceń interfejsu wiersza polecenia lub integrowanie ich ze skryptami.
 
-Tworzenie szablonów usługi Batch, na [istniejących obsługę usługi Batch w interfejsie wiersza polecenia platformy Azure](batch-cli-get-started.md#json-files-for-resource-creation) dla plików JSON do określenia wartości właściwości, podczas tworzenia pul, zadań, zadań i innych elementów. Szablonów usługi Batch, Dodaj następujące funkcje:
+Szablony wsadowe kompilują w [istniejącej obsłudze usługi Batch w interfejsie wiersza polecenia platformy Azure](batch-cli-get-started.md#json-files-for-resource-creation) dla plików JSON, aby określić wartości właściwości podczas tworzenia pul, zadań, zadań i innych elementów. Szablony wsadowe dodają następujące możliwości:
 
--   Parametry można definiować. Gdy szablon jest używany, tylko wartości parametrów są określone można utworzyć elementu, za pomocą wartości innych właściwości elementu określona w treści szablonu. Użytkownik, który rozumie wsadowe i aplikacje do uruchamiania przy użyciu usługi Batch można tworzyć szablony, określając z puli, zadań i wartości właściwości zadania. Użytkownik mniej znanych z usługi Batch i/lub aplikacji wystarczy tylko określić wartości dla zdefiniowanych parametrów.
+-   Parametry można zdefiniować. Gdy szablon jest używany, tylko wartości parametrów są określone, aby utworzyć element, z wartościami właściwości innych elementów określonymi w treści szablonu. Użytkownik, który rozumie zadanie wsadowe i aplikacje, które mają być uruchamiane przez zadanie wsadowe, może tworzyć szablony, określać wartości właściwości puli, zadania i zadania. Użytkownik mniej zaznajomiony z usługą Batch i/lub aplikacjami musi określić wartości dla zdefiniowanych parametrów.
 
--   Fabryki zadań zadania Utwórz co najmniej jedno zadanie skojarzone z zadaniem, unikając konieczności wiele definicji zadań ma zostać utworzony i znacznie uproszczenia przesłania zadania.
+-   Fabryki zadań zadania tworzą jedno lub więcej zadań skojarzonych z zadaniem, unikając potrzeby tworzenia wielu definicji zadań i znacząco upraszczają przesyłanie zadań.
 
 
-Zadania zazwyczaj użyć plików danych wejściowych i tworzące plików danych wyjściowych. Konto magazynu skojarzone jest domyślnie, każde konto usługi Batch. Transfer plików do i z tego konta magazynu przy użyciu interfejsu wiersza polecenia, bez kodowania i żadne poświadczenia magazynu.
+Zadania zwykle wykorzystują pliki danych wejściowych i generują pliki danych wyjściowych. Konto magazynu jest domyślnie skojarzone z każdym kontem w usłudze Batch. Transferowanie plików do i z tego konta magazynu przy użyciu interfejsu wiersza polecenia bez kodowania i bez poświadczeń magazynu.
 
-Na przykład [ffmpeg](https://ffmpeg.org/) jest popularnych aplikacji, która przetwarza plików audio i wideo. Poniżej przedstawiono kroki przy użyciu interfejsu wiersza polecenia usługi Batch Azure do wywołania, narzędzie ffmpeg w celu przekodowanie źródłowych plików wideo do różnych rozdzielczościach.
+Na przykład [Narzędzia FFmpeg](https://ffmpeg.org/) jest popularną aplikacją, która przetwarza pliki audio i wideo. Oto kroki z interfejsem wiersza polecenia Azure Batch, aby wywoływać narzędzia FFmpeg do transkodowanie źródłowych plików wideo do różnych rozwiązań.
 
--   Utwórz szablon puli. Użytkownik tworzący szablonu wie, jak wywołanie aplikacji narzędzia ffmpeg i jego wymagania; określają odpowiedni system operacyjny, maszyna wirtualna rozmiar, jak narzędzie ffmpeg jest zainstalowana (od pakietu aplikacji lub przy użyciu Menedżera pakietów, na przykład) i innych wartości właściwości puli. Parametry są tworzone, gdy szablon jest używany, tylko identyfikator puli i liczby maszyn wirtualnych muszą być określone.
+-   Utwórz szablon puli. Użytkownik tworzący szablon wie, jak wywołać aplikację narzędzia FFmpeg i jej wymagania; określają one odpowiedni system operacyjny, rozmiar maszyny wirtualnej, sposób instalacji narzędzia ffmpeg (z pakietu aplikacji lub przy użyciu Menedżera pakietów, na przykład) i innych wartości właściwości puli. Parametry są tworzone, dlatego w przypadku użycia szablonu należy określić tylko Identyfikator puli i liczbę maszyn wirtualnych.
 
--   Utworzyć szablon zadania. Użytkownik tworzący szablonu wie, jak narzędzie ffmpeg musi być wywoływane ze źródłem transkodowanie wideo do innego rozwiązania i określa wiersz polecenia zadania; one także wiedzieć, że istnieje folder zawierający pliki wideo źródła z zadaniem wymaganych do obsługi każdego pliku wejściowego.
+-   Utwórz szablon zadania. Użytkownik tworzący szablon wie, w jaki sposób narzędzia FFmpeg musi zostać wywołana do transkodowanie źródłowego wideo do innej rozdzielczości i określa wiersz polecenia zadania; wiedzą również, że istnieje folder zawierający źródłowe pliki wideo z wymaganym zadaniem na plik wejściowy.
 
--   Użytkownik końcowy z zestawem pliki wideo do transkodowania najpierw tworzy pulę przy użyciu szablonu puli określanie tylko identyfikator puli i liczby maszyn wirtualnych wymagana. Transkodowanie mogą następnie przekazać pliki źródłowe. Następnie można przesłać zadania przy użyciu szablonu zadania, określając tylko identyfikator puli i lokalizację plików źródłowych, przekazany. Tworzone jest zadanie usługi Batch za pomocą jednego zadania na wygenerowanie pliku wejściowego. Na koniec można pobrać pliki wyjściowe transkodowane.
+-   Użytkownik końcowy z zestawem plików wideo do transkodowanie najpierw tworzy pulę przy użyciu szablonu puli, określając tylko Identyfikator puli i wymaganą liczbę maszyn wirtualnych. Mogą następnie przekazać pliki źródłowe do transkodowanie. Zadanie można następnie przesłać przy użyciu szablonu zadania, określając tylko Identyfikator puli i lokalizację przekazanych plików źródłowych. Zadanie wsadowe jest tworzone przy użyciu jednego zadania na generowany plik wejściowy. Na koniec można pobrać transkodowane pliki wyjściowe.
 
 ## <a name="installation"></a>Instalacja
 
-Rozszerzenie interfejsu wiersza polecenia usługi Azure Batch, należy najpierw zainstalować [zainstalować interfejs wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-azure-cli), lub uruchomić z wiersza polecenia platformy Azure w [usługi Azure Cloud Shell](../cloud-shell/overview.md).
+Aby zainstalować rozszerzenie interfejsu wiersza polecenia Azure Batch, najpierw [Zainstaluj interfejs wiersza polecenia platformy azure 2,0](/cli/azure/install-azure-cli)lub Uruchom interfejs wiersza polecenia platformy Azure w programie [Azure Cloud Shell](../cloud-shell/overview.md).
 
-Zainstaluj najnowszą wersję rozszerzenia usługi Batch za pomocą następującego polecenia wiersza polecenia platformy Azure:
+Zainstaluj najnowszą wersję rozszerzenia usługi Batch, korzystając z następującego polecenia platformy Azure:
 
 ```azurecli
 az extension add --name azure-batch-cli-extensions
 ```
 
-Aby uzyskać więcej informacji na temat rozszerzenie interfejsu wiersza polecenia usługi Batch i dodatkowe opcje instalacji, zobacz [repozytorium GitHub](https://github.com/Azure/azure-batch-cli-extensions).
+Aby uzyskać więcej informacji o rozszerzeniu interfejsu wiersza polecenia usługi Batch i dodatkowych opcjach instalacji, zobacz [repozytorium GitHub](https://github.com/Azure/azure-batch-cli-extensions).
 
 
-Korzystanie z funkcji rozszerzenia interfejsu wiersza polecenia jest potrzebne konto usługi Azure Batch i poleceń, które transferu plików do i z magazynu, połączone konto magazynu.
+Aby korzystać z funkcji rozszerzenia interfejsu wiersza polecenia, musisz mieć konto Azure Batch i, w przypadku poleceń, które przesyłają pliki do i z magazynu, połączonego konta magazynu.
 
-Aby zalogować się do konta usługi Batch przy użyciu wiersza polecenia platformy Azure, zobacz [zarządzanie zasobami usługi Batch przy użyciu wiersza polecenia platformy Azure](batch-cli-get-started.md).
+Aby zalogować się do konta usługi Batch za pomocą interfejsu wiersza polecenia platformy Azure, zobacz [Zarządzanie zasobami usługi Batch za pomocą interfejsu wiersza polecenia platformy Azure](batch-cli-get-started.md).
 
 ## <a name="templates"></a>Szablony
 
-Szablony usługi Azure Batch są podobne do szablonów usługi Azure Resource Manager, w funkcji i składni. Są to pliki w formacie JSON, które zawiera element nazwy i wartości właściwości, ale Dodaj następujące główne pojęcia:
+Szablony Azure Batch są podobne do szablonów Azure Resource Manager, w funkcji i składni. Są to pliki JSON, które zawierają nazwy właściwości elementów i wartości, ale Dodaj następujące podstawowe koncepcje:
 
 -   **Parametry**
 
-    -   Zezwalaj na wartości właściwości musi być podana w części treści, tylko wartości parametrów konieczności dostarczane, gdy jest używany szablon. Na przykład kompletną definicję dla puli można można umieścić w treści i tylko jeden parametr zdefiniowane dla identyfikatora puli; w związku z tym tylko ciąg Identyfikatora puli musi być dostarczane do tworzenia puli.
+    -   Zezwalaj na określenie wartości właściwości w sekcji treści, z uwzględnieniem tylko wartości parametrów, które mają być dostarczone, gdy szablon jest używany. Na przykład pełna definicja puli może zostać umieszczona w treści i tylko jeden parametr zdefiniowany dla identyfikatora puli; w związku z tym należy podać tylko ciąg identyfikatora puli, aby utworzyć pulę.
         
-    -   Treści szablonu mogą być edytowane przez osobę przy zachowaniu wiedzy o wsadowych i aplikacji do uruchomienia przy użyciu usługi Batch; wymagane jest podanie tylko wartości parametrów zdefiniowanych przez autora, gdy jest używany szablon. Użytkownik bez szczegółowe partii i/lub bazy wiedzy w związku z tym można używać szablonów.
+    -   Treść szablonu może zostać utworzona przez kogoś z wiedzą na temat partii i aplikacji, które mają być uruchamiane przez program Batch; gdy szablon jest używany, należy podać tylko wartości parametrów zdefiniowanych przez autora. Użytkownik bez szczegółowej wiedzy o partiach i/lub aplikacji może korzystać z szablonów.
 
 -   **Zmienne**
 
-    -   Zezwalaj na proste lub złożone parametry określone w jednym miejscu i używane w jeden lub więcej miejsc, w treści szablonu. Zmienne można uproszczenie i Zmniejsz rozmiar szablonu, a także wprowadzić będzie łatwiejszy w utrzymaniu, po jednym miejscu, aby zmienić właściwości.
+    -   Zezwalaj na określenie prostych lub złożonych wartości parametrów w jednym miejscu i używanych w co najmniej jednym miejscu w treści szablonu. Zmienne mogą uprościć i zmniejszyć rozmiar szablonu, a także zwiększyć jego łatwość obsługi, mając jedną lokalizację do zmiany właściwości.
 
--   **Konstrukcji wyższego poziomu**
+-   **Konstrukcje wyższego poziomu**
 
-    -   Niektóre konstrukcji wyższego poziomu są dostępne w szablonie, które nie są jeszcze dostępne w interfejsach API usługi Batch. Na przykład można zdefiniować w szablonie zadania, który tworzy wiele zadań dla zadania przy użyciu wspólnej definicji zadania fabryki zadań. Te konstrukcje uniknąć konieczności kod, aby dynamicznie utworzyć wiele plików JSON, takich jak jeden plik na zadania, a także tworzyć pliki skryptów do instalowania aplikacji za pomocą Menedżera pakietów.
+    -   Niektóre konstrukcje wyższego poziomu są dostępne w szablonie, które nie są jeszcze dostępne w interfejsach API przetwarzania wsadowego. Na przykład fabryka zadań może być zdefiniowana w szablonie zadania, który tworzy wiele zadań dla zadania, przy użyciu wspólnej definicji zadania. Te konstrukcje nie wymagają kodu do dynamicznego tworzenia wielu plików JSON, takich jak jeden plik na zadanie, a także do tworzenia plików skryptów w celu instalowania aplikacji za pośrednictwem Menedżera pakietów.
 
-    -   W pewnym momencie te konstrukcje mogą być dodawane do usługi Batch i dostępne w interfejsów API usługi Batch, UI itp.
+    -   W pewnym momencie te konstrukcje mogą zostać dodane do usługi Batch i dostępne w usłudze Batch API, interfejsów użytkownika itp.
 
-### <a name="pool-templates"></a>Szablony puli
+### <a name="pool-templates"></a>Szablony pul
 
-Szablony puli obsługują funkcje standardowego szablonu zmiennych i parametrów. Obsługują one również następujące konstrukcji wyższego poziomu:
+Szablony pul obsługują standardowe możliwości szablonów parametrów i zmiennych. Obsługują one również następującą konstrukcję wyższego poziomu:
 
 -   **Odwołania do pakietu**
 
-    -   Opcjonalnie umożliwia oprogramowania, które mają być kopiowane do węzłów w puli przy użyciu menedżerów pakietów. Określono Menedżera pakietów i Identyfikatora pakietu. DEKLARUJĄC co najmniej jeden pakiet, unikaj tworzenia skryptu, który pobiera wymagane pakiety, skrypt instalacji i uruchamiania skryptu w każdym węźle puli.
+    -   Opcjonalnie zezwala na kopiowanie oprogramowania do węzłów puli przy użyciu menedżerów pakietów. Określono menedżera pakietów i identyfikator pakietu. Deklarując co najmniej jeden pakiet, można uniknąć tworzenia skryptu pobierającego wymagane pakiety, instalowania skryptu i uruchamiania skryptu w każdym węźle puli.
 
-Oto przykładowy szablon, który tworzy pulę maszyn wirtualnych systemu Linux przy użyciu narzędzia ffmpeg zainstalowane. Aby go użyć, należy podać tylko ciąg Identyfikatora puli i liczby maszyn wirtualnych w puli:
+Poniżej przedstawiono przykładowy szablon, który tworzy pulę maszyn wirtualnych z systemem Linux z zainstalowanym programem narzędzia FFmpeg. Aby go użyć, podaj tylko ciąg identyfikatora puli i liczbę maszyn wirtualnych w puli:
 
 ```json
 {
@@ -138,13 +138,13 @@ Oto przykładowy szablon, który tworzy pulę maszyn wirtualnych systemu Linux p
 }
 ```
 
-Jeśli plik szablonu został nazwany _ffmpeg.json puli_, wywołaj szablonu w następujący sposób:
+Jeśli plik szablonu ma nazwę _Pool-narzędzia FFmpeg. JSON_, a następnie Wywołaj szablon w następujący sposób:
 
 ```azurecli
 az batch pool create --template pool-ffmpeg.json
 ```
 
-Interfejs wiersza polecenia wyświetli monit o podanie wartości dla `poolId` i `nodeCount` parametrów. Może też podawać parametrów w pliku JSON. Na przykład:
+Interfejs wiersza polecenia poprosi o podanie wartości `poolId` parametrów i. `nodeCount` Możesz również podać parametry w pliku JSON. Na przykład:
 
 ```json
 {
@@ -157,7 +157,7 @@ Interfejs wiersza polecenia wyświetli monit o podanie wartości dla `poolId` i 
 }
 ```
 
-Jeśli plik JSON parametrów nosiła nazwę *puli parameters.json*, wywołaj szablonu w następujący sposób:
+Jeśli plik JSON parametrów miał nazwę *Pool-Parameters. JSON*, a następnie Wywołaj szablon w następujący sposób:
 
 ```azurecli
 az batch pool create --template pool-ffmpeg.json --parameters pool-parameters.json
@@ -165,13 +165,13 @@ az batch pool create --template pool-ffmpeg.json --parameters pool-parameters.js
 
 ### <a name="job-templates"></a>Szablony zadań
 
-Szablony zadań obsługują funkcje standardowego szablonu zmiennych i parametrów. Obsługują one również następujące konstrukcji wyższego poziomu:
+Szablony zadań obsługują standardowe możliwości szablonów parametrów i zmiennych. Obsługują one również następującą konstrukcję wyższego poziomu:
 
--   **Fabryki zadań**
+-   **Fabryka zadań**
 
-    -   Tworzy wiele zadań na podstawie definicji jedno zadanie. Fabryki zadań obsługiwane są trzy typy — parametric sweep zadania na plik i zadań zbierania.
+    -   Tworzy wiele zadań dla zadania z jednej definicji zadania. Obsługiwane są trzy typy fabryk zadań — czyszczenie parametrów, zadanie na plik oraz zbieranie zadań.
 
-Oto przykładowy szablon, który tworzy zadanie w plikach wideo MP4 transkodowanie przy użyciu narzędzia ffmpeg do jednej z dwóch stosowania niższych rozdzielczości. Tworzy jedno zadanie na źródłowego pliku wideo. Zobacz [plików grup i transfer plików](#file-groups-and-file-transfer) więcej informacji na temat grup plików dla zadania danych wejściowych i wyjściowych.
+Poniżej przedstawiono przykładowy szablon, który tworzy zadanie do transkodowanie plików wideo MP4 z narzędzia FFmpeg do jednego z dwóch mniejszych rozdzielczości. Tworzy jedno zadanie na źródłowym pliku wideo. Zobacz [grupy plików i transfer plików,](#file-groups-and-file-transfer) Aby uzyskać więcej informacji na temat grup plików wejściowych i wyjściowych zadań.
 
 ```json
 {
@@ -247,33 +247,33 @@ Oto przykładowy szablon, który tworzy zadanie w plikach wideo MP4 transkodowan
 }
 ```
 
-Jeśli plik szablonu został nazwany _ffmpeg.json zadania_, wywołaj szablonu w następujący sposób:
+Jeśli plik szablonu miał nazwę _Job-narzędzia FFmpeg. JSON_, a następnie Wywołaj szablon w następujący sposób:
 
 ```azurecli
 az batch job create --template job-ffmpeg.json
 ```
 
-Jako przed, interfejsu wiersza polecenia wyświetli monit o podanie wartości parametrów. Może też podawać parametrów w pliku JSON.
+Tak jak wcześniej, interfejs wiersza polecenia wyświetli komunikat z prośbą o podanie wartości parametrów. Możesz również podać parametry w pliku JSON.
 
-### <a name="use-templates-in-batch-explorer"></a>Korzystanie z szablonów w Eksploratorze usługi Batch
+### <a name="use-templates-in-batch-explorer"></a>Używanie szablonów w Batch Explorer
 
-Możesz przekazać szablon interfejsu wiersza polecenia usługi Batch, aby [programu Batch Explorer](https://github.com/Azure/BatchExplorer) aplikacji pulpitu (dawniej o nazwie BatchLabs) do tworzenia puli usługi Batch lub zadania. Możesz również wybrać spośród wstępnie zdefiniowanych szablonów puli i zadania w galerii usługi Batch Explorer.
+Szablon interfejsu wiersza polecenia w usłudze Batch można przekazać do aplikacji klasycznej [Batch Explorer](https://github.com/Azure/BatchExplorer) (zwanej wcześniej BatchLabs) w celu utworzenia puli lub zadania wsadowego. Możesz również wybrać ze wstępnie zdefiniowanej puli i szablonów zadań w galerii Batch Explorer.
 
-Aby przekazać zawartość szablonu:
+Aby przekazać szablon:
 
-1. W Eksploratorze usługi Batch wybierz **galerii** > **lokalne szablony**.
+1. W Batch Explorer wybierz kolejno pozycje **Galeria** > **lokalne szablony**.
 
-2. Wybierz lub przeciągnij i upuść lokalna pula lub szablonów zadań.
+2. Wybierz lub przeciągnij i upuść, lokalną pulę lub szablon zadania.
 
-3. Wybierz **za pomocą tego szablonu**i postępuj zgodnie z monitami wyświetlanymi na ekranie.
+3. Wybierz pozycję **Użyj tego szablonu**i postępuj zgodnie z monitami wyświetlanymi na ekranie.
 
-## <a name="file-groups-and-file-transfer"></a>Grupy plików i transferu plików
+## <a name="file-groups-and-file-transfer"></a>Grupy plików i transfer plików
 
-Większość zadań i podzadań wymagane pliki wejściowe i generuje pliki wyjściowe. Zazwyczaj pliki wejściowe i wyjściowe pliki są przesyłane, od klienta do węzła lub z węzła do klienta. Rozszerzenie interfejsu wiersza polecenia usługi Azure Batch przenosi transfer plików away i korzysta z konta magazynu, które można skojarzyć z każdego konta usługi Batch.
+Większość zadań i zadań wymaga plików wejściowych i wygenerowania plików wyjściowych. Zazwyczaj pliki wejściowe i pliki wyjściowe są przesyłane z klienta do węzła lub z węzła do klienta programu. Rozszerzenie interfejsu wiersza polecenia Azure Batch służy do wyodrębniania transferu plików i korzystania z konta magazynu, które można skojarzyć z poszczególnymi kontami w usłudze Batch.
 
-Grupa plików jest równa kontenera, który jest tworzony w ramach konta usługi Azure storage. Grupa plików może mieć podfoldery.
+Grupa plików jest równa kontenerowi tworzonego na koncie usługi Azure Storage. Grupa plików może mieć podfoldery.
 
-Rozszerzenie interfejsu wiersza polecenia usługi Batch udostępnia polecenia w celu przekazywania plików z klienta do określonej grupy i pobieranie plików z określonej grupie plików do klienta.
+Rozszerzenie interfejsu wiersza polecenia usługi Batch umożliwia wysyłanie plików z klienta do określonej grupy plików i pobieranie plików z określonej grupy plików na klienta.
 
 ```azurecli
 az batch file upload --local-path c:\source_videos\*.mp4 
@@ -283,16 +283,16 @@ az batch file download --file-group ffmpeg-output --local-path
     c:\output_lowres_videos
 ```
 
-Szablony puli i zadania umożliwiają plików przechowywanych w grup plików, aby określić związanym z kopiowaniem na węzłach puli lub wyłącz węzły puli do grupy plików. Na przykład w ramach zadania szablon określony wcześniej grupy plików *dane wejściowe ffmpeg* jest określona dla fabryki zadań jako lokalizacja źródłowych plików wideo, kopiowane do węzła w celu przetranskodowania jej. Grupa plików *dane wyjściowe narzędzia ffmpeg* to lokalizacja, w których pliki wyjściowe transkodowane są kopiowane z węzła, w którym każde zadanie podrzędne.
+Szablony puli i zadań umożliwiają określenie plików przechowywanych w grupach plików do kopiowania do węzłów puli lub węzłów puli z powrotem do grupy plików. Na przykład w określonym wcześniej szablonie zadania Grupa plików *Narzędzia FFmpeg-Input* jest określona dla fabryki zadań jako lokalizacja źródłowych plików wideo skopiowanych do węzła w celu transkodowania. Grupa plików *Narzędzia FFmpeg-Output* jest lokalizacją, w której pliki wyjściowe transkodowane są kopiowane z węzła, w którym uruchomiono każde zadanie.
 
 ## <a name="summary"></a>Podsumowanie
 
-Obecnie dodano obsługę transferu szablonu i pliku tylko do wiersza polecenia platformy Azure. Celem jest, aby rozwinąć odbiorców, którzy można używać usługi Batch dla użytkowników, którzy nie ma potrzeby tworzenia kodu za pomocą interfejsów API usługi Batch, np. pracowników naukowo-badawczych i użytkowników IT. Bez kodowania, użytkownicy z wiedzy na temat platformy Azure, wsadowe i aplikacje do uruchamiania przy użyciu usługi Batch mogą tworzyć szablony do tworzenia puli i zadania. Za pomocą parametrów szablonu użytkownicy bez szczegółowej znajomości wsadowe i aplikacje mogą używać szablonów.
+Obsługa szablonu i transferu plików została obecnie dodana tylko do interfejsu wiersza polecenia platformy Azure. Celem jest rozwijanie odbiorców, którzy mogą korzystać z usługi Batch dla użytkowników, którzy nie muszą opracowywać kodu przy użyciu interfejsów API usługi Batch, takich jak badacze i użytkownicy IT. Bez kodowania użytkownicy z wiedzą na temat platformy Azure, usługi Batch i aplikacji uruchamianych przez usługę Batch mogą tworzyć szablony dla puli i tworzenia zadań. Za pomocą parametrów szablonu użytkownicy nie znają szczegółowych informacji o usłudze Batch, a aplikacje mogą korzystać z szablonów.
 
-Wypróbuj rozszerzenie usługi partia zadań wiersza polecenia platformy Azure i przekaż nam wszelkie opinie i sugestie, albo w komentarzach, w tym artykule lub za pośrednictwem [repozytorium społeczności usługi Batch](https://github.com/Azure/Batch).
+Wypróbuj rozszerzenie Batch dla interfejsu wiersza polecenia platformy Azure i prześlij nam opinię lub sugestie w komentarzach dotyczących tego artykułu albo za pośrednictwem [repozytorium społeczności usługi Batch](https://github.com/Azure/Batch).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Szczegółowa dokumentacja instalowaniu i używaniu, przykłady i kodu źródłowego są dostępne w [repozytorium Azure GitHub](https://github.com/Azure/azure-batch-cli-extensions).
+- Szczegółowa dokumentacja dotycząca instalacji i użycia, przykłady i kod źródłowy są dostępne w [repozytorium GitHub systemu Azure](https://github.com/Azure/azure-batch-cli-extensions).
 
-- Dowiedz się więcej o korzystaniu z [programu Batch Explorer](https://github.com/Azure/BatchExplorer) do tworzenia i zarządzania zasobami usługi Batch.
+- Dowiedz się więcej o korzystaniu z [Batch Explorer](https://github.com/Azure/BatchExplorer) do tworzenia zasobów usługi Batch i zarządzania nimi.

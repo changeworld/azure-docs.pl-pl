@@ -1,6 +1,6 @@
 ---
-title: Usługi AD FS obsługuje w Biblioteka Microsoft Authentication Library dla platformy .NET | Azure
-description: Dowiedz się więcej o obsłudze usługi Active Directory Federation Services (AD FS) w Biblioteka Microsoft Authentication Library for .NET (platformy MSAL.NET).
+title: Obsługa AD FS w bibliotece uwierzytelniania firmy Microsoft dla platformy .NET | Azure
+description: Dowiedz się więcej na temat obsługi Active Directory Federation Services (AD FS) w bibliotece uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -12,44 +12,54 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/03/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5963c5e83b5af3848edd934328caa1f095bd184
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 13e1f80f3a0a10466ead60d828d28aa9916fe26b
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66676731"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302691"
 ---
-# <a name="active-directory-federation-services-support-in-msalnet"></a>Usługi federacyjne Active Directory obsługuje w platformy MSAL.NET
-Active Directory Federation Services (AD FS) w systemie Windows Server umożliwia dodawanie, OpenID Connect i OAuth 2.0 na podstawie uwierzytelniania i autoryzacji dla aplikacji, które tworzysz, a te aplikacje uwierzytelniania użytkowników bezpośrednio przed usług AD FS. Aby uzyskać więcej informacji, przeczytaj [usługi AD FS scenariusze dla deweloperów](/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers).
+# <a name="active-directory-federation-services-support-in-msalnet"></a>Obsługa Active Directory Federation Services w MSAL.NET
+Active Directory Federation Services (AD FS) w systemie Windows Server umożliwia dodawanie uwierzytelniania i autoryzacji na podstawie OpenID Connect Connect i OAuth 2,0 na potrzeby aplikacji, które tworzysz. Aplikacje te mogą następnie uwierzytelniać użytkowników bezpośrednio przed AD FS. Aby uzyskać więcej informacji, Przeczytaj [AD FS scenariusze dla deweloperów](/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers).
 
-Biblioteka Microsoft Authentication Library for .NET (platformy MSAL.NET) obsługuje dwa scenariusze uwierzytelniania w odniesieniu do usług AD FS:
+Biblioteka Microsoft Authentication Library for .NET (MSAL.NET) obsługuje dwa scenariusze uwierzytelniania na AD FS:
 
-- Platformy MSAL.NET rozmowy w usłudze Azure Active Directory, która sama jest *federacyjnych* z usługami AD FS.
-- Rozmowy platformy MSAL.NET *bezpośrednio* dla urzędu usług AD FS, gdzie jest wersją usług AD FS OpenID Connect zgodne (począwszy od usługi AD FS 2019). Połączenie bezpośrednio z usług AD FS umożliwia platformy MSAL.NET do uwierzytelniania za pomocą aplikacji działających w [usługi Azure Stack](https://azure.microsoft.com/overview/azure-stack/).
+- MSAL.NET rozmowy do Azure Active Directory, który sam jest *federacyjny* z AD FS.
+- MSAL.NET się **bezpośrednio** do urzędu usług AD FS. Jest to obsługiwane tylko w AD FS 2019 i nowszych. Jednym z scenariuszy, w których ten wyróżniono, jest pomoc techniczna [Azure Stack](https://azure.microsoft.com/overview/azure-stack/)
 
-## <a name="msal-connects-to-azure-ad-which-is-federated-with-ad-fs"></a>Biblioteka MSAL nawiązuje połączenie z usługą Azure AD, która jest Sfederowane przy użyciu usług AD FS
-Platformy MSAL.NET obsługuje łączenie z usługą Azure AD, który loguje się zarządzanych użytkowników (użytkownicy zarządzanych w usłudze Azure AD) lub federacyjnych użytkowników (użytkownicy zarządzana przez innego dostawcy tożsamości, takich jak usługi AD FS). Platformy MSAL.NET nie wiedzieć o tym, że użytkownicy są federacyjne. O ile dotyczy, jego rozmawia z usługi Azure AD.
 
-[Urząd](msal-client-application-configuration.md#authority) możesz korzystanie w tym przypadku jest zwykle urzędu (nazwa hosta urzędu + dzierżawy, typowe lub organizacji).
+## <a name="msal-connects-to-azure-ad-which-is-federated-with-ad-fs"></a>MSAL nawiązuje połączenie z usługą Azure AD, która jest federacyjnym z AD FS
+MSAL.NET obsługuje łączenie z usługą Azure AD, co umożliwia użytkownikom zarządzanym (zarządzani przez użytkowników w usłudze Azure AD) lub użytkownikom federacyjnym (Użytkownicy zarządzani przez innego dostawcę tożsamości, takie jak AD FS). MSAL.NET nie wie o faktach, że użytkownicy są federacyjnymi. W zakresie, w jakim jest to konieczne, komunikuje się z usługą Azure AD.
 
-### <a name="acquiring-a-token-interactively"></a>Uzyskiwanie tokenu interaktywnie
-Gdy wywołujesz `AcquireTokenInteractive` metody środowisko użytkownika jest zazwyczaj:
+[Urząd](msal-client-application-configuration.md#authority) , którego używasz w tym przypadku, jest zazwyczaj urzędem certyfikacji (nazwa hosta urzędu + dzierżawca, typowe lub organizacje).
 
-1. Użytkownik wprowadza swojego identyfikatora konta.
-2. Usługa Azure AD krótko wyświetla komunikat "Przenosimy Cię na stronę Twojej organizacji".
-3. Użytkownik jest przekierowany do strony logowania dostawcy tożsamości. Strona logowania jest zwykle dostosowane logo organizacji.
+### <a name="acquiring-a-token-interactively"></a>Interaktywny uzyskiwanie tokenu
+Po wywołaniu `AcquireTokenInteractive` metody, środowisko użytkownika jest zwykle:
 
-Obsługiwane wersje usług AD FS, w tym scenariuszu federacyjnych są usług AD FS v2, v3 usług AD FS (system Windows Server 2012 R2) i usług AD FS w wersji 4 (AD FS 2016).
+1. Użytkownik wprowadza swój identyfikator konta.
+2. Usługa Azure AD wyświetla krótko komunikat "przejmowanie strony Twojej organizacji".
+3. Użytkownik zostanie przekierowany do strony logowania dostawcy tożsamości. Strona logowania jest zwykle dostosowana do logo organizacji.
 
-### <a name="acquiring-a-token-using-acquiretokenbyintegratedauthentication-or-acquiretokenbyusernamepassword"></a>Pobieranie tokenu przy użyciu AcquireTokenByIntegratedAuthentication lub AcquireTokenByUsernamePassword
-Podczas uzyskiwania tokenu przy użyciu `AcquireTokenByIntegratedAuthentication` lub `AcquireTokenByUsernamePassword` metod platformy MSAL.NET pobiera dostawcę tożsamości do kontaktowania się z oparciu o nazwę użytkownika.  Odbiera platformy MSAL.NET [tokenu języka SAML 1.1](reference-saml-tokens.md) po skontaktowaniu się z dostawcy tożsamości.  Następnie platformy MSAL.NET zapewnia SAML token do usługi Azure AD jako potwierdzenie użytkownika (podobnie jak [przepływu w imieniu z](msal-authentication-flows.md#on-behalf-of)) odzyskać token JWT.
+Obsługiwane wersje AD FS w tym scenariuszu federacyjnym to AD FS v2, AD FS v3 (Windows Server 2012 R2) i AD FS v4 (AD FS 2016).
 
-## <a name="msal-connects-directly-to-ad-fs"></a>Biblioteka MSAL łączy się bezpośrednio z usług AD FS
-Platformy MSAL.NET obsługuje łączenie z usługą AD FS 2019 r, czyli Open ID Connect zgodne. Podczas nawiązywania połączenia z bezpośrednio z usługami AD FS, urząd, będziesz chciał użyć do skompilowania aplikacji jest podobny do `https://mysite.contoso.com/adfs/`.
+### <a name="acquiring-a-token-using-acquiretokenbyintegratedauthentication-or-acquiretokenbyusernamepassword"></a>Uzyskiwanie tokenu przy użyciu AcquireTokenByIntegratedAuthentication lub AcquireTokenByUsernamePassword
+Podczas uzyskiwania tokenu przy użyciu `AcquireTokenByIntegratedAuthentication` metod lub `AcquireTokenByUsernamePassword` MSAL.NET pobiera dostawcę tożsamości do kontaktu na podstawie nazwy użytkownika.  MSAL.NET odbiera [token SAML 1,1](reference-saml-tokens.md) po skontaktowaniu się z dostawcą tożsamości.  MSAL.NET następnie dostarcza token SAML do usługi Azure AD jako potwierdzenie użytkownika (podobnie jak w przypadku [przepływu w imieniu](msal-authentication-flows.md#on-behalf-of)) w celu uzyskania tokenu JWT.
 
-Obecnie nie ma żadnych planów, umożliwiających bezpośrednie połączenie usług AD FS 2016 lub usług AD FS w wersji 2, (które nie OpenID Connect zgodne). Jeśli potrzebujesz do obsługi scenariuszy konieczności bezpośredniego połączenia z usługą AD FS 2016, użyj najnowszej wersji [usługi Azure Active Directory Authentication Library](active-directory-authentication-libraries.md#microsoft-supported-client-libraries). Po uaktualnieniu systemu lokalnego do usługi AD FS 2019 będzie można użyć platformy MSAL.NET.
+## <a name="msal-connects-directly-to-ad-fs"></a>MSAL łączy się bezpośrednio z AD FS
+MSAL.NET obsługuje nawiązywanie połączenia z AD FS 2019, który jest zgodny z IDENTYFIKATORem Open Connect i rozumie PKCE i zakresy. Ta obsługa wymaga, aby dodatek Service Pack [KB 4490481](https://support.microsoft.com/en-us/help/4490481/windows-10-update-kb4490481) został zastosowany do systemu Windows Server. W przypadku nawiązywania bezpośredniego połączenia z AD FS urząd, który ma być używany do kompilowania aplikacji, jest `https://mysite.contoso.com/adfs/`podobny do.
+
+Obecnie nie ma żadnych planów do obsługi bezpośredniego połączenia z:
+
+- AD FS 16, ponieważ nie obsługuje PKCE i nadal używa zasobów, a nie zakresu
+- AD FS v2, który nie jest zgodny z OIDC.
+
+ Jeśli musisz obsługiwać scenariusze wymagające bezpośredniego połączenia z AD FS 2016, użyj najnowszej wersji [biblioteki uwierzytelniania Azure Active Directory](active-directory-authentication-libraries.md#microsoft-supported-client-libraries). Po uaktualnieniu systemu lokalnego do AD FS 2019 będzie możliwe użycie MSAL.NET.
+
+## <a name="see-also"></a>Zobacz także
+
+W przypadku federacyjnego przypadku należy zapoznać się z tematem [Konfigurowanie zachowania logowania Azure Active Directory aplikacji przy użyciu zasad odnajdywania obszaru głównego](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-authentication-for-federated-users-portal) .

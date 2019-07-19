@@ -1,6 +1,6 @@
 ---
-title: Uaktualnienie systemu operacyjnego dla oprogramowania SAP HANA na platformie Azure (duże wystąpienia) | Dokumentacja firmy Microsoft
-description: Uaktualnienie systemu operacyjnego dla oprogramowania SAP HANA na platformie Azure (duże wystąpienia)
+title: Uaktualnienie systemu operacyjnego dla SAP HANA na platformie Azure (duże wystąpienia) | Microsoft Docs
+description: Wykonaj uaktualnienie systemu operacyjnego SAP HANA na platformie Azure (duże wystąpienia)
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
@@ -11,45 +11,45 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/28/2018
-ms.author: saghorpa
+ms.date: 07/04/2019
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5583a633c64943185f874e1c0ff80f654010aa53
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: aa88e45f2523dd65c4f714bfeab1c0eda401d720
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710013"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67869150"
 ---
 # <a name="operating-system-upgrade"></a>Uaktualnienie systemu operacyjnego
-W tym dokumencie opisano szczegóły dotyczące uaktualnień systemu operacyjnego w dużych wystąpieniach HANA.
+W tym dokumencie opisano szczegółowe informacje dotyczące uaktualnień systemu operacyjnego w dużych wystąpieniach platformy HANA.
 
 >[!NOTE]
->Uaktualnienie systemu operacyjnego jest odpowiedzialny za klientów, pomocy technicznej firmy Microsoft operacje może doprowadzić do kluczowe obszary, które należy uważać podczas uaktualniania. Przed rozpoczęciem planowania dla uaktualnienie, powinni skontaktować się z dostawcą systemu operacyjnego.
+>Uaktualnienie systemu operacyjnego jest odpowiedzialne za klientów, pomoc techniczna firmy Microsoft może poprowadzić Cię do kluczowych obszarów, które należy obejrzeć podczas uaktualniania. Przed zaplanowaniem uaktualnienia należy skonsultować się z dostawcą systemu operacyjnego.
 
-W momencie aprowizacja jednostek HLI zespół operacyjny firmy Microsoft, zainstalować system operacyjny. Wraz z upływem czasu, są wymagane do obsługi systemu operacyjnego (przykład: Stosowanie poprawek, dostosowywania, uaktualnianie itp.) w jednostce HLI.
+W tym momencie Inicjowanie obsługi administracyjnej jednostki pakietu i programu Microsoft Operations Manager instaluje system operacyjny. W danym czasie wymagane jest zachowanie systemu operacyjnego (przykład: Stosowanie poprawek, dostrajanie, uaktualnianie itp.) w jednostce.
 
-Przed głównych zmian do systemu operacyjnego (na przykład uaktualnienie dodatku SP1, SP2), należy się z zespołem Microsoft Operations, otwierając bilet pomocy technicznej zapoznaj się.
+Przed wprowadzeniem istotnych zmian w systemie operacyjnym (na przykład uaktualnienia programu SP1 do wersji SP2) należy skontaktować się z zespołem ds. operacyjnych, otwierając bilet pomocy technicznej w celu konsultacji.
 
-Uwzględnij biletu:
+Dołącz do biletu:
 
-* HLI identyfikatora subskrypcji.
+* Identyfikator subskrypcji pakietu.
 * Nazwa serwera.
-* Poziom poprawki, które będą dotyczyć.
-* Data jest planowana tę zmianę. 
+* Poziom poprawki, który ma zostać zastosowany.
+* Data, w której planowana jest ta zmiana. 
 
-Zalecamy spowoduje otwarcie tego biletu co najmniej tydzień przed datą uaktualnienia pożądane z powodu konieczności zespół operacyjny sprawdzania, czy uaktualnienie oprogramowania układowego będzie konieczne w bloku serwera.
+Zalecamy otworzenie tego biletu z co najmniej jednego tygodnia przed pożądanym terminem uaktualnienia, z powodu sprawdzania zespołu operacji, jeśli w bloku serwera będzie wymagane uaktualnienie oprogramowania układowego.
 
 
-Macierz obsługi różnych wersji platformy SAP HANA z użyciem różnych wersji systemu Linux, można zobaczyć [2235581 # Uwaga SAP](https://launchpad.support.sap.com/#/notes/2235581).
+Aby uzyskać macierz pomocy technicznej dla różnych wersji SAP HANA z różnymi wersjami systemu Linux, zobacz [uwagi dotyczące oprogramowania SAP #2235581](https://launchpad.support.sap.com/#/notes/2235581).
 
 
 ## <a name="known-issues"></a>Znane problemy
 
-Poniżej przedstawiono kilka typowych znane problemy podczas uaktualniania:
-- Jednostka SKU typu II klasy jednostek SKU software foundation (SFS) zostanie usunięty po uaktualnieniu systemu operacyjnego. Po uaktualnieniu systemu operacyjnego, należy ponownie zainstalować SFS zgodny.
-- Sterowniki karty Ethernet (ENIC i FNIC) z powrotem obniżyć do starszej wersji. Po uaktualnieniu należy ponownie zainstalować zgodną wersję sterowników.
+Poniżej przedstawiono kilka typowych znanych problemów podczas uaktualniania:
+- W jednostkach SKU klasy SKU typu II, oprogramowanie oprogramowania Software Foundation (SFS) zostanie usunięte po uaktualnieniu systemu operacyjnego. Po uaktualnieniu systemu operacyjnego należy ponownie zainstalować zgodną SFS.
+- Sterowniki kart Ethernet (ENIC i FNIC) zostały przywrócone do starszej wersji. Po uaktualnieniu należy ponownie zainstalować zgodną wersję sterowników.
 
 ## <a name="next-steps"></a>Następne kroki
-- Zapoznaj się [kopii zapasowej i przywracania](hana-overview-high-availability-disaster-recovery.md) dla systemu operacyjnego należy utworzyć kopię zapasową klasy typu I jednostki SKU.
-- Zapoznaj się [kopia zapasowa systemu operacyjnego dla jednostek SKU typu II](os-backup-type-ii-skus.md) dla jednostki SKU II typu klasy.
+- Odwołaj się do [kopii zapasowych i przywracania](hana-overview-high-availability-disaster-recovery.md) dla klasy SKU typu kopia zapasowa systemu operacyjnego.
+- Zapoznaj się [z kopią zapasową systemu operacyjnego dla jednostek SKU typu II poprawki 3 sygnatury](os-backup-type-ii-skus.md) dla klasy SKU typu II.

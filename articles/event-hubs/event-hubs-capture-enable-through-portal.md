@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: shvija
-ms.openlocfilehash: 9108c52529319288fba48dbad3c6f8aa6cb5f725
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18dea8e8e4cfcabec63e35dd302f6a5259721a8a
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822549"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320311"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Włączanie przechwytywania zdarzeń przesyłanych strumieniowo za pomocą usługi Azure Event Hubs
 
-[Funkcja przechwytywania usługi Azure Event Hubs][capture-overview] pozwala automatycznie dostarczać strumień danych usługi Event Hubs na wybrane konto usługi [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) lub [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/).
+[Przechwytywanie Event Hubs][capture-overview] platformy Azure umożliwia automatyczne dostarczanie danych przesyłanych strumieniowo w Event Hubs do [usługi Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) lub wybranego konta [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) .
 
 Przy użyciu witryny [Azure Portal](https://portal.azure.com) można skonfigurować funkcję przechwytywania podczas tworzenia centrum zdarzeń. Dane mogą być przechwytywane do kontenera usługi Azure [Blob Storage](https://azure.microsoft.com/services/storage/blobs/) lub na konto usługi [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/).
 
-Aby uzyskać więcej informacji, zobacz [omówienie funkcji przechwytywania usługi Event Hubs][capture-overview].
+Aby uzyskać więcej informacji, zobacz [Omówienie przechwytywania Event Hubs][capture-overview].
 
 ## <a name="capture-data-to-an-azure-storage-account"></a>Przechwytywanie danych na konto usługi Azure Storage  
 
@@ -47,10 +47,8 @@ Aby przechwycić dane do usługi Azure Data Lake Store, należy utworzyć konto 
 
 ### <a name="create-an-azure-data-lake-store-account-and-folders"></a>Tworzenie konta i folderów usługi Azure Data Lake Store
 
-> [!NOTE]
-> Obecnie funkcja przechwytywania usługi Event Hubs obsługuje tylko Gen 1 z usługi Azure Data Lake Store, nie Gen 2. 
 
-1. Tworzenie konta Data Lake Store Gen 1, postępując zgodnie z instrukcjami w [Rozpoczynanie pracy z usługą Azure Data Lake Store, przy użyciu witryny Azure portal](../data-lake-store/data-lake-store-get-started-portal.md).
+1. Utwórz konto usługi Data Lake Store, postępując zgodnie z instrukcjami w temacie [Rozpoczynanie pracy z usługą Azure Data Lake Store za pomocą witryny Azure Portal](../data-lake-store/data-lake-store-get-started-portal.md).
 2. Wykonaj instrukcje opisane w sekcji [Przydzielanie uprawnień usłudze Event Hubs](../data-lake-store/data-lake-store-archive-eventhub-capture.md#assign-permissions-to-event-hubs), aby utworzyć folder na koncie usługi Data Lake Store, na którym chcesz przechwytywać dane z usługi Event Hubs, i przydzielić uprawnienia usłudze Event Hubs, aby mogła ona zapisywać dane na Twoim koncie usługi Data Lake Store.  
 
 
@@ -79,9 +77,9 @@ Przechwytywanie można skonfigurować w istniejących centrach zdarzeń, które 
 [3]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture3.png
 [4]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture4.png
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się więcej na temat funkcji przechwytywania usługi Event Hubs, przeczytaj [omówienie funkcji przechwytywania usługi Event Hubs][capture-overview].
+- Dowiedz się więcej o przechwyceniu Event Hubs, odczytując [Omówienie funkcji przechwytywania Event Hubs][capture-overview].
 - Funkcję przechwytywania usługi Event Hubs możesz również skonfigurować za pomocą szablonów usługi Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [Enable Capture using an Azure Resource Manager template (Włączanie funkcji przechwytywania przy użyciu szablonu usługi Azure Resource Manager)](event-hubs-resource-manager-namespace-event-hub-enable-capture.md).
 - [Dowiedz się, jak utworzyć subskrypcję usługi Azure Event Grid przy użyciu przestrzeni nazw usługi Event Hubs jako źródła](store-captured-data-data-warehouse.md)
 - [Rozpoczynanie pracy z usługą Azure Data Lake Store za pośrednictwem witryny Azure Portal](../data-lake-store/data-lake-store-get-started-portal.md)

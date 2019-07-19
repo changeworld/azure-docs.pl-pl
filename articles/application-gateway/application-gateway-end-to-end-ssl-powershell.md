@@ -1,56 +1,56 @@
 ---
-title: Konfigurowanie certyfikatu SSL end-to-end za pomocą usługi Azure Application Gateway
-description: W tym artykule opisano sposób konfigurowania end-to-end SSL przy użyciu usługi Azure Application Gateway przy użyciu programu PowerShell
+title: Konfigurowanie kompleksowego protokołu SSL za pomocą usługi Azure Application Gateway
+description: W tym artykule opisano sposób konfigurowania kompleksowego protokołu SSL za pomocą usługi Azure Application Gateway przy użyciu programu PowerShell
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: d9851f6b3e32d0c7ab0d7774458ba5bc4d9ba823
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d7b909bf88fde2277aa2a285bbf36916191db1f3
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66729674"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67973387"
 ---
-# <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Konfigurowanie kompleksowej usługi SSL przy użyciu bramy aplikacji przy użyciu programu PowerShell
+# <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Konfigurowanie kompleksowej usługi SSL przy użyciu Application Gateway z programem PowerShell
 
 ## <a name="overview"></a>Omówienie
 
-Usługa Azure Application Gateway obsługuje end-to-end szyfrowania ruchu. Usługa Application Gateway kończy połączenia SSL na bramie aplikacji. Następnie brama stosuje reguły routingu do ruchu sieciowego, ponownie szyfruje pakiet i przekazuje pakiet do odpowiedniego serwera zaplecza na podstawie reguł routingu zdefiniowane. Każda odpowiedź z serwera sieci Web przechodzi przez ten sam proces z powrotem do użytkownika końcowego.
+Usługa Azure Application Gateway obsługuje kompleksowe szyfrowanie ruchu sieciowego. Application Gateway przerywa połączenie SSL w bramie aplikacji. Następnie Brama stosuje reguły routingu do ruchu, ponownie szyfruje pakiet i przekazuje pakiet do odpowiedniego serwera zaplecza na podstawie zdefiniowanych reguł routingu. Każda odpowiedź z serwera sieci Web przechodzi przez ten sam proces z powrotem do użytkownika końcowego.
 
-Usługa Application Gateway obsługuje definiowanie niestandardowe opcje protokołu SSL. Obsługuje ona również wyłączenie następujących protokołów: **TLSv1.0**, **TLSv1.1**, i **zabezpieczeń TLSv1.2**, jak również definiowanie mechanizmów szyfrowania, które do użycia i w kolejności preferencji. Aby dowiedzieć się, jak można konfigurować opcje protokołu SSL, zobacz [Przegląd zasad SSL](application-gateway-SSL-policy-overview.md).
+Application Gateway obsługuje definiowania niestandardowych opcji protokołu SSL. Obsługuje także wyłączenie następujących wersji protokołu: **TLSv 1.0**, **TLSv 1.1**i **TLSv 1.2**, a także Definiowanie mechanizmów szyfrowania, które mają być używane, oraz kolejności preferencji. Aby dowiedzieć się więcej na temat konfigurowalnych opcji protokołu SSL, zobacz [Omówienie zasad protokołu SSL](application-gateway-SSL-policy-overview.md).
 
 > [!NOTE]
-> Protokoły SSL 2.0 i protokołu SSL 3.0 są domyślnie wyłączone i nie może być włączone. One są uważane za niebezpieczne i nie można używać z usługą Application Gateway.
+> Protokoły SSL 2,0 i SSL 3,0 są domyślnie wyłączone i nie można ich włączyć. Są one uznawane za niezabezpieczone i nie mogą być używane z Application Gateway.
 
-![Obraz scenariusza][scenario]
+![obraz scenariusza][scenario]
 
 ## <a name="scenario"></a>Scenariusz
 
-W tym scenariuszu dowiesz się, jak utworzyć bramę aplikacji przy użyciu protokołu SSL end-to-end przy użyciu programu PowerShell.
+W tym scenariuszu dowiesz się, jak utworzyć bramę aplikacji za pomocą kompleksowego protokołu SSL za pomocą programu PowerShell.
 
-W tym scenariuszu wykonują następujące czynności:
+W tym scenariuszu zostaną:
 
-* Utwórz grupę zasobów o nazwie **appgw-rg**.
-* Tworzenie sieci wirtualnej o nazwie **appgwvnet** z przestrzeni adresowej **10.0.0.0/16**.
-* Utworzyć dwie podsieci o nazwie **appgwsubnet** i **appsubnet**.
-* Utwórz mała aplikacja bramy pomocnicze end-to-end szyfrowania SSL w tej wersji protokołu SSL limitów i mechanizmów szyfrowania.
+* Utwórz grupę zasobów o nazwie **appgw-RG**.
+* Utwórz sieć wirtualną o nazwie **appgwvnet** z przestrzenią adresową **10.0.0.0/16**.
+* Utwórz dwie podsieci o nazwie **appgwsubnet** i **appsubnet**.
+* Tworzenie małej bramy aplikacji obsługującej kompleksowe szyfrowanie SSL, które ogranicza wersje protokołów SSL i mechanizmy szyfrowania.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Do skonfigurowania end-to-end SSL z usługą application gateway, certyfikat jest wymagany dla bramy i certyfikaty są wymagane do serwerów zaplecza. Certyfikat bramy jest używany do uzyskania klucza symetrycznego zgodnie z specyfikacją protokołu SSL. Klucz symetryczny jest następnie używany szyfruje i odszyfrowuje ruch wysyłany do bramy. Certyfikat bramy musi mieć format wymiany informacji osobistych (PFX). Ten format pliku umożliwia eksportowanie klucza prywatnego, wymagane przez tę bramę aplikacji z realizacją szyfrowania i odszyfrowywania ruchu.
+Aby skonfigurować kompleksowe połączenie SSL z bramą aplikacji, wymagany jest certyfikat dla bramy, a certyfikaty są wymagane dla serwerów zaplecza. Certyfikat bramy służy do wyprowadzania klucza symetrycznego zgodnie ze specyfikacją protokołu SSL. Klucz symetryczny jest następnie używany do szyfrowania i odszyfrowywania ruchu wysyłanego do bramy. Certyfikat bramy musi znajdować się w formacie wymiany informacji osobistych (PFX). Ten format pliku umożliwia wyeksportowanie klucza prywatnego wymaganego przez bramę aplikacji w celu przeprowadzenia szyfrowania i odszyfrowywania ruchu.
 
-End-to-end szyfrowania SSL wewnętrznej musi być jawnie dozwolone przez usługę application gateway. Przekazywanie certyfikatu publicznego serwera zaplecza do usługi application gateway. Dodawanie certyfikatu gwarantuje, że bramy application gateway komunikuje się tylko ze znanych wystąpień zaplecza. W ten sposób dalszej komunikacji end-to-end.
+Aby kompleksowe szyfrowanie SSL było możliwe, zaplecze musi być jawnie dozwolone przez bramę aplikacji. Przekaż publiczny certyfikat serwerów zaplecza do bramy aplikacji. Dodanie certyfikatu zapewnia, że Brama aplikacji komunikuje się tylko ze znanymi wystąpieniami zaplecza. Pozwala to na zapewnienie kompleksowej komunikacji.
 
-W poniższych sekcjach opisano sposób konfiguracji.
+Proces konfiguracji został opisany w poniższych sekcjach.
 
 ## <a name="create-the-resource-group"></a>Tworzenie grupy zasobów
 
-Ta sekcja przeprowadzi Cię przez tworzenie grupy zasobów, która zawiera bramę application gateway.
+W tej sekcji omówiono tworzenie grupy zasobów zawierającej bramę aplikacji.
 
 1. Zaloguj się do swojego konta platformy Azure.
 
@@ -58,7 +58,7 @@ Ta sekcja przeprowadzi Cię przez tworzenie grupy zasobów, która zawiera bram�
    Connect-AzAccount
    ```
 
-2. Wybierz subskrypcję do użycia dla tego scenariusza.
+2. Wybierz subskrypcję, która ma być używana w tym scenariuszu.
 
    ```powershell
    Select-Azsubscription -SubscriptionName "<Subscription name>"
@@ -72,31 +72,31 @@ Ta sekcja przeprowadzi Cię przez tworzenie grupy zasobów, która zawiera bram�
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Tworzenie sieci wirtualnej i podsieci dla bramy aplikacji
 
-Poniższy przykład tworzy sieć wirtualną i dwie podsieci. Jedną podsieć jest używana do przechowywania bramy aplikacji. Innych podsieci jest używana do zaplecza, które hostują aplikację sieci web.
+Poniższy przykład tworzy sieć wirtualną i dwie podsieci. Jedna podsieć jest używana do przechowywania bramy aplikacji. Druga podsieć jest używana na potrzeby zaplecza, który hostuje aplikację sieci Web.
 
-1. Przypisz zakres adresów podsieci, która ma być używany dla usługi application gateway.
+1. Przypisz zakres adresów dla podsieci, który ma być używany przez bramę aplikacji.
 
    ```powershell
    $gwSubnet = New-AzVirtualNetworkSubnetConfig -Name 'appgwsubnet' -AddressPrefix 10.0.0.0/24
    ```
 
    > [!NOTE]
-   > Podsieci skonfigurowane w usłudze application gateway należy poprawnie wielkości. Bramy aplikacji można skonfigurować dla maksymalnie 10 wystąpień. Każde wystąpienie zajmuje się jeden adres IP z podsieci. Zbyt małe podsieci może niekorzystnie wpłynąć na skalowanie w poziomie bramy aplikacji.
+   > Podsieci skonfigurowane dla bramy aplikacji powinny mieć prawidłowy rozmiar. Bramę aplikacji można skonfigurować dla maksymalnie 10 wystąpień. Każde wystąpienie przyjmuje jeden adres IP z podsieci. Zbyt mała część podsieci może niekorzystnie wpłynąć na skalowanie bramy aplikacji.
    >
 
-2. Przypisz zakres adresów ma być używany dla puli adresów zaplecza.
+2. Przypisz zakres adresów, który ma być używany dla puli adresów zaplecza.
 
    ```powershell
    $nicSubnet = New-AzVirtualNetworkSubnetConfig  -Name 'appsubnet' -AddressPrefix 10.0.2.0/24
    ```
 
-3. Utwórz sieć wirtualną z podsieciami, zdefiniowane w poprzednich krokach.
+3. Utwórz sieć wirtualną z podsieciami zdefiniowanymi w powyższych krokach.
 
    ```powershell
    $vnet = New-AzvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet, $nicSubnet
    ```
 
-4. Pobierz zasób sieci wirtualnej i podsieci zasobów do użycia w kolejnych krokach.
+4. Pobierz zasób sieci wirtualnej i zasoby podsieci, które będą używane w kolejnych krokach.
 
    ```powershell
    $vnet = Get-AzvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg
@@ -106,47 +106,47 @@ Poniższy przykład tworzy sieć wirtualną i dwie podsieci. Jedną podsieć jes
 
 ## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Tworzenie publicznego adresu IP dla konfiguracji frontonu
 
-Utwórz zasób publicznego adresu IP ma być używany dla usługi application gateway. Ten publiczny adres IP jest używany w jednej z opisanych poniżej.
+Utwórz zasób publicznego adresu IP, który ma być używany przez bramę aplikacji. Ten publiczny adres IP jest używany w jednym z następujących kroków.
 
 ```powershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01' -Location "West US" -AllocationMethod Dynamic
 ```
 
 > [!IMPORTANT]
-> Usługa Application Gateway nie obsługuje użycia publiczny adres IP utworzony za pomocą etykiety domeny zdefiniowane. Tylko publiczny adres IP, z etykietą dynamicznie utworzoną domeny jest obsługiwany. Jeśli wymagana jest przyjazna nazwa DNS dla usługi application gateway, zalecane jest rekord CNAME jest używany jako alias.
+> Application Gateway nie obsługuje korzystania z publicznego adresu IP utworzonego za pomocą zdefiniowanej etykiety domeny. Obsługiwany jest tylko publiczny adres IP z dynamicznie utworzoną etykietą domeny. Jeśli potrzebujesz przyjaznej nazwy DNS dla bramy aplikacji, zalecamy użycie rekordu CNAME jako aliasu.
 
 ## <a name="create-an-application-gateway-configuration-object"></a>Tworzenie obiektu konfiguracji bramy aplikacji
 
-Wszystkie elementy konfiguracji są ustawiane przed utworzeniem bramy aplikacji. Poniższe kroki umożliwiają utworzenie elementów konfiguracji wymaganych w przypadku zasobu bramy aplikacji.
+Wszystkie elementy konfiguracji są ustawione przed utworzeniem bramy aplikacji. Poniższe kroki umożliwiają utworzenie elementów konfiguracji wymaganych w przypadku zasobu bramy aplikacji.
 
-1. Utwórz konfigurację adresu IP bramy aplikacji. To ustawienie określa korzystającego z podsieci bramy aplikacji. Uruchomiona usługa application gateway go wybierze adres IP ze skonfigurowanej podsieci i kieruje ruch sieciowy do adresów IP w puli adresów IP zaplecza. Pamiętaj, że każde wystąpienie będzie mieć jeden adres IP.
+1. Utwórz konfigurację adresu IP bramy aplikacji. To ustawienie określa, które podsieci są wykorzystywane przez bramę aplikacji. Po uruchomieniu usługi Application Gateway Pobiera adres IP ze skonfigurowanej podsieci i kieruje ruch sieciowy do adresów IP w puli adresów IP zaplecza. Pamiętaj, że każde wystąpienie będzie mieć jeden adres IP.
 
    ```powershell
    $gipconfig = New-AzApplicationGatewayIPConfiguration -Name 'gwconfig' -Subnet $gwSubnet
    ```
 
-2. Utwórz konfigurację adresów IP frontonu. To ustawienie mapuje prywatny lub publiczny adres IP frontonu bramy aplikacji. Następny krok kojarzy publiczny adres IP w poprzednim kroku z konfiguracją adresów IP frontonu.
+2. Utwórz konfigurację adresu IP frontonu. To ustawienie mapuje prywatny lub publiczny adres IP na fronton bramy aplikacji. Poniższy krok kojarzy publiczny adres IP w poprzednim kroku z konfiguracją adresów IP frontonu.
 
    ```powershell
    $fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name 'fip01' -PublicIPAddress $publicip
    ```
 
-3. Skonfiguruj pulę adresów IP zaplecza za pomocą adresów IP serwerów sieci web zaplecza. Będą to adresy IP odbierające ruch sieciowy pochodzący z punktu końcowego adresu IP frontonu. Zastąp adresy IP w próbce własne punktami końcowymi adresów IP aplikacji.
+3. Skonfiguruj pulę adresów IP zaplecza przy użyciu adresów IP serwerów zaplecza sieci Web. Będą to adresy IP odbierające ruch sieciowy pochodzący z punktu końcowego adresu IP frontonu. Zastąp adresy IP w przykładzie własnymi punktami końcowymi adresów IP aplikacji.
 
    ```powershell
    $pool = New-AzApplicationGatewayBackendAddressPool -Name 'pool01' -BackendIPAddresses 1.1.1.1, 2.2.2.2, 3.3.3.3
    ```
 
    > [!NOTE]
-   > W pełni kwalifikowaną nazwę domeny (FQDN) jest również prawidłową wartość, należy użyć zamiast adresu IP dla serwerów zaplecza. Można włączyć za pomocą **- BackendFqdns** przełącznika. 
+   > W pełni kwalifikowana nazwa domeny (FQDN) jest również prawidłową wartością używaną zamiast adresu IP serwerów zaplecza. Można ją włączyć za pomocą przełącznika **-BackendFqdns** . 
 
-4. Skonfiguruj port adresu IP frontonu dla punktu końcowego publicznego adresu IP. Ten port jest numer portu, którego użytkownicy końcowi nawiązywać połączenie.
+4. Skonfiguruj port frontonu IP dla punktu końcowego publicznego adresu IP. Port ten jest portem, z którym łączą się użytkownicy końcowi.
 
    ```powershell
    $fp = New-AzApplicationGatewayFrontendPort -Name 'port01'  -Port 443
    ```
 
-5. Konfigurowanie certyfikatu dla usługi application gateway. Ten certyfikat jest używany do odszyfrowania i ponownie zaszyfrować ruch w bramie aplikacji.
+5. Skonfiguruj certyfikat dla bramy aplikacji. Ten certyfikat jest używany do odszyfrowywania i ponownego szyfrowania ruchu w bramie aplikacji.
 
    ```powershell
    $passwd = ConvertTo-SecureString  <certificate file password> -AsPlainText -Force 
@@ -154,70 +154,70 @@ Wszystkie elementy konfiguracji są ustawiane przed utworzeniem bramy aplikacji.
    ```
 
    > [!NOTE]
-   > Ten przykład umożliwia skonfigurowanie certyfikatu używanego na potrzeby połączenia SSL. Ten certyfikat musi być w formacie pfx, a hasło musi mieć 4 – 12 znaków.
+   > Ten przykład umożliwia skonfigurowanie certyfikatu używanego na potrzeby połączenia SSL. Certyfikat musi być w formacie PFX, a hasło może zawierać od 4 do 12 znaków.
 
-6. Utwórz odbiornik HTTP bramy application Gateway. Przypisywanie konfiguracji adresów IP frontonu, portu i certyfikat protokołu SSL do użycia.
+6. Utwórz odbiornik HTTP dla bramy aplikacji. Przypisz konfigurację IP frontonu, port i certyfikat SSL, które mają być używane.
 
    ```powershell
    $listener = New-AzApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SSLCertificate $cert
    ```
 
-7. Przekaż certyfikat do użycia zasobów w puli zaplecza z włączonym protokołem SSL.
+7. Przekaż certyfikat, który będzie używany w zasobach puli zaplecza z włączoną obsługą protokołu SSL.
 
    > [!NOTE]
-   > Domyślnej funkcji badania pobiera klucz publiczny z *domyślne* powiązania SSL na adresie IP serwer zaplecza i porównuje wartość klucza publicznego, otrzymuje się na wartość klucza publicznego zostanie podane w tym miejscu. 
+   > Domyślna sonda Pobiera klucz publiczny z *domyślnego* powiązania SSL na adres IP zaplecza i porównuje wartość klucza publicznego, którą otrzymuje do wartości klucza publicznego, którą podano w tym miejscu. 
    > 
-   > Jeśli używasz nagłówki hosta i oznaczaniem nazwy serwera (SNI) na zapleczu pobrane klucz publiczny nie może być planowanej lokacji, do których widok przepływów ruchu sieciowego. Jeśli jesteś w stanie wątpliwości, odwiedź stronę https://127.0.0.1/ na serwerach zaplecza, aby upewnić się, który certyfikat jest używany dla *domyślne* powiązania SSL. W tej sekcji, należy użyć klucza publicznego z tym żądaniem. Jeśli używasz nagłówki hosta i SNI na powiązania HTTPS i nie otrzymasz odpowiedzi i certyfikat od żądanie ręcznej przeglądarki https://127.0.0.1/ na serwerach zaplecza, należy skonfigurować domyślne powiązanie SSL na nich. Jeśli nie zrobisz, sondy i zapleczu nie jest umieszczona na białej liście.
+   > Jeśli używasz nagłówków hosta i Oznaczanie nazwy serwera (SNI) na zapleczu, pobrany klucz publiczny może nie być zamierzoną lokacją, do której przepływy ruchu. Jeśli masz wątpliwości, odwiedź stronę https://127.0.0.1/ na serwerach zaplecza, aby potwierdzić, który certyfikat jest używany dla *domyślnego* powiązania protokołu SSL. Użyj klucza publicznego z tego żądania w tej sekcji. Jeśli korzystasz z nagłówków hosta i SNI na powiązaniach https i nie otrzymasz odpowiedzi ani certyfikatu z ręcznego żądania przeglądarki do https://127.0.0.1/ serwerów zaplecza, musisz skonfigurować domyślne powiązanie protokołu SSL. Jeśli nie zostanie to zrobione, sondy zakończą się niepowodzeniem, a zaplecze nie listy dozwolonych.
 
    ```powershell
    $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
    ```
 
    > [!NOTE]
-   > Podany w poprzednim kroku certyfikat powinien być klucz publiczny certyfikatu pfx na zapleczu. Wyeksportuj certyfikat (nie certyfikat główny) zainstalowane na serwerze zaplecza w formacie oświadczeń, dowód i wnioskowania (CER) i używać go w tym kroku. Ten krok umieszczenie zaplecza za pomocą bramy application gateway.
+   > Certyfikat podany w poprzednim kroku powinien być kluczem publicznym certyfikatu PFX znajdującego się na zapleczu. Wyeksportuj certyfikat (nie certyfikat główny) zainstalowany na serwerze zaplecza w formacie Claim, dowód i powód (CER) i użyj go w tym kroku. Ten krok dozwolonych zaplecza z bramą aplikacji.
 
-   Jeśli używasz bramy Application Gateway jednostkę SKU v2 następnie utworzyć z zaufanym certyfikatem głównym zamiast certyfikatu uwierzytelniania. Aby uzyskać więcej informacji, zobacz [omówienie kompleksowej usługi SSL z usługą Application Gateway](ssl-overview.md#end-to-end-ssl-with-the-v2-sku):
+   Jeśli używasz jednostki SKU Application Gateway v2, Utwórz zaufany certyfikat główny zamiast certyfikatu uwierzytelniania. Aby uzyskać więcej informacji, zobacz [Omówienie kompleksowej usługi SSL z Application Gateway](ssl-overview.md#end-to-end-ssl-with-the-v2-sku):
 
    ```powershell
    $trustedRootCert01 = New-AzApplicationGatewayTrustedRootCertificate -Name "test1" -CertificateFile  <path to root cert file>
    ```
 
-8. Skonfiguruj ustawienia HTTP zaplecza bramy aplikacji. Przypisać certyfikat przekazany w poprzednim kroku w ustawieniach protokołu HTTP.
+8. Skonfiguruj ustawienia protokołu HTTP dla zaplecza usługi Application Gateway. Przypisz certyfikat przekazany w poprzednim kroku do ustawień protokołu HTTP.
 
    ```powershell
    $poolSetting = New-AzApplicationGatewayBackendHttpSettings -Name 'setting01' -Port 443 -Protocol Https -CookieBasedAffinity Enabled -AuthenticationCertificates $authcert
    ```
 
-   W ramach jednostki SKU bramy Application Gateway w wersji 2 użyj następującego polecenia:
+   W przypadku jednostki SKU Application Gateway v2 Użyj następującego polecenia:
 
    ```powershell
    $poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name “setting01” -Port 443 -Protocol Https -CookieBasedAffinity Disabled -TrustedRootCertificate $trustedRootCert01 -HostName "test1"
    ```
 
-9. Utwórz regułę routingu modułu równoważenia obciążenia, która służy do konfigurowania zachowania modułu równoważenia obciążenia. W tym przykładzie tworzona jest podstawową regułę działania okrężnego.
+9. Utwórz regułę routingu usługi równoważenia obciążenia, która konfiguruje zachowanie modułu równoważenia obciążenia. W tym przykładzie zostanie utworzona Podstawowa reguła działania okrężnego.
 
    ```powershell
    $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
    ```
 
-10. Skonfiguruj rozmiar wystąpienia bramy aplikacji. Dostępne rozmiary to **standardowa\_małych**, **standardowa\_średni**, i **standardowa\_duże**.  W przypadku pojemności dostępne wartości to **1** za pośrednictwem **10**.
+10. Skonfiguruj rozmiar wystąpienia bramy aplikacji. Dostępne rozmiary to **standardowe\_małe**, **\_** **standardoweiduże.\_**  W celu uzyskania pojemności dostępne są wartości od **1** do **10**.
 
     ```powershell
     $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
     ```
 
     > [!NOTE]
-    > Liczbą wystąpień równą 1 można wybrać do celów testowych. Warto wiedzieć, że dowolnej liczby wystąpień w ramach dwóch wystąpień nie jest objęta umową SLA i w związku z tym nie jest zalecane. Małych bram są używane do testowania aplikacji a nie do celów produkcyjnych.
+    > Liczbę wystąpień 1 można wybrać do celów testowych. Ważne jest, aby wiedzieć, że jakakolwiek liczba wystąpień w ramach dwóch wystąpień nie jest objęta umową SLA i dlatego nie jest zalecana. Małe bramy są używane do testowania deweloperskiego, a nie do celów produkcyjnych.
 
-11. Konfigurowanie zasad protokołu SSL, który ma być używany w usłudze application gateway. Usługa Application Gateway obsługuje możliwość ustawienia minimalnej wersji do wersji protokołu SSL.
+11. Skonfiguruj zasady protokołu SSL, które mają być używane przez bramę aplikacji. Application Gateway obsługuje możliwość ustawienia minimalnej wersji protokołu SSL.
 
-    Lista protokołów, które mogą być definiowane są następujące wartości:
+    Poniżej przedstawiono listę wersji protokołu, które można zdefiniować:
 
     - **TLSV1_0**
     - **TLSV1_1**
     - **TLSV1_2**
     
-    Poniższy przykład ustawia wersję protokołu minimalne **TLS 1_2** i umożliwia **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**, i **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** tylko.
+    W poniższym przykładzie ustawiono minimalną wersję protokołu do **TLSv1_2** i włącza **Protokół\_TLS\_ECDHE\_ECDSA\_z\_algorytmem\_AES\_128 GCM SHA256**. **TLS\_ECDHEECDSAz\_algorytmemAES\_256GCM\_SHA384oraz TLS RSA with\_\_\_** **\_\_\_ Tylko\_algorytm\_AES 128GCM\_SHA256** .
 
     ```powershell
     $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
@@ -225,57 +225,63 @@ Wszystkie elementy konfiguracji są ustawiane przed utworzeniem bramy aplikacji.
 
 ## <a name="create-the-application-gateway"></a>Tworzenie bramy aplikacji
 
-Korzystając z powyższych kroków, Tworzenie bramy aplikacji. Tworzenie bramy to proces, który zajmuje dużo czasu do uruchomienia.
+Korzystając ze wszystkich powyższych kroków, należy utworzyć bramę aplikacji. Tworzenie bramy to proces, który zajmuje dużo czasu na uruchomienie.
 
+W przypadku jednostki SKU V1 Użyj poniższego polecenia
 ```powershell
-$appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -AuthenticationCertificates $authcert -Verbose
+$appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -AuthenticationCertificates $authcert -Verbose
 ```
 
-## <a name="apply-a-new-certificate-if-the-back-end-certificate-is-expired"></a>Zastosowania nowego certyfikatu, jeśli certyfikat zaplecza wygasł
+W przypadku wersji 2 jednostki SKU Użyj poniższego polecenia
+```powershell
+$appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -TrustedRootCertificate $trustedRootCert01 -Verbose
+```
 
-Użyj tej procedury do zastosowania nowego certyfikatu, jeśli serwer zaplecza certyfikat wygasł.
+## <a name="apply-a-new-certificate-if-the-back-end-certificate-is-expired"></a>Zastosuj nowy certyfikat w przypadku wygaśnięcia certyfikatu zaplecza
 
-1. Pobierz bramy aplikacji w celu zaktualizowania.
+Użyj tej procedury, aby zastosować nowy certyfikat w przypadku wygaśnięcia certyfikatu zaplecza.
+
+1. Pobierz bramę aplikacji do zaktualizowania.
 
    ```powershell
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
    
-2. Dodaj nowy zasób, certyfikat z pliku .cer, który zawiera klucz publiczny certyfikatu i mogą być tego samego certyfikatu, które są dodawane do odbiornika dla kończenia żądań SSL na bramie aplikacji.
+2. Dodaj nowy zasób certyfikatu z pliku cer, który zawiera klucz publiczny certyfikatu i może być również certyfikat dodany do odbiornika w celu zakończenia protokołu SSL w bramie aplikacji.
 
    ```powershell
    Add-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name 'NewCert' -CertificateFile "appgw_NewCert.cer" 
    ```
     
-3. Pobierz nowy obiekt certyfikatu uwierzytelniania do zmiennej (nazwa typu: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate).
+3. Pobierz nowy obiekt certyfikatu uwierzytelniania do zmiennej (TypeName: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate).
 
    ```powershell
    $AuthCert = Get-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name NewCert
    ```
  
- 4. Przypisz nowy certyfikat do **BackendHttp** ustawienia można znaleźć go ze zmienną $AuthCert. (Należy określić nazwę ustawienia protokołu HTTP, który chcesz zmienić.)
+ 4. Przypisz nowy certyfikat do ustawienia **BackendHttp** i odwołaj się do niego przy użyciu zmiennej $AuthCert. (Określ nazwę ustawienia HTTP, które chcesz zmienić).
  
    ```powershell
    $out= Set-AzApplicationGatewayBackendHttpSetting -ApplicationGateway $gw -Name "HTTP1" -Port 443 -Protocol "Https" -CookieBasedAffinity Disabled -AuthenticationCertificates $Authcert
    ```
     
- 5. Zatwierdź zmianę do bramy aplikacji i przekazać nową konfigurację, które są zawarte w zmiennej $out.
+ 5. Zatwierdź zmianę w bramie aplikacji i przekaż nową konfigurację znajdującą się w zmiennej $out.
  
    ```powershell
    Set-AzApplicationGateway -ApplicationGateway $gw  
    ```
 
-## <a name="remove-an-unused-expired-certificate-from-http-settings"></a>Usuń nieużywane wygasły certyfikat z ustawienia HTTP
+## <a name="remove-an-unused-expired-certificate-from-http-settings"></a>Usuń nieużywany wygasły certyfikat z ustawień protokołu HTTP
 
-Użyj tej procedury można usunąć nieużywane wygasły certyfikat z ustawienia protokołu HTTP.
+Użyj tej procedury, aby usunąć nieużywany wygasły certyfikat z ustawień protokołu HTTP.
 
-1. Pobierz bramy aplikacji w celu zaktualizowania.
+1. Pobierz bramę aplikacji do zaktualizowania.
 
    ```powershell
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
    
-2. Podaj nazwy certyfikatu uwierzytelniania, który chcesz usunąć.
+2. Wyświetl nazwę certyfikatu uwierzytelniania, który chcesz usunąć.
 
    ```powershell
    Get-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw | select name
@@ -287,31 +293,31 @@ Użyj tej procedury można usunąć nieużywane wygasły certyfikat z ustawienia
    $gw=Remove-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name ExpiredCert
    ```
  
- 4. Zatwierdź zmiany.
+ 4. Zatwierdź zmianę.
  
    ```powershell
    Set-AzApplicationGateway -ApplicationGateway $gw
    ```
 
    
-## <a name="limit-ssl-protocol-versions-on-an-existing-application-gateway"></a>Ograniczenie wersji protokołu SSL w istniejącej bramie aplikacji
+## <a name="limit-ssl-protocol-versions-on-an-existing-application-gateway"></a>Ogranicz wersje protokołu SSL w istniejącej bramie aplikacji
 
-Poprzednie kroki trwało Cię przez proces tworzenia aplikacji przy użyciu protokołu SSL end-to-end i wyłączenie niektórych wersji protokołu SSL. Poniższy przykład wyłącza określone zasady protokołu SSL w istniejącej bramie aplikacji.
+Powyższe kroki przeprowadziły przez proces tworzenia aplikacji z kompleksowym protokołem SSL i wyłączaniem określonych wersji protokołu SSL. Poniższy przykład wyłącza niektóre zasady SSL w istniejącej bramie aplikacji.
 
-1. Pobierz bramy aplikacji w celu zaktualizowania.
+1. Pobierz bramę aplikacji do zaktualizowania.
 
    ```powershell
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-2. Definiowanie zasad protokołu SSL. W poniższym przykładzie **TLSv1.0** i **TLSv1.1** są wyłączone i mechanizmów szyfrowania **TLS\_ECDHE\_ECDSA\_WITH\_ AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**, i **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** są jedynymi te dozwolone.
+2. Zdefiniuj zasady SSL. W poniższym przykładzie **TLSv 1.0** i **TLSv 1.1** są wyłączone i szyfr Suite **\_TLS ECDHE\_ECDSA\_with\_AES\_128 GCM\_ \_ SHA256**, **TLS\_ECDHE\_ECDSAz\_algorytmem\_AES 256GCMSHA384\_i TLS RSA\_\_** **\_ \_ W\_przypadku\_używania\_algorytmu AES 128GCM\_SHA256** są jedyne dozwolone.
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw
 
    ```
 
-3. Na koniec zaktualizuj bramę. Ten ostatni krok to długotrwałe zadanie. Gdy wszystko będzie gotowe, end-to-end skonfigurowano protokół SSL na bramie aplikacji.
+3. Na koniec zaktualizuj bramę. Ten ostatni krok to długotrwałe zadanie. Gdy to zrobisz, na bramie aplikacji zostanie skonfigurowany protokół SSL kompleksowej.
 
    ```powershell
    $gw | Set-AzApplicationGateway
@@ -319,9 +325,9 @@ Poprzednie kroki trwało Cię przez proces tworzenia aplikacji przy użyciu prot
 
 ## <a name="get-an-application-gateway-dns-name"></a>Pobieranie nazwy DNS bramy aplikacji
 
-Po utworzeniu bramy następnym krokiem jest skonfigurowanie frontonu na potrzeby komunikacji. Usługa Application Gateway wymaga dynamicznie przypisywanej nazwy DNS, korzystając z publicznego adresu IP, który nie jest przyjazna. Aby upewnić się, że użytkownicy końcowi mogą trafić bramę aplikacji, rekord CNAME służy do wskazania publicznego punktu końcowego bramy aplikacji. Aby uzyskać więcej informacji, zobacz [Konfigurowanie niestandardowej nazwy domeny dla platformy Azure](../cloud-services/cloud-services-custom-domain-name-portal.md). 
+Po utworzeniu bramy następnym krokiem jest skonfigurowanie frontonu do komunikacji. Application Gateway wymaga dynamicznie przypisanej nazwy DNS podczas korzystania z publicznego adresu IP, co jest niezrozumiałe. Aby użytkownicy końcowi mogli korzystać z bramy aplikacji, można użyć rekordu CNAME do wskazywania publicznego punktu końcowego bramy aplikacji. Aby uzyskać więcej informacji, zobacz [Konfigurowanie niestandardowej nazwy domeny dla platformy Azure](../cloud-services/cloud-services-custom-domain-name-portal.md). 
 
-Aby skonfigurować alias, Pobierz szczegóły bramy aplikacji i skojarzone nazwy DNS adresu IP za pomocą **publicznego adresu IP** elementu dołączonego do bramy aplikacji. Użyj nazwy DNS bramy aplikacji, aby utworzyć rekord CNAME wskazujący dwóch internetowych do tej nazwy DNS. Firma Microsoft nie zaleca się korzystanie z rekordów, ponieważ adres VIP można zmienić na ponowne uruchomienie usługi application gateway.
+Aby skonfigurować alias, Pobierz szczegóły bramy aplikacji i skojarzonej z nią nazwy IP/DNS przy użyciu elementu **PublicIPAddress** dołączonego do bramy aplikacji. Użyj nazwy DNS bramy aplikacji, aby utworzyć rekord CNAME wskazujący dwie aplikacje sieci Web na tę nazwę DNS. Nie zaleca się używania rekordów A, ponieważ adres VIP może ulec zmianie po ponownym uruchomieniu bramy aplikacji.
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName appgw-RG -Name publicIP01
@@ -349,8 +355,8 @@ DnsSettings              : {
                             }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat ograniczania funkcjonalności zabezpieczeń aplikacji sieci web za pomocą zapory aplikacji sieci Web za pośrednictwem bramy Application Gateway, zobacz [Omówienie zapory aplikacji sieci Web](application-gateway-webapplicationfirewall-overview.md).
+Aby uzyskać więcej informacji na temat wzmacniania zabezpieczeń aplikacji sieci Web przy użyciu zapory aplikacji sieci Web za pomocą usługi Application Gateway, zobacz [Omówienie zapory aplikacji sieci Web](application-gateway-webapplicationfirewall-overview.md).
 
 [scenario]: ./media/application-gateway-end-to-end-SSL-powershell/scenario.png

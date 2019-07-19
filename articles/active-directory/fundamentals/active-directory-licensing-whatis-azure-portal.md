@@ -14,12 +14,12 @@ ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be7094db14f53af939ded2313823bf2749e59a46
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d41c8edf3985e77e0f67a54013d1b59abbaf72f1
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60248296"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297558"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Co to jest oparte na grupach Licencjonowanie w usłudze Azure Active Directory?
 
@@ -27,17 +27,17 @@ Płatne usługi w chmurze firmy Microsoft, takie jak usługa Office 365, pakiet 
 
 Do tej pory licencje mogły być przypisywane tylko na poziomie pojedynczego użytkownika, co może utrudniać zarządzanie na dużą skalę. Na przykład aby dodać lub usunąć licencje użytkowników na podstawie zmian w organizacji, takich jak dołączenie użytkownika do organizacji lub działu albo opuszczenie organizacji lub działu przez użytkownika, administrator często musi napisać złożony skrypt programu PowerShell. Ten skrypt wykonuje poszczególne wywołania usługi w chmurze.
 
-Aby rozwiązać te problemy, obecnie usługa Azure AD udostępnia licencjonowanie oparte na grupach. Do grupy można przypisać jedną lub więcej licencji produktu. Usługa Azure AD gwarantuje, że licencje są przypisywane do wszystkich członków grupy. Nowym członkom, którzy dołączają do grupy, są przypisywane odpowiednie licencje. Podczas opuszczania grupy te licencje są usuwane. Licencjonowania zarządzania eliminuje potrzebę stosowania automatyzacji zarządzania licencjami za pośrednictwem programu PowerShell celu odzwierciedlenia zmian w organizacji oraz struktury działów w poszczególnych użytkowników.
+Aby rozwiązać te problemy, obecnie usługa Azure AD udostępnia licencjonowanie oparte na grupach. Do grupy można przypisać jedną lub więcej licencji produktu. Usługa Azure AD gwarantuje, że licencje są przypisywane do wszystkich członków grupy. Nowym członkom, którzy dołączają do grupy, są przypisywane odpowiednie licencje. Podczas opuszczania grupy te licencje są usuwane. To zarządzanie Licencjonowanie eliminuje konieczność automatyzowania zarządzania licencjami za pośrednictwem programu PowerShell w celu odzwierciedlenia zmian w strukturze organizacji i działu dla poszczególnych użytkowników.
 
 ## <a name="licensing-requirements"></a>Wymagania dotyczące licencjonowania
-Musi mieć jedną z następujących licencji na korzystanie z licencjonowania opartego na grupach:
+Aby korzystać z licencjonowania opartego na grupach, musisz mieć jedną z następujących licencji:
 
-- Płatną lub próbną wersję subskrypcji dla usługi Azure AD podstawowa
+- Subskrypcja płatna lub wersja próbna dla Azure AD — wersja Podstawowa i nowszych
 
-- Wersja płatną lub próbną wersję i Office 365 Enterprise E3 lub Office 365 A3
+- Płatna lub w wersji próbnej pakietu Office 365 Enterprise E3 lub pakietu Office 365 a3 lub Office 365 i nowszego
 
 ### <a name="required-number-of-licenses"></a>Wymagana liczba licencji
-Dla każdej grupy jest przypisana licencja musi mieć licencję dla każdego członka unikatowy. Chociaż nie trzeba przypisać każdego członka grupy licencji, musi mieć co najmniej wystarczającą liczbę licencji, aby uwzględnić wszystkie elementy członkowskie. Na przykład jeśli masz 1000 unikatowych elementów członkowskich, którzy należą do grup licencji w ramach dzierżawy, musi mieć co najmniej 1000 licencje, aby spełnić umowy licencjonowania.
+W przypadku wszystkich grup przypisanych do licencji trzeba również mieć licencję dla każdego unikatowego elementu członkowskiego. Chociaż nie musisz przypisywać poszczególnych członków grupy licencji, musisz mieć co najmniej wystarczającą liczbę licencji, aby uwzględnić wszystkie elementy członkowskie. Na przykład jeśli masz 1 000 unikatowych członków, którzy są częścią licencjonowanych grup w Twojej dzierżawie, musisz mieć co najmniej 1 000 licencji, aby spełnić warunki umowy licencyjnej.
 
 ## <a name="features"></a>Funkcje
 
@@ -45,11 +45,11 @@ Poniżej przedstawiono główne funkcje licencjonowania opartego na grupach:
 
 - Licencje można przypisać do dowolnej grupy zabezpieczeń w usłudze Azure AD. Grupy zabezpieczeń mogą być synchronizowane ze środowiska lokalnego, za pomocą usługi Azure AD Connect. Można również utworzyć grupy zabezpieczeń bezpośrednio w usłudze Azure AD (tak zwane grupy tylko w chmurze) lub automatycznie, za pomocą funkcji grupy dynamicznej usługi Azure AD.
 
-- Po przypisaniu licencji produktu do grupy administrator może wyłączyć poszczególne plany usług w ramach produktu. Zwykle to przypisanie jest wykonywane, gdy organizacja nie jest jeszcze gotowy do uruchomienia przy użyciu usługi zawarta w produkcie. Na przykład administrator może przypisać usługę Office 365 do działu, ale tymczasowo wyłączyć usługę Yammer.
+- Po przypisaniu licencji produktu do grupy administrator może wyłączyć poszczególne plany usług w ramach produktu. Zwykle to przypisanie jest wykonywane, gdy organizacja nie jest jeszcze gotowa do rozpoczęcia korzystania z usługi zawartej w produkcie. Na przykład administrator może przypisać usługę Office 365 do działu, ale tymczasowo wyłączyć usługę Yammer.
 
-- Obsługiwane są wszystkie usługi w chmurze firmy Microsoft, które wymagają licencjonowania na poziomie użytkownika. Ta obsługa obejmuje wszystkie produkty, pakietu Enterprise Mobility + Security i Dynamics 365, usługi Office 365.
+- Obsługiwane są wszystkie usługi w chmurze firmy Microsoft, które wymagają licencjonowania na poziomie użytkownika. Ta obsługa obejmuje wszystkie produkty pakietu Office 365, Enterprise Mobility + Security i Dynamics 365.
 
-- Licencjonowanie oparte na grupach jest obecnie dostępna wyłącznie za pośrednictwem [witryny Azure portal](https://portal.azure.com). Jeśli przede wszystkim używasz innych portalach zarządzania dla użytkowników i grupy zarządzania, takich jak [Centrum administracyjnego usługi Microsoft 365](https://admin.microsoft.com), możesz to zrobić. Jednak do zarządzania licencjami na poziomie grupy należy używać witryny Azure Portal.
+- Licencjonowanie oparte na grupach jest obecnie dostępne tylko za pośrednictwem [Azure Portal](https://portal.azure.com). Jeśli korzystasz głównie z innych portali zarządzania na potrzeby zarządzania użytkownikami i grupami, takimi jak [Microsoft 365 centrum administracyjnym](https://admin.microsoft.com), możesz kontynuować tę czynność. Jednak do zarządzania licencjami na poziomie grupy należy używać witryny Azure Portal.
 
 - Usługa Azure AD automatycznie zarządza modyfikacjami licencji wynikającymi ze zmian członkostwa w grupie. Zazwyczaj modyfikacje licencji zaczynają obowiązywać w ciągu minut od zmiany członkostwa.
 
@@ -59,9 +59,9 @@ Poniżej przedstawiono główne funkcje licencjonowania opartego na grupach:
 
 ## <a name="your-feedback-is-welcome"></a>Chętnie poznamy Twoją opinię!
 
-Jeśli masz opinię lub funkcji żądania, udostępniać je z nami za pomocą [forum administratora usługi Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=162510).
+Jeśli masz opinię lub wnioski dotyczące funkcji, udostępnij je za pomocą [forum administratora usługi Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=162510).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się więcej na temat innych scenariuszy zarządzania licencjami w ramach programu licencjonowania opartego na grupach, zobacz:
 

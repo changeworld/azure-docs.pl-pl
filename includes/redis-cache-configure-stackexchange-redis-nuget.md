@@ -1,20 +1,20 @@
 ---
-author: wesmc7777
+author: yegu-ms
 ms.service: redis-cache
 ms.topic: include
 ms.date: 11/09/2018
-ms.author: wesmc
-ms.openlocfilehash: 8ebf5ddfa118e0aeadeab0c00a981871a4b5708e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.author: yegu
+ms.openlocfilehash: 61e93e3700b9a396d2ac4fdcbb51fc5c874cf9cb
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183802"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68286303"
 ---
 Aplikacje platformy .NET mogą używać klienta pamięci podręcznej **StackExchange.Redis**, którego można skonfigurować w programie Visual Studio przy użyciu pakietu NuGet upraszczającego konfigurację aplikacji klienta pamięci podręcznej. 
 
 > [!NOTE]
-> Aby uzyskać więcej informacji, zobacz [StackExchange.Redis](http://github.com/StackExchange/StackExchange.Redis) w witrynie github i [dokumentacji dotyczącej klienta pamięci podręcznej Redis w pamięci podręcznej StackExchange.Azure](http://github.com/StackExchange/StackExchange.Redis#documentation).
+> Aby uzyskać więcej informacji, zobacz stronę usługi GitHub [stackexchange. Redis](https://github.com/StackExchange/StackExchange.Redis) i [stackexchange. Azure cache for Redis Client](https://github.com/StackExchange/StackExchange.Redis#documentation).
 >
 >
 

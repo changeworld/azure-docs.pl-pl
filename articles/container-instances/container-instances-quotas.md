@@ -3,30 +3,31 @@ title: Limity przydziałów i dostępność regionów dla usługi Azure Containe
 description: Limity przydziałów, ograniczenia i dostępność regionów dla usługi Azure Container Instances.
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: overview
 ms.date: 03/01/2019
 ms.author: danlep
-ms.openlocfilehash: c01243a33094a93da1b05ea3b58324b0f3cb2bf9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d78cb72e6aa10334e82032280b1253e6d4c92960
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60537916"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325729"
 ---
-# <a name="quotas-and-limits-for-azure-container-instances"></a>Przydziały i limity dla usługi Azure Container Instances
+# <a name="quotas-and-limits-for-azure-container-instances"></a>Przydziały i limity dla Azure Container Instances
 
-Wszystkich usług platformy Azure dotyczą określone limity i przydziały dla zasobów i funkcji. Ten artykuł szczegółowo opisuje domyślne limity przydziału i limity dla usługi Azure Container Instances.
+Wszystkich usług platformy Azure dotyczą określone limity i przydziały dla zasobów i funkcji. W tym artykule opisano domyślne przydziały i limity dla Azure Container Instances.
 
-Aby uzyskać dostępność funkcji usługi Azure Container Instances i zasobów w regionach platformy Azure, zobacz [dostępności zasobów dla usługi Azure Container Instances](container-instances-region-availability.md).
+Aby uzyskać dostęp do funkcji i zasobów Azure Container Instances w regionach platformy Azure, zobacz [dostępność zasobów dla Azure Container Instances](container-instances-region-availability.md).
 
 ## <a name="service-quotas-and-limits"></a>Limity i przydziały dotyczące usługi
 
 [!INCLUDE [container-instances-limits](../../includes/container-instances-limits.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Niektóre domyślne limity i przydziały mogą zostać zwiększone. Aby zażądać zwiększenia dotyczącego co najmniej jednego zasobu, dla którego takie zwiększenie jest obsługiwane, prześlij [żądanie pomocy technicznej platformy Azure][azure-support] (wybierz wartość „Limit przydziału” dla pozycji **Typ problemu**).
+Niektóre domyślne limity i przydziały mogą zostać zwiększone. Aby zażądać zwiększenia co najmniej jednego zasobu, który obsługuje taki wzrost, Prześlij [żądanie pomocy technicznej platformy Azure][azure-support] (wybierz pozycję "przydział" dla **typu problemu**).
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

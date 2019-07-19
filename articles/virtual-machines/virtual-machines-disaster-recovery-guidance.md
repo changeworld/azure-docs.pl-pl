@@ -1,6 +1,6 @@
 ---
-title: Scenariusze odzyskiwania po awarii dla maszyn wirtualnych platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, co należy zrobić w przypadku, gdy przerw w działaniu usługi platformy Azure ma wpływ na maszynach wirtualnych platformy Azure.
+title: Scenariusze odzyskiwania po awarii dla maszyn wirtualnych platformy Azure | Microsoft Docs
+description: Dowiedz się, co należy zrobić w przypadku przerwania działania usługi platformy Azure na maszyny wirtualne platformy Azure.
 services: virtual-machines
 documentationcenter: ''
 author: kmouss
@@ -13,48 +13,48 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2017
-ms.author: kmouss;aglick
+ms.author: gwallace
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f071e1ae97228a16799d391e226ba44b99f6096e
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: bc9ca5f5a638f0b36a28d58172fe8052b3d1522f
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721191"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875448"
 ---
-# <a name="what-to-do-in-the-event-that-an-azure-service-disruption-impacts-azure-vms"></a>Co należy zrobić w przypadku, gdy przerw w działaniu usługi platformy Azure ma wpływ na maszynach wirtualnych platformy Azure
-W firmie Microsoft pracujemy nad upewnij się, że nasze usługi są zawsze dostępne dla Ciebie gdy ich potrzebujesz. Wymusza naszych niezależnych czasami wpływu na nas w sposób, aby spowodować przerwy w świadczeniu usług nieplanowane.
+# <a name="what-to-do-in-the-event-that-an-azure-service-disruption-impacts-azure-vms"></a>Co zrobić w przypadku przerwania działania usługi platformy Azure na maszyny wirtualne platformy Azure
+Firma Microsoft chce, aby upewnić się, że nasze usługi są zawsze dostępne dla Ciebie, gdy będą potrzebne. Siły wykraczające poza nasze kontrolki czasami wpływają na metody, które powodują nieplanowane zakłócenia usługi.
 
-Firma Microsoft oferuje umowę poziomu usług (SLA) jej usług jako zobowiązanie dotyczące czasu dostępności i łączności. Umowa SLA dla poszczególnych usług platformy Azure znajduje się w temacie [umowy dotyczące poziomu usług platformy Azure](https://azure.microsoft.com/support/legal/sla/).
+Firma Microsoft oferuje Umowa dotycząca poziomu usług (SLA) dla usług jako zobowiązanie do pracy i łączności. Umowę SLA dla poszczególnych usług platformy Azure można znaleźć na stronie [umowy dotyczące poziomu usług platformy Azure](https://azure.microsoft.com/support/legal/sla/).
 
-Platforma Azure ma już wiele funkcji wbudowanych platformy, które obsługują aplikacje o wysokiej dostępności. Aby uzyskać więcej informacji o tych usług, przeczytaj [odzyskiwania po awarii i wysoka dostępność dla aplikacji platformy Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
+Platforma Azure ma już wiele wbudowanych funkcji platformy, które obsługują aplikacje o wysokiej dostępności. Aby uzyskać więcej informacji na temat tych usług, Przeczytaj [odzyskiwanie po awarii i wysoką dostępność dla aplikacji platformy Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
-W tym artykule opisano true scenariusza odzyskiwania po awarii, w razie awarii z powodu głównych klęski żywiołowe lub przerw w działaniu usługi powszechne całego regionu. Są to rzadko, ale muszą być przygotowane na możliwość, że występuje awaria cały region. Jeśli cały region przerw w działaniu usługi, lokalnie nadmiarowe kopie danych będzie tymczasowo niedostępne. Jeśli włączono replikację geograficzną, trzy dodatkowe kopie obiektów blob usługi Azure Storage i tabel są przechowywane w innym regionie. W przypadku pełną regionalnej awarii lub awarii, w którym regionie podstawowym nie jest możliwe do odzyskania Azure, ponownie mapuje wszystkie wpisy DNS dla regionu z replikacją geograficzną.
+W tym artykule opisano prawdziwe scenariusze odzyskiwania po awarii, gdy cały region napotyka awarię z powodu poważnych awarii lub szerokiej przerwy w działaniu usługi. Są to rzadkie wystąpienia, ale należy przygotować się na możliwość wystąpienia awarii całego regionu. Jeśli w całym regionie wystąpi zakłócenia usługi, lokalnie nadmiarowe kopie danych byłyby tymczasowo niedostępne. Jeśli włączono replikację geograficzną, trzy dodatkowe kopie obiektów blob i tabel usługi Azure Storage są przechowywane w innym regionie. W przypadku kompletnej awarii regionalnej lub awarii, w której region podstawowy nie jest możliwy do odzyskania, platforma Azure ponownie mapuje wszystkie wpisy DNS do regionu replikowanego geograficznie.
 
-Aby obsługiwać te rzadko, firma Microsoft zapewnia następujące wskazówki dotyczące maszyn wirtualnych platformy Azure w przypadku przerwy w działaniu usługi dla całego regionu, w którym wdrożono aplikację maszyny wirtualnej platformy Azure.
+Aby pomóc Ci w obsłudze tych rzadkich wystąpień, oferujemy następujące wskazówki dotyczące maszyn wirtualnych platformy Azure w przypadku przerwania działania usługi w całym regionie, w którym wdrożono aplikację maszyny wirtualnej platformy Azure.
 
-## <a name="option-1-initiate-a-failover-by-using-azure-site-recovery"></a>Option 1: Zainicjuj tryb failover przy użyciu usługi Azure Site Recovery
-Można skonfigurować usługi Azure Site Recovery dla maszyn wirtualnych, dzięki czemu będzie można odzyskać aplikacji za pomocą jednego kliknięcia w ciągu kilku minut. Można replikować do platformy Azure wybranym przez siebie regionie, a nie ogranicza się do połączonych w parę regionów. Możesz rozpocząć od [replikowanie maszyn wirtualnych](https://aka.ms/a2a-getting-started). Możesz [utworzyć plan odzyskiwania](../site-recovery/site-recovery-create-recovery-plans.md) tak, aby zautomatyzować trybu failover w całej aplikacji. Możesz [testy z trybu failover](../site-recovery/site-recovery-test-failover-to-azure.md) uprzednio bez wywierania wpływu na aplikację w środowisku produkcyjnym lub trwającej replikacji. W przypadku przerwania regionu podstawowego, właśnie [zainicjować trybu failover](../site-recovery/site-recovery-failover.md) i utworzyć aplikację w regionie docelowym.
+## <a name="option-1-initiate-a-failover-by-using-azure-site-recovery"></a>Option 1: Inicjowanie trybu failover za pomocą Azure Site Recovery
+Można skonfigurować Azure Site Recovery dla maszyn wirtualnych, aby umożliwić odzyskanie aplikacji za pomocą jednego kliknięcia w kilka minut. Możesz przeprowadzić replikację do wybranego regionu platformy Azure i nie ograniczyć się do sparowanych regionów. Możesz rozpocząć od [replikowania maszyn wirtualnych](https://aka.ms/a2a-getting-started). Można [utworzyć plan odzyskiwania](../site-recovery/site-recovery-create-recovery-plans.md) , dzięki czemu można zautomatyzować cały proces trybu failover dla aplikacji. Przełączenie w [tryb failover można przetestować](../site-recovery/site-recovery-test-failover-to-azure.md) wcześniej bez wpływu na aplikację produkcyjną lub trwającą replikację. W przypadku przerwania działania w regionie podstawowym wystarczy [zainicjować tryb failover](../site-recovery/site-recovery-failover.md) i przenieść swoją aplikację w region docelowy.
 
 
-## <a name="option-2-wait-for-recovery"></a>Opcja 2: Poczekaj, aż odzyskiwanie
-W takim wypadku żadna akcja ze strony użytkownika jest wymagana. Wiadomo, że pracujemy, aby przywrócić dostępność usługi. Można wyświetlić bieżący stan usługi na naszych [pulpit nawigacyjny kondycji usługi platformy Azure](https://azure.microsoft.com/status/).
+## <a name="option-2-wait-for-recovery"></a>Opcja 2: Zaczekaj na odzyskanie
+W takim przypadku nie jest wymagana żadna akcja z Twojej strony. Należy pamiętać, że pracujemy z pracujemy, aby przywrócić dostępność usługi. Bieżący stan usługi można zobaczyć na naszym [pulpicie nawigacyjnym Azure Service Health](https://azure.microsoft.com/status/).
 
-To najlepsza opcja, jeśli nie skonfigurowano usługi Azure Site Recovery, Magazyn geograficznie nadmiarowy geograficznie nadmiarowy lub magazyn geograficznie nadmiarowy przed zakłócenie. Jeśli skonfigurowano Magazyn geograficznie nadmiarowy lub magazyn geograficznie nadmiarowy dostęp do odczytu dla konta magazynu przechowywania wirtualnych dysków twardych maszyny Wirtualnej (VHD), możesz się przyjrzeć w celu odzyskania na podstawowy obraz wirtualnego dysku twardego i spróbuj do aprowizacji nowej maszyny Wirtualnej z niego. Nie jest preferowaną opcją, ponieważ nie ma żadnej gwarancji synchronizacji danych. W związku z tym ta opcja nie jest gwarantowane do pracy.
+Jest to najlepsza opcja, jeśli nie skonfigurowano Azure Site Recovery, magazynu geograficznie nadmiarowego do odczytu lub magazynu geograficznie nadmiarowego przed przerwą w działaniu. Jeśli skonfigurowano magazyn Geograficznie nadmiarowy lub magazyn Geograficznie nadmiarowy z dostępem do odczytu dla konta magazynu, w którym są przechowywane wirtualne dyski twarde (VHD) maszyny wirtualnej, można odszukać plik VHD obrazu podstawowego i spróbować zainicjować dla niego nową maszynę wirtualną. Nie jest to preferowana opcja, ponieważ nie ma żadnych gwarancji synchronizacji danych. W związku z tym ta opcja nie jest gwarantowana.
 
 
 > [!NOTE]
-> Należy pamiętać, że nie masz żadnych kontrolować ten proces i miało miejsce tylko dla przerwy w świadczeniu usług obejmujących cały region. W związku z tym należy również polegać na innych strategii tworzenia kopii zapasowych specyficzne dla aplikacji, aby osiągnąć najwyższą dostępność. Aby uzyskać więcej informacji, zobacz sekcję na [danych Strategie odzyskiwania po awarii](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan).
+> Należy pamiętać, że nie masz żadnej kontroli nad tym procesem i nastąpi tylko w przypadku przerw w działaniu usługi. W związku z tym należy również korzystać z innych strategii tworzenia kopii zapasowych specyficznych dla aplikacji, aby osiągnąć najwyższy poziom dostępności. Aby uzyskać więcej informacji, zapoznaj się z sekcją dotyczącej [strategii danych dotyczących odzyskiwania po awarii](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan).
 >
 >
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-- Rozpocznij [ochronę Twoich aplikacji uruchomionych na maszynach wirtualnych Azure](https://aka.ms/a2a-getting-started) przy użyciu usługi Azure Site Recovery
+- Zacznij [chronić aplikacje działające na maszynach wirtualnych platformy Azure](https://aka.ms/a2a-getting-started) przy użyciu Azure Site Recovery
 
-- Aby dowiedzieć się więcej na temat sposobu wdrażania odzyskiwania po awarii i strategii wysokiej dostępności, zobacz [odzyskiwania po awarii i wysoka dostępność dla aplikacji platformy Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
+- Aby dowiedzieć się więcej o implementowaniu strategii odzyskiwania po awarii i wysokiej dostępności, zobacz [odzyskiwanie po awarii i wysoka dostępność dla aplikacji platformy Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
-- Aby opracować szczegółowe technicznego zrozumienia możliwości platformy chmury, zobacz [wskazówek technicznych odporność platformy Azure](../resiliency/resiliency-technical-guidance.md).
+- Aby opracować szczegółowe informacje techniczne na temat możliwości platformy w chmurze, zobacz [Wskazówki techniczne dotyczące odporności na platformie Azure](../resiliency/resiliency-technical-guidance.md).
 
 
-- Jeśli wyczyść lub jeśli chcesz wykonywać operacje w imieniu użytkownika przez firmę Microsoft, skontaktuj się z instrukcjami [techniczną](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+- Jeśli instrukcje nie są jasne lub jeśli chcesz, aby firma Microsoft wykonał operacje w Twoim imieniu, skontaktuj się z [pomocą techniczną](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

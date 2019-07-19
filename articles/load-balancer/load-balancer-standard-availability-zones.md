@@ -1,10 +1,10 @@
 ---
-title: Usługa Azure standardowego modułu równoważenia obciążenia i strefy dostępności
+title: Azure usługa Load Balancer w warstwie Standardowa i Strefy dostępności
 titlesuffix: Azure Load Balancer
 description: Usługa Load Balancer w warstwie Standardowa i strefy dostępności
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
@@ -12,55 +12,55 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/27/2018
-ms.author: kumud
-ms.openlocfilehash: 0820285555110e8e85bff814f4774d6da6443f69
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.author: allensu
+ms.openlocfilehash: 5ef7de148d5ef4727602b8287164f2aff9ccf822
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491982"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274512"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Usługa Load Balancer w warstwie Standardowa i strefy dostępności
 
-Obsługuje platformy Azure równoważenia obciążenia standardowej jednostki SKU [strefy dostępności](../availability-zones/az-overview.md) scenariuszy. Kilku nowych pojęć dostępnych przy użyciu standardowego modułu równoważenia obciążenia umożliwiają Optymalizowanie dostępności w tym scenariuszu end-to-end wyrównywanie zasobów przy użyciu stref i rozmieszczanie ich w strefach.  Przegląd [strefy dostępności](../availability-zones/az-overview.md) wskazówki dotyczące co to są strefy dostępności, które regiony świadczenia obecnie obsługują strefy dostępności i inne związane z pojęć i produktów. Strefy dostępności w połączeniu z Balancer w warstwie standardowa to zestaw funkcji rozszerzania i elastyczne, który można utworzyć wiele różnych scenariuszy.  Przejrzyj tego dokumentu, aby zrozumieć [pojęcia](#concepts) i podstawowych scenariuszy [wskazówki projektowania](#design).
+Standardowa jednostka SKU Azure Load Balancer obsługuje scenariusze [strefy dostępności](../availability-zones/az-overview.md) . Dostępne są różne nowe koncepcje usługa Load Balancer w warstwie Standardowa, które umożliwiają optymalizację dostępności w kompleksowym scenariuszu przez wyrównanie zasobów do stref i dystrybuowanie ich między strefami.  Przejrzyj [strefy dostępności](../availability-zones/az-overview.md) , aby uzyskać wskazówki dotyczące strefy dostępności, które regiony są obecnie obsługiwane strefy dostępności oraz inne powiązane koncepcje i produkty. Strefy dostępności w połączeniu z usługa Load Balancer w warstwie Standardowa są rozległych i elastycznym zestawem funkcji, który może tworzyć wiele różnych scenariuszy.  Zapoznaj się z tym dokumentem, aby poznać te [koncepcje](#concepts) i podstawowe [wskazówki dotyczące projektowania](#design).
 
 >[!IMPORTANT]
->Przegląd [strefy dostępności](../availability-zones/az-overview.md) uzyskać pokrewne, w tym wszelkie informacje określonego regionu.
+>Przejrzyj [strefy dostępności](../availability-zones/az-overview.md) Tematy pokrewne, w tym informacje specyficzne dla regionu.
 
-## <a name="concepts"></a> Strefy dostępności pojęcia stosowane do modułu równoważenia obciążenia
+## <a name="concepts"></a>Koncepcje Strefy dostępności zastosowane do Load Balancer
 
-Nie ma bezpośredniej relacji między zasobami usługi równoważenia obciążenia i rzeczywistej infrastruktury. Tworzenie modułu równoważenia obciążenia nie tworzy wystąpienia. Zasoby są obiekty, w których można wyrazić jak Azure powinien program jej wbudowanych infrastruktury wielu dzierżawców do osiągnięcia scenariusza, który chcesz utworzyć moduł równoważenia obciążenia.  Jest to istotne w kontekście strefy dostępności, ponieważ pojedynczy zasób modułu równoważenia obciążenia można kontrolować programowania infrastruktury w wielu strefach dostępności, podczas gdy usługa strefowo nadmiarowy jest wyświetlany jako jeden zasób z punktu widzenia klienta.
+Nie istnieje bezpośredni związek między zasobami Load Balancer i rzeczywistą infrastrukturą; utworzenie Load Balancer nie powoduje utworzenia wystąpienia. Zasoby Load Balancer są obiektami, w których można wypróbować, w jaki sposób platforma Azure powinna programować wbudowaną infrastrukturę z wieloma dzierżawcami w celu osiągnięcia scenariusza, który ma zostać utworzony.  Jest to istotne w kontekście Strefy dostępności, ponieważ pojedynczy zasób Load Balancer może kontrolować programowanie infrastruktury w wielu Strefy dostępności podczas gdy usługa nadmiarowa strefy pojawia się jako jeden zasób z punktu widzenia klienta.
 
-Funkcje zasobu modułu równoważenia obciążenia są wyrażane jako frontonu, reguły, sondy kondycji i definicji puli zaplecza.
+Funkcje zasobów Load Balancer są wyrażane jako fronton, reguła, sonda kondycji i definicja puli zaplecza.
 
-W kontekście strefy dostępności zachowanie i właściwości zasobu modułu równoważenia obciążenia są określane jako strefowo nadmiarowego lub strefowych.  Strefowo nadmiarowy i strefowych opisują zonality właściwości.  W kontekście usługi równoważenia obciążenia, strefowo nadmiarowe zawsze oznacza *wiele stref* i strefowych oznacza, że usługi do izolowania *jednej strefie*.
+W kontekście Strefy dostępności zachowanie i właściwości zasobu Load Balancer są opisane jako strefowo nadmiarowe lub strefy.  Strefowo nadmiarowe i strefowo opisują zonality właściwości.  W kontekście Load Balancer strefa nadmiarowa zawsze oznacza, że *wiele stref* i stref oznacza izolację usługi do *pojedynczej strefy*.
 
-Zarówno public i internal Load Balancer, która obsługuje scenariusze strefowo nadmiarowy i strefowych i zarówno kierowania ruchem między strefami, zgodnie z potrzebami (*równoważenia obciążenia międzystrefowego*).
+Zarówno publiczne, jak i wewnętrzne Load Balancer obsługują scenariusze nadmiarowe i strefowe, a oba mogą kierować ruchem między strefami w razie potrzeby (*równoważenie obciążenia między strefami*).
 
-Samego zasobu modułu równoważenia obciążenia jest regionalnych i strefowych nigdy nie.  I sieci wirtualnej i podsieci są zawsze regionalnych i strefowych nigdy nie.
+Sam zasób Load Balancer jest regionalny i nigdy nie jest strefą.  A sieć wirtualna i podsieci zawsze są regionalne i nigdy nie są zona.
 
 ### <a name="frontend"></a>Frontonu
 
-Fronton modułu równoważenia obciążenia jest konfiguracja adresu IP frontonu, odwoływanie się do zasobu publicznego adresu IP lub prywatnego adresu IP w obrębie podsieci zasobu sieci wirtualnej.  Wchodzi w skład punkt końcowy o zrównoważonym obciążeniu gdzie usługa jest widoczna.
+Fronton Load Balancer jest konfiguracją adresów IP frontonu odwołującą się do zasobu publicznego adresu IP lub prywatnego adresu IP w podsieci zasobu sieci wirtualnej.  Tworzy punkt końcowy ze zrównoważonym obciążeniem, w którym jest udostępniana usługa.
 
-Zasób modułu równoważenia obciążenia może zawierać jednocześnie frontonów strefowo nadmiarowy i strefowych. 
+Zasób Load Balancer może zawierać jednocześnie frontony strefy i strefowo nadmiarowe. 
 
-Ma zostały gwarancję publicznego zasobu adresu IP w strefie, zonality (lub ich brak) jest modyfikowalna.  Jeśli chcesz zmienić lub Pomiń zonality z publicznego adresu IP frontonu, należy ponownie utworzyć publiczny adres IP, które są dostępne w odpowiedniej strefy.  
+Gdy zasób publicznego adresu IP jest gwarantowany dla strefy, zonality (lub jego brak) nie jest modyfikowalny.  Jeśli chcesz zmienić lub pominąć zonality publicznego adresu IP, należy ponownie utworzyć publiczny adres IP w odpowiedniej strefie.  
 
-Usunięcie i ponowne utworzenie frontonu, zmienianie lub pominięcie zonality, można zmienić zonality z frontonu wewnętrznego modułu równoważenia obciążenia.
+Możesz zmienić zonality frontonu Load Balancer wewnętrznej, usuwając i przetworząc fronton, zmieniając lub pomijając zonality.
 
-Korzystając z wielu frontonów, przejrzyj [wiele frontonów dla modułu równoważenia obciążenia](load-balancer-multivip-overview.md) ważne zagadnienia.
+W przypadku korzystania z wielu frontonów zapoznaj się z [wieloma frontonami dla Load Balancer](load-balancer-multivip-overview.md) , aby uzyskać ważne zagadnienia.
 
-#### <a name="zone-redundant-by-default"></a>Domyślnie strefowo nadmiarowe
+#### <a name="zone-redundant-by-default"></a>Strefy nadmiarowe domyślnie
 
 >[!IMPORTANT]
->Przegląd [strefy dostępności](../availability-zones/az-overview.md) uzyskać pokrewne, w tym wszelkie informacje określonego regionu.
+>Przejrzyj [strefy dostępności](../availability-zones/az-overview.md) Tematy pokrewne, w tym informacje specyficzne dla regionu.
 
-W regionie Dzięki strefom dostępności frontonu Balancer w warstwie standardowa jest strefowo nadmiarowe domyślnie.  Adres IP frontonu pojedynczego mogą przetrwać awarie strefy i może służyć do dotrzeć do wszystkich składowych puli zaplecza, niezależnie od strefy. Nie oznacza to ścieżki hitless danych, ale ponownych prób ani reestablishment zakończy się powodzeniem. Schematy nadmiarowości DNS nie są wymagane. Pojedynczy adres IP frontonu modułu jest jednocześnie obsługiwany przez wiele wdrożeń infrastruktury niezależnych w wielu strefach dostępności.  Strefowo nadmiarowe oznacza, że wszystkie przepływy ruchu przychodzącego lub wychodzącego są obsługiwane przez wielu strefach dostępności w regionie jednocześnie za pomocą pojedynczego adresu IP.
+W regionie z Strefy dostępnościm fronton usługa Load Balancer w warstwie Standardowa jest domyślnie strefowo nadmiarowy.  Pojedynczy adres IP frontonu może przetrwać awarię strefy i może być używany do uzyskiwania dostępu do wszystkich elementów członkowskich puli zaplecza niezależnie od strefy. Nie oznacza to hitless ścieżki danych, ale wszystkie ponowne próby lub ponowna próba zostaną wykonane pomyślnie. Schematy nadmiarowości DNS nie są wymagane. Pojedynczy adres IP frontonu jest obsługiwany jednocześnie przez wiele niezależnych wdrożeń infrastruktury w wielu Strefy dostępności.  Strefa nadmiarowa oznacza, że wszystkie przepływy ruchu przychodzącego lub wychodzącego są obsługiwane przez wiele Strefy dostępności w regionie jednocześnie przy użyciu jednego adresu IP.
 
-Jeden lub więcej stref dostępności może zakończyć się niepowodzeniem, a ścieżka danych tak długo, jak jedną strefę w pozostaje region przeżyje dobrej kondycji. Strefowo nadmiarowy jest domyślnie i wymaga żadnych dodatkowych akcji.  
+Co najmniej jeden Strefy dostępności może zakończyć się niepowodzeniem, a ścieżka danych przeżyje, dopóki jedna strefa w regionie pozostanie w dobrej kondycji. Konfiguracja nadmiarowa strefy jest domyślna i nie wymaga żadnych dodatkowych akcji.  
 
-Użyj następującego skryptu, aby utworzyć strefowo nadmiarowy publiczny adres IP wewnętrznego modułu równoważenia obciążenia standardowego. Jeśli korzystasz z istniejących szablonów usługi Resource Manager w konfiguracji, należy dodać **jednostki sku** sekcji, aby te szablony.
+Użyj poniższego skryptu, aby utworzyć strefowo nadmiarowy publiczny adres IP dla usługa Load Balancer w warstwie Standardowa wewnętrznej. Jeśli używasz istniejących szablonów Menedżer zasobów w konfiguracji, Dodaj sekcję **SKU** do tych szablonów.
 
 ```json
             "apiVersion": "2017-08-01",
@@ -73,7 +73,7 @@ Użyj następującego skryptu, aby utworzyć strefowo nadmiarowy publiczny adres
             },
 ```
 
-Poniższy skrypt umożliwia utworzenie adresu IP frontonu strefowo nadmiarowe wewnętrznego modułu równoważenia obciążenia standardowego. Jeśli korzystasz z istniejących szablonów usługi Resource Manager w konfiguracji, należy dodać **jednostki sku** sekcji, aby te szablony.
+Użyj poniższego skryptu, aby utworzyć strefowo nadmiarowy adres IP frontonu dla wewnętrznego usługa Load Balancer w warstwie Standardowa. Jeśli używasz istniejących szablonów Menedżer zasobów w konfiguracji, Dodaj sekcję **SKU** do tych szablonów.
 
 ```json
             "apiVersion": "2017-08-01",
@@ -99,15 +99,15 @@ Poniższy skrypt umożliwia utworzenie adresu IP frontonu strefowo nadmiarowe we
                 ],
 ```
 
-#### <a name="optional-zone-isolation"></a>Izolacja strefy opcjonalne
+#### <a name="optional-zone-isolation"></a>Opcjonalna izolacja strefy
 
-Istnieje możliwość mają frontonu gwarantowane jedną strefę, co jest znane jako *strefowych frontonu*.  Oznacza to, że dowolny przepływ ruchu przychodzącego lub wychodzącego jest obsługiwany przez jedną strefę, w regionie.  Usługi frontonu udostępni LOS kondycję strefy.  Ścieżka danych jest niezależny od błędów w strefach niż gdzie zostało gwarantowane. Strefowych frontonów można użyć do udostępnienia adresu IP dla stref dostępności.  Ponadto można bezpośrednio korzystać strefowych frontonów lub, jeśli frontonu, który składa się z publicznych adresów IP, zintegrowanie ich z produktem równoważenia obciążenia DNS, takich jak [usługi Traffic Manager](../traffic-manager/traffic-manager-overview.md) i używanie jednej nazwy DNS, która zostanie rozpoznana klienta wiele adresów IP strefowych.  Również służy to do udostępnienia poszczególnych punktów końcowych ze zrównoważonym obciążeniem strefy oddzielnie monitorować każdej strefy.  Jeśli chcesz dopasować te pojęcia (strefowo nadmiarowy i strefowych dla tego samego zaplecza), przejrzyj [wiele frontonów dla usługi Azure Load Balancer](load-balancer-multivip-overview.md).
+Można zdecydować, aby fronton miał zagwarantowaną pojedynczą strefę, zwaną strefą *frontonu*.  Oznacza to, że każdy przepływ przychodzący lub wychodzący jest obsługiwany przez jedną strefę w regionie.  Fronton udostępnia losy z kondycją strefy.  Błędy w ścieżce danych nie mają wpływ na awarie w strefach innych niż to, w którym zostało zagwarantowane. Za pomocą stref frontonów można uwidocznić adres IP dla strefy dostępności.  Ponadto można korzystać z stref frontonów bezpośrednio lub, gdy fronton składa się z publicznych adresów IP, zintegrować je z produktem równoważenia obciążenia DNS, takim jak [Traffic Manager](../traffic-manager/traffic-manager-overview.md) , i użyć pojedynczej nazwy DNS, którą klient będzie rozpoznawał do wielu adresów IP stref .  Można go również użyć do udostępnienia punktów końcowych ze zrównoważonym obciążeniem strefy, aby osobno monitorować każdą strefę.  Jeśli chcesz mieszać te koncepcje (strefowo nadmiarowe i zona dla tego samego zaplecza), przejrzyj [wiele frontonów dla Azure Load Balancer](load-balancer-multivip-overview.md).
 
-Dla publicznej frontonu modułu równoważenia obciążenia, możesz dodać *stref* parametr do publicznego adresu IP przywoływany przez konfigurację IP frontonu.  
+W przypadku publicznego frontonu Load Balancer należy dodać parametr *strefy* do publicznego adresu IP, do którego odwołuje się Konfiguracja adresu IP frontonu.  
 
-W przypadku wewnętrznych frontonu modułu równoważenia obciążenia, dodać *stref* parametr wewnętrzny konfiguracji adresu IP frontonu modułu równoważenia obciążenia. Strefowy frontonu powoduje, że moduł równoważenia obciążenia w celu zagwarantowania adresu IP w podsieci do określonej strefy.
+W przypadku wewnętrznego Load Balancer frontonu Dodaj parametr *strefy* do konfiguracji wewnętrznego adresu IP frontonu Load Balancer. Strefa frontonu powoduje, że Load Balancer zagwarantowania adresu IP w podsieci do określonej strefy.
 
-Poniższy skrypt umożliwia utworzenie strefowych standardowego publicznego adresu IP w 1 strefy dostępności. Jeśli korzystasz z istniejących szablonów usługi Resource Manager w konfiguracji, należy dodać **jednostki sku** sekcji, aby te szablony.
+Użyj poniższego skryptu, aby utworzyć standardowy publiczny adres IP w strefach dostępności Strefa 1. Jeśli używasz istniejących szablonów Menedżer zasobów w konfiguracji, Dodaj sekcję **SKU** do tych szablonów.
 
 ```json
             "apiVersion": "2017-08-01",
@@ -121,9 +121,9 @@ Poniższy skrypt umożliwia utworzenie strefowych standardowego publicznego adre
             },
 ```
 
-Użyj następującego skryptu do tworzenia wewnętrznego modułu równoważenia obciążenia standardowego frontonu w 1 strefy dostępności.
+Użyj poniższego skryptu, aby utworzyć wewnętrzny usługa Load Balancer w warstwie Standardowa frontonu w Strefa 1 dostępności.
 
-Jeśli korzystasz z istniejących szablonów usługi Resource Manager w konfiguracji, należy dodać **jednostki sku** sekcji, aby te szablony. Ponadto zdefiniować **stref** właściwości w konfiguracji adresu IP frontonu dla zasobów podrzędnych.
+Jeśli używasz istniejących szablonów Menedżer zasobów w konfiguracji, Dodaj sekcję **SKU** do tych szablonów. Ponadto Zdefiniuj Właściwość **Zones** w konfiguracji adresu IP frontonu dla zasobu podrzędnego.
 
 ```json
             "apiVersion": "2017-08-01",
@@ -152,78 +152,78 @@ Jeśli korzystasz z istniejących szablonów usługi Resource Manager w konfigur
 
 ### <a name="cross-zone-load-balancing"></a>Równoważenie obciążenia między strefami
 
-Równoważenie obciążenia między strefami jest możliwość osiągnięcia punktu końcowego wewnętrznej bazy danych w każdej strefie modułu równoważenia obciążenia i jest niezależna od frontonu i jego zonality.
+Równoważenie obciążenia między strefami umożliwia Load Balancer dostępu do punktu końcowego zaplecza w dowolnej strefie i jest niezależne od frontonu i jego zonality.
 
-Jeśli chcesz się i gwarantuje wdrożenia w jednej strefie Wyrównaj strefowych frontonu i zaplecza strefowych zasobów do tej samej strefie. Nie są wymagane żadne dalsze działania.
+Jeśli chcesz wyrównać i zagwarantowanie wdrożenia w ramach jednej strefy, Wyrównaj zasoby frontonu i stref wewnętrznej bazy danych do tej samej strefy. Nie są wymagane żadne dalsze działania.
 
-### <a name="backend"></a>Wewnętrznej bazy danych
+### <a name="backend"></a>Danych
 
-Moduł równoważenia obciążenia działa z maszynami wirtualnymi.  Dowolnej maszyny Wirtualnej w pojedynczej sieci wirtualnej mogą być częścią puli zaplecza, niezależnie od tego, czy został gwarantowane do strefy lub która strefa została gwarantowane.
+Load Balancer współpracuje z Virtual Machines.  Każda maszyna wirtualna w jednej sieci wirtualnej może być częścią puli zaplecza, niezależnie od tego, czy została ona zagwarantowana lub nie została zapewniona przez strefę.
 
-Jeśli chcesz się i gwarantuje usługi frontonu i zaplecza za pomocą jednej strefie tylko umieść maszyny wirtualne w ramach tej samej strefie w puli zaplecza odpowiednich.
+Jeśli chcesz wyrównać i zagwarantowania frontonu i zaplecza przy użyciu pojedynczej strefy, umieść maszyny wirtualne w tej samej strefie w odpowiedniej puli zaplecza.
 
-Jeśli chcesz adres maszyny wirtualne w wielu strefach po prostu umieść maszyny wirtualne z wieloma strefami w tej samej puli zaplecza.  W przypadku zestawów danych za pomocą skalowania maszyn wirtualnych, można umieścić jednego lub więcej zestawów skalowania maszyn wirtualnych w tej samej puli zaplecza.  A każdy z tych zestawów skalowania maszyn wirtualnych może być w jednym lub wieloma strefami.
+Jeśli chcesz zająć się maszynami wirtualnymi w wielu strefach, po prostu umieść maszyny wirtualne z wielu stref w tej samej puli zaplecza.  W przypadku korzystania z zestawów skalowania maszyn wirtualnych można umieścić jeden lub więcej zestawów skalowania maszyn wirtualnych w tej samej puli zaplecza.  Każdy z tych zestawów skalowania maszyn wirtualnych może znajdować się w jednej lub wielu strefach.
 
 ### <a name="outbound-connections"></a>Połączenia wychodzące
 
-[Połączenia wychodzące](load-balancer-outbound-connections.md) są obsługiwane przez wszystkie strefy i są automatycznie strefowo nadmiarowy w regionie ze strefami dostępności występują, gdy maszyna wirtualna jest skojarzona z publicznej usługi Load Balancer i strefowo nadmiarowe frontonu.  Alokacje portu SNAT połączeń wychodzących po awarii strefy.  
+[Połączenia](load-balancer-outbound-connections.md) wychodzące są obsługiwane przez wszystkie strefy i są automatycznie nadmiarowe strefy w regionie z strefy dostępności, gdy maszyna wirtualna jest skojarzona z publicznym Load Balancer i frontonu Strefowo nadmiarowego.  Alokacje portów dla ruchu wychodzącego w przypadku niepowodzeń strefy.  
 
-Z kolei Jeśli maszyna wirtualna jest skojarzona z publicznej usługi Load Balancer i strefowych frontonu, połączenia wychodzące gwarancję ma być obsługiwana przez jedną strefę.  Połączenia wychodzące udostępniać LOS kondycji odpowiednimi strefy.
+Z kolei jeśli maszyna wirtualna jest skojarzona z publiczną Load Balancer i strefą frontonu, połączenia wychodzące mają być obsługiwane przez jedną strefę.  Połączenia wychodzące współdzielą losy z odpowiednią strefą kondycji.
 
-Wstępne SNAT portu przydzielanie i algorytm jest taki sam, z lub bez stref.
+Alokacja i algorytm wstępnego portu współdziałania są takie same ze strefami lub bez.
 
 ### <a name="health-probes"></a>Sondy kondycji
 
-Są one bez stref dostępności istniejącej definicji sondy kondycji jest zachowywana.  Ale rozszerzono modelu kondycji na poziomie infrastruktury. 
+Istniejące definicje sondy kondycji pozostają w stanie, w jakim się znajdują, bez Strefy dostępności.  Jednak model kondycji został rozszerzony na poziomie infrastruktury. 
 
-Korzystając z strefowo nadmiarowe frontonów, moduł równoważenia obciążenia rozszerza swój model kondycji wewnętrznego niezależnie sondowania wysyłające maszyny Wirtualnej z każda strefa dostępności i zamknąć ścieżek w strefach, których nie powiodła się bez interwencji klienta.  Jeśli w podanej ścieżce nie jest dostępne z infrastruktury modułu równoważenia obciążenia w jednej strefie do maszyny Wirtualnej w innej strefie, moduł równoważenia obciążenia można wykryć i uniknąć tego błędu. Innych strefach, którzy mogą dotrzeć do tej maszyny Wirtualnej, mogą nadal obsługiwać maszynę Wirtualną z ich odpowiednimi frontonów.  W rezultacie jest możliwe, że podczas zdarzenia błędów każdej ze stref może mieć nieco inny przepływ dystrybucje przy jednoczesnej ochronie ogólnej kondycji usługi end-to-end.
+W przypadku korzystania z frontonów strefowo nadmiarowych Load Balancer rozszerza swój wewnętrzny model kondycji, aby niezależnie przesondować zasięg maszyny wirtualnej z każdej strefy dostępności i zamknąć ścieżki między strefami, które mogły zakończyć się niepowodzeniem bez interwencji klienta.  Jeśli dana ścieżka nie jest dostępna z infrastruktury Load Balancer jednej strefy do maszyny wirtualnej w innej strefie, Load Balancer może wykryć i uniknąć tego błędu. Inne strefy, które mogą nawiązać połączenie z tą maszyną wirtualną, mogą nadal obsłużyć maszynę wirtualną z odpowiednich frontonów.  W związku z tym możliwe jest, że podczas zdarzeń błędów każda strefa może mieć nieco różne dystrybucje przepływu przy jednoczesnej ochronie ogólnej kondycji usługi kompleksowej.
 
-## <a name="design"></a> Zagadnienia dotyczące projektowania
+## <a name="design"></a>Zagadnienia dotyczące projektowania
 
-Moduł równoważenia obciążenia jest celowo elastyczne w kontekście stref dostępności. Istnieje możliwość wyrównane do strefy lub użytkownik może być strefowo nadmiarowe.  Zwiększona dostępność mogą pochodzić po cenie wzrostu złożoności i należy projektować dostępności w celu uzyskania optymalnej wydajności.  Spójrzmy na niektóre istotne zagadnienia.
+Load Balancer jest elastycznie elastyczny w kontekście Strefy dostępności. Można wybrać opcję Wyrównaj do stref lub wybrać opcję nadmiarowej strefy.  Zwiększona dostępność może być naliczana w cenie zwiększonej złożoności i należy projektować pod kątem optymalnej wydajności.  Przyjrzyjmy się pewnym ważnym zagadnieniom dotyczącym projektowania.
 
-### <a name="automatic-zone-redundancy"></a>Automatycznej nadmiarowości strefy
+### <a name="automatic-zone-redundancy"></a>Automatyczna nadmiarowość stref
 
-Moduł równoważenia obciążenia pozwala w prosty sposób mieć pojedynczy adres IP jako frontend strefowo nadmiarowe. Strefowo nadmiarowe adres IP można bezpiecznie obsługiwać zasobem strefowym w każdej strefie i mogą przetrwać awarię strefy co najmniej jednego, tak długo, jak tylko jedną strefę pozostanie w dobrej kondycji w obrębie regionu. Z drugiej strony strefowych frontonu jest zmniejszenie usługi do pojedynczej strefy i udziałów LOS z odpowiedniej strefy.
+Load Balancer ułatwia używanie pojedynczego adresu IP jako frontonu Strefowo nadmiarowego. Adres IP nadmiarowy strefy może bezpiecznie obsłużyć zasoby strefowe w każdej strefie i może przetrwać awarie jednej strefy lub więcej, o ile jedna strefa pozostaje w dobrej kondycji w regionie. Z kolei strefa frontonu jest redukcją usługi do pojedynczej strefy i udostępnia losy z odpowiednią strefą.
 
-Nadmiarowości strefy nie sugeruje hitless ścieżki danych płaszczyzna kontroli;  jest wyraźnie płaszczyzny danych. Strefowo nadmiarowe przepływy mogą używać żadnych stref i przepływy klient użyje wszystkie strefy w dobrej kondycji w regionie. W przypadku awarii strefy nie są zagrożone widok przepływów ruchu sieciowego przy użyciu stref dobrej kondycji w danym momencie.  Widok przepływów ruchu sieciowego przy użyciu strefy w czasie awarii strefa może mieć wpływ, ale aplikacje można odzyskać. Te przepływy mogą nadal w pozostałych dobrej kondycji strefach w regionie od retransmisji lub reestablishment, po Azure została połączona wokół błąd stref.
+Nadmiarowość stref nie oznacza hitless datapath lub płaszczyzny kontroli;  jest to wyraźnie płaszczyzna danych. Przepływ nadmiarowy strefy może korzystać ze wszystkich stref, a przepływy klientów będą używać wszystkich stref w dobrej kondycji w regionie. W przypadku awarii strefy nie ma to wpływu na przepływy ruchu korzystające z prawidłowych stref w tym momencie.  Może to mieć wpływ na przepływy ruchu korzystające z strefy w czasie awarii strefy, ale aplikacje mogą je odzyskać. Te przepływy mogą być kontynuowane w pozostałych strefach o dobrej kondycji w regionie po ponownym nawiązaniu lub ponownym ustanowieniu, gdy platforma Azure zostanie zbieżna wokół błędu strefy.
 
-### <a name="xzonedesign"></a> Krzyżowe granice stref
+### <a name="xzonedesign"></a>Granice między strefami
 
-Jest ważne dowiedzieć się, że ilekroć end-to-end usługi przecina strefy, możesz udostępniać LOS nie jedną strefę, ale potencjalnie wiele stref.  W wyniku end-to-end usługi mogą nie weszły wszelkie dostępności za pośrednictwem wdrożenia strefowych.
+Ważne jest, aby zrozumieć, że w dowolnym momencie usługa kompleksowej przekroczy strefy, możesz udostępniać losy nie tylko jednej strefie, ale potencjalnie w wielu strefach.  W związku z tym kompleksowa usługa może nie uzyskać dostępności w przypadku wdrożeń nienależących do stref.
 
-Należy unikać wprowadzenie niezamierzonych zależności między strefami, które zniweczyć zyski dostępności, korzystając z stref dostępności.  Gdy Twoja aplikacja składa się z wielu składników, i chcesz była odporna na awarie strefy, musi zajmie się, aby zapewnić pozostawanie w mocy wystarczające krytycznych składników w przypadku niepowodzenia strefy.  Na przykład pojedynczy kluczowy składnik aplikacji może wpłynąć na całej aplikacji, jeśli istnieje tylko w strefie niż sprawny strefy.  Ponadto należy również rozważyć przywracania strefy i jak zbierze aplikacji. Teraz przejrzeć niektóre punkty klucza i używać ich jako inspiracji pytania myśląc za pośrednictwem określonego scenariusza.
+Unikaj wprowadzania niezamierzonych zależności między strefami, co spowoduje zniesienia korzyści z dostępności podczas korzystania z Strefy dostępności.  Gdy aplikacja składa się z wielu składników i chcesz odporna na awarie strefy, należy zadbać o to, aby upewnić się, że w przypadku awarii strefy wystąpią wystarczające krytyczne składniki.  Na przykład pojedynczy składnik krytyczny dla aplikacji może mieć wpływ na całą aplikację, jeśli istnieje tylko w strefie innej niż w przypadku pozostałych stref.  Ponadto należy również rozważyć przywrócenie strefy i sposób, w jaki aplikacja będzie zbieżna. Zapoznajmy się z przykładami najważniejszych punktów i korzystaj z nich jako inspiracji w przypadku pytań w konkretnym scenariuszu.
 
-- Jeśli aplikacja ma dwa składniki, takie jak adres IP i maszyny Wirtualnej w przypadku dysków zarządzanych i są one gwarantowana w strefie 1 oraz w strefie 2, gdy strefa 1 nie powiodło się z usługą end-to-end, nie będą nadal obowiązywać jeśli strefa 1 nie powiodło się.  Nie przekracza strefy, chyba że w pełni rozumiesz tworzysz trybie potencjalnie niebezpiecznych awarii.
+- Jeśli aplikacja ma dwa składniki, takie jak adres IP i maszyna wirtualna z dyskiem zarządzanym, i są one gwarantowane w strefie 1 i 2, gdy strefa 1 zakończy się niepowodzeniem, usługa nie będzie przeżyje, gdy strefa 1 ulegnie awarii.  Nie należy przechodzić między strefami, chyba że w pełni rozumiesz, że tworzysz bezpieczny tryb awarii.
 
-- Jeśli aplikacja ma dwa składniki, takie jak adres IP i maszyny Wirtualnej z dysku, zarządzanego i mają gwarancję, że strefowo nadmiarowy i odpowiednio strefa 1, end-to-end usługi przeżyje katastrofę awarii strefy w strefie 2, strefa 3 i / lub jeśli strefa 1 nie powiodło się.  Jednak utracisz możliwość przeglądanie informacji o kondycji usługi wszystkie występujący w przypadku wysyłające frontonu.  Należy rozważyć utworzenie bardziej rozległe modelu kondycji i wydajności.  Strefowo nadmiarowy i strefowych pojęcia możecie używać ze sobą, aby rozwinąć wglądu i możliwości zarządzania.
+- Jeśli aplikacja ma dwa składniki, takie jak adres IP i maszyna wirtualna z dyskiem zarządzanym i że mają być odpowiednio nadmiarowe strefy i strefy 1, kompleksowa usługa będzie przeżyły awarię strefy 2, strefy 3 lub obie, chyba że strefa 1 nie powiodła się.  Jednak utracisz pewne możliwości, aby przyczynić się do kondycji usługi, jeśli wszystko, co jest zauważalne, jest osiągalne dla frontonu.  Zapoznaj się z bardziej rozbudowanym modelem kondycji i pojemności.  W celu zwiększenia wglądu w dane i łatwość zarządzania mogą być używane koncepcje nadmiarowe stref i strefowo.
 
-- Jeśli aplikacja ma dwa składniki, takie jak strefowo nadmiarowe frontonu modułu równoważenia obciążenia i zestaw skalowania maszyn wirtualnych między strefami w trzech strefach, zasobami w strefach nie będą miały wpływu awarii będzie dostępna, ale może się pogorszyć wydajność usługi end-to-end podczas awarii strefy. Z perspektywy infrastruktury wdrożenia mogą przetrwać awarię strefy co najmniej jednego, i zgłasza to następujące pytania:
-  - Czy wiesz, jak aplikacja przyczyny o takich błędów i pogorszenie wydajności?
-  - Czy muszą mieć zabezpieczenia w usłudze, aby wymusić przejścia w tryb failover w parze regionów, w razie potrzeby?
-  - Jak będzie możesz monitorować, wykrywanie i eliminowanie takiej sytuacji? Dzięki temu można skorzystać z diagnostyki Balancer w warstwie standardowa można rozszerzyć monitorowanie wydajności usługi end-to-end. Należy wziąć pod uwagę, jakie opcje są dostępne i które mogą wymagać powiększenia do pełnego obrazu.
+- Jeśli aplikacja ma dwa składniki, takie jak strefowo nadmiarowe Load Balancer frontonu i wielostrefowy zestaw skalowania maszyn wirtualnych w trzech strefach, zasoby w strefach, których nie dotyczyły awarie, będą dostępne, ale wydajność usługi end-to-end może być obniżona podczas awarii strefy. Z punktu widzenia infrastruktury wdrożenie może obsłużyć co najmniej jedną awarię strefy i w ten sposób zgłasza następujące pytania:
+  - Czy rozumiesz, jak przyczyny Twojej aplikacji dotyczą takich niepowodzeń i wydajności.
+  - Czy musisz mieć zabezpieczenia w usłudze, aby wymusić przejście w tryb failover do pary regionów w razie potrzeby?
+  - Jak będzie można monitorować, wykrywać i ograniczać ten scenariusz? Może być możliwe użycie diagnostyki usługa Load Balancer w warstwie Standardowa, aby rozszerzyć monitorowanie kompleksowej wydajności usługi. Zastanów się, co jest dostępne i co może wymagać rozszerzenia dla kompletnego obrazu.
 
-- Strefy można wprowadzić błędy łatwiej zrozumieć i zawarte.  Jednak błąd stref jest nie różni się od innych awarii, jeśli chodzi o koncepcje, takie jak limity czasu, ponownych prób i algorytmów wycofywania. Mimo że usługa Azure Load Balancer zapewnia strefowo nadmiarowe ścieżki i próbuje odzyskać szybkiego na poziomie pakietów w czasie rzeczywistym, liczba retransmisji lub reestablishments mogą wystąpić podczas wystąpienia awarii i jest ważne zrozumieć, jak aplikacja copes z błędy. Schemat równoważenia obciążenia, będą nadal obowiązywać, ale należy zaplanować do wykonania poniższych czynności:
-  - Gdy strefa nie powiedzie się, czy usługa end-to-end rozumie to i jeśli stan zostanie utracony, jak będzie można odzyskać?
-  - Po powrocie z strefy aplikacja zrozumieć, jak bezpiecznie zbieżne?
+- Strefy mogą sprawiać, że błędy są łatwiejsze do zrozumienia i zawarte.  Jednak awaria strefy nie różni się od innych błędów, gdy wiąże się to z pojęciami, takimi jak limity czasu, ponawianie prób i algorytmy wycofywania. Mimo że Azure Load Balancer zapewnia ścieżki nadmiarowe strefy i próbuje szybko wykonać odzyskiwanie, na poziomie pakietu w czasie rzeczywistym, retransmisje lub Reporty mogą wystąpić podczas wystąpienia awarii i ważne jest, aby zrozumieć, w jaki sposób aplikacja działa powodzenia. Schemat równoważenia obciążenia będzie przeżyje, ale należy zaplanować następujące czynności:
+  - W przypadku niepowodzenia strefy usługa zapewnia kompleksową usługę, a jeśli stan zostanie utracony, w jaki sposób zostanie odzyskany?
+  - Czy w przypadku powracania strefy aplikacja rozumie, jak bezpiecznie przeprowadzić zbieżność?
 
-### <a name="zonalityguidance"></a> Strefowo nadmiarowy i strefowej
+### <a name="zonalityguidance"></a>Strefowo nadmiarowe w stosunku do stref
 
 >[!IMPORTANT]
->Przegląd [strefy dostępności](../availability-zones/az-overview.md) uzyskać pokrewne, w tym wszelkie informacje określonego regionu.
+>Przejrzyj [strefy dostępności](../availability-zones/az-overview.md) Tematy pokrewne, w tym informacje specyficzne dla regionu.
 
-Strefowo nadmiarowe można podać strefy niezależny od i w tej samej opcji odporne na błędy czasu za pomocą pojedynczego adresu IP adresów dla usługi.  Z kolei ona zredukowana złożoność.  Strefowo nadmiarowe również ma mobilności w różnych strefach i mogą być bezpiecznie stosowane na zasoby w każdej strefie.  Jest także przyszłe dowód w regionach bez stref dostępności, które mogą ograniczać zmiany są wymagane, gdy region uzyskiwanie strefy dostępności.  Składnia konfiguracji strefowo nadmiarowe adres IP lub fronton powiedzie się w dowolnym regionie, w tym użytkownicy bez stref dostępności.
+Strefa nadmiarowa może zapewnić strefę niezależny od i jednocześnie odporny na awarię z pojedynczym adresem IP dla usługi.  Może ona zmniejszyć stopień złożoności.  Strefa nadmiarowa również ma mobilność między strefami i może być bezpiecznie używana do zasobów w dowolnej strefie.  Ponadto jest to przyszłe potwierdzenie w regionach bez Strefy dostępności, co może ograniczyć zmiany wymagane po przeprowadzeniu przez region Strefy dostępności.  Składnia konfiguracji nadmiarowego adresu IP lub frontonu jest pomyślna w dowolnym regionie, w tym bez Strefy dostępności.
 
-Strefowy może zapewnić gwarancjami ze strefą udostępnianie LOS kondycję strefy. Kojarzenie strefowych IP adres lub strefowych frontonu modułu równoważenia obciążenia może być pożądane lub uzasadnione atrybut zwłaszcza, jeśli dołączone zasób jest strefowych maszyny Wirtualnej w tej samej strefie.  Być może aplikacja wymaga jawnego wiedzy, o której strefie zasób znajduje się w lub chcesz poprawić dostępność w oddzielnych strefach jawnie.  Możesz udostępnić wielu frontonów strefowych usługi end-to-end, rozproszonych w różnych strefach (czyli na strefy frontonów strefowych dla wielu skalowania w strefowych maszyny wirtualnej ustawia).  I Twoje strefowych frontonów są publicznymi adresami IP, możesz używać tych wiele frontonów strefowych do udostępniania usługi za pomocą [usługi Traffic Manager](../traffic-manager/traffic-manager-overview.md).  Możesz też wiele frontonów strefowych uzyskania na strefy kondycję i wydajność wnioski z innych firm, rozwiązania do monitorowania i udostępnienia ogólnego usługi za pomocą frontonu strefowo nadmiarowe. Należy tylko udostępniania zasobów strefowych z frontonów strefowych wyrównane do tej samej strefie i uniknąć potencjalnie szkodliwe scenariuszy międzystrefowego dla zasobów strefowych.  Zasobach strefowych istnieją tylko w regionach, w której istnieje stref dostępności.
+Strefa może zapewnić jawną gwarancję dla strefy, udostępniając losy z kondycją strefy. Kojarzenie wielostrefowego adresu IP lub strefy Load Balancer frontonu może być pożądanym lub rozsądnym atrybutem szczególnie w przypadku, gdy dołączony zasób jest strefą maszyny wirtualnej w tej samej strefie.  Lub być może Twoja aplikacja wymaga jawnej wiedzy na temat strefy, w której znajduje się zasób, i chcemy jawnie uzyskać informacje o dostępności w oddzielnych strefach.  Możesz uwidocznić wiele frontonów na potrzeby kompleksowych usług rozproszonych w różnych strefach (to jest na frontony strefy stref dla wielu zestawów skalowania maszyn wirtualnych).  A jeśli strefą frontony są publiczne adresy IP, można użyć tych wielu frontonów, aby uwidocznić swoją usługę za pomocą [Traffic Manager](../traffic-manager/traffic-manager-overview.md).  Można też użyć wielu stref frontonów, aby uzyskać informacje o kondycji strefy i wydajności za pomocą rozwiązań do monitorowania innych firm i uwidocznić ogólną usługę za pomocą nadmiarowej strefy. Zasoby strefowe z frontonami stref są wyrównane do tej samej strefy, co pozwala uniknąć potencjalnie szkodliwych scenariuszy między strefami dla zasobów strefowych.  Zasoby strefowe istnieją tylko w regionach, w których istnieją Strefy dostępności.
 
-Nie ma żadnych ogólne wskazówki, jeden z nich jest lepszym rozwiązaniem niż ten drugi, nie wiedząc o tym architektury usługi.
+Nie ma ogólnych wskazówek, które są lepszym wyborem niż pozostałe, bez znajomości architektury usług.
 
 ## <a name="limitations"></a>Ograniczenia
 
-- Podczas gdy danych płaszczyzna jest w pełni strefowo nadmiarowy (o ile nie określono strefowych gwarancji), operacje warstwy kontroli nie są w pełni strefowo nadmiarowe.
+- Gdy płaszczyzna danych jest w pełni strefowo nadmiarowa (chyba że została określona gwarancja Zona), operacje płaszczyzny kontroli nie są w pełni nadmiarowe.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - Dowiedz się więcej o [strefy dostępności](../availability-zones/az-overview.md)
 - Dowiedz się więcej o [usłudze Load Balancer w warstwie Standardowa](load-balancer-standard-overview.md)
-- Dowiedz się, jak [Równoważenie obciążenia maszyn wirtualnych w strefie standardowego modułu równoważenia obciążenia przy użyciu strefowych frontonu](load-balancer-standard-public-zonal-cli.md)
-- Dowiedz się, jak [Równoważenie obciążenia maszyn wirtualnych w strefach przy użyciu standardowego modułu równoważenia obciążenia za pomocą frontonu strefowo nadmiarowy](load-balancer-standard-public-zone-redundant-cli.md)
+- Dowiedz się, jak [równoważyć obciążenie maszyn wirtualnych w strefie przy użyciu usługa Load Balancer w warstwie Standardowa z strefą frontonu](load-balancer-standard-public-zonal-cli.md)
+- Dowiedz się, jak [równoważyć obciążenie maszyn wirtualnych między strefami przy użyciu usługa Load Balancer w warstwie Standardowa ze strefowo nadmiarowy fronton](load-balancer-standard-public-zone-redundant-cli.md)

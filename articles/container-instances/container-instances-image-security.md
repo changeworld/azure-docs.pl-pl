@@ -1,143 +1,143 @@
 ---
-title: Zagadnienia dotyczące zabezpieczeń usługi Azure Container Instances
-description: Zalecenia dotyczące bezpiecznego obrazów i wpisów tajnych dla usługi Azure Container Instances, Ogólne zagadnienia dotyczące zabezpieczeń i dla dowolnej platformy kontenera
+title: Zagadnienia dotyczące zabezpieczeń Azure Container Instances
+description: Zalecenia dotyczące zabezpieczania obrazów i wpisów tajnych Azure Container Instances i ogólne zagadnienia dotyczące zabezpieczeń dla dowolnej platformy kontenera
 services: container-instances
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 04/29/2019
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: dc516277d79e37500e73e1aee6b88c908acb9b1c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 618d3a901698e46760d970f6d4fbc4157c5d2ea3
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943999"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325923"
 ---
-# <a name="security-considerations-for-azure-container-instances"></a>Zagadnienia dotyczące zabezpieczeń dla usługi Azure Container Instances
+# <a name="security-considerations-for-azure-container-instances"></a>Zagadnienia dotyczące zabezpieczeń Azure Container Instances
 
-W tym artykule przedstawiono zagadnienia dotyczące zabezpieczeń dotyczące korzystania z usługi Azure Container Instances można uruchamiać aplikacje kontenera. Tematy obejmują:
+W tym artykule przedstawiono zagadnienia dotyczące zabezpieczeń związane z używaniem Azure Container Instances do uruchamiania aplikacji kontenera. Tematy obejmują:
 
 > [!div class="checklist"]
-> * **Zalecenia dotyczące zabezpieczeń** zarządzania obrazami i wpisów tajnych dla usługi Azure Container Instances
-> * **Zagadnienia dotyczące ekosystemu kontenera** w całym cyklu życia kontenera dla dowolnej platformy kontenera
+> * **Zalecenia dotyczące zabezpieczeń** dotyczące zarządzania obrazami i wpisami tajnymi dla Azure Container Instances
+> * **Zagadnienia dotyczące ekosystemu kontenerów** w całym cyklu życia kontenera dla każdej platformy kontenera
 
-## <a name="security-recommendations-for-azure-container-instances"></a>Zalecenia dotyczące zabezpieczeń dla usługi Azure Container Instances
+## <a name="security-recommendations-for-azure-container-instances"></a>Zalecenia dotyczące zabezpieczeń Azure Container Instances
 
-### <a name="use-a-private-registry"></a>Skorzysta z prywatnego rejestru
+### <a name="use-a-private-registry"></a>Korzystanie z rejestru prywatnego
 
-Kontenery są kompilowane na podstawie obrazów przechowywanych w co najmniej jednym repozytorium. Te repozytoria mogą należeć do rejestru publicznego, takie jak [usługi Docker Hub](https://hub.docker.com), lub do prywatnego rejestru. Przykładem rejestru prywatnego jest rejestr [Docker Trusted Registry](https://docs.docker.com/datacenter/dtr/2.0/), który można zainstalować w środowisku lokalnym lub w wirtualnej chmurze prywatnej. Można również użyć oparte na chmurze usługi prywatnych rejestrów kontenerów, w tym [usługi Azure Container Registry](../container-registry/container-registry-intro.md). 
+Kontenery są kompilowane na podstawie obrazów przechowywanych w co najmniej jednym repozytorium. Te repozytoria mogą należeć do rejestru publicznego, takiego jak [Docker Hub](https://hub.docker.com)lub do rejestru prywatnego. Przykładem rejestru prywatnego jest rejestr [Docker Trusted Registry](https://docs.docker.com/datacenter/dtr/2.0/), który można zainstalować w środowisku lokalnym lub w wirtualnej chmurze prywatnej. Można również korzystać z usług rejestru prywatnego kontenerów opartych na chmurze, w tym [Azure Container Registry](../container-registry/container-registry-intro.md). 
 
-Publicznie dostępny obraz kontenera nie gwarantuje bezpieczeństwa. Obrazy kontenera składają się z wielu warstw oprogramowania, a każda warstwa oprogramowania może mieć luki w zabezpieczeniach. Aby zmniejszyć zagrożenie atakami, powinny przechowywać i pobierać obrazy przy użyciu rejestru prywatnego, takiego jak usługa Azure Container Registry lub Docker Trusted Registry. Tylko oferuje zarządzany rejestr prywatny, usługi Azure Container Registry obsługuje [uwierzytelnianie oparte na jednostce usługi](../container-registry/container-registry-authentication.md) za pośrednictwem usługi Azure Active Directory dla podstawowych przepływów uwierzytelniania. To uwierzytelnianie obejmuje opartej na rolach dostęp tylko do odczytu (ściągać), zapis (push) i uprawnienia właściciela.
+Publicznie dostępny obraz kontenera nie gwarantuje zabezpieczeń. Obrazy kontenerów składają się z wielu warstw oprogramowania, a każda warstwa oprogramowania może mieć luki w zabezpieczeniach. Aby pomóc w zmniejszeniu zagrożenia atakami, należy przechowywać i pobierać obrazy z rejestru prywatnego, takich jak Azure Container Registry lub zaufany rejestr platformy Docker. Oprócz udostępniania rejestru prywatnego, Azure Container Registry obsługuje [uwierzytelnianie oparte na jednostce usługi](../container-registry/container-registry-authentication.md) za pośrednictwem Azure Active Directory na potrzeby przepływów uwierzytelniania podstawowego. To uwierzytelnianie obejmuje dostęp oparty na rolach dla uprawnień tylko do odczytu (ściąganie), zapis (wypychanie) i właściciela.
 
 ### <a name="monitor-and-scan-container-images"></a>Monitorowanie i skanowanie obrazów kontenerów
 
-Zabezpieczenia i monitorowania takich jak [Twistlock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) i [Aqua Security](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) są dostępne za pośrednictwem portalu Azure Marketplace. Można ich użyć do skanowania obrazów kontenerów w rejestrze prywatnym oraz identyfikowania potencjalnych luk w zabezpieczeniach. Należy zrozumieć głębię skanowanie, aby zapewnić różne rozwiązania. 
+Rozwiązania do monitorowania i skanowania zabezpieczeń, takie jak [zabezpieczenia](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) [TwistLock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) i akwamaryna, są dostępne w portalu Azure Marketplace. Można ich użyć do skanowania obrazów kontenerów w rejestrze prywatnym i identyfikowania potencjalnych luk w zabezpieczeniach. Ważne jest zapoznanie się z głębokością skanowania, które oferuje różne rozwiązania. 
 
 ### <a name="protect-credentials"></a>Ochrona poświadczeń
 
-Kontenery może zostać rozłożona między wiele klastrów i regiony platformy Azure. Dlatego należy zabezpieczyć poświadczenia są wymagane dla nazwy logowania lub dostęp do interfejsu API, takie jak hasła lub tokenów. Upewnij się, że tylko uprzywilejowane użytkownicy mają dostęp do tych kontenerów przesyłanych i magazynowanych. Spis wszystkich wpisów tajnych poświadczeń, a następnie wymagają deweloperzy mogą używać pojawiających się narzędzia do zarządzania wpisami tajnymi, które są przeznaczone dla platform kontenerowych.  Upewnij się, że Twoje rozwiązanie zawiera szyfrowanymi bazami danych, szyfrowania TLS do wpisów tajnych danych przesyłania i najniższych [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md). [Usługa Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md) to usługa w chmurze, która zabezpiecza klucze szyfrowania i wpisy tajne (takie jak certyfikaty, parametry połączenia i hasła) dla konteneryzowanych aplikacji. Ponieważ te dane są wrażliwe i krytyczne dla działania, bezpieczny dostęp do Twojego klucza magazyny tak, aby tylko autoryzowane aplikacje i użytkownicy mogą uzyskiwać do nich dostęp.
+Kontenery mogą być rozłożone między kilka klastrów i regionów świadczenia usługi Azure. W związku z tym należy zabezpieczyć poświadczenia wymagane do logowania lub dostępu do interfejsu API, takie jak hasła lub tokeny. Upewnij się, że tylko użytkownicy uprzywilejowani mogą uzyskiwać dostęp do tych kontenerów podczas przesyłania i przechowywania. Wszystkie wpisy tajne poświadczeń, a następnie wymagają, aby deweloperzy korzystali z nowych narzędzi do zarządzania kluczami tajnymi, które są przeznaczone dla platform kontenerów.  Upewnij się, że Twoje rozwiązanie obejmuje zaszyfrowane bazy danych, szyfrowanie TLS dla danych tajnych w tranzycie oraz [kontrolę dostępu opartą na rolach](../role-based-access-control/overview.md)najniższymi uprawnieniami. [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md) to usługa w chmurze, która zabezpiecza klucze szyfrowania i wpisy tajne (takie jak certyfikaty, parametry połączeń i hasła) dla aplikacji kontenerowych. Ponieważ te dane są poufne i mają krytyczne znaczenie dla działania firmy, bezpieczny dostęp do magazynów kluczy, tak aby tylko autoryzowane aplikacje i użytkownicy mieli do nich dostęp.
 
-## <a name="considerations-for-the-container-ecosystem"></a>Zagadnienia dotyczące ekosystemu kontenera
+## <a name="considerations-for-the-container-ecosystem"></a>Zagadnienia dotyczące ekosystemu kontenerów
 
-Następujące środki bezpieczeństwa, zaimplementowana prawidłowo i efektywnie, zarządzane mogą pomóc w bezpieczny i ochrona ekosystemu usługi kontenera. Te środki są stosowane w całym cyklu życia kontenera, od projektowania do wdrożenia produkcyjnego i szeroką gamę platform koordynatorów kontenerów, hosty i. 
+Następujące miary zabezpieczeń, zaimplementowane prawidłowo i zarządzane, mogą pomóc w zabezpieczeniu i ochronie ekosystemu kontenerów. Te środki są stosowane w całym cyklu życia kontenera, od programowania przy użyciu wdrożenia produkcyjnego oraz do zakresu koordynatorów kontenerów, hostów i platform. 
 
-### <a name="use-vulnerability-management-as-part-of-your-container-development-lifecycle"></a>Użyj Zarządzanie lukami w zabezpieczeniach w ramach cyklu wytwarzania oprogramowania kontenera 
+### <a name="use-vulnerability-management-as-part-of-your-container-development-lifecycle"></a>Używanie zarządzania lukami w ramach cyklu życia projektowania kontenera 
 
-Za pomocą zarządzania skuteczne luk w zabezpieczeniach podczas cyklu tworzenia oprogramowania w kontenerze, możesz zwiększyć kolizję, możesz zidentyfikować i rozwiązać problemy dotyczące zabezpieczeń, zanim staną się bardziej poważny problem. 
+Przy użyciu efektywnego zarządzania lukami w całym cyklu tworzenia kontenera można poprawić szanse, które identyfikują i rozwiązują problemy dotyczące zabezpieczeń, zanim staną się bardziej poważnymi problemami. 
 
-### <a name="scan-for-vulnerabilities"></a>Skanowanie w poszukiwaniu luk w zabezpieczeniach 
+### <a name="scan-for-vulnerabilities"></a>Skanuj w poszukiwaniu luk w zabezpieczeniach 
 
-Nowych luk w zabezpieczeniach są odnajdywane cały czas, dlatego skanowanie w poszukiwaniu i identyfikowanie luk w zabezpieczeniach jest ciągły proces. Zestawowi wyszukiwaniu luk w zabezpieczeniach w całym cyklu życia kontenera:
+Nowe luki są wykrywane przez cały czas, dlatego skanowanie w poszukiwaniu i identyfikowanie luk w zabezpieczeniach jest procesem ciągłym. Uwzględnij skanowanie w całym cyklu życia kontenera:
 
-* Jako ostatecznego wyboru w potoku tworzenia aplikacji należy przeprowadzić skanowanie luk w zabezpieczeniach kontenerów, przed wypchnięciem obrazy do publicznego lub prywatnego rejestru. 
-* Przejdź do skanowania obrazów kontenerów w rejestrze, aby zidentyfikować wszelkie wady jakiś sposób zostały pominięte podczas tworzenia i rozwiązać wszelkie nowo odkrytych luk w zabezpieczeniach, które mogą istnieć w kodzie używanym w obrazów kontenerów.  
+* W celu ostatecznego sprawdzenia potoku programistycznego należy przeprowadzić skanowanie w poszukiwaniu luk w zabezpieczeniach kontenerów przed ich wypchnięciem do rejestru publicznego lub prywatnego. 
+* Kontynuuj skanowanie obrazów kontenerów w rejestrze, aby identyfikować wszelkie wady, które były w jakiś sposób pominięte podczas opracowywania i rozwiązywać wszelkie nowo wykryte luki w zabezpieczeniach, które mogą istnieć w kodzie używanym w obrazach kontenera.  
 
-### <a name="map-image-vulnerabilities-to-running-containers"></a>Mapy obrazu luki w zabezpieczeniach do uruchamiania kontenerów 
+### <a name="map-image-vulnerabilities-to-running-containers"></a>Zamapuj luki w zabezpieczeniach obrazu do uruchomionych kontenerów 
 
-Musisz mieć oznacza luk w zabezpieczeniach mapowania identyfikowane w obrazów kontenera do uruchamiania kontenerów, dzięki czemu problemy z zabezpieczeniami można zminimalizować lub rozwiązane.  
+Konieczne jest zamapowanie luk w zabezpieczeniach, które zostały zidentyfikowane w obrazach kontenera do uruchamiania kontenerów, dzięki czemu problemy z zabezpieczeniami mogą być ograniczane lub rozwiązywane.  
 
-### <a name="ensure-that-only-approved-images-are-used-in-your-environment"></a>Upewnij się, że tylko obrazy zatwierdzone są używane w danym środowisku 
+### <a name="ensure-that-only-approved-images-are-used-in-your-environment"></a>Upewnij się, że w danym środowisku są używane tylko zatwierdzone obrazy 
 
-Istnieje wystarczająca ilość zmian i zmienności należący do ekosystemu kontenera, bez udzielania praw nieznany także z kontenerami. Zezwala na tylko zatwierdzonego kontenera obrazów. Mieć narzędzi i procesów w celu monitorowania i uniemożliwić korzystanie z obrazów kontenerów niezatwierdzonych. 
+W ekosystemie kontenerów jest wystarczająca ilość zmian i lotnych danych bez zezwolenia na korzystanie z nieznanych kontenerów. Zezwalaj tylko na zatwierdzone obrazy kontenerów. Mają narzędzia i procesy, które mają być monitorowane pod kątem i uniemożliwiają korzystanie z niezatwierdzonych obrazów kontenerów. 
 
-Skutecznym sposobem zmniejszyć obszar narażony na ataki co uniemożliwia wprowadzanie błędów krytycznych przez deweloperów jest sterowanie przepływem obrazów kontenera do swojego środowiska projektowego. Na przykład może być oficjalnie jednym dystrybucję systemu Linux jako obraz podstawowy, zalecane jest zwarte (Alpine lub CoreOS zamiast Ubuntu), aby zminimalizować narażony na wypadek potencjalnych ataków. 
+Efektywny sposób zmniejszenia obszaru ataków i uniemożliwianie deweloperom wykonywania krytycznych pomyłek w zabezpieczeniach polega na kontroli przepływu obrazów kontenera w środowisku deweloperskim. Na przykład można zastanowić się, że jedna dystrybucja systemu Linux jest oparta na podstawowym obrazie, najlepiej z jedną z nich, która jest Leane (Alpine lub CoreOS zamiast Ubuntu), aby zminimalizować powierzchnię potencjalnych ataków. 
 
-Obraz podpisywania lub odcisków może zapewnić łańcuch nadzoru, który można zweryfikować integralności kontenerów. Na przykład usługi Azure Container Registry obsługuje platformy Docker [zawartości zaufania](https://docs.docker.com/engine/security/trust/content_trust) modelu, który umożliwia wydawców obrazów się obrazy, które zostaną wypchnięte do rejestru, a obraz w konsumentach napisanych ściąganie tylko podpisane obrazów.
+Podpisywanie obrazów lub odciski palców mogą zapewnić łańcuch opieki, który umożliwia zweryfikowanie integralności kontenerów. Na przykład Azure Container Registry obsługuje model [zaufania zawartości](https://docs.docker.com/engine/security/trust/content_trust) platformy Docker, który umożliwia wydawcom obrazów podpisywanie obrazów, które są przekazywane do rejestru, oraz odbiorców obrazów do ściągania tylko podpisanych obrazów.
 
-### <a name="permit-only-approved-registries"></a>Zezwalanie tylko na zatwierdzonych rejestrów 
+### <a name="permit-only-approved-registries"></a>Zezwalaj tylko na zatwierdzone rejestry 
 
-Zapewnienie, że środowisko używa tylko obrazy zatwierdzone przez rozszerzenie jest tylko używania rejestry kontenerów zatwierdzone. Wymaganie użycia rejestry kontenerów zatwierdzonych redukuje narażenie na ryzyko, ograniczając ryzyko wprowadzenia nieznany luk w zabezpieczeniach lub problemy z zabezpieczeniami. 
+Rozszerzenie zapewniające, że środowisko używa tylko zatwierdzonych obrazów, jest dozwolone tylko w przypadku korzystania z zatwierdzonych rejestrów kontenerów. Wymaganie korzystania z zatwierdzonych rejestrów kontenerów zmniejsza narażenie na ryzyko przez ograniczenie możliwości wprowadzenia nieznanych luk w zabezpieczeniach lub problemów z zabezpieczeniami. 
 
-### <a name="ensure-the-integrity-of-images-throughout-the-lifecycle"></a>Integralność obrazów w całym cyklu życia 
+### <a name="ensure-the-integrity-of-images-throughout-the-lifecycle"></a>Zapewnij integralność obrazów w całym cyklu życia 
 
-Częścią zarządzania zabezpieczeniami w całym cyklu życia kontenera jest integralność obrazów kontenera w rejestrze i jak są one zmieniane ani wdrożone do środowiska produkcyjnego. 
+Zarządzanie zabezpieczeniami w całym cyklu życia kontenera polega na zapewnieniu spójności obrazów kontenerów w rejestrze i zmianie ich lub wdrożeniu w środowisku produkcyjnym. 
 
-* Nie wolno obrazy z lukami w zabezpieczeniach, nawet drobnymi, do uruchamiania w środowisku produkcyjnym. W idealnym przypadku wszystkie obrazy wdrożone w środowisku produkcyjnym powinny być zapisane w rejestrze prywatnym dostępny wybierz kilka. Zachowaj liczbę obrazów produkcyjnych jest mała, aby upewnić się, że mogą oni efektywnie zarządzać.
+* Obrazy zawierające luki w zabezpieczeniach, nawet pomocnicze, nie mogą być uruchamiane w środowisku produkcyjnym. W idealnym przypadku wszystkie obrazy wdrożone w środowisku produkcyjnym powinny być zapisane w rejestrze prywatnym dostępnym dla wybranych kilku. Zachowaj niewielką liczbę obrazów produkcyjnych, aby upewnić się, że mogą one być efektywnie zarządzane.
 
-* Ponieważ trudno jest wskazać źródło oprogramowania z publicznie dostępny obraz kontenera, kompilowanie obrazów na podstawie źródła w celu zidentyfikowania źródła warstwy. Gdy w samodzielnie kompilowanym obrazie kontenera pojawi się luka w zabezpieczeniach, klienci będą mogli szybciej znaleźć ścieżkę do rozwiązania. Przy użyciu obrazu publicznego Klienci musieliby znaleźć katalogu głównego obrazu, aby go naprawić, lub uzyskać inny zabezpieczony obraz od wydawcy. 
+* Ponieważ trudno jest wskazać źródło oprogramowania z publicznie dostępnego obrazu kontenera, Utwórz obrazy ze źródła, aby zapewnić wiedzę o pochodzeniu warstwy. Gdy w samodzielnie kompilowanym obrazie kontenera pojawi się luka w zabezpieczeniach, klienci będą mogli szybciej znaleźć ścieżkę do rozwiązania. W przypadku obrazu publicznego klienci chcą znaleźć katalog główny obrazu publicznego, aby rozwiązać ten problem, lub uzyskać inny bezpieczny obraz od wydawcy. 
 
-* Dokładnie zeskanowany obraz wdrożony w środowisku produkcyjnym nie jest gwarantowana powinny być zawsze aktualne, okres istnienia aplikacji. Luki w zabezpieczeniach można zgłaszać dla warstw obrazu, które nie były wcześniej znane lub pojawiły się po wdrożeniu produkcyjnym. 
+* Starannie skanowany obraz wdrożony w środowisku produkcyjnym nie gwarantuje Aktualności przez okres istnienia aplikacji. Luki w zabezpieczeniach można zgłaszać dla warstw obrazu, które nie były wcześniej znane lub pojawiły się po wdrożeniu produkcyjnym. 
 
-  Przeprowadzaj okresowe inspekcje obrazów wdrożonych w środowisku produkcyjnym do identyfikowania obrazów, które są nieaktualne lub nie zostały zaktualizowane w chwilę. Możesz użyć metody wdrożenie niebieski zielony i mechanizmów uaktualniania stopniowego Aby aktualizować obrazy kontenerów bez przestojów. Skanowanie obrazów za pomocą narzędzi opisanych w poprzedniej sekcji. 
+  Okresowe inspekcje obrazów wdrożonych w środowisku produkcyjnym w celu zidentyfikowania obrazów, które są nieaktualne lub nie zostały zaktualizowane w czasie. Aby aktualizować obrazy kontenerów bez przestojów, można używać wbudowanych metod wdrażania i stopniowego uaktualniania. Obrazy można skanować przy użyciu narzędzi opisanych w poprzedniej sekcji. 
 
-* Potok ciągłej integracji (CI) za pomocą zabezpieczenia zintegrowane skanowanie, aby skompilować obrazy bezpieczny i odesłać je do rejestru prywatnego. Skanowanie luk w zabezpieczeniach wbudowane w rozwiązaniu CI gwarantuje, że obrazy, które przejdą wszystkie testy, zostaną wypchnięte do rejestru prywatnego, z poziomu którego odbywa się wdrażanie obciążeń produkcyjnych. 
+* Użyj potoku ciągłej integracji z funkcją zintegrowanego skanowania zabezpieczeń, aby utworzyć bezpieczne obrazy i wypchnąć je do rejestru prywatnego. Skanowanie luk w zabezpieczeniach wbudowane w rozwiązaniu CI gwarantuje, że obrazy, które przejdą wszystkie testy, zostaną wypchnięte do rejestru prywatnego, z poziomu którego odbywa się wdrażanie obciążeń produkcyjnych. 
 
-  Błąd potoku CI zapewnia, że narażony obrazy nie zostaną wypchnięte do rejestru prywatnego, który jest używany dla wdrożeń produkcyjnych. Możliwe jest również Automatyzowanie skanowania w przypadku znacznej liczby obrazów zabezpieczeń obrazów. W przeciwnym razie proces ręcznego przeprowadzania inspekcji obrazów w celu wyszukania luk w zabezpieczeniach może być niezwykle żmudny i narażony na błędy. 
+  Awaria potoku CI zapewnia, że zagrożone obrazy nie są przekazywane do rejestru prywatnego używanego do wdrożeń obciążeń produkcyjnych. Automatyzuje także skanowanie zabezpieczeń obrazów, jeśli istnieje znaczna liczba obrazów. W przeciwnym razie proces ręcznego przeprowadzania inspekcji obrazów w celu wyszukania luk w zabezpieczeniach może być niezwykle żmudny i narażony na błędy. 
 
-### <a name="enforce-least-privileges-in-runtime"></a>Wymuszanie co najmniej uprawnienia w środowisku uruchomieniowym 
+### <a name="enforce-least-privileges-in-runtime"></a>Wymuszaj najmniejsze uprawnienia w czasie wykonywania 
 
-Pojęcie minimalnych uprawnień jest najlepszym rozwiązaniem zabezpieczeń podstawowych i ma zastosowanie również do kontenerów. Gdy luki zazwyczaj daje osobie atakującej uzyskanie dostępu i uprawnień takie same ze złamanymi zabezpieczeniami aplikacji lub procesu. Zagwarantowanie, że kontenery pracują z najniższymi uprawnieniami, i dostępu, które trzeba wykonać zadanie redukuje narażenie na ryzyko. 
+Pojęcie najniższych uprawnień to podstawowe najlepsze rozwiązanie w zakresie zabezpieczeń, które ma zastosowanie również do kontenerów. Gdy jest wykorzystywana Luka w zabezpieczeniach, zapewnia ona zazwyczaj dostęp do osoby atakującej i uprawnienia takie same jak w przypadku zagrożonych aplikacji lub procesów. Upewnienie się, że kontenery działają z najniższymi uprawnieniami i dostęp wymagany do wykonania zadania zmniejsza ryzyko. 
 
-### <a name="reduce-the-container-attack-surface-by-removing-unneeded-privileges"></a>Zmniejsz obszar narażony na ataki kontenera przez usunięcie niepotrzebnych uprawnień 
+### <a name="reduce-the-container-attack-surface-by-removing-unneeded-privileges"></a>Zmniejszenie podatności na ataki z kontenera przez usunięcie niepotrzebnych uprawnień 
 
-Można także zminimalizować potencjalny obszar ataków, usuwając wszystkie nieużywane i niepotrzebne procesy lub uprawnienia z kontener środowiska uruchomieniowego. Uprzywilejowane kontenery są uruchamiane jako użytkownik główny. Jeśli złośliwy użytkownik lub Obciążenie specjalne w kontenerze uprzywilejowanego, kontener następnie działa jako główny w tym systemie.
+Możesz również zminimalizować potencjalną podatność na ataki, usuwając wszystkie nieużywane lub niepotrzebne procesy lub uprawnienia z środowiska uruchomieniowego kontenera. Kontenery uprzywilejowane są uruchamiane jako główne. Jeśli złośliwy użytkownik lub obciążenie będzie wyjść z uprzywilejowanego kontenera, kontener zostanie uruchomiony jako element główny w tym systemie.
 
-### <a name="whitelist-files-and-executables-that-the-container-is-allowed-to-access-or-run"></a>Lista dozwolonych plików i plików wykonywalnych, które kontenera będzie mógł uzyskać dostęp, lub uruchomić 
+### <a name="whitelist-files-and-executables-that-the-container-is-allowed-to-access-or-run"></a>Dozwolonych i pliki wykonywalne, do których kontener może uzyskać dostęp lub 
 
-Zmniejszenie liczby zmiennych lub elementy nieznane pomaga utrzymać stabilne i niezawodne środowisko. Ograniczanie kontenerów, dzięki czemu mogą uzyskiwać dostęp do lub Uruchom tylko Weryfikacja wstępnego zatwierdzenia lub na liście dozwolonych plików i plików wykonywalnych jest sprawdzonym metoda ograniczania narażenia na zagrożenia.  
+Zmniejszenie liczby zmiennych lub nieznanych ułatwia zachowanie stabilnego, niezawodnego środowiska. Ograniczanie kontenerów, dzięki czemu mogą uzyskać dostęp do lub uruchamiać tylko pliki, które są zatwierdzone lub listy dozwolonych, oraz plików wykonywalnych jest sprawdzoną metodą ograniczania narażenia na ryzyko.  
 
-Znacznie łatwiej zarządzać listą dozwolonych, gdy jest stosowana od samego początku. Lista dozwolonych jest miarą kontrolę i możliwości zarządzania dowiesz się, jakie pliki i pliki wykonywalne są wymagane do poprawnego działania aplikacji. 
+Jest to znacznie prostsze zarządzanie dozwolonych, gdy jest on zaimplementowany od początku. Dozwolonych zapewnia miarę kontroli i możliwości zarządzania, ponieważ dowiesz się, jakie pliki i elementy wykonywalne są wymagane do poprawnego działania aplikacji. 
 
-Listy dozwolonych nie tylko zmniejsza możliwości zaatakowania, ale również zapewnia plan bazowy dla anomalie i zapobiec przypadki użycia "hałaśliwego sąsiada" i scenariuszach związanych z kontenerem podgrupach. 
+Dozwolonych nie tylko zmniejsza powierzchnię ataku, ale może także zapewnić podstawę dla anomalii i uniemożliwiać użycie przypadków użycia "sąsiadów" i scenariuszy kontenerów zagadnień. 
 
-### <a name="enforce-network-segmentation-on-running-containers"></a>Wymuszanie segmentacji sieci na uruchamianie kontenerów  
+### <a name="enforce-network-segmentation-on-running-containers"></a>Wymuś segmentację sieci na uruchomionych kontenerach  
 
-Aby lepiej chronić kontenerów w jednej podsieci przed zagrożeniami bezpieczeństwa w innej podsieci, utrzymania segmentacji sieci (lub segmentacji nano) lub podziału między uruchomionych kontenerów. Obsługa segmentacji sieci mogą być również konieczne do korzystania z kontenerów w branżach, które są wymagane do spełnienia potwierdzenia zgodności, zawiera.  
+Aby chronić kontenery w jednej podsieci przed zagrożeniami związanymi z bezpieczeństwem w innej podsieci, należy zachować segmentację sieci (lub segmentację nano) lub rozdzielenie między uruchomionymi kontenerami. Obsługa segmentacji sieci może być również niezbędna do korzystania z kontenerów w branżach, które są wymagane do spełnienia mandatów dotyczących zgodności.  
 
-Na przykład narzędzie partnera [Akwamaryna](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) zapewnia zautomatyzowanej procedury segmentacji nano. Akwamaryna monitoruje działania w sieci kontenera w środowisku uruchomieniowym. Określa on wszystkich połączeń sieciowych dla ruchu przychodzącego i wychodzącego do/z innych kontenerów, usługi, adresy IP i publicznej sieci internet. Segmentacji nano jest tworzony automatycznie w oparciu o monitorowanym ruchu. 
+Na przykład narzędzie partnerskie [akwamaryna](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) zapewnia zautomatyzowane podejście do segmentacji nano. Akwamaryna monitoruje aktywność sieci kontenera w środowisku uruchomieniowym. Identyfikuje wszystkie przychodzące i wychodzące połączenia sieciowe do/z innych kontenerów, usług, adresów IP i publicznego Internetu. Nano-segmentacja jest automatycznie tworzona na podstawie monitorowanego ruchu. 
 
-### <a name="monitor-container-activity-and-user-access"></a>Monitorowanie kontenera działania oraz dostępu użytkownika 
+### <a name="monitor-container-activity-and-user-access"></a>Monitorowanie aktywności kontenera i dostępu użytkowników 
 
-Podobnie jak w przypadku dowolnego środowiska IT powinny stale monitorować działania oraz dostępu użytkownika ekosystemem kontenera w celu szybkiego identyfikowania wszelkich podejrzanych lub złośliwego działania. Platforma Azure udostępnia rozwiązań, w tym do monitorowania kontenerów:
+Podobnie jak w przypadku każdego środowiska IT, należy spójnie monitorować aktywność i dostęp użytkowników do ekosystemu kontenerów, aby szybko identyfikować podejrzane lub złośliwe działania. Platforma Azure oferuje rozwiązania do monitorowania kontenerów, w tym:
 
-* [Usługa Azure Monitor dla kontenerów](../azure-monitor/insights/container-insights-overview.md) do monitorowania wydajności obciążeń wdrożonych do rozwiązania Kubernetes środowisk hostowanych w usłudze Azure Kubernetes Service (AKS). Usługa Azure Monitor dla kontenerów zapewnia widoczność wydajności na zbieranie pamięci i procesora metryk z kontrolerów, węzły i kontenerów, które są dostępne w usłudze Kubernetes za pomocą interfejsu API metryki. 
+* [Azure monitor kontenerów](../azure-monitor/insights/container-insights-overview.md) do monitorowania wydajności obciążeń wdrożonych w środowiskach Kubernetes hostowanych w usłudze Azure Kubernetes Service (AKS). Usługa Azure Monitor dla kontenerów zapewnia widoczność wydajności na zbieranie pamięci i procesora metryk z kontrolerów, węzły i kontenerów, które są dostępne w usłudze Kubernetes za pomocą interfejsu API metryki. 
 
-* [Rozwiązanie do monitorowania kontenerów Azure](../azure-monitor/insights/containers.md) ułatwia wyświetlanie oraz zarządzanie nimi inne platformy Docker i Windows hostach kontenerów w jednej lokalizacji. Na przykład:
+* [Rozwiązanie do monitorowania kontenerów platformy Azure](../azure-monitor/insights/containers.md) ułatwia wyświetlanie innych hostów platformy Docker i kontenera systemu Windows oraz zarządzanie nimi w jednej lokalizacji. Na przykład:
 
-  * Wyświetl szczegółowe informacje inspekcji, które zawiera polecenia używany z kontenerami. 
-  * Rozwiązywanie problemów z kontenerów, wyświetlania i przeszukiwania scentralizowanych dzienników bez konieczności zdalnie wyświetlić hostów platformy Docker lub Windows.  
-  * Znajdź kontenerów, które mogą być hałas i korzystanie z nich nadmiar zasobów na hoście.
-  * Wyświetl scentralizowane procesora CPU, pamięci, magazynu i informacje użycia i wydajności sieci dla kontenerów.  
+  * Wyświetlanie szczegółowych informacji o inspekcji, w których są wyświetlane polecenia używane z kontenerami. 
+  * Rozwiązywanie problemów z kontenerami przez wyświetlanie i wyszukiwanie scentralizowanych dzienników bez konieczności zdalnego wyświetlania hostów platformy Docker lub Windows.  
+  * Znajdź kontenery, które mogą być zakłóceniami i zużywać nadmierne zasoby na hoście.
+  * Wyświetlanie informacji o scentralizowanym użyciu procesora CPU, pamięci, magazynu i sieci oraz wydajności dla kontenerów.  
 
-  Rozwiązanie obsługuje koordynatorów kontenerów, w tym Docker Swarm, DC/OS, niezarządzanych Kubernetes, usługi Service Fabric i Red Hat OpenShift. 
+  Rozwiązanie obsługuje koordynatorów kontenerów, w tym Docker Swarm, DC/OS, niezarządzane Kubernetes, Service Fabric i Red Hat OpenShift. 
 
-### <a name="monitor-container-resource-activity"></a>Monitorowanie działań związanych z zasobów kontenera 
+### <a name="monitor-container-resource-activity"></a>Monitorowanie aktywności zasobów kontenera 
 
-Monitoruj swoją aktywność zasobów, takich jak pliki, sieci i innych zasobów, uzyskujących dostęp do kontenerów. Monitorowanie aktywności zasobów i zużycia przydaje się do monitorowania wydajności i ze względów bezpieczeństwa. 
+Monitoruj aktywność zasobów, na przykład pliki, sieci i inne zasoby, do których mają dostęp kontenery. Monitorowanie wydajności i zużycia zasobów jest przydatne zarówno w przypadku monitorowania sprawności, jak i środków bezpieczeństwa. 
 
-[Usługa Azure Monitor](../azure-monitor/overview.md) zapewnia podstawowe funkcje monitorowania usług systemu Azure, umożliwiając zbierania metryk, dzienników aktywności i dzienników diagnostycznych. Na przykład dziennik aktywności informuje o utworzeniu lub zmodyfikowaniu nowych zasobów. 
+[Azure monitor](../azure-monitor/overview.md) umożliwia podstawowe monitorowanie usług platformy Azure, umożliwiając zbieranie metryk, dzienników aktywności i dzienników diagnostycznych. Na przykład dziennik aktywności informuje o utworzeniu lub zmodyfikowaniu nowych zasobów. 
 
-Są dostępne metryki, które dostarczają statystyki wydajności dla różnych zasobów, a nawet systemu operacyjnego w maszynie wirtualnej. Można wyświetlić te dane za pomocą jednego z eksploratorów w witrynie Azure Portal i utworzyć alerty na podstawie tych metryk. Usługa Azure Monitor udostępnia metryki najszybszy potoku (5 minut do 1 minuty), dlatego powinien być używany czas ma istotne znaczenie alertów i powiadomień. 
+Są dostępne metryki, które dostarczają statystyki wydajności dla różnych zasobów, a nawet systemu operacyjnego w maszynie wirtualnej. Można wyświetlić te dane za pomocą jednego z eksploratorów w witrynie Azure Portal i utworzyć alerty na podstawie tych metryk. Azure Monitor zapewnia najszybszy potok metryk (5 minut w dół do 1 minuty), dlatego należy go używać do alertów i powiadomień o krytycznym czasie. 
 
-### <a name="log-all-container-administrative-user-access-for-auditing"></a>Zaloguj się kontenera dostęp administratora do przeprowadzania inspekcji 
+### <a name="log-all-container-administrative-user-access-for-auditing"></a>Rejestruj wszystkich użytkowników administracyjnych kontenera do inspekcji 
 
-Obsługa dziennika inspekcji dokładne dostęp administracyjny do ekosystemu kontenerów, rejestr kontenerów i obrazów kontenerów. Te dzienniki mogą być wymagane na potrzeby inspekcji i będą przydatne jako dowód śledczej po wszystkimi zdarzeniami zabezpieczeń. Możesz użyć [rozwiązanie do monitorowania kontenerów Azure](../azure-monitor/insights/containers.md) do osiągnięcia tego celu. 
+Należy zachować dokładną historię inspekcji dostępu administracyjnego do ekosystemu kontenerów, rejestru kontenerów i obrazów kontenerów. Te dzienniki mogą być niezbędne do celów inspekcji i będą przydatne jako dowód śledczej po każdym zdarzeniu zabezpieczeń. Aby osiągnąć ten cel, możesz użyć [rozwiązania do monitorowania kontenerów platformy Azure](../azure-monitor/insights/containers.md) . 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o zarządzaniu kontenera luk w zabezpieczeniach dzięki rozwiązaniom [Twistlock](https://www.twistlock.com/solutions/microsoft-azure-container-security/) i [Aqua Security](https://www.aquasec.com/solutions/azure-container-security/).
+* Dowiedz się więcej o zarządzaniu usterkami kontenera przy użyciu rozwiązań z [TwistLock](https://www.twistlock.com/solutions/microsoft-azure-container-security/) i [akwamaryna Security](https://www.aquasec.com/solutions/azure-container-security/).
 
-* Dowiedz się więcej o [zabezpieczenia kontenerów na platformie Azure](https://azure.microsoft.com/resources/container-security-in-microsoft-azure/).
+* Dowiedz się więcej o [zabezpieczeniach kontenerów na platformie Azure](https://azure.microsoft.com/resources/container-security-in-microsoft-azure/).

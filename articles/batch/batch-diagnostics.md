@@ -1,10 +1,10 @@
 ---
-title: Metryki, alerty i dzienniki diagnostyczne — Azure Batch | Dokumentacja firmy Microsoft
+title: Metryki, alerty i dzienniki diagnostyczne — Azure Batch | Microsoft Docs
 description: Rejestrowanie i analizowanie zdarzeń dziennik diagnostyczny dla zasobów konta usługi Azure Batch, np. pulami i zadaniami podrzędnymi.
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: e1fc405951789305b0df86fd0f7b91890fb45c06
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 63d0196609e432b081e91a49b5b1410431223632
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242635"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323623"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Metryki usługi Batch, alerty i dzienniki diagnostyczne oceny i monitorowania
 
@@ -29,7 +29,7 @@ W tym artykule wyjaśniono, jak monitorować konto usługi Batch przy użyciu fu
 
 ## <a name="batch-metrics"></a>Metryki usługi Batch
 
-Metryki są danych telemetrycznych platformy Azure (nazywanych również liczników wydajności) wyemitowane przez Twoich zasobów platformy Azure, które są używane przez usługę Azure Monitor. Przykładowe metryki na koncie usługi Batch obejmują: Pool Create zdarzeń, liczba węzłów o niskim priorytecie i zadanie ukończenia zdarzenia. 
+Metryki są danych telemetrycznych platformy Azure (nazywanych również liczników wydajności) wyemitowane przez Twoich zasobów platformy Azure, które są używane przez usługę Azure Monitor. Przykładowe metryki na koncie wsadowym obejmują: Zdarzenia tworzenia puli, liczba węzłów o niskim priorytecie oraz zdarzenia ukończenia zadania. 
 
 Zobacz [Lista obsługiwanych metryk usługi Batch](../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts).
 
@@ -37,7 +37,7 @@ Metryki są:
 
 * Domyślnie każde konto usługi Batch bez dodatkowej konfiguracji
 * Generowane co minutę
-* Nie jest automatycznie zachowywane, ale ma 30-dniową historię stopniowe. Jednak można utrwalić metryki działań w ramach rejestrowania diagnostycznego.
+* Nie jest automatycznie zachowywane, ale ma 30-dniową historię stopniowe. Możesz utrwalać metryki działania w ramach rejestrowania diagnostycznego.
 
 ### <a name="view-metrics"></a>Wyświetlanie metryk
 
@@ -91,7 +91,7 @@ Inne opcjonalne miejsca docelowe dla dzienników diagnostycznych:
 
 * Stream zdarzeń dzienniki diagnostyczne usługi Batch do [usługi Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md). Usługa Event Hubs pozyskiwać miliony zdarzeń na sekundę, które można przetworzyć i zapisać za pomocą dowolnego dostawcy analiz w czasie rzeczywistym. 
 
-* Wysyłanie dzienników diagnostycznych do [dzienniki usługi Azure Monitor](../log-analytics/log-analytics-overview.md), którym można analizować je lub wyeksportować je do analizy w usłudze Power BI lub programie Excel.
+* Wyślij dzienniki diagnostyczne do [dzienników Azure monitor](../log-analytics/log-analytics-overview.md), gdzie można je analizować lub wyeksportować do analizy w programie Power BI lub Excel.
 
 > [!NOTE]
 > Może pociągnąć za sobą dodatkowe koszty przechowywania lub przetwarzania danych dzienników diagnostycznych z usługami platformy Azure. 
@@ -101,7 +101,7 @@ Inne opcjonalne miejsca docelowe dla dzienników diagnostycznych:
 
 1. W portalu, kliknij przycisk **wszystkich usług** > **konta usługi Batch**, a następnie kliknij nazwę swojego konta usługi Batch.
 2. W obszarze **monitorowanie**, kliknij przycisk **dzienniki diagnostyczne** > **Włącz diagnostykę**.
-3. W **ustawień diagnostycznych**, wprowadź nazwę dla ustawienia i wybierz miejsce docelowe dziennika (istniejące konto magazynu Centrum zdarzeń i dzienników usługi Azure Monitor). Wybierz jeden lub oba **ServiceLog** i **AllMetrics**.
+3. W obszarze **Ustawienia diagnostyczne**wprowadź nazwę ustawienia i wybierz miejsce docelowe dziennika (istniejące konto magazynu, centrum zdarzeń lub dzienniki Azure monitor). Wybierz jeden lub oba **ServiceLog** i **AllMetrics**.
 
     Po wybraniu konta magazynu, opcjonalnie ustawić zasady przechowywania. Jeśli nie określisz liczbę dni przechowywania, dane są przechowywane w cyklu życia na koncie magazynu.
 

@@ -10,13 +10,15 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 0fef3bffd30c19d0313e5fce7eb610ae7f6349f5
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
-ms.translationtype: MT
+ms.openlocfilehash: 01c153f2f8836b7d99de57af60b8623e54c6d6fe
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606993"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311925"
 ---
+[!code-python[import declarations](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=imports)]
+
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-python"></a>Szybki start: Analizowanie zawartości tekstowej pod kątem niepożądanego materiału za pomocą języka Python
 
 Ten artykuł zawiera informacje i przykłady kodu, które pomogą Ci rozpocząć korzystanie z zestawu SDK pakietu Content Moderator dla języka Python. Dowiesz się, jak przeprowadzać filtrowanie oparte na terminach w zawartości tekstowej oraz jej klasyfikację w celu moderowania potencjalnie niepożądanego materiału.
@@ -38,39 +40,34 @@ pip install azure-cognitiveservices-vision-contentmoderator
 
 ## <a name="import-modules"></a>Importowanie modułów
 
-Utwórz nowy skrypt Python o nazwie _ContentModeratorQS.py_ i dodaj następujący kod, aby zaimportować wymagane części zestawu SDK.
+Utwórz nowy skrypt Python o nazwie _ContentModeratorQS.py_ i dodaj następujący kod, aby zaimportować wymagane części zestawu SDK. Jest on dostępny w celu ułatwienia odczytywania odpowiedzi JSON.
 
-[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=1-10)]
-
-Zaimportuj również funkcję „pretty print” do obsługi końcowych danych wyjściowych.
-
-[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=12)]
+[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/content_moderator_quickstart.py?name=imports)]
 
 
 ## <a name="initialize-variables"></a>Inicjowanie zmiennych
 
-Następnie dodaj zmienne dla klucza subskrypcji Content Moderator i adresu URL punktu końcowego. Należy zastąpić element `<your subscription key>` wartością klucza. Może być również konieczna zmiana wartości `endpoint_url` w celu użycia identyfikatora regionu odpowiadającego kluczowi subskrypcji. Klucze subskrypcji bezpłatnej wersji próbnej są generowane w regionie **westus**.
+Następnie dodaj zmienne dla klucza subskrypcji Content Moderator i adresu URL punktu końcowego. Musisz dodać nazwę `CONTENT_MODERATOR_SUBSCRIPTION_KEY` do zmiennych środowiskowych i dodać swój klucz subskrypcji jako wartość. W przypadku podstawowego adresu URL punktu końcowego `CONTENT_MODERATOR_ENDPOINT` Dodaj do zmiennych środowiskowych adres URL specyficzny dla regionu jako jego wartość, na `https://westus.api.cognitive.microsoft.com`przykład. Klucze subskrypcji bezpłatnej wersji próbnej są generowane w regionie **westus**.
 
-[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=14-16)]
+[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/content_moderator_quickstart.py?name=authentication)]
 
+Ciąg wielowierszowego tekstu z pliku zostanie moderowany. Dołącz plik [content_moderator_text_moderation. txt](https://github.com/Azure-Samples/cognitive-services-content-moderator-samples/blob/master/documentation-samples/python/content_moderator_text_moderation.txt) do lokalnego folderu głównego i Dodaj jego nazwę pliku do zmiennych:
 
-Dla uproszczenia będziemy analizować tekst bezpośrednio ze skryptu. Zdefiniuj nowy ciąg zawartości tekstowej do moderacji:
-
-[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=18-21)]
-
+[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/content_moderator_quickstart.py?name=textModerationFile)]
 
 ## <a name="query-the-moderator-service"></a>Wykonywanie zapytań względem usługi Moderator
 
-Utwórz wystąpienie interfejsu **ContentModeratorClient** przy użyciu klucza subskrypcji i adresu URL punktu końcowego. Następnie użyj jego wystąpienia elementu członkowskiego **TextModerationOperations**, aby wywołać interfejs API moderacji. Więcej informacji na temat wywoływania tego interfejsu zawiera dokumentacja metody **[screen_text](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)** .
+Utwórz wystąpienie interfejsu **ContentModeratorClient** przy użyciu klucza subskrypcji i adresu URL punktu końcowego. 
 
-[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=23-36)]
+[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/content_moderator_quickstart.py?name=client)]
 
-## <a name="print-the-response"></a>Wyświetlanie odpowiedzi
+Następnie użyj swojego klienta z wystąpieniem elementu członkowskiego **TextModerationOperations** , aby wywołać interfejs API moderowania za `screen_text`pomocą funkcji. Więcej informacji na temat wywoływania tego interfejsu zawiera dokumentacja metody **[screen_text](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)** .
 
-Na koniec sprawdź, czy wywołanie zostało pomyślnie ukończone i zwróciło wystąpienie klasy **Screen**. Następnie wyświetl zwrócone dane w konsoli.
+[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/content_moderator_quickstart.py?name=textModeration)]
 
-[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=38-39)]
+## <a name="check-the-printed-response"></a>Sprawdź wydrukowaną odpowiedź
 
+Uruchom próbkę i Potwierdź odpowiedź. Powinno to zakończyć się pomyślnie i zwrócić wystąpienie **ekranu** . Następujący wynik jest drukowany poniżej:
 
 Przykładowy tekst używany w tym przewodniku Szybki start powoduje wygenerowanie następujących danych wyjściowych:
 
@@ -106,7 +103,7 @@ Przykładowy tekst używany w tym przewodniku Szybki start powoduje wygenerowani
  'tracking_id': 'b253515c-e713-4316-a016-8397662a3f1a'}
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start utworzono prostą aplikację języka Python, która zwraca odpowiednie informacje o danym tekście przykładowym dzięki użyciu usługi Content Moderator. Następnie dowiedz się więcej na temat znaczenia różnych flag i klasyfikacji, aby móc podejmować decyzje dotyczące potrzebnych danych oraz sposobu ich obsługi przez aplikację.
 

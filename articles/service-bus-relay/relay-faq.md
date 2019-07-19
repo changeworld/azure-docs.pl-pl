@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Relay — często zadawane pytania | Dokumentacja firmy Microsoft
-description: Uzyskaj odpowiedzi na niektóre często zadawane pytania dotyczące usługi Azure Relay.
+title: Azure Relay często zadawane pytania | Microsoft Docs
+description: Uzyskaj odpowiedzi na kilka często zadawanych pytań dotyczących Azure Relay.
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -14,103 +14,103 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
-ms.openlocfilehash: c6ea5e72f70620004b4b00be0c779893a3b2ad90
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f9f182a459f9a38c96bdf923998d1cdfee8fc3ac
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706191"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277961"
 ---
-# <a name="azure-relay-faqs"></a>Usługa Azure Relay — często zadawane pytania
+# <a name="azure-relay-faqs"></a>Azure Relay często zadawane pytania
 
-Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania (FAQ) w o [usługi Azure Relay](https://azure.microsoft.com/services/service-bus/). Ogólne informacje dotyczące platformy Azure ceny i pomocy technicznej, zobacz [często zadawane pytania dotyczące pomocy technicznej Azure](https://azure.microsoft.com/support/faq/).
+Ten artykuł zawiera odpowiedzi na kilka często zadawanych pytań dotyczących [Azure Relay](https://azure.microsoft.com/services/service-bus/). Aby uzyskać ogólne informacje o cenach i pomocy technicznej platformy Azure, zobacz [często zadawane pytania dotyczące pomocy technicznej platformy Azure](https://azure.microsoft.com/support/faq/).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general-questions"></a>Pytania ogólne
 ### <a name="what-is-azure-relay"></a>Co to jest usługa Azure Relay?
-[Usługi Azure Relay](relay-what-is-it.md) ułatwia tworzenie hybrydowych aplikacji, pomagając Wam więcej bezpieczne Uwidacznianie usług znajdujących się w korporacyjnej sieci firmowej do chmury publicznej. Usługi można ujawnić, bez konieczności otwierania połączenia przez zaporę i bez wprowadzania niepożądanych zmian do infrastruktury sieci korporacyjnej.
+[Usługa Azure Relay](relay-what-is-it.md) ułatwia aplikacjom hybrydowym, ułatwiając bezpieczniejsze Uwidacznianie usług, które znajdują się w firmowej sieci korporacyjnej w chmurze publicznej. Można uwidocznić te usługi bez konieczności otwierania połączenia zapory i nie wymagając niepożądanych zmian w infrastrukturze sieci firmowej.
 
-### <a name="what-is-a-relay-namespace"></a>Co to jest przestrzeń nazw usługi Relay?
-A [przestrzeni nazw](relay-create-namespace-portal.md) jest kontenerem określania zakresu, służących do adresowania zasobów usługi Relay w aplikacji. Należy utworzyć przestrzeni nazw, aby używać usługi Relay. Jest to jedna z pierwszych kroków w środowisku wprowadzenie.
+### <a name="what-is-a-relay-namespace"></a>Co to jest przestrzeń nazw przekaźnika?
+[Przestrzeń nazw](relay-create-namespace-portal.md) jest kontenerem zakresu, którego można użyć do adresowania zasobów przekaźnika w aplikacji. Należy utworzyć przestrzeń nazw, aby użyć przekaźnika. Jest to jeden z pierwszych kroków w temacie Wprowadzenie.
 
-### <a name="what-happened-to-service-bus-relay-service"></a>Co się stało z usługi service Bus Relay?
-Wcześniej nazwaną usługę Service Bus Relay jest teraz nazywana [przekaźnika WCF](relay-wcf-dotnet-get-started.md). Można nadal używać tej usługi w zwykły sposób. Funkcja połączeń hybrydowych jest zaktualizowana wersja usługi, która jest ponownie przeszczepione z usługi Azure BizTalk Services. Przekaźnik WCF i połączeń hybrydowych nadal są obsługiwane.
+### <a name="what-happened-to-service-bus-relay-service"></a>Co się stało z Service Bus Relay usługą?
+Wcześniej nazwana usługa Service Bus Relay jest teraz nazywana [WCF Relay](relay-wcf-dotnet-get-started.md). Można nadal używać tej usługi w zwykły sposób. Funkcja Połączenia hybrydowe to zaktualizowana wersja usługi, która została przesadzona z usługi Azure BizTalk Services. WCF Relay i Połączenia hybrydowe są nadal obsługiwane.
 
 ## <a name="pricing"></a>Cennik
-W tej sekcji odpowiedzi na niektóre często zadawane pytania dotyczące usługi Relay struktury cenowej. Możesz również zobaczyć [— często zadawane pytania dla pomocy technicznej Azure](https://azure.microsoft.com/support/faq/) for Azure ogólne informacje o cenach. Aby uzyskać pełne informacje o cenach usługi Relay, zobacz [szczegóły cennika usługi Service Bus][Pricing overview].
+Ta sekcja zawiera odpowiedzi na kilka często zadawanych pytań dotyczących struktury cenowej przekaźnika. Zobaczysz również [często zadawane pytania dotyczące pomocy technicznej platformy Azure](https://azure.microsoft.com/support/faq/) dotyczące ogólnych informacji o cenach platformy Azure. Aby uzyskać pełne informacje na temat cennika usługi Relay, zobacz [szczegóły cennika Service Bus][Pricing overview].
 
-### <a name="how-do-you-charge-for-hybrid-connections-and-wcf-relay"></a>Jak można opłaty za połączenia hybrydowe i WCF Relay?
-Aby uzyskać pełne informacje o cenach usługi Relay, zobacz [połączenia hybrydowe i przekaźniki WCF][Pricing overview] tabeli na stronie szczegółów cennika usługi Service Bus. Oprócz ceny podane na tej stronie opłaty są naliczane w przypadku transferów danych skojarzone dla ruchu wychodzącego poza centrum danych, w którym zainicjowano aplikacji.
+### <a name="how-do-you-charge-for-hybrid-connections-and-wcf-relay"></a>Jak naliczane są opłaty za Połączenia hybrydowe i WCF Relay?
+Aby uzyskać pełne informacje na temat cennika usługi Relay, zapoznaj się z tabelą [połączenia hybrydowe i przekaźników WCF][Pricing overview] na stronie Szczegóły cennika Service Bus. Oprócz cen zanotowanych na tej stronie opłaty są naliczane za powiązane transfery danych dla ruchu wychodzącego poza centrum danych, w którym Zainicjowano obsługę aplikacji.
 
-### <a name="how-am-i-billed-for-hybrid-connections"></a>Jak są rozliczane dla połączeń hybrydowych?
-Poniżej przedstawiono trzy przykładowe scenariusze rozliczeń dla połączeń hybrydowych:
+### <a name="how-am-i-billed-for-hybrid-connections"></a>Jak naliczane są opłaty za Połączenia hybrydowe?
+Poniżej przedstawiono trzy przykładowe scenariusze rozliczania dla Połączenia hybrydowe:
 
 *   Scenariusz 1:
-    *   Masz pojedynczego odbiornika, takiego jak wystąpienie Menedżera połączeń hybrydowych zainstalowane i działające nieprzerwanie przez cały miesiąc.
-    *   Wysyłasz 3 GB danych za pośrednictwem połączenia w miesiącu. 
+    *   Istnieje pojedynczy odbiornik, taki jak wystąpienie Menedżera Połączenia hybrydowe zainstalowane i działające w sposób ciągły przez cały miesiąc.
+    *   W ciągu miesiąca wysyłasz 3 GB danych za pośrednictwem połączenia. 
     *   Łączna opłata wynosi $5.
 *   Scenariusz 2:
-    *   Masz pojedynczego odbiornika, takiego jak wystąpienie Menedżera połączeń hybrydowych zainstalowane i działające nieprzerwanie przez cały miesiąc.
-    *   Wysyłasz 10 GB danych za pośrednictwem połączenia w miesiącu.
-    *   Łączna opłata jest 7.50 $. To 5 USD za połączenia i pierwsze 5 GB + 2,50 USD za dodatkowe 5 GB danych.
+    *   Istnieje pojedynczy odbiornik, taki jak wystąpienie Menedżera Połączenia hybrydowe zainstalowane i działające w sposób ciągły przez cały miesiąc.
+    *   W ciągu miesiąca wysyłasz 10 GB danych za pośrednictwem połączenia.
+    *   Łączna opłata wynosi $7,50. To jest $5 dla połączenia i pierwsze 5 GB + $2,50, aby uzyskać dodatkowe 5 GB danych.
 *   Scenariusz 3:
-    *   Masz dwa wystąpienia, A i B, Menedżera połączeń hybrydowych zainstalowane i działające nieprzerwanie przez cały miesiąc.
-    *   Wysyłasz 3 GB danych za pośrednictwem połączenia A w ciągu miesiąca.
-    *   Wysyłasz 6 GB danych za pośrednictwem połączenia B w miesiącu.
-    *   Łączna opłata jest 10,50 $. To 5 USD za połączenie A + 5 USD za połączenie B + 0,50 USD (w przypadku szósty GB połączenia B).
+    *   Istnieją dwa wystąpienia, a i B programu Połączenia hybrydowe Manager zainstalowane i ciągle działające przez cały miesiąc.
+    *   W ciągu miesiąca wysyłasz 3 GB danych między połączeniem A.
+    *   W ciągu miesiąca wysyłasz 6 GB danych między połączeniem B.
+    *   Łączna opłata wynosi $10,50. To jest $5 dla połączenia A + $5 dla połączenia B + $0,50 (dla szóstego gigabajta w połączeniu B).
 
-Należy zauważyć, że ceny użyte w tych przykładach mają zastosowanie tylko w trakcie okresu zapoznawczego, połączenia hybrydowe. Ceny są może ulec zmianie po ogólnym udostępnieniu połączeń hybrydowych.
+Należy pamiętać, że ceny używane w przykładach są stosowane tylko w okresie Połączenia hybrydowe w wersji zapoznawczej. Ceny mogą ulec zmianie po ogólnej dostępności Połączenia hybrydowe.
 
-### <a name="how-are-hours-calculated-for-relay"></a>Jak obliczane są godziny przekazywania?
+### <a name="how-are-hours-calculated-for-relay"></a>Jak są obliczane godziny dla przekaźnika?
 
-Przekaźnik WCF to dostępne tylko w przestrzeni nazw w warstwie standardowa. Ceny i [przydziały połączenia](../service-bus-messaging/service-bus-quotas.md) dla przekaźniki, w przeciwnym razie nie uległy zmianie. Oznacza to, że przekaźniki w dalszym ciągu naliczane na podstawie liczby komunikatów (nie operacji) i godzin przekazywania. Aby uzyskać więcej informacji, zobacz ["Hybrydowe połączeń i przekaźniki WCF"](https://azure.microsoft.com/pricing/details/service-bus/) tabeli na stronie szczegółów cennika.
+WCF Relay jest dostępny tylko w przestrzeniach nazw warstwy Standardowa. Limity cen i [połączeń](../service-bus-messaging/service-bus-quotas.md) dla przekaźników nie uległy zmianie. Oznacza to, że w ramach przekaźników nadal są naliczone opłaty na podstawie liczby komunikatów (nie operacji) i godzin przekazywania. Aby uzyskać więcej informacji, zobacz tabelę ["połączenia hybrydowe and WCF Relay"](https://azure.microsoft.com/pricing/details/service-bus/) na stronie szczegółów cennika.
 
-### <a name="what-if-i-have-more-than-one-listener-connected-to-a-specific-relay"></a>Co się stanie, jeśli mam więcej niż jeden odbiornik, nawiązanie połączenia z określonym przekaźnikiem?
-W niektórych przypadkach pojedynczego przekazywania może mieć wiele odbiorników połączonych. Wystąpienie usługi przekazywania jest uznawane za otwarte, gdy jest z nią połączona co najmniej jeden odbiornik. Dodawania detektorów do wyników otwartego przekazywania w godziny przekazywania dodatkowych. Numer nadawcy przekazywania (liczba klientów, które wywołania lub wysyłać komunikaty do przekaźników) podłączone do przekazywania nie ma wpływu na obliczenia godzin przekazywania.
+### <a name="what-if-i-have-more-than-one-listener-connected-to-a-specific-relay"></a>Co zrobić, jeśli mam więcej niż jeden odbiornik połączony z określonym przekaźnikiem?
+W niektórych przypadkach pojedynczy przekaźnik może mieć wiele połączonych odbiorników. Przekaźnik jest uważany za otwarty w przypadku, gdy co najmniej jeden odbiornik przekazywania jest podłączony do niego. Dodawanie detektorów do otwartych wyników przekazywania w dodatkowych godzinach przekazywania. Liczba nadawców przekaźników (klientów, którzy wywołują lub wysyłają komunikaty do przekaźników), które są połączone z przekaźnikiem, nie wpływają na obliczanie godzin przekazywania.
 
-### <a name="how-is-the-messages-meter-calculated-for-wcf-relays"></a>Jak jest obliczana wartość licznika komunikaty dla przekaźniki WCF?
-(**Dotyczy to tylko przekaźniki WCF. Komunikaty nie są kosztu dla połączeń hybrydowych.** )
+### <a name="how-is-the-messages-meter-calculated-for-wcf-relays"></a>Jak licznik komunikatów jest obliczany dla przekaźników WCF?
+(**Dotyczy to tylko przekaźników WCF. Komunikaty nie są kosztami dla Połączenia hybrydowe.** )
 
-Ogólnie rzecz biorąc płatnych komunikatów dla przekaźniki są obliczane przy użyciu tej samej metody, która służy do jednostek obsługiwanych przez brokera (kolejki, tematy i subskrypcje), opisanych powyżej. Istnieją jednak pewne istotne różnice.
+Ogólnie rzecz biorąc, opłaty za przekaźniki są obliczane przy użyciu tej samej metody, która jest używana przez jednostki obsługiwane przez brokera (kolejki, tematy i subskrypcje), opisane wcześniej. Istnieją jednak pewne istotne różnice.
 
-Wysyłanie wiadomości do przekaźnika usługi Service Bus jest traktowany jako "pełnej za pośrednictwem" wysyłać odbiornik usługi relay, który odbiera wiadomości. Nie jest ona traktowana jako operacji wysyłania przekaźnika usługi Service Bus, następuje dostarczania na odbiornik usługi relay. Żądanie odpowiedź stylu wywołania usługi (o rozmiarze do 64 KB) względem przekaźnik odbiornika wyniki w dwóch płatnych komunikatów: jeden płatny komunikat żądania i jeden płatny komunikat odpowiedzi (zakładając, że odpowiedź jest również 64 KB lub mniej). Stanowi to odmianę pośredniczy między klientem a usługą za pomocą kolejki. Jeśli używasz kolejki do pośredniczy między klientem a usługą tego samego wzorca "żądanie-odpowiedź" wymaga wysyłania żądań do kolejki, a następnie usuwania z kolejki/dostarczania z kolejki w usłudze. Następnie przez wysłanie odpowiedzi do kolejnej kolejki i usuwania z kolejki/dostarczania z tej kolejki do klienta. Wzorzec kolejki udziału za pomocą tego samego założenia rozmiar w całym (maksymalnie 64 KB), powoduje 4 płatnych komunikatów. Rachunek będzie dotyczył dwa razy liczba komunikatów do wykonania tego samego wzorca, który można wykonać przy użyciu przekazywania. Oczywiście istnieją korzyści z korzystania z kolejek do osiągnięcia tego wzorca, takich jak niezawodność i wyrównywanie obciążenia. Te korzyści może uzasadniać dodatkowych kosztów.
+Wysyłanie komunikatu do przekaźnika Service Bus jest traktowane jako "pełny poprzez" wysyłanie do odbiornika przekazywania, który odbiera komunikat. Nie jest ona traktowana jako operacja wysyłania do przekaźnika Service Bus, a następnie dostarczania do odbiornika przekaźnika. Wywołanie usługi stylu żądanie-odpowiedź (z maksymalnie 64 KB) odnoszące się do odbiornika przekaźnika powoduje wyświetlenie dwóch płatnych komunikatów: jeden płatny komunikat dla żądania i jeden płatny komunikat dla odpowiedzi (przy założeniu, że odpowiedź dotyczy również 64 KB lub mniejszych). Różni się to od używania kolejki do skorygowania między klientem a usługą. Jeśli użyjesz kolejki do skorygowania między klientem a usługą, ten sam wzorzec żądanie-odpowiedź wymaga wysłania żądania do kolejki, a następnie z kolejki/dostarczania do usługi. Następuje to odpowiedź wysyłana do innej kolejki, a w przypadku jej usuwania z kolejki/dostarczania. Przy użyciu tych samych założeń rozmiaru w całym (do 64 KB), wynikowy wzorzec kolejki powoduje 4 miliardy komunikatów. Opłaty są naliczane dwukrotnie za liczbę komunikatów w celu zaimplementowania tego samego wzorca, który został osiągnięty przy użyciu przekaźnika. Oczywiście istnieją korzyści z używania kolejek do osiągnięcia tego wzorca, takich jak trwałość i poziom obciążenia. Te korzyści mogą uzasadniać dodatkowe koszty.
 
-Przekaźniki, które są otwarte przy użyciu **netTCPRelay** wiązania WCF traktować wiadomości, nie jako pojedyncze wiadomości, ale jako strumień dane przepływają przez system. Korzystając z tego powiązania, tylko nadawcy i odbiornika widzą ramek poszczególne wiadomości wysłanych i odebranych. Dla przekazuje używające **netTCPRelay** powiązania, wszystkie dane jest traktowany jako strumień do obliczania płatnych komunikatów. W tym przypadku usługi Service Bus oblicza łączna ilość danych wysyłanych lub odbieranych przez wystąpienie usługi relay poszczególnych na podstawie 5-minutowych. Następnie dzieli tego łączna ilość danych, przez 64 KB, aby określić liczbę płatnych komunikatów dla tej usługi relay w tym okresie czasu.
+Przekaźniki otwierane przy użyciu powiązania WCF **netTCPRelay** traktują komunikaty, które nie są pojedynczymi komunikatami, ale jako strumień danych przepływających przez system. W przypadku korzystania z tego powiązania tylko nadawca i odbiornik mają wgląd w ramki poszczególnych wysłanych i odebranych komunikatów. W przypadku przekaźników korzystających z powiązania **netTCPRelay** wszystkie dane są traktowane jako strumień służący do obliczania komunikatów rozliczanych. W takim przypadku Service Bus oblicza łączną ilość danych wysłanych lub odebranych za pośrednictwem poszczególnych przekaźników w oparciu o 5 minut. Następnie dzieli ten łączną ilość danych o 64 KB, aby określić liczbę płatnych komunikatów dla tego przekaźnika w tym okresie.
 
 ## <a name="quotas"></a>Przydziały
-| Nazwa limitu przydziału | Scope |  Uwagi | Wartość |
+| Nazwa przydziału | Scope |  Uwagi | Value |
 | --- | --- | --- | --- |
-| Współbieżne odbiorniki przekaźnik |Jednostka |Kolejne żądania dla dodatkowych połączeń są odrzucane, a wyjątek jest odbierany przez kod wywołujący. |25 |
-| Połączeń współbieżnych przekazywania na wszystkich punktem końcowym przekaźnika w przestrzeni nazw usługi |Przestrzeń nazw |- |5,000 |
-| Punktów końcowych przestrzeni nazw usługi Relay |Przestrzeń nazw |- |10 000 |
-| Rozmiar komunikatu [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) i [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) przekazuje |Przestrzeń nazw |Wiadomości przychodzących, które wykraczają poza te przydziały są odrzucane, a wyjątek jest odbierany przez kod wywołujący. |64 KB |
-| Rozmiar komunikatu [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) i [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) przekazuje |Przestrzeń nazw |Brak limitu rozmiaru wiadomości. |Nieograniczona liczba |
+| Współbieżne detektory w przekaźniku |Jednostka |Kolejne żądania dla dodatkowych połączeń są odrzucane i występuje wyjątek przez wywoływany kod. |25 |
+| Współbieżne połączenia przekaźnikowe na wszystkie punkty końcowe przekaźnika w przestrzeni nazw usługi |Przestrzeń nazw |- |5,000 |
+| Punkty końcowe przekaźnika na przestrzeń nazw usługi |Przestrzeń nazw |- |10 000 |
+| Rozmiar komunikatu dla przekaźników [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) i [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) |Przestrzeń nazw |Komunikaty przychodzące, które przekraczają te przydziały, są odrzucane i występuje wyjątek przez wywoływany kod. |64 KB |
+| Rozmiar komunikatu dla przekaźników [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) i [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) |Przestrzeń nazw |Brak limitu rozmiaru komunikatu. |Nieograniczona liczba |
 
-### <a name="does-relay-have-any-usage-quotas"></a>Przekaźnik ma przydziały użycia?
-Domyślnie dla dowolnej usługi w chmurze firmy Microsoft ustawia łączny miesięczny przydział użycia, który jest obliczany dla wszystkich subskrypcji klientów. Rozumiemy, że czasami potrzeb może przekroczenia limitów. Dlatego firma Microsoft jest zrozumienie potrzeb i odpowiednio dostosować te limity można skontaktować się działem obsługi klienta w dowolnym momencie. Service Bus przydziały użycia agregacji są następujące:
+### <a name="does-relay-have-any-usage-quotas"></a>Czy przekaźnik ma przydziały użycia?
+Domyślnie dla każdej usługi w chmurze firma Microsoft ustawia zagregowany miesięczny limit przydziału użycia obliczany we wszystkich subskrypcjach klienta. Zdajemy sobie sprawę, że w razie potrzeby może przekroczyć te limity. W dowolnym momencie możesz skontaktować się z obsługą klienta, aby poznać Twoje potrzeby i odpowiednio dostosować te limity. W przypadku Service Bus zagregowane przydziały użycia są następujące:
 
 * 5 miliardów komunikatów
 * 2 miliony godzin przekazywania
 
-Mimo że firma Microsoft zastrzega sobie prawo wyłączenia konta, które przekracza jego miesięczne przydziały użycia, firma Microsoft zapewnia powiadomienie e-mail i wprowadzania wielu próbuje nawiązać połączenie klienta przed podjęciem działania. Klienci, którzy przekroczenia tych limitów przydziału nadal są odpowiedzialne za naliczania opłat.
+Chociaż firma Microsoft zastrzega sobie prawo do wyłączenia konta przekraczającego miesięczne przydziały użycia, udostępniamy powiadomienie e-mail, a firma Microsoft podejmie próbę skontaktowania się z klientem przed podjęciem jakichkolwiek działań. Klienci, którzy przekroczyli te przydziały, są w dalszym ciągu odpowiedzialni za nadwyżkowe opłaty.
 
 ### <a name="naming-restrictions"></a>Ograniczenia nazewnictwa
-Nazwa przestrzeni nazw usługi Relay musi być od 6 do 50 znaków.
+Nazwa przestrzeni nazw przekaźnika musi mieć długość od 6 do 50 znaków.
 
-## <a name="subscription-and-namespace-management"></a>Zarządzanie subskrypcją i przestrzeni nazw
-### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>Jak migrować przestrzeni nazw do innej subskrypcji platformy Azure?
+## <a name="subscription-and-namespace-management"></a>Zarządzanie subskrypcjami i przestrzenią nazw
+### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>Jak mogę zmigrować przestrzeni nazw do innej subskrypcji platformy Azure?
 
-Aby przenieść przestrzeni nazw z jedną subskrypcją platformy Azure do innej subskrypcji, można użyć [witryny Azure portal](https://portal.azure.com) lub za pomocą poleceń programu PowerShell. Aby przenieść przestrzeni nazw do innej subskrypcji, przestrzeń nazw musi być aktywne. Użytkownik uruchamiający polecenia musi być użytkownika administratora dla subskrypcji źródłowej i docelowej.
+Aby przenieść przestrzeń nazw z jednej subskrypcji platformy Azure do innej subskrypcji, możesz użyć [Azure Portal](https://portal.azure.com) lub użyć poleceń programu PowerShell. Aby przenieść przestrzeń nazw do innej subskrypcji, przestrzeń nazw musi już być aktywna. Użytkownik uruchamiający polecenia musi być użytkownikiem administratora zarówno w ramach subskrypcji źródłowej, jak i docelowej.
 
 #### <a name="azure-portal"></a>Azure Portal
 
-Aby przeprowadzić migrację przestrzeni nazw usługi Azure Relay z jednej subskrypcji do innej subskrypcji, należy użyć witryny Azure portal, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../azure-resource-manager/resource-group-move-resources.md#use-the-portal). 
+Aby użyć Azure Portal do migracji przestrzeni nazw Azure Relay z jednej subskrypcji do innej subskrypcji, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../azure-resource-manager/resource-group-move-resources.md#use-the-portal). 
 
 #### <a name="powershell"></a>PowerShell
 
-Przenieś przestrzeni nazw z jedną subskrypcją platformy Azure do innej subskrypcji przy użyciu programu PowerShell, użyj następującej procedury. Aby wykonać tę operację, przestrzeń nazw już musi być aktywne, a użytkownik uruchamiający poleceń programu PowerShell musi być użytkownika administratora dla subskrypcji źródłowej i docelowej.
+Aby przenieść przestrzeń nazw z jednej subskrypcji platformy Azure do innej subskrypcji za pomocą programu PowerShell, użyj następującej sekwencji poleceń. Aby można było wykonać tę operację, przestrzeń nazw musi być już aktywna, a użytkownik uruchamiający polecenia programu PowerShell musi być użytkownikiem administratora zarówno w ramach subskrypcji źródłowej, jak i docelowej.
 
 ```azurepowershell-interactive
 # Create a new resource group in the target subscription.
@@ -124,16 +124,16 @@ Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptio
 ```
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
-### <a name="what-are-some-of-the-exceptions-generated-by-azure-relay-apis-and-suggested-actions-you-can-take"></a>Jakie są niektóre wyjątki generowane przez interfejsy API usługi Azure Relay i sugerowanych akcji, które można wykonać?
-Opis typowych wyjątków i sugerowane akcje można wykonać, zobacz [przekazywania wyjątki][Relay exceptions].
+### <a name="what-are-some-of-the-exceptions-generated-by-azure-relay-apis-and-suggested-actions-you-can-take"></a>Jakie są wyjątki generowane przez Azure Relay interfejsów API i sugerowane akcje, które można wykonać?
+Opis typowych wyjątków i sugerowanych czynności, które można wykonać, znajduje się w temacie [wyjątki przekaźnika][Relay exceptions].
 
-### <a name="what-is-a-shared-access-signature-and-which-languages-can-i-use-to-generate-a-signature"></a>Co to jest sygnatura dostępu współdzielonego i języków, których można użyć do generowania podpisu?
-Udostępnione sygnatur dostępu (SAS) to mechanizm uwierzytelniania, na podstawie bezpiecznego skróty SHA-256 lub identyfikatory URI. Aby uzyskać informacje dotyczące generowania własnych podpisów w Node, PHP, Java, C a C#, zobacz [uwierzytelniania usługi Service Bus przy użyciu sygnatury dostępu współdzielonego][Shared Access Signatures].
+### <a name="what-is-a-shared-access-signature-and-which-languages-can-i-use-to-generate-a-signature"></a>Co to jest sygnatura dostępu współdzielonego i jakich języków można użyć do wygenerowania podpisu?
+Sygnatury dostępu współdzielonego (SAS) są mechanizmem uwierzytelniania opartym na bezpiecznych skrótach i identyfikatorach URI SHA-256. Aby uzyskać informacje o sposobach generowania własnych podpisów w węzłach Node. js, PHP, Python, Java, C#C i, zobacz [Service Bus Authentication z sygnaturami dostępu][Shared Access Signatures]współdzielonego.
 
-### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Czy możliwe jest punktem końcowym przekaźnika dozwolonych?
-Tak. Klient przekazujący sprawia, że połączenia z usługą Azure Relay przy użyciu w pełni kwalifikowanych nazw domen. Klientów można dodać wpisu `*.servicebus.windows.net` na zaporach, które obsługują DNS umieszczania na białej liście.
+### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Czy można dozwolonych punkty końcowe przekaźnika?
+Tak. Klient usługi Relay nawiązuje połączenia z usługą Azure Relay przy użyciu w pełni kwalifikowanych nazw domen. Klienci mogą dodać wpis dla `*.servicebus.windows.net` zapory, które obsługują listy dozwolonych DNS.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Tworzenie przestrzeni nazw](relay-create-namespace-portal.md)
 * [Wprowadzenie do programu .NET](relay-hybrid-connections-dotnet-get-started.md)
 * [Wprowadzenie do programu Node](relay-hybrid-connections-node-get-started.md)

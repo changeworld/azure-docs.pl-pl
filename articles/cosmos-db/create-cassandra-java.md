@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: c3bfcffacee7df8a5abf59676a1c47fa283dee7b
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 968c43ed78c59e5c1f147aaaa5bb33484d95c7a9
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65519036"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325480"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-java-sdk-and-azure-cosmos-db"></a>Szybki start: Tworzenie aplikacji Cassandra przy użyciu zestawu SDK języka Java i usługi Azure Cosmos DB
 
@@ -34,7 +34,7 @@ Azure Cosmos DB to rozproszona globalnie, wielomodelowa usługa bazy danych firm
 
 Potrzebne są też następujące elementy:
 
-* [Java Development Kit (JDK) w wersji 8](https://aka.ms/azure-jdks)
+* [Zestaw Java Development Kit (JDK) w wersji 8](https://aka.ms/azure-jdks)
     * Upewnij się, że zmienna środowiskowa JAVA_HOME wskazuje folder, w którym zainstalowano zestaw JDK.
 * [Pobierz](https://maven.apache.org/download.cgi) i [zainstaluj](https://maven.apache.org/install.html) archiwum binarne [Maven](https://maven.apache.org/)
     * W systemie Ubuntu możesz uruchomić polecenie `apt-get install maven`, aby zainstalować narzędzie Maven.
@@ -71,7 +71,7 @@ Teraz przejdźmy do pracy z kodem. Sklonujemy aplikację bazy danych Cassandra z
 
 ## <a name="review-the-code"></a>Przeglądanie kodu
 
-Ten krok jest opcjonalny. Jeśli chcesz dowiedzieć się, jak kod tworzy zasoby bazy danych, możesz przejrzeć poniższe fragmenty kodu. W przeciwnym razie możesz od razu przejść do sekcji [Aktualizowanie parametrów połączenia](#update-your-connection-string). Wszystkie fragmenty kodu są pobierane z pliku `src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java`.  
+Ten krok jest opcjonalny. Jeśli chcesz dowiedzieć się, jak kod tworzy zasoby bazy danych, możesz przejrzeć poniższe fragmenty kodu. W przeciwnym razie możesz od razu przejść do sekcji [Aktualizowanie parametrów połączenia](#update-your-connection-string). Wszystkie te fragmenty kodu pochodzą z pliku *src/Main/Java/com/Azure/cosmosdb/Cassandra/util/CassandraUtils. Java* .  
 
 * Ustawiany jest host bazy danych Cassandra oraz port, nazwa użytkownika, hasło i opcje protokołu SSL. Informacje o parametrach połączenia pochodzą ze strony parametrów połączenia w witrynie Azure Portal.
 
@@ -85,7 +85,7 @@ Ten krok jest opcjonalny. Jeśli chcesz dowiedzieć się, jak kod tworzy zasoby 
     return cluster.connect();
     ```
 
-Poniższe fragmenty kodu pochodzą z pliku `src/main/java/com/azure/cosmosdb/cassandra/repository/UserRepository.java`.
+Poniższe fragmenty kodu pochodzą z pliku *src/Main/Java/com/Azure/cosmosdb/Cassandra/Repository/UserRepository. Java* .
 
 * Utwórz nową przestrzeń kluczy.
 
@@ -153,7 +153,7 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach poł
 
     ![Wyświetlanie i kopiowanie nazwy użytkownika z witryny Portal Azure, strona Parametry połączenia](./media/create-cassandra-java/keys.png)
 
-2. Użyj przycisku ![Przycisk Kopiuj](./media/create-cassandra-java/copy.png) po prawej stronie ekranu, aby skopiować wartość PUNKT KONTAKTOWY.
+2. Użyj przycisku ![Kopiuj](./media/create-cassandra-java/copy.png) po prawej stronie ekranu, aby skopiować wartość PUNKT KONTAKTOWY.
 
 3. Otwórz plik `config.properties` z folderu `C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples\src\main\resources`. 
 
@@ -217,7 +217,7 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach poł
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start wyjaśniono sposób tworzenia konta usługi Azure Cosmos DB, bazy danych Cassandra i kontenera za pomocą Eksploratora danych oraz uruchamianie aplikacji w celu wykonania tych samych czynności w sposób programowy. Teraz możesz zaimportować dodatkowe dane do kontenera usługi Azure Cosmos DB. 
 

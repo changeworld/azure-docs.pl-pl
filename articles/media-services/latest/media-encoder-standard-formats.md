@@ -1,6 +1,6 @@
 ---
-title: Standardowe formaty i kodeki Encoder - Azure
-description: Ten temat zawiera omówienie kodera w warstwie standardowa formaty i kodeki usługi.
+title: Formaty koderów standardowych i kodery-dekoder na platformie Azure
+description: Ten temat zawiera omówienie standardowych formatów koderów i koderów-dekoder.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -12,96 +12,97 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
-ms.author: juliako;anilmur
-ms.openlocfilehash: 730ff68e70999307417eea276761d56f4a44046a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.reviewer: anilmur
+ms.openlocfilehash: d4bbc83a101ba6b110ec97d5107ba3f79dd10843
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65520011"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67870950"
 ---
-# <a name="standard-encoder-formats-and-codecs"></a>Standardowe formaty i kodeki Encoder
+# <a name="standard-encoder-formats-and-codecs"></a>Standardowe formaty i kodeki kodera
 
-Ten artykuł zawiera listę najbardziej typowych importu i eksportu formatów plików, które można używać z [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset). Aby uzyskać informacje na temat tworzenia niestandardowych ustawień wstępnych przy użyciu **StandardEncoderPreset**, zobacz [tworzenie przekształcenia przy użyciu niestandardowego ustawienia wstępnego](customize-encoder-presets-how-to.md).
+Ten artykuł zawiera listę najpopularniejszych formatów importu i eksportu plików, których można używać z programem [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset). Aby uzyskać informacje na temat tworzenia niestandardowych ustawień wstępnych przy użyciu programu **StandardEncoderPreset**, zobacz [Tworzenie przekształcenia z](customize-encoder-presets-how-to.md)niestandardowym ustawieniem wstępnym.
 
-## <a name="input-containerfile-formats"></a>Dane wejściowe formaty kontenerów/plików
+## <a name="input-containerfile-formats"></a>Dane wejściowe w formacie kontenera/pliku
 
 | Formaty plików (rozszerzenia plików) | Obsługiwane |
 | --- | --- |
-| FLV (z koderów-dekoderów H.264 i AAC) (FLV) |Tak |
-| MXF    (.mxf) |Yes |
-| GXF    (.gxf) |Yes |
-| MPEG2-PS, MPEG2-TS, 3GP (TS, PS, 3GP, 3GPP, mpg) |Yes |
-| Windows Media Video (WMV) / ASF (WMV, ASF) |Tak |
-| AVI (nieskompresowany 8-bitowy/10-bitowy) (AVI) |Yes |
-| MP4 (.mp4, .m4a, .m4v)/ISMV (.isma, .ismv) |Tak |
-| [Microsoft Digital Video Recording](https://msdn.microsoft.com/library/windows/desktop/dd692984) (dvr ms) |Yes |
-| Matroska/WebM (mkv) |Yes |
+| FLV (z kodekami H. 264 i AAC) (. FLV) |Tak |
+| MXF    (.mxf) |Tak |
+| GXF    (.gxf) |Tak |
+| MPEG2-PS, MPEG2-TS, 3GP (. TS,. PS,. 3gp,. 3GPP,. mpg) |Tak |
+| Windows Media Video (WMV)/ASF (. wmv,. ASF) |Tak |
+| AVI (nieskompresowany 8bit/10bit) (AVI) |Tak |
+| MP4 (. mp4,. M4A,. m4v)/ISMV (. ISMA,. ISMV) |Tak |
+| [Cyfrowe nagrywanie wideo firmy Microsoft (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) (. DVR-MS) |Yes |
+| Matroska/WebM (. mkv) |Yes |
 | WAVE/WAV (wav) |Tak |
-| QuickTime (.mov) |Yes |
+| QuickTime (. mov) |Tak |
 
 > [!NOTE]
 > 
 > 
 
-### <a name="audio-formats-in-input-containers"></a>Formaty audio w wejściowych kontenerach
+### <a name="audio-formats-in-input-containers"></a>Formaty audio w kontenerach wejściowych
 
-Koder w warstwie standardowa obsługuje następujące formaty audio w wejściowych kontenerach wykonywania:
+Koder w warstwie Standardowa obsługuje następujące formaty audio w kontenerach wejściowych:
 
-* Pliki MXF, GXF i QuickTime, które mają ścieżki audio z przeplotem stereo lub 5.1 próbek
+* Pliki MXF, GXF i QuickTime, które mają ścieżki audio z przeplotem stereo lub 5,1 próbek
 
 lub
 
-* Pliki MXF, GXF i QuickTime, w których dane audio są przenoszone jako osobne ścieżki PCM, ale mapowanie kanałów (na stereo lub 5.1) można określić na podstawie metadanych pliku
+* Pliki MXF, GXF i QuickTime, w których dźwięk jest przenoszony jako oddzielne ścieżki PCM, ale można ustalić mapowanie kanału (do stereo lub 5,1) z metadanych plików
 
-## <a name="input-video-codecs"></a>Dane wejściowe koderów-dekoderów wideo
-| Dane wejściowe koderów-dekoderów wideo | Obsługiwane |
+## <a name="input-video-codecs"></a>Kodery-dekoder wideo
+| Kodery-dekoder wideo | Obsługiwane |
 | --- | --- |
-| AVC 8-bitowy/10-bitowy, maksymalnie 4:2:2, wraz z AVCIntra |8-bitowy 4:2:0 oraz 4:2:2 |
-| Avid DNxHD (in MXF) |Tak |
+| AVC 8-bitowy/10-bitowy, do 4:2:2, włącznie z AVCIntra |8 bitów 4:2:0 i 4:2:2 |
+| Avid DNxHD (w MXF) |Tak |
 | DVCPro/DVCProHD (in MXF) |Tak |
-| Cyfrowy video (DV) (w plikach AVI) |Tak |
-| JPEG 2000 |Yes |
-| MPEG-2 (profil 422 i wysoki poziom; wraz z wariantami, takich jak XDCAM, XDCAM HD, XDCAM IMX, CableLabs® oraz D10) |Maksymalnie profil 422 |
+| Digital Video (DV) (w plikach AVI) |Tak |
+| JPEG 2000 |Tak |
+| MPEG-2 (do 422 profilu i wysokiego poziomu), w tym wariantów, takich jak XDCAM, XDCAM HD, XDCAM IMX, CableLabs® i D10) |Do 422 profilu |
 | MPEG-1 |Tak |
 | VC-1/WMV9 |Tak |
-| Canopus Centrali/HQX |Nie |
-| MPEG-4 Part 2 |Tak |
-| [Theora](https://en.wikipedia.org/wiki/Theora) |Tak |
-| Yuv420 bez kompresji lub mezzanine |Tak |
-| Apple ProRes 422 |Tak |
+| Canopus CENTRALĄ/HQX |Nie |
+| MPEG-4 — część 2 |Yes |
+| [Theora](https://en.wikipedia.org/wiki/Theora) |Yes |
+| YUV420 unskompresowano lub Mezzanine |Yes |
+| Apple ProRes 422 |Yes |
 | Apple ProRes 422 LT |Tak |
-| Apple ProRes 422 Centralą |Tak |
-| Apple ProRes Proxy |Tak |
+| Apple ProRes 422 CENTRALĄ |Yes |
+| Serwer proxy Apple ProRes |Tak |
 | Apple ProRes 4444 |Tak |
-| XQ 4444 ProRes firmy Apple |Tak |
-| HEVC/H.265| Główny profil|
+| Apple ProRes 4444 XQ |Tak |
+| HEVC/H.265| Profil główny|
 
-## <a name="input-audio-codecs"></a>Dane wejściowe audio kodery-dekodery
-| Dane wejściowe Audio kodery-dekodery | Obsługiwane |
+## <a name="input-audio-codecs"></a>Kodery-dekoder Audio Input
+| Kodery-dekoder Audio Input | Obsługiwane |
 | --- | --- |
-| AAC (AAC-LC, AAC-HE oraz AAC-HEv2; maksymalnie 5.1) |Tak |
-| MPEG Layer 2 |Yes |
-| Mp3 (MPEG-1 Audio warstwa 3) |Tak |
-| Program Windows Media Audio |Tak |
+| AAC (AAC-LC, AAC-IT i AAC-HEv2; do 5,1) |Tak |
+| MPEG Layer 2 |Tak |
+| MP3 (warstwa audio MPEG-1) |Tak |
+| Dźwięk Windows Media |Tak |
 | WAV/PCM |Tak |
 | [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |Tak |
-| [Dziele](https://go.microsoft.com/fwlink/?LinkId=822667) |Tak |
+| [Opus](https://go.microsoft.com/fwlink/?LinkId=822667) |Tak |
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Tak |
-| AMR (adaptacyjne Multi-Rate) |Tak |
-| AES (SMPTE 331 M oraz 302 M, AES3-2003) |Nie |
+| AMR (adaptacyjna wielowskaźnikowa) |Tak |
+| AES (SMPTE 331M i 302M, AES3-2003) |Nie |
 | Dolby® E |Nie |
 | Dolby® Digital (AC3) |Nie |
 | Dolby® Digital Plus (E-AC3) |Nie |
 
-## <a name="output-formats-and-codecs"></a>Formaty danych wyjściowych i kodery-dekodery
-W poniższej tabeli wymieniono formaty koderów-dekoderów i plików, które są obsługiwane w przypadku eksportu.
+## <a name="output-formats-and-codecs"></a>Formaty i kodeki wyjściowe
+W poniższej tabeli wymieniono kodery-dekoder i formaty plików, które są obsługiwane do eksportowania.
 
-| Format pliku | Kodera-dekodera wideo | Audio Codec |
+| Format pliku | Koder-dekoder wideo | Koder-dekoder audio |
 | --- | --- | --- |
-| MP4 <br/><br/>(w tym kontenerów w formacie MP4 o różnych szybkościach transmisji bitów) |H.264 (wysoki, główne i profile odniesienia) |AAC-LC, HE-AAC v1, HE-AAC v2 |
-| MPEG2-TS |H.264 (wysoki, główne i profile odniesienia) |AAC-LC, HE-AAC v1, HE-AAC v2 |
+| MP4 <br/><br/>(w tym kontenery MP4 o wieloszybkości transmisji bitów) |H. 264 (profile o wysokim, głównym i bazowym) |AAC-LC, HE-AAC v1, HE-AAC v2 |
+| MPEG2-TS |H. 264 (profile o wysokim, głównym i bazowym) |AAC-LC, HE-AAC v1, HE-AAC v2 |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Tworzenie przekształcenia przy użyciu niestandardowego ustawienia wstępnego](customize-encoder-presets-how-to.md)
+[Tworzenie przekształcenia z niestandardowym ustawieniem wstępnym](customize-encoder-presets-how-to.md)

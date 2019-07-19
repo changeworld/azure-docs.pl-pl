@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie uaktualniania aplikacji usługi Service Fabric | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować ustawienia dla uaktualnienie aplikacji usługi Service Fabric za pomocą programu Microsoft Visual Studio.
+title: Konfigurowanie uaktualnienia aplikacji Service Fabric | Microsoft Docs
+description: Dowiedz się, jak skonfigurować ustawienia uaktualniania aplikacji Service Fabric przy użyciu Microsoft Visual Studio.
 services: service-fabric
 documentationcenter: na
 author: mikkelhegn
@@ -13,65 +13,65 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/29/2017
-ms.author: mikkelhegn
-ms.openlocfilehash: 79120371ca2a62e5ef9f2bf38476635db12e9fcc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mikhegn
+ms.openlocfilehash: 5979541146b7cd7b854f35c5bf204e71208f066b
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61082847"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876756"
 ---
-# <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Konfigurowanie uaktualniania aplikacji usługi Service Fabric w programie Visual Studio
-Visual Studio tools dla usługi Azure Service Fabric zapewnia obsługę uaktualniania publikowania do klastrów lokalnym lub zdalnym. Istnieją trzy scenariusze, w których ma zostać uaktualniony do nowszej wersji, zamiast zastępowania aplikacji podczas testowania i debugowania aplikacji:
+# <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Konfigurowanie uaktualnienia aplikacji Service Fabric w programie Visual Studio
+Narzędzia Visual Studio Tools for Azure Service Fabric zapewniają obsługę uaktualnienia w przypadku klastrów lokalnych lub zdalnych. Istnieją trzy scenariusze, w których aplikacja ma zostać uaktualniona do nowszej wersji zamiast zastępowania aplikacji podczas testowania i debugowania:
 
-* Dane aplikacji nie będzie utracone podczas uaktualniania.
-* Dostępność pozostaje wysokiej, dzięki czemu nie będzie żadnych zakłóceń, podczas uaktualniania, jeżeli ma wystarczającej liczby wystąpień usługi rozkłada domen uaktualnienia.
-* Testy mogą być uruchamiane w odniesieniu do aplikacji, gdy jest uaktualniana.
+* Podczas uaktualniania nie zostaną utracone dane aplikacji.
+* Dostępność pozostaje wysoka, dlatego podczas uaktualniania nie będzie żadnych przerw w działaniu usługi, jeśli jest wystarczająca liczba wystąpień usługi rozmieszczonych w różnych domenach uaktualnienia.
+* Testy można uruchamiać względem aplikacji podczas jej uaktualniania.
 
-## <a name="parameters-needed-to-upgrade"></a>Parametry wymagane do uaktualnienia
-Można wybrać spośród dwóch rodzajów wdrożenia: regularnie lub uaktualnienia. Regularne wdrożenia usuwa wszelkie poprzednie informacje na temat wdrażania i dane w klastrze podczas wdrażania uaktualnienia zachowuje on. Podczas uaktualniania aplikacji usługi Service Fabric, w programie Visual Studio, musisz podać parametry uaktualniania aplikacji i kondycji Sprawdź zasady. Parametry uaktualniania aplikacji pomóc w kontrolowaniu uaktualniania, podczas gdy zasady dotyczące kondycji wyboru ustalić, czy uaktualnienie zakończyło się pomyślnie. Zobacz [uaktualnianie aplikacji usługi Service Fabric: parametry uaktualniania](service-fabric-application-upgrade-parameters.md) Aby uzyskać więcej informacji.
+## <a name="parameters-needed-to-upgrade"></a>Parametry wymagające uaktualnienia
+Można wybrać jedną z dwóch typów wdrożenia: Regular lub upgrade. Regularne wdrożenie powoduje wymazanie wcześniejszych informacji o wdrożeniu i danych w klastrze, podczas gdy wdrożenie uaktualnienia zachowuje się. W przypadku uaktualniania aplikacji Service Fabric w programie Visual Studio należy podać parametry uaktualnienia aplikacji i zasady sprawdzania kondycji. Parametry uaktualniania aplikacji ułatwiają kontrolę nad uaktualnieniem, podczas gdy zasady sprawdzania kondycji określają, czy uaktualnienie zakończyło się pomyślnie. Aby uzyskać więcej informacji, zobacz [Service Fabric uaktualniania aplikacji: parametry uaktualnienia](service-fabric-application-upgrade-parameters.md) .
 
-Istnieją trzy tryby uaktualnienia: *Monitorowane*, *UnmonitoredAuto*, i *UnmonitoredManual*.
+Istnieją trzy tryby uaktualniania: *Monitorowane*, *UnmonitoredAuto*i *UnmonitoredManual*.
 
-* Uaktualnienie monitorowanej automatyzuje uaktualnienia i sprawdzanie kondycji aplikacji.
-* Uaktualnienie UnmonitoredAuto automatyzuje uaktualnienia, ale pomija sprawdzanie kondycji aplikacji.
-* Po wykonaniu uaktualnienia UnmonitoredManual, musisz ręcznie uaktualnić każdej z domen.
+* Monitorowane uaktualnienie automatyzuje Sprawdzanie kondycji uaktualnienia i aplikacji.
+* Uaktualnienie UnmonitoredAuto automatyzuje uaktualnienie, ale pomija kontrolę kondycji aplikacji.
+* Po uaktualnieniu UnmonitoredManual należy ręcznie uaktualnić każdą domenę uaktualnienia.
 
-Każdy tryb uaktualniania wymaga różnych zestawów parametrów. Zobacz [parametry uaktualniania aplikacji](service-fabric-application-upgrade-parameters.md) Aby dowiedzieć się więcej o dostępnych opcjach uaktualniania.
+Każdy tryb uaktualniania wymaga różnych zestawów parametrów. Zobacz [Parametry uaktualnienia aplikacji](service-fabric-application-upgrade-parameters.md) , aby dowiedzieć się więcej o dostępnych opcjach uaktualniania.
 
-## <a name="upgrade-a-service-fabric-application-in-visual-studio"></a>Uaktualnianie aplikacji usługi Service Fabric, w programie Visual Studio
-Uaktualnianie aplikacji usługi Service Fabric za pomocą narzędzi Visual Studio Service Fabric, możesz określić proces publikowania, do uaktualnienia, a nie regularnego wdrażania, sprawdzając **Uaktualnij aplikację** pole wyboru.
+## <a name="upgrade-a-service-fabric-application-in-visual-studio"></a>Uaktualnianie aplikacji Service Fabric w programie Visual Studio
+Jeśli używasz narzędzi Service Fabric Visual Studio do uaktualnienia aplikacji Service Fabric, możesz określić proces publikowania jako uaktualnienie, a nie regularne wdrożenie, zaznaczając pole wyboru **Uaktualnij aplikację** .
 
-### <a name="to-configure-the-upgrade-parameters"></a>Aby skonfigurować parametry uaktualniania
-1. Kliknij przycisk **ustawienia** przycisk znajdujący się obok pola wyboru. **Edytuj parametry uaktualniania** pojawi się okno dialogowe. **Edytuj parametry uaktualniania** okno dialogowe obsługuje tryb uaktualniania monitorowane, UnmonitoredAuto i UnmonitoredManual.
-2. Wybierz tryb uaktualniania, którego chcesz użyć, a następnie wypełnij siatki parametru.
+### <a name="to-configure-the-upgrade-parameters"></a>Aby skonfigurować parametry uaktualnienia
+1. Kliknij przycisk **Ustawienia** obok pola wyboru. Zostanie wyświetlone okno dialogowe **edytowanie parametrów uaktualnienia** . Okno dialogowe **edytowanie parametrów uaktualnienia** obsługuje tryby uaktualniania monitorowane, UnmonitoredAuto i UnmonitoredManual.
+2. Wybierz tryb uaktualniania, którego chcesz użyć, a następnie Wypełnij siatkę parametrów.
 
-    Każdy parametr ma wartości domyślnej. Opcjonalny parametr *DefaultServiceTypeHealthPolicy* przyjmuje dane wejściowe z tabeli wyznaczania wartości skrótu. Poniżej przedstawiono przykładowy format wejściowy tabeli wyznaczania wartości skrótu dla *DefaultServiceTypeHealthPolicy*:
+    Każdy parametr ma wartości domyślne. Opcjonalny parametr *DefaultServiceTypeHealthPolicy* pobiera dane wejściowe tabeli skrótów. Oto przykład formatu danych wejściowych tabeli skrótów dla *DefaultServiceTypeHealthPolicy*:
 
     ```
     @{ ConsiderWarningAsError = "false"; MaxPercentUnhealthyDeployedApplications = 0; MaxPercentUnhealthyServices = 0; MaxPercentUnhealthyPartitionsPerService = 0; MaxPercentUnhealthyReplicasPerPartition = 0 }
     ```
 
-    *ServiceTypeHealthPolicyMap* jest inny opcjonalnym parametrem, który przyjmuje dane wejściowe z tabeli skrótu w następującym formacie:
+    *ServiceTypeHealthPolicyMap* jest kolejnym opcjonalnym parametrem, który pobiera dane wejściowe tabeli skrótów w następującym formacie:
 
     ```    
     @ {"ServiceTypeName" : "MaxPercentUnhealthyPartitionsPerService,MaxPercentUnhealthyReplicasPerPartition,MaxPercentUnhealthyServices"}
     ```
 
-    Oto przykład rzeczywistych:
+    Oto przykład w czasie rzeczywistym:
 
     ```
     @{ "ServiceTypeName01" = "5,10,5"; "ServiceTypeName02" = "5,5,5" }
     ```
-3. Jeśli wybierzesz UnmonitoredManual tryb uaktualniania, należy ręcznie uruchomić konsolę programu PowerShell, aby kontynuować, a następnie zakończyć proces uaktualniania. Zapoznaj się [uaktualnianie aplikacji usługi Service Fabric: Tematy zaawansowane](service-fabric-application-upgrade-advanced.md) Aby dowiedzieć się, jak Ręczne uaktualnianie działa.
+3. W przypadku wybrania trybu uaktualnienia UnmonitoredManual należy ręcznie uruchomić konsolę programu PowerShell, aby kontynuować i zakończyć proces uaktualniania. Zapoznaj się z tematem [Service Fabric uaktualniania aplikacji: Zaawansowane tematy](service-fabric-application-upgrade-advanced.md) , aby dowiedzieć się, jak działa uaktualnienie ręczne.
 
 ## <a name="upgrade-an-application-by-using-powershell"></a>Uaktualnianie aplikacji przy użyciu programu PowerShell
-Aby uaktualnić aplikację usługi Service Fabric, można użyć poleceń cmdlet programu PowerShell. Zobacz [samouczek dotyczący uaktualniania aplikacji usługi Service Fabric](service-fabric-application-upgrade-tutorial.md) i [Start ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade) Aby uzyskać szczegółowe informacje.
+Za pomocą poleceń cmdlet programu PowerShell można uaktualnić aplikację Service Fabric. Aby uzyskać szczegółowe informacje, zobacz [Samouczek dotyczący uaktualniania aplikacji Service Fabric](service-fabric-application-upgrade-tutorial.md) i [Start-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade) .
 
 ## <a name="specify-a-health-check-policy-in-the-application-manifest-file"></a>Określ zasady sprawdzania kondycji w pliku manifestu aplikacji
-Do każdej usługi w aplikacji usługi Service Fabric może mieć własne parametry zasad kondycji, które zastępują wartości domyślne. Możesz podać te wartości parametrów w pliku manifestu aplikacji.
+Każda usługa w aplikacji Service Fabric może mieć własne parametry zasad dotyczących kondycji, które zastępują wartości domyślne. Można podać te wartości parametrów w pliku manifestu aplikacji.
 
-Poniższy przykład pokazuje, jak zastosować zasady sprawdzania kondycji unikatowy dla każdej usługi w manifeście aplikacji.
+Poniższy przykład pokazuje, jak zastosować unikatowe zasady sprawdzania kondycji dla każdej usługi w manifeście aplikacji.
 
 ```xml
 <Policies>
@@ -86,5 +86,5 @@ Poniższy przykład pokazuje, jak zastosować zasady sprawdzania kondycji unikat
     </HealthPolicy>
 </Policies>
 ```
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji na temat uaktualniania aplikacji, zobacz [uaktualnianie aplikacji przy użyciu programu Visual Studio](service-fabric-application-upgrade-tutorial.md).
+## <a name="next-steps"></a>Następne kroki
+Aby uzyskać więcej informacji na temat uaktualniania aplikacji, zobacz [Uaktualnianie aplikacji przy użyciu programu Visual Studio](service-fabric-application-upgrade-tutorial.md).

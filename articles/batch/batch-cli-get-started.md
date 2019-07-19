@@ -4,7 +4,7 @@ description: Skorzystaj z szybkiego wprowadzenia do poleceń usługi Batch w int
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: fcd76587-1827-4bc8-a84d-bba1cd980d85
 ms.service: batch
@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 07/24/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e2bd67ebb977a37c75631f16fbbf4c7dbd6bf250
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e541ef82b7fe63042adf84733dd86fdd3eabdf1
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60782571"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323731"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Zarządzanie zasobami usługi Batch przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -122,7 +122,7 @@ Zobacz [przykłady skryptów interfejsów wiersza polecenia](cli-samples.md) dla
 
 ## <a name="json-files-for-resource-creation"></a>Pliki JSON do tworzenia zasobów
 
-Podczas tworzenia zasobów usługi Batch, np. puli i zadań, możesz określić plik JSON zawierający konfiguracje nowego zasobu, zamiast przekazywać parametry zasobu w opcjach wiersza polecenia. Na przykład:
+Podczas tworzenia zasobów usługi Batch, np. puli i zadań, możesz określić plik JSON zawierający konfiguracje nowego zasobu, zamiast przekazywać parametry zasobu w opcjach wiersza polecenia. Przykład:
 
 ```azurecli
 az batch pool create my_batch_pool.json
@@ -130,7 +130,7 @@ az batch pool create my_batch_pool.json
 
 Możesz wykonać większość operacji tworzenia zasobów usługi Batch, korzystając wyłącznie z opcji wiersza polecenia, niemniej niektóre funkcje wymagają określenia pliku w formacie JSON zawierającego szczegółowe informacje o zasobie. Przykładowo musisz użyć pliku JSON, jeśli chcesz określić pliki zasobu dla zadania rozpoczęcia.
 
-Aby zapoznać się ze składnią pliku JSON wymaganego do utworzenia zasobu, skorzystaj z dokumentacji [interfejsu API REST usługi Batch][rest_api]. Każdy temat „Dodawanie *typu zasobu*” w dokumentacji interfejsu API REST zawiera przykładowe skrypty JSON do tworzenia zasobu. Tych przykładowych skryptów JSON można używać jako szablonów dla plików JSON do użytku z interfejsem wiersza polecenia platformy Azure. Aby na przykład zapoznać się ze składnią pliku JSON do tworzenia puli, zobacz [Dodawanie puli do konta][rest_add_pool].
+Aby wyświetlić składnię JSON wymaganą do utworzenia zasobu, zapoznaj się z dokumentacją [interfejsu API REST usługi Batch][rest_api] . Każdy temat „Dodawanie *typu zasobu*” w dokumentacji interfejsu API REST zawiera przykładowe skrypty JSON do tworzenia zasobu. Tych przykładowych skryptów JSON można używać jako szablonów dla plików JSON do użytku z interfejsem wiersza polecenia platformy Azure. Na przykład aby wyświetlić składnię JSON dla tworzenia puli, zobacz [Dodawanie puli do konta][rest_add_pool].
 
 Aby uzyskać przykładowy skrypt określający plik JSON, zobacz [Uruchamianie zadań i zadań podrzędnych za pomocą usługi Batch](./scripts/batch-cli-sample-run-job.md).
 
@@ -171,7 +171,7 @@ Poniższe porady mogą być pomocne w przypadku rozwiązywania problemów związ
 * Możesz wyświetlić **dane wyjściowe polecenia w formie pliku JSON** przy użyciu opcji `--json`. Przykładowo polecenie `az batch pool show pool001 --json` wyświetla właściwości puli 001 w formacie JSON. Następnie możesz skopiować i zmodyfikować te dane wyjściowe, aby użyć ich w pliku `--json-file` (zobacz sekcję „Pliki JSON” wcześniej w tym artykule).
 <!---Loc Comment: Please, check link [JSON files] since it's not redirecting to any location.--->
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 * Aby uzyskać więcej informacji o zasobach usługi Batch, zobacz [Omówienie usługi Azure Batch dla deweloperów](batch-api-basics.md).

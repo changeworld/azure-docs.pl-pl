@@ -1,6 +1,6 @@
 ---
-title: Wykrywanie dla warstwy usług platformy Azure w Centrum zabezpieczeń Azure zagrożeń | Dokumentacja firmy Microsoft
-description: W tym temacie przedstawiono alertów warstwy usługi platformy Azure dostępnych w usłudze Azure Security Center.
+title: Wykrywanie zagrożeń dla warstwy usług platformy Azure w Azure Security Center | Microsoft Docs
+description: W tym temacie przedstawiono alerty warstwy usług platformy Azure dostępne w Azure Security Center.
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -13,68 +13,68 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/02/2019
-ms.author: monhaber
-ms.openlocfilehash: 8c1733877834f82d9ee2524cf8bf54f532e7d9c4
-ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
+ms.author: v-mohabe
+ms.openlocfilehash: f795822d76def4a6695a4746fba7e8566041cb2b
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67571727"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295548"
 ---
-# <a name="threat-detection-for-azure-service-layer-in-azure-security-center"></a>Wykrywanie zagrożeń dla warstwy usług platformy Azure w Centrum zabezpieczeń Azure
+# <a name="threat-detection-for-azure-service-layer-in-azure-security-center"></a>Wykrywanie zagrożeń dla warstwy usług platformy Azure w Azure Security Center
 
-W tym temacie przedstawiono alertów usługi Security Center, dostępne podczas monitorowania następujące warstwy usługi platformy Azure.
+W tym temacie przedstawiono Security Center alerty dostępne podczas monitorowania następujących warstw usług platformy Azure.
 
-* [Azure Network layer](#network-layer)
-* [Warstwa zarządzania platformy Azure (Azure Resource Manager) (wersja zapoznawcza)](#management-layer)
+* [Warstwa sieci platformy Azure](#network-layer)
+* [Warstwa zarządzania Azure (Azure Resource Manager) (wersja zapoznawcza)](#management-layer)
 
 >[!NOTE]
->Przy użyciu telemetrii, że usługa Security Center korzysta z sięgnięcie do platformy Azure wewnętrznych źródeł danych, analizy, przedstawione poniżej mają zastosowanie do wszystkich typów zasobów.
+>Korzystając z danych telemetrycznych, które Security Center wykorzystują od przydzielenia do wewnętrznych kanałów informacyjnych platformy Azure, analiza udostępniona poniżej ma zastosowanie do wszystkich typów zasobów.
 
-## Azure Network layer<a name="network-layer"></a>
+## Warstwa sieci platformy Azure<a name="network-layer"></a>
 
-Analizy warstwy sieci usługi Security Center opierają się na przykład [danych protokołu IPFIX](https://en.wikipedia.org/wiki/IP_Flow_Information_Export), które są nagłówki pakietów zbierane przez routery platformy Azure. Oparte na tego strumieniowego źródła danych, modeli uczenia maszynowego Centrum zabezpieczeń identyfikować i oznaczać działania złośliwego ruchu. Wzbogacić adresów IP, usługa Security Center korzysta z bazy danych analizy zagrożeń firmy Microsoft.
+Security Center analiza warstwy sieciowej opiera się na przykładowych [danych IPFIX](https://en.wikipedia.org/wiki/IP_Flow_Information_Export), które są nagłówkami pakietów zebranymi przez routery podstawowe platformy Azure. W oparciu o te strumieniowe źródło danych Security Center modele uczenia maszynowego identyfikują i flagą złośliwych działań związanych z ruchem. Aby wzbogacić adresy IP, Security Center korzysta z bazy danych analizy zagrożeń firmy Microsoft.
 
 > [!div class="mx-tableFixed"]
 
 |Alerty|Opis|
 |---|---|
-|**Podejrzane wychodzące działanie sieci protokołu RDP**|Analiza ruchu próbkowanych sieci wykryła nietypową wychodzącą komunikację protokołu RDP (Remote Desktop) pochodzące z zasobów w danym wdrożeniu. To działanie jest uznawane za nietypowe w przypadku tego środowiska i może wskazywać, że zasób bezpieczeństwo zostało naruszone i obecnie jest używany do atak siłowy jest zewnętrzny punkt końcowy protokołu RDP. Należy pamiętać, że ten typ działań może powodować oflagowanie adresu IP jako złośliwego przez jednostki zewnętrzne.|
-|**Podejrzane wychodzące działanie sieci protokołu RDP do wielu miejsc docelowych**|Analiza ruchu próbkowanych sieci wykryła nietypową wychodzącą komunikację protokołu RDP (Remote Desktop) pochodzące z zasobów w danym wdrożeniu do wielu miejsc docelowych. To działanie jest uznawane za nietypowe w przypadku tego środowiska i może wskazywać, że zasób został złamany i jest teraz używany na atak siłowy zewnętrznych punktów końcowych protokołu RDP. Należy pamiętać, że ten typ działań może powodować oflagowanie adresu IP jako złośliwego przez jednostki zewnętrzne.|
-|**Podejrzane wychodzące działanie sieci protokołu SSH**|Analiza ruchu próbkowanych sieci wykryła nietypową wychodzącą komunikację protokołu Secure Shell (SSH) pochodzące z zasobów w danym wdrożeniu. To działanie jest uznawane za nietypowe w przypadku tego środowiska i może wskazywać, że zasób bezpieczeństwo zostało naruszone i obecnie jest używany do atak siłowy jest zewnętrzny punkt końcowy SSH. Należy pamiętać, że ten typ działań może powodować oflagowanie adresu IP jako złośliwego przez jednostki zewnętrzne.|
-|**Podejrzane wychodzące działanie sieci protokołu SSH do wielu miejsc docelowych**|Analiza ruchu próbkowanych sieci wykryła nietypową wychodzącą komunikację protokołu Secure Shell (SSH) pochodzące z zasobów w danym wdrożeniu do wielu miejsc docelowych. To działanie jest uznawane za nietypowe w przypadku tego środowiska i może wskazywać, że zasób został złamany i jest teraz używany na atak siłowy zewnętrznych punktów końcowych protokołu SSH. Należy pamiętać, że ten typ działań może powodować oflagowanie adresu IP jako złośliwego przez jednostki zewnętrzne.|
-|**Podejrzane przychodzące działanie sieci protokołu SSH z wielu źródeł**|Analiza ruchu w próbkowanych sieci wykryła nietypową SSH przychodzące z wielu źródeł do zasobu w danym wdrożeniu. Różne unikatowe adresy IP nawiązywania połączenia z zasobu, jest uznawane za nietypowe w przypadku tego środowiska. To działanie może oznaczać próbę ataku atak siłowy interfejsu protokołu SSH z wielu hostów (Botnet).|
-|**Podejrzane przychodzące działanie sieci protokołu SSH**|Analiza ruchu próbkowanych sieci wykryła nietypową przychodzącą komunikację protokołu SSH z zasobem w danym wdrożeniu. Stosunkowo dużą liczbę połączeń przychodzących do zasobu, jest uznawane za nietypowe w przypadku tego środowiska. To działanie może oznaczać próbę ataku atak siłowy interfejsu SSH.
-|**Podejrzane przychodzące działanie sieci protokołu RDP z wielu źródeł**|Analiza ruchu w próbkowanych sieci wykryła nietypową przychodzącej komunikacji RDP z wielu źródeł do zasobu w danym wdrożeniu. Różne unikatowe adresy IP nawiązywania połączenia z zasobu, jest uznawane za nietypowe w przypadku tego środowiska. To działanie może oznaczać próbę ataku siłowego interfejsu protokołu RDP z wielu hostów (Botnet).|
-|**Podejrzane przychodzące działanie sieci protokołu RDP**|Analiza ruchu próbkowanych sieci wykryła nietypową przychodzącą komunikację protokołu RDP do zasobu w danym wdrożeniu. Stosunkowo dużą liczbę połączeń przychodzących do zasobu, jest uznawane za nietypowe w przypadku tego środowiska. To działanie może oznaczać próbę ataku atak siłowy interfejsu SSH.|
+|**Podejrzane działanie wychodzącej sieci RDP**|Przykładowa analiza ruchu w sieci wykryła nietypową komunikację wychodzącą Remote Desktop Protocol (RDP) pochodzącą z zasobu we wdrożeniu. To działanie jest uznawane za nietypowe w przypadku tego środowiska i może wskazywać, że zabezpieczenia zasobu zostały naruszone i są teraz używane do rozważenia zewnętrznego punktu końcowego RDP. Należy pamiętać, że ten typ działań może powodować oflagowanie adresu IP jako złośliwego przez jednostki zewnętrzne.|
+|**Podejrzane działanie sieci wychodzącej RDP z wieloma lokalizacjami docelowymi**|Przykładowa analiza ruchu w sieci wykryła nietypową komunikację wychodzącą Remote Desktop Protocol (RDP) pochodzącą z zasobu we wdrożeniu do wielu miejsc docelowych. To działanie jest uznawane za nietypowe w przypadku tego środowiska i może wskazywać, że zabezpieczenia zasobu zostały naruszone i są teraz używane do rozważenia zewnętrznych punktów końcowych protokołu RDP. Należy pamiętać, że ten typ działań może powodować oflagowanie adresu IP jako złośliwego przez jednostki zewnętrzne.|
+|**Podejrzane wychodzące działanie sieci SSH**|Przykładowa analiza ruchu sieciowego wykryła nietypową komunikację wychodzącą Secure Shell (SSH) pochodzącą z zasobu we wdrożeniu. To działanie jest uznawane za nietypowe w przypadku tego środowiska i może wskazywać, że zabezpieczenia zostały naruszone i są teraz używane do rozważenia zewnętrznego punktu końcowego protokołu SSH. Należy pamiętać, że ten typ działań może powodować oflagowanie adresu IP jako złośliwego przez jednostki zewnętrzne.|
+|**Podejrzane wychodzące działanie sieci SSH z wieloma lokalizacjami docelowymi**|Przykładowa analiza ruchu w sieci wykryła nietypową komunikację wychodzącą Secure Shell (SSH) pochodzącą z zasobu we wdrożeniu do wielu miejsc docelowych. To działanie jest uznawane za nietypowe w przypadku tego środowiska i może wskazywać, że zabezpieczenia zostały naruszone i są teraz używane do rozważenia zewnętrznych punktów końcowych protokołu SSH. Należy pamiętać, że ten typ działań może powodować oflagowanie adresu IP jako złośliwego przez jednostki zewnętrzne.|
+|**Podejrzane przychodzące działanie sieci SSH z wielu źródeł**|Przykładowa analiza ruchu w sieci wykryła nietypową przychodzącą komunikację SSH z wielu źródeł do zasobu we wdrożeniu. Różne unikatowe adresy IP łączące się z zasobem są uznawane za nietypowe w przypadku tego środowiska. To działanie może wskazywać na próbę rozdzielenia interfejsu SSH z wielu hostów (botnet).|
+|**Podejrzane przychodzące działanie sieci SSH**|Przykładowa analiza ruchu w sieci wykryła nietypową komunikację SSH z zasobem w danym wdrożeniu. Stosunkowo wysoka liczba połączeń przychodzących do zasobu jest traktowana jako nietypowa dla tego środowiska. To działanie może wskazywać na próbę nawiązania połączenia z interfejsem SSH.
+|**Podejrzane przychodzące działanie sieci RDP z wielu źródeł**|Przykładowa analiza ruchu w sieci wykryła nietypową przychodzącą komunikację RDP z wielu źródeł do zasobu we wdrożeniu. Różne unikatowe adresy IP łączące się z zasobem są uznawane za nietypowe w przypadku tego środowiska. To działanie może wskazywać na próbę rozdzielenia interfejsu RDP z wielu hostów (botnet).|
+|**Podejrzane przychodzące działanie sieci RDP**|Przykładowa analiza ruchu w sieci wykryła nietypową przychodzącą komunikację RDP z zasobem w danym wdrożeniu. Stosunkowo wysoka liczba połączeń przychodzących do zasobu jest traktowana jako nietypowa dla tego środowiska. To działanie może wskazywać na próbę nawiązania połączenia z interfejsem SSH.|
 
-Aby dowiedzieć się, jak używać sieci w Centrum zabezpieczeń związane z sygnałów, aby zastosować ochronę przed zagrożeniami, zobacz [rozwiązaniami do wykrywania heurystyczne DNS w usłudze Azure Security Center](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/).
-## Warstwa zarządzania platformy Azure (Azure Resource Manager) (wersja zapoznawcza)<a name ="management-layer"></a>
+Aby zrozumieć, jak Security Center mogą używać sygnałów związanych z siecią w celu zastosowania ochrony przed zagrożeniami, zobacz [heurystyczne wykrywanie nazw DNS w Azure Security Center](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/).
+## Warstwa zarządzania Azure (Azure Resource Manager) (wersja zapoznawcza)<a name ="management-layer"></a>
 
 >[!NOTE]
->Usługa Security Center warstwę ochrony, oparte na usłudze Resource Manager jest obecnie w wersji zapoznawczej.
+>Warstwa ochrony Security Center oparta na Azure Resource Manager jest obecnie dostępna w wersji zapoznawczej.
 
-Usługa Security Center oferuje dodatkową warstwę ochrony, wykorzystując zdarzeń usługi Azure Resource Manager, który jest uważany za płaszczyznę kontroli dla usługi Azure. Analizując rekordy usługi Azure Resource Manager, usługa Security Center wykrywa nietypowe i potencjalnie szkodliwe działania w środowisku subskrypcji platformy Azure.
+Security Center oferuje dodatkową warstwę ochrony, wykorzystując zdarzenia Azure Resource Manager, które są traktowane jako płaszczyzny kontroli dla platformy Azure. Analizując Azure Resource Manager rekordy, Security Center wykrywa nietypowe lub potencjalnie szkodliwe operacje w środowisku subskrypcji platformy Azure.
 
 > [!div class="mx-tableFixed"]
 
 |Alerty|Opis|
 |---|---|
-|**Zestaw narzędzi microBurst uruchamiania**|Uruchom pakiet narzędzi Rekonesans znanym środowisku chmury została wykryta w danym środowisku. Narzędzie "MicroBurst" (zobacz https://github.com/NetSPI/MicroBurst) mogą być używane przez osoby atakującej (lub tester penetracji) do mapowania zasobów subskrypcje, zidentyfikować niezabezpieczone konfiguracje i przecieku informacji poufnych.|
-|**Zestaw narzędzi azurite uruchamiania**|Uruchom pakiet narzędzi Rekonesans znanym środowisku chmury została wykryta w danym środowisku. Narzędzie "Azurite" (zobacz https://github.com/mwrlabs/Azurite) mogą być używane przez osoby atakującej (lub tester penetracji) do mapowania zasobów subskrypcji i znalezienia niezabezpieczone konfiguracji.|
-|**Sesję podejrzane zarządzania przy użyciu nieaktywne konto**|Analiza dzienników aktywności subskrypcji wykrył podejrzanego zachowania. Podmiot zabezpieczeń, który nie był używany w długim okresie czasu, teraz wykonuje akcje, które można zabezpieczyć trwałości przez osobę atakującą.|
-|**Podejrzane zarządzania sesji przy użyciu programu PowerShell**|Analiza dzienników aktywności subskrypcji wykrył podejrzanego zachowania. Podmiot zabezpieczeń, które regularnie nie używa programu PowerShell do zarządzania środowiskiem subskrypcji jest teraz przy użyciu programu PowerShell i wykonywanie akcji, które umożliwiają zabezpieczenie trwałości osobie atakującej.|
-|**Użyj technik zaawansowane trwałości platformy Azure**|Analiza dzienników aktywności subskrypcji wykrył podejrzanego zachowania. Niestandardowe role mieć jednostek legitimized tożsamości. Może to prowadzić atakującej przejąć stały dostęp do sieci w środowisku klienta na platformie Azure.|
-|**Aktywność z rzadko występującego kraju**|Podczas działania z lokalizacji, która nie był nigdy lub ostatnio odwiedzany przez dowolnego użytkownika w organizacji.<br/>Wykrywanie uwzględnia ostatnie lokalizacje działań do określenia lokalizacji nowych i rzadkie. Aparatu wykrywania anomalii są przechowywane informacje o powyższych lokalizacjach, które posługują się użytkownicy w organizacji. 
-|**Aktywność z anonimowych adresów IP**|Użytkownicy działanie z adresu IP, który został zidentyfikowany jako adres IP anonimowego serwera proxy została wykryta. <br/>Te serwery proxy są wykorzystywane przez osoby, które chcą ukryć adres IP swojego urządzenia i mogą być używane do złośliwego działania. Wykrywanie korzysta z usługi machine learning algorytmu, który ogranicza "wyniki fałszywie dodatnie", takie jak źle oznakowane adresy IP są powszechnie używane przez użytkowników w organizacji.|
-|**Niemożliwa podróż wykryto**|Dwa działania użytkownika (jest jedną lub wiele sesji) wystąpiły pochodzące z komputera odległym geograficznie lokalizacji w przedziale czasu krótszy niż czas jego będą miały użytkownikowi przesyłane z pierwszej lokalizacji do drugiej. Oznacza to, że inny użytkownik korzysta z tych samych poświadczeń. <br/>Wykrywanie korzysta z usługi machine learning algorytmu, który ignoruje oczywiste "wyniki fałszywie dodatnie" Współtworzenie warunki niemożliwych podróży, takich jak sieci VPN i lokalizacje, które regularnie używane przez innych użytkowników w organizacji. Wykrywanie ma wstępny okres uczenia wynoszący 7 dni, podczas których uczy się wzorca działania nowego użytkownika.|
+|**Uruchomiono zestaw narzędzi mikroserii**|W Twoim środowisku wykryto znane uruchomienie zestawu narzędzi Cloud-Environment rekonesans. Narzędzie "mikroseria" (zobacz https://github.com/NetSPI/MicroBurst) , że może być używane przez osobę atakującą (lub przeprowadzającą testy) do mapowania zasobów subskrypcji, identyfikowania niezabezpieczonych konfiguracji i przecieku poufnych informacji.|
+|**Azurite zestaw narzędzi**|W Twoim środowisku wykryto znane uruchomienie zestawu narzędzi Cloud-Environment rekonesans. Narzędzie "azurite" (zobacz https://github.com/mwrlabs/Azurite) może być używane przez osobę atakującą (lub przeprowadzającą testy) do mapowania zasobów subskrypcji i identyfikowania niezabezpieczonych konfiguracji.|
+|**Podejrzana sesja zarządzania przy użyciu nieaktywnego konta**|Analiza dzienników aktywności subskrypcji wykryła podejrzane zachowanie. Podmiot zabezpieczeń, który nie był używany przez długi czas, wykonuje teraz akcje, które mogą zapewnić ochronę trwałości dla osoby atakującej.|
+|**Podejrzana sesja zarządzania przy użyciu programu PowerShell**|Analiza dzienników aktywności subskrypcji wykryła podejrzane zachowanie. Podmiot zabezpieczeń, który nie używa programu PowerShell do zarządzania środowiskiem subskrypcji, korzysta obecnie z programu PowerShell i wykonuje akcje, które mogą zapewnić ochronę trwałości dla osoby atakującej.|
+|**Korzystanie z zaawansowanych technik trwałości platformy Azure**|Analiza dzienników aktywności subskrypcji wykryła podejrzane zachowanie. Role niestandardowe otrzymały jednostki tożsamości legitimized. Może to spowodować, że osoba atakująca uzyska utrwalenie w środowisku klienta platformy Azure.|
+|**Aktywność z rzadko występującego kraju**|Wystąpiło działanie z lokalizacji, która nie była ostatnio lub nigdy odwiedzana przez żadnego użytkownika w organizacji.<br/>Wykrywanie uwzględnia ostatnie lokalizacje działań do określenia lokalizacji nowych i rzadkie. Aparatu wykrywania anomalii są przechowywane informacje o powyższych lokalizacjach, które posługują się użytkownicy w organizacji. 
+|**Aktywność z anonimowych adresów IP**|Wykryto aktywność użytkowników z adresu IP, który został zidentyfikowany jako anonimowy adres IP serwera proxy. <br/>Te serwery proxy są wykorzystywane przez osoby, które chcą ukryć adres IP swojego urządzenia i mogą być używane do złośliwego działania. To wykrywanie wykorzystuje algorytm uczenia maszynowego, który zmniejsza "fałszywie dodatnie", takie jak źle otagowane adresy IP, które są powszechnie używane przez użytkowników w organizacji.|
+|**Wykryto niemożliwa podróż**|Wystąpią dwie działania użytkownika (to jedna lub wiele sesji), pochodzące z lokalizacji geograficznie odległych w okresie krótszym niż czas, w którym użytkownik przejdzie z pierwszej lokalizacji do drugiej. Oznacza to, że inny użytkownik korzysta z tych samych poświadczeń. <br/>To wykrywanie wykorzystuje algorytm uczenia maszynowego, który ignoruje oczywiste "fałszywie dodatnie" wpływ na niemożliwe warunki podróży, takie jak sieci VPN i lokalizacje regularnie używane przez innych użytkowników w organizacji. Wykrywanie ma wstępny okres uczenia wynoszący 7 dni, podczas których uczy się wzorca działania nowego użytkownika.|
 
 >[!NOTE]
-> Kilka z powyższych analizy są obsługiwane przez Microsoft Cloud App zabezpieczeń (MCAS). Aby korzystać z te dane analityczne, wymagana jest aktywowane licencja MCAS. Jeśli masz licencję MCAS, następnie te alerty są domyślnie włączone. Aby je wyłączyć:
+> Niektóre z powyższych analiz są obsługiwane przez Microsoft Cloud App Security (MCAS). Aby skorzystać z tych analiz, wymagana jest aktywowana licencja MCAS. Jeśli masz licencję MCAS, te alerty są domyślnie włączone. Aby je wyłączyć:
 >
-> 1. W bloku usługi Security Center wybierz **zasady zabezpieczeń**. Kliknij subskrypcję, którą chcesz zmienić, **edytować ustawienia**.
-> 2. Kliknij przycisk **wykrywanie zagrożeń**.
-> 3. W obszarze **korzystanie z integracji**, usuń zaznaczenie pola wyboru **Zezwalaj Microsoft Cloud App Security na dostęp do moich danych**i kliknij przycisk **Zapisz**.
+> 1. W bloku Security Center wybierz pozycję **zasady zabezpieczeń**. W przypadku subskrypcji, którą chcesz zmienić, kliknij pozycję **Edytuj ustawienia**.
+> 2. Kliknij pozycję **wykrywanie zagrożeń**.
+> 3. W obszarze **Włączanie integracji**Usuń zaznaczenie pola wyboru **Zezwalaj Microsoft Cloud App Security na dostęp do danych**i kliknij przycisk **Zapisz**.
 
 >[!NOTE]
->Usługa Azure Security Center przechowuje dane klienta związanych z zabezpieczeniami, w tym samym obszarze geograficznym, jako jego zasobów. Jeśli firmy Microsoft nie ma jeszcze wdrożone usługi Azure Security Center w obszarze geograficznym, zasobu, następnie przechowuje dane w Stanach Zjednoczonych. Po włączeniu Microsoft Cloud App Security (MCAS), te informacje są przechowywane zgodnie z regułami lokalizacji geograficznej MCAS. Zobacz [przechowywanie danych na potrzeby usługi inne niż regionalne, aby uzyskać więcej informacji](http://azuredatacentermap.azurewebsites.net/).
+>Azure Security Center przechowuje dane klienta związane z zabezpieczeniami w tym samym miejscu geograficznym, co jego zasób. Jeśli firma Microsoft nie wdrożona jeszcze Azure Security Center w lokalizacji geograficznej zasobu, przechowuje dane w Stany Zjednoczone. Gdy Microsoft Cloud App Security (MCAS) jest włączona, te informacje są przechowywane zgodnie z zasadami lokalizacji geograficznej MCAS. [Aby uzyskać więcej informacji, zobacz Magazyn danych dla usług innych niż regionalne](http://azuredatacentermap.azurewebsites.net/).

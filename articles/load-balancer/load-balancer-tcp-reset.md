@@ -1,10 +1,10 @@
 ---
-title: Resetowanie TCP modułu równoważenia obciążenia na bezczynności (%) na platformie Azure
+title: Load Balancer Resetowanie protokołu TCP przy bezczynności na platformie Azure
 titlesuffix: Azure Load Balancer
-description: Moduł równoważenia obciążenia za pomocą dwukierunkowych TCP RST pakietów na limit czasu bezczynności
+description: Load Balancer z dwukierunkowym pakietem TCP RST przy limicie czasu bezczynności
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
@@ -12,36 +12,36 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2019
-ms.author: kumud
-ms.openlocfilehash: 4a09492fcb8a7985fa27b6daae89aa5dec0fa6e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 8485f4b6e8d4ff55de4930b3cfb7a07802cf1d41
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65413855"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274155"
 ---
-# <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Moduł równoważenia obciążenia za pomocą funkcji resetowania TCP w stanie bezczynności (publiczna wersja zapoznawcza)
+# <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Load Balancer z resetowaniem protokołu TCP przy bezczynności (publiczna wersja zapoznawcza)
 
-Możesz użyć [Balancer w warstwie standardowa](load-balancer-standard-overview.md) do utworzenia bardziej przewidywalne zachowanie aplikacji dla swoich scenariuszy przez włączenie resetowania bezczynności TCP dla danej reguły. Zachowanie domyślne równoważenia obciążenia jest dyskretnie pomijać przepływów, po osiągnięciu limitu czasu bezczynności przepływu.  Włączenie tej funkcji spowoduje, że moduł równoważenia obciążenia wysłać dwukierunkowe resetuje TCP (TCP RST pakiet) przy użyciu limitu czasu bezczynności.  Informuje punktów końcowych aplikacji sieci czy połączenie przekroczyło limit czasu i nie jest już możliwe.  Punkty końcowe natychmiast może nawiązać nowe połączenie, jeśli to konieczne.
+Za pomocą [Usługa Load Balancer w warstwie Standardowa](load-balancer-standard-overview.md) można utworzyć bardziej przewidywalne zachowanie aplikacji dla Twoich scenariuszy przez włączenie resetowania protokołu TCP dla danej reguły. Domyślne zachowanie Load Balancer polega na dyskretnym porzucaniu przepływów, gdy zostanie osiągnięty limit czasu bezczynności przepływu.  Włączenie tej funkcji spowoduje, że Load Balancer wysyłać dwukierunkowe Resetowanie protokołu TCP (pakiety TCP RST) przy limicie czasu bezczynności.  Spowoduje to wyświetlenie punktów końcowych aplikacji, dla których upłynął limit czasu połączenia i nie będzie już można go używać.  Punkty końcowe mogą natychmiast ustanowić nowe połączenie, jeśli jest to możliwe.
 
-![Resetowanie TCP modułu równoważenia obciążenia](media/load-balancer-tcp-reset/load-balancer-tcp-reset.png)
+![Load Balancer Resetowanie protokołu TCP](media/load-balancer-tcp-reset/load-balancer-tcp-reset.png)
 
 >[!NOTE] 
->Moduł równoważenia obciążenia w przypadku resetowania na temat funkcji limitu czasu bezczynności protokołu TCP jest dostępny jako publiczna wersja zapoznawcza w tej chwili. Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>Load Balancer z funkcją resetowania protokołu TCP na czas bezczynności jest teraz dostępna jako publiczna wersja zapoznawcza. Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
  
-Możesz zmienić to domyślne zachowanie i Włącz wysyłania TCP resetuje na limit czasu bezczynności na reguły NAT dla ruchu przychodzącego, reguły równoważenia obciążenia i i [reguł dla ruchu wychodzącego](https://aka.ms/lboutboundrules).  Po włączeniu dla każdej reguły równoważenia obciążenia będzie wysyłać dwukierunkowe TCP Reset (pakiety TCP RST) do punktów końcowych klienta i serwera w momencie limitu czasu bezczynności dla wszystkich zgodnych przepływów.
+Należy zmienić to zachowanie domyślne i włączyć opcję wysyłania resetowania protokołu TCP przy bezczynności, aby włączyć przychodzące reguły NAT, reguły równoważenia obciążenia i [reguły ruchu](https://aka.ms/lboutboundrules)wychodzącego.  Po włączeniu dla każdej reguły, Load Balancer wyśle dwukierunkowe Resetowanie TCP (pakiety TCP RST) do punktów końcowych klienta i serwera w czasie bezczynności dla wszystkich zgodnych przepływów.
 
-Punkty końcowe odbierania pakietów TCP RST natychmiast zamknąć odpowiedniego gniazda. Dzięki temu natychmiastowego wysłania powiadomienia do punktów końcowych, które wystąpiło wersji połączenia i komunikację w ramach tego samego połączenia TCP zakończy się niepowodzeniem.  Aplikacje można trwale usunąć połączenia, gdy gniazdo zostanie zamknięty i ponownie ustanowić połączenia, zgodnie z potrzebami bez oczekiwania na połączenie TCP ostatecznie przekroczenie limitu czasu.
+Punkty końcowe odbierające pakiety TCP RST zamykają odpowiednie gniazda natychmiast. Zapewnia to natychmiastowe powiadomienie do punktów końcowych, w których wystąpiło wydanie połączenia, i wszelka przyszła komunikacja z tym samym połączeniem TCP zakończy się niepowodzeniem.  Aplikacje mogą przeczyścić połączenia, gdy gniazdo zamknie i ponownie nawiąże połączenia w razie potrzeby bez oczekiwania na zakończenie limitu czasu połączenia TCP.
 
-W wielu sytuacjach może być mniejszy keepalives konieczności wysyłania TCP (lub warstwa aplikacji), aby odświeżyć limitu czasu bezczynności przepływu. 
+W przypadku wielu scenariuszy może to zmniejszyć konieczność wysłania aktywności protokołu TCP (lub warstwy aplikacji) w celu odświeżenia czasu bezczynności przepływu. 
 
-Jeśli bezczynności czasów trwania wykraczać poza dozwolone przez tą konfigurację lub aplikacja wyświetla niepożądane zachowanie TCP resetuje włączone, nadal może być konieczne użycie TCP keepalives (lub keepalives warstwa aplikacji) do monitorowania żywotności połączeń TCP.  Ponadto keepalives może pozostać również przydatne w przypadku gdy połączenie jest serwerem proxy gdzieś w ścieżce, szczególnie keepalives warstwy aplikacji.  
+Jeśli czasy trwania bezczynności przekraczają liczbę dozwolonych przez konfigurację lub aplikacja pokazuje niepożądane zachowanie z włączonym resetowaniem protokołu TCP, może być nadal konieczne użycie obsługi protokołu TCP (lub utrzymywania warstwy aplikacji) w celu monitorowania aktywności połączeń TCP.  Ponadto utrzymywanie aktywności może być również przydatne w przypadku, gdy połączenie jest nawiązywane z serwerem proxy w ścieżce, szczególnie w przypadku warstwy aplikacji.  
 
-Należy dokładnie zbadać wykonywania całego scenariusza typu end to end zdecydować, czy korzyści z włączenia resetuje TCP, dostosowując limit czasu bezczynności, a jeśli dodatkowe kroki potrzebne do zapewnienia zachowania żądaną aplikację.
+Uważnie Przeanalizuj cały kompleksowy scenariusz, aby zdecydować, czy można włączyć Resetowanie protokołu TCP, dostosować limit czasu bezczynności, a jeśli wymagane są dodatkowe kroki, aby zapewnić odpowiednie zachowanie aplikacji.
 
-## <a name="enabling-tcp-reset-on-idle-timeout"></a>Trwa włączanie resetowania TCP na limit czasu bezczynności
+## <a name="enabling-tcp-reset-on-idle-timeout"></a>Włączanie resetowania protokołu TCP po upływie limitu czasu bezczynności
 
-Za pomocą interfejsu API w wersji 2018-07-01, można włączyć wysyłanie dwukierunkowych resetuje TCP na limit czasu bezczynności na podstawie poszczególnych reguł:
+Korzystając z interfejsu API w wersji 2018-07-01, można włączyć wysyłanie dwukierunkowych resetów TCP przy bezczynności dla każdej reguły:
 
 ```json
       "loadBalancingRules": [
@@ -67,16 +67,16 @@ Za pomocą interfejsu API w wersji 2018-07-01, można włączyć wysyłanie dwuk
       ]
 ```
 
-## <a name="regions"></a> Dostępność regionalna
+## <a name="regions"></a>Dostępność regionów
 
 Dostępne we wszystkich regionach.
 
 ## <a name="limitations"></a>Ograniczenia
 
-- Portal nie można skonfigurować lub wyświetlić resetowania TCP.  Zamiast tego użyj szablonów, interfejs API REST, Az interfejsu wiersza polecenia w wersji 2.0 lub programu PowerShell.
-- Podczas połączenia TCP w stanie ustanowiono wysyłane tylko TCP RST.
+- Nie można użyć portalu do konfigurowania lub wyświetlania resetowania protokołu TCP.  Zamiast tego użyj szablonów, interfejs API REST, Az interfejsu wiersza polecenia w wersji 2.0 lub programu PowerShell.
+- Parametr RST jest wysyłany tylko podczas połączenia TCP w stanie USTANOWIONym.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o [standardowego modułu równoważenia obciążenia](load-balancer-standard-overview.md).
-- Dowiedz się więcej o [reguł dla ruchu wychodzącego](load-balancer-outbound-rules-overview.md).
+- Poznaj [reguły ruchu](load-balancer-outbound-rules-overview.md)wychodzącego.

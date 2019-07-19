@@ -1,37 +1,47 @@
 ---
-title: Szkolenie metryki dokładności w automatycznych ML
+title: Metryki dokładności szkolenia w zautomatyzowanej ML
 titleSuffix: Azure Machine Learning service
-description: Więcej informacji na temat automatycznego usługi machine learning dokładność metryki dla każdego z przebiegów.
+description: Dowiedz się więcej o metrykach dokładności automatycznej uczenia maszynowego dla każdego z nich.
 author: j-martens
 ms.author: jmartens
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 06/20/2019
-ms.openlocfilehash: 44dfa387b289afe4dc5f030cca0b13325c04e811
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.date: 07/16/2019
+ms.openlocfilehash: dc147fd0252b2b5ec4ce334d6c1c464d9cde8ef5
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67313299"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297897"
 ---
-# <a name="evaluate-training-accuracy-in-automated-ml-with-metrics"></a>Oceny dokładności szkolenia w automatycznych uczenia Maszynowego przy użyciu metryk
+# <a name="evaluate-training-accuracy-in-automated-ml-with-metrics"></a>Oceń dokładność szkolenia w zautomatyzowanej ML z metrykami
 
-Istnieje wiele sposobów, aby wyświetlić metryki dokładność szkolenia dla każdej iteracji wykonywania.
+W tym artykule przedstawiono różne metryki dostępne dla zautomatyzowanych modeli ml w Azure Machine Learning. 
 
-* Użyj [widżet Jupyter](how-to-track-experiments.md#view-run-details)
-* Użyj [ `get_metrics()` funkcja](how-to-track-experiments.md#query-run-metrics) na dowolnym `Run` obiektu
-* Widok [metryki eksperymentu w witrynie Azure portal](how-to-track-experiments.md#view-the-experiment-in-the-azure-portal)
+Istnieje wiele sposobów wyświetlania metryk dokładności szkolenia dla każdej iteracji przebiegu.
+* Użyj [widżetu Jupyter](how-to-track-experiments.md#view-run-details)
+* Używanie funkcji na dowolnym `Run` obiekcie [ `get_metrics()` ](how-to-track-experiments.md#query-run-metrics)
+* Wyświetl [metryki eksperymentu w Azure Portal](how-to-track-experiments.md#view-the-experiment-in-the-azure-portal)
+
+## <a name="prerequisites"></a>Wymagania wstępne
+ 
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
+ 
+* Utwórz automatyczny eksperyment uczenia maszynowego z zestawem SDK lub Azure Portal.
+ 
+    * Użyj zestawu SDK, aby utworzyć [model klasyfikacji](how-to-auto-train-remote.md) lub [model regresji](tutorial-auto-train-models.md)
+    * Użyj [Azure Portal](how-to-create-portal-experiments.md) , aby utworzyć model klasyfikacji lub regresji przez przekazanie odpowiednich danych.
 
 ## <a name="classification-metrics"></a>Metryki klasyfikacji
 
-Następujące metryki są zapisywane w każdej iteracji wykonywania zadania klasyfikacji.
+Następujące metryki są zapisywane w każdej iteracji uruchomienia dla zadania klasyfikacji.
 
 |Metryka|Opis|Obliczenia|Dodatkowe parametry
 --|--|--|--|
 AUC_Macro| AUC jest obszarem pod krzywą cechy operacyjne odbiorcy. Makro jest średnią arytmetyczną AUC dla każdej klasy.  | [Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | Średni = "makro"|
-AUC_Micro| AUC jest obszarem pod krzywą cechy operacyjne odbiorcy. Micro jest kolumną obliczaną globalnie, łącząc prawdziwie dodatnie i fałszywych alarmów od każdej klasy| [Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | Średni = "micro"|
+AUC_Micro| AUC jest obszarem pod krzywą cechy operacyjne odbiorcy. Mikro jest obliczany globalnie przez połączenie prawdziwych dodatnich i fałszywych wartości dodatnich z każdej klasy| [Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | Średni = "micro"|
 AUC_Weighted  | AUC jest obszarem pod krzywą cechy operacyjne odbiorcy. Ważona jest średnią arytmetyczną oceny dla każdej klasy, ważona według liczby wystąpień wartość true w każdej klasie| [Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|Średni = "ważona"
 accuracy|Dokładność jest procent przewidywane etykiety, które dokładnie pasują do etykiety wartość true. |[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) |Brak|
 average_precision_score_macro|Średnia dokładności znajduje się podsumowanie krzywej precision-recall jako średnią ważoną szczegółowości w opisie w każdej wartości progowej ze wzrostem wycofaniu z poprzedniej wartości progowej, używane jako wagę. Makro jest średnią arytmetyczną wyniku średnią precyzję każdej klasy|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|Średni = "makro"|
@@ -53,7 +63,7 @@ weighted_accuracy|Ważona dokładności jest dokładności, gdzie wagę każdy p
 
 ## <a name="regression-and-forecasting-metrics"></a>Regresji i przygotowywać trafniejsze prognozy metryki
 
-Następujące metryki są zapisywane w każdej iteracji Uruchom regresję lub zadanie prognozowania.
+Następujące metryki są zapisywane w każdej iteracji uruchomienia dla zadania regresji lub prognozowania.
 
 |Metryka|Opis|Obliczenia|Dodatkowe parametry
 --|--|--|--|
@@ -67,4 +77,8 @@ normalized_median_absolute_error|Znormalizowana mediany bezwzględny błąd jest
 root_mean_squared_error|Główny oznacza to, że błąd kwadratów jest pierwiastek kwadratowy z oczekiwanym kwadratu różnicy między obiektu docelowego i prognozowania|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|Brak|
 normalized_root_mean_squared_error|Znormalizowana głównego oznacza to, że błąd kwadratów błędu głównego średniej kwadratów podzielona przez zakres danych|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|Podziel według zakresu danych|
 root_mean_squared_log_error|Główny oznaczać błędów w dzienniku kwadratów pierwiastek kwadratowy z oczekiwanym błędem logarytmicznej kwadrat|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Brak|
-normalized_root_mean_squared_log_error|Znormalizowane błąd średniej kwadratów dziennika głównego jest błąd średniej kwadratów dziennika głównego podzielona przez zakres danych|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Podziel według zakresu danych|
+normalized_root_mean_squared_log_error|Znormalizowany błąd oznaczający, że w przypadku standardowego elementu głównego jest średni kwadratowy błąd dziennika podzielony przez zakres danych|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Podziel według zakresu danych|
+
+## <a name="next-steps"></a>Kolejne kroki
+
+Dowiedz się więcej o [zautomatyzowanych ml](concept-automated-ml.md) w Azure Machine Learning.

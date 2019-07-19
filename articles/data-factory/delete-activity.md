@@ -1,6 +1,6 @@
 ---
-title: Usuń działanie w usłudze Azure Data Factory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak usuwać pliki w różnych magazynach plików za pomocą działania usuwania usługi Azure Data Factory.
+title: Usuń działanie w Azure Data Factory | Microsoft Docs
+description: Dowiedz się, jak usuwać pliki w różnych magazynach plików przy użyciu działania usuwania w Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -13,33 +13,33 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.openlocfilehash: 00658b650cdc0b1752bb9f2f205420018c1d6edd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 606cab09debf760d1b101390b2a19a1a090bb4c3
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61346347"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234562"
 ---
-# <a name="delete-activity-in-azure-data-factory"></a>Usuń działanie w usłudze Azure Data Factory
+# <a name="delete-activity-in-azure-data-factory"></a>Usuń działanie w Azure Data Factory
 
-Usuń działanie usługi Azure Data Factory służy do usuwania plików lub folderów z magazynu lokalnego przechowywania lub magazynie można przechowywać w chmurze. Użyj tego działania, aby wyczyścić lub archiwizować pliki, które są już potrzebne.
+Możesz użyć działania Usuń w Azure Data Factory, aby usunąć pliki lub foldery z lokalnych magazynów magazynów lub magazynów w chmurze. To działanie służy do czyszczenia lub archiwizowania plików, gdy nie są już potrzebne.
 
 > [!WARNING]
-> Nie można przywrócić usunięte pliki lub foldery. Należy zachować ostrożność podczas używania działania usuwania można usunąć plików lub folderów.
+> Nie można przywrócić usuniętych plików lub folderów. Należy zachować ostrożność w przypadku usuwania plików lub folderów przy użyciu działania usuwania.
 
 ## <a name="best-practices"></a>Najlepsze praktyki
 
-Poniżej przedstawiono niektóre zalecenia dotyczące używania działania usuwania:
+Poniżej przedstawiono kilka zaleceń dotyczących używania działania usuwania:
 
--   Tworzenie kopii zapasowych plików przed usunięciem ich za pomocą działania usuwania w przypadku, gdy trzeba przywrócić je w przyszłości.
+-   Wykonaj kopię zapasową plików przed usunięciem ich z działania usuwania, jeśli chcesz przywrócić je w przyszłości.
 
--   Upewnij się, że fabryka danych ma uprawnienia do zapisu na usuwanie folderów lub plików z magazynu magazynu.
+-   Upewnij się, że Data Factory ma uprawnienia do zapisu w celu usunięcia folderów lub plików z magazynu magazynu.
 
--   Upewnij się, że nie powoduje usunięcia plików, które są zapisywane w tym samym czasie. 
+-   Upewnij się, że pliki, które są zapisywane w tym samym czasie, nie są usuwane. 
 
--   Jeśli chcesz usunąć plików lub folderów z systemu lokalnego, upewnij się, że używasz własnego środowiska integration runtime z nieco większą niż 3,14.
+-   Jeśli chcesz usunąć pliki lub foldery z systemu lokalnego, upewnij się, że używasz własnego środowiska Integration Runtime z wersją nowszą niż 3,14.
 
-## <a name="supported-data-stores"></a>Magazyny danych obsługiwanych
+## <a name="supported-data-stores"></a>Obsługiwane magazyny danych
 
 -   [Azure Blob Storage](connector-azure-blob-storage.md)
 -   [Usługa Azure Data Lake Storage 1. generacji](connector-azure-data-lake-store.md)
@@ -81,21 +81,21 @@ Poniżej przedstawiono niektóre zalecenia dotyczące używania działania usuwa
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| Zestaw danych | Zawiera dokumentację zestawu danych, aby określić, które pliki lub folder do usunięcia | Tak |
-| recursive | Wskazuje, czy pliki są rekursywnie usuniętych z podfolderów lub tylko z określonego folderu.  | Nie. Wartość domyślna to `false`. |
-| maxConcurrentConnections | Liczba połączeń, aby połączyć się z magazynem magazynu jednocześnie związanych z usuwaniem folder lub wybrane pliki.   |  Nie. Wartość domyślna to `1`. |
-| EnableLogging | Wskazuje, czy należy on do rejestrowania nazw folderów lub plików, które zostały usunięte. W przypadku opcji true należy dodatkowo podać konto magazynu, aby zapisać plik dziennika tak, aby można było śledzić zachowania działania usuwania, zapoznając się w pliku dziennika. | Nie |
-| logStorageSettings | Dotyczy tylko kiedy enablelogging = true.<br/><br/>Grupy właściwości magazynu, które można określić, gdzie chcesz zapisać plik dziennika, zawierającą nazwy folderu lub pliku, które zostały usunięte przez działanie usuwania. | Nie |
-| linkedServiceName | Dotyczy tylko kiedy enablelogging = true.<br/><br/>Połączona usługa [usługi Azure Storage](connector-azure-blob-storage.md#linked-service-properties), [usługi Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties), lub [usługi Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) do przechowywania plików dziennika, który zawiera folder i nazwę pliku został usunięty przez działanie Delete. | Nie |
-| ścieżka | Dotyczy tylko kiedy enablelogging = true.<br/><br/>Ścieżki, który ma zostać zapisany plik dziennika na koncie magazynu. Jeśli ścieżka nie zostanie określona, usługa utworzy kontener. | Nie |
+| zestawu | Zawiera odwołanie do zestawu danych w celu określenia plików lub folderów do usunięcia | Tak |
+| recursive | Wskazuje, czy pliki są usuwane rekursywnie z podfolderów, czy tylko z określonego folderu.  | Nie. Wartość domyślna to `false`. |
+| maxConcurrentConnections | Liczba połączeń do równoczesnego połączenia z magazynem magazynów w celu usunięcia folderów lub plików.   |  Nie. Wartość domyślna to `1`. |
+| enablelogging | Wskazuje, czy konieczne jest zapisanie nazw folderów lub plików, które zostały usunięte. W przypadku wartości true należy dodatkowo podać konto magazynu, aby zapisać plik dziennika, aby można było śledzić zachowania działania usuwania, odczytując plik dziennika. | Nie |
+| logStorageSettings | Dotyczy tylko gdy EnableLogging = true.<br/><br/>Grupa właściwości magazynu, które można określić w miejscu, w którym chcesz zapisać plik dziennika zawierający nazwy folderów lub plików, które zostały usunięte przez działanie usuwania. | Nie |
+| linkedServiceName | Dotyczy tylko gdy EnableLogging = true.<br/><br/>Połączona usługa [Azure Storage](connector-azure-blob-storage.md#linked-service-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties)lub [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) do przechowywania pliku dziennika zawierającego nazwy folderów lub plików, które zostały usunięte przez działanie usuwania. | Nie |
+| path | Dotyczy tylko gdy EnableLogging = true.<br/><br/>Ścieżka zapisu pliku dziennika na koncie magazynu. Jeśli nie podasz ścieżki, usługa utworzy dla Ciebie kontener. | Nie |
 
 ## <a name="monitoring"></a>Monitorowanie
 
-Istnieją dwa miejsca, w którym można wyświetlić i monitorować wyniki działania usuwania: 
+Istnieją dwa miejsca, w których można zobaczyć i monitorować wyniki działania usuwania: 
 -   Z danych wyjściowych działania usuwania.
 -   Z pliku dziennika.
 
-### <a name="sample-output-of-the-delete-activity"></a>Przykładowe dane wyjściowe działania Delete
+### <a name="sample-output-of-the-delete-activity"></a>Przykładowe dane wyjściowe działania usuwania
 
 ```json
 { 
@@ -113,35 +113,35 @@ Istnieją dwa miejsca, w którym można wyświetlić i monitorować wyniki dzia�
 }
 ```
 
-### <a name="sample-log-file-of-the-delete-activity"></a>Przykładowy plik dziennika aktywności Delete
+### <a name="sample-log-file-of-the-delete-activity"></a>Przykładowy plik dziennika działania usuwania
 
-| Name (Nazwa) | Category | Stan | Błąd |
+| Name (Nazwa) | Kategoria | Stan | Błąd |
 |:--- |:--- |:--- |:--- |
-| test1/yyy.json | Plik | Usunięte |  |
+| TEST1/yyy. JSON | Plik | Usunięte |  |
 | test2/hello789.txt | Plik | Usunięte |  |
-| Test2/test3/hello000.txt | Plik | Usunięte |  |
+| TEST2/test3/hello000. txt | Plik | Usunięte |  |
 | test2/test3/zzz.json | Plik | Usunięte |  |
 
-## <a name="examples-of-using-the-delete-activity"></a>Przykłady użycia działania Delete
+## <a name="examples-of-using-the-delete-activity"></a>Przykłady użycia działania usuwania
 
-### <a name="delete-specific-folders-or-files"></a>Usuń foldery lub pliki
+### <a name="delete-specific-folders-or-files"></a>Usuwanie określonych folderów lub plików
 
 Magazyn ma następującą strukturę folderów:
 
-Główny /<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1 /<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2 /<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4 txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1 /<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2 /<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.txt
+Pierwiastek<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8. txt
 
-Obecnie używasz, działanie Delete, aby usunąć folder lub wybrane pliki za pomocą kombinacji wartości różnych właściwości z zestawu danych i działań usuwania:
+Teraz używasz działania usuwania do usuwania folderu lub plików przez połączenie różnych wartości właściwości z zestawu danych i działania usuwania:
 
-| folderPath (z zestawu danych) | Nazwa pliku (z zestawu danych) | cykliczne (z działania usuwania) | Dane wyjściowe |
+| folderPath (z zestawu danych) | Nazwa pliku (z zestawu danych) | cykliczne (z działania usuwania) | Output |
 |:--- |:--- |:--- |:--- |
-| Główny / Folder_A_2 | NULL | False | Główny /<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1 /<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2 /<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1 /<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2 /<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.txt |
-| Główny / Folder_A_2 | NULL | True | Główny /<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1 /<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_A_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_1 /</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>7.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8.txt</strike> |
-| Główny / Folder_A_2 | *.txt | False | Główny /<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1 /<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2 /<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1 /<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2 /<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.txt |
-| Główny / Folder_A_2 | *.txt | True | Główny /<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1 /<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2 /<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1 /<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2 /<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8.txt</strike> |
+| Element główny/Folder_A_2 | NULL | False | Pierwiastek<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4. txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8. txt |
+| Element główny/Folder_A_2 | NULL | Prawda | Pierwiastek<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_A_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4. txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_1/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6. txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>7.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8. txt</strike> |
+| Element główny/Folder_A_2 | *. txt | False | Pierwiastek<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4. txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8. txt |
+| Element główny/Folder_A_2 | *. txt | Prawda | Pierwiastek<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4. txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6. txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8. txt</strike> |
 
-### <a name="periodically-clean-up-the-time-partitioned-folder-or-files"></a>Okresowo oczyszczać podzielona na partycje czasu folder lub wybrane pliki
+### <a name="periodically-clean-up-the-time-partitioned-folder-or-files"></a>Okresowo oczyszczanie folderu lub plików na partycje czasowej
 
-Można utworzyć potoku, aby okresowo oczyszczać czasu partycjonowane folder lub wybrane pliki.  Na przykład struktura folderów jest podobna: `/mycontainer/2018/12/14/*.csv`.  Możesz korzystać z usługi ADF zmiennej systemowej z wyzwalacza harmonogramu, aby zidentyfikować, które folder lub wybrane pliki należy usunąć w każdym uruchomieniem potoku. 
+Można utworzyć potok w celu okresowego czyszczenia pliku lub folderu podzielonego na partycje.  Na przykład struktura folderów jest podobna do: `/mycontainer/2018/12/14/*.csv`.  Można użyć zmiennej systemowej ADF z wyzwalacza harmonogramu, aby zidentyfikować foldery lub pliki, które mają zostać usunięte w każdym uruchomieniu potoku. 
 
 #### <a name="sample-pipeline"></a>Przykładowy potok
 
@@ -259,9 +259,9 @@ Można utworzyć potoku, aby okresowo oczyszczać czasu partycjonowane folder lu
 }
 ```
 
-### <a name="clean-up-the-expired-files-that-were-last-modified-before-201811"></a>Wyczyścić wygasłe pliki, które zostały ostatnio zmodyfikowane przed 2018.1.1
+### <a name="clean-up-the-expired-files-that-were-last-modified-before-201811"></a>Wyczyść wygasłe pliki, które zostały ostatnio zmodyfikowane przed 2018.1.1
 
-Można utworzyć potoku, aby wyczyścić stare lub wygasłe plików przy użyciu filtru atrybutu pliku: "LastModified" w zestawie danych.  
+Można utworzyć potok w celu oczyszczenia starych lub wygasłych plików, korzystając z filtru atrybutów plików: "LastModified" w zestawie danych.  
 
 #### <a name="sample-pipeline"></a>Przykładowy potok
 
@@ -321,12 +321,12 @@ Można utworzyć potoku, aby wyczyścić stare lub wygasłe plików przy użyciu
 }
 ```
 
-### <a name="move-files-by-chaining-the-copy-activity-and-the-delete-activity"></a>Przenieś pliki przez łańcuch działanie kopiowania i działanie Delete
+### <a name="move-files-by-chaining-the-copy-activity-and-the-delete-activity"></a>Przenoszenie plików przez łańcuch działania kopiowania i działanie usuwania
 
-Można przenieść pliku za pomocą działania kopiowania, aby skopiować plik, a następnie działanie delete, aby usunąć plik w potoku.  Gdy chcesz przenieść wiele plików, może użyć działaniu GetMetadata + działanie filtru + działanie Foreach + działania kopiowania i usuwania działań, jak w poniższym przykładzie:
+Plik można przenieść za pomocą działania kopiowania, aby skopiować plik, a następnie usunąć działanie, aby usunąć plik w potoku.  Jeśli chcesz przenieść wiele plików, możesz użyć działania getmetadatas + Filter Activity + foreach Activity + aktywność Copy + Delete, jak w poniższym przykładzie:
 
 > [!NOTE]
-> Jeśli chcesz przenieść cały folder definiujący zestaw danych zawierający ścieżkę folderu, a następnie za pomocą działania kopiowania i działanie Delete, aby odwoływać się do tego samego zestawu danych reprezentująca folderem, należy zwrócić szczególną uwagę. Jest to spowodowane musisz upewnić się, że nie będą nowych plików przychodzących do folderu między operacji kopiowania i operacji usuwania.  W przypadku nowych plików otrzymywanych z folderu w tej chwili, gdy działania kopiowania ukończony zadanie kopiowania, ale działanie Delete nie została stared jest możliwe, że działanie usuwania spowoduje usunięcie tego nowego pliku nadchodzących, który nie został skopiowany do destinati na jeszcze przez usunięcie całego folderu. 
+> Jeśli chcesz przenieść cały folder przez zdefiniowanie zestawu danych zawierającego tylko ścieżkę do folderu, a następnie za pomocą działania kopiowania i działania Usuń, aby odwołać się do tego samego zestawu danych reprezentującego folder, musisz zachować ostrożność. Jest to spowodowane tym, że trzeba upewnić się, że nie będzie nowych plików dołączanych do folderu między operacją kopiowania a operacją usuwania.  Jeśli w folderze znajdują się nowe pliki docierające do folderu, gdy działanie kopiowania po prostu zostało ukończone, ale działanie usuwania nie zostało jaśniejsze, istnieje możliwość usunięcia tego nowego pliku, który nie został skopiowany do destinati jeszcze przez usunięcie całego folderu. 
 
 #### <a name="sample-pipeline"></a>Przykładowy potok
 
@@ -485,7 +485,7 @@ Można przenieść pliku za pomocą działania kopiowania, aby skopiować plik, 
 
 #### <a name="sample-datasets"></a>Przykładowe zestawy danych
 
-Zestaw danych używany przez działanie GetMetadata wyliczyć listy plików.
+Zestaw danych używany przez działanie GetMetadata do wyliczania listy plików.
 
 ```json
 {
@@ -504,7 +504,7 @@ Zestaw danych używany przez działanie GetMetadata wyliczyć listy plików.
 }
 ```
 
-Zestaw danych dla źródła danych używanego przez działanie kopiowania i działanie Delete.
+Zestaw danych dla źródła danych używanego przez działanie kopiowania i działanie usuwania.
 
 ```json
 {
@@ -537,7 +537,7 @@ Zestaw danych dla źródła danych używanego przez działanie kopiowania i dzia
 }
 ```
 
-Zestaw danych jako miejsce docelowe danych używane przez działanie kopiowania.
+Zestaw danych dla miejsca docelowego danych używany przez działanie kopiowania.
 
 ```json
 {
@@ -563,14 +563,17 @@ Zestaw danych jako miejsce docelowe danych używane przez działanie kopiowania.
     }
 }
 ```
-## <a name="known-limitation"></a>Znane ograniczenia
 
--   Usuń działanie nie obsługuje usuwania listy folderów, opisanego przez symbol wieloznaczny.
+Możesz również pobrać szablon, aby przenieść pliki z tego [miejsca](solution-template-move-files.md).
 
--   Korzystając z filtru atrybutu pliku: modifiedDatetimeStart i modifiedDatetimeEnd, aby wybrać pliki do usunięcia, upewnij się ustawić "nazwa_pliku": "*" w zestawie danych.
+## <a name="known-limitation"></a>Znane ograniczenie
 
-## <a name="next-steps"></a>Kolejne kroki
+-   Działanie usuwania nie obsługuje usuwania listy folderów opisanych przez symbol wieloznaczny.
 
-Dowiedz się więcej na temat przenoszenia plików w usłudze Azure Data Factory.
+-   W przypadku korzystania z filtru atrybutu pliku: modifiedDatetimeStart i modifiedDatetimeEnd aby wybrać pliki do usunięcia, upewnij się, że ustawiono "fileName": "*" w zestawie danych.
+
+## <a name="next-steps"></a>Następne kroki
+
+Dowiedz się więcej o przenoszeniu plików w Azure Data Factory.
 
 -   [Narzędzie do kopiowanie danych w usłudze Azure Data Factory](copy-data-tool.md)

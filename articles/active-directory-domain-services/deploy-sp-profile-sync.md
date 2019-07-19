@@ -1,6 +1,6 @@
 ---
-title: 'Azure Active Directory Domain Services: Włącz obsługę usługi profilu użytkownika programu SharePoint | Dokumentacja firmy Microsoft'
-description: Konfigurowanie domen zarządzanych usługi Azure Active Directory Domain Services w celu obsługi synchronizacji profilów dla programu SharePoint Server
+title: 'Azure Active Directory Domain Services: Włącz usługę profilu użytkownika programu SharePoint | Microsoft Docs'
+description: Konfigurowanie Azure Active Directory Domain Services domen zarządzanych do obsługi synchronizacji profilu dla programu SharePoint Server
 services: active-directory-ds
 documentationcenter: ''
 author: iainfoulds
@@ -15,40 +15,40 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: iainfou
-ms.openlocfilehash: 4293052f19ad883c9df7f177456d55c0997072e1
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 4a9ee05b37a69927d70269dccef2b74a2c251722
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473487"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234102"
 ---
-# <a name="configure-a-managed-domain-to-support-profile-synchronization-for-sharepoint-server"></a>Konfigurowanie domeny zarządzanej w celu obsługi synchronizacji profilów dla programu SharePoint Server
-Serwer programu SharePoint zawiera Usługa profilu użytkownika, który służy do synchronizacji profilu użytkownika. Aby skonfigurować usługi profilu użytkownika, należy nadać w domenie usługi Active Directory odpowiednie uprawnienia. Aby uzyskać więcej informacji, zobacz [udzielić uprawnień Active Directory Domain Services dla synchronizacji profilów w programie SharePoint Server 2013](https://technet.microsoft.com/library/hh296982.aspx).
+# <a name="configure-a-managed-domain-to-support-profile-synchronization-for-sharepoint-server"></a>Konfigurowanie domeny zarządzanej do obsługi synchronizacji profilu dla programu SharePoint Server
+Program SharePoint Server zawiera usługę profilu użytkownika, która jest używana do synchronizacji profilu użytkownika. Aby skonfigurować usługę profilu użytkownika, należy przyznać odpowiednie uprawnienia w domenie Active Directory. Aby uzyskać więcej informacji, zobacz [Przyznawanie uprawnień Active Directory Domain Services dla synchronizacji profilu w programie SharePoint Server 2013](https://technet.microsoft.com/library/hh296982.aspx).
 
-W tym artykule opisano sposób konfigurowania domen zarządzanych usług domenowych Azure AD, aby wdrożyć usługę synchronizacji profilu użytkownika z programem SharePoint Server.
+W tym artykule wyjaśniono, jak można skonfigurować Azure AD Domain Services domeny zarządzane do wdrożenia usługi synchronizacji profilu użytkownika programu SharePoint Server.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="the-aad-dc-service-accounts-group"></a>Grupa "Kont usługi AAD DC"
-Grupy zabezpieczeń o nazwie "**konta usługi kontrolera domeny usługi AAD**" znajduje się w jednostce organizacyjnej "Użytkownicy" w domenie zarządzanej. Możesz zobaczyć tej grupy w **użytkownicy usługi Active Directory i komputery** przystawki programu MMC w domenie zarządzanej.
+## <a name="the-aad-dc-service-accounts-group"></a>Grupa "konta usługi AAD DC"
+Grupa zabezpieczeń o nazwie "**konta usługi AAD DC**" jest dostępna w ramach jednostki organizacyjnej "Użytkownicy" w domenie zarządzanej. Tę grupę można wyświetlić w przystawce MMC **Użytkownicy i komputery Active Directory** w domenie zarządzanej.
 
-![Grupy zabezpieczeń usługi AAD DC usług konta](./media/active-directory-domain-services-admin-guide/aad-dc-service-accounts.png)
+![Grupa zabezpieczeń kont usługi AAD DC](./media/active-directory-domain-services-admin-guide/aad-dc-service-accounts.png)
 
-Są delegowane Członkowie tej grupy zabezpieczeń następujące uprawnienia:
-- Uprawnienia "Replikuj zmiany katalogu" w katalogu głównym wpisem DSE domeny zarządzanej.
-- Uprawnienie "Replikuj zmiany katalogu" w kontekście nazewnictwa konfiguracji (cn = Konfiguracja kontenera) z domeny zarządzanej.
+Członkowie tej grupy zabezpieczeń mają delegowane następujące uprawnienia:
+- Uprawnienie "Replikuj zmiany katalogu" w katalogu głównym DSE domeny zarządzanej.
+- Uprawnienie "Replikuj zmiany katalogu" w kontekście nazewnictwa konfiguracji (CN = Kontener konfiguracji) domeny zarządzanej.
 
-Ta grupa zabezpieczeń jest również członkiem wbudowanej grupy **dostęp zgodny z systemami starszymi niż Windows 2000**.
+Ta grupa zabezpieczeń jest również członkiem wbudowanej grupy **systemu sprzed Windows 2000**.
 
-![Grupy zabezpieczeń usługi AAD DC usług konta](./media/active-directory-domain-services-admin-guide/aad-dc-service-accounts-properties.png)
+![Grupa zabezpieczeń kont usługi AAD DC](./media/active-directory-domain-services-admin-guide/aad-dc-service-accounts-properties.png)
 
 
-## <a name="enable-your-managed-domain-to-support-sharepoint-server-user-profile-sync"></a>Włączyć domenę zarządzaną w celu obsługi synchronizacji profilów użytkownika programu SharePoint Server
-Możesz dodać konto usługi używane do synchronizacji profilu użytkownika programu SharePoint do **konta usługi kontrolera domeny usługi AAD** grupy. W rezultacie konto synchronizacji pobiera odpowiednie uprawnienia, aby replikować zmiany w katalogu. Ten krok konfiguracji umożliwia synchronizacja profilu użytkownika programu SharePoint Server, do prawidłowego działania.
+## <a name="enable-your-managed-domain-to-support-sharepoint-server-user-profile-sync"></a>Włącz obsługę synchronizacji profilu użytkownika programu SharePoint Server w domenie zarządzanej
+Można dodać konto usługi używane na potrzeby synchronizacji profilu użytkownika programu SharePoint z grupą **kont usługi AAD DC** . W związku z tym konto synchronizacji uzyskuje odpowiednie uprawnienia do replikowania zmian w katalogu. Ten krok konfiguracji umożliwia poprawne działanie synchronizacji profilu użytkownika serwera programu SharePoint.
 
-![Konta usługi AAD DC — dodawanie członków](./media/active-directory-domain-services-admin-guide/aad-dc-service-accounts-add-member.png)
+![Konta usługi AAD DC — Dodawanie członków](./media/active-directory-domain-services-admin-guide/aad-dc-service-accounts-add-member.png)
 
-![Konta usługi AAD DC — dodawanie członków](./media/active-directory-domain-services-admin-guide/aad-dc-service-accounts-add-member2.png)
+![Konta usługi AAD DC — Dodawanie członków](./media/active-directory-domain-services-admin-guide/aad-dc-service-accounts-add-member2.png)
 
 ## <a name="related-content"></a>Powiązana zawartość
-* [Dokumentacja techniczna — uprawnienia Grant Active Directory Domain Services dla synchronizacji profilów w programie SharePoint Server 2013](https://technet.microsoft.com/library/hh296982.aspx)
+* [Dokumentacja techniczna — Przyznawanie uprawnień Active Directory Domain Services dla synchronizacji profilu w programie SharePoint Server 2013](https://technet.microsoft.com/library/hh296982.aspx)

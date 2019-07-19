@@ -1,9 +1,9 @@
 ---
-title: Zdarzenie utworzenia puli usługi Azure Batch | Dokumentacja firmy Microsoft
-description: Dokumentacja dotycząca puli usługi Batch, Utwórz zdarzenie.
+title: Zdarzenie tworzenia puli Azure Batch | Microsoft Docs
+description: Odwołanie do zdarzenia utworzenia puli usługi Batch.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: 176f00de77c2d353d6efeb8b5a535a607b8f3204
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a86ce329a19272eb83c431af395b330f75111361
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60776511"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323292"
 ---
 # <a name="pool-create-event"></a>Zdarzenie utworzenia puli
 
- To zdarzenie jest emitowane po utworzeniu puli. Zawartość dziennika udostępni ogólne informacje o puli. Należy pamiętać, że jeśli rozmiar docelowej puli jest większa niż 0 węzłów obliczeniowych, zdarzenie rozpoczęcia zmiany rozmiaru puli będzie występować natychmiast po tym zdarzeniu.
+ To zdarzenie jest emitowane po utworzeniu puli. Zawartość dziennika spowoduje udostępnienie ogólnych informacji o puli. Należy pamiętać, że jeśli rozmiar docelowy puli ma więcej niż 0 węzłów obliczeniowych, zdarzenie rozpoczęcia zmiany rozmiaru puli będzie podążać bezpośrednio po tym zdarzeniu.
 
- Poniższy przykład pokazuje, treść puli tworzenie zdarzenia dla puli, utworzony za pomocą właściwości CloudServiceConfiguration.
+ Poniższy przykład przedstawia treść puli Utwórz zdarzenie dla puli utworzonej przy użyciu właściwości CloudServiceConfiguration.
 
 ```
 {
@@ -47,54 +47,54 @@ ms.locfileid: "60776511"
 }
 ```
 
-|Element|Typ|Uwagi|
+|Element|Type|Uwagi|
 |-------------|----------|-----------|
-|id|String|Identyfikator puli.|
-|displayName|String|Nazwa wyświetlana puli.|
-|vmSize|String|Rozmiar maszyn wirtualnych w puli. Wszystkie maszyny wirtualne w puli mają taki sam rozmiar. <br/><br/> Aby uzyskać informacji na temat dostępnych rozmiarów maszyn wirtualnych dla usług w chmurze pul (pul utworzonych za pomocą cloudServiceConfiguration), zobacz [rozmiary usług Cloud Services](https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/). Usługa Batch obsługuje wszystkie rozmiary maszyn wirtualnych usług chmury, oprócz `ExtraSmall`.<br/><br/> Informacji na temat maszyny Wirtualnej dostępne rozmiary pul przy użyciu obrazów z rynku maszyn wirtualnych (pul utworzonych za pomocą virtualMachineConfiguration) dla [rozmiary maszyn wirtualnych](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/) (Linux) lub [rozmiary wirtualnych Maszyny](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/) (Windows). Usługa Batch obsługuje wszystkie rozmiary maszyn wirtualnych platformy Azure oprócz `STANDARD_A0` i maszyn z usługi Premium Storage (seria `STANDARD_GS`, `STANDARD_DS` i `STANDARD_DSV2`).|
-|[cloudServiceConfiguration](#bk_csconf)|Typ złożony|Konfiguracji usługi w chmurze dla puli.|
-|[virtualMachineConfiguration](#bk_vmconf)|Typ złożony|Konfiguracja maszyny wirtualnej w puli.|
+|id|Ciąg|Identyfikator puli.|
+|displayName|Ciąg|Nazwa wyświetlana puli.|
+|vmSize|String|Rozmiar maszyn wirtualnych w puli. Wszystkie maszyny wirtualne w puli mają ten sam rozmiar. <br/><br/> Aby uzyskać informacje o dostępnych rozmiarach maszyn wirtualnych dla pul Cloud Services (pule utworzone za pomocą cloudServiceConfiguration), zobacz [rozmiary Cloud Services](https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/). Program Batch obsługuje wszystkie Cloud Services rozmiary maszyn `ExtraSmall`wirtualnych z wyjątkiem.<br/><br/> Aby uzyskać informacje o dostępnych rozmiarach maszyn wirtualnych dla pul przy użyciu obrazów z witryny Virtual Machines Marketplace (pule utworzone za pomocą virtualMachineConfiguration), zobacz [rozmiary Virtual Machines](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/) (Linux) lub [rozmiary dla Virtual Machines](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/) (Windows). Usługa Batch obsługuje wszystkie rozmiary maszyn wirtualnych platformy Azure oprócz `STANDARD_A0` i maszyn z usługi Premium Storage (seria `STANDARD_GS`, `STANDARD_DS` i `STANDARD_DSV2`).|
+|[cloudServiceConfiguration](#bk_csconf)|Typ złożony|Konfiguracja usługi w chmurze dla puli.|
+|[virtualMachineConfiguration](#bk_vmconf)|Typ złożony|Konfiguracja maszyny wirtualnej dla puli.|
 |[networkConfiguration](#bk_netconf)|Typ złożony|Konfiguracja sieci dla puli.|
-|resizeTimeout|Time|Limit czasu alokacji węzłów obliczeniowych w puli, określony dla ostatniej operacji zmiany rozmiaru w puli.  (Początkowego rozmiaru po utworzeniu puli jest liczona jako zmiany rozmiaru.)|
-|targetDedicated|Int32|Liczba węzłów obliczeniowych, które są wymagane dla puli.|
-|enableAutoScale|Bool|Określa, czy rozmiar puli automatycznie dostosowuje się wraz z upływem czasu.|
-|enableInterNodeCommunication|Bool|Określa, czy pula jest skonfigurowany do bezpośredniej komunikacji między węzłami.|
-|isAutoPool|Bool|Określa, czy pula została utworzona za pośrednictwem mechanizmu AutoPool zadania.|
-|maxTasksPerNode|Int32|Maksymalna liczba zadań, które można uruchomić jednocześnie w jednym węźle obliczeń w puli.|
-|vmFillType|String|Definiuje, jak usługa Batch rozdziela zadania podrzędne między węzłami obliczeniowymi w puli. Prawidłowe wartości są dystrybuowane lub pakietu.|
+|resizeTimeout|Time|Limit czasu przydziału węzłów obliczeniowych do puli określonej dla operacji ostatniej zmiany rozmiaru w puli.  (Początkowe rozmiary podczas tworzenia puli jest traktowane jako zmiana rozmiaru).|
+|targetDedicated|Int32|Liczba węzłów obliczeniowych, które są żądane dla puli.|
+|enableAutoScale|Bool|Określa, czy rozmiar puli automatycznie dostosowuje się w miarę upływu czasu.|
+|enableInterNodeCommunication|Bool|Określa, czy pula jest skonfigurowana do bezpośredniej komunikacji między węzłami.|
+|isAutoPool|Bool|Określa, czy pula została utworzona za pomocą mechanizmu autopuli zadań.|
+|maxTasksPerNode|Int32|Maksymalna liczba zadań, które można uruchamiać współbieżnie w jednym węźle obliczeniowym w puli.|
+|vmFillType|String|Definiuje, w jaki sposób usługa Batch dystrybuuje zadania między węzłami obliczeniowymi w puli. Prawidłowe wartości to rozmieszczenie lub pakiet.|
 
-###  <a name="bk_csconf"></a> cloudServiceConfiguration
+###  <a name="bk_csconf"></a>cloudServiceConfiguration
 
-|Nazwa elementu|Typ|Uwagi|
+|Nazwa elementu|Type|Uwagi|
 |------------------|----------|-----------|
-|osFamily|String|Rodzina systemów operacyjnych gościa platformy Azure do zainstalowania na maszynach wirtualnych w puli.<br /><br /> Możliwe wartości:<br /><br /> **2** — 2 rodziny systemów operacyjnych, równoważne z systemu Windows Server 2008 R2 z dodatkiem SP1.<br /><br /> **3** — 3 rodziny systemów operacyjnych, odpowiednikiem w systemie Windows Server 2012.<br /><br /> **4** — 4 rodziny systemów operacyjnych, równoważne do systemu Windows Server 2012 R2.<br /><br /> Aby uzyskać więcej informacji, zobacz [wersji systemu operacyjnego gościa Azure](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
-|targetOSVersion|String|Wersja systemu operacyjnego gościa platformy Azure do zainstalowania na maszynach wirtualnych w puli.<br /><br /> Wartość domyślna to **\*** określający najnowszej wersji systemu operacyjnego dla określonej rodziny.<br /><br /> Aby uzyskać inne dozwolonych wartości, zobacz [wersji systemu operacyjnego gościa Azure](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
+|Rodzina systemów operacyjnych|Ciąg|Rodzina systemów operacyjnych gościa platformy Azure do zainstalowania na maszynach wirtualnych w puli.<br /><br /> Możliwe wartości to:<br /><br /> **2** — Rodzina systemów operacyjnych 2, równoważna z systemem Windows Server 2008 R2 z dodatkiem SP1.<br /><br /> **3** — Rodzina systemów operacyjnych 3, równoważna z systemem Windows Server 2012.<br /><br /> **4** — Rodzina systemów operacyjnych 4, równoważna z systemem Windows Server 2012 R2.<br /><br /> Aby uzyskać więcej informacji, zobacz [wersje systemu operacyjnego gościa platformy Azure](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
+|targetOSVersion|Ciąg|Wersja systemu operacyjnego gościa platformy Azure do zainstalowania na maszynach wirtualnych w puli.<br /><br /> Wartość domyślna to **\*** określa najnowszą wersję systemu operacyjnego dla określonej rodziny.<br /><br /> Aby uzyskać inne dozwolone wartości, zobacz [wersje systemu operacyjnego gościa platformy Azure](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
 
 ###  <a name="bk_vmconf"></a> virtualMachineConfiguration
 
-|Nazwa elementu|Typ|Uwagi|
+|Nazwa elementu|Type|Uwagi|
 |------------------|----------|-----------|
-|[imageReference](#bk_imgref)|Typ złożony|Określa informacje dotyczące platformy lub obrazu z witryny Marketplace do użycia.|
-|nodeAgentSKUId|String|Jednostka SKU agenta węzła partii aprowizowane w węźle obliczeniowym.|
-|[windowsConfiguration](#bk_winconf)|Typ złożony|Określa ustawienia systemu operacyjnego Windows na maszynie wirtualnej. Ta właściwość nie może być określona, jeśli imageReference odwołuje się do obrazu systemu operacyjnego Linux.|
+|[imageReference](#bk_imgref)|Typ złożony|Określa informacje o platformie lub obrazie witryny Marketplace do użycia.|
+|nodeAgentSKUId|String|Jednostka SKU agenta węzła partii obsługiwana w węźle obliczeniowym.|
+|[windowsConfiguration](#bk_winconf)|Typ złożony|Określa ustawienia systemu operacyjnego Windows na maszynie wirtualnej. Ta właściwość nie może być określona, jeśli elementu imagereference odwołuje się do obrazu systemu operacyjnego Linux.|
 
-###  <a name="bk_imgref"></a> imageReference
+###  <a name="bk_imgref"></a>Elementu imagereference
 
-|Nazwa elementu|Typ|Uwagi|
+|Nazwa elementu|Type|Uwagi|
 |------------------|----------|-----------|
 |publisher|String|Wydawca obrazu.|
-|oferty|String|Oferta obrazu.|
-|sku|String|Jednostka SKU obrazu.|
+|sprzedaży|String|Oferta obrazu.|
+|sku|Ciąg|Jednostka SKU obrazu.|
 |version|String|Wersja obrazu.|
 
-###  <a name="bk_winconf"></a> windowsConfiguration
+###  <a name="bk_winconf"></a>windowsConfiguration
 
-|Nazwa elementu|Typ|Uwagi|
+|Nazwa elementu|Type|Uwagi|
 |------------------|----------|-----------|
-|enableAutomaticUpdates|Boolean|Wskazuje, czy maszyna wirtualna jest włączona dla aktualizacji automatycznych. Jeśli ta właściwość nie zostanie określony, wartość domyślna to true.|
+|enableAutomaticUpdates|Boolean|Wskazuje, czy dla maszyny wirtualnej włączono automatyczne aktualizacje. Jeśli ta właściwość nie jest określona, wartość domyślna to true.|
 
-###  <a name="bk_netconf"></a> Konfiguracja sieci
+###  <a name="bk_netconf"></a>networkConfiguration
 
-|Nazwa elementu|Typ|Uwagi|
+|Nazwa elementu|Type|Uwagi|
 |------------------|--------------|----------|
-|subnetId|String|Określa identyfikator zasobu podsieci, w którym są tworzone w puli węzłów obliczeniowych.|
+|subnetId|String|Określa identyfikator zasobu podsieci, w którym są tworzone węzły obliczeniowe puli.|

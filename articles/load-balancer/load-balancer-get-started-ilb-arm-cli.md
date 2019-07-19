@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Dowiedz się, jak utworzyć wewnętrzny moduł równoważenia obciążenia przy użyciu interfejsu wiersza polecenia platformy Azure
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -12,13 +12,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/27/2018
-ms.author: kumud
-ms.openlocfilehash: cb01aa84201c1e0727414215974a343e8cf3b724
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: e38cc4e6da574e0c3be490cf5d9cd929624343e5
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66475906"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275447"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Tworzenie wewnętrznego modułu równoważenia obciążenia w celu równoważenia obciążenia maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -60,7 +60,7 @@ W tej sekcji opisano szczegółowo procedurę tworzenia i konfigurowania następ
 
 ### <a name="create-the-load-balancer"></a>Tworzenie modułu równoważenia obciążenia
 
-Tworzenie wewnętrznego modułu równoważenia obciążenia za pomocą [tworzenie równoważenia obciążenia sieciowego az](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) o nazwie **myLoadBalancer** zawierającej konfigurację adresu IP frontonu o nazwie **myFrontEnd**, pulę zaplecza o nazwie **myBackEndPool** skojarzonego z prywatnego adresu IP ** 10.0.0.7.
+Utwórz wewnętrzną Load Balancer za pomocą [AZ Network lb Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) o nazwie **myLoadBalancer** , która zawiera konfigurację adresu IP frontonu o nazwie Moja **fronton**, pulę zaplecza o nazwie **myBackEndPool** , która jest skojarzona z prywatnym adresem IP * 10.0.0.7.
 
 ```azurecli-interactive
   az network lb create \

@@ -1,6 +1,6 @@
 ---
-title: Użyj platforma tożsamości usługi Microsoft do logowania użytkowników na urządzeniach bez przeglądarki | Azure
-description: Tworzenie osadzonego i udzielić przepływów uwierzytelniania bez przeglądarki, przy użyciu kodu urządzenia.
+title: Korzystanie z platformy tożsamości firmy Microsoft do logowania użytkowników na urządzeniach bez przeglądarki | Azure
+description: Utwórz osadzone i niezwiązane z przeglądarką przepływy uwierzytelniania za pomocą przydzielenia kodu urządzenia.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -17,47 +17,47 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e92e4d0e296e83b413cfd2a67041a5749c16699e
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 274c4e89ff3f996cc71cdacdfb7b5b72e813ae4b
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482229"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297661"
 ---
-# <a name="microsoft-identity-platform-and-the-oauth-20-device-code-flow"></a>Platforma tożsamości firmy Microsoft i przepływ kodu urządzenia OAuth 2.0
+# <a name="microsoft-identity-platform-and-the-oauth-20-device-code-flow"></a>Microsoft Identity platform i przepływ kodu urządzenia OAuth 2,0
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-Obsługuje platformy tożsamości firmy Microsoft [przyznawania kodu urządzenia](https://tools.ietf.org/html/draft-ietf-oauth-device-flow-12), co pozwala użytkownikom na logowanie się do ograniczonych danych wejściowych urządzeń, takich jak telewizor smart TV, urządzenia IoT lub drukarki.  Aby włączyć ten przepływ, do urządzenia przypisano użytkownika odwiedź strony sieci Web w przeglądarce na innym urządzeniu, aby zalogować się.  Gdy użytkownik się zaloguje, urządzenie jest w stanie uzyskiwanie tokenów dostępu i tokenów odświeżania, zgodnie z potrzebami.  
+Platforma tożsamości firmy Microsoft obsługuje [przyznawanie kodu urządzenia](https://tools.ietf.org/html/draft-ietf-oauth-device-flow-12), dzięki czemu użytkownicy mogą logować się do urządzeń z ograniczeniami, takich jak inteligentna telewizja, urządzenie IoT lub drukarka.  Aby włączyć ten przepływ, na urządzeniu zostanie wyświetlona strona sieci Web w przeglądarce na innym urządzeniu w celu zalogowania się.  Po zalogowaniu się użytkownika urządzenie będzie w stanie uzyskać tokeny dostępu i odświeżać tokeny zgodnie z wymaganiami.  
 
 > [!IMPORTANT]
-> W tej chwili punktu końcowego platformy tożsamości firmy Microsoft obsługuje przepływ urządzenia tylko dla dzierżaw usługi Azure AD, ale nie osobistych kont.  Oznacza to, że punkt końcowy skonfigurowany jako dzierżawca, należy użyć lub `organizations` punktu końcowego.  Ta funkcja zostanie wkrótce włączona. 
+> W tej chwili punkt końcowy platformy tożsamości firmy Microsoft obsługuje tylko przepływ urządzeń dla dzierżawców usługi Azure AD, ale nie do kont osobistych.  Oznacza to, że należy użyć punktu końcowego skonfigurowanego jako dzierżawca lub `organizations` punktu końcowego.  Ta pomoc techniczna zostanie włączona wkrótce. 
 >
-> Konta osobiste, które są zaproszeni do dzierżawy usługi Azure AD będzie używać grant flow urządzenia, ale tylko w kontekście dzierżawy.
+> Konta osobiste, które są zapraszane do dzierżawy usługi Azure AD, będą mogły korzystać z dotacji do przepływu urządzeń, ale tylko w kontekście dzierżawy.
 >
-> Jako dodatkowa Uwaga `verification_uri_complete` pole odpowiedzi nie jest dołączony lub w tej chwili obsługiwane.  
+> W tej chwili pole odpowiedziniejestuwzględnianeaniobsługiwane.`verification_uri_complete`  
 
 > [!NOTE]
-> Punkt końcowy platforma tożsamości firmy Microsoft nie obsługuje wszystkich scenariuszy usługi Azure Active Directory i funkcji. Aby ustalić, czy należy używać punktu końcowego platformy tożsamości firmy Microsoft, przeczytaj temat [ograniczenia dotyczące programu Microsoft identity platformy](active-directory-v2-limitations.md).
+> Punkt końcowy platformy tożsamości firmy Microsoft nie obsługuje wszystkich Azure Active Directoryych scenariuszy i funkcji. Aby określić, czy należy używać punktu końcowego platformy tożsamości firmy Microsoft, przeczytaj artykuł [ograniczenia dotyczące platformy tożsamości firmy Microsoft](active-directory-v2-limitations.md).
 
 ## <a name="protocol-diagram"></a>Diagram protokołu
 
-Przepływ kodu całego urządzenia wygląda podobnie do następny diagram. Opisano poszczególne kroki w dalszej części tego artykułu.
+Cały przepływ kodu urządzenia wygląda podobnie do następnego diagramu. Opisujemy każdy z kroków opisanych w dalszej części tego artykułu.
 
 ![Przepływ kodu urządzenia](./media/v2-oauth2-device-code/v2-oauth-device-flow.svg)
 
 ## <a name="device-authorization-request"></a>Żądanie autoryzacji urządzenia
 
-Klient musi najpierw skontaktuj się z serwera uwierzytelniania dla użytkowników i urządzeń kodu, który jest używany do inicjowania uwierzytelniania. Klient zbiera tego żądania z `/devicecode` punktu końcowego. W tym żądaniu klienta powinny również obejmować uprawnienia niezbędne do uzyskania przez użytkownika. Od momentu to żądanie jest wysyłane, użytkownik ma tylko 15 minut do logowania (zwykle wartość `expires_in`), dlatego tylko przesłać to żądanie, gdy użytkownik wskazuje, będą one gotowe do logowania.
+Klient musi najpierw sprawdzić, czy na serwerze uwierzytelniania znajduje się kod urządzenia i użytkownika używany do inicjowania uwierzytelniania. Klient zbiera żądanie z `/devicecode` punktu końcowego. W tym żądaniu klient powinien również zawierać uprawnienia wymagane do uzyskania od użytkownika. Od momentu wysłania tego żądania użytkownik ma tylko 15 minut na zalogowanie (zazwyczaj wartość dla `expires_in`), więc to żądanie należy wykonać tylko wtedy, gdy użytkownik wykazał, że jest gotowy do zalogowania się.
 
 > [!TIP]
-> Spróbuj wykonać tego żądania w narzędziu Postman!
-> [![Spróbuj uruchomić to żądanie w narzędziu Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> Spróbuj wykonać to żądanie w programie Poster!
+> [![Spróbuj uruchomić to żądanie w programie Poster](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ```
 // Line breaks are for legibility only.
 
-POST https://login.microsoftonline.com/{tenant}/devicecode
+POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/devicecode
 Content-Type: application/x-www-form-urlencoded
 
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
@@ -67,28 +67,28 @@ scope=user.read%20openid%20profile
 
 | Parametr | Warunek | Opis |
 | --- | --- | --- |
-| `tenant` | Wymagane |Dzierżawy katalogu, który chcesz zażądać uprawnień z. Może to być w formacie przyjaznej nazwy lub identyfikatora GUID.  |
-| `client_id` | Wymagane | **Identyfikator aplikacji (klienta)** , [rejestracje aplikacji z witryny Azure portal](https://go.microsoft.com/fwlink/?linkid=2083908) środowisko przypisany do aplikacji. |
-| `scope` | Zalecane | Listę rozdzielonych spacjami [zakresy](v2-permissions-and-consent.md) ma użytkownika o zgodę na.  |
+| `tenant` | Wymagane |Dzierżawa katalogu, z której chcesz zażądać uprawnień. Może to być w formacie identyfikatora GUID lub przyjaznej nazwy.  |
+| `client_id` | Wymagane | **Identyfikator aplikacji (klienta)** , który [Azure Portal — rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) środowisko przypisane do aplikacji. |
+| `scope` | Zalecane | Rozdzielana spacjami lista [zakresów](v2-permissions-and-consent.md) , do których użytkownik ma wyrazić zgodę.  |
 
-### <a name="device-authorization-response"></a>Odpowiedzi autoryzacji urządzenia
+### <a name="device-authorization-response"></a>Odpowiedź na autoryzację urządzenia
 
-Odpowiedź oznaczająca Powodzenie będzie obiektem JSON zawierającym wymagane informacje, aby umożliwić użytkownikowi zalogowanie.  
+Pomyślna odpowiedź będzie obiektem JSON zawierającym wymagane informacje umożliwiające użytkownikowi zalogowanie się.  
 
 | Parametr | Format | Opis |
 | ---              | --- | --- |
-|`device_code`     | String | Długi ciąg używany do sprawdzenia sesji między klientem a serwerem autoryzacji. Klient używa tego parametru do wysłania żądania tokenu dostępu z serwera autoryzacji. |
-|`user_code`       | String | Krótkiego ciągu widocznym dla użytkownika, który jest używany do identyfikowania sesji na urządzeniach pomocniczych.|
-|`verification_uri`| Identyfikator URI | Identyfikator URI, użytkownik powinien przejdź do widoku `user_code` Aby móc się zalogować. |
-|`expires_in`      | int | Liczba sekund przed `device_code` i `user_code` wygaśnie. |
-|`interval`        | int | Liczba sekund, które klient powinien upłynąć między żądaniami sondowania. |
-| `message`        | String | Ciąg czytelny dla człowieka z instrukcjami dla użytkownika. To może być lokalizowana umieszczając **parametr zapytania** w żądaniu formularza `?mkt=xx-XX`, napełniania w kodzie kultury odpowiedni język. |
+|`device_code`     | String | Długi ciąg używany do weryfikowania sesji między klientem a serwerem autoryzacji. Klient używa tego parametru, aby zażądać tokenu dostępu z serwera autoryzacji. |
+|`user_code`       | Ciąg | Krótki ciąg pokazywany użytkownikowi, który służy do identyfikowania sesji na urządzeniu pomocniczym.|
+|`verification_uri`| Identyfikator URI | Identyfikator URI, do którego użytkownik powinien przejść, `user_code` aby móc się zalogować. |
+|`expires_in`      | int | Liczba sekund przed `device_code` wygaśnięciem i `user_code` . |
+|`interval`        | int | Liczba sekund, przez jaką klient powinien czekać między żądaniami sondowania. |
+| `message`        | String | Czytelny dla człowieka ciąg zawierający instrukcje dla użytkownika. Może to być lokalizowane przez dołączenie **parametru zapytania** w żądaniu formularza `?mkt=xx-XX`, wypełniając odpowiedni kod kultury języka. |
 
 ## <a name="authenticating-the-user"></a>Uwierzytelnianie użytkownika
 
-Od momentu odebrania `user_code` i `verification_uri`, klient jest wyświetlany one użytkownikowi, poinstruowanie go o zalogowanie się za pomocą swojego telefonu komórkowego lub przeglądarki komputera.  Ponadto klient może używać kod QR lub podobny mechanizm do wyświetlenia `verfication_uri_complete`, co spowoduje przejście kroku przedstawiający wprowadzanie `user_code` dla użytkownika.
+Po odebraniu `user_code` usługi `verification_uri`i klient wyświetli te elementy użytkownikowi, co powoduje ich zalogowanie się przy użyciu telefonu komórkowego lub przeglądarki komputerowej.  Ponadto Klient może użyć kodu QR lub podobnego mechanizmu `verfication_uri_complete`, aby wyświetlić, co spowoduje `user_code` przejście do użytkownika.
 
-Gdy użytkownik jest uwierzytelniany na `verification_uri`, klient powinien sondowanie `/token` punktu końcowego dla żądanego tokenu za pomocą `device_code`.
+Podczas uwierzytelniania użytkownika w `verification_uri`usłudze należy wykonać sondowanie `/token` punktu końcowego dla żądanego tokenu przy użyciu `device_code`.
 
 ``` 
 POST https://login.microsoftonline.com/tenant/oauth2/v2.0/token
@@ -101,24 +101,24 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8
 
 | Parametr | Wymagane | Opis|
 | -------- | -------- | ---------- |
-| `grant_type` | Wymagane | musi być `urn:ietf:params:oauth:grant-type:device_code`|
-| `client_id`  | Wymagane | Musi odpowiadać `client_id` użyty w żądaniu początkowej. |
-| `device_code`| Wymagane | `device_code` Zwracane w żądaniu autoryzacji urządzeń.  |
+| `grant_type` | Wymagane | Musi być`urn:ietf:params:oauth:grant-type:device_code`|
+| `client_id`  | Wymagane | Musi być zgodna `client_id` z użytym w początkowym żądaniu. |
+| `device_code`| Wymagane | `device_code` Zwrócone w żądaniu autoryzacji urządzenia.  |
 
-### <a name="expected-errors"></a>Oczekiwano błędy
+### <a name="expected-errors"></a>Oczekiwane błędy
 
-Przepływ kodu urządzenia jest protokołem sondowania, dlatego należy oczekiwać wystąpią błędy, zanim użytkownik zakończył uwierzytelnianie klienta.  
+Przepływ kodu urządzenia to protokół sondowania, aby klient oczekiwał na otrzymywanie błędów, zanim użytkownik zakończy uwierzytelnianie.  
 
 | Błąd | Opis | Akcja klienta |
 | ------ | ----------- | -------------|
-| `authorization_pending` | Użytkownik nie zakończono uwierzytelniania, ale nie zostało anulowane przepływ. | Powtórz żądania po co najmniej `interval` sekund. |
-| `authorization_declined` | Użytkownik odrzucił żądanie autoryzacji.| Zatrzymywanie sondowania i przywrócić stan nieuwierzytelnionych.  |
-| `bad_verification_code`| `device_code` Wysyłane do `/token` punkt końcowy nie został rozpoznany. | Sprawdź, czy klient wysyła prawidłowe `device_code` w żądaniu. |
-| `expired_token` | Co najmniej `expires_in` sekund i uwierzytelniania nie jest możliwe dzięki temu `device_code`. | Zatrzymywanie sondowania i przywrócić stan nieuwierzytelnionych. |
+| `authorization_pending` | Użytkownik nie zakończył uwierzytelniania, ale nie anulował przepływu. | Powtórz żądanie po co najmniej `interval` sekundach. |
+| `authorization_declined` | Użytkownik końcowy odrzucił żądanie autoryzacji.| Zatrzymaj sondowanie i Przywróć stan nieuwierzytelniony.  |
+| `bad_verification_code`| Nie rozpoznano `/token` wysłanego do punktu końcowego. `device_code` | Sprawdź, czy klient wysyła poprawny `device_code` w żądaniu. |
+| `expired_token` | Co najmniej `expires_in` kilka sekund zostało zakończone, a uwierzytelnianie nie jest już możliwe `device_code`. | Zatrzymaj sondowanie i Przywróć stan nieuwierzytelniony. |
 
-### <a name="successful-authentication-response"></a>Pomyślne uwierzytelnienie odpowiedzi
+### <a name="successful-authentication-response"></a>Pomyślna odpowiedź uwierzytelniania
 
-Odpowiedź oznaczająca Powodzenie tokenu będzie wyglądać następująco:
+Pomyślna odpowiedź dotycząca tokenu będzie wyglądać następująco:
 
 ```json
 {
@@ -133,11 +133,11 @@ Odpowiedź oznaczająca Powodzenie tokenu będzie wyglądać następująco:
 
 | Parametr | Format | Opis |
 | --------- | ------ | ----------- |
-| `token_type` | String| Zawsze "Bearer. |
-| `scope` | Ciągi oddzielone spacjami | Jeśli token dostępu został zwrócony, ta lista zawiera token dostępu jest prawidłowy dla zakresy. |
-| `expires_in`| int | Liczba sekund przed token dostępu dołączony jest prawidłowy dla. |
-| `access_token`| Nieprzezroczysty ciąg | Wystawiony dla [zakresy](v2-permissions-and-consent.md) którego zażądano.  |
-| `id_token`   | JWT | Jeśli wystawionych oryginalny `scope` parametru `openid` zakresu.  |
-| `refresh_token` | Nieprzezroczysty ciąg | Jeśli wystawionych oryginalny `scope` parametru `offline_access`.  |
+| `token_type` | String| Zawsze "Bearer". |
+| `scope` | Ciągi rozdzielone spacją | Jeśli został zwrócony token dostępu, spowoduje to wyświetlenie listy zakresów, dla których token dostępu jest prawidłowy. |
+| `expires_in`| int | Liczba sekund, po upływie których uwzględniony token dostępu jest prawidłowy dla elementu. |
+| `access_token`| Ciąg nieprzezroczysty | Wystawiony dla żądanych [zakresów](v2-permissions-and-consent.md) .  |
+| `id_token`   | JWT | Wystawiony, `scope` Jeśli oryginalny parametr `openid` zawiera zakres.  |
+| `refresh_token` | Ciąg nieprzezroczysty | Wystawiony, `scope` Jeśli zostanie `offline_access`uwzględniony oryginalny parametr.  |
 
-Można użyć tokenu odświeżania do uzyskania nowych tokenów dostępu i Odśwież tokeny przy użyciu tego samego przepływu udokumentowane w [dokumentacji przepływu OAuth kodów](v2-oauth2-auth-code-flow.md#refresh-the-access-token).  
+Możesz użyć tokenu odświeżania, aby uzyskać nowe tokeny dostępu i odświeżać tokeny przy użyciu tego samego przepływu udokumentowanego w [dokumentacji przepływu kodu OAuth](v2-oauth2-auth-code-flow.md#refresh-the-access-token).  
