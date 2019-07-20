@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: 5f06ca04b0b6ea48ebb49952df71cb02946777fa
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 22a95be43f06e95a6067b179b3023ba94ee5795d
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67333385"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68362588"
 ---
 ## <a name="authentication"></a>Authentication
 
@@ -18,7 +18,7 @@ Każde żądanie wymaga nagłówka autoryzacji. W poniższej tabeli zestawiono, 
 | Nagłówki obsługiwane autoryzacji | Zamiany mowy na tekst | Zamiana tekstu na mowę |
 |------------------------|----------------|----------------|
 | OCP-Apim-Subscription-Key | Yes | Nie |
-| Autoryzacja: Elementu nośnego | Tak | Yes |
+| Zgody Elementu nośnego | Yes | Yes |
 
 Korzystając z `Ocp-Apim-Subscription-Key` nagłówka, tylko, musisz podać klucz subskrypcji. Na przykład:
 
@@ -26,7 +26,7 @@ Korzystając z `Ocp-Apim-Subscription-Key` nagłówka, tylko, musisz podać kluc
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
 ```
 
-Korzystając z `Authorization: Bearer` nagłówka jest wymagana, aby zgłosić wniosek o `issueToken` punktu końcowego. W tym żądaniu możesz wymienić klucz subskrypcji dla tokenu dostępu, który jest ważny przez 10 minut. W kolejnych sekcjach dowiesz się, jak uzyskać token, a następnie używają tokenu.
+Korzystając z `Authorization: Bearer` nagłówka jest wymagana, aby zgłosić wniosek o `issueToken` punktu końcowego. W tym żądaniu możesz wymienić klucz subskrypcji dla tokenu dostępu, który jest ważny przez 10 minut. W kilku następnych sekcjach dowiesz się, jak uzyskać token i użyć tokenu.
 
 ### <a name="how-to-get-an-access-token"></a>Jak uzyskać token dostępu
 
@@ -50,7 +50,7 @@ Content-type: application/x-www-form-urlencoded
 Content-Length: 0
 ```
 
-Treść odpowiedzi zawiera token dostępu w formacie tokenu Web JSON (JWT).
+Treść odpowiedzi zawiera token dostępu w formacie tokenu sieci Web JSON (JWT).
 
 #### <a name="powershell-sample"></a>Przykładowy skrypt programu PowerShell
 
@@ -121,7 +121,7 @@ public class Authentication
 }
 ```
 
-#### <a name="python-sample"></a>Przykład środowiska Python
+#### <a name="python-sample"></a>Przykład języka Python
 
 ```python
 # Request module must be installed.
@@ -129,6 +129,7 @@ public class Authentication
 import requests
 
 subscription_key = 'REPLACE_WITH_YOUR_KEY'
+
 
 def get_token(subscription_key):
     fetch_token_url = 'https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken'

@@ -1,7 +1,7 @@
 ---
 title: 'Samouczek dotyczący klasyfikacji obrazów: Szkolenie modeli'
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak to w opracowywaniu model klasyfikacji obrazów za pomocą scikit-Dowiedz się, w notesie Jupyter języka Python za pomocą usługi Azure Machine Learning. Ten samouczek jest pierwszą częścią dwuczęściowej serii.
+description: Dowiedz się, jak szkolić model klasyfikacji obrazów za pomocą scikit — Dowiedz się więcej w notesie środowiska Python Jupyter z usługą Azure Machine Learning. Ten samouczek jest pierwszą częścią dwuczęściowej serii.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,14 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: ed2b35c5a1a0a017cb6bea086601282c83956d88
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 589b0e964ff5595f4b72a446aa8e0518db81844f
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515554"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360874"
 ---
-# <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Samouczek: Szkolenie modeli klasyfikacji obrazów przy użyciu danych mnist ręcznie ZAPISANYCH i scikit-Dowiedz się, za pomocą usługi Azure Machine Learning
+# <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Samouczek: Uczenie modeli klasyfikacji obrazów przy użyciu MNIST ręcznie danych i scikit — uczenie się za pomocą Azure Machine Learning
 
 W tym samouczku przeprowadzisz szkolenie modelu uczenia maszynowego na zdalnych zasobach obliczeniowych. Zastosujesz przepływ pracy uczenia i wdrażania dla usługi Azure Machine Learning (wersja zapoznawcza) w notesie Jupyter języka Python.  Następnie możesz użyć notesu jako szablonu do uczenia własnego modelu uczenia maszynowego z użyciem własnych danych. Ten samouczek jest **pierwszą częścią dwuczęściowej serii**.  
 
@@ -28,7 +28,7 @@ Dowiedz się, jak wykonać następujące czynności:
 > [!div class="checklist"]
 > * Konfigurowanie środowiska projektowego.
 > * Uzyskiwanie dostępu do danych i badanie ich.
-> * Uczenie modelu regresji logistycznej proste w zdalnym klastrze.
+> * Uczenie prostego modelu regresji logistycznej w klastrze zdalnym.
 > * Przeglądanie wyników uczenia i rejestrowanie najlepszego modelu.
 
 Tego, jak wybrać i wdrożyć model, dowiesz się z [drugiej części tego samouczka](tutorial-deploy-models-with-aml.md).
@@ -36,7 +36,7 @@ Tego, jak wybrać i wdrożyć model, dowiesz się z [drugiej części tego samou
 Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
 
 >[!NOTE]
-> Kod w tym artykule został przetestowany przy użyciu zestawu SDK usługi Azure Machine Learning wersji 1.0.41.
+> Kod w tym artykule został przetestowany przy użyciu zestawu SDK Azure Machine Learning 1.0.41.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -45,28 +45,28 @@ Przejdź do sekcji [Konfigurowanie środowiska projektowego](#start), aby zapozn
 * Serwer notesów Python 3.6 z zainstalowanym następującym oprogramowaniem:
     * Zestaw SDK usługi Azure Machine Learning dla języka Python
     * `matplotlib` i `scikit-learn`
-* Samouczek Notes i plik **utils.py**
+* Notes samouczka i plik **utils.py**
 * Obszar roboczy uczenia maszynowego
 * Plik konfiguracji obszaru roboczego w tym samym katalogu co notes
 
 Wszystkie te wymagania wstępne można spełnić, korzystając z jednej z poniższych sekcji.
 
-* Użyj [serwer chmura w obszarze roboczym](#azure)
+* Korzystanie z [serwera notesu w chmurze w obszarze roboczym](#azure)
 * Korzystanie z [własnego serwera notesów](#server)
 
-### <a name="azure"></a>Użyj serwera notesu chmura w obszarze roboczym
+### <a name="azure"></a>Korzystanie z serwera notesu w chmurze w obszarze roboczym
 
-To ułatwia rozpoczęcie pracy z serwerem oparte na chmurze notesu. [Azure Machine Learning SDK dla języka Python](https://aka.ms/aml-sdk) jest już zainstalowany i skonfigurowany dla Ciebie, po utworzeniu zasobu w chmurze.
+Rozpoczęcie pracy z własnym serwerem notesu opartym na chmurze jest proste. [Zestaw Azure Machine Learning SDK dla języka Python](https://aka.ms/aml-sdk) jest już zainstalowany i skonfigurowany dla Ciebie po utworzeniu tego zasobu w chmurze.
 
 [!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
 
-* Po uruchomieniu notesu strony sieci Web, otwórz **samouczki/img klasyfikacji — część 1 — training.ipynb** notesu.
+* Po uruchomieniu witryny sieci Web notesu Otwórz Notes **/IMG-Classification-part1-Training. ipynb** .
 
 ### <a name="server"></a>Korzystanie z własnego serwera notesów Jupyter Notebook
 
 [!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
 
- Po wykonaniu kroków, uruchom **samouczki/img klasyfikacji — część 1 — training.ipynb** Notes w sklonowanym katalogu.
+ Po wykonaniu tych kroków uruchom Notes **/IMG-Classification-part1-Training. ipynb** w sklonowanym katalogu.
 
 ## <a name="start"></a>Konfigurowanie środowiska projektowego
 
@@ -100,7 +100,7 @@ Utwórz obiekt obszaru roboczego na podstawie istniejącego obszaru roboczego. M
 ```python
 # load workspace configuration from the config.json file in the current folder.
 ws = Workspace.from_config()
-print(ws.name, ws.location, ws.resource_group, ws.location, sep = '\t')
+print(ws.name, ws.location, ws.resource_group, ws.location, sep='\t')
 ```
 
 ### <a name="create-an-experiment"></a>Tworzenie eksperymentu
@@ -108,9 +108,9 @@ print(ws.name, ws.location, ws.resource_group, ws.location, sep = '\t')
 Utwórz eksperyment do śledzenia przebiegów w Twoim obszarze roboczym. Obszar roboczy może zawierać wiele eksperymentów:
 
 ```python
+from azureml.core import Experiment
 experiment_name = 'sklearn-mnist'
 
-from azureml.core import Experiment
 exp = Experiment(workspace=ws, name=experiment_name)
 ```
 
@@ -140,18 +140,20 @@ if compute_name in ws.compute_targets:
         print('found compute target. just use it. ' + compute_name)
 else:
     print('creating a new compute target...')
-    provisioning_config = AmlCompute.provisioning_configuration(vm_size = vm_size,
-                                                                min_nodes = compute_min_nodes,
-                                                                max_nodes = compute_max_nodes)
+    provisioning_config = AmlCompute.provisioning_configuration(vm_size=vm_size,
+                                                                min_nodes=compute_min_nodes,
+                                                                max_nodes=compute_max_nodes)
 
     # create the cluster
-    compute_target = ComputeTarget.create(ws, compute_name, provisioning_config)
+    compute_target = ComputeTarget.create(
+        ws, compute_name, provisioning_config)
 
     # can poll for a minimum number of nodes and for a specific timeout.
     # if no min node count is provided it will use the scale settings for the cluster
-    compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
+    compute_target.wait_for_completion(
+        show_output=True, min_node_count=None, timeout_in_minutes=20)
 
-     # For a more detailed view of current AmlCompute status, use get_status()
+    # For a more detailed view of current AmlCompute status, use get_status()
     print(compute_target.get_status().serialize())
 ```
 
@@ -174,12 +176,16 @@ import urllib.request
 import os
 
 data_folder = os.path.join(os.getcwd(), 'data')
-os.makedirs(data_folder, exist_ok = True)
+os.makedirs(data_folder, exist_ok=True)
 
-urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz', filename=os.path.join(data_folder, 'train-images.gz'))
-urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz', filename=os.path.join(data_folder, 'train-labels.gz'))
-urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz', filename=os.path.join(data_folder, 'test-images.gz'))
-urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz', filename=os.path.join(data_folder, 'test-labels.gz'))
+urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz',
+                           filename=os.path.join(data_folder, 'train-images.gz'))
+urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz',
+                           filename=os.path.join(data_folder, 'train-labels.gz'))
+urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz',
+                           filename=os.path.join(data_folder, 'test-images.gz'))
+urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz',
+                           filename=os.path.join(data_folder, 'test-labels.gz'))
 ```
 
 Zostaną wyświetlone dane wyjściowe podobne do tych: ```('./data/test-labels.gz', <http.client.HTTPMessage at 0x7f40864c77b8>)```
@@ -193,15 +199,18 @@ Załaduj pliki skompresowane do tablic `numpy`. Następnie użyj `matplotlib` do
 from utils import load_data
 
 # note we also shrink the intensity values (X) from 0-255 to 0-1. This helps the model converge faster.
-X_train = load_data(os.path.join(data_folder, 'train-images.gz'), False) / 255.0
+X_train = load_data(os.path.join(
+    data_folder, 'train-images.gz'), False) / 255.0
 X_test = load_data(os.path.join(data_folder, 'test-images.gz'), False) / 255.0
-y_train = load_data(os.path.join(data_folder, 'train-labels.gz'), True).reshape(-1)
-y_test = load_data(os.path.join(data_folder, 'test-labels.gz'), True).reshape(-1)
+y_train = load_data(os.path.join(
+    data_folder, 'train-labels.gz'), True).reshape(-1)
+y_test = load_data(os.path.join(
+    data_folder, 'test-labels.gz'), True).reshape(-1)
 
 # now let's show some randomly chosen images from the traininng set.
 count = 0
 sample_size = 30
-plt.figure(figsize = (16, 6))
+plt.figure(figsize=(16, 6))
 for i in np.random.permutation(X_train.shape[0])[:sample_size]:
     count = count + 1
     plt.subplot(1, sample_size, count)
@@ -228,7 +237,8 @@ Pliki MNIST są przekazywane do katalogu o nazwie `mnist` w folderze głównym m
 ds = ws.get_default_datastore()
 print(ds.datastore_type, ds.account_name, ds.container_name)
 
-ds.upload(src_dir=data_folder, target_path='mnist', overwrite=True, show_progress=True)
+ds.upload(src_dir=data_folder, target_path='mnist',
+          overwrite=True, show_progress=True)
 ```
 
 Masz teraz wszystko, czego potrzebujesz, aby rozpocząć uczenie modelu.
@@ -247,7 +257,7 @@ Utwórz katalog w celu dostarczenia niezbędnego kodu ze swojego komputera do za
 
 ```python
 import os
-script_folder  = os.path.join(os.getcwd(), "sklearn-mnist")
+script_folder = os.path.join(os.getcwd(), "sklearn-mnist")
 os.makedirs(script_folder, exist_ok=True)
 ```
 
@@ -311,9 +321,9 @@ Zwróć uwagę, jak skrypt pobiera dane i zapisuje modele:
 
 + Skrypt uczenia odczytuje argument, aby znaleźć katalog zawierający dane. Podczas późniejszego przesyłania zadania wskażesz magazyn danych dla tego argumentu: ```parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')```
 
-+ Skrypt szkoleniowy zapisuje modelu w katalogu o nazwie **generuje**. Dowolne pliki zapisane w tym katalogu są automatycznie przekazywane do Twojego obszaru roboczego. W dalszej części samouczka z poziomu tego katalogu uzyskasz dostęp do swojego modelu. `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
++ Skrypt szkoleniowy zapisuje model w katalogu **o nazwie**Outputs. Dowolne pliki zapisane w tym katalogu są automatycznie przekazywane do Twojego obszaru roboczego. W dalszej części samouczka z poziomu tego katalogu uzyskasz dostęp do swojego modelu. `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
 
-+ Skrypt szkoleniowy wymaga pliku `utils.py` można prawidłowo załadować zestawu danych. Poniższy kod kopiuje `utils.py` do `script_folder` , dzięki czemu plik można uzyskać dostęp oraz skrypt szkolenia na zasób zdalny.
++ Skrypt szkoleniowy wymaga pliku `utils.py` do poprawnego załadowania zestawu danych. Poniższy kod kopiuje `utils.py` do `script_folder` programu, aby można było uzyskać dostęp do pliku wraz z skryptem szkoleniowym w zasobie zdalnym.
 
   ```python
   import shutil
@@ -322,7 +332,7 @@ Zwróć uwagę, jak skrypt pobiera dane i zapisuje modele:
 
 ### <a name="create-an-estimator"></a>Tworzenie narzędzia do szacowania
 
-[Skryptu SKLearn narzędzie do szacowania](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) obiekt jest używany do przesyłania przebiegu. Utwórz narzędzie do szacowania, uruchamiając następujący kod, aby zdefiniować następujące elementy:
+Obiekt [skryptu sklearn szacowania](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) jest używany do przesyłania przebiegu. Utwórz narzędzie do szacowania, uruchamiając następujący kod, aby zdefiniować następujące elementy:
 
 * Nazwa obiektu narzędzia do szacowania, `est`.
 * Katalog zawierający Twoje skrypty. Wszystkie pliki w tym katalogu są przekazywane do węzłów klastra w celu wykonania.
@@ -341,9 +351,9 @@ script_params = {
 }
 
 est = SKLearn(source_directory=script_folder,
-                script_params=script_params,
-                compute_target=compute_target,
-                entry_script='train.py')
+              script_params=script_params,
+              compute_target=compute_target,
+              entry_script='train.py')
 ```
 
 ### <a name="submit-the-job-to-the-cluster"></a>Przesyłanie zadania do klastra
@@ -395,7 +405,7 @@ Jeśli musisz anulować przebieg, możesz wykonać [te instrukcje](https://aka.m
 Uczenie i monitorowanie modelu odbywa się w tle. Poczekaj na zakończenie uczenia modelu przed uruchomieniem dalszego kodu. Za pomocą metody `wait_for_completion` można wyświetlić informację o zakończeniu trenowania modelu:
 
 ```python
-run.wait_for_completion(show_output=False) # specify True for a verbose log
+run.wait_for_completion(show_output=False)  # specify True for a verbose log
 ```
 
 ### <a name="display-run-results"></a>Wyświetlanie wyników przebiegu
@@ -426,8 +436,9 @@ Zarejestruj model w obszarze roboczym, aby umożliwić sobie (lub innym współp
 
 ```python
 # register model
-model = run.register_model(model_name='sklearn_mnist', model_path='outputs/sklearn_mnist_model.pkl')
-print(model.name, model.id, model.version, sep = '\t')
+model = run.register_model(model_name='sklearn_mnist',
+                           model_path='outputs/sklearn_mnist_model.pkl')
+print(model.name, model.id, model.version, sep='\t')
 ```
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
@@ -441,7 +452,7 @@ Usunąć możesz również sam klaster obliczeniowy usługi Azure Machine Learni
 compute_target.delete()
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku usługi Azure Machine Learning za pomocą języka Python wykonano następujące czynności:
 

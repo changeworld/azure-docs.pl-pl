@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: d218ebcacf18687d01402f2c6ac354d95a1fe71f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0ccd57e1614f23d775df2fe8e963d2cc7f9a4358
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071411"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360739"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Samouczek: Tworzenie aplikacji o wysokiej dostępności z usługą Blob Storage
 
@@ -40,7 +40,7 @@ W celu ukończenia tego samouczka:
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-* Zainstaluj [Visual Studio 2019](https://www.visualstudio.com/downloads/) z następującymi pakietami roboczymi:
+* Zainstaluj [program Visual Studio 2019](https://www.visualstudio.com/downloads/) z następującymi obciążeniami:
   - **Tworzenie aplikacji na platformie Azure**
 
   ![Tworzenie aplikacji na platformie Azure (w Internecie i w chmurze)](media/storage-create-geo-redundant-storage/workloads.png)
@@ -57,7 +57,7 @@ W celu ukończenia tego samouczka:
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
-* Zainstaluj [Node.js](https://nodejs.org).
+* Zainstaluj program [Node. js](https://nodejs.org).
 
 ---
 
@@ -85,7 +85,7 @@ Wykonaj następujące kroki, aby utworzyć konto magazynu geograficznie nadmiaro
    | **Replikacja**| Magazyn geograficznie nadmiarowy dostępny do odczytu (RA-GRS) | Jest to niezbędne do działania przykładu. |
    |**Subskrypcja** | Twoja subskrypcja |Aby uzyskać szczegółowe informacje o subskrypcjach, zobacz [Subskrypcje](https://account.azure.com/Subscriptions). |
    |**ResourceGroup** | myResourceGroup |Prawidłowe nazwy grup zasobów opisano w artykule [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Reguły i ograniczenia nazewnictwa). |
-   |**Lokalizacja** | Wschodnie stany USA | Wybierz lokalizację. |
+   |**Location** | East US | Wybierz lokalizację. |
 
 ![tworzenie konta magazynu](media/storage-create-geo-redundant-storage/createragrsstracct.png)
 
@@ -117,7 +117,7 @@ git clone https://github.com/Azure-Samples/storage-java-V10-ha-ra-grs
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
-[Pobierz przykładowy projekt](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs) i rozpakuj plik. Możesz również użyć narzędzia [git](https://git-scm.com/), aby pobrać kopię tej aplikacji do swojego środowiska projektowego. Przykładowy projekt zawiera podstawową aplikację Node.js.
+[Pobierz przykładowy projekt](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs) i rozpakuj plik. Możesz również użyć narzędzia [git](https://git-scm.com/), aby pobrać kopię tej aplikacji do swojego środowiska projektowego. Przykładowy projekt zawiera podstawową aplikację Node. js.
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-java-V10-ha-ra-grs
@@ -131,7 +131,7 @@ git clone https://github.com/Azure-Samples/storage-java-V10-ha-ra-grs
 
 W aplikacji należy wprowadzić parametry połączenia konta magazynu. Te parametry połączenia można przechowywać w zmiennej środowiskowej na maszynie lokalnej z uruchomioną aplikacją. Postępuj zgodnie z jednym z poniższych przykładów w zależności od używanego systemu operacyjnego, aby utworzyć zmienną środowiskową.
 
-W witrynie Azure Portal przejdź do swojego konta magazynu. Wybierz pozycję **Klucze dostępu** w obszarze **Ustawienia** konta magazynu. Skopiuj **parametry połączenia** z klucza podstawowego lub pomocniczego. Uruchom jedno z następujących poleceń, w oparciu o systemu operacyjnego, zastępując \<yourconnectionstring\> z rzeczywistymi parametrami połączenia. To polecenie zapisuje zmienną środowiskową na maszynie lokalnej. W systemie Windows zmienna środowiskowa nie jest dostępna do czasu ponownego załadowania używanej powłoki lub **wiersza polecenia**.
+W witrynie Azure Portal przejdź do swojego konta magazynu. Wybierz pozycję **Klucze dostępu** w obszarze **Ustawienia** konta magazynu. Skopiuj **parametry połączenia** z klucza podstawowego lub pomocniczego. Uruchom jedno z następujących poleceń w zależności od używanego systemu operacyjnego, zastępując \<yourconnectionstring\> z rzeczywistymi parametrami połączenia. To polecenie zapisuje zmienną środowiskową na maszynie lokalnej. W systemie Windows zmienna środowiskowa nie jest dostępna do czasu ponownego załadowania używanej powłoki lub **wiersza polecenia**.
 
 ### <a name="linux"></a>Linux
 
@@ -147,9 +147,9 @@ setx storageconnectionstring "<yourconnectionstring>"
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-W aplikacji musisz podać swoje poświadczenia konta magazynu. Te informacje można przechowywać w zmiennych środowiskowych na komputerze lokalnym, na którym uruchomiona jest aplikacja. Wykonaj jedną z poniższych przykładów w zależności od używanego systemu operacyjnego do tworzenia zmiennych środowiskowych.
+W aplikacji należy podać poświadczenia konta magazynu. Te informacje można przechowywać w zmiennych środowiskowych na komputerze lokalnym, na którym działa aplikacja. Wykonaj jedną z poniższych przykładów w zależności od używanego systemu operacyjnego, aby utworzyć zmienne środowiskowe.
 
-W witrynie Azure Portal przejdź do swojego konta magazynu. Wybierz pozycję **Klucze dostępu** w obszarze **Ustawienia** konta magazynu. Wklej **nazwa konta magazynu** i **klucz** wartości następujące polecenia, zastępując \<youraccountname\> i \<youraccountkey\>symbole zastępcze. To polecenie zapisuje zmienne środowiskowe do komputera lokalnego. W systemie Windows zmienna środowiskowa nie jest dostępna do czasu ponownego załadowania używanej powłoki lub **wiersza polecenia**.
+W witrynie Azure Portal przejdź do swojego konta magazynu. Wybierz pozycję **Klucze dostępu** w obszarze **Ustawienia** konta magazynu. Wklej **nazwę konta magazynu** i wartości **klucza** \<do następujących poleceń, zastępując symbole zastępcze youraccountname\> i \<youraccountkey\> . To polecenie zapisuje zmienne środowiskowe na komputerze lokalnym. W systemie Windows zmienna środowiskowa nie jest dostępna do czasu ponownego załadowania używanej powłoki lub **wiersza polecenia**.
 
 ### <a name="linux"></a>Linux
 
@@ -167,7 +167,7 @@ setx accountkey "<youraccountkey>"
 
 # <a name="java-v10-sdktabjava-v10"></a>[Zestaw SDK języka Java w wersji 10](#tab/java-v10)
 
-Ten przykład wymaga bezpiecznego przechowywania nazwy i klucza konta magazynu. Zapisz je w zmiennych środowiskowych znajdujących się lokalnie na maszynie używanej do uruchamiania aplikacji przykładowej. Aby utworzyć zmienne środowiskowe, użyj jednego z poniższych przykładów, w zależności od używanego systemu operacyjnego — Linux lub Windows. W Windows, zmienna środowiskowa nie jest dostępna po ponownym załadowaniu **polecenia** lub używasz powłoki.
+Ten przykład wymaga bezpiecznego przechowywania nazwy i klucza konta magazynu. Zapisz je w zmiennych środowiskowych znajdujących się lokalnie na maszynie używanej do uruchamiania aplikacji przykładowej. Aby utworzyć zmienne środowiskowe, użyj jednego z poniższych przykładów, w zależności od używanego systemu operacyjnego — Linux lub Windows. W systemie Windows zmienna środowiskowa nie jest dostępna do momentu ponownego załadowania **wiersza polecenia** lub powłoki, której używasz.
 
 ### <a name="linux-example"></a>Przykład dla systemu Linux
 
@@ -185,16 +185,16 @@ setx AZURE_STORAGE_ACCESS_KEY "<youraccountkey>"
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
-Aby uruchomić ten przykład, należy dodać poświadczenia konta magazynu do `.env.example` pliku, a następnie zmień jej nazwę na `.env`.
+Aby uruchomić ten przykład, należy dodać do `.env.example` pliku poświadczenia konta magazynu, a następnie zmienić jego nazwę na. `.env`
 
 ```
 AZURE_STORAGE_ACCOUNT_NAME=<replace with your storage account name>
 AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
 ```
 
-Te informacje można znaleźć w witrynie Azure portal, przechodząc do swojego konta magazynu i wybranie **klucze dostępu** w **ustawienia** sekcji.
+Te informacje można znaleźć w Azure Portal, przechodząc do konta magazynu i wybierając pozycję **klucze dostępu** w sekcji **Ustawienia** .
 
-Zainstaluj wymagane zależności. Aby to zrobić, otwórz wiersz polecenia, przejdź do folderu przykładu, a następnie wprowadź `npm install`.
+Zainstaluj wymagane zależności. Aby to zrobić, Otwórz wiersz polecenia, przejdź do folderu przykład, a następnie wprowadź `npm install`.
 
 ---
 
@@ -220,7 +220,7 @@ W przykładowym kodzie metoda `run_circuit_breaker` w pliku `circuitbreaker.py` 
 
 Funkcja ponawiania obiektu usługi Storage została ustawiona na zasady ponawiania liniowego. Funkcja ponawiania określa, czy należy ponowić próbę żądania, oraz wskazuje liczbę sekund oczekiwania przed ponownym podjęciem próby wykonania żądania. Ustaw pozycję **retry\_to\_secondary** na wartość true, jeśli żądanie powinno być ponawiane w punkcie pomocniczym w przypadku niepowodzenia początkowego żądania w punkcie podstawowym. W przykładowej aplikacji niestandardowe zasady ponawiania zostały zdefiniowane w funkcji `retry_callback` obiektu magazynu.
 
-Przed pobraniem obiektu usługi [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) i [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) funkcja jest zdefiniowana. Te funkcje definiują procedury obsługi zdarzeń wyzwalane po pomyślnym zakończeniu pobierania lub po niepowodzeniu pobierania i podjęciu jego kolejnej próby.
+Przed pobraniem zostanie zdefiniowana funkcja [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) i [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) obiektu usługi. Te funkcje definiują procedury obsługi zdarzeń wyzwalane po pomyślnym zakończeniu pobierania lub po niepowodzeniu pobierania i podjęciu jego kolejnej próby.
 
 # <a name="java-v10-sdktabjava-v10"></a>[Zestaw SDK języka Java w wersji 10](#tab/java-v10)
 
@@ -229,13 +229,13 @@ Aby uruchomić aplikację przykładową, użyj narzędzia Maven w wierszu polece
 1. Otwórz powłokę i przejdź do przykładu **storage-blobs-java-v10-quickstart** w sklonowanym katalogu.
 2. Wprowadź polecenie `mvn compile exec:java`.
 
-Ten przykład tworzy plik testowy w katalogu domyślnym. Dla użytkowników Windows ten katalog jest **AppData\Local\Temp**. Następnie w przykładzie zostaną przedstawione następujące polecenia, które możesz wprowadzić:
+Ten przykład tworzy plik testowy w katalogu domyślnym. Dla użytkowników systemu Windows ten katalog jest **AppData\Local\Temp**. Następnie w przykładzie zostaną przedstawione następujące polecenia, które możesz wprowadzić:
 
-- Wprowadź **P** można wykonać operacji umieszczania obiektu blob, to polecenie służy do przekazywania tymczasowego pliku do swojego konta magazynu.
-- Wprowadź **L** operacji listy obiektów blob, to polecenie Wyświetlanie listy obiektów blob, obecnie w kontenerze.
-- Wprowadź **G** na wykonanie operacji pobrania obiektu blob, to polecenie pobiera plik z konta usługi storage na komputer lokalny.
-- Wprowadź **D** można wykonać operacji usuwania obiektów blob, to polecenie usuwa obiekt blob z konta magazynu.
-- Wprowadź **E** zamknąć próbki, to polecenie spowoduje również usunięcie wszystkich zasobów plik, który został utworzony.
+- Wprowadź **P** , aby wykonać operację Put obiektu BLOB, to polecenie przekazuje plik tymczasowy do konta magazynu.
+- Wprowadź **L** , aby wykonać operację listy obiektów blob, to polecenie wyświetla listę obiektów BLOB w kontenerze.
+- Wprowadź **G** , aby wykonać operację pobierania obiektu BLOB, to polecenie spowoduje pobranie pliku z konta magazynu na komputer lokalny.
+- Wprowadź **D** , aby wykonać operację usuwania obiektu BLOB, to polecenie usuwa obiekt BLOB z konta magazynu.
+- Wprowadź **E** , aby zamknąć przykład, polecenie spowoduje również usunięcie wszystkich zasobów utworzonych przez przykład.
 
 Ten przykład przedstawia dane wyjściowe zwracane w przypadku uruchomienia aplikacji w systemie Windows.
 
@@ -268,9 +268,9 @@ Możesz kontrolować aplikację przykładową, więc wprowadź polecenia, aby wy
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
-Aby uruchomić przykład, otwórz wiersz polecenia, przejdź do folderu przykładu, a następnie wprowadź `node index.js`.
+Aby uruchomić przykład, Otwórz wiersz polecenia, przejdź do folderu przykład, a następnie wprowadź `node index.js`.
 
-Przykład tworzy kontener w ramach konta magazynu obiektów Blob, przekazanie **HelloWorld.png** do kontenera, następnie wielokrotnie sprawdza, czy kontener i obraz zostały zreplikowane do regionu pomocniczego. Po przeprowadzeniu replikacji monituje o podanie **D** lub **Q** (następuje ENTER) do pobrania lub zamknąć. Twoje dane wyjściowe powinny wyglądać podobnie do poniższego przykładu:
+Przykład tworzy kontener na koncie magazynu obiektów blob, przekazuje plik **HelloWorld. png** do kontenera, a następnie wielokrotnie sprawdza, czy kontener i obraz zostały zreplikowane do regionu pomocniczego. Po replikacji zostanie wyświetlony komunikat z prośbą o wprowadzenie **D** lub **Q** (a następnie klawisz ENTER) w celu pobrania lub zamknięcia. Dane wyjściowe powinny wyglądać podobnie do poniższego przykładu:
 
 ```
 Created container successfully: newcontainer1550799840726
@@ -358,7 +358,8 @@ Procedura obsługi zdarzeń `retry_callback` jest wywoływana, jeśli pobieranie
 def retry_callback(retry_context):
     global retry_count
     retry_count = retry_context.count
-    sys.stdout.write("\nRetrying event because of failure reading the primary. RetryCount= {0}".format(retry_count))
+    sys.stdout.write(
+        "\nRetrying event because of failure reading the primary. RetryCount= {0}".format(retry_count))
     sys.stdout.flush()
 
     # Check if we have more than n-retries in which case switch to secondary
@@ -392,7 +393,7 @@ def response_callback(response):
 
 # <a name="java-v10-sdktabjava-v10"></a>[Zestaw SDK języka Java w wersji 10](#tab/java-v10)
 
-Przy użyciu zestawu SDK Java V10 procedur obsługi wywołań zwrotnych jest niepotrzebna i zestaw SDK ma teraz pewne podstawowe różnice z zestawu SDK w wersji 7. Zamiast właściwości LocationMode używa się pomocniczego **potoku**. Możesz zdefiniować potok pomocniczy za pomocą opcji **RequestRetryOptions**, a jeśli to zrobisz, aplikacja będzie mogła automatycznie przełączać się na potok pomocniczy w przypadku niepowodzenia łączenia z danymi za pośrednictwem potoku podstawowego.
+W przypadku zestawu Java v10 SDK Definiowanie obsługi wywołań zwrotnych jest zbędne, a zestaw SDK ma teraz pewne podstawowe różnice w zestawie SDK wersji 7. Zamiast właściwości LocationMode używa się pomocniczego **potoku**. Możesz zdefiniować potok pomocniczy za pomocą opcji **RequestRetryOptions**, a jeśli to zrobisz, aplikacja będzie mogła automatycznie przełączać się na potok pomocniczy w przypadku niepowodzenia łączenia z danymi za pośrednictwem potoku podstawowego.
 
 ```java
 // We create pipeline options here so that they can be easily used between different pipelines
@@ -404,7 +405,7 @@ final ServiceURL serviceURL = new ServiceURL(new URL("https://" + accountName + 
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
-Za pomocą zestawu SDK środowiska Node.js V10 wywołania zwrotnego nie są konieczne. Zamiast tego Przykładowa aplikacja tworzy potok, który został skonfigurowany z opcjami ponawiania prób i pomocniczego punktu końcowego. Umożliwia to aplikacji automatyczne przełączanie do potoku pomocniczego, jeśli go nie uda się połączyć dane za pomocą podstawowego potoku.
+W przypadku zestawu SDK środowiska Node. js v10 wymagane są programy obsługi wywołań zwrotnych. Zamiast tego, przykład tworzy potok skonfigurowany przy użyciu opcji ponowień i pomocniczego punktu końcowego. Dzięki temu aplikacja może automatycznie przełączać się na potok pomocniczy, jeśli nie dotrze do danych za pomocą potoku podstawowego.
 
 ```javascript
 const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
@@ -427,7 +428,7 @@ const pipeline = StorageURL.newPipeline(sharedKeyCredential, {
 
 ---
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W pierwszej części serii omówiono czynności dotyczące uzyskiwania wysokiej dostępności aplikacji przy użyciu kont magazynu RA-GRS.
 

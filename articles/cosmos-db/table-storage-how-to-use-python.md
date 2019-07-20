@@ -9,12 +9,12 @@ ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
 ms.reviewer: sngun
-ms.openlocfilehash: 11b47483eaf39e7445ece8b9e38d81a6a2404cc6
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 0f0acc721fd8888953d80976234b431943985ebf
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130476"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356268"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Rozpoczynanie pracy z usługą Azure Table Storage oraz interfejsem API tabel usługi Azure Cosmos DB przy użyciu języka Python
 
@@ -56,7 +56,7 @@ Po utworzeniu konta usługi Azure Storage następnym krokiem jest zainstalowanie
 
 ## <a name="import-the-tableservice-and-entity-classes"></a>Importowanie klas TableService i Entity
 
-W języku Python do pracy z jednostkami w usłudze Azure Table Storage są używane klasy [TableService][py_TableService] i [Entity][py_Entity]. Dodaj następujący kod na początku pliku Python, aby zaimportować obie te klasy:
+Aby współpracować z jednostkami w Table Service platformy Azure w języku Python, należy użyć klas [TableService][py_TableService] and [Entity][py_Entity] . Dodaj następujący kod na początku pliku Python, aby zaimportować obie te klasy:
 
 ```python
 from azure.cosmosdb.table.tableservice import TableService
@@ -81,7 +81,7 @@ table_service = TableService(connection_string='DefaultEndpointsProtocol=https;A
 
 ## <a name="create-a-table"></a>Tworzenie tabeli
 
-Wywołaj metodę[create_table] [py_create_table], aby utworzyć tabelę.
+Wywołaj [CREATE_TABLE][py_create_table] , aby utworzyć tabelę.
 
 ```python
 table_service.create_table('tasktable')
@@ -89,16 +89,17 @@ table_service.create_table('tasktable')
 
 ## <a name="add-an-entity-to-a-table"></a>Dodawanie jednostki do tabeli
 
-Aby dodać jednostkę, musisz najpierw utworzyć obiekt, który reprezentuje jednostkę, a następnie przekazać ten obiekt do [metody TableService.insert_entity][py_TableService]. Obiekt jednostki może być słownikiem lub obiektem typu [Entity][py_Entity]. Definiuje on nazwy i wartości właściwości jednostki. Każda jednostka musi zawierać wymagane właściwości [PartitionKey i RowKey](#partitionkey-and-rowkey), oprócz innych właściwości zdefiniowanych dla jednostki.
+Aby dodać jednostkę, należy najpierw utworzyć obiekt, który reprezentuje jednostkę, przekazać obiekt do. The entity object can be a dictionary or an object of type [Entity][py_Entity] [metody TableService. insert_entity][py_TableService]i zdefiniować nazwy i wartości właściwości jednostki. Każda jednostka musi zawierać wymagane właściwości [PartitionKey i RowKey](#partitionkey-and-rowkey), oprócz innych właściwości zdefiniowanych dla jednostki.
 
-W tym przykładzie tworzony jest obiekt słownika reprezentujący jednostkę, który jest następnie przekazywany do metody [insert_entity][py_insert_entity] w celu dodania jednostki do tabeli:
+Ten przykład tworzy obiekt słownika reprezentujący jednostkę, przekazuje go do metody [insert_entity][py_insert_entity] w celu dodania go do tabeli:
 
 ```python
-task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001', 'description' : 'Take out the trash', 'priority' : 200}
+task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001',
+        'description': 'Take out the trash', 'priority': 200}
 table_service.insert_entity('tasktable', task)
 ```
 
-W tym przykładzie tworzony jest obiekt [Entity][py_Entity], który następnie jest przekazywany do metody [insert_entity][py_insert_entity] w celu dodania jednostki do tabeli:
+Ten przykład tworzy metodę [jednostki][py_Entity] object, then passes it to the [insert_entity][py_insert_entity] w celu dodania jej do tabeli:
 
 ```python
 task = Entity()
@@ -117,39 +118,44 @@ W usłudze Table Storage właściwość **PartitionKey** jest używana do inteli
 
 ## <a name="update-an-entity"></a>Aktualizowanie jednostki
 
-Aby zaktualizować wszystkie wartości właściwości jednostki, należy wywołać metodę [update_entity][py_update_entity]. W tym przykładzie pokazano, jak zastąpić istniejącą jednostkę zaktualizowaną wersją:
+Aby zaktualizować wszystkie wartości właściwości jednostki, wywołaj metodę [update_entity][py_update_entity] . W tym przykładzie pokazano, jak zastąpić istniejącą jednostkę zaktualizowaną wersją:
 
 ```python
-task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001', 'description' : 'Take out the garbage', 'priority' : 250}
+task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001',
+        'description': 'Take out the garbage', 'priority': 250}
 table_service.update_entity('tasktable', task)
 ```
 
-Jeśli aktualizowana jednostka jeszcze nie istnieje, to aktualizacja zakończy się niepowodzeniem. Jeśli chcesz zapisać jednostkę bez względu na to, czy istnieje czy nie, użyj metody [insert_or_replace_entity][py_insert_or_replace_entity]. W poniższym przykładzie pierwsze wywołanie spowoduje zastąpienie istniejącej jednostki. Drugie wywołanie spowoduje wstawienie nowej jednostki, ponieważ w tabeli nie istnieje żadna jednostka z podanymi wartościami PartitionKey i RowKey.
+Jeśli aktualizowana jednostka jeszcze nie istnieje, to aktualizacja zakończy się niepowodzeniem. Jeśli chcesz przechowywać jednostkę, niezależnie od tego, czy istnieje, czy nie, użyj [insert_or_replace_entity][py_insert_or_replace_entity]. W poniższym przykładzie pierwsze wywołanie spowoduje zastąpienie istniejącej jednostki. Drugie wywołanie spowoduje wstawienie nowej jednostki, ponieważ w tabeli nie istnieje żadna jednostka z podanymi wartościami PartitionKey i RowKey.
 
 ```python
 # Replace the entity created earlier
-task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001', 'description' : 'Take out the garbage again', 'priority' : 250}
+task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001',
+        'description': 'Take out the garbage again', 'priority': 250}
 table_service.insert_or_replace_entity('tasktable', task)
 
 # Insert a new entity
-task = {'PartitionKey': 'tasksSeattle', 'RowKey': '003', 'description' : 'Buy detergent', 'priority' : 300}
+task = {'PartitionKey': 'tasksSeattle', 'RowKey': '003',
+        'description': 'Buy detergent', 'priority': 300}
 table_service.insert_or_replace_entity('tasktable', task)
 ```
 
 > [!TIP]
-> Metoda [Update_entity][py_update_entity] zastępuje wszystkie właściwości i wartości istniejącej jednostki. Umożliwia także usunięcie właściwości z istniejącej jednostki. Możesz użyć metody [merge_entity][py_merge_entity], aby zaktualizować istniejącą jednostkę przy użyciu nowych lub zmodyfikowanych wartości właściwości, bez całkowitego zastępowania jednostki.
+> Metoda [update_entity][py_update_entity] zastępuje wszystkie właściwości i wartości istniejącej jednostki, której można również użyć do usunięcia właściwości z istniejącej jednostki. Można użyć metody [merge_entity][py_merge_entity] , aby zaktualizować istniejącą jednostkę o nowe lub zmodyfikowane wartości właściwości bez całkowitego zastąpienia jednostki.
 
 ## <a name="modify-multiple-entities"></a>Modyfikowanie wielu jednostek
 
-Aby zapewnić niepodzielne przetwarzanie żądania przez usługę Table Storage, warto przesłać jednocześnie wiele operacji w partii. Najpierw należy użyć klasy [TableBatch][py_TableBatch], aby dodać wiele operacji do jednej partii. Następnie należy wywołać metodę [TableService][py_TableService].[ commit_batch][py_commit_batch], aby przesłać niepodzielną partię operacji. Wszystkie jednostki, które mają być zmodyfikowane w ramach partii, muszą należeć do tej samej partycji.
+Aby zapewnić niepodzielne przetwarzanie żądania przez usługę Table Storage, warto przesłać jednocześnie wiele operacji w partii. Najpierw należy użyć klasy [TableBatch][py_TableBatch] , aby dodać wiele operacji do pojedynczej partii. Następnie Wywołaj [TableService][py_TableService]. [commit_batch][py_commit_batch] do przesłania operacji w operacji niepodzielnej. Wszystkie jednostki, które mają być zmodyfikowane w ramach partii, muszą należeć do tej samej partycji.
 
 W tym przykładzie dodano dwie jednostki do partii:
 
 ```python
 from azure.cosmosdb.table.tablebatch import TableBatch
 batch = TableBatch()
-task004 = {'PartitionKey': 'tasksSeattle', 'RowKey': '004', 'description' : 'Go grocery shopping', 'priority' : 400}
-task005 = {'PartitionKey': 'tasksSeattle', 'RowKey': '005', 'description' : 'Clean the bathroom', 'priority' : 100}
+task004 = {'PartitionKey': 'tasksSeattle', 'RowKey': '004',
+           'description': 'Go grocery shopping', 'priority': 400}
+task005 = {'PartitionKey': 'tasksSeattle', 'RowKey': '005',
+           'description': 'Clean the bathroom', 'priority': 100}
 batch.insert_entity(task004)
 batch.insert_entity(task005)
 table_service.commit_batch('tasktable', batch)
@@ -158,8 +164,10 @@ table_service.commit_batch('tasktable', batch)
 Partii można również użyć, korzystając ze składni menedżera kontekstu:
 
 ```python
-task006 = {'PartitionKey': 'tasksSeattle', 'RowKey': '006', 'description' : 'Go grocery shopping', 'priority' : 400}
-task007 = {'PartitionKey': 'tasksSeattle', 'RowKey': '007', 'description' : 'Clean the bathroom', 'priority' : 100}
+task006 = {'PartitionKey': 'tasksSeattle', 'RowKey': '006',
+           'description': 'Go grocery shopping', 'priority': 400}
+task007 = {'PartitionKey': 'tasksSeattle', 'RowKey': '007',
+           'description': 'Clean the bathroom', 'priority': 100}
 
 with table_service.batch('tasktable') as batch:
     batch.insert_entity(task006)
@@ -168,7 +176,7 @@ with table_service.batch('tasktable') as batch:
 
 ## <a name="query-for-an-entity"></a>Wykonywanie zapytania względem jednostki
 
-Aby wykonać zapytanie dotyczące jednostki w tabeli, przekaż wartości PartitionKey i RowKey do metody [TableService][py_TableService].[get_entity][py_get_entity].
+Aby wykonać zapytanie dotyczące jednostki w tabeli, przekaż jej PartitionKey i RowKey do [TableService][py_TableService]. [get_entity][py_get_entity] .
 
 ```python
 task = table_service.get_entity('tasktable', 'tasksSeattle', '001')
@@ -181,7 +189,8 @@ print(task.priority)
 Możesz wykonać zapytanie dotyczące zestawu jednostek, podając ciąg filtru przy użyciu parametru **filter**. W tym przykładzie znalezione zostaną wszystkie zadania w lokalizacji Seattle przy użyciu filtru wartości PartitionKey:
 
 ```python
-tasks = table_service.query_entities('tasktable', filter="PartitionKey eq 'tasksSeattle'")
+tasks = table_service.query_entities(
+    'tasktable', filter="PartitionKey eq 'tasksSeattle'")
 for task in tasks:
     print(task.description)
     print(task.priority)
@@ -197,28 +206,29 @@ Zapytanie w poniższym kodzie zwraca wyłącznie opisy jednostek w tabeli.
 > Poniższy fragment kodu działa tylko w usłudze Azure Storage. Nie jest obsługiwany przez emulator usługi Azure Storage.
 
 ```python
-tasks = table_service.query_entities('tasktable', filter="PartitionKey eq 'tasksSeattle'", select='description')
+tasks = table_service.query_entities(
+    'tasktable', filter="PartitionKey eq 'tasksSeattle'", select='description')
 for task in tasks:
     print(task.description)
 ```
 
 ## <a name="delete-an-entity"></a>Usuwanie jednostki
 
-Aby usunąć jednostkę, przekaż jej wartości **PartitionKey** i **RowKey** do metody [delete_entity][py_delete_entity].
+Usuń jednostkę, przekazując jej **PartitionKey** i **RowKey** do metody [delete_entity][py_delete_entity] .
 
 ```python
 table_service.delete_entity('tasktable', 'tasksSeattle', '001')
 ```
 
-## <a name="delete-a-table"></a>Usuwanie tabeli
+## <a name="delete-a-table"></a>Usuń tabelę
 
-Jeśli nie potrzebujesz już tabeli ani żadnych jednostek, które się w niej znajdują, wywołaj metodę [delete_table][py_delete_table], aby trwale usunąć tabelę z usługi Azure Storage.
+Jeśli nie potrzebujesz już tabeli ani żadnej z jednostek w niej, wywołaj metodę [delete_table][py_delete_table] , aby trwale usunąć tabelę z usługi Azure Storage.
 
 ```python
 table_service.delete_table('tasktable')
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [FAQ — Develop with the Table API (Opracowywanie zawartości przy użyciu interfejsu API tabel — często zadawane pytania)](https://docs.microsoft.com/azure/cosmos-db/faq)
 * [Azure Cosmos DB SDK for Python API reference (Dokumentacja zestawu SDK usługi Azure Cosmos DB dla języka Python)](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)

@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 04/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8cedf7abf71a772a0b770dd2f82d9a5508f5dd75
-ms.sourcegitcommit: dda9fc615db84e6849963b20e1dce74c9fe51821
+ms.openlocfilehash: a49ee5720711bb23ec4770de38a408827c645b73
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67622374"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360942"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Samouczek: Kompilowanie modelu regresji przy użyciu zautomatyzowanego uczenia maszynowego
 
@@ -38,7 +38,7 @@ W tym samouczku nauczysz się wykonywać następujące zadania:
 Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
 
 >[!NOTE]
-> Kod w tym artykule został przetestowany przy użyciu zestawu SDK usługi Azure Machine Learning wersji 1.0.39.
+> Kod w tym artykule został przetestowany przy użyciu zestawu SDK Azure Machine Learning 1.0.39.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -54,20 +54,20 @@ Przejdź do sekcji [Konfigurowanie środowiska projektowego](#start), aby zapozn
 
 Wszystkie te wymagania wstępne można spełnić, korzystając z jednej z poniższych sekcji.
 
-* Użyj [serwer chmura w obszarze roboczym](#azure) 
+* Korzystanie z [serwera notesu w chmurze w obszarze roboczym](#azure) 
 * Korzystanie z [własnego serwera notesów](#server)
 
-### <a name="azure"></a>Użyj serwera notesu chmura w obszarze roboczym
+### <a name="azure"></a>Korzystanie z serwera notesu w chmurze w obszarze roboczym
 
-To ułatwia rozpoczęcie pracy z serwerem oparte na chmurze notesu. [Azure Machine Learning SDK dla języka Python](https://aka.ms/aml-sdk) jest już zainstalowany i skonfigurowany dla Ciebie, po utworzeniu zasobu w chmurze.
+Rozpoczęcie pracy z własnym serwerem notesu opartym na chmurze jest proste. [Zestaw Azure Machine Learning SDK dla języka Python](https://aka.ms/aml-sdk) jest już zainstalowany i skonfigurowany dla Ciebie po utworzeniu tego zasobu w chmurze.
 
 [!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
 
-* Po uruchomieniu notesu strony sieci Web, uruchom **samouczki/regresji — część 2 — automatyczne ml.ipynb** notesu.
+* Po uruchomieniu witryny sieci Web notesu Uruchom **samouczki/Regression-part2-Automated-ml. ipynb** .
 
 ### <a name="server"></a>Korzystanie z własnego serwera notesów Jupyter Notebook
 
-Wykonaj te kroki, aby utworzyć lokalny serwer notesów Jupyter Notebook na komputerze.  Upewnij się, że instalujesz program `matplotlib` i `automl` i `notebooks` dodatki w danym środowisku.
+Wykonaj te kroki, aby utworzyć lokalny serwer notesów Jupyter Notebook na komputerze.  Upewnij się, że w `matplotlib` środowisku są `automl` zainstalowane `notebooks` i dodatki i.
 
 [!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
 
@@ -81,7 +81,7 @@ Cała konfiguracja dla prac programistycznych może zostać wykonana w notesie j
 * Importowanie pakietów języka Python
 * Konfigurowanie obszaru roboczego
 
-### <a name="install-and-import-packages"></a>Zainstaluj i zaimportuj pakiety
+### <a name="install-and-import-packages"></a>Instalowanie i Importowanie pakietów
 
 Jeśli korzystasz z tego samouczka we własnym środowisku języka Python, zainstaluj wymagane pakiety za pomocą następującego polecenia.
 
@@ -101,7 +101,7 @@ import os
 
 ### <a name="configure-workspace"></a>Konfigurowanie obszaru roboczego
 
-Utwórz obiekt obszaru roboczego na podstawie istniejącego obszaru roboczego. A [obszaru roboczego](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) to klasa, która akceptuje usługi Azure information subskrypcji i zasobów. Tworzy ona również zasób w chmurze służący do monitorowania i śledzenia przebiegów modelu.
+Utwórz obiekt obszaru roboczego na podstawie istniejącego obszaru roboczego. [Obszar roboczy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) to Klasa, która akceptuje informacje o subskrypcji i zasobach platformy Azure. Tworzy ona również zasób w chmurze służący do monitorowania i śledzenia przebiegów modelu.
 
 Metoda `Workspace.from_config()` odczytuje plik **config.json** i ładuje szczegóły do obiektu o nazwie `ws`.  Obiekt `ws` jest używany w kodzie w tym samouczku.
 
@@ -144,7 +144,7 @@ dflow_prepared.get_profile()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Min.</th>
       <th>Maks.</th>
       <th>Count</th>
@@ -408,7 +408,7 @@ dflow_prepared.get_profile()
       <th>store_forward</th>
       <td>FieldType.STRING</td>
       <td>Nie</td>
-      <td>Tak</td>
+      <td>T</td>
       <td>6148,0</td>
       <td>0.0</td>
       <td>6148,0</td>
@@ -587,7 +587,7 @@ dflow_prepared.get_profile()
       <td>4,99898</td>
     </tr>
     <tr>
-      <th>cost</th>
+      <th>koszt</th>
       <td>FieldType.DECIMAL</td>
       <td>0.1</td>
       <td>88</td>
@@ -618,7 +618,8 @@ dflow_prepared.get_profile()
 Należy przygotować dane do eksperymentu, dodając kolumny do elementu `dflow_x`, aby stały się funkcjami w procesie tworzenia naszego modelu. Element `dflow_y` należy zdefiniować w taki sposób, aby stał się naszą wartością prognozowania **koszt**:
 
 ```python
-dflow_X = dflow_prepared.keep_columns(['pickup_weekday','pickup_hour', 'distance','passengers', 'vendor'])
+dflow_X = dflow_prepared.keep_columns(
+    ['pickup_weekday', 'pickup_hour', 'distance', 'passengers', 'vendor'])
 dflow_y = dflow_prepared.keep_columns('cost')
 ```
 
@@ -632,7 +633,8 @@ from sklearn.model_selection import train_test_split
 x_df = dflow_X.to_pandas_dataframe()
 y_df = dflow_y.to_pandas_dataframe()
 
-x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=223)
+x_train, x_test, y_train, y_test = train_test_split(
+    x_df, y_df, test_size=0.2, random_state=223)
 # flatten y_train to 1d array
 y_train.values.flatten()
 ```
@@ -655,7 +657,7 @@ Zdefiniuj parametr eksperymentu i ustawienia modelu na potrzeby automatycznego g
 |**iteration_timeout_minutes**|10|Limit czasu w minutach dla każdej iteracji. Zmniejszenie tej wartości powoduje skrócenie całkowitego czasu wykonywania.|
 |**iterations**|30|Liczba iteracji. W każdej iteracji przy użyciu danych jest trenowany nowy model uczenia maszynowego. Jest to podstawowa wartość, która ma wpływ na całkowity czas wykonywania.|
 |**primary_metric**| spearman_correlation | Metryka, który ma być optymalizowana. Na podstawie tej metryki zostanie wybrany model o najlepszym dopasowaniu.|
-|**preprocess**| True | Ustawienie wartości **True** umożliwia wstępne przetworzenie danych wejściowych w eksperymencie (obsługę brakujących danych, przekonwertowanie tekstu na liczby itp.).|
+|**preprocess**| Prawda | Ustawienie wartości **True** umożliwia wstępne przetworzenie danych wejściowych w eksperymencie (obsługę brakujących danych, przekonwertowanie tekstu na liczby itp.).|
 |**verbosity**| logging.INFO | Steruje poziomem rejestrowania.|
 |**n_cross_validations**|5|Liczba podziałów krzyżowego sprawdzania poprawności w przypadku nieokreślenia danych weryfikacji.|
 
@@ -663,11 +665,11 @@ Zdefiniuj parametr eksperymentu i ustawienia modelu na potrzeby automatycznego g
 
 ```python
 automl_settings = {
-    "iteration_timeout_minutes" : 10,
-    "iterations" : 30,
-    "primary_metric" : 'spearman_correlation',
-    "preprocess" : True,
-    "verbosity" : logging.INFO,
+    "iteration_timeout_minutes": 10,
+    "iterations": 30,
+    "primary_metric": 'spearman_correlation',
+    "preprocess": True,
+    "verbosity": logging.INFO,
     "n_cross_validations": 5
 }
 ```
@@ -678,12 +680,12 @@ Użyj zdefiniowanych ustawień treningowych jako parametru obiektu `AutoMLConfig
 from azureml.train.automl import AutoMLConfig
 
 # local compute
-automated_ml_config = AutoMLConfig(task = 'regression',
-                             debug_log = 'automated_ml_errors.log',
-                             path = project_folder,
-                             X = x_train.values,
-                             y = y_train.values.flatten(),
-                             **automl_settings)
+automated_ml_config = AutoMLConfig(task='regression',
+                                   debug_log='automated_ml_errors.log',
+                                   path=project_folder,
+                                   X=x_train.values,
+                                   y=y_train.values.flatten(),
+                                   **automl_settings)
 ```
 
 ### <a name="train-the-automatic-regression-model"></a>Trenowanie automatycznego modelu regresji
@@ -693,7 +695,7 @@ Uruchom eksperyment lokalnie. Przekaż zdefiniowany obiekt `automated_ml_config`
 
 ```python
 from azureml.core.experiment import Experiment
-experiment=Experiment(ws, experiment_name)
+experiment = Experiment(ws, experiment_name)
 local_run = experiment.submit(automated_ml_config, show_output=True)
 ```
 
@@ -766,7 +768,8 @@ children = list(local_run.get_children())
 metricslist = {}
 for run in children:
     properties = run.get_properties()
-    metrics = {k: v for k, v in run.get_metrics().items() if isinstance(v, float)}
+    metrics = {k: v for k, v in run.get_metrics().items()
+               if isinstance(v, float)}
     metricslist[int(properties['iteration'])] = metrics
 
 rundata = pd.DataFrame(metricslist).sort_index(1)
@@ -1137,8 +1140,10 @@ ax1 = fig.add_subplot(111)
 distance_vals = [x[4] for x in x_test.values]
 y_actual = y_test.values.flatten().tolist()
 
-ax1.scatter(distance_vals[:100], y_predict[:100], s=18, c='b', marker="s", label='Predicted')
-ax1.scatter(distance_vals[:100], y_actual[:100], s=18, c='r', marker="o", label='Actual')
+ax1.scatter(distance_vals[:100], y_predict[:100],
+            s=18, c='b', marker="s", label='Predicted')
+ax1.scatter(distance_vals[:100], y_actual[:100],
+            s=18, c='r', marker="o", label='Actual')
 
 ax1.set_xlabel('distance (mi)')
 ax1.set_title('Predicted and Actual Cost/Distance')
@@ -1196,7 +1201,7 @@ Z metryk dokładności prognozowania końcowego widać, że model dość dobrze 
 
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku zautomatyzowanego uczenia maszynowego wykonano następujące czynności:
 

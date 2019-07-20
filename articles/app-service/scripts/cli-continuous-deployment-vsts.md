@@ -3,7 +3,7 @@ title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — twor
 description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie aplikacji z ciągłym wdrażaniem z usługi Azure Repos
 services: app-service\web
 documentationcenter: ''
-author: msangapu
+author: msangapu-msft
 manager: jeconnoc
 editor: ''
 tags: azure-service-management
@@ -14,20 +14,20 @@ ms.devlang: azurecli
 ms.tgt_pltfrm: na
 ms.topic: sample
 ms.date: 12/11/2017
-ms.author: jeconnoc
+ms.author: msangapu-msft
 ms.custom: seodec18
-ms.openlocfilehash: 67e4f99046820aa21392ff1238318e1b48bb5354
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 502b2fabfe1bb90862e673d6bd88a5397065d5d7
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136798"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359945"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-using-azure-cli"></a>Tworzenie aplikacji usługi App Service z ciągłym wdrażaniem przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Ten przykładowy skrypt tworzy aplikację w usłudze App Service z powiązanymi zasobami, a następnie konfiguruje ciągłe wdrażanie z repozytorium DevOps platformy Azure. Do pracy z tym przykładem potrzebne są:
+Ten przykładowy skrypt tworzy aplikację w App Service z jej powiązanymi zasobami, a następnie konfiguruje ciągłe wdrażanie z repozytorium usługi Azure DevOps. Do pracy z tym przykładem potrzebne są:
 
-* Repozytorium DevOps platformy Azure za pomocą kod aplikacji, w którym masz uprawnienia administracyjne.
+* Repozytorium Azure DevOps z kodem aplikacji, dla którego masz uprawnienia administracyjne.
 * [Osobisty token dostępu](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=vsts) organizacji pakietu Azure DevOps.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -54,7 +54,7 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Tworzy aplikację usługi App Service. |
 | [`az webapp deployment source config`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config) | Kojarzy aplikację usługi App Service z repozytorium Git lub Mercurial. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

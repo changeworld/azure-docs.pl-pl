@@ -1,6 +1,6 @@
 ---
-title: Samouczek — Stream usługi Azure Active Directory loguje się do Centrum zdarzeń platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak konfigurowanie diagnostyki platformy Azure w celu wypchnięcia dzienników usługi Azure Active Directory do Centrum zdarzeń
+title: Samouczek — przesyłanie strumieniowe dzienników Azure Active Directory do centrum zdarzeń platformy Azure | Microsoft Docs
+description: Dowiedz się, jak skonfigurować Diagnostyka Azure do wypychania dzienników Azure Active Directory do centrum zdarzeń
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -17,14 +17,14 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 906da7ac6b0086e4efca7c38171668a08f687d19
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bd55abac534407facd0cb416012767b9f2e39fd8
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60437264"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360008"
 ---
-# <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>Samouczek: Dzienniki usługi Azure Active Directory Stream do usługi Azure event hub
+# <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>Samouczek: Przesyłanie strumieniowe dzienników Azure Active Directory do centrum zdarzeń platformy Azure
 
 W tym samouczku przedstawiono informacje na temat sposobu konfigurowania ustawień diagnostycznych usługi Azure Monitor w celu strumieniowego przesyłania dzienników usługi Azure Active Directory (Azure AD) do centrum zdarzeń platformy Azure. Ten mechanizm służy do integrowania dzienników z narzędziami do zarządzania informacjami i zdarzeniami zabezpieczeń (SIEM) innych firm, takimi jak Splunk i QRadar.
 
@@ -50,7 +50,7 @@ Aby używać tej funkcji, potrzebujesz następujących elementów:
     * Aby dodać nowe ustawienie, wybierz polecenie **Dodaj ustawienia diagnostyki**.  
       Możesz mieć maksymalnie trzy ustawienia.
 
-      ![Eksportowanie ustawień](./media/quickstart-azure-monitor-stream-logs-to-event-hub/ExportSettings.png)
+      ![Eksportuj ustawienia](./media/quickstart-azure-monitor-stream-logs-to-event-hub/ExportSettings.png)
 
 5. Zaznacz pole wyboru **Przesyłaj strumieniowo do centrum zdarzeń** i wybierz pozycję **Centrum zdarzeń/Konfigurowanie**.
 
@@ -76,6 +76,9 @@ Aby używać tej funkcji, potrzebujesz następujących elementów:
 Po wyświetleniu danych w centrum zdarzeń możesz uzyskać dostęp do danych i odczytać je na dwa sposoby:
 
 * **Skonfiguruj obsługiwane narzędzie SIEM**. W celu odczytania danych z centrum zdarzeń większość narzędzi wymaga parametrów połączenia centrum zdarzeń i pewnych uprawnień do Twojej subskrypcji platformy Azure. Narzędzia innych firm oferujące integrację z usługą Azure Monitor to między innymi:
+    
+    * **ArcSight**: Aby uzyskać więcej informacji na temat integrowania dzienników usługi Azure AD z usługą Splunk, zobacz [integrowanie dzienników Azure Active Directory z ArcSight przy użyciu Azure monitor](howto-integrate-activity-logs-with-arcsight.md).
+    
     * **Splunk**: aby uzyskać więcej informacji na temat sposobu integracji dzienników usługi Azure AD z narzędziem Splunk, zobacz [Integrowanie dzienników usługi Azure Active Directory z narzędziem Splunk za pomocą usługi Azure Monitor](tutorial-integrate-activity-logs-with-splunk.md).
     
     * **IBM QRadar**: składniki DSM i Azure Event Hub Protocol są dostępne do pobrania w [witrynie pomocy technicznej firmy IBM](https://www.ibm.com/support). Aby uzyskać więcej informacji na temat integracji z platformą Azure, przejdź do witryny [IBM QRadar Security Intelligence Platform 7.3.0](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0).
@@ -85,8 +88,9 @@ Po wyświetleniu danych w centrum zdarzeń możesz uzyskać dostęp do danych i 
 * **Skonfiguruj niestandardowe narzędzia**. Jeśli Twoje bieżące narzędzie SIEM nie jest jeszcze obsługiwane w diagnostyce usługi Azure Monitor, możesz skonfigurować narzędzia niestandardowe przy użyciu interfejsów API usługi Event Hubs. Aby dowiedzieć się więcej, zobacz [Wprowadzenie do odbierania komunikatów z centrum zdarzeń](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph).
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
+* [Integrowanie dzienników Azure Active Directory z usługą ArcSight przy użyciu Azure Monitor](howto-integrate-activity-logs-with-arcsight.md)
 * [Integrate Azure AD logs with Splunk by using Azure Monitor (Integrowanie dzienników usługi Azure AD z narzędziem Splunk przy użyciu usługi Azure Monitor)](tutorial-integrate-activity-logs-with-splunk.md)
 * [Integrate Azure AD logs with SumoLogic by using Azure Monitor (Integrowanie dzienników usługi Azure AD z narzędziem SumoLogic przy użyciu usługi Azure Monitor)](howto-integrate-activity-logs-with-sumologic.md)
 * [Interpret audit logs schema in Azure Monitor (Interpretowanie schematu dzienników inspekcji w usłudze Azure Monitor)](reference-azure-monitor-audit-log-schema.md)

@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9709d18b00d65578ca3a63fe5044e0b9f7b52d58
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: c673fd43abe6808256eb74f435aad48ed8d41539
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515580"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359848"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Samouczek: wdrażanie modelu klasyfikacji obrazów w usłudze Azure Container Instances
 
@@ -35,7 +35,7 @@ W tej części samouczka użyjesz usługi Azure Machine Learning, aby wykonać n
 Usługa Container Instances to doskonałe rozwiązanie do testowania i interpretowania przepływu pracy. W przypadku skalowalnych wdrożeń produkcyjnych rozważ skorzystanie z usługi Azure Kubernetes Service. Aby uzyskać więcej informacji, zobacz [jak i gdzie wdrażać modele](how-to-deploy-and-where.md).
 
 >[!NOTE]
-> Kod w tym artykule został przetestowany przy użyciu zestawu SDK usługi Azure Machine Learning wersji 1.0.41.
+> Kod w tym artykule został przetestowany przy użyciu zestawu SDK Azure Machine Learning 1.0.41.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Przejdź do sekcji [Konfigurowanie środowiska programistycznego](#start), aby zapoznać się z krokami dotyczącymi notesu.  
@@ -72,9 +72,9 @@ W poprzednim samouczku w Twoim obszarze roboczym został zarejestrowany model. T
 ```python
 from azureml.core import Workspace
 from azureml.core.model import Model
-import os 
+import os
 ws = Workspace.from_config()
-model=Model(ws, 'sklearn_mnist')
+model = Model(ws, 'sklearn_mnist')
 
 model.download(target_dir=os.getcwd(), exist_ok=True)
 
@@ -102,7 +102,8 @@ import os
 data_folder = os.path.join(os.getcwd(), 'data')
 # note we also shrink the intensity values (X) from 0-255 to 0-1. This helps the neural network converge faster
 X_test = load_data(os.path.join(data_folder, 'test-images.gz'), False) / 255.0
-y_test = load_data(os.path.join(data_folder, 'test-labels.gz'), True).reshape(-1)
+y_test = load_data(os.path.join(
+    data_folder, 'test-labels.gz'), True).reshape(-1)
 ```
 
 ### <a name="predict-test-data"></a>Przewidywanie danych testowych
@@ -113,7 +114,7 @@ Aby uzyskać przewidywania, dostarcz do modelu zestaw danych testowych:
 import pickle
 from sklearn.externals import joblib
 
-clf = joblib.load( os.path.join(os.getcwd(), 'sklearn_mnist_model.pkl'))
+clf = joblib.load(os.path.join(os.getcwd(), 'sklearn_mnist_model.pkl'))
 y_hat = clf.predict(X_test)
 ```
 
@@ -152,7 +153,7 @@ row_sums = conf_mx.sum(axis=1, keepdims=True)
 norm_conf_mx = conf_mx / row_sums
 np.fill_diagonal(norm_conf_mx, 0)
 
-fig = plt.figure(figsize=(8,5))
+fig = plt.figure(figsize=(8, 5))
 ax = fig.add_subplot(111)
 cax = ax.matshow(norm_conf_mx, cmap=plt.cm.bone)
 ticks = np.arange(0, 10, 1)
@@ -222,18 +223,18 @@ def run(raw_data):
 Następnie utwórz plik środowiska o nazwie **myenv.yml**, który określa wszystkie zależności pakietu skryptu. Ten plik gwarantuje zainstalowanie tych wszystkich zależności w obrazie platformy Docker. Ten model wymaga pakietów `scikit-learn` i `azureml-sdk`:
 
 ```python
-from azureml.core.conda_dependencies import CondaDependencies 
+from azureml.core.conda_dependencies import CondaDependencies
 
 myenv = CondaDependencies()
 myenv.add_conda_package("scikit-learn")
 
-with open("myenv.yml","w") as f:
+with open("myenv.yml", "w") as f:
     f.write(myenv.serialize_to_string())
 ```
 Przejrzyj zawartość pliku `myenv.yml`:
 
 ```python
-with open("myenv.yml","r") as f:
+with open("myenv.yml", "r") as f:
     print(f.read())
 ```
 
@@ -244,9 +245,10 @@ Utwórz plik konfiguracji wdrożenia. Określ liczbę procesorów oraz wielkoś�
 ```python
 from azureml.core.webservice import AciWebservice
 
-aciconfig = AciWebservice.deploy_configuration(cpu_cores=1, 
-                                               memory_gb=1, 
-                                               tags={"data": "MNIST",  "method" : "sklearn"}, 
+aciconfig = AciWebservice.deploy_configuration(cpu_cores=1,
+                                               memory_gb=1,
+                                               tags={"data": "MNIST",
+                                                     "method": "sklearn"},
                                                description='Predict MNIST with sklearn')
 ```
 
@@ -319,20 +321,20 @@ result = service.run(input_data=test_samples)
 
 # compare actual value vs. the predicted values:
 i = 0
-plt.figure(figsize = (20, 1))
+plt.figure(figsize=(20, 1))
 
 for s in sample_indices:
     plt.subplot(1, n, i + 1)
     plt.axhline('')
     plt.axvline('')
-    
+
     # use different color for misclassified sample
     font_color = 'red' if y_test[s] != result[i] else 'black'
     clr_map = plt.cm.gray if y_test[s] != result[i] else plt.cm.Greys
-    
-    plt.text(x=10, y =-10, s=result[i], fontsize=18, color=font_color)
+
+    plt.text(x=10, y=-10, s=result[i], fontsize=18, color=font_color)
     plt.imshow(X_test[s].reshape(28, 28), cmap=clr_map)
-    
+
     i = i + 1
 plt.show()
 ```
@@ -350,11 +352,11 @@ import requests
 random_index = np.random.randint(0, len(X_test)-1)
 input_data = "{\"data\": [" + str(list(X_test[random_index])) + "]}"
 
-headers = {'Content-Type':'application/json'}
+headers = {'Content-Type': 'application/json'}
 
 # for AKS deployment you'd need to the service key in the header as well
 # api_key = service.get_key()
-# headers = {'Content-Type':'application/json',  'Authorization':('Bearer '+ api_key)} 
+# headers = {'Content-Type':'application/json',  'Authorization':('Bearer '+ api_key)}
 
 resp = requests.post(service.scoring_uri, input_data, headers=headers)
 

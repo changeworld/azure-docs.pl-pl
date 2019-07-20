@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek języka Python: Wywoływania usług Cognitive Services w potoku indeksowania — usługa Azure Search'
-description: Krokowo przykładem wyodrębnianie danych, języka naturalnego oraz obrazu sztucznej Inteligencji przetwarzania w usłudze Azure Search za pomocą notesu Jupyter w języku Python. Wyodrębnione dane są indeksowane i łatwo uzyskać dostęp przez zapytanie.
+title: 'Samouczek języka Python: Wywołaj Cognitive Services w potoku indeksowania — Azure Search'
+description: Przejdź do przykładowego sposobu wyodrębniania danych, języka naturalnego i przetwarzania obrazu AI w Azure Search przy użyciu notesu Python Jupyter. Wyodrębnione dane są indeksowane i łatwo dostępne przez zapytanie.
 manager: cgronlun
 author: LisaLeib
 services: search
@@ -9,18 +9,18 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-lilei
-ms.openlocfilehash: b1166e0acdbc9371b1c7ca2361fc6ebb7479b6a7
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: b7f1baa473ca28db696835a7b0895f1603c74770
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672083"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359392"
 ---
-# <a name="python-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>Samouczek języka Python: Wywołania interfejsów API usług Cognitive Services w usłudze Azure Search indeksowanie potoku
+# <a name="python-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>Samouczek języka Python: Wywołaj interfejsy API usług Cognitive Services w potoku indeksowania Azure Search
 
-Za pomocą tego samouczka poznasz mechanizm programistycznego wzbogacania danych w usłudze Azure Search przy użyciu *umiejętności poznawczych*. Umiejętności są wspierane przez możliwości analizy obrazu, w usługach Cognitive Services i przetwarzania języka naturalnego (NLP). Za pomocą zestawu umiejętności tworzenia i konfiguracji można wyodrębnić tekst i reprezentacja tekstowa obrazu lub pliku skanowanego dokumentu. Może także wykryć język, jednostki, kluczowe frazy i. Wynik jest sformatowany dodatkowej zawartości do indeksu usługi Azure Search, utworzony za pomocą sztucznej Inteligencji wzbogacenia w potoku usługi indeksowania. 
+Za pomocą tego samouczka poznasz mechanizm programistycznego wzbogacania danych w usłudze Azure Search przy użyciu *umiejętności poznawczych*. Umiejętności są obsługiwane przez funkcję przetwarzania języka naturalnego (NLP) i możliwości analizy obrazów w Cognitive Services. Za poorednictwem kompozycji i konfiguracji zestawu umiejętności można wyodrębnić tekst i tekst reprezentacje obrazu lub zeskanowanego pliku dokumentu. Możesz również wykryć język, jednostki, kluczowe frazy i inne. Wynikiem jest rozbudowana dodatkowa zawartość w indeksie Azure Search, utworzona przy użyciu wzbogacania AI w potoku indeksowania. 
 
-W tym samouczku użyjesz języka Python do wykonywania następujących zadań:
+W tym samouczku użyjesz języka Python, aby wykonać następujące zadania:
 
 > [!div class="checklist"]
 > * Utworzenie potoku indeksowania, który wzbogaca przykładowe dane w drodze do indeksu
@@ -31,69 +31,69 @@ W tym samouczku użyjesz języka Python do wykonywania następujących zadań:
 
 Dane wyjściowe stanowią indeks z możliwością wyszukiwania pełnotekstowego w usłudze Azure Search. Indeks możesz rozszerzyć za pomocą innych standardowych możliwości, takich jak [synonimy](search-synonyms.md), [profile oceniania](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [analizatory](search-analyzers.md) i [filtry](search-filters.md). 
 
-W tym samouczku jest uruchamiany bezpłatnej usługi, ale liczba bezpłatnych transakcji jest ograniczona do 20 dokumentów na dzień. Jeśli chcesz uruchomić w tym samouczku więcej niż jeden raz w ciągu tego samego dnia, należy użyć mniejszy plik ustawione, tak więc mieści się w dodatkowych uruchomień.
+Ten samouczek jest uruchamiany w ramach bezpłatnej usługi, ale liczba bezpłatnych transakcji jest ograniczona do 20 dokumentów dziennie. Jeśli chcesz uruchomić ten samouczek więcej niż raz w tym samym dniu, użyj mniejszego zestawu plików, aby można było zmieścić więcej uruchomień.
 
 > [!NOTE]
-> Możesz rozwiń zakres, zwiększając częstotliwości przetwarzania, dodając więcej dokumentów lub dodanie więcej algorytmów sztucznej Inteligencji, konieczne będzie [dołączyć płatnych zasobu usług Cognitive Services](cognitive-search-attach-cognitive-services.md). Opłaty są naliczane podczas wywoływania interfejsów API w usługach Cognitive Services i wyodrębniania obrazu jako część etap łamania dokumentów w usłudze Azure Search. Opłaty nie będą naliczane do wyodrębniania tekstu z dokumentów.
+> Podczas rozszerzania zakresu przez zwiększenie częstotliwości przetwarzania, Dodawanie większej liczby dokumentów lub Dodawanie algorytmów AI, należy [dołączyć Cognitive Services rozliczanego zasobu](cognitive-search-attach-cognitive-services.md). Opłaty naliczane podczas wywoływania interfejsów API w Cognitive Services oraz do wyodrębniania obrazów w ramach etapu łamania dokumentu w Azure Search. Nie są naliczane opłaty za Wyodrębnianie tekstu z dokumentów.
 >
-> Wykonanie wbudowanego umiejętności podlega opłacie za istniejącą [usług Cognitive Services, płatności — jako — można przejść cena](https://azure.microsoft.com/pricing/details/cognitive-services/). Cennik wyodrębniania obraz został opisany na [usługi Azure Search stronę z cennikiem](https://go.microsoft.com/fwlink/?linkid=2042400).
+> Do wykonania wbudowanych umiejętności są naliczane opłaty za istniejące [Cognitive Services cena płatność zgodnie z rzeczywistym](https://azure.microsoft.com/pricing/details/cognitive-services/)użyciem. Cennik wyodrębniania obrazów został opisany na [stronie cennika Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Następujące usługi, narzędzia i dane są używane w ramach tego samouczka. 
+W tym samouczku są używane następujące usługi, narzędzia i dane. 
 
-+ [Tworzenie konta usługi Azure storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) do przechowywania przykładowych danych. Upewnij się, że konto magazynu jest w tym samym regionie co usługa Azure Search.
++ [Utwórz konto usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) do przechowywania przykładowych danych. Upewnij się, że konto magazynu znajduje się w tym samym regionie co Azure Search.
 
-+ [Anaconda 3.x](https://www.anaconda.com/distribution/#download-section), zapewniając Python 3.x i notesy Jupyter.
++ [Anaconda 3. x](https://www.anaconda.com/distribution/#download-section), dostarczając notesy języka Python 3. x i Jupyter.
 
-+ [Przykładowe dane](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) zawiera zestaw mały plik o różnych typach. 
++ [Przykładowe dane](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) składają się z małego zestawu plików różnych typów. 
 
-+ [Tworzenie usługi Azure Search](search-create-service-portal.md) lub [znaleźć istniejącej usługi](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach Twojej bieżącej subskrypcji. Umożliwia to bezpłatna usługa, w tym samouczku.
++ [Utwórz usługę Azure Search](search-create-service-portal.md) lub [Znajdź istniejącą usługę](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach bieżącej subskrypcji. W tym samouczku możesz użyć bezpłatnej usługi.
 
 ## <a name="get-a-key-and-url"></a>Pobierz klucz i adres URL
 
-Do interakcji z usługi Azure Search, konieczne będzie adres URL usługi i klucza dostępu. Usługa wyszukiwania jest tworzona przy użyciu obu, więc jeśli usługa Azure Search została dodana do Twojej subskrypcji, wykonaj następujące kroki, aby uzyskać niezbędne informacje:
+Aby można było korzystać z usługi Azure Search, wymagany jest adres URL usługi i klucz dostępu. Usługa wyszukiwania jest tworzona przy użyciu obu, więc jeśli usługa Azure Search została dodana do Twojej subskrypcji, wykonaj następujące kroki, aby uzyskać niezbędne informacje:
 
-1. [Zaloguj się do witryny Azure portal](https://portal.azure.com/)i w usłudze wyszukiwania **Przegląd** strony, Pobierz adres URL. Przykładowy punkt końcowy może wyglądać podobnie jak `https://mydemo.search.windows.net`.
+1. [Zaloguj się do Azure Portal](https://portal.azure.com/)i na stronie **Przegląd** usługi wyszukiwania Uzyskaj adres URL. Przykładowy punkt końcowy może wyglądać podobnie jak `https://mydemo.search.windows.net`.
 
-1. W **ustawienia** > **klucze**, Pobierz klucz administratora dla pełnych praw w usłudze. Istnieją dwa klucze administratora wymienne, podany w celu zachowania ciągłości w razie potrzeby do jednego przerzucania. Dodawanie, modyfikowanie i usuwanie obiektów, można użyć zarówno klucz podstawowy lub pomocniczy w odpowiedzi na żądania.
+1. W obszarze **Ustawienia** > **klucze**Uzyskaj klucz administratora dla pełnych praw do usługi. Istnieją dwa wymienne klucze administratora zapewniające ciągłość działania w przypadku, gdy trzeba ją wycofać. W przypadku żądań dotyczących dodawania, modyfikowania i usuwania obiektów można użyć klucza podstawowego lub pomocniczego.
 
-![Pobierz HTTP punktu końcowego i klucza dostępu](media/search-get-started-postman/get-url-key.png "uzyskać HTTP punktu końcowego i klucza dostępu")
+![Pobieranie punktu końcowego http i klucza dostępu](media/search-get-started-postman/get-url-key.png "Pobieranie punktu końcowego http i klucza dostępu")
 
-Wszystkie żądania wymagają klucza interfejsu api na każde żądanie wysłane do usługi. Prawidłowy klucz ustanawia relację zaufania, na podstawie danego żądania między aplikacją wysyłającą żądanie i usługi, która je obsługuje.
+Wszystkie żądania wymagają klucza API dla każdego żądania wysyłanego do usługi. Prawidłowy klucz ustanawia zaufanie dla każdego żądania, między aplikacją wysyłającą żądanie a usługą, która go obsługuje.
 
-## <a name="prepare-sample-data"></a>Przygotowywanie danych przykładowych
+## <a name="prepare-sample-data"></a>Przygotowywanie przykładowych danych
 
-Potok wzbogacania ściąga dane ze źródeł danych platformy Azure. Dane muszą pochodzić ze źródła danych, którego typ jest obsługiwany przez [indeksator usługi Azure Search](search-indexer-overview.md). Usługa Azure Table Storage nie jest obsługiwana dla usłudze wyszukiwania poznawczego. Na potrzeby tego ćwiczenia będziemy korzystać z usługi Blob Storage, aby zaprezentować wiele typów zawartości.
+Potok wzbogacania ściąga dane ze źródeł danych platformy Azure. Dane muszą pochodzić ze źródła danych, którego typ jest obsługiwany przez [indeksator usługi Azure Search](search-indexer-overview.md). Usługa Azure Table Storage nie jest obsługiwana w przypadku wyszukiwania poznawczego. Na potrzeby tego ćwiczenia będziemy korzystać z usługi Blob Storage, aby zaprezentować wiele typów zawartości.
 
-1. [Zaloguj się do witryny Azure portal](https://portal.azure.com), przejdź do swojego konta usługi Azure storage, kliknij przycisk **obiektów blob**, a następnie kliknij przycisk **+ kontener**.
+1. [Zaloguj się do Azure Portal](https://portal.azure.com), przejdź do konta usługi Azure Storage, kliknij pozycję **obiekty blob**, a następnie kliknij pozycję **+ kontener**.
 
-1. [Utwórz kontener obiektów Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) zawiera przykładowe dane. Można ustawić poziom dostępu publicznego do dowolnego z jego prawidłowe wartości.
+1. [Utwórz kontener obiektów BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) , aby zawierał przykładowe dane. Można ustawić poziom dostępu publicznego na dowolną z jego prawidłowych wartości.
 
-1. Po utworzeniu kontenera otwórz go i wybierz **przekazywanie** na pasku poleceń, aby przekazać pliki przykładowe został pobrany w poprzednim kroku.
+1. Po utworzeniu kontenera Otwórz go i wybierz pozycję **Przekaż** na pasku poleceń, aby przekazać pliki przykładowe pobrane w poprzednim kroku.
 
    ![Pliki źródłowe w usłudze Azure Blob Storage](./media/cognitive-search-quickstart-blob/sample-data.png)
 
-1. Po załadowaniu przykładowych plików uzyskaj nazwę kontenera i parametry połączenia dla usługi Blob Storage. Te dane są dostępne po przejściu do konta usługi Storage w witrynie Azure Portal. Kliknij przycisk **klucze dostępu**, a następnie skopiuj **parametry połączenia** pola.
+1. Po załadowaniu przykładowych plików uzyskaj nazwę kontenera i parametry połączenia dla usługi Blob Storage. Te dane są dostępne po przejściu do konta usługi Storage w witrynie Azure Portal. Kliknij pozycję **klucze dostępu**, a następnie skopiuj pole **Parametry połączenia** .
 
-Parametry połączenia mają następujący format: `DefaultEndpointsProtocol=https;AccountName=<YOUR-STORAGE-ACCOUNT-NAME>;AccountKey=<YOUR-STORAGE-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
+Parametry połączenia będą miały następujący format:`DefaultEndpointsProtocol=https;AccountName=<YOUR-STORAGE-ACCOUNT-NAME>;AccountKey=<YOUR-STORAGE-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
 
-Zachowaj parametrów połączenia pod ręką. Będzie potrzebny w przyszłym kroku.
+Poinformuj parametry połączenia. Będzie ona potrzebna w przyszłości.
 
 Istnieją inne sposoby określania parametrów połączenia, takie jak podanie sygnatury dostępu współdzielonego. Aby dowiedzieć się więcej na temat poświadczeń źródła danych, zobacz [Indeksowanie w usłudze Azure Blob Storage](search-howto-indexing-azure-blob-storage.md#Credentials).
 
 ## <a name="create-a-jupyter-notebook"></a>Tworzenie notesu Jupyter
 
 > [!Note]
-> W tym artykule przedstawiono sposób tworzenia źródła danych, indeks, indeksator i zestawu umiejętności, używając szeregu skryptów języka Python. Aby pobrać przykład pełną Notes, przejdź do [repozytorium Azure-Search-python-samples](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment-Jupyter-Notebook).
+> W tym artykule przedstawiono sposób tworzenia źródła danych, indeksu, indeksatora i zestawu umiejętności przy użyciu szeregu skryptów języka Python. Aby pobrać pełny przykład notesu, przejdź do [repozytorium Azure-Search-Python-Samples](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment-Jupyter-Notebook).
 
-Nawigator Anaconda umożliwia uruchamianie notesu Jupyter i Utwórz nowy notes Python 3.
+Użyj nawigatora Anaconda, aby uruchomić Jupyter Notebook i utworzyć nowy Notes Python 3.
 
-## <a name="connect-to-azure-search"></a>Łączenie z usługą Azure Search
+## <a name="connect-to-azure-search"></a>Połącz z Azure Search
 
-W notesie Uruchom ten skrypt, aby załadować bibliotek używanych do pracy z formatu JSON i sformułowania żądań HTTP.
+W Twoim notesie Uruchom ten skrypt, aby załadować biblioteki używane do pracy z JSON i formułowania żądań HTTP.
 
 ```python
 import json
@@ -101,251 +101,254 @@ import requests
 from pprint import pprint
 ```
 
-Następnie zdefiniuj nazwy źródła danych, indeks, indeksator i zestawu umiejętności. Uruchom ten skrypt, aby skonfigurować nazwy na potrzeby tego samouczka.
+Następnie zdefiniuj nazwy dla źródła danych, indeksu, indeksatora i zestawu umiejętności. Uruchom ten skrypt, aby skonfigurować nazwy dla tego samouczka.
 
 ```python
-#Define the names for the data source, skillset, index and indexer
-datasource_name="cogsrch-py-datasource"
-skillset_name="cogsrch-py-skillset"
-index_name="cogsrch-py-index"
-indexer_name="cogsrch-py-indexer"
+# Define the names for the data source, skillset, index and indexer
+datasource_name = "cogsrch-py-datasource"
+skillset_name = "cogsrch-py-skillset"
+index_name = "cogsrch-py-index"
+indexer_name = "cogsrch-py-indexer"
 ```
 
 > [!Tip]
-> Bezpłatne usługi są ograniczone do trzech indeksów, indeksatorów i źródeł danych. W ramach tego samouczka tworzony jest jeden element każdego z tych typów. Upewnij się, że dysponujesz miejscem do tworzenia nowych obiektów, zanim przejdziesz dalej.
+> W przypadku bezpłatnej usługi jest ograniczona do trzech indeksów, indeksatorów i źródeł danych. W ramach tego samouczka tworzony jest jeden element każdego z tych typów. Upewnij się, że masz miejsce na utworzenie nowych obiektów, zanim przezaczniesz jeszcze więcej.
 
-W poniższym skrypcie Zastąp symbole zastępcze dla Twojej usługi wyszukiwania (YOUR-SEARCH-SERVICE-NAME) i interfejs API administratora klucza (YOUR-ADMIN-API-KEY), a następnie uruchom go, aby skonfigurować punkt końcowy usługi wyszukiwania.
+W poniższym skrypcie Zastąp symbole zastępcze usługi wyszukiwania (nazwa użytkownika-SEARCH-SERVICE-NAME) i klucz interfejsu API administratora (klucz-ADMIN-API-KEY), a następnie uruchom go, aby skonfigurować punkt końcowy usługi wyszukiwania.
 
 ```python
-#Setup the endpoint
+# Setup the endpoint
 endpoint = 'https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/'
 headers = {'Content-Type': 'application/json',
-        'api-key': '<YOUR-ADMIN-API-KEY>' }
+           'api-key': '<YOUR-ADMIN-API-KEY>'}
 params = {
     'api-version': '2019-05-06'
 }
 ```
 
-## <a name="create-a-data-source"></a>Tworzenie źródła danych
+## <a name="create-a-data-source"></a>Utwórz źródło danych
 
-Teraz, gdy usługi i pliki źródłowe są gotowe, rozpocznij łączenie składników potoku indeksowania. Rozpoczynają się od obiektu źródła danych, które informują usługę Azure Search, jak pobrać zewnętrznego źródła danych.
+Teraz, gdy usługi i pliki źródłowe są gotowe, rozpocznij łączenie składników potoku indeksowania. Zacznij od obiektu źródła danych, który informuje Azure Search jak pobrać zewnętrzne dane źródłowe.
 
-W poniższym skrypcie Zastąp symbol zastępczy swojej-BLOB-RESOURCE-CONNECTION-STRING przy użyciu parametrów połączenia dla obiektu blob, który został utworzony w poprzednim kroku. Następnie uruchom skrypt, aby utworzyć źródło danych o nazwie `cogsrch-py-datasource`.
+W poniższym skrypcie Zastąp symbol zastępczy obiektu-BLOB-RESOURCE-CONNECTION-String parametrami połączenia dla obiektu BLOB utworzonego w poprzednim kroku. Następnie uruchom skrypt, aby utworzyć źródło danych o nazwie `cogsrch-py-datasource`.
 
 ```python
-#Create a data source
+# Create a data source
 datasourceConnectionString = "<YOUR-BLOB-RESOURCE-CONNECTION-STRING>"
 datasource_payload = {
     "name": datasource_name,
     "description": "Demo files to demonstrate cognitive search capabilities.",
     "type": "azureblob",
     "credentials": {
-    "connectionString": datasourceConnectionString
-   },
+        "connectionString": datasourceConnectionString
+    },
     "container": {
-     "name": "basic-demo-data-pr"
-   }
+        "name": "basic-demo-data-pr"
+    }
 }
-r = requests.put( endpoint + "/datasources/" + datasource_name, data=json.dumps(datasource_payload), headers=headers, params=params )
-print (r.status_code)
+r = requests.put(endpoint + "/datasources/" + datasource_name,
+                 data=json.dumps(datasource_payload), headers=headers, params=params)
+print(r.status_code)
 ```
 
-Żądania powinien zwrócić kod stanu 201 potwierdzeniem powodzenia.
+Żądanie powinno zwrócić kod stanu 201 potwierdzenie sukcesu.
 
-W witrynie Azure portal na stronie pulpitu nawigacyjnego usługi wyszukiwania, sprawdź, czy cogsrch py datasource znajduje się w **źródeł danych** listy. Kliknij przycisk **Odśwież** do aktualizacji strony.
+Na Azure Portal na stronie Pulpit nawigacyjny usługi wyszukiwania Sprawdź, czy na liście **źródła danych** jest wyświetlana wartość cogsrch-PR-DataSource. Kliknij przycisk **Odśwież** , aby zaktualizować stronę.
 
 ![Kafelek Źródła danych w portalu](./media/cognitive-search-tutorial-blob-python/py-data-source-tile.png "Kafelek Źródła danych w portalu")
 
 ## <a name="create-a-skillset"></a>Tworzenie zestawu umiejętności
 
-W tym kroku zdefiniujesz zestaw kroków wzbogacania do zastosowania do danych. Każdy krok wzbogacania to *umiejętność*, a zestaw kroków wzbogacenia to *zestaw umiejętności*. W tym samouczku [wbudowanych umiejętności poznawcze](cognitive-search-predefined-skills.md) dla zestawu umiejętności:
+W tym kroku zdefiniujesz zestaw kroków wzbogacania, które zostaną zastosowane do danych. Każdy krok wzbogacania to *umiejętność*, a zestaw kroków wzbogacenia to *zestaw umiejętności*. W tym samouczku są stosowane [wbudowane umiejętności poznawcze](cognitive-search-predefined-skills.md) dla zestawu umiejętności:
 
 + [Wykrywanie języka](cognitive-search-skill-language-detection.md) — identyfikowanie języka zawartości.
 
 + [Dzielenie tekstu](cognitive-search-skill-textsplit.md) — dzielenie dużej zawartości na mniejsze fragmenty przed wywołaniem umiejętności wyodrębniania fraz kluczowych. Umiejętność wyodrębniania fraz kluczowych przyjmuje dane wejściowe składające się maksymalnie z 50 000 znaków. Kilka przykładowych plików należy podzielić, aby zmieścić się w tym limicie.
 
-+ [Rozpoznawanie jednostek](cognitive-search-skill-entity-recognition.md) do wyodrębniania nazw organizacje z zawartości w kontenerze obiektów blob.
++ [Rozpoznawanie jednostek](cognitive-search-skill-entity-recognition.md) do wyodrębniania nazw organizacji z zawartości kontenera obiektów BLOB.
 
 + [Wyodrębnianie kluczowych fraz](cognitive-search-skill-keyphrases.md) — określanie najczęściej występujących fraz kluczowych. 
 
-### <a name="python-script"></a>Skrypt w języku Python
-Uruchom następujący skrypt, aby utworzyć zestawu umiejętności o nazwie `cogsrch-py-skillset`.
+### <a name="python-script"></a>Skrypt języka Python
+Uruchom następujący skrypt, aby utworzyć obiekt zestawu umiejętności o `cogsrch-py-skillset`nazwie.
 
 ```python
-#Create a skillset
+# Create a skillset
 skillset_payload = {
-  "name": skillset_name,
-  "description":
-  "Extract entities, detect language and extract key-phrases",
-  "skills":
-  [
-    {
-      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
-      "categories": [ "Organization" ],
-      "defaultLanguageCode": "en",
-      "inputs": [
+    "name": skillset_name,
+    "description":
+    "Extract entities, detect language and extract key-phrases",
+    "skills":
+    [
         {
-          "name": "text", "source": "/document/content"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "organizations", "targetName": "organizations"
-        }
-      ]
-    },
-    {
-      "@odata.type": "#Microsoft.Skills.Text.LanguageDetectionSkill",
-      "inputs": [
-        {
-          "name": "text", "source": "/document/content"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "languageCode",
-          "targetName": "languageCode"
-        }
-      ]
-    },
-    {
-      "@odata.type": "#Microsoft.Skills.Text.SplitSkill",
-      "textSplitMode" : "pages",
-      "maximumPageLength": 4000,
-      "inputs": [
-        {
-          "name": "text",
-          "source": "/document/content"
+            "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
+            "categories": ["Organization"],
+            "defaultLanguageCode": "en",
+            "inputs": [
+                {
+                    "name": "text", "source": "/document/content"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "organizations", "targetName": "organizations"
+                }
+            ]
         },
         {
-          "name": "languageCode",
-          "source": "/document/languageCode"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "textItems",
-          "targetName": "pages"
-        }
-      ]
-    },
-    {
-      "@odata.type": "#Microsoft.Skills.Text.KeyPhraseExtractionSkill",
-      "context": "/document/pages/*",
-      "inputs": [
-        {
-          "name": "text", "source": "/document/pages/*"
+            "@odata.type": "#Microsoft.Skills.Text.LanguageDetectionSkill",
+            "inputs": [
+                {
+                    "name": "text", "source": "/document/content"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "languageCode",
+                    "targetName": "languageCode"
+                }
+            ]
         },
         {
-          "name":"languageCode", "source": "/document/languageCode"
-        }
-      ],
-      "outputs": [
+            "@odata.type": "#Microsoft.Skills.Text.SplitSkill",
+            "textSplitMode": "pages",
+            "maximumPageLength": 4000,
+            "inputs": [
+                {
+                    "name": "text",
+                    "source": "/document/content"
+                },
+                {
+                    "name": "languageCode",
+                    "source": "/document/languageCode"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "textItems",
+                    "targetName": "pages"
+                }
+            ]
+        },
         {
-          "name": "keyPhrases",
-          "targetName": "keyPhrases"
+            "@odata.type": "#Microsoft.Skills.Text.KeyPhraseExtractionSkill",
+            "context": "/document/pages/*",
+            "inputs": [
+                {
+                    "name": "text", "source": "/document/pages/*"
+                },
+                {
+                    "name": "languageCode", "source": "/document/languageCode"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "keyPhrases",
+                    "targetName": "keyPhrases"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
 
-r = requests.put(endpoint + "/skillsets/" + skillset_name, data=json.dumps(skillset_payload), headers=headers, params=params)
+r = requests.put(endpoint + "/skillsets/" + skillset_name,
+                 data=json.dumps(skillset_payload), headers=headers, params=params)
 print(r.status_code)
 ```
 
-Żądania powinien zwrócić kod stanu 201 potwierdzeniem powodzenia.
+Żądanie powinno zwrócić kod stanu 201 potwierdzenie sukcesu.
 
-Umiejętności wyodrębnianie fraz kluczowych jest stosowany dla każdej strony. Ustawiając kontekście `"document/pages/*"`, uruchom to enricher dla każdego elementu członkowskiego tablicy stron/dokumentu (dla każdej strony dokumentu).
+Na każdej stronie jest stosowana umiejętność wyodrębniania frazy klucza. Ustawiając kontekst na `"document/pages/*"`, należy uruchomić ten program wzbogacający dla każdego elementu członkowskiego tablicy Document/Pages (dla każdej strony w dokumencie).
 
-Każda umiejętność jest wykonywana dla zawartości dokumentu. Podczas przetwarzania usługa Azure Search analizuje każdy dokument w celu odczytania zawartości plików w różnych formatach. Tekst znaleziony w pliku źródłowym jest umieszczana w `content` pól, jeden dla każdego dokumentu. W związku z tym, zestawu danych wejściowych jako `"/document/content"`.
+Każda umiejętność jest wykonywana dla zawartości dokumentu. Podczas przetwarzania usługa Azure Search analizuje każdy dokument w celu odczytania zawartości plików w różnych formatach. Tekst znaleziony w pliku źródłowym jest umieszczany `content` w polu, po jednym dla każdego dokumentu. W związku z tym ustaw wartość `"/document/content"`wejściową jako.
 
 Graficzna reprezentacja zestawu umiejętności jest przedstawiona poniżej.
 
 ![Poznawanie zestawu umiejętności](media/cognitive-search-tutorial-blob/skillset.png "Poznawanie zestawu umiejętności")
 
-Dane wyjściowe mogą być mapowane do indeksu, który jest używany jako dane wejściowe podrzędnego umiejętności i / lub, tak jak w przypadku przy użyciu kodu języka. W indeksie kod języka jest przydatny do filtrowania. Kod języka jest używany jako dane wejściowe przez umiejętności analizy tekstu w celu określenia zasad podziału wyrazów przez reguły językowe.
+Wyniki mogą być mapowane na indeks, używany jako dane wejściowe do poziomu umiejętności podrzędnej, lub w obu przypadkach, podobnie jak w przypadku kodu języka. W indeksie kod języka jest przydatny do filtrowania. Kod języka jest używany jako dane wejściowe przez umiejętności analizy tekstu w celu określenia zasad podziału wyrazów przez reguły językowe.
 
 Aby uzyskać więcej podstawowych informacji na temat zestawów umiejętności, zobacz [Jak zdefiniować zestaw umiejętności](cognitive-search-defining-skillset.md).
 
 ## <a name="create-an-index"></a>Tworzenie indeksu
 
-W tej sekcji można zdefiniować schemat indeksu Określanie pól, które mają zostać objęte przeszukiwanie indeksu, a ustawienie atrybutów wyszukiwania dla każdego pola. Pola mogą mieć typ i atrybuty, które określają sposób używania pola (z możliwością wyszukiwania, sortowania itp.). Nazwy pól w indeksie nie muszą dokładnie zgadzać się z nazwami pól w źródle. W kolejnym kroku są dodawane mapowania pól w indeksatorze w celu połączenia pól źródłowych z polami docelowymi. W tym kroku zdefiniuj indeks przy użyciu konwencji nazewnictwa pól właściwej dla aplikacji wyszukiwania.
+W tej sekcji zdefiniujesz schemat indeksu, określając pola do uwzględnienia w indeksie wyszukiwania i ustawiając atrybuty wyszukiwania dla każdego pola. Pola mogą mieć typ i atrybuty, które określają sposób używania pola (z możliwością wyszukiwania, sortowania itp.). Nazwy pól w indeksie nie muszą dokładnie zgadzać się z nazwami pól w źródle. W kolejnym kroku są dodawane mapowania pól w indeksatorze w celu połączenia pól źródłowych z polami docelowymi. W tym kroku zdefiniuj indeks przy użyciu konwencji nazewnictwa pól właściwej dla aplikacji wyszukiwania.
 
 W tym ćwiczeniu są używane następujące pola i typy pól:
 
-| field-names: | id         | content   | languageCode | keyPhrases         | organizations     |
+| field-names: | id         | zawartość   | languageCode | keyPhrases         | organizations     |
 |--------------|----------|-------|----------|--------------------|-------------------|
 | field-types: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
 
-Uruchom ten skrypt, aby utworzyć indeks o nazwie `cogsrch-py-index`.
+Uruchom ten skrypt, aby utworzyć indeks o `cogsrch-py-index`nazwie.
 
 ```python
-#Create an index
+# Create an index
 index_payload = {
     "name": index_name,
     "fields": [
-      {
-        "name": "id",
-        "type": "Edm.String",
-        "key": "true",
-        "searchable": "true",
-        "filterable": "false",
-        "facetable": "false",
-        "sortable": "true"
-      },
-      {
-        "name": "content",
-        "type": "Edm.String",
-        "sortable": "false",
-        "searchable": "true",
-        "filterable": "false",
-        "facetable": "false"
-      },
-      {
-        "name": "languageCode",
-        "type": "Edm.String",
-        "searchable": "true",
-        "filterable": "false",
-        "facetable": "false"
-      },
-      {
-        "name": "keyPhrases",
-        "type": "Collection(Edm.String)",
-        "searchable": "true",
-        "filterable": "false",
-        "facetable": "false"
-      },
-      {
-        "name": "organizations",
-        "type": "Collection(Edm.String)",
-        "searchable": "true",
-        "sortable": "false",
-        "filterable": "false",
-        "facetable": "false"
-      }
-   ]
+        {
+            "name": "id",
+            "type": "Edm.String",
+            "key": "true",
+            "searchable": "true",
+            "filterable": "false",
+            "facetable": "false",
+            "sortable": "true"
+        },
+        {
+            "name": "content",
+            "type": "Edm.String",
+            "sortable": "false",
+            "searchable": "true",
+            "filterable": "false",
+            "facetable": "false"
+        },
+        {
+            "name": "languageCode",
+            "type": "Edm.String",
+            "searchable": "true",
+            "filterable": "false",
+            "facetable": "false"
+        },
+        {
+            "name": "keyPhrases",
+            "type": "Collection(Edm.String)",
+            "searchable": "true",
+            "filterable": "false",
+            "facetable": "false"
+        },
+        {
+            "name": "organizations",
+            "type": "Collection(Edm.String)",
+            "searchable": "true",
+            "sortable": "false",
+            "filterable": "false",
+            "facetable": "false"
+        }
+    ]
 }
 
-r = requests.put(endpoint + "/indexes/" + index_name, data=json.dumps(index_payload), headers=headers, params=params)
+r = requests.put(endpoint + "/indexes/" + index_name,
+                 data=json.dumps(index_payload), headers=headers, params=params)
 print(r.status_code)
 ```
 
-Żądania powinien zwrócić kod stanu 201 potwierdzeniem powodzenia.
+Żądanie powinno zwrócić kod stanu 201 potwierdzenie sukcesu.
 
 Aby dowiedzieć się więcej na temat definiowania indeksu, zobacz [Tworzenie indeksu (interfejs API REST usługi Azure Search)](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
 ## <a name="create-an-indexer-map-fields-and-execute-transformations"></a>Tworzenie indeksatora, mapowanie pól i wykonywanie przekształceń
 
-Do tej pory utworzono źródła danych, zestawu umiejętności i indeksu. Te trzy składniki staną się częścią [indeksatora](search-indexer-overview.md), który łączy wszystkie części w pojedynczą operację obejmującą wiele faz. Powiązanie tych obiektów w indeksatorze, należy zdefiniować mapowania pól.
+Do tej pory utworzono źródło danych, zestawu umiejętności i indeks. Te trzy składniki staną się częścią [indeksatora](search-indexer-overview.md), który łączy wszystkie części w pojedynczą operację obejmującą wiele faz. Aby powiązać te obiekty ze sobą w indeksatorze, należy zdefiniować mapowania pól.
 
-+ FieldMappings są przetwarzane przed zestawu umiejętności, mapowanie pola źródłowego ze źródła danych do docelowej pól w indeksie. Jeśli nazwy pól i typów są takie same na obu końcach, żadne mapowanie jest wymagana.
++ FieldMappings są przetwarzane przed zestawu umiejętności, mapując pola źródłowe ze źródła danych do pól docelowych w indeksie. Jeśli nazwy pól i typy są takie same na obu końcach, mapowanie nie jest wymagane.
 
-+ OutputFieldMappings są przetwarzane od zestawu umiejętności, odwołuje się do sourceFieldNames, które nie istnieją aż łamania dokumentów lub wzbogacania ich tworzenia. TargetFieldName jest polem w indeksie.
++ OutputFieldMappings są przetwarzane po zestawu umiejętności, do których odwołuje się sourceFieldNames, które nie istnieją do momentu utworzenia przez nich pęknięć lub wzbogacania dokumentów. TargetFieldName to pole w indeksie.
 
-Oprócz Podłączanie dane wejściowe, aby dane wyjściowe, umożliwia także mapowania pól do spłaszczenia struktur danych. Aby uzyskać więcej informacji, zobacz [sposób mapowania pól wzbogaconego na indeks z możliwością wyszukiwania](cognitive-search-output-field-mapping.md).
+Oprócz przyłączania danych wejściowych do danych wyjściowych, można również używać mapowań pól do spłaszczania struktur. Aby uzyskać więcej informacji, zobacz [Jak mapować wzbogacone pola na indeks wyszukiwania](cognitive-search-output-field-mapping.md).
 
-Uruchom ten skrypt, aby utworzyć indeksatora o nazwie `cogsrch-py-indexer`.
+Uruchom ten skrypt, aby utworzyć indeksator o nazwie `cogsrch-py-indexer`.
 
 ```python
 # Create an indexer
@@ -354,83 +357,85 @@ indexer_payload = {
     "dataSourceName": datasource_name,
     "targetIndexName": index_name,
     "skillsetName": skillset_name,
-    "fieldMappings" : [
+    "fieldMappings": [
+        {
+            "sourceFieldName": "metadata_storage_path",
+            "targetFieldName": "id",
+            "mappingFunction":
+            {"name": "base64Encode"}
+        },
+        {
+            "sourceFieldName": "content",
+            "targetFieldName": "content"
+        }
+    ],
+    "outputFieldMappings":
+    [
+        {
+            "sourceFieldName": "/document/organizations",
+            "targetFieldName": "organizations"
+        },
+        {
+            "sourceFieldName": "/document/pages/*/keyPhrases/*",
+            "targetFieldName": "keyPhrases"
+        },
+        {
+            "sourceFieldName": "/document/languageCode",
+            "targetFieldName": "languageCode"
+        }
+    ],
+    "parameters":
     {
-      "sourceFieldName" : "metadata_storage_path",
-      "targetFieldName" : "id",
-      "mappingFunction" :
-        { "name" : "base64Encode" }
-    },
-    {
-      "sourceFieldName" : "content",
-      "targetFieldName" : "content"
+        "maxFailedItems": -1,
+        "maxFailedItemsPerBatch": -1,
+        "configuration":
+        {
+            "dataToExtract": "contentAndMetadata",
+            "imageAction": "generateNormalizedImages"
+        }
     }
-  ],
-   "outputFieldMappings" :
-  [
-    {
-      "sourceFieldName" : "/document/organizations",
-      "targetFieldName" : "organizations"
-    },
-    {
-      "sourceFieldName" : "/document/pages/*/keyPhrases/*",
-      "targetFieldName" : "keyPhrases"
-    },
-    {
-      "sourceFieldName": "/document/languageCode",
-      "targetFieldName": "languageCode"
-    }
-  ],
-   "parameters":
-  {
-    "maxFailedItems":-1,
-    "maxFailedItemsPerBatch":-1,
-    "configuration":
-    {
-      "dataToExtract": "contentAndMetadata",
-      "imageAction": "generateNormalizedImages"
-    }
-  }
 }
 
-r = requests.put(endpoint + "/indexers/" + indexer_name, data=json.dumps(indexer_payload), headers=headers, params=params)
+r = requests.put(endpoint + "/indexers/" + indexer_name,
+                 data=json.dumps(indexer_payload), headers=headers, params=params)
 print(r.status_code)
 ```
 
-Żądanie szybko powinna zwrócić kod stanu 201, jednak przetwarzanie może zająć kilka minut. Mimo że zestaw danych jest mała, umiejętności analitycznych, takich jak analiza obrazu, czy wymaga dużej mocy obliczeniowej i czasu.
+Żądanie powinno szybko zwrócić kod stanu 201, jednak przetwarzanie może potrwać kilka minut. Mimo że zestaw danych jest mały, umiejętności analityczne, takie jak analiza obrazu, są znacznie pracochłonne i czasochłonne.
 
-Użyj [Sprawdź stan indeksatora](#check-indexer-status) skryptu w następnej sekcji, aby określić, po zakończeniu procesu indeksatora.
+Użyj skryptu [stanu indeksatora](#check-indexer-status) w następnej sekcji, aby określić, kiedy proces indeksatora został ukończony.
 
 > [!TIP]
-> Utworzenie indeksatora powoduje wywołanie potoku. Jeśli występuje problem z dostępem do danych, mapowanie danych wejściowych i wyjściowych, lub z kolejność operacji, pojawi się na tym etapie. Aby ponownie uruchomić potok ze zmianami kodu lub skryptu, konieczne może być najpierw usuń obiekty. Aby uzyskać więcej informacji, zobacz [Resetowanie i ponowne uruchamianie](#reset).
+> Utworzenie indeksatora powoduje wywołanie potoku. Jeśli wystąpi problem z uzyskaniem dostępu do danych, mapowanie wejść i wyjść lub z kolejnością operacji, pojawi się on na tym etapie. Aby ponownie uruchomić potok ze zmianami kodu lub skryptu, konieczne może być najpierw usunięcie obiektów. Aby uzyskać więcej informacji, zobacz [Resetowanie i ponowne uruchamianie](#reset).
 
 #### <a name="explore-the-request-body"></a>Eksplorowanie treści żądania
 
 Skrypt ustawia dla elementu `"maxFailedItems"` wartość -1, która powoduje, że aparat indeksowania ignoruje błędy podczas importowania danych. Jest to przydatne, ponieważ pokazowe źródło danych zawiera tak mało dokumentów. W przypadku większego źródła danych należy ustawić wartość większą od 0.
 
-Ponadto zwróć uwagę na instrukcję `"dataToExtract":"contentAndMetadata"` w parametrach konfiguracji. Ta instrukcja każe indeksator do wyodrębniania zawartości z innych formatów plików i metadanych związanych z każdego pliku.
+Ponadto zwróć uwagę na instrukcję `"dataToExtract":"contentAndMetadata"` w parametrach konfiguracji. Ta instrukcja nakazuje Indeksatorowi Wyodrębnienie zawartości z różnych formatów plików i metadanych związanych z każdym plikiem.
 
-Gdy zawartość zostanie wyodrębniona, możesz ustawić element `imageAction`, aby wyodrębnić tekst z obrazów znalezionych w źródle danych. Konfiguracja `"imageAction":"generateNormalizedImages"`, w połączeniu z umiejętnością OCR i umiejętnością scalania tekstu, wskazuje indeksatorowi, aby wyodrębniał tekst z obrazów (np. wyraz „stop” ze znaku drogowego Stop) i osadzał go jako część pola zawartości. To zachowanie ma zastosowanie w źródle danych, na przykład plik JPG obrazów i obrazów osadzonych w dokumentach (myśl obraz w pliku PDF).
+Gdy zawartość zostanie wyodrębniona, możesz ustawić element `imageAction`, aby wyodrębnić tekst z obrazów znalezionych w źródle danych. Konfiguracja `"imageAction":"generateNormalizedImages"`, w połączeniu z umiejętnością OCR i umiejętnością scalania tekstu, wskazuje indeksatorowi, aby wyodrębniał tekst z obrazów (np. wyraz „stop” ze znaku drogowego Stop) i osadzał go jako część pola zawartości. To zachowanie dotyczy obrazów osadzonych w dokumentach (obraz w pliku PDF) i obrazów znajdujących się w źródle danych na przykład pliku JPG.
 
 <a name="check-indexer-status"></a>
 
 ## <a name="check-indexer-status"></a>Sprawdzanie stanu indeksatora
 
-Po zdefiniowaniu indeksatora jest on uruchamiany automatycznie przy przesyłaniu żądania. W zależności od tego, które umiejętności poznawcze zdefiniowano, indeksowanie może trwać dłużej, niż oczekujesz. Aby dowiedzieć się, czy przetwarzanie indeksatora zostało ukończone, uruchom następujący skrypt.
+Po zdefiniowaniu indeksatora jest on uruchamiany automatycznie przy przesyłaniu żądania. W zależności od tego, które umiejętności poznawcze zdefiniowano, indeksowanie może trwać dłużej, niż oczekujesz. Aby dowiedzieć się, czy przetwarzanie indeksatora zostało zakończone, uruchom następujący skrypt.
 
 ```python
-#Get indexer status
-r = requests.get(endpoint + "/indexers/" + indexer_name + "/status", headers=headers,params=params)
+# Get indexer status
+r = requests.get(endpoint + "/indexers/" + indexer_name +
+                 "/status", headers=headers, params=params)
 pprint(json.dumps(r.json(), indent=1))
 ```
 
-W odpowiedzi monitorowanie "lastResult" dla wartości "status" i "endTime". Okresowe uruchamianie skryptu, aby sprawdzić stan. Po zakończeniu indeksatora stan zostanie ustawiony "Powodzenie", "endTime" zostanie określony, a odpowiedź będzie zawierać wszelkie błędy i ostrzeżenia, które wystąpiły podczas wzbogacania.
+W odpowiedzi Monitoruj wartość "lastResult" dla swoich wartości "status" i "endTime". Należy okresowo uruchamiać skrypt, aby sprawdzić stan. Po zakończeniu indeksatora stan zostanie ustawiony na "powodzenie", zostanie określona wartość "endTime", a odpowiedź będzie zawierać wszelkie błędy i ostrzeżenia, które wystąpiły podczas wzbogacania.
 
-![Zostanie utworzony indeksator](./media/cognitive-search-tutorial-blob-python/py-indexer-is-created.png "utworzeniu indeksatora")
+![Utworzono indeksator](./media/cognitive-search-tutorial-blob-python/py-indexer-is-created.png "Utworzono indeksator")
 
-Ostrzeżenia często występują dla niektórych kombinacji plików źródłowych i umiejętności oraz nie zawsze wskazują istnienie problemu. W tym samouczku sygnalizują poważnych ostrzeżenia. Na przykład jeden z plików JPEG, które nie ma tekstu pokaże ostrzeżenia na tym zrzucie ekranu.
+Ostrzeżenia często występują dla niektórych kombinacji plików źródłowych i umiejętności oraz nie zawsze wskazują istnienie problemu. W tym samouczku ostrzeżenia są niegroźne. Na przykład jeden z plików JPEG, które nie ma tekstu, będzie wyświetlał ostrzeżenie na tym zrzucie ekranu.
 
-![Ostrzeżenie indeksatora przykład](./media/cognitive-search-tutorial-blob-python/py-indexer-warning-example.png "przykładowy indeksator ostrzeżenie")
+![Przykładowe ostrzeżenie indeksatora](./media/cognitive-search-tutorial-blob-python/py-indexer-warning-example.png "Przykładowe ostrzeżenie indeksatora")
 
 ## <a name="query-your-index"></a>Tworzenie zapytań względem indeksu
 
@@ -439,33 +444,35 @@ Po zakończeniu indeksowania uruchom zapytania zwracające zawartość poszczeg�
 W ramach kroku weryfikacji odpytaj indeks o wszystkie pola.
 
 ```python
-#Query the index for all fields
-r = requests.get(endpoint + "/indexes/" + index_name, headers=headers,params=params)
+# Query the index for all fields
+r = requests.get(endpoint + "/indexes/" + index_name,
+                 headers=headers, params=params)
 pprint(json.dumps(r.json(), indent=1))
 ```
 
 Wyniki powinny wyglądać podobnie do poniższego przykładu. Zrzut ekranu przedstawia tylko część odpowiedzi.
 
-![Indeks zapytania dla wszystkich pól](./media/cognitive-search-tutorial-blob-python/py-query-index-for-fields.png "tworzenie zapytań względem indeksu dla wszystkich pól")
+![Indeks zapytania dla wszystkich pól](./media/cognitive-search-tutorial-blob-python/py-query-index-for-fields.png "Zbadaj indeks dla wszystkich pól")
 
 Dane wyjściowe to schemat indeksu z nazwą, typem i atrybutami każdego pola.
 
 Prześlij drugie zapytanie o element `"*"`, co spowoduje zwrócenie całej zawartości pojedynczego pola, takiego jak `organizations`.
 
 ```python
-#Query the index to return the contents of organizations
-r = requests.get(endpoint + "/indexes/" + index_name + "/docs?&search=*&$select=organizations", headers=headers, params=params)
+# Query the index to return the contents of organizations
+r = requests.get(endpoint + "/indexes/" + index_name +
+                 "/docs?&search=*&$select=organizations", headers=headers, params=params)
 pprint(json.dumps(r.json(), indent=1))
 ```
 
 Wyniki powinny wyglądać podobnie do poniższego przykładu. Zrzut ekranu przedstawia tylko część odpowiedzi.
 
-![Indeks zapytania dla zawartości organizacji](./media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png "tworzenie zapytań względem indeksu, aby zwrócić zawartość organizacji")
+![Indeks zapytania dla zawartości organizacji](./media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png "Zbadaj indeks, aby zwrócić zawartość organizacji")
 
-Powtórz tę procedurę dla pola dodatkowe: zawartość, languageCode, keyPhrases i organizacji, w tym ćwiczeniu. Istnieje możliwość zwrócenia wielu pól za pomocą elementu `$select` używającego listy wartości rozdzielonych przecinkami.
+Powtórz te czynności w przypadku dodatkowych pól: Content, languageCode, phrase kluczs i organizacji w tym ćwiczeniu. Istnieje możliwość zwrócenia wielu pól za pomocą elementu `$select` używającego listy wartości rozdzielonych przecinkami.
 
 W zależności od złożoności i długości ciągu zapytania można użyć metody GET lub POST. Aby uzyskać więcej informacji, zobacz [Odpytywanie przy użyciu interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/search-documents).
-go <a name="reset"></a>
+go<a name="reset"></a>
 
 ## <a name="reset-and-rerun"></a>Resetowanie i ponowne uruchamianie
 
@@ -474,18 +481,19 @@ Na wczesnych, eksperymentalnych etapach opracowywania potoku najbardziej praktyc
 Aby zaindeksować dokumenty za pomocą nowych definicji:
 
 1. Usuń indeks, aby usunąć utrwalone dane. Usuń indeksator, aby utworzyć go ponownie w usłudze.
-2. Modyfikowanie definicji zestawu umiejętności i indeksu.
+2. Zmodyfikuj definicje zestawu umiejętności i index.
 3. Utwórz ponownie indeks i indeksator dla usługi w celu uruchomienia potoku.
 
-Portal umożliwia usunięcie indeksów, indeksatorów i dokładniejsze. Po usunięciu indeksatora, można opcjonalnie, selektywnie usunąć źródło indeksu, zestawu umiejętności i danych w tym samym czasie.
+Możesz użyć portalu, aby usunąć indeksy, indeksatory i umiejętności. Po usunięciu indeksatora można opcjonalnie selektywnie usunąć indeks, zestawu umiejętności i źródło danych.
 
-![Usuwanie obiektów wyszukiwania](./media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png "wyszukiwania usuwania obiektów w portalu")
+![Usuwanie obiektów wyszukiwania](./media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png "Usuwanie obiektów wyszukiwania w portalu")
 
-Można również usunąć je za pomocą skryptu. Poniższy skrypt spowoduje usunięcie zestawu umiejętności, którą utworzyliśmy. Można łatwo zmodyfikować żądanie usunięcia indeks, indeksator i źródło danych.
+Można je również usunąć za pomocą skryptu. Następujący skrypt usunie utworzoną zestawu umiejętności. Możesz łatwo zmodyfikować żądanie, aby usunąć indeks, indeksator i źródło danych.
 
 ```python
-#delete the skillset
-r = requests.delete(endpoint + "/skillsets/" + skillset_name, headers=headers, params=params)
+# delete the skillset
+r = requests.delete(endpoint + "/skillsets/" + skillset_name,
+                    headers=headers, params=params)
 pprint(json.dumps(r.json(), indent=1))
 ```
 
@@ -495,17 +503,17 @@ W miarę rozwoju kodu można udoskonalić strategię odbudowywania. Aby uzyskać
 
 W tym samouczku przedstawiono podstawowe kroki tworzenia wzbogaconego potoku indeksowania przez utworzenie elementów będących jego składnikami: źródła danych, zestawu umiejętności, indeksu i indeksatora.
 
-[Wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md) zostały wprowadzone, wraz z definicji zestawu umiejętności oraz sposób łańcuch umiejętności razem za pośrednictwem danych wejściowych i wyjściowych. Opisano także element `outputFieldMappings` w definicji indeksatora, który jest wymagany do kierowania wzbogaconych wartości z potoku do indeksu z możliwością wyszukiwania w usłudze Azure Search.
+Wprowadzono [wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md) , a także definicje zestawu umiejętności oraz sposób łączenia umiejętności z danymi wejściowymi i wyjściowymi. Opisano także element `outputFieldMappings` w definicji indeksatora, który jest wymagany do kierowania wzbogaconych wartości z potoku do indeksu z możliwością wyszukiwania w usłudze Azure Search.
 
-Na koniec pokazaliśmy ci, jak przetestować wyniki i zresetowanie systemu pod kątem dalsze iteracji. Omówiono proces, w ramach którego odpytanie indeksu powoduje zwrócenie danych wyjściowych utworzonych przez wzbogacony potok indeksowania. W tej wersji jest dostępny mechanizm wyświetlania wewnętrznych konstrukcji (wzbogaconych dokumentów utworzonych przez system). Przedstawiono również sposób sprawdzić stan indeksatora i jakie obiekty muszą zostać usunięte przed ponowne uruchamianie potoku.
+Wreszcie zawiesz się, jak przetestować wyniki i zresetować system pod kątem dalszych iteracji. Omówiono proces, w ramach którego odpytanie indeksu powoduje zwrócenie danych wyjściowych utworzonych przez wzbogacony potok indeksowania. W tej wersji jest dostępny mechanizm wyświetlania wewnętrznych konstrukcji (wzbogaconych dokumentów utworzonych przez system). Zawarto również informacje na temat sprawdzania stanu indeksatora oraz obiektów, które należy usunąć przed ponownym uruchomieniem potoku.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Najszybszym sposobem wyczyszczenia środowiska po ukończeniu samouczka jest usunięcie grupy zasobów zawierającej usługę Azure Search i usługę Azure Blob Service. Przy założeniu, że obie te usługi należy umieścić w tej samej grupy, Usuń grupę zasobów, aby trwale usunąć wszystkie elementy, łącznie z usługami i przechowywana zawartość, który został utworzony na potrzeby tego samouczka. W portalu nazwa grupy zasobów znajduje się na stronie Przegląd każdej usługi.
+Najszybszym sposobem wyczyszczenia środowiska po ukończeniu samouczka jest usunięcie grupy zasobów zawierającej usługę Azure Search i usługę Azure Blob Service. Przy założeniu, że obie usługi są umieszczone w tej samej grupie, Usuń grupę zasobów, aby trwale usunąć wszystkie w niej wszystkie elementy, w tym usługi i zawartość, która została utworzona dla tego samouczka. W portalu nazwa grupy zasobów znajduje się na stronie Przegląd każdej usługi.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dostosuj lub rozszerz potok za pomocą umiejętności niestandardowych. Utworzenie umiejętności niestandardowej i dołączenie jej do zestawu umiejętności pozwala na dodanie samodzielnie napisanej analizy tekstu lub obrazu.
 
 > [!div class="nextstepaction"]
-> [Przykład: Tworzenie niestandardowych umiejętności do wyszukiwania kognitywnego](cognitive-search-create-custom-skill-example.md)
+> [Przykład: Tworzenie niestandardowej umiejętności wyszukiwania poznawczego](cognitive-search-create-custom-skill-example.md)

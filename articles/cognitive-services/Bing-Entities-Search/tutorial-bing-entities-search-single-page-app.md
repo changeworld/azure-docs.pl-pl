@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: tutorial
-ms.date: 02/01/2019
+ms.date: 07/15/2019
 ms.author: aahi
-ms.openlocfilehash: 1b8cf36c631755458bc0c531773a6b2aba7f1038
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 67aaf2a3b0c7de85283642795cc1a69e9c36aa37
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406375"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360572"
 ---
 # <a name="tutorial-single-page-web-app"></a>Samouczek: Jednostronicowa aplikacja internetowa
 
@@ -535,7 +535,7 @@ Zainstalowanie serwera proxy CORS w celu zezwolenia naszej aplikacji samouczka n
 
 Następnie zmień punkt końcowy wyszukiwania w sieci Web Bing w pliku HTML na:
 
-    https://localhost:9090/httpss://api.cognitive.microsoft.com/bing/v7.0/search
+    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
 
 Na koniec uruchom serwer proxy CORS za pomocą następującego polecenia:
 

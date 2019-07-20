@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/18/2019
 ms.author: spelluru
-ms.openlocfilehash: b5abb8d4aad7c58bf673aa578255efe12d32ad4b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ee9a68df685095244fc9471b7d4ab0f6cee0642d
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61083587"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360258"
 ---
 # <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>Samouczek: uzyskiwanie dostępu do laboratorium w usłudze Azure DevTest Labs
 W tym samouczku użyjesz laboratorium, które zostało utworzone w temacie [Samouczek: tworzenie laboratorium w usłudze Azure DevTest Labs](tutorial-create-custom-lab.md).
@@ -58,8 +58,15 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
     ![Nawiązywanie połączenia z maszyną wirtualną](./media/tutorial-use-custom-lab/connect-button.png)
 2. Zapisz pobrany plik **RDP** na dysku twardym i użyj go do nawiązania połączenia z maszyną wirtualną. Podaj nazwę użytkownika i hasło zastosowane podczas tworzenia maszyny wirtualnej w poprzedniej sekcji. 
 
-    > [!NOTE] 
-    > Aby można było nawiązać połączenie z maszyną wirtualną z systemem Linux, musi być włączony dostęp do maszyny wirtualnej za pomocą protokołu SSH i/lub RDP. Kroki procedury nawiązywania połączenia z maszyną wirtualną z systemem Linux zawiera artykuł [Instalowanie i konfigurowanie pulpitu zdalnego w celu nawiązania połączenia z maszyna wirtualną z systemem Linux na platformie Azure](../virtual-machines/linux/use-remote-desktop.md). 
+    Aby można było nawiązać połączenie z maszyną wirtualną z systemem Linux, musi być włączony dostęp do maszyny wirtualnej za pomocą protokołu SSH i/lub RDP. Kroki procedury nawiązywania połączenia z maszyną wirtualną z systemem Linux zawiera artykuł [Instalowanie i konfigurowanie pulpitu zdalnego w celu nawiązania połączenia z maszyna wirtualną z systemem Linux na platformie Azure](../virtual-machines/linux/use-remote-desktop.md). 
+
+    > [!NOTE]
+    > Istnieją inne sposoby uzyskania na stronę maszyny wirtualnej dla maszyny wirtualnej. Oto niektóre z nich: 
+    > 
+    > 1. Wyszukaj wszystkie maszyny wirtualne w subskrypcji. Wybierz maszynę wirtualną z listy maszyn wirtualnych, aby uzyskać dostęp do strony **maszyny wirtualnej** .
+    > 2. Przejdź do strony **grupy zasobów** dla grupy zasobów. Następnie wybierz maszynę wirtualną z listy zasobów w grupie zasobów, aby przejść do strony **maszyny wirtualnej** . 
+    >
+    > Nie należy używać przycisku **Połącz** na pasku narzędzi na stronie **maszyny wirtualnej** , do której można uzyskać dostęp za pomocą tych opcji. Zamiast tego przejdź do strony **maszyny wirtualnej** na stronie **DevTest Labs** , jak pokazano w tym artykule, a następnie użyj przycisku **Połącz** na pasku narzędzi.
 
 
 ## <a name="unclaim-the-vm"></a>Cofanie przejęcia maszyny wirtualnej
@@ -75,7 +82,7 @@ Po zakończeniu korzystania z maszyny wirtualnej cofnij jej przejęcie, wykonuj�
 1. Upewnij się, że maszyna wirtualna jest widoczna na liście **Maszyny wirtualne możliwe do przejęcia** w dolnej części.
 
     
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym samouczku pokazano, jak uzyskiwać dostęp do laboratorium, które zostało utworzone za pomocą usługi Azure DevTest Labs, i korzystać z niego. Aby uzyskać więcej informacji na temat uzyskiwania dostępu do maszyn wirtualnych i używania ich w laboratorium, zobacz 
 
 > [!div class="nextstepaction"]

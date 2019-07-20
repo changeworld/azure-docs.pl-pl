@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 02/01/2019
+ms.date: 07/15/2019
 ms.author: aahi
-ms.openlocfilehash: 9a66df03ceb03885ba5f61b4adeb54cb1876338d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 99bf0c155a1cd211a9cdc41d4184be716244d035
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813610"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358911"
 ---
 # <a name="quickstart-bing-entity-search-sdk-with-python"></a>Szybki start: Zestaw Bing Entity Search SDK i język Python
 
@@ -27,7 +27,7 @@ Użyj tego poradnika Szybki start, aby zacząć wyszukiwać jednostki za pomocą
 
 * [Zestaw SDK wyszukiwania jednostek Bing dla języka Python](https://pypi.org/project/azure-cognitiveservices-search-entitysearch/)
 
-Zalecane jest użycie środowiska wirtualnego języka Python. Środowisko wirtualne możesz zainstalować i zainicjować przy użyciu modułu venv. Moduł virtualenv dla środowiska Python w wersji 2.7 możesz zainstalować za pomocą następującego polecenia:
+Zalecane jest użycie środowiska wirtualnego języka Python. Środowisko wirtualne możesz zainstalować i zainicjować przy użyciu modułu venv. Możesz zainstalować virtualenv z:
 
 ```Console
 python -m venv mytestenv
@@ -78,7 +78,7 @@ python -m pip install azure-cognitiveservices-search-entitysearch
             print(main_entities[0].description)
     ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie jednostronicowej aplikacji internetowej](../tutorial-bing-entities-search-single-page-app.md)
