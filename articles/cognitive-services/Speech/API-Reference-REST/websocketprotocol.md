@@ -221,7 +221,7 @@ Elementem system.version `speech.config` wiadomość zawiera wersję mowy SDK op
 |-|-|-|
 | os.platform | Systemu operacyjnego platformy, który jest hostem aplikacji, na przykład, Windows, Android, iOS i Linux |Wymagane |
 | os.name | Nazwa produktu systemu operacyjnego, na przykład Debian lub Windows 10 | Wymagane |
-| OS.Version | Wersja systemu operacyjnego w formie *major.minor.build.branch* | Wymagane |
+| os.version | Wersja systemu operacyjnego w formie *major.minor.build.branch* | Wymagane |
 
 ##### <a name="device-element"></a>Element urządzenia
 
