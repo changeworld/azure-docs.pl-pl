@@ -110,7 +110,7 @@ W języku JavaScript [powiązania](functions-triggers-bindings.md) są konfiguro
 
 ### <a name="inputs"></a>Dane wejściowe
 Dane wejściowe są podzielone na dwie kategorie w usłudze Azure Functions: jeden z nich to dane wejściowe wyzwalacza, a drugi to dodatkowe dane wejściowe. Wyzwalacz i inne dane wejściowe powiązania (vazby prvku `direction === "in"`) mogą być odczytywane przez funkcję na trzy sposoby:
- - ** _[Zalecane]_  Jako parametry przekazywane do funkcji.** Są one przekazywane do funkcji w tej samej kolejności, które są zdefiniowane w *function.json*. `name` Właściwości zdefiniowanych w *function.json* nie musi być zgodna z nazwą parametru, mimo że powinien on.
+ - **_[Zalecane]_  Jako parametry przekazywane do funkcji.** Są one przekazywane do funkcji w tej samej kolejności, które są zdefiniowane w *function.json*. `name` Właściwości zdefiniowanych w *function.json* nie musi być zgodna z nazwą parametru, mimo że powinien on.
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
@@ -141,7 +141,7 @@ Dane wyjściowe (vazby prvku `direction === "out"`) mogą być zapisywane przez 
 
 Dane można przypisać do powiązania danych wyjściowych, w jednym z następujących metod (nie połączyć te metody):
 
-- ** _[Zalecane w przypadku wiele wyjść]_  Zwrócenie obiektu.** Jeśli używasz async/Promise zwraca funkcja może zwrócić obiekt z danych wyjściowych przypisane. W poniższym przykładzie powiązania danych wyjściowych są nazywane "httpResponse" i "queueOutput" w *function.json*.
+- **_[Zalecane w przypadku wiele wyjść]_  Zwrócenie obiektu.** Jeśli używasz async/Promise zwraca funkcja może zwrócić obiekt z danych wyjściowych przypisane. W poniższym przykładzie powiązania danych wyjściowych są nazywane "httpResponse" i "queueOutput" w *function.json*.
 
   ```javascript
   module.exports = async function(context) {
@@ -156,7 +156,7 @@ Dane można przypisać do powiązania danych wyjściowych, w jednym z następuj�
   ```
 
   Jeśli używasz funkcji synchronicznej, można zwrócić tego obiektu przy użyciu [ `context.done` ](#contextdone-method) (Zobacz przykład).
-- ** _[Zalecane w przypadku pojedynczego wyjścia]_  Zwracanie wartości bezpośrednio i przy użyciu $return powiązania nazwy.** To działa tylko w przypadku zwracania funkcje asynchroniczne/Promise. Zobacz przykład w [eksportowanie funkcji asynchronicznej](#exporting-an-async-function). 
+- **_[Zalecane w przypadku pojedynczego wyjścia]_  Zwracanie wartości bezpośrednio i przy użyciu $return powiązania nazwy.** To działa tylko w przypadku zwracania funkcje asynchroniczne/Promise. Zobacz przykład w [eksportowanie funkcji asynchronicznej](#exporting-an-async-function). 
 - **Przypisywanie wartości do `context.bindings`**  wartości można przypisać bezpośrednio do context.bindings.
 
   ```javascript
@@ -357,7 +357,7 @@ HTTP i wyzwalaczy elementu webhook protokołu HTTP wyjściowe i powiązania repr
 | _method_      | Metoda HTTP żądania.                                |
 | _originalUrl_ | Adres URL żądania.                                        |
 | _params_      | Obiekt zawierający parametry routingu żądania. |
-| _query_       | Obiekt zawierający parametry zapytania.                  |
+| _Zapytanie_       | Obiekt zawierający parametry zapytania.                  |
 | _rawBody_     | Treść wiadomości w formie ciągu.                           |
 
 
@@ -397,9 +397,9 @@ Podczas pracy z wyzwalaczami HTTP można uzyskiwanie dostępu do obiektów żąd
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
-+ ** _[Tylko odpowiedzi]_  Przez wywołanie metody `context.res.send(body?: any)`.** Odpowiedź HTTP jest tworzony przy użyciu danych wejściowych `body` jako treść odpowiedzi. `context.done()` jest wywoływany niejawnie.
++ **_[Tylko odpowiedzi]_  Przez wywołanie metody `context.res.send(body?: any)`.** Odpowiedź HTTP jest tworzony przy użyciu danych wejściowych `body` jako treść odpowiedzi. `context.done()` jest wywoływany niejawnie.
 
-+ ** _[Tylko odpowiedzi]_  Przez wywołanie metody `context.done()`.** Specjalny typ wiązania HTTP zwraca odpowiedź, który jest przekazywany do `context.done()` metody. Powiązanie danych wyjściowych następujące HTTP definiuje `$return` parametr danych wyjściowych:
++ **_[Tylko odpowiedzi]_  Przez wywołanie metody `context.done()`.** Specjalny typ wiązania HTTP zwraca odpowiedź, który jest przekazywany do `context.done()` metody. Powiązanie danych wyjściowych następujące HTTP definiuje `$return` parametr danych wyjściowych:
 
     ```json
     {
