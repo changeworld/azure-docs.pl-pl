@@ -357,7 +357,7 @@ HTTP i wyzwalaczy elementu webhook protokołu HTTP wyjściowe i powiązania repr
 | _method_      | Metoda HTTP żądania.                                |
 | _originalUrl_ | Adres URL żądania.                                        |
 | _params_      | Obiekt zawierający parametry routingu żądania. |
-| _Zapytanie_       | Obiekt zawierający parametry zapytania.                  |
+| _query_       | Obiekt zawierający parametry zapytania.                  |
 | _rawBody_     | Treść wiadomości w formie ciągu.                           |
 
 
