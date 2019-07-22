@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: allensu
-ms.openlocfilehash: d9b1d0624aa94884c269eb33131f8b61671e99ee
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1f7fd3398c24eb82b1a2308f3b52df382c0aab7e
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051000"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68224664"
 ---
-# <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Szybki start: Tworzenie profilu usługi Traffic Manager przy użyciu witryny Azure portal
+# <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Szybki start: Tworzenie profilu Traffic Manager przy użyciu Azure Portal
 
 W tym przewodniku Szybki start opisano tworzenie profilu usługi Traffic Manager, który zapewni wysoką dostępność aplikacji internetowej.
 
@@ -36,42 +36,25 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 W tym przewodniku Szybki start będą potrzebne dwa wystąpienia aplikacji internetowej wdrożone w dwóch różnych regionach świadczenia usługi Azure (*Wschodnie stany USA* i *Europa Zachodnia*). Każda będzie służyć jako podstawowy punkt końcowy i punkt końcowy trybu failover dla usługi Traffic Manager.
 
 1. W lewej górnej części ekranu wybierz pozycję **Utwórz zasób** > **Sieć Web** > **Aplikacja internetowa**.
-2. W obszarze **Aplikacja internetowa** wprowadź lub wybierz następujące ustawienia:
 
-    | Ustawienie | Wartość |
-    | ------- | ----- |
-    | Nazwa aplikacji | Wprowadź unikatową nazwę aplikacji internetowej.  |
-    | Subskrypcja | Wybierz subskrypcję, do której ma należeć aplikacja internetowa. |
-    | Grupa zasobów | Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę *myResourceGroupTM1*. |
-    | System operacyjny | Wybierz system operacyjny **Windows**. |
-    | Publikowanie | Wybierz opcję **Kod** jako format, w którym chcesz publikować. |
+1. W obszarze **Tworzenie aplikacji sieci Web**wpisz lub wybierz następujące wartości z karty **podstawowe** :
 
-3. Wybierz pozycję **Plan usługi App Service/lokalizacja**.
-4. W sekcji **Plan usługi App Service** wybierz opcję **Utwórz nowy**.
-5. W sekcji **Nowy plan usługi App Service** wprowadź lub wybierz następujące ustawienia:
+   - **Subskrypcja** > **Grupa zasobów**: Wybierz pozycję **Utwórz nowy** , a następnie wpisz **myResourceGroupTM1**.
+   - ****  > **Nazwa**szczegółów wystąpienia: Wpisz *myWebAppEastUS*.
+   - **Szczegóły wystąpienia —** **publikowanie:**  >  Wybierz pozycję **kod**.
+   - ****  > **Stos środowiska uruchomieniowego**szczegółów wystąpienia: Wybierz **ASP.NET v 4.7**
+   - ****  > **System operacyjny**szczegółów wystąpienia: Wybierz pozycję **Windows**.
+   - ****  > **Region**szczegółów wystąpienia:  Wybierz pozycję **Wschodnie stany USA**.
+   - **** Plan Windows plan App Service **(Wschodnie stany USA):**  >  Wybierz pozycję **Utwórz nowy** , a następnie wpisz **myAppServicePlanEastUS**
+   - **App Service planowanej** > **jednostki SKU i rozmiaru**: Wybierz pozycję **standardowa S1**.
+   
+3. Wybierz kartę **monitorowanie** lub wybierz pozycję **Dalej: monitorowanie**.  W obszarze **monitorowanie**Ustaw **Application Insights** > **Włącz Application Insights** na wartość **nie**.
 
-    | Ustawienie | Wartość |
-    | ------- | ----- |
-    | Plan usługi App Service | Wprowadź nazwę *myAppServicePlanEastUS*. |
-    | Lokalizacja | Wschodnie stany USA |
-    | Warstwa cenowa | Standardowa S1 |
+4. Wybierz pozycję **Przejrzyj i Utwórz**
 
-6. Kliknij przycisk **OK**.
+5. Przejrzyj ustawienia, a następnie kliknij przycisk **Utwórz**.  Po pomyślnym wdrożeniu aplikacji internetowej zostanie utworzona domyślna witryna internetowa.
 
-7. W sekcji **Aplikacja internetowa** wybierz pozycję **Utwórz**. Po pomyślnym wdrożeniu aplikacji internetowej zostanie utworzona domyślna witryna internetowa.
-
-8. Aby utworzyć drugą witrynę internetową w innym regionie świadczenia usługi Azure, powtórz kroki 1–7 z następującymi ustawieniami:
-
-    | Ustawienie | Wartość |
-    | --------| ----- |
-    | Name (Nazwa) | Wprowadź unikatową nazwę aplikacji internetowej. |
-    | Subskrypcja | Wybierz subskrypcję, do której ma należeć aplikacja internetowa. |
-    | Grupa zasobów | Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę *myResourceGroupTM2*. |
-    | System operacyjny | Wybierz system operacyjny **Windows**. |
-    | Publikowanie | Wybierz opcję **Kod** jako format, w którym chcesz publikować. |
-    | Plan usługi App Service/lokalizacja | Wprowadź nazwę *myAppServicePlanWestEurope*. |
-    | Lokalizacja | Europa Zachodnia |
-    | Warstwa cenowa | Standardowa S1 |
+6. Postępuj zgodnie z instrukcjami, aby utworzyć drugą aplikację sieci Web o nazwie *myWebAppWestEurope*, z nazwą **grupy zasobów** *MyResourceGroupTM2*, **regionem** *Europa Zachodnia*, **App Service nazwą planu**  **myAppServicePlanWestEurope**i wszystkie inne ustawienia takie same jak *myWebAppEastUS*.
 
 ## <a name="create-a-traffic-manager-profile"></a>Tworzenie profilu usługi Traffic Manager
 
