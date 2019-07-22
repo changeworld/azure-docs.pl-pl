@@ -61,6 +61,8 @@
           href: batch-account-create-portal.md
         - name: Zarządzanie kontami Batch przy użyciu funkcji zarządzania partiami platformy .NET
           href: batch-management-dotnet.md
+        - name: Analiza kosztów i budżety
+          href: budget.md
     - name: Uwierzytelnianie za pomocą usługi Azure AD
       items:
         - name: Usługa Azure AD z usługą Batch

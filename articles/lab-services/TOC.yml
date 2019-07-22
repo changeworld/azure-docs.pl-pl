@@ -56,8 +56,6 @@
           href: best-practices-distributive-collaborative-development-environment.md
         - name: Integracja z usługą Azure DevOps
           href: devtest-lab-dev-ops.md
-        - name: Korzystanie z możliwości oświadczeń
-          href: devtest-lab-use-claim-capabilities.md
         - name: Scenariusze
           items:
             - name: Popularne scenariusze stosowania usługi DevTest Labs
@@ -68,6 +66,8 @@
               href: devtest-lab-test-env.md
             - name: Korzystanie z laboratoriów na potrzeby szkolenia
               href: devtest-lab-training-lab.md
+            - name: Scenariusze używania możliwych do przejęcia maszyn wirtualnych
+              href: devtest-lab-use-claim-capabilities.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Laboratorium na potrzeby zajęć
@@ -158,11 +158,11 @@
           items:
             - name: Tworzenie maszyny wirtualnej — Azure Portal
               href: devtest-lab-add-vm.md
-            - name: Tworzenie maszyny wirtualnej przy użyciu programu Azure PowerShell
+            - name: Tworzenie maszyny wirtualnej — Azure PowerShell
               href: devtest-lab-vm-powershell.md
-            - name: Tworzenie maszyn wirtualnych i zarządzanie nimi przy użyciu interfejsu wiersza polecenia platformy Azure
+            - name: Tworzenie maszyny wirtualnej — interfejs wiersza polecenia platformy Azure
               href: devtest-lab-vmcli.md
-            - name: Tworzenie maszyny wirtualnej na podstawie szablonu usługi Resource Manager
+            - name: Tworzenie maszyny wirtualnej — szablon usługi Resource Manager
               href: devtest-lab-use-resource-manager-template.md
             - name: Uruchamianie lub zatrzymywanie maszyn wirtualnych przy użyciu programu PowerShell lub interfejsu wiersza polecenia
               href: use-command-line-start-stop-virtual-machines.md
@@ -172,6 +172,8 @@
               href: devtest-lab-resize-vm.md
             - name: Ponowne wdrażanie maszyny wirtualnej
               href: devtest-lab-redeploy-vm.md
+            - name: Konfigurowanie automatycznego zamykania maszyny wirtualnej
+              href: devtest-lab-auto-shutdown-vm.md
             - name: Tworzenie możliwych do przejęcia maszyn wirtualnych i zarządzanie nimi
               href: devtest-lab-add-claimable-vm.md
             - name: Konfigurowanie wpisów tajnych
@@ -210,9 +212,9 @@
               items:
                 - name: Tworzenie obrazu niestandardowego z poziomu maszyny wirtualnej
                   href: devtest-lab-create-custom-image-from-vm-using-portal.md
-                - name: Tworzenie obrazu niestandardowego z poziomu dysku VHD za pomocą witryny Azure Portal
+                - name: Tworzenie obrazu niestandardowego z poziomu dysku VHD — Azure Portal
                   href: devtest-lab-create-template.md
-                - name: Tworzenie obrazu niestandardowego z poziomu dysku VHD za pomocą programu PowerShell
+                - name: Tworzenie obrazu niestandardowego z poziomu dysku VHD — PowerShell
                   href: devtest-lab-create-custom-image-from-vhd-using-powershell.md
                 - name: Przekazywanie pliku VHD za pomocą programu AzCopy
                   href: devtest-lab-upload-vhd-using-azcopy.md
