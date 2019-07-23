@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 04/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: a49ee5720711bb23ec4770de38a408827c645b73
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: bbb9653173925e1443504aa3f2e9c5e6edbfc486
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360942"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371038"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Samouczek: Kompilowanie modelu regresji przy użyciu zautomatyzowanego uczenia maszynowego
 
@@ -748,7 +748,7 @@ Zapoznaj się z wynikami automatycznego trenowania, korzystając z widżetu Jupy
 
 ### <a name="option-1-add-a-jupyter-widget-to-see-results"></a>Opcja 1. Dodawanie widżetu Jupyter w celu wyświetlania wyników
 
-Jeśli używasz notesu Jupyter, użyj widżetu notesu Jupyter, aby wyświetlić wykres i tabelę ze wszystkimi wynikami:
+Jeśli używasz notesu Jupyter, użyj tego [widżetu Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) , aby wyświetlić wykres i tabelę wszystkich wyników:
 
 
 ```python
@@ -758,6 +758,13 @@ RunDetails(local_run).show()
 
 ![Szczegóły przebiegu widżetu Jupyter](./media/tutorial-auto-train-models/automl-dash-output.png)
 ![Wykres widżetu Jupyter](./media/tutorial-auto-train-models/automl-chart-output.png)
+
+Te same wyniki są przechowywane w obszarze roboczym.  Możesz uzyskać link do wyników z przebiegu:
+
+```
+local_run.get_portal_url()
+```
+  
 
 ### <a name="option-2-get-and-examine-all-run-iterations-in-python"></a>Opcja 2: Pobieranie i sprawdzanie wszystkich iteracji przebiegów w środowisku Python
 

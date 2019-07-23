@@ -1,7 +1,7 @@
 ---
-title: Uruchamianie usługi Azure Kubernetes
+title: Uruchom usługę Azure Kubernetes Service
 titleSuffix: Text Analytics - Azure Cognitive Services
-description: Wdrażanie kontenerów Analiza tekstu przy użyciu obrazu analizy tonacji, usługi Azure Kubernetes i przetestuj ją w przeglądarce sieci web.
+description: Wdróż kontenery analiza tekstu za pomocą obrazu analizy tonacji w usłudze Azure Kubernetes i przetestuj je w przeglądarce internetowej.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,66 +10,66 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: dapine
-ms.openlocfilehash: a419ed3b9c0d2c4db9c552642dc5c662786f6730
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: 290a01e7e478f718607c0550702474cd31979a63
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561251"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377410"
 ---
-# <a name="deploy-a-sentiment-analysis-container-to-azure-kubernetes-services-aks"></a>Wdrażanie kontenera analizę tonacji do usługi Azure Kubernetes (AKS)
+# <a name="deploy-a-sentiment-analysis-container-to-azure-kubernetes-service"></a>Wdrażanie kontenera analizy tonacji w usłudze Azure Kubernetes Service
 
-Informacje o wdrażaniu usług Cognitive Services [analizy tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers) kontenera przy użyciu analizy tonacji obrazu do usługi Azure Kubernetes (AKS). Ta procedura exemplifies tworzenia zasobu analizy tekstu, tworzenie powiązanego obrazu analizę tonacji i możliwość wykonywania tego aranżacji dwa z poziomu przeglądarki. Używanie kontenerów może przechodzić przez deweloperów uwagi od zarządzania infrastrukturą, aby zamiast koncentrowania się na tworzeniu aplikacji.
+Dowiedz się, jak wdrożyć kontener usługi Azure Cognitive Services [Analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers) za pomocą obrazu analizy tonacji w usłudze Azure Kubernetes Service (AKS). W tej procedurze pokazano, jak utworzyć zasób analiza tekstu, sposób tworzenia skojarzonego obrazu analizy tonacji oraz jak korzystać z tej aranżacji dwóch z przeglądarki. Korzystanie z kontenerów może przesunąć uwagę na zarządzanie infrastrukturą, aby zamiast tego koncentrować się na tworzeniu aplikacji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ta procedura wymaga kilku narzędzi, które musi być zainstalowany i uruchamiane lokalnie. Nie należy używać usługi Azure Cloud shell.
+Ta procedura wymaga kilku narzędzi, które muszą być zainstalowane i uruchomione lokalnie. Nie używaj Azure Cloud Shell. Potrzebne są następujące elementy:
 
-* Korzystanie z subskrypcji platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
-* Edytor tekstu, na przykład: [Program Visual Studio Code](https://code.visualstudio.com/download)
-* Zainstaluj [interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
-* Zainstaluj [interfejsu wiersza polecenia Kubernetes](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
-* Zasób platformy Azure z warstwą cenową poprawne. Nie wszystkie warstwy cenowe pracować z tego kontenera:
-    * **Analiza tekstu** zasobu o F0 lub standardowej ceny warstwy tylko.
-    * **Usługi cognitive Services** warstwa cenowa zasobu z S0.
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
+* Edytor tekstu, na przykład [Visual Studio Code](https://code.visualstudio.com/download).
+* Zainstalowano [interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) .
+* Zainstalowano [interfejs wiersza polecenia Kubernetes](https://kubernetes.io/docs/tasks/tools/install-kubectl/) .
+* Zasób platformy Azure z poprawną warstwą cenową. Nie wszystkie warstwy cenowe pracują z tym kontenerem:
+    * Zasób **platformy Azure analiza tekstu** tylko przy użyciu warstw cenowych F0 lub standard.
+    * Zasób **Cognitive Services platformy Azure** z warstwą cenową S0.
 
 [!INCLUDE [Create a Cognitive Services Text Analytics resource](../includes/create-text-analytics-resource.md)]
 
-[!INCLUDE [Create a Text Analytics Containers on Azure Kubernetes Services (AKS)](../../containers/includes/create-aks-resource.md)]
+[!INCLUDE [Create a Text Analytics container on Azure Kubernetes Service (AKS)](../../containers/includes/create-aks-resource.md)]
 
-## <a name="deploy-text-analytics-container-to-an-aks-cluster"></a>Wdrażanie kontenera analizy tekstu do klastra usługi AKS
+## <a name="deploy-a-text-analytics-container-to-an-aks-cluster"></a>Wdrażanie kontenera analiza tekstu w klastrze AKS
 
-1. Otwórz interfejs wiersza polecenia platformy Azure i zaloguj się do platformy Azure
+1. Otwórz interfejs wiersza polecenia platformy Azure i zaloguj się do platformy Azure.
 
     ```azurecli
     az login
     ```
 
-1. Zaloguj się do klastra AKS (Zastąp `your-cluster-name` i `your-resource-group` odpowiednimi wartościami)
+1. Zaloguj się do klastra AKS. Zamień `your-cluster-name` i`your-resource-group` na odpowiednie wartości.
 
     ```azurecli
     az aks get-credentials -n your-cluster-name -g -your-resource-group
     ```
 
-    Po wykonaniu tego polecenia, zgłasza komunikat podobny do następującego:
+    Po uruchomieniu tego polecenia raport przedstawia komunikat podobny do następującego:
 
     ```console
     Merged "your-cluster-name" as current context in /home/username/.kube/config
     ```
 
     > [!WARNING]
-    > Jeśli masz wiele subskrypcji, dostępny na koncie platformy Azure i `az aks get-credentials` polecenie zwraca błąd, jest to powszechny problem, że używasz niewłaściwej subskrypcji. Po prostu ustaw kontekst do użycia z tą samą subskrypcją, w której zostały utworzone zasoby przy użyciu sesji wiersza polecenia platformy Azure i spróbuj ponownie.
+    > Jeśli masz wiele subskrypcji na Twoim koncie platformy Azure, a `az aks get-credentials` polecenie zwróci błąd, typowy problem polega na tym, że używasz niewłaściwej subskrypcji. Ustaw kontekst sesji interfejsu wiersza polecenia platformy Azure, aby użyć tej samej subskrypcji, w której zostały utworzone zasoby, i spróbuj ponownie.
     > ```azurecli
     >  az account set -s subscription-id
     > ```
 
-1. Otwórz Edytor tekstu, oraz (w tym przykładzie użyto __programu Visual Studio Code__):
+1. Otwórz Edytor tekstu. Ten przykład używa Visual Studio Code.
 
     ```azurecli
     code .
     ```
 
-1. W edytorze tekstów Utwórz nowy plik o nazwie _sentiment.yaml_ i Wklej poniższego kodu YAML. Koniecznie Zastąp `billing/value` i `apikey/value` swoją własną.
+1. W edytorze tekstów Utwórz nowy plik o nazwie _tonacji. YAML_i wklej do niego następujący YAML. Pamiętaj, aby `billing/value` zamienić `apikey/value` i wraz z własnymi informacjami.
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -108,39 +108,39 @@ Ta procedura wymaga kilku narzędzi, które musi być zainstalowany i uruchamian
         app: sentiment-app
     ```
 
-1. Zapisz plik i zamknij Edytor tekstu.
-1. Wykonanie usługi Kubernetes `apply` polecenia _sentiment.yaml_ jako jego element docelowy:
+1. Zapisz plik i Zamknij Edytor tekstu.
+1. Uruchom polecenie Kubernetes `apply` z _tonacji. YAML_ jako obiektem docelowym:
 
     ```console
     kuberctl apply -f sentiment.yaml
     ```
 
-    Po poleceniu została pomyślnie zastosowana Konfiguracja wdrożenia komunikatu podobnego do następujących danych wyjściowych:
+    Gdy polecenie pomyślnie zastosuje konfigurację wdrożenia, zostanie wyświetlony komunikat podobny do następującego:
 
     ```
     deployment.apps "sentiment" created
     service "sentiment" created
     ```
-1. Sprawdź, czy wdrożono ZASOBNIK:
+1. Sprawdź, czy w obszarze został wdrożony:
 
     ```console
     kubectl get pods
     ```
 
-    Dane wyjściowe stanu działania ZASOBNIKA:
+    Dane wyjściowe dla stanu uruchomienia pod:
 
     ```
     NAME                         READY     STATUS    RESTARTS   AGE
     sentiment-5c9ccdf575-mf6k5   1/1       Running   0          1m
     ```
 
-1. Sprawdź, czy usługa jest dostępna, a następnie Uzyskaj adres IP:
+1. Sprawdź, czy usługa jest dostępna i Pobierz adres IP.
 
     ```console
     kubectl get services
     ```
 
-    Będzie to danych wyjściowych stanu działania _tonacji_ w ZASOBNIKA:
+    Dane wyjściowe dla stanu uruchomienia usługi _tonacji_ w obszarze:
 
     ```
     NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE
@@ -148,9 +148,9 @@ Ta procedura wymaga kilku narzędzi, które musi być zainstalowany i uruchamian
     sentiment    LoadBalancer   10.0.100.64   168.61.156.180   5000:31234/TCP   2m
     ```
 
-[!INCLUDE [Verify the Sentiment Analysis container instance](../includes/verify-sentiment-analysis-container.md)]
+[!INCLUDE [Verify the sentiment analysis container instance](../includes/verify-sentiment-analysis-container.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Użycie [kontenerów usługi Cognitive Services](../../cognitive-services-container-support.md)
-* Użyj [usługę połączoną z analizy tekstu](../vs-text-connected-service.md)
+* Użyj więcej [kontenerów Cognitive Services](../../cognitive-services-container-support.md)
+* Korzystanie z [Analiza tekstu połączonej usługi](../vs-text-connected-service.md)

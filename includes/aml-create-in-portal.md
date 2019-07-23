@@ -8,43 +8,41 @@ ms.author: sgilley
 manager: cgronlund
 ms.custom: include file
 ms.topic: include
-ms.date: 05/21/2019
-ms.openlocfilehash: 2ec45b67367198c14fc9d03cdb659a51aed8a504
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.date: 07/21/2019
+ms.openlocfilehash: 51bd3dfb33b1f445db8672e1b987ee6c6242e09c
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67841474"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68370837"
 ---
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) przy użyciu poświadczeń subskrypcji platformy Azure, możesz użyć. 
+1. Zaloguj się do [Azure Portal](https://portal.azure.com/) przy użyciu poświadczeń dla używanej subskrypcji platformy Azure. 
 
-   ![Azure Portal](./media/aml-create-in-portal/portal-dashboard-05-2019.png)
-
-1. W lewym górnym rogu portalu, wybierz **Utwórz zasób**.
+1. W lewym górnym rogu portalu wybierz pozycję **Utwórz zasób**.
 
    ![Tworzenie zasobu w witrynie Azure Portal](./media/aml-create-in-portal/portal-create-a-resource-07-2019.png)
 
-1. Użyj paska wyszukiwania, aby wybrać **obszaru roboczego usługi Machine Learning**.
+1. Użyj paska wyszukiwania, aby znaleźć **obszar roboczy usługi Machine Learning**.
 
-   ![Wyszukiwania dla obszaru roboczego](./media/aml-create-in-portal/allservices-search.png)
+1. Wybierz **obszar roboczy usługi Machine Learning**.
 
-1. W **obszar roboczy usługi uczenie Maszynowe** okienku wybierz **Utwórz** do rozpoczęcia.
+1. W okienku **obszaru roboczego usługi ml** wybierz pozycję **Utwórz** , aby rozpocząć.
 
-    ![Przycisk Utwórz](./media/aml-create-in-portal/portal-create-button.png)
-
-1. W **obszar roboczy usługi uczenie Maszynowe** okienku konfigurowanie obszaru roboczego.
+1. Skonfiguruj nowy obszar roboczy, podając nazwę obszaru roboczego, subskrypcję, grupę zasobów i lokalizację.
 
     ![Tworzenie obszaru roboczego](./media/aml-create-in-portal/workspace-create-main-tab.png)
 
    Pole|Opis
    ---|---
-   Nazwa obszaru roboczego |Wprowadź unikatową nazwę, która identyfikuje obszaru roboczego. W tym przykładzie używamy **docs ws**. Nazwy muszą być unikatowe w obrębie grupy zasobów. Użyj nazwy, który jest łatwy do odwołania i odróżnienia jej od obszarów roboczych utworzonych przez innych użytkowników.  
+   Nazwa obszaru roboczego |Wprowadź unikatową nazwę identyfikującą obszar roboczy. W tym przykładzie używamy **dokumentów-WS**. Nazwy muszą być unikatowe w ramach grupy zasobów. Użyj nazwy, która jest łatwa do odzyskania i odróżniania od obszarów roboczych utworzonych przez inne osoby.  
    Subscription |Wybierz subskrypcję platformy Azure, której chcesz użyć.
-   Resource group | Użyj istniejącej grupy zasobów w ramach subskrypcji, lub wprowadź nazwę, aby utworzyć nową grupę zasobów. Grupa zasobów zawiera powiązane zasoby rozwiązania platformy Azure. W tym przykładzie używamy **docs aml**. 
-   Location | Wybierz lokalizację najbliżej Twoich użytkowników i zasobów danych. Ta lokalizacja jest tworzona dla obszaru roboczego.
+   Resource group | Użyj istniejącej grupy zasobów w subskrypcji lub wprowadź nazwę, aby utworzyć nową grupę zasobów. Grupa zasobów zawiera powiązane zasoby dla rozwiązania platformy Azure. W tym przykładzie używane są **dokumenty-AML**. 
+   Location | Wybierz lokalizację znajdującą się najbliżej użytkowników i zasoby danych, aby utworzyć obszar roboczy.
 
-1. Przejrzyj konfigurację obszaru roboczego, a następnie wybierz **Utwórz**. Może upłynąć kilka minut, aby utworzyć obszar roboczy.
+1. Po zakończeniu konfigurowania obszaru roboczego wybierz pozycję **Utwórz**. 
 
-1. Po zakończeniu procesu pojawi się komunikat o powodzeniu wdrożenia. Jest również obecny w sekcji powiadomienia. Aby wyświetlić nowy obszar roboczy, wybierz **przejdź do zasobu**.
+   Utworzenie obszaru roboczego może potrwać kilka chwil.
+
+   Po zakończeniu procesu zostanie wyświetlony komunikat o powodzeniu wdrożenia. Znajduje się również w sekcji powiadomienia. Aby wyświetlić nowy obszar roboczy, wybierz pozycję **Przejdź do zasobu**.
 
    ![Stan tworzenia obszaru roboczego](./media/aml-create-in-portal/notifications.png)

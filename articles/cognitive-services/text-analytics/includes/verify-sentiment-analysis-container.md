@@ -1,7 +1,7 @@
 ---
-title: Sprawdź wystąpienie kontenera analizy tonacji
+title: Weryfikowanie wystąpienia kontenera analizy tonacji
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak sprawdzić wystąpienia kontenera analizy tonacji.
+description: Dowiedz się, jak zweryfikować wystąpienie kontenera analizy tonacji.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -9,23 +9,23 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: f69d573e9e70a505018e94cca354f363097cc1b8
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 1303d753b1cbfabe7ddd3442e0880b0bffe089b3
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68229186"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377401"
 ---
-## <a name="verify-the-sentiment-analysis-container-instance"></a>Sprawdź wystąpienie kontenera analizy tonacji
+## <a name="verify-the-sentiment-analysis-container-instance"></a>Weryfikowanie wystąpienia kontenera analizy tonacji
 
-1. Wybierz **Przegląd** kartę i skopiuj adres IP.
-1. Otwórz nową kartę przeglądarki i wpisz adres IP. Adapterem, wprowadź `http://<IP-address>:5000 (http://55.55.55.55:5000`). Zostanie wyświetlona strona główna kontenera, informacją o tym, kontener jest uruchomiony.
+1. Wybierz kartę **Przegląd** i skopiuj adres IP.
+1. Otwórz nową kartę przeglądarki, a następnie wprowadź adres IP. Na przykład wpisz `http://<IP-address>:5000 (http://55.55.55.55:5000`). Zostanie wyświetlona strona główna kontenera, która informuje o tym, że kontener jest uruchomiony.
 
     ![Wyświetl stronę główną kontenera, aby sprawdzić, czy jest uruchomiona](../media/how-tos/container-instance/swagger-docs-on-container.png).
 
-1. Wybierz **opis interfejsu API usługi** link, aby przejść do strony programu swagger kontenera.
+1. Wybierz link **opis interfejsu API usługi** , aby przejść do strony struktury Swagger kontenera.
 
-1. Wybierz dowolną z **WPIS** interfejsów API, a następnie wybierz pozycję **wypróbuj działanie rozwiązania**.  Parametry są wyświetlane, łącznie z tym przykładowe dane wejściowe:
+1. Wybierz dowolny z **wpisów** interfejsów API, a następnie wybierz opcję **Wypróbuj**. Wyświetlane są parametry, które obejmują następujące przykładowe dane wejściowe:
 
     ```json
     {
@@ -49,7 +49,7 @@ ms.locfileid: "68229186"
     }
     ```
 
-1. Zastąp dane wejściowe o następującej zawartości JSON:
+1. Zastąp dane wejściowe następującą zawartością JSON:
 
     ```json
     {
@@ -65,11 +65,11 @@ ms.locfileid: "68229186"
 
 1. Ustaw **showStats** na wartość true.
 
-1. Wybierz **Execute** ustalenie tonacji tekstu.
+1. Wybierz pozycję **Execute (wykonaj** ), aby określić tonacji tekstu.
 
-    Model, który jest spakowany w kontenerze generuje wynik z zakresu od 0 do 1, gdzie 0 jest ujemna, a 1 jest dodatni.
+    Model, który znajduje się w kontenerze, generuje wynik, który mieści się w zakresie od 0 do 1, gdzie 0 jest ujemna i 1 jest dodatnia.
 
-    Odpowiedź JSON, który jest zwracany zawiera wskaźniki nastrojów klientów dotyczące wprowadzania tekstu zaktualizowane:
+    Zwracana odpowiedź JSON zawiera tonacji dla zaktualizowanych danych wejściowych tekstu:
 
     ```json
     {
@@ -93,4 +93,4 @@ ms.locfileid: "68229186"
     }
     ```
 
-Firma Microsoft może teraz skorelować dokumentu `id` ładunek odpowiedzi danych JSON, oryginalnym dokumencie ładunku żądania `id`. Widzimy ocenę ponad `.98`, wskazując silnie pozytywną tonację.
+Teraz można skorelować dokument `id` danych JSON ładunku odpowiedzi do oryginalnego dokumentu `id`ładunku żądania. Wynik więcej niż `.98` wskazuje silnie dodatnią tonacji.
