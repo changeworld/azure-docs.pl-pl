@@ -53,6 +53,8 @@
       href: functions-twitter-email.md
     - name: Tworzenie bezserwerowego interfejsu API
       href: functions-create-serverless-api.md
+    - name: Programowanie funkcji języka Python za pomocą programu VS Code
+      href: tutorial-vs-code-serverless-python.md
     - name: Tworzenie definicji interfejsu OpenAPI
       href: functions-openapi-definition.md
     - name: Łączenie z siecią wirtualną

@@ -274,7 +274,7 @@
           items:
             - name: Przegląd klastrów platformy Azure
               href: service-fabric-azure-clusters-overview.md
-            - name: Typy węzłów i usługa VM Scale Sets
+            - name: Typy węzłów i zestawy skalowania maszyn wirtualnych
               href: service-fabric-cluster-nodetypes.md
             - name: Uaktualnianie klastrów na platformie Azure
               href: service-fabric-cluster-upgrade.md
@@ -547,8 +547,8 @@
           href: service-fabric-cloud-services-migration-worker-role-stateless-service.md
         - name: Zalecane praktyki
           href: /azure/architecture/service-fabric/migrate-from-cloud-services
-        - name: Refaktoryzowanie zmigrowanej aplikacji
-          href: /azure/architecture/service-fabric/refactor-migrated-app
+        - name: Modernizowanie aplikacji
+          href: /azure/architecture/service-fabric/modernize-app-azure-service-fabric
     - name: Zarządzanie cyklem życia aplikacji
       items:
         - name: Tworzenie pakietu aplikacji

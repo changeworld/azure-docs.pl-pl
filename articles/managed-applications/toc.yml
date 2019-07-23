@@ -29,6 +29,8 @@
       href: publish-service-catalog-app.md
     - name: Publikowanie aplikacji na platformie handlowej
       href: publish-marketplace-app.md
+    - name: Tworzenie aplikacji zarządzanych za pomocą dostawcy niestandardowego
+      href: tutorial-create-managed-app-with-custom-provider.md
 - name: Przykłady
   items:
     - name: Interfejs wiersza polecenia platformy Azure
@@ -83,6 +85,14 @@
           href: custom-providers-proxy-cache-resource-endpoint-reference.md
         - name: Dokumentacja punktu końcowego usługi RESTful dostawcy niestandardowego
           href: reference-custom-providers-csharp-endpoint.md
+    - name: Artefakty aplikacji
+      items:
+        - name: Elementy interfejsu użytkownika
+          href: reference-createuidefinition-artifact.md
+        - name: Szablon wdrożenia
+          href: reference-main-template-artifact.md
+        - name: Definicja widoku
+          href: reference-view-definition-artifact.md
     - name: Interfejs wiersza polecenia platformy Azure
       href: /cli/azure/managedapp
     - name: PowerShell

@@ -334,8 +334,6 @@
           href: cognitive-search-skill-keyphrases.md
         - name: Wykrywanie języka
           href: cognitive-search-skill-language-detection.md
-        - name: Rozpoznawanie jednostek nazwanych
-          href: cognitive-search-skill-named-entity-recognition.md
         - name: Rozpoznawanie jednostek
           href: cognitive-search-skill-entity-recognition.md
         - name: Funkcja scalająca tekst
@@ -344,6 +342,8 @@
           href: cognitive-search-skill-textsplit.md
         - name: Opinia
           href: cognitive-search-skill-sentiment.md
+        - name: Tłumaczenie tekstu (wersja zapoznawcza)
+          href: cognitive-search-skill-text-translation.md
         - name: Analiza obrazu
           href: cognitive-search-skill-image-analysis.md
         - name: OCR
@@ -352,12 +352,15 @@
           href: cognitive-search-skill-shaper.md
         - name: Warunkowe
           href: cognitive-search-skill-conditional.md
-        - name: Przestarzałe umiejętności
-          href: cognitive-search-skill-deprecated.md
     - name: Umiejętności niestandardowe
       items:
         - name: Niestandardowy internetowy interfejs API
           href: cognitive-search-custom-skill-web-api.md
+    - name: Przestarzałe umiejętności
+      href: cognitive-search-skill-deprecated.md
+      items:
+        - name: Rozpoznawanie jednostek nazwanych
+          href: cognitive-search-skill-named-entity-recognition.md
 - name: Zasoby
   items:
     - name: Pomoc techniczna w społeczności platformy Azure

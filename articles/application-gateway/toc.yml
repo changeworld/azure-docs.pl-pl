@@ -212,7 +212,7 @@
       items:
         - name: Wewnętrzny moduł równoważenia obciążenia ze środowiskiem App Service Environment
           href: create-gateway-internal-load-balancer-app-service-environment.md
-        - name: Przekierowanie na adres URL usługi App Service
+        - name: Problemy z usługą aplikacji
           href: troubleshoot-app-service-redirection-app-service-url.md
         - name: Problemy z koligacją sesji
           href: how-to-troubleshoot-application-gateway-session-affinity-issues.md
