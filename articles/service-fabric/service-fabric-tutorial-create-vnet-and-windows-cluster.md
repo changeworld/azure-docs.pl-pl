@@ -1,6 +1,6 @@
 ---
-title: Tworzenie klastra usługi Service Fabric z systemem Windows na platformie Azure | Dokumentacja firmy Microsoft
-description: W tym samouczku dowiesz się, jak wdrożyć klaster Windows usługi Service Fabric w sieci wirtualnej platformy Azure i sieciowej grupy zabezpieczeń przy użyciu programu PowerShell.
+title: Tworzenie klastra Service Fabric z systemem Windows na platformie Azure | Microsoft Docs
+description: W tym samouczku dowiesz się, jak wdrożyć klaster Service Fabric systemu Windows w sieci wirtualnej platformy Azure i sieciowej grupie zabezpieczeń za pomocą programu PowerShell.
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
@@ -12,21 +12,21 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/13/2019
+ms.date: 07/22/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: dabbefa8ca2073e30948f1c70782f730bceae030
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3e98b159443cec868040298d76e87a8de6b507ae
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158091"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385098"
 ---
-# <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Samouczek: Wdrażanie klastra usługi Service Fabric z systemem Windows w sieci wirtualnej platformy Azure
+# <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Samouczek: Wdrażanie klastra Service Fabric z systemem Windows w sieci wirtualnej platformy Azure
 
-Niniejszy samouczek jest pierwszą częścią serii. Dowiesz się, jak wdrożyć klaster usługi Azure Service Fabric z systemem Windows do [sieci wirtualnej platformy Azure](../virtual-network/virtual-networks-overview.md) i [sieciowej grupy zabezpieczeń](../virtual-network/virtual-networks-nsg.md) przy użyciu programu PowerShell i szablonu. Po zakończeniu będziesz mieć klastra działającego w chmurze, do której można wdrażać aplikacje. Aby utworzyć klastra z systemem Linux, która korzysta z wiersza polecenia platformy Azure, zobacz [tworzenie bezpiecznego klastra z systemem Linux na platformie Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
+Niniejszy samouczek jest pierwszą częścią serii. Dowiesz się, jak wdrożyć klaster Service Fabric platformy Azure z systemem Windows w [sieci wirtualnej platformy Azure](../virtual-network/virtual-networks-overview.md) i [sieciowej grupie zabezpieczeń](../virtual-network/virtual-networks-nsg.md) za pomocą programu PowerShell i szablonu. Po zakończeniu klaster będzie działać w chmurze, w którym można wdrażać aplikacje. Aby utworzyć klaster systemu Linux, który używa interfejsu wiersza polecenia platformy Azure, zobacz [Tworzenie bezpiecznego klastra z systemem Linux na platformie Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
 
-W tym samouczku opisano scenariusz produkcyjny. Jeśli ma zostać utworzony mniejszy klaster do celów testowych, zobacz [Tworzenie klastra testowego](./scripts/service-fabric-powershell-create-secure-cluster-cert.md).
+W tym samouczku opisano scenariusz produkcyjny. Jeśli chcesz utworzyć mniejszy klaster na potrzeby testowania, zobacz [Tworzenie klastra testowego](./scripts/service-fabric-powershell-create-secure-cluster-cert.md).
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -34,9 +34,9 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Tworzenie sieci wirtualnej na platformie Azure przy użyciu programu PowerShell
 > * Tworzenie magazynu kluczy i przekazywanie certyfikatu
 > * Konfigurowanie uwierzytelniania usługi Azure Active Directory
-> * Konfiguruj zbieranie diagnostyki
-> * Konfigurowanie usługi bazy danych EventStore
-> * Konfigurowanie dzienników usługi Azure Monitor
+> * Konfigurowanie zbierania danych diagnostycznych
+> * Konfigurowanie usługi EventStore
+> * Konfigurowanie dzienników Azure Monitor
 > * Tworzenie bezpiecznego klastra usługi Service Fabric w programie Azure PowerShell
 > * Zabezpieczanie klastra za pomocą certyfikatu X.509
 > * Nawiązywanie połączenia z klastrem przy użyciu programu PowerShell
@@ -58,48 +58,48 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 Przed rozpoczęciem tego samouczka:
 
 * Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Zainstaluj [zestawu SDK usługi Service Fabric i moduł programu PowerShell](service-fabric-get-started.md).
-* Zainstaluj [programu Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
-* Zapoznaj się z kluczowymi założeniami programu [klastrów Azure](service-fabric-azure-clusters-overview.md).
-* [Planowanie i przygotowanie](service-fabric-cluster-azure-deployment-preparation.md) wdrożenia klastra produkcyjnego.
+* Zainstaluj [zestaw Service Fabric SDK i moduł programu PowerShell](service-fabric-get-started.md).
+* Zainstaluj program [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+* Zapoznaj się z najważniejszymi pojęciami dotyczącymi [klastrów platformy Azure](service-fabric-azure-clusters-overview.md).
+* [Planowanie i przygotowywanie](service-fabric-cluster-azure-deployment-preparation.md) wdrożenia klastra produkcyjnego.
 
-Następujące procedury umożliwiają utworzenie klastra usługi Service Fabric z siedmioma węzłami. Użyj [Kalkulator cen platformy Azure](https://azure.microsoft.com/pricing/calculator/) można obliczyć koszt działania klastra usługi Service Fabric na platformie Azure.
+Następujące procedury umożliwiają utworzenie klastra usługi Service Fabric z siedmioma węzłami. Za pomocą [kalkulatora cen platformy Azure](https://azure.microsoft.com/pricing/calculator/) można obliczyć koszty związane z uruchamianiem klastra Service Fabric na platformie Azure.
 
 ## <a name="download-and-explore-the-template"></a>Pobieranie i eksplorowanie szablonu
 
-Pobierz poniższe pliki szablonu usługi Azure Resource Manager:
+Pobierz następujące pliki szablonów Azure Resource Manager:
 
-* [azuredeploy.JSON][template]
-* [azuredeploy.parameters.JSON][parameters]
+* [azuredeploy. JSON][template]
+* [azuredeploy. Parameters. JSON][parameters]
 
-Ten szablon umożliwia wdrożenie zabezpieczonego klastra siedmiu maszyn wirtualnych z trzema typami węzła w sieci wirtualnej i sieciowej grupie zabezpieczeń.  Inne przykładowe szablony można znaleźć w witrynie [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates). [Azuredeploy.json] [ template] wdraża liczby zasobów, w tym następujące czynności.
+Ten szablon umożliwia wdrożenie zabezpieczonego klastra siedmiu maszyn wirtualnych z trzema typami węzła w sieci wirtualnej i sieciowej grupie zabezpieczeń.  Inne przykładowe szablony można znaleźć w witrynie [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates). [Azuredeploy. JSON][template] wdraża wiele zasobów, w tym następujące.
 
 ### <a name="service-fabric-cluster"></a>Klaster usługi Service Fabric
 
 W zasobie **Microsoft.ServiceFabric/clusters** skonfigurowano klaster systemu Windows o następujących właściwościach:
 
 * Trzy typy węzłów.
-* Pięć węzłów typu węzła podstawowego (z możliwością konfiguracji za pomocą parametrów szablonu) i jednego węzła w każdego typu dwoma węzłami.
-* System operacyjny: Windows Server 2016 Datacenter z kontenerami (z możliwością konfiguracji za pomocą parametrów szablonu).
-* Zabezpieczenie przy użyciu certyfikatu (z możliwością konfiguracji za pomocą parametrów szablonu).
-* [Odwrotny serwer proxy](service-fabric-reverseproxy.md) jest włączona.
+* Pięć węzłów w podstawowym typie węzła (konfigurowalne w parametrach szablonu) i jeden węzeł w każdym z dwóch pozostałych typów węzłów.
+* System operacyjny: System Windows Server 2016 Datacenter z kontenerami (konfigurowalne w parametrach szablonu).
+* Certyfikat zabezpieczony (konfigurowalny w parametrach szablonu).
+* [Zwrotny serwer proxy](service-fabric-reverseproxy.md) jest włączony.
 * [Usługa DNS](service-fabric-dnsservice.md) jest włączona.
-* [Poziom trwałości](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) : brązowy (z możliwością konfiguracji za pomocą parametrów szablonu).
-* [Poziom niezawodności](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) : srebrny (z możliwością konfiguracji za pomocą parametrów szablonu).
-* punkt końcowy połączenia klienta: 19000 (z możliwością konfiguracji za pomocą parametrów szablonu).
-* Punkt końcowy bramy protokołu HTTP: 19080 (z możliwością konfiguracji za pomocą parametrów szablonu).
+* [Poziom trwałości](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) Bronze (konfigurowalny w parametrach szablonu).
+* [Poziom niezawodności](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) Silver (konfigurowalny w parametrach szablonu).
+* Punkt końcowy połączenia klienta: 19000 (konfigurowalne w parametrach szablonu).
+* Punkt końcowy bramy protokołu HTTP: 19080 (konfigurowalne w parametrach szablonu).
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 
-W **Microsoft.Network/loadBalancers** zasobów, moduł równoważenia obciążenia jest skonfigurowany. Sondy oraz reguły skonfigurowano pod kątem następujących portów:
+W przypadku zasobu **Microsoft. Network/loadBalancers** zostaje skonfigurowany moduł równoważenia obciążenia. Sondy i reguły są konfigurowane dla następujących portów:
 
-* punkt końcowy połączenia klienta: 19000
+* Punkt końcowy połączenia klienta: 19000
 * Punkt końcowy bramy protokołu HTTP: 19080
-* port aplikacji: 80
-* port aplikacji: 443
+* Port aplikacji: 80
+* Port aplikacji: 443
 * Odwrotny serwer proxy usługi Service Fabric: 19081
 
-Jeśli potrzebne są inne porty aplikacji, musisz dostosować **Microsoft.Network/loadBalancers** zasobów i **Microsoft.Network/networkSecurityGroups** zasobów, aby zezwolić na ruch przychodzący.
+Jeśli są potrzebne inne porty aplikacji, należy dostosować zasób **Microsoft. Network/loadBalancers** oraz zasób **Microsoft. Network/networkSecurityGroups** , aby umożliwić ruch w programie.
 
 ### <a name="virtual-network-subnet-and-network-security-group"></a>Sieć wirtualna, podsieć i sieciowa grupa zabezpieczeń
 
@@ -114,15 +114,15 @@ Poniższe reguły ruchu przychodzącego są włączone w zasobie **Microsoft.Net
 * HttpGatewayEndpoint (HTTP/TCP): 19080
 * SMB: 445
 * Internodecommunication: 1025, 1026, 1027
-* Zakres portów efemerycznych: od 49152 do 65534 (wymaganych jest co najmniej 256 portów).
+* Zakres portów tymczasowych: 49152 do 65534 (wymagane jest co najmniej 256 portów).
 * Porty do użytku aplikacji: 80 i 443
-* Zakres portów aplikacji: od 49152 do 65534 (używane do komunikacji między usługami. Inne nie są otwarte porty w module równoważenia obciążenia).
+* Zakres portów aplikacji: 49152 do 65534 (używany do komunikacji między usługami. Inne porty nie są otwierane w module równoważenia obciążenia).
 * Wszystkie pozostałe porty są zablokowane
 
-Jeśli potrzebne są inne porty aplikacji, musisz dostosować **Microsoft.Network/loadBalancers** zasobów i **Microsoft.Network/networkSecurityGroups** zasobów, aby zezwolić na ruch przychodzący.
+Jeśli są potrzebne inne porty aplikacji, należy dostosować zasób **Microsoft. Network/loadBalancers** oraz zasób **Microsoft. Network/networkSecurityGroups** , aby umożliwić ruch w programie.
 
 ### <a name="windows-defender"></a>Windows Defender
-Domyślnie [programu antywirusowego Windows Defender](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016) jest zainstalowane i działające w systemie Windows Server 2016. Interfejs użytkownika jest instalowany domyślnie w niektórych jednostkach SKU, ale nie jest wymagane. Dla każdego typu węzła/zestawu skalowania maszyn wirtualnych zadeklarowanego w szablonie [rozszerzenie Azure VM Antimalware](/azure/virtual-machines/extensions/iaas-antimalware-windows) służy do wykluczania katalogów i procesów usługi Service Fabric:
+Domyślnie [program antywirusowy Windows Defender](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016) jest instalowany i funkcjonalny w systemie Windows Server 2016. Interfejs użytkownika jest instalowany domyślnie w niektórych jednostkach SKU, ale nie jest wymagany. Dla każdego typu węzła/zestawu skalowania maszyn wirtualnych zadeklarowanego w szablonie [rozszerzenie Azure VM Antimalware](/azure/virtual-machines/extensions/iaas-antimalware-windows) służy do wykluczania katalogów i procesów usługi Service Fabric:
 
 ```json
 {
@@ -152,38 +152,38 @@ Domyślnie [programu antywirusowego Windows Defender](/windows/security/threat-p
 
 ## <a name="set-template-parameters"></a>Ustawianie parametrów szablonu
 
-Plik parametrów [azuredeploy.parameters.json][parameters] deklaruje wiele wartości służących do wdrażania klastra i skojarzonych zasobów. Poniżej przedstawiono parametry, aby zmodyfikować dla danego wdrożenia:
+Plik parametrów [azuredeploy. Parameters. JSON][parameters] deklaruje wiele wartości używanych do wdrożenia klastra i skojarzonych zasobów. Poniżej przedstawiono parametry, które należy zmodyfikować dla danego wdrożenia:
 
 **Parametr** | **Przykładowa wartość** | **Uwagi** 
 |---|---|---|
-|adminUserName|vmadmin| Nazwa użytkownika będącego administratorem maszyn wirtualnych klastra. [Wymagania dotyczące nazwy użytkownika, dla maszyny Wirtualnej](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm). |
-|adminPassword|Haslo#1234| Hasło administratora maszyn wirtualnych klastra. [Wymagania dotyczące hasła dla maszyny Wirtualnej](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm).|
+|adminUserName|vmadmin| Nazwa użytkownika będącego administratorem maszyn wirtualnych klastra. [Wymagania dotyczące nazwy użytkownika dla maszyny wirtualnej](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm). |
+|adminPassword|Haslo#1234| Hasło administratora maszyn wirtualnych klastra. [Wymagania dotyczące hasła dla maszyny wirtualnej](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm).|
 |clusterName|mojklastersf123| Nazwa klastra. Może zawierać tylko litery i cyfry. Długość powinna wynosić od 3 do 23 znaków.|
 |location|southcentralus| Lokalizacja klastra. |
 |certificateThumbprint|| <p>W przypadku tworzenia certyfikatu z podpisem własnym lub podania pliku certyfikatu ta wartość powinna być pusta.</p><p>Aby użyć istniejącego certyfikatu, który został wcześniej przekazany do magazynu kluczy, wprowadź wartość odcisku palca SHA1 certyfikatu. Na przykład „6190390162C988701DB5676EB81083EA608DCCF3”.</p> |
-|certificateUrlValue|| <p>W przypadku tworzenia certyfikatu z podpisem własnym lub podania pliku certyfikatu ta wartość powinna być pusta. </p><p>Aby użyć istniejącego certyfikatu, który został wcześniej przekazany do magazynu kluczy, wprowadź adres URL certyfikatu. Na przykład "https:\//mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
+|certificateUrlValue|| <p>W przypadku tworzenia certyfikatu z podpisem własnym lub podania pliku certyfikatu ta wartość powinna być pusta. </p><p>Aby użyć istniejącego certyfikatu, który został wcześniej przekazany do magazynu kluczy, wprowadź adres URL certyfikatu. Na przykład "https:\//mykeyvault.Vault.Azure.NET:443/Secrets/MyCertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
 |sourceVaultValue||<p>W przypadku tworzenia certyfikatu z podpisem własnym lub podania pliku certyfikatu ta wartość powinna być pusta.</p><p>Aby użyć istniejącego certyfikatu, który został wcześniej przekazany do magazynu kluczy, wprowadź wartość magazynu źródłowego. Na przykład „/subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT”.</p>|
 
 ## <a name="set-up-azure-active-directory-client-authentication"></a>Konfigurowanie uwierzytelniania klienta za pomocą usługi Azure Active Directory
 W przypadku klastrów usługi Service Fabric wdrożonych w sieci publicznej hostowanej na platformie Azure zalecenia dla wzajemnego uwierzytelniania klienta i węzła są następujące:
-* Usługa Azure Active Directory dla tożsamości klienta.
-* Użyj certyfikatu tożsamości serwera i szyfrowania SSL dla komunikacji HTTP.
+* Użyj Azure Active Directory na potrzeby tożsamości klienta.
+* Użyj certyfikatu na potrzeby tożsamości serwera i szyfrowania SSL komunikacji protokołu HTTP.
 
-Konfigurowanie usługi Azure Active Directory (Azure AD) do uwierzytelniania klientów dla klastra usługi Service Fabric, należy wykonać przed [tworzenia klastra](#createvaultandcert). Usługa Azure AD umożliwia organizacjom (znanym jako dzierżawy) zarządzanie dostępem użytkowników do aplikacji. 
+Przed [utworzeniem klastra](#createvaultandcert)należy skonfigurować Azure Active Directory (Azure AD) do uwierzytelniania klientów dla klastra Service Fabric. Usługa Azure AD umożliwia organizacjom (znanym jako dzierżawy) zarządzanie dostępem użytkowników do aplikacji. 
 
 Klaster usługi Service Fabric udostępnia kilka punktów wejścia dla swoich funkcji zarządzania, w tym internetowe narzędzie [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) i [program Visual Studio](service-fabric-manage-application-in-visual-studio.md). W związku z tym utworzysz dwie aplikacje usługi Azure AD, aby kontrolować dostęp do klastra: jedną aplikację internetową i jedną aplikację natywną.  Po utworzeniu aplikacji przypiszesz użytkowników do ról tylko do odczytu i administratora.
 
 > [!NOTE]
 > Przed utworzeniem klastra musisz wykonać następujące kroki. Ponieważ skrypty oczekują określenia nazw klastra i punktów końcowych, wartości powinny być zaplanowane i inne od wartości już utworzonych.
 
-W tym artykule przyjęto założenie, że utworzono już dzierżawę. Jeśli jeszcze tego nie, zapoznanie się z tematem [jak uzyskać dzierżawę usługi Azure Active Directory](../active-directory/develop/quickstart-create-new-tenant.md).
+W tym artykule przyjęto założenie, że dzierżawa została już utworzona. Jeśli jeszcze tego nie zrobiono, [Przeczytaj artykuł jak uzyskać dzierżawę Azure Active Directory](../active-directory/develop/quickstart-create-new-tenant.md).
 
-Aby uprościć etapy konfigurowania usługi Azure AD z klastrem usługi Service Fabric, utworzyliśmy zestaw skryptów programu Windows PowerShell. [Pobierz skrypty](https://github.com/robotechredmond/Azure-PowerShell-Snippets/tree/master/MicrosoftAzureServiceFabric-AADHelpers/AADTool) na komputer.
+Aby uprościć czynności związane z konfigurowaniem usługi Azure AD przy użyciu klastra Service Fabric, został utworzony zestaw skryptów programu Windows PowerShell. [Pobierz skrypty](https://github.com/robotechredmond/Azure-PowerShell-Snippets/tree/master/MicrosoftAzureServiceFabric-AADHelpers/AADTool) na komputer.
 
 ### <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>Tworzenie aplikacji usługi Azure AD i przypisywanie ról do użytkowników
-Utworzysz dwie aplikacje usługi Azure AD, aby kontrolować dostęp do klastra: jedną aplikację internetową i jedną aplikację natywną. Po utworzeniu aplikacji ma reprezentować klaster, należy przypisać użytkownikom [role obsługiwane przez usługę Service Fabric](service-fabric-cluster-security-roles.md): tylko do odczytu i administratora.
+Utworzysz dwie aplikacje usługi Azure AD, aby kontrolować dostęp do klastra: jedną aplikację internetową i jedną aplikację natywną. Po utworzeniu aplikacji do reprezentowania klastra Przypisz użytkowników do [ról obsługiwanych przez Service Fabric](service-fabric-cluster-security-roles.md): tylko do odczytu i administrator.
 
-Uruchom skrypt `SetupApplications.ps1` i podaj jako parametry identyfikator dzierżawy, nazwę klastra i adres URL odpowiedzi aplikacji internetowej. Określ nazwy użytkowników i hasła dla użytkowników. Na przykład:
+Uruchom skrypt `SetupApplications.ps1` i podaj jako parametry identyfikator dzierżawy, nazwę klastra i adres URL odpowiedzi aplikacji internetowej. Określ nazwy użytkownika i hasła dla użytkowników. Przykład:
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysfcluster123' -WebApplicationReplyUrl 'https://mysfcluster123.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -192,22 +192,22 @@ $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysf
 ```
 
 > [!NOTE]
-> Chmur krajowych (na przykład Azure dla instytucji rządowych, chińska wersja platformy Azure, Azure [Niemcy]), określ `-Location` parametru.
+> W przypadku chmur narodowych (na przykład Azure Government Azure Chiny, Azure (Niemcy), `-Location` określ parametr.
 
-Wartość *TenantId*, czyli identyfikator katalogu, możesz znaleźć w witrynie [Azure Portal](https://portal.azure.com). Wybierz **usługi Azure Active Directory** > **właściwości** i skopiuj **identyfikator katalogu** wartość.
+Wartość *TenantId*, czyli identyfikator katalogu, możesz znaleźć w witrynie [Azure Portal](https://portal.azure.com). Wybierz pozycję **Azure Active Directory** > **Właściwości** i skopiuj wartość **Identyfikator katalogu** .
 
-Wartość *ClusterName* służy jako prefiks aplikacji usługi Azure AD tworzonych przez skrypt. Nie musi dokładnie odpowiadać rzeczywista nazwa klastra. Tylko ułatwia do mapowania artefaktów w usłudze Azure AD do klastra usługi Service Fabric w użyciu.
+Wartość *ClusterName* służy jako prefiks aplikacji usługi Azure AD tworzonych przez skrypt. Nie musi dokładnie pasować do rzeczywistej nazwy klastra. Ułatwia on mapowanie artefaktów usługi Azure AD do klastra Service Fabric w użyciu.
 
 Wartość *WebApplicationReplyUrl* to domyślny punkt końcowy zwracany przez usługę Azure AD do użytkowników, gdy zakończą logowanie. Ustaw ten punkt końcowy jako punkt końcowy narzędzia Service Fabric Explorer dla klastra. Domyślnie to:
 
 https://&lt;cluster_domain&gt;:19080/Explorer
 
-Zostanie wyświetlony monit Zaloguj się do konta z uprawnieniami administratora dla dzierżawy usługi Azure AD. Po zalogowaniu skrypt utworzy aplikacje internetową i natywną mające reprezentować klaster usługi Service Fabric. W aplikacjach dzierżawcy w [witryny Azure portal](https://portal.azure.com), powinny zostać wyświetlone dwa nowe wpisy:
+Zostanie wyświetlony monit o zalogowanie się do konta z uprawnieniami administracyjnymi dla dzierżawy usługi Azure AD. Po zalogowaniu skrypt utworzy aplikacje internetową i natywną mające reprezentować klaster usługi Service Fabric. W aplikacjach dzierżawy w [Azure Portal](https://portal.azure.com)powinny zostać wyświetlone dwa nowe wpisy:
 
    * *NazwaKlastra*\_Cluster
    * *NazwaKlastra*\_Client
 
-Skrypt wyświetla plik JSON wymagany przez szablon usługi Resource Manager podczas tworzenia klastra, dzięki czemu jest dobrym rozwiązaniem nie zamykaj okna programu PowerShell.
+Skrypt drukuje kod JSON wymagany przez szablon Menedżer zasobów podczas tworzenia klastra. dobrym pomysłem jest pozostawienie otwartego okna programu PowerShell.
 
 ```json
 "azureActiveDirectory": {
@@ -218,7 +218,7 @@ Skrypt wyświetla plik JSON wymagany przez szablon usługi Resource Manager podc
 ```
 
 ### <a name="add-azure-ad-configuration-to-use-azure-ad-for-client-access"></a>Dodawanie konfiguracji usługi Azure AD do użycia na potrzeby dostępu klientów
-W pliku [azuredeploy.json][template] skonfiguruj usługę Azure AD w sekcji **Microsoft.ServiceFabric/clusters**. Dodaj parametry identyfikatora dzierżawy, identyfikatora aplikacji klastra i identyfikatora aplikacji klienckiej.  
+W pliku [azuredeploy. JSON][template]Skonfiguruj usługę Azure AD w sekcji **Microsoft. servicefabric/klastrów** . Dodaj parametry identyfikatora dzierżawy, identyfikatora aplikacji klastra i identyfikatora aplikacji klienckiej.  
 
 ```json
 {
@@ -260,7 +260,7 @@ W pliku [azuredeploy.json][template] skonfiguruj usługę Azure AD w sekcji **Mi
 }
 ```
 
-Dodaj wartości parametrów do pliku parametrów [azuredeploy.parameters.json][parameters]. Na przykład:
+Dodaj wartości parametrów w pliku parametrów [azuredeploy. Parameters. JSON][parameters] . Na przykład:
 
 ```json
 "aadTenantId": {
@@ -275,14 +275,14 @@ Dodaj wartości parametrów do pliku parametrów [azuredeploy.parameters.json][p
 ```
 <a id="configurediagnostics" name="configurediagnostics_anchor"></a>
 
-## <a name="configure-diagnostics-collection-on-the-cluster"></a>Konfiguruj zbieranie diagnostyki w klastrze
-Po uruchomieniu klastra usługi Service Fabric to dobry pomysł, aby zbierać dzienniki z wszystkimi węzłami w centralnej lokalizacji. Posiadanie dzienniki w centralnej lokalizacji, ułatwiają analizowanie i rozwiązywanie problemów w klastrze lub problemy w aplikacji i usług działających w klastrze.
+## <a name="configure-diagnostics-collection-on-the-cluster"></a>Konfigurowanie zbierania danych diagnostycznych w klastrze
+Gdy uruchamiasz klaster Service Fabric, dobrym pomysłem jest zebranie dzienników ze wszystkich węzłów w centralnej lokalizacji. Przechowywanie dzienników w centralnej lokalizacji ułatwia analizowanie i rozwiązywanie problemów z klastrem lub problemów z aplikacjami i usługami uruchomionymi w tym klastrze.
 
-Jednym ze sposobów przekazywania i zbierania dzienników jest użycie rozszerzenia diagnostyki platformy Azure (WAD), przekazuje dzienniki do usługi Azure Storage, która ma również możliwość przesyłania dzienników do usługi Azure Application Insights lub centrów zdarzeń. Proces zewnętrzny umożliwia również odczytywać zdarzenia z magazynu i umieścić je w analizy produkt platformy, takie jak dzienniki usługi Azure Monitor lub innego rozwiązania do analizowania dziennika.
+Jednym ze sposobów przekazywania i zbierania dzienników jest użycie rozszerzenia Diagnostyka Azure (funkcji wad), które przekazuje dzienniki do usługi Azure Storage, a także oferuje opcję wysyłania dzienników do usługi Azure Application Insights lub Event Hubs. Możesz również użyć procesu zewnętrznego, aby odczytać zdarzenia z magazynu i umieścić je w produkcie platformy analizy, takim jak dzienniki Azure Monitor lub inne rozwiązanie do analizy dzienników.
 
-Jeśli korzystasz z tego samouczka, zbieranie diagnostyki jest już skonfigurowana w [szablonu][template].
+Jeśli korzystasz z tego samouczka, zbieranie danych diagnostycznych jest już skonfigurowane w [szablonie][template].
 
-W przypadku istniejącego klastra, który nie ma wdrożonych diagnostyki można dodać lub zaktualizować go za pomocą szablonu klastra. Modyfikowanie szablonu usługi Resource Manager, który jest używany do tworzenia istniejącego klastra lub pobrać szablon z poziomu portalu. Zmodyfikuj plik template.json, wykonując następujące czynności:
+Jeśli masz istniejący klaster, który nie ma wdrożonej diagnostyki, możesz go dodać lub zaktualizować za pomocą szablonu klastra. Zmodyfikuj szablon Menedżer zasobów używany do tworzenia istniejącego klastra lub Pobierz szablon z portalu. Zmodyfikuj plik Template. JSON, wykonując następujące zadania:
 
 Dodaj nowy zasób magazynu do sekcji zasobów w szablonie:
 ```json
@@ -305,7 +305,7 @@ Dodaj nowy zasób magazynu do sekcji zasobów w szablonie:
 ]
 ```
 
-Następnie dodaj parametry typu i nazwy konta magazynu do sekcji parametrów szablonu. Zastąp nazwę konta magazynu tekst symbolu zastępczego przejdzie, w tym miejscu o nazwie magazynu konto oczekuje.
+Następnie Dodaj parametry dla nazwy konta magazynu i wpisz sekcję Parametry szablonu. Zastąp symbol zastępczy Text Storage wpisz tutaj nazwę konta magazynu, którego potrzebujesz.
 
 ```json
 "parameters": {
@@ -332,7 +332,7 @@ Następnie dodaj parametry typu i nazwy konta magazynu do sekcji parametrów sza
 }
 ```
 
-Następnie dodaj **IaaSDiagnostics** rozszerzenie tablica rozszerzeń **VirtualMachineProfile** właściwości każdego **Microsoft.Compute/virtualMachineScaleSets** zasób w klastrze.  Jeśli używasz [przykładowy szablon][template], istnieją trzy zestawy skalowania maszyn wirtualnych (po jednym dla każdego typu węzła w klastrze).
+Następnie Dodaj rozszerzenie **IaaSDiagnostics** do tablicy rozszerzeń dla właściwości **VirtualMachineProfile** każdego zasobu **Microsoft. COMPUTE/virtualMachineScaleSets** w klastrze.  Jeśli używasz [przykładowego szablonu][template], istnieją trzy zestawy skalowania maszyn wirtualnych (jeden dla każdego typu węzła w klastrze).
 
 ```json
 "apiVersion": "2018-10-01",
@@ -403,16 +403,16 @@ Następnie dodaj **IaaSDiagnostics** rozszerzenie tablica rozszerzeń **VirtualM
 ```
 <a id="configureeventstore" name="configureeventstore_anchor"></a>
 
-## <a name="configure-the-eventstore-service"></a>Skonfiguruj usługę bazy danych EventStore
-Usługa bazy danych EventStore jest opcji monitorowania w usłudze Service Fabric. Bazy danych EventStore zapewnia sposób, aby sprawdzić stan klastra lub obciążeń w danym punkcie w czasie. Bazy danych EventStore jest stanowej usługi Service Fabric, która utrzymuje zdarzenia z klastra. Zdarzenia są udostępniane za pośrednictwem narzędzia Service Fabric Explorer, REST i interfejsów API. Bazy danych EventStore zapytań klastra bezpośrednio po to, aby uzyskać dane diagnostyczne w dowolnej jednostce w klastrze i powinny być używane do pomocy:
+## <a name="configure-the-eventstore-service"></a>Konfigurowanie usługi EventStore
+Usługa EventStore jest opcją monitorowania w Service Fabric. EventStore zapewnia sposób zrozumienia stanu klastra lub obciążeń w danym momencie. EventStore jest usługą stanową Service Fabric, która przechowuje zdarzenia z klastra. Zdarzenie jest dostępne za pomocą Service Fabric Explorer, REST i interfejsów API. EventStore wysyła zapytanie bezpośrednio do klastra w celu uzyskania danych diagnostycznych w dowolnej jednostce w klastrze i powinno być używane do pomocy:
 
-* Diagnozuj problemy z tworzenia i testowania lub gdy być może używasz potoku monitorowania
-* Upewnij się, że akcje zarządzania, które są tworzone w klastrze są przetwarzane prawidłowo
-* Pobierz "migawkę" jak usługi Service Fabric prowadzi interakcję z określonego obiektu
+* Diagnozowanie problemów w programowaniu lub testowaniu lub w przypadku korzystania z potoku monitorowania
+* Upewnij się, że akcje zarządzania wykonywane w klastrze są przetwarzane prawidłowo
+* Uzyskiwanie "migawki" sposobu, w jaki Service Fabric współdziała z konkretną jednostką
 
 
 
-Aby włączyć usługę bazy danych EventStore w klastrze, należy dodać następujące polecenie, aby **element fabricSettings** właściwość **Microsoft.ServiceFabric/clusters** zasobów:
+Aby włączyć usługę EventStore w klastrze, Dodaj następujące polecenie do właściwości **fabricSettings** zasobu **Microsoft. servicefabric/klastrów** :
 
 ```json
 "apiVersion": "2018-02-01",
@@ -440,13 +440,13 @@ Aby włączyć usługę bazy danych EventStore w klastrze, należy dodać nastę
 ```
 <a id="configureloganalytics" name="configureloganalytics_anchor"></a>
 
-## <a name="set-up-azure-monitor-logs-for-the-cluster"></a>Konfigurowanie usługi Azure Monitor dzienniki klastra
+## <a name="set-up-azure-monitor-logs-for-the-cluster"></a>Konfigurowanie dzienników Azure Monitor dla klastra
 
-Dzienniki platformy Azure Monitor to nasze zalecenie, aby monitorować zdarzenia poziomu klastra. Aby skonfigurować dzienniki usługi Azure Monitor do monitorowania klastra, musisz mieć [diagnostyki włączone, aby wyświetlić zdarzenia z poziomu klastra](#configure-diagnostics-collection-on-the-cluster).  
+Dzienniki Azure Monitor to nasze zalecenie do monitorowania zdarzeń na poziomie klastra. Aby skonfigurować Azure Monitor dzienników do monitorowania klastra, musisz mieć włączoną diagnostykę, [Aby wyświetlić zdarzenia poziomu klastra](#configure-diagnostics-collection-on-the-cluster).  
 
-Obszaru roboczego musi być podłączony do danych diagnostycznych z klastra.  Te dane dziennika są przechowywane w *applicationDiagnosticsStorageAccountName* konta magazynu, w WADServiceFabric * EventTable WADWindowsEventLogsTable i WADETWEventTable tabel.
+Obszaru roboczego musi być podłączony do danych diagnostycznych z klastra.  Te dane dziennika są przechowywane na koncie magazynu *applicationDiagnosticsStorageAccountName* w tabelach WADServiceFabric * Eventing, WADWindowsEventLogsTable i WADETWEventTable.
 
-Dodawanie obszaru roboczego usługi Azure Log Analytics i Dodawanie rozwiązania do obszaru roboczego:
+Dodaj obszar roboczy usługi Azure Log Analytics i Dodaj rozwiązanie do obszaru roboczego:
 
 ```json
 "resources": [
@@ -536,7 +536,7 @@ Dodawanie obszaru roboczego usługi Azure Log Analytics i Dodawanie rozwiązania
 ]
 ```
 
-Następnie dodaj parametry
+Następnie Dodaj parametry
 ```json
 "parameters": {
     ...
@@ -562,7 +562,7 @@ Następnie dodaj parametry
 }
 ```
 
-Następnie dodaj zmienne:
+Następnie Dodaj zmienne:
 ```json
 "variables": {
     ...
@@ -571,7 +571,7 @@ Następnie dodaj zmienne:
 }
 ```
 
-Dodawanie usługi Log Analytics agent skalowania poszczególnych maszyn wirtualnych w klastrze oraz rozszerzenia łączenia agenta z obszarem roboczym usługi Log Analytics. Umożliwia to zbieranie danych diagnostycznych o kontenerach, aplikacji i monitorowanie wydajności. Dodając ją jako rozszerzenie do zasobu zestawu skalowania maszyny wirtualnej, usługi Azure Resource Manager zapewnia, że pobiera zainstalowany w każdym węźle, nawet podczas skalowania klastra.
+Dodaj rozszerzenie agenta Log Analytics do każdego zestawu skalowania maszyn wirtualnych w klastrze i Połącz agenta z obszarem roboczym Log Analytics. Umożliwia to zbieranie danych diagnostycznych dotyczących kontenerów, aplikacji i monitorowania wydajności. Przez dodanie go jako rozszerzenia do zasobu zestawu skalowania maszyn wirtualnych, Azure Resource Manager zapewnia, że zostanie on zainstalowany w każdym węźle, nawet podczas skalowania klastra.
 
 ```json
 "apiVersion": "2018-10-01",
@@ -608,13 +608,13 @@ Dodawanie usługi Log Analytics agent skalowania poszczególnych maszyn wirtualn
 
 ## <a name="deploy-the-virtual-network-and-cluster"></a>Wdrażanie sieci wirtualnej i klastra
 
-Następnym etapem jest skonfigurowanie topologii sieci i wdrożenie klastra usługi Service Fabric. [Azuredeploy.json] [ template] szablon usługi Resource Manager umożliwia utworzenie sieci wirtualnej, podsieci i sieciowej grupy zabezpieczeń dla usługi Service Fabric. Szablon pozwala również wdrożyć klaster z włączonymi zabezpieczeniami opartymi na certyfikacie. W przypadku klastrów produkcyjnych jako certyfikatu klastra należy użyć certyfikatu od urzędu certyfikacji. Do zabezpieczenia klastrów testowych może służyć certyfikat z podpisem własnym.
+Następnym etapem jest skonfigurowanie topologii sieci i wdrożenie klastra usługi Service Fabric. Szablon Menedżer zasobów [azuredeploy. JSON][template] tworzy sieć wirtualną, podsieć i grupę zabezpieczeń sieci dla Service Fabric. Szablon pozwala również wdrożyć klaster z włączonymi zabezpieczeniami opartymi na certyfikacie. W przypadku klastrów produkcyjnych Użyj certyfikatu z urzędu certyfikacji jako certyfikatu klastra. Do zabezpieczenia klastrów testowych może służyć certyfikat z podpisem własnym.
 
-Szablon w tym artykule umożliwia wdrożenie klastra, który używa odcisku palca certyfikatu do identyfikowania certyfikatu klastra. Żadne dwa certyfikaty nie mogą mieć tego samego odcisku palca, co sprawia, że zarządzanie certyfikatami jest trudniejsze. Przełączanie wdrożonego klastra z odciski palców certyfikatu do nazw pospolitych certyfikatów upraszcza zarządzanie certyfikatami. Aby dowiedzieć się, jak zaktualizować klaster pod kątem używania nazwy pospolite certyfikatów dla certyfikatu zarządzania, przeczytaj [klastra zmiany do wspólnego zarządzania nazwę certyfikatu](service-fabric-cluster-change-cert-thumbprint-to-cn.md).
+Szablon w tym artykule umożliwia wdrożenie klastra, który używa odcisku palca certyfikatu do identyfikowania certyfikatu klastra. Żadne dwa certyfikaty nie mogą mieć tego samego odcisku palca, co sprawia, że zarządzanie certyfikatami jest trudniejsze. Przełączenie wdrożonego klastra z odcisków palców certyfikatów do nazw pospolitych certyfikatów upraszcza zarządzanie certyfikatami. Aby dowiedzieć się, jak zaktualizować klaster tak, aby używał wspólnych nazw certyfikatów do zarządzania certyfikatami, przeczytaj artykuł [zmiana klastra do wspólnego zarządzania nazwami](service-fabric-cluster-change-cert-thumbprint-to-cn.md).
 
 ### <a name="create-a-cluster-by-using-an-existing-certificate"></a>Tworzenie klastra przy użyciu istniejącego certyfikatu
 
-Poniższy skrypt [New AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) polecenia cmdlet i szablon, aby wdrożyć nowy klaster na platformie Azure. Polecenie cmdlet tworzy nowy magazyn kluczy na platformie Azure i przekazanie danego certyfikatu.
+Poniższy skrypt używa polecenia cmdlet [New-AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) i szablonu, aby wdrożyć nowy klaster na platformie Azure. Polecenie cmdlet tworzy nowy magazyn kluczy na platformie Azure i przekazuje certyfikat.
 
 ```powershell
 # Variables.
@@ -644,7 +644,7 @@ New-AzServiceFabricCluster  -ResourceGroupName $groupname -TemplateFile "$templa
 
 ### <a name="create-a-cluster-by-using-a-new-self-signed-certificate"></a>Tworzenie klastra przy użyciu nowego certyfikatu z podpisem własnym
 
-Poniższy skrypt [New AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) polecenia cmdlet i szablon, aby wdrożyć nowy klaster na platformie Azure. Polecenie cmdlet tworzy nowy magazyn kluczy na platformie Azure, dodaje nowy certyfikat z podpisem własnym do magazynu kluczy i pobiera plik certyfikatu do lokalnie.
+Poniższy skrypt używa polecenia cmdlet [New-AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) i szablonu, aby wdrożyć nowy klaster na platformie Azure. Polecenie cmdlet tworzy nowy magazyn kluczy na platformie Azure, dodaje nowy certyfikat z podpisem własnym do magazynu kluczy i pobiera plik certyfikatu lokalnie.
 
 ```powershell
 # Variables.
@@ -676,7 +676,7 @@ New-AzServiceFabricCluster  -ResourceGroupName $groupname -TemplateFile "$templa
 
 ## <a name="connect-to-the-secure-cluster"></a>Nawiązywanie połączenia z zabezpieczonym klastrem
 
-Połącz się z klastrem przy użyciu modułu Service Fabric programu PowerShell, instalowane przy użyciu zestawu SDK usługi Service Fabric.  Najpierw zainstaluj certyfikat w magazynie osobistym (Mój) bieżącego użytkownika na komputerze. Uruchom następujące polecenie programu PowerShell:
+Połącz się z klastrem przy użyciu modułu Service Fabric PowerShell zainstalowanego z zestawem SDK Service Fabric.  Najpierw zainstaluj certyfikat w magazynie osobistym (Mój) bieżącego użytkownika na komputerze. Uruchom następujące polecenie programu PowerShell:
 
 ```powershell
 $certpwd="q6D7nN%6ck@6" | ConvertTo-SecureString -AsPlainText -Force
@@ -685,7 +685,7 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
         -Password $certpwd
 ```
 
-Teraz możesz nawiązać połączenie z zabezpieczonym klastrem.
+Teraz możesz nawiązać połączenie z bezpiecznym klastrem.
 
 Moduł programu PowerShell dla usługi **Service Fabric** udostępnia wiele poleceń cmdlet służących do zarządzania usługami, aplikacjami i klastrami usługi Service Fabric. Za pomocą polecenia cmdlet [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) nawiąż połączenie z zabezpieczonym klastrem. Szczegóły dotyczące punktu końcowego połączenia i odcisku palca SHA1 certyfikatu można znaleźć w danych wyjściowych poprzedniego kroku.
 
@@ -697,7 +697,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster123.southcentralus.c
         -ServerCertThumbprint C4C1E541AD512B8065280292A8BA6079C3F26F10
 ```
 
-Jeśli nie skonfigurowano uwierzytelnianie klienta usługi Azure AD, uruchom następujące polecenie:
+Jeśli nie skonfigurowano uwierzytelniania klienta usługi Azure AD, uruchom następujące polecenie:
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster123.southcentralus.cloudapp.azure.com:19000 `
           -KeepAliveIntervalInSec 10 `
@@ -706,7 +706,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster123.southcentralus.c
           -StoreLocation CurrentUser -StoreName My
 ```
 
-Sprawdź, czy masz połączenie i że klaster jest w dobrej kondycji za pomocą [Get-ServiceFabricClusterHealth](/powershell/module/servicefabric/get-servicefabricclusterhealth) polecenia cmdlet.
+Sprawdź, czy nawiązano połączenie i czy klaster jest w dobrej kondycji za pomocą polecenia cmdlet [Get-ServiceFabricClusterHealth](/powershell/module/servicefabric/get-servicefabricclusterhealth) .
 
 ```powershell
 Get-ServiceFabricClusterHealth
@@ -714,25 +714,25 @@ Get-ServiceFabricClusterHealth
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-W pozostałych artykułach z tej serii samouczków jest używany klaster, utworzonych przez siebie. Jeśli nie przechodzisz od razu do następnego artykułu, rozważ [usunięcie klastra](service-fabric-cluster-delete.md), aby uniknąć naliczania opłat.
+Inne artykuły w tej serii samouczków używają utworzonego klastra. Jeśli nie przechodzisz od razu do następnego artykułu, rozważ [usunięcie klastra](service-fabric-cluster-delete.md), aby uniknąć naliczania opłat.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Przejdź do poniższego samouczka, aby dowiedzieć się, jak skalować klaster.
+Przejdź do następującego samouczka, aby dowiedzieć się, jak skalować klaster.
 
 > [!div class="checklist"]
 > * Tworzenie sieci wirtualnej na platformie Azure przy użyciu programu PowerShell
 > * Tworzenie magazynu kluczy i przekazywanie certyfikatu
 > * Konfigurowanie uwierzytelniania usługi Azure Active Directory
-> * Konfiguruj zbieranie diagnostyki
-> * Konfigurowanie usługi bazy danych EventStore
-> * Konfigurowanie dzienników usługi Azure Monitor
+> * Konfigurowanie zbierania danych diagnostycznych
+> * Konfigurowanie usługi EventStore
+> * Konfigurowanie dzienników Azure Monitor
 > * Tworzenie bezpiecznego klastra usługi Service Fabric w programie Azure PowerShell
 > * Zabezpieczanie klastra za pomocą certyfikatu X.509
 > * Nawiązywanie połączenia z klastrem przy użyciu programu PowerShell
 > * Usuwanie klastra
 
-Następnie przejdź do poniższego samouczka, aby dowiedzieć się, jak monitorowanie klastra.
+Następnie przejdź do następującego samouczka, aby dowiedzieć się, jak monitorować klaster.
 > [!div class="nextstepaction"]
 > [Monitorowanie klastra](service-fabric-tutorial-monitor-cluster.md)
 

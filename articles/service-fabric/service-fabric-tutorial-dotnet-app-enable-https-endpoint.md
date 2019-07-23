@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/17/2019
+ms.date: 07/22/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 48dd09bf70e99adc250027df872266bea39a786b
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 72fddc542155c8aab891f746bff99ce7bd2fc7fa
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66302411"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385264"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Samouczek: Dodawanie punktu końcowego HTTPS do usługi frontonu internetowego interfejsu API platformy ASP.NET Core za pomocą usługi Kestrel
 
@@ -52,7 +52,7 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 Przed rozpoczęciem tego samouczka:
 
 * Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Instalowanie programu Visual Studio 2019](https://www.visualstudio.com/) wersji 15.5 lub nowszej za pomocą **programowanie na platformie Azure** i **ASP.NET i tworzenie aplikacji internetowych** obciążeń.
+* [Zainstaluj program Visual Studio 2019](https://www.visualstudio.com/) w wersji 15,5 lub nowszej przy użyciu obciążeń deweloperskich i **ASP.NET** na **platformie Azure** .
 * [Zainstaluj zestaw SDK usługi Service Fabric.](service-fabric-get-started.md)
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>Uzyskaj certyfikat lub utwórz certyfikat programistyczny z podpisem własnym
@@ -185,7 +185,7 @@ private X509Certificate2 GetCertificateFromStore()
 
 ## <a name="give-network-service-access-to-the-certificates-private-key"></a>Udzielanie dostępu USŁUGA SIECIOWA do klucza prywatnego certyfikatu
 
-W poprzednim kroku zaimportowano certyfikat do magazynu `Cert:\LocalMachine\My` na komputerze dewelopera.  Teraz jawnie nadać kontu z uruchomioną usługę (domyślnie Usługa sieciowa) dostęp do klucza prywatnego certyfikatu. Ten krok można wykonać ręcznie (przy użyciu narzędzia certlm.msc), ale zaleca się automatyczne uruchomienie skryptu programu PowerShell przez [skonfigurowanie skryptu uruchamiania](service-fabric-run-script-at-service-startup.md) w **SetupEntryPoint** manifestu usługi.
+W poprzednim kroku zaimportowano certyfikat do magazynu `Cert:\LocalMachine\My` na komputerze dewelopera.  Teraz jawnie Nadaj kontu z uruchomioną usługą (usługa sieciowa domyślnie) dostęp do klucza prywatnego certyfikatu. Ten krok można wykonać ręcznie (przy użyciu narzędzia certlm. msc), ale lepiej uruchomić skrypt programu PowerShell, [konfigurując skrypt uruchamiania](service-fabric-run-script-at-service-startup.md) w **SetupEntryPoint** manifestu usługi.
 
 ### <a name="configure-the-service-setup-entry-point"></a>Konfigurowanie punktu wejścia usługi instalatora
 
@@ -344,9 +344,9 @@ Następnie w sekcji **ServiceManifestImport** pliku VotingWebPkg skonfiguruj zas
 
 ## <a name="run-the-application-locally"></a>Uruchamianie aplikacji lokalnie
 
-W Eksploratorze rozwiązań wybierz **Voting** aplikacji i ustaw **adres URL aplikacji** właściwość "https:\//localhost:443".
+W Eksplorator rozwiązań wybierz aplikację do **głosowania** i ustaw właściwość **adres URL aplikacji** na wartość "https:\//localhost: 443".
 
-Zapisz wszystkie pliki i naciśnij klawisz F5, aby uruchomić aplikację lokalnie.  Po wdrożeniu aplikacji w przeglądarce sieci web zostanie otwarty https:\//localhost:443. Jeśli używasz certyfikatu z podpisem własnym, zobaczysz ostrzeżenie, że komputer nie ufa zabezpieczeniom tej witryny internetowej.  Kontynuuj przechodzenie do strony internetowej.
+Zapisz wszystkie pliki i naciśnij klawisz F5, aby uruchomić aplikację lokalnie.  Po wdrożeniu aplikacji zostanie otwarta przeglądarka sieci Web https:\//localhost: 443. Jeśli używasz certyfikatu z podpisem własnym, zobaczysz ostrzeżenie, że komputer nie ufa zabezpieczeniom tej witryny internetowej.  Kontynuuj przechodzenie do strony internetowej.
 
 ![Aplikacja do głosowania][image2]
 
@@ -360,7 +360,7 @@ Najpierw należy wyeksportować certyfikat do pliku PFX. Otwórz aplikację cert
 
 W kreatorze eksportu wybierz opcję **Tak, eksportuj klucz prywatny** i wybierz format Wymiana informacji osobistych (PFX).  Wyeksportuj plik do pliku *C:\Users\sfuser\votingappcert.pfx*.
 
-Następnie należy zainstalować certyfikat w zdalnym klastrze przy użyciu [AzServiceFabricApplicationCertificate Dodaj](/powershell/module/az.servicefabric/Add-azServiceFabricApplicationCertificate) polecenia cmdlet.
+Następnie Zainstaluj certyfikat w klastrze zdalnym za pomocą polecenia cmdlet [Add-AzServiceFabricApplicationCertificate](/powershell/module/az.servicefabric/Add-azServiceFabricApplicationCertificate) .
 
 > [!Warning]
 > Certyfikat z podpisem własnym jest wystarczający w przypadku programowania i testowania aplikacji. W przypadku aplikacji produkcyjnych należy użyć certyfikatu z [certyfikatu urzędu certyfikacji](https://wikipedia.org/wiki/Certificate_authority) zamiast certyfikatu z podpisem własnym.

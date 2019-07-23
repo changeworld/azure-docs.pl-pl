@@ -1,22 +1,24 @@
 ---
-title: Samouczka, aby rozpakować, nawiązać połączenie, odblokowania dysku Azure Data Box | Dokumentacja firmy Microsoft
+title: Samouczek dotyczący rozpakowywania, łączenia z i odblokowywania Azure Data Box Disk | Microsoft Docs
 description: Użyj tego samouczka, aby dowiedzieć się, jak skonfigurować urządzenie Azure Data Box Disk
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 06/13/2019
+ms.date: 07/22/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 688c33a098bb34a6b39937579e2e25591786c531
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 7fd6128b9ac5a7a962d3dd6077ff88e23a83538a
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147489"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68384632"
 ---
-# <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>Samouczek: Rozpakowywanie, łączenie i odblokować dysku Azure Data Box
+::: zone target="docs"
+
+# <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>Samouczek: Rozpakowywanie, łączenie i odblokowywanie Azure Data Box Disk
 
 W tym samouczku opisano, jak rozpakować, podłączyć i odblokować urządzenie Azure Data Box Disk.
 
@@ -70,7 +72,7 @@ Kroki odblokowywania dysków zależą od tego, czy masz połączenie z klientem 
 Aby podłączyć i odblokować dyski, wykonaj następujące czynności.
      
 1. W witrynie Azure Portal przejdź do pozycji **Ogólne > Szczegóły urządzenia**. 
-2. Pobierz zestaw narzędzi dla dysków Data Box Disk przeznaczony dla klienta z systemem Windows. Ten zestaw narzędzi zawiera narzędzia 3: Narzędzie do odblokowania dysku pole danych, narzędzie do sprawdzania poprawności dysku pola danych i narzędzia do kopiowania podział dysku pola danych. 
+2. Pobierz zestaw narzędzi dla dysków Data Box Disk przeznaczony dla klienta z systemem Windows. Ten zestaw narzędzi zawiera trzy narzędzia: Narzędzie Data Box Disk odblokowywania, narzędzia walidacji Data Box Disk i Data Box Disk podzielonego narzędzia do kopiowania. 
 
     W procedurze poniżej będziesz używać wyłącznie narzędzia do odblokowywania dysków Data Box Disk. Pozostałe dwa narzędzia zostaną użyte później.
 
@@ -125,7 +127,7 @@ Aby podłączyć i odblokować dyski, wykonaj następujące czynności.
 
     ![Zawartość urządzenia Data Box Disk](media/data-box-disk-deploy-set-up/data-box-disk-content.png)
 
-Jeśli napotkasz problemy podczas odblokowywania dysków, zobacz temat jak [Rozwiązywanie problemów z odblokować problemów](data-box-disk-troubleshoot-unlock.md). 
+Jeśli podczas odblokowywania dysków wystąpią jakiekolwiek problemy, zobacz jak [rozwiązywać problemy z odblokowywaniem](data-box-disk-troubleshoot-unlock.md). 
 
 ## <a name="unlock-disks-on-linux-client"></a>Odblokowywanie dysków na komputerze klienckim z systemem Linux
 
@@ -173,7 +175,7 @@ Jeśli napotkasz problemy podczas odblokowywania dysków, zobacz temat jak [Rozw
  
 5. Wpisz tekst `y`, aby kontynuować instalację. Skrypt zainstaluje następujące pakiety: 
    - **epel-release** — repozytorium zawierające następujące trzy pakiety. 
-   - **dislocker i fuse-dislocker** — narzędzia ułatwiające odszyfrowywanie dysków zaszyfrowanych za pomocą funkcji BitLocker. 
+   - **odblokowanie i** odblokowanie — te narzędzia ułatwiają odszyfrowywanie szyfrowanych dysków funkcją BitLocker. 
    - **ntfs-3g** — pakiet ułatwiający instalowanie woluminów NTFS. 
  
      Po pomyślnym zainstalowaniu pakietów na terminalu pojawi się odpowiednie powiadomienie.     
@@ -210,7 +212,7 @@ Jeśli napotkasz problemy podczas odblokowywania dysków, zobacz temat jak [Rozw
 
     Wpisz następujące polecenie.
  
-    "sudo. / DataBoxDiskUnlock_x86_64 /PassKey:"<Your passkey from Azure portal>"          
+    "sudo./DataBoxDiskUnlock_x86_64/PassKey:"<Your passkey from Azure portal>"          
 
     Poniżej pokazano przykładowe dane wyjściowe. 
  
@@ -257,9 +259,55 @@ Jeśli napotkasz problemy podczas odblokowywania dysków, zobacz temat jak [Rozw
     ![Zawartość urządzenia Data Box Disk](media/data-box-disk-deploy-set-up/data-box-disk-content-linux.png)
 
 
-Jeśli napotkasz problemy podczas odblokowywania dysków, zobacz temat jak [Rozwiązywanie problemów z odblokować problemów](data-box-disk-troubleshoot-unlock.md). 
+Jeśli podczas odblokowywania dysków wystąpią jakiekolwiek problemy, zobacz jak [rozwiązywać problemy z odblokowywaniem](data-box-disk-troubleshoot-unlock.md). 
 
-## <a name="next-steps"></a>Kolejne kroki
+::: zone-end
+
+::: zone target="chromeless"
+
+1. Rozpakuj dyski i Użyj dołączonego kabla, aby podłączyć dysk do komputera klienckiego.
+2. Pobierz i Wyodrębnij zestaw narzędzi Data Box Disk na tym samym komputerze, który będzie używany do kopiowania danych.
+
+    > [!div class="nextstepaction"]
+    > [Pobierz zestaw narzędzi dla dysków Data Box Disk dla systemu Windows](https://aka.ms/databoxdisktoolswin)
+
+    lub
+    > [!div class="nextstepaction"]
+    > [Pobierz zestaw narzędzi dla dysków Data Box Disk dla systemu Linux](https://aka.ms/databoxdisktoolslinux) 
+
+3. Aby odblokować dyski na kliencie systemu Windows, Otwórz okno wiersza polecenia lub Uruchom program Windows PowerShell jako administrator na tym samym komputerze:
+
+    - Wpisz następujące polecenie w tym samym folderze, w którym zainstalowano narzędzie Data Box Disk unlock.
+
+        ``` 
+        .\DataBoxDiskUnlock.exe
+        ```
+    -  Podaj klucz dostępu uzyskany z **ogólnych > Szczegóły urządzenia** w Azure Portal. Zostanie wyświetlona litera dysku przypisana do danego dysku. 
+4. Aby odblokować dyski na kliencie z systemem Linux, Otwórz Terminal. Przejdź do folderu, do którego pobrano oprogramowanie. Wpisz następujące polecenia, aby zmienić uprawnienia do pliku, aby można było wykonywać następujące pliki: 
+
+    ```
+    chmod +x DataBoxDiskUnlock_x86_64
+    chmod +x DataBoxDiskUnlock_Prep.sh
+    ``` 
+    Wykonaj skrypt, aby zainstalować wszystkie wymagane pliki binarne.
+
+    ```
+    sudo ./DataBoxDiskUnlock_Prep.sh
+    ```
+    Uruchom narzędzie do odblokowywania dysków Data Box Disk. Podaj klucz dostępu z Azure Portal, przechodząc do **ogólnych > Szczegóły urządzenia**. Opcjonalnie można określić listę woluminów szyfrowanych funkcją BitLocker w ramach pojedynczego cudzysłowu do odblokowania.
+
+    ```
+    sudo ./DataBoxDiskUnlock_x86_64 /PassKey:’<Your passkey from Azure portal>’
+    ```      
+5. Kroki odblokowywania należy powtórzyć po podłączeniu każdego kolejnego dysku. Użyj polecenia „help”, jeśli potrzebujesz pomocy podczas korzystania z narzędzia do odblokowywania dysków Data Box.
+
+Po odblokowaniu dysku można wyświetlić jego zawartość.
+
+Aby uzyskać więcej informacji na temat konfigurowania i odblokowywania dysków, przejdź do [samouczka: Rozpakowywanie, łączenie i odblokowywanie Azure Data Box Disk](data-box-disk-deploy-set-up.md).
+
+::: zone-end
+
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono zagadnienia dotyczące urządzenia Azure Data Box Disk, takie jak:
 

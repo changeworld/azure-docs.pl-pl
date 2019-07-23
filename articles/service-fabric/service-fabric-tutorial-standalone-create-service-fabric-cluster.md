@@ -12,19 +12,19 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/11/2018
+ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: f978087a935bcf6ac78760fee5842573eb3a326e
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 82358f4d5548464f1304d77a846d71863ed9efa1
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274115"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385001"
 ---
-# <a name="tutorial-install-and-create-service-fabric-cluster"></a>Samouczek: Instalowanie i tworzenie klastra usługi Service Fabric
+# <a name="tutorial-install-and-create-service-fabric-cluster"></a>Samouczek: Instalowanie i tworzenie klastra Service Fabric
 
-Klastry autonomiczne usługi Service Fabric umożliwiają wybór własnego środowiska i utworzenie klastra zgodnie z obowiązującą w usłudze Service Fabric zasadą „dowolnego systemu operacyjnego i dowolnej chmury”. W tej serii samouczków Tworzenie klastra autonomicznego w serwisie AWS lub na platformie Azure i zainstalować aplikację do niego.
+Klastry autonomiczne usługi Service Fabric umożliwiają wybór własnego środowiska i utworzenie klastra zgodnie z obowiązującą w usłudze Service Fabric zasadą „dowolnego systemu operacyjnego i dowolnej chmury”. W tej serii samouczków utworzysz klaster autonomiczny hostowany na AWS lub na platformie Azure i zainstaluje do niego aplikację.
 
 Ten samouczek jest drugą częścią serii. W tym samouczku przedstawiono kroki tworzenia klastra autonomicznego usługi Service Fabric.
 
@@ -37,7 +37,7 @@ Część druga serii zawiera informacje na temat wykonywania następujących czy
 
 ## <a name="download-the-service-fabric-for-windows-server-package"></a>Pobieranie pakietu usługi Service Fabric dla systemu Windows Server
 
-Usługa Service Fabric udostępnia pakiet instalacyjny służący do tworzenia autonomicznych klastrów usługi Service Fabric.  [Pobierz pakiet instalacyjny](https://go.microsoft.com/fwlink/?LinkId=730690) na komputer lokalny.  Po pomyślnie pobrał skopiuj go za pośrednictwem połączenia RDP z maszyną wirtualną, a następnie wklej go na pulpicie.
+Usługa Service Fabric udostępnia pakiet instalacyjny służący do tworzenia autonomicznych klastrów usługi Service Fabric.  [Pobierz pakiet instalacyjny](https://go.microsoft.com/fwlink/?LinkId=730690) na komputer lokalny.  Po pomyślnym pobraniu kopii za pośrednictwem połączenia RDP z maszyną wirtualną i wkleić ją na pulpicie.
 
 Zaznacz plik zip, otwórz menu kontekstowe i wybierz kolejno pozycje **Wyodrębnij wszystko** > **Wyodrębnij**.  Podczas wyodrębniania plików na pulpicie zostanie wygenerowany folder o takiej samej nazwie, jaką miał plik zip.
 
@@ -129,7 +129,7 @@ Your cluster is successfully created! You can connect and manage your cluster us
 
 ### <a name="bring-up-service-fabric-explorer"></a>Otwórz narzędzie Service Fabric Explorer
 
-Teraz możesz łączyć się z klastrem przy użyciu narzędzia Service Fabric Explorer bezpośrednio z poziomu jednej z maszyn za pośrednictwem protokołu http:\//localhost:19080/Explorer/index.html lub zdalnie za pośrednictwem protokołu http:\/ /<  *IPAddressofaMachine*>: 19080/Explorer/index.html.
+Teraz można nawiązać połączenie z klastrem przy użyciu Service Fabric Explorer bezpośrednio z jednej z maszyn przy użyciu protokołu\/http:/localhost:19080/Explorer/index.html lub zdalnie przy\/użyciu protokołu http:/<*IPAddressofaMachine*> : 19080/Explorer/index.html.
 
 ## <a name="add-and-remove-nodes"></a>Dodawanie i usuwanie węzłów
 

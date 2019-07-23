@@ -13,15 +13,15 @@ ms.service: service-fabric
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/15/2017
+ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: fe01d55b17c0f6f6dd6a621fbac0cf4d3a268ee3
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: b5dba1f7e71149c37edc909d2bb43d708192bdbb
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306781"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385232"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Samouczek: Tworzenie obrazów kontenerów w klastrze usługi Service Fabric systemu Linux
 
@@ -88,7 +88,7 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 ## <a name="deploy-azure-container-registry"></a>Wdrażanie usługi Azure Container Registry
 
-Najpierw uruchom **az login** polecenie, aby zalogować się do konta platformy Azure.
+Najpierw uruchom polecenie **AZ login** , aby zalogować się do konta platformy Azure.
 
 ```bash
 az login
@@ -116,9 +116,9 @@ az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --
 
 W dalszej części tego samouczka wartość „acrName” jest używana jako symbol zastępczy wybranej nazwy rejestru kontenerów. Zanotuj tę wartość.
 
-## <a name="sign-in-to-your-container-registry"></a>Zaloguj się do rejestru kontenerów
+## <a name="sign-in-to-your-container-registry"></a>Logowanie do rejestru kontenerów
 
-Zaloguj się do swojego wystąpienia usługi ACR przed wypchnięciem do niego obrazów. Aby wykonać tę operację, użyj polecenia **az acr login**. Podaj unikatową nazwę nadaną rejestrowi kontenerów podczas jego tworzenia.
+Zaloguj się do swojego wystąpienia ACR przed wypchnięciem do niego obrazów. Aby wykonać tę operację, użyj polecenia **az acr login**. Podaj unikatową nazwę nadaną rejestrowi kontenerów podczas jego tworzenia.
 
 ```bash
 az acr login --name <acrName>
@@ -206,7 +206,7 @@ azure-vote-front
 
 Po ukończeniu tego samouczka obraz kontenera zostanie zapisany w prywatnym wystąpieniu usługi Azure Container Registry. W kolejnych samouczkach ten obraz zostanie wdrożony z usługi ACR do klastra usługi Service Fabric.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku aplikacja została ściągnięta z witryny GitHub, a obrazy kontenerów zostały utworzone i wypchnięte do rejestru. Wykonano następujące czynności:
 
