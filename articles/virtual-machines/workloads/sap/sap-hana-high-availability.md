@@ -4,7 +4,7 @@ description: Wysoka dostępność programu SAP HANA na maszynach wirtualnych pla
 services: virtual-machines-linux
 documentationcenter: ''
 author: MSSedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 3d59fc48f1f6f6931ca18e09a420fdbccc7d53dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 78d14add09a89b7ec4d4844a12ffa0434d714b3a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64922282"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709094"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Wysoka dostępność programu SAP HANA na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server
 
@@ -71,9 +71,9 @@ Najpierw przeczytaj następujące uwagi SAP i dokumenty:
 * Uwaga SAP [401162] zawiera informacje na temat sposobu uniknięcia "adres już w użyciu" podczas konfigurowania replikacji systemu HANA.
 * [WIKI społeczności SAP](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) ma wszystkie wymagane informacje o SAP dla systemu Linux.
 * [Oprogramowanie SAP HANA certyfikowane platform IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
-* [Azure maszyny wirtualne, planowania i implementacji dla rozwiązania SAP w systemie Linux] [ planning-guide] przewodnik.
-* [Wdrażania maszyn wirtualnych platformy Azure dla rozwiązania SAP w systemie Linux] [ deployment-guide] (w tym artykule).
-* [Wdrażania systemu DBMS na maszynach wirtualnych platformy Azure dla rozwiązania SAP w systemie Linux] [ dbms-guide] przewodnik.
+* [Azure maszyny wirtualne, planowania i implementacji dla rozwiązania SAP w systemie Linux][planning-guide] przewodnik.
+* [Wdrażania maszyn wirtualnych platformy Azure dla rozwiązania SAP w systemie Linux][deployment-guide] (w tym artykule).
+* [Wdrażania systemu DBMS na maszynach wirtualnych platformy Azure dla rozwiązania SAP w systemie Linux][dbms-guide] przewodnik.
 * [SUSE Linux Enterprise Server dla SAP aplikacji 12 z dodatkiem SP3 najlepsze praktyki prowadnic][sles-for-sap-bp]
   * Konfigurowanie SAP HANA SR zoptymalizowane pod kątem infrastruktury wydajności (z systemem SLES for SAP aplikacji 12 z dodatkiem SP1). Przewodnik zawiera wszystkie informacje wymagane do konfigurowania replikacji systemu SAP HANA do tworzenia aplikacji w środowisku lokalnym. Użyj tego przewodnika jako punkt odniesienia.
   * Konfigurowanie SAP HANA SR koszt zoptymalizowane pod kątem infrastruktury (z systemem SLES for SAP aplikacji 12 z dodatkiem SP1)
@@ -101,8 +101,8 @@ W portalu Azure Marketplace zawiera obraz dla SUSE Linux Enterprise Server 12 ap
 Można użyć jednego z szablonów szybkiego startu, które znajdują się w usłudze GitHub w celu wdrożenia wszystkich wymaganych zasobów. Ten szablon służy do wdrażania maszyn wirtualnych, moduł równoważenia obciążenia, zestaw dostępności i tak dalej.
 Aby wdrożyć szablon, wykonaj następujące kroki:
 
-1. Otwórz [szablonu bazy danych] [ template-multisid-db] lub [zbieżności szablonu] [ template-converged] w witrynie Azure portal. 
-    Szablon bazy danych umożliwia utworzenie reguły równoważenia obciążenia dla tylko bazy danych. Osiągnięcia zbieżności szablon tworzy również reguł równoważenia obciążenia dla ASCS/SCS i wystąpienia Wywołujących (tylko system Linux). Jeśli planujesz zainstalowanie systemu SAP NetWeaver i chcesz zainstalować wystąpienie ASCS/SCS na tych samych komputerach, należy użyć [zbieżności szablonu][template-converged].
+1. Otwórz [szablonu bazy danych][template-multisid-db] or the [converged template][template-converged] on the Azure portal. 
+    The database template creates the load-balancing rules for a database only. The converged template also creates the load-balancing rules for an ASCS/SCS and ERS (Linux only) instance. If you plan to install an SAP NetWeaver-based system and you want to install the ASCS/SCS instance on the same machines, use the [converged template][template-converged].
 
 1. Wprowadź następujące parametry:
     - **Identyfikator systemu SAP**: Wprowadź identyfikator systemu SAP systemu SAP, w którym chcesz zainstalować. Ten identyfikator jest używany jako prefiks dla zasobów, które są wdrażane.
@@ -347,7 +347,7 @@ Aby zainstalować replikacji systemu SAP HANA, wykonaj rozdziału 4 [przewodnik 
 
 1. **[A]**  Uaktualnienia tego agenta hosta SAP.
 
-   Pobierz najnowsze archiwum agenta hosta SAP z [Centrum oprogramowania SAP] [ sap-swcenter] i uruchom następujące polecenie, aby uaktualnić agenta. Zastąp ścieżkę do archiwum, aby wskazywał pobranego pliku:
+   Pobierz najnowsze archiwum agenta hosta SAP z [Centrum oprogramowania SAP][sap-swcenter] i uruchom następujące polecenie, aby uaktualnić agenta. Zastąp ścieżkę do archiwum, aby wskazywał pobranego pliku:
 
    <pre><code>sudo /usr/sap/hostctrl/exe/saphostexec -upgrade -archive &lt;path to SAP Host Agent SAR&gt;
    </code></pre>

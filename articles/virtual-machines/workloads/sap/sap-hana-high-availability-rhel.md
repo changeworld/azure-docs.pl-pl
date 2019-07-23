@@ -4,7 +4,7 @@ description: Ustanów wysoką dostępność środowiska SAP HANA na maszynach wi
 services: virtual-machines-linux
 documentationcenter: ''
 author: MSSedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 1eca9dd82bec120e5554627ade71688c82be7763
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 66e1e4603602835d6ed5be9af58eb09a24b00b63
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64922129"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709115"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Wysoka dostępność programu SAP HANA na maszynach wirtualnych platformy Azure w systemie Red Hat Enterprise Linux
 
@@ -79,7 +79,7 @@ Najpierw przeczytaj następujące uwagi SAP i dokumenty:
   * [Instalowanie i konfigurowanie Red Hat Enterprise Linux 7.4 (lub nowszy) o wysokiej dostępności klastra w systemie Microsoft Azure](https://access.redhat.com/articles/3252491)
   * [Instalowanie platformy SAP HANA w systemie Red Hat Enterprise Linux do użycia w systemie Microsoft Azure](https://access.redhat.com/solutions/3193782)
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Aby osiągnąć wysoką dostępność, SAP HANA jest zainstalowany na dwie maszyny wirtualne. Dane są replikowane przy użyciu replikacji systemu HANA.
 
@@ -101,7 +101,7 @@ W portalu Azure Marketplace zawiera obraz systemu Red Hat Enterprise Linux 7.4 p
 Można użyć jednego z szablonów szybkiego startu, które znajdują się w usłudze GitHub w celu wdrożenia wszystkich wymaganych zasobów. Ten szablon służy do wdrażania maszyn wirtualnych, moduł równoważenia obciążenia, zestaw dostępności i tak dalej.
 Aby wdrożyć szablon, wykonaj następujące kroki:
 
-1. Otwórz [szablonu bazy danych] [ template-multisid-db] w witrynie Azure portal.
+1. Otwórz [szablonu bazy danych][template-multisid-db] w witrynie Azure portal.
 1. Wprowadź następujące parametry:
     * **Identyfikator systemu SAP**: Wprowadź identyfikator systemu SAP systemu SAP, w którym chcesz zainstalować. Ten identyfikator jest używany jako prefiks dla zasobów, które są wdrażane.
     * **Typ systemu operacyjnego**: Wybierz jeden z dystrybucje systemu Linux. W tym przykładzie wybierz **RHEL 7**.
@@ -302,7 +302,7 @@ Kroki opisane w tej sekcji należy użyć następujących prefiksów:
 
    Konfigurowanie systemu RHEL, zgodnie z opisem w Uwaga SAP [2292690] i [2455582] i <https://access.redhat.com/solutions/2447641>.
 
-1. **[A]** Instalowanie platformy SAP HANA
+1. **[A]**  Instalowanie platformy SAP HANA
 
    Aby zainstalować replikacji systemu SAP HANA, postępuj zgodnie z <https://access.redhat.com/articles/3004101>.
 
@@ -335,7 +335,7 @@ Kroki opisane w tej sekcji należy użyć następujących prefiksów:
 
 1. **[A]**  Uaktualnienia tego agenta hosta SAP.
 
-   Pobierz najnowsze archiwum agenta hosta SAP z [Centrum oprogramowania SAP] [ sap-swcenter] i uruchom następujące polecenie, aby uaktualnić agenta. Zastąp ścieżkę do archiwum, aby wskazywał pobranego pliku:
+   Pobierz najnowsze archiwum agenta hosta SAP z [Centrum oprogramowania SAP][sap-swcenter] i uruchom następujące polecenie, aby uaktualnić agenta. Zastąp ścieżkę do archiwum, aby wskazywał pobranego pliku:
 
    <pre><code>sudo /usr/sap/hostctrl/exe/saphostexec -upgrade -archive &lt;path to SAP Host Agent SAR&gt;
    </code></pre>
