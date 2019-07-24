@@ -1,6 +1,6 @@
 ---
 title: 'Szybki start: Wysyłanie żądania wyszukiwania do interfejsu API REST wyszukiwania jednostek Bing przy użyciu języka Java'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Skorzystaj z tego przewodnika Szybki start, aby wysyłać żądania do interfejsu API REST wyszukiwania jednostek Bing przy użyciu języka Java i otrzymywać odpowiedzi w formacie JSON.
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: a8b25252e861d707568876f75aadd6f436441f8f
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 809caf81877756c2bb477959a7a263e52bc50359
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389432"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404885"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-java"></a>Szybki start: Wysyłanie żądania wyszukiwania do interfejsu API REST wyszukiwania jednostek Bing przy użyciu języka Java
 
@@ -215,7 +215,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie jednostronicowej aplikacji internetowej](../tutorial-bing-entities-search-single-page-app.md)

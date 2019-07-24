@@ -1,7 +1,7 @@
 ---
-title: Wyszukaj widok niestandardowy — Bing Custom Search
-titlesuffix: Azure Cognitive Services
-description: Opisuje sposób wyszukiwania niestandardowy widok sieci web.
+title: Przeszukiwanie widoku niestandardowego — wyszukiwanie niestandardowe Bing
+titleSuffix: Azure Cognitive Services
+description: Opisuje sposób przeszukiwania niestandardowego widoku sieci Web.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,54 +10,54 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: maheshb
-ms.openlocfilehash: 9c0c4fc21f6f4b23b14c8020ecd7e95c63dedcbf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 814f57d4011823da80e53cce41ffcb523fc0bf1b
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388545"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405005"
 ---
-# <a name="call-your-bing-custom-search-instance-from-the-portal"></a>Wywoływanie wystąpienia wyszukiwania niestandardowego Bing z portalu
+# <a name="call-your-bing-custom-search-instance-from-the-portal"></a>Wywoływanie wystąpienia wyszukiwanie niestandardowe Bing z portalu
 
-Po skonfigurowaniu środowiska wyszukiwania niestandardowego, można przetestować go w ciągu wyszukiwania niestandardowego Bing [portal](https://customsearch.ai). 
+Po skonfigurowaniu niestandardowego środowiska wyszukiwania można je przetestować z poziomu [portalu](https://customsearch.ai)wyszukiwanie niestandardowe Bing. 
 
-![Zrzut ekranu portalu wyszukiwania niestandardowego Bing](media/portal-search-screen.png)
+![zrzut ekranu portalu wyszukiwania niestandardowego Bing](media/portal-search-screen.png)
 ## <a name="create-a-search-query"></a>Utwórz zapytanie wyszukiwania 
 
-Po zalogowaniu się do usługi Bing Custom Search [portal](https://customsearch.ai), wybierz wystąpienie usługi wyszukiwania i kliknij przycisk **produkcji** kartę. W obszarze **punktów końcowych**, wybierz punkt końcowy interfejsu API (na przykład interfejsu API sieci Web). Subskrypcja Określa, jakie punkty końcowe są wyświetlane.
+Po zalogowaniu się do [portalu](https://customsearch.ai)wyszukiwanie niestandardowe Bing wybierz wystąpienie wyszukiwania i kliknij kartę **produkcja** . W obszarze **punkty końcowe**wybierz punkt końcowy interfejsu API (na przykład internetowy interfejs API). Twoja subskrypcja określa, jakie punkty końcowe są wyświetlane.
 
-Aby utworzyć zapytanie wyszukiwania, wprowadź wartości parametrów dla punktu końcowego usługi. Pamiętaj, że parametry wyświetlana w portalu mogą ulec zmianie w zależności od punktu końcowego, które wybierzesz. Zobacz [dokumentacja interfejsu API wyszukiwania niestandardowego](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) Aby uzyskać więcej informacji. Aby zmienić subskrypcję, której używa wystąpienia wyszukiwania, Dodaj klucz odpowiednią subskrypcję i zaktualizuj odpowiednie parametry rynku i/lub języka.
+Aby utworzyć zapytanie wyszukiwania, wprowadź wartości parametrów dla punktu końcowego. Należy pamiętać, że parametry wyświetlane w portalu mogą ulec zmianie w zależności od wybranego punktu końcowego. Zobacz [odwołanie interfejs API wyszukiwania niestandardowego](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) , aby uzyskać więcej informacji. Aby zmienić subskrypcję używaną przez wystąpienie wyszukiwania, Dodaj odpowiedni klucz subskrypcji i zaktualizuj odpowiednie parametry rynku i/lub języka.
 
-Niektóre parametry ważne są poniżej:
+Poniżej przedstawiono kilka ważnych parametrów:
 
 
 |Parametr  |Opis  |
 |---------|---------|
-|Zapytanie     | Wyszukiwany termin do wyszukania. Dostępne tylko dla punktów końcowych sieci Web, obrazów, wideo i automatycznego sugerowania |
+|Zapytanie     | Termin wyszukiwania, który ma zostać wyszukany. Dostępne tylko dla punktów końcowych sieci Web, obrazów, wideo i automatycznego sugerowania |
 |Identyfikator konfiguracji niestandardowej | Identyfikator konfiguracji wybranego wystąpienia wyszukiwania niestandardowego. To pole jest tylko do odczytu. |
-|Market     | Na rynku, które pochodzą od wyników. Dostępne tylko w przypadku punktów końcowych sieci Web, obrazów, wideo i hostowanych interfejsu użytkownika.        |
-|Klucz subskrypcji | Klucz subskrypcji na potrzeby testów. Można wybrać klucz z listy rozwijanej lub wprowadzić ręcznie.          |
+|Market     | Rynek, z którego pochodzą wyniki. Dostępne tylko dla punktów końcowych sieci Web, obrazów, wideo i hostowanego interfejsu użytkownika.        |
+|Klucz subskrypcji | Klucz subskrypcji do przetestowania. Możesz wybrać klucz z listy rozwijanej lub wprowadzić go ręcznie.          |
 
-Klikając **dodatkowe parametry** , co spowoduje wyświetlenie następujących parametrów:  
+Kliknięcie **dodatkowych parametrów** ujawnia następujące parametry:  
 
 |Parametr  |Opis  |
 |---------|---------|
-|Safe Search     | Filtr używany do filtrowania strony internetowe dla dorosłych. Dostępne tylko w przypadku punktów końcowych sieci Web, obrazów, wideo i hostowanych interfejsu użytkownika.        |
-|Język interfejsu użytkownika    | Język używany do ciągi interfejsu użytkownika. Na przykład, jeśli zostanie włączone, obrazy i klipy wideo w interfejsie użytkownika usług hostowanych **obraz** i **wideo** karty użyć określonego języka.        |
-|Count     | Liczba wyników wyszukiwania, aby zwrócić w odpowiedzi. Dostępne tylko dla punktów końcowych sieci Web, obrazów i filmów wideo.         |
-|Offset    | Liczba wyników wyszukiwania, aby pominąć przed zwróceniem wyników. Dostępne tylko dla punktów końcowych sieci Web, obrazów i filmów wideo.        |
+|Safe Search     | Filtr używany do filtrowania stron sieci Web na potrzeby zawartości dla dorosłych. Dostępne tylko dla punktów końcowych sieci Web, obrazów, wideo i hostowanego interfejsu użytkownika.        |
+|Język interfejsu użytkownika    | Język używany dla ciągów interfejsu użytkownika. Na przykład jeśli włączysz obrazy i wideo w hostowanym interfejsie użytkownika, karty **obrazu** i **wideo** używają określonego języka.        |
+|Count     | Liczba wyników wyszukiwania do zwrócenia w odpowiedzi. Dostępne tylko dla punktów końcowych sieci Web, obrazów i wideo.         |
+|Offset    | Liczba wyników wyszukiwania do pominięcia przed zwróceniem wyników. Dostępne tylko dla punktów końcowych sieci Web, obrazów i wideo.        |
     
-Po określeniu wszystkie wymagane opcje, kliknij przycisk **wywołania** Aby wyświetlić odpowiedź w formacie JSON w okienku po prawej stronie. Jeśli wybierzesz hostowanych interfejsu użytkownika punktu końcowego, możesz przetestować środowiska wyszukiwania w dolnym okienku.
+Po określeniu wszystkich wymaganych opcji kliknij pozycję **Połącz** , aby wyświetlić odpowiedź JSON w okienku po prawej stronie. W przypadku wybrania punktu końcowego hostowanego interfejsu użytkownika można testować środowisko wyszukiwania w dolnym okienku.
 
-## <a name="change-your-bing-custom-search-subscription"></a>Zmiana subskrypcji usługa Bing Custom Search
+## <a name="change-your-bing-custom-search-subscription"></a>Zmień subskrypcję usługi wyszukiwanie niestandardowe Bing
 
-Możesz zmienić subskrypcję skojarzoną z wystąpieniem usługi Bing Custom Search bez tworzenia nowego wystąpienia. Aby wywołań interfejsu API wysyłane i rozliczane do nowej subskrypcji, należy utworzyć nowy zasób usługi Bing Custom Search w witrynie Azure portal. Użyj nowego klucza subskrypcji w żądań interfejsu API, wraz z identyfikatorem wystąpienia usługi konfiguracji niestandardowej.
+Subskrypcję skojarzoną z wystąpieniem wyszukiwanie niestandardowe Bing można zmienić bez tworzenia nowego wystąpienia. Aby wywołania interfejsu API były wysyłane i obciążane do nowej subskrypcji, Utwórz nowy zasób wyszukiwanie niestandardowe Bing w Azure Portal. Użyj nowego klucza subskrypcji w żądaniach interfejsu API wraz z niestandardowym IDENTYFIKATORem konfiguracji wystąpienia.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Wywoływanie w widoku niestandardowym przy użyciu języka C#](./call-endpoint-csharp.md)
-- [Wywoływanie w widoku niestandardowym przy użyciu języka Java](./call-endpoint-java.md)
-- [Wywołania z usługą NodeJs w widoku niestandardowym](./call-endpoint-nodejs.md)
-- [Wywoływanie w widoku niestandardowym przy użyciu języka Python](./call-endpoint-python.md)
+- [Wywoływanie widoku niestandardowego zC#](./call-endpoint-csharp.md)
+- [Wywoływanie niestandardowego widoku przy użyciu języka Java](./call-endpoint-java.md)
+- [Wywoływanie niestandardowego widoku przy użyciu NodeJs](./call-endpoint-nodejs.md)
+- [Wywoływanie niestandardowego widoku przy użyciu języka Python](./call-endpoint-python.md)
 
-- [Wywoływanie w widoku niestandardowym przy użyciu zestawu SDK języka C#](./sdk-csharp-quick-start.md)
+- [Wywoływanie niestandardowego widoku przy użyciu C# zestawu SDK](./sdk-csharp-quick-start.md)

@@ -1,6 +1,6 @@
 ---
 title: 'Szybki start: wywoływanie punktu końcowego wyszukiwania niestandardowego Bing przy użyciu języka C# | Microsoft Docs'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Użyj tego przewodnika Szybki start, aby rozpocząć żądanie wyników z wystąpienia wyszukiwania niestandardowego Bing w języku C#.
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.author: maheshb
-ms.openlocfilehash: 269619fb201f9ef203bcf8772868b65be8bf2f17
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: c1b118ec08e00705ad3eab9141d116fb9e6ef257
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360637"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405193"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>Szybki start: wywoływanie punktu końcowego wyszukiwania niestandardowego Bing przy użyciu języka C# 
 

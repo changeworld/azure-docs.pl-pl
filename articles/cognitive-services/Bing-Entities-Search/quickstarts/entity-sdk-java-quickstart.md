@@ -1,6 +1,6 @@
 ---
 title: 'Szybki start: Wyszukiwanie jednostek za pomocą zestawu SDK wyszukiwania jednostek Bing dla języka Java'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Użyj tego poradnika Szybki start, aby wyszukiwać jednostki za pomocą zestawu SDK wyszukiwania jednostek Bing dla języka Java
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 15958033ef305a44f9c5254409fa111acd9d1eb5
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f0dad214ceaf0606699eb8eca7cfb1c325a38eab
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813714"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404939"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-java"></a>Szybki start: Wysyłanie żądania wyszukiwania za pomocą zestawu SDK wyszukiwania jednostek Bing dla języka Java
 
@@ -147,7 +147,7 @@ Zainstaluj zależności zestawu SDK wyszukiwania jednostek Bing przy użyciu opr
     }
     ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie jednostronicowej aplikacji internetowej](../tutorial-bing-entities-search-single-page-app.md)

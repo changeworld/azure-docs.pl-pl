@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: Zaproponuj zapytania wyszukiwania przy użyciu interfejsu API REST automatycznego sugerowania Bing i języka Java'
-titlesuffix: Azure Cognitive Services
-description: Dowiedz się, jak szybko rozpocząć sugerowanie terminy wyszukiwania w czasie rzeczywistym za pomocą interfejsu API automatycznego sugerowania Bing.
+title: 'Szybki start: Sugeruj zapytania wyszukiwania za pomocą interfejsu API REST automatyczne sugerowanie Bing i środowiska Java'
+titleSuffix: Azure Cognitive Services
+description: Dowiedz się, jak szybko rozpocząć sugerowanie wyszukiwanych terminów w czasie rzeczywistym za pomocą interfejs API automatycznego sugerowania Bing.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,17 +10,17 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: f41e81d948bfa482a016e3770a705344f9c26b0c
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: a789c8278abc49602db1ee58354f96a04c2d111d
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390431"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405327"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>Szybki start: Zaproponuj zapytania wyszukiwania przy użyciu interfejsu API REST automatycznego sugerowania Bing i języka Java
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>Szybki start: Sugeruj zapytania wyszukiwania za pomocą interfejsu API REST automatyczne sugerowanie Bing i środowiska Java
 
 
-Użyj tego przewodnika Szybki Start, aby rozpocząć wprowadzanie wywołania interfejsu API automatycznego sugerowania Bing i uzyskiwania odpowiedzi JSON. Ta prosta aplikacja Java wysyła zapytanie częściowe do interfejsu API i zwraca sugestie dotyczące wyszukiwania. Chociaż ta aplikacja jest napisana w języku Java, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania. Kod źródłowy, w tym przykładzie jest dostępny na [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingAutosuggestv7.java)
+Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć wykonywanie wywołań do interfejs API automatycznego sugerowania Bing i uzyskać odpowiedź JSON. Ta prosta aplikacja Java wysyła zapytanie wyszukiwania częściowego do interfejsu API i zwraca sugestie dotyczące wyszukiwania. Chociaż ta aplikacja jest napisana w języku Java, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania. Kod źródłowy dla tego przykładu jest dostępny w witrynie [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingAutosuggestv7.java)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -44,7 +44,7 @@ Użyj tego przewodnika Szybki Start, aby rozpocząć wprowadzanie wywołania int
     import com.google.gson.JsonParser;
     ```
 
-2. Tworzenie zmiennych dla swój klucz subskrypcji, interfejsu API hosta i ścieżkę, Twoje [rynek kodu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)i zapytania wyszukiwania.
+2. Utwórz zmienne dla klucza subskrypcji, hosta interfejsu API i ścieżki, [kodu rynku](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)oraz zapytania wyszukiwania.
     
     ```java
     static String subscriptionKey = "enter key here";
@@ -73,7 +73,7 @@ public static String prettify(String json_text) {
 
 1. Utwórz nową metodę o nazwie `get_suggestions()` i wykonaj następujące czynności:
 
-   1. Skonstruuj adres URL na potrzeby żądania, łącząc host i ścieżkę interfejsu API i kodując zapytania wyszukiwania. Pamiętaj, aby adres url — kodowanie zapytanie przed dołączeniem go. Utwórz parametry ciągu zapytania, dodając kod na rynku, aby `mkt=` parametr i zapytania `q=` parametru.
+   1. Skonstruuj adres URL na potrzeby żądania, łącząc host i ścieżkę interfejsu API i kodując zapytania wyszukiwania. Przed dołączeniem zapytania należy pamiętać o adresie URL. Utwórz ciąg parametrów dla zapytania, dołączając kod rynkowy do `mkt=` parametru oraz zapytanie `q=` do parametru.
     
       ```java
   
@@ -84,7 +84,7 @@ public static String prettify(String json_text) {
       }
       ```
     
-   2. Utwórz nowy adres URL żądania z hosta interfejsu API, ścieżki oraz parametrów utworzonego powyżej. 
+   2. Utwórz nowy adres URL dla żądania z hostem interfejsu API, ścieżką i utworzonymi powyżej parametrami. 
     
        ```java
        //...
@@ -92,7 +92,7 @@ public static String prettify(String json_text) {
        //...
        ```
     
-   3. Tworzenie `HttpsURLConnection` obiektu, a następnie użyj `openConnection()` do utworzenia połączenia. Jako metodę żądania ustaw `GET` i dodaj klucz subskrypcji do nagłówka `Ocp-Apim-Subscription-Key`.
+   3. Utwórz obiekt i Użyj `openConnection()` go, aby utworzyć połączenie. `HttpsURLConnection` Jako metodę żądania ustaw `GET` i dodaj klucz subskrypcji do nagłówka `Ocp-Apim-Subscription-Key`.
 
       ```java
        //...
@@ -103,7 +103,7 @@ public static String prettify(String json_text) {
        //...
       ```
 
-   4. Przeczytaj w odpowiedzi interfejsu API `StringBuilder`. Po przechwyceniu odpowiedzi Zamknij `InputStreamReader` strumienia, a następnie zwraca odpowiedź.
+   4. Przeczytaj w odpowiedzi interfejsu API na `StringBuilder`. Po przechwyceniu odpowiedzi Zamknij `InputStreamReader` strumień i zwróć odpowiedź.
 
        ```java
        //...
@@ -119,7 +119,7 @@ public static String prettify(String json_text) {
        return response.toString();
        ```
 
-2. W funkcji main aplikacji, wywołaj `get_suggestions()`i drukowania, przy użyciu odpowiedzi `prettify()`.
+2. W głównej funkcji aplikacji Wywołaj `get_suggestions()`i wydrukuj odpowiedź przy użyciu polecenia. `prettify()`
     
     ```java
     public static void main(String[] args) {

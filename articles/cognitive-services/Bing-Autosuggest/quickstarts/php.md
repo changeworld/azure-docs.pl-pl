@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: Zaproponuj zapytania wyszukiwania przy użyciu interfejsu API REST automatycznego sugerowania Bing i języka PHP'
-titlesuffix: Azure Cognitive Services
-description: Dowiedz się, jak szybko rozpocząć sugerowanie terminy wyszukiwania w czasie rzeczywistym za pomocą interfejsu API automatycznego sugerowania Bing.
+title: 'Szybki start: Sugeruj zapytania wyszukiwania za pomocą interfejsu API REST automatyczne sugerowanie Bing i języka PHP'
+titleSuffix: Azure Cognitive Services
+description: Dowiedz się, jak szybko rozpocząć sugerowanie wyszukiwanych terminów w czasie rzeczywistym za pomocą interfejs API automatycznego sugerowania Bing.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 9b93714883ca4558925ac64c360db7bc395ff8f4
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 6bbd9e5f0f1c9f26a8af756dd3c9bce666168079
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390381"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405300"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-php"></a>Szybki start: Zaproponuj zapytania wyszukiwania przy użyciu interfejsu API REST automatycznego sugerowania Bing i języka PHP
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-php"></a>Szybki start: Sugeruj zapytania wyszukiwania za pomocą interfejsu API REST automatyczne sugerowanie Bing i języka PHP
 
-Użyj tego przewodnika Szybki Start, aby rozpocząć wprowadzanie wywołania interfejsu API automatycznego sugerowania Bing i uzyskiwania odpowiedzi JSON. Ta prosta aplikacja PHP wysyła zapytanie częściowe do interfejsu API i zwraca sugestie dotyczące wyszukiwania. Chociaż ta aplikacja jest napisana w języku PHP, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
+Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć wykonywanie wywołań do interfejs API automatycznego sugerowania Bing i uzyskać odpowiedź JSON. Ta prosta aplikacja PHP wysyła zapytanie wyszukiwania częściowego do interfejsu API i zwraca sugestie dotyczące wyszukiwania. Chociaż ta aplikacja jest napisana w języku PHP, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -147,7 +147,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Bing Autosuggest tutorial (Samouczek dotyczący automatycznego sugerowania Bing)](../tutorials/autosuggest.md)

@@ -3,20 +3,20 @@ title: Tworzenie aplikacji za pomocą mowy SDK — usługi mowy
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak tworzyć aplikacje przy użyciu zestawu SDK rozpoznawania mowy.
 services: cognitive-services
-author: wolfma61
+author: jhakulin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
-ms.author: wolfma
+ms.date: 07/23/2019
+ms.author: jhakulin
 ms.custom: seodec18
-ms.openlocfilehash: 7c698abb133c14f32b60b22acbbccc37a191a02e
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 8fc27002af4ebef0825b23c806cfedbe7adf9642
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604857"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404809"
 ---
 # <a name="ship-an-application"></a>Dostarczanie aplikacji
 
@@ -28,7 +28,7 @@ W zależności od platformy różnych składników zależnych istnieje uruchomi�
 
 Cognitive Services SDK rozpoznawania mowy jest testowana w systemie Windows 10 i systemie Windows Server 2016.
 
-Cognitive Services SDK mowy wymaga [programu Microsoft Visual C++ Redistributable dla programu Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) w systemie. Możesz pobrać pliki instalacyjne, aby uzyskać najnowszą wersję `Microsoft Visual C++ Redistributable for Visual Studio 2019` tutaj:
+Zestaw SDK mowy Cognitive Services wymaga programu [Microsoft Visual C++ redystrybucyjnego dla programu Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) w systemie. Możesz pobrać pliki instalacyjne, aby uzyskać najnowszą wersję `Microsoft Visual C++ Redistributable for Visual Studio 2019` tutaj:
 
 - [Win32](https://aka.ms/vs/16/release/vc_redist.x86.exe)
 - [x64](https://aka.ms/vs/16/release/vc_redist.x64.exe)
@@ -45,29 +45,29 @@ W tym samym katalogu co aplikację można wdrożyć wymagane pliki zestawów SDK
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | wymagane do wdrażania zarządzanego
 
 >[!NOTE]
-> Począwszy od wersji 1.3.0 pliku `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (dostarczane w poprzednich wersjach) nie jest już potrzebny. Funkcje jest teraz zintegrowana w programie core SDK.
+> Począwszy od wersji 1.3.0 plik `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (dostarczony w poprzednich wersjach) nie jest już wymagany. Ta funkcja jest teraz zintegrowana z podstawowym zestawem SDK.
 
 >[!NOTE]
-> W aplikacji Windows Forms (.NET Framework) C# projektu, upewnij się, bibliotek znajdują się w ustawieniach wdrażania projektu. Możesz to sprawdzić w obszarze `Properties -> Publish Section`. Kliknij przycisk `Application Files` przycisk i znaleźć odpowiedniej biblioteki z przewiń w dół listy. Upewnij się, że wartość jest równa `Included`. Program Visual Studio będzie zawierać plik, gdy projekt jest opublikowana lub wdrożone.
+> W przypadku projektu aplikacji Windows Forms (.NET Framework C# ) Upewnij się, że biblioteki są uwzględnione w ustawieniach wdrożenia projektu. Możesz to sprawdzić w sekcji `Properties -> Publish Section`. `Application Files` Kliknij przycisk i Znajdź odpowiednie biblioteki z listy rozwijanej. Upewnij się, że wartość jest ustawiona `Included`na. Program Visual Studio uwzględni plik, gdy projekt jest publikowany/wdrażany.
 
 ## <a name="linux"></a>Linux
 
-Zestaw SDK rozpoznawania mowy obsługuje obecnie dystrybucji Ubuntu 16.04 i Ubuntu 18.04, Debian 9.
+Zestaw Speech SDK obecnie obsługuje dystrybucje Ubuntu 16,04, Ubuntu 18,04 i Debian 9.
 Aplikację natywną, musisz wysłać biblioteki zestawu SDK rozpoznawania mowy, `libMicrosoft.CognitiveServices.Speech.core.so`.
 Upewnij się, że wybrano wersję (x86, x64), która jest zgodna z aplikacji. W zależności od wersji systemu Linux, również może być konieczne obejmują następujące zależności:
 
 * Biblioteki udostępnione biblioteki GNU C (łącznie z biblioteki programowania wątków POSIX `libpthreads`)
-* Biblioteki OpenSSL (`libssl.so.1.0.0` lub `libssl.so.1.0.2`)
+* Biblioteka OpenSSL (`libssl.so.1.0.0` lub `libssl.so.1.0.2`)
 * Biblioteki udostępnionej dla aplikacji ALSA (`libasound.so.2`)
 
-W systemie Ubuntu bibliotek GNU C powinno być już zainstalowane domyślnie. Trzy ostatnie można zainstalować za pomocą poniższych poleceń:
+W systemie Ubuntu biblioteki GNU C powinny już być instalowane domyślnie. Trzy ostatnie można zainstalować za pomocą poniższych poleceń:
 
 ```sh
 sudo apt-get update
 sudo apt-get install libssl1.0.0 libasound2
 ```
 
-Debian 9 zainstalować te pakiety:
+W systemie Debian 9 Zainstaluj następujące pakiety:
 
 ```sh
 sudo apt-get update

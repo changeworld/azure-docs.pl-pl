@@ -3,23 +3,22 @@ title: 'Szybki start: tłumaczenie mowy, C# (UWP) — usługi mowy'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start utworzysz prostą aplikację platformy uniwersalnej systemu Windows (UWP) do przechwytywania mowy użytkownika, tłumaczenia jej na inny język i przekazywania tekstu do wiersza polecenia. Ten przewodnik jest przeznaczony dla użytkowników systemu Windows.
 services: cognitive-services
-author: wolfma61
+author: lisaweixu
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 07/05/2019
+ms.date: 07/23/2019
 ms.author: erhopf
-ms.openlocfilehash: 108edfeb7bfe24184219e0011f054c36c22c9890
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: dafcbd6bbe7f542d4eabc6b7cf858ac4871caae8
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602787"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404909"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-c-uwp"></a>Szybki start: Tłumaczenie mowy przy użyciu zestawu SDK usługi Mowa dla platformy uniwersalnej systemu Windows dla języka C# (UWP)
 
-Przewodniki Szybki Start są również dostępne dla [mowy na tekst](quickstart-csharp-uwp.md), [zamiany tekstu na mowę](quickstart-text-to-speech-csharp-uwp.md) i [głosu pierwszego wirtualnego Asystenta](quickstart-virtual-assistant-csharp-uwp.md).
+Przewodniki Szybki Start są również dostępne dla Asystenta [mowy na tekst](quickstart-csharp-uwp.md), [tekstu na mowę](quickstart-text-to-speech-csharp-uwp.md) i [głosu](quickstart-virtual-assistant-csharp-uwp.md).
 
 W tym przewodniku Szybki start utworzysz prostą aplikację platformy uniwersalnej systemu Windows (UWP), która przechwytuje mowę użytkownika z mikrofonu komputera, tłumaczy tę mowę i transkrybuje przetłumaczony tekst do wiersza polecenia w czasie rzeczywistym. Ta aplikacja jest przeznaczona do uruchamiania w 64-bitowych systemach Windows i jest kompilowana przy użyciu [pakietu NuGet zestawu SDK usługi Mowa](https://aka.ms/csspeech/nuget) i programu Microsoft Visual Studio 2017.
 
@@ -39,7 +38,7 @@ Ten przewodnik Szybki start wymaga następujących elementów:
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-uwp-create-proj.md)]
 
-## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
+## <a name="add-sample-code"></a>Dodaj kod przykładowy
 
 1. Interfejs użytkownika aplikacji jest definiowany przy użyciu języka XAML. Otwórz `MainPage.xaml` w Eksploratorze rozwiązań. W widoku języka XAML dla projektanta wstaw poniższy fragment kodu XAML między tagami `<Grid>` i `</Grid>`.
 
@@ -73,7 +72,7 @@ Ten przewodnik Szybki start wymaga następujących elementów:
 
     ![Zrzut ekranu interfejsu użytkownika rozpoznawania mowy](media/sdk/qs-translate-csharp-uwp-ui-result.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Zapoznaj się z przykładami dla języka C# w usłudze GitHub](https://aka.ms/csspeech/samples)

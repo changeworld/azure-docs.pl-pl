@@ -1,7 +1,7 @@
 ---
-title: Wysyłanie żądań do interfejsu API automatycznego sugerowania Bing
-titlesuffix: Azure Cognitive Services
-description: Dowiedz się, jak wysyłać żądań do interfejsu API automatycznego sugerowania Bing.
+title: Wysyłanie żądań do interfejs API automatycznego sugerowania Bing
+titleSuffix: Azure Cognitive Services
+description: Dowiedz się, jak wysyłać żądania do interfejs API automatycznego sugerowania Bing.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,43 +10,43 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 06/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: fe35901f7d084fd96cb4c164e957391bfe2346a9
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 6ece70b78166578cd4ef391d761b0e4e478f4f04
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542623"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405364"
 ---
-# <a name="sending-requests-to-the-bing-autosuggest-api"></a>Wysyłanie żądań do interfejsu API automatycznego sugerowania Bing.
+# <a name="sending-requests-to-the-bing-autosuggest-api"></a>Wysyłanie żądań do interfejs API automatycznego sugerowania Bing.
 
-Jeśli aplikacja wysyła zapytania do dowolnego z interfejsów API wyszukiwania Bing, możesz użyć interfejsu API automatycznego sugerowania Bing w celu ulepszenia środowiska wyszukiwania dla użytkowników. Interfejs API automatycznego sugerowania Bing zwraca listę proponowanych zapytań na podstawie częściowego ciągu zapytania w polu wyszukiwania. Znaki wprowadzoną w polu wyszukiwania w aplikacji możesz wyświetlić sugestii na liście rozwijanej. Aby dowiedzieć się więcej na temat wysyłania żądań do tego interfejsu API, należy użyć w tym artykule. 
+Jeśli aplikacja wysyła zapytania do dowolnego z interfejsów API wyszukiwania Bing, możesz użyć interfejsu API automatycznego sugerowania Bing w celu ulepszenia środowiska wyszukiwania dla użytkowników. Interfejs API automatycznego sugerowania Bing zwraca listę proponowanych zapytań na podstawie częściowego ciągu zapytania w polu wyszukiwania. Gdy znaki są wprowadzane do pola wyszukiwania w aplikacji, można wyświetlić sugestie na liście rozwijanej. Skorzystaj z tego artykułu, aby dowiedzieć się więcej o wysyłaniu żądań do tego interfejsu API. 
 
-## <a name="bing-autosuggest-api-endpoint"></a>Punkt końcowy interfejsu API automatycznego sugerowania Bing
+## <a name="bing-autosuggest-api-endpoint"></a>interfejs API automatycznego sugerowania Bing punkt końcowy
 
-**Interfejs API automatycznego sugerowania Bing** obejmuje jednego punktu końcowego, który zwraca Lista proponowanych zapytań z częściowego wyszukiwany termin.
+**Interfejs API automatycznego sugerowania Bing** zawiera jeden punkt końcowy, który zwraca listę sugerowanych zapytań z częściowego terminu wyszukiwania.
 
-Aby uzyskać sugerowane zapytania przy użyciu interfejsu API usługi Bing, Wyślij `GET` żądanie następujący punkt końcowy. Umożliwia dalsze Definiowanie specyfikacji w nagłówki i parametry adresu URL.
+Aby uzyskać sugerowane zapytania przy użyciu interfejsu API Bing, `GET` Wyślij żądanie do poniższego punktu końcowego. Użyj nagłówków i parametrów adresu URL, aby zdefiniować dalsze specyfikacje.
 
-**Punkt końcowy:** Zwraca sugestie dotyczące wyszukiwania jako wyniki JSON, które dotyczą dane wejściowe użytkownika zdefiniowane przez `?q=""`.
+**Punktu końcowego** Zwraca sugestie wyszukiwania jako wyniki JSON, które są istotne dla danych wejściowych użytkownika zdefiniowanych przez `?q=""`.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/Suggestions 
 ```
 
-Aby uzyskać szczegółowe informacje o nagłówków, parametrów, kody na rynku, obiekty odpowiedzi, błędów itd., zobacz [interfejs API automatycznego sugerowania Bing w wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) odwołania.
+Aby uzyskać szczegółowe informacje o nagłówkach, parametrach, kodach rynku, obiektach odpowiedzi, błędach itp., zobacz [interfejs API automatycznego sugerowania Bing odwołanie wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) .
 
-**Bing** interfejsy API obsługują akcji wyszukiwania, które zwracają wyniki według ich typu. Wszystkie punkty końcowe wyszukiwania zwracają wyniki w postaci obiektów odpowiedzi JSON.
-Wszystkie punkty końcowe obsługują zapytań, które zwracają określonego języka i/lub lokalizacji długość geograficzna, szerokość i wyszukiwania usługi radius.
+Interfejsy API **Bing** obsługują akcje wyszukiwania, które zwracają wyniki zgodnie z ich typem. Wszystkie punkty końcowe wyszukiwania zwracają wyniki jako obiekty odpowiedzi JSON.
+Wszystkie punkty końcowe obsługują zapytania, które zwracają określony język i/lub lokalizację według długości geograficznej, szerokości geograficznej i usługi wyszukiwania.
 
-Aby uzyskać pełne informacje na temat parametrów obsługiwanych przez każdy punkt końcowy zobacz strony pomocy dla każdego typu.
-Przykłady podstawowe żądań przy użyciu interfejsu API automatycznego sugerowania można znaleźć [automatycznego sugerowania przewodników Szybki Start](https://docs.microsoft.com/azure/cognitive-services/Bing-Autosuggest).
+Aby uzyskać pełne informacje na temat parametrów obsługiwanych przez poszczególne punkty końcowe, zobacz strony referencyjne dla każdego typu.
+Przykłady podstawowych żądań korzystających z interfejsu API automatycznego sugerowania można znaleźć w temacie automatyczne [sugerowanie szybki start](https://docs.microsoft.com/azure/cognitive-services/Bing-Autosuggest).
 
-## <a name="bing-autosuggest-api-requests"></a>Żądania interfejsu API automatycznego sugerowania Bing
+## <a name="bing-autosuggest-api-requests"></a>Żądania interfejs API automatycznego sugerowania Bing
 
 > [!NOTE]
-> * Żądania interfejsu API automatycznego sugerowania Bing muszą używać protokołu HTTPS.
+> * Żądania do interfejs API automatycznego sugerowania Bing muszą używać protokołu HTTPS.
 
-Zalecamy, aby wszystkie żądania pochodziły z serwera. Dystrybucja klucza jako część aplikacji klienckiej udostępnia więcej możliwości złośliwego innych firm. Ponadto nawiązywania połączeń z serwerem zapewnia jeden punkt uaktualnienia dla przyszłych aktualizacji.
+Zalecamy, aby wszystkie żądania pochodziły z serwera. Dystrybuowanie klucza jako części aplikacji klienckiej zapewnia większą szansę dostępu do złośliwej strony innej firmy. Ponadto wykonywanie wywołań z serwera zapewnia jeden punkt uaktualnienia dla przyszłych aktualizacji.
 
 Żądanie musi określać parametr zapytania [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query), który zawiera częściowy termin wyszukiwany przez użytkownika. Chociaż jest to opcjonalne, żądanie powinno również określać parametr zapytania [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#mkt), który identyfikuje rynek, z którego mają pochodzić wyniki. Aby uzyskać listę opcjonalnych parametrów zapytania, zobacz [Query Parameters (Parametry zapytania)](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query-parameters). Wszystkie wartości parametrów zapytania muszą być zakodowane w adresie URL.
 
@@ -62,15 +62,15 @@ Nagłówki adresu IP klienta i lokalizacji są ważne z punktu widzenia zwracani
 Aby uzyskać listę wszystkich nagłówków żądań i odpowiedzi, zobacz [Nagłówki](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#headers).
 
 > [!NOTE]
-> Gdy wywołujesz interfejs API automatycznego sugerowania Bing z kodu JavaScript w przeglądarce wbudowane funkcje zabezpieczeń może uniemożliwić dostęp do wartości tych nagłówków.
+> Gdy wywołasz interfejs API automatycznego sugerowania Bing z JavaScript, wbudowane funkcje zabezpieczeń przeglądarki mogą uniemożliwiać dostęp do wartości tych nagłówków.
 
-Aby rozwiązać ten problem, może wykonać żądania interfejsu API automatycznego sugerowania usługi Bing za pośrednictwem serwera proxy mechanizmu CORS. Odpowiedź z tego serwera proxy zawiera nagłówek `Access-Control-Expose-Headers`, który zezwala na nagłówki odpowiedzi i udostępnia je dla języka JavaScript.
+Aby rozwiązać ten problem, można wykonać żądanie interfejs API automatycznego sugerowania Bing za pomocą serwera proxy CORS. Odpowiedź z tego serwera proxy zawiera nagłówek `Access-Control-Expose-Headers`, który zezwala na nagłówki odpowiedzi i udostępnia je dla języka JavaScript.
 
-To proste zainstalować serwer proxy CORS, aby zezwolić na naszych [samouczek aplikacji](../tutorials/autosuggest.md) nagłówki opcjonalne klienta dostępu do. Najpierw [zainstaluj platformę Node.js](https://nodejs.org/en/download/), jeśli jeszcze jej nie masz. Potem wprowadź poniższe polecenie w wierszu polecenia.
+Można łatwo zainstalować serwer proxy CORS, aby umożliwić naszej [aplikacji samouczka](../tutorials/autosuggest.md) dostęp do opcjonalnych nagłówków klienta. Najpierw [zainstaluj platformę Node.js](https://nodejs.org/en/download/), jeśli jeszcze jej nie masz. Potem wprowadź poniższe polecenie w wierszu polecenia.
 
     npm install -g cors-proxy-server
 
-Następnie Zmień punkt końcowy interfejsu API automatycznego sugerowania Bing w pliku HTML, aby:
+Następnie Zmień punkt końcowy interfejs API automatycznego sugerowania Bing w pliku HTML na:
 
     http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
 
@@ -80,7 +80,7 @@ Na koniec uruchom serwer proxy CORS za pomocą następującego polecenia:
 
 Podczas korzystania z aplikacji samouczka pozostaw okno polecenia otwarte, ponieważ jego zamknięcie spowoduje zatrzymanie serwera proxy. W rozwijanej sekcji nagłówków HTML poniżej wyników wyszukiwania można teraz zobaczyć nagłówek `X-MSEdge-ClientID` (pomiędzy innymi) i sprawdzić, czy jest on taki sam dla każdego żądania.
 
-Żądania powinna zawierać wszystkie parametry sugerowane zapytania i nagłówków. 
+Żądania powinny obejmować wszystkie sugerowane parametry i nagłówki zapytań. 
 
 W poniższym przykładzie przedstawiono żądanie, które zwraca sugerowane ciągi zapytania dla terminu *sail*.
 
@@ -95,11 +95,11 @@ W poniższym przykładzie przedstawiono żądanie, które zwraca sugerowane cią
 
 Jeśli jest to Twoje pierwsze wywoływanie dowolnego z interfejsów API Bing, nie dołączaj nagłówka identyfikatora klienta. Nagłówek identyfikatora klienta należy uwzględnić tylko wtedy, gdy interfejs API Bing został już wywołany i usługa Bing zwróciła identyfikator klienta dla kombinacji użytkownika i urządzenia.
 
-Następujące grupy sugestii sieci web jest odpowiedź na żądanie powyżej. Grupa zawiera listę podpowiedzi dla zapytania wyszukiwania, z każdym sugestii, w tym `displayText`, `query`, i `url` pola.
+Następująca grupa sugestii sieci Web jest odpowiedzią na powyższe żądanie. Grupa zawiera listę sugestii zapytania wyszukiwania, z każdą sugestią, w tym `displayText`pole `query`, i `url` .
 
 Pole `displayText` zawiera sugerowane zapytanie, używane do wypełnienia listy rozwijanej w polu wyszukiwania. Należy wyświetlić wszystkie sugestie, które zawiera odpowiedź, w podanej kolejności.  
 
-Jeśli użytkownik wybierze zapytania z listy rozwijanej, można użyć go do wywołania z jednym z [interfejsy API wyszukiwania Bing](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) i wyświetlić wyniki, samodzielnie lub wysłać użytkownika do strony wyników Bing za pomocą zwracanego `url` pola.
+Jeśli użytkownik wybierze zapytanie z listy rozwijanej, można użyć go do wywołania jednego z [interfejsy API wyszukiwania Bing](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) i wyświetlić wyniki samodzielnie lub wysłać użytkownika do strony wyników Bing przy użyciu zwróconego `url` pola.
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -167,8 +167,8 @@ BingAPIs-Market: en-US
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Czym jest funkcja automatycznego sugerowania Bing?](../get-suggested-search-terms.md)
 - [Bing Autosuggest API v7 reference (Dokumentacja dotycząca automatycznego sugerowania Bing w wersji 7)](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
-- [Pobieranie sugerowane wyszukiwanych terminów z interfejsu API automatycznego sugerowania Bing](get-suggestions.md)
+- [Pobieranie sugerowanych terminów wyszukiwania z interfejs API automatycznego sugerowania Bing](get-suggestions.md)

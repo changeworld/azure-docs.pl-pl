@@ -1,7 +1,7 @@
 ---
-title: Konfigurowanie środowiska wyszukiwania niestandardowego Bing | Dokumentacja firmy Microsoft
-titlesuffix: Azure Cognitive Services
-description: W tym artykule opisano sposób tworzenia witryn i usług wyszukiwania pionowego
+title: Skonfiguruj środowisko wyszukiwanie niestandardowe Bing | Microsoft Docs
+titleSuffix: Azure Cognitive Services
+description: Opisuje sposób tworzenia usług wyszukiwania w lokacji i w pionie
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,152 +10,152 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: e4799ca099d608c3b8ecd16612b790f5654df7dd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e4ed781544d3cd11e8494e40589676adf57a9c75
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66390414"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405118"
 ---
-# <a name="configure-your-bing-custom-search-experience"></a>Konfigurowanie środowiska wyszukiwania niestandardowego Bing
+# <a name="configure-your-bing-custom-search-experience"></a>Skonfiguruj środowisko wyszukiwanie niestandardowe Bing
 
-Wystąpienia wyszukiwania niestandardowego pozwala dostosować środowisko wyszukiwania, aby uwzględnić tylko zawartość z witryn sieci Web przez użytkownika, interesujące. Zamiast przeprowadzania wyszukiwania w sieci web, Bing, wyszukiwanie tylko wycinków sieci web, które Cię interesują. Aby utworzyć niestandardowy widok internetowy, użyj [portalu](https://customsearch.ai) usługi wyszukiwania niestandardowego Bing.
+Niestandardowe wystąpienie wyszukiwania umożliwia dostosowanie funkcji wyszukiwania w celu uwzględnienia zawartości tylko z witryn sieci Web, na które ponosili użytkownicy. Zamiast przeprowadzać wyszukiwanie w całej sieci Web, Bing przeszukuje tylko wycinki sieci Web, która Cię interesuje. Aby utworzyć niestandardowy widok internetowy, użyj [portalu](https://customsearch.ai) usługi wyszukiwania niestandardowego Bing.
 
-Portal umożliwia tworzenie wystąpienia wyszukiwania, który określa wycinków sieci web: domen, niezwykle i stron sieci Web, które Bing, aby przeprowadzić wyszukiwanie, oraz te, których nie chcesz, aby wyszukać. Portal może także podpowiedzieć zawartości, który chcesz dołączyć.
+Portal umożliwia utworzenie wystąpienia wyszukiwania, które określa wycinków sieci Web: domen, podstron i stron internetowych, które mają być wyszukiwane przez usługę Bing, oraz tych, które nie powinny być przeszukiwane. Portal może również zasugerować zawartość, którą można uwzględnić.
 
-Podczas definiowania wycinków, sieci Web, należy użyć następującego:
+Podczas definiowania wycinków sieci Web należy użyć następujących elementów:
 
-| Nazwa fragmentu | Opis                                                                                                                                                                                                                                                                                                |
+| Nazwa wycinka | Opis                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Domain     | Wycinek domeny obejmuje wszystkie zawartości znajdującej się w obrębie domeny internetowej. Na przykład `www.microsoft.com`. Pominięcie `www.` powoduje, że Bing można także przeszukać poddomeny w domenie. Na przykład, jeśli określisz `microsoft.com`, Wyszukiwarka Bing zwraca także wyniki z `support.microsoft.com` lub `technet.microsoft.com`. |
-| Podstrony    | Wycinek podstrony zawiera całą zawartość w podstrony i ścieżki poniżej. W ścieżce można określić maksymalnie dwóch podstrony. Na przykład: `www.microsoft.com/en-us/windows/`                                                                                                                       |
-| Strony sieci Web    | Wycinek strony sieci Web mogą zawierać tylko tej strony sieci Web w polu wyszukiwania niestandardowego. Opcjonalnie możesz określić, czy dołączać podstrony.                                                                                                                                                                                  |
+| Domain     | Wycinek domeny obejmuje całą zawartość znajdującą się w domenie internetowej. Na przykład `www.microsoft.com`. `www.` Pominięcie powoduje, że Bing również przeszukać domeny podrzędne domeny. Na przykład, jeśli określisz `microsoft.com`, Bing zwróci również wyniki z `support.microsoft.com` lub `technet.microsoft.com`. |
+| Podstrony    | Wycinek podstrony obejmuje całą zawartość znajdującą się na podstronie i ścieżkach poniżej. W ścieżce można określić maksymalnie dwa podstrony. Na przykład: `www.microsoft.com/en-us/windows/`                                                                                                                       |
+| Strona sieci Web    | Wycinek strony sieci Web może zawierać tylko Tę stronę sieci Web w wyszukiwaniu niestandardowym. Opcjonalnie można określić, czy mają być dołączane podstrony.                                                                                                                                                                                  |
 
 > [!IMPORTANT]
-> Wszystkich domen, podstrony i stron sieci Web, który określisz musi być indeksowane przez usługę Bing i publicznych. Jeśli jesteś właścicielem publicznej witryny, które mają zostać uwzględnione w wyszukiwaniu i Bing nie zindeksował go, zobacz Bing [dokumentacji webmastera](https://www.bing.com/webmaster/help/webmaster-guidelines-30fba23a) szczegółowe informacje na temat pobierania Bing, aby je indeksować. Zobacz też w dokumentacji webmastera, aby uzyskać szczegółowe informacje o pobieraniu Bing zaktualizować przeszukanych witryny, jeśli indeks jest nieaktualna.
+> Wszystkie domeny, podstrony i określone strony sieci Web muszą być publiczne i indeksowane przez usługę Bing. Jeśli jesteś członkiem publicznej witryny, która ma zostać uwzględniona w wyszukiwaniu, a Bing nie jest indeksowany, zapoznaj się z [dokumentacją](https://www.bing.com/webmaster/help/webmaster-guidelines-30fba23a) dotyczącą usługi Bing, aby uzyskać szczegółowe informacje na temat ich indeksowania. Ponadto zapoznaj się z dokumentacją webmaster, aby uzyskać szczegółowe informacje na temat pobierania usługi Bing w celu zaktualizowania przeszukiwanej witryny, jeśli indeks jest nieaktualny.
 
-## <a name="add-slices-of-the-web-to-your-custom-search-instance"></a>Dodaj wycinków sieci web do Twojego wystąpienia wyszukiwania niestandardowego
+## <a name="add-slices-of-the-web-to-your-custom-search-instance"></a>Dodawanie wycinków sieci Web do niestandardowego wystąpienia wyszukiwania
 
-Podczas tworzenia wystąpienia wyszukiwania niestandardowego, można określić wycinków sieci web: domen, podstrony i stron sieci Web, które mają być dołączone lub zablokowane z wyników wyszukiwania. 
+Podczas tworzenia niestandardowego wystąpienia wyszukiwania można określić wycinków sieci Web: domen, podstron i stron internetowych, które mają być dołączone lub zablokowane w wynikach wyszukiwania. 
 
-Jeśli znasz wycinków, które chcesz uwzględnić w ramach wystąpienia wyszukiwania niestandardowego, dodać je do swojego wystąpienia **Active** listy. 
+Jeśli wiesz, które wycinki chcesz uwzględnić w wystąpieniu wyszukiwania niestandardowego, Dodaj je do aktywnej listy wystąpień. 
 
-Jeśli nie masz pewności, wycinki, aby uwzględnić, możesz wysłać zapytania wyszukiwania do usługi Bing w **Podgląd** okienka, a następnie wybierz wycinków, które chcesz. W tym celu: 
+Jeśli nie masz pewności, które wycinki mają być dołączone, możesz wysyłać zapytania wyszukiwania do usługi Bing w okienku **podglądu** i wybierać wycinki. W tym celu: 
 
-1. Wybierz pozycję "Bing" z listy rozwijanej w okienku podglądu, a następnie wprowadź zapytanie wyszukiwania
+1. Wybierz pozycję "Bing" z listy rozwijanej w okienku podglądu, a następnie wprowadź zapytanie wyszukiwania.
 
-2. Kliknij przycisk **Dodaj witrynę** obok wyników, które chcesz dołączyć. Kliknij przycisk OK.
+2. Kliknij przycisk **Dodaj witrynę** obok wyniku, który ma zostać uwzględniony. Kliknij przycisk OK.
 
 >[!NOTE]
 > [!INCLUDE[publish or revert](./includes/publish-revert.md)]
 
 <a name="active-and-blocked-lists"></a>
 
-### <a name="customize-your-search-experience-with-active-and-blocked-lists"></a>Dostosuj swoje środowisko wyszukiwania przy użyciu listy aktywnych i zablokowane 
+### <a name="customize-your-search-experience-with-active-and-blocked-lists"></a>Dostosuj środowisko wyszukiwania przy użyciu list aktywnych i zablokowanych 
 
-Listę aktywnych i zablokowane wycinki mogą uzyskać dostęp, klikając **Active** i **zablokowane** kart w ramach wystąpienia wyszukiwania niestandardowego. Wycinki dodany do listy aktywnych zostaną uwzględnione w wyszukiwania niestandardowego. Zablokowane wycinki nie będą przeszukiwane, a nie będzie wyświetlane w wynikach wyszukiwania.
+Aby uzyskać dostęp do listy aktywnych i zablokowanych wycinków, kliknij kartę **aktywne** i **zablokowane** w wystąpieniu wyszukiwania niestandardowego. Wycinki dodane do aktywnej listy zostaną uwzględnione w wyszukiwaniu niestandardowym. Zablokowane wycinki nie będą przeszukiwane i nie będą wyświetlane w wynikach wyszukiwania.
 
-Aby określić wycinki ma Bing, wyszukiwanie w sieci web, kliknij przycisk **Active** karta i Dodaj jeden lub więcej adresów URL. Aby edytować lub usunąć adresy URL, należy użyć opcji w obszarze **formantów** kolumny. 
+Aby określić wycinków sieci Web, które mają być wyszukiwane przez usługę Bing, kliknij kartę **aktywne** i Dodaj co najmniej jeden adres URL. Aby edytować lub usunąć adresy URL, użyj opcji w kolumnie **formanty** . 
 
-Podczas dodawania adresów URL do **Active** listy można dodać pojedynczych adresów URL, lub wiele adresów URL na raz, przekazując plik tekstowy, za pomocą ikony przekazywania.
+Podczas dodawania adresów URL do **aktywnej** listy można dodać pojedyncze adresy URL lub wiele adresów URL jednocześnie, przekazując plik tekstowy przy użyciu ikony Przekaż.
 
-![Na karcie aktywne wyszukiwanie niestandardowe Bing](media/file-upload-icon.png)
+![Karta wyszukiwanie niestandardowe Bing aktywna](media/file-upload-icon.png)
 
-Aby przekazać plik, Utwórz plik tekstowy i określ jedną domenę, podstrony lub strony sieci Web w każdym wierszu. Plik zostanie odrzucone, jeśli nie jest poprawnie sformatowany.
+Aby przekazać plik, Utwórz plik tekstowy i określ pojedynczą domenę, podstronę lub stronę sieci Web na wiersz. Plik zostanie odrzucony, jeśli nie został poprawnie sformatowany.
 
 > [!NOTE]
-> * Możliwe jest jedynie przekazywanie plików do **Active** listy. Nie można go użyć wycinków, aby dodać **zablokowane** listy.  
-> * Jeśli **zablokowane** lista zawiera domeny, podstrony lub strony sieci Web, który określono w pliku przekazywania zostaną usunięte z **zablokowane** listy i dodane do **Active** listy .
+> * Można przekazać tylko plik do aktywnej listy  . Nie można używać go do dodawania wycinków do  listy zablokowanych.  
+> * Jeśli lista **zablokowanych** zawiera domenę, podstronę lub stronę sieci Web, która została określona w pliku przekazywania, zostanie usunięta z listy zablokowanych  i dodana do aktywnej listy.
 > * Zduplikowane wpisy w pliku przekazywania zostaną zignorowane przez wyszukiwanie niestandardowe Bing. 
 
-### <a name="get-website-suggestions-for-your-search-experience"></a>Pobierz sugestie dotyczące witryny sieci Web, do własnych potrzeb wyszukiwania
+### <a name="get-website-suggestions-for-your-search-experience"></a>Uzyskaj sugestie dotyczące witryny sieci Web dla środowiska wyszukiwania
 
-Po dodaniu umożliwiająca **Active** listy, wyszukiwanie niestandardowe Bing portal wygeneruje witryny sieci Web i podstrony sugestie w dolnej części karty. Są to wycinków, które uzna za wyszukiwanie niestandardowe Bing, czy może chcesz dołączyć. Kliknij przycisk **Odśwież** Aby uzyskać sugestie zaktualizowane po zaktualizowaniu ustawień wystąpienia wyszukiwania niestandardowego. Ta sekcja jest widoczna tylko jeśli sugestie są dostępne.
+Po dodaniu wycinków internetowych  do aktywnej listy Portal wyszukiwanie niestandardowe Bing będzie generował sugestie dotyczące witryny sieci Web i podstrony w dolnej części karty. Są to wycinki, które wyszukiwanie niestandardowe Bing mogą chcieć uwzględnić. Kliknij przycisk **Odśwież** , aby uzyskać zaktualizowane sugestie po zaktualizowaniu ustawień niestandardowego wystąpienia wyszukiwania. Ta sekcja jest widoczna tylko wtedy, gdy są dostępne sugestie.
 
-## <a name="search-for-images-and-videos"></a>Wyszukiwanie obrazów i klipów wideo
+## <a name="search-for-images-and-videos"></a>Wyszukaj obrazy i filmy wideo
 
-Możesz wyszukać obrazów i filmów wideo w sposób podobny do zawartości sieci web za pomocą [interfejsu API wyszukiwania obrazów Bing Custom](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) lub [interfejsu API wyszukiwania wideo Bing Custom](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference). Można wyświetlić tych wyników z [hostowanych interfejsu użytkownika](hosted-ui.md), lub interfejsów API. 
+Obrazy i filmy wideo można wyszukiwać podobnie jak w przypadku zawartości sieci Web przy użyciu [niestandardowego interfejsu api wyszukiwanie obrazów Bing](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) lub [interfejsu API niestandardowego wyszukiwanie wideo Bing](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference). Możesz wyświetlić te wyniki przy użyciu [hostowanego interfejsu użytkownika](hosted-ui.md)lub interfejsów API. 
 
-Te interfejsy API są podobne do innych niestandardowych [wyszukiwania obrazów Bing](../Bing-Image-Search/overview.md) i [wyszukiwania wideo Bing](../Bing-Video-Search/search-the-web.md) interfejsów API, ale wyszukiwanie cała sieć web i nie wymagają `customConfig` parametr zapytania. Zobacz te zestawów dokumentacji, aby uzyskać więcej informacji na temat pracy z obrazów i filmów wideo. 
+Te interfejsy API są podobne do nieniestandardowych [Wyszukiwanie obrazów Bing](../Bing-Image-Search/overview.md) i [Wyszukiwanie wideo Bing](../Bing-Video-Search/search-the-web.md) interfejsów API, ale przeszukiwane są całe sieci Web i `customConfig` nie wymagają parametru zapytania. Więcej informacji na temat pracy z obrazami i filmami można znaleźć w tych zestawach dokumentacji. 
 
-## <a name="test-your-search-instance-with-the-preview-pane"></a>Testowanie wystąpienie usługi wyszukiwania z okienkiem (wersja zapoznawcza)
+## <a name="test-your-search-instance-with-the-preview-pane"></a>Testowanie wystąpienia wyszukiwania za pomocą okienka podglądu
 
-Wystąpienie usługi wyszukiwania można przetestować za pomocą okienka (wersja zapoznawcza) po prawej stronie w witrynie portal do przesyłania zapytań wyszukiwań i wyświetlić wyniki. 
+Możesz przetestować wystąpienie wyszukiwania, korzystając z okienka podglądu po prawej stronie portalu, aby przesłać zapytania wyszukiwania i wyświetlić wyniki. 
 
-1. Poniżej pola wyszukiwania, wybierz **Moje wystąpienia**. Możesz porównać wyniki ze środowiska wyszukiwania Bing, wybierając **Bing**. 
-2. Wybieranie filtru bezpieczne wyszukiwanie i rynku do wyszukiwania (zobacz [parametry zapytania](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)).
-3. Wprowadź kwerendę i naciśnij klawisz enter lub kliknij ikonę wyszukiwania, aby wyświetlić wyniki z bieżącej konfiguracji. Można zmienić typu wyszukiwania wykonywania, klikając pozycję **Web**, **obraz**, lub **wideo** uzyskanie odpowiednich wyników. 
+1. Poniżej pola wyszukiwania wybierz pozycję **moje wystąpienie**. Wyniki wyszukiwania można porównać z usługą Bing, wybierając pozycję **Bing**. 
+2. Wybierz filtr wyszukiwania bezpiecznego i szukany rynek (zobacz [parametry zapytania](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)).
+3. Wprowadź zapytanie i naciśnij klawisz ENTER lub kliknij ikonę wyszukiwania, aby wyświetlić wyniki z bieżącej konfiguracji. Typ wyszukiwania można zmienić, klikając pozycję **Sieć Web**, **obraz**lub **wideo** , aby uzyskać odpowiednie wyniki. 
 
 <a name="adjustrank"></a>
 
-## <a name="adjust-the-rank-of-specific-search-results"></a>Dostosuj ranga określone wyniki
+## <a name="adjust-the-rank-of-specific-search-results"></a>Dostosuj rangę określonych wyników wyszukiwania
 
-Portal umożliwia dostosowanie klasyfikacji wyszukiwania zawartości z określonych domen, podstrony i stron sieci Web. Po wysłaniu zapytania wyszukiwania w okienku podglądu, każdy wynik zawiera listę dostosowania wprowadzone dla niego:  
+Portal umożliwia dostosowanie kolejności wyszukiwania zawartości z określonych domen, podstron i stron sieci Web. Po wysłaniu zapytania wyszukiwania w okienku podglądu każdy wynik wyszukiwania zawiera listę dostosowań, które można dla niej wprowadzić:  
 
 |            |                                                                                                                                                                      |
 |------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Blokuj      | Przenosi domeny, podstrony lub strony sieci Web do listy zablokowanych. Bing wykluczy zawartości z wybranej lokacji były wyświetlane w wynikach wyszukiwania.                    |
-| Zwiększenie wydajności      | Zwiększa zawartość z domeny lub podstrony mogą być wyższe w wynikach wyszukiwania.                                                                                        |
-| Obniżenie poziomu     | Przenosi zawartość z domeny lub podstrony niżej w wynikach wyszukiwania. Zdecyduj, czy obniżyć zawartości z domeny lub podstrony, należy dla strony sieci Web. |
-| Przypnij na górze | Przenosi domeny, podstrony lub strony sieci Web do **Pinned** listy. Zmusza to strona sieci Web, aby pojawiało się jako wyniki wyszukiwania górnego danemu wyszukiwaniu zapytania.                   |
+| Blokuj      | Przenosi domenę, podstronę lub stronę sieci Web na listę zablokowanych. W wynikach wyszukiwania nie będzie można wykluczać zawartości z wybranej witryny Bing.                    |
+| Zwiększ wynik      | Zwiększa zawartość z domeny lub podstrony tak, aby była wyższa w wynikach wyszukiwania.                                                                                        |
+| Obniż poziom     | Obniża zawartość z domeny lub podstrony poniżej wyników wyszukiwania. Wybierz, czy chcesz obniżyć zawartość z domeny lub podstrony, do której należy strona sieci Web. |
+| Przypnij do góry | Przenosi domenę, podstronę lub stronę sieci Web do listy  przypiętych. Powoduje to wymuszenie wyświetlania strony sieci Web jako górnego wyniku wyszukiwania dla danego zapytania wyszukiwania.                   |
 
-Dostosowywanie ranga nie jest dostępna dla obrazu lub wyszukiwania wideo.
+Dostosowywanie rangi nie jest dostępne dla wyszukiwania obrazów i wideo.
 
-### <a name="boosting-and-demoting-search-results"></a>Ulepszanie i obniżanie poziomu wyników wyszukiwania
+### <a name="boosting-and-demoting-search-results"></a>Zwiększanie i obniżanie poziomu wyników wyszukiwania
 
-Można bardzo zwiększania, zwiększania, lub obniżenie poziomu dowolnej domeny lub podstrony w **Active** listy. Domyślnie wszystkie fragmenty są dodawane bez korekt klasyfikacji. Wycinków sieci web, które są bardzo wzmocnione lub Boosted są wyżej w wynikach wyszukiwania (przy użyciu klasyfikacji super boost jest wyższa niż boost). Elementy, które są obniżony sklasyfikowano w dolnym w wynikach wyszukiwania.
+Możesz poprawić, zwiększyć lub obniżyć każdą domenę lub podstronę na aktywnej liście. Domyślnie wszystkie wycinki są dodawane bez korygowania klasyfikacji. Wycinki sieci Web, które są bardzo podwyższana lub podwyższana, są bardziej klasyfikowane w wynikach wyszukiwania (dzięki zwiększeniu klasyfikacji wyższej niż zwiększona). Elementy, które są degradowane, są klasyfikowane w wynikach wyszukiwania.
 
-Super zwiększania, zwiększ lub obniżyć poziom elementów za pomocą **Ranking dostosować** kontrolki w **Active** listy, lub przez przy użyciu zwiększenia wydajności i obniżenie poziomu kontrolki w okienku podglądu. Usługa dodaje wycinka do listy aktywnych i dostosowuje klasyfikację odpowiednio.
+Można zwiększyć, zwiększyć lub obniżyć poziom elementów przy użyciu kontrolek **Dostosuj klasyfikację** na aktywnej  liście lub korzystając z regulatorów Zwiększ i Obniż w okienku podglądu. Usługa dodaje wycinek do aktywnej listy i odpowiednio dostosowuje klasyfikację.
 
 > [!NOTE] 
-> Ulepszanie i obniżanie poziomu domen i podstrony jest jednym z wielu metody, które używa usługa Bing Custom Search, aby określić kolejność wyników wyszukiwania. Ze względu na inne czynniki wpływające na klasyfikacji zawartości sieci web w innej efekty dostosowania ranga mogą się różnić. Okienko podglądu umożliwia testowanie skutków Dostosowywanie ranga wyników wyszukiwania. 
+> Zwiększenie i obniżenie poziomu domen i podstron to jedna z wielu metod, wyszukiwanie niestandardowe Bing używa do określenia kolejności wyników wyszukiwania. Ze względu na inne czynniki wpływające na klasyfikację różnej zawartości sieci Web, efekty dostosowywania rangi mogą się różnić. Użyj okienka podglądu, aby przetestować efekty dostosowywania rangi wyników wyszukiwania. 
 
-Super Zwiększ, Przyspiesz i obniżenie poziomu nie są dostępne dla obrazu i wyszukiwania wideo.
+W przypadku wyszukiwania obrazów i wideo nie są dostępne żadne zwiększenie, zwiększenie i obniżenie poziomu.
 
-## <a name="pin-slices-to-the-top-of-search-results"></a>Wycinki kodu PIN na początku wyników wyszukiwania
+## <a name="pin-slices-to-the-top-of-search-results"></a>Przypinanie wycinków na początku wyników wyszukiwania
 
-Portal umożliwia także przypiąć adresy URL na początku wyników wyszukiwania dla określonych wyszukiwane terminy, za pomocą **Pinned** kartę. Wprowadź adres URL i zapytania do określania strony sieci Web, która będzie wyświetlana jako najlepszy wynik. Pamiętaj, że będzie możliwe przypięcie więcej niż jedną stronę sieci Web na zapytanie wyszukiwania tylko indeksowanych stron sieci Web pojawi się w wynikach wyszukiwania. Przypinanie wyników nie jest dostępna dla obrazu lub wyszukiwania wideo.
+Portal umożliwia także Przypinanie adresów URL na początku wyników wyszukiwania dla określonych terminów wyszukiwania przy użyciu przypiętej  karty. Wprowadź adres URL i zapytanie, aby określić stronę sieci Web, która będzie wyświetlana jako górny wynik. Zwróć uwagę na to, że możesz przypiąć maksymalnie jedną stronę sieci Web na zapytanie wyszukiwania, a w wyszukiwaniach będą wyświetlane tylko indeksowane strony. Przypinanie wyników nie jest dostępne dla wyszukiwania obrazów i wideo.
 
-Możesz przypiąć stronę do góry na dwa sposoby:
+Stronę sieci Web można przypiąć do góry na dwa sposoby:
 
-* W **Pinned** wprowadź adres URL strony sieci Web, aby przypiąć do góry, a jego odnośnego zapytania.
+* Na przypiętej karcie wprowadź adres URL strony sieci Web, aby przypiąć do góry i odpowiadającą jej kwerendą.
 
-* W **Podgląd** okienku, wprowadź zapytanie wyszukiwania i kliknij przycisk wyszukiwania. Znajdź stronę sieci Web, aby przypiąć dla zapytania, a następnie kliknij przycisk **numeru Pin do góry**. strony sieci Web i zapytania zostaną dodane do **Pinned** listy.
+* W okienku **podglądu** wprowadź zapytanie wyszukiwania, a następnie kliknij przycisk Wyszukaj. Znajdź stronę sieci Web, którą chcesz przypiąć dla zapytania, a następnie kliknij pozycję **Przypnij do góry**. Strona sieci Web i zapytanie zostaną dodane do listy  przypiętych.
 
-### <a name="specify-the-pins-match-condition"></a>Określ warunek dopasowania numeru pin
+### <a name="specify-the-pins-match-condition"></a>Określ warunek dopasowania numeru PIN
 
-Domyślnie strony sieci Web są tylko przypięte do początku wyników wyszukiwania gdy ciąg zapytania użytkownika w dokładnie odpowiada jednej liście **Pinned** listy. To zachowanie można zmienić, określając jedną z następujących warunków dopasowania:
+Domyślnie strony sieci Web są przypięte tylko do góry wyników wyszukiwania, gdy ciąg zapytania użytkownika dokładnie pasuje do jednego z wymienionych na liście przypiętych. Możesz zmienić to zachowanie, określając jeden z następujących warunków dopasowania:
 
 > [!NOTE]
-> Wszystkie porównania między zapytania wyszukiwania użytkownika i numer pin zapytania wyszukiwania jest rozróżniana wielkość liter.
+> Wszystkie porównania między zapytania wyszukiwania użytkownika a zapytaniem wyszukiwania kodu PIN nie uwzględnia wielkości liter.
 
-| Wartość | Opis                                                                          |
+| Value | Opis                                                                          |
 |---------------|----------------------------------------------------------------------------------|
-| rozpoczyna się od | Numer pin jest zgodny, jeśli ciąg zapytania użytkownika, który rozpoczyna się od ciągu zapytania numeru pin |
-| kończy się ciągiem   | Numer pin jest zgodny, jeśli ciąg zapytania użytkownika kończy się ciągiem zapytania numeru pin.  |
-| zawiera    | Numer pin jest zgodny, jeśli ciąg zapytania użytkownika zawiera ciąg zapytania numeru pin.   |
+| rozpoczyna się od | Kod PIN jest dopasowanie, jeśli ciąg zapytania użytkownika zaczyna się od ciągu zapytania kodu PIN |
+| kończy się ciągiem   | Kod PIN jest dopasowanie, jeśli ciąg zapytania użytkownika zostanie zakończony ciągiem zapytania kodu PIN.  |
+| zawiera    | Kod PIN jest dopasowanie, jeśli ciąg zapytania użytkownika zawiera ciąg zapytania kodu PIN.   |
 
 
-Aby zmienić warunek dopasowania numeru pin, kliknij ikonę edycji kodu pin. W **warunek dopasowania zapytania** kolumny, kliknij listę rozwijaną i wybierz nowy warunek, którego chcesz użyć. Następnie kliknij przycisk Zapisz ikonę, aby zapisać zmiany.
+Aby zmienić warunek dopasowania numeru PIN, kliknij ikonę edycji numeru PIN. W kolumnie **warunek dopasowania zapytania** kliknij listę rozwijaną, a następnie wybierz nowy warunek do użycia. Następnie kliknij ikonę Zapisz, aby zapisać zmiany.
 
 ### <a name="change-the-order-of-your-pinned-sites"></a>Zmiana kolejności przypiętych witryn
 
-Aby zmienić kolejność swoje numery PIN, możesz przeciągnij i upuść je lub edytować ich liczbą porządkową, klikając ikonę "Edytuj" w **kontrolki** kolumny **Pinned** listy.
+Aby zmienić kolejność numerów PIN, możesz je przeciągać i upuszczać lub edytować ich numer zamówienia, klikając ikonę "Edytuj" w kolumnie kontrolki listy przypiętej  .
 
-Jeśli wiele numerów PIN spełniają warunek dopasowania, usługa Bing Custom Search będzie używać co najwyżej na liście.
+Jeśli wiele numerów PIN spełnia warunek dopasowania, wyszukiwanie niestandardowe Bing będzie używać jednego z najwyższego na liście.
 
 ## <a name="view-statistics"></a>Wyświetlanie statystyk
 
-Jeśli masz subskrypcję do wyszukiwania niestandardowego na odpowiednim poziomie (zobacz [stronach z cennikami](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)), **statystyki** karta zostanie dodany do Twojego wystąpienia produkcyjne. Karta Statystyki zawiera szczegółowe informacje o sposobie korzystania z punktami końcowymi usługi Custom Search są, w tym wolumin wywołań, najpopularniejsze zapytania, rozmieszczenie geograficzne, kody odpowiedzi i bezpiecznego wyszukiwania. Można filtrować za pomocą formantów podane szczegółowe informacje.
+Jeśli zasubskrybujesz wyszukiwanie niestandardowe na odpowiednim poziomie (zobacz [strony cen](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)), karta **statystyki** jest dodawana do wystąpień produkcyjnych. Karta statystyka zawiera szczegółowe informacje o sposobie używania niestandardowych punktów końcowych wyszukiwania, w tym woluminu wywołań, najważniejszych zapytań, dystrybucji geograficznej, kodów odpowiedzi i bezpiecznego wyszukiwania. Można filtrować szczegóły przy użyciu podanych kontrolek.
 
-## <a name="usage-guidelines"></a>Wytyczne dotyczące użycia
+## <a name="usage-guidelines"></a>Wskazówki dotyczące użycia
 
-- Dla każdego wystąpienia wyszukiwania niestandardowego, maksymalna liczba korekt klasyfikacji, które mogą wprowadzać **Active** i **zablokowane** wycinków jest ograniczona do 400.
-- Dodawanie wycinka do karty aktywne, czy zablokowane jest liczone jako korekty jednej klasyfikacji.
-- Ulepszanie i obniżanie poziomu liczba jako dwa dostosowania klasyfikacji.
-- Dla każdego wystąpienia wyszukiwania niestandardowego maksymalną liczbę numerów PIN, które mogą powodować wynosi 200.
+- Dla każdego wystąpienia wyszukiwania niestandardowego Maksymalna liczba korekt klasyfikacji, które mogą zostać wprowadzone do **aktywnych** i zablokowanych  wycinków, jest ograniczona do 400.
+- Dodawanie wycinka do aktywnych lub zablokowanych kart jest liczone jako jedna korekta klasyfikacji.
+- Zwiększenie i obniżenie liczby w postaci dwóch korekt klasyfikacji.
+- Dla każdego wystąpienia wyszukiwania niestandardowego Maksymalna liczba numerów PIN, które mogą zostać wprowadzone, jest ograniczona do 200.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Wywoływanie wyszukiwania niestandardowego](./search-your-custom-view.md)
 - [Konfigurowanie środowiska hostowanego interfejsu użytkownika](./hosted-ui.md)

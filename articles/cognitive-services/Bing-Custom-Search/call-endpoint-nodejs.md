@@ -1,6 +1,6 @@
 ---
 title: 'Szybki start: wywoływanie punktu końcowego wyszukiwania niestandardowego Bing przy użyciu języka Node.js | Microsoft Docs'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Użyj tego przewodnika Szybki start, aby rozpocząć żądanie wyników z wystąpienia wyszukiwania niestandardowego Bing w języku Node.js
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 43b46b4dd035efa3117ce23728db42bb11a9ab6c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 3703658d6cab78592c50a23deaf9da2a426aebec
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790278"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405172"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-nodejs"></a>Szybki start: wywoływanie punktu końcowego wyszukiwania niestandardowego Bing przy użyciu języka Node.js
 
@@ -74,7 +74,7 @@ Użyj tego przewodnika Szybki start, aby rozpocząć żądanie wyników z wystą
             }
     ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie aplikacji internetowej z funkcją wyszukiwania niestandardowego](./tutorials/custom-search-web-page.md)

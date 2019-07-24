@@ -1,6 +1,6 @@
 ---
 title: 'Szybki start: Wywoływanie punktu końcowego wyszukiwania niestandardowego Bing przy użyciu języka Java | Microsoft Docs'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Użyj tego przewodnika Szybki start, aby rozpocząć żądanie wyników z wystąpienia wyszukiwania niestandardowego Bing w języku Java.
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: fc1c7d2730d68fb8e3b51a39e0cb89b4098418d6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9af82ae8cff2e93c0456ed8b5a84414f98ba5b06
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60327381"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405271"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>Szybki start: Wywoływanie punktu końcowego wyszukiwania niestandardowego Bing przy użyciu języka Java
 
@@ -129,7 +129,7 @@ Użyj tego przewodnika Szybki start, aby rozpocząć żądanie wyników z wystą
 
 4. Uruchom program.
     
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie aplikacji internetowej z funkcją wyszukiwania niestandardowego](./tutorials/custom-search-web-page.md)

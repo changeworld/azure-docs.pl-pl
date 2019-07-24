@@ -1,6 +1,6 @@
 ---
-title: 'Szybki start: Zaproponuj zapytania wyszukiwania przy użyciu interfejsu API REST automatycznego sugerowania Bing i języka Ruby'
-titlesuffix: Azure Cognitive Services
+title: 'Szybki start: Sugeruj zapytania wyszukiwania za pomocą interfejsu API REST automatyczne sugerowanie Bing i języka Ruby'
+titleSuffix: Azure Cognitive Services
 description: Uzyskaj informacje oraz przykłady kodu w celu szybkiego rozpoczęcia korzystania z interfejsu API automatycznego sugerowania Bing.
 services: cognitive-services
 author: aahill
@@ -10,16 +10,16 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 56ad71d9a746f61e724c1f3b5c5c6be0a3318452
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 3797e8b0d200bcb7f010afbf77f57cfc5cf6b5d1
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390376"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405205"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-ruby"></a>Szybki start: Zaproponuj zapytania wyszukiwania przy użyciu interfejsu API REST automatycznego sugerowania Bing i języka Ruby
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-ruby"></a>Szybki start: Sugeruj zapytania wyszukiwania za pomocą interfejsu API REST automatyczne sugerowanie Bing i języka Ruby
 
-Użyj tego przewodnika Szybki Start, aby rozpocząć wprowadzanie wywołania interfejsu API automatycznego sugerowania Bing i uzyskiwania odpowiedzi JSON. Ta prosta aplikacja języka Ruby wysyła zapytanie częściowe do interfejsu API i zwraca sugestie dotyczące wyszukiwania. Chociaż ta aplikacja jest napisana w języku Ruby, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
+Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć wykonywanie wywołań do interfejs API automatycznego sugerowania Bing i uzyskać odpowiedź JSON. Ta prosta aplikacja Ruby wysyła zapytanie wyszukiwania częściowego do interfejsu API i zwraca sugestie dotyczące wyszukiwania. Chociaż ta aplikacja jest napisana w języku Ruby, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -30,7 +30,7 @@ Użyj tego przewodnika Szybki Start, aby rozpocząć wprowadzanie wywołania int
 
 ## <a name="create-a-new-application"></a>Tworzenie nowej aplikacji
 
-1. Utwórz nowy plik języka Ruby w Twoim ulubionym środowiskiem IDE lub edytora. Dodaj następujące wymagania:
+1. Utwórz nowy plik Ruby w ulubionym środowisku IDE lub edytorze. Dodaj następujące wymagania:
 
     ```ruby
     require 'net/https'
@@ -38,7 +38,7 @@ Użyj tego przewodnika Szybki Start, aby rozpocząć wprowadzanie wywołania int
     require 'json'
     ```
 
-2. Tworzenie zmiennych dla interfejsu API hosta i ścieżkę, [rynek kodu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes), zapytanie wyszukiwania częściowe.
+2. Utwórz zmienne dla hosta interfejsu API i ścieżki, [kod rynkowy](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes), częściowe zapytanie wyszukiwania.
 
     ```ruby
     subscriptionKey = 'enter your key here'
@@ -48,7 +48,7 @@ Użyj tego przewodnika Szybki Start, aby rozpocząć wprowadzanie wywołania int
     query = 'sail'
     ```
 
-3. Utworzyć ciąg parametrów, dodając kod rynku `?mkt=` parametru i dołączenie kodu zapytania `&q=` parametru. Następnie można utworzyć identyfikatora URI żądania, łącząc dane hosta interfejsu API, ścieżki i ciąg parametrów.
+3. Utwórz ciąg parametrów, dołączając kod rynkowy do `?mkt=` parametru i dołączając zapytanie `&q=` do parametru. Następnie zakonstruowanie identyfikatora URI żądania przez połączenie hosta interfejsu API, ścieżki i ciągu parametrów.
 
     ```ruby
     params = '?mkt=' + mkt + '&q=' + query
@@ -57,14 +57,14 @@ Użyj tego przewodnika Szybki Start, aby rozpocząć wprowadzanie wywołania int
 
 ## <a name="create-and-send-an-api-request"></a>Tworzenie i wysyłanie żądania interfejsu API
 
-1. Utwórz żądanie za pomocą identyfikatora URI i klucz subskrypcji, aby dodać `Ocp-Apim-Subscription-Key` nagłówka.
+1. Utwórz żądanie z identyfikatorem URI i Dodaj swój klucz subskrypcji do `Ocp-Apim-Subscription-Key` nagłówka.
     
     ```ruby
     request = Net::HTTP::Get.new(uri)
     request['Ocp-Apim-Subscription-Key'] = subscriptionKey
     ```
 
-2. Wyślij żądanie i Przechowaj odpowiedź.
+2. Wyślij żądanie i Zapisz odpowiedź.
     
     ```ruby
     response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -72,7 +72,7 @@ Użyj tego przewodnika Szybki Start, aby rozpocząć wprowadzanie wywołania int
     end
     ```
 
-3. Drukowanie odpowiedź w formacie JSON.
+3. Wydrukuj odpowiedź JSON.
     
     ```ruby
     puts JSON::pretty_generate (JSON (response.body))
@@ -146,7 +146,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie jednostronicowej aplikacji internetowej](../tutorials/autosuggest.md)

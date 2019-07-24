@@ -1,6 +1,6 @@
 ---
 title: 'Szybki start: Zestaw Bing Entity Search SDK, język Python'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Konfiguracja pod kątem aplikacji konsoli zestawu Bing Entity Search SDK.
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.author: aahi
-ms.openlocfilehash: 99bf0c155a1cd211a9cdc41d4184be716244d035
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 9574abefc9747a0718b4d995f4efa01388aee336
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358911"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404913"
 ---
 # <a name="quickstart-bing-entity-search-sdk-with-python"></a>Szybki start: Zestaw Bing Entity Search SDK i język Python
 
@@ -78,7 +78,7 @@ python -m pip install azure-cognitiveservices-search-entitysearch
             print(main_entities[0].description)
     ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie jednostronicowej aplikacji internetowej](../tutorial-bing-entities-search-single-page-app.md)

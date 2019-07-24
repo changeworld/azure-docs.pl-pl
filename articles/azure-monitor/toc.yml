@@ -7,7 +7,6 @@
     - name: Zmiany terminologii
       href: terminology.md
 - name: Przewodniki Szybki start
-  expanded: true
   items:
     - name: Aplikacje
       items:
@@ -96,9 +95,9 @@
           href: platform/personal-data-mgmt.md
         - name: 'Zbieranie, przechowywanie i magazynowanie danych aplikacji'
           href: app/data-retention-privacy.md
-    - name: Reagowanie na zdarzenia
+    - name: Alerty
       items:
-        - name: Alerty
+        - name: Omówienie
           href: platform/alerts-overview.md
         - name: Alerty klasyczne
           href: platform/alerts-classic.overview.md
@@ -114,8 +113,6 @@
           href: platform/alerts-action-rules.md
         - name: Grupy inteligentne
           href: platform/alerts-smartgroups-overview.md
-        - name: Automatyczne skalowanie
-          href: platform/autoscale-overview.md
         - name: Analiza zmian
           href: app/change-analysis.md
     - name: Wizualizowanie danych
@@ -954,6 +951,8 @@
       items:
         - name: Automatyczne skalowanie
           items:
+            - name: Omówienie
+              href: platform/autoscale-overview.md
             - name: Przewodnik
               href: platform/autoscale-get-started.md
             - name: Ustawienia

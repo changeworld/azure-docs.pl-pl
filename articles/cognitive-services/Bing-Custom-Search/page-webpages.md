@@ -1,7 +1,7 @@
 ---
-title: Przejrzyj dostępne stron sieci Web — Bing Custom Search
-titlesuffix: Azure Cognitive Services
-description: Pokazuje, jak stronicować za pośrednictwem wszystkich stron sieci Web, która usługa Bing Custom Search może zwracać.
+title: Strona za poorednictwem dostępnych stron sieci Web — wyszukiwanie niestandardowe Bing
+titleSuffix: Azure Cognitive Services
+description: Pokazuje, w jaki sposób można wyświetlić strony ze wszystkich stron sieci Web, które wyszukiwanie niestandardowe Bing mogą zwrócić.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
-ms.openlocfilehash: 3c1bf9c6f2c1b38b9cf9729b769c9198da56147a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 13b4cef624c636b8935897338badf3349f27c7f5
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388585"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405043"
 ---
 # <a name="paging-webpages"></a>Stronicowanie stron sieci Web 
 
-Po wywołaniu interfejsu API wyszukiwania niestandardowego Bing zwraca listę wyników. Lista jest podzbiorem całkowita liczba wyników, które mogą dotyczyć zapytania. Aby uzyskać szacowana liczba dostępnych wyników, dostęp do obiektu odpowiedzi [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#totalestimatedmatches) pola.  
+Po wywołaniu interfejs API wyszukiwania niestandardowego Bing zwraca listę wyników. Lista jest podzbiorem całkowitej liczby wyników, które mogą być odpowiednie dla zapytania. Aby uzyskać szacowaną łączną liczbę dostępnych wyników, uzyskaj dostęp do pola [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#totalestimatedmatches) obiektu odpowiedzi.  
   
-W poniższym przykładzie przedstawiono `totalEstimatedMatches` pola, które obejmuje odpowiedzi sieci Web.  
+Poniższy przykład pokazuje `totalEstimatedMatches` pole, które zawiera odpowiedź sieci Web.  
   
 ```  
 {
@@ -34,15 +34,15 @@ W poniższym przykładzie przedstawiono `totalEstimatedMatches` pola, które obe
 }  
 ```  
   
-Na stronie przy użyciu dostępnych stron sieci Web, należy użyć [liczba](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#count) i [przesunięcie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#offset) parametry zapytania.  
+Aby uzyskać dostęp do strony w dostępnych stronach sieci Web, użyj parametrów zapytania [Count](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#count) i [offset](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#offset) .  
   
-`count` Parametr określa liczbę wyników do zwrócenia w odpowiedzi. Maksymalna liczba wyników, których może żądać w odpowiedzi jest 50. Wartość domyślna wynosi 10. Rzeczywista liczba dostarczonych może być mniejsza niż żądana.
+`count` Parametr określa liczbę wyników do zwrócenia w odpowiedzi. Maksymalna liczba wyników, które można zażądać w odpowiedzi to 50. Wartość domyślna to 10. Rzeczywista liczba podana może być mniejsza niż żądana.
 
-`offset` Parametr określa liczbę wyników do pominięcia. `offset` Jest liczony od zera i powinna być mniejsza niż (`totalEstimatedMatches` - `count`).  
+`offset` Parametr określa liczbę wyników do pominięcia. Jest równa zero i powinna być mniejsza niż - (`count``totalEstimatedMatches`). `offset`  
   
-Jeśli chcesz wyświetlić 15 stron sieci Web na każdej stronie, należy ustawić `count` do 15 i `offset` na 0, aby pobrać pierwszej strony wyników. Na kolejnych stronach, możesz zwiększyć `offset` 15 (na przykład, 15, 30).  
+Aby wyświetlić 15 stron sieci Web na stronie, należy ustawić wartość `count` 15 i `offset` na 0 w celu uzyskania pierwszej strony wyników. Dla każdej kolejnej strony można zwiększyć `offset` wartość o 15 (na przykład 15, 30).  
   
-Poniżej przedstawiono przykład, który żąda 15 stron sieci Web, rozpoczynając od przesunięcia 45.  
+Poniżej przedstawiono przykład, który żąda 15 stron sieci Web, zaczynając od przesunięcia 45.  
   
 ```  
 GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?q=sailing+dinghies&count=15&offset=45&mkt=en-us&customConfig=123456 HTTP/1.1  
@@ -50,7 +50,7 @@ Ocp-Apim-Subscription-Key: <subscription ID>
 Host: api.cognitive.microsoft.com  
 ```  
 
-Jeśli wartość domyślna `count` wartość działa w przypadku implementacji, należy określić `offset` parametr zapytania.  
+Jeśli wartość domyślna `count` działa dla implementacji, wystarczy `offset` określić parametr zapytania.  
   
 ```  
 GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?q=sailing+dinghies&offset=45&mkt=en-us&customConfig=123456 HTTP/1.1  
@@ -59,5 +59,5 @@ Host: api.cognitive.microsoft.com
 ```  
 
 > [!NOTE]
-> `TotalEstimatedAnswers` Pole jest szacunkową liczbę całkowitą liczbę wyników wyszukiwania, możesz pobrać dla bieżącego zapytania.  Po ustawieniu `count` i `offset` parametrów, `TotalEstimatedAnswers` liczba mogą ulec zmianie. 
+> `TotalEstimatedAnswers` Pole to oszacowanie łącznej liczby wyników wyszukiwania, które można pobrać dla bieżącego zapytania.  Po ustawieniu `count` i `offset` parametrze liczba może `TotalEstimatedAnswers` się zmienić. 
 

@@ -3,26 +3,26 @@ title: 'Szybki start: Rozpoznawanie mowy, C# (UWP) — usługi mowy'
 titleSuffix: Azure Cognitive Services
 description: W tym artykule utworzysz aplikację w języku C# dla platformy uniwersalnej systemu Windows (UWP) przy użyciu zestawu Speech SDK usługi Cognitive Services. Transkrypcja mowy na tekst będzie się odbywać w czasie rzeczywistym podczas korzystania z mikrofonu urządzenia. Aplikacja będzie kompilowana przy użyciu pakietu NuGet zestawu Speech SDK i programu Microsoft Visual Studio 2017.
 services: cognitive-services
-author: wolfma61
+author: lisaweixu
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/05/2019
-ms.author: wolfma
+ms.date: 07/23/2019
+ms.author: lisaweixu
 ms.custom: seodec18
-ms.openlocfilehash: 30a12c504071cd178ed3e7563f9d7d967d8ba36d
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 25b3474e33351d6365af37d78f442768aba88625
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606408"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405917"
 ---
 # <a name="quickstart-recognize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Szybki start: Rozpoznawanie mowy w aplikacji platformy UWP przy użyciu zestawu Speech SDK
 
-Przewodniki Szybki Start są również dostępne dla [zamiany tekstu na mowę](quickstart-text-to-speech-csharp-uwp.md), [tłumaczenia mowy](quickstart-translate-speech-uwp.md) i [głosu pierwszego wirtualnego Asystenta](quickstart-virtual-assistant-csharp-uwp.md).
+Przewodniki Szybki Start są również dostępne do obsługi zamiany [tekstu na mowę](quickstart-text-to-speech-csharp-uwp.md), [tłumaczenia mowy na mowę](quickstart-translate-speech-uwp.md) i [głosu](quickstart-virtual-assistant-csharp-uwp.md).
 
-Jeśli to konieczne, należy wybrać inny język programowania i/lub środowiska:<br/>
+W razie potrzeby wybierz inny język programowania i/lub środowisko:<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 W tym artykule napiszesz aplikację w języku C# dla platformy uniwersalnej systemu Windows (UWP; system Windows w wersji 1709 lub nowszej) przy użyciu zestawu [Speech SDK](speech-sdk.md) usługi Cognitive Services. Program będzie dokonywał transkrypcji mowy na tekst w czasie rzeczywistym podczas korzystania z mikrofonu urządzenia. Aplikacja będzie kompilowana przy użyciu [pakietu NuGet zestawu Speech SDK](https://aka.ms/csspeech/nuget) i programu Microsoft Visual Studio 2017 (w dowolnej wersji).
@@ -41,7 +41,7 @@ Ten przewodnik Szybki start wymaga następujących elementów:
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-uwp-create-proj.md)]
 
-## <a name="add-sample-code"></a>Dodawanie przykładowego kodu
+## <a name="add-sample-code"></a>Dodaj kod przykładowy
 
 1. Interfejs użytkownika aplikacji jest definiowany przy użyciu języka XAML. Otwórz `MainPage.xaml` w Eksploratorze rozwiązań. W widoku języka XAML dla projektanta wstaw poniższy fragment kodu XAML do tagu siatki (między `<Grid>` i `</Grid>`).
 
@@ -71,11 +71,11 @@ Ten przewodnik Szybki start wymaga następujących elementów:
 
     ![Zrzut ekranu żądania uprawnień](media/sdk/qs-csharp-uwp-10-access-prompt.png "Uruchom aplikację do debugowania")
 
-1. Wybierz opcję **Speech recognition with microphone input** (Rozpoznawanie mowy z użyciem danych wejściowych z mikrofonu) i wypowiedz zwrot lub zdanie w języku angielskim do mikrofonu urządzenia. Mowa jest przesyłane do usług przetwarzania mowy i przetłumaczone na tekst, który jest wyświetlany w oknie.
+1. Wybierz opcję **Speech recognition with microphone input** (Rozpoznawanie mowy z użyciem danych wejściowych z mikrofonu) i wypowiedz zwrot lub zdanie w języku angielskim do mikrofonu urządzenia. Twoja Zamiana jest przekazywana do usługi mowy i uzyskanego do tekstu, który pojawia się w oknie.
 
     ![Zrzut ekranu interfejsu użytkownika rozpoznawania mowy](media/sdk/qs-csharp-uwp-11-ui-result.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Zapoznaj się z przykładami dla języka C# w usłudze GitHub](https://aka.ms/csspeech/samples)

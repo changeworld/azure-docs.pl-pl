@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: Zaproponuj zapytania wyszukiwania przy użyciu interfejsu API REST automatycznego sugerowania Bing iC#'
-titlesuffix: Azure Cognitive Services
-description: Dowiedz się, jak szybko rozpocząć sugerowanie terminy wyszukiwania w czasie rzeczywistym za pomocą interfejsu API automatycznego sugerowania Bing.
+title: 'Szybki start: Sugeruj zapytania wyszukiwania za pomocą interfejsu API REST automatyczne sugerowanie Bing iC#'
+titleSuffix: Azure Cognitive Services
+description: Dowiedz się, jak szybko rozpocząć sugerowanie wyszukiwanych terminów w czasie rzeczywistym za pomocą interfejs API automatycznego sugerowania Bing.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,25 +10,25 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 4cd77c1e71287ea2cec2a4098e5ef7f713350f9f
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: c524f35416e29d2364e73b4b7007480cba0881d8
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388631"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405342"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-c"></a>Szybki start: Zaproponuj zapytania wyszukiwania przy użyciu interfejsu API REST automatycznego sugerowania Bing iC#
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-c"></a>Szybki start: Sugeruj zapytania wyszukiwania za pomocą interfejsu API REST automatyczne sugerowanie Bing iC#
 
-Użyj tego przewodnika Szybki Start, aby rozpocząć wprowadzanie wywołania interfejsu API automatycznego sugerowania Bing i uzyskiwania odpowiedzi JSON. Prosty C# aplikacji wysyła zapytanie częściowe do interfejsu API i zwraca sugestie dotyczące wyszukiwania. Chociaż ta aplikacja jest napisana w języku C#, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania. Kod źródłowy tego przykładu jest dostępny w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs).
+Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć wykonywanie wywołań do interfejs API automatycznego sugerowania Bing i uzyskać odpowiedź JSON. Ta prosta C# aplikacja wysyła zapytanie wyszukiwania częściowego do interfejsu API i zwraca sugestie dotyczące wyszukiwania. Chociaż ta aplikacja jest napisana w języku C#, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania. Kod źródłowy tego przykładu jest dostępny w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Dowolnej wersji programu [programu Visual Studio 2017 r. lub nowszej](https://www.visualstudio.com/downloads/).
+* Dowolna wersja programu [Visual Studio 2017 lub nowszego](https://www.visualstudio.com/downloads/).
 * Jeśli używasz systemu Linux/MacOS, możesz uruchomić tę aplikację przy użyciu środowiska [Mono](https://www.mono-project.com/).
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 
-## <a name="create-a-visual-search-solution"></a>Utwórz rozwiązanie wyszukiwania wizualnego
+## <a name="create-a-visual-search-solution"></a>Tworzenie rozwiązania wyszukiwanie wizualne
 
 1. Utwórz nowe rozwiązanie konsolowe w programie Visual Studio. Dodaj następujące przestrzenie nazw do głównego pliku kodu.
 
@@ -40,7 +40,7 @@ Użyj tego przewodnika Szybki Start, aby rozpocząć wprowadzanie wywołania int
     using System.Text;
     ```
 
-2. W nowej klasy, należy utworzyć zmienne dla interfejsu API hosta i ścieżkę, [rynek kodu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)i zapytania wyszukiwania częściowe.
+2. W nowej klasie Utwórz zmienne dla hosta i ścieżki interfejsu API, [kod rynku](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)i częściowe zapytanie wyszukiwania.
 
     ```csharp
     static string host = "https://api.cognitive.microsoft.com";
@@ -54,7 +54,7 @@ Użyj tego przewodnika Szybki Start, aby rozpocząć wprowadzanie wywołania int
 
 ## <a name="create-and-send-an-api-request"></a>Tworzenie i wysyłanie żądania interfejsu API
 
-1. Tworzenie funkcji o nazwie `Autosuggest()` wysyłanie żądań do interfejsu API. Utwórz nową `HttpClient()`i Dodaj swój klucz subskrypcji, aby `Ocp-Apim-Subscription-Key` nagłówka.
+1. Utwórz funkcję o nazwie `Autosuggest()` , aby wysłać żądanie do interfejsu API. Utwórz nowy `HttpClient()`i Dodaj swój klucz subskrypcji `Ocp-Apim-Subscription-Key` do nagłówka.
 
     ```csharp
     async static void Autosuggest()
@@ -65,13 +65,13 @@ Użyj tego przewodnika Szybki Start, aby rozpocząć wprowadzanie wywołania int
     }
     ```
 
-2. W tej samej funkcji powyżej należy utworzyć identyfikator URI żądania, łącząc interfejsu API hosta i ścieżkę. Dołącz do rynku `?mkt=` parametr i zapytania `&query=` parametru. Upewnij się, do kodowania adresu URL zapytania. 
+2. W tej samej funkcji należy utworzyć identyfikator URI żądania przez połączenie hosta i ścieżki interfejsu API. Dołącz swój rynek do `?mkt=` parametru, a zapytanie `&query=` do parametru. Pamiętaj, aby zakodować zapytanie do adresu URL. 
 
     ```csharp
     string uri = host + path + "?mkt=" + market + "&query=" + System.Net.WebUtility.UrlEncode (query);
     ```
 
-3. Wyślij żądanie do identyfikatora uri skonstruowany powyżej i wydrukuj odpowiedzi.
+3. Wyślij żądanie do identyfikatora URI złożonego powyżej i wydrukuj odpowiedź.
 
     ```csharp
     HttpResponseMessage response = await client.GetAsync(uri);
@@ -80,7 +80,7 @@ Użyj tego przewodnika Szybki Start, aby rozpocząć wprowadzanie wywołania int
     Console.WriteLine(contentString);
     ```
 
-4. W metodzie głównej program, należy wywołać `Autosuggest()`.
+4. W metodzie Main programu Wywołaj `Autosuggest()`polecenie.
 
     ```csharp
     static void Main(string[] args)

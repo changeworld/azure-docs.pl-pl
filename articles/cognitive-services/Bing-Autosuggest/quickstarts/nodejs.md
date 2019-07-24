@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: Zaproponuj zapytania wyszukiwania przy użyciu interfejsu API REST automatycznego sugerowania Bing i środowiska Node.js'
-titlesuffix: Azure Cognitive Services
-description: Dowiedz się, jak szybko rozpocząć sugerowanie terminy wyszukiwania w czasie rzeczywistym za pomocą interfejsu API automatycznego sugerowania Bing.
+title: 'Szybki start: Sugeruj zapytania wyszukiwania za pomocą interfejsu API REST automatyczne sugerowanie Bing i środowiska Node. js'
+titleSuffix: Azure Cognitive Services
+description: Dowiedz się, jak szybko rozpocząć sugerowanie wyszukiwanych terminów w czasie rzeczywistym za pomocą interfejs API automatycznego sugerowania Bing.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: a8782951baccd63d3087ef0628a8fca31b9a4bc1
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 47c91b1e089c491eb94cd37c0ee9710deaa0e59a
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390401"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405311"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-nodejs"></a>Szybki start: Zaproponuj zapytania wyszukiwania przy użyciu interfejsu API REST automatycznego sugerowania Bing i środowiska Node.js
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-nodejs"></a>Szybki start: Sugeruj zapytania wyszukiwania za pomocą interfejsu API REST automatyczne sugerowanie Bing i środowiska Node. js
 
-Użyj tego przewodnika Szybki Start, aby rozpocząć wprowadzanie wywołania interfejsu API automatycznego sugerowania Bing i uzyskiwania odpowiedzi JSON. Ta prosta aplikacja Node.js wysyła zapytanie częściowe do interfejsu API i zwraca sugestie dotyczące wyszukiwania. Aplikacja jest napisana w języku JavaScript, natomiast interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania. Kod źródłowy, w tym przykładzie jest dostępny na [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingAutosuggestv7.js)
+Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć wykonywanie wywołań do interfejs API automatycznego sugerowania Bing i uzyskać odpowiedź JSON. Prosta aplikacja Node. js wysyła zapytanie wyszukiwania częściowego do interfejsu API i zwraca sugestie dotyczące wyszukiwania. Aplikacja jest napisana w języku JavaScript, natomiast interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania. Kod źródłowy dla tego przykładu jest dostępny w witrynie [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingAutosuggestv7.js)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -37,7 +37,7 @@ Użyj tego przewodnika Szybki Start, aby rozpocząć wprowadzanie wywołania int
     let https = require ('https');
     ```
 
-2. Tworzenie zmiennych dla hosta punktu końcowego interfejsu API i ścieżki, klucz subskrypcji [rynek kodu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)oraz wyszukiwany termin.
+2. Utwórz zmienne dla hosta i ścieżki punktu końcowego interfejsu API, klucza subskrypcji, [kodu rynku](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)i wyszukiwanego terminu.
 
     ```javascript
     // Replace the subscriptionKey string value with your valid subscription key.
@@ -52,13 +52,13 @@ Użyj tego przewodnika Szybki Start, aby rozpocząć wprowadzanie wywołania int
 
 ## <a name="construct-the-search-request-and-query"></a>Konstruowanie żądania wyszukiwania i zapytania
 
-1. Utwórz parametry ciągu zapytania, dodając kod na rynku, aby `mkt=` parametr i zapytania `q=` parametru.
+1. Utwórz ciąg parametrów dla zapytania, dołączając kod rynkowy do `mkt=` parametru oraz zapytanie `q=` do parametru.
 
     ```javascript 
     let params = '?mkt=' + mkt + '&q=' + query;
     ```
 
-2. Utwórz funkcję o nazwie `get_suggestions()`. Używać zmiennych z ostatnich kroków, aby sformatować adres URL żądania interfejsu API wyszukiwania. Termin wyszukiwania musi zostać zakodowany w adresie URL przed wysłaniem go do interfejsu API.
+2. Utwórz funkcję o nazwie `get_suggestions()`. Użyj zmiennych z ostatnich kroków, aby sformatować adres URL wyszukiwania dla żądania interfejsu API. Termin wyszukiwania musi zostać zakodowany w adresie URL przed wysłaniem go do interfejsu API.
 
     ```javascript
     let get_suggestions = function () {
@@ -74,7 +74,7 @@ Użyj tego przewodnika Szybki Start, aby rozpocząć wprowadzanie wywołania int
     }
     ```
 
-    1. W tej samej funkcji należy użyć biblioteki żądania do wysłania zapytania do interfejsu API. Funkcja `response_handler` zostanie zdefiniowana w następnej sekcji.
+    1. W tej samej funkcji Użyj biblioteki żądań, aby wysłać zapytanie do interfejsu API. Funkcja `response_handler` zostanie zdefiniowana w następnej sekcji.
     
         ```javascript
         //...
@@ -82,7 +82,7 @@ Użyj tego przewodnika Szybki Start, aby rozpocząć wprowadzanie wywołania int
         req.end();
         ```
 
-## <a name="create-a-search-handler"></a>Utwórz procedurę obsługi wyszukiwania
+## <a name="create-a-search-handler"></a>Tworzenie procedury obsługi wyszukiwania
 
 1. Zdefiniuj funkcję o nazwie `response_handler`, która przyjmuje wywołanie HTTP `response`, jako parametr. Wykonaj następujące czynności w ramach tej funkcji:
     
@@ -102,7 +102,7 @@ Użyj tego przewodnika Szybki Start, aby rozpocząć wprowadzanie wywołania int
         });
         ```
 
-    3. Gdy **zakończenia** flaga jest sygnalizowane, użytkownika `JSON.parse()` i `JSON.stringify()` do drukowania w odpowiedzi.
+    3. Gdy flaga **końcowa** jest zasygnalizowania, `JSON.parse()` użytkownik `JSON.stringify()` i wydruk odpowiedzi.
     
         ```javascript
         response.on ('end', function () {
@@ -115,7 +115,7 @@ Użyj tego przewodnika Szybki Start, aby rozpocząć wprowadzanie wywołania int
         });
         ```
 
-2. Wywołaj `get_suggestions()` wysyłanie żądań do interfejsu API automatycznego sugerowania Bing.
+2. Wywołaj `get_suggestions()` , aby wysłać żądanie do interfejs API automatycznego sugerowania Bing.
 
 ## <a name="example-json-response"></a>Przykładowa odpowiedź JSON
 
