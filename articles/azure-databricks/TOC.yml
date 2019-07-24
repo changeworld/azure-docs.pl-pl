@@ -17,6 +17,8 @@
   items:
     - name: Wykonywanie zapytań kierowanych do serwera SQL Server działającego w kontenerze platformy Docker
       href: vnet-injection-sql-server.md
+    - name: Uzyskiwanie dostępu do magazynu za pomocą usługi Azure Key Vault
+      href: store-secrets-azure-key-vault.md
     - name: Używanie punktu końcowego usługi Cosmos DB
       href: service-endpoint-cosmosdb.md
     - name: Wykonywanie operacji ETL
