@@ -46,7 +46,7 @@ Usługa internetowa witryny Amazon Marketplace połączone usługi są obsługiw
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa: **AmazonMWS** | Tak |
 | endpoint | Punkt końcowy serwera Amazon MWS, (czyli mws.amazonservices.com)  | Yes |
-| marketplaceID | Identyfikator witryny Marketplace Amazon, którego chcesz pobrać dane z. Do pobierania danych z wielu identyfikatorów portalu Marketplace, rozdziel je przecinkami (`,`). (czyli A2EUQ1WTGCTBG2)  | Yes |
+| marketplaceID | Amazon Marketplace ID, którego chcesz pobrać dane z. Do pobierania danych z wielu identyfikatorów portalu Marketplace, rozdziel je przecinkami (`,`). (czyli A2EUQ1WTGCTBG2)  | Yes |
 | sellerID | Identyfikator Amazon sprzedawcy.  | Yes |
 | mwsAuthToken | Token uwierzytelniania Amazon MWS. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | accessKeyId | Dostęp do klucza identyfikator używany do dostępu do danych.  | Yes |
