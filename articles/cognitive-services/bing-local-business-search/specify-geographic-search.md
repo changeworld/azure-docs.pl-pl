@@ -1,7 +1,7 @@
 ---
-title: Użyj granicach geograficznych, aby przefiltrować wyniki z lokalnych firm interfejsu API wyszukiwania Bing | Dokumentacja firmy Microsoft
+title: Użyj granic geograficznych, aby filtrować wyniki z interfejsu API wyszukiwania lokalnego firmy Bing
 titleSuffix: Azure Cognitive Services
-description: Aby dowiedzieć się, jak filtrować wyniki wyszukiwania z lokalnych firm interfejsu API wyszukiwania Bing, należy użyć w tym artykule.
+description: Skorzystaj z tego artykułu, aby dowiedzieć się, jak filtrować wyniki wyszukiwania za pomocą interfejsu API wyszukiwania lokalnego usługi Bing.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,28 +9,28 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: 6da8e9e08f84fa16f22d2a061be28398d064dc8c
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: e47a2ab8db17089773fd9a439b6dff225d6a8a29
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592693"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423301"
 ---
-# <a name="use-geographic-boundaries-to-filter-results-from-the-bing-local-business-search-api"></a>Użyj granicach geograficznych, aby przefiltrować wyniki z lokalnych firm interfejsu API wyszukiwania Bing
+# <a name="use-geographic-boundaries-to-filter-results-from-the-bing-local-business-search-api"></a>Użyj granic geograficznych, aby filtrować wyniki z interfejsu API wyszukiwania lokalnego firmy Bing
 
-Lokalnych firm interfejsu API wyszukiwania Bing pozwala ustawić granice dla określonego obszaru geograficznego, czy chcesz wyszukiwać za pomocą `localCircularView` lub `localMapView` parametry zapytania. Należy użyć tylko jeden parametr zapytania. 
+Interfejs API wyszukiwania lokalnego usługi Bing umożliwia ustawianie granic w określonym obszarze geograficznym, który ma być przeszukiwany przy użyciu `localCircularView` parametrów `localMapView` lub zapytania. Upewnij się, że w zapytaniach można używać tylko jednego parametru. 
 
-Jeśli termin wyszukiwania zawiera jawne lokalizacji geograficznej, lokalnych firm interfejsu API usługi Bing automatycznie użyje go do określają granice dla wyników wyszukiwania. Na przykład, jeśli termin wyszukiwania jest `sailing in San Diego`, następnie `San Diego` będzie używana jako lokalizacja i inne określone lokalizacje w parametrach zapytania lub nagłówków użytkownika zostaną zignorowane. 
+Jeśli termin wyszukiwania zawiera jawną lokalizację geograficzną, lokalny interfejs API usługi Bing będzie automatycznie używać go do ustawiania granic dla wyników wyszukiwania. Na przykład jeśli termin wyszukiwania to `sailing in San Diego` `San Diego` , będzie używany jako lokalizacja, a wszystkie inne określone lokalizacje w parametrach zapytania lub w nagłówkach użytkowników zostaną zignorowane. 
 
-Jeśli lokalizacji geograficznej nie zostanie wykryte w termin wyszukiwania, a nie lokalizacji geograficznej jest określony za pomocą parametrów zapytania określić lokalizację, w żądaniu podejmie lokalnych firm interfejsu API wyszukiwania Bing `X-Search-ClientIP` lub `X-Search-Location` nagłówków. Jeśli zostanie określona żadna nagłówka, interfejs API określają lokalizację, z IP klienta żądania lub współrzędne GPS urządzenia przenośne.
+Jeśli lokalizacja geograficzna nie zostanie wykryta w wyszukiwanym terminie i nie określono lokalizacji geograficznej przy użyciu parametrów zapytania, interfejs API wyszukiwania lokalnego usługi Bing podejmie próbę ustalenia lokalizacji z `X-Search-ClientIP` lub `X-Search-Location` nagłówków żądania. Jeśli nie określono żadnego nagłówka, interfejs API określi lokalizację adresu IP klienta żądania lub współrzędne GPS dla urządzeń przenośnych.
 
 ## <a name="localcircularview"></a>localCircularView
 
-`localCircularView` Parametr tworzy cykliczne obszaru geograficznego wokół zestaw współrzędnych szerokości/długości geograficznej, zdefiniowane przez usługi radius. Korzystając z tego parametru, odpowiedzi z lokalnych firm interfejsu API wyszukiwania Bing będzie zawierał tylko lokalizacje w tym okrąg, w odróżnieniu od `localMapView` parametrów, które mogą obejmować lokalizacje nieco poza obszarem wyszukiwania.
+`localCircularView` Parametr tworzy okrągły obszar geograficzny wokół zestawu współrzędne szerokości geograficznej/długości geograficznej zdefiniowanej przez promień. Przy użyciu tego parametru odpowiedzi z interfejsu API wyszukiwania lokalnego usługi Bing będą obejmować tylko lokalizacje w tym okręgu, w przeciwieństwie `localMapView` do parametru, który może zawierać nieznacznie spoza obszaru wyszukiwania.
 
-Aby określić obszaru cykliczne wyszukiwanie geograficzne, wybierz i szerokość geograficzną, która będzie służyć jako środka okręgu i promienia w metrach. Ten parametr może następnie być dołączona ciągu zapytania, na przykład: `q=Restaurants&localCircularView=47.6421,-122.13715,5000`.
+Aby określić cykliczny obszar wyszukiwania geograficznego, wybierz szerokość i długość geograficzną, które mają być używane jako środek okręgu i promień w metrach. Ten parametr można następnie dołączyć do ciągu zapytania, na przykład: `q=Restaurants&localCircularView=47.6421,-122.13715,5000`.
 
-Pełnej kwerendy:
+Ukończ zapytanie:
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search?q=restaurant&localCircularView=47.6421,-122.13715,5000&appid=0123456789ABCDEF&mkt=en-us&form=monitr
@@ -38,18 +38,18 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search?q=restauran
 
 ## <a name="localmapview"></a>localMapView
 
-`localMapView` Parametr określa prostokątny obszar geograficzny do wyszukiwania, za pomocą dwa zestawy współrzędnych w celu określania jej Południowo-Wschodnia i północno-zachodnie rogi. Korzystając z tego parametru, odpowiedzi z lokalnych firm interfejsu API wyszukiwania Bing mogą obejmować lokalizacje w obrębie i po prostu poza określonym obszarze, w przeciwieństwie do `localCircularView` parametr, który zawiera tylko lokalizacje w obszarze wyszukiwania.
+`localMapView` Parametr określa prostokątny obszar geograficzny do przeszukania, wykorzystując dwa zestawy współrzędnych, aby określić jego rogi południowo-zachodni i północ. W przypadku korzystania z tego parametru odpowiedzi z interfejsu API wyszukiwania lokalnego usługi Bing mogą obejmować lokalizacje wewnątrz i po nim poza określonym obszarem, w `localCircularView` przeciwieństwie do parametru, który obejmuje tylko lokalizacje w obszarze wyszukiwania.
 
-Aby określić obszaru search prostokątny, wybierz dwa zestawy współrzędnych szerokości/długości geograficznej, która będzie służyć jako południowo-wschodnia i północno-zachodnie rogi granicy. Pamiętaj najpierw zdefiniować współrzędne południowo-, jak w poniższym przykładzie: `localMapView=47.619987,-122.181671,47.6421,-122.13715`.
+Aby określić prostokątny obszar wyszukiwania, należy wybrać dwa zestawy współrzędnych szerokości/długości geograficznej, które mają być narożne i zachodnie rogi granicy. Pamiętaj, aby najpierw zdefiniować współrzędne Południowo-Wschodnia, jak w poniższym przykładzie: `localMapView=47.619987,-122.181671,47.6421,-122.13715`.
 
-Pełnej kwerendy:
+Ukończ zapytanie:
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search?q=restaurant&localMapView=47.619987,-122.181671,47.6421,-122.13715&appid=0123456789ABCDEF&mkt=en-us&form=monitr
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-- [Szybki Start Java wyszukiwania lokalnych firmach](quickstarts/local-search-java-quickstart.md)
-- [Wyszukiwanie lokalnych firmach C# Szybki Start](quickstarts/local-quickstart.md)
-- [Szybki Start węzła wyszukiwania lokalnych firmach](quickstarts/local-search-node-quickstart.md)
-- [Lokalnych firm wyszukiwania Python Szybki Start](quickstarts/local-search-python-quickstart.md)
+## <a name="next-steps"></a>Następne kroki
+- [Lokalne wyszukiwanie biznesowe w języku Java — Szybki Start](quickstarts/local-search-java-quickstart.md)
+- [Lokalne wyszukiwanie C# biznesowe — Szybki Start](quickstarts/local-quickstart.md)
+- [Lokalny węzeł wyszukiwania biznesowego — Szybki Start](quickstarts/local-search-node-quickstart.md)
+- [Lokalne wyszukiwanie biznesowe w języku Python — Szybki Start](quickstarts/local-search-python-quickstart.md)

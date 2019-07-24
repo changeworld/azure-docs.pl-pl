@@ -1,134 +1,120 @@
 ---
-title: Tworzenie klasyfikatora — Custom Vision Service
+title: Przewodnik Szybki Start dotyczący tworzenia klasyfikatora Custom Vision Service
 titlesuffix: Azure Cognitive Services
-description: Dowiedz się, jak utworzyć model klasyfikacji obrazów za pomocą witryny sieci Web Custom Vision.
+description: W tym przewodniku szybki start dowiesz się, jak utworzyć model klasyfikacji obrazów przy użyciu witryny sieci Web Custom Vision.
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
-ms.topic: conceptual
-ms.date: 04/03/2019
+ms.topic: quickstart
+ms.date: 07/12/2019
 ms.author: anroth
-ms.openlocfilehash: 3cb67b57f406774b4bcaf57c24b8e7741068ced6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 748336dcea580cefaf7638c86c1466bf0c16a472
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66497304"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423563"
 ---
-# <a name="how-to-build-a-classifier-with-custom-vision"></a>Jak tworzyć klasyfikatora z Custom Vision
+# <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>Szybki start: Jak utworzyć klasyfikator z Custom Vision
 
-Aby użyć usługi Custom Vision Service Klasyfikacja obrazów, należy utworzyć model klasyfikatora. W tym przewodniku dowiesz się, jak tworzyć klasyfikatora za pośrednictwem witryny internetowej Custom Vision.
+W tym przewodniku szybki start dowiesz się, jak utworzyć klasyfikator za pomocą witryny sieci Web Custom Vision. Po utworzeniu modelu klasyfikatora można użyć usługi Custom Vision do klasyfikacji obrazów.
+
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Ważnej subskrypcji platformy Azure. [Tworzenie konta usługi](https://azure.microsoft.com/free/) za darmo.
-- Zestaw obrazów za pomocą którego ma zostać uczyć klasyfikatory. Poniżej znajdują się porady na temat wybierania obrazów.
+- Zestaw obrazów, za pomocą których można szkolić klasyfikatora. Poniżej znajdują się porady dotyczące wybierania obrazów.
 
+## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Utwórz zasoby Custom Vision w Azure Portal
 
-## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Tworzenie niestandardowego przetwarzania zasobów w witrynie Azure portal
-Aby korzystać z usługi Custom Vision Service, konieczne będzie utworzenie Custom Vision uczenia i przewidywania zasobów w [witryny Azure portal](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision). Spowoduje to utworzenie szkolenia i prognozowania zasobów. 
+Aby korzystać z Custom Vision Service, należy utworzyć Custom Vision szkolenia i zasoby przewidywania w Azure Portal. Wypełnij okno dialogowe na stronie [tworzenie Custom Vision](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) , aby utworzyć zasób szkoleniowy i predykcyjny. 
 
 ## <a name="create-a-new-project"></a>Tworzenie nowego projektu
 
-W przeglądarce internetowej przejdź do [strony sieci web Custom Vision](https://customvision.ai) i wybierz __Zaloguj__. Zaloguj się przy użyciu tego samego konta, którego używasz do logowania się do witryny Azure portal.
+W przeglądarce internetowej przejdź do [strony sieci web Custom Vision](https://customvision.ai) i wybierz pozycję __Zaloguj__. Zaloguj się przy użyciu tego samego konta, które zostało użyte do zalogowania się do Azure Portal.
 
 ![Obraz strony logowania](./media/browser-home.png)
 
 
-1. Aby utworzyć swój pierwszy projekt, wybierz **nowy projekt**. **Tworzenie nowego projektu** zostanie wyświetlone okno dialogowe.
+1. Aby utworzyć swój pierwszy projekt, wybierz pozycję **Nowy projekt**. Zostanie wyświetlone okno dialogowe **Utwórz nowy projekt** .
 
-    ![Okno dialogowe Nowy projekt ma pola na nazwę, opis i domen.](./media/getting-started-build-a-classifier/new-project.png)
+    ![Okno dialogowe Nowy projekt zawiera pola nazw, opisów i domen.](./media/getting-started-build-a-classifier/new-project.png)
 
-1. Wprowadź nazwę i opis dla projektu. Następnie wybierz grupę zasobów. Jeśli konto logowania jest skojarzony z kontem platformy Azure, lista rozwijana grupy zasobów spowoduje wyświetlenie wszystkich grup zasobów platformy Azure zawierające zasób usługi Custom Vision. 
+1. Wprowadź nazwę i opis projektu. Następnie wybierz grupę zasobów. Jeśli Twoje konto zalogowane jest skojarzone z kontem platformy Azure, na liście rozwijanej Grupa zasobów zostaną wyświetlone wszystkie grupy zasobów platformy Azure zawierające zasób Custom Vision Service. 
 
    > [!NOTE]
-   > Jeśli żadna grupa zasobów jest dostępny, sprawdź, czy po zalogowaniu do [customvision.ai](https://customvision.ai) z tego samego konta, jak używane do logowania się do [witryny Azure portal](https://portal.azure.com/). Ponadto, upewnij się, że wybrano ten sam "Directory" w portalu usługi Custom Vision jako katalog w witrynie Azure portal, gdzie znajdują się Twoje zasoby Custom Vision. W obu lokacjach katalogu można wybrać z rozwijanego menu konta w prawym górnym rogu ekranu. 
+   > Jeśli grupa zasobów nie jest dostępna, upewnij się, że zalogowano się do [customvision.AI](https://customvision.ai) przy użyciu tego samego konta, które zostało użyte do zalogowania się do [Azure Portal](https://portal.azure.com/). Upewnij się również, że wybrano taki sam katalog w portalu Custom Vision jak katalog w Azure Portal, w którym znajdują się zasoby Custom Vision. W obu lokacjach możesz wybrać katalog z menu rozwijanego konto w prawym górnym rogu ekranu. 
 
-1. Wybierz __klasyfikacji__ w obszarze __typów projektów__. Następnie w obszarze __typy klasyfikacji__, wybierają **Multilabel** lub **kontra**, w zależności od danego przypadku użycia. Dowolna liczba tagów w multilabel klasyfikacja ma zastosowanie do obrazu (zero lub więcej), podczas gdy klasyfikacji wieloklasowej sortuje obrazy w jednej kategorii (każdego obrazu, który prześlesz zostaną posortowane w najprawdopodobniej tag). Będzie można później zmienić typ klasyfikacji, w razie potrzeby.
+1. Wybierz pozycję __Klasyfikacja__ w obszarze __typy projektów__. Następnie w obszarze __typy klasyfikacji__wybierz pozycję wieloetykietowe lub wieloklasowe, w zależności od przypadku użycia. Klasyfikacja wieloetykietowa stosuje dowolną liczbę tagów do obrazu (zero lub więcej), podczas gdy klasyfikacja wieloklasowa sortuje obrazy w pojedynczej kategorii (Każdy przesłany przez Ciebie obraz zostanie posortowany do najbardziej dopasowanego tagu). Jeśli chcesz, będziesz mieć możliwość późniejszego zmiany typu klasyfikacji.
 
-1. Następnie wybierz jedną z dostępnych domen. Każda domena optymalizuje klasyfikatora dla określonych typów obrazów, zgodnie z opisem w poniższej tabeli. Będzie można później zmienić domenę, w razie potrzeby.
+1. Następnie wybierz jedną z dostępnych domen. Każda domena optymalizuje klasyfikatora dla określonych typów obrazów, zgodnie z opisem w poniższej tabeli. Jeśli chcesz, będziesz mieć możliwość późniejszej zmiany domeny.
 
-    |Domain|Przeznaczenie|
+    |Domain|Cel|
     |---|---|
-    |__Ogólny__| Zoptymalizowane pod kątem szerokiego zakresu zadań klasyfikacji obrazów. Jeśli żaden z innych domen są odpowiednie lub wiesz, która domena, do wyboru, wybierz domenę ogólnego. |
-    |__Żywności__|Zoptymalizowane pod kątem fotografie płytki, jak będą widoczne w menu restauracji. Do klasyfikowania fotografie poszczególne owoce lub warzyw, należy użyć domeny żywności.|
-    |__Charakterystycznych elementów krajobrazu__|Zoptymalizowane pod kątem rozpoznawalnych charakterystycznych elementów krajobrazu, zarówno naturalnych, jak i sztucznych. Ta domena działa najlepiej, gdy charakterystycznych elementów krajobrazu jest widoczny w zdjęcia. Ta domena działa, nawet wtedy, gdy charakterystycznych elementów krajobrazu to nieco zakłócane przez osoby przed nim.|
-    |__Handlu detalicznego__|Zoptymalizowane pod kątem obrazów, które znajdują się w katalogu zakupów lub zakupów witryna sieci Web. Jeśli chcesz się bardzo precyzyjnej klasyfikowania między sukienki, spodnie i koszule, należy użyć tej domeny.|
-    |__Compact domen__| Zoptymalizowane pod kątem ograniczenia klasyfikacji w czasie rzeczywistym na urządzeniach przenośnych. Modele generowane przez compact domen można wyeksportować do uruchomienia lokalnie.|
+    |__Ogólnego__| Optymalizacja pod kątem szerokiego zakresu zadań klasyfikacji obrazów. Jeśli żadna z pozostałych domen nie jest odpowiednia lub nie masz pewności, którą domenę wybrać, wybierz domenę generyczną. |
+    |__Żywności__|Optymalizacja pod kątem zdjęć naczyń w postaci widocznej w menu restauracji. Jeśli chcesz sklasyfikować fotografie poszczególnych owoców lub warzyw, użyj domeny żywności.|
+    |__Charakterystycznych elementów krajobrazu__|Optymalizacja pod kątem rozpoznawalnych terenów, zarówno naturalnych, jak i sztucznej. Ta domena działa najlepiej, gdy punkt orientacyjny jest jasno widoczny na zdjęciu. Ta domena działa nawet wtedy, gdy punkt orientacyjny jest nieco przesunięty przez osoby przed nim.|
+    |__Stępują__|Optymalizacja pod kątem obrazów znajdujących się w katalogu zakupów lub witrynie internetowej do kupowania. Jeśli potrzebujesz wysokiej dokładności klasyfikowania między Dresses, Pants i koszulami, Użyj tej domeny.|
+    |__Domeny kompaktowe__| Optymalizacja pod kątem ograniczeń klasyfikacji w czasie rzeczywistym na urządzeniach przenośnych. Modele generowane przez domeny kompaktowe mogą być eksportowane do lokalnego uruchamiania.|
 
-1. Na koniec wybierz pozycję __Tworzenie projektu__.
+1. Na koniec wybierz pozycję __Utwórz projekt__.
 
-## <a name="choose-training-images"></a>Wybierz uczone obrazy
+## <a name="choose-training-images"></a>Wybierz obrazy szkoleniowe
 
-Co najmniej zaleca się, że używasz co najmniej 30 obrazy na tagu w zestawie wstępne szkolenie. Należy również zbierać kilka dodatkowych obrazów do przetestowania modelu po jego przygotowaniu.
-
-Aby skutecznie nauczenia modelu, należy używać obrazów z różnymi visual. Wybierz obrazów za pomocą którego różnią się zależnie od:
-* Kąt kamery
-* oświetlenia
-* Tło
-* Styl wizualny
-* osoba/pogrupowane subject(s)
-* size
-* type
-
-Dodatkowo należy upewnić się, że wszystkie Twoje uczone obrazy spełniają następujące kryteria:
-* format JPG, PNG lub bmp
-* nie większy niż rozmiar (4MB dla obrazów prognozowania) 6MB
-* nie może być mniejsza niż 256 pikseli na krawędzi najkrótszy. wszystkie obrazy, które są mniej niż to będzie można automatycznie skalowany w górę przez usługi Custom Vision Service
+[!INCLUDE [choose training images](includes/choose-training-images.md)]
 
 ## <a name="upload-and-tag-images"></a>Przekazywanie i tagowanie obrazów
 
-W tej sekcji możesz przekazać i ręcznie tagować obrazy w celu nauczenia klasyfikatora. 
+W tej sekcji zostaną przesłane i ręcznie oznakowane obrazy, aby ułatwić uczenie klasyfikatora. 
 
-1. Aby dodać obrazy, kliknij __Dodawanie obrazów__ przycisk, a następnie wybierz pozycję __Przeglądaj pliki lokalne__. Wybierz __Otwórz__ można przenieść do znakowania. Znacznik wyboru będą stosowane do całej grupy obrazów, wybrane do przekazania, dzięki czemu łatwiej jest je przekazywać obrazy do oddzielnych grup zgodnie z ich odpowiednie tagi. Można również zmienić tagów dla poszczególnych obrazów po zostały przekazane.
+1. Aby dodać obrazy, kliknij przycisk __Dodaj obrazy__ , a następnie wybierz __Przeglądaj pliki lokalne__. Wybierz pozycję __Otwórz__ , aby przejść do tagowania. Wybór tagu zostanie zastosowany do całej grupy obrazów wybranych do przekazania, dzięki czemu można łatwiej przekazywać obrazy w oddzielnych grupach zgodnie z odpowiednimi tagami. Możesz również zmienić Tagi dla poszczególnych obrazów po ich przekazaniu.
 
-    ![Dodaj formant obrazów jest wyświetlany w lewym górnym rogu, a także jako przycisk na dole na środku.](./media/getting-started-build-a-classifier/add-images01.png)
+    ![Kontrolka Dodaj obrazy jest pokazywana w lewym górnym rogu i jako przycisk w dolnej części.](./media/getting-started-build-a-classifier/add-images01.png)
 
 
-1. Aby utworzyć tag, wpisz tekst w __Moje znaczniki__ pola, a następnie naciśnij klawisz Enter. Jeśli tag już istnieje, zostanie wyświetlona w menu rozwijanym. W projekcie multilabel możesz dodać więcej niż jeden tag do obrazów, ale w wieloklasowej projektu można dodać tylko jeden. Aby zakończyć przekazywanie obrazów, użyj __przekazywanie plików [liczba]__ przycisku. 
+1. Aby utworzyć tag, wprowadź tekst w polu __Moje Tagi__ i naciśnij klawisz ENTER. Jeśli tag już istnieje, pojawi się w menu rozwijanym. W projekcie z wieloma etykietami można dodać więcej niż jeden tag do obrazów, ale w projekcie wieloklasowym można dodać tylko jedną. Aby zakończyć przekazywanie obrazów, użyj przycisku __Przekaż pliki [Number]__ . 
 
-    ![Obraz przedstawiający stronę tagów i przekazywania](./media/getting-started-build-a-classifier/add-images03.png)
+    ![Obraz przedstawiający tag i stronę przekazywania](./media/getting-started-build-a-classifier/add-images03.png)
 
-1. Wybierz __gotowe__ po przekazaniu plików obrazów.
+1. Po przekazaniu obrazów wybierz opcję __gotowe__ .
 
-    ![Pasek postępu pokazuje wszystkie zadania zostały zakończone.](./media/getting-started-build-a-classifier/add-images04.png)
+    ![Pasek postępu pokazuje wszystkie zadania ukończone.](./media/getting-started-build-a-classifier/add-images04.png)
 
-Aby przekazać inny zestaw obrazów, powrót do początku tej sekcji, a następnie powtórz kroki.
+Aby przekazać inny zestaw obrazów, Wróć do początku tej sekcji i powtórz te kroki.
 
 ## <a name="train-the-classifier"></a>Szkolenie klasyfikatora
 
-To w opracowywaniu klasyfikatora, wybierz **szkolenie** przycisku. Klasyfikator używa wszystkich bieżących obrazów do tworzenia modelu, który identyfikuje visual właściwości każdego znacznika.
+Aby nauczyć klasyfikatora, wybierz przycisk **poszkol** . Klasyfikator korzysta ze wszystkich bieżących obrazów, aby utworzyć model, który identyfikuje cechy wizualne poszczególnych tagów.
 
-![Szkolenie przycisk w prawym górnym rogu paska narzędzi Nagłówek strony sieci web](./media/getting-started-build-a-classifier/train01.png)
+![Przycisk uczenia w prawym górnym rogu paska narzędzi nagłówka strony sieci Web](./media/getting-started-build-a-classifier/train01.png)
 
-Proces szkolenia powinien potrwać kilka minut. W tym czasie zostaną wyświetlone informacje o procesie szkolenia w **wydajności** kartę.
+Proces szkolenia powinien trwać tylko kilka minut. W tym czasie informacje o procesie szkolenia są wyświetlane na karcie **wydajność** .
 
-![Okno przeglądarki, za pomocą okna dialogowego szkolenia w sekcji głównej](./media/getting-started-build-a-classifier/train02.png)
+![Okno przeglądarki z oknem dialogowym szkoleń w sekcji głównej](./media/getting-started-build-a-classifier/train02.png)
 
-## <a name="evaluate-the-classifier"></a>Oceń klasyfikatora
+## <a name="evaluate-the-classifier"></a>Oceń klasyfikator
 
-Po zakończeniu szkolenia wydajności modelu szacowania i wyświetlane. Custom Vision Service przy użyciu obrazów, które przesłane dla szkoleń do obliczania dokładności i odwołania, za pomocą procesu o nazwie [składanie k krzyżowego sprawdzania poprawności](https://en.wikipedia.org/wiki/Cross-validation_(statistics)). Dokładność i odwołania są dwa różne pomiary skuteczności klasyfikatora:
+Po zakończeniu szkolenia jest szacowany i wyświetlany jego wydajność. W Custom Vision Service są używane obrazy przesłane do szkolenia w celu obliczenia precyzji i odwołania przy użyciu procesu o nazwie [k-złóż krzyżowego sprawdzania poprawności](https://en.wikipedia.org/wiki/Cross-validation_(statistics)). Precyzja i odwoływanie to dwa różne pomiary skuteczności klasyfikatora:
 
-- **Dokładność** wskazuje ułamek zidentyfikowanych klasyfikacje, które były prawidłowe. Na przykład jeśli model zidentyfikowane 100 obrazów jako psy, a 99 z nich są faktycznie psy, dokładność będzie 99%.
-- **Odwołaj** wskazuje ułamek rzeczywiste klasyfikacje, które zostały poprawnie zidentyfikowane. Na przykład jeśli wystąpiły faktycznie 100 obrazów jabłek i modelu zidentyfikowane 80 jako jabłek, odwołanie będzie 80%.
+- **Precyzja** wskazuje ułamek zidentyfikowanych klasyfikacji, które były poprawne. Na przykład jeśli model zidentyfikował 100 obrazów jako psy, a 99 z nich rzeczywiście miało psy, dokładność będzie 99%.
+- **Odwołanie** wskazuje ułamek rzeczywistych klasyfikacji, które zostały prawidłowo zidentyfikowane. Na przykład jeśli w rzeczywistości istniało 100 obrazów z jabłek, a model zidentyfikowano 80 jako jabłka, przywoływanie będzie 80%.
 
-![Wyniki szkolenia pokazują ogólną dokładności i odwołania, a dokładność i odwołania dla każdego znacznika w klasyfikatora.](./media/getting-started-build-a-classifier/train03.png)
+![Wyniki szkolenia przedstawiają ogólną precyzję i odwołanie oraz precyzję i odwołania dla każdego znacznika w klasyfikatorze.](./media/getting-started-build-a-classifier/train03.png)
 
 ### <a name="probability-threshold"></a>Próg prawdopodobieństwa
 
-Uwaga **próg prawdopodobieństwa** suwaka w okienku po lewej stronie **wydajności** kartę. Wartość progowa dla przewidywane prawdopodobieństwa zostały uznane za prawidłowe podczas obliczania dokładności i odwołania.
+[!INCLUDE [probability threshold](includes/probability-threshold.md)]
 
-Interpretowanie wywołań prognoz o progu wysokie prawdopodobieństwo ma tendencję do zwracania wyników z bardzo precyzyjnej kosztem odwołania (znaleziono klasyfikacji są prawidłowe, ale nie znaleziono wiele); Próg niewielkie prawdopodobieństwo ma odwrotne (znaleziono większości rzeczywistych klasyfikacji, ale istnieją fałszywych alarmów, w tym zestawie). Pamiętając o tym należy ustawić próg prawdopodobieństwa odpowiednio do potrzeb określonego projektu. Później po stronie klienta, należy używać tej samej wartości próg prawdopodobieństwa jako filtru podczas odbierania wyników przewidywań z modelu.
+## <a name="manage-training-iterations"></a>Zarządzanie iteracjami szkoleń
 
-## <a name="manage-training-iterations"></a>Zarządzanie iteracjami szkolenia
+Za każdym razem, gdy nauczysz klasyfikator, tworzysz nową _iterację_ ze swoimi zaktualizowanymi metrykami wydajności. Wszystkie iteracje można wyświetlić w lewym okienku na karcie **wydajność** . W lewym okienku znajdziesz również przycisk **Usuń** , którego można użyć, aby usunąć iterację, jeśli jest ona przestarzała. Po usunięciu iteracji usuwane są wszystkie obrazy, które są w unikatowy sposób skojarzone.
 
-Zawsze możesz uczyć klasyfikatory, możesz utworzyć nową _iteracji_ z własną metryki wydajności zaktualizowane. Można wyświetlić wszystkie swoje iteracje w lewym okienku **wydajności** kartę. W okienku po lewej stronie znajdziesz również **Usuń** przycisk, który służy do usuwania iteracji, jeśli jest przestarzały. Po usunięciu iteracji, możesz usunąć wszystkie obrazy, które jednoznacznie powiązanych z nim.
+## <a name="next-steps"></a>Następne kroki
 
-## <a name="next-steps"></a>Kolejne kroki
+W tym przewodniku szybki start przedstawiono sposób tworzenia i uczenia modelu klasyfikacji obrazów przy użyciu witryny sieci Web Custom Vision. Następnie uzyskaj więcej informacji na temat procesu iteracyjnego ulepszania modelu.
 
-W tym przewodniku przedstawiono sposób tworzenie i uczenie model klasyfikacji obrazów, przetwarzania niestandardowe witryny sieci Web. Następnie Pobierz więcej informacji na temat proces iteracyjny poprawy modelu.
-
-[Testowanie i ponowne szkolenie modelu](test-your-model.md)
+> [!div class="nextstepaction"]
+> [Testowanie i ponowne szkolenie modelu](test-your-model.md)
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 07/18/2019
+ms.date: 07/22/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b366352d19b3f1e03e32e5fbddf0cb2816fa1ba3
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: b90b4806e86ed0ba33500cf31a6ed892241ceabe
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320287"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423454"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Usługa QnA Maker wiedzy limity i granice
 
@@ -60,7 +60,8 @@ Ogólne ograniczenia dotyczące zawartości w bazie wiedzy knowledge base:
 * Długość nazwy pliku: 200
 * Obsługiwane formaty plików: "tsv", ".pdf", ".txt", ".docx", "xlsx".
 * Maksymalna liczba pytań alternatywnych: 300
-* Maksymalna liczba par pytań i odpowiedzi: Zależy od wybranych **[limitów warstwy Azure Search](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)** . Para pytań i odpowiedzi to dokument w indeksie Azure Search. 
+* Maksymalna liczba par pytań i odpowiedzi: Zależy od wybranej **[warstwy Azure Search](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)** . Para pytania i odpowiedzi mapuje do dokumentu na Azure Search indeksu. 
+* Strona adresu URL/HTML: 1 000 000 znaków
 
 ## <a name="create-knowledge-base-call-limits"></a>Utwórz limity wywołania w bazie wiedzy Knowledge base:
 Reprezentują one tworzenie limity dla każdego działania w bazie wiedzy knowledge base. oznacza to kliknięcie *tworzenie bazy wiedzy* lub wywołanie interfejsu API CreateKnowledgeBase.
@@ -75,7 +76,7 @@ Te reprezentują limity dla każdej akcji aktualizacji; oznacza to kliknięcie *
 * Maksymalna liczba dodanych lub usuniętych pól metadanych: 10
 * Maksymalna liczba adresów URL, które można odświeżyć: 5
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się, kiedy i jak zmienić warstwy usług:
 

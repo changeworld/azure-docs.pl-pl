@@ -1,42 +1,42 @@
 ---
-title: Wysyłanie i przy użyciu lokalnych firm interfejsu API wyszukiwania Bing, zapytań i odpowiedzi | Dokumentacja firmy Microsoft
+title: Wysyłanie zapytań i odpowiedzi interfejsu API wyszukiwania lokalnego usługi Bing oraz korzystanie z nich
 titleSuffix: Azure Cognitive Services
-description: Aby dowiedzieć się, jak wysyłać i zapytania wyszukiwania za pomocą lokalnych firm interfejsu API wyszukiwania Bing, należy użyć w tym artykule.
+description: Skorzystaj z tego artykułu, aby dowiedzieć się, jak wysyłać zapytania wyszukiwania i korzystać z nich przy użyciu interfejsu API wyszukiwania lokalnego usługi Bing.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
+ms.topic: quickstart
 ms.date: 06/26/2018
 ms.author: rosh
-ms.openlocfilehash: cf622f658208ab85fe0a0670a0e034bd58a5047d
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 5a26324f22ed46d0c06ecb0eb7ecaf74f589051e
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849941"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423441"
 ---
-# <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Wysyłanie i przy użyciu lokalnych firm interfejsu API wyszukiwania Bing, zapytań i odpowiedzi
+# <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Wysyłanie zapytań i odpowiedzi interfejsu API wyszukiwania lokalnego usługi Bing oraz korzystanie z nich
 
-Wyniki lokalnego można uzyskać z lokalnych firm interfejsu API wyszukiwania Bing, wysyłając zapytanie wyszukiwania do punktu końcowego i tym `Ocp-Apim-Subscription-Key` nagłówka, który jest wymagany. Wraz z dostępnych [nagłówki](local-search-reference.md#headers) i [parametry](local-search-reference.md#query-parameters), wyszukiwania, które można dostosować, określając [granicach geograficznych](specify-geographic-search.md) dla obszarów, które mają być wyszukiwane i [kategorie](local-search-query-response.md) miejsc zwracane.
+Możesz uzyskać wyniki lokalne z interfejsu API wyszukiwania lokalnego usługi Bing, wysyłając zapytanie wyszukiwania do jego punktu końcowego i uwzględniając `Ocp-Apim-Subscription-Key` nagłówek, który jest wymagany. Oprócz dostępnych [nagłówków](local-search-reference.md#headers) i [parametrów](local-search-reference.md#query-parameters)wyszukiwania można dostosować, określając [granice geograficzne](specify-geographic-search.md) dla obszaru, który ma być przeszukiwany, oraz [Kategorie](local-search-query-response.md) zwracanych miejsc.
 
 ## <a name="creating-a-request"></a>Tworzenie żądania
 
-Aby wysłać żądanie do lokalnych firm interfejsu API wyszukiwania Bing, należy dołączyć termin wyszukiwania, aby `q=` parametru przed dodaniem go do punktu końcowego interfejsu API i łącznie `Ocp-Apim-Subscription-Key` nagłówka. Na przykład:
+Aby wysłać żądanie do interfejsu API wyszukiwania lokalnego usługi Bing, Dołącz termin wyszukiwania do `q=` parametru przed dodaniem go do punktu końcowego interfejsu API, a w `Ocp-Apim-Subscription-Key` tym nagłówek. Na przykład:
 
 `https://api.cognitive.microsoft.com/bing/localbusinesses/v7.0/search?q=restaurant+in+Bellevue`
 
-Poniżej przedstawiono pełne żądanie składni adresu URL. Zobacz lokalnych firm interfejsu API wyszukiwania Bing [przewodników Szybki Start](quickstarts/local-quickstart.md)i odwoływać zawartość [nagłówki](local-search-reference.md#headers) i [parametry](local-search-reference.md#query-parameters) więcej informacji na temat wysyłania żądań. 
+Poniżej przedstawiono składnię adresu URL pełnej żądania. Aby uzyskać więcej informacji na temat wysyłania żądań, zobacz [Przewodnik Szybki Start](quickstarts/local-quickstart.md)dotyczący interfejsu API wyszukiwania w usłudze Bing — informacje szczegółowe i informacje o [nagłówkach](local-search-reference.md#headers) i [parametrach](local-search-reference.md#query-parameters) . 
 
-Aby uzyskać informacji na temat kategorii lokalnego wyszukiwania, zobacz [wyszukać kategorie lokalnych firm interfejsu API wyszukiwania Bing](local-categories.md).
+Aby uzyskać informacje na temat lokalnych kategorii wyszukiwania, zobacz [kategorie wyszukiwania dla interfejsu API wyszukiwania lokalnego usługi Bing](local-categories.md).
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search[?q][&localCategories][&cc][&mkt][&safesearch][&setlang][&count][&first][&localCircularView][&localMapView]
 ```
 
-## <a name="using-responses"></a>Przy użyciu odpowiedzi
+## <a name="using-responses"></a>Korzystanie z odpowiedzi
 
-Odpowiedzi JSON z lokalnych firm interfejsu API wyszukiwania Bing zawiera `SearchResponse` obiektu. Interfejs API zwróci odpowiednie wyniki wyszukiwania w `places` pola. Jeśli żadne wyniki nie zostaną znalezione, `places` pola nie zostaną uwzględnione w odpowiedzi.
+Odpowiedzi JSON z interfejsu API wyszukiwania lokalnego usługi Bing zawierają `SearchResponse` obiekt. Interfejs API zwróci odpowiednie wyniki wyszukiwania w `places` polu. Jeśli nie zostaną znalezione żadne wyniki, `places` pole nie zostanie uwzględnione w odpowiedzi.
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -51,29 +51,29 @@ Odpowiedzi JSON z lokalnych firm interfejsu API wyszukiwania Bing zawiera `Searc
 . . . 
 ```
 
-### <a name="search-result-attributes"></a>Atrybuty wynik wyszukiwania
+### <a name="search-result-attributes"></a>Atrybuty wyników wyszukiwania
 
-Zwrócone przez interfejs API wyniki JSON zawierają następujące atrybuty:
+Wyniki JSON zwrócone przez interfejs API zawierają następujące atrybuty:
 
 * _type
-* address
+* adres
 * entityPresentationInfo
-* Geograficzna
+* Geograficznie
 * id
 * name
 * routeablePoint
-* Telefon
+* Central
 * url
 
-Aby uzyskać ogólne informacje na temat nagłówków, parametrów, kody na rynku, obiekty odpowiedzi, błędów itd., zobacz [lokalnego API wyszukiwania Bing w wersji 7](local-search-reference.md) odwołania.
+Aby uzyskać ogólne informacje o nagłówkach, parametrach, kodach rynku, obiektach odpowiedzi, błędach itp., zobacz Kompendium [wersji 7 interfejsu API wyszukiwania lokalnego Bing](local-search-reference.md) .
 
 > [!NOTE]
-> Użytkownik lub innych firm w Twoim imieniu może nie używać, zachować, przechowywania, pamięci podręcznej, udostępnić, dystrybucji żadnych danych z lokalnego interfejsu API wyszukiwania na potrzeby testowania, tworzenia, szkolenia, rozpowszechniania lub udostępniania dowolnej usługi firmy Microsoft lub funkcji. 
+> Użytkownik lub osoba trzecia w Twoim imieniu może nie używać, przechowywać, zapisywać, buforować, udostępniać lub rozpowszechniać dowolne dane z lokalnego interfejsu API wyszukiwania na potrzeby testowania, opracowywania, uczenia, rozpowszechniania lub udostępniania dowolnej usługi lub funkcji firmy innej niż Microsoft. 
 
 
 ## <a name="example-json-response"></a>Przykładowa odpowiedź JSON
 
-Następującą odpowiedź JSON zawiera wyniki wyszukiwania z określonymi przez zapytanie `?q=restaurant+in+Bellevue`.
+Następująca odpowiedź JSON zawiera wyniki wyszukiwania określone przez zapytanie `?q=restaurant+in+Bellevue`.
 
 ```json
 Vary: Accept-Encoding
@@ -145,8 +145,8 @@ Expires: Tue, 16 Oct 2018 16:25:15 GMT
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../includes/cognitive-services-bing-throttling-requests.md)]
 
 
-## <a name="next-steps"></a>Następne kroki
-- [Lokalne wyszukiwanie firm Szybki Start](quickstarts/local-quickstart.md)
-- [Lokalnych firm wyszukiwania Java Szybki Start](quickstarts/local-search-java-quickstart.md)
-- [Lokalny węzeł wyszukiwania firm Szybki Start](quickstarts/local-search-node-quickstart.md)
-- [Lokalnych firm wyszukiwania Python Szybki Start](quickstarts/local-search-python-quickstart.md)
+## <a name="next-steps"></a>Kolejne kroki
+- [Lokalne wyszukiwanie biznesowe — Szybki Start](quickstarts/local-quickstart.md)
+- [Lokalne wyszukiwanie biznesowe w języku Java — Szybki Start](quickstarts/local-search-java-quickstart.md)
+- [Lokalny węzeł wyszukiwania biznesowego — Szybki Start](quickstarts/local-search-node-quickstart.md)
+- [Lokalne wyszukiwanie biznesowe w języku Python — Szybki Start](quickstarts/local-search-python-quickstart.md)

@@ -1,7 +1,7 @@
 ---
-title: Ocena w trybie offline — Personalizer
+title: Ocena w trybie offline — Personalizowanie
 titleSuffix: Azure Cognitive Services
-description: Tworzenie pętli opinii, w tym C# Szybki Start z usługą Personalizer.
+description: Utwórz pętlę opinii w C# tym przewodniku szybki start za pomocą usługi personalizacji.
 services: cognitive-services
 author: edjez
 manager: nitinme
@@ -10,57 +10,57 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 3fdedd1af9b683b221dfa4aebad7a30559b7abff
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 3d9415a99655c7866c1a6688d0e48fd0b236a63b
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722490"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423263"
 ---
 # <a name="offline-evaluation"></a>Ocena w trybie offline
 
-Ocena w trybie offline jest metoda, która umożliwia testowanie i ocena skuteczności usługi Personalizer bez zmieniania kodu ani wpływu na środowisko użytkownika. W ciągu ostatnich wykonano danych wysyłane z aplikacji do interfejsu API rangę, aby porównać jak różnym stopniu korzysta z oceny w trybie offline.
+Ocena w trybie offline to metoda, która umożliwia testowanie i ocenianie skuteczności usługi personalizacji bez zmiany kodu lub wpływu na środowisko użytkownika. W ocenie w trybie offline są używane wcześniejsze dane wysyłane z aplikacji do interfejsu API rangi w celu porównania, w jaki sposób różne Range zostały wykonane.
 
-W trybie offline oceny odbywa się w zakresie dat. Zakres może zakończyć najpóźniej bieżący czas. Początek zakresu nie może być większa niż liczba dni określona dla [przechowywanie danych](how-to-settings.md).
+Ocena w trybie offline jest wykonywana w zakresie dat. Zakres może kończyć się najpóźniej jako bieżący czas. Początek zakresu nie może być większy niż liczba dni określona do [przechowywania danych](how-to-settings.md).
 
 Ocena w trybie offline może pomóc odpowiedzieć na następujące pytania:
 
-* Jak efektywne są Personalizer rangę personalizacji pomyślnie?
-    * Jakie są średnie nagrody, osiągnięte przez Personalizer uczenia maszynowego online zasady?
-    * Jak wygląda porównanie Personalizer skuteczności co aplikacja będzie mieć wykonywana domyślnie?
-    * Jaki byłby porównawczych skuteczności losowym na potrzeby personalizacji?
-    * Jaki byłby porównawczych skuteczności zasad learning inny podany ręcznie?
-* Które funkcje kontekstu biorących udział w tworzeniu bardziej lub mniej do personalizacji pomyślnie?
-* Które funkcje akcje biorących udział w tworzeniu bardziej lub mniej do personalizacji pomyślnie?
+* Jak obowiązuje stopień personalizacji w celu pomyślnego personalizacji?
+    * Jakie są średnie nagrody osiągnięte przez personalizację usługi Machine Learning w trybie online?
+    * Jak program personalizuje porównuje ze skutecznością działania aplikacji?
+    * Jaka byłaby porównywalna skuteczność losowego wyboru dla personalizacji?
+    * Co byłoby porównywalną skutecznością różnych zasad nauki określonych ręcznie?
+* Które funkcje kontekstu przyczyniają się do pomyślnego personalizacji?
+* Które funkcje działań mają wpływ na więcej lub mniej na pomyślne personalizację?
 
-Ponadto oceny w trybie Offline może służyć do wykrywania bardziej zoptymalizowane pod kątem uczenia zasad, które Personalizer umożliwia poprawienie wyników w przyszłości.
+Ponadto można użyć oceny w trybie offline w celu odnalezienia bardziej zoptymalizowanych zasad uczenia, których można użyć w celu poprawienia wyników w przyszłości.
 
-Obliczanie w trybie offline nie zapewniają wskazówki dotyczące procentową wartość zdarzeń na potrzeby eksploracji.
+Oceny w trybie offline nie zapewniają wskazówek dotyczących procentu zdarzeń do użycia podczas eksploracji.
 
-## <a name="prerequisites-for-offline-evaluation"></a>Wymagania wstępne dla oceny w trybie offline
+## <a name="prerequisites-for-offline-evaluation"></a>Wymagania wstępne dotyczące oceny w trybie offline
 
-Poniżej przedstawiono ważne informacje dotyczące reprezentatywny oceny w trybie offline:
+Poniżej przedstawiono ważne zagadnienia dotyczące oceny reprezentatywnej w trybie offline:
 
-* Mają wystarczającą ilość danych. Minimalna zalecana jest co najmniej 50 000 zdarzeń.
-* Zbieranie danych z okresów z zachowania użytkowników reprezentatywny i ruch.
+* Ma wystarczającą ilość danych. Zalecana minimalna wartość to co najmniej 50 000 zdarzeń.
+* Zbieraj dane z okresów ze reprezentatywnym zachowaniem i ruchem użytkowników.
 
-## <a name="discovering-the-optimized-learning-policy"></a>Odnajdywanie zasad zoptymalizowanych nauki
+## <a name="discovering-the-optimized-learning-policy"></a>Odnajdywanie zoptymalizowanych zasad uczenia
 
-Personalizer umożliwia automatycznie odnajdywać bardziej optymalne zasad learning procesu oceny w trybie offline.
+Personalizowanie może korzystać z procesu oceny w trybie offline w celu automatycznego odnajdywania bardziej optymalnych zasad uczenia.
 
-Po przeprowadzeniu oceny w trybie offline, możesz zobaczyć porównawczych skuteczności Personalizer za pomocą tego nowych zasad w porównaniu do bieżących zasad online. Można następnie zastosować tę zasadę uczenia się obowiązuje od razu Personalizer lub pobrać go do użytku lub przyszłej analizy.
+Po przeprowadzeniu oceny w trybie offline można zobaczyć porównywalną efektywność personalizowania przy użyciu nowych zasad w porównaniu z bieżącymi zasadami online. Następnie można zastosować te zasady uczenia, aby działały natychmiast w personalizacji, pobierając je i przekazując w panelu modele i zasady. Można go również pobrać do przyszłej analizy lub użycia.
 
-## <a name="understanding-the-relevance-of-offline-evaluation-results"></a>Opis znaczenia wyniki oceny w trybie offline
+## <a name="understanding-the-relevance-of-offline-evaluation-results"></a>Zrozumienie znaczenia wyników oceny w trybie offline
 
-Kiedy uruchamiasz ocenę w trybie offline, jest bardzo ważne analizować _granice zaufania_ wyników. Jeśli są one szerokie, oznacza to, że aplikacja nie odebrał wystarczającej ilości danych do szacowania nagradzania być dokładne lub ważne. System gromadzi większej ilości danych i uruchom oceny w trybie offline przez dłuższy czas, przedziału ufności stają się bardziej szczegółowy.
+Po uruchomieniu oceny w trybie offline bardzo ważne jest przeanalizowanie _granic ufności_ wyników. Jeśli są one szerokie, oznacza to, że aplikacja nie otrzymała wystarczającej ilości danych, aby oszacować nagrody były precyzyjne lub znaczące. Ponieważ system zbiera więcej danych, a oceny w trybie offline są wykonywane przez dłuższy czas, interwały zaufania stają się węższe.
 
-## <a name="how-offline-evaluations-are-done"></a>Jak w trybie offline są wykonywane obliczenia
+## <a name="how-offline-evaluations-are-done"></a>Jak są wykonywane oceny w trybie offline
 
-Obliczanie w trybie offline są wykonywane przy użyciu metody o nazwie **Counterfactual oceny**. 
+Oceny w trybie offline są wykonywane przy użyciu metody o nazwie **Counterfactual Evaluation**. 
 
-Personalizer jest oparty na założeniu użytkowników zachowanie (i tym samym rewards) są niemożliwe do prognozowania wsteczną (Personalizer nie wiedzieć, jakie miałby wystąpił, jeśli użytkownik ma zostały wyświetlone coś innego niż to widać) i tylko po to, aby dowiedzieć się od zmierzona nagrody. 
+Personalizacja jest oparta na założeniu, że zachowanie użytkowników (i w ten sposób jest niemożliwy do przewidzenia z mocą wsteczną) (personalizowanie nie może wiedzieć, co się stało, jeśli użytkownik wykazał coś innego niż zobaczysz) i tylko poznanie mierzone nagrody. 
 
-Jest to proces pojęciach, używane do oceny:
+Jest to proces koncepcyjny używany do oceny:
 
 ```
 [For a given _learning policy), such as the online learning policy, uploaded learning policies, or optimized candidate policies]:
@@ -81,21 +81,22 @@ Jest to proces pojęciach, używane do oceny:
 }
 ```
 
-W trybie offline oceny używa tylko zachowanie użytkowników obserwowanych. Ten proces powoduje odrzucenie dużych ilości danych, zwłaszcza wtedy, gdy aplikacja Rank wywołań w przypadku dużej liczby akcji.
+Ocena w trybie offline używa tylko zaobserwowanego zachowania użytkownika. Ten proces odrzuca duże ilości danych, zwłaszcza jeśli aplikacja wykonuje wywołania o dużej liczbie akcji.
 
 
-## <a name="evaluation-of-features"></a>Obliczanie funkcji
+## <a name="evaluation-of-features"></a>Ocena funkcji
 
-Ocen w trybie offline może dostarczyć informacji o ile określonych funkcji, dla akcji lub kontekst są o wadze dla wyższe wynagrodzenie. Informacje jest obliczana na podstawie oceny względem danego okresu i danych i mogą się różnić w czasie.
+Oceny w trybie offline mogą dostarczyć informacji o tym, ile określonych funkcji dla akcji lub kontekstu jest wag w celu uzyskania wyższych korzyści. Informacje są obliczane przy użyciu oceny względem danego okresu i danych oraz mogą się różnić w zależności od czasu.
 
-Zalecamy spojrzenie na obliczanie funkcji ani zastanawiać się:
+Zalecamy zapoznanie się z ocenami funkcji i pytaniami:
 
-* Jakie funkcje inne, dodatkowe, można do aplikacji lub systemu zapewnia wzdłuż linii tych, które są bardziej skuteczne?
-* Jakie funkcje może zostać usunięty z powodu niskiej efektywności? Dodawanie funkcji niskiej efektywności _szumu_ do uczenia maszynowego.
-* Czy istnieją wszystkie funkcje wchodzące w skład przypadkowo? Te przykłady: identyfikowalne dane osobowe (PII) zduplikowane identyfikatory itp.
-* Czy istnieje żadnych niepożądanych funkcji, które nie powinny służyć do personalizacji z powodu prawnych lub odpowiada Użyj uwagi? Dostępne są funkcje, które mogłyby serwera proxy (czyli ściśle duplikatów lub skorelować z) niepożądanych funkcji?
+* Jakie inne, dodatkowe funkcje mogą być zawarte w aplikacji lub systemie wraz z bardziej wydajnymi liniami?
+* Jakie funkcje można usunąć ze względu na niską efektywność? Funkcje niskiej efektywności zwiększają _szum_ do uczenia maszynowego.
+* Czy istnieją jakieś funkcje, które są przypadkowo uwzględniane? Przykładami są: dane osobowe, zduplikowane identyfikatory itp.
+* Czy istnieją jakieś niepożądane funkcje, które nie powinny być używane do personalizacji ze względu na kwestie prawne lub osoby odpowiedzialne za użycie? Czy istnieją funkcje, które mogą być serwerem proxy (czyli ściśle dublowane lub skorelowane z) niepożądanymi funkcjami?
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Konfigurowanie Personalizer](how-to-settings.md)
+[Konfigurowanie](how-to-settings.md)
+narzędzia personalizacji[Uruchamianie ocen w trybie offline](how-to-offline-evaluation.md) zrozumieć, [jak działa program Personalizuj](how-personalizer-works.md)

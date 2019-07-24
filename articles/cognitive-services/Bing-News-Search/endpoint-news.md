@@ -1,6 +1,6 @@
 ---
 title: Punkty końcowe funkcji wyszukiwania wiadomości Bing
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Podsumowanie punktu końcowego interfejsu API wyszukiwania wiadomości.
 services: cognitive-services
 author: aahill
@@ -10,48 +10,48 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
-ms.openlocfilehash: 6ea218da23d65696c76008cb15e183fcc4bbda10
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 82e37e8fa47b467e7c2fe98f801482675809a266
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66383225"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423781"
 ---
-# <a name="bing-news-search-api-endpoints"></a>Punkty końcowe interfejsu API wyszukiwania wiadomości Bing
+# <a name="bing-news-search-api-endpoints"></a>interfejs API wyszukiwania wiadomości Bing punkty końcowe
 
-**Interfejsu API wyszukiwania wiadomości** zwraca artykułów, strony sieci Web, obrazy, wideo, wiadomości i [jednostek](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web). Jednostki zawierają podsumowanie informacji dotyczących osoby, miejsca lub tematu.
+**Interfejs API wyszukiwanie wiadomości** zwraca artykuły z wiadomościami, strony sieci Web, obrazy, filmy wideo i [jednostki](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web). Jednostki zawierają informacje podsumowujące dotyczące osoby, miejsca lub tematu.
 
 ## <a name="endpoints"></a>Punkty końcowe
 
-Aby uzyskać wiadomości wyników wyszukiwania za pomocą interfejsu API wyszukiwania wiadomości Bing, Wyślij `GET` żądania do jednego z następujących punktów końcowych. Nagłówki i parametry adresu URL dalsze Definiowanie specyfikacji.
+Aby uzyskać wyniki wyszukiwania wiadomości za pomocą interfejs API wyszukiwania wiadomości Bing, Wyślij `GET` żądanie do jednego z następujących punktów końcowych. Nagłówki i parametry URL definiują dalsze specyfikacje.
 
-### <a name="news-items-by-search-query"></a>Elementy wiadomości przez zapytanie wyszukiwania
+### <a name="news-items-by-search-query"></a>Elementy wiadomości według zapytania wyszukiwania
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search
 ```
 
-Zwraca elementy wiadomości oparty na zapytaniu przeszukiwania. Jeśli zapytanie wyszukiwania jest pusta, interfejs API zwróci najciekawsze artykuły z różnych kategorii. Wyślij zapytanie według adresu url kodowanie wyszukiwanego terminu i dodanie go do`q=""` parametru. Aby zapewnić dostępność, zobacz [obsługiwane kraje/regiony i rynków](language-support.md#supported-markets-for-news-search-endpoint).
+Zwraca elementy wiadomości na podstawie zapytania wyszukiwania. Jeśli zapytanie wyszukiwania jest puste, interfejs API zwróci najpopularniejsze artykuły z różnych kategorii. Wyślij zapytanie według adresu URL, aby zakodować termin wyszukiwania i dołączyć je`q=""` do parametru. Aby uzyskać dostęp, zobacz temat [Obsługiwane kraje/regiony i rynki](language-support.md#supported-markets-for-news-search-endpoint).
 
-### <a name="top-news-items-by-category"></a>Elementy najważniejszych wiadomości według kategorii
+### <a name="top-news-items-by-category"></a>Najważniejsze elementy wiadomości według kategorii
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/news  
 ```
 
-Zwraca elementy z najważniejszych wiadomości według kategorii. Konkretnie poprosić biznesowych Sport i rozrywka artykułów z wykorzystaniem `category=business`, `category=sports`, lub `category=entertainment`.  `category` Parametru należy używać tylko z `/news` adresu URL. Istnieją pewne wymagania formalny, do określania kategorii; Zapoznaj się `category` w [parametr zapytania](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters) dokumentacji. Wyślij zapytanie według adresu url kodowanie wyszukiwanego terminu i dodanie go do`q=""` parametru. Aby zapewnić dostępność, zobacz [obsługiwane kraje/regiony i rynków](language-support.md#supported-markets-for-news-endpoint).
+Zwraca najważniejsze elementy wiadomości według kategorii. Możesz zażądać najważniejszych artykułów firmy, sportu lub rozrywki, korzystając `category=business`z, `category=sports`lub `category=entertainment`.  Parametru można używać tylko `/news` z adresem URL. `category` Istnieją pewne formalne wymagania dotyczące określania kategorii; Zapoznaj `category` się z dokumentacją dotyczącą [parametrów zapytania](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters) . Wyślij zapytanie według adresu URL, aby zakodować termin wyszukiwania i dołączyć je`q=""` do parametru. Aby uzyskać dostęp, zobacz temat [Obsługiwane kraje/regiony i rynki](language-support.md#supported-markets-for-news-endpoint).
 
-### <a name="trending-news-topics"></a>Popularne tematy wiadomości 
+### <a name="trending-news-topics"></a>Informacje o trendach tematów 
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/trendingtopics
 ```
 
-Zwraca tematy wiadomości, które popularność w sieciach społecznościowych. Gdy `/trendingtopics` jest opcją, wyszukiwania Bing ignoruje kilka innych parametrów, takich jak `freshness` i `?q=""`. Aby zapewnić dostępność, zobacz [obsługiwane kraje/regiony i rynków](language-support.md#supported-markets-for-news-trending-endpoint).
+Zwraca tematy dotyczące nowości w sieciach społecznościowych. Gdy ta `/trendingtopics` opcja jest uwzględniona, wyszukiwanie w usłudze Bing ignoruje kilka innych `freshness` parametrów `?q=""`, takich jak i. Aby uzyskać dostęp, zobacz temat [Obsługiwane kraje/regiony i rynki](language-support.md#supported-markets-for-news-trending-endpoint).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać szczegółowe informacje o nagłówków, parametrów, kody na rynku, obiekty odpowiedzi, błędów itd., zobacz [wyszukiwania wiadomości Bing w wersji 7 interfejsu API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) odwołania.
+Aby uzyskać szczegółowe informacje o nagłówkach, parametrach, kodach rynku, obiektach odpowiedzi, błędach itp., zobacz informacje o [interfejsie API wyszukiwania wiadomości Bing wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) .
 
-Aby uzyskać pełne informacje na temat parametrów obsługiwanych przez każdy punkt końcowy zobacz strony pomocy dla każdego typu.
-Przykłady podstawowe żądań przy użyciu interfejsu API wyszukiwania wiadomości, zobacz [przewodniki szybkiego startu dla wyszukiwania wiadomości Bing](https://docs.microsoft.com/azure/cognitive-services/bing-news-search).
+Aby uzyskać pełne informacje na temat parametrów obsługiwanych przez poszczególne punkty końcowe, zobacz strony referencyjne dla każdego typu.
+Przykłady podstawowych żądań za pomocą interfejsu API wyszukiwania wiadomości można znaleźć w temacie [Wyszukiwanie wiadomości Bing Quick-Start](https://docs.microsoft.com/azure/cognitive-services/bing-news-search).

@@ -1,7 +1,7 @@
 ---
-title: Punkt końcowy interfejsu API wyszukiwania jednostek Bing
-titlesuffix: Azure Cognitive Services
-description: Dowiedz się więcej o punkt końcowy interfejsu API wyszukiwania jednostek Bing i wysyłać żądania do niego.
+title: Punkt końcowy interfejs API wyszukiwania jednostek Bing
+titleSuffix: Azure Cognitive Services
+description: Dowiedz się więcej o punkcie końcowym interfejs API wyszukiwania jednostek Bing i Wyślij do niego żądania.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,31 +10,31 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 43bca65810d09c87f7f473b3bbac71ca6a7f9bc2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9d08091d0ea6869d13e294e60454f85a84f672ad
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389013"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424057"
 ---
-# <a name="bing-entity-search-api-endpoint"></a>Punkt końcowy interfejsu API wyszukiwania jednostek Bing
+# <a name="bing-entity-search-api-endpoint"></a>interfejs API wyszukiwania jednostek Bing punkt końcowy
 
 
 Interfejs API wyszukiwania jednostek Bing ma jeden punkt końcowy, który zwraca jednostki z sieci Web na podstawie zapytania. Te wyniki wyszukiwania są zwracane w formacie JSON.
 
-## <a name="get-entity-results-from-the-endpoint"></a>Uzyskaj wyniki obiektu z punktu końcowego
+## <a name="get-entity-results-from-the-endpoint"></a>Pobierz wyniki jednostki z punktu końcowego
 
-Można pobrać jednostki wyników za pomocą **interfejsu API Bing**, Wyślij `GET` żądanie następujący punkt końcowy. Użyj [nagłówki](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers) i [parametry zapytania](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters) dostosować żądanie wyszukiwania. Żądania wyszukiwania mogą być wysyłane przy użyciu `?q=` parametru.
+Aby uzyskać wyniki jednostki przy użyciu **interfejsu API Bing**, Wyślij `GET` żądanie do poniższego punktu końcowego. Użyj [nagłówków](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers) i [parametrów zapytania](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters) , aby dostosować żądanie wyszukiwania. Żądania wyszukiwania można wysyłać przy użyciu `?q=` parametru.
 
 ```cURL
  GET https://api.cognitive.microsoft.com/bing/v7.0/entities
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Czym jest interfejs API wyszukiwania jednostek Bing?](overview.md)
 
 ## <a name="see-also"></a>Zobacz także 
 
-Aby uzyskać więcej informacji na temat nagłówków, parametry, kody na rynku, obiekty odpowiedzi, błędów i innych, zobacz [interfejs API wyszukiwania jednostek Bing w wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) artykule dotyczącym struktury.
+Aby uzyskać więcej informacji na temat nagłówków, parametrów, kodów rynkowych, obiektów odpowiedzi, błędów i innych, zobacz artykuł dotyczący [interfejs API wyszukiwania jednostek Bing wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) .
