@@ -1,6 +1,6 @@
 ---
-title: 'Szybki start: Wykonywanie wyszukiwania wiadomości, za pomocą języka Python i interfejsu API REST wyszukiwania wiadomości Bing'
-titlesuffix: Azure Cognitive Services
+title: 'Szybki start: Wykonaj wyszukiwanie w wiadomościach za pomocą języka Python i interfejsu API REST wyszukiwanie wiadomości Bing'
+titleSuffix: Azure Cognitive Services
 description: Skorzystaj z tego przewodnika Szybki Start, aby wysyłać żądania do interfejs API REST wyszukiwania wiadomości Bing przy użyciu języka Python i otrzymywać odpowiedzi w formacie JSON.
 services: cognitive-services
 author: aahill
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 6/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: f8912e38e063a93a90b2e7877aad538fbfd4044d
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 2fc67cbfedccd69ff9063b0575ae51197eceb09d
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67338998"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423686"
 ---
 # <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>Szybki start: Wyszukiwanie wiadomości przy użyciu języka Python i interfejsu API REST wyszukiwania wiadomości Bing
 
@@ -82,7 +82,7 @@ rows = "\n".join(["<tr><td>{0}</td></tr>".format(desc)
 HTML("<table>"+rows+"</table>")
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie jednostronicowej aplikacji internetowej](tutorial-bing-news-search-single-page-app.md)

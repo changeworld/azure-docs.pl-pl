@@ -1,7 +1,7 @@
 ---
-title: Przewodnik Szybki Start — Wyślij zapytanie do lokalnych firm interfejs API wyszukiwania Bing w C# | Dokumentacja firmy Microsoft
+title: Szybki Start — wysyłanie zapytania do lokalnego interfejsu API wyszukiwania biznesowego Bing w programieC#
 titleSuffix: Azure Cognitive Services
-description: Użyj w tym artykule, aby rozpocząć korzystanie z lokalnych firm interfejs API wyszukiwania Bing w C#.
+description: Skorzystaj z tego artykułu, aby rozpocząć korzystanie z interfejsu API wyszukiwania w C#usłudze Bing Local Business Search w programie.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,29 +9,29 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 04/26/2019
 ms.author: rosh
-ms.openlocfilehash: 3b75d89720212149711c8aad9985267d72b8cecd
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 479429ff6354813468fb529029ca540a8ebc1b70
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592784"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423387"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Szybki start: Wysłanie zapytania do lokalnych firm interfejs API wyszukiwania Bing wC#
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Szybki start: Wyślij zapytanie do lokalnego interfejsu API wyszukiwania biznesowego Bing w programieC#
 
-Użyj tego przewodnika Szybki Start, aby rozpocząć wysyłanie żądań lokalnych firm interfejs API wyszukiwania Bing, czyli usługi Azure Cognitive Service. Gdy ta prosta aplikacja została napisana C#, interfejs API jest zgodny z dowolnego języka programowania możliwością wysyłania żądań HTTP i analizowania danych JSON Usługa sieci Web typu RESTful.
+Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć wysyłanie żądań do lokalnego interfejsu API wyszukiwania biznesowego Bing, który jest usługą poznawczej platformy Azure. Gdy ta prosta aplikacja jest zapisywana C#, interfejs API jest usługą sieci Web RESTful zgodną z dowolnym językiem programowania, który umożliwia wykonywanie żądań HTTP i analizowanie kodu JSON.
 
-Ta przykładowa aplikacja pobiera dane lokalne odpowiedzi z interfejsu API dla zapytania wyszukiwania `hotel in Bellevue`.
+Ta przykładowa aplikacja pobiera dane lokalnego odpowiedzi z interfejsu API dla zapytania `hotel in Bellevue`wyszukiwania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Dowolnej wersji programu [Visual Studio 2019](https://www.visualstudio.com/downloads/).
+* Dowolna wersja programu [Visual Studio 2019](https://www.visualstudio.com/downloads/).
 * Jeśli używasz systemu Linux/MacOS, możesz uruchomić tę aplikację przy użyciu środowiska [Mono](https://www.mono-project.com/).
 
 Wymagane jest [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z dostępem do interfejsów API wyszukiwania Bing. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) jest wystarczająca na potrzeby tego przewodnika Szybki start.  Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="create-the-request"></a>Utwórz żądanie 
 
-Poniższy kod tworzy `WebRequest`, ustawia nagłówek klucza dostępu i dodaje ciąg zapytania dla "restauracji w Bellevue".  Następnie wysyła żądanie i przypisuje odpowiedź do ciągu zawierającego tekst w formacie JSON.
+Poniższy kod tworzy `WebRequest`, ustawia nagłówek klucza dostępu i dodaje ciąg zapytania dla "restauracji in Bellevue".  Następnie wysyła żądanie i przypisuje odpowiedź do ciągu zawierającego tekst w formacie JSON.
 
 ```
     // Replace the accessKey string value with your valid access key.
@@ -51,12 +51,12 @@ Poniższy kod tworzy `WebRequest`, ustawia nagłówek klucza dostępu i dodaje c
     string json = new StreamReader(response.GetResponseStream()).ReadToEnd();
 ```
 
-## <a name="run-the-complete-application"></a>Uruchom kompletnej aplikacji
+## <a name="run-the-complete-application"></a>Uruchom kompletną aplikację
 
-Lokalnych firm interfejsu API wyszukiwania Bing zwraca wyniki wyszukiwania zlokalizowanych z wyszukiwarki Bing.
+Interfejs API wyszukiwania lokalnego firmy Bing zwraca zlokalizowane wyniki wyszukiwania z aparatu wyszukiwania Bing.
 1. Utwórz nowe rozwiązanie konsolowe w programie Visual Studio (wersja Community Edition jest wystarczająca).
 2. Zastąp plik Program.cs kodem przedstawionym poniżej.
-3. Zastąp wartość symbolu accessKey prawidłowy klucz dostępu dla Twojej subskrypcji.
+3. Zastąp wartość accessKey kluczem dostępu prawidłowym dla Twojej subskrypcji.
 4. Uruchom program.
 
 ```
@@ -207,7 +207,7 @@ namespace localSearch
 
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-- [Lokalnych firm wyszukiwania Java Szybki Start](local-search-java-quickstart.md)
-- [Lokalny węzeł wyszukiwania firm Szybki Start](local-search-node-quickstart.md)
-- [Lokalnych firm wyszukiwania Python Szybki Start](local-search-python-quickstart.md)
+## <a name="next-steps"></a>Następne kroki
+- [Lokalne wyszukiwanie biznesowe w języku Java — Szybki Start](local-search-java-quickstart.md)
+- [Lokalny węzeł wyszukiwania biznesowego — Szybki Start](local-search-node-quickstart.md)
+- [Lokalne wyszukiwanie biznesowe w języku Python — Szybki Start](local-search-python-quickstart.md)

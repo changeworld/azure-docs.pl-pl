@@ -1,19 +1,18 @@
 ---
 title: Rozwiązywanie problemów dotyczących tworzenia kopii zapasowej udziałów plików platformy Azure
 description: W tym artykule znajdują się informacje dotyczące rozwiązywania problemów występujących podczas ochrony udziałów plików platformy Azure.
-services: backup
 ms.service: backup
 author: rayne-wiselman
 ms.author: raynew
 ms.date: 07/22/2019
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 30601e9159dee05abb8f13c7faaafa7add17ac65
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: c44819bfda2f48195c25ad6be7608383162f3c61
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405559"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467108"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Rozwiązywanie problemów związanych z tworzeniem kopii zapasowej udziałów plików platformy Azure
 Korzystając z informacji znajdujących się w poniższych tabelach możesz rozwiązywać problemy i usuwać błędy napotkane podczas używania funkcji tworzenia kopii zapasowej udziałów plików platformy Azure.

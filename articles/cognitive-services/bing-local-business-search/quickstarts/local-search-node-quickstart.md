@@ -1,7 +1,7 @@
 ---
-title: Przewodnik Szybki Start — Wyślij zapytanie do lokalnych firm interfejs API wyszukiwania Bing przy użyciu środowiska Node.js | Dokumentacja firmy Microsoft
+title: Szybki Start — wysyłanie zapytania do lokalnego interfejsu API wyszukiwania biznesowego Bing przy użyciu środowiska Node. js
 titleSuffix: Azure Cognitive Services
-description: Rozpocznij korzystanie z lokalnych firm interfejsu API wyszukiwania Bing w węźle.
+description: Zacznij korzystać z interfejsu API wyszukiwania w usłudze Bing Local Business Search w węźle.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,18 +9,18 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: 07b238f900a7f0ba15ad7b37ba7e194567fa0f6a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 0c91a66539bc276fdf2e6e4056f3b67f770398b8
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592710"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423337"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>Szybki start: Wysłanie zapytania do lokalnych firm interfejs API wyszukiwania Bing przy użyciu środowiska Node.js
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>Szybki start: Wysyłanie zapytania do lokalnego interfejsu API wyszukiwania biznesowego Bing przy użyciu środowiska Node. js
 
-Użyj tego przewodnika Szybki Start, aby rozpocząć wysyłanie żądań lokalnych firm interfejs API wyszukiwania Bing, czyli usługi Azure Cognitive Service. Gdy ta prosta aplikacja, jest napisany w języku Node.js, interfejs API jest zgodny z dowolnego języka programowania możliwością wysyłania żądań HTTP i analizowania danych JSON Usługa sieci Web typu RESTful.
+Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć wysyłanie żądań do lokalnego interfejsu API wyszukiwania biznesowego Bing, który jest usługą poznawczej platformy Azure. Chociaż ta prosta aplikacja jest zapisywana w języku Node. js, interfejs API jest usługą sieci Web RESTful zgodną z dowolnym językiem programowania, który umożliwia wykonywanie żądań HTTP i analizowanie kodu JSON.
 
-Ta przykładowa aplikacja pobiera dane lokalne odpowiedzi z interfejsu API dla zapytania wyszukiwania `hotel in Bellevue`.
+Ta przykładowa aplikacja pobiera dane lokalnego odpowiedzi z interfejsu API dla zapytania `hotel in Bellevue`wyszukiwania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -28,16 +28,16 @@ Ta przykładowa aplikacja pobiera dane lokalne odpowiedzi z interfejsu API dla z
 
 * [Biblioteka żądań języka JavaScript](https://github.com/request/request)
 
-Konieczne jest posiadanie [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) za pomocą interfejsów API usługi Bing. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) jest wystarczająca na potrzeby tego przewodnika Szybki start. Użyj klucza dostępu, dostarczone przez bezpłatnej wersji próbnej.  Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Musisz mieć [konto interfejsu API Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z interfejsami API Bing. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) jest wystarczająca na potrzeby tego przewodnika Szybki start. Użyj klucza dostępu dostarczonego w ramach bezpłatnej wersji próbnej.  Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="code-scenario"></a>Scenariusz kodu
 
-Poniższy kod pobiera definiuje i wysyła żądanie. W celu zaimplementowania kodu wykonaj następujące kroki:
+Poniższy kod umożliwia zdefiniowanie i wysłanie żądania. W celu zaimplementowania kodu wykonaj następujące kroki:
 
 1. Zadeklaruj zmienne, aby określić punkt końcowy na podstawie hosta i ścieżki.
-2. Określ zapytanie, a następnie dodaj parametr zapytania.
+2. Określ zapytanie i Dodaj parametr zapytania.
 3. Utwórz funkcję procedury obsługi odpowiedzi.
-4. Zdefiniuj funkcję wyszukiwania, która tworzy żądanie i dodaje nagłówek Ocp-Apim-Subscription-Key.
+4. Zdefiniuj funkcję wyszukiwania, która tworzy żądanie i dodaje nagłówek OCP-APIM-Subscription-Key.
 5. Uruchom funkcję wyszukiwania.
 
 Pełny kod tej wersji demonstracyjnej wygląda następująco:
@@ -91,8 +91,8 @@ Search();
 
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Lokalne wyszukiwanie firm Szybki Start](local-quickstart.md)
-* [Lokalnych firm wyszukiwania Java Szybki Start](local-search-java-quickstart.md)
-* [Lokalnych firm wyszukiwania Python Szybki Start](local-search-python-quickstart.md)
+* [Lokalne wyszukiwanie biznesowe — Szybki Start](local-quickstart.md)
+* [Lokalne wyszukiwanie biznesowe w języku Java — Szybki Start](local-search-java-quickstart.md)
+* [Lokalne wyszukiwanie biznesowe w języku Python — Szybki Start](local-search-python-quickstart.md)

@@ -1,21 +1,23 @@
 ---
-title: Samouczek do wysłania dysku Azure Data Box ponownie | Dokumentacja firmy Microsoft
+title: Samouczek do dostarczania Azure Data Box Disk z powrotem | Microsoft Docs
 description: Z tego samouczka dowiesz się, jak wysłać urządzenie Azure Data Box Disk do firmy Microsoft
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 06/25/2019
+ms.date: 07/23/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 7e7a1f119a2f2b0e60645cb776b26c124910cacb
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ca42532fe6ba954180ce06ed0e3561e42f1fb447
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448208"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424240"
 ---
+::: zone target="docs"
+
 # <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>Samouczek: wysyłka zwrotna urządzenia Azure Data Box Disk i weryfikowanie przekazania danych na platformę Azure
 
 Jest to ostatni samouczek z serii: Wdrażanie urządzenia Azure Data Box Disk. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
@@ -29,21 +31,22 @@ Jest to ostatni samouczek z serii: Wdrażanie urządzenia Azure Data Box Disk. N
 
 Przed rozpoczęciem upewnij się, że zostały wykonane kroki opisane w artykule [Samouczek: kopiowanie danych na urządzenie Azure Data Box Disk i ich weryfikacja](data-box-disk-deploy-copy-data.md).
 
+
 ## <a name="ship-data-box-disk-back"></a>Wysyłka zwrotna urządzenia Data Box Disk
 
 1. Po zakończeniu sprawdzania poprawności danych odłącz dyski. Odłącz kable połączeniowe.
-2. Zapakuj wszystkie dyski i kable połączeniowe w folię bąbelkową, a następnie umieść w opakowaniu wysyłkowym. Jeśli brakuje Akcesoria, mogą być naliczane opłaty.
-    - Ponowne użycie pakietu od początkowego wydania.  
-    - Firma Microsoft zaleca dodatkiem Service pack dysków przy użyciu dobrze zabezpieczone zawijania bubbled.
-    - Upewnij się, że dopasowania jest dobrze osadzone, aby zmniejszyć wszelkie przepływów w ramach tego pola.
+2. Zapakuj wszystkie dyski i kable połączeniowe w folię bąbelkową, a następnie umieść w opakowaniu wysyłkowym. Opłaty mogą być stosowane w przypadku braku akcesoriów.
+    - Ponownie Użyj opakowania z początkowego wydania.  
+    - Zalecamy pakowanie dysków przy użyciu dobrze zabezpieczonego zawijania bąbelkowego.
+    - Upewnij się, że dopasowanie jest Snug, aby zmniejszyć liczbę ruchów w polu.
 
-Następne kroki są określane przez gdzie jest zwracany urządzenia.
+Następne kroki są określane przez miejsce zwrócenia urządzenia.
 
-### <a name="pick-up-in-us-canada"></a>Podnieś w Stanach Zjednoczonych, Kanadzie
+### <a name="pick-up-in-us-canada"></a>Wybieraj w Stanach Zjednoczonych, Kanadzie
 
-Jeśli zwraca urządzenia w Stanach Zjednoczonych lub Kanadzie, należy wykonać następujące czynności.
+W przypadku powrotu urządzenia w Stanach Zjednoczonych lub Kanadzie wykonaj następujące czynności.
 
-1. Użyj zwrotnej etykiety wysyłkowej, znajdującej się w przezroczystej koszulce przyklejonej do opakowania. Jeśli etykieta jest uszkodzony lub utracony:
+1. Użyj zwrotnej etykiety wysyłkowej, znajdującej się w przezroczystej koszulce przyklejonej do opakowania. Jeśli etykieta jest uszkodzona lub utracona:
     - Przejdź do pozycji **Przegląd > Pobierz etykietę wysyłkową**.
 
         ![Pobieranie etykiety wysyłkowej](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
@@ -51,22 +54,22 @@ Jeśli zwraca urządzenia w Stanach Zjednoczonych lub Kanadzie, należy wykonać
         To spowoduje pobranie zwrotnej etykiety wysyłkowej, podobnej do tej widocznej poniżej.
 
         ![Przykładowa etykieta wysyłkowa](media/data-box-disk-deploy-picked-up/exmple-shipping-label.png)
-    - Umieszcza etykiety na urządzeniu.
+    - Umieszczanie etykiety na urządzeniu.
 
 2. Zamknij i zaklej opakowanie wysyłkowe. Upewnij się, że zwrotna etykieta wysyłkowa jest widoczna.
-3. Zaplanować odbioru UPS. Aby zaplanować odbioru:
+3. Zaplanuj pobranie przy użyciu zasilacza UPS. Aby zaplanować odbiór:
 
-    - Wywołanie lokalne UPS (specyficzne dla kraju/regionu darmowy numer).
-    - W swojej rozmowy oferty odwrotnej wydanie numer, jak pokazano w drukowanej etykiety śledzenia.
-    - Jeśli numer śledzenia nie jest ujęty w cudzysłów, UPS będą wymagać dodatkowych opłaty są naliczane podczas odbioru.
-    - Zamiast planować odbiór, można również usunąć off dysku Data Box w najbliższej lokalizacji nadania.
+    - Wywoływanie lokalnego zasilacza UPS (bezpłatny numer kierunkowy kraju/regionu).
+    - W wywołaniu Zadzwoń na numer śledzenia wycofywania przesyłki, jak pokazano na wydrukowanej etykiecie.
+    - Jeśli numer śledzenia nie jest ujęty w cudzysłów, UPS będzie wymagał dodatkowej opłaty za pobranie.
+    - Zamiast planowania pobrania, można również wycofać Data Box Disk w najbliższej lokalizacji docelowej.
 
 
-### <a name="pick-up-in-europe"></a>Podnieś w Europie
+### <a name="pick-up-in-europe"></a>Pobierz w Europie
 
-Jeśli zwraca urządzenie w Europie, wykonaj następujące kroki.
+W przypadku powrotu urządzenia w Europie należy wykonać poniższe czynności.
 
-1. Użyj zwrotnej etykiety wysyłkowej, znajdującej się w przezroczystej koszulce przyklejonej do opakowania. Jeśli etykieta jest uszkodzony lub utracony:
+1. Użyj zwrotnej etykiety wysyłkowej, znajdującej się w przezroczystej koszulce przyklejonej do opakowania. Jeśli etykieta jest uszkodzona lub utracona:
     - Przejdź do pozycji **Przegląd > Pobierz etykietę wysyłkową**.
 
         ![Pobieranie etykiety wysyłkowej](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
@@ -74,40 +77,40 @@ Jeśli zwraca urządzenie w Europie, wykonaj następujące kroki.
         To spowoduje pobranie zwrotnej etykiety wysyłkowej, podobnej do tej widocznej poniżej.
 
         ![Przykładowa etykieta wysyłkowa](media/data-box-disk-deploy-picked-up/exmple-shipping-label.png)
-    - Umieszcza etykiety na urządzeniu.
+    - Umieszczanie etykiety na urządzeniu.
 
 2. Zamknij i zaklej opakowanie wysyłkowe. Upewnij się, że zwrotna etykieta wysyłkowa jest widoczna.
 3. Jeśli zwracasz urządzenie w Europie za pośrednictwem firmy DHL, zamów odbiór paczki przez firmę DHL w witrynie internetowej firmy, podając numer listu przewozowego.
-4. Przejdź do witryny sieci Web Express przez firmę DHL kraj/region, a następnie wybierz **Zarezerwuj kolekcji Courier > eReturn wydania**.
+4. Przejdź do witryny sieci Web kraj/region DHL Express i wybierz pozycję **książka kolekcja kurierów > eReturn**.
 
-    ![Przez firmę DHL wysyłki zwrotnej](media/data-box-disk-deploy-picked-up/dhl-ship-1.png)
+    ![DHL zwrotne](media/data-box-disk-deploy-picked-up/dhl-ship-1.png)
     
 3. Podaj numer listu przewozowego i kliknij przycisk **Zamówienie kuriera**, aby zaplanować odebranie przesyłki.
 
-      ![Zamówienie kuriera](media/data-box-disk-deploy-picked-up/dhl-ship-2.png)
+      ![Zaplanuj odebranie](media/data-box-disk-deploy-picked-up/dhl-ship-2.png)
 
-### <a name="pick-up-in-asia-pacific-region"></a>Podnieś w regionie Azja i Pacyfik
+### <a name="pick-up-in-asia-pacific-region"></a>Wybierz w regionie Azja-Pacyfik
 
-Ten region zawiera instrukcje dotyczące pobrania w Japonii, Korea, Australia i Singapurze.
+Ten region zawiera instrukcje dotyczące odbioru w Japonii, Korei, Australii i Singapurze.
 
-#### <a name="pick-up-in-australia"></a>Podnieś w Australii
+#### <a name="pick-up-in-australia"></a>Wybierz w Australii
 
-Centra danych platformy Azure w Australii mają wiadomość z powiadomieniem dodatkowe zabezpieczenia. Wszystkie przychodzące wydania muszą mieć powiadomienie z jednotygodniowym. Wykonaj następujące kroki dla pobrania w Australii.
+Centra danych platformy Azure w Australii mają dodatkowe powiadomienie o zabezpieczeniach. Wszystkie wychodzące wysyłki muszą mieć zaawansowane powiadomienie. Wykonaj następujące kroki, aby uzyskać w Australii.
 
-1. Adres e-mail `adbops@microsoft.com` do etykiety o wysłaniu żądania przy użyciu unikatowego Identyfikatora dla ruchu przychodzącego lub kod TAU. Umieść żądanie 3-dniowym wyprzedzeniem o planowanych daty można pobrać etykiety w czasie.
-2. Temat wiadomości e-mail powinny być - *żądanie etykietę wysyłkową odwrotnej kodem TAU*. Upewnij się, że Podaj następujące informacje w wiadomości e-mail: 
+1. Wyślij `adbops@microsoft.com` wiadomość e-mail na żądanie etykiety wysyłki z unikatowym identyfikatorem ruchu przychodzącego lub kodem Tau. Umieść żądanie co najmniej 3 dni przed zaplanowaną datą wysyłki, aby uzyskać etykietę w czasie.
+2. Temat wiadomości e-mail powinien zawierać *żądanie odwrócenia etykiety wysyłki z kodem Tau*. Upewnij się, że w wiadomości e-mail zostały uwzględnione następujące szczegóły: 
 
     - Nazwa zamówienia
     - Adres
-    - Nazwisko osoby kontaktowej
+    - Nazwa kontaktu
 
-#### <a name="pick-up-in-japan"></a>Podnieś w Japonii
+#### <a name="pick-up-in-japan"></a>Pobierz w Japonii
 
-1. Napisz firmie nazwy i adresu informacji na temat Uwaga przesyłki jako informacje o nadawcy.
-2. Wyślij wiadomość e-mail rozwiązania Quantium przy użyciu następującego szablonu wiadomości e-mail.
+1. Zapisz nazwę firmy i informacje o adresie na liście wysyłkowej jako informacje o nadawcy.
+2. Quantium rozwiązanie e-mail przy użyciu następującego szablonu wiadomości e-mail.
 
-    - Jeśli Chakubarai wpis w Japonii przesyłki Uwaga nie została dołączona lub brakuje, należy pamiętać, że w tej wiadomości e-mail. Japonia rozwiązania Quantium zażąda Japonii wpis, aby przenieść Uwaga przesyłki od pobrania.
-    - Jeśli masz wiele zamówień, poczty e-mail, aby zapewnić odbiór poszczególnych.
+    - Jeśli nie dołączono lub nie ma żadnej adnotacji w języku Japonia post Chakubarai, należy pamiętać, że w tej wiadomości e-mail. Rozwiązania Quantium w Japonii zażądają opublikowania przesyłki w języku Japonia.
+    - Jeśli masz wiele zamówień, Wyślij wiadomość e-mail, aby zapewnić indywidualne odbiór.
 
     ```
     To: Customerservice.JP@quantiumsolutions.com
@@ -121,30 +124,30 @@ Centra danych platformy Azure w Australii mają wiadomość z powiadomieniem dod
         d. 17：00-19：00 
     ```
 
-3. Otrzymywać wiadomość e-mail z potwierdzeniem Quantium rozwiązań po zostało zarezerwowane odbioru. Potwierdzenie adresu e-mail zawiera również informacje na temat Uwaga przesyłki Chakubarai.
+3. Otrzymuj potwierdzenie e-mail z rozwiązań Quantium po zapisaniu odbioru. Potwierdzenie wiadomości e-mail obejmuje również informacje dotyczące Chakubarai wysyłki.
 
-Jeśli to konieczne, możesz skontaktować się Obsługa rozwiązań Quantium (język japoński) na następujące informacje: 
+W razie konieczności można skontaktować się z pomocą techniczną rozwiązania Quantium (język japoński), wykonując następujące informacje: 
 
 - Adres e-mail:Customerservice.JP@quantiumsolutions.com 
 - Telefon: 03-5755-0150 
 
-#### <a name="pick-up-in-korea"></a>Podnieś w Korei
+#### <a name="pick-up-in-korea"></a>Wybierz w Korei
 
-1. Upewnij się, że zawierają notatki przesyłki zwracany.
-2. Aby żądanie pobrania, jeśli występuje Uwaga partii:
-    1. Wywołaj *Quantium Solutions International* linia informacyjna na 070 8231 1418 podczas godzin pracy (10: 00 do 17: 00, od poniedziałku do piątku). Oferta *odbioru Microsoft Azure* i numer żądania usługi, aby rozmieścić dla kolekcji.  
-    2. Linia informacyjna jest zajęty, adres e-mail `microsoft@rocketparcel.com`, temat wiadomości e-mail *Microsoft Azure odbioru* i numer żądania usługi jako odwołanie.
-    3. Jeśli courier nie dotrze do kolekcji, należy wywołać *Quantium Solutions International* linia informacyjna mechanizmy alternatywne. 
-    4. Otrzymasz wiadomość e-mail z potwierdzeniem odbioru harmonogramu.
-3. Ten krok należy wykonać tylko wtedy, gdy Uwaga partii nie jest obecny. Aby żądanie pobrania:
-    1. Wywołaj *Quantium Solutions International* linia informacyjna na 070 8231 1418 podczas godzin pracy (10: 00 do 17: 00, od poniedziałku do piątku). Oferta *odbioru Microsoft Azure* i numer żądania usługi, aby rozmieścić dla kolekcji. Określ, należy nowej notatki przesyłki rozmieścić dla kolekcji. Podaj nadawcy (klienta), odbiorcy informacji (centrum danych platformy Azure) i numer odwołania (liczba żądań usługi). 
-    2. Linia informacyjna jest zajęty, adres e-mail `microsoft@rocketparcel.com`, temat wiadomości e-mail *Microsoft Azure odbioru* i numer żądania usługi jako odwołanie.
-    3. Jeśli courier nie dotrze do kolekcji, należy wywołać *Quantium Solutions International* linia informacyjna mechanizmy alternatywne. 
-    4. Użytkownik otrzyma ustnej potwierdzenie, jeśli żądanie jest wysyłane za pośrednictwem telefonu.
+1. Upewnij się, że zawarto adnotację zwrotną przesyłki.
+2. Aby zażądać pobrania, gdy jest obecny komentarz dotyczący wysyłki:
+    1. Zadzwoń na 070-8231-1418 *rozwiązań Quantium* w godzinach pracy (od 10 do 5 PM, od poniedziałku do piątku). Oferta *Microsoft Azure pobrania* i numer żądania obsługi w celu rozmieszczenia dla kolekcji.  
+    2. Jeśli linia jest zajęta, Wyślij `microsoft@rocketparcel.com`wiadomość e-mail z tematem wiadomości e-mail *Microsoft Azure pobranie* i numer żądania obsługi jako odwołanie.
+    3. Jeśli Courier nie dotarł do kolekcji, wywołaj *Quantium Solutions International* linia do alternatywnych rozwiązań. 
+    4. Otrzymasz potwierdzenie wiadomości e-mail dotyczącej harmonogramu odbioru.
+3. Wykonaj ten krok tylko wtedy, gdy nie ma uwagi dotyczącej wysyłki. Aby poprosić o pobranie:
+    1. Zadzwoń na 070-8231-1418 *rozwiązań Quantium* w godzinach pracy (od 10 do 5 PM, od poniedziałku do piątku). Oferta *Microsoft Azure pobrania* i numer żądania obsługi w celu rozmieszczenia dla kolekcji. Określ, że potrzebujesz nowej noty wysyłkowej do rozmieszczenia dla kolekcji. Podaj nadawcę (klienta), informacje o odbiorniku (centrum danych platformy Azure) i numer referencyjny (numer żądania obsługi). 
+    2. Jeśli linia jest zajęta, Wyślij `microsoft@rocketparcel.com`wiadomość e-mail z tematem wiadomości e-mail *Microsoft Azure pobranie* i numer żądania obsługi jako odwołanie.
+    3. Jeśli Courier nie dotarł do kolekcji, wywołaj *Quantium Solutions International* linia do alternatywnych rozwiązań. 
+    4. Jeśli żądanie zostało wysłane za pośrednictwem telefonu, otrzymasz ustne potwierdzenie.
 
-### <a name="pick-up-in-singapore"></a>Podnieś w Singapurze
+### <a name="pick-up-in-singapore"></a>Wybierz w Singapurze
 
-1. Drukuj etykietę wysyłkową i Dołącz pole. Jeśli etykieta jest uszkodzony lub utracony:
+1. Wydrukuj etykietę wysyłkową i Dołącz ją do pola. Jeśli etykieta jest uszkodzona lub utracona:
     - Przejdź do pozycji **Przegląd > Pobierz etykietę wysyłkową**.
 
         ![Pobieranie etykiety wysyłkowej](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
@@ -152,14 +155,14 @@ Jeśli to konieczne, możesz skontaktować się Obsługa rozwiązań Quantium (j
         To spowoduje pobranie zwrotnej etykiety wysyłkowej, podobnej do tej widocznej poniżej.
 
         ![Przykładowa etykieta wysyłkowa](media/data-box-disk-deploy-picked-up/exmple-shipping-label.png)
-    - Umieszcza etykiety na urządzeniu. Upewnij się, że etykieta jest widoczna.
+    - Umieszczanie etykiety na urządzeniu. Upewnij się, że etykieta jest widoczna.
 
-2. Aby żądanie pobrania:
-    - Wywołaj **SingPost** linia informacyjna na **6845 6485** podczas godzin pracy (9: 00 do 17: 00, od poniedziałku do piątku).  
-    - Oferta *odbioru Microsoft Azure* i usługa żądania numer (śledzenia na etykiety wysyłki zwrotnej) Aby rozmieścić dla kolekcji. 
-    - Zostanie wyświetlone potwierdzenie ustnej odbioru harmonogramu. 
-    - Jeśli courier nie dotrze do kolekcji, należy wywołać **SingPost** na **6845 6485** mechanizmy alternatywne. 
-3. Przekazać do courier. 
+2. Aby poprosić o pobranie:
+    - Wywołaj **SingPost** linia z **6845 6485** w godzinach pracy (9:00 do 17:00, od poniedziałku do piątku).  
+    - Oferta *Microsoft Azure pobrania* i numer żądania obsługi (numer śledzenia na etykiecie wysyłania zwrotnego) w celu zorganizowania kolekcji. 
+    - Otrzymasz ustne potwierdzenie dla harmonogramu odbioru. 
+    - Jeśli Courier nie dotarł do kolekcji, wywołaj **SingPost** o godzinie **6845 6485** , aby zapoznać się z alternatywnymi rozwiązaniami. 
+3. Dostęp do kurierów. 
 
 
 ## <a name="verify-data-upload-to-azure"></a>Weryfikowanie przekazania danych na platformę Azure
@@ -178,28 +181,28 @@ Po zakończeniu kopiowania danych stan zamówienia zmieni się na **Zakończone*
 
 ![Kopiowanie danych zostało zakończone](media/data-box-disk-deploy-picked-up/data-box-portal-completed.png)
 
-Jeśli kopia zakończy się z błędami, zobacz [Rozwiązywanie problemów z błędami przekazywania](data-box-disk-troubleshoot-upload.md).
+Jeśli kopia zakończy się z błędami, zobacz [Rozwiązywanie problemów](data-box-disk-troubleshoot-upload.md)z przekazywaniem.
 
-Sprawdź, czy dane znajdują się na kontach magazynu, zanim usuniesz je ze źródła. Dane mogą należeć:
+Sprawdź, czy dane znajdują się na kontach magazynu, zanim usuniesz je ze źródła. Twoje dane mogą znajdować się w:
 
-- Konta magazynu platformy Azure. Po skopiowaniu danych na urządzenie Data Box są one zależnie od typu przekazywane do jednej z poniższych ścieżek w ramach konta usługi Azure Storage.
+- Twoje konta usługi Azure Storage. Po skopiowaniu danych na urządzenie Data Box są one zależnie od typu przekazywane do jednej z poniższych ścieżek w ramach konta usługi Azure Storage.
 
   - W przypadku blokowych obiektów blob i stronicowych obiektów blob: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
   - W przypadku usługi Azure Files: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
 
     Możesz też przejść do swojego konta usługi Azure Storage w witrynie Azure Portal i nawigować z poziomu tej witryny.
 
-- Swojej grupy zasobów dysku zarządzanego. Podczas tworzenia dysków zarządzanych, wirtualne dyski twarde są przekazywane jako stronicowe obiekty BLOB, a następnie konwertowana do dysków zarządzanych. Dyski zarządzane są dołączone do grupy zasobów, określony w momencie tworzenia zamówienia.
+- Grupy zasobów dysku zarządzanego. Podczas tworzenia dysków zarządzanych wirtualne dyski twarde są przekazywane jako stronicowe obiekty blob, a następnie konwertowane na dyski zarządzane. Dyski zarządzane są dołączone do grup zasobów określonych w momencie tworzenia zamówienia.
 
-  - Jeśli Twoja kopia do usługi managed disks na platformie Azure zakończyło się pomyślnie, możesz przejść do **szczegóły zamówienia** w witrynie Azure portal i upewnij, należy pamiętać, grupy zasobów określona dla dysków zarządzanych.
+  - Jeśli kopiowanie do dysków zarządzanych na platformie Azure zakończyło się pomyślnie, możesz przejść do **szczegółów zamówienia** w Azure Portal i zanotować grupę zasobów określoną dla dysków zarządzanych.
 
       ![Wyświetl szczegóły zamówienia](media/data-box-disk-deploy-picked-up/order-details-resource-group.png)
 
-    Przejdź do grupy zasobów wspomniano, a następnie zlokalizuj dysków zarządzanych.
+    Przejdź do zanotowanej grupy zasobów i Znajdź dyski zarządzane.
 
-      ![Grupy zasobów dla dysków zarządzanych](media/data-box-disk-deploy-picked-up/resource-group-attached-managed-disk.png)
+      ![Grupa zasobów dla dysków zarządzanych](media/data-box-disk-deploy-picked-up/resource-group-attached-managed-disk.png)
 
-  - Jeśli został skopiowany plik VHDX lub dynamiczne/różnicowego dysku VHD, VHDX/wirtualny dysk twardy jest przekazywany w do konta magazynu przejściowego jako blokowe obiekty blob. Przejdź do swojej przemieszczania **konta magazynu > obiekty BLOB** , a następnie wybierz odpowiedniego kontenera — StandardSSD, StandardHDD lub PremiumSSD. Dysk VHDX/wirtualne dyski twarde powinny wyświetlane jako blokowe obiekty BLOB na koncie magazynu przejściowego.
+  - W przypadku skopiowania pliku VHDX lub dynamicznego/różnicowego dysku VHD dysk VHDX/VHD zostanie przekazany do konta magazynu tymczasowego jako blokowy obiekt BLOB. Przejdź do swojego **konta magazynu tymczasowego > obiektów BLOB** , a następnie wybierz odpowiedni kontener — StandardSSD, StandardHDD lub PremiumSSD. Plik VHDX/VHD powinien być wyświetlany jako blokowe obiekty blob na koncie magazynu przemieszczania.
 
 Aby sprawdzić, czy dane zostały przekazane na platformę Azure, wykonaj następujące czynności:
 
@@ -215,7 +218,7 @@ Aby sprawdzić, czy dane zostały przekazane na platformę Azure, wykonaj nastę
 
 Po zakończeniu kopiowania i zweryfikowaniu przekazania danych na konto magazynu na platformie Azure dyski zostaną w bezpieczny sposób wymazane zgodnie z normą NIST.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono zagadnienia dotyczące urządzenia Azure Data Box Disk, takie jak:
 
@@ -229,5 +232,41 @@ Przejdź do następnego tematu, aby zapoznać się z instrukcjami zarządzania u
 
 > [!div class="nextstepaction"]
 > [Administrowanie usługą Data Box Disk w witrynie Azure Portal](./data-box-portal-ui-admin.md)
+
+::: zone-end
+
+
+::: zone target="chromeless"
+
+# <a name="return-the-disk-and-verify-upload-to-azure"></a>Zwróć dysk i sprawdź poprawność przekazywania na platformę Azure
+
+## <a name="ship-to-azure"></a>Wysyłka do platformy Azure
+
+1. Po zakończeniu walidacji danych Odłącz dyski. Odłącz kable połączeniowe.
+2. Zapakuj wszystkie dyski i kable połączeniowe w folię bąbelkową, a następnie umieść w opakowaniu wysyłkowym. Opłaty mogą być stosowane w przypadku braku akcesoriów.
+    - Ponownie Użyj opakowania z początkowego wydania.  
+    - Zalecamy pakowanie dysków przy użyciu dobrze zabezpieczonego zawijania bąbelkowego.
+    - Upewnij się, że dopasowanie jest Snug, aby zmniejszyć liczbę ruchów w polu.
+3. Następne kroki są określane przez miejsce zwrócenia urządzenia.
+    - Zaplanuj powracanie [za pomocą zasilacza UPS w przypadku powrotu urządzenia do Stanów Zjednoczonych i Kanady](data-box-disk-deploy-picked-up.md#pick-up-in-us-canada).
+    - [Zaplanuj pobranie z DHL dla Europy](data-box-disk-deploy-picked-up.md#pick-up-in-europe) , odwiedzając swoją witrynę sieci Web i podając numer rachunku Airway.
+    - [Zaplanuj odbiór dla krajów w regionie Australii](data-box-disk-deploy-picked-up.md#pick-up-in-asia-pacific-region) , takim jak Australia, Japonia, Korea i Singapur.
+4. Po pobraniu dysków przez operatora zostanie wyświetlony stan zamówienia w portalu aktualizacje i identyfikator śledzenia.
+
+## <a name="verify-upload-to-azure"></a>Weryfikuj przekazywanie do platformy Azure
+
+Po przekazaniu danych na platformę Azure Sprawdź, czy Twoje dane są na kontach magazynu przed usunięciem go ze źródła. Twoje dane mogą znajdować się w:
+
+- Twoje konta usługi Azure Storage. Po skopiowaniu danych na urządzenie Data Box są one zależnie od typu przekazywane do jednej z poniższych ścieżek w ramach konta usługi Azure Storage.
+
+    - **Dla blokowych obiektów blob i stronicowych obiektów BLOB**: https://< storage_account_name >. blob. Core.<containername>Windows. NET//Files/a.txt
+
+    - **W przypadku Azure Files**: https://< storage_account_name >. plik. Core. Windows. NET<sharename>//Files/a.txt
+
+    Możesz też przejść do swojego konta usługi Azure Storage w witrynie Azure Portal i nawigować z poziomu tej witryny.
+
+- Grupy zasobów dysku zarządzanego. Podczas tworzenia dysków zarządzanych wirtualne dyski twarde są przekazywane jako stronicowe obiekty blob, a następnie konwertowane na dyski zarządzane. Dyski zarządzane są dołączone do grup zasobów określonych w momencie tworzenia zamówienia.
+
+::: zone-end
 
 

@@ -1,7 +1,7 @@
 ---
-title: Odwołanie do zestawu SDK immersyjnych czytnika
+title: Dokumentacja zestawu SDK czytnika immersyjny
 titleSuffix: Azure Cognitive Services
-description: Dokumentacja dotycząca Immersyjnych czytnika zestawu SDK
+description: Dokumentacja zestawu SDK czytnika immersyjny
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,51 +10,51 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 485e8626af4266492e02d4f9fbe4af486e10c082
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 67da7d67a3165583a872c2b435c3cdca9763d4dd
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718393"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443816"
 ---
-# <a name="immersive-reader-sdk-reference"></a>Odwołanie do zestawu SDK immersyjnych czytnika
+# <a name="immersive-reader-sdk-reference"></a>Dokumentacja zestawu SDK czytnika immersyjny
 
-Wszechstronne SDK czytnik jest bibliotekę JavaScript, która pozwala na integrowanie czytnika realistycznych aplikacji sieci web.
+Zestaw SDK czytnika immersyjny to biblioteka języka JavaScript, która umożliwia integrację czytnika immersyjny z aplikacją sieci Web.
 
 ## <a name="functions"></a>Funkcje
 
-Zestaw SDK udostępnia pojedynczą funkcję `ImmersiveReader.launchAsync(token, resourceName, content, options)`.
+Zestaw SDK uwidacznia pojedynczą funkcję `ImmersiveReader.launchAsync(token, subdomain, content, options)`.
 
 ### <a name="launchasync"></a>launchAsync
 
-Uruchamia Immersyjnych czytnika w ramach `iframe` w aplikacji sieci web.
+Uruchamia czytnik `iframe` immersyjny w aplikacji sieci Web.
 
 ```typescript
-launchAsync(token: string, resourceName: string, content: Content, options?: Options): Promise<HTMLDivElement>;
+launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<HTMLDivElement>;
 ```
 
 #### <a name="parameters"></a>Parametry
 
 | Name (Nazwa) | Typ | Opis |
 | ---- | ---- |------------ |
-| `token` | ciąg | Token dostępu, uzyskanych z wywołania `issueToken` punktu końcowego. |
-| `resourceName` | ciąg | Zastrzeżone. Musi być równa `null`. |
-| `content` | [Zawartość](#content) | Obiekt zawierający zawartość ma być wyświetlany w Immersyjnych czytnika. |
-| `options` | [Opcje](#options) | Opcje dotyczące konfigurowania pewnymi rodzajami zachowań tych Immersyjnych czytnika. Opcjonalny. |
+| `token` | ciąg | Token uwierzytelniania usługi Azure AD. Zapoznaj się z samouczkiem dotyczącym [uwierzytelniania usługi Azure AD](./azure-active-directory-authentication.md). |
+| `subdomain` | ciąg | Niestandardowa poddomena zasobu czytnika immersyjny na platformie Azure. Zobacz [temat uwierzytelnianie w usłudze Azure AD](./azure-active-directory-authentication.md). |
+| `content` | [Zawartość](#content) | Obiekt zawierający zawartość, która ma zostać pokazana w czytniku immersyjny. |
+| `options` | [Opcje](#options) | Opcje konfigurowania niektórych zachowań czytnika immersyjny. Opcjonalny. |
 
 #### <a name="returns"></a>Zwraca
 
-Zwraca `Promise<HTMLDivElement>` która jest rozpoznawana jako po załadowaniu Immersyjnych czytnika. `Promise` Jest rozpoznawana jako `div` elementu, którego jedynym podrzędny jest `iframe` element, który zawiera strona Immersyjnych czytnika.
+Zwraca, `Promise<HTMLDivElement>` który jest rozpoznawany podczas ładowania czytnika immersyjny. Jest rozpoznawany `div` jako element, `iframe` którego jedynym elementem podrzędnym jest element, który zawiera stronę czytnika immersyjny. `Promise`
 
 #### <a name="exceptions"></a>Wyjątki
 
-Zwrócony `Promise` zakończy się [ `Error` ](#error) obiektu, jeśli czytnik Immersyjnych nie udało się załadować. Aby uzyskać więcej informacji, zobacz [kody błędów](#error-codes).
+Zwracana `Promise` wartość zostanie odrzucona [`Error`](#error) z obiektem, jeśli czytnik immersyjny nie zostanie załadowany. Aby uzyskać więcej informacji, zobacz [kody błędów](#error-codes).
 
 ## <a name="types"></a>Typy
 
 ### <a name="content"></a>Zawartość
 
-Zawiera zawartość ma być wyświetlany w Immersyjnych czytnika.
+Zawiera zawartość, która ma zostać pokazana w czytniku immersyjny.
 
 ```typescript
 {
@@ -71,12 +71,12 @@ Zawiera zawartość ma być wyświetlany w Immersyjnych czytnika.
 
 | Typ MIME | Opis |
 | --------- | ----------- |
-| zwykły tekst | Zwykły tekst. |
-| Aplikacja/mathml + xml | Język znaczników matematyczne (MathML). [Dowiedz się więcej](https://developer.mozilla.org/en-US/docs/Web/MathML).
+| tekst/zwykły | Zwykły tekst. |
+| Application/MathML + XML | Język matematycznych znaczników (MathML). [Dowiedz się więcej](https://developer.mozilla.org/en-US/docs/Web/MathML).
 
 ### <a name="options"></a>Opcje
 
-Zawiera właściwości, które skonfigurować pewnymi rodzajami zachowań tych Immersyjnych czytnika.
+Zawiera właściwości, które konfigurują pewne zachowania czytnika immersyjny.
 
 ```typescript
 {
@@ -89,7 +89,7 @@ Zawiera właściwości, które skonfigurować pewnymi rodzajami zachowań tych I
 
 ### <a name="error"></a>Błąd
 
-Zawiera informacje o tym błędzie.
+Zawiera informacje o błędzie.
 
 ```typescript
 {
@@ -102,31 +102,31 @@ Zawiera informacje o tym błędzie.
 
 | Kod | Opis |
 | ---- | ----------- |
-| BadArgument | Podany argument jest nieprawidłowy, zobacz `message` Aby uzyskać szczegółowe informacje. |
-| limit czasu | Wszechstronne czytnik nie może załadować przed upływem określonego limitu czasu. |
+| BadArgument | Podany argument jest nieprawidłowy. Aby `message` uzyskać szczegółowe informacje, zobacz. |
+| limit czasu | Nie można załadować czytnika immersyjny w określonym limicie czasu. |
 | TokenExpired| Podany token wygasł. |
 
-## <a name="launching-the-immersive-reader"></a>Uruchamianie Immersyjnych czytnika
+## <a name="launching-the-immersive-reader"></a>Uruchamianie czytnika immersyjny
 
-Zestaw SDK udostępnia stylem domyślnym dla przycisku uruchamiania Immersyjnych czytnika. Użyj `immersive-reader-button` atrybut klasy, aby włączyć tego stylu.
+Zestaw SDK zawiera domyślne style dla przycisku umożliwiającego uruchomienie czytnika immersyjny. Użyj atrybutu `immersive-reader-button` Class, aby włączyć ten styl.
 
 ```html
 <div class='immersive-reader-button'></div>
 ```
 
-### <a name="optional-attributes"></a>Opcjonalne atrybuty
+### <a name="optional-attributes"></a>Atrybuty opcjonalne
 
-Aby skonfigurować wygląd i działanie przycisku, należy użyć następujących atrybutów.
+Użyj następujących atrybutów, aby skonfigurować wygląd i działanie przycisku.
 
 | Atrybut | Opis |
 | --------- | ----------- |
-| `data-button-style` | Ustawia styl przycisku. Może być `icon`, `text`, lub `iconAndText`. Wartość domyślna to `icon`. |
-| `data-locale` | Ustawia ustawienia regionalne, np. `en-US`, `fr-FR`. Wartość domyślna to język angielski. |
-| `data-icon-px-size` | Ustawia rozmiar ikony w pikselach. Wartość domyślna to {20px. |
+| `data-button-style` | Ustawia styl przycisku. Może być `icon`, `text`lub. `iconAndText` Wartość domyślna to `icon`. |
+| `data-locale` | Ustawia ustawienia regionalne, np. `en-US`. `fr-FR` Domyślnie jest używany język angielski. |
+| `data-icon-px-size` | Ustawia rozmiar ikony w pikselach. Wartość domyślna to 20px. |
 
-## <a name="browser-support"></a>Obsługa przeglądarek
+## <a name="browser-support"></a>Obsługa przeglądarki
 
-Aby uzyskać najlepsze wyniki przy użyciu Immersyjnych czytnika zawartości, należy użyć najnowsze wersje następujących przeglądarek.
+Najnowsze wersje następujących przeglądarek są używane w celu uzyskania najlepszego środowiska z czytnikiem immersyjny.
 
 * Microsoft Edge
 * Internet Explorer 11
@@ -136,5 +136,5 @@ Aby uzyskać najlepsze wyniki przy użyciu Immersyjnych czytnika zawartości, na
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Zapoznaj się z [Immersyjnych czytnika zestawu SDK w witrynie GitHub](https://github.com/Microsoft/immersive-reader-sdk)
-* [Szybki start: Utwórz aplikację sieci web, która uruchamia Immersyjnych czytnika (C#)](./quickstart.md)
+* Eksplorowanie [zestawu SDK czytnika immersyjny w witrynie GitHub](https://github.com/Microsoft/immersive-reader-sdk)
+* [Szybki start: Tworzenie aplikacji sieci Web, która uruchamia czytnik immersyjny (C#)](./quickstart.md)

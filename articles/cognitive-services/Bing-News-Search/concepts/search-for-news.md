@@ -1,6 +1,6 @@
 ---
 title: Wyszukiwanie wiadomości za pomocą interfejsu API wyszukiwania wiadomości Bing
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak wysyłać zapytania wyszukiwania dla wiadomości ogólnych, popularnych tematów i wiadomości z nagłówków.
 services: cognitive-services
 author: swhite-msft
@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: overview
 ms.date: 06/19/2019
 ms.author: scottwhi
-ms.openlocfilehash: da1dd68b8e155e121f26f5599207691877fbf0ca
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: b70cf50bb33ca7962116586a347c508b15abcd0c
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274156"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423873"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>Wyszukiwanie wiadomości za pomocą interfejsu API wyszukiwania wiadomości Bing
 
@@ -51,7 +51,7 @@ Aby pobrać wiadomości z określonej domeny, należy użyć operatora zapytania
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
 ```
 
-Poniższy przykładowy kod JSON zawiera odpowiedzi na poprzednie zapytanie. W ramach [wymagań dotyczących użycia i wyświetlania](../useanddisplayrequirements.md) dla interfejsów API wyszukiwania Bing każdy artykuł z wiadomościami należy wyświetlać w kolejności podanej w odpowiedzi. Jeśli artykuł zawiera klastrowane artykuły, należy wskazać, że pokrewne artykuły istnieją i wyświetlić je na żądanie.
+Poniższy przykład JSON przedstawia odpowiedź na poprzednie zapytanie. W ramach [wymagań dotyczących użycia i wyświetlania](../useanddisplayrequirements.md) dla interfejsów API wyszukiwania Bing każdy artykuł z wiadomościami należy wyświetlać w kolejności podanej w odpowiedzi. Jeśli artykuł zawiera klastrowane artykuły, należy wskazać, że pokrewne artykuły istnieją i wyświetlić je na żądanie.
 
 ```json
 {
@@ -107,7 +107,7 @@ Jeśli usłudze Bing uda się określić kategorię artykułu z wiadomościami, 
 
 ## <a name="get-todays-top-news"></a>Pobieranie dzisiejszych najważniejszych wiadomości
 
-Pobierz współczesnych najciekawsze artykuły, możesz wysłać tego samego żądania ogólnego wiadomości tak jak poprzednio, przy równoczesnym zachowaniu `q` nie ustawiono parametru.
+Aby uzyskać dzisiejsze najpopularniejsze artykuły z wiadomościami, możesz wysłać te same ogólne żądanie, tak jak wcześniej, `q` pozostawiając parametr bez ustawienia.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=&mkt=en-us HTTP/1.1
@@ -119,7 +119,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-Odpowiedź w celu uzyskania najważniejszych wiadomości jest prawie taki sam, jak w celu uzyskania ogólnego wiadomości. Jednak odpowiedź `news` nie zawiera pola `totalEstimatedMatches`, ponieważ obowiązuje określona liczba wyników. Liczba najważniejszych artykułów może być inna w zależności od cyklu życia informacji. Należy użyć `provider` pole atrybutu tego artykułu.
+Odpowiedź na korzystanie z najważniejszych wiadomości jest niemal taka sama jak w przypadku uzyskiwania ogólnych wiadomości. Jednak odpowiedź `news` nie zawiera pola `totalEstimatedMatches`, ponieważ obowiązuje określona liczba wyników. Liczba najważniejszych artykułów może być inna w zależności od cyklu życia informacji. Upewnij się, `provider` że pole jest używane do poatrybutowania artykułu.
 
 ## <a name="get-news-by-category"></a>Pobieranie wiadomości według kategorii
 
@@ -261,7 +261,7 @@ Jeśli istnieją inne artykuły, które są powiązane z artykułem z wiadomośc
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Jak przechodzić do kolejnych stron wyników wyszukiwania wiadomości Bing](../paging-news.md)

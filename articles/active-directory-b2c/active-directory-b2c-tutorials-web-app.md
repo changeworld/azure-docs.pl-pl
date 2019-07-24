@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 041bcf32035ab6cdc3ee4df06050f75186759f5e
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: bcfd1ef02c68de7709cb8642b94f23a6884ea156
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835646"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464763"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Samouczek: włączanie uwierzytelniania w aplikacji internetowej przy użyciu usługi Azure Active Directory B2C
 
@@ -33,7 +33,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - [Tworzenie przepływów użytkownika](tutorial-create-user-flows.md), aby umieścić platformę użytkownika w Twojej aplikacji.
-- Zainstaluj [Visual Studio 2019](https://www.visualstudio.com/downloads/) z **ASP.NET i tworzenie aplikacji internetowych** obciążenia.
+- Zainstaluj [program Visual Studio 2019](https://www.visualstudio.com/downloads/) przy użyciu obciążeń **ASP.NET i Web Development** .
 
 ## <a name="update-the-application"></a>Aktualizowanie aplikacji
 
@@ -64,8 +64,9 @@ Przykładowe rozwiązanie zawiera następujące dwa projekty:
 Należy zmienić przykładową aplikację tak, aby korzystała z aplikacji zarejestrowanej w Twojej dzierżawie. Obejmuje to zanotowane wcześniej identyfikator aplikacji i klucz. Skonfiguruj też utworzone przepływy użytkownika. Przykładowa aplikacja definiuje wartości konfiguracji jako ustawienia w pliku Web.config. Aby zmienić ustawienia:
 
 1. Otwórz rozwiązanie **B2C-WebAPI-DotNet** w programie Visual Studio.
-2. W projekcie **TaskWebApp** otwórz plik **Web.config**. Zastąp wartość elementu `ida:Tenant` nazwą utworzonej dzierżawy. Zastąp wartość elementu `ida:ClientId` zanotowanym identyfikatorem aplikacji. Zastąp wartość elementu `ida:ClientSecret` zanotowanym kluczem.
+2. W projekcie **TaskWebApp** otwórz plik **Web.config**. Zastąp wartość elementu `ida:Tenant` nazwą utworzonej dzierżawy. Zastąp wartość elementu `ida:ClientId` zanotowanym identyfikatorem aplikacji. Zastąp wartość elementu `ida:ClientSecret` zanotowanym kluczem. Przed dodaniem do pliku Web. config należy kodować kod tajny klienta.
 3. W pliku **Web.config** zastąp wartość elementu `ida:SignUpSignInPolicyId` ciągiem `b2c_1_signupsignin1`. Zastąp wartość elementu `ida:EditProfilePolicyId` cięgiem `b2c_1_profileediting1`. Zastąp wartość elementu `ida:ResetPasswordPolicyId` cięgiem `b2c_1_passwordreset1`.
+
 
 ## <a name="run-the-sample"></a>Uruchamianie aplikacji przykładowej
 
@@ -78,7 +79,7 @@ Należy zmienić przykładową aplikację tak, aby korzystała z aplikacji zarej
 2. Usługa Azure AD B2C wyświetli stronę logowania z linkiem rejestracji. Ponieważ nie masz jeszcze konta, wybierz pozycję **Zarejestruj się teraz**. W przepływie pracy rejestracji jest wyświetlana strona do zbierania i weryfikowania tożsamości użytkownika przy użyciu adresu e-mail. Przepływ pracy rejestracji zbiera też hasło użytkownika i żądane atrybuty zdefiniowane w przepływie użytkownika.
 3. Użyj prawidłowego adresu e-mail i przeprowadź weryfikację przy użyciu kodu weryfikacyjnego. Ustaw hasło. Wprowadź wartości żądanych atrybutów.
 
-    ![Strona rejestracji wyświetlane jako część sign-in/rejestracją przepływu pracy](media/active-directory-b2c-tutorials-web-app/sign-up-workflow.PNG)
+    ![Strona rejestracji wyświetlana w ramach przepływu pracy logowania/rejestrowania](media/active-directory-b2c-tutorials-web-app/sign-up-workflow.PNG)
 
 4. Kliknij pozycję **Utwórz**, aby utworzyć konto lokalne w dzierżawie usługi Azure AD B2C.
 

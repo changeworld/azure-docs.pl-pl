@@ -1,6 +1,6 @@
 ---
 title: 'Szybki start: Wyszukiwanie wiadomości przy użyciu środowiska Node.js i interfejsu API REST wyszukiwania wiadomości Bing'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Skorzystaj z tego przewodnika Szybki Start, aby wysyłać żądania do interfejsu API REST wyszukiwania wiadomości Bing przy użyciu środowiska Node.js i otrzymywać odpowiedzi w formacie JSON.
 services: cognitive-services
 author: aahill
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 6/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 1fb2676fb1513ab4955ffa35c559b2ae36e0efd0
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 501ae6107232287011388bb67e64a1ae3fe5f7e3
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203313"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423727"
 ---
 # <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Szybki start: wyszukiwanie wiadomości przy użyciu środowiska Node.js i interfejsu API REST wyszukiwania wiadomości Bing
 
@@ -71,7 +71,7 @@ Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bin
         });
         ```
 
-    3. Gdy **zakończenia** flaga jest sygnalizowane, JSON i nagłówki mogą być wyświetlane.
+    3. Po zasygnalizowaniu flagi **końcowej** można wyświetlić kod JSON i nagłówki.
 
         ```javascript
         response.on('end', function () {
@@ -181,7 +181,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie jednostronicowej aplikacji internetowej](tutorial-bing-news-search-single-page-app.md)

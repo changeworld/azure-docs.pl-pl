@@ -1,7 +1,7 @@
 ---
-title: Przewodnik Szybki Start — Wyślij zapytanie do lokalnych firm interfejs API wyszukiwania Bing w języku Python | Dokumentacja firmy Microsoft
+title: Szybki Start — wysyłanie zapytania do lokalnego interfejsu API wyszukiwania biznesowego Bing w języku Python
 titleSuffix: Azure Cognitive Services
-description: Użyj w tym artykule, aby rozpocząć korzystanie z lokalnych firm interfejsu API wyszukiwania Bing w języku Python.
+description: Skorzystaj z tego artykułu, aby rozpocząć korzystanie z interfejsu API wyszukiwania w usłudze Bing Local Business Search w języku Python.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,33 +9,33 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: cfc4bd95214c56dfbe940b7a2785d297f59105a9
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: c6da3c9a169f3b6e5885499d3a7bc5347902782e
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592725"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423324"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>Szybki start: Wysłanie zapytania do lokalnych firm interfejs API wyszukiwania Bing w języku Python
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>Szybki start: Wyślij zapytanie do lokalnego interfejsu API wyszukiwania biznesowego Bing w języku Python
 
-Użyj tego przewodnika Szybki Start, aby rozpocząć wysyłanie żądań lokalnych firm interfejs API wyszukiwania Bing, czyli usługi Azure Cognitive Service. Gdy ta prosta aplikacja został napisany w języku Python, interfejs API jest zgodny z dowolnego języka programowania możliwością wysyłania żądań HTTP i analizowania danych JSON Usługa sieci Web typu RESTful.
+Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć wysyłanie żądań do lokalnego interfejsu API wyszukiwania biznesowego Bing, który jest usługą poznawczej platformy Azure. Chociaż ta prosta aplikacja jest zapisywana w języku Python, interfejs API jest usługą sieci Web RESTful zgodną z dowolnym językiem programowania, który umożliwia wykonywanie żądań HTTP i analizowanie kodu JSON.
 
-Ta przykładowa aplikacja pobiera dane lokalne odpowiedzi z interfejsu API dla zapytania wyszukiwania `hotel in Bellevue`.
+Ta przykładowa aplikacja pobiera dane lokalnego odpowiedzi z interfejsu API dla zapytania `hotel in Bellevue`wyszukiwania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Środowisko [Python](https://www.python.org/) 2.x lub 3.x
  
-Konieczne jest posiadanie [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) za pomocą interfejsów API usługi Bing. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) jest wystarczająca na potrzeby tego przewodnika Szybki start. Użyj klucza dostępu, dostarczone przez bezpłatnej wersji próbnej.  Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Musisz mieć [konto interfejsu API Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z interfejsami API Bing. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) jest wystarczająca na potrzeby tego przewodnika Szybki start. Użyj klucza dostępu dostarczonego w ramach bezpłatnej wersji próbnej.  Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
-## <a name="run-the-complete-application"></a>Uruchom kompletnej aplikacji
+## <a name="run-the-complete-application"></a>Uruchom kompletną aplikację
 
-Poniższy kod pobiera zlokalizowanych wyników. W celu zaimplementowania kodu wykonaj następujące kroki:
+Poniższy kod pobiera zlokalizowane wyniki. W celu zaimplementowania kodu wykonaj następujące kroki:
 1. Zadeklaruj zmienne, aby określić punkt końcowy na podstawie hosta i ścieżki.
 2. Określ parametr zapytania. 
-3. Zdefiniuj funkcję wyszukiwania, która tworzy żądanie i dodaje nagłówek Ocp-Apim-Subscription-Key.
-4. Ustaw nagłówek Ocp-Apim-Subscription-Key. 
-5. Nawiązywanie połączeń i wysyłania żądania.
+3. Zdefiniuj funkcję wyszukiwania, która tworzy żądanie i dodaje nagłówek OCP-APIM-Subscription-Key.
+4. Ustaw dla nagłówka OCP-APIM-Subscription-Key. 
+5. Utwórz połączenie i Wyślij żądanie.
 6. Wydrukuj wyniki w formacie JSON.
 
 Pełny kod tej wersji demonstracyjnej wygląda następująco:
@@ -66,7 +66,7 @@ print (json.dumps(json.loads(result), indent=4))
 
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-- [Szybki Start Java wyszukiwania lokalnych firmach](local-search-java-quickstart.md)
-- [Wyszukiwanie lokalnych firmach C# Szybki Start](local-quickstart.md)
-- [Szybki Start węzła wyszukiwania lokalnych firmach](local-search-node-quickstart.md)
+## <a name="next-steps"></a>Następne kroki
+- [Lokalne wyszukiwanie biznesowe w języku Java — Szybki Start](local-search-java-quickstart.md)
+- [Lokalne wyszukiwanie C# biznesowe — Szybki Start](local-quickstart.md)
+- [Lokalny węzeł wyszukiwania biznesowego — Szybki Start](local-search-node-quickstart.md)

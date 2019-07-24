@@ -1,6 +1,6 @@
 ---
 title: 'Szybki start: Wysyłanie żądania wyszukiwania do interfejsu API REST wyszukiwania jednostek Bing API REST wyszukiwania jednostek Bing przy użyciu środowiska Node.js'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Skorzystaj z tego przewodnika Szybki Start, aby wysyłać żądania do interfejsu API REST wyszukiwania wiadomości Bing przy użyciu języka C# i otrzymywać odpowiedzi w formacie JSON.
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 177e0ef0adab3b683657a9b872300cb38185d795
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 139f05e07060cc6dd958c19930e31b1b44e5d22a
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66384566"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424031"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Szybki start: Wysyłanie żądania wyszukiwania do interfejsu API REST wyszukiwania jednostek Bing API REST wyszukiwania jednostek Bing przy użyciu środowiska Node.js
 
@@ -74,7 +74,7 @@ Aplikacja jest napisana w języku JavaScript, natomiast interfejs API jest usłu
         });
         ```
 
-    3. Gdy **zakończenia** flaga jest sygnalizowane, Przeanalizuj dane JSON i drukować.
+    3. Po zasygnalizowaniu flagi **końcowej** należy przeanalizować kod JSON i wydrukować go.
 
         ```javascript
         response.on ('end', function () {

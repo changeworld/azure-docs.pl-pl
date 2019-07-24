@@ -1,6 +1,6 @@
 ---
 title: 'Szybki start: Sprawdzanie pisowni za pomocą interfejsu API REST sprawdzania pisowni Bing i języka Java'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Rozpocznij korzystanie z interfejsu API REST sprawdzania pisowni Bing, aby sprawdzać pisownię i poprawność gramatyczną.
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 04/11/2019
 ms.author: aahi
-ms.openlocfilehash: eeec278a1c9e4888aa4a63af3d9c86e7a8c1615c
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 6680ddd65ce43a71873acb823f8ae57b449a56be
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67502914"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423523"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>Szybki start: Sprawdzanie pisowni za pomocą interfejsu API REST sprawdzania pisowni Bing i języka Java
 
@@ -25,13 +25,13 @@ Użyj tego przewodnika Szybki start, aby wykonać pierwsze wywołanie interfejsu
 
 * Zestaw Java Development Kit (JDK) w wersji 7 lub nowszej.
 
-* Importuj [gson 2.8.5.jar](https://libraries.io/maven/com.google.code.gson%3Agson) lub najbardziej aktualnej [Gson](https://github.com/google/gson) wersji. Do wykonania wiersza polecenia, należy dodać `.jar` do folderu Java z klasą główną.
+* Zaimportuj plik [gson-2.8.5. jar](https://libraries.io/maven/com.google.code.gson%3Agson) lub najnowszą wersję [gson](https://github.com/google/gson) . Aby wykonać polecenie w wierszu polecenia, `.jar` należy dodać do folderu Java z klasą Main.
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 ## <a name="create-and-initialize-an-application"></a>Tworzenie i inicjowanie aplikacji
 
-1. Utwórz nowy projekt języka Java w ulubionym środowisku IDE lub edytora nazwą klasy wybrane, a następnie zaimportuj następujące pakiety.
+1. Utwórz nowy projekt Java w ulubionym środowisku IDE lub edytorze z wybraną nazwą klasy, a następnie zaimportuj następujące pakiety.
 
     ```java
     import java.io.*;
@@ -64,7 +64,7 @@ Użyj tego przewodnika Szybki start, aby wykonać pierwsze wywołanie interfejsu
    }
    ```
 
-2. Utwórz adres URL, łącząc hosta punktu końcowego, ścieżkę i ciąg parametrów. Utwórz nową `HttpsURLConnection` obiektu.
+2. Utwórz adres URL, łącząc hosta punktu końcowego, ścieżkę i ciąg parametrów. Utwórz nowy `HttpsURLConnection` obiekt.
 
     ```java
     URL url = new URL(host + path + params);
@@ -89,9 +89,9 @@ Użyj tego przewodnika Szybki start, aby wykonać pierwsze wywołanie interfejsu
         wr.close();
     ```
 
-## <a name="format-and-read-the-api-response"></a>Formatowanie i odczytać odpowiedzi interfejsu API
+## <a name="format-and-read-the-api-response"></a>Formatowanie i odczytywanie odpowiedzi interfejsu API
 
-1. Dodaj tę metodę do klasy. Operacja formatowania JSON czytelność danych wyjściowych.
+1. Dodaj tę metodę do klasy. Formatuje on kod JSON, aby uzyskać bardziej czytelny wynik.
 
     ``` java
     // This function prettifies the json response.
@@ -117,7 +117,7 @@ Użyj tego przewodnika Szybki start, aby wykonać pierwsze wywołanie interfejsu
 
 ## <a name="call-the-api"></a>Wywoływanie interfejsu API
 
-W funkcji main aplikacji Wywołaj metodę check() utworzonego powyżej.
+W funkcji Main aplikacji Wywołaj metodę Check () utworzoną powyżej.
 
     ```java
     public static void main(String[] args) {
@@ -132,16 +132,16 @@ W funkcji main aplikacji Wywołaj metodę check() utworzonego powyżej.
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 
-Skompiluj i uruchom projekt.
+Skompiluj i Uruchom projekt.
 
-Jeśli korzystasz z wiersza polecenia, użyj następujących poleceń, aby skompilować i uruchomić aplikację.
+Jeśli używasz wiersza polecenia, użyj następujących poleceń, aby skompilować i uruchomić aplikację.
 
-**Kompilacja:**
+**Utworzenia**
 ```bash
 javac -classpath .;gson-2.2.2.jar\* <CLASS_NAME>.java
 ```
 
-**Uruchom polecenie:**
+**Wykonane**
 ```bash
 java -cp .;gson-2.2.2.jar\* <CLASS_NAME>
 ```
@@ -188,7 +188,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie jednostronicowej aplikacji internetowej](../tutorials/spellcheck.md)

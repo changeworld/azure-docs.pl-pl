@@ -1,7 +1,6 @@
 ---
 title: Tworzenie kopii zapasowej serwerów z systemem Windows na platformie Azure
 description: Ten samouczek zawiera szczegółowe instrukcje tworzenia kopii zapasowej lokalnych serwerów z systemem Windows w magazynie usługi Recovery Services.
-services: backup
 author: dcurwin
 manager: carmonm
 keywords: kopia zapasowa serwerów z systemem windows; kopia zapasowa windows server; kopia zapasowa i odzyskiwanie po awarii
@@ -10,12 +9,12 @@ ms.topic: tutorial
 ms.date: 8/22/2018
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 907a10314f27428d4d4b867abb71e2046208650b
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 0a8a4795cf35402ebecbf6838aaeb5f17768aa06
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273963"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467033"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Tworzenie kopii zapasowej serwerów z systemem Windows na platformie Azure
 
@@ -26,7 +25,7 @@ Przy użyciu usługi Azure Backup można chronić serwer z systemem Windows prze
 > [!div class="checklist"]
 > * Pobieranie i konfigurowanie agenta usług MARS
 > * Konfigurowanie harmonogramu tworzenia i przechowywania kopii zapasowych serwera
-> * Wykonaj ad-hoc, tworzenie kopii zapasowej
+> * Wykonywanie kopii zapasowej ad hoc
 
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
@@ -128,7 +127,7 @@ Agent usługi Microsoft Azure Recovery Services umożliwia zaplanowanie tworzeni
 
 11. Po ukończeniu harmonogramu tworzenia kopii zapasowej przez kreatora kliknij przycisk **Zamknij**.
 
-## <a name="perform-an-ad-hoc-back-up"></a>Wykonaj ad-hoc, tworzenie kopii zapasowej
+## <a name="perform-an-ad-hoc-back-up"></a>Wykonywanie kopii zapasowej ad hoc
 
 Został określony harmonogram uruchamiania zadań tworzenia kopii zapasowej. Nie utworzono jednak jeszcze kopii zapasowej serwera. Najlepszym rozwiązaniem w zakresie odzyskiwania po awarii jest utworzenie kopii zapasowej na żądanie w celu zapewnienia, że dane na serwerze będą odporne na awarie.
 

@@ -1,7 +1,6 @@
 ---
 title: Przywracanie plików na maszynę wirtualną przy użyciu usługi Azure Backup
 description: Dowiedz się, jak przeprowadzić przywracanie na poziomie plików na maszynie wirtualnej platformy Azure przy użyciu usług Backup i Recovery Services.
-services: backup
 author: dcurwin
 manager: carmonm
 ms.service: backup
@@ -9,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 801d812f44eacb4953ca3df942d65bd77f210478
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 553f19a2cb621698cb5b47e56d7cb30d529cc243
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273927"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467058"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Przywracanie plików na maszynę wirtualną na platformie Azure
 Usługa Azure Backup tworzy punkty odzyskiwania przechowywane w geograficznie nadmiarowych magazynach odzyskiwania. Z punktu odzyskiwania można przywrócić całą maszynę wirtualną lub poszczególne pliki. W tym artykule szczegółowo przedstawiono sposób przywracania poszczególnych plików. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
@@ -192,7 +191,7 @@ Po skopiowaniu skryptu odzyskiwania na maszynę wirtualną możesz nawiązać po
         --rp-name myRecoveryPointName
     ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Podczas pracy z tym samouczkiem połączono punkt odzyskiwania z maszyną wirtualną i przywrócono pliki serwera internetowego. W tym samouczku omówiono:
 
 > [!div class="checklist"]

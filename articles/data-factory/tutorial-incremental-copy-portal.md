@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: yexu
-ms.openlocfilehash: 6a9d6ec651cd365995ce63a8dff6d60c8b23dec1
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 52cb11b015bb231b91184a2270e333e4c9aa8303
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312644"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424280"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Przyrostowe ładowanie danych z bazy danych Azure SQL Database do magazynu Azure Blob Storage
 W tym samouczku utworzysz fabrykę danych Azure Data Factory z potokiem, który ładuje dane różnicowe z tabeli w bazie danych Azure SQL Database do magazynu Azure Blob Storage. 
@@ -39,7 +39,7 @@ Ten samouczek obejmuje następujące procedury:
 > * Przegląd wyników drugiego uruchomienia
 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Diagram ogólny rozwiązania wygląda następująco: 
 
 ![Przyrostowe ładowanie danych](media/tutorial-Incremental-copy-portal/incrementally-load.png)
@@ -150,7 +150,7 @@ END
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 
 1. Uruchom przeglądarkę internetową **Microsoft Edge** lub **Google Chrome**. Obecnie interfejs użytkownika usługi Data Factory jest obsługiwany tylko przez przeglądarki internetowe Microsoft Edge i Google Chrome.
-1. W menu po lewej stronie wybierz **Utwórz zasób** > **dane + analiza** > **usługi Data Factory**: 
+1. W menu po lewej stronie wybierz pozycję **Utwórz zasób** > **dane + analiza** > **Data Factory**: 
    
    ![Wybór usługi Data Factory w okienku „Nowy”](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -171,7 +171,7 @@ END
 4. Wybierz opcję **V2** w obszarze **Wersja**.
 5. Na liście **lokalizacja** wybierz lokalizację fabryki danych. Na liście rozwijanej są wyświetlane tylko obsługiwane lokalizacje. Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
 6. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.     
-7. Kliknij pozycję **Utwórz**.      
+7. Kliknij przycisk **Utwórz**.      
 8. Na pulpicie nawigacyjnym jest widoczny następujący kafelek ze stanem: **Wdrażanie fabryki danych**. 
 
     ![kafelek Wdrażanie fabryki danych](media/tutorial-incremental-copy-portal/deploying-data-factory.png)
@@ -211,7 +211,7 @@ W tym samouczku utworzysz potok z dwoma działaniami Lookup, jednym działaniem 
     3. Wprowadź **nazwę użytkownika**, który będzie uzyskiwać dostęp do serwera usługi Azure SQL. 
     4. Wprowadź **hasło** dla użytkownika. 
     5. Aby przetestować połączenie z bazą danych Azure SQL Database, kliknij przycisk **Testuj połączenie**.
-    6. Kliknij pozycję **Zapisz**.
+    6. Kliknij polecenie **Zapisz**.
     7. Na karcie **Połączenie** upewnij się, że dla ustawienia **Połączona usługa** wybrano wartość **AzureSqlDatabaseLinkedService**.
        
         ![Okno Nowa połączona usługa](./media/tutorial-incremental-copy-portal/azure-sql-linked-service-settings.png)
@@ -238,7 +238,7 @@ W tym samouczku utworzysz potok z dwoma działaniami Lookup, jednym działaniem 
 
         ![Drugie działanie wyszukiwania — nowy zestaw danych](./media/tutorial-incremental-copy-portal/source-dataset-connection.png)
 17. Przejdź do edytora potoku, klikając kartę potoku u góry lub klikając nazwę potoku w widoku drzewa po lewej stronie. W oknie dialogowym właściwości działania **Lookup** (Wyszukiwanie) upewnij się, że dla pola **Zestaw danych źródłowych** wybrano wartość **SourceDataset**. 
-18. Wybierz wartość **Zapytanie** w polu **Użyj zapytania**, a następnie wprowadź następujące zapytanie: wybierasz tylko maksymalną wartość **LastModifytime** z tabeli **data_source_table**. Upewnij się również sprawdzeniu **tylko wiersz Fist**.
+18. Wybierz wartość **Zapytanie** w polu **Użyj zapytania**, a następnie wprowadź następujące zapytanie: wybierasz tylko maksymalną wartość **LastModifytime** z tabeli **data_source_table**. Upewnij się, że zaznaczono również **tylko pierwszy wiersz**.
 
     ```sql
     select MAX(LastModifytime) as NewWatermarkvalue from data_source_table
@@ -281,7 +281,7 @@ W tym samouczku utworzysz potok z dwoma działaniami Lookup, jednym działaniem 
 
     1. Wprowadź wartość **AzureStorageLinkedService** w polu **Nazwa**. 
     2. W polu **Nazwa konta magazynu** wybierz konto usługi Azure Storage.
-    3. Kliknij pozycję **Zapisz**. 
+    3. Kliknij polecenie **Zapisz**. 
 
         ![Połączona usługa Azure Storage — ustawienia](./media/tutorial-incremental-copy-portal/azure-storage-linked-service-settings.png)
 27. Na karcie **Połączenie** wykonaj następujące czynności:
@@ -306,9 +306,9 @@ W tym samouczku utworzysz potok z dwoma działaniami Lookup, jednym działaniem 
     1. W polu **Nazwa procedury składowanej** wybierz wartość **usp_write_watermark**. 
     2. Aby określić wartości parametrów procedury składowanej, kliknij pozycję **Importuj parametr**, a następnie wprowadź następujące wartości parametrów: 
 
-        | Name (Nazwa) | Typ | Wartość | 
+        | Name (Nazwa) | Typ | Value | 
         | ---- | ---- | ----- | 
-        | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
+        | LastModifiedtime | Datetime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | String | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
     ![Działanie procedury składowanej — ustawienia procedury składowanej](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)

@@ -1,6 +1,6 @@
 ---
 title: Czym jest interfejs API wyszukiwania jednostek Bing?
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Użyj interfejsu API wyszukiwanie jednostek Bing, aby wyodrębniać i wyszukiwać jednostki oraz miejsca z poziomu zapytań wyszukiwania.
 services: cognitive-services
 author: swhite-msft
@@ -10,16 +10,16 @@ ms.subservice: bing-entity-search
 ms.topic: overview
 ms.date: 02/01/2019
 ms.author: scottwhi
-ms.openlocfilehash: 679a3d9efbeeb75e0aa8e3986fa85b7ecf0d77bd
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 8f43401296a154ee40e7c214ad63da878129244a
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388494"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424014"
 ---
 # <a name="what-is-bing-entity-search-api"></a>Czym jest interfejs API wyszukiwania jednostek Bing?
 
-Interfejs API wyszukiwania jednostek Bing wysyła zapytanie wyszukiwania do usługi Bing i pobiera wyniki, które zawierają jednostki i miejsca. Wyniki dotyczące miejsc to między innymi restauracje, hotele i inne lokalne firmy. Wyszukiwarka Bing zwraca wyniki dotyczące miejsc, jeśli w zapytaniu określono nazwę lokalnej firmy lub zadano pytanie dotyczące typu firmy (na przykład „restaurants near me” — restauracje w pobliżu). Wyszukiwarka Bing zwraca jednostki, jeśli zapytanie określa dobrze znanych osób, miejsc (atrakcji, Stany, kraje/regiony itp.) lub rzeczy.
+Interfejs API wyszukiwania jednostek Bing wysyła zapytanie wyszukiwania do usługi Bing i pobiera wyniki, które zawierają jednostki i miejsca. Wyniki dotyczące miejsc to między innymi restauracje, hotele i inne lokalne firmy. Wyszukiwarka Bing zwraca wyniki dotyczące miejsc, jeśli w zapytaniu określono nazwę lokalnej firmy lub zadano pytanie dotyczące typu firmy (na przykład „restaurants near me” — restauracje w pobliżu). Bing zwraca jednostki, jeśli zapytanie określa dobrze znane osoby, miejsca (turystyczny attractions, Stany, kraje/regiony itp.) lub rzeczy.
 
 |Cecha  |Opis  |
 |---------|---------|
@@ -35,7 +35,7 @@ Interfejs API wyszukiwania jednostek Bing jest usługą internetową RESTful ła
 2. Wyślij żądanie do interfejsu API przy użyciu prawidłowego zapytania wyszukiwania.
 3. Przetwórz odpowiedź interfejsu API, analizując zwrócony komunikat JSON.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Wypróbuj [interaktywną demonstrację](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) interfejsu API wyszukiwania jednostek Bing. 
 * Aby szybko rozpocząć pracę z pierwszym żądaniem, wypróbuj przewodnik [Szybki start](quickstarts/csharp.md).

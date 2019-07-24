@@ -41,6 +41,10 @@
   items:
     - name: Interfejs API rozpoznawania formularzy
       href: 'https://aka.ms/form-recognizer/api'
+    - name: Zestawy SDK
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview'
 - name: Zasoby
   items:
     - name: Ceny i limity

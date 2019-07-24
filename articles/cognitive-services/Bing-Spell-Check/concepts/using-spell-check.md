@@ -1,6 +1,6 @@
 ---
 title: Korzystanie z interfejsu API sprawdzania pisowni Bing
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Poznaj tryby pracy funkcji sprawdzania pisowni Bing, jej ustawienia i inne informacje dotyczące tego interfejsu API.
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: b847615e8440a8992c8130d12cd6111afe3d33d2
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 7fd528b5f21622051bdad67c6ffcb6dd8500386a
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390235"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423647"
 ---
 # <a name="using-the-bing-spell-check-api"></a>Korzystanie z interfejsu API sprawdzania pisowni Bing
 
@@ -120,7 +120,7 @@ Jeśli pole `type` zawiera wartość RepeatedToken, i tak należy zastąpić tok
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Czym jest interfejs API sprawdzania pisowni Bing?](../overview.md)
 - [Dokumentacja interfejsu API sprawdzania pisowni Bing v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

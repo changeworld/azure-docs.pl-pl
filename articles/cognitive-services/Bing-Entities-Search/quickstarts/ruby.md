@@ -1,6 +1,6 @@
 ---
 title: 'Szybki start: wysyłanie żądania wyszukiwania do interfejsu API REST wyszukiwania jednostek Bing przy użyciu języka Ruby'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Skorzystaj z tego przewodnika Szybki Start, aby wysyłać żądania do interfejs API REST wyszukiwania jednostek Bing przy użyciu języka Ruby i otrzymywać odpowiedzi w formacie JSON.
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: b5653ffbfeb22bc59c48dd92b558178fcd89b2de
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: e470173dc9e747547ff5085f3c804fb18c0c3594
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66384498"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423926"
 ---
 # <a name="quickstart-for-bing-entity-search-api-with-ruby"></a>Przewodnik Szybki start dotyczący korzystania z interfejsu API wyszukiwania jednostek Bing za pomocą języka Ruby
 
@@ -65,7 +65,7 @@ Chociaż ta aplikacja jest napisana w języku Ruby, interfejs API jest usługą 
     request['Ocp-Apim-Subscription-Key'] = subscriptionKey
     ```
 
-3. Wyślij żądanie i drukowanie odpowiedzi
+3. Wyślij żądanie i wydrukuj odpowiedź
 
     ```ruby
     response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|

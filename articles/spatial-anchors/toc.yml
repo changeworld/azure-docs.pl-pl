@@ -5,6 +5,7 @@
     - name: Informacje o usłudze Spatial Anchors
       href: overview.md
 - name: Przewodniki Szybki start
+  expanded: true
   items:
     - name: Tworzenie aplikacji aparatu Unity
       href: unity-overview.yml

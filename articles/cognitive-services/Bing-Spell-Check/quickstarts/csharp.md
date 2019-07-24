@@ -1,6 +1,6 @@
 ---
 title: 'Szybki start: Sprawdzanie pisowni za pomocą interfejsu API REST sprawdzania pisowni Bing i języka C#'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Rozpocznij korzystanie z interfejsu API REST sprawdzania pisowni Bing, aby sprawdzać pisownię i poprawność gramatyczną.
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 04/11/2019
 ms.author: aahi
-ms.openlocfilehash: e7a1f2572296015aac2d05b36b9b659c85586ff9
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: a2c121ed58882427022b716081b096c913d447f8
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390245"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423632"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Szybki start: Sprawdzanie pisowni za pomocą interfejsu API REST sprawdzania pisowni Bing i języka C#
 
@@ -23,11 +23,11 @@ Użyj tego przewodnika Szybki start, aby wykonać pierwsze wywołanie interfejsu
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Dowolnej wersji programu [programu Visual Studio 2017 r. lub nowszej](https://www.visualstudio.com/downloads/).
-* Aby zainstalować `Newtonsoft.Json` jako pakiet NuGet w programie Visual studio:
-    1. W **Eksploratora rozwiązań**, kliknij prawym przyciskiem myszy plik rozwiązania.
-    1. Wybierz **Zarządzaj pakietami NuGet dla rozwiązania**.
-    1. Wyszukaj `Newtonsoft.Json` i zainstalować pakiet.
+* Dowolna wersja programu [Visual Studio 2017 lub nowszego](https://www.visualstudio.com/downloads/).
+* Aby zainstalować `Newtonsoft.Json` jako pakiet NuGet w programie Visual Studio:
+    1. W **Eksplorator rozwiązań**kliknij prawym przyciskiem myszy plik rozwiązania.
+    1. Wybierz pozycję **Zarządzaj pakietami NuGet dla rozwiązania**.
+    1. `Newtonsoft.Json` Wyszukaj i zainstaluj pakiet.
 * Jeśli używasz systemu Linux/MacOS, możesz uruchomić tę aplikację przy użyciu środowiska [Mono](https://www.mono-project.com/).
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
@@ -62,7 +62,7 @@ Użyj tego przewodnika Szybki start, aby wykonać pierwsze wywołanie interfejsu
     }
     ```
 
-3. Utwórz zmienną dla parametrów wyszukiwania. Dołączanie kodu rynku po `mkt=`. Kod na rynku jest wprowadzone żądanie od kraju. Ponadto dołączyć swoje tryb sprawdzania pisowni, po `&mode=`. Tryb jest albo `proof` (przechwytuje większość błędów Pisownia i gramatyka) lub `spell` (przechwytuje większość pisowni, ale nie tyle błędy gramatyczne).
+3. Utwórz zmienną dla parametrów wyszukiwania. Dołącz kod rynkowy po `mkt=`. Kod rynkowy to kraj, z którego pochodzi żądanie. Dodawaj również tryb sprawdzania pisowni po `&mode=`. Tryb jest albo `proof` (przechwytuje większość błędów pisowni/gramatyki `spell` ) lub (przechwytuje większość pisowni, ale nie wiele błędów gramatycznych).
     
     ```csharp
     static string params_ = "mkt=en-US&mode=proof";
@@ -83,7 +83,7 @@ Użyj tego przewodnika Szybki start, aby wykonać pierwsze wywołanie interfejsu
     }
     ```
 
-2. Dołączanie usługi host, ścieżkę i parametry, aby utworzyć identyfikator URI żądania.
+2. Utwórz identyfikator URI dla żądania, dołączając swój host, ścieżkę i parametry.
     
     ```csharp
     string uri = host + path + params_;
@@ -182,7 +182,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie jednostronicowej aplikacji internetowej](../tutorials/spellcheck.md)

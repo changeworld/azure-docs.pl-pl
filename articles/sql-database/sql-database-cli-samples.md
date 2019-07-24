@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/03/2019
-ms.openlocfilehash: 7a1132b5857cf6c54d0566ca29bb76ce1ef88513
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ad4706ce038feb316d238c1cabc12b27621c8085
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66150242"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443329"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database"></a>Przykłady interfejsu wiersza polecenia platformy Azure dla bazy danych Azure SQL Database
 
@@ -41,6 +41,8 @@ Poniższa tabela zawiera linki do przykładów skryptów interfejsu wiersza pole
 |**Skalowanie pojedynczej bazy danych i puli elastycznej**||
 | [Skalowanie pojedynczej bazy danych](scripts/sql-database-monitor-and-scale-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Ten przykładowy skrypt interfejsu wiersza polecenia skaluje pojedynczą bazę danych Azure SQL Database do innego rozmiaru obliczeniowego po utworzeniu zapytania o informacje na temat rozmiaru bazy danych. |
 | [Skalowanie puli elastycznej](scripts/sql-database-scale-pool-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Ten przykładowy skrypt interfejsu wiersza polecenia skaluje pulę elastyczną SQL do innego rozmiaru obliczeniowego.  |
+|**Grupy trybu failover**||
+| [Dodaj pojedynczą bazę danych do grupy trybu failover](scripts/sql-database-add-single-db-to-failover-group-cli.md?toc=%2fcli%2fazure%2ftoc.json)| Ten skrypt interfejsu wiersza polecenia tworzy bazę danych i grupę trybu failover, dodaje bazę danych do grupy trybu failover i testuje tryb failover na serwerze pomocniczym.|
 |||
 
 Dowiedz się więcej o [interfejsie API interfejsu wiersza platformy Azure pojedynczej bazy danych](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases).

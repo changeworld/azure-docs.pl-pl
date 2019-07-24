@@ -1,7 +1,7 @@
 ---
-title: Przewodnik Szybki Start — Wyślij zapytanie do lokalnych firm interfejs API wyszukiwania Bing za pomocą języka Java | Dokumentacja firmy Microsoft
+title: Szybki Start — wysyłanie zapytania do lokalnego interfejsu API wyszukiwania biznesowego Bing przy użyciu języka Java
 titleSuffix: Azure Cognitive Services
-description: Użyj w tym artykule, aby rozpocząć korzystanie z lokalnych firm interfejs API wyszukiwania Bing w języku Java.
+description: Skorzystaj z tego artykułu, aby rozpocząć korzystanie z interfejsu API wyszukiwania lokalnego firmy Bing w języku Java.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,18 +9,18 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: eff7bbc8a7600667254bc9d49627e707b063bc41
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 47b4fac571feea6d5763735c22dcb5cf859f4d5f
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592738"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423350"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Szybki start: Wysłanie zapytania do lokalnych firm interfejs API wyszukiwania Bing za pomocą języka Java
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Szybki start: Wyślij zapytanie do lokalnego interfejsu API wyszukiwania biznesowego Bing przy użyciu języka Java
 
-Użyj tego przewodnika Szybki Start, aby rozpocząć wysyłanie żądań lokalnych firm interfejs API wyszukiwania Bing, czyli usługi Azure Cognitive Service. Gdy ta prosta aplikacja został napisany w języku Java, interfejs API jest zgodny z dowolnego języka programowania możliwością wysyłania żądań HTTP i analizowania danych JSON Usługa sieci Web typu RESTful.
+Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć wysyłanie żądań do lokalnego interfejsu API wyszukiwania biznesowego Bing, który jest usługą poznawczej platformy Azure. Chociaż ta prosta aplikacja jest zapisywana w języku Java, interfejs API jest usługą sieci Web RESTful zgodną z dowolnym językiem programowania, który umożliwia wykonywanie żądań HTTP i analizowanie kodu JSON.
 
-Ta przykładowa aplikacja pobiera dane lokalne odpowiedzi z interfejsu API dla zapytania wyszukiwania `hotel in Bellevue`.
+Ta przykładowa aplikacja pobiera dane lokalnego odpowiedzi z interfejsu API dla zapytania `hotel in Bellevue`wyszukiwania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -28,11 +28,11 @@ Ta przykładowa aplikacja pobiera dane lokalne odpowiedzi z interfejsu API dla z
 
 Wymagane jest [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z dostępem do interfejsów API wyszukiwania Bing. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) jest wystarczająca na potrzeby tego przewodnika Szybki start. Potrzebny będzie klucz dostępu podany podczas aktywacji bezpłatnej wersji próbnej.  Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
-Tej przykładowej aplikacji pobiera dane odpowiedzi lokalnego z zapytania dla *hotelu w Bellevue*.
+Ta przykładowa aplikacja pobiera dane lokalnego odpowiedzi z zapytania dla *hotelu w Bellevue*.
 
 ## <a name="create-the-request"></a>Utwórz żądanie 
 
-Poniższy kod tworzy `WebRequest`, ustawia nagłówek klucza dostępu i dodaje ciąg zapytania dla "hotel Bellevue".  Następnie wysyła żądanie i przypisuje odpowiedź do ciągu zawierającego tekst w formacie JSON.
+Poniższy kod tworzy `WebRequest`, ustawia nagłówek klucza dostępu i dodaje ciąg zapytania dla "Hotel w Bellevue".  Następnie wysyła żądanie i przypisuje odpowiedź do ciągu zawierającego tekst w formacie JSON.
 
 ```
     // construct URL of search request (endpoint + query string)
@@ -48,9 +48,9 @@ Poniższy kod tworzy `WebRequest`, ustawia nagłówek klucza dostępu i dodaje c
     SearchResults results = new SearchResults(new HashMap<String, String>(), response);
 ```
 
-## <a name="run-the-complete-application"></a>Uruchom kompletnej aplikacji
+## <a name="run-the-complete-application"></a>Uruchom kompletną aplikację
 
-Lokalnych firm interfejsu API wyszukiwania Bing zwraca wyników z wyszukiwarki Bing.
+Interfejs API wyszukiwania lokalnego usługi Bing zwraca wyniki z aparatu wyszukiwania Bing.
 1. Pobierz i zainstaluj bibliotekę gson.
 2. Utwórz nowy projekt języka Java w ulubionym środowisku IDE lub edytorze.
 3. Dodaj kod przedstawiony poniżej.
@@ -163,7 +163,7 @@ public class LocalSearchCls {
 
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-- [Lokalne wyszukiwanie firm Szybki Start](local-quickstart.md)
-- [Lokalny węzeł wyszukiwania firm Szybki Start](local-search-node-quickstart.md)
-- [Lokalnych firm wyszukiwania Python Szybki Start](local-search-python-quickstart.md)
+## <a name="next-steps"></a>Następne kroki
+- [Lokalne wyszukiwanie biznesowe — Szybki Start](local-quickstart.md)
+- [Lokalny węzeł wyszukiwania biznesowego — Szybki Start](local-search-node-quickstart.md)
+- [Lokalne wyszukiwanie biznesowe w języku Python — Szybki Start](local-search-python-quickstart.md)

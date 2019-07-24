@@ -7,14 +7,14 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 0499b2ef25cc93615a72269bd64af689ebced01d
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: b69bd39e97cc97830142c8b1911f1116927643b2
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333582"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467537"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Uwierzytelnianie żądań w usłudze Azure Cognitive Services
 
@@ -23,6 +23,7 @@ Każde żądanie do usługi poznawczej platformy Azure musi zawierać nagłówek
 * [Uwierzytelnianie za pomocą klucza subskrypcji pojedynczego usługi](#authenticate-with-a-single-service-subscription-key)
 * [Uwierzytelnianie za pomocą klucza subskrypcji wielousługowej](#authenticate-with-a-multi-service-subscription-key)
 * [Uwierzytelnianie za pomocą tokenu](#authenticate-with-an-authentication-token)
+* [Uwierzytelnianie za pomocą Azure Active Directory (AAD)](#authenticate-with-azure-active-directory)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -158,8 +159,10 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 --data-raw '[{ "text": "How much for the cup of coffee?" }]' | json_pp
 ```
 
+[!INCLUDE [](../../includes/cognitive-services-azure-active-directory-authentication.md)]
+
 ## <a name="see-also"></a>Zobacz także
 
 * [Co to są usługi poznawcze Cognitive Services?](welcome.md)
 * [Cennik usług Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/)
-* [Create an account](cognitive-services-apis-create-account.md) (Tworzenie konta)
+* [Niestandardowe poddomeny](cognitive-services-custom-subdomains.md)

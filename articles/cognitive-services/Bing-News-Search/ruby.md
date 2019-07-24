@@ -1,6 +1,6 @@
 ---
-title: 'Szybki start: Wykonywanie wyszukiwania wiadomości, za pomocą języka Ruby i interfejsu API REST wyszukiwania wiadomości Bing'
-titlesuffix: Azure Cognitive Services
+title: 'Szybki start: Przeprowadź wyszukiwanie w wiadomościach za pomocą interfejsu API REST i wyszukiwanie wiadomości Bing'
+titleSuffix: Azure Cognitive Services
 description: Skorzystaj z tego przewodnika Szybki Start, aby wysyłać żądania do interfejs API REST wyszukiwania wiadomości Bing przy użyciu języka Ruby i otrzymywać odpowiedzi w formacie JSON.
 services: cognitive-services
 author: aahill
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 6/19/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 5db8d9055ff973c3de1b995340d77004d889aa3d
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: ab16a54269c2afe820d9d17d1400152d078186ed
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272731"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423679"
 ---
 # <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>Szybki start: Wyszukiwanie wiadomości przy użyciu języka Ruby i interfejsu API REST wyszukiwania wiadomości Bing
 

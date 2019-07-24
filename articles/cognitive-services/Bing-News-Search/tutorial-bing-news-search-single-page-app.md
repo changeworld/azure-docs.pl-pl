@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Tworzenie aplikacji jednej strony internetowej przy użyciu interfejsu API wyszukiwania wiadomości Bing'
-titlesuffix: Azure Cognitive Services
+title: 'Samouczek: Tworzenie jednostronicowej aplikacji sieci Web przy użyciu interfejs API wyszukiwania wiadomości Bing'
+titleSuffix: Azure Cognitive Services
 description: Przy użyciu tego samouczka możesz utworzyć jednostronicową aplikację internetową, która wysyła zapytania wyszukiwania do interfejsu API wyszukiwania wiadomości Bing i wyświetla wyniki na stronie internetowej.
 services: cognitive-services
 author: aahill
@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 10798b471012d53b5820b078b4be7c9c648d3233
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 424fdc9fa0f31b3de664945ff49b119939488fed
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868365"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423610"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>Samouczek: Tworzenie jednostronicowej aplikacji internetowej
 
@@ -397,7 +397,7 @@ Zasady zabezpieczeń przeglądarki (CORS) mogą powodować, że nagłówek `X-MS
 > [!NOTE]
 > W aplikacji internetowej w środowisku produkcyjnym należy wykonać to żądanie po stronie serwera. W przeciwnym razie należy dołączyć klucz interfejsu API wyszukiwania Bing do strony internetowej, aby był on dostępny dla każdego, kto wyświetli źródło. Płacisz za wszystkie użycia związane z Twoim kluczem subskrypcji interfejsu API, nawet za żądania wykonane przez osoby nieupoważnione, zatem ważne jest, aby nie ujawniać swojego klucza.
 
-W celach programistycznych możesz wykonywać żądania interfejsu API wyszukiwania w sieci Web Bing za pośrednictwem serwera proxy CORS. Odpowiedź z serwera proxy ma `Access-Control-Expose-Headers` nagłówek, który umożliwia nagłówki odpowiedzi i udostępnienie ich dla języka JavaScript.
+W celach programistycznych możesz wykonywać żądania interfejsu API wyszukiwania w sieci Web Bing za pośrednictwem serwera proxy CORS. Odpowiedź z takiego serwera proxy ma `Access-Control-Expose-Headers` nagłówek, który umożliwia nagłówki odpowiedzi i udostępnia je dla języka JavaScript.
 
 Zainstalowanie serwera proxy CORS w celu zezwolenia naszej aplikacji samouczka na dostęp do nagłówka identyfikatora klienta jest łatwe. Najpierw [zainstaluj platformę Node.js](https://nodejs.org/en/download/), jeśli jeszcze jej nie masz. Następnie wykonaj następujące polecenie w oknie polecenia:
 

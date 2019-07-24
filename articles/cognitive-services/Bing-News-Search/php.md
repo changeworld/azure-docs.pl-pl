@@ -1,6 +1,6 @@
 ---
-title: 'Szybki start: Wykonywanie wyszukiwania wiadomości, za pomocą języka PHP i interfejsu API REST wyszukiwania wiadomości Bing'
-titlesuffix: Azure Cognitive Services
+title: 'Szybki start: Wykonaj wyszukiwanie w wiadomościach przy użyciu języka PHP i interfejsu API REST wyszukiwanie wiadomości Bing'
+titleSuffix: Azure Cognitive Services
 description: Skorzystaj z tego przewodnika Szybki Start, aby wysyłać żądania do interfejs API REST wyszukiwania wiadomości Bing przy użyciu języka PHP i otrzymywać odpowiedzi w formacie JSON.
 services: cognitive-services
 author: aahill
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 6/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 9fd03b433580444c2fc3f956dded6deb1a2be7f1
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: b905993c88bd4425215dd83962980d8e46a7b943
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203334"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423709"
 ---
 # <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Szybki start: wyszukiwanie wiadomości przy użyciu języka PHP i interfejsu API REST wyszukiwania wiadomości Bing
 
@@ -197,7 +197,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie jednostronicowej aplikacji internetowej](tutorial-bing-news-search-single-page-app.md)
