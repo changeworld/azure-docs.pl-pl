@@ -1,7 +1,7 @@
 ---
-title: Przepisy kontenera narzędzia docker compose
+title: Używanie Docker Compose do wdrażania wielu kontenerów
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak wdrażanie wielu kontenerów usług Cognitive Services. Ta procedura pokazuje sposób organizowania wielu obrazów kontenerów platformy Docker przy użyciu narzędzia Docker Compose.
+description: Dowiedz się, jak wdrożyć wiele kontenerów Cognitive Services. W tym artykule przedstawiono sposób organizowania wielu obrazów kontenerów platformy Docker za pomocą Docker Compose.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,43 +10,43 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: 8afb7e866bc2a5fefe28a71653c4a2a87fdc7a5b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 95ec80af88e0b89f61bebed08f4b96a09947f401
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445790"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311553"
 ---
-# <a name="use-multiple-containers-in-a-private-network-with-docker-compose"></a>Korzystanie z wielu kontenerów w sieci prywatnej przy użyciu narzędzia Docker Compose
+# <a name="use-docker-compose-to-deploy-multiple-containers"></a>Używanie Docker Compose do wdrażania wielu kontenerów
 
-Dowiedz się, jak wdrażanie wielu kontenerów usług Cognitive Services. Ta procedura pokazuje sposób organizowania wielu obrazów kontenerów platformy Docker przy użyciu narzędzia Docker Compose.
+W tym artykule opisano sposób wdrażania wielu kontenerów Cognitive Services platformy Azure. W tym celu dowiesz się, jak za pomocą Docker Compose organizować wiele obrazów kontenerów platformy Docker.
 
-> [Docker Compose](https://docs.docker.com/compose/) to narzędzie służące do definiowania i uruchamiania aplikacji platformy Docker z wieloma kontenerami. Za pomocą Compose umożliwia się plik yaml pozwalający Konfigurowanie usług aplikacji. Następnie za pomocą jednego polecenia, tworzenie i uruchamianie wszystkich usług z konfiguracji.
+> [Docker Compose](https://docs.docker.com/compose/) to narzędzie służące do definiowania i uruchamiania aplikacji platformy Docker z obsługą kilku kontenerów. W obszarze redagowanie możesz skonfigurować usługi aplikacji przy użyciu pliku YAML. Następnie należy utworzyć i uruchomić wszystkie usługi z konfiguracji, uruchamiając pojedyncze polecenie.
 
-Gdy jest to konieczne, może być atrakcyjne organizowanie wiele obrazów kontenera na komputerze hosta. W tym artykule firma Microsoft będzie zebrane rozpoznawanie tekstu i usługi rozpoznawania formularza.
+Przydatne może być organizowanie wielu obrazów kontenerów na pojedynczym komputerze-hoście. W tym artykule połączymy się ze sobą przy użyciu kontenerów aparatów rozpoznawania Rozpoznawanie tekstu i formularzy.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ta procedura wymaga kilku narzędzi, które musi być zainstalowany i uruchamiane lokalnie.
+Ta procedura wymaga kilku narzędzi, które muszą być zainstalowane i uruchomione lokalnie:
 
-* Korzystanie z subskrypcji platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
-* [Aparat platformy docker](https://www.docker.com/products/docker-engine) i Zweryfikuj, że interfejs wiersza polecenia platformy Docker działa w oknie konsoli.
-* Zasób platformy Azure z warstwą cenową poprawne. Nie wszystkie warstwy cenowe pracować z tego kontenera:
-  * **Przetwarzanie obrazów** zasobu o F0 lub standardowej ceny warstwy tylko.
-  * **Formularz rozpoznawania** zasobu o F0 lub standardowej ceny warstwy tylko.
-  * **Usługi cognitive Services** warstwa cenowa zasobu z S0.
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
+* [Aparat platformy Docker](https://www.docker.com/products/docker-engine). Upewnij się, że interfejs wiersza polecenia platformy Docker działa w oknie konsoli.
+* Zasób platformy Azure z poprawną warstwą cenową. Tylko następujące warstwy cenowe współpracują z tym kontenerem:
+  * Zasób **Przetwarzanie obrazów** tylko za pomocą warstwy cenowej F0 lub standardowa.
+  * Zasób **aparatu rozpoznawania formularza** z F0 lub warstwą cenową standardowa.
+  * **Cognitive Services** zasób z warstwą cenową S0.
 
-## <a name="request-access-to-the-container-registry"></a>Żądanie dostępu do rejestru kontenerów
+## <a name="request-access-to-the-container-registry"></a>Zażądaj dostępu do rejestru kontenerów
 
-Wypełnij i Prześlij [formularz wniosku kontenery mowy w usłudze Cognitive Services](https://aka.ms/speechcontainerspreview/) Aby zażądać dostępu do kontenera. 
+Ukończ i prześlij [formularz żądania kontenerów mowy Cognitive Services](https://aka.ms/speechcontainerspreview/). 
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 
 [!INCLUDE [Authenticate to the container registry](../../../includes/cognitive-services-containers-access-registry.md)]
 
-## <a name="docker-compose-file"></a>Plik narzędzia docker compose
+## <a name="docker-compose-file"></a>Plik Docker Compose
 
-Plik YAML definiuje wszystkie usługi, które mają zostać wdrożone. Usługi te zależą od albo `DockerFile` lub istniejący obraz kontenera, w tym przypadku użyjemy dwa obrazy w wersji zapoznawczej. Skopiuj i wklej następujący plik YAML i zapisz go jako *docker compose.yaml*. Podaj odpowiednie _apikey_, _rozliczeń_, i _identyfikator URI punktu końcowego_ wartości w _docker-compose.yml_ pliku poniżej.
+Plik YAML definiuje wszystkie usługi, które mają zostać wdrożone. Te usługi korzystają `DockerFile` z lub istniejący obraz kontenera. W takim przypadku będziemy używać dwóch obrazów w wersji zapoznawczej. Skopiuj i wklej następujący plik YAML i Zapisz go jako Docker *-redagowanie. YAML*. Podaj odpowiednie wartości **apikey**, rozliczeń i **wartości endpointuri** w pliku.
 
 ```yaml
 version: '3.7'
@@ -61,10 +61,10 @@ services:
        FormRecognizer__ComputerVisionEndpointUri: # < Your form recognizer URI >
     volumes:
        - type: bind
-         source: e:\publicpreview\output
+         source: E:\publicpreview\output
          target: /output
        - type: bind
-         source: e:\publicpreview\input
+         source: E:\publicpreview\input
          target: /input
     ports:
       - "5010:5000"
@@ -80,22 +80,22 @@ services:
 ```
 
 > [!IMPORTANT]
-> Tworzenie katalogów na komputerze hosta, które są określone w obszarze `volumes` węzła. Jest to wymagane, ponieważ katalogi muszą istnieć przed podjęciem próby zainstalowanie obrazu z powiązaniami woluminu.
+> Utwórz katalogi na komputerze-hoście, które są określone w węźle **woluminy** . Takie podejście jest wymagane, ponieważ katalogi muszą istnieć przed podjęciem próby zainstalowania obrazu przy użyciu powiązań woluminu.
 
-## <a name="start-the-configured-docker-compose-services"></a>Start skonfigurowanego docker compose usług
+## <a name="start-the-configured-docker-compose-services"></a>Uruchom skonfigurowane usługi Docker Compose
 
-Narzędzia docker compose plików umożliwia zarządzanie wszystkich zdefiniowanych usługi Cykl wsparcia; Uruchamianie/zatrzymywanie i ponowne tworzenie usług, wyświetlanie stanu usługi i przesyłanie strumieniowe dzienników. Otwórz interfejs wiersza polecenia z katalogu projektu (gdzie *docker compose.yaml* znajduje się plik).
+Plik Docker Compose umożliwia zarządzanie wszystkimi etapami w cyklu życia zdefiniowanej usługi: uruchamianie, zatrzymywanie i ponowne kompilowanie usług; Wyświetlanie stanu usługi; i przesyłania strumieniowego dzienników. Otwórz interfejs wiersza polecenia z katalogu projektu (w którym znajduje się plik Docker-redagowanie. YAML).
 
 > [!NOTE]
-> Aby uniknąć błędów, upewnij się, komputer hosta poprawnie współużytkuje dysków twardych **aparat platformy Docker**. Na przykład jeśli *e:\publicpreview* jest używany jako katalog w *docker compose.yaml* udostępnianie *dysku E* za pomocą platformy docker.
+> Aby uniknąć błędów, należy się upewnić, że maszyna hosta prawidłowo współużytkuje dyski z aparatem platformy Docker. Na przykład jeśli E:\publicpreview jest używany jako katalog w pliku Docker-redagowanie. YAML, Udostępnij dysk E przy użyciu platformy Docker.
 
-Przy użyciu interfejsu wiersza polecenia, wykonaj następujące polecenie, aby uruchomić (lub ponownego uruchomienia) wszystkie usługi, które są zdefiniowane w *docker compose.yaml*:
+W interfejsie wiersza polecenia wykonaj następujące polecenie, aby uruchomić (lub ponownie uruchomić) wszystkie usługi zdefiniowane w pliku Docker-Zredaguj. YAML:
 
 ```console
 docker-compose up
 ```
 
-Czas pierwszego wykonania `docker-compose up` polecenia w tej konfiguracji **Docker** każda będzie ściągać obrazy skonfigurowane w `services` węzła — pobieranie/instalowanie ich:
+Pierwszy czas Docker wykonuje polecenie **Docker-Zredaguj** , korzystając z tej konfiguracji, pobierając obrazy skonfigurowane w węźle **usługi** , a następnie pobiera i instaluje je:
 
 ```console
 Pulling forms (containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:)...
@@ -126,7 +126,7 @@ c56511552241: Waiting
 e91d2aa0f1ad: Downloading [==============================================>    ]  162.2MB/176.1MB
 ```
 
-Obrazy są pobierane, a następnie są uruchomione usługi obrazu.
+Po pobraniu obrazów usługi Image Services są uruchamiane:
 
 ```console
 Starting docker_ocr_1   ... done
@@ -158,11 +158,11 @@ ocr_1    | Now listening on: http://0.0.0.0:5000
 ocr_1    | Application started. Press Ctrl+C to shut down.
 ```
 
-## <a name="verify-the-service-availability"></a>Sprawdź dostępność usługi
+## <a name="verify-the-service-availability"></a>Sprawdzanie dostępności usługi
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-Poniżej przedstawiono przykładowe dane wyjściowe:
+Oto przykładowe dane wyjściowe:
 
 ```
 IMAGE ID            REPOSITORY                                                                 TAG
@@ -170,19 +170,19 @@ IMAGE ID            REPOSITORY                                                  
 4be104c126c5        containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text    latest
 ```
 
-### <a name="test-the-recognize-text-container"></a>Kontener tekstu rozpoznawaj testu
+### <a name="test-the-recognize-text-container"></a>Testowanie kontenera Rozpoznawanie tekstu
 
-Otwórz przeglądarkę na maszynie hosta, a następnie przejdź do `localhost` z określonego portu z *docker compose.yaml*, na przykład `http://localhost:5021/swagger/index.html`. Spróbuj go funkcji można użyć interfejsu API do endpoint tekstu rozpoznawaj testowania.
+Otwórz przeglądarkę na komputerze hosta i przejdź do **hosta localhost** przy użyciu określonego portu z pliku Docker-Zredaguj. YAML, takiego jak http://localhost:5021/swagger/index.html. Aby przetestować punkt końcowy Rozpoznawanie tekstu, można użyć funkcji "Wypróbuj" w interfejsie API.
 
-![Rozpoznawanie tekstu struktury Swagger](media/recognize-text-swagger-page.png)
+![Kontener Rozpoznawanie tekstu](media/recognize-text-swagger-page.png)
 
-### <a name="test-the-form-recognizer-container"></a>Formularz kontener rozpoznawania testu
+### <a name="test-the-form-recognizer-container"></a>Testowanie kontenera aparatu rozpoznawania formularzy
 
-Otwórz przeglądarkę na maszynie hosta, a następnie przejdź do `localhost` z określonego portu z *docker compose.yaml*, na przykład `http://localhost:5010/swagger/index.html`. Spróbuj go funkcji można użyć interfejsu API, aby przetestować punkt końcowy rozpoznawania formularza.
+Otwórz przeglądarkę na komputerze hosta i przejdź do **hosta localhost** przy użyciu określonego portu z pliku Docker-Zredaguj. YAML, takiego jak http://localhost:5010/swagger/index.html. Aby przetestować punkt końcowy aparatu rozpoznawania formularzy, można użyć funkcji "Wypróbuj ją" w interfejsie API.
 
-![Formularz rozpoznawania Swagger](media/form-recognizer-swagger-page.png)
+![Kontener aparatu rozpoznawania formularzy](media/form-recognizer-swagger-page.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Kontenery usługi cognitive Services](../cognitive-services-container-support.md)
+> [Kontenery Cognitive Services](../cognitive-services-container-support.md)

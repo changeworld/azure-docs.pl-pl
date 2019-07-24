@@ -1,6 +1,6 @@
 ---
-title: Jak pracować z wyników wyszukiwania — usługa Azure Search
-description: Struktury i sortowanie wyników wyszukiwania, Pobierz liczbę dokumentów i Dodaj nawigowania po zawartości do wyników wyszukiwania w usłudze Azure Search.
+title: Jak korzystać z wyników wyszukiwania — Azure Search
+description: Tworzenie struktury i sortowanie wyników wyszukiwania, pobieranie liczby dokumentów i Dodawanie nawigacji zawartości do wyników wyszukiwania w Azure Search.
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -10,106 +10,106 @@ ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 73f0dc98d7d2c3e7aa77f6414cbd58e58599eae7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bb86a75be464cb78a16170626bc96778d43bb8b6
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068827"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67974617"
 ---
-# <a name="how-to-work-with-search-results-in-azure-search"></a>Jak pracować z usługą wyszukiwania wyników w usłudze Azure Search
-Ten artykuł zawiera wskazówki dotyczące implementowania standardowe elementy strony wyników wyszukiwania, takie jak całkowitej liczby, pobierania dokumentu, porządek sortowania i nawigacji. Określono opcje związanych ze stronami, które przyczyniają się do danych lub informacji do wyników wyszukiwania za pomocą [wyszukiwania dokumentów](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) żądań wysyłanych do usługi Azure Search. 
+# <a name="how-to-work-with-search-results-in-azure-search"></a>Jak korzystać z wyników wyszukiwania w Azure Search
+Ten artykuł zawiera wskazówki dotyczące implementowania standardowych elementów strony wyników wyszukiwania, takich jak łączna liczba, pobieranie dokumentów, kolejność sortowania i nawigacja. Opcje dotyczące strony, które tworzą dane lub informacje w wynikach wyszukiwania, są określane za pomocą żądań przeszukiwania [dokumentów](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) wysyłanych do usługi Azure Search. 
 
-W interfejsie API REST żądania obejmują polecenie GET, parametry zapytania, które informują usługę, co jest wymagana i ścieżki oraz jak sformułować odpowiedzi. W zestawie SDK platformy .NET jest równoważnego API [klasy DocumentSearchResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1).
+W interfejsie API REST żądania obejmują pobieranie parametrów poleceń, ścieżek i zapytań, które informują o tym, co jest wymagane, i jak sformułować odpowiedź. W zestawie SDK platformy .NET równoważny interfejs API jest [klasą DocumentSearchResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1).
 
-Kilka przykładów kodu obejmują interfejs frontonu sieci web, który można znaleźć tutaj: [Aplikacja demonstracyjna, z nowego Jorku zadania](https://azjobsdemo.azurewebsites.net/) i [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
+Kilka przykładów kodu zawiera interfejs frontonu sieci Web, który można znaleźć tutaj: Aplikacje demonstracyjne i [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)w [Nowym Jorku](https://azjobsdemo.azurewebsites.net/) .
 
 > [!NOTE]
-> Prawidłowemu żądaniu obejmuje pewną liczbę elementów, takich jak adres URL usługi i ścieżkę, czasownik HTTP `api-version`i tak dalej. Celu skrócenia programu firma Microsoft spacje przykłady, aby wyróżnić składnię która jest odpowiednia do dzielenia na strony. Aby uzyskać więcej informacji na temat składni żądania zobacz [interfejsu REST usługi Search Azure](https://docs.microsoft.com/rest/api/searchservice).
+> Prawidłowe żądanie zawiera wiele elementów, takich jak adres URL usługi i ścieżka, czasownik `api-version`http itd. W przypadku zwięzłości zostały przycięte przykłady w celu wyróżnienia tylko składni, która jest istotna dla dzielenia na strony. Aby uzyskać więcej informacji na temat składni żądania, zobacz [Azure Search REST usługi](https://docs.microsoft.com/rest/api/searchservice).
 >
 
-## <a name="total-hits-and-page-counts"></a>Łączna liczba trafień i liczby stron
+## <a name="total-hits-and-page-counts"></a>Łączna liczba trafień i liczb stron
 
-Wyświetlanie całkowita liczba wyników zwróconych w wyniku zapytania, a następnie zwracanie tych wyników, na mniejsze fragmenty jest niezbędne do praktycznie wszystkich stron wyszukiwania.
+Pokazywanie łącznej liczby wyników zwróconych z zapytania, a następnie zwrócenie tych wyników w mniejszych fragmentach, ma podstawowe znaczenie dla praktycznie wszystkich stron wyszukiwania.
 
 ![][1]
 
-W usłudze Azure Search, możesz użyć `$count`, `$top`, i `$skip` parametry, aby zwracać następujące wartości. W poniższym przykładzie przedstawiono przykładowe żądanie dla danych całkowitych trafienia względem indeksu o nazwie "-wykaz online", jest zwracana jako `@odata.count`:
+W Azure Search Użyj `$count`parametrów, `$top`i `$skip` , aby zwrócić te wartości. Poniższy przykład przedstawia przykładowe żądanie dla łącznej liczby trafień w indeksie o nazwie "online-Catalog", `@odata.count`zwracane jako:
 
     GET /indexes/online-catalog/docs?$count=true
 
-Możesz pobierać dokumenty w grupach, 15, a także pokazać łączna liczba trafień, zaczynając od pierwszej strony:
+Pobierz dokumenty z grup 15, a także Pokaż łączne trafienia, zaczynając od pierwszej strony:
 
-    GET /indexes/online-catalog/docs?search=*$top=15&$skip=0&$count=true
+    GET /indexes/online-catalog/docs?search=*&$top=15&$skip=0&$count=true
 
-Podział na strony wyników wymaga zarówno `$top` i `$skip`, gdzie `$top` Określa, ile elementów do zwrócenia w partii i `$skip` Określa, ile elementów do pominięcia. W poniższym przykładzie strona pokazuje elementy następne 15, każdy wskazywanym przez przyrostowe przechodzi w `$skip` parametru.
+Wyniki paginating wymagają zarówno `$top` , `$skip`jak i `$top` , gdzie określa liczbę elementów do zwrócenia w partii i `$skip` określa liczbę elementów do pominięcia. W poniższym przykładzie każda strona pokazuje następne 15 elementów, wskazywanych przez przyrostowe uskoki w `$skip` parametrze.
 
-    GET /indexes/online-catalog/docs?search=*$top=15&$skip=0&$count=true
+    GET /indexes/online-catalog/docs?search=*&$top=15&$skip=0&$count=true
 
-    GET /indexes/online-catalog/docs?search=*$top=15&$skip=15&$count=true
+    GET /indexes/online-catalog/docs?search=*&$top=15&$skip=15&$count=true
 
-    GET /indexes/online-catalog/docs?search=*$top=15&$skip=30&$count=true
+    GET /indexes/online-catalog/docs?search=*&$top=15&$skip=30&$count=true
 
 ## <a name="layout"></a>Układ
 
-Na stronie wyników wyszukiwania możesz chcieć wyświetlić obraz miniatury, podzestaw pól i link do strony pełnej wersji produktu.
+Na stronie Wyniki wyszukiwania możesz chcieć wyświetlić obraz miniatury, podzestaw pól i link do strony kompletnego produktu.
 
  ![][2]
 
-W usłudze Azure Search, należy użyć `$select` i [żądania interfejsu API wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/search-documents) do wdrożenia tego środowiska.
+W Azure Search można użyć `$select` [żądania interfejsu API wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/search-documents) i zaimplementowania tego środowiska.
 
-Aby zwrócić podzestaw pól fragmentacji układu:
+Aby zwrócić podzestaw pól dla układu wieloukładowego:
 
     GET /indexes/online-catalog/docs?search=*&$select=productName,imageFile,description,price,rating
 
-Obrazy i pliki multimedialne nie są bezpośrednio można wyszukiwać i powinny być przechowywane w innej platformie magazynu, takich jak usługi Azure Blob storage, aby zmniejszyć koszty. Indeks i dokumenty zdefiniuj pole, które przechowuje adres URL zawartości zewnętrznej. Można następnie użyć pola jako odwołanie do obrazu. Adres URL obrazu, należy w dokumencie.
+Obrazy i pliki multimedialne nie są bezpośrednio przeszukiwane i powinny być przechowywane na innej platformie magazynu, takiej jak usługa Azure Blob Storage, aby zmniejszyć koszty. W indeksie i dokumentach Zdefiniuj pole przechowujące adres URL zawartości zewnętrznej. Można następnie użyć pola jako odwołania do obrazu. Adres URL obrazu powinien znajdować się w dokumencie.
 
-Do pobrania na stronie opisu produktu **onClick** zdarzenia, użyj [wyszukiwania dokumentu](https://docs.microsoft.com/rest/api/searchservice/Lookup-Document) do przekazania w kluczu dokumentu do pobrania. Typ danych klucza jest `Edm.String`. W tym przykładzie jest *246810*.
+Aby pobrać stronę opisu produktu dla zdarzenia **onkliknięcia** , użyj [dokumentu wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/Lookup-Document) do przekazania klucza dokumentu do pobrania. Typem danych klucza jest `Edm.String`. W tym przykładzie jest to *246810*.
 
     GET /indexes/online-catalog/docs/246810
 
-## <a name="sort-by-relevance-rating-or-price"></a>Sortuj według istotności, ocena ani ceny
+## <a name="sort-by-relevance-rating-or-price"></a>Sortuj według istotności, klasyfikacji lub ceny
 
-Sortuj porządkuje często domyślnie istotności, ale często jest utworzenie alternatywnych sortowania zamówień łatwo dostępne, dzięki czemu klienci mogą szybko zamieniać istniejące wyniki w kolejności innej rangi.
+Kolejność sortowania jest często określana jako istotna, ale jest powszechna możliwość zapewnienia, że alternatywne zamówienia sortowania są łatwo dostępne, dzięki czemu klienci mogą szybko ponownie wylosować istniejące wyniki w innym porządku rangi.
 
  ![][3]
 
-W usłudze Azure Search sortowanie opiera się na `$orderby` wyrażenia dla wszystkich pól, które są indeksowane jako `"Sortable": true.` `$orderby` klauzula jest wyrażenia OData. Aby uzyskać informacje dotyczące składni, zobacz [składnia wyrażenia OData, filtry i klauzule w klauzuli order by](query-odata-filter-orderby-syntax.md).
+W Azure Search sortowanie jest oparte na `$orderby` wyrażeniu, dla wszystkich pól, które są indeksowane `$orderby` jako `"Sortable": true.` klauzula jest wyrażeniem OData. Aby uzyskać informacje na temat składni, zobacz [składnia wyrażenia OData dla filtrów i klauzul ORDER by](query-odata-filter-orderby-syntax.md).
 
-Wg istotności jest zdecydowanie skojarzony z profile oceniania. Umożliwia domyślne oceniania opiera się na Analiza tekstu i statystyki rank kolejności wszystkie wyniki z wyższym wyniki przejściem do dokumentów za pomocą więcej lub silniejsze dopasowania terminu wyszukiwania.
+Istotność jest silnie skojarzona z profilami oceniania. Możesz użyć domyślnej oceny, która opiera się na analizie tekstu i statystyce do klasyfikowania wszystkich wyników, z wyższymi wynikami do dokumentów o większej lub silniejszym dopasowań w wyszukiwanym terminie.
 
-Kolejność sortowania alternatywne są zwykle skojarzone z **onClick** zdarzenia, które wywołanie zwrotne metody, która tworzy kolejność sortowania. Na przykład biorąc pod uwagę ten element na stronie:
+Alternatywne zamówienia sortowania są zwykle skojarzone ze  zdarzeniami onkliknięcia, które wywołują z powrotem do metody, która kompiluje porządek sortowania. Na przykład, uwzględniając ten element strony:
 
  ![][4]
 
-Należy utworzyć metodę, która akceptuje opcję sortowania jako dane wejściowe i zwraca uporządkowaną listę kryteriów skojarzone z tej opcji.
+Utworzysz metodę, która akceptuje wybraną opcję sortowania jako dane wejściowe i zwraca listę uporządkowaną dla kryteriów skojarzonych z tą opcją.
 
  ![][5]
 
 > [!NOTE]
-> Podczas oceniania domyślny jest wystarczające w wielu scenariuszach, firma Microsoft zaleca, zamiast tego tworzony istotności na niestandardowy profil oceniania. Niestandardowy profil oceniania umożliwia elementów zwiększenie wydajności, które są bardziej korzystne dla Twojej firmy. Zobacz [dodać profile oceniania](index-add-scoring-profiles.md) Aby uzyskać więcej informacji.
+> Chociaż domyślne ocenianie jest wystarczające dla wielu scenariuszy, zalecamy oparcie w niestandardowym profilu oceniania. Niestandardowy profil oceniania umożliwia podniesienie poziomu elementów, które są bardziej korzystne dla Twojej firmy. Aby uzyskać więcej informacji, zobacz [Dodawanie profilów oceniania](index-add-scoring-profiles.md) .
 >
 
 ## <a name="faceted-navigation"></a>Nawigacja aspektowa
 
-Nawigacja po wyszukiwaniu jest powszechne na stronę wyników, często znajduje się na stronie lub u góry strony. W usłudze Azure Search nawigacji aspektowej umożliwia wyszukiwanie kierunkowane samodzielnie przez użytkowników, oparte na wstępnie zdefiniowanych filtrów. Zobacz [nawigację Aspektową w usłudze Azure Search](search-faceted-navigation.md) Aby uzyskać szczegółowe informacje.
+Nawigacja wyszukiwania jest wspólna na stronie wyników, często znajdującej się na stronie lub w górnej części strony. W Azure Search Nawigacja aspektowa udostępnia funkcję wyszukiwania z własnym przekierowaniem na podstawie wstępnie zdefiniowanych filtrów. Aby uzyskać szczegółowe informacje, zobacz [nawigację aspektową w Azure Search](search-faceted-navigation.md) .
 
 ## <a name="filters-at-the-page-level"></a>Filtry na poziomie strony
 
-Jeśli projektowanego rozwiązania zawiera strony wyszukiwania dedykowane dla określonych typów zawartości (na przykład aplikacja handlu detalicznego w trybie online, która ma działów, wyświetlonym u góry strony), można wstawić [wyrażenie filtru](search-filters.md) obok **onClick** zdarzenie, aby otworzyć stronę w stanie wstępnie filtrowanego.
+Jeśli projekt rozwiązania zawiera dedykowane strony wyszukiwania dla określonych typów zawartości (na przykład aplikacji detalicznej online zawierającej działy w górnej części strony), można wstawić [wyrażenie filtru](search-filters.md) obok zdarzenia onkliknięcia do  Otwórz stronę w stanie sprzed przefiltrowania.
 
-Możesz wysłać z lub bez wyrażenia filtru. Na przykład następujące żądanie będzie filtru marką zwracanie tylko tych dokumentów, które odpowiadają go.
+Filtr można wysłać z wyrażeniem wyszukiwania lub bez niego. Na przykład następujące żądanie przefiltruje nazwę marki, zwracając tylko te dokumenty, które pasują do niego.
 
     GET /indexes/online-catalog/docs?$filter=brandname eq 'Microsoft' and category eq 'Games'
 
-Zobacz [wyszukiwania dokumentów (Azure Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) Aby uzyskać więcej informacji na temat `$filter` wyrażenia.
+Aby uzyskać więcej informacji na temat `$filter` wyrażeń, zobacz [dokumenty wyszukiwania (Azure Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) .
 
 ## <a name="see-also"></a>Zobacz też
 
 - [Interfejs API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice)
 - [Operacje indeksowania](https://docs.microsoft.com/rest/api/searchservice/Index-operations)
-- [Operacje na dokumentach](https://docs.microsoft.com/rest/api/searchservice/Document-operations)
-- [Nawigacja aspektowa w usłudze Azure Search](search-faceted-navigation.md)
+- [Operacje dokumentu](https://docs.microsoft.com/rest/api/searchservice/Document-operations)
+- [Nawigacja aspektowa w Azure Search](search-faceted-navigation.md)
 
 <!--Image references-->
 [1]: ./media/search-pagination-page-layout/Pages-1-Viewing1ofNResults.PNG

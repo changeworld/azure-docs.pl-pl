@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Traffic Manager — metody routingu ruchu
-description: Ten artykuł ułatwia zrozumienie metod routingu ruchu innego, używane przez usługę Traffic Manager
+title: Azure Traffic Manager — metody routingu ruchu
+description: Te artykuły ułatwiają zrozumienie różnych metod routingu ruchu używanych przez Traffic Manager
 services: traffic-manager
 author: asudbring
 ms.service: traffic-manager
@@ -10,133 +10,155 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: allensu
-ms.openlocfilehash: 9068cb0dad742ac6e5eeae0b3a1b801d08d4734c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.openlocfilehash: dd4b9f88e61396003a209b1b8edabb8c1564c761
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070995"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320086"
 ---
 # <a name="traffic-manager-routing-methods"></a>Metody routingu w usłudze Traffic Manager
 
-Usługa Azure Traffic Manager obsługuje sześć metody routingu ruchu, aby określić, jak kierować ruchem sieciowym do różnych punktów końcowych usługi. Dla dowolnego profilu usługi Traffic Manager stosuje się metodę routingu ruchu, powiązany do każdego zapytania DNS, który odbierze. Metody routingu ruchu określa, w którym punktem końcowym jest zwracany w odpowiedzi DNS.
+Usługa Azure Traffic Manager obsługuje sześć metod routingu ruchu sieciowego w celu określenia sposobu kierowania ruchu w sieci do różnych punktów końcowych usługi. Dla dowolnego profilu Traffic Manager stosuje metodę routingu ruchu skojarzoną z nią do każdego odebranego zapytania DNS. Metoda routingu ruchu określa, który punkt końcowy jest zwracany w odpowiedzi DNS.
 
-Dostępne w usłudze Traffic Manager są następujące metody routingu ruchu:
+W Traffic Manager są dostępne następujące metody routingu ruchu:
 
-* **[Priorytet](#priority):** Wybierz **priorytet** Jeśli chcesz używać punktu końcowego usługi podstawowej dla całego ruchu i wykonywanie kopii zapasowych w przypadku podstawowej lub kopii zapasowej punkty końcowe są niedostępne.
-* **[Ważona średnia](#weighted):** Wybierz **ważona** Jeśli chcesz rozproszyć ruch między zestawem punktów końcowych, albo równomiernie lub według wagi, które można zdefiniować.
-* **[Wydajność](#performance):** Wybierz **wydajności** gdy mają punkty końcowe w różnych lokalizacjach geograficznych i chcesz, aby używać punktu końcowego "najbliższy" pod kątem najniższych opóźnieniem sieci użytkowników końcowych.
-* **[Geograficzne](#geographic):** Wybierz **Geographic** tak, aby użytkownicy są kierowane do określonych punktów końcowych (Azure zewnętrzne i zagnieżdżone) oparte na lokalizacji geograficznej, do której pochodzi swoje zapytanie DNS. Umożliwia to klientom usługi Traffic Manager umożliwia realizację scenariuszy, w których jest ważna, wiedząc, regionu geograficznego użytkownika i routing, ich oparta na. Przykłady obejmują zgodnych z zleceń niezależność danych, lokalizacja środowiska użytkownika & zawartości i pomiaru ruchu z różnych regionów.
-* **[Atrybut wielowartościowy elementu](#multivalue):** Wybierz **atrybut wielowartościowy elementu** dla profilów usługi Traffic Manager, które może mieć tylko adresy IPv4/IPv6 jako punkty końcowe. Po otrzymaniu kwerendy dla tego profilu, zwracane są wszystkie punkty końcowe w dobrej kondycji.
-* **[Podsieci](#subnet):** Wybierz **podsieci** metody routingu ruchu do mapowania zestawów zakresów adresów IP dla użytkowników końcowych do określonego punktu końcowego w profilu usługi Traffic Manager. Po odebraniu żądania punktu końcowego zwracane będą jeden mapowane dla tego żądania źródłowego adresu IP. 
+* **[Priorytet](#priority):** Wybierz **priorytet** , jeśli chcesz użyć podstawowego punktu końcowego usługi dla całego ruchu i podać kopie zapasowe w przypadku, gdy podstawowy lub punkt końcowy kopii zapasowej są niedostępne.
+* **[Ważone](#weighted):** Wybierz opcję **ważone** , gdy chcesz rozpowszechnić ruch w zestawie punktów końcowych, a nawet zgodnie z wagami definiowanymi przez użytkownika.
+* **[Wydajność](#performance):** Wybierz pozycję **wydajność** , jeśli masz punkty końcowe w różnych lokalizacjach geograficznych, i chcesz, aby użytkownicy końcowi korzystali z punktu końcowego "najbliższy" w warunkach najmniejszego opóźnienia sieci.
+* **[Geograficzne](#geographic):** Wybierz opcję **geograficzne** , aby użytkownicy mogli kierować do określonych punktów końcowych (Azure, External lub Nested) na podstawie lokalizacji geograficznej, z której pochodzą zapytanie DNS. Pozwala to Traffic Manager klientom na umożliwienie scenariuszy, w których wiadomo region geograficzny użytkownika i kierowanie ich na podstawie tego, co jest ważne. Przykładami mogą być wymagania dotyczące suwerenności danych, lokalizacji zawartości & środowiska użytkownika i mierzenia ruchu z różnych regionów.
+* **Z [wieloma wartościami](#multivalue):** Wybierz  pozycję wieloznaczny dla profilów Traffic Manager, które mogą mieć tylko adresy IPv4/IPv6 jako punkty końcowe. Po odebraniu zapytania dla tego profilu są zwracane wszystkie zdrowe punkty końcowe.
+* **[Podsieć](#subnet):** Wybierz pozycję ruch **podsieci** — Metoda routingu w celu mapowania zestawów zakresów adresów IP użytkowników końcowych na konkretny punkt końcowy w ramach profilu Traffic Manager. Po odebraniu żądania punkt końcowy zostanie przypisany do źródłowego adresu IP tego żądania. 
 
 
-Wszystkie profile usługi Traffic Manager obejmują monitorowanie kondycji punktu końcowego i punktu końcowego automatycznego trybu failover. Aby uzyskać więcej informacji, zobacz [monitorowanie punktu końcowego usługi Traffic Manager](traffic-manager-monitoring.md). Jeden profil usługi Traffic Manager można użyć tylko jedna metoda routingu ruchu. Metody routingu ruchu innego można wybrać dla swojego profilu w dowolnym momencie. Zmiany są stosowane w ciągu jednej minuty, a jest naliczany bez przestojów. Metody routingu ruchu mogą być połączone za pomocą zagnieżdżone profile usługi Traffic Manager. Zagnieżdżanie umożliwia zaawansowane i elastyczne konfiguracje routing ruchu procesów, które spełnienia wymagań większych i złożonych aplikacji. Aby uzyskać więcej informacji, zobacz [zagnieżdżone profile usługi Traffic Manager](traffic-manager-nested-profiles.md).
+Wszystkie profile Traffic Manager obejmują monitorowanie kondycji punktów końcowych i automatyczne przełączanie do trybu failover punktu końcowego. Aby uzyskać więcej informacji, zobacz [Traffic Manager monitorowania punktów końcowych](traffic-manager-monitoring.md). Pojedynczy profil Traffic Manager może używać tylko jednej metody routingu ruchu. W dowolnym momencie możesz wybrać inną metodę routingu ruchu dla profilu. Zmiany są stosowane w ciągu jednej minuty i nie są naliczane żadne przestoje. Metody routingu ruchu można łączyć za pomocą zagnieżdżonych profilów Traffic Manager. Zagnieżdżanie umożliwia zaawansowane i elastyczne konfiguracje routingu ruchu, które spełniają potrzeby większych, złożonych aplikacji. Aby uzyskać więcej informacji, zobacz [profile Traffic Manager zagnieżdżonych](traffic-manager-nested-profiles.md).
 
-## <a name = "priority"></a>Metody routingu ruchu na priorytecie
+## <a name = "priority"></a>Priorytetowy ruch-Metoda routingu
 
-Często organizacja chce zapewniają niezawodność swoich usług, wdrażając co najmniej jedna usługa tworzenia kopii zapasowych w przypadku, gdy ich podstawowa usługa ulegnie awarii. Metody routingu ruchu "Priority" umożliwia klientom platformy Azure można łatwo zaimplementować ten wzorzec pracy awaryjnej.
+Często organizacja chce zapewnić niezawodność swoich usług, wdrażając co najmniej jedną usługę tworzenia kopii zapasowych na wypadek awarii usługi podstawowej. Metoda routingu ruchu "Priority" pozwala klientom platformy Azure łatwo zaimplementować ten wzorzec trybu failover.
 
-![Usługa Azure Traffic Manager "Priority" metody routingu ruchu](media/traffic-manager-routing-methods/priority.png)
+![Usługa Azure Traffic Manager "Priority" — Metoda routingu](media/traffic-manager-routing-methods/priority.png)
 
-Profil usługi Traffic Manager zawiera priorytetową listą punktów końcowych usługi. Domyślnie usługa Traffic Manager wysyła cały ruch do podstawowego punktu końcowego (najwyższy priorytet). Jeśli podstawowy punkt końcowy jest niedostępny, usługa Traffic Manager kieruje ruchem do drugiego punktu końcowego. Jeśli zarówno podstawowe i pomocnicze punktów końcowych, które nie są dostępne, ruch jest przesyłany do innego i tak dalej. Dostępność punktu końcowego jest oparta na skonfigurowany stan (włączone lub wyłączone) i monitorowania ciągłego punktu końcowego.
+Profil Traffic Manager zawiera listę punktów końcowych usługi z priorytetem. Domyślnie Traffic Manager wysyła cały ruch do podstawowego punktu końcowego (najwyższy priorytet). Jeśli podstawowy punkt końcowy jest niedostępny, Traffic Manager kieruje ruch do drugiego punktu końcowego. Jeśli zarówno podstawowy, jak i pomocniczy punkt końcowy są niedostępne, ruch przechodzi do trzeciego i tak dalej. Dostępność punktu końcowego jest oparta na skonfigurowanym stanie (włączonym lub wyłączonym) i trwającym monitorowaniu punktów końcowych.
 
 ### <a name="configuring-endpoints"></a>Konfigurowanie punktów końcowych
 
-Za pomocą usługi Azure Resource Manager, możesz skonfigurować priorytet punktu końcowego jawnie przy użyciu właściwości "priority" dla każdego punktu końcowego. Ta właściwość jest wartością z zakresu od 1 do 1000. Niższe wartości reprezentują wyższy priorytet. Punkty końcowe nie mogą mieć wartości priorytetu. Ustawienie właściwości jest opcjonalne. Gdy argument jest pominięty, jest używany domyślny priorytet w kolejności punktu końcowego.
+Za pomocą Azure Resource Manager można jawnie skonfigurować priorytet punktu końcowego przy użyciu właściwości "Priority" dla każdego punktu końcowego. Ta właściwość jest wartością z przedziału od 1 do 1000. Niższe wartości reprezentują wyższy priorytet. Punkty końcowe nie mogą udostępniać wartości priorytetu. Ustawienie właściwości jest opcjonalne. W przypadku pominięcia jest używany domyślny priorytet oparty na kolejności punktów końcowych.
 
-## <a name = "weighted"></a>Metody routingu ruchu ważonego
-"Ważona" metody routingu ruchu pozwala równomierne rozłożenie ruchu sieciowego lub użyć wstępnie zdefiniowanych wagi.
+## <a name = "weighted"></a>Ważony ruch sieciowy — Metoda routingu
+"Ważona" Metoda routingu ruchu umożliwia równomierne dystrybuowanie ruchu lub użycie wstępnie zdefiniowanej wagi.
 
-![Usługa Azure Traffic Manager "Ważona" metody rozsyłania ruchu](media/traffic-manager-routing-methods/weighted.png)
+![Platforma Azure Traffic Manager "ważona" — Metoda routingu ruchu](media/traffic-manager-routing-methods/weighted.png)
 
-W ważona metody routingu ruchu należy przypisać wagi do każdego punktu końcowego w konfiguracji profilu usługi Traffic Manager. Waga jest liczbą całkowitą z zakresu od 1 do 1000. Ten parametr jest opcjonalny. W przypadku pominięcia Menedżery Traffic Manager korzysta z domyślnego wagę "1". Wyższa waga, tym wyższy priorytet.
+W przypadku metody routingu ruchu ważonego należy przypisać wagę do każdego punktu końcowego w konfiguracji profilu Traffic Manager. Waga jest liczbą całkowitą z zakresu od 1 do 1000. Ten parametr jest opcjonalny. W przypadku pominięcia menedżerowie ruchu używają domyślnej wagi "1". Im wyższa waga, tym wyższy priorytet.
 
-Dla każdego odebrane zapytania DNS Traffic Manager losowo wybiera dostępnego punktu końcowego. Prawdopodobieństwo, że jest wybranie punktu końcowego jest oparty na przypisane wszystkie dostępne punkty końcowe wagi. Przy użyciu tymi samymi wagami dla wszystkich punktów końcowych skutkuje Dystrybucja ruchu nawet. Za pomocą wag wyższe lub niższe w określonych punktach końcowych powoduje, że te punkty końcowe częściej lub rzadziej zwracana w odpowiedzi DNS.
+Dla każdego odebranego zapytania DNS Traffic Manager losowo wybiera dostępny punkt końcowy. Prawdopodobieństwo wyboru punktu końcowego zależy od wag przypisanych do wszystkich dostępnych punktów końcowych. Użycie tej samej wagi we wszystkich punktach końcowych skutkuje równym rozkładem ruchu. Użycie wyższych lub niższych wag w określonych punktach końcowych powoduje, że te punkty końcowe są zwracane częściej lub rzadziej w odpowiedziach DNS.
 
-Metoda ważona zapewnia pewne przydatne w scenariuszach:
+Metoda ważona umożliwia kilka przydatnych scenariuszy:
 
-* Uaktualnienie stopniowe aplikacji: Przydziel procent ruchu sieciowego, aby kierować do nowego punktu końcowego, a następnie stopniowo zwiększać ruchu, wraz z upływem czasu do 100%.
-* Migracja aplikacji na platformie Azure: Utwórz profil przy użyciu zarówno dla platformy Azure, jak i zewnętrznych punktów końcowych. Dostosuj wagę punktów końcowych preferowanie nowe punkty końcowe.
-* Dużego ruchu w chmurze za dodatkową pojemność: Szybko rozbudować wdrożenia lokalnego do chmury, ustawiając dla niego za profilu usługi Traffic Manager. Jeśli potrzebujesz dodatkowej pojemności w chmurze, należy dodać lub włączyć dodatkowe punkty końcowe i określić, jaka część ruchu jest przesyłany do każdego punktu końcowego.
+* Stopniowe Uaktualnianie aplikacji: Przydziel procent ruchu, który ma być kierowany do nowego punktu końcowego, i stopniowo Zwiększ ruch w przedziale czasu do 100%.
+* Migracja aplikacji na platformę Azure: Utwórz profil z platformą Azure i zewnętrznymi punktami końcowymi. Dostosuj wagę punktów końcowych, aby preferować nowe punkty końcowe.
+* Przenoszenie w chmurze w celu uzyskania dodatkowej pojemności: Szybko Rozszerz wdrożenie lokalne do chmury, umieszczając je za profilem Traffic Manager. Jeśli potrzebujesz dodatkowej pojemności w chmurze, możesz dodać lub włączyć więcej punktów końcowych i określić, jaka część ruchu przechodzi do każdego punktu końcowego.
 
-Oprócz przy użyciu witryny Azure portal, można skonfigurować przy użyciu programu Azure PowerShell, interfejsu wiersza polecenia i interfejsów API REST wagi.
+Oprócz korzystania z Azure Portal można skonfigurować wagi przy użyciu Azure PowerShell, interfejsu wiersza polecenia i interfejsów API REST.
 
-Jest ważne dowiedzieć się, że odpowiedzi DNS są buforowane przez klientów i przez cykliczne serwery DNS, używanych przez klientów do rozpoznawania nazw DNS. Tej buforowanie może mieć wpływ na dystrybucje ważona ruchu. W przypadku dużej liczby klientów i cykliczne serwery DNS Dystrybucja ruchu działa zgodnie z oczekiwaniami. Jednak gdy liczba klientów lub cykliczne serwery DNS jest mała, buforowanie może znacznie pochylanie Dystrybucja ruchu.
+Ważne jest, aby zrozumieć, że odpowiedzi DNS są buforowane przez klientów i cykliczne serwery DNS używane przez klientów do rozpoznawania nazw DNS. Buforowanie może mieć wpływ na ważone rozkłady ruchu. Gdy liczba klientów i cykliczne serwery DNS są duże, dystrybucja ruchu działa zgodnie z oczekiwaniami. Jeśli jednak liczba klientów lub rekursywny serwer DNS jest mała, buforowanie może znacząco pochylić rozkład ruchu.
 
 Typowe przypadki użycia obejmują:
 
-* Środowisk programowania i testowania
-* Komunikacja aplikacji do aplikacji
-* Aplikacje mające celu wąskie użytkownika-podstawową, które współdzielą wspólna infrastruktura DNS rekursywnego (na przykład pracownicy firmy, łącząc się za pośrednictwem serwera proxy)
+* Środowiska deweloperskie i testowe
+* Komunikacja między aplikacjami
+* Aplikacje przeznaczone do użycia w wąskim znaczeniu użytkownika, które współużytkują wspólną infrastrukturę DNS rekursywnie (na przykład pracownicy firmy łączący się za pomocą serwera proxy)
 
-Efekty buforowania te DNS są wspólne dla wszystkich ruchu opartego na protokole DNS systemów routingu, nie tylko usługi Azure Traffic Manager. W niektórych przypadkach jawnie wyczyszczenie pamięci podręcznej DNS może dostarczyć obejście tego problemu. W innych przypadkach może być bardziej odpowiednie alternatywną metodę routingu ruchu.
+Te efekty buforowania DNS są wspólne dla wszystkich systemów routingu ruchu opartych na systemie DNS, a nie tylko na platformie Azure Traffic Manager. W niektórych przypadkach jawne czyszczenie pamięci podręcznej DNS może stanowić obejście problemu. W innych przypadkach alternatywna metoda routingu ruchu może być bardziej odpowiednia.
 
-## <a name = "performance"></a>Metody routingu ruchu wydajności
+## <a name = "performance"></a>Ruch wydajności — Metoda routingu
 
-Wdrażanie punktów końcowych w co najmniej dwóch lokalizacjach na całym świecie może zwiększyć szybkość reakcji wiele aplikacji routing ruchu do lokalizacji, która jest najbliżej, do Ciebie. Metody routingu ruchu "Wydajność" zapewnia tę funkcję.
+Wdrożenie punktów końcowych w co najmniej dwóch lokalizacjach na całym świecie może zwiększyć czas odpowiedzi wielu aplikacji przez kierowanie ruchu do lokalizacji najbliżej siebie. Ta funkcja zapewnia metodę routingu ruchu "wydajność".
 
-![Usługa Azure Traffic Manager "Wydajność" metody routingu ruchu](media/traffic-manager-routing-methods/performance.png)
+![Usługa Azure Traffic Manager "wydajność" — Metoda routingu](media/traffic-manager-routing-methods/performance.png)
 
-"Najbliższy" punkt końcowy nie jest koniecznie najbliższego mierzony geograficznej odległości. Zamiast tego metody routingu ruchu "Wydajność" Określa najbliższego punktu końcowego, mierząc opóźnienia sieci. Usługa Traffic Manager obsługuje Internet opóźnienie tabeli, aby śledzić czas obustronnej konwersji między zakresów adresów IP i każdego centrum danych platformy Azure.
+Punkt końcowy "najbliższy" nie musi być najbliższy, mierzony przez odległość geograficzną. Zamiast tego Metoda routingu ruchu "Performance" określa najbliższy punkt końcowy przez pomiar opóźnienia sieci. Traffic Manager utrzymuje tabelę opóźnienia internetowego do śledzenia czasu rundy między zakresami adresów IP a każdym centrum danych platformy Azure.
 
-Usługa Traffic Manager wyszukuje źródłowy adres IP przychodzące żądanie DNS w tabeli opóźnienie Internet. Usługa Traffic Manager następnie wybiera dostępnego punktu końcowego w centrum danych platformy Azure, które ma najniższe opóźnienie dla tego zakresu adresów IP i zwraca ten punkt końcowy w odpowiedzi DNS.
+Traffic Manager wyszukuje źródłowy adres IP przychodzącego żądania DNS w tabeli opóźnienia Internetu. Traffic Manager następnie wybiera dostępny punkt końcowy w centrum danych platformy Azure o najniższym opóźnieniu dla tego zakresu adresów IP i zwraca ten punkt końcowy w odpowiedzi DNS.
 
-Jak wyjaśniono w [jak działa usługa Traffic Manager](traffic-manager-how-it-works.md), usługa Traffic Manager nie otrzyma zapytania DNS bezpośrednio od klientów. Przeciwnie zapytania DNS pochodzą z rekursywnych usług DNS, klienci są skonfigurowane do używania. W związku z tym, adres IP używany do określenia punktu końcowego "najbliższy" nie jest adres IP klienta, ale jest to adres IP z rekursywnych usług DNS. W praktyce ten adres IP jest dobrym serwera proxy dla klienta.
+Zgodnie z opisem w temacie [jak działa Traffic Manager](traffic-manager-how-it-works.md), Traffic Manager nie odbiera zapytań DNS bezpośrednio od klientów. Zamiast tego zapytania DNS pochodzą z cyklicznej usługi DNS, z której korzystają klienci. W związku z tym adres IP używany do określenia punktu końcowego "najbliższy" nie jest adresem IP klienta, ale jest adresem IP cyklicznej usługi DNS. W tym przypadku ten adres IP jest dobrym serwerem proxy dla klienta.
 
 
-Usługa Traffic Manager regularnie aktualizuje tabeli opóźnienie Internet, aby uwzględnić zmiany w globalnych Internet i nowych regionów systemu Azure. Jednakże wydajność aplikacji zależy w czasie rzeczywistym wahania obciążenia w Internecie. Routing ruchu wydajności nie monitoruje obciążenia w punkcie końcowym danej usługi. Jednak jeśli punktu końcowego będą niedostępne, usługa Traffic Manager nie ma go w odpowiedzi na zapytania DNS.
+Traffic Manager regularnie aktualizuje tabelę opóźnienia Internetu w celu uwzględnienia zmian w globalnej sieci Internet i nowych regionach świadczenia usługi Azure. Jednak wydajność aplikacji różni się w zależności od zmian w czasie rzeczywistym w ramach obciążenia przez Internet. Ruch związany z wydajnością — Routing nie monitoruje obciążenia w danym punkcie końcowym usługi. Jeśli jednak punkt końcowy będzie niedostępny, Traffic Manager nie będzie uwzględniać go w odpowiedziach zapytań DNS.
 
 
 Informacje, które należy zwrócić uwagę:
 
-* Jeśli Twój profil zawiera wiele punktów końcowych w tym samym regionie platformy Azure, następnie usługi Traffic Manager rozkłada ruch równomiernie na dostępnych punktów końcowych w tym regionie. Jeśli wolisz dystrybucji różnego ruchu w obrębie regionu, możesz użyć [zagnieżdżone profile usługi Traffic Manager](traffic-manager-nested-profiles.md).
-* Wszystkich włączonych punktów końcowych w najbliższego regionu platformy Azure są ograniczone, usługa Traffic Manager przenosi ruchu do punktów końcowych w dalej najbliższego regionu platformy Azure. Aby zdefiniować sekwencję preferowanych trybu failover, należy użyć [zagnieżdżone profile usługi Traffic Manager](traffic-manager-nested-profiles.md).
-* Korzystając z metody routingu ruchu wydajności z zewnętrznych punktów końcowych lub zagnieżdżone punktów końcowych, należy określić lokalizację tych punktów końcowych. Wybierz region platformy Azure, która jest najbliżej danego wdrożenia. Te lokalizacje są obsługiwane przez tabelę opóźnienie Internet wartości.
-* Algorytmu, który wybiera punkt końcowy jest deterministyczna. Powtarzanych zapytań DNS z tego samego klienta są kierowane do tego samego punktu końcowego. Zazwyczaj używają różnych cykliczne serwery DNS podczas podróży. Klient może być przesłane do innego punktu końcowego. Routing może mieć wpływ również przez aktualizacje tabeli opóźnienie Internet. W związku z tym metody routingu ruchu wydajności nie gwarantuje, że klient jest zawsze kierowane do tego samego punktu końcowego.
-* Po zmianie tabeli opóźnienie Internetu, można zauważyć, że niektóre klienty są kierowane do innego punktu końcowego. Ta zmiana routingu jest bardziej precyzyjne operacje oparte na bieżących danych opóźnienia. Aktualizacje te są niezbędne do utrzymania dokładności routing ruchu wydajności, zgodnie z Internetu stale ewoluuje.
+* Jeśli Twój profil zawiera wiele punktów końcowych w tym samym regionie świadczenia usługi Azure, Traffic Manager dystrybuuje ruch równomiernie przez dostępne punkty końcowe w tym regionie. Jeśli wolisz inny rozkład ruchu w obrębie regionu, możesz użyć zagnieżdżonych [profilów Traffic Manager](traffic-manager-nested-profiles.md).
+* Jeśli wszystkie włączone punkty końcowe w najbliższym regionie platformy Azure mają obniżoną wydajność, Traffic Manager przenosi ruch do punktów końcowych w następnym najbliższym regionie świadczenia usługi Azure. Jeśli chcesz zdefiniować preferowaną sekwencję trybu failover, użyj [zagnieżdżonych profilów Traffic Manager](traffic-manager-nested-profiles.md).
+* W przypadku używania metody routingu ruchu o wydajności z zewnętrznymi punktami końcowymi lub zagnieżdżonych punktów końcowych należy określić lokalizację tych punktów końcowych. Wybierz region platformy Azure znajdujący się najbliżej wdrożenia. Te lokalizacje są wartościami obsługiwanymi przez tabelę opóźnienia Internetu.
+* Algorytm wybierający punkt końcowy jest deterministyczny. Powtarzające się zapytania DNS z tego samego klienta są kierowane do tego samego punktu końcowego. Zazwyczaj klienci korzystają z różnych rekursywnych serwerów DNS podczas podróży. Klient może być kierowany do innego punktu końcowego. W przypadku routingu mogą być również narażone aktualizacje tabeli opóźnienia Internetu. W związku z tym Metoda routingu ruchu o wydajności nie gwarantuje, że klient jest zawsze kierowany do tego samego punktu końcowego.
+* Po zmianie tabeli opóźnienia internetowego można zauważyć, że niektórzy klienci są kierowani do innego punktu końcowego. Ta zmiana routingu jest bardziej dokładna w oparciu o bieżące dane opóźnienia. Te aktualizacje są niezbędne do zachowania dokładności routingu ruchu sieciowego w miarę ciągłego rozwoju Internetu.
 
-## <a name = "geographic"></a>Metody geograficznego routingu ruchu
+## <a name = "geographic"></a>Ruch geograficzny — Metoda routingu
 
-Profile usługi Traffic Manager można skonfigurować do użycia metody routingu geograficznego, dzięki czemu użytkownicy są kierowane do określonych punktów końcowych (Azure, zewnętrzne i zagnieżdżone) oparte na lokalizacji geograficznej, do której pochodzi swoje zapytanie DNS. Umożliwia to klientom usługi Traffic Manager umożliwia realizację scenariuszy, w których jest ważna, wiedząc, regionu geograficznego użytkownika i routing, ich oparta na. Przykłady obejmują zgodnych z zleceń niezależność danych, lokalizacja środowiska użytkownika & zawartości i pomiaru ruchu z różnych regionów.
-Po skonfigurowaniu profilu geograficznego routingu każdy punkt końcowy skojarzony profil musi mieć zestaw regionów geograficznych, które do niej przypisany. Region geograficzny może znajdować się na następujących poziomach szczegółowości 
+Profile Traffic Manager można skonfigurować tak, aby korzystały z metody routingu geograficznego, dzięki czemu użytkownicy są kierowani do określonych punktów końcowych (platformy Azure, zewnętrznych lub zagnieżdżonych) w zależności od lokalizacji geograficznej, z której pochodzi kwerenda DNS. Pozwala to Traffic Manager klientom na umożliwienie scenariuszy, w których wiadomo region geograficzny użytkownika i kierowanie ich na podstawie tego, co jest ważne. Przykładami mogą być wymagania dotyczące suwerenności danych, lokalizacji zawartości & środowiska użytkownika i mierzenia ruchu z różnych regionów.
+Jeśli profil jest skonfigurowany pod kątem routingu geograficznego, każdy punkt końcowy skojarzony z tym profilem musi mieć przypisane do niego zestaw regionów geograficznych. Region geograficzny może mieć następujące poziomy szczegółowości 
 - World — dowolny region
-- Regionalne grupowanie — na przykład Afryki, Bliski Wschód, Australia/Pacyfik itp. 
+- Grupowanie regionalne — na przykład Afryka, Bliski Wschód, Australia/Pacyfik itp. 
 - Kraj/Region — na przykład Irlandia, Peru, SRA Hongkong itp. 
-- Stan/prowincję/Województwo — na przykład autostrady dla USA, Australia-Queensland, Alberta Kanada itp. (Uwaga: ten poziom szczegółowości jest obsługiwana tylko dla stanów / prowincji w Australii, Kanadzie i Stanach Zjednoczonych).
+- Województwo — na przykład USA-Kalifornia, Australia-Queensland, Kanada-Alberta itp. (Uwaga: ten poziom szczegółowości jest obsługiwany tylko w przypadku Stanów/prowincji w Australii, Kanadzie i USA).
 
-Po przypisaniu punktu końcowego regionu lub zestawie regionów wszystkie żądania z tych regionów kierowana tylko do określonego punktu końcowego. Usługi Traffic Manager używa adres IP źródła zapytania DNS, aby określić region, z którego użytkownik jest badanie od — zwykle jest to adres IP lokalnego rozpoznawania nazw DNS, wykonywania zapytań w imieniu użytkownika.  
+Po przypisaniu regionu lub zestawu regionów do punktu końcowego wszystkie żądania z tych regionów są kierowane tylko do tego punktu końcowego. Traffic Manager używa źródłowego adresu IP zapytania DNS w celu ustalenia regionu, z którego pochodzi użytkownik — zwykle jest to adres IP lokalnego programu rozpoznawania nazw DNS wykonującego zapytanie w imieniu użytkownika.  
 
-![Usługa Azure Traffic Manager "" routing ruchu metody geograficznego](./media/traffic-manager-routing-methods/geographic.png)
+![Azure Traffic Manager "geograficzny" — Metoda routingu](./media/traffic-manager-routing-methods/geographic.png)
 
-Usługa Traffic Manager odczytuje adres IP źródła zapytania DNS i decyduje, który region geograficzny, jest ona pochodzące z. Go następnie sprawdza, czy punkt końcowy, który ma ten region geograficzny do niej przyporządkowany. To wyszukiwanie rozpoczyna się od najniższego poziomu szczegółowości (stan/prowincję/Województwo gdzie jest obsługiwany, inne na poziomie Kraj/Region) i przechodzi do najwyższego poziomu, który **World**. Pierwsze dopasowanie znalezione za pomocą tego przechodzenie jest wyznaczony jako punkt końcowy do zwrócenia w odpowiedzi na zapytanie. Gdy zostanie zwrócona dopasowania z punktem końcowym typ zagnieżdżony punkt końcowy w ramach tego profilu podrzędnych, oparte na jego metody routingu. Poniższe punkty mają zastosowanie do tego zachowania:
+Traffic Manager odczytuje źródłowy adres IP zapytania DNS i decyduje, z którego regionu geograficznego pochodzi. Następnie sprawdza, czy istnieje punkt końcowy, do którego jest mapowany ten region geograficzny. Ta funkcja wyszukiwania zaczyna się na najniższym poziomie szczegółowości (stan/region, w którym jest obsługiwany, inne na poziomie kraju/regionu) i przechodzi do najwyższego poziomu, który jest **światem**. Pierwsze dopasowanie znalezione przy użyciu tego przechodzenia jest wyznaczane jako punkt końcowy do zwrócenia w odpowiedzi na zapytanie. W przypadku dopasowywania z typem zagnieżdżonym punkt końcowy w tym profilu podrzędnym jest zwracany na podstawie jego metody routingu. Następujące punkty mają zastosowanie do tego zachowania:
 
-- Region geograficzny można zamapować tylko jeden punkt końcowy w profilu usługi Traffic Manager w przypadku typu routingu geograficznego routingu. Dzięki temu routingu użytkowników jest deterministyczna, a klientów można włączyć scenariusze, które wymagają jednoznaczną granicach geograficznych.
-- Jeśli w regionie użytkownika jest mapowanie geograficzne w dwóch różnych punktów końcowych, Traffic Manager wybierze punkt końcowy z najniższy poziom szczegółowości i nie należy wziąć pod uwagę kierowania żądań z tego regionu do innego punktu końcowego. Na przykład należy wziąć pod uwagę typ profilu geograficznego routingu z dwoma punktami końcowymi - Punk końcowy 1 i Endpoint2. Punk końcowy 1 jest skonfigurowany do odbierania ruchu z Irlandii, a Endpoint2 jest skonfigurowany do odbierania ruchu z Europy. Jeśli żądanie pochodzi z Irlandii, zawsze jest kierowany do Punk końcowy 1.
-- Ponieważ regionu można zamapować tylko jeden punkt końcowy, usługa Traffic Manager zwraca niezależnie od tego, czy punkt końcowy jest w dobrej kondycji lub też nie.
+- Region geograficzny można zamapować tylko na jeden punkt końcowy w profilu Traffic Manager, gdy typem routingu jest Routing geograficzny. Dzięki temu Routing użytkowników jest deterministyczny, a klienci mogą włączać scenariusze, które wymagają niejednoznacznych granic geograficznych.
+- Jeśli region użytkownika znajduje się pod dwoma różnymi mapowaniami geograficznymi punktów końcowych, Traffic Manager wybiera punkt końcowy o najniższym poziomie szczegółowości i nie uwzględnia żądań routingu z tego regionu do innego punktu końcowego. Rozważmy na przykład profil typu routingu geograficznego z dwoma punktami końcowymi — Endpoint1 i Endpoint2. Endpoint1 jest skonfigurowany do odbierania ruchu z Irlandii, a Endpoint2 jest skonfigurowany do odbierania ruchu z Europy. Jeśli żądanie pochodzi z Irlandii, zawsze jest kierowane do Endpoint1.
+- Ponieważ region można zamapować tylko do jednego punktu końcowego, Traffic Manager zwraca go niezależnie od tego, czy punkt końcowy jest w dobrej kondycji.
 
     >[!IMPORTANT]
-    >Zdecydowanie zaleca się, że klienci korzystający z metody routingu geograficznego skojarzyć go z punktów końcowych typu zagnieżdżone, do których ma profile podrzędnych zawierające co najmniej dwa punkty końcowe w ramach każdej.
-- Jeśli zostanie znalezione dopasowanie punktu końcowego, a punkt końcowy w **zatrzymane** stanu usługi Traffic Manager zwraca odpowiedź NODATA. W tym przypadku nie dalszych wyszukiwań stają się wyżej w hierarchii z regionów geograficznych. To zachowanie ma również zastosowanie dla typów zagnieżdżonych punktu końcowego, gdy profil podrzędnych znajduje się w **zatrzymane** lub **wyłączone** stanu.
-- Jeśli punkt końcowy jest wyświetlany **wyłączone** stan, nie będą uwzględniane w regionie zgodny proces. To zachowanie ma również zastosowanie dla typów zagnieżdżonych punktu końcowego, gdy punkt końcowy jest **wyłączone** stanu.
-- Jeśli zapytania pochodzą regionie geograficznym, który nie jest przyporządkowany w tym profilu, usługa Traffic Manager zwraca odpowiedź NODATA. Dlatego zalecane jest, aby klienci używali geograficznego routingu z jednym punktem końcowym, najlepiej typu zagnieżdżone z co najmniej dwa punkty końcowe w ramach profilu podrzędnych, z regionem **World** do niej przypisany. Dzięki temu, czy adresy IP, które nie są mapowane do regionu są obsługiwane.
+    >Zdecydowanie zaleca się, aby klienci korzystający z metody routingu geograficznego skojarzyć ją z punktami końcowymi typu zagnieżdżonego, które mają profile podrzędne zawierające co najmniej dwa punkty końcowe w ramach każdego z nich.
+- Jeśli zostanie znaleziony odpowiednik punktu końcowego i ten punkt końcowy jest w stanie **zatrzymania** , Traffic Manager zwraca odpowiedź NoData. W takim przypadku żadne dalsze wyszukiwania nie są większe w hierarchii regionów geograficznych. To zachowanie jest również stosowane dla zagnieżdżonych typów punktów końcowych, gdy profil podrzędny jest w stanie **zatrzymania** lub **wyłączenia** .
+- Jeśli punkt końcowy wyświetla stan **wyłączony** , nie zostanie uwzględniony w procesie dopasowywania regionu. To zachowanie jest również stosowane dla zagnieżdżonych typów punktów końcowych, gdy punkt końcowy jest w stanie **wyłączenia** .
+- Jeśli zapytanie pochodzi z regionu geograficznego, który nie ma mapowania w tym profilu, Traffic Manager zwraca odpowiedź NoData. W związku z tym zdecydowanie zaleca się, aby klienci używali routingu geograficznego z jednym punktem końcowym, idealnie do typu zagnieżdżonego z co najmniej dwoma punktami końcowymi w profilu podrzędnym, z przypisanym do niego regionem. Zapewnia to również, że obsługiwane są wszystkie adresy IP, które nie są mapowane do regionu.
 
-Jak wyjaśniono w [jak działa usługa Traffic Manager](traffic-manager-how-it-works.md), usługa Traffic Manager nie otrzyma zapytania DNS bezpośrednio od klientów. Przeciwnie zapytania DNS pochodzą z rekursywnych usług DNS, klienci są skonfigurowane do używania. W związku z tym, adres IP używany do określenia region nie jest adres IP klienta, ale jest to adres IP z rekursywnych usług DNS. W praktyce ten adres IP jest dobrym serwera proxy dla klienta.
+Zgodnie z opisem w temacie [jak działa Traffic Manager](traffic-manager-how-it-works.md), Traffic Manager nie odbiera zapytań DNS bezpośrednio od klientów. Zamiast tego zapytania DNS pochodzą z cyklicznej usługi DNS, z której korzystają klienci. W związku z tym adres IP używany do określenia regionu nie jest adresem IP klienta, ale jest adresem IP cyklicznej usługi DNS. W tym przypadku ten adres IP jest dobrym serwerem proxy dla klienta.
 
-## <a name = "multivalue"></a>Metody routingu ruchu wielu wartości
-**Atrybut wielowartościowy elementu** metody routingu ruchu pozwala na pobieranie wielu punktów końcowych w dobrej kondycji w jednej odpowiedzi na kwerendę DNS. Dzięki temu obiekt wywołujący celu ponownych prób po stronie klienta przy użyciu innych punktów końcowych w przypadku punktu końcowego zwracane są nie odpowiada. Ten wzorzec może zwiększyć dostępność usług i zmniejszyć opóźnienia związanego z nowe zapytanie DNS, aby uzyskać punkt końcowy w dobrej kondycji. Metody routingu opartego na wielu wartości działa tylko w przypadku wszystkich punktów końcowych typu "Zewnętrzny" i są określone jako IPv4 lub IPv6 adresów. Po otrzymaniu kwerendy dla tego profilu, wszystkie punkty końcowe w dobrej kondycji są zwracane i podlegają one można skonfigurować maksymalną liczbę zwrotu.
+### <a name="faqs"></a>Często zadawane pytania
 
-## <a name = "subnet"></a>Metody routingu ruchu w podsieci
-**Podsieci** metody routingu ruchu pozwala na mapowanie zestawu zakresów adresów IP dla użytkownika końcowego do określonych punktów końcowych w profilu. Po tym, jeśli usługa Traffic Manager odbierze zapytanie DNS dla danego profilu go Sprawdź źródłowy adres IP tego żądania (w większości przypadków będzie wychodzący adres IP programu rozpoznawania nazw DNS używane przez obiekt wywołujący) określić, który punkt końcowy jest mapowana do i zwróci t punkt końcowy Hat w odpowiedzi na zapytanie. 
+* [Jakie są przypadki użycia, w których funkcja routingu geograficznego jest przydatna?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-geographic-routing-is-useful)
 
-Adres IP, które mają być mapowane do punktu końcowego można określić jako zakresy CIDR (np. 1.2.3.0/24) lub zakres adresów (np. 1.2.3.4-5.6.7.8). Zakresy adresów IP skojarzonych z punktem końcowym musi być unikatowa w ramach tego profilu, a nie pokrywają się z zbiór adresów IP z innym punktem końcowym w ten sam profil.
-Jeśli zdefiniujesz punkt końcowy z żaden zakres adresów, który działa jako rezerwowe i podejmij ruchu z wszelkie pozostałe podsieci. Jeśli nie ma rezerwowego punktu końcowego jest włączone, usługa Traffic Manager wysyła odpowiedź NODATA żadnych zakresów niezdefiniowane. W związku z tym zdecydowanie zalecane jest, należy albo zdefiniować rezerwowy punkt końcowy; w przeciwnym razie upewnij się, że wszystkie możliwe zakresy adresów IP są określone między punktami końcowymi usługi.
+* [Jak mogę zdecydować, czy należy użyć metody routingu wydajności czy metody routingu geograficznego?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method)
 
-Routing w podsieci, może służyć do różnych środowisko dla użytkowników łączących się z określonych przestrzeni adresów IP. Na przykład przy użyciu routingu podsieci, klient ułatwia wszystkich żądań z ich siedziby firmy, można kierować do innego punktu końcowego gdzie one może testować wewnętrzny tylko wersję aplikacji. Inny scenariusz polega na tym, jeśli chcesz zapewnić różne doświadczenia użytkowników łączących się z określonego usługodawcę internetowego (na przykład bloku użytkownicy z danego usługodawcy internetowego).
+* [Jakie regiony są obsługiwane przez Traffic Manager na potrzeby routingu geograficznego?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing)
+
+* [Jak Usługa Traffic Manager określa, skąd użytkownik wykonuje zapytania?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-determine-where-a-user-is-querying-from)
+
+* [Czy jest gwarantowane, że Traffic Manager może prawidłowo określić dokładną lokalizację geograficzną użytkownika w każdym przypadku?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-it-guaranteed-that-traffic-manager-can-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case)
+
+* [Czy punkt końcowy musi być fizycznie zlokalizowany w tym samym regionie, w którym jest skonfigurowany do routingu geograficznego?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing)
+
+* [Czy można przypisywać regiony geograficzne do punktów końcowych w profilu, który nie jest skonfigurowany do routingu geograficznego?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing)
+
+* [Dlaczego otrzymuję błąd podczas próby zmiany metody routingu istniejącego profilu na geograficzny?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic)
+
+* [Dlaczego zdecydowanie zaleca się, aby klienci utworzyli profile zagnieżdżone zamiast punktów końcowych w ramach profilu z włączonym routingiem geograficznym?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled)
+
+* [Czy istnieją jakieś ograniczenia dotyczące wersji interfejsu API, która obsługuje ten typ routingu?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type)
+
+## <a name = "multivalue"></a>Wielowartościowy ruch-Metoda routingu
+Metoda  routingu ruchu wielowartościowego umożliwia uzyskanie wielu prawidłowych punktów końcowych w pojedynczej odpowiedzi na zapytanie DNS. Umożliwia to obiektowi wywołującemu wykonanie ponownych prób po stronie klienta z innymi punktami końcowymi w przypadku, gdy zwrócony punkt końcowy nie odpowiada. Ten wzorzec może zwiększyć dostępność usługi i ograniczyć opóźnienia związane z nowym zapytaniem DNS w celu uzyskania prawidłowego punktu końcowego. Metoda routingu z wieloma wartościami działa tylko wtedy, gdy wszystkie punkty końcowe typu "External" i są określone jako adresy IPv4 lub IPv6. Po odebraniu zapytania dla tego profilu są zwracane wszystkie prawidłowe punkty końcowe i podlegają konfigurowalnej maksymalnej liczbie zwracanych wartości.
+
+## <a name = "subnet"></a>Ruch podsieci — Metoda routingu
+Metoda routingu ruchu **podsieci** umożliwia mapowanie zestawu zakresów adresów IP użytkowników końcowych na określone punkty końcowe w profilu. Po tym, jeśli Traffic Manager odbiera zapytanie DNS dla tego profilu, sprawdzi źródłowy adres IP tego żądania (w większości przypadków będzie to wychodzący adres IP programu rozpoznawania nazw DNS używany przez obiekt wywołujący), ustal, który punkt końcowy jest zamapowany i zwróci t punkt końcowy w odpowiedzi na zapytanie. 
+
+Adres IP, który ma być mapowany do punktu końcowego, można określić jako zakresy CIDR (np. 1.2.3.0/24) lub jako zakres adresów (np. 1.2.3.4-5.6.7.8). Zakresy adresów IP skojarzone z punktem końcowym muszą być unikatowe w ramach tego profilu i nie mogą nakładać się na siebie z zestawem adresów IP innego punktu końcowego w tym samym profilu.
+W przypadku zdefiniowania punktu końcowego bez zakresu adresów, który działa jako rezerwowe i pobiera ruch z pozostałych podsieci. Jeśli żaden rezerwowy punkt końcowy nie jest uwzględniony, Traffic Manager wysyła odpowiedź NoData dla wszelkich niezdefiniowanych zakresów. Dlatego zdecydowanie zaleca się zdefiniowanie rezerwowego punktu końcowego lub upewnij się, że wszystkie możliwe zakresy adresów IP są określone w punktach końcowych.
+
+Routing podsieci może służyć do dostarczania innego środowiska dla użytkowników nawiązujących połączenie z określoną przestrzenią adresów IP. Na przykład przy użyciu routingu podsieci klient może kierować wszystkie żądania z ich biura firmowego do innego punktu końcowego, gdzie mogą testować tylko wewnętrzną wersję aplikacji. Inny scenariusz polega na tym, że chcesz udostępnić innym użytkownikom połączenie z konkretnym usługodawcą internetowym (na przykład zablokować użytkowników z danego USŁUGODAWCy internetowego).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się, jak tworzyć aplikacje o wysokiej dostępności przy użyciu [monitorowania punktu końcowego usługi Traffic Manager](traffic-manager-monitoring.md)
+Dowiedz się, jak opracowywać aplikacje o wysokiej dostępności przy użyciu funkcji [monitorowania punktów końcowych Traffic Manager](traffic-manager-monitoring.md)
 
 
 

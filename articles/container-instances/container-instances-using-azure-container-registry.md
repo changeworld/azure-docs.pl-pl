@@ -1,41 +1,42 @@
 ---
-title: Wdrażanie usługi Azure Container instances z usługi Azure Container Registry
-description: Dowiedz się, jak wdrożyć kontenery w usłudze Azure Container Instances za pomocą obrazów kontenerów w usłudze Azure container registry.
+title: Wdróż do Azure Container Instances z Azure Container Registry
+description: Dowiedz się, jak wdrażać kontenery w Azure Container Instances przy użyciu obrazów kontenerów w usłudze Azure Container Registry.
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 515dc8ed4a2fc9b3d2973d393c6894d8c7cef8f0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 502f178b66e7ba233552d7db4e095363c8bb8628
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66729383"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325556"
 ---
-# <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Wdrażanie usługi Azure Container instances z usługi Azure Container Registry
+# <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Wdróż do Azure Container Instances z Azure Container Registry
 
-[Usługa Azure Container Registry](../container-registry/container-registry-intro.md) jest oparta na platformie Azure, zarządzana Usługa rejestru kontenerów używany do przechowywania prywatnych obrazów kontenerów platformy Docker. W tym artykule opisano, jak wdrożyć obrazy kontenera przechowywany w usłudze Azure container registry do usługi Azure Container Instances.
+[Azure Container Registry](../container-registry/container-registry-intro.md) to oparta na platformie Azure, zarządzana usługa rejestru kontenerów służąca do przechowywania prywatnych obrazów kontenerów platformy Docker. W tym artykule opisano sposób wdrażania obrazów kontenerów przechowywanych w rejestrze kontenerów platformy Azure w celu Azure Container Instances.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-**Usługa Azure container registry**: Potrzebna usługa Azure container registry — i co najmniej jeden kontener obrazów w rejestrze — wykonanie czynności opisanych w tym artykule. Jeśli konieczne jest zarejestrowanie, zobacz [Tworzenie rejestru kontenerów przy użyciu wiersza polecenia platformy Azure](../container-registry/container-registry-get-started-azure-cli.md).
+**Usługa Azure Container Registry**: Aby wykonać kroki opisane w tym artykule, musisz mieć rejestr kontenerów platformy Azure — i co najmniej jeden obraz kontenera. Jeśli potrzebujesz rejestru, zobacz [Tworzenie rejestru kontenerów za pomocą interfejsu wiersza polecenia platformy Azure](../container-registry/container-registry-get-started-azure-cli.md).
 
-**Interfejs wiersza polecenia platformy Azure**: Przykłady wiersza polecenia w tym artykule korzystają [wiersza polecenia platformy Azure](/cli/azure/) i formatowania do powłoki Bash. Możesz [zainstalować interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) lokalnie, lub użyj [usługi Azure Cloud Shell][cloud-shell-bash].
+**Interfejs wiersza polecenia platformy Azure**: Przykładowe wiersze poleceń w tym artykule używają [interfejsu wiersza polecenia platformy Azure](/cli/azure/) i są sformatowane dla powłoki bash. [Interfejs wiersza polecenia platformy Azure można zainstalować](/cli/azure/install-azure-cli) lokalnie lub użyć [Azure Cloud Shell][cloud-shell-bash].
 
 ## <a name="configure-registry-authentication"></a>Konfigurowanie uwierzytelniania rejestru
 
-W żadnym scenariuszu produkcyjnym, należy podać dostępu do usługi Azure container registry przy użyciu [jednostki usług](../container-registry/container-registry-auth-service-principal.md). Nazwy główne usług umożliwiają dostarczenie [kontroli dostępu opartej na rolach](../container-registry/container-registry-roles.md) obrazów kontenera. Na przykład można skonfigurować jednostkę usługi z dostępem tylko do ściągania do rejestru.
+W każdym scenariuszu produkcyjnym należy zapewnić dostęp do usługi Azure Container Registry przy użyciu nazw [głównych usług](../container-registry/container-registry-auth-service-principal.md). Jednostki usługi umożliwiają zapewnienie [kontroli dostępu opartej na rolach](../container-registry/container-registry-roles.md) do obrazów kontenerów. Na przykład można skonfigurować jednostkę usługi z dostępem tylko do ściągania do rejestru.
 
-W poniższej sekcji Tworzenie usługi Azure key vault i nazwy głównej usługi i przechowywać poświadczenia nazwy głównej usługi w magazynie. 
+W poniższej sekcji utworzysz Magazyn kluczy Azure i nazwę główną usługi, a następnie przechowujesz poświadczenia jednostki usługi w magazynie. 
 
 ### <a name="create-key-vault"></a>Tworzenie magazynu kluczy
 
 Jeśli nie masz jeszcze magazynu w usłudze [Azure Key Vault](../key-vault/key-vault-overview.md), utwórz go przy użyciu interfejsu wiersza polecenia platformy Azure przy użyciu poniższych poleceń.
 
-Aktualizacja `RES_GROUP` zmiennej z nazwą istniejącej grupy zasobów, w której chcesz utworzyć magazyn kluczy i `ACR_NAME` nazwą rejestru kontenerów. Określ nazwę dla nowego magazynu kluczy w `AKV_NAME`. Nazwa magazynu musi być unikatowa w obrębie platformy Azure i musi być 3 do 24 znaków alfanumerycznych oraz zaczynać się literą, kończyć literą lub cyfrą i nie może zawierać występujących po sobie łączników.
+Zaktualizuj zmienną o nazwę istniejącej grupy zasobów, w której ma zostać utworzony magazyn kluczy, oraz `ACR_NAME` nazwę rejestru kontenerów. `RES_GROUP` Określ nazwę nowego magazynu kluczy w `AKV_NAME`. Nazwa magazynu musi być unikatowa w ramach platformy Azure i musi mieć 3-24 znaków alfanumerycznych, zaczynać się od litery, kończyć się literą lub cyfrą i nie może zawierać kolejnych łączników.
 
 ```azurecli
 RES_GROUP=myresourcegroup # Resource Group name
@@ -49,7 +50,7 @@ az keyvault create -g $RES_GROUP -n $AKV_NAME
 
 Musisz teraz utworzyć jednostkę usługi i przechowywać jej poświadczenia w magazynie kluczy.
 
-Następujące polecenie używa [az ad sp create-for-rbac] [ az-ad-sp-create-for-rbac] Aby utworzyć jednostkę usługi i [az keyvault secret set] [ az-keyvault-secret-set] do przechowywania jednostki usługi **hasło** w magazynie.
+Następujące polecenie używa polecenia [AZ AD Sp Create-for-RBAC][az-ad-sp-create-for-rbac] to create the service principal, and [az keyvault secret set][az-keyvault-secret-set] do przechowywania **hasła** jednostki usługi w magazynie.
 
 ```azurecli
 # Create service principal, store its password in AKV (the registry *password*)
@@ -66,7 +67,7 @@ az keyvault secret set \
 
 Argument `--role` w poprzednim poleceniu konfiguruje jednostkę usługi z rolą *acrpull*, co spowoduje przyznanie dostępu tylko do ściągania do rejestru. Aby przyznać prawa dostępu do wypychania i ściągania, należy zmienić argument `--role` na wartość *acrpush*.
 
-Następnie przechowywać nazwy głównej usługi *appId* w magazynie, który jest **username** są przekazywane do usługi Azure Container Registry do uwierzytelniania.
+Następnie należy zapisać *identyfikator appid* jednostki usługi w magazynie, który jest **nazwą użytkownika** , która zostanie przekazana do Azure Container Registry na potrzeby uwierzytelniania.
 
 ```azurecli
 # Store service principal ID in AKV (the registry *username*)
@@ -85,15 +86,15 @@ Teraz możesz odwoływać się do tych wpisów tajnych według nazwy, gdy Ty lub
 
 ## <a name="deploy-container-with-azure-cli"></a>Wdrażanie kontenera przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Teraz, poświadczenia nazwy głównej usługi są przechowywane w usłudze Azure Key Vault, klucze tajne, aplikacji i usług umożliwia im dostęp do prywatnego rejestru.
+Teraz, gdy poświadczenia jednostki usługi są przechowywane w kluczach tajnych Azure Key Vault, Twoje aplikacje i usługi mogą korzystać z nich w celu uzyskania dostępu do rejestru prywatnego.
 
-Najpierw uzyskać nazwę serwera logowania rejestru za pomocą [az acr show] [ az-acr-show] polecenia. Nazwa serwera logowania to wszystkie małe litery i podobne do `myregistry.azurecr.io`.
+Najpierw Pobierz nazwę serwera logowania rejestru przy użyciu polecenia [AZ ACR show][az-acr-show] . Nazwa serwera logowania jest mała i podobna do `myregistry.azurecr.io`.
 
 ```azurecli
 ACR_LOGIN_SERVER=$(az acr show --name $ACR_NAME --resource-group $RES_GROUP --query "loginServer" --output tsv)
 ```
 
-Wykonaj polecenie [az container create][az-container-create] w celu wdrożenia wystąpienia kontenera. Polecenie używa poświadczenia nazwy głównej usługi, przechowywane w usłudze Azure Key Vault do uwierzytelniania rejestru kontenerów i zakłada się, został wcześniej wypchnięty [aci-helloworld](container-instances-quickstart.md) obrazu do rejestru. Aktualizacja `--image` wartość, jeśli chcesz użyć innego obrazu z rejestru.
+Wykonaj następujące polecenie [AZ Container Create][az-container-create] , aby wdrożyć wystąpienie kontenera. Polecenie używa poświadczeń jednostki usługi przechowywanych w Azure Key Vault do uwierzytelniania w rejestrze kontenerów i zakłada, że wcześniej wypychał obraz [ACI-HelloWorld](container-instances-quickstart.md) do rejestru. Zaktualizuj wartość `--image` , jeśli chcesz użyć innego obrazu z rejestru.
 
 ```azurecli
 az container create \
@@ -107,18 +108,18 @@ az container create \
     --query ipAddress.fqdn
 ```
 
-`--dns-name-label` Wartość musi być unikatowa na platformie Azure, więc poprzednie polecenie dołącza losową liczbę do etykiety nazwy DNS dla kontenera. Dane wyjściowe polecenia wyświetlają w pełni kwalifikowaną nazwę domeny (FQDN) kontenera, na przykład:
+`--dns-name-label` Wartość musi być unikatowa w ramach platformy Azure, dlatego poprzednie polecenie dołącza liczbę losową do etykiety nazwy DNS kontenera. Dane wyjściowe polecenia wyświetlają w pełni kwalifikowaną nazwę domeny (FQDN) kontenera, na przykład:
 
 ```console
 $ az container create --name aci-demo --resource-group $RES_GROUP --image $ACR_LOGIN_SERVER/aci-helloworld:v1 --registry-login-server $ACR_LOGIN_SERVER --registry-username $(az keyvault secret show --vault-name $AKV_NAME -n $ACR_NAME-pull-usr --query value -o tsv) --registry-password $(az keyvault secret show --vault-name $AKV_NAME -n $ACR_NAME-pull-pwd --query value -o tsv) --dns-name-label aci-demo-$RANDOM --query ipAddress.fqdn
 "aci-demo-25007.eastus.azurecontainer.io"
 ```
 
-Gdy kontener został uruchomiony pomyślnie, można przejść do jego nazwy FQDN w przeglądarce, aby sprawdzić, czy aplikacja została pomyślnie uruchomiona.
+Po pomyślnym rozpoczęciu pracy kontenera możesz przejść do jego nazwy FQDN w przeglądarce, aby sprawdzić, czy aplikacja działa prawidłowo.
 
-## <a name="deploy-with-azure-resource-manager-template"></a>Wdrażanie przy użyciu szablonu usługi Azure Resource Manager
+## <a name="deploy-with-azure-resource-manager-template"></a>Wdrażanie przy użyciu szablonu Azure Resource Manager
 
-Można określić właściwości usługi Azure Container Registry w szablonie usługi Azure Resource Manager, umieszczając `imageRegistryCredentials` właściwość definicja grupy kontenerów:
+Możesz określić właściwości Azure Container Registry w szablon Azure Resource Manager, dołączając `imageRegistryCredentials` właściwość w definicji grupy kontenerów:
 
 ```JSON
 "imageRegistryCredentials": [
@@ -130,31 +131,31 @@ Można określić właściwości usługi Azure Container Registry w szablonie us
 ]
 ```
 
-Aby uzyskać szczegółowe informacje dotyczące odwoływania się do hasła usługi Azure Key Vault w szablonie usługi Resource Manager, zobacz [użycia usługi Azure Key Vault do przekazywania wartości parametru secure podczas wdrażania](../azure-resource-manager/resource-manager-keyvault-parameter.md).
+Aby uzyskać szczegółowe informacje dotyczące odwoływania się do Azure Key Vault wpisów tajnych w szablonie Menedżer zasobów, zobacz [używanie Azure Key Vault do przekazywania bezpiecznej wartości parametru podczas wdrażania](../azure-resource-manager/resource-manager-keyvault-parameter.md).
 
-## <a name="deploy-with-azure-portal"></a>Wdrażanie przy użyciu witryny Azure portal
+## <a name="deploy-with-azure-portal"></a>Wdrażanie za pomocą Azure Portal
 
-Jeśli zachowasz obrazów kontenerów w usłudze Azure container registry, można łatwo utworzyć kontener w usłudze Azure Container Instances za pomocą witryny Azure portal. Wdróż wystąpienie kontenera z rejestru kontenerów za pomocą portalu, należy włączyć w rejestrze [konta administratora](../container-registry/container-registry-authentication.md#admin-account). Konto administratora jest przeznaczony dla jednego użytkownika, dostęp do rejestru, głównie do celów testowych. 
+Jeśli przechowujesz obrazy kontenerów w usłudze Azure Container Registry, możesz łatwo utworzyć kontener w Azure Container Instances przy użyciu Azure Portal. W przypadku wdrażania wystąpienia kontenera z rejestru kontenerów przy użyciu portalu należy włączyć [konto administratora](../container-registry/container-registry-authentication.md#admin-account)rejestru. Konto administratora jest przeznaczone dla jednego użytkownika, aby uzyskać dostęp do rejestru, głównie do celów testowych. 
 
-1. W witrynie Azure portal przejdź do rejestru kontenerów.
+1. W Azure Portal przejdź do rejestru kontenerów.
 
-1. Aby upewnić się, że konto administratora jest włączone, wybierz pozycję **klucze dostępu**, a następnie w obszarze **administrator** wybierz **Włącz**.
+1. Aby upewnić się, że konto administratora jest włączone, wybierz pozycję **klucze dostępu**, a w obszarze **administrator** wybierz pozycję **Włącz**.
 
-1. Wybierz **repozytoriów**, a następnie wybierz repozytorium, które chcesz wdrożyć, kliknij prawym przyciskiem myszy tag obrazu kontenera, które chcesz wdrożyć, a następnie wybierz pozycję **uruchomienia wystąpienia**.
+1. Wybierz pozycję repozytoria, a następnie wybierz repozytorium, z którego chcesz wykonać wdrożenie, kliknij prawym przyciskiem myszy tag obrazu kontenera, który chcesz wdrożyć, a następnie wybierz polecenie **Uruchom wystąpienie**.
 
-    !["Uruchom wystąpienie" w usłudze Azure Container Registry w witrynie Azure portal][acr-runinstance-contextmenu]
+    !["Uruchom wystąpienie" w Azure Container Registry w Azure Portal][acr-runinstance-contextmenu]
 
-1. Wprowadź nazwę kontenera i nazwy grupy zasobów. Można również zmienić wartości domyślne, jeśli chcesz.
+1. Wprowadź nazwę dla kontenera i nazwę grupy zasobów. Możesz również zmienić wartości domyślne, jeśli chcesz.
 
-    ![Tworzenie menu dla usługi Azure Container Instances][acr-create-deeplink]
+    ![Utwórz menu dla Azure Container Instances][acr-create-deeplink]
 
-1. Po zakończeniu wdrażania możesz przejść do grupy kontenerów, za pomocą okienko powiadomień Aby znaleźć adres IP i inne właściwości.
+1. Po zakończeniu wdrażania możesz przejść do grupy kontenerów z okienka powiadomienia, aby znaleźć jego adres IP i inne właściwości.
 
-    ![Widok szczegółów dla grupy kontenerów w usłudze Azure Container Instances][aci-detailsview]
+    ![Widok szczegółów dla Azure Container Instances grupy kontenerów][aci-detailsview]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat uwierzytelniania usługi Azure Container Registry, zobacz [Uwierzytelnij za pomocą usługi Azure container registry](../container-registry/container-registry-authentication.md).
+Aby uzyskać więcej informacji na temat uwierzytelniania Azure Container Registry, zobacz [uwierzytelnianie przy użyciu usługi Azure Container Registry](../container-registry/container-registry-authentication.md).
 
 <!-- IMAGES -->
 [acr-create-deeplink]: ./media/container-instances-using-azure-container-registry/acr-create-deeplink.png

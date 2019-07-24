@@ -3,23 +3,24 @@ title: Zaufanie do zawartości w usłudze Azure Container Registry
 description: Dowiedz się, jak włączyć zaufanie do zawartości dla rejestru kontenerów oraz jak wypychać i ściągać podpisane obrazy.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.author: danlep
-ms.openlocfilehash: ca9ef32a830f56edb471256b3b9175ba0fbec51d
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.openlocfilehash: 9cd2965e64806dded0e5c688b70d07dfcd763f46
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65069222"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309744"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Zaufanie do zawartości w usłudze Azure Container Registry
 
-Usługa Azure Container Registry implementuje platformy Docker [zawartości zaufania] [ docker-content-trust] model, umożliwiając wypychanie i ściąganie obrazów z podpisem. Ten artykuł ułatwia pracę, umożliwiając zaufaj zawartości w Twojej rejestry kontenerów.
+Azure Container Registry implementuje model [zaufania zawartości][docker-content-trust] platformy Docker, umożliwiając wypychanie i ściąganie podpisanych obrazów. Ten artykuł umożliwia rozpoczęcie włączania zaufania zawartości w rejestrach kontenerów.
 
 > [!NOTE]
-> Zaufaj zawartości jest funkcją [jednostki SKU Premium](container-registry-skus.md) usługi Azure Container Registry.
+> Zaufanie zawartości to funkcja [jednostki SKU Premium](container-registry-skus.md) Azure Container Registry.
 
 ## <a name="how-content-trust-works"></a>Jak działa zaufanie do zawartości
 
@@ -33,16 +34,16 @@ Zaufanie do zawartości współdziała z **tagami** w repozytorium. Repozytoria 
 
 ### <a name="signing-keys"></a>Klucze podpisywania
 
-Zaufanie do zawartości jest zarządzane przy użyciu zestawu kryptograficznych kluczy podpisywania. Te klucze są skojarzone z konkretnym repozytorium w rejestrze. Istnieje kilka typów kluczy podpisywania, które są używane przez klientów platformy Docker i rejestr do zarządzania zaufaniem dla tagów w repozytorium. Po włączeniu zaufania do zawartości i zintegrowaniu go z publikowaniem kontenerów oraz potokiem zużycia należy ostrożnie zarządzać tymi kluczami. Aby uzyskać więcej informacji, zobacz sekcję [Zarządzanie kluczami](#key-management) w dalszej części tego artykułu oraz artykuł [Manage keys for content trust][docker-manage-keys] (Zarządzanie kluczami dla zaufania do zawartości) w dokumentacji platformy Docker.
+Zaufanie do zawartości jest zarządzane przy użyciu zestawu kryptograficznych kluczy podpisywania. Te klucze są skojarzone z konkretnym repozytorium w rejestrze. Istnieje kilka typów kluczy podpisywania, które są używane przez klientów platformy Docker i rejestr do zarządzania zaufaniem dla tagów w repozytorium. Po włączeniu zaufania do zawartości i zintegrowaniu go z publikowaniem kontenerów oraz potokiem zużycia należy ostrożnie zarządzać tymi kluczami. Aby uzyskać więcej informacji, zobacz [Zarządzanie kluczami](#key-management) w dalszej części tego artykułu i [Zarządzanie kluczami zaufania zawartości][docker-manage-keys] w dokumentacji platformy Docker.
 
 > [!TIP]
-> To jest bardzo ogólne omówienie modelu zaufania do zawartości platformy Docker. Szczegółowe informacje na temat zaufania do zawartości znajdziesz w artykule [Content trust in Docker][docker-content-trust] (Zaufanie do zawartości na platformie Docker).
+> To jest bardzo ogólne omówienie modelu zaufania do zawartości platformy Docker. Szczegółowe omówienie relacji zaufania zawartości znajduje się [w temacie zaufanie zawartości w programie Docker][docker-content-trust].
 
 ## <a name="enable-registry-content-trust"></a>Włączanie zaufania do zawartości rejestru
 
 Pierwszym krokiem jest włączenie zaufania do zawartości na poziomie rejestru. Gdy włączysz zaufanie do zawartości, klienci (użytkownicy lub usługi) będą mogli wypychać podpisane obrazy do Twojego rejestru. Włączenie zaufania do zawartości w rejestrze nie ogranicza użycia rejestru tylko do użytkowników z włączonym zaufaniem do zawartości. Użytkownicy bez włączonego zaufania do zawartości wciąż będą mogli używać Twojego rejestru w zwykły sposób. Jednak użytkownicy z włączony zaufaniem do zawartości w swoich klientach będą widzieć w Twoim rejestrze *tylko* podpisane obrazy.
 
-Aby włączyć zaufanie do zawartości dla rejestru, najpierw przejdź do rejestru w witrynie Azure Portal. W obszarze **zasady**, wybierz opcję **ufaj zawartości** > **włączone** > **Zapisz**.
+Aby włączyć zaufanie do zawartości dla rejestru, najpierw przejdź do rejestru w witrynie Azure Portal. W obszarze **zasady**wybierz  > pozycję**Zaoszczędź**zawartość**włączona** > .
 
 ![Włączanie zaufania do zawartości dla rejestru w witrynie Azure Portal][content-trust-01-portal]
 
@@ -73,7 +74,7 @@ docker build --disable-content-trust -t myacr.azurecr.io/myimage:v1 .
 
 ## <a name="grant-image-signing-permissions"></a>Udzielanie uprawnień do podpisywania obrazów
 
-Tylko użytkownicy lub systemy, którym udzielono uprawnień, mogą wypychać zaufane obrazy do rejestru. Aby udzielić użytkownikowi (lub systemowi korzystającemu z jednostki usługi) uprawnień do wypychania zaufanych obrazów, przydziel jego tożsamości w usłudze Azure Active Directory rolę `AcrImageSigner`. Jest to uzupełnienie `AcrPush` (lub równoważnego) rolę wymaganą dla wypychanie obrazów do rejestru. Aby uzyskać więcej informacji, zobacz [uprawnienia i role usługi Azure Container Registry](container-registry-roles.md).
+Tylko użytkownicy lub systemy, którym udzielono uprawnień, mogą wypychać zaufane obrazy do rejestru. Aby udzielić użytkownikowi (lub systemowi korzystającemu z jednostki usługi) uprawnień do wypychania zaufanych obrazów, przydziel jego tożsamości w usłudze Azure Active Directory rolę `AcrImageSigner`. Jest to uzupełnienie `AcrPush` (lub równoważnej) roli wymaganej do wypychania obrazów do rejestru. Aby uzyskać szczegółowe informacje, zobacz [Azure Container Registry ról i uprawnień](container-registry-roles.md).
 
 Szczegóły dotyczące przydzielania roli `AcrImageSigner` w witrynie Azure Portal i interfejsie wiersza polecenia platformy Azure znajdują się poniżej.
 
@@ -112,7 +113,7 @@ az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee 
 
 Identyfikator `<service principal ID>` może być identyfikatorem **appId** lub **objectId** bądź jedną z nazw **servicePrincipalName**. Aby uzyskać więcej informacji na temat pracy z jednostkami usługi i usługą Azure Container Registry, zobacz [Uwierzytelnianie w usłudze Azure Container Registry przy użyciu jednostek usługi](container-registry-auth-service-principal.md).
 
-Po wprowadzeniu zmian dowolnej roli, uruchom `az acr login` do odświeżenia tokenu lokalna tożsamość wiersza polecenia platformy Azure, tak aby nowe role mogą obowiązywać.
+Po zmianie ról Uruchom `az acr login` polecenie, aby odświeżyć lokalny token tożsamości dla interfejsu wiersza polecenia platformy Azure, aby nowe role zaczęły obowiązywać.
 
 ## <a name="push-a-trusted-image"></a>Wypychanie zaufanego obrazu
 
@@ -142,7 +143,7 @@ Po pierwszym użyciu polecenia `docker push` z włączonym zaufaniem do zawarto�
 
 ## <a name="pull-a-trusted-image"></a>Ściąganie zaufanego obrazu
 
-Aby ściągnąć zaufany obraz, włącz zaufanie do zawartości i uruchom polecenie `docker pull` jak zwykle. Do ściągania obrazów zaufanych `AcrPull` rola jest wystarczająca dla normalni użytkownicy. Nie dodatkowych ról, takich jak `AcrImageSigner` roli są wymagane. Użytkownicy z włączonym zaufaniem do zawartości mogą ściągać tylko obrazy z podpisanymi tagami. Oto przykład ściągania podpisanego tagu:
+Aby ściągnąć zaufany obraz, włącz zaufanie do zawartości i uruchom polecenie `docker pull` jak zwykle. Do ściągania zaufanych obrazów `AcrPull` rola jest wystarczająca dla zwykłych użytkowników. Nie są wymagane żadne dodatkowe `AcrImageSigner` role, takie jak rola. Użytkownicy z włączonym zaufaniem do zawartości mogą ściągać tylko obrazy z podpisanymi tagami. Oto przykład ściągania podpisanego tagu:
 
 ```console
 $ docker pull myregistry.azurecr.io/myimage:signed
@@ -163,7 +164,7 @@ No valid trust data for unsigned
 
 ### <a name="behind-the-scenes"></a>Za kulisami
 
-Po uruchomieniu polecenia `docker pull` klient platformy Docker używa tej samej biblioteki co w przypadku [interfejsu wiersza polecenia usługi Notary][docker-notary-cli] do zażądania mapowania skrótu tag-do-SHA-256 dla wypychanego tagu. Po zweryfikowaniu podpisów danych o zaufaniu klient nakazuje aparatowi platformy Docker wykonanie „ściągnięcia przez skrót”. Podczas ściągania aparat używa sumy kontrolnej SHA-256 jako adresu zawartości w celu zażądania i zweryfikowania manifestu obrazu z rejestru kontenerów platformy Azure.
+Po uruchomieniu `docker pull`klient platformy Docker używa tej samej biblioteki jak w [interfejsie wiersza polecenia notariusza][docker-notary-cli] , aby zażądać mapowania skrótu tag-to-SHA-256 dla używanego tagu. Po zweryfikowaniu podpisów danych o zaufaniu klient nakazuje aparatowi platformy Docker wykonanie „ściągnięcia przez skrót”. Podczas ściągania aparat używa sumy kontrolnej SHA-256 jako adresu zawartości w celu zażądania i zweryfikowania manifestu obrazu z rejestru kontenerów platformy Azure.
 
 ## <a name="key-management"></a>Zarządzanie kluczami
 
@@ -179,7 +180,7 @@ Utwórz kopię zapasową klucza głównego i klucza repozytorium, kompresując j
 umask 077; tar -zcvf docker_private_keys_backup.tar.gz ~/.docker/trust/private; umask 022
 ```
 
-Wraz z lokalnie wygenerowanym kluczem głównym i kluczem repozytorium generowanych jest kilka innych i są one zapisywane przez usługę Azure Container Registry podczas wypychania zaufanego obrazu. Szczegółowe omówienie różnych kluczy w implementacji zaufania do zawartości platformy Docker, w tym dodatkowe wskazówki dotyczące zarządzania, znajdziesz w artykule [Manage keys for content trust][docker-manage-keys] (Zarządzanie kluczami dla zaufania do zawartości) w dokumentacji platformy Docker.
+Wraz z lokalnie wygenerowanym kluczem głównym i kluczem repozytorium generowanych jest kilka innych i są one zapisywane przez usługę Azure Container Registry podczas wypychania zaufanego obrazu. Szczegółowe omówienie różnych kluczy w implementacji zaufania zawartości platformy Docker, w tym dodatkowe wskazówki dotyczące zarządzania, zawiera temat [Zarządzanie kluczami zaufania zawartości][docker-manage-keys] w dokumentacji platformy Docker.
 
 ### <a name="lost-root-key"></a>Utracenie klucza głównego
 
@@ -188,13 +189,13 @@ Jeśli utracisz dostęp do klucza głównego, utracisz dostęp do podpisanych ta
 > [!WARNING]
 > Wyłączenie i ponowne włączenie zaufania do zawartości w rejestrze spowoduje **usunięcie całości danych o zaufaniu dla wszystkich podpisanych tagów w każdym repozytorium w rejestrze**. Ta akcja jest nieodwracalna — usługa Azure Container Registry nie może odzyskać usuniętych danych o zaufaniu. Wyłączenie zaufania do zawartości nie powoduje usunięcia samych obrazów.
 
-Aby wyłączyć zaufanie do zawartości dla rejestru, przejdź do rejestru w witrynie Azure Portal. W obszarze **zasady**, wybierz opcję **ufaj zawartości** > **wyłączone** > **Zapisz**. Zostanie wyświetlone ostrzeżenie dotyczące utraty wszystkich podpisów w rejestrze. Wybierz przycisk **OK**, aby trwale usunąć wszystkie podpisy w rejestrze.
+Aby wyłączyć zaufanie do zawartości dla rejestru, przejdź do rejestru w witrynie Azure Portal. W obszarze **zasady**wybierz **pozycję zaufana** > zawartość**wyłączona** > **Zapisz**. Zostanie wyświetlone ostrzeżenie dotyczące utraty wszystkich podpisów w rejestrze. Wybierz przycisk **OK**, aby trwale usunąć wszystkie podpisy w rejestrze.
 
 ![Wyłączanie zaufania do zawartości dla rejestru w witrynie Azure Portal][content-trust-03-portal]
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Zobacz [zawartości zaufania na platformie Docker] [ docker-content-trust] dodatkowe informacje o zawartości zaufania. Mimo iż w tym artykule poruszono kilka kluczowych kwestii, zaufanie do zawartości to obszerny temat i omówiono go dogłębniej w dokumentacji platformy Docker.
+Aby uzyskać dodatkowe informacje na temat zaufania zawartości, zobacz [zaufanie zawartości w programie Docker][docker-content-trust] . Mimo iż w tym artykule poruszono kilka kluczowych kwestii, zaufanie do zawartości to obszerny temat i omówiono go dogłębniej w dokumentacji platformy Docker.
 
 <!-- IMAGES> -->
 [content-trust-01-portal]: ./media/container-registry-content-trust/content-trust-01-portal.png

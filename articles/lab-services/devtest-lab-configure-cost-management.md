@@ -1,6 +1,6 @@
 ---
-title: Wyświetl miesięczne szacowane trendu kosztów laboratorium Azure DevTest Labs | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat wykres trendu szacowany koszt miesięczny Azure DevTest Labs.
+title: Wyświetl szacunkowy miesięczny trend kosztów laboratorium w Azure DevTest Labs | Microsoft Docs
+description: Dowiedz się więcej na temat wykresu trendu szacowanych Azure DevTest Labs miesięcznie.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,94 +14,94 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2019
 ms.author: spelluru
-ms.openlocfilehash: f761af3a5a3f08e4da89d8869aea5d666ecd69d0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9180c29b807ef26c6426aab75fe74870fef9669a
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60868290"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68318163"
 ---
-# <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Śledź koszty związane z laboratorium Azure DevTest Labs
-Ten artykuł zawiera informacje na temat śledzenia kosztów środowiska laboratoryjnego. Pokazuje sposób wyświetlania szacowany koszt trent w bieżącym miesiącu dla laboratorium. Artykuł przedstawia również sposób wyświetlania data miesiąca koszt zasobów w środowisku laboratoryjnym
+# <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Śledź koszty związane z laboratorium w Azure DevTest Labs
+Ten artykuł zawiera informacje dotyczące śledzenia kosztów laboratorium. Przedstawiono w nim sposób wyświetlania szacowanego kosztu Trent dla bieżącego miesiąca kalendarzowego dla laboratorium. W tym artykule przedstawiono również sposób wyświetlania kosztu miesiąca na zasób w laboratorium.
 
-## <a name="view-the-monthly-estimated-lab-cost-trend"></a>Wyświetl miesięczne szacowane trendu kosztów laboratorium 
-W tej sekcji dowiesz się, jak używać **miesięczne szacowane trendu kosztów** wykres, aby wyświetlić bieżący miesiąc kalendarza szacowany koszt od początku i przewidywany koszt koniec miesiąca dla bieżącego miesiąca kalendarzowego. Poznasz również sposób zarządzania koszty laboratorium, ustawiając wydatków celów i progów, gdy osiągnięty wyzwalacza usługi DevTest Labs zgłosić wyników.
+## <a name="view-the-monthly-estimated-lab-cost-trend"></a>Wyświetlanie trendu szacowanego miesięcznego kosztu laboratorium 
+W tej sekcji dowiesz się, jak używać wykresu **trendu miesięcznego szacunku kosztów** , aby wyświetlić szacowany koszt bieżącego miesiąca kalendarzowego i przewidywany koszt końca miesiąca dla bieżącego miesiąca kalendarzowego. Dowiesz się również, jak zarządzać kosztami laboratorium, ustawiając cele wydatków i progi, które po osiągnięciu tej procedury wyzwalają DevTest Labs, aby raportować wyniki.
 
-Aby wyświetlić wykres trendu kosztów szacowane miesięczne, wykonaj następujące kroki: 
+Aby wyświetlić wykres trendu szacowanych miesięcznych kosztów, wykonaj następujące kroki: 
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Wybierz **wszystkich usług**, a następnie wybierz pozycję **DevTest Labs** z listy.
-3. Zaznacz na liście laboratoriów środowiska laboratoryjnego.  
-4. Wybierz **konfiguracji i zasad** w menu po lewej stronie.  
-4. Wybierz **trendu kosztów** w **śledzenie kosztów** sekcji, w menu po lewej stronie. Poniższy zrzut ekranu przedstawia przykład wykresu kosztów. 
+2. Wybierz pozycję **wszystkie usługi**, a następnie z listy wybierz pozycję **DevTest Labs** .
+3. Z listy laboratoriów wybierz laboratorium.  
+4. W menu po lewej stronie wybierz pozycję **Konfiguracja i zasady** .  
+4. Wybierz pozycję **trend kosztu** w sekcji **Śledzenie kosztów** w menu po lewej stronie. Poniższy zrzut ekranu przedstawia przykład wykresu kosztów. 
    
     ![Wykres kosztów](./media/devtest-lab-configure-cost-management/graph.png)
 
-    **Szacowany koszt** wartość bieżącego miesiąca kalendarzowego szacowany koszt od początku. **Przewidywany koszt** jest szacowany koszt dla całego bieżącego miesiąca kalendarzowego obliczane przy użyciu kosztów laboratorium dla poprzednich 5 dni.
+    **Szacowana** wartość kosztu jest szacowanym kosztem bieżącego miesiąca kalendarzowego. **Przewidywany koszt** jest szacowanym kosztem całego miesiąca kalendarzowego, obliczonym przy użyciu kosztu Lab dla ostatnich pięciu dni.
 
-    Kwoty kosztów jest zaokrąglana do najbliższej liczby całkowitej. Na przykład: 
+    Kwoty kosztów są zaokrąglane w górę do najbliższej liczby całkowitej. Przykład: 
 
-   * 5.01 Zaokrągla do 6 
-   * 5.50 Zaokrągla do 6
-   * 5.99 Zaokrągla do 6
+   * 5,01 zaokrągla do 6 
+   * 5,50 zaokrągla do 6
+   * 5,99 zaokrągla do 6
 
-     Stwierdza, powyżej wykresu, kosztów, zobacz domyślnie na wykresie są *szacowany* koszty przy użyciu [płatność za rzeczywiste użycie](https://azure.microsoft.com/offers/ms-azr-0003p/) stawki oferty. Można także zdefiniować własne wydatków obiektów docelowych, które są wyświetlane na wykresach przez [zarządzania celami kosztów dla swojego laboratorium.](#managing-cost-targets-for-your-lab)
+     W miarę jak Stany it powyżej wykresu koszty, które są wyświetlane domyślnie na wykresie, są *szacowane* kosztami przy użyciu stawek oferty [płatność zgodnie z rzeczywistym](https://azure.microsoft.com/offers/ms-azr-0003p/) użyciem. Możesz również ustawić własne cele wydatków, które są wyświetlane na wykresach, [zarządzając docelowymi kosztami dla laboratorium.](#managing-cost-targets-for-your-lab)
 
-     Poniżej koszty *nie* uwzględnionych podczas obliczania kosztów:
+     W obliczeniach kosztów *nie* są uwzględniane następujące koszty:
 
-   * Subskrypcje dostawcy usług Kryptograficznych i Dreamspark nie są obecnie obsługiwane, ponieważ korzysta z usługi Azure DevTest Labs [interfejsy API rozliczeń Azure](../billing/billing-usage-rate-card-overview.md) do obliczania laboratorium koszt, który nie obsługuje dostawcy usług Kryptograficznych lub Dreamspark subskrypcji.
-   * Twoje stawki oferty. Obecnie nie można używać (podane w ramach Twojej subskrypcji), możesz mieć negocjowane z firmą Microsoft lub Microsoft partnerów stawki oferty. Używane są tylko stawek.
-   * Z podatków.
-   * Slevy
-   * Twoja waluta rozliczeniowa. Obecnie kosztów laboratorium jest wyświetlany tylko w walucie USD.
+   * Subskrypcje CSP i DreamSpark nie są obecnie obsługiwane, ponieważ Azure DevTest Labs używają [interfejsów API rozliczeń platformy Azure](../billing/billing-usage-rate-card-overview.md) do obliczania kosztów laboratorium, które nie obsługują subskrypcji CSP ani DreamSpark.
+   * Twoje stawki oferty. Obecnie nie można używać stawek oferty (pokazanych w ramach subskrypcji) wynegocjowanych przez firmę Microsoft lub partnerów firmy Microsoft. Używane są tylko stawki płatność zgodnie z rzeczywistym użyciem.
+   * Twoje podatki
+   * Twoje zniżki
+   * Twoja waluta rozliczeniowa. Obecnie koszt laboratorium jest wyświetlany tylko w walucie USD.
 
-### <a name="managing-cost-targets-for-your-lab"></a>Zarządzanie kosztów związanych z laboratorium
-DevTest Labs pozwala lepiej zarządzać kosztami w środowisku laboratoryjnym, ustawiając wydatków docelowy, który można wyświetlić na wykresie miesięczne szacowane trendu kosztów. DevTest Labs można również wysłane powiadomienie po osiągnięciu określonego obiektu docelowego wydatków lub wartość progową. 
+### <a name="managing-cost-targets-for-your-lab"></a>Zarządzanie celami kosztów dla laboratorium
+Usługa DevTest Labs umożliwia lepsze zarządzanie kosztami w laboratorium przez ustawienie celu wydatków, który można następnie wyświetlić na wykresie miesięcznego trendu szacowanych kosztów. DevTest Labs może również wysyłać powiadomienie, gdy zostanie osiągnięty określony cel wydatków lub progu. 
 
-1. Na **trendu kosztów** wybierz opcję **docelowej Zarządzaj**.
+1. Na stronie **trend kosztu** wybierz pozycję **Zarządzaj miejscem docelowym**.
 
-    ![Zarządzanie przycisk docelowej](./media/devtest-lab-configure-cost-management/cost-trend-manage-target.png)
-2. Na **docelowej Zarządzaj** Określ docelową wydatków i progów. Można również ustawić, czy każdy wybrany próg, jest zgłaszany na wykres trendu kosztów lub za pośrednictwem powiadomień elementu webhook.
+    ![Przycisk Zarządzaj elementem docelowym](./media/devtest-lab-configure-cost-management/cost-trend-manage-target.png)
+2. Na stronie **Zarządzanie celem** Określ cel i progi wydatków. Można również określić, czy każdy wybrany próg jest raportowany na wykresie trendu kosztów, czy za pomocą powiadomienia elementu webhook.
 
-    ![Zarządzanie okienka docelowej](./media/devtest-lab-configure-cost-management/cost-trend-manage-target-pane.png)
+    ![Zarządzaj okienkiem docelowym](./media/devtest-lab-configure-cost-management/cost-trend-manage-target-pane.png)
 
-   - Wybierz przedział czasu, w którym mają być koszt celów śledzenia.
-      - **Miesięczne**: elementy docelowe kosztów są śledzone na miesiąc.
-      - **Naprawiono**: elementy docelowe kosztów są śledzone dla zakresu dat, określ daty rozpoczęcia i zakończenia. Zazwyczaj te wartości reprezentują, jak długo projektu jest zaplanowane do uruchomienia.
-   - Określ **docelowe koszt**. Na przykład ile planujesz możesz wydać na tym środowisku laboratoryjnym w przedziale czasu, który został zdefiniowany.
-   - Zaznacz, aby włączyć lub wyłączyć wszelkie próg ma zgłoszone — w przyrostach co 25% — do 125% z określonym **docelowe koszt**.
-      - **Powiadom**: Po spełnieniu tego progu, otrzymasz powiadomienie, należy określić adres URL elementu webhook.
-      - **Vykreslit v**: Po spełnieniu tego progu, wyniki są oznaczane na wykresach na wykres trendu kosztów, który można wyświetlić, zgodnie z opisem w wyświetlania wykresu trendu kosztów szacowane miesięczne.
-   - Jeśli zdecydujesz się **powiadamiania** po osiągnięciu wartości progowej, należy określić adres URL elementu webhook. W obszarze integracji kosztów, wybierz **kliknij tutaj, aby dodać integracji**. Wprowadź **adresu URL elementu Webhook** w okienku powiadomienia Konfiguruj, a następnie wybierz pozycję **OK**.
+   - Wybierz przedział czasu, w którym chcesz śledzić cele kosztów.
+      - **Co**miesiąc: wartości docelowe kosztów są śledzone miesięcznie.
+      - Naprawiono: cele kosztów są śledzone dla zakresu dat określonego w datach rozpoczęcia i zakończenia. Zazwyczaj te wartości przedstawiają czas, przez jaki projekt jest zaplanowany do uruchomienia.
+   - Określ **koszt docelowy**. Na przykład ilość planowanej pracy w tym laboratorium w zdefiniowanym okresie.
+   - Wybierz, aby włączyć lub wyłączyć wszystkie zgłoszone progi — w przyrostach wynoszących 25% — do 125% określonego **kosztu docelowego**.
+      - **Powiadomienie**: Po spełnieniu tego progu zostanie wyświetlony monit o podanie adresu URL elementu webhook.
+      - **Wykres słupkowy**: Po spełnieniu tego progu wyniki są wykreślane na wykresie trendu kosztów, który można wyświetlić, zgodnie z opisem w temacie Wyświetlanie wykresu trendu dotyczącego miesięcznego kosztu.
+   - Jeśli zdecydujesz się na **powiadomienie** po spełnieniu progu, musisz określić adres URL elementu webhook. W obszarze integracje kosztów wybierz **pozycję kliknij tutaj, aby dodać integrację**. Wprowadź **adres URL elementu webhook** w okienku Konfigurowanie powiadomienia, a następnie wybierz przycisk **OK**.
 
-       ![Konfigurowanie okienkiem powiadomienia](./media/devtest-lab-configure-cost-management/configure-notification.png)
+       ![Konfigurowanie okienka powiadomień](./media/devtest-lab-configure-cost-management/configure-notification.png)
 
-     - Jeśli określisz **powiadamiania**, należy określić adres URL elementu webhook.
-     - Podobnie, jeśli zdefiniujesz adres URL elementu webhook, musisz ustawić **powiadomień** do **na** w okienku próg kosztów.
-     - Należy utworzyć element webhook przed wprowadź go tutaj.  
+     - W przypadku określenia **powiadomienia**należy zdefiniować adres URL elementu webhook.
+     - Analogicznie, jeśli zdefiniujesz adres URL elementu webhook, w  okienku próg kosztu należy ustawić wartość **włączone** .
+     - Musisz utworzyć element webhook przed wprowadzeniem go w tym miejscu.  
 
-       Aby uzyskać więcej informacji na temat elementów webhook, zobacz [Tworzenie elementu webhook lub interfejsu API usługi Azure Function](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
+       Aby uzyskać więcej informacji na temat elementów webhook, zobacz [Tworzenie elementu webhook lub interfejsu API platformy Azure](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
 
-## <a name="view-cost-by-resource"></a>Widok koszty według zasobu 
-Miesięczny koszt trend funkcja w laboratoriach umożliwia można zobaczyć, ile możesz spędzić w bieżącym miesiącu. Pokazuje także rzut wydatków aż do końca miesiąca, w oparciu o swoje wydatki w ciągu ostatnich siedmiu dni. Aby lepiej zrozumieć, dlaczego wydatków w środowisku laboratoryjnym osiąga progi na wczesnym etapie, można użyć **koszty według zasobu** Funkcja pokazująca kosztów od początku miesiąca **poszczególnych zasobów** w tabeli.
+## <a name="view-cost-by-resource"></a>Wyświetl koszt według zasobu 
+Funkcja trendu kosztu miesięcznego w laboratoriach pozwala zobaczyć, jak dużo spędzasz w bieżącym miesiącu kalendarzowym. Przedstawia także rzutowanie wydatków do końca miesiąca, na podstawie wydatków w ciągu ostatnich siedmiu dni. Aby ułatwić zrozumienie, dlaczego wydatki w laboratorium są wczesne progi spotkań, można użyć funkcji **Koszt według zasobów** , która pokazuje, jaki jest miesięczny koszt **na zasób** w tabeli.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Wybierz **wszystkich usług**, a następnie wybierz pozycję **DevTest Labs** z listy.
-3. Z listy labs wybierz żądane laboratorium.  
-4. Wybierz **konfiguracji i zasad** w menu po lewej stronie.
-5. Wybierz **koszty według zasobu** w **śledzenie kosztów** sekcji, w menu po lewej stronie. Zostanie wyświetlony kosztów związanych z poszczególnych zasobów skojarzonych z laboratorium. 
+2. Wybierz pozycję **wszystkie usługi**, a następnie z listy wybierz pozycję **DevTest Labs** .
+3. Z listy laboratoriów wybierz odpowiednie laboratorium.  
+4. W menu po lewej stronie wybierz pozycję **Konfiguracja i zasady** .
+5. Wybierz pozycję **Koszt według zasobów** w sekcji **Śledzenie kosztów** w menu po lewej stronie. Zobaczysz koszty związane z poszczególnymi zasobami skojarzonymi z laboratorium. 
 
     ![Koszt według zasobu](./media/devtest-lab-configure-cost-management/cost-by-resource.png)
 
-Ta funkcja pomaga łatwo zidentyfikować zasoby, których koszt najbardziej tak, aby można wykonać akcje, aby ograniczyć wydatki laboratorium. Na przykład koszt maszyny Wirtualnej opiera się na rozmiar maszyny Wirtualnej. Im większy rozmiar maszyny Wirtualnej, więcej jest koszt. Rozmiar maszyny Wirtualnej i jego właściciela, można łatwo znaleźć, dzięki czemu można rozmawiać, właściciel maszyny Wirtualnej, aby zrozumieć, dlaczego jest potrzebny takiego rozmiaru maszyny Wirtualnej i czy istnieje ryzyko, aby zmniejszyć rozmiar.
+Ta funkcja pomaga łatwo identyfikować zasoby, które są najtańsze, dzięki czemu możesz podjąć działania w celu zmniejszenia wydatków laboratorium. Na przykład koszt maszyny wirtualnej zależy od rozmiaru maszyny wirtualnej. Im większy rozmiar maszyny wirtualnej, tym większa jest koszt. Możesz łatwo znaleźć rozmiar maszyny wirtualnej i właściciela, aby skontaktować się z właścicielem maszyny wirtualnej w celu zrozumienia przyczyny tego rozmiaru maszyny wirtualnej i określić, czy jest możliwe zmniejszenie rozmiaru.
 
-[Zasady automatycznego zamykania](devtest-lab-get-started-with-lab-policies.md#set-auto-shutdown) ułatwia obniżenie kosztów dzięki zamykaniu laboratorium, maszyny wirtualne o określonej porze dnia. Jednak użytkownik laboratorium można zrezygnować z zasad zamknięcia, co zwiększa koszt uruchamiania maszyny Wirtualnej. Możesz wybrać Maszynę wirtualną w tabeli, aby zobaczyć, jeśli je ma został wyłączony w poziomie zasad automatycznego zamykania. Jeśli tak jest rzeczywiście, możesz skontaktować się do właściciela maszyny Wirtualnej można znaleźć Dlaczego maszyna wirtualna ma został wyłączony w poziomie zasad.
+[Zasady automatycznego zamykania](devtest-lab-set-lab-policy.md?#set-auto-shutdown-policy) ułatwiają obniżenie kosztów dzięki wykorzystaniu maszyn wirtualnych laboratorium w określonym czasie dnia. Jednak użytkownik laboratorium może zrezygnować z zasad zamykania, co zwiększa koszt działania maszyny wirtualnej. Możesz wybrać maszynę wirtualną w tabeli, aby sprawdzić, czy została ona wyświetlona z zasad automatycznego zamykania. W takim przypadku można skontaktować się z właścicielem maszyny wirtualnej w celu sprawdzenia, dlaczego maszyna wirtualna została wykorzystana z zasad.
  
 ## <a name="next-steps"></a>Kolejne kroki
-Oto kilka rzeczy, aby wypróbować następne:
+Oto kilka rzeczy, aby spróbować dalej:
 
-* [Definiowanie zasad laboratorium](devtest-lab-set-lab-policy.md) — Dowiedz się, jak ustawić różne zasady stosowane do zarządzania, do czego służą środowiska laboratoryjnego i jego maszyn wirtualnych. 
-* [Tworzenie obrazu niestandardowego](devtest-lab-create-template.md) — podczas tworzenia maszyny Wirtualnej, należy określić podstawowy, który może być niestandardowego obrazu lub obrazu z witryny Marketplace. W tym artykule pokazano, jak utworzyć niestandardowy obraz z pliku wirtualnego dysku twardego.
-* [Konfigurowanie obrazów z witryny Marketplace](devtest-lab-configure-marketplace-images.md) — usługa DevTest Labs obsługuje tworzenia maszyn wirtualnych opartych na obrazach portalu Azure Marketplace. W tym artykule pokazano, jak określić, które ewentualnie obrazów portalu Azure Marketplace, mogą być używane podczas tworzenia maszyn wirtualnych w laboratorium.
-* [Tworzenie maszyny Wirtualnej w laboratorium](devtest-lab-add-vm.md) -pokazano, jak utworzyć maszynę Wirtualną z obrazu podstawowego (albo niestandardowe lub portalu Marketplace) oraz sposób pracy z artefaktami w maszynie Wirtualnej.
+* [Definiowanie zasad laboratorium](devtest-lab-set-lab-policy.md) — informacje na temat ustawiania różnych zasad służących do zarządzania sposobem korzystania z laboratorium i jego maszyn wirtualnych. 
+* [Tworzenie obrazu niestandardowego](devtest-lab-create-template.md) — podczas tworzenia maszyny wirtualnej należy określić podstawową, która może być obrazem niestandardowym lub obrazem portalu Marketplace. W tym artykule pokazano, jak utworzyć obraz niestandardowy na podstawie pliku VHD.
+* [Konfigurowanie obrazów z portalu Marketplace](devtest-lab-configure-marketplace-images.md) — DevTest Labs obsługuje tworzenie maszyn wirtualnych na podstawie obrazów portalu Azure Marketplace. W tym artykule pokazano, jak określić, w jaki sposób można używać obrazów portalu Azure Marketplace podczas tworzenia maszyn wirtualnych w środowisku laboratoryjnym.
+* [Tworzenie maszyny wirtualnej w laboratorium](devtest-lab-add-vm.md) — pokazuje, jak utworzyć maszynę wirtualną na podstawie obrazu podstawowego (niestandardowego lub Marketplace) oraz jak korzystać z artefaktów na maszynie wirtualnej.
 

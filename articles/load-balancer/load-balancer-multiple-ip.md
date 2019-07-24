@@ -1,10 +1,10 @@
 ---
-title: Równoważenie obciążenia na wielu konfiguracji adresu IP — witryna Azure portal
+title: Równoważenie obciążenia dla wielu konfiguracji adresów IP — Azure Portal
 titlesuffix: Azure Load Balancer
-description: Równoważenie obciążenia w podstawowych i pomocniczych konfiguracji adresów IP.
+description: Równoważenie obciążenia w ramach podstawowych i pomocniczych konfiguracji adresów IP.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -12,15 +12,15 @@ ms.custom: se0dec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: 0cf5aa45e1e8a28dfcdadac0ea32658e5993d06c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: dbf8cdd326d3e1c8f32f6dc2bd3486146993e06b
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60591715"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274732"
 ---
-# <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Równoważenie obciążenia na wielu konfiguracji adresu IP za pomocą witryny Azure portal
+# <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Równoważenie obciążenia dla wielu konfiguracji adresów IP przy użyciu Azure Portal
 
 > [!div class="op_single_selector"]
 > * [Portal](load-balancer-multiple-ip.md)
@@ -28,170 +28,170 @@ ms.locfileid: "60591715"
 > * [Interfejs wiersza polecenia](load-balancer-multiple-ip-cli.md)
 
 
-W tym artykule wdrożymy dowiesz się, jak używać usługi Azure Load Balancer z wieloma adresami IP na kontrolera interfejsu sieciowego dodatkowej (NIC). Na poniższym diagramie przedstawiono scenariuszu:
+W tym artykule przedstawiono sposób użycia Azure Load Balancer z wieloma adresami IP na dodatkowym kontrolerze sieci (NIC). Na poniższym diagramie przedstawiono nasz scenariusz:
 
 ![Scenariusz modułu równoważenia obciążenia](./media/load-balancer-multiple-ip/lb-multi-ip.PNG)
 
-W naszym scenariuszu używamy następującej konfiguracji:
+W naszym scenariuszu używana jest następująca konfiguracja:
 
-- Dwie maszyny wirtualne (VM) z systemem Windows.
-- Każda maszyna wirtualna ma głównej i pomocniczej karty sieciowej
-- Każdej pomocniczej karty Sieciowej ma dwie konfiguracje adresów IP.
-- Każda maszyna wirtualna jest hostem dwie witryny sieci Web: contoso.com i fabrikam.com.
-- Każda witryna sieci Web jest powiązana z konfiguracji adresu IP pomocniczej karty sieciowej
-- Usługa Azure Load Balancer jest używany do udostępnienia dwóch adresów IP frontonu, jeden dla każdej witryny sieci Web. Frontonu adresy są używane do dystrybucji ruchu do odpowiedniej konfiguracji adresów IP, dla każdej witryny sieci Web.
-- Ten sam numer portu jest używany zarówno adresy IP frontonu i zaplecza pulę adresów IP.
+- Dwie maszyny wirtualne z systemem Windows.
+- Każda maszyna wirtualna ma podstawową i pomocniczą kartę sieciową.
+- Każda pomocnicza karta sieciowa ma dwie konfiguracje IP.
+- Każda maszyna wirtualna obsługuje dwie witryny sieci Web: contoso.com i fabrikam.com.
+- Każda witryna sieci Web jest powiązana z konfiguracją adresów IP na pomocniczej karcie sieciowej.
+- Azure Load Balancer służy do uwidocznienia dwóch adresów IP frontonu, po jednym dla każdej witryny sieci Web. Adresy frontonu są używane do dystrybucji ruchu do odpowiedniej konfiguracji protokołu IP dla każdej witryny sieci Web.
+- Ten sam numer portu jest używany zarówno dla adresów IP frontonu, jak i adresów IP puli zaplecza.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Nasz przykład w scenariuszu przyjęto założenie, iż grupę zasobów o nazwie **contosofabrikam** skonfigurowanego w następujący sposób:
+W naszym przykładzie scenariusza założono, że masz grupę zasobów o nazwie **contosofabrikam** , która jest skonfigurowana w następujący sposób:
 
 - Grupa zasobów zawiera sieć wirtualną o nazwie **myVNet**.
-- **MyVNet** sieć zawiera dwie maszyny wirtualne o nazwach **VM1** i **VM2**.
-- Maszyna VM1 i VM2 znajdują się w tej samej zestawu dostępności o nazwie **myAvailset**. 
-- Maszyny VM1, jak i maszyny VM2 mieć podstawowej karty Sieciowej o nazwie **VM1NIC1** i **VM2NIC1**, odpowiednio. 
-- Maszyna VM1, jak i maszyny VM2 mają pomocniczej karty Sieciowej o nazwie **VM1NIC2** i **VM2NIC2**, odpowiednio.
+- Sieć **myVNet** obejmuje dwie maszyny wirtualne o nazwach **VM1** i **VM2**.
+- VM1 i VM2 znajdują się w tym samym zestawie dostępności o nazwie **myAvailset**. 
+- VM1 i VM2 mają odpowiednio podstawową kartę sieciową o nazwie **VM1NIC1** i **VM2NIC1**. 
+- VM1 i VM2 każdy z nich ma pomocniczą kartę sieciową o nazwie **VM1NIC2** i **VM2NIC2**.
 
-Aby uzyskać więcej informacji na temat tworzenia maszyn wirtualnych z wieloma kartami sieciowymi, zobacz [Utwórz Maszynę wirtualną z wieloma kartami sieciowymi przy użyciu programu PowerShell](../virtual-machines/windows/multiple-nics.md).
+Aby uzyskać więcej informacji na temat tworzenia maszyn wirtualnych z wieloma kartami sieciowymi, zobacz [Tworzenie maszyny wirtualnej z wieloma](../virtual-machines/windows/multiple-nics.md)kartami sieciowymi przy użyciu programu PowerShell.
 
-## <a name="perform-load-balancing-on-multiple-ip-configurations"></a>Wykonaj równoważenia obciążenia na wielu konfiguracji adresu IP
+## <a name="perform-load-balancing-on-multiple-ip-configurations"></a>Wykonywanie równoważenia obciążenia dla wielu konfiguracji adresów IP
 
-Wykonaj poniższe kroki, aby osiągnąć scenariusz opisany w tym artykule.
+Wykonaj następujące kroki, aby osiągnąć scenariusz opisany w tym artykule.
 
-### <a name="step-1-configure-the-secondary-nics"></a>Krok 1: Skonfiguruj dodatkową kartą sieciową
+### <a name="step-1-configure-the-secondary-nics"></a>Krok 1: Konfigurowanie pomocniczych kart sieciowych
 
-Dla każdej maszyny Wirtualnej w sieci wirtualnej należy dodać konfiguracji adresu IP dla pomocniczej karty Sieciowej:  
+Dla każdej maszyny wirtualnej w sieci wirtualnej Dodaj konfigurację protokołu IP dla pomocniczej karty sieciowej:  
 
-1. Przejdź do witryny Azure portal: https://portal.azure.com. Zaloguj się przy użyciu konta platformy Azure.
+1. Przejdź do Azure Portal: https://portal.azure.com. Zaloguj się przy użyciu konta platformy Azure.
 
-2. W lewym górnym rogu ekranu, wybierz **grupy zasobów** ikony. Następnie wybierz grupę zasobów, w którym znajdują się maszyny wirtualne (na przykład **contosofabrikam**). **Grup zasobów** okienko Wyświetla listę wszystkich zasobów i kart sieciowych dla maszyn wirtualnych.
+2. W lewym górnym rogu ekranu wybierz ikonę **grupy zasobów** . Następnie wybierz grupę zasobów, w której znajdują się maszyny wirtualne (na przykład **contosofabrikam**). W okienku **grupy zasobów** zostaną wyświetlone wszystkie zasoby i karty sieciowe dla maszyn wirtualnych.
 
-3. Dodaj konfigurację adresu IP dla pomocniczej karty Sieciowej poszczególnych maszyn wirtualnych:
+3. W przypadku pomocniczej karty sieciowej dla każdej maszyny wirtualnej Dodaj konfigurację adresu IP:
 
-    1. Wybierz pomocniczej karty Sieciowej, którą chcesz skonfigurować.
+    1. Wybierz pomocniczą kartę sieciową, którą chcesz skonfigurować.
     
-    2. Wybierz **konfiguracje adresów IP**. W okienku dalej, u góry, zaznacz **Dodaj**.
+    2. Wybierz pozycję **konfiguracje adresów IP**. W następnym okienku w górnej części strony wybierz pozycję **Dodaj**.
 
-    3. W obszarze **konfiguracje Dodaj adres IP**, Dodaj druga Konfiguracja protokołu IP do karty Sieciowej: 
+    3. W obszarze **Dodawanie konfiguracji adresów IP**Dodaj drugą konfigurację adresu IP do karty sieciowej: 
 
-        1. Wprowadź nazwę dla konfiguracji pomocniczego adresu IP. (Na przykład w przypadku maszyny VM1 i VM2 nazwać Konfiguracja protokołu IP **VM1NIC2 ipconfig2** i **VM2NIC2 ipconfig2**odpowiednio.)
+        1. Wprowadź nazwę pomocniczej konfiguracji adresu IP. (Na przykład w przypadku VM1 i VM2 należy odpowiednio nazwać konfigurację protokołu IP **VM1NIC2-ipconfig2** i **VM2NIC2-ipconfig2**).
 
-        2. Aby uzyskać **prywatny adres IP**, **alokacji** ustawienie, wybierz **statyczne**.
+        2. W polu **prywatny adres IP**, ustawienie **alokacji** wybierz pozycję **statyczny**.
 
         3. Kliknij przycisk **OK**.
 
-Po druga Konfiguracja protokołu IP dla pomocniczej karty Sieciowej jest zakończone, pojawi się w obszarze **konfiguracje adresów IP** ustawień dla danej karty sieciowej.
+Po zakończeniu drugiej konfiguracji protokołu IP dla pomocniczej karty sieciowej zostanie ona wyświetlona w obszarze Ustawienia **konfiguracji protokołu IP** dla danej karty sieciowej.
 
 ### <a name="step-2-create-the-load-balancer"></a>Krok 2: Tworzenie modułu równoważenia obciążenia
 
-Tworzenie modułu równoważenia obciążenia dla konfiguracji:
+Utwórz moduł równoważenia obciążenia dla konfiguracji:
 
-1. Przejdź do witryny Azure portal: https://portal.azure.com. Zaloguj się przy użyciu konta platformy Azure.
+1. Przejdź do Azure Portal: https://portal.azure.com. Zaloguj się przy użyciu konta platformy Azure.
 
-2. W lewym górnym rogu ekranu, wybierz **Utwórz zasób** > **sieć** > **modułu równoważenia obciążenia**. Następnie wybierz pozycję **Utwórz**.
+2. W lewym górnym rogu ekranu wybierz pozycję **Utwórz zasób zasobów** >  > **Load Balancer**. Następnie wybierz pozycję **Utwórz**.
 
-3. W obszarze **Tworzenie modułu równoważenia obciążenia**, wpisz nazwę dla modułu równoważenia obciążenia. W tym scenariuszu używamy nazwy **mylb**.
+3. W obszarze **Tworzenie modułu równoważenia obciążenia**wpisz nazwę modułu równoważenia obciążenia. W tym scenariuszu używamy nazwy **mylb**.
 
-4. W obszarze **publiczny adres IP**, Utwórz nowy publiczny adres IP o nazwie **PublicIP1**.
+4. W obszarze **publiczny adres IP**Utwórz nowy publiczny adres IP o nazwie **PublicIP1**.
 
-5. W obszarze **grupy zasobów**, wybierz istniejącą grupę zasobów dla maszyn wirtualnych (na przykład **contosofabrikam**). Wybierz lokalizację, aby wdrożyć moduł równoważenia obciążenia do, a następnie wybierz **OK**.
+5. W obszarze **Grupa zasobów**wybierz istniejącą grupę zasobów dla maszyn wirtualnych (na przykład **contosofabrikam**). Wybierz lokalizację, w której ma zostać wdrożony moduł równoważenia obciążenia, a następnie wybierz przycisk **OK**.
 
-Moduł równoważenia obciążenia rozpocznie się do wdrożenia. Wdrożenie może potrwać kilka minut. Po zakończeniu wdrażania modułu równoważenia obciążenia jest wyświetlany jako zasób w grupie zasobów.
+Moduł równoważenia obciążenia rozpocznie wdrażanie. Wdrożenie może potrwać kilka minut. Po zakończeniu wdrażania moduł równoważenia obciążenia jest wyświetlany jako zasób w grupie zasobów.
 
 ### <a name="step-3-configure-the-front-end-ip-pool"></a>Krok 3: Konfigurowanie puli adresów IP frontonu
 
-Dla każdej witryny sieci Web (contoso.com i fabrikam.com) należy skonfigurować puli adresów IP frontonu na moduł równoważenia obciążenia:
+Dla każdej witryny sieci Web (contoso.com i fabrikam.com) skonfiguruj pulę adresów IP frontonu dla modułu równoważenia obciążenia:
 
-1. W portalu, wybierz **więcej usług**. W polu filtru wpisz **publiczny adres IP** , a następnie wybierz **publiczne adresy IP**. W okienku dalej, u góry, zaznacz **Dodaj**.
+1. W portalu wybierz pozycję **więcej usług**. W polu Filtr wpisz **publiczny adres IP** , a następnie wybierz pozycję **publiczne adresy IP**. W następnym okienku w górnej części strony wybierz pozycję **Dodaj**.
 
-2. Skonfiguruj dwa publiczne adresy IP (**PublicIP1** i **PublicIP2**) dla obu witryn sieci Web (contoso.com i fabrikam.com):
+2. Skonfiguruj dwa publiczne adresy IP (**PublicIP1** i **PublicIP2**) dla obu witryn sieci web (contoso.com i fabrikam.com):
 
-   1. Wpisz nazwę dla podanego adresu IP frontonu.
+   1. Wpisz nazwę dla adresu IP frontonu.
 
-   2. Aby uzyskać **grupy zasobów**, wybierz istniejącą grupę zasobów dla maszyn wirtualnych (na przykład **contosofabrikam**).
+   2. W obszarze **Grupa zasobów**wybierz istniejącą grupę zasobów dla swoich maszyn wirtualnych (na przykład **contosofabrikam**).
 
-   3. Aby uzyskać **lokalizacji**, wybierz lokalizację, ponieważ maszyny wirtualne.
+   3. W polu **Lokalizacja**wybierz tę samą lokalizację co maszyny wirtualne.
 
    4. Kliknij przycisk **OK**.
 
-      Po utworzeniu publicznego adresu IP, są wyświetlane w obszarze **publiczny adres IP** adresów.
+      Po utworzeniu publicznych adresów IP są one wyświetlane pod publicznymi adresami **IP** .
 
-3. <a name="step3-3"></a>W portalu, wybierz **więcej usług**. W polu filtru wpisz **moduł równoważenia obciążenia** , a następnie wybierz **usługi Load Balancer**. 
+3. <a name="step3-3"></a>W portalu wybierz pozycję **więcej usług**. W polu Filtr wpisz **moduł równoważenia obciążenia** , a następnie wybierz pozycję **Load Balancer**. 
 
-4. Wybierz moduł równoważenia obciążenia (**mylb**) czy chcesz dodać puli adresów IP frontonu, aby.
+4. Wybierz moduł równoważenia obciążenia (**mylb**), do którego chcesz dodać pulę adresów IP frontonu.
 
-5. W obszarze **ustawienia**, wybierz opcję **konfiguracja adresu IP frontonu**. W okienku dalej, u góry, zaznacz **Dodaj**.
+5. W obszarze **Ustawienia**wybierz pozycję **Konfiguracja adresu IP frontonu**. W następnym okienku w górnej części strony wybierz pozycję **Dodaj**.
 
-6. Wpisz nazwę dla podanego adresu IP frontonu (na przykład **contosofe** lub **fabrikamfe**).
+6. Wpisz nazwę dla adresu IP frontonu (na przykład **contosofe** lub **fabrikamfe**).
 
-7. <a name="step3-7"></a>Wybierz **adresu IP**. W obszarze **wybierz publiczny adres IP**, wybierz adresy IP dla usługi frontonu (**PublicIP1** lub **PublicIP2**).
+7. <a name="step3-7"></a>Wybierz pozycję **adres IP**. W obszarze **Wybierz publiczny adres IP**wybierz adresy IP frontonu (**PublicIP1** lub **PublicIP2**).
 
-8. Utwórz drugi adres IP frontonu, powtarzając <a href="#step3-3">kroku 3</a> za pośrednictwem <a href="#step3-7">kroku 7</a> w tej sekcji.
+8. Utwórz drugi adres IP frontonu, powtarzając <a href="#step3-3">krok 3</a> w <a href="#step3-7">kroku 7</a> w tej sekcji.
 
-Po skonfigurowaniu puli frontonu adresy IP są wyświetlane w obszarze modułu równoważenia obciążenia **konfiguracja adresu IP frontonu** ustawienia. 
+Po skonfigurowaniu puli frontonu adresy IP są wyświetlane w ustawieniach **konfiguracji adresu IP frontonu** modułu równoważenia obciążenia. 
     
 ### <a name="step-4-configure-the-back-end-pool"></a>Krok 4: Konfigurowanie puli zaplecza
 
-Każda witryna sieci Web (contoso.com i fabrikam.com) można skonfigurować w puli adresów zaplecza modułu równoważenia obciążenia:
+Dla każdej witryny sieci Web (contoso.com i fabrikam.com) skonfiguruj pulę adresów zaplecza w module równoważenia obciążenia:
         
-1. W portalu, wybierz **więcej usług**. W polu filtru wpisz **moduł równoważenia obciążenia** , a następnie wybierz **usługi Load Balancer**.
+1. W portalu wybierz pozycję **więcej usług**. W polu Filtr wpisz **moduł równoważenia obciążenia** , a następnie wybierz pozycję **Load Balancer**.
 
-2. Wybierz moduł równoważenia obciążenia (**mylb**) przewidziane do dodania do puli zaplecza.
+2. Wybierz moduł równoważenia obciążenia (**mylb**), do którego chcesz dodać pulę zaplecza.
 
-3. W obszarze **ustawienia**, wybierz opcję **pule zaplecza**. Wpisz nazwę puli zaplecza (na przykład **contosopool** lub **fabrikampool**). W okienku dalej, u góry, zaznacz **Dodaj**. 
+3. W obszarze **Ustawienia**wybierz pozycję **Pule zaplecza**. Wpisz nazwę puli zaplecza (na przykład **contosopool** lub **fabrikampool**). W następnym okienku w górnej części strony wybierz pozycję **Dodaj**. 
 
-4. Aby uzyskać **powiązanych z**, wybierz opcję **zestawu dostępności**.
+4. W obszarze **skojarzone z**wybierz pozycję **zestaw dostępności**.
 
-5. Aby uzyskać **zestawu dostępności**, wybierz opcję **myAvailset**.
+5. W obszarze **zestaw dostępności**wybierz pozycję **myAvailset**.
 
-6. Dodaj konfiguracje protokołu IP sieci docelowej dla obu maszyn wirtualnych: 
+6. Dodaj docelowe konfiguracje IP sieci dla obu maszyn wirtualnych: 
 
-    ![Skonfiguruj pule zaplecza dla modułu równoważenia obciążenia](./media/load-balancer-multiple-ip/lb-backendpool.PNG)
+    ![Konfigurowanie pul zaplecza dla modułu równoważenia obciążenia](./media/load-balancer-multiple-ip/lb-backendpool.PNG)
     
-    1. Aby uzyskać **docelowej maszyny wirtualnej**, wybierz maszynę Wirtualną, którą chcesz dodać do puli zaplecza (na przykład **VM1** lub **VM2**).
+    1. Dla **docelowej maszyny wirtualnej**wybierz maszynę wirtualną, którą chcesz dodać do puli zaplecza (na przykład **VM1** lub **VM2**).
 
-    2. Dla **Konfiguracja protokołu IP sieci**, wybierz konfigurację adresu IP dla pomocniczej karty Sieciowej dla maszyny Wirtualnej, który został wybrany w poprzednim kroku (na przykład **VM1NIC2 ipconfig2** lub **VM2NIC2 ipconfig2** ).
+    2. W obszarze **Konfiguracja protokołu IP sieci**wybierz konfigurację IP pomocniczej karty sieciowej dla maszyny wirtualnej wybranej w poprzednim kroku (na przykład **VM1NIC2-ipconfig2** lub **VM2NIC2-ipconfig2**).
 
 7. Kliknij przycisk **OK**.
 
-Po skonfigurowaniu puli zaplecza adresy są wyświetlane w obszarze modułu równoważenia obciążenia **puli zaplecza** ustawienia.
+Po skonfigurowaniu puli zaplecza adresy są wyświetlane w obszarze Ustawienia **puli zaplecza** modułu równoważenia obciążenia.
 
 ### <a name="step-5-configure-the-health-probe"></a>Krok 5. Konfigurowanie sondy kondycji
 
-Konfigurowanie sondy kondycji modułu równoważenia obciążenia:
+Konfigurowanie sondy kondycji dla modułu równoważenia obciążenia:
 
-1. W portalu, wybierz **więcej usług**. W polu filtru wpisz **moduł równoważenia obciążenia** , a następnie wybierz **usługi Load Balancer**.
+1. W portalu wybierz pozycję **więcej usług**. W polu Filtr wpisz **moduł równoważenia obciążenia** , a następnie wybierz pozycję **Load Balancer**.
 
-2. Wybierz moduł równoważenia obciążenia (**mylb**) czy chcesz dodać sondy kondycji.
+2. Wybierz moduł równoważenia obciążenia (**mylb**), do którego chcesz dodać sondę kondycji.
 
-3. W obszarze **ustawienia**, wybierz opcję **sondy kondycji**. W okienku dalej, u góry, zaznacz **Dodaj**. 
+3. W obszarze **Ustawienia**wybierz pozycję **sonda kondycji**. W następnym okienku w górnej części strony wybierz pozycję **Dodaj**. 
 
-4. Wpisz nazwę dla sondy kondycji (na przykład **HTTP**). Kliknij przycisk **OK**.
+4. Wpisz nazwę sondy kondycji (na przykład **http**). Kliknij przycisk **OK**.
 
 ### <a name="step-6-configure-load-balancing-rules"></a>Krok 6: Konfigurowanie reguł równoważenia obciążenia
 
-Dla każdej witryny sieci Web (contoso.com i fabrikam.com) należy skonfigurować reguły równoważenia obciążenia:
+Dla każdej witryny sieci Web (contoso.com i fabrikam.com) Skonfiguruj reguły równoważenia obciążenia:
     
-1. <a name="step6-1"></a>W obszarze **ustawienia**, wybierz opcję **reguły równoważenia obciążenia**. W okienku dalej, u góry, zaznacz **Dodaj**. 
+1. <a name="step6-1"></a>W obszarze **Ustawienia**wybierz pozycję **reguły równoważenia obciążenia**. W następnym okienku w górnej części strony wybierz pozycję **Dodaj**. 
 
-2. Aby uzyskać **nazwa**, wpisz nazwę reguły równoważenia obciążenia (na przykład **HTTPc** dla domeny contoso.com, lub **HTTPf** dla fabrikam.com).
+2. W polu **Nazwa**wpisz nazwę reguły równoważenia obciążenia (na przykład **HTTPc** for contoso.com lub **HTTPf** for fabrikam.com).
 
-3. Aby uzyskać **adres IP frontonu**, wybierz adres IP frontonu, który został wcześniej utworzony (na przykład **contosofe** lub **fabrikamfe**).
+3. W polu **adres IP frontonu**wybierz utworzony wcześniej adres IP frontonu (na przykład **contosofe** lub **fabrikamfe**).
 
-4. Aby uzyskać **portu** i **port zaplecza**, Zachowaj wartość domyślną **80**.
+4. W polu **port** i **port zaplecza**pozostaw wartość domyślną **80**.
 
-5. Aby uzyskać **pływającego adresu IP (bezpośredni zwrot serwera)** , wybierz opcję **wyłączone**.
+5. Dla **zmiennoprzecinkowego adresu IP (bezpośredni zwrot serwera)** wybierz pozycję **wyłączone**.
 
-6. <a name="step6-6"></a>Wybierz **OK**.
+6. <a name="step6-6"></a>Wybierz **przycisk OK**.
 
-7. Utwórz drugi reguły modułu równoważenia obciążenia, powtarzając <a href="#step6-1">kroku 1</a> za pośrednictwem <a href="#step6-6">kroku 6</a> w tej sekcji.
+7. Utwórz drugą regułę modułu równoważenia obciążenia, powtarzając <a href="#step6-1">krok 1</a> przez <a href="#step6-6">krok 6</a> w tej sekcji.
 
-Po skonfigurowaniu zasad, zostaną one wyświetlone w obszarze modułu równoważenia obciążenia **reguły równoważenia obciążenia** ustawienia.
+Po skonfigurowaniu reguł zostaną one wyświetlone w obszarze Ustawienia **reguł równoważenia obciążenia** usługi równoważenia obciążenia.
 
-### <a name="step-7-configure-dns-records"></a>Krok 7: Skonfiguruj rekordy DNS
+### <a name="step-7-configure-dns-records"></a>Krok 7: Konfigurowanie rekordów DNS
 
-Ostatnim krokiem skonfigurować swoje rekordy zasobów DNS wskaż odpowiednie adresy IP frontonu modułu równoważenia obciążenia. Możesz hostować swoje domeny w usłudze Azure DNS. Aby uzyskać więcej informacji o korzystaniu z usługi Azure DNS przy użyciu modułu równoważenia obciążenia, zobacz [przy użyciu usługi Azure DNS z innymi usługami Azure](../dns/dns-for-azure-services.md).
+Ostatnim krokiem jest skonfigurowanie rekordów zasobów DNS w taki sposób, aby wskazywały odpowiednie adresy IP frontonu dla modułu równoważenia obciążenia. Domeny można hostować w Azure DNS. Aby uzyskać więcej informacji o korzystaniu z Azure DNS z Load Balancer, zobacz [używanie Azure DNS z innymi usługami platformy Azure](../dns/dns-for-azure-services.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o sposobie łączenia usług na platformie Azure w równoważenia obciążenia [przy użyciu usługi równoważenia obciążenia na platformie Azure](../traffic-manager/traffic-manager-load-balancing-azure.md).
-- Dowiedz się, jak można użyć różnych typów dzienników zarządzanie i rozwiązywanie problemów z modułu równoważenia obciążenia w [usługi Azure Monitor dzienniki dla usługi Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md).
+- Dowiedz się więcej na temat sposobu łączenia usług równoważenia obciążenia na platformie Azure [przy użyciu usług równoważenia obciążenia na platformie Azure](../traffic-manager/traffic-manager-load-balancing-azure.md).
+- Dowiedz się, jak za pomocą różnych typów dzienników zarządzać usługą równoważenia obciążenia i rozwiązywać problemy w [Azure monitor dziennikach Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md).

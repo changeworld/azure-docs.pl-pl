@@ -1,10 +1,10 @@
 ---
-title: Uruchamianie zadań w sposób równoległy efektywnie - używania zasobów obliczeniowych usługi Azure Batch | Dokumentacja firmy Microsoft
-description: Zwiększ wydajność i Obniż koszty przy użyciu mniejszej liczby węzłów obliczeniowych i uruchomieniu współbieżnych zadań w każdym węźle w puli usługi Azure Batch
+title: Równoległe Uruchamianie zadań w celu wydajnego używania zasobów obliczeniowych — Azure Batch | Microsoft Docs
+description: Zwiększenie wydajności i obniżenie kosztów dzięki użyciu mniejszej liczby węzłów obliczeniowych i uruchamiania współbieżnych zadań w każdym węźle w puli Azure Batch
 services: batch
 documentationcenter: .net
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 538a067c-1f6e-44eb-a92b-8d51c33d3e1a
 ms.service: batch
@@ -15,48 +15,48 @@ ms.workload: big-compute
 ms.date: 04/17/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 79b45bd423ed6715cdb7cc7c0e079c150eefede5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cc6a607da2227ecf9acd6209e31b7aa0ef1c62d8
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64717940"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323362"
 ---
-# <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Węzły obliczeniowe uruchamiania zadań jednocześnie w celu zmaksymalizowania użycia usługi Batch 
+# <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Uruchom zadania współbieżnie, aby zmaksymalizować użycie węzłów obliczeniowych wsadowych 
 
-Uruchamiając więcej niż jednego zadania jednocześnie w każdym węźle obliczeniowym w puli Azure Batch, można zmaksymalizować wykorzystanie zasobów w mniejszej liczby węzłów w puli. Dla niektórych obciążeń może to spowodować krótsze czasy zadań i obniżenie kosztów.
+Uruchamiając więcej niż jedno zadanie jednocześnie w każdym węźle obliczeniowym w puli Azure Batch, można zmaksymalizować użycie zasobów na mniejszej liczbie węzłów w puli. W przypadku niektórych obciążeń może to spowodować skrócenie czasu zadania i obniżenie kosztów.
 
-Podczas gdy niektóre scenariusze korzystać z dedykowanym wszystkie zasoby z węzła do jednego zadania, kilka sytuacji, w korzyści dzięki czemu wiele zadań udostępnić te zasoby:
+Chociaż niektóre scenariusze korzystają z przydzielenia wszystkich zasobów węzła do jednego zadania, niektóre sytuacje mogą korzystać z umożliwienia wielu zadań współdzielenia tych zasobów:
 
-* **Minimalizacja transfer danych** gdy zadania są w stanie udostępniać dane. W tym scenariuszu może znacznie zmniejszyć opłaty za transfer danych przez skopiowanie danych udostępnionych do mniejszej liczby węzłów i wykonywanie zadań równolegle na każdym węźle. Dotyczy to zwłaszcza, jeśli dane do skopiowania na każdym węźle muszą być przekazywane między regionów geograficznych.
-* **Maksymalizacja użycia pamięci** podczas zadania wymagają dużej ilości pamięci, ale tylko w krótkim czasie i w czasie zmiennych podczas wykonywania. Można stosować węzłów obliczeniowych mniej, ale większe, więcej pamięci, aby efektywnie obsłużyć takie skoki. Te węzły będzie mieć wiele zadań uruchamianych równolegle na każdym węźle, ale każde zadanie podrzędne może korzystać z węzłów dużej ilości pamięci w różnym czasie.
-* **Łagodzenia limity numer węzła** podczas komunikacji między węzłami jest wymagany w puli. Obecnie skonfigurowany do komunikacji między węzłami pule są ograniczone do węzłów obliczeniowych, 50. Jeśli każdy węzeł w takich puli jest możliwość wykonywania zadań w sposób równoległy, większą liczbę zadań mogą być wykonywane jednocześnie.
-* **Replikowanie lokalnych klastra obliczeniowego**, np. gdy użytkownik najpierw przenieść środowisko obliczeniowe na platformie Azure. Jeśli z bieżącego rozwiązania w środowisku lokalnym wykonuje wiele zadań w każdym węźle obliczeń, możesz zwiększyć maksymalną liczbę zadań podrzędnych węzła dokładniej duplikatów tej konfiguracji.
+* **Minimalizowanie transferu danych** , gdy zadania mogą udostępniać dane. W tym scenariuszu można znacznie zmniejszyć opłaty za transfer danych przez skopiowanie danych udostępnionych na mniejszą liczbę węzłów i wykonywanie zadań równolegle na każdym węźle. W szczególności ma to zastosowanie, jeśli dane, które mają być skopiowane do każdego węzła, muszą być transferowane między regionami geograficznymi.
+* **Maksymalizowanie użycia pamięci** , gdy zadania wymagają dużej ilości pamięci, ale tylko w krótkich okresach czasu i w zmiennym czasie wykonywania. Możesz użyć mniej, ale większych węzłów obliczeniowych z większą ilością pamięci, aby efektywnie obsłużyć takie skoki. Te węzły mają równolegle uruchomione wiele zadań w każdym węźle, ale każde zadanie będzie korzystać z plentiful pamięci węzłów w różnych godzinach.
+* **Ograniczenie liczby węzłów** w przypadku, gdy komunikacja między węzłami jest wymagana w ramach puli. Obecnie pule skonfigurowane pod kątem komunikacji między węzłami są ograniczone do 50 węzłów obliczeniowych. Jeśli każdy węzeł w takiej puli ma możliwość równoległego wykonywania zadań, można jednocześnie wykonać większą liczbę zadań.
+* **Replikacja lokalnego klastra obliczeniowego**, na przykład podczas pierwszego przenoszenia środowiska obliczeniowego na platformę Azure. Jeśli bieżące rozwiązanie lokalne wykonuje wiele zadań w każdym węźle obliczeniowym, można zwiększyć maksymalną liczbę zadań węzłów, aby dokładniej zdublować tę konfigurację.
 
 ## <a name="example-scenario"></a>Przykładowy scenariusz
-Przykład ilustrujący zalety równoległe wykonywanie zadań podrzędnych, załóżmy, że Twoja aplikacja zadanie ma wymagania dotyczące procesora CPU i pamięci, [standardowa\_D1](../cloud-services/cloud-services-sizes-specs.md) węzły są wystarczające. Jednak aby można było zakończyć zadanie w wymaganym czasie, 1000 te węzły są potrzebne.
+Przykładowo, aby zilustrować zalety równoległego wykonywania zadań, Załóżmy, że aplikacja zadania ma wymagania dotyczące [\_](../cloud-services/cloud-services-sizes-specs.md) procesora CPU i pamięci, co jest wystarczające. Jednak w celu zakończenia zadania w wymaganym czasie 1 000 z tych węzłów są potrzebne.
 
-Zamiast przy użyciu standardu\_węzły D1, które mają 1 rdzenia Procesora, można użyć [standardowa\_D14](../cloud-services/cloud-services-sizes-specs.md) węzły, które ma 16 rdzeni i umożliwiają równoległe wykonywanie zadań podrzędnych. W związku z tym *16 razy mniej węzłów* może służyć — zamiast 1000 węzłów tylko 63 będą wymagane. Ponadto jeśli pliki dużych aplikacji lub danych referencyjnych są wymagane dla każdego węzła, czas trwania zadania i wydajności ponownie lepsza, ponieważ dane są kopiowane do 63 węzłów.
+Zamiast używać standardowych\_węzłów D1, które mają 1 rdzeń procesora CPU, można użyć [standardowych\_węzłów D14](../cloud-services/cloud-services-sizes-specs.md) o 16 rdzeniach i włączyć równoległe wykonywanie zadań. W związku z tym, można użyć *16 razy mniej węzłów* — zamiast węzłów 1 000, wymagana jest tylko 63. Ponadto jeśli w każdym węźle są wymagane duże pliki aplikacji lub dane referencyjne, czas trwania zadania i wydajność są ponownie udoskonalane, ponieważ dane są kopiowane tylko do 63 węzłów.
 
-## <a name="enable-parallel-task-execution"></a>Włącz równoległe wykonywanie zadań podrzędnych
-Węzły obliczeniowe, aby równoległe wykonywanie zadań podrzędnych można konfigurować na poziomie puli. Za pomocą biblioteki .NET usługi Batch, należy ustawić [CloudPool.MaxTasksPerComputeNode] [ maxtasks_net] właściwość podczas tworzenia puli. Jeśli używasz interfejsu API REST usługi Batch, ustaw [maxTasksPerNode] [ rest_addpool] elementu w treści żądania podczas tworzenia puli.
+## <a name="enable-parallel-task-execution"></a>Włącz równoległe wykonywanie zadań
+Węzły obliczeniowe można skonfigurować do równoległego wykonywania zadań na poziomie puli. Za pomocą biblioteki Batch .NET Ustaw element [CloudPool. MaxTasksPerComputeNode][maxtasks_net] property when you create a pool. If you are using the Batch REST API, set the [maxTasksPerNode][rest_addpool] w treści żądania podczas tworzenia puli.
 
-Usługa Azure Batch umożliwia ustawienie zadań na węzeł (4 x) — maksymalna liczba węzłów core. Na przykład, jeśli pula jest skonfigurowana z węzłami rozmiaru "Duże" (4 rdzenie) `maxTasksPerNode` może być ustawiona na 16. Jednak niezależnie od tego, liczba rdzeni na węzeł zawiera, nie może mieć więcej niż 256 zadań na węzeł. Szczegółowe informacje na temat liczby rdzeni dla każdego rozmiary węzłów, [rozmiary usług Cloud Services](../cloud-services/cloud-services-sizes-specs.md). Aby uzyskać więcej informacji o limitach usługi, zobacz [przydziały i limity dla usługi Azure Batch](batch-quota-limit.md).
+Azure Batch pozwala ustawiać zadania na węzeł do (4x) liczbę węzłów podstawowych. Na przykład, jeśli Pula jest skonfigurowana z węzłami o rozmiarze "duże" (cztery rdzenie), `maxTasksPerNode` wówczas może być ustawiona na 16. Jednak niezależnie od tego, ile rdzeni ma węzeł, nie można mieć więcej niż 256 zadań na węzeł. Aby uzyskać szczegółowe informacje o liczbie rdzeni dla każdego rozmiaru węzła, zobacz [rozmiary dla Cloud Services](../cloud-services/cloud-services-sizes-specs.md). Aby uzyskać więcej informacji na temat limitów usługi, zobacz limity [przydziału i limity dla usługi Azure Batch](batch-quota-limit.md).
 
 > [!TIP]
-> Pamiętaj wziąć pod uwagę `maxTasksPerNode` wartości podczas konstruowania [formułę skalowania automatycznego] [ enable_autoscaling] dla puli. Na przykład formuła, której wynikiem `$RunningTasks` może znacząco wpływać wzrost zadań na węzeł. Zobacz [automatyczne skalowanie węzłów obliczeniowych w puli usługi Azure Batch](batch-automatic-scaling.md) Aby uzyskać więcej informacji.
+> Pamiętaj, `maxTasksPerNode` aby wziąć pod uwagę wartość podczas konstruowania [formuły skalowania automatycznego][enable_autoscaling] dla puli. Na przykład `$RunningTasks` można znacznie wpływać na liczbę zadań na węzeł. Aby uzyskać więcej informacji [, zobacz Automatyczne skalowanie węzłów obliczeniowych w puli Azure Batch](batch-automatic-scaling.md) .
 >
 >
 
-## <a name="distribution-of-tasks"></a>Podział zadań
-W węzłach obliczeniowych w puli mogą jednocześnie wykonywanie zadań, jest ważne, aby określić sposób zadań, które mają być dystrybuowane między węzłami w puli.
+## <a name="distribution-of-tasks"></a>Dystrybucja zadań
+Gdy węzły obliczeniowe w puli mogą wykonywać zadania współbieżnie, ważne jest, aby określić, w jaki sposób zadania mają być dystrybuowane między węzłami w puli.
 
-Za pomocą [CloudPool.TaskSchedulingPolicy] [ task_schedule] właściwości, można określić czy zadania powinny być przypisane równomiernie we wszystkich węzłach w puli ("rozmieszczenie"). Lub można określić, że dowolną liczbę zadań, jak to możliwe powinny być przypisane do każdego węzła, przed przypisaniem zadań do innego węzła w puli ("pakowanie").
+Za pomocą właściwości [CloudPool. TaskSchedulingPolicy][task_schedule] można określić, że zadania mają być przypisywane równomiernie we wszystkich węzłach w puli ("rozpraszanie"). Można też określić, że możliwie jak najwięcej zadań należy przypisać do każdego węzła przed przypisaniem zadań do innego węzła w puli ("pakowanie").
 
-Jako przykład jak ta funkcja jest przydatna, należy wziąć pod uwagę puli [standardowa\_D14](../cloud-services/cloud-services-sizes-specs.md) węzłów (w powyższym przykładzie), które jest skonfigurowane z użyciem [CloudPool.MaxTasksPerComputeNode] [ maxtasks_net] wartość 16. Jeśli [CloudPool.TaskSchedulingPolicy] [ task_schedule] skonfigurowano [ComputeNodeFillType] [ fill_type] z *pakiet*, zostaną zmaksymalizować użycie wszystkich 16 rdzeni w każdym węźle, a umożliwić [automatyczne skalowanie puli](batch-automatic-scaling.md) Aby oczyścić nieużywane węzły z puli (węzły bez żadnych zadań przypisanych). Minimalizuje użycie zasobów i pozwala oszczędzać pieniądze.
+Przykładowo, jak ta funkcja jest cenna, weź pod uwagę pulę [standardowych\_węzłów D14](../cloud-services/cloud-services-sizes-specs.md) (w powyższym przykładzie), która jest skonfigurowana za pomocą [CloudPool. MaxTasksPerComputeNode][maxtasks_net] value of 16. If the [CloudPool.TaskSchedulingPolicy][task_schedule] jest skonfigurowana z [ ComputeNodeFillType][fill_type] *Pack*, maksymalizuje użycie wszystkich 16 rdzeni każdego węzła i zezwoli [puli skalowania](batch-automatic-scaling.md) automatycznego na oczyszczanie nieużywanych węzłów z puli (węzły bez przypisanych zadań). Pozwala to zminimalizować użycie zasobów i zaoszczędzić pieniądze.
 
-## <a name="batch-net-example"></a>Przykład dla środowiska .NET usługi Batch
-To [platformy .NET usługi Batch] [ api_net] interfejsu API, fragment kodu przedstawia żądania, aby utworzyć pulę, która zawiera cztery węzły z maksymalnie cztery zadania podrzędne w każdym węźle. Określa zadania harmonogramu zasad, które spowoduje wypełnienie każdego węzła za pomocą zadań przed przypisaniem zadań do innego węzła w puli. Aby uzyskać więcej informacji na temat dodawania pule przy użyciu interfejsu API .NET usługi Batch, zobacz [BatchClient.PoolOperations.CreatePool][poolcreate_net].
+## <a name="batch-net-example"></a>Przykład platformy .NET w usłudze Batch
+Ten [Partia programu .NET][api_net] API code snippet shows a request to create a pool that contains four nodes with a maximum of four tasks per node. It specifies a task scheduling policy that will fill each node with tasks prior to assigning tasks to another node in the pool. For more information on adding pools by using the Batch .NET API, see [BatchClient.PoolOperations.CreatePool][poolcreate_net].
 
 ```csharp
 CloudPool pool =
@@ -71,8 +71,8 @@ pool.TaskSchedulingPolicy = new TaskSchedulingPolicy(ComputeNodeFillType.Pack);
 pool.Commit();
 ```
 
-## <a name="batch-rest-example"></a>Przykład REST usługi Batch
-To [interfejs REST usługi Batch] [ api_rest] API fragment kodu przedstawia żądanie, aby utworzyć pulę, która zawiera dwa węzły dużych maksymalnie cztery zadania podrzędne w każdym węźle. Aby uzyskać więcej informacji na temat dodawania pule przy użyciu interfejsu API REST, zobacz [Dodawanie puli do konta][rest_addpool].
+## <a name="batch-rest-example"></a>Przykład REST w usłudze Batch
+Ta [Partia zadań][api_rest] API snippet shows a request to create a pool that contains two large nodes with a maximum of four tasks per node. For more information on adding pools by using the REST API, see [Add a pool to an account][rest_addpool].
 
 ```json
 {
@@ -90,14 +90,14 @@ To [interfejs REST usługi Batch] [ api_rest] API fragment kodu przedstawia żą
 ```
 
 > [!NOTE]
-> Możesz ustawić `maxTasksPerNode` elementu i [MaxTasksPerComputeNode] [ maxtasks_net] właściwość tylko w czasie tworzenia puli. Nie można zmodyfikować po puli został już utworzony.
+> Właściwość `maxTasksPerNode` element i [MaxTasksPerComputeNode][maxtasks_net] można ustawić tylko w czasie tworzenia puli. Nie można ich modyfikować po utworzeniu puli.
 >
 >
 
 ## <a name="code-sample"></a>Przykład kodu
-[ParallelNodeTasks] [ parallel_tasks_sample] projektu w usłudze GitHub ilustruje użycie [CloudPool.MaxTasksPerComputeNode] [ maxtasks_net] właściwości.
+Właściwość [ParallelNodeTasks][parallel_tasks_sample] project on GitHub illustrates the use of the [CloudPool.MaxTasksPerComputeNode][maxtasks_net] .
 
-Ta aplikacja konsoli C# używa [platformy .NET usługi Batch] [ api_net] biblioteki, aby utworzyć pulę przy użyciu jednego lub więcej węzłów obliczeniowych. Można skonfigurować wiele zadań jest wykonywana w ramach tych węzłów do symulacji obciążenia. Dane wyjściowe aplikacji Określa węzły, które są wykonywane każdego zadania. Aplikacja udostępnia również podsumowanie parametrów zadania i czas trwania. Podsumowanie części danych wyjściowych z dwóch różnych tras w przykładowej aplikacji znajduje się poniżej.
+Ta C# Aplikacja konsolowa używa biblioteki [programu .NET Batch][api_net] do utworzenia puli z co najmniej jednym węzłem obliczeniowym. Wykonuje konfigurowalną liczbę zadań w tych węzłach, aby symulować obciążenie zmienne. Dane wyjściowe aplikacji określają, które węzły wykonali każde zadanie. Aplikacja zawiera również podsumowanie parametrów zadania i czasu trwania. Poniżej zostanie wyświetlona część podsumowania danych wyjściowych z dwóch różnych uruchomień przykładowej aplikacji.
 
 ```
 Nodes: 1
@@ -107,7 +107,7 @@ Tasks: 32
 Duration: 00:30:01.4638023
 ```
 
-Pierwsze wykonanie Przykładowa aplikacja pokazuje, że z jednego węzła w puli i domyślne ustawienie jedno zadanie podrzędne w każdym węźle, czas trwania zadania to ponad 30 minut.
+Pierwsze wykonanie przykładowej aplikacji pokazuje, że z pojedynczym węzłem w puli i domyślnym ustawieniem jednego zadania na węzeł, czas trwania zadania wynosi ponad 30 minut.
 
 ```
 Nodes: 1
@@ -117,16 +117,16 @@ Tasks: 32
 Duration: 00:08:48.2423500
 ```
 
-Drugi uruchomienia przedstawia przykładowe znaczny spadek czas trwania zadania. Jest to spowodowane puli zostało skonfigurowane przy użyciu czterech zadań na węzeł, która umożliwia równoległe wykonywanie zadań podrzędnych do ukończenia zadania w prawie kwartale czasu.
+Drugie uruchomienie przykładu pokazuje znaczny spadek czasu trwania zadania. Wynika to z faktu, że pula została skonfigurowana z czterema zadaniami na węzeł, co umożliwia równoległe wykonywanie zadań, aby zakończyć zadanie w prawie czwartym czasie.
 
 > [!NOTE]
-> Czas trwania zadania w powyższym podsumowania nie dołączaj godzina utworzenia puli. Każde z zadań powyżej zostało przesłane do wcześniej utworzonych pul, którego węzły obliczeniowe były w *bezczynne* stanu w chwili przesyłania.
+> Czasy trwania zadań w powyższych podsumowaniu nie obejmują czasu utworzenia puli. Każde z powyższych zadań zostało przesłane do wcześniej utworzonych pul, których węzły obliczeniowe były w  stanie bezczynności w czasie przesyłania.
 >
 >
 
 ## <a name="next-steps"></a>Kolejne kroki
-### <a name="batch-explorer-heat-map"></a>Mapa cieplna Eksplorator usługi Batch
-[Batch Explorer] [ batch_labs] to bezpłatne, bogate w funkcje, autonomiczne narzędzie klienta pomagające tworzyć, debugować i monitorować aplikacje usługi Azure Batch. Narzędzie Batch Explorer zawiera *Mapa cieplna* funkcja, która zapewnia wizualizacji wykonywania zadania. Kiedy wykonujesz [ParallelTasks] [ parallel_tasks_sample] przykładowej aplikacji, można użyć funkcji Mapa cieplna można łatwo przedstawić wizualnie wykonywania równoległych zadań podrzędnych w każdym węźle.
+### <a name="batch-explorer-heat-map"></a>Mapa cieplna Batch Explorer
+[Batch Explorer][batch_labs] to bezpłatne, bogate w funkcje, autonomiczne narzędzie klienta pomagające tworzyć, debugować i monitorować aplikacje Azure Batch. Batch Explorer zawiera funkcję *mapy cieplnej* , która zapewnia wizualizację wykonywania zadań. Podczas wykonywania przykładowej aplikacji [ParallelTasks][parallel_tasks_sample] można użyć funkcji mapy cieplnej, aby łatwo wizualizować wykonywanie równoległych zadań w każdym węźle.
 
 
 [api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx

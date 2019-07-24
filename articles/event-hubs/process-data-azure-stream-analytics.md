@@ -1,6 +1,6 @@
 ---
-title: Przetwarzanie danych z platformy Azure z centrów zdarzeń, przy użyciu usługi Stream Analytics | Dokumentacja firmy Microsoft
-description: W tym artykule pokazano, jak przetwarzać dane z Centrum zdarzeń platformy Azure przy użyciu zadania usługi Azure Stream Analytics.
+title: Przetwarzanie danych z Event Hubs platformy Azure przy użyciu Stream Analytics | Microsoft Docs
+description: W tym artykule pokazano, jak przetwarzać dane z centrum zdarzeń platformy Azure przy użyciu zadania Azure Stream Analytics.
 services: event-hubs
 author: spelluru
 manager: ''
@@ -8,79 +8,82 @@ ms.author: spelluru
 ms.date: 07/09/2019
 ms.topic: article
 ms.service: event-hubs
-ms.openlocfilehash: f179687b0983e145244e228a3d3b06b4eabead48
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 003e68b36ff71fb2991cf087ef33f72aba73a8be
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723417"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68233962"
 ---
-# <a name="process-data-from-your-event-hub-using-azure-stream-analytics"></a>Przetwarzanie danych z Centrum zdarzeń za pomocą usługi Azure Stream Analytics
-Usługa Azure Stream Analytics ułatwia pozyskiwania procesu i analizować dane przesyłane strumieniowo z usługi Azure Event Hubs, uzyskiwanie szczegółowych zaawansowane, aby napędzać akcje w czasie rzeczywistym. Ta integracja umożliwia szybkie tworzenie potoku analizy na gorąco ścieżki. Witryna Azure portal umożliwia wizualizowanie danych przychodzących i zapisywanie zapytań usługi Stream Analytics. Gdy zapytanie jest gotowy, można przenieść go w środowisku produkcyjnym za pomocą tylko kilku kliknięć. 
+# <a name="process-data-from-your-event-hub-using-azure-stream-analytics-preview"></a>Przetwarzanie danych z centrum zdarzeń przy użyciu Azure Stream Analytics (wersja zapoznawcza)
+Usługa Azure Stream Analytics ułatwia pozyskiwanie, przetwarzanie i analizowanie danych przesyłanych strumieniowo z usługi Azure Event Hubs, dzięki czemu można uzyskać zaawansowane informacje o działaniach w czasie rzeczywistym. Ta Integracja umożliwia szybkie utworzenie potoku analizy na gorąco. Za pomocą Azure Portal można wizualizować dane przychodzące i pisać zapytanie Stream Analytics. Gdy zapytanie będzie gotowe, możesz je przenieść do środowiska produkcyjnego tylko na kilka kliknięć. 
+
+> [!NOTE]
+> Ta funkcja jest obecnie dostępna w wersji zapoznawczej. 
 
 ## <a name="key-benefits"></a>Najważniejsze korzyści
-Poniżej przedstawiono główne zalety integracji usługi Azure Event Hubs i Azure Stream Analytics: 
-- **Podgląd danych** — możesz wyświetlić podgląd danych przychodzących z Centrum zdarzeń w witrynie Azure portal.
-- **Testowanie zapytania** — przygotowanie zapytanie przekształcenia i przetestować go bezpośrednio w witrynie Azure portal. Dla składni języka zapytań, zobacz [języka zapytań usługi Stream Analytics](/stream-analytics-query/built-in-functions-azure-stream-analytics) dokumentacji.
-- **Wdrażanie zapytania do środowiska produkcyjnego** — możesz wdrożyć zapytania do środowiska produkcyjnego, tworzenie i uruchamianie zadania usługi Azure Stream Analytics.
+Oto najważniejsze zalety platformy Azure Event Hubs i integracji Azure Stream Analytics: 
+- **Podgląd danych** — można wyświetlić podgląd danych przychodzących z centrum zdarzeń w Azure Portal.
+- **Przetestuj zapytanie** — Przygotuj zapytanie transformacji i przetestuj je bezpośrednio w Azure Portal. Składnia języka zapytań znajduje się w dokumentacji [dotyczącej języka zapytań Stream Analytics](/stream-analytics-query/built-in-functions-azure-stream-analytics) .
+- **Wdróż zapytanie w środowisku produkcyjnym** — możesz wdrożyć zapytanie w środowisku produkcyjnym, tworząc i uruchamiając zadanie Azure Stream Analytics.
 
 ## <a name="end-to-end-flow"></a>Przepływ end-to-end
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
-1. Przejdź do usługi **przestrzeni nazw usługi Event Hubs** , a następnie przejdź do **Centrum zdarzeń**, który ma danych przychodzących. 
-1. Wybierz **przetwarzania danych** na stronie Centrum zdarzeń.  
+1. Przejdź do **przestrzeni nazw Event Hubs** , a następnie przejdź do **centrum zdarzeń**, w którym znajdują się dane przychodzące. 
+1. Wybierz pozycję **Przetwarzaj dane** na stronie centrum zdarzeń.  
 
-    ![Proces danych kafelków](./media/process-data-azure-stream-analytics/process-data-tile.png)
-1. Wybierz **Eksploruj** na **Włącz analiz w czasie rzeczywistym na podstawie zdarzeń** kafelka. 
+    ![Kafelek danych procesu](./media/process-data-azure-stream-analytics/process-data-tile.png)
+1. Wybierz pozycję **Eksploruj** na kafelku **Włączanie szczegółowych informacji w czasie rzeczywistym na podstawie zdarzeń** . 
 
-    ![Wybierz usługi Stream Analytics](./media/process-data-azure-stream-analytics/process-data-page-explore-stream-analytics.png)
-1. Zostanie wyświetlona strona zapytania przy użyciu wartości skonfigurowane dla następujących pól:
-    1. Twoje **Centrum zdarzeń** jako dane wejściowe dla zapytania.
-    1. Przykładowe **zapytania SQL** przy użyciu instrukcji SELECT. 
-    1. **Dane wyjściowe** alias do odwoływania się do wyników testu. 
+    ![Wybierz Stream Analytics](./media/process-data-azure-stream-analytics/process-data-page-explore-stream-analytics.png)
+1. Zostanie wyświetlona strona zapytania z wartościami, które zostały już ustawione dla następujących pól:
+    1. **Centrum zdarzeń** jako dane wejściowe zapytania.
+    1. Przykładowe **zapytanie SQL** z instrukcją SELECT. 
+    1. Alias **danych wyjściowych** do odwoływania się do wyników testu zapytania. 
 
         ![Edytor zapytań](./media/process-data-azure-stream-analytics/query-editor.png)
         
         > [!NOTE]
-        >  Korzystając z tej funkcji po raz pierwszy, ta strona poprosi o podanie Twojej zgody na utworzenie grupy odbiorców i zasad Centrum zdarzeń, aby wyświetlić podgląd danych przychodzących.
-1. Wybierz **Utwórz** w **dane wejściowe w wersji zapoznawczej** okienko, jak pokazano na poprzedniej ilustracji. 
-1. Natychmiast zauważysz migawkę najnowsze dane przychodzące na tej karcie.
-    - Typ serializacji w danych jest automatycznie wykryte (w formacie JSON na CSV). Możesz można ręcznie zmienić również na JSON/CSV/AVRO.
-    - Możesz wyświetlić podgląd danych przychodzących w formacie tabeli lub w formacie nieprzetworzonym. 
-    - Jeśli Twoje dane pokazywane nie jest aktualny, wybierz opcję **Odśwież** aby zobaczyć najnowsze zdarzenia. 
+        >  Gdy ta funkcja jest używana po raz pierwszy, na tej stronie jest wyświetlany monit o podanie uprawnień do utworzenia grupy odbiorców oraz zasad dla centrum zdarzeń w celu wyświetlenia podglądu danych przychodzących.
+1. Wybierz pozycję **Utwórz** w okienku **podglądu danych wejściowych** , jak pokazano na powyższym obrazie. 
+1. Na tej karcie natychmiast zobaczysz migawkę najnowszych danych przychodzących.
+    - Typ serializacji w danych jest wykrywany automatycznie (JSON/CSV). Można ją zmienić ręcznie również na format JSON/CSV/AVRO.
+    - Dane przychodzące można wyświetlać w formacie tabeli lub w formacie nieprzetworzonym. 
+    - Jeśli wyświetlane dane nie są aktualne, wybierz pozycję **Odśwież** , aby wyświetlić najnowsze zdarzenia. 
 
-        Oto przykład danych w **format tabeli**:   ![Wyniki w formacie tabeli](./media/process-data-azure-stream-analytics/snapshot-results.png)
+        Oto przykład danych w **formacie tabeli**:   ![Wyniki w formacie tabeli](./media/process-data-azure-stream-analytics/snapshot-results.png)
 
-        Oto przykład danych w **raw format**: 
+        Oto przykład danych w **formacie**nieprzetworzonym: 
 
         ![Wyniki w formacie nieprzetworzonym](./media/process-data-azure-stream-analytics/snapshot-results-raw-format.png)
-1. Wybierz **Testovat dotaz** Aby wyświetlić migawkę testu wyniki zapytania w **wyniki testu** kartę. Można również pobrać wyniki.
+1. Wybierz **zapytanie testowe** , aby wyświetlić migawkę wyników testów zapytania na karcie **wyniki testu** . Możesz również pobrać wyniki.
 
-    ![Wyniki zapytania](./media/process-data-azure-stream-analytics/test-results.png)
-1. Napisz zapytanie do przekształcania danych. Zobacz [dokumentacja języka zapytań usługi Stream Analytics](/stream-analytics-query/stream-analytics-query-language-reference).
-1. Po przetestowaniu zapytania i chcesz przenieść go w środowisku produkcyjnym, wybierz opcję **zapytania Wdróż**. Aby wdrożyć zapytania, należy utworzyć zadanie usługi Azure Stream Analytics, w którym można ustawić dane wyjściowe dla zadania i uruchomić zadanie. Aby utworzyć zadanie usługi Stream Analytics, podaj nazwę dla zadania, a następnie wybierz pozycję **Utwórz**.
+    ![Wyniki zapytania testowego](./media/process-data-azure-stream-analytics/test-results.png)
+1. Napisz własne zapytanie, aby przekształcić dane. Zobacz [Stream Analytics Dokumentacja języka zapytań](/stream-analytics-query/stream-analytics-query-language-reference).
+1. Po przetestowaniu zapytania i chcesz przenieść je do środowiska produkcyjnego, wybierz pozycję **Wdróż zapytanie**. Aby wdrożyć zapytanie, Utwórz zadanie Azure Stream Analytics, w którym można ustawić dane wyjściowe dla zadania i uruchomić zadanie. Aby utworzyć zadanie Stream Analytics, określ nazwę zadania i wybierz pozycję **Utwórz**.
 
       ![Tworzenie zadania usługi Azure Stream Analytics](./media/process-data-azure-stream-analytics/create-stream-analytics-job.png)
 
       > [!NOTE] 
-      >  Zaleca się utworzenie grupy odbiorców i zasad dla każdego nowego zadania usługi Azure Stream Analytics, utworzony ze strony usługi Event Hubs. Grupy konsumentów dopuszczają tylko 5 współbieżnych czytników, zapewniając dedykowanej grupy klientów dla każdego zadania pozwoli uniknąć błędów, które mogą wystąpić przekroczenie tego limitu. Zasady dedykowanej umożliwia Obróć klucz lub odwołać uprawnienia bez wywierania wpływu na inne zasoby. 
-1. Zadanie usługi Stream Analytics jest gotowy, gdy zapytanie jest taki sam, który został przetestowany i dane wejściowe są Centrum zdarzeń. 
+      >  Zalecamy utworzenie grupy odbiorców i zasad dla każdego nowego zadania Azure Stream Analytics utworzonego ze strony Event Hubs. Grupy konsumentów zezwalają tylko na pięć współbieżnych czytników, dlatego udostępnienie dedykowanej grupy odbiorców dla każdego zadania spowoduje uniknięcie wszelkich błędów, które mogą wynikać z przekroczenia tego limitu. Dedykowane zasady umożliwiają obracanie klucza lub Odwoływanie uprawnień bez wpływu na inne zasoby. 
+1. Zadanie Stream Analytics jest teraz tworzone, gdy zapytanie jest przetestowane, a dane wejściowe to centrum zdarzeń. 
 
-9.  Aby ukończyć potok, należy ustawić **dane wyjściowe** zapytania, a następnie zaznacz **Start** Aby uruchomić zadanie.
+9.  Aby ukończyć potok, ustaw **dane wyjściowe** zapytania i wybierz pozycję **Rozpocznij** , aby uruchomić zadanie.
 
     > [!NOTE]
-    > Przed wykonaniem zadania, nie zapomnij zastąpić outputalias według nazwy wyjściowego, utworzonej w usłudze Azure Stream Analytics.
+    > Przed rozpoczęciem zadania nie zapomnij zastąpić outputalias nazwą wyjściową utworzoną w Azure Stream Analytics.
 
-      ![Ustaw dane wyjściowe i uruchamianie zadania](./media/process-data-azure-stream-analytics/set-output-start-job.png)
+      ![Ustawianie danych wyjściowych i uruchamianie zadania](./media/process-data-azure-stream-analytics/set-output-start-job.png)
 
 
 ## <a name="known-limitations"></a>Znane ograniczenia
-Podczas testowania zapytanie, wyniki testów zająć około 6 sekund do załadowania. Pracujemy nad poprawę wydajności testowania. Podczas wdrażania w środowisku produkcyjnym, Azure Stream Analytics będzie jednak subsecond opóźnienia.
+Podczas testowania zapytania wyniki testów trwają około 6 sekund. Pracujemy nad ulepszeniem testów wydajności. Jednak w przypadku wdrożenia w środowisku produkcyjnym Azure Stream Analytics będzie miał opóźnienie w drugim.
 
 ## <a name="streaming-units"></a>Jednostki przesyłania strumieniowego
-Usługi Azure Stream Analytics zadań, wartość domyślna to trzy jednostek przesyłania strumieniowego (SUs). Aby zmienić to ustawienie, wybierz pozycję **skalowania** w menu po lewej stronie w **zadania usługi Stream Analytics** strony w witrynie Azure portal. Aby dowiedzieć się więcej na temat jednostek przesyłania strumieniowego, zobacz [opis i dostosowywanie jednostek przesyłania strumieniowego](../stream-analytics/stream-analytics-streaming-unit-consumption.md).
+Domyślna wartość zadania Azure Stream Analytics to trzy jednostki przesyłania strumieniowego (SUs). Aby dostosować to ustawienie, wybierz  pozycję skalowanie w menu po lewej stronie **zadania Stream Analytics** w Azure Portal. Aby dowiedzieć się więcej o jednostkach przesyłania strumieniowego, zobacz [Opis i Dostosowywanie jednostek przesyłania strumieniowego](../stream-analytics/stream-analytics-streaming-unit-consumption.md).
 
-![Możliwość skalowania jednostek przesyłania strumieniowego](./media/process-data-azure-stream-analytics/scale.png)
+![Skalowanie jednostek przesyłania strumieniowego](./media/process-data-azure-stream-analytics/scale.png)
 
-## <a name="next-steps"></a>Następne kroki
-Aby dowiedzieć się więcej na temat zapytań usługi Stream Analytics, zobacz [języka zapytań usługi Stream Analytics](/stream-analytics-query/built-in-functions-azure-stream-analytics)
+## <a name="next-steps"></a>Kolejne kroki
+Aby dowiedzieć się więcej na temat zapytań Stream Analytics, zobacz [Stream Analytics języka zapytań](/stream-analytics-query/built-in-functions-azure-stream-analytics)

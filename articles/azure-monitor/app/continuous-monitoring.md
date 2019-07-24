@@ -1,93 +1,108 @@
 ---
-title: Ciągłe monitorowanie potoku wydania metodyki DevOps dzięki podejściu DevOps platformy Azure i usługi Azure Application Insights | Dokumentacja firmy Microsoft
-description: Przedstawiono instrukcje pozwalające szybko skonfigurować monitorowania ciągłego za pomocą usługi Application Insights
+title: Ciągłe monitorowanie potoku wydania usługi DevOps przy użyciu Azure Pipelines i platformy Azure Application Insights | Microsoft Docs
+description: Zawiera instrukcje umożliwiające szybkie konfigurowanie ciągłego monitorowania za pomocą Application Insights
 services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 11/13/2017
+ms.date: 07/16/2019
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 41999defb01e024773b6364f169a1ce3b1377237
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c39a2f75fe74b61463af464078b4446bba07dec0
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60902386"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277700"
 ---
-# <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Dodawanie ciągłego monitorowania, tak aby potok wydania
+# <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Dodawanie ciągłego monitorowania do potoku wydania
 
-Usługom DevOps platformy Azure integruje się z usługą Azure Application Insights umożliwia ciągłe monitorowanie potoku wydania metodyki DevOps w całym cyklu życia tworzenia oprogramowania. 
+Azure Pipelines integruje się z usługą Azure Application Insights w celu zapewnienia ciągłego monitorowania potoku wydania DevOps w całym cyklu projektowania oprogramowania. 
 
-Usługom DevOps platformy Azure obsługuje teraz ciągłego monitorowania, według którego potoki wydań może obejmować dane monitorowania z usługi Application Insights i innych zasobów platformy Azure. Po wykryciu alert usługi Application Insights, wdrożenie może pozostać warunkowe lub wycofana, wróć do momentu usunięcia alertu. Jeśli wszystkie wykryte, wdrożeń przejść automatycznie z testu aż do środowiska produkcyjnego, bez konieczności ręcznej interwencji. 
+W przypadku ciągłego monitorowania potoki wersji mogą zawierać dane monitorowania z Application Insights i innych zasobów platformy Azure. Gdy potok wydania wykryje alert Application Insights, potok może lub wycofać wdrożenie do momentu rozwiązania alertu. Jeśli wszystkie testy zostaną zakończone, wdrożenia mogą przebiegać automatycznie z testu do produkcji, bez konieczności ręcznej interwencji. 
 
-## <a name="configure-continuous-monitoring"></a>Skonfigurowanie funkcji ciągłego monitorowania
+## <a name="configure-continuous-monitoring"></a>Konfigurowanie monitorowania ciągłego
 
-1. Wybierz istniejący projekt usługi Azure DevOps.
+1. W [usłudze Azure DevOps](https://dev.azure.com)wybierz organizację i projekt.
+   
+1. W menu po lewej stronie projektu wybierz pozycję**wersje** **potoków** > . 
+   
+1. Rozwiń strzałkę obok pozycji **Nowy** i wybierz pozycję **Nowy potok wersji**. Lub, jeśli nie masz jeszcze potoku, wybierz pozycję **Nowy potok** na wyświetlonej stronie.
+   
+1. W okienku **Wybierz szablon** Wyszukaj i wybierz pozycję **Azure App Service wdrożenie z ciągłym monitorowaniem**, a następnie wybierz pozycję **Zastosuj**. 
 
-2. Umieść kursor nad **kompilowania i wydawania** > Wybierz **wersji** > kliknij **znak plus** > **Tworzenie definicji wydania** > Wyszukaj **monitorowania** > **wdrażanie usługi Azure App Service za pomocą ciągłego monitorowania.**
+   ![Nowy potok wersji Azure Pipelines](media/continuous-monitoring/001.png)
 
-   ![Nowy potok wersji usługi Azure DevOps](media/continuous-monitoring/001.png)
+1. W polu **etap 1** wybierz hiperlink, aby **wyświetlić zadania etapów.**
 
-3. Kliknij przycisk **zastosowania.**
+   ![Wyświetl zadania etapów](media/continuous-monitoring/002.png)
 
-4. Obok czerwonego wykrzyknika zaznacz tekst w kolorze niebieskim do **przeglądać zadania w środowisku.**
+1. W okienku Konfiguracja **etapu 1** wykonaj następujące pola: 
 
-   ![Wyświetl zadania środowiska](media/continuous-monitoring/002.png)
-
-   Zostanie wyświetlone okno konfiguracji, skorzystaj z poniższej tabeli, wypełnij pola wejściowe.
-
-    | Parametr        | Wartość |
+    | Parametr        | Value |
    | ------------- |:-----|
-   | **Nazwa środowiska**      | Nazwa opisująca środowiska potok wydania |
-   | **Subskrypcja platformy Azure** | Lista rozwijana wypełnia żadnych subskrypcji platformy Azure, połączone z organizacji usługom DevOps platformy Azure|
-   | **Nazwa usługi App Service** | Ręczne wprowadzanie nowej wartości mogą być wymagane dla tego pola, w zależności od innych opcji |
-   | **Grupa zasobów**    | Lista rozwijana zostaną wyświetlone wszystkie dostępne grupy zasobów |
-   | **Nazwa zasobu usługi Application Insights** | Lista rozwijana wypełnia wszystkie zasoby usługi Application Insights, które odnoszą się do wcześniej wybranej grupy zasobów.
+   | **Nazwa etapu**      | Podaj nazwę etapu lub pozostaw ją na **etapie 1**. |
+   | **Subskrypcja platformy Azure** | Wybierz połączoną subskrypcję platformy Azure, której chcesz użyć.|
+   | **Typ aplikacji** | Lista rozwijana i wybierz typ aplikacji. |
+   | **Nazwa App Service** | Wprowadź nazwę Azure App Service. |
+   | **Nazwa grupy zasobów dla Application Insights**    | Wybierz grupę zasobów, której chcesz użyć. |
+   | **Nazwa zasobu Application Insights** | Wybierz pozycję Application Insights zasób dla wybranej grupy zasobów.
 
-5. Wybierz **alerty Konfiguruj usługę Application Insights**
+1. Aby zapisać potok z domyślnymi ustawieniami reguł alertów, wybierz pozycję **Zapisz** w prawym górnym rogu okna Azure DevOps. Wprowadź komentarz opisowy, a następnie wybierz przycisk **OK**.
 
-6. Domyślne reguły alertu można wybrać **Zapisz** > Wprowadź opisowy komentarz > kliknij **OK**
+## <a name="modify-alert-rules"></a>Modyfikuj reguły alertów
 
-## <a name="modify-alert-rules"></a>Modyfikowanie reguły alertów
+**Wdrożenie Azure App Service z szablonem ciągłego monitorowania** ma cztery reguły alertów: **Dostępność**, **żądania zakończone niepowodzeniem**, **czas odpowiedzi serwera**i **wyjątki serwera**. Możesz dodać więcej reguł lub zmienić ustawienia reguły, aby spełniały wymagania poziomu usługi. 
 
-1. Aby zmodyfikować wstępnie zdefiniowane ustawienia alertu, kliknij w tym polu **wielokropek...**  po prawej stronie **reguły alertów.**
+Aby zmodyfikować ustawienia reguły alertu:
 
-   (Istnieją out-of-box cztery reguły alertów: Dostępność, żądań zakończonych niepowodzeniem, czas odpowiedzi serwera, wyjątki serwera.)
+1. W lewym okienku na stronie potoku wydania wybierz pozycję **konfiguruj Application Insights alerty**.
 
-2. Kliknij symbol listy rozwijanej obok **dostępności.**
+1. W okienku **alerty Azure monitor** wybierz przycisk wielokropka **...** obok **reguły alertów**.
+   
+1. W oknie dialogowym **reguły alertów** wybierz symbol listy rozwijanej obok reguły alertu, np. **dostępność**. 
+   
+1. Zmodyfikuj **wartość progową** i inne ustawienia w celu spełnienia wymagań.
+   
+   ![Modyfikuj alert](media/continuous-monitoring/003.png)
+   
+1. Wybierz pozycję **OK**, a następnie wybierz pozycję **Zapisz** w prawym górnym rogu okna Azure DevOps. Wprowadź komentarz opisowy, a następnie wybierz przycisk **OK**.
 
-3. Modyfikowanie dostępności **próg** zgodnie z wymaganiami poziomu usługi.
+## <a name="add-deployment-conditions"></a>Dodaj warunki wdrażania
 
-   ![Modyfikuj Alert](media/continuous-monitoring/003.png)
+Po dodaniu bram wdrażania do potoku wydania alert przekraczający ustalone progi uniemożliwiają podwyższenie poziomu. Po rozwiązaniu alertu wdrożenie może być realizowane automatycznie.
 
-4. Wybierz **OK** > **Zapisz** > Wprowadź opisowy komentarz > kliknij **OK.**
+Aby dodać bramy wdrażania:
 
-## <a name="add-deployment-conditions"></a>Dodawanie warunków wdrożenia
+1. Na stronie główny potok w obszarze **etapy**wybierz opcję **warunki przed wdrożeniem** lub postanowień **po wdrożeniu** , w zależności od tego, który etap wymaga bramy ciągłego monitorowania.
+   
+   ![Warunki przed wdrożeniem](media/continuous-monitoring/004.png)
+   
+1. W okienku Konfiguracja **warunków przed wdrożeniem** Ustaw **bramy** na **włączone**.
+   
+1. Obok pozycji **bramy wdrażania**wybierz pozycję **Dodaj**.
+   
+1. Wybierz pozycję **zapytanie Azure monitor alerty** z menu rozwijanego. Ta opcja umożliwia dostęp do alertów Azure Monitor i Application Insights.
+   
+   ![Alerty Azure Monitor zapytań](media/continuous-monitoring/005.png)
+   
+1. W obszarze **Opcje oceny**wprowadź wartości dla ustawień, takie jak **czas między ponowną oceną bram** i **limit czasu, po którym bramy kończą się niepowodzeniem**. 
 
-1. Kliknij przycisk **potoku** > Wybierz **Pre** lub **po wdrożeniu warunków** symbolu, w zależności od etapu, na którym wymaga brama ciągłego monitorowania.
+## <a name="view-release-logs"></a>Wyświetlanie dzienników wydań
 
-   ![Warunki wstępne wdrożenia](media/continuous-monitoring/004.png)
+W dziennikach wydań można zobaczyć zachowanie bramy wdrażania i inne kroki wydania. Aby otworzyć dzienniki:
 
-2. Ustaw **bramy** do **włączone** > **zatwierdzania bramy**> kliknij **Dodaj.**
+1. Wybierz pozycję **wydania** z menu po lewej stronie potoku. 
+   
+1. Wybierz dowolne wydanie. 
+   
+1. W obszarze **etapy**wybierz dowolny etap, aby wyświetlić podsumowanie wydania. 
+   
+1. Aby wyświetlić dzienniki, wybierz pozycję **Wyświetl dzienniki** w podsumowaniu wersji, zaznacz hiperlink **zakończone powodzeniem** lub niepowodzeniem na dowolnym etapie lub umieść kursor na dowolnym etapie i wybierz pozycję  **dzienniki**. 
+   
+   ![Wyświetlanie dzienników wydań](media/continuous-monitoring/006.png)
 
-3. Wybierz **usługi Azure Monitor** (Ta opcja zapewnia możliwość dostępu alerty zarówno z usługi Azure Monitor i Application Insights)
+## <a name="next-steps"></a>Następne kroki
 
-    ![Azure Monitor](media/continuous-monitoring/005.png)
-
-4. Wprowadź **limitu czasu bramy** wartość.
-
-5. Wprowadź **interwału próbkowania.**
-
-## <a name="deployment-gate-status-logs"></a>Dzienniki stanu bramy wdrożenia
-
-Po dodaniu bramy do wdrożenia, alert w usłudze Application Insights, co powoduje przekroczenie uprzednio zdefiniowany próg, chroni wdrożenia z wersji niechciane podwyższania poziomu. Gdy alert nie zostanie rozwiązany, automatycznie przejść wdrożenia.
-
-Aby zaobserwować to zachowanie, zaznacz **wersji** > wersji kliknij prawym przyciskiem myszy nazwę **Otwórz** > **dzienniki.**
-
-![Dzienniki](media/continuous-monitoring/006.png)
-
-## <a name="next-steps"></a>Kolejne kroki
-
-Aby dowiedzieć się więcej na temat potoków Azure Wypróbuj te [przewodników Szybki Start.](https://docs.microsoft.com/azure/devops/pipelines)
+Aby uzyskać więcej informacji na temat Azure Pipelines, zobacz [dokumentację Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines).

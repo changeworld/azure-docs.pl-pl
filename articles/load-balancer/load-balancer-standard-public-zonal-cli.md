@@ -1,10 +1,10 @@
 ---
-title: Tworzenie standardowego modułu równoważenia obciążenia za pomocą frontonu strefowych przy użyciu wiersza polecenia platformy Azure
+title: Tworzenie usługa Load Balancer w warstwie Standardowa z strefą frontonu przy użyciu interfejsu wiersza polecenia platformy Azure
 titlesuffix: Azure Load Balancer
-description: Dowiedz się, jak utworzyć publiczny moduł równoważenia obciążenia standardowego przy użyciu strefowy publiczny adres IP adres serwera sieci Web przy użyciu wiersza polecenia platformy Azure
+description: Dowiedz się, jak utworzyć publiczny usługa Load Balancer w warstwie Standardowa ze strefą frontonu publicznego adresu IP przy użyciu interfejsu wiersza polecenia platformy Azure
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
@@ -12,17 +12,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
-ms.author: kumud
-ms.openlocfilehash: 7f5aa65b055669a8a4047dffa72d456fed0714f8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 7da41456a4f4bb88d402d27b42b31f6d4adfa7f6
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66111600"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274314"
 ---
-#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-cli"></a>Tworzenie standardowego modułu równoważenia obciążenia za pomocą frontonu strefowych przy użyciu wiersza polecenia platformy Azure
+#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-cli"></a>Tworzenie usługa Load Balancer w warstwie Standardowa z strefą frontonu przy użyciu interfejsu wiersza polecenia platformy Azure
 
-W tym artykule opisano proces tworzenia publicznego [Balancer w warstwie standardowa](https://aka.ms/azureloadbalancerstandard) z strefowych frontonu przy użyciu adresu publicznego adresu IP standardowych. W tym scenariuszu wybierzesz określoną strefę dla wystąpień frontonu i zaplecza, aby wyrównać zasoby i ścieżkę danych w określonej strefie.
+W tym artykule opisano tworzenie publicznej [Usługa Load Balancer w warstwie Standardowa](https://aka.ms/azureloadbalancerstandard) z strefą frontonu przy użyciu publicznego adresu IP. W tym scenariuszu wybierzesz określoną strefę dla wystąpień frontonu i zaplecza, aby wyrównać zasoby i ścieżkę danych w określonej strefie.
 
 Aby uzyskać więcej informacji na temat obsługi stref dostępności przy użyciu usługi Load Balancer w warstwie Standardowa, zobacz [Standard Load Balancer and Availability Zones (Usługa Load Balancer w warstwie Standardowa i strefy dostępności)](load-balancer-standard-availability-zones.md).
 
@@ -40,7 +40,7 @@ Jeśli zdecydujesz się zainstalować i korzystać z interfejsu wiersza poleceni
 
 Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az-group-create). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
 
-Poniższy przykład tworzy grupę zasobów o nazwie *myResourceGroupLB* w *westeurope* lokalizacji:
+Poniższy przykład tworzy grupę zasobów o nazwie *myResourceGroupLB* w lokalizacji *westeurope* :
 
 ```azurecli-interactive
 az group create \
@@ -48,10 +48,10 @@ az group create \
 --location westeurope
 ```
 
-## <a name="create-a-zonal-public-ip-standard"></a>Tworzenie strefowej publicznej adresów IP w warstwie standardowa
-Aby uzyskać dostęp do aplikacji za pośrednictwem Internetu, potrzebujesz publicznego adresu IP modułu równoważenia obciążenia. To adres publiczny adres IP, który jest tworzony w określonej strefy zawsze istnieje tylko w tej strefie. Nie jest możliwe zmienić strefę publicznego adresu IP.
+## <a name="create-a-zonal-public-ip-standard"></a>Tworzenie standardowego publicznego adresu IP
+Aby uzyskać dostęp do aplikacji za pośrednictwem Internetu, potrzebujesz publicznego adresu IP modułu równoważenia obciążenia. Publiczny adres IP utworzony w określonej strefie zawsze istnieje tylko w tej strefie. Nie można zmienić strefy publicznego adresu IP.
 
-Utwórz publiczny adres IP za pomocą polecenia [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create). Poniższy przykład tworzy strefowy publiczny adres IP o nazwie *myPublicIP* w *myResourceGroupLoadBalancer* grupy zasobów w strefie 1.
+Utwórz publiczny adres IP za pomocą polecenia [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create). Poniższy przykład tworzy publiczny adres IP stref o nazwie *myPublicIP* w grupie zasobów *myResourceGroupLoadBalancer* w strefie 1.
 
 ```azurecli-interactive
 az network public-ip create \
@@ -61,7 +61,7 @@ az network public-ip create \
 --zone 1
 ```
 
-## <a name="create-azure-standard-load-balancer"></a>Tworzenie modułu równoważenia obciążenia platformy Azure Standard
+## <a name="create-azure-standard-load-balancer"></a>Tworzenie usługa Load Balancer w warstwie Standardowa platformy Azure
 W tej sekcji opisano szczegółowo procedurę tworzenia i konfigurowania następujących składników modułu równoważenia obciążenia:
 - Adres IP frontonu, który odbiera przychodzący ruch sieciowy w module równoważenia obciążenia.
 - Pula adresów IP zaplecza, gdzie pula frontonu wysyła ruch sieciowy o zrównoważonym obciążeniu.
@@ -69,7 +69,7 @@ W tej sekcji opisano szczegółowo procedurę tworzenia i konfigurowania następ
 - Reguła modułu równoważenia obciążenia, która definiuje sposób dystrybucji ruchu do maszyn wirtualnych.
 
 ### <a name="create-the-load-balancer"></a>Tworzenie modułu równoważenia obciążenia
-Tworzenie standardowego modułu równoważenia obciążenia za pomocą [tworzenie równoważenia obciążenia sieciowego az](/cli/azure/network/lb#az-network-lb-create). Poniższy przykład tworzy moduł równoważenia obciążenia o nazwie *myLoadBalancer* i przypisuje *myPublicIP* adresu z konfiguracją IP frontonu.
+Utwórz usługa Load Balancer w warstwie Standardowa za pomocą [AZ Network lb Create](/cli/azure/network/lb#az-network-lb-create). Poniższy przykład tworzy moduł równoważenia obciążenia o nazwie *myLoadBalancer* i przypisuje adres *myPublicIP* do konfiguracji adresu IP frontonu.
 
 ```azurecli-interactive
 az network lb create \
@@ -83,7 +83,7 @@ az network lb create \
 
 ## <a name="create-health-probe-on-port-80"></a>Utwórz sondę kondycji na porcie 80
 
-Sonda kondycji sprawdza wszystkie wystąpienia maszyny wirtualnej, aby upewnić się, że mogą wysyłać ruch sieciowy. Wystąpienie maszyny wirtualnej, w przypadku którego sprawdzanie kondycji za pomocą sondy nie powiodło się, jest usuwane z modułu równoważenia obciążenia do momentu ponownego przejścia do trybu online i pomyślnego sprawdzenia kondycji. Utwórz sondę kondycji z sondą modułu równoważenia obciążenia sieciowego az utworzyć w celu monitorowania kondycji maszyn wirtualnych. Aby utworzyć sondę kondycji TCP, należy użyć polecenia [az network lb probe create](/cli/azure/network/lb/probe#az-network-lb-probe-create). W poniższym przykładzie zostanie utworzona sonda kondycji o nazwie *myHealthProbe*:
+Sonda kondycji sprawdza wszystkie wystąpienia maszyny wirtualnej, aby upewnić się, że mogą wysyłać ruch sieciowy. Wystąpienie maszyny wirtualnej, w przypadku którego sprawdzanie kondycji za pomocą sondy nie powiodło się, jest usuwane z modułu równoważenia obciążenia do momentu ponownego przejścia do trybu online i pomyślnego sprawdzenia kondycji. Utwórz sondę kondycji za pomocą AZ Network lb Probe Create, aby monitorować kondycję maszyn wirtualnych. Aby utworzyć sondę kondycji TCP, należy użyć polecenia [az network lb probe create](/cli/azure/network/lb/probe#az-network-lb-probe-create). W poniższym przykładzie zostanie utworzona sonda kondycji o nazwie *myHealthProbe*:
 
 ```azurecli-interactive
 az network lb probe create \
@@ -115,7 +115,7 @@ Zanim będzie możliwe wdrożenie maszyn wirtualnych i przetestowanie modułu r�
 
 ### <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
-Tworzenie sieci wirtualnej o nazwie *myVnet* z podsiecią o nazwie *mySubnet* za pomocą myResourceGroup [tworzenie sieci wirtualnej sieci az](/cli/azure/network/vnet#az-network-vnet-create).
+Utwórz sieć wirtualną o nazwie *myVnet* z podsiecią  o nazwie Moja podsieć w liście zasobów przy użyciu polecenia [AZ Network VNET Create](/cli/azure/network/vnet#az-network-vnet-create).
 
 
 ```azurecli-interactive
@@ -128,7 +128,7 @@ az network vnet create \
 
 ### <a name="create-a-network-security-group"></a>Tworzenie sieciowej grupy zabezpieczeń
 
-Utwórz sieciową grupę zabezpieczeń o nazwie *myNetworkSecurityGroup* do zdefiniowania połączeń przychodzących do sieci wirtualnej przy użyciu [tworzenie az sieciowej](/cli/azure/network/nsg#az-network-nsg-create).
+Utwórz sieciową grupę zabezpieczeń o nazwie *myNetworkSecurityGroup* , aby zdefiniować połączenia przychodzące do sieci wirtualnej za pomocą [AZ Network sieciowej grupy zabezpieczeń Create](/cli/azure/network/nsg#az-network-nsg-create).
 
 ```azurecli-interactive
 az network nsg create \
@@ -136,7 +136,7 @@ az network nsg create \
 --name myNetworkSecurityGroup
 ```
 
-Utwórz regułę sieciowej grupy zabezpieczeń o nazwie *myNetworkSecurityGroupRule* dla portu 80 z [Tworzenie reguły sieciowej grupy zabezpieczeń sieci az](/cli/azure/network/nsg/rule#az-network-nsg-rule-create).
+Utwórz regułę sieciowej grupy zabezpieczeń o nazwie *myNetworkSecurityGroupRule* dla portu 80 przy użyciu [AZ Network sieciowej grupy zabezpieczeń Rule Create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create).
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -153,7 +153,7 @@ az network nsg rule create \
 --priority 200
 ```
 ### <a name="create-nics"></a>Tworzenie kart sieciowych
-Utwórz trzy wirtualne karty sieciowe z [tworzenie az sieciowego](/cli/azure/network/nic#az-network-nic-create) i skojarz je z publicznym adresem IP i sieciową grupą zabezpieczeń. W poniższym przykładzie zostaną utworzone trzy wirtualne karty sieciowe. (Po jednej karcie na każdą maszynę wirtualną, która zostanie utworzona na potrzeby aplikacji w kolejnych krokach). Możesz w dowolnym momencie utworzyć i dodać do modułu równoważenia obciążenia dodatkowe wirtualne karty sieciowe i maszyny wirtualne:
+Utwórz trzy wirtualne karty sieciowe za pomocą [AZ Network nic Create](/cli/azure/network/nic#az-network-nic-create) i skojarz je z publicznym adresem IP i grupą zabezpieczeń sieci. W poniższym przykładzie zostaną utworzone trzy wirtualne karty sieciowe. (Po jednej karcie na każdą maszynę wirtualną, która zostanie utworzona na potrzeby aplikacji w kolejnych krokach). Możesz w dowolnym momencie utworzyć i dodać do modułu równoważenia obciążenia dodatkowe wirtualne karty sieciowe i maszyny wirtualne:
 
 ```azurecli-interactive
 for i in `seq 1 3`; do
@@ -168,7 +168,7 @@ for i in `seq 1 3`; do
 done
 ```
 ## <a name="create-backend-servers"></a>Tworzenie serwerów zaplecza
-W tym przykładzie utworzysz trzy maszyny wirtualne znajdujące się w strefie 1, aby służyć jako serwery zaplecza dla modułu równoważenia obciążenia. Zainstalujesz także serwer NGINX na maszynach wirtualnych, aby sprawdzić, czy moduł równoważenia obciążenia została pomyślnie utworzona.
+W tym przykładzie utworzysz trzy maszyny wirtualne znajdujące się w strefie 1, które będą używane jako serwery zaplecza dla modułu równoważenia obciążenia. Należy również zainstalować NGINX na maszynach wirtualnych, aby sprawdzić, czy moduł równoważenia obciążenia został pomyślnie utworzony.
 
 ### <a name="create-cloud-init-config"></a>Tworzenie pliku konfiguracji cloud-init
 
@@ -216,8 +216,8 @@ runcmd:
   - nodejs index.js
 ```
 
-### <a name="create-the-zonal-virtual-machines"></a>Tworzenie strefowej maszyn wirtualnych
-Tworzenie maszyn wirtualnych za pomocą [tworzenie az vm](/cli/azure/vm#az-vm-create). Poniższy przykład tworzy trzy maszyny wirtualne w strefie 1 i generowanie kluczy SSH, jeśli jeszcze nie istnieje:
+### <a name="create-the-zonal-virtual-machines"></a>Tworzenie maszyn wirtualnych z strefą
+Utwórz maszyny wirtualne za pomocą [AZ VM Create](/cli/azure/vm#az-vm-create). Poniższy przykład tworzy trzy maszyny wirtualne w strefie 1 i generuje klucze SSH, jeśli jeszcze nie istnieją:
 
 ```azurecli-interactive
 for i in `seq 1 3`; do
@@ -233,7 +233,7 @@ done
 ```
 
 ## <a name="test-the-load-balancer"></a>Testowanie modułu równoważenia obciążenia
-Uzyskaj publiczny adres IP modułu równoważenia obciążenia przy użyciu [az sieci public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show). 
+Uzyskaj publiczny adres IP modułu równoważenia obciążenia za pomocą polecenia [AZ Network Public-IP show](/cli/azure/network/public-ip#az-network-public-ip-show). 
 
 ```azurecli-interactive
   az network public-ip show \
@@ -247,9 +247,9 @@ Następnie możesz wprowadzić publiczny adres IP w przeglądarce internetowej. 
 
 ![Uruchamianie aplikacji Node.js](./media/load-balancer-standard-public-zonal-cli/running-nodejs-app.png)
 
-Aby zobaczyć moduł równoważenia obciążenia rozdziela ruch do maszyn wirtualnych w strefie 1, które są używane przez aplikację, możesz wymusić odświeżenie przeglądarki sieci web.
+Aby zobaczyć, jak moduł równoważenia obciążenia dystrybuuje ruch do maszyn wirtualnych w strefie 1, w której uruchomiono aplikację, możesz wymusić odświeżenie przeglądarki sieci Web.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - Dowiedz się więcej o [usłudze Load Balancer w warstwie Standardowa](./load-balancer-standard-overview.md).
 
 

@@ -1,6 +1,6 @@
 ---
 title: Usługa Advanced Threat Protection dla usługi Azure Storage
-description: Konfigurowanie usługi Azure Storage zaawansowanej ochrony przed zagrożeniami w celu wykrycia anomalii w aktywności konta i powiadomimy użytkownika o potencjalnie szkodliwych prób dostępu do Twojego konta.
+description: Skonfiguruj zaawansowaną ochronę przed zagrożeniami w usłudze Azure Storage, aby wykrywać anomalie w działaniu konta i powiadamiać o potencjalnie szkodliwych próbach uzyskania dostępu do konta.
 services: storage
 author: tamram
 ms.service: storage
@@ -8,61 +8,71 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 8cea4b3fb78f3430fdd92e40552d687501af4be8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: fb221d774d9d00a5dc7b0d94edc35a5651443a5b
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621974"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67874055"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Usługa Advanced Threat Protection dla usługi Azure Storage
 
-Usługa Advanced Threat Protection dla usługi Azure Storage zapewnia dodatkową warstwę analizy bezpieczeństwa, która wykrywa niezwykłe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystania kont magazynu. Ta warstwa ochrony umożliwia reagowanie na zagrożenia bez konieczności dysponowania eksperta zabezpieczeń lub zarządzania systemami monitorowania bezpieczeństwa. 
+Usługa Advanced Threat Protection dla usługi Azure Storage zapewnia dodatkową warstwę analizy bezpieczeństwa, która wykrywa niezwykłe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystania kont magazynu. Ta warstwa ochrony pozwala na rozwiązywanie zagrożeń bez potrzeby eksperta zabezpieczeń ani zarządzania systemami monitorowania zabezpieczeń. 
 
-Alerty zabezpieczeń są wyzwalane, gdy wystąpią nieprawidłowości w działaniu.  Te alerty zabezpieczeń są zintegrowane z usługą [usługi Azure Security Center](https://azure.microsoft.com/services/security-center/)oraz wysyłane za pośrednictwem poczty e-mail do administratorów subskrypcji, szczegółowe informacje o podejrzanych działań i zalecenia dotyczące sposobu badaniu i usuwaniu zagrożeń.
+Alerty zabezpieczeń są wyzwalane, gdy wystąpią anomalie działania.  Te alerty zabezpieczeń są zintegrowane z usługą [Azure Security Center](https://azure.microsoft.com/services/security-center/)i są również wysyłane pocztą e-mail do administratorów subskrypcji, ze szczegółowymi informacjami o podejrzanych działaniach i zaleceniami dotyczącymi sposobu badania i korygowania zagrożeń.
 
 > [!NOTE]
-> * Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage jest obecnie dostępna wyłącznie dla magazynu obiektów Blob.
-> * Aby uzyskać szczegóły cennika, łącznie z bezpłatnej 30-dniowej wersji próbnej, zobacz [usługi Azure Security Center, na stronie z cennikiem]( https://azure.microsoft.com/pricing/details/security-center/).
-> * Zaawansowanej ochrony przed zagrożeniami dla funkcji usługi Azure storage nie jest obecnie dostępna w regionach należących do suwerennej chmury i platformy Azure dla instytucji rządowych.
+> * Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage jest obecnie dostępna tylko dla magazynu obiektów BLOB.
+> * Aby uzyskać szczegółowe informacje o cenach, w tym bezpłatną 30-dniową wersję próbną, zobacz [stronę z cennikiem Azure Security Center]( https://azure.microsoft.com/pricing/details/security-center/).
+> * Funkcja ATP dla usługi Azure Storage jest obecnie niedostępna w regionach platformy Azure dla instytucji rządowych i suwerennych.
 
-Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage pozyskuje dzienniki diagnostyczne odczytu, zapisu i usuwania żądań do usługi Blob storage na potrzeby wykrywania zagrożeń. Aby zbadać alertów z zaawansowanej ochrony przed zagrożeniami, można wyświetlić działania magazynu powiązanych korzystania z rejestrowania analizy magazynu. Aby uzyskać więcej informacji, zobacz instrukcje [skonfigurować rejestrowanie dla usługi Storage Analytics](storage-monitor-storage-account.md#configure-logging).
+Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage umożliwia pobieranie dzienników diagnostycznych żądań odczytu, zapisu i usuwania do magazynu obiektów BLOB w celu wykrywania zagrożeń. Aby zbadać alerty z zaawansowanej ochrony przed zagrożeniami, można wyświetlić powiązane działanie magazynu za pomocą rejestrowania analityka magazynu. Aby uzyskać więcej informacji, zobacz jak [skonfigurować rejestrowanie analityka magazynu](storage-monitor-storage-account.md#configure-logging).
 
-## <a name="set-up-advanced-threat-protection"></a>Konfigurowanie zaawansowanej ochrony przed zagrożeniami 
+## <a name="set-up-advanced-threat-protection"></a>Skonfiguruj zaawansowaną ochronę przed zagrożeniami 
 
 ### <a name="using-the-portal"></a>Korzystanie z portalu
 
-1. Uruchamianie witryny Azure portal pod [ https://portal.azure.com ](https://portal.azure.com/).
+1. Uruchom Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com/).
 
-2. Przejdź do strony konfiguracji konta usługi Azure Storage, które mają być chronione. W **ustawienia** wybierz opcję **zaawansowanej ochrony przed zagrożeniami**.
+2. Przejdź do strony konfiguracji konta usługi Azure Storage, które chcesz chronić. Na stronie **Ustawienia** wybierz pozycję zaawansowana **Ochrona przed zagrożeniami**.
 
-3. W **zaawansowanej ochrony przed zagrożeniami** bloku konfiguracji
-    * Włącz **ON** zaawansowane *ochroną przed zagrożeniami*
-    * Kliknij przycisk **Zapisz** można zapisać zasad zaawansowanej ochrony przed zagrożeniami nowe lub zaktualizowane. (Ceny na ilustracji są na przykład tylko do celów).
+3. W bloku konfiguracja **zaawansowanej ochrony przed zagrożeniami**
+    * Włącz  zaawansowaną *ochronę przed zagrożeniami*
+    * Kliknij przycisk **Zapisz** , aby zapisać nowe lub zaktualizowane zasady zaawansowanej ochrony przed zagrożeniami. (Ceny na obrazie są tylko do celów).
 
-![Włącz Zaawansowana ochrona przed zagrożeniami w usłudze Azure Storage](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
+![Włączanie zaawansowanej ochrony przed zagrożeniami w usłudze Azure Storage](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
 ### <a name="using-azure-security-center"></a>Za pomocą usługi Azure Security Center
-Po zasubskrybowaniu do warstwy standardowa w usłudze Azure Security Center zaawansowanej ochrony przed zagrożeniami na skonfigurowano konta magazynu. Aby uzyskać więcej informacji, zobacz [uaktualnienie do warstwy standardowa Security Center w celu uzyskania zwiększonych zabezpieczeń](https://docs.microsoft.com/azure/security-center/security-center-pricing). (Ceny na ilustracji są na przykład tylko do celów).
 
-![W warstwie standardowa w ASC](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing.png)
+Gdy subskrybujesz warstwę Standardowa w Azure Security Center, zaawansowana ochrona przed zagrożeniami jest automatycznie skonfigurowana na wszystkich kontach magazynu. Możesz włączyć lub wyłączyć zaawansowaną ochronę przed zagrożeniami dla kont magazynu w ramach określonej subskrypcji w następujący sposób:
 
-### <a name="using-azure-resource-manager-templates"></a>Za pomocą szablonów usługi Azure Resource Manager
+1. Uruchom **Azure Security Center** w [Azure Portal]([https://portal.azure.com).
+1. W menu głównym kliknij pozycję **Cennik ustawienia &** .
+1. Kliknij subskrypcję, którą chcesz włączyć lub wyłączyć ochronę przed zagrożeniami dla swoich kont magazynu.
 
-Szablon usługi Azure Resource Manager służy do wdrażania konta usługi Azure Storage za pomocą zaawansowanej ochrony przed zagrożeniami jest włączona.
-Aby uzyskać więcej informacji, zobacz [konta magazynu za pomocą zaawansowanej ochrony przed zagrożeniami](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/).
+    ![Wybieranie subskrypcji](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-subscription.png)
 
-### <a name="using-azure-policy"></a>Za pomocą usługi Azure Policy
+1. Kliknij pozycję **warstwa cenowa**.
+1. W sekcji **Wybieranie warstwy cenowej według typu zasobu** w wierszu **konta magazynu** kliknij pozycję **włączone** lub **wyłączone**.
 
-Włącz zaawansowaną ochronę przed zagrożeniami na kontach magazynu w ramach określonej subskrypcji lub grupy zasobów za pomocą usługi Azure Policy.
+    ![Włącz ATP w Security Center](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
+1. Kliknij polecenie **Zapisz**.
 
-1. Biedzie Azure **zasady — definicje** strony.
+### <a name="using-azure-resource-manager-templates"></a>Korzystanie z szablonów Azure Resource Manager
 
-1. Wyszukaj **wdrażania zaawansowanej ochrony przed zagrożeniami dla kont magazynu** zasad.
+Użyj szablonu Azure Resource Manager, aby wdrożyć konto usługi Azure Storage z włączoną funkcją zaawansowanej ochrony przed zagrożeniami. Aby uzyskać więcej informacji, zobacz [konto magazynu z zaawansowaną ochroną przed zagrożeniami](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/).
 
-     ![Wyszukaj zasady](./media/storage-advanced-threat-protection/storage-atp-policy-definitions.png)
+### <a name="using-azure-policy"></a>Używanie Azure Policy
+
+Użyj Azure Policy, aby włączyć zaawansowaną ochronę przed zagrożeniami na kontach magazynu w ramach określonej subskrypcji lub grupy zasobów.
+
+1. Posiłek na stronę **definicji zasad** platformy Azure.
+
+1. Wyszukaj zasady **Wdróż zaawansowaną ochronę przed zagrożeniami na kontach magazynu** .
+
+     ![Zasady wyszukiwania](./media/storage-advanced-threat-protection/storage-atp-policy-definitions.png)
   
-1. Wybierz Azure subskrypcji lub grupy zasobów.
+1. Wybierz subskrypcję platformy Azure lub grupę zasobów.
 
     ![Wybierz subskrypcję lub grupę](./media/storage-advanced-threat-protection/storage-atp-policy2.png)
 
@@ -71,7 +81,7 @@ Włącz zaawansowaną ochronę przed zagrożeniami na kontach magazynu w ramach 
     ![Strona definicji zasad](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
 ### <a name="using-rest-api"></a>Korzystanie z interfejsu API REST
-Użyj poleceń interfejsu API Rest do utworzenia, aktualizacji lub pobieranie ustawienia zaawansowanej ochrony przed zagrożeniami dla konta określonego magazynu.
+Użyj poleceń interfejsu API REST, aby utworzyć, zaktualizować lub pobrać ustawienie zaawansowanej ochrony przed zagrożeniami dla określonego konta magazynu.
 
 * [Zaawansowana ochrona przed zagrożeniami — tworzenie](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
 * [Zaawansowana ochrona przed zagrożeniami — Pobierz](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
@@ -81,83 +91,83 @@ Użyj poleceń interfejsu API Rest do utworzenia, aktualizacji lub pobieranie us
 Użyj następujących poleceń cmdlet programu PowerShell:
 
   * [Włącz zaawansowaną ochronę przed zagrożeniami](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
-  * [Pobierz Zaawansowana ochrona przed zagrożeniami](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
-  * [Wyłącz Zaawansowana ochrona przed zagrożeniami](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
+  * [Uzyskaj zaawansowaną ochronę przed zagrożeniami](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
+  * [Wyłącz zaawansowaną ochronę przed zagrożeniami](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
 
 ## <a name="explore-security-anomalies"></a>Eksploruj anomalie zabezpieczeń
 
-W przypadku wystąpienia anomalii w działaniach magazynu otrzymasz powiadomienie e-mail z informacjami o podejrzanych zdarzeniach dotyczących zabezpieczeń. Szczegóły zdarzenia obejmują:
+Gdy wystąpią anomalie aktywności magazynu, otrzymasz powiadomienie e-mail z informacjami o podejrzanym zdarzeniu zabezpieczeń. Szczegóły zdarzenia obejmują:
 
-* Rodzaj anomalii
+* Charakter anomalii
 * Nazwa konta magazynu
 * Czas zdarzenia
 * Typ magazynu
-* Potencjalne przyczyny 
+* Możliwe przyczyny 
 * Kroki badania
-* Kroki korygowania
+* Kroki zaradcze
 
 
-Wiadomości e-mail również zawiera szczegółowe informacje o możliwych przyczynach i rekomendowanych działań umożliwiających sprawdzenie i ograniczenie potencjalnych zagrożeń.
+Wiadomość e-mail zawiera również szczegółowe informacje o możliwych przyczynach i zalecanych działaniach związanych z badaniem i łagodzeniem potencjalnego zagrożenia.
 
-![Usługa Azure Storage, zaawansowane wiadomość e-mail z alertem ochrony przed zagrożeniami](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert-email.png)
+![Adres e-mail alertu zaawansowanej ochrony przed zagrożeniami w usłudze Azure Storage](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert-email.png)
 
-Można przeglądać i zarządzać bieżące alerty zabezpieczeń w usłudze Azure Security Center [Kafelek alerty zabezpieczeń](../../security-center/security-center-managing-and-responding-alerts.md#managing-security-alerts). Kliknij określony alert zawiera informacje i akcje w przypadku badania bieżące zagrożenia i adresowania przyszłymi zagrożeniami.
+Bieżące alerty zabezpieczeń można przeglądać i zarządzać nimi z poziomu kafelka [alerty zabezpieczeń](../../security-center/security-center-managing-and-responding-alerts.md#managing-security-alerts)Azure Security Center. Kliknięcie określonego alertu zawiera szczegółowe informacje i akcje związane z badaniem bieżącego zagrożenia i rozwiązywanie przyszłych zagrożeń.
 
-![Usługa Azure Storage, zaawansowane wiadomość e-mail z alertem ochrony przed zagrożeniami](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert.png)
+![Adres e-mail alertu zaawansowanej ochrony przed zagrożeniami w usłudze Azure Storage](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert.png)
 
 ## <a name="protection-alerts"></a>Alerty ochrony
 
-Alerty są generowane na podstawie nietypowe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystać kont magazynu. Zdarzenia te można uruchomić następujące alerty:
+Alerty są generowane przez nietypowe i potencjalnie szkodliwe próby dostępu do kont magazynu lub korzystania z nich. Zdarzenia te mogą wyzwalać następujące alerty:
 
-### <a name="anomalous-access-pattern-alerts"></a>Dostęp z nietypowego wzorca alertów
+### <a name="anomalous-access-pattern-alerts"></a>Alerty nietypowego wzorca dostępu
 
-* **Dostęp z nietypowej lokalizacji**: Ten alert jest wyzwalany, gdy ktoś uzyskał dostęp do konta magazynu z nietypowej lokalizacji geograficznej.
-Potencjalne przyczyny:
-   * Atakujący ma dostęp do konta magazynu
-   * Przez wiarygodnego użytkownika ma dostęp do konta magazynu z nowej lokalizacji
+* **Dostęp z nietypowej lokalizacji**: Ten alert jest wyzwalany, gdy ktoś uzyska dostęp do konta magazynu z nietypowej lokalizacji geograficznej.
+Możliwe przyczyny:
+   * Osoba atakująca uzyskała dostęp do konta magazynu
+   * Uprawniony użytkownik uzyskał dostęp do konta magazynu z nowej lokalizacji
  
-* **Aplikacja anomalii**: Ten alert wskazuje, że aplikacja nietypowe uzyskał dostęp do tego konta magazynu. Potencjalne przyczyny:
-   * Osoba atakująca ma dostęp do konta magazynu przy użyciu nowej aplikacji.
-   * Przez wiarygodnego użytkownika został użyty Nowa aplikacja/przeglądarka dostępu do konta magazynu.
+* **Anomalia aplikacji**: Ten alert wskazuje, że nietypowa aplikacja uzyskała dostęp do tego konta magazynu. Możliwe przyczyny:
+   * Osoba atakująca uzyskała dostęp do konta magazynu przy użyciu nowej aplikacji.
+   * Uprawniony użytkownik użył nowej aplikacji/przeglądarki w celu uzyskania dostępu do konta magazynu.
 
-* **Dostęp anonimowy**: Ten alert wskazuje na to, że to konto zostało uzyskiwać dostęp anonimowo (tzn. bez żadnego uwierzytelniania), co jest nieoczekiwany w porównaniu do ostatnich wzorzec dostępu do tego konta.
-Potencjalne przyczyny:
-   * Osoba atakująca ma wykorzystać publicznego dostępu do odczytu do kontenera.
-   * Wiarygodnego użytkownika lub aplikacji jest używany publiczny dostęp do odczytu do kontenera.
+* **Dostęp anonimowy**: Ten alert oznacza, że do tego konta uzyskano dostęp anonimowo (tj. bez żadnego uwierzytelniania), który jest nieoczekiwany w porównaniu z ostatnim wzorcem dostępu na tym koncie.
+Możliwe przyczyny:
+   * Osoba atakująca korzystała z publicznego dostępu do odczytu do kontenera.
+   * Uprawniony użytkownik lub aplikacja użyła publicznego dostępu do odczytu do kontenera.
 
-* **Tor anomalii**: Ten alert wskazuje, czy to konto ma zostały pomyślnie uzyskał dostęp z adresu IP, który jest znany jako węzeł aktywnej zakończenia Tor (anonymizing proxy). Ważność tego alertu uwzględnia typ uwierzytelniania używany (jeśli istnieje) i czy jest to pierwszy przypadek takiego dostępu.
-Potencjalne przyczyny:
-   * Osoba atakująca ma dostęp do konta magazynu przy użyciu sieci Tor.
-   * Przez wiarygodnego użytkownika ma dostęp do konta magazynu przy użyciu sieci Tor.
+* **Anomalia tor**: Ten alert oznacza, że dostęp do tego konta powiodło się z adresu IP, który jest znany jako aktywny węzeł zakończenia sieci Tor (anonymizing proxy). Ważność tego alertu uwzględnia używany typ uwierzytelniania (jeśli istnieje), a także to, czy jest to pierwszy przypadek takiego dostępu.
+Możliwe przyczyny:
+   * Osoba atakująca uzyskała dostęp do konta magazynu przy użyciu sieci Tor.
+   * Uprawniony użytkownik uzyskał dostęp do konta magazynu przy użyciu sieci Tor.
 
 
-### <a name="anomalous-extractupload-alerts"></a>Wyodrębnij nietypowe lub przekazywanie alertów
+### <a name="anomalous-extractupload-alerts"></a>Ostrzeżenia dotyczące wyodrębniania/przekazywania anomalii
 
-* **Wykradanie danych**: Ten alert wskazuje, że został wyodrębniony nietypowo dużej ilości danych w porównaniu do ostatnią aktywność, w tym kontenerze magazynu. Potencjalne przyczyny:
-   * Osoba atakująca ma wyodrębniania dużych ilości danych z kontenera. (Na przykład: naruszenia wykradanie danych, nieautoryzowanych transfer danych)
-   * Nietypowe ilości danych ma wyodrębnić wiarygodnego użytkownika lub aplikacji z kontenera. (Na przykład: związanych z konserwacją)
+* **Eksfiltracji danych**: Ten alert wskazuje, że nietypowo duża ilość danych została wyodrębniona w porównaniu do ostatnich działań w tym kontenerze magazynu. Możliwe przyczyny:
+   * Osoba atakująca wyodrębnił dużą ilość danych z kontenera. (Na przykład: eksfiltracji/naruszenie danych, nieautoryzowany transfer danych)
+   * Uprawniony użytkownik lub aplikacja wyodrębnił nietypową ilość danych z kontenera. (Na przykład: działanie konserwacji)
 
-* **Nieoczekiwane usunięcie**: Ten alert wskazuje, że na koncie magazynu, w porównaniu z ostatnią aktywność na tym koncie wystąpił co najmniej jednej operacji usuwania nieoczekiwany. Potencjalne przyczyny:
-   * Osoba atakująca usunął dane z konta magazynu.
-   * Przez wiarygodnego użytkownika przeprowadził nietypowe usunięcia.
+* **Nieoczekiwane usunięcie**: Ten alert wskazuje na to, że na koncie magazynu wystąpiła co najmniej jedna Nieoczekiwana operacja usuwania w porównaniu do ostatnich działań na tym koncie. Możliwe przyczyny:
+   * Osoba atakująca usunęła dane z konta magazynu.
+   * Uprawniony użytkownik wykonał nietypowe usunięcie.
 
-* **Przekaż pakiet usługi w chmurze Azure**: Ten alert wskazuje, czy pakiet usługi w chmurze Azure (plik cspkg) został przekazany do konta magazynu w nietypowy sposób, w porównaniu do ostatnią aktywność na tym koncie. Potencjalne przyczyny: 
-   * Osoba atakująca ma zostać przygotowywanie do wdrożenia złośliwy kod z konta magazynu w usłudze w chmurze platformy Azure.
-   * Przez wiarygodnego użytkownika ma zostały przygotowywanie do wdrożenia usługi uzasadnione.
+* **Przekaż pakiet usługi w chmurze platformy Azure**: Ten alert oznacza, że pakiet usługi w chmurze platformy Azure (plik. cspkg) został przekazany do konta magazynu w nietypowy sposób w porównaniu z ostatnią aktywnością na tym koncie. Możliwe przyczyny: 
+   * Osoba atakująca przygotowuje się do wdrożenia złośliwego kodu z konta magazynu w usłudze w chmurze platformy Azure.
+   * Uprawniony użytkownik został przygotował do wiarygodnego wdrożenia usługi.
 
-### <a name="suspicious-storage-activities-alerts"></a>Magazyn podejrzanych działań alertów
+### <a name="suspicious-storage-activities-alerts"></a>Alerty dotyczące podejrzanych działań związanych z magazynem
 
-* **Zmień uprawnienia dostępu**: Ten alert wskazuje, że uprawnienia dostępu do tego kontenera magazynu zostały zmienione w nietypowy sposób. Potencjalne przyczyny: 
-   * Osoba atakująca zmienił uprawnień kontenera, aby obniżyć poziom zabezpieczeń.
-   * Przez wiarygodnego użytkownika został zmieniony uprawnień kontenera.
+* **Zmiana uprawnień dostępu**: Ten alert wskazuje, że uprawnienia dostępu do tego kontenera magazynu zostały zmienione w nietypowy sposób. Możliwe przyczyny: 
+   * Osoba atakująca zmieniła uprawnienia kontenera, aby osłabić jej zabezpieczenia.
+   * Uprawniony użytkownik zmienił uprawnienia do kontenera.
 
-* **Dostęp do kontroli**: Ten alert wskazuje, że uprawnienia dostępu do konta magazynu zostały poddane w nietypowy sposób, w porównaniu do ostatnią aktywność na tym koncie. Potencjalne przyczyny: 
-   * Osoba atakująca wykonała Rekonesans przyszłych ataku.
-   * Przez wiarygodnego użytkownika ma wykonać konserwacji na koncie magazynu.
+* **Inspekcja dostępu**: Ten alert wskazuje, że uprawnienia dostępu do konta magazynu zostały sprawdzone w nietypowy sposób w porównaniu z ostatnią aktywnością na tym koncie. Możliwe przyczyny: 
+   * Atakujący wykonał rekonesans w celu zaatakowania w przyszłości.
+   * Uprawniony użytkownik wykonał konserwację na koncie magazynu.
 
-* **Eksploracja danych**: Ten alert wskazuje, że obiekty BLOB i kontenery na koncie usługi storage została wyliczane w nietypowy sposób, w porównaniu do ostatnią aktywność na tym koncie. Potencjalne przyczyny: 
-   * Osoba atakująca wykonała Rekonesans przyszłych ataku.
-   * Wiarygodnego użytkownika lub logice aplikacji ma eksplorować dane na koncie magazynu.
+* **Eksploracja danych**: Ten alert wskazuje, że obiekty blob lub kontenery na koncie magazynu zostały wyliczone w nietypowy sposób w porównaniu z ostatnią aktywnością na tym koncie. Możliwe przyczyny: 
+   * Atakujący wykonał rekonesans w celu zaatakowania w przyszłości.
+   * Uprawniony użytkownik lub logika aplikacji ma zbadane dane w ramach konta magazynu.
 
 
 
@@ -166,6 +176,6 @@ Potencjalne przyczyny:
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o [logowania na kontach magazynu Azure](/rest/api/storageservices/About-Storage-Analytics-Logging)
+* Dowiedz się więcej o [dziennikach na kontach usługi Azure Storage](/rest/api/storageservices/About-Storage-Analytics-Logging)
 
-* Dowiedz się więcej o [usługi Azure Security Center](../../security-center/security-center-intro.md)
+* Dowiedz się więcej o [Azure Security Center](../../security-center/security-center-intro.md)

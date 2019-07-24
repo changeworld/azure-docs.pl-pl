@@ -1,9 +1,9 @@
 ---
-title: Uruchamianie zadań w ramach konta użytkownika — Azure Batch | Dokumentacja firmy Microsoft
-description: Należy skonfigurować konta użytkowników do uruchamiania zadań w usłudze Azure Batch
+title: Uruchamianie zadań w obszarze konta użytkowników — Azure Batch | Microsoft Docs
+description: Konfigurowanie kont użytkowników na potrzeby uruchamiania zadań w Azure Batch
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -15,94 +15,94 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: bd5c16d755ef9b71f36b3d499838b12e6099ba6d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 93b3004303dd1587340b467c2fd52cb7233c95fd
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65595383"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322699"
 ---
 > [!NOTE] 
-> Konta użytkowników, omówionych w tym artykule różnią się od użytkowników kont używanych dla protokołu RDP (Remote Desktop) lub protokołu Secure Shell (SSH), ze względów bezpieczeństwa. 
+> Konta użytkowników omówione w tym artykule różnią się od kont użytkowników używanych dla Remote Desktop Protocol (RDP) lub Secure Shell (SSH) ze względów bezpieczeństwa. 
 >
-> Aby połączyć z węzła z systemem Linux konfiguracji maszyny wirtualnej za pośrednictwem protokołu SSH, zobacz [użycie pulpitu zdalnego do maszyny Wirtualnej z systemem Linux na platformie Azure](../virtual-machines/virtual-machines-linux-use-remote-desktop.md). Aby połączyć z węzłów z systemem Windows za pośrednictwem protokołu RDP, zobacz [nawiązywanie połączenia z maszyny Wirtualnej z systemem Windows Server](../virtual-machines/windows/connect-logon.md).<br /><br />
-> Aby połączyć z węzła z systemem konfiguracji usługi w chmurze za pośrednictwem protokołu RDP, zobacz [Włącz Podłączanie pulpitu zdalnego dla roli w usługach Azure Cloud Services](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md).
+> Aby nawiązać połączenie z węzłem z uruchomioną konfiguracją maszyny wirtualnej z systemem Linux za pośrednictwem protokołu SSH, zobacz [używanie pulpit zdalny do maszyny wirtualnej z systemem Linux na platformie Azure](../virtual-machines/virtual-machines-linux-use-remote-desktop.md) Aby połączyć się z węzłami z systemem Windows za pomocą protokołu RDP, zobacz [nawiązywanie połączenia z maszyną wirtualną z systemem Windows Server](../virtual-machines/windows/connect-logon.md).<br /><br />
+> Aby nawiązać połączenie z węzłem z uruchomioną konfiguracją usługi w chmurze za pośrednictwem protokołu RDP, zobacz [włączanie Podłączanie pulpitu zdalnego dla roli w usłudze Azure Cloud Services](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md).
 >
 >
 
 
-# <a name="run-tasks-under-user-accounts-in-batch"></a>Uruchamianie zadań w ramach kont użytkowników w usłudze Batch
+# <a name="run-tasks-under-user-accounts-in-batch"></a>Uruchamianie zadań w obszarze konta użytkowników w usłudze Batch
 
-Zadania w usłudze Azure Batch jest zawsze uruchamiany przy użyciu konta użytkownika. Domyślnie zadania są uruchamiane w ramach kont użytkowników standardowych, bez uprawnień administratora. Domyślne ustawienia konta użytkownika są zwykle wystarczające. W niektórych scenariuszach jednak warto mieć możliwość skonfigurowania konta użytkownika, pod którym ma zostać zadania do uruchomienia. W tym artykule omówiono typy kont użytkowników i jak można je skonfigurować dla danego scenariusza.
+Zadanie w Azure Batch zawsze działa w ramach konta użytkownika. Domyślnie zadania są uruchamiane w ramach kont użytkowników standardowych, bez uprawnień administratora. Te domyślne ustawienia konta użytkownika są zwykle wystarczające. W niektórych scenariuszach warto jednak skonfigurować konto użytkownika, w ramach którego ma zostać uruchomione zadanie. W tym artykule omówiono typy kont użytkowników i sposoby ich konfigurowania dla danego scenariusza.
 
 ## <a name="types-of-user-accounts"></a>Typy kont użytkowników
 
-Usługa Azure Batch udostępnia dwa typy kont użytkowników do uruchamiania zadań:
+Azure Batch oferuje dwa typy kont użytkowników do uruchamiania zadań:
 
-- **Konta użytkowników automatycznie.** Konta użytkowników automatycznie są wbudowane konta użytkowników, które są tworzone automatycznie przez usługę Batch. Domyślnie zadania są uruchamiane na koncie użytkownika automatycznie. Można skonfigurować specyfikacji automatycznie użytkownika dla zadania wskazać, pod które konto użytkownika automatycznie uruchamiać zadanie. Specyfikacja użytkownika automatycznie pozwala określić poziom podniesienia uprawnień i zakres konto użytkownika automatycznie uruchomi zadanie. 
+- **Konta użytkowników.** Konta użytkowników wbudowanych to wbudowane konta użytkowników, które są tworzone automatycznie przez usługę Batch. Domyślnie zadania są uruchamiane w ramach konta autoużytkownika. Można skonfigurować specyfikację autoużytkownika dla zadania, aby wskazać, pod którym kontem automatycznie należy uruchomić zadanie. Specyfikacja autoużytkownika umożliwia określenie poziomu podniesienia uprawnień i zakresu konta użytkownika, które będzie uruchamiać zadanie. 
 
-- **Konto użytkownika o nazwie.** Podczas tworzenia puli można określić co najmniej jednego konta użytkownika o nazwie dla puli. Każde konto użytkownika jest tworzony w każdym węźle puli. Oprócz nazwy konta określ hasło konta użytkownika, podniesienia uprawnień poziom, a w przypadku pul systemu Linux, prywatny klucz SSH. Po dodaniu zadania, można określić konto użytkownika nazwanego, na którym jest uruchamiany tego zadania.
-
-> [!IMPORTANT] 
-> W przypadku usługi Batch wersji 2017-01-01.4.0 wprowadzono istotnej zmiany, które wymagają aktualizacji update kodu do wywołania tej wersji. Jeśli jesteś Migrowanie kodu ze starszej wersji usługi Batch, należy pamiętać, że **runElevated** właściwość nie jest już obsługiwana w bibliotekach klienta interfejsu API REST lub partii. Użyj nowego **tożsamości użytkownika** właściwości zadania, aby określić poziom podniesienia uprawnień. Zobacz sekcję pod tytułem [aktualizowania kodu do najnowszej biblioteki klienta usługi Batch](#update-your-code-to-the-latest-batch-client-library) szybkie wytyczne dotyczące aktualizowania kodu usługi Batch, korzystając z jednej z bibliotek klienckich.
->
->
-
-## <a name="user-account-access-to-files-and-directories"></a>Kontu użytkownika dostępu do plików i katalogów
-
-Zarówno konto użytkownika automatycznie, jak i konto użytkownika o nazwie dostęp odczytu/zapisu do katalogu roboczego zadania podrzędnego, udostępniony katalog i katalog zadania obejmujące wiele wystąpień. Oba rodzaje kont mają dostęp do odczytu do katalogów przygotowania uruchamiania i zadania.
-
-Jeśli zadanie jest uruchamiane w ramach tego samego konta, którego użyto do uruchamiania zadania uruchamiania, zadanie ma dostęp do odczytu i zapisu do katalogu uruchamiania zadań. Podobnie jeśli zadanie jest uruchamiane w ramach tego samego konta, którego użyto do uruchamiania zadania przygotowania zadania, zadanie ma dostęp do odczytu i zapisu do katalogu zadania przygotowania zadania. Jeśli zadanie jest uruchamiane przy użyciu innego konta niż zadania podrzędnego uruchamiania lub zadanie przygotowania zadania, zadanie ma dostęp tylko do odczytu do odpowiednich katalogu.
-
-Aby uzyskać więcej informacji na temat uzyskiwania dostępu do plików i katalogów z zadania, zobacz [tworzenie rozbudowanych rozwiązań przetwarzania równoległego przy użyciu usługi Batch](batch-api-basics.md#files-and-directories).
-
-## <a name="elevated-access-for-tasks"></a>Podwyższonego poziomu dostępu dla zadań 
-
-Konto użytkownika podniesienie poziomu wskazuje, czy zadanie jest uruchamiane z dostępem z podwyższonym poziomem uprawnień. Zarówno konto użytkownika automatycznie, jak i konto użytkownika nazwanego, można uruchomić z podwyższonego poziomu dostępu. Istnieją dwie opcje podniesienie poziomu:
-
-- **Tekst NonAdmin:** Zadanie jest uruchamiane jako użytkownik standardowy bez podwyższonego poziomu dostępu. Domyślny poziom podniesienia uprawnień dla konta użytkownika usługi Batch jest zawsze **tekst NonAdmin**.
-- **Administrator:** Zadanie jest uruchamiane jako użytkownik z dostępem z podwyższonym poziomem uprawnień i działa z pełnymi uprawnieniami administratora. 
-
-## <a name="auto-user-accounts"></a>Konta użytkowników automatycznie
-
-Domyślnie zadania uruchamiane w usłudze Batch przy użyciu konta użytkownika automatycznie jako użytkownik standardowy bez podwyższonego poziomu dostępu, a także w zakresie zadania. Gdy specyfikacja automatycznie niezwiązanych z użytkownikiem jest skonfigurowany dla zakresu zadań, usługa Batch tworzy konto użytkownika automatycznie tylko tego zadania.
-
-Alternatywa dla zakresu zadań jest zakres puli. Gdy specyfikacji automatycznie użytkownika dla zadania jest skonfigurowany dla zakresu w puli, zadanie jest uruchamiane na koncie użytkownika automatycznie dostępne dla dowolnego zadania w puli. Aby uzyskać więcej informacji na temat zakresu w puli zobacz sekcję pod tytułem wykonywania zadania jako użytkownik automatycznie zakresie puli.   
-
-Domyślny zakres różni się w węzłach Windows i Linux:
-
-- W węzłach Windows zadania są uruchamiane w ramach zakresu zadań domyślnie.
-- Węzłów systemu Linux są zawsze uruchamiane w ramach zakresu w puli.
-
-Istnieją cztery możliwe konfiguracje specyfikacji automatycznie niezwiązanych z użytkownikiem, z których każdy odnosi się do unikatowego auto-konta użytkownika:
-
-- Dostęp inni niż administratorzy z zakresem zadań (domyślna Specyfikacja użytkownika automatycznie)
-- Administrator (podwyższone uprawnienia) dostępu w zakresie zadania
-- Dostęp inni niż administratorzy z zakresem puli
-- Dostęp administratora o zakresie puli
+- **Nazwane konto użytkownika.** Podczas tworzenia puli można określić jedno lub więcej nazwanych kont użytkowników dla puli. Każde konto użytkownika jest tworzone w każdym węźle puli. Oprócz nazwy konta należy określić hasło konta użytkownika, poziom podniesienia uprawnień oraz, w przypadku pul systemu Linux, klucz prywatny SSH. Po dodaniu zadania można określić nazwane konto użytkownika, w ramach którego ma zostać uruchomione zadanie.
 
 > [!IMPORTANT] 
-> Zadania uruchomione w ramach zakresu zadań nie mają de facto dostępu do innych zadań w węźle. Jednak przez złośliwego użytkownika mającego dostęp do konta można obejść to ograniczenie, przesyłając zadanie, które jest uruchamiane z uprawnieniami administratora i uzyskuje dostęp do katalogów innych zadań. Złośliwy użytkownik może również użyć protokołu RDP lub SSH Połącz się z węzłem. Jest ważne w celu ochrony dostępu do kluczy konta usługi Batch, aby zapobiec takiej sytuacji. Jeśli podejrzewasz, że Twoje konto zostało naruszone, należy ponownie wygenerować klucze.
+> Usługa Batch w wersji 2017 -01-01.4.0 wprowadza istotne zmiany, które wymagają zaktualizowania kodu w celu wywołania tej wersji. W przypadku migrowania kodu ze starszej wersji usługi Batch należy pamiętać, że właściwość **runElevated** nie jest już obsługiwana w interfejsie API REST ani w bibliotekach klienta usługi Batch. Użyj nowej właściwości **tożsamość użytkownika** zadania, aby określić poziom podniesienia uprawnień. Zapoznaj się z sekcją [Aktualizacja kodu do najnowszej biblioteki klienta usługi Batch,](#update-your-code-to-the-latest-batch-client-library) Aby uzyskać szybkie wskazówki dotyczące aktualizowania kodu partii, jeśli używasz jednej z bibliotek klienta.
 >
 >
 
-### <a name="run-a-task-as-an-auto-user-with-elevated-access"></a>Uruchamianie zadania jako użytkownik automatycznie z podwyższonego poziomu dostępu
+## <a name="user-account-access-to-files-and-directories"></a>Dostęp do plików i katalogów przez konto użytkownika
 
-Należy uruchomić zadanie z podwyższonym poziomem uprawnień, można skonfigurować w specyfikacji użytkownika automatycznie uprawnienia administratora. Na przykład zadanie podrzędne uruchamiania może być konieczne podwyższonego poziomu dostępu do zainstalowania oprogramowania na węźle.
+Zarówno konto użytkownika, jak i konto użytkownika nazwanego mają dostęp do odczytu i zapisu do katalogu roboczego zadania, katalogu udostępnionego i zadania o wiele wystąpień. Oba typy kont mają dostęp do odczytu do katalogów uruchamiania i przygotowania zadań.
+
+Jeśli zadanie zostanie uruchomione w ramach tego samego konta, które zostało użyte do uruchomienia zadania podrzędnego, zadanie ma dostęp do odczytu i zapisu do katalogu zadań początkowych. Podobnie, jeśli zadanie zostanie uruchomione w ramach tego samego konta, które zostało użyte do uruchomienia zadania przygotowania zadania, zadanie ma dostęp do odczytu i zapisu do katalogu zadania przygotowania zadania. Jeśli zadanie zostanie uruchomione przy użyciu innego konta niż zadanie uruchom zadanie podrzędne lub przygotowywanie zadania, to zadanie ma dostęp tylko do odczytu do odpowiedniego katalogu.
+
+Aby uzyskać więcej informacji na temat uzyskiwania dostępu do plików i katalogów z zadania, zobacz Opracowywanie rozbudowanych [rozwiązań przetwarzania równoległego przy użyciu usługi Batch](batch-api-basics.md#files-and-directories).
+
+## <a name="elevated-access-for-tasks"></a>Podwyższony poziom dostępu do zadań 
+
+Poziom podniesienia uprawnień konta użytkownika wskazuje, czy zadanie jest uruchamiane z podniesionymi uprawnieniami dostępu. Zarówno konto użytkownika, jak i nazwane konto użytkownika mogą działać z podwyższonym dostępem. Dostępne są dwie opcje poziomu podniesienia uprawnień:
+
+- **NonAdmin** Zadanie jest uruchamiane jako użytkownik standardowy bez podwyższonego poziomu dostępu. Domyślny poziom podniesienia uprawnień dla konta użytkownika usługi Batch jest zawsze nieadministracyjny.
+- **Administrator:** Zadanie jest uruchamiane jako użytkownik z podwyższonym poziomem dostępu i działa z pełnymi uprawnieniami administratora. 
+
+## <a name="auto-user-accounts"></a>Konta użytkowników
+
+Domyślnie zadania są uruchamiane w usłudze Batch w ramach konta autoużytkownika jako użytkownik standardowy bez podwyższonego poziomu uprawnień oraz z zakresem zadania. Po skonfigurowaniu dla zakresu zadania specyfikacji dla autoużytkownika usługa Batch tworzy konto użytkownika tylko dla tego zadania.
+
+Alternatywą dla zakresu zadania jest zakres puli. W przypadku skonfigurowania dla zadania specyfikacji autoużytkownika dla zakresu puli zadanie jest uruchamiane w ramach konta autoużytkownika, które jest dostępne dla każdego zadania w puli. Aby uzyskać więcej informacji na temat zakresu puli, zapoznaj się z sekcją "Uruchamianie zadania" jako użytkownika z zakresem puli.   
+
+Zakres domyślny jest różny w węzłach systemów Windows i Linux:
+
+- W węzłach systemu Windows zadania są domyślnie uruchamiane w obszarze Zakres zadania.
+- Węzły systemu Linux są zawsze uruchamiane w zakresie puli.
+
+Istnieją cztery możliwe konfiguracje dla specyfikacji autoużytkownika, z których każdy odnosi się do unikatowego konta użytkownika:
+
+- Dostęp niebędący administratorami do zakresu zadania (domyślna Specyfikacja użytkownika)
+- Dostęp administratora (podwyższony poziom) do zakresu zadania
+- Dostęp niebędący administratorem z zakresem puli
+- Dostęp administratora z zakresem puli
+
+> [!IMPORTANT] 
+> Zadania uruchomione w ramach zakresu zadania nie mają dostępu do innych zadań w węźle. Jednak złośliwy użytkownik mający dostęp do konta może obejść to ograniczenie, przesyłając zadanie, które jest uruchamiane z uprawnieniami administratora i uzyskuje dostęp do innych katalogów zadań. Złośliwy użytkownik może również nawiązać połączenie z węzłem za pomocą protokołu RDP lub SSH. Ważne jest, aby chronić dostęp do kluczy konta w usłudze Batch w celu uniknięcia takiego scenariusza. Jeśli podejrzewasz, że Twoje konto mogło zostać naruszone, należy ponownie wygenerować klucze.
+>
+>
+
+### <a name="run-a-task-as-an-auto-user-with-elevated-access"></a>Uruchamianie zadania jako użytkownik mający podwyższony poziom dostępu
+
+Można skonfigurować specyfikację autoużytkownika dla uprawnień administratora, gdy konieczne jest uruchomienie zadania z podwyższonym poziomem uprawnień. Na przykład zadanie uruchamiania może potrzebować podwyższonego poziomu dostępu w celu zainstalowania oprogramowania w węźle.
 
 > [!NOTE] 
-> Ogólnie rzecz biorąc zaleca się używać dostępu z podwyższonym poziomem uprawnień, tylko wtedy, gdy jest to konieczne. Najlepszym rozwiązaniem jest przyznanie minimalne uprawnienia niezbędne do osiągnięcia pożądanego rezultatu. Na przykład jeśli zadanie podrzędne uruchamiania zainstaluje oprogramowanie dla bieżącego użytkownika zamiast dla wszystkich użytkowników, można uniknąć udzielania podwyższonego poziomu dostępu do zadań. Można skonfigurować specyfikacji użytkownika automatycznie puli zakresu i bez uprawnień administratora dostęp do wszystkich zadań, które mają zostać uruchomione w ramach tego samego konta, w tym zadania podrzędnego uruchamiania. 
+> Ogólnie rzecz biorąc, najlepiej używać dostępu z podwyższonym poziomem uprawnień tylko w razie potrzeby. Najlepsze rozwiązania zalecają przyznanie minimalnego uprawnienia niezbędnego do osiągnięcia żądanego wyniku. Na przykład, jeśli zadanie startowe instaluje oprogramowanie dla bieżącego użytkownika, a nie dla wszystkich użytkowników, może być możliwe uniknięcie przyznawania podwyższonego poziomu dostępu do zadań. Można skonfigurować specyfikację autoużytkownika dla zakresu puli i dostęp niebędący administratorami dla wszystkich zadań, które muszą być uruchamiane w ramach tego samego konta, w tym zadania podrzędnego uruchamiania. 
 >
 >
 
-Poniższe fragmenty kodu przedstawiają sposób konfigurowania specyfikacji użytkownika automatycznie. Przykłady zestawu podniesienia uprawnień poziom `Admin` i zakres do `Task`. Zakres zadania jest ustawieniem domyślnym, ale został tu zawarty, przykładach.
+Poniższe fragmenty kodu pokazują, jak skonfigurować specyfikację autoużytkownika. Przykłady ustawiają poziom `Admin` podniesienia uprawnień i zakres do `Task`. Zakres zadania jest ustawieniem domyślnym, ale jest tu uwzględniony na przykład.
 
 #### <a name="batch-net"></a>Batch .NET
 
 ```csharp
 task.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.Admin, scope: AutoUserScope.Task));
 ```
-#### <a name="batch-java"></a>Batch Java
+#### <a name="batch-java"></a>Wsadowe środowisko Java
 
 ```java
 taskToAdd.withId(taskId)
@@ -127,46 +127,46 @@ task = batchmodels.TaskAddParameter(
 batch_client.task.add(job_id=jobid, task=task)
 ```
 
-### <a name="run-a-task-as-an-auto-user-with-pool-scope"></a>Uruchamianie zadania jako użytkownik automatycznie zakresie puli
+### <a name="run-a-task-as-an-auto-user-with-pool-scope"></a>Uruchamianie zadania jako użytkownika z zakresem puli
 
-Gdy węzeł zostanie zaaprowizowana, dwa całej puli automatycznej użytkownika konta są tworzone w każdym węźle w puli, z podwyższonym poziomem uprawnień i jedną bez podwyższonego poziomu dostępu. Ustawianie zakresu użytkownika automatycznie do zakresu puli dla danego zadania uruchamia zadanie w ramach jednego z tych dwóch kont użytkowników automatycznie w całej puli. 
+Po przydzieleniu węzła w każdym węźle w puli są tworzone dwa konta użytkowników z podwyższonym poziomem uprawnień oraz jeden bez podwyższonego poziomu dostępu. Ustawienie zakresu autoużytkownika do zakresu puli dla danego zadania uruchamia zadanie w ramach jednego z tych dwóch kont użytkowników w całej puli. 
 
-Po określeniu zakresu puli dla użytkownika automatycznie, wszystkie zadania, które będą uruchamiane z uprawnieniami administratora, uruchamiane przy użyciu tego samego konta użytkowników automatycznie w całej puli. Podobnie zadania, które są uruchamiane bez uprawnień administratora również uruchomić w ramach jednego całej puli auto-konta użytkownika. 
+Po określeniu zakresu puli dla autoużytkownika wszystkie zadania uruchamiane z uprawnieniami administratora są uruchamiane w ramach tego samego konta autoużytkownika w całej puli. Podobnie zadania, które są uruchamiane bez uprawnień administratora, również są uruchamiane w ramach pojedynczego konta użytkownika w całej puli. 
 
 > [!NOTE] 
-> Dwa konta użytkowników automatycznie w całej puli są osobne konta. Zadania uruchomione w ramach konta administracyjnego w całej puli nie może udostępniać dane zadania uruchomione w ramach konta standardowe i na odwrót. 
+> Dwa konta użytkowników w całej puli są oddzielnymi kontami. Zadania uruchomione w ramach konta administratora na całej puli nie mogą udostępniać danych za pomocą zadań uruchomionych w ramach konta standardowego i na odwrót. 
 >
 >
 
-Zaletą uruchamiania w ramach tego samego konta użytkownika automatycznie jest, zadania i mogą udostępniać dane inne zadania uruchomione w tym samym węźle.
+Korzystanie z tego samego konta użytkownika jest możliwe, ponieważ zadania mogą współużytkować dane z innymi zadaniami uruchomionymi w tym samym węźle.
 
-Udostępnianie kluczy tajnych między zadaniami jest jeden scenariusz, w których jest użyteczny uruchamianie zadań zgodnie z jednym z dwóch kont użytkowników automatycznie w całej puli. Na przykład załóżmy, że zadanie uruchamiania potrzebuje aprowizować wpisu tajnego na węzeł, który można użyć innych zadań. Można użyć interfejsu API ochrony danych Windows (DPAPI), ale wymaga uprawnień administratora. Zamiast tego można chronić klucz tajny na poziomie użytkownika. Zadania uruchomione w ramach tego samego konta użytkownika mają dostęp do klucza tajnego bez podwyższonego poziomu dostępu.
+Udostępnianie kluczy tajnych między zadaniami odbywa się w jednym scenariuszu, w którym uruchomione są zadania podrzędne na jednym z dwóch kont użytkowników, które są używane w całej puli. Załóżmy na przykład, że zadanie uruchamiania musi zainicjować obsługę klucza tajnego w węźle, który może być używany przez inne zadania. Można użyć interfejsu API ochrony danych systemu Windows (DPAPI), ale wymaga uprawnień administratora. Zamiast tego można chronić klucz tajny na poziomie użytkownika. Zadania uruchomione w ramach tego samego konta użytkownika mogą uzyskiwać dostęp do klucza tajnego bez podwyższonego poziomu dostępu.
 
-Inny scenariusz, w których warto uruchamiać zadania przy użyciu konta użytkownika automatycznie zakresie puli to udział plików interfejsu przekazywania komunikatów (MPI). Udział plików MPI jest przydatne, gdy węzły w ramach zadania MPI potrzebne do pracy na tych samych danych plików. Węzeł główny tworzy udział plików, których węzły podrzędne może uzyskać dostęp, jeśli są uruchomione na tym samym koncie użytkownika automatycznie. 
+Innym scenariuszem, w którym można uruchamiać zadania w ramach konta autoużytkownika z zakresem puli jest udział plików interfejsu przekazywania komunikatów (MPI). Udział plików MPI jest przydatny, gdy węzły w zadaniu MPI muszą korzystać z tych samych danych plików. Węzeł główny tworzy udział plików, do którego węzły podrzędne mogą uzyskać dostęp, jeśli są uruchomione w ramach tego samego konta użytkownika. 
 
-Poniższy fragment kodu ustawia zakres użytkownika automatycznie do zakresu puli zadania na platformie .NET usługi Batch. Podniesienie poziomu zostanie pominięty, dzięki czemu zadanie jest uruchamiane na koncie całej puli auto użytkownika standardowego.
+Poniższy fragment kodu ustawia zakres autoużytkownika do puli dla zadania w usłudze Batch .NET. Poziom podniesienia uprawnień jest pomijany, więc zadanie jest uruchamiane w ramach standardowego konta użytkownika w całej puli.
 
 ```csharp
 task.UserIdentity = new UserIdentity(new AutoUserSpecification(scope: AutoUserScope.Pool));
 ```
 
-## <a name="named-user-accounts"></a>Konta użytkowników o nazwie
+## <a name="named-user-accounts"></a>Nazwy kont użytkowników
 
-Konta użytkowników o nazwie można zdefiniować podczas tworzenia puli. Konto użytkownika o nazwie ma nazwę i hasło. Można określić poziom podniesienia uprawnień dla konta użytkownika o nazwie. W przypadku węzłów systemu Linux możesz podać prywatny klucz SSH.
+Można zdefiniować nazwanych kont użytkowników podczas tworzenia puli. Nazwane konto użytkownika ma podaną nazwę i hasło. Możesz określić poziom podniesienia uprawnień dla nazwanego konta użytkownika. W przypadku węzłów systemu Linux można także podać klucz prywatny SSH.
 
-Konto użytkownika o nazwie istnieje na wszystkich węzłach w puli i jest dostępny dla wszystkich zadań uruchomionych na tych węzłach. Może zdefiniować dowolną liczbę nazwanych użytkowników dla puli. Po dodaniu zadania lub kolekcji zadań, można określić, czy zadanie jest uruchamiane jedno z kont nazwanego użytkownika zdefiniowane w puli.
+Konto użytkownika o nazwie istnieje na wszystkich węzłach w puli i jest dostępne dla wszystkich zadań uruchomionych w tych węzłach. Dla puli można zdefiniować dowolną liczbę użytkowników z nazwami. Po dodaniu kolekcji zadań lub zadań można określić, że zadanie jest uruchamiane w ramach jednego z nazwanych kont użytkowników zdefiniowanych w puli.
 
-Konto użytkownika o nazwie jest przydatne, gdy użytkownik chce uruchamiać wszystkie zadania w zadaniu, w ramach tego samego konta użytkownika, przy jednoczesnym izolowaniu ich od zadania uruchomione w innych zadań w tym samym czasie. Na przykład można utworzyć nazwanego użytkownika dla każdego zadania i uruchamiania zadań każde zadanie w ramach tego konta użytkownika o nazwie. Każde zadanie może następnie udostępnić wpisu tajnego z własnych zadań, ale nie z zadań uruchomionych w innych zadań.
+Konto użytkownika nazwanego jest przydatne, gdy chcesz uruchamiać wszystkie zadania w ramach zadania w ramach tego samego konta użytkownika, ale Izoluj je od zadań uruchomionych w innych zadaniach w tym samym czasie. Można na przykład utworzyć nazwanego użytkownika dla każdego zadania i uruchomić zadania poszczególnych zadań w ramach tego konta użytkownika. Każde zadanie może następnie udostępnić tajne zadania, ale nie z zadaniami uruchomionymi w innych zadaniach.
 
-Konto użytkownika o nazwie umożliwia również uruchamianie zadań, która ustawia uprawnienia zasobów zewnętrznych, takich jak udziały plików. Przy użyciu konta użytkownika nazwanego kontrolowanie tożsamości użytkownika i użyć tej tożsamości użytkownika, aby ustawić uprawnienia.  
+Można również użyć nazwanego konta użytkownika do uruchomienia zadania, które ustawia uprawnienia do zasobów zewnętrznych, takich jak udziały plików. Przy użyciu nazwanego konta użytkownika kontrolujesz tożsamość użytkownika i można użyć tej tożsamości użytkownika do ustawiania uprawnień.  
 
-Konta użytkowników o nazwie włączyć protokół SSH bez hasła, między węzłami systemu Linux. Można użyć konta o nazwie użytkownika przy użyciu węzłów systemu Linux, które mają zostać uruchomione zadania obejmujące wiele wystąpień. Każdy węzeł w puli, można uruchomić zadania przy użyciu konta użytkownika zdefiniowane w całej puli. Aby uzyskać więcej informacji na temat zadania obejmujące wiele wystąpień, zobacz [używać wielu\-wystąpienia zadania do uruchamiania aplikacji MPI](batch-mpi.md).
+Konta użytkowników nazwanych umożliwiają włączenie protokołu SSH bez hasła między węzłami systemu Linux. Można użyć nazwanego konta użytkownika z węzłami systemu Linux, które wymagają uruchamiania zadań obejmujących wiele wystąpień. Każdy węzeł w puli może uruchamiać zadania w ramach konta użytkownika zdefiniowanego w całej puli. Aby uzyskać więcej informacji na temat zadań z wieloma wystąpieniami, zobacz [Używanie zadań z wieloma\-wystąpieniami do uruchamiania aplikacji MPI](batch-mpi.md).
 
-### <a name="create-named-user-accounts"></a>Tworzenie kont użytkowników o nazwie
+### <a name="create-named-user-accounts"></a>Tworzenie nazwanych kont użytkowników
 
-Aby utworzyć nazwanego użytkownika konta w usłudze Batch, należy dodać do puli zbiór kont użytkowników. Poniższe fragmenty kodu przedstawiają sposób tworzenia kont użytkowników o nazwie w .NET, Java i Python. Te fragmenty kodu przedstawiają sposób tworzenia administratora i bez uprawnień administratora o nazwie kontami w puli. Przykłady tworzenia pul za pomocą konfiguracji usługi w chmurze, ale Użyj tej samej metody, podczas tworzenia puli Windows lub Linux, za pomocą konfiguracji maszyny wirtualnej.
+Aby utworzyć konto nazwanych użytkowników w usłudze Batch, Dodaj kolekcję kont użytkowników do puli. Poniższe fragmenty kodu przedstawiają sposób tworzenia nazwanych kont użytkowników w językach .NET, Java i Python. Te fragmenty kodu przedstawiają sposób tworzenia kont administratora i niebędących administratorami nazwanymi w puli. Przykłady tworzą pule przy użyciu konfiguracji usługi w chmurze, ale podczas tworzenia puli systemu Windows lub Linux przy użyciu konfiguracji maszyny wirtualnej należy użyć tej samej metody.
 
-#### <a name="batch-net-example-windows"></a>Przykład dla środowiska .NET usługi Batch (Windows)
+#### <a name="batch-net-example-windows"></a>Przykład platformy .NET w usłudze Batch (Windows)
 
 ```csharp
 CloudPool pool = null;
@@ -190,7 +190,7 @@ pool.UserAccounts = new List<UserAccount>
 await pool.CommitAsync();
 ```
 
-#### <a name="batch-net-example-linux"></a>Przykład dla środowiska .NET usługi Batch (Linux)
+#### <a name="batch-net-example-linux"></a>Przykład platformy .NET w usłudze Batch (Linux)
 
 ```csharp
 CloudPool pool = null;
@@ -255,7 +255,7 @@ await pool.CommitAsync();
 ```
 
 
-#### <a name="batch-java-example"></a>Przykładzie usługi Batch w języku Java
+#### <a name="batch-java-example"></a>Przykład dla języka Java w usłudze Batch
 
 ```java
 List<UserAccount> userList = new ArrayList<>();
@@ -270,7 +270,7 @@ PoolAddParameter addParameter = new PoolAddParameter()
 batchClient.poolOperations().createPool(addParameter);
 ```
 
-#### <a name="batch-python-example"></a>Przykład języka Python usługi Batch
+#### <a name="batch-python-example"></a>Przykład kodu Python w usłudze Batch
 
 ```python
 users = [
@@ -294,46 +294,46 @@ pool = batchmodels.PoolAddParameter(
 batch_client.pool.add(pool)
 ```
 
-### <a name="run-a-task-under-a-named-user-account-with-elevated-access"></a>Uruchom zadanie w ramach konta użytkownika o nazwie z podwyższonego poziomu dostępu
+### <a name="run-a-task-under-a-named-user-account-with-elevated-access"></a>Uruchamianie zadania przy użyciu konta użytkownika o podniesionych uprawnieniach
 
-Aby uruchomić zadanie z podwyższonymi uprawnieniami użytkownika, należy ustawić zadania podrzędnego **tożsamości użytkownika** właściwości konta użytkownika o nazwie, który został utworzony za pomocą jego **ElevationLevel** właściwością `Admin`.
+Aby uruchomić zadanie jako podwyższony użytkownik, należy ustawić właściwość **tożsamość użytkownika** zadania na nazwę konta użytkownika, które zostało utworzone za pomocą właściwości **ElevationLevel** ustawionej na `Admin`.
 
-Ten fragment kodu Określa, że zadanie powinno być uruchamiane w ramach konta użytkownika o nazwie. To konto użytkownika o nazwie został zdefiniowany w puli, podczas tworzenia puli. W tym przypadku konta użytkownika o nazwie został utworzony z uprawnieniami administratora:
+Ten fragment kodu określa, że zadanie powinno być uruchamiane przy użyciu konta użytkownika o nazwie. To nazwane konto użytkownika zostało zdefiniowane w puli podczas tworzenia puli. W takim przypadku nazwane konto użytkownika zostało utworzone z uprawnieniami administratora:
 
 ```csharp
 CloudTask task = new CloudTask("1", "cmd.exe /c echo 1");
 task.UserIdentity = new UserIdentity(AdminUserAccountName);
 ```
 
-## <a name="update-your-code-to-the-latest-batch-client-library"></a>Zaktualizuj swój kod do najnowszej biblioteki klienta usługi Batch
+## <a name="update-your-code-to-the-latest-batch-client-library"></a>Aktualizowanie kodu do najnowszej biblioteki klienta w usłudze Batch
 
-Wersja usługi Batch 2017-01-01.4.0 wprowadza istotną zmianę, zastępując **runElevated** właściwości dostępne we wcześniejszych wersjach z **tożsamości użytkownika** właściwości. Poniższe tabele zawierają mapowania proste, który służy do aktualizowania kodu ze starszych wersji bibliotek klienckich.
+Usługa Batch w wersji 2017 -01-01.4.0 wprowadza istotną zmianę, zastępując Właściwość **runElevated** dostępną we wcześniejszych wersjach właściwością **tożsamość użytkownika** . W poniższych tabelach przedstawiono proste mapowanie, których można użyć do zaktualizowania kodu z wcześniejszych wersji bibliotek klienckich.
 
 ### <a name="batch-net"></a>Batch .NET
 
-| Jeśli kod używa...                  | Aby zaktualizować...                                                                                                 |
+| Jeśli kod używa...                  | Aktualizuj do...                                                                                                 |
 |---------------------------------------|------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.RunElevated = true;`       | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.Admin));`    |
 | `CloudTask.RunElevated = false;`      | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.NonAdmin));` |
-| `CloudTask.RunElevated` Nie określono | Aktualizacja nie jest wymagana                                                                                               |
+| `CloudTask.RunElevated`nie określono | Aktualizacja nie jest wymagana                                                                                               |
 
-### <a name="batch-java"></a>Batch Java
+### <a name="batch-java"></a>Wsadowe środowisko Java
 
-| Jeśli kod używa...                      | Aby zaktualizować...                                                                                                                       |
+| Jeśli kod używa...                      | Aktualizuj do...                                                                                                                       |
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.withRunElevated(true);`        | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.ADMIN));`    |
 | `CloudTask.withRunElevated(false);`       | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.NONADMIN));` |
-| `CloudTask.withRunElevated` Nie określono | Aktualizacja nie jest wymagana                                                                                                                     |
+| `CloudTask.withRunElevated`nie określono | Aktualizacja nie jest wymagana                                                                                                                     |
 
 ### <a name="batch-python"></a>Batch Python
 
-| Jeśli kod używa...                      | Aby zaktualizować...                                                                                                                       |
+| Jeśli kod używa...                      | Aktualizuj do...                                                                                                                       |
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `run_elevated=True`                       | `user_identity=user`, gdzie <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.admin))`                |
 | `run_elevated=False`                      | `user_identity=user`, gdzie <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.nonadmin))`             |
-| `run_elevated` Nie określono | Aktualizacja nie jest wymagana                                                                                                                                  |
+| `run_elevated`nie określono | Aktualizacja nie jest wymagana                                                                                                                                  |
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Aby uzyskać szczegółowe omówienie usługi Batch, zobacz [tworzenie rozbudowanych rozwiązań przetwarzania równoległego przy użyciu usługi Batch](batch-api-basics.md).
+* Szczegółowe omówienie usługi Batch można znaleźć w temacie [programowanie równoległych rozwiązań obliczeniowych na dużą skalę za pomocą usługi Batch](batch-api-basics.md).

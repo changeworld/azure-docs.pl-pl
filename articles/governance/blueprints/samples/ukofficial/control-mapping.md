@@ -1,6 +1,6 @@
 ---
-title: Przykładowe mapowanie kontrolek — plany oficjalne UK i UK NHS-
-description: Mapowanie kontrolek oficjalne UK i przykładów planu NHS Zjednoczone Królestwo.
+title: Przykład — oficjalne i BRYTYJSKIe plany NHS — Mapowanie formantów
+description: Kontrolowanie mapowania przykładowych OFICJALNych i BRYTYJSKIch planów NHS.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -8,163 +8,163 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 01a8e104f6d590113784db28e4bfde849d78b15f
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 945898105aab7261ee494a86aeff10337599feb3
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491910"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226003"
 ---
-# <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Mapowanie kontrolek oficjalne UK i przykładów planu NHS Zjednoczone Królestwo
+# <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Kontrolowanie mapowania przykładowych OFICJALNych i BRYTYJSKIch planów NHS w Wielkiej Brytanii
 
-Poniższy artykuł szczegółowo opisuje sposób mapowania oficjalne UK i UK NHS planu przykładów kontrolek oficjalne UK i NHS Zjednoczone Królestwo. Aby uzyskać więcej informacji na temat formantów, zobacz [oficjalne UK](https://www.gov.uk/government/publications/government-security-classifications).
+W poniższym artykule szczegółowo przedstawiono sposób mapowania przykładowych OFICJALNych i BRYTYJSKIch planów NHS z brytyjskimi i BRYTYJSKImi formantami NHS. Aby uzyskać więcej informacji na temat kontrolek, zobacz [Zjednoczone Królestwo](https://www.gov.uk/government/publications/government-security-classifications).
 
-Następujące mapowania są **oficjalne UK** i **NHS Zjednoczone Królestwo** kontrolki. Korzystanie z nawigacji po prawej stronie umożliwia przejście bezpośrednio do mapowania określonego formantu. Wiele kontrolek zamapowanego są implementowane za pomocą [usługi Azure Policy](../../../policy/overview.md) inicjatywy. Aby zapoznać się z pełną inicjatywy, otwórz **zasad** w witrynie Azure portal i wybierz pozycję **definicje** strony. Następnie znajdź i zaznacz  **[Wersja zapoznawcza] NHS inspekcji oficjalne UK i Zjednoczonego Królestwa kontroluje i wdrażanie określonych rozszerzeń maszyn wirtualnych w celu spełnienia wymagań inspekcji** inicjatywa zasad wbudowanych.
+Następujące mapowania są do OFICJALNych  i brytyjskich **NHS** . Użyj nawigacji po prawej stronie, aby przejść bezpośrednio do określonego mapowania formantów. Wiele zamapowanych formantów jest implementowanych z inicjatywą [Azure Policy](../../../policy/overview.md) . Aby zapoznać się z pełną inicjatywą, Otwórz **zasady** w Azure Portal i wybierz stronę **definicje** . Następnie Znajdź i wybierz  **\[kontrolę wersji zapoznawczej\] Zjednoczone oficjalne i Zjednoczone Królestwo NHS oraz Wdróż określone rozszerzenia maszyn wirtualnych, aby obsługiwać zasady inspekcji** wbudowanej inicjatywy.
 
-## <a name="1-data-in-transit-protection"></a>1 data Protection przesyłania
+## <a name="1-data-in-transit-protection"></a>1 Data w ochronie tranzytowej
 
-Planu pomaga zagwarantować, przekazywania informacji z usługami platformy Azure jest bezpieczne, przypisując [usługi Azure Policy](../../../policy/overview.md) definicje, które inspekcji niezabezpieczonego połączenia konta usługi storage i Redis Cache.
+Plan pomaga zapewnić, że transfer informacji w ramach usług platformy Azure jest bezpieczny, przypisując definicje [Azure Policy](../../../policy/overview.md) , które przeprowadzają inspekcję niezabezpieczonych połączeń z kontami magazynu i Redis Cache.
 
-- Powinien być włączony tylko bezpiecznych połączeń z usługą Redis Cache
-- Bezpieczne przesyłanie danych do konta magazynu powinna być włączona.
+- Należy włączyć tylko bezpieczne połączenia z Redis Cache
+- Należy włączyć bezpieczny transfer do kont magazynu
 
-## <a name="23-data-at-rest-protection"></a>2.3 dane ochrony rest
+## <a name="23-data-at-rest-protection"></a>2,3 danych w ramach ochrony REST
 
-Ten plan ułatwia wymuszanie zasad dotyczących używania kontrolek cryptograph, przypisując [usługi Azure Policy](../../../policy/overview.md) definicje, które wymuszają określonych cryptograph kontroli i inspekcji użytkowania słabe ustawień kryptograficznych.
-Zrozumienie, w której zasoby platformy Azure może mieć optymalnej konfiguracji kryptograficznych mogą pomóc podjąć działania naprawcze, aby upewnić się, że zasoby są skonfigurowane zgodnie z zasadami bezpieczeństwa informacji. W szczególności zasady przypisane przez ten plan wymagane szyfrowanie dla kont usługi data lake storage; wymagają technologii transparent data encryption w bazach danych SQL; przeprowadzaj inspekcję brakującego szyfrowania na konta magazynu, baz danych SQL, dyski maszyny wirtualnej i zmienne konta usługi automation; Inspekcja niezabezpieczonego połączenia konta usługi storage i Redis Cache; przeprowadzaj inspekcję szyfrowania hasła słabe maszyny wirtualnej; i inspekcji nieszyfrowana komunikacja usługi Service Fabric.
+Ten plan pomaga wymusić zasady korzystania z formantów cryptograph, przypisując definicje [Azure Policy](../../../policy/overview.md) , które wymuszają określone kontrolki cryptograph i inspekcji używają słabych ustawień kryptograficznych.
+Zrozumienie, w jaki sposób zasoby platformy Azure mogą mieć nieoptymalną konfigurację kryptograficzną, może pomóc w podejmowaniu działań naprawczych w celu zapewnienia, że zasoby są skonfigurowane zgodnie z zasadami zabezpieczeń informacji. Zasady przypisane przez ten plan wymagają szyfrowania dla kont usługi Data Lake Storage; Wymagaj przezroczystego szyfrowania danych w bazach danych SQL; Inspekcja braku szyfrowania na kontach magazynu, bazach danych SQL, dyskach maszyn wirtualnych i zmiennych konta usługi Automation; Inspekcja niezabezpieczonych połączeń z kontami magazynu i Redis Cache; Inspekcja niesłabego szyfrowania hasła maszyny wirtualnej; i Przeprowadź inspekcję niezaszyfrowanej komunikacji Service Fabric.
 
-- Monitoruj niezaszyfrowane bazy danych SQL w usłudze Azure Security Center
-- Szyfrowanie dysków powinny być stosowane w przypadku maszyn wirtualnych
-- Zmienne konta usługi Automation, które mają być szyfrowane
-- Bezpieczne przesyłanie danych do konta magazynu powinna być włączona.
-- Klastry usługi Service Fabric powinien mieć ustawioną właściwość ClusterProtectionLevel do EncryptAndSign
-- Transparent Data Encryption w bazach danych SQL powinno być włączone.
-- Wdrażanie bazy danych SQL przezroczyste szyfrowanie danych
-- Wymagaj szyfrowania konta Data Lake Store
-- Dozwolone lokalizacje (ostatecznej kodowanego "POŁUDNIOWE Zjednoczone Królestwo" i "Zachodnie Zjednoczone Królestwo")
-- Dozwolone lokalizacje dla grup zasobów (ostatecznej kodowanego "POŁUDNIOWE Zjednoczone Królestwo" i "Zachodnie Zjednoczone Królestwo")
+- Monitoruj nieszyfrowane bazy danych SQL w Azure Security Center
+- Szyfrowanie dysków powinno być stosowane na maszynach wirtualnych
+- Zmienne konta usługi Automation powinny być szyfrowane
+- Należy włączyć bezpieczny transfer do kont magazynu
+- W klastrach Service Fabric Właściwość ClusterProtectionLevel ma ustawioną wartość EncryptAndSign
+- Należy włączyć Transparent Data Encryption baz danych SQL
+- Wdróż przezroczyste szyfrowanie danych SQL DB
+- Wymagaj szyfrowania na kontach Data Lake Store
+- Dozwolone lokalizacje (zostały trwale zakodowane jako "Południowe Zjednoczone Królestwo" i "ZACHODNIe Zjednoczone Królestwo")
+- Dozwolone lokalizacje dla grup zasobów (zostały trwale zakodowane jako "Południowe Zjednoczone Królestwo" i "ZACHODNIe Zjednoczone Królestwo")
 
-## <a name="52-vulnerability-management"></a>5.2 Zarządzanie lukami w zabezpieczeniach
+## <a name="52-vulnerability-management"></a>Zarządzanie lukami w zabezpieczeniach 5,2
 
-Ten plan pomaga w zarządzaniu informacje dotyczą luk w zabezpieczeniach, przypisując [usługi Azure Policy](../../../policy/overview.md) definicje, które monitorują brakujący program endpoint protection, Brak aktualizacji systemu operacyjnego luki w zabezpieczeniach systemu, SQL luki w zabezpieczeniach, a maszyna wirtualna luk w zabezpieczeniach. Wglądowi w szczegółowe dane zawierają w czasie rzeczywistym informacje o stanie zabezpieczeń zasobów wdrożonych i może pomóc określić priorytety działania korygujące.
+Ten plan ułatwia zarządzanie lukami w zabezpieczeniach systemu informacji przez przypisanie definicji [Azure Policy](../../../policy/overview.md) , które monitorują brak programu Endpoint Protection, brakujące aktualizacje systemu operacyjnego, luki w zabezpieczeniach SQL i wirtualne luki w zabezpieczeniach komputera. Te szczegółowe dane zapewniają informacje o stanie zabezpieczeń wdrożonych zasobów i umożliwiają określanie priorytetów akcji korygowania.
 
-- Monitorowanie brakującej ochrony punktów końcowych w usłudze Azure Security Center
-- Aktualizacje systemu powinien być zainstalowany na komputerach
-- Powinny zostać skorygowane luk w zabezpieczeniach w konfiguracji zabezpieczeń na maszynach
-- Powinny zostać skorygowane luk w zabezpieczeniach w bazach danych SQL
-- Luki w zabezpieczeniach powinna zostać skorygowane przez rozwiązanie do oceny luk w zabezpieczeniach
+- Monitoruj brakujące Endpoint Protection w Azure Security Center
+- Aktualizacje systemu powinny być zainstalowane na maszynach
+- Luki w zabezpieczeniach konfiguracji zabezpieczeń na maszynach należy skorygować
+- Luki w zabezpieczeniach baz danych SQL należy skorygować
+- Usterki należy skorygować przez rozwiązanie do oceny luk w zabezpieczeniach
 
-## <a name="53-protective-monitoring"></a>5.3 ochronne monitorowania
+## <a name="53-protective-monitoring"></a>5,3 monitorowanie ochronne
 
-Ten plan pomaga w ochronie informacji o systemie zasoby, przypisując [usługi Azure Policy](../../../policy/overview.md) definicje, które umożliwiają monitorowanie codziennie przez ochronnych na nieograniczony dostęp, działanie listy dozwolonych i zagrożeniami.
+Ten plan pomaga chronić zasoby systemu informacji przez przypisanie [Azure Policy](../../../policy/overview.md) definicji, które zapewniają ochronę przed nieograniczonym dostępem, dozwolonych aktywność i zagrożeniami.
 
-- Przeprowadź inspekcję dostępu do sieci bez ograniczeń do kont magazynu
-- Adaptacyjne kontrole aplikacji powinno być włączone na maszynach wirtualnych
-- Wdrażanie wykrywanie zagrożeń na serwerach SQL
-- Wdróż domyślne rozszerzenie Microsoft IaaS chroniące przed złośliwym kodem dla systemu Windows Server
+- Inspekcja nieograniczonego dostępu sieciowego do kont magazynu
+- Na maszynach wirtualnych należy włączyć adaptacyjne kontrolki aplikacji
+- Wdrażanie wykrywania zagrożeń na serwerach SQL
+- Wdróż domyślne rozszerzenie programu Microsoft IaaSe chroniące przed złośliwym oprogramowaniem dla systemu Windows Server
 
-## <a name="9-secure-user-management--10-identity-and-authentication"></a>9 zabezpieczyć Zarządzanie użytkownikami / 10 Uwierzytelnianie i tożsamość
+## <a name="9-secure-user-management--10-identity-and-authentication"></a>9 zarządzanie użytkownikami i tożsamość 10
 
-Azure implementuje kontroli dostępu opartej na rolach (RBAC) do pomaga, którymi zarządzasz, kto ma dostęp do zasobów na platformie Azure. W witrynie Azure portal, możesz sprawdzić, kto ma dostęp do zasobów platformy Azure i ich uprawnienia. Ten plan pomaga ograniczyć i kontrolować prawa dostępu, przypisując [usługi Azure Policy](../../../policy/overview.md) definicji w celu inspekcji konta zewnętrzne z uprawnieniami właściciela i/lub odczytu/zapisu i kont z właścicielem, przeczytaj i/lub uprawnienia, które wykonują zapisu nie ma włączonego uwierzytelniania wieloskładnikowego.
+Platforma Azure implementuje funkcję kontroli dostępu opartej na rolach (RBAC), aby ułatwić zarządzanie dostępem do zasobów na platformie Azure. Za pomocą Azure Portal można sprawdzić, kto ma dostęp do zasobów platformy Azure i ich uprawnień. Ten plan pomaga ograniczyć i kontrolować prawa dostępu, przypisując definicje [Azure Policy](../../../policy/overview.md) do inspekcji kont zewnętrznych z uprawnieniami właściciela i/lub odczytu/zapisu i kontami z uprawnieniami właściciela, odczytu i/zapisu, które nie mają wieloskładnikowego włączono uwierzytelnianie.
 
-- Uwierzytelnianie wieloskładnikowe powinno być włączone dla kont z uprawnieniami właściciela subskrypcji
-- Uwierzytelnianie wieloskładnikowe powinny być włączone kont z uprawnieniami do zapisu w ramach subskrypcji
-- Uwierzytelnianie wieloskładnikowe powinno być włączone dla kont z uprawnieniami do odczytu w ramach subskrypcji
-- Zewnętrzne konta z uprawnieniami właściciela, powinny zostać usunięte z subskrypcji
+- Uwierzytelnianie wieloskładnikowe powinno być włączone na kontach z uprawnieniami właściciela w ramach subskrypcji
+- W ramach usługi MFA należy włączyć konta z uprawnieniami do zapisu w Twojej subskrypcji
+- Uwierzytelnianie wieloskładnikowe powinno być włączone na kontach z uprawnieniami do odczytu w ramach subskrypcji
+- Konta zewnętrzne z uprawnieniami właściciela powinny zostać usunięte z subskrypcji
 - Konta zewnętrzne z uprawnieniami do zapisu powinny zostać usunięte z subskrypcji
-- Zewnętrzne konta z uprawnieniami do odczytu powinny zostać usunięte z subskrypcji
+- Konta zewnętrzne z uprawnieniami do odczytu powinny zostać usunięte z subskrypcji
 
-Ten plan przypisuje definicji zasad platformy Azure w celu przeprowadzania inspekcji użycia uwierzytelniania usługi Azure Active Directory dla serwerów SQL i usługi Service Fabric. Za pomocą usługi Azure Active Directory uwierzytelniania umożliwia zarządzanie uprawnieniami uproszczone i scentralizowane identity management użytkowników bazy danych i innych usług firmy Microsoft.
+Ten plan przypisuje definicje Azure Policy do inspekcji użycia uwierzytelniania Azure Active Directory dla serwerów SQL i Service Fabric. Korzystanie z uwierzytelniania Azure Active Directory umożliwia uproszczone zarządzanie uprawnieniami oraz scentralizowane zarządzanie tożsamościami użytkowników baz danych i innych usług firmy Microsoft.
 
-- Administrator usługi Azure Active Directory powinny zostać aprowizowane dla serwerów SQL
-- Klastry usługi Service Fabric do uwierzytelniania klientów należy używać tylko usługi Azure Active Directory
+- Dla serwerów SQL powinien zostać zainicjowany administrator Azure Active Directory
+- W klastrach Service Fabric należy używać tylko Azure Active Directory do uwierzytelniania klientów
 
-Ten plan przypisuje definicji zasad platformy Azure w celu inspekcji kont, które powinny mieć priorytet dla przeglądu, w tym zamortyzowany kont i zewnętrznych. W razie potrzeby, kont można logowanie zablokowane (lub usunąć), które natychmiast powoduje usunięcie prawa dostępu do zasobów platformy Azure. Ten plan przypisuje dwie definicje usługi Azure Policy konta amortyzowany inspekcji, które mają być uwzględniane w usuwania.
+Ten plan przypisuje również definicje Azure Policy do kont inspekcji, dla których należy określić priorytety dla przeglądu, w tym konta z amortyzacją i konta zewnętrzne. W razie potrzeby konta mogą być blokowane przed zalogowaniem (lub usunięciem), które natychmiast usuwa prawa dostępu do zasobów platformy Azure. Ten plan przypisuje dwie Azure Policy definicje do inspekcji konta amortyzowanego, które należy wziąć pod uwagę podczas usuwania.
 
 - Przestarzałe konta powinny zostać usunięte z subskrypcji
-- Przestarzałe konta z uprawnieniami właściciela, powinny zostać usunięte z subskrypcji
-- Zewnętrzne konta z uprawnieniami właściciela, powinny zostać usunięte z subskrypcji
+- Przestarzałe konta z uprawnieniami właściciela powinny zostać usunięte z subskrypcji
+- Konta zewnętrzne z uprawnieniami właściciela powinny zostać usunięte z subskrypcji
 - Konta zewnętrzne z uprawnieniami do zapisu powinny zostać usunięte z subskrypcji
 
-Ten plan przypisuje definicja zasad platformy Azure, która przeprowadza inspekcję maszyn wirtualnych systemu Linux hasło pliku uprawnień do wyzwalania alertu, jeżeli są ustawione nieprawidłowo. Ten projekt umożliwia podejmowanie działań naprawczych, aby upewnić się, że nie są zagrożone wystawców uwierzytelnienia.
+Ten plan przypisuje również definicję Azure Policy, która przeprowadza inspekcję uprawnień pliku hasła maszyny wirtualnej systemu Linux do alertu, jeśli są ustawione nieprawidłowo. Ten projekt umożliwia podejmowanie działań naprawczych w celu zapewnienia, że uwierzytelniające nie zostały naruszone.
 
-- [Wersja zapoznawcza]: Audit Linux VM /etc/passwd file permissions are set to 0644
+- \[Wersja\]zapoznawcza: Inspekcja pliku/etc/passwd maszyny wirtualnej z systemem Linux jest ustawiona na 0644
 
-Ten plan pomaga wymusić stosowanie silnych haseł poprzez przypisywanie definicji zasad platformy Azure, które Przeprowadź inspekcję maszyn wirtualnych Windows, które nie wymuszają minimalne i inne wymagania dotyczące hasła. Rozpoznawanie maszyn wirtualnych z naruszeniem zasad siły haseł pomaga podjąć działania naprawcze, aby upewnić się, że zgodne z zasadami haseł dla wszystkich kont użytkowników maszyny Wirtualnej.
+Ten plan pomaga wymusić silne hasła, przypisując definicje Azure Policy, które umożliwiają inspekcję maszyn wirtualnych z systemem Windows, które nie wymuszają minimalnej siły i innych wymagań dotyczących hasła Świadomość maszyn wirtualnych w przypadku naruszenia zasad dotyczących siły haseł ułatwia podejmowanie działań naprawczych w celu zapewnienia zgodności haseł dla wszystkich kont użytkowników maszyny wirtualnej z zasadami.
 
-- [Wersja zapoznawcza]: Deploy requirements to audit Windows VMs that do not have the password complexity setting enabled
-- [Wersja zapoznawcza]: Deploy requirements to audit Windows VMs that do not have a maximum password age of 70 days
-- [Wersja zapoznawcza]: Deploy requirements to audit Windows VMs that do not have a minimum password age of 1 day
-- [Wersja zapoznawcza]: Deploy requirements to audit Windows VMs that do not restrict the minimum password length to 14 characters
-- [Wersja zapoznawcza]: Deploy requirements to audit Windows VMs that allow re-use of the previous 24 passwords
-- [Wersja zapoznawcza]: Audit Windows VMs that do not have the password complexity setting enabled
-- [Wersja zapoznawcza]: Audit Windows VMs that do not have a maximum password age of 70 days
-- [Wersja zapoznawcza]: Audit Windows VMs that do not have a minimum password age of 1 day
-- [Wersja zapoznawcza]: Audit Windows VMs that do not restrict the minimum password length to 14 characters
-- [Wersja zapoznawcza]: Audit Windows VMs that allow re-use of the previous 24 passwords
+- \[Wersja\]zapoznawcza: Wdróż wymagania w celu inspekcji maszyn wirtualnych z systemem Windows, które nie mają włączonego ustawienia złożoności hasła
+- \[Wersja\]zapoznawcza: Wdróż wymagania w celu inspekcji maszyn wirtualnych z systemem Windows, które nie mają maksymalnego wieku hasła wynoszącego 70 dni
+- \[Wersja\]zapoznawcza: Wdróż wymagania w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które nie mają minimalnego wieku hasła wynoszącego 1 dzień
+- \[Wersja\]zapoznawcza: Wdróż wymagania w celu inspekcji maszyn wirtualnych z systemem Windows, które nie ograniczają minimalnej długości hasła do 14 znaków
+- \[Wersja\]zapoznawcza: Wdróż wymagania w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które zezwalają na ponowne korzystanie z poprzednich 24 haseł
+- \[Wersja\]zapoznawcza: Inspekcja maszyn wirtualnych z systemem Windows, które nie mają włączonego ustawienia złożoności hasła
+- \[Wersja\]zapoznawcza: Inspekcja maszyn wirtualnych z systemem Windows bez maksymalnego wieku hasła 70 dni
+- \[Wersja\]zapoznawcza: Inspekcja maszyn wirtualnych z systemem Windows bez minimalnego wieku hasła wynoszącego 1 dzień
+- \[Wersja\]zapoznawcza: Inspekcja maszyn wirtualnych z systemem Windows, które nie ograniczają minimalnej długości hasła do 14 znaków
+- \[Wersja\]zapoznawcza: Inspekcja maszyn wirtualnych z systemem Windows, które zezwalają na ponowne używanie poprzednich 24 haseł
 
-Również planu ułatwia kontrolowanie dostępu do zasobów platformy Azure przez przypisywanie definicji zasad platformy Azure. Te zasady przeprowadzania inspekcji użycia typów zasobów i konfiguracje, które mogą umożliwić mniej ograniczające dostęp do zasobów. Zasoby zrozumienia, naruszających może te zasady, pomoc podjąć działania naprawcze, aby zapewnić dostęp do zasobów platformy Azure jest ograniczone do autoryzowanych użytkowników.
+Ten plan pomaga również kontrolować dostęp do zasobów platformy Azure, przypisując definicje Azure Policy. Te zasady przeprowadzają inspekcję użycia typów zasobów i konfiguracji, które mogą zezwalać na dostęp do zasobów. Informacje o zasobach, które naruszają te zasady, mogą pomóc w podejmowaniu działań naprawczych w celu zapewnienia dostępu do zasobów platformy Azure tylko autoryzowanym użytkownikom.
 
-- [Wersja zapoznawcza]: Deploy requirements to audit Linux VMs that have accounts without passwords
-- [Wersja zapoznawcza]: Deploy requirements to audit Linux VMs that allow remote connections from accounts without passwords
-- [Wersja zapoznawcza]: Audit Linux VMs that have accounts without passwords
-- [Wersja zapoznawcza]: Audit Linux VMs that allow remote connections from accounts without passwords
-- Konta magazynu powinny być migrowane do nowych zasobów usługi Azure Resource Manager
-- Maszyny wirtualne powinny być migrowane do nowych zasobów usługi Azure Resource Manager
-- Przeprowadzaj inspekcję maszyn wirtualnych, które nie korzystają z dysków zarządzanych
+- \[Wersja\]zapoznawcza: Wdróż wymagania, aby przeprowadzić inspekcję maszyn wirtualnych z systemem Linux, które mają konta bez hasła
+- \[Wersja\]zapoznawcza: Wdróż wymagania, aby przeprowadzić inspekcję maszyn wirtualnych z systemem Linux, które zezwalają na połączenia zdalne z kont bez hasła
+- \[Wersja\]zapoznawcza: Inspekcja maszyn wirtualnych z systemem Linux, które mają konta bez hasła
+- \[Wersja\]zapoznawcza: Inspekcja maszyn wirtualnych z systemem Linux, które zezwalają na połączenia zdalne z kont bez hasła
+- Konta magazynu należy migrować do nowych zasobów Azure Resource Manager
+- Maszyny wirtualne należy migrować do nowych zasobów Azure Resource Manager
+- Inspekcja maszyn wirtualnych, które nie korzystają z dysków zarządzanych
 
-## <a name="11-external-interface-protection"></a>Ochrona 11 interfejs zewnętrzny
+## <a name="11-external-interface-protection"></a>11 ochrona interfejsu zewnętrznego
 
-Inne niż odpowiedniego użytkownika bezpiecznego zarządzania, korzystając z ponad 25 zasad, ten plan pomaga w ochronie interfejsy usługi przed nieautoryzowanym dostępem, przypisując [usługi Azure Policy](../../../policy/overview.md) definicję, która monitoruje bez ograniczeń konta magazynu. Konta magazynu z nieograniczonym dostępem można zezwolić niekontrolowanego dostępu do informacji zawartych w systemie informacji. Ten plan przypisuje także zasady, które umożliwia adaptacyjne kontrole aplikacji na maszynach wirtualnych.
+W przypadku korzystania z więcej niż 25 zasad do odpowiedniego zarządzania bezpiecznymi użytkownikami ten plan pomaga chronić interfejsy usługi przed nieautoryzowanym dostępem, przypisując [Azure Policy](../../../policy/overview.md) definicję, która monitoruje nieograniczone konta magazynu. Konta magazynu z nieograniczonym dostępem mogą zezwalać na niezamierzony dostęp do informacji zawartych w systemie informacyjnym. Ten plan przypisuje również zasady, które umożliwiają adaptacyjne kontrole aplikacji na maszynach wirtualnych.
 
-- Przeprowadź inspekcję dostępu do sieci bez ograniczeń do kont magazynu
-- Adaptacyjne kontrole aplikacji powinno być włączone na maszynach wirtualnych
+- Inspekcja nieograniczonego dostępu sieciowego do kont magazynu
+- Na maszynach wirtualnych należy włączyć adaptacyjne kontrolki aplikacji
 
-## <a name="12-secure-service-administration"></a>12 Usługa bezpiecznego administrowania
+## <a name="12-secure-service-administration"></a>12 administrowanie bezpieczną usługą
 
-Azure implementuje kontroli dostępu opartej na rolach (RBAC) do pomaga, którymi zarządzasz, kto ma dostęp do zasobów na platformie Azure. W witrynie Azure portal, możesz sprawdzić, kto ma dostęp do zasobów platformy Azure i ich uprawnienia. Ten plan pomaga ograniczyć i kontrolować prawa dostępu uprzywilejowanego, przypisując pięciu [usługi Azure Policy](../../../policy/overview.md) definicji w celu inspekcji konta zewnętrzne z właścicielem i/lub zapisać uprawnień i kont z właścicielem i/lub uprawnienia do zapisu nie mają włączonego uwierzytelniania wieloskładnikowego.
+Platforma Azure implementuje funkcję kontroli dostępu opartej na rolach (RBAC), aby ułatwić zarządzanie dostępem do zasobów na platformie Azure. Za pomocą Azure Portal można sprawdzić, kto ma dostęp do zasobów platformy Azure i ich uprawnień. Ten plan pomaga ograniczyć i kontrolować prawa dostępu uprzywilejowanego przez przypisanie pięciu [Azure Policy](../../../policy/overview.md) definicji w celu inspekcji kont zewnętrznych z uprawnieniami właściciela i/lub zapisu oraz kontami z uprawnieniami właściciela i/lub zapisu, które nie mają włączono uwierzytelnianie wieloskładnikowe.
 
-Systemy używanego do administrowania usługą w chmurze będzie ma wysoce uprzywilejowany dostęp do tej usługi. Ich naruszenia musi znaczny wpływ, w tym sposób obejścia kontroli zabezpieczeń i kradzieży i umożliwiają manipulowanie dużych ilości danych. Metody używane przez dostawcę usług administratorów do zarządzania usługi operational powinny zostać tak zaprojektowane, aby zmniejszyć ryzyko wykorzystania, który może naruszać bezpieczeństwa usługi. Jeśli zasada ta nie jest zaimplementowany, osoba atakująca może być oznacza, że do obejścia kontroli zabezpieczeń i wykradać lub manipulowania dużych ilości danych.
+Systemy używane do administrowania usługą w chmurze mają wysoce uprzywilejowany dostęp do tej usługi. Ich naruszenie miałoby znaczący wpływ, w tym środki do obejścia kontroli zabezpieczeń i kradzieży i manipulowania dużymi ilościami danych. Metody używane przez administratorów dostawcy usług do zarządzania usługą operacyjną powinny zostać zaprojektowane w celu ograniczenia ryzyka związanego z wykorzystaniem, które mogłyby nastąpić do naruszenia bezpieczeństwa usługi. Jeśli ta zasada nie jest zaimplementowana, osoba atakująca może mieć środki pozwalające ominąć kontrolę zabezpieczeń i wykraść lub manipulować dużymi ilościami danych.
 
-- Uwierzytelnianie wieloskładnikowe powinno być włączone dla kont z uprawnieniami właściciela subskrypcji
-- Uwierzytelnianie wieloskładnikowe powinny być włączone kont z uprawnieniami do zapisu w ramach subskrypcji
-- Zewnętrzne konta z uprawnieniami właściciela, powinny zostać usunięte z subskrypcji
+- Uwierzytelnianie wieloskładnikowe powinno być włączone na kontach z uprawnieniami właściciela w ramach subskrypcji
+- W ramach usługi MFA należy włączyć konta z uprawnieniami do zapisu w Twojej subskrypcji
+- Konta zewnętrzne z uprawnieniami właściciela powinny zostać usunięte z subskrypcji
 - Konta zewnętrzne z uprawnieniami do zapisu powinny zostać usunięte z subskrypcji
 
-Ten plan przypisuje definicji zasad platformy Azure w celu przeprowadzania inspekcji użycia uwierzytelniania usługi Azure Active Directory dla serwerów SQL i usługi Service Fabric. Za pomocą usługi Azure Active Directory uwierzytelniania umożliwia zarządzanie uprawnieniami uproszczone i scentralizowane identity management użytkowników bazy danych i innych usług firmy Microsoft.
+Ten plan przypisuje definicje Azure Policy do inspekcji użycia uwierzytelniania Azure Active Directory dla serwerów SQL i Service Fabric. Korzystanie z uwierzytelniania Azure Active Directory umożliwia uproszczone zarządzanie uprawnieniami oraz scentralizowane zarządzanie tożsamościami użytkowników baz danych i innych usług firmy Microsoft.
 
-- Administrator usługi Azure Active Directory powinny zostać aprowizowane dla serwerów SQL
-- Klastry usługi Service Fabric do uwierzytelniania klientów należy używać tylko usługi Azure Active Directory
+- Dla serwerów SQL powinien zostać zainicjowany administrator Azure Active Directory
+- W klastrach Service Fabric należy używać tylko Azure Active Directory do uwierzytelniania klientów
 
-Ten plan przypisuje definicji zasad platformy Azure w celu inspekcji kont, które powinny mieć priorytet dla przeglądu, w tym zamortyzowany kont i konta zewnętrzne z podwyższonym poziomem uprawnień. W razie potrzeby, kont można logowanie zablokowane (lub usunąć), które natychmiast powoduje usunięcie prawa dostępu do zasobów platformy Azure. Ten plan przypisuje dwie definicje usługi Azure Policy konta amortyzowany inspekcji, które mają być uwzględniane w usuwania.
+Ten plan przypisuje również definicje Azure Policy do kont inspekcji, dla których należy określić priorytety dla przeglądu, w tym konta amortyzowane i konta zewnętrzne z podniesionymi uprawnieniami. W razie potrzeby konta mogą być blokowane przed zalogowaniem (lub usunięciem), które natychmiast usuwa prawa dostępu do zasobów platformy Azure. Ten plan przypisuje dwie Azure Policy definicje do inspekcji konta amortyzowanego, które należy wziąć pod uwagę podczas usuwania.
 
 - Przestarzałe konta powinny zostać usunięte z subskrypcji
-- Przestarzałe konta z uprawnieniami właściciela, powinny zostać usunięte z subskrypcji
-- Zewnętrzne konta z uprawnieniami właściciela, powinny zostać usunięte z subskrypcji
+- Przestarzałe konta z uprawnieniami właściciela powinny zostać usunięte z subskrypcji
+- Konta zewnętrzne z uprawnieniami właściciela powinny zostać usunięte z subskrypcji
 - Konta zewnętrzne z uprawnieniami do zapisu powinny zostać usunięte z subskrypcji
 
-Ten plan przypisuje definicja zasad platformy Azure, która przeprowadza inspekcję maszyn wirtualnych systemu Linux hasło pliku uprawnień do wyzwalania alertu, jeżeli są ustawione nieprawidłowo. Ten projekt umożliwia podejmowanie działań naprawczych, aby upewnić się, że nie są zagrożone wystawców uwierzytelnienia.
+Ten plan przypisuje również definicję Azure Policy, która przeprowadza inspekcję uprawnień pliku hasła maszyny wirtualnej systemu Linux do alertu, jeśli są ustawione nieprawidłowo. Ten projekt umożliwia podejmowanie działań naprawczych w celu zapewnienia, że uwierzytelniające nie zostały naruszone.
 
-- [Wersja zapoznawcza]: Audit Linux VM /etc/passwd file permissions are set to 0644
+- \[Wersja\]zapoznawcza: Inspekcja pliku/etc/passwd maszyny wirtualnej z systemem Linux jest ustawiona na 0644
 
-## <a name="13-audit-information-for-users"></a>Informacje o inspekcji 13 dla użytkowników
+## <a name="13-audit-information-for-users"></a>13 informacji o inspekcji dla użytkowników
 
-Ten plan pomaga zagwarantować, system zdarzenia są rejestrowane przez przypisanie [usługi Azure Policy](../../../policy/overview.md) definicje, które Przeprowadź inspekcję ustawienia dziennika dla zasobów platformy Azure. Przypisanych zasad przeprowadza inspekcję, jeśli maszyny wirtualne nie są wysyłane dzienniki do obszaru roboczego analizy określonego dziennika.
+Ten plan pomaga zapewnić, że zdarzenia systemowe są rejestrowane przez przypisanie [Azure Policy](../../../policy/overview.md) definicji, które Przeprowadź inspekcję ustawień dziennika w zasobach platformy Azure. Przypisane zasady również przeprowadzają inspekcję, jeśli maszyny wirtualne nie wysyłają dzienników do określonego obszaru roboczego usługi log Analytics.
 
-- Monitorowanie bez inspekcji serwerów SQL w usłudze Azure Security Center
+- Monitoruj niemonitorowane serwery SQL w Azure Security Center
 - Przeprowadzanie inspekcji ustawienia diagnostyki
-- Przeprowadź inspekcję ustawienia inspekcji poziomu serwera SQL
-- [Wersja zapoznawcza]: Deploy Log Analytics Agent for Linux VMs
-- [Wersja zapoznawcza]: Deploy Log Analytics Agent for Windows VMs
-- Wdrażaj zasób network watcher podczas tworzenia sieci wirtualnych
+- Inspekcja ustawień inspekcji poziomu serwera SQL
+- \[Wersja\]zapoznawcza: Wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux
+- \[Wersja\]zapoznawcza: Wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows
+- Wdróż obserwatora sieciowego po utworzeniu sieci wirtualnych
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy przejrzeniu mapowanie kontrolki schematy oficjalne UK i NHS Zjednoczone Królestwo, odwiedź następujące artykuły, aby dowiedzieć się o przeglądzie oraz sposób wdrażania w tym przykładzie:
+Po przejrzeniu mapowania kontroli w OFICJALNych i BRYTYJSKIch planach NHS, odwiedź następujące artykuły, aby dowiedzieć się więcej na temat omówienia i sposobu wdrażania tego przykładu:
 
 > [!div class="nextstepaction"]
-> [Schematy oficjalne UK i UK NHS - Przegląd](./index.md)
-> [oficjalne UK i schematy UK NHS - kroki wdrażania](./deploy.md)
+> [Plany NHS oficjalnego i Zjednoczonego Królestwa — Omówienie](./index.md)
+> [planów NHSych w Wielkiej Brytanii i brytyjskich](./deploy.md)
 
 Dodatkowe artykuły na temat strategii i sposobu ich używania:
 

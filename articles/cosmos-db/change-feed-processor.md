@@ -1,78 +1,96 @@
 ---
-title: Praca z zmiany źródła danych z biblioteką procesora w usłudze Azure Cosmos DB
-description: Za pomocą zmian usługi Azure Cosmos DB kanału informacyjnego bibliotece procesora.
+title: Praca z biblioteką procesora źródła zmian w Azure Cosmos DB
+description: Korzystanie z biblioteki procesora kanału informacyjnego zmiany Azure Cosmos DB.
 author: rimman
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 07/02/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: d0faeba5278e23990a72c9d2dd3d7e18510bdf80
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 42b7cd8a60e70ab75afc30910c46eb49f1f6d62a
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342056"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68000950"
 ---
-# <a name="change-feed-processor-in-azure-cosmos-db"></a>Procesor kanału informacyjnego zmian w usłudze Azure Cosmos DB 
+# <a name="change-feed-processor-in-azure-cosmos-db"></a>Zmień procesor kanału informacyjnego w Azure Cosmos DB 
 
-[Zmian usługi Azure Cosmos DB kanału informacyjnego w bibliotece procesora](sql-api-sdk-dotnet-changefeed.md) ułatwia dystrybucję przetwarzanie zdarzeń w wielu odbiorców. Ta biblioteka upraszcza zmiany odczytywania różnych partycji i wiele wątków działających równolegle.
+Procesor kanału informacyjnego zmian jest częścią [zestawu Azure Cosmos DB SDK v3](https://github.com/Azure/azure-cosmos-dotnet-v3). Upraszcza proces odczytywania źródła zmian i rozpowszechniania przetwarzania zdarzeń przez wielu użytkowników efektywnie.
 
-Główną zaletą biblioteką procesora zestawienia zmian jest nie trzeba zarządzać każdej partycji i token kontynuacji i nie trzeba ręcznie sondować każdego kontenera.
+Główną zaletą biblioteki procesora kanału informacyjnego jest zachowanie odporne na błędy, które gwarantuje, że dostarczanie wszystkich zdarzeń w strumieniu zmian zostanie zakończone "co najmniej raz".
 
-Biblioteką procesora zestawienia zmian upraszcza zmiany odczytu w partycji i wiele wątków działających równolegle. Automatycznie zarządza odczytu zmiany na partycje przy użyciu mechanizmu dzierżawy. Jak widać na poniższej ilustracji, jeśli zaczniesz dwóch klientów, którzy korzystają z zestawienia bibliotece procesora zmian, ich podzielić pracę między sobą. W miarę postępu w celu zwiększenia liczby klientów mogą zachować podzielenie pracy między sobą.
+## <a name="components-of-the-change-feed-processor"></a>Składniki procesora źródła zmian
 
-![Za pomocą usługi Azure Cosmos DB zmiany źródła danych z biblioteką procesora](./media/change-feed-processor/change-feed-output.png)
+Istnieją cztery główne składniki implementacji procesora kanału informacyjnego zmiany: 
 
-Po lewej stronie klient został uruchomiony w pierwszej i jego uruchomienia, monitorowania, które wszystkie partycje, a następnie drugiego klienta została uruchomiona, a następnie pierwszy porzuciła niektóre dzierżawy do drugiego klienta. Jest to wydajny sposób rozpraszających między różnych komputerów i klientów.
+1. **Monitorowany kontener:** Monitorowany kontener zawiera dane, z których jest generowane strumieniowe źródło zmian. Wszystkie wstawienia i aktualizacje monitorowanego kontenera są odzwierciedlone w kanale zmian kontenera.
 
-Jeśli masz dwie funkcje platformy Azure bez serwera monitorowania tego samego kontenera i przy użyciu tej samej dzierżawy, te dwie funkcje może zostać różnymi dokumentami, w zależności od sposobu bibliotece procesora decyduje się na przetwarzanie partycji.
+1. **Kontener dzierżawy:** Kontener dzierżawy działa jako magazyn stanów i koordynuje przetwarzanie źródła zmian przez wielu pracowników. Kontener dzierżawy może być przechowywany na tym samym koncie co monitorowany kontener lub na osobnym koncie. 
 
-## <a name="implementing-the-change-feed-processor-library"></a>Wprowadzanie zmian źródła danych z biblioteką procesora
+1. **Host:** Host jest wystąpieniem aplikacji korzystającym z procesora źródła zmian do nasłuchiwania zmian. Wiele wystąpień z tą samą konfiguracją dzierżawy może działać równolegle, ale każde wystąpienie powinno mieć inną **nazwę wystąpienia**. 
 
-Istnieją cztery główne składniki wdrażania zestawienia bibliotece procesora zmian: 
+1. **Delegat:** Delegat to kod, który definiuje, co ty i dla deweloperów chce wykonać przy każdej partii zmian, które procesor kanału informacyjnego zmian odczytuje. 
 
-1. **Monitorowane kontener:** Monitorowane kontener ma danych, z którego jest generowany zestawienia zmian. Wszystkie operacje wstawiania i zmiany do monitorowanych kontenera są odzwierciedlane w zestawienia zmian w kontenerze.
+Aby dowiedzieć się więcej o tym, jak te cztery elementy procesora źródła zmian współpracują ze sobą, przyjrzyjmy się przykładowi na poniższym diagramie. Monitorowany kontener przechowuje dokumenty i używa jako klucza partycji "miasto". Zobaczymy, że wartości klucza partycji są dystrybuowane w zakresach zawierających elementy. Istnieją dwa wystąpienia hosta, a procesor kanału informacyjnego zmiany przypisuje różne zakresy wartości klucza partycji do każdego wystąpienia, aby zmaksymalizować rozkład obliczeń. Każdy zakres jest odczytywany równolegle, a jego postęp jest obsługiwany niezależnie od innych zakresów w kontenerze dzierżawy.
 
-1. **Kontener dzierżawy:** Współrzędne kontenera dzierżawy przetwarzania zestawienia zmian na wielu procesów roboczych. Oddzielny kontener jest używany do przechowywania dzierżaw przy użyciu jednej dzierżawy dla każdej partycji. Jest lepiej jest przechowywać ten kontener dzierżawy na innym koncie z regionem zapisu bliżej na którym działa zestawienia procesora zmian. Obiekt dzierżawy zawiera następujące atrybuty:
+![Przykładowy procesor źródła zmian](./media/change-feed-processor/changefeedprocessor.png)
 
-   * Właściciel: Określa host, który jest właścicielem dzierżawy.
+## <a name="implementing-the-change-feed-processor"></a>Implementacja procesora źródła zmian
 
-   * Kontynuacja: Określa położenie (token kontynuacji) Zmień źródło danych dla określonej partycji.
+Punkt wejścia jest zawsze monitorowanym kontenerem z `Container` wystąpienia wywoływanego: `GetChangeFeedProcessorBuilder`
 
-   * Sygnatura czasowa: Czas ostatniego dzierżawy została zaktualizowana; Sygnatura czasowa może służyć do sprawdzania, czy dzierżawa jest uznawany za wygasły.
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=DefineProcessor)]
 
-1. **Host procesora:** Każdy host Określa, ile partycje do przetworzenia na podstawie liczby wystąpień hostów mają aktywne dzierżawy.
+Gdzie pierwszy parametr jest odrębną nazwą opisującą cel tego procesora, a druga nazwa jest implementacją delegata, która będzie obsługiwać zmiany. 
 
-   * Podczas uruchamiania hosta, uzyskuje dzierżawę, aby zrównoważyć obciążenie na wszystkich hostach. Host okresowo odnowieniu dzierżawy, więc dzierżawy pozostają aktywne.
+Przykładem delegata będzie:
 
-   * Punkty kontrolne hosta ostatni token kontynuacji do dzierżawy dla każdego do odczytu. Aby zapewnić bezpieczeństwo współbieżności, hosta sprawdza, czy element ETag dla każdej aktualizacji dzierżawy. Obsługiwane są również inne strategie punktu kontrolnego.
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=Delegate)]
 
-   * Podczas zamykania systemu host zwalnia wszystkie dzierżawy, ale zachowuje informacji kontynuacji, dzięki czemu może wznowić działanie czytania od przechowywanej punktu kontrolnego później.
+Na koniec zdefiniujesz nazwę tego wystąpienia procesora z `WithInstanceName` i który jest kontenerem do obsługi `WithLeaseContainer`stanu dzierżawy.
 
-   Obecnie liczby hostów nie może być większa niż liczba partycji (dzierżawy).
+Wywołanie `Build` spowoduje udostępnienie wystąpienia procesora, które można uruchomić, wywołując `StartAsync`metodę.
 
-1. **Odbiorcy:** Użytkowników lub pracowników, są wątki, które wykonują przetwarzania zestawienia zmian inicjowane przez każdego hosta. Każdy host procesor może mieć wielu odbiorców. Każdy odbiorca odczytuje zmiany źródła danych z partycji, który jest przypisany do powiadamia o jego hosta zmiany i Wygasłe dzierżawy.
+## <a name="processing-life-cycle"></a>Cykl życia przetwarzania
 
-Aby jeszcze lepiej zrozumieć sposób tych czterech elementów kanału informacyjnego zmian pracy procesora ze sobą, Spójrzmy na przykład na poniższym diagramie. Monitorowane kolekcja przechowuje dokumenty i używa "Miejscowość" jako klucza partycji. Widzimy, że niebieski partycja zawiera dokumenty z polem "Miejscowość" od "A-E" i tak dalej. Istnieją dwa hosty, każdy z dwóch odbiorców podczas odczytywania z cztery partycje równolegle. Strzałki oznaczają odbiorców podczas odczytywania z określonego miejsca w zestawienia zmian. W pierwszej partycji niebieskim ciemniejsze reprezentuje nieprzeczytane zmiany, gdy jasnoniebieski reprezentuje zmiany już odczytu na kanał informacyjny zmian. Hosty używają kolekcję dzierżaw, do przechowywania wartości "kontynuacja", aby śledzić bieżącą pozycję odczytu dla każdego użytkownika.
+Normalny cykl życia wystąpienia hosta to:
 
-![Przykład procesora zestawienia zmian](./media/change-feed-processor/changefeedprocessor.png)
+1. Przeczytaj Źródło zmian.
+1. `WithPollInterval` W przypadku braku zmian w stanie uśpienia przez wstępnie zdefiniowany czas (dostosowywalny w programie w ramach konstruktora) i przejdź do #1.
+1. Jeśli istnieją zmiany, wyślij je do delegata .
+1. Po pomyślnym zakończeniu przetwarzania zmian przez delegata należy zaktualizować magazyn dzierżawy o ostatni przetworzony punkt w czasie i przejść do #1.
 
-### <a name="change-feed-and-provisioned-throughput"></a>Kanał informacyjny zmian i aprowizowanej przepływności
+## <a name="error-handling"></a>Obsługa błędów
 
-Opłaty są naliczane za RU, gdyż przenoszenie danych do i z kontenerów Cosmos zawsze wykorzystuje jednostki zarezerwowane. Opłaty są naliczane za ru zużywanych przez kontener dzierżawy.
+Procesor kanału informacyjnego zmiany jest odporny na błędy kodu użytkownika. Oznacza to, że jeśli w implementacji delegata występuje nieobsłużony wyjątek (krok #4), przetwarzanie wątku, w którym określona partia zmian zostanie zatrzymane i zostanie utworzony nowy wątek. Nowy wątek sprawdzi, który był ostatnim punktem w czasie, gdy magazyn dzierżawy ma dla tego zakresu wartości kluczy partycji, a następnie ponownie uruchomi się z tego powodu, wysyłając tę samą partię zmian do delegata. Takie zachowanie będzie kontynuowane do momentu poprawnego przetworzenia przez delegata zmian i jest to powód, dla którego procesor źródła zmian ma gwarancję "co najmniej raz", ponieważ w przypadku zgłaszania kodu delegata zostanie ponowiona ta partia.
+
+## <a name="dynamic-scaling"></a>Dynamiczne skalowanie
+
+Jak wspomniano w trakcie wprowadzania, procesor kanału informacyjnego zmiany może automatycznie dystrybuować obliczenia w wielu wystąpieniach. Można wdrożyć wiele wystąpień aplikacji przy użyciu procesora źródła zmian i korzystać z niego, ale jedynymi wymaganiami są:
+
+1. Wszystkie wystąpienia powinny mieć tę samą konfigurację kontenera dzierżawy.
+1. Wszystkie wystąpienia powinny mieć taką samą nazwę przepływu pracy.
+1. Każde wystąpienie musi mieć inną nazwę wystąpienia (`WithInstanceName`).
+
+Jeśli te trzy warunki mają zastosowanie, procesor kanału informacyjnego zmiany będzie używać algorytmu dystrybucji równej, dystrybuuje wszystkie dzierżawy w kontenerze dzierżawy do wszystkich uruchomionych wystąpień i obliczeń zrównoleglanie. Jedna dzierżawa może należeć tylko do jednego wystąpienia w danym momencie, więc Maksymalna liczba wystąpień jest równa liczbie dzierżaw.
+
+Wystąpienia mogą się zwiększać i zmniejszać, a procesor kanału informacyjnego zmiany dynamicznie dostosowuje obciążenie przez ponowną dystrybucję.
+
+## <a name="change-feed-and-provisioned-throughput"></a>Kanał informacyjny zmian i przepływność aprowizacji
+
+Opłata jest naliczana za zużyte jednostek ru, ponieważ przenoszenie danych do i z kontenerów Cosmos zawsze zużywa jednostek ru. Opłata jest naliczana za jednostek ru zużyty przez kontener dzierżawy.
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Biblioteką procesora zestawienia zmian w usłudze Azure Cosmos DB](sql-api-sdk-dotnet-changefeed.md)
-* [Pakiet NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)
-* [Dodatkowe przykłady w witrynie GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedProcessor)
+* [Zestaw SDK Azure Cosmos DB](sql-api-sdk-dotnet.md)
+* [Dodatkowe przykłady w witrynie GitHub](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Można teraz kontynuować, aby dowiedzieć się więcej na temat zmiany źródła danych w następujących artykułach:
 
-* [Omówienie Kanał informacyjny zmian](change-feed.md)
-* [Sposoby na odczytywanie zestawienia zmian](read-change-feed.md)
+* [Przegląd źródła zmian](change-feed.md)
+* [Sposoby odczytywania źródła zmian](read-change-feed.md)
 * [Za pomocą zmian źródła danych za pomocą usługi Azure Functions](change-feed-functions.md)

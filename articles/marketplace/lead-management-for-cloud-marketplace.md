@@ -1,127 +1,127 @@
 ---
-title: Doprowadzić zarządzanie w portalu Marketplace w chmurze | Portal Azure Marketplace i AppSource
-description: Omówienie różne tematy związane z publikacji oferty i artefaktów technicznych do witryny Azure Marketplace i AppSource
+title: Zarządzanie potencjalnymi klientami w chmurze Marketplace | Azure Marketplace i AppSource
+description: Omówienie różnych tematów związanych z publikowaniem ofert i artefaktami technicznymi w witrynie Azure Marketplace i AppSource
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: yijenj
 ms.service: marketplace
 ms.topic: article
 ms.date: 10/05/2018
-ms.author: yijenj
-ms.openlocfilehash: 4055b1a30c1868f701de281b5de8d648d576219e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: pabutler
+ms.openlocfilehash: a89921d4b5ec25bc0c924646d3bd41aecf3e8d9c
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937902"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67870920"
 ---
-# <a name="lead-management-for-cloud-marketplace"></a>Zarządzanie potencjalnych klientów dla portalu marketplace w chmurze
+# <a name="lead-management-for-cloud-marketplace"></a>Zarządzanie potencjalnymi klientami w chmurze Marketplace
 
 
-Klienci są Centrum wszystkich firm dobre. Podczas przekształcania pozyskanie produktu dzisiejsza sprzedawcy muszą skoncentrować się na nawiązanie bezpośredniego połączenia z klientami i tworzenie relacji. Jest to, dlaczego generowania potencjalnych klientów wysokiej jakości to kluczowe narzędzie dla cyklu sprzedaży. Po ofercie oferty [portalu Cloud Partner](https://cloudpartner.azure.com/), są włączone na otrzymywanie informacji kontaktowych klienta programowo, natychmiast po klient wyraża zainteresowania lub wdraża swojego produktu w narzędzia Portal Marketplace. 
-
-
-
-## <a name="what-are-leads-in-the-marketplace"></a>Co to są potencjalnych klientów w witrynie marketplace?
-
-Potencjalni klienci są od klientów, którzy są zainteresowani lub wdrażanie produkty z witryny Marketplace. Czy produkt jest wymieniony w portalu Azure Marketplace lub w usłudze AppSource, będzie otrzymywać potencjalnych klientów po jego jest prawidłowo skonfigurowany z CRM do Twojej aukcji w portalu Cloud Partner 
-
-
-## <a name="how-to-connect-your-crm-system-with-the-cloud-partner-portal"></a>Jak połączyć CRM system z portalu cloud partner
-
-Aby rozpocząć pobieranie potencjalnych klientów, łącznika doprowadzić zarządzanie w portalu Cloud Partner jest zaprojektowana tak, że można łatwo podłączyć się przy użyciu danych CRM na listę dostępnych systemu CRM. Teraz można łatwo korzystać z potencjalnymi klientami, wygenerowany przez Portal marketplace bez znaczących nakładów pracy inżynierów do integracji z systemem zewnętrznym.
-
-Poniżej przedstawiono instrukcje krok po kroku do łączenia z każdego miejsca docelowe możliwe potencjalnego klienta:
-
-**Dynamics CRM Online** - [tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) Aby uzyskać instrukcje dotyczące sposobu konfigurowania usługi Dynamics CRM Online w celu uzyskania potencjalnych klientów.
-
-**Marketo** - [tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) Aby uzyskać instrukcje dotyczące konfigurowania usługi Marketo prowadzić konfiguracji można pobrać potencjalnych klientów.
-
-**SalesForce** - [tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) Aby uzyskać instrukcje dotyczące konfigurowania wystąpienia usługi Salesforce, można pobrać potencjalnych klientów.
-
-**Usługa Azure Table** — [tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) Aby uzyskać instrukcje dotyczące konfigurowania konta usługi Azure storage w celu uzyskania potencjalnych klientów w tabeli platformy Azure.
-
-**Punkt końcowy HTTPS** — [tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https) Aby uzyskać instrukcje dotyczące konfigurowania punktu końcowego Https można pobrać potencjalnych klientów.
-
-Po zostały poprawnie skonfigurowane w lokalizacji docelowej potencjalnych klientów i serwisem publikowania w ofercie, firma Microsoft sprawdzanie poprawności połączenia i wysyłać realizacji testu. Podczas przeglądania oferty przed przejściem na żywo możesz przetestować połączenie z potencjalnymi klientami, próbując uzyskać samodzielnie ofertę w środowisku w wersji zapoznawczej. Należy się upewnić, że swoje aktualne pobytu ustawienia potencjalnych klientów tak, aby nie utracić potencjalnych klientów, więc upewnij się, że aktualizowanie tych połączeń, zawsze wtedy, gdy coś, co zmieniło się na swojej stronie.
-
-
-### <a name="what-are-the-next-steps"></a>Co to są kolejne kroki?
-
-Po technicznych, skonfiguruj znajduje się w miejscu, należy dołączyć potencjalni klienci w bieżącej sprzedaży i strategii marketingowej i procesów operacyjnych. Jesteśmy zainteresowani lepsze zrozumienie procesu ogólną sprzedaży i aby ściśle współpracować z Tobą na dostarczaniu wysokiej jakości potencjalnych klientów i wystarczającej ilości danych, które zapewnią Ci sukces. Chętnie poznamy Twoją opinię, jak firma Microsoft optymalizacji i ulepszanie potencjalnych klientów, który możemy wysłać dodatkowe dane, aby sprawić, że ci klienci pomyślnie. Daj nam znać, jeśli interesują Cię zapewnianie opinii i sugestii, aby ułatwić zespołowi sprzedaży korzystać z portalu Marketplace potencjalnych klientów.
+Klienci są centrum wszelkich dobrych firm. W przypadku przekształcania nabytych produktów dzisiejszych, rynki muszą skupić się bezpośrednio na łączeniu się z klientami i utworzyć relację. Dlatego generowanie wysokiej jakości potencjalnych klientów jest istotnym narzędziem dla cyklu sprzedaży. Po wystawieniu oferty w [Portal Cloud partner](https://cloudpartner.azure.com/)dostępne są narzędzia umożliwiające programowe otrzymywanie informacji kontaktowych klienta bezpośrednio po wprowadzeniu zainteresowania przez klienta lub wdrożeniu produktu w portalu Marketplace. 
 
 
 
-## <a name="common-lead-configuration-errors-during-publishing-on-cloud-partner-portal"></a>Typowe błędy konfiguracji potencjalnego klienta podczas publikowania w portalu cloud partner 
+## <a name="what-are-leads-in-the-marketplace"></a>Co to są potencjalni klienci w portalu Marketplace?
 
-**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM. Sprawdź ustawienia konta Dynamics CRM. LastCRMError: Nie można się zalogować do usługi Dynamics CRM, LastCRMException:** 
+Potencjalni klienci pochodzą od klientów zainteresowanych lub wdrażających produkty z portalu Marketplace. Bez względu na to, czy Twój produkt znajduje się w witrynie Azure Marketplace, czy AppSource, będziesz mieć możliwość otrzymywania potencjalnych klientów po ich poprawnym skonfigurowaniu z poziomu programu CRM do Twoich list w portal Cloud Partner 
 
-> Jeśli wybrano opcję uwierzytelniania usługi O365, sprawdź, czy konto użytkownika i hasła jest prawidłowa. Jeśli wybrano usługi AAD, sprawdź, czy identyfikator dzierżawy, identyfikator aplikacji i aplikacji wpisu tajnego klucza dopasowuje co zostało skonfigurowane na usługi AAD. Postępuj zgodnie z instrukcjami [tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics). Jeśli nazwa użytkownika/hasło konta jest prawidłowa, upewnij się, ma dostęp do Dynamics 365 i ma przypisaną licencję (kroki 11-15, jeśli używasz usługi Azure Active Directory lub ustawienia zabezpieczeń, jeśli za pomocą użytkownika usługi Office). 
+
+## <a name="how-to-connect-your-crm-system-with-the-cloud-partner-portal"></a>Jak połączyć system CRM z portalem Cloud partner
+
+Aby rozpocząć pobieranie potencjalnych klientów, łącznik zarządzania potencjalnym klientem na portal Cloud Partner został zaprojektowany tak, aby można było łatwo podłączyć się z informacjami o programie CRM do listy dostępnych systemów CRM. Teraz można łatwo korzystać z potencjalnych klientów wygenerowanych przez platformę Marketplace bez znacznego wysiłku inżynieryjnego do integracji z systemem zewnętrznym.
+
+Poniżej przedstawiono instrukcje krok po kroku dotyczące sposobu łączenia poszczególnych możliwych miejsc docelowych potencjalnych klientów:
+
+**Dynamics CRM Online** - [kliknij tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) , aby uzyskać instrukcje dotyczące konfigurowania usługi Dynamics CRM Online na potrzeby uzyskiwania potencjalnych klientów.
+
+ - W ramach programu Marketo[kliknij tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) , aby uzyskać instrukcje dotyczące konfigurowania konfiguracji lidera programu Marketo w celu uzyskania potencjalnych klientów.
+
+Salesforce - [kliknij tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) , aby uzyskać instrukcje dotyczące konfigurowania wystąpienia usługi Salesforce w celu uzyskania potencjalnych klientów.
+
+**Azure Table** — [kliknij tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) , aby uzyskać instrukcje dotyczące konfigurowania konta usługi Azure Storage na potrzeby uzyskiwania potencjalnych klientów w tabeli platformy Azure.
+
+**Punkt końcowy https** — [kliknij tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https) , aby uzyskać instrukcje dotyczące konfigurowania punktu końcowego HTTPS w celu uzyskania potencjalnych klientów.
+
+Po poprawnym skonfigurowaniu miejsca docelowego potencjalnego klienta i wybraniu pozycji Opublikuj w swojej ofercie zostanie zweryfikowane połączenie i zostanie wysłany klient testowy. Gdy przeglądasz ofertę przed rozpoczęciem pracy, możesz również przetestować połączenie z liderem, próbując uzyskać swoją ofertę w środowisku wersji zapoznawczej. Ważne jest, aby upewnić się, że Twoje ustawienia lidera są aktualne, dzięki czemu nie utracisz żadnych potencjalnych klientów, więc pamiętaj, aby zaktualizować te połączenia, gdy coś się zmieniło.
+
+
+### <a name="what-are-the-next-steps"></a>Jakie są następne kroki?
+
+Po zakończeniu konfigurowania technicznego należy uwzględnić te potencjalni klienci w obecnej strategii marketingowej i procesów operacyjnych & sprzedaży. Chcielibyśmy lepiej zrozumieć swój ogólny proces sprzedaży i chcemy ściśle współpracować z udostępnianiem wysokiej jakości potencjalnych klientów i wystarczającej ilości danych, aby zapewnić pomyślne działanie. Będziemy nam poznamy Twoją opinię na temat sposobu, w jaki możemy zoptymalizować i zwiększyć liczbę potencjalnych klientów, którzy wyślą Ci dodatkowe dane w celu pomyślnego przeprowadzenia tych klientów. Daj nam znać, Jeśli interesuje Cię przekazywanie opinii i sugestii, aby umożliwić zespołowi sprzedaży lepsze pomyślną pracę z potencjalnymi klientami portalu Marketplace.
+
+
+
+## <a name="common-lead-configuration-errors-during-publishing-on-cloud-partner-portal"></a>Typowe błędy konfiguracji potencjalnych klientów podczas publikowania w portalu Cloud partner 
+
+**Nie można zapisać potencjalnego klienta w programie Dynamics CRM. Sprawdź ustawienia konta programu Dynamics CRM. LastCRMError: Nie można zalogować się do programu Dynamics CRM, LastCRMException:** 
+
+> Jeśli wybrano opcję uwierzytelnianie usługi O365, sprawdź, czy konto użytkownika i hasło są prawidłowe. W przypadku wybrania usługi AAD Sprawdź, czy identyfikator dzierżawy, identyfikator aplikacji i klucz tajny aplikacji są zgodne z informacjami skonfigurowanymi w usłudze AAD. Postępuj zgodnie z instrukcjami [tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics). Jeśli nazwa użytkownika/hasło konta jest prawidłowe, upewnij się, że ma ona dostęp do usługi Dynamics 365 i ma przypisaną licencję (kroki 11-15 w przypadku używania Azure Active Directory lub ustawień zabezpieczeń, jeśli używasz użytkownika pakietu Office). 
 
  
-**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM. Użytkownik nie masz uprawnień do tworzenia atrybutu leadsourcecode w jednostce potencjalnego klienta** 
+**Nie można zapisać potencjalnego klienta w programie Dynamics CRM. Użytkownik nie ma uprawnień do tworzenia dla atrybutu leadsourcecode w jednostce potencjalnego klienta.** 
 
-> Brak role zabezpieczeń do usługi składnika zapisywania programu Microsoft Marketplace potencjalnego klienta aplikacji/użytkownika. Wykonaj kroki 11-15, jeśli używasz usługi Azure Active Directory lub ustawienia zabezpieczeń, jeśli za pomocą użytkownika usługi Office [tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics).
+> W aplikacji/użytkowniku brakuje roli zabezpieczeń, aby Microsoft Marketplace składnik zapisywania klienta. Wykonaj kroki 11-15 w przypadku używania Azure Active Directory lub ustawień zabezpieczeń, jeśli używasz [tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)użytkownika pakietu Office.
 
-**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM przy użyciu usługi AAD. Wyjątek:: Nie znaleziono dzierżawy. To wystąpienie może się zdarzyć, jeśli istnieją aktywne subskrypcje dla dzierżawy.**  
+**Nie można zapisać potencjalnego klienta w usłudze Dynamics CRM przy użyciu usługi AAD. Wyjątek: Nie znaleziono dzierżawy. To wystąpienie może wystąpić, jeśli nie ma aktywnych subskrypcji dla dzierżawy.**  
 
-> Identyfikator katalogu podane w sekcji Zarządzanie potencjalnymi klientami nie jest prawidłowym katalogiem. Uzyskaj identyfikator katalogu, zgodnie z instrukcjami w kroku 2 (w obszarze Azure Active Directory z [tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) 
+> Identyfikator katalogu podany w sekcji Zarządzanie potencjalnym liderem nie jest prawidłowym katalogiem. Pobierz identyfikator katalogu zgodnie z instrukcjami w kroku 2 (w obszarze Azure Active Directory, w [tym miejscu](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) 
 
-**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM. LastCRMError: Nie powiodło się — SecLib::RetrievePrivilegeForUser żadnych ról są przypisane do użytkownika.**  
+**Nie można zapisać potencjalnego klienta w programie Dynamics CRM. LastCRMError: SecLib:: RetrievePrivilegeForUser — nie powiodło się — żadne role nie są przypisane do użytkownika.**  
 
-> Rozwiązanie: Przypisywanie roli zabezpieczeń do usługi składnika zapisywania programu Microsoft Marketplace potencjalnego klienta. Postępuj zgodnie z instrukcjami [tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) w obszarze Ustawienia zabezpieczeń 
+> Rozwiązanie: Przypisz rolę zabezpieczeń, aby Microsoft Marketplace składnik zapisywania klienta. Postępuj zgodnie z [instrukcjami w obszarze](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) ustawienia zabezpieczeń 
 
-**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM przy użyciu usługi AAD. Wyjątek:: Nie można odnaleźć aplikacji o identyfikatorze w katalogu** 
+**Nie można zapisać potencjalnego klienta w usłudze Dynamics CRM przy użyciu usługi AAD. Wyjątek: Aplikacja o identyfikatorze nie została znaleziona w katalogu** 
 
-> Identyfikatora aplikacji podanego w sekcji Zarządzanie potencjalnymi klientami nie jest prawidłowym katalogiem. Uzyskaj identyfikator katalogu, zgodnie z instrukcjami w kroku 8 (w obszarze Azure Active Directory z [tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)). 
+> Identyfikator aplikacji podany w sekcji zarządzania potencjalnym liderem nie jest prawidłowym katalogiem. Pobierz identyfikator katalogu zgodnie z instrukcjami w kroku 8 (w obszarze Azure Active Directory, w [tym miejscu](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)). 
 
-**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM przy użyciu usługi AAD. Wyjątek:: Identyfikator żądanej dzierżawy nie jest format prawidłowych i nie domeny zewnętrznej** 
+**Nie można zapisać potencjalnego klienta w usłudze Dynamics CRM przy użyciu usługi AAD. Wyjątek: Żądany identyfikator dzierżawy jest nieprawidłowy i nie jest prawidłowym formatem domeny zewnętrznej** 
 
-> Identyfikator katalogu podane w sekcji Zarządzanie potencjalnymi klientami nie jest prawidłowym katalogiem. Uzyskaj identyfikator katalogu, zgodnie z instrukcjami w kroku 2 (w obszarze Azure Active Directory z [tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)). 
+> Identyfikator katalogu podany w sekcji Zarządzanie potencjalnym liderem nie jest prawidłowym katalogiem. Pobierz identyfikator katalogu zgodnie z instrukcjami w kroku 2 (w obszarze Azure Active Directory, w [tym miejscu](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)). 
 
-**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM przy użyciu usługi AAD. Wyjątek:: Błąd walidacji poświadczeń.: Podano nieprawidłowy klucz tajny.** 
+**Nie można zapisać potencjalnego klienta w usłudze Dynamics CRM przy użyciu usługi AAD. Wyjątek: Wystąpił błąd podczas sprawdzania poprawności poświadczeń.: Podano nieprawidłowy klucz tajny klienta.** 
 
-> Rozwiązanie: Sprawdź, jeśli klucz aplikacji jest zgodny, co znajduje się w portalu Cloud Partner, zaloguj się do witryny Azure Portal. Wygeneruj hasło oparte na instrukcji w kroku 10 (w obszarze Azure Active Directory), z [tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)). 
+> Rozwiązanie: Zaloguj się do witryny Azure Portal, sprawdź, czy klucz aplikacji jest zgodny z tym, co znajduje się w portal Cloud Partner. Wygeneruj hasło na podstawie instrukcji w kroku 10 (w obszarze Azure Active Directory), w [tym miejscu](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)). 
 
-**Nie można zapisać potencjalnego klienta do usługi Dynamics CRM. LastCRMError: Kanał żądania przekroczył limit czasu podczas oczekiwania na odpowiedź po 00:02:00. Zwiększ wartość limitu czasu podawaną do wywołania na żądanie, lub zwiększ wartość właściwości SendTimeout w powiązaniu. Czas przydzielony na tę operację mógł stanowić część większego limitu czasu.**  
+**Nie można zapisać potencjalnego klienta w programie Dynamics CRM. LastCRMError: Przekroczono limit czasu kanału żądania podczas oczekiwania na odpowiedź po 00:02:00. Zwiększ wartość limitu czasu przekazaną do wywołania żądania lub Zwiększ wartość właściwości SendTimeout dla powiązania. Czas przydzielony na tę operację mógł być częścią dłuższego limitu czasu.**  
 
-> Rozwiązanie: Zaloguj się do portalu Cloud Partner, sprawdź szczegóły w sklepie >> docelowego potencjalny klient >> adresu URL, sprawdź, czy jest prawidłowe wystąpienie dynamicznego CRM
+> Rozwiązanie: Zaloguj się do portal Cloud Partner, sprawdź szczegóły witryny w sklepie > > docelowy cel > > URL, sprawdź, czy jest to prawidłowe dynamiczne wystąpienie programu CRM
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-**Jakie są potencjalnymi klientami i dlaczego są one ważne do mnie jako wydawcę w portalu Marketplace?** 
+**Co to są potencjalni klienci i dlaczego są ważne dla mnie jako Wydawca w portalu Marketplace?** 
 
-Potencjalni klienci to klientów, którzy wdrażają produkty z witryny Marketplace. Czy produktu znajduje się na [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/en-us) lub [AppSource](https://appsource.microsoft.com/), będzie można odbierać potencjalnych klientów, którzy są zainteresowani produktu, jeśli skonfigurowano docelowy potencjalnego klienta w ofercie.  
-
-
-**Gdzie można uzyskać pomoc w konfigurowaniu Moje docelowego potencjalnego klienta** 
-
-Można znaleźć w tej dokumentacji: [Pozyskiwanie potencjalnych klientów](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) lub Wyślij bilet pomocy technicznej za pośrednictwem typu oferty wybierz aka.ms/marketplacepublishersupport i zarządzanie potencjalnymi klientami. 
+Potencjalni klienci to klienci, którzy wdrażają produkty z portalu Marketplace. Bez względu na to, czy Twój produkt znajduje się w witrynie [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us) , czy na [AppSource](https://appsource.microsoft.com/), będziesz mieć możliwość otrzymywania potencjalnych klientów, którzy interesują Twój produkt, jeśli skonfigurowano miejsce docelowe potencjalnego klienta w ofercie.  
 
 
+**Gdzie mogę uzyskać pomoc w konfigurowaniu miejsca docelowego potencjalnego klienta?** 
 
-**Jestem wymagane do skonfigurowania docelowego potencjalnego klienta w celu opublikowania oferty w portalu Marketplace?**
+Dokumentację można znaleźć tutaj: [Uzyskaj potencjalnych klientów](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) lub Prześlij bilet pomocy technicznej za pomocą aka.MS/marketplacepublishersupport wybierz typ oferty i zarządzanie potencjalnymi klientami. 
 
-Tak, w przypadku publikowania aplikacji kontakt ze mną SaaS lub usług doradczych.  
+
+
+**Czy muszę skonfigurować miejsce docelowe potencjalnego klienta w celu opublikowania oferty w portalu Marketplace?**
+
+Tak, w przypadku publikowania aplikacji kontakt ze mną SaaS lub usług konsultingowych.  
  
 
 
-**Jak można potwierdzić, czy konfiguracja potencjalnego klienta jest poprawna?**
+**Jak upewnić się, że konfiguracja lidera jest poprawna?**
 
-Po skonfigurowaniu Twoją ofertę i docelowy potencjalny klient, opublikuj swoją ofertę. Na etapie weryfikacji potencjalnego klienta Marketplace wyśle potencjalnego klienta testowego do docelowego potencjalny klient skonfigurowany w ofercie. 
-
-
-**Jak znaleźć potencjalnego klienta testowego**
+Po skonfigurowaniu oferty i przejściu do potencjalnego klienta Opublikuj swoją ofertę. Na etapie weryfikacji potencjalnego klienta Portal Marketplace wyśle test do miejsca docelowego potencjalnego klienta skonfigurowanego w ofercie. 
 
 
-Wyszukaj "MSFT_TEST" w lokalizacji docelowej potencjalny klient, poniżej przedstawiono przykładowe dane potencjalnego klienta testowego: 
+**Jak mogę znaleźć potencjalnego klienta testowego?**
 
-company = MSFT_TEST_636573304831318844 
 
-Kraj = USA 
+Wyszukaj ciąg "MSFT_TEST" w miejscu docelowym potencjalnego klienta, Oto przykładowe dane potencjalnego klienta testu: 
 
-description = MSFT_TEST_636573304831318844 
+Firma = MSFT_TEST_636573304831318844 
 
-e-mail = MSFT_TEST_636573304831318844@test.com
+kraj = US 
+
+Opis = MSFT_TEST_636573304831318844 
+
+adres e-mail =MSFT_TEST_636573304831318844@test.com
 
 kodowanie = UTF-8 
 
@@ -131,28 +131,28 @@ first_name = MSFT_TEST_636573304831318844
 
 last_name = MSFT_TEST_636573304831318844 
 
-lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844|\<Offer Name> 
+lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844 | \<Nazwa oferty > 
 
 Identyfikator OID = 00Do0000000ZHog 
 
-Telefon = 1234567890 
+numer telefonu = 1234567890 
 
 title = MSFT_TEST_636573304831318844 
 
  
 
-**Mam na żywo oferty, ale nie widzę żadnych potencjalnych klientów?**
+**Mam ofertę na żywo, ale nie widzę żadnych potencjalnych klientów?**
 
-Poszczególnymi potencjalnymi klientami będzie mieć danych przekazanych w polach w lokalizacji docelowej potencjalnego klienta, potencjalni klienci pojawią się w następującym formacie: **Akcja źródłowa | Oferty** 
+Każdy potencjalny klient będzie zawierał dane przesyłane w polach w wybranym miejscu docelowym potencjalnego klienta, co spowoduje powstanie tego formatu: **Akcja źródłowa | Sprzedaży** 
 
-  *Źródła:*
+  *Źródeł*
 
     “AzureMarketplace”, 
     “AzurePortal”, 
     “TestDrive”,  
     “SPZA” (acronym for AppSource) 
 
-  *Akcje:*
+  *Wykonane*
 
     “INS” – Stands for Installation. This is on Azure Marketplace or AppSource whenever a customer hits the button to acquire your product. 
     “PLT” – Stands for Partner Led Trial. This is on AppSource whenever a customer hits the Contact me button. 
@@ -164,7 +164,7 @@ Poszczególnymi potencjalnymi klientami będzie mieć danych przekazanych w pola
     “StartTestDrive” – This is for Test Drives only and is whenever a customer starts their test drive. 
 
 
-  *Oferuje:*
+  *Otrzymane*
 
     “checkpoint.check-point-r77-10sg-byol”, 
     “bitnami.openedxcypress”, 
@@ -172,7 +172,7 @@ Poszczególnymi potencjalnymi klientami będzie mieć danych przekazanych w pola
 
  
 
-  *Poniżej przedstawiono przykładowe dane, informacje o kliencie*
+  *Poniżej przedstawiono przykładowe dane dotyczące informacji o kliencie*
 
     { 
 
@@ -192,41 +192,41 @@ Poszczególnymi potencjalnymi klientami będzie mieć danych przekazanych w pola
 
     } 
 
-Dowiedz się więcej w obszarze [prowadzić informacje](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads). 
+Więcej informacji znajduje się w obszarze [Informacje o potencjalnym kliencie](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads). 
 
 
-**Jako lokalizację docelową Moje potencjalny klient, dlaczego nie widzę potencjalnego klienta skonfigurowano obiektów BLOB platformy Azure?** 
+**Mam skonfigurowany obiekt BLOB platformy Azure jako miejsce docelowe potencjalnego klienta, dlaczego nie widzę potencjalnego klienta?** 
 
-Potencjalny klient pobiera zapisać tylko po wybraniu usługi Azure BLOB storage jako lokalizacji docelowej potencjalnego klienta. Przełącz się do tabeli platformy Azure do odbierania w czasie rzeczywistym potencjalnego klienta 
-
-
-**Otrzymuję wiadomość e-mail z witryny Marketplace, dlaczego nie mogę znaleźć potencjalnego klienta w mojej CRM?**  
-
-Istnieje możliwość, że domena poczty e-mail przez użytkownika końcowego pochodzi z .edu. W celu zachowania prywatności nie przekazanie danych wrażliwych danych osobowych z .edu domeny. Wyślij bilet pomocy technicznej za pośrednictwem aka.ms/marketplacepublishersupport 
+Potencjalny klient zostanie zapisany tylko w przypadku wybrania usługi Azure BLOB Storage jako miejsca docelowego potencjalnego klienta. Przełącz się do tabeli platformy Azure, aby otrzymać rzeczywisty czas trwania potencjalnego klienta 
 
 
- **Skonfigurowano Azure tabeli/obiektów BLOB platformy Azure jako miejsce docelowe Moje potencjalny klient, jak wyświetlić potencjalnych klientów?** 
+**Dlaczego nie mogę znaleźć potencjalnego klienta w portalu Marketplace?**  
 
-Będą mieć dostęp obiektów blob lub tabel, z witryny Azure Portal lub pobrać i zainstalować [Eksploratora usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/) bezpłatnie, aby wyświetlić tabele/obiekty BLOB konta magazynu platformy Azure. 
-
-
-**Skonfigurowano usługi Azure Table jako miejsce docelowe Moje potencjalnych klientów, można otrzymywać powiadomienia przy każdym wysłaniu nowego potencjalnego klienta w portalu Marketplace?** 
-
-Tak, postępuj zgodnie z instrukcjami, aby ustawić Konfigurowanie usługi Azure Table i funkcji o dokumentacji [tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table). 
+Istnieje możliwość, że domena poczty e-mail użytkownika końcowego pochodzi z. edu. Z przyczyn zachowania poufności informacji nie są przekazywane dane OSOBowe z domeny. edu. Prześlij bilet pomocy technicznej za pomocą aka.ms/marketplacepublishersupport 
 
 
+ **Mam skonfigurowaną usługę Azure Table/Azure BLOB jako lokalizację docelową mojego potencjalnego klienta, jak mogę wyświetlić potencjalnych klientów?** 
 
-**Salesforce skonfigurowano jako miejsce docelowe Moje potencjalny klient, dlaczego nie mogę znaleźć potencjalnych klientów?** 
+Możesz uzyskać dostęp do obiektu BLOB lub tabeli z witryny Azure Portal albo możesz pobrać i zainstalować [Eksplorator usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/) bezpłatnie, aby wyświetlić tabele/obiekty blob konta usługi Azure Storage. 
 
-Sprawdź, czy sieci web, aby prowadzić formularza jest wymaganym polem, w oparciu o listę wyboru. Jeśli tak, przełącz się na polu pole tekstowe nieobowiązkowa.  
+
+**Mam skonfigurowaną tabelę platformy Azure jako lokalizację docelową mojego potencjalnego klienta, czy mogę otrzymywać powiadomienia za każdym razem, gdy nowy potencjalny klient zostanie wysłany przez portal Marketplace?** 
+
+Tak, postępuj zgodnie z instrukcjami, aby skonfigurować funkcję Azure Table + na [tej dokumentacji.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) 
+
+
+
+**Mam skonfigurowaną usługi Salesforce jako lokalizację docelową mojego potencjalnego klienta, dlaczego nie mogę znaleźć potencjalnych klientów?** 
+
+Sprawdź, czy formularz sieci Web do realizacji jest polem obowiązkowym opartym na liście wyboru. Jeśli tak, przełącz się na pole do nieobowiązkowego pola tekstowego.  
  
 
-**Wystąpił problem z lokalizacją docelową Moje potencjalnych klientów i można pominąć niektóre potencjalnych klientów. Czy można mieć ich wysyłane do mnie wiadomość e-mail?** 
+**Wystąpił problem z miejscem docelowym potencjalnego klienta i pominięto kilka potencjalnych klientów. Czy mogę je wysłać do mnie w wiadomości e-mail?** 
 
-Ze względu na zasady dane osobowe (prywatne informacje użytkownika) firma Microsoft nie może udostępniać informacje o potencjalnym kliencie za pośrednictwem niezabezpieczonych wiadomości e-mail. 
+Ze względu na zasady danych osobowych (informacji prywatnych) nie można udostępniać informacji o potencjalnych klientach za pośrednictwem niezabezpieczonej poczty e-mail. 
 
 
 
-**Skonfigurowano usługi Azure Storage (BLOB/Table) jako miejsce docelowe Moje potencjalny klient, ile będzie kosztować?** 
+**Mam skonfigurowany magazyn platformy Azure (obiekt BLOB/tabela) jako miejsce docelowe potencjalnego klienta, ile będzie kosztować?** 
 
-Brakuje danych prowadzić ogólnego (< 1 GB dla prawie wszystkich wydawców). Koszt będzie zależeć od liczby potencjalnych klientów odebrane, odebranie 1000 potencjalnych klientów w ciągu miesiąca koszt wynosi około 50 centów. 
+Dane gen potencjalnego klienta są niskie (< 1 GB dla niemal wszystkich wydawców). Koszt będzie zależeć od liczby odebranych potencjalnych klientów, jeśli w ciągu miesiąca otrzymasz 1 000 potencjalnych klientów, koszty związane z tym obejmują około 50 centów. 

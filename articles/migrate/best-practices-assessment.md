@@ -1,68 +1,64 @@
 ---
-title: Najlepsze rozwiązania dotyczące tworzenia oceny wraz z oceną serwera migracji platformy Azure | Dokumentacja firmy Microsoft
-description: Zawiera wskazówki dotyczące tworzenia oceny wraz z oceną serwera migracji platformy Azure.
+title: Najlepsze rozwiązania dotyczące tworzenia ocen przy użyciu oceny Azure Migrate Server | Microsoft Docs
+description: Zawiera wskazówki dotyczące tworzenia ocen przy użyciu oceny Azure Migrate Server.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 07/15/2019
 ms.author: raynew
-ms.openlocfilehash: d417efd4abf14247af171ea77b479f590e14fe76
-ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
+ms.openlocfilehash: 18b82b5553f7045c38c9de532199c2a0fd815ee1
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67812976"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234316"
 ---
-# <a name="best-practices-for-creating-assessments"></a>Najlepsze rozwiązania dotyczące tworzenia oceny
+# <a name="best-practices-for-creating-assessments"></a>Najlepsze rozwiązania dotyczące tworzenia ocen
 
-[Usługa Azure Migrate](migrate-overview.md) udostępnia Centrum narzędzi, które ułatwiają odnajdowanie, oceny i migracji aplikacji, infrastruktury i obciążeń w systemie Microsoft Azure. Centrum obejmuje usługę Azure Migrate narzędzi i ofert Niezależnym dostawcą oprogramowania niezależnie od innych firm. 
+[Azure Migrate](migrate-overview.md) udostępnia centrum narzędzi, które ułatwiają odnajdywanie, ocenianie i Migrowanie aplikacji, infrastruktury i obciążeń do Microsoft Azure. Centrum obejmuje narzędzia Azure Migrate i oferty niezależnych dostawców oprogramowania (ISV) innych firm.
 
-Ten artykuł zawiera podsumowanie najlepszych rozwiązań, podczas tworzenia oceny za pomocą narzędzia oceny Server migracji platformy Azure. 
+W tym artykule przedstawiono podsumowanie najlepszych rozwiązań dotyczących tworzenia ocen przy użyciu narzędzia do oceny Azure Migrate Server.
 
-## <a name="about-assessments"></a>Temat ocen
+## <a name="about-assessments"></a>Informacje o ocenach
 
-Oceny utworzonymi za pomocą usługi Azure migracji serwera oceny są migawkę punktu w czasie danych. Istnieją dwa typy ocen w usłudze Azure Migrate.
+Oceny tworzone przy użyciu oceny Azure Migrate Server są migawką danych w danym momencie. Istnieją dwa typy ocen w Azure Migrate.
 
 **Typ oceny** | **Szczegóły** | **Dane**
 --- | --- | ---
-**Na podstawie wydajności** | Oceny, które wydają zalecenia na podstawie danych wydajności zebranych | Zalecenie dotyczące rozmiaru maszyny Wirtualnej jest oparty na danych użycia procesora CPU i pamięci.<br/><br/> Zalecenie typ dysku (standardowa lub premium dysków zarządzanych) opiera się na operacje We/Wy i przepływność dysków w środowisku lokalnym.
-**Jako — lokalnie** | Ocen, które nie używają danych wydajności zaleceń. | Zalecenie dotyczące rozmiaru maszyny Wirtualnej zależy od rozmiaru maszyny Wirtualnej w środowisku lokalnym<br/><br> Typ dysku zalecane jest oparty na wybrania w typ magazynu, ustawiając dla oceny.
+**Oparta na wydajności** | Oceny, które podejmują zalecenia na podstawie zebranych danych wydajności | Zalecenie dotyczące rozmiaru maszyny wirtualnej bazuje na danych użycia procesora i pamięci.<br/><br/> Zalecenia dotyczące typu dysku (standardowy dysk twardy/SSD lub dyski zarządzane w warstwie Premium) jest oparty na liczbie operacji we/wy na sekundę i przepływności dysku lokalnego.
+**Zgodnie z lokalnym** | Oceny, które nie wykorzystują danych wydajności, aby wykonać zalecenia. | Zalecenie dotyczące rozmiaru maszyny wirtualnej bazuje na lokalnym rozmiarze maszyny wirtualnej<br/><br> Zalecany typ dysku jest określany na podstawie tego, co zostało wybrane w ustawieniu typ magazynu dla oceny.
 
 ### <a name="example"></a>Przykład
-Na przykład jeśli masz lokalnej maszyny Wirtualnej za pomocą cztery rdzenie na poziomie 20% i 8 GB pamięci z wykorzystaniem 10% oceny będzie następująca:
+Jeśli na przykład masz lokalną maszynę wirtualną z czterema rdzeniami na poziomie 20% i ilość pamięci wynoszącą 8 GB i 10% wykorzystania, oceny będą następujące:
 
-- **Oceny na podstawie wydajności**:
-    - Zaleca się rdzeni i pamięci na podstawie podstawowej (rdzenie 0,8) i wykorzystanie pamięci (0,8 GB).
-    - Ocena stosuje się domyślny współczynnik komfortu, 30%.
-    - Zalecenie dotyczące maszyny Wirtualnej: ~1.4 rdzeni (0,8 x1.3) i ~1.4 GB pamięci.
-- **Jako — jest ocena (lokalnie)** :
-    -  Zaleca się maszyna wirtualna o cztery rdzenie; 8 GB pamięci.
+- **Ocena oparta na wydajności**:
+    - Identyfikuje efektywne rdzenie i pamięć w oparciu o rdzeń (4 x 0,20 = 0,8) i pamięć (8 GB x 0,10 = 0,8) wykorzystanie.
+    - Stosuje współczynnik komfortu określony we właściwościach oceny (le'ts powiedzieć 1.3 x), aby uzyskać wartości, które mają być używane do ustalania rozmiarów. 
+    - Zaleca najbliższy rozmiar maszyny wirtualnej na platformie Azure, który może obsługiwać 1,4 rdzeni (0,8 x 1,3) i ~ 1,4 GB (0,8 x 1,3) pamięci.
 
-## <a name="best-practices-for-creating-assessments"></a>Najlepsze rozwiązania dotyczące tworzenia oceny
+- **W przypadku oceny stanu lokalnego**:
+    -  Zaleca maszynę wirtualną z czterema rdzeniami; 8 GB pamięci.
 
-Urządzenie Azure Migrate stale profilują Twoje środowisko lokalne i wysyła dane metadanych i wydajności na platformie Azure. Wykonaj te najlepsze rozwiązania dotyczące tworzenia oceny:
+## <a name="best-practices-for-creating-assessments"></a>Najlepsze rozwiązania dotyczące tworzenia ocen
 
-- **Utwórz jako — jest ocen**: Możesz utworzyć jako — jest ocen natychmiast po odnalezieniu.
-- **Utwórz ocenę na podstawie wydajności**: Po skonfigurowaniu odnajdowania, firma Microsoft zaleca, aby poczekać co najmniej dzień przed uruchomieniem oceny na podstawie wydajności:
-    - Zbieranie danych o wydajności jest czasochłonne. Oczekiwanie na co najmniej jeden dzień zapewnia, że ma za mało punktów danych wydajności przed uruchomieniem oceny.
-    - Dane dotyczące wydajności urządzenie zbiera punktów danych w czasie rzeczywistym, co 20 sekund dla każdego metryki wydajności i gromadzi informacje o ich do pojedynczego 5 minutową punktu danych. Urządzenie wysyła punktu danych 5 minut na platformie Azure co godzinę do obliczenia oceny.  
-- **Pobierz najnowsze dane**: Oceny nie są automatycznie aktualizowane przy użyciu najnowszych danych. Aby zaktualizować oceny przy użyciu najnowszych danych, należy ponownie ją uruchomić. 
-- **Upewnij się, czasu trwania zgodny**: Jeśli korzystasz z oceny na podstawie wydajności, upewnij się, Twój profil środowiska czas oceny. Na przykład jeśli tworzysz ocenę o czasie trwania wydajności ustawiany na jeden tydzień, należy poczekać co najmniej jednego tygodnia, po uruchomieniu odnajdywania dla wszystkich punktów danych mają być zbierane. Jeśli nie, oceny nie będą otrzymywać przyznanie pięciu gwiazdek. 
-- **Należy unikać brakujących punktów danych**: Brak punktów danych w ramach oceny na podstawie wydajności może spowodować następujące problemy:
-    - Maszyny wirtualne są wyłączone podczas przeprowadzania oceny i nie zostaną zebrane dane dotyczące wydajności. 
-    - Jeśli tworzysz maszyny wirtualne w miesiącu, na którym opiera się historii wydajności. dane dla tych maszyn wirtualnych będą mniejsze niż miesiąc. 
-    - Ocena zostanie utworzona natychmiast po odnalezieniu lub czas oceny nie jest zgodna czas zbierania danych wydajności.
+Urządzenie Azure Migrate ciągle profiluje środowisko lokalne i wysyła metadane oraz dane wydajności do platformy Azure. Postępuj zgodnie z następującymi najlepszymi rozwiązaniami dotyczącymi tworzenia ocen:
 
-## <a name="best-practices-for-confidence-ratings"></a>Najlepsze rozwiązania dotyczące oceny zaufania
+- **Utwórz ocenę jako**: Możesz tworzyć jako oceny jako, które natychmiast po wyświetleniu maszyn w portalu Azure Migrate.
+- **Tworzenie oceny opartej na wydajności**: Po skonfigurowaniu odnajdywania zalecamy odczekanie co najmniej dnia przed uruchomieniem oceny opartej na wydajności:
+    - Trwa zbieranie danych dotyczących wydajności. Oczekiwanie co najmniej każdego dnia zapewnia wystarczającą ilość punktów danych wydajności przed uruchomieniem oceny.
+    - W przypadku uruchamiania ocen opartych na wydajności należy upewnić się, że w środowisku jest profilowanie czasu trwania oceny. Jeśli na przykład zostanie utworzona Ocena z ustawionym przez tydzień czasem trwania wydajności, należy poczekać przez co najmniej tydzień po rozpoczęciu odnajdywania dla wszystkich punktów danych, które mają być zbierane. Jeśli tego nie zrobisz, ocena nie spowoduje pobrania klasyfikacji z pięcioma gwiazdkami.
+- **Oblicz ponownie oceny**: Ponieważ oceny są migawkami do punktu w czasie, nie są automatycznie aktualizowane przy użyciu najnowszych danych. Aby zaktualizować ocenę przy użyciu najnowszych danych, należy ją ponownie obliczyć.
 
-Podczas wykonywania oceny na podstawie wydajności otrzymał ufności ocena (najniższe) od 1 gwiazdki do 5 gwiazdek (najwyższy) do oceny. Używać klasyfikacji ufności skutecznie:
-- Azure oceny migracji serwera potrzebuje danych użycia Procesora/pamięci maszyny Wirtualnej i dysku na SEKUNDĘ lub przepływności danych.
-- Dla poszczególnych kart sieciowych dołączonych do maszyny Wirtualnej z systemem Azure Migrate potrzebuje danych we/wy sieci.
-- Jeśli wykorzystanie danych jest niedostępna w programie vCenter Server, zalecenie dotyczące rozmiaru określane przez usługę Azure Migrate może nie być wiarygodne. 
+## <a name="best-practices-for-confidence-ratings"></a>Najlepsze rozwiązania dotyczące klasyfikacji zaufania
 
-W zależności od wartości procentowej dostępnych punktów danych oceny zaufania dla oceny są podsumowane w poniższej tabeli.
+Po uruchomieniu ocen opartych na wydajności, Ocena zaufania z 1-gwiazdka (najniższa) do 5-gwiazdka (najwyższa) jest przyznawana dla oceny. Aby efektywnie używać klasyfikacji zaufania:
+- Azure Migrate oceny serwera wymaga danych użycia procesora CPU/pamięci maszyn wirtualnych.
+- Dla każdego dysku podłączonego do lokalnej maszyny wirtualnej wymagane są dane operacji we/wy odczytu/zapisu.
+- Dla każdej karty sieciowej podłączonej do maszyny wirtualnej potrzebuje ona danych z sieci.
 
-   **Dostępność punktu danych.** | **Ocenę zaufania**
+W zależności od wartości procentowej punktów danych dostępnych dla wybranego czasu trwania Ocena zaufania dla oceny jest pokazana w poniższej tabeli.
+
+   **Dostępność punktu danych** | **Ocenę zaufania**
    --- | ---
    0%–20% | 1 gwiazdka
    21%–40% | 2 gwiazdki
@@ -70,31 +66,31 @@ W zależności od wartości procentowej dostępnych punktów danych oceny zaufan
    61%–80% | 4 gwiazdki
    81%–100% | 5 gwiazdek
 
-- Jeśli pojawi się oceną zaufania dla oceny, który znajduje się poniżej pięć gwiazdek, poczekać co najmniej jeden dzień i następnie ponownie obliczyć ocenę.
-- Niską ocenę oznacza, że zalecenia dotyczące rozmiaru może nie być wiarygodne. W tym przypadku zaleca się zmodyfikowanie właściwości oceny do użycia jako — jest ocena w środowisku lokalnym.
 
 ## <a name="common-assessment-issues"></a>Typowe problemy z oceną
 
-Poniżej przedstawiono sposób rozwiązać niektóre typowe problemy środowiska, które wpływają na ocen.
+Poniżej przedstawiono sposób rozwiązywania niektórych typowych problemów ze środowiskiem, które mają wpływ na oceny.
 
-###  <a name="out-of-sync-assessments"></a>Poza synchronizacja ocen
+###  <a name="out-of-sync-assessments"></a>Oceny braku synchronizacji
 
-Dodaj lub usuń maszyny z grupy, po utworzeniu oceny, zostaną oznaczone jako oceny utworzone **poza synchronizacja**. Uruchom ponownie ocenę (**ponownie Oblicz**) aby odzwierciedlały zmiany w grupie.
+Jeśli dodasz lub usuniesz maszyny z grupy po utworzeniu oceny, utworzona Ocena zostanie oznaczona jako niezsynchronizowana.  Uruchom ocenę ponownie, abyodzwierciedlić zmiany grupy.
 
-### <a name="outdated-assessments"></a>Nieaktualne ocen
+### <a name="outdated-assessments"></a>Nieaktualne oceny
 
-W przypadku zmian lokalnych maszyn wirtualnych znajdujących się w grupie, która jest oceniana jest oznaczony oceny **nieaktualne**. Aby odzwierciedlić zmiany, uruchom ponownie ocenę.
+Jeśli istnieją lokalne zmiany w maszynach wirtualnych, które znajdują się w grupie, która została oceniona, ocena jest oznaczona jako nieaktualna. Aby odzwierciedlić zmiany, należy ponownie uruchomić ocenę.
 
-### <a name="missing-data-points"></a>Brak punktów danych
+### <a name="low-confidence-rating"></a>Ocena niskiej pewności
 
-Ocena może nie mieć wszystkich punktów danych z kilku powodów:
+Ocena może nie zawierać wszystkich punktów danych z kilku powodów:
 
-- Maszyny wirtualne, może być wyłączone podczas przeprowadzania oceny i nie zostaną zebrane dane dotyczące wydajności. 
-- Maszyny wirtualne mogły być utworzone w miesiącu podstawą historii wydajności, które, dlatego ich dane wydajności jest krótszy niż miesiąc. 
-- Ocena została utworzona natychmiast po odnalezieniu. W celu zbierania danych wydajności przez określony przedział czasu, należy poczekać na określoną ilość czasu przed uruchomieniem oceny. Na przykład jeśli chcesz ocenić dane dotyczące wydajności w każdym tygodniu, musisz odczekaj tydzień po odnalezieniu. W przeciwnym razie oceny nie będą otrzymywać przyznanie pięciu gwiazdek. 
+- Nie profilujesz swojego środowiska przez czas trwania, dla którego tworzysz ocenę. Jeśli na przykład tworzysz *ocenę wydajnościową* z upływem czasu trwania wydajności ustawioną na jeden tydzień, musisz poczekać przez co najmniej tydzień po rozpoczęciu odnajdywania dla wszystkich punktów danych do zebrania. Zawsze można kliknąć pozycję **Oblicz ponownie** , aby wyświetlić najnowszą stosowną ocenę zaufania. Klasyfikacja zaufania ma zastosowanie tylko w przypadku tworzenia oceny *opartej na wydajności* .
+
+- Kilka maszyn wirtualnych zostało wyłączonych w czasie, dla którego jest obliczana ocena. Jeśli niektóre maszyny wirtualne zostały wyłączone przez pewien czas, Ocena serwera nie będzie mogła zbierać danych wydajności dla tego okresu.
+
+- Kilka maszyn wirtualnych zostało utworzonych po rozpoczęciu odnajdywania w ocenie serwera. Jeśli na przykład tworzysz ocenę dla historii wydajności za ostatni miesiąc, ale kilka maszyn wirtualnych zostało utworzonych w środowisku tylko tydzień temu. W takim przypadku dane wydajności dla nowych maszyn wirtualnych nie będą dostępne przez cały czas, a Ocena zaufania byłaby niska.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Dowiedz się,](concepts-assessment-calculation.md) sposobu obliczania ocen.
-- [Dowiedz się,](how-to-modify-assessment.md) sposobu dostosowywania ocenę.
+- [Dowiedz się](concepts-assessment-calculation.md) , w jaki sposób są obliczane oceny.
+- [Dowiedz się](how-to-modify-assessment.md) , jak dostosować ocenę.

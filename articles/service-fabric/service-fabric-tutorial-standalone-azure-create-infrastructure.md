@@ -1,6 +1,6 @@
 ---
-title: Samouczek dotyczący tworzenia infrastruktury dla usługi Service Fabric klastra na maszynach wirtualnych platformy Azure — usłudze Azure Service Fabric | Dokumentacja firmy Microsoft
-description: W tym samouczku dowiesz się, jak skonfigurować infrastrukturę maszyny Wirtualnej platformy Azure do korzystania z klastra usługi Service Fabric.
+title: Samouczek tworzenia infrastruktury dla klastra Service Fabric na maszynach wirtualnych platformy Azure — Service Fabric platformy Azure | Microsoft Docs
+description: W tym samouczku dowiesz się, jak skonfigurować infrastrukturę maszyny wirtualnej platformy Azure do uruchamiania klastra Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: v-vasuke
@@ -12,87 +12,87 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 3/25/2019
+ms.date: 07/22/2019
 ms.author: v-vasuke
 ms.custom: mvc
-ms.openlocfilehash: b5f2f77b3caed483aed1736bd510096d44329284
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: d9db71a1b64ea6bf2dc73500160ce8e5e6022ef6
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276006"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385031"
 ---
-# <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Samouczek: Tworzenie infrastruktury maszyny Wirtualnej platformy Azure do hostowania klastra usługi Service Fabric
+# <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Samouczek: Tworzenie infrastruktury maszyny wirtualnej platformy Azure na potrzeby hostowania klastra Service Fabric
 
-Klastry autonomiczne usługi Service Fabric umożliwiają wybór własnego środowiska i utworzenie klastra zgodnie z obowiązującą w usłudze Service Fabric zasadą „dowolnego systemu operacyjnego i dowolnej chmury”. W tej serii samouczków, tworzenie klastra autonomicznego hostowanych na maszynach wirtualnych platformy Azure i zainstalować aplikację na niego.
+Klastry autonomiczne usługi Service Fabric umożliwiają wybór własnego środowiska i utworzenie klastra zgodnie z obowiązującą w usłudze Service Fabric zasadą „dowolnego systemu operacyjnego i dowolnej chmury”. W tej serii samouczków utworzysz klaster autonomiczny hostowany na maszynach wirtualnych platformy Azure i zainstaluje na nim aplikację.
 
-Niniejszy samouczek jest pierwszą częścią serii. W tym artykule musisz wygenerować zasoby maszyny Wirtualnej platformy Azure wymagane do obsługi klastra autonomicznego usługi Service Fabric. W następnych artykułach opisano sposób instalowania autonomicznego zestawu usługi Service Fabric, instalowania w klastrze przykładowej aplikacji i na koniec czyszczenia klastra.
+Niniejszy samouczek jest pierwszą częścią serii. W tym artykule opisano Generowanie zasobów maszyn wirtualnych platformy Azure wymaganych do hostowania autonomicznego klastra Service Fabric. W następnych artykułach opisano sposób instalowania autonomicznego zestawu usługi Service Fabric, instalowania w klastrze przykładowej aplikacji i na koniec czyszczenia klastra.
 
 Część pierwsza serii zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Utwórz zestaw wystąpień AzureVM
+> * Tworzenie zestawu wystąpień AzureVM
 > * Modyfikowanie grupy zabezpieczeń
 > * Logowanie się do jednego z wystąpień
 > * Przygotowywanie wystąpienia na potrzeby usługi Service Fabric
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do wykonania kroków tego samouczka potrzebna jest subskrypcja platformy Azure.  Jeśli nie masz jeszcze konta, przejdź do strony [witryny Azure portal](https://portal.azure.com) ją utworzyć.
+Do wykonania kroków tego samouczka potrzebna jest subskrypcja platformy Azure.  Jeśli nie masz jeszcze konta, przejdź do [Azure Portal](https://portal.azure.com) , aby go utworzyć.
 
-## <a name="create-azure-virtual-machine-instances"></a>Tworzenie wystąpień maszyny wirtualnej platformy Azure
+## <a name="create-azure-virtual-machine-instances"></a>Tworzenie wystąpień maszyn wirtualnych platformy Azure
 
-1. Zaloguj się w witrynie Azure portal i wybierz **maszyn wirtualnych** (nie maszyny wirtualne (wersja klasyczna)).
+1. Zaloguj się do Azure Portal i wybierz pozycję **maszyny wirtualne** (nie Virtual Machines (klasyczne)).
 
-   ![Maszynę Wirtualną witryny Azure portal][az-console]
+   ![Azure Portal maszynę wirtualną][az-console]
 
-2. Wybierz **Dodaj** przycisk, który zostanie otwarty **Utwórz maszynę wirtualną** formularza.
+2. Wybierz przycisk **Dodaj** , co spowoduje otwarcie formularza **Utwórz maszynę wirtualną** .
 
-3. W **podstawy** kartę, należy wybrać subskrypcję i grupę zasobów (przy użyciu nowej grupy zasobów jest zalecane).
+3. Na karcie **podstawy** Pamiętaj, aby wybrać żądaną subskrypcję i grupę zasobów (zaleca się użycie nowej grupy zasobów).
 
-4. Zmiana **obraz** typ **systemu Windows Server 2016 Datacenter**. 
+4. Zmień typ **obrazu** na **Windows Server 2016 Datacenter**. 
  
-5. Zmiana wystąpienia **rozmiar** do **standardowa DS2, wersja 2**. Ustaw administratora **Username** i **hasło**, biorąc pod uwagę, jakie są.
+5. Zmień **rozmiar** wystąpienia na **Standardowy DS2 v2**. Ustaw **nazwę użytkownika** i **hasło**administratora, zwracając uwagę na to, co się stało.
 
-6. Pozostaw **reguły portów wejściowych** zablokowane teraz; zostaną skonfigurowane w następnej sekcji.
+6. Pozostaw teraz zablokowane **reguły portów dla ruchu przychodzącego** . Skonfigurujemy te zasady w następnej sekcji.
 
-7. W **sieć** pozycję Utwórz nowy **sieci wirtualnej** i zwróć uwagę na nazwy.
+7. Na karcie **Sieć** utwórz nową **Virtual Network** i zanotuj jej nazwę.
 
-8. Następnym etapem jest skonfigurowanie **karty Sieciowej sieciowej grupy zabezpieczeń** do **zaawansowane**. Utwórz nową grupę zabezpieczeń, biorąc pod uwagę jej nazwy i Utwórz następujące reguły, aby umożliwić ruch TCP z dowolnego źródła:
+8. Następnie ustaw wartość Advanced **Network Security Group** (karta sieciowa). Utwórz nową grupę zabezpieczeń, zwracając nazwę i Utwórz następujące reguły, aby zezwolić na ruch TCP z dowolnego źródła:
 
-   ![Liczba przychodzących SF][sf-inbound]
+   ![SF — przychodzące][sf-inbound]
 
-   * Port `3389`dla protokołu RDP i protokołu ICMP (podstawowej łączności).
-   * Porty `19000-19003`, dla usługi Service Fabric.
-   * Porty `19080-19081`, dla usługi Service Fabric.
-   * Port `8080`, żądań przeglądarki sieci web.
+   * Port `3389`, protokół RDP i ICMP (łączność podstawowa).
+   * Porty `19000-19003`dla Service Fabric.
+   * Porty `19080-19081`dla Service Fabric.
+   * Port `8080`dla żądań przeglądarki sieci Web.
 
    > [!TIP]
-   > Aby połączyć maszyny wirtualne z usługą Service Fabric, maszyny wirtualne, które hostują infrastrukturę, muszą mieć takie same poświadczenia.  Istnieją dwa podstawowe sposoby na uzyskanie spójnych poświadczeń: dołączenie wszystkich hostów do tej samej domeny lub ustawienie takiego samego hasła administratora na każdej maszynie wirtualnej. Na szczęście, platforma Azure zezwoli wszystkie maszyny wirtualne na tym samym **sieć wirtualna** łatwe łączenie, dzięki czemu firma Microsoft ponosi upewnij się, że wszystkie nasze wystąpienia w tej samej sieci.
+   > Aby połączyć maszyny wirtualne z usługą Service Fabric, maszyny wirtualne, które hostują infrastrukturę, muszą mieć takie same poświadczenia.  Istnieją dwa podstawowe sposoby na uzyskanie spójnych poświadczeń: dołączenie wszystkich hostów do tej samej domeny lub ustawienie takiego samego hasła administratora na każdej maszynie wirtualnej. Na szczęście platforma Azure umożliwia łatwe łączenie się z wszystkimi maszynami wirtualnymi w tej samej **sieci wirtualnej** , dlatego będziemy mieć wszystkie nasze wystąpienia w tej samej sieci.
 
-9. Dodaj inną regułę. Ustaw źródło jako **Tag usługi** i ustaw tag usługi źródłowej **VirtualNetwork**. Usługa Service Fabric wymaga następujących portów do komunikacji w klastrze: 135,137-139,445,20001-20031,20606-20861.
+9. Dodaj kolejną regułę. Ustaw tag źródło jako **Usługa** i ustaw tag usługi źródłowej na **VirtualNetwork**. Service Fabric wymaga otwarcia następujących portów do komunikacji w klastrze: 135137-139, 445, 20001-20031, 20606-20861.
 
-   ![vnet-inbound][vnet-inbound]
+   ![Sieć wirtualna — ruch przychodzący][vnet-inbound]
 
-10. Pozostałe opcje są akceptowane w ich stanu domyślnego. Jeśli chcesz je przejrzeć, a następnie uruchom maszynę wirtualną.
+10. Pozostałe opcje są akceptowane w stanie domyślnym. Przejrzyj je, jeśli chcesz, a następnie uruchom maszynę wirtualną.
 
-## <a name="creating-more-instances-for-your-service-fabric-cluster"></a>Tworzenie większej liczby wystąpień dla klastra usługi Service Fabric
+## <a name="creating-more-instances-for-your-service-fabric-cluster"></a>Tworzenie większej liczby wystąpień dla klastra Service Fabric
 
-Uruchamianie dwóch **maszyn wirtualnych**, upewniając się, że obsługa tych samych ustawień, które są opisane w poprzedniej sekcji. Obsługa szczególnie, nazwę użytkownika administratora i hasła. **Sieci wirtualnej** i **karty Sieciowej sieciowej grupy zabezpieczeń** nie powinny być odtwarzane; wybrać te, utworzone z menu rozwijanego. Może upłynąć kilka minut dla poszczególnych wystąpień do wdrożenia.
+Uruchom jeszcze dwie **Virtual Machines**, pamiętaj, aby zachować te same ustawienia, które opisano w poprzedniej sekcji. W szczególności należy zachować tę samą nazwę użytkownika i hasło administratora. Nie należy ponownie tworzyć **sieciowej grupy zabezpieczeń** **Virtual Network** i karty sieciowej. Wybierz utworzone wcześniej z menu rozwijanego. Wdrożenie poszczególnych wystąpień może potrwać kilka minut.
 
-## <a name="connect-to-your-instances"></a>Łączenie do wystąpień
+## <a name="connect-to-your-instances"></a>Nawiązywanie połączenia z wystąpieniami
 
-1. Wybierz jedno z wystąpień z **maszyny wirtualnej** sekcji.
+1. Wybierz jedno z wystąpień z sekcji **maszyna wirtualna** .
 
-2. W **Przegląd** kartę, zwróć uwagę na *prywatnej* adresu IP. Następnie kliknij przycisk **Connect**.
+2. Na karcie **Omówienie** Zanotuj *prywatny* adres IP. Następnie kliknij przycisk **Połącz**.
 
-3. W **RDP** kartę, należy pamiętać, że używasz publicznego adresu IP i portu 3389, które w szczególności otwarcia wcześniej. Pobierz plik RDP.
+3. Na karcie **RDP** Zwróć uwagę na to, że korzystamy z publicznego adresu IP i portu 3389, który został wcześniej otwarty. Pobierz plik RDP.
  
-4. Otwórz plik RDP, a po wyświetleniu monitu wprowadź nazwę użytkownika i hasło podane w ustawieniach maszyny Wirtualnej.
+4. Otwórz plik RDP i po wyświetleniu monitu wprowadź nazwę użytkownika i hasło podane w konfiguracji maszyny wirtualnej.
 
-5. Po nawiązaniu połączenia z wystąpieniem należy sprawdzić, czy rejestr zdalny była uruchomiona, Włącz protokół SMB i otworzyć wymagane porty dla protokołu SMB i Rejestr zdalny.
+5. Po nawiązaniu połączenia z wystąpieniem należy sprawdzić, czy Rejestr zdalny był uruchomiony, włączyć protokół SMB i otworzyć wymagane porty dla protokołu SMB i rejestru zdalnego.
 
-   Aby włączyć protokół SMB, to polecenie programu PowerShell:
+   Aby włączyć protokół SMB, jest to polecenie programu PowerShell:
 
    ```powershell
    netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
@@ -104,13 +104,13 @@ Uruchamianie dwóch **maszyn wirtualnych**, upewniając się, że obsługa tych 
    New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
    ```
 
-7. Powtórz ten proces dla innych wystąpień, biorąc pod uwagę prywatnych adresów IP, ponownie.
+7. Powtórz ten proces dla innych wystąpień i ponownie Zanotuj prywatne adresy IP.
 
-## <a name="verify-your-settings"></a>Sprawdź ustawienia
+## <a name="verify-your-settings"></a>Weryfikowanie ustawień
 
-1. Aby zweryfikować połączenie podstawowe, połącz się z jednym z maszyn wirtualnych przy użyciu protokołu RDP.
+1. Aby sprawdzić poprawność łączności podstawowej, nawiąż połączenie z jedną z maszyn wirtualnych przy użyciu protokołu RDP.
 
-2. Otwórz **polecenia** z tej maszynie wirtualnej, a następnie użyj polecenia ping nawiązać połączenie z jedną maszynę Wirtualną do innego, zastępując poniżej adres IP przy użyciu jednego z prywatnym adresem IP adresów zanotowanej wcześniej (nie adres IP maszyny wirtualnej, w którym nawiązano połączenie już).
+2. Otwórz **wiersz polecenia** z tej maszyny wirtualnej, a następnie użyj polecenia ping, aby nawiązać połączenie z jednej maszyny wirtualnej do innej, zastępując poniższy adres IP jednym z ponotowanych wcześniej prywatnych adresów IP (nie jest to adres IP maszyny wirtualnej, z którą nawiązano połączenie).
 
    ```
    ping 172.31.20.163
@@ -127,14 +127,14 @@ Uruchamianie dwóch **maszyn wirtualnych**, upewniając się, że obsługa tych 
    Powinien zostać wyświetlony komunikat podobny do następującego: `Drive Z: is now connected to \\172.31.20.163\c$.`.
 
 
-   Teraz wystąpień są poprawnie przygotowany dla usługi Service Fabric.
+   Teraz Twoje wystąpienia są prawidłowo przygotowane do Service Fabric.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W części pierwszej serii przedstawiono sposób uruchamiania trzy wystąpienia maszyn wirtualnych platformy Azure i ich skonfigurowane podczas instalacji usługi Service Fabric:
+W pierwszej części serii pokazano, jak uruchomić trzy wystąpienia maszyn wirtualnych platformy Azure i skonfigurować je na potrzeby instalacji Service Fabric:
 
 > [!div class="checklist"]
-> * Utwórz zestaw wystąpień maszyny Wirtualnej platformy Azure
+> * Tworzenie zestawu wystąpień maszyn wirtualnych platformy Azure
 > * Modyfikowanie grupy zabezpieczeń
 > * Logowanie się do jednego z wystąpień
 > * Przygotowywanie wystąpienia na potrzeby usługi Service Fabric

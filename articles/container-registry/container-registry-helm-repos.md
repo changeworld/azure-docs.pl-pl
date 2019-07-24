@@ -1,57 +1,58 @@
 ---
-title: Użyj narzędzia Helm repozytoriów w usłudze Azure Container Registry
-description: Dowiedz się, jak używać repozytorium narzędzia Helm przy użyciu usługi Azure Container Registry do przechowywania wykresy dla aplikacji
+title: Używanie repozytoriów Helm w Azure Container Registry
+description: Dowiedz się, jak używać repozytorium Helm z Azure Container Registry, aby przechowywać wykresy dla aplikacji
 services: container-registry
-author: iainfoulds
+author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: iainfou
-ms.openlocfilehash: ba0e1386d67e920f1805d244f9042044bb462ec9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2135a3a5a8f14cf6c2e7fd2984d9b221e2445c1d
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62109855"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309510"
 ---
-# <a name="use-azure-container-registry-as-a-helm-repository-for-your-application-charts"></a>Używać usługi Azure Container Registry jako repozytorium narzędzia Helm dla wykresów aplikacji
+# <a name="use-azure-container-registry-as-a-helm-repository-for-your-application-charts"></a>Używanie Azure Container Registry jako repozytorium Helm dla wykresów aplikacji
 
-Aby szybko zarządzania i wdrażania aplikacji dla platformy Kubernetes, możesz użyć [Menedżera pakietów narzędzia Helm typu open-source][helm]. Za pomocą narzędzia Helm, aplikacje są definiowane jako *wykresy* , są przechowywane w repozytorium pakietów narzędzia Helm. Te wykresy konfiguracji i zależności są definiowane i może być wersjonowany w całym cyklu życia aplikacji. Usługa Azure Container Registry może służyć jako host dla repozytoriów wykresu Helm.
+Aby szybko zarządzać aplikacjami dla programu Kubernetes i wdrażać je, można użyć [Menedżera pakietów Helm Open Source][helm]. W przypadku Helm aplikacje są definiowane jako *wykresy* , które są przechowywane w repozytorium wykresu Helm. Te wykresy definiują konfiguracje i zależności i mogą być używane w całym cyklu życia aplikacji. Azure Container Registry można używać jako hosta dla repozytoriów wykresów Helm.
 
-Dzięki usłudze Azure Container Registry masz prywatna, bezpieczna repozytorium narzędzia Helm wykres, który można zintegrować z potoki kompilacji lub innych usług platformy Azure. Helm repozytoriach w usłudze Azure Container Registry obejmują funkcje replikacji geograficznej zapewnienie wykresy blisko wdrożenia i w celu zapewnienia nadmiarowości. Tylko płać za używany Magazyn używany przez wykresy i są dostępne we wszystkich warstwach cena usługi Azure Container Registry.
+Za pomocą Azure Container Registry masz prywatne, bezpieczne repozytorium wykresów Helm, które można zintegrować z potokami kompilacji lub innymi usługami platformy Azure. Repozytoria wykresów Helm w Azure Container Registry obejmują funkcje replikacji geograficznej, aby zachować wykresy w pobliżu wdrożeń i w celu zapewnienia nadmiarowości. Płacisz tylko za magazyn używany przez wykresy i są dostępne we wszystkich Azure Container Registry warstwach cenowych.
 
-W tym artykule pokazano, jak używać repozytorium pakietów narzędzia Helm, przechowywane w usłudze Azure Container Registry.
+W tym artykule pokazano, jak używać repozytorium wykresu Helm przechowywanego w Azure Container Registry.
 
 > [!IMPORTANT]
 > Ta funkcja jest obecnie dostępna w wersji zapoznawczej. Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania][terms-of-use]. Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Aby wykonać kroki opisane w tym artykule, muszą być spełnione następujące wymagania wstępne:
+Aby wykonać kroki opisane w tym artykule, należy spełnić następujące wymagania wstępne:
 
-- **Usługa Azure Container Registry** — Tworzenie rejestru kontenerów w ramach subskrypcji platformy Azure. Na przykład użyć [witryny Azure portal](container-registry-get-started-portal.md) lub [wiersza polecenia platformy Azure](container-registry-get-started-azure-cli.md).
-- **Wersja klienta Helm 2.11.0 (nie wersja RC) lub nowszym** — Uruchom `helm version` można znaleźć bieżącej wersji. Należy również serwera narzędzia Helm (Tiller) inicjowane w obrębie klastra Kubernetes. Jeśli to konieczne, możesz [Utwórz klaster Azure Kubernetes Service][aks-quickstart]. Aby uzyskać więcej informacji na temat instalacji i uaktualniania narzędzia Helm, zobacz [instalowanie narzędzia Helm][helm-install].
-- **Wiersza polecenia platformy Azure w wersji 2.0.46 lub nowszej** — Uruchom `az --version` Aby znaleźć wersję. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
+- **Azure Container Registry** — Utwórz rejestr kontenerów w ramach subskrypcji platformy Azure. Na przykład użyj [Azure Portal](container-registry-get-started-portal.md) lub [interfejsu wiersza polecenia platformy Azure](container-registry-get-started-azure-cli.md).
+- **Helm Client Version 2.11.0 (nie wersję RC) lub nowszą** — Uruchom `helm version` , aby znaleźć bieżącą wersję. Wymagany jest również serwer Helm (er) zainicjowany w klastrze Kubernetes. W razie konieczności można. For more information on how to install and upgrade Helm, see [Installing Helm][helm-install] [utworzyć klaster usługi Azure Kubernetes][aks-quickstart].
+- **Interfejs wiersza polecenia platformy Azure w wersji 2.0.46 lub nowszej** — Uruchom `az --version` , aby znaleźć wersję. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
 
-## <a name="add-a-repository-to-helm-client"></a>Dodawanie repozytorium narzędzia Helm klienta
+## <a name="add-a-repository-to-helm-client"></a>Dodawanie repozytorium do klienta Helm
 
-Repozytorium narzędzia Helm to serwer HTTP, które mogą być przechowywane wykresów rozwiązania Helm. Usługa Azure Container Registry można magazynowanie dla wykresów rozwiązania Helm i zarządzać definicji indeksu, jak dodać i usunąć wykresów do repozytorium.
+Repozytorium Helm to serwer HTTP, który może przechowywać wykresy Helm. Azure Container Registry może udostępnić ten magazyn dla wykresów Helm i zarządzać definicją indeksu podczas dodawania i usuwania wykresów do repozytorium.
 
-Aby dodać usługi Azure Container Registry jako repozytorium pakietów narzędzia Helm, należy użyć wiersza polecenia platformy Azure. W przypadku tej metody klient Helm jest aktualizowany za pomocą identyfikatora URI i poświadczeń dla tego repozytorium, wspierane przez usługę Azure Container Registry. Nie trzeba ręcznie określ informacje o tym repozytorium, więc poświadczenia nie są widoczne w historii poleceń, na przykład.
+Aby dodać Azure Container Registry jako repozytorium wykresu Helm, użyj interfejsu wiersza polecenia platformy Azure. W tym podejściu klient Helm zostanie zaktualizowany przy użyciu identyfikatora URI i poświadczeń dla repozytorium, którego kopia zapasowa jest wykonywana przez Azure Container Registry. Nie musisz ręcznie podawać informacji o tym repozytorium, więc poświadczenia nie są ujawniane w historii poleceń, na przykład.
 
-Jeśli to konieczne, zaloguj się do wiersza polecenia platformy Azure i postępuj zgodnie z instrukcjami:
+W razie potrzeby zaloguj się do interfejsu wiersza polecenia platformy Azure i postępuj zgodnie z monitami:
 
 ```azurecli
 az login
 ```
 
-Skonfiguruj domyślne ustawienia wiersza polecenia platformy Azure o nazwie przy użyciu usługi Azure Container Registry [skonfigurować az] [ az-configure] polecenia. W poniższym przykładzie Zastąp `<acrName>` nazwą rejestru:
+Skonfiguruj wartości domyślne interfejsu wiersza polecenia platformy Azure przy użyciu nazwy Azure Container Registry za pomocą polecenia [AZ Configure][az-configure] . W poniższym przykładzie Zastąp `<acrName>` ciąg nazwą rejestru:
 
 ```azurecli
 az configure --defaults acr=<acrName>
 ```
 
-Teraz Dodaj repozytorium wykresu Helm rejestru kontenera platformy Azure w kliencie narzędzia Helm przy użyciu [Dodaj repozytorium narzędzia helm acr az] [ az-acr-helm-repo-add] polecenia. To polecenie pobiera token dla usługi Azure container registry, używanego przez klienta Helm uwierzytelniania. Token uwierzytelniania jest ważny przez 1 godzinę. Podobnie jak `docker login`, to polecenie można uruchomić w przyszłych sesjach interfejsu wiersza polecenia do uwierzytelniania klienta z usługi Azure Container Registry Helm wykresu repozytorium narzędzia Helm:
+Teraz Dodaj Azure Container Registry repozytorium wykresu Helm do klienta Helm przy użyciu polecenia [AZ ACR Helm Repository Add][az-acr-helm-repo-add] . To polecenie pobiera token uwierzytelniania dla rejestru kontenerów platformy Azure, który jest używany przez klienta Helm. Token uwierzytelniania jest ważny przez 1 godzinę. Podobnie jak w przypadku programu, można uruchomić to polecenie w przyszłych sesjach interfejsu wiersza polecenia w celu uwierzytelnienia klienta Helm za pomocą repozytorium Azure Container Registry Helm Chart: `docker login`
 
 ```azurecli
 az acr helm repo add
@@ -59,16 +60,16 @@ az acr helm repo add
 
 ## <a name="add-a-chart-to-the-repository"></a>Dodawanie wykresu do repozytorium
 
-W tym artykule uzyskajmy istniejącego wykresu Helm z publicznych Helm *stabilne* repozytorium. *Stabilne* repozytorium jest wyselekcjonowanych, publicznego repozytorium zawiera typowe wykresy aplikacji. Pakiet maintainers przesłać wykresy w celu *stabilne* repozytorium w taki sam sposób, że usługi Docker Hub udostępnia publicznego rejestru, typowych obrazów kontenera. Wykres pobrane z publicznie *stabilne* repozytorium, następnie mogą zostać wypchnięte do prywatnego repozytorium usługi Azure Container Registry. W większości przypadków będzie tworzenie i przekazywanie wykresów dla aplikacji, które tworzysz. Aby uzyskać więcej informacji na temat tworzenia własnego wykresów rozwiązania Helm, zobacz [Tworzenie wykresów rozwiązania Helm][develop-helm-charts].
+Na potrzeby tego artykułu Przyjrzyjmy się istniejącemu wykresowi Helm z poziomu  publicznego repozytorium Helme. *Stałe* repozytorium jest nadzorowanym, publicznym repozytorium zawierającym popularne wykresy aplikacji. Obsłużenia pakietów mogą przesyłać swoje wykresy do *stabilnego* repozytorium, tak samo, jak w przypadku usługi Docker Hub udostępniono Publiczny rejestr dla popularnych obrazów kontenerów. Wykres pobrany z publicznego trwałego  repozytorium można następnie wypchnąć do prywatnego repozytorium Azure Container Registry. W większości scenariuszy utworzysz i przekażesz własne wykresy dla aplikacji, które tworzysz. Aby uzyskać więcej informacji na temat tworzenia własnych wykresów Helm, zobacz [Tworzenie wykresów Helm][develop-helm-charts].
 
-Najpierw utwórz katalog w *~/acr-helm*, Pobierz istniejące *stabilny/wordpress* wykresu:
+Najpierw Utwórz katalog w lokalizacji *~/ACR-Helm*, a następnie Pobierz istniejący wykres *stabilny/WordPress* :
 
 ```console
 mkdir ~/acr-helm && cd ~/acr-helm
 helm fetch stable/wordpress
 ```
 
-Lista pobranych wykresu i zwróć uwagę na wersję Wordpress uwzględniony w nazwie pliku. `helm fetch stable/wordpress` Polecenia nie określił określonej wersji, więc *najnowsze* wersja została pobrana. Wszystkich wykresów rozwiązania Helm obejmują numeru wersji w nazwie pliku, który następuje po [SemVer 2] [ semver2] standardowych. W następujących przykładowych danych wyjściowych, wykres Wordpress jest wersja *2.1.10*:
+Wyświetl listę pobranego wykresu i zanotuj wersję WordPress zawartą w nazwie pliku. Polecenie nie określiło określonej wersji, więc została pobrana najnowsza wersja.  `helm fetch stable/wordpress` Wszystkie wykresy Helm zawierają numer wersji w pliku, który jest zgodny ze standardem [SemVer 2][semver2] . W poniższym przykładzie danych wyjściowych wykres WordPress jest w wersji *2.1.10*:
 
 ```
 $ ls
@@ -76,13 +77,13 @@ $ ls
 wordpress-2.1.10.tgz
 ```
 
-Teraz Wypchnij wykresu do repozytorium wykresu Helm w usłudze Azure Container Registry przy użyciu wiersza polecenia platformy Azure [az acr helm wypychania] [ az-acr-helm-push] polecenia. Określ nazwę wykresu Helm pobrany w poprzednim kroku, takie jak *wordpress 2.1.10.tgz*:
+Teraz wypchnij wykres do repozytorium wykresu Helm w Azure Container Registry przy użyciu polecenia platformy Azure w INTERFEJSie użytkownika [AZ ACR Helm push][az-acr-helm-push] . Określ nazwę wykresu Helm pobranego w poprzednim kroku, na przykład *WordPress-2.1.10. tgz*:
 
 ```azurecli
 az acr helm push wordpress-2.1.10.tgz
 ```
 
-Po kilku chwilach wiersza polecenia platformy Azure raportów, wykres został zapisany, jak pokazano w następujących przykładowych danych wyjściowych:
+Po kilku chwilach interfejs wiersza polecenia platformy Azure zgłasza, że wykres został zapisany, jak pokazano w poniższym przykładzie danych wyjściowych:
 
 ```
 $ az acr helm push wordpress-2.1.10.tgz
@@ -92,21 +93,21 @@ $ az acr helm push wordpress-2.1.10.tgz
 }
 ```
 
-## <a name="list-charts-in-the-repository"></a>Wykresy listy w repozytorium
+## <a name="list-charts-in-the-repository"></a>Wyświetlanie listy wykresów w repozytorium
 
-Klient narzędzia Helm przechowuje pamięci podręcznej kopię lokalną zawartość repozytoria zdalne. Zmiany w zdalnym repozytorium nie automatycznie aktualizuje listę dostępnych wykresów znana lokalnie przez klienta narzędzia Helm. Podczas wyszukiwania wykresy miedzy repozytoriami, narzędzia Helm używa jej lokalnej pamięci podręcznej indeksu. Aby użyć wykresu przekazany w poprzednim kroku, należy zaktualizować lokalnego indeksu repozytorium narzędzia Helm. Ponowna indeksacja repozytoriów w kliencie usługi Helm lub użyj wiersza polecenia platformy Azure, aby zaktualizować indeksu repozytorium. Po dodaniu każdego wykresu do repozytorium, ten krok należy wykonać:
+Klient Helm przechowuje w pamięci podręcznej lokalną kopię zawartości repozytoriów zdalnych. Zmiany w repozytorium zdalnym nie aktualizują automatycznie listy dostępnych wykresów znanych lokalnie przez klienta Helm. Podczas wyszukiwania wykresów w ramach repozytoriów Helm używa jej lokalnego indeksu pamięci podręcznej. Aby użyć wykresu przekazanego w poprzednim kroku, należy zaktualizować indeks lokalnego repozytorium Helm. Można ponownie indeksować repozytoria w kliencie Helm lub użyć interfejsu wiersza polecenia platformy Azure, aby zaktualizować indeks repozytorium. Za każdym razem, gdy dodajesz wykres do repozytorium, ten krok należy wykonać:
 
 ```azurecli
 az acr helm repo add
 ```
 
-Z wykresem przechowywanych w repozytorium i indeksu zaktualizowany dostępne lokalnie można użyć regularnych polecenia Helm w klienta wyszukiwania lub jego zainstalowanie. Aby wyświetlić wszystkich wykresów w repozytorium, użyj `helm search <acrName>`. Podaj nazwę usługi Azure Container Registry:
+Na wykresie przechowywanym w repozytorium i zaktualizowanym indeksie dostępnym lokalnie można użyć zwykłych poleceń klienta Helm do przeszukiwania lub instalacji. Aby wyświetlić wszystkie wykresy w repozytorium, użyj `helm search <acrName>`. Podaj własną nazwę Azure Container Registry:
 
 ```console
 helm search <acrName>
 ```
 
-Wykres Wordpress w poprzednim kroku ma na liście, jak pokazano w następujących przykładowych danych wyjściowych:
+Wykres WordPress wypychany w poprzednim kroku znajduje się na liście, jak pokazano w następujących przykładowych danych wyjściowych:
 
 ```
 $ helm search myacrhelm
@@ -115,21 +116,21 @@ NAME                CHART VERSION   APP VERSION DESCRIPTION
 helmdocs/wordpress  2.1.10          4.9.8       Web publishing platform for building blogs and websites.
 ```
 
-Można również podać wykresów za pomocą interfejsu wiersza polecenia platformy Azure przy użyciu [az acr polecenie helm list][az-acr-helm-list]:
+Możesz również wyświetlić listę wykresów za pomocą interfejsu wiersza polecenia platformy Azure, korzystając z polecenia [AZ ACR Helm list][az-acr-helm-list]:
 
 ```azurecli
 az acr helm list
 ```
 
-## <a name="show-information-for-a-helm-chart"></a>Pokaż informacje dla wykresów rozwiązania Helm
+## <a name="show-information-for-a-helm-chart"></a>Pokaż informacje dla wykresu Helm
 
-Aby wyświetlić informacje o konkretny wykres w repozytorium, można ponownie użyć regularnych klienta narzędzia Helm. Aby wyświetlić informacje dla wykresu o nazwie *wordpress*, użyj `helm inspect`.
+Aby wyświetlić informacje dotyczące określonego wykresu w repozytorium, możesz ponownie użyć zwykłego klienta Helm. Aby wyświetlić informacje o wykresie o nazwie *WordPress*, użyj `helm inspect`.
 
 ```console
 helm inspect <acrName>/wordpress
 ```
 
-Gdy numer wersji nie została podana, *najnowsze* wersja jest używana. Polecenie Helm zwraca szczegółowe informacje o schemacie, jak pokazano w następujących danych wyjściowych skróconego przykładu:
+Jeśli numer wersji nie zostanie podany, używana jest *Najnowsza* wersja. Helm zwraca szczegółowe informacje o wykresie, jak pokazano w następujących wąskich przykładowych danych wyjściowych:
 
 ```
 $ helm inspect myacrhelm/wordpress
@@ -157,30 +158,30 @@ version: 2.1.10
 [...]
 ```
 
-Można również wyświetlić informacje dotyczące wykresu za pomocą wiersza polecenia platformy Azure [az acr helm show] [ az-acr-helm-show] polecenia. Ponownie *najnowsze* jest zwracana wersja wykresu, domyślnie. Możesz dołączyć `--version` do listy z określoną wersją wykresu, takie jak *2.1.10*:
+Możesz również wyświetlić informacje dla wykresu za pomocą interfejsu wiersza polecenia platformy Azure [AZ ACR Helm show][az-acr-helm-show] . Ponownie *Najnowsza* wersja wykresu jest zwracana domyślnie. Możesz dołączyć `--version` do listy określoną wersję wykresu, na przykład *2.1.10*:
 
 ```azurecli
 az acr helm show wordpress
 ```
 
-## <a name="install-a-helm-chart-from-the-repository"></a>Zainstaluj pakiet Helm z repozytorium
+## <a name="install-a-helm-chart-from-the-repository"></a>Instalowanie wykresu Helm z repozytorium
 
-Wykresu Helm w repozytorium jest zainstalowany, określając nazwę repozytorium, a następnie wykresu nazwy. Aby zainstalować wykresu Wordpress, należy użyć klienta narzędzia Helm:
+Wykres Helm w repozytorium jest instalowany przez określenie nazwy repozytorium i nazwy wykresu. Użyj klienta Helm do zainstalowania wykresu WordPress:
 
 ```console
 helm install <acrName>/wordpress
 ```
 
 > [!TIP]
-> Jeśli Wypchnij do repozytorium wykresu Helm rejestru kontenera platformy Azure i później wrócić w nowej sesji wiersza polecenia platformy lokalnego klienta Helm wymaga tokenu uwierzytelniania zaktualizowane. Aby uzyskać nowy token uwierzytelniania, użyj [Dodaj repozytorium narzędzia helm acr az] [ az-acr-helm-repo-add] polecenia.
+> W przypadku wypychania do repozytorium Azure Container Registry Helm i późniejszego powrotu w nowej sesji interfejsu wiersza polecenia klient lokalny Helm musi mieć zaktualizowany token uwierzytelniania. Aby uzyskać nowy token uwierzytelniania, użyj polecenia [AZ ACR Helm repo Add][az-acr-helm-repo-add] .
 
-Podczas procesu instalacji są wykonywane następujące czynności:
+Następujące kroki są wykonywane podczas procesu instalacji:
 
-- Klient narzędzia Helm przeszukuje indeksu lokalnego repozytorium.
-- Odpowiedni wykres zostanie pobrane z repozytorium usługi Azure Container Registry.
-- Wykres jest wdrażana przy użyciu Tiller w klastrze Kubernetes.
+- Klient Helm przeszukuje lokalny indeks repozytorium.
+- Odpowiedni wykres zostanie pobrany z repozytorium Azure Container Registry.
+- Wykres jest wdrażany przy użyciu narzędzia do przydziałania w klastrze Kubernetes.
 
-Następujące skrócone przykładowe dane wyjściowe zawierają zasoby platformy Kubernetes, wdrożone za pomocą wykresu Helm:
+Następujące wąskie przykładowe dane wyjściowe przedstawiają zasoby Kubernetes wdrożone za pomocą wykresu Helm:
 
 ```
 $ helm install myacrhelm/wordpress
@@ -200,27 +201,27 @@ irreverent-jaguar-mariadb-0                   0/1    Pending  0         1s
 
 ## <a name="delete-a-helm-chart-from-the-repository"></a>Usuwanie wykresu Helm z repozytorium
 
-Aby usunąć wykresu z repozytorium, użyj [az acr helm delete] [ az-acr-helm-delete] polecenia. Określ nazwę wykresu, takie jak *wordpress*i wersji, aby usunąć, takie jak *2.1.10*.
+Aby usunąć wykres z repozytorium, użyj polecenia [AZ ACR Helm Delete][az-acr-helm-delete] . Określ nazwę wykresu, na przykład *WordPress*, i wersję do usunięcia, taką jak *2.1.10*.
 
 ```azurecli
 az acr helm delete wordpress --version 2.1.10
 ```
 
-Jeśli chcesz usunąć wszystkie wersje wykresu o nazwie Opuść `--version` parametru.
+Jeśli chcesz usunąć wszystkie wersje nazwanego wykresu, pozostaw `--version` parametr.
 
-Wykres w dalszym ciągu być zwracane w `helm search <acrName>`. Ponownie klienta Helm nie automatycznie aktualizuje listę dostępnych wykresów w repozytorium. Aby zaktualizować indeks repozytorium narzędzia Helm klienta, należy użyć [Dodaj repozytorium narzędzia helm acr az] [ az-acr-helm-repo-add] ponownie polecenie:
+Wykres jest nadal zwracany w `helm search <acrName>`. Klient Helm nie aktualizuje automatycznie listy dostępnych wykresów w repozytorium. Aby zaktualizować indeks repozytorium klienta Helm, należy ponownie użyć polecenia [AZ ACR Helm repozytorium Add][az-acr-helm-repo-add] :
 
 ```azurecli
 az acr helm repo add
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule używane istniejącego wykresu Helm publicznie *stabilne* repozytorium. Aby uzyskać więcej informacji na temat sposobu tworzenia i wdrażania planów narzędzia Helm, zobacz [opracowywanie planów narzędzia Helm][develop-helm-charts].
+W tym artykule użyto istniejącego wykresu Helm z poziomu publicznego  repozytorium stabilne. Aby uzyskać więcej informacji na temat tworzenia i wdrażania wykresów Helm, zobacz [Tworzenie wykresów Helm][develop-helm-charts].
 
-Narzędzia Helm może służyć jako część procesu kompilacji w kontenerze. Aby uzyskać więcej informacji, zobacz [zadań rejestru kontenera platformy Azure][acr-tasks].
+Wykresy Helm mogą być używane jako część procesu tworzenia kontenera. Aby uzyskać więcej informacji, zobacz [używanie Azure Container Registry zadań][acr-tasks].
 
-Aby uzyskać więcej informacji na temat sposobu używania i zarządzania usługi Azure Container Registry, zobacz [najlepsze praktyki][acr-bestpractices].
+Aby uzyskać więcej informacji na temat używania Azure Container Registry i zarządzania nimi, zobacz [najlepsze rozwiązania][acr-bestpractices].
 
 <!-- LINKS - external -->
 [helm]: https://helm.sh/

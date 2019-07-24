@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie i dostrajanie wydajności — usługi Azure SQL Database | Dokumentacja firmy Microsoft
-description: Porady dotyczące dostrajania w usłudze Azure SQL Database do oceny i poprawy wydajności.
+title: Monitorowanie wydajności & monitorowania — Azure SQL Database | Microsoft Docs
+description: Wskazówki dotyczące dostrajania wydajności w Azure SQL Database oceny i ulepszeń.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -12,116 +12,116 @@ ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 2fa43fcd48736a3d044deb07ed690af580c3b987
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fdc130a7ac13e1cc551c50a7ab284ff640ecbbe4
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66416281"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305774"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Monitorowanie i dostrajanie wydajności
 
-Usługa Azure umożliwia bazy danych SQL Database można łatwo monitorować użycie, dodawanie lub usuwanie zasobów (procesora CPU, pamięć, we/wy), rozwiązywania potencjalnych problemów i znaleźć zaleceń, które może poprawić wydajność bazy danych. Usługa Azure SQL Database ma wiele funkcji, które automatycznie można rozwiązać problemy w bazach danych jeśli chcesz zezwolić bazy danych, dostosowywać się do obciążenia i automatycznie optymalizacji wydajności. Istnieją jednak niestandardowe problemy, które być może trzeba rozwiązać. W tym artykule opisano niektóre najlepsze rozwiązania i narzędzia, które umożliwiają rozwiązywanie problemów z wydajnością.
+Azure SQL Database udostępnia narzędzia i metody umożliwiające łatwe monitorowanie użycia, Dodawanie lub usuwanie zasobów (procesor CPU, pamięć, we/wy), rozwiązywanie problemów z potencjalnymi problemami oraz znalezienie zaleceń, które mogą poprawić wydajność bazy danych. Azure SQL Database ma wiele funkcji, które umożliwiają automatyczne rozwiązanie problemów z bazami danych, które umożliwią dostosowanie bazy danych do obciążenia i automatyczne zoptymalizowanie wydajności. Istnieją jednak pewne problemy, które mogą wymagać rozwiązania problemu. W tym artykule wyjaśniono niektóre najlepsze rozwiązania i narzędzia, których można użyć do rozwiązywania problemów z wydajnością.
 
-Istnieją dwa główne czynności, które należy wykonać w celu zapewnienia, że bazy danych możesz działa bez problemów:
-- [Monitorowanie wydajności bazy danych](#monitoring-database-performance) aby upewnić się, że zasoby przydzielone do bazy danych może obsłużyć obciążenie. Jeśli widzisz, że w przypadku osiągnięcia limitów zasobów, będziesz potrzebować do identyfikacji zasobu najważniejsze zapytań zużywających najwięcej zasobów i optymalizujesz je lub dodać więcej zasobów, zmieniając warstwę usług.
-- [Rozwiązywanie problemów z wydajnością](#troubleshoot-performance-issues) w celu ustaleniu, dlaczego wystąpiło kilka potencjalny problem, odkryć ich główną przyczynę problemu i akcji, która rozwiąże problem.
+Istnieją dwa główne działania, które należy wykonać, aby upewnić się, że baza danych działa bez problemów:
+- [Monitorowanie wydajności bazy danych](#monitoring-database-performance) w celu upewnienia się, że zasoby przypisane do bazy danych mogą obsługiwać obciążenie. Jeśli widzisz, że baza danych zwiększa limity zasobów, należy zidentyfikować i zoptymalizować najważniejsze zapytania zużywające zasoby, a następnie dodać więcej zasobów, uaktualniając warstwę usług.
+- [Rozwiązywanie problemów z wydajnością](#troubleshoot-performance-issues) w celu zidentyfikowania przyczyny wystąpienia problemu, zidentyfikowania głównej przyczyny problemu i wykonania akcji, która spowoduje rozwiązanie tego problemu.
 
 ## <a name="monitoring-database-performance"></a>Monitorowanie wydajności bazy danych
 
-Monitorowanie wydajności bazy danych SQL na platformie Azure rozpoczyna się od monitorowania wykorzystania zasobów względem wybranego poziomu wydajności bazy danych. Należy monitorować następujące zasoby:
- - **Użycie procesora CPU** — należy sprawdzić, są osiągnięcia 100% użycia procesora CPU w dłuższy okres czasu. To może wskazywać, czy może być konieczne uaktualnienie, bazy danych lub wystąpienia lub zidentyfikować i dostrojenia zapytań, które używają najczęściej, mocy obliczeniowej.
- - **Statystyki oczekiwania** — należy sprawdzić, jakie Dlaczego zapytań oczekują na zasoby. Queriesmig poczekaj, aż dane mają być pobierane lub zapisane pliki bazy danych, oczekiwanie, ponieważ osiągnięto limit niektórych zasobów itp.
- - **Użycie operacji We/Wy** — należy sprawdzić, są osiągnięcia limitów we/wy magazynu.
- - **Użycie pamięci** — ilość pamięci dostępnej dla bazy danych lub wystąpienia jest proporcjonalna do liczby rdzeni wirtualnych i należy sprawdzić jest wystarczająco dla obciążenia. Oczekiwana długość życia strony jest jeden z parametrów, które mogą wskazywać są strony szybko usuwane z pamięci.
+Monitorowanie wydajności bazy danych SQL na platformie Azure rozpoczyna się od monitorowania wykorzystania zasobów względem wybranego poziomu wydajności bazy danych. Następujące zasoby powinny być monitorowane w taki sam sposób:
+ - **Użycie procesora** — Sprawdź, czy baza danych osiągnie 100% użycia procesora CPU przez dłuższy czas. Może to wskazywać, że baza danych lub wystąpienie musi zostać uaktualnione do wyższej warstwy usług lub że zapytania wykorzystujące większość mocy obliczeniowej powinny być zidentyfikowane i dostrojone.
+ - **Statystyka oczekiwania** — Sprawdź, dlaczego zapytania oczekują na niektóre zasoby. Zapytania oczekują na pobranie lub zapisanie danych w plikach bazy danych, oczekiwanie, ponieważ osiągnięto limit zasobów itd.
+ - **Użycie we/wy** — Sprawdź, czy baza danych zbliża się do limitów operacji we/wy magazynu bazowego.
+ - **Użycie pamięci** — ilość pamięci dostępnej dla bazy danych lub wystąpienia jest proporcjonalna do liczby rdzeni wirtualnych i sprawdza, czy jest to wystarczające dla obciążenia. Stron życia stron to jeden z parametrów, które mogą wskazywać na szybkość usuwania stron z pamięci.
 
-Usługa Azure SQL Database **zapewnia zawiadomień, które ułatwiają rozwiązywanie problemów i naprawy potencjalne problemy z wydajnością**. Można łatwo zidentyfikować możliwości w celu zwiększenia i zoptymalizowania wydajności zapytań bez konieczności zmieniania zasobów, przeglądając [zalecenia dotyczące dostrajania wydajności](sql-database-advisor.md). Częstymi przyczynami słabej wydajności bazy danych są brakujące indeksy i nieprawidłowo zoptymalizowane zapytania. Można zastosować te zalecenia dotyczące dostrajania, aby zwiększyć wydajność przetwarzania obciążenia. Możesz również pozwalają bazy danych Azure SQL, aby [automatycznie zoptymalizować wydajność kwerend](sql-database-automatic-tuning.md) , stosując wszystkie zidentyfikowane zalecenia i weryfikowanie, czy poprawiają wydajność bazy danych.
+Usługa Azure SQL Database **obejmuje narzędzia i zasoby pomagające w rozwiązywaniu problemów i usuwaniu potencjalnych problemów z wydajnością**. Możliwości można łatwo zidentyfikować, aby usprawnić i zoptymalizować wydajność zapytań bez zmiany zasobów, przeglądając [zalecenia dotyczące dostrajania wydajności](sql-database-advisor.md). Częstymi przyczynami słabej wydajności bazy danych są brakujące indeksy i nieprawidłowo zoptymalizowane zapytania. Te zalecenia dostosowawcze mogą być stosowane w celu zwiększenia wydajności obciążeń. Możemy również umożliwić usłudze Azure SQL Database [Automatyczne Optymalizowanie wydajności zapytań](sql-database-automatic-tuning.md) , stosując wszystkie zidentyfikowane zalecenia i sprawdzając, czy zwiększa to wydajność bazy danych.
 
-Masz następujące opcje monitorowania i rozwiązywanie problemów z wydajnością bazy danych:
+Dostępne są następujące opcje monitorowania i rozwiązywania problemów z wydajnością bazy danych:
 
-- W [witryny Azure portal](https://portal.azure.com), kliknij przycisk **baz danych SQL**wybierz bazy danych, a następnie użyć wykres monitorowanie wyszukiwać zasoby zbliża się do ich maksymalnej. Użycie jednostek DTU jest wyświetlana domyślnie. Kliknij przycisk **Edytuj** zmienić zakres czasu i wartości wyświetlane.
-- Narzędzia, takie jak SQL Server Management Studio zapewnia wiele przydatnych raportów, takich jak [pulpit nawigacyjny wydajności](https://docs.microsoft.com/sql/relational-databases/performance/performance-dashboard?view=sql-server-2017) w przypadku, gdy było monitorowania wykorzystania zasobów i zidentyfikować zapytania, korzystające z najważniejszych zasobów lub [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store#Regressed)gdzie możesz zidentyfikować zapytania o pogorszonej wydajności.
-- Użyj [Query Performance Insight](sql-database-query-performance.md) [witryny Azure portal](https://portal.azure.com) Aby identyfikować zapytania, które możesz wydać na w pełni korzystać z zasobów. Ta funkcja jest dostępna w pojedynczej bazy danych i pul elastycznych tylko.
-- Użyj [SQL Database Advisor](sql-database-advisor-portal.md) Aby wyświetlić zalecenia dotyczące tworzenia i usuwanie indeksów, parametryzacji zapytań i naprawia problemy ze schematem. Ta funkcja jest dostępna w pojedynczej bazy danych i pul elastycznych tylko.
-- Użyj [Azure SQL Intelligent Insights](sql-database-intelligent-insights.md) automatyczne monitorowanie wydajności bazy danych. Po wykryciu problemu z wydajnością, dziennik diagnostyczny jest generowany ze szczegółami i głównej przyczyny Analysis (analiza głównej przyczyny) problemu. Zalecenie dotyczące poprawy wydajności znajduje się, gdy jest to możliwe.
-- [Włączanie automatycznego dostrajania](sql-database-automatic-tuning-enable.md) i pozwól SQL Azure, bazy danych automatycznego rozwiązywania zidentyfikowanych problemów z wydajnością.
-- Użyj [dynamicznych widoków zarządzania (DMV)](sql-database-monitoring-with-dmvs.md), [zdarzeniom rozszerzonym](sql-database-xevent-db-diff-from-svr.md)i [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) szczegółowe Rozwiązywanie problemów z wydajnością.
+- W [Azure Portal](https://portal.azure.com)kliknij pozycję **bazy danych SQL**, wybierz bazę danych, a następnie użyj wykresu monitorowania, aby wyszukać zasoby zbliżające się do ich maksymalnego wykorzystania. Użycie jednostek DTU jest domyślnie wyświetlane. Kliknij przycisk **Edytuj** , aby zmienić zakres czasu i wartości.
+- Narzędzia, takie jak SQL Server Management Studio zapewniają wiele przydatnych raportów, takich jak [pulpit nawigacyjny wydajności](https://docs.microsoft.com/sql/relational-databases/performance/performance-dashboard?view=sql-server-2017) , do monitorowania wykorzystania zasobów i identyfikowania najważniejszych zapytań zużywających zasoby lub [magazynu zapytań](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store#Regressed) w celu identyfikowania zapytań za pomocą uległa pogorszeniu skuteczności.
+- Użyj [szczegółowe informacje o wydajności zapytań](sql-database-query-performance.md) w [Azure Portal](https://portal.azure.com) , aby zidentyfikować zapytania, które spędzają najwięcej zasobów. Ta funkcja jest dostępna tylko w pojedyncza baza danych i elastycznych pulach.
+- Użyj [SQL Database Advisor](sql-database-advisor-portal.md) , aby wyświetlić zalecenia dotyczące tworzenia i usuwania indeksów, zapytań parametryzacja i rozwiązywania problemów ze schematem. Ta funkcja jest dostępna tylko w pojedyncza baza danych i elastycznych pulach.
+- Automatyczne monitorowanie wydajności bazy danych przy użyciu [usługi Azure SQL Intelligent Insights](sql-database-intelligent-insights.md) . Po wykryciu problemu z wydajnością zostanie wygenerowany dziennik diagnostyczny ze szczegółami i analizą głównych przyczyn problemu. Zalecenia dotyczące poprawy wydajności są udostępniane, gdy jest to możliwe.
+- [Włączenie dostrajania automatycznego](sql-database-automatic-tuning-enable.md) i umożliwienie usłudze Azure SQL Database automatycznego rozwiązywania zidentyfikowanych problemów z wydajnością.
+- Użyj [dynamicznych widoków zarządzania (widoków DMV)](sql-database-monitoring-with-dmvs.md), [zdarzeń rozszerzonych](sql-database-xevent-db-diff-from-svr.md)i [magazynu zapytań](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) , aby uzyskać bardziej szczegółowe informacje dotyczące rozwiązywania problemów z wydajnością.
 
 > [!TIP]
-> Zobacz [wskazówki dotyczące wydajności](sql-database-performance-guidance.md) można znaleźć technik, które można użyć w celu poprawy wydajności usługi Azure SQL Database po zidentyfikowaniu problemu z wydajnością za pomocą co najmniej jednym z powyższych metod.
+> Zobacz [wskazówki dotyczące wydajności](sql-database-performance-guidance.md) , aby znaleźć techniki, których można użyć w celu poprawy wydajności Azure SQL Database po zidentyfikowaniu problemu z wydajnością przy użyciu co najmniej jednej z powyższych metod.
 
 ## <a name="troubleshoot-performance-issues"></a>Rozwiązywanie problemów z wydajnością
 
-Aby zdiagnozować i rozwiązać problemy z wydajnością, Rozpocznij od zrozumienia stan każdej aktywnej kwerendy i warunki powodujące problemy z wydajnością istotne dla każdego stanu obciążenia. Aby poprawić wydajność usługi Azure SQL Database, Dowiedz się, że każde żądanie aktywne zapytanie z aplikacji znajduje się w bieżących lub stan oczekujący. Podczas rozwiązywania problemów z wydajnością w usłudze Azure SQL Database, pamiętać poniższej tabeli jako możesz przeczytać ten artykuł, aby zdiagnozować i rozwiązać problemy z wydajnością.
+Aby zdiagnozować i rozwiązać problemy z wydajnością, Zacznij od ustalenia stanu poszczególnych aktywnych zapytań oraz warunków, które powodują problemy z wydajnością związane z poszczególnymi Stanami obciążeń. Aby zwiększyć wydajność Azure SQL Database, należy zrozumieć, że każde aktywne żądanie zapytania z aplikacji jest w stanie uruchomionym lub oczekującym. W przypadku rozwiązywania problemów z wydajnością w programie Azure SQL Database należy pamiętać o tym, jak opisano w tym artykule, aby zdiagnozować i rozwiązać problemy z wydajnością.
 
-![Stany obciążenia](./media/sql-database-monitor-tune-overview/workload-states.png)
+![Stany obciążeń](./media/sql-database-monitor-tune-overview/workload-states.png)
 
-W przypadku obciążeń z problemów z wydajnością, to problem z wydajnością może być spowodowane rywalizacji o zasoby procesora CPU ( **dotyczące uruchamiania** warunku) lub poszczególnych zapytań oczekuje na coś ( **oczekiwania dotyczące** warunku ).
+W przypadku obciążeń z problemami z wydajnością problem z wydajnością może być spowodowany rywalizacją o procesor CPU (warunek **związany** z uruchomieniem) lub pojedyncze zapytania oczekują na coś (warunku **oczekiwania** ).
 
-Przyczyny lub **dotyczące uruchamiania** problemów może być:
-- **Problemy z kompilacji** -Optymalizator zapytań SQL może powodować generowanie optymalne planu z powodu starych statystyki, niepoprawny szacowania liczby wierszy, które będą przetwarzane lub oszacowania wymaganej ilości pamięci. Jeśli wiesz, że to zapytanie zostało wykonane szybciej w przeszłości, lub na inne wystąpienia (wystąpienia programu SQL Server lub wystąpienia zarządzanego), wykonaj plany rzeczywiste wykonanie i porównaj je, aby zobaczyć, czy są różne. Spróbuj zastosować wskazówki zapytania lub ponowne kompilowanie statystyk ani indeksów, aby uzyskać lepsze planu. Włącz automatyczna korekta planu usługi Azure SQL Database, aby automatycznie rozwiązać te problemy.
-- **Brak problemów z wykonywaniem** — Jeśli to ustawienie jest optymalne, planu zapytania, a następnie prawdopodobnie wykorzystuje pewne ograniczenia zasobów w bazie danych, takie jak dziennik przepływność zapisu lub może zostać użyty zdefragmentowanej indeksy, które powinien zostać ponownie skompilowany. Można również przyczyny problemów z wykonywaniem dużej liczby równoczesnych zapytań, które są wydatków na zasoby. **Oczekiwania dotyczące** problemy są w większości przypadków związane z problemami wykonywania, ponieważ zapytania, które nie są wykonywane efektywnie prawdopodobnie oczekiwania na zasoby.
+Przyczyny problemów **związanych** z uruchamianiem mogą być następujące:
+- **Problemy** z kompilacją — optymalizator zapytań SQL może generować nieoptymalny plan ze względu na nieodświeżone statystyki, nieprawidłowe oszacowanie liczby wierszy, które będą przetwarzane, lub oszacowanie wymaganej ilości pamięci. Jeśli wiemy, że zapytanie zostało wykonane szybciej w przeszłości lub w innym wystąpieniu (wystąpienie zarządzane lub SQL Server wystąpienie), należy wykonać rzeczywiste plany wykonania i porównać je w celu sprawdzenia, czy są różne. Spróbuj zastosować wskazówki dotyczące zapytania lub ponownie skompilować statystyki lub ponownie skompilować indeksy, aby uzyskać lepszy plan. Włącz automatyczne korekcje planu w Azure SQL Database, aby automatycznie wyeliminować te problemy.
+- **Problemy** z wykonywaniem — Jeśli plan zapytania jest optymalny, prawdopodobnie spowoduje to, że niektóre limity zasobów w bazie danych, takie jak przepływność zapisu dziennika, lub używają pofragmentowanych indeksów, które powinny być ponownie skompilowane. Duża liczba współbieżnych zapytań, które spędzają zasoby, może być również przyczyną problemów z wykonywaniem. Problemy **związane** z oczekiwaniem w większości przypadków są związane z problemami z wykonywaniem, ponieważ zapytania, które nie są wykonywane efektywnie, prawdopodobnie oczekują na niektóre zasoby.
 
-Przyczyny lub **oczekiwania dotyczące** problemów może być:
-- **Blokowanie** — jedno zapytanie może być Zaczekaj, aż blokady niektórych obiektów w bazie danych innych próby dostępu do tych samych obiektów. Można łatwo zidentyfikować blokowania zapytań przy użyciu DMV lub narzędzia do monitorowania.
-- **Problemy z operacji We/Wy** -zapytania mogą oczekiwać dla stron, które są zapisywane w plikach dziennika i danych. W takim przypadku zobaczysz `INSTANCE_LOG_RATE_GOVERNOR`, `WRITE_LOG`, lub `PAGEIOLATCH_*` czekać w DMV statystyk.
-- **Problemy z bazy danych TempDB** — Jeśli używasz wiele tabel tymczasowych lub zobaczysz, że wiele TempDB wylewa w planów zapytań może być problem z przepływności bazy danych TempDB. 
-- **Problemy związane z pamięcią** — możesz nie mieć wystarczającej ilości pamięci dla obciążenia, może usunąć swoje oczekiwanej długości życia strony lub zapytań pojawiają się mniej przydział pamięci, niż jest to potrzebne. W niektórych przypadkach wbudowanych funkcji analizy w Optymalizator zapytań rozwiąże tych problemów.
+Przyczyny problemów **związanych z oczekiwaniem** na problemy mogą być następujące:
+- **Blokowanie** — jedno zapytanie może utrzymywać blokadę na niektórych obiektach w bazie danych, podczas gdy inne próbują uzyskać dostęp do tych samych obiektów. Zablokowanie zapytań można łatwo zidentyfikować za pomocą DMV lub narzędzi do monitorowania.
+- **Problemy we/wy** — zapytania mogą oczekiwać na zapisanie stron w plikach danych lub dziennika. W tym przypadku zobacz `INSTANCE_LOG_RATE_GOVERNOR`, `WRITE_LOG`lub `PAGEIOLATCH_*` zaczekaj statystyki w DMV.
+- **Problemy** z bazą danych tempdb — jeśli obciążenie używa wielu tabel tymczasowych lub wiele wycieków bazy danych tempdb w planach, w których zapytania mogą występować problemy związane z przepływem danych tempdb. 
+- **Problemy związane z pamięcią** — może brakować wystarczającej ilości pamięci do obciążania, dzięki czemu mogą zostać porzucane stron życia strony lub zapytania pobierają mniejszą ilość pamięci niż jest to konieczne. W niektórych przypadkach wbudowana analiza w optymalizatora zapytań naprawi te problemy.
  
-W poniższych sekcjach opisano sposób zidentyfikować i rozwiązać niektóre z tych problemów.
+ W poniższych sekcjach opisano sposób identyfikowania i rozwiązywania niektórych z tych problemów.
 
-## <a name="running-related-performance-issues"></a>Problemy z wydajnością dotyczące uruchamiania
+## <a name="running-related-performance-issues"></a>Problemy z wydajnością związane z działaniem
 
-Ogólną wytyczną wykorzystaniu Procesora jest stale wynosiło co najmniej 80%, przypadku problemów z wydajnością powiązane działania. Jeśli masz problem z dotyczące uruchamiania, może być spowodowany przez niewystarczające zasoby procesora CPU lub może być związany z jednym z następujących warunków:
+Ogólnie rzecz biorąc, jeśli wykorzystanie procesora CPU jest spójne na poziomie 80%, występuje problem z wydajnością. Jeśli występuje problem związany z działaniem, może to być spowodowane przez niewystarczające zasoby procesora CPU lub może być związany z jednym z następujących warunków:
 
 - Zbyt wiele uruchomionych zapytań
-- Zbyt wiele kompilacji zapytań
-- Jedna lub więcej wykonywanie kwerend korzystają z planu optymalne zapytania
+- Zbyt wiele zapytań kompilacji
+- Co najmniej jedno z wykonywanych zapytań używa podrzędnego planu zapytania
 
-Jeśli okaże się, że masz problemu z wydajnością dotyczące uruchamiania, celem użytkownika jest identyfikowanie problemu dokładne przy użyciu co najmniej jednej metody. Najczęściej stosowanymi metodami do identyfikowania problemów dotyczących uruchamiania są:
+Jeśli okaże się, że występuje problem z wydajnością związany z działaniem, celem jest zidentyfikowanie dokładnego problemu przy użyciu jednej lub kilku metod. Najczęstszymi metodami identyfikowania problemów związanych z działaniem są:
 
-- Użyj [witryny Azure portal](sql-database-manage-after-migration.md#monitor-databases-using-the-azure-portal) monitorować wykorzystanie procesora CPU w procentach.
-- Należy użyć następującego [dynamicznych widoków zarządzania](sql-database-monitoring-with-dmvs.md):
+- Użyj [Azure Portal](sql-database-manage-after-migration.md#monitor-databases-using-the-azure-portal) , aby monitorować użycie procentowe procesora CPU.
+- Użyj następujących [dynamicznych widoków zarządzania](sql-database-monitoring-with-dmvs.md):
 
-  - [sys.dm_db_resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) zwraca użycie procesora CPU, we/wy i pamięci dla bazy danych Azure SQL Database. Dla co 15 sekund, istnieje jeden wiersz, nawet jeśli nie ma działania w bazie danych. Dane historyczne są utrzymywane przez jedną godzinę.
-  - [sys.resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) zwraca dane dotyczące użycia i magazynu procesora CPU dla usługi Azure SQL Database. Dane są zbierane i agregowane w 5 minutowych interwałach.
+  - [sys. DM _db_resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) zwraca procesor, we/wy i użycie pamięci dla Azure SQL Database. Jeden wiersz istnieje dla każdego 15-sekundowego interwału, nawet jeśli w bazie danych nie ma żadnych działań. Dane historyczne są przechowywane przez jedną godzinę.
+  - [sys. resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) zwraca dane użycia procesora CPU i magazynu dla Azure SQL Database. Dane są zbierane i agregowane w ciągu pięciu minut.
 
 > [!IMPORTANT]
-> Aby uzyskać zestaw zapytań T-SQL, przy użyciu tych widoków DMV, aby rozwiązać problemy dotyczące użycia procesora CPU, zobacz [problemy z wydajnością Procesora zidentyfikować](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues).
+> Aby ustawić zapytania T-SQL korzystające z tych widoków DMV do rozwiązywania problemów z użyciem procesora, zobacz temat [identyfikowanie problemów z wydajnością procesora CPU](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues).
 
-### <a name="ParamSniffing"></a> Rozwiązywanie problemów z zapytań z problemami z planu wykonania zależne od parametru zapytania
+### <a name="ParamSniffing"></a>Rozwiązywanie problemów z kwerendami przy użyciu zależnych od parametrów problemów dotyczących planu wykonywania zapytań
 
-Problem z parametrem plan poufnych (PSP) odwołuje się do scenariusza, w którym Optymalizator zapytań generuje planu wykonania zapytania, który jest optymalna tylko dla określonego parametru wartości (lub zestaw wartości) i buforowanego planu jest następnie optymalnej wartości parametrów używanych w kolejne wykonania. Inne niż optymalne plany następnie może spowodować problemy z wydajnością zapytań i ogólną degradacji przepływności obciążenia. Aby uzyskać więcej informacji na temat wykrywanie parametrów i przetwarzanie zapytań, zobacz [przewodnik dotyczący architektury przetwarzania zapytania](/sql/relational-databases/query-processing-architecture-guide#ParamSniffing).
+Problem z planem uwzględniania parametrów (PSP) odnosi się do scenariusza, w którym optymalizator zapytań generuje plan wykonywania zapytania, który jest optymalny tylko dla określonej wartości parametru (lub zestawu wartości), a w pamięci podręcznej jest nieoptymalny dla wartości parametrów używanych w kolejne wykonania. Plany nieoptymalne mogą następnie prowadzić do problemów z wydajnością zapytań i ogólnego obniżenia przepływności obciążeń. Aby uzyskać więcej informacji na temat wykrywania parametrów i przetwarzania zapytań, zobacz [Przewodnik po architekturze przetwarzania zapytań](/sql/relational-databases/query-processing-architecture-guide#ParamSniffing).
 
-Istnieje kilka obejść zastosować, aby zminimalizować problemy, każdy z nich skojarzone wady i zalety i wady:
+Istnieje kilka obejść, które służą do ograniczania tych problemów, z których każdy ma powiązane wady i wady:
 
-- Użyj [ponownie SKOMPILOWAĆ](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) wskazówki zapytania na wykonanie każdego zapytania. To obejście Zamienia czas kompilacji i zwiększonej wyposażony w Procesor o lepszej jakości planu. Za pomocą `RECOMPILE` opcja często nie jest możliwe w przypadku obciążeń wymagających wysokiej przepływności.
-- Użyj [opcji (Optymalizuj pod kątem...) ](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) wskazówki zapytania, aby zastąpić wartość rzeczywistego parametru z wartością typowy parametr, który tworzy plan wystarczające dla większości możliwości wartość parametru.   Ta opcja wymaga dobrej znajomości sposobu optymalne parametry i właściwości skojarzonego planu.
-- Użyj [(OPTYMALIZUJ dla nieznany) opcja](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) wskazówki zapytania, aby zastąpić wartość rzeczywistego parametru w zamian za przy użyciu Średnia gęstość wektora. Innym sposobem wykonania tych czynności jest przechwytywanie przychodzących wartości parametrów do zmiennych lokalnych, a następnie używając zmiennych lokalnych w ramach predykaty zamiast przy użyciu parametrów, samodzielnie. Średnia gęstość musi być *wystarczająco dobre* przy użyciu tej określonej poprawki.
-- Wyłączyć wykrywanie parametrów, korzystając wyłącznie z [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) wskazówki zapytania.
-- Użyj [KEEPFIXEDPLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) wskazówki zapytania, aby zapobiec następuje rekompilacja znajduje się w pamięci podręcznej. To rozwiązanie zakłada *dostatecznie dobrej* typowych plan jest już w pamięci podręcznej. Można także wyłączyć aktualizacje automatyczne będą statystyki, aby zmniejszyć prawdopodobieństwo dobrego planu, w której przeprowadzana jest eksmisja i nowy plan zły kompilowanego.
-- Wymuś plan za pomocą jawnego [USE PLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) wskazówki zapytania (przez jawne określenie, ustawiając określonego planu przy użyciu Query Store lub przez włączenie [dostrajania automatycznego](sql-database-automatic-tuning.md).
-- Zastąp jednej procedury zagnieżdżony zestaw procedur, które mogą być używane na podstawie logikę warunkową i wartości parametrów skojarzonych.
-- Tworzenie dynamicznych parametrów alternatywy wykonywania w definicji procedury statyczne.
+- Użyj wskazówki dotyczącej ponownej [kompilacji](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) w każdym wykonaniu zapytania. To obejście umożliwia wymianę czasu kompilacji i zwiększenie procesora w celu zapewnienia lepszej jakości planu. Korzystanie z `RECOMPILE` opcji nie jest często możliwe w przypadku obciążeń wymagających dużej przepływności.
+- Użyj [opcji zapytania (Optymalizacja dla...)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) , aby zastąpić rzeczywistą wartość parametru wartością typowego parametru, która tworzy dobry plan dla większości możliwości wartości parametrów.   Ta opcja wymaga dobrego poznania optymalnych wartości parametrów i skojarzonych cech planu.
+- Użyj [opcji (Optymalizuj dla nieznane)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) warunek zapytania, aby zastąpić rzeczywistą wartość parametru w wymianie przy użyciu średniej gęstości wektora. Innym sposobem jest przechwycenie przychodzących wartości parametrów do zmiennych lokalnych, a następnie użycie zmiennych lokalnych w predykatach zamiast używania samych parametrów. Średnia gęstość musi być *wystarczająca* dla tej konkretnej poprawki.
+- Wyłącz wykrywanie parametrów całkowicie za pomocą wskazówki zapytania [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) .
+- Użyj wskazówki zapytania [KEEPFIXEDPLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) , aby zapobiec ponownym kompilacjom w pamięci podręcznej. W tym obejść  założono, że jest to ten sam plan wspólny, który jest już w pamięci podręcznej. Możesz również wyłączyć automatyczne aktualizacje w ramach statystyk, aby zmniejszyć prawdopodobieństwo wykluczenia dobrego planu i nowego nieprawidłowego planu.
+- Wymuś plan jawnie za pomocą wskazówki zapytania [use plan](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) (jawnie określając, przez ustawienie określonego planu przy użyciu magazynu zapytań lub przez włączenie [dostrajania automatycznego](sql-database-automatic-tuning.md).
+- Zastąp pojedynczą procedurę z zagnieżdżonym zestawem procedur, które mogą być używane na podstawie logiki warunkowej i skojarzonych wartości parametrów.
+- Utwórz alternatywny sposób wykonywania ciągów dynamicznych do definicji procedury statycznej.
 
-Aby uzyskać dodatkowe informacje na temat rozwiązywania tego rodzaju problemów Zobacz:
+Aby uzyskać dodatkowe informacje dotyczące rozwiązywania tych problemów, zobacz:
 
-- To [I powąchać parametr](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/) wpis w blogu
-- To [dynamiczny język sql, a plan jakości w zapytaniach parametrycznych](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/) wpis w blogu
-- To [techniki optymalizacji zapytań SQL w programie SQL Server: Parametr Sniffing](https://www.sqlshack.com/query-optimization-techniques-in-sql-server-parameter-sniffing/) wpis w blogu
+- Ten [zapach wpis w](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/) blogu
+- Ta [dynamiczna jakość SQL a Planowanie dla zapytań parametrycznych wpis na](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/) blogu
+- Te [techniki optymalizacji zapytań SQL w SQL Server: Wpis w](https://www.sqlshack.com/query-optimization-techniques-in-sql-server-parameter-sniffing/) blogu z wykrywaniem parametrów
 
-### <a name="troubleshooting-compile-activity-due-to-improper-parameterization"></a>Rozwiązywanie problemów z działania kompilacji z powodu nieprawidłowej parametryzacji
+### <a name="troubleshooting-compile-activity-due-to-improper-parameterization"></a>Rozwiązywanie problemów z kompilacją z powodu nieprawidłowych parametryzacja
 
-Gdy zapytanie ma literały, aparat bazy danych zdecyduje się na automatyczne parametryzacja instrukcji albo użytkownik jawnie możecie go w celu zmniejszenia liczby kompiluje. Duża liczba kompiluje zapytania przy użyciu tego samego wzorca, ale różnych wartości literałów może powodować wysokie wykorzystanie procesora CPU. Podobnie jeśli tylko częściowo Definiowanie parametrów zapytania, które mają literałów w dalszym ciągu aparatu bazy danych parametryzuj go dalej.  Poniżej przedstawiono przykład częściowo sparametryzowanych zapytań:
+Gdy zapytanie zawiera literały, aparat bazy danych wybiera automatyczne Sparametryzuj instrukcji lub użytkownik może jawnie Sparametryzuj go w celu zmniejszenia liczby kompilacji. Duża liczba kompilacji zapytania przy użyciu tego samego wzorca, ale różne wartości literałów mogą spowodować wysokie wykorzystanie procesora CPU. Podobnie, jeśli tylko częściowo Sparametryzuj zapytanie, które nadal ma literały, aparat bazy danych nie Sparametryzuj go dalej.  Poniżej znajduje się przykład zapytania częściowo sparametryzowanego:
 
 ```sql
 SELECT * FROM t1 JOIN t2 ON t1.c1 = t2.c1
 WHERE t1.c1 = @p1 AND t2.c2 = '961C3970-0E54-4E8E-82B6-5545BE897F8F'
 ```
 
-W poprzednim przykładem `t1.c1` przyjmuje `@p1` , ale `t2.c2` nadal wykonać GUID jako literał. W tym przypadku, jeśli zmienisz wartość `c2`, zapytanie będzie traktowane jako różne zapytania i nastąpi nowej kompilacji. Aby zmniejszyć kompilacje w poprzedniego przykładu, rozwiązaniem jest również zdefiniować parametry identyfikatora GUID.
+W poprzednim przykładzie, przyjmuje `t1.c1` `@p1` , ale `t2.c2` nadal przyjmuje identyfikator GUID jako literał. W takim przypadku, jeśli zmienisz wartość dla `c2`, kwerenda będzie traktowana jako inna kwerenda i wystąpi Nowa kompilacja. Aby zmniejszyć kompilacje w poprzednim przykładzie, rozwiązanie ma również Sparametryzuj identyfikator GUID.
 
-Następujące zapytanie Wyświetla liczbę zapytań przez skrót zapytania, aby określić, jeśli zapytanie jest prawidłowo sparametryzowane, lub nie:
+Następujące zapytanie pokazuje liczbę zapytań według skrótu zapytania, aby określić, czy zapytanie jest prawidłowo sparametryzowane, czy nie:
 
 ```sql
 SELECT  TOP 10  
@@ -143,99 +143,99 @@ WHERE
 GROUP BY q.query_hash
 ORDER BY count (distinct p.query_id) DESC
 ```
-### <a name="factors-influencing-query-plan-changes"></a>Czynniki mające wpływ na zmiany planu zapytań
+### <a name="factors-influencing-query-plan-changes"></a>Czynniki wpływające na zmiany planu zapytania
 
-Plan wygenerowane zapytanie, która różni się od co pierwotnie był buforowany może spowodować ponowną kompilację planu wykonania zapytania. Istnieją różne powody, dlaczego istniejący plan oryginalnego może automatycznie ponownie skompilowana:
-- Zmiany w schemacie odwołuje się zapytanie
-- Zmiany danych w tabelach odwołuje się zapytanie 
-- Zmiany opcji kontekst zapytania 
+Ponowna kompilacja planu wykonania zapytania może spowodować wygenerowanie planu zapytania, który różni się od tego, co zostało pierwotnie zapisane w pamięci podręcznej. Istnieją różne przyczyny, dla których istniejący oryginalny plan może zostać automatycznie ponownie skompilowany:
+- Zmiany w schemacie, do których odwołuje się zapytanie
+- Zmiany danych w tabelach, do których odwołuje się zapytanie 
+- Zmiany w opcjach kontekstu zapytania 
 
-Skompilowany plan, może wysunąć z pamięci podręcznej z różnych powodów, takich jak ponowne uruchomienie wystąpienia, zmiany konfiguracji, wykorzystanie pamięci i jawnego żądania wyczyszczenia pamięci podręcznej w zakresie bazy danych. Ponadto za pomocą wskazówka RECOMPILE oznacza, że nie będzie można buforować planu.
+Skompilowany plan może zostać wysunięty z pamięci podręcznej z różnych przyczyn, w tym ponownego uruchomienia wystąpienia, zmiany konfiguracji w zakresie bazy danych, wykorzystanie pamięci i jawne żądania w celu wyczyszczenia pamięci podręcznej. Ponadto użycie wskazówki RECOMPILE oznacza, że plan nie zostanie zapisany w pamięci podręcznej.
 
-Ponownej kompilacji (lub nowej kompilacji po eksmisji pamięci podręcznej) nadal może spowodować generowanie plan wykonania zapytania identyczne niż pierwotnie przestrzegane.  Jeśli jednak istnieją zmiany do planu w porównaniu do poprzedniego lub oryginalny plan, poniżej przedstawiono najbardziej typowe wyjaśnienia Przyczyna zmiany planu wykonania zapytania:
+Ponowna kompilacja (lub Nowa kompilacja po wykluczeniu pamięci podręcznej) nadal może skutkować generowaniem tego samego planu wykonania zapytania od pierwotnie zaobserwowanego.  Jeśli jednak istnieją zmiany w planie w porównaniu z planem wcześniejszym lub oryginalnym, poniżej przedstawiono najbardziej typowe wyjaśnienia dotyczące przyczyny zmiany planu wykonywania zapytania:
 
-- **Zmienione projektu fizycznego**. Na przykład utworzyć nowe indeksy bardziej efektywnie cover, których wymagania zapytanie może być używana dla nowych kompilacji, jeśli Optymalizator zapytań postanawia go to bardziej optymalne wykorzystanie tego nowego indeksu niż używanie struktury danych początkowo wybrane do pierwszej wersji wykonanie kwerendy.  Zmiany fizyczne przywoływanych obiektów może spowodować nowy wybór planu w czasie kompilacji.
+- **Zmieniono projekt fizyczny**. Na przykład zostały utworzone nowe indeksy, które bardziej efektywnie obejmują wymagania zapytania. Mogą one być używane w przypadku nowej kompilacji, jeśli optymalizator zapytań zdecyduje, że jest bardziej optymalny, aby wykorzystać ten nowy indeks niż pierwotnie wybrana dla pierwszej wersji wykonywania zapytania.  Wszelkie zmiany fizyczne obiektów, do których występują odwołania, mogą spowodować powstanie nowego planu w czasie kompilacji.
 
-- **Różnic między zasobami serwera**. W przypadku, gdy jeden plan różni się w systemie"A" a "system B" — dostępność zasobów, takich jak liczba dostępnych procesorów mogą mieć wpływ na jakie plan pobiera wygenerowany.  Na przykład jeśli jeden system ma większej liczby procesorów, można wybrać plan równoległy. 
+- **Różnice zasobów serwera**. W scenariuszu, w którym jeden plan różni się od "system A", a "system B" — dostępność zasobów, takich jak liczba dostępnych procesorów, może mieć wpływ na sposób generowania planu.  Na przykład jeśli jeden system ma większą liczbę procesorów, można wybrać plan równoległy. 
 
-- **Różne statystyki**. Statystyki związane z obiektami odwołania lub nazwę istotnie różnią się od oryginalnego systemu statystyk.  Jeśli statystyki i występuje ponownej kompilacji, optymalizator zapytań użyje statystyki, począwszy od tego konkretnego punktu w czasie. Poprawione statystyki mogą mieć dystrybucji znacząco odmiennych danych oraz częstotliwości, które nie zostały uwzględnione w przypadku oryginalnej kompilacji.  Zmiany te są używane do szacowania kardynalności szacuje (liczba wierszy przewidywanym przepływają przez drzewo logiczne zapytań).  Zmiany do szacowania kardynalności może prowadzić nam wybrać różne operatory fizycznych i skojarzone zamówienia dla operacji.  Nawet drobne zmiany do statystyk może spowodować plan wykonania zmienionym zapytaniem.
+- **Różne statystyki**. Statystyki związane z obiektami, do których się odwołuje się, uległy zmianie lub różnią się w istotny sposób od statystyk oryginalnego systemu.  W przypadku zmiany statystyk i ponownej kompilacji optymalizator zapytań będzie używać statystyk w tym konkretnym momencie. Zrewidowane statystyki mogą mieć znacznie różne dystrybucje danych i częstotliwości, które nie były używane w oryginalnej kompilacji.  Te zmiany są używane do oszacowania oszacowania kardynalności (liczba wierszy przepływających do przepływu przez logiczne drzewo zapytań).  Zmiany w oszacowaniach kardynalności mogą pozwolić nam wybrać różne operatory fizyczne i powiązane z nimi zamówienie.  Nawet niewielkie zmiany w statystyce mogą spowodować zmianę planu wykonywania zapytania.
 
-- **Zmieniono wersję bazy danych zgodności poziomu lub jej kardynalności narzędzie do szacowania**.  Zmiany poziomu zgodności bazy danych można włączyć nowe strategie i funkcje, które może spowodować planu wykonanie innego zapytania.  Poza poziom zgodności bazy danych wyłączenie lub włączenie flagi śledzenia 4199 lub zmianę stanu bazy danych konfiguracji o określonym zakresie, który QUERY_OPTIMIZER_HOTFIXES także mogą mieć wpływ na zapytania opcje planu wykonania w czasie kompilacji.  Flagi śledzenia 9481 (CE starszych force) i 2312 (zmusza domyślne CE) są również zaplanować wpływających na. 
+- **Zmieniono poziom zgodności bazy danych lub wersję szacowania kardynalności**.  Zmiany poziomu zgodności bazy danych mogą umożliwić nowe strategie i funkcje, które mogą spowodować powstanie innego planu wykonywania zapytań.  Poza poziomem zgodności bazy danych wyłączenie lub włączenie flagi śledzenia 4199 lub zmiana stanu QUERY_OPTIMIZER_HOTFIXES konfiguracji bazy danych może również mieć wpływ na Opcje planu wykonywania zapytania w czasie kompilacji.  Flagi śledzenia 9481 (Wymuś starsze CE) i 2312 (Wymuś domyślne CE) również mają wpływ na plan. 
 
-### <a name="resolve-problem-queries-or-provide-more-resources"></a>Rozwiąż problematycznych zapytań lub podać więcej zasobów
+### <a name="resolve-problem-queries-or-provide-more-resources"></a>Rozwiązywanie zapytań dotyczących problemów lub podawanie większej ilości zasobów
 
-Po zidentyfikowaniu problemu, można dostrajanie problematycznych zapytań lub Uaktualnij rozmiar obliczeń lub warstwę można zwiększyć pojemność usługi Azure SQL database w celu ochrony przed rozproszonymi wymagania dotyczące procesora CPU usługi. Aby uzyskać informacje na temat skalowania zasobów dla pojedynczych baz danych, zobacz [skalowanie pojedynczej bazy danych zasobów w usłudze Azure SQL Database](sql-database-single-database-scale.md) i skalowania zasobów dla pul elastycznych, zobacz [skalowanie elastycznej puli zasobów w usłudze Azure SQL Baza danych](sql-database-elastic-pool-scale.md). Aby uzyskać informacje na temat skalowania wystąpienia zarządzanego, zobacz [limity zasobów na poziomie wystąpienia](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits).
+Po zidentyfikowaniu problemu można dostosować zapytania dotyczące problemów lub uaktualnić rozmiar lub warstwę usługi, aby zwiększyć pojemność usługi Azure SQL Database w celu wchłonięcia wymagań procesora. Aby uzyskać informacje na temat skalowania zasobów dla pojedynczych baz danych, zobacz skalowanie zasobów [pojedynczej bazy danych w Azure SQL Database](sql-database-single-database-scale.md) i skalowanie zasobów dla pul elastycznych, zobacz [skalowanie zasobów puli elastycznej w Azure SQL Database](sql-database-elastic-pool-scale.md). Aby uzyskać informacje na temat skalowania wystąpienia zarządzanego, zobacz [limity zasobów na poziomie wystąpienia](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits).
 
-### <a name="determine-if-running-issues-due-to-increase-workload-volume"></a>Sprawdza, czy uruchomione problemy ze względu na zwiększenie obciążenia woluminu
+### <a name="determine-if-running-issues-due-to-increase-workload-volume"></a>Określanie, czy występują problemy z powodu zwiększenia ilości obciążenia
 
-Wzrost ruchu aplikacji i obciążeń można uwzględnić zwiększone użycie procesora CPU, ale należy zachować ostrożność prawidłowo zdiagnozować ten problem. W przypadku wysokiej Procesora odpowiedzieć na następujące pytania do określenia, czy rzeczywiście zwiększenie użycia procesora CPU jest z powodu zmiany głośności obciążenia:
+Zwiększenie ruchu i obciążenia aplikacji może obsłużyć zwiększone użycie procesora CPU, ale należy zachować ostrożność w celu prawidłowego zdiagnozowania tego problemu. W scenariuszu o wysokim procesorze CPU Odpowiedz na te pytania, aby określić, czy istotny wzrost procesora jest spowodowany zmianami głośności obciążeń:
 
-1. Czy kwerendy z aplikacji przyczyny tego problemu procesor CPU o wysokiej?
-2. Najważniejsze korzystających z procesora CPU zapytań (które mogą być identyfikowane):
+1. Czy zapytania z aplikacji są przyczyną problemu z dużym procesorem CPU?
+2. Dla najważniejszych zapytań zużywających procesor CPU (które można zidentyfikować):
 
-   - Ustal, czy wystąpiły wiele planów wykonywania skojarzony z tego samego zapytania. Jeśli tak, należy określić dlaczego.
-   - Dla zapytań przy użyciu tego samego planu wykonania należy określić czasy wykonania były spójne i zwiększenie liczby wykonań. Jeśli tak, istnieją problemy z wydajnością prawdopodobnie z powodu wzrostu obciążenia.
+   - Ustal, czy w tym samym zapytaniu są skojarzone wiele planów wykonania. Jeśli tak, określ przyczynę.
+   - W przypadku zapytań z tym samym planem wykonania Ustal, czy czasy wykonywania były spójne i czy licznik wykonywania został zwiększony. Jeśli tak, prawdopodobnie występują problemy z wydajnością spowodowane wzrostem obciążenia.
 
-Aby podsumować, jeśli planu wykonania zapytania nie wykonać inaczej, ale zwiększyć wykorzystanie procesora CPU, oraz liczby wykonań, prawdopodobnie wystąpił problem z wydajnością związanych z wzrostu obciążenia.
+Podsumowując, jeśli plan wykonywania zapytania nie został wykonany inaczej, ale użycie procesora zwiększyło się wraz z licznikiem wykonywania, prawdopodobnie występuje problem z wydajnością zwiększający obciążenie.
 
-Nie zawsze jest łatwy do zawierania jest zmiana wolumenu obciążenia, umożliwiające obsługę problem procesora CPU.   Czynniki do rozważenia: 
+Nie zawsze można łatwo stwierdzić, że istnieje zmiana woluminu obciążenia, która zapewnia problem z procesorem CPU.   Czynniki, które należy wziąć pod uwagę: 
 
-- **Użycie zasobów zmienione**
+- **Zmieniono użycie zasobów**
 
-  Na przykład Rozważmy scenariusz, w którym wzrosła procesora CPU do 80% przez dłuższy czas.  Użycie procesora CPU samodzielnie nie oznacza woluminu obciążenia zmienione.  Wyślij zapytanie do planu wykonania, że regresji i zmiany w zakresie dystrybucji danych można również przyczyniają się do więcej użycia zasobów mimo, że aplikacja wykonuje te same obciążenia dokładne.
+  Rozważmy na przykład scenariusz, w którym procesor CPU zwiększył się do 80% przez dłuższy czas.  Samo użycie procesora CPU nie oznacza, że wolumin obciążenia został zmieniony.  Regresje planu wykonywania zapytań i zmiany dystrybucji danych mogą również przyczynić się do większej ilości zasobów, nawet jeśli aplikacja wykonuje te same dokładne obciążenie.
 
-- **Pojawiły się nowe zapytanie**
+- **Pojawiło się nowe zapytanie**
 
-   Aplikacja może dysku nowego zestawu zapytań w różnym czasie.
+   Aplikacja może uzyskać nowy zestaw zapytań w różnym czasie.
 
-- **Liczba żądań zwiększanie lub zmniejszanie**
+- **Liczba żądań zwiększonych lub obniżonych**
 
-   Ten scenariusz jest najbardziej oczywiste miary obciążenia. Liczba zapytań nie zawsze odpowiada więcej wykorzystanie zasobów. Ta metryka jest jednak nadal sygnał znaczące, przy założeniu, że inne czynniki nie ulegną zmianie.
+   Ten scenariusz to najbardziej oczywisty pomiar obciążeń. Liczba zapytań nie zawsze odpowiada większej ilości zasobów. Jednak ta Metryka nadal jest znaczącym sygnałem, przy założeniu, że inne czynniki nie są zmieniane.
 
-## <a name="waiting-related-performance-issues"></a>Problemy z wydajnością związanych z oczekiwania
+## <a name="waiting-related-performance-issues"></a>Problemy z wydajnością związane z oczekiwaniem
 
-Gdy masz pewność, że nie występują wysoka-procesor CPU, problem z wydajnością związanych z uruchamiania, występują problemu z wydajnością związanych z oczekiwania. To znaczy zasobów procesora CPU nie są używane efektywne, ponieważ Procesor oczekuje na innego zasobu. W tym przypadku następnym krokiem jest do identyfikowania zasobów procesora CPU oczekują na. Najczęstsze metody wyświetlane u góry oczekiwania kategorii typów:
+Po upewnieniu się, że nie występuje problem z wydajnością o dużym procesorze CPU, jest to problem z wydajnością związany z oczekiwaniem. Oznacza to, że zasoby procesora CPU nie są używane efektywnie, ponieważ procesor CPU czeka na inne zasoby. W takim przypadku następnym krokiem jest zidentyfikowanie zasobów procesora CPU. Najczęściej używane metody wyświetlania najważniejszych kategorii typu oczekiwania:
 
-- [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) udostępnia statystyki oczekiwania na zapytanie wraz z upływem czasu. W Store zapytania oczekiwania typów są połączone w kategoriach oczekiwania. Mapowanie oczekiwania kategorie typów oczekiwania jest dostępna w [sys.query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table).
-- [sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) zwraca informacje o wszystkich czeka napotykanych przez wątki, które są wykonywane podczas operacji. Ten widok zagregowane umożliwia diagnozowanie problemów z wydajnością za pomocą usługi Azure SQL Database, a także przy użyciu określonego zapytania i partie.
-- [sys.dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) zwraca informacje o kolejce oczekiwania zadań, które oczekują na niektórych zasobów.
+- [Magazyn zapytań](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) zawiera statystyki oczekiwania na zapytanie w czasie. W magazynie zapytań typy oczekiwania są łączone w kategorie oczekiwania. Mapowanie kategorii oczekiwania na typy oczekiwania jest dostępne w pliku [sys. query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table).
+- [sys. DM _db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) zwraca informacje o wszystkich oczekiwaniach napotkanych przez wątki, które są wykonywane podczas operacji. Tego widoku zagregowanego można użyć do diagnozowania problemów z wydajnością Azure SQL Database a także z określonymi kwerendami i partiami.
+- [sys. DM _os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) zwraca informacje o kolejce oczekiwania zadań oczekujących na jakiś zasób.
 
-W scenariuszach wysokiej Procesora Store zapytań i statystyki oczekiwania nie zawsze odzwierciedla wykorzystanie procesora CPU w tych dwóch powodów:
+W scenariuszach z wysokim procesorem CPU magazyn zapytań i statystyka oczekiwania nie zawsze odzwierciedlają użycie procesora z następujących dwóch przyczyn:
 
-- Nadal mogą być wykonywane zapytania zużywające procesor CPU o wysokiej i zapytania nie została zakończona.
-- Zapytania zużywające procesor CPU o wysokiej były uruchomione po przejściu w tryb failover wystąpił
+- Nadal mogą być wykonywane zapytania zużywające wysoką moc OBLICZENIOWą, a zapytania nie zakończyły się
+- Uruchomione w trybie failover zapytania zużywające wysokie użycie procesora CPU były uruchamiane
 
-Query Store oczekiwania śledzenia statystyki dynamicznych widoków zarządzania tylko Pokaż wyniki dla pomyślnie zakończonych i upłynął limit czasu zapytania i nie są wyświetlane dane dotyczące (aż do zakończenia) w trakcie wykonywania instrukcji. Widok dynamiczny zarządzania [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) umożliwia śledzenie aktualnie wykonywanych zapytań i czas skojarzonego procesu roboczego.
+Magazyn zapytań i statystyka oczekiwania — śledzenie dynamicznych widoków zarządzania wyświetla tylko wyniki dla pomyślnie ukończonych i limitów czasu zapytań oraz nie wyświetlają danych dla aktualnie wykonywanych instrukcji (aż do zakończenia). Dynamiczny widok zarządzania [sys. DM _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) umożliwia śledzenie aktualnie wykonywanych zapytań i skojarzonego czasu procesu roboczego.
 
-Jak pokazano na poprzednim wykresie, czeka najczęściej są:
+Jak pokazano na poprzednim wykresie, Najczęstsze oczekiwania to:
 
 - Blokady (blokowanie)
-- OPERACJE WE/WY
-- `tempdb`-związane z rywalizacji o zasoby
-- Czeka przydział pamięci
+- WE/WY
+- `tempdb`Rywalizacja dotycząca
+- Oczekiwanie na przydzielenie pamięci
 
 > [!IMPORTANT]
-> Dla zestawu zapytań T-SQL, przy użyciu tych widoków DMV do rozwiązywania tych problemów związanych z oczekiwania, zobacz:
+> Aby ustawić zapytania T-SQL używające tych widoków DMV do rozwiązywania problemów związanych z oczekiwaniem, zobacz:
 >
-> - [Identyfikowanie problemów z wydajnością operacji We/Wy](sql-database-monitoring-with-dmvs.md#identify-io-performance-issues)
-> - [Identyfikowanie `tempdb` problemy z wydajnością](sql-database-monitoring-with-dmvs.md#identify-io-performance-issues)
-> - [Identyfikowanie czeka przydział pamięci](sql-database-monitoring-with-dmvs.md#identify-memory-grant-wait-performance-issues)
-> - [TigerToolbox — w tym czasie czeka i zatrzaśnięcia](https://github.com/Microsoft/tigertoolbox/tree/master/Waits-and-Latches)
+> - [Identyfikowanie problemów z wydajnością we/wy](sql-database-monitoring-with-dmvs.md#identify-io-performance-issues)
+> - [Identyfikowanie `tempdb` problemów z wydajnością](sql-database-monitoring-with-dmvs.md#identify-io-performance-issues)
+> - [Oczekiwanie na określenie przydzielenia pamięci](sql-database-monitoring-with-dmvs.md#identify-memory-grant-wait-performance-issues)
+> - [TigerToolbox — czeka i Zamky](https://github.com/Microsoft/tigertoolbox/tree/master/Waits-and-Latches)
 > - [TigerToolbox - usp_whatsup](https://github.com/Microsoft/tigertoolbox/tree/master/usp_WhatsUp)
 
-## <a name="improving-database-performance-with-more-resources"></a>Poprawa wydajności bazy danych przy użyciu większej ilości zasobów
+## <a name="improving-database-performance-with-more-resources"></a>Poprawianie wydajności bazy danych za pomocą większej liczby zasobów
 
-Na koniec Brak elementów informacje z możliwością działania, które może poprawić wydajność bazy danych, możesz zmienić ilość zasobów dostępnych w usłudze Azure SQL Database. Można przypisać więcej zasobów, zmieniając [warstwy usługi jednostki DTU](sql-database-service-tiers-dtu.md) pojedynczej bazy danych lub zwiększenie jednostek Edtu elastycznej puli w dowolnej chwili. Alternatywnie Jeśli używasz [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md), możesz zmienić warstwę usługi lub zwiększenie zasobów przydzielonych do bazy danych.
+Na koniec Jeśli nie ma elementów, które mogą zwiększyć wydajność bazy danych, można zmienić ilość zasobów dostępnych w Azure SQL Database. Więcej zasobów można przypisywać przez zmianę [warstwy usługi DTU](sql-database-service-tiers-dtu.md) pojedynczej bazy danych lub zwiększenie jednostek eDTU puli elastycznej w dowolnym momencie. Alternatywnie, jeśli używasz [modelu zakupu opartego na rdzeń wirtualny](sql-database-service-tiers-vcore.md), możesz zmienić warstwę usług lub zwiększyć zasoby przydzieloną do bazy danych.
 
-1. Dla pojedynczych baz danych, możesz [zmienianie warstw usług](sql-database-single-database-scale.md) lub [zasoby obliczeniowe](sql-database-single-database-scale.md) na żądanie w celu poprawy wydajności bazy danych.
-2. W przypadku wielu baz danych można rozważyć użycie [pul elastycznych](sql-database-elastic-pool-guidance.md) automatycznie skalować zasoby.
+1. W przypadku pojedynczych baz danych można [zmienić warstwy usług](sql-database-single-database-scale.md) lub [zasoby obliczeniowe](sql-database-single-database-scale.md) na żądanie, aby zwiększyć wydajność bazy danych.
+2. W przypadku wielu baz danych należy rozważyć użycie [pul elastycznych](sql-database-elastic-pool-guidance.md) w celu automatycznego skalowania zasobów.
 
-## <a name="tune-and-refactor-application-or-database-code"></a>Dostrajanie i refaktoryzacji aplikacji lub kodu bazy danych
+## <a name="tune-and-refactor-application-or-database-code"></a>Dostrajanie i Refaktoryzacja aplikacji lub kodu bazy danych
 
-Możesz zmienić kod aplikacji, aby bardziej optymalnie korzystania z bazy danych, zmień indeksów, wymusić plany lub użyj wskazówek, aby ręcznie dostosować bazy danych do obciążenia. Znajdź niektóre wskazówki i porady dotyczące ręcznego dostosowywania i ponowne napisanie kodu w [tematu wskazówki dotyczące wydajności](sql-database-performance-guidance.md) artykułu.
+Można zmienić kod aplikacji, aby bardziej optymalnie korzystać z bazy danych, zmienić indeksy, zaplanować plany lub użyć wskazówek, aby ręcznie dostosować bazę danych do obciążenia. Znajdź wskazówki i porady dotyczące dostrajania ręcznego i ponownego zapisywania kodu w [temacie Wskazówki dotyczące wydajności](sql-database-performance-guidance.md) .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby włączyć automatyczne dostrajanie w usłudze Azure SQL Database i umożliwiają zarządzanie obciążeniem pracą zapewnia w pełni funkcja dostrajania automatycznego, zobacz [Włączanie automatycznego dostrajania](sql-database-automatic-tuning-enable.md).
-- Aby korzystać z ręcznego dostrajania, możesz przejrzeć [dostrajania zalecenia w witrynie Azure portal](sql-database-advisor-portal.md) i ręcznie zastosować te, które poprawić wydajność zapytań.
-- Zmienić zasoby, które są dostępne w bazie danych, zmieniając [warstwy usługi Azure SQL Database](sql-database-performance-guidance.md)
+- Aby włączyć dostrajanie automatyczne w Azure SQL Database i zezwolić funkcji dostrajania automatycznego w pełni zarządzać obciążeniem, zobacz [Włączanie dostrajania automatycznego](sql-database-automatic-tuning-enable.md).
+- Aby skorzystać z dostrajania ręcznego, możesz przejrzeć [zalecenia dotyczące dostrajania w Azure Portal](sql-database-advisor-portal.md) i ręcznie zastosować te, które zwiększają wydajność zapytań.
+- Zmień zasoby, które są dostępne w bazie danych, zmieniając [Azure SQL Database warstwy usług](sql-database-performance-guidance.md)

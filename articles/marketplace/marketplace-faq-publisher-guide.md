@@ -1,652 +1,453 @@
 ---
-title: Portal Azure Marketplace — często zadawane pytania
+title: Azure Marketplace — często zadawane pytania
 description: Odpowiedzi na często zadawane pytania dotyczące portalu Microsoft Azure Marketplace
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 03/02/2019
+ms.date: 07/11/2019
 ms.author: ellacroi
-ms.openlocfilehash: 152be044b5696a0d9017729d731e080ed9163828
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8d0759d96b0b2566934f117f5dea32ec4ad015c
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964049"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68000018"
 ---
 # <a name="marketplace-faqs"></a>Witryna Marketplace — często zadawane pytania
 
-Odpowiedzi na często zadawane pytania dotyczące portalu Microsoft Azure Marketplace.
+Odpowiedzi na często zadawane pytania dotyczące Microsoft Azure Marketplace.
 
-## <a name="faq-for-customers"></a>Często zadawane pytania dotyczące klientów
+## <a name="faq-for-customers"></a>Często zadawane pytania dla klientów
 
 ### <a name="what-you-need-to-know-about-azure-marketplace"></a>Co musisz wiedzieć o witrynie Azure Marketplace
 
 **Co to jest Portal Azure Marketplace?**
 
-[Portal Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) udostępnia dostępu i informacji o dostępności usług i rozwiązań firmy Microsoft i partnerów. Klienci (informatyków i deweloperów) można sprawdzić, spróbuj kupować rozwiązania w chmurze oprogramowania w oparciu lub oparta na platformie Azure. Naszego wykazu 8000 + oferty udostępnia konstrukcyjnych platformy Azure blokuje, takie jak maszyny wirtualne (VM), interfejsów API, aplikacje platformy Azure, szablony rozwiązań i zarządzanych aplikacji, aplikacje SaaS, kontenerów i usług doradczych.
+[Portal Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) zapewnia dostęp i informacje o rozwiązaniach i usługach dostępnych od firmy Microsoft i jej partnerów. Klienci (specjaliści IT i deweloperzy) mogą odkrywać, próbować kupować rozwiązania oprogramowania w chmurze oparte na platformie Azure. Nasz katalog ponad 8000 list zawiera bloki konstrukcyjne platformy Azure, takie jak Virtual Machines (maszyny wirtualne), interfejsy API, aplikacje platformy Azure, szablony rozwiązań i aplikacje zarządzane, aplikacje SaaS, kontenery i usługi konsultingowe. 
 
-**Kim są klienci witryny Azure Marketplace?**
+**Kto jest klientem portalu Azure Marketplace?**
 
-Portal Azure Marketplace jest przeznaczony dla informatyków i deweloperów rozwiązań w chmurze zainteresowanych komercyjnych IT oprogramowania i usług.
+Portal Azure Marketplace jest przeznaczony dla informatyków i deweloperów chmury, którzy chcą korzystać z komercyjnego oprogramowania i usług IT.
 
-**Jakiego rodzaju produktów są obecnie dostępne w witrynie Azure Marketplace?**
+**Jakiego typu produkty są obecnie dostępne w portalu Azure Marketplace?**
 
-Witryna Azure Marketplace oferuje rozwiązania i usługi techniczne utworzone przez firmę Microsoft i jej partnerów w celu zwiększenia możliwości produktów i usług platformy Azure. Katalog rozwiązań składa się kilka kategorii, w tym między innymi:
+Witryna Azure Marketplace oferuje rozwiązania i usługi techniczne utworzone przez firmę Microsoft i jej partnerów w celu zwiększenia możliwości produktów i usług platformy Azure. Katalog rozwiązań obejmuje kilka kategorii, w tym między innymi:
 
 * podstawowe systemy operacyjne
-* bazy danych
+* databases
 * security
 * identity
 * sieć
-* łańcuch bloków
+* łańcucha bloków
 * narzędzia deweloperskie
-* i więcej
+* i nie tylko
 
-Portal Azure Marketplace oferuje aplikacje SaaS, maszyny wirtualne, szablony rozwiązań, aplikacje zarządzane platformy Azure i usług doradczych.
+Portal Azure Marketplace oferuje aplikacje SaaS, Virtual Machines, szablony rozwiązań, aplikacje zarządzane przez platformę Azure i usługi konsultingowe.
 
 ### <a name="azure-marketplace-for-customers"></a>Witryna Azure Marketplace dla klientów
 
-**Jak rozpocząć pracę w witrynie Azure Marketplace?**
+**Jak mogę rozpocząć pracę w witrynie Azure Marketplace?**
 
-Możesz znaleźć szeroką gamę aplikacji i rozwiązań, które są certyfikowane i optymalizowane pod kątem działania na platformie Azure, odwiedzając [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps). Portal Azure Marketplace można także uzyskać dostęp za pośrednictwem [portalu zarządzania systemu Azure](https://portal.azure.com/) w obszarze [ **Utwórz zasób**](https://ms.portal.azure.com/#create/hub).
+Możesz znaleźć szeroką gamę aplikacji i rozwiązań dla przedsiębiorstw, które są certyfikowane i zoptymalizowane pod kątem działania na platformie Azure, odwiedzając witrynę [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps). Dostęp do portalu Azure Marketplace można także uzyskać za pomocą [Azure Portal] podczas [**tworzenia zasobu**](https://portal.azure.com/#create/hub).
 
-**Jakie są kluczowe korzyści z portalu Azure Marketplace?**
+**Jakie są najważniejsze zalety korzystania z witryny Azure Marketplace?**
 
-Za pomocą portalu Azure Marketplace klienci mogą odnajdować aplikacji technicznych platformie Azure lub na platformie Azure. Łączy ona rynek rozwiązań i usług Microsoft Azure w pojedynczą, jednolitą platformę, która odnajdywanie, spróbuj, kupować i wdrażanie rozwiązań poprzez zaledwie kilka kliknięć.
+Dzięki platformie Azure Marketplace klienci mogą odkrywać aplikacje techniczne skompilowane lub utworzone na platformie Azure. Łączy Microsoft Azure rynek rozwiązań i usług na jedną, ujednoliconą platformę, która umożliwia odnajdywanie, testowanie i wdrażanie rozwiązań za pomocą zaledwie kilku kliknięć.
 
-**Jak kupować produkty z witryny Azure Marketplace?**
+**Jak mogę zakupić produkty z portalu Azure Marketplace?**
 
-Oferty w witrynie Marketplace usługi Azure można kupić w ramach:
+Oferty portalu Azure Marketplace można zakupić w:
 
-* [witryny sklepu internetowego](https://azuremarketplace.microsoft.com/marketplace/apps)
-* [Usługa Microsoft Azure Management portal](https://portal.azure.com/), lub za pośrednictwem [Azure Marketplace interfejsu wiersza polecenia (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
+* [Witryna sieci Web](https://azuremarketplace.microsoft.com/marketplace/apps)
+* [Azure Portal] [Azure Portal]
+* [Interfejs wiersza polecenia platformy Azure (CLI)](/cli/azure/?view=azure-cli-latest)
 
 >[!Note]
->Środki przedpłacone i inne formy zobowiązań pieniężnych nie może służyć do uiszczania opłat licencyjnych oprogramowania, ale może służyć do opłaty za użycie platformy Azure skojarzone.  Wyjątki są wymienione w [zobowiązań pieniężnych platformy Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/).
+>Kredytów przedpłaconych i innych form zobowiązań pieniężnych nie można użyć do płacenia za nie opłatami za licencje na oprogramowanie, ale mogą one być używane do regulowania opłat związanych z użyciem platformy Azure. Wyjątki są wymienione w [zobowiązaniach pieniężnych platformy Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/).
 
-**Czy mogę wybrać regiony Microsoft Azure, które wdrażania mojego zakupu w portalu Azure Marketplace?**
+**Czy mogę wybrać regiony platformy Azure do wdrożenia mojego zakupu w witrynie Azure Marketplace?**
 
-Klient ma możliwość wdrażania w dowolnym regionie centrum danych platformy Azure, które umożliwiają one. Zalecane jest wybranie opcji lokalizacje centrów danych najbliższe do usług w celu zoptymalizowania wydajności i kontroli budżetu.
+Klient ma możliwość wdrożenia w dowolnym wybranym regionie centrum danych platformy Azure. Zalecamy wybranie lokalizacji centrów danych znajdujących się najbliżej Twoich usług, aby zoptymalizować wydajność i kontrolować budżet.
 
-**Jeśli przypadkowo usunę zakup dokonany w portalu Azure Marketplace, czy można "cofnąć" akcji?**
+**Jeśli przypadkowo usuniesz zakup w portalu Azure Marketplace, czy mogę *cofnąć* tę akcję?**
 
-Nie, usunięcie jest nieodwracalne. Jeśli subskrypcja zostanie przypadkowo usunięty, może być odkupione. Wszelkie nieużywane funkcje lub usługi przedpłacone zostaną utracone.
+Nie, usunięcie jest nieodwracalne. Jeśli subskrypcja zostanie przypadkowo usunięta, można ją ponownie zakupić. Wszelkie nieużywane funkcje lub przedpłacone usługi są tracone.
 
-**Jestem I ostrzegani, gdy próbuję usunąć zakup portalu Azure Marketplace, który jest używany za pomocą jednej z moich aplikacji?**
+**Czy w przypadku próby usunięcia zakupu w witrynie Azure Marketplace, który jest używany przez jedną z aplikacji?**
 
-Nie, platforma Azure oferuje bez ostrzeżenia przy usuwaniu zakupu, nawet jeśli jest aktualnie używany, lub aplikacja jest zależna.
+Nie. na platformie Azure nie są wyświetlane żadne ostrzeżenia podczas usuwania zakupu, nawet jeśli są obecnie używane lub aplikacja jest zależna od programu.
 
-**Jeśli mój zakup w portalu Azure Marketplace ma żadnych zależności od innych zasobów, takich jak witryny sieci Web platformy Azure, trzeba zarządzać nimi?**
+**Jeśli mój zakup w portalu Azure Marketplace ma jakiekolwiek zależności od innych zasobów, takich jak witryna sieci Web platformy Azure, czy muszę zarządzać nimi?**
 
-Zależności nie są zarządzane automatycznie dla ofert portalu Azure Marketplace. Uważnie przeczytaj jego opis, przed użyciem w celu określenia, czy istnieją jakieś zależności, potrzebne przed wdrożeniem rozwiązania zakupu dokonanego w portalu Azure Marketplace.
+Zależności nie są zarządzane automatycznie dla ofert portalu Azure Marketplace. Uważnie zapoznaj się z opisem zakupu w witrynie Azure Marketplace przed użyciem go w celu ustalenia, czy istnieją jakieś zależności potrzebne przed wdrożeniem rozwiązania.
 
-**Czy mogę kupić rozwiązania witryny Azure Marketplace od dostawcy rozwiązań w chmurze platformy Azure?**
+**Czy mogę kupić rozwiązania z portalu Azure Marketplace od dostawcy rozwiązań w chmurze platformy Azure?**
 
-Jeśli wydawca skonfigurował oferty mają być dostępne za pośrednictwem kanału dostawcy usług Kryptograficznych, będzie on dostępny za pośrednictwem swojego odsprzedawcy.
+Jeśli Wydawca skonfigurował swoją ofertę, aby była dostępna za pośrednictwem kanału dostawcy rozwiązań w chmurze (CSP), partnerzy dostawcy rozwiązań w chmurze mają możliwość odkupu rozwiązania.
 
-**Kraje/regiony są obsługiwane w przypadku zakupu, aplikacje i usługi, sprzedawana/dostarczanymi za pośrednictwem portalu Azure Marketplace?**
+**Jakie kraje/regiony są obsługiwane w przypadku zakupu aplikacji i usług sprzedawanych w portalu Azure Marketplace?**
 
-Portal Azure Marketplace jest dostępny dla klientów Microsoft Azure w krajach/regionach wymienionych w [— zasady udziału](https://docs.microsoft.com/legal/marketplace/participation-policy).
+Portal Azure Marketplace jest dostępny dla klientów platformy Azure w krajach/regionach wymienionych w [zasadach uczestnictwa](/legal/marketplace/participation-policy).
 
-**Jakich walutach są obsługiwane przez Portal Azure Marketplace?**
+**Które waluty są obsługiwane przez witrynę Azure Marketplace?**
 
-Transakcje mogą zostać przeprowadzone w 17 następujących walut: AUD, BRL, CAD, CHF, DKK, EUR, GBP, INR, JPY, KRW, NOK, NZD, RUB, SEK, TWD, USD, RMB.
+Transakcje można przeprowadzać w następujących 17 walutach: AUD, BRL, CAD, CHF, DKK, EUR, GBP, WYSOKOŚCI, JPY, KRW, NOK, NZD, RUB, SEK, TWD, USD, RMB.
 
 ### <a name="deploying-a-solution-from-azure-marketplace"></a>Wdrażanie rozwiązania z witryny Azure Marketplace
 
-**Azure Marketplace maszyn wirtualnych (VM) została wdrożona w subskrypcji, a teraz chcę migrować subskrypcję z jednego konta platformy Azure do innego. Jest to obecnie obsługiwane?**
+**Wdrożono maszynę wirtualną witryny Azure Marketplace w ramach subskrypcji, a teraz chcę migrować subskrypcję z jednego konta platformy Azure do innego. Czy jest to obecnie obsługiwane?**
 
-Aby przeprowadzić migrację subskrypcji platformy Azure, łącznie z maszynami wirtualnymi portalu Azure Marketplace i usług, usuń lub Anuluj wszelkie wcześniejsze subskrypcji platformy Azure, przed skojarzeniem do nowego konta usługi Azure. Po zakończeniu migracji, wynikowe opłaty za użycie są rozliczane przy użyciu nowego konta zarejestrowanej metody płatności.
+Aby przeprowadzić migrację subskrypcji platformy Azure, w tym maszyn wirtualnych i usług Azure Marketplace, Usuń lub Anuluj każdą wcześniejszą subskrypcję platformy Azure przed skojarzeniem jej z nowym kontem platformy Azure. Po zakończeniu migracji uzyskane opłaty za użycie są naliczane przy użyciu nowego zarejestrowanego konta metody płatności.
 
-**Chcę przeprowadzić migrację subskrypcji usługi Azure Marketplace maszyn wirtualnych (VM) do mojej umowy Enterprise Agreement. Jest to obecnie obsługiwane?**
+**Chcę migrować subskrypcję maszyny wirtualnej platformy Azure Marketplace do Umowa Enterprise. Czy jest to obecnie obsługiwane?**
 
-Aby zmigrować subskrypcję platformy Azure Marketplace maszyn wirtualnych (VM) z umową Enterprise Agreement, należy zatrzymać ani anulować wszelkie wcześniejsze subskrypcję przed migracją. Po zakończeniu migracji konta platformy Azure i skojarzonych subskrypcji można można ponownie kupić wirtualną witryny do maszyny Wirtualnej portalu Azure Marketplace lub usługi.  Wynikowe opłaty za użycie są naliczane kwartalnie w ramach umowy Enterprise Agreement.
+Aby migrować subskrypcję maszyny wirtualnej Azure Marketplace do Umowa Enterprise, Zatrzymaj lub Anuluj każdą poprzednią subskrypcję przed migracją. Po zakończeniu migracji konta platformy Azure i skojarzonych subskrypcji można ponownie kupić maszynę wirtualną lub usługę platformy Azure Marketplace.  Uzyskane opłaty za użycie są naliczane kwartalnie w ramach Umowa Enterprise.
 
 ### <a name="pricing-and-payment"></a>Cennik i płatność
 
-**Jak są naliczane subskrypcje portalu Azure Marketplace?**
+**Jak są wyceniane subskrypcje portalu Azure Marketplace?**
 
 Ceny różnią się w zależności od typów produktów i specyfikacji wydawcy. Opłaty za licencje na oprogramowanie oraz koszty użycia platformy Azure są naliczane osobno za pośrednictwem subskrypcji platformy Azure.
 
-*Unbundled:*
+*Niepowiązane:*
 
-*BYOL Model:* Bring-Your-Own-License (przynieś swoją licencję). W przypadku uzyskania licencji na oprogramowanie bezpośrednio od wydawcy lub odsprzedawcy, istnieją żadne dodatkowe opłaty związane z oprogramowaniem ani opłat.
++ "BYOL" — *model własny licencji*: Uzyskanie licencji na oprogramowanie bezpośrednio od wydawcy lub Odsprzedawcy nie wiąże się z dodatkowymi opłatami ani opłatami związanymi z oprogramowaniem.
 
-*Powiązane:*
+*Powiązane*
 
-Subskrypcja platformy Azure jest dołączony do wydawcy niezależnych dostawców oprogramowania (ISV) rozwiązanie ceny.
+Subskrypcja platformy Azure jest dołączona do cen rozwiązań niezależnych dostawców oprogramowania (ISV) wydawcy.
 
-*Charged:*
+*Ciąż*
 
-*Bezpłatna:* Bezpłatna jednostka SKU. Żadne opłaty są stosowane do opłat za licencje oprogramowania lub użytkowania oferty.
++ *Zwolniony* Bezpłatna jednostka SKU. Opłaty za licencje na oprogramowanie lub użycie oferty nie są naliczane.
 
-*Wersja próbna bezpłatnego oprogramowania:* Oferta jest bezpłatne przez ograniczony okres. Nie ma opłat dla opłat za licencje oprogramowania wydawcy w trakcie okresu próbnego. Po wygaśnięciu oferty automatycznie konwertuje na płatną ofertę, w oparciu o standardowe stawki wydany przez wydawcę.
++ *Bezpłatna wersja próbna oprogramowania:* Oferta bezpłatna przez ograniczony okres. Za korzystanie z licencji na oprogramowanie wydawcy nie jest naliczana opłata za użycie w okresie próbnym. Po wygaśnięciu zostanie automatycznie przekonwertowane na płatną ofertę na podstawie standardowych stawek wystawionych przez wydawcę.
 
-*Usage-Based:* Stawki obciążenie opłatami lub ich na podstawie użycia zakres oferty. W przypadku obrazów maszyn wirtualnych jest rozliczane na opłaty. W przypadku usług dla deweloperów i interfejsów API go jest naliczana na jednostkę miary zgodnie z definicją w ofercie.
++ *Na podstawie użycia:* Opłaty są naliczane lub naliczane na podstawie stopnia użycia oferty. W przypadku obrazów Virtual Machines jest naliczana opłata godzinowa. W przypadku usług i interfejsów API dla deweloperów opłata jest naliczana zgodnie z jednostką miary zdefiniowaną w ofercie.
 
-*Opłata miesięczna:* Kursy są obciążenie opłatami lub ich comiesięczną, stałą opłatą za subskrypcję oferty (od daty rozpoczęcia subskrypcji dla tego planu). Opłata miesięczna może być naliczana proporcjonalnie w przypadku rezygnacji w połowie miesiąca lub nieużywanych usług.
++ *Stała opłata:* Za subskrypcje SaaS można naliczać opłaty za stałą opłatę miesięczną lub roczną. Może to również obejmować dodatkowe wymiary rozliczeń, które są naliczane zgodnie z zużyciem (na przykład przepustowość, wiadomości e-mail lub bilety). 
 
-Szczegóły cen określonych ofert można znaleźć na stronie szczegółów rozwiązania w [ https://azure.microsoft.com/pricing/ ](https://azure.microsoft.com/pricing/) lub w ramach [portalu zarządzania Microsoft Azure](https://portal.azure.com/).
++ *Dla użytkownika:* Opłaty za subskrypcje SaaS są naliczane według poszczególnych użytkowników, które są rozliczane miesięcznie lub rocznie. 
 
->[!Note]
-> Z wyjątkiem opłat miesięcznych opłaty za użycie platformy Azure są mające zastosowanie do wszystkich modeli cenowych, chyba że określono inaczej.
+Szczegóły cennika dotyczące oferty można znaleźć na stronie szczegółów rozwiązania w [https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/) lub w [Azure Portal].
 
-**Jak należy podać mój klucz licencji oprogramowania dla rozwiązaniami z witryny marketplace BYOL i jaką rolę jest odtwarzany portalu Azure Marketplace?**
+> [!Note]
+> Z wyjątkiem opłat miesięcznych opłaty za użycie platformy Azure są stosowane do wszystkich modeli cenowych, o ile nie określono inaczej.
 
-Pozyskiwanie i wymuszania poświadczenia licencji dla rozwiązań w ramach opcji BYOL są odpowiedzialne za wydawcy. W przypadku ofert maszyny wirtualnej przejęcia klucz licencji zazwyczaj występuje w wydawcy aplikacji po uruchomieniu aplikacji. Korzystając z oferty maszyny wirtualnej, wdrożone za pomocą szablonu rozwiązania aplikacji Azure, można skonfigurować szablon ARM na monitowanie użytkownika o zakres danych wejściowych, włącznie z poświadczenia licencji.
+**Jak udostępnić klucz licencji oprogramowania dla rozwiązań portalu BYOL Marketplace i jakie role są odtwarzane w portalu Azure Marketplace?**
 
-Są to najbardziej typowe opcje na typ oferty:
+Nabycie i wymuszanie poświadczeń licencji dla rozwiązań BYOL jest odpowiedzialne za wydawcę. W przypadku ofert związanych z maszynami wirtualnymi nabycie klucza licencji zazwyczaj odbywa się w aplikacji wydawcy po rozpoczęciu działania aplikacji. W przypadku korzystania z oferty maszyny wirtualnej wdrożonej za pomocą szablonu rozwiązania aplikacji platformy Azure szablon Menedżer zasobów można skonfigurować tak, aby monitował użytkownika o zakres danych wejściowych, w tym poświadczenia licencji.
 
-*Oferty maszyny wirtualnej:*
+Są to najczęściej używane opcje dla poszczególnych typów ofert:
 
-*Opcja 1:* Uzyskanie klucza licencji są zazwyczaj występuje w wydawcy aplikacji po uruchomieniu aplikacji.
+*Oferta maszyny wirtualnej:*
 
-*Opcja 2:* Wprowadzony klucz licencji przez użytkownika końcowego (za pomocą wiersza polecenia / sieci web interfejsu dostarczonego przez oferty) po wdrożeniu oferty maszyny Wirtualnej w wybranej subskrypcji. Licencja może być kluczem i/lub pliku, określane przez wydawcę.
++ *Opcja 1:* Pozyskanie klucza licencji zwykle odbywa się w aplikacji wydawcy po rozpoczęciu działania aplikacji.
 
-*Aplikacje platformy Azure (szablon rozwiązania i zarządzanych aplikacji):*
++ *Opcja 2:* Klucz licencji jest wprowadzany przez użytkownika końcowego (za pośrednictwem wiersza polecenia/interfejsu sieci Web dostarczonego przez ofertę) po wdrożeniu oferty maszyny wirtualnej w ramach wybranej subskrypcji. Licencja może być kluczem i/lub plikiem, określonym przez wydawcę.
 
-*Opcja 1:* Szablon ARM można skonfigurować na wyświetlenie monitu o zakres danych wejściowych, włącznie z poświadczenia licencji. Można to zrobić jako pliku licencji (przekazywanie plików) lub klucza (pole tekstowe dane wejściowe), przed wdrożeniem tej oferty, w ramach subskrypcji użytkownika końcowego.
+*Aplikacje platformy Azure (szablon rozwiązania i zarządzane aplikacje):*
 
-*Opcja 2:* Można wprowadzić klucz licencji za pomocą wiersza polecenia / sieci web interfejsu dostarczonego przez ofertę.  Odbywa się po wdrożeniu oferty aplikacji platformy Azure w wybranej subskrypcji. Licencja może być kluczem i/lub pliku, określane przez wydawcę.
++ *Opcja 1:* Szablon Menedżer zasobów można skonfigurować tak, aby monitował o zakres danych wejściowych, w tym poświadczenia licencji. Można to zrobić jako plik licencji (przekazywanie plików) lub klucz (dane wejściowe TextBox) przed wdrożeniem oferty w ramach subskrypcji użytkownika końcowego.
 
-**Jaka jest różnica między bezpłatną wersję próbną i "Bezpłatna wersja próbna oprogramowania"?**
++ *Opcja 2:* Klucz licencji można wprowadzić za pomocą wiersza polecenia/interfejsu sieci Web dostarczonego w ramach oferty.  Jest to wykonywane po wdrożeniu oferty usługi Azure Apps w ramach wybranej subskrypcji. Licencja może być kluczem i/lub plikiem, określonym przez wydawcę.
 
-Oferta subskrypcji bezpłatnej wersji próbnej jest bezpłatny bezterminowo.  "Bezpłatnego oprogramowania próbnego'" (Wypróbuj teraz ") oferta jest płatne oferty, ale bezpłatnie przez ograniczony okres próbny.
+**Jakiego rodzaju wersje próbne są obsługiwane?**
 
-**Czy muszę mieć instrument płatniczy (np. kartę kredytową) plik, aby wdrożyć w warstwie bezpłatna lub przenieść ofert licencji (BYOL)?**
+Oferty bezpłatnej wersji próbnej to aukcje z wywołaniem do działania w celu zainicjowania wersji próbnej. Umożliwiają one klientowi korzystanie z witryny sieci Web zdefiniowanej przez wydawcę w celu skonfigurowania środowiska w wersji próbnej. Możesz również dodać do płatnych ofert, w których pierwszy miesiąc jest bezpłatny. 
 
-Nie. Nie jest wymagane do wdrożenia ofert z warstwy bezpłatna lub BYOL instrument płatniczy. Instrument taki jest jednak wymagany w przypadku ofert bezpłatnych wersji próbnych. Oferty zawierające **Pobierz teraz** lub **bezpłatna wersja próbna oprogramowania** przyciski są wdrażane w wybranej subskrypcji platformy Azure.  Te oferty są rozliczane przy użyciu wybranego konta zarejestrowanej metody płatności. Opłaty za użycie platformy Azure są rozliczane oddzielnie od opłat licencji oprogramowania.
+**Czy muszę mieć instrument płatniczy (na przykład kartę kredytową) w pliku, aby wdrożyć bezpłatną warstwę lub udostępnić własne oferty licencji (BYOL)?**
 
-**Jeśli ma pytania dotyczące cen produktów oferowanych w portalu Azure Marketplace, kim klient z pośrednią umową Enterprise Agreement (EA) się skontaktować?**
+Nie. Do wdrożenia ofert bezpłatna i BYOL nie jest wymagany instrument płatniczy. Instrument taki jest jednak wymagany w przypadku ofert bezpłatnych wersji próbnych. Listy zawierające przyciski **Pobierz teraz** lub **bezpłatny okres próbny oprogramowania** są wdrażane w ramach wybranej subskrypcji platformy Azure.  Te listy są rozliczane przy użyciu zarejestrowanej metody płatności wybranego konta. Opłaty za użycie platformy Azure są rozliczane osobno od opłat za licencje na oprogramowanie.
 
-Klienci z pośrednią umową Enterprise Agreement (EA) musi skontaktuj się z ich Licencjonowanie rozwiązania dostawcy (LSP) wszystkie pytania dotyczące cen portalu Azure Marketplace.
+**Jeśli masz pytania dotyczące cennika ofert sprzedawanych w portalu Azure Marketplace, kto jest pośrednim kontaktem z klientem w Umowa Enterprise (EA)?**
 
-**Można kontrolować dostęp swoich pracowników do portalu Azure Marketplace i uprawnienia do dokonywania zakupów?**
+Klienci pośrednii programu Umowa Enterprise (EA) muszą skontaktować się z dostawcą rozwiązań licencjonowania (LSP), aby uzyskać wszystkie pytania dotyczące cen portalu Azure Marketplace.
 
-Tak, w przypadku klientów z umową Enterprise Agreement (EA), administrator rejestracji może wyłączyć uprawnienia dla wszystkich kont w obrębie rejestracji i włącz je z powrotem na czas wystarczający do dokonania zakupu. Ponadto wszystkie klienci mogą używać usługi Azure Policy w celu ograniczenia opcji wdrażania dla swoich subskrypcji platformy Azure, w tym zarządzania zasobami witryny Azure Marketplace.
+**Czy mogę kontrolować dostęp pracowników do portalu Azure Marketplace i zakupów?**
 
-**Czy mogę stosować środki subskrypcyjne lub fundusze zobowiązań pieniężnych w moim koncie do zakupu portalu Azure Marketplace oferuje?**
+Tak, w przypadku klientów z Umowa Enterprise (EA) administrator rejestracji może wyłączyć uprawnienia do zakupu dla wszystkich kont w rejestracji, a następnie włączyć je na czas wystarczający do dokonania zakupu. Dodatkowo wszyscy klienci mogą używać Azure Policy, aby ograniczyć opcje wdrażania dla swoich subskrypcji platformy Azure, w tym zarządzania zasobami portalu Azure Marketplace.
 
-Określone oferty z portalu Azure Marketplace mogą korzystać ze środków subskrypcji lub zobowiązań pieniężnych platformy Azure. Zobacz [zobowiązań pieniężnych platformy Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) pełną listę produktów biorących udział w tym programie. Te oferty nie obejmują opcje BYOL i BYOS. Wszystkie pozostałe oferty portalu Azure Marketplace nie można użyć środków subskrypcji lub funduszy zobowiązań: takie jak bezpłatne co miesiąc środki wersji próbnej, miesięcznych środków MSDN, środków z promocji platformy Azure, sald zobowiązań pieniężnych i innych bezpłatnych środków na korzystanie z udostępnionych w serwisie Azure.
+**Czy mogę stosować kredyty subskrypcyjne lub fundusze zobowiązań pieniężnych platformy Azure w ramach mojego konta w ramach ofert portalu Azure Marketplace?**
 
-**Czy rabaty w ramach licencjonowania zbiorowego mają zastosowanie do zakupów w portalu Azure Marketplace?**
+Określone oferty z portalu Azure Marketplace mogą korzystać ze środków subskrypcji lub zobowiązań pieniężnych platformy Azure. Aby uzyskać pełną listę produktów uczestniczących w tym programie, zobacz [zobowiązanie pieniężne platformy Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) . Te oferty nie obejmują opcji BYOL ani BYOS. Wszystkie inne oferty w portalu Azure Marketplace nie mogą korzystać z kredytów subskrypcji platformy Azure ani zobowiązań pieniężnych: takich jak bezpłatne miesięczne kredyty, miesięczne kredyty MSDN, kredyty z promocji platformy Azure, salda zobowiązań pieniężnych i wszelkie inne bezpłatne kredyty oferowane przez Azure.
 
-Nie. Wydawcy, który jest właścicielem rozwiązań w portalu Azure Marketplace można ustawić ceny.  Standardowa Microsoft wolumin rabaty w ramach licencjonowania mają zastosowania przy zakupach w portalu Azure Marketplace.
+**Czy rabaty za licencje zbiorcze dotyczą zakupów w portalu Azure Marketplace?**
 
-**Jak zapłacić za te subskrypcje? Czy moje zakupy w portalu Azure Marketplace są wyświetlane na rachunku za platformę Azure, lub czy istnieje innym rachunku?**
+Nie. W przypadku wydawcy, który jest właścicielem rozwiązań w witrynie Azure Marketplace, można ustawić Cennik.  Rabaty za licencje zbiorcze firmy Microsoft nie dotyczą zakupów w portalu Azure Marketplace.
 
-MOSP - [Program subskrypcji Online firmy Microsoft](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (web bezpośrednich), klienci są obciążani względem sama karta kredytowa co w przypadku profilu subskrypcji platformy Azure. Jeśli nie masz karty kredytowej w pliku, nie można kupić w witrynie Azure Marketplace. W takim przypadku możesz otrzymanie specjalnej informacji platformy Azure za opłaty będą wystawiane dla Ciebie.
+**Jak mogę płacisz za te subskrypcje? Czy moje zakupy w portalu Azure Marketplace są wyświetlane na rachunku na platformie Azure, czy też czy istnieją inne opłaty?**
 
-Klienci z umową Enterprise Agreement (EA) są naliczane względem ich umowy EA. Określonych ofert portalu Azure Marketplace, wymienione w tym miejscu są najpierw odjęte z dowolnego dostępnego zobowiązania pieniężnego, a następnie rozliczane jako nadwyżkowe użycie w obrębie pojedynczej faktury kwartalnej. Pośrednią umową EA, education i dla instytucji rządowych, klienci są naliczane przez ich Licencjonowanie rozwiązania dostawcy (LSP).
+MOSP — klienci [Microsoft Online Subscription](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (na przykład Web-Direct) są obciążani tą samą kartą kredytową, która znajduje się w pliku dla swojego profilu subskrypcji platformy Azure. Jeśli nie masz karty kredytowej w pliku, nie możesz kupić z portalu Azure Marketplace. W takim przypadku otrzymasz specjalną rezygnację z naliczania opłat za korzystanie z platformy Azure.
 
-**Gdzie mogę wyświetlić Moje Szczegóły subskrypcji portalu Azure Marketplace i informacje rozliczeniowe?**
+Klienci korzystający z Umowa Enterprise (EA) są rozliczani według umowy EA. Poszczególne oferty w witrynie Azure Marketplace wymienione tutaj są najpierw odejmowane od dowolnego dostępnego zobowiązania pieniężnego, a następnie rozliczane jako nadwyżkowe w ramach pojedynczej faktury kwartalnej. Klienci pośrednich, edukacyjnych i rządowych w ramach umowy EA są rozliczani według dostawcy rozwiązań licencjonowania (LSP).
 
-MOSP - [Program subskrypcji Online firmy Microsoft](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) klienci (sieci web) mogą wyświetlać szczegóły zakupu portalu Marketplace na karcie faktur Cost Management + rozliczenia części portalu zarządzania systemu Azure.
+**Gdzie mogę wyświetlić szczegóły subskrypcji portalu Azure Marketplace i informacje dotyczące rozliczeń?**
 
-Klienci z umową Enterprise Agreement (EA) mogą wyświetlać szczegóły zakupu portalu Marketplace, w karcie faktur Cost Management + rozliczenia części portalu zarządzania systemu Azure.
+MOSP — klienci usługi [Microsoft Online Subscription](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (sieć Web Direct) mogą wyświetlić szczegóły zakupu witryny Marketplace na karcie faktury w sekcji Cost Management + rozliczenia w [Azure Portal].
 
-Partnerzy programu cloud Solution Provider (CSP) mogą wyświetlać szczegóły zakupu portalu Marketplace dla każdego klienta w Centrum partnerskiego na karcie Historia zamówień, po wybraniu firmy w widoku klientów.
+Klienci korzystający z programu Umowa Enterprise (EA) mogą wyświetlać szczegóły zakupu witryny Marketplace na karcie faktury w sekcji Cost Management + rozliczenia w [Azure Portal].
 
-**Jak anulować dodatek portalu Azure Marketplace do maszyny Wirtualnej platformy Azure?**
+Partnerzy dostawcy rozwiązań w chmurze (CSP) mogą wyświetlać szczegóły zakupu w witrynie Marketplace dla każdego klienta w centrum partnerskim na karcie Historia zamówień po wybraniu firmy w widoku klienci.
 
-Dodatek jest skojarzony Azure maszyn wirtualnych (VM), dlatego w celu anulowania zakupu w witrynie Azure Marketplace, najpierw Zatrzymaj maszynę Wirtualną, usuwając je. Ten sposób zatrzymywanie wszystkich subskrypcji użycia i opłat na zakupu w witrynie Azure Marketplace.
+**Jak mogę anulować dodatek Azure Marketplace do maszyny wirtualnej platformy Azure?**
 
-**Jak często są rozliczane za zakupy w portalu Azure Marketplace?**
+Ponieważ dodatek jest skojarzony z maszyną wirtualną platformy Azure, aby anulować zakup w portalu Azure Marketplace, należy najpierw zatrzymać maszynę wirtualną, usuwając ją. W ten sposób zatrzymamy wszystkie opłaty za korzystanie z subskrypcji w ramach zakupu w portalu Azure Marketplace.
 
-Klienci z umową Enterprise, dla określonych usług, które są opisane w temacie, najpierw dostępne funduszy zobowiązań pieniężnych pomniejszone o łączny koszt tych usług w miesiącu, w którym będą używane. Wszystkich ofert z portalu Azure Marketplace, które nie odejmowane od zobowiązania pieniężnego, są rozliczane co miesiąc z dołu. Subskrypcje roczne SaaS są rozliczane raz dla usług przez cały rok.
+**Jak często są naliczane opłaty za zakupy w portalu Azure Marketplace?**
 
-MOSP - [Program subskrypcji Online firmy Microsoft](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) klientów (sieci web) są naliczane co miesiąc przed sama karta kredytowa co w przypadku profilu subskrypcji platformy Azure. Subskrypcje roczne SaaS są rozliczane raz dla usług przez cały rok.
+Umowa Enterprise Klienci, w przypadku określonych usług opisanych wcześniej mają dostęp do środków zobowiązania pieniężnego pomniejszoną o łączny koszt tych usług w miesiącu, w którym są używane. Wszystkie oferty w witrynie Azure Marketplace, które nie są odejmowane od zobowiązania pieniężnego, są rozliczane miesięcznie z zaległościami. Roczne subskrypcje SaaS są rozliczane raz dla usług pełnego roku.
 
-**Jak mogę przenieść zakupy w portalu Azure Marketplace z subskrypcji MOSP do mojej bezpośredniej subskrypcji Enterprise Agreement (EA)?**
+MOSP — klienci usługi [Microsoft Online Subscription](https://azure.microsoft.com/support/legal/subscription-agreement/) (Internet Direct) są rozliczani miesięcznie w odniesieniu do tej samej karty kredytowej, która jest w pliku dla profilu subskrypcji platformy Azure. Roczne subskrypcje SaaS są rozliczane raz dla usług pełnego roku.
 
-Mimo że większość subskrypcji firmy Microsoft można łatwo przekształcić do umowy Enterprise Agreement, nie można wykonać zakupów w portalu Azure Marketplace w ramach tych subskrypcji.
+**Jak mogę przenieść moje zakupy w portalu Azure Marketplace z mojej subskrypcji MOSP do mojej bezpośredniej subskrypcji Umowa Enterprise (EA)?**
 
-Aby przeprowadzić migrację innych usług zakupionych w portalu Azure Marketplace do subskrypcji umowy EA, najpierw Anuluj aplikacji w ramach istniejącej subskrypcji MOSP i ponownie kupić wirtualną witryny te aplikacje w ramach subskrypcji umowy EA. Dzięki temu możesz przesłać żądanie uznania w zwrot podczas miesiąc potencjalnego nakładania się zakresu subskrypcji usług portalu Marketplace — Utwórz [bilet pomocy technicznej](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+Mimo że większość subskrypcji firmy Microsoft można łatwo przekonwertować na Umowa Enterprise, zakupy w witrynie Azure Marketplace w ramach tych subskrypcji nie mogą.
 
-**Jaka jest różnica między "price", "cena oprogramowania" i "cena łączna" w strukturze kosztów dla maszyny wirtualnej ofert w portalu Azure Marketplace?**
+Aby przeprowadzić migrację innych usług zakupionych w portalu Azure Marketplace do subskrypcji umowy EA, najpierw Anuluj aplikacje z istniejącej subskrypcji MOSP i ponownie Kup te aplikacje w ramach subskrypcji umowy EA. Dzięki temu możesz przesłać żądanie kredytowe dotyczące zwrotu w trakcie potencjalnego miesiąca nakładających się zakresów między subskrypcjami usługi Marketplace — Utwórz [bilet pomocy technicznej](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
-„Cena” oznacza koszt maszyny wirtualnej platformy Azure służącej do uruchamiania oprogramowania. „Cena oprogramowania” oznacza koszt oprogramowania wydawcy w witrynie Marketplace, które jest uruchamiane na maszynie wirtualnej platformy Azure. „Cena łączna” oznacza połączony całkowity koszt maszyny wirtualnej platformy Azure oraz oprogramowania wydawcy w witrynie Marketplace, które jest uruchamiane na maszynie wirtualnej platformy Azure.
+**Jaka jest różnica między *ceną*, *ceną oprogramowania*i łączną *ceną* w strukturze kosztów dla ofert maszyn wirtualnych w portalu Azure Marketplace?**
 
-**Czy mogę stosować środki subskrypcyjne lub fundusze pieniężnych na moim koncie do zakupu produktów platformy Azure i usług wymaganych do uruchomienia oferty w witrynie Azure Marketplace?**
+*Cena* to koszt maszyny wirtualnej platformy Azure, w której ma zostać uruchomione oprogramowanie. *Cena oprogramowania* to koszt oprogramowania wydawcy portalu Marketplace uruchomionego na maszynie wirtualnej platformy Azure. *Cena łączna* dotyczy łącznego łącznego kosztu maszyny wirtualnej platformy Azure oraz oprogramowania wydawcy portalu Marketplace działającego na maszynie wirtualnej platformy Azure.
 
-Tak. Środki subskrypcyjne lub fundusze zobowiązań pieniężnych na koncie mogą być używane do zakupu produktów platformy Azure i oferty w portalu Azure Marketplace. Na przykład funduszy zobowiązań pieniężnych platformy Azure mogą być stosowane do składnika "cena" oferty maszyny wirtualnej w witrynie Azure Marketplace. Jednak środki subskrypcyjne i fundusze zobowiązań pieniężnych mogą być stosowane tylko do zakupu oprogramowania niektórych wydawcy witryny Marketplace ("cena oprogramowania") uruchamianego na maszynie wirtualnej platformy Azure.
+**Czy mogę stosować kredyty subskrypcyjne lub fundusze pieniężne platformy Azure na moim koncie do produktów i usług platformy Azure wymaganych do korzystania z ofert portalu Azure Marketplace?**
 
-**Jak mogę się dowiedzieć się, jaka część mojego zakupu w portalu Azure Marketplace została wykorzystana?**
+Tak. Środki subskrypcyjne lub fundusze zobowiązań pieniężnych platformy Azure na koncie mogą być używane do korzystania z produktów platformy Azure i ofert portalu Azure Marketplace. Na przykład fundusze zobowiązania pieniężnego platformy Azure mogą być stosowane do składnika *ceny* oferty maszyny wirtualnej w portalu Azure Marketplace. Jednak środki na korzystanie z subskrypcji platformy Azure i fundusze zobowiązań pieniężnych mogą być stosowane tylko do niektórych programów wydawcy portalu Marketplace (*Cena oprogramowania*) uruchomionych na maszynie wirtualnej platformy Azure.
 
-Informacje o szacowanym użyciu znajdują się w [portal zarządzania Microsoft Azure](https://portal.azure.com/). Takie informacje o szacowanym użyciu mogą nie uwzględniać ostatnie działania i mogą opierać się na projektowanych podstawie przeszłego zużycia. Okresie publicznej wersji zapoznawczej ta możliwość może nie być dostępna dla wszystkich zakupów i może się różnić w zależności od typu produktu.
+**Jak mogę dowiedzieć się, jaka część mojego zakupu w witrynie Azure Marketplace została użyta?**
+
+Szacowane informacje o użyciu można znaleźć w [Azure Portal]. Takie szacowane informacje o wykorzystaniu nie mogą obejmować ostatnich działań i mogą być oparte na projekcjach uzyskanych na podstawie przeszłego zużycia. W publicznej wersji zapoznawczej ta możliwość może nie być dostępna dla wszystkich zakupów i może się różnić w zależności od typu produktu.
 
 ### <a name="customer-support"></a>Obsługa klienta
 
-**Skontaktować się z ogólnych problemów z portalu Azure Marketplace?**
+**Z kim mam się kontaktować w przypadku ogólnych problemów z pomocą techniczną w witrynie Azure Marketplace?**
 
-Obsługę ogólne aplikacji dotyczącą użycia lub rozwiązywania problemów skontaktuj się bezpośrednio z wydawcą aplikacji.
+Aby uzyskać ogólną pomoc techniczną dotyczącą użycia lub rozwiązywania problemów, skontaktuj się bezpośrednio z wydawcą aplikacji.
 
-W przypadku problemów Pomoc dotycząca rozliczeń i subskrypcji do zakupionego w portalu Azure Marketplace skontaktuj się z pomocą [pomocy technicznej systemu Azure](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953).
+W przypadku problemów z rozliczeniami i subskrypcją w ramach zakupu portalu Azure Marketplace skontaktuj się z [pomocą techniczną platformy Azure](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953)
 
 **Z kim mam się kontaktować, aby uzyskać pomoc techniczną dotyczącą rozwiązania zakupionego w witrynie Azure Marketplace?**
 
-Wszystkie pomoc techniczną, skontaktuj się z dostawcą wydawcy. Informacje kontaktowe wydawcy i/lub link do witryny sieci Web pomocy technicznej można znaleźć na stronie szczegółów rozwiązania w portalu Azure Marketplace.
+Skontaktuj się z dostawcą wydawcy, aby uzyskać pomoc techniczną dotyczącą wszystkich produktów technicznych. Informacje kontaktowe wydawcy i/lub link do witryny sieci Web pomocy technicznej można znaleźć na stronie szczegółów rozwiązania w witrynie Azure Marketplace.
 
-**Jak skontaktować się do pomocy technicznej/pytania dotyczące rozliczeń dotyczących rozwiązania innej firmy zakupionego w portalu Marketplace?**
+**Do kogo mogę się skontaktować w celu uzyskania pomocy technicznej dotyczącej rozliczeń/pytań dotyczących rozwiązań innych firm zakupionych w witrynie Marketplace?**
 
-Skontaktuj się z pomocą techniczną firmy Microsoft w [pomocy technicznej platformy Azure](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953).
+Skontaktuj się pomoc techniczna firmy Microsoft w [pomocy technicznej platformy Azure](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953).
 
-**Czy istnieje forum pomocy technicznej dla portalu Azure Marketplace?**
+**Z kim się skontaktować, jeśli mam pytania dotyczące cen lub warunków rozwiązań partnerskich sprzedawanych w portalu Azure Marketplace?**
 
-Tak. Odwiedź stronę [forum portalu Azure Marketplace](https://social.msdn.microsoft.com/Forums/home?forum=DataMarket) uzyskać pomoc od społeczności.
+Skontaktuj się z dostawcą wydawcy, aby uzyskać pomoc techniczną dotyczącą wszystkich produktów technicznych. Informacje kontaktowe wydawcy i/lub link do witryny sieci Web pomocy technicznej można znaleźć na każdej stronie szczegółów rozwiązania w witrynie Azure Marketplace.
 
-**Jak skontaktować się czy masz pytania dotyczące cen lub warunków związanych z rozwiązaniami partnerów sprzedawanymi w portalu Azure Marketplace?**
+**Czy mogę zwrócić zakup, jeśli nie są one spełnione?**
 
-Wszystkie pomoc techniczną, skontaktuj się z dostawcą wydawcy. Informacje kontaktowe wydawcy i/lub link do witryny sieci Web pomocy technicznej można znaleźć na każdej stronie szczegółów rozwiązania w portalu Azure Marketplace.
+Nie można zwrócić zakupów dokonanych w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/) , ale można je anulować lub usunąć. Oferty oparte na zużyciu są rozliczane zgodnie z użyciem, więc w przypadku jego zatrzymania opłaty są również przerywane. Subskrypcje są anulowane i nie będą naliczane za bieżący okres rozliczeniowy. Jeśli subskrypcja zostanie anulowana wkrótce po zakupie (24 godziny przez comiesięczne i 14 dni w okresie rocznym), zostanie udostępniona pełna refundacja.
 
-**Jeśli nie podobają, mogę zwrócić zakup?**
+Klienci muszą kontaktować się bezpośrednio z wydawcą, aby uzyskać wszelkie problemy techniczne związane z ich usługą Marketplace lub zakupem. Informacje kontaktowe wydawcy i/lub link do witryny sieci Web pomocy technicznej można znaleźć na stronie szczegółów rozwiązania w witrynie Azure Marketplace.
 
-Produktów zakupionych w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/) nie można zwrócić, ale można anulować lub usunąć. Użycie na podstawie oferty są rozliczane zgodnie z użycia, więc po jej zatrzymaniu opłat również zatrzymać. Subskrypcje zostały anulowane i nie zostaną naliczone ostatnie bieżącego okresu rozliczeniowego. Jeśli subskrypcja została anulowana wkrótce po zakupie (24 godziny, w przypadku opcji miesięcznej i 14 dni w przypadku opcji rocznej), znajduje się pełny zwrot kosztów.
-
-Klienci bezpośrednio skontaktuj się z wydawcą problemów technicznych związanych z ich usług witryny Marketplace lub zakupu. Informacje kontaktowe wydawcy i/lub link do witryny sieci Web pomocy technicznej można znaleźć na stronie szczegółów rozwiązania w portalu Azure Marketplace.
-
-### <a name="dev-center-registration"></a>Centrum deweloperów rejestracji
-
-**Wydawcy, który wymaga rejestracji konta Centrum deweloperów?**
-
-Wydawcy, którzy publikują w Transact typ oferty: Maszyna wirtualna Azure aplikacji: Szablony rozwiązań i aplikacji zarządzanych.
-
-**Dlaczego jest wymagane jest konto Centrum deweloperów?**
-
-A [konta Centrum deweloperów](https://docs.microsoft.com/azure/marketplace/register-dev-center) jest wymagana, aby umożliwić firmie Microsoft do rozliczania klientów w imieniu wydawcy dla Transact, typ oferty. Konto Centrum deweloperów rejestracji umożliwia firmie Microsoft sprawdzić poprawność prawne, podatku i informacji bankowych dla Twojej firmy.
-
-**Jak zacząć korzystać z rejestracji w Centrum deweloperów?**
-
-Rozpocznij od utworzenia [Identyfikatora Microsoft Partner Network (MPN)](https://partner.microsoft.com). Zaloguj się i Zarejestruj się jako sprzedawcy w Centrum deweloperów przy użyciu swojego identyfikatora MPN. Aby uniknąć duplikowania, sprawdź, czy Twoja firma nie ma już [konta Centrum deweloperów](https://docs.microsoft.com/azure/marketplace/register-dev-center) zarejestrowany. (Uwaga: Wypełnij formularz rejestracji portalu Marketplace, aby otrzymać kod promocyjny Centrum deweloperów, przed rejestracją.)
-
-**Czego mogę oczekiwać po rejestracji**
-
-Wiadomość e-mail z verify@microsoft.com z tematem "Wymagana akcja: Sprawdź konto, na którym odebrano wiadomość e-mail z firmą Microsoft". Aby ukończyć rejestrację, kliknij link weryfikacyjny poufnych czasu. Jeśli nie otrzymano żadnych wiadomości e-mail w ciągu 24 godzin, sprawdź folder wiadomości-śmieci.
-
-**Co to są następne kroki po weryfikacji Centrum deweloperów?**
-
-Przejdź do [programach](https://developer.microsoft.com/en-us/dashboard/Account/Programs) i zaloguj się do konta Centrum deweloperów. Powinna istnieć sekcji **zalecane programy** , w którym podsekcję pod tytułem **Azure**. Kliknij przycisk **wprowadzenie** i przejść przez proces konfigurowania konta platformy Azure.
-
-**Dlaczego moja aplikacja Centrum deweloperów zostaje odrzucony**
-
-Konta rejestracji są oparte na problemy geograficznego. Spółek zależnych w lokalizacjach innych niż siedziba potrzebuje tylko jednego konta Centrum deweloperów.
-
-**Jak skontaktuj się z pomocą techniczną, podając problemy dotyczące rejestracji w Centrum deweloperów?**
-
-Dostęp do pomocy technicznej, odwiedź stronę Windows stronę pomocy technicznej developer znajdujący się w [ https://developer.microsoft.com/en-us/windows/support ](https://developer.microsoft.com/windows/support).
-
-## <a name="faq-for-publishers"></a>Często zadawane pytania dotyczące wydawców
+## <a name="faq-for-publishers"></a>Często zadawane pytania dla wydawców
 
 ### <a name="what-you-need-to-know-about-azure-marketplace"></a>Co musisz wiedzieć o witrynie Azure Marketplace
 
 **Co to jest Portal Azure Marketplace?**
 
-[Portal Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) jest rynku online aplikacji i usług. Klienci (głównie Informatycy i deweloperzy) może odnajdywać i kupować rozwiązania oprogramowania lub w przypadku platformy Azure w chmurze. Jego katalog ma za pośrednictwem 8000 ofert, takich jak bloki konstrukcyjne platformy Azure, takie jak maszyny wirtualne (VM), interfejsów API, szablony rozwiązań aplikacji SaaS i usługa doradcza oferty.
+[Portal Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) to rynek aplikacji i usług online. Klienci (głównie informatycy i deweloperzy) mogą odkrywać i kupować rozwiązania oprogramowania w chmurze skompilowane przy użyciu systemu lub dla platformy Azure. Jego katalog zawiera ponad 8 000 list, takich jak bloki konstrukcyjne platformy Azure, takie jak Virtual Machines (maszyny wirtualne), interfejsy API, szablony rozwiązań, aplikacje SaaS i oferty usługi konsultingowej.
 
-Witryna Azure Marketplace to punkt początkowy dla wszystkich wspólnych działań Go-To-Market firmy Microsoft.  Skupimy się na pomaganiu partnerami, aby dotrzeć do większej liczby klientów. Publikowanie nowych list i również użyć witryny Azure Marketplace, aby przeprowadzić promocyjnych i kampanii generowania popytu, należy wykonać działania wspólnego działem handlowym/marketingu firmy Microsoft.
+Portal Azure Marketplace to punkt początkowy dla wszystkich wspólnych działań Microsoft go-to-Market.  Skupiamy się na pomocy partnerów w celu uzyskania większej liczby klientów. Możesz publikować nowe listy, a także korzystać z portalu Azure Marketplace, aby przeprowadzać kampanie związane z generowaniem promocyjnym i popytem, wykonywać wspólne działania dotyczące sprzedaży/marketingu w firmie Microsoft.
 
-**Kim są klienci witryny Azure Marketplace?**
+**Kto jest klientem portalu Azure Marketplace?**
 
-Portal Azure Marketplace jest przeznaczony dla informatyków i deweloperów rozwiązań w chmurze, zainteresowani komercyjnych IT oprogramowania i usług.
+Portal Azure Marketplace jest przeznaczony dla informatyków i deweloperów rozwiązań w chmurze, które interesują się komercyjnym oprogramowaniem i usługami IT.
 
-### <a name="azure-marketplace-for-publishers"></a>Witryna Azure Marketplace dla wydawców
+### <a name="azure-marketplace-for-publishers"></a>Portal Azure Marketplace dla wydawców
 
-**Dlaczego mam publikować aplikację w portalu Azure Marketplace i jak mi to korzyści?**
+**Dlaczego warto opublikować moją aplikację w witrynie Azure Marketplace i jak mogę jej korzystać?**
 
-Witryna Azure Marketplace udostępnia rynku for Partners firmy Microsoft do promowania i sprzedawania produktów i usług klientom platformy Azure. Wydawcy, natychmiast uzyskać dostęp do 140 globalnych rynków, nasi partnerzy 300 000 + i platformy Azure przedsiębiorstw będących klientami.  Witryna marketplace zawiera ponad 90% firm z rankingu Fortune 500 oraz wielu wiodących na świecie deweloperów. Nowi partnerzy w witrynie Azure Marketplace automatycznie dodawany zestaw [korzyści Go-To-Market kodom promocyjnym](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#go-to-market-gtm-benefits-in-the-marketplace) ułatwiające zwiększenie wydajności świadomości ofert w portalu Azure marketplace.
+Portal Azure Marketplace udostępnia partnerom firmy Microsoft rynek na potrzeby promowania i sprzedawania produktów i usług klientom platformy Azure. Wydawcy mogą natychmiast uzyskać dostęp do 140 rynków globalnych, naszych 300 000 partnerów i sieci platformy Azure dla klientów korporacyjnych.  Portal Marketplace obejmuje ponad 90% firm listy Fortune 500 i wiele wiodących deweloperów. Nowi partnerzy w witrynie Azure Marketplace są automatycznie oferowani z [korzyściami](gtm-your-marketplace-benefits.md#go-to-market-gtm-benefits-in-the-marketplace) , aby pomóc w zwiększeniu świadomości oferty w witrynie Azure Marketplace.
 
-**Co to jest różnicujący czynnik między Azure Marketplace i AppSource?**
+**Jaki jest czynnik odróżniający między portalem Azure Marketplace i AppSource?**
 
-Partners firmy Microsoft można wybrać, gdzie publikować w oparciu o ich docelowych odbiorców.
+Partnerzy firmy Microsoft mogą wybrać miejsce publikowania na podstawie docelowych odbiorców.
 
-Firma Microsoft oferuje dwa odrębne cloud witryny sklepów — Azure Marketplace i AppSource. Te witryny sklepu umożliwiają klientom wyszukiwanie, testowanie i kupowanie aplikacji oraz usług w chmurze. Każda witryna sklepu obsługuje unikalne potrzeby klientów i umożliwia Partners firmy Microsoft pod kątem ich rozwiązań lub usług opartych na docelowych odbiorców.
+Firma Microsoft oferuje dwa odrębne witryny w chmurze Marketplace — Azure Marketplace i AppSource. Te witryny sklepu umożliwiają klientom wyszukiwanie, testowanie i kupowanie aplikacji oraz usług w chmurze. Każda witryna sklepu obsługuje unikatowe potrzeby klientów i umożliwia partnerom firmy Microsoft kierowanie swoich rozwiązań lub usług na podstawie docelowych odbiorców.
 
-Wybierz [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps) pod kątem Informatycy i programiści lub użytkownicy techniczni.
+Wybierz [Portal Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps) przeznaczony dla informatyków i deweloperów oraz użytkowników technicznych.
 
-Wybierz [AppSource](https://appsource.microsoft.com/) pod kątem line-of-business osoby podejmujące decyzje i właściciele firm.
+Wybierz pozycję [AppSource](https://appsource.microsoft.com/) , aby umożliwić podmiotom podejmującym decyzje biznesowe i właścicieli firmy.
 
-Przegląd [przewodnikiem dla wydawców](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) bardziej szczegółowe informacje i korzyści z portalu Azure Marketplace i AppSource.
+Zapoznaj się z [przewodnikiem wydawcy](marketplace-publishers-guide.md) , aby uzyskać więcej informacji i korzyści z witryny Azure Marketplace i AppSource.
 
-**Jak rozpocząć publikowanie w witrynie Azure Marketplace?**
+**Czy muszę być członkiem Microsoft Partner Network (MPN), aby wystawić moje aplikacje i usługi w portalu Azure Marketplace?**
 
-Twoja lista portalu Azure Marketplace należy rozpocząć od przejrzenia [Azure Marketplace wydawca przewodnik](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) i [staje się Wydawca](https://docs.microsoft.com/azure/marketplace/become-publisher). Następnie prześlij aplikację przez [przesyłanie oferty](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv). Zobacz jak [utworzyć konto w Centrum partnerskim](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) Aby uzyskać więcej informacji.
+Tak, MPN jest wymagany do opublikowania w portalu Azure Marketplace. Aby rozpocząć, odwiedź stronę [Microsoft Partner Network](https://partner.microsoft.com/membership) .
 
-**Czy muszę być członkiem programu Microsoft Partner Network (MPN), aby wystawić swoje aplikacje i usługi w witrynie Azure Marketplace?**
+**Jakie jest kryterium opublikowania rozwiązania w portalu Azure Marketplace?**
 
-Tak, MPN jest wymagana do publikowania w witrynie Azure Marketplace. Odwiedź stronę [sieci Microsoft Partner Network](https://partner.microsoft.com/membership) na rozpoczęcie pracy.
+Aby publikować w portalu Azure Marketplace, partnerzy muszą udowodnić, że ich aplikacje działają na platformie Azure lub rozszerzają ją. Wydawcy muszą zapewnić klientom [Umowa dotycząca poziomu usług](https://azure.microsoft.com/support/legal/sla/), [Zasady ochrony prywatności](https://privacy.microsoft.com/privacystatement)oraz pomoc techniczną dla telefonów i online. Różne obciążenia mają dodatkowe wymagania. Zapoznaj się z [zasadami uczestnictwa w portalu Azure Marketplace](./marketplace-participation-policy.md) i [podręczniku wydawcy](marketplace-publishers-guide.md) , aby uzyskać dalsze wskazówki.
 
-**Czego mogę oczekiwać po przesłaniu mojej rejestracji w celu publikowania w witrynie Azure Marketplace?**
+**Czy jest naliczana opłata za publikowanie w portalu Azure Marketplace?**
 
-Po przesłaniu rejestrację, marketplace zespół ds. dołączania przejrzy i podaj powitalnej wiadomości e-mail dotyczące następnych kroków w ciągu 1 – 3 dni roboczych.
+Za pośrednictwem portalu Azure Marketplace nie są naliczane opłaty za publikowanie z listy, wersji próbnej lub BYOL.
 
-**Co to jest kryterium do publikowania rozwiązania w portalu Azure Marketplace?**
+**Czy istnieją jakieś opłaty za transakcje za zakupy w portalu Azure Marketplace?**
 
-Aby opublikować w portalu Azure Marketplace, partnerów musi wykazać, że ich aplikacji działa na, lub rozszerza platformy Azure. Wydawcy są wymagane do klientów za pomocą [Umowa dotycząca poziomu usług](https://azure.microsoft.com/support/legal/sla/), [zasady zachowania poufności informacji](https://privacy.microsoft.com/privacystatement), phone i pomocy technicznej online. Różne obciążenia mają dodatkowe wymagania. Przegląd [Azure Marketplace — zasady udziału](./marketplace-participation-policy.md) i [przewodnikiem dla wydawców](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) dalszych informacji.
+Po zakupieniu licencji na rozwiązanie za pośrednictwem portalu Azure Marketplace przychody związane z licencją na oprogramowanie są podzielone między wydawcą a firmą Microsoft.  Jest to realizowane zgodnie z warunkami i postanowieniami [umowy wydawcy portalu Marketplace](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf). Ponadto rozwiązania z BYOL (dostarczenie własnej licencji) nie wiążą się z opłatami za transakcje.
 
-**Czy jest opłata za publikowanie w witrynie Azure Marketplace?**
+**Co to jest kontrakt standardowy?**
 
-Istnieje za publikowanie nie są przy przekazywaniu listy, okres próbny lub BYOL (Bring Your Own License) rozwiązania za pośrednictwem witryny Azure Marketplace.
+Firma Microsoft oferuje standardowe warunki umowy, które mogą zostać użyte przez wydawcę, aby klienci mieli uproszczony proces zaopatrzenia i przeglądu prawnego.
 
-**Czy istnieją opłaty za zakupy w portalu Azure Marketplace transakcje?**
+**Gdzie mogę znaleźć wskazówki dotyczące integracji mojej aplikacji z usługą Azure Active Directory (AAD)?**
 
-Gdy jest kupowana za pośrednictwem witryny Azure Marketplace, przychody licencji na oprogramowanie są dzielone między wydawcy i firmy Microsoft.  To odbywa się zgodnie z warunków i postanowień w [umowie wydawcy portalu Marketplace](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf). Ponadto rozwiązania przy użyciu wydawcy BYOL (Bring Your Own License) nie są naliczane opłaty za transakcję.
+Firma Microsoft uwierzytelnia wszystkich użytkowników portalu Marketplace przy użyciu usługi AAD.  Można bezpośrednio zainicjować obsługę administracyjną w wersji próbnej bez konieczności dodatkowego kroku logowania.  Na przykład uwierzytelniony użytkownik kliknie listę próbną w witrynie Marketplace i zostanie przekierowany do środowiska wersji próbnej.
 
-**Co to jest standardowej umowy?**
+Aby uzyskać więcej informacji i rozpocząć Włączanie wersji próbnej za pomocą usługi AAD, odwiedź [sekcję Azure Active Directory w podręczniku wydawcy](enable-appsource-marketplace-using-azure-ad.md).
 
-Microsoft oferuje standardowych warunków umów wybranych Wydawca może wykorzystywać, tak, aby klienci mogli korzystać z uproszczonego zamówień i proces przeglądu prawnych.
+**Jak mogę rozpocząć rejestrację w centrum deweloperów?**
 
-**Gdzie znaleźć wskazówki dotyczące integracji mojej aplikacji za pomocą usługi Azure Active Directory (AAD)?**
+Aby rozpocząć, wydawcy powinni sprawdzić, czy [konto Centrum deweloperów](deprecated/register-dev-center.md) nie zostało jeszcze zarejestrowane (aby zapobiec duplikowaniu). Następnym krokiem jest zarejestrowanie się [przy użyciu konto Microsoft](https://account.microsoft.com/account/) , który zostanie skojarzony z kontem dewelopera.
 
-Firma Microsoft uwierzytelnia wszystkich użytkowników witryny Marketplace przy użyciu usługi AAD.  Może być bezpośrednio aprowizowanej w wersji próbnej bez konieczności dodatkowego kroku logowania.  Na przykład uwierzytelniony użytkownik kliknie za pośrednictwem oferty próbnej w witrynie Marketplace i zostaje przekierowany do środowiska w wersji próbnej.
-
-Aby uzyskać więcej informacji i rozpocząć pracę, włączanie wersji próbnej, przy użyciu usługi AAD, odwiedź [sekcji usługi Azure Active Directory w przewodniku wydawcy](https://docs.microsoft.com/azure/marketplace/enable-trial-using-azure-ad).
-
-**Jak zacząć korzystać z rejestracji w Centrum deweloperów?**
-
-Aby rozpocząć pracę, wydawców powinien upewnij się, że [konta Centrum deweloperów](https://docs.microsoft.com/azure/marketplace/register-dev-center) nie został już zarejestrowany (Aby zapobiec duplikatów). Po potwierdzeniu, następnym krokiem jest zarejestrować przy [logowania](https://account.microsoft.com/account/) przy użyciu konta Microsoft, która zostanie skojarzona z konta dewelopera.
-
-Jeśli nie masz jeszcze konta Microsoft, możesz to zrobić [Tworzenie konta usługi](https://signup.live.com/signup?contextid=AEB123C8F2B1DA7A&bk=1529968434&ru=https%3a%2f%2flogin.live.com%2flogin.srf%3fcontextid%3dAEB123C8F2B1DA7A%26mkt%3dEN-US%26lc%3d1033%26bk%3d1529968434&uiflavor=web&uaid=9987e727fedb459780d95c1b9e46c82c&mkt=EN-US&lc=1033&lic=1) (na przykład: contoso_marketplace@live.com).
+Jeśli nie masz jeszcze konto Microsoft, możesz [utworzyć konto](https://signup.live.com/) (na przykład: contoso_marketplace@live.com).
 
 **Dlaczego jest wymagane konto Centrum deweloperów?**
 
-Aby umożliwić firmie Microsoft do rozliczania klientów w imieniu wydawcy, aby uzyskać listę typów języka Transact wymagane jest konto Centrum deweloperów. Konto Centrum deweloperów rejestracji umożliwia firmie Microsoft sprawdzić poprawność prawne, podatku i informacji bankowych. Aby uzyskać więcej informacji, zobacz [rejestrowanie w Centrum deweloperów](https://docs.microsoft.com/azure/marketplace/become-publisher).
+Konto Centrum deweloperów jest wymagane, aby umożliwić firmie Microsoft rozliczanie klientów w imieniu wydawcy w przypadku typów list transakcyjnych. Rejestracja konta Centrum deweloperów umożliwia firmie Microsoft Weryfikowanie informacji prawnych, podatków i bankowości. Aby uzyskać więcej informacji, zobacz [Rejestrowanie w centrum deweloperów](./partner-center-portal/create-account.md).
 
-**Wydawcy, który wymaga rejestracji konta Centrum deweloperów?**
+**Co to są potencjalni klienci i dlaczego są ważne dla mnie jako Wydawca w portalu Marketplace?**
 
-Wydawcy, którzy publikują Transact typów: Maszyna wirtualna, aplikacje platformy Azure, szablony rozwiązań i aplikacji zarządzanych.
+Potencjalni klienci to klienci, którzy wdrażają produkty z portalu Marketplace. Bez względu na to, czy Twój produkt znajduje się w witrynie [Azure Marketplace](https://azuremarketplace.microsoft.com) , czy [AppSource](https://appsource.microsoft.com), możesz otrzymywać potencjalnych klientów, którzy interesują Twoje produkty.  Możesz skonfigurować miejsce docelowe potencjalnego klienta w ofercie. Aby dowiedzieć się więcej, zobacz [Zostań wydawcą portalu Marketplace w chmurze](./partner-center-portal/create-account.md).
 
-**Jakie są potencjalnymi klientami i dlaczego są one ważne do mnie jako wydawcę w portalu Marketplace?**
+**Gdzie mogę uzyskać pomoc w konfigurowaniu miejsca docelowego potencjalnego klienta?**
 
-Potencjalni klienci to klientów, którzy wdrażają produkty z witryny Marketplace. Czy produktu znajduje się na [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) lub [AppSource](https://appsource.microsoft.com), jesteś w stanie odbierać potencjalnych klientów z klientów, którzy są zainteresowani produktu.  Docelowy potencjalnych klientów można skonfigurować w ofercie. Aby dowiedzieć się więcej, zobacz [stają się wydawcy w witrynie Marketplace chmury](https://docs.microsoft.com/azure/marketplace/become-publisher).
+Dowiedz się więcej w temacie [Portal Cloud partner — Uzyskaj](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) informacje o potencjalnych klientach lub Prześlij [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) zgłoszenie do pomocy technicznej, wybierając typ oferty i zarządzanie potencjalnymi klientami.
 
-**Gdzie można uzyskać pomoc w konfigurowaniu Moje docelowego potencjalnego klienta**
+**Czy muszę skonfigurować miejsce docelowe potencjalnego klienta w celu opublikowania oferty w portalu Marketplace?**
 
-Dowiedz się więcej w [Cloud Partner Portal Get klienta potencjalnych klientów](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) dokumentacji, lub Wyślij bilet pomocy technicznej za pośrednictwem [ https://aka.ms/marketplacepublishersupport ](https://aka.ms/marketplacepublishersupport) przez wybranie swój typ oferty i zarządzanie potencjalnymi klientami.
+Tak, jeśli publikowana jest oferta contacter, **SaaS**lub **usług konsultingowych** , musisz skonfigurować miejsce docelowe potencjalnego klienta.
 
-**Jestem wymagane do konfigurowania docelowego potencjalnego klienta, aby opublikować ofertę w portalu Marketplace?**
+**Jak upewnić się, że konfiguracja lidera jest poprawna?**
 
-Tak, jeśli publikowanie **skontaktuj się ze mną**, **aplikacji SaaS**, lub **usługi doradcze** oferty są wymagane do skonfigurowania docelowego potencjalnego klienta.
+Po zakończeniu oferty i skonfigurowaniu miejsca docelowego potencjalnego klienta Lista może być prawidłowo opublikowana w [Portal Cloud partner](https://cloudpartner.azure.com/). Przed zapisaniem na żywo można sprawdzić, czy konfiguracja lidera działa poprawnie.  Wyślij test — potencjalny klient do miejsca docelowego potencjalnego klienta skonfigurowanego w ofercie.
 
-**Jak można potwierdzić, czy konfiguracja potencjalnego klienta jest poprawna?**
+**Jakie kraje/regiony są dostępne dla wydawców w portalu Azure Marketplace?**
 
-Po zakończeniu oferty i konfigurowania miejsca docelowego potencjalny klient, listę prawidłowo mogą być publikowane w [portalu Cloud Partner](https://cloudpartner.azure.com/). Listę przejdzie na żywo, można sprawdzić, jeśli ustawienie konfiguracji potencjalny klient działa poprawnie.  Wyślij test potencjalnego klienta do miejsca docelowego potencjalny klient skonfigurowany w ramach oferty.
+Wydawcy w oparciu o następujące kraje/regiony mogą obecnie sprzedawać w portalu Azure Marketplace: Afganistan, Albania, Algieria, Angola, Antigua i Barbuda, Argentyna, Armenia, Australia, Austria, Azerbejdżan, Bahrajn, Bangladesz, Białoruś, Belgia, Benin, Australię, Bośnia i Hercegowina, Botswanie, Brazylia, Bułgaria Kamerun, Kanada, Republika Środkowoafrykańska, Chorwacja, Chile, Kolumbia, komory, Kongo, Kongo (DRK), Kostaryka, wybrzeże D'Ivoire, Chorwacja, Cypr, Czechy, Dania, Dominika, Republika Dominikańska, Ekwador, Egipt, Salwador, Kostaryka, Estonia, Etiopia, Fidżi Wyspy, Finlandia, Francja, Wyspy Georgia, Niemcy, Ghana, Grecja, Gwatemala, Gwinea, Haiti, Honduras, Hongkong SAR, Węgry, Islandia, Indie, Indonezja, Irak, Irlandia, Izrael, Włochy, Jamajka, Japonia, Jordania, Kazachstan, Kenia, Korea, Laos, Łotwa, Liban, Liberia, Liechtenstein, Litwa, Luksemburg, Madagaskar, Malawi, Malezja, Mali, Malta, Mauritius, Meksyk, Monako, Mongolia, Czarnogóra, Maroko, Mozambik, Nepal, Niderlandy, Nowa Zelandia, Nikaragua, Niger, Nigeria, Norwegia, Oman, Pakistan, Panama, Paragwaj, Peru, Filipiny, Polska, Portugalia, Katar, Rumunia, Rosja, Rwanda, Arabia Saudyjska, Senegal, Serbia, Sierra Leone, Singapur, Słowacja, Słowenia, Somalia, Republika Południowej Afryki, Hiszpania, Sri Lanka, Szwecja, Szwajcaria, Tadżykistan, Tanzania, Tajlandia, Timor-Wschodni, Togo, Tonga, Trynidad i Tobago, Tunezja, Turcja, Turkmenistan, Uganda, Ukraina, Zjednoczone Emiraty Arabskie, Zjednoczone Królestwo, Stany Zjednoczone, Urugwaj, Uzbekistan, Wenezuela, Wietnam, Zambii i Zimbabwe.
 
-**Kraje/regiony są dostępne dla wydawców do sprzedaży w portalu Azure Marketplace?**
+**Jak mogę usunąć listę z portalu Azure Marketplace?**
 
-Wydawcy w następujących krajach/regionach mogą obecnie sprzedawać w portalu Azure Marketplace: Afganistan, Albania, Algieria, Angola, Antigua i Barbuda, Argentyna, Armenia, Australia, Austria, Azerbejdżan, Bahrajn, Bangladesz, Białoruś, Belgia, Benin, Boliwia, Bośnia i Hercegowina, Botswany, Brazylia, Bułgaria, Burkina Faso, Burundi, Kambodża, Kamerun, Kanada, Republika Środkowoafrykańska, Czad, Chile, Kolumbia, komory, Kongo, Kongo (DRK), Kostaryka, Wybrzeże Kości Słoniowej, Chorwacja, Cypr, Czechy, Dania, Dominika, Dominikana, Ekwador, Egipt, Salwador, Erytrea, Estonia, Etiopia, Fidżi Wyspy, Finlandia, Francja, Georgia, (Niemcy), Ghana, Grecja, Gwatemala, Gwinea, Haiti, Honduras, SRA Hongkong, Węgry, Islandia, Indie, Indonezja, Irak, Irlandii, Izrael, Włochy, Jamajka, Japonia, Jordania, Kazachstan, Kenia, Korea Południowa, Kuwejt, Laos, Łotwa, Liban, Liberia, Liechtenstein, Litwa, Luksemburg, Madagaskar, Malawi, Malezja, Mali, Malta, Mauritius, Meksyk, Monako, Mongolia, Czarnogóra, Maroko, Mozambik, Nepal, Holandia, Nowej Zelandii, Nikaragua, Niger, Nigeria, Norwegia, Oman, Pakistan, Panama, Paragwaj, Peru, Filipiny, Polska, Portugalia, Katar, Rumunia, Rosja, Ruandy, Arabia Saudyjska, Senegal, Serbia, Sierra Leone, Singapur, Słowacja, Słowenia, Somalia, Republika Południowej Afryki, Hiszpania, Sri Lanka, Szwecja, Szwajcaria, Tadżykistan, Tanzania, Tajlandia, Timor-Leste, Togo, Tonga, Trynidad i Tobago, Tunezja, Turcja, Turkmenistan, ugandyjski, Ukraina, Zjednoczone Emiraty Arabskie, Zjednoczone Królestwo, Stany Zjednoczone, Urugwaj, Uzbekistan, Wenezuela, Wietnam, Zambia i Zimbabwe.
+*Maszyna wirtualna & Azure Apps:*
 
-**Jak usunąć listę w portalu Azure Marketplace?**
+1. Zaloguj się do [Portal Cloud partner](https://cloudpartner.azure.com/).
+1. Wybierz ofertę z karty **wszystkie oferty** .
+1. W okienku po lewej stronie ekranu wybierz kartę **jednostki SKU** .
+1. Wybierz jednostkę SKU do usunięcia, a następnie kliknij przycisk **Usuń** dla tej jednostki SKU.
+1. [Opublikuj ponownie](./cloud-partner-portal/manage-offers/cpp-publish-offer.md) ofertę w witrynie Azure Marketplace.
 
-Aplikacje platformy Azure i maszyn wirtualnych:
+Aby uzyskać więcej informacji, zobacz [usuwanie oferty](./cloud-partner-portal/manage-offers/cpp-delete-offer.md).
 
-1. Zaloguj się do [portalu dla partnerów w chmurze](https://cloudpartner.azure.com/).
-1. Wybierz ofertę na karcie "Oferuje wszystkie".
-1. W okienku po lewej stronie ekranu wybierz kartę jednostki SKU.
-1. Wybierz jednostkę SKU do usunięcia, a następnie kliknij przycisk "Usuń" dla tego identyfikatora SKU.
-1. [Ponownie opublikować](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer) oferty w portalu Azure Marketplace.
+*Web Apps (SaaS Apps, dodatki) & usługi doradcze:*
 
-Aby uzyskać więcej informacji, zobacz [usuwanie oferty](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-delete-offer).
-
-Web Apps (aplikacje SaaS, dodatki) & usługi doradcze:
-1. W portalu Cloud Partner wybierz ikonę znaku zapytania, a następnie kliknij przycisk "Support".
-1. Przejdź do obszaru [https://go.microsoft.com/fwlink/?linkid=844975](https://go.microsoft.com/fwlink/?linkid=844975) (Ustawienia — Integracje i usługi).
-1. Na stronie pomocy technicznej wybierz typ oferty.
-1. Wybierz opcję "Usuń" opublikowane oferty.
-1. Tworzenie biletu zdarzenia.
+1. W portal Cloud Partner wybierz ikonę znaku zapytania, a następnie kliknij pozycję **Pomoc techniczna**.
+1. Przejdź do pozycji <https://go.microsoft.com/fwlink/?linkid=844975> (Plik > Nowy > Inny).
+1. Na stronie Pomoc techniczna wybierz typ oferty.
+1. Wybierz pozycję **Usuń** opublikowaną ofertę.
+1. Utwórz bilet zdarzenia.
 1. Prześlij.
 
-Aplikacje usługi Office 365
-1.  Zaloguj się do [ https://sellerdashboard.microsoft.com ](https://sellerdashboard.microsoft.com) przy użyciu konta deweloperów.
-1.  Cofa dodatku.
+*Aplikacje usługi O365:*
 
-UWAGA: Aplikacja znikną dla istniejących list, po upływie 90 dni.
+1.  Zaloguj się do <https://sellerdashboard.microsoft.com> programu przy użyciu konta dev.
+1.  Wycofaj dodatek.
 
-Aplikacje usługi Power BI
-* Skontaktuj się z pomocą: [Anjana Sompur (Slalom Consulting LLC)](mailto:v-ansomp@microsoft.com).
+    > [!NOTE]
+    > Aplikacje znikają z istniejącej listy po 90 dniach.
 
-### <a name="benefits-and-go-to-market-gtm-resources"></a>Korzyści i zasoby Go-To-Market (GTM wprowadzenie)
+*Power BI aplikacje:*
 
-**Jakie są korzyści Go-To-Market zapewniane wydawcom widoczne w portalu Azure Marketplace?**
+Proś [Anjana Sompur (slalom Consulting)](mailto:v-ansomp@microsoft.com).
 
-Witryna Azure Marketplace to punkt początkowy dla wspólnych działań Go-To-Market z firmą Microsoft i bramą do współpracy sprzedażowej partnerstwo. Wszystkich nowych ofert w portalu Azure Marketplace automatycznie dodawany zestaw [korzyści Go-To-Market kodom promocyjnym](https://assetsprod.microsoft.com/mpn/marketplace-gtm-benefits.pdf) celu lepszego zaprezentowania oferty klientom firmy Microsoft. Po opublikowaniu oferty zespół Microsoft GTM skontaktuje się i rozpoczyna, zapewniając korzyści.
+### <a name="benefits-and-go-to-market-gtm-resources"></a>Korzyści i zasoby na rynku (GTM)
 
-Odwiedź stronę [Microsoft GTM Services](https://partner.microsoft.com/reach-customers/gtm) uzyskać więcej informacji dotyczących naszych korzyści GTM i sposobów rozwoju swojej działalności na platformie handlowej.
+**Jakie są korzyści ze stosowania w przypadku wydawców dostępnych w portalu Azure Marketplace?**
 
-**Gdzie są promowane rozwiązania witryny Azure Marketplace w ramach treści internetowych firmy Microsoft?**
+Portal Azure Marketplace to punkt początkowy dla wspólnych działań związanych z przechodzeniem do rynku z firmą Microsoft, a bramą to partnerstwo gotowe. Wszystkie nowe aukcje w witrynie Azure Marketplace są automatycznie oferowane z korzyściami z niekosztownego przechodzenia na [rynek](https://assetsprod.microsoft.com/mpn/marketplace-gtm-benefits.pdf) , aby pomóc w rozwiązywaniu problemów z ofertami do klientów firmy Microsoft. Po opublikowaniu oferty zespół GTM firmy Microsoft kontaktuje się z firmą i rozpoczyna świadczenie usług.
 
-Rozwiązania witryny Azure Marketplace są dostępne w programie Microsoft [portal zarządzania Microsoft Azure](https://portal.azure.com/), i [witryny sieci Web portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/). Deweloperów rozwiązań w chmurze i Informatycy korzystający z platformy Azure mają narażenia na rozwiązań partnerskich, za każdym razem, gdy zalogują się w. Ponadto prezentowany i zmieniany na podzestaw rozwiązań partnera [strony głównej portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) i [stronie rozwiązań platformy Azure](https://azure.microsoft.com/solutions/).
+Odwiedź witrynę [Microsoft GTM Services](https://partner.microsoft.com/reach-customers/gtm) , aby uzyskać więcej informacji na temat naszych GTMych korzyści i sposobów rozwoju firmy w portalu Marketplace.
 
-### <a name="billing-and-payments"></a>Pomoc dotycząca rozliczeń i płatności
+**Gdzie są promowane rozwiązania w portalu Azure Marketplace we właściwościach sieci Web firmy Microsoft?**
 
-**Jak otrzymać płatność za moją sprzedaż w portalu Azure Marketplace?**
+Rozwiązania portalu Azure Marketplace są dostępne w witrynie sieci Web firmy Microsoft [Azure Portal]i [witryny Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/). Deweloperzy chmury i informatycy korzystający z systemu Azure mają narażenie na rozwiązania partnerskie przy każdym logowaniu. Podzbiór rozwiązań partnerskich został również zaprezentowany i obrócony na stronie [głównej witryny Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) i na [stronach rozwiązań platformy Azure](https://azure.microsoft.com/solutions/).
 
-Wszystkie płatności od firmy Microsoft są przetwarzane przy użyciu PayPal lub systemu elektronicznych transferu (EFT) co miesiąc. Płatności w ciągu dwóch miesięcy od daty klienta są używane usługi, ale dokładny ich termin zależy od instrumentu płatniczego klienta. Okres depozytu wynoszący 45 dni dotyczy klientów korzystających z kart kredytowych.
+### <a name="billing-and-payments"></a>Rozliczenia i płatności
 
-**W przypadku rozwiązań na maszynach wirtualnych, zakupić przy użyciu opartej na użyciu rozliczeń gdy klient na pojemniki o rozmiarach w górę lub zmniejszy rozmiar bazowej maszyny wirtualnej, jest cennik mojej licencji na oprogramowanie zgodna z?**
+**Jak mogę otrzymać płatność za moją sprzedaż w portalu Azure Marketplace?**
 
-Tak, nowa cena jest naliczana opłata natychmiast.  Zmiany cennika się zdarzyć, gdy klient zmianę rozmiaru maszyny wirtualnej i określa różne ceny w cenniku, które są oparte na rozmiar maszyny wirtualnej.
+Wszystkie płatności firmy Microsoft są przetwarzane za pośrednictwem systemu PayPal lub przelewów elektronicznych (EFT) miesięcznie. Płatność została dokonana w ciągu dwóch miesięcy od daty użycia usługi przez klienta, ale dokładny czas zależy od instrumentu płatniczego klienta. Okres depozytu wynoszący 45 dni dotyczy klientów korzystających z kart kredytowych.
 
-**Jest na węzeł rozliczeń dostępne dla witryny Azure Marketplace?**
+**W przypadku rozwiązań opartych na maszynach wirtualnych zakupionych w ramach rozliczeń opartych na użyciu, gdy klient ma swoje rozmiary lub downsizes źródłową maszynę wirtualną, czy cena licencji na oprogramowanie jest poprzednia?**
 
-Portal Azure Marketplace nie obsługuje obecnie rozliczanie za węzeł z maszynami wirtualnymi. Wydawcy nadal można określić stawka rozliczeniowa każdego węzła, przy użyciu stawki rozliczeniowe VM firmy Microsoft.  Obliczanie jest do określenia liczby maszyn wirtualnych przez liczbę godzin korzystania oraz stawka za godzinę.
+Tak. Nowa cena jest rozliczana natychmiast.  Zmiany cen są wykonywane, gdy klient zmieni rozmiar maszyny wirtualnej i określi inne ceny w tabeli cen, które są oparte na rozmiarze maszyny wirtualnej.
 
-**Kto czy I skontaktuj się z działem rozliczeń lub pytania dotyczące zarządzania oferty?**
+**Czy jest dostępne rozliczanie za każdy węzeł w witrynie Azure Marketplace?**
 
-Zgłoszenie za pomocą [Microsoft Support](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfName=productselection&prid=15635).
+Portal Azure Marketplace obecnie nie obsługuje rozliczania poszczególnych węzłów za pomocą Virtual Machines. Wydawcy mogą nadal określić stawkę rozliczania za każdy węzeł za pomocą stawek rozliczeń maszyn wirtualnych firmy Microsoft.  Obliczenia polegają na określeniu liczby maszyn wirtualnych na podstawie liczby godzin użycia i stawki za godzinę.
+
+**Z kim mam się kontaktować w przypadku pytań dotyczących rozliczeń lub zarządzania ofertami?**
+
+Zarejestruj bilet z [Pomoc techniczna firmy Microsoft](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfName=productselection&prid=15635).
 
 ### <a name="publisher-support"></a>Obsługa wydawcy
 
-**Skontaktować się z ogólnych problemów z portalu Azure Marketplace?**
+**Z kim mam się kontaktować w przypadku ogólnych problemów z pomocą techniczną w witrynie Azure Marketplace?**
 
-Obsługa aplikacji ogólne dotyczące użyteczności ani rozwiązywania problemów, skontaktuj się z [techniczną portalu Cloud Partner](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636565784998876007).
+Aby uzyskać ogólną pomoc techniczną dotyczącą zastosowań lub rozwiązywania problemów, skontaktuj się z [pomocą techniczną Portal Cloud partner](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636565784998876007).
 
-W przypadku problemów Pomoc dotycząca rozliczeń i subskrypcji do zakupionego w portalu Azure Marketplace skontaktuj się z pomocą [pomocy technicznej systemu Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+W przypadku problemów z rozliczeniami i subskrypcją w ramach zakupu portalu Azure Marketplace skontaktuj się z [pomocą techniczną platformy Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 
-**Czy istnieje forum pomocy technicznej dla portalu Azure Marketplace?**
+**Komu mogę się skontaktować z publikowaniem lub oferowaniem pytań dotyczących zarządzania?**
 
-Odwiedź stronę [forum portalu Azure Marketplace](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket).
+Odwiedź [Przewodnik wydawcy portalu Azure Marketplace](marketplace-publishers-guide.md) , aby uzyskać aktualne zasoby i dokumenty dotyczące często zadawanych pytań. Ponadto można rejestrować bilet z [Pomoc techniczna firmy Microsoft w Portal Cloud partner](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953).
 
-**Kto czy mogę skontaktować się z publikowaniem lub oferują pytania dotyczące zarządzania?**
+### <a name="azure-marketplace-for-publishers"></a>Portal Azure Marketplace dla wydawców
 
-Odwiedź stronę [Azure Marketplace wydawca przewodnik](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) uzyskać aktualne zasoby i dokumentacje dotyczącą często zadawane pytania. Ponadto możesz rejestrować biletu [Microsoft Support w portalu Cloud Partner](https://support.microsoft.com/en-us/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953).
+**Jak mogę zdefiniować moją dostępność geograficzną, aby umożliwić sprzedawanie w różnych krajach/regionach?**
 
-### <a name="azure-marketplace-for-customers"></a>Witryna Azure Marketplace dla klientów
-
-**Jak rozpocząć pracę w witrynie Azure Marketplace?**
-
-Odwiedź stronę [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) internetowego i Przeglądaj szeroką gamę jakości aplikacji i rozwiązań, certyfikowane i optymalizowane pod kątem działania na platformie Azure. Portal Azure Marketplace można także uzyskać dostęp za pośrednictwem [klasycznej witryny Azure portal](https://portal.azure.com/) w sekcji "Tworzenie zasobu". Aby dowiedzieć się więcej, zobacz [ https://azuremarketplace.microsoft.com/about ](https://azuremarketplace.microsoft.com/about).
-
-**Jakie są kluczowe korzyści z portalu Azure Marketplace?**
-
-Witryna Azure Marketplace to magazyn dla informatyków i programistów służący do odkrywania aplikacji technicznych zbudowanych na platformie Azure lub na potrzeby platformy Azure. Natychmiast uzyskać dostęp do [140 globalnych rynków](https://azure.microsoft.com/global-infrastructure/regions/) oraz rozwiązań i ofert z naszej sieci 300 000 + partnera. Łączy ona Microsoft Azure marketplace, rozwiązań i usług w pojedynczą, jednolitą platformę do znajdowania, testowania i kupowania rozwiązań za pomocą kilku kliknięć.
-
-**Jak kupować produkty z witryny Azure Marketplace?**
-
-Oferty portalu Azure Marketplace za pośrednictwem można znaleźć [internetowego](https://azuremarketplace.microsoft.com/marketplace/)w [portalu zarządzania Microsoft Azure](https://portal.azure.com/), lub za pośrednictwem [Azure Marketplace interfejsu wiersza polecenia (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest). Po zalogowaniu się do witryny Azure Marketplace może znajdować i kupować rozwiązania firmy Microsoft i jej partnerów. Uwaga: Środki przedpłacone i inne formy zobowiązań pieniężnych nie są używane do opłat za licencje oprogramowania.  Obejmują one natomiast opłaty za użycie platformy Azure skojarzone. Wyjątki są wymienione w [zobowiązań pieniężnych platformy Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/).
-
-**Jeśli przypadkowo usunę zakup dokonany w portalu Azure Marketplace, czy można "cofnąć" akcji?**
-
-Nie, usunięcie jest nieodwracalne. Jeśli przypadkowo usuniesz subskrypcję, możesz łatwo uruchomić ponownie przez ponowny zakup.  Jednak wszelkie nieużywane funkcje lub usługi przedpłacone zostaną utracone, więc Zachowaj ostrożność przy usuwaniu subskrypcji.
-
-**Czy istnieją ostrzeżenia, gdy próbuję usunąć zakup dokonany portalu Azure Marketplace, używany przez jeden z moich aplikacji?**
-
-Nie, Azure program nie ostrzega, gdy usuniesz zakupu, od którego zależy Twoja aplikacja.
-
-**Jeśli mój zakup w portalu Azure Marketplace ma żadnych zależności od innych zasobów, takich jak witryny sieci Web platformy Azure, następnie trzeba zarządzać nimi?**
-
-Zależności nie są zarządzane automatycznie dla ofert portalu Azure Marketplace. Uważnie przeczytaj jego opis, przed użyciem zakupu dokonanego w portalu Azure Marketplace.  Należy określić, czy istnieją jakieś zależności, przed wdrożeniem rozwiązania.
-
-**Kto może kupować aplikacje i usługi, sprzedawana/dostarczanymi za pośrednictwem portalu Azure Marketplace?**
-
-W portalu Azure Marketplace jest dostępny dla klientów Microsoft Azure w następujących krajach/regionach:
-
-Algieria, Argentyna, Australia, Austria, Bahrajn, Białoruś, Belgia, Brazylia, Bułgaria, Kanada, Chile, Kolumbia, Kostaryka, Chorwacja, Cypr, Czechy, Dania, Dominikana, Ekwador, Egipt, Salwador, Estonia, Finlandia, (Francja), (Niemcy), Grecja , Gwatemala, SRA Hongkong, Węgry, Islandia, Indie, Indonezja, Irlandii, Izrael, Włochy, Japonia, Jordania, Kazachstan, Kenia, Kuwejt, Łotwa, Liechtenstein, Litwa, Luksemburg, Macedonia Północna, Malezja, Malta, Meksyk, Czarnogóra, Maroko, Holandia, nowe Zelandia, Nigeria, Norwegia, Oman, Pakistan, Panama, Paragwaj, Peru, Filipiny, Polska, Portugalia, Portoryko, Katar, Rumunia, Rosja, Arabia Saudyjska, Serbia, Singapur, Słowacja, Słowenia, Republika Południowej Afryki, Korea Południowa, Hiszpania, Sri Lanka, Szwecja, Szwajcaria, Tajwan, Tajlandia, Trynidad i Tobago, Tunezja, Turcja, Ukraina, Zjednoczone Emiraty Arabskie, Zjednoczone Królestwo, Stany Zjednoczone, Urugwaj, Wenezuela.
-
-**Jak określić Mój dotyczącą dostępności geograficznej umożliwia sprzedaż w różnych krajach/regionach?**
-
-1.  W portalu Cloud Partner przejdź do jednostki SKU, do której chcesz dodać nowe kraje/regiony.  W ciągu "Szczegóły jednostki SKU" Przejdź do "Kraj/Region availability", a następnie kliknij przycisk "Wybierz regiony".
+1.  W portal Cloud Partner przejdź do jednostki SKU, do której chcesz dodać nowe kraje/regiony.  W obszarze **szczegóły jednostki SKU**przejdź do obszaru **dostępność kraju/regionu** i kliknij pozycję **Wybierz regiony**.
 
     ![Wybierz regiony](media/marketplace-publishers-guide/FAQ-choose-geo.png)
 
-1.  Lista będzie się pojawiać, przy użyciu wszystkich dostępnych krajach/regionach można sprzedawać.  Kliknij pole wyboru obok każdego kraju/regionu, chcesz udostępnić tej jednostki SKU. Kliknij przycisk "OK".
+1.  Zostanie wyświetlona lista zawierająca wszystkie dostępne kraje/regiony do zakupu.  Kliknij pole wyboru obok każdego kraju/regionu, dla którego chcesz udostępnić tę jednostkę SKU. Kliknij przycisk **OK**.
 
     ![Wybierz listę krajów/regionów](media/marketplace-publishers-guide/FAQ-select-countries.png)
 
-1.  Na koniec zmian, które mają być stosowane do oferty na żywo, kliknij pozycję "Publikuj".  
+1.  Na koniec aby zmiany zostały zastosowane do oferty na żywo, kliknij pozycję **Opublikuj**.  
 
->[!Note]
->Potrwa 24 godziny, aby zmiany zaczęły obowiązywać.
+    > [!Note]
+    > Zmiana zacznie obowiązywać po 24 godzinach.
 
 <!---    ![Publish offer](media/marketplace-publishers-guide/FAQ-publish-offer.png) -->
 
-**Jak wydawca zmienić dostępność geograficzna dla istniejącej oferty**
+**Jak Wydawca może zmienić dostępność geograficzną dla istniejącej oferty?**
 
-Wydawcy można edytować istniejące oferty, wybierz nowe kraje/regiony i użyć funkcji pobierania/przekazywania arkusza kalkulacyjnego można ustawić ceny.
+Wydawca może edytować istniejącą ofertę, wybierać nowe kraje/regiony i używać funkcji pobierania/przekazywania arkusza kalkulacyjnego do ustawiania cen.
 
-**W jakich krajach/regionach klienci mogą kupować ofert portalu Azure Marketplace?**
+**W jakich krajach/regionach klienci mogą kupować oferty portalu Azure Marketplace?**
 
-Witryna Azure Marketplace obsługuje 141 zakup z różnych lokalizacji geograficznych, zgodnie z definicją adresu rozliczeniowego przez klienta. Zobacz [— zasady udziału](https://docs.microsoft.com/legal/marketplace/participation-policy) listę krajów/regionów.
+Portal Azure Marketplace obsługuje 141 zakupów z lokalizacje geograficzne zgodnie z definicją w adresie odbiorcy. Aby zapoznać się z listą krajów/regionów, zobacz [zasady udziału](/legal/marketplace/participation-policy) .
 
-**Jakich walutach są obsługiwane przez Portal Azure Marketplace?**
+**Które waluty są obsługiwane przez witrynę Azure Marketplace?**
 
-Transakcje mogą zostać przeprowadzone w 17 następujących walut: AUD, BRL, CAD, CHF, DKK, EUR, GBP, INR, JPY, KRW, NOK, NZD, RUB, SEK, TWD, USD.
-
-### <a name="deploying-a-solution-from-azure-marketplace"></a>Wdrażanie rozwiązania z witryny Azure Marketplace
-
-**Azure Marketplace maszyn wirtualnych (VM) została wdrożona w subskrypcji, a teraz chcę migrować tę subskrypcję z jednego konta platformy Azure do innego. Jest to obecnie obsługiwane?**
-
-Aby przeprowadzić migrację swoich subskrypcji platformy Azure, maszyny wirtualne z witryny Marketplace i usług, musisz, usuń lub Anuluj je przed skojarzeniem subskrypcji platformy Azure do nowego konta Azure. Po zakończeniu migracji subskrypcji platformy Azure, można ponownie kupić wirtualną witryny usług portalu Azure Marketplace. Wynikowe opłaty za użycie są naliczane przy użyciu swojego konta zarejestrowanej metody płatności. 
-
-**Chcę przeprowadzić migrację subskrypcji usługi Azure Marketplace maszyn wirtualnych (VM) do mojej umowy Enterprise Agreement. Jest to obecnie obsługiwane?**
-
-Aby przeprowadzić migrację maszyn wirtualnych z modelu BYOL do subskrypcji umowy EA, nie trzeba ponownie skompilować je. MOSP — Microsoft Online Subscription Program subskrypcji (tj direct sieci web) mogą być konwertowane na EA bezpośrednio.
+Transakcje można przeprowadzać w następujących 17 walutach: AUD, BRL, CAD, CHF, DKK, EUR, GBP, wysokości, JPY, KRW, NOK, NZD, RUB, SEK, TWD i USD.
 
 ### <a name="pricing-and-payment"></a>Cennik i płatność
 
-**Jak są naliczane subskrypcje portalu Azure Marketplace?**
+**Jaka jest różnica między bezpłatną warstwą a bezpłatną wersją próbną oprogramowania?**
 
-Ceny różnią się w zależności od typów produktów i specyfikacji wydawcy. Opłaty za licencje na oprogramowanie oraz koszty użycia platformy Azure są naliczane osobno za pośrednictwem subskrypcji platformy Azure. Modele cenowe:
+Oferta subskrypcji warstwy Bezpłatna jest bezterminowo bezpłatna.  Bezpłatna wersja próbna oprogramowania (Wypróbuj teraz) jest ofertą płatną, która jest bezpłatna przez ograniczony czas.
 
-* **BYOL Model**: Bring-Your-Own-License (przynieś swoją licencję). W przypadku uzyskania licencji na oprogramowanie do użycia w portalu Azure Marketplace bezpośrednio od wydawcy lub odsprzedawcy, nie są naliczane wszelkie dodatkowe opłaty związane z oprogramowaniem do użycia.
+## <a name="next-steps"></a>Następne kroki
 
-* **Bezpłatne**: Bezpłatna jednostka SKU. Za użycie oferty nie są naliczane opłaty związane z licencją na oprogramowanie.
+Odwiedź stronę [przewodnika po wydawcy portalu Azure Marketplace i AppSource](/azure/marketplace/marketplace-publishers-guide) .
 
-* **Bezpłatna wersja próbna oprogramowania**: Oferta, która jest bezpłatna przez pewien czas. Wydawcy oprogramowania licencji opłaty za korzystanie z oferty za pośrednictwem okresu próbnego nie są naliczane. Automatycznie po upływie okresu próbnego, opłaty są naliczane standardowe stawki oferty.
 
-* **Na podstawie użycia**: Obciążenie opłatami lub ich rozliczane na podstawie użycia oferty. W przypadku obrazów maszyn wirtualnych jest naliczana godzinna opłata portalu Azure Marketplace. W przypadku usług dla deweloperów i interfejsu API opłaty są naliczane zgodnie z jednostką miary zdefiniowaną w ofercie.
-
-* **Opłata miesięczna**: Naliczania i rozliczane comiesięczną, stałą opłatą za subskrypcję oferty, od początku danego planu. Opłata miesięczna może być naliczana proporcjonalnie w przypadku rezygnacji w połowie miesiąca lub nieużywanych usług.
-
-Szczegóły można znaleźć na stronie szczegółów rozwiązania w [ https://azure.microsoft.com/pricing/ ](https://azure.microsoft.com/pricing/), lub w portalu zarządzania Microsoft Azure.
-
->[!Note]
->Z wyjątkiem opłat miesięcznych opłaty za użycie platformy Azure są mające zastosowanie do wszystkich modeli cenowych, chyba że określono inaczej.
-
-**Jaka jest różnica między bezpłatną warstwą a bezpłatną wersję próbną oprogramowania?**
-
-Oferta subskrypcji warstwy bezpłatna jest darmowa bezterminowo.  Oferta bezpłatna wersja próbna oprogramowania (Wypróbuj je teraz) jest płatną subskrypcję, tylko bezpłatne przez ograniczony okres czasu.
-
-**Czy muszę mieć instrument płatniczy (np. kartę kredytową) plik, aby wdrożyć w warstwie bezpłatna lub przenieść ofert licencji (BYOL)?**
-
-Nie. Nie jest wymagane do wdrożenia ofert z warstwy bezpłatna lub BYOL instrument płatniczy. Instrument taki jest jednak wymagany w przypadku ofert bezpłatnych wersji próbnych.
-
-Oferty "Pobierz teraz" lub "Bezpłatna wersja próbna oprogramowania" przyciski są wdrażane w ramach subskrypcji platformy Azure i rozliczane przy użyciu swojego konta zarejestrowanej metody płatności. Opłaty za użycie platformy Azure są rozliczane oddzielnie od opłat licencji oprogramowania.
-
-**Jeśli ma pytania dotyczące cen produktów oferowanych w portalu Azure Marketplace, kim klient z pośrednią umową Enterprise Agreement (EA) się skontaktować?**
-
-Klienci z pośrednią umową EA wszelkie pytania dotyczące cen w portalu Azure Marketplace powinni kierować do swoich dostawców rozwiązań licencjonowania.
-
-**Można kontrolować dostęp swoich pracowników do portalu Azure Marketplace i uprawnienia do dokonywania zakupów?**
-
-Tak, dla klientów EA administrator rejestracji może wyłączyć uprawnienia dla wszystkich kont w obrębie rejestracji i włącz je z powrotem na czas wystarczający do dokonania zakupu. Ponadto wszyscy klienci mogą użyć [usługi Azure Policy](https://azure.microsoft.com/services/azure-policy/) celu ograniczenia opcji wdrażania dla swoich subskrypcji platformy Azure, w tym zarządzania zasobami witryny Azure Marketplace.
-
-**Czy mogę kupić w witrynie Azure Marketplace na Moje licencjonowania zbiorowego firmy Microsoft / Enterprise Agreement?**
-
-Tak. Klienci z umową Enterprise Agreement (EA) mogą kupować aplikacje i usługi w portalu Azure Marketplace. Niezależni dostawcy oprogramowania (ISV), własnych aplikacji i usług ustawić własne ceny. W związku z tym, standardowe rabaty firmy Microsoft w ramach licencjonowania zbiorczego nie mają zastosowania przy zakupach w portalu Azure Marketplace.
-
-**Czy mogę stosować środki subskrypcyjne lub fundusze zobowiązań pieniężnych na moim koncie do zakupu portalu Azure Marketplace oferuje?**
-
-Określone oferty z portalu Azure Marketplace mogą korzystać ze środków subskrypcji lub zobowiązań pieniężnych platformy Azure. Zobacz [zobowiązań pieniężnych platformy Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) pełną listę produktów biorących udział w tym programie. Te oferty nie obejmują opcje BYOL i BYOS. Wszystkie pozostałe oferty portalu Azure Marketplace nie można użyć środków subskrypcji lub funduszy zobowiązań: takie jak bezpłatne co miesiąc środki wersji próbnej, miesięcznych środków MSDN, środków z proms platformy Azure, sald zobowiązań pieniężnych i innych bezpłatnych środków oferowanych na z Azure.
-
-**Czy rabaty w ramach licencjonowania zbiorowego mają zastosowanie do zakupów w portalu Azure Marketplace?**
-
-Nie. Niezależni dostawcy oprogramowania, którzy własne rozwiązania w witrynie Azure Marketplace można ustawić ceny. Standardowa Microsoft wolumin rabaty w ramach licencjonowania mają zastosowania przy zakupach w portalu Azure Marketplace.
-
-**Jak zapłacić za te subskrypcje? Czy moje zakupy w portalu Azure Marketplace są wyświetlane na rachunku za platformę Azure, czy istnieje innym rachunku?**
-
-Zakupy w portalu Azure Marketplace dziedziczą ta sama metoda płatności, co subskrypcja systemu Azure. One są rozliczane osobno od użycia platformy Azure, chyba że będą mogli korzystać z zobowiązania pieniężnego.
-
-MOSP — Program subskrypcji Online firmy Microsoft (web bezpośrednich) klientom zostanie naliczony względem sama karta kredytowa co w przypadku profilu subskrypcji platformy Azure. Jeśli nie masz karty kredytowej w pliku, nie można kupić w witrynie Azure Marketplace. W takim przypadku możesz otrzymanie specjalnej informacji platformy Azure za opłaty będą wystawiane dla Ciebie.
-
-Klienci z umową Enterprise Agreement (EA) są naliczane względem ich umowy EA. Określonych ofert portalu Azure Marketplace, wymienione w tym miejscu są najpierw odjęte z dowolnego dostępnego zobowiązania pieniężnego, a następnie rozliczane jako nadwyżkowe użycie w obrębie pojedynczej faktury kwartalnej. Pośrednią umową EA, education i dla instytucji rządowych, klienci są naliczane przez ich Licencjonowanie rozwiązania dostawcy (LSP).
-
-**Gdzie mogę wyświetlić Moje Szczegóły subskrypcji portalu Azure Marketplace i informacje rozliczeniowe?**
-
-MOSP, Microsoft Online Subscription Program (czyli aplikacji sieci web direct) klienci mogą wyświetlać szczegóły subskrypcji portalu Marketplace w menu "Marketplace" [portalu rozliczeń systemu Azure](https://azure.microsoft.com/). Klienci, którzy zakupili maszyny wirtualne z witryny Marketplace, mogą wyświetlać szacowane naliczone opłaty w [portalu zarządzania Microsoft Azure](https://portal.azure.com/).
-
-Klienci z umową Enterprise Agreement (EA) mogą wyświetlać szczegóły subskrypcji portalu Marketplace na karcie Azure Marketplace w widoku zarządzania kontami i rozliczeniami witryny Enterprise Portal. Uwaga: Klienci z pośrednią umową EA może zobaczyć tylko o ofercie i użyciu informacji. Szczegóły cennika nie są dostępne w witrynie Enterprise portal.
-
-**Jak anulować dodatek portalu Azure Marketplace do maszyny Wirtualnej platformy Azure?**
-
-Dodatek jest skojarzony z maszyną wirtualną platformy Azure, dlatego w celu anulowania zakupu w witrynie Azure Marketplace należy zatrzymać maszynę Wirtualną, usuwając maszynę Wirtualną. Spowoduje to zatrzymanie wykorzystania oraz opłat za kontynuację w witrynie Azure Marketplace zakupu.
-
-**Jak często są rozliczane za zakupy w portalu Azure Marketplace?**
-
-Klienci z umową Enterprise dla [usług](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/), najpierw mieć dostępne funduszy zobowiązań pieniężnych o łączny koszt tych usług na podstawie użycia. Dla wszystkich ofert portalu Azure Marketplace, które nie odejmowane od zobowiązania pieniężnego klienci są rozliczane co miesiąc z dołu.
-
-Klienci MOSP (web bezpośrednich) jest naliczana co miesiąc, względem sama karta kredytowa co w przypadku profilu subskrypcji platformy Azure.
-
-**Jak mogę przenieść zakupy w portalu Azure Marketplace z subskrypcji MOSP do mojej bezpośredniej subskrypcji Enterprise Agreement (EA)?**
-
-Mimo że większość subskrypcji firmy Microsoft można łatwo przekształcić w umowy Enterprise Agreement, nie można tak samo przekształcić zakupów dokonanych w portalu Azure Marketplace w ramach tych subskrypcji.
-
-Aby przeprowadzić migrację innych usług zakupionych w portalu Azure Marketplace do subskrypcji umowy EA, należy najpierw anulować aplikacji w ramach istniejącej subskrypcji MOSP.  Następnie ponownie kupić wirtualną witryny te aplikacje w ramach subskrypcji umowy EA.  Po wykonaniu tej czynności możesz przesłać żądanie uznania w przypadku miesiąc potencjalnego nakładania się zakresu subskrypcji usług portalu Marketplace — Utwórz [bilet pomocy technicznej](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
-
-**Jaka jest różnica między "price", "cena oprogramowania" i "cena łączna" w strukturze kosztów dla maszyny wirtualnej ofert w portalu Azure Marketplace?**
-
-„Cena” oznacza koszt maszyny wirtualnej platformy Azure służącej do uruchamiania oprogramowania. „Cena oprogramowania” oznacza koszt oprogramowania wydawcy w witrynie Marketplace, które jest uruchamiane na maszynie wirtualnej platformy Azure. „Cena łączna” oznacza połączony całkowity koszt maszyny wirtualnej platformy Azure oraz oprogramowania wydawcy w witrynie Marketplace, które jest uruchamiane na maszynie wirtualnej platformy Azure.
-
-**Czy mogę stosować środki subskrypcyjne lub fundusze zobowiązań pieniężnych na moim koncie do zakupu produktów platformy Azure i usług, które są wymagane do uruchomienia oferty w witrynie Azure Marketplace?**
-
-Tak. Środki subskrypcyjne lub fundusze zobowiązań pieniężnych platformy Azure na koncie mogą być używane do zakupu produktów platformy Azure uwzględnionych w ofertach dostępnych w witrynie Azure Marketplace. Na przykład funduszy zobowiązań pieniężnych platformy Azure można użyć na pokrycie składnika „cena” oferty maszyny wirtualnej w portalu Azure Marketplace. Jednak środki subskrypcyjne i fundusze zobowiązań pieniężnych tylko mogą być stosowane do niektórych cena oprogramowania uruchamianego na maszynie wirtualnej platformy Azure.
-
-**Jak mogę się dowiedzieć się, jaka część mojego zakupu w portalu Azure Marketplace została wykorzystana?**
-
-Po wyświetleniu pulpitu nawigacyjnego zakupów w portalu zarządzania Microsoft Azure znajdują się informacje o szacowanym użyciu. Informacji dotyczących użycia nie obejmują ostatnich działań i zależą od projektowanych podstawie przeszłego zużycia. W publicznej wersji zapoznawczej ta możliwość może nie być dostępna dla wszystkich zakupów i może się różnić w zależności od typu produktu.
-
-### <a name="customer-support"></a>Obsługa klienta
-
-**Skontaktować się z ogólnych problemów z portalu Azure Marketplace?**
-
-Obsługę ogólne aplikacji dotyczącą użycia lub rozwiązywania problemów skontaktuj się bezpośrednio z wydawcą aplikacji.
-
-W przypadku problemów Pomoc dotycząca rozliczeń i subskrypcji do zakupionego w portalu Azure Marketplace skontaktuj się z pomocą [pomocy technicznej systemu Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
-
-**Z kim mam się kontaktować, aby uzyskać pomoc techniczną dotyczącą rozwiązania zakupionego w witrynie Azure Marketplace?**
-
-Wszystkie pomoc techniczną, skontaktuj się z wydawcy portalu Azure Marketplace. Informacje kontaktowe wydawcy i/lub link do witryny sieci Web pomocy technicznej można znaleźć na stronie szczegółów rozwiązania.
-
-**Kto mam się kontaktować w przypadku rozliczeń problemów / pytań dotyczących rozwiązania innej firmy zakupionego w portalu Marketplace?**
-
-Skontaktuj się z pomocą techniczną firmy Microsoft w [pomocy technicznej platformy Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
-
-**Czy istnieje forum pomocy technicznej dla portalu Azure Marketplace?**
-
-Forum portalu Azure Marketplace można znaleźć [tutaj](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket).
-
-**Jak skontaktować się czy masz pytania dotyczące cen lub warunków związanych z rozwiązaniami partnerów sprzedawanymi w portalu Azure Marketplace?**
-
-Klienci muszą kontaktować się bezpośrednio z wydawcą rozwiązania. Informacje kontaktowe znajduje się na stronie szczegółów rozwiązania w portalu Azure Marketplace lub łącze do pomocy technicznej znajduje się do swojej witryny sieci Web.
-
-**Jeśli nie podobają, mogę zwrócić zakup?**
-
-Produktów zakupionych w witrynie Azure Marketplace nie można zwrócić, ale można anulować lub usunąć zakup. Po anulowaniu/usunięciu subskrypcji nie jest obciążana za kolejne miesiące.
-
-W przypadku problemów technicznych z usługą portalu Marketplace klienci powinni kontaktować się bezpośrednio z wydawcą. W portalu Azure Marketplace można znaleźć informacje kontaktowe wydawcy i/lub link do witryny sieci Web pomocy technicznej na **szczegóły rozwiązania** strony.
-
-## <a name="next-steps"></a>Kolejne kroki
-
-Odwiedź stronę [portalu Azure Marketplace i AppSource — przewodnik dla wydawcy](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) strony.
-
----
+[Azure Portal]: https://portal.azure.com

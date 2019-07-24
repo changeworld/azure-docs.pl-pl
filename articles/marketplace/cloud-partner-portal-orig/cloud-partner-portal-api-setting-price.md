@@ -1,29 +1,29 @@
 ---
-title: Cennik oferty maszyny wirtualnej | Portal Azure Marketplace
-description: W tym artykule wyjaśniono trzy metody określania cen oferty maszyny wirtualnej.
+title: Cennik ofert dla maszyn wirtualnych | Portal Azure Marketplace
+description: Wyjaśnia trzy metody określania cen ofert maszyn wirtualnych.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: dde3e04dc8f30ea5657139d50dd4456e5dfb57c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e398b43e679fb6420c2256e77d34359ae537ac1c
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935722"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868742"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>Cennik ofert maszyn wirtualnych
 ==================================
 
-Istnieją trzy sposoby, aby określić, cennik oferty maszyny wirtualnej: dostosowane cen core, ceny za Rdzeń oraz ceny arkusza kalkulacyjnego.
+Istnieją trzy sposoby określania cen dla ofert maszyn wirtualnych: niestandardowe ceny podstawowe, ceny za podstawowe i Cennik arkusza kalkulacyjnego.
 
 
-<a name="customized-core-pricing"></a>Podstawowe dostosowany cennik
+<a name="customized-core-pricing"></a>Dostosowane ceny podstawowe
 -----------------------
 
-Ceny są specyficzne dla każdej kombinacji region i core. Musi być określona co regionu na liście sprzedaży w **virtualMachinePricing**/**regionPrices** sekcja definicji.  Użyj kody walut poprawne dla każdego [region](#regions) w żądaniu.  W poniższym przykładzie pokazano te wymagania:
+Cennik jest specyficzny dla każdej kombinacji regionów i podstawowych. Każdy region na liście Sprzedaj musi być określony w sekcji **virtualMachinePricing**/**regionPrices** definicji.  Użyj poprawnych kodów walut dla każdego [regionu](#regions) w żądaniu.  Poniższy przykład ilustruje następujące wymagania:
 
 ``` json
     "virtualMachinePricing": 
@@ -34,21 +34,31 @@ Ceny są specyficzne dla każdej kombinacji region i core. Musi być określona 
             "currency": "USD",
                 "individually": 
                 {
-                    "sharedcore": 2,
+                    "sharedcore": 1,
                     "1core": 2,
-                    "2core": 3,
-                    "4core": 4,
-                    "6core": 5,
+                    "2core": 2,
+                    "4core": 2,
+                    "6core": 2,
                     "8core": 2,
+                    "10core": 4,
                     "12core": 4,
                     "16core": 4,
                     "20core": 4,
                     "24core": 4,
-                    "32core": 4,
-                    "36core": 4,
-                    "40core": 4,
-                    "64core": 4,
-                    "128core": 4
+                    "32core": 6,
+                    "36core": 6,
+                    "40core": 6,
+                    "44core": 6,
+                    "48core": 10,
+                    "60core": 10,
+                    "64core": 10,
+                    "72core": 10,
+                    "80core": 12,
+                    "96core": 12,
+                    "120core": 15,
+                    "128core": 15,
+                    "208core": 20,
+                    "416core": 30
                 }
         }
         ...
@@ -56,10 +66,10 @@ Ceny są specyficzne dla każdej kombinacji region i core. Musi być określona 
 ```
 
 
-<a name="per-core-pricing"></a>Ceny za rdzeń
+<a name="per-core-pricing"></a>Cennik na rdzeń
 ----------------
 
-W tym przypadku wydawców określ jedną cenę w USD w ramach ich jednostki SKU, a wszystkie inne ceny są generowane automatycznie. Cena za rdzeń jest określona w **pojedynczego** parametru w żądaniu.
+W takim przypadku wydawcy określają jedną cenę w USD dla swojej jednostki SKU, a wszystkie inne ceny są generowane automatycznie. Cena za rdzeń jest określona w pojedynczym  parametrze żądania.
 
 ``` json
      "virtualMachinePricing": 
@@ -74,10 +84,10 @@ W tym przypadku wydawców określ jedną cenę w USD w ramach ich jednostki SKU,
 ```
 
 
-<a name="spreadsheet-pricing"></a>Arkusz cen
+<a name="spreadsheet-pricing"></a>Cennik arkusza kalkulacyjnego
 -------------------
 
-Wydawcy mogą również przekazywanie ich arkusza cen do tymczasowej lokalizacji przechowywania, a następnie zawierać identyfikator URI żądania, podobnie jak inne artefakty pliku. Arkusz kalkulacyjny następnie przekazaniu przetłumaczone do oceny, harmonogram określoną cenę i aktualizuje oferty z informacje o cenach. Kolejne żądania GET do oferty spowoduje zwrócenie identyfikatora URI w arkusza kalkulacyjnego i szacowane ceny dla regionu.
+Wydawca może również przekazać swój arkusz cen do tymczasowej lokalizacji przechowywania, a następnie dołączyć identyfikator URI w żądaniu, jak inne artefakty plików. Arkusz kalkulacyjny zostanie następnie przekazany, przetłumaczony w celu oszacowania określonego harmonogramu cen, a wreszcie aktualizuje ofertę przy użyciu informacji o cenach. Kolejne żądania GET dla oferty zwracają identyfikator URI arkusza kalkulacyjnego oraz ocenione ceny dla regionu.
 
 ``` json
      "virtualMachinePricing": 
@@ -90,10 +100,16 @@ Wydawcy mogą również przekazywanie ich arkusza cen do tymczasowej lokalizacji
      }
 ```
 
-<a name="regions"></a>Regiony
+<a name="new-core-sizes-added-on-722019"></a>Nowe rozmiary podstawowe dodane do 7/2/2019
+---------------------------
+
+Wydawca maszyn wirtualnych został powiadomiony 2 lipca 2019 o dodawaniu nowych cen dla nowych rozmiarów maszyn wirtualnych platformy Azure (na podstawie liczby rdzeni).  Nowe ceny są dla wielkości rdzeni 10, 44, 48, 60, 120, 208 i 416.  W przypadku istniejącej maszyny wirtualnej nowe ceny dla tych rozmiarów rdzeni zostały automatycznie obliczone na podstawie bieżących cen.  Wydawcy mają do 1 sierpnia 2019 w celu przejrzenia dodatkowych cen i wprowadzenia wymaganych zmian.  Po tej dacie, jeśli nie została jeszcze ponownie opublikowana przez wydawcę, automatycznie obliczone ceny dla tych nowych rozmiarów podstawowych zaczną obowiązywać.
+
+
+<a name="regions"></a>Regions
 -------
 
-W poniższej tabeli przedstawiono różnych regionach, że można określić dostosowanego podstawowe ceny i odpowiadające im kody walut.
+W poniższej tabeli przedstawiono różne regiony, które można określić dla dostosowywanych podstawowych cen i ich kodów walutowych.
 
 | **Region** | **Nazwa**             | **Kod waluty** |
 |------------|----------------------|-------------------|
@@ -128,7 +144,7 @@ W poniższej tabeli przedstawiono różnych regionach, że można określić dos
 | HU         | Węgry              | HUF               |
 | IS         | Islandia              | ISK               |
 | IN         | Indie                | INR               |
-| ID         | Indonezja            | IDR               |
+| id         | Indonezja            | IDR               |
 | IE         | Irlandia              | EUR               |
 | IL         | Izrael               | ILS               |
 | IT         | Włochy                | EUR               |
@@ -142,7 +158,7 @@ W poniższej tabeli przedstawiono różnych regionach, że można określić dos
 | LI         | Liechtenstein        | CHF               |
 | LT         | Litwa            | EUR               |
 | LU         | Luksemburg           | EUR               |
-| MK         | Macedonia Północna      | MKD               |
+| MK         | Północna Macedonia      | MKD               |
 | MY         | Malezja             | MYR               |
 | MT         | Malta                | EUR               |
 | MX         | Meksyk               | MXN               |
@@ -152,11 +168,11 @@ W poniższej tabeli przedstawiono różnych regionach, że można określić dos
 | NZ         | Nowa Zelandia          | NZD               |
 | NG         | Nigeria              | NGN               |
 | NO         | Norwegia               | NOK               |
-| OM         | Oman                 | OMA               |
+| OM         | Oman                 | OMR               |
 | PK         | Pakistan             | PKR               |
 | PA         | Panama               | USD               |
 | PY         | Paragwaj             | PYG               |
-| PE         | Peru                 | PIÓRA               |
+| PE         | Peru                 | ZA               |
 | PH         | Filipiny          | PHP               |
 | PL         | Polska               | PLN               |
 | PT         | Portugalia             | EUR               |

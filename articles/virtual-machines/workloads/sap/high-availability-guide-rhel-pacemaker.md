@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie program Pacemaker w systemie Red Hat Enterprise Linux na platformie Azure | Dokumentacja firmy Microsoft
-description: Konfigurowanie program Pacemaker w systemie Red Hat Enterprise Linux na platformie Azure
+title: Konfigurowanie Pacemaker Red Hat Enterprise Linux na platformie Azure | Microsoft Docs
+description: Konfigurowanie Pacemaker Red Hat Enterprise Linux na platformie Azure
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: mssedusch
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: e082afb212be46c40566eb643d01bc37eababfa6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dc703f02ecf5dbaf5eb69e8e20918415e76ba469
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65992147"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68228377"
 ---
-# <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Konfigurowanie program Pacemaker w systemie Red Hat Enterprise Linux na platformie Azure
+# <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Konfigurowanie Pacemaker Red Hat Enterprise Linux na platformie Azure
 
 [planning-guide]:planning-guide.md
 [deployment-guide]:deployment-guide.md
@@ -39,45 +39,46 @@ ms.locfileid: "65992147"
 
 [virtual-machines-linux-maintenance]:../../linux/maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot
 
-> [!NOTE]
-> Program pacemaker w systemie Red Hat Enterprise Linux używa agenta Odgradzania platformy Azure do ogrodzenia węzła klastra, jeśli jest to wymagane. Przejścia w tryb failover może potrwać do 15 minut, jeśli stop zasobów ulegnie awarii lub węzłów klastra nie może komunikować się które sobie nawzajem już. Aby uzyskać więcej informacji, przeczytaj [uruchamianie jako członek klastra systemu RHEL wysokiej dostępności maszyny Wirtualnej platformy Azure potrwać bardzo długo się ogrodzonych lub nie powiedzie się preferowane / limit czasu przed zamknięciem maszyny Wirtualnej](https://access.redhat.com/solutions/3408711)
+> [!TIP]
+> Pacemaker na Red Hat Enterprise Linux używa agenta usługi Azure ogrodzenia do obogrodzenia węzła klastra, jeśli jest to wymagane. Dostępna jest nowa wersja agenta usługi Azure ogrodzenia i przełączenie w tryb failover nie trwa dłużej, jeśli zatrzymanie zasobu nie powiedzie się lub węzły klastra nie mogą komunikować się z sobą. Aby uzyskać więcej informacji, zapoznaj [się z maszyną wirtualną platformy Azure działającą jako SKŁADOWA RHEL o wysokiej dostępności, która zajmuje bardzo dużo czasu, lub niepowodzenie/przekroczenie limitu czasu przed zamknięciem maszyny wirtualnej](https://access.redhat.com/solutions/3408711)
 
-Najpierw przeczytaj następujące uwagi SAP i dokumenty:
+Przeczytaj najpierw następujące informacje i dokumenty SAP:
 
-* Uwaga SAP [1928533], która zawiera:
+* Nota SAP [1928533], która ma:
   * Lista rozmiarów maszyn wirtualnych platformy Azure, które są obsługiwane w przypadku wdrażania oprogramowania SAP.
-  * Pojemność ważne informacje dotyczące rozmiarów maszyn wirtualnych platformy Azure.
-  * Obsługiwane oprogramowanie SAP i kombinacji systemu operacyjnego (OS) i bazy danych.
-  * Wymagana wersja jądra SAP dla Windows i Linux w systemie Microsoft Azure.
-* Uwaga SAP [2015553] wymieniono wymagania wstępne dotyczące wdrażania oprogramowania SAP obsługiwane przez oprogramowanie SAP na platformie Azure.
-* Uwaga SAP [2002167] zawiera zalecane ustawienia systemu operacyjnego Red Hat Enterprise Linux
-* SAP Note [2009879] has SAP HANA Guidelines for Red Hat Enterprise Linux
-* Uwaga SAP [2178632] zawiera szczegółowe informacje o metrykach wszystkie funkcje monitorowania zgłoszone dla rozwiązania SAP na platformie Azure.
-* Uwaga SAP [2191498] ma wymaganą wersję agenta hosta SAP dla systemu Linux na platformie Azure.
-* Uwaga SAP [2243692] zawiera informacje o licencjonowaniu SAP, w systemie Linux na platformie Azure.
-* Uwaga SAP [1999351] zawiera dodatkowe informacje dotyczące rozwiązywania problemów rozszerzenia platformy Azure Enhanced Monitoring dla rozwiązania SAP.
-* [WIKI społeczności SAP](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) ma wszystkie wymagane informacje o SAP dla systemu Linux.
-* [Azure maszyny wirtualne, planowania i implementacji dla rozwiązania SAP w systemie Linux][planning-guide]
-* [Wdrażania maszyn wirtualnych platformy Azure dla rozwiązania SAP w systemie Linux (w tym artykule)][deployment-guide]
-* [Wdrażania systemu DBMS na maszynach wirtualnych platformy Azure dla rozwiązania SAP w systemie Linux][dbms-guide]
-* [Replikacja systemu SAP HANA w klastrze program pacemaker](https://access.redhat.com/articles/3004101)
-* Dokumentacja systemu RHEL ogólne
-  * [Omówienie dodatek wysokiej dostępności](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
-  * [Administracja dodatek wysokiej dostępności](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-  * [Dokumentacja dodatek wysokiej dostępności](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
-* Usługa Azure RHEL dokumentacji:
-  * [Zasady pomocy technicznej w przypadku klastrów o wysokiej dostępności systemu RHEL — maszyny wirtualne platformy Microsoft Azure jako elementów członkowskich klastra](https://access.redhat.com/articles/3131341)
-  * [Instalowanie i konfigurowanie Red Hat Enterprise Linux 7.4 (lub nowszy) o wysokiej dostępności klastra w systemie Microsoft Azure](https://access.redhat.com/articles/3252491)
+  * Ważne informacje o pojemności dla rozmiarów maszyn wirtualnych platformy Azure.
+  * Obsługiwane programy SAP i system operacyjny oraz kombinacje baz danych.
+  * Wymagana wersja jądra SAP dla systemu Windows i Linux w systemie Microsoft Azure.
+* Uwaga dotycząca protokołu SAP [2015553] zawiera listę wymagań wstępnych dotyczących wdrożeń oprogramowania SAP obsługiwanych przez oprogramowanie SAP na platformie Azure.
+* W przypadku programu SAP Uwaga [2002167] zalecane ustawienia systemu operacyjnego dla Red Hat Enterprise Linux
+* Uwaga dotycząca oprogramowania SAP [2009879] SAP HANA wytycznych dotyczących Red Hat Enterprise Linux
+* Uwaga dotycząca oprogramowania SAP [2178632] zawiera szczegółowe informacje o wszystkich metrykach monitorowania raportowanych dla oprogramowania SAP na platformie Azure.
+* Uwaga dotycząca programu SAP [2191498] ma wymaganą wersję agenta hosta SAP dla systemu Linux na platformie Azure.
+* Uwaga dotycząca oprogramowania SAP [2243692] zawiera informacje na temat licencjonowania SAP w systemie Linux na platformie Azure.
+* Uwaga dotycząca programu SAP [1999351] zawiera dodatkowe informacje dotyczące rozwiązywania problemów z rozszerzoną funkcją monitorowania platformy Azure dla oprogramowania SAP.
+* [Społeczność systemu SAP](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) na stronie wiki ma wszystkie wymagane uwagi SAP dla systemu Linux.
+* [Planowanie i wdrażanie usługi Azure Virtual Machines dla oprogramowania SAP w systemie Linux][planning-guide]
+* [Wdrożenie Virtual Machines platformy Azure dla oprogramowania SAP w systemie Linux (ten artykuł)][deployment-guide]
+* [Wdrożenie systemu Azure Virtual Machines DBMS dla oprogramowania SAP w systemie Linux][dbms-guide]
+* [Replikacja systemu SAP HANA w klastrze Pacemaker](https://access.redhat.com/articles/3004101)
+* Ogólna dokumentacja RHEL
+  * [Omówienie dodatku wysokiej dostępności](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
+  * [Administracja dodatkiem wysokiej dostępności](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+  * [Dodatkowe informacje o wysokiej dostępności](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+* Dokumentacja RHEL specyficzna dla platformy Azure:
+  * [Zasady obsługi klastrów RHEL o wysokiej dostępności — Microsoft Azure Virtual Machines jako elementy członkowskie klastra](https://access.redhat.com/articles/3131341)
+  * [Instalowanie i Konfigurowanie Red Hat Enterprise Linux 7,4 (i nowszych) klastra o wysokiej dostępności na Microsoft Azure](https://access.redhat.com/articles/3252491)
+  * [Konfigurowanie protokołu SAP S/4HANA ASCS/wykres WYWOŁUJĄCYCH przy użyciu autonomicznej kolejki serwer 2 (ENSA2) w Pacemaker na RHEL 7,6](https://access.redhat.com/articles/3974941)
 
 ## <a name="cluster-installation"></a>Instalacja klastra
 
-![Program pacemaker w RHEL — omówienie](./media/high-availability-guide-rhel-pacemaker/pacemaker-rhel.png)
+![Pacemaker na RHEL — Omówienie](./media/high-availability-guide-rhel-pacemaker/pacemaker-rhel.png)
 
 Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do wszystkich węzłów, **[1]** — dotyczy to tylko węzeł 1 lub **[2]** — dotyczy to tylko węzeł 2.
 
-1. **[A]**  Zarejestrować
+1. Rejestr **[A]**
 
-   Rejestrowanie maszyn wirtualnych i dołączyć go do puli, która zawiera repozytoriów RHEL 7.
+   Zarejestruj maszyny wirtualne i Dołącz je do puli zawierającej repozytoria dla RHEL 7.
 
    <pre><code>sudo subscription-manager register
    # List the available pools
@@ -85,27 +86,40 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
-   Należy zauważyć, że przez dołączenie puli do obrazu systemu RHEL PAYG Marketplace usługi Azure, będzie skutecznie rozliczane podwójnej precyzji zrozumiała dla Ciebie RHEL: jeden raz dla obrazu PAYG i raz uprawnienie RHEL w puli, możesz dołączyć. Aby temu zaradzić, Azure udostępnia teraz BYOS RHEL obrazów. Więcej informacji znajduje się [tutaj](https://aka.ms/rhel-byos).
+   Należy pamiętać, że przez dołączenie puli do obrazu programu RHEL z witryny Azure Marketplace w witrynie PAYG, opłaty są naliczane dwukrotnie za użycie RHEL: jeden dla obrazu PAYG i jeden raz dla uprawnienia RHEL w puli, którą dołączysz. Aby rozwiązać ten problem, platforma Azure udostępnia teraz obrazy BYOS RHEL. Więcej informacji można znaleźć [tutaj](https://aka.ms/rhel-byos).
 
-1. **[A]**  Włączyć RHEL for SAP repozytoriów
+1. **[A]** Włącz RHEL dla REPOZYTORIów SAP
 
-   Aby zainstalować wymagane pakiety, należy włączyć następujące repozytoriów.
+   Aby zainstalować wymagane pakiety, należy włączyć następujące repozytoria.
 
    <pre><code>sudo subscription-manager repos --disable "*"
    sudo subscription-manager repos --enable=rhel-7-server-rpms
    sudo subscription-manager repos --enable=rhel-ha-for-rhel-7-server-rpms
-   sudo subscription-manager repos --enable="rhel-sap-for-rhel-7-server-rpms"
+   sudo subscription-manager repos --enable=rhel-sap-for-rhel-7-server-rpms
+   sudo subscription-manager repos --enable=rhel-ha-for-rhel-7-server-eus-rpms
    </code></pre>
 
-1. **[A]**  Zainstalować dodatek wysokiej dostępności systemu RHEL
+1. **[A]** Zainstaluj dodatek RHEL ha
 
    <pre><code>sudo yum install -y pcs pacemaker fence-agents-azure-arm nmap-ncat
+   </code></pre>
+
+   > [!IMPORTANT]
+   > Firma Microsoft zaleca, aby klienci korzystali z szybszych czasów pracy awaryjnej (lub nowszych), jeśli zakończy się niepowodzeniem, lub węzły klastra nie mogą komunikować się, które są już takie:  
+   > RHEL 7,6: Fence-Agents-4.2.1 -11. el7 _  
+   > RHEL 7,5: Fence-Agents-4.0.11 -86. el7 _ 5.8  
+   > RHEL 7,4: Fence-Agents-4.0.11 -66. el7 _ 4.12  
+   > Aby uzyskać więcej informacji, zobacz [maszynę wirtualną platformy Azure działającą jako SKŁADOWA RHEL o wysokiej dostępności trwa bardzo długo lub nie można przekroczyć limitu czasu przed zamknięciem maszyny wirtualnej](https://access.redhat.com/solutions/3408711)
+
+   Sprawdź wersję agenta usługi Azure ogrodzenia. W razie potrzeby zaktualizuj ją do wersji równej lub nowszej niż podane powyżej.
+   <pre><code># Check the version of the Azure Fence Agent
+    sudo yum info fence-agents-azure-arm
    </code></pre>
 
 1. **[A]**  Konfigurowanie rozpoznawania nazw hostów
 
    Można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. W tym przykładzie pokazano, jak przy użyciu pliku/etc/hosts.
-   Zastąp adres IP i nazwy hosta w poniższych poleceniach. Zaletą używania/etc/hosts to, że klaster stają się niezależnie od systemu DNS, który może być pojedynczym punktem awarii za.
+   Zastąp adres IP i nazwy hosta w poniższych poleceniach. Zaletą używania/etc/hosts będzie niezależnie od systemu DNS, co może być zbyt pojedynczy punkt awarii klastra.
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
@@ -123,25 +137,25 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    <pre><code>sudo passwd hacluster
    </code></pre>
 
-1. **[A]**  Dodać reguły zapory dla program pacemaker
+1. **[A]** dodawanie reguł zapory dla Pacemaker
 
-   Dodaj następujące reguły zapory, aby cała komunikacja klastra między węzłami klastra.
+   Dodaj następujące reguły zapory do całej komunikacji między węzłami klastra.
 
    <pre><code>sudo firewall-cmd --add-service=high-availability --permanent
    sudo firewall-cmd --add-service=high-availability
    </code></pre>
 
-1. **[A]**  Włączenie usług podstawowy klaster
+1. **[A]** Włącz podstawowe usługi klastra
 
-   Uruchom następujące polecenia, aby włączyć usługę program Pacemaker i należy ją uruchomić.
+   Uruchom następujące polecenia, aby włączyć usługę Pacemaker i ją uruchomić.
 
    <pre><code>sudo systemctl start pcsd.service
    sudo systemctl enable pcsd.service
    </code></pre>
 
-1. **[1]**  Klastra Utwórz program Pacemaker
+1. **[1]** Utwórz klaster Pacemaker
 
-   Uruchom następujące polecenia, aby uwierzytelniać węzły i utworzyć klaster. Ustaw token 30000 umożliwia zachowywanie konserwacji pamięci. Aby uzyskać więcej informacji, zobacz [ten artykuł dla systemu Linux][virtual-machines-linux-maintenance].
+   Uruchom następujące polecenia, aby uwierzytelnić węzły i utworzyć klaster. Ustaw token na 30000, aby zezwalać na konserwację pamięci. Aby uzyskać więcej informacji, zobacz [ten artykuł dla systemu Linux][virtual-machines-linux-maintenance].
 
    <pre><code>sudo pcs cluster auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
    sudo pcs cluster setup --name <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> --token 30000
@@ -171,25 +185,27 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    #   pcsd: active/enabled
    </code></pre>
 
-1. **[A]**  Ustaw oczekiwanego głosów
+1. **[A]** Ustaw oczekiwane głosy
 
    <pre><code>sudo pcs quorum expected-votes 2
    </code></pre>
 
-## <a name="create-stonith-device"></a>Utwórz urządzenie pomocą metody STONITH
+## <a name="create-stonith-device"></a>Utwórz urządzenie STONITH
 
 Urządzenie pomocą metody STONITH używa nazwy głównej usługi, do autoryzacji dla Microsoft Azure. Wykonaj następujące kroki, aby utworzyć jednostkę usługi.
 
 1. Przejdź do strony <https://portal.azure.com>
-1. Otwórz blok usługi Azure Active Directory, przejdź do właściwości i zanotuj nazwę katalogu. Jest to **identyfikator dzierżawy**.
+1. Otwórz blok usługi Azure Active Directory  
+   Przejdź do właściwości i zanotuj nazwę katalogu. Jest to **identyfikator dzierżawy**.
 1. Kliknij przycisk rejestracje aplikacji
-1. Kliknij pozycję Dodaj.
-1. Wprowadź nazwę, wybierz typ aplikacji "Aplikacja/interfejsu API sieci Web", wprowadź adres URL logowania (na przykład http:\//localhost) i kliknij przycisk Utwórz
-1. Adres URL logowania nie jest używany i może być dowolny prawidłowy adres URL
-1. Wybierz nową aplikację, a następnie kliknij przycisk kluczy na karcie Ustawienia
-1. Wprowadź opis nowego klucza, wybierz pozycję "Nigdy nie wygasa" i kliknij przycisk Zapisz
+1. Kliknij pozycję Nowa rejestracja
+1. Wprowadź nazwę, wybierz pozycję "konta tylko w tym katalogu organizacji". 
+2. Wybierz pozycję typ aplikacji "sieć Web", wprowadź adres URL logowania (na przykład http:\//localhost), a następnie kliknij przycisk Dodaj.  
+   Adres URL logowania nie jest używany i może być dowolny prawidłowy adres URL
+1. Wybierz pozycję Certyfikaty i wpisy tajne, a następnie kliknij pozycję Nowy wpis tajny klienta.
+1. Wprowadź opis nowego klucza, wybierz pozycję "nigdy nie wygasa" i kliknij przycisk Dodaj.
 1. Zanotuj wartość. Jest ona używana jako **hasło** jednostki usługi
-1. Zanotuj identyfikator aplikacji. Jest ona używana jako nazwa użytkownika (**Identyfikatora logowania** w poniższych krokach) jednostki usługi
+1. Wybierz pozycję przegląd. Zanotuj identyfikator aplikacji. Jest ona używana jako nazwa użytkownika (**Identyfikatora logowania** w poniższych krokach) jednostki usługi
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]**  Utworzyć rolę niestandardową dla agenta odgradzania
 
@@ -217,7 +233,7 @@ Użyj zawartości dla pliku wejściowego. Należy dostosować zawartość dla Tw
 }
 ```
 
-### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]**  Przypisać rolę niestandardową nazwę główną usługi
+### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]** Przypisz rolę niestandardową do jednostki usługi
 
 Przypisz rolę niestandardową "Linux horyzont agenta rolę" utworzonego w rozdziale ostatniego jednostki usługi. Nie używaj roli właściciel już!
 
@@ -240,21 +256,21 @@ Po edycji uprawnień dla maszyn wirtualnych można skonfigurować urządzenia po
 sudo pcs property set stonith-timeout=900
 </code></pre>
 
-Użyj następującego polecenia, aby skonfigurować urządzenie ogranicznika.
+Użyj następującego polecenia, aby skonfigurować urządzenie ogrodzenia.
 
 > [!NOTE]
-> Opcja "pcmk_host_map" jest wymagana tylko w poleceniu, jeśli nazwy hosta systemu RHEL i nazwy węzłów platformy Azure nie są identyczne. Zapoznaj się z sekcją pogrubienia, w poleceniu.
+> Opcja "pcmk_host_map" jest wymagana tylko w poleceniu, jeśli nazwy hostów RHEL i nazwy węzłów platformy Azure nie są identyczne. Zapoznaj się z sekcją pogrubienie w poleceniu.
 
 <pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> power_timeout=240 pcmk_reboot_timeout=900</code></pre>
 
-### <a name="1-enable-the-use-of-a-stonith-device"></a>**[1]**  Korzystanie z urządzenia pomocą metody STONITH
+### <a name="1-enable-the-use-of-a-stonith-device"></a>**[1]** Włącz korzystanie z urządzenia STONITH
 
 <pre><code>sudo pcs property set stonith-enabled=true
 </code></pre>
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Azure maszyny wirtualne, planowania i implementacji dla rozwiązania SAP][planning-guide]
-* [Wdrażania maszyn wirtualnych platformy Azure dla rozwiązania SAP][deployment-guide]
-* [Wdrażania systemu DBMS na maszynach wirtualnych platformy Azure dla rozwiązania SAP][dbms-guide]
-* Aby dowiedzieć się, jak zadbać o wysokiej dostępności i plan odzyskiwania po awarii oprogramowania SAP Hana na maszynach wirtualnych platformy Azure, zobacz [wysokiej dostępności dla oprogramowania SAP HANA w usłudze Azure Virtual Machines (VMs)][sap-hana-ha]
+* [Planowanie i wdrażanie Virtual Machines platformy Azure dla oprogramowania SAP][planning-guide]
+* [Wdrożenie Virtual Machines platformy Azure dla oprogramowania SAP][deployment-guide]
+* [Wdrożenie systemu Azure Virtual Machines DBMS dla oprogramowania SAP][dbms-guide]
+* Aby dowiedzieć się, jak zapewnić wysoką dostępność i zaplanować odzyskiwanie po awarii SAP HANA na maszynach wirtualnych platformy Azure, zobacz [wysoka dostępność SAP HANA na platformie azure Virtual Machines (maszyny wirtualne)][sap-hana-ha]

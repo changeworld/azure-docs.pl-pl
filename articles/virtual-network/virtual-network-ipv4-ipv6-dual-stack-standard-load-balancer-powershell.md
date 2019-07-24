@@ -1,7 +1,7 @@
 ---
-title: Wdrażanie aplikacji dwustosowej IPv6 w usłudze Azure Virtual Network — PowerShell
+title: Wdrażanie aplikacji podwójnego stosu IPv6 przy użyciu usługa Load Balancer w warstwie Standardowa w usłudze Azure Virtual Network — PowerShell
 titlesuffix: Azure Virtual Network
-description: W tym artykule pokazano, jak wdrożyć aplikację dwustosową protokołu IPv6 w usłudze Azure Virtual Network przy użyciu programu Azure PowerShell.
+description: W tym artykule pokazano, jak wdrożyć aplikację dwustosową IPv6 za pomocą usługa Load Balancer w warstwie Standardowa w usłudze Azure Virtual Network przy użyciu programu Azure PowerShell.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: b9a6b0ee6796acc2b9adc88480f6933af413e4e6
+ms.openlocfilehash: 99e01aa611eea3d6379e2a250cc99d121e41aa82
 ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/16/2019
-ms.locfileid: "68260844"
+ms.locfileid: "68269678"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-in-azure---powershell-preview"></a>Wdrażanie aplikacji podwójnego stosu IPv6 na platformie Azure — PowerShell (wersja zapoznawcza)
+# <a name="deploy-an-ipv6-dual-stack-application-with-standard-load-balancer-in-azure---powershell-preview"></a>Wdrażanie aplikacji podwójnego stosu IPv6 przy użyciu usługa Load Balancer w warstwie Standardowa na platformie Azure — PowerShell (wersja zapoznawcza)
 
 W tym artykule pokazano, jak wdrożyć aplikację dwuwarstwową (IPv4 + IPv6) na platformie Azure, która obejmuje sieć wirtualną o podwójnej stercie i podsieć, moduł równoważenia obciążenia z konfiguracją frontonu Dual (IPv4 + IPv6), maszyny wirtualne z kartami sieciowymi z konfiguracją Dual IP, Sieć Grupa zabezpieczeń i publiczne adresy IP.
 
@@ -35,7 +35,6 @@ Jeśli zdecydujesz się zainstalować program PowerShell i używać go lokalnie,
 Przed wdrożeniem aplikacji o podwójnej stercie na platformie Azure należy skonfigurować subskrypcję tej funkcji w wersji zapoznawczej, korzystając z następującej Azure PowerShell:
 
 Zarejestruj się w następujący sposób:
-
 ```azurepowershell
 Register-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
 Register-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
@@ -43,7 +42,7 @@ Register-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespa
 Ukończenie rejestracji funkcji może potrwać do 30 minut. Stan rejestracji można sprawdzić, uruchamiając następujące polecenie Azure PowerShell: Sprawdź rejestrację w następujący sposób:
 ```azurepowershell
 Get-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
-Get-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
+Get-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace 
 ```
 Po zakończeniu rejestracji Uruchom następujące polecenie:
 
@@ -69,15 +68,17 @@ $PublicIP_v4 = New-AzPublicIpAddress `
   -Name "dsPublicIP_v4" `
   -ResourceGroupName $rg.ResourceGroupName `
   -Location $rg.Location  `
-  -AllocationMethod Dynamic `
-  -IpAddressVersion IPv4
+  -AllocationMethod Static `
+  -IpAddressVersion IPv4 `
+  -Sku Standard
   
 $PublicIP_v6 = New-AzPublicIpAddress `
   -Name "dsPublicIP_v6" `
   -ResourceGroupName $rg.ResourceGroupName `
   -Location $rg.Location  `
-  -AllocationMethod Dynamic `
-  -IpAddressVersion IPv6
+  -AllocationMethod Static `
+  -IpAddressVersion IPv6 `
+  -Sku Standard
 ```
 Aby uzyskać dostęp do maszyn wirtualnych przy użyciu połączenia RDP, należy utworzyć publiczne adresy IP dla maszyn wirtualnych przy użyciu polecenia [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress).
 
@@ -86,20 +87,22 @@ Aby uzyskać dostęp do maszyn wirtualnych przy użyciu połączenia RDP, należ
   -Name "RdpPublicIP_1" `
   -ResourceGroupName $rg.ResourceGroupName `
   -Location $rg.Location  `
-  -AllocationMethod Dynamic `
+  -AllocationMethod Static `
+  -Sku Standard `
   -IpAddressVersion IPv4
   
   $RdpPublicIP_2 = New-AzPublicIpAddress `
    -Name "RdpPublicIP_2" `
    -ResourceGroupName $rg.ResourceGroupName `
    -Location $rg.Location  `
-   -AllocationMethod Dynamic `
+   -AllocationMethod Static `
+   -Sku Standard `
    -IpAddressVersion IPv4
 ```
 
-## <a name="create-basic-load-balancer"></a>Tworzenie podstawowego modułu równoważenia obciążenia
+## <a name="create-standard-load-balancer"></a>Tworzenie usługi Load Balancer w warstwie Standardowa
 
-W tej sekcji należy skonfigurować podwójny adres IP frontonu (IPv4 i IPv6) oraz pulę adresów zaplecza dla modułu równoważenia obciążenia, a następnie utworzyć podstawową Load Balancer.
+W tej sekcji należy skonfigurować podwójny adres IP frontonu (IPv4 i IPv6) oraz pulę adresów zaplecza dla modułu równoważenia obciążenia, a następnie utworzyć usługa Load Balancer w warstwie Standardowa.
 
 ### <a name="create-front-end-ip"></a>Tworzenie adresu IP frontonu
 
@@ -154,14 +157,14 @@ $lbrule_v6 = New-AzLoadBalancerRuleConfig `
 
 ### <a name="create-load-balancer"></a>Tworzenie modułu równoważenia obciążenia
 
-Utwórz podstawowy moduł równoważenia obciążenia przy użyciu polecenia [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer). Poniższy przykład tworzy publiczną Load Balancer o nazwie *myLoadBalancer* przy użyciu konfiguracji IP frontonu IPv4 i IPv6, pul zaplecza i reguł równoważenia obciążenia, które zostały utworzone w poprzednich krokach:
+Utwórz usługa Load Balancer w warstwie Standardowa za pomocą elementu [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer). Poniższy przykład tworzy publiczną usługa Load Balancer w warstwie Standardowa o nazwie *myLoadBalancer* przy użyciu konfiguracji IP frontonu IPv4 i IPv6, pul zaplecza i reguł równoważenia obciążenia, które zostały utworzone w poprzednich krokach:
 
 ```azurepowershell-interactive
 $lb = New-AzLoadBalancer `
 -ResourceGroupName $rg.ResourceGroupName `
 -Location $rg.Location  `
 -Name "MyLoadBalancer" `
--Sku "Basic" `
+-Sku "Standard" `
 -FrontendIpConfiguration $frontendIPv4,$frontendIPv6 `
 -BackendAddressPool $backendPoolv4,$backendPoolv6 `
 -LoadBalancingRule $lbrule_v4,$lbrule_v6
@@ -378,4 +381,4 @@ Remove-AzResourceGroup -Name dsRG1
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule opisano tworzenie podstawowego Load Balancer z konfiguracją dwóch adresów IP frontonu (IPv4 i IPv6). Utworzono również dwie maszyny wirtualne, które zawierają karty sieciowe z dwoma konfiguracjami protokołu IP (IPV4 + IPv6), które zostały dodane do puli zaplecza modułu równoważenia obciążenia. Aby dowiedzieć się więcej o obsłudze protokołu IPv6 w sieciach wirtualnych platformy Azure, zobacz [co to jest protokół IPv6 dla systemu azure Virtual Network?](ipv6-overview.md)
+W tym artykule opisano tworzenie usługa Load Balancer w warstwie Standardowa z konfiguracją dwóch adresów IP frontonu (IPv4 i IPv6). Utworzono również dwie maszyny wirtualne, które zawierają karty sieciowe z dwoma konfiguracjami protokołu IP (IPV4 + IPv6), które zostały dodane do puli zaplecza modułu równoważenia obciążenia. Aby dowiedzieć się więcej o obsłudze protokołu IPv6 w sieciach wirtualnych platformy Azure, zobacz [co to jest protokół IPv6 dla systemu azure Virtual Network?](ipv6-overview.md)

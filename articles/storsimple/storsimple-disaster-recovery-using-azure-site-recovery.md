@@ -1,6 +1,6 @@
 ---
-title: Automatyzowanie fileshare StorSimple odzyskiwania po awarii przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano kroki i najlepsze rozwiązania dotyczące tworzenia rozwiązania do odzyskiwania po awarii, udziałów plików w serwisie Microsoft Azure StorSimple do magazynowania.
+title: Automatyzowanie odzyskiwania po awarii StorSimple z użyciem Azure Site Recovery | Microsoft Docs
+description: Zawiera opis kroków i najlepszych rozwiązań dotyczących tworzenia rozwiązania do odzyskiwania po awarii dla udziałów plików hostowanych w usłudze Microsoft Azure StorSimple Storage.
 services: storsimple
 documentationcenter: NA
 author: vidarmsft
@@ -13,195 +13,195 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
-ms.author: vidarmsft
-ms.openlocfilehash: 8c82170cf9cff1870739bb13db9ac0e348a46c07
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: alkohli
+ms.openlocfilehash: 650798fdb884e6494990efb533335a1dd8b4d89f
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443060"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875389"
 ---
-# <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Zautomatyzowane rozwiązanie odzyskiwania po awarii przy użyciu usługi Azure Site Recovery dla udziałów plików w serwisie StorSimple
+# <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Automatyczne rozwiązanie do odzyskiwania po awarii wykorzystujące Azure Site Recovery dla udziałów plików hostowanych w usłudze StorSimple
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>Przegląd
-Usługa Microsoft Azure StorSimple to hybrydowe rozwiązanie magazynu w chmurze odnoszący się do złożoności danych bez struktury, zwykle powiązanych ze udziałów plików. Usługa StorSimple używa magazynu w chmurze jako rozszerzenia rozwiązania lokalnego i automatycznie warstwy danych przez Magazyn lokalny oraz Magazyn w chmurze. Zintegrowana ochrona danych z lokalnego oraz migawki w chmurze, eliminuje potrzebę stosowania sprawling infrastruktury magazynu.
+## <a name="overview"></a>Omówienie
+Microsoft Azure StorSimple to hybrydowe rozwiązanie do magazynowania w chmurze, które eliminuje złożoność danych bez struktury często skojarzonych z udziałami plików. Usługa StorSimple używa magazynu w chmurze jako rozszerzenia rozwiązania lokalnego i automatycznie warstwuje dane w magazynach lokalnych i w chmurze. Zintegrowana ochrona danych z migawkami lokalnymi i w chmurze eliminuje potrzebę infrastruktury magazynu sprawling.
 
-[Usługa Azure Site Recovery](../site-recovery/site-recovery-overview.md) to usługa oparta na platformie Azure, która oferuje możliwości odzyskiwania po awarii poprzez organizowanie replikacji, trybu failover i odzyskiwanie maszyn wirtualnych. Usługa Azure Site Recovery obsługuje wiele technologii replikacji stale replikować, ochronę i bezproblemowo w tryb failover maszyny wirtualne i aplikacje do publicznego i prywatnego lub hostowanej chmury.
+[Azure Site Recovery](../site-recovery/site-recovery-overview.md) to usługa oparta na platformie Azure, która zapewnia możliwości odzyskiwania po awarii (Dr) przez organizowanie replikacji, trybu failover i odzyskiwania maszyn wirtualnych. Azure Site Recovery obsługuje wiele technologii replikacji, które umożliwiają spójną replikację, ochronę i bezproblemowe przełączanie maszyn wirtualnych i aplikacji do chmur prywatnych/publicznych lub hostowanych.
 
-Za pomocą usługi Azure Site Recovery, replikacja maszyny wirtualnej i możliwości migawki w chmurze StorSimple, można chronić środowisko serwera całego pliku. W przypadku przerwania działania można użyć jednym kliknięciem do trybu online udziałów plików na platformie Azure w ciągu kilku minut.
+Korzystając z Azure Site Recovery, replikacji maszyny wirtualnej i możliwości migawek w chmurze StorSimple, można chronić całe środowisko serwera plików. W przypadku przerwania możesz użyć jednego kliknięcia, aby przenieść udziały plików w tryb online na platformie Azure w ciągu zaledwie kilku minut.
 
-W tym dokumencie wyjaśniono szczegółowo, jak można utworzyć rozwiązanie odzyskiwania po awarii dla udziałów plików w serwisie magazynu StorSimple i wykonywać planowane, nieplanowane i testy trybu failover za pomocą planu odzyskiwania jednego kliknięcia. W zasadzie pokazuje, jak można zmodyfikować planu odzyskiwania w magazynie usługi Azure Site Recovery w taki sposób, aby włączyć StorSimple przejścia w tryb failover podczas scenariuszy po awarii. Ponadto opisano obsługiwane konfiguracje i wymagania wstępne. W tym dokumencie przyjęto założenie, że znasz podstawy architektury usługi Azure Site Recovery i urządzeniu StorSimple.
+W tym dokumencie wyjaśniono szczegółowo, jak utworzyć rozwiązanie do odzyskiwania po awarii dla udziałów plików hostowanych w magazynie StorSimple oraz wykonać zaplanowane, niezaplanowane i testowe przełączenie w tryb failover przy użyciu planu odzyskiwania jednego kliknięcia. W tym temacie pokazano, jak można zmodyfikować plan odzyskiwania w magazynie Azure Site Recovery, aby umożliwić StorSimple trybu failover w ramach scenariuszy awarii. Ponadto opisano obsługiwane konfiguracje i wymagania wstępne. W tym dokumencie przyjęto założenie, że znasz podstawowe informacje dotyczące architektur Azure Site Recovery i StorSimple.
 
-## <a name="supported-azure-site-recovery-deployment-options"></a>Obsługiwane opcje wdrażania usługi Azure Site Recovery
-Klienci mogą wdrażania serwerów plików jako serwerów fizycznych lub maszyn wirtualnych (VM) uruchomionej na funkcji Hyper-V lub VMware, a następnie utwórz udziały plików z woluminów używać poza magazynu StorSimple. Usługa Azure Site Recovery umożliwia ochronę wdrożeń fizycznych i wirtualnych do dodatkowej lokacji lub na platformie Azure. W tym dokumencie opisano szczegóły rozwiązania odzyskiwania po awarii z platformy Azure jako lokacji odzyskiwania dla serwera plików, które hostowana maszyna wirtualna funkcji Hyper-v i udziałów plików magazynu StorSimple. Podobnie można zaimplementować inne scenariusze, w których serwer plików maszyny Wirtualnej znajduje się na Maszynę wirtualną VMware lub komputera fizycznego.
+## <a name="supported-azure-site-recovery-deployment-options"></a>Obsługiwane Azure Site Recovery opcje wdrażania
+Klienci mogą wdrażać serwery plików jako serwery fizyczne lub maszyny wirtualne uruchomione w funkcji Hyper-V lub VMware, a następnie tworzyć udziały plików z woluminów używać miejsca z magazynu StorSimple. Azure Site Recovery może chronić wdrożenia fizyczne i wirtualne w lokacji dodatkowej lub na platformie Azure. Ten dokument zawiera szczegółowe informacje o rozwiązaniu DR na platformie Azure jako lokacji odzyskiwania dla maszyny wirtualnej serwera plików hostowanej w funkcji Hyper-V i z udziałami plików w magazynie StorSimple. Inne scenariusze, w których maszyna wirtualna serwera plików znajduje się na maszynie wirtualnej VMware lub na komputerze fizycznym, można zaimplementować w podobny sposób.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Implementowanie rozwiązania odzyskiwania po awarii w jednym kliknięciem, korzystającą z usługi Azure Site Recovery dla udziałów plików magazynu StorSimple w serwisie ma następujące wymagania wstępne:
+Wdrożenie jednego kliknięcia rozwiązania do odzyskiwania po awarii, które używa Azure Site Recovery do udziałów plików hostowanych w magazynie StorSimple, ma następujące wymagania wstępne:
 
-   - Lokalny serwer systemu Windows Server 2012 R2 pliku, który hostowana maszyna wirtualna funkcji Hyper-V lub VMware lub komputera fizycznego
-   - Usługa StorSimple urządzenia lokalnego magazynu zarejestrowane w usłudze Azure StorSimple manager
-   - Urządzenie StorSimple w chmurze utworzone w usłudze Azure StorSimple manager. Urządzenie może znajdować się w stanie wyłączenia.
-   - Udziały plików hostowane na woluminach skonfigurowane na urządzeniu magazynu StorSimple
-   - [Magazyn usługi w usłudze Azure Site Recovery](../site-recovery/site-recovery-vmm-to-vmm.md) utworzone w ramach subskrypcji Microsoft Azure
+   - Lokalna maszyna wirtualna serwera plików z systemem Windows Server 2012 R2 hostowana w funkcji Hyper-V lub VMware lub na komputerze fizycznym
+   - Lokalne urządzenie magazynujące StorSimple zarejestrowane w usłudze Azure StorSimple Manager
+   - Urządzenie w chmurze StorSimple utworzone w usłudze Azure StorSimple Manager. Urządzenie może być utrzymywane w stanie zamknięcia.
+   - Udziały plików hostowane na woluminach skonfigurowanych na urządzeniu magazynującym StorSimple
+   - [Magazyn usług Azure Site Recovery Services](../site-recovery/site-recovery-vmm-to-vmm.md) utworzony w ramach subskrypcji Microsoft Azure
 
-Ponadto, jeśli lokacji odzyskiwania jest platforma Azure, uruchom [narzędzie oceny gotowości maszyn wirtualnych platformy Azure](https://azure.microsoft.com/downloads/vm-readiness-assessment/) na maszynach wirtualnych, aby upewnić się, że są one zgodne z maszynami wirtualnymi platformy Azure i usługi Azure Site Recovery services.
+Ponadto jeśli platforma Azure jest witryną odzyskiwania, uruchom narzędzie do [oceny gotowości maszyn wirtualnych platformy Azure](https://azure.microsoft.com/downloads/vm-readiness-assessment/) na maszynach wirtualnych, aby upewnić się, że są one zgodne z maszynami wirtualnymi platformy Azure i usługami Azure Site Recovery.
 
-Aby uniknąć opóźnienia problemy (które może prowadzić do wyższych kosztów), upewnij się, tworzenia usługi Storsimple w chmurze, konto usługi automation i magazynu konta lub kont w tym samym regionie.
+Aby uniknąć problemów z opóźnieniami (co może skutkować zwiększeniem kosztów), należy się upewnić, że tworzysz urządzenie w chmurze StorSimple, konto usługi Automation i konto magazynu w tym samym regionie.
 
-## <a name="enable-dr-for-storsimple-file-shares"></a>Włącz odzyskiwanie po awarii dla udziałów plików usługi StorSimple
-Każdy składnik w lokalnym środowisku musi być chronione, aby włączyć pełną replikację i odzyskiwanie. W tej sekcji opisano sposób:
+## <a name="enable-dr-for-storsimple-file-shares"></a>Włącz udziały plików DR for StorSimple
+Aby zapewnić pełną replikację i odzyskiwanie, każdy składnik środowiska lokalnego musi być chroniony. W tej sekcji opisano, jak:
     
-   - Konfigurowanie replikacji usługi Active Directory i DNS (opcjonalne)
-   - Użyj usługi Azure Site Recovery, aby włączyć ochronę maszyny Wirtualnej serwera plików
-   - Włączanie ochrony woluminów StorSimple
+   - Konfigurowanie Active Directory i replikacji DNS (opcjonalnie)
+   - Użyj Azure Site Recovery, aby włączyć ochronę maszyny wirtualnej serwera plików
+   - Włącz ochronę woluminów StorSimple
    - Konfigurowanie sieci
 
-### <a name="set-up-active-directory-and-dns-replication-optional"></a>Konfigurowanie replikacji usługi Active Directory i DNS (opcjonalne)
-Jeśli chcesz chronić maszyn uruchomione usługi Active Directory i DNS, tak aby były dostępne w lokacji odzyskiwania po awarii, musisz jawnie je chronić (tak, aby na serwerach plików są dostępne po włączeniu trybu failover przy użyciu uwierzytelniania). Dostępne są dwie opcje zalecane, zależnie od stopnia złożoności klienta w środowisku lokalnym.
+### <a name="set-up-active-directory-and-dns-replication-optional"></a>Konfigurowanie Active Directory i replikacji DNS (opcjonalnie)
+Jeśli chcesz chronić maszyny z systemami Active Directory i DNS, aby były dostępne w lokacji odzyskiwania po awarii, należy je jawnie chronić (dzięki czemu serwery plików są dostępne po przejściu w tryb failover z uwierzytelnianiem). Istnieją dwie zalecane opcje oparte na złożoności środowiska lokalnego klienta.
 
 #### <a name="option-1"></a>Opcja 1
-Jeśli klient ma małej liczby aplikacji, pojedynczy kontroler domeny dla całej lokacji lokalnej i będzie można przejść w tryb failover całej lokacji, a firma Microsoft zaleca używanie replikacji usługi Azure Site Recovery można replikować maszyny kontrolera domeny do pomocniczego, a następnie Witryna (dotyczy to zarówno lokacja lokacja i lokacja na platformie Azure).
+Jeśli klient ma niewielką liczbę aplikacji, pojedynczy kontroler domeny dla całej lokacji lokalnej i przestanie działać przez całą lokację, zalecamy użycie replikacji Azure Site Recovery w celu replikowania maszyny kontrolera domeny do pomocniczego Lokacja programu (dotyczy zarówno między lokacjami, jak i między lokacjami i Azure).
 
 #### <a name="option-2"></a>Opcja 2
-Jeśli klient ma dużą liczbę aplikacji, jest uruchomiona w lesie usługi Active Directory i będzie można przejść w tryb failover kilka aplikacji w czasie, a następnie zaleca się skonfigurowanie dodatkowego kontrolera domeny w lokacji odzyskiwania po awarii (dodatkowej lokacji lub na platformie Azure).
+Jeśli klient ma dużą liczbę aplikacji, działa w lesie Active Directory i będzie działać w wielu aplikacjach jednocześnie, zalecamy skonfigurowanie dodatkowego kontrolera domeny w witrynie odzyskiwania po awarii (lokacji dodatkowej lub na platformie Azure).
 
-Zapoznaj się [rozwiązanie automatycznego odzyskiwania po awarii dla usługi Active Directory i DNS przy użyciu usługi Azure Site Recovery](../site-recovery/site-recovery-active-directory.md) instrukcje podczas udostępniania kontrolera domeny w lokacji odzyskiwania po awarii. Dla pozostałej w tym dokumencie przyjęto założenie, że kontroler domeny jest dostępny w lokacji odzyskiwania po awarii.
+Zapoznaj się z automatycznym rozwiązaniem odzyskiwania po awarii [dla Active Directory i DNS, używając Azure Site Recovery,](../site-recovery/site-recovery-active-directory.md) Aby uzyskać instrukcje dotyczące tworzenia kontrolera domeny dostępnego w witrynie Dr. W pozostałej części tego dokumentu przyjęto, że kontroler domeny jest dostępny w witrynie odzyskiwania po awarii.
 
-### <a name="use-azure-site-recovery-to-enable-protection-of-the-file-server-vm"></a>Użyj usługi Azure Site Recovery, aby włączyć ochronę maszyny Wirtualnej serwera plików
-Ten krok wymaga, aby przygotować środowisko serwera plików w środowisku lokalnym, Utwórz i przygotuj magazyn usługi Azure Site Recovery i włączenia ochrony plików maszyny wirtualnej.
+### <a name="use-azure-site-recovery-to-enable-protection-of-the-file-server-vm"></a>Użyj Azure Site Recovery, aby włączyć ochronę maszyny wirtualnej serwera plików
+Ten krok wymaga przygotowania lokalnego środowiska serwera plików, utworzenia i przygotowania magazynu Azure Site Recovery oraz włączenia ochrony plików maszyny wirtualnej.
 
-#### <a name="to-prepare-the-on-premises-file-server-environment"></a>Aby przygotować środowisko serwera plików w środowisku lokalnym
-1. Ustaw **Kontrola konta użytkownika** do **nigdy nie Powiadamiaj**. Jest to wymagane, tak aby skryptów usługi Azure automation umożliwia łączenie obiektów docelowych iSCSI, po włączeniu trybu failover przez usługę Azure Site Recovery.
+#### <a name="to-prepare-the-on-premises-file-server-environment"></a>Aby przygotować lokalne środowisko serwera plików
+1. Ustaw **kontrolę konta użytkownika** na **nigdy nie Powiadamiaj**. Jest to wymagane, aby można było użyć skryptów usługi Azure Automation do łączenia obiektów docelowych iSCSI po przejściu w tryb failover przez Azure Site Recovery.
    
-   1. Naciśnij klawisze Windows + Q, a następnie wyszukaj **UAC**.  
-   1. Wybierz **ustawienia kontroli konta użytkownika Zmień**.  
-   1. Przeciągnij pasek w dół w kierunku **nigdy nie Powiadamiaj**.  
-   1. Kliknij przycisk **OK** , a następnie wybierz **tak** po wyświetleniu monitu.  
+   1. Naciśnij klawisz Windows + Q i Wyszukaj pozycję **UAC**.  
+   1. Wybierz pozycję **Zmień ustawienia kontroli konta użytkownika**.  
+   1. Przeciągnij pasek na dół do strony bez **powiadomienia**.  
+   1. Kliknij przycisk **OK** , a następnie wybierz opcję **tak** po wyświetleniu monitu.  
    
       ![Ustawienia kontroli konta użytkownika](./media/storsimple-disaster-recovery-using-azure-site-recovery/image1.png) 
 
-1. Zainstaluj agenta maszyny Wirtualnej na każdym serwerze plików maszyn wirtualnych. Jest to wymagane, aby można było uruchomić skrypty automatyzacji platformy Azure w trybie maszyn wirtualnych.
+1. Zainstaluj agenta maszyny wirtualnej na każdej maszynie wirtualnej serwera plików. Jest to wymagane, aby można było uruchamiać skrypty usługi Azure Automation na maszynach wirtualnych w trybie failover.
    
-   1. [Pobierz agenta](https://aka.ms/vmagentwin) do `C:\\Users\\<username>\\Downloads`.
-   1. Otwórz program Windows PowerShell w trybie administratora (Uruchom jako Administrator), a następnie wprowadź następujące polecenie, aby przejść do lokalizacji pobierania:  
+   1. [Pobierz agenta](https://aka.ms/vmagentwin) do `C:\\Users\\<username>\\Downloads`programu.
+   1. Otwórz program Windows PowerShell w trybie administratora (Uruchom jako administrator), a następnie wprowadź następujące polecenie, aby przejść do lokalizacji pobierania:  
          `cd C:\\Users\\<username>\\Downloads\\WindowsAzureVmAgent.2.6.1198.718.rd\_art\_stable.150415-1739.fre.msi`
          
          > [!NOTE]
-         > Nazwa pliku, mogą ulec zmianie w zależności od wersji.
+         > Nazwa pliku może ulec zmianie w zależności od wersji.
       
 1. Kliknij przycisk **Dalej**.
-1. Zaakceptuj **postanowienia Umowy** a następnie kliknij przycisk **dalej**.
+1. Zaakceptuj **warunki umowy** , a następnie kliknij przycisk **dalej**.
 1. Kliknij przycisk **Zakończ**.
-1. Tworzenie udziałów plików, przy użyciu woluminów używać poza magazynu StorSimple. Aby uzyskać więcej informacji, zobacz [usługi StorSimple Manager umożliwia zarządzanie woluminami](storsimple-manage-volumes.md).
+1. Utwórz udziały plików przy użyciu woluminów używać miejsca z magazynu StorSimple. Aby uzyskać więcej informacji, zobacz [Używanie usługi StorSimple Manager do zarządzania woluminami](storsimple-manage-volumes.md).
    
-   1. Na maszynach wirtualnych w środowisku lokalnym, naciśnij klawisze Windows + Q, a następnie wyszukaj **iSCSI**.
+   1. Na lokalnych maszynach wirtualnych naciśnij klawisz Windows + Q i Wyszukaj **iSCSI**.
    1. Wybierz **inicjatora iSCSI**.
-   1. Wybierz **konfiguracji** kartę i skopiuj nazwę inicjatora.
+   1. Wybierz kartę **Konfiguracja** i skopiuj nazwę inicjatora.
    1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
-   1. Wybierz **StorSimple** , a następnie wybierz pozycję usługi StorSimple Manager, który zawiera urządzenia fizycznego.
-   1. Tworzenie kontenerów woluminów, a następnie utwórz woluminy. (Te woluminy są udziałów plików na serwerze plików maszyn wirtualnych). Skopiuj nazwę inicjatora i nadaj nazwę odpowiednie dla rekordów kontroli dostępu, podczas tworzenia woluminów.
-   1. Wybierz **Konfiguruj** kartę i zanotuj adres IP urządzenia w dół.
-   1. Na maszynach wirtualnych w środowisku lokalnym, przejdź do **inicjatora iSCSI** ponownie i wprowadź adres IP w sekcji szybkie połączenie. Kliknij przycisk **szybkie połączenie** (urządzenie powinno być teraz połączone).
-   1. Otwórz w witrynie Azure portal i wybierz **woluminów i urządzeń** kartę. Kliknij przycisk **automatycznie skonfigurować**. Powinna zostać wyświetlona woluminu, który został utworzony.
-   1. W portalu, wybierz **urządzeń** , a następnie wybierz pozycję **utworzyć nowe urządzenie wirtualne.** (Tego urządzenia wirtualnego będzie używane, jeśli wystąpi przejścia w tryb failover). To nowe urządzenie wirtualne mogą znajdować się w trybie offline, aby uniknąć dodatkowych kosztów. Aby móc urządzenia wirtualnego w trybie offline, przejdź do **maszyn wirtualnych** sekcji w portalu i zamknij go.
-   1. Wróć do lokalnych maszyn wirtualnych i Otwórz przystawkę Zarządzanie dyskami (naciśnij klawisze Windows + X, a następnie wybierz pozycję **przystawki Zarządzanie dyskami**).
-   1. Można zauważyć pewne dodatkowe dyski (w zależności od liczby woluminów, które zostały utworzone). Kliknij prawym przyciskiem myszy pierwszy z nich, wybierz opcję **Zainicjuj dysk**i wybierz **OK**. Kliknij prawym przyciskiem myszy **Unallocated** zaznacz **nowy wolumin prosty**, a następnie przypisać jej literę dysku i Zakończ pracę kreatora.
-   1. Powtórz krok l dla wszystkich dysków. Wszystkie dyski będą teraz widoczne na **ten komputer** w Eksploratorze Windows.
-   1. Do tworzenia udziałów plików na tych woluminach za pomocą roli usługi plików i magazynowania.
+   1. Wybierz kartę **StorSimple** , a następnie wybierz usługę StorSimple Manager, która zawiera urządzenie fizyczne.
+   1. Utwórz kontenery woluminów, a następnie utwórz woluminy. (Te woluminy są przeznaczone dla udziałów plików na maszynach wirtualnych serwera plików). Skopiuj nazwę inicjatora i nadaj jej nazwę Access Control podczas tworzenia woluminów.
+   1. Wybierz kartę **Konfiguracja** i Zanotuj adres IP urządzenia.
+   1. Na lokalnych maszynach wirtualnych przejdź ponownie do inicjatora **iSCSI** , a następnie wprowadź adres IP w sekcji Szybkie łączenie. Kliknij pozycję **szybkie łączenie** (urządzenie powinno być teraz połączone).
+   1. Otwórz Azure Portal i wybierz kartę **woluminy i urządzenia** . Kliknij pozycję **Konfiguruj automatycznie**. Utworzony wolumin powinien zostać wyświetlony.
+   1. W portalu wybierz kartę **urządzenia** , a następnie wybierz pozycję **Utwórz nowe urządzenie wirtualne.** (To urządzenie wirtualne zostanie użyte w przypadku przejścia w tryb failover). To nowe urządzenie wirtualne można zachować w trybie offline, aby uniknąć dodatkowych kosztów. Aby przełączyć urządzenie wirtualne w tryb offline, przejdź do sekcji **Virtual Machines** w portalu i zamknij go.
+   1. Wróć do lokalnych maszyn wirtualnych i Otwórz przystawkę Zarządzanie dyskami (naciśnij klawisz Windows + X i wybierz pozycję **Zarządzanie dyskami**).
+   1. Zauważysz kilka dodatkowych dysków (w zależności od liczby utworzonych woluminów). Kliknij prawym przyciskiem myszy pierwszy, wybierz opcję **zainicjuj dysk**, a następnie wybierz przycisk **OK**. Kliknij prawym przyciskiem  myszy przydzieloną sekcję, wybierz pozycję **Nowy wolumin prosty**, przypisz do niej literę dysku i Zakończ pracę kreatora.
+   1. Powtórz krok l dla wszystkich dysków. Teraz możesz zobaczyć wszystkie dyski na **tym komputerze** w Eksploratorze Windows.
+   1. Użyj roli usługi plików i magazynowania, aby utworzyć udziały plików na tych woluminach.
 
-#### <a name="to-create-and-prepare-an-azure-site-recovery-vault"></a>Aby utworzyć i przygotuj magazyn usługi Azure Site Recovery
-Zapoznaj się [dokumentacji usługi Azure Site Recovery](../site-recovery/site-recovery-hyper-v-site-to-azure.md) rozpocząć pracę z usługą Azure Site Recovery przed rozpoczęciem ochrony serwera plików maszyny Wirtualnej.
+#### <a name="to-create-and-prepare-an-azure-site-recovery-vault"></a>Aby utworzyć i przygotować Magazyn Azure Site Recovery
+Zapoznaj się z [dokumentacją Azure Site Recovery](../site-recovery/site-recovery-hyper-v-site-to-azure.md) , aby rozpocząć pracę z usługą Azure Site Recovery przed ochroną maszyny wirtualnej serwera plików.
 
 #### <a name="to-enable-protection"></a>Aby włączyć ochronę
-1. Zakończ połączenie elementy docelowe iSCSI z lokalnych maszyn wirtualnych, które chcesz chronić za pomocą usługi Azure Site Recovery:
+1. Odłącz obiekty docelowe iSCSI od lokalnych maszyn wirtualnych, które mają być chronione za pośrednictwem Azure Site Recovery:
    
-   1. Naciśnij klawisze Windows + Q, a następnie wyszukaj **iSCSI**.
-   1. Wybierz **Konfigurowanie inicjatora iSCSI**.
-   1. Odłącz urządzenia StorSimple, którą wcześniej połączenia. Alternatywnie, można wyłączyć serwera plików przez kilka minut, podczas włączania ochrony.
+   1. Naciśnij klawisze Windows + Q i Wyszukaj **iSCSI**.
+   1. Wybierz pozycję **Konfigurowanie inicjatora iSCSI**.
+   1. Odłącz wcześniej połączone urządzenie StorSimple. Alternatywnie można wyłączyć serwer plików przez kilka minut podczas włączania ochrony.
       
    > [!NOTE]
-   > Spowoduje to udziałów plików jest tymczasowo niedostępna.
+   > Spowoduje to, że udziały plików będą tymczasowo niedostępne.
    
-1. [Włączyć ochronę maszyny wirtualnej](../site-recovery/site-recovery-hyper-v-site-to-azure.md) serwera plików maszyny Wirtualnej z portalu usługi Azure Site Recovery.
-1. Po rozpoczęciu synchronizacji początkowej, należy ponownie element docelowy. Przejdź do inicjatora iSCSI, wybierz urządzenia StorSimple i kliknij polecenie **Connect**.
-1. Po ukończeniu synchronizacji i stan maszyny Wirtualnej jest **chronione**, wybierz maszynę Wirtualną, wybierz **Konfiguruj** kartę, a następnie odpowiednio zaktualizować sieci maszyny Wirtualnej (jest to sieć, nieudane za pośrednictwem Maszyny wirtualne będą częścią). Jeśli sieć nie jest wyświetlane, oznacza to, czy synchronizacji nadal trwa.
+1. [Włącz ochronę maszyny wirtualnej](../site-recovery/site-recovery-hyper-v-site-to-azure.md) serwera plików z poziomu portalu Azure Site Recovery.
+1. Po rozpoczęciu początkowej synchronizacji można ponownie połączyć się z miejscem docelowym. Przejdź do inicjatora iSCSI, wybierz urządzenie StorSimple, a następnie kliknij przycisk **Połącz**.
+1. Gdy synchronizacja zostanie zakończona, a stan maszyny wirtualnej jest **chroniony**, wybierz maszynę wirtualną, wybierz kartę **Konfiguracja** i odpowiednio zaktualizuj sieć maszyny wirtualnej (jest to sieć, do której będzie częścią maszyn wirtualnych w trybie failover). Jeśli sieć nie zostanie wyświetlona, oznacza to, że synchronizacja nadal trwa.
 
-### <a name="enable-protection-of-storsimple-volumes"></a>Włączanie ochrony woluminów StorSimple
-Jeśli nie wybrano **Włącz domyślnego tworzenia kopii zapasowej dla tego woluminu** opcja dla woluminów StorSimple, przejdź do **zasady tworzenia kopii zapasowych** Menedżer StorSimple usługi, a następnie utwórz odpowiednie zasady kopii zapasowych dla wszystkie woluminy. Firma Microsoft zaleca, Ustaw częstotliwość wykonywania kopii zapasowych na cel punktu odzyskiwania (RPO), który chcesz wyświetlić dla aplikacji.
+### <a name="enable-protection-of-storsimple-volumes"></a>Włącz ochronę woluminów StorSimple
+Jeśli nie wybrano opcji **Włącz domyślną kopię zapasową dla tego woluminu** dla woluminów StorSimple, przejdź do **zasad tworzenia kopii zapasowych** w usłudze StorSimple Manager i Utwórz odpowiednie zasady tworzenia kopii zapasowych dla wszystkich woluminów. Zalecamy ustawienie częstotliwości wykonywania kopii zapasowych na cel punktu odzyskiwania (RPO), który ma być wyświetlany dla aplikacji.
 
 ### <a name="configure-the-network"></a>Konfigurowanie sieci
-Dla serwera plików maszyny Wirtualnej skonfigurować ustawienia sieciowe w usłudze Azure Site Recovery, tak aby sieci maszyny Wirtualnej są dołączone do odpowiedniej sieci odzyskiwania po awarii po włączeniu trybu failover.
+W przypadku maszyny wirtualnej serwera plików Skonfiguruj ustawienia sieciowe w Azure Site Recovery tak, aby sieci maszyn wirtualnych były dołączone do odpowiedniej sieci DR po przejściu w tryb failover.
 
-Możesz wybrać maszynę Wirtualną w **zreplikowane elementy** kartę, aby skonfigurować ustawienia sieci, jak pokazano na poniższej ilustracji.
+Możesz wybrać maszynę wirtualną na karcie **zreplikowane elementy** , aby skonfigurować ustawienia sieci, jak pokazano na poniższej ilustracji.
 
 ![Obliczenia i sieć](./media/storsimple-disaster-recovery-using-azure-site-recovery/image2.png)
 
 ## <a name="create-a-recovery-plan"></a>Tworzenie planu odzyskiwania
-W usłudze ASR w celu zautomatyzowania procesu pracy awaryjnej udziałów plików, można utworzyć planu odzyskiwania. W przypadku przerwy w działaniu można można przywołać udziałów plików w ciągu kilku minut za pomocą jednego kliknięcia. Aby włączyć taką automatyzację, konieczne będzie konto usługi Azure automation.
+Możesz utworzyć plan odzyskiwania w usłudze ASR, aby zautomatyzować proces trybu failover udziałów plików. Jeśli wystąpi zakłócenie, można przenieść udziały plików w ciągu kilku minut za pomocą jednego kliknięcia. Aby włączyć tę automatyzację, konieczne będzie konto usługi Azure Automation.
 
 #### <a name="to-create-an-automation-account"></a>Aby utworzyć konto usługi Automation
-1. Przejdź do witryny Azure portal &gt; **automatyzacji** sekcji.
-1. Kliknij przycisk **+ Dodaj** przycisku otwiera poniżej bloku.
+1. Przejdź do sekcji &gt; **Automatyzacja** Azure Portal.
+1. Kliknij przycisk **+ Dodaj** przycisk, otwiera poniżej bloku.
    
    ![Dodawanie konta usługi Automation](./media/storsimple-disaster-recovery-using-azure-site-recovery/image11.png)
    
-   - Nazwa — wprowadzanie nowego konta usługi automation
-   - Subskrypcja — Wybierz subskrypcję
-   - Zasób grupy — Utwórz nowy/wybierz istniejącą grupę zasobów
-   - Lokalizacja — wybierz lokalizację i zapewnić jej w tym samym/region geograficzny w którym zostały utworzone urządzenie StorSimple w chmurze i kont magazynu.
-   - Utwórz konto Uruchom jako platformy Azure — wybierz **tak** opcji.
+   - Nazwa — wprowadź nowe konto usługi Automation
+   - Subskrypcja — Wybieranie subskrypcji
+   - Grupa zasobów — Utwórz nową/Wybierz istniejącą grupę zasobów
+   - Lokalizacja — wybierz lokalizację, Zachowaj ją w tym samym georegionie/regionie, w którym zostały utworzone konta w chmurze StorSimple i urządzenia magazynu.
+   - Utwórz konto Uruchom jako platformy Azure — wybierz opcję **tak** .
    
-1. Przejdź do konta usługi Automation, kliknij przycisk **elementów Runbook** &gt; **Przeglądaj galerię** Aby zaimportować wszystkie wymagane elementy runbook do konta usługi automation.
-1. Dodaj następujące elementy runbook, wyszukując **odzyskiwania po awarii** tagu w galerii:
+1. Przejdź do konta usługi Automation, kliknij pozycję **elementy Runbook** &gt; **Przeglądaj Galerię** , aby zaimportować wszystkie wymagane elementy Runbook do konta usługi Automation.
+1. Dodaj następujące elementy Runbook, wyszukując tag **odzyskiwania po awarii** w galerii:
    
-   - Czyszczenie woluminów StorSimple po pracy awaryjnej testu (suma)
+   - Oczyść woluminy StorSimple po testowaniu pracy w trybie failover (suma)
    - Kontenery woluminów StorSimple trybu failover
-   - Po włączeniu trybu failover należy instalować woluminy na urządzeniu StorSimple
-   - Odinstaluj rozszerzenie skryptu niestandardowego maszyny Wirtualnej platformy Azure
+   - Zainstaluj woluminy na urządzeniu StorSimple po przejściu w tryb failover
+   - Odinstalowywanie niestandardowego rozszerzenia skryptu na maszynie wirtualnej platformy Azure
    - Uruchom urządzenie wirtualne StorSimple
    
-      ![Przeglądaj galerię](./media/storsimple-disaster-recovery-using-azure-site-recovery/image3.png)
+      ![Przeglądaj Galerię](./media/storsimple-disaster-recovery-using-azure-site-recovery/image3.png)
    
-1. Opublikuj wszystkie skrypty, wybierając element runbook w ramach konta usługi automation, a następnie kliknij przycisk **Edytuj** &gt; **Publikuj** i następnie **tak** w komunikacie weryfikacyjnym. Po wykonaniu tego kroku **elementów Runbook** pojawi się zakładka w następujący sposób:
+1. Opublikuj wszystkie skrypty, wybierając element Runbook na koncie usługi Automation, a następnie kliknij pozycję **Edytuj** &gt; **Publikowanie** , a następnie przycisk **tak** w komunikacie weryfikacyjnym. Po wykonaniu tego kroku karta **elementy Runbook** zostanie wyświetlona w następujący sposób:
    
    ![Elementy Runbook](./media/storsimple-disaster-recovery-using-azure-site-recovery/image4.png)
    
-1. Na koncie usługi automation kliknij **zmienne** &gt; **Dodaj zmienną** i dodaj następujące zmienne. Można zaszyfrować te zasoby. Te zmienne są określonego planu odzyskiwania. Plan odzyskiwania, który zostanie utworzony w następnym kroku, nazwa będzie plan testu, a następnie zmiennych powinny być StorSimRegKey plan testu, AzureSubscriptionName plan testu i tak dalej.
+1. Na koncie usługi Automation kliknij pozycję **zmienne** &gt; **Dodaj zmienną** i Dodaj następujące zmienne. Można zdecydować się na szyfrowanie tych zasobów. Te zmienne są specyficzne dla planu odzyskiwania. Jeśli plan odzyskiwania, który zostanie utworzony w następnym kroku, ma nazwę plan testu, wówczas zmienne powinny być plan testu-StorSimRegKey, plan testu-AzureSubscriptionName i tak dalej.
 
-   - **BaseUrl**: Adres url usługi Resource Manager dla chmury platformy Azure. Pobieranie przy użyciu **Get AzEnvironment | Nazwa Select-Object, ResourceManagerUrl** polecenia cmdlet.
-   - _RecoveryPlanName_ **-ResourceGroupName**: Grupa usługi Resource Manager, zawierającej zasób usługi StorSimple.
-   - _RecoveryPlanName_ **- ManagerName**: Zasób usługi StorSimple, który ma urządzenia StorSimple.
-   - _RecoveryPlanName_ **-DeviceName**: Urządzenie StorSimple, który ma być przełączone w tryb failover.
-   - _RecoveryPlanName_ **-DeviceIpAddress**: Adres IP urządzenia (ten znajduje się w **urządzeń** kartę sekcji Menedżer urządzeń StorSimple &gt; **ustawienia** &gt; **sieci** &gt; **Ustawienia DNS** grupy).
-   - _RecoveryPlanName_ **-VolumeContainers**: Ciąg rozdzielony przecinkami, kontenerów woluminów na urządzeniu, które muszą zostać przełączone w tryb failover; na przykład: volcon1 volcon2, volcon3.
-   - _RecoveryPlanName_ **-TargetDeviceName**: Urządzenie StorSimple w chmurze na którym kontenery znajdują się w tryb failover.
-   - _RecoveryPlanName_ **-TargetDeviceIpAddress**: Adres IP urządzenia docelowego (ten znajduje się w **maszyny wirtualnej** sekcji &gt; **ustawienia** grupy &gt; **sieć** karty).
-   - _RecoveryPlanName_ **- StorageAccountName**: Nazwa konta magazynu, w którym przechowywane będą skryptu (który ma do uruchamiania na nieudane przez maszynę Wirtualną). Może to być konto magazynu, które ma miejsce do przechowywania skryptu tymczasowo.
-   - _RecoveryPlanName_ **- StorageAccountKey**: Klucz dostępu dla powyższego konta magazynu.
-   - _RecoveryPlanName_ **- VMGUIDS**: Podczas ochrony maszyn wirtualnych, usługi Azure Site Recovery przypisuje każda maszyna wirtualna Unikatowy identyfikator, który zawiera szczegółowe informacje o trybie tryb failover maszyny Wirtualnej. Aby uzyskać VMGUID, wybierz **usługi Recovery Services** kartę, a następnie kliknij przycisk **chronionego elementu** &gt; **grup ochrony** &gt;  **Maszyny** &gt; **właściwości**. Jeśli masz wiele maszyn wirtualnych, Dodaj identyfikator GUID w faktycznej jako ciąg rozdzielonych przecinkami.
+   - **BaseUrl**: Adres URL Menedżer zasobów dla chmury platformy Azure. Pobierz przy użyciu polecenia **Get-AzEnvironment | Select-Object Name, ResourceManagerUrl** polecenia cmdlet.
+   - _RecoveryPlanName_ **-ResourceGroupName**: Grupa Menedżer zasobów, która ma zasób StorSimple.
+   - _RecoveryPlanName_ **-Manager**: Zasób StorSimple, który ma Urządzenie StorSimple.
+   - _RecoveryPlanName_ **-DeviceName**: Urządzenie StorSimple, które musi zostać przełączone w tryb failover.
+   - _RecoveryPlanName_ **-DeviceIpAddress**: Adres IP urządzenia (można go znaleźć na karcie **urządzenia** w obszarze StorSimple &gt; Menedżer urządzeń sekcji **Ustawienia** &gt; **sieciowej** &gt; grupy **ustawień DNS** ).
+   - _RecoveryPlanName_ **-VolumeContainers**: Rozdzielany przecinkami ciąg kontenerów woluminów znajdujących się na urządzeniu, które wymagają przełączenia w tryb failover; na przykład: volcon1, volcon2, volcon3.
+   - _RecoveryPlanName_ **-TargetDeviceName**: Urządzenie w chmurze StorSimple, w którym kontenery mają być przełączone do trybu failover.
+   - _RecoveryPlanName_ **-TargetDeviceIpAddress**: Adres IP urządzenia docelowego (można go znaleźć na karcie **sieci** grupy &gt; **ustawień** &gt; sekcji **maszyny wirtualnej** ).
+   - _RecoveryPlanName_ **-StorageAccountName**: Zostanie zapisana nazwa konta magazynu, w którym będzie przechowywany skrypt (który jest uruchamiany na maszynie wirtualnej w trybie failover). Może to być dowolne konto magazynu z ilością miejsca do tymczasowego przechowywania skryptu.
+   - _RecoveryPlanName_ **-StorageAccountKey**: Klucz dostępu dla powyższego konta magazynu.
+   - _RecoveryPlanName_ **-VMGUIDS**: W przypadku ochrony maszyny wirtualnej Azure Site Recovery przypisuje każdej maszynie wirtualnej unikatowy identyfikator, który zawiera szczegółowe informacje dotyczące maszyny wirtualnej przełączonej w tryb failover. Aby uzyskać VMGUID, wybierz kartę **Recovery Services** , a następnie kliknij pozycję **chronione** &gt; **grupy** &gt; ochrony elementów **Właściwości** **maszyny** &gt; . Jeśli masz wiele maszyn wirtualnych, Dodaj identyfikatory GUID jako ciąg rozdzielony przecinkami.
 
-     Na przykład, jeśli nazwa planu odzyskiwania jest fileServerpredayRP wówczas **zmienne**, **połączeń** i **certyfikaty** karta powinna wyglądać następująco, po dodaniu wszystkie zasoby.
+     Na przykład jeśli nazwa planu odzyskiwania to fileServerpredayRP, wówczas **zmienne**, **połączenia** i **Certyfikaty** powinny być wyświetlane w następujący sposób po dodaniu wszystkich zasobów.
 
       ![Elementy zawartości](./media/storsimple-disaster-recovery-using-azure-site-recovery/image5.png)
 
-1. Przekazywanie modułu Runbook serii StorSimple 8000 na koncie usługi Automation. Użyj poniższych kroków, aby dodać moduł:
+1. Przekaż moduł Runbook serii StorSimple 8000 na koncie usługi Automation. Wykonaj poniższe kroki, aby dodać moduł:
    
-   1. Otwórz program powershell, Utwórz nowy folder i zmień katalog na folder.
+   1. Otwórz program PowerShell, Utwórz nowy folder & zmienić katalog na folder.
       
       ```
             mkdir C:\scripts\StorSimpleSDKTools
             cd C:\scripts\StorSimpleSDKTools
       ```
-   1. Pobierz interfejs wiersza polecenia nuget, w tym samym folderze, w Step1.
-      Różne wersje programu nuget.exe są dostępne na [nuget pobiera](https://www.nuget.org/downloads). Każdy link pobierania wskazuje bezpośrednio na pliku .exe, więc Pamiętaj kliknij prawym przyciskiem myszy, a następnie zapisz plik na komputer zamiast uruchomienie jej w przeglądarce.
+   1. Pobierz interfejs wiersza polecenia NuGet w tym samym folderze w krok 1.
+      Różne wersje programu NuGet. exe są dostępne na stronie [pobierania narzędzia NuGet](https://www.nuget.org/downloads). Każde łącze pobierania wskazuje bezpośrednio plik. exe, dlatego należy kliknąć prawym przyciskiem myszy i zapisać plik na komputerze zamiast uruchamiać go z przeglądarki.
       
       ```
             wget https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -Out C:\scripts\StorSimpleSDKTools\nuget.exe
       ```
       
-   1. Pobierz zestaw SDK zależne
+   1. Pobieranie zależnego zestawu SDK
       
       ```
             C:\scripts\StorSimpleSDKTools\nuget.exe install Microsoft.Azure.Management.Storsimple8000series
@@ -209,7 +209,7 @@ W usłudze ASR w celu zautomatyzowania procesu pracy awaryjnej udziałów plikó
             C:\scripts\StorSimpleSDKTools\nuget.exe install Microsoft.Rest.ClientRuntime.Azure.Authentication -Version 2.2.9-preview
       ```
       
-   1. Utwórz moduł usługi Azure Automation Runbook do zarządzania urządzeniami StorSimple 8000 Series. Użyj poniższych poleceń, aby utworzyć plik zip modułu usługi Automation.
+   1. Utwórz moduł Azure Automation Runbook dla zarządzania urządzeniami z serii StorSimple 8000. Użyj poniższych poleceń, aby utworzyć plik zip modułu automatyzacji.
          
       ```powershell
             # set path variables
@@ -230,136 +230,136 @@ W usłudze ASR w celu zautomatyzowania procesu pracy awaryjnej udziałów plikó
             compress-Archive -Path "$moduleDir" -DestinationPath Microsoft.Azure.Management.StorSimple8000Series.zip
       ```
          
-   1. Importuj plik zip modułu usługi Azure Automation (Microsoft.Azure.Management.StorSimple8000Series.zip) utworzoną w kroku. To może odbywać się przez wybranie konta usługi Automation, kliknij przycisk **modułów** w obszarze udostępnionych zasobów, a następnie kliknij przycisk **Dodaj moduł**.
+   1. Zaimportuj plik zip modułu Azure Automation (Microsoft. Azure. Management. StorSimple8000Series. zip) utworzony w powyższym kroku. W tym celu należy wybrać konto usługi Automation, kliknąć pozycję **moduły** w obszarze zasoby udostępnione, a następnie kliknąć pozycję **Dodaj moduł**.
    
-   Po zaimportowaniu modułu serii StorSimple 8000 **modułów** karta powinna wyglądać następująco:
+   Po zaimportowaniu modułu StorSimple 8000 Series karta **moduły** powinna wyglądać w następujący sposób:
    
       ![Moduły](./media/storsimple-disaster-recovery-using-azure-site-recovery/image12.png)
 
-1. Przejdź do **usługi Recovery Services** sekcji i wybierz utworzony wcześniej magazyn usługi Azure Site Recovery.
-1. Wybierz **plany odzyskiwania (Usługa Site Recovery)** opcję **Zarządzaj** grupy i Utwórz nowy plan odzyskiwania w następujący sposób:
+1. Przejdź do sekcji **Recovery Services** i wybierz utworzony wcześniej Magazyn Azure Site Recovery.
+1. Wybierz opcję **plany odzyskiwania (Site Recovery)** z opcji **Zarządzaj** grupą i Utwórz nowy plan odzyskiwania w następujący sposób:
    
-   - Kliknij przycisk **+ planu odzyskiwania** przycisku otwiera poniżej bloku.
+   - Kliknij przycisk **+ Odzyskaj plan** , Otwórz poniżej bloku.
       
       ![Tworzenie planu odzyskiwania](./media/storsimple-disaster-recovery-using-azure-site-recovery/image6.png)
       
-   - Wprowadź nazwę planu odzyskiwania, wybierz źródło & docelowa wdrażania wartości modelu.
+   - Wprowadź nazwę planu odzyskiwania, wybierz źródło, miejsce docelowe & wartości modelu wdrożenia.
    
-   - Wybierz maszyny wirtualne z grupy ochrony, który chcesz uwzględnić w planie odzyskiwania, a następnie kliknij przycisk **OK** przycisku.
+   - Wybierz Maszyny wirtualne z grupy ochrony, które chcesz uwzględnić w planie odzyskiwania, a następnie kliknij przycisk **OK** .
    
-   - Wybierz wcześniej utworzony plan odzyskiwania, kliknij przycisk **Dostosuj** przycisk, aby otworzyć widoku dostosowywania planu odzyskiwania.
+   - Wybierz utworzony wcześniej plan odzyskiwania, kliknij przycisk **Dostosuj** , aby otworzyć widok dostosowania planu odzyskiwania.
    
-   - Kliknij prawym przyciskiem myszy **zamykanie wszystkich grup** i kliknij przycisk **Dodaj akcję wstępnie**.
+   - Kliknij prawym przyciskiem myszy **wszystkie grupy** , a następnie kliknij pozycję **Dodaj akcję wstępną**.
    
-   - Otwiera Wstaw blok akcję, wprowadź nazwę, wybierz **strona podstawowa** opcji podczas uruchamiania opcji, wybierz konto usługi Automation (w którym dodano elementy runbook), a następnie wybierz **trybu Failover — StorSimple — — kontenery woluminów**  elementu runbook.
+   - Otwiera blok akcja Wstaw, wprowadź nazwę, wybierz opcję **podstawowa Strona** w obszarze gdzie można uruchomić, wybierz pozycję konto usługi Automation (w którym dodano elementy Runbook), a następnie wybierz element Runbook **trybu failover-StorSimple-Volume-Containers** .
    
-   - Kliknij prawym przyciskiem myszy **Grupa 1: Rozpocznij** i kliknij przycisk **Dodaj chronione elementy** opcji, a następnie wybierz maszyny wirtualne, które mają być chronione w planie odzyskiwania i kliknij **Ok** przycisku. Opcjonalnie, jeśli jest on już wybrane maszyny wirtualne.
+   - Kliknij prawym przyciskiem **myszy grupę 1: Uruchom** i kliknij opcję **Dodaj elementy chronione** , a następnie wybierz maszyny wirtualne, które mają być chronione w planie odzyskiwania, a następnie kliknij przycisk **OK** . Opcjonalne, jeśli są już wybrane maszyny wirtualne.
    
-   - Kliknij prawym przyciskiem myszy **Grupa 1: Rozpocznij** i kliknij przycisk **wpis akcji** opcji, a następnie dodaj następujące skrypty:  
+   - Kliknij prawym przyciskiem **myszy grupę 1: Uruchom** i kliknij opcję **Ogłoś akcję** , a następnie Dodaj wszystkie następujące skrypty:  
       
-      - Start--urządzenie wirtualne StorSimple — elementu runbook  
-      - Niepowodzenie elementu runbook przez — StorSimple — — kontenery woluminów  
-      - Element runbook instalacji woluminów po failover  
-      - Odinstaluj — — rozszerzenia niestandardowego skryptu — elementu runbook  
+      - Start-StorSimple-Virtual-urządzeniem Runbook  
+      - Tryb failover w trybie failover — StorSimple-Volume-Containers  
+      - Instalacja-woluminy — po zakończeniu pracy w trybie failover  
+      - Uninstall-Custom-Script-Extension Runbook  
         
-   - Dodawanie akcji ręcznej po powyżej 4 skrypty w tym samym **Grupa 1: Kroki po operacji** sekcji. Ta akcja jest punkt, w którym możesz sprawdzić, czy wszystko działa poprawnie. Ta akcja musi zostać dodany tylko jako część testu trybu failover (dlatego tylko wybrane **testowy tryb Failover** wyboru).
+   - Dodaj akcję ręczną po powyższych 4 skryptach w tej samej **grupie 1: Sekcja po kroku** . Ta akcja jest punktem, w którym można sprawdzić, czy wszystko działa prawidłowo. Ta akcja musi zostać dodana tylko jako część testowej pracy w trybie failover (dlatego należy zaznaczyć pole wyboru **test pracy w trybie failover** ).
     
-   - Po wykonaniu akcji ręcznej, Dodaj **oczyszczania** skryptu, używając tej samej procedury, który był używany przez inne elementy runbook. **Zapisz** planu odzyskiwania.
+   - Po wykonaniu akcji ręcznej Dodaj skrypt **czyszczący** , korzystając z tej samej procedury, która została użyta w innych elementach Runbook. **Zapisz** plan odzyskiwania.
     
    > [!NOTE]
-   > Podczas uruchamiania testu trybu failover, należy sprawdzić wszystko na etapie akcji ręcznej, ponieważ woluminów StorSimple, które ma zostać sklonowany na urządzeniu docelowym zostaną usunięte w ramach procesu czyszczenia po wykonaniu akcji ręcznej.
+   > Podczas przeprowadzania testu pracy w trybie failover należy sprawdzić wszystko w kroku akcji ręcznej, ponieważ woluminy StorSimple, które zostały sklonowane na urządzeniu docelowym, zostaną usunięte jako część oczyszczania po zakończeniu akcji ręcznej.
        
       ![Plan odzyskiwania](./media/storsimple-disaster-recovery-using-azure-site-recovery/image7.png)
 
-## <a name="perform-a-test-failover"></a>Wykonaj test trybu failover
-Zapoznaj się [rozwiązanie odzyskiwania po awarii Active Directory](../site-recovery/site-recovery-active-directory.md) Przewodnik uzupełniający po dla określonego zagadnienia dotyczące usługi Active Directory podczas testowania trybu failover. Instalator lokalnej nie zakłócony na wszystkich, po wystąpieniu test trybu failover. Woluminy StorSimple, które zostały dołączone do lokalnej maszyny Wirtualnej są klonowane do urządzenia StorSimple w chmurze na platformie Azure. Maszyny Wirtualnej do celów testowych zostaną podwyższone na platformie Azure i sklonowany woluminy są dołączone do maszyny Wirtualnej.
+## <a name="perform-a-test-failover"></a>Wykonaj test pracy w trybie failover
+Zapoznaj się z przewodnikiem uzupełniania [rozwiązania Active Directory Dr](../site-recovery/site-recovery-active-directory.md) , aby uzyskać informacje dotyczące Active Directory podczas testu pracy w trybie failover. Konfiguracja lokalna nie jest zakłócana podczas testu pracy w trybie failover. Woluminy StorSimple dołączone do lokalnej maszyny wirtualnej są klonowane do urządzenia w chmurze StorSimple na platformie Azure. Maszyna wirtualna do celów testowych jest przenoszona na platformę Azure, a sklonowane woluminy są dołączone do maszyny wirtualnej.
 
-#### <a name="to-perform-the-test-failover"></a>Aby wykonać test trybu failover
-1. W witrynie Azure portal wybierz magazyn usługi Site Recovery.
-1. Kliknij plan odzyskiwania utworzone dla serwera plików maszyny Wirtualnej.
-1. Kliknij przycisk **testowanie trybu Failover**.
-1. Wybierz sieć wirtualną platformy Azure, z którą maszyny wirtualne platformy Azure zostaną połączone po przejściu przejścia do trybu failover.
+#### <a name="to-perform-the-test-failover"></a>Aby przeprowadzić test pracy w trybie failover
+1. W Azure Portal wybierz swój magazyn Site Recovery.
+1. Kliknij plan odzyskiwania utworzony dla maszyny wirtualnej serwera plików.
+1. Kliknij pozycję **Testuj tryb failover**.
+1. Wybierz sieć wirtualną platformy Azure, z którą maszyny wirtualne platformy Azure zostaną połączone po przejściu w tryb failover.
    
-   ![Uruchom tryb Failover](./media/storsimple-disaster-recovery-using-azure-site-recovery/image8.png)
+   ![Uruchom tryb failover](./media/storsimple-disaster-recovery-using-azure-site-recovery/image8.png)
    
-1. Kliknij przycisk **OK**, aby rozpocząć tryb failover. Możesz śledzić postępy, klikając na maszynę Wirtualną i otwierając jej właściwości lub na **zadanie trybu failover testowe** w nazwie magazynu &gt; **zadania** &gt; **zadania usługi Site Recovery**.
-1. Po zakończeniu pracy w trybie failover, należy także mogli zobaczyć repliki Azure maszyny są wyświetlane w witrynie Azure portal &gt; **maszyn wirtualnych**. Możesz wykonać swojej operacji sprawdzania poprawności.
-1. Po operacje sprawdzania poprawności będzie gotowe, kliknij przycisk **pełne sprawdzanie poprawności**. Spowoduje to usunięcie woluminów StorSimple i zamknij urządzenie StorSimple w chmurze.
-1. Gdy wszystko będzie gotowe, kliknij przycisk **wyczyść test pracy awaryjnej** w planie odzyskiwania. Uwagi dotyczące rejestrowania i zapisz wszelkie obserwacje związane z testowym trybem failover. Spowoduje to usunięcie maszyny wirtualnej, które zostały utworzone podczas testowania trybu failover.
+1. Kliknij przycisk **OK**, aby rozpocząć tryb failover. Postęp można śledzić, klikając maszynę wirtualną, aby otworzyć jej właściwości, lub w zadaniu testowego **trybu failover** w &gt; obszarze **zadania** &gt; nazwy magazynu **Site Recovery zadania**.
+1. Po zakończeniu pracy w trybie failover należy również sprawdzić, czy replika maszyny Azure jest wyświetlana w &gt; **Virtual Machines**Azure Portal. Możesz wykonywać walidację.
+1. Po zakończeniu walidacji kliknij pozycję walidacje **ukończone**. Spowoduje to usunięcie woluminów StorSimple i zamknięcie urządzenia w chmurze StorSimple.
+1. Gdy skończysz, kliknij przycisk **Oczyść test pracy w trybie failover** w planie odzyskiwania. W obszarze uwagi Zarejestruj i Zapisz wszelkie obserwacje związane z testem pracy w trybie failover. Spowoduje to usunięcie maszyny wirtualnej, która została utworzona podczas testu pracy w trybie failover.
 
-## <a name="perform-a-planned-failover"></a>Realizacja planowanego trybu failover
-   Podczas planowanego trybu failover lokalnego pliku serwera, z którym maszyna wirtualna jest zamknięcie i w chmurze, w których wykonywana jest migawka kopii zapasowych woluminów na urządzeniu StorSimple. Woluminy StorSimple są przełączone w tryb failover urządzenia wirtualnego, maszyna wirtualna repliki jest przenoszone na platformie Azure, a woluminy są dołączone do maszyny Wirtualnej.
+## <a name="perform-a-planned-failover"></a>Wykonywanie planowanej pracy w trybie failover
+   Podczas planowanego przejścia w tryb failover maszyna wirtualna lokalnego serwera plików jest zamykana prawidłowo i jest wykonywana migawka kopii zapasowej w chmurze woluminów na urządzeniu StorSimple. Woluminy StorSimple są przełączane do trybu failover na urządzeniu wirtualnym, maszyna wirtualna repliki jest przenoszona na platformę Azure, a woluminy są dołączone do maszyny wirtualnej.
 
-#### <a name="to-perform-a-planned-failover"></a>Aby wykonać planowanego trybu failover
-1. W witrynie Azure portal wybierz **usługi Recovery services** magazynu &gt; **planów odzyskiwania (Usługa Site Recovery)** &gt; **recoveryplan_name** utworzone dla Serwer plików maszyny Wirtualnej.
-1. W bloku planu odzyskiwania, kliknij **więcej** &gt; **zaplanowanym powrocie po awarii**.
+#### <a name="to-perform-a-planned-failover"></a>Aby wykonać planowaną pracę w trybie failover
+1. W Azure Portal wybierz pozycję **usługi Recovery Services** &gt; **(Site Recovery)** &gt; **recoveryplan_name** utworzone dla maszyny wirtualnej serwera plików.
+1. W bloku plan odzyskiwania kliknij pozycję **więcej** &gt; **planowanej pracy w trybie failover**.
 
    ![Plan odzyskiwania](./media/storsimple-disaster-recovery-using-azure-site-recovery/image9.png)
-1. Na **potwierdzić planowanego trybu Failover** bloku Wybierz źródła i docelowych lokalizacji i wybierz docelową sieć, a następnie kliknij ikonę wyboru ✓ można uruchomić procesu pracy awaryjnej.
-1. Po utworzeniu maszyn wirtualnych repliki, są one w zatwierdzeniu, stan oczekiwania. Kliknij przycisk **zatwierdzenia** do zatwierdzenia pracy w trybie failover.
-1. Po zakończeniu replikacji maszyn wirtualnych jest uruchomiona w dodatkowej lokalizacji.
+1. W bloku **Potwierdź planowane przejście w tryb failover** wybierz lokalizację źródłową i docelową, a następnie wybierz pozycję Sieć docelowa, a następnie kliknij ikonę Sprawdź ✓, aby rozpocząć proces przełączania do trybu failover.
+1. Po utworzeniu maszyn wirtualnych repliki znajdują się one w stanie oczekiwania na zatwierdzenie. Kliknij  przycisk Zatwierdź, aby zatwierdzić przejście w tryb failover.
+1. Po zakończeniu replikacji maszyny wirtualne są uruchamiane w lokalizacji pomocniczej.
 
-## <a name="perform-a-failover"></a>Przejścia w tryb failover
-Podczas nieplanowany tryb failover woluminów StorSimple są przełączone w tryb failover urządzenia wirtualnego maszyny Wirtualnej repliki zostanie wyświetlona na platformie Azure i woluminy są dołączone do maszyny Wirtualnej.
+## <a name="perform-a-failover"></a>Przełączenie w tryb failover
+W przypadku nieplanowanego przejścia w tryb failover woluminy StorSimple są przełączane do urządzenia wirtualnego, a maszyna wirtualna zostanie przełączona na platformę Azure, a woluminy zostaną dołączone do maszyny wirtualnej.
 
-#### <a name="to-perform-a-failover"></a>Do pracy w trybie Failover
-1. W witrynie Azure portal wybierz **usługi Recovery services** magazynu &gt; **planów odzyskiwania (Usługa Site Recovery)** &gt; **recoveryplan_name** utworzone dla Serwer plików maszyny Wirtualnej.
-1. W bloku planu odzyskiwania, kliknij **więcej** &gt; **trybu Failover**.
-1. Na **Potwierdź tryb Failover** bloku wybierz źródło i lokalizacje docelowe.
-1. Wybierz **zamknąć maszyny wirtualne i zsynchronizuj najnowsze dane** do określenia, czy usługa Site Recovery należy spróbować zamknąć chronionej maszyny wirtualnej i synchronizacji danych, dzięki czemu najnowsza wersja danych zostaną przełączone w tryb failover.
-1. Po przejściu w tryb failover maszyny wirtualne znajdują się w zatwierdzeniu, stan oczekiwania. Kliknij przycisk **zatwierdzenia** do zatwierdzenia pracy w trybie failover.
+#### <a name="to-perform-a-failover"></a>Aby przeprowadzić przejście w tryb failover
+1. W Azure Portal wybierz pozycję **usługi Recovery Services** &gt; **(Site Recovery)** &gt; **recoveryplan_name** utworzone dla maszyny wirtualnej serwera plików.
+1. W bloku plan odzyskiwania kliknij pozycję **więcej** &gt; **trybu failover**.
+1. W bloku **Potwierdź tryb failover** wybierz lokalizację źródłową i docelową.
+1. Wybierz pozycję **Zamknij maszyny wirtualne i zsynchronizuj najnowsze dane** , aby określić, że Site Recovery powinna próbować zamknąć chronioną maszynę wirtualną i zsynchronizować dane, aby Najnowsza wersja danych została przełączona w tryb failover.
+1. Po przejściu w tryb failover maszyny wirtualne znajdują się w stanie oczekiwania na zatwierdzenie. Kliknij  przycisk Zatwierdź, aby zatwierdzić przejście w tryb failover.
 
 
 ## <a name="perform-a-failback"></a>Wykonywanie powrotu po awarii
-Podczas powrotu po awarii kontenery woluminów StorSimple są Failover powrót do urządzenia fizycznego, po jest wykonywana kopia zapasowa.
+Podczas powrotu po awarii kontenery woluminów StorSimple są przełączane w tryb failover z powrotem do urządzenia fizycznego po wykonaniu kopii zapasowej.
 
-#### <a name="to-perform-a-failback"></a>Aby wykonać powrotu po awarii
-1. W witrynie Azure portal wybierz **usługi Recovery services** magazynu &gt; **planów odzyskiwania (Usługa Site Recovery)** &gt; **recoveryplan_name** utworzone dla Serwer plików maszyny Wirtualnej.
-1. W bloku planu odzyskiwania, kliknij **więcej** &gt; **planowanego trybu Failover**.
-1. Wybierz lokalizacje źródłowe i docelowe, wybierz odpowiednią synchronizację danych i opcje tworzenia maszyny Wirtualnej.
-1. Kliknij przycisk **OK** przycisk, aby rozpocząć proces powrotu po awarii.
+#### <a name="to-perform-a-failback"></a>Aby przeprowadzić powrót po awarii
+1. W Azure Portal wybierz pozycję **usługi Recovery Services** &gt; **(Site Recovery)** &gt; **recoveryplan_name** utworzone dla maszyny wirtualnej serwera plików.
+1. W bloku plan odzyskiwania kliknij pozycję **więcej** &gt; **planowanej pracy w trybie failover**.
+1. Wybierz lokalizację źródłową i docelową, wybierz odpowiednie opcje synchronizacji danych i tworzenia maszyn wirtualnych.
+1. Kliknij przycisk **OK** , aby uruchomić proces powrotu po awarii.
    
-   ![Uruchom powrót po awarii](./media/storsimple-disaster-recovery-using-azure-site-recovery/image10.png)
+   ![Rozpocznij powrót po awarii](./media/storsimple-disaster-recovery-using-azure-site-recovery/image10.png)
 
 ## <a name="best-practices"></a>Najlepsze rozwiązania
-### <a name="capacity-planning-and-readiness-assessment"></a>Pojemności planowanie i przygotowanie oceny
+### <a name="capacity-planning-and-readiness-assessment"></a>Planowanie pojemności i Ocena gotowości
 #### <a name="hyper-v-site"></a>Lokacja funkcji Hyper-V
-Użyj [narzędzia planisty wydajności użytkownika](https://www.microsoft.com/download/details.aspx?id=39057) do projektowania serwera, magazynowania i infrastruktury sieci w środowisku funkcji Hyper-V replica.
+Użyj [Narzędzia planista wydajności użytkownika](https://www.microsoft.com/download/details.aspx?id=39057) , aby zaprojektować infrastrukturę serwera, magazynu i sieci dla środowiska funkcji Hyper-V Replica.
 
 #### <a name="azure"></a>Azure
-Możesz uruchomić [narzędzie oceny gotowości maszyn wirtualnych platformy Azure](https://azure.microsoft.com/downloads/vm-readiness-assessment/) na maszynach wirtualnych, aby upewnić się, że są one zgodne z maszynami wirtualnymi platformy Azure i usług Azure Site Recovery. Narzędzie oceny gotowości sprawdza, czy konfiguracje maszyn wirtualnych i ostrzega, gdy konfiguracje są niezgodne z platformą Azure. Na przykład go generuje ostrzeżenie, jeśli dysk C: jest większy niż 127 GB.
+[Narzędzie do oceny gotowości maszyn wirtualnych platformy Azure](https://azure.microsoft.com/downloads/vm-readiness-assessment/) można uruchomić na maszynach wirtualnych, aby upewnić się, że są one zgodne z maszynami wirtualnymi platformy Azure i usługami Azure Site Recovery. Narzędzie do oceny gotowości sprawdza konfiguracje maszyn wirtualnych i ostrzega, gdy konfiguracje nie są zgodne z platformą Azure. Na przykład generuje ostrzeżenie, jeśli dysk C: jest większy niż 127 GB.
 
-Planowanie pojemności składa się z co najmniej dwie ważne procesy:
+Planowanie pojemności składa się z co najmniej dwóch ważnych procesów:
 
-   - Mapowanie lokalnych maszyn wirtualnych funkcji Hyper-V do rozmiarów maszyn wirtualnych platformy Azure (na przykład A6 A7, A8 i A9).
+   - Mapowanie lokalnych maszyn wirtualnych funkcji Hyper-V na rozmiary maszyn wirtualnych platformy Azure (np. A6, A8, A9).
    - Określanie wymaganej przepustowości Internetu.
 
 ## <a name="limitations"></a>Ograniczenia
-- Obecnie tylko 1 urządzenia StorSimple można przełączone w tryb failover (pojedynczego urządzenia StorSimple w chmurze). Scenariusz serwera plików, który obejmuje kilka urządzeń StorSimple nie jest jeszcze obsługiwana.
-- Jeśli wystąpi błąd podczas włączania ochrony dla maszyny Wirtualnej, upewnij się, że zostały odłączone obiektów docelowych iSCSI.
-- Wszystkie kontenery woluminów, które zostały zgrupowane razem ze względu na zasady tworzenia kopii zapasowych, obejmujące kontenerów woluminów nie powiedzie się za pośrednictwem ze sobą.
-- Wszystkie woluminy w kontenery woluminów, które zostały wybrane zostaną przełączone w tryb failover.
-- Woluminy, które dodać do więcej niż 64 TB, który nie może za pośrednictwem, ponieważ maksymalna pojemność jednej urządzenia StorSimple w chmurze jest 64 TB.
-- Jeśli planowane lub nieplanowane trybu failover nie powiedzie się i maszyny wirtualne są tworzone na platformie Azure, następnie nie usuwaj maszyny wirtualne. Zamiast tego podczas powrotu po awarii. Jeśli usuniesz maszyny wirtualne następnie lokalnych maszyn wirtualnych nie można włączyć ponownie.
-- Po przejściu w tryb failover Jeśli nie jest możliwe zobaczyć woluminy, przejdź do maszyn wirtualnych, otwórz przystawkę Zarządzanie dyskami, ponownie przeskanować dyski, a następnie przełącz je online.
-- W niektórych przypadkach litery dysku w lokacji odzyskiwania po awarii może być różni się od litery w środowisku lokalnym. W takiej sytuacji należy ręcznie rozwiązać ten problem, po zakończeniu pracy w trybie failover.
-- Limit czasu zadania trybu failover: Skrypt StorSimple przekroczy limit czasu, jeśli tryb failover kontenery woluminów zajmuje więcej czasu niż limit usługi Azure Site Recovery dla skryptu (obecnie 120 minut).
-- Limit czasu zadania tworzenia kopii zapasowej: Limit czasu skryptu StorSimple, jeśli tworzenie kopii zapasowych woluminów zajmuje więcej czasu niż limit usługi Azure Site Recovery dla skryptu (obecnie 120 minut).
+- Obecnie tylko 1 Urządzenie StorSimple można przełączyć w tryb failover (do jednego urządzenia w chmurze StorSimple). Scenariusz serwera plików, który obejmuje kilka urządzeń StorSimple, nie jest jeszcze obsługiwany.
+- Jeśli podczas włączania ochrony maszyny wirtualnej wystąpi błąd, upewnij się, że obiekty docelowe iSCSI zostały rozłączone.
+- Wszystkie kontenery woluminów, które zostały pogrupowane ze względu na zasady tworzenia kopii zapasowych obejmujące między kontenerami woluminów, zostaną przełączone w tryb failover.
+- Wszystkie woluminy w wybranych kontenerach woluminów zostaną przełączone w tryb failover.
+- Woluminy dodawane do ponad 64 TB nie mogą być przełączone w tryb failover, ponieważ maksymalna pojemność pojedynczego urządzenia w chmurze StorSimple wynosi 64 TB.
+- Jeśli planowane/nieplanowane przejście w tryb failover zakończy się niepowodzeniem, a maszyny wirtualne zostaną utworzone na platformie Azure, nie należy czyścić maszyn wirtualnych. Zamiast tego należy przeprowadzić powrót po awarii. Po usunięciu maszyn wirtualnych nie można ponownie włączyć lokalnych maszyn wirtualnych.
+- Jeśli nie widzisz woluminów w trybie failover, przejdź do maszyn wirtualnych, Otwórz przystawkę Zarządzanie dyskami, przeskanuj dyski ponownie, a następnie Przełącz je do trybu online.
+- W niektórych przypadkach litery dysku w witrynie odzyskiwania po awarii mogą być inne niż litery w środowisku lokalnym. W takim przypadku konieczne będzie ręczne rozwiązanie problemu po zakończeniu pracy w trybie failover.
+- Limit czasu zadania trybu failover: Skrypt StorSimple będzie przekroczyć limit czasu, Jeśli przełączenie w tryb failover kontenerów woluminów trwa dłużej niż limit Azure Site Recovery na skrypt (obecnie 120 minut).
+- Limit czasu zadania tworzenia kopii zapasowej: Skrypt StorSimple przekracza limit czasu, jeśli Tworzenie kopii zapasowych woluminów trwa dłużej niż wartość limitu Azure Site Recovery na skrypt (obecnie 120 minut).
    
   > [!IMPORTANT]
-  > Ręcznie uruchomić tworzenie kopii zapasowej w witrynie Azure portal, a następnie ponownie uruchom planu odzyskiwania.
+  > Ręcznie uruchom kopię zapasową z Azure Portal a następnie ponownie uruchom plan odzyskiwania.
    
-- Sklonuj limit czasu zadania: Limit czasu skryptu StorSimple, jeśli Klonowanie woluminów zajmuje więcej czasu niż limit usługi Azure Site Recovery dla skryptu (obecnie 120 minut).
-- Błąd synchronizacji: StorSimple skrypty występuje informujący o tym, że kopie zapasowe zakończyły się niepowodzeniem, mimo że kopii zapasowej zakończy się w portalu. Możliwą przyczyną tego może być, że urządzenie StorSimple czas może być zsynchronizowany z aktualną godziną w strefie czasowej.
-   
-  > [!IMPORTANT]
-  > Synchronizacja czasu urządzenia z aktualną godziną w strefie czasowej.
-   
-- Błąd trybu failover urządzenia: Skrypt StorSimple może zakończyć się niepowodzeniem, jeśli istnieje urządzenie w tryb failover, gdy działa w planie odzyskiwania.
+- Sklonowany limit czasu zadania: Jeśli klonowanie woluminów trwa dłużej niż limit Azure Site Recovery na skrypt (obecnie 120 minuty), limit czasu zostanie przekroczony.
+- Błąd synchronizacji czasu: Skrypty StorSimple wystąpiły błędy informujące o tym, że wykonywanie kopii zapasowych nie powiodło się, mimo że kopia zapasowa została pomyślnie zapisana w portalu. Możliwą przyczyną może być brak synchronizacji czasu urządzenia StorSimple z bieżącym czasem w strefie czasowej.
    
   > [!IMPORTANT]
-  > Po zakończeniu pracy w trybie failover urządzenia, należy ponownie uruchomić planu odzyskiwania.
+  > Zsynchronizuj czas urządzenia z bieżącą godziną w strefie czasowej.
+   
+- Błąd trybu failover urządzenia: Skrypt StorSimple może się nie powieść, jeśli jest dostępny tryb failover urządzenia, gdy plan odzyskiwania jest uruchomiony.
+   
+  > [!IMPORTANT]
+  > Uruchom ponownie plan odzyskiwania po zakończeniu przełączania urządzenia w tryb failover.
 
 
 ## <a name="summary"></a>Podsumowanie
-Za pomocą usługi Azure Site Recovery, możesz utworzyć plan odzyskiwania pełne, automatyczne po awarii dla serwera plików maszyny Wirtualnej po udostępnieniu udziałów plików w serwisie magazynu StorSimple. Możesz zainicjować trybu failover w ciągu kilku sekund z dowolnego miejsca w przypadku przerwy w działaniu i Pobierz aplikację w ciągu kilku minut.
+Za pomocą Azure Site Recovery można utworzyć kompletny zautomatyzowany plan odzyskiwania po awarii dla maszyny wirtualnej serwera plików z udziałami plików hostowanymi w magazynie StorSimple. Pracę w trybie failover można zainicjować w ciągu kilku sekund od dowolnego miejsca w przypadku przerwania działania i uruchomić aplikację w kilka minut.

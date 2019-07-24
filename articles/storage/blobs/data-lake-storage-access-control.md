@@ -1,6 +1,6 @@
 ---
-title: Omówienie kontroli dostępu w usłudze Azure Data Lake magazynu Gen2 | Dokumentacja firmy Microsoft
-description: Zrozumienie sposobu działania kontroli dostępu w usłudze Azure Data Lake magazynu Gen2
+title: Omówienie kontroli dostępu w Azure Data Lake Storage Gen2 | Microsoft Docs
+description: Objaśnienie działania kontroli dostępu w Azure Data Lake Storage Gen2
 services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
@@ -9,89 +9,89 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 72a72e385217178cb6afee237cc3a3e5c5d1248b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 112d3b18df8205aac173eafb8f8e30ed6c32e048
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66751641"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249077"
 ---
-# <a name="access-control-in-azure-data-lake-storage-gen2"></a>Kontrola dostępu w usłudze Azure Data Lake magazynu Gen2
+# <a name="access-control-in-azure-data-lake-storage-gen2"></a>Kontrola dostępu w Azure Data Lake Storage Gen2
 
-Azure Data Lake magazynu Gen2 implementuje model kontroli dostępu, który obsługuje zarówno kontroli dostępu opartej na rolach na platformie Azure (RBAC), jak i listy kontroli dostępu POSIX i podobne (kontroli dostępu ACL). Ten artykuł zawiera podsumowanie podstaw modelu kontroli dostępu dla Data Lake Storage Gen2.
+Azure Data Lake Storage Gen2 implementuje model kontroli dostępu, który obsługuje kontrolę dostępu opartą na rolach (RBAC) na platformie Azure oraz listę kontroli dostępu (ACL). W tym artykule zestawiono podstawowe informacje o modelu kontroli dostępu dla Data Lake Storage Gen2.
 
 <a id="azure-role-based-access-control-rbac" />
 
 ## <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
 
-RBAC używają przypisań ról w celu efektywnego zastosowania zestawy uprawnień, aby *podmiotów zabezpieczeń*. A *podmiotu zabezpieczeń* jest obiektem, który reprezentuje użytkownika, grupy, jednostkę usługi lub tożsamość zarządzana, która jest zdefiniowana w usłudze Azure Active Directory (AD), który żąda dostępu do zasobów platformy Azure.
+Funkcja RBAC używa przypisań ról do efektywnego stosowania zestawów uprawnień do *podmiotów zabezpieczeń*. *Podmiot zabezpieczeń* to obiekt, który reprezentuje użytkownika, grupę, jednostkę usługi lub tożsamość zarządzaną zdefiniowaną w Azure Active Directory (AD), która żąda dostępu do zasobów platformy Azure.
 
-Zazwyczaj te zasoby platformy Azure są ograniczone do najwyższego poziomu zasobów (na przykład: Konta usługi Azure Storage). W przypadku usługi Azure Storage, a w związku z tym usługi Azure Data Lake Storage Gen2 ten mechanizm został rozszerzony do zasobu kontenera (w systemie plików).
+Zazwyczaj te zasoby platformy Azure są ograniczone do zasobów najwyższego poziomu (na przykład: Konta usługi Azure Storage). W przypadku usługi Azure Storage, w Azure Data Lake Storage Gen2 związku z czym ten mechanizm został rozszerzony do zasobu kontenera (systemu plików).
 
-Aby dowiedzieć się, jak przypisać role do podmiotów zabezpieczeń w zakresie konta usługi storage, zobacz [udzielić dostępu do obiektów blob i kolejek danych Azure przy użyciu funkcji RBAC w witrynie Azure portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Aby dowiedzieć się, jak przypisać role do podmiotów zabezpieczeń w zakresie konta magazynu, zobacz Udzielanie [dostępu do obiektów blob platformy Azure i danych z kolejki RBAC w Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>Wpływ przypisania roli na listach kontroli dostępu na poziomie plików i katalogów
+### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>Wpływ przypisań ról na listy kontroli dostępu na poziomie plików i katalogów
 
-Za pomocą przypisań ról RBAC jest zaawansowanym mechanizmem służącym do kontrolowania uprawnień dostępu, jest bardzo ziarnistości szczegółowe mechanizm względem listy kontroli dostępu. Najmniejsza stopień szczegółowości dla RBAC znajduje się na poziomie systemu plików i ocenia się to z wyższym priorytetem niż list ACL. W związku z tym czy możesz przypisać rolę do podmiotu zabezpieczeń w zakresie systemu plików tego podmiotu zabezpieczeń ma poziom autoryzacji skojarzonych z tą rolą, dla wszystkich plików i katalogów, w tym systemie plików, niezależnie od przypisań listy ACL.
+W przypadku korzystania z przypisań ról RBAC jest zaawansowanym mechanizmem kontrolowania uprawnień dostępu, jest to bardzo duży mechanizm względem list ACL. Najmniejszy stopień szczegółowości kontroli RBAC jest na poziomie systemu plików i zostanie on oceniony z wyższym priorytetem niż listy kontroli dostępu. W związku z tym, Jeśli rola jest przypisywana do podmiotu zabezpieczeń w zakresie systemu plików, ten podmiot zabezpieczeń ma poziom autoryzacji skojarzony z tą rolą dla wszystkich katalogów i plików w tym systemie plików, niezależnie od przypisań listy ACL.
 
-Gdy podmiot zabezpieczeń jest uprawnień RBAC danych za pośrednictwem [wbudowana rola](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues), lub za pośrednictwem rolę niestandardową, te uprawnienia są obliczane najpierw od autoryzacji żądania. Jeśli żądana operacja jest autoryzowany przez przypisania RBAC podmiotu zabezpieczeń, autoryzacji jest natychmiast rozwiązanych i Brak dodatkowych listy ACL są sprawdzane. Alternatywnie Jeśli podmiot zabezpieczeń nie ma przypisania RBAC lub żądania operacji jest niezgodna z przypisane uprawnienie, listy ACL testy są wykonywane w celu określenia, czy podmiot zabezpieczeń jest autoryzowany do wykonania żądanej operacji.
+Gdy podmiot zabezpieczeń otrzymuje uprawnienia do danych RBAC za pomocą [wbudowanej roli](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)lub roli niestandardowej, te uprawnienia są oceniane jako pierwsze przy autoryzacji żądania. Jeśli żądana operacja jest autoryzowana przez przypisania kontroli RBAC podmiotu zabezpieczeń, wówczas Autoryzacja jest natychmiast rozwiązywana i nie są wykonywane żadne dodatkowe kontrole listy ACL. Alternatywnie, jeśli podmiot zabezpieczeń nie ma przypisania RBAC lub operacja żądania nie jest zgodna z przypisanym uprawnieniem, sprawdzenia listy ACL są wykonywane w celu ustalenia, czy podmiot zabezpieczeń jest autoryzowany do wykonywania żądanych operacji.
 
 > [!NOTE]
-> Jeśli podmiot zabezpieczeń został przypisany przypisanie wbudowanej roli właściciela danych obiektu Blob magazynu, a następnie podmiot zabezpieczeń jest uważany za *administrator* i jest przyznawany pełny dostęp do wszystkich operacji mutujące, włączając ustawienie właściciel katalogu lub pliku, a także listy ACL dla katalogów i plików, dla których nie są one właściciela. Administrator dostępu jest tylko autoryzowane sposób można zmienić właściciela zasobu.
+> Jeśli podmiotowi zabezpieczeń przypisano przypisanie wbudowanej roli właściciela danych obiektu blob magazynu, podmiot zabezpieczeń jest traktowany jako *administrator* i uzyskuje pełny dostęp do wszystkich operacji związanych z operacjami, takich jak Ustawianie właściciela katalogu lub plik oraz listy ACL dla katalogów i plików, dla których nie są właścicielami. Dostęp administratora jest jedynym autoryzowanym sposobem zmiany właściciela zasobu.
 
-## <a name="shared-key-and-shared-access-signature-sas-authentication"></a>Uwierzytelnianie klucza współużytkowanego i sygnatury dostępu współdzielonego (SAS)
+## <a name="shared-key-and-shared-access-signature-sas-authentication"></a>Uwierzytelnianie klucza wspólnego i sygnatury dostępu współdzielonego (SAS)
 
-Azure Data Lake magazynu Gen2 obsługuje klucza wspólnego i interfejsie SAS metody uwierzytelniania. Charakterystyka tych metod uwierzytelniania jest tożsamość nie jest skojarzony z funkcją wywołującą i dlatego nie można wykonać zabezpieczeń autoryzacji opartej na uprawnienia podmiotu zabezpieczeń.
+Azure Data Lake Storage Gen2 obsługuje metody uwierzytelniania klucza współużytkowanego i SYGNATURy dostępu współdzielonego. Charakterystyka tych metod uwierzytelniania polega na tym, że żadna tożsamość nie jest skojarzona z obiektem wywołującym i dlatego nie można wykonać autoryzacji podmiotu zabezpieczeń na podstawie uprawnień.
 
-W przypadku klucza wspólnego obiekt wywołujący dysków uzyskuje skutecznie dostęp "Administrator", co oznacza pełny dostęp do wszystkich operacji wykonywanych na wszystkich zasobów, w tym ustawianie właściciela i zmiana listy kontroli dostępu.
+W przypadku klucza współużytkowanego, obiekt wywołujący skutecznie uzyskuje dostęp "administratora", co oznacza pełny dostęp do wszystkich operacji na wszystkich zasobach, w tym Ustawianie właściciela i zmienianie list ACL.
 
-Tokeny sygnatur dostępu Współdzielonego obejmują dozwolone uprawnienia jako część tokenu. Uprawnienia uwzględnionym w tokenie sygnatury dostępu Współdzielonego skutecznie są stosowane do wszystkich decyzji dotyczących autoryzacji, ale nie dodatkowych listy ACL są sprawdzane.
+Tokeny sygnatury dostępu współdzielonego zawierają dozwolone uprawnienia jako część tokenu. Uprawnienia zawarte w tokenie SAS są skutecznie stosowane do wszystkich decyzji dotyczących autoryzacji, ale nie są wykonywane żadne dodatkowe sprawdzenia listy ACL.
 
 ## <a name="access-control-lists-on-files-and-directories"></a>Listy kontroli dostępu do plików i katalogów
 
-Podmiot zabezpieczeń można skojarzyć z poziomu dostępu do plików i katalogów. Skojarzenia te są przechwytywane *listy kontroli dostępu (ACL)* . Poszczególnych plików i katalogów w ramach konta magazynu ma listy kontroli dostępu.
+Podmiot zabezpieczeń można skojarzyć z poziomem dostępu dla plików i katalogów. Te skojarzenia są przechwytywane z *listy kontroli dostępu (ACL)* . Każdy plik i katalog na koncie magazynu ma listę kontroli dostępu.
 
-Jeśli rola jest przypisany do podmiotu zabezpieczeń na poziomie konta magazynu, można użyć listy kontroli dostępu przyznanie tego podmiotu zabezpieczeń z podwyższonym poziomem uprawnień dostępu do określonych plików i katalogów.
+Jeśli przypisano rolę do podmiotu zabezpieczeń na poziomie konta magazynu, można użyć list kontroli dostępu, aby przyznać temu podmiotowi zabezpieczeń podwyższony poziom dostępu do określonych plików i katalogów.
 
-Nie można użyć listy kontroli dostępu w celu zapewnienia poziomu dostępu, który jest niższy niż poziom przyznane przez przypisanie roli. Na przykład, jeśli przypisujesz [Współautor danych obiektu Blob magazynu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) roli podmiot zabezpieczeń, nie można użyć kontroli dostępu list, aby uniemożliwić zapisywanie w katalogu tego podmiotu zabezpieczeń.
+Nie można użyć list kontroli dostępu w celu zapewnienia poziomu dostępu, który jest niższy niż poziom przyznany przez przypisanie roli. Na przykład, Jeśli przypiszesz rolę [współautor danych obiektów blob magazynu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) do podmiotu zabezpieczeń, nie można używać list kontroli dostępu, aby zapobiec zapisywaniu tego podmiotu zabezpieczeń w katalogu.
 
-### <a name="set-file-and-directory-level-permissions-by-using-access-control-lists"></a>Zestaw plików i katalogów poziomu uprawnień przy użyciu list kontroli dostępu
+### <a name="set-file-and-directory-level-permissions-by-using-access-control-lists"></a>Ustawianie uprawnień na poziomie plików i katalogów przy użyciu list kontroli dostępu
 
-Aby ustawić uprawnienia na poziomie plików i katalogów, zobacz jedną z następujących artykułów:
+Aby ustawić uprawnienia na poziomie plików i katalogów, zobacz dowolny z następujących artykułów:
 
-|Jeśli chcesz użyć tego narzędzia:    |Znajduje się w artykule:    |
+|Jeśli chcesz użyć tego narzędzia:    |Zobacz ten artykuł:    |
 |--------|-----------|
-|Eksplorator usługi Azure Storage    |[Zestaw plików i katalogów poziomu uprawnień przy użyciu Eksploratora usługi Azure Storage za pomocą usługi Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)|
-|Interfejs API REST    |[Ścieżka - Update](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
+|Eksplorator usługi Azure Storage    |[Ustawianie uprawnień na poziomie plików i katalogów przy użyciu Eksplorator usługi Azure Storage z Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)|
+|Interfejs API REST    |[Ścieżka — aktualizacja](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
-> Jeśli podmiot zabezpieczeń jest *usługi* jednostki, ważne jest, aby używać identyfikator obiektu nazwy głównej usługi i nie identyfikator obiektu rejestracji aplikacji. Aby uzyskać identyfikator obiektu jednostki usługi Otwieranie wiersza polecenia platformy Azure, a następnie użyj tego polecenia: `az ad sp show --id <Your App ID> --query objectId`. Upewnij się zastąpić `<Your App ID>` symbol zastępczy przy użyciu Identyfikatora aplikacji w Twojej rejestracji aplikacji.
+> Jeśli podmiot zabezpieczeń jest jednostką *usługi* , ważne jest użycie identyfikatora obiektu nazwy głównej usługi, a nie identyfikatora obiektu powiązanej rejestracji aplikacji. Aby uzyskać identyfikator obiektu jednostki usługi, Otwórz interfejs wiersza polecenia platformy Azure, a następnie użyj następujące polecenie: `az ad sp show --id <Your App ID> --query objectId`. Pamiętaj, `<Your App ID>` aby zastąpić symbol zastępczy identyfikatorem aplikacji rejestracji aplikacji.
 
 ### <a name="types-of-access-control-lists"></a>Typy list kontroli dostępu
 
-Istnieją dwa typy list kontroli dostępu: *listy ACL dostępu* i *domyślne listy ACL*.
+Istnieją dwa rodzaje list kontroli dostępu: *listy ACL dostępu* i *domyślne listy ACL*.
 
 Listy ACL dostępu kontrolują dostęp do obiektu. Pliki i katalogi mają osobne listy ACL dostępu.
 
-Domyślne listy ACL są szablony list ACL skojarzony z katalogiem, które określają listy ACL dostępu dla wszelkich elementów podrzędnych, które zostały utworzone w tym katalogu. Pliki nie mają domyślnych list ACL.
+Domyślne listy ACL są szablonami list ACL skojarzonych z katalogiem, który określa listy ACL dostępu dla wszelkich elementów podrzędnych, które są tworzone w tym katalogu. Pliki nie mają domyślnych list ACL.
 
-Zarówno listy ACL dostępu i domyślnej listy ACL mają tę samą strukturę.
+Listy ACL dostępu i domyślne listy ACL mają tę samą strukturę.
 
 > [!NOTE]
-> Zmienianie domyślnego listy ACL w nadrzędnej nie wpływa na dostęp do listy ACL lub domyślnych listę ACL elementów podrzędnych, które już istnieją.
+> Zmiana domyślnej listy ACL w obiekcie nadrzędnym nie ma wpływu na listę ACL dostępu ani domyślną listę ACL elementów podrzędnych, które już istnieją.
 
 ### <a name="levels-of-permission"></a>Poziomy uprawnień
 
-Uprawnienia do obiektu systemu plików są **odczytu**, **zapisu**, i **Execute**, i mogą być używane w pliki i katalogi, jak pokazano w poniższej tabeli:
+Uprawnienia do obiektu systemu plików są odczytywane , **zapisywane**i **wykonywane**oraz mogą być używane dla plików i katalogów, jak pokazano w poniższej tabeli:
 
 |            |    Plik     |   Katalog |
 |------------|-------------|----------|
-| **Odczyt (R)** | Może odczytywać zawartości pliku | Wymaga **odczytu** i **Execute** wyświetlania zawartości katalogu |
-| **Zapis (W)** | Może zapisywać w pliku lub dołączać do pliku | Wymaga **zapisu** i **Execute** utworzyć podrzędne elementy w katalogu |
-| **Wykonanie (X)** | Nie oznacza niczego w kontekście Data Lake Storage Gen2 | Wymagane na przechodzenie przez elementy podrzędne w katalogu |
+| **Odczyt (R)** | Może odczytywać zawartości pliku | Wymaga **odczytu** i **wykonania** w celu wyświetlenia listy zawartości katalogu |
+| **Zapis (W)** | Może zapisywać w pliku lub dołączać do pliku | Wymaga funkcji **Write** i **Execute** do tworzenia elementów podrzędnych w katalogu |
+| **Wykonanie (X)** | Nie oznacza wszystkiego w kontekście Data Lake Storage Gen2 | Wymagane do przechodzenia między elementami podrzędnymi katalogu |
 
 > [!NOTE]
-> Jeśli przyznajesz uprawnienia za pomocą tylko listy ACL (nie RBAC), a następnie udzielić usługi głównej odczytu lub zapisu do pliku, musisz podać nazwę główną usługi **Execute** uprawnienia systemu plików i każdy folder w Hierarchia folderów, które mogą prowadzić do pliku.
+> W przypadku przyznawania uprawnień przy użyciu tylko list kontroli dostępu (bez RBAC), a następnie udzielenia jednostce usługi dostępu do odczytu lub zapisu do pliku należy przyznać uprawnienia do **wykonywania** głównej usługi do systemu plików oraz do każdego folderu w hierarchii folderów, które prowadzić do pliku.
 
 #### <a name="short-forms-for-permissions"></a>Krótkie formy uprawnień
 
@@ -106,38 +106,38 @@ Skrót **RWX** służy do wskazywania uprawnień do **odczytu, zapisu i wykonani
 
 #### <a name="permissions-inheritance"></a>Dziedziczenie uprawnień
 
-W modelu stylu POSIX używanym przez Data Lake Storage Gen2 uprawnienia dla elementu są przechowywane w samym elemencie. Innymi słowy uprawnienia dla elementu nie może być dziedziczona z elementów nadrzędnych, jeśli uprawnienia zostały ustawione po podrzędny element został już utworzony. Uprawnienia są dziedziczone tylko, jeśli domyślne uprawnienia zostały ustawione na elementów nadrzędnych przed elementy podrzędne zostały utworzone.
+W modelu w stylu POSIX, który jest używany przez Data Lake Storage Gen2, uprawnienia dla elementu są przechowywane w samym elemencie. Innymi słowy, uprawnienia dla elementu nie mogą być dziedziczone z elementów nadrzędnych, jeśli uprawnienia są ustawione po utworzeniu elementu podrzędnego. Uprawnienia są dziedziczone tylko wtedy, gdy dla elementów nadrzędnych zostały ustawione uprawnienia domyślne przed utworzeniem elementów podrzędnych.
 
 ### <a name="common-scenarios-related-to-permissions"></a>Typowe scenariusze dotyczące uprawnień
 
-W poniższej tabeli wymieniono niektóre typowe scenariusze, które pomagają zrozumieć, jakie uprawnienia są wymagane do wykonania operacji na koncie magazynu.
+W poniższej tabeli przedstawiono niektóre typowe scenariusze, które ułatwiają zrozumienie, które uprawnienia są potrzebne do wykonania niektórych operacji na koncie magazynu.
 
-|    Operacja             |    /    | Oregon / | Portland / | Data.txt     |
+|    Operacja             |    /    | Oregon | Portland / | Data.txt     |
 |--------------------------|---------|----------|-----------|--------------|
-| Przeczytaj Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
-| Dołącz do Data.txt       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
-| Usuń Data.txt          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| Utwórz Data.txt          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| Lista /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
-| Lista /Oregon/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
-| Lista /Oregon/Portland /  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
+| Odczytaj dane. txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
+| Dołącz do danych. txt       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| Usuń dane. txt          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Utwórz dane. txt          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Staw                   |   `R-X`   |   `---`    |  `---`      | `---`          |
+| /Oregon/listy           |   `--X`   |   `R-X`    |  `---`      | `---`          |
+| /Oregon/Portland/listy  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
 
 > [!NOTE]
-> Zapisu uprawnienia do pliku, nie są wymagane do usunięcia, tak długo, jak dwa poprzednie warunki są spełnione.
+> Uprawnienia do zapisu w pliku nie są wymagane do usunięcia go, o ile poprzednie dwa warunki są spełnione.
 
 ### <a name="users-and-identities"></a>Użytkownicy i tożsamości
 
-Każdy plik i katalog ma różne uprawnienia do tych tożsamości:
+Każdy plik i katalog ma odrębne uprawnienia dla tych tożsamości:
 
 - Użytkownik będący właścicielem
 - Grupa będąca właścicielem
 - Użytkownicy nazwani
 - Grupy nazwane
-- Jednostki usługi o nazwie
-- Nazwane zarządzanych tożsamości.
+- Nazwy główne usługi
+- Nazwane tożsamości zarządzane
 - Wszyscy pozostali użytkownicy
 
-Tożsamości użytkowników i grup są tożsamościami usługi Azure Active Directory (Azure AD). Tak, chyba że określono inaczej, *użytkownika*, w kontekście usługi Data Lake Storage Gen2, można odwoływać się do użytkownika usługi Azure AD, usługi jednostki, zarządzanych tożsamości lub grupy zabezpieczeń.
+Tożsamości użytkowników i grup są tożsamościami usługi Azure Active Directory (Azure AD). O ile nie zaznaczono inaczej, *użytkownik*, w kontekście Data Lake Storage Gen2, może odwoływać się do użytkownika usługi Azure AD, nazwy głównej usługi, tożsamości zarządzanej lub grupy zabezpieczeń.
 
 #### <a name="the-owning-user"></a>Użytkownik będący właścicielem
 
@@ -147,16 +147,16 @@ Użytkownik, który utworzył element, jest automatycznie właścicielem element
 * zmieniać grupę będącą właścicielem dla pliku, którego jest właścicielem, jeśli użytkownik będący właścicielem jest również członkiem grupy docelowej.
 
 > [!NOTE]
-> Użytkownik będący właścicielem *nie* zmienić użytkownika będącego właścicielem pliku lub katalogu. Tylko administrator może zmienić użytkownik będący właścicielem pliku lub katalogu.
+> Użytkownik będący właścicielem *nie może* zmienić użytkownika będącego właścicielem pliku lub katalogu. Tylko Administratorzy mogą zmienić użytkownika będącego właścicielem pliku lub katalogu.
 
 #### <a name="the-owning-group"></a>Grupa będąca właścicielem
 
-Na listach ACL modelu POSIX, każdy użytkownik jest skojarzony z *grupa podstawowa*. Na przykład użytkownik "Alicja" może należeć do grupy "Finanse". Alicja może również należeć do wielu grup, ale jedna grupa jest zawsze wyznaczona jako swojej grupy podstawowej. W modelu POSIX, gdy Alicja tworzy plik, na grupę będącą właścicielem tego pliku zostaje ustawiona jej grupa główna. W tym przypadku jest to grupa „Finanse”. Grupa będąca właścicielem w przeciwnym razie działa podobnie do przypisanych uprawnień dla innych użytkowników/grup.
+Na listach kontroli dostępu POSIX każdy użytkownik jest skojarzony z *grupą podstawową*. Przykładowo użytkownik "Alicja" może należeć do grupy "Finanse". Alicja może także należeć do wielu grup, ale jedna grupa jest zawsze wyznaczono jako grupę podstawową. W modelu POSIX, gdy Alicja tworzy plik, na grupę będącą właścicielem tego pliku zostaje ustawiona jej grupa główna. W tym przypadku jest to grupa „Finanse”. Grupa będąca właścicielem w przeciwnym razie działa podobnie do przypisanych uprawnień dla innych użytkowników/grup.
 
-##### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>Przypisywanie grupa będąca właścicielem dla nowego pliku lub katalogu
+##### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>Przypisywanie grupy będącej właścicielem dla nowego pliku lub katalogu
 
-* **Przypadek 1**: Katalog główny "/". Ten katalog jest tworzony po utworzeniu systemu plików Data Lake Storage Gen2. W takim przypadku grupa będąca właścicielem jest ustawiona dla użytkownika, która utworzyła systemu plików, jeśli zostało to zrobione, przy użyciu protokołu OAuth. Jeśli system plików jest tworzony przy użyciu klucza wspólnego, sygnatury dostępu Współdzielonego konta lub sygnatury dostępu Współdzielonego usługi, a następnie właścicielem i grupy będącej właścicielem są ustawione na **$superuser**.
-* **Przypadek 2** (każdy inny przypadek): Gdy zostanie utworzony nowy element, grupa będąca właścicielem jest kopiowany z katalogu nadrzędnego.
+* **Przypadek 1**: Katalog główny "/". Ten katalog jest tworzony podczas tworzenia systemu plików Data Lake Storage Gen2. W takim przypadku grupa będąca właścicielem jest ustawiana na użytkownika, który utworzył system plików, jeśli został on wykonany przy użyciu protokołu OAuth. Jeśli system plików jest tworzony przy użyciu klucza współużytkowanego, SYGNATURy dostępu współdzielonego konta lub SYGNATURy dostępu współdzielonego usługi, to właściciel i grupa będąca właścicielem są ustawiani jako **$superuser**.
+* **Przypadek 2** (W każdym innym przypadku): Po utworzeniu nowego elementu grupa będąca właścicielem jest kopiowana z katalogu nadrzędnego.
 
 ##### <a name="changing-the-owning-group"></a>Zmiana grupy będącej właścicielem
 
@@ -165,11 +165,11 @@ Grupę będącą właścicielem może zmienić:
 * użytkownik będący właścicielem, jeśli jest on również członkiem grupy docelowej.
 
 > [!NOTE]
-> Grupa będąca właścicielem nie można zmienić list kontroli dostępu pliku lub katalogu.  Gdy grupa będąca właścicielem jest ustawiony na użytkownika, który utworzył konto w przypadku katalogu głównego **przypadek 1** powyżej jednego konta użytkownika nie jest prawidłowa dla zapewnić uprawnień za pośrednictwem grupy będącej właścicielem. Możesz przypisać te uprawnienia do prawidłowej grupy użytkowników, jeśli ma to zastosowanie.
+> Grupa będąca właścicielem nie może zmienić list kontroli dostępu do pliku lub katalogu.  Grupa będąca właścicielem jest ustawiana na użytkownika, który utworzył konto w przypadku katalogu głównego, w **przypadku 1** powyżej, jedno konto użytkownika jest nieprawidłowe w przypadku podawania uprawnień za pośrednictwem grupy będącej właścicielem. Możesz przypisać te uprawnienia do prawidłowej grupy użytkowników, jeśli ma to zastosowanie.
 
 ### <a name="access-check-algorithm"></a>Algorytm kontroli dostępu
 
-Poniższym pseudokodzie przedstawia algorytm kontroli dostępu dla kont magazynu.
+Następujący pseudokodzie reprezentuje algorytm kontroli dostępu dla kont magazynu.
 
 ```
 def access_check( user, desired_perms, path ) : 
@@ -214,39 +214,39 @@ return ( (desired_perms & perms & mask ) == desired_perms)
 
 #### <a name="the-mask"></a>Maska
 
-Jak pokazano w algorytmu kontroli dostępu, maski ogranicza dostęp do nazwani użytkownicy, grupy będącej właścicielem i nazwanej grupy.  
+Jak pokazano w algorytmie kontroli dostępu, maska ogranicza dostęp dla użytkowników nazwanych, grupy będącej właścicielem i nazwanych grup.  
 
 > [!NOTE]
-> Nowy system plików Data Lake Storage Gen2 maski dla listy ACL katalogu głównego ("/") dostęp domyślnie 750 dla katalogów i 640 dla plików. Pliki nie mają bitowy X, ponieważ jest nieodpowiednie do plików w systemie tylko do magazynu.
+> W przypadku nowego systemu plików Data Lake Storage Gen2 maska listy ACL dostępu katalogu głównego ("/") domyślnie 750 dla katalogów i 640 dla plików. Pliki nie otrzymują bitów X, ponieważ nie są one istotne dla plików w systemie tylko do magazynowania.
 >
-> Maska mogą być określone dla poszczególnych wywołań. Dzięki temu inne systemy odbierająca komunikaty, takich jak klastry mają różne maski obowiązujące dla ich operacji na plikach. Jeśli maska jest określony dla danego żądania, całkowicie zastępuje domyślną maskę.
+> Maskę można określić dla każdego wywołania. Dzięki temu różne systemy zużywające, takie jak klastry, mają różne efektywne maski dla operacji na plikach. Jeśli Maska jest określona dla danego żądania, całkowicie zastępuje domyślną maskę.
 
 #### <a name="the-sticky-bit"></a>Atrybut sticky bit
 
-Atrybut sticky bit jest bardziej zaawansowaną funkcją systemu plików POSIX. W kontekście usługi Data Lake Storage Gen2 jest mało prawdopodobne, że działania atrybutu sticky bit będzie potrzebny. Podsumowując Jeśli atrybut sticky bit jest włączona w katalogu, element podrzędny tylko można usunąć lub zmieniona przez użytkownika będącego właścicielem elementu podrzędnego.
+Program Sticky bit to bardziej zaawansowaną funkcję systemu plików POSIX. W kontekście Data Lake Storage Gen2 jest mało prawdopodobne, że będzie wymagany bit. W podsumowaniu, jeśli w katalogu jest włączony bit programu Sticky, element podrzędny może zostać usunięty lub zmieniony tylko przez użytkownika będącego właścicielem elementu podrzędnego.
 
-Atrybut sticky bit nie jest wyświetlany w witrynie Azure portal.
+Bit programu Sticky nie jest widoczny w Azure Portal.
 
-### <a name="default-permissions-on-new-files-and-directories"></a>Uprawnienia domyślne dla nowych plików i katalogów
+### <a name="default-permissions-on-new-files-and-directories"></a>Domyślne uprawnienia do nowych plików i katalogów
 
-Gdy nowy plik lub katalog jest tworzony w istniejącym katalogiem, domyślne listy ACL w katalogu nadrzędnym określa:
+Po utworzeniu nowego pliku lub katalogu w istniejącym katalogu, domyślna lista ACL w katalogu nadrzędnym określa:
 
-- Katalogu podrzędnego domyślnej listy ACL i listę ACL dostępu.
-- Plik podrzędnego dostępu ACL (pliki nie mają domyślnej listy ACL).
+- Domyślna lista ACL i dostęp do listy ACL katalogu podrzędnego.
+- Lista ACL dostępu pliku podrzędnego (pliki nie mają domyślnej listy ACL).
 
 #### <a name="umask"></a>maska umask
 
-Podczas tworzenia pliku lub katalogu, maska umask jest używana do modyfikowania konfiguracji domyślnej listy ACL dla elementu podrzędnego. Maska umask jest 9-bitową wartością w katalogi nadrzędne, które zawiera wartość RWX **użytkownika będącego właścicielem**, **grupy będącej właścicielem**, i **innych**.
+Podczas tworzenia pliku lub katalogu maska umask jest używany do modyfikowania sposobu ustawiania domyślnych list ACL dla elementu podrzędnego. Maska umask jest wartością 9-bitową w katalogach nadrzędnych, które zawierają wartość RWX dla **użytkownika będącego właścicielem**, **grupy będącej właścicielem**i **innych**.
 
-Maska umask for Azure Data Lake Storage Gen2 stałą wartość, która jest równa 007. This value translates to:
+Maska umask dla Azure Data Lake Storage Gen2 stałą wartość ustawioną na 007. Ta wartość tłumaczy na:
 
 | Maska umask składnika     | Forma liczbowa | Forma krótka | Znaczenie |
 |---------------------|--------------|------------|---------|
-| umask.owning_user   |    0         |   `---`      | Dla użytkownika będącego właścicielem, skopiuj domyślnej nadrzędnej listy ACL do dostępu elementu podrzędnego listy ACL | 
-| umask.owning_group  |    0         |   `---`      | Dla grupy będącej właścicielem, skopiuj domyślnej nadrzędnej listy ACL do dostępu elementu podrzędnego listy ACL | 
-| umask.Other         |    7         |   `RWX`      | Dla pozostałych Usuń wszystkie uprawnienia dostępu elementu podrzędnego listy ACL |
+| umask.owning_user   |    0         |   `---`      | W przypadku użytkownika będącego właścicielem Skopiuj domyślną listę ACL elementu nadrzędnego do listy ACL dostępu elementu podrzędnego. | 
+| umask.owning_group  |    0         |   `---`      | W przypadku grupy będącej właścicielem Skopiuj domyślną listę ACL elementu nadrzędnego do listy ACL dostępu do elementu podrzędnego. | 
+| umask.Other         |    7         |   `RWX`      | W przypadku innych Usuń wszystkie uprawnienia na liście ACL dostępu dziecka |
 
-Wartość maski umask używane przez usługi Azure Data Lake Storage Gen2 skutecznie oznacza, że wartość **innych** nigdy nie są przesyłane domyślnie na nowych elementów podrzędnych, niezależnie od tego, jakie domyślne listy ACL wskazuje. 
+Wartość maska umask używana Azure Data Lake Storage Gen2 efektywnie oznacza, że wartość dla **innych** nigdy nie jest domyślnie przekazywana w nowych elementach podrzędnych, niezależnie od tego, co wskazuje domyślna lista ACL. 
 
 Poniższym pseudokodzie pokazuje, jak maska umask jest stosowane podczas tworzenia listy ACL dla elementu podrzędnego.
 
@@ -270,31 +270,31 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>Czy muszę włączyć obsługę list ACL?
 
-Nie. Kontrola dostępu za pośrednictwem list ACL jest włączona dla konta magazynu, tak długo, jak hierarchiczne Namespace (SNS) funkcja jest włączone.
+Nie. Kontrola dostępu za pośrednictwem list ACL jest włączona dla konta magazynu, o ile jest włączona funkcja hierarchicznej przestrzeni nazw (SNS).
 
-Jeśli SNS jest wyłączony, reguły autoryzacji RBAC platformy Azure nadal mają zastosowanie.
+Jeśli usługa HNS jest wyłączona, nadal obowiązują reguły autoryzacji usługi Azure RBAC.
 
-### <a name="what-is-the-best-way-to-apply-acls"></a>Co to jest najlepszym sposobem na stosowanie list ACL?
+### <a name="what-is-the-best-way-to-apply-acls"></a>Jaki jest najlepszy sposób stosowania list ACL?
 
-Zawsze należy używać grup zabezpieczeń usługi Azure AD jako przypisanej jednostki na listach ACL w. Siłowym możliwość bezpośrednio przypisać poszczególnych użytkowników lub jednostki usługi. Za pomocą tej struktury pozwala dodawać i usuwać użytkowników lub jednostek usług bez konieczności ponownego zastosowania list ACL do całej struktury katalogów. ) Po prostu zamiast tego należy dodać lub usunąć je z odpowiedniej grupy zabezpieczeń usługi Azure AD. Należy pamiętać, że list ACL nie są dziedziczone, a więc w celu ponownego zastosowania list ACL wymaga zaktualizowania listy ACL dla każdego pliku i podkatalogu. 
+Zawsze używaj grup zabezpieczeń usługi Azure AD jako przypisanego podmiotu zabezpieczeń na listach ACL. Odporne na możliwość bezpośredniego przypisywania poszczególnych użytkowników lub podmiotów usługi. Użycie tej struktury umożliwi Dodawanie i usuwanie użytkowników lub jednostek usług bez konieczności ponownego stosowania list kontroli dostępu do całej struktury katalogów. ) Zamiast tego wystarczy dodać lub usunąć je z odpowiedniej grupy zabezpieczeń usługi Azure AD. Należy pamiętać, że listy ACL nie są dziedziczone i dlatego ponowne zastosowanie list kontroli dostępu wymaga aktualizacji listy ACL dla każdego pliku i podkatalogu. 
 
-### <a name="which-permissions-are-required-to-recursively-delete-a-directory-and-its-contents"></a>Jakie uprawnienia są wymagane do rekursywnego usunięcia katalogu i jego zawartość?
+### <a name="which-permissions-are-required-to-recursively-delete-a-directory-and-its-contents"></a>Które uprawnienia są wymagane do rekursywnego usunięcia katalogu i jego zawartości?
 
-- Obiekt wywołujący ma uprawnienia "Administrator"
+- Obiekt wywołujący ma uprawnienia administratora.
 
 Lub
 
-- Katalog nadrzędny musi mieć zapisu + uprawnienia do wykonywania.
-- Katalog do usunięcia i każdy katalog znajdujący się w nim, wymaga odczytu, zapisu i uprawnienia do wykonywania.
+- Katalog nadrzędny musi mieć uprawnienia do zapisu i wykonywania.
+- Katalog, który ma zostać usunięty, i każdy znajdujący się w nim katalog, wymaga uprawnień do odczytu i zapisu i wykonywania.
 
 > [!NOTE]
-> Użytkownik nie potrzebujesz uprawnienia do zapisu do usuwania plików w katalogach. Ponadto katalog główny "/" nigdy nie może zostać usunięty.
+> Nie potrzebujesz uprawnień do zapisu w celu usuwania plików w katalogach. Ponadto nie można usunąć katalogu głównego "/".
 
 ### <a name="who-is-the-owner-of-a-file-or-directory"></a>Kto jest właścicielem pliku lub katalogu?
 
-Twórca pliku lub katalogu staje się właścicielem. W przypadku katalogu głównego jest tożsamość użytkownika, który utworzył systemu plików.
+Twórca pliku lub katalogu stał się właścicielem. W przypadku katalogu głównego jest to tożsamość użytkownika, który utworzył system plików.
 
-### <a name="which-group-is-set-as-the-owning-group-of-a-file-or-directory-at-creation"></a>Grupę, do której jest ustawiona jako grupa będąca właścicielem pliku lub katalogu w momencie jego tworzenia?
+### <a name="which-group-is-set-as-the-owning-group-of-a-file-or-directory-at-creation"></a>Która grupa jest ustawiona jako grupa będąca właścicielem pliku lub katalogu podczas tworzenia?
 
 Grupa będąca właścicielem jest kopiowana z grupy będącej właścicielem katalogu nadrzędnego, w którym tworzony jest nowy plik lub katalog.
 
@@ -302,26 +302,28 @@ Grupa będąca właścicielem jest kopiowana z grupy będącej właścicielem ka
 
 Użytkownik będący właścicielem może zmienić uprawnienia do pliku, aby przydzielić sobie wymagane uprawnienia RWX.
 
-### <a name="why-do-i-sometimes-see-guids-in-acls"></a>Dlaczego czasami wyświetlane identyfikatory GUID list ACL?
+### <a name="why-do-i-sometimes-see-guids-in-acls"></a>Dlaczego w listach kontroli dostępu czasami są wyświetlane identyfikatory GUID?
 
-Identyfikator GUID jest wyświetlany, jeśli wpis reprezentuje użytkownika, a użytkownik nie istnieje w usłudze Azure AD już. Zwykle dzieje się tak, gdy użytkownik opuścił firmę lub jego konto w usłudze Azure AD zostało usunięte. Ponadto jednostki usługi i grupy zabezpieczeń nie mają główną nazwę użytkownika (UPN) umożliwiający ich zidentyfikowanie i dlatego są reprezentowane przez ich atrybut identyfikatora OID (guid).
+Identyfikator GUID jest wyświetlany, Jeśli wpis reprezentuje użytkownika, a użytkownik nie istnieje już w usłudze Azure AD. Zwykle dzieje się tak, gdy użytkownik opuścił firmę lub jego konto w usłudze Azure AD zostało usunięte. Ponadto jednostki usługi i grupy zabezpieczeń nie mają nazwy głównej użytkownika (UPN), aby je identyfikować i dlatego są reprezentowane przez ich atrybut OID (GUID).
 
-### <a name="how-do-i-set-acls-correctly-for-a-service-principal"></a>Jak ustawić list ACL poprawnie usługi głównej?
+### <a name="how-do-i-set-acls-correctly-for-a-service-principal"></a>Jak mogę ustawić listy ACL poprawnie dla nazwy głównej usługi?
 
-Podczas definiowania listy ACL dla nazw głównych usług, ważne jest, aby użyć Identyfikatora obiektu (OID) z *nazwy głównej usługi* rejestracji aplikacji, który został utworzony. Ważne jest, aby należy zauważyć, że zarejestrowanych aplikacji nazwy głównej usługi oddzielne w konkretnym dzierżawy usługi Azure AD. Zarejestrowane aplikacje mają identyfikatora OID, który jest widoczny w witrynie Azure portal, ale *nazwy głównej usługi* ma inny identyfikator OID w (inny).
+Podczas definiowania list ACL dla nazw głównych usługi należy użyć identyfikatora obiektu (OID) jednostki *usługi* dla utworzonej rejestracji aplikacji. Należy pamiętać, że zarejestrowane aplikacje mają oddzielną jednostkę usługi w określonej dzierżawie usługi Azure AD. Zarejestrowane aplikacje mają identyfikator OID widoczny w Azure Portal, ale jednostka *usługi* ma inny identyfikator OID (różny).
 
-Aby uzyskać identyfikator OID dla jednostki usługi, który odnosi się do rejestracji aplikacji, można użyć `az ad sp show` polecenia. Określ identyfikator aplikacji jako parametr. Oto przykład umożliwiające uzyskanie OID dla jednostki usługi, umożliwiająca rejestrowanie aplikacji przy użyciu Identyfikatora aplikacji = 18218b12-1895-43e9-ad80-6e8fc1ea88ce. Uruchom następujące polecenie w interfejsie wiersza polecenia platformy Azure:
+Aby uzyskać identyfikator OID dla jednostki usługi, która odnosi się do rejestracji aplikacji, możesz użyć `az ad sp show` polecenia. Określ identyfikator aplikacji jako parametr. Oto przykład uzyskiwania identyfikatora OID dla jednostki usługi, która odpowiada rejestracji aplikacji z IDENTYFIKATORem aplikacji = 18218b12-1895-43e9-ad80-6e8fc1ea88ce. Uruchom następujące polecenie w interfejsie wiersza polecenia platformy Azure:
 
-`az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
-<<OID will be displayed>>`
+```
+$ az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
+<<OID will be displayed>>
+```
 
-Jeśli masz prawidłowy identyfikator OID dla jednostki usługi, przejdź do Eksploratora usługi Storage **zarządzanie dostępem** strony, aby dodać identyfikator OID i przypisać odpowiednie uprawnienia, aby uzyskać identyfikator OID. Upewnij się, możesz wybrać **Zapisz**.
+Jeśli masz prawidłowy identyfikator OID dla jednostki usługi, przejdź do strony Eksplorator usługi Storage **Zarządzanie dostępem** , aby dodać identyfikator OID i przypisać odpowiednie uprawnienia dla identyfikatora OID. Upewnij się, że wybrano pozycję **Zapisz**.
 
-### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Usługa Data Lake Storage Gen2 obsługuje dziedziczenie list ACL?
+### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Czy Data Lake Storage Gen2 obsługuje dziedziczenie list ACL?
 
-Dziedziczenie przypisania RBAC platformy Azure. Przydziały przepływać z subskrypcji, grupy zasobów i zasobów konta magazynu w dół do zasobów systemu plików.
+Dziedziczenie przypisań RBAC platformy Azure. Przydziały przepływów z subskrypcji, grupy zasobów i zasobów konta magazynu w dół do zasobu systemu plików.
 
-List ACL nie dziedziczą. Jednak domyślne listy ACL może służyć do ustawienia list ACL dla podrzędnych podkatalogi i pliki tworzone w katalogu nadrzędnym. 
+Listy ACL nie są dziedziczone. Jednak domyślne listy ACL mogą być używane do ustawiania list ACL dla podrzędnych podkatalogów i plików utworzonych w katalogu nadrzędnym. 
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>Gdzie można dowiedzieć się więcej na temat modelu kontroli dostępu POSIX?
 
@@ -336,4 +338,4 @@ List ACL nie dziedziczą. Jednak domyślne listy ACL może służyć do ustawien
 
 ## <a name="see-also"></a>Zobacz także
 
-* [Omówienie usługi Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md)
+* [Omówienie Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md)

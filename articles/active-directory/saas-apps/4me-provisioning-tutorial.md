@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Konfigurowanie 4me dla automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować usługi Azure Active Directory do automatycznego aprowizowania lub cofania aprowizacji kont użytkowników do 4me.
+title: 'Samouczek: Konfigurowanie 4me na potrzeby automatycznego aprowizacji użytkowników przy użyciu Azure Active Directory | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Azure Active Directory w celu automatycznego aprowizacji i cofania aprowizacji kont użytkowników w usłudze 4me.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
-ms.author: zchia
-ms.openlocfilehash: e2e7c27d8cfa79bc7a8f8462def4d46e598cb508
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.author: jeedes
+ms.openlocfilehash: 55aab6546efa323d1ddcd242cf75281c15e8e0e1
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595092"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849654"
 ---
-# <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie 4me dla automatycznej aprowizacji użytkowników
+# <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie 4me na potrzeby automatycznego aprowizacji użytkowników
 
-Celem tego samouczka jest pokazują kroki do wykonania w 4me i usługi Azure Active Directory (Azure AD), aby skonfigurować usługę Azure AD do automatycznej aprowizacji i cofania aprowizacji użytkowników i/lub grup w celu 4me.
+Celem tego samouczka jest przedstawienie czynności, które należy wykonać w 4me i Azure Active Directory (Azure AD) w celu skonfigurowania usługi Azure AD w celu automatycznego aprowizacji i cofania aprowizacji użytkowników i/lub grup do 4me.
 
 > [!NOTE]
-> W tym samouczku opisano łącznika, który został zbudowany na podstawie usługi aprowizacji użytkownika usługi Azure AD. Ważne szczegółowe informacje na temat tej usługi nie, jak działa i często zadawane pytania, [Automatyzowanie aprowizacji użytkowników i anulowania obsługi do aplikacji SaaS w usłudze Azure Active Directory](../manage-apps/user-provisioning.md).
+> Ten samouczek zawiera opis łącznika utworzonego na podstawie usługi Azure AD User Provisioning. Aby uzyskać ważne informacje o tym, jak działa ta usługa, jak ona dotyczy, i często zadawanych pytań, zobacz [Automatyzowanie aprowizacji użytkowników i Anulowanie udostępniania aplikacji SaaS przy użyciu programu Azure Active Directory](../manage-apps/user-provisioning.md).
 >
-> Ten łącznik jest obecnie w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji na temat ogólnych Microsoft Azure warunki użytkowania dla funkcji w wersji zapoznawczej, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych platformy Microsoft](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ten łącznik jest obecnie w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji na temat ogólnych Microsoft Azure warunki użytkowania funkcji w wersji zapoznawczej, zobacz [dodatkowe warunki użytkowania dla Microsoft Azure podglądów](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Scenariusz opisany w tym samouczku przyjęto założenie, iż już następujące wymagania wstępne:
+Scenariusz opisany w tym samouczku założono, że masz już następujące wymagania wstępne:
 
 * Dzierżawa usługi Azure AD
 * [Dzierżawa 4me](https://www.4me.com/trial/)
@@ -41,50 +41,50 @@ Scenariusz opisany w tym samouczku przyjęto założenie, iż już następujące
 
 ## <a name="add-4me-from-the-gallery"></a>Dodaj 4me z galerii
 
-Przed skonfigurowaniem 4me dla automatycznej aprowizacji użytkowników z usługą Azure AD, musisz dodać 4me z galerii aplikacji usługi Azure AD z listą zarządzanych aplikacji SaaS.
+Przed skonfigurowaniem usługi 4me do automatycznego aprowizacji użytkowników w usłudze Azure AD należy dodać 4me z galerii aplikacji usługi Azure AD do listy zarządzanych aplikacji SaaS.
 
 **Aby dodać 4me z galerii aplikacji usługi Azure AD, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie wybierz **usługi Azure Active Directory**.
+1. W **[Azure Portal](https://portal.azure.com)** w lewym panelu nawigacyjnym wybierz pozycję **Azure Active Directory**.
 
     ![Przycisk usługi Azure Active Directory](common/select-azuread.png)
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+2. Przejdź do pozycji **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 
     ![W bloku aplikacji przedsiębiorstwa](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, wybierz **nową aplikację** znajdujący się u góry okienka.
+3. Aby dodać nową aplikację, wybierz przycisk **Nowa aplikacja** w górnej części okienka.
 
     ![Nowy przycisk aplikacji](common/add-new-app.png)
 
-4. W polu wyszukiwania wprowadź **4me**, wybierz opcję **4me** panel wyników, a następnie kliknij **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wprowadź **4me**, wybierz pozycję **4me** w panelu wyników, a następnie kliknij przycisk **Dodaj** , aby dodać aplikację.
 
     ![Aplikacja 4me na liście wyników](common/search-new-app.png)
 
 ## <a name="assigning-users-to-4me"></a>Przypisywanie użytkowników do 4me
 
-Usługa Azure Active Directory korzysta z koncepcji, o nazwie *przypisania* ustalenie, użytkowników, którzy otrzymają dostęp do wybranych aplikacji. W kontekście automatyczna aprowizacja użytkowników są synchronizowane tylko użytkowników i/lub grup, które zostały przypisane do aplikacji w usłudze Azure AD.
+Azure Active Directory używa koncepcji zwanej *zadaniami* w celu określenia, którzy użytkownicy powinni otrzymywać dostęp do wybranych aplikacji. W kontekście automatycznej aprowizacji użytkowników są synchronizowane tylko użytkownicy i/lub grupy, które zostały przypisane do aplikacji w usłudze Azure AD.
 
-Przed Skonfiguruj i Włącz automatyczne aprowizowanie użytkowników, należy zdecydować, użytkowników i/lub grup w usłudze Azure AD muszą mieć dostęp do 4me. Po decyzję, możesz przypisać użytkownikom i/lub grup 4me zgodnie z instrukcjami w tym miejscu:
+Przed skonfigurowaniem i włączeniem automatycznej aprowizacji użytkowników należy zdecydować, którzy użytkownicy i/lub grupy w usłudze Azure AD potrzebują dostępu do 4me. Po ustaleniu tych użytkowników i/lub grup można przypisywać do 4me, postępując zgodnie z poniższymi instrukcjami:
 
-* [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa](../manage-apps/assign-user-or-group-access-portal.md)
+* [Przypisywanie użytkownika lub grupy do aplikacji dla przedsiębiorstw](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-4me"></a>Ważne wskazówki dotyczące przypisywania użytkowników do 4me
 
-* Zalecane jest jeden użytkownik usługi Azure AD jest przypisane do 4me do testowania automatyczne aprowizowanie konfiguracji użytkowników. Później można przypisać dodatkowych użytkowników i/lub grup.
+* Zaleca się, aby jeden użytkownik usługi Azure AD został przypisany do 4me w celu przetestowania automatycznej konfiguracji inicjowania obsługi użytkowników. Dodatkowych użytkowników i/lub grupy można przypisywać później.
 
-* Podczas przypisywania użytkowników do 4me, należy wybrać prawidłową rolą specyficzne dla aplikacji (jeśli jest dostępny) w oknie dialogowym przydział. Użytkownicy z **domyślnego dostępu** roli są wyłączone, od zainicjowania obsługi administracyjnej.
+* Podczas przypisywania użytkownika do 4me należy wybrać dowolną prawidłową rolę specyficzną dla aplikacji (jeśli jest dostępna) w oknie dialogowym przypisania. Użytkownicy z **domyślną rolą dostępu** są wykluczeni z aprowizacji.
 
 ## <a name="configuring-automatic-user-provisioning-to-4me"></a>Konfigurowanie automatycznej aprowizacji użytkowników do 4me 
 
-Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD inicjowania obsługi usługi do tworzenia, aktualizacji i wyłączyć użytkowników i/lub grup w oparciu o przypisania użytkownika i/lub grupy w usłudze Azure AD 4me.
+Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisioning w celu tworzenia, aktualizowania i wyłączania użytkowników i/lub grup w programie 4me na podstawie przypisań użytkowników i/lub grup w usłudze Azure AD.
 
 > [!TIP]
-> Można też włączyć opartej na SAML logowania jednokrotnego dla 4me, zgodnie z instrukcjami podanymi w [4me pojedynczego logowania jednokrotnego samouczek](4me-tutorial.md). Logowanie jednokrotne można skonfigurować niezależnie od automatyczna aprowizacja użytkowników, że te dwie funkcje uzupełnienie siebie nawzajem.
+> Możesz również włączyć logowanie jednokrotne oparte na protokole SAML dla 4me, postępując zgodnie z instrukcjami podanymi w [samouczku logowanie](4me-tutorial.md)jednokrotne w 4me. Logowanie jednokrotne można skonfigurować niezależnie od automatycznej aprowizacji użytkowników, chociaż te dwie funkcje napadają nawzajem.
 
-### <a name="to-configure-automatic-user-provisioning-for-4me-in-azure-ad"></a>Aby skonfigurować automatyczna aprowizacja użytkowników dla 4me w usłudze Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-4me-in-azure-ad"></a>Aby skonfigurować automatyczne Inicjowanie obsługi użytkowników dla 4me w usłudze Azure AD:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz **wszystkie aplikacje**.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
@@ -92,83 +92,83 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
 
     ![Link 4me na liście aplikacji](common/all-applications.png)
 
-3. Wybierz **aprowizacji** kartę.
+3. Wybierz kartę **aprowizacji** .
 
-    ![Udostępnianie](common/provisioning.png)
+    ![Karta aprowizacji](common/provisioning.png)
 
-4. Ustaw **tryb obsługi administracyjnej** do **automatyczne**.
+4. Ustaw **tryb aprowizacji** na **automatyczny**.
 
-    ![Udostępnianie](common/provisioning-automatic.png)
+    ![Karta aprowizacji](common/provisioning-automatic.png)
 
-5. Aby pobrać **adres URL dzierżawy** i **klucz tajny tokenu** konta 4me, postępuj zgodnie z tym przewodnikiem zgodnie z opisem w kroku 6.
+5. Aby pobrać **adres URL dzierżawy** i **klucz tajny** konta 4me, postępuj zgodnie z opisem w sekcji Krok 6.
 
-6. Zaloguj się do konsoli administratora programu 4me. Przejdź do **ustawienia**.
+6. Zaloguj się do konsoli administracyjnej 4me. Przejdź do **ustawień**.
 
     ![Ustawienia 4me](media/4me-provisioning-tutorial/4me01.png)
 
-    Wpisz **aplikacje** na pasku wyszukiwania.
+    Wpisz w **aplikacjach** na pasku wyszukiwania.
 
     ![aplikacje 4me](media/4me-provisioning-tutorial/4me02.png)
 
-    Otwórz **Standard SCIM** listę rozwijaną, aby pobrać klucz tajny tokenu i punktu końcowego Standard SCIM.
+    Otwórz listę rozwijaną **Standard scim** , aby pobrać token tajny i punkt końcowy Standard scim.
 
-    ![4me SCIM](media/4me-provisioning-tutorial/4me03.png)
+    ![4me Standard scim](media/4me-provisioning-tutorial/4me03.png)
 
-7. Podczas wypełniania pola wyświetlane w kroku 5, kliknij przycisk **Testuj połączenie** aby zapewnić usłudze Azure AD można połączyć się z 4me. Jeśli połączenie nie powiedzie się, upewnij się, że Twoje konto 4me ma uprawnienia administratora i spróbuj ponownie.
+7. Po zapełnieniu pól przedstawionych w kroku 5 kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może nawiązać połączenie z usługą 4me. Jeśli połączenie nie powiedzie się, upewnij się, że konto usługi 4me ma uprawnienia administratora, a następnie spróbuj ponownie.
 
     ![Token](common/provisioning-testconnection-tenanturltoken.png)
 
-8. W **wiadomość E-mail z powiadomieniem** wprowadź adres e-mail osoby lub grupy, który powinien otrzymywać powiadomienia błąd inicjowania obsługi administracyjnej i zaznacz pole wyboru - **Wyślij wiadomość e-mail z powiadomieniem, gdy wystąpi awaria**.
+8. W polu **adres E-mail powiadomienia** wprowadź adres e-mail osoby lub grupy, które powinny otrzymywać powiadomienia o błędach aprowizacji, i zaznacz pole wyboru — **Wyślij powiadomienie e-mail, gdy wystąpi awaria**.
 
     ![Wiadomość E-mail z powiadomieniem](common/provisioning-notification-email.png)
 
 9. Kliknij polecenie **Zapisz**.
 
-10. W obszarze **mapowania** zaznacz **synchronizacji Azure użytkownicy usługi Active Directory do 4me**.
+10. W sekcji **mapowania** wybierz pozycję **Synchronizuj Azure Active Directory użytkowników do 4me**.
 
-    ![Mapowania użytkownika 4me](media/4me-provisioning-tutorial/4me-user-mapping.png)
+    ![4me mapowania użytkowników](media/4me-provisioning-tutorial/4me-user-mapping.png)
     
-11. Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD 4me w **mapowanie atrybutu** sekcji. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania kont użytkowników w 4me operacji aktualizacji. Wybierz **Zapisz** przycisk, aby zatwierdzić zmiany.
+11. Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD, do 4me w sekcji **Mapowanie atrybutów** . Atrybuty wybrane jako **pasujące** właściwości są używane do dopasowania kont użytkowników w programie 4me for Updates. Wybierz przycisk **Zapisz** , aby zatwierdzić zmiany.
 
-    ![Mapowania użytkownika 4me](media/4me-provisioning-tutorial/4me-user-attributes.png)
+    ![4me mapowania użytkowników](media/4me-provisioning-tutorial/4me-user-attributes.png)
     
-12. W obszarze **mapowania** zaznacz **synchronizacji Azure grup usługi Active Directory do 4me**.
+12. W sekcji **mapowania** wybierz pozycję **Synchronizuj grupy Azure Active Directory do 4me**.
 
-    ![Mapowania użytkownika 4me](media/4me-provisioning-tutorial/4me-group-mapping.png)
+    ![4me mapowania użytkowników](media/4me-provisioning-tutorial/4me-group-mapping.png)
     
-13. Przejrzyj atrybuty grupy, które są synchronizowane z usługi Azure AD 4me w **mapowanie atrybutu** sekcji. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania grup w 4me operacji aktualizacji. Wybierz **Zapisz** przycisk, aby zatwierdzić zmiany.
+13. Przejrzyj atrybuty grupy, które są synchronizowane z usługi Azure AD, do 4me w sekcji **Mapowanie atrybutów** . Atrybuty wybrane jako **pasujące** właściwości są używane do dopasowania do grup w 4me dla operacji aktualizacji. Wybierz przycisk **Zapisz** , aby zatwierdzić zmiany.
 
     ![Mapowania grup 4me](media/4me-provisioning-tutorial/4me-group-attribute.png)
 
-14. Aby skonfigurować filtrów określania zakresu, można znaleźć w następujących instrukcjach podanych w [samouczek filtru Scoping](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+14. Aby skonfigurować filtry określania zakresu, zapoznaj się z poniższymi instrukcjami w samouczku dotyczącym [filtru określania zakresu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-15. Aby włączyć usługi Azure AD, usługi dla 4me inicjowania obsługi administracyjnej, zmień **stanie aprowizacji** do **na** w **ustawienia** sekcji.
+15. Aby włączyć usługę Azure AD Provisioning dla 4me, Zmień **stan aprowizacji** na **włączone** w sekcji **Ustawienia** .
 
-    ![Stan aprowizacji przełączona w](common/provisioning-toggle-on.png)
+    ![Stan aprowizacji jest przełączany](common/provisioning-toggle-on.png)
 
-16. Definiowanie użytkowników i/lub grup, które chcesz, aby obsługiwać je na 4me, wybierając odpowiednie wartości w **zakres** w **ustawienia** sekcji.
+16. Zdefiniuj użytkowników i/lub grupy, które chcesz udostępnić 4me, wybierając odpowiednie wartości w **zakresie** w sekcji **Ustawienia** .
 
-    ![Inicjowanie obsługi administracyjnej zakresu](common/provisioning-scope.png)
+    ![Zakres aprowizacji](common/provisioning-scope.png)
 
-17. Gdy wszystko jest gotowe do aprowizowania, kliknij przycisk **Zapisz**.
+17. Gdy wszystko będzie gotowe do udostępnienia, kliknij przycisk **Zapisz**.
 
     ![Zapisywanie konfiguracji aprowizacji](common/provisioning-configuration-save.png)
 
-Ta operacja uruchamia początkowa synchronizacja wszystkich użytkowników i/lub grup zdefiniowanych w **zakres** w **ustawienia** sekcji. Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, tak długo, jak działa usługa aprowizacji usługi Azure AD. Możesz użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do raportu działań w tym artykule opisano wszystkie akcje wykonywane przez usługę Azure AD, inicjowania obsługi usługi na 4me aprowizacji.
+Ta operacja uruchamia początkową synchronizację wszystkich użytkowników i/lub grup zdefiniowanych w **zakresie** w sekcji **Ustawienia** . Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które wystąpiły co około 40 minut, o ile usługa Azure AD Provisioning jest uruchomiona. Możesz użyć sekcji **szczegóły synchronizacji** do monitorowania postępu i postępuj zgodnie z raportem aktywności aprowizacji, który opisuje wszystkie akcje wykonywane przez usługę Azure AD Provisioning w witrynie 4me.
 
 Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Ograniczenia łącznika
 
-* 4me ma inny adres URL punktu końcowego Standard SCIM dla środowisk testowych i produkcyjnych. Pierwsza kończy się **.qa** podczas ostatniego kończy się znakiem **.com**
-* 4me wygenerowany klucz tajny tokeny mają datę wygaśnięcia miesiąca z generacji.
-* nie obsługuje 4me **Usuń** operacji
+* 4me ma różne adresy URL Standard scim punktów końcowych dla środowisk testowych i produkcyjnych. Dawniej z **. funkcja pytań i odpowiedzi** jest zakończona.
+* Tokeny wygenerowanego klucza tajnego 4me mają datę wygaśnięcia miesiąca od wygenerowania.
+* 4me nie obsługuje operacji **usuwania**
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Dowiedz się, jak przeglądać dzienniki i Uzyskaj raporty dotyczące inicjowania obsługi administracyjnej działania](../manage-apps/check-status-user-account-provisioning.md)
+* [Dowiedz się, jak przeglądać dzienniki i uzyskiwać raporty dotyczące aktywności aprowizacji](../manage-apps/check-status-user-account-provisioning.md)

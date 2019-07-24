@@ -8,57 +8,57 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 499aeccdf00980eeb66ac6ee06e45267fd515143
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: cf05468af17a4fafa7c81c7ad8bc89b3306a54af
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183195"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68286160"
 ---
-Udostępnione galerie obrazów pozwalają udostępniania obrazów przy użyciu funkcji RBAC. RBAC można użyć do udostępniania obrazów w ramach dzierżawy, a nawet do osób spoza Twojej dzierżawy. Ale jeśli chcesz udostępnić obrazów spoza Twojej dzierżawy platformy Azure na dużą skalę, należy utworzyć rejestrację aplikacji w taki sposób, aby usprawnić udostępnianie.  Korzystanie z rejestracji aplikacji można włączyć bardziej złożonych scenariuszy do udostępniania, takie jak: 
+Udostępnione Galerie obrazów umożliwiają udostępnianie obrazów przy użyciu RBAC. RBAC można używać do udostępniania obrazów w dzierżawie, a nawet do osób poza dzierżawcą. Jeśli jednak chcesz udostępniać obrazy poza dzierżawcą platformy Azure, należy utworzyć rejestrację aplikacji w celu ułatwienia udostępniania.  Korzystanie z rejestracji aplikacji może umożliwić bardziej złożone scenariusze udostępniania, takie jak: 
 
-* Zarządzanie udostępnionymi obrazów, gdy jedna spółka przejmuje innego i infrastruktury platformy Azure jest rozmieszczony na oddzielnych dzierżaw. 
-* Partnerzy portalu Azure Zarządzaj infrastrukturą platformy Azure w imieniu swoich klientów. Dostosowanie obrazów jest wykonywane w ramach dzierżawy partnerów, ale wdrożenia infrastruktury będą występować w dzierżawie klienta. 
-
-
-## <a name="create-the-app-registration"></a>Tworzenie rejestracji aplikacji
-
-Utwórz rejestrowanie aplikacji, które będą używane przez oba dzierżaw do udostępniania zasobów galerii obrazów.
-1. Otwórz [rejestracje aplikacji (wersja zapoznawcza) w witrynie Azure portal](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType//sourceType/).    
-1. Wybierz **nowej rejestracji** menu w górnej części strony.
-1. W **nazwa**, typ *myGalleryApp*.
-1. W **obsługiwane typy kont**, wybierz opcję **kont w dowolnym katalogu organizacji i osobistych kont Microsoft**.
-1. W **identyfikator URI przekierowania**, typ *https://www.microsoft.com* , a następnie wybierz **zarejestrować**. Po utworzeniu rejestracji aplikacji zostanie otwarta strona przeglądu.
-1. Na stronie Przegląd Skopiuj **identyfikator aplikacji (klienta)** i zapisać do użytku w przyszłości.   
-1. Wybierz **certyfikaty i klucze tajne**, a następnie wybierz pozycję **nowy wpis tajny klienta**.
-1. W **opis**, typ *wspólny klucz tajny aplikacji w wielu dzierżawach galerii dla obrazu*.
-1. W **Expires**, pozostaw wartość domyślną **w 1 rok** , a następnie wybierz **Dodaj**.
-1. Skopiuj wartość klucza tajnego i zapisz go w bezpiecznym miejscu. Nie można go odzyskać, gdy opuścić tę stronę.
+* Zarządzanie obrazami udostępnionymi, gdy jedna firma uzyska inną, a infrastruktura platformy Azure jest rozłożona na poszczególne dzierżawy. 
+* Partnerzy platformy Azure zarządzają infrastrukturą platformy Azure w imieniu swoich klientów. Dostosowanie obrazów odbywa się w ramach dzierżawy partnerów, ale wdrożenia infrastruktury będą wykonywane w dzierżawie klienta. 
 
 
-Nadaj uprawnienia rejestracji aplikacji na korzystanie z galerii obrazów udostępnionych.
-1. W witrynie Azure portal wybierz udostępnione galerii obrazów, którą chcesz udostępnić za pomocą innej dzierżawy.
-1. Wybierz **wybierz kontroli dostępu (IAM)** , a następnie w obszarze **Dodaj przypisanie roli** wybierz *Dodaj*. 
-1. W obszarze **roli**, wybierz opcję **czytnika**.
-1. W obszarze **Przypisz dostęp do:** , pozostaw to jako **użytkownika, grupy lub jednostki usługi Azure AD**.
-1. W obszarze **wybierz**, typ *myGalleryApp* i zaznacz je, gdy zostanie ona wyświetlona na liście. Gdy wszystko będzie gotowe, wybierz pozycję **Zapisz**.
+## <a name="create-the-app-registration"></a>Utwórz rejestrację aplikacji
+
+Utwórz rejestrację aplikacji, która będzie używana przez obie dzierżawy do udostępniania zasobów galerii obrazów.
+1. Otwórz [rejestracje aplikacji (wersja zapoznawcza) w Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType//sourceType/).    
+1. Wybierz pozycję **Nowa rejestracja** w menu w górnej części strony.
+1. W polu **Nazwa**wpisz *myGalleryApp*.
+1. W obszarze **obsługiwane typy kont**wybierz pozycję **konta w dowolnym katalogu organizacyjnym i osobiste konta Microsoft**.
+1. W polu **Identyfikator URI przekierowania**wpisz *https://www.microsoft.com* , a następnie wybierz pozycję **zarejestruj**. Po utworzeniu rejestracji aplikacji zostanie otwarta strona przegląd.
+1. Na stronie Przegląd Skopiuj **Identyfikator aplikacji (klienta)** i Zapisz go do użycia później.   
+1. Wybierz pozycję **certyfikaty &** wpisy tajne, a następnie wybierz pozycję **nowy klucz tajny klienta**.
+1. W polu **Opis**wpisz wpis *tajny galerii obrazów udostępnionych dla wielu dzierżawców*.
+1. W obszarze wygaśnięcie pozostaw wartość domyślną **w 1 roku** , a następnie wybierz pozycję **Dodaj**.
+1. Skopiuj wartość wpisu tajnego i Zapisz ją w bezpiecznym miejscu. Nie można go pobrać po opuszczeniu strony.
 
 
-## <a name="give-tenant-2-access"></a>Udostępnij 2 dzierżawy
+Nadaj uprawnienia do rejestracji aplikacji, aby korzystać z galerii obrazów udostępnionych.
+1. W Azure Portal Wybierz galerię udostępnionych obrazów, która ma być udostępniana innym dzierżawcom.
+1. Wybierz pozycję **Wybierz kontrolę dostępu (IAM)** i w obszarze **Dodaj przypisanie roli** wybierz pozycję *Dodaj*. 
+1. W obszarze **rola**wybierz pozycję **czytelnik**.
+1. W obszarze **Przypisz dostęp do:** pozostaw to pole **użytkownik, Grupa lub nazwa główna usługi Azure AD**.
+1. W obszarze **Wybierz**wpisz *myGalleryApp* i wybierz go, gdy zostanie wyświetlony na liście. Gdy skończysz, wybierz pozycję **Zapisz**.
 
-Udostępnij 2 dzierżawy do aplikacji, wysyłając żądanie logowania za pomocą przeglądarki. Zastąp *<Tenant2 ID>* dla dzierżawy, który chcesz udostępnić galerii obrazów z identyfikatorem dzierżawy. Zastąp *< identyfikator aplikacji (klienta) >* z Identyfikatorem aplikacji w rejestracji aplikacji utworzony. Po zakończeniu wprowadzania zamiany Wklej adres URL do przeglądarki i postępuj zgodnie z instrukcjami logowania, aby zalogować się do 2 dzierżawy.
+
+## <a name="give-tenant-2-access"></a>Udzielanie dostępu do dzierżawy 2
+
+Przyznaj dzierżawcom 2 dostęp do aplikacji, żądając logowania przy użyciu przeglądarki. Zastąp  *\<identyfikator Tenant2 >* identyfikatorem dzierżawy dzierżawy, do której chcesz udostępnić galerię obrazów. Zastąp  *\<identyfikator aplikacji (klienta) >* identyfikatorem aplikacji utworzonej przez Ciebie rejestracji aplikacji. Po dokonaniu zamiany, wklej adres URL do przeglądarki i postępuj zgodnie z monitami logowania, aby zalogować się do dzierżawy 2.
 
 ```
 https://login.microsoftonline.com/<Tenant 2 ID>/oauth2/authorize?client_id=<Application (client) ID>&response_type=code&redirect_uri=https%3A%2F%2Fwww.microsoft.com%2F 
 ```
 
-W [witryny Azure portal](https://portal.azure.com) Zaloguj się jako dzierżawca, 2 i udzielić dostępu rejestracji aplikacji do grupy zasobów, w której chcesz utworzyć maszynę Wirtualną.
+W [Azure Portal](https://portal.azure.com) Zaloguj się jako dzierżawca 2 i nadajesz rejestracji aplikacji dostęp do grupy zasobów, w której chcesz utworzyć maszynę wirtualną.
 
-1. Wybierz grupę zasobów, a następnie wybierz pozycję **kontrola dostępu (IAM)** . W obszarze **Dodaj przypisanie roli** wybierz **Dodaj**. 
-1. W obszarze **roli**, typ **Współautor**.
-1. W obszarze **Przypisz dostęp do:** , pozostaw to jako **użytkownika, grupy lub jednostki usługi Azure AD**.
-1. W obszarze **wybierz** typu *myGalleryApp* następnie wybierz ją, jeśli zostanie ona wyświetlona na liście. Gdy wszystko będzie gotowe, wybierz pozycję **Zapisz**.
+1. Wybierz grupę zasobów, a następnie wybierz pozycję **Kontrola dostępu (IAM)** . W obszarze **Dodaj przypisanie roli** wybierz pozycję **Dodaj**. 
+1. W obszarze **rola**wpisz **współautor**.
+1. W obszarze **Przypisz dostęp do:** pozostaw to pole **użytkownik, Grupa lub nazwa główna usługi Azure AD**.
+1. W obszarze **Wybierz** typ *myGalleryApp* wybierz ją, gdy zostanie ona wyświetlona na liście. Gdy skończysz, wybierz pozycję **Zapisz**.
 
 > [!NOTE]
-> Musisz czekać na wersję obrazu do całkowitego zakończenia są zbudowane i replikowane korzystać z tego samego obrazu zarządzanego, aby utworzyć inną wersję obrazu.
+> Musisz poczekać na zakończenie kompilowania i replikowania wersji obrazu, aby można było użyć tego samego obrazu zarządzanego do utworzenia innej wersji obrazu.
 

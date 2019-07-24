@@ -1,6 +1,6 @@
 ---
-title: Łączniki dla usługi Azure Logic Apps
-description: Automatyzuj przepływy pracy za pomocą łączników dla usługi Azure Logic Apps, m.in. wbudowane, zarządzany w środowisku lokalnym, konto integracji i łączniki dla przedsiębiorstw
+title: Łączniki dla Azure Logic Apps
+description: Automatyzowanie przepływów pracy za pomocą łączników dla Azure Logic Apps, w tym wbudowanego, zarządzanego, lokalnego konta integracji i łączników przedsiębiorstwa
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
@@ -9,196 +9,200 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: c02361cf69b98da61a0f551ac037e6d35ea42efc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab2413cfce8b87fbe1899a0b7c465c6e6c27a3f5
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65551862"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277643"
 ---
-# <a name="connectors-for-azure-logic-apps"></a>Łączniki dla usługi Azure Logic Apps
+# <a name="connectors-for-azure-logic-apps"></a>Łączniki dla Azure Logic Apps
 
-Łączniki udostępniają szybki dostęp z usługi Azure Logic Apps do zdarzeń, danych i akcje w innych aplikacjach, usług, systemów, protokołów i platform. Za pomocą łączników w aplikacjach logiki, możesz rozszerzyć możliwości dla aplikacji w chmurze i lokalnych do wykonywania zadań z danymi, które tworzysz i masz już.
+Łączniki zapewniają szybki dostęp z Azure Logic Apps do zdarzeń, danych i akcji w ramach innych aplikacji, usług, systemów, protokołów i platform. Korzystając z łączników w usłudze Logic Apps, można rozszerzać możliwości aplikacji w chmurze i lokalnych w celu wykonywania zadań z danymi, które zostały już utworzone.
 
-Podczas gdy Logic Apps oferuje [~ ponad 200 łączników](https://docs.microsoft.com/connectors), w tym artykule opisano popularnych i najczęściej używanych łączników tysiące aplikacji i milionach wykonań pomyślnie są używane do przetwarzania danych i informacji. Aby znaleźć pełną listę łączników i informacje referencyjne poszczególnych łączników, takich jak wyzwalacze, akcje i ograniczeń, zapoznaj się z strony podręcznika łącznika, w obszarze [omówienie łączników](https://docs.microsoft.com/connectors). Ponadto Dowiedz się więcej o [wyzwalacze i akcje](#triggers-actions), [model cen aplikacji logiki](../logic-apps/logic-apps-pricing.md), i [Logic Apps, cennik](https://azure.microsoft.com/pricing/details/logic-apps/). 
+Chociaż Logic Apps oferuje [setki łączników](https://docs.microsoft.com/connectors), w tym artykule opisano popularne i często używane łączniki, które są pomyślnie używane przez tysiące aplikacji i milionów wykonań na potrzeby przetwarzania danych i informacji. Aby znaleźć pełną listę łączników i informacje referencyjne poszczególnych łączników, takie jak wyzwalacze, akcje i limity, przejrzyj strony odwołań łącznika w obszarze [Przegląd łączników](https://docs.microsoft.com/connectors). Dowiedz się więcej o [wyzwalaczach i akcjach](#triggers-actions), [Logic Apps modelu cen](../logic-apps/logic-apps-pricing.md)i [Logic Apps szczegółach cennika](https://azure.microsoft.com/pricing/details/logic-apps/). 
 
 > [!NOTE]
-> Aby zintegrować z usługą lub interfejsu API, który nie ma łącznika, można bezpośrednio wywołać usługę za pośrednictwem protokołu, takich jak HTTP lub utworzyć [łącznika niestandardowego](#custom).
+> Aby przeprowadzić integrację z usługą lub interfejsem API, który nie ma łącznika, możesz bezpośrednio wywołać usługę za pośrednictwem protokołu, takiego jak HTTP, lub utworzyć [Łącznik niestandardowy](#custom).
 
-Łączniki są dostępne jako wbudowane wyzwalaczy i akcji lub zarządzanych łączników:
+Łączniki są dostępne jako wbudowane wyzwalacze i akcje lub jako łączniki zarządzane:
 
-* [**Elementy wbudowane**](#built-ins): Te wbudowane wyzwalacze i akcje są "natywnego" do usługi Azure Logic Apps oraz pomagają Ci tworzyć aplikacje logiki, które systemem niestandardowe harmonogramy, komunikować się z innych punktów końcowych, otrzymywanie i odpowiadanie na żądania i wywoływać funkcje platformy Azure, usługi Azure API Apps (aplikacje sieci Web), z własnymi interfejsami API zarządzane i opublikowanych przy użyciu usługi Azure API Management i zagnieżdżone logic apps, które mogą odbierać żądania. Możesz również użyć wbudowane akcje, które pomagają organizować kontrolowania przepływu pracy aplikacji logiki i także pracować z danymi.
+<a name="built-in"></a>
+
+* [**Wbudowane**](#built-ins): Te wbudowane wyzwalacze i akcje są "natywne", aby Azure Logic Apps i ułatwiają tworzenie aplikacji logiki, które są uruchamiane w harmonogramach niestandardowych, komunikowanie się z innymi punktami końcowymi, odbieranie i reagowanie na żądania oraz Wywoływanie usługi Azure Functions, Azure API Apps (Web Apps), własnych interfejsów API zarządzane i opublikowane przy użyciu usługi Azure API Management oraz zagnieżdżone Aplikacje logiki, które mogą odbierać żądania. Można również użyć wbudowanych akcji, które ułatwiają organizowanie i kontrolowanie przepływu pracy aplikacji logiki, a także współdziałanie z danymi.
 
   > [!NOTE]
-  > Aplikacje Logic apps w ramach [środowiska integration service environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) można uzyskać dostęp do zasobów w sieci wirtualnej platformy Azure.
-  > Użycie opcji ISE, wbudowane wyzwalacze i akcje wyświetlający **Core** etykiety uruchamiać w tym samym środowisku ISE jako aplikacji usługi logic apps. Logic apps, wbudowane wyzwalaczy i wbudowane akcje, które są uruchamiane w użytkowanie ISE planu cenowego różni się od planu cenowego na podstawie użycia.
+  > Aplikacje logiki w [środowisku usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) mogą bezpośrednio uzyskiwać dostęp do zasobów w sieci wirtualnej platformy Azure.
+  > W przypadku korzystania z ISE wbudowane wyzwalacze i akcje, które wyświetlają **podstawową** etykietę, działają w tym samym ISE, co Aplikacje logiki. Aplikacje logiki, wbudowane wyzwalacze i wbudowane akcje, które działają w ISE, korzystają z planu cenowego innego niż plan cenowy oparty na zużyciu.
   >
-  > Aby uzyskać więcej informacji na temat tworzenia ISEs zobacz [Połącz z sieciami wirtualnymi platformy Azure z usługi Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-logic-apps-environment). 
-  > Aby uzyskać więcej informacji o cenach, zobacz [model cen aplikacji logiki](../logic-apps/logic-apps-pricing.md).
+  > Aby uzyskać więcej informacji na temat tworzenia ISEs, zobacz [nawiązywanie połączenia z sieciami wirtualnymi platformy Azure z Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-logic-apps-environment). 
+  > Aby uzyskać więcej informacji na temat cen, zobacz [Logic Apps model cen](../logic-apps/logic-apps-pricing.md).
 
-* **Zarządzane łączniki**: Wdrożone i zarządzane przez firmę Microsoft, te łączniki udostępniają wyzwalacze i akcje do uzyskiwania dostępu do usług w chmurze, w systemach lokalnych lub obydwu, w tym usługi Office 365, Azure Blob Storage, SQL Server, Dynamics, Salesforce, SharePoint i więcej. Niektóre łączniki specjalnie obsługują scenariusze komunikacji programu business-to-business (B2B) i wymagają [konta integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) połączony do aplikacji logiki. Przed użyciem niektórych łączników, być może trzeba najpierw utworzyć połączenia, które są zarządzane przez usługę Azure Logic Apps. 
+<a name="managed-connectors"></a>
 
-  Na przykład, jeśli używasz Microsoft BizTalk Server aplikacji usługi logic apps może nawiązać połączenie i komunikować się z programu BizTalk Server przy użyciu [programu BizTalk Server w środowisku lokalnym łącznika](#on-premises-connectors). 
-  Można rozszerzyć lub wykonywać operacje przypominającej BizTalk w aplikacji logiki przy użyciu [łączniki konta integracji](#integration-account-connectors).
+* **Zarządzane łączniki**: Te łączniki są wdrażane i zarządzane przez firmę Microsoft, które zapewniają wyzwalacze i akcje umożliwiające dostęp do usług w chmurze, systemów lokalnych lub obu, w tym pakietów Office 365, Azure Blob Storage, SQL Server, Dynamics, Salesforce, SharePoint i innych. Niektóre łączniki obsługują specjalne scenariusze komunikacji B2B (Business-to-Business) i wymagają [konta integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) połączonego z aplikacją logiki. Przed użyciem niektórych łączników może zajść konieczność utworzenia połączeń, które są zarządzane przez Azure Logic Apps. 
 
-  Łączniki są klasyfikowane jako Standard lub Enterprise. 
-  [Łączniki dla przedsiębiorstw](#enterprise-connectors) zapewniają dostęp do systemów przedsiębiorstwa, takich jak SAP, IBM MQ i IBM 3270 za dodatkową opłatą. Aby ustalić, czy łącznik jest wersja Standard lub Enterprise, zobacz szczegóły techniczne w stronie referencyjnej każdy łącznik w obszarze [omówienie łączników](https://docs.microsoft.com/connectors). 
+  Jeśli na przykład używasz programu Microsoft BizTalk Server, Aplikacje logiki mogą łączyć się z BizTalk Server i komunikować się z nimi za pomocą łącznika [on-premises connector BizTalk Server](#on-premises-connectors). 
+  Następnie można zwiększyć lub wykonać operacje podobne do programu BizTalk w aplikacjach logiki przy użyciu łączników [konta integracji](#integration-account-connectors).
 
-  Łączników można również zidentyfikować za pomocą tych kategorii, mimo że niektóre łączniki mogą przechodzić przez wiele kategorii. 
-  Na przykład SAP jest łącznik przedsiębiorstwa i lokalny łącznik:
+  Łączniki są klasyfikowane jako standardowe lub Enterprise. 
+  [Łączniki przedsiębiorstwa](#enterprise-connectors) zapewniają dostęp do systemów przedsiębiorstwa, takich jak SAP, IBM MQ i IBM 3270, w celu uzyskania dodatkowych kosztów. Aby określić, czy łącznik jest standardem, czy Enterprise, zobacz szczegóły techniczne na stronie odniesienia poszczególnych łączników w obszarze [Przegląd łączników](https://docs.microsoft.com/connectors). 
+
+  Możesz również identyfikować łączniki przy użyciu tych kategorii, chociaż niektóre łączniki mogą przecinać wiele kategorii. 
+  Na przykład SAP to łącznik przedsiębiorstwa i łącznik On-Premises Connector:
 
   |   |   |
   |---|---|
-  | [**Zarządzane łączniki interfejsu API**](#managed-api-connectors) | Tworzenie aplikacji logiki, które korzystają z usług takich jak Azure Blob Storage, usługi Office 365, Dynamics, usługa Power BI, OneDrive, Salesforce, SharePoint Online i wiele innych. |
-  | [**Łączniki lokalne**](#on-premises-connectors) | Po zainstalowaniu i skonfigurować [lokalnej bramy danych][gateway-doc], pomagają one dostęp do usługi logic apps w środowisku lokalnym systemów, takich jak SQL Server, SharePoint Server, Oracle DB, udziały plików i innych łączników. |
-  | [**Łączniki konta integracji**](#integration-account-connectors) | Dostępne w przypadku tworzenia i opłaty za konto integracji, przekształcenie tych łączników i Walidacja danych XML, kodować i dekodować pliki proste i przetwarzania business-to-business (B2B) komunikatów AS2, EDIFACT i X12 protokołów. |
+  | [**Zarządzane łączniki interfejsu API**](#managed-api-connectors) | Twórz aplikacje logiki wykorzystujące usługi, takie jak Azure Blob Storage, Office 365, Dynamics, Power BI, OneDrive, Salesforce, SharePoint Online i wiele innych. |
+  | [**Łączniki lokalne**](#on-premises-connectors) | Po zainstalowaniu i skonfigurowaniu [bramy danych lokalnych][gateway-doc]te łączniki ułatwiają aplikacjom lokalnym dostęp do systemów lokalnych, takich jak SQL Server, SharePoint Server, Oracle DB, udziały plików i inne. |
+  | [**Łączniki konta integracji**](#integration-account-connectors) | Te łączniki są dostępne podczas tworzenia i regulowania konta integracji, przekształcają i sprawdzają poprawność kodu XML, kodowania i dekodowania plików prostych oraz przetwarzania komunikatów typu B2B (Business-to-Business) za pomocą protokołów AS2, EDIFACT i X12. |
   |||
 
   > [!NOTE]
-  > Aplikacje Logic apps w ramach [środowiska integration service environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) można uzyskać dostęp do zasobów w sieci wirtualnej platformy Azure. Użycie opcji ISE, Standard i Enterprise łączników wyświetlający **ISE** etykiety uruchamiać w tym samym środowisku ISE jako aplikacji usługi logic apps. Łączniki, które nie są wyświetlane etykiety ISE Uruchom w usłudze Logic Apps globalnego.
+  > Aplikacje logiki w [środowisku usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) mogą bezpośrednio uzyskiwać dostęp do zasobów w sieci wirtualnej platformy Azure. W przypadku używania łączników ISE, standard i Enterprise, które wyświetlają etykietę **ISE** uruchamianą w tym samym ISE, co Aplikacje logiki. Łączniki, które nie wyświetlają etykiety ISE w globalnej usłudze Logic Apps.
   >
-  > Dla systemów lokalnych, które są połączone z siecią wirtualną platformy Azure wstrzyknąć Twojego środowiska ISE do tej sieci, dzięki czemu aplikacje logiki można uzyskać dostęp do tych systemów za pomocą łącznika, który ma **ISE** etykietę, akcji HTTP lub [łącznika niestandardowego](#custom). Logic apps i łączników, działających w użytkowanie ISE cenową planu różni się od planu cenowego na podstawie użycia. 
+  > W przypadku systemów lokalnych, które są połączone z siecią wirtualną platformy Azure, wsuń ISE do tej sieci, aby aplikacje logiki mogły bezpośrednio uzyskiwać dostęp do tych systemów przy użyciu łącznika, który ma etykietę **ISE** , akcję http lub [Łącznik niestandardowy](#custom). Aplikacje logiki i łączniki, które działają w ISE, korzystają z planu cenowego innego niż plan cenowy oparty na zużyciu. 
   >
-  > Aby uzyskać więcej informacji na temat tworzenia ISEs zobacz [Połącz z sieciami wirtualnymi platformy Azure z usługi Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-logic-apps-environment).
-  > Aby uzyskać więcej informacji o cenach, zobacz [model cen aplikacji logiki](../logic-apps/logic-apps-pricing.md).
+  > Aby uzyskać więcej informacji na temat tworzenia ISEs, zobacz [nawiązywanie połączenia z sieciami wirtualnymi platformy Azure z Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-logic-apps-environment).
+  > Aby uzyskać więcej informacji na temat cen, zobacz [Logic Apps model cen](../logic-apps/logic-apps-pricing.md).
 
-  Aby uzyskać pełną listę łączników i informacje referencyjne poszczególnych łączników, np. wszelkie wyzwalacze i akcje, które są definiowane przez interfejs OpenAPI (dawniej Swagger) opis, a także żadnych limitów można znaleźć pełną listę w obszarze [omówienie łączników ](/connectors/). Aby uzyskać informacje o cenach, zobacz [model cen aplikacji logiki](../logic-apps/logic-apps-pricing.md), i [Logic Apps, cennik](https://azure.microsoft.com/pricing/details/logic-apps/). 
+  Aby uzyskać pełną listę łączników i informacje referencyjne poszczególnych łączników, takie jak akcje i wyzwalacze, które są definiowane przez opis OpenAPI (dawniej Swagger) i limity, można znaleźć pełną listę w obszarze [Przegląd łączników](/connectors/). Aby uzyskać informacje o cenach, zobacz [Logic Apps model cen](../logic-apps/logic-apps-pricing.md)i [Logic Apps szczegóły cennika](https://azure.microsoft.com/pricing/details/logic-apps/). 
 
 <a name="built-ins"></a>
 
-## <a name="built-ins"></a>Elementy wbudowane
+## <a name="built-ins"></a>Wbudowane
 
-Usługa Logic Apps oferuje wbudowane wyzwalaczy i akcji, aby można było utworzyć na podstawie harmonogramu przepływów pracy pomocy aplikacje logiki komunikować się z innych aplikacji i usług, kontroli przepływu pracy za pomocą aplikacji logiki oraz zarządzanie nimi i manipulowanie danymi.
-
-|   |   |   |   | 
-|---|---|---|---| 
-| [![Ikona interfejsu API][schedule-icon]<br/>**harmonogramu**][recurrence-doc] | — Uruchamianie aplikacji logiki zgodnie z określonym harmonogramem, od podstawowych do złożonych cykli z **cyklu** wyzwalacza. <p>-Wstrzymać aplikacji logiki dla określonego czasu trwania z **opóźnienie** akcji. <p>-Wstrzymać aplikacji logiki do określonej daty i godziny przy użyciu **opóźnienie do** akcji. | [![Ikona interfejsu API][http-icon]<br/>**HTTP**][http-doc] | Komunikować się z dowolnego punktu końcowego za pośrednictwem protokołu HTTP przy użyciu wyzwalaczy i akcji w przypadku protokołu HTTP, HTTP + Swagger i protokołu HTTP + elementu Webhook. | 
-| [![Ikona interfejsu API][http-request-icon]<br/>**żądania**][http-request-doc] | — Uzyskiwanie aplikacji logiki można wywołać za pomocą innych aplikacji lub usług, wyzwalacza usługi Event Grid zasobów zdarzeń lub wyzwalacza w odpowiedzi na alerty usługi Azure Security Center z **żądania** wyzwalacza. <p>— Wysłać odpowiedzi do aplikacji lub usługi za pomocą **odpowiedzi** akcji. | [![Ikona interfejsu API][batch-icon]<br/>**usługi Batch**][batch-doc] | -Przetwarzanie komunikatów w partie z **partii komunikatów** wyzwalacza. <p>— Wywołanie aplikacje logiki, które mają batch wyzwalaczy z **wysyłać komunikaty do przetwarzania zbiorczego** akcji. | 
-| [![Ikona interfejsu API][azure-functions-icon]<br/>**usługi Azure Functions**][azure-functions-doc] | Wywołanie usługi Azure functions, uruchamiane niestandardowych fragmentach kodu (C# lub Node.js) z aplikacji logiki. | [![Ikona interfejsu API][azure-api-management-icon]</br>**usługi Azure API Management**][azure-api-management-doc] | Wywołaj wyzwalaczy i akcji zdefiniowanych przez własnych interfejsów API zarządzania i publikowania za pomocą usługi Azure API Management. | 
-| [![Ikona interfejsu API][azure-app-services-icon]<br/>**usługi Azure App Services**][azure-app-services-doc] | Wywołanie usługi Azure API Apps lub aplikacji sieci Web hostowanych w usłudze Azure App Service. Wyzwalacze i akcje zdefiniowane przez te aplikacje są wyświetlane jak inne najwyższej jakości wyzwalaczy i akcji, gdy struktury Swagger jest dołączony. | [![Ikona interfejsu API][azure-logic-apps-icon]<br/>**Azure<br/>Logic Apps**][nested-logic-app-doc] | Wywołuje inne aplikacje logic apps rozpoczynających się od wyzwalacza żądania. | 
-||||| 
-
-### <a name="control-workflow"></a>Kontroli przepływu pracy
-
-Usługa Logic Apps udostępnia wbudowane akcje umożliwiające tworzenie struktury i kontrolowanie akcji w przepływie pracy aplikacji logiki:
+Logic Apps udostępnia wbudowane wyzwalacze i akcje, dzięki czemu możesz tworzyć przepływy pracy oparte na harmonogramie, pomóc aplikacjom logiki komunikować się z innymi aplikacjami i usługami, kontrolować przepływ pracy za pośrednictwem aplikacji logiki oraz zarządzać danymi lub manipulować nimi.
 
 |   |   |   |   | 
 |---|---|---|---| 
-| [![Wbudowaną ikonę][condition-icon]<br/>**warunku**][condition-doc] | Ocena warunku i wykonywania różnych działań na ich podstawie warunek ma wartość PRAWDA lub FAŁSZ. | [![Wbudowaną ikonę][for-each-icon]</br>**For each**][for-each-doc] | Wykonaj te same akcje dla każdego elementu w tablicy. | 
-| [![Wbudowaną ikonę][scope-icon]<br/>**zakresu**][scope-doc] | Grupy akcji do *zakresy*, który uzyskać ich stanu po akcje w zakresie zakończenie działania. | [![Wbudowaną ikonę][switch-icon]</br>**przełącznika**][switch-doc] | Grupy akcji do *przypadków*, przypisane unikatowe wartości, z wyjątkiem przypadek domyślny. Uruchom tylko tego przypadku, w których przypisaną wartością odpowiada wynikiem wyrażenia, obiekt lub token. Jeśli istnieje żadnych dopasowań, Uruchom przypadek domyślny. | 
-| [![Wbudowaną ikonę][terminate-icon]<br/>**zakończenia**][terminate-doc] | Zatrzymaj aktywnie uruchomionej przepływu pracy aplikacji logiki. | [![Wbudowaną ikonę][until-icon]<br/>**do momentu**][until-doc] | Powtórz czynności, aż określony warunek ma wartość true lub niektóre stan został zmieniony. | 
+| [![**Harmonogram** ikon][schedule-icon]<br/>interfejsu API][recurrence-doc] | — Uruchom aplikację logiki zgodnie z określonym harmonogramem, od podstawowego do złożonych cykli, z wyzwalaczem **cyklu** . <p>— Wstrzymaj aplikację logiki przez określony czas z akcją **opóźnienia** . <p>— Wstrzymywanie aplikacji logiki do określonej daty i godziny z **opóźnieniem do** wykonania akcji. | [![Ikona][http-icon]<br/>interfejsu API**http**][http-doc] | Komunikacja z dowolnym punktem końcowym za pośrednictwem protokołu HTTP z wyzwalaczami i akcjami dla protokołów HTTP, HTTP + Swagger i HTTP + webhook. | 
+| [![**Żądanie** ikony][http-request-icon]<br/>interfejsu API][http-request-doc] | — Umożliwiaj wywoływanie aplikacji logiki z innych aplikacji lub usług, wyzwalanie na Event Grid zdarzeń zasobów lub wyzwalanie odpowiedzi w celu Azure Security Center alertów z wyzwalaczem **żądania** . <p>— Wysyłanie odpowiedzi do aplikacji lub usługi z akcją **odpowiedzi** . | [![**Partia** ikon][batch-icon]<br/>interfejsu API][batch-doc] | -Przetwarzaj komunikaty w partiach za pomocą wyzwalacza **wiadomości wsadowych** . <p>-Wywołaj Aplikacje logiki, które mają istniejące wyzwalacze wsadowe z akcją **Wyślij komunikaty do partii** . | 
+| [![Ikona][azure-functions-icon]<br/>interfejsu API**Azure Functions**][azure-functions-doc] | Wywołaj usługi Azure Functions, które uruchamiająC# niestandardowe fragmenty kodu (lub Node. js) z aplikacji logiki. | [![Ikona][azure-api-management-icon]</br>interfejsu API**Azure API Management**][azure-api-management-doc] | Wyzwalacze wywołań i akcje zdefiniowane przez własne interfejsy API, którymi zarządzasz i publikujesz za pomocą usługi Azure API Management. | 
+| [![Ikona][azure-app-services-icon]<br/>interfejsu API**Azure App Services**][azure-app-services-doc] | Wywołaj platformę Azure API Apps lub Web Apps hostowaną w Azure App Service. Wyzwalacze i akcje zdefiniowane przez te aplikacje są wyświetlane jak wszystkie inne wyzwalacze i akcje pierwszej klasy, gdy jest uwzględniana struktura Swagger. | [![Ikona][azure-logic-apps-icon]<br/>interfejsu API**Azure<br/>Logic Apps**][nested-logic-app-doc] | Wywołaj inne aplikacje logiki, które zaczynają się od wyzwalacza żądania. | 
 ||||| 
 
-### <a name="manage-or-manipulate-data"></a>Zarządzanie i manipulowanie danymi
+### <a name="control-workflow"></a>Przepływ pracy sterowania
 
-Usługa Logic Apps udostępnia wbudowane akcje umożliwiające pracę z danych wyjściowych danych i ich formatów:  
+Logic Apps udostępnia wbudowane akcje do tworzenia struktury i kontrolowania akcji w przepływie pracy aplikacji logiki:
+
+|   |   |   |   | 
+|---|---|---|---| 
+| [![Wbudowany][condition-icon]<br/>**warunek** ikony][condition-doc] | Oceń warunek i uruchamiaj różne akcje w zależności od tego, czy warunek ma wartość Prawda czy fałsz. | [![Ikona][for-each-icon]</br>wbudowana**dla każdego**][for-each-doc] | Wykonaj te same czynności dla każdego elementu w tablicy. | 
+| [![Wbudowany][scope-icon]<br/>**zakres** ikon][scope-doc] | Grupuj akcje w *zakresy*, które uzyskują swój stan po zakończeniu akcji w zakresie. | [![Wbudowany][switch-icon]</br>**przełącznik** ikon][switch-doc] | Grupuj działania w *przypadkach*, do których przypisano unikatowe wartości z wyjątkiem domyślnego przypadku. Uruchom tylko te przypadki, których przypisana wartość dopasowuje wynik z wyrażenia, obiektu lub tokenu. Jeśli nie ma żadnych dopasowań, uruchom przypadek domyślny. | 
+| [![**Zakończenie** wbudowanej ikony][terminate-icon]<br/>][terminate-doc] | Zatrzymaj aktywnie uruchomiony przepływ pracy aplikacji logiki. | [![Ikona][until-icon]<br/>wbudowana**do**][until-doc] | Powtarzaj akcje do momentu, gdy określony warunek ma wartość true lub jakiś stan uległ zmianie. | 
+||||| 
+
+### <a name="manage-or-manipulate-data"></a>Zarządzanie danymi i ich manipulowanie
+
+Logic Apps udostępnia wbudowane akcje do pracy z danymi wyjściowymi i ich formatami:  
 
 |   |   | 
 |---|---| 
-| [![Wbudowaną ikonę][data-operations-icon]<br/>**operacje na danych**][data-operations-doc] | Wykonaj operacje przy użyciu danych: <p>- **Redagowanie**: Utwórz pojedynczy dane wyjściowe na podstawie wielu danych wejściowych z różnymi typami. <br>- **Utwórz tabelę CSV**: Utwórz tabelę przecinkami wartości rozdzielanych przecinkami (CSV) z tablicy obiektów JSON. <br>- **Utwórz tabelę HTML**: Utwórz tabelę HTML z tablicy obiektów JSON. <br>- **Filtruj tablicę**: Utwórz tablicę z elementów w innej tablicy, spełniających podane kryteria. <br>- **Dołącz do**: Tworzenie ciągu z wszystkich elementów w tablicy, a następnie oddzielić te elementy przy użyciu określonego ogranicznika. <br>- **Przeanalizuj dane JSON**: Tworzenie tokenów przyjazny dla użytkownika z właściwości i ich wartości w zawartości JSON, aby można było używać tych właściwości w przepływie pracy. <br>- **Wybierz**: Utwórz tablicę z obiektami JSON poprzez przekształcenie elementów lub wartości w innej tablicy i mapowanie te elementy do określonej właściwości. | 
-| ![Ikona wbudowane][date-time-icon]<br/>**Data i godzina** | Wykonaj czynności z sygnaturami czasowymi: <p>- **Dodaj do czasu**: Dodaj określoną liczbę jednostek do sygnatury czasowej. <br>- **Konwertuj strefę czasową**: Konwertuj sygnaturę czasową ze źródłowej strefy czasowej na docelową strefę czasową. <br>- **Bieżący czas**: Zwraca bieżącą sygnaturę czasową jako ciąg. <br>- **Pobierz czas w przyszłości**: Zwraca bieżącą sygnaturę czasową, a także jednostek w określonym czasie. <br>- **Pobierz czas w przeszłości**: Zwraca bieżącą sygnaturę czasową minus jednostek w określonym czasie. <br>- **Odejmij od czasu**: Odjęcie liczby jednostek czasu z sygnatury czasowej. |
-| [![Wbudowaną ikonę][variables-icon]<br/>**zmiennych**][variables-doc] | Wykonaj operacje za pomocą zmiennych: <p>- **Dołącz do zmiennej tablicowej**: Wstaw wartość jako ostatni element w tablicy przechowywane za pomocą zmiennej. <br>- **Dołącz do zmiennej ciągu**: Wstaw wartość jako ostatni znak w ciągu przechowywane za pomocą zmiennej. <br>- **Zmniejsz zmienną**: Zmniejsz zmienną o stałej wartości. <br>- **Zwiększ wartość zmiennej**: Zwiększ zmiennej przez wartość stałą. <br>- **Inicjowanie zmiennej**: Utwórz zmienną i zadeklarować jego typu danych i wartość początkową. <br>- **Ustaw zmienną**: Przypisz inną wartość do istniejącej zmiennej. |
+| [![Wbudowane][data-operations-icon]<br/>operacje na**danych** ikon][data-operations-doc] | Wykonaj operacje z danymi: <p>- **Redaguj**: Utwórz jedno wyjście z wielu danych wejściowych z różnymi typami. <br>- **Utwórz tabelę CSV**: Utwórz tabelę wartości rozdzielanych przecinkami (CSV) z tablicy z obiektami JSON. <br>- **Utwórz tabelę HTML**: Utwórz tabelę HTML z tablicy z obiektami JSON. <br>- **Filtruj tablicę**: Utwórz tablicę z elementów w innej tablicy, która spełnia kryteria. <br>- **Dołącz**: Utwórz ciąg ze wszystkich elementów w tablicy i oddziel te elementy z określonym ogranicznikiem. <br>- **Analiza JSON**: Utwórz przyjazne dla użytkownika tokeny na podstawie właściwości i ich wartości w zawartości JSON, aby można było używać tych właściwości w przepływie pracy. <br>- **Wybierz**: Utwórz tablicę z obiektami JSON, przekształcając elementy lub wartości w innej tablicy i mapując te elementy do określonych właściwości. | 
+| ![Ikona wbudowana][date-time-icon]<br/>**Data i godzina** | Wykonaj operacje z sygnaturami czasowymi: <p>- **Dodaj do czasu**: Dodaj określoną liczbę jednostek do sygnatury czasowej. <br>- **Konwertuj strefę czasową**: Przekonwertuj sygnaturę czasową ze źródłowej strefy czasowej na docelową strefę czasową. <br>- **Bieżący czas**: Zwróć bieżącą sygnaturę czasową jako ciąg. <br>- **Rozpocznij w przyszłości**: Zwróć bieżącą sygnaturę czasową powiększoną o określoną liczbę jednostek czasu. <br>- **Czas ostatniej ostatniej**: Zwróć bieżącą sygnaturę czasową minus określoną liczbę jednostek czasu. <br>- **Odejmij od czasu**: Odejmij wiele jednostek czasu od sygnatury czasowej. |
+| [![Wbudowane][variables-icon]<br/>**zmienne** ikon][variables-doc] | Wykonywanie operacji przy użyciu zmiennych: <p>- **Dołącz do zmiennej tablicowej**: Wstaw wartość jako ostatni element w tablicy przechowywanej przez zmienną. <br>- **Dołącz do zmiennej ciągu**: Wstaw wartość jako ostatni znak w ciągu przechowywanym przez zmienną. <br>- **Zmniejsz zmienną**: Zmniejsz zmienną przez wartość stałą. <br>- **Zmienna przyrostu**: Zwiększ zmienną przez wartość stałą. <br>- **Zainicjuj zmienną**: Utwórz zmienną i Zadeklaruj jej typ danych i wartość początkową. <br>- **Ustaw zmienną**: Przypisz inną wartość do istniejącej zmiennej. |
 |  |  | 
 
 <a name="managed-api-connectors"></a>
 
 ## <a name="managed-api-connectors"></a>Zarządzane łączniki interfejsu API
 
-Usługa Logic Apps oferuje te popularne łączniki standardowe do automatyzowania zadań, procesy i przepływy pracy za pomocą tych usług lub systemów.
+Logic Apps udostępnia te popularne standardowe łączniki do automatyzowania zadań, procesów i przepływów pracy przy użyciu tych usług lub systemów.
 
 |   |   |   |   | 
 |---|---|---|---| 
-| [![Ikona interfejsu API][azure-service-bus-icon]<br/>**usługi Azure Service Bus**][azure-service-bus-doc] | Zarządzaj wiadomości asynchronicznych, sesji i subskrypcje tematu przy użyciu łącznika najczęściej używanych w usłudze Logic Apps. | [![Ikona interfejsu API][sql-server-icon]<br/>**programu SQL Server**][sql-server-doc] | Połączenie z SQL Server w środowisku lokalnym lub usługi Azure SQL Database w chmurze Zarządzanie rekordami, uruchamianie procedur składowanych lub wykonywania zapytań. | 
-| [![Ikona interfejsu API][office-365-outlook-icon]<br/>**usługi Office 365<br/>programu Outlook**][office-365-outlook-doc] | Nawiąż połączenie z kontem poczty e-mail usługi Office 365, dzięki czemu można tworzyć i zarządzać nimi wiadomości e-mail, zadania, zdarzenia kalendarza i spotkania, kontakty, żądania itd. | [![Ikona interfejsu API][azure-blob-storage-icon]<br/>**obiektów Blob platformy Azure<br/>magazynu**][azure-blob-storage-doc] | Nawiąż połączenie z kontem magazynu, dzięki czemu można tworzyć i zarządzać zawartość obiektu blob. | 
-| [![Ikona interfejsu API][sftp-icon]<br/>**SFTP**][sftp-doc] | Łączenie z serwerami SFTP, do których masz dostęp z Internetu, aby można było pracować z plikami i folderami. | [![Ikona interfejsu API][sharepoint-online-icon]<br/>**SharePoint<br/>Online**][sharepoint-online-doc] | Możesz określić pliki, załączniki, foldery i połączenie do usługi SharePoint Online. | 
-| [![Ikona interfejsu API][dynamics-365-icon]<br/>**Dynamics 365<br/>CRM Online**][dynamics-365-doc] | Łączenie się ze swoim kontem Dynamics 365, dzięki czemu można tworzyć i zarządzać rekordami, elementy i inne. | [![Ikona interfejsu API][ftp-icon]<br/>**FTP**][ftp-doc] | Łączenie z serwerami FTP, w której będziesz mieć dostęp z Internetu, aby można było pracować z plikami i folderami. | 
-| [![Ikona interfejsu API][salesforce-icon]<br/>**Salesforce**][salesforce-doc] | Nawiąż połączenie z kontem usługi Salesforce, dzięki czemu można tworzyć i zarządzać elementy, takie jak rekordy, zadania, obiektów i. | [![Ikona interfejsu API][twitter-icon]<br/>**w usłudze Twitter**][twitter-doc] | Nawiąż połączenie z kontem usługi Twitter, więc można zarządzać tweetów, obserwatorów, osi czasu i nie tylko. Zapisz swoje tweety SQL, program Excel i programu SharePoint. | 
-| [![Ikona interfejsu API][azure-event-hubs-icon]<br/>**usługi Azure Event Hubs**][azure-event-hubs-doc] | Używanie i publikowania zdarzeń za pośrednictwem Centrum zdarzeń. Na przykład pobierać dane wyjściowe z aplikacji logiki z usługą Event Hubs, a następnie wysyłać dane wyjściowe do dostawcy analiz w czasie rzeczywistym. | [![Ikona interfejsu API][azure-event-grid-icon]<br/>**usługi Azure Event**</br>**siatki**][azure-event-grid-doc] | Monitorowanie zdarzeń publikowanych przez usługę Event Grid, na przykład, gdy zmienią się zasoby platformy Azure lub innych firm. | 
+| [![Ikona][azure-service-bus-icon]<br/>interfejsu API**Azure Service Bus**][azure-service-bus-doc] | Zarządzanie komunikatami asynchronicznymi, sesjami i subskrypcjami tematów przy użyciu najczęściej używanego łącznika w Logic Apps. | [![Ikona][sql-server-icon]<br/>interfejsu API**SQL Server**][sql-server-doc] | Połącz się ze swoją SQL Server lokalną lub Azure SQL Database w chmurze, aby móc zarządzać rekordami, uruchamiać procedury składowane lub wykonywać zapytania. | 
+| [![Ikona][office-365-outlook-icon]<br/>interfejsu API**Office<br/>365 Outlook**][office-365-outlook-doc] | Połącz się z kontem e-mail pakietu Office 365, aby móc tworzyć wiadomości e-mail, zadania, zdarzenia kalendarza i spotkania, kontakty, żądania itp. oraz zarządzać nimi. | [![Ikona][azure-blob-storage-icon]<br/>interfejsu API**Azure<br/>BLOB Storage**][azure-blob-storage-doc] | Połącz się z kontem magazynu, aby można było tworzyć zawartość obiektów blob i zarządzać nią. | 
+| [![Ikona][sftp-icon]<br/>interfejsu API**SFTP**][sftp-doc] | Połącz się z serwerami SFTP, z których możesz korzystać z Internetu, aby można było korzystać z plików i folderów. | [![Ikona][sharepoint-online-icon]<br/>interfejsu API**SharePoint<br/>online**][sharepoint-online-doc] | Połącz się z usługą SharePoint Online, aby móc zarządzać plikami, załącznikami, folderami i innymi. | 
+| [![Ikona][dynamics-365-icon]<br/>interfejsu API**Dynamics<br/>365 CRM Online**][dynamics-365-doc] | Połącz się z kontem Dynamics 365, aby można było tworzyć i zarządzać rekordami, elementami itd. | [![Ikona][ftp-icon]<br/>interfejsu API**FTP**][ftp-doc] | Łączenie z serwerami FTP, do których można uzyskać dostęp za pośrednictwem Internetu, aby można było korzystać z plików i folderów. | 
+| [![Ikona][salesforce-icon]<br/>interfejsu API**Salesforce**][salesforce-doc] | Połącz się z kontem usługi Salesforce, aby można było tworzyć i zarządzać elementami, takimi jak rekordy, zadania, obiekty i wiele innych. | [![Ikona][twitter-icon]<br/>interfejsu API**Twitter**][twitter-doc] | Połącz się z kontem usługi Twitter, aby móc zarządzać tweetami, obserwatorami, osią czasu i wieloma innymi. Zapisz tweety w programie SQL, programie Excel lub programie SharePoint. | 
+| [![Ikona][azure-event-hubs-icon]<br/>interfejsu API**Azure Event Hubs**][azure-event-hubs-doc] | Używanie i publikowanie zdarzeń za poorednictwem centrum zdarzeń. Na przykład Pobierz dane wyjściowe z aplikacji logiki za pomocą Event Hubs, a następnie wyślij je do dostawcy analiz w czasie rzeczywistym. | [![Ikona][azure-event-grid-icon]<br/>interfejsu API**Azure Event**</br>**Grid**][azure-event-grid-doc] | Monitoruj zdarzenia opublikowane przez Event Grid, na przykład w przypadku zmiany zasobów platformy Azure lub zasobów innych firm. | 
 |||||
 
 <a name="on-premises-connectors"></a>
 
 ## <a name="on-premises-connectors"></a>Łączniki lokalne 
 
-Poniżej przedstawiono niektóre powszechnie używane łączników standardowych, które Logic Apps zapewnia dostęp do danych i zasobów, w systemach lokalnych. Przed utworzeniem połączenia do systemu lokalnego, musisz najpierw [pobrać, zainstalować i skonfigurować lokalną bramę danych][gateway-doc]. Ta brama zapewnia bezpieczny kanał komunikacyjny bez konieczności konfigurowania infrastruktury sieciowej to konieczne. 
+Poniżej przedstawiono kilka typowych łączników standardowych, które Logic Apps zapewniają dostęp do danych i zasobów w systemach lokalnych. Aby można było utworzyć połączenie z systemem lokalnym, należy najpierw [pobrać, zainstalować i skonfigurować lokalną bramę danych][gateway-doc]. Ta brama zapewnia bezpieczny kanał komunikacyjny bez konieczności konfigurowania niezbędnej infrastruktury sieciowej. 
 
 |   |   |   |   |   | 
 |---|---|---|---|---| 
-| ![Ikona interfejsu API][biztalk-server-icon]<br/>**BizTalk**</br> **Serwer** | [![Ikona interfejsu API][file-system-icon]<br/>**pliku</br> systemu**][file-system-doc] | [![Ikona interfejsu API][ibm-db2-icon]<br/>**IBM DB2**][ibm-db2-doc] | [![Ikona interfejsu API][ibm-informix-icon]<br/>**IBM** </br> **Informix**][ibm-informix-doc] | ![Ikona interfejsu API][mysql-icon]<br/>**MySQL** | 
-| [![Ikona interfejsu API][oracle-db-icon]<br/>**Oracle DB**][oracle-db-doc] | ![Ikona interfejsu API][postgre-sql-icon]<br/>**PostgreSQL** | [![Ikona interfejsu API][sharepoint-server-icon]<br/>**SharePoint</br> serwera**][sharepoint-server-doc] | [![Ikona interfejsu API][sql-server-icon]<br/>**SQL</br> serwera**][sql-server-doc] | ![Ikona interfejsu API][teradata-icon]<br/>**Teradata** | 
+| ![Ikona interfejsu API][biztalk-server-icon]<br/>**BizTalk**</br> **Serwer** | [![][file-system-icon]<br/>**Systemplików</br>**  ikon interfejsu API][file-system-doc] | [![Ikona][ibm-db2-icon]<br/>interfejsu API**IBM DB2**][ibm-db2-doc] | [![Ikona][ibm-informix-icon]<br/>interfejsu API**IBM** </br> **Informix**][ibm-informix-doc] | ![Ikona interfejsu API][mysql-icon]<br/>**MySQL** | 
+| [![Ikona][oracle-db-icon]<br/>interfejsu API**Oracle DB**][oracle-db-doc] | ![Ikona interfejsu API][postgre-sql-icon]<br/>**PostgreSQL** | [![Ikona][sharepoint-server-icon]<br/>interfejsu API **</br> programu SharePoint Server**][sharepoint-server-doc] | [![Ikona][sql-server-icon]<br/>interfejsu API**SQL</br> Server**][sql-server-doc] | ![Ikona interfejsu API][teradata-icon]<br/>**Teradata** | 
 |||||
 
 <a name="integration-account-connectors"></a>
 
 ## <a name="integration-account-connectors"></a>Łączniki konta integracji
 
-Usługa Logic Apps udostępnia łączniki standardowe do tworzenia rozwiązań biznesowych (B2B) za pomocą aplikacji logiki, podczas tworzenia i płacić za [konta integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), który jest dostępny za pośrednictwem pakietu integracji przedsiębiorstw (EIP) na platformie Azure. Przy użyciu tego konta można tworzyć i przechowywanie artefaktów B2B, takich jak handlowymi partnerów, umów, mapy, schematów, certyfikaty i tak dalej. Aby użyć tych artefaktów, należy skojarzyć aplikacji logiki przy użyciu konta integracji. Jeśli używasz obecnie programu BizTalk Server, te łączniki mogą wydawać się dobrze znanych już.
+Logic Apps udostępnia standardowe łączniki do tworzenia rozwiązań między firmami (B2B, Business-to-Business) za pomocą aplikacji logiki, gdy tworzysz i płacisz za [konto integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), które jest dostępne za pomocą pakiet INTEGRACYJNY dla przedsiębiorstw (EIP) na platformie Azure. Za pomocą tego konta możesz tworzyć i przechowywać artefakty B2B, takie jak partnerzy handlowi, umowy, mapy, schematy, certyfikaty itd. Aby użyć tych artefaktów, skojarz Aplikacje logiki z kontem integracji. Jeśli obecnie używasz BizTalk Server, te łączniki mogą wydawać się już znane.
 
 |   |   |   |   | 
 |---|---|---|---| 
-| [![Ikona interfejsu API][as2-icon]<br/>**AS2</br> dekodowanie**][as2-doc] | [![Ikona interfejsu API][as2-icon]<br/>**AS2</br> kodowania**][as2-doc] | [![Ikona interfejsu API][edifact-icon]<br/>**EDIFACT</br> dekodowanie**][edifact-decode-doc] | [![Ikona interfejsu API][edifact-icon]<br/>**EDIFACT</br> kodowania**][edifact-encode-doc] | 
-| [![Ikona interfejsu API][flat-file-decode-icon]<br/>**pliku prostego</br> dekodowanie**][flat-file-decode-doc] | [![Ikona interfejsu API][flat-file-encode-icon]<br/>**pliku prostego</br> kodowania**][flat-file-encode-doc] | [![Ikona interfejsu API][integration-account-icon]<br/>**integracji<br/>konta**][integration-account-doc] | [![Ikona interfejsu API][liquid-icon]<br/>**Liquid**</br>**przekształcenia**][json-liquid-transform-doc] | 
-| [![Ikona interfejsu API][x12-icon]<br/>**X12</br> dekodowanie**][x12-decode-doc] | [![Ikona interfejsu API][x12-icon]<br/>**X12</br> kodowania**][x12-encode-doc] | [![Ikona interfejsu API][xml-transform-icon]<br/>**XML**</br>**przekształcenia**][xml-transform-doc] | [![Ikona interfejsu API][xml-validate-icon]<br/>**XML <br/>sprawdzania poprawności**][xml-validate-doc] |  
+| [![Ikona][as2-icon]<br/>interfejsu API**dekodowanie AS2</br>** ][as2-doc] | [![Ikona][as2-icon]<br/>interfejsu API**kodowanie AS2</br>** ][as2-doc] | [![Ikona][edifact-icon]<br/>interfejsu API**dekodowanie EDIFACT</br>** ][edifact-decode-doc] | [![Ikona][edifact-icon]<br/>interfejsu API**kodowanie EDIFACT</br>** ][edifact-encode-doc] | 
+| [![Ikona][flat-file-decode-icon]<br/>interfejsu API —**dekodowanie pliku</br> prostego**][flat-file-decode-doc] | [![Ikona][flat-file-encode-icon]<br/>interfejsu API — **</br> kodowanie pliku prostego**][flat-file-encode-doc] | [![Ikona][integration-account-icon]<br/>interfejsu API**konto integracji<br/>** ][integration-account-doc] | [![Ikona][liquid-icon]<br/>interfejsu API transformacje**płynne**</br>][json-liquid-transform-doc] | 
+| [![Ikona][x12-icon]<br/>interfejsu API**dekodowanie X12</br>** ][x12-decode-doc] | [![Ikona][x12-icon]<br/>interfejsu API**kodowanie X12</br>** ][x12-encode-doc] | [![Ikona][xml-transform-icon]<br/>interfejsu API**przekształcenia** **XML**</br>][xml-transform-doc] | [![][xml-validate-icon]<br/>**Weryfikacja kodu XML<br/>** ikony interfejsu API][xml-validate-doc] |  
 ||||| 
 
 <a name="enterprise-connectors"></a>
 
 ## <a name="enterprise-connectors"></a>Łączniki dla przedsiębiorstw
 
-Usługa Logic Apps oferuje te łączniki dla przedsiębiorstw do uzyskiwania dostępu do systemów dla przedsiębiorstw, takimi jak SAP i IBM MQ:
+Logic Apps udostępnia te łączniki przedsiębiorstwa do uzyskiwania dostępu do systemów przedsiębiorstwa, takich jak SAP i IBM MQ:
 
 |   |   |   | 
 |---|---|---| 
-| [![Ikona interfejsu API][ibm-3270-icon]<br/>**IBM 3270**][ibm-3270-doc] | [![Ikona interfejsu API][ibm-mq-icon]<br/>**IBM MQ**][ibm-mq-doc] | [![Ikona interfejsu API][sap-icon]<br/>**SAP**][sap-connector-doc] |
+| [![Ikona][ibm-3270-icon]<br/>interfejsu API**IBM 3270**][ibm-3270-doc] | [![Ikona][ibm-mq-icon]<br/>interfejsu API**IBM MQ**][ibm-mq-doc] | [![Ikona][sap-icon]<br/>interfejsu API**SAP**][sap-connector-doc] |
 |||| 
 
 <a name="triggers-actions"></a>
 
 ## <a name="triggers-and-actions---more-info"></a>Wyzwalacze i akcje — więcej informacji
 
-Łączniki mogą zapewnić *wyzwalaczy*, *akcje*, lub obu. A *wyzwalacza* jest pierwszym krokiem we wszystkich aplikacjach logiki, zwykle określenie zdarzenia, które uruchamia wyzwalacz i uruchamiania aplikacji logiki. Na przykład łącznik FTP ma wyzwalacz, który uruchamia aplikację logiki "po dodaniu lub zmodyfikowaniu pliku". Niektórych wyzwalaczy regularne sprawdzanie określonego zdarzenia lub dane, a następnie uruchamiają się po wykryciu określonego zdarzenia lub dane. Inne wyzwalacze czekać, ale fire natychmiast po się dzieje określonego zdarzenia lub gdy nowe dane są dostępne. Wyzwalacze również przekazać wszystkie dane wymagane do aplikacji logiki. Twoja aplikacja logiki może odczytywać i używać tych danych w całym przepływie pracy.
-Na przykład łącznik Twitter zawiera wyzwalacz, "Kiedy nowego tweetu", który przekazuje tweetu jego zawartość w przepływie pracy aplikacji logiki. 
+Łączniki mogą zapewniać wyzwalacze, *Akcje*lub oba te elementy. *Wyzwalacz* to pierwszy krok w dowolnej aplikacji logiki, zwykle określający zdarzenie, które wyzwala wyzwalacz i uruchamia aplikację logiki. Na przykład łącznik FTP ma wyzwalacz, który uruchamia aplikację logiki "po dodaniu lub zmodyfikowaniu pliku". Niektóre wyzwalacze regularnie sprawdzają obecność określonego zdarzenia lub danych, a następnie uruchamiają się po wykryciu określonego zdarzenia lub danych. Inne wyzwalacze oczekują, ale natychmiast po wystąpieniu określonego zdarzenia lub gdy nowe dane są dostępne. Wyzwalacze przekazują również wszystkie wymagane dane do aplikacji logiki. Aplikacja logiki może odczytywać i używać tych danych w ramach przepływu pracy.
+Na przykład łącznik usługi Twitter ma wyzwalacz "po opublikowaniu nowego tweetu", który przekazuje zawartość tweetu do przepływu pracy aplikacji logiki. 
 
-Po aktywowaniu wyzwalacza usługi Azure Logic Apps tworzy wystąpienie aplikacji logiki i uruchamiania *akcje* w przepływie pracy aplikacji logiki. Akcje są kroki, które należy wykonać wyzwalacza i wykonywania zadań w przepływie pracy aplikacji logiki. Na przykład możesz utworzyć aplikację logiki, która pobiera dane klienta z bazy danych SQL i przetwarzania tych danych w kolejnych akcjach. 
+Po uruchomieniu wyzwalacza Azure Logic Apps tworzy wystąpienie aplikacji logiki i zacznie uruchamiać *Akcje* w przepływie pracy aplikacji logiki. Akcje to kroki, które obserwują wyzwalacz i wykonują zadania w przepływie pracy aplikacji logiki. Można na przykład utworzyć aplikację logiki, która pobiera dane klienta z bazy danych SQL i przetwarzać te dane w późniejszych akcjach. 
 
-Poniżej przedstawiono ogólne rodzaje wyzwalaczy udostępnianych przez usługi Azure Logic Apps:
+Poniżej przedstawiono ogólne rodzaje wyzwalaczy, które Azure Logic Apps zapewnia:
 
-* *Wyzwalacz cykliczny*: Ten wyzwalacz jest uruchamiany zgodnie z harmonogramem i nie jest ściśle związana z określonej usługi lub systemu.
+* *Wyzwalacz cyklu*: Ten wyzwalacz jest uruchamiany zgodnie z określonym harmonogramem i nie jest ściśle skojarzony z określoną usługą lub systemem.
 
-* *Wyzwalacz sondowania*: Ten wyzwalacz jest regularnie sonduje określonej usługi lub systemu, na podstawie określonego harmonogramu, sprawdzania pod kątem nowych danych lub tego, czy wystąpienia określonego zdarzenia. Jeśli nowe dane są dostępne lub określone zdarzenie wystąpiło, wyzwalacz tworzy i uruchamia nowe wystąpienie aplikacji logiki, które mogą teraz używać danych, który jest przekazywany jako dane wejściowe.
+* *Wyzwalacz sondowania*: Ten wyzwalacz regularnie sonduje określoną usługę lub system zgodnie z określonym harmonogramem, wyszukując nowe dane lub w przypadku wystąpienia konkretnego zdarzenia. Jeśli nowe dane są dostępne lub wystąpi określone zdarzenie, wyzwalacz tworzy i uruchamia nowe wystąpienie aplikacji logiki, która może teraz korzystać z danych, które są przesyłane jako dane wejściowe.
 
-* *Wypychanie wyzwalacza*: Ten wyzwalacz czeka i nasłuchuje nowych danych lub zdarzeń. Gdy nowe dane są dostępne, lub gdy zdarzenie, wyzwalacz tworzy i uruchamia nowe wystąpienie aplikacji logiki, które mogą teraz używać danych, który jest przekazywany jako dane wejściowe.
+* *Wyzwalacz wypychania*: Ten wyzwalacz czeka i nasłuchuje w poszukiwaniu nowych danych lub zdarzenia. Jeśli nowe dane są dostępne lub gdy wystąpi zdarzenie, wyzwalacz tworzy i uruchamia nowe wystąpienie aplikacji logiki, która może teraz korzystać z danych, które są przesyłane jako dane wejściowe.
 
 <a name="custom"></a>
 
 ## <a name="connector-configuration"></a>Konfiguracja łącznika
 
-Wyzwalacze i akcje każdy łącznik Podaj własne właściwości do skonfigurowania. Również wymagać wiele łączników, należy najpierw utworzyć *połączenia* do docelowej usługi lub systemu i podaj poświadczenia uwierzytelniania lub innych szczegółów konfiguracji, zanim użyjesz wyzwalacza lub akcji w aplikacji logiki. Na przykład należy autoryzować połączenie z kontem usługi Twitter do uzyskiwania dostępu do danych lub w Twoim imieniu. 
+Wyzwalacze i akcje każdego łącznika zapewniają własne właściwości, które można skonfigurować. Wiele łączników wymaga również, aby najpierw utworzyć *połączenie* z usługą lub systemem docelowym oraz podać poświadczenia uwierzytelniania lub inne szczegóły konfiguracji, zanim będzie można użyć wyzwalacza lub akcji w aplikacji logiki. Na przykład trzeba autoryzować połączenie z kontem usługi Twitter w celu uzyskania dostępu do danych lub opublikowania w Twoim imieniu. 
 
-Dla łączników, które używają protokołu OAuth tworzenia połączenia oznacza, że logowanie się do usługi, takie jak usługi Office 365, Salesforce lub GitHub, gdzie token dostępu jest zaszyfrowany i bezpiecznie przechowywane w sklepie systemu Azure dla wpisu tajnego. Innych łączników, takich jak FTP i SQL, wymaga połączenia, który ma szczegóły konfiguracji, takie jak adres serwera, nazwę użytkownika i hasło. Te dane konfiguracyjne połączenia są również są szyfrowane i bezpiecznie przechowywane. 
+W przypadku łączników korzystających z protokołu OAuth Tworzenie połączenia oznacza zalogowanie się do usługi, takiej jak Office 365, Salesforce lub GitHub, gdzie token dostępu jest szyfrowany i bezpiecznie przechowywany w magazynie kluczy tajnych platformy Azure. Inne łączniki, takie jak FTP i SQL, wymagają połączenia, które ma szczegóły konfiguracji, takie jak adres serwera, nazwa użytkownika i hasło. Te szczegóły konfiguracji połączenia są również szyfrowane i bezpiecznie przechowywane. 
 
-Połączenia można uzyskać dostęp do Usługa docelowa lub system tak długo, jak umożliwia tej usługi lub systemu. Dla usług korzystających z połączeń protokołu OAuth usługi Azure Active Directory (AD), takie jak usługi Office 365 i Dynamics Azure Logic Apps odświeża tokenów dostępu przez czas nieokreślony. Inne usługi może mieć limity na jak długo Azure Logic Apps można użyć tokenu bez odświeżania. Ogólnie rzecz biorąc niektóre akcje unieważnienie wszystkich tokenów dostępu, takich jak zmienić hasło.
+Połączenia mogą uzyskać dostęp do docelowej usługi lub systemu przez cały czas, gdy zezwala na to usługa lub system. W przypadku usług korzystających z połączeń OAuth Azure Active Directory (AD), takich jak pakiet Office 365 i usługa Dynamics, Azure Logic Apps odświeża tokeny dostępu przez nieograniczony czas. Inne usługi mogą mieć limity, jak długo Azure Logic Apps mogą używać tokenu bez odświeżania. Ogólnie rzecz biorąc, niektóre akcje unieważnią wszystkie tokeny dostępu, takie jak zmiana hasła.
 
 <a name="custom"></a>
 
-## <a name="custom-apis-and-connectors"></a>Niestandardowe interfejsy API i łączników
+## <a name="custom-apis-and-connectors"></a>Niestandardowe interfejsy API i łączniki
 
-Aby wywoływać interfejsy API, który jest uruchomiony niestandardowy kod lub które nie są dostępne jako łączniki, można rozszerzyć platformę usługi Logic Apps przez [tworząc niestandardowe aplikacje interfejsu API](../logic-apps/logic-apps-create-api-app.md). Możesz również [Tworzenie łączników niestandardowych](../logic-apps/custom-connector-overview.md) dla *wszelkie* opartego na protokole SOAP API, który udostępnienia tych interfejsów API w dowolnej aplikacji logiki w ramach subskrypcji platformy Azure lub REST.
-Aby udostępnić funkcję niestandardowe aplikacje interfejsu API i łączniki dla każdego, kto do użytku na platformie Azure, możesz [przesyłanie łączników do certyfikacji firmy Microsoft](../logic-apps/custom-connector-submit-certification.md).
+Aby wywołać interfejsy API, które uruchamiają kod niestandardowy lub nie są dostępne jako łączniki, można rozciągnąć Logic Apps platformę przez [utworzenie API Apps niestandardowych](../logic-apps/logic-apps-create-api-app.md). Możesz również [utworzyć łączniki niestandardowe](../logic-apps/custom-connector-overview.md) dla *dowolnego* interfejsu API opartego na protokole REST lub SOAP, co sprawia, że te interfejsy API są dostępne dla dowolnej aplikacji logiki w ramach subskrypcji platformy Azure.
+Aby udostępnić niestandardowe API Apps lub łączniki dla wszystkich użytkowników na platformie Azure, możesz [przesłać łączniki do certyfikacji firmy Microsoft](../logic-apps/custom-connector-submit-certification.md).
 
 > [!NOTE]
-> Aplikacje Logic apps w ramach [środowiska integration service environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) można uzyskać dostęp do zasobów w sieci wirtualnej platformy Azure.
-> Jeśli masz łączników niestandardowych, które wymagają lokalnej bramy danych, a utworzone łączniki poza ISE, logic apps w środowisku ISE łączników można również używać tych.
+> Aplikacje logiki w [środowisku usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) mogą bezpośrednio uzyskiwać dostęp do zasobów w sieci wirtualnej platformy Azure.
+> Jeśli masz łączniki niestandardowe wymagające lokalnej bramy danych i utworzono te łączniki poza ISE, Aplikacje logiki w ISE mogą również używać tych łączników.
 >
-> Łączników niestandardowych utworzonych w środowisku ISE nie działają z lokalną bramą danych. Jednak te łączniki można uzyskać dostęp do lokalnych źródeł danych, które są połączone z siecią wirtualną platformy Azure w środowisku ISE hostingu. Tak logic apps w środowisku ISE najprawdopodobniej nie ma potrzeby bramy danych podczas komunikacji z tymi zasobami.
+> Łączniki niestandardowe utworzone w ramach ISE nie współpracują z lokalną bramą danych. Jednak te łączniki mogą bezpośrednio uzyskiwać dostęp do lokalnych źródeł danych, które są połączone z siecią wirtualną platformy Azure hostującym ISE. W związku z tym aplikacje logiki w ISE najprawdopodobniej nie potrzebują bramy danych podczas komunikowania się z tymi zasobami.
 >
-> Aby uzyskać więcej informacji na temat tworzenia ISEs zobacz [Połącz z sieciami wirtualnymi platformy Azure z usługi Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-logic-apps-environment).
+> Aby uzyskać więcej informacji na temat tworzenia ISEs, zobacz [nawiązywanie połączenia z sieciami wirtualnymi platformy Azure z Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-logic-apps-environment).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Znajdź [pełną listę łączników](https://docs.microsoft.com/connectors)
 * [Tworzenie pierwszej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
-* [Tworzenie łączników niestandardowych dla usługi logic apps](https://docs.microsoft.com/connectors/custom-connectors/)
+* [Tworzenie łączników niestandardowych dla usługi Logic Apps](https://docs.microsoft.com/connectors/custom-connectors/)
 * [Tworzenie niestandardowych interfejsów API dla aplikacji logiki](../logic-apps/logic-apps-create-api-app.md)
 
 <!--Misc doc links-->
@@ -206,31 +210,31 @@ Aby udostępnić funkcję niestandardowe aplikacje interfejsu API i łączniki d
 
 <!--Built-ins doc links-->
 [azure-functions-doc]: ../logic-apps/logic-apps-azure-functions.md "Integracja aplikacji logiki z usługą Azure Functions"
-[azure-api-management-doc]: ../api-management/get-started-create-service-instance.md "Tworzenie wystąpienia usługi Azure API Management do zarządzania i publikowanie interfejsów API"
+[azure-api-management-doc]: ../api-management/get-started-create-service-instance.md "Tworzenie wystąpienia usługi Azure API Management na potrzeby zarządzania i publikowania interfejsów API"
 [azure-app-services-doc]: ../logic-apps/logic-apps-custom-hosted-api.md "Integracja aplikacji logiki z usługą App Service API Apps"
 [azure-service-bus-doc]: ./connectors-create-api-servicebus.md "Wysyłanie komunikatów z tematów i kolejek usługi Service Bus oraz odbieranie komunikatów z subskrypcji i kolejek usługi Service Bus"
-[batch-doc]: ../logic-apps/logic-apps-batch-process-send-receive-messages.md "Przetwarzanie komunikatów w grupach lub jako partie"
-[condition-doc]: ../logic-apps/logic-apps-control-flow-conditional-statement.md "Ocena warunku i wykonywania różnych działań na ich podstawie warunek ma wartość PRAWDA lub FAŁSZ"
+[batch-doc]: ../logic-apps/logic-apps-batch-process-send-receive-messages.md "Przetwarzaj komunikaty w grupach lub jako partie"
+[condition-doc]: ../logic-apps/logic-apps-control-flow-conditional-statement.md "Oceń warunek i uruchamiaj różne akcje w zależności od tego, czy warunek ma wartość Prawda czy fałsz"
 [delay-doc]: ./connectors-native-delay.md "Wykonywanie akcji z opóźnieniem"
-[for-each-doc]: ../logic-apps/logic-apps-control-flow-loops.md#foreach-loop "Wykonaj te same akcje dla każdego elementu w tablicy"
+[for-each-doc]: ../logic-apps/logic-apps-control-flow-loops.md#foreach-loop "Wykonaj te same czynności dla każdego elementu w tablicy"
 [http-doc]: ./connectors-native-http.md "Nawiązywanie połączeń HTTP za pomocą łącznika HTTP"
 [http-request-doc]: ./connectors-native-reqres.md "Dodawanie akcji dla żądań i odpowiedzi HTTP w aplikacjach logiki"
 [http-response-doc]: ./connectors-native-reqres.md "Dodawanie akcji dla żądań i odpowiedzi HTTP w aplikacjach logiki"
 [http-swagger-doc]: ./connectors-native-http-swagger.md "Nawiązywanie połączeń HTTP za pomocą łącznika protokołu HTTP + Swagger"
-[http-webook-doc]: ./connectors-native-webhook.md "Dodaj wyzwalacze i Akcje elementu webhook protokołu HTTP do aplikacji logiki"
+[http-webook-doc]: ./connectors-native-webhook.md "Dodawanie akcji elementu webhook protokołu HTTP i wyzwalaczy do aplikacji logiki"
 [nested-logic-app-doc]: ../logic-apps/logic-apps-http-endpoint.md "Integracja aplikacji logiki z zagnieżdżonymi przepływami pracy"
 [query-doc]: ./connectors-native-query.md "Wybieranie i filtrowanie tablic za pomocą akcji zapytania"
 [recurrence-doc]:  ./connectors-native-recurrence.md "Wyzwalanie akcji cyklicznych dla aplikacji logiki"
-[scope-doc]: ../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md "Organizuj akcje do grup, które otrzymanie własne stan akcji w grupie zakończenie działania" 
-[switch-doc]: ../logic-apps/logic-apps-control-flow-switch-statement.md "Organizowanie akcji w przypadkach, które są przypisane unikatowe wartości. Uruchom przypadek, którego wartość odpowiada wynikiem wyrażenia, obiekt lub token. Jeśli istnieje żadnych dopasowań, Uruchom przypadek domyślny"
-[terminate-doc]: ../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action "Zatrzymać lub anulować aktywnie uruchomiony przepływ pracy aplikacji logiki"
-[until-doc]: ../logic-apps/logic-apps-control-flow-loops.md#until-loop "Powtarzanie operacji, aż określony warunek ma wartość true lub niektóre stan został zmieniony"
-[data-operations-doc]: ../logic-apps/logic-apps-perform-data-operations.md "Wykonywanie operacji danych, takich jak filtrowanie tablic lub tworzenia tabeli CSV i HTML"
-[variables-doc]: ../logic-apps/logic-apps-create-variables-store-values.md "Wykonywanie operacji za pomocą zmiennych, takich jak inicjowanie, zestaw, inkrementacja, dekrementacja i Dołącz do zmiennej ciągu lub tablicy"
+[scope-doc]: ../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md "Organizuj akcje w grupach, które uzyskują swój stan po zakończeniu działania w grupie." 
+[switch-doc]: ../logic-apps/logic-apps-control-flow-switch-statement.md "Organizuj działania w przypadkach, które są przypisanymi unikatowymi wartościami. Uruchom tylko przypadek, którego wartość pasuje do wyniku z wyrażenia, obiektu lub tokenu. Jeśli nie istnieją żadne dopasowania, uruchom przypadek domyślny"
+[terminate-doc]: ../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action "Zatrzymywanie lub anulowanie aktywnie działającego przepływu pracy dla aplikacji logiki"
+[until-doc]: ../logic-apps/logic-apps-control-flow-loops.md#until-loop "Powtarzaj akcje do momentu, gdy określony warunek ma wartość true lub zmieniono jakiś stan"
+[data-operations-doc]: ../logic-apps/logic-apps-perform-data-operations.md "Wykonywanie operacji na danych, takich jak filtrowanie tablic lub Tworzenie woluminów CSV i tabel HTML"
+[variables-doc]: ../logic-apps/logic-apps-create-variables-store-values.md "Wykonywanie operacji ze zmiennymi, takimi jak Initialize, Set, Increment, Zmniejsz i Dołącz do zmiennej String lub Array"
 
 <!--Managed API doc links-->
 [azure-blob-storage-doc]: ./connectors-create-api-azureblobstorage.md "Zarządzanie plikami w kontenerze obiektów blob za pomocą łącznika usługi Azure Blob Storage"
-[azure-event-grid-doc]: ../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md " Monitorowanie zdarzeń publikowanych przez usługę Event Grid, na przykład, gdy zmienią się zasoby platformy Azure lub innych firm"
+[azure-event-grid-doc]: ../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md "Monitoruj zdarzenia opublikowane przez Event Grid, na przykład w przypadku zmiany zasobów platformy Azure lub zasobów innych firm"
 [azure-event-hubs-doc]: ./connectors-create-api-azure-event-hubs.md "Łączenie z usługą Azure Event Hubs. Odbieranie i wysyłanie zdarzeń między aplikacjami logiki i usługą Event Hubs"
 [box-doc]: ./connectors-create-api-box.md "Łączenie z usługą Box. Przekazywanie, pobieranie, usuwanie i wyświetlanie listy plików oraz inne funkcje"
 [dropbox-doc]: ./connectors-create-api-dropbox.md "Łączenie z usługą Dropbox. Przekazywanie, pobieranie, usuwanie i wyświetlanie listy plików oraz inne funkcje"
@@ -241,12 +245,12 @@ Aby udostępnić funkcję niestandardowe aplikacje interfejsu API i łączniki d
 [github-doc]: ./connectors-create-api-github.md "Łączenie z witryną GitHub i śledzenie problemów"
 [google-calendar-doc]: ./connectors-create-api-googlecalendar.md "Nawiązuje połączenie z usługą Kalendarz Google i może zarządzać kalendarzem."
 [google-drive-doc]: ./connectors-create-api-googledrive.md "Łączenie z Dyskiem Google i korzystanie z danych"
-[google-sheets-doc]: ./connectors-create-api-googlesheet.md "Łączenie z arkuszami Google, co pozwala modyfikować arkusze"
+[google-sheets-doc]: ./connectors-create-api-googlesheet.md "Połącz się z arkuszami Google, aby móc modyfikować arkusze"
 [google-tasks-doc]: ./connectors-create-api-googletasks.md "Łączenie z Zadaniami Google i zarządzanie zadaniami"
-[ibm-3270-doc]: ./connectors-run-3270-apps-ibm-mainframe-create-api-3270.md "Połącz aplikacje 3270 na komputery mainframe firmy IBM"
+[ibm-3270-doc]: ./connectors-run-3270-apps-ibm-mainframe-create-api-3270.md "Nawiązywanie połączenia z aplikacjami 3270 na komputerze mainframe firmy IBM"
 [ibm-db2-doc]: ./connectors-create-api-db2.md "Łączenie z bazą danych IBM DB2 w chmurze lub lokalnie. Aktualizowanie wiersza, pobieranie tabeli oraz inne funkcje"
 [ibm-informix-doc]: ./connectors-create-api-informix.md "Łączenie z usługą Informix w chmurze lub lokalnie. Odczytywanie wiersza, wyświetlanie listy tabel i inne funkcje"
-[ibm-mq-doc]: ./connectors-create-api-mq.md "Połączenia z programem IBM MQ w środowisku lokalnym lub na platformie Azure w celu wysyłania i odbierania komunikatów"
+[ibm-mq-doc]: ./connectors-create-api-mq.md "Nawiązywanie połączenia z programem IBM MQ lokalnie lub na platformie Azure w celu wysyłania i odbierania wiadomości"
 [instagram-doc]: ./connectors-create-api-instagram.md "Łączenie z usługą Instagram. Wyzwalanie zdarzeń lub reagowanie na nie"
 [mailchimp-doc]: ./connectors-create-api-mailchimp.md "Łączenie z kontem MailChimp. Automatyzowanie obsługi wiadomości e-mail i zarządzanie nimi"
 [mandrill-doc]: ./connectors-create-api-mandrill.md "Łączenie z usługą Mandrill w celu komunikowania się"
@@ -262,14 +266,14 @@ Aby udostępnić funkcję niestandardowe aplikacje interfejsu API i łączniki d
 [rss-doc]: ./connectors-create-api-rss.md "Publikowanie i pobieranie elementów kanału informacyjnego, wyzwalanie operacji po opublikowaniu nowego elementu w kanale informacyjnym RSS."
 [salesforce-doc]: ./connectors-create-api-salesforce.md "Łączenie z kontem usługi Salesforce. Zarządzanie kontami, potencjalnymi klientami i możliwościami sprzedaży oraz inne funkcje"
 [sap-connector-doc]: ../logic-apps/logic-apps-using-sap-connector.md "Łączenie z lokalnym systemem SAP"
-[sendgrid-doc]: ./connectors-create-api-sendgrid.md "Łączenie z usługą SendGrid. Wyślij wiadomość e-mail i zarządzanie listami adresatów"
+[sendgrid-doc]: ./connectors-create-api-sendgrid.md "Łączenie z usługą SendGrid. Wyślij wiadomość e-mail i Zarządzaj listami adresatów"
 [sftp-doc]: ./connectors-create-api-sftp.md "Łączenie z kontem SFTP. Przekazywanie, pobieranie i usuwanie plików oraz inne funkcje"
 [sharepoint-server-doc]: ./connectors-create-api-sharepointserver.md "Łączenie z programem SharePoint na serwerze lokalnym. Zarządzanie dokumentami i elementami list oraz inne funkcje"
 [sharepoint-online-doc]: ./connectors-create-api-sharepointonline.md "Łączenie z usługą SharePoint Online. Zarządzanie dokumentami i elementami list oraz inne funkcje"
 [slack-doc]: ./connectors-create-api-slack.md "Łączenie z usługą Slack i publikowanie wiadomości w kanałach Slack"
-[smtp-doc]: ./connectors-create-api-smtp.md "Połącz z serwerem SMTP i wysyłanie wiadomości e-mail z załącznikami"
+[smtp-doc]: ./connectors-create-api-smtp.md "Nawiązywanie połączenia z serwerem SMTP i wysyłanie wiadomości e-mail z załącznikami"
 [sparkpost-doc]: ./connectors-create-api-sparkpost.md "Łączenie z usługą SparkPost w celu komunikowania się"
-[sql-server-doc]: ./connectors-create-api-sqlazure.md "Podłącz do usługi Azure SQL Database lub SQL Server. Tworzenie, aktualizowanie, pobieranie i usuwanie wpisów w tabeli bazy danych SQL."
+[sql-server-doc]: ./connectors-create-api-sqlazure.md "Połącz się z Azure SQL Database lub SQL Server. Tworzenie, aktualizowanie, pobieranie i usuwanie wpisów w tabeli bazy danych SQL."
 [trello-doc]: ./connectors-create-api-trello.md "Łączenie z usługą Trello. Zarządzanie projektami i organizowanie dowolnych rzeczy z dowolnymi osobami"
 [twilio-doc]: ./connectors-create-api-twilio.md "Łączenie z usługą Twilio. Wysyłanie i pobieranie wiadomości, pobieranie dostępnych numerów, zarządzanie przychodzącymi numerami telefonów i inne funkcje"
 [twitter-doc]: ./connectors-create-api-twitter.md "Łączenie z serwisem Twitter. Pobieranie osi czasu, publikowanie tweetów i inne funkcje"

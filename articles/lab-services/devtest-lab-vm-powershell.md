@@ -1,6 +1,6 @@
 ---
-title: Utwórz maszynę wirtualną w usłudze DevTest Labs przy użyciu programu Azure PowerShell | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć i zarządzać maszynami wirtualnymi przy użyciu programu Azure PowerShell za pomocą usługi Azure DevTest Labs.
+title: Tworzenie maszyny wirtualnej w DevTest Labs przy użyciu Azure PowerShell | Microsoft Docs
+description: Dowiedz się, jak używać Azure DevTest Labs do tworzenia maszyn wirtualnych i zarządzania nimi przy użyciu Azure PowerShell.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,24 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: spelluru
-ms.openlocfilehash: a9629cd14c71a163612c2c4ba3c7b109a52b91ad
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1a6938bd541e316dbe9f333c670c382faab6ad21
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622443"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854262"
 ---
-# <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>Utwórz maszynę wirtualną z usługą DevTest Labs przy użyciu programu Azure PowerShell
-W tym artykule pokazano, jak utworzyć maszynę wirtualną w usłudze Azure DevTest Labs przy użyciu programu Azure PowerShell. Można użyć skryptów programu PowerShell, aby zautomatyzować tworzenie maszyn wirtualnych w laboratorium Azure DevTest Labs. 
+# <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>Tworzenie maszyny wirtualnej za pomocą DevTest Labs przy użyciu Azure PowerShell
+W tym artykule pokazano, jak utworzyć maszynę wirtualną w Azure DevTest Labs przy użyciu Azure PowerShell. Za pomocą skryptów programu PowerShell można zautomatyzować tworzenie maszyn wirtualnych w laboratorium w Azure DevTest Labs. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Przed rozpoczęciem:
 
-- [Tworzenie laboratorium](devtest-lab-create-lab.md) Jeśli nie chcesz używać istniejącego laboratorium do testowania skryptów lub poleceń, w tym artykule. 
-- [Zainstaluj program Azure PowerShell](/powershell/azure/install-az-ps?view=azps-1.7.0) lub za pomocą usługi Azure Cloud Shell, która jest zintegrowana w witrynie Azure portal. 
+- [Utwórz laboratorium](devtest-lab-create-lab.md) , jeśli nie chcesz używać istniejącego laboratorium do testowania skryptu lub poleceń w tym artykule. 
+- [Zainstaluj Azure PowerShell](/powershell/azure/install-az-ps?view=azps-1.7.0) lub użyj Azure Cloud Shell zintegrowanych w Azure Portal. 
 
 ## <a name="powershell-script"></a>Skrypt programu PowerShell
-Przykładowy skrypt w tej sekcji używa [Invoke AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) polecenia cmdlet.  To polecenie cmdlet przyjmuje identyfikator zasobu w laboratorium, Nazwa akcji do wykonania (`createEnvironment`), a niezbędne parametry wykonania tej akcji. Parametry są w tabeli wyznaczania wartości skrótu, który zawiera wszystkie właściwości Opis maszyny wirtualnej. 
+Przykładowy skrypt w tej sekcji używa polecenia cmdlet [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) .  To polecenie cmdlet pobiera identyfikator zasobu laboratorium, nazwę akcji do wykonania (`createEnvironment`), a parametry niezbędne do wykonania tej akcji. Parametry znajdują się w tabeli skrótów, która zawiera wszystkie właściwości opisu maszyny wirtualnej. 
 
 ```powershell
 [CmdletBinding()]
@@ -82,6 +82,7 @@ try {
           "labSubnetName"           = $labSubnetName;
           "notes"                   = "Windows Server 2016 Datacenter";
           "osType"                  = "windows"
+          "expirationDate"          = "2019-12-01"
           "galleryImageReference"   = @{
              "offer"     = "WindowsServer";
              "publisher" = "MicrosoftWindowsServer";
@@ -114,29 +115,29 @@ finally {
 }
 ```
 
-Właściwości maszyny wirtualnej w skrypcie powyżej umożliwiają tworzenie maszyny wirtualnej z systemem Windows Server 2016 DataCenter jako systemu operacyjnego. Dla każdego typu maszyny wirtualnej te właściwości może się nieco różnić. [Definicja maszyny wirtualnej](#define-virtual-machine) sekcji dowiesz się, jak ustalić, które właściwości mają zostać użyte w tym skrypcie.
+Właściwości maszyny wirtualnej w powyższym skrypcie pozwalają nam utworzyć maszynę wirtualną z systemem Windows Server 2016 DataCenter jako systemem operacyjnym. Dla każdego typu maszyny wirtualnej te właściwości będą nieco inne. Sekcja [Zdefiniuj maszynę wirtualną](#define-virtual-machine) pokazuje, jak określić właściwości, które mają być używane w tym skrypcie.
 
-Następujące polecenie stanowi przykład uruchomienie skryptu zapisane w nazwie pliku: Create-LabVirtualMachine.ps1. 
+Następujące polecenie zawiera przykład uruchamiania skryptu zapisanego w nazwie pliku: Create-LabVirtualMachine.ps1. 
 
 ```powershell
  PS> .\Create-LabVirtualMachine.ps1 -ResourceGroupName 'MyLabResourceGroup' -LabName 'MyLab' -userName 'AdminUser' -password 'Password1!' -VMName 'MyLabVM'
 ```
 
-## <a name="define-virtual-machine"></a>Definicja maszyny wirtualnej
-W tej sekcji dowiesz się, jak uzyskać właściwości, które są specyficzne dla typu maszyny wirtualnej, która ma zostać utworzona. 
+## <a name="define-virtual-machine"></a>Zdefiniuj maszynę wirtualną
+W tej sekcji pokazano, jak uzyskać właściwości specyficzne dla typu maszyny wirtualnej, którą chcesz utworzyć. 
 
 ### <a name="use-azure-portal"></a>Korzystanie z witryny Azure Portal
-Podczas tworzenia maszyny Wirtualnej w witrynie Azure portal, można wygenerować szablonu usługi Azure Resource Manager. Nie potrzebujesz ukończyć proces tworzenia maszyny Wirtualnej. Możesz tylko postępuj zgodnie z instrukcjami aż do wyświetlenia tego szablonu. Jest to najlepszy sposób pozyskania niezbędne opisu JSON, jeśli nie masz już utworzonych maszyn wirtualnych laboratorium. 
+Podczas tworzenia maszyny wirtualnej w Azure Portal można wygenerować szablon Azure Resource Manager. Nie musisz ukończyć procesu tworzenia maszyny wirtualnej. Kroki należy wykonać dopiero po wyświetleniu szablonu. Jest to najlepszy sposób, aby uzyskać niezbędny opis JSON, jeśli nie masz jeszcze utworzonej maszyny wirtualnej laboratorium. 
 
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
-2. Wybierz **wszystkich usług** w menu nawigacji po lewej stronie.
+2. Wybierz pozycję **wszystkie usługi** w menu nawigacji po lewej stronie.
 3. Wyszukaj i wybierz pozycję **DevTest Labs** z listy usług. 
-4. Na **DevTest Labs** wybierz laboratorium na liście laboratoriów.
-5. Na stronie głównej dla swojego laboratorium wybierz **+ Dodaj** na pasku narzędzi. 
-6. Wybierz **obrazu podstawowego** dla maszyny Wirtualnej. 
-7. Wybierz **opcje automatyzacji** w dolnej części strony powyżej **przesyłania** przycisku. 
-8. Zostanie wyświetlony **szablonu usługi Azure Resource Manager** podczas tworzenia maszyny wirtualnej. 
-9. JSON segment **zasobów** sekcja zawiera definicję dla typu obrazu wybrano wcześniej. 
+4. Na stronie **DevTest Labs** wybierz swoje laboratorium na liście laboratoriów.
+5. Na stronie głównej laboratorium wybierz pozycję **+ Dodaj** na pasku narzędzi. 
+6. Wybierz **obraz podstawowy** dla maszyny wirtualnej. 
+7. Wybierz **Opcje automatyzacji** w dolnej części strony powyżej przycisku **Prześlij** . 
+8. Zobaczysz **szablon Azure Resource Manager** na potrzeby tworzenia maszyny wirtualnej. 
+9. Segment JSON w sekcji Resources zawiera definicję wybranego wcześniej typu obrazu. 
 
     ```json
     {
@@ -176,19 +177,52 @@ Podczas tworzenia maszyny Wirtualnej w witrynie Azure portal, można wygenerowa�
     }
     ```
 
-W tym przykładzie widać sposób uzyskiwania definicji obrazu platformę handlową platformy Azure. Definicja niestandardowego obrazu, formuły lub w środowisku można rozpocząć w taki sam sposób. Dodaj wszelkie artefakty potrzebne dla maszyny wirtualnej i ustaw żądane ustawienia zaawansowane wymagane. Po podaniu wartości dla pola wymagane i opcjonalne pola, wybierając przed **opcje automatyzacji** przycisku.
+W tym przykładzie zobaczysz, jak uzyskać definicję obrazu miejsca na rynku platformy Azure. W ten sam sposób można uzyskać definicję niestandardowego obrazu, formuły lub środowiska. Dodaj wszelkie artefakty potrzebne dla maszyny wirtualnej i ustaw wymagane ustawienia zaawansowane. Po podania wartości dla wymaganych pól i wszelkich opcjonalnych pól, przed wybraniem przycisku **Opcje automatyzacji** .
 
-### <a name="use-azure-rest-api"></a>Za pomocą interfejsu API REST platformy Azure
-Poniższa procedura zawiera kroki, aby pobrać właściwości obrazu za pomocą interfejsu API REST: Następujące kroki działają tylko w przypadku istniejącej maszyny Wirtualnej w laboratorium. 
+### <a name="use-azure-rest-api"></a>Korzystanie z interfejsu API REST platformy Azure
+Poniższa procedura zawiera kroki umożliwiające uzyskanie właściwości obrazu przy użyciu interfejsu API REST: Te kroki działają tylko dla istniejącej maszyny wirtualnej w laboratorium. 
 
-1. Przejdź do [listy maszyn wirtualnych —](/rest/api/dtl/virtualmachines/list) wybierz opcję **wypróbuj** przycisku. 
+1. Przejdź do strony [listy Virtual Machines](/rest/api/dtl/virtualmachines/list) wybierz pozycję **Wypróbuj** . 
 2. Wybierz swoją **subskrypcję** platformy Azure.
 3. Wprowadź **grupę zasobów dla laboratorium**.
-4. Wprowadź **Nazwa laboratorium**. 
+4. Wprowadź **nazwę laboratorium**. 
 5. Wybierz pozycję **Uruchom**.
-6. Zostanie wyświetlony **właściwości obrazu** oparte na którym utworzono maszynę Wirtualną. 
+6. Zobaczysz **Właściwości obrazu,** na podstawie którego została utworzona maszyna wirtualna. 
 
+## <a name="set-expiration-date"></a>Ustaw datę wygaśnięcia
+W scenariuszach takich jak szkolenia, pokazy i wersje próbne można tworzyć maszyny wirtualne i usuwać je automatycznie po upływie ustalonego czasu, aby nie ponosić niepotrzebnych kosztów. Można ustawić datę wygaśnięcia dla maszyny wirtualnej podczas jej tworzenia przy użyciu programu PowerShell, jak pokazano w przykładowej sekcji [skryptu programu PowerShell](#powershell-script) .
+
+Oto przykładowy skrypt programu PowerShell, który ustawia datę wygaśnięcia dla wszystkich istniejących maszyn wirtualnych w laboratorium:
+
+```powershell
+# Values to change
+$subscriptionId = '<Enter the subscription Id that contains lab>'
+$labResourceGroup = '<Enter the lab resource group>'
+$labName = '<Enter the lab name>'
+$VmName = '<Enter the VmName>'
+$expirationDate = '<Enter the expiration date e.g. 2019-12-16>'
+
+# Log into your Azure account
+Login-AzureRmAccount
+
+Select-AzureRmSubscription -SubscriptionId $subscriptionId
+$VmResourceId = "subscriptions/$subscriptionId/resourcegroups/$labResourceGroup/providers/microsoft.devtestlab/labs/$labName/virtualmachines/$VmName"
+
+$vm = Get-AzureRmResource -ResourceId $VmResourceId -ExpandProperties
+
+# Get all the Vm properties
+$VmProperties = $vm.Properties
+
+# Set the expirationDate property
+If ($VmProperties.expirationDate -eq $null) {
+    $VmProperties | Add-Member -MemberType NoteProperty -Name expirationDate -Value $expirationDate
+} Else {
+    $VmProperties.expirationDate = $expirationDate
+}
+
+Set-AzureRmResource -ResourceId $VmResourceId -Properties $VmProperties -Force
+```
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz następującą zawartość: [Dokumentacja usługi Azure PowerShell dla usługi Azure DevTest Labs](/powershell/module/az.devtestlabs/)
+Zapoznaj się z następującą zawartością: [Dokumentacja Azure PowerShell dla Azure DevTest Labs](/powershell/module/az.devtestlabs/)

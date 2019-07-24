@@ -1,6 +1,6 @@
 ---
-title: Lokalizacja ciągu identyfikatorów — Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Określ identyfikatory dla definicji zawartości o identyfikatorze api.signuporsignin w zasadach niestandardowych w usłudze Azure Active Directory B2C.
+title: Identyfikatory ciągów lokalizacji — Azure Active Directory B2C | Microsoft Docs
+description: Określ identyfikatory dla definicji zawartości z identyfikatorem API. signuporsignin w zasadach niestandardowych w Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,36 +10,36 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 41a72013f1538b0a857c76bc949a7109e1cd54b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da1390de4e2eb0624032dc490416e7b6e5d61baa
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510920"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846849"
 ---
-# <a name="localization-string-ids"></a>Lokalizacja ciągu identyfikatorów
+# <a name="localization-string-ids"></a>Identyfikatory ciągów lokalizacji
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**Lokalizacji** elementu pozwala na obsługę wielu ustawień regionalnych lub języków w ramach zasad dla podróży użytkownika. Ten artykuł zawiera listę lokalizacji identyfikatory, które można użyć w zasadach. Aby zapoznać się z lokalizacją interfejsu użytkownika, zobacz [lokalizacji](localization.md).
+Element **Lokalizacja** umożliwia obsługę wielu ustawień regionalnych lub języków w zasadach dla podróży użytkownika. Ten artykuł zawiera listę identyfikatorów lokalizacji, których można użyć w ramach zasad. Aby zapoznać się z lokalizacją interfejsu użytkownika, zobacz [Lokalizacja](localization.md).
 
-## <a name="sign-up-or-sign-in-page-elements"></a>Elementy strony rejestracji lub logowania
+## <a name="sign-up-or-sign-in-page-elements"></a>Elementy strony do rejestracji lub logowania
 
-Następujące identyfikatory są używane na potrzeby definicji zawartości o identyfikatorze `api.signuporsignin`.
+Następujące identyfikatory są używane dla definicji zawartości o IDENTYFIKATORze `api.signuporsignin`.
 
-| ID | Wartość domyślna |
+| id | Wartość domyślna |
 | -- | ------------- |
 | **local_intro_email** | Zaloguj się przy użyciu istniejącego konta |
 | **logonIdentifier_email** | Adres e-mail |
 | **requiredField_email** | Wprowadź swój adres e-mail |
 | **invalid_email** | Wprowadź prawidłowy adres e-mail |
-| **email_pattern** | ^ [a-zA-Z0-9.! #$% & " *+/ =? ^ _\`{\|} ~-]+@[a-zA-Z0-9-]+ (?:\\. [ -zA-Z0 - 9-] +)* $ |
+| **email_pattern** | ^ [a-za-Z0-9.! # $% & "" *+/=? ^ _\`{\|} ~-] + @ [a-za-Z0-9-] + (?:\\. [ a-za-Z0-9-] +)* $ |
 | **local_intro_username** | Zaloguj się przy użyciu nazwy użytkownika |
 | **logonIdentifier_username** | Nazwa użytkownika |
-| **requiredField_username** | Wprowadź nazwę użytkownika |
+| **requiredField_username** | Wprowadź swoją nazwę użytkownika |
 | **Hasło** | Hasło |
 | **requiredField_password** | Wprowadź hasło |
-| **invalid_password** | Wprowadzone hasło nie jest w oczekiwanym formacie. |
+| **invalid_password** | Wprowadzone hasło ma nieoczekiwany format. |
 | **forgotpassword_link** | Nie pamiętasz hasła? |
 | **createaccount_intro** | Nie masz jeszcze konta? |
 | **createaccount_link** | Utwórz konto teraz |
@@ -48,13 +48,13 @@ Następujące identyfikatory są używane na potrzeby definicji zawartości o id
 | **button_signin** | Logowanie |
 | **social_intro** | Zaloguj się przy użyciu konta społecznościowego |
   **remember_me** |Nie wylogowuj mnie|
-| **unknown_error** | Mamy problem z logowaniem. Spróbuj ponownie później. |
+| **unknown_error** | Mamy problemy z zalogowaniem się. Spróbuj ponownie później. |
 
-Poniższy przykład przedstawia użycie niektórych użytkownika elementów interfejsu w stronę tworzenia konta lub logowania:
+Poniższy przykład pokazuje użycie niektórych elementów interfejsu użytkownika na stronie rejestracji lub logowania:
 
-![Elementy interfejsu użytkownika strony rejestracji lub logowania](./media/localization-string-ids/localization-susi.png)
+![Elementy środowiska użytkownika dotyczące rejestracji lub logowania](./media/localization-string-ids/localization-susi.png)
 
-Identyfikator dostawcy tożsamości jest skonfigurowany w podróży użytkownika **elementu ClaimsExchange** elementu. Aby zlokalizować tytuł dostawcy tożsamości **ElementType** jest ustawiona na `ClaimsProvider`, podczas gdy **StringId** jest ustawiona na identyfikator `ClaimsExchange`.
+Identyfikator dostawców tożsamości jest konfigurowany w elemencie **ClaimsExchange** podróży użytkownika. Aby zlokalizować tytuł dostawcy tożsamości, **ElementType** ma wartość `ClaimsProvider`, a **StringId** jest `ClaimsExchange`ustawiony na identyfikator.
 
 ```XML
 <OrchestrationStep Order="2" Type="ClaimsExchange">
@@ -73,7 +73,7 @@ Identyfikator dostawcy tożsamości jest skonfigurowany w podróży użytkownika
 </OrchestrationStep>
 ```
 
-Poniższy przykład lokalizuje dostawcy tożsamości usługi Facebook na arabski:
+Poniższy przykład lokalizuje dostawcę tożsamości w serwisie Facebook do języka arabskiego:
 
 ```XML
 <LocalizedString ElementType="ClaimsProvider" StringId="FacebookExchange">فيس بوك</LocalizedString>
@@ -81,127 +81,127 @@ Poniższy przykład lokalizuje dostawcy tożsamości usługi Facebook na arabski
 
 ## <a name="sign-up-or-sign-in-error-messages"></a>Komunikaty o błędach rejestracji lub logowania
 
-| ID | Wartość domyślna |
+| id | Wartość domyślna |
 | -- | ------------- |
 | **UserMessageIfInvalidPassword** | Hasło jest niepoprawne. |
-| **UserMessageIfClaimsPrincipalDoesNotExist** | Firma Microsoft nie wiem, jak Znajdź swoje konto. |
-| **UserMessageIfOldPasswordUsed** | Wygląda na to użyte stare hasło. |  
-| **DefaultMessage** | Nieprawidłowa nazwa użytkownika lub hasło. |  
-| **UserMessageIfUserAccountDisabled** | Twoje konto zostało zablokowane. Skontaktuj się z pracownikiem pomocy technicznej do jego odblokowania, a następnie spróbuj ponownie. |  
-| **UserMessageIfUserAccountLocked** | Twoje konto zostało tymczasowo zablokowane, aby zapobiec nieautoryzowanemu użyciu. Spróbuj ponownie później. |  
-| **AADRequestsThrottled** | W tej chwili istnieje zbyt wiele żądań. Poczekaj przez pewien czas i spróbuj ponownie. |  
+| **UserMessageIfClaimsPrincipalDoesNotExist** | Nie możemy znaleźć Twojego konta. |
+| **UserMessageIfOldPasswordUsed** | Wygląda na to, że użyto starego hasła. |
+| **DefaultMessage** | Nieprawidłowa nazwa użytkownika lub hasło. |
+| **UserMessageIfUserAccountDisabled** | Twoje konto zostało zablokowane. Skontaktuj się z pomocą techniczną, aby ją odblokować, a następnie spróbuj ponownie. |
+| **UserMessageIfUserAccountLocked** | Twoje konto jest tymczasowo zablokowane, aby zapobiec nieautoryzowanemu użyciu. Spróbuj ponownie później. |
+| **AADRequestsThrottled** | W tej chwili jest zbyt wiele żądań. Poczekaj chwilę i spróbuj ponownie. |
 
-## <a name="sign-up-and-self-asserted-pages-user-interface-elements"></a>Zarejestruj się i self określonych stron elementy interfejsu użytkownika
+## <a name="sign-up-and-self-asserted-pages-user-interface-elements"></a>Elementy interfejsu użytkownika dotyczące rejestracji i samopotwierdzonej strony
 
-Poniżej przedstawiono identyfikatorów definicji zawartości o identyfikatorze `api.localaccountsignup` lub definicji zawartości, która rozpoczyna się od `api.selfasserted`, takich jak `api.selfasserted.profileupdate` i `api.localaccountpasswordreset`.
+Poniżej przedstawiono identyfikatory dla definicji zawartości z identyfikatorem `api.localaccountsignup` lub dowolną definicją zawartości, która `api.selfasserted`rozpoczyna się od, takich jak `api.selfasserted.profileupdate` i `api.localaccountpasswordreset`.
 
-| ID | Wartość domyślna |
+| id | Wartość domyślna |
 | -- | ------------- |
-| **ver_sent** | Kod weryfikacyjny została wysłana do: |
-| **ver_but_default** | Domyślne |
-| **cancel_message** | Użytkownik anulował, wprowadzając informacje samodzielnie |
+| **ver_sent** | Kod weryfikacyjny został wysłany do: |
+| **ver_but_default** | Domyślny |
+| **cancel_message** | Użytkownik anulował wprowadzanie niepotwierdzonych informacji |
 | **preloader_alt** | Czekaj |
 | **ver_but_send** | Wyślij kod weryfikacyjny |
 | **alert_yes** | Tak |
-| **error_fieldIncorrect** | Co najmniej jednego pola są wypełniane niepoprawnie. Sprawdź wpisy i spróbuj ponownie. |
-| **Rok** | Rok |
-| **verifying_blurb** | Poczekaj na przetworzenie informacji. |
+| **error_fieldIncorrect** | Co najmniej jedno pole jest wypełniane nieprawidłowo. Sprawdź swoje wpisy i spróbuj ponownie. |
+| **czteroletniego** | Rok |
+| **verifying_blurb** | Zaczekaj na przetworzenie informacji. |
 | **button_cancel** | Cancel |
-| **ver_fail_no_retry** | Wprowadzono zbyt wiele prób niepoprawne. Spróbuj ponownie później. |
-| **Miesiąc** | Miesiąc |
-| **ver_success_msg** | Adres e-mail został zweryfikowany. Teraz można kontynuować. |
-| **months** | Stycznia, lutego i marca, kwietnia, może czerwca, lipca, sierpnia, września, października, listopada, grudnia |
-| **ver_fail_server** | Mamy problem z weryfikacją swój adres e-mail. Wprowadź prawidłowy adres e-mail i spróbuj ponownie. |
+| **ver_fail_no_retry** | Wykonano zbyt wiele nieudanych prób. Spróbuj ponownie później. |
+| **bieżącym** | Miesiąc |
+| **ver_success_msg** | Zweryfikowano adres E-mail. Teraz można kontynuować. |
+| **months** | Styczeń, luty, Marzec, Kwiecień, maj, czerwiec, Lipiec, sierpień, wrzesień, październik, listopad, grudzień |
+| **ver_fail_server** | Wystąpił problem podczas weryfikowania Twojego adresu e-mail. Wprowadź prawidłowy adres e-mail i spróbuj ponownie. |
 | **error_requiredFieldMissing** | Brak wymaganego pola. Wypełnij wszystkie wymagane pola i spróbuj ponownie. |
 | **initial_intro** | Podaj następujące informacje. |
 | **ver_but_resend** | Wyślij nowy kod |
-| **button_continue** | Przycisk Utwórz |
-| **error_passwordEntryMismatch** | Pola wprowadzania hasła są niezgodne. Wprowadź to samo hasło w obu polach, a następnie spróbuj ponownie. |
+| **button_continue** | Create |
+| **error_passwordEntryMismatch** | Pola wprowadzania hasła nie są zgodne. Wprowadź to samo hasło w obu polach i spróbuj ponownie. |
 | **ver_incorrect_format** | Niepoprawny format. |
 | **ver_but_edit** | Zmień adres e-mail |
-| **ver_but_verify** | Sprawdź kod |
+| **ver_but_verify** | Weryfikuj kod |
 | **alert_no** | Nie |
-| **ver_info_msg** | Kod weryfikacyjny został wysłany do Twojej skrzynki odbiorczej. Skopiuj go do pola wejściowego poniżej. |
+| **ver_info_msg** | Kod weryfikacyjny został wysłany do Twojej skrzynki odbiorczej. Skopiuj ją do poniższego pola wejściowego. |
 | **dzień** | Dzień |
-| **ver_fail_throttled** | Było zbyt wiele żądań, aby zweryfikować tego adresu e-mail. Poczekaj chwilę, a następnie spróbuj ponownie. |
+| **ver_fail_throttled** | Zbyt wiele żądań do zweryfikowania tego adresu e-mail. Zaczekaj chwilę, a następnie spróbuj ponownie. |
 | **helplink_text** | Co to jest? |
 | **ver_fail_retry** | Ten kod jest nieprawidłowy. Spróbuj ponownie. |
-| **alert_title** | Anulowanie wprowadzania swoje dane |
+| **alert_title** | Anuluj wprowadzanie szczegółów |
 | **required_field** | Te informacje są wymagane. |
-| **alert_message** | Czy na pewno chcesz anulować, wprowadzając szczegóły? |
-| **ver_intro_msg** | Weryfikacja jest to konieczne. Kliknij przycisk Wyślij. |
+| **alert_message** | Czy na pewno chcesz anulować wprowadzanie szczegółów? |
+| **ver_intro_msg** | Konieczna jest weryfikacja. Kliknij przycisk Wyślij. |
 | **ver_input** | Kod weryfikacyjny |
 
-## <a name="sign-up-and-self-asserted-pages-error-messages"></a>Zarejestruj się i self określonych stron komunikaty o błędach
+## <a name="sign-up-and-self-asserted-pages-error-messages"></a>Komunikaty o błędach dotyczące rejestracji i niepotwierdzonych stron
 
-| ID | Wartość domyślna |
+| id | Wartość domyślna |
 | -- | ------------- |
-| **UserMessageIfClaimsPrincipalAlreadyExists** | Użytkownik o określonym identyfikatorze już istnieje. Wybierz inną. |
-| **UserMessageIfClaimNotVerified** | Oświadczenia nie zweryfikować: {0} |
-| **UserMessageIfIncorrectPattern** | Nieprawidłowy wzorzec dla: {0} |
-| **UserMessageIfMissingRequiredElement** | Brak wymaganego elementu: {0} |
-| **UserMessageIfValidationError** | Błąd podczas sprawdzania poprawności przez: {0} |
-| **UserMessageIfInvalidInput** | {0} zawiera nieprawidłowe dane wejściowe. |
-| **ServiceThrottled** | W tej chwili istnieje zbyt wiele żądań. Poczekaj przez pewien czas i spróbuj ponownie. |
+| **UserMessageIfClaimsPrincipalAlreadyExists** | Użytkownik o określonym IDENTYFIKATORze już istnieje. Wybierz inną. |
+| **UserMessageIfClaimNotVerified** | Nie zweryfikowano zgłoszenia:{0} |
+| **UserMessageIfIncorrectPattern** | Nieprawidłowy wzorzec dla:{0} |
+| **UserMessageIfMissingRequiredElement** | Brak wymaganego elementu:{0} |
+| **UserMessageIfValidationError** | Błąd weryfikacji przez:{0} |
+| **UserMessageIfInvalidInput** | {0}ma nieprawidłowe dane wejściowe. |
+| **ServiceThrottled** | W tej chwili jest zbyt wiele żądań. Poczekaj chwilę i spróbuj ponownie. |
 
-Poniższy przykład pokazuje użycie niektórych elementów interfejsu użytkownika na stronie tworzenia konta:
+W poniższym przykładzie pokazano użycie niektórych elementów interfejsu użytkownika na stronie rejestracji:
 
-![Elementy interfejsu użytkownika strony rejestracji](./media/localization-string-ids/localization-sign-up.png)
+![Strona rejestracji z nazwami elementów interfejsu użytkownika z etykietą](./media/localization-string-ids/localization-sign-up.png)
 
-Poniższy przykład pokazuje użycie niektórych elementów interfejsu użytkownika na stronie tworzenia konta, po kliknięciu przez użytkownika Wyślij przycisk kod weryfikacyjny:
+Poniższy przykład pokazuje użycie niektórych elementów interfejsu użytkownika na stronie rejestracji, po kliknięciu przycisku Wyślij kod weryfikacyjny przez użytkownika:
 
-![Elementy interfejsu użytkownika weryfikacji wiadomości e-mail stronę rejestracji](./media/localization-string-ids/localization-email-verification.png)
+![Strona rejestracji — elementy środowiska użytkownika weryfikacji wiadomości e-mail](./media/localization-string-ids/localization-email-verification.png)
 
 
-## <a name="phone-factor-authentication-page-user-interface-elements"></a>Telefon elementy interfejsu użytkownika strony uwierzytelnianie wieloskładnikowe
+## <a name="phone-factor-authentication-page-user-interface-elements"></a>Elementy interfejsu użytkownika na stronie uwierzytelnianie w ramach wskaźnika telefonu
 
-Poniżej przedstawiono identyfikatorów definicji zawartości o identyfikatorze `api.phonefactor`. 
+Poniżej przedstawiono identyfikatory dla definicji zawartości o IDENTYFIKATORze `api.phonefactor`.
 
-| ID | Wartość domyślna |
+| id | Wartość domyślna |
 | -- | ------------- |
 | **button_verify** | Zadzwoń do mnie |
 | **country_code_label** | Numer kierunkowy kraju |
 | **cancel_message** | Użytkownik anulował uwierzytelnianie wieloskładnikowe |
 | **text_button_send_second_code** | Wyślij nowy kod |
 | **code_pattern** | \\d{6} |
-| **intro_mixed** | Mamy dla Ciebie następujący ciąg liczb w rekordzie. Firma Microsoft może wysłać kod za pomocą wiadomości SMS lub przez telefon do uwierzytelniania. |
-| **intro_mixed_p** | Mamy dla Ciebie następujące numery w rekordzie. Wybierz numer, że firma Microsoft telefonu lub Wyślij kod za pomocą wiadomości SMS do uwierzytelniania. |
-| **button_verify_code** | Sprawdź kod |
+| **intro_mixed** | Mamy dla Ciebie następujący numer rekordu. Możemy wysłać kod za pośrednictwem wiadomości SMS lub telefonu w celu uwierzytelnienia użytkownika. |
+| **intro_mixed_p** | W rekordach są dostępne następujące numery. Wybierz numer telefonujący lub Wyślij kod za pośrednictwem wiadomości SMS w celu uwierzytelnienia użytkownika. |
+| **button_verify_code** | Weryfikuj kod |
 | **requiredField_code** | Wprowadź otrzymany kod weryfikacyjny |
-| **invalid_code** | Wprowadź 6-cyfrowy kod, który otrzymałeś |
+| **invalid_code** | Wprowadź otrzymany 6-cyfrowy kod |
 | **button_cancel** | Cancel |
 | **local_number_input_placeholder_text** | Numer telefonu |
 | **button_retry** | Ponawianie próby |
-| **alternative_text** | Nie mam telefonu |
-| **intro_phone_p** | Mamy dla Ciebie następujące numery w rekordzie. Wybierz numer, który firma Microsoft może telefon do uwierzytelniania. |
-| **intro_phone** | Mamy dla Ciebie następujący ciąg liczb w rekordzie. Firma Microsoft będzie telefon do uwierzytelniania. |
-| **enter_code_text_intro** | Wprowadź kod weryfikacyjny poniżej, lub  |
-| **intro_entry_phone** | Wprowadź numer poniżej, firma Microsoft może telefon do uwierzytelniania. |
-| **intro_entry_sms** | Wprowadź numer poniżej, że możemy wysłać kod za pomocą wiadomości SMS do uwierzytelniania. |
+| **alternative_text** | Nie mam mojego telefonu |
+| **intro_phone_p** | W rekordach są dostępne następujące numery. Wybierz numer telefonu, z którym możemy się uwierzytelnić. |
+| **intro_phone** | Mamy dla Ciebie następujący numer rekordu. Będziemy telefonować. |
+| **enter_code_text_intro** | Wprowadź kod weryfikacyjny poniżej lub  |
+| **intro_entry_phone** | Wprowadź numer poniżej, aby można było uwierzytelnić się za pomocą telefonu. |
+| **intro_entry_sms** | Wprowadź numer poniżej, aby można było wysłać kod za pośrednictwem wiadomości SMS w celu uwierzytelnienia użytkownika. |
 | **button_send_code** | Wyślij kod |
 | **invalid_number** | Wprowadź prawidłowy numer telefonu |
-| **intro_sms** | Mamy dla Ciebie następujący ciąg liczb w rekordzie. Wyślemy kod za pomocą wiadomości SMS do uwierzytelniania. |
-| **intro_entry_mixed** | Wprowadź numer poniżej, możemy wysłać kod za pomocą wiadomości SMS lub telefon do uwierzytelniania. |
-| **number_pattern** | ^\\+(?:[0-9][\\x20-]?){6,14}[0-9]$ |
-| **intro_sms_p** |Mamy dla Ciebie następujące numery w rekordzie. Wybierz liczbę, możemy wysłać kod za pomocą wiadomości SMS do uwierzytelniania. |
-| **requiredField_countryCode** | Wybierz kod kraju |
+| **intro_sms** | Mamy dla Ciebie następujący numer rekordu. Wyślemy kod za pośrednictwem wiadomości SMS w celu uwierzytelnienia użytkownika. |
+| **intro_entry_mixed** | Wprowadź numer poniżej, aby można było wysłać kod za pośrednictwem wiadomości SMS lub telefonu w celu uwierzytelnienia użytkownika. |
+| **number_pattern** | ^\\+ (?: [0-9] [\\x20-]?) {6,14}[0-9] $ |
+| **intro_sms_p** |W rekordach są dostępne następujące numery. Wybierz numer, który możemy wysłać kod za pośrednictwem wiadomości SMS w celu uwierzytelnienia użytkownika. |
+| **requiredField_countryCode** | Wybierz swój kod kraju |
 | **requiredField_number** | Wprowadź numer telefonu |
 | **country_code_input_placeholder_text** |Kraj lub region |
 | **number_label** | Numer telefonu |
-| **error_tryagain** | Numer telefonu, które podałeś jest zajęty lub niedostępny. Sprawdź numer i spróbuj ponownie. |
-| **error_incorrect_code** | Kod weryfikacyjny, który został wprowadzony jest niezgodna z posiadanymi przez nas danymi. Spróbuj ponownie lub poproś o nowy kod. |
-| **countryList** | {\"Domyślne\":\"Kraj/Region\",\"AF\":\"Afganistan\",\"AX\":\"Alandzkie Wyspy\",\"AL\":\"Albania\",\"DZ\":\"Algieria\",\"AS\":\" Samoa Amerykańskie\",\"AD\":\"Andora\",\"AO\":\"Angola\",\"sztucznej Inteligencji\": \"Anguilla\",\"AQ\":\"Antarktyda\",\"AG\":\"Antigua i Barbuda\",\"AR\":\"Argentyny\",\"AM\":\"Armenia\",\"AW\":\"Aruba \",\"AU\":\"Australii\",\"na\":\"Austria\",\" AZ\":\"Azerbejdżan\",\"BS\":\"Bahamy\",\"BH\":\" Bahrajn\",\"BD\":\"Bangladesz\",\"BB\":\"Barbados\",\" PRZEZ\":\"Białoruś\",\"BE\":\"Belgia\",\"BZ\":\" Belize\",\"BJ\":\"Benin\",\"BM\":\"Bermudy\",\"BT\":\"Bhutan\",\"BO\":\"Boliwia\",\"BQ\":\" Bonaire\",\"BA\":\"Bośnia i Hercegowina\",\"BW\":\"Botswany<span class="notransla class=""></span class="notransla> Odległe Mniejsze Wyspy\",\"VI\":\"Stanów Zjednoczonych Wyspy Dziewicze\",\"g\":\"ugandyjski\",\"UA\":\"Ukraina\",\"AE\":\" Zjednoczone Emiraty Arabskie\",\"GB\":\"Zjednoczonego Królestwa\",\"USA\":\"Stanów Zjednoczonych\",\"UY \":\"Urugwaj\",\"UZ\":\"Uzbekistan\",\"VU\":\"Vanuatu\", \"Oceny luk w zabezpieczeniach\":\"Watykan\",\"VE\":\"Wenezuela\",\"VN\":\"Wietnam \",\"WF\":\"Wallis i Futuna\",\"YE\":\"Jemen\",\"ZM\":\"Zambia\",\"ZW\":\"Zimbabwe\"} |
+| **error_tryagain** | Podany numer telefonu jest zajęty lub niedostępny. Sprawdź numer i spróbuj ponownie. |
+| **error_incorrect_code** | Wprowadzony kod weryfikacyjny nie jest zgodny z naszymi rekordami. Spróbuj ponownie lub zażądaj nowego kodu. |
+| **countryList** | {\"Domyślny\":kraj/\"region,AF\":\"Afganistan,\"AX:Åland\"\"\"\"\" Wyspy\",\"Al:\"Albania\",Dz\":Algieria,AS\":\"\"\"\"\"\" Samoa\"amerykańskie\",\"AD:\"Andora,\"Ao:\"Angoli,AI\":\"\"\"\" \"Anguilla,\"AQ\":Antarktyda\",AG: Antigua iBarbuda\",\"\"\"\"\"\"AR\":Argentyna\",\"am:\"Armenia, aw:\"Aruba\"\"\"\"\" \",Au\":\"Australia,\"o:Austria,\"\"\"\"\"\" AZ\":\"Azerbejdżan,\"BS\":Bahamy\",BH:\"\"\"\"\" Bahrajn\",\"BD:\"Bangladesz\",BB\":Barbados,\"\"\"\"\" Według\":\"Białoruś,\"to\":Belgia\",BZ:\"\"\"\"\" Belize\",\"BJ:\"Benin\",BM\":Bermudy,\"\"\"\"\"BT\":Bhutan\",\"bo:\"Boliwia,BQ:\"\"\"\"\"\" Bonaire\",\"ba:Bośnia\"iHercegowina\",\"BW:Botswany\"\"\"<span class="notransla class=""></span class="notransla> Odległe wyspy\",\"VI\":\"Stany Zjednoczone \"Wyspy Dziewicze,\"g\":Uganda\",\"ua: Ukraina, AE:\"\"\"\"\"\"\" Zjednoczone Emiraty Arabskie\",\"GB\":ZjednoczoneKrólestwo\",USA:\"Stany Zjednoczone,\"uy\"\"\"\" \":Urugwaj\",\"uz:\"Uzbekistan, VU:Vanuatu\",\"\"\"\"\"\" \"VA:\"Watykan\",ve\":Wenezuela,VN\": Wietnam\"\"\"\"\"\" \",WF\":Wallisi\"Futuna,Ye:\"Jemen,\"zm\"\"\"\"\"\":Zambii,\"zw:Zimbabwe\"}\"\"\"\" |
 | **error_448** | Podany numer telefonu jest nieosiągalny. |
 | **error_449** | Użytkownik przekroczył liczbę ponownych prób. |
 | **verification_code_input_placeholder_text** | Kod weryfikacyjny |
 
-Poniższy kod przedstawia użycie niektórych elementów interfejsu użytkownika na stronie rejestracji usługi MFA:
+W poniższym przykładzie pokazano użycie niektórych elementów interfejsu użytkownika na stronie rejestracji usługi MFA:
 
-![Elementy interfejsu użytkownika weryfikacji wiadomości e-mail stronę rejestracji](./media/localization-string-ids/localization-mfa1.png)
+![Strona rejestracji — elementy środowiska użytkownika weryfikacji wiadomości e-mail](./media/localization-string-ids/localization-mfa1.png)
 
-Poniższy kod przedstawia użycie niektórych elementów interfejsu użytkownika na stronie Sprawdzanie poprawności usługi MFA:
+Poniższy przykład pokazuje użycie niektórych elementów interfejsu użytkownika na stronie walidacji usługi MFA:
 
-![Elementy interfejsu użytkownika weryfikacji wiadomości e-mail stronę rejestracji](./media/localization-string-ids/localization-mfa2.png)
+![Strona rejestracji — elementy środowiska użytkownika weryfikacji wiadomości e-mail](./media/localization-string-ids/localization-mfa2.png)
 
 
 

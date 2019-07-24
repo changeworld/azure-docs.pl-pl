@@ -1,51 +1,51 @@
 ---
 title: Zarządzanie współbieżnością w usłudze Microsoft Azure Storage
-description: Jak zarządzać współbieżności dla usługi obiektów Blob, kolejka, tabela i plik
+description: Jak zarządzać współbieżnością dla usług obiektów blob, kolejek, tabel i plików
 services: storage
 author: jasontang501
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/11/2017
-ms.author: jasontang501
+ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 9e786aed031d528b8ae574444b71753ac538cf47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 427cc34cc5a2801a2da98259f932678cdcf71ef7
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64728304"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67870826"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Zarządzanie współbieżnością w usłudze Microsoft Azure Storage
 ## <a name="overview"></a>Omówienie
-Nowoczesne aplikacje internetowe na podstawie zwykle mają wielu użytkownikom wyświetlanie i aktualizowanie danych jednocześnie. Wymaga to deweloperom aplikacji należy dobrze przemyśleć sposób zapewnić przewidywalne doświadczenia własnych użytkowników końcowych, zwłaszcza w przypadku scenariuszy, w których wielu użytkowników można zaktualizować te same dane. Istnieją trzy Strategie współbieżności główne dane, które deweloperzy zazwyczaj należy wziąć pod uwagę:  
+Nowoczesne aplikacje oparte na Internecie zwykle mają wielu użytkowników, którzy jednocześnie wyświetlają i aktualizują dane. Wymaga to, aby deweloperzy aplikacji mogli dokładnie rozważyć, jak zapewnić użytkownikom końcowym przewidywalne środowisko, szczególnie w przypadku scenariuszy, w których wielu użytkowników może aktualizować te same dane. Istnieją trzy główne strategie współbieżności danych, które zazwyczaj rozważają deweloperzy:  
 
-1. Optymistycznej współbieżności — aplikacja działa który aktualizację w ramach jego aktualizacji sprawdzi, jeśli dane zostały zmienione od czasu jej ostatniego odczytu danych. Na przykład jeśli dwóch użytkowników, wyświetlanie strony typu wiki dokonać aktualizacji do tej samej strony platformy wiki musi zapewnić drugi aktualizacja nie zastępuje pierwszą aktualizacją — i że zarówno użytkownicy wiedzą, czy ich aktualizacji zakończyła się powodzeniem. Ta strategia jest najczęściej używana w aplikacjach sieci web.
-2. Współbieżność pesymistyczna — wyszukiwanie do przeprowadzenia aktualizacji aplikacji potrwa blokadę na obiekcie uniemożliwi innym użytkownikom aktualizowanie danych, dopóki blokada jest zwalniana. Na przykład w przypadku replikacji danych typu nadrzędny/podrzędny, gdzie tylko wzorcu wykona aktualizacje wzorca będzie zazwyczaj przechowują blokady na wyłączność przez dłuższy czas na danych, aby upewnić się, że nikt inny nie mogli go zaktualizować.
-3. Ostatni składnik zapisywania usługi wins — metody, która zezwala na wszystkie operacje aktualizacji kontynuować bez sprawdzenia, jeśli wszystkie inne aplikacje zaktualizował dane ponieważ aplikacji najpierw odczytywać dane. Tej strategii (lub brak formalne strategii) jest zwykle używany, gdzie dane są partycjonowane w taki sposób, że nie istnieje prawdopodobieństwo czy wielu użytkowników będą miały dostęp tych samych danych. Można również go przydatne gdzie przetwarzania strumieni danych krótkotrwałych.  
+1. Optymistyczna współbieżność — aplikacja wykonująca aktualizację będzie w ramach aktualizacji sprawdza, czy dane zostały zmienione od czasu ostatniego odczytu danych przez aplikację. Na przykład jeśli dwóch użytkowników przeglądających stronę typu wiki przetworzy aktualizację na tej samej stronie, platforma wiki musi upewnić się, że druga aktualizacja nie zastąpi pierwszej aktualizacji — oraz że wszyscy użytkownicy wiedzą, czy ich Aktualizacja zakończyła się pomyślnie. Ta strategia jest najczęściej używana w aplikacjach sieci Web.
+2. Współbieżność pesymistyczna — aplikacja, która zamierza wykonać aktualizację, będzie blokować obiekt, uniemożliwiając innym użytkownikom aktualizowanie danych do momentu zwolnienia blokady. Na przykład w scenariuszu głównej/podrzędnej replikacji danych, w której tylko serwer główny wykona aktualizacje, wzorzec zwykle utrzymuje blokadę na wyłączność przez dłuższy czas od danych, aby upewnić się, że nikt inny nie będzie mógł go zaktualizować.
+3. Ostatni składnik zapisywania usługi WINS — podejście zezwalające na wykonywanie jakichkolwiek operacji aktualizacji bez weryfikowania, czy inna aplikacja zaktualizował dane, ponieważ aplikacja najpierw odczytaje dane. Ta strategia (lub Brak formalnej strategii) jest zwykle używana w przypadku, gdy dane są partycjonowane w taki sposób, że wiele użytkowników będzie mieć dostęp do tych samych danych. Może być również przydatne, gdy trwa przetwarzanie strumieni danych o krótkim czasie.  
 
-Ten artykuł zawiera omówienie, jak platforma Azure Storage upraszcza tworzenie, zapewniając obsługę pierwszej klasy w ramach wszystkich trzech z następujących strategii współbieżności.  
+Ten artykuł zawiera omówienie sposobu, w jaki platforma Azure Storage upraszcza programowanie, zapewniając obsługę pierwszej klasy dla wszystkich trzech tych strategii współbieżności.  
 
-## <a name="azure-storage--simplifies-cloud-development"></a>Usługa Azure Storage — upraszcza projektowanie aplikacji w chmurze
-Usługa Azure storage obsługuje wszystkie trzy strategie, mimo że szczególne zapewniają pełne wsparcie dla optymistyczne i pesymistycznej współbieżności, ponieważ został on zaprojektowany z modelu silnej spójności, co gwarantuje, że w przypadku wykorzystać możliwości Usługa Storage zatwierdza wstawiania danych lub operacji aktualizacji wszystkich dodatkowo uzyskuje dostęp w celu czy danych spowoduje zwrócenie najnowszej aktualizacji. Platformy magazynu, które używają modelu spójności ostatecznej ma opóźnienie między podczas zapisu jest wykonywane przez jednego użytkownika i zaktualizowane dane mogą być widoczne dla innych użytkowników, w związku z tym komplikowania kodu języka programowania aplikacji klienckich, aby uniknąć niespójności z wpływając na użytkowników końcowych.  
+## <a name="azure-storage--simplifies-cloud-development"></a>Azure Storage — upraszcza programowanie w chmurze
+Usługa Azure Storage obsługuje wszystkie trzy strategie, chociaż ma możliwość zapewnienia pełnej obsługi optymistycznej i pesymistycznej współbieżności, ponieważ została ona zaprojektowana w celu utworzenia silnego modelu spójności, który gwarantuje, że kiedy Usługa magazynu zatwierdza operację wstawiania lub aktualizowania danych. wszystkie dalsze dostęp do tych danych będą widoczne w najnowszej aktualizacji. Platformy magazynu, które używają modelu spójności ostatecznej, mają opóźnienie między, gdy zapis jest wykonywany przez jednego użytkownika, a zaktualizowane dane mogą być widoczne dla innych użytkowników w ten sposób, co komplikuje opracowywanie aplikacji klienckich w celu zapobieżenia niespójnościom wpływ na użytkowników końcowych.  
 
-Wybierz opcję strategii odpowiednie współbieżności deweloperów należy również pamiętać o jak platformy magazynu izoluje zmian — szczególnie zmiany do tego samego obiektu w transakcji. Usługa Azure storage korzysta z izolacji migawki, Zezwalaj na operacje odczytu, które ma być wykonywana równolegle operacji zapisu w obrębie jednej partycji. W przeciwieństwie do innych poziomów izolacji izolacji migawki gwarantuje, że wszystkie operacje odczytu Zobacz spójnej migawki danych nawet wtedy, gdy występują aktualizacje — zasadniczo, zwracając ostatnie wartości zatwierdzone, podczas aktualizacji przetwarzania transakcji.  
+Oprócz wyboru odpowiednich deweloperów strategii współbieżności należy również wiedzieć, jak platforma magazynowa izoluje zmiany — szczególnie zmiany w tym samym obiekcie w różnych transakcjach. Usługa Azure Storage używa izolacji migawek, aby umożliwić wykonywanie operacji odczytu współbieżnie przy użyciu operacji zapisu w ramach pojedynczej partycji. W przeciwieństwie do innych poziomów izolacji, izolacja migawki gwarantuje, że wszystkie odczyty widzą spójną migawkę danych, nawet w przypadku gdy aktualizacje są wykonywane — zasadniczo przez zwrócenie wartości ostatniego zatwierdzenia podczas przetwarzania transakcji aktualizacji.  
 
-## <a name="managing-concurrency-in-blob-storage"></a>Zarządzanie współbieżnością w usłudze Blob storage
-Możesz zdecydować się na zarządzanie dostępem do obiektów blob i kontenery w usłudze obiektów blob za pomocą obu modeli optymistycznego lub pesymistycznego współbieżności. Jeśli nie zostanie jawnie wins strategii z ostatniego zapisu jest ustawieniem domyślnym.  
+## <a name="managing-concurrency-in-blob-storage"></a>Zarządzanie współbieżnością w usłudze BLOB Storage
+Można wybrać jednooptymistyczne lub pesymistyczne modele współbieżności, aby zarządzać dostępem do obiektów blob i kontenerów w usłudze BLOB Service. Jeśli nie określisz jawnie strategii Ostatnia zapisy usługi WINS jest to ustawienie domyślne.  
 
-### <a name="optimistic-concurrency-for-blobs-and-containers"></a>Optymistycznej współbieżności dla kontenerów i obiektów blob
-Usługa Magazyn przypisuje identyfikator do każdego obiektu przechowywanego. Ten identyfikator jest aktualizowany za każdym razem, gdy aktualizacja jest wykonywane na obiekcie. Identyfikator jest zwracana do klienta jako część odpowiedzi HTTP GET, przy użyciu nagłówka ETag (tag jednostki), która jest zdefiniowana w ramach protokołu HTTP. Użytkownik przeprowadzania aktualizacji na taki obiekt można wysłać w oryginalny element ETag wraz z nagłówkiem warunkowe, aby upewnić się, że aktualizacja tylko wówczas, gdy określony warunek został spełniony — w tym przypadku warunek jest nagłówek "If-Match", który wymaga t usługi Storage o upewnij się, że wartość elementu ETag określony w żądaniu aktualizacji jest taka sama jak przechowywany w usłudze Storage.  
+### <a name="optimistic-concurrency-for-blobs-and-containers"></a>Optymistyczna współbieżność dla obiektów blob i kontenerów
+Usługa magazynu przypisuje identyfikator do każdego przechowywanego obiektu. Ten identyfikator jest aktualizowany za każdym razem, gdy operacja aktualizacji jest przeprowadzana na obiekcie. Identyfikator jest zwracany do klienta w ramach odpowiedzi HTTP GET przy użyciu nagłówka ETag (tag jednostki) zdefiniowanego w protokole HTTP. Użytkownik wykonujący aktualizację takiego obiektu może wysłać w oryginalnym elemencie ETag wraz z nagłówkiem warunkowym, aby upewnić się, że aktualizacja będzie miała miejsce tylko w przypadku spełnienia określonego warunku — w tym przypadku warunek jest nagłówkiem "If-Match", który wymaga usługi magazynu t o upewnij się, że wartość ETag określona w żądaniu aktualizacji jest taka sama jak w przypadku przechowywania w usłudze Storage.  
 
-Zarys tego procesu jest następująca:  
+Ten proces jest następujący:  
 
-1. Pobieranie obiektu blob z usługi storage, odpowiedź zawiera wartość nagłówka ETag HTTP, która określa bieżącą wersję obiektu w usłudze storage.
-2. Po zaktualizowaniu obiektu blob zawierają wartość elementu ETag odebrane w kroku 1 w **If-Match** warunkowego nagłówka żądania wysyłane do usługi.
-3. Usługa porównuje wartość elementu ETag w żądaniu z bieżącą wartością elementu ETag obiektu blob.
-4. Jeśli bieżąca wartość elementu ETag obiektu blob jest inna wersja niż elementu ETag w **If-Match** warunkowego nagłówka w żądaniu, usługa zwraca błąd 412 do klienta. Oznacza to, do klienta inny proces został zaktualizowany obiekt blob, ponieważ klient pobrano go.
-5. Jeśli bieżąca wartość elementu ETag obiektu blob jest tej samej wersji, co element ETag w **If-Match** warunkowego nagłówka w żądaniu usługi, wykonuje żądaną operację i aktualizuje bieżącą wartość elementu ETag obiektów blob, aby pokazać, że została utworzona Nowa wersja.  
+1. Pobieranie obiektu BLOB z usługi magazynu, odpowiedź zawiera wartość nagłówka HTTP ETag, która identyfikuje bieżącą wersję obiektu w usłudze Storage.
+2. Podczas aktualizowania obiektu BLOB należy uwzględnić wartość ETag odebraną w kroku 1 w nagłówku warunkowym **if-Match** żądania wysyłanego do usługi.
+3. Usługa porównuje wartość ETag w żądaniu z bieżącą wartością ETag obiektu BLOB.
+4. Jeśli bieżąca wartość ETag obiektu BLOB jest inna niż nazwa elementu ETag w nagłówku warunku **if-Match** w żądaniu, usługa zwróci błąd 412 do klienta. Wskazuje to klientowi, że inny proces zaktualizował obiekt BLOB od momentu jego pobrania przez klienta.
+5. Jeśli bieżąca wartość ETag obiektu BLOB jest taka sama jak wersja elementu ETag w nagłówku warunku **if-Match** w żądaniu, usługa wykonuje żądaną operację i aktualizuje bieżącą wartość ETag obiektu BLOB, aby pokazać, że została utworzona nowa wersja.  
 
-Poniższy fragment C# (przy użyciu biblioteki klienta usługi Storage 4.2.0) przedstawiono prosty przykład sposobu konstruowania **AccessCondition If-Match** na podstawie wartości element ETag, który jest dostępny z właściwości obiektu blob, który był wcześniej albo pobrać lub wstawiona. Następnie używa **AccessCondition** obiektu, kiedy aktualizuje obiekt blob: **AccessCondition** dodaje obiekt **If-Match** nagłówka żądania. Jeśli inny proces był aktualizowany obiekt blob, usługę blob service zwraca komunikat stanu HTTP 412 (niepowodzenie warunku wstępnego). Można pobrać pełny przykład: [Zarządzanie współbieżnością za pomocą usługi Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).  
+Poniższy C# fragment kodu (przy użyciu biblioteki magazynu klienta 4.2.0) pokazuje prosty przykład sposobu konstruowania **AccessCondition if-Match** na podstawie wartości ETag, która jest dostępna we właściwościach obiektu BLOB, który został wcześniej pobrany lub wstawiany. Następnie używa obiektu **AccessCondition** podczas aktualizowania obiektu BLOB: obiekt **AccessCondition** dodaje nagłówek **if-Match** do żądania. Jeśli inny proces zaktualizował obiekt BLOB, usługa BLOB zwraca komunikat o stanie HTTP 412 (niepowodzenie warunku wstępnego). Pełną próbkę można pobrać tutaj: [Zarządzanie współbieżnością przy użyciu usługi Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).  
 
 ```csharp
 // Retrieve the ETag from the newly created blob
@@ -80,53 +80,53 @@ catch (StorageException ex)
 }  
 ```
 
-Usługa magazynu obejmuje również obsługę dodatkowych nagłówków warunkowych takich jak **If-Modified-Since**, **If w niezmienionej postaci od** i **If-None-Match** także ich kombinacji. Aby uzyskać więcej informacji, zobacz [Określanie warunkowego nagłówki dla operacji usługi obiektów Blob](https://msdn.microsoft.com/library/azure/dd179371.aspx) w witrynie MSDN.  
+Usługa Storage obejmuje również obsługę dodatkowych nagłówków warunkowych, takich jak **If-Modified-** AS, **if-Unmodified-** a i **If-None-Match** oraz ich kombinacji. Aby uzyskać więcej informacji, zobacz [Określanie nagłówków warunkowych dla operacji usługi BLOB Service](https://msdn.microsoft.com/library/azure/dd179371.aspx) w witrynie MSDN.  
 
-Poniższa tabela zawiera podsumowanie operacji kontenera, które akceptowanie nagłówków warunkowych, takich jak **If-Match** w żądaniu, które zwracają wartość elementu ETag w odpowiedzi.  
+Poniższa tabela zawiera podsumowanie operacji kontenera akceptujących nagłówki warunkowe, takie jak **if-Match** w żądaniu i zwracające wartość ETag w odpowiedzi.  
 
-| Operacja | Zwraca wartość elementu ETag kontenera | Akceptuje nagłówki warunkowe |
+| Operacja | Zwraca wartość ETag kontenera | Akceptuje nagłówki warunkowe |
 |:--- |:--- |:--- |
 | Tworzenie kontenera |Tak |Nie |
-| Pobierz właściwości kontenera |Yes |Nie |
-| Pobranie metadanych kontenera |Tak |Nie |
-| Metadane kontenera zestawu |Tak |Tak |
-| Pobieranie listy ACL kontenera |Tak |Nie |
-| Ustaw ACL kontenera |Tak |Tak (*) |
+| Pobierz właściwości kontenera |Tak |Nie |
+| Pobierz metadane kontenera |Tak |Nie |
+| Ustawianie metadanych kontenera |Tak |Tak |
+| Pobierz listę ACL kontenerów |Tak |Nie |
+| Ustawianie listy ACL kontenerów |Yes |Tak (*) |
 | Usuwanie kontenera |Nie |Tak |
-| Dzierżawa kontenera |Tak |Tak |
-| Wyświetlanie listy obiektów blob |Nie |Nie |
+| Kontener dzierżawy |Tak |Yes |
+| Wyświetl listę obiektów BLOB |Nie |Nie |
 
-(*) Uprawnienia określone przez SetContainerACL są buforowane i aktualizacji tych uprawnień potrwać 30 sekund do propagowania okresie, które aktualizacje są nie musi być zgodne.  
+(*) Uprawnienia zdefiniowane przez SetContainerACL są zapisywane w pamięci podręcznej i aktualizacje tych uprawnień trwają 30 sekund, podczas których aktualizacje nie będą gwarantowane.  
 
-W poniższej tabeli przedstawiono operacje obiektów blob, które akceptowanie nagłówków warunkowych, takich jak **If-Match** w żądaniu, które zwracają wartość elementu ETag w odpowiedzi.
+Poniższa tabela zawiera podsumowanie operacji obiektów blob, które akceptują nagłówki warunkowe, takie jak **if-Match** w żądaniu i zwracają wartość ETag w odpowiedzi.
 
-| Operacja | Zwraca wartość elementu ETag | Akceptuje nagłówki warunkowe |
+| Operacja | Zwraca wartość ETag | Akceptuje nagłówki warunkowe |
 |:--- |:--- |:--- |
-| Put Blob |Tak |Tak |
+| Put Blob |Yes |Yes |
 | Get Blob |Yes |Tak |
-| Pobierz właściwości obiektu Blob |Yes |Yes |
-| Ustaw właściwości obiektu Blob |Yes |Yes |
-| Pobierz metadane obiektu Blob |Tak |Yes |
-| Ustaw metadane obiektu Blob |Yes |Yes |
-| Dzierżawienie obiektu Blob (*) |Tak |Yes |
-| Wykonywanie migawki obiektu Blob |Tak |Tak |
-| Copy Blob |Yes |Tak (w przypadku źródłowego i docelowego obiektu blob) |
-| Przerwij obiektu Blob kopiowania |Nie |Nie |
+| Pobierz właściwości obiektu BLOB |Yes |Tak |
+| Ustawianie właściwości obiektu BLOB |Tak |Yes |
+| Pobierz metadane obiektu BLOB |Tak |Tak |
+| Ustawianie metadanych obiektu BLOB |Tak |Tak |
+| Obiekt BLOB dzierżawy (*) |Tak |Yes |
+| Obiekt BLOB migawek |Tak |Tak |
+| Copy Blob |Tak |Tak (dla źródłowego i docelowego obiektu BLOB) |
+| Przerwij Kopiowanie obiektu BLOB |Nie |Nie |
 | Usuwanie obiektu Blob |Nie |Tak |
-| Umieść bloku |Nie |Nie |
-| Umieść zablokowanych |Tak |Tak |
+| Umieść blok |Nie |Nie |
+| Umieść listę zablokowanych |Tak |Tak |
 | Pobierz listę zablokowanych |Tak |Nie |
-| Umieść strony |Yes |Yes |
-| Pobieranie zakresów stron |Yes |Yes |
+| Umieść stronę |Yes |Tak |
+| Pobierz zakresy stron |Yes |Tak |
 
-(*) Dzierżawienie obiektu Blob nie zmienia się tag ETag na obiekcie blob.  
+(*) Obiekt BLOB dzierżawy nie zmienia elementu ETag w obiekcie blob.  
 
-### <a name="pessimistic-concurrency-for-blobs"></a>Współbieżność pesymistyczna dla obiektów blob
-Aby zablokować obiektu blob do wyłącznego użytku, mogą nabyć [dzierżawy](https://msdn.microsoft.com/library/azure/ee691972.aspx) na nim. Po użytkownik uzyskuje dzierżawę, można określić, jak długo mają być dzierżawy: może to być od 15 do 60 sekund lub nieskończone, który wynosi blokady na wyłączność. Można odnowić dzierżawę skończoną rozszerzać go, a można zwolnić wszystkie dzierżawy, po zakończeniu pracy z nim. Usługa blob automatycznie zwalnia skończoną dzierżaw, gdy wygasają.  
+### <a name="pessimistic-concurrency-for-blobs"></a>Współbieżność pesymistyczna dla obiektów BLOB
+Aby zablokować obiekt BLOB do użytku wyłącznego, możesz uzyskać [dzierżawę](https://msdn.microsoft.com/library/azure/ee691972.aspx) . Podczas uzyskiwania dzierżawy należy określić, jak długo będzie potrzebna dzierżawa: może to być przez od 15 do 60 sekund lub nieskończoność, co powoduje zablokowanie wyłącznej blokady. Możesz odnowić dzierżawę, aby ją przedłużyć i można zwolnić dowolną dzierżawę po zakończeniu pracy z nią. Usługa BLOB automatycznie zwalnia ograniczone dzierżawy po ich wygaśnięciu.  
 
-Dzierżawy Włącz synchronizacji różne strategie są obsługiwane, w tym zapisu na wyłączność / udostępnione na wyłączność, odczytu, zapisu / wyłącznie odczytu i zapisu do udostępnionego / odczyt wyłącznie. W przypadku, gdy istnieje dzierżawa usługi storage wymusza wyłączne operacje zapisu (put, ustaw i operacje usuwania) jednak zapewnienie na wyłączność dla operacji odczytu wymaga deweloperowi upewnij się, że wszystkie aplikacje klienckie używanie Identyfikatora dzierżawy w danym momencie tylko jeden klient ma Identyfikator prawidłową dzierżawę. Operacje odczytu, które nie obejmują wynik identyfikator dzierżawy w udostępnionej odczytów.  
+Dzierżawy umożliwiają obsługę różnych strategii synchronizacji, w tym wyłącznych odczyty zapisu/udostępniania, dostęp z wyłącznym zapisem/odczytem i udostępnianie zapisu/odczyty w trybie wyłączności. W przypadku istnienia dzierżawy usługa magazynu wymusza wykonywanie operacji zapisu wyłącznych (Put, Set i Delete), jednak zapewnienie wyłączności operacji odczytu wymaga od dewelopera zapewnienia, że wszystkie aplikacje klienckie używają identyfikatora dzierżawy i że tylko jeden klient w danym momencie ma prawidłowy identyfikator dzierżawy. Operacje odczytu, które nie zawierają identyfikatora dzierżawy, powodują odczyty udostępnione.  
 
-Poniższy fragment kodu języka C# pokazano przykład Uzyskiwanie dzierżawy wyłączności przez 30 sekund na obiekcie blob, aktualizowania zawartości obiektu blob, a następnie zwolnić dzierżawy. Jeśli istnieje już prawidłową dzierżawę w obiekcie blob podczas próby uzyskania nową dzierżawę, usługę blob service zwraca wynik stanu "Konflikt HTTP (409)". Następujący fragment kodu używa **AccessCondition** obiektu do hermetyzacji informacje o dzierżawach, gdy kieruje żądanie do zaktualizowania obiektu blob w usłudze storage.  Można pobrać pełny przykład: [Zarządzanie współbieżnością za pomocą usługi Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
+Poniższy C# fragment kodu przedstawia przykład pozyskiwania wyłącznej dzierżawy przez 30 sekund w obiekcie blob, aktualizowania zawartości obiektu BLOB, a następnie zwalniania dzierżawy. Jeśli w obiekcie blob istnieje już prawidłowa dzierżawa podczas próby uzyskania nowej dzierżawy, usługa BLOB zwróci wynik stanu "HTTP (409). Poniższy fragment kodu używa obiektu **AccessCondition** do hermetyzacji informacji o dzierżawie, gdy zgłasza żądanie zaktualizowania obiektu BLOB w usłudze Storage.  Pełną próbkę można pobrać tutaj: [Zarządzanie współbieżnością przy użyciu usługi Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
 
 ```csharp
 // Acquire lease for 15 seconds
@@ -155,60 +155,60 @@ catch (StorageException ex)
 }  
 ```
 
-Jeśli spróbujesz operacji zapisu dla dzierżawy obiektu blob bez przekazywania identyfikator dzierżawy, żądanie kończy się błędem 412. Należy pamiętać, że jeśli wygaśnięcia dzierżawy przed wywołaniem **UploadText** metoda, ale nadal przekazywać identyfikator dzierżawy, żądanie nie powiedzie się także z **412** błędu. Aby uzyskać więcej informacji o zarządzaniu czas wygaśnięcia dzierżawy i dzierżawy identyfikatorów, zobacz [dzierżawienie obiektu Blob](https://msdn.microsoft.com/library/azure/ee691972.aspx) dokumentacji rozwiązania REST.  
+Jeśli podjęto próbę wykonania operacji zapisu na wydzierżawionym obiekcie blob bez przekazania identyfikatora dzierżawy, żądanie kończy się niepowodzeniem z błędem 412. Należy pamiętać, że jeśli dzierżawa wygaśnie przed wywołaniem metody **UploadText** , ale nadal zostanie przekazany identyfikator dzierżawy, żądanie również zakończy się niepowodzeniem z błędem **412** . Aby uzyskać więcej informacji na temat zarządzania czasem wygaśnięcia dzierżawy i identyfikatorami dzierżawy, zobacz dokumentację dotyczącą [dzierżawy obiektu BLOB](https://msdn.microsoft.com/library/azure/ee691972.aspx) .  
 
-Następujące operacje obiektów blob umożliwia zarządzanie Współbieżność pesymistyczna dzierżawy:  
+Następujące operacje BLOB mogą używać dzierżaw do zarządzania pesymistyczną współbieżnością:  
 
 * Put Blob
 * Get Blob
-* Pobierz właściwości obiektu Blob
-* Ustaw właściwości obiektu Blob
-* Pobierz metadane obiektu Blob
-* Ustaw metadane obiektu Blob
+* Pobierz właściwości obiektu BLOB
+* Ustawianie właściwości obiektu BLOB
+* Pobierz metadane obiektu BLOB
+* Ustawianie metadanych obiektu BLOB
 * Usuwanie obiektu Blob
-* Umieść bloku
-* Umieść zablokowanych
+* Umieść blok
+* Umieść listę zablokowanych
 * Pobierz listę zablokowanych
-* Umieść strony
-* Pobieranie zakresów stron
-* Wykonywanie migawki obiektu Blob — identyfikator dzierżawy jest opcjonalne, jeśli istnieje dzierżawa
-* Wymagany identyfikator dzierżawy obiektu Blob kopiowania — czy dzierżawa istnieje w docelowym obiekcie blob
-* Wymagany identyfikator dzierżawy obiektu Blob kopiowania przerwania — Jeśli nieskończonej dzierżawa istnieje w docelowym obiekcie blob
-* Dzierżawienie obiektu Blob  
+* Umieść stronę
+* Pobierz zakresy stron
+* Obiekt BLOB migawki — identyfikator dzierżawy opcjonalny w przypadku istnienia dzierżawy
+* Kopiuj obiekt BLOB — identyfikator dzierżawy jest wymagany, jeśli dzierżawa istnieje w docelowym obiekcie blob
+* Przerwij Kopiowanie obiektu BLOB — identyfikator dzierżawy jest wymagany, jeśli w docelowym obiekcie blob istnieje nieskończona dzierżawa
+* Obiekt BLOB dzierżawy  
 
 ### <a name="pessimistic-concurrency-for-containers"></a>Współbieżność pesymistyczna dla kontenerów
-Dzierżawy w kontenerach Włącz ale opisane strategie synchronizacji są obsługiwane na obiekty BLOB (wyłącznie zapisu / udostępnione na wyłączność, odczytu, zapisu / wyłącznie odczytu i zapisu do udostępnionego / odczyt wyłącznie) jednak w przeciwieństwie do obiektów blob usługi storage tylko wymusza wyłączności w operacje usuwania. Aby usunąć kontener z aktywną dzierżawę, klient musi zawierać identyfikator aktywną dzierżawę za pomocą żądania usunięcia. Wszystkie inne operacje dotyczące kontenera pominięciem na kontenerze dzierżawy w tym identyfikator dzierżawy w tym przypadku są one udostępniane operacji. Jeśli wymagana jest wyłączności aktualizacji (put lub zestaw) lub operacji odczytu następnie deweloperzy upewnić się, że wszyscy klienci korzystali Identyfikatora dzierżawy oraz że tylko jednego klienta w danym momencie ma prawidłową dzierżawę identyfikator.  
+Dzierżawy w kontenerach umożliwiają korzystanie z tych samych strategii synchronizacji, jak w przypadku obiektów BLOB (wyłącznych odczyty zapisu/udostępniania, wyłączne zapis/odczyt i udostępnianie zapisu/wyłącznego odczytu) jednak w przeciwieństwie do obiektów blob, usługa magazynu wymusza wyłączność na operacje usuwania. Aby usunąć kontener z aktywną dzierżawą, klient musi uwzględnić aktywny identyfikator dzierżawy z żądaniem usuwania. Wszystkie inne operacje kontenera powiodły się w kontenerze dzierżawionym bez uwzględnienia identyfikatora dzierżawy, w takim przypadku są to operacje udostępnione. Jeśli wymagana jest niewyłączność operacji Update (put lub Set) lub odczytu, deweloperzy powinni upewnić się, że wszyscy klienci używają identyfikatora dzierżawy i że tylko jeden klient w danym momencie ma prawidłowy identyfikator dzierżawy.  
 
-Następujące operacje kontenerów umożliwia zarządzanie Współbieżność pesymistyczna dzierżawy:  
+Następujące operacje kontenera mogą używać dzierżaw do zarządzania pesymistyczną współbieżnością:  
 
 * Usuwanie kontenera
 * Pobierz właściwości kontenera
-* Pobranie metadanych kontenera
-* Metadane kontenera zestawu
-* Pobieranie listy ACL kontenera
-* Ustaw ACL kontenera
-* Dzierżawa kontenera  
+* Pobierz metadane kontenera
+* Ustawianie metadanych kontenera
+* Pobierz listę ACL kontenerów
+* Ustawianie listy ACL kontenerów
+* Kontener dzierżawy  
 
 Aby uzyskać więcej informacji, zobacz:  
 
-* [Określanie warunkowego nagłówki dla operacji usługi obiektów Blob](https://msdn.microsoft.com/library/azure/dd179371.aspx)
-* [Dzierżawa kontenera](https://msdn.microsoft.com/library/azure/jj159103.aspx)
-* [Dzierżawienie obiektu Blob](https://msdn.microsoft.com/library/azure/ee691972.aspx)
+* [Określanie nagłówków warunkowych dla operacji usługi BLOB Service](https://msdn.microsoft.com/library/azure/dd179371.aspx)
+* [Kontener dzierżawy](https://msdn.microsoft.com/library/azure/jj159103.aspx)
+* [Obiekt BLOB dzierżawy](https://msdn.microsoft.com/library/azure/ee691972.aspx)
 
 ## <a name="managing-concurrency-in-the-table-service"></a>Zarządzanie współbieżnością w usłudze Table Service
-Usługa table service używa optymistycznej współbieżności kontroli jako domyślne zachowanie podczas pracy z jednostkami, w przeciwieństwie do usługi obiektów blob, w którym jawnie należy wybrać do wykonywania kontroli optymistycznej współbieżności. Różnica między usługami tabel i obiektów blob jest, że można zarządzać tylko zachowanie współbieżności jednostek należy za pomocą usługi obiektów blob można zarządzać współbieżności kontenerów i obiektów blob.  
+Usługa Table Service korzysta z optymistycznych kontroli współbieżności jako zachowanie domyślne podczas pracy z jednostkami, w przeciwieństwie do usługi obiektów blob, w której użytkownik musi jawnie wybrać opcję sprawdzenia optymistycznej kontroli współbieżności. Druga różnica między usługami Table i BLOB Services polega na tym, że można zarządzać tylko zachowaniem współbieżności jednostek z usługą BLOB Service, która umożliwia zarządzanie współbieżnością zarówno kontenerów, jak i obiektów BLOB.  
 
-Używaj optymistycznej współbieżności i sprawdzanie, jeśli inny proces zmodyfikowane jednostką, ponieważ został pobrany z usługi table storage, można użyć wartość elementu ETag, który pojawi się po usłudze table service zwraca jednostkę. Zarys tego procesu jest następująca:  
+Aby użyć optymistycznej współbieżności i sprawdzić, czy inny proces zmodyfikował jednostkę, ponieważ został pobrany z usługi Table Storage, można użyć wartości ETag otrzymanej, gdy usługa tabeli zwraca jednostkę. Ten proces jest następujący:  
 
-1. Pobrania jednostki z usługi table storage, odpowiedź zawiera wartość elementu ETag, która określa bieżący identyfikator skojarzony z tej jednostki w usłudze storage.
-2. Po zaktualizowaniu jednostki zawierają wartość elementu ETag odebrane w kroku 1 w obowiązkowy **If-Match** nagłówka żądania wysyłane do usługi.
-3. Usługa porównuje wartość elementu ETag w żądaniu z bieżącą wartością elementu ETag jednostki.
-4. Jeśli bieżąca wartość elementu ETag jednostki różni się od elementu ETag w obowiązkowy **If-Match** nagłówka w żądaniu, usługa zwraca błąd 412 do klienta. Oznacza to, do klienta inny proces został zaktualizowany jednostkę od czasu jej pobrania. klienta.
-5. Jeśli bieżąca wartość elementu ETag jednostki jest taka sama jak element ETag w obowiązkowy **If-Match** nagłówka w żądaniu lub **If-Match** nagłówek zawiera symbol wieloznaczny (*), usługa wykonuje żądanej operacji, a następnie aktualizuje bieżącą wartość elementu ETag jednostkę którą chcesz pokazać, że został zaktualizowany.  
+1. Pobieranie jednostki z usługi Table Storage, odpowiedź zawiera wartość ETag identyfikującą bieżący identyfikator skojarzony z tą jednostką w usłudze Storage.
+2. Podczas aktualizowania jednostki należy uwzględnić wartość ETag uzyskaną w kroku 1 w polu obowiązkowy nagłówek **if-Match** żądania wysyłanego do usługi.
+3. Usługa porównuje wartość ETag w żądaniu z bieżącą wartością ETag obiektu.
+4. Jeśli bieżąca wartość ETag obiektu jest różna od elementu ETag w obowiązkowym nagłówku **if-Match** w żądaniu, usługa zwróci błąd 412 do klienta. Wskazuje to klientowi, że inny proces zaktualizował jednostkę od momentu pobrania przez klienta.
+5. Jeśli bieżąca wartość ETag jednostki jest taka sama jak element ETag w obowiązkowym nagłówku **if-Match** w żądaniu lub nagłówek **if-Match** zawiera symbol wieloznaczny (*), usługa wykonuje żądaną operację i aktualizuje bieżący element ETag wartość jednostki, aby pokazać, że została zaktualizowana.  
 
-Pamiętaj, że w przeciwieństwie do usługi blob service tabeli wymaga klienta do uwzględnienia **If-Match** nagłówek żądania aktualizacji. Istnieje możliwość wymuszenia bezwarunkowe aktualizacji (ostatni składnik zapisywania usługi wins strategii) i obejście kontrolach współbieżności, jeśli klient ustawia **If-Match** nagłówka znak symbolu wieloznacznego (*) w żądaniu.  
+Należy pamiętać, że w przeciwieństwie do usługi BLOB usługa Table Service wymaga, aby klient dołączył nagłówek **if-Match** w żądaniach aktualizacji. Można jednak wymusić aktualizację bezwarunkową (Ostatnia strategia usługi WINS) i pominąć sprawdzanie współbieżności, jeśli klient ustawi nagłówek **if-Match** na symbol wieloznaczny (*) w żądaniu.  
 
-Poniższy fragment kodu języka C# zawiera jednostki Klient, która wcześniej została utworzona lub pobrać o swój adres e-mail, aktualizowane. Początkowy wstawiania lub pobrać magazynów operacji wartość elementu ETag w obiekcie klienta, a ponieważ w przykładzie użyto tego samego wystąpienia obiektu podczas wykonywania operacji zamieniania, powoduje automatyczne wysyłanie wartość elementu ETag do usługi tabel, włączenie usługi Sprawdź, czy naruszenie współbieżności. Jeśli inny proces był aktualizowany jednostki w usłudze table storage, usługa zwraca komunikat stanu HTTP 412 (niepowodzenie warunku wstępnego).  Można pobrać pełny przykład: [Zarządzanie współbieżnością za pomocą usługi Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
+Poniższy C# fragment kodu przedstawia jednostkę klienta, która została wcześniej utworzona lub pobrana, gdy jego adres e-mail został zaktualizowany. Początkowa operacja wstawiania lub pobierania przechowuje wartość ETag w obiekcie klient, a ponieważ przykład używa tego samego wystąpienia obiektu, gdy wykonuje operację Zamień, automatycznie wysyła wartość ETag z powrotem do usługi Table Service, co umożliwia usłudze Sprawdź, czy są to naruszenia współbieżności. Jeśli inny proces zaktualizował jednostkę w magazynie tabel, usługa zwróci komunikat o stanie HTTP 412 (niepowodzenie warunku wstępnego).  Pełną próbkę można pobrać tutaj: [Zarządzanie współbieżnością przy użyciu usługi Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
 
 ```csharp
 try
@@ -227,62 +227,62 @@ catch (StorageException ex)
 }  
 ```
 
-Aby jawnie wyłączyć sprawdzania współbieżności, należy ustawić **ETag** właściwość **pracowników** do obiektu "*" przed wykonaniem operacji Zamień.  
+Aby jawnie wyłączyć sprawdzanie współbieżności, przed wykonaniem operacji Zamień należy ustawić właściwość **ETag** obiektu **Employee** na wartość "*".  
 
 ```csharp
 customer.ETag = "*";  
 ```
 
-W poniższej tabeli przedstawiono, jak operacje jednostki tabeli używać wartości tagu ETag:
+Poniższa tabela zawiera podsumowanie sposobu używania wartości ETag przez operacje jednostek tabeli:
 
-| Operacja | Zwraca wartość elementu ETag | Wymaga nagłówka żądania If-Match |
+| Operacja | Zwraca wartość ETag | Wymaga nagłówka żądania if-Match |
 |:--- |:--- |:--- |
-| Wykonywanie zapytań dotyczących jednostek |Yes |Nie |
-| Wstaw jednostki |Tak |Nie |
-| Aktualizuj jednostki |Tak |Tak |
-| Merge Entity |Tak |Tak |
+| Jednostki zapytań |Yes |Nie |
+| Wstaw jednostkę |Yes |Nie |
+| Aktualizuj jednostkę |Tak |Tak |
+| Scal jednostkę |Yes |Tak |
 | Usuń jednostkę |Nie |Yes |
-| Wstawianie lub zastępowanie jednostki |Yes |Nie |
-| Wstawianie lub scalić jednostki |Yes |Nie |
+| Wstaw lub Zamień jednostkę |Tak |Nie |
+| Wstaw lub Scal jednostkę |Yes |Nie |
 
-Należy pamiętać, że **Insert lub Zastąp jednostki** i **Insert lub scalić jednostki** wykonaj operacje *nie* wykonać wszystkie testy współbieżności, ponieważ nie wysyłaj wartość elementu ETag do tabeli Usługa.  
+Należy zauważyć, że operacje wstawiania i zastępowania **jednostki** i **wstawiania lub scalania jednostek** nie wykonują żadnych kontroli współbieżności, ponieważ nie wysyłają wartości ETag do usługi Table Service.  
 
-Ogólnie rzecz biorąc deweloperzy korzystający z tabel będą miały optymistycznej współbieżności podczas tworzenia skalowalnych aplikacji. W razie pesymistycznego blokowania jest jednym z podejść deweloperzy mogą korzystać z podczas uzyskiwania dostępu do tabel jest przypisywanie wyznaczonym obiektu blob dla każdej tabeli, a następnie spróbuj przyjmą dzierżawę obiektu blob przed wykonywaniem operacji na tabeli. Takie podejście wymaga aplikacji, aby upewnić się, wszystkie ścieżki dostępu do danych uzyskiwania dzierżawy przed wykonywaniem operacji na tabeli. Należy również zauważyć, czas trwania dzierżawy minimalna to 15 sekund, co wymaga szczególną uwagę w przypadku skalowalności.  
+W przypadku ogólnych deweloperów korzystających z tabel należy polegać na optymistycznej współbieżności podczas tworzenia skalowalnych aplikacji. Jeśli zachodzi konieczność blokowania pesymistycznego, jeden z rozwiązań, które mogą podjąć podczas uzyskiwania dostępu do tabel, ma przypisywać wskazany obiekt BLOB dla każdej tabeli i próbować uzyskać dzierżawę obiektu BLOB przed rozpoczęciem korzystania z tabeli. Takie podejście wymaga, aby aplikacja zapewniała, że wszystkie ścieżki dostępu do danych uzyskują dzierżawę przed rozpoczęciem pracy w tabeli. Należy również pamiętać, że minimalny czas dzierżawy wynosi 15 sekund, co wymaga starannej uwagi na skalowalność.  
 
 Aby uzyskać więcej informacji, zobacz:  
 
 * [Operacje na jednostkach](https://msdn.microsoft.com/library/azure/dd179375.aspx)  
 
-## <a name="managing-concurrency-in-the-queue-service"></a>Zarządzanie współbieżnością w usłudze kolejki
-Jeden scenariusz, w których współbieżności jest istotna w usłudze kolejkowania jest, której wielu klientów są pobieranie komunikatów z kolejki. Po pobraniu wiadomość z kolejki odpowiedź zawiera komunikat i wartości potwierdzenia pop, która jest wymagana do usuwania komunikatu. Komunikat nie zostanie automatycznie usunięta z kolejki, ale po jej pobraniu, nie jest widoczny dla innych klientów dla interwału czasu określonym przez parametr visibilitytimeout. Klient, który pobiera komunikat powinien usunąć komunikat po przetworzeniu i przed upływem czasu określonego przez TimeNextVisible element odpowiedzi, który jest obliczany na podstawie wartości parametru visibilitytimeout. Wartość visibilitytimeout jest dodawana do czasu, jaką wiadomość zostanie pobrana do określenia wartości TimeNextVisible.  
+## <a name="managing-concurrency-in-the-queue-service"></a>Zarządzanie współbieżnością w usłudze Queue Service
+Jednym z scenariuszy, w którym współbieżność jest istotność w usłudze kolejkowania, jest to, że wielu klientów pobiera komunikaty z kolejki. Gdy wiadomość zostanie pobrana z kolejki, odpowiedź zawiera komunikat i wartość paragonu pop, która jest wymagana do usunięcia wiadomości. Komunikat nie jest automatycznie usuwany z kolejki, ale po pobraniu nie jest widoczny dla innych klientów w przedziale czasu określonym przez parametr visibilitytimeout. Klient, który pobiera komunikat, powinien usunąć komunikat po przetworzeniu i przed upływem czasu określonego przez element TimeNextVisible odpowiedzi, który jest obliczany na podstawie wartości parametru visibilitytimeout. Wartość visibilitytimeout jest dodawana do momentu, w którym komunikat jest pobierany w celu określenia wartości TimeNextVisible.  
 
-Usługa kolejki nie jest obsługiwane optymistycznego lub pesymistycznego współbieżności i w tym klientów Przyczyna przetwarzania wiadomości odebrane z kolejką upewnić się, że komunikaty są przetwarzane w sposób idempotentne. Strategii wins ostatni składnik zapisywania jest używany do operacji aktualizacji, takich jak SetQueueServiceProperties, SetQueueMetaData, SetQueueACL i UpdateMessage.  
+Usługa kolejki nie obsługuje optymistycznej lub pesymistycznej współbieżności. z tego powodu klienci przetwarzający komunikaty pobrane z kolejki powinni zapewnić, że komunikaty są przetwarzane w idempotentne sposób. W przypadku operacji aktualizacji, takich jak SetQueueServiceProperties, SetQueueMetaData, SetQueueACL i UpdateMessage, stosowana jest strategia ostatniego składnika zapisywania usługi WINS.  
 
 Aby uzyskać więcej informacji, zobacz:  
 
-* [Interfejs API REST usługi kolejek](https://msdn.microsoft.com/library/azure/dd179363.aspx)
-* [Pobieranie wiadomości](https://msdn.microsoft.com/library/azure/dd179474.aspx)  
+* [Interfejs API REST usługi kolejkowania](https://msdn.microsoft.com/library/azure/dd179363.aspx)
+* [Pobierz komunikaty](https://msdn.microsoft.com/library/azure/dd179474.aspx)  
 
 ## <a name="managing-concurrency-in-the-file-service"></a>Zarządzanie współbieżnością w usłudze plików
-Usługa plików jest możliwy przy użyciu dwóch różnych punktów końcowych protokołu — SMB i REST. Usługa REST nie jest obsługiwane optymistyczne blokowanie lub pesymistycznego blokowania i wszystkie aktualizacje będą się odbywać w strategii wins ostatni składnik zapisywania. Klienci SMB, które instalować udziałów plików można wykorzystać mechanizmy blokowania systemu plików do zarządzania dostępem do udostępnionych plików — w tym możliwość wykonywania pesymistycznego blokowania. Po otwarciu pliku klienta SMB określa zarówno do uzyskiwania dostępu do plików udziału i trybu. Ustawianie opcji dostępu do plików, "Write" lub "Odczytu/zapisu" wraz z trybu udziału plików "None" spowoduje plik jest zablokowany przez klienta protokołu SMB, przed zamknięciem pliku. Jeśli próba wykonania operacji REST w pliku, w której klient SMB ma plik jest zablokowany usługi REST zwróci stan kodu 409 (konflikt) z kodem błędu SharingViolation.  
+Dostęp do usługi plików można uzyskać przy użyciu dwóch różnych punktów końcowych protokołu — SMB i REST. Usługa REST nie obsługuje blokowania optymistycznego ani blokowania pesymistycznego, a wszystkie aktualizacje będą zgodne z ostatnim zainstalowaną strategią usługi WINS. Klienci SMB instalujący udziały plików mogą korzystać z mechanizmów blokowania systemu plików, aby zarządzać dostępem do udostępnionych plików, w tym możliwość wykonywania blokowania pesymistycznego. Gdy klient SMB otworzy plik, określa tryb dostępu do plików i udostępniania. Ustawienie opcji dostępu do pliku "zapis" lub "Odczyt/zapis" wraz z trybem udostępniania plików "Brak" spowoduje, że plik jest blokowany przez klienta SMB do momentu zamknięcia pliku. Jeśli podjęto próbę wykonania operacji REST na pliku, w którym klient SMB ma zablokowany plik, usługa REST zwróci kod stanu 409 (konflikt) z kodem błędu SharingViolation.  
 
-Po otwarciu pliku do usunięcia klienta SMB oznacza pliku jako oczekujące usunięcie, aż inny klient SMB otwartymi dojściami w tym pliku zostaną zamknięte. Gdy plik jest oznaczone jako oczekujące na usunięcie, żadnych operacji REST dla tego pliku i zostanie zwrócony kod stanu 409 (konflikt) z kodem błędu SMBDeletePending. Ponieważ istnieje możliwość, że klient SMB do usuwania flagi oczekiwanie na usunięcie przed zamknięciem pliku nie zwróciła kod stanu 404 (nie znaleziono). Innymi słowy kod stanu 404 (nie znaleziono) są oczekiwane tylko, jeśli plik został usunięty. Należy pamiętać o tym, czy plik jest w protokole SMB do czasu usunięcia stanu, zostanie nie uwzględniony w wynikach listę plików. Należy również zauważyć, że operacje REST usuwania plików i katalogów Usuń REST niepodzielne dokłada wszelkich starań i nie powodują w stanie oczekiwanie na usunięcie.  
+Gdy klient SMB otwiera plik do usunięcia, oznacza plik jako oczekujący na usunięcie, dopóki wszystkie pozostałe uchwyty klienta SMB w tym pliku są zamknięte. Gdy plik jest oznaczony jako oczekujące na usunięcie, każda operacja REST w tym pliku zwróci kod stanu 409 (konflikt) z kodem błędu SMBDeletePending. Kod stanu 404 (nie znaleziono) nie jest zwracany, ponieważ jest możliwe, że klient SMB usunie flagę oczekującego usunięcia przed zamknięciem pliku. Innymi słowy, kod stanu 404 (nie znaleziono) jest oczekiwany tylko wtedy, gdy plik został usunięty. Należy pamiętać, że podczas gdy plik jest w stanie oczekiwania na usunięcie SMB, nie zostanie uwzględniony w wynikach listy plików. Należy również pamiętać, że operacje usuwania plików i usuwania reszty katalogu są bezdzielne i nie powodują oczekującego usunięcia.  
 
 Aby uzyskać więcej informacji, zobacz:  
 
-* [Zarządzanie plikiem blokad](https://msdn.microsoft.com/library/azure/dn194265.aspx)  
+* [Zarządzanie blokadami plików](https://msdn.microsoft.com/library/azure/dn194265.aspx)  
 
 ## <a name="summary-and-next-steps"></a>Podsumowanie i następne kroki
-Usługa Microsoft Azure Storage została zaprojektowana w celu zaspokojenia potrzeb najbardziej złożonych aplikacji online bez wymuszania deweloperów do naruszenia bezpieczeństwa lub zmusza założenia kluczy, takie jak współbieżność i wyjaśnienie pojęcia spójności danych nadchodzące podejmowane dla udzielone.  
+Usługa Microsoft Azure Storage została zaprojektowana tak, aby spełniała potrzeby najbardziej skomplikowanych aplikacji online bez wymuszania naruszenia lub reagowania na kluczowe założenia projektowe, takie jak współbieżność i spójność danych, które mają być wykonywane przez użytkowników udzielonej.  
 
-Dla aplikacji pełny przykład, do którego odwołuje się ten blog:  
+Aby uzyskać pełną przykładową aplikację, do której odwołuje się ten blog:  
 
-* [Zarządzanie współbieżnością za pomocą usługi Azure Storage — Przykładowa aplikacja](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)  
+* [Zarządzanie współbieżnością przy użyciu usługi Azure Storage — Przykładowa aplikacja](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)  
 
 Aby uzyskać więcej informacji na temat usługi Azure Storage, zobacz:  
 
-* [Strona główna programu Microsoft Azure Storage](https://azure.microsoft.com/services/storage/)
+* [Strona główna Microsoft Azure Storage](https://azure.microsoft.com/services/storage/)
 * [Wprowadzenie do usługi Azure Storage](storage-introduction.md)
-* Wprowadzenie do magazynu [Blob](../blobs/storage-dotnet-how-to-use-blobs.md), [tabeli](../../cosmos-db/table-storage-how-to-use-dotnet.md), [kolejek](../storage-dotnet-how-to-use-queues.md), i [plików](../storage-dotnet-how-to-use-files.md)
-* Architektura magazynu — [usługi Azure Storage: Usługi magazynu w chmurze o wysokiej dostępności przy użyciu silnej spójności](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+* Wprowadzenie magazynu dla [obiektów BLOB](../blobs/storage-dotnet-how-to-use-blobs.md), [tabel](../../cosmos-db/table-storage-how-to-use-dotnet.md), [kolejek](../storage-dotnet-how-to-use-queues.md)i [plików](../storage-dotnet-how-to-use-files.md)
+* Architektura magazynu — [Azure Storage: Usługa magazynu w chmurze o wysokiej dostępności z silną spójnością](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 

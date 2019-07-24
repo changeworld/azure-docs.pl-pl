@@ -1,19 +1,20 @@
 ---
-title: 'Tworzenie i modyfikowanie obwodu usługi ExpressRoute — portal: Azure | Microsoft Docs'
+title: 'Tworzenie i modyfikowanie obwodu ExpressRoute — Portal: Azure | Microsoft Docs'
 description: Tworzenie, aprowizować, sprawdź, aktualizacji, usuwania i anulować aprowizację obwodu usługi ExpressRoute.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
 ms.date: 10/20/2018
-ms.author: cherylmc;ganesr
+ms.author: cherylmc
+ms.reviewer: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: ce6d64f1df7a91f68e4621189553c36b36709039
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 25821f60f47b1279e70cba2574901cd5df3d327f
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657224"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846584"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Tworzenie i modyfikowanie obwodu usługi ExpressRoute
 
@@ -54,10 +55,10 @@ Przejdź w przeglądarce do witryny [Azure Portal](https://portal.azure.com) i z
    ![Konfigurowanie warstwa jednostki SKU i pomiaru danych](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit.png)
 
    * **Warstwa** Określa, czy włączona jest standardem usługi ExpressRoute lub dodatek ExpressRoute premium. Można określić **standardowa** można pobrać standardowej jednostki SKU lub **Premium** używania dodatku premium.
-   * **Funkcji pomiaru danych** Określa typ rozliczeń. Można określić **Metered** plan taryfowy z danymi i **nieograniczone** dla plan z nieograniczonymi danymi. Należy pamiętać, że można zmienić typ rozliczeń z **Metered** do **nieograniczone**.
+   * **Funkcji pomiaru danych** Określa typ rozliczeń. Można określić **Metered** plan taryfowy z danymi i **nieograniczone** dla plan z nieograniczonymi danymi. Należy pamiętać, że typ rozliczeń można  zmienić z taryfowe na **nieograniczony**.
 
      > [!IMPORTANT]
-     > Nie można zmienić typu z **nieograniczone** do **Metered**.
+     > Nie można zmienić typu z nieograniczonego na **taryfowy**.
 
    * **Lokalizacja komunikacji równorzędnej** jest lokalizacji fizycznej, w którym są komunikacji równorzędnej z firmą Microsoft.
 
@@ -84,7 +85,7 @@ Na tej stronie **stan dostawcy** zawiera informacje dotyczące bieżącego stanu
 
 Podczas tworzenia nowego obwodu usługi ExpressRoute obwód jest w następującym stanie:
 
-Stan dostawcy: Nie zainicjowano obsługi administracyjnej<BR>
+Stan dostawcy: Nieobsługiwane<BR>
 Stan obwodu: Włączono
 
 ![Zainicjuj proces aprowizacji](./media/expressroute-howto-circuit-portal-resource-manager/status.png)

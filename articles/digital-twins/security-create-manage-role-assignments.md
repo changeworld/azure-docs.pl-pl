@@ -1,31 +1,31 @@
 ---
-title: Tworzenie i Zarządzanie przypisaniami ról w reprezentacji urządzeń cyfrowych platformy Azure | Dokumentacja firmy Microsoft
-description: Tworzenie i Zarządzanie przypisaniami ról w reprezentacji urządzeń cyfrowych platformy Azure.
+title: Tworzenie przypisań ról i zarządzanie nimi w usłudze Azure Digital bliźniaczych reprezentacji | Microsoft Docs
+description: Tworzenie przypisań ról i zarządzanie nimi w usłudze Azure Digital bliźniaczych reprezentacji.
 author: lyrana
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 12/26/2018
-ms.author: lyrana
+ms.author: lyhughes
 ms.custom: seodec18
-ms.openlocfilehash: 72155799971760e9ddc93746dceafb1ea554d88b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a57089eb2cd87b08ba647afed002d90d6f14891a
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66162110"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846661"
 ---
-# <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Tworzenie i Zarządzanie przypisaniami ról w reprezentacji urządzeń cyfrowych platformy Azure
+# <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Tworzenie przypisań ról i zarządzanie nimi w usłudze Azure Digital bliźniaczych reprezentacji
 
-Azure Twins cyfrowego używa kontroli dostępu opartej na rolach ([RBAC](./security-role-based-access-control.md)) do zarządzania dostępem do zasobów.
+Usługa Azure Digital bliźniaczych reprezentacji używa kontroli dostępu opartej na rolach ([RBAC](./security-role-based-access-control.md)) do zarządzania dostępem do zasobów.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="role-assignments-overview"></a>Omówienie przypisania roli
+## <a name="role-assignments-overview"></a>Omówienie przypisań ról
 
-Każdy przypisania roli są zgodne z następującą definicję:
+Każde przypisanie roli jest zgodne z następującą definicją:
 
 ```JSON
 {
@@ -41,31 +41,31 @@ W poniższej tabeli opisano każdy atrybut:
 
 | Atrybut | Name (Nazwa) | Wymagane | Typ | Opis |
 | --- | --- | --- | --- | --- |
-| roleId | Identyfikator definicji roli | Tak | String | Unikatowy identyfikator przypisania roli żądaną. Aby znaleźć definicji ról i ich identyfikatora, wykonywania zapytań interfejsu API systemu lub przeglądania w poniższej tabeli. |
-| Identyfikator obiektu | Identyfikator obiektu | Yes | String | Identyfikator usługi Azure Active Directory, identyfikator obiektu nazwy głównej usługi lub nazwy domeny. Co lub których przypisanie roli jest przypisany do. Przypisanie roli musi być sformatowany zgodnie z jego skojarzonego typu. Aby uzyskać `DomainName` objectIdType, identyfikator obiektu musi zaczynać się od `“@”` znaków. |
-| objectIdType | Typ identyfikatora obiektu | Tak | String | Typ identyfikatora obiektu używany. Zobacz **obsługiwane ObjectIdTypes** poniżej. |
-| ścieżka | Ścieżka miejsca | Tak | String | Ścieżka pełny dostęp do `Space` obiektu. Może to być na przykład `/{Guid}/{Guid}`. Jeśli identyfikator wymaga przypisania roli dla całego wykresu, należy określić `"/"`. Ten znak wyznacza katalogu głównego, ale nie zaleca się jej użycie. Zawsze postępuj zgodnie z zasadą najniższych uprawnień. |
-| tenantId | Identyfikator dzierżawy | Różna | String | W większości przypadków identyfikator dzierżawy usługi Azure Active Directory. Niedozwolone dla `DeviceId` i `TenantId` ObjectIdTypes. Wymagane dla `UserId` i `ServicePrincipalId` ObjectIdTypes. Opcjonalnie na potrzeby ObjectIdType nazwa_domeny. |
+| roleId | Identyfikator definicji roli | Tak | String | Unikatowy identyfikator żądanego przypisania roli. Znajdź definicje ról i ich identyfikatory, wykonując zapytania dotyczące systemowego interfejsu API lub tabeli przeglądu poniżej. |
+| Identyfikator obiektu | Identyfikator obiektu | Tak | String | Identyfikator Azure Active Directory, identyfikator obiektu jednostki usługi lub nazwa domeny. Do czego jest przypisane przypisanie roli. Przypisanie roli musi być sformatowane zgodnie ze skojarzonym z nim typem. Dla obiektu `“@”` objectidtype identyfikator objectid musi rozpoczynać się od znaku. `DomainName` |
+| objectIdtype | Typ identyfikatora obiektu | Yes | Ciąg | Rodzaj używanego identyfikatora obiektu. Zobacz sekcję **obsługiwane ObjectIdTypes** poniżej. |
+| path | Ścieżka miejsca | Tak | String | Pełna ścieżka dostępu do `Space` obiektu. Może to być na przykład `/{Guid}/{Guid}`. Jeśli identyfikator wymaga przypisania roli dla całego wykresu, określ `"/"`. Ten znak określa katalog główny, ale jego użycie nie jest zalecane. Zawsze stosuj zasadę najniższych uprawnień. |
+| TenantId | Identyfikator dzierżawy | Różna | String | W większości przypadków Azure Active Directory identyfikator dzierżawy. Niedozwolone dla `DeviceId` i `TenantId` ObjectIdTypes. Wymagane dla `UserId` i `ServicePrincipalId` ObjectIdTypes. Opcjonalne dla nazwa_domeny. |
 
-### <a name="supported-role-definition-identifiers"></a>Identyfikatorów definicji roli obsługiwanej
+### <a name="supported-role-definition-identifiers"></a>Obsługiwane Identyfikatory definicji ról
 
-Każdego przypisania roli kojarzy definicję roli z jednostką w danym środowisku Twins cyfrowych platformy Azure.
+Każde przypisanie roli kojarzy definicję roli z jednostką w środowisku Digital bliźniaczych reprezentacji systemu Azure.
 
 [!INCLUDE [digital-twins-roles](../../includes/digital-twins-roles.md)]
 
-### <a name="supported-object-identifier-types"></a>Typy identyfikatorów obsługiwany obiekt
+### <a name="supported-object-identifier-types"></a>Obsługiwane typy identyfikatorów obiektów
 
-Wcześniej **objectIdType** atrybut został wprowadzony.
+Wcześniej wprowadzono atrybut **objectidtype** .
 
 [!INCLUDE [digital-twins-object-types](../../includes/digital-twins-object-id-types.md)]
 
-## <a name="role-assignment-operations"></a>Operacji przypisania roli
+## <a name="role-assignment-operations"></a>Operacje przypisywania ról
 
-Twins cyfrowych platformy Azure obsługuje pełne *Utwórz*, *odczytu*, i *Usuń* operacji przypisania ról. *Aktualizacja* operacje są obsługiwane przez dodawanie przypisania roli, usuwanie przypisań ról lub modyfikowanie [przestrzenne wykres analizy](./concepts-objectmodel-spatialgraph.md) węzły, które zapewniają przypisania roli dostęp do.
+Usługa Azure Digital bliźniaczych reprezentacji obsługuje pełne operacje *tworzenia*, *odczytywania*i *usuwania* dla przypisań ról. Operacje *aktualizacji* są obsługiwane przez dodawanie przypisań ról, usuwanie przypisań ról lub modyfikowanie węzłów [wykresu analizy przestrzennej](./concepts-objectmodel-spatialgraph.md) , do których przypisań ról daje dostęp.
 
 ![Punkty końcowe przypisania roli][1]
 
-Podany dokumentację referencyjną programu Swagger dalsze zawiera informacje o wszystkich dostępnych interfejsu API punktów końcowych, operacje dotyczące żądania i definicji.
+Podana dokumentacja referencyjna struktury Swagger zawiera dodatkowe informacje na temat wszystkich dostępnych punktów końcowych interfejsu API, operacji żądań i definicji.
 
 [!INCLUDE [Digital Twins Swagger](../../includes/digital-twins-swagger.md)]
 
@@ -73,30 +73,30 @@ Podany dokumentację referencyjną programu Swagger dalsze zawiera informacje o 
 
 <div id="grant"></div>
 
-### <a name="grant-permissions-to-your-service-principal"></a>Udzielanie uprawnień do jednostki usługi
+### <a name="grant-permissions-to-your-service-principal"></a>Przyznawanie uprawnień do nazwy głównej usługi
 
-Udzielanie uprawnień do jednostki usługi często jest jednym z pierwszych kroków, które należy wykonać podczas pracy za pomocą Twins cyfrowych platformy Azure. Pociąga za sobą:
+Przyznanie uprawnień do nazwy głównej usługi jest często jednym z pierwszych kroków, które należy wykonać podczas pracy z usługą Azure Digital bliźniaczych reprezentacji. Wiąże się to z:
 
-1. Rejestrowanie ramach wystąpienia platformy Azure za pomocą programu PowerShell.
-1. Uzyskiwanie informacji o jednostce Twojej usługi.
-1. Przypisywanie odpowiednią rolę do nazwy głównej usługi.
+1. Logowanie do wystąpienia platformy Azure za pomocą programu PowerShell.
+1. Uzyskiwanie informacji o jednostce usługi.
+1. Przypisywanie żądanej roli do nazwy głównej usługi.
 
-Twoja nazwa aplikacji jest dostarczany do Ciebie w usłudze Azure Active Directory. Aby dowiedzieć się więcej na temat konfigurowania i aprowizacji Twins cyfrowych platformy Azure, w usłudze Active Directory, zapoznaj się z artykułem [Szybki Start](./quickstart-view-occupancy-dotnet.md).
+Identyfikator aplikacji jest dostarczany w Azure Active Directory. Aby dowiedzieć się więcej o konfigurowaniu i aprowizacji usługi Azure Digital bliźniaczych reprezentacji w Active Directory, zapoznaj się z [przewodnikiem Szybki Start](./quickstart-view-occupancy-dotnet.md).
 
-Po utworzeniu Identyfikatora aplikacji, wykonaj następujące polecenia środowiska PowerShell:
+Po utworzeniu identyfikatora aplikacji wykonaj następujące polecenia programu PowerShell:
 
 ```shell
 Login-AzAccount
 Get-AzADServicePrincipal -ApplicationId  <ApplicationId>
 ```
 
-Użytkownik mający **administratora** roli można następnie przypisać rolę administratora miejsca dla użytkownika, wprowadzając uwierzytelnionego żądania HTTP POST na adres URL:
+Użytkownik z rolą **administratora** może następnie przypisać do użytkownika rolę administratora miejsca, wykonując UWIERZYTELNIONE żądanie HTTP post na adres URL:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 
-Za pomocą następujących treść kodu JSON:
+Z następującą treścią JSON:
 
 ```JSON
 {
@@ -110,17 +110,17 @@ Za pomocą następujących treść kodu JSON:
 
 <div id="all"></div>
 
-### <a name="retrieve-all-roles"></a>Pobieranie wszystkich ról
+### <a name="retrieve-all-roles"></a>Pobierz wszystkie role
 
 ![Role systemu][2]
 
-Aby wyświetlić listę wszystkich dostępnych ról (definicje ról), należy uwierzytelnionego żądania HTTP GET do:
+Aby wyświetlić listę wszystkich dostępnych ról (definicje ról), wykonaj uwierzytelnione żądanie HTTP GET:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/system/roles
 ```
 
-Żądania zakończonego powodzeniem, zwróci tablica JSON z wpisy dla każdej roli, która może być przypisany:
+Pomyślne żądanie zwróci tablicę JSON z wpisami dla każdej roli, która może być przypisana:
 
 ```JSON
 [
@@ -155,9 +155,9 @@ YOUR_MANAGEMENT_API_URL/system/roles
 
 <div id="check"></div>
 
-### <a name="check-a-specific-role-assignment"></a>Sprawdź konkretnego przypisania roli
+### <a name="check-a-specific-role-assignment"></a>Sprawdzanie przypisania określonego roli
 
-Aby sprawdzić przypisanie określoną rolę, wprowadzić uwierzytelnionego żądania HTTP GET do:
+Aby sprawdzić konkretne przypisanie roli, wykonaj uwierzytelnione żądanie HTTP GET:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH&accessType=YOUR_ACCESS_TYPE&resourceType=YOUR_RESOURCE_TYPE
@@ -165,26 +165,26 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 
 | **Wartość parametru** | **Wymagane** |  **Typ** |  **Opis** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  True | String |   Identyfikator obiektu objectIdType identyfikatora użytkownika. |
-| YOUR_PATH | True | String |   Do sprawdzenia dostępu dla wybranej ścieżki. |
-| YOUR_ACCESS_TYPE |  True | String |   Typ dostępu do wyszukania. |
-| YOUR_RESOURCE_TYPE | True | String |  Zasób do sprawdzenia. |
+| YOUR_USER_ID |  Prawda | String |   Identyfikator obiektu dla identyfikatora obiektu UserIdtype. |
+| YOUR_PATH | Prawda | Ciąg |   Wybrana ścieżka do sprawdzenia dostępu. |
+| YOUR_ACCESS_TYPE |  Prawda | String |   Typ dostępu, który ma zostać wyszukany. |
+| YOUR_RESOURCE_TYPE | Prawda | String |  Zasób do sprawdzenia. |
 
-Żądania zakończonego powodzeniem będzie zwracać wartość logiczną `true` lub `false` do wskazania, czy typ dostępu zostały przypisane do użytkownika dla danej ścieżki i zasobu.
+Pomyślne żądanie zwróci wartość logiczną `true` lub `false` wskazuje, czy typ dostępu został przypisany do użytkownika dla danej ścieżki i zasobu.
 
-### <a name="get-role-assignments-by-path"></a>Pobieranie przypisań ról przy użyciu ścieżki
+### <a name="get-role-assignments-by-path"></a>Pobieranie przypisań ról według ścieżki
 
-Aby uzyskać wszystkie przypisania roli dla ścieżki, należy uwierzytelnionego żądania HTTP GET do:
+Aby uzyskać wszystkie przypisania ról dla ścieżki, wykonaj uwierzytelnione żądanie HTTP GET:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 ```
 
-| Wartość | Zamień na |
+| Value | Zamień na |
 | --- | --- |
-| YOUR_PATH | Pełna ścieżka do obszaru |
+| YOUR_PATH | Pełna ścieżka do miejsca |
 
-Żądania zakończonego powodzeniem, zwróci tablicę JSON z każdym przypisania roli skojarzonych z wybranym **ścieżki** parametru:
+Pomyślne żądanie zwróci tablicę JSON z każdym przypisaniem roli skojarzonym z wybranym parametrem **ścieżki** :
 
 ```JSON
 [
@@ -198,9 +198,9 @@ YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 ]
 ```
 
-### <a name="revoke-a-permission"></a>Odwołaj uprawnienia
+### <a name="revoke-a-permission"></a>Odwołaj uprawnienie
 
-Aby odwołać uprawnienia z adresata, Usuń przypisanie roli, wprowadzając uwierzytelnionego żądania HTTP DELETE:
+Aby odwołać uprawnienia od adresata, usuń przypisanie roli, wykonując uwierzytelnione żądanie HTTP DELETE:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
@@ -210,17 +210,17 @@ YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
 | --- | --- |
 | *YOUR_ROLE_ASSIGNMENT_ID* | **Identyfikator** przypisania roli do usunięcia |
 
-Pomyślne żądania usunięcia zwróci stanu 204 odpowiedzi. Usunięcie przypisania roli, można sprawdzić [sprawdzanie](#check) czy nadal utrzymuje przypisania roli.
+Pomyślne żądanie usunięcia zwróci 204 stan odpowiedzi. Sprawdź, czy usunięto przypisanie roli, [sprawdzając](#check) , czy przypisanie roli nadal jest przechowywane.
 
 ### <a name="create-a-role-assignment"></a>Utwórz przypisanie roli
 
-Aby utworzyć przypisanie roli, należy uwierzytelnionego żądania HTTP POST na adres URL:
+Aby utworzyć przypisanie roli, wykonaj uwierzytelnione żądanie HTTP POST na adres URL:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 
-Sprawdź, czy treść kodu JSON jest zgodny ze zgodny z następującym schematem:
+Sprawdź, czy treść JSON jest zgodna z następującym schematem:
 
 ```JSON
 {
@@ -232,7 +232,7 @@ Sprawdź, czy treść kodu JSON jest zgodny ze zgodny z następującym schematem
 }
 ```
 
-Żądania zakończonego powodzeniem, zwróci stan odpowiedzi 201 wraz z **identyfikator** przypisania do nowo utworzonej roli:
+Pomyślne żądanie zwróci 201 stan odpowiedzi wraz z identyfikatorem nowo utworzonego  przypisania roli:
 
 ```JSON
 "d92c7823-6e65-41d4-aaaa-f5b32e3f01b9"
@@ -240,9 +240,9 @@ Sprawdź, czy treść kodu JSON jest zgodny ze zgodny z następującym schematem
 
 ## <a name="configuration-examples"></a>Przykłady konfiguracji
 
-W poniższych przykładach pokazano, jak skonfigurować treść JSON w kilku scenariuszach najczęściej spotykanych przypisania roli.
+W poniższych przykładach pokazano, jak skonfigurować treść JSON w kilka często spotykanych scenariuszy przypisywania ról.
 
-* **Przykład**: Użytkownik wymaga dostępu administracyjnego do floor miejsca dzierżawy.
+* **Przykład**: Użytkownik musi mieć dostęp administracyjny do piętra przestrzeni dzierżawy.
 
    ```JSON
    {
@@ -254,7 +254,7 @@ W poniższych przykładach pokazano, jak skonfigurować treść JSON w kilku sce
    }
    ```
 
-* **Przykład**: Aplikacja jest uruchamiana scenariuszy testowania pozorowanie urządzenia i czujniki.
+* **Przykład**: Aplikacja uruchamia scenariusze testów, które mają na celu imitację urządzeń i czujników.
 
    ```JSON
    {
@@ -266,7 +266,7 @@ W poniższych przykładach pokazano, jak skonfigurować treść JSON w kilku sce
    }
     ```
 
-* **Przykład**: Wszyscy użytkownicy, którzy należą do domeny otrzymują dostęp do odczytu dla miejsca do magazynowania, czujniki i użytkowników. Ten dostęp obejmuje ich odpowiednich powiązanych obiektów.
+* **Przykład**: Wszyscy użytkownicy, którzy są częścią domeny, otrzymują dostęp do odczytu dla spacji, czujników i użytkowników. Ten dostęp obejmuje odpowiednie powiązane obiekty.
 
    ```JSON
    {
@@ -277,11 +277,11 @@ W poniższych przykładach pokazano, jak skonfigurować treść JSON w kilku sce
    }
    ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby przejrzeć Twins cyfrowego Azure roli —-kontroli dostępu opartej na —, przeczytaj [roli base-access-control](./security-authenticating-apis.md).
+- Aby zapoznać się z kontrolą dostępu do usługi Azure Digital bliźniaczych reprezentacji opartej na rolach, Odczytaj [role-Base-Access-Control](./security-authenticating-apis.md).
 
-- Informacje na temat uwierzytelniania interfejsu API Twins cyfrowych platformy Azure, przeczytaj [uwierzytelniania interfejsu API](./security-authenticating-apis.md).
+- Aby dowiedzieć się więcej o uwierzytelnianiu interfejsu API Digital bliźniaczych reprezentacji na platformie Azure, przeczytaj temat [uwierzytelnianie interfejsu API](./security-authenticating-apis.md).
 
 <!-- Images -->
 [1]: media/security-roles/roleassignments.png

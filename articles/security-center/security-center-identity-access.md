@@ -13,73 +13,73 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
-ms.author: monhaber
-ms.openlocfilehash: a30bc55c564f852a5fef6e71aad9e607e6aa1065
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: v-mohabe
+ms.openlocfilehash: 73480c6e24ab13b7764c5b72280c19971eb3d039
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083670"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296496"
 ---
-# <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Monitorowanie tożsamości i dostępu w usłudze Azure Security Center (wersja zapoznawcza)
+# <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Monitorowanie tożsamości i dostępu w Azure Security Center (wersja zapoznawcza)
 Ten artykuł ułatwia korzystanie z usługi Azure Security Center w celu monitorowania tożsamości i dostępu użytkowników.
 
 > [!NOTE]
-> "Wyświetl *klasycznego* tożsamość i dostęp" link zostaną wycofane z dniem 31 lipca 2019 r. Kliknij przycisk [tutaj](security-center-features-retirement-july2019.md#menu_classicidentity) Aby dowiedzieć się więcej na usługach alternatywne.
+> Link "Wyświetl *klasyczny* & dostępu" zostanie wycofany 31 lipca 2019. Kliknij [tutaj](security-center-features-retirement-july2019.md#menu_classicidentity) , aby dowiedzieć się więcej na temat alternatywnych usług.
 
 > [!NOTE]
-> Monitorowanie tożsamości i dostępu jest dostępna w wersji zapoznawczej i jest dostępna tylko w warstwie standardowa usługi Security Center. Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center.
+> Monitorowanie tożsamości i dostępu jest w wersji zapoznawczej i dostępne tylko w warstwie Standardowa Security Center. Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center.
 >
 
-Tożsamość powinna być warstwą kontroli w Twoim przedsiębiorstwie, a ochrona tożsamości powinna stanowić najwyższy priorytet. Zabezpieczeń obwodowych powstał z obwód sieci obwodowej tożsamości. Zabezpieczenia staje się mniej o obronie sieci i więcej o obronie dane, a także zarządzanie zabezpieczeniami aplikacji i użytkowników. Dzisiaj, w związku z przeniesieniem większej ilości danych i aplikacji do chmury, tożsamość staje się nową strefą.
+Tożsamość powinna być warstwą kontroli w Twoim przedsiębiorstwie, a ochrona tożsamości powinna stanowić najwyższy priorytet. Obwód zabezpieczeń został rozwijający się od obwodu sieci do obwodu tożsamości. Zabezpieczenia są mniej dotyczące obrony sieci i więcej informacji na temat obrony danych, a także do zarządzania zabezpieczeniami aplikacji i użytkowników. Dzisiaj, w związku z przeniesieniem większej ilości danych i aplikacji do chmury, tożsamość staje się nową strefą.
 
-Dzięki monitorowaniu działań związanych z tożsamością możesz podejmować prewencyjne działania przed wystąpieniem zdarzenia i reagować na próby ataku. Pulpit nawigacyjny tożsamości i dostępu zawiera zalecenia dotyczące takich jak:
+Dzięki monitorowaniu działań związanych z tożsamością możesz podejmować prewencyjne działania przed wystąpieniem zdarzenia i reagować na próby ataku. Na pulpicie nawigacyjnym dostępu & tożsamości są dostępne zalecenia, takie jak:
 
 - Włącz usługę MFA dla kont uprzywilejowanych w ramach subskrypcji
 - Usuń konta zewnętrzne z uprawnieniami do zapisu z subskrypcji
 - Usuń uprzywilejowane konta zewnętrzne z subskrypcji
 
 > [!NOTE]
-> Jeśli Twoja subskrypcja obejmuje ponad 600 kont, usługa Security Center nie może uruchamiać zalecenia dotyczące tożsamości dla Twojej subskrypcji. Zalecenia, które nie są uruchamiane są wyświetlane w obszarze "oceny niedostępne", które omówiono poniżej.
-Usługa Security Center nie może uruchamiać zalecenia dotyczące tożsamości dla agentów administratora partnerem Cloud Solution Provider (CSP).
+> Jeśli subskrypcja ma więcej niż 600 kont, Security Center nie może uruchomić zaleceń dotyczących tożsamości dla subskrypcji. Zalecenia, które nie są uruchamiane, są wymienione w sekcji "niedostępne oceny", która została omówiona poniżej.
+Security Center nie może uruchomić zaleceń dotyczących tożsamości dla agentów administratora dostawcy rozwiązań w chmurze (CSP).
 >
 
-Zobacz [zalecenia](security-center-identity-access.md#recommendations) listę zaleceń dotyczących tożsamości i dostępu dostarczone przez usługę Security Center.
+Zapoznaj [się](security-center-identity-access.md#recommendations) z listą rekomendacji i rekomendacji dotyczących dostępu zapewnianych przez Security Center.
 
 ## <a name="monitoring-security-health"></a>Monitorowanie kondycji zabezpieczeń
-Możesz monitorować stan zabezpieczeń zasobów na **Security Center — Przegląd** pulpitu nawigacyjnego. **Zasobów** sekcja jest wskaźnik kondycji przedstawiający ważności dla każdego typu zasobu.
+Możesz monitorować stan zabezpieczeń zasobów na **Security Center — Przegląd** pulpitu nawigacyjnego. Sekcja  Resources to wskaźnik kondycji przedstawiający serwery dla każdego typu zasobu.
 
-Można wyświetlić listę wszystkich problemów, wybierając **zalecenia**. W obszarze **zasobów**, można wyświetlić listę kwestie związane z obliczeniowe i aplikacje, bezpieczeństwo danych, sieci, lub tożsamość i dostęp. Aby uzyskać więcej informacji na temat stosowania zaleceń, zobacz [wdrażanie zaleceń dotyczących zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md).
+Można wyświetlić listę wszystkich problemów, wybierając **zalecenia**. W obszarze **zasoby**można wyświetlić listę problemów specyficznych dla obliczeń & aplikacji, zabezpieczeń danych, sieci lub tożsamości & dostępu. Aby uzyskać więcej informacji na temat stosowania zaleceń, zobacz [wdrażanie zaleceń dotyczących zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md).
 
 Aby uzyskać pełną listę zaleceń dotyczących tożsamości i dostępu, zobacz [zalecenia](security-center-identity-access.md#recommendations).
 
-Aby kontynuować, wybierz **tożsamość i dostęp** w obszarze **zasobów** lub w menu głównym usługi Security Center.
+Aby kontynuować, wybierz pozycję **tożsamość & dostęp** w obszarze **zasoby** lub Security Center menu główne.
 
 ![Pulpit nawigacyjny usługi Security Center][1]
 
 ## <a name="monitor-identity-and-access"></a>Monitorowanie tożsamość i dostępu
-W obszarze **tożsamość i dostęp**, istnieją dwie karty:
+W obszarze **tożsamość & dostęp**istnieją dwie karty:
 
-- **Omówienie**: zaleceniami zostały zidentyfikowane przez usługę Security Center.
-- **Subskrypcje**: listę subskrypcji i bieżący stan zabezpieczeń każdego z nich.
+- **Przegląd**: zalecenia zidentyfikowane przez Security Center.
+- **Subskrypcje**: Lista subskrypcji i bieżący stan zabezpieczeń każdego z nich.
 
 ![Tożsamość i dostęp][2]
 
-### <a name="overview-section"></a>Sekcja — Omówienie
-W obszarze **Przegląd**, znajduje się lista zaleceń. W pierwszej kolumnie wyświetlane są zalecenia. Druga kolumna zawiera całkowitą liczbę subskrypcji, których dotyczy tego zalecenia. Trzecia kolumna pokazuje wagę problemu.
+### <a name="overview-section"></a>Sekcja przegląd
+W obszarze **Przegląd**znajduje się lista zaleceń. W pierwszej kolumnie wyświetlane są zalecenia. Druga kolumna zawiera łączną liczbę subskrypcji, których dotyczy to zalecenie. Trzecia kolumna przedstawia ważność problemu.
 
-1. Wybierz zalecenie. Zostanie wyświetlone okno dialogowe i wyświetla zalecenia:
+1. Wybierz zalecenie. Zostanie otwarte okno Rekomendacja:
 
-   - Opis rekomendacji
-   - Lista subskrypcji w złej kondycji i w dobrej kondycji
-   - Lista zasobów, które są nieprzeskanowane ze względu na niepowodzenie oceny lub zasobu w ramach subskrypcji, uruchomiony w ramach warstwy bezpłatna i nie jest oceniany
+   - Opis zalecenia
+   - Lista nieprawidłowych i zdrowych subskrypcji
+   - Lista zasobów, które są odskanowane z powodu niepowodzenia oceny lub zasób jest objęty subskrypcją w warstwie Bezpłatna i nie został oceniony
 
-   ![Okno w zalecenie][3]
+   ![Okno rekomendacji][3]
 
-1. Wybierz subskrypcję, na liście, aby uzyskać dodatkowe szczegóły.
+1. Wybierz subskrypcję z listy, aby uzyskać dodatkowe szczegóły.
 
-### <a name="subscriptions-section"></a>Subskrypcje
-W obszarze **subskrypcje**, znajduje się lista subskrypcji. W pierwszej kolumnie wyświetlane subskrypcje. Druga kolumna zawiera całkowitą liczbę zaleceń dla każdej subskrypcji. Trzecia kolumna pokazuje ważności problemów.
+### <a name="subscriptions-section"></a>Sekcja subskrypcje
+W obszarze **subskrypcje**istnieje lista subskrypcji. W pierwszej kolumnie są wyświetlane subskrypcje. Druga kolumna zawiera łączną liczbę zaleceń dla każdej subskrypcji. Trzecia kolumna przedstawia liczbę problemów.
 
 ![Karta subskrypcji][4]
 
@@ -87,50 +87,50 @@ W obszarze **subskrypcje**, znajduje się lista subskrypcji. W pierwszej kolumni
 
    - **Zalecenia dotyczące**: oparte na ocen wykonywane przez usługę Security Center, który uległ awarii.
    - **Przekazano ocen**: Lista ocen wykonywane przez usługę Security Center, które przekazane.
-   - **Oceny niedostępne**: Lista ocen, których nie można uruchomić z powodu błędu lub subskrypcja zawiera ponad 600 kont.
+   - **Niedostępne oceny**: Lista ocen, których uruchomienie nie powiodło się z powodu błędu lub ponieważ subskrypcja ma więcej niż 600 kont.
 
-   W obszarze **zalecenia** listę zaleceń dla wybranej subskrypcji i ważność poszczególne zalecenia.
+   W obszarze **zalecenia** znajduje się lista zaleceń dotyczących wybranej subskrypcji i ważności poszczególnych zaleceń.
 
-   ![Zalecenia dotyczące Wybieranie subskrypcji][5]
+   ![Zalecenia dotyczące wybierania subskrypcji][5]
 
-1. Wybierz zalecenie opis zalecenie, lista złej kondycji, jak i dobrej kondycji i listę nieprzeskanowane zasoby.
+1. Wybierz zalecenie dotyczące opisu zalecenia, listę nieprawidłowych i zdrowych subskrypcji oraz listę niezeskanowanych zasobów.
 
-   ![Opis rekomendacji][6]
+   ![Opis zalecenia][6]
 
    W obszarze **przekazywane ocen** znajduje się lista oceny zakończone pomyślnie.  Ważność te oceny zawsze ma kolor zielony.
 
    ![Oceny zakończone pomyślnie][7]
 
-1. Wybierz ocenę przekazany z listy opis oceny i listę subskrypcji w dobrej kondycji. Brak karta dla subskrypcji w złej kondycji, która wyświetla wszystkie subskrypcje, które nie powiodło się.
+1. Wybierz przekazaną ocenę z listy, aby uzyskać opis oceny i listę subskrypcji w dobrej kondycji. Istnieje karta dla subskrypcji w złej kondycji, która wyświetla listę wszystkich subskrypcji, które nie powiodły się.
 
    ![Oceny zakończone pomyślnie][8]
 
 ## <a name="recommendations"></a>Zalecenia
-Używany jako odwołanie w tabeli poniżej, aby lepiej zrozumieć dostępne zalecenia dotyczące tożsamości i dostępu, a każdy z nich działanie w przypadku zastosowania.
+Skorzystaj z poniższej tabeli jako odniesienia, aby pomóc zrozumieć dostępną tożsamość & zaleceniami dostępu i co każdy z nich ma w przypadku zastosowania go.
 
 |Typ zasobu|Wskaźnik bezpieczeństwa|Zalecenie|Opis|
 |----|----|----|----|
-|Subskrypcja|50|Uwierzytelnianie wieloskładnikowe powinno być włączone dla kont z uprawnieniami właściciela subskrypcji|Włączanie usługi Multi-Factor Authentication (MFA) dla wszystkich kont subskrypcji z uprawnieniami administratora w celu zapobiegania naruszeniom zabezpieczeń kont lub zasobów.|
-|Subskrypcja|40|Uwierzytelnianie wieloskładnikowe powinna być włączona dla konta subskrypcji z uprawnieniami do zapisu|Włączanie usługi Multi-Factor Authentication (MFA) dla wszystkich kont subskrypcji z uprawnieniami do zapisu w celu zapobiegania naruszeniom zabezpieczeń kont lub zasobów.|
-|Subskrypcja|30|Zewnętrzne konta z uprawnieniami właściciela, powinny zostać usunięte z subskrypcji|Usuń konta zewnętrzne z uprawnieniami właściciela z subskrypcji, aby uniknąć niemonitorowanego dostępu.|
-|Subskrypcja|30|Uwierzytelnianie wieloskładnikowe powinna być włączona dla konta subskrypcji z uprawnieniami do odczytu|Włączanie usługi Multi-Factor Authentication (MFA) dla wszystkich kont subskrypcji z uprawnieniami do odczytu w celu zapobiegania naruszeniom zabezpieczeń kont lub zasobów.|
-|Subskrypcja|25|Konta zewnętrzne z uprawnieniami do zapisu powinny zostać usunięte z subskrypcji|Usuń konta zewnętrzne z uprawnieniami do zapisu z subskrypcji, aby uniknąć niemonitorowanego dostępu. |
-|Subskrypcja|20|Przestarzałe konta z uprawnieniami właściciela, powinny zostać usunięte z subskrypcji|Usuń przestarzałe konta z uprawnieniami właściciela z subskrypcji.|
-|Subskrypcja|5|Przestarzałe konta powinny zostać usunięte z subskrypcji|Usuń przestarzałe konta z subskrypcji, aby umożliwić dostęp do tylko bieżąca liczba użytkowników. |
-|Subskrypcja|5|Powinna istnieć więcej niż jeden właściciel został przypisany do Twojej subskrypcji|Wyznaczenie więcej niż jednego właściciela subskrypcji w celu posiadania nadmiarowości dostępu administratora.|
-|Subskrypcja|5|Maksymalnie 3 właścicieli należy wyznaczyć dla Twojej subskrypcji|Wyznaczanie mniejszej niż 3 właścicieli subskrypcji, aby zmniejszyć ryzyko naruszenia zabezpieczeń przez właściciela z naruszonymi zabezpieczeniami.|
-|Magazyn kluczy|5|Dzienniki diagnostyczne w usłudze Key Vault powinno być włączone.|Włączanie dzienników i zachowują je nawet przez rok. Dzięki temu można ponownie utworzyć dzienników aktywności na potrzeby analizy, gdy wystąpi zdarzenie naruszenia zabezpieczeń lub złamania zabezpieczeń sieci. |
-|Subskrypcja|15|Zewnętrzne konta z uprawnieniami do odczytu powinny zostać usunięte z subskrypcji|Usuń konta zewnętrzne z uprawnieniami do odczytu z subskrypcji, aby uniknąć niemonitorowanego dostępu.| 
+|Subscription|50|Uwierzytelnianie wieloskładnikowe powinno być włączone na kontach z uprawnieniami właściciela w ramach subskrypcji|Włącz uwierzytelnianie wieloskładnikowe (MFA) dla wszystkich kont subskrypcji z uprawnieniami administratora, aby zapobiec naruszeniu kont lub zasobów.|
+|Subscription|40|Uwierzytelnianie wieloskładnikowe powinno być włączone na kontach subskrypcji z uprawnieniami do zapisu|Włącz uwierzytelnianie wieloskładnikowe (MFA) dla wszystkich kont subskrypcji z uprawnieniami do zapisu, aby zapobiec naruszeniu kont lub zasobów.|
+|Subscription|30|Konta zewnętrzne z uprawnieniami właściciela powinny zostać usunięte z subskrypcji|Usuń konta zewnętrzne z uprawnieniami właściciela z subskrypcji, aby zapobiec niemonitorowanemu dostępowi.|
+|Subscription|30|Uwierzytelnianie wieloskładnikowe powinno być włączone na kontach subskrypcji z uprawnieniami do odczytu|Włącz uwierzytelnianie wieloskładnikowe (MFA) dla wszystkich kont subskrypcji z uprawnieniami do odczytu, aby zapobiec naruszeniu kont lub zasobów.|
+|Subscription|25|Konta zewnętrzne z uprawnieniami do zapisu powinny zostać usunięte z subskrypcji|Usuń konta zewnętrzne z uprawnieniami do zapisu z subskrypcji, aby zapobiec niemonitorowanemu dostępowi. |
+|Subscription|20|Przestarzałe konta z uprawnieniami właściciela powinny zostać usunięte z subskrypcji|Usuń przestarzałe konta z uprawnieniami właściciela z subskrypcji.|
+|Subscription|5|Przestarzałe konta powinny zostać usunięte z subskrypcji|Usuń przestarzałe konta z subskrypcji, aby umożliwić dostęp tylko bieżącym użytkownikom. |
+|Subscription|5|Do subskrypcji powinien być przypisany więcej niż jeden właściciel|Wyznacz więcej niż jednego właściciela subskrypcji, aby zapewnić nadmiarowość dostępu administratora.|
+|Subscription|5|Dla subskrypcji należy wyznaczyć maksymalnie 3 właścicieli|Wyznacz mniej niż 3 właściciele subskrypcji, aby zmniejszyć prawdopodobieństwo naruszenia przez zagrożonego właściciela.|
+|Magazyn kluczy|5|Dzienniki diagnostyczne w Key Vault powinny być włączone|Włączanie dzienników i zachowują je nawet przez rok. Dzięki temu można ponownie utworzyć dzienników aktywności na potrzeby analizy, gdy wystąpi zdarzenie naruszenia zabezpieczeń lub złamania zabezpieczeń sieci. |
+|Subscription|15|Konta zewnętrzne z uprawnieniami do odczytu powinny zostać usunięte z subskrypcji|Usuń konta zewnętrzne z uprawnieniami do odczytu z subskrypcji, aby zapobiec niemonitorowanemu dostępowi.| 
 
 > [!NOTE]
-> Jeśli utworzono zasady dostępu warunkowego, który wymaga uwierzytelniania Wieloskładnikowego, ale ma wykluczenia Ustaw oceny zalecenia usługi Security Center MFA uwzględnia zasady niezgodne, ponieważ umożliwia niektórzy użytkownicy zalogować się do platformy Azure bez użycia usługi MFA.
+> Jeśli zostały utworzone zasady dostępu warunkowego, które wymagają uwierzytelniania wieloskładnikowego, ale mają ustawione wykluczenia, Ocena rekomendacji Security Center MFA uważa, że zasady nie są zgodne, ponieważ umożliwia ona użytkownikom logowanie się na platformie Azure bez uwierzytelniania wieloskładnikowego.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej na temat zalecenia, które mają zastosowanie do innych typów zasobów platformy Azure, zobacz następujące tematy:
 
 - [Ochrona maszyn i aplikacji w usłudze Azure Security Center](security-center-virtual-machine-recommendations.md)
 - [Ochrona sieci w usłudze Azure Security Center](security-center-network-recommendations.md)
-- [Ochrona usługi Azure SQL i danych w usłudze Azure Security Center](security-center-sql-service-recommendations.md)
+- [Ochrona usługi Azure SQL i danych w Azure Security Center](security-center-sql-service-recommendations.md)
 
 Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 * [Zarządzanie alertami zabezpieczeń i reagowanie na nie w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Dowiedz się, jak zarządzać alertami i reagować na zdarzenia związane z bezpieczeństwem w usłudze Security Center.

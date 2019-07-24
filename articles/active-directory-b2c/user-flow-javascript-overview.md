@@ -1,6 +1,6 @@
 ---
-title: JavaScript i strony umowy wersje — Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak włączyć język JavaScript i używać wersji kontraktu stron w usłudze Azure Active Directory B2C.
+title: Wersje języka JavaScript i układu strony — Azure Active Directory B2C | Microsoft Docs
+description: Informacje o sposobie włączania języka JavaScript i używania wersji układu strony w programie Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,37 +10,43 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ef474bec71a9015209b5748b6947816002bd4a5d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0eb5c89387d8bdcf0e0b72c669c42f716ff5fbb3
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511979"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227101"
 ---
-# <a name="javascript-and-page-contract-versions-in-azure-active-directory-b2c"></a>Wersje kontraktu JavaScript i stron w usłudze Azure Active Directory B2C
+# <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Wersje języka JavaScript i układu strony w Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Usługa Azure AD B2C zawiera zbiór zawartość pakietu zawierający elementy interfejsu użytkownika w przepływy użytkownika i zasad niestandardowych HTML, CSS i JavaScript. Aby włączyć język JavaScript dla aplikacji, należy dodać element do Twojej [zasad niestandardowych](active-directory-b2c-overview-custom.md) lub ją włączyć w portalu przepływów użytkownika, zaznacz kontrakt strony i użyj [z usługi b2clogin.com](b2clogin.md) w żądaniach.
+Azure AD B2C zawiera zestaw spakowanych zawartości zawierający kod HTML, CSS i JavaScript dla elementów interfejsu użytkownika w przepływach użytkownika i zasadach niestandardowych. Aby włączyć obsługę języka JavaScript dla aplikacji, należy dodać element do [zasad niestandardowych](active-directory-b2c-overview-custom.md) lub włączyć go w portalu dla przepływów użytkowników, wybrać układ strony i użyć [b2clogin.com](b2clogin.md) w swoich żądaniach.
 
-Jeśli zamierzasz włączyć [JavaScript](javascript-samples.md) kod po stronie klienta, należy mieć pewność, że elementy Twój kod JavaScript jest tworzony na są niezmienne. W przeciwnym razie zmiany może spowodować nieoczekiwane zachowanie na stronach użytkownika. Aby uniknąć tych problemów, można wymusić użycie kontraktu strony i określ wersję strony umowy. W ten sposób zapewnia, że wszystkie definicje zawartości, które Twój kod JavaScript jest oparty na są niezmienne. Nawet jeśli nie zamierzasz włączyć język JavaScript, możesz określić wersja kontraktu strony dla stron sieci.
+Jeśli zamierzasz włączyć kod po stronie klienta [JavaScript](javascript-samples.md) , upewnij się, że elementy, które są na pewno są używane w języku JavaScript, są niezmienne. W przeciwnym razie wszelkie zmiany mogą spowodować nieoczekiwane zachowanie na stronach użytkownika. Aby uniknąć tych problemów, można wymusić użycie układu strony i określić wersję układu strony. To gwarantuje, że wszystkie definicje zawartości, na których oparto kod JavaScript, są niezmienne. Nawet jeśli nie zamierzasz włączać języka JavaScript, możesz określić wersję układu strony dla stron.
 
 ## <a name="user-flows"></a>Przepływy użytkowników
 
-W oknie właściwości przepływu użytkownika można włączyć kodu JavaScript, który wymusza także użycie kontraktu strony. Następnie można ustawić wersja kontraktu strony, zgodnie z opisem w następnej sekcji.
+We właściwościach przepływu użytkownika można włączyć język JavaScript, który również wymusza użycie układu strony. Następnie można ustawić wersję układu strony dla przepływu użytkownika zgodnie z opisem w następnej sekcji.
 
-![Włącz ustawienie języka JavaScript](media/user-flow-javascript-overview/javascript-settings.png)
+![Strona właściwości przepływu użytkownika z wyróżnionym ustawieniem Włącz język JavaScript](media/user-flow-javascript-overview/javascript-settings.png)
 
-Czy JavaScript zostanie włączone we właściwościach przepływ użytkownika, można określić wersja kontraktu strony stron przepływu użytkownika. Otwórz przepływ użytkownika, a następnie wybierz pozycję **układy stron**. W obszarze **Nazwa układu**, wybierz stronę przepływ użytkownika i wybierz **wersja kontraktu strony**.
+### <a name="select-a-page-layout-version"></a>Wybierz wersję układu strony
 
-![Włącz ustawienie języka JavaScript](media/user-flow-javascript-overview/page-contract-version.png)
+Niezależnie od tego, czy w obszarze właściwości przepływu użytkownika jest włączone JavaScript, możesz określić wersję układu strony dla stron przepływu użytkownika. Otwórz przepływ użytkownika i wybierz pozycję **układy strony**. W obszarze **Nazwa układu**wybierz stronę przepływ użytkownika i wybierz **wersję układu strony**.
+
+Informacje o różnych wersjach układów stron można znaleźć w [dzienniku zmian wersji](page-layout.md#version-change-log).
+
+![Ustawienia układu strony w portalu pokazujące listę rozwijaną wersji układu strony](media/user-flow-javascript-overview/page-layout-version.png)
 
 ## <a name="custom-policies"></a>Zasady niestandardowe
 
-Aby włączyć język JavaScript w zasadach niestandardowych, należy dodać **ScriptExecution** elementu **RelyingParty** elementu w pliku zasad niestandardowych. Aby uzyskać więcej informacji, zobacz [przykładowe skrypty JavaScript do użycia w usłudze Azure Active Directory B2C](javascript-samples.md).
+Aby włączyć język JavaScript w zasadach niestandardowych, należy dodać element **ScriptExecution** do elementu **RelyingParty** w pliku zasad niestandardowych. Aby uzyskać więcej informacji, zobacz [przykłady JavaScript do użycia w Azure Active Directory B2C](javascript-samples.md).
 
-Czy należy włączyć język JavaScript w niestandardowe zasady, można określić wersja kontraktu strony dla stron sieci. Aby uzyskać więcej informacji na temat określania kontrakt strony zobacz [zaznacz kontrakt strony w usłudze Azure Active Directory B2C, za pomocą zasad niestandardowych](page-contract.md).
+Niezależnie od tego, czy w zasadach niestandardowych włączono obsługę języka JavaScript, możesz określić wersję układu strony dla stron. Aby uzyskać więcej informacji na temat określania układu strony, zobacz [Wybieranie układu strony w Azure Active Directory B2C przy użyciu zasad niestandardowych](page-layout.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zobacz [przykładowe skrypty JavaScript do użycia w usłudze Azure Active Directory B2C](javascript-samples.md).
+Aby uzyskać informacje o różnych wersjach układu strony, zobacz sekcję **Dziennik zmian wersji** w temacie [Wybieranie układu strony w Azure Active Directory B2C przy użyciu zasad niestandardowych](page-layout.md#version-change-log).
+
+Przykłady użycia języka JavaScript można znaleźć w przykładach [języka JavaScript do użycia w Azure Active Directory B2C](javascript-samples.md).

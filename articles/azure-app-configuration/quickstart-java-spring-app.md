@@ -14,55 +14,53 @@ ms.tgt_pltfrm: Spring
 ms.workload: tbd
 ms.date: 01/08/2019
 ms.author: yidon
-ms.openlocfilehash: a91c61edd773b5742b092f5d72a5a22f1d90e63b
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: e27635d153e58f96dad7db6870ed1dc3f640236a
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393549"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326486"
 ---
-# <a name="quickstart-create-a-java-spring-app-with-app-configuration"></a>Szybki start: Tworzenie aplikacji Java Spring korzystającej z usługi App Configuration
+# <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Szybki start: Tworzenie aplikacji ze sprężyną Java przy użyciu konfiguracji aplikacji platformy Azure
 
-Usługa Azure App Configuration to zarządzana usługa konfiguracji na platformie Azure. Umożliwia on łatwe przechowywać i zarządzać wszystkie ustawienia aplikacji w jednym miejscu, który jest oddzielony od kodu. W tym przewodniku Szybki start pokazano, jak zintegrować usługę z aplikacją Java Spring.
-
-Wykonaj kroki w tym przewodniku Szybki Start, można użyć dowolnego edytora kodu. [Visual Studio Code](https://code.visualstudio.com/) jest doskonałą opcją dostępne w Windows, macOS i platformy Linux.
+W tym przewodniku szybki start dołączysz konfigurację aplikacji platformy Azure do aplikacji ze sprężyną Java w celu scentralizowanego przechowywania i zarządzania ustawieniami aplikacji oddzielonymi od kodu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ten przewodnik Szybki Start, instaluje obsługiwanej [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk) z wersji 8 i [narzędzia Apache Maven](https://maven.apache.org/) w wersji 3.0 lub nowszej.
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+- Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
+- Obsługiwany [zestaw Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk) w wersji 8.
+- System [Apache Maven](https://maven.apache.org/download.cgi) w wersji 3,0 lub nowszej.
 
 ## <a name="create-an-app-configuration-store"></a>Tworzenie magazynu konfiguracji aplikacji
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wybierz **Eksplorator konfiguracji** >  **+ Utwórz** można dodać następujące pary klucz wartość:
+6. Wybierz kolejno pozycje **Eksplorator** > konfiguracji **+ Utwórz** , aby dodać następujące pary klucz-wartość:
 
-    | Klucz | Wartość |
+    | Klucz | Value |
     |---|---|
     | /application/config.message | Witamy |
 
-    Pozostaw **etykiety** i **typu zawartości** puste, aby teraz.
+    Dla tej pory pozostaw pustą **etykietę** i **Typ zawartości** .
 
 ## <a name="create-a-spring-boot-app"></a>Tworzenie aplikacji Spring Boot
 
-Możesz użyć [Spring Initializr](https://start.spring.io/) Aby utworzyć nowy projekt aplikacji Spring Boot.
+Używasz sprężyny [Initializr](https://start.spring.io/) do tworzenia nowego projektu sprężyny rozruchowej.
 
 1. Przejdź do <https://start.spring.io/>.
 
 2. Określ następujące opcje:
 
    * Wygeneruj projekt **Maven** z użyciem języka **Java**.
-   * Określ **Spring Boot** wersji, która jest równa lub większa niż 2.0.
+   * Określ wersję **rozruchu sprężynowego** , która jest równa lub większa niż 2,0.
    * Określ nazwy **Grupa** i **Artefakt** dla swojej aplikacji.
    * Dodaj zależność **Internet**.
 
-3. Po określeniu poprzednich opcji, wybierz **Generowanie projektu**. Po wyświetleniu monitu pobierz projekt do ścieżki na komputerze lokalnym.
+3. Po określeniu poprzednich opcji wybierz pozycję **Generuj projekt**. Po wyświetleniu monitu pobierz projekt do ścieżki na komputerze lokalnym.
 
-## <a name="connect-to-an-app-configuration-store"></a>Łączenie do sklepu z aplikacjami konfiguracji
+## <a name="connect-to-an-app-configuration-store"></a>Nawiązywanie połączenia z magazynem konfiguracji aplikacji
 
-1. Po wyodrębnieniu plików w systemie lokalnym prostą aplikację Spring Boot jest gotowy do edycji. Znajdź plik *pom.xml* w katalogu głównym swojej aplikacji.
+1. Po wyodrębnieniu plików w systemie lokalnym, prosta aplikacja rozruchowa sprężyny jest gotowa do edycji. Znajdź plik *pom.xml* w katalogu głównym swojej aplikacji.
 
 2. Otwórz plik *pom.xml* w edytorze tekstu, a następnie dodaj starter Spring Cloud Azure Config do listy `<dependencies>`:
 
@@ -121,7 +119,7 @@ Możesz użyć [Spring Initializr](https://start.spring.io/) Aby utworzyć nowy 
     }
     ```
 
-6. Utwórz nowy plik o nazwie `bootstrap.properties` zasobów w katalogu aplikacji i dodaj następujące wiersze do pliku. Zastąp przykładowe wartości odpowiednie właściwości dla magazynu konfiguracji aplikacji.
+6. Utwórz nowy plik o nazwie `bootstrap.properties` w katalogu zasobów aplikacji, a następnie Dodaj do pliku następujące wiersze. Zastąp przykładowe wartości odpowiednimi właściwościami magazynu konfiguracji aplikacji.
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].connection-string=[your-connection-string]
@@ -129,28 +127,28 @@ Możesz użyć [Spring Initializr](https://start.spring.io/) Aby utworzyć nowy 
 
 ## <a name="build-and-run-the-app-locally"></a>Lokalne kompilowanie i uruchamianie aplikacji
 
-1. Tworzenie aplikacji platformy Spring Boot przy użyciu narzędzia Maven i uruchom go, na przykład:
+1. Skompiluj aplikację do rozruchu ze sprężyną przy użyciu Maven i uruchom ją, na przykład:
 
     ```shell
     mvn clean package
     mvn spring-boot:run
     ```
-2. Po uruchomieniu aplikacji użyj *curl* do testowania aplikacji, na przykład:
+2. Po uruchomieniu aplikacji należy użyć zazwinięcie  do przetestowania aplikacji, na przykład:
 
       ```shell
       curl -X GET http://localhost:8080/
       ```
-    Zobaczysz komunikat, który został wprowadzony w magazynie konfiguracji aplikacji.
+    Zobaczysz komunikat wprowadzony w magazynie konfiguracji aplikacji.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki Start został utworzony nowy magazyn konfiguracji aplikacji i jej za pomocą aplikacji Java Spring. Aby uzyskać więcej informacji, zobacz [Spring na platformie Azure](https://docs.microsoft.com/java/azure/spring-framework/).
+W tym przewodniku szybki start utworzono nowy magazyn konfiguracji aplikacji i użył go w aplikacji ze sprężyną Java. Aby uzyskać więcej informacji, zobacz [Sprężyna na platformie Azure](https://docs.microsoft.com/java/azure/spring-framework/).
 
-Aby dowiedzieć się więcej o tym, jak używać konfiguracji aplikacji, przejdź do następnego samouczka, który demonstruje uwierzytelniania.
+Aby dowiedzieć się więcej na temat sposobu korzystania z konfiguracji aplikacji, przejdź do następnego samouczka, który pokazuje uwierzytelnianie.
 
 > [!div class="nextstepaction"]
-> [Integracja tożsamości zarządzanych](./howto-integrate-azure-managed-service-identity.md)
+> [Integracja tożsamości zarządzanej](./howto-integrate-azure-managed-service-identity.md)

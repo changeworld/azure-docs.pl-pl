@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: instalowanie aplikacji w autonomicznym klastrze usługi Service Fabric — Azure Service Fabric | Microsoft Docs'
-description: W tym samouczku dowiesz się, jak zainstalować aplikację do klastra usługi Service Fabric autonomicznego.
+description: W tym samouczku dowiesz się, jak zainstalować aplikację w autonomicznym klastrze Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -12,21 +12,21 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/11/2018
+ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 58daa53dba8f18c3f73253008fe687ba8b0d0839
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 5e5260a2001d9cb0a38f4182e923a5416f76712b
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274077"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68384996"
 ---
-# <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>Samouczek: Wdrażanie aplikacji na klastra autonomicznego usługi Service Fabric
+# <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>Samouczek: Wdrażanie aplikacji w klastrze autonomicznym Service Fabric
 
-Klastry autonomiczne usługi Service Fabric umożliwiają wybór własnego środowiska i utworzenie klastra zgodnie z obowiązującą w usłudze Service Fabric zasadą „dowolnego systemu operacyjnego i dowolnej chmury”. W tej serii samouczków Tworzenie klastra autonomicznego hostowanych na platformie AWS i wdrożyć aplikację do niego.
+Klastry autonomiczne usługi Service Fabric umożliwiają wybór własnego środowiska i utworzenie klastra zgodnie z obowiązującą w usłudze Service Fabric zasadą „dowolnego systemu operacyjnego i dowolnej chmury”. W tej serii samouczków utworzysz klaster autonomiczny hostowany w AWS i wdrożono w nim aplikację.
 
-Ten samouczek jest trzecią częścią serii.  Klastry autonomiczne usługi Service Fabric oferuje opcję, aby wybrać własne środowisko, a następnie utworzyć klaster jako część naszego podejścia "Dowolny system operacyjny, każdej chmury" przy użyciu usługi Service Fabric. W tym samouczku pokazano, jak utworzyć infrastrukturę usług AWS niezbędną do obsługi takiego klastra autonomicznego.
+Ten samouczek jest trzecią częścią serii.  Service Fabric klastry autonomiczne oferują możliwość wyboru własnego środowiska i utworzenia klastra w ramach podejścia "dowolnych systemów operacyjnych, wszelkich chmur" z Service Fabric. W tym samouczku pokazano, jak utworzyć infrastrukturę usług AWS niezbędną do obsługi takiego klastra autonomicznego.
 
 Część trzecia serii zawiera informacje na temat wykonywania następujących czynności:
 
@@ -38,7 +38,7 @@ Część trzecia serii zawiera informacje na temat wykonywania następujących c
 
 Przed rozpoczęciem tego samouczka:
 
-* [Instalowanie programu Visual Studio 2019](https://www.visualstudio.com/) i zainstaluj **programowanie na platformie Azure** i **ASP.NET i tworzenie aplikacji internetowych** obciążeń.
+* [Zainstaluj program Visual Studio 2019](https://www.visualstudio.com/) i zainstaluj obciążenia związane z  programowaniem i programowaniem na **platformie Azure** .
 * [Zainstaluj zestaw SDK usługi Service Fabric.](service-fabric-get-started.md)
 
 ## <a name="download-the-voting-sample-application"></a>Pobieranie przykładowej aplikacji do głosowania
@@ -61,13 +61,13 @@ Po pobraniu aplikacji można ją wdrożyć w klastrze bezpośrednio z programu V
 
 4. Kliknij prawym przyciskiem myszy projekt aplikacji `Voting` w Eksploratorze rozwiązań i wybierz polecenie **Publikuj**.
 
-5. Wybierz listę rozwijaną **Punkt końcowy połączenia** i wprowadź publiczną nazwę DNS jednego z węzłów w klastrze.  Na przykład `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. Należy pamiętać, że na platformie Azure, w pełni kwalifikowaną nazwę domeny (FQDN) nie znajduje się automatycznie, ale może łatwo [można ustawić na stronie Omówienie maszyny Wirtualnej.](https://docs.microsoft.com/azure/virtual-machines/linux/portal-create-fqdn)
+5. Wybierz listę rozwijaną **Punkt końcowy połączenia** i wprowadź publiczną nazwę DNS jednego z węzłów w klastrze.  Na przykład `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. Należy pamiętać, że na platformie Azure nie jest podawana w pełni kwalifikowana nazwa domeny (FQDN), ale można ją łatwo [ustawić na stronie Przegląd maszyny wirtualnej.](https://docs.microsoft.com/azure/virtual-machines/linux/portal-create-fqdn)
 
 6. Otwórz preferowaną przeglądarkę i wpisz adres klastra (punkt końcowy połączenia; ta aplikacja jest wdrożona na porcie 8080 — na przykład ec2-34-215-183-77.us-west-2.compute.amazonaws.com:8080).
 
     ![Odpowiedź interfejsu API z klastra](./media/service-fabric-tutorial-standalone-cluster/deployed-app.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W części trzeciej tej serii przedstawiono sposób wdrażania aplikacji w klastrze:
 

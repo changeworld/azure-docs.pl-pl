@@ -1,9 +1,9 @@
 ---
-title: Aplikacja mobilna wywołuje interfejsy API — w wywołuje internetowy interfejs API sieci web | Platforma tożsamości firmy Microsoft
-description: Dowiedz się, jak utworzyć aplikację mobilną, która wywołuje internetowych interfejsów API (wywoływanie interfejsu web API)
+title: Aplikacja mobilna, która wywołuje interfejsy API sieci Web — wywoływanie interfejsu API sieci Web | Platforma tożsamości firmy Microsoft
+description: Dowiedz się, jak utworzyć aplikację mobilną wywołującą interfejsy API sieci Web (wywołując internetowy interfejs API)
 services: active-directory
 documentationcenter: dev-center-name
-author: danieldobalian
+author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -16,37 +16,37 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fc8c21db0f42bbb6804c00e27e82f840d7038c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: e1408c06570babfd93c46fdfc7a3c6754000bcbc
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111168"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320849"
 ---
-# <a name="mobile-app-that-calls-web-apis---call-a-web-api"></a>Aplikacja mobilna, która wywołuje interfejsy API — w sieci web wywołania interfejsu API sieci web
+# <a name="mobile-app-that-calls-web-apis---call-a-web-api"></a>Aplikacja mobilna, która wywołuje interfejsy API sieci Web — wywołuje interfejs API sieci Web
 
-Po aplikacji został zalogowany użytkownik i odebrane tokeny, biblioteka MSAL udostępnia kilka rodzajów informacji dotyczących użytkownika, środowiska użytkownika i tokeny wystawione. Aplikacja umożliwia te wartości wywołanie interfejsu API sieci web lub wyświetlania komunikatu powitalnego do użytkownika.
+Po podpisaniu aplikacji w użytkowniku i otrzymaniu tokenów MSAL uwidacznia kilka informacji o użytkowniku, środowisku użytkownika i wystawionych tokenach. Twoja aplikacja może używać tych wartości do wywoływania internetowego interfejsu API lub wyświetlania użytkownikowi komunikatu powitalnego.
 
-Najpierw przyjrzymy wynik MSAL. Następnie omówimy sposób użycia tokenu dostępu z `AuthenticationResult` lub `result` do wywoływania chronionego internetowego interfejsu API.
+Po pierwsze Przyjrzyjmy się wynikowi MSAL. Następnie dowiesz się, `AuthenticationResult` jak używać tokenu dostępu z lub `result` do wywoływania chronionego internetowego interfejsu API.
 
-## <a name="msal-result"></a>Wynik biblioteki MSAL
-Biblioteka MSAL zawiera następujące wartości: 
+## <a name="msal-result"></a>Wynik MSAL
+MSAL udostępnia następujące wartości: 
 
-- `AccessToken`: Używany do wywoływania chronionego internetowego interfejsów API w żądaniu HTTP elementu nośnego.
-- `IdToken`: Zawiera przydatne informacje dotyczące zalogowanego użytkownika, takie jak nazwa użytkownika, głównej dzierżawy i unikatowy identyfikator dla magazynu.
-- `ExpiresOn`: Czas wygaśnięcia tokenu. Biblioteka MSAL obsługuje automatyczne odświeżanie dla aplikacji.
-- `TenantId`: Identyfikator dzierżawy, w której użytkownik jest zalogowany przy użyciu. Dla użytkowników-gości (Azure Active Directory B2B) ta wartość będzie identyfikować dzierżawy, który użytkownik zalogowany za pomocą nie dzierżawy macierzystego użytkownika.  
-- `Scopes`: Zakresy, które zostały przyznane token. Udzielone zakresy może być podzbiorem zakresy, których szukasz.
+- `AccessToken`: Służy do wywoływania chronionych interfejsów API sieci Web w żądaniu HTTP okaziciela.
+- `IdToken`: Zawiera użyteczne informacje o zalogowanym użytkowniku, takie jak nazwa użytkownika, dzierżawa główna i unikatowy identyfikator magazynu.
+- `ExpiresOn`: Czas wygaśnięcia tokenu. MSAL obsługuje Autoodświeżanie aplikacji.
+- `TenantId`: Identyfikator dzierżawy, za pomocą której zalogowany jest użytkownik. Dla użytkowników-Gości (Azure Active Directory B2B) ta wartość będzie identyfikować dzierżawcę, za pomocą którego zalogowano się użytkownik, a nie dzierżawy głównej użytkownika.  
+- `Scopes`: Zakresy, które zostały przyznane z tokenem. Przyznane zakresy mogą być podzbiorem żądanych zakresów.
 
-Biblioteka MSAL również udostępnia abstrakcję do `Account`. `Account` Reprezentuje konto logowania bieżącego użytkownika.
+MSAL udostępnia również streszczenie dla `Account`. `Account` Reprezentuje konto zalogowanego bieżącego użytkownika.
 
 - `HomeAccountIdentifier`: Identyfikator dzierżawy głównej użytkownika.
-- `UserName`: Nazwa użytkownika preferowany przez użytkownika. Może to być pusty dla użytkowników usługi Azure Active Directory B2C.
-- `AccountIdentifier`: Identyfikator zalogowanego użytkownika. Ta wartość będzie taka sama jak `HomeAccountIdentifier` wartość w większości przypadków, chyba że użytkownik Gość w innej dzierżawie.
+- `UserName`: Preferowana nazwa użytkownika. Może to być puste dla Azure Active Directory B2C użytkowników.
+- `AccountIdentifier`: Identyfikator zalogowanego użytkownika. Ta wartość będzie taka sama jak `HomeAccountIdentifier` wartość w większości przypadków, chyba że użytkownik jest gościem w innej dzierżawie.
 
 ## <a name="call-an-api"></a>Wywoływanie interfejsu API
 
-Po utworzeniu tokenu dostępu, jest łatwy do wywołania interfejsu API sieci web. Twoja aplikacja będzie używać tokenu do konstruowania żądania HTTP, a następnie uruchom żądanie.
+Po uzyskaniu tokenu dostępu można łatwo wywołać internetowy interfejs API. Aplikacja będzie używać tokenu do konstruowania żądania HTTP, a następnie uruchamiania żądania.
 
 ### <a name="android"></a>Android
 
@@ -126,14 +126,14 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 }
 ```
 
-## <a name="making-several-api-requests"></a>Co kilka żądań interfejsu API
+## <a name="making-several-api-requests"></a>Tworzenie kilku żądań interfejsu API
 
-Czy potrzebne do wywoływania tego samego interfejsu API kilka razy, czy należy wywołać wiele interfejsów API, wziąć pod uwagę następujące pod uwagę podczas tworzenia aplikacji:
+Jeśli konieczne jest Wywołaj ten sam interfejs API kilka razy lub jeśli musisz wywołać wiele interfejsów API, weź pod uwagę następujące kwestie podczas kompilowania aplikacji:
 
-- **Przyrostowe zgody**: Platforma tożsamości firmy Microsoft umożliwia aplikacjom uzyskanie zgody użytkownika, jakie uprawnienia są wymagane, a nie wszystkie na początku. Każdorazowo, gdy aplikacja jest gotowa do wywołania interfejsu API powinien go zażądać zakresy, trzeba go użyć.
-- **Dostęp warunkowy**: Po wprowadzeniu kilka żądań interfejsu API w niektórych scenariuszach możesz otrzymać dodatkowe wymagania dotyczące dostępu warunkowego. Może to nastąpić, jeśli pierwsze żądanie ma nie zastosowano żadnych zasad dostępu warunkowego, a aplikacja próbuje dyskretnie dostęp do nowego interfejsu API, który wymaga dostępu warunkowego. Aby obsługiwać ten scenariusz, należy przechwytywania błędów z żądań w trybie dyskretnym i przygotuj interaktywne żądania.  Aby dowiedzieć się więcej, zobacz [wskazówki dotyczące dostępu warunkowego](conditional-access-dev-guide.md).
+- Poprzednia zgoda: Platforma tożsamości firmy Microsoft umożliwia aplikacjom uzyskanie zgody użytkownika, ponieważ są wymagane uprawnienia, a nie wszystkie na początku. Za każdym razem, gdy aplikacja jest gotowa do wywołania interfejsu API, powinna zażądać tylko zakresów, których należy użyć.
+- **Dostęp warunkowy**: W niektórych scenariuszach po wprowadzeniu kilku żądań interfejsu API mogą wystąpić dodatkowe wymagania dotyczące dostępu warunkowego. Taka sytuacja może wystąpić, jeśli pierwsze żądanie nie ma stosowanych zasad dostępu warunkowego, a aplikacja próbuje uzyskać dostęp do nowego interfejsu API, który wymaga dostępu warunkowego. Aby obsłużyć ten scenariusz, należy przechwycić błędy z żądań dyskretnych i przygotować się do przeprowadzenia żądania interaktywnego.  Aby dowiedzieć się więcej, zobacz [wskazówki dotyczące dostępu warunkowego](conditional-access-dev-guide.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Przenoszenie do środowiska produkcyjnego](scenario-mobile-production.md)
+> [Przenieś do środowiska produkcyjnego](scenario-mobile-production.md)
