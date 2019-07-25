@@ -41,6 +41,9 @@
     - name: Uzyskiwanie zmian zasobów
       displayName: 'resource, change, history, snapshot, details'
       href: ./how-to/get-resource-changes.md
+- name: Rozwiązywanie problemów
+  displayName: 'errors, violation'
+  href: ./troubleshoot/general.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia platformy Azure
