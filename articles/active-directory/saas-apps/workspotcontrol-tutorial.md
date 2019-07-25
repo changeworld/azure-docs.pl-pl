@@ -176,7 +176,7 @@ W tej sekcji utworzysz użytkownika testowego w witrynie Azure portal.
 
     1. W **nazwa** wprowadź **BrittaSimon**.
   
-    1. W **nazwa_użytkownika** wprowadź **brittasimon @* yourcompanydomain.extension***. Na przykład, wprowadź  **BrittaSimon@contoso.<i> </i>com**.
+    1. W **nazwa_użytkownika** wprowadź **brittasimon @* yourcompanydomain.extension* **. Na przykład, wprowadź  **BrittaSimon@contoso.<i> </i>com**.
 
     1. Wybierz **hasło Show** pole wyboru. Zapisz wartość, która jest wyświetlana w **hasło** pole.
 

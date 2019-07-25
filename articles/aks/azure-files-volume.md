@@ -1,6 +1,6 @@
 ---
-title: Tworzenie woluminu statyczne wielu zasobnikach w usłudze Azure Kubernetes Service (AKS)
-description: Dowiedz się, jak ręcznie utworzyć wolumin za pomocą usługi Azure Files do użytku z wielu jednoczesnych zasobników w usłudze Azure Kubernetes Service (AKS)
+title: Tworzenie woluminu statycznego dla wielu zasobników w usłudze Azure Kubernetes Service (AKS)
+description: Dowiedz się, jak ręcznie utworzyć wolumin z Azure Files na potrzeby wielu współbieżnych zasobników w usłudze Azure Kubernetes Service (AKS)
 services: container-service
 author: mlearned
 ms.service: container-service
@@ -8,27 +8,27 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: mlearned
 ms.openlocfilehash: ad80b738058b4048fa1a51144a37eb4f62b538c0
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 07/25/2019
 ms.locfileid: "67616024"
 ---
-# <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Ręcznie utworzyć i korzystać z woluminu z udziałem plików platformy Azure w usłudze Azure Kubernetes Service (AKS)
+# <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Ręczne tworzenie i używanie woluminu z udziałem Azure Files w usłudze Azure Kubernetes Service (AKS)
 
-Oparte na kontenerach aplikacje często muszą uzyskać dostęp do utrwalania danych w woluminie danych zewnętrznych. Jeśli wielu zasobnikach równoczesny dostęp do tego samego woluminu magazynu, można użyć usługi Azure Files, połączyć się przy użyciu [protokołu bloku komunikatów serwera (SMB)][smb-overview]. W tym artykule pokazano, jak ręcznie utworzyć udział plików platformy Azure i dołączyć go do zasobników w usłudze AKS.
+Aplikacje oparte na kontenerach często muszą uzyskiwać dostęp do danych w zewnętrznym woluminie danych i utrwalać je. Jeśli wiele z nich potrzebuje współbieżnego dostępu do tego samego woluminu magazynu, można użyć Azure Files, aby nawiązać połączenie przy użyciu [protokołu SMB (Server Message Block)][smb-overview]. W tym artykule pokazano, jak ręcznie utworzyć udział Azure Files i dołączyć go do elementu pod w AKS.
 
-Aby uzyskać więcej informacji na woluminach Kubernetes, zobacz [opcji magazynu dla aplikacji w usłudze AKS][concepts-storage].
+Aby uzyskać więcej informacji na temat woluminów Kubernetes, zobacz [Opcje magazynu dla aplikacji w AKS][concepts-storage].
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W tym artykule założono, że masz istniejący klaster usługi AKS. Jeśli potrzebujesz klastra AKS, zobacz Przewodnik Szybki Start usługi AKS [przy użyciu wiersza polecenia platformy Azure][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
+W tym artykule przyjęto założenie, że masz istniejący klaster AKS. Jeśli potrzebujesz klastra AKS, zapoznaj się z przewodnikiem Szybki Start AKS [przy użyciu interfejsu wiersza polecenia platformy Azure][aks-quickstart-cli] lub [przy użyciu Azure Portal][aks-quickstart-portal].
 
-Możesz również muszą wiersza polecenia platformy Azure w wersji 2.0.59 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli potrzebujesz instalacja lub uaktualnienie, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj][install-azure-cli].
+Konieczne jest również zainstalowanie i skonfigurowanie interfejsu wiersza polecenia platformy Azure w wersji 2.0.59 lub nowszej. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne jest zainstalowanie lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
 ## <a name="create-an-azure-file-share"></a>Tworzenie udziału plików platformy Azure
 
-Zanim użyjesz usługi Azure Files jako wolumin Kubernetes, należy utworzyć konto usługi Azure Storage i udziału plików. Następujące polecenia tworzą grupę zasobów o nazwie *myAKSShare*, konto magazynu i udział plików o nazwie *aksshare*:
+Aby można było używać Azure Files jako woluminu Kubernetes, należy utworzyć konto usługi Azure Storage i udział plików. Następujące polecenia tworzą grupę zasobów o nazwie *myAKSShare*, konto magazynu i udział plików o nazwie *aksshare*:
 
 ```azurecli-interactive
 # Change these four parameters as needed for your own environment
@@ -57,21 +57,21 @@ echo Storage account name: $AKS_PERS_STORAGE_ACCOUNT_NAME
 echo Storage account key: $STORAGE_KEY
 ```
 
-Zanotuj nazwę konta magazynu i klucz podanym na końcu danych wyjściowych skryptu. Te wartości są wymagane, gdy tworzysz wolumin Kubernetes w jednym z następujących czynności.
+Zanotuj nazwę konta magazynu i klucz pokazywany na końcu danych wyjściowych skryptu. Te wartości są potrzebne podczas tworzenia woluminu Kubernetes w jednym z następujących kroków.
 
-## <a name="create-a-kubernetes-secret"></a>Tworzenie wpisu tajnego rozwiązania Kubernetes
+## <a name="create-a-kubernetes-secret"></a>Tworzenie klucza tajnego Kubernetes
 
-Kubernetes wymaga poświadczeń dostępu do udziału plików utworzonych w poprzednim kroku. Te poświadczenia są przechowywane w [wpisie tajnym rozwiązania Kubernetes][kubernetes-secret], który odwołuje się podczas tworzenia zasobnika Kubernetes.
+Kubernetes wymaga poświadczeń w celu uzyskania dostępu do udziału plików utworzonego w poprzednim kroku. Te poświadczenia są przechowywane w [Kubernetes wpis tajny][kubernetes-secret], który jest przywoływany podczas tworzenia Kubernetes pod.
 
-Użyj `kubectl create secret` polecenie, aby utworzyć wpis tajny. Poniższy przykład obejmuje tworzenie udostępnionego o nazwie *azure-secret* i wypełnia *azurestorageaccountname* i *azurestorageaccountkey* z poprzedniego kroku. Aby użyć istniejącego konta usługi Azure storage, należy podać nazwę konta i klucz.
+`kubectl create secret` Użyj polecenia, aby utworzyć wpis tajny. Poniższy przykład tworzy współużytkowany o nazwie *Azure-Secret* i wypełnia *azurestorageaccountname* i *azurestorageaccountkey* w poprzednim kroku. Aby użyć istniejącego konta usługi Azure Storage, podaj nazwę i klucz konta.
 
 ```console
 kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=$AKS_PERS_STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=$STORAGE_KEY
 ```
 
-## <a name="mount-the-file-share-as-a-volume"></a>Instalowanie udziału plików jako wolumin
+## <a name="mount-the-file-share-as-a-volume"></a>Instalowanie udziału plików jako woluminu
 
-Aby zainstalować udział plików platformy Azure, w tym zasobniku, skonfiguruj wolumin w specyfikacji kontenera. Utwórz nowy plik o nazwie `azure-files-pod.yaml` z następującą zawartością. Jeśli zmienisz nazwę udziału plików lub nazwa wpisu tajnego, zaktualizuj *shareName* i *secretName*. W razie potrzeby zaktualizuj `mountPath`, czyli ścieżkę, w których udostępnianie plików jest zainstalowany w zasobnik. W systemie Windows Server kontenerów (obecnie dostępna w wersji zapoznawczej w usłudze AKS), określ *mountPath* przy użyciu konwencji ścieżkę Windows, takich jak *"D:"* .
+Aby zainstalować udział Azure Files w obszarze, skonfiguruj wolumin w specyfikacji kontenera. Utwórz nowy plik o nazwie `azure-files-pod.yaml` z następującą zawartością. Jeśli zmieniono nazwę udziału plików lub nazwy wpisu tajnego, zaktualizuj wartości ShareName  i secretname . W razie potrzeby zaktualizuj `mountPath`ścieżkę, która jest ścieżką, w której udział plików jest instalowany w obszarze. W przypadku kontenerów systemu Windows Server (obecnie w wersji zapoznawczej w AKS) Określ *mountPath* przy użyciu konwencji ścieżki systemu Windows, takiej jak *'d: '* .
 
 ```yaml
 apiVersion: v1
@@ -100,13 +100,13 @@ spec:
       readOnly: false
 ```
 
-Użyj `kubectl` polecenie, aby utworzyć zasobnik.
+`kubectl` Użyj polecenia, aby utworzyć pod.
 
 ```console
 kubectl apply -f azure-files-pod.yaml
 ```
 
-Masz teraz uruchomiony zasobnik z udziału plików platformy Azure zainstalowany w lokalizacji */mnt/azure*. Możesz użyć `kubectl describe pod mypod` Aby sprawdzić udział jest pomyślnie zainstalowany. Następujące dane wyjściowe skróconego przykładu przedstawia wolumin zainstalowany w kontenerze:
+Masz teraz działającą aplikację pod kątem udziału Azure Files zainstalowanego w */mnt/Azure*. Można użyć `kubectl describe pod mypod` , aby sprawdzić, czy udział jest prawidłowo zainstalowany. Następujące wąskie przykładowe dane wyjściowe pokazują wolumin zainstalowany w kontenerze:
 
 ```
 Containers:
@@ -135,17 +135,17 @@ Volumes:
 
 ## <a name="mount-options"></a>Opcje instalacji
 
-Domyślne *fileMode* i *dirMode* wartości różnią się między wersjami usługi Kubernetes, zgodnie z opisem w poniższej tabeli.
+Wartości  domyślne parametrów FileMode i *dirMode* różnią się od wersji Kubernetes, zgodnie z opisem w poniższej tabeli.
 
 | version | value |
 | ---- | ---- |
 | v1.6.x, v1.7.x | 0777 |
 | v1.8.0-v1.8.5 | 0700 |
-| V1.8.6 lub nowszy | 0755 |
+| 1\.8.6 lub nowszy | 0755 |
 | v1.9.0 | 0700 |
-| V1.9.1 lub nowszy | 0755 |
+| 1\.9.1 lub nowszy | 0755 |
 
-Jeśli przy użyciu klastra wersji 1.8.5 lub nowszej i statycznie tworzenia obiektu trwały wolumin, opcje instalacji muszą być określone w *PersistentVolume* obiektu.
+W przypadku używania klastra programu w wersji 1.8.5 lub nowszej i statycznego tworzenia trwałego obiektu woluminu należy określić opcje instalacji dla obiektu *PersistentVolume* .
 
 ```yaml
 apiVersion: v1
@@ -168,13 +168,13 @@ spec:
   - gid=1000
 ```
 
-Jeśli przy użyciu klastra wersji 1.8.0 - 1.8.4, kontekstu zabezpieczeń można określić za pomocą *nazwa_użytkownika* wartość *0*. Aby uzyskać więcej informacji w kontekście zabezpieczeń zasobników, zobacz [skonfigurować kontekstu zabezpieczeń][kubernetes-security-context].
+W przypadku korzystania z klastra w wersji 1.8.0-1.8.4 kontekstu zabezpieczeń można określić z wartością *runAsUser* ustawioną na *0*. Aby uzyskać więcej informacji na temat kontekstu zabezpieczeń pod, zobacz [Konfigurowanie kontekstu zabezpieczeń][kubernetes-security-context].
 
 ## <a name="next-steps"></a>Następne kroki
 
-Najlepsze rozwiązania dotyczące skojarzone, zobacz [najlepsze rozwiązania dotyczące magazynu i kopii zapasowych w usłudze AKS][operator-best-practices-storage].
+W przypadku skojarzonych najlepszych rozwiązań zobacz [najlepsze rozwiązania dotyczące magazynu i kopii zapasowych w AKS][operator-best-practices-storage].
 
-Aby uzyskać więcej informacji na temat klastrów usługi AKS w interakcję z usługą Azure Files, zobacz [wtyczki Kubernetes dla usługi Azure Files][kubernetes-files].
+Aby uzyskać więcej informacji na temat współpracujących klastrów AKS z Azure Files, zobacz [dodatek Kubernetes dla Azure Files][kubernetes-files].
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#create

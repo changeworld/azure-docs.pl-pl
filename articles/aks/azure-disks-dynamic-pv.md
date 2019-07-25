@@ -1,6 +1,6 @@
 ---
-title: Dynamiczne tworzenie woluminu dysku dla wielu zasobnikach w usłudze Azure Kubernetes Service (AKS)
-description: Dowiedz się, jak dynamicznie utworzyć trwały wolumin z dyskami platformy Azure do użytku z wielu jednoczesnych zasobników w usłudze Azure Kubernetes Service (AKS)
+title: Dynamiczne tworzenie woluminu dysku dla wielu zasobników w usłudze Azure Kubernetes Service (AKS)
+description: Dowiedz się, jak dynamicznie tworzyć wolumin trwały z dyskami platformy Azure do użycia z wieloma współbieżnymi zasobnikami w usłudze Azure Kubernetes Service (AKS)
 services: container-service
 author: mlearned
 ms.service: container-service
@@ -8,41 +8,41 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: mlearned
 ms.openlocfilehash: 0641d613da86aeffa0c4abb0f82ce93c38283156
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 07/25/2019
 ms.locfileid: "67616077"
 ---
-# <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Dynamiczne tworzenie i używanie trwały wolumin z dyskami platformy Azure w usłudze Azure Kubernetes Service (AKS)
+# <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Dynamiczne tworzenie i używanie woluminu trwałego z dyskami platformy Azure w usłudze Azure Kubernetes Service (AKS)
 
-Trwały wolumin reprezentuje fragment magazynu, który został aprowizowany do użytku z zasobników. Trwały wolumin może być używany przez jeden lub wiele zasobników i mogą być dynamicznie lub statycznie udostępniane. W tym artykule pokazano, jak dynamiczne tworzenie trwałych woluminów z dyskami platformy Azure na potrzeby używania przez pojedynczy zasobnik w klastrze usługi Azure Kubernetes Service (AKS).
+Wolumin trwały reprezentuje część magazynu, która została zainicjowana do użycia z Kubernetes. Wolumin trwały może być używany przez jeden lub wiele zasobników i może być dynamicznie lub statycznie inicjowany. W tym artykule opisano sposób dynamicznego tworzenia woluminów trwałych za pomocą dysków platformy Azure do użycia przez jeden element w klastrze usługi Azure Kubernetes Service (AKS).
 
 > [!NOTE]
-> Dysku platformy Azure można instalować tylko za pomocą *tryb dostępu* typu *ReadWriteOnce*, która udostępnia je zadaniom pojedynczy zasobnik w usłudze AKS. Jeśli musisz udostępniać trwały wolumin w wielu zasobnikach, użyj [usługi Azure Files][azure-files-pvc].
+> Dysk platformy Azure można zainstalować tylko w *trybie dostępu* typu *ReadWriteOnce*, który udostępnia tylko jeden pod w AKS. Jeśli musisz udostępnić wolumin trwały w wielu zasobnikach, użyj [Azure Files][azure-files-pvc].
 
-Aby uzyskać więcej informacji na woluminach Kubernetes, zobacz [opcji magazynu dla aplikacji w usłudze AKS][concepts-storage].
+Aby uzyskać więcej informacji na temat woluminów Kubernetes, zobacz [Opcje magazynu dla aplikacji w AKS][concepts-storage].
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W tym artykule założono, że masz istniejący klaster usługi AKS. Jeśli potrzebujesz klastra AKS, zobacz Przewodnik Szybki Start usługi AKS [przy użyciu wiersza polecenia platformy Azure][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
+W tym artykule przyjęto założenie, że masz istniejący klaster AKS. Jeśli potrzebujesz klastra AKS, zapoznaj się z przewodnikiem Szybki Start AKS [przy użyciu interfejsu wiersza polecenia platformy Azure][aks-quickstart-cli] lub [przy użyciu Azure Portal][aks-quickstart-portal].
 
-Możesz również muszą wiersza polecenia platformy Azure w wersji 2.0.59 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli potrzebujesz instalacja lub uaktualnienie, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj][install-azure-cli].
+Konieczne jest również zainstalowanie i skonfigurowanie interfejsu wiersza polecenia platformy Azure w wersji 2.0.59 lub nowszej. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne jest zainstalowanie lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
 ## <a name="built-in-storage-classes"></a>Wbudowane klasy magazynu
 
-Klasa magazynu służy do definiowania sposobu jednostki magazynu jest tworzony dynamicznie z trwały wolumin. Aby uzyskać więcej informacji na temat klasy magazynu w usłudze Kubernetes, zobacz [klasy magazynu w usłudze Kubernetes][kubernetes-storage-classes].
+Klasa magazynu służy do definiowania sposobu, w jaki jednostka magazynowa jest tworzona dynamicznie z woluminem trwałym. Aby uzyskać więcej informacji na temat klas magazynu Kubernetes, zobacz [Kubernetes Storage Classes][kubernetes-storage-classes].
 
-Każdy klaster AKS zawiera dwie klasy magazynu wstępnie utworzone, skonfigurowane do pracy z dyskami platformy Azure:
+Każdy klaster AKS obejmuje dwie wstępnie utworzone klasy magazynu skonfigurowane do pracy z dyskami platformy Azure:
 
-* *Domyślne* klasy magazynowania aprowizuje standardowa dysku platformy Azure.
-    * Magazynu w warstwie standardowa jest objęta najlepszą dysków twardych i oferuje ekonomiczny magazyn, chociaż wciąż wydajne rozwiązanie. Dyski w warstwie Standardowa idealnie nadają się do ekonomicznej obsługi obciążeń tworzenia i testowania.
-* *Managed premium* klasy magazynowania aprowizuje premium dysku platformy Azure.
-    * Dyski w warstwie Premium są wspierane przez oparty na technologii SSD dysk o wysokiej wydajności i niskim opóźnieniu. Idealnie nadają się one dla maszyn wirtualnych z uruchomionym obciążeniem produkcyjnym. Jeśli węzłów AKS w klastrze Użyj usługi premium storage, wybierz opcję *managed premium* klasy.
+* *Domyślna* Klasa magazynu stanowi standardowy dysk platformy Azure.
+    * Usługa Storage w warstwie Standardowa jest obsługiwana przez HDD i zapewnia oszczędny magazyn przy jednoczesnym wykonywaniu. Dyski w warstwie Standardowa idealnie nadają się do ekonomicznej obsługi obciążeń tworzenia i testowania.
+* Klasa magazynu *Managed-Premium* udostępnia dysk platformy Azure w warstwie Premium.
+    * Dyski w warstwie Premium są wspierane przez oparty na technologii SSD dysk o wysokiej wydajności i niskim opóźnieniu. Idealnie nadają się one dla maszyn wirtualnych z uruchomionym obciążeniem produkcyjnym. Jeśli węzły AKS w klastrze korzystają z magazynu Premium Storage, wybierz klasę *Managed-Premium* .
     
-Te klasy magazynu domyślnego nie zezwala na aktualizację rozmiaru woluminu po utworzeniu. Aby włączyć tę możliwość, Dodaj *allowVolumeExpansion: true* wiersz do jednej domyślnej klasy magazynu lub utworzyć klasę własnego magazynu niestandardowego. Można edytować istniejące magazynu przy użyciu klasy `kubectl edit sc` polecenia. Aby uzyskać więcej informacji na temat klas magazynu i youor tworzenia własnych, zobacz [opcji magazynu dla aplikacji w usłudze AKS][storage-class-concepts].
+Te domyślne klasy magazynów nie umożliwiają aktualizacji rozmiaru woluminu po utworzeniu. Aby włączyć tę możliwość, należy dodać wiersz *allowVolumeExpansion: true* do jednej z domyślnych klas magazynu lub utworzyć własną niestandardową klasę magazynu. Istniejącą klasę magazynu można edytować za pomocą `kubectl edit sc` polecenia. Aby uzyskać więcej informacji na temat klas magazynu i tworzenia własnych youor, zobacz temat [Opcje magazynu dla aplikacji w AKS][storage-class-concepts].
 
-Użyj [kubectl get-sc][kubectl-get] polecenie, aby wyświetlić klasy wstępnie utworzonego magazynu. W poniższym przykładzie przedstawiono wstępne utworzenie klasy magazynu są dostępne w ramach klastra usługi AKS:
+Aby wyświetlić wstępnie utworzone klasy magazynu, użyj polecenia [Get SC polecenia kubectl][kubectl-get] . Poniższy przykład przedstawia klasy magazynu przedprodukcyjnego dostępne w klastrze AKS:
 
 ```console
 $ kubectl get sc
@@ -53,13 +53,13 @@ managed-premium     kubernetes.io/azure-disk   1h
 ```
 
 > [!NOTE]
-> Trwały wolumin oświadczenia są określone w GiB, ale usługi Azure managed disks rachunek jest wystawiany przez jednostkę SKU na określony rozmiar. Te jednostki SKU w zakresie od 32GiB S4 lub P4 dysków do 32TiB S80 lub P80 dysków (w wersji zapoznawczej). Przepływność i wydajność operacji We/Wy — wersja Premium managed dysku zależy zarówno SKU i rozmiar wystąpienia węzłów w klastrze AKS. Aby uzyskać więcej informacji, zobacz [ceny i wydajności Managed Disks][managed-disk-pricing-performance].
+> Trwałe oświadczenia woluminu są określone w GiB, ale usługa Azure Managed disks jest rozliczana według jednostki SKU z określonym rozmiarem. Te jednostki SKU należą do zakresu od 32GiB dla dysków S4 lub P4 do 32TiB dla dysków S80 lub P80 (w wersji zapoznawczej). Wydajność i przepustowość operacji we/wy dysku zarządzanego w warstwie Premium zależy od jednostki SKU i rozmiaru wystąpienia węzłów w klastrze AKS. Aby uzyskać więcej informacji, zobacz [Cennik i wydajność Managed disks][managed-disk-pricing-performance].
 
-## <a name="create-a-persistent-volume-claim"></a>Tworzenie oświadczenia trwały wolumin
+## <a name="create-a-persistent-volume-claim"></a>Tworzenie trwałego żądania woluminu
 
-Oświadczenie trwały wolumin (PVC) jest używany do automatycznej aprowizacji magazynu opartego na klasę magazynu. W tym przypadku PVC umożliwia jednej z klas wstępnie utworzonego magazynu tworzenie standardowa lub premium usługi Azure dysku zarządzanego.
+W celu automatycznego aprowizacji magazynu na podstawie klasy magazynu jest używana wartość trwałego żądania woluminu. W takim przypadku obwód PVC może użyć jednej z wstępnie utworzonych klas magazynu do utworzenia dysku zarządzanego w warstwie Standardowa lub Premium platformy Azure.
 
-Utwórz plik o nazwie `azure-premium.yaml`i skopiuj następujące manifestu. Oświadczenie żądań jest dysk o nazwie `azure-managed-disk` czyli *5GB* w rozmiarze *ReadWriteOnce* dostępu. *Managed premium* klasę magazynu jest określony jako klasa magazynu.
+Utwórz plik o nazwie `azure-premium.yaml`i skopiuj go do poniższego manifestu. Zgłoszenie żąda dysku o nazwie `azure-managed-disk` *5 GB* w rozmiarze z dostępem *ReadWriteOnce* . Klasa magazynu *Managed-Premium* jest określana jako Klasa magazynu.
 
 ```yaml
 apiVersion: v1
@@ -76,9 +76,9 @@ spec:
 ```
 
 > [!TIP]
-> Aby utworzyć dysk, który używa magazynu w warstwie standardowa, należy użyć `storageClassName: default` zamiast *managed premium*.
+> Aby utworzyć dysk korzystający ze standardowego magazynu, użyj `storageClassName: default` zamiast *Managed-Premium*.
 
-Tworzenie oświadczenia trwały wolumin z [zastosować kubectl][kubectl-apply] polecenia i podaj swoje *azure premium.yaml* pliku:
+Utwórz wartość trwałego wystąpienia woluminu za pomocą polecenia [polecenia kubectl Apply][kubectl-apply] i określ plik *Azure-Premium. YAML* :
 
 ```console
 $ kubectl apply -f azure-premium.yaml
@@ -86,11 +86,11 @@ $ kubectl apply -f azure-premium.yaml
 persistentvolumeclaim/azure-managed-disk created
 ```
 
-## <a name="use-the-persistent-volume"></a>Użyj trwały wolumin
+## <a name="use-the-persistent-volume"></a>Użyj woluminu trwałego
 
-Po oświadczenia trwały wolumin został utworzony i dysku pomyślnie zainicjowano obsługę administracyjną, mogą być tworzone zasobnik za dostęp do dysku. Następujące manifest tworzy podstawowe zasobnika NGINX, używającej oświadczeń trwały wolumin o nazwie *-dysk zarządzany platformy azure —* do zainstalowania dysku platformy Azure w ścieżce `/mnt/azure`. W systemie Windows Server kontenerów (obecnie dostępna w wersji zapoznawczej w usłudze AKS), określ *mountPath* przy użyciu konwencji ścieżkę Windows, takich jak *"D:"* .
+Po utworzeniu trwałego wystąpienia woluminu i zainicjowaniu obsługi dysku można utworzyć element pod za pomocą dostępu do dysku. Poniższy manifest tworzy podstawowy NGINX pod, który używa trwałego żądania o nazwie *Azure-Managed-Disk* do zainstalowania dysku platformy Azure na ścieżce `/mnt/azure`. W przypadku kontenerów systemu Windows Server (obecnie w wersji zapoznawczej w AKS) Określ *mountPath* przy użyciu konwencji ścieżki systemu Windows, takiej jak *'d: '* .
 
-Utwórz plik o nazwie `azure-pvc-disk.yaml`i skopiuj następujące manifestu.
+Utwórz plik o nazwie `azure-pvc-disk.yaml`i skopiuj go do poniższego manifestu.
 
 ```yaml
 kind: Pod
@@ -117,7 +117,7 @@ spec:
         claimName: azure-managed-disk
 ```
 
-Utwórz zasobnik za pomocą [zastosować kubectl][kubectl-apply] polecenia, jak pokazano w poniższym przykładzie:
+Utwórz pod za pomocą polecenia [polecenia kubectl Apply][kubectl-apply] , jak pokazano w następującym przykładzie:
 
 ```console
 $ kubectl apply -f azure-pvc-disk.yaml
@@ -125,7 +125,7 @@ $ kubectl apply -f azure-pvc-disk.yaml
 pod/mypod created
 ```
 
-Masz teraz uruchomiony zasobnik z dysku platformy Azure zainstalowany w `/mnt/azure` katalogu. Ta konfiguracja może być moment zapoznanie się tym zasobniku za pośrednictwem `kubectl describe pod mypod`, jak pokazano na poniższego, skróconego przykładu:
+Masz teraz uruchomione miejsce na dysku platformy Azure zainstalowanym w `/mnt/azure` katalogu. Ta konfiguracja może być widoczna podczas sprawdzania pod kątem za pośrednictwem `kubectl describe pod mypod`programu, jak pokazano w następującym zagęszczonym przykładzie:
 
 ```console
 $ kubectl describe pod mypod
@@ -150,11 +150,11 @@ Events:
 [...]
 ```
 
-## <a name="back-up-a-persistent-volume"></a>Tworzenie kopii zapasowej trwały wolumin
+## <a name="back-up-a-persistent-volume"></a>Tworzenie kopii zapasowej woluminu trwałego
 
-Aby utworzyć kopię zapasową danych w woluminie trwałego, należy utworzyć migawkę dysku zarządzanego dla woluminu. Następnie służy tę migawkę służącą do tworzenia przywróconego dysku i dołączyć do zasobników jako sposób przywracania danych.
+Aby utworzyć kopię zapasową danych w woluminie trwałym, należy wykonać migawkę dysku zarządzanego dla tego woluminu. Następnie można użyć tej migawki do utworzenia przywróconego dysku i dołączenia do zasobników jako metody przywracania danych.
 
-Najpierw Uzyskaj nazwę woluminu za pomocą `kubectl get pvc` polecenia, takie jak PVC o nazwie *-dysk zarządzany platformy azure —* :
+Najpierw Pobierz nazwę woluminu za pomocą `kubectl get pvc` polecenia, na przykład dla obwodu PVC o nazwie *Azure-Managed-Disk*:
 
 ```console
 $ kubectl get pvc azure-managed-disk
@@ -163,7 +163,7 @@ NAME                 STATUS    VOLUME                                     CAPACI
 azure-managed-disk   Bound     pvc-faf0f176-8b8d-11e8-923b-deb28c58d242   5Gi        RWO            managed-premium   3m
 ```
 
-Ta nazwa woluminu stanowi podstawowej nazwy dysku platformy Azure. Zapytanie o identyfikator dysku przy użyciu [listy dysków az][az-disk-list] i podaj nazwę woluminu PVC, jak pokazano w poniższym przykładzie:
+Ta nazwa woluminu stanowi nazwę podstawowego dysku platformy Azure. Wykonaj zapytanie dotyczące identyfikatora dysku za pomocą elementu [AZ Disk list][az-disk-list] i podaj nazwę woluminu obwodu PVC, jak pokazano w następującym przykładzie:
 
 ```azurecli-interactive
 $ az disk list --query '[].id | [?contains(@,`pvc-faf0f176-8b8d-11e8-923b-deb28c58d242`)]' -o tsv
@@ -171,7 +171,7 @@ $ az disk list --query '[].id | [?contains(@,`pvc-faf0f176-8b8d-11e8-923b-deb28c
 /subscriptions/<guid>/resourceGroups/MC_MYRESOURCEGROUP_MYAKSCLUSTER_EASTUS/providers/MicrosoftCompute/disks/kubernetes-dynamic-pvc-faf0f176-8b8d-11e8-923b-deb28c58d242
 ```
 
-Użyj Identyfikatora dysku do utworzenia migawki dysku przy użyciu [Tworzenie migawki az][az-snapshot-create]. Poniższy przykład tworzy migawkę o nazwie *pvcSnapshot* w tej samej grupie zasobów co klaster AKS (*MC_myResourceGroup_myAKSCluster_eastus*). Jeśli utworzysz migawki i Przywróć dyski w grupach zasobów, które klaster AKS nie ma dostępu do, mogą wystąpić problemy z uprawnieniami.
+Użyj identyfikatora dysku, aby utworzyć migawkę dysku za pomocą [AZ Snapshot Create][az-snapshot-create]. Poniższy przykład tworzy migawkę o nazwie *pvcSnapshot* w tej samej grupie zasobów co klaster AKS (*MC_myResourceGroup_myAKSCluster_eastus*). W przypadku tworzenia migawek i przywracania dysków w grupach zasobów, do których nie ma dostępu klaster AKS, mogą wystąpić problemy z uprawnieniami.
 
 ```azurecli-interactive
 $ az snapshot create \
@@ -180,23 +180,23 @@ $ az snapshot create \
     --source /subscriptions/<guid>/resourceGroups/MC_myResourceGroup_myAKSCluster_eastus/providers/MicrosoftCompute/disks/kubernetes-dynamic-pvc-faf0f176-8b8d-11e8-923b-deb28c58d242
 ```
 
-W zależności od ilości danych na dysku może upłynąć kilka minut, aby utworzyć migawkę.
+W zależności od ilości danych na dysku utworzenie migawki może potrwać kilka minut.
 
 ## <a name="restore-and-use-a-snapshot"></a>Przywracanie i używanie migawki
 
-Aby przywrócić dysk i używać go z zasobnika Kubernetes, należy użyć migawki jako źródło podczas tworzenia dysku z [tworzenia dysku az][az-disk-create]. Ta operacja zachowuje oryginalny zasób, jeśli potem zechcesz dostęp do oryginalnego migawek chronionych danych. W poniższym przykładzie tworzony jest dysk o nazwie *pvcRestored* z migawki o nazwie *pvcSnapshot*:
+Aby przywrócić dysk i użyć go z Kubernetes pod, użyj migawki jako źródła podczas tworzenia dysku za pomocą polecenie [AZ Disk Create][az-disk-create]. Ta operacja zachowuje pierwotny zasób, jeśli trzeba będzie uzyskać dostęp do oryginalnej migawki danych. Poniższy przykład tworzy dysk o nazwie *pvcRestored* z migawki o nazwie *pvcSnapshot*:
 
 ```azurecli-interactive
 az disk create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name pvcRestored --source pvcSnapshot
 ```
 
-Za pomocą przywróconego dysku zasobnik, należy określić identyfikator dysku w manifeście. Pobierz identyfikator dysku przy użyciu [Pokaż dysku az][az-disk-show] polecenia. Poniższy przykład pobiera identyfikator dysku *pvcRestored* utworzony w poprzednim kroku:
+Aby użyć przywróconego dysku z systemem, określ identyfikator dysku w manifeście. Pobierz identyfikator dysku za pomocą polecenia [AZ Disk show][az-disk-show] . Poniższy przykład pobiera identyfikator dysku dla *pvcRestored* utworzonych w poprzednim kroku:
 
 ```azurecli-interactive
 az disk show --resource-group MC_myResourceGroup_myAKSCluster_eastus --name pvcRestored --query id -o tsv
 ```
 
-Tworzenie manifestu pod o nazwie `azure-restored.yaml` i określ dysk, identyfikator URI uzyskanego w poprzednim kroku. Poniższy przykład tworzy podstawowego serwera internetowego NGINX za pomocą przywróconego dysku zainstalowanego jako woluminu w */mnt/azure*:
+Utwórz manifest pod nazwą `azure-restored.yaml` i określ identyfikator URI dysku uzyskany w poprzednim kroku. Poniższy przykład tworzy podstawowy serwer sieci Web NGINX z przywróconym dyskiem zainstalowanym jako wolumin w */mnt/Azure*:
 
 ```yaml
 kind: Pod
@@ -225,7 +225,7 @@ spec:
         diskURI: /subscriptions/<guid>/resourceGroups/MC_myResourceGroupAKS_myAKSCluster_eastus/providers/Microsoft.Compute/disks/pvcRestored
 ```
 
-Utwórz zasobnik za pomocą [zastosować kubectl][kubectl-apply] polecenia, jak pokazano w poniższym przykładzie:
+Utwórz pod za pomocą polecenia [polecenia kubectl Apply][kubectl-apply] , jak pokazano w następującym przykładzie:
 
 ```console
 $ kubectl apply -f azure-restored.yaml
@@ -233,7 +233,7 @@ $ kubectl apply -f azure-restored.yaml
 pod/mypodrestored created
 ```
 
-Możesz użyć `kubectl describe pod mypodrestored` Aby wyświetlić szczegóły zasobników, takich jak poniższego, skróconego przykładu pokazujący informacji o woluminie:
+Możesz użyć `kubectl describe pod mypodrestored` , aby wyświetlić szczegóły dotyczące elementu, na przykład następujące wąskie przykładowe informacje o woluminie:
 
 ```console
 $ kubectl describe pod mypodrestored
@@ -253,12 +253,12 @@ Volumes:
 
 ## <a name="next-steps"></a>Następne kroki
 
-Najlepsze rozwiązania dotyczące skojarzone, zobacz [najlepsze rozwiązania dotyczące magazynu i kopii zapasowych w usłudze AKS][operator-best-practices-storage].
+W przypadku skojarzonych najlepszych rozwiązań zobacz [najlepsze rozwiązania dotyczące magazynu i kopii zapasowych w AKS][operator-best-practices-storage].
 
-Dowiedz się więcej na temat woluminy trwałe Kubernetes za pomocą usługi Azure disks.
+Dowiedz się więcej o woluminach trwałych Kubernetes przy użyciu usługi Azure Disks.
 
 > [!div class="nextstepaction"]
-> [Wtyczka usługi Kubernetes dla usługi Azure disks][azure-disk-volume]
+> [Wtyczka Kubernetes dla dysków platformy Azure][azure-disk-volume]
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
