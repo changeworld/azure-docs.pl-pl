@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4605fd0296af6ac3c0d37c52c93d8a4a0903232b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 38181a4ccd5b651bc3268cff1fa998aa9ac2e6d2
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165199"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444540"
 ---
 # <a name="azure-vmware-solution-by-cloudsimple"></a>Rozwiązanie Azure VMware firmy CloudSimple
 
@@ -23,3 +23,14 @@ Witamy w rozwiązaniu Azure VMware firmy CloudSimple. Znajdziesz tu szczegółow
 - Wybierz temat [Omówienie chmury prywatnej firmy CloudSimple](cloudsimple-private-cloud.md), aby dowiedzieć się więcej o rozwiązaniu chmury prywatnej firmy CloudSimple.
 - Wybierz temat [Węzły](cloudsimple-node.md), aby dowiedzieć się więcej o węzłach firmy CloudSimple.
 - Wybierz temat [Inicjowanie i aprowizowanie pojemności](quickstart-create-cloudsimple-service.md), aby rozpocząć korzystanie z rozwiązania VMware firmy CloudSimple na platformie Azure.
+
+| Szybki wgląd w pojęcia     | Zasób                    | Przeznaczenie                                                                       | Zarządzanie         |
+|--------------------------|-----------------------------|-------------------------------------------------------------------------------|--------------------|
+| **Tworzenie usług**     | Usługa CloudSimple         | Konfigurowanie sieci brzegowej usługi CloudSimple                                    | Portal Azure       |
+|                          | Węzeł usługi CloudSimple            | Aprowizacja pojemności do użycia w usłudze CloudSimple                          | Portal Azure       |
+| **Użycie usługi**  | Chmura prywatna               | Tworzenie środowisk VMware                                                    | Portal CloudSimple |
+|                          | Sieć VLAN/podsieć                 | Tworzenie sieci izolacyjnej na potrzeby użycia oprogramowania VMware                               | Portal CloudSimple |
+|                          | Tabela zapory              | Konfigurowanie reguł zabezpieczeń północ-południe i wschód-zachód w sieciach izolacyjnych | Portal CloudSimple |
+|                          | Publiczny adres IP           | Uzyskiwanie publicznych adresów dla obciążeń oprogramowania VMware                           | Portal CloudSimple |
+|                          | Połączenie platformy Azure            | Ustanawianie łączności ze środowiskiem lokalnym lub sieciami wirtualnymi na platformie Azure         | Portal CloudSimple |
+| **Ujednolicone zarządzanie**   | Maszyna wirtualna CloudSimple | Zarządzanie maszynami wirtualnymi oprogramowania VMware w witrynie Azure Portal                                | Portal Azure       |

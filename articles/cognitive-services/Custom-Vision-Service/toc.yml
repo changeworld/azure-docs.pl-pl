@@ -6,6 +6,12 @@
       href: home.md
 - name: Przewodniki Szybki start
   items:
+    - name: Korzystanie z portalu internetowego
+      items:
+        - name: Tworzenie klasyfikatora
+          href: getting-started-build-a-classifier.md
+        - name: Tworzenie detektora obiektu
+          href: get-started-build-detector.md
     - name: Korzystanie z zestawu .NET SDK
       items:
         - name: Klasyfikacja obrazów
@@ -42,8 +48,6 @@
       href: logo-detector-mobile.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Tworzenie klasyfikatora
-      href: getting-started-build-a-classifier.md
     - name: Testowanie modelu
       href: test-your-model.md
     - name: Poprawianie klasyfikatora

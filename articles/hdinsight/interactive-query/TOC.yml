@@ -298,7 +298,7 @@
     - name: Zabezpieczenia przedsiębiorstwa
       items:
         - name: Omówienie
-          href: ../domain-joined/apache-domain-joined-introduction.md
+          href: ../domain-joined/hdinsight-security-overview.md
           maintainContext: true
         - name: Planowanie zabezpieczeń przedsiębiorstwa
           href: ../domain-joined/apache-domain-joined-architecture.md

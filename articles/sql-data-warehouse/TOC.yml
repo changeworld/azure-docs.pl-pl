@@ -127,11 +127,25 @@
           href: sql-data-warehouse-overview-develop.md
         - name: Najlepsze praktyki
           href: sql-data-warehouse-best-practices-development.md
+        - name: JSON
+          items:
+            - name: JSON
+              href: /sql/t-sql/functions/json-functions-transact-sql?view=azure-sqldw-latest
+            - name: ISJSON
+              href: /sql/t-sql/functions/isjson-transact-sql?view=azure-sqldw-latest
+            - name: JSON_VALUE
+              href: /sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest
+            - name: JSON_QUERY
+              href: /sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest
+            - name: JSON_MODIFY
+              href: /sql/t-sql/functions/json-modify-transact-sql?view=azure-sqldw-latest
+            - name: OPENJSON
+              href: /sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest
         - name: Zmaterializowany widok
           items:
-            - name: Tworzenie zmaterializowanego widoku przy użyciu instrukcji SELECT (Transact-SQL)
+            - name: Przycisk Utwórz
               href: /sql/t-sql/statements/create-materialized-view-as-select-transact-sql
-            - name: Zmienianie zmaterializowanego widoku przy użyciu instrukcji SELECT (Transact-SQL)
+            - name: Modyfikowanie
               href: /sql/t-sql/statements/alter-materialized-view-transact-sql
         - name: Buforowanie zestawu wyników
           href: /sql/t-sql/statements/set-result-set-caching-transact-sql
@@ -281,6 +295,16 @@
           href: sql-data-warehouse-manage-monitor.md
         - name: Monitorowanie pamięci podręcznej Gen2
           href: sql-data-warehouse-how-to-monitor-cache.md
+    - name: Tworzenie kopii zapasowej i przywracanie
+      items:
+        - name: Tworzenie punktów przywracania
+          href: sql-data-warehouse-restore-points.md
+        - name: Przywracanie istniejącego magazynu danych
+          href: sql-data-warehouse-restore-active-paused-dw.md
+        - name: Przywracanie usuniętego magazynu danych
+          href: sql-data-warehouse-restore-deleted-dw.md
+        - name: Przywracanie z geograficznej kopii zapasowej
+          href: sql-data-warehouse-restore-from-geo-backup.md
     - name: Integracja
       items:
         - name: Korzystanie z uczenia maszynowego

@@ -19,7 +19,7 @@
       href: sql-database-managed-instance-quickstart-guide.md
     - name: Przycisk Utwórz
       items:
-        - name: Pojedyncza baza danych — portal
+        - name: Pojedyncza baza danych
           href: sql-database-single-database-get-started.md
         - name: Pojedyncza baza danych — szablon
           displayName: 'Azure Resource Manager template, ARM'
@@ -91,10 +91,18 @@
       items:
         - name: Migrowanie do pojedynczej bazy danych lub bazy danych w puli przy użyciu usługi DMS
           href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
+        - name: Dodawanie do grupy trybu failover
+          href: sql-database-single-database-failover-group-tutorial.md
         - name: Implementowanie rozproszonej geograficznie bazy danych
           href: sql-database-implement-geo-distributed-database.md
+        - name: Konfigurowanie aktywnej replikacji geograficznej
+          href: sql-database-active-geo-replication-portal.md
         - name: Konfigurowanie usługi Azure SQL Data Sync
           href: sql-database-get-started-sql-data-sync.md
+    - name: Elastyczna pula
+      items:
+        - name: Dodawanie do grupy trybu failover
+          href: sql-database-elastic-pool-failover-group-tutorial.md
     - name: Wystąpienie zarządzane
       items:
         - name: Migracja online za pomocą usługi DMS
@@ -245,8 +253,6 @@
               href: sql-database-active-geo-replication.md
             - name: Grupy automatycznego trybu failover
               href: sql-database-auto-failover-group.md
-            - name: Konfigurowanie aktywnej replikacji geograficznej — Portal
-              href: sql-database-active-geo-replication-portal.md
             - name: Konfigurowanie zabezpieczeń dla replik
               href: sql-database-geo-replication-security-config.md
         - name: Opcje odzyskiwania bazy danych
@@ -516,6 +522,8 @@
           href: sql-database-managed-instance-connect-app.md
     - name: Ładowanie i przenoszenie danych
       items:
+        - name: Przenoszenie zasobu do nowego regionu
+          href: sql-database-move-resources-across-regions.md
         - name: Kopiowanie bazy danych w obrębie platformy Azure
           href: sql-database-copy.md
         - name: Importowanie bazy danych z pliku BACPAC

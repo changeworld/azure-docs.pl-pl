@@ -13,6 +13,10 @@
   items:
     - name: Uruchamianie czytnika immersyjnego (Node.js)
       href: tutorial.md
+- name: Instrukcje
+  items:
+    - name: Uwierzytelnianie za pomocą usługi Azure Active Directory
+      href: azure-active-directory-authentication.md
 - name: Dokumentacja
   items:
     - name: Dokumentacja zestawu SDK

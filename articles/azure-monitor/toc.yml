@@ -398,6 +398,8 @@
               items:
                 - name: Kontrola dostępu
                   href: app/resources-roles-access-control.md
+                - name: Kolekcja adresów IP
+                  href: app/ip-collection.md
                 - name: Próbkowanie
                   displayname: 'adaptive sampling, fixed rate sample, fixed sampling, ingestion sampling'
                   href: app/sampling.md

@@ -56,6 +56,11 @@
         - name: Wdrażanie modelu regresji
           displayName: experiment drag-and-drop visual interface Tutorial 2
           href: ui-tutorial-automobile-price-deploy.md
+    - name: Zautomatyzowane uczenie maszynowe
+      items:
+        - name: Klasyfikacja (dane bankowe)
+          displayName: 'automl, automated, auto ml, portal, ui'
+          href: tutorial-first-experiment-automated-ml.md
 - name: Przykłady
   items:
     - name: Notebooks
