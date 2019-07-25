@@ -254,10 +254,14 @@
       items:
         - name: Architektura sieci wirtualnej usługi HDInsight
           href: ../hdinsight-virtual-network-architecture.md
+        - name: Planowanie sieci wirtualnych dla usługi HDInsight
+          href: ../hdinsight-plan-virtual-network-deployment.md
+        - name: Tworzenie sieci wirtualnych dla usługi HDInsight
+          href: ../hdinsight-create-virtual-network.md
+        - name: Wymagane adresy IP dla sieciowych grup zabezpieczeń i tras zdefiniowanych przez użytkownika
+          href: ../hdinsight-management-ip-addresses.md
         - name: Ograniczanie ruchu wychodzącego za pomocą zapory
           href: ../hdinsight-restrict-outbound-traffic.md
-        - name: Usługa HDInsight w sieci wirtualnej platformy Azure
-          href: ../hdinsight-extend-hadoop-virtual-network.md
         - name: Łączenie usługi HDInsight z siecią lokalną
           href: ../connect-on-premises-network.md
     - name: Monitorowanie przy użyciu dzienników usługi Azure Monitor

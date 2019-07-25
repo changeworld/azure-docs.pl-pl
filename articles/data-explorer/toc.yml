@@ -98,8 +98,6 @@
           href: sisense.md
     - name: Zarządzanie
       items:
-        - name: Zarządzanie uprawnieniami dotyczącymi bazy danych
-          href: manage-database-permissions.md
         - name: Sprawdzanie kondycji klastra
           href: check-cluster-health.md
         - name: Wybieranie jednostki SKU maszyny wirtualnej klastra
@@ -108,6 +106,10 @@
           href: manage-cluster-horizontal-scaling.md
         - name: Zarządzanie skalowaniem klastra w pionie
           href: manage-cluster-vertical-scaling.md
+        - name: Zarządzanie zabezpieczeniami klastra
+          href: manage-cluster-security.md
+        - name: Zarządzanie uprawnieniami dotyczącymi bazy danych
+          href: manage-database-permissions.md
         - name: Usuwanie danych
           href: delete-data.md
         - name: Obsługa zduplikowanych danych

@@ -27,6 +27,8 @@
       href: tutorial-azure-monitor-stream-logs-to-event-hub.md
 - name: Pojęcia
   items:
+    - name: Planowanie wdrożenia raportowania i monitorowania
+      href: plan-monitoring-and-reporting.md
     - name: Dzienniki inspekcji
       href: concept-audit-logs.md
     - name: Dzienniki logowania

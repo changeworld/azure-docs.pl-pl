@@ -21,6 +21,8 @@
       href: compare-video-indexer-with-media-services-presets.md
     - name: Zarządzanie wieloma dzierżawami
       href: manage-multiple-tenants.md
+    - name: Model identyfikacji języka
+      href: language-identification-model.md
     - name: Dostosowywanie modeli zawartości
       items:
         - name: Omówienie

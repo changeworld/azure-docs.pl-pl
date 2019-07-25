@@ -5,6 +5,8 @@
   items:
     - name: Co to są usługi poznawcze Cognitive Services?
       href: Welcome.md
+    - name: Usługi Cognitive Services i uczenie maszynowe
+      href: cognitive-services-and-machine-learning.md
     - name: Obsługa języków
       href: language-support.md
 - name: Obsługa kontenerów

@@ -32,8 +32,14 @@
       href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
     - name: Dostęp do sieci
       items:
-        - name: Usługa HDInsight w sieci wirtualnej platformy Azure
-          href: ../hdinsight-extend-hadoop-virtual-network.md
+        - name: Architektura sieci wirtualnej usługi HDInsight
+          href: ../hdinsight-virtual-network-architecture.md
+        - name: Planowanie sieci wirtualnych dla usługi HDInsight
+          href: ../hdinsight-plan-virtual-network-deployment.md
+        - name: Tworzenie sieci wirtualnych dla usługi HDInsight
+          href: ../hdinsight-create-virtual-network.md
+        - name: Wymagane adresy IP dla sieciowych grup zabezpieczeń i tras zdefiniowanych przez użytkownika
+          href: ../hdinsight-management-ip-addresses.md
         - name: Łączenie usługi HDInsight z siecią lokalną
           href: ../connect-on-premises-network.md
         - name: Tworzenie klastra Apache HBase w sieci wirtualnej platformy Azure
