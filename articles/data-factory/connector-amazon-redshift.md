@@ -126,7 +126,7 @@ Aby skopiować dane z usługi Amazon Redshift, należy ustawić typ źródłoweg
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Musi być równa wartości właściwości type źródło działania kopiowania: **AmazonRedshiftSource** | Yes |
-| query |Użyj zapytania niestandardowe można odczytać danych. Na przykład: Wybierz * z MyTable. |Nie (Jeśli określono parametr "tableName" w zestawie danych) |
+| query |Użyj zapytania niestandardowe można odczytać danych. Na przykład: select * from MyTable. |Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 | redshiftUnloadSettings | Grupa właściwości przy użyciu zwolnienie usługi Redshift Amazon. | Nie |
 | s3LinkedServiceName | Odnosi się do Amazon S3 to-być używane jako przejściowy magazyn, określając nazwę połączonej usługi typu "AmazonS3". | Tak, jeśli za pomocą zwolnienia |
 | bucketName | Wskazuje przedział S3 do przechowywania danych tymczasowych. Jeśli nie zostanie podana, usługa Data Factory wygeneruje ją automatycznie.  | Tak, jeśli za pomocą zwolnienia |
