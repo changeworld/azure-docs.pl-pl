@@ -1,6 +1,6 @@
 ---
-title: Autoryzowanie dostępu do usługi Azure Storage | Dokumentacja firmy Microsoft
-description: Poznaj różne sposoby autoryzowania dostępu do usługi Azure Storage, w tym usługi Azure Active Directory, uwierzytelnianie klucza współużytkowanego lub sygnatury dostępu współdzielonego.
+title: Autoryzowanie dostępu do usługi Azure Storage | Microsoft Docs
+description: Poznaj różne sposoby autoryzacji dostępu do usługi Azure Storage, w tym Azure Active Directory, uwierzytelnianie klucza wspólnego lub sygnatury dostępu współdzielonego.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,23 +9,35 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 9e8c9755c444ca7b81891f5f83164bc51aa694eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a0717785f4f9c1c21a18d081d157a6cdc8c12f18
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65147063"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371187"
 ---
 # <a name="authorizing-access-to-azure-storage"></a>Autoryzowanie dostępu do usługi Azure Storage
 
-Każdorazowo, uzyskujesz dostęp do danych na koncie magazynu klienta żąda za pośrednictwem protokołu HTTP/HTTPS do usługi Azure Storage. Każde żądanie do bezpiecznych zasobów muszą być autoryzowane, aby usługa gwarantuje, że klient ma uprawnienia wymagane do uzyskania dostępu do danych. Usługa Azure Storage oferuje opcje autoryzacji dostępu można zabezpieczyć zasobów:
+Za każdym razem, gdy uzyskujesz dostęp do danych na koncie magazynu, klient wysyła żądanie za pośrednictwem protokołu HTTP/HTTPS do usługi Azure Storage. Każde żądanie dotyczące bezpiecznego zasobu musi być autoryzowane, aby usługa zapewniała, że klient ma uprawnienia wymagane do uzyskiwania dostępu do danych.
 
-- **Integracja usługi Azure Active Directory (Azure AD)** dla kolejek i obiektów blob. Usługa Azure AD zapewnia kontroli dostępu opartej na rolach (RBAC) dla precyzyjną kontrolę nad dostępem klientów do zasobów na koncie magazynu. Aby uzyskać więcej informacji, zobacz [uwierzytelniania żądań do usługi Azure Storage przy użyciu usługi Azure Active Directory](storage-auth-aad.md).
-- **Udostępniony klucz autoryzacji** dla obiektów blob, plików, kolejek i tabel. Klienta przy użyciu klucza wspólnego przekazuje nagłówek z każdym żądaniem, który jest podpisany przy użyciu klucza dostępu konta magazynu. Aby uzyskać więcej informacji, zobacz [autoryzacji za pomocą klucza wspólnego](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/).
-- **Sygnatury dostępu współdzielonego** dla obiektów blob, plików, kolejek i tabel. Sygnatury dostępu współdzielonego (SAS) zapewnia ograniczony delegowanego dostępu do zasobów na koncie magazynu. Dodawanie ograniczenia na przedział czasowy na potrzeby podpis jest nieprawidłowy lub uprawnienia, jakie daje, zapewnia elastyczność w zarządzaniu dostępem. Aby uzyskać więcej informacji, zobacz [Using shared access signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md).
-- **Dostęp do odczytu publiczne anonimowe** dla kontenerów i obiektów blob. Autoryzacja nie jest wymagana. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem anonimowym w trybie odczytu do kontenerów i obiektów blob](../blobs/storage-manage-access-to-resources.md).  
+W poniższej tabeli opisano opcje oferowane przez usługę Azure Storage do autoryzowania dostępu do zasobów:
 
-Domyślnie wszystkie zasoby w usłudze Azure Storage są chronione i są dostępne tylko dla właściciela konta. Chociaż można używać dowolnego strategie autoryzacji opisanych powyżej, aby przyznać klientom dostęp do zasobów w ramach konta magazynu, firma Microsoft zaleca używanie programu Azure AD w przypadku zapewnienia maksymalnego poziomu bezpieczeństwa i łatwość użycia. 
+|  |Klucz współużytkowany (klucz konta magazynu)  |Sygnatura dostępu współdzielonego (SAS)  |Azure Active Directory (Azure AD)  |Anonimowy publiczny dostęp do odczytu  |
+|---------|---------|---------|---------|---------|
+|Obiekty blob platformy Azure     |[Obsługiwane](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Obsługiwane](storage-dotnet-shared-access-signature-part-1.md)         |[Obsługiwane](storage-auth-aad.md)         |[Obsługiwane](../blobs/storage-manage-access-to-resources.md)         |
+|Azure Files (SMB)     |[Obsługiwane](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |Nieobsługiwane         |[Obsługiwane tylko w przypadku usług domenowych w usłudze AAD](../files/storage-files-active-directory-overview.md)         |Nieobsługiwane         |
+|Azure Files (REST)     |[Obsługiwane](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Obsługiwane](storage-dotnet-shared-access-signature-part-1.md)         |Nieobsługiwane         |Nieobsługiwane         |
+|Kolejki Azure Queue     |[Obsługiwane](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Obsługiwane](storage-dotnet-shared-access-signature-part-1.md)         |[Obsługiwane](storage-auth-aad.md)         |Nieobsługiwane         |
+|Tabele platformy Azure     |[Obsługiwane](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[Obsługiwane](storage-dotnet-shared-access-signature-part-1.md)         |Nieobsługiwane         |Nieobsługiwane         |
 
+Każdą opcję autoryzacji można krótko opisać poniżej:
 
+- **Azure Active Directory (Azure AD) integracja** obiektów blob i kolejek. Usługa Azure AD zapewnia kontrolę dostępu opartą na rolach (RBAC) na potrzeby precyzyjnej kontroli dostępu klienta do zasobów na koncie magazynu. Aby uzyskać więcej informacji na temat integracji usługi Azure AD dla obiektów blob i kolejek, zobacz [uwierzytelnianie żądań w usłudze Azure Storage przy użyciu Azure Active Directory](storage-auth-aad.md).
 
+- **Integracja z Azure AD Domain Services (DS) (wersja zapoznawcza)** plików. Azure Files obsługuje uwierzytelnianie oparte na tożsamościach za pośrednictwem protokołu SMB (Server Message Block) za pośrednictwem usługi Azure AD DS. Zapewnia to RBAC do szczegółowej kontroli nad dostępem klienta do zasobów na koncie magazynu. Aby uzyskać więcej informacji na temat integracji usługi Azure AD dla plików korzystających z usług domenowych, zobacz [Omówienie obsługi uwierzytelniania protokołu SMB w usłudze Azure Files Azure Active Directory (wersja](../files/storage-files-active-directory-overview.md)zapoznawcza).
+
+- **Autoryzacja klucza** współużytkowanego dla obiektów blob, plików, kolejek i tabel. Klient korzystający z klucza współużytkowanego przekazuje nagłówek z każdym żądaniem podpisanym przy użyciu klucza dostępu konta magazynu. Aby uzyskać więcej informacji, zobacz [Autoryzuj przy użyciu klucza](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)współużytkowanego.
+- **Sygnatury dostępu** współdzielonego dla obiektów blob, plików, kolejek i tabel. Sygnatury dostępu współdzielonego (SAS) zapewniają ograniczony dostęp delegowany do zasobów na koncie magazynu. Dodanie ograniczeń w przedziale czasowym, dla którego podpis jest prawidłowy lub na uprawnienia, które ma w ten sposób zapewnia elastyczność zarządzania dostępem. Aby uzyskać więcej informacji, zobacz [Używanie sygnatur dostępu współdzielonego (SAS)](storage-dotnet-shared-access-signature-part-1.md).
+- **Anonimowy publiczny dostęp do odczytu** dla kontenerów i obiektów BLOB. Autoryzacja nie jest wymagana. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem anonimowym w trybie odczytu do kontenerów i obiektów blob](../blobs/storage-manage-access-to-resources.md).  
+
+Domyślnie wszystkie zasoby w usłudze Azure Storage są zabezpieczone i są dostępne tylko dla właściciela konta. Chociaż można użyć dowolnej z tych strategii autoryzacji w celu udzielenia klientom dostępu do zasobów na koncie magazynu, firma Microsoft zaleca korzystanie z usługi Azure AD, gdy jest to możliwe, aby uzyskać maksymalne zabezpieczenia i łatwość użycia. 

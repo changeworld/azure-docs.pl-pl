@@ -1,129 +1,122 @@
 ---
-title: Chmura roli usługi konfiguracji XPath cheat-sheet | Dokumentacja firmy Microsoft
-description: Różne ustawienia języka XPath można w konfiguracji roli usługi chmury uwidaczniają ustawienia jako zmienną środowiskową.
+title: Cloud Services arkusz Ściągawka XPath konfiguracji roli | Microsoft Docs
+description: Różne ustawienia XPath, których można użyć w konfiguracji roli usługi w chmurze w celu udostępnienia ustawień jako zmiennej środowiskowej.
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: c51e4493-0643-4d05-bc44-06c76bcbf7d1
+author: georgewallace
 ms.service: cloud-services
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 04/19/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 53a262af421dd986e6b70af173a6e8b3f7c06f64
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: cd2bdc4fc4b2a135907851ca4d3034430618e0cd
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60527289"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359002"
 ---
-# <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>Udostępnianie ustawień konfiguracji roli jako zmienną środowiskową za pomocą wyrażenia XPath
-W proces roboczy usług chmury lub w pliku definicji usługi roli sieci web mogą uwidocznić wartości konfiguracji środowiska uruchomieniowego, jako zmienne środowiskowe. Obsługiwane są następujące wartości XPath, (które odnoszą się do wartości interfejsu API).
+# <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>Uwidacznianie ustawień konfiguracji roli jako zmiennej środowiskowej przy użyciu wyrażenia XPath
+W pliku definicji procesu roboczego usługi w chmurze lub usługi roli sieci Web można uwidocznić wartości konfiguracji środowiska uruchomieniowego jako zmienne środowiskowe. Obsługiwane są następujące wartości XPath (które odpowiadają wartościom interfejsu API).
 
-Dostępne są także te wartości XPath [Microsoft.WindowsAzure.ServiceRuntime](/previous-versions/azure/reference/ee773173(v=azure.100)) biblioteki. 
+Te wartości XPath są również dostępne w bibliotece [Microsoft. windowsazure. serviceruntime](/previous-versions/azure/reference/ee773173(v=azure.100)) . 
 
 ## <a name="app-running-in-emulator"></a>Aplikacja uruchomiona w emulatorze
-Wskazuje, że aplikacja jest uruchomiona w emulatorze.
+Wskazuje, że aplikacja działa w emulatorze.
 
-| Typ | Przykład |
+| Type | Przykład |
 | --- | --- |
-| XPath |xpath="/RoleEnvironment/Deployment/@emulated" |
-| Kod |var x = RoleEnvironment.IsEmulated; |
+| XPath |XPath = "/RoleEnvironment/Deployment/@emulated" |
+| Kod |var x = RoleEnvironment. isemulowane; |
 
 ## <a name="deployment-id"></a>Identyfikator wdrożenia
 Pobiera identyfikator wdrożenia dla tego wystąpienia.
 
-| Typ | Przykład |
+| Type | Przykład |
 | --- | --- |
-| XPath |xpath="/RoleEnvironment/Deployment/@id" |
-| Kod |var deploymentId = RoleEnvironment.DeploymentId; |
+| XPath |XPath = "/RoleEnvironment/Deployment/@id" |
+| Kod |var deploymentId = RoleEnvironment. DeploymentId; |
 
 ## <a name="role-id"></a>Identyfikator roli
 Pobiera bieżący identyfikator roli dla tego wystąpienia.
 
-| Typ | Przykład |
+| Type | Przykład |
 | --- | --- |
-| XPath |xpath="/RoleEnvironment/CurrentInstance/@id" |
+| XPath |XPath = "/RoleEnvironment/CurrentInstance/@id" |
 | Kod |Identyfikator var = RoleEnvironment.CurrentRoleInstance.Id; |
 
-## <a name="update-domain"></a>Aktualizowanie domeny
-Pobiera domena aktualizacji wystąpienia.
+## <a name="update-domain"></a>Aktualizacja domeny
+Pobiera domenę aktualizacji wystąpienia.
 
-| Typ | Przykład |
+| Type | Przykład |
 | --- | --- |
-| XPath |xpath="/RoleEnvironment/CurrentInstance/@updateDomain" |
-| Kod |var ud = RoleEnvironment.CurrentRoleInstance.UpdateDomain; |
+| XPath |XPath = "/RoleEnvironment/CurrentInstance/@updateDomain" |
+| Kod |var ud = RoleEnvironment. CurrentRoleInstance. UpdateDomain; |
 
 ## <a name="fault-domain"></a>Domena błędów
-Pobiera wystąpienia domeny błędów.
+Pobiera domenę błędów wystąpienia.
 
-| Typ | Przykład |
+| Type | Przykład |
 | --- | --- |
-| XPath |xpath="/RoleEnvironment/CurrentInstance/@faultDomain" |
-| Kod |var fd = RoleEnvironment.CurrentRoleInstance.FaultDomain; |
+| XPath |XPath = "/RoleEnvironment/CurrentInstance/@faultDomain" |
+| Kod |var FD = RoleEnvironment. CurrentRoleInstance. FaultDomain; |
 
 ## <a name="role-name"></a>Nazwa roli
 Pobiera nazwę roli wystąpień.
 
-| Typ | Przykład |
+| Type | Przykład |
 | --- | --- |
-| XPath |xpath="/RoleEnvironment/CurrentInstance/@roleName" |
+| XPath |XPath = "/RoleEnvironment/CurrentInstance/@roleName" |
 | Kod |var rname = RoleEnvironment.CurrentRoleInstance.Role.Name; |
 
 ## <a name="config-setting"></a>Ustawienia konfiguracji
-Pobiera wartość ustawienia konfiguracji.
+Pobiera wartość określonego ustawienia konfiguracji.
 
-| Typ | Przykład |
+| Type | Przykład |
 | --- | --- |
-| XPath |xpath="/RoleEnvironment/CurrentInstance/ConfigurationSettings/ConfigurationSetting[@name='Setting1']/@value" |
-| Kod |var setting = RoleEnvironment.GetConfigurationSettingValue("Setting1"); |
+| XPath |XPath = "/RoleEnvironment/CurrentInstance/ConfigurationSettings/ConfigurationSetting [@name=" Setting1 "]/@value" |
+| Kod |ustawienie var = RoleEnvironment. GetConfigurationSettingValue ("Setting1"); |
 
-## <a name="local-storage-path"></a>Ścieżka magazynu lokalnego
-Pobiera ścieżkę magazynu lokalnego dla tego wystąpienia.
+## <a name="local-storage-path"></a>Ścieżka do magazynu lokalnego
+Pobiera lokalną ścieżkę magazynu dla tego wystąpienia.
 
-| Typ | Przykład |
+| Type | Przykład |
 | --- | --- |
-| XPath |wyrażenie XPath = "/ RoleEnvironment/wartość parametru CurrentInstance/LocalResources/LocalResource [@name="LocalStore1"]/@path" |
-| Kod |var localResourcePath = RoleEnvironment.GetLocalResource("LocalStore1"). Właściwość RootPath; |
+| XPath |XPath = "/RoleEnvironment/CurrentInstance/LocalResources/LocalResource [@name=" LocalStore1 "]/@path" |
+| Kod |var localResourcePath = RoleEnvironment. GetLocalResource ("LocalStore1"). Właściwość RootPath |
 
 ## <a name="local-storage-size"></a>Rozmiar magazynu lokalnego
-Pobiera informacje o rozmiarze magazynu lokalnego dla tego wystąpienia.
+Pobiera rozmiar lokalnego magazynu dla tego wystąpienia.
 
-| Typ | Przykład |
+| Type | Przykład |
 | --- | --- |
-| XPath |wyrażenie XPath = "/ RoleEnvironment/wartość parametru CurrentInstance/LocalResources/LocalResource [@name="LocalStore1"]/@sizeInMB" |
-| Kod |var localResourceSizeInMB = RoleEnvironment.GetLocalResource("LocalStore1"). MaximumSizeInMegabytes; |
+| XPath |XPath = "/RoleEnvironment/CurrentInstance/LocalResources/LocalResource [@name=" LocalStore1 "]/@sizeInMB" |
+| Kod |var localResourceSizeInMB = RoleEnvironment. GetLocalResource ("LocalStore1"). MaximumSizeInMegabytes; |
 
-## <a name="endpoint-protocol"></a>Punkt końcowy protokołu
+## <a name="endpoint-protocol"></a>Protokół punktu końcowego
 Pobiera protokół punktu końcowego dla tego wystąpienia.
 
-| Typ | Przykład |
+| Type | Przykład |
 | --- | --- |
-| XPath |wyrażenie XPath = "/ RoleEnvironment/wartość parametru CurrentInstance/punkty końcowe/punktu końcowego [@name= 'Punk końcowy 1']/@protocol" |
-| Kod |Port var = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"]. Protokół; |
+| XPath |XPath = "/RoleEnvironment/CurrentInstance/Endpoints/Endpoint [@name=" Endpoint1 "]/@protocol" |
+| Kod |var Prot = RoleEnvironment. CurrentRoleInstance. InstanceEndpoints ["Endpoint1"]. Protokol |
 
-## <a name="endpoint-ip"></a>Punkt końcowy IP
-Pobiera określony punkt końcowy adres IP.
+## <a name="endpoint-ip"></a>Adres IP punktu końcowego
+Pobiera adres IP określonego punktu końcowego.
 
-| Typ | Przykład |
+| Type | Przykład |
 | --- | --- |
-| XPath |wyrażenie XPath = "/ RoleEnvironment/wartość parametru CurrentInstance/punkty końcowe/punktu końcowego [@name= 'Punk końcowy 1']/@address" |
-| Kod |adres var = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"]. IPEndpoint.Address |
+| XPath |XPath = "/RoleEnvironment/CurrentInstance/Endpoints/Endpoint [@name=" Endpoint1 "]/@address" |
+| Kod |var Address = RoleEnvironment. CurrentRoleInstance. InstanceEndpoints ["Endpoint1"]. IPEndpoint. Address |
 
 ## <a name="endpoint-port"></a>Port punktu końcowego
-Pobiera port punktu końcowego dla tego wystąpienia.
+Pobiera Port punktu końcowego dla tego wystąpienia.
 
-| Typ | Przykład |
+| Type | Przykład |
 | --- | --- |
-| XPath |wyrażenie XPath = "/ RoleEnvironment/wartość parametru CurrentInstance/punkty końcowe/punktu końcowego [@name= 'Punk końcowy 1']/@port" |
-| Kod |var port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"]. IPEndpoint.Port; |
+| XPath |XPath = "/RoleEnvironment/CurrentInstance/Endpoints/Endpoint [@name=" Endpoint1 "]/@port" |
+| Kod |var port = RoleEnvironment. CurrentRoleInstance. InstanceEndpoints ["Endpoint1"]. IPEndpoint. Port; |
 
 ## <a name="example"></a>Przykład
-Oto przykład roli procesu roboczego, który tworzy zadanie uruchamiania przy użyciu zmiennej środowiskowej o nazwie `TestIsEmulated` równa [ @emulated wartość wyrażenia xpath](#app-running-in-emulator). 
+Poniżej przedstawiono przykład roli procesu roboczego, która tworzy zadanie uruchamiania z zmienną środowiskową o nazwie `TestIsEmulated` Set [ @emulated na wartość XPath](#app-running-in-emulator). 
 
 ```xml
 <WorkerRole name="Role1">
@@ -163,9 +156,9 @@ Oto przykład roli procesu roboczego, który tworzy zadanie uruchamiania przy u�
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się więcej o [ServiceConfiguration.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) pliku.
+Dowiedz się więcej o pliku [ServiceConfiguration. cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) .
 
-Tworzenie [ServicePackage.cspkg](cloud-services-model-and-package.md#servicepackagecspkg) pakietu.
+Utwórz pakiet [servicepackage. cspkg](cloud-services-model-and-package.md#servicepackagecspkg) .
 
-Włącz [pulpitu zdalnego](cloud-services-role-enable-remote-desktop-new-portal.md) dla roli.
+Włącz [pulpit zdalny](cloud-services-role-enable-remote-desktop-new-portal.md) dla roli.
 

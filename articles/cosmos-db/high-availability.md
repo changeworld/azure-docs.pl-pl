@@ -4,15 +4,15 @@ description: W tym artykule opisano, jak Azure Cosmos DB zapewnia wysoką dostę
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 07/23/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 38629ed2246f4eb67e4183354fe4feaaaee16805
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
-ms.translationtype: HT
+ms.openlocfilehash: 4dde41479c05151fa4e14c9fe4b534b9f7edf9b4
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305445"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467736"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Wysoka dostępność dzięki Azure Cosmos DB
 
@@ -34,8 +34,8 @@ Jako globalnie dystrybuowana baza danych Cosmos DB zapewnia kompleksową umowy S
 
 |Typ operacji  | Pojedynczy region |Wiele regionów (zapis w jednym regionie)|Wiele regionów (zapisy w regionie wieloregionowym) |
 |---------|---------|---------|-------|
-|Operacje zapisu    | 99,99    |99,99   |99,999|
-|Operacje odczytu     | 99,99    |99,999  |99,999|
+|Zapisuje    | 99,99    |99,99   |99,999|
+|Czyta     | 99,99    |99,999  |99,999|
 
 > [!NOTE]
 > W ramach tej usługi rzeczywista dostępność zapisu dla nieodświeżonego, sesji, spójnego prefiksu i wzorów spójności ostatecznej jest znacznie wyższa niż opublikowana umowy SLA. Rzeczywista dostępność odczytu dla wszystkich poziomów spójności jest znacznie wyższa niż opublikowana umowy SLA.
@@ -49,9 +49,9 @@ Awarie regionalne nie są niczym niezwykłym, a usługa Azure Cosmos DB zapewnia
 - Konta z wieloma regionami skonfigurowane z regionami z wieloma zapisami będą mieć wysoką dostępność dla operacji zapisu i odczytu. Regionalne przejścia w tryb failover są chwilowe i nie wymagają żadnych zmian w aplikacji.
 
 - **Konta wieloregionowe z regionem jednokrotnego zapisu (przestój w regionie zapisu):** 
-  * Podczas przestoju w regionie zapisu te konta pozostaną wysoce dostępne do odczytu. Jednak w przypadku zapisów należy **włączyć automatyczne przełączanie do trybu failover** na koncie usługi Cosmos w celu przejścia w tryb failover regionu, którego dotyczy problem, do innego regionu. Przełączenie w tryb failover będzie odbywać się w podanej kolejności regionu. 
-  * Gdy zagrożony region jest z powrotem w trybie online, niezreplikowane dane znajdujące się w regionie zapisu, którego to dotyczy, podczas przestoju są udostępniane za pomocą [źródła konfliktów](how-to-manage-conflicts.md#read-from-conflict-feed). Aplikacje mogą odczytywać źródła konfliktów, rozwiązywać konflikty na podstawie logiki specyficznej dla aplikacji i zapisywać zaktualizowane dane z powrotem do kontenera Cosmos, zgodnie z potrzebami. 
-  * Po odzyskaniu wcześniej zmienionego regionu zapisu zostanie on automatycznie udostępniony jako region odczytu. Można wrócić do odzyskanego regionu jako region zapisu. Regiony można przełączyć przy użyciu [interfejsu wiersza polecenia platformy Azure lub Azure Portal](how-to-manage-database-account.md#manual-failover). Przed lub po ręcznym przejściu w tryb failover **nie ma utraty danych ani dostępności** . Aplikacja nadal będzie o wysokiej dostępności. 
+  * Podczas przestoju w regionie zapisu te konta pozostaną wysoce dostępne do odczytu. Aby żądania zapisu zostały wykonane pomyślnie, należy włączyć opcję **Włącz automatyczną pracę awaryjną** na koncie usługi Azure Cosmos. Włączenie tej opcji spowoduje przejście w tryb failover regionu, którego to dotyczy, do innego regionu w określonym priorytecie regionu. 
+  * Gdy wcześniej zmieniony region jest w trybie online, wszelkie dane zapisu, które były Niereplikowane w przypadku niepowodzenia regionu, są udostępniane za pomocą [źródła konfliktów](how-to-manage-conflicts.md#read-from-conflict-feed). Aplikacje mogą odczytywać źródła konfliktów, rozwiązywać konflikty na podstawie logiki specyficznej dla aplikacji, a następnie zapisywać zaktualizowane dane z powrotem do kontenera platformy Azure Cosmos zgodnie z potrzebami. 
+  * Po odzyskaniu wcześniej zmienionego regionu zapisu zostanie on automatycznie udostępniony jako region odczytu. Można wrócić do odzyskanego regionu jako region zapisu. Regiony można przełączyć przy użyciu [interfejsu wiersza polecenia platformy Azure lub Azure Portal](how-to-manage-database-account.md#manual-failover). Przed, w trakcie lub po przełączeniu regionu zapisu **nie ma utraty danych ani dostępności** , a aplikacja nadal będzie o wysokiej dostępności. 
 
 - **Konta wieloregionowe z regionem jednokrotnego zapisu (awaria regionu odczytu):** 
   * Podczas przestoju regionu odczytu te konta pozostaną wysoce dostępne do odczytu i zapisu. 
@@ -127,7 +127,7 @@ Strefy dostępności można włączyć przy użyciu Azure Portal podczas tworzen
 
 - W całym globalnie rozproszonym środowisku bazy danych istnieje bezpośrednia relacja między poziomem spójności a trwałością danych w przypadku awarii całego regionu. Podczas opracowywania planu ciągłości biznesowej należy zrozumieć maksymalny akceptowalny czas, po upływie którego aplikacja zostanie w pełni odzyskana po zdarzeniu zakłócania. Czas wymagany do pełnego odzyskania aplikacji jest znany jako cel czasu odzyskiwania (RTO). Należy również zrozumieć maksymalny okres ostatnich aktualizacji danych, które aplikacja może tolerować podczas odzyskiwania po wystąpieniu zdarzenia zakłócenia. Okres aktualizacji, którego utrata może być tolerowana, jest określany jako cel punktu odzyskiwania (RPO, recovery point objective). Aby zobaczyć cel punktu odzyskiwania i RTO dla Azure Cosmos DB, zobacz [poziomy spójności i trwałość danych](consistency-levels-tradeoffs.md#rto)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Następnie możesz zapoznać się z następującymi artykułami:
 

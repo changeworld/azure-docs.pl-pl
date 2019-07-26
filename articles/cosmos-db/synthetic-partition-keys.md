@@ -1,25 +1,25 @@
 ---
-title: Utwórz klucz partycji syntetycznych w usłudze Azure Cosmos DB równomierne rozłożenie danych i obciążenia.
-description: Dowiedz się, jak używać kluczy partycji syntetycznych w kontenerach usługi Azure Cosmos
+title: Utwórz syntetyczny klucz partycji w Azure Cosmos DB, aby równomiernie rozpowszechnić swoje dane i obciążenie.
+description: Dowiedz się, jak używać syntetycznych kluczy partycji w kontenerach usługi Azure Cosmos
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 07/23/2019
 ms.author: rimman
-ms.openlocfilehash: 1fd436746dcd2e93a1699ac5c68965213c74580e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf60c674f9f43c01a3090efa3ac1f0e2e0674efa
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978867"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467836"
 ---
 # <a name="create-a-synthetic-partition-key"></a>Tworzenie syntetycznego klucza partycji
 
-Jest najlepszym rozwiązaniem jest zapewnienie klucza partycji przy użyciu wielu różnych wartości, takich jak setkach lub tysiącach. Celem jest, aby rozdystrybuować obciążenie i dane równomiernie elementy skojarzone z tymi wartościami klucza partycji. Jeśli taka właściwość nie istnieje w danych, możesz utworzyć *klucza partycji syntetycznych*. W tym dokumencie opisano kilka podstawowych technik do generowania klucza partycji syntetycznych dla kontenera usługi Cosmos.
+Najlepszym rozwiązaniem jest posiadanie klucza partycji z wieloma różnymi wartościami, takimi jak setki lub tysiące. Celem jest równomierne dystrybuowanie danych i obciążeń między elementami skojarzonymi z tymi wartościami klucza partycji. Jeśli taka właściwość nie istnieje w danych, można utworzyć *klucz partycji syntetycznej*. W tym dokumencie opisano kilka podstawowych technik generowania klucza partycji syntetycznej dla Twojego kontenera Cosmos.
 
 ## <a name="concatenate-multiple-properties-of-an-item"></a>Łączenie wielu właściwości elementu
 
-Tworząc klucza partycji przez złączenie wielu wartości właściwości w jednym sztuczne `partitionKey` właściwości. Te klucze są określane jako klucze syntetycznych. Na przykład rozważmy następujący przykład dokument:
+Można utworzyć klucz partycji, łącząc wiele wartości właściwości w jedną sztuczną `partitionKey` właściwość. Klucze te są określane jako klucze syntetyczne. Rozważmy na przykład następujący przykładowy dokument:
 
 ```JavaScript
 {
@@ -28,7 +28,7 @@ Tworząc klucza partycji przez złączenie wielu wartości właściwości w jedn
 }
 ```
 
-Poprzedni dokument jedną z opcji jest ustawiona /deviceId lub /date jako klucza partycji. Użyj tej opcji, jeśli chcesz podzielić kontenera na podstawie Identyfikatora urządzenia lub daty. Innym rozwiązaniem jest połączyć te dwie wartości w syntetycznych `partitionKey` właściwość, która jest używana jako klucz partycji.
+W przypadku poprzedniego dokumentu jedną z opcji jest ustawienie/deviceId lub/Date jako klucza partycji. Użyj tej opcji, jeśli chcesz podzielić kontener na podstawie jego identyfikatora lub daty. Kolejną opcją jest łączenie tych dwóch wartości w Właściwość syntetyczną `partitionKey` używaną jako klucz partycji.
 
 ```JavaScript
 {
@@ -38,27 +38,27 @@ Poprzedni dokument jedną z opcji jest ustawiona /deviceId lub /date jako klucza
 }
 ```
 
-W scenariuszach w czasie rzeczywistym może mieć tysięcy elementów w bazie danych. Zamiast ręcznego dodawania syntetycznych klucza, definiować logikę po stronie klienta do łączenia wartości i wstawić syntetycznych klucza do elementów w kontenerach usługi Cosmos.
+W scenariuszach w czasie rzeczywistym można mieć tysiące elementów w bazie danych. Zamiast ręcznie dodać klucz syntetyczny, zdefiniuj logikę po stronie klienta, aby połączyć wartości i wstawić klucz syntetyczny do elementów w kontenerach Cosmos.
 
-## <a name="use-a-partition-key-with-a-random-suffix"></a>Klucz partycji za pomocą losowych sufiks
+## <a name="use-a-partition-key-with-a-random-suffix"></a>Używanie klucza partycji z sufiksem losowym
 
-Jest kolejną strategią możliwe, aby bardziej równomiernie rozłożyć obciążenie pracą dołaczenia losową liczbę na końcu wartości klucza partycji. Podczas dystrybucji elementów w ten sposób mogą wykonywać operacje równoległe zapisu w partycjach.
+Kolejną możliwą strategią do dystrybucji obciążenia jest bardziej równomierne dołączenie liczby losowej na końcu wartości klucza partycji. Podczas dystrybucji elementów w ten sposób można wykonywać równoległe operacje zapisu między partycjami.
 
-Przykładem jest, jeśli klucz partycji reprezentuje datę. Może być wybierz losową liczbę między 1 a 400 i łączenia go jako sufiks do wartości typu date. Ta metoda powoduje wartości klucza partycji, takich jak `2018-08-09.1`,`2018-08-09.2`i tak dalej za pośrednictwem `2018-08-09.400`. Ponieważ można wygenerować losowy klucz partycji, operacje zapisu w kontenerze w każdym dniu zostały rozmieszczone równomiernie w wielu partycjach. Ta metoda powoduje lepsze równoległości i większą ogólną przepływność.
+Przykładem jest to, że klucz partycji reprezentuje datę. Można wybrać liczbę losową z zakresu od 1 do 400 i połączyć ją jako sufiks do daty. Ta metoda powoduje użycie wartości klucza partycji, `2018-08-09.1`takich`2018-08-09.2`jak,, i tak dalej `2018-08-09.400`, przez. Ponieważ klucz partycji jest losowo wykonywany, operacje zapisu w kontenerze każdego dnia są równomiernie rozłożone na wiele partycji. Ta metoda skutkuje lepszą równoległością i większą przepustowością.
 
-## <a name="use-a-partition-key-with-pre-calculated-suffixes"></a>Klucz partycji za pomocą wstępnie obliczona sufiksy 
+## <a name="use-a-partition-key-with-pre-calculated-suffixes"></a>Używanie klucza partycji z wstępnie obliczonymi sufiksami 
 
-Strategia losowe sufiksu może znacznie zwiększyć przepływność zapisu, ale jest trudny do odczytania określonego elementu. Nie można ustalić wartości sufiks, który został użyty podczas powstała z jednego elementu. Aby ułatwić odczytywanie poszczególnych elementów, użyj strategii wstępnie obliczona sufiksy. Zamiast używania losową liczbę, aby dystrybuować elementów między partycjami, należy użyć numer, który jest obliczany na podstawie coś, co chcesz zbadać.
+Strategia losowego sufiksu może znacznie poprawić przepływność zapisu, ale trudno jest odczytywać określony element. Nie znasz wartości sufiksu, która została użyta podczas napisana elementu. Aby ułatwić odczytywanie pojedynczych elementów, Użyj strategii wstępnie obliczonych sufiksów. Zamiast używać liczby losowej do dystrybuowania elementów między partycjami, należy użyć liczby, która jest obliczana na podstawie elementu, który ma być wysyłany do zapytania.
 
-Należy rozważyć poprzedni przykład gdzie kontenera używa daty jako klucza partycji. Teraz załóżmy, że każdy element ma `Vehicle-Identification-Number` (`VIN`) atrybutu, który chcemy uzyskać dostęp. Dodatkowo załóżmy, że często uruchamiać zapytania, aby znaleźć elementy za `VIN`, oprócz daty. Zanim aplikacja zapisuje element do kontenera, go obliczyć sufiks wyznaczania wartości skrótu, oparte na VIN, a następnie dołącza je do wartości typu date klucza partycji. Obliczenia może generować liczbą z zakresu od 1 do 400, który jest równomiernie rozłożona. Ten wynik jest podobne do efektów metodą losowego sufiks strategii. Wartość klucza partycji jest data połączona z obliczony wynik.
+Rozważmy poprzedni przykład, w którym kontener używa daty jako klucza partycji. Teraz Załóżmy, że każdy element ma `Vehicle-Identification-Number` atrybut (`VIN`), do którego chcemy uzyskać dostęp. Ponadto Załóżmy, że często uruchamia się zapytania, aby znaleźć elementy przez, `VIN`a nie datę. Zanim aplikacja zapisze element do kontenera, może obliczyć sufiks skrótu na podstawie numeru VIN i dołączyć go do daty klucza partycji. Obliczenia mogą generować liczbę z przedziału od 1 do 400, która jest równomiernie dystrybuowana. Ten wynik jest podobny do wyników wytwarzanych przez metodę strategii losowego sufiksu. Wartość klucza partycji to data połączona z obliczonym wynikiem.
 
-Ta strategia zapisy są równomiernie rozłożonych różnych wartości klucza partycji i w różnych partycjach. Można łatwo znaleźć określonego elementu i daty, ponieważ można obliczyć wartości klucza partycji dla określonego `Vehicle-Identification-Number`. Zaletą tej metody jest to, czy można uniknąć tworzenia pojedynczego gorąca klucza partycji, czyli klucza partycji, który pobiera wszystkie obciążenia. 
+Ta strategia polega na tym, że zapisy są równomiernie rozłożone w wartości kluczy partycji i między partycjami. Możesz łatwo odczytać określony element i datę, ponieważ można obliczyć wartość klucza partycji dla określonego `Vehicle-Identification-Number`. Zaletą tej metody jest to, że można uniknąć tworzenia jednego klucza partycji gorącej, tj. klucza partycji, który pobiera wszystkie obciążenia. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Możesz dowiedzieć się więcej o partycjonowania pojęcie w następujących artykułach:
+Więcej informacji na temat koncepcji partycjonowania można znaleźć w następujących artykułach:
 
-* Dowiedz się więcej o [partycjami logicznymi](partition-data.md).
-* Dowiedz się więcej na temat [aprowizowanie przepływności na kontenerach Azure Cosmos i bazy danych](set-throughput.md).
-* Dowiedz się, jak [aprowizowanie przepływności na kontenerze usługi Azure Cosmos](how-to-provision-container-throughput.md).
-* Dowiedz się, jak [aprowizowanie przepływności na bazie danych Azure Cosmos](how-to-provision-database-throughput.md).
+* Dowiedz się więcej na temat [partycji logicznych](partition-data.md).
+* Dowiedz się więcej o [tym, jak zainicjować przepływność w kontenerach i bazach danych usługi Azure Cosmos](set-throughput.md).
+* Dowiedz się, jak [zainicjować przepływność na kontenerze usługi Azure Cosmos](how-to-provision-container-throughput.md).
+* Dowiedz się, jak [udostępnić przepływność w bazie danych Azure Cosmos](how-to-provision-database-throughput.md).

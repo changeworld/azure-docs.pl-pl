@@ -1,57 +1,51 @@
 ---
-title: Co to jest Azure Cloud Services | Dokumentacja firmy Microsoft
-description: Dowiedz się o nowościach usług Azure Cloud Services.
+title: Co to jest platforma Azure Cloud Services | Microsoft Docs
+description: Dowiedz się, co to jest Cloud Services platformy Azure.
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-ms.assetid: ed7ad348-6018-41bb-a27d-523accd90305
+author: georgewallace
 ms.service: multiple
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: jeconnoc
-ms.openlocfilehash: ce88dcaedf32f293fc121cda2a088388c99badee
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: 61369d51056607d8176d301afa945c7c77895b12
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60337536"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359705"
 ---
-# <a name="overview-of-azure-cloud-services"></a>Omówienie usługi Azure Cloud Services
-Usługi Azure Cloud Services znajduje się przykład [platforma jako usługa](https://azure.microsoft.com/overview/what-is-paas/) (PaaS). Podobnie jak [usługi Azure App Service](../app-service/overview.md), ta technologia jest przeznaczona do obsługi aplikacji, które są skalowalne, niezawodne i tanie w utrzymaniu. W ten sam sposób, że usługi App Service znajduje się na maszynach wirtualnych (VM), dlatego też jest usług Azure Cloud Services. Jednak masz większą kontrolę nad maszynami wirtualnymi. Własne oprogramowanie można zainstalować na maszynach wirtualnych, które używają usług Azure Cloud Services, a użytkownik może uzyskiwać do nich dostęp zdalnie.
+# <a name="overview-of-azure-cloud-services"></a>Omówienie Cloud Services platformy Azure
+Platforma Azure Cloud Services to przykład [platformy jako usługi](https://azure.microsoft.com/overview/what-is-paas/) (PaaS). Podobnie jak [Azure App Service](../app-service/overview.md), Technologia ta została zaprojektowana do obsługi aplikacji, które są skalowalne, niezawodne i niedrogie do działania. W taki sam sposób, w jaki App Service jest hostowany na maszynach wirtualnych, tak więc usługa Azure Cloud Services. Jednak masz większą kontrolę nad maszynami wirtualnymi. Możesz zainstalować własne oprogramowanie na maszynach wirtualnych korzystających z usługi Azure Cloud Services i uzyskać do nich dostęp zdalnie.
 
-![Azure Cloud Services diagramu](./media/cloud-services-choose-me/diagram.png)
+![Diagram Cloud Services platformy Azure](./media/cloud-services-choose-me/diagram.png)
 
-Większa kontrola oznacza również mniej łatwość użycia. Chyba że potrzebne opcje dodatkową kontrolę, zazwyczaj jest szybsze i łatwiejsze do uruchomienia aplikacji sieci web, a w aplikacji sieci Web funkcji App Service w porównaniu do usług Azure Cloud Services.
+Większa kontrola oznacza także mniejszą łatwość użycia. O ile nie potrzebujesz dodatkowych opcji kontroli, zazwyczaj jest to szybsze i łatwiejsze w objęcie działaniem aplikacji sieci Web w Web Apps funkcji App Service w porównaniu do Cloud Services platformy Azure.
 
-Istnieją dwa typy ról, usług Azure Cloud Services. Jedyną różnicą między tymi dwoma jest o tym, jak Twoja rola znajduje się na maszynach wirtualnych:
+Istnieją dwa typy ról Cloud Services platformy Azure. Jedyną różnicą między nimi jest sposób, w jaki Twoja rola jest hostowana na maszynach wirtualnych:
 
-* **Rola internetowa**: Automatycznie wdraża i obsługuje aplikację za pośrednictwem usług IIS.
+* **Rola sieci Web**: Automatycznie wdraża i hostuje aplikację za poorednictwem usług IIS.
 
-* **Rola procesu roboczego**: Korzysta z usług IIS i uruchamia autonomiczny Twojej aplikacji.
+* **Rola procesu roboczego**: Program nie korzysta z usług IIS i uruchamia autonomiczną aplikację.
 
-Na przykład prosta aplikacja może użyć tylko jednej roli sieci web, obsługująca witryny sieci Web. Bardziej złożonych aplikacji mogą używać roli sieci web do obsługi przychodzących żądań od użytkowników, a następnie przekazać te żądania do roli procesu roboczego do przetworzenia. (Ta komunikacja może używać [usługi Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) lub [Azure Queue storage](../storage/common/storage-introduction.md).)
+Przykładowo prosta aplikacja może używać tylko jednej roli sieci Web, która obsługuje witrynę sieci Web. Bardziej złożona aplikacja może używać roli sieci Web do obsługi żądań przychodzących od użytkowników, a następnie przekazać te żądania do roli procesu roboczego w celu przetworzenia. (Ta komunikacja może używać [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) lub [usługi Azure queue storage](../storage/common/storage-introduction.md)).
 
-Jak sugeruje poprzednim rysunku, wszystkie maszyny wirtualne w jednej aplikacji uruchomione w tej samej usługi w chmurze. Dostęp użytkowników aplikacji za pomocą jednego publicznego adresu IP, za pomocą żądań automatycznie ładować równoważone w aplikacji w maszynach wirtualnych. Platforma [skaluje się i wdraża](cloud-services-how-to-scale-portal.md) maszyn wirtualnych w aplikacji usług Azure Cloud Services w taki sposób, aby uniknąć pojedynczego punktu awarii sprzętowej.
+Zgodnie z powyższym rysunkiem sugeruje, wszystkie maszyny wirtualne w pojedynczej aplikacji działają w tej samej usłudze w chmurze. Użytkownicy uzyskują dostęp do aplikacji za pośrednictwem jednego publicznego adresu IP, a żądania są automatycznie równoważone przez maszyny wirtualne aplikacji. Platforma umożliwia [skalowanie i wdrażanie](cloud-services-how-to-scale-portal.md) maszyn wirtualnych w aplikacji Cloud Services platformy Azure w taki sposób, aby uniknąć pojedynczego punktu awarii sprzętu.
 
-Mimo, że aplikacje są uruchamiane na maszynach wirtualnych, ważne jest zrozumienie, że usługi Azure Cloud Services zapewnia PaaS, nie infrastruktura jako usługa (IaaS). W tym miejscu jest jednym ze sposobów myślenia o nim. Rozwiązania iaas, takich jak Azure Virtual Machines należy najpierw utworzyć i skonfigurować środowisko, które aplikacja działa w. Następnie możesz wdrożyć aplikację w tym środowisku. Jesteś odpowiedzialny za zarządzanie ilości tym świecie, wykonując czynności, takie jak wdrażanie nowych wersji poprawionego systemu operacyjnego w każdej maszynie Wirtualnej. W modelu PaaS z kolei jest tak, jakby środowisko już istnieje. To wszystko, co należy zrobić, Wdróż aplikację. Zarządzanie platformy, na których ono działa, takich jak wdrażanie nowych wersji systemu operacyjnego jest obsługiwane dla Ciebie.
+Chociaż aplikacje są uruchamiane na maszynach wirtualnych, ważne jest, aby zrozumieć, że usługa Azure Cloud Services udostępnia PaaS, a nie infrastrukturę jako usługę (IaaS). Oto jeden ze sposobów, aby myśleć o tym. Korzystając z IaaS, takiego jak Azure Virtual Machines, należy najpierw utworzyć i skonfigurować środowisko, w którym aplikacja jest uruchamiana. Następnie wdrażasz aplikację w tym środowisku. Użytkownik jest odpowiedzialny za zarządzanie większością tego świata, wykonując takie czynności jak wdrażanie nowych poprawek systemu operacyjnego w ramach każdej maszyny wirtualnej. W PaaS, z kolei, tak jakby środowisko już istnieje. Wystarczy wdrożyć aplikację. Zarządzanie uruchomioną platformą, w tym wdrażanie nowych wersji systemu operacyjnego, jest obsługiwane przez użytkownika.
 
 ## <a name="scaling-and-management"></a>Skalowanie i zarządzanie
-Za pomocą usług Azure Cloud Services nie są tworzone maszyn wirtualnych. Zamiast tego należy podać plik konfiguracji, które nakazuje platformie Azure, ile chcesz, takie jak "trzy wystąpienia ról sieci web" i "dwa wystąpienia roli procesu roboczego." Platforma utworzy je dla Ciebie. Nadal możesz wybrać [rozmiar](cloud-services-sizes-specs.md) tych kopii maszyn wirtualnych powinna być, ale nie jawnie tworzyć je samodzielnie. Jeśli aplikacja musi obsługiwać większe obciążenie, możesz poprosić, aby uzyskać więcej maszyn wirtualnych, a platforma Azure tworzy tych wystąpień. Jeśli zmniejsza obciążenie, możesz wyłączenie tych wystąpień i Zatrzymaj płacić za.
+Usługa Azure Cloud Services nie tworzy maszyn wirtualnych. Zamiast tego należy podać plik konfiguracji, który informuje platformę Azure, jak wiele z nich ma być, takich jak "trzy wystąpienia roli sieci Web" i "dwa wystąpienia roli procesu roboczego". Następnie zostanie utworzona przez platformę. Nadal wybierasz [rozmiar](cloud-services-sizes-specs.md) tych maszyn wirtualnych, które powinny być zapasowe, ale nie można ich jawnie tworzyć. Jeśli aplikacja wymaga obsługi większego obciążenia, możesz poszukiwać więcej maszyn wirtualnych, a platforma Azure tworzy te wystąpienia. Jeśli obciążenie zmniejszy się, możesz zamknąć te wystąpienia i zaprzestać płacenia za nie.
 
-Aplikacji usług Azure Cloud Services jest zwykle udostępniane użytkownikom za pośrednictwem procesem dwuetapowym. Deweloper pierwszy [przekazuje aplikacji](cloud-services-how-to-create-deploy-portal.md) do obszaru przemieszczania platformy. Gdy deweloper jest gotowy do marka aplikacji na żywo, używają witryny Azure portal można zamienić przemieszczania z produkcją. To [przełączać się między środowiskiem przejściowym i produkcyjnym](cloud-services-how-to-manage-portal.md#swap-deployments-to-promote-a-staged-deployment-to-production) może odbywać się bez przestojów, co pozwala uruchomionej aplikacji, można uaktualnić do nowej wersji bez zakłócania działania swoich użytkowników.
+Aplikacja Cloud Services platformy Azure jest zwykle udostępniana użytkownikom za pośrednictwem procesu dwuetapowego. Deweloper najpierw [przekazuje aplikację](cloud-services-how-to-create-deploy-portal.md) do obszaru przejściowego platformy. Gdy deweloper jest gotowy do udostępnienia aplikacji, używa Azure Portal do wymiany etapów przejściowych w środowisku produkcyjnym. Ten [przełącznik między przejściową i produkcyjną](cloud-services-how-to-manage-portal.md#swap-deployments-to-promote-a-staged-deployment-to-production) może być wykonywany bez przestojów, co umożliwia uaktualnienie uruchomionej aplikacji do nowej wersji bez zakłócania jej użytkowników.
 
 ## <a name="monitoring"></a>Monitorowanie
-Usługi Azure Cloud Services oferuje także funkcje monitorowania. Takie jak maszyny wirtualne wykryje serwera fizycznego nie powiodło się i ponowne uruchomienie maszyn wirtualnych, które były uruchomione na tym serwerze, na nowych komputerach. Ale usług Azure Cloud Services wykrywa także nie powiodło się maszyny wirtualne i aplikacje, nie tylko na awarie sprzętowe. W przeciwieństwie do maszyn wirtualnych ma agenta w każdej roli sieci web i proces roboczy, a więc jest możliwe uruchomienie nowych maszyn wirtualnych i wystąpień aplikacji, gdy wystąpią błędy.
+Usługa Azure Cloud Services udostępnia również monitorowanie. Podobnie jak Virtual Machines, wykrywa uszkodzony serwer fizyczny i ponownie uruchamia maszyny wirtualne, które były uruchomione na tym serwerze na nowym komputerze. Jednak usługa Azure Cloud Services wykrywa także niepowodzenia maszyn wirtualnych i aplikacji, a nie tylko błędy sprzętowe. W przeciwieństwie do Virtual Machines, ma agenta w ramach każdej roli sieci Web i procesu roboczego, dzięki czemu można uruchamiać nowe maszyny wirtualne i wystąpienia aplikacji w przypadku wystąpienia błędów.
 
-Rodzaj PaaS usług Azure Cloud Services ma inne implikacje zbyt. Jest jednym z najważniejszych, że aplikacje korzystające z tej technologii mają być zapisywane działała poprawnie, gdy wszystkie wystąpienia roli sieć web lub procesu roboczego nie powiodło się. Aby to osiągnąć, aplikacji usług Azure Cloud Services nie zachowują stan, w systemie plików swoje własne maszyny wirtualne. W przeciwieństwie do maszyn wirtualnych utworzonych za pomocą maszyn wirtualnych zapisu wykonane w maszynach wirtualnych usługi chmury platformy Azure nie są trwałe. Ma nic, takich jak dysk z danymi maszyn wirtualnych. Zamiast tego aplikacji usług Azure Cloud Services powinien jawnie zapisać wszystkich stanów do usługi Azure SQL Database, obiekty BLOB, tabel lub zewnętrznego magazynu. Tworzenie aplikacji w ten sposób sprawia, że ich łatwiejsze do skali i bardziej odporne na awarie, które są zarówno ważne cele usługi Azure Cloud Services.
+PaaS charakter platformy Azure Cloud Services ma inne konsekwencje. Jednym z najważniejszych jest to, że aplikacje skompilowane w tej technologii należy napisać tak, aby działały prawidłowo w przypadku awarii dowolnego wystąpienia roli sieci Web lub procesu roboczego. Aby to osiągnąć, aplikacja platformy Azure Cloud Services nie powinna zachować stanu w systemie plików własnych maszyn wirtualnych. W przeciwieństwie do maszyn wirtualnych utworzonych przy użyciu Virtual Machines zapisy wprowadzone do maszyn wirtualnych Cloud Services platformy Azure nie są trwałe. Nie ma niczego jak dysk danych Virtual Machines. Zamiast tego aplikacja Cloud Services platformy Azure powinna jawnie zapisywać wszystkie stany do Azure SQL Database, obiektów blob, tabel lub innych magazynów zewnętrznych. Tworzenie aplikacji w ten sposób ułatwia skalowanie i bardziej odporne na awarie, które są ważnymi celami Cloud Services platformy Azure.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Tworzenie aplikacji usługi w chmurze na platformie .NET](cloud-services-dotnet-get-started.md) 
-* [Tworzenie aplikacji usługi w chmurze w środowisku Node.js](cloud-services-nodejs-develop-deploy-app.md) 
+* [Tworzenie aplikacji usługi w chmurze w programie .NET](cloud-services-dotnet-get-started.md) 
+* [Tworzenie aplikacji usługi w chmurze w języku Node. js](cloud-services-nodejs-develop-deploy-app.md) 
 * [Tworzenie aplikacji usługi w chmurze w języku PHP](../cloud-services-php-create-web-role.md) 
 * [Tworzenie aplikacji usługi w chmurze w języku Python](cloud-services-python-ptvs.md)
 

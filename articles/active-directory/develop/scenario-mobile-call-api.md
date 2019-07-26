@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1408c06570babfd93c46fdfc7a3c6754000bcbc
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
-ms.translationtype: HT
+ms.openlocfilehash: 76f0cddfa889376d3795726e74d82e53417b31f1
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320849"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68413579"
 ---
 # <a name="mobile-app-that-calls-web-apis---call-a-web-api"></a>Aplikacja mobilna, która wywołuje interfejsy API sieci Web — wywołuje interfejs API sieci Web
 
@@ -114,17 +114,7 @@ Po uzyskaniu tokenu dostępu można łatwo wywołać internetowy interfejs API. 
 
 ### <a name="xamarin"></a>Xamarin
 
-```CSharp
-httpClient = new HttpClient();
-
-// Put access token in HTTP request.
-httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
-
-// Call Graph.
-HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
-...
-}
-```
+[!INCLUDE [Call web API in .NET](../../../includes/active-directory-develop-scenarios-call-apis-dotnet.md)]
 
 ## <a name="making-several-api-requests"></a>Tworzenie kilku żądań interfejsu API
 
@@ -133,7 +123,41 @@ Jeśli konieczne jest Wywołaj ten sam interfejs API kilka razy lub jeśli musis
 - Poprzednia zgoda: Platforma tożsamości firmy Microsoft umożliwia aplikacjom uzyskanie zgody użytkownika, ponieważ są wymagane uprawnienia, a nie wszystkie na początku. Za każdym razem, gdy aplikacja jest gotowa do wywołania interfejsu API, powinna zażądać tylko zakresów, których należy użyć.
 - **Dostęp warunkowy**: W niektórych scenariuszach po wprowadzeniu kilku żądań interfejsu API mogą wystąpić dodatkowe wymagania dotyczące dostępu warunkowego. Taka sytuacja może wystąpić, jeśli pierwsze żądanie nie ma stosowanych zasad dostępu warunkowego, a aplikacja próbuje uzyskać dostęp do nowego interfejsu API, który wymaga dostępu warunkowego. Aby obsłużyć ten scenariusz, należy przechwycić błędy z żądań dyskretnych i przygotować się do przeprowadzenia żądania interaktywnego.  Aby dowiedzieć się więcej, zobacz [wskazówki dotyczące dostępu warunkowego](conditional-access-dev-guide.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="calling-several-apis-in-xamarin-or-uwp---incremental-consent-and-conditional-access"></a>Wywoływanie kilku interfejsów API w programie Xamarin lub platformy UWP — wyrażanie zgody i dostępu warunkowego
+
+Jeśli musisz wywołać kilka interfejsów API dla tego samego użytkownika, po uzyskaniu tokenu dla użytkownika, możesz uniknąć wielokrotnego monitowania użytkownika o poświadczenia, wywołując `AcquireTokenSilent` się w celu uzyskania tokenu.
+
+```CSharp
+var result = await app.AcquireTokenXX("scopeApi1")
+                      .ExecuteAsync();
+
+result = await app.AcquireTokenSilent("scopeApi2")
+                  .ExecuteAsync();
+```
+
+Sytuacje, w których wymagane jest interakcja, to:
+
+- Użytkownik wyraził zgodę na pierwszy interfejs API, ale teraz musi powyrazić zgody na więcej zakresów (powiększanie zgody)
+- Pierwszy interfejs API nie wymagał uwierzytelniania wieloskładnikowego, ale Następna z nich robi.
+
+```CSharp
+var result = await app.AcquireTokenXX("scopeApi1")
+                      .ExecuteAsync();
+
+try
+{
+ result = await app.AcquireTokenSilent("scopeApi2")
+                  .ExecuteAsync();
+}
+catch(MsalUiRequiredException ex)
+{
+ result = await app.AcquireTokenInteractive("scopeApi2")
+                  .WithClaims(ex.Claims)
+                  .ExecuteAsync();
+}
+```
+
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Przenieś do środowiska produkcyjnego](scenario-mobile-production.md)

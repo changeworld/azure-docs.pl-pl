@@ -1,6 +1,6 @@
 ---
-title: Dodawanie kont innych niż Microsoft do aplikacji Microsoft Authenticator — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Jak dodawać konta firmy Microsoft, takich jak Google, Facebook lub GitHub do aplikacji Microsoft Authenticator, aby Weryfikacja two-Factor Authentication.
+title: Dodaj konta inne niż Microsoft do aplikacji Microsoft Authenticator Azure Active Directory | Microsoft Docs
+description: Jak dodać konta inne niż firmy Microsoft, takie jak Google, Facebook lub GitHub, do aplikacji Microsoft Authenticator na potrzeby weryfikacji dwuskładnikowej.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,182 +12,187 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6f94ba30c06fc6975ab212c895cecefe5d383fa
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: effe48c859e711f0efc41c1a4d651e5d15d5ada9
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60473910"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382610"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>Dodawanie kont innych niż Microsoft
-Dodaj konta firmy Microsoft, takich jak Google, Facebook lub GitHub do aplikacji Microsoft Authenticator, aby Weryfikacja two-Factor Authentication. Aplikacja Microsoft Authenticator współdziała z dowolną aplikacją używającą weryfikacji dwuetapowej i dowolnym kontem obsługującym standardy TOTP (Time-based One-time Password).
+
+Dodaj konta inne niż Microsoft, takie jak Google, Facebook lub GitHub, do aplikacji Microsoft Authenticator na potrzeby weryfikacji dwuskładnikowej. Aplikacja Microsoft Authenticator współdziała z dowolną aplikacją używającą weryfikacji dwuetapowej i dowolnym kontem obsługującym standardy TOTP (Time-based One-time Password).
 
 >[!Important]
->Przed dodaniem konta należy pobrać i zainstalować aplikację Microsoft Authenticator. Jeśli użytkownik jeszcze nie, wykonaj kroki opisane w [pobrać i zainstalować aplikację](user-help-auth-app-download-install.md) artykułu.
+>Aby można było dodać konto, należy pobrać i zainstalować aplikację Microsoft Authenticator. Jeśli jeszcze tego nie zrobiono, wykonaj kroki opisane w artykule [pobieranie i instalowanie aplikacji](user-help-auth-app-download-install.md) .
 
 ## <a name="add-personal-accounts"></a>Dodawanie kont osobistych
-Ogólnie rzecz biorąc dla wszystkich kont osobistych, musisz mieć:
 
-1. Zaloguj się do swojego konta, a następnie włączyć weryfikację two-Factor Authentication przy użyciu komputera lub urządzenia.
+Ogólnie rzecz biorąc, w przypadku wszystkich kont osobistych należy:
 
-2. Dodaj konto do aplikacji Microsoft Authenticator. Użytkownik, może zostać poproszona o zeskanować kod QR w ramach tego procesu.
+1. Zaloguj się do swojego konta, a następnie Włącz weryfikację dwuskładnikową przy użyciu urządzenia lub komputera.
 
-Udostępniamy poniżej proces dla kont usługi Facebook, Google, GitHub i Amazon, ale ten proces jest taki sam dla żadnych innych aplikacji, takich jak usługi Instagram, Netflix lub Adobe.
+2. Dodaj konto do aplikacji Microsoft Authenticator. Może pojawić się prośba o przeskanowanie kodu QR w ramach tego procesu.
 
-## <a name="add-your-google-account"></a>Dodaj swoje konto Google
-Dodaj swoje konto Google przez włączenie weryfikacji two-Factor Authentication, a następnie dodanie konta do aplikacji.
+Udostępniamy ten proces dla kont w serwisach Facebook, Google, GitHub i Amazon, ale ten proces jest taki sam dla każdej innej aplikacji, takiej jak usługi Instagram, Netflix lub Adobe.
 
-### <a name="turn-on-two-factor-verification"></a>Włącz weryfikację two-Factor Authentication
+## <a name="add-your-google-account"></a>Dodawanie konta Google
 
-1. Na komputerze, przejdź do https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome, wybierz opcję **wprowadzenie**, a następnie zweryfikować Twoją tożsamość.
+Dodaj swoje konto Google, włączając weryfikację dwuskładnikową, a następnie dodając konto do aplikacji.
 
-2. Wykonaj kroki na stronie, aby włączyć weryfikację dwuetapową dla Twojego osobistego konta Google.
+### <a name="turn-on-two-factor-verification"></a>Włącz weryfikację dwuskładnikową
 
-### <a name="add-your-google-account-to-the-app"></a>Dodaj swoje konto Google do aplikacji
+1. Na komputerze przejdź do https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome, wybierz pozycję **Rozpocznij pracę**, a następnie zweryfikuj swoją tożsamość.
 
-1. Na stronie usługi Google na komputerze, przejdź do **Konfigurowanie alternatywnych drugi etap** wybierz pozycję **Konfigurowanie** z **aplikacji Authenticator** sekcji.
+2. Postępuj zgodnie z instrukcjami na stronie, aby włączyć weryfikację dwuetapową dla osobistego konta Google.
 
-2. Na **uzyskiwać kody z aplikacji wystawcy uwierzytelnienia** stronie, wybierz opcję **Android** lub **iPhone** zależnie od typu telefonu, a następnie wybierz **dalej**.
+### <a name="add-your-google-account-to-the-app"></a>Dodawanie konta Google do aplikacji
 
-    Otrzymuje kod QR, który służy do automatycznego skojarzyć swoje konto z aplikacji Microsoft Authenticator. Nie zamykaj tego okna.
+1. Na stronie Google na komputerze przejdź do sekcji **Konfigurowanie alternatywnego drugiego kroku** , wybierz pozycję **Konfiguruj** z poziomu sekcji **aplikacja uwierzytelniania** .
 
-3. Otwórz aplikację Microsoft Authenticator, wybierz opcję **Dodaj konto** z **dostosowywanie i sterowania** ikonę w prawym górnym, prawo, a następnie wybierz **inne konto (Google, Facebook itd.)** .
+2. Na stronie **Pobierz kody z aplikacji Authenticator** wybierz pozycję **Android** lub **iPhone** na podstawie typu telefonu, a następnie wybierz przycisk **dalej**.
 
-4. Umożliwia skanowanie kodu QR za pomocą aparatu urządzenia **Konfigurowanie uwierzytelniania** strony na tym komputerze.
+    Otrzymujesz kod QR, którego można użyć do automatycznego kojarzenia konta z aplikacją Microsoft Authenticator. Nie zamykaj tego okna.
+
+3. Otwórz aplikację Microsoft Authenticator, wybierz pozycję **Dodaj konto** z ikony **Dostosowywanie i kontrola** w prawym górnym rogu, a następnie wybierz pozycję **inne konto (Google, Facebook itp.)** .
+
+4. Za pomocą aparatu urządzenia Zeskanuj kod QR na stronie **Konfigurowanie uwierzytelniania** na komputerze.
 
     >[!Note]
-    >Jeśli aparat fotograficzny nie działa prawidłowo, można wprowadzić kod QR i adres URL ręcznie.
+    >Jeśli aparat nie działa prawidłowo, można ręcznie wprowadzić kod QR i adres URL.
 
-5. Przegląd **kont** strony aplikacji Microsoft Authenticator na urządzeniu, aby upewnić się, że informacje o Twoim koncie jest po prawej stronie i że jest skojarzony 6 cyfrowy kod weryfikacyjny.
+5. Przejrzyj stronę **kont** aplikacji Microsoft Authenticator na urządzeniu, aby upewnić się, że informacje o koncie są prawidłowe i że istnieje skojarzony sześciocyfrowy kod weryfikacyjny.
 
-    Dla dodatkowego bezpieczeństwa kod weryfikacyjny zmienia co 30 sekund, uniemożliwiając ktoś przy użyciu kodu wiele razy.
+    W celu zapewnienia dodatkowych zabezpieczeń kod weryfikacyjny zmienia się co 30 sekund, uniemożliwiając komuś wielokrotne użycie kodu.
 
-6. Wybierz **dalej** na **Konfigurowanie uwierzytelniania** strony na komputerze, wpisz 6 cyfrowy kod weryfikacyjny w aplikacji przewidziane swoje konto Google, a następnie wybierz **Sprawdź**.
+6. Wybierz pozycję **dalej** na stronie **Konfigurowanie uwierzytelniania** na komputerze, wpisz sześciocyfrowy kod weryfikacyjny podany w aplikacji dla konta Google, a następnie wybierz pozycję **Weryfikuj**.
 
-7. Twoje konto zostało zweryfikowane i można wybrać **gotowe** zamknąć **Konfigurowanie uwierzytelniania** strony.
+7. Twoje konto zostało zweryfikowane i możesz wybrać pozycję **gotowe** , aby zamknąć stronę **Konfigurowanie uwierzytelniania** wystawcy.
 
     >[!NOTE]
-    >Aby uzyskać więcej informacji na temat weryfikacji two-Factor Authentication i konto Google zobacz [włączyć 2-etapową](https://support.google.com/accounts/answer/185839) i [Dowiedz się więcej o 2-etapową](https://www.google.com/landing/2step/help.html).
+    >Aby uzyskać więcej informacji na temat weryfikacji dwuskładnikowej i konta Google, zobacz temat [Włączanie weryfikacji 2-etapowej](https://support.google.com/accounts/answer/185839) i Dowiedz [się więcej o weryfikacji](https://www.google.com/landing/2step/help.html)dwuetapowej.
 
-## <a name="add-your-facebook-account"></a>Dodaj swoje konto usługi Facebook
-Przez włączenie weryfikacji two-Factor Authentication, a następnie dodanie konta do aplikacji, należy dodać konta w serwisie Facebook.
+## <a name="add-your-facebook-account"></a>Dodawanie konta w serwisie Facebook
 
-### <a name="turn-on-two-factor-verification"></a>Włącz weryfikację two-Factor Authentication
+Dodaj swoje konto w usłudze Facebook, włączając weryfikację dwuskładnikową, a następnie dodając konto do aplikacji.
 
-1. Na komputerze, należy otworzyć usługi Facebook, wybierz menu rozwijane w prawym górnym rogu, a następnie przejdź do **ustawienia** > **zabezpieczeń i zaloguj się**.
+### <a name="turn-on-two-factor-verification"></a>Włącz weryfikację dwuskładnikową
 
-    **Zabezpieczeń i zaloguj się** zostanie wyświetlona strona.
+1. Na komputerze otwórz serwis Facebook, wybierz menu rozwijane w prawym górnym rogu, a następnie przejdź do pozycji **Ustawienia** > **zabezpieczenia i zaloguj**się.
 
-2. Przejdź w dół do **uwierzytelnianie dwuskładnikowe** opcji **uwierzytelniania dwuskładnikowego** sekcji, a następnie wybierz **Edytuj**.
+    Zostanie wyświetlona strona **zabezpieczenia i logowanie** .
 
-    **Uwierzytelniania dwuskładnikowego** zostanie wyświetlona strona.
+2. Przejdź do opcji **Użyj uwierzytelniania** dwuskładnikowego w sekcji **uwierzytelnianie** dwuskładnikowe, a następnie wybierz pozycję **Edytuj**.
 
-3. Wybierz **włączyć**.
+    Zostanie wyświetlona strona **uwierzytelnianie** dwuskładnikowe.
+
+3. Wybierz pozycję **Włącz**.
 
 ### <a name="add-your-facebook-account-to-the-app"></a>Dodawanie konta w serwisie Facebook do aplikacji
 
-1. Na stronie usługi Facebook na komputerze przejdź do **Dodaj kopii zapasowej** sekcji, a następnie wybierz **instalacji** z **aplikacji Authentication** obszaru.
+1. Na stronie Facebook na komputerze przejdź do sekcji **Dodawanie kopii zapasowej** , a następnie wybierz pozycję **Instalator** w obszarze **aplikacja uwierzytelniania** .
 
-    Otrzymuje kod QR, który służy do automatycznego skojarzyć swoje konto z aplikacji Microsoft Authenticator. Nie zamykaj tego okna.
+    Otrzymujesz kod QR, którego można użyć do automatycznego kojarzenia konta z aplikacją Microsoft Authenticator. Nie zamykaj tego okna.
 
-2. Otwórz aplikację Microsoft Authenticator, wybierz opcję **Dodaj konto** z **dostosowywanie i sterowania** ikonę w prawym górnym, prawo, a następnie wybierz **inne konto (Google, Facebook itd.)** .
+2. Otwórz aplikację Microsoft Authenticator, wybierz pozycję **Dodaj konto** z ikony **Dostosowywanie i kontrola** w prawym górnym rogu, a następnie wybierz pozycję **inne konto (Google, Facebook itp.)** .
 
-3. Umożliwia skanowanie kodu QR za pomocą aparatu urządzenia **uwierzytelniania dwuskładnikowego** strony na tym komputerze.
+3. Użyj aparatu urządzenia, aby zeskanować kod QR ze strony **uwierzytelniania** dwuetapowego na komputerze.
 
     >[!Note]
-    >Jeśli aparat fotograficzny nie działa prawidłowo, można wprowadzić kod QR i adres URL ręcznie.
+    >Jeśli aparat nie działa prawidłowo, można ręcznie wprowadzić kod QR i adres URL.
 
-4. Przegląd **kont** strony aplikacji Microsoft Authenticator na urządzeniu, aby upewnić się, że informacje o Twoim koncie jest po prawej stronie i że jest skojarzony 6 cyfrowy kod weryfikacyjny.
+4. Przejrzyj stronę **kont** aplikacji Microsoft Authenticator na urządzeniu, aby upewnić się, że informacje o koncie są prawidłowe i że istnieje skojarzony sześciocyfrowy kod weryfikacyjny.
 
-    Dla dodatkowego bezpieczeństwa kod weryfikacyjny zmienia co 30 sekund, uniemożliwiając ktoś przy użyciu kodu wiele razy.
+    W celu zapewnienia dodatkowych zabezpieczeń kod weryfikacyjny zmienia się co 30 sekund, uniemożliwiając komuś wielokrotne użycie kodu.
 
-5. Wybierz **dalej** na **uwierzytelniania dwuskładnikowego** strony na komputerze, a następnie wpisz 6 cyfrowy kod weryfikacyjny w aplikacji przewidziane Twojego konta serwisu Facebook.
+5. Wybierz pozycję **dalej** na stronie **uwierzytelniania** dwuskładnikowego na komputerze, a następnie wpisz sześciocyfrowy kod weryfikacyjny podany w aplikacji dla Twojego konta w serwisie Facebook.
 
-    Twoje konto zostało zweryfikowane, a aplikacji mogą teraz używać, aby zweryfikować swoje konto.
+    Twoje konto zostało zweryfikowane i możesz teraz użyć aplikacji, aby zweryfikować swoje konto.
 
     >[!NOTE]
-    >Aby uzyskać więcej informacji na temat weryfikacji two-Factor Authentication i Twojego konta serwisu Facebook, zobacz [co to jest uwierzytelnianie dwuskładnikowe i jak to działa?](https://www.facebook.com/help/148233965247823).
+    >Aby uzyskać więcej informacji na temat weryfikacji dwuskładnikowej i konta w serwisie Facebook, zobacz [co to jest uwierzytelnianie dwuskładnikowe i jak to działa?](https://www.facebook.com/help/148233965247823).
 
 ## <a name="add-your-github-account"></a>Dodawanie konta usługi GitHub
-Dodaj swoje konto usługi GitHub przez włączenie weryfikacji two-Factor Authentication, a następnie dodanie konta do aplikacji.
 
-### <a name="turn-on-two-factor-verification"></a>Włącz weryfikację two-Factor Authentication
+Dodaj konto usługi GitHub, włączając weryfikację dwuskładnikową, a następnie dodając konto do aplikacji.
 
-1. Na komputerze, należy otworzyć usługi GitHub, wybierz obraz w prawym górnym rogu, a następnie wybierz **ustawienia**.
+### <a name="turn-on-two-factor-verification"></a>Włącz weryfikację dwuskładnikową
 
-    **Uwierzytelniania dwuskładnikowego** zostanie wyświetlona strona.
+1. Na komputerze otwórz witrynę GitHub, wybierz swój obraz z prawego górnego rogu, a następnie wybierz pozycję **Ustawienia**.
 
-2. Wybierz **zabezpieczeń** z **ustawienia osobiste** pasku bocznym, a następnie wybierz **Włączanie uwierzytelniania dwuskładnikowego** z **uwierzytelniania dwuskładnikowego**  obszaru.
+    Zostanie wyświetlona strona **uwierzytelnianie** dwuskładnikowe.
+
+2. Na pasku bocznym **Ustawienia osobiste** wybierz pozycję **zabezpieczenia** , a następnie wybierz pozycję **Włącz uwierzytelnianie** dwuskładnikowe w obszarze **uwierzytelnianie** dwuskładnikowe.
 
 ### <a name="add-your-github-account-to-the-app"></a>Dodawanie konta usługi GitHub do aplikacji
 
-1. Na **uwierzytelniania dwuskładnikowego** strony na komputerze, wybierz opcję **przy użyciu aplikacji**.
+1. Na stronie **uwierzytelnianie** dwuskładnikowe na komputerze wybierz pozycję **Konfiguruj przy użyciu aplikacji**.
 
-2. Zapisz swoje kody odzyskiwania, dzięki czemu możesz wrócić do swojego konta w przypadku utraty dostępu, a następnie wybierz **dalej**. 
+2. Zapisz kody odzyskiwania, aby móc wrócić do konta, Jeśli utracisz dostęp, a następnie wybierz przycisk **dalej**. 
 
-    Można zapisać Twoje kody, pobierając je do urządzenia, wydrukowanie lub kopiując je do narzędzia Menedżer haseł.
+    Możesz zapisać swoje kody, pobierając je na urządzenie, drukując twardą kopię lub kopiując je do narzędzia Menedżera haseł.
 
-3. Na **uwierzytelniania dwuskładnikowego** wybierz opcję **przy użyciu aplikacji**.
+3. Na stronie **uwierzytelnianie** dwuskładnikowe wybierz pozycję **Konfiguruj przy użyciu aplikacji**.
 
-    Zmiany strony dowiesz się, kod QR. Nie zamykaj tej strony.
+    Strona zmieni się, aby wyświetlić kod QR. Nie zamykaj tej strony.
 
-4. Otwórz aplikację Microsoft Authenticator, wybierz opcję **Dodaj konto** z **dostosowywanie i sterowania** ikonę w prawym, wybierz opcję **inne konto (Google, Facebook itd.)** , a następnie wybierz pozycję **wprowadź ten kod tekstu** z tekstu w górnej części strony.
+4. Otwórz aplikację Microsoft Authenticator, wybierz pozycję **Dodaj konto** z ikony **Dostosowywanie i kontrola** w prawym górnym rogu, wybierz pozycję **inne konto (Google, Facebook itp.)** , a następnie wybierz opcję **wprowadź ten kod tekstowy** z tekstu w górnej części Strona.
 
-    Nie można zeskanować kod QR, dlatego należy ręcznie wprowadzić kod aplikacji Microsoft Authenticator.
+    Aplikacja Microsoft Authenticator nie może zeskanować kodu QR, więc musisz ręcznie wprowadzić kod.
 
-5. Wprowadź **nazwa konta** (na przykład GitHub) i wpisz **klucz tajny** z kroku 4, a następnie wybierz **Zakończ**.
+5. Wprowadź **nazwę konta** (na przykład GitHub) i wpisz **klucz tajny** w kroku 4, a następnie wybierz pozycję **Zakończ**.
 
-4. Na **uwierzytelniania dwuskładnikowego** strony na komputerze, wpisz 6 cyfrowy kod weryfikacyjny w aplikacji przewidziane Twojego konta usługi GitHub, a następnie wybierz pozycję **Włącz**.
+6. Na stronie **wystawca uwierzytelnienia** na komputerze wpisz sześciocyfrowy kod weryfikacyjny podany w aplikacji dla konta usługi GitHub, a następnie wybierz pozycję **Włącz**.
 
-    **Kont** strona aplikacji zawiera nazwę konta i 6 cyfrowy kod weryfikacyjny. Dla dodatkowego bezpieczeństwa kod weryfikacyjny zmienia co 30 sekund, uniemożliwiając ktoś przy użyciu kodu wiele razy.
+    Na stronie **konta** aplikacji jest wyświetlana nazwa konta i sześciocyfrowy kod weryfikacyjny. W celu zapewnienia dodatkowych zabezpieczeń kod weryfikacyjny zmienia się co 30 sekund, uniemożliwiając komuś wielokrotne użycie kodu.
 
     >[!NOTE]
-    >Aby uzyskać więcej informacji na temat weryfikacji two-Factor Authentication i konta usługi GitHub, zobacz [o uwierzytelnianie dwuskładnikowe](https://help.github.com/articles/about-two-factor-authentication/).
+    >Aby uzyskać więcej informacji na temat weryfikacji dwuskładnikowej i konta usługi GitHub, zobacz [Informacje o uwierzytelnianiu](https://help.github.com/articles/about-two-factor-authentication/)dwuskładnikowym.
 
-## <a name="add-your-amazon-account"></a>Dodaj swoje konto Amazon
-Dodaj swoje konto Amazon przez włączenie weryfikacji two-Factor Authentication, a następnie dodanie konta do aplikacji.
+## <a name="add-your-amazon-account"></a>Dodawanie konta Amazon
 
-### <a name="turn-on-two-factor-verification"></a>Włącz weryfikację two-Factor Authentication
+Dodaj konto Amazon, włączając weryfikację dwuskładnikową, a następnie dodając konto do aplikacji.
 
-1. Na komputerze otwórz Amazon, wybierz **konta & listy** menu rozwijanego, a następnie wybierz **konta**.
+### <a name="turn-on-two-factor-verification"></a>Włącz weryfikację dwuskładnikową
 
-2. Wybierz **logowania i bezpieczeństwo**, zaloguj się do swojego konta Amazon, a następnie wybierz **Edytuj** w **Zaawansowane ustawienia zabezpieczeń** obszaru.
+1. Na komputerze otwórz pozycję Amazon, zaznacz menu rozwijane **konto & listy** , a następnie wybierz **konto**.
 
-    **Zaawansowane ustawienia zabezpieczeń** zostanie wyświetlona strona.
+2. Wybierz pozycję **zaloguj & zabezpieczenia**, zaloguj się do konta Amazon, a następnie wybierz pozycję **Edytuj** w obszarze **Zaawansowane ustawienia zabezpieczeń** .
 
-3. Wybierz **wprowadzenie**.
+    Zostanie wyświetlona strona **Zaawansowane ustawienia zabezpieczeń** .
 
-4. Wybierz **aplikacji Authenticator** z **wybierz, jak otrzymasz kodów** strony.
+3. Wybierz pozycję **Rozpocznij**.
 
-    Zmiany strony dowiesz się, kod QR. Nie zamykaj tej strony.
+4. Wybierz pozycję **aplikacja uwierzytelniania** na stronie **Wybierz sposób otrzymywania kodów** .
 
-5. Otwórz aplikację Microsoft Authenticator, wybierz opcję **Dodaj konto** z **dostosowywanie i sterowania** ikonę w prawym górnym, prawo, a następnie wybierz **inne konto (Google, Facebook itd.)** .
+    Strona zmieni się, aby wyświetlić kod QR. Nie zamykaj tej strony.
 
-6. Umożliwia skanowanie kodu QR za pomocą aparatu urządzenia **wybierz, jak otrzymasz kodów** strony na tym komputerze.
+5. Otwórz aplikację Microsoft Authenticator, wybierz pozycję **Dodaj konto** z ikony **Dostosowywanie i kontrola** w prawym górnym rogu, a następnie wybierz pozycję **inne konto (Google, Facebook itp.)** .
+
+6. Za pomocą aparatu fotograficznego urządzenia Zeskanuj kod QR na stronie **Wybierz sposób otrzymywania kodów** na komputerze.
 
     >[!Note]
-    >Jeśli aparat fotograficzny nie działa prawidłowo, można wprowadzić kod QR i adres URL ręcznie.
+    >Jeśli aparat nie działa prawidłowo, można ręcznie wprowadzić kod QR i adres URL.
 
-5. Przegląd **kont** strony aplikacji Microsoft Authenticator na urządzeniu, aby upewnić się, że informacje o Twoim koncie jest po prawej stronie i że jest skojarzony 6 cyfrowy kod weryfikacyjny.
+7. Przejrzyj stronę **kont** aplikacji Microsoft Authenticator na urządzeniu, aby upewnić się, że informacje o koncie są prawidłowe i że istnieje skojarzony sześciocyfrowy kod weryfikacyjny.
 
-    Dla dodatkowego bezpieczeństwa kod weryfikacyjny zmienia co 30 sekund, uniemożliwiając ktoś przy użyciu kodu wiele razy.
+    W celu zapewnienia dodatkowych zabezpieczeń kod weryfikacyjny zmienia się co 30 sekund, uniemożliwiając komuś wielokrotne użycie kodu.
 
-6. Na **wybierz, jak otrzymasz kodów** strony na komputerze, wpisz 6 cyfrowy kod weryfikacyjny podane w aplikacji konta Amazon, a następnie wybierz **Sprawdź kod i Kontynuuj**.
+8. Na stronie **Wybierz sposób otrzymywania kodów** na komputerze wpisz sześciocyfrowy kod weryfikacyjny podany w aplikacji dla konta usługi Amazon, a następnie wybierz pozycję **Weryfikuj kod i Kontynuuj**.
 
-7. Wykonaj pozostałe procesu rejestracji, takie jak dodawanie metody weryfikacji kopii zapasowej, takie jak wiadomości SMS, a następnie wybierz pozycję **Wyślij kod**.
+9. Ukończ resztę procesu rejestracji, łącznie z dodaniem metody weryfikacji kopii zapasowej, takiej jak wiadomość SMS, a następnie wybierz pozycję **Wyślij kod**.
 
-8. Na **Dodaj metodę weryfikacji kopii zapasowej** strony na komputerze, wpisz 6 cyfrowy kod weryfikacyjny dostarczone przez metodę weryfikacji kopii zapasowej dla swojego konta Amazon, a następnie wybierz **Sprawdź kod i Kontynuuj**.
+10. Na stronie **Dodaj metodę weryfikacji kopii zapasowej** na komputerze wpisz sześciocyfrowy kod weryfikacyjny dostarczony przez metodę weryfikacji kopii zapasowej dla konta Amazon, a następnie wybierz pozycję **Weryfikuj kod i Kontynuuj**.
 
-9. Almost strony, zdecyduj, czy komputer stał się zaufanego urządzenia, a następnie wybierz **rozumiem. Włącz weryfikację dwuetapową**.
+11. Na **prawie gotowe** strony Zdecyduj, czy komputer ma być zaufanym urządzeniem, a następnie wybierz **go. Włącz weryfikację**dwuetapową.
 
-    **Zaawansowane ustawienia zabezpieczeń** zostanie wyświetlona strona, wyświetlanie szczegółów dotyczących zaktualizowane weryfikacji two-Factor Authentication.
+    Zostanie wyświetlona strona **Zaawansowane ustawienia zabezpieczeń** zawierająca zaktualizowane dane weryfikacji dwuskładnikowej.
 
     >[!NOTE]
-    >Aby uzyskać więcej informacji na temat weryfikacji two-Factor Authentication i konto Amazon, zobacz [o weryfikację dwuetapową](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) i [logujesz się przy użyciu weryfikacji dwuetapowej](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440).
+    >Aby uzyskać więcej informacji na temat weryfikacji dwuskładnikowej i konta Amazon, zobacz [Informacje o weryfikacji](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) dwuetapowej i zalogowaniu [się przy użyciu weryfikacji](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440)dwuetapowej.
 
+## <a name="next-steps"></a>Następne kroki
 
-## <a name="next-steps"></a>Kolejne kroki
+- Po dodaniu kont do aplikacji możesz zalogować się przy użyciu aplikacji uwierzytelniania na urządzeniu. Aby uzyskać więcej informacji, zobacz [Logowanie przy użyciu aplikacji](user-help-auth-app-sign-in.md).
 
-- Po dodaniu konta do aplikacji, można zalogować się przy użyciu aplikacji Authenticator na urządzeniu. Aby uzyskać więcej informacji, zobacz [Zaloguj się przy użyciu aplikacji](user-help-auth-app-sign-in.md).
-
-- Dla urządzeń z systemem iOS można również wykonać kopię zapasową poświadczeń konta usługi i powiązane ustawienia aplikacji, takie jak kolejność Twoje konta z chmurą. Aby uzyskać więcej informacji, zobacz [tworzenia kopii zapasowych i odzyskiwanie przy użyciu aplikacji Microsoft Authenticator](user-help-auth-app-backup-recovery.md).
+- W przypadku urządzeń z systemem iOS można również utworzyć kopię zapasową poświadczeń konta i powiązanych ustawień aplikacji, takich jak kolejność kont, w chmurze. Aby uzyskać więcej informacji, zobacz [Tworzenie kopii zapasowych i odzyskiwanie danych za pomocą aplikacji Microsoft Authenticator](user-help-auth-app-backup-recovery.md).

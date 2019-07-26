@@ -1,6 +1,6 @@
 ---
-title: Jak używać wartości o nazwie w zasadach usługi Azure API Management
-description: Dowiedz się, jak używać wartości o nazwie w zasadach usługi Azure API Management.
+title: Jak używać nazwanych wartości w zasadach usługi Azure API Management
+description: Dowiedz się, jak używać nazwanych wartości w zasadach usługi Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -11,72 +11,72 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2018
+ms.date: 07/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 9e1b1953520c5502668fbbae70a37a140253b035
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46f4e1b3df5f1c77a57d432297685d6d1a0a14a8
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241688"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405803"
 ---
-# <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Jak używać wartości o nazwie w zasadach usługi Azure API Management
-Zasady usługi API Management są zaawansowaną możliwością system, który pozwala witrynie Azure portal zmieniać zachowanie interfejsu API za pomocą konfiguracji. Zasady to zbiór instrukcji, które są wykonywane sekwencyjnie podczas żądania lub odpowiedzi interfejsu API. Instrukcje zasad można skonstruować przy użyciu wartości tekst dosłowny, wyrażenia zasad i nazwane wartości. 
+# <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Jak używać nazwanych wartości w zasadach usługi Azure API Management
 
-Każde wystąpienie usługi API Management ma kolekcji właściwości pary klucz/wartość, która jest wywoływana o nazwie wartości, które są globalne do wystąpienia usługi. Te wartości o nazwie może służyć do zarządzania stałym ciągiem wartości we wszystkich Konfiguracja interfejsu API i zasady. Każda właściwość może mieć następujące atrybuty:
+Zasady API Management są zaawansowaną możliwością systemu, która umożliwia Azure Portal zmianę zachowania interfejsu API za pomocą konfiguracji. Zasady to zbiór instrukcji, które są wykonywane sekwencyjnie podczas żądania lub odpowiedzi interfejsu API. Instrukcje zasad można utworzyć przy użyciu literałów wartości tekstowych, wyrażeń zasad i nazwanych wartości.
 
-| Atrybut | Type | Opis |
-| --- | --- | --- |
-| `Display name` |string |Ciąg alfanumeryczny używany jako odwołanie do właściwości w zasadach. |
-| `Value`        |string |Wartość właściwości. Nie może być pusta ani składać się wyłącznie z białych znaków. |
-| `Secret`       |wartość logiczna|Określa, czy wartość jest wpis tajny i powinien być zaszyfrowany, czy nie.|
-| `Tags`         |tablica ciągów |Opcjonalne — tagi, gdy zostanie podane, może służyć do filtrowania listy właściwości. |
+Każde wystąpienie usługi API Management ma kolekcję właściwości par klucz/wartość, która jest nazywana wartościami nazwanymi, które są globalne dla wystąpienia usługi. Nie ma żadnego narzuconego limitu liczby elementów w kolekcji. Nazwane wartości mogą służyć do zarządzania stałymi wartościami ciągu w ramach wszystkich konfiguracji i zasad interfejsu API. Każda nazwana wartość może mieć następujące atrybuty:
+
+| Atrybut      | Type            | Opis                                                                                                                         |
+| -------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `Display name` | ciąg          | Służy do odwoływania się do właściwości w zasadach. Ciąg od jednego do 256 znaków. Dozwolone są tylko litery, cyfry, kropki i kreski. |
+| `Value`        | ciąg          | Wartość rzeczywista. Nie może być pusty ani zawierać tylko odstępów. Maksymalnie 4096 znaków.                                     |
+| `Secret`       | boolean         | Określa, czy wartość jest kluczem tajnym i powinna być szyfrowana, czy nie.                                                            |
+| `Tags`         | tablica ciągów | Służy do filtrowania listy właściwości. Do 32 tagów.                                                                                    |
 
 ![Nazwane wartości](./media/api-management-howto-properties/named-values.png)
 
-Wartości właściwości mogą zawierać ciągi literałów i [wyrażenia zasad](/azure/api-management/api-management-policy-expressions). Na przykład, wartość `ExpressionProperty` to wyrażenie zasad, które zwraca ciąg zawierający bieżącej daty i godziny. Właściwość `ContosoHeaderValue` jest oznaczony jako klucz tajny, dzięki czemu jego wartość nie jest wyświetlana.
+Nazwane wartości mogą zawierać ciągi literałów i [wyrażenia zasad](/azure/api-management/api-management-policy-expressions). Na przykład wartość `Expression` jest wyrażenie zasad, które zwraca ciąg zawierający bieżącą datę i godzinę. Nazwana wartość `Credential` jest oznaczona jako wpis tajny, więc jej wartość nie jest domyślnie wyświetlana.
 
-| Name (Nazwa) | Value | Secret | `Tags` |
-| --- | --- | --- | --- |
-| ContosoHeader |TrackingId |False |Contoso |
-| ContosoHeaderValue |•••••••••••••••••••••• |True |Contoso |
-| ExpressionProperty |@(DateTime.Now.ToString()) |False | |
+| Name (Nazwa)       | Value                      | Wpis tajny | `Tags`          |
+| ---------- | -------------------------- | ------ | ------------- |
+| Value      | 42                         | False  | Najważniejsze wartości |
+| Poświadczenie | ••••••••••••••••••••••     | Prawda   | zabezpieczenia      |
+| Wyrażenie | @(DateTime.Now.ToString()) | False  |               |
 
-## <a name="to-add-and-edit-a-property"></a>Możliwość dodawania oraz edytowania właściwości
+## <a name="to-add-and-edit-a-property"></a>Aby dodać i edytować Właściwość
 
 ![Dodaj właściwość](./media/api-management-howto-properties/add-property.png)
 
 1. Wybierz pozycję **Interfejsy API** w obszarze **API MANAGEMENT**.
 2. Wybierz **nazwane wartości**.
-3. Naciśnij klawisz **+ Dodaj**.
+3. Naciśnij klawisze **+ Dodaj**.
 
-   Nazwy i wartości są wymaganymi wartościami. Jeśli wartość tej właściwości jest klucz tajny, sprawdź, czy jest to pole wpisu tajnego. Wprowadź jeden lub więcej opcjonalnych tagów, aby ułatwić organizowanie nazwanych wartości, a następnie kliknij przycisk Zapisz.
-4. Kliknij pozycję **Utwórz**.
+    Wartości Name i value są wymagane. Jeśli ta wartość właściwości jest kluczem tajnym, zaznacz pole wyboru to jest wpisem tajnym. Wprowadź jeden lub więcej tagów opcjonalnych, aby pomóc w organizowaniu nazwanych wartości, a następnie kliknij przycisk Zapisz.
 
-Po utworzeniu właściwości można edytować go, klikając właściwości. Jeśli zmienisz nazwę właściwości, wszystkie zasady, które odwołują się tę właściwość są automatycznie aktualizowane do użycia nowej nazwy.
+4. Kliknij przycisk **Utwórz**.
 
-Aby uzyskać informacje na temat edytowania właściwości przy użyciu interfejsu API REST, zobacz [Edytuj właściwości przy użyciu interfejsu API REST](/rest/api/apimanagement/2019-01-01/property?patch).
+Po utworzeniu właściwości można ją edytować, klikając właściwość. Jeśli zmienisz nazwę właściwości, wszystkie zasady, które odwołują się do tej właściwości są automatycznie aktualizowane, aby użyć nowej nazwy.
 
-## <a name="to-delete-a-property"></a>Aby usunąć właściwość
+Aby uzyskać informacje na temat edytowania właściwości przy użyciu interfejsu API REST, zobacz [Edytowanie właściwości przy użyciu interfejsu API REST](/rest/api/apimanagement/2019-01-01/property?patch).
 
-Aby usunąć właściwość, kliknij przycisk **Usuń** widoczny obok właściwości do usunięcia.
+## <a name="to-delete-a-property"></a>Aby usunąć Właściwość
+
+Aby usunąć właściwość, kliknij przycisk **Usuń** obok właściwości do usunięcia.
 
 > [!IMPORTANT]
-> Jeśli właściwość jest wywoływany przez żadne zasady, nie można pomyślnie usunąć, dopóki nie usuniesz właściwości wszystkich zasad, które go używają.
-> 
-> 
+> Jeśli do właściwości odwołują się zasady, nie będzie można jej pomyślnie usunąć do momentu usunięcia właściwości ze wszystkich zasad, które go używają.
 
-Aby uzyskać informacje na temat usuwania właściwości przy użyciu interfejsu API REST, zobacz [Usuń właściwości przy użyciu interfejsu API REST](/rest/api/apimanagement/2019-01-01/property/delete).
+Aby uzyskać informacje dotyczące usuwania właściwości przy użyciu interfejsu API REST, zobacz [usuwanie właściwości przy użyciu interfejsu API REST](/rest/api/apimanagement/2019-01-01/property/delete).
 
-## <a name="to-search-and-filter-named-values"></a>Wyszukiwanie i filtrowanie wartości o nazwie
+## <a name="to-search-and-filter-named-values"></a>Aby wyszukać i filtrować nazwane wartości
 
-**Nazwane wartości** karta zawiera wyszukiwania i filtrowania możliwości, które pomogą Ci w zarządzaniu nazwanej wartości. Aby filtrować listę właściwości według nazwy właściwości, wprowadź wyszukiwany termin w **wyszukiwania właściwości** pola tekstowego. Aby wyświetlić wszystkie nazwane wartości, wyczyść **wyszukiwania właściwości** polu tekstowym i naciśnij klawisz enter.
+Karta **nazwane wartości** zawiera funkcje wyszukiwania i filtrowania, które ułatwiają zarządzanie nazwanymi wartościami. Aby odfiltrować listę właściwości według nazwy właściwości, wprowadź wyszukiwany termin w polu tekstowym **Właściwości wyszukiwania** . Aby wyświetlić wszystkie nazwane wartości, usuń zaznaczenie pola tekstowego **Właściwości wyszukiwania** i naciśnij klawisz ENTER.
 
-Aby filtrować listę właściwości, według wartości tagów, wpisz jeden lub więcej tagów do **Filtruj według tagów** pola tekstowego. Aby wyświetlić wszystkie nazwane wartości, wyczyść **Filtruj według tagów** polu tekstowym i naciśnij klawisz enter.
+Aby filtrować listę właściwości według wartości tagów, wprowadź jeden lub więcej tagów do pola tekstowego **Filtruj według tagów** . Aby wyświetlić wszystkie nazwane wartości, usuń zaznaczenie pola tekstowego **Filtruj według tagów** i naciśnij klawisz ENTER.
 
 ## <a name="to-use-a-property"></a>Aby użyć właściwości
 
-Aby korzystać z właściwości w zasadach, umieść nazwę właściwości wewnątrz double parę nawiasów klamrowych, takich jak `{{ContosoHeader}}`, jak pokazano w poniższym przykładzie:
+Aby użyć właściwości w zasadach, umieść ją w podwójnej parze nawiasów klamrowych `{{ContosoHeader}}`, jak pokazano w następującym przykładzie:
 
 ```xml
 <set-header name="{{ContosoHeader}}" exists-action="override">
@@ -84,11 +84,11 @@ Aby korzystać z właściwości w zasadach, umieść nazwę właściwości wewn�
 </set-header>
 ```
 
-W tym przykładzie `ContosoHeader` jest używana jako nazwa nagłówka w `set-header` zasady, a `ContosoHeaderValue` jest używana jako wartość nagłówka. W przypadku oceny tych zasad podczas żądania lub odpowiedzi do bramy usługi API Management `{{ContosoHeader}}` i `{{ContosoHeaderValue}}` zostaną zastąpione wartościami odpowiednich właściwości.
+W tym przykładzie `ContosoHeader` jest używany jako nazwa nagłówka `set-header` w zasadach i `ContosoHeaderValue` jest używany jako wartość tego nagłówka. Kiedy te zasady są oceniane podczas żądania lub odpowiedzi bramy `{{ContosoHeader}}` API Management i `{{ContosoHeaderValue}}` są zastępowane odpowiednimi wartościami właściwości.
 
-Nazwane wartości mogą być używane jako ukończone atrybut lub element wartości, jak pokazano w poprzednim przykładzie, ale także mogą zostać wstawiony albo łączyć się z częścią wyrażenia tekst dosłowny, jak pokazano w poniższym przykładzie: `<set-header name = "CustomHeader{{ContosoHeader}}" ...>`
+Nazwane wartości mogą być używane jako kompletne wartości atrybutów lub elementów, jak pokazano w poprzednim przykładzie, ale mogą być również wstawiane do lub połączone z częścią wyrażenia tekstu literału, jak pokazano w następującym przykładzie:`<set-header name = "CustomHeader{{ContosoHeader}}" ...>`
 
-Nazwane wartości może również zawierać wyrażeń zasad. W poniższym przykładzie `ExpressionProperty` jest używany.
+Nazwane wartości mogą również zawierać wyrażenia zasad. W poniższym przykładzie `ExpressionProperty` jest używany.
 
 ```xml
 <set-header name="CustomHeader" exists-action="override">
@@ -96,25 +96,25 @@ Nazwane wartości może również zawierać wyrażeń zasad. W poniższym przyk�
 </set-header>
 ```
 
-W przypadku oceny tych zasad `{{ExpressionProperty}}` jest zastępowana wartością jego: `@(DateTime.Now.ToString())`. Ponieważ wyrażenie zasad ma wartość, wyrażenie jest obliczane i zasady kontynuuje wykonywanie.
+Jeśli te zasady zostaną ocenione, `{{ExpressionProperty}}` zostaną zastąpione jej wartością: `@(DateTime.Now.ToString())`. Ponieważ wartość jest wyrażeniem zasad, wyrażenie jest oceniane i zasady są wykonywane w ramach jego wykonania.
 
-Możesz przetestować tę możliwość w portalu dla deweloperów, wywołując operację, która ma zasady z nazwanych wartości w zakresie. W poniższym przykładzie, operacja jest wywoływana z dwóch poprzedni przykład `set-header` zasad przy użyciu nazwanych wartości. Należy pamiętać, że odpowiedź zawiera dwa Nagłówki niestandardowe, które zostały skonfigurowane przy użyciu zasad za pomocą nazwanych wartości.
+Możesz to przetestować w portalu dla deweloperów, wywołując operację, która ma zasady z nazwanymi wartościami w zakresie. W poniższym przykładzie operacja jest wywoływana z dwiema poprzednimi przykładowymi `set-header` zasadami z nazwanymi wartościami. Należy zauważyć, że odpowiedź zawiera dwa niestandardowe nagłówki, które zostały skonfigurowane przy użyciu zasad z nazwanymi wartościami.
 
-![Portal dla deweloperów][api-management-send-results]
+![Portal deweloperów][api-management-send-results]
 
-Jeśli przyjrzymy się [śledzenia inspektora interfejsów API](api-management-howto-api-inspector.md) połączenia, który zawiera dwie poprzednie zasady próbki z nazwanych wartości, można zobaczyć dwa `set-header` zasad przy użyciu wartości właściwości, wstawić, a także wyrażenie zasad Ocena właściwości, który zawiera wyrażenie zasad.
+Jeśli przeszukiwany jest [ślad inspektora interfejsu API](api-management-howto-api-inspector.md) dla wywołania, które obejmuje dwie poprzednie przykładowe zasady z nazwanymi wartościami, można zobaczyć dwie `set-header` zasady z wartościami właściwości wstawionymi, a także obliczyć wyrażenie zasad dla właściwości, która zawiera wyrażenie zasad.
 
-![Śledzenie inspektora interfejsów API][api-management-api-inspector-trace]
+![Ślad Inspektora interfejsów API][api-management-api-inspector-trace]
 
-Podczas gdy wartości właściwości mogą zawierać wyrażenia zasad, wartości właściwości nie może zawierać innych nazwanej wartości. Jeśli tekst zawierający odwołanie do właściwości jest używany dla wartości właściwości, takie jak `Property value text {{MyProperty}}`, odwołania do tej właściwości nie można zastąpić i będą dołączane jako część wartości właściwości.
+Chociaż wartości właściwości mogą zawierać wyrażenia zasad, wartości właściwości nie mogą zawierać innych nazwanych wartości. Jeśli tekst zawierający odwołanie do właściwości jest używany dla wartości właściwości, na przykład `Property value text {{MyProperty}}`, to odwołanie do właściwości nie zostanie zastąpione i zostanie dołączone jako część wartości właściwości.
 
-## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o pracy z tymi zasadami
-  * [Zasady usługi API Management](api-management-howto-policies.md)
-  * [Dokumentacja zasad](/azure/api-management/api-management-policies)
-  * [Wyrażenia zasad](/azure/api-management/api-management-policy-expressions)
+## <a name="next-steps"></a>Następne kroki
+
+-   Dowiedz się więcej na temat pracy z zasadami
+    -   [Zasady w API Management](api-management-howto-policies.md)
+    -   [Dokumentacja zasad](/azure/api-management/api-management-policies)
+    -   [Wyrażenia zasad](/azure/api-management/api-management-policy-expressions)
 
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png
 [api-management-properties-filter]: ./media/api-management-howto-properties/api-management-properties-filter.png
 [api-management-api-inspector-trace]: ./media/api-management-howto-properties/api-management-api-inspector-trace.png
-

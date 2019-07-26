@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ae5e16aa00147d6ea434090720b51af06e8e0c5
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 764c7c048dd0398b495ee31421a8e2bc9f8169ee
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807564"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477194"
 ---
 # <a name="view-your-azure-active-directory-tenant-applications"></a>Wyświetlanie aplikacji dzierżawy usługi Azure Active Directory
 
@@ -39,16 +39,16 @@ Aplikacje dzierżawy usługi Azure AD można wyświetlić w sekcji **Aplikacje d
 
 Aby znaleźć swoje aplikacje dzierżawy, wykonaj następujące czynności:
 
-1. W  **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie wybierz **usługi Azure Active Directory**.
-1. W **usługi Azure Active Directory** okienku wybierz **aplikacje dla przedsiębiorstw**.
-1. Z **typ aplikacji** menu rozwijanego wybierz opcję **wszystkie aplikacje**i wybierz polecenie **Zastosuj**. Zostanie wyświetlona losowa próbka aplikacji dzierżawy.
-1. Aby wyświetlić więcej aplikacji, wybierz **Załaduj więcej** w dolnej części listy. W zależności od liczby aplikacji w dzierżawie może być łatwiej [wyszukać konkretną aplikację](#search-for-a-tenant-application) zamiast przewijać listę.
+1. W **[Azure Portal](https://portal.azure.com)** w lewym panelu nawigacyjnym wybierz pozycję **Azure Active Directory**.
+1. W okienku **Azure Active Directory** wybierz pozycję **aplikacje dla przedsiębiorstw**.
+1. Z menu rozwijanego **Typ aplikacji** wybierz pozycję **wszystkie aplikacje**, a następnie wybierz pozycję **Zastosuj**. Zostanie wyświetlona losowa próbka aplikacji dzierżawy.
+1. Aby wyświetlić więcej aplikacji, wybierz pozycję **Załaduj więcej** w dolnej części listy. W zależności od liczby aplikacji w dzierżawie może być łatwiej [wyszukać konkretną aplikację](#search-for-a-tenant-application) zamiast przewijać listę.
 
 ## <a name="select-viewing-options"></a>Wybieranie opcje wyświetlania
 
-Wybierz opcje zgodnie z czego szukasz.
+Wybierz opcje według tego, czego szukasz.
 
-1. Można przejrzeć aplikacje przez **typ aplikacji**, **stan aplikacji**, i **widoczność aplikacji**.
+1. Możesz wyświetlić aplikacje według **typu aplikacji**, **stanu aplikacji**i **widoczności aplikacji**.
 1. W obszarze **Typ aplikacji** wybierz jedną z następujących opcji:
 
     - Opcja **Aplikacje dla przedsiębiorstw** wyświetla aplikacje firm innych niż Microsoft.
@@ -56,27 +56,27 @@ Wybierz opcje zgodnie z czego szukasz.
     - Opcja **Wszystkie aplikacje** wyświetla zarówno aplikacje firm innych niż Microsoft, jak i aplikacje firmy Microsoft.
 
 1. W obszarze **Stan aplikacji** wybierz pozycję **Dowolne**, **Wyłączono** lub **Włączono**. Opcja **Dowolne** obejmuje zarówno aplikacje wyłączone, jak i włączone.
-1. W obszarze **Widoczność aplikacji** wybierz pozycję **Dowolne** lub **Ukryte**. **Ukryty** opcja umożliwia pokazanie aplikacje, które są w dzierżawie, ale nie są widoczne dla użytkowników.
-1. Po wybraniu wybrane opcje, wybierz **Zastosuj**.
+1. W obszarze **Widoczność aplikacji** wybierz pozycję **Dowolne** lub **Ukryte**. Opcja **Hidden** wyświetla aplikacje, które znajdują się w dzierżawie, ale nie są widoczne dla użytkowników.
+1. Po wybraniu opcji wybierz pozycję **Zastosuj**.
 
 ## <a name="search-for-a-tenant-application"></a>Wyszukiwanie aplikacji dzierżawy
 
 Aby wyszukać określoną aplikację:
 
-1. W **typ aplikacji** menu, wybierz opcję **wszystkie aplikacje**i wybierz polecenie **Zastosuj**.
-1. Wprowadź nazwę aplikacji, którą chcesz znaleźć. Jeśli aplikacja została dodana do dzierżawy usługi Azure AD, zostanie wyświetlony w wynikach wyszukiwania. Ten przykład pokazuje, że GitHub nie został dodany do aplikacji dzierżawy.
+1. W menu **Typ aplikacji** wybierz pozycję **wszystkie aplikacje**, a następnie wybierz pozycję **Zastosuj**.
+1. Wprowadź nazwę aplikacji, którą chcesz znaleźć. Jeśli aplikacja została dodana do dzierżawy usługi Azure AD, zostanie wyświetlona w wynikach wyszukiwania. Ten przykład pokazuje, że GitHub nie został dodany do aplikacji dzierżawców.
 
     ![Przykład pokazuje, że aplikacja nie została dodana do dzierżawy](media/view-applications-portal/search-for-tenant-application.png)
 
 1. Spróbuj wprowadzić kilka pierwszych liter nazwy aplikacji. W tym przykładzie pokazano wszystkie aplikacje, których nazwy zaczynają się od **Sales**.
 
-    ![Przykładowy raport uwzględnia wszystkie aplikacje, rozpoczynające się z działem sprzedaży](media/view-applications-portal/search-by-prefix.png)
+    ![Przykład pokazuje wszystkie aplikacje, które zaczynają się od sprzedaży](media/view-applications-portal/search-by-prefix.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki Start przedstawiono sposób wyświetlania aplikacji w dzierżawie usługi Azure AD. Pokazaliśmy ci, jak filtrować listę aplikacji według typu aplikacji, stanu i widoczności. Przedstawiono również sposób wyszukiwania określonej aplikacji.
+W tym przewodniku szybki start przedstawiono sposób wyświetlania aplikacji w dzierżawie usługi Azure AD. Dowiesz się, jak filtrować listę aplikacji według typu aplikacji, stanu i widoczności. Przedstawiono również sposób wyszukiwania określonej aplikacji.
 
-Teraz, gdy Ci się znaleźć aplikacji zostały znalezione dla można kontynuować [Dodawanie większej liczby aplikacji z dzierżawą](add-application-portal.md). Alternatywnie można wybrać aplikację, aby wyświetlić lub edytować właściwości i opcje konfiguracji. Możesz na przykład skonfigurować logowanie jednokrotne.
+Teraz, po znalezieniu szukanej aplikacji, możesz nadal [dodawać do niej więcej aplikacji](add-application-portal.md). Można też wybrać aplikację do wyświetlania lub edytowania właściwości i opcji konfiguracji. Możesz na przykład skonfigurować logowanie jednokrotne.
 
 > [!div class="nextstepaction"]
-> [Konfigurowanie logowania jednokrotnego](configure-single-sign-on-portal.md)
+> [Konfigurowanie logowania jednokrotnego](configure-single-sign-on-non-gallery-applications.md)

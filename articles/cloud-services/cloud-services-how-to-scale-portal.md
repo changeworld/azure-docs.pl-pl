@@ -1,114 +1,107 @@
 ---
-title: Automatyczne skalowanie usługi w chmurze w portalu | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak korzystać z portalu, aby skonfigurować reguły skalowania automatycznego dla rola sieci web usługi w chmurze lub roli procesu roboczego na platformie Azure.
+title: Automatyczne skalowanie usługi w chmurze w portalu | Microsoft Docs
+description: Dowiedz się, jak za pomocą portalu skonfigurować reguły automatycznego skalowania dla roli sieci Web lub roli procesu roboczego usługi w chmurze na platformie Azure.
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 701d4404-5cc0-454b-999c-feb94c1685c0
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
-ms.author: jeconnoc
-ms.openlocfilehash: f5597773b3127852481d5e14844bed889c4d6f83
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: gwallace
+ms.openlocfilehash: 7e106dbd237be79be924afadbe893669c4f3daf8
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61435320"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359627"
 ---
-# <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Jak skonfigurować automatyczne skalowanie usługi w chmurze w portalu
+# <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Jak skonfigurować Skalowanie automatyczne dla usługi w chmurze w portalu
 
-Warunki można ustawić dla roli procesu roboczego usługi chmury, wyzwalające wewnątrz lub na zewnątrz operacji skalowania. Warunki dla roli może opierać się na procesor CPU, dysku lub obciążenia sieciowego w roli. Można również ustawić warunek, w oparciu o kolejki komunikatów lub Metryka niektórych innych zasobów platformy Azure skojarzonych z subskrypcją.
+Warunki można ustawić dla roli proces roboczy usługi w chmurze, która wyzwala operację skalowania w poziomie lub out. Warunki roli mogą opierać się na PROCESORAch, dyskach lub obciążeniach sieciowych roli. Możesz również ustawić warunek na podstawie kolejki komunikatów lub metryki innego zasobu platformy Azure skojarzonego z subskrypcją.
 
 > [!NOTE]
-> Ten artykuł koncentruje się na role sieć web i procesu roboczego usługi w chmurze. Po utworzeniu maszyny wirtualnej (klasycznej) bezpośrednio znajduje się w usłudze w chmurze. Standardowa maszynę wirtualną można skalować przez skojarzenie jej z [zestaw dostępności](../virtual-machines/windows/classic/configure-availability-classic.md) i ręcznie je włączyć lub wyłączyć.
+> Ten artykuł koncentruje się na rolach sieci Web i procesu roboczego usługi w chmurze. Gdy tworzysz maszynę wirtualną (klasyczną) bezpośrednio, jest ona hostowana w usłudze w chmurze. Można skalować standardową maszynę wirtualną, kojarząc ją z [zestawem dostępności](../virtual-machines/windows/classic/configure-availability-classic.md) i ręcznie ją włączać lub wyłączać.
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
-Przed skonfigurowaniem skalowania dla aplikacji, należy rozważyć następujące informacje:
+Przed skonfigurowaniem skalowania aplikacji należy wziąć pod uwagę następujące informacje:
 
-* Skalowanie dotyczy użycia rdzeni.
+* Na skalowanie ma wpływ podstawowe użycie.
 
-    Większych wystąpień roli za pomocą rdzeni. Możesz skalować aplikację tylko w obrębie limit rdzeni dla Twojej subskrypcji. Na przykład załóżmy, że Twoja subskrypcja ma limit 20 rdzeni. Jeśli uruchamiasz aplikację za pomocą dwóch usług w chmurze o średniej wielkości, (łącznie 4 rdzenie), możesz tylko skalować w górę innych wdrożeń usługi w chmurze w Twojej subskrypcji przez pozostałe 16 rdzeni. Aby uzyskać więcej informacji na temat rozmiarów, zobacz [rozmiary usług w chmurze](cloud-services-sizes-specs.md).
+    Większe wystąpienia roli używają większej liczby rdzeni. Aplikację można skalować tylko w ramach limitu rdzeni dla subskrypcji. Załóżmy na przykład, że subskrypcja ma limit 20 rdzeni. W przypadku uruchamiania aplikacji z dwoma średnimi usługami w chmurze (łącznie z 4 rdzeniami) można skalować inne wdrożenia usług w chmurze w ramach subskrypcji przez pozostałe 16 rdzeni. Aby uzyskać więcej informacji na temat rozmiarów, zobacz [rozmiary usługi w chmurze](cloud-services-sizes-specs.md).
 
-* Możesz skalować na podstawie progu kolejki komunikatów. Aby uzyskać więcej informacji o tym, jak używać kolejek, zobacz [sposób używania usługi Queue Storage](../storage/queues/storage-dotnet-how-to-use-queues.md).
+* Możesz skalować na podstawie progu komunikatów w kolejce. Aby uzyskać więcej informacji o sposobach korzystania z kolejek, zobacz [jak korzystać z usługi queue storage](../storage/queues/storage-dotnet-how-to-use-queues.md).
 
-* Możesz również skalować w innych zasobów skojarzonych z Twoją subskrypcją.
+* Możesz również skalować inne zasoby skojarzone z subskrypcją.
 
-* Aby włączyć wysoką dostępność aplikacji, należy upewnić się, że jest wdrażany za pomocą co najmniej dwóch wystąpień roli. Aby uzyskać więcej informacji, zobacz [umowy dotyczące poziomu usług](https://azure.microsoft.com/support/legal/sla/).
+* Aby włączyć wysoką dostępność aplikacji, należy się upewnić, że jest ona wdrażana z co najmniej dwoma wystąpieniami roli. Aby uzyskać więcej informacji, zobacz [umowy dotyczące poziomu usług](https://azure.microsoft.com/support/legal/sla/).
 
-* Automatyczne skalowanie odbywa się tylko, gdy wszystkie role są **gotowe** stanu.  
+* Automatyczne skalowanie jest wykonywane tylko wtedy, gdy wszystkie role są w stanie **gotowe** .  
 
 
-## <a name="where-scale-is-located"></a>Gdzie znajduje się skalowania
-Po wybraniu usługi w chmurze, powinny być widoczne bloku usługi chmury.
+## <a name="where-scale-is-located"></a>Gdzie znajduje się skala
+Po wybraniu usługi w chmurze powinien być widoczny blok usługi w chmurze.
 
-1. W bloku usługi w chmurze na **rolami i wystąpieniami** kafelka, wybierz nazwę usługi w chmurze.   
-   **WAŻNE**: Upewnij się, że rola usługi w chmurze, nie znajduje się poniżej rolę wystąpienie roli.
+1. W bloku usługa w chmurze na kafelku **role i wystąpienia** wybierz nazwę usługi w chmurze.   
+   **WAŻNE**: Pamiętaj, aby kliknąć rolę usługi w chmurze, a nie wystąpienia roli znajdującego się poniżej roli.
 
     ![](./media/cloud-services-how-to-scale-portal/roles-instances.png)
-2. Wybierz **skalowania** kafelka.
+2. Wybierz kafelek **Skala** .
 
     ![](./media/cloud-services-how-to-scale-portal/scale-tile.png)
 
 ## <a name="automatic-scale"></a>Automatyczne skalowanie
-Można skonfigurować ustawienia skalowania dla roli, albo w dwóch trybach **ręczne** lub **automatyczne**. Ręcznego zgodnie z regułami, ustaw bezwzględną liczbę wystąpień. Automatyczne umożliwia jednak do zestawu reguły, które kontrolują sposób, jak również jak znacznie możesz powinny być skalowane.
+Ustawienia skalowania dla roli można skonfigurować przy użyciu obu trybów **ręcznych** lub **automatycznych**. Ręczne jest tak jak oczekiwano, ustawiasz bezwzględną liczbę wystąpień. Funkcja automatycznego zezwala jednak na Określanie reguł, które określają, jak i w jakim stopniu należy skalować.
 
-Ustaw **skalowanie przez** opcję **reguły harmonogramu i wydajności**.
+Ustaw opcję **skalowanie przez** , aby **zaplanować i reguły wydajności**.
 
-![Ustawienia skalowania usług chmury za pomocą profilu i reguł](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
+![Ustawienia skalowania usług Cloud Services z profilem i regułą](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
 
 1. Istniejący profil.
-2. Dodaj regułę dla profilu nadrzędnej.
+2. Dodaj regułę dla profilu nadrzędnego.
 3. Dodaj inny profil.
 
-Wybierz **Dodaj profil**. Profil, który określa tryb, w którym chcesz użyć skali: **zawsze**, **cyklu**, **ustalona data**.
+Wybierz pozycję **Dodaj profil**. Profil określa tryb, który ma być używany dla skali: **zawsze**, **cykl**, **stała Data**.
 
-Po skonfigurowaniu profilu i reguł, wybierz **Zapisz** ikonę u góry.
+Po skonfigurowaniu profilu i reguł Wybierz ikonę **Zapisz** u góry.
 
 #### <a name="profile"></a>Profil
-Profil, który Ustawia minimalną i maksymalną wystąpień skali, a także, gdy aktywny jest zakresu tej skali.
+Profil ustawia minimalne i maksymalne wystąpienia skali, a także wtedy, gdy ten zakres skali jest aktywny.
 
-* **zawsze**
+* **Stałego**
 
-    Zawsze Zachowuj tego zakresu wystąpień jest dostępna.  
+    Zawsze zachowuj dostęp do tego zakresu wystąpień.  
 
-    ![Usługa w chmurze, która zawsze skalowanie](./media/cloud-services-how-to-scale-portal/select-always.png)
+    ![Usługa w chmurze, która zawsze jest skalowana](./media/cloud-services-how-to-scale-portal/select-always.png)
 * **Cykl**
 
     Wybierz zestaw dni tygodnia do skalowania.
 
-    ![Skalowanie usługi chmury za pomocą harmonogramu cyklu](./media/cloud-services-how-to-scale-portal/select-recurrence.png)
-* **Ustalona data**
+    ![Skalowanie usługi w chmurze z harmonogramem cyklu](./media/cloud-services-how-to-scale-portal/select-recurrence.png)
+* **Stała Data**
 
-    Zakres dat stały, aby skalować roli.
+    Stały zakres dat służący do skalowania roli.
 
-    ![Skalowanie usługi chmury przy użyciu stałej dacie](./media/cloud-services-how-to-scale-portal/select-fixed.png)
+    ![Skalowanie usługi w chmurze ze stałą datą](./media/cloud-services-how-to-scale-portal/select-fixed.png)
 
-Po skonfigurowaniu profilu wybierz **OK** znajdujący się u dołu bloku profilu.
+Po skonfigurowaniu profilu wybierz przycisk **OK** w dolnej części bloku profil.
 
 #### <a name="rule"></a>Reguła
-Reguły są dodawane do profilu i reprezentują warunku, która powoduje uruchomienie skalowania.
+Reguły są dodawane do profilu i reprezentują Warunek wyzwalający skalę.
 
-Wyzwalacz reguła opiera się na metryki usługi w chmurze (użycie procesora CPU, operacji na dysku lub aktywności sieciowej) do którego można dodać warunkowych wartości. Ponadto może mieć wyzwalaczy na podstawie kolejki komunikatów lub metrykę niektórych innych zasobów platformy Azure skojarzonych z Twoją subskrypcją.
+Wyzwalacz reguły jest oparty na metryce usługi w chmurze (użycie procesora, aktywność dysku lub aktywność sieci), do której można dodać wartość warunkową. Ponadto możesz mieć wyzwalacz oparty na kolejce komunikatów lub w przypadku niektórych innych zasobów platformy Azure skojarzonych z Twoją subskrypcją.
 
 ![](./media/cloud-services-how-to-scale-portal/rule-settings.png)
 
-Po skonfigurowaniu reguły wybierz **OK** znajdujący się u dołu bloku reguły.
+Po skonfigurowaniu reguły wybierz przycisk **OK** w dolnej części bloku reguła.
 
-## <a name="back-to-manual-scale"></a>Powrót do skalowanie ręczne
-Przejdź do [skalowanie ustawienia](#where-scale-is-located) i ustaw **skalowanie przez** opcję **liczba wystąpień ustawiana ręcznie**.
+## <a name="back-to-manual-scale"></a>Powrót do ręcznego skalowania
+Przejdź do [ustawień skalowania](#where-scale-is-located) i dla opcji **Skaluj według** ustaw wartość **Liczba wystąpień wprowadzanych ręcznie**.
 
-![Ustawienia skalowania usług chmury za pomocą profilu i reguł](./media/cloud-services-how-to-scale-portal/manual-basics.png)
+![Ustawienia skalowania usług Cloud Services z profilem i regułą](./media/cloud-services-how-to-scale-portal/manual-basics.png)
 
-To ustawienie powoduje usunięcie automatyczne skalowanie z roli, a następnie bezpośrednio możesz Ustaw liczbę wystąpień.
+To ustawienie powoduje usunięcie automatycznego skalowania z roli, a następnie można ustawić liczbę wystąpień bezpośrednio.
 
-1. Opcja (ręczne lub automatyczne) skali.
-2. Suwak wystąpienia roli, aby ustawić wystąpień, aby możliwe było skalowanie.
-3. Wystąpienia roli, aby możliwe było skalowanie.
+1. Opcja Skala (ręczna lub automatyczna).
+2. Suwak wystąpienia roli, w którym można ustawić wystąpienia do skalowania.
+3. Wystąpienia roli do skalowania.
 
-Po skonfigurowaniu ustawień skalowania, wybierz **Zapisz** ikonę u góry.
+Po skonfigurowaniu ustawień skalowania wybierz ikonę **Zapisz** u góry.

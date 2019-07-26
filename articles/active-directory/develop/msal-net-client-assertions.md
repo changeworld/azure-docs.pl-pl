@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a938f85b2047ea5cceada98df6adba2c560c1a1
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: e1ea75499334f3f6eb2f5d3c15526067fcef4eb8
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278670"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442501"
 ---
 # <a name="confidential-client-assertions"></a>Poufne potwierdzenia klienta
 Aby udowodnić swoją tożsamość, poufne aplikacje klienckie wymieniają klucz tajny z usługą Azure AD. Wpis tajny może być:
@@ -34,7 +34,7 @@ Ten klucz tajny może również być podpisanym potwierdzeniem bezpośrednio.
 MSAL.NET ma cztery metody dostarczania poświadczeń lub potwierdzeń do poufnej aplikacji klienckiej:
 - `.WithClientSecret()`
 - `.WithCertificate()`
-- `.WithSignedAssertion()`
+- `.WithClientAssertion()`
 - `.WithClientClaims()`
 
 ### <a name="signed-assertions"></a>Podpisane potwierdzenia

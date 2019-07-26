@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 06/28/2019
-ms.openlocfilehash: d69861beb5848679aa00c8b39f0caa84c7c5d847
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
-ms.translationtype: HT
+ms.openlocfilehash: f27dfd1f907d106ddb3b1b9dd7534d56380149c2
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67986861"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385499"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Zabezpieczanie dostępu i danych w Azure Logic Apps
 
@@ -193,9 +193,9 @@ Aby kontrolować dostęp do wejść i wyjść w historii uruchamiania aplikacji 
 
   Ta opcja umożliwia zabezpieczenie dostępu do historii uruchamiania na podstawie żądań z określonego zakresu adresów IP.
 
-* [Ukryj dane wejściowe i wyjściowe w historii uruchamiania przy użyciu zaciemniania](#obfuscate).
+* [Ukryj dane z historii uruchamiania przy użyciu zaciemniania](#obfuscate).
 
-  Ta opcja umożliwia ukrycie wejść i wyjść w historii uruchamiania na podstawie wyzwalacza lub akcji.
+  W wielu wyzwalaczach i akcjach można ukryć ich dane wejściowe, wyjścia lub zarówno z historii uruchamiania aplikacji logiki.
 
 <a name="restrict-ip"></a>
 
@@ -258,7 +258,11 @@ W przypadku automatyzowania wdrożeń aplikacji logiki przy użyciu [szablonu Az
 
 <a name="obfuscate"></a>
 
-### <a name="hide-inputs-and-outputs-in-run-history-by-using-obfuscation"></a>Ukryj dane wejściowe i wyjściowe w historii uruchamiania przy użyciu zaciemniania
+### <a name="hide-data-from-run-history-by-using-obfuscation"></a>Ukryj dane z historii uruchamiania przy użyciu zaciemniania
+
+Wiele wyzwalaczy i akcji ma ustawienia umożliwiające ukrycie danych wejściowych, wyjściowych lub zarówno z historii uruchamiania aplikacji logiki. Poniżej przedstawiono kilka [kwestii, które](#obfuscation-considerations) należy wykonać w celu zapoznania się z tymi ustawieniami w celu zabezpieczenia tych danych.
+
+#### <a name="secure-inputs-and-outputs-in-the-designer"></a>Zabezpieczanie wejść i wyjść w projektancie
 
 1. Jeśli aplikacja logiki nie jest jeszcze otwarta w [Azure Portal](https://portal.azure.com), Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
@@ -290,9 +294,38 @@ W przypadku automatyzowania wdrożeń aplikacji logiki przy użyciu [szablonu Az
 
       ![Dane ukryte w historii uruchamiania](media/logic-apps-securing-a-logic-app/hidden-data-run-history.png)
 
+<a name="secure-data-code-view"></a>
+
+#### <a name="secure-inputs-and-outputs-in-code-view"></a>Zabezpiecz dane wejściowe i wyjściowe w widoku kodu
+
+W podstawowym wyzwalaczu lub definicji akcji Dodaj lub zaktualizuj `runtimeConfiguration.secureData.properties` tablicę przy użyciu jednej lub obu tych wartości:
+
+* `"inputs"`: Zabezpiecza dane wejściowe w historii uruchamiania.
+* `"outputs"`: Zabezpiecza dane wyjściowe w historii uruchamiania.
+
+Poniżej przedstawiono kilka [kwestii, które](#obfuscation-considerations) należy wykonać w celu zapoznania się z tymi ustawieniami w celu zabezpieczenia tych danych.
+
+```json
+"<trigger-or-action-name>": {
+   "type": "<trigger-or-action-type>",
+   "inputs": {
+      <trigger-or-action-inputs>
+   },
+   "runtimeConfiguration": {
+      "secureData": {
+         "properties": [
+            "inputs",
+            "outputs"
+         ]
+      }
+   },
+   <other-attributes>
+}
+```
+
 <a name="obfuscation-considerations"></a>
 
-#### <a name="considerations-when-securing-inputs-and-outputs"></a>Zagadnienia dotyczące zabezpieczania danych wejściowych i wyjściowych
+#### <a name="considerations-when-hiding-inputs-and-outputs"></a>Zagadnienia dotyczące ukrywania danych wejściowych i wyjść
 
 * W przypadku zabezpieczania danych wejściowych lub danych wyjściowych wyzwalacza lub akcji, Logic Apps nie wysyła zabezpieczone dane do usługi Azure Log Analytics. Nie można również dodać [śledzonych właściwości](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details) do tego wyzwalacza lub akcji do monitorowania.
 
@@ -551,7 +584,7 @@ Oto kilka sposobów zabezpieczania punktów końcowych, w których aplikacja log
 
   Azure Logic Apps zapewnia integrację z tymi usługami w celu bezpiecznej i niezawodnej komunikacji lokalnej.
 
-  * Brama danych lokalnych
+  * Lokalna brama danych
 
     Wiele zarządzanych łączników w Azure Logic Apps zapewnia bezpieczne połączenia z systemami lokalnymi, takimi jak system plików, SQL, SharePoint i DB2. Brama wysyła dane ze źródeł lokalnych w zaszyfrowanej kanale za pośrednictwem Azure Service Bus. Cały ruch pochodzący z agenta bramy jest zabezpieczonym ruchem wychodzącym. Dowiedz się [, jak działa lokalna Brama danych](logic-apps-gateway-install.md#gateway-cloud-service).
 
@@ -564,3 +597,4 @@ Oto kilka sposobów zabezpieczania punktów końcowych, w których aplikacja log
 * [Tworzenie szablonów wdrożenia](logic-apps-create-deploy-template.md)  
 * [Monitorowanie aplikacji logiki](logic-apps-monitor-your-logic-apps.md)  
 * [Diagnozowanie błędów i problemów aplikacji logiki](logic-apps-diagnosing-failures.md)  
+* [Automatyzowanie wdrożenia aplikacji logiki](logic-apps-azure-resource-manager-templates-overview.md)

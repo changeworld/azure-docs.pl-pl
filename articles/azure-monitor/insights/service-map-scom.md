@@ -1,6 +1,6 @@
 ---
-title: Mapa usługi integracji programu System Center Operations Manager | Dokumentacja firmy Microsoft
-description: Usługa Service Map jest rozwiązaniem platformy Azure, które automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. W tym artykule omówiono, przy użyciu mapy usługi, aby automatycznie utworzyć aplikację rozproszoną diagramy w programie Operations Manager.
+title: Integracja Azure Monitor dla maszyn wirtualnych z System Center Operations Manager | Microsoft Docs
+description: Azure Monitor dla maszyn wirtualnych automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. W tym artykule omówiono używanie funkcji map do automatycznego tworzenia diagramów aplikacji rozproszonych w Operations Manager.
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -11,129 +11,143 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/21/2017
+ms.date: 07/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 40e6d6ff6ea8748b525642e5507c80590b322b7a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b16505eb2c12819532b8675472cf0e6f4177f7bf
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60402624"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489717"
 ---
-# <a name="service-map-integration-with-system-center-operations-manager"></a>Mapa usługi integracji programu System Center Operations Manager
+# <a name="system-center-operations-manager-integration-with-azure-monitor-for-vms-map-feature"></a>Integracja System Center Operations Manager z funkcją Azure Monitor dla maszyn wirtualnych map
 
-Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Mapa usługi umożliwia wyświetlenie Twoich serwerów w ten sposób możesz traktować je jako wzajemnie połączonych systemów dostarczających krytycznych usług. Usługa Service Map Pokazuje połączenia między serwerami, procesami i portami w dowolnej architekturze połączenia TCP, bez konieczności konfiguracji oprócz instalacji agenta. Aby uzyskać więcej informacji, zobacz [dokumentacji rozwiązania Service Map]( service-map.md).
+W Azure Monitor dla maszyn wirtualnych można wyświetlić odnalezione składniki aplikacji na maszynach wirtualnych z systemem Windows i Linux, które działają na platformie Azure lub w środowisku. Dzięki integracji między funkcją mapy a System Center Operations Manager można automatycznie tworzyć diagramy aplikacji rozproszonych w Operations Manager, które są oparte na dynamicznych mapach zależności w Azure Monitor dla maszyn wirtualnych. 
 
-Dzięki tej integracji między mapy usługi i System Center Operations Manager może automatycznie tworzyć diagramy aplikacji rozproszonych w programie Operations Manager, które są oparte na mapach dynamiczne zależności na mapie usługi.
+>[!NOTE]
+>Jeśli wdrożono już Service Map, można wyświetlić mapy w Azure Monitor dla maszyn wirtualnych, co obejmuje dodatkowe funkcje do monitorowania kondycji i wydajności maszyn wirtualnych. Funkcja map Azure Monitor dla maszyn wirtualnych ma zastąpić rozwiązanie autonomiczne Service Map. Aby dowiedzieć się więcej, zobacz [Azure monitor dla maszyn wirtualnych Omówienie](vminsights-overview.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Grupy zarządzania programu Operations Manager (2012 R2 lub nowszym) zarządza zestawu serwerów.
-* Obszar roboczy usługi Log Analytics za pomocą rozwiązania Service Map, włączone.
-* Zestaw serwerów (co najmniej jeden), które są zarządzane przez menedżera operacji i wysyłania danych do rozwiązania Service Map. Serwery Windows i Linux są obsługiwane.
-* Jednostki usługi z dostępem do subskrypcji platformy Azure, który jest skojarzony z obszarem roboczym usługi Log Analytics. Aby uzyskać więcej informacji, przejdź do [utworzyć nazwę główną usługi](#create-a-service-principal).
 
-## <a name="install-the-service-map-management-pack"></a>Zainstaluj pakiet administracyjny rozwiązania Service Map
-Umożliwia integrację między programem Operations Manager i Service Map, importując Microsoft.SystemCenter.ServiceMap pakietu administracyjnego (Microsoft.SystemCenter.ServiceMap.mpb). Można pobrać pakietu administracyjnego z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=55763). Pakiet zawiera następujące pakiety administracyjne:
-* Widoki aplikacji mapy usługi firmy Microsoft
-* Microsoft System Center Service Map wewnętrznego
-* Zastąpienia mapy usługi programu Microsoft System Center
-* Microsoft System Center Service Map
+* System Center Operations Manager grupy zarządzania (2012 R2 lub nowsza).
+* Obszar roboczy Log Analytics skonfigurowany do obsługi Azure Monitor dla maszyn wirtualnych.
+* Co najmniej jedna maszyna wirtualna z systemem Windows i Linux albo komputery fizyczne monitorowane przez Operations Manager i wysyłające dane do obszaru roboczego Log Analytics. Serwery z systemem Linux, które są raportowane do grupy zarządzania Operations Manager, muszą być skonfigurowane do bezpośredniego łączenia się z Azure Monitor. Aby uzyskać więcej informacji, zapoznaj się z omówieniem w temacie [zbieranie danych dziennika za pomocą agenta log Analytics](../platform/log-analytics-agent.md).
+* Jednostka usługi z dostępem do subskrypcji platformy Azure, która jest skojarzona z obszarem roboczym Log Analytics. Aby uzyskać więcej informacji, przejdź do [tworzenia nazwy głównej usługi](#create-a-service-principal).
 
-## <a name="configure-the-service-map-integration"></a>Konfigurowanie integracji rozwiązania Service Map
-Po zainstalowaniu pakietu administracyjnego rozwiązania Service Map, nowy węzeł **rozwiązania Service Map**, jest wyświetlany w obszarze **pakietu Operations Management Suite** w **administracji** okienka.
+## <a name="install-the-service-map-management-pack"></a>Zainstaluj pakiet administracyjny Service Map
+
+Integrację między Operations Manager i funkcją mapy można włączyć, importując pakiet pakietów administracyjnych Microsoft. Center. ServiceMap (Microsoft. Center. ServiceMap. mpb). Pakiet pakietów administracyjnych można pobrać z [Centrum pobierania Microsoft](https://www.microsoft.com/download/details.aspx?id=55763). Pakiet zawiera następujące pakiety administracyjne:
+
+* Widoki aplikacji Service Map firmy Microsoft
+* Wewnętrzny Service Map programu Microsoft System Center
+* Zastępowanie Service Map programu Microsoft System Center
+* Service Map programu Microsoft System Center
+
+## <a name="configure-integration"></a>Konfigurowanie integracji
+
+Po zainstalowaniu pakietu administracyjnego Service Map nowy węzeł **Service map**, zostanie wyświetlony w obszarze **Pakiet Operations Management Suite** w okienku **Administracja** w konsoli operacje Operations Manager.
 
 >[!NOTE]
->[Pakiet Operations Management Suite została kolekcja usług](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand) włączone, usługa Log Analytics, który jest obecnie częścią programu [usługi Azure Monitor](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md).
+>[Pakiet Operations Management Suite to kolekcja usług](../terminology.md#april-2018---retirement-of-operations-management-suite-brand) , która zawiera log Analytics, jest teraz częścią [Azure monitor](../overview.md).
 
-Aby skonfigurować integrację rozwiązania Service Map, wykonaj następujące czynności:
+Aby skonfigurować integrację z mapowaniem Azure Monitor dla maszyn wirtualnych, wykonaj następujące czynności:
 
-1. Aby otworzyć Kreatora konfiguracji w **omówienie mapy usługi** okienku kliknij **Dodaj obszar roboczy**.  
+1. Aby otworzyć Kreatora konfiguracji, w okienku **przegląd Service map** kliknij pozycję **Dodaj obszar roboczy**.  
 
-    ![Okienko omówienia mapy usługi](media/service-map-scom/scom-configuration.png)
+    ![Okienko przeglądu Service Map](media/service-map-scom/scom-configuration.png)
 
-2. W **Konfiguracja połączenia** okna, wprowadź nazwę dzierżawy lub identyfikator, identyfikator aplikacji (znany także jako nazwa użytkownika lub identyfikatora klienta) i hasło jednostki usługi, a następnie kliknij przycisk **dalej**. Aby uzyskać więcej informacji przejdź do utworzenia jednostki usługi.
+2. W oknie **Konfiguracja połączenia** wprowadź nazwę lub identyfikator dzierżawy, identyfikator aplikacji (znany również jako nazwa użytkownika lub clientID) i hasło nazwy głównej usługi, a następnie kliknij przycisk **dalej**. Aby uzyskać więcej informacji, przejdź do tworzenia nazwy głównej usługi.
 
-    ![W oknie Konfiguracja połączenia](media/service-map-scom/scom-config-spn.png)
+    ![Okno konfiguracji połączenia](media/service-map-scom/scom-config-spn.png)
 
-3. W **wybór subskrypcji** , wybierz subskrypcję platformy Azure, grupę zasobów platformy Azure (jedna, która zawiera obszar roboczy usługi Log Analytics) i obszar roboczy usługi Log Analytics, a następnie kliknij przycisk **dalej**.
+3. W oknie **wybór subskrypcji** wybierz subskrypcję platformy Azure, grupę zasobów platformy Azure (tę, która zawiera obszar roboczy log Analytics), a log Analytics obszar roboczy, a następnie kliknij przycisk **dalej**.
 
-    ![Obszar roboczy programu Operations Manager konfiguracji](media/service-map-scom/scom-config-workspace.png)
+    ![Obszar roboczy konfiguracji Operations Manager](media/service-map-scom/scom-config-workspace.png)
 
-4. W **wybór grupy maszyny** okna, możesz wybrać grupy maszyny mapy usługi mają być synchronizowane z programem Operations Manager. Kliknij przycisk **grupy maszyn Dodaj/Usuń**, wybierz grupy z listy **dostępne grupy maszyn**i kliknij przycisk **Dodaj**.  Po wybraniu grup kliknij **Ok** na zakończenie.
+4. W oknie **Wybór grupy maszyn** wybierz grupy maszyn, które mają zostać zsynchronizowane Service map Operations Manager. Kliknij przycisk **Dodaj/Usuń grupy maszyn**, wybierz grupy z listy **dostępnych grup maszyn**, a następnie kliknij przycisk **Dodaj**.  Po zakończeniu wybierania grup kliknij przycisk **OK** , aby zakończyć.
 
-    ![Grupy maszyn konfiguracji menedżera operacji](media/service-map-scom/scom-config-machine-groups.png)
+    ![Grupy maszyn konfiguracji Operations Manager](media/service-map-scom/scom-config-machine-groups.png)
 
-5. W **wybór dotyczący serwera** okna, skonfigurowaniu grupy serwerów mapy usługi przy użyciu serwerów, które mają być synchronizowane między programem Operations Manager i Service Map. Kliknij przycisk **Dodaj/Usuń serwery**.   
+5. W oknie **Wybór serwera** Skonfiguruj grupę serwery Service map z serwerami, które mają być synchronizowane między Operations Manager i funkcją map. Kliknij przycisk **Dodaj/Usuń serwery**.
 
-    Integracji do tworzenia diagramu aplikacji rozproszonej dla serwera serwer musi mieć:
+    Aby można było utworzyć diagram aplikacji rozproszonej dla serwera, na serwerze musi być:
 
-   * Zarządzane przez program Operations Manager
-   * Zarządzane przez usługę mapy
-   * Na liście grupy serwerów mapy usługi
+   * Monitorowane przez Operations Manager
+   * Skonfigurowano w celu raportowania do Log Analytics obszaru roboczego skonfigurowanego za pomocą Azure Monitor dla maszyn wirtualnych
+   * Wymienione w grupie serwery Service Map
 
-     ![Grupa konfiguracji programu Operations Manager](media/service-map-scom/scom-config-group.png)
+     ![Grupa konfiguracji Operations Manager](media/service-map-scom/scom-config-group.png)
 
-6. Opcjonalnie: Wybierz pulę zasobów serwera zarządzania do komunikowania się z usługą Log Analytics, a następnie kliknij przycisk **Dodaj obszar roboczy**.
+6. Opcjonalnie: Wybierz pulę zasobów wszystkich serwerów zarządzania, z którą ma się komunikować Log Analytics, a następnie kliknij pozycję **Dodaj obszar roboczy**.
 
-    ![Pula zasobów konfiguracji menedżera operacji](media/service-map-scom/scom-config-pool.png)
+    ![Pula zasobów konfiguracji Operations Manager](media/service-map-scom/scom-config-pool.png)
 
-    Może potrwać chwilę, aby skonfigurować i zarejestrować obszaru roboczego usługi Log Analytics. Po skonfigurowaniu programu Operations Manager inicjuje pierwsza synchronizacja mapy usługi.
+    Skonfigurowanie i zarejestrowanie obszaru roboczego Log Analytics może potrwać minutę. Po jego skonfigurowaniu Operations Manager inicjuje pierwszą synchronizację mapy.
 
-    ![Pula zasobów konfiguracji menedżera operacji](media/service-map-scom/scom-config-success.png)
+    ![Pula zasobów konfiguracji Operations Manager](media/service-map-scom/scom-config-success.png)
 
+## <a name="monitor-integration"></a>Monitorowanie integracji
 
-## <a name="monitor-service-map"></a>Mapa usługi monitora
-Po połączeniu obszaru roboczego usługi Log Analytics nowego folderu, mapa usługi jest wyświetlana w **monitorowanie** okienku konsoli programu Operations Manager.
+Po nawiązaniu połączenia z obszarem roboczym Log Analytics w okienku **monitorowanie** w konsoli operacje Operations Manager zostanie wyświetlony nowy folder Service map.
 
-![W okienku Monitoring programu Operations Manager](media/service-map-scom/scom-monitoring.png)
+![Okienko monitorowanie Operations Manager](media/service-map-scom/scom-monitoring.png)
 
-Folder rozwiązania Service Map ma cztery węzły:
-* **Aktywne alerty**: Wyświetla listę wszystkich aktywnych alertów dotyczących komunikacji między programem Operations Manager i Service Map.  Należy zauważyć, że te alerty nie są usługi Log Analytics alerty synchronizowany z usługą Operations Manager.
+Folder Service Map ma cztery węzły:
 
-* **Serwery**: Wyświetla listę monitorowanych serwerów, które są skonfigurowane do synchronizacji z mapy usługi.
+* **Aktywne alerty**: Wyświetla listę wszystkich aktywnych alertów dotyczących komunikacji między Operations Manager i Azure Monitor.  
 
-    ![W okienku monitorowanie serwerów programu Operations Manager](media/service-map-scom/scom-monitoring-servers.png)
+  >[!NOTE]
+  >Te alerty nie są Log Analytics alerty zsynchronizowane z Operations Manager, są generowane w grupie zarządzania w oparciu o przepływy pracy zdefiniowane w pakiecie administracyjnym Service Map.
 
-* **Widoki zależności grupy na komputerze**: Wyświetla listę wszystkich grup maszyny, które są synchronizowane z mapy usługi. Możesz kliknąć dowolną grupę, aby wyświetlić jego diagramu aplikacji rozproszonej.
+* **Serwery**: Wyświetla listę monitorowanych serwerów, które są skonfigurowane do synchronizacji z funkcji mapy Azure Monitor dla maszyn wirtualnych.
 
-    ![Diagramu aplikacji rozproszonej programu Operations Manager](media/service-map-scom/scom-group-dad.png)
+    ![Okienko Operations Manager monitorowania serwerów](media/service-map-scom/scom-monitoring-servers.png)
 
-* **Widoki zależności Server**: Wyświetla listę wszystkich serwerów, które są synchronizowane z mapy usługi. Kliknięcie dowolnego serwera, aby wyświetlić jego diagramu aplikacji rozproszonej.
+* **Widoki zależności grupy maszyn**: Wyświetla listę wszystkich grup maszyn, które są synchronizowane z funkcji mapy. Możesz kliknąć dowolną grupę, aby wyświetlić jej diagram aplikacji rozproszonej.
 
-    ![Diagramu aplikacji rozproszonej programu Operations Manager](media/service-map-scom/scom-dad.png)
+    ![Diagram aplikacji rozproszonej Operations Manager](media/service-map-scom/scom-group-dad.png)
+
+* **Widoki zależności serwera**: Wyświetla wszystkie serwery, które są synchronizowane z funkcji map. Możesz kliknąć dowolny serwer, aby wyświetlić jego diagram aplikacji rozproszonej.
+
+    ![Diagram aplikacji rozproszonej Operations Manager](media/service-map-scom/scom-dad.png)
 
 ## <a name="edit-or-delete-the-workspace"></a>Edytowanie lub usuwanie obszaru roboczego
-Można edytować lub usunąć skonfigurowany obszar roboczy za pomocą **omówienie mapy usługi** okienko (**administracji** okienko > **pakietu Operations Management Suite**  >  **Usługi mapy**).
+
+Skonfigurowany obszar roboczy można edytować lub usunąć za pomocą okienka **Przegląd Service map** (okienko**Administracja** > **Pakiet Operations Management Suite** > **Service map**).
 
 >[!NOTE]
->[Pakiet Operations Management Suite została kolekcja usług](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand) włączone, usługa Log Analytics, który jest obecnie częścią programu [usługi Azure Monitor](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md).
+>[Pakiet Operations Management Suite to zbiór usług](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand) należących do log Analytics, które są teraz częścią [Azure monitor](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md).
 
-Teraz można skonfigurować tylko jeden obszar roboczy usługi Log Analytics.
+W tej bieżącej wersji można skonfigurować tylko jeden obszar roboczy Log Analytics.
 
-![W okienku Menedżera operacji Edytuj obszar roboczy](media/service-map-scom/scom-edit-workspace.png)
+![Okienko Operations Manager edytowanie obszaru roboczego](media/service-map-scom/scom-edit-workspace.png)
 
 ## <a name="configure-rules-and-overrides"></a>Konfigurowanie reguł i zastąpień
-Reguła _Microsoft.SystemCenter.ServiceMapImport.Rule_, zostanie utworzona okresowo pobieranie informacji z mapy usługi. Aby zmienić czasów synchronizacji, można skonfigurować przesłonięcia reguły (**tworzenie** okienko > **reguły** > **Microsoft.SystemCenter.ServiceMapImport.Rule**) .
 
-![W oknie właściwości zastępuje programu Operations Manager](media/service-map-scom/scom-overrides.png)
+Reguła, *Microsoft. Center. ServiceMapImport. Rule*, okresowo pobiera informacje z funkcji mapy Azure monitor dla maszyn wirtualnych. Aby zmodyfikować interwał synchronizacji, można zastąpić regułę i zmodyfikować wartość parametru **IntervalMinutes**.
 
-* **Włączone**: Włącz lub wyłącz automatyczne aktualizacje.
-* **IntervalMinutes**: Resetowanie czasu między aktualizacjami. Domyślny interwał to jedna godzina. Jeśli chcesz zsynchronizować serwera mapy częściej, możesz zmienić wartość.
-* **TimeoutSeconds**: Resetuj czas, zanim upłynie limit czasu żądania.
-* **TimeWindowMinutes**: Resetuj przedział czasu na wykonywanie zapytań o dane. Domyślna to 60-minutowe okna. Maksymalna wartość dozwolona przez rozwiązania Service Map jest 60 minut.
+![Okno właściwości zastąpień Operations Manager](media/service-map-scom/scom-overrides.png)
+
+* **Włączone**: Włączać lub wyłączać aktualizacje automatyczne.
+* **IntervalMinutes**: Określa czas między aktualizacjami. Domyślny interwał wynosi godzinę. Jeśli chcesz synchronizować mapy częściej, możesz zmienić wartość.
+* **TimeoutSeconds**: Określa czas, po jakim upłynął limit czasu żądania.
+* **TimeWindowMinutes**: Określa przedział czasu na potrzeby wykonywania zapytań dotyczących danych. Wartość domyślna to 60 minut, co jest maksymalnym dozwolonym interwałem.
 
 ## <a name="known-issues-and-limitations"></a>Znane problemy i ograniczenia
 
 Bieżący projekt przedstawia następujące problemy i ograniczenia:
-* Tekst można połączyć tylko do jednego obszaru roboczego usługi Log Analytics.
-* Chociaż możesz dodać serwery do ręcznie za pomocą grupy serwerów mapy usługi **tworzenie** okienku mapy dla tych serwerów nie są od razu synchronizowane.  Zostaną one zsynchronizowane z rozwiązania Service Map podczas następnego cyklu synchronizacji.
-* Jeśli wprowadzisz zmiany do diagramów aplikacji rozproszonych, utworzony przez pakiet administracyjny, te zmiany prawdopodobnie zostaną zastąpione podczas następnej synchronizacji przy użyciu mapy usługi.
+
+* Można nawiązać połączenie tylko z jednym obszarem roboczym Log Analytics.
+* Mimo że serwery programu można dodać do grupy Serwery Service Map ręcznie za pomocą okienka **Tworzenie** , mapy dla tych serwerów nie są synchronizowane natychmiast. Zostaną one zsynchronizowane z funkcji mapy Azure Monitor dla maszyn wirtualnych podczas następnego cyklu synchronizacji.
+* Po wprowadzeniu zmian w diagramach aplikacji rozproszonych utworzonych przez pakiet administracyjny te zmiany prawdopodobnie zostaną zastąpione podczas następnej synchronizacji z Azure Monitor dla maszyn wirtualnych.
 
 ## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
-Aby uzyskać oficjalnej dokumentacji platformy Azure dotyczące tworzenia jednostki usługi zobacz:
+
+Aby uzyskać oficjalną dokumentację platformy Azure dotyczącą tworzenia nazwy głównej usługi, zobacz:
+
 * [Tworzenie jednostki usługi przy użyciu programu PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal)
-* [Tworzenie jednostki usługi przy użyciu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
-* [Tworzenie jednostki usługi przy użyciu witryny Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)
+* [Tworzenie jednostki usługi przy użyciu interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
+* [Tworzenie jednostki usługi przy użyciu Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)
 
 ### <a name="feedback"></a>Opinia
-Masz opinię dla nas o rozwiązania Service Map lub tej dokumentacji? Odwiedź nasze [stronę z opiniami użytkowników](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), gdzie możesz proponować funkcje lub głosować w sprawie propozycji istniejących.
+Czy masz jakieś opinie o integracji z funkcją mapy Azure Monitor dla maszyn wirtualnych lub z tą dokumentacją? Odwiedź naszą [stronę głosową użytkownika](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), na której można zasugerować funkcje lub zagłosować na istniejące sugestie.

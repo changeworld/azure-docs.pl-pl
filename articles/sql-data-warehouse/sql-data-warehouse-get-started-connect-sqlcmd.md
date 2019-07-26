@@ -1,8 +1,8 @@
 ---
 title: Nawiązywanie połączenia z usługą Azure SQL Data Warehouse — narzędzie sqlcmd | Microsoft Docs
-description: Użyj narzędzia wiersza polecenia sqlcmd, aby nawiązać połączenie i wykonywania zapytań względem usługi Azure SQL Data Warehouse.
+description: Użyj narzędzia wiersza polecenia sqlcmd, aby nawiązać połączenie z Azure SQL Data Warehouse i wykonać zapytanie.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 72760c5123703a664695c1be4d286a38e96ecc3f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f3b93660fb9f8f3b0bfdddc37105b9e998ed9eee
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873317"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479503"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>Nawiązywanie połączenia z usługą SQL Data Warehouse przy użyciu narzędzia sqlcmd
 > [!div class="op_single_selector"]
@@ -27,18 +27,18 @@ ms.locfileid: "65873317"
 > 
 > 
 
-Użyj narzędzia wiersza polecenia [sqlcmd][sqlcmd], aby połączyć się z usługą Azure SQL Data Warehouse i utworzyć zapytanie.  
+Użyj narzędzia wiersza polecenia [sqlcmd][sqlcmd] , aby nawiązać połączenie z Azure SQL Data Warehouse i wykonać zapytanie.  
 
-## <a name="1-connect"></a>1. Połączenie
+## <a name="1-connect"></a>1. Połącz
 Aby rozpocząć pracę z narzędziem [sqlcmd][sqlcmd], otwórz wiersz polecenia i wpisz **sqlcmd**, a następnie podaj parametry połączenia z bazą danych usługi SQL Data Warehouse. Wymagane parametry połączenia to:
 
-* **Serwer (-S):** Serwer w postaci `<`nazwy serwera`>`. database.windows.net
-* **Bazy danych (-d):** Nazwa bazy danych.
-* **Włącz cytowane identyfikatory (-I):** Identyfikatory w cudzysłowach musi być włączony, aby nawiązać połączenie z wystąpieniem programu SQL Data Warehouse.
+* **Serwer (-S):** Serwer w postaci `<`Server Name`>`. Database.Windows.NET
+* **Baza danych (-d):** Nazwa bazy danych.
+* **Włącz identyfikatory ujęte w cudzysłów (-I):** Identyfikatory w cudzysłowie muszą być włączone, aby można było połączyć się z wystąpieniem SQL Data Warehouse.
 
 Aby użyć uwierzytelniania programu SQL Server, należy dodać parametry nazwy użytkownika/hasła:
 
-* **Użytkownik (-U):** Użytkownik serwera w formie `<`użytkownika`>`
+* **Użytkownik (-U):** Użytkownik serwera w formularzu `<`użytkownika`>`
 * **Hasło (-P):** Hasło skojarzone z użytkownikiem.
 
 Na przykład parametry połączenia mogą wyglądać następująco:
@@ -82,8 +82,8 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 "SELECT name FROM sys.tables;" | sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I > .\tables.out
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji na temat opcji dostępnych w narzędziu sqlcmd, zobacz [dokumentację narzędzia sqlcmd][sqlcmd].
+## <a name="next-steps"></a>Następne kroki
+Aby uzyskać więcej informacji o opcjach dostępnych w programie sqlcmd, zobacz [dokumentację narzędzia sqlcmd][sqlcmd] .
 
 <!--Image references-->
 

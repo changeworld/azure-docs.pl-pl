@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/2019
-ms.openlocfilehash: 5eb3e94ff65e8a8b74f357a4cb8a517fd3837c5a
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 1bfc415b2e4dbc66e2afeae73b78079fb027a60c
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871807"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358830"
 ---
 # <a name="create-and-explore-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Twórz i Eksploruj zautomatyzowane eksperymenty uczenia maszynowego w Azure Portal (wersja zapoznawcza)
 
@@ -60,7 +60,7 @@ Wybierz przycisk Utwórz eksperyment, aby wypełnić następującą formę.
 
     Pole|Opis
     ---|---
-    Nazwa obliczeniowa| Wprowadź unikatową nazwę identyfikującą kontekst obliczeniowy.
+    Nazwa środowiska obliczeniowego| Wprowadź unikatową nazwę identyfikującą kontekst obliczeniowy.
     Rozmiar maszyny wirtualnej| Wybierz rozmiar maszyny wirtualnej dla obliczenia.
     Ustawienia dodatkowe| *Minimalny węzeł*: Wprowadź minimalną liczbę węzłów dla obliczenia. Minimalna liczba węzłów dla AML COMPUTE to 0. Aby włączyć Profilowanie danych, musisz mieć co najmniej jeden węzeł. <br> *Maksymalny węzeł*: Wprowadź maksymalną liczbę węzłów dla obliczeń. Wartość domyślna to 6 węzłów na potrzeby obliczeń AML.
 
@@ -105,7 +105,7 @@ Wybierz przycisk Utwórz eksperyment, aby wypełnić następującą formę.
     Metryka podstawowa| Główna Metryka używana do oceniania modelu. [Dowiedz się więcej o metrykach modelu](how-to-configure-auto-train.md#explore-model-metrics).
     Kryteria wyjścia| Po spełnieniu któregokolwiek z tych kryteriów zadanie szkolenia zostanie zakończone przed pełnym ukończeniem. <br> *Czas zadania szkoleniowego (minuty)* : Jak długo zezwolić na uruchomienie zadania szkoleniowego.  <br> *Maksymalna liczba iteracji*: Maksymalna liczba potoków (iteracji) do przetestowania w zadaniu szkoleniowym. Zadanie nie zostanie uruchomione więcej niż określona liczba iteracji. <br> *Próg wyniku metryki*:  Minimalny wynik metryki dla wszystkich potoków. Dzięki temu w przypadku zdefiniowania metryki docelowej, która ma zostać osiągnięta, nie poświęcasz więcej czasu na zadanie szkoleniowe niż to konieczne.
     Przetwarzania wstępnego| Wybierz, aby włączyć lub wyłączyć przetwarzanie wstępne wykonywane przez automatyczne Uczenie maszynowe. Przetwarzanie wstępne obejmuje automatyczne czyszczenie danych, przygotowanie i transformację do generowania funkcji syntetycznych. [Dowiedz się więcej na temat przetwarzania wstępnego](#preprocess).
-    Walidacja| Wybierz jedną z opcji krzyżowego sprawdzania poprawności, która ma zostać użyta w zadaniu szkoleniowym. [Dowiedz się więcej na temat krzyżowego sprawdzania poprawności](how-to-configure-auto-train.md).
+    Weryfikacja| Wybierz jedną z opcji krzyżowego sprawdzania poprawności, która ma zostać użyta w zadaniu szkoleniowym. [Dowiedz się więcej na temat krzyżowego sprawdzania poprawności](how-to-configure-auto-train.md).
     Współbieżność| Wybierz limity wielordzeniowe, które mają być używane podczas korzystania z obliczeń wielordzeniowych.
     Zablokowany algorytm| Wybierz algorytmy, które mają zostać wykluczone z zadania szkoleniowego.
 
@@ -180,7 +180,7 @@ Zadania szkoleniowe mogą potrwać trochę czasu dla każdego potoku.
 
 ### <a name="view-training-run-details"></a>Wyświetl szczegóły przebiegu szkoleniowego
 
-Przejdź do szczegółów dowolnych modeli wyjściowych, aby zobaczyć szczegóły przebiegu szkoleniowego, takie jak metryki wydajności i wykresy dystrybucji. [Dowiedz się więcej na temat wykresów](how-to-track-experiments.md#understanding-automated-ml-charts).
+Przejdź do szczegółów dowolnych modeli wyjściowych, aby zobaczyć szczegóły przebiegu szkoleniowego, takie jak metryki wydajności i wykresy dystrybucji. [Dowiedz się więcej na temat wykresów](how-to-understand-automated-ml.md).
 
 ![Szczegóły iteracji](media/how-to-create-portal-experiments/iteration-details.png)
 
@@ -213,7 +213,7 @@ Automatyczna ML pomaga wdrożyć model bez pisania kodu:
 
     Można zidentyfikować model według jego opisu, który będzie zawierać identyfikator przebiegu, numer iteracji, w następującym formacie: *< Run_ID > _ < Iteration_number > _Model*
 
-    ![Przykładów Utwórz obraz](media/how-to-create-portal-experiments/model-create-image.png)
+    ![Modele: Tworzenie obrazu](media/how-to-create-portal-experiments/model-create-image.png)
 
 1. Wprowadź nazwę obrazu. 
 1. Wybierz przycisk **Przeglądaj** znajdujący się obok pola "ocenianie pliku", aby załadować plik oceniania (Scoring.py), który został wcześniej pobrany.
@@ -225,7 +225,7 @@ Automatyczna ML pomaga wdrożyć model bez pisania kodu:
       >[!Important]
       > Nazwy plików muszą mieć długość 32 znaków i muszą zaczynać się i kończyć znakiem alfanumerycznym. Może zawierać łączniki, podkreślenia, kropki i znaki alfanumeryczne między. Spacje są niedozwolone.
 
-    ![Utwórz obraz](media/how-to-create-portal-experiments/create-image.png)
+    ![Tworzenie obrazu](media/how-to-create-portal-experiments/create-image.png)
 
 1. Wybierz przycisk "Utwórz", aby rozpocząć tworzenie obrazu. Wykonanie tej czynności może potrwać kilka minut, a po zakończeniu zobaczysz komunikat na górnym pasku.
 1. Przejdź do karty "obrazy", zaznacz pole wyboru obok obrazu, który chcesz wdrożyć, a następnie wybierz polecenie "Utwórz wdrożenie". [Dowiedz się więcej o wdrożeniach](how-to-deploy-and-where.md).
@@ -243,4 +243,5 @@ Automatyczna ML pomaga wdrożyć model bez pisania kodu:
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Dowiedz się więcej o zautomatyzowanym uczeniu maszynowym](concept-automated-ml.md) i Azure Machine Learning.
+* [Zapoznaj](how-to-understand-automated-ml.md)się z automatycznymi wynikami uczenia maszynowego.
 * [Dowiedz się, jak korzystać z usługi sieci Web](https://docs.microsoft.com/azure/machine-learning/service/how-to-consume-web-service).

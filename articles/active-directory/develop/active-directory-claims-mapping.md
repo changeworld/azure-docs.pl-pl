@@ -1,5 +1,5 @@
 ---
-title: Dostosowywanie oświadczeń emitowanych w tokenach dla określonej aplikacji w dzierżawie usługi Azure AD (publiczna wersja zapoznawcza)
+title: Dostosowywanie oświadczeń dla aplikacji w dzierżawie usługi Azure AD (publiczna wersja zapoznawcza)
 description: Ta strona zawiera opis mapowania oświadczeń Azure Active Directory.
 services: active-directory
 author: rwike77
@@ -15,12 +15,12 @@ ms.date: 03/28/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e923cde3cfcffe594226f6b8b665053d1fc584f6
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 97de45ef94afa9da8a5e928a3d4a8911db052107
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324990"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381064"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Instrukcje: Dostosowywanie oświadczeń emitowanych w tokenach dla określonej aplikacji w dzierżawie (wersja zapoznawcza)
 
@@ -159,7 +159,7 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są używa
 | refreshtoken |
 | request_nonce |
 | resource |
-| role (rola) |
+| rola |
 | role |
 | scope |
 | scp |
@@ -291,7 +291,7 @@ Element ID identyfikuje, która Właściwość źródła udostępnia wartość d
 | Użytkownik | nazwisko | Nazwa rodziny |
 | Użytkownik | Imię | Imię |
 | Użytkownik | displayName | Nazwa wyświetlana |
-| Użytkownik | obiektu | Obiektu |
+| Użytkownik | obiektu | ObjectID |
 | Użytkownik | poczta | Adres e-mail |
 | Użytkownik | userprincipalname | Główna nazwa użytkownika |
 | Użytkownik | Dział|Dział|
@@ -304,7 +304,7 @@ Element ID identyfikuje, która Właściwość źródła udostępnia wartość d
 | Użytkownik | pocztowy | Kod pocztowy |
 | Użytkownik | preferredlanguange | Preferowany język |
 | Użytkownik | onpremisesuserprincipalname | Lokalna nazwa UPN |
-| Użytkownik | mailNickname | Pseudonim poczty |
+| Użytkownik | mailNickname | Pseudonim związany z pocztą |
 | Użytkownik | extensionattribute1 | Atrybut rozszerzenia 1 |
 | Użytkownik | extensionattribute2 | Atrybut rozszerzenia 2 |
 | Użytkownik | extensionattribute3 | Atrybut rozszerzenia 3 |
@@ -325,10 +325,10 @@ Element ID identyfikuje, która Właściwość źródła udostępnia wartość d
 | Użytkownik | city | City |
 | Użytkownik | state | Stan |
 | Użytkownik | stanowiska | Stanowisko |
-| Użytkownik | EmployeeID | IDENTYFIKATOR pracownika |
+| Użytkownik | EmployeeID | Identyfikator pracownika |
 | Użytkownik | facsimiletelephonenumber | Numer telefonu faksu |
 | aplikacja, zasób, odbiorcy | displayName | Nazwa wyświetlana |
-| aplikacja, zasób, odbiorcy | Obiekt | Obiektu |
+| aplikacja, zasób, odbiorcy | Obiekt | ObjectID |
 | aplikacja, zasób, odbiorcy | tags | Główny tag usługi |
 | Firmy | tenantcountry | Kraj dzierżawy |
 
@@ -391,7 +391,7 @@ W oparciu o wybraną metodę jest oczekiwany zestaw danych wejściowych i wyjśc
 | Użytkownik | poczta|Adres e-mail|
 | Użytkownik | userprincipalname|Główna nazwa użytkownika|
 | Użytkownik | onpremisessamaccountname|Nazwa lokalnego konta sam|
-| Użytkownik | EmployeeID|IDENTYFIKATOR pracownika|
+| Użytkownik | EmployeeID|Identyfikator pracownika|
 | Użytkownik | extensionattribute1 | Atrybut rozszerzenia 1 |
 | Użytkownik | extensionattribute2 | Atrybut rozszerzenia 2 |
 | Użytkownik | extensionattribute3 | Atrybut rozszerzenia 3 |

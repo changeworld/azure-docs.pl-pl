@@ -1,6 +1,6 @@
 ---
-title: Logowanie bez hasła przy użyciu aplikacji Microsoft Authenticator (wersja zapoznawcza) — usługi Azure Active Directory
-description: Zaloguj się do usługi Azure AD przy użyciu aplikacji Microsoft Authenticator, bez użycia hasła (publiczna wersja zapoznawcza)
+title: Logowanie bez hasła przy użyciu aplikacji Microsoft Authenticator (wersja zapoznawcza) — Azure Active Directory
+description: Logowanie do usługi Azure AD przy użyciu aplikacji Microsoft Authenticator bez użycia hasła (publiczna wersja zapoznawcza)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,67 +12,69 @@ manager: daveba
 ms.reviewer: librown
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3125de0d1fd784b30c000bb287b457397c0fbebb
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: c464874708c7b93ec5620cc9ae253912ce1a4790
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703025"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68357143"
 ---
-# <a name="passwordless-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Logowanie telefonem bez hasła przy użyciu aplikacji Microsoft Authenticator (publiczna wersja zapoznawcza)
+# <a name="passwordless-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Logowanie za pomocą telefonu bez hasła przy użyciu aplikacji Microsoft Authenticator (publiczna wersja zapoznawcza)
 
-Aplikacja Microsoft Authenticator może służyć do logowania się do dowolnego konta usługi Azure AD bez użycia hasła. Podobne do technologii [Windows Hello dla firm](/windows/security/identity-protection/hello-for-business/hello-identity-verification), Microsoft Authenticator używa uwierzytelniania opartego na kluczach, aby umożliwić poświadczeń użytkownika, który jest powiązany z urządzeniem i używa biometryczne lub numer PIN.
+Aplikacja Microsoft Authenticator może służyć do logowania się do dowolnego konta usługi Azure AD bez użycia hasła. Podobnie jak w przypadku technologii [Windows Hello dla firm](/windows/security/identity-protection/hello-for-business/hello-identity-verification), Microsoft Authenticator używa uwierzytelniania opartego na kluczach, aby umożliwić poświadczenie użytkownika powiązanego z urządzeniem i używa biometrycznych lub PIN.
 
-![Przykład w przeglądarce logowaniu pytaniem do użytkownika zatwierdzić logowanie](./media/howto-authentication-phone-sign-in/phone-sign-in-microsoft-authenticator-app.png)
+![Przykład logowania do przeglądarki z prośbą do użytkownika o zatwierdzenie logowania](./media/howto-authentication-phone-sign-in/phone-sign-in-microsoft-authenticator-app.png)
 
-Zamiast zobaczyć monit o podanie hasła, po wprowadzeniu nazwy użytkownika, osoba, która ma włączone logowanie za pomocą telefonu w aplikacji Microsoft Authenticator, zostanie wyświetlony komunikat z informacją o mogą wybrać liczbę w swojej aplikacji. W aplikacji użytkownik musi być zgodna z liczbą, wybierz Zatwierdź, a następnie podać swoje numery PIN lub biometrycznych, następnie uwierzytelniania zostanie ukończone.
+Zamiast wyświetlać monit o hasło po wprowadzeniu nazwy użytkownika, osoba, która włączyła logowanie za pomocą telefonu w aplikacji Microsoft Authenticator zobaczy komunikat informujący o naciśnięciu numeru w swojej aplikacji. W aplikacji użytkownik musi dopasować liczbę, wybrać pozycję Zatwierdź, a następnie podać numer PIN lub biometryczny, a następnie zostanie wykonane uwierzytelnianie.
 
-## <a name="enable-my-users"></a>Włączanie użytkowników
+## <a name="enable-my-users"></a>Włącz moich użytkowników
 
-W publicznej wersji zapoznawczej administrator musi najpierw dodać zasad za pomocą programu powershell, aby zezwolić na korzystanie z poświadczeń w dzierżawie. Zapoznaj się z sekcją "Znane problemy" przed wykonaniem tego kroku.
-
-### <a name="tenant-prerequisites"></a>Wymagania wstępne dotyczące dzierżawy
+### <a name="tenant-prerequisites"></a>Wymagania wstępne dotyczące dzierżawców
 
 * Usługa Azure Active Directory
-* Użytkownicy końcowi włączone dla usługi Azure Multi-Factor Authentication
+* Użytkownicy końcowi włączeni do uwierzytelniania wieloskładnikowego systemu Azure
 * Użytkownicy mogą rejestrować swoje urządzenia
 
-### <a name="steps-to-enable"></a>Kroki, aby włączyć
+### <a name="steps-to-enable"></a>Kroki umożliwiające włączenie
 
-Postępuj zgodnie z instrukcjami w artykule [logowanie bez hasła w usłudze Azure AD](howto-authentication-passwordless-enable.md#enable-new-passwordless-authentication-methods), aby włączyć metody uwierzytelniania bez hasła w Twoim katalogu.
-
-## <a name="how-do-my-end-users-enable-phone-sign-in"></a>Jak Moi użytkownicy końcowi włączyć logowanie za pomocą telefonu?
-
-W publicznej wersji zapoznawczej nie istnieje żaden sposób wymusić użytkowników do utworzenia lub używania tego nowego poświadczenia. Użytkownik końcowy tylko wystąpi logowanie bez hasła, gdy administrator włączył swojej dzierżawy, a użytkownik zaktualizował swoich aplikacji Microsoft Authenticator, aby włączyć logowanie za pomocą telefonu.
+Wykonaj kroki opisane w artykule [Włączanie logowania bezhasła w usłudze Azure AD](howto-authentication-passwordless-enable.md#enable-new-passwordless-authentication-methods), aby włączyć metody uwierzytelniania bezhasło w katalogu.
 
 > [!NOTE]
-> Ta funkcja została w aplikacji od marca 2017 r., więc ma możliwość, że gdy jest włączona dla dzierżawy, mogą napotkać użytkownicy ten przepływ natychmiast. Należy pamiętać i przygotowanie użytkowników do tej zmiany.
+> Jeśli funkcja ta została wcześniej włączona dla dzierżawy przy użyciu skryptu programu PowerShell, ustawienie nowych zasad dla użytkowników i grup zastępuje istniejące zasady dla dzierżawy. 
 >
 
-1. Rejestrowanie w usłudze Azure Multi-Factor Authentication
-1. Najnowsza wersja programu Microsoft Authenticator zainstalowanych na urządzeniach z systemem iOS 8.0 lub nowszej lub system Android 6.0 lub nowszej.
-1. Konto służbowe lub szkolne za pomocą powiadomień push dodana do aplikacji. Dokumentacja użytkownika znajduje się w temacie [ https://aka.ms/authappstart ](https://aka.ms/authappstart).
+## <a name="how-do-my-end-users-enable-phone-sign-in"></a>Jak użytkownicy końcowi włączają logowanie za telefon?
 
-Po użytkownik ma konto usługi MFA za pomocą powiadomień push w aplikacji Microsoft Authenticator, ich wykonaj kroki opisane w artykule [Zaloguj się przy użyciu telefonu, nie hasła](../user-help/microsoft-authenticator-app-phone-signin-faq.md) do ukończenia rejestracji logowania telefonu.
+W publicznej wersji zapoznawczej nie ma możliwości wymuszania użytkownikom tworzenia lub używania tego nowego poświadczenia. Użytkownik końcowy będzie napotykał logowanie bezhasła, gdy administrator włączył swoją dzierżawę, a użytkownik zaktualizował Microsoft Authenticator aplikację, aby włączyć logowanie za pomocą telefonu.
+
+> [!NOTE]
+> Ta funkcja była w aplikacji od marca 2017, dlatego istnieje możliwość, że gdy zasady są włączone dla dzierżawy, użytkownicy mogą natychmiast napotkać ten przepływ. Weź pod uwagę i przygotuj użytkowników do tej zmiany.
+>
+
+1. Rejestrowanie w usłudze Azure wieloskładnikowe Authentication
+1. Najnowsza wersja Microsoft Authenticator zainstalowana na urządzeniach z systemem iOS 8,0 lub nowszym albo systemem Android 6,0 lub nowszym.
+1. Konto służbowe z powiadomieniami wypychanymi zostało dodane do aplikacji. Dokumentację użytkownika końcowego można znaleźć pod adresem [https://aka.ms/authappstart](https://aka.ms/authappstart).
+
+Gdy użytkownik ma konto usługi MFA z powiadomieniami wypychanymi skonfigurowanymi w aplikacji Microsoft Authenticator, mogą wykonać kroki opisane w artykule zalogować się [przy użyciu telefonu, a nie hasła](../user-help/microsoft-authenticator-app-phone-signin-faq.md) do ukończenia rejestracji na telefonie.
 
 ## <a name="known-issues"></a>Znane problemy
 
-### <a name="ad-fs-integration"></a>Integracja z usługą AD FS
+### <a name="ad-fs-integration"></a>Integracja AD FS
 
-Po użytkownik włączył poświadczenia bez hasła Microsoft Authenticator, zawsze będzie domyślnie wysłanie powiadomienia do zatwierdzenia uwierzytelniania dla tego użytkownika. Tę logikę uniemożliwia użytkownikom w dzierżawie hybrydowego być kierowany do usług AD FS dla weryfikacji logowania bez użytkownika, wykonanie dodatkowych czynności kliknij pozycję "Zamiast tego użyj hasła." Ten proces będzie również pominąć wszystkie zasady dostępu warunkowego w środowisku lokalnym i przepływów uwierzytelniania przekazywanego. Wyjątkiem od tego procesu jest, jeśli login_hint jest określony, użytkownik będzie automatycznie przekazana dalej do usług AD FS, a Pomiń opcję, aby użyć poświadczeń bez hasła.
+Jeśli użytkownik włączył Microsoft Authenticator poświadczenie bezhasło, uwierzytelnianie dla tego użytkownika zawsze będzie domyślnie wysyłać powiadomienie o zatwierdzeniu. Ta logika uniemożliwia kierowanie do usług AD FS użytkowników w dzierżawie hybrydowej w celu weryfikacji logowania bez podejmowania dodatkowych kroków przez użytkownika w celu kliknięcia przycisku "Użyj hasła zamiast". Ten proces spowoduje również ominięcie wszelkich lokalnych zasad dostępu warunkowego i przepływów uwierzytelniania przekazywanego. Wyjątkiem od tego procesu jest login_hint, użytkownik zostanie przesunięty w przód do AD FS i zostanie pominięty przy użyciu poświadczeń bezhasłem.
 
 ### <a name="azure-mfa-server"></a>Serwer usługi Azure MFA
 
-Użytkownicy końcowi, którzy są włączone dla usługi MFA w organizacji na lokalnym serwerze Azure MFA można nadal tworzyć i używać poświadczeń logowania pojedynczego telefonu bez hasła. Jeśli użytkownik podejmie próbę uaktualnienia wiele instalacji (5 i nowsze) programu Microsoft Authenticator z poświadczeniami, ta zmiana może spowodować wystąpienie błędu.  
+Użytkownicy końcowi korzystający z usług MFA za pomocą lokalnego serwera usługi Azure MFA w organizacji mogą nadal tworzyć i używać jednego poświadczenia logowania jednokrotnego bez hasła. Jeśli użytkownik próbuje uaktualnić wiele instalacji (5 +) Microsoft Authenticator przy użyciu poświadczenia, ta zmiana może spowodować wystąpienie błędu.  
 
 ### <a name="device-registration"></a>Rejestracja urządzenia
 
-To jeden z warunków wstępnych, aby utworzyć to poświadczenie nowych, silnych, że urządzenia, w którym znajduje się jest zarejestrowany w ramach dzierżawy usługi Azure AD, do indywidualnego użytkownika. Ze względu na ograniczenia rejestracji urządzeń urządzenie może być rejestrowane tylko w jednej dzierżawie. Ten limit oznacza, że tylko jedno konto służbowe lub szkolne w aplikacji Microsoft Authenticator można włączyć dla logowanie za pomocą telefonu.
+Jedno z wymagań wstępnych dotyczących tworzenia nowego, silnego poświadczenia polega na tym, że urządzenie, na którym się znajduje, jest zarejestrowane w ramach dzierżawy usługi Azure AD, do pojedynczego użytkownika. Ze względu na ograniczenia rejestracji urządzeń urządzenie może być rejestrowane tylko w jednej dzierżawie. Ten limit oznacza, że tylko jedno konto służbowe w aplikacji Microsoft Authenticator może być włączone do logowania za pomocą telefonu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-[Co to jest bez hasła?](concept-authentication-passwordless.md)
+[Co to jest bezhasło?](concept-authentication-passwordless.md)
 
-[Dowiedz się więcej o rejestracji urządzenia](../devices/overview.md#getting-devices-in-azure-ad)
+[Informacje o rejestracji urządzeń](../devices/overview.md#getting-devices-in-azure-ad)
 
-[Więcej informacji na temat usługi Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
+[Dowiedz się więcej o usłudze Azure wieloskładnikowe Authentication](../authentication/howto-mfa-getstarted.md)

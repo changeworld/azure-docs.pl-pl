@@ -1,72 +1,66 @@
 ---
-title: Monitorowanie usługi w chmurze platformy Azure | Dokumentacja firmy Microsoft
-description: Opisuje jakie monitorowania usługi w chmurze platformy Azure obejmuje i jakie niektóre opcje są.
+title: Monitorowanie usługi w chmurze platformy Azure | Microsoft Docs
+description: W tym artykule opisano monitorowanie usług w chmurze platformy Azure oraz ich opcje.
 services: cloud-services
 documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: ''
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
-ms.author: jeconnoc
-ms.openlocfilehash: 844fef9a87c1db06c6415c59d4be26caf928382b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: gwallace
+ms.openlocfilehash: ac0ea7557774f0e59cb6a6eca1fc739592ab971d
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61432917"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359112"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>Wprowadzenie do monitorowania usługi w chmurze
 
-Możesz monitorować kluczowe metryki wydajności dla dowolnej usługi w chmurze. Rola usługi w chmurze co zbiera dane minimalne: Użycie procesora CPU, użycia sieci i wykorzystanie dysku. Jeśli usługa w chmurze ma `Microsoft.Azure.Diagnostics` rozszerzenia stosowane do roli tej roli może zbierać dodatkowe punkty danych. Ten artykuł zawiera wprowadzenie do usługi Azure Diagnostics dla usług w chmurze.
+Kluczowe metryki wydajności można monitorować dla każdej usługi w chmurze. Każda rola usługi w chmurze zbiera minimalne dane: Użycie procesora CPU, użycie sieci i wykorzystanie dysku. Jeśli usługa w chmurze ma `Microsoft.Azure.Diagnostics` rozszerzenie zastosowane do roli, ta rola może zbierać dodatkowe punkty danych. Ten artykuł zawiera wprowadzenie do Diagnostyka Azure Cloud Services.
 
-Podstawowe monitorowanie danych licznika wydajności z wystąpień roli jest próbkowany i zebrane w odstępach 3-minutowy. Te podstawowe dane monitorowania nie są przechowywane na koncie magazynu i ma bez dodatkowych kosztów skojarzonych z nim.
+W przypadku podstawowego monitorowania dane liczników wydajności z wystąpień ról są próbkowane i zbierane w 3-minutowych interwałach. Te podstawowe dane monitorowania nie są przechowywane na koncie magazynu i nie są z nim skojarzone żadne dodatkowe koszty.
 
-Za pomocą zaawansowanego monitorowania dodatkowe metryki są próbkowane tak i zebrane w odstępach czasu wynoszącą 5 minut, godzinę i 12 godzin. Zagregowane dane są przechowywane na koncie magazynu w tabelach i są przeczyszczane po 10 dni. Skonfigurowano konto magazynu używane przez rolę; dla różnych ról, można użyć różnych kont magazynu. To jest skonfigurowany przy użyciu parametrów połączenia w [.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) i [.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) plików.
+Dzięki zaawansowanemu monitorowaniu dodatkowe metryki są próbkowane i zbierane z interwałem wynoszącym 5 minut, 1 godzina i 12 godzin. Zagregowane dane są przechowywane na koncie magazynu w tabelach i usuwane po upływie 10 dni. Używane konto magazynu jest konfigurowane przez rolę; dla różnych ról można użyć różnych kont magazynu. Jest to konfiguracja z parametrami połączenia w plikach [. csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) i [. cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) .
 
 
 ## <a name="basic-monitoring"></a>Podstawowe monitorowanie
 
-Jak wspomniano we wprowadzeniu, usługi w chmurze automatycznie zbiera podstawowe dane monitorowania z hosta maszyny wirtualnej. Te dane obejmują procent procesora CPU, wchodzącym/wychodzącym sieci i odczytu/zapisu na dysku. Zebrane dane monitorowania jest automatycznie wyświetlana na stronach przeglądu i metryki usługi w chmurze, w witrynie Azure portal. 
+Zgodnie z opisem we wprowadzeniu usługa w chmurze automatycznie zbiera podstawowe dane monitorowania z maszyny wirtualnej hosta. Te dane obejmują wartość procentową procesora CPU, dane we/wychodzące oraz odczyt/zapis na dysku. Zebrane dane monitorowania są automatycznie wyświetlane na stronach przeglądów i metryk w usłudze w chmurze, w Azure Portal. 
 
 Podstawowe monitorowanie nie wymaga konta magazynu. 
 
-![Usługa w chmurze podstawowe monitorowanie kafelków](media/cloud-services-how-to-monitor/basic-tiles.png)
+![podstawowe kafelki monitorowania usługi w chmurze](media/cloud-services-how-to-monitor/basic-tiles.png)
 
 ## <a name="advanced-monitoring"></a>Zaawansowane monitorowanie
 
-Zaawansowane monitorowanie polega na użyciu **diagnostyki Azure** rozszerzenia (i opcjonalnie zestawu SDK usługi Application Insights) w roli, którą chcesz monitorować. Rozszerzenie diagnostyki korzysta z pliku konfiguracji (poszczególnych ról) o nazwie **diagnostics.wadcfgx** skonfigurować monitorowane metryki diagnostyki. Rozszerzenie diagnostyki platformy Azure zbiera i przechowuje dane na koncie usługi Azure Storage. Te ustawienia są konfigurowane w **.wadcfgx**, [.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef), i [.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) plików. Oznacza to, że istnieje dodatkowy koszt związany z zaawansowane monitorowanie.
+Zaawansowane monitorowanie obejmuje użycie rozszerzenia **Diagnostyka Azure** (i opcjonalnie zestawu SDK Application Insights) na roli, którą chcesz monitorować. Rozszerzenie diagnostyki używa pliku konfiguracji (na rolę) o nazwie **Diagnostics. wadcfgx** , aby skonfigurować monitorowane metryki diagnostyki. Rozszerzenie diagnostyki platformy Azure gromadzi i zapisuje dane na koncie usługi Azure Storage. Te ustawienia są konfigurowane w plikach **. wadcfgx**, [. csdef](cloud-services-model-and-package.md#servicedefinitioncsdef)i [. cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) . Oznacza to, że istnieje dodatkowy koszt związany z zaawansowanym monitorowaniem.
 
-Podczas tworzenia poszczególnych ról programu Visual Studio dodaje rozszerzenia diagnostyki Azure do niego. To rozszerzenie diagnostyki zebrać następujące typy informacji:
+Po utworzeniu każdej roli program Visual Studio dodaje do niej rozszerzenie Diagnostyka Azure. To rozszerzenie diagnostyki może zbierać następujące typy informacji:
 
 * Niestandardowe liczniki wydajności
 * Dzienniki aplikacji
 * Dzienniki zdarzeń systemu Windows
-* Źródło zdarzenia platformy .NET
+* Źródło zdarzeń platformy .NET
 * Dzienniki usług IIS
 * Śledzenie zdarzeń systemu Windows w oparciu o manifest
 * Zrzuty awaryjne
 * Dzienniki błędów klienta
 
 > [!IMPORTANT]
-> Gdy te dane są agregowane na konto magazynu, portalu jest **nie** umożliwiają natywnych danych wykresu. Zdecydowanie zaleca się integracji innej usługi, takie jak usługi Application Insights do aplikacji.
+> Chociaż wszystkie te dane są agregowane na koncie magazynu, Portal **nie zapewnia** natywnego sposobu grafowania danych. Zdecydowanie zaleca się, aby zintegrować inną usługę, taką jak Application Insights, z aplikacją.
 
-## <a name="setup-diagnostics-extension"></a>Konfigurowanie rozszerzenia diagnostyki
+## <a name="setup-diagnostics-extension"></a>Zainstaluj rozszerzenie diagnostyki
 
-Pierwsze, jeśli nie masz **klasycznego** konta magazynu, [utworzyć](../storage/common/storage-quickstart-create-account.md). Upewnij się, że konto magazynu jest tworzone za pomocą **klasycznego modelu wdrażania** określony.
+Po pierwsze, jeśli nie masz **klasycznego** konta magazynu, [Utwórz je](../storage/common/storage-quickstart-create-account.md). Upewnij się, że konto magazynu zostało utworzone przy użyciu określonego **klasycznego modelu wdrażania** .
 
-Następnie przejdź do **konto magazynu (klasyczne)** zasobów. Wybierz **ustawienia** > **klucze dostępu** i skopiuj **podstawowe parametry połączenia** wartość. Ta wartość jest potrzebna dla usługi w chmurze. 
+Następnie przejdź do zasobu **konta magazynu (klasycznego)** . Wybierz pozycję **Ustawienia** > **klucze dostępu** i skopiuj wartość **podstawowe parametry połączenia** . Ta wartość jest potrzebna dla usługi w chmurze. 
 
-Istnieją dwa pliki konfiguracji dla zaawansowanej diagnostyki do włączenia, należy zmienić **ServiceDefinition.csdef** i **ServiceConfiguration.cscfg**.
+Istnieją dwa pliki konfiguracji, które należy zmienić w celu zapewnienia, że Zaawansowana diagnostyka zostanie włączona, **ServiceDefinition. csdef** i ServiceConfiguration **. cscfg**.
 
 ### <a name="servicedefinitioncsdef"></a>ServiceDefinition.csdef
 
-W **ServiceDefinition.csdef** Dodaj nowe ustawienie o nazwie `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` dla każdej roli, który używa zaawansowanej diagnostyki. Visual Studio dodaje tę wartość do pliku, podczas tworzenia nowego projektu. W przypadku, gdy go brakuje, można dodać go teraz. 
+W pliku **ServiceDefinition. csdef** Dodaj nowe ustawienie o nazwie `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` dla każdej roli, która używa zaawansowanej diagnostyki. Program Visual Studio dodaje tę wartość do pliku podczas tworzenia nowego projektu. W przypadku braku tej możliwości możesz ją dodać teraz. 
 
 ```xml
 <ServiceDefinition name="AnsurCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2015-04.2.6">
@@ -75,9 +69,9 @@ W **ServiceDefinition.csdef** Dodaj nowe ustawienie o nazwie `Microsoft.WindowsA
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
 ```
 
-Definiuje to nowe ustawienie, które muszą zostać dodane do każdego **ServiceConfiguration.cscfg** pliku. 
+Definiuje nowe ustawienie, które należy dodać do każdego pliku **ServiceConfiguration. cscfg** . 
 
-Prawdopodobnie masz dwa **.cscfg** pliki jedną o nazwie **ServiceConfiguration.cloud.cscfg** dotyczące wdrażania na platformie Azure i jedną o nazwie **ServiceConfiguration.local.cscfg** który jest używany w przypadku wdrożeń lokalnych w środowisku emulowane. Otwórz i zmień każdego **.cscfg** pliku. Dodaj ustawienie o nazwie `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString`. Ustaw wartość **podstawowe parametry połączenia** konta klasycznego magazynu. Używany Magazyn lokalny na komputerze deweloperskim, należy użyć `UseDevelopmentStorage=true`.
+Najprawdopodobniej masz dwa pliki **. cscfg** o nazwie ServiceConfiguration **. Cloud. cscfg** do wdrożenia na platformie Azure oraz jedną nazwę ServiceConfiguration **. local. cscfg** , która jest używana na potrzeby wdrożeń lokalnych w emulowanym środowisku. Otwórz i Zmień każdy plik **. cscfg** . Dodaj ustawienie o nazwie `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString`. Ustaw wartość na **podstawowe parametry połączenia** klasycznego konta magazynu. Jeśli chcesz użyć magazynu lokalnego na komputerze deweloperskim, użyj `UseDevelopmentStorage=true`programu.
 
 ```xml
 <ServiceConfiguration serviceName="AnsurCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">
@@ -91,15 +85,15 @@ Prawdopodobnie masz dwa **.cscfg** pliki jedną o nazwie **ServiceConfiguration.
       -->
 ```
 
-## <a name="use-application-insights"></a>Korzystanie z usługi Application Insights
+## <a name="use-application-insights"></a>Użyj Application Insights
 
-Podczas publikowania usługi w chmurze w programie Visual Studio, możesz skorzystać z opcji do wysyłania danych diagnostycznych do usługi Application Insights. Można utworzyć Application Insights w usłudze Azure resource, w tym czasie, lub wysłać dane do istniejącego zasobu platformy Azure. Usługi w chmurze mogą być monitorowane przez usługę Application Insights dla dostępności, wydajności, błędów i użycia. Niestandardowe wykresy można dodać do usługi Application Insights tak, aby zobaczyć dane, mają największe znaczenie. Dane wystąpienia roli mogą być zbierane przy użyciu zestawu SDK usługi Application Insights w projekcie usługi w chmurze. Aby uzyskać więcej informacji na temat integracji usługi Application Insights, zobacz [usługi Application Insights z usługami w chmurze](../azure-monitor/app/cloudservices.md).
+Po opublikowaniu usługi w chmurze w programie Visual Studio można wysłać dane diagnostyczne do Application Insights. W tym momencie możesz utworzyć zasób usługi Application Insights Azure lub wysłać dane do istniejącego zasobu platformy Azure. Usługa w chmurze może być monitorowana przez Application Insights w celu zapewnienia dostępności, wydajności, błędów i użycia. Niestandardowe wykresy można dodać do Application Insights, aby zobaczyć dane, które są najbardziej istotne. Dane wystąpienia roli można zbierać przy użyciu zestawu SDK Application Insights w projekcie usługi w chmurze. Aby uzyskać więcej informacji na temat integrowania Application Insights, zobacz [Application Insights z Cloud Services](../azure-monitor/app/cloudservices.md).
 
-Należy pamiętać, że podczas korzystania z usługi Application Insights, aby wyświetlić liczniki wydajności (i inne ustawienia) został określony za pomocą rozszerzenia diagnostyki Azure Windows, możesz jedynie Uzyskaj więcej możliwości dzięki integracji zestawu SDK usługi Application Insights do usługi role sieci web i proces roboczy.
+Należy pamiętać, że podczas korzystania z Application Insights, aby wyświetlić liczniki wydajności (i inne ustawienia) określone za pomocą rozszerzenia Windows Diagnostyka Azure, można uzyskać bogatsze środowisko integracji zestawu SDK Application Insights z role procesów roboczych i sieci Web.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Dowiedz się więcej o usłudze Application Insights z usługami w chmurze](../azure-monitor/app/cloudservices.md)
-- [Skonfiguruj liczniki wydajności](diagnostics-performance-counters.md)
+- [Dowiedz się więcej o Application Insights z Cloud Services](../azure-monitor/app/cloudservices.md)
+- [Konfigurowanie liczników wydajności](diagnostics-performance-counters.md)
 

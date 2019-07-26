@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a99488025dc79a16006af4088555a67b23704cb1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fd89d70bfe7a7f5e72e7fcabe167bafac5777672
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60473740"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382257"
 ---
 # <a name="manage-my-devices-overview"></a>Omówienie zarządzania swoimi urządzeniami
 
@@ -28,5 +28,5 @@ Upewnij się, że masz dostęp do wszystkich potencjalnie zastrzeżonych zasobó
 
 |Artykuł |Opis |
 |------|------------|
-|[Dołączanie urządzenia służbowego](user-help-join-device-on-network.md)|Dowiedz się, w jaki sposób dołączać urządzenia należące do firmy do sieci organizacji.|
-|[Rejestrowanie urządzenia osobistego](user-help-register-device-on-network.md)|Dowiedz się, jak zarejestrować urządzenie osobiste w sieci organizacji.|
+| [Dołącz do urządzenia służbowego](user-help-join-device-on-network.md) Dowiedz się, jak przyłączyć urządzenie należące do użytkownika do sieci organizacji.|
+| [Rejestrowanie urządzenia osobistego](user-help-register-device-on-network.md) ] Dowiedz się, jak zarejestrować swoje urządzenie osobiste w sieci organizacji.|

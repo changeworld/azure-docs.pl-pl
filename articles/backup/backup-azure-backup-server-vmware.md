@@ -1,109 +1,108 @@
 ---
-title: Tworzenie kopii zapasowych maszyn wirtualnych VMware za pomocą usługi Azure Backup Server
-description: Tworzenie kopii zapasowych maszyn wirtualnych VMware na serwerze vCenter/ESXi VMware przy użyciu usługi Azure Backup Server.
-services: backup
+title: Tworzenie kopii zapasowych maszyn wirtualnych VMware przy użyciu Azure Backup Server
+description: Użyj Azure Backup Server, aby utworzyć kopię zapasową maszyn wirtualnych VMware działających na serwerze VMware vCenter/ESXi.
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: raynew
-ms.openlocfilehash: f034f31f2c8c49bbdfb88e2ba0a009ff5b795fa2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: adb8cb6a5740b7d09848c792093ea62f69f521a7
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65789603"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466809"
 ---
-# <a name="back-up-vmware-vms-with-azure-backup-server"></a>Tworzenie kopii zapasowych maszyn wirtualnych VMware za pomocą usługi Azure Backup Server
+# <a name="back-up-vmware-vms-with-azure-backup-server"></a>Tworzenie kopii zapasowych maszyn wirtualnych VMware przy użyciu Azure Backup Server
 
-W tym artykule wyjaśniono, jak utworzyć kopię zapasową maszyn wirtualnych VMware uruchomionych na hostach VMware ESXi/serwer vCenter na platformie Azure przy użyciu usługi Azure Backup Server.
+W tym artykule wyjaśniono, jak utworzyć kopię zapasową maszyn wirtualnych VMware działających na VMware ESXi hostach/vCenter Server na platformie Azure przy użyciu Azure Backup Server.
 
-W tym artykule opisano sposób:
+W tym artykule wyjaśniono, jak:
 
-- Konfigurowanie bezpiecznego kanału, aby serwer usługi Azure Backup może komunikować się z serwerami VMware przy użyciu protokołu HTTPS.
-- Konfigurowanie konta VMware, korzystającą z usługi Azure Backup Server w celu uzyskania dostępu do serwera VMware.
-- Dodaj poświadczenia konta do usługi Azure Backup.
-- Dodaj vCenter lub ESXi server do usługi Azure Backup Server.
-- Skonfiguruj grupę ochrony, która zawiera maszyny wirtualne VMware, które chcesz utworzyć kopię zapasową, określ ustawienia kopii zapasowej i zaplanować tworzenie kopii zapasowej.
+- Skonfiguruj bezpieczny kanał, aby Azure Backup Server mógł komunikować się z serwerami VMware za pośrednictwem protokołu HTTPS.
+- Skonfiguruj konto VMware, którego Azure Backup Server używa do uzyskiwania dostępu do serwera VMware.
+- Dodaj poświadczenia konta do Azure Backup.
+- Dodaj serwer vCenter lub ESXi do Azure Backup Server.
+- Skonfiguruj grupę ochrony zawierającą maszyny wirtualne VMware, dla których chcesz utworzyć kopię zapasową, określ ustawienia kopii zapasowej i Zaplanuj kopię zapasową.
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
-- Sprawdź, czy jest używana wersja programu vCenter/ESXi, która jest obsługiwana dla kopii zapasowej — wersji 6.5, 6.0 i 5.5.
-- Upewnij się, że po skonfigurowaniu serwera usługi Azure Backup. Jeśli jeszcze tego nie, [zrobić](backup-azure-microsoft-azure-backup.md) przed rozpoczęciem. Usługi Azure Backup Server powinna być uruchomiona z najnowszymi aktualizacjami.
+- Sprawdź, czy korzystasz z wersji programu vCenter/ESXi, która jest obsługiwana w przypadku kopii zapasowych w wersji 6,5, 6,0 i 5,5.
+- Upewnij się, że skonfigurowano Azure Backup Server. Jeśli jeszcze tego nie zrobiono, [zrób to](backup-azure-microsoft-azure-backup.md) przed rozpoczęciem. Należy uruchomić Azure Backup Server z najnowszymi aktualizacjami.
 
 
-## <a name="create-a-secure-connection-to-the-vcenter-server"></a>Utwórz bezpieczne połączenie z serwerem vcenter
+## <a name="create-a-secure-connection-to-the-vcenter-server"></a>Utwórz bezpieczne połączenie z vCenter Server
 
-Domyślnie usługi Azure Backup Server komunikuje się z serwerami VMware przy użyciu protokołu HTTPS. Aby skonfigurować połączenie HTTPS, Pobierz certyfikat VMware urząd certyfikacji (CA) i zaimportuj go na serwerze usługi Azure Backup.
+Domyślnie Azure Backup Server komunikuje się z serwerami VMware za pośrednictwem protokołu HTTPS. Aby skonfigurować połączenie HTTPS, Pobierz certyfikat urzędu certyfikacji VMware i zaimportuj go na Azure Backup Server.
 
 
 ### <a name="before-you-start"></a>Przed rozpoczęciem
 
-- Jeśli nie chcesz używać protokołu HTTPS można [wyłączyć weryfikację certyfikatów protokołu HTTPS dla wszystkich serwerów VMware](backup-azure-backup-server-vmware.md#disable-https-certificate-validation).
-- Zazwyczaj połączyć się za pomocą przeglądarki na komputerze serwera usługi Azure Backup na serwerze vCenter/ESXi, przy użyciu kliencie internetowym vSphere. Po raz pierwszy w tym połączenia nie jest bezpieczne i będzie można zobaczyć następujące informacje.
-- Należy zrozumieć, jak serwer usługi Azure Backup obsługuje tworzenie kopii zapasowych.
-    - Pierwszym krokiem serwera usługi Azure Backup tworzy kopię zapasową danych na magazyn na dysku lokalnym. Usługa Azure Backup Server korzysta z puli magazynów, zestaw dysków i woluminów, na których serwer usługi Azure Backup przechowuje punkty odzyskiwania na dysku dla chronionych danych. Pula magazynu może być bezpośrednio dołączonym magazynem (DAS), urządzenia magazynującego fiber channel SAN lub interfejsu iSCSI lub sieci SAN. Koniecznie upewnij się, że wystarczającej ilości miejsca do lokalnego tworzenia kopii danych maszyny Wirtualnej VMware.
-    - Usługa Azure Backup Server, a następnie tworzy kopię zapasową z dysku lokalnego magazynu na platformie Azure.
-    - [Uzyskaj Pomoc](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1807#figure-out-how-much-storage-space-you-need) Aby ustalić, ile miejsca do magazynowania należy. Informacje są dla programu DPM, ale może służyć do usługi Azure Backup Server zbyt.
+- Jeśli nie chcesz używać protokołu HTTPS, możesz [wyłączyć weryfikację certyfikatu HTTPS dla wszystkich serwerów VMware](backup-azure-backup-server-vmware.md#disable-https-certificate-validation).
+- Zazwyczaj nawiązywane jest połączenie z przeglądarki na komputerze Azure Backup Server z serwerem vCenter/ESXi za pomocą klienta sieci Web vSphere. Po raz pierwszy połączenie nie jest bezpieczne i będzie zawierać następujące elementy.
+- Ważne jest, aby zrozumieć, jak Azure Backup Server obsługuje kopie zapasowe.
+    - Pierwszy krok Azure Backup Server Tworzenie kopii zapasowych danych na dysku lokalnym. Azure Backup Server używa puli magazynów, zestawu dysków i woluminów, na których Azure Backup Server są przechowywane punkty odzyskiwania dysku dla chronionych danych. Pula magazynów może być bezpośrednio dołączonym magazynem (DAS), siecią SAN Fiber Channel lub urządzeniem magazynującym iSCSI lub SAN. Należy upewnić się, że masz wystarczającą ilość miejsca na potrzeby lokalnego tworzenia kopii zapasowych danych maszyny wirtualnej VMware.
+    - Azure Backup Server następnie tworzy kopię zapasową z magazynu na dysku lokalnym na platformie Azure.
+    - [Uzyskaj pomoc](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1807#figure-out-how-much-storage-space-you-need) , aby ustalić ilość potrzebnego miejsca do magazynowania. Informacje dotyczą programu DPM, ale mogą być również używane dla Azure Backup Server.
 
 ### <a name="set-up-the-certificate"></a>Konfigurowanie certyfikatu
 
-Konfigurowanie bezpiecznego kanału w następujący sposób:
+Skonfiguruj bezpieczny kanał w następujący sposób:
 
-1. W przeglądarce usługi Azure Backup Server wprowadź vSphere adres URL klienta sieci Web. Jeśli nie pojawia się na stronie logowania, sprawdź ustawienia serwera proxy połączenia i przeglądarki.
+1. W przeglądarce na Azure Backup Server wprowadź adres URL klienta sieci Web vSphere. Jeśli strona logowania nie zostanie wyświetlona, sprawdź ustawienia połączenia i serwera proxy przeglądarki.
 
-    ![vSphere Web Client](./media/backup-azure-backup-server-vmware/vsphere-web-client.png)
+    ![Klient sieci Web vSphere](./media/backup-azure-backup-server-vmware/vsphere-web-client.png)
 
-2. Na stronie logowania w sieci Web klienta vSphere kliknij **pobierania zaufane certyfikaty głównego urzędu certyfikacji**.
+2. Na stronie logowania klienta sieci Web vSphere kliknij pozycję **Pobierz certyfikaty zaufanych głównych urzędów certyfikacji**.
 
     ![Pobierz certyfikat zaufanego głównego urzędu certyfikacji](./media/backup-azure-backup-server-vmware/vmware-download-ca-cert-prompt.png)
 
-3. Plik o nazwie **Pobierz** zostanie pobrana. W zależności od przeglądarki pojawi się komunikat z pytaniem, czy chcesz otworzyć lub zapisać plik.
+3. Pobierany jest plik o nazwie **pobieranie** . W zależności od przeglądarki pojawia się komunikat z pytaniem, czy otworzyć lub zapisać plik.
 
     ![Pobierz certyfikat urzędu certyfikacji](./media/backup-azure-backup-server-vmware/download-certs.png)
 
-4. Zapisz plik na komputerze serwera usługi Azure Backup z rozszerzeniem .zip.
+4. Zapisz plik na maszynie Azure Backup Server z rozszerzeniem. zip.
 
-5. Kliknij prawym przyciskiem myszy **download.zip** > **wyodrębnić wszystkie**. Plik zip wyodrębni jego zawartość do **certyfikatów** folder, który zawiera:
-   - Plik certyfikatu głównego z rozszerzeniem rozpoczynającą się od numerowane sekwencji, takich jak.0 i.1.
-   - Plik listy CRL ma rozszerzenie, które zaczyna się od sekwencji, takich jak .r0 lub .r1. Plik listy CRL jest skojarzony z certyfikatem.
+5. Kliknij prawym przyciskiem myszy pozycję **Pobierz. zip** > **Wyodrębnij wszystko**. Plik. zip wyodrębnia jego zawartość do folderu **certs** , który zawiera następujące elementy:
+   - Plik certyfikatu głównego z rozszerzeniem rozpoczynającym się od numerowanej sekwencji takiej jak. 0 i. 1.
+   - Plik listy CRL ma rozszerzenie zaczynające się od sekwencji like. r0 lub. R1. Plik listy CRL jest skojarzony z certyfikatem.
 
-     ![Pobrany certyfikatów](./media/backup-azure-backup-server-vmware/extracted-files-in-certs-folder.png)
+     ![Pobrane certyfikaty](./media/backup-azure-backup-server-vmware/extracted-files-in-certs-folder.png)
 
-5. W **certyfikatów** folderu, kliknij prawym przyciskiem myszy plik certyfikatu głównego > **Zmień nazwę**.
+5. W folderze **Certyfikaty** kliknij prawym przyciskiem myszy plik certyfikatu głównego, > **zmienić nazwę**.
 
     ![Zmień nazwę certyfikatu głównego](./media/backup-azure-backup-server-vmware/rename-cert.png)
 
-6. Zmień rozszerzenie certyfikatu głównego na CRT i potwierdź. Ikony pliku zmieni się na taki, który reprezentuje certyfikatu głównego.
+6. Zmień rozszerzenie certyfikatu głównego na. CRT i potwierdź. Ikona pliku zmieni się na taki, który reprezentuje certyfikat główny.
 
-7. Kliknij prawym przyciskiem myszy certyfikat główny, a następnie w menu podręcznym wybierz **Zainstaluj certyfikat**.
+7. Kliknij prawym przyciskiem myszy certyfikat główny i z menu podręcznego wybierz pozycję **Zainstaluj certyfikat**.
 
-8. W **Kreatora importu certyfikatów**, wybierz opcję **komputera lokalnego** jako miejsce docelowe dla certyfikatu, a następnie kliknij **dalej**. Upewnij się, jeśli pojawi się prośba mają do umożliwienia wprowadzania zmian do komputera.
+8. W **Kreatorze importu certyfikatów**wybierz pozycję **komputer lokalny** jako miejsce docelowe certyfikatu, a następnie kliknij przycisk **dalej**. Potwierdź, czy zostanie wyświetlony monit o zezwolenie na wprowadzanie zmian na komputerze.
 
-    ![Witamy w Kreatorze](./media/backup-azure-backup-server-vmware/certificate-import-wizard1.png)
+    ![Kreator — Zapraszamy!](./media/backup-azure-backup-server-vmware/certificate-import-wizard1.png)
 
 
-9. Na **Store certyfikatu** wybierz opcję **Umieść wszystkie certyfikaty w następującym magazynie**, a następnie kliknij przycisk **Przeglądaj** wybrać magazyn certyfikatów.
+9. Na stronie **Magazyn certyfikatów** wybierz opcję **Umieść wszystkie certyfikaty w następującym magazynie**, a następnie kliknij przycisk **Przeglądaj** , aby wybrać magazyn certyfikatów.
 
      ![Magazyn certyfikatów](./media/backup-azure-backup-server-vmware/cert-import-wizard-local-store.png)
 
-10. W **Store certyfikatu wybierz**, wybierz opcję **zaufane główne urzędy certyfikacji** jako folder docelowy dla certyfikatów, a następnie kliknij **OK**.
+10. W obszarze **Wybierz magazyn certyfikatów**wybierz pozycję **Zaufane główne** urzędy certyfikacji jako folder docelowy dla certyfikatów, a następnie kliknij przycisk **OK**.
 
     ![Folder docelowy certyfikatu](./media/backup-azure-backup-server-vmware/certificate-store-selected.png)
 
-11. W **Kończenie pracy Kreatora importu certyfikatów**, sprawdź folder, a następnie kliknij **Zakończ**.
+11. W obszarze **Kończenie pracy Kreatora importu certyfikatów**sprawdź folder, a następnie kliknij przycisk **Zakończ**.
 
-    ![Sprawdź, czy certyfikat znajduje się w folderze odpowiednie](./media/backup-azure-backup-server-vmware/cert-wizard-final-screen.png)
-
-
-12. Po potwierdzeniu importu certyfikatów, zaloguj się do programu vCenter Server, aby upewnić się, że połączenie jest bezpieczne.
+    ![Sprawdź, czy certyfikat znajduje się w odpowiednim folderze](./media/backup-azure-backup-server-vmware/cert-wizard-final-screen.png)
 
 
+12. Po potwierdzeniu importu certyfikatu Zaloguj się do vCenter Server, aby upewnić się, że połączenie jest bezpieczne.
 
 
-### <a name="disable-https-certificate-validation"></a>Wyłączyć weryfikację certyfikatów protokołu HTTPS
 
-Jeśli mają bezpieczny granice w Twojej organizacji, a nie chcesz używać protokołu HTTPS między serwerami VMware i maszyny serwera usługi Azure Backup, wyłączanie protokołu HTTPS w następujący sposób: u
+
+### <a name="disable-https-certificate-validation"></a>Wyłącz weryfikację certyfikatu HTTPS
+
+Jeśli w organizacji znajdują się bezpieczne granice i nie chcesz używać protokołu HTTPS między serwerami VMware i maszyną Azure Backup Server, Wyłącz protokół HTTPS w następujący sposób: u
 1. Skopiuj i wklej następujący tekst do pliku txt.
 
       ```
@@ -112,51 +111,51 @@ Jeśli mają bezpieczny granice w Twojej organizacji, a nie chcesz używać prot
       "IgnoreCertificateValidation"=dword:00000001
       ```
 
-2. Zapisz plik na komputerze usługi Azure Backup Server o nazwie **DisableSecureAuthentication.reg**.
+2. Zapisz plik na maszynie Azure Backup Server przy użyciu nazwy **DisableSecureAuthentication. reg**.
 
-3. Kliknij dwukrotnie plik, aby aktywować wpisu rejestru.
+3. Kliknij dwukrotnie plik, aby aktywować wpis rejestru.
 
 
-## <a name="create-a-vmware-role"></a>Utwórz rolę programu VMware
+## <a name="create-a-vmware-role"></a>Tworzenie roli VMware
 
-Usługi Azure Backup Server należy konto użytkownika z uprawnieniami dostępu do serwera Vcenter/hostem ESXi. Utwórz rolę programu VMware przy użyciu określonych uprawnień, a następnie skojarzyć konto użytkownika z rolą.
+Azure Backup Server musi mieć konto użytkownika z uprawnieniami dostępu do hosta programu v-Center Server/ESXi. Utwórz rolę VMware z określonymi uprawnieniami, a następnie skojarz konto użytkownika z rolą.
 
-1. Zaloguj się do serwera vCenter (lub hoście ESXi, jeśli nie używasz programu vCenter Server).
-2. W **Nawigator** panelu, kliknij przycisk **administracji**.
+1. Zaloguj się do vCenter Server (lub hosta ESXi, jeśli nie używasz vCenter Server).
+2. W panelu **Nawigator** kliknij pozycję **Administracja**.
 
     ![Administracja](./media/backup-azure-backup-server-vmware/vmware-navigator-panel.png)
 
-3. W **administracji** > **role**, kliknij ikonę roli Dodaj (+ symbol).
+3. W obszarze**role** **administracyjne** > kliknij ikonę Dodaj rolę (symbol +).
 
     ![Dodaj rolę](./media/backup-azure-backup-server-vmware/vmware-define-new-role.png)
 
 
-4. W **Utwórz rolę** > **nazwy roli**, wprowadź *BackupAdminRole*. Nazwa roli może być dowolną, ale powinien być rozpoznawalną w celu roli.
+4. W polu **Utwórz** > **nazwę roli**roli wprowadź *BackupAdminRole*. Nazwa roli może być dowolnie taka, ale powinna być rozpoznawalna dla celu roli.
 
-5. Wybierz uprawnienia, zgodnie z opisem w poniższej tabeli, a następnie kliknij przycisk **OK**.  Nowa rola zostanie wyświetlona na liście w **role** panelu.
-   - Kliknij ikonę obok etykiecie nadrzędnej, aby rozwinąć element nadrzędny i wyświetlić uprawnienia podrzędnych.
-   - Aby wybrać uprawnień VirtualMachine, musisz przejść kilka poziomów w hierarchii nadrzędny-podrzędny.
-   - Nie potrzebujesz wybrać wszystkie uprawnienia podrzędnego w obrębie uprawnienie nadrzędne.
+5. Wybierz uprawnienia, które zostały podsumowane w poniższej tabeli, a następnie kliknij przycisk **OK**.  Nowa rola zostanie wyświetlona na liście w panelu **role** .
+   - Kliknij ikonę obok etykiety nadrzędnej, aby rozwinąć element nadrzędny i wyświetlić uprawnienia podrzędne.
+   - Aby wybrać uprawnienia VirtualMachine, musisz przejść na kilka poziomów do nadrzędnej hierarchii podrzędnej.
+   - Nie musisz wybierać wszystkich uprawnień podrzędnych w ramach uprawnień nadrzędnych.
 
-     ![Uprawnienie hierarchii nadrzędny-podrzędny](./media/backup-azure-backup-server-vmware/cert-add-privilege-expand.png)
+     ![Hierarchia uprawnień nadrzędnego elementu podrzędnego](./media/backup-azure-backup-server-vmware/cert-add-privilege-expand.png)
 
-### <a name="role-permissions"></a>Uprawnienia roli
+### <a name="role-permissions"></a>Uprawnienia ról
 **6.5/6.0** | **5.5**
 --- | ---
-Datastore.AllocateSpace | Datastore.AllocateSpace
+Magazyn danych. AllocateSpace | Magazyn danych. AllocateSpace
 Global.ManageCustomFields | Global.ManageCustomFields
 Global.SetCustomField |
-Host.Local.CreateVM | Network.Assign
-Network.Assign |
-Resource.AssignVMToPool |
+Host. local. CreateVM | Network. Assign
+Network. Assign |
+Resource. AssignVMToPool |
 VirtualMachine.Config.AddNewDisk  | VirtualMachine.Config.AddNewDisk   
 VirtualMachine.Config.AdvancedConfig| VirtualMachine.Config.AdvancedConfig
 VirtualMachine.Config.ChangeTracking| VirtualMachine.Config.ChangeTracking
 VirtualMachine.Config.HostUSBDevice |
 VirtualMachine.Config.QueryUnownedFiles |
-VirtualMachine.Config.SwapPlacement| VirtualMachine.Config.SwapPlacement
+VirtualMachine. config. SwapPlacement| VirtualMachine. config. SwapPlacement
 VirtualMachine.Interact.PowerOff| VirtualMachine.Interact.PowerOff
-VirtualMachine.Inventory.Create| VirtualMachine.Inventory.Create
+VirtualMachine. Inventory. Create| VirtualMachine. Inventory. Create
 VirtualMachine.Provisioning.DiskRandomAccess |
 VirtualMachine.Provisioning.DiskRandomRead | VirtualMachine.Provisioning.DiskRandomRead
 VirtualMachine.State.CreateSnapshot | VirtualMachine.State.CreateSnapshot
@@ -167,203 +166,203 @@ VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
 
 ## <a name="create-a-vmware-account"></a>Utwórz konto VMware
 
-1. W programie vCenter Server **Nawigator** panelu, kliknij przycisk **użytkowników i grup**. Jeśli nie korzystasz z programu vCenter Server, należy utworzyć konto na odpowiedniego hosta ESXi.
+1. W vCenter Server  panelu nawigatora kliknij pozycję **Użytkownicy i grupy**. Jeśli nie używasz vCenter Server, Utwórz konto na odpowiednim hoście ESXi.
 
-    ![Opcja użytkowników i grup](./media/backup-azure-backup-server-vmware/vmware-userandgroup-panel.png)
+    ![Opcja Użytkownicy i grupy](./media/backup-azure-backup-server-vmware/vmware-userandgroup-panel.png)
 
-    **VCenter użytkowników i grup** są wyświetlane w panelu.
-
-
-2. W **vCenter użytkowników i grup** panelu wybierz **użytkowników** kartę, a następnie kliknij ikonę Dodaj użytkowników (+ symbol).
-
-     ![panel vCenter użytkowników i grup](./media/backup-azure-backup-server-vmware/usersandgroups.png)
+    Zostanie wyświetlony panel **Użytkownicy i grupy vCenter** .
 
 
-3. W **nowego użytkownika** okna dialogowego Dodaj informacje o użytkowniku > **OK**. W tej procedurze nazwa użytkownika jest BackupAdmin.
+2. W panelu **Użytkownicy i grupy vCenter** wybierz kartę **Użytkownicy** , a następnie kliknij ikonę Dodaj użytkowników (symbol +).
+
+     ![Panel Użytkownicy i grupy vCenter](./media/backup-azure-backup-server-vmware/usersandgroups.png)
+
+
+3. W oknie dialogowym **nowy użytkownik** Dodaj informacje o użytkowniku > **OK**. W tej procedurze nazwa użytkownika to BackupAdmin.
 
     ![Okno dialogowe Nowy użytkownik](./media/backup-azure-backup-server-vmware/vmware-new-user-account.png)
 
 
-4. Aby skojarzyć konto użytkownika z roli, w **Nawigator** panelu, kliknij przycisk **uprawnień globalnych**. W **uprawnień globalnych** panelu wybierz **Zarządzaj** kartę, a następnie kliknij ikonę Dodaj (+ symbol).
+4. Aby skojarzyć konto użytkownika z rolą, w panelu **Nawigator** kliknij pozycję **uprawnienia globalne**. W panelu **uprawnienia globalne** wybierz kartę **Zarządzanie** , a następnie kliknij ikonę Dodaj (symbol +).
 
-    ![Globalne panelu uprawnień](./media/backup-azure-backup-server-vmware/vmware-add-new-perms.png)
-
-
-5. W **globalnych uprawnień Root - Dodaj uprawnienia**, kliknij przycisk **Dodaj** wybrać użytkownika lub grupy.
-
-    ![Wybierz użytkownika lub grupy](./media/backup-azure-backup-server-vmware/vmware-add-new-global-perm.png)
-
-6. W **Wybierz użytkowników i grup**, wybierz **BackupAdmin** > **Dodaj**. W **użytkowników**, *domena\nazwa_użytkownika* format jest używany dla konta użytkownika. Jeśli chcesz użyć w innej domenie, wybierz go z **domeny** listy. Kliknij przycisk **OK** można dodać wybranych użytkowników do **Dodaj uprawnienia** okno dialogowe.
-
-    ![Dodaj użytkownika BackupAdmin](./media/backup-azure-backup-server-vmware/vmware-assign-account-to-role.png)
+    ![Panel uprawnień globalnych](./media/backup-azure-backup-server-vmware/vmware-add-new-perms.png)
 
 
-7.  W **przypisana rola**, wybierz z listy rozwijanej **BackupAdminRole** > **OK**.
+5. W obszarze **główny uprawnień globalnych — Dodaj uprawnienie**, kliknij przycisk **Dodaj** , aby wybrać użytkownika lub grupę.
 
-    ![Przypisz użytkownika do roli](./media/backup-azure-backup-server-vmware/vmware-choose-role.png)
+    ![Wybierz użytkownika lub grupę](./media/backup-azure-backup-server-vmware/vmware-add-new-global-perm.png)
 
+6. W obszarze **Wybierz użytkowników/grupy**wybierz pozycję **BackupAdmin** > **Dodaj**. W obszarze **Użytkownicy**, w przypadku konta użytkownika jest używany format *domena \ nazwa_użytkownika* . Jeśli chcesz użyć innej domeny, wybierz ją z listy **domen** . Kliknij przycisk **OK** , aby dodać wybranych użytkowników do okna dialogowego **Dodawanie uprawnienia** .
 
-Na **Zarządzaj** karcie **uprawnień globalnych** panelu, nowe konto użytkownika i rolę skojarzone są wyświetlane na liście.
-
-
-## <a name="add-the-account-on-azure-backup-server"></a>Dodaj konto w usłudze Azure Backup Server
+    ![Dodawanie użytkownika BackupAdmin](./media/backup-azure-backup-server-vmware/vmware-assign-account-to-role.png)
 
 
-1. Otwórz usługę Azure Backup Server. Jeśli nie możesz znaleźć ikony na pulpicie, otwórz kopia zapasowa Microsoft Azure, z listy aplikacji.
+7.  Z listy rozwijanej z przypisaną **rolą**wybierz pozycję **BackupAdminRole** > **OK**.
 
-    ![Ikona usługi Azure Backup Server](./media/backup-azure-backup-server-vmware/mabs-icon.png)
-
-2. Kliknij w konsoli usługi Azure Backup Server **zarządzania** >  **serwerów produkcyjnych** > **Zarządzanie VMware**.
-
-    ![Usługa Azure Backup Server konsoli](./media/backup-azure-backup-server-vmware/add-vmware-credentials.png)
+    ![Przypisywanie użytkownika do roli](./media/backup-azure-backup-server-vmware/vmware-choose-role.png)
 
 
-3. W **poświadczenia zarządzania** okno dialogowe, kliknij przycisk **Dodaj**.
-
-    ![Okno dialogowe poświadczenia zarządzania serwera kopii zapasowych platformy Azure](./media/backup-azure-backup-server-vmware/mabs-manage-credentials-dialog.png)
-
-4. W **Dodaj poświadczenie** , wprowadź nazwę i opis dla nowego poświadczenia i określ nazwę użytkownika i hasło, zdefiniowanych na serwerze VMware. Nazwa, *poświadczeń Contoso Vcenter* służy do identyfikowania poświadczenia w ramach tej procedury. Jeśli serwer programu VMware i serwera usługi Azure Backup nie są w tej samej domenie, określ domenę, nazwę użytkownika.
-
-    ![Okno dialogowe Azure Backup serwer Dodaj poświadczenie](./media/backup-azure-backup-server-vmware/mabs-add-credential-dialog2.png)
-
-5. Kliknij przycisk **Dodaj** można dodać nowe poświadczenie.
-
-    ![Okno dialogowe poświadczenia zarządzania serwera kopii zapasowych platformy Azure](./media/backup-azure-backup-server-vmware/new-list-of-mabs-creds.png)
+Na karcie **Zarządzanie** w panelu **uprawnienia globalne** na liście zostanie wyświetlona nowa konto użytkownika i skojarzona rola.
 
 
-## <a name="add-the-vcenter-server"></a>Dodawanie serwera vCenter Server
-
-Dodawanie serwera vCenter do serwera usługi Azure Backup.
+## <a name="add-the-account-on-azure-backup-server"></a>Dodaj konto na Azure Backup Server
 
 
-1. Kliknij w konsoli usługi Azure Backup Server **zarządzania** > **serwerów produkcyjnych** > **Dodaj**.
+1. Otwórz Azure Backup Server. Jeśli nie możesz znaleźć ikony na pulpicie, otwórz Microsoft Azure Backup z listy aplikacji.
 
-    ![Kreator dodawania serwerów produkcyjnych Otwórz](./media/backup-azure-backup-server-vmware/add-vcenter-to-mabs.png)
+    ![Ikona Azure Backup Server](./media/backup-azure-backup-server-vmware/mabs-icon.png)
+
+2. W konsoli Azure Backup Server kliknij pozycję **Zarządzanie** >  **serwery** > produkcyjne**Zarządzanie programem VMware**.
+
+    ![Konsola Azure Backup Server](./media/backup-azure-backup-server-vmware/add-vmware-credentials.png)
 
 
-2. W **Kreator dodawania serwerów produkcyjnych** > **typ serwera produkcyjnego wybierz** wybierz **serwery VMware**, a następnie kliknij przycisk **dalej**.
+3. W oknie dialogowym **Zarządzanie poświadczeniami** kliknij przycisk **Dodaj**.
 
-     ![Kreator dodawania serwerów produkcyjnych](./media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
+    ![Okno dialogowe Zarządzanie poświadczeniami Azure Backup Server](./media/backup-azure-backup-server-vmware/mabs-manage-credentials-dialog.png)
 
-3. W **wybierz komputery** **nazwa/adres IP serwera**, określ nazwę FQDN lub adres IP serwera VMware. Jeśli wszystkie serwery ESXi są zarządzane przez ten sam program vCenter, należy określić nazwę vCenter. W przeciwnym razie Dodaj hosta ESXi.
+4. W polu **Dodaj poświadczenie** wprowadź nazwę i opis nowego poświadczenia, a następnie określ nazwę użytkownika i hasło zdefiniowane na serwerze VMware. Nazwa, *poświadczenie contoso vCenter* , służy do identyfikowania poświadczeń w tej procedurze. Jeśli serwer VMware i Azure Backup Server nie znajdują się w tej samej domenie, określ domenę w polu Nazwa użytkownika.
+
+    ![Okno dialogowe Dodawanie poświadczeń Azure Backup Server](./media/backup-azure-backup-server-vmware/mabs-add-credential-dialog2.png)
+
+5. Kliknij przycisk **Dodaj** , aby dodać nowe poświadczenie.
+
+    ![Okno dialogowe Zarządzanie poświadczeniami Azure Backup Server](./media/backup-azure-backup-server-vmware/new-list-of-mabs-creds.png)
+
+
+## <a name="add-the-vcenter-server"></a>Dodaj vCenter Server
+
+Dodaj vCenter Server do Azure Backup Server.
+
+
+1. W konsoli Azure Backup Server kliknij pozycję **Zarządzanie** > **serwerami** > produkcyjnymi**Dodaj**.
+
+    ![Kreator otwierania dodawania serwera produkcyjnego](./media/backup-azure-backup-server-vmware/add-vcenter-to-mabs.png)
+
+
+2. W **Kreatorze** > dodawania do serwera produkcyjnego**Wybierz opcję Typ serwera produkcyjnego** , wybierz pozycję **serwery VMware**, a następnie kliknij przycisk **dalej**.
+
+     ![Kreator dodawania do serwera produkcyjnego](./media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
+
+3. W polu **Wybierz komputery**  **nazwa/adres IP**Określ nazwę FQDN lub adres IP serwera VMware. Jeśli wszystkie serwery ESXi są zarządzane przez ten sam program vCenter, określ nazwę serwera vCenter. W przeciwnym razie Dodaj hosta ESXi.
 
     ![Określ serwer VMware](./media/backup-azure-backup-server-vmware/add-vmware-server-provide-server-name.png)
 
-4. W **SSL Port**, wprowadź numer portu, który jest używany do komunikacji z serwerem VMware. 443 jest domyślnym portem, ale można go zmienić, jeśli serwer VMware nasłuchuje na innym porcie.
+4. W polu **Port SSL**Wprowadź port używany do komunikowania się z serwerem VMware. 443 jest portem domyślnym, ale można go zmienić, jeśli serwer VMware nasłuchuje na innym porcie.
 
-5. W **Określ poświadczenia**, wybierz poświadczenie, która została utworzona wcześniej.
+5. W obszarze **Określ poświadczenie**wybierz utworzone wcześniej poświadczenia.
 
     ![Określ poświadczenie](./media/backup-azure-backup-server-vmware/identify-creds.png)
 
-6. Kliknij przycisk **Dodaj** dodać serwer VMware do listy serwerów. Następnie kliknij przycisk **Next** (Dalej).
+6. Kliknij przycisk **Dodaj** , aby dodać serwer VMware do listy serwerów. Następnie kliknij przycisk **Next** (Dalej).
 
-    ![Dodawanie serwera VMWare i poświadczeń](./media/backup-azure-backup-server-vmware/add-vmware-server-credentials.png)
+    ![Dodaj serwer i poświadczenie oprogramowania VMWare](./media/backup-azure-backup-server-vmware/add-vmware-server-credentials.png)
 
-7. W **Podsumowanie** kliknij **Dodaj** dodać serwer VMware do usługi Azure Backup Server. Nowy serwer jest dodawany natychmiast, agent nie jest wymagane na serwerze VMware.
+7. Na stronie **Podsumowanie** kliknij przycisk **Dodaj** , aby dodać serwer VMware do Azure Backup Server. Nowy serwer zostanie dodany natychmiast, na serwerze VMware nie jest wymagany żaden Agent.
 
-    ![Dodaj serwer programu VMware do usługi Azure Backup Server](./media/backup-azure-backup-server-vmware/tasks-screen.png)
+    ![Dodaj serwer VMware do Azure Backup Server](./media/backup-azure-backup-server-vmware/tasks-screen.png)
 
-8. Sprawdź ustawienia na **Zakończ** strony.
+8. Sprawdź ustawienia na stronie **zakończenie** .
 
-   ![Zakończ stronę](./media/backup-azure-backup-server-vmware/summary-screen.png)
+   ![Strona końcowa](./media/backup-azure-backup-server-vmware/summary-screen.png)
 
-Jeśli masz wiele hostów ESXi, które nie są zarządzane przez serwer vCenter lub istnieje wiele wystąpień programu vCenter Server, należy ponownie uruchomić kreatora, aby dodać serwery.
-
-
+Jeśli masz wiele hostów ESXi, które nie są zarządzane przez program vCenter Server, lub masz wiele wystąpień vCenter Server, musisz ponownie uruchomić kreatora, aby dodać serwery.
 
 
-## <a name="configure-a-protection-group"></a>Skonfiguruj grupę ochrony
-
-Dodaj maszyny wirtualne programu VMware do utworzenia kopii zapasowej. Grup ochrony zebrać wiele maszyn wirtualnych i zastosować ten sam retencji danych i ustawień kopii zapasowej do wszystkich maszyn wirtualnych w grupie.
 
 
-1. Kliknij w konsoli usługi Azure Backup Server **ochrony**, > **New**.
+## <a name="configure-a-protection-group"></a>Konfigurowanie grupy ochrony
+
+Dodaj maszyny wirtualne VMware na potrzeby tworzenia kopii zapasowych. Grupy ochrony zbierają wiele maszyn wirtualnych i stosują te same ustawienia przechowywania i tworzenia kopii zapasowych danych do wszystkich maszyn wirtualnych w grupie.
+
+
+1. W konsoli Azure Backup Server kliknij pozycję **Ochrona**, > **Nowy**.
 
     ![Otwórz Kreatora tworzenia nowej grupy ochrony](./media/backup-azure-backup-server-vmware/open-protection-wizard.png)
 
-1. W **Utwórz nową grupę ochrony** strona powitalna kreatora, kliknij przycisk **dalej**.
+1. Na stronie powitalnej Kreatora **tworzenia nowej grupy ochrony** kliknij przycisk **dalej**.
 
-    ![Okno dialogowe Kreator tworzenia nowej grupy ochrony](./media/backup-azure-backup-server-vmware/protection-wizard.png)
+    ![Kreator tworzenia nowej grupy ochrony — okno dialogowe](./media/backup-azure-backup-server-vmware/protection-wizard.png)
 
-1. Na **typ grupy ochrony wybrać** wybierz **serwerów** a następnie kliknij przycisk **dalej**. **Wybierz członków grupy** zostanie wyświetlona strona.
+1. Na stronie **Wybierz typ grupy ochrony** wybierz pozycję **serwery** , a następnie kliknij przycisk **dalej**. Zostanie wyświetlona strona **Wybierz członków grupy** .
 
-1. W **Wybierz członków grupy** > Wybierz maszyny wirtualne (lub foldery z maszyny Wirtualnej), którą chcesz utworzyć kopię zapasową. Następnie kliknij przycisk **Next** (Dalej).
+1. W obszarze **Wybierz członków grupy** > Wybierz Maszyny wirtualne (lub foldery maszyn wirtualnych), których kopię zapasową chcesz utworzyć. Następnie kliknij przycisk **Next** (Dalej).
 
-    - Jeśli został wskazany folder lub maszyn wirtualnych lub foldery wewnątrz tego folderu wybrane zostaną także do tworzenia kopii zapasowych. Możesz usunąć zaznaczenie folderów lub nie chcesz, aby utworzyć kopię zapasową maszyn wirtualnych.
-1. Jeśli maszyna wirtualna lub folder jest już tworzona kopia zapasowa, nie możesz wybrać go. To zagwarantować, że dla maszyny Wirtualnej nie są tworzone punkty odzyskiwania duplikatów. .
+    - Po wybraniu folderu zostaną również wybrane maszyny wirtualne lub foldery znajdujące się w tym folderze. Możesz wyczyścić foldery lub maszyny wirtualne, których kopia zapasowa ma nie być wykonana.
+1. Jeśli tworzona jest już kopia zapasowa maszyny wirtualnej lub folderu, nie można jej wybrać. Dzięki temu nie są tworzone zduplikowane punkty odzyskiwania dla maszyny wirtualnej. .
 
      ![Wybierz członków grupy](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
 
-1. W **wybierz metodę ochrony danych** strony, wprowadź nazwę grupy ochrony, a ustawienia ochrony. Tworzenie kopii zapasowej na platformie Azure, ustawić krótkoterminowej **dysku** i włącz ochronę w trybie online. Następnie kliknij przycisk **Next** (Dalej).
+1. Na stronie **Wybierz metodę ochrony danych** wprowadź nazwę grupy ochrony i ustawienia ochrony. Aby utworzyć kopię zapasową na platformie Azure, ustaw krótkoterminową ochronę na **dysku** i Włącz ochronę w trybie online. Następnie kliknij przycisk **Next** (Dalej).
 
     ![Wybierz metodę ochrony danych](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
-1. W **Określ cele krótkoterminowe**, określ, jak długo chcesz przechowywać dane kopii zapasowej na dysku.
-   - W **zakres przechowywania**, określ liczbę dni, które powinny być przechowywane punkty odzyskiwania na dysku.
-   - W **częstotliwość synchronizacji**, określ, jak często wykonywane są punkty odzyskiwania na dysku.
-       - Jeśli nie chcesz ustawiać kopii zapasowych interwał można sprawdzić **zaraz przed punktem odzyskiwania** tak, aby tworzenie kopii zapasowej jest uruchamiana bezpośrednio przed zaplanowanym każdego punktu odzyskiwania.
-       - Krótkoterminowe kopie zapasowe są pełne kopie zapasowe a nie przyrostowe.
-       - Kliknij przycisk **Modyfikuj** zmienić godziny/daty po wystąpieniu krótkoterminowe kopie zapasowe.
+1. W obszarze **Określ cele krótkoterminowe**Określ, jak długo mają być przechowywane kopie zapasowe danych na dysku.
+   - W obszarze **Zakres przechowywania**Określ, ile dni mają być przechowywane punkty odzyskiwania dysków.
+   - W obszarze **częstotliwość synchronizacji**Określ, jak często mają być pobierane punkty odzyskiwania dysków.
+       - Jeśli nie chcesz ustawiać interwału wykonywania kopii zapasowych, możesz sprawdzić **tuż przed punktem odzyskiwania** , aby kopia zapasowa była uruchamiana tuż przed zaplanowaniem każdego punktu odzyskiwania.
+       - Krótkoterminowe kopie zapasowe są pełnymi kopiami zapasowymi i nie są przyrostowe.
+       - Kliknij przycisk **Modyfikuj** , aby zmienić czasy/daty w przypadku wystąpienia krótkoterminowych kopii zapasowych.
 
      ![Określ cele krótkoterminowe](./media/backup-azure-backup-server-vmware/short-term-goals.png)
 
-1. W **Przejrzyj przydział dysku**, przejrzyj miejsce na dysku, podany dla kopii zapasowych maszyn wirtualnych. w przypadku maszyn wirtualnych.
+1. Na stronie **Przejrzyj przydział dysku**Przejrzyj miejsce na dysku udostępnione dla kopii zapasowych maszyn wirtualnych. dla maszyn wirtualnych.
 
-   - Przydziały dysku zalecane są oparte na zakres przechowywania, który określiłeś, typu obciążenia i rozmiaru chronionych danych. Wprowadź wymagane zmiany, a następnie kliknij przycisk **dalej**.
+   - Zalecane alokacje dysków są zależne od określonego zakresu przechowywania, typu obciążenia i rozmiaru chronionych danych. Wprowadź wymagane zmiany, a następnie kliknij przycisk **dalej**.
    - **Rozmiar danych:** Rozmiar danych w grupie ochrony.
-   - **Miejsce na dysku:** Zalecana ilość miejsca na dysku dla grupy ochrony. Jeśli chcesz zmodyfikować to ustawienie, należy przydzielić całkowitą ilość miejsca, nieco większa niż ilość oceniasz, że każde źródło danych rośnie.
-   - **Kolokacja danych:** Po włączeniu kolokacji wiele źródeł danych w zakresie ochrony można mapować na pojedynczą replikę i wolumin punktu odzyskiwania. Kolokacja nie jest obsługiwana w przypadku wszystkich obciążeń.
-   - **Powiększ automatycznie:** Jeśli włączysz to ustawienie, jeśli danych w grupie ochrony przekroczy początkowe alokacji, usługi Azure Backup Server próbuje zwiększyć rozmiar dysku o 25 procent.
-   - **Szczegóły puli magazynu:** Pokazuje stan puli magazynów, w tym całkowity rozmiar dysku i wolnego.
+   - **Miejsce na dysku:** Zalecana ilość miejsca na dysku dla grupy ochrony. Jeśli chcesz zmodyfikować to ustawienie, należy przydzielić całkowite miejsce, które jest nieco większe niż wielkość Szacowana każdego źródła danych.
+   - **Przeszukaj dane:** Jeśli włączysz wspólną lokalizację, wiele źródeł danych w ramach ochrony będzie można mapować na pojedynczą replikę i wolumin punktu odzyskiwania. Współlokalizacja nie jest obsługiwana dla wszystkich obciążeń.
+   - **Automatycznie rośnie:** Jeśli włączysz to ustawienie, jeśli dane w grupie ochrony przekroczą alokację początkową, Azure Backup Server próbuje zwiększyć rozmiar dysku o 25%.
+   - **Szczegóły puli magazynu:** Pokazuje stan puli magazynów, w tym całkowity rozmiar dysku i pozostałe.
 
      ![Przejrzyj przydział dysku](./media/backup-azure-backup-server-vmware/review-disk-allocation.png)
 
-1. W **wybierz metodę tworzenia repliki** Określ, jak chcesz wykonać początkową kopię zapasową, a następnie kliknij przycisk **dalej**.
-   - Wartość domyślna to **automatycznie przez sieć** i **teraz**.
-   - Jeśli użytkownik korzysta z domyślnych, firma Microsoft zaleca, aby określić godzinę poza godzinami szczytu. Wybierz **później** i określ datę i godzinę.
-   - Dla dużych ilości danych lub mniej niż optymalnych warunkach sieciowych warto rozważyć replikowanie danych w trybie offline przy użyciu nośnika wymiennego.
+1. Na stronie **Wybierz metodę tworzenia repliki** Określ sposób tworzenia początkowej kopii zapasowej, a następnie kliknij przycisk **dalej**.
+   - Wartość domyślna jest **automatycznie przez sieć** i **teraz**.
+   - Jeśli używasz domyślnego, zalecamy określenie czasu poza godzinami szczytu. Wybierz pozycję **dalej** i określ datę i godzinę.
+   - W przypadku dużych ilości danych lub mniej niż optymalnych warunków sieciowych należy rozważyć replikację danych w trybie offline za pomocą nośników wymiennych.
 
      ![Wybierz metodę tworzenia repliki](./media/backup-azure-backup-server-vmware/replica-creation.png)
 
-1. W **opcje sprawdzania spójności**, zdecyduj, jak i kiedy automatyzacji sprawdzania spójności. Następnie kliknij przycisk **Next** (Dalej).
-      - Możesz uruchomić sprawdzanie spójności, gdy dane są niespójne, lub zgodnie z ustalonym harmonogramem.
-      - Jeśli nie chcesz skonfigurować automatyczne sprawdzenia spójności, możesz uruchomić sprawdzanie ręczne. Aby to zrobić, kliknij prawym przyciskiem myszy grupę ochrony > **Przeprowadź Sprawdzanie spójności**.
+1. W obszarze **Opcje sprawdzania spójności**wybierz, jak i kiedy zautomatyzować sprawdzanie spójności. Następnie kliknij przycisk **Next** (Dalej).
+      - Sprawdzanie spójności można uruchomić, gdy dane repliki staną się niespójne lub zgodnie z ustalonym harmonogramem.
+      - Jeśli nie chcesz konfigurować automatycznego sprawdzania spójności, możesz uruchomić sprawdzanie ręczne. Aby to zrobić, kliknij prawym przyciskiem myszy grupę ochrony > **Przeprowadź sprawdzanie spójności**.
 
-1. W **Określ dane ochrony Online** wybierz maszyny wirtualne lub maszyny Wirtualnej, foldery, które chcesz utworzyć kopię zapasową. Wybierz elementy członkowskie, pojedynczo lub kliknij przycisk **Zaznacz wszystko** aby wybrać wszystkie elementy członkowskie. Następnie kliknij przycisk **Next** (Dalej).
+1. Na stronie **Określ dane ochrony online** Wybierz Maszyny wirtualne lub foldery maszyn wirtualnych, dla których chcesz utworzyć kopię zapasową. Możesz wybrać członków indywidualnie lub kliknąć przycisk **Zaznacz wszystko** , aby wybrać wszystkich członków. Następnie kliknij przycisk **Next** (Dalej).
 
-      ![Określ dane chronione w trybie online](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
+      ![Określ dane ochrony w trybie online](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
-1. Na **Określ harmonogram tworzenia kopii zapasowych Online** Określ, jak często chcesz utworzyć kopię zapasową danych z magazynu lokalnego do platformy Azure.
+1. Na stronie **Określanie harmonogramu tworzenia kopii zapasowych online** Określ, jak często mają być wykonywane kopie zapasowe danych z magazynu lokalnego na platformę Azure.
 
     - Punkty odzyskiwania w chmurze dla danych będą generowane zgodnie z harmonogramem. Następnie kliknij przycisk **Next** (Dalej).
-    - Po wygenerowaniu punkt odzyskiwania, jego przeniesienie do magazynu usługi Recovery Services na platformie Azure.
+    - Po wygenerowaniu punkt odzyskiwania zostanie przeniesiony do magazynu Recovery Services na platformie Azure.
 
-      ![Określ harmonogram tworzenia kopii zapasowej online](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
+      ![Określ harmonogram kopii zapasowych online](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
 
-1. Na **Określanie zasad przechowywania Online** strony, wskazują, jak długo chcesz przechowywać punktów odzyskiwania, które są tworzone na podstawie kopii zapasowych co dzień/tydzień/miesiąc/rok na platformie Azure. Następnie kliknij przycisk **dalej**.
+1. Na stronie **Określanie zasad przechowywania w trybie online** wskaż, jak długo mają być przechowywane punkty odzyskiwania tworzone z kopii zapasowych codziennie/co tydzień/miesiąc/rok na platformie Azure. następnie kliknij przycisk **dalej**.
 
-    - Nie ma żadnego limitu czasu, na jak długo można przechowywać dane na platformie Azure.
-    - Jedynym ograniczeniem jest to, że nie może mieć więcej niż 9999 punktów odzyskiwania na chronione wystąpienie. W tym przykładzie chronione wystąpienie jest serwerem VMware.
+    - Nie ma limitu czasu, w którym można przechowywać dane na platformie Azure.
+    - Jedynym ograniczeniem jest to, że nie można mieć więcej niż 9999 punktów odzyskiwania dla każdego chronionego wystąpienia. W tym przykładzie chronione wystąpienie jest serwerem VMware.
 
       ![Określ zasady przechowywania danych online](./media/backup-azure-backup-server-vmware/retention-policy.png)
 
 
-1. Na **Podsumowanie** strony, przejrzyj ustawienia, a następnie kliknij przycisk **Utwórz grupę**.
+1. Na stronie **Podsumowanie** przejrzyj ustawienia, a następnie kliknij przycisk **Utwórz grupę**.
 
-     ![Elementu członkowskiego grupy ochrony i ustawienia — podsumowanie](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
+     ![Członek grupy ochrony i podsumowanie ustawień](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
 
-## <a name="vmware-vsphere-67"></a>VMWare vSphere 6.7
+## <a name="vmware-vsphere-67"></a>VMWare vSphere 6,7
 
-Do tworzenia kopii zapasowej vSphere 6.7 wykonaj następujące czynności:
+Aby utworzyć kopię zapasową vSphere 6,7, wykonaj następujące czynności:
 
-- Włącz szyfrowanie TLS 1.2 na serwerze programu DPM
+- Włącz protokół TLS 1,2 na serwerze DPM
   >[!Note]
-  >6\.7 VMWare lub nowszym ma włączony TLS jako protokołu komunikacyjnego.
+  >Oprogramowanie VMWare 6,7 z włączoną obsługą protokołu TLS jako protokół komunikacyjny.
 
-- Ustawić klucze rejestru w następujący sposób:  
+- Ustaw klucze rejestru w następujący sposób:  
 
-  Edytor rejestru Windows wersja 5.00
+  Edytor rejestru systemu Windows w wersji 5,00
 
   [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\.NETFramework\v2.0.50727] "SystemDefaultTlsVersions"=dword:00000001 "SchUseStrongCrypto"=dword:00000001
 
@@ -374,6 +373,6 @@ Do tworzenia kopii zapasowej vSphere 6.7 wykonaj następujące czynności:
   [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\.NETFramework\v4.0.30319] "SystemDefaultTlsVersions"=dword:00000001 s"SchUseStrongCrypto"=dword:00000001
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Do rozwiązywania problemów, podczas konfigurowania kopii zapasowych, przejrzyj [przewodnik rozwiązywania problemów dla usługi Azure Backup Server](./backup-azure-mabs-troubleshoot.md).
+Informacje dotyczące rozwiązywania problemów podczas konfigurowania kopii zapasowych znajdują się w [przewodniku rozwiązywania problemów Azure Backup Server](./backup-azure-mabs-troubleshoot.md).

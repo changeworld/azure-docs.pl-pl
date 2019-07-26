@@ -1,6 +1,6 @@
 ---
-title: Atrybuty zabezpieczeń dla maszyn wirtualnych Windows Azure
-description: Lista kontrolna typowych atrybutów zabezpieczeń do oceny maszyn wirtualnych Windows Azure
+title: Atrybuty zabezpieczeń dla usługi Azure Windows Virtual Machines
+description: Lista kontrolna atrybutów zabezpieczeń służących do oceny Windows Virtual Machines platformy Azure
 services: virtual-machines
 ms.service: virtual-machines
 documentationcenter: ''
@@ -9,16 +9,16 @@ manager: barbkess
 ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0c13ca0f383db53d14847f72f1ea63166f763d94
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 1aabdbf24725ae0986feb1f9652e13e806df8fdf
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67800265"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444321"
 ---
-# <a name="security-attributes-for-windows-virtual-machines"></a>Atrybuty zabezpieczeń dla maszyn wirtualnych Windows
+# <a name="security-attributes-for-windows-virtual-machines"></a>Atrybuty zabezpieczeń dla Windows Virtual Machines
 
-W tym artykule opisano atrybuty zabezpieczeń wbudowanych w systemie Windows Virtual Machines.
+W tym artykule opisano atrybuty zabezpieczeń wbudowane w Windows Virtual Machines.
 
 [!INCLUDE [Security attributes header](../../../includes/security-attributes-header.md)]
 

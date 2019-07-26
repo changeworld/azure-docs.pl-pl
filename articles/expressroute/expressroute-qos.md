@@ -1,5 +1,5 @@
 ---
-title: 'Wymagania dotyczące technologii QoS - usługi ExpressRoute: Azure | Microsoft Docs'
+title: 'Wymagania dotyczące jakości usług — ExpressRoute: Azure | Microsoft Docs'
 description: Ta strona zawiera szczegółowe wymagania dotyczące konfigurowania i zarządzania nimi QoS. Omówiono Skype dla firm/rejestr usług.
 services: expressroute
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 9bdeb91b145f8c7f31be8c1dcd5c5158d50ff2f6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eed6113442b4080341ff08b3983880f3afe66c00
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64712316"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385123"
 ---
 # <a name="expressroute-qos-requirements"></a>Wymagania dotyczące technologii QoS w usłudze ExpressRoute
 Program Skype dla firm obejmuje różne obciążenia, które wymagają zróżnicowanej obsługi w technologii QoS. Jeśli planujesz korzystać z usług głosowych za pośrednictwem usługi ExpressRoute, musisz spełnić opisane poniżej wymagania.
@@ -25,18 +25,18 @@ Program Skype dla firm obejmuje różne obciążenia, które wymagają zróżnic
 > 
 > 
 
-Poniższa tabela zawiera listę oznaczeń DSCP używanych przez Microsoft Teams i Skype dla firm. Więcej informacji znajduje się w artykule [Managing QoS for Skype for Business](https://docs.microsoft.com/SkypeForBusiness/manage/network-management/qos/managing-quality-of-service-QoS) (Zarządzanie technologią QoS na potrzeby programu Skype dla firm).
+Poniższa tabela zawiera listę oznaczeń DSCP używanych przez usługi Microsoft Teams i Skype dla firm. Więcej informacji znajduje się w artykule [Managing QoS for Skype for Business](https://docs.microsoft.com/SkypeForBusiness/manage/network-management/qos/managing-quality-of-service-QoS) (Zarządzanie technologią QoS na potrzeby programu Skype dla firm).
 
-| **Klasa ruchu** | **Obsługa (oznaczanie DSCP)** | **Microsoft Teams i Skype dla firm obciążeń** |
+| **Klasa ruchu** | **Obsługa (oznaczanie DSCP)** | **Obciążenia Microsoft Teams i Skype dla firm** |
 | --- | --- | --- |
-| **Połączenia głosowe** |EF (46) |Połączenia głosowe Skype/Lync |
+| **Połączenia głosowe** |EF (46) |Skype/Microsoft Teams/Lync Voice |
 | **Interaktywne** |AF41 (34) |Wideo, VBSS |
 | |AF21 (18) |Współdzielenie aplikacji | 
 | **Domyślne** |AF11 (10) |Transfer plików |
 | |CS0 (0) |Inne |
 
 * Sklasyfikuj obciążenia i zaznacz odpowiednie wartości DSCP. Postępuj zgodnie ze wskazówkami podanymi [tutaj](https://docs.microsoft.com/SkypeForBusiness/manage/network-management/qos/configuring-port-ranges-for-your-skype-clients#configure-quality-of-service-policies-for-clients-running-on-windows-10) dotyczącymi ustawiania oznaczeń DSCP w sieci.
-* Skonfiguruj i obsługuj wiele kolejek w technologii QoS w sieci. Głosu musi być klasą autonomiczną i odbieranie w sposób określony w [RFC 3246](https://www.ietf.org/rfc/rfc3246.txt). 
+* Skonfiguruj i obsługuj wiele kolejek w technologii QoS w sieci. Głos musi być klasą autonomiczną i przyjmować traktowanie EF określone w [dokumencie RFC 3246](https://www.ietf.org/rfc/rfc3246.txt). 
 * Możesz wybrać mechanizm kolejkowania, zasady wykrywania przeciążenia oraz alokację przepustowości na klasę ruchu. Oznaczanie DSCP dla obciążeń programu Skype dla firm musi jednak zostać zachowane. Jeśli używasz oznaczenia DSCP niewymienionego powyżej, np. AF31 (26), musisz zmodyfikować tę wartość DSCP do 0 przed wysłaniem pakietu do firmy Microsoft. Firma Microsoft wysyła tylko pakiety oznaczone wartościami DSCP pokazanymi w powyższej tabeli. 
 
 ## <a name="next-steps"></a>Kolejne kroki

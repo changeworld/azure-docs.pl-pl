@@ -1,6 +1,6 @@
 ---
-title: Wyświetl informacje dotyczące ochrony prywatności, z poziomu portalu Mój profil (wersja zapoznawcza) — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Ogólne omówienie o stronę Prywatność portalu Mój profil.
+title: Wyświetl informacje dotyczące prywatności z portalu My profile (wersja zapoznawcza) Azure Active Directory | Microsoft Docs
+description: Ogólne omówienie strony prywatność portalu My profile.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,31 +12,33 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbfcab7900a1552a46341ec71b8b0ea4b41b0bce
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 31847f3cc47ddf1ed784263a543e94ebca454222
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60474725"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382966"
 ---
-# <a name="view-your-privacy-related-info-from-the-my-profile-preview-portal"></a>Wyświetl swoje informacje dotyczące ochrony prywatności, z poziomu portalu Mój profil (wersja zapoznawcza)
-Można wyświetlić, jak Twoja organizacja korzysta z danych z **zachowania** strony **Mój profil** portalu.
+# <a name="view-your-privacy-related-info-from-the-my-profile-preview-portal"></a>Wyświetlanie informacji dotyczących prywatności z portalu My profile (wersja zapoznawcza)
+
+Możesz zobaczyć, jak Twoja organizacja korzysta z danych ze strony **prywatność** portalu **My profile** .
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-myprofile.md)]
 
 ## <a name="view-your-privacy-related-info"></a>Wyświetlanie swoich informacji związanych z prywatnością
-1. Zaloguj się do swojego konta firmowego lub szkolnego, a następnie przejdź do swojej https://myprofile.microsoft.com/ strony.
 
-2. Wybierz **zachowania** z lewego okienka nawigacji lub wybierz **Przejrzyj zachowania** link z **zachowania** bloku.
+1. Zaloguj się do swojego konta służbowego, a następnie przejdź do https://myprofile.microsoft.com/ strony.
 
-    ![Strona Moje profilu, pokazujący wyróżnione łącza ochrony prywatności](media/myprofile-portal/myprofile-portal-privacy.png)
+2. W okienku nawigacji po lewej stronie wybierz opcję **prywatność** lub wybierz łącze **Sprawdź prywatność** z bloku **prywatność** .
 
-3. Zapoznaj się z informacjami, w tym:
+    ![Strona mój profil z wyświetlonymi wyróżnionymi łączami prywatności](media/myprofile-portal/myprofile-portal-privacy.png)
 
-    - **Usługi.** Lista usług online, które łączysz się przy użyciu swojego konta firmowego lub szkolnego.
+3. Przejrzyj informacje, w tym:
 
-    - **Warunki użytkowania**. Warunki użytkowania w Twojej organizacji.
+    - **Services.** Lista Usługi online, z którymi nawiązano połączenie przy użyciu konta służbowego.
+
+    - **Warunki użytkowania**. Warunki użytkowania organizacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Po obejrzeniu, jak Twoja organizacja korzysta z danych, można wybrać wyświetlanie i zarządzanie swoje [zabezpieczające](user-help-security-info-overview.md), usługi połączone [urządzeń](myprofile-portal-devices-page.md), lub [organizacje](myprofile-portal-organizations-page.md).
+- Po przejrzeniu sposobu korzystania z Twoich danych przez organizację możesz wyświetlić [informacje zabezpieczające](user-help-security-info-overview.md), [urządzenia](myprofile-portal-devices-page.md)połączone lub [organizacje](myprofile-portal-organizations-page.md)lub zarządzać nimi.

@@ -1,63 +1,63 @@
 ---
-title: Luki w zabezpieczeniach wykryte przez usługi Azure Active Directory Identity Protection
-description: Omówienie luk w zabezpieczeniach wykryte przez usługi Azure Active Directory Identity Protection.
+title: Luki w zabezpieczeniach wykryte przez Azure Active Directory Identity Protection
+description: Omówienie luk w zabezpieczeniach wykrytych przez Azure Active Directory Identity Protection.
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b481030c5d2d8e7d5e7061cdf256a202e08d6cbf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 446e2ef33b714afe06f24f3dbfc46bc6a42790b8
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108788"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335154"
 ---
-# <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Luki w zabezpieczeniach wykryte przez usługi Azure Active Directory Identity Protection
+# <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Luki w zabezpieczeniach wykryte przez Azure Active Directory Identity Protection
 
-Luki w zabezpieczeniach występują luki w środowisku, w którym może zostać wykorzystana przez osobę atakującą. Firma Microsoft zaleca, że administratorzy rozwiązać te luki w zabezpieczeniach w celu zwiększenia poziomu bezpieczeństwa organizacji.
+Luki w zabezpieczeniach w środowisku, które mogą być wykorzystywane przez osobę atakującą, są słabe. Zaleca się, aby administratorzy usuwali te luki w zabezpieczeniach, aby zwiększyć bezpieczeństwo stan organizacji.
 
-![Usterki zgłoszone przez ochronę tożsamości](./media/vulnerabilities/identity-protection-vulnerabilities.png)
+![Luki w zabezpieczeniach zgłoszone przez program Identity Protection](./media/vulnerabilities/identity-protection-vulnerabilities.png)
 
-Poniższe sekcje zawierają omówienie usterki zgłoszone przez ochronę tożsamości.
+Poniższe sekcje zawierają omówienie luk w zabezpieczeniach raportowanych przez program Identity Protection.
 
-## <a name="multi-factor-authentication-registration-not-configured"></a>Rejestracja korzystająca z uwierzytelniania Multi-Factor Authentication, nieskonfigurowane
+## <a name="multi-factor-authentication-registration-not-configured"></a>Nie skonfigurowano rejestracji uwierzytelniania wieloskładnikowego
 
-Tę lukę w zabezpieczeniach pomaga ocenić wdrożenia usługi Azure Multi-Factor Authentication w Twojej organizacji.
+Ta luka w zabezpieczeniach pomaga ocenić wdrożenie usługi Azure MFA Authentication w organizacji.
 
-Usługa Azure Multi-Factor Authentication udostępnia drugą warstwę zabezpieczeń do uwierzytelniania użytkowników. Jego pomaga w zabezpieczeniu dostępu do danych i aplikacji, a jednocześnie spełnia wymagania użytkowników dotyczące prostoty procesu logowania. Usługa Azure Multi-Factor Authentication udostępnia opcje weryfikacji łatwy w użyciu, takie jak:
+Uwierzytelnianie wieloskładnikowe systemu Azure zapewnia drugą warstwę zabezpieczeń do uwierzytelniania użytkowników. Pomaga w zabezpieczeniu dostępu do danych i aplikacji, a jednocześnie spełnia wymagania użytkowników dotyczące prostego procesu logowania. Uwierzytelnianie wieloskładnikowe systemu Azure umożliwia łatwe korzystanie z opcji weryfikacji, takich jak:
 
 * Połączenie telefoniczne
 * Wiadomość SMS
-* Powiadomienie aplikacji mobilnej
+* Powiadomienia w aplikacji mobilnej
 * Kod weryfikacyjny OTP
 
-Firma Microsoft zaleca, wymagają usługi Azure Multi-Factor Authentication do logowania użytkownika. Uwierzytelnianie wieloskładnikowe odgrywa kluczową rolę w opartych na ryzykach zasad dostępu warunkowego dostępne za pośrednictwem Identity Protection.
+Zalecamy wymaganie uwierzytelniania wieloskładnikowego na platformie Azure na potrzeby logowania użytkowników. Uwierzytelnianie wieloskładnikowe odgrywa kluczową rolę w zasadach dostępu warunkowego opartego na ryzyku, które są dostępne za pośrednictwem usługi Identity Protection.
 
 Aby uzyskać więcej informacji, zobacz [What is Azure Multi-Factor Authentication? (Co to jest usługa Azure Multi-Factor Authentication?)](../authentication/multi-factor-authentication.md)
 
 ## <a name="unmanaged-cloud-apps"></a>Niezarządzane aplikacje w chmurze
 
-Tę lukę w zabezpieczeniach pomaga zidentyfikować niezarządzane aplikacje w chmurze w Twojej organizacji.
+Ta luka w zabezpieczeniach ułatwia identyfikowanie niezarządzanych aplikacji w chmurze w organizacji.
 
-Personel IT są często nie wszystkie aplikacje w chmurze w organizacji. To proste zobaczyć, dlaczego administratorzy będą niepokoją nieautoryzowanego dostępu do danych firmowych, wyciekom danych i innych zagrożeń bezpieczeństwa.
+Pracownicy IT często nie znają wszystkich aplikacji w chmurze w organizacji. Można łatwo sprawdzić, dlaczego Administratorzy mają wątpliwości dotyczące nieautoryzowanego dostępu do danych firmowych, możliwego wycieku danych i innych zagrożeń bezpieczeństwa.
 
-Firma Microsoft zaleca wdrażanie rozwiązania Cloud Discovery odnajdywania aplikacji w chmurze niezarządzanych i zarządzanie te aplikacje przy użyciu usługi Azure Active Directory.
+Zalecamy wdrożenie Cloud Discovery w celu odnajdywania niezarządzanych aplikacji w chmurze oraz zarządzania tymi aplikacjami przy użyciu Azure Active Directory.
 
-Aby uzyskać więcej informacji, zobacz [rozwiązania Cloud Discovery](/cloud-app-security/set-up-cloud-discovery).
+Aby uzyskać więcej informacji, zobacz [Cloud Discovery](/cloud-app-security/set-up-cloud-discovery).
 
 ## <a name="security-alerts-from-privileged-identity-management"></a>Alerty zabezpieczeń z usługi Privileged Identity Management
 
-Tę lukę w zabezpieczeniach pomaga użytkownikom odnajdywanie ich i rozwiązywanie alertów dotyczących tożsamości uprzywilejowanych w Twojej organizacji.  
+Ta luka w zabezpieczeniach ułatwia odnajdywanie i rozwiązywanie alertów dotyczących tożsamości uprzywilejowanych w organizacji.  
 
-Aby użytkownicy mogli wykonywać operacje uprzywilejowane, organizacje muszą udzielić użytkownikom tymczasowy lub stały uprzywilejowanego dostępu w usłudze Azure AD, zasobów platformy Azure lub usługi Office 365 lub innych aplikacji SaaS. Każda z tych użytkowników uprzywilejowanych zwiększa obszar narażony na Twojej organizacji. Tę lukę w zabezpieczeniach ułatwia identyfikowanie użytkowników z dostępem uprzywilejowanym niepotrzebne i podjąć odpowiednie działania w celu zmniejszenia lub wyeliminowania ryzyka, które stanowią one.
+Aby umożliwić użytkownikom wykonywanie uprzywilejowanych operacji, organizacje muszą udzielić użytkownikom tymczasowego lub trwałego dostępu uprzywilejowanego w usłudze Azure AD, zasobach platformy Azure lub Office 365 lub innych aplikacjach SaaS. Każdy z tych uprzywilejowanych użytkowników zwiększa obszar ataków w organizacji. Ta luka w zabezpieczeniach ułatwia identyfikowanie użytkowników z niepotrzebnym dostępem uprzywilejowanym oraz podejmowanie odpowiednich działań w celu ograniczenia lub wyeliminowania ryzyka, które stanowią to.
 
-Zalecamy użycie organizacji usługi Azure AD Privileged Identity Management, aby zarządzać, kontrolować i monitorowanie uprzywilejowanych tożsamości w usłudze Azure AD, a także innych usług online firmy Microsoft, takich jak usługi Office 365 lub Microsoft Intune.
+Zalecamy organizacjom używanie Azure AD Privileged Identity Management do zarządzania, kontrolowania i monitorowania tożsamości uprzywilejowanych w usłudze Azure AD, a także innych Usługi online, takich jak Office 365 lub Microsoft Intune.
 
 Aby uzyskać więcej informacji, zobacz [Usługa Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md).
 

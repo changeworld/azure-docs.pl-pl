@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 7/18/2019
 ms.author: raiye
-ms.openlocfilehash: edf120fa7997cf2d0381dcb7cd3ee0d4e16dd72b
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 2dac76ef0d0d71c11291e63fdb3a7ce307638b50
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321418"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405542"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Wersje systemu operacyjnego gościa platformy Azure i macierz zgodności zestawu SDK
 Program udostępnia aktualne informacje o najnowszych wersjach systemu operacyjnego gościa platformy Azure dla Cloud Services. Te informacje ułatwiają zaplanowanie ścieżki uaktualnienia przed wyłączeniem systemu operacyjnego gościa. Jeśli skonfigurujesz role do korzystania z *automatycznych* aktualizacji systemu operacyjnego gościa zgodnie z opisem w [ustawieniach aktualizacji systemu operacyjnego gościa platformy Azure][Azure Guest OS Update Settings], nie trzeba przeczytywać tej strony.
@@ -76,7 +76,7 @@ System operacyjny gościa w październiku został opublikowany.
 ###### <a name="october-12-2018"></a>**12 października 2018**
 Wydano system operacyjny gościa w trybie gościnnym.
 
-## <a name="releases"></a>Wydania
+## <a name="releases"></a>Wersje
 
 ## <a name="family-6-releases"></a>Wydania z rodziny 6
 **Windows Server 2019**
@@ -110,7 +110,7 @@ Wydano system operacyjny gościa w trybie gościnnym.
 ## <a name="family-5-releases"></a>Wersje z rodziny 5
 **Windows Server 2016**
 
-.NET Framework zainstalowane: 3,5, 4.6.2, 4.7.2
+.NET Framework zainstalowane: 3,5, 4,6
 
 > [!NOTE]
 > Hasło RDP rodziny systemów operacyjnych 5 musi składać się z co najmniej 10 znaków.
@@ -127,7 +127,7 @@ Wydano system operacyjny gościa w trybie gościnnym.
 |~~WA-GUEST-OS-5.27_201901-01~~ |5 lutego 2019 |26 marca 2019 |
 |~~WA-GUEST-OS-5.26_201812-01~~ |7 stycznia 2019 |12 marca 2019 |
 |~~WA-GUEST-OS-5.25_201811-01~~ |14 grudnia 2018 |5 lutego 2019 |
-|~~WA-GUEST-OS-5.24_201810-01~~ |8 listopada 2018 |7 stycznia 2019 |
+|~~WA-GUEST-OS-5.24_201810-01~~ |8 listopada 2018 r. |7 stycznia 2019 |
 |~~WA-GUEST-OS-5.23_201809-01~~ |12 października 2018 |14 grudnia 2018 |
 
 ## <a name="family-4-releases"></a>Wydania z rodziny 4
@@ -145,7 +145,7 @@ Wydano system operacyjny gościa w trybie gościnnym.
 |~~WA-GUEST-OS-4.62_201901-01~~ |5 lutego 2019 |26 marca 2019 |
 |~~WA-GUEST-OS-4.61_201812-01~~ |7 stycznia 2019 |12 marca 2019 |
 |~~WA-GUEST-OS-4.60_201811-01~~ |14 grudnia 2018 |5 lutego 2019 |
-|~~WA-GUEST-OS-4.59_201810-01~~ |8 listopada 2018 |7 stycznia 2019 |
+|~~WA-GUEST-OS-4.59_201810-01~~ |8 listopada 2018 r. |7 stycznia 2019 |
 |~~WA-GUEST-OS-4.58_201809-01~~ |12 października 2018 |14 grudnia 2018 |
 
 ## <a name="family-3-releases"></a>Wersje z rodziny 3
@@ -163,7 +163,7 @@ Wydano system operacyjny gościa w trybie gościnnym.
 |~~WA-GUEST-OS-3.69_201901-01~~ |5 lutego 2019 |26 marca 2019 |
 |~~WA-GUEST-OS-3.68_201812-01~~ |7 stycznia 2019 |12 marca 2019 |
 |~~WA-GUEST-OS-3.67_201811-01~~ |14 grudnia 2018 |5 lutego 2019 |
-|~~WA-GOŚĆ-OS-3.66 _201810-01~~ |8 listopada 2018 |7 stycznia 2019 |
+|~~WA-GOŚĆ-OS-3.66 _201810-01~~ |8 listopada 2018 r. |7 stycznia 2019 |
 |~~WA-GOŚĆ-OS-3.65 _201809-01~~ |12 października 2018 |14 grudnia 2018 |
 
 ## <a name="family-2-releases"></a>Wersje z rodziny 2
@@ -181,7 +181,7 @@ Wydano system operacyjny gościa w trybie gościnnym.
 |~~WA-GUEST-OS-2.82_201901-01~~ |5 lutego 2019 |26 marca 2019 |
 |~~WA-GUEST-OS-2.81_201812-01~~ |7 stycznia 2019 |12 marca 2019 |
 |~~WA-GUEST-OS-2.80_201811-01~~ |14 grudnia 2018 |5 lutego 2019 |
-|~~WA-GUEST-OS-2.79_201810-01~~ |8 listopada 2018 |7 stycznia 2019 |
+|~~WA-GUEST-OS-2.79_201810-01~~ |8 listopada 2018 r. |7 stycznia 2019 |
 |~~WA-GUEST-OS-2.78_201809-01~~ |12 października 2018 |14 grudnia 2018 |
 
 ## <a name="msrc-patch-updates"></a>Aktualizacje poprawek MSRC

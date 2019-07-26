@@ -1,6 +1,6 @@
 ---
-title: Raporty dotyczące usługi Azure Active Directory użytkownika automatyczne Inicjowanie obsługi administracyjnej konta do aplikacji SaaS | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak sprawdzić stan inicjowania obsługi zadań konta użytkowników i jak rozwiązywać problemy z aprowizacji poszczególnych użytkowników.
+title: Zgłoś automatyczne Inicjowanie obsługi kont użytkowników w aplikacjach SaaS | Microsoft Docs
+description: Dowiedz się, jak sprawdzić stan automatycznych zadań aprowizacji konta użytkownika i jak rozwiązywać problemy z obsługą poszczególnych użytkowników.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -15,105 +15,105 @@ ms.date: 09/09/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f7386fd26de55911f51f73600f1e2bf1a70ce11
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: fda7654ca2d825ae4112dd06021c7e83ed6867cd
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807697"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381244"
 ---
-# <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Samouczek: Raporty dotyczące aprowizacja kont użytkowników
+# <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Samouczek: Raportowanie dotyczące automatycznego aprowizacji kont użytkowników
 
-Azure Active Directory (Azure AD) obejmuje [konta użytkownika usługi aprowizacji](user-provisioning.md) który ułatwia automatyzację inicjowania obsługi anulowania obsługi administracyjnej kont użytkowników w aplikacji SaaS i innych systemów, na potrzeby cyklu życia tożsamości end-to-end Zarządzanie. Usługa Azure AD obsługuje wstępnie zintegrowanych użytkownika aprowizacji łączniki dla wszystkich aplikacji i systemów, w sekcji "Proponowany" [galerii aplikacji usługi Azure AD](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured).
+Usługa Azure Active Directory (Azure AD) obejmuje [usługę aprowizacji kont użytkowników](user-provisioning.md) , która pomaga zautomatyzować inicjowanie aprowizacji kont użytkowników w aplikacjach SaaS i innych systemach, na potrzeby kompleksowego zarządzania cyklem życia tożsamości. Usługa Azure AD obsługuje wstępnie zintegrowane łączniki aprowizacji użytkowników dla wszystkich aplikacji i systemów w sekcji "Polecane" w [galerii aplikacji usługi Azure AD](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured).
 
-W tym artykule opisano, jak sprawdzić stan zadań inicjowania obsługi administracyjnej po zostało skonfigurowane i jak rozwiązywać problemy z inicjowania obsługi poszczególnych użytkowników i grup.
+W tym artykule opisano sposób sprawdzania stanu zadań aprowizacji po ich skonfigurowaniu oraz rozwiązywania problemów z inicjowaniem obsługi poszczególnych użytkowników i grup.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
-Inicjowania obsługi administracyjnej łączniki są, konfigurowanie i skonfigurować za pomocą [witryny Azure portal](https://portal.azure.com), postępując zgodnie z [podano dokumentację](../saas-apps/tutorial-list.md) dla obsługiwanych aplikacji. Po skonfigurowaniu i uruchomiona, inicjowanie obsługi administracyjnej zadania mogą zostać zgłoszone przy użyciu jednej z dwóch metod:
+Łączniki aprowizacji są konfigurowane i konfigurowane przy użyciu [Azure Portal](https://portal.azure.com), zgodnie z [podaną dokumentacją](../saas-apps/tutorial-list.md) dla obsługiwanej aplikacji. Po skonfigurowaniu i uruchomieniu zadań aprowizacji można zgłaszać przy użyciu jednej z dwóch metod:
 
-* **Witryny Azure portal** — w tym artykule opisano przede wszystkim, trwa pobieranie informacji w raporcie z [witryny Azure portal](https://portal.azure.com), który zawiera zarówno aprowizacji raportu podsumowania jak i udostępniania szczegółowych dzienniki inspekcji dla danego aplikacja.
-* **Interfejs API inspekcji** — Azure Active Directory oferuje także inspekcji interfejsu API, który umożliwia programowe pobieranie szczegółowe dzienniki inspekcji inicjowania obsługi administracyjnej. Zobacz [inspekcji usługi Azure Active Directory, dokumentacja interfejsu API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) dokumentacji dotyczące korzystania z tego interfejsu API. Chociaż w tym artykule nie szczegółowo opisano, jak za pomocą interfejsu API, szczegółowo opisują rodzaje inicjowania obsługi zdarzeń, które są rejestrowane w dzienniku inspekcji.
+* **Azure Portal** — w tym artykule opisano pobieranie informacji o raportach z [Azure Portal](https://portal.azure.com), które zawierają Raport z podsumowaniem udostępniania oraz szczegółowe dzienniki inspekcji dla danej aplikacji.
+* **Interfejs API inspekcji** — Azure Active Directory również udostępnia interfejs API inspekcji, który umożliwia programistyczne pobieranie szczegółowych dzienników inspekcji aprowizacji. Informacje dotyczące korzystania z tego interfejsu API można znaleźć w dokumentacji dotyczącej [interfejsu API inspekcji Azure Active Directory](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) . Chociaż w tym artykule nie opisano sposobu korzystania z interfejsu API, szczegółowe informacje o typach zdarzeń aprowizacji, które są rejestrowane w dzienniku inspekcji.
 
 ### <a name="definitions"></a>Definicje
 
-W tym artykule używane następujące terminy, określonych poniżej:
+W tym artykule opisano następujące warunki:
 
-* **Źródłowy System** — repozytorium użytkowników, którzy inicjowania obsługi administracyjnej usługi AD Azure synchronizuje z. Usługa Azure Active Directory jest system źródłowy dla większości wstępnie zintegrowanych łączników inicjowania obsługi administracyjnej, jednak istnieją pewne wyjątki (przykład: WORKDAY synchronizacji ruchu przychodzącego).
-* **Docelowy System** — repozytorium użytkowników, którzy synchronizuje usługi aprowizacji usługi Azure AD. Zazwyczaj jest to aplikacja SaaS (przykłady: SalesForce, ServiceNow, usługi G Suite, usługa Dropbox dla firm), ale w niektórych przypadkach może być systemu lokalnego, takich jak usługi Active Directory (przykład: WORKDAY synchronizacji ruchu przychodzącego do usługi Active Directory).
+* **System źródłowy** — repozytorium użytkowników, z których usługa Azure AD Provisioning synchronizuje. Azure Active Directory jest systemem źródłowym większości wstępnie zintegrowanych łączników aprowizacji, jednak istnieją pewne wyjątki (przykład: Synchronizacja ruchu przychodzącego z produktu Workday).
+* **System docelowy** — repozytorium użytkowników, do których jest synchronizowana usługa Azure AD Provisioning. Jest to zazwyczaj aplikacja SaaS (przykłady: Salesforce, usługi ServiceNow, G Suite, Dropbox dla firm), ale w niektórych przypadkach może to być system lokalny, taki jak Active Directory (przykład: Synchronizacja ruchu przychodzącego z programu Workday do Active Directory).
 
-## <a name="getting-provisioning-reports-from-the-azure-portal"></a>Wprowadzenie udostępniania raportów w witrynie Azure portal
+## <a name="getting-provisioning-reports-from-the-azure-portal"></a>Uzyskiwanie raportów aprowizacji z Azure Portal
 
-Pobierz zainicjowanie obsługi informacji w raporcie dla danej aplikacji, należy uruchomić, uruchamiając [witryny Azure portal](https://portal.azure.com) i przechodząc do aplikacji przedsiębiorstwa, dla której skonfigurowano usługę aprowizacji. Na przykład w przypadku udostępniania użytkownikom do wyniesienia rozgrywek LinkedIn jest ścieżka nawigacji, aby szczegóły aplikacji:
+Aby uzyskać informacje o raportowaniu dla danej aplikacji, Zacznij od uruchomienia [Azure Portal](https://portal.azure.com) i przechodzenie do aplikacji przedsiębiorstwa, dla której skonfigurowano obsługę administracyjną. Na przykład w przypadku aprowizacji użytkowników do podniesienia uprawnień do serwisu LinkedIn ścieżka nawigacji do szczegółów aplikacji jest:
 
-**Usługa Azure Active Directory > aplikacje dla przedsiębiorstw > wszystkie aplikacje > LinkedIn podnieść poziom**
+**Azure Active Directory > aplikacje dla przedsiębiorstw > Wszystkie aplikacje > podnoszenie uprawnień do serwisu LinkedIn**
 
-W tym miejscu są dostępne raport z podsumowaniem aprowizacji i inicjowania obsługi dzienników inspekcji, oba opisane poniżej.
+W tym miejscu możesz uzyskać dostęp do raportu podsumowania aprowizacji i dzienników inspekcji aprowizacji, które opisano poniżej.
 
-## <a name="provisioning-summary-report"></a>Inicjowanie obsługi administracyjnej raport z podsumowaniem
+## <a name="provisioning-summary-report"></a>Raport z podsumowaniem aprowizacji
 
-Raport z podsumowaniem inicjowania obsługi administracyjnej jest widoczna w **aprowizacji** kartę dla danej aplikacji. Znajduje się w **szczegóły synchronizacji** sekcji poniżej **ustawienia**i zawiera następujące informacje:
+Raport podsumowujący aprowizacji jest widoczny na karcie **aprowizacji** dla danej aplikacji. Znajduje się w sekcji **szczegóły synchronizacji** poniżej **ustawień**i zawiera następujące informacje:
 
-* Całkowita liczba użytkowników i / grup, zostały zsynchronizowane i są obecnie dostępne w zakresie aprowizacji między systemem źródłowego i docelowego systemu.
-* Czas ostatniej synchronizacji zostało uruchomione. Zazwyczaj odbyła się co 20 – 40 minut, po [początkowej synchronizacji](user-provisioning.md#what-happens-during-provisioning) zostało zakończone.
-* Określa, czy [początkowej synchronizacji](user-provisioning.md#what-happens-during-provisioning) zostało ukończone.
-* Określa, czy Proces inicjowania obsługi został umieszczony w kwarantannie, a Przyczyna stanu kwarantanny jest (na przykład błąd komunikacji z systemu docelowego, z powodu poświadczeń Nieprawidłowa wartość pola administrator).
+* Łączna liczba użytkowników i/grup, które zostały zsynchronizowane i są obecnie w zakresie aprowizacji między systemem źródłowym a systemem docelowym.
+* Ostatnia synchronizacja została uruchomiona. Synchronizacje zwykle odbywają się co 20-40 minut po zakończeniu [początkowej synchronizacji](user-provisioning.md#what-happens-during-provisioning) .
+* Czy [początkowa synchronizacja](user-provisioning.md#what-happens-during-provisioning) została ukończona.
+* Czy proces aprowizacji został umieszczony w kwarantannie, a powód stanu kwarantanny to (na przykład niepowodzenie komunikacji z systemem docelowym z powodu nieprawidłowych poświadczeń administratora).
 
-Raport z podsumowaniem inicjowania obsługi administracyjnej powinna być pierwsze spojrzenie Administratorzy miejsca, aby sprawdzić kondycję operacyjną zadanie inicjowania obsługi administracyjnej.
+Raport z podsumowaniem udostępniania powinien być pierwszym miejscem, w którym administratorzy muszą sprawdzić kondycję operacyjną zadania aprowizacji.
 
  ![Raport z podsumowaniem](./media/check-status-user-account-provisioning/summary_report.PNG)
 
-## <a name="provisioning-audit-logs"></a>Dzienniki inspekcji inicjowania obsługi administracyjnej
+## <a name="provisioning-audit-logs"></a>Dzienniki inspekcji aprowizacji
 
-Wszystkie działania wykonywane przez usługę aprowizacji są rejestrowane w dziennikach inspekcji usługi Azure AD, które mogą być wyświetlane w **dzienniki inspekcji** karcie **Inicjowanie obsługi administracyjnej konta** kategorii. Typy zdarzeń zarejestrowanych działań:
+Wszystkie działania wykonywane przez usługę aprowizacji są rejestrowane w dziennikach inspekcji usługi Azure AD, które można wyświetlić na karcie **dzienniki inspekcji** w kategorii **Inicjowanie obsługi konta** . Zarejestrowane typy zdarzeń działania obejmują:
 
-* **Importuj zdarzenia** — "import" zdarzenie jest rejestrowane każdorazowo inicjowania obsługi administracyjnej usługi AD Azure pobiera informacje o poszczególnych użytkowników i grup z systemu źródłowego lub docelowego systemu. Podczas synchronizacji użytkownicy są pobierane z systemu źródłowego najpierw z wynikami rejestrowane jako "Importuj" zdarzenia. Zgodne identyfikatory użytkowników pobrane następnie są wyszukiwane względem systemu docelowego, aby sprawdzić, czy istnieją one z wynikami zarejestrowany jako "Importuj" zdarzenia. Te zdarzenia rejestrować wszystkie atrybuty zamapowanych użytkowników i ich wartości, które były widoczne dla usługi Azure AD usługi aprowizacji w momencie wystąpienia zdarzenia.
-* **Zdarzenia reguły synchronizacji** — te zdarzenia sporządzić raport na temat wyników są reguły mapowania atrybutów i filtrów określania zakresu dowolne skonfigurowane po użytkownika dane zostały zaimportowane i wykonywane począwszy od systemów źródłowych i docelowych. Na przykład jeśli użytkownik w systemie źródłowym jest uważana za będącą w zakresie udostępniania i uważa się, że nie istnieje w systemie docelowym, a następnie rejestruje tego zdarzenia, które użytkownik będzie gotowa w systemie docelowym.
-* **Eksportuj zdarzenia** — "export" zdarzenie jest rejestrowane każdorazowo usługi aprowizacji usługi Azure AD zapisuje obiekt konta lub grupy użytkowników systemu docelowego. Te zdarzenia rejestruje wszystkie atrybuty użytkownika i ich wartości, które zostały napisane przez usługę Azure AD usługi aprowizacji w czasie zdarzenia. Jeśli wystąpił błąd podczas zapisywania obiektu konta lub grupy użytkowników do systemu docelowego, która będzie wyświetlana w tym miejscu.
-* **Przetwarzanie depozytu zdarzeń** -Escrow procesu — wystąpienia usługi aprowizacji napotka błąd podczas próby wykonania operacji, gdy rozpoczyna się ponowić próbę wykonania operacji na interwał wycofywania czasu. Zdarzenie "depozytu" jest rejestrowana w każdym razem, gdy prób ponownego wykonania operacji inicjowania obsługi administracyjnej.
+* **Importuj zdarzenia** — zdarzenie "Import" jest rejestrowane za każdym razem, gdy usługa Azure AD Provisioning pobiera informacje o pojedynczym użytkowniku lub grupie z systemu źródłowego lub docelowego. Podczas synchronizacji użytkownicy są najpierw pobierani z systemu źródłowego, z wynikami zarejestrowanymi jako zdarzenia "Import". Identyfikatory pasujących pobranych użytkowników są następnie wysyłane do systemu docelowego w celu sprawdzenia, czy istnieją, a wyniki są również rejestrowane jako zdarzenia "Import". Te zdarzenia rejestrują wszystkie zamapowane atrybuty użytkownika i ich wartości, które były widoczne w usłudze Azure AD Provisioning w momencie zdarzenia.
+* **Zdarzenia reguły synchronizacji** — te zdarzenia są raportowane względem wyników reguł mapowania atrybutów i wszelkich skonfigurowanych filtrów zakresu, po zaimportowaniu danych użytkownika i ich ocenie z systemów źródłowych i docelowych. Na przykład, jeśli użytkownik w systemie źródłowym jest uznawany za w zakresie aprowizacji i uznawany za nieistniejący w systemie docelowym, to zdarzenie to rejestruje, że użytkownik zostanie zainicjowany w systemie docelowym.
+* **Eksportuj zdarzenia** — zdarzenie "Export" jest rejestrowane za każdym razem, gdy usługa Azure AD Provisioning zapisuje obiekt konta użytkownika lub grupy w systemie docelowym. Te zdarzenia rejestrują wszystkie atrybuty użytkownika i ich wartości, które zostały wprowadzone w usłudze Azure AD Provisioning w momencie zdarzenia. Jeśli wystąpił błąd podczas zapisywania obiektu konta użytkownika lub grupy w systemie docelowym, zostanie on wyświetlony w tym miejscu.
+* **Przetwarzaj zdarzenia Escrow** — proces obsługi Escrow występuje, gdy usługa aprowizacji napotka błąd podczas próby wykonania operacji, i rozpocznie ponawianie próby wykonania operacji w przedziale czasu. Zdarzenie "Escrow" jest rejestrowane za każdym razem, gdy podjęto próbę wykonania operacji aprowizacji.
 
-Po wyświetleniu inicjowania obsługi zdarzeń dla poszczególnych użytkowników, zdarzenia są zwykle zachodzą w następującej kolejności:
+Podczas przeglądania zdarzeń aprowizacji dla pojedynczego użytkownika zdarzenia zwykle występują w następującej kolejności:
 
-1. Importuj zdarzenia: Użytkownik jest pobierana z systemu źródłowego.
-1. Importuj zdarzenia: System docelowy zostaje przesłane zapytanie pod kątem istnienia pobrane użytkownika.
-1. Zdarzenia reguły synchronizacji: Dane użytkownika z systemów źródłowych i docelowych są sprawdzane pod kątem skonfigurowanych reguł Mapowanie atrybutów i filtrów określania zakresu, aby określić, jaką akcję, należy wykonać.
-1. Eksportuj zdarzenia: Jeśli określone zdarzenia reguły synchronizacji, czy akcja powinna być wykonana (Add, Update, Delete), a następnie wyniki akcji są rejestrowane w zdarzeniu eksportu.
+1. Importuj zdarzenie: Użytkownik jest pobierany z systemu źródłowego.
+1. Importuj zdarzenie: System docelowy jest proszony o sprawdzenie obecności pobranego użytkownika.
+1. Zdarzenie reguły synchronizacji: Dane użytkownika z systemów źródłowych i docelowych są oceniane względem skonfigurowanych reguł mapowania atrybutów i filtrów określania zakresu, aby określić, jaka akcja ma być wykonana.
+1. Eksportuj zdarzenie: Jeśli zdarzenie reguły synchronizacji wykryło, że akcja powinna zostać wykonana (Dodawanie, aktualizowanie, usuwanie), wyniki akcji są rejestrowane w zdarzeniu eksportu.
 
-   ![Przykład: Strona dziennika inspekcji, która pokazuje działania i stan](./media/check-status-user-account-provisioning/audit_logs.PNG)
+   ![Przykład: Strona dziennika inspekcji przedstawiająca działania i stan](./media/check-status-user-account-provisioning/audit_logs.PNG)
 
-### <a name="looking-up-provisioning-events-for-a-specific-user"></a>Trwa wyszukiwanie inicjowania obsługi zdarzeń dla określonego użytkownika
+### <a name="looking-up-provisioning-events-for-a-specific-user"></a>Wyszukiwanie zdarzeń aprowizacji dla określonego użytkownika
 
-To najbardziej typowy przypadek użycia, w przypadku inicjowania obsługi dzienników inspekcji do sprawdzania stanu obsługi administracyjnej konta użytkownika. Aby wyszukać ostatniego zdarzenia inicjowania obsługi administracyjnej dla określonego użytkownika:
+Najczęstszym przypadkiem użycia w dziennikach inspekcji aprowizacji jest sprawdzenie stanu aprowizacji poszczególnych kont użytkowników. Aby wyszukać ostatnie zdarzenia aprowizacji dla określonego użytkownika:
 
-1. Przejdź do **dzienniki inspekcji** sekcji.
-1. Z **kategorii** menu, wybierz opcję **Inicjowanie obsługi administracyjnej konta**.
-1. W **zakres dat** menu, wybierz zakres dat, który chcesz wyszukać.
-1. W **wyszukiwania** paska, wprowadź identyfikator użytkownika chcesz wyszukać. Format wartości Identyfikator powinien być zgodny w dowolnie wybrany jako podstawowy identyfikator dopasowania w konfiguracji mapowanie atrybutu (na przykład, userPrincipalName lub pracowniku numer identyfikacyjny). Wartość Identyfikatora, wymagane będzie widoczny w kolumnie cele.
-1. Naciśnij klawisz Enter, aby wyszukać. Najpierw zostanie zwrócony najnowszych zdarzeń, inicjowania obsługi administracyjnej.
-1. Jeśli zdarzenia są zwracane, należy pamiętać, typy działań oraz tego, czy zakończonych powodzeniem lub niepowodzeniem. Jeśli żadne wyniki nie zostaną zwrócone, następnie oznacza użytkownik nie istnieje albo nie jeszcze został wykryty w procesie aprowizacji w przypadku pełnej synchronizacji nie zostało jeszcze zakończone.
-1. Kliknij poszczególne zdarzenia, aby wyświetlić szczegółowe, w tym wszystkich właściwości użytkownika, które zostały pobrane, ocenione lub zapisywane jako część zdarzenia.
+1. Przejdź do sekcji **dzienniki inspekcji** .
+1. Z menu **Kategoria** wybierz opcję **Inicjowanie obsługi konta**.
+1. W menu **zakres dat** wybierz zakres dat, który chcesz wyszukać.
+1. Na pasku **wyszukiwania** wprowadź identyfikator użytkownika, który chcesz wyszukać. Format wartości identyfikatora powinien być taki sam, jak wybrany jako główny identyfikator dopasowania w konfiguracji mapowania atrybutów (na przykład userPrincipalName lub numer IDENTYFIKACYJNy pracownika). Wymagana wartość identyfikatora będzie widoczna w kolumnie targets (s).
+1. Naciśnij klawisz ENTER, aby wyszukać. Najnowsze zdarzenia aprowizacji zostaną zwrócone jako pierwsze.
+1. Jeśli są zwracane zdarzenia, należy zwrócić uwagę na typy działań oraz to, czy zakończyły się powodzeniem, czy niepowodzeniem. Jeśli żadne wyniki nie zostaną zwrócone, oznacza to, że użytkownik nie istnieje lub nie został jeszcze wykryty przez proces aprowizacji, jeśli pełna synchronizacja nie została jeszcze ukończona.
+1. Kliknij poszczególne zdarzenia, aby wyświetlić rozszerzone szczegóły, w tym wszystkie właściwości użytkowników, które zostały pobrane, ocenione lub zapisywana jako część zdarzenia.
 
-Aby uzyskać pokaz dotyczący sposobu użycia dzienniki inspekcji Zobacz poniższy klip wideo. Dzienniki inspekcji są prezentowane w całym 5:30 oznaczyć:
+Aby zapoznać się z prezentacją dotyczącą korzystania z dzienników inspekcji, zobacz film wideo poniżej. Dzienniki inspekcji są prezentowane wokół 5:30 znacznika:
 
 > [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
 
-### <a name="tips-for-viewing-the-provisioning-audit-logs"></a>Porady dotyczące wyświetlania inicjowania obsługi dzienników inspekcji
+### <a name="tips-for-viewing-the-provisioning-audit-logs"></a>Porady dotyczące wyświetlania dzienników inspekcji aprowizacji
 
-Najlepsze czytelności w witrynie Azure portal, wybierz **kolumn** przycisk, a następnie wybierz następujące kolumny:
+Aby zapewnić najlepszą czytelność w Azure Portal, wybierz przycisk **kolumny** , a następnie wybierz następujące kolumny:
 
-* **Data** — Pokazuje datę, wystąpiło zdarzenie.
-* **Obiekty docelowe** — pokazuje aplikacji nazwy i Identyfikatora użytkownika, są tematy zdarzenia.
-* **Działanie** — typ działania, zgodnie z wcześniejszym opisem.
-* **Stan** — czy wydarzenie zakończyło się pomyślnie, czy nie.
-* **Przyczyna stanu** — podsumowanie co wydarzyło się w przypadku inicjowania obsługi administracyjnej.
+* **Date** — pokazuje datę wystąpienia zdarzenia.
+* **Elementy docelowe** — pokazuje nazwę aplikacji i identyfikator użytkownika, które są tematami zdarzenia.
+* **Działanie** — typ działania opisany wcześniej.
+* **Stan** — czy zdarzenie zakończyło się pomyślnie.
+* **Przyczyna stanu** — podsumowanie informacji o tym, co się stało w zdarzeniu aprowizacji.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Inicjowania obsługi administracyjnej podsumowania raport i dzienniki inspekcji odgrywają kluczową rolę pomaga rozwiązać problemy dotyczące aprowizacji różne konta administratorów.
+Raport z podsumowaniem udostępniania i dzienniki inspekcji odgrywają kluczową rolę pomagającą administratorom rozwiązywać różne problemy z inicjowaniem obsługi konta użytkownika.
 
-Na podstawie scenariusza wskazówki na temat rozwiązywania problemów automatycznej aprowizacji użytkowników w temacie [problemy z konfigurowaniem i aprowizowaniem użytkowników z aplikacją](application-provisioning-config-problem.md).
+Aby zapoznać się ze wskazówkami dotyczącymi sposobu rozwiązywania problemów dotyczących automatycznego aprowizacji użytkowników, zobacz [problemy dotyczące konfigurowania i aprowizacji użytkowników w aplikacji](application-provisioning-config-problem.md).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](configure-automatic-user-provisioning-portal.md)
+* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](what-is-single-sign-on.md)

@@ -1,6 +1,6 @@
 ---
-title: Konfiguracja — często zadawane pytania — usługa Azure App Service | Dokumentacja firmy Microsoft
-description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące konfiguracji i zarządzania problemy dla funkcji Web Apps w usłudze Azure App Service.
+title: Często zadawane pytania dotyczące konfiguracji — Azure App Service | Microsoft Docs
+description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące konfiguracji i problemów z zarządzaniem dla Web Apps funkcji Azure App Service.
 services: app-service\web
 documentationcenter: ''
 author: genlin
@@ -15,134 +15,134 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: ec2580f0c71c98c7a03f3326cb1b8ff539109ee0
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 6f86a8465bcbd3d88ffb7909cac53c3fd38c3af6
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67720027"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489429"
 ---
-# <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfiguracja i zarządzanie nim często zadawane pytania dotyczące aplikacji sieci Web na platformie Azure
+# <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Często zadawane pytania dotyczące konfiguracji i zarządzania dla Web Apps na platformie Azure
 
-W tym artykule znajdują się odpowiedzi na często zadawane pytania (FAQ) dotyczących konfiguracji i zarządzania dla [funkcji Web Apps w usłudze Azure App Service](https://azure.microsoft.com/services/app-service/web/).
+W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące problemów z konfiguracją i zarządzaniem dla [Web Apps funkcji Azure App Service](https://azure.microsoft.com/services/app-service/web/).
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="are-there-limitations-i-should-be-aware-of-if-i-want-to-move-app-service-resources"></a>Czy istnieją ograniczenia, o których warto wiedzieć, jeśli chcę przenieść zasoby usługi App Service?
+## <a name="are-there-limitations-i-should-be-aware-of-if-i-want-to-move-app-service-resources"></a>Czy istnieją ograniczenia, o których należy pamiętać, jeśli chcę przenieść App Service zasoby?
 
-Jeśli zamierzasz przenieść zasoby usługi App Service do nowej grupy zasobów lub subskrypcji, istnieją pewne ograniczenia, które należy zwrócić uwagę. Aby uzyskać więcej informacji, zobacz [ograniczenia usługi App Service](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
+Jeśli planujesz przenoszenie App Service zasobów do nowej grupy zasobów lub subskrypcji, musisz znać kilka ograniczeń. Aby uzyskać więcej informacji, zobacz [ograniczenia App Service](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
 
-## <a name="how-do-i-use-a-custom-domain-name-for-my-web-app"></a>Jak używać niestandardowej nazwy domeny dla mojej aplikacji sieci web?
+## <a name="how-do-i-use-a-custom-domain-name-for-my-web-app"></a>Jak mogę użyć niestandardowej nazwy domeny dla mojej aplikacji sieci Web?
 
-Odpowiedzi na często zadawane pytania dotyczące korzystania z niestandardowej nazwy domeny z Twoją aplikacją internetową platformy Azure, zobacz nasze 7 minutowym filmie [Dodawanie niestandardowej nazwy domeny](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name). Film wideo zawiera wskazówki dotyczące sposobu dodawania niestandardowej nazwy domeny. Opisano używanie własnego adresu URL zamiast *. adresu URL azurewebsites.net z aplikacją sieci web usługi App Service. Możesz również zobaczyć szczegółowy przewodnik dotyczący [sposób mapowania niestandardowej nazwy domeny](app-service-web-tutorial-custom-domain.md).
-
-
-## <a name="how-do-i-purchase-a-new-custom-domain-for-my-web-app"></a>Jak kupić domenę niestandardową na aplikację sieci web?
-
-Aby dowiedzieć się, jak kupić i konfigurowanie domeny niestandardowej aplikacji sieci web usługi App Service, zobacz [kupowanie i konfigurowanie niestandardowej nazwy domeny w usłudze App Service](manage-custom-dns-buy-domain.md).
+Aby uzyskać odpowiedzi na często zadawane pytania dotyczące używania niestandardowej nazwy domeny w aplikacji sieci Web platformy Azure, zobacz nasze siedem-minutowe wideo [Dodaj niestandardową nazwę domeny](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name). Film wideo zawiera Przewodnik dotyczący dodawania niestandardowej nazwy domeny. W tym artykule opisano sposób użycia własnego adresu URL zamiast adresu URL *. azurewebsites.net z aplikacją internetową App Service. Można też zobaczyć szczegółowy przewodnik [dotyczący sposobu mapowania niestandardowej nazwy domeny](app-service-web-tutorial-custom-domain.md).
 
 
-## <a name="how-do-i-upload-and-configure-an-existing-ssl-certificate-for-my-web-app"></a>Jak przekazać i skonfigurować istniejącego certyfikatu SSL dla aplikacji sieci web?
+## <a name="how-do-i-purchase-a-new-custom-domain-for-my-web-app"></a>Jak mogę zakupić nową domenę niestandardową dla mojej aplikacji sieci Web?
 
-Aby dowiedzieć się, jak przekazywać i skonfigurować istniejącego niestandardowego certyfikatu SSL, zobacz [powiązania istniejącego niestandardowego certyfikatu SSL do aplikacji sieci web platformy Azure](app-service-web-tutorial-custom-ssl.md#upload).
-
-
-## <a name="how-do-i-purchase-and-configure-a-new-ssl-certificate-in-azure-for-my-web-app"></a>Jak zakupić i skonfigurować nowy certyfikat SSL na platformie Azure dla aplikacji sieci web?
-
-Aby dowiedzieć się, jak zakupić i skonfigurować certyfikat SSL dla aplikacji sieci web usługi App Service, zobacz [Dodawanie certyfikatu SSL do aplikacji usługi app Service](web-sites-purchase-ssl-web-site.md).
+Aby dowiedzieć się, jak kupić i skonfigurować domenę niestandardową dla App Service aplikacji sieci Web, zobacz [kupowanie i Konfigurowanie niestandardowej nazwy domeny w App Service](manage-custom-dns-buy-domain.md).
 
 
-## <a name="how-do-i-move-application-insights-resources"></a>Jak przenieść zasoby usługi Application Insights?
+## <a name="how-do-i-upload-and-configure-an-existing-ssl-certificate-for-my-web-app"></a>Jak mogę przekazać i skonfigurować istniejący certyfikat SSL dla mojej aplikacji sieci Web?
 
-Obecnie usługa Azure Application Insights nie obsługuje operacji przenoszenia. Jeśli oryginalna grupa zasobów zawiera zasób usługi Application Insights, nie można przenieść tego zasobu. Jeśli zasób usługi Application Insights jest uwzględniony, podczas próby Przenieś aplikację usługi App Service, całą przenieść operacja kończy się niepowodzeniem. Jednak usługa Application Insights i plan usługi App Service nie muszą być w tej samej grupie zasobów co aplikacja dla aplikacji do poprawnego działania.
+Aby dowiedzieć się, jak przekazać i skonfigurować istniejący niestandardowy certyfikat protokołu SSL, zobacz [Powiązywanie istniejącego niestandardowego certyfikatu protokołu SSL z aplikacją internetową platformy Azure](app-service-web-tutorial-custom-ssl.md#upload).
 
-Aby uzyskać więcej informacji, zobacz [ograniczenia usługi App Service](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
 
-## <a name="where-can-i-find-a-guidance-checklist-and-learn-more-about-resource-move-operations"></a>Gdzie można znaleźć listę kontrolną wskazówki i Dowiedz się więcej na temat zasobów operacje są przenoszone?
+## <a name="how-do-i-purchase-and-configure-a-new-ssl-certificate-in-azure-for-my-web-app"></a>Jak mogę zakupić i skonfigurować nowy certyfikat SSL na platformie Azure dla mojej aplikacji sieci Web?
 
-[Ograniczenia usługi App Service](../azure-resource-manager/move-limitations/app-service-move-limitations.md) dowiesz się, jak przenieść zasoby do nowej subskrypcji lub do nowej grupy zasobów w tej samej subskrypcji. Możesz uzyskać informacje na temat listy kontrolnej przenoszenia zasobów, Dowiedz się, usług, które obsługują operacji przenoszenia i Dowiedz się więcej o ograniczeniach usługi App Service i innych zagadnień.
+Aby dowiedzieć się, jak kupić i skonfigurować certyfikat SSL dla aplikacji internetowej App Service, zobacz [Dodawanie certyfikatu SSL do aplikacji App Service](web-sites-purchase-ssl-web-site.md).
 
-## <a name="how-do-i-set-the-server-time-zone-for-my-web-app"></a>Jak ustawić strefa czasowa serwera dla mojej aplikacji sieci web?
 
-Aby ustawić strefa czasowa serwera dla aplikacji sieci web:
+## <a name="how-do-i-move-application-insights-resources"></a>Jak mogę przenieść zasoby Application Insights?
 
-1. W witrynie Azure portal w ramach subskrypcji usługi App Service, przejdź do **ustawienia aplikacji** menu.
-2. W obszarze **ustawienia aplikacji**, Dodaj następujące ustawienie:
+Obecnie usługa Azure Application Insights nie obsługuje operacji przenoszenia. Jeśli oryginalna Grupa zasobów zawiera zasób Application Insights, nie można przenieść tego zasobu. Jeśli podczas próby przeniesienia aplikacji App Service zostanie uwzględniony zasób Application Insights, cała operacja przenoszenia zakończy się niepowodzeniem. Jednak Application Insights i plan App Service nie musi znajdować się w tej samej grupie zasobów, co aplikacja, aby aplikacja działała poprawnie.
+
+Aby uzyskać więcej informacji, zobacz [ograniczenia App Service](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
+
+## <a name="where-can-i-find-a-guidance-checklist-and-learn-more-about-resource-move-operations"></a>Gdzie można znaleźć listę kontrolną wskazówek i dowiedzieć się więcej o operacjach przenoszenia zasobów?
+
+[Ograniczenia App Service](../azure-resource-manager/move-limitations/app-service-move-limitations.md) przedstawiają sposób przenoszenia zasobów do nowej subskrypcji lub nowej grupy zasobów w ramach tej samej subskrypcji. Możesz uzyskać informacje na temat listy kontrolnej przenoszenia zasobów, dowiedzieć się, które usługi obsługują operację przenoszenia, i Dowiedz się więcej na temat ograniczeń App Service i innych tematów.
+
+## <a name="how-do-i-set-the-server-time-zone-for-my-web-app"></a>Jak mogę ustawić strefy czasowej serwera dla mojej aplikacji sieci Web?
+
+Aby ustawić strefę czasową serwera dla aplikacji sieci Web:
+
+1. W Azure Portal w subskrypcji App Service przejdź do menu **Ustawienia aplikacji** .
+2. W obszarze **Ustawienia aplikacji**Dodaj następujące ustawienie:
     * Klucz = WEBSITE_TIME_ZONE
-    * Wartość = *ma strefę czasową*
+    * Wartość = *wybrana strefa czasowa*
 3. Wybierz pozycję **Zapisz**.
 
-Zobacz **strefa czasowa** kolumny w [domyślne stref czasowych](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) artykuł, aby akceptowane wartości.
+Zaakceptowane wartości można znaleźć w kolumnie **strefa** czasowa w artykule [default Time Zones](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) .
 
-## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Dlaczego moja ciągłych zadań Webjob czasami awarii?
+## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Dlaczego moje ciągłe zadania WebJob czasami kończą się niepowodzeniem?
 
-Domyślnie aplikacje sieci web są usuwane, jeśli są one bezczynne na pewien okres czasu. Dzięki temu system zaoszczędzenia zasobów. W planach Basic i Standard, możesz włączyć **Always On** ustawienie na utrzymanie aplikacji sieci web załadowana przez cały czas. Jeśli aplikacja sieci web działa ciągłych zadań Webjob, należy włączyć **Always On**, lub zadania Webjob może nie działać niezawodnie. Aby uzyskać więcej informacji, zobacz [tworzenie stale działające zadanie WebJob](webjobs-create.md#CreateContinuous).
+Domyślnie aplikacje sieci Web są zwalniane, jeśli są bezczynne przez określony czas. Dzięki temu system będzie zaoszczędzić zasoby. W planach Basic i standard można włączyć ustawienie **zawsze włączone** , aby zapewnić, że aplikacja sieci Web zostanie załadowana przez cały czas. Jeśli aplikacja sieci Web uruchamia ciągłe zadania WebJob, należy włączyć opcję **zawsze włączone**lub zadania WebJob mogą nie działać niezawodnie. Aby uzyskać więcej informacji, zobacz [Tworzenie zadania WebJob działającego w sposób ciągły](webjobs-create.md#CreateContinuous).
 
-## <a name="how-do-i-get-the-outbound-ip-address-for-my-web-app"></a>Jak uzyskać adres IP ruchu wychodzącego dla mojej aplikacji sieci web?
+## <a name="how-do-i-get-the-outbound-ip-address-for-my-web-app"></a>Jak mogę uzyskać wychodzący adres IP dla mojej aplikacji sieci Web?
 
-Aby wyświetlić listę wychodzące adresy IP dla aplikacji sieci web:
+Aby uzyskać listę wychodzących adresów IP dla aplikacji sieci Web:
 
-1. W witrynie Azure portal w bloku aplikacji sieci web, przejdź do **właściwości** menu.
-2. Wyszukaj **adresy ip ruchu wychodzącego**.
+1. W Azure Portal, w bloku aplikacji sieci Web, przejdź do menu **Właściwości** .
+2. Wyszukaj wychodzące **adresy IP**.
 
-Zostanie wyświetlona lista wychodzące adresy IP.
+Zostanie wyświetlona lista wychodzących adresów IP.
 
-Aby dowiedzieć się, jak uzyskać adres IP ruchu wychodzącego, jeśli witryny sieci Web znajduje się w środowisku usługi App Service, zobacz [adresy sieciowe dotyczące połączeń wychodzących](environment/app-service-app-service-environment-network-architecture-overview.md#outbound-network-addresses).
+Aby dowiedzieć się, jak uzyskać wychodzący adres IP, jeśli witryna sieci Web jest hostowana w App Service Environment, zobacz [adresy sieci](environment/app-service-app-service-environment-network-architecture-overview.md#outbound-network-addresses)wychodzące.
 
-## <a name="how-do-i-get-a-reserved-or-dedicated-inbound-ip-address-for-my-web-app"></a>Jak uzyskać zastrzeżony lub dedykowany dla ruchu przychodzącego adresu IP dla mojej aplikacji sieci web?
+## <a name="how-do-i-get-a-reserved-or-dedicated-inbound-ip-address-for-my-web-app"></a>Jak mogę uzyskać zastrzeżony lub dedykowany adres IP ruchu przychodzącego dla mojej aplikacji sieci Web?
 
-Aby skonfigurować dedykowany lub zastrzeżony adres IP dla wywołań przychodzących skierowanych do witryny sieci Web aplikacji platformy Azure, zainstaluj i skonfiguruj certyfikat SSL opartego na protokole IP.
+Aby skonfigurować dedykowany lub zastrzeżony adres IP dla wywołań przychodzących do witryny sieci Web aplikacji platformy Azure, zainstaluj i skonfiguruj certyfikat SSL oparty na protokole IP.
 
-Należy pamiętać, że aby użyć dedykowanego lub zastrzeżony adres IP dla wywołań przychodzących, plan usługi App Service musi być w planie usług w warstwie podstawowa lub wyższej.
+Należy pamiętać, że aby użyć dedykowanego lub zastrzeżony adres IP dla wywołań przychodzących, plan App Service musi być w planie usług w warstwie Podstawowa lub wyższa.
 
-## <a name="can-i-export-my-app-service-certificate-to-use-outside-azure-such-as-for-a-website-hosted-elsewhere"></a>Czy można wyeksportować certyfikatu usługi App Service na potrzeby poza systemem Azure, takich jak witryny sieci Web znajdujących się gdzie indziej? 
+## <a name="can-i-export-my-app-service-certificate-to-use-outside-azure-such-as-for-a-website-hosted-elsewhere"></a>Czy mogę wyeksportować certyfikat App Service, który ma być używany poza platformą Azure, na przykład w przypadku witryny sieci Web hostowanej w innym miejscu? 
 
-Certyfikaty usługi App Service są traktowane jako zasoby platformy Azure. Nie są przeznaczone do użycia poza usługami platformy Azure. Nie można wyeksportować je do użycia poza systemem Azure. Aby uzyskać więcej informacji, zobacz [często zadawane pytania dotyczące certyfikatów usługi App Service i domen niestandardowych](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview).
+Certyfikaty App Service są uznawane za zasoby platformy Azure. Nie są one przeznaczone do użycia poza usługami platformy Azure. Nie można eksportować ich do użycia poza platformą Azure. Aby uzyskać więcej informacji, zobacz [często zadawane pytania dotyczące App Service certyfikatów i domen niestandardowych](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview).
 
-## <a name="can-i-export-my-app-service-certificate-to-use-with-other-azure-cloud-services"></a>Czy można wyeksportować certyfikatu usługi App Service za pomocą innych usług Azure cloud services?
+## <a name="can-i-export-my-app-service-certificate-to-use-with-other-azure-cloud-services"></a>Czy mogę wyeksportować certyfikat App Service, który ma być używany z innymi usługami w chmurze Azure?
 
-Portal zapewnia pierwszorzędne środowisko do wdrażania certyfikatu usługi App Service za pomocą usługi Azure Key Vault do aplikacji usługi App Service. Jednak Otrzymaliśmy żądań od klientów, aby użyć tych certyfikatów poza platformą App Service, na przykład usługa Azure Virtual Machines. Aby dowiedzieć się, jak utworzyć lokalną kopię PFX certyfikatu usługi App Service, aby można było używać certyfikatu z innymi zasobami platformy Azure, zobacz [utworzyć lokalną kopię PFX certyfikatu usługi App Service](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/).
+Portal zapewnia środowisko pierwszej klasy do wdrażania certyfikatu App Service za pomocą Azure Key Vault do aplikacji App Service. Jednak otrzymamy od klientów żądania używania tych certyfikatów poza platformą App Service, na przykład za pomocą usługi Azure Virtual Machines. Aby dowiedzieć się, jak utworzyć lokalną kopię pliku PFX certyfikatu App Service, aby można było używać certyfikatu z innymi zasobami platformy Azure, zobacz [Tworzenie lokalnej kopii PFX certyfikatu App Service](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/).
 
-Aby uzyskać więcej informacji, zobacz [często zadawane pytania dotyczące certyfikatów usługi App Service i domen niestandardowych](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview).
+Aby uzyskać więcej informacji, zobacz [często zadawane pytania dotyczące App Service certyfikatów i domen niestandardowych](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview).
 
 
-## <a name="why-do-i-see-the-message-partially-succeeded-when-i-try-to-back-up-my-web-app"></a>Dlaczego widzisz komunikat "Częściowe Powodzenie", gdy próbuję do tworzenia kopii zapasowej aplikacji sieci web?
+## <a name="why-do-i-see-the-message-partially-succeeded-when-i-try-to-back-up-my-web-app"></a>Dlaczego podczas próby utworzenia kopii zapasowej mojej aplikacji sieci Web widzę komunikat "częściowe powodzenie"?
 
-Częstą przyczyną niepowodzenia wykonywania kopii zapasowej jest, że niektóre pliki są używane przez aplikację. Pliki, które są używane są zablokowane podczas wykonywania kopii zapasowej. Zapobiega tworzona kopia zapasowa tych plików i może prowadzić do stanu "Częściowe Powodzenie". Użytkownik może potencjalnie temu zapobiec, wykluczanie plików z procesu tworzenia kopii zapasowej. Można wybrać do utworzenia kopii zapasowej tylko potrzebne elementy. Aby uzyskać więcej informacji, zobacz [kopii zapasowej tylko ważne elementy witryny przy użyciu usługi Azure web apps](https://zainrizvi.io/blog/creating-partial-backups-of-your-site-with-azure-web-apps/).
+Typową przyczyną niepowodzenia tworzenia kopii zapasowej jest to, że niektóre pliki są używane przez aplikację. Pliki, które są używane, są blokowane podczas wykonywania kopii zapasowej. Zapobiega to wykonaniu kopii zapasowej tych plików, co może skutkować niepowodzeniem. Może to uniemożliwić wykluczenie tych plików z procesu tworzenia kopii zapasowej. Można utworzyć kopię zapasową tylko tego, co jest potrzebne. Aby uzyskać więcej informacji, zobacz [Tworzenie kopii zapasowej tylko ważnych części witryny za pomocą usługi Azure Web Apps](https://zainrizvi.io/blog/creating-partial-backups-of-your-site-with-azure-web-apps/).
 
-## <a name="how-do-i-remove-a-header-from-the-http-response"></a>Jak usunąć nagłówek z odpowiedzi HTTP?
+## <a name="how-do-i-remove-a-header-from-the-http-response"></a>Jak mogę usunąć nagłówka z odpowiedzi HTTP?
 
-Aby usunąć nagłówki odpowiedzi HTTP, zaktualizuj plik web.config witryny. Aby uzyskać więcej informacji, zobacz [usuwanie nagłówków standardowy serwer usługi Azure websites](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/).
+Aby usunąć nagłówki z odpowiedzi HTTP, zaktualizuj plik Web. config witryny. Aby uzyskać więcej informacji, zobacz [usuwanie standardowych nagłówków serwera w usłudze Azure](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)websites.
 
-## <a name="is-app-service-compliant-with-pci-standard-30-and-31"></a>Usługa App Service jest zgodne ze standardami PCI Standard 3.0 i 3.1?
+## <a name="is-app-service-compliant-with-pci-standard-30-and-31"></a>Czy jest App Service zgodne ze standardami PCI 3,0 i 3,1?
 
-Obecnie funkcji Web Apps w usłudze Azure App Service jest zgodne z wersją PCI Data Security Standard (DSS) 3.0 poziomu 1. PCI DSS 3.1 wersji znajduje się na nasz plan. Planowanie jest już w toku dla jak przyjęcia najnowszego standardu będzie kontynuowana.
+Obecnie funkcja Web Apps Azure App Service jest zgodna z usługą PCI Data Security Standard (DSS) w wersji 3,0 na poziomie 1. PCI DSS wersja 3,1 znajduje się w naszym przewodniku. Planowanie jest już w trakcie wdrażania najnowszej wersji Standard.
 
-PCI DSS wersja 3.1 certyfikacji wymaga wyłączenie zabezpieczeń TLS (Transport Layer) 1.0. Obecnie wyłączenie protokołu TLS 1.0 nie jest opcją w przypadku większości planów usługi App Service. Jednak jeśli używasz środowiska usługi App Service lub chcesz migrować obciążenia do środowiska App Service Environment, możesz uzyskać większą kontrolę nad środowiskiem organizacji. Obejmuje to wyłączenie protokołu TLS 1.0, kontaktując się z pomocą techniczną platformy Azure. W najbliższej przyszłości planujemy udostępnić te ustawienia dla użytkowników.
+Certyfikat PCI DSS w wersji 3,1 wymaga wyłączenia Transport Layer Security (TLS) 1,0. Obecnie wyłączenie protokołu TLS 1,0 nie jest opcją dla większości planów App Service. Jeśli jednak używasz App Service Environment lub chcesz przeprowadzić migrację obciążenia do App Service Environment, możesz uzyskać większą kontrolę nad Twoim środowiskiem. Obejmuje to wyłączenie protokołu TLS 1,0 przez skontaktowanie się z pomocą techniczną platformy Azure. W najbliższej przyszłości planujemy udostępnienie tych ustawień użytkownikom.
 
-Aby uzyskać więcej informacji, zobacz [zgodności aplikacji sieci web Microsoft Azure App Service przy użyciu PCI Standard 3.0 i 3.1](https://support.microsoft.com/help/3124528).
+Aby uzyskać więcej informacji, zobacz [Microsoft Azure App Service zgodność aplikacji sieci Web ze standardami PCI 3,0 i 3,1](https://support.microsoft.com/help/3124528).
 
-## <a name="how-do-i-use-the-staging-environment-and-deployment-slots"></a>Jak używać miejsc przejściowych środowiska i wdrażania?
+## <a name="how-do-i-use-the-staging-environment-and-deployment-slots"></a>Jak mogę użyć środowiska przejściowego i miejsc wdrożenia?
 
-W planach Standard i Premium usługi App Service podczas wdrażania aplikacji sieci web usługi App Service można wdrożyć na gniazdo wdrażane pojedynczo, zamiast do miejsca produkcji domyślne. Miejsca wdrożenia to aplikacji internetowych na żywo, które mają własne nazwy hosta. Elementy zawartości i konfiguracji aplikacji sieci Web można wymieniać między 2 miejscami wdrożenia, w tym także miejscem produkcyjnym.
+W planach App Service w warstwach Standardowa i Premium podczas wdrażania aplikacji sieci Web do App Service można wdrożyć program w osobnym miejscu wdrożenia, a nie w domyślnym gnieździe produkcyjnym. Miejsca wdrożenia to aplikacje sieci Web z własnymi nazwami hostów. Elementy zawartości i konfiguracji aplikacji sieci Web można wymieniać między dwoma miejscami wdrożenia, w tym miejscem produkcyjnym.
 
-Aby uzyskać więcej informacji na temat używania miejsc wdrożenia, zobacz [skonfigurować środowisko przejściowe w usłudze App Service](deploy-staging-slots.md).
+Aby uzyskać więcej informacji o używaniu miejsc wdrożenia, zobacz [Konfigurowanie środowiska tymczasowego w App Service](deploy-staging-slots.md).
 
-## <a name="how-do-i-access-and-review-webjob-logs"></a>Jak uzyskać dostęp i przejrzyj dzienniki WebJob?
+## <a name="how-do-i-access-and-review-webjob-logs"></a>Jak mogę dostęp i przeglądanie dzienników zadań WebJob?
 
-Aby przejrzeć dzienniki WebJob:
+Aby przejrzeć dzienniki zadań WebJob:
 
-1. Zaloguj się do Twojej [Kudu witryny sieci Web](https://*yourwebsitename*.scm.azurewebsites.net).
-2. Wybierz zadania WebJob.
-3. Wybierz **Przełącz dane wyjściowe** przycisku.
-4. Aby pobrać plik wyjściowy, zaznacz **Pobierz** łącza.
-5. Dla poszczególnych przebiegów wybierz **poszczególne wywołania**.
-6. Wybierz **Przełącz dane wyjściowe** przycisku.
+1. Zaloguj się do [witryny sieci Web kudu](https://*yourwebsitename*.scm.azurewebsites.net).
+2. Wybierz zadanie WebJob.
+3. Wybierz przycisk **Przełącz dane wyjściowe** .
+4. Aby pobrać plik wyjściowy, wybierz link **pobierania** .
+5. Dla poszczególnych przebiegów wybierz opcję **pojedyncze wywołanie**.
+6. Wybierz przycisk **Przełącz dane wyjściowe** .
 7. Wybierz link pobierania.
 
-## <a name="im-trying-to-use-hybrid-connections-with-sql-server-why-do-i-see-the-message-systemoverflowexception-arithmetic-operation-resulted-in-an-overflow"></a>Próbuję z programem SQL Server za pomocą połączeń hybrydowych. Dlaczego wyświetlony komunikat "System.OverflowException: Operacja arytmetyczna spowodowało przepełnienie"?
+## <a name="im-trying-to-use-hybrid-connections-with-sql-server-why-do-i-see-the-message-systemoverflowexception-arithmetic-operation-resulted-in-an-overflow"></a>Próbuję użyć Połączenia hybrydowe z SQL Server. Dlaczego widzę komunikat "System. OverflowException: Operacja arytmetyczna spowodowała przepełnienie "?
 
-Korzystanie z połączeń hybrydowych dostępu do serwera SQL aktualizacji programu Microsoft .NET 10 maja 2016 r. mogą spowodować połączenia nie powiedzie się. Może zostać wyświetlony ten komunikat:
+W przypadku korzystania z Połączenia hybrydowe w celu uzyskania dostępu do SQL Server aktualizacja Microsoft .NET 10 maja 2016 może powodować niepowodzenie połączeń. Może zostać wyświetlony następujący komunikat:
 
 ```
 Exception: System.Data.Entity.Core.EntityException: The underlying provider failed on Open. —> System.OverflowException: Arithmetic operation resulted in an overflow. or (64 bit Web app) System.OverflowException: Array dimensions exceeded supported range, at System.Data.SqlClient.TdsParser.ConsumePreLoginHandshake
@@ -150,127 +150,124 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 ### <a name="resolution"></a>Rozwiązanie
 
-Wyjątek zostało spowodowane przez problem z Menedżera połączeń hybrydowych, ponieważ został rozwiązany. Pamiętaj, aby [aktualizowanie Menedżera połączeń hybrydowych](https://go.microsoft.com/fwlink/?LinkID=841308) Aby rozwiązać ten problem.
+Wyjątek został spowodowany przez problem z Menedżer połączeń hybrydowych, który został usunięty. Aby rozwiązać ten problem, należy [zaktualizować Menedżer połączeń hybrydowych](https://go.microsoft.com/fwlink/?LinkID=841308) .
 
-## <a name="how-do-i-add-or-edit-a-url-rewrite-rule"></a>Jak dodać lub edytować reguły ponownego pisania adresu URL?
+## <a name="how-do-i-add-a-url-rewrite-rule"></a>Jak mogę dodać regułę ponownego zapisywania adresu URL?
 
-Aby dodać lub edytować reguły ponownego pisania adresu URL:
+Aby dodać regułę ponownego zapisywania adresu URL, Utwórz plik Web. config z odpowiednimi wpisami konfiguracji w folderze **wwwroot** . Aby uzyskać więcej informacji, [Zobacz Azure App Services: Objaśnienie ponownego zapisywania](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)adresów URL.
 
-1. Skonfiguruj Menedżera usług Internet Information Services (IIS), aby połączyć je z usługą aplikacji sieci web usługi App Service. Aby dowiedzieć się, jak połączyć Menedżera usług IIS w usłudze App Service, zobacz [zdalne administrowanie witryn sieci Web za pomocą Menedżera usług IIS](https://azure.microsoft.com/blog/remote-administration-of-windows-azure-websites-using-iis-manager/).
-2. W Menedżerze usług IIS, Dodaj lub Edytuj regułę ponownego zapisywania adresu URL. Aby dowiedzieć się, jak dodawanie lub edytowanie reguły ponownego zapisywania adresu URL, zobacz [Utwórz reguły ponownego zapisywania adresu URL moduł ponowne zapisywanie adresów](https://www.iis.net/learn/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module).
+## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>Jak mogę kontrolować ruch przychodzący do App Service?
 
-## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>Jak kontrolować ruch przychodzący do usługi App Service?
+Na poziomie witryny dostępne są dwie opcje kontrolowania ruchu przychodzącego do App Service:
 
-Na poziomie witryny masz dwie opcje do kontrolowania ruchu przychodzącego w usłudze App Service:
+* Włącz ograniczenia dynamicznego adresu IP. Aby dowiedzieć się, jak włączyć ograniczenia dynamicznego adresu IP, zobacz [Ograniczenia adresów IP i domen dla usługi Azure](https://azure.microsoft.com/blog/ip-and-domain-restrictions-for-windows-azure-web-sites/)websites.
+* Włącz zabezpieczenia modułu. Aby dowiedzieć się, jak włączyć zabezpieczenia modułu, zobacz [zapory ModSecurity Web Application Firewall in Azure](https://azure.microsoft.com/blog/modsecurity-for-azure-websites/)websites.
 
-* Włącz funkcję ograniczenia dynamicznego adresu IP. Aby dowiedzieć się, jak włączyć funkcję ograniczenia dynamicznego adresu IP, zobacz [ograniczenia adresów IP i domen dla usługi Azure websites](https://azure.microsoft.com/blog/ip-and-domain-restrictions-for-windows-azure-web-sites/).
-* Włącz funkcję zabezpieczeń modułu. Aby dowiedzieć się, jak włączyć funkcję zabezpieczeń modułu, zobacz [zapory aplikacji sieci web zapory ModSecurity w usłudze Azure websites](https://azure.microsoft.com/blog/modsecurity-for-azure-websites/).
+Jeśli używasz App Service Environment, możesz użyć [zapory Barracuda](https://azure.microsoft.com/blog/configuring-barracuda-web-application-firewall-for-azure-app-service-environment/).
 
-Jeśli używasz środowiska App Service Environment, możesz użyć [Zapora Barracuda](https://azure.microsoft.com/blog/configuring-barracuda-web-application-firewall-for-azure-app-service-environment/).
+## <a name="how-do-i-block-ports-in-an-app-service-web-app"></a>Jak mogę blokować porty w aplikacji internetowej App Service?
 
-## <a name="how-do-i-block-ports-in-an-app-service-web-app"></a>Jak zablokować portów w aplikacji sieci web usługi App Service?
+W App Service udostępnionym środowisku dzierżawców nie można blokować określonych portów ze względu na charakter infrastruktury. Porty TCP 4016, 4018 i 4020 mogą być również otwarte dla zdalnego debugowania programu Visual Studio.
 
-W środowisku udostępnionym dzierżawy usługi App Service nie jest możliwe zablokowanie określonych portów ze względu na charakter infrastruktury. Również porty TCP 4016 4018 i 4020 może być otwarty dla zdalnego debugowania programu Visual Studio.
+W App Service Environment masz pełną kontrolę nad ruchem przychodzącym i wychodzącym. W celu ograniczenia lub zablokowania określonych portów można użyć sieciowych grup zabezpieczeń. Aby uzyskać więcej informacji na temat App Service Environment, zobacz [wprowadzenie App Service Environment](https://azure.microsoft.com/blog/introducing-app-service-environment/).
 
-W środowisku App Service masz pełną kontrolę nad ruchem przychodzącym i wychodzącym. Sieciowe grupy zabezpieczeń można użyć do ograniczenia lub zablokować określone porty. Aby uzyskać więcej informacji na temat środowiska usługi App Service, zobacz [wprowadzenie do środowiska App Service Environment](https://azure.microsoft.com/blog/introducing-app-service-environment/).
+## <a name="how-do-i-capture-an-f12-trace"></a>Jak mogę przechwycić ślad F12?
 
-## <a name="how-do-i-capture-an-f12-trace"></a>Jak przechwycić ślad F12?
+Dostępne są dwie opcje przechwytywania śledzenia F12:
 
-Masz dwie opcje do przechwytywania śladu F12:
+* Śledzenie HTTP F12
+* Wyjście z konsoli F12
 
-* Ślad F12 HTTP
-* Dane wyjściowe konsoli F12
+### <a name="f12-http-trace"></a>Śledzenie HTTP F12
 
-### <a name="f12-http-trace"></a>Ślad F12 HTTP
-
-1. W programie Internet Explorer przejdź do witryny sieci Web. Należy się zalogować przed wykonaniem dalszych kroków. W przeciwnym razie śledzenia F12 przechwytuje poufnych danych logowania.
+1. W programie Internet Explorer przejdź do witryny sieci Web. Ważne jest, aby zalogować się przed wykonaniem następnych kroków. W przeciwnym razie ślad F12 przechwytuje poufne dane logowania.
 2. Naciśnij klawisz F12.
-3. Upewnij się, że **sieci** karta jest zaznaczone, a następnie wybrać kolor zielony **Odtwórz** przycisku.
-4. Wykonaj kroki odtworzenia problemu.
-5. Wybierz kolor czerwony **zatrzymać** przycisku.
-6. Wybierz **Zapisz** przycisku (ikona dysku), a następnie zapisz plik HAR (w programie Internet Explorer i Microsoft Edge) *lub* kliknij prawym przyciskiem myszy plik HAR, a następnie wybierz **Zapisz jako plik HAR z zawartością**(w przeglądarce Chrome).
+3. Sprawdź, czy karta **Sieć** została wybrana, a następnie wybierz zielony przycisk **odtwarzania** .
+4. Wykonaj kroki, które odtwarzają problem.
+5. Wybierz czerwony przycisk **Zatrzymaj** .
+6. Wybierz przycisk **Zapisz** (ikona dysku) i Zapisz plik HAR (w programie Internet Explorer i Microsoft Edge) *lub* kliknij prawym przyciskiem myszy plik HAR, a następnie wybierz pozycję **Zapisz jako Har z zawartością** (w przeglądarce Chrome).
 
-### <a name="f12-console-output"></a>Dane wyjściowe konsoli F12
+### <a name="f12-console-output"></a>Wyjście z konsoli F12
 
-1. Wybierz **konsoli** kartę.
-2. Dla każdej karty zawiera elementy, większa niż zero, wybierz kartę (**błąd**, **ostrzeżenie**, lub **informacji**). Jeśli karta nie jest zaznaczone, ikona kartę jest czarnego lub szarego, gdy przeniesiesz kursor poza.
-3. Kliknij prawym przyciskiem myszy w obszarze wiadomości w okienku, a następnie wybierz **Kopiuj wszystko**.
-4. Wklej skopiowany tekst w pliku, a następnie zapisz plik.
+1. Wybierz kartę **konsola** .
+2. Dla każdej karty zawierającej więcej niż zero elementów wybierz kartę (**błąd**, **Ostrzeżenie**lub **informacje**). Jeśli karta nie jest zaznaczona, ikona karty jest szara lub czarna, gdy przesuniesz kursor z tego kursora.
+3. Kliknij prawym przyciskiem myszy w obszarze komunikatów okienka, a następnie wybierz polecenie **Kopiuj wszystko**.
+4. Wklej skopiowany tekst w pliku, a następnie Zapisz plik.
 
-Aby wyświetlić plik HAR, można użyć [podglądu HAR](https://www.softwareishard.com/har/viewer/).
+Aby wyświetlić plik HAR, można użyć [przeglądarki Har](https://www.softwareishard.com/har/viewer/).
 
-## <a name="why-do-i-get-an-error-when-i-try-to-connect-an-app-service-web-app-to-a-virtual-network-that-is-connected-to-expressroute"></a>Dlaczego otrzymuję błąd podczas próby połączenia usługi App Service aplikacja sieci web do sieci wirtualnej, która jest połączona z usługą ExpressRoute?
+## <a name="why-do-i-get-an-error-when-i-try-to-connect-an-app-service-web-app-to-a-virtual-network-that-is-connected-to-expressroute"></a>Dlaczego otrzymuję błąd podczas próby połączenia aplikacji sieci Web App Service z siecią wirtualną, która jest połączona z usługą ExpressRoute?
 
-Jeśli spróbujesz połączyć aplikację internetową platformy Azure do sieci wirtualnej, który jest połączony z usługi Azure ExpressRoute, go nie powiedzie się. Zostanie wyświetlony następujący komunikat: "Brama nie jest brama sieci VPN."
+Jeśli spróbujesz połączyć aplikację sieci Web platformy Azure z siecią wirtualną, która jest połączona z usługą Azure ExpressRoute, zakończy się niepowodzeniem. Zostanie wyświetlony następujący komunikat: "Brama nie jest bramą sieci VPN".
 
-Obecnie nie ma połączenia sieci VPN punkt lokacja do sieci wirtualnej, która jest połączona z usługą ExpressRoute. Punkt lokacja sieci VPN, a usługi ExpressRoute nie mogą współistnieć dla tej samej sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [usługi ExpressRoute i sieci VPN typu lokacja lokacja połączenia limity i ograniczenia](../expressroute/expressroute-howto-coexist-classic.md#limits-and-limitations).
+Obecnie nie można mieć połączeń sieci VPN typu punkt-lokacja z siecią wirtualną, która jest połączona z usługą ExpressRoute. Sieć VPN typu punkt-lokacja i ExpressRoute nie mogą współistnieć w tej samej sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [limity i ograniczenia połączeń sieci VPN ExpressRoute i](../expressroute/expressroute-howto-coexist-classic.md#limits-and-limitations)lokacja-lokacja.
 
-## <a name="how-do-i-connect-an-app-service-web-app-to-a-virtual-network-that-has-a-static-routing-policy-based-gateway"></a>Jak połączyć aplikację sieci web usługi App Service do sieci wirtualnej, która ma statyczny routingu bramy (oparte na zasadach)?
+## <a name="how-do-i-connect-an-app-service-web-app-to-a-virtual-network-that-has-a-static-routing-policy-based-gateway"></a>Jak mogę połączyć aplikację sieci Web App Service z siecią wirtualną, która ma bramę routingu statycznego (oparta na zasadach)
 
-Łączenie aplikacji sieci web usługi App Service do sieci wirtualnej, która ma statyczny routingu bramy (oparte na zasadach) nie jest obecnie obsługiwane. Docelowa sieć wirtualna już istnieje, musi on mieć point-to-site VPN włączone za pomocą bramy o dynamicznym routingu, przed podłączeniem do aplikacji. Jeśli brama jest ustawiony na routing statyczny, nie można włączyć sieć VPN punkt lokacja. 
+Obecnie łączenie aplikacji sieci Web App Service z siecią wirtualną, która ma bramę routingu statycznego (opartej na zasadach), nie jest obsługiwane. Jeśli docelowa sieć wirtualna już istnieje, musi ona mieć włączoną sieć VPN typu punkt-lokacja z bramą dynamicznej routingu, zanim będzie mogła zostać podłączona do aplikacji. Jeśli Brama jest ustawiona na routing statyczny, nie można włączyć sieci VPN typu punkt-lokacja. 
 
-Aby uzyskać więcej informacji, zobacz [zintegrować aplikację z siecią wirtualną platformy Azure](web-sites-integrate-with-vnet.md#getting-started).
+Aby uzyskać więcej informacji, zobacz [Integrowanie aplikacji z siecią wirtualną platformy Azure](web-sites-integrate-with-vnet.md#getting-started).
 
-## <a name="in-my-app-service-environment-why-can-i-create-only-one-app-service-plan-even-though-i-have-two-workers-available"></a>W mojej środowiska App Service Environment, dlaczego można utworzyć tylko jeden plan usługi App Service, nawet jeśli mam dwa procesy robocze, które są dostępne?
+## <a name="in-my-app-service-environment-why-can-i-create-only-one-app-service-plan-even-though-i-have-two-workers-available"></a>Dlaczego w mojej App Service Environment można utworzyć tylko jeden plan App Service, mimo że są dostępne dwa procesy robocze?
 
-Aby zapewnić odporność na uszkodzenia, App Service Environment wymaga, że każdej puli procesów roboczych wymaga co najmniej jeden zasób obliczeniowy. Zasób obliczeniowy nie można przypisać obciążenia.
+Aby zapewnić odporność na uszkodzenia, App Service Environment wymaga, aby każda pula procesów roboczych potrzebowała co najmniej jeden dodatkowy zasób obliczeniowy. Dodatkowym zasobem obliczeniowym nie można przypisać obciążenia.
 
-Aby uzyskać więcej informacji, zobacz [jak utworzyć środowisko App Service Environment](environment/app-service-web-how-to-create-an-app-service-environment.md).
+Aby uzyskać więcej informacji, zobacz [jak utworzyć App Service Environment](environment/app-service-web-how-to-create-an-app-service-environment.md).
 
-## <a name="why-do-i-see-timeouts-when-i-try-to-create-an-app-service-environment"></a>Dlaczego są wyświetlane przekroczeń limitu czasu podczas próby utworzenia środowiska usługi App Service?
+## <a name="why-do-i-see-timeouts-when-i-try-to-create-an-app-service-environment"></a>Dlaczego widzę limity czasu podczas próby utworzenia App Service Environment?
 
-Czasami tworzenie środowiska App Service Environment nie powiedzie się. W takim przypadku zostanie wyświetlony następujący błąd w dziennikach aktywności:
+Czasami tworzenie App Service Environment kończy się niepowodzeniem. W takim przypadku w dziennikach aktywności zostanie wyświetlony następujący błąd:
 ```
 ResourceID: /subscriptions/{SubscriptionID}/resourceGroups/Default-Networking/providers/Microsoft.Web/hostingEnvironments/{ASEname}
 Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provision operation did not complete within the allowed timeout period.”}}
 ```
 
 Aby rozwiązać ten problem, upewnij się, że żaden z następujących warunków nie jest spełniony:
-* Podsieć jest za mały.
-* Podsieć nie jest pusty.
-* Usługa ExpressRoute zapobiega wymagania łączności sieci środowiska App Service Environment.
-* Zły sieciowej grupy zabezpieczeń uniemożliwia wymagania łączności sieci środowiska App Service Environment.
-* Wymuszanie tunelowania jest włączone.
+* Podsieć jest za mała.
+* Podsieć nie jest pusta.
+* ExpressRoute zapobiega wymagania dotyczące łączności sieciowej App Service Environment.
+* Niewłaściwa sieciowa Grupa zabezpieczeń uniemożliwia wymagania dotyczące łączności sieciowej App Service Environment.
+* Wymuszone tunelowanie jest włączone.
 
-Aby uzyskać więcej informacji, zobacz [częste problemy podczas wdrażania (tworzenia) nowego środowiska usługi aplikacji Azure](https://blogs.msdn.microsoft.com/waws/2016/05/13/most-frequent-issues-when-deploying-creating-a-new-azure-app-service-environment-ase/).
+Aby uzyskać więcej informacji, zobacz [częste problemy podczas wdrażania (tworzenia) nowego Azure App Service Environment](https://blogs.msdn.microsoft.com/waws/2016/05/13/most-frequent-issues-when-deploying-creating-a-new-azure-app-service-environment-ase/).
 
-## <a name="why-cant-i-delete-my-app-service-plan"></a>Dlaczego nie można usunąć planu usługi App Service?
+## <a name="why-cant-i-delete-my-app-service-plan"></a>Dlaczego nie mogę usunąć mojego planu App Service?
 
-Nie można usunąć planu usługi App Service, jeśli jakiekolwiek aplikacje usługi App Service są skojarzone z planem usługi App Service. Zanim usuniesz plan usługi App Service, należy usunąć wszystkie skojarzone aplikacje usługi App Service z planu usługi App Service.
+Nie można usunąć planu App Service, jeśli wszystkie aplikacje App Service są skojarzone z planem App Service. Przed usunięciem planu App Service Usuń wszystkie skojarzone z nim aplikacje App Service z planu App Service.
 
-## <a name="how-do-i-schedule-a-webjob"></a>Jak zaplanować zadanie WebJob?
+## <a name="how-do-i-schedule-a-webjob"></a>Jak mogę zaplanować zadanie WebJob?
 
-Zaplanowane zadania WebJob można utworzyć za pomocą wyrażeń Cron:
+Zaplanowane zadanie WebJob można utworzyć przy użyciu wyrażeń firmy CRONUS:
 
-1. Należy utworzyć plik settings.job.
-2. W tym pliku JSON zawierają właściwości harmonogramu przy użyciu wyrażenia Cron: 
+1. Utwórz plik Settings. job.
+2. W tym pliku JSON Uwzględnij Właściwość Schedule przy użyciu wyrażenia typu CRONUS: 
     ```json
     { "schedule": "{second}
     {minute} {hour} {day}
     {month} {day of the week}" }
     ```
 
-Aby uzyskać więcej informacji na temat zaplanowane zadania Webjob, zobacz [tworzenie zaplanowanego zadania WebJob przy użyciu wyrażenia Cron](webjobs-create.md#CreateScheduledCRON).
+Aby uzyskać więcej informacji o zaplanowanych zadaniach WebJob, zobacz temat [Tworzenie zaplanowanej kopii zadań przy użyciu wyrażenia firmy CRONUS](webjobs-create.md#CreateScheduledCRON).
 
-## <a name="how-do-i-perform-penetration-testing-for-my-app-service-app"></a>Jak wykonać testy penetracyjne dla mojej aplikacji usługi App Service?
+## <a name="how-do-i-perform-penetration-testing-for-my-app-service-app"></a>Jak mogę przeprowadzić testowanie penetracji dla aplikacji App Service?
 
-Aby wykonać testy penetracyjne, [przesłać żądanie](https://portal.msrc.microsoft.com/en-us/engage/pentest).
+Aby przeprowadzić testowanie penetracji, [Prześlij żądanie](https://portal.msrc.microsoft.com/en-us/engage/pentest).
 
-## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>Jak skonfigurować niestandardową nazwę domeny dla aplikacji sieci web usługi App Service, która korzysta z usługi Traffic Manager?
+## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>Jak mogę skonfigurować niestandardową nazwę domeny dla App Service aplikacji internetowej korzystającej z Traffic Manager?
 
-Aby dowiedzieć się, jak używać niestandardowej nazwy domeny za pomocą aplikacji usługi App Service, która używa usługi Azure Traffic Manager do równoważenia obciążenia, zobacz [Konfigurowanie niestandardowej nazwy domeny dla aplikacji sieci web platformy Azure za pomocą usługi Traffic Manager](web-sites-traffic-manager-custom-domain-name.md).
+Aby dowiedzieć się, jak używać niestandardowej nazwy domeny z aplikacją App Service, która korzysta z usługi Azure Traffic Manager do równoważenia obciążenia, zobacz [Konfigurowanie niestandardowej nazwy domeny dla aplikacji sieci Web platformy Azure przy użyciu Traffic Manager](web-sites-traffic-manager-custom-domain-name.md).
 
-## <a name="my-app-service-certificate-is-flagged-for-fraud-how-do-i-resolve-this"></a>Certyfikatu usługi App Service ma flagę oszustwa. Jak rozwiązać ten problem?
+## <a name="my-app-service-certificate-is-flagged-for-fraud-how-do-i-resolve-this"></a>Certyfikat mojego App Service jest oflagowany dla oszustwa. Jak mogę rozwiązać ten problem?
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Podczas weryfikacji domeny zakup certyfikatu usługi App Service może zostać wyświetlony następujący komunikat:
+Podczas weryfikacji domeny App Service zakupu certyfikatu może zostać wyświetlony następujący komunikat:
 
-"Twój certyfikat oznaczono jako ewentualnym oszustwem. Żądanie jest obecnie w trakcie przeglądu. Jeśli certyfikat nie zostanie można używać w ciągu 24 godzin, skontaktuj się z pomocą techniczną platformy Azure."
+"Certyfikat został oflagowany dla potencjalnego oszustwa. Żądanie jest obecnie objęte przeglądem. Jeśli certyfikat nie będzie można użyć w ciągu 24 godzin, skontaktuj się z pomocą techniczną platformy Azure.
 
-Jak wskazuje komunikat, ten proces sprawdzania poprawności oszustwa, może potrwać do 24 godzin. W tym czasie nadal będzie zostanie wyświetlony komunikat.
+Ponieważ komunikat wskazuje, ukończenie tego procesu weryfikacji oszustw może potrwać do 24 godzin. W tym czasie zobaczysz komunikat.
 
-Jeśli certyfikat usługi App Service w dalszym ciągu wyświetlać ten komunikat po 24 godzinach, uruchom następujący skrypt programu PowerShell. Kontakty skryptu [dostawcę certyfikatów](https://www.godaddy.com/) bezpośrednio, aby rozwiązać ten problem.
+Jeśli certyfikat App Service będzie nadal wyświetlany po 24 godzinach, uruchom następujący skrypt programu PowerShell. Skrypt kontaktuje się bezpośrednio z [dostawcą certyfikatu](https://www.godaddy.com/) w celu rozwiązania problemu.
 
 ```powershell
 Connect-AzAccount
@@ -281,38 +278,38 @@ $actionProperties = @{
 Invoke-AzResourceAction -ResourceGroupName "<App Service Certificate Resource Group Name>" -ResourceType Microsoft.CertificateRegistration/certificateOrders -ResourceName "<App Service Certificate Resource Name>" -Action resendRequestEmails -Parameters $actionProperties -ApiVersion 2015-08-01 -Force   
 ```
 
-## <a name="how-do-authentication-and-authorization-work-in-app-service"></a>Jak uwierzytelnianie i autoryzacja działają w usłudze App Service?
+## <a name="how-do-authentication-and-authorization-work-in-app-service"></a>Jak działa uwierzytelnianie i autoryzacja w App Service?
 
-Szczegółowa dokumentacja uwierzytelniania i autoryzacji w usłudze App Service Zobacz dokumenty dotyczące różnych identyfikacji dostawcy logowania:
+Aby uzyskać szczegółową dokumentację dotyczącą uwierzytelniania i autoryzacji w App Service, zobacz dokumenty dotyczące różnych logowań dostawcy:
 * [Azure Active Directory](configure-authentication-provider-aad.md)
 * [Facebook](configure-authentication-provider-facebook.md)
 * [Google](configure-authentication-provider-google.md)
 * [Konto Microsoft](configure-authentication-provider-microsoft.md)
 * [Twitter](configure-authentication-provider-twitter.md)
 
-## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>Jak przekierować domyślnie *. azurewebsites.net domeny do domeny niestandardowej na aplikację internetową platformy Azure?
+## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>Jak mogę przekierować domyślną domenę *. azurewebsites.net do domeny niestandardowej mojej aplikacji sieci Web platformy Azure?
 
-Podczas tworzenia nowej witryny sieci Web za pomocą aplikacji sieci Web na platformie Azure, domyślny *sitename*. domenie azurewebsites.net jest przypisany do lokacji. Jeśli dodać niestandardową nazwą hosta do swojej witryny, a nie chcesz, aby użytkownicy mogli korzystać z domyślnego *. domenie azurewebsites.net, można przekierować domyślnego adresu URL. Aby dowiedzieć się przekierować cały ruch z domeny domyślnej witryny sieci Web do domeny niestandardowej, zobacz [przekierować domyślnej domeny do domeny niestandardowej w usłudze Azure web apps](https://zainrizvi.io/blog/block-default-azure-websites-domain/).
+Podczas tworzenia nowej witryny sieci Web przy użyciu Web Apps na platformie Azure do lokacji zostanie przypisana domyślna domena sitename. azurewebsites.NET. Jeśli dodasz niestandardową nazwę hosta do lokacji i nie chcesz, aby użytkownicy mogli uzyskać dostęp do domyślnej domeny *. azurewebsites.net, możesz przekierować domyślny adres URL. Aby dowiedzieć się, jak przekierować cały ruch z domeny domyślnej witryny sieci Web do domeny niestandardowej, zobacz [Przekierowanie domeny domyślnej do domeny niestandardowej w usłudze Azure Web Apps](https://zainrizvi.io/blog/block-default-azure-websites-domain/).
 
-## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>Jak ustalić, która wersja programu .NET jest zainstalowana wersja w usłudze App Service?
+## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>Jak mogę określić, która wersja programu .NET jest zainstalowana w programie App Service?
 
-To najszybszy sposób, aby znaleźć wersję programu Microsoft .NET, która jest zainstalowana w usłudze App Service przy użyciu konsoli Kudu. Można uzyskać dostęp do konsoli Kudu, z poziomu portalu lub przy użyciu adresu URL aplikacji usługi App Service. Aby uzyskać szczegółowe instrukcje, zobacz [ustalanie zainstalowanej wersji platformy .NET w usłudze App Service](https://blogs.msdn.microsoft.com/waws/2016/11/02/how-to-determine-the-installed-net-version-in-azure-app-services/).
+Najszybszym sposobem znalezienia wersji Microsoft .NET zainstalowanej w App Service jest użycie konsoli kudu. Możesz uzyskać dostęp do konsoli kudu z poziomu portalu lub przy użyciu adresu URL aplikacji App Service. Aby uzyskać szczegółowe instrukcje, zobacz [Określanie zainstalowanej wersji platformy .NET w App Service](https://blogs.msdn.microsoft.com/waws/2016/11/02/how-to-determine-the-installed-net-version-in-azure-app-services/).
 
-## <a name="why-isnt-autoscale-working-as-expected"></a>Dlaczego funkcja automatycznego skalowania nie działa zgodnie z oczekiwaniami?
+## <a name="why-isnt-autoscale-working-as-expected"></a>Dlaczego automatyczne skalowanie nie działa zgodnie z oczekiwaniami?
 
-Jeśli skalowania automatycznego platformy Azure nie przeskalować w pionie lub skalowanie wystąpienia aplikacji sieci web, zgodnie z oczekiwaniami, możliwe, że uruchomione w scenariuszu, w którym celowo Wybierzmy skali, aby uniknąć wejścia w nieskończoną pętlę ze względu na "niestabilny." Zwykle dzieje się tak, gdy nie ma odpowiedni poziom między wartościami progowymi skalowalnego w poziomie i skalowania na zewnątrz. Aby dowiedzieć się, jak można uniknąć "niestabilny" i informacji o najlepszych rozwiązaniach dotyczących innych skalowania, zobacz [najlepszych praktykach dotyczących skalowania](../azure-monitor/platform/autoscale-best-practices.md#autoscale-best-practices).
+Jeśli funkcja automatycznego skalowania platformy Azure nie została przeskalowana w poziomie lub przeskalujesz wystąpienie aplikacji sieci Web zgodnie z oczekiwaniami, może się zdarzyć, że Pracujesz w scenariuszu, w którym celowo wybierzesz nie skalować, aby uniknąć nieskończonej pętli z powodu "niestabilny". Zwykle zdarza się to, gdy nie ma odpowiedniego marginesu między progami skalowania w poziomie i skalowania w poziomie. Aby dowiedzieć się, jak uniknąć "niestabilny" i zapoznać się z innymi najlepszymi rozwiązaniami automatycznego skalowania, zobacz [najlepsze rozwiązania dotyczące skalowania automatycznego](../azure-monitor/platform/autoscale-best-practices.md#autoscale-best-practices).
 
-## <a name="why-does-autoscale-sometimes-scale-only-partially"></a>Dlaczego funkcja automatycznego skalowania czasami skalowany tylko częściowo?
+## <a name="why-does-autoscale-sometimes-scale-only-partially"></a>Dlaczego automatyczne skalowanie jest czasami skalowane tylko częściowo?
 
-Funkcja automatycznego skalowania jest wyzwalany, gdy metryki przekroczą granice wstępnie skonfigurowane. Czasami można zauważyć, że pojemność jest tylko częściowo wypełnione w porównaniu do oczekiwanej. Taka sytuacja może wystąpić, gdy liczba wystąpień, które mają nie są dostępne. W tym scenariuszu automatyczne skalowanie częściowo wypełnia się przy użyciu dostępnych liczbę wystąpień. Automatyczne skalowanie następnie uruchamia logiki ponowne równoważenie uzyskanie większej pojemności. Przydziela pozostałe wystąpienia. Należy pamiętać, że może to potrwać kilka minut.
+Automatyczne skalowanie jest wyzwalane, gdy metryki przekroczą wstępnie skonfigurowane granice. Czasami można zauważyć, że pojemność jest częściowo wypełniana w porównaniu z oczekiwaniami. Taka sytuacja może wystąpić, gdy liczba wystąpień jest niedostępna. W tym scenariuszu funkcja automatycznego skalowania powoduje częściowe wypełnienie przy użyciu dostępnej liczby wystąpień. Funkcja automatycznego skalowania powoduje uruchomienie logiki ponownego równoważenia w celu uzyskania większej pojemności. Przypisuje pozostałe wystąpienia. Należy pamiętać, że może to potrwać kilka minut.
 
-Jeśli po kilku minutach nie widzisz oczekiwana liczba wystąpień, może to być powodu częściowe uzupełnienia wystarczająco dużo, aby wyświetlić metryki w granicach. Lub automatycznego skalowania może mieć przeskalowano w dół, ponieważ osiągnęła ona dolna granica metryki.
+Jeśli nie widzisz oczekiwanej liczby wystąpień po kilku minutach, może to być spowodowane tym, że częściowe przepełnienie było wystarczające do przeprowadzenia metryk w granicach. Lub Skalowanie automatyczne mogło być skalowane w dół, ponieważ osiągnęło dolną granicę metryk.
 
-Jeśli żaden z tych warunków, a problem nie zniknie, Prześlij żądanie pomocy technicznej.
+Jeśli żaden z tych warunków nie zostanie spełniony i problem będzie nadal występować, Prześlij żądanie pomocy technicznej.
 
-## <a name="how-do-i-turn-on-http-compression-for-my-content"></a>Jak włączyć kompresję HTTP dla Moja zawartość
+## <a name="how-do-i-turn-on-http-compression-for-my-content"></a>Jak mogę włączyć kompresję HTTP dla mojej zawartości?
 
-Aby włączyć kompresję obu typów zawartości statycznej i dynamicznej, Dodaj następujący kod do pliku web.config na poziomie aplikacji:
+Aby włączyć kompresję zarówno dla typów zawartości statycznej, jak i dynamicznej, Dodaj następujący kod do pliku Web. config na poziomie aplikacji:
 
 ```xml
 <system.webServer>
@@ -320,8 +317,8 @@ Aby włączyć kompresję obu typów zawartości statycznej i dynamicznej, Dodaj
 </system.webServer>
 ```
 
-Można również określić określone statycznych i dynamicznych typów MIME, które chcesz kompresować. Aby uzyskać więcej informacji, zobacz nasze odpowiedzi na pytanie na forum [httpCompression ustawień prostą witrynę sieci Web platformy Azure](https://social.msdn.microsoft.com/Forums/azure/890b6d25-f7dd-4272-8970-da7798bcf25d/httpcompression-settings-on-a-simple-azure-website?forum=windowsazurewebsitespreview).
+Można również określić określone dynamiczne i statyczne typy MIME, które mają być kompresowane. Aby uzyskać więcej informacji, zobacz nasze odpowiedzi na pytania dotyczące forum w [ustawieniach usługi httpCompression w prostej witrynie sieci Web platformy Azure](https://social.msdn.microsoft.com/Forums/azure/890b6d25-f7dd-4272-8970-da7798bcf25d/httpcompression-settings-on-a-simple-azure-website?forum=windowsazurewebsitespreview).
 
-## <a name="how-do-i-migrate-from-an-on-premises-environment-to-app-service"></a>Jak migrować ze środowiska lokalnego do usługi App Service?
+## <a name="how-do-i-migrate-from-an-on-premises-environment-to-app-service"></a>Jak mogę przeprowadzić migrację z środowiska lokalnego do App Service?
 
-Aby migrować witryn z serwerów sieci web Windows i Linux w usłudze App Service, można użyć Asystent migracji usługi aplikacji Azure. Narzędzie migracji tworzy aplikacje sieci web i baz danych na platformie Azure, zgodnie z potrzebami, a następnie publikuje zawartość. Aby uzyskać więcej informacji, zobacz [Asystent migracji usługi aplikacji Azure](https://www.migratetoazure.net/).
+Aby migrować lokacje z serwerów sieci Web z systemami Windows i Linux do App Service, można użyć Azure App Service Asystent migracji. Narzędzie do migracji tworzy aplikacje sieci Web i bazy danych na platformie Azure zgodnie z wymaganiami, a następnie publikuje zawartość. Aby uzyskać więcej informacji, zobacz [Azure App Service Asystent migracji](https://www.migratetoazure.net/).

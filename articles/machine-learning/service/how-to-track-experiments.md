@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 269568c172ff6c65c9877f9ad22067a11125b339
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: edc0da77fc1c2813c2485fca18d50952e3060db8
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67847597"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68370470"
 ---
 # <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Metryki dzienników podczas przebiegów szkoleniowych w Azure Machine Learning
 
@@ -225,8 +225,8 @@ W artykule dotyczącym [uruchamiania, monitorowania i anulowania szkoleń zostan
 
 ## <a name="view-run-details"></a>Wyświetl szczegóły przebiegu
 
-### <a name="monitor-run-with-jupyter-notebook-widgets"></a>Monitorowanie uruchomienia widżetów notesu programu Jupyter
-Kiedy używasz **ScriptRunConfig** metodę, aby przesłać działa, możesz obserwować postęp wykonywania za pomocą elementu widget notesu programu Jupyter. Podobnie jak przesyłanie przebiegu, widżet jest asynchroniczny i udostępnia aktualizacje na bieżąco co 10–15 sekund aż do zakończenia zadania.
+### <a name="monitor-run-with-jupyter-notebook-widget"></a>Widżet uruchamiania z Jupyter notesu
+Gdy używasz metody **ScriptRunConfig** do przesyłania przebiegów, możesz obserwować postęp przebiegu za pomocą [widżetu Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py). Podobnie jak przesyłanie przebiegu, widżet jest asynchroniczny i udostępnia aktualizacje na bieżąco co 10–15 sekund aż do zakończenia zadania.
 
 1. Wyświetl element widget Jupyter podczas oczekiwania na przebieg zakończyć.
 
@@ -236,6 +236,12 @@ Kiedy używasz **ScriptRunConfig** metodę, aby przesłać działa, możesz obse
    ```
 
    ![Zrzut ekranu aplikacji Jupyter notebook widżetu](./media/how-to-track-experiments/run-details-widget.png)
+
+Możesz również uzyskać link do tego samego ekranu w obszarze roboczym.
+
+```python
+print(run.get_portal_url())
+```
 
 2. **[Automatyczne uczenia maszynowego przebiegi]**  Dostęp do wykresów z poprzedniego uruchomienia. Zamień `<<experiment_name>>` na odpowiednią nazwę eksperymentu:
 
@@ -257,7 +263,8 @@ Aby wyświetlić więcej szczegółów, kliknij potok w potoku chcesz eksplorowa
 ### <a name="get-log-results-upon-completion"></a>Pobieranie wyników dziennika po zakończeniu
 
 Model uczenia i monitorowania wystąpić w tle, aby uruchomić inne zadania podczas oczekiwania. Można również poczekać, aż modelu została zakończona szkolenia przed uruchomieniem więcej kodu. Kiedy używasz **ScriptRunConfig**, możesz użyć ```run.wait_for_completion(show_output = True)``` do wyświetlenia po zakończeniu szkolenia modelu. ```show_output``` Flagi zapewnia pełne dane wyjściowe. 
-  
+
+
 ### <a name="query-run-metrics"></a>Uruchomienie metryki zapytania
 
 Możesz wyświetlić metryki uczonego modelu przy użyciu ```run.get_metrics()```. Teraz można uzyskać wszystkie metryki, które zostały zarejestrowane w przykładzie powyżej, aby określić najlepszy model.
@@ -287,140 +294,6 @@ Istnieją różne sposoby rejestrowania interfejsów API dla różnych typów re
 |Zaloguj się wielokrotnie wiersz z 2 kolumny liczbowe|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Wykres liniowy z dwoma zmiennymi|
 |Tabela dziennika z 2 kolumny liczbowe|`run.log_table(name='Sine Wave', value=sines)`|Wykres liniowy z dwoma zmiennymi|
 
-<a name="auto"></a>
-## <a name="understanding-automated-ml-charts"></a>Omówienie automatycznego wykresy ML
-
-Po przesłaniu zadania usługi ML automatycznych w notesie, historii uruchamiania tych testów można znaleźć w obszarze roboczym usługi uczenia maszynowego. 
-
-Dowiedz się więcej o usługach:
-+ [Wykresy i krzywych dla modeli klasyfikacji](#classification)
-+ [Wykresy i schematy dla modele regresji](#regression)
-+ [Model wyjaśniono możliwości](#model-explain-ability-and-feature-importance)
-
-
-### <a name="view-the-run-charts"></a>Wyświetl wykresy przebiegu
-
-1. Przejdź do swojego obszaru roboczego. 
-
-1. Wybierz **eksperymentów** skrajnie po lewej stronie panelu obszaru roboczego.
-
-   ![Zrzut ekranu przedstawiający menu eksperymentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-menu.png)
-
-1. Wybierz eksperyment, który Cię interesuje.
-
-   ![Lista eksperymentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-list.png)
-
-1. W tabeli wybierz numer uruchomienia.
-
-   ![Uruchomienie eksperymentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-run.png)
-
-1. W tabeli wybierz liczbę iteracji dla modelu, który chcesz dalszego zbadania.
-
-   ![Model doświadczenia](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-model.png)
-
-
-
-### <a name="classification"></a>Klasyfikacja
-
-Dla każdego modelu klasyfikacji, gdy kompilujesz przy użyciu zautomatyzowanych możliwości, które usługi Azure Machine Learning uczenia maszynowego można wyświetlić następujące wykresy: 
-+ [Macierz pomyłek](#confusion-matrix)
-+ [Precision-Recall wykresu](#precision-recall-chart)
-+ [Odbiornik operacyjne cechy (lub ROC)](#roc)
-+ [Przenoszenie krzywej](#lift-curve)
-+ [Krzywa zysków](#gains-curve)
-+ [Wykres odwzorowania](#calibration-plot)
-
-#### <a name="confusion-matrix"></a>Macierz pomyłek
-
-Macierz pomyłek służy do opisywania wydajność model klasyfikacji. Każdy wiersz zawiera wystąpienia klasy wartość true, a każda kolumna reprezentuje wystąpienia to przewidywana klasa. Macierz pomyłek pokazuje poprawnie sklasyfikowane etykiety i etykiety niepoprawnie sklasyfikowanych w danym modelu.
-
-W przypadku problemów z klasyfikacji usługi Azure Machine Learning automatycznie zapewnia macierz pomyłek dla każdego modelu, który jest skompilowany. Dla każdego macierz pomyłek automatycznych ML zostaną wyświetlone poprawnie sklasyfikowane etykiety jako etykiety zielony i niepoprawnie sklasyfikowanych w kolorze czerwonym. Rozmiar koła reprezentuje liczbę próbek w nim. Ponadto liczba częstotliwość każdej etykiety przewidywane i każdej etykiety wartość true, znajduje się w sąsiadujących wykresów słupkowych. 
-
-Przykład 1: Model klasyfikacji z niską dokładnością ![modelu klasyfikacji z niską dokładnością](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion-matrix1.png)
-
-Przykład 2: Model klasyfikacji z wysoką dokładnością (idealnym ![) modelem klasyfikacji o wysokiej dokładności](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion-matrix2.png)
-
-
-#### <a name="precision-recall-chart"></a>Precision-recall wykresu
-
-Z tego wykresu można porównać krzywych precision-recall dla każdego modelu określić model, który ma akceptowalnego relacja dokładności i odwołania dla danego problemu określonego rodzaju. Ten wykres przedstawia średnią Precision-Recall — makro, Micro średni Precision-Recall i dokładności recall skojarzone z wszystkich klas dla modelu.
-
-Termin dokładności reprezentuje zdolność klasyfikatora poprawnie oznaczenie wszystkich wystąpień. Odwołania reprezentuje możliwości klasyfikatora znaleźć wszystkie wystąpienia określonej etykiecie. Krzywa precision-recall przedstawiono relację między tymi dwoma pojęciami. Najlepiej, jeśli model musi 100% dokładności i 100-procentową dokładnością.
-
-Przykład 1: Model klasyfikacji z małą dokładnością i niskim odwołaniem ![modelu klasyfikacji z niską dokładnością i niskim wycofywaniem](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision-recall1.png)
-
-Przykład 2: Model klasyfikacji o wartości ~ 100% Precision i ~ 100% (idealne) ![model klasyfikacji o wysokiej dokładności i odwołaniu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision-recall2.png)
-
-#### <a name="roc"></a>ROC
-
-Odbiornik operacyjnego cechy (lub ROC) jest wykres poprawnie sklasyfikowane etykiety, a niepoprawnie sklasyfikowane etykiety dla określonego modelu. Może być mniej informacyjne krzywej ROC, gdy szkolenie modeli w zestawach danych przy użyciu wysokie odchylenie, ponieważ nie będą widoczne fałszywie dodatnie etykiety.
-
-Przykład 1: Model klasyfikacji z niską rzeczywistą etykietami i wysokimi fałszywymi ![etykietami model klasyfikacji z niską rzeczywistą etykietami i silnymi etykietami fałszywymi](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc-1.png)
-
-Przykład 2: Model klasyfikacji z wysoką prawdziwymi etykietami i niskimi ![etykietami fałszywych z modelem klasyfikacji z wysokimi etykietami i niskimi etykietami fałszywymi](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc-2.png)
-
-#### <a name="lift-curve"></a>Przenoszenie krzywej
-
-Możesz porównać przyrostu modelu tworzone automatycznie za pomocą usługi Azure Machine Learning do linii bazowej Aby wyświetlić zysk wartość określonego modelu.
-
-Wykresy przyrostu służą do oceny wydajności model klasyfikacji. Pokazuje, ile lepiej można oczekiwać, że sposób korzystania z modelu, w porównaniu do bez modelu. 
-
-Przykład 1: Model jest niezgodny z przypadkowym modelem ![wyboru model klasyfikacji, który jest niezgodny z losowym modelem wyboru](./media/how-to-track-experiments/azure-machine-learning-auto-ml-lift-curve1.png)
-
-Przykład 2: Model jest lepszy niż losowy model ![wyboru modelu klasyfikacji, który wykonuje lepsze](./media/how-to-track-experiments/azure-machine-learning-auto-ml-lift-curve2.png)
-
-#### <a name="gains-curve"></a>Krzywa zysków
-
-Wykres zyski ocenia wydajność model klasyfikacji przez każdy fragment danych. Pokazuje dla każdego percentylu zestawu danych, ile lepiej można oczekiwać, że do wykonania porównana z modelem losowej.
-
-Użyj wykresu skumulowanego zyski ułatwiające wybór odcięcia Klasyfikacja za pomocą wartość procentową, która odnosi się do żądanego korzyści z modelu. Informacje te stanowią innym sposobem spojrzenie na wyniki na wykresie przyrostu towarzyszącej.
-
-Przykład 1: Model klasyfikacji z minimalnym wzrostem ![modelu klasyfikacji z minimalnym wzrostem](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains-curve1.png)
-
-Przykład 2: Model klasyfikacji ze znaczącym wzrostem ![modelu klasyfikacji z znaczącym wzrostem](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains-curve2.png)
-
-#### <a name="calibration-plot"></a>Wykres odwzorowania
-
-W przypadku wszystkich problemów klasyfikacji możesz przejrzeć odwzorowania linii średniej micro, średnia — makro i każda klasa w danym modelu predykcyjnego. 
-
-Wykres odwzorowania służy do wyświetlania zaufania modelu predykcyjnego. Odbywa się to poprzez przedstawiający relację między prawdopodobieństwa przewidywanych i rzeczywistych prawdopodobieństwo, gdzie "prawdopodobieństwo" oznacza prawdopodobieństwo, że konkretnego wystąpienia, należy w ramach niektóre etykiety. Dobrze pomiarowej modelu wyrównane y = x wiersza, gdzie jest względnie pewność, że jej prognozy. Model nadmiernego confident wyrównane y = 0 wiersza, w którym przewidywany prawdopodobieństwo, że jest zainstalowany, ale istnieje nie rzeczywiste prawdopodobieństwo.
-
-Przykład 1: Bardziej dobrze skalibrowane ![ modele modelu bardziej dobrze skalibrowanego](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib-curve1.png)
-
-Przykład 2: Model ![z nadmiernym priorytetem modelem o nadmiernej pewności](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib-curve2.png)
-
-### <a name="regression"></a>Regresji
-Dla każdego modelu regresji kompilowania przy użyciu zautomatyzowanych maszyny możliwości usługi Azure Machine Learning uczenia, możesz zobaczyć następujące wykresy: 
-+ [Przewidywane programu vs. Wartość true](#pvt)
-+ [Histogram reszty](#histo)
-
-<a name="pvt"></a>
-
-#### <a name="predicted-vs-true"></a>Przewidywane programu vs. True
-
-Przewidywane programu vs. Wartość true przedstawiono relacje między wartością prognozowaną a jego korelację wartość true, aby uzyskać problem regresji. Ten wykres może służyć do pomiaru wydajności modelu jako bliżej y = x wiersza przewidywane wartości są lepsze dokładności modelu predykcyjnego.
-
-Po każdym uruchomieniu widać przewidywane a true wykresu dla każdego modelu regresji. Aby zapewnić ochronę prywatności danych, wartości są ze sobą kwanty, a rozmiar każdego kwantu jest wyświetlany jako wykres słupkowy w dolnej części obszaru wykresu. Model predykcyjny, można porównać z modułem jaśniejszy odcień marginesów błąd, względem idealne wartości, z którym model powinien być.
-
-Przykład 1: Model regresji z niską dokładnością ![w przypadku prognozowania modelu regresji z niską dokładnością w przewidywaniach](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression1.png)
-
-Przykład 2: Model regresji z wysoką dokładnością w prognozie ![modelu regresji o wysokiej dokładności w jej prognozach](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression2.png)
-
-<a name="histo"></a>
-
-#### <a name="histogram-of-residuals"></a>Histogram reszty
-
-Pozostały reprezentuje obserwowanych y — prognozowanej wartości y. Aby pokazać marginesu błędu i odchylenie niski, histogram reszty powinny mieć kształt krzywą dzwonka skupia się wokół 0. 
-
-Przykład 1: Model regresji z bias w jego błędach ![model regresji sa z odchyleniami w jego błędach](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression3.png)
-
-Przykład 2: Model regresji z większą ilością równomiernej ![dystrybucji błędów modelu regresji z większą ilością nawet dystrybucji błędów](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression4.png)
-
-### <a name="model-explain-ability-and-feature-importance"></a>Model znaczenie wyjaśniono możliwości i funkcji
-
-Znaczenie dla funkcji daje wynik, który wskazuje opowiadają została każda funkcja budowy modelu. Możesz przejrzeć wynik znaczenie funkcji dla modelu ogólny, jak również na klasę w modelu predykcyjnego. Możesz zobaczyć na funkcję porównanie znaczenie dla każdej klasy lub ogólnej.
-
-![Funkcja wyjaśnienia możliwości](./media/how-to-track-experiments/azure-machine-learning-auto-ml-feature-explain1.png)
 
 ## <a name="example-notebooks"></a>Przykład notesów
 Następujące notesów zademonstrowania koncepcji w tym artykule:

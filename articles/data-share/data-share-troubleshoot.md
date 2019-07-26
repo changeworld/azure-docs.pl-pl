@@ -1,62 +1,62 @@
 ---
-title: Rozwiązywanie problemów z udziału danych platformy Azure w wersji zapoznawczej
-description: Dowiedz się, jak rozwiązywać problemy związane z udziału danych platformy Azure w wersji zapoznawczej
+title: Rozwiązywanie problemów z podglądem udziału danych platformy Azure
+description: Dowiedz się, jak rozwiązywać problemy w wersji zapoznawczej usługi Azure Data Share
 services: data-share
 author: joannapea
 ms.service: data-share
-ms.topic: overview
+ms.topic: troubleshooting
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: c02f72d6a327c4dcb94ac8844005613cfe316986
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 386a5e34dccafa61859cd13c3e0ad88cd3a7ffac
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67838382"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68421468"
 ---
-# <a name="troubleshoot-common-issues-in-azure-data-share-preview"></a>Rozwiązywanie typowych problemów w wersji zapoznawczej udziału danych platformy Azure
+# <a name="troubleshoot-common-issues-in-azure-data-share-preview"></a>Rozwiązywanie typowych problemów w wersji zapoznawczej usługi Azure Data Share
 
-W tym artykule pokazano, jak rozwiązywać typowe problemy dla udziału danych platformy Azure w wersji zapoznawczej. 
+W tym artykule pokazano, jak rozwiązywać typowe problemy z usługą Azure Data Share Preview. 
 
-## <a name="azure-data-share-invitations"></a>Azure zaproszeń do udostępniania danych 
+## <a name="azure-data-share-invitations"></a>Zaproszenia udziału danych platformy Azure 
 
-W niektórych przypadkach, gdy nowy użytkownik kliknie **zaakceptować zaproszenie** z zaproszenie e-mail, na który została wysłana, mogą być prezentowane z pustą listą zaproszeń. 
+W niektórych przypadkach, gdy nowy użytkownik kliknie opcję **Zaakceptuj zaproszenie** z zaproszenia e-mail, które zostało wysłane, może zostać wyświetlona pusta lista zaproszeń. 
 
 ![Brak zaproszeń](media/no-invites.png)
 
-Błąd powyżej jest to znany problem z usługą i jest obecnie rozwiązane. Jako obejście tego problemu, wykonaj poniższe kroki. 
+Powyższy błąd to znany problem z usługą i aktualnie trwa jej rozwiązywanie. Aby obejść ten krok, wykonaj poniższe czynności. 
 
-1. W witrynie Azure portal przejdź do **subskrypcji**
-1. Wybierz subskrypcję, której używasz dla udziału danych platformy Azure
-1. Kliknij pozycję **dostawców zasobów**
-1. Wyszukaj Microsoft.DataShare
-1. Kliknij przycisk **zarejestrować**
+1. W Azure Portal przejdź do **subskrypcji**
+1. Wybierz subskrypcję używaną dla udziału danych platformy Azure
+1. Kliknij pozycję **dostawcy zasobów**
+1. Wyszukaj w usłudze Microsoft. datashare
+1. Kliknij pozycję **zarejestruj** .
 
-Musisz mieć [rolę RBAC Współautor platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) do wykonania tych kroków. 
+Aby wykonać te kroki, musisz mieć [rolę RBAC współautor platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) . 
 
-Jeśli nadal nie można wyświetlić danych, udostępnianie z zaproszeniem, skontaktuj się z dostawcą danych i upewnij się, że wysłali zaproszenia do adresu e-mail logowania do platformy Azure i *nie* Twój alias e-mail. 
+Jeśli nadal nie możesz zobaczyć zaproszenia do udziału danych, skontaktuj się z dostawcą danych i upewnij się, że przesłały zaproszenie do adresu e-mail logowania platformy Azure, a *nie* aliasu e-mail. 
 
 > [!IMPORTANT]
-> Jeśli masz już zaakceptowano zaproszenie udostępniania danych platformy Azure i zakończył działanie usługi przed skonfigurowaniem opcji magazynu, postępuj zgodnie z instrukcjami opisanymi w [skonfigurować mapowanie zestawu danych](how-to-configure-mapping.md) przewodnik, aby dowiedzieć się, jak ukończyć konfigurowanie usługi dane odebrane udostępnianie i zaczynają się pojawiać dane. 
+> Jeśli zaakceptujesz już zaproszenie do udziału danych platformy Azure i zakończysz działanie usługi przed rozpoczęciem konfigurowania magazynu, postępuj zgodnie z instrukcjami szczegółowymi w temacie [Konfigurowanie mapowania zestawu danych](how-to-configure-mapping.md) — Przewodnik po tym, aby dowiedzieć się, jak zakończyć konfigurowanie otrzymanego udziału danych i zacznij odbierać dane. 
 
-## <a name="error-when-creating-or-receiving-a-new-data-share"></a>Błąd podczas tworzenia lub otrzymaniu nowego udziału danych
+## <a name="error-when-creating-or-receiving-a-new-data-share"></a>Błąd podczas tworzenia lub otrzymywania nowego udziału danych
 
-"Błąd: Operacja zwróciła nieprawidłowy kod stanu "Element BadRequest" "
+Porn Operacja zwróciła nieprawidłowy kod stanu "nieprawidłowego żądania" "
 
-"Błąd: AuthorizationFailed"
+Porn AuthorizationFailed"
 
-"Błąd: przypisania roli do konta magazynu"
+"Błąd: przypisanie roli do konta magazynu"
 
 ![Błąd uprawnień](media/error-write-privilege.png)
 
-Jeśli pojawi się jeden z powyższych błędów podczas tworzenia nowego udziału danych lub otrzymaniu nowego udziału danych, jest ponieważ ma wystarczających uprawnień do konta magazynu. Wymagane uprawnienie *Microsoft.Authorization/role przypisania/zapis*, który istnieje w roli właściciela magazynu lub mogą być przypisane do roli niestandardowej. Nawet jeśli zostało utworzone konto magazynu, nie automatycznie powoduje ona możesz właściciela konta magazynu. Wykonaj następujące kroki, aby przyznać sobie właściciela konta magazynu. Alternatywnie można utworzyć rolę niestandardową mający to uprawnienie, które można dodać użytkownika do.  
+Jeśli podczas tworzenia nowego udziału danych lub odbierania nowego udziału danych pojawi się jeden z powyższych błędów, oznacza to brak wystarczających uprawnień do konta magazynu. Wymagane uprawnienie to *Microsoft. Authorization/przypisania ról/zapis*, które istnieje w roli właściciela magazynu lub można przypisać do roli niestandardowej. Nawet jeśli utworzysz konto usługi Storage, NIE sprawi to, że automatycznie staniesz się właścicielem konta magazynu. Wykonaj poniższe kroki, aby przyznać sobie rolę właściciela konta magazynu. Alternatywnie można utworzyć rolę niestandardową z tym uprawnieniem, które można dodać samodzielnie do programu.  
 
-1. Przejdź do konta magazynu w witrynie Azure portal
-1. Wybierz **kontrola dostępu (IAM)**
+1. Przejdź do konta usługi Storage w witrynie Azure Portal
+1. Wybieranie **kontroli dostępu (IAM)**
 1. Kliknij przycisk **Dodaj**
-1. Dodaj siebie w właściciela.
+1. Dodaj siebie jako właściciela.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się, jak uruchomić, udostępnianie danych, w dalszym ciągu [udostępnianie danych](share-your-data.md) samouczka.
+Aby dowiedzieć się, jak zacząć udostępniać dane, przejdź do samouczka [udostępnianie danych](share-your-data.md) .
 

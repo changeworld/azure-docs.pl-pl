@@ -9,10 +9,10 @@ ms.date: 05/06/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 444e64488b185b1ff2aa7cc63fbeffafc591dbfe
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 57a7d4f67635212f5bf0c56e58fd87c8ec366f2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/22/2019
 ms.locfileid: "68319977"
 ---
 ## <a name="benefits-of-managed-disks"></a>Zalety dysków zarządzanych
@@ -117,6 +117,6 @@ Platforma Azure używa priorytetowego kanału sieciowego dla ruchu dyskowego, kt
 
 Zapoznaj się z naszym [projektem w celu uzyskania wysokiej wydajności](../articles/virtual-machines/windows/premium-storage-performance.md) artykułu, aby poznać najlepsze rozwiązania dotyczące optymalizowania konfiguracji maszyn wirtualnych i dysków, dzięki czemu można osiągnąć żądaną wydajność
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się więcej na temat poszczególnych typów dysków oferowanych przez platformę Azure, które są odpowiednie dla Twoich potrzeb, i poznaj ich cele wydajności w naszym artykule na temat typów dysków.

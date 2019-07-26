@@ -1,5 +1,5 @@
 ---
-title: Logowanie jednokrotne w usłudze SAML dla aplikacji lokalnych z serwer proxy aplikacji usługi Azure Active Directory (wersja zapoznawcza) | Microsoft Docs
+title: Logowanie jednokrotne w usłudze SAML dla aplikacji lokalnych przy użyciu serwera proxy aplikacja usługi Azure AD | Microsoft Docs
 description: Dowiedz się, jak zapewnić Logowanie jednokrotne dla aplikacji lokalnych, które są zabezpieczone przy użyciu uwierzytelniania SAML. Zapewnianie dostępu zdalnego do aplikacji lokalnych przy użyciu serwera proxy aplikacji.
 services: active-directory
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9f4ab79a9fc9b8fec26cce98d9a878b6fa2a0c3
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: ff5152a2d65ea3921f0fef7f3a020bcea80d1769
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853759"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68421256"
 ---
-# <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy-preview"></a>Logowanie jednokrotne w usłudze SAML dla aplikacji lokalnych przy użyciu serwera proxy aplikacji (wersja zapoznawcza)
+# <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>Logowanie jednokrotne SAML dla aplikacji lokalnych przy użyciu serwera proxy aplikacji
 
 Możesz udostępnić Logowanie jednokrotne do aplikacji lokalnych, które są zabezpieczone przy użyciu uwierzytelniania SAML i zapewniają dostęp zdalny do tych aplikacji za pomocą serwera proxy aplikacji. Za pomocą logowania jednokrotnego w protokole SAML usługa Azure Active Directory (Azure AD) uwierzytelnia się w aplikacji przy użyciu konta usługi Azure AD użytkownika. Usługa Azure AD komunikuje się informacji logowania jednokrotnego do aplikacji za pośrednictwem protokołu połączenia. Możesz również mapować użytkowników na określone role aplikacji na podstawie reguł zdefiniowanych w oświadczeniach SAML. Po włączeniu serwera proxy aplikacji oprócz rejestracji jednokrotnej protokołu SAML użytkownicy będą mieli zewnętrzny dostęp do aplikacji i bezproblemowe środowisko logowania jednokrotnego.
 
@@ -49,7 +49,7 @@ Poniższe diagramy protokołów opisują sekwencję logowania jednokrotnego dla 
 
 5. Wybierz pozycję **SAML** jako metodę logowania jednokrotnego.
 
-6. Najpierw skonfiguruj Logowanie jednokrotne SAML do pracy w sieci firmowej. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** przejdź do nagłówka **Podstawowa konfiguracja SAML** i wybierz jego ikonę **edycji** (ołówek). Postępuj zgodnie z instrukcjami w [wprowadź podstawową konfigurację SAML](configure-single-sign-on-non-gallery-applications.md#saml-based-single-sign-on) , aby skonfigurować uwierzytelnianie oparte na protokole SAML dla aplikacji.
+6. Najpierw skonfiguruj Logowanie jednokrotne SAML do pracy w sieci firmowej. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** przejdź do nagłówka **Podstawowa konfiguracja SAML** i wybierz jego ikonę **edycji** (ołówek). Postępuj zgodnie z instrukcjami w [wprowadź podstawową konfigurację SAML](configure-single-sign-on-non-gallery-applications.md#step-1-edit-the-basic-saml-configuration) , aby skonfigurować uwierzytelnianie oparte na protokole SAML dla aplikacji.
 
 7. Dodaj co najmniej jednego użytkownika do aplikacji i upewnij się, że konto testowe ma dostęp do aplikacji. Po nawiązaniu połączenia z siecią firmową Użyj konta testowego, aby sprawdzić, czy użytkownik ma Logowanie jednokrotne do aplikacji. 
 

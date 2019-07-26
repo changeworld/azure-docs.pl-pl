@@ -1,6 +1,6 @@
 ---
-title: Technologie wdrażania w usłudze Azure Functions | Dokumentacja firmy Microsoft
-description: Dowiedz się, różne sposoby, możesz wdrożyć kod do usługi Azure Functions.
+title: Technologie wdrażania w Azure Functions | Microsoft Docs
+description: Poznaj różne sposoby wdrażania kodu do Azure Functions.
 services: functions
 documentationcenter: .net
 author: ColbyTresness
@@ -10,180 +10,186 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 47d8bf33fd686942326db3b1cc606978bf47a1bb
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 7f931a72eab534bc2856e9e545b684d2b8ae7a60
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594393"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444036"
 ---
-# <a name="deployment-technologies-in-azure-functions"></a>Technologie wdrażania w usłudze Azure Functions
+# <a name="deployment-technologies-in-azure-functions"></a>Technologie wdrażania w Azure Functions
 
-Aby wdrożyć kod projektu funkcji platformy Azure do platformy Azure, można użyć kilku różnych technologii. Ten artykuł zawiera wyczerpujący wykaz tych technologii, w tym artykule opisano, technologii, które są dostępne dla których odmian funkcje, wyjaśnia, co się stanie, gdy używasz każdej metody i zawiera zalecenia dotyczące najlepszą metodę do użycia w różnych scenariuszach . Różne narzędzia, które obsługują wdrażanie do usługi Azure Functions jest dostosowana do odpowiedniej technologii, na podstawie ich kontekstu.
+Do wdrożenia kodu projektu Azure Functions na platformie Azure można użyć kilku różnych technologii. Ten artykuł zawiera wyczerpującą listę tych technologii, opis technologii, które są dostępne dla których rodzajów funkcji, wyjaśniono, co się dzieje w przypadku korzystania z każdej metody, i zawiera zalecenia dotyczące najlepszej metody do użycia w różnych scenariuszach . Różne narzędzia obsługujące wdrażanie w Azure Functions są dostrojone do właściwej technologii w oparciu o ich kontekst.
 
-## <a name="deployment-technology-availability"></a>Wdrażanie technologii dostępności
+## <a name="deployment-technology-availability"></a>Dostępność technologii wdrażania
 
-> [!IMPORTANT]
-> Usługa Azure Functions obsługuje lokalne programowanie dla wielu platform i hosting w systemie Windows i Linux. Obecnie są dostępne trzy plany hostowania: [Użycie](functions-scale.md#consumption-plan), [Premium](functions-scale.md#premium-plan), i [(usługa Azure App Service) w wersji dedykowanej](functions-scale.md#app-service-plan). Każdy plan zawiera różne zachowania. Nie wszystkie technologie wdrażania są dostępne dla każdej wersji usługi Azure Functions.
+Azure Functions obsługuje Międzyplatformowe programowanie lokalne i hosting w systemach Windows i Linux. Obecnie dostępne są trzy plany hostingu:
 
-| Technologia wdrażania | Użycie Windows | Windows — wersja Premium (wersja zapoznawcza) | Windows w wersji dedykowanej  | Użycie systemu Linux (wersja zapoznawcza) | Linux w wersji dedykowanej |
++ [Wyrażon](functions-scale.md#consumption-plan)
++ [Premium](functions-scale.md#premium-plan)
++ [Dedykowane (App Service)](functions-scale.md#app-service-plan)
+
+Każdy plan ma inne zachowania. Nie wszystkie technologie wdrażania są dostępne dla każdej wersji Azure Functions. Na poniższym wykresie przedstawiono, które technologie wdrażania są obsługiwane dla każdej kombinacji systemu operacyjnego i planu hostingu:
+
+| Technologia wdrażania | Użycie systemu Windows | Windows Premium (wersja zapoznawcza) | Dedykowane systemu Windows  | Użycie systemu Linux (wersja zapoznawcza) | System Linux — dedykowany |
 |-----------------------|:-------------------:|:-------------------------:|:-----------------:|:---------------------------:|:---------------:|
-| Adres URL pakietu zewnętrznego<sup>1</sup> |✔|✔|✔|✔|✔|
-| Wdrażanie pliku zip |✔|✔|✔| |✔|
-| Kontener platformy docker | | | | |✔|
+| Zewnętrzny adres URL pakietu<sup>1</sup> |✔|✔|✔|✔|✔|
+| Wdróż plik zip |✔|✔|✔| |✔|
+| Kontener platformy Docker | | | | |✔|
 | Web Deploy |✔|✔|✔| | |
 | Kontrola źródła |✔|✔|✔| |✔|
-| Lokalnego narzędzia Git<sup>1</sup> |✔|✔|✔| |✔|
+| Lokalne git<sup>1</sup> |✔|✔|✔| |✔|
 | Synchronizacja w chmurze<sup>1</sup> |✔|✔|✔| |✔|
 | FTP<sup>1</sup> |✔|✔|✔| |✔|
-| Edytowanie w portalu |✔|✔|✔| |✔<sup>2</sup>|
+| Edytowanie portalu |✔|✔|✔| |✔<sup>2</sup>|
 
-<sup>1</sup> technologii wdrażania, która wymaga [wyzwalacza ręcznego synchronizowania](#trigger-syncing).  
-<sup>2</sup> edycji portal jest włączona tylko w przypadku wyzwalaczy HTTP oraz czasomierzem dla funkcji w systemie Linux za pomocą dedykowanego planu.
+<sup>1</sup> technologia wdrażania, która wymaga [synchronizacji ręcznej wyzwalacza](#trigger-syncing).  
+<sup>2</sup> edytowanie w portalu jest włączone tylko dla wyzwalaczy http i Timer dla funkcji w systemie Linux przy użyciu planów Premium i dedykowanych.
 
 ## <a name="key-concepts"></a>Kluczowe pojęcia
 
-Niektóre kluczowe pojęcia są krytyczne dla zrozumienia, jak działają wdrożeń w usłudze Azure Functions.
+Niektóre kluczowe koncepcje mają na celu zrozumienie, w jaki sposób wdrożenia działają w Azure Functions.
 
-### <a name="trigger-syncing"></a>Trwa synchronizowanie wyzwalacza
+### <a name="trigger-syncing"></a>Wyzwalanie synchronizacji
 
-Po zmianie dowolnego usługi wyzwalaczy infrastruktury funkcji należy pamiętać o zmianach. Synchronizacja odbywa się automatycznie w przypadku wielu technologii wdrożenia. Jednak w niektórych przypadkach należy ręcznie zsynchronizować usługi wyzwalaczy. Wdrażając aktualizacje, odwołując się do pakietu zewnętrznego adresu URL, lokalnego narzędzia Git, synchronizacji w chmurze lub FTP, możesz ręcznie zsynchronizować usługi wyzwalaczy. Można synchronizować wyzwalaczy w jeden z trzech sposobów:
+Po zmianie któregokolwiek z wyzwalaczy infrastruktura funkcji musi pamiętać o zmianach. Synchronizacja odbywa się automatycznie w przypadku wielu technologii wdrażania. Jednak w niektórych przypadkach należy ręcznie zsynchronizować wyzwalacze. Podczas wdrażania aktualizacji przez odwołanie się do zewnętrznego adresu URL pakietu, lokalnego narzędzia Git, synchronizacji w chmurze lub FTP należy ręcznie zsynchronizować wyzwalacze. Wyzwalacze można synchronizować na jeden z trzech sposobów:
 
-* Uruchom ponownie swoją aplikację funkcji w witrynie Azure portal
-* Wyślij żądanie HTTP POST do `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` przy użyciu [klucz główny](functions-bindings-http-webhook.md#authorization-keys).
-* Wyślij żądanie HTTP POST do `https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>/syncfunctiontriggers?api-version=2016-08-01`. Zastąp symbole zastępcze Identyfikatora subskrypcji, nazwę grupy zasobów i nazwę aplikacji funkcji.
+* Uruchom ponownie aplikację funkcji w Azure Portal
+* Wyślij żądanie HTTP POST, aby `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` użyć [klucza głównego](functions-bindings-http-webhook.md#authorization-keys).
+* Wyślij żądanie HTTP POST do `https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>/syncfunctiontriggers?api-version=2016-08-01`. Zamień symbole zastępcze na identyfikator subskrypcji, nazwę grupy zasobów i nazwę aplikacji funkcji.
 
-## <a name="deployment-technology-details"></a>Szczegóły technologii wdrożenia 
+## <a name="deployment-technology-details"></a>Szczegóły technologii wdrażania 
 
-Poniższych metod wdrażania są dostępne w usłudze Azure Functions.
+W Azure Functions są dostępne następujące metody wdrażania.
 
-### <a name="external-package-url"></a>Adres URL zewnętrznego pakietu
+### <a name="external-package-url"></a>Zewnętrzny adres URL pakietu
 
-Adres URL pakietu zewnętrznego służy odwołać się do pliku zdalnego pakietu (zip), który zawiera aplikację funkcji. Plik jest pobierany z podanego adresu URL, a aplikacja jest uruchamiana [uruchomienia z pakietu](run-functions-from-deployment-package.md) trybu.
+Możesz użyć zewnętrznego adresu URL pakietu, aby odwołać się do pliku pakietu zdalnego (zip), który zawiera aplikację funkcji. Plik zostanie pobrany z podanego adresu URL, a aplikacja zostanie uruchomiona w trybie [uruchamiania z poziomu pakietu](run-functions-from-deployment-package.md) .
 
->__Jak z niego korzystać:__ Dodaj `WEBSITE_RUN_FROM_PACKAGE` w ustawieniach Twojej aplikacji. Wartość tego ustawienia należy adres URL (lokalizacja pliku określonego pakietu, który chcesz uruchomić). Możesz dodać ustawienia albo [w portalu](functions-how-to-use-azure-function-app-settings.md#settings) lub [przy użyciu wiersza polecenia platformy Azure](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set). 
+>__Jak z niej korzystać:__ Dodaj `WEBSITE_RUN_FROM_PACKAGE` do ustawień aplikacji. Wartość tego ustawienia powinna być adresem URL (lokalizacją określonego pliku pakietu, który chcesz uruchomić). Możesz dodać ustawienia [w portalu](functions-how-to-use-azure-function-app-settings.md#settings) lub za [pomocą interfejsu wiersza polecenia platformy Azure](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set). 
 >
->Jeśli używasz usługi Azure Blob storage, należy użyć kontenera prywatnych przy użyciu [sygnatury dostępu współdzielonego (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) do udostępnienia funkcji do pakietu. Dowolny ponownym uruchomieniu aplikacji, narzędzie pobiera informacje o kopia zawartości. Okres istnienia aplikacji, której można się odwołać musi być prawidłowy.
+>Jeśli używasz usługi Azure Blob Storage, użyj prywatnego kontenera z sygnaturą [dostępu](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) współdzielonego, aby zapewnić funkcje dostępu do pakietu. Za każdym razem, gdy aplikacja zostanie ponownie uruchomiona, pobiera kopię zawartości. Twoje odwołanie musi być ważne przez okres istnienia aplikacji.
 
->__Kiedy stosować:__ Adres URL pakietów zewnętrznych jest tylko obsługiwanej metody wdrażania dla usługi Azure Functions działającej w systemie Linux w ramach planu zużycie (wersja zapoznawcza). Podczas aktualizacji pliku pakietu, który odwołuje się do aplikacji funkcji, należy najpierw [ręcznie zsynchronizować wyzwalaczy](#trigger-syncing) Azure stwierdzić, że aplikacja została zmieniona.
+>__Kiedy używać go:__ Zewnętrzny adres URL pakietu to jedyna obsługiwana metoda wdrażania dla Azure Functions uruchamiana w systemie Linux w planie zużycia (wersja zapoznawcza). Gdy aktualizujesz plik pakietu, do którego odwołuje się aplikacja funkcji, musisz [ręcznie zsynchronizować wyzwalacze](#trigger-syncing) , aby poinformować platformę Azure, że Twoja aplikacja uległa zmianie.
 
-### <a name="zip-deploy"></a>Wdrażanie pliku zip
+### <a name="zip-deploy"></a>Wdróż plik zip
 
-Użyj pliku zip wdrożyć Wypchnij plik zip, który zawiera aplikację funkcji na platformie Azure. Opcjonalnie można ustawić aplikację do uruchamiania w [uruchomienia z pakietu](run-functions-from-deployment-package.md) trybu.
+Użyj narzędzia zip Deploy, aby wypchnąć plik zip, który zawiera aplikację funkcji na platformie Azure. Opcjonalnie możesz ustawić aplikację tak, aby uruchamiała się w trybie [uruchamiania z poziomu pakietu](run-functions-from-deployment-package.md) .
 
->__Jak z niego korzystać:__ Wdrażanie przy użyciu narzędzia do ulubionego klienta: [Program VS Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure), [programu Visual Studio](functions-develop-vs.md#publish-to-azure), lub [wiersza polecenia platformy Azure](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure). Aby ręcznie wdrożyć plik zip do aplikacji funkcji, postępuj zgodnie z instrukcjami [Wdróż z pliku zip lub adres URL](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
+>__Jak z niej korzystać:__ Wdróż przy użyciu ulubionego narzędzia klienckiego: [Vs Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure)lub [interfejs wiersza polecenia platformy Azure](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure). Aby ręcznie wdrożyć plik zip w aplikacji funkcji, postępuj zgodnie z instrukcjami w temacie [Deploy from a. zip](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
 >
->W przypadku wdrażania przy użyciu pliku zip wdrażania, możesz ustawić aplikacja ma działać [uruchomienia z pakietu](run-functions-from-deployment-package.md) trybu. Aby ustawić tryb uruchomienia z pakietu, należy ustawić `WEBSITE_RUN_FROM_PACKAGE` wartość ustawienia aplikacji do `1`. Firma Microsoft zaleca wdrażanie pliku zip. Daje krótszy czas ładowania aplikacji, a jest ustawieniem domyślnym dla programu VS Code, program Visual Studio i wiersza polecenia platformy Azure.
+>Podczas wdrażania przy użyciu narzędzia zip Deploy można ustawić, aby aplikacja była uruchamiana w trybie [uruchamiania z poziomu pakietu](run-functions-from-deployment-package.md) . Aby ustawić przebieg z trybu pakietu, ustaw `WEBSITE_RUN_FROM_PACKAGE` wartość ustawienia aplikacji na. `1` Zalecamy wdrożenie pliku zip. Zapewnia ona krótszy czas ładowania aplikacji i jest to wartość domyślna dla VS Code, Visual Studio i interfejsu wiersza polecenia platformy Azure.
 
->__Kiedy stosować:__ Wdrażanie pliku zip jest technologia zalecane wdrożenie dla usługi Azure Functions w systemie Windows i usługi Azure Functions działającej w systemie Linux w przypadku dedykowanego planu.
+>__Kiedy używać go:__ Usługa zip Deploy to zalecana technologia wdrażania dla funkcji działających w systemach Windows i Linux w planie Premium lub dedykowanym.
 
-### <a name="docker-container"></a>Kontener platformy docker
+### <a name="docker-container"></a>Kontener platformy Docker
 
-Można wdrożyć obraz kontenera systemu Linux, który zawiera aplikację funkcji.
+Można wdrożyć obraz kontenera systemu Linux zawierający aplikację funkcji.
 
->__Jak z niego korzystać:__ Tworzenie aplikacji funkcji systemu Linux w przypadku dedykowanego planu i określić, który obraz kontenera, aby uruchamiała się z. Można to zrobić na dwa sposoby:
+>__Jak z niej korzystać:__ Utwórz aplikację funkcji systemu Linux w planie Premium lub dedykowanym i określ, z którego obrazu kontenera chcesz korzystać. Można to zrobić na dwa sposoby:
 >
->* Tworzenie aplikacji funkcji systemu Linux na plan usługi Azure App Service w witrynie Azure portal. Dla **Publikuj**, wybierz opcję **obrazu platformy Docker**, a następnie skonfiguruj kontenera. Wprowadź lokalizację, w którym jest hostowany obraz.
->* Tworzenie aplikacji funkcji systemu Linux na plan usługi App Service przy użyciu wiersza polecenia platformy Azure. Aby dowiedzieć się więcej, zobacz temat [Tworzenie funkcji w systemie Linux przy użyciu niestandardowego obrazu](functions-create-function-linux-custom-image.md#create-and-deploy-the-custom-image).
+>* Utwórz aplikację funkcji systemu Linux na planie Azure App Service w Azure Portal. W obszarze **Publikowanie**wybierz opcję **obraz platformy Docker**, a następnie skonfiguruj kontener. Wprowadź lokalizację, w której jest hostowany obraz.
+>* Tworzenie aplikacji funkcji systemu Linux w planie App Service przy użyciu interfejsu wiersza polecenia platformy Azure. Aby dowiedzieć się, jak to zrobić, zobacz [Tworzenie funkcji w systemie Linux przy użyciu obrazu niestandardowego](functions-create-function-linux-custom-image.md#create-and-deploy-the-custom-image).
 >
->Aby wdrożyć do istniejącej aplikacji przy użyciu niestandardowego kontenera w [podstawowych narzędzi usługi Azure Functions](functions-run-local.md), użyj [ `func deploy` ](functions-run-local.md#publish) polecenia.
+>Aby wdrożyć w istniejącej aplikacji przy użyciu niestandardowego kontenera, w [Azure Functions Core Tools](functions-run-local.md)Użyj [`func deploy`](functions-run-local.md#publish) polecenia.
 
->__Kiedy stosować:__ Użyj opcji kontenera platformy Docker, gdy potrzebujesz większej kontroli nad środowiskiem systemu Linux której działa aplikacja funkcji. Ten mechanizm wdrażania jest dostępna tylko w przypadku funkcji działającej w systemie Linux w ramach planu usługi App Service.
+>__Kiedy używać go:__ Użyj opcji kontenera Docker, gdy potrzebna jest większa kontrola nad środowiskiem systemu Linux, w której działa aplikacja funkcji. Ten mechanizm wdrażania jest dostępny tylko w przypadku funkcji działających w systemie Linux w planie App Service.
 
-### <a name="web-deploy-msdeploy"></a>Narzędzie Web Deploy (MSDeploy)
+### <a name="web-deploy-msdeploy"></a>Web Deploy (MSDeploy)
 
-Narzędzie Web Deploy pakietów i wdrożenie aplikacji Windows na dowolnym serwerze usług IIS, w tym Twoje aplikacje funkcji z systemem Windows na platformie Azure.
+Web Deploy pakiety i wdraża aplikacje systemu Windows na dowolnym serwerze usług IIS, w tym aplikacje funkcji działające w systemie Windows na platformie Azure.
 
->__Jak z niego korzystać:__ Użyj [narzędzi programu Visual Studio dla usługi Azure Functions](functions-create-your-first-function-visual-studio.md). Wyczyść **uruchamiania z pliku pakietu (zalecane)** pole wyboru.
+>__Jak z niej korzystać:__ Użyj [narzędzi Visual Studio Tools for Azure Functions](functions-create-your-first-function-visual-studio.md). Wyczyść pole wyboru **Uruchom z pliku pakietu (zalecane)** .
 >
->Możesz również pobrać [3.6 wdrażania sieci Web](https://www.iis.net/downloads/microsoft/web-deploy) i wywołać `MSDeploy.exe` bezpośrednio.
+>Możesz również pobrać [Web Deploy 3,6](https://www.iis.net/downloads/microsoft/web-deploy) i bezpośrednio wywoływać `MSDeploy.exe` .
 
->__Kiedy stosować:__ Narzędzie Web Deploy jest obsługiwane i nie ma żadnych problemów, ale jest to preferowany sposób [zip wdrażania z uruchamiania z pakietem włączone](#zip-deploy). Aby dowiedzieć się więcej, zobacz [Podręcznik programowania Visual Studio](functions-develop-vs.md#publish-to-azure).
+>__Kiedy używać go:__ Web Deploy jest obsługiwana i nie ma żadnych problemów, ale preferowany mechanizm to polecenie [zip Deploy z włączonym pakietem uruchamiania z pakietu](#zip-deploy). Aby dowiedzieć się więcej, zobacz [Przewodnik programowania w programie Visual Studio](functions-develop-vs.md#publish-to-azure).
 
 ### <a name="source-control"></a>Kontrola źródła
 
-Za pomocą kontroli źródła, aby połączyć aplikację funkcji z repozytorium Git. Aktualizacja do kodu, w tym repozytorium wyzwala wdrożenia. Aby uzyskać więcej informacji, zobacz [Kudu Wiki](https://github.com/projectkudu/kudu/wiki/VSTS-vs-Kudu-deployments).
+Użyj kontroli źródła, aby połączyć aplikację funkcji z repozytorium git. Aktualizacja kodu w tym repozytorium wyzwala wdrożenie. Aby uzyskać więcej informacji, zobacz witrynę [typu wiki kudu](https://github.com/projectkudu/kudu/wiki/VSTS-vs-Kudu-deployments).
 
->__Jak z niego korzystać:__ Aby skonfigurować publikowanie z kontroli źródła, należy użyć Centrum wdrażania w portalu usługi Azure Functions. Aby uzyskać więcej informacji, zobacz [ciągłe wdrażanie dla usługi Azure Functions](functions-continuous-deployment.md).
+>__Jak z niej korzystać:__ Użyj centrum wdrażania w obszarze funkcje portalu, aby skonfigurować publikowanie z kontroli źródła. Aby uzyskać więcej informacji, zobacz [wdrażanie ciągłe dla Azure Functions](functions-continuous-deployment.md).
 
->__Kiedy stosować:__ Przy użyciu kontroli źródła jest najlepszym rozwiązaniem dla zespołów, które współpracować nad ich aplikacji funkcji. Kontrola źródła jest opcji dobre wdrażania, która umożliwia bardziej złożone potoki wdrożenia.
+>__Kiedy używać go:__ Użycie kontroli źródła jest najlepszym rozwiązaniem dla zespołów, które współpracują ze swoimi aplikacjami funkcji. Kontrola źródła jest dobrą opcją wdrażania, która umożliwia bardziej zaawansowane potoki wdrażania.
 
 ### <a name="local-git"></a>Lokalna usługa Git
 
-Można użyć lokalnego narzędzia Git do wypychania kodu z komputera lokalnego do usługi Azure Functions przy użyciu narzędzia Git.
+Możesz użyć lokalnego narzędzia Git do wypychania kodu z komputera lokalnego do Azure Functions przy użyciu narzędzia Git.
 
->__Jak z niego korzystać:__ Postępuj zgodnie z instrukcjami w [wdrażanie lokalnej usługi Git w usłudze Azure App Service](../app-service/deploy-local-git.md).
+>__Jak z niej korzystać:__ Postępuj zgodnie z instrukcjami w [lokalnym wdrożeniu git, aby Azure App Service](../app-service/deploy-local-git.md).
 
->__Kiedy stosować:__ Ogólnie rzecz biorąc zaleca się użycie metody innego wdrożenia. Podczas publikowania z lokalnego repozytorium Git, należy najpierw [ręcznie zsynchronizować wyzwalaczy](#trigger-syncing).
+>__Kiedy używać go:__ Ogólnie rzecz biorąc zalecamy użycie innej metody wdrażania. W przypadku publikowania z poziomu lokalnego narzędzia Git należy [ręcznie zsynchronizować wyzwalacze](#trigger-syncing).
 
-### <a name="cloud-sync"></a>Synchronizacji chmury
+### <a name="cloud-sync"></a>Synchronizacja z chmurą
 
-Użycie chmury synchronizacji — Synchronizuj zawartość z usługi Dropbox i OneDrive do usługi Azure Functions.
+Zsynchronizuj zawartość z usługi Dropbox i OneDrive do Azure Functions za pomocą synchronizacji z chmurą.
 
->__Jak z niego korzystać:__ Postępuj zgodnie z instrukcjami w [Synchronizuj zawartość z folderu w chmurze](../app-service/deploy-content-sync.md).
+>__Jak z niej korzystać:__ Postępuj zgodnie z instrukcjami w temacie [synchronizowanie zawartości z folderu w chmurze](../app-service/deploy-content-sync.md).
 
->__Kiedy stosować:__ Ogólnie rzecz biorąc zaleca się innych metod wdrażania. Podczas publikowania za pomocą synchronizacji w chmurze, należy najpierw [ręcznie zsynchronizować wyzwalaczy](#trigger-syncing).
+>__Kiedy używać go:__ Ogólnie rzecz biorąc, zalecamy stosowanie innych metod wdrażania. W przypadku publikowania przy użyciu funkcji synchronizacji z chmurą należy [ręcznie zsynchronizować wyzwalacze](#trigger-syncing).
 
-### <a name="ftp"></a>FTP
+### <a name="ftp"></a>Protokół FTP
 
-FTP umożliwia bezpośredni transfer plików w usłudze Azure Functions.
+Za pomocą protokołu FTP można bezpośrednio przetransferować pliki do Azure Functions.
 
->__Jak z niego korzystać:__ Postępuj zgodnie z instrukcjami w [wdrażania zawartości przy użyciu protokołu FTP/s](../app-service/deploy-ftp.md).
+>__Jak z niej korzystać:__ Postępuj zgodnie z instrukcjami podanymi w temacie [wdrażanie zawartości przy użyciu protokołu FTP/s](../app-service/deploy-ftp.md).
 
->__Kiedy stosować:__ Ogólnie rzecz biorąc zaleca się innych metod wdrażania. Podczas publikowania za pomocą protokołu FTP, należy najpierw [ręcznie zsynchronizować wyzwalaczy](#trigger-syncing).
+>__Kiedy używać go:__ Ogólnie rzecz biorąc, zalecamy stosowanie innych metod wdrażania. W przypadku publikowania przy użyciu protokołu FTP należy [ręcznie zsynchronizować wyzwalacze](#trigger-syncing).
 
-### <a name="portal-editing"></a>Edytowanie w portalu
+### <a name="portal-editing"></a>Edytowanie portalu
 
-W edytorze oparte na portalu, można bezpośrednio edytować pliki, które znajdują się w aplikacji funkcji (zasadniczo wdrożenia za każdym razem, aby zapisać zmiany).
+W edytorze opartym na portalu można bezpośrednio edytować pliki znajdujące się w aplikacji funkcji (zasadniczo wdrażane za każdym razem, gdy zapisujesz zmiany).
 
->__Jak z niego korzystać:__ Aby móc edytować funkcji w witrynie Azure portal, musisz mieć [utworzonej funkcji w portalu](functions-create-first-azure-function.md). Aby zachować pojedyncze wiarygodne źródło, za pomocą innej metody wdrażania sprawia, że funkcja tylko do odczytu i uniemożliwia dalsze edycję portalu. Aby powrócić do stanu, w którym można edytować pliki w witrynie Azure portal, można ręcznie włączyć tryb edycji do `Read/Write` i usuwania wszelkich ustawień związanych z wdrażaniem aplikacji (takich jak `WEBSITE_RUN_FROM_PACKAGE`). 
+>__Jak z niej korzystać:__ Aby móc edytować funkcje w Azure Portal, musisz [utworzyć funkcje w portalu](functions-create-first-azure-function.md). Aby zachować pojedyncze Źródło prawdy, przy użyciu dowolnej innej metody wdrażania funkcja jest tylko do odczytu i zapobiega edytowaniu portalu. Aby powrócić do stanu, w którym można edytować pliki w Azure Portal, można ręcznie włączyć tryb edycji z powrotem do `Read/Write` i usunąć wszystkie ustawienia aplikacji powiązane z wdrożeniem (na przykład `WEBSITE_RUN_FROM_PACKAGE`). 
 
->__Kiedy stosować:__ Portal jest dobrym sposobem, aby rozpocząć pracę z usługą Azure Functions. Im bardziej intensywny prace deweloperskie zaleca się, że używasz klienta narzędzi:
+>__Kiedy używać go:__ Portal jest dobrym sposobem na rozpoczęcie pracy z Azure Functions. Aby uzyskać więcej intensywnych prac programistycznych, zalecamy użycie jednego z następujących narzędzi klienta:
 >
->* [Rozpoczęcie korzystania z programu VS Code](functions-create-first-function-vs-code.md)
->* [Rozpoczęcie korzystania z podstawowych narzędzi usługi Azure Functions](functions-run-local.md)
->* [Rozpoczęcie korzystania z programu Visual Studio](functions-create-your-first-function-visual-studio.md)
+>* [Visual Studio Code](functions-create-first-function-vs-code.md)
+>* [Azure Functions Core Tools (wiersz polecenia)](functions-run-local.md)
+>* [Visual Studio](functions-create-your-first-function-visual-studio.md)
 
-W poniższej tabeli przedstawiono systemy operacyjne i języki tej obsługi portalu edycji:
+W poniższej tabeli przedstawiono systemy operacyjne i języki obsługujące edycję portalu:
 
-| | Użycie Windows | Windows — wersja Premium (wersja zapoznawcza) | Windows w wersji dedykowanej | Użycie systemu Linux (wersja zapoznawcza) | Linux w wersji dedykowanej |
-|-|:-----------------: |:-------------------------:|:-----------------:|:---------------------------:|:---------------:|
+| | Użycie systemu Windows | Windows Premium (wersja zapoznawcza) | Dedykowane systemu Windows | Użycie systemu Linux (wersja zapoznawcza) | Linux Premium (wersja zapoznawcza)| System Linux — dedykowany |
+|-|:-----------------: |:-------------------------:|:-----------------:|:---------------------------:|:---------------:|:---------------:|
 | C# | | | | | |
-| C# Script |✔|✔|✔| |✔<sup>*</sup>|
-| F# | | | | | |
-| Java | | | | | |
-| JavaScript (Node.js) |✔|✔|✔| |✔<sup>*</sup>|
-| Python (wersja zapoznawcza) | | | | | |
-| PowerShell (wersja zapoznawcza) |✔|✔|✔| | |
-| TypeScript (Node.js) | | | | | |
+| C#Napisy |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|
+| F# | | | | | | |
+| Java | | | | | | |
+| JavaScript (Node.js) |✔|✔|✔| |✔<sup>\*</sup>|✔<sup>\*</sup>|
+| Python (wersja zapoznawcza) | | | | | | |
+| PowerShell (wersja zapoznawcza) |✔|✔|✔| | | |
+| TypeScript (Node. js) | | | | | | |
 
-<sup>*</sup> Edytowanie portalu jest włączona tylko dla protokołu HTTP i czasomierza wyzwala dla funkcji w systemie Linux za pomocą dedykowanego planu.
+<sup>*</sup>Edytowanie portalu jest włączone tylko dla wyzwalaczy HTTP i Timer dla funkcji w systemie Linux przy użyciu Premium i planów dedykowanych.
 
 ## <a name="deployment-slots"></a>Miejsca wdrożenia
 
-Gdy wdrażasz aplikację funkcji na platformie Azure, można wdrożyć w miejscu wdrażane pojedynczo, a nie bezpośrednio do wdrożenia produkcyjnego. Aby uzyskać więcej informacji na temat miejsc wdrożenia, zobacz [miejsc w usłudze Azure App Service](../app-service/deploy-staging-slots.md).
+Po wdrożeniu aplikacji funkcji na platformie Azure można wdrożyć ją w osobnym miejscu wdrożenia zamiast bezpośrednio wdrażać ją w środowisku produkcyjnym. Aby uzyskać więcej informacji na temat miejsc wdrożenia, zobacz [Azure App Service miejsc](../app-service/deploy-staging-slots.md).
 
-### <a name="deployment-slots-levels-of-support"></a>Pomoc techniczną na poziomach miejsca wdrożenia
+### <a name="deployment-slots-levels-of-support"></a>Poziomy obsługi miejsc wdrożenia
 
 Istnieją dwa poziomy wsparcia dla miejsc wdrożenia:
 
-* **Ogólna dostępność (GA)** : W pełni obsługiwane i zatwierdzone do użytku produkcyjnego.
-* **Podgląd**: Nie są jeszcze obsługiwane, ale oczekuje się, że osiągną stan wersji ogólnie dostępnej w przyszłości.
+* **Ogólna dostępność (ga)** : W pełni obsługiwane i zatwierdzone do użycia w środowisku produkcyjnym.
+* **Wersja**zapoznawcza: Nie jest jeszcze obsługiwane, ale oczekuje się, że w przyszłości zostanie osiągnięty stan GA.
 
-| Plan hostingu/OS | Poziom wsparcia |
+| System operacyjny/plan hostingu | Poziom pomocy technicznej |
 | --------------- | ------ |
-| Użycie Windows | Wersja zapoznawcza |
-| Windows — wersja Premium (wersja zapoznawcza) | Wersja zapoznawcza |
-| Windows w wersji dedykowanej | Ogólna dostępność |
+| Użycie systemu Windows | Wersja zapoznawcza |
+| Windows Premium (wersja zapoznawcza) | Wersja zapoznawcza |
+| Dedykowane systemu Windows | Ogólna dostępność |
 | Użycie systemu Linux | Nieobsługiwane |
-| Linux w wersji dedykowanej | Ogólna dostępność |
+| Linux Premium (wersja zapoznawcza) | Wersja zapoznawcza |
+| System Linux — dedykowany | Ogólna dostępność |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-Przeczytaj następujące artykuły, aby dowiedzieć się więcej na temat wdrażania aplikacji funkcji: 
+Przeczytaj te artykuły, aby dowiedzieć się więcej o wdrażaniu aplikacji funkcji: 
 
 + [Ciągłe wdrażanie dla usługi Azure Functions](functions-continuous-deployment.md)
-+ [Ciągłe dostarczanie za pomocą DevOps platformy Azure](functions-how-to-azure-devops.md)
-+ [ZIP wdrożenia dla usługi Azure Functions](deployment-zip-push.md)
-+ [Uruchamianie usługi Azure Functions z pliku pakietu](run-functions-from-deployment-package.md)
-+ [Automatyzowanie wdrażania zasobów dla aplikacji funkcji w usłudze Azure Functions](functions-infrastructure-as-code.md)
++ [Ciągłe dostarczanie za pomocą usługi Azure DevOps](functions-how-to-azure-devops.md)
++ [Wdrożenia ZIP dla Azure Functions](deployment-zip-push.md)
++ [Uruchamianie Azure Functions z pliku pakietu](run-functions-from-deployment-package.md)
++ [Automatyzowanie wdrażania zasobów dla aplikacji funkcji w Azure Functions](functions-infrastructure-as-code.md)

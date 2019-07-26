@@ -1,6 +1,6 @@
 ---
-title: Często zadawane pytania dotyczące plików NetApp platformy Azure | Dokumentacja firmy Microsoft
-description: Odpowiedzi na często zadawane pytania dotyczące usługi Azure Files NetApp.
+title: Często zadawane pytania dotyczące Azure NetApp Files | Microsoft Docs
+description: Odpowiedzi na często zadawane pytania dotyczące Azure NetApp Files.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,185 +14,185 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: b-juche
-ms.openlocfilehash: 6f1ca3398678b59a81e5c22b51b36a1f5505d4c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f97bb4842d9e24d879dd47757fda75b16bca48cf
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65806389"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494820"
 ---
-# <a name="faqs-about-azure-netapp-files"></a>Często zadawane pytania dotyczące plików NetApp platformy Azure
+# <a name="faqs-about-azure-netapp-files"></a>Często zadawane pytania dotyczące Azure NetApp Files
 
-Ten artykuł zawiera odpowiedzi na często zadawane pytania (FAQ) dotyczących usługi Azure Files NetApp. 
+W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące Azure NetApp Files. 
 
-## <a name="networking-faqs"></a>Sieć — często zadawane pytania
+## <a name="networking-faqs"></a>Często zadawane pytania dotyczące sieci
 
-### <a name="does-the-nfs-data-path-go-over-the-internet"></a>Ścieżka danych systemu plików NFS przechodzi przez Internet?  
+### <a name="does-the-nfs-data-path-go-over-the-internet"></a>Czy ścieżka danych systemu plików NFS przechodzi przez Internet?  
 
-Nie. Ścieżka danych systemu plików NFS nie przechodzi przez Internet. Usługa Azure Files NetApp to Azure macierzystej usługi, która jest wdrażana w sieci wirtualnej platformy Azure (VNet) gdzie usługa jest dostępna. Usługi Azure Files NetApp używa delegowanego podsieci i obsługuje interfejs sieciowy bezpośrednio w sieci wirtualnej. 
+Nie. Ścieżka danych NFS nie przechodzi przez Internet. Azure NetApp Files to usługa Azure Native, która jest wdrażana w usłudze Azure Virtual Network (VNet), gdzie usługa jest dostępna. Azure NetApp Files używa delegowanej podsieci i udostępnia interfejs sieciowy bezpośrednio w sieci wirtualnej. 
 
-Zobacz [wskazówki dotyczące usługi Azure Files NetApp sieci, planowanie](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) Aby uzyskać szczegółowe informacje.  
+Aby uzyskać szczegółowe informacje, zobacz [wytyczne dotyczące planowania sieci Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) .  
 
-### <a name="can-i-connect-a-vnet-that-i-already-created-to-the-azure-netapp-files-service"></a>Czy można połączyć sieć wirtualną, która już została utworzona, w usłudze Azure NetApp Files?
+### <a name="can-i-connect-a-vnet-that-i-already-created-to-the-azure-netapp-files-service"></a>Czy mogę połączyć sieć wirtualną, która została już utworzona, do usługi Azure NetApp Files?
 
-Tak, możesz połączyć sieci wirtualne, który został utworzony w usłudze. 
+Tak, możesz połączyć sieci wirtualnych utworzone w usłudze. 
 
-Zobacz [wskazówki dotyczące usługi Azure Files NetApp sieci, planowanie](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) Aby uzyskać szczegółowe informacje.  
+Aby uzyskać szczegółowe informacje, zobacz [wytyczne dotyczące planowania sieci Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) .  
 
-### <a name="can-i-mount-an-nfs-volume-of-azure-netapp-files-using-dns-fqdn-name"></a>Czy można zainstalować woluminu systemu plików NFS plików NetApp platformy Azure, używając nazwy DNS FQDN?
+### <a name="can-i-mount-an-nfs-volume-of-azure-netapp-files-using-dns-fqdn-name"></a>Czy mogę zainstalować wolumin systemu plików NFS Azure NetApp Files przy użyciu nazwy FQDN DNS?
 
-Tak, możesz, jeśli tworzysz wymagane wpisy DNS. Usługa Azure Files NetApp dostarcza IP usługi dla aprowizowanego woluminu. 
+Tak, możesz w przypadku utworzenia wymaganych wpisów DNS. Azure NetApp Files dostarcza adres IP usługi dla woluminu aprowizacji. 
 
 > [!NOTE] 
-> Usługa Azure Files NetApp można wdrożyć dodatkowe adresy IP dla usługi, stosownie do potrzeb.  Wpisy DNS może być konieczne okresowo aktualizowana.
+> W razie potrzeby Azure NetApp Files mogą wdrożyć dodatkowe adresy IP dla usługi.  Może być konieczne okresowe aktualizowanie wpisów DNS.
 
-## <a name="security-faqs"></a>Często zadawane pytania zabezpieczeń
+## <a name="security-faqs"></a>Często zadawane pytania dotyczące zabezpieczeń
 
-### <a name="can-the-network-traffic-between-the-azure-vm-and-the-storage-be-encrypted"></a>Ruch sieciowy między maszyną Wirtualną Azure i magazynu mogą być szyfrowane?
+### <a name="can-the-network-traffic-between-the-azure-vm-and-the-storage-be-encrypted"></a>Czy ruch sieciowy między maszyną wirtualną platformy Azure a magazynem jest szyfrowany?
 
-Ruch w sieci (ruch z NFSv3 lub SMBv3 klienta do usługi Azure Files NetApp woluminów) nie są szyfrowane. Jednak ruch z Maszyną wirtualną platformy Azure (uruchomienie klienta systemu plików NFS i protokołu SMB) do usługi Azure Files NetApp jest tak bezpieczne, jak pozostałe rodzaje ruchu Azure VM-Maszynami wirtualnymi. Ten ruch jest lokalnej do sieci centrum danych platformy Azure. 
+Ruch danych (ruch z klienta NFSv3 lub SMBv3 do woluminów Azure NetApp Files) nie jest szyfrowany. Jednak ruch z maszyny wirtualnej platformy Azure (z systemem plików NFS lub klienta SMB) do Azure NetApp Files jest tak bezpieczny jak każdy inny ruch z maszyny wirtualnej na maszynę wirtualną. Ten ruch jest lokalny dla sieci centrów danych platformy Azure. 
 
-### <a name="can-the-storage-be-encrypted-at-rest"></a>Magazyn można szyfrować magazynowane?
+### <a name="can-the-storage-be-encrypted-at-rest"></a>Czy magazyn może być szyfrowany w spoczynku?
 
-Wszystkie woluminy plików NetApp platformy Azure są szyfrowane przy użyciu standardu FIPS 140-2 standard. Wszystkie klucze są zarządzane przez usługę Azure NetApp Files. 
+Wszystkie woluminy Azure NetApp Files są szyfrowane przy użyciu standardu FIPS 140-2. Wszystkie klucze są zarządzane przez usługę Azure NetApp Files. 
 
-### <a name="how-are-encryption-keys-managed"></a>Jak klucze szyfrowania są zarządzane? 
+### <a name="how-are-encryption-keys-managed"></a>Jak zarządzane są klucze szyfrowania? 
 
-Zarządzanie kluczami dla usługi Azure Files NetApp jest obsługiwane przez usługę.  Obecnie zarządzana przez użytkownika kluczy (Bring Your własne klucze) nie są obsługiwane.
+Zarządzanie kluczami dla Azure NetApp Files jest obsługiwane przez usługę.  Obecnie klucze zarządzane przez użytkownika (nie należy wprowadzać własnych kluczy) nie są obsługiwane.
 
-### <a name="can-i-configure-the-nfs-export-policy-rules-to-control-access-to-the-azure-netapp-files-service-mount-target"></a>Można skonfigurować reguły zasad eksportu systemu plików NFS, kontrolować dostęp do miejsca docelowego instalacji usługi Azure NetApp Files?
+### <a name="can-i-configure-the-nfs-export-policy-rules-to-control-access-to-the-azure-netapp-files-service-mount-target"></a>Czy można skonfigurować zasady eksportowania systemu plików NFS, aby kontrolować dostęp do celu instalacji usługi Azure NetApp Files Service?
 
 
-Tak, można skonfigurować maksymalnie pięć reguł w jednych zasad eksportu systemu plików NFS.
+Tak, można skonfigurować maksymalnie pięć reguł w ramach jednej zasady eksportowania NFS.
 
-### <a name="does-azure-netapp-files-support-network-security-groups"></a>Usługi Azure Files NetApp obsługuje sieciowe grupy zabezpieczeń?
+### <a name="does-azure-netapp-files-support-network-security-groups"></a>Czy Azure NetApp Files obsługiwać sieciowe grupy zabezpieczeń?
 
-Nie, obecnie nie można zastosować sieciowych grup zabezpieczeń z podsiecią delegowanego plików NetApp platformy Azure lub interfejsów sieciowych utworzonych przez usługę.
+Nie, obecnie nie można zastosować grup zabezpieczeń sieci do delegowanej podsieci Azure NetApp Files lub interfejsów sieciowych utworzonych przez usługę.
 
-### <a name="can-i-use-azure-iam-with-azure-netapp-files"></a>Czy można używać platformy Azure, zarządzania tożsamościami i Dostępem, za pomocą usługi Azure Files NetApp?
+### <a name="can-i-use-azure-iam-with-azure-netapp-files"></a>Czy mogę używać usługi Azure IAM z Azure NetApp Files?
 
-Tak, usługi Azure Files NetApp obsługuje funkcje RBAC przy użyciu platformy Azure, zarządzania tożsamościami i Dostępem.
+Tak, Azure NetApp Files obsługuje funkcje RBAC w usłudze Azure IAM.
 
-## <a name="performance-faqs"></a>Wydajność — często zadawane pytania
+## <a name="performance-faqs"></a>Często zadawane pytania dotyczące wydajności
 
-### <a name="what-should-i-do-to-optimize-or-tune-azure-netapp-files-performance"></a>Co należy zrobić, aby zoptymalizować lub dostosowywanie wydajności usługi Azure Files NetApp?
+### <a name="what-should-i-do-to-optimize-or-tune-azure-netapp-files-performance"></a>Co mam zrobić, aby zoptymalizować lub dostroić wydajność Azure NetApp Files?
 
-Można wykonać następujące czynności na wymagania dotyczące wydajności: 
-- Upewnij się, że maszyna wirtualna ma odpowiedni rozmiar.
-- Włącz przyspieszona sieć dla maszyny Wirtualnej.
-- Wybierz poziom żądanej usługi i rozmiar pojemności puli.
-- Utwórz wolumin o rozmiarze żądany limit przydziału pojemności i wydajności.
+Zgodnie z wymaganiami dotyczącymi wydajności można wykonać następujące działania: 
+- Upewnij się, że rozmiar maszyny wirtualnej jest odpowiedni.
+- Włącz przyspieszone sieci dla maszyny wirtualnej.
+- Wybierz żądany poziom usług i rozmiar puli pojemności.
+- Utwórz wolumin z żądanym rozmiarem przydziału dla pojemności i wydajności.
 
-### <a name="how-do-i-convert-throughput-based-service-levels-of-azure-netapp-files-to-iops"></a>Jak przekonwertować poziomów przepływności usługi Azure Files NetApp na operacje We/Wy?
+### <a name="how-do-i-convert-throughput-based-service-levels-of-azure-netapp-files-to-iops"></a>Jak mogę skonwertować poziomy usługi Azure NetApp Files na operacje we/wy na sekundę?
 
-MB/s można przekonwertować na operacje We/Wy przy użyciu następującej formuły:  
+Możesz skonwertować MB/s na operacje we/wy na sekundę, korzystając z następującej formuły:  
 
 `IOPS = (MBps Throughput / KB per IO) * 1024`
 
-### <a name="how-do-i-change-the-service-level-of-a-volume"></a>Jak zmienić poziom usługi woluminu?
+### <a name="how-do-i-change-the-service-level-of-a-volume"></a>Jak mogę zmienić poziomu usługi woluminu?
 
-Zmiana poziomu usługi woluminu nie jest obecnie obsługiwane.
+Zmiana poziomu usługi woluminu nie jest obecnie obsługiwana.
 
-### <a name="how-do-i-monitor-azure-netapp-files-performance"></a>Jak monitorować wydajność usługi Azure Files NetApp?
+### <a name="how-do-i-monitor-azure-netapp-files-performance"></a>Jak mogę monitorować Azure NetApp Files wydajności?
 
-Usługa Azure Files NetApp dostarcza metryki wydajności woluminu. Umożliwia także usługi Azure Monitor do monitorowania metryk użycia dla usługi Azure Files NetApp.  Zobacz [metryki dla usługi Azure Files NetApp](azure-netapp-files-metrics.md) listy metryki wydajności dla usługi Azure Files NetApp.
+Azure NetApp Files udostępnia metryki wydajności woluminu. Można również użyć Azure Monitor do monitorowania metryk użycia dla Azure NetApp Files.  Aby uzyskać listę metryk wydajności dla Azure NetApp Files, zobacz [metryki dla Azure NetApp Files](azure-netapp-files-metrics.md) .
 
-## <a name="nfs-faqs"></a>Systemu plików NFS — często zadawane pytania
+## <a name="nfs-faqs"></a>Często zadawane pytania dotyczące NFS
 
-### <a name="i-want-to-have-a-volume-mounted-automatically-when-an-azure-vm-is-started-or-rebooted--how-do-i-configure-my-host-for-persistent-nfs-volumes"></a>Chcę mieć wolumin instalowane automatycznie podczas uruchamiania lub ponownie uruchomić Maszynę wirtualną platformy Azure.  Jak skonfigurować Mój hosta dla trwałego woluminy systemu plików NFS?
+### <a name="i-want-to-have-a-volume-mounted-automatically-when-an-azure-vm-is-started-or-rebooted--how-do-i-configure-my-host-for-persistent-nfs-volumes"></a>Chcę, aby wolumin został zainstalowany automatycznie podczas uruchamiania lub ponownego uruchamiania maszyny wirtualnej platformy Azure.  Jak mogę skonfigurować mój Host dla trwałych woluminów NFS?
 
-Dla woluminu systemu plików NFS, automatycznego instalowania na początek maszyny Wirtualnej lub ponowne uruchomienie komputera, należy dodać wpis do `/etc/fstab` pliku na hoście. 
+Aby wolumin systemu plików NFS został automatycznie zainstalowany podczas uruchamiania lub ponownego uruchamiania maszyny wirtualnej, Dodaj wpis `/etc/fstab` do pliku na hoście. 
 
 Na przykład: `$ANFIP:/$FILEPATH      /$MOUNTPOINT    nfs bg,rw,hard,noatime,nolock,rsize=65536,wsize=65536,vers=3,tcp,_netdev 0 0`
 
 - $ANFIP  
-    Adres IP usługi Azure Files NetApp woluminu w bloku właściwości woluminu
+    Adres IP woluminu Azure NetApp Files znaleziony w bloku właściwości woluminu
 - $FILEPATH  
-    Ścieżka eksportu woluminu, usługi Azure Files NetApp
+    Ścieżka eksportu woluminu Azure NetApp Files
 - $MOUNTPOINT  
-    Katalog, tworzona na hoście systemu Linux, używana do instalowania systemu plików NFS eksportu
+    Katalog utworzony na hoście z systemem Linux używany do instalowania eksportu systemu plików NFS
 
-### <a name="why-does-the-df-command-on-nfs-client-not-show-the-provisioned-volume-size"></a>Dlaczego polecenie DF na komputerze klienckim systemu plików NFS nie uwzględnia aprowizowanego rozmiaru woluminu?
+### <a name="why-does-the-df-command-on-nfs-client-not-show-the-provisioned-volume-size"></a>Dlaczego polecenie DF na kliencie NFS nie pokazuje rozmiaru woluminu, który został zainicjowany?
 
-Rozmiar woluminu, DF zgłaszany jest maksymalny rozmiar woluminu NetApp usługi pliki Azure może zwiększyć się. Rozmiar woluminu plików NetApp platformy Azure w poleceniu DF nie jest odbijającą limitu przydziału lub rozmiaru woluminu.  Usługi Azure Files NetApp rozmiaru woluminu lub limitu przydziału można uzyskać za pośrednictwem witryny Azure portal lub interfejsu API.
+Rozmiar woluminu raportowany w DF jest maksymalnym rozmiarem, do którego można zwiększyć wolumin Azure NetApp Files. Rozmiar woluminu Azure NetApp Files w DF polecenia nie odzwierciedla przydziału ani rozmiaru woluminu.  Azure NetApp Files rozmiaru woluminu lub przydziału można uzyskać za pomocą Azure Portal lub interfejsu API.
 
-### <a name="what-nfs-version-does-azure-netapp-files-support"></a>Jakiej wersji systemu plików NFS obsługuje usługi Azure Files NetApp?
+### <a name="what-nfs-version-does-azure-netapp-files-support"></a>Jakie wersje systemu plików NFS obsługuje Azure NetApp Files?
 
-Usługa Azure Files NetApp obsługuje obecnie NFSv3.
+Azure NetApp Files obecnie obsługuje NFSv3.
 
-### <a name="how-do-i-enable-root-squashing"></a>Jak włączyć zgniatanie głównego
+### <a name="how-do-i-enable-root-squashing"></a>Jak mogę włączyć zgniatanie głównego?
 
-Główny zgniatanie nie jest obecnie obsługiwane.
+Główny zgniatanie nie jest obecnie obsługiwany.
 
-## <a name="smb-faqs"></a>Protokół SMB — często zadawane pytania
+## <a name="smb-faqs"></a>Funkcja SMB — często zadawane pytania
 
-### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Usługa Azure NetApp Files obsługuje usługi Azure Active Directory?
+### <a name="is-an-active-directory-connection-required-for-smb-access"></a>Czy Active Directory jest wymagane połączenie z dostępem do protokołu SMB? 
 
-Nie, obecnie nie jest obsługiwane.  Usługa Azure Files NetApp obsługuje Active Directory Domain Services (Przynieś swoje Own AD), którego można używać istniejących kontrolerów domeny Active Directory z usługą Azure Files NetApp. Kontrolery domeny mogą znajdować się na platformie Azure, jako maszyn wirtualnych lub w środowisku lokalnym za pośrednictwem usługi ExpressRoute.
+Tak, przed wdrożeniem woluminu SMB należy utworzyć połączenie Active Directory. Określone kontrolery domeny muszą być dostępne przez delegowaną podsieć Azure NetApp Files w celu pomyślnego nawiązania połączenia.  Aby uzyskać szczegółowe informacje, zobacz [Tworzenie woluminu SMB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb) . 
 
-### <a name="is-an-active-directory-connection-required-for-smb-access"></a>Jest wymagane dla dostęp przez protokół SMB połączenie z usługi Active Directory? 
+### <a name="how-many-active-directory-connections-are-supported"></a>Ile połączeń Active Directory są obsługiwane?
 
-Tak, należy utworzyć połączenie usługi Active Directory przed wdrożeniem woluminie SMB. Określone kontrolery domeny musi być dostępny za pomocą delegowanego podsieci usługi Azure Files NetApp do pomyślnego nawiązania połączenia.  Zobacz [Utwórz wolumin SMB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes#create-an-smb-volume) Aby uzyskać szczegółowe informacje. 
+Azure NetApp Files obecnie obsługuje jedno połączenie Active Directory na subskrypcję. Ponadto połączenie Active Directory jest specyficzne dla jednego konta NetApp; nie jest ona udostępniana przez konta. 
 
-### <a name="how-many-active-directory-connections-are-supported"></a>Liczba połączeń z usługi Active Directory są obsługiwane?
+### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Czy Azure NetApp Files obsługiwać Azure Active Directory? 
 
-Usługa Azure Files NetApp obsługuje obecnie jedno połączenie usługi Active Directory na subskrypcję. Ponadto połączenia usługi Active Directory zależy od jednego konta NetApp; nie jest udostępniony na kontach. 
+Obsługiwane są zarówno [usługi domenowe Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory-domain-services/overview) , jak i [Active Directory Domain Services (AD DS)](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) . Istniejących Active Directory kontrolerów domeny można użyć z Azure NetApp Files. Kontrolery domeny mogą znajdować się na platformie Azure jako maszyny wirtualne lub lokalnie za pośrednictwem ExpressRoute lub sieci VPN S2S. W tej chwili Azure NetApp Files nie obsługuje funkcji AD Join dla [Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/) .
 
-### <a name="what-versions-of-windows-ad-are-supported"></a>Jakie wersje Windows AD są obsługiwane?
+### <a name="what-versions-of-windows-server-active-directory-are-supported"></a>Jakie wersje systemu Windows Server Active Directory są obsługiwane?
 
-Usługa Azure Files NetApp obsługuje system Windows Server 2008r2SP1 2016 wersję Active Directory Domain Services.
+Azure NetApp Files obsługuje wersje Active Directory Domain Services systemu Windows Server 2008r2SP1-2019.
 
-## <a name="capacity-management-faqs"></a>Zarządzanie pojemnością — często zadawane pytania
+## <a name="capacity-management-faqs"></a>Często zadawane pytania dotyczące zarządzania pojemnością
 
-### <a name="how-do-i-monitor-usage-for-capacity-pool-and-volume-of-azure-netapp-files"></a>Jak monitorować użycie pojemności puli i liczby plików NetApp Azure? 
+### <a name="how-do-i-monitor-usage-for-capacity-pool-and-volume-of-azure-netapp-files"></a>Jak mogę monitorować użycie puli pojemności i woluminu Azure NetApp Files? 
 
-Usługa Azure Files NetApp zapewnia metryki użycia pojemności puli i woluminów. Usługa Azure Monitor umożliwia również monitorowanie użycia dla usługi Azure Files NetApp. Zobacz [metryki dla usługi Azure Files NetApp](azure-netapp-files-metrics.md) Aby uzyskać szczegółowe informacje. 
+Azure NetApp Files zapewnia pulę pojemności i metryki użycia woluminu. Za pomocą Azure Monitor można także monitorować użycie Azure NetApp Files. Aby uzyskać szczegółowe informacje, zobacz [metryki dla Azure NetApp Files](azure-netapp-files-metrics.md) . 
 
-### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>Może zarządzać plików NetApp platformy Azure za pomocą Eksploratora usługi Azure Storage?
+### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>Czy mogę zarządzać Azure NetApp Files przez Eksplorator usługi Azure Storage?
 
-Nie. Usługa Azure Files NetApp nie jest obsługiwana przez Eksploratora usługi Azure Storage.
+Nie. Azure NetApp Files nie jest obsługiwana przez Eksplorator usługi Azure Storage.
 
-## <a name="data-migration-and-protection-faqs"></a>Dane migracji i ochrona — często zadawane pytania
+## <a name="data-migration-and-protection-faqs"></a>Często zadawane pytania dotyczące migracji i ochrony danych
 
-### <a name="how-do-i-migrate-data-to-azure-netapp-files"></a>Jak migrować dane do usługi Azure Files NetApp?
-Usługa Azure Files NetApp oferuje woluminy systemu plików NFS i protokołu SMB.  Aby przeprowadzić migrację danych do usługi, można użyć dowolnego narzędzia kopiowania opartej na plikach. 
+### <a name="how-do-i-migrate-data-to-azure-netapp-files"></a>Jak mogę zmigrować dane do Azure NetApp Files?
+Azure NetApp Files udostępnia woluminy NFS i SMB.  Do migracji danych do usługi można użyć dowolnego narzędzia do kopiowania opartego na plikach. 
 
-NetApp oferuje rozwiązanie oparte na rozwiązaniach SaaS, [synchronizacji chmury NetApp](https://cloud.netapp.com/cloud-sync-service).  To rozwiązanie umożliwia replikowanie systemu plików NFS lub udziały SMB danych Azure NetApp plików NFS, eksportowanie lub SMB. 
+NetApp oferuje rozwiązanie oparte na SaaS, [NetApp Cloud Sync](https://cloud.netapp.com/cloud-sync-service).  Rozwiązanie umożliwia replikowanie danych NFS lub SMB do Azure NetApp Files eksportu NFS lub udziałów SMB. 
 
-Umożliwia także szeroką gamę bezpłatne narzędzia do kopiowania danych. Dla systemu plików NFS, można użyć narzędzia obciążeń takich jak [rsync](https://rsync.samba.org/examples.html) do kopiowania i Synchronizuj źródło danych do usługi Azure Files NetApp woluminu. W przypadku protokołu SMB, można użyć obciążeń [robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) w taki sam sposób.  Te narzędzia można również replikować uprawnienia do pliku lub folderu. 
+Możesz również użyć szerokiej tablicy bezpłatnych narzędzi do kopiowania danych. W przypadku systemu plików NFS można używać narzędzi obciążeń, takich jak [rsync](https://rsync.samba.org/examples.html) , do kopiowania i synchronizowania danych źródłowych na wolumin Azure NetApp Files. W przypadku protokołu SMB można używać obciążeń [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) w taki sam sposób.  Te narzędzia mogą również replikować uprawnienia do pliku lub folderu. 
 
-Wymagania dotyczące migracji danych z lokalnych do usługi Azure Files NetApp są następujące: 
+Wymagania dotyczące migracji danych z lokalnego do Azure NetApp Files są następujące: 
 
-- Upewnij się, że pliki NetApp Azure jest dostępny w miejscu docelowym regionem świadczenia usługi Azure.
-- Weryfikowanie łączności sieciowej między źródłem a usługą Azure Files NetApp docelowy adres IP woluminu. Transfer danych między lokalnie i usługa Azure NetApp Files jest obsługiwany za pośrednictwem usługi ExpressRoute.
-- Utwórz element docelowy wolumin usługi Azure Files NetApp.
-- Transfer danych źródłowych do woluminu docelowego przy użyciu narzędzia do kopiowania plików preferowany.
+- Upewnij się, że Azure NetApp Files jest dostępna w docelowym regionie platformy Azure.
+- Sprawdź poprawność łączności sieciowej między źródłem i Azure NetApp Files adresem IP woluminu docelowego. Transfer danych między środowiskiem lokalnym a usługą Azure NetApp Files jest obsługiwany w porównaniu z ExpressRoute.
+- Utwórz docelowy wolumin Azure NetApp Files.
+- Prześlij dane źródłowe do woluminu docelowego za pomocą preferowanego narzędzia do kopiowania plików.
 
-### <a name="how-do-i-create-a-copy-of-an-azure-netapp-files-volume-in-another-azure-region"></a>Jak utworzyć kopię woluminie plików NetApp platformy Azure w innym regionie platformy Azure?
+### <a name="how-do-i-create-a-copy-of-an-azure-netapp-files-volume-in-another-azure-region"></a>Jak mogę utworzyć kopię woluminu Azure NetApp Files w innym regionie świadczenia usługi Azure?
     
-Usługa Azure Files NetApp oferuje woluminy systemu plików NFS i protokołu SMB.  Wszystkie narzędzia do kopiowania na podstawie plików może służyć do replikacji danych między regionami platformy Azure. 
+Azure NetApp Files udostępnia woluminy NFS i SMB.  Wszystkie narzędzia do kopiowania na podstawie plików mogą służyć do replikowania danych między regionami platformy Azure. 
 
-NetApp oferuje rozwiązanie SaaS na podstawie [synchronizacji chmury NetApp](https://cloud.netapp.com/cloud-sync-service).  To rozwiązanie umożliwia replikowanie systemu plików NFS lub udziały SMB danych Azure NetApp plików NFS, eksportowanie lub SMB. 
+Usługa NetApp oferuje rozwiązanie oparte na SaaS, [NetApp Cloud Sync](https://cloud.netapp.com/cloud-sync-service).  Rozwiązanie umożliwia replikowanie danych NFS lub SMB do Azure NetApp Files eksportu NFS lub udziałów SMB. 
 
-Umożliwia także szeroką gamę bezpłatne narzędzia do kopiowania danych. Dla systemu plików NFS, można użyć narzędzia obciążeń takich jak [rsync](https://rsync.samba.org/examples.html) do kopiowania i Synchronizuj źródło danych do usługi Azure Files NetApp woluminu. W przypadku protokołu SMB, można użyć obciążeń [robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) w taki sam sposób.  Te narzędzia można również replikować uprawnienia do pliku lub folderu. 
+Możesz również użyć szerokiej tablicy bezpłatnych narzędzi do kopiowania danych. W przypadku systemu plików NFS można używać narzędzi obciążeń, takich jak [rsync](https://rsync.samba.org/examples.html) , do kopiowania i synchronizowania danych źródłowych na wolumin Azure NetApp Files. W przypadku protokołu SMB można używać obciążeń [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) w taki sam sposób.  Te narzędzia mogą również replikować uprawnienia do pliku lub folderu. 
 
-Wymagania dotyczące replikowania woluminu plików NetApp Azure do innego regionu platformy Azure są w następujący sposób: 
-- Upewnij się, że pliki NetApp Azure jest dostępny w miejscu docelowym regionem świadczenia usługi Azure.
-- Weryfikowanie łączności sieciowej między sieciami wirtualnymi w każdym regionie. Globalnej komunikacji równorzędnej między sieciami wirtualnymi nie jest obecnie obsługiwana.  Można ustanowić połączenia między sieciami wirtualnymi przez łączenie z obwodem usługi ExpressRoute lub połączenie sieci VPN S2S. 
-- Utwórz element docelowy wolumin usługi Azure Files NetApp.
-- Transfer danych źródłowych do woluminu docelowego przy użyciu narzędzia do kopiowania plików preferowany.
+Wymagania dotyczące replikowania woluminu Azure NetApp Files do innego regionu platformy Azure są następujące: 
+- Upewnij się, że Azure NetApp Files jest dostępna w docelowym regionie platformy Azure.
+- Sprawdź poprawność łączności sieciowej między sieci wirtualnych w każdym regionie. Obecnie globalna komunikacja równorzędna między sieci wirtualnych nie jest obsługiwana.  Połączenie między usługą sieci wirtualnych można ustanowić, łącząc się z obwodem usługi ExpressRoute lub przy użyciu połączenia sieci VPN S2S. 
+- Utwórz docelowy wolumin Azure NetApp Files.
+- Prześlij dane źródłowe do woluminu docelowego za pomocą preferowanego narzędzia do kopiowania plików.
 
-### <a name="is-migration-with-azure-data-box-supported"></a>Jest migracja z usługi Azure Data Box jest obsługiwane?
+### <a name="is-migration-with-azure-data-box-supported"></a>Czy migracja z Azure Data Box jest obsługiwana?
 
-Nie. Urządzenie Azure Data Box nie obsługuje obecnie usługi Azure Files NetApp. 
+Nie. Azure Data Box obecnie nie obsługuje Azure NetApp Files. 
 
-### <a name="is-migration-with-azure-importexport-service-supported"></a>Jest migracji za pomocą usługi Azure Import/Export obsługiwane?
+### <a name="is-migration-with-azure-importexport-service-supported"></a>Czy migracja z usługą Azure Import/Export jest obsługiwana?
 
-Nie. Usługa Azure Import/Export nie obsługuje obecnie usługi Azure Files NetApp.
+Nie. Usługa Azure Import/Export nie obsługuje obecnie Azure NetApp Files.
 
-## <a name="next-steps"></a>Kolejne kroki  
+## <a name="next-steps"></a>Następne kroki  
 
-- [Często zadawane pytania dotyczące programu Microsoft Azure ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)
-- [Sieci wirtualne platformy Microsoft Azure — często zadawane pytania](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq)
+- [Microsoft Azure ExpressRoute często zadawane pytania](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)
+- [Microsoft Azure Virtual Network często zadawane pytania](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq)
 - [Jak utworzyć żądanie pomocy technicznej dla platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)
 - [Azure Data Box](https://docs.microsoft.com/azure/databox-family/)

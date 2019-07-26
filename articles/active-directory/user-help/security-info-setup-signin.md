@@ -12,14 +12,15 @@ ms.topic: overview
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9c6faff10f68d720bc3c86a191e4cd1b1f9abdc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c20256fb712d9381ba2adc90e2e68ce4fdc8911a
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60475302"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382782"
 ---
 # <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>Konfigurowanie informacji zabezpieczających (wersja zapoznawcza) z monitu na stronie logowania
+
 Następujące kroki można wykonać w przypadku wyświetlenia monitu o skonfigurowanie informacji zabezpieczających natychmiast po zalogowaniu się na konto służbowe.
 
 Ten monit jest wyświetlany tylko wtedy, gdy użytkownik nie skonfigurował informacji zabezpieczających wymaganych przez organizację. Jeśli Twoje informacje zabezpieczające zostały już skonfigurowane wcześniej, ale chcesz wprowadzić zmiany, możesz wykonać kroki opisane w artykułach z instrukcjami dotyczącymi różnych metod. Aby uzyskać więcej informacji, zobacz [Dodawanie lub aktualizowanie informacji zabezpieczających — omówienie](security-info-add-update-methods-overview.md).
@@ -27,11 +28,13 @@ Ten monit jest wyświetlany tylko wtedy, gdy użytkownik nie skonfigurował info
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 ## <a name="sign-in-to-your-work-or-school-account"></a>Logowanie na konto służbowe
+
 Po zalogowaniu się na konto służbowe zobaczysz monit o podanie kolejnych informacji przed uzyskaniem dostępu do konta.
 
 ![Monit z pytaniem o kolejne informacje](media/security-info/securityinfo-prompt.png)
 
 ## <a name="set-up-your-security-info-using-the-wizard"></a>Konfigurowanie informacji zabezpieczających za pomocą kreatora
+
 Wykonaj następujące kroki, aby skonfigurować informacje zabezpieczające dla swojego konta służbowego z monitu.
 
 >[!Important]
@@ -41,7 +44,7 @@ Wykonaj następujące kroki, aby skonfigurować informacje zabezpieczające dla 
 
    > [!Note]
    > Jeśli chcesz użyć aplikacji uwierzytelniającej innej niż aplikacja Microsoft Authenticator, wybierz link **Chcę użyć innej aplikacji uwierzytelniania**.
-   > 
+   >
    > Jeśli organizacja umożliwia wybranie innej metody niż aplikacja uwierzytelniająca, możesz wybrać **link Chcę skonfigurować inną metodę**.
 
     ![Kreator Zabezpiecz swoje konto pokazujący stronę pobierania aplikacji uwierzytelniającej](media/security-info/securityinfo-prompt-get-auth-app.png)
@@ -96,7 +99,7 @@ Wykonaj następujące kroki, aby skonfigurować informacje zabezpieczające dla 
 
     ![Strona pomyślnego zakończenia kreatora](media/security-info/securityinfo-prompt-setup-success.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby zmienić, usunąć lub zaktualizować domyślne metody informacji zabezpieczających, zobacz:
 

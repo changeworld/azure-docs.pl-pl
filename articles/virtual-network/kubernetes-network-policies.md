@@ -1,6 +1,6 @@
 ---
-title: Zasad sieciowych w usłudze Azure Kubernetes | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o o usłudze Kubernetes zasad sieciowych do zabezpieczania klastra Kubernetes.
+title: Zasady sieciowe usługi Azure Kubernetes | Microsoft Docs
+description: Dowiedz się więcej na temat zasad sieciowych Kubernetes do zabezpieczania klastra Kubernetes.
 services: virtual-network
 documentationcenter: na
 author: aanandr
@@ -16,35 +16,35 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: a5c367402bd1e61485095fd1d565a8582acc3a9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff6fd45e0a68a3e93e4c62eb31a566a6dffa2344
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60824907"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494946"
 ---
-# <a name="azure-kubernetes-network-policies-overview"></a>Omówienie zasad sieci w usłudze Azure Kubernetes
+# <a name="azure-kubernetes-network-policies-overview"></a>Omówienie zasad sieciowych platformy Azure Kubernetes
 
-Zasady sieciowe Obejmij mikrosegmentację zasobników tak samo, jak sieciowe grupy zabezpieczeń (NSG) zapewnia mikrosegmentację w przypadku maszyn wirtualnych. Implementacja zasad sieci platformy Azure obsługuje standardowych specyfikacji zasad sieciowych usługi Kubernetes. Etykiety można użyć, aby wybrać grupę zasobników oraz zdefiniować listę reguł ruchu przychodzącego i wychodzącego, określające typ ruchu, który jest dozwolony do i z tych zasobników. Dowiedz się więcej na temat zasad sieciowych platformy Kubernetes w [dokumentacją rozwiązania Kubernetes](https://kubernetes.io/docs/concepts/services-networking/network-policies/).
+Zasady sieciowe zapewniają mikrosegmenty dla zasobników, tak jak sieciowe grupy zabezpieczeń (sieciowych grup zabezpieczeń), zapewniają mikrosegmentowanie dla maszyn wirtualnych. Implementacja zasad sieciowych platformy Azure obsługuje standardową specyfikację zasad sieci Kubernetes. Możesz użyć etykiet, aby wybrać grupę wartości i zdefiniować listę reguł ruchu przychodzącego i wychodzącego, które określają, jaki jest dozwolony i pochodzący z tych zasobników. Dowiedz się więcej na temat zasad sieciowych Kubernetes w [dokumentacji Kubernetes](https://kubernetes.io/docs/concepts/services-networking/network-policies/).
 
-![Omówienie zasad sieciowych usługi Kubernetes](./media/kubernetes-network-policies/kubernetes-network-policies-overview.png)
+![Omówienie zasad sieciowych Kubernetes](./media/kubernetes-network-policies/kubernetes-network-policies-overview.png)
 
-Zasady sieci platformy Azure działają w połączeniu z wtyczki Azure CNI, który zapewnia integrację sieci wirtualnej dla kontenerów. Możliwe jest tylko w przypadku węzłów systemu Linux już dziś. Implementacje skonfigurować reguły tabeli IP systemu Linux, na podstawie zdefiniowanych zasad do wymuszania filtrowanie ruchu.
+Zasady sieciowe platformy Azure działają w połączeniu z usługą Azure CNI, która zapewnia integrację sieci wirtualnej dla kontenerów. Jest ona obsługiwana tylko w węzłach systemu Linux. Implementacje konfigurują reguły tabeli adresów IP systemu Linux na podstawie zdefiniowanych zasad w celu wymuszenia filtrowania ruchu.
 
 ## <a name="planning-security-for-your-kubernetes-cluster"></a>Planowanie zabezpieczeń dla klastra Kubernetes
-Podczas implementowania zabezpieczeń dla klastra, używać sieciowych grup zabezpieczeń (NSG) do filtrowania ruchu północ-południe, oznacza to, że ruch wprowadzania i pozostawienie niezmienionej podsieci środowiska klastra i zasad sieci Kubernetes wschód-zachód ruchu, który jest. ruch między zasobników w klastrze.
+W przypadku implementowania zabezpieczeń klastra należy użyć sieciowych grup zabezpieczeń (sieciowych grup zabezpieczeń) do filtrowania ruchu północ-południe, czyli ruchu wprowadzającego i wychodzącego z podsieci klastra, a następnie używać zasad sieciowych Kubernetes dla ruchu Wschodnie-zachodniego, czyli ruchu między wymiarami w klaster.
 
-## <a name="using-azure-kubernetes-network-policies"></a>Przy użyciu zasad sieci Azure Kubernetes
-Zasady sieci platformy Azure może służyć w następujący sposób w celu zapewnienia mikrosegmentację zasobników.
+## <a name="using-azure-kubernetes-network-policies"></a>Korzystanie z zasad sieciowych usługi Azure Kubernetes
+Zasad sieciowych platformy Azure można używać w następujący sposób, aby zapewnić mikrosegmentację dla zasobników.
 
-### <a name="acs-engine"></a>ACS-engine
-Aparat ACS jest narzędziem, które generuje szablonu usługi Azure Resource Manager w przypadku wdrażania klastra Kubernetes na platformie Azure. Konfiguracja klastra jest określona w pliku JSON, który jest przekazywany do narzędzia podczas generowania szablonu. Aby dowiedzieć się więcej na temat całą listę ustawień klastra obsługiwane i ich opisów, zobacz aparat Microsoft Azure Container Service — definicja klastra.
+### <a name="acs-engine"></a>ACS-Engine
+ACS-Engine to narzędzie, które generuje szablon Azure Resource Manager na potrzeby wdrożenia klastra Kubernetes na platformie Azure. Konfiguracja klastra jest określona w pliku JSON, który jest przekazywany do narzędzia podczas generowania szablonu. Aby dowiedzieć się więcej na temat całej listy obsługiwanych ustawień klastra i ich opisów, zobacz Microsoft Azure aparat usługi kontenera — definicja klastra.
 
-Aby włączyć zasady w klastrach wdrożonych za pomocą usługi acs-engine, należy określić wartość ustawienia networkPolicy w pliku definicji klastra jako "azure".
+Aby włączyć zasady dla klastrów wdrożonych przy użyciu aparatu ACS, należy określić wartość ustawienia networkPolicy w pliku definicji klastra na "Azure".
 
 #### <a name="example-configuration"></a>Przykładowa konfiguracja
 
-Poniżej JSON przykładową konfigurację tworzy nową sieć wirtualną i podsieć i wdraża klaster Kubernetes w nim za pomocą wtyczki Azure CNI. Zalecamy użycie "Notatnik" do edycji pliku JSON. 
+Poniższy Przykładowa konfiguracja JSON tworzy nową sieć wirtualną i podsieć, a następnie wdraża w niej klaster Kubernetes przy użyciu usługi Azure CNI. Zalecamy, aby edytować plik JSON przy użyciu "Notatnika". 
 ```json
 {
   "apiVersion": "vlabs",
@@ -86,20 +86,20 @@ Poniżej JSON przykładową konfigurację tworzy nową sieć wirtualną i podsie
 }
 
 ```
-### <a name="creating-your-own-kubernetes-cluster-in-azure"></a>Tworzenie klastra Kubernetes na platformie Azure
-Implementacja może służyć do zapewnienia zasad sieciowych zasobników w klastrów Kubernetes wdrażanie samodzielnie, bez konieczności polegania na narzędzi, takich jak aparat ACS. W tym przypadku najpierw zainstalować dodatek typu plug-in CNI i włączenie go dla każdej maszyny wirtualnej w klastrze. Aby uzyskać szczegółowe instrukcje, zobacz [Wdrażanie wtyczki dla samodzielnie wdrażanego klastra Kubernetes](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster).
+### <a name="creating-your-own-kubernetes-cluster-in-azure"></a>Tworzenie własnego klastra Kubernetes na platformie Azure
+Implementacja może służyć do zapewnienia zasad sieciowych dla jednostek w klastrach Kubernetes, które wdrażasz samodzielnie, bez polegania na narzędziach takich jak aparat ACS. W takim przypadku należy najpierw zainstalować wtyczkę CNI i włączyć ją na każdej maszynie wirtualnej w klastrze. Aby uzyskać szczegółowe instrukcje, zobacz [Wdrażanie wtyczki dla samodzielnie wdrażanego klastra Kubernetes](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster).
 
-Gdy jest wdrażany klaster, uruchom następujące polecenie `kubectl` polecenie pobrania i zastosowania zasad sieci platformy Azure *daemonset* do klastra.
+Po wdrożeniu klastra uruchom następujące `kubectl` polecenie, aby pobrać i zastosować zasady sieci platformy Azure *elementu daemonset* do klastra.
 
   ```
   kubectl apply -f https://raw.githubusercontent.com/Azure/acs-engine/master/parts/k8s/addons/kubernetesmasteraddons-azure-npm-daemonset.yaml
 
   ```
-To rozwiązanie jest również "open source", a kod jest dostępna w [repozytorium Azure kontenera sieci](https://github.com/Azure/azure-container-networking/tree/master/npm).
+Rozwiązanie to również Open Source, a kod jest dostępny w [repozytorium sieci kontenera platformy Azure](https://github.com/Azure/azure-container-networking/tree/master/npm).
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o [Azure Kubernetes Service](../aks/intro-kubernetes.md).
--  Dowiedz się więcej o [kontenerowa](container-networking-overview.md).
-- [Wdrażanie dodatku typu plug-in](deploy-container-networking.md) dla klastrów Kubernetes lub kontenerów platformy Docker.
+## <a name="next-steps"></a>Następne kroki
+- Dowiedz się więcej o [usłudze Azure Kubernetes Service](../aks/intro-kubernetes.md).
+-  Dowiedz się więcej na temat [sieci kontenerów](container-networking-overview.md).
+- [Wdróż wtyczkę](deploy-container-networking.md) dla klastrów Kubernetes lub kontenerów platformy Docker.

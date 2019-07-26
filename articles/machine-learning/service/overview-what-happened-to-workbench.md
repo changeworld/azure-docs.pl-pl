@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 18b5f3877538d26e55bf0550a995ca0c50699de5
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: a164276d41d182c5b439efc691d80693f1ac831e
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65914131"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360130"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Co się stało z aplikacją Azure Machine Learning Workbench?
 
@@ -60,7 +60,7 @@ Historie uruchamiania są teraz nazywane **eksperymentami**. Eksperymenty modelu
 
 Pulpit nawigacyjny obszaru roboczego w portalu jest obsługiwany tylko w przeglądarkach Microsoft Edge, Chrome i Firefox:
 
-[![Online portal](./media/overview-what-happened-to-workbench/image001.png)](./media/overview-what-happened-to-workbench/image001.png#lightbox)
+[![Portal online](./media/overview-what-happened-to-workbench/image001.png)](./media/overview-what-happened-to-workbench/image001.png#lightbox)
 
 Rozpocznij szkolenie modeli i śledzenie uruchomień przy użyciu nowego interfejsu wiersza polecenia i zestawu SDK. Informacje na temat sposobu wykonywania tych czynności można znaleźć w temacie [Samouczek: uczenie modeli za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md).
 
@@ -68,7 +68,7 @@ Rozpocznij szkolenie modeli i śledzenie uruchomień przy użyciu nowego interfe
 
 Istniejących plików przygotowywania danych nie można przenosić do najnowszej wersji, ponieważ nie ma już aplikacji Machine Learning Workbench. Można jednak nadal przygotowywać zestaw danych dowolnego rozmiaru do modelowania.   
 
-W przypadku zestawów danych o dowolnym rozmiarze, można używać [pakiecie przygotowania danych do usługi Azure Machine Learning](https://aka.ms/data-prep-sdk) szybko przygotować dane przed modelowania przez napisanie kodu języka Python. 
+W przypadku zestawów danych o dowolnym rozmiarze można użyć [pakietu przygotowywania danych dla Azure Machine Learning](https://aka.ms/data-prep-sdk) , aby szybko przygotować dane przed modelem, pisząc kod języka Python. 
 
 W [tym samouczku](tutorial-data-prep.md) dowiesz się więcej na temat używania zestawu Data Prep SDK usługi Azure Machine Learning.
 
@@ -76,18 +76,19 @@ W [tym samouczku](tutorial-data-prep.md) dowiesz się więcej na temat używania
 
 Nie stracisz żadnego kodu ani wykonanej pracy. W starszej wersji projekty są jednostkami chmury z katalogiem lokalnym. W najnowszej wersji można dołączać katalogi lokalne do aplikacji Azure Machine Learning Service Workspace przy użyciu lokalnego pliku konfiguracji. Zobacz [diagram przedstawiający najnowszą architekturę](concept-azure-machine-learning-architecture.md).
 
-Większa część zawartości projektu znajduje się już na komputerze lokalnym. Wystarczy utworzyć w odpowiednim katalogu plik konfiguracji i odwołać się do niego w kodzie, aby nawiązać połączenie z obszarem roboczym. Aby nadal korzystać z lokalnego katalogu zawierającego pliki i skrypty, należy określić nazwę katalogu w ["experiment.submit"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) polecenia języka Python lub przy użyciu `az ml project attach` interfejsu wiersza polecenia.  Na przykład:
+Większa część zawartości projektu znajduje się już na komputerze lokalnym. Wystarczy utworzyć w odpowiednim katalogu plik konfiguracji i odwołać się do niego w kodzie, aby nawiązać połączenie z obszarem roboczym. Aby nadal korzystać z lokalnego katalogu zawierającego pliki i skrypty, należy określić nazwę katalogu w poleceniu ["eksperyment. Submit"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) języka Python lub przy użyciu `az ml project attach` interfejsu wiersza polecenia.  Przykład:
 ```python
-run = exp.submit(source_directory = script_folder, script = 'train.py', run_config = run_config_system_managed)
+run = exp.submit(source_directory=script_folder,
+                 script='train.py', run_config=run_config_system_managed)
 ```
 
-[Utwórz obszar roboczy](setup-create-workspace.md#portal) na rozpoczęcie pracy.
+[Utwórz obszar roboczy](setup-create-workspace.md#portal) , aby rozpocząć.
 
 ## <a name="what-about-my-registered-models-and-images"></a>Co się stanie z moimi zarejestrowanymi modelami i obrazami?
 
 Modele zarejestrowane w starym rejestrze modeli trzeba migrować do nowego obszaru roboczego, aby nadal z nich korzystać. Aby przeprowadzić migrację modeli, pobierz modele i ponownie zarejestruj je w nowym obszarze roboczym. 
 
-Obrazy, które zostały utworzone w starym rejestru obrazów nie można bezpośrednio migrować do nowego obszaru roboczego. W większości przypadków można wdrożyć modelu bez konieczności tworzenia obrazu. Jeśli to konieczne, można utworzyć obrazu dla modelu w nowym obszarem roboczym. Aby uzyskać więcej informacji, zobacz [zarządzanie, rejestrowanie, wdrażanie i monitorowanie modeli uczenia maszynowego](concept-model-management-and-deployment.md).
+Obrazów utworzonych w starym rejestrze obrazu nie można bezpośrednio migrować do nowego obszaru roboczego. W większości przypadków model można wdrożyć bez konieczności tworzenia obrazu. W razie potrzeby można utworzyć obraz dla modelu w nowym obszarze roboczym. Aby uzyskać więcej informacji, zobacz artykuł [Zarządzanie, rejestrowanie, wdrażanie i monitorowanie modeli uczenia maszynowego](concept-model-management-and-deployment.md).
 
 ## <a name="what-about-deployed-web-services"></a>Co się stanie z wdrożonymi usługami internetowymi?
 
@@ -109,18 +110,18 @@ W najnowszej wersji nowy zestaw SDK języka Python umożliwia interakcję z usł
 
 W najnowszej wersji nazwa rozszerzenia została zmieniona na Azure Machine Learning dla programu Visual Studio Code, a rozszerzenie zostało rozbudowane i ulepszone w celu umożliwienia współpracy ze wspomnianymi powyżej nowymi funkcjami.
 
-[![Usługa Azure Machine Learning dla programu Visual Studio Code](./media/overview-what-happened-to-workbench/vscode.png)](./media/overview-what-happened-to-workbench/vscode-big.png#lightbox)
+[![Azure Machine Learning Visual Studio Code](./media/overview-what-happened-to-workbench/vscode.png)](./media/overview-what-happened-to-workbench/vscode-big.png#lightbox)
 
 ## <a name="what-about-domain-packages"></a>Co się stanie z pakietami domen?
 
 Pakietów domen funkcji przetwarzania obrazów, analizy tekstu i prognozowania nie można używać z najnowszą wersją usługi Azure Machine Learning. Można jednak nadal kompilować i uczyć modele przetwarzania obrazów, analizy tekstu oraz prognozowania przy użyciu najnowszego zestawu <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> języka Python dla usługi Azure Machine Learning. Aby dowiedzieć się, jak przeprowadzić migrację istniejących wcześniej modeli utworzonych przy użyciu pakietów przetwarzania obrazów, analizy tekstu i prognozowania, skontaktuj się z nami pod adresem [AML-Packages@microsoft.com](mailto:AML-Packages@microsoft.com).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o [najnowszej architekturze usługi Azure Machine Learning](concept-azure-machine-learning-architecture.md). 
 
 Aby zapoznać się z omówieniem usługi, przeczytaj temat [What is Azure Machine Learning service? (Co to jest usługa Azure Machine Learning?)](overview-what-is-azure-ml.md)
 
-Szybki Start omawiający uruchomić skrypt, a także Eksplorowanie historii uruchamiania skryptu z najnowszą wersją usługi Azure Machine Learning, spróbuj [wprowadzenie do usługi Azure Machine Learning](quickstart-run-cloud-notebook.md).
+Aby zapoznać się z przewodnikiem Szybki Start zawierającym informacje o uruchamianiu skryptu i eksplorowaniu historii uruchamiania skryptu przy użyciu najnowszej wersji usługi Azure Machine Learning, spróbuj rozpocząć pracę [z usługą Azure Machine Learning Service](quickstart-run-cloud-notebook.md).
 
 Aby uzyskać więcej informacji na temat środowiska tego przepływu pracy, wykonaj czynności opisane w [kompleksowym samouczku](tutorial-train-models-with-aml.md), który zawiera szczegółowy opis kroków uczenia i wdrażania modeli przy użyciu usługi Azure Machine Learning. 

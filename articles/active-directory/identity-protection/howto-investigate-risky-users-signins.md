@@ -1,261 +1,187 @@
 ---
-title: Jak badać ryzykownych użytkowników i logowania usługi Azure Active Directory identity Protection (odświeżane) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak badania ryzykownych użytkowników i logowania usługi Azure Active Directory identity Protection (odświeżane).
+title: Jak zbadać ryzykowne Użytkownicy i zalogować się w usłudze Azure Active Directory Identity Protection (odświeżone) | Microsoft Docs
+description: Dowiedz się, jak zbadać ryzykowne Użytkownicy i logowania w programie Azure Active Directory Identity Protection (odświeżone).
 services: active-directory
-keywords: Usługa Azure active directory identity protection odnajdywania aplikacji w chmurze, zarządzanie aplikacji, zabezpieczenia, ryzyka, poziom ryzyka, luk w zabezpieczeniach, zasady zabezpieczeń
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.author: joflore
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
+ms.topic: conceptual
 ms.date: 01/25/2019
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a90195a2d0899b0a157cc67badd2f9873164987
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c89658e962654f005eaee5ceff220d5fb343e86e
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108963"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68370324"
 ---
 # <a name="how-to-investigate-risky-users-and-sign-ins"></a>Instrukcje: Badanie ryzykownych użytkowników i logowań 
 
-
-Korzystanie z raportów ryzykownych logowań i ryzykownych użytkowników możesz zbadać i uzyskiwanie szczegółowych informacji o podwyższonym ryzyku w danym środowisku. Z możliwością filtrowania i sortowania ryzykowne logowania i użytkowników możesz lepiej zrozumieć potencjalnych nieautoryzowanego dostępu w Twojej organizacji. 
-
+Dzięki raportom ryzykownych logowań i ryzykownych użytkowników możesz zbadać i uzyskać wgląd w ryzyko związane ze środowiskiem. Dzięki możliwości filtrowania i sortowania ryzykownych logowań i użytkowników można lepiej zrozumieć potencjalne wtargnięcie w organizacji. 
 
 ## <a name="risky-users-report"></a>Raport ryzykownych użytkowników
 
-Z informacjami w raporcie o ryzykownych użytkowników można uzyskać odpowiedzi na pytania takie jak:
+Dzięki informacjom udostępnianym przez raport ryzykownych użytkowników można znaleźć odpowiedzi na pytania, takie jak:
 
-- Użytkowników, którzy są wysokie ryzyko?
-- Użytkowników, którzy mają stan ryzyka skorygowane?
+- Którzy użytkownicy są dużym ryzykiem?
+- Którzy użytkownicy mają zagrożony stan skorygowany?
 
-
-
-Pierwszym punktem wejścia do tego raportu jest **zbadaj** sekcji na stronie zabezpieczenia.
+Pierwszym punktem wejścia do tego raportu jest sekcja **Badanie** na stronie Zabezpieczenia.
 
 ![Raport ryzykownych użytkowników](./media/howto-investigate-risky-users-signins/01.png)
 
-
-Raport ryzykownych użytkowników ma domyślny widok, który pokazuje:
+Raport dotyczący ryzykownych użytkowników ma domyślny widok, który pokazuje:
 
 - Name (Nazwa)
-
 - Stan ryzyka
-
 - Poziom ryzyka
-
-- Szczegóły zagrożenia
-
+- Szczegóły ryzyka
 - Ostatnia aktualizacja ryzyka
-
-- Typ
-
+- Type
 - Stan
- 
 
 ![Raport ryzykownych użytkowników](./media/howto-investigate-risky-users-signins/03.png)
-
 
 Możesz dostosować widok listy, klikając pozycję **Kolumny** na pasku narzędzi.
 
 ![Raport ryzykownych użytkowników](./media/howto-investigate-risky-users-signins/04.png)
 
-Okno dialogowe kolumny pozwala na wyświetlanie dodatkowych pól lub usunąć pola, które są już wyświetlane.
+Okno dialogowe kolumny umożliwia wyświetlanie dodatkowych pól lub usuwanie pól, które są już wyświetlane.
 
 Klikając pozycję w widoku listy, możesz wyświetlić jej wszystkie dostępne szczegóły w widoku poziomym.
 
 ![Raport ryzykownych użytkowników](./media/howto-investigate-risky-users-signins/05.png)
 
-
-Przedstawia widok szczegółów:
+Widok Szczegóły zawiera następujące informacje:
 
 - Informacje podstawowe
-
 - Ostatnie ryzykowne logowania
-
-- Zdarzenia o podwyższonym ryzyku niepołączone z zalogowaniem się
-
+- Ryzykowne zdarzenia niepowiązane z logowaniem
 - Historia ryzyka
 
-
-
-Ponadto możesz wykonywać następujące czynności:
+Ponadto można:
 
 ![Raport ryzykownych użytkowników](./media/howto-investigate-risky-users-signins/08.png)
 
-- Wyświetl wszystkie skrótów logowania, aby wyświetlić raport dotyczący logowań dla tego użytkownika.
-
-- Wyświetl wszystkie ryzykowne logowania do wyświetlenia wszystkich logowań dla danego użytkownika, które zostały oznaczone jako ryzykowne.
-
-- Resetowanie hasła użytkownika, jeśli uważasz, że tożsamość użytkownika został złamany.
-
-- Odrzuć ryzyka związanego z użytkownikiem, jeśli uważasz, że zdarzenia aktywnego ryzyka użytkownika czy wyników fałszywie dodatnich. Aby uzyskać więcej informacji, zobacz [sposób zwiększania dokładności wykrywania](howto-improve-detection-accuracy.md).
-
-
+- Wyświetl skrót dotyczący wszystkich logowań, aby wyświetlić raport logowania dla tego użytkownika.
+- Wyświetl wszystkie ryzykowne logowania, aby wyświetlić wszystkie logowania dla tego użytkownika, które zostały oflagowane jako ryzykowne.
+- Zresetuj hasło użytkownika, jeśli uważasz, że zabezpieczenia tożsamości użytkownika zostały naruszone.
+- Odrzuć ryzyko związane z użytkownikiem, jeśli uważasz, że aktywne zdarzenia ryzyka użytkownika są fałszywe. Aby uzyskać więcej informacji, zobacz artykuł [zawiera informacje zwrotne o zdarzeniach dotyczących ryzyka w Azure AD Identity Protection](howto-provide-risk-event-feedback.md).
 
 ### <a name="filter-risky-users"></a>Filtruj ryzykownych użytkowników
 
-Aby zawęzić zgłaszane dane do odpowiedniego poziomu, który Ci odpowiada, można filtrować dane ryzykowny użytkownik przy użyciu następujących pól domyślnych:
+Aby zawęzić zgłoszone dane do poziomu, który działa dla Ciebie, można filtrować ryzykowne dane użytkowników przy użyciu następujących pól domyślnych:
 
 - Name (Nazwa)
-
 - Nazwa użytkownika
-
 - Stan ryzyka
-
 - Poziom ryzyka
-
-- Typ
-
+- Type
 - Stan
 
 ![Raport ryzykownych użytkowników](./media/howto-investigate-risky-users-signins/06.png)
 
+Filtr **nazwy** umożliwia określenie nazwy lub głównej nazwy użytkownika (UPN), o której chcesz się zainteresować.
 
+Filtr **stanu ryzyka** umożliwia wybranie:
 
-**Nazwa** filtr umożliwia określenie nazwy lub głównej nazwy użytkownika (UPN) użytkownika, interesujące Cię.
-
-
-**Ryzyka stanu** filtr umożliwia wybranie:
-
-- Zagrożone
+- Narażeni
 - Skorygowane
 - Odrzucone
 
-
-**Poziom ryzyka** filtr umożliwia wybranie:
+Filtr na **poziomie ryzyka** umożliwia wybranie:
 
 - Wysoka
 - Średni
 - Małe
 
-
-**Typu** filtr umożliwia wybranie:
+Filtr **typu** umożliwia wybranie:
 
 - Gość
 - Element członkowski
 
-**Stan** filtr umożliwia wybranie:
+Filtr **stanu** umożliwia wybranie:
 
 - Usunięte
 - Aktywne
 
+### <a name="download-risky-users-data"></a>Pobierz ryzykowne dane użytkowników
 
-### <a name="download-risky-users-data"></a>Pobierz dane ryzykownych użytkowników
-
-Jeśli chcesz pracować z nim poza witryny Azure portal można pobrać danych ryzykownych użytkowników. Klikając przycisk Pobierz tworzy plik CSV najnowszych klient może dysponować 2500 rekordów. 
+Możesz pobrać ryzykowne dane użytkowników, jeśli chcesz korzystać z nich poza Azure Portal. Kliknięcie przycisku Pobierz powoduje utworzenie pliku CSV z najnowszymi rekordami 2 500. 
 
 ![Raport ryzykownych użytkowników](./media/howto-investigate-risky-users-signins/07.png)
 
-
-Możesz dostosować widok listy, klikając pozycję kolumny na pasku narzędzi.
+Możesz dostosować widok listy, klikając kolumny na pasku narzędzi.
  
 Dzięki temu możesz wyświetlić dodatkowe pola lub usunąć pola, które są już wyświetlane.
  
-Aby dowiedzieć się więcej na temat ryzykowny użytkownik, kliknij w szufladzie szczegóły, aby go rozwinąć
-
- 
-
-
+Aby dowiedzieć się więcej na temat ryzykownego użytkownika, kliknij szufladę Details (szczegóły), aby ją rozwinąć.
 
 ## <a name="risky-sign-ins-report"></a>Raport dotyczący ryzykownych logowań
 
-Informacje dostarczone przez raport dotyczący ryzykownych logowań można uzyskać odpowiedzi na pytania takie jak:
+Korzystając z informacji podanych w raporcie dotyczącym ryzykownych logowań, można znaleźć odpowiedzi na pytania, takie jak:
 
-- Ile pomyślnych logowaniach pojawili się tam, ma zdarzenia o podwyższonym ryzyku w anonimowych adresów IP w ostatnim tygodniu?
+- Ile pomyślnych logowań było w trakcie ostatniego tygodnia zdarzenia dotyczące ryzyka związanego z anonimowym adresem IP?
+- Których użytkowników zostało potwierdzona w ostatnim miesiącu?
+- Którzy użytkownicy mają ryzykowne logowania do portalu pakietu Office 365?
 
-- Potwierdzono użytkowników, którzy zostaną naruszone w ciągu ostatniego miesiąca?
-
-- Którzy użytkownicy mieli ryzykownych logowań w portalu Office 365?
-
-
-
-
-Pierwszym punktem wejścia do tego raportu jest **zbadaj** sekcji na stronie zabezpieczenia.
+Pierwszym punktem wejścia do tego raportu jest sekcja **Badanie** na stronie Zabezpieczenia.
 
 ![Raport dotyczący ryzykownych logowań](./media/howto-investigate-risky-users-signins/02.png)
 
-Raport dotyczący ryzykownych logowań zawiera domyślny widok, który pokazuje:
+Raport dotyczący ryzykownych logowań ma domyślny widok, który pokazuje:
 
 - Date
-
 - Użytkownik
-
 - Aplikacja
-
 - Stan logowania
-
 - Stan ryzyka
-
-- Poziom ryzyka (agregacji)
-
+- Poziom ryzyka (zagregowany)
 - Poziom ryzyka (w czasie rzeczywistym)
-
 - Dostęp warunkowy
-
-- Wymagana usługa MFA  
- 
+- Wymagana MFA  
 
 ![Raport dotyczący ryzykownych logowań](./media/howto-investigate-risky-users-signins/09.png)
-
 
 Możesz dostosować widok listy, klikając pozycję **Kolumny** na pasku narzędzi.
 
 ![Raport ryzykownych użytkowników](./media/howto-investigate-risky-users-signins/11.png)
 
-Okno dialogowe kolumny pozwala na wyświetlanie dodatkowych pól lub usunąć pola, które są już wyświetlane.
+Okno dialogowe kolumny umożliwia wyświetlanie dodatkowych pól lub usuwanie pól, które są już wyświetlane.
 
 Klikając pozycję w widoku listy, możesz wyświetlić jej wszystkie dostępne szczegóły w widoku poziomym.
 
 ![Raport ryzykownych użytkowników](./media/howto-investigate-risky-users-signins/12.png)
 
-
-Przedstawia widok szczegółów:
+Widok Szczegóły zawiera następujące informacje:
 
 - Informacje podstawowe
-
 - Informacje o urządzeniu
-
-- Informacje o podwyższonym ryzyku
-
-- Informacje usługi MFA
-
+- Informacje o ryzyku
+- Informacje o uwierzytelnianiu wieloskładnikowym
 - Dostęp warunkowy
 
-
-
-
-
-Ponadto możesz wykonywać następujące czynności:
+Ponadto można:
 
 ![Raport ryzykownych użytkowników](./media/howto-investigate-risky-users-signins/13.png)
 
-- Upewnij się, naruszenia zabezpieczeń 
+- Potwierdź naruszenie zabezpieczeń 
+- Potwierdź bezpieczeństwo
 
-- Upewnij się, bezpieczne
+Aby uzyskać więcej informacji, zobacz artykuł [zawiera informacje zwrotne o zdarzeniach dotyczących ryzyka w Azure AD Identity Protection](howto-provide-risk-event-feedback.md).
 
-Aby uzyskać więcej informacji, zobacz [sposób zwiększania dokładności wykrywania](howto-improve-detection-accuracy.md).
+### <a name="filter-risky-sign-ins"></a>Filtruj ryzykowne logowania
 
-
-
-
-### <a name="filter-risky-sign-ins"></a>Filtr dotyczący ryzykownych logowań
-
-Aby zawęzić zgłaszane dane do odpowiedniego poziomu, który Ci odpowiada, można filtrować dane ryzykowny użytkownik przy użyciu następujących pól domyślnych:
+Aby zawęzić zgłoszone dane do poziomu, który działa dla Ciebie, można filtrować ryzykowne dane użytkowników przy użyciu następujących pól domyślnych:
 
 - Użytkownik
 - Aplikacja
 - Stan logowania
 - Stan ryzyka
-- Poziom ryzyka (agregacji)
+- Poziom ryzyka (zagregowany)
 - Poziom ryzyka (w czasie rzeczywistym)
 - Dostęp warunkowy
 - Date
@@ -263,11 +189,9 @@ Aby zawęzić zgłaszane dane do odpowiedniego poziomu, który Ci odpowiada, mo�
 
 ![Raport dotyczący ryzykownych logowań](./media/howto-investigate-risky-users-signins/14.png)
 
+Filtr **nazwy** umożliwia określenie nazwy lub głównej nazwy użytkownika (UPN), o której chcesz się zainteresować.
 
-
-**Nazwa** filtr umożliwia określenie nazwy lub głównej nazwy użytkownika (UPN) użytkownika, interesujące Cię.
-
-**Aplikacji** Filtr pozwala na określenie użytkownik próbował uzyskać dostęp do aplikacji w chmurze.
+Filtr **aplikacji** umożliwia określenie aplikacji w chmurze, do której użytkownik próbował uzyskać dostęp.
 
 Filtr **Stan logowania** umożliwia wybranie jednej z następujących wartości:
 
@@ -275,57 +199,47 @@ Filtr **Stan logowania** umożliwia wybranie jednej z następujących wartości:
 - Powodzenie
 - Niepowodzenie
 
+Filtr **stanu ryzyka** umożliwia wybranie:
 
-**Ryzyka stanu** filtr umożliwia wybranie:
-
-- Zagrożone
-- Potwierdzone naruszenia zabezpieczeń
-- Potwierdzone bezpieczne
+- Narażeni
+- Potwierdzono naruszenie zabezpieczeń
+- Potwierdzono bezpieczeństwo
 - Odrzucone
 - Skorygowane
 
-
-**(Agregacji) poziom ryzyka** filtr umożliwia wybranie:
-
-- Wysoka
-- Średni
-- Małe
-
-**(W czasie rzeczywistym) poziom ryzyka** filtr umożliwia wybranie:
+Filtr **poziomu ryzyka (Aggregate)** umożliwia wybranie:
 
 - Wysoka
 - Średni
 - Małe
 
+Filtr **poziomu ryzyka (w czasie rzeczywistym)** umożliwia wybranie:
 
-**Dostępu warunkowego** filtr umożliwia wybranie:
+- Wysoka
+- Średni
+- Małe
+
+Filtr **dostępu warunkowego** umożliwia wybranie:
 
 - Wszyscy
 - Nie zastosowano
 - Powodzenie
 - Niepowodzenie
 
-
 Filtr **Data** umożliwia zdefiniowanie przedziału czasu dla zwracanych danych.
-Możliwe wartości:
+Możliwe wartości to:
 
 - Ostatni 1 miesiąc
 - Ostatnie 7 dni
 - Ostatnie 24 godziny
 - Niestandardowy zakres czasu
 
+### <a name="download-risky-sign-ins-data"></a>Pobierz ryzykowne dane logowania
 
-
-
-
-### <a name="download-risky-sign-ins-data"></a>Pobierz dane ryzykowne logowania
-
-Jeśli chcesz pracować z nim poza portalem Azure, można pobrać danych dotyczący ryzykownych logowań. Klikając przycisk Pobierz tworzy plik CSV najnowszych klient może dysponować 2500 rekordów. 
+Możesz pobrać ryzykowne dane logowania, jeśli chcesz korzystać z nich poza Azure Portal. Kliknięcie przycisku Pobierz powoduje utworzenie pliku CSV z najnowszymi rekordami 2 500. 
 
 ![Raport ryzykownych użytkowników](./media/howto-investigate-risky-users-signins/15.png)
 
+## <a name="next-steps"></a>Następne kroki
 
-
-## <a name="next-steps"></a>Kolejne kroki
-
-Aby uzyskać omówienie programu Azure AD Identity Protection, zobacz [Omówienie usługi Azure AD Identity Protection](overview-v2.md).
+Aby zapoznać się z omówieniem Azure AD Identity Protection, zobacz [omówienie Azure AD Identity Protection](overview-v2.md).

@@ -1,6 +1,6 @@
 ---
-title: Limity zasobów dla usługi Azure Files NetApp | Dokumentacja firmy Microsoft
-description: W tym artykule opisano limity dla zasobów usługi Azure Files NetApp, w tym limity dla konta, pojemności pul, woluminy, migawki i delegowanego podsieci NetApp.
+title: Limity zasobów dla Azure NetApp Files | Microsoft Docs
+description: Opisuje limity dotyczące Azure NetApp Files zasobów, w tym limity dla kont NetApp, pul pojemności, woluminów, migawek i delegowanej podsieci.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,65 +14,65 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: b-juche
-ms.openlocfilehash: b55467d77beb8f97b8e392b72682268ae0407e54
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fe8d46c897ef68563f2e0e5a1da106174ae504c5
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65826377"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424089"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Limity zasobów dla usługi Azure NetApp Files
 
-Opis limity zasobów dla usługi Azure Files NetApp ułatwia zarządzanie woluminami.
+Zrozumienie limitów zasobów Azure NetApp Files ułatwia zarządzanie woluminami.
 
 ## <a name="resource-limits"></a>Limity zasobów
 
-W poniższej tabeli opisano limity zasobów dla usługi Azure Files NetApp:
+W poniższej tabeli opisano limity zasobów dla Azure NetApp Files:
 
-|  Resource  |  Limit domyślny  |  Zmienianych za pośrednictwem żądania pomocy technicznej  |
+|  Resource  |  Limit domyślny  |  Regulowane przez żądanie pomocy technicznej  |
 |----------------|---------------------|--------------------------------------|
-|  Liczba kont NetApp na subskrypcję platformy Azure   |  10    |  Yes   |
-|  Liczba pul pojemność na jednym koncie NetApp   |    25     |   Yes   |
+|  Liczba kont NetApp na subskrypcję platformy Azure   |  10    |  Tak   |
+|  Liczba pul pojemności na konto NetApp   |    25     |   Tak   |
 |  Liczba woluminów na pulę pojemności     |    500   |    Yes     |
-|  Liczba migawek na każdym woluminie       |    255     |    Nie        |
-|  Liczba podsieci delegować domenę do usługi Azure Files NetApp (Microsoft.NetApp/volumes) na sieć wirtualną platformy Azure    |   1   |    Nie    |
-|  Maksymalna liczba maszyn wirtualnych (w tym wirtualne sieci równorzędne) który może nawiązać woluminu     |    1000   |    Nie   |
-|  Minimalny rozmiar puli jednej pojemności   |  4 TiB     |    Nie  |
-|  Maksymalny rozmiar puli jednej pojemności    |  500 TiB   |   Nie   |
+|  Liczba migawek na wolumin       |    255     |    Nie        |
+|  Liczba podsieci delegowanych do Azure NetApp Files (Microsoft. NetApp/Volumes) na platformie Azure Virtual Network    |   1   |    Nie    |
+|  Maksymalna liczba adresów IP używanych w sieci wirtualnej (w tym Komunikacja równorzędna sieci wirtualnych) z Azure NetApp Files    |    1000   |    Nie   |
+|  Minimalny rozmiar puli o pojedynczej pojemności   |  4 TiB     |    Nie  |
+|  Maksymalny rozmiar puli o pojedynczej pojemności    |  500 TiB   |   Nie   |
 |  Minimalny rozmiar pojedynczego woluminu    |    100 GiB    |    Nie    |
-|  Maksymalna przypisany przydział pojedynczy wolumin *   |   92 TiB   |    Nie   |
-|  Maksymalny rozmiar jednego woluminu *     |    100 TiB    |    Nie       |
+|  Maksymalny przypisany limit przydziału pojedynczego woluminu *   |   92 TiB   |    Nie   |
+|  Maksymalny rozmiar pojedynczego woluminu *     |    100 TiB    |    Nie       |
 
-\* Ręcznie utworzone woluminu lub rozmiar maksymalnie 92 TiB. Jednak woluminu można powiększać maksymalnie 100 TiB w scenariuszu nadwyżkowe. Zobacz [modelu kosztów dla usługi Azure Files NetApp](azure-netapp-files-cost-model.md) szczegółowe informacje na temat nadwyżki zdolności produkcyjnych. 
+\* Wolumin można ręcznie utworzyć lub zmienić jego rozmiar na Maximally 92 TiB. Jednak wolumin może wzrosnąć do 100 TiB w scenariuszu nadwyżki. Aby uzyskać szczegółowe informacje o nadmiernej pojemności, zobacz [model kosztów dla Azure NetApp Files](azure-netapp-files-cost-model.md) . 
 
-## <a name="request-limit-increase"></a>Zażądać zwiększenia limitu 
+## <a name="request-limit-increase"></a>Zwiększenie limitu żądań 
 
-Możesz utworzyć żądanie pomocy technicznej platformy Azure, możesz zwiększyć limity zmienianych w powyższej tabeli. 
+Możesz utworzyć żądanie pomocy technicznej platformy Azure, aby zwiększyć regulowane limity z powyższej tabeli. 
 
-Płaszczyzny Nawigacja w portalu Azure: 
+Ze płaszczyzny nawigacyjnej Azure Portal: 
 
-1. Kliknij przycisk **Pomoc i obsługa techniczna**.
-2. Kliknij przycisk **+ nowe żądanie pomocy technicznej**.
-3. Na karcie podstawy Podaj następujące informacje: 
-    1. Typ problemu: Wybierz **limity usług i subskrypcji (przydziały)** .
-    2. Subskrypcje: Wybierz subskrypcję, dla wymagających zwiększenia limitu przydziału zasobu.
-    3. Typ limitu przydziału: Wybierz **magazynu: Limity usługi Azure Files NetApp**.
+1. Kliknij pozycję **Pomoc i obsługa techniczna**.
+2. Kliknij pozycję **+ nowe żądanie obsługi**.
+3. Na karcie podstawowe podaj następujące informacje: 
+    1. Typ problemu: Wybierz pozycję **usługi i limity subskrypcji (przydziały)** .
+    2. Subskrypcje: Wybierz subskrypcję zasobu, dla którego chcesz zwiększyć przydział.
+    3. Typ limitu przydziału: Wybierz **magazyn: Limity**Azure NetApp Files.
     4. Kliknij pozycję **Next: Rozwiązania**.
 4. Na karcie Szczegóły:
-    1. W polu Opis Podaj następujące informacje dotyczące danego typu zasobu:
+    1. W polu Opis podaj następujące informacje dotyczące odpowiedniego typu zasobu:
 
-        |  Resource  |    Zasoby nadrzędnego      |    Żądane nowe limity     |    Przyczyna zwiększenia limitu przydziału       |
+        |  Resource  |    Zasoby nadrzędne      |    Żądane nowe limity     |    Przyczyna zwiększenia limitu przydziału       |
         |----------------|------------------------------|---------------------------------|------------------------------------------|
-        |  Konto |  *Subscription ID (Identyfikator subskrypcji)*   |  *Żądany maksymalny nowe **konta** numer*    |  *Jakie przypadek scenariusza lub użyj monitu żądania?*  |
-        |  Pula    |  *Identyfikator subskrypcji, identyfikator URI konta*  |  *Żądany maksymalny nowe **puli** numer*   |  *Jakie przypadek scenariusza lub użyj monitu żądania?*  |
-        |  Wolumin  |  *Identyfikator subskrypcji, identyfikator URI, konta puli identyfikatorów URI*   |  *Żądany maksymalny nowe **woluminu** numer*     |  *Jakie przypadek scenariusza lub użyj monitu żądania?*  |
+        |  Konto |  *Subscription ID (Identyfikator subskrypcji)*   |  *Żądany nowy maksymalny numer **konta***    |  *Jakiego scenariusza lub przypadku użycia monituje o żądanie?*  |
+        |  Pula    |  *Identyfikator subskrypcji, identyfikator URI konta*  |  *Żądany nowy numer **puli***   |  *Jakiego scenariusza lub przypadku użycia monituje o żądanie?*  |
+        |  Wolumin  |  *Identyfikator subskrypcji, identyfikator URI konta, identyfikator URI puli*   |  *Żądany nowy maksymalny numer **woluminu***     |  *Jakiego scenariusza lub przypadku użycia monituje o żądanie?*  |
 
-    2. Określ odpowiednie obsługuje metody i podaj swoje informacje kontraktu.
+    2. Określ odpowiednią metodę obsługi i podaj informacje o kontrakcie.
 
-    3. Kliknij pozycję **Next: Przeglądanie + tworzenie** do utworzenia żądania. 
+    3. Kliknij pozycję **Next: Przejrzyj i Utwórz** , aby utworzyć żądanie. 
 
 
-## <a name="next-steps"></a>Kolejne kroki  
+## <a name="next-steps"></a>Następne kroki  
 
 - [Omówienie hierarchii magazynu usługi Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md)
-- [Model kosztów dla usługi Azure Files NetApp](azure-netapp-files-cost-model.md)
+- [Model kosztów dla Azure NetApp Files](azure-netapp-files-cost-model.md)

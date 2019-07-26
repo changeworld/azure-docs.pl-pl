@@ -5,23 +5,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 01/11/2018
+ms.date: 07/19/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 54050116f9894f9a7903dad53caf6b01228313b7
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
-ms.translationtype: HT
+ms.openlocfilehash: e692b4704d14a1f0d18f2a3be7397a13a969bc40
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326963"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371777"
 ---
-W poniższej tabeli opisano domyślne limity kont usługi Azure ogólnego przeznaczenia w wersji 1, v2 i BLOB Storage. Limit  ruchu przychodzącego odnosi się do wszystkich danych z żądań wysyłanych do konta magazynu. Limit *ruchu* wychodzącego odnosi się do wszystkich danych z odpowiedzi odbieranych z konta magazynu.
+W poniższej tabeli opisano domyślne limity kont usługi Azure ogólnego przeznaczenia w wersji 1, v2 i BLOB Storage. Limit *ruchu* przychodzącego odnosi się do wszystkich danych z żądań wysyłanych do konta magazynu. Limit *ruchu* wychodzącego odnosi się do wszystkich danych z odpowiedzi odbieranych z konta magazynu.
 
 | Resource | Limit domyślny |
 | --- | --- |
 | Liczba kont magazynu na region na subskrypcję, w tym konta Standard i Premium | 250 |
-| Maksymalna pojemność konta magazynu | 2 PB dla Stanów Zjednoczonych i Europy oraz 500 TB dla wszystkich innych regionów (w tym w Wielkiej Brytanii) <sup>1</sup>|
-| Maksymalna liczba kontenerów obiektów blob, obiektów blob, udziałów plików, tabel, kolejek, jednostek lub komunikatów na konto magazynu | Bez ograniczeń |
+| Maksymalna pojemność konta magazynu | 2 PB dla Stanów Zjednoczonych i Europy oraz 500 TB dla wszystkich innych regionów (w tym w Wielkiej Brytanii)<sup>1</sup>|
+| Maksymalna liczba kontenerów obiektów blob, obiektów blob, udziałów plików, tabel, kolejek, jednostek lub komunikatów na konto magazynu | Bez limitu |
 | Maksymalna liczba żądań<sup>1</sup> na konto magazynu | 20 000 żądań na sekundę |
 | Maksymalna liczba danych wejściowych<sup>1</sup> na konto magazynu (USA, regiony Europy) | 25 GB/s |
 | Maksymalna liczba danych wejściowych<sup>1</sup> na konto magazynu (regiony inne niż Stany USA i Europa) | 5 GB/s, jeśli włączono RA-GRS/GRS, 10 GB/s dla LRS/ZRS<sup>2</sup> |

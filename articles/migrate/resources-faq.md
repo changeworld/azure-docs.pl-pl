@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: snehaa
-ms.openlocfilehash: e5b4777adfcbb5babbf5db792a10d025c79b1a8b
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 0708502087ae6880d9559cf17f0ba9982b2ba040
+ms.sourcegitcommit: 57a7d4f67635212f5bf0c56e58fd87c8ec366f2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302365"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68372490"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate — często zadawane pytania
 
@@ -20,20 +20,8 @@ W tym artykule opisano często zadawane pytania dotyczące Azure Migrate. Jeśli
 ## <a name="general"></a>Ogólne
 
 ### <a name="which-azure-geographies-are-supported-by-azure-migrate"></a>Które usługi Azure lokalizacje geograficzne są obsługiwane przez Azure Migrate?
-Azure Migrate obecnie obsługuje wiele lokalizacje geograficzne, w których można utworzyć projekt Azure Migrate. Mimo że można tworzyć tylko projekty w tych lokalizacje geograficzne, można nadal oceniać lub migrować maszyny pod kątem innych lokalizacji docelowych. Lokalizacja geograficzna projektu służy tylko do przechowywania odnalezionych metadanych.
 
-
-**Lokalizacja geograficzna** | **Lokalizacja magazynu metadanych**
---- | ---
-Azure Government | Administracja USA — Wirginia
-Azja | Azja Południowo-Wschodnia lub Azja Wschodnia
-Europa | Europa Południowa lub Europa Zachodnia
-Zjednoczone Królestwo | Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
-Stany Zjednoczone | Środkowe stany USA lub zachodnie stany USA 2
-
-
-> [!NOTE]
-> Obsługa Azure Government jest obecnie dostępna tylko dla starszej [wersji](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) programu Azure Migrate.
+Listę dla programu VMware można znaleźć [tutaj](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#azure-migrate-projects) i dla [funkcji Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#azure-migrate-projects).
 
 ### <a name="how-is-azure-migrate-different-from-azure-site-recovery"></a>Czym różnią się Azure Migrate od Azure Site Recovery?
 
@@ -51,7 +39,7 @@ W przypadku adresów URL i portów wymaganych do Azure Migrate komunikowania si�
 
 ### <a name="can-i-harden-the-appliance-vm-i-set-up-with-the-template"></a>Czy mogę wzmocnić konfigurację urządzenia skonfigurowanego za pomocą szablonu?
 
-Dodatkowe składniki (na przykład program antywirusowy) można dodać do szablonu, o ile reguły komunikacji i zapory wymagane przez urządzenie Azure Migrate pozostały w stanie niestandardowym.   
+Dodatkowe składniki (na przykład program antywirusowy) można dodać do szablonu, o ile reguły komunikacji i zapory wymagane przez urządzenie Azure Migrate są pozostawione w stanie takim, w jakim się znajdują.   
 
 ### <a name="what-data-is-collected-by-azure-migrate-appliance"></a>Jakie dane są zbierane przez Azure Migrate urządzenie?
 
@@ -201,5 +189,5 @@ Możesz [wizualizować zależności dla grup](https://docs.microsoft.com/azure/m
 
 Azure Migrate: Migracja serwera korzysta z aparatu replikacji Site Recovery na potrzeby migracji maszyn wirtualnych VMware, migracji maszyn wirtualnych funkcji Hyper-V i migracji serwerów fizycznych na platformę Azure. Opcja bezagentowego migrowania maszyn wirtualnych VMware jest natywnie wbudowana w ramach migracji serwera.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Przeczytaj [omówienie Azure Migrate](migrate-services-overview.md)

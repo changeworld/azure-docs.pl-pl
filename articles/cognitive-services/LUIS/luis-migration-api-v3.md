@@ -1,7 +1,7 @@
 ---
-title: Aby migracja interfejsu API w wersji 3 w wersji 2
+title: Migracja interfejsu API z wersji 2 do v3
 titleSuffix: Azure Cognitive Services
-description: Punkt końcowy w wersji 3 interfejsy API zostały zmienione. Użyj tego przewodnika, aby zrozumieć, jak przeprowadzić migrację do endpoint w wersji 3 interfejsów API.
+description: Interfejsy API punktu końcowego w wersji 3 zostały zmienione. Skorzystaj z tego przewodnika, aby zrozumieć, jak przeprowadzić migrację do interfejsów API punktu końcowego w wersji 3.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,78 +9,83 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 06/24/2019
+ms.date: 07/22/2019
 ms.author: diberry
-ms.openlocfilehash: 4c08c95a05d4f22e2338a7264409aec0f64a4755
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: edaa36cf22e63d42eb347aea3da1816e2c93b45e
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442519"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479214"
 ---
-# <a name="preview-migrate-to-api-version-3x-for-luis-apps"></a>Wersja zapoznawcza: Migrowanie do interfejsu API w wersji 3.x dla aplikacji usługi LUIS
+# <a name="preview-migrate-to-api-version-3x-for-luis-apps"></a>Wersja zapoznawcza: Migrowanie do interfejsu API w wersji 3. x dla aplikacji LUIS
 
-Zmieniły się interfejsów API endpoint prognoz zapytania. Użyj tego przewodnika, aby zrozumieć, jak przeprowadzić migrację do endpoint w wersji 3 interfejsów API. 
+Interfejsy API prognozy punktu końcowego przewidywania zapytań zostały zmienione. Skorzystaj z tego przewodnika, aby zrozumieć, jak przeprowadzić migrację do interfejsów API punktu końcowego w wersji 3. 
 
-Ten interfejs API w wersji 3 zawiera poniższe nowe funkcje, które obejmują znaczne zmiany żądań i/lub w odpowiedzi JSON: 
+Ten interfejs API v3 udostępnia następujące nowe funkcje, takie jak znaczące zmiany żądania i/lub odpowiedzi JSON: 
 
-* [Podmiotów zewnętrznych](#external-entities-passed-in-at-prediction-time)
+* [Jednostki zewnętrzne](#external-entities-passed-in-at-prediction-time)
 * [Listy dynamiczne](#dynamic-lists-passed-in-at-prediction-time)
-* [Zmiany JSON wstępnie utworzone jednostki](#prebuilt-entities-with-new-json)
+* [Wstępnie skompilowane zmiany JSON jednostki](#prebuilt-entities-with-new-json)
 
 <!--
 * [Multi-intent detection of utterance](#detect-multiple-intents-within-single-utterance)
 -->
 
-Endpoint prognoz zapytania [żądania](#request-changes) i [odpowiedzi](#response-changes) ma znaczące zmiany i obsługują nowe funkcje wymienione powyżej, w tym następujące czynności:
+[Żądanie](#request-changes) punktu końcowego przewidywania zapytań i [odpowiedź](#response-changes) ma znaczące zmiany w zakresie obsługi nowych funkcji wymienionych powyżej, w tym:
 
 * [Zmiany obiektu odpowiedzi](#top-level-json-changes)
 * [Odwołania do nazwy roli jednostki zamiast nazwy jednostki](#entity-role-name-instead-of-entity-name)
-* [Właściwości, aby oznaczyć jednostek w wypowiedzi](#marking-placement-of-entities-in-utterances)
+* [Właściwości do oznaczania jednostek w wyrażenia długości](#marking-placement-of-entities-in-utterances)
 
-Następujące funkcje usługi LUIS są **nieobsługiwane** w interfejsie API w wersji 3:
+Następujące funkcje LUIS nie są **obsługiwane** w interfejsie API v3:
 
-* Sprawdzanie pisowni Bing w wersji 7
+* sprawdzanie pisowni Bing wersji 7
 
-[Dokumentację referencyjną](https://aka.ms/luis-api-v3) jest dostępna dla V3.
+[Dokumentacja referencyjna](https://aka.ms/luis-api-v3) jest dostępna w wersji 3.
 
-## <a name="endpoint-url-changes-by-slot-name"></a>Zmiany adresu URL punktu końcowego o nazwie miejsca
+## <a name="endpoint-url-changes-by-slot-name"></a>Zmiany adresu URL punktu końcowego według nazwy miejsca
 
-Format wywołanie punktu końcowego HTTP V3 uległ zmianie.
+Format wywołania HTTP punktu końcowego v3 został zmieniony.
 
-|— METODA|Adres URL|
+|METHOD|URL|
 |--|--|
-|GET|https://<b>{regionu REGION}</b>.api.cognitive.microsoft.com/luis/<b>3.0 w wersji zapoznawczej</b>/apps/<b>{identyfikator-aplikacji}</b>/slots/<b>{miejsce-NAME}</b>/ prognozowania? Zapytanie =<b>{QUERY}</b>|
-|POST|https://<b>{regionu REGION}</b>.api.cognitive.microsoft.com/luis/<b>3.0 w wersji zapoznawczej</b>/apps/<b>{identyfikator-aplikacji}</b>/slots/<b>{miejsce-NAME}</b>/ prognozowania|
+|GET|https://<b>{region}</b>. API.Cognitive.Microsoft.com/Luis/<b>v 3.0 — wersja</b>zapoznawcza/Apps/<b>{App-ID}</b>/Slots/<b>{slot-Name}</b>/Predict? Query =<b>{Query}</b>|
+|POST|https://<b>{region}</b>. API.Cognitive.Microsoft.com/Luis/<b>v 3.0 — wersja</b>zapoznawcza/Apps/<b>{App-ID}</b>/Slots/<b>{slot-Name}</b>/Predict|
 |||
 
-## <a name="endpoint-url-changes-by-version-id"></a>Zmiany adresu URL punktu końcowego, identyfikator wersji
+Prawidłowe wartości dla gniazd:
 
-Jeśli chcesz wykonywać zapytania za wersję, musisz najpierw [publikowania za pomocą interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b) z `"directVersionPublish":true`. Wyślij zapytanie do endpoint odwołuje się do Identyfikatora wersji, zamiast nazwy miejsca.
+* `production`
+* `staging`
+
+## <a name="endpoint-url-changes-by-version-id"></a>Zmiany adresu URL punktu końcowego według identyfikatora wersji
+
+Jeśli chcesz wykonać zapytanie według wersji, musisz najpierw [opublikować za pośrednictwem interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b) za pomocą `"directVersionPublish":true`. Zbadaj punkt końcowy odwołujący się do identyfikatora wersji zamiast nazwy gniazda.
 
 
-|— METODA|Adres URL|
+|METHOD|URL|
 |--|--|
-|GET|https://<b>{regionu REGION}</b>.api.cognitive.microsoft.com/luis/<b>3.0 w wersji zapoznawczej</b>/apps/<b>{identyfikator aplikacji}</b>/versions/<b>{identyfikator wersji}</b>/ przewidywanie? kwerendy =<b>{QUERY}</b>|
-|POST|https://<b>{regionu REGION}</b>.api.cognitive.microsoft.com/luis/<b>3.0 w wersji zapoznawczej</b>/apps/<b>{identyfikator aplikacji}</b>/versions/<b>{identyfikator wersji}</b>/ przewiduj|
+|GET|https://<b>{region}</b>. API.Cognitive.Microsoft.com/Luis/<b>v 3.0 — wersja</b>zapoznawcza/Apps/<b>{App-ID}</b>/Versions/<b>{Version-ID}</b>/Predict? Query =<b>{Query}</b>|
+|POST|https://<b>{region}</b>. API.Cognitive.Microsoft.com/Luis/<b>v 3.0 — wersja</b>zapoznawcza/Apps/<b>{App-ID}</b>/Versions/<b>{Version-ID}</b>/Predict|
 |||
 
-## <a name="prebuilt-entities-with-new-json"></a>Wstępnie utworzone jednostki z nowego formatu JSON.
+## <a name="prebuilt-entities-with-new-json"></a>Wstępnie utworzone jednostki z nowym kodem JSON
 
-Zmiany obiektu odpowiedzi V3 obejmują [ze wstępnie utworzonych jednostek](luis-reference-prebuilt-entities.md). 
+Zmiany obiektu odpowiedzi v3 obejmują [wstępnie skompilowane jednostki](luis-reference-prebuilt-entities.md). 
 
 ## <a name="request-changes"></a>Żądanie zmian 
 
 ### <a name="query-string-parameters"></a>Parametry ciągu zapytania
 
-Interfejs API w wersji 3 ma parametry ciągu zapytania różne.
+Interfejs API v3 ma inne parametry ciągu zapytania.
 
-|Nazwy parametrów|Typ|Version|Domyślne|Przeznaczenie|
+|Nazwa parametru|Type|Version|Domyślny|Cel|
 |--|--|--|--|--|
-|`log`|boolean|V2 I V3|false|Query Store w pliku dziennika.| 
-|`query`|string|Tylko w wersji 3|Brak wartości domyślnej — jest to wymagane w przypadku żądania GET|**W wersji 2**, trwa wypowiedź do można przewidzieć `q` parametru. <br><br>**W wersji 3**, funkcji jest przekazywany w `query` parametru.|
-|`show-all-intents`|boolean|Tylko w wersji 3|false|Zwróć wszystkie intencji z odpowiedni wynik w **prediction.intents** obiektu. Intents są zwracane jako obiekty w obiekcie nadrzędnym `intents` obiektu. Dzięki temu dostęp programowy bez konieczności znaleźć zamiar w tablicy: `prediction.intents.give`. W wersji 2 te zostały zwrócone w tablicy. |
-|`verbose`|boolean|V2 I V3|false|**W wersji 2**, gdy jest ustawiona na wartość true, wszystkie przewidywane intencji zostały zwrócone. Wszystkie przewidywane intencji, należy użyć param V3 z `show-all-intents`.<br><br>**W wersji 3**, ten parametr tylko szczegółów jednostki metadanych jednostki przewidywania.  |
+|`log`|boolean|WERSJA 2 & V3|false|Zapisz zapytanie w pliku dziennika.| 
+|`query`|ciąg|Tylko wersja 3|Brak domyślnej — jest to wymagane w żądaniu GET|**W wersji 2**wypowiedź do przewidywania jest `q` parametrem. <br><br>**W wersji 3**funkcja jest przenoszona do `query` parametru.|
+|`show-all-intents`|boolean|Tylko wersja 3|false|Zwróć wszystkie intencje z odpowiednim wynikiem w obiekcie **przewidywania. intencje** . Intencje są zwracane jako obiekty w obiekcie nadrzędnym `intents` . Pozwala to na dostęp programistyczny bez konieczności wyszukiwania zamiaru w tablicy: `prediction.intents.give`. W wersji 2 te zostały zwrócone w tablicy. |
+|`verbose`|boolean|WERSJA 2 & V3|false|**W wersji 2**, gdy ustawiono wartość true, wszystkie przewidywane intencje zostały zwrócone. Jeśli potrzebujesz wszystkich przewidywanych intencji, użyj parametru `show-all-intents`v3.<br><br>**W wersji 3**ten parametr zawiera tylko szczegóły metadanych jednostki przewidywania jednostek.  |
 
 
 
@@ -89,7 +94,7 @@ Interfejs API w wersji 3 ma parametry ciągu zapytania różne.
 -->
 
 
-### <a name="the-query-prediction-json-body-for-the-post-request"></a>Zapytanie prediction JSON treści dla `POST` żądania
+### <a name="the-query-prediction-json-body-for-the-post-request"></a>Treść pliku JSON przewidywania zapytania dla `POST` żądania
 
 ```JSON
 {
@@ -103,23 +108,23 @@ Interfejs API w wersji 3 ma parametry ciągu zapytania różne.
 }
 ```
 
-|Właściwość|Typ|Version|Domyślne|Przeznaczenie|
+|Właściwość|Type|Version|Domyślny|Cel|
 |--|--|--|--|--|
-|`dynamicLists`|tablica|Tylko w wersji 3|Nie jest wymagane.|[Listy dynamiczne](#dynamic-lists-passed-in-at-prediction-time) pozwalają rozszerzyć istniejącą jednostkę listy przeszkolony i opublikowanych już w aplikacji usługi LUIS.|
-|`externalEntities`|tablica|Tylko w wersji 3|Nie jest wymagane.|[Podmiotów zewnętrznych](#external-entities-passed-in-at-prediction-time) pozwalają aplikacją usługi LUIS na identyfikowanie i oznaczanie jednostek podczas wykonywania, który może służyć jako funkcje do istniejących jednostek. |
-|`options.datetimeReference`|string|Tylko w wersji 3|Brak wartości domyślnej|Używany do określenia [przesunięcie datetimeV2](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity).|
-|`options.overridePredictions`|boolean|Tylko w wersji 3|false|Określa, jeśli użytkownika [zewnętrznej jednostki (na taką samą nazwę jak istniejąca jednostka)](#override-existing-model-predictions) jest używany lub istniejącej jednostki w modelu służy do prognozowania. |
-|`query`|string|Tylko w wersji 3|Wymagany.|**W wersji 2**, trwa wypowiedź do można przewidzieć `q` parametru. <br><br>**W wersji 3**, funkcji jest przekazywany w `query` parametru.|
+|`dynamicLists`|array|Tylko wersja 3|Nie jest wymagane.|[Listy dynamiczne](#dynamic-lists-passed-in-at-prediction-time) umożliwiają rozbudowa istniejącej, przeszkolonej i opublikowanej jednostki listy, już w aplikacji Luis.|
+|`externalEntities`|array|Tylko wersja 3|Nie jest wymagane.|[Jednostki zewnętrzne](#external-entities-passed-in-at-prediction-time) zapewniają aplikacji Luis możliwość identyfikowania i etykietowania jednostek podczas środowiska uruchomieniowego, które mogą być używane jako funkcje istniejących jednostek. |
+|`options.datetimeReference`|ciąg|Tylko wersja 3|Brak domyślnego|Służy do określania [przesunięcia datetimeV2](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity). Format datetimeReference to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).|
+|`options.overridePredictions`|boolean|Tylko wersja 3|false|Określa, czy jest używana [Jednostka zewnętrzna użytkownika (o takiej samej nazwie jak istniejąca jednostka)](#override-existing-model-predictions) lub istniejąca jednostka w modelu jest używana do przewidywania. |
+|`query`|ciąg|Tylko wersja 3|Wymagany.|**W wersji 2**wypowiedź do przewidywania jest `q` parametrem. <br><br>**W wersji 3**funkcja jest przenoszona do `query` parametru.|
 
 
 
-## <a name="response-changes"></a>Zmiany w odpowiedzi
+## <a name="response-changes"></a>Zmiany odpowiedzi
 
-Odpowiedzi na zapytanie JSON zmienić, aby umożliwić większą programowy dostęp do danych najczęściej używany. 
+Plik JSON odpowiedzi zapytania został zmieniony, aby umożliwić większy dostęp programistyczny do danych najczęściej używanych. 
 
-### <a name="top-level-json-changes"></a>Najważniejsze zmiany poziomu JSON
+### <a name="top-level-json-changes"></a>Zmiany w formacie JSON najwyższego poziomu
 
-Najważniejsze właściwości JSON w wersji 2, gdy `verbose` jest ustawiona na wartość true, które zwraca wszystkie intencje i ich wyniki w `intents` właściwości:
+Najważniejsze właściwości JSON dla V2 to, gdy `verbose` ma wartość true, co zwraca wszystkie intencje i ich wyniki `intents` we właściwości:
 
 ```JSON
 {
@@ -131,7 +136,7 @@ Najważniejsze właściwości JSON w wersji 2, gdy `verbose` jest ustawiona na w
 }
 ```
 
-Najważniejsze właściwości JSON w wersji 3 są:
+Najważniejsze właściwości JSON dla wersji v3 to:
 
 ```JSON
 {
@@ -145,31 +150,33 @@ Najważniejsze właściwości JSON w wersji 3 są:
 }
 ```
 
-`intents` Obiekt jest nieuporządkowaną listę. Nie należy zakładać, pierwszy element podrzędny w `intents` odpowiada `topIntent`. Zamiast tego należy użyć `topIntent` wartość do znalezienia wynik:
+`normalizedQuery` Zawiera poprawki pisowni. Odpowiada to właściwości `alteredQuery`interfejsu API v2.  
+
+`intents` Obiekt jest listą nieuporządkowaną. Nie należy zakładać pierwszego elementu podrzędnego `intents` w odnosi `topIntent`się do. Zamiast tego należy użyć `topIntent` wartości, aby znaleźć wynik:
 
 ```nodejs
 const topIntentName = response.prediction.topIntent;
 const score = intents[topIntentName];
 ```
 
-Zezwalaj na zmiany schematu JSON odpowiedzi dla:
+Zmiany schematu JSON odpowiedzi są dozwolone dla:
 
-* Wyczyść rozróżnienie między oryginalnego wypowiedź `query`i zwrócony przewidywania, `prediction`.
-* Łatwiejsze programowy dostęp do przewidywanych danych. Zamiast wyliczania tablicy w wersji 2, mogą uzyskać dostęp do wartości przez **o nazwie** zarówno intencje i podmioty. Dla ról jednostki przewidywane Nazwa roli jest zwracany, ponieważ jest ona unikatowa w obrębie całej aplikacji.
-* Typy danych, jeśli określony, są przestrzegane. Wartości numeryczne już nie są zwracane jako ciągi.
-* Rozróżnienie między pierwszej priorytet prognozowania informacji i dodatkowe metadane są zwracane w `$instance` obiektu. 
+* Wyczyść rozróżnienie między oryginalnymi wypowiedź `query`i zwróciło `prediction`prognozowanie.
+* Łatwiejszy dostęp programistyczny do przewidywanych danych. Zamiast wyliczania za pomocą tablicy w wersji 2, można uzyskać dostęp do wartości według **nazwy** dla intencji i jednostek. W przypadku przewidywanych ról jednostek nazwa roli jest zwracana, ponieważ jest unikatowa w całej aplikacji.
+* Typy danych, jeśli zostały określone, są przestrzegane. Wartości numeryczne nie są już zwracane jako ciągi.
+* Rozróżnienie między informacjami prognozowania pierwszego priorytetu a dodatkowymi metadanymi `$instance` zwracanymi w obiekcie. 
 
-### <a name="access-instance-for-entity-metadata"></a>Dostęp `$instance` metadanych jednostki
+### <a name="access-instance-for-entity-metadata"></a>Dostęp `$instance` do metadanych jednostki
 
-Jeśli potrzebujesz metadane jednostki, ciąg zapytania musi używać `verbose=true` flagę i odpowiedzi zawiera metadane w `$instance` obiektu. W odpowiedzi JSON w poniższych sekcjach przedstawiono przykłady.
+Jeśli potrzebujesz metadanych jednostki, ciąg zapytania musi używać `verbose=true` flagi, a odpowiedź zawiera metadane `$instance` w obiekcie. Przykłady przedstawiono w odpowiedziach JSON w poniższych sekcjach.
 
-### <a name="each-predicted-entity-is-represented-as-an-array"></a>Każda jednostka przewidywany jest reprezentowany jako tablica
+### <a name="each-predicted-entity-is-represented-as-an-array"></a>Każda jednostka predykcyjna jest reprezentowana jako tablica
 
-`prediction.entities.<entity-name>` Obiektu zawiera tablicę, ponieważ każda jednostka można przewidzieć więcej niż jeden raz w wypowiedź. 
+`prediction.entities.<entity-name>` Obiekt zawiera tablicę, ponieważ każda jednostka może być przewidywalna więcej niż jeden raz w wypowiedź. 
 
-### <a name="list-entity-prediction-changes"></a>Lista jednostki prognozowania zmian
+### <a name="list-entity-prediction-changes"></a>Wyświetl zmiany przewidywania jednostek
 
-Plik JSON do prognozowania jednostki lista została zmieniona w postaci tablicy tablic:
+Plik JSON dla przewidywania jednostek listy zmienił się na tablicę tablic:
 
 ```JSON
 "entities":{
@@ -179,9 +186,9 @@ Plik JSON do prognozowania jednostki lista została zmieniona w postaci tablicy 
     ]
 }
 ```
-Każda tablica posługiwanie się nimi odpowiada tekst wewnątrz wypowiedź. Posługiwanie się nimi obiekt jest tablicą, ponieważ ten sam tekst może znajdować się w więcej niż jeden podlistę obiektami listy. 
+Każda tablica wewnętrzna odnosi się do tekstu wewnątrz wypowiedź. Obiekt wnętrza jest tablicą, ponieważ ten sam tekst może znajdować się na więcej niż jednej podliście jednostki listy. 
 
-Podczas mapowania między `entities` obiekt `$instance` obiektu kolejność obiektów są zachowywane na potrzeby prognoz jednostki listy.
+Podczas mapowania między `entities` obiektem `$instance` a obiektem kolejność obiektów jest zachowywana dla prognoz jednostek listy.
 
 ```nodejs
 const item = 0; // order preserved, use same enumeration for both
@@ -191,15 +198,15 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 
 ### <a name="entity-role-name-instead-of-entity-name"></a>Nazwa roli jednostki zamiast nazwy jednostki 
 
-W wersji 2 `entities` tablica zwrócona przewidywane jednostki o nazwie jednostki jest unikatowy identyfikator. W wersji 3 Jeśli jednostka ról i Prognozowanie dla roli jednostki podstawowy identyfikator jest nazwa roli. Jest to możliwe, ponieważ nazwy ról jednostki musi być unikatowa w całej aplikacji, łącznie z nazwami innych modelu (, podmiotów).
+W wersji 2 `entities` tablica zwróciła wszystkie przewidywane jednostki o nazwie jednostki, która jest unikatowym identyfikatorem. W wersji 3, jeśli jednostka używa ról, a Prognoza dotyczy roli jednostki, identyfikator podstawowy to nazwa roli. Jest to możliwe, ponieważ nazwy ról jednostek muszą być unikatowe w całej aplikacji, w tym w przypadku innych nazw modelu (intencje, jednostki).
 
-W poniższym przykładzie: należy wziąć pod uwagę wypowiedź, który zawiera tekst, `Yellow Bird Lane`. Ten tekst jest przewidzieć rolę niestandardową `Location` roli jednostki `Destination`.
+W poniższym przykładzie: Rozważmy wypowiedź, który zawiera tekst, `Yellow Bird Lane`. Ten tekst jest przewidywany jako `Location` `Destination`rola jednostki niestandardowej.
 
-|Tekstowe wypowiedź|Nazwa jednostki|Nazwa roli|
+|Wypowiedź tekst|Nazwa jednostki|Nazwa roli|
 |--|--|--|
 |`Yellow Bird Lane`|`Location`|`Destination`|
 
-W wersji 2 jednostki jest identyfikowany przez _nazwa jednostki_ z rolą jako właściwość obiektu:
+W wersji 2 jednostka jest identyfikowana przez _nazwę jednostki_ z rolą jako właściwość obiektu:
 
 ```JSON
 "entities":[
@@ -214,7 +221,7 @@ W wersji 2 jednostki jest identyfikowany przez _nazwa jednostki_ z rolą jako w�
 ]
 ```
 
-W wersji 3, odwołuje się jednostki _roli jednostki_, jeśli jest prognozowanie, dla roli:
+W wersji 3 jednostka jest przywoływana przez _rolę jednostki_, jeśli przewidywana jest rola:
 
 ```JSON
 "entities":{
@@ -224,7 +231,7 @@ W wersji 3, odwołuje się jednostki _roli jednostki_, jeśli jest prognozowanie
 }
 ```
 
-W wersji 3, jest taka sama wyniku o `verbose` flagi do zwracania metadanych jednostki:
+W wersji 3, ten sam wynik z `verbose` flagą do zwrócenia metadanych jednostki:
 
 ```JSON
 "entities":{
@@ -248,27 +255,27 @@ W wersji 3, jest taka sama wyniku o `verbose` flagi do zwracania metadanych jedn
 }
 ```
 
-## <a name="external-entities-passed-in-at-prediction-time"></a>Podmiotów zewnętrznych przekazany w czasie prognoz
+## <a name="external-entities-passed-in-at-prediction-time"></a>Jednostki zewnętrzne przekazały w czasie przewidywania
 
-Podmiotów zewnętrznych pozwalają aplikacją usługi LUIS na identyfikowanie i oznaczanie jednostek podczas wykonywania, który może służyć jako funkcje do istniejących jednostek. Dzięki temu można używać własnego w oddzielnych i niestandardowe wyodrębniające przed wysłaniem kwerendy do punktu końcowego usługi prognozowania. Odbywa się w punkcie końcowym prognozowania zapytania, dlatego nie musisz wytrenujesz i opublikowaniu modelu.
+Jednostki zewnętrzne zapewniają aplikacji LUIS możliwość identyfikowania i etykietowania jednostek podczas środowiska uruchomieniowego, które mogą być używane jako funkcje istniejących jednostek. Dzięki temu można używać oddzielnych i niestandardowych wyodrębniania jednostek przed wysłaniem zapytań do punktu końcowego przewidywania. Ponieważ odbywa się to w punkcie końcowym przewidywania zapytań, nie trzeba ponownie przeszkolić ani opublikować modelu.
 
-Aplikacja kliencka jest zapewnienie ekstraktor własne jednostki, umożliwiając zarządzanie dopasowania jednostki i określanie lokalizacji w ramach wypowiedź tej jednostki dopasowane, a następnie wysyłając te informacje z żądaniem. 
+Klient-aplikacja dostarcza własne ekstraktory jednostek przez zarządzanie dopasowaniem jednostek i Określanie lokalizacji w wypowiedź tej dopasowanej jednostki, a następnie wysłanie tych informacji przy użyciu żądania. 
 
-Podmiotów zewnętrznych jest mechanizm rozszerzania dowolnego typu jednostki, gdy był używany jako sygnały z innymi modelami, takich jak role, złożone i inne.
+Jednostki zewnętrzne są mechanizmem rozszerzania dowolnego typu jednostki, gdy nadal są używane jako sygnały do innych modeli, takich jak role, złożone i inne.
 
-Jest to przydatne dla jednostki, która ma danych dostępnych tylko w czasie wykonywania prognoz zapytania. Przykłady tego typu dane są często zmieniane, danych lub dla poszczególnych użytkowników. Można rozszerzyć, skontaktuj się z jednostką usługi LUIS z zewnętrznych informacji z listy kontaktów użytkownika. 
+Jest to przydatne w przypadku jednostki, która ma dane dostępne tylko w środowisku uruchomieniowym przewidywania zapytań. Przykładami danych tego typu są stale zmieniające się dane lub specyficzne dla użytkownika. Jednostkę Contact LUIS można rozciągnąć z informacjami zewnętrznymi z listy kontaktów użytkownika. 
 
 ### <a name="entity-already-exists-in-app"></a>Jednostka już istnieje w aplikacji
 
-Wartość `entityName` dla jednostki zewnętrznych, przekazanego żądania punktu końcowego treść wpisu, musi już istnieć w aplikacji przeszkolony i opublikowane w czasie, żądanie jest wysyłane. Obsługiwane są wszystkie typy, typ jednostki nie ma znaczenia.
+Wartość `entityName` dla jednostki zewnętrznej, która została przeniesiona do treści żądania punktu końcowego, musi już istnieć w nauczonej i opublikowanej aplikacji w momencie zgłoszenia żądania. Typ jednostki nie ma znaczenia, obsługiwane są wszystkie typy.
 
-### <a name="first-turn-in-conversation"></a>Najpierw włączyć konwersacji
+### <a name="first-turn-in-conversation"></a>Najpierw włącz konwersację
 
-Należy wziąć pod uwagę pierwszy wypowiedź, w którym użytkownik wprowadza następujące informacje niekompletne konwersacji bot rozmowy:
+Weź pod uwagę pierwszy wypowiedź w rozmowie bot rozmowy, w której użytkownik wprowadza następujące niepełne informacje:
 
 `Send Hazem a new message`
 
-Żądanie czatbot LUIS można przekazać informacje zawarte w treści wpisu o `Hazem` więc bezpośrednio jest dopasowywany jako jeden z kontaktów użytkownika.
+Żądanie od bot rozmowy do Luis może przekazać informacje w treści `Hazem` wpisu, aby było ono bezpośrednio dopasowane jako jeden z kontaktów użytkownika.
 
 ```json
     "externalEntities": [
@@ -284,15 +291,15 @@ Należy wziąć pod uwagę pierwszy wypowiedź, w którym użytkownik wprowadza 
     ]
 ```
 
-Prognozowanie odpowiedzi zawiera tej jednostki zewnętrznych, za pomocą wszystkich innych przewidywane jednostek, ponieważ jest on zdefiniowany w żądaniu.  
+Odpowiedź przewidywania obejmuje tę jednostkę zewnętrzną, z innymi przewidzianymi jednostkami, ponieważ jest zdefiniowana w żądaniu.  
 
-### <a name="second-turn-in-conversation"></a>Po drugie, wyłącz w konwersacji
+### <a name="second-turn-in-conversation"></a>Druga włączona konwersacja
 
-Dalej wypowiedź użytkownika do czatbot używa bardziej niejasne termin:
+Następny użytkownik wypowiedź do rozmowy bot używa bardziej niejasnego terminu:
 
 `Send him a calendar reminder for the party.`
 
-W poprzednim wypowiedź, używa wypowiedź `him` jako odwołanie do `Hazem`. Treść wpisu na bota konwersacji rozmowy można mapować `him` wartości jednostki wyodrębnione z pierwszym wypowiedź, `Hazem`.
+W poprzednim wypowiedź, wypowiedź używa `him` jako odwołanie do. `Hazem` Konwersacja rozmówcy bot w treści wpisu można mapować `him` na wartość jednostki wyodrębnioną z pierwszego wypowiedź,. `Hazem`
 
 ```json
     "externalEntities": [
@@ -308,13 +315,13 @@ W poprzednim wypowiedź, używa wypowiedź `him` jako odwołanie do `Hazem`. Tre
     ]
 ```
 
-Prognozowanie odpowiedzi zawiera tej jednostki zewnętrznych, za pomocą wszystkich innych przewidywane jednostek, ponieważ jest on zdefiniowany w żądaniu.  
+Odpowiedź przewidywania obejmuje tę jednostkę zewnętrzną, z innymi przewidzianymi jednostkami, ponieważ jest zdefiniowana w żądaniu.  
 
-### <a name="override-existing-model-predictions"></a>Zastąp istniejące określane są przewidywania modelu
+### <a name="override-existing-model-predictions"></a>Zastąp istniejące przewidywania modelu
 
-`overridePredictions` Właściwość opcje Określa, że jeśli użytkownik prześle jednostki zewnętrznej, która nakłada się na dostęp do przewidywanych jednostki o takiej samej nazwie, LUIS wybiera jednostki przekazanej lub istnieje w modelu. 
+Właściwość `overridePredictions` Options określa, że jeśli użytkownik wysyła jednostkę zewnętrzną, która pokrywa się z przewidywaną jednostką o tej samej nazwie, Luis wybiera jednostkę przekazaną lub jednostkę istniejącą w modelu. 
 
-Rozważmy na przykład zapytanie `today I'm free`. Usługa LUIS wykrywa `today` jako datetimeV2 z następującą odpowiedź:
+Rozważmy na przykład zapytanie `today I'm free`. Luis wykrywa `today` jako datetimeV2 z następującą odpowiedzią:
 
 ```JSON
 "datetimeV2": [
@@ -330,7 +337,7 @@ Rozważmy na przykład zapytanie `today I'm free`. Usługa LUIS wykrywa `today` 
 ]
 ```
 
-Jeśli użytkownik prześle zewnętrznej jednostki:
+Jeśli użytkownik wyśle jednostkę zewnętrzną:
 
 ```JSON
 {
@@ -343,7 +350,7 @@ Jeśli użytkownik prześle zewnętrznej jednostki:
 }
 ```
 
-Jeśli `overridePredictions` ustawiono `false`, LUIS, zwraca odpowiedź tak, jakby nie zostały wysłane zewnętrznej jednostki. 
+Jeśli jest ustawiona na `false`, Luis zwraca odpowiedź, tak jakby zewnętrzna jednostka nie została wysłana. `overridePredictions` 
 
 ```JSON
 "datetimeV2": [
@@ -359,7 +366,7 @@ Jeśli `overridePredictions` ustawiono `false`, LUIS, zwraca odpowiedź tak, jak
 ]
 ```
 
-Jeśli `overridePredictions` ustawiono `true`, LUIS, zwraca odpowiedź, w tym:
+Jeśli jest ustawiona na `true`, Luis zwraca odpowiedź, w tym: `overridePredictions`
 
 ```JSON
 "datetimeV2": [
@@ -373,11 +380,11 @@ Jeśli `overridePredictions` ustawiono `true`, LUIS, zwraca odpowiedź, w tym:
 
 #### <a name="resolution"></a>Rozwiązanie
 
-_Opcjonalne_ `resolution` właściwość zwraca w odpowiedzi prognozowania, dzięki czemu możesz przekazać metadane skojarzone z zewnętrznej jednostki, a następnie otrzymasz go wycofać w odpowiedzi. 
+_Opcjonalna_ `resolution` Właściwość zwraca w odpowiedzi predykcyjnej, co pozwala na przekazywanie metadanych skojarzonych z jednostką zewnętrzną, a następnie otrzymywanie jej z powrotem w odpowiedzi. 
 
-Głównym celem jest rozszerzenie wstępnie utworzone jednostki, ale nie jest ograniczona do tego typu jednostki. 
+Podstawowym celem jest rozszerzanie wstępnie utworzonych jednostek, ale nie jest to ograniczone do tego typu jednostki. 
 
-`resolution` Właściwość może być liczbą, ciągiem, obiekt lub tablica:
+`resolution` Właściwość może być liczbą, ciągiem, obiektem lub tablicą:
 
 * "Dallas"
 * {"text": "value"}
@@ -386,20 +393,20 @@ Głównym celem jest rozszerzenie wstępnie utworzone jednostki, ale nie jest og
 
 
 
-## <a name="dynamic-lists-passed-in-at-prediction-time"></a>Listy dynamiczne przekazany w czasie prognoz
+## <a name="dynamic-lists-passed-in-at-prediction-time"></a>Listy dynamiczne przechodzą w czasie przewidywania
 
-Listy dynamiczne pozwalają rozszerzyć istniejącą jednostkę listy przeszkolony i opublikowanych już w aplikacji usługi LUIS. 
+Listy dynamiczne umożliwiają rozbudowa istniejącej, przeszkolonej i opublikowanej jednostki listy, już w aplikacji LUIS. 
 
-Użyj tej funkcji, gdy wartości jednostki listy muszą okresowo zmieniane. Ta funkcja umożliwia rozszerzenie jednostki już uczony i opublikowane listy:
+Użyj tej funkcji, gdy wartości jednostki listy muszą być okresowo zmieniane. Ta funkcja umożliwia przeszerzenie już przeszkolonej i opublikowanej jednostki listy:
 
-* W momencie żądania punktu końcowego prognozy zapytania.
+* W czasie żądania punktu końcowego przewidywania zapytań.
 * Dla pojedynczego żądania.
 
-Jednostka listy może być pusty w aplikacji usługi LUIS, ale nie istnieje. Jednostka listy w aplikacji usługi LUIS nie ulega zmianie, ale rozszerzone możliwości prognozowania w punkcie końcowym, aby maksymalnie 2 listy z około 1000 elementów.
+Jednostka listy może być pusta w aplikacji LUIS, ale musi istnieć. Jednostka listy w aplikacji LUIS nie została zmieniona, ale zdolność przewidywania w punkcie końcowym zostanie rozszerzona, aby dołączyć do 2 list z około 1 000 elementami.
 
-### <a name="dynamic-list-json-request-body"></a>Dynamiczna lista treści żądania JSON
+### <a name="dynamic-list-json-request-body"></a>Treść żądania JSON listy dynamicznej
 
-Wyślij w następujących treść kodu JSON można dodać nowego podlisty przy użyciu synonimów do listy i przewidywanie obiektami listy dla tekstu, `LUIS`, za pomocą `POST` żądania prognozy kwerendy:
+Wyślij w następującej treści JSON, aby dodać nową podlistę z synonimami do listy i przewidzieć jednostkę listy dla tekstu, `LUIS` `POST` przy użyciu żądania przewidywania zapytania:
 
 ```JSON
 {
@@ -426,24 +433,24 @@ Wyślij w następujących treść kodu JSON można dodać nowego podlisty przy u
 }
 ```
 
-Prognozowanie odpowiedzi zawiera danej jednostce listy, przy użyciu wszystkich innych przewidywane jednostek, ponieważ jest on zdefiniowany w żądaniu. 
+Odpowiedź przewidywania obejmuje tę jednostkę listy wraz ze wszystkimi innymi przewidywanymi jednostkami, ponieważ jest zdefiniowana w żądaniu. 
 
-## <a name="timezoneoffset-renamed-to-datetimereference"></a>TimezoneOffset zmieniona na datetimeReference
+## <a name="timezoneoffset-renamed-to-datetimereference"></a>TimezoneOffset zmieniono nazwę na datetimeReference
 
-**W wersji 2**, `timezoneOffset` [parametru](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) wysyłane żądania prognozy jako parametr ciągu zapytania, niezależnie od tego, jeśli żądanie jest wysyłane jako żądania GET lub POST. 
+**W wersji 2** `timezoneOffset` [parametr](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) jest wysyłany w żądaniu predykcyjnym jako parametr ciągu zapytania, niezależnie od tego, czy żądanie jest wysyłane jako żądanie Get lub post. 
 
-**W wersji 3**, taką samą funkcjonalność jest dostarczana z parametr treści wpisu `datetimeReference`. 
+**W wersji 3**ta sama funkcjonalność jest dostarczana z parametrem `datetimeReference`post Body. 
 
-## <a name="marking-placement-of-entities-in-utterances"></a>Oznaczanie umieszczanie jednostek w wypowiedzi
+## <a name="marking-placement-of-entities-in-utterances"></a>Oznaczanie rozmieszczenia jednostek w wyrażenia długości
 
-**W wersji 2**, jednostki został oznaczony w wypowiedź z `startIndex` i `endIndex`. 
+**W wersji 2**jednostka została oznaczona w wypowiedź z `startIndex` i. `endIndex` 
 
-**W wersji 3**, jednostka jest oznaczona za pomocą `startIndex` i `entityLength`.
+**W wersji 3**jednostka jest oznaczona za pomocą `startIndex` i `entityLength`.
 
 ## <a name="deprecation"></a>Przestarzałe 
 
-Interfejsy API wersji 2 nie zostaną wycofane przez co najmniej 9 miesięcy od wersji 3 w wersji zapoznawczej. 
+Interfejs API v2 nie będzie przestarzały przez co najmniej 9 miesięcy od wersji zapoznawczej v3. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Użyj dokumentację API w wersji 3, aby zaktualizować istniejące REST wywołania usługi LUIS [punktu końcowego](https://aka.ms/luis-api-v3) interfejsów API. 
+Użyj dokumentacji interfejsu API v3, aby zaktualizować istniejące wywołania REST do interfejsów API LUIS [punktów końcowych](https://aka.ms/luis-api-v3) . 

@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 07/18/2019
-ms.openlocfilehash: 174147aca75452dfaee02d20df5377fa1f6070c1
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: bd68909f51ff6cead8484ae4ab9f2557e9d6554e
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325090"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443321"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Używanie grup z obsługą trybu failover w celu zapewnienia przezroczystej i skoordynowanej pracy w trybie failover wielu baz danych
 
@@ -31,7 +31,7 @@ W przypadku korzystania z grup automatycznych trybu failover z automatycznymi za
 W przypadku korzystania z grup automatycznych trybu failover z automatycznymi zasadami trybu failover każda awaria wpływająca na bazy danych na serwerze SQL Database lub wystąpieniu zarządzanym powoduje automatyczne przejście w tryb failover. Grupa autotrybu failover można zarządzać przy użyciu:
 
 - [Azure Portal](sql-database-implement-geo-distributed-database.md)
-- [Narzędzia Grupa trybu failover](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md)
+- [Narzędzia Grupa trybu failover](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
 - [INTERFEJS API REST: Grupa](https://docs.microsoft.com/rest/api/sql/failovergroups)trybu failover.
 
 Po przejściu w tryb failover upewnij się, że wymagania dotyczące uwierzytelniania dla serwera i bazy danych są skonfigurowane na nowym serwerze podstawowym. Aby uzyskać szczegółowe informacje, zobacz [SQL Database zabezpieczenia po odzyskiwaniu po awarii](sql-database-geo-replication-security-config.md).
@@ -310,7 +310,7 @@ Jak wspomniano wcześniej, grupy autotrybu failover i aktywnej replikacji geogra
 |  | |
 
 > [!IMPORTANT]
-> Przykładowy skrypt można znaleźć w temacie [Konfigurowanie i przełączanie w tryb failover grupy trybu failover dla pojedynczej bazy danych](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md).
+> Przykładowy skrypt można znaleźć w temacie [Konfigurowanie i przełączanie w tryb failover grupy trybu failover dla pojedynczej bazy danych](scripts/sql-database-add-single-db-to-failover-group-powershell.md).
 >
 
 ### <a name="powershell-managing-failover-groups-with-managed-instances-preview"></a>Program PowerShell: Zarządzanie grupami trybu failover z wystąpieniami zarządzanymi (wersja zapoznawcza)
@@ -371,7 +371,7 @@ Jak wspomniano wcześniej, grupy autotrybu failover i aktywnej replikacji geogra
 - Aby zapoznać się z przykładowymi skryptami, zobacz:
   - [Konfigurowanie pojedynczej bazy danych i wprowadzanie jej w tryb failover przy użyciu funkcji aktywnej replikacji geograficznej](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
   - [Konfigurowanie bazy danych w puli i wprowadzanie jej w tryb failover przy użyciu funkcji aktywnej replikacji geograficznej](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
-  - [Konfigurowanie grupy trybu failover i wprowadzanie jej w tryb failover dla jednej bazy danych](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md)
+  - [Konfigurowanie grupy trybu failover i wprowadzanie jej w tryb failover dla jednej bazy danych](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
 - Aby zapoznać się z omówieniem i scenariuszami ciągłości działania, zobacz temat ciągłość działania [— Omówienie](sql-database-business-continuity.md)
 - Aby dowiedzieć się więcej o Azure SQL Database zautomatyzowanych kopii zapasowych, zobacz [SQL Database zautomatyzowane kopie zapasowe](sql-database-automated-backups.md).
 - Aby dowiedzieć się więcej o korzystaniu z automatycznych kopii zapasowych na potrzeby odzyskiwania, zobacz [przywracanie bazy danych z kopii zapasowych inicjowanych przez usługę](sql-database-recovery-using-backups.md).

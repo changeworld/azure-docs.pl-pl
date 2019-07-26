@@ -1,6 +1,6 @@
 ---
-title: Schemat aktualizuje czerwca-1-2016 — Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Zaktualizowano schemat wersja 2016-06-01 definicji aplikacji logiki w usłudze Azure Logic Apps
+title: Aktualizacje schematu Czerwiec-1-2016 — Azure Logic Apps | Microsoft Docs
+description: Zaktualizowano wersję schematu 2016-06-01 dla definicji aplikacji logiki w Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,28 +10,28 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 349d57e8-f62b-4ec6-a92f-a6e0242d6c0e
 ms.topic: article
 ms.date: 07/25/2016
-ms.openlocfilehash: 6df29543df2b7b2609582f7e8dd9a0629182760c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0558c309cc22f39c2ed439b7930443ca0adb071e
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60995796"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385374"
 ---
-# <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Aktualizacje schematu dla usługi Azure Logic Apps — 1 czerwca 2016 r.
+# <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Aktualizacje schematu dla Azure Logic Apps — 1 czerwca 2016
 
-[Zaktualizowano schemat](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json) i wersja interfejsu API dla usługi Azure Logic Apps zawiera najważniejsze ulepszenia, które Twórz aplikacje logiki, bardziej niezawodne i łatwiejsze w użyciu:
+Zaktualizowana wersja [schematu](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json) i interfejsu API dla Azure Logic Apps obejmuje kluczowe ulepszenia, dzięki którym Aplikacje logiki są bardziej niezawodne i łatwiejsze w użyciu:
 
-* [Zakresy](#scopes) pozwalają grupie lub zagnieżdżanie akcje jako zbiór akcji.
-* [Warunków i pętli](#conditions-loops) są teraz akcje pierwszej klasy.
-* Bardziej precyzyjnego zamawiania do uruchamiania działań za pomocą `runAfter` właściwości zastąpienia `dependsOn`
+* [Zakresy](#scopes) umożliwiają grupowanie lub zagnieżdżanie akcji jako kolekcji akcji.
+* [Warunki i pętle](#conditions-loops) są teraz akcjami pierwszej klasy.
+* Dokładniejsza kolejność uruchamiania akcji z `runAfter` właściwością, zastępując`dependsOn`
 
-Do uaktualnienia aplikacji logiki ze schematu w wersji zapoznawczej 1 sierpnia 2015 r. schematu 1 czerwca 2016 [zajrzyj do sekcji uaktualnienia](#upgrade-your-schema).
+Aby uaktualnić Aplikacje logiki z 1 sierpnia 2015 schematu wersji zapoznawczej do schematu 1 czerwca 2016, zapoznaj [się z sekcją uaktualniania](#upgrade-your-schema).
 
 <a name="scopes"></a>
 
 ## <a name="scopes"></a>Zakresy
 
-Ten schemat obejmuje zakresy, które umożliwiają grupy razem lub zagnieżdżonych operacje wewnątrz siebie nawzajem. Na przykład warunek może zawierać inny warunek. Dowiedz się więcej o [zakresu składni](../logic-apps/logic-apps-loops-and-scopes.md), lub przejrzyj w tym przykładzie zakres podstawowe:
+Ten schemat zawiera zakresy, które umożliwiają grupowanie akcji ze sobą lub zagnieżdżanie akcji wewnątrz siebie. Na przykład warunek może zawierać inny warunek. Dowiedz się więcej o [składni zakresu](../logic-apps/logic-apps-loops-and-scopes.md)lub zapoznaj się z tym przykładem podstawowego zakresu:
 
 ```json
 {
@@ -55,9 +55,9 @@ Ten schemat obejmuje zakresy, które umożliwiają grupy razem lub zagnieżdżon
 
 <a name="conditions-loops"></a>
 
-## <a name="conditions-and-loops-changes"></a>Zmiany warunków i pętli
+## <a name="conditions-and-loops-changes"></a>Warunki i pętle zmiany
 
-W schemacie poprzedniej wersji, warunków i pętli zostały parametrów skojarzonych z jednej akcji. Ten schemat wind tego ograniczenia, więc warunków i pętli są teraz dostępne jako typy akcji. Dowiedz się więcej o [pętli i zakresy](../logic-apps/logic-apps-loops-and-scopes.md), [warunki](../logic-apps/logic-apps-control-flow-conditional-statement.md), lub przejrzeć tym podstawowym przykładzie, który zawiera informacje o akcji warunek:
+W poprzednich wersjach schematu warunki i pętle były parametrami skojarzonymi z pojedynczą akcją. Ten schemat dźwigu tego ograniczenia, więc warunki i pętle są teraz dostępne jako typy akcji. Dowiedz się więcej o [pętlach i zakresach](../logic-apps/logic-apps-loops-and-scopes.md), [warunkach](../logic-apps/logic-apps-control-flow-conditional-statement.md)lub przejrzyj ten podstawowy przykład, który pokazuje akcję warunku:
 
 ```json
 {
@@ -87,7 +87,7 @@ W schemacie poprzedniej wersji, warunków i pętli zostały parametrów skojarzo
 
 ## <a name="runafter-property"></a>Właściwość "runAfter"
 
-`runAfter` Zastępuje właściwość `dependsOn`, zapewniające większą dokładność podczas określania kolejności wykonywania akcji na podstawie stanu z poprzednich akcji. `dependsOn` Właściwość wskazano, czy "Akcja uruchomiono i zakończyło się pomyślnie", na podstawie poprzedniej akcji zakończyło się pomyślnie, nie powiodło się, czy jako pominięte — nie liczbę razy, aby uruchomić akcję. `runAfter` Właściwość zapewnia elastyczność jako obiekt, który określa wszystkie akcje nazwy po uruchamia obiektu. Ta właściwość definiuje również tablica stany, które są dopuszczalne jako wyzwalacze. Na przykład, jeśli chcesz, aby dana akcja do uruchomienia po wykonaniu akcji A zakończy się pomyślnie, i również po akcji B zakończy się pomyślnie lub nie powiedzie się, skonfiguruj to `runAfter` właściwości:
+`runAfter` Właściwość zastępuje`dependsOn`, co zapewnia większą precyzję podczas określania kolejności uruchamiania dla akcji na podstawie stanu poprzednich akcji. `dependsOn` Właściwość wskazuje, czy "akcja została uruchomiona i powiodła się", w zależności od tego, czy Poprzednia akcja zakończyła się powodzeniem, zakończyła się niepowodzeniem lub jako pominięcia — nie liczba uruchomień akcji. `runAfter` Właściwość zapewnia elastyczność jako obiekt, który określa wszystkie nazwy akcji, po których działa obiekt. Ta właściwość definiuje również tablicę Stanów, które są akceptowane jako wyzwalacze. Na przykład jeśli chcesz, aby akcja działała po pomyślnym wykonaniu akcji, a także po pomyślnym wykonaniu akcji B lub `runAfter` niepowodzeniem, skonfiguruj tę właściwość:
 
 ```json
 {
@@ -99,63 +99,63 @@ W schemacie poprzedniej wersji, warunków i pętli zostały parametrów skojarzo
 }
 ```
 
-## <a name="upgrade-your-schema"></a>Uaktualnienie schematu
+## <a name="upgrade-your-schema"></a>Uaktualnianie schematu
 
-Uaktualnienie do [najnowszych schematu](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json), należy tylko podjąć kilka kroków. Proces uaktualniania obejmuje, uruchamianie skryptu uaktualniania Zapisywanie jako nową aplikację logiki, a jeśli chcesz, prawdopodobnie zastąpienie poprzedniej aplikacji logiki.
+Aby uaktualnić do najnowszego [schematu](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json), wystarczy wykonać kilka kroków. Proces uaktualniania obejmuje uruchomienie skryptu uaktualniania, zapisanie go jako nowej aplikacji logiki, a jeśli chcesz, prawdopodobnie zastępowanie poprzedniej aplikacji logiki.
 
-1. W witrynie Azure portal Otwórz aplikację logiki.
+1. W Azure Portal Otwórz aplikację logiki.
 
-2. Przejdź do **Przegląd**. Na pasku narzędzi aplikacji logiki wybierz **aktualizacja schematu**.
+2. Przejdź do **omówienia**. Na pasku narzędzi aplikacji logiki wybierz pozycję **Aktualizuj schemat**.
    
    ![Wybierz pozycję Aktualizuj schemat][1]
    
-   Uaktualnionej definicji jest zwracany, który możesz skopiować i wkleić w definicji zasobu, jeśli to konieczne. 
+   Zostanie zwrócona uaktualniona definicja, w razie potrzeby można ją skopiować i wkleić do definicji zasobu. 
 
    > [!IMPORTANT]
-   > *Upewnij się, że* wybierzesz **Zapisz jako** więc wszystkie odwołania połączeń flagi card_authenticate_ w uaktualnionej aplikacji logiki.
+   > *Upewnij się, że* wybrano pozycję **Zapisz jako** , aby wszystkie odwołania do połączeń pozostawały prawidłowe w uaktualnionej aplikacji logiki.
 
-3. Na pasku narzędzi uaktualniania bloku wybierz **Zapisz jako**.
+3. Na pasku narzędzi bloku uaktualniania wybierz pozycję **Zapisz jako**.
 
-4. Wprowadź nazwę logiki i stanu. Aby wdrożyć Twojej uaktualnionej aplikacji logiki, wybierz **Utwórz**.
+4. Wprowadź nazwę i stan logiki. Aby wdrożyć uaktualnioną aplikację logiki, wybierz pozycję **Utwórz**.
 
-5. Upewnij się, że Twoja aplikacja logiki uaktualnionego działa zgodnie z oczekiwaniami.
+5. Upewnij się, że uaktualniona aplikacja logiki działa zgodnie z oczekiwaniami.
    
    > [!NOTE]
-   > Jeśli używasz wyzwalacz ręczny lub żądanie adresu URL wywołania zwrotnego zmienia się w nowej aplikacji logiki. Przetestuj nowy adres URL, aby upewnić się, że działa środowisko end-to-end. Aby zachować poprzednie adresy URL, można sklonować za pośrednictwem istniejących aplikacji logiki.
+   > Jeśli używasz wyzwalacza ręcznego lub żądania, adres URL wywołania zwrotnego zmieni się w nowej aplikacji logiki. Przetestuj nowy adres URL, aby upewnić się, że kompleksowe środowisko działa. Aby zachować poprzednie adresy URL, można sklonować za pośrednictwem istniejącej aplikacji logiki.
 
-6. *Opcjonalnie* zastąpienie poprzedniej aplikacji logiki przy użyciu nowej wersji schematu, na pasku narzędzi wybierz **klonowania**obok pozycji **aktualizacja schematu**. Ten krok jest niezbędny, tylko wtedy, gdy chcesz zachować ten sam identyfikator zasobu lub żądania URL wyzwalacza aplikacji logiki.
+6. *Opcjonalne* Aby zastąpić poprzednią aplikację logiki nową wersją schematu, na pasku narzędzi wybierz pozycję **Klonuj**, a następnie pozycję **Aktualizuj schemat**. Ten krok jest niezbędny tylko wtedy, gdy chcesz zachować ten sam identyfikator zasobu lub adres URL wyzwalacza żądania aplikacji logiki.
 
-## <a name="upgrade-tool-notes"></a>Informacje o narzędzie uaktualniania
+## <a name="upgrade-tool-notes"></a>Uwagi dotyczące narzędzia do uaktualniania
 
-### <a name="mapping-conditions"></a>Warunków mapowania
+### <a name="mapping-conditions"></a>Warunki mapowania
 
-W uaktualnionej definicji narzędzie sprawia, że najlepszy nakład pracy na grupowanie akcji gałęzi true i false jako zakres. W szczególności projektanta wzorzec `@equals(actions('a').status, 'Skipped')` pojawia się jako `else` akcji. Jednak jeśli narzędzie wykryje nierozpoznawalną wzorców, narzędzie może utworzyć osobne warunki dla wartości true i false gałęzi. Możesz ponownie zamapować czynności po uaktualnieniu, jeśli to konieczne.
+W uaktualnionej definicji Narzędzie to najlepiej sprawdza się w przypadku grupowania prawdy i fałszywych akcji rozgałęzień jednocześnie jako zakresu. `@equals(actions('a').status, 'Skipped')` W`else` odniesieniu do wzorca projektanta pojawia się jako akcja. Jeśli jednak narzędzie wykryje nierozpoznawalne wzorce, narzędzie może utworzyć osobne warunki zarówno dla gałęzi true, jak i false. W razie potrzeby można ponownie mapować akcje po uaktualnieniu.
 
-#### <a name="foreach-loop-with-condition"></a>pętli "foreach" z warunkiem
+#### <a name="foreach-loop-with-condition"></a>Pętla "foreach" z warunkiem
 
-W nowym schemacie, można użyć akcji filtrowania do replikowania wzorzec, który używa **dla każdego** pętli za pomocą jednego warunku każdego elementu. Jednak zmiana automatycznie odbywa się podczas uaktualniania. Warunek przestaje być akcji filtrowania, który pojawia się przed **dla każdego** pętli, tylko tablicę elementów spełniających warunek i macierzy w celu przekazywania **dla każdego** akcji. Aby uzyskać przykład, zobacz [pętli i zakresy](../logic-apps/logic-apps-loops-and-scopes.md).
+W nowym schemacie można użyć akcji filtru, aby replikować wzorzec, który używa pętli **for each** z jednym warunkiem dla każdego elementu. Jednak zmiana jest wykonywana automatycznie podczas uaktualniania. Warunek stanie się akcją filtru, która pojawia się przed pętlą **for each** , zwracając tylko tablicę elementów pasujących do warunku i przekazując tę tablicę do **każdej** akcji. Aby zapoznać się z przykładem, zobacz [pętle i zakresy](../logic-apps/logic-apps-loops-and-scopes.md).
 
 ### <a name="resource-tags"></a>Tagi zasobów
 
-Po uaktualnieniu, tagi zasobów zostaną usunięte, więc należy je zresetować dla uaktualnionego przepływu pracy.
+Po uaktualnieniu Tagi zasobów zostaną usunięte, dlatego należy je zresetować dla uaktualnionego przepływu pracy.
 
 ## <a name="other-changes"></a>Inne zmiany
 
-### <a name="renamed-manual-trigger-to-request-trigger"></a>Zmieniono nazwę wyzwalacza "manual" wyzwalacza "Request (żądanie"
+### <a name="renamed-manual-trigger-to-request-trigger"></a>Zmieniono nazwę wyzwalacza "Manual" na wyzwalacz "Request"
 
-`manual` Typu wyzwalacza zostało przestarzały i zmieniona na `request` z typem `http`. Ta zmiana tworzy więcej spójności dla rodzaju wzorzec wyzwalacz jest używany do tworzenia.
+Typ wyzwalacza został uznany za przestarzały, `request` a jego nazwa została zmieniona na typ `http`. `manual` Ta zmiana powoduje utworzenie większej spójności dla rodzaju wzorca używanego przez wyzwalacz do kompilowania.
 
 ### <a name="new-filter-action"></a>Nowa akcja "filter"
 
-Aby filtrować dużą tablicę do mniejszy zestaw elementów, nowe `filter` typ akceptuje tablicy, jak i warunek, ocenia stan dla każdego elementu i zwraca tablicę z elementami spełniających warunek.
+Aby odfiltrować dużą tablicę w dół do mniejszego zestawu elementów, `filter` nowy typ akceptuje tablicę i warunek, oblicza warunek dla każdego elementu i zwraca tablicę zawierającą elementy spełniające warunek.
 
-### <a name="restrictions-for-foreach-and-until-actions"></a>Ograniczenia dla "foreach" i "until" akcji
+### <a name="restrictions-for-foreach-and-until-actions"></a>Ograniczenia dotyczące akcji "foreach" i "until"
 
-`foreach` i `until` pętli są ograniczone do pojedynczej akcji.
+Pętla `until` i jest ograniczona do pojedynczej akcji. `foreach`
 
-### <a name="new-trackedproperties-for-actions"></a>Nowy elemencie "trackedProperties" dla akcji
+### <a name="new-trackedproperties-for-actions"></a>Nowe "trackedProperties" dla akcji
 
-Akcje mogą teraz zawierać dodatkowe właściwości o nazwie `trackedProperties`, który jest elementem równorzędnym do `runAfter` i `type` właściwości. Ten obiekt określa niektórych danych wejściowych akcji ani danych wyjściowych, które mają zostać uwzględnione w danych telemetrycznych diagnostycznych platformy Azure, emitowane jako część przepływu pracy. Na przykład:
+Akcje mogą teraz mieć dodatkową właściwość o nazwie `trackedProperties`, która jest elementem równorzędnym `runAfter` dla `type` właściwości i. Ten obiekt Określa pewne dane wejściowe lub wyjściowe akcji, które mają zostać dołączone do telemetrii diagnostyki platformy Azure, emitowane w ramach przepływu pracy. Na przykład:
 
 ``` json
 {
@@ -174,9 +174,10 @@ Akcje mogą teraz zawierać dodatkowe właściwości o nazwie `trackedProperties
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
-* [Tworzenie definicji przepływu pracy dla usługi logic apps](../logic-apps/logic-apps-author-definitions.md)
-* [Tworzenie szablonów wdrażania dla usługi logic apps](../logic-apps/logic-apps-create-deploy-template.md)
+## <a name="next-steps"></a>Kolejne kroki
+
+* [Tworzenie definicji przepływu pracy dla aplikacji logiki](../logic-apps/logic-apps-author-definitions.md)
+* [Automatyzowanie wdrożenia aplikacji logiki](logic-apps-azure-resource-manager-templates-overview.md)
 
 <!-- Image references -->
 [1]: ./media/logic-apps-schema-2016-04-01/upgradeButton.png

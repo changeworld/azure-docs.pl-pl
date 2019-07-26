@@ -1,37 +1,40 @@
 ---
-title: Wykonywanie zapytań dotyczących danych w usłudze Azure Data Lake za pomocą Eksploratora danych platformy Azure
-description: Dowiedz się, jak wykonywać zapytania o dane w usłudze Azure Data Lake za pomocą Eksploratora danych platformy Azure.
+title: Wykonywanie zapytań dotyczących danych w Azure Data Lake przy użyciu usługi Azure Eksplorator danych
+description: Dowiedz się, jak wykonywać zapytania dotyczące danych w Azure Data Lake przy użyciu usługi Azure Eksplorator danych.
 author: orspod
 ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 06/25/2019
-ms.openlocfilehash: d6a58d144482e17f7e4b615134115d1da46af6f0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 07/17/2019
+ms.openlocfilehash: cd53e1386d9d6f2a38beb1661554c8cc9116169d
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67453179"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494861"
 ---
-# <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>Wykonywanie zapytań dotyczących danych w usłudze Azure Data Lake za pomocą Eksploratora danych platformy Azure (wersja zapoznawcza)
+# <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>Wykonywanie zapytań dotyczących danych w Azure Data Lake przy użyciu usługi Azure Eksplorator danych (wersja zapoznawcza)
 
-Usługi Azure Data Lake Storage to rozwiązanie lake wysoce skalowalna i ekonomiczna danych do analizy danych big data. Połączono w niej wysoce wydajny system plików z ogromną skalą i przystępnością cenową, aby przyspieszyć uzyskiwanie szczegółowych informacji. Usługa Data Lake Storage 2. generacji rozszerza możliwości usługi Azure Blob Storage i jest zoptymalizowana pod kątem obciążeń analitycznych.
+Azure Data Lake Storage to wysoce skalowalne i ekonomiczne rozwiązanie usługi Data Lake do analizy danych Big Data. Połączono w niej wysoce wydajny system plików z ogromną skalą i przystępnością cenową, aby przyspieszyć uzyskiwanie szczegółowych informacji. Usługa Data Lake Storage 2. generacji rozszerza możliwości usługi Azure Blob Storage i jest zoptymalizowana pod kątem obciążeń analitycznych.
  
-Eksplorator danych usługi Azure integruje się z usługą Azure Blob Storage i Azure Data Lake magazynu Gen2, zapewniając szybką, pamięci podręcznej i indeksowane dostępu do danych z usługi Data lake. Można analizować i wykonywanie zapytań dotyczących danych w usługi Data lake bez uprzedniego przyjęciu Eksploratora danych usługi Azure. Możesz także zbadać pozyskiwane i uningested natywnych jeziora danych jednocześnie.  
+Platforma Azure Eksplorator danych integruje się z usługą Azure Blob Storage i Azure Data Lake Storage Gen2, zapewniając szybki, buforowany i indeksowany dostęp do danych w usłudze Lake. Można analizować i wysyłać zapytania dotyczące danych w usłudze Lake bez wcześniejszego pozyskiwania do Eksplorator danych platformy Azure. Możesz również wykonywać zapytania na wyzyskanych i nieprzezyskanych natywnych danych Lake.  
 
 > [!TIP]
-> Najlepszą wydajność zapytań powoduje konieczność wprowadzania danych do Eksploratora danych usługi Azure. Możliwość zapytania o dane w usłudze Azure Data Lake magazynu Gen2 bez uprzedniego pozyskiwania powinna służyć wyłącznie dane historyczne lub dane, które rzadko jest wykonywane zapytanie.
+> Najlepsza wydajność zapytań wymaga pozyskiwania danych na platformie Azure Eksplorator danych. Możliwość wykonywania zapytań dotyczących danych w Azure Data Lake Storage Gen2 bez wcześniejszego pozyskiwania powinna być używana tylko w przypadku danych historycznych lub danych, które są rzadko wysyłane zapytania.
  
-## <a name="optimize-query-performance-in-the-lake"></a>Optymalizowanie wydajności zapytań w usługi Data lake 
+## <a name="optimize-query-performance-in-the-lake"></a>Optymalizowanie wydajności zapytań w Lake 
 
-* Partycjonowanie danych większą wydajność i zoptymalizowane przeszukiwania.
-* Kompresuj dane w celu zwiększenia wydajności (gzip, aby uzyskać najlepszą kompresję, lz4 w celu uzyskania najlepszej wydajności).
-* Za pomocą usługi Azure Blob Storage lub Azure Data Lake Storage Gen2 tym samym regionie co klaster Eksploratora danych usługi Azure. 
+* Podziel dane na partycje, aby zwiększyć wydajność i zoptymalizowany czas zapytania.
+* Kompresuj dane, aby zwiększyć wydajność (GZIP dla najlepszej kompresji, lz4 dla najlepszej wydajności).
+* Użyj usługi Azure Blob Storage lub Azure Data Lake Storage Gen2 z tym samym regionem co klaster Eksplorator danych platformy Azure. 
 
-## <a name="create-an-external-table"></a>Tworzenie zewnętrznej tabeli
+## <a name="create-an-external-table"></a>Tworzenie tabeli zewnętrznej
 
-1. Użyj `.create external table` polecenie, aby utworzyć tabelę zewnętrzną w Eksploratorze danych platformy Azure. Tabela zewnętrzna dodatkowe polecenia, takie jak `.show`, `.drop`, i `.alter` są udokumentowane w artykule [polecenia tabeli zewnętrznej](/azure/kusto/management/externaltables).
+ > [!NOTE]
+ > Obecnie obsługiwane konta magazynu to Azure Blob Storage lub Azure Data Lake Storage Gen2. Obecnie obsługiwane są formaty danych JSON, CSV, TSV i txt.
+
+1. Użyj polecenia `.create external table` , aby utworzyć tabelę zewnętrzną w usłudze Azure Eksplorator danych. Dodatkowe polecenia tabeli zewnętrznej, takie `.show`jak `.drop`, i `.alter` są udokumentowane w [poleceniach tabeli zewnętrznej](/azure/kusto/management/externaltables).
 
     ```Kusto
     .create external table ArchivedProducts(
@@ -43,37 +46,69 @@ Eksplorator danych usługi Azure integruje się z usługą Azure Blob Storage i 
     with (compressed = true)  
     ```
 
-    To zapytanie tworzy partycji codziennych *container1/yyyy/MM/dd/all_exported_blobs.csv*. Zwiększenie wydajności jest oczekiwana z bardziej szczegółowym partycjonowania. Na przykład zapytania za pośrednictwem tabel zewnętrznych z partycji codziennych, takiego jak pokazano powyżej, mają lepszą wydajność niż te zapytania przy użyciu miesięcznych podzielonych tabel.
+    To zapytanie tworzy dzienne partycje *container1/rrrr/mm/dd/all_exported_blobs. csv*. Oczekiwana jest zwiększona wydajność z bardziej szczegółowym partycjonowaniem. Na przykład zapytania dotyczące tabel zewnętrznych z partycjami codziennymi, takimi jak wymienione powyżej, będą miały lepszą wydajność niż te zapytania z tabelami z podziałem na partycje.
 
-    > [!NOTE]
-    > Konta magazynu obecnie obsługiwane są usługi Azure Blob Storage lub Azure Data Lake Storage Gen2. Formaty danych obecnie obsługiwane są formatu csv, tsv i txt.
+1. Tabela zewnętrzna jest widoczna w lewym okienku interfejsu użytkownika sieci Web
 
-1. Tabela zewnętrzna jest widoczny w okienku po lewej stronie interfejsu użytkownika sieci Web
+    ![tabela zewnętrzna w interfejsie użytkownika sieci Web](media/data-lake-query-data/external-tables-web-ui.png)
 
-    ![Tabela zewnętrzna w internetowym interfejsie użytkownika](media/data-lake-query-data/external-tables-web-ui.png)
+### <a name="create-an-external-table-with-json-format"></a>Tworzenie tabeli zewnętrznej z formatem JSON
+
+Tabelę zewnętrzną można utworzyć przy użyciu formatu JSON. Aby uzyskać więcej informacji, zobacz [zewnętrzne polecenia tabel](/azure/kusto/management/externaltables)
+
+1. Użyj polecenia `.create external table` , aby utworzyć tabelę o nazwie *ExternalTableJson*:
+
+    ```kusto
+    .create external table ExternalTableJson (rownumber:int, rowguid:guid) 
+    kind=blob
+    dataformat=json
+    ( 
+       h@'http://storageaccount.blob.core.windows.net/container1;secretKey'
+    )
+    with 
+    (
+       docstring = "Docs",
+       folder = "ExternalTables",
+       namePrefix="Prefix"
+    ) 
+    ```
  
+1. Format JSON wymaga drugiego kroku tworzenia mapowania do kolumn, jak pokazano poniżej. W poniższym zapytaniu Utwórz określone mapowanie JSON o nazwie *MappingName*:
+
+    ```kusto
+    .create external table ExternalTableJson json mapping "mappingName" '[{ "column" : "rownumber", "datatype" : "int", "path" : "$.rownumber"},{ "column" : "rowguid", "path" : "$.rowguid" }]' 
+    ```
+
 ### <a name="external-table-permissions"></a>Uprawnienia tabeli zewnętrznej
  
-* Użytkownik bazy danych można utworzyć tabeli zewnętrznej. Twórca tabeli automatycznie staje się administratorem tabeli.
-* Klaster, bazy danych lub tabeli administratora można edytować istniejącej tabeli.
-* Dowolny użytkownik bazy danych lub Czytelnik mogą wysyłać zapytania tabeli zewnętrznej.
+* Użytkownik bazy danych może utworzyć tabelę zewnętrzną. Twórcy tabeli automatycznie staną się administratorem tabeli.
+* Klaster, baza danych lub administrator tabeli może edytować istniejącą tabelę.
+* Każdy użytkownik lub czytelnik bazy danych może wysyłać zapytania do tabeli zewnętrznej.
  
-## <a name="query-an-external-table"></a>Zapytanie tabeli zewnętrznej
+## <a name="query-an-external-table"></a>Kwerenda tabeli zewnętrznej
  
-Aby wysłać zapytanie tabeli zewnętrznej, użyj `external_table()` funkcji, a następnie podaj nazwę tabeli jako argument funkcji. Pozostała część zapytania jest standardowy język zapytania Kusto.
+Aby zbadać tabelę zewnętrzną, użyj `external_table()` funkcji i podaj nazwę tabeli jako argument funkcji. Pozostała część zapytania to standardowy język zapytań Kusto.
 
 ```Kusto
 external_table("ArchivedProducts") | take 100
 ```
 
 > [!TIP]
-> Funkcja IntelliSense nie jest obecnie obsługiwane dla zapytań tabeli zewnętrznej.
+> Funkcja IntelliSense nie jest obecnie obsługiwana w zapytaniach tabeli zewnętrznej.
 
-## <a name="query-external-and-ingested-data-together"></a>Wykonywanie zapytań dotyczących danych zewnętrznych i pozyskiwane razem
+### <a name="query-an-external-table-with-json-format"></a>Zapytanie tabeli zewnętrznej z formatem JSON
 
-Można tworzyć zapytania tabel zewnętrznych i tabele pozyskiwanych danych w ramach tego samego zapytania. Możesz [ `join` ](/azure/kusto/query/joinoperator) lub [ `union` ](/azure/kusto/query/unionoperator) tabeli zewnętrznej wraz z dodatkowymi danymi z Eksploratora danych usługi Azure, serwerów SQL lub innych źródeł. Użyj [ `let( ) statement` ](/azure/kusto/query/letstatement) Aby przypisać nazwę skrót do odwołań tabeli zewnętrznej.
+Aby zbadać tabelę zewnętrzną z formatem JSON, należy użyć `external_table()` funkcji i podać nazwę tabeli i nazwę mapowania jako argumenty funkcji. W zapytaniu poniżej, jeśli  nie określono mapowanianame, zostanie użyte mapowanie, które zostało wcześniej utworzone.
 
-W poniższym przykładzie *produktów* to tabela pozyskiwanych danych i *ArchivedProducts* jest tabeli zewnętrznej, która zawiera dane w Gen2 magazynu jezioro danych Azure:
+```kusto
+external_table(‘ExternalTableJson’, ‘mappingName’)
+```
+
+## <a name="query-external-and-ingested-data-together"></a>Wykonywanie zapytań dotyczących danych zewnętrznych i pozyskanych
+
+W ramach tego samego zapytania można wykonywać zapytania dotyczące tabel zewnętrznych i tabel pozyskanych danych. Ty [`join`](/azure/kusto/query/joinoperator) [lub`union`](/azure/kusto/query/unionoperator) tabela zewnętrzna z dodatkowymi danymi z usług Azure Eksplorator danych, SQL Server lub innych źródeł. Użyj, [`let( ) statement`](/azure/kusto/query/letstatement) aby przypisać nazwę skróconą do odwołania do tabeli zewnętrznej.
+
+W poniższym przykładzie *produkty* są tabelą danych pozyskiwanych, a *ArchivedProducts* jest tabelą zewnętrzną, która zawiera dane w Azure Data Lake Storage Gen2:
 
 ```kusto
 let T1 = external_table("ArchivedProducts") |  where TimeStamp > ago(100d);
@@ -81,16 +116,16 @@ let T = Products; //T is an internal table
 T1 | join T on ProductId | take 10
 ```
 
-## <a name="query-taxirides-external-table-in-the-help-cluster"></a>Zapytanie *TaxiRides* tabeli zewnętrznej w klastrze help
+## <a name="query-taxirides-external-table-in-the-help-cluster"></a>Kwerenda *TaxiRides* tabeli zewnętrznej w klastrze pomocy
 
-*TaxiRides* Przykładowy zestaw danych zawiera danych taksówek w Nowym Jorku z [taksówek NYC i Komisji Limousine](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page).
+Zestaw danych przykładowych *TaxiRides* zawiera dane o pozostałej stolicy w Nowym Jorku od [NYC taksówki i Limousinee](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page).
 
-### <a name="create-external-table-taxirides"></a>Tworzenie zewnętrznej tabeli *TaxiRides* 
+### <a name="create-external-table-taxirides"></a>Utwórz zewnętrzną tabelę *TaxiRides* 
 
 > [!NOTE]
-> W tej sekcji przedstawiono zapytanie użyte do utworzenia *TaxiRides* tabeli zewnętrznej w *pomocy* klastra. Ponieważ ta tabela została już utworzona możesz pominąć tę sekcję i wykonywać [zapytania *TaxiRides* danych tabeli zewnętrznej](#query-taxirides-external-table-data). 
+> W tej sekcji przedstawiono zapytanie używane do tworzenia tabeli zewnętrznej *TaxiRides* w klastrze *pomocy* . Ponieważ ta tabela została już utworzona, można pominąć tę sekcję i wykonać [zapytanie *TaxiRides* zewnętrzne dane tabeli](#query-taxirides-external-table-data). 
 
-1. Następujące zapytanie został użyty do utworzenia tabeli zewnętrznej *TaxiRides* w klastrze help. 
+1. Poniższe zapytanie zostało użyte do utworzenia tabeli zewnętrznej *TaxiRides* w klastrze pomocy. 
 
     ```kusto
     .create external table TaxiRides
@@ -151,20 +186,20 @@ T1 | join T on ProductId | take 10
     partition by bin(pickup_datetime, 1d)
     dataformat=csv
     ( 
-    h@'https://externalkustosamples.blob.core.windows.net/taxiridesbyday?st=2019-06-18T14%3A59%3A00Z&se=2029-06-19T14%3A59%3A00Z&sp=rl&sv=2016-05-31&sr=c&sig=yEaO%2BrzFHzAq7lvd4d9PeQ%2BTi3AWnho8Rn8hGU0X30M%3D'
+        h@'http://storageaccount.blob.core.windows.net/container1;secretKey''
     )
     ```
-1. Tabela wynikowa został utworzony w *pomocy* klastra:
+1. Powstała tabela została utworzona w klastrze *pomocy* :
 
     ![Tabela zewnętrzna TaxiRides](media/data-lake-query-data/taxirides-external-table.png) 
 
-### <a name="query-taxirides-external-table-data"></a>Zapytanie *TaxiRides* danych tabeli zewnętrznej 
+### <a name="query-taxirides-external-table-data"></a>Zapytanie *TaxiRides* zewnętrzne dane tabeli 
 
-Zaloguj się do [ https://dataexplorer.azure.com/clusters/help/databases/Samples ](https://dataexplorer.azure.com/clusters/help/databases/Samples) zapytania *TaxiRides* tabeli zewnętrznej. 
+Zaloguj się, [https://dataexplorer.azure.com/clusters/help/databases/Samples](https://dataexplorer.azure.com/clusters/help/databases/Samples) aby wysłać zapytanie do tabeli zewnętrznej *TaxiRides* . 
 
-#### <a name="query-taxirides-external-table-without-partitioning"></a>Zapytanie *TaxiRides* tabeli zewnętrznej bez podziału na partycje
+#### <a name="query-taxirides-external-table-without-partitioning"></a>Zapytanie *TaxiRides* tabelę zewnętrzną bez partycjonowania
 
-[Uruchom to zapytanie](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx3LSwqAMAwFwL3gHYKreh1xL7F9YrCtElP84OEV9zM4DZo5DsZjhGt6PqWTgL1p6+qhvaTEKjeI/FqyuZbGiwJf63QAi9vEL2UbAhtMEv6jyAH6+VhS9jOr1dULfUgAm2cAAAA=) w tabeli zewnętrznej *TaxiRides* opisujący było dla poszczególnych dni tygodnia, w obrębie całego zestawu danych. 
+[Uruchom to zapytanie](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx3LSwqAMAwFwL3gHYKreh1xL7F9YrCtElP84OEV9zM4DZo5DsZjhGt6PqWTgL1p6+qhvaTEKjeI/FqyuZbGiwJf63QAi9vEL2UbAhtMEv6jyAH6+VhS9jOr1dULfUgAm2cAAAA=) w tabeli zewnętrznej *TaxiRides* , aby przedstawić kolarstwu dla każdego dnia tygodnia, w całym zestawie danych. 
 
 ```kusto
 external_table("TaxiRides")
@@ -172,13 +207,13 @@ external_table("TaxiRides")
 | render columnchart
 ```
 
-To zapytanie Wyświetla najczęściej odwiedzane dzień tygodnia. Ponieważ dane nie jest podzielona na partycje, to zapytanie może potrwać dłuższy czas zwracania wyników (maksymalnie kilka minut).
+To zapytanie pokazuje dzień najgorętszym tygodnia. Ponieważ dane nie są partycjonowane, to zapytanie może potrwać długo, aby można było zwracać wyniki (do kilku minut).
 
-![Renderowanie niepartycjonowana zapytania](media/data-lake-query-data/taxirides-no-partition.png)
+![Renderowanie zapytania bez partycjonowania](media/data-lake-query-data/taxirides-no-partition.png)
 
-#### <a name="query-taxirides-external-table-with-partitioning"></a>Tabela zewnętrzna TaxiRides zapytania z podziałem na partycje 
+#### <a name="query-taxirides-external-table-with-partitioning"></a>Kwerenda TaxiRides tabela zewnętrzna z partycjonowaniem 
 
-[Uruchom to zapytanie](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA13NQQqDMBQE0L3gHT6ukkVF3fQepXv5SQYMNWmIP6ilh68WuinM6jHMYBPkyPMobGao5s6bv3mHpdF19aZ1QgYlbx8ljY4F4gPIQFYgkvqJGrr+eun6I5ralv58OP27t5QQOPsXiOyzRFGazE6WzSh7wtnIiA75uISdOEtdfQDLWmP+ogAAAA==) w tabeli zewnętrznej *TaxiRides* przedstawiający typy plików cab taksówek (żółto lub zielono) używane w styczniu 2017 roku. 
+[Uruchom to zapytanie](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA13NQQqDMBQE0L3gHT6ukkVF3fQepXv5SQYMNWmIP6ilh68WuinM6jHMYBPkyPMobGao5s6bv3mHpdF19aZ1QgYlbx8ljY4F4gPIQFYgkvqJGrr+eun6I5ralv58OP27t5QQOPsXiOyzRFGazE6WzSh7wtnIiA75uISdOEtdfQDLWmP+ogAAAA==) w tabeli zewnętrznej *TaxiRides* przedstawiające typy kabin (żółte lub zielone), które są używane w styczniu 2017. 
 
 ```kusto
 external_table("TaxiRides")
@@ -187,12 +222,12 @@ external_table("TaxiRides")
 | render piechart
 ```
 
-To zapytanie używa partycjonowania, który optymalizuje czas wykonywania zapytania i wydajności. Zapytanie filtrów partycjonowanego kolumny (pickup_datetime) i zwraca wyniki w ciągu kilku sekund.
+To zapytanie używa partycjonowania, które optymalizuje czas zapytania i wydajność. Zapytanie jest filtrowane na partycjonowanej kolumnie (pickup_datetime) i zwraca wyniki w ciągu kilku sekund.
 
-![Renderowanie podzielonym na partycje zapytanie](media/data-lake-query-data/taxirides-with-partition.png)
+![Renderuj zapytanie partycjonowane](media/data-lake-query-data/taxirides-with-partition.png)
   
-Można napisać dodatkowych zapytań do uruchamiania w tabeli zewnętrznej *TaxiRides* i Dowiedz się więcej o danych. 
+Można napisać dodatkowe zapytania do uruchamiania w tabeli zewnętrznej *TaxiRides* i dowiedzieć się więcej na temat danych. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Wykonuj zapytania na danych w usłudze Azure Data Lake za pomocą Eksploratora danych platformy Azure. Dowiedz się, jak [pisać zapytania](write-queries.md) i pobieraj dodatkowe szczegółowe informacje z danych.
+Wykonaj zapytanie dotyczące danych w Azure Data Lake przy użyciu usługi Azure Eksplorator danych. Dowiedz się, jak [pisać zapytania](write-queries.md) i uzyskać dodatkowe szczegółowe informacje na podstawie danych.

@@ -1,8 +1,8 @@
 ---
-title: Nawiązać połączenie z usługi Azure SQL Data Warehouse — SSMS | Dokumentacja firmy Microsoft
-description: Użyj programu SQL Server Management Studio (SSMS), aby nawiązać połączenie i wykonywania zapytań względem usługi Azure SQL Data Warehouse.
+title: Nawiązywanie połączenia z Azure SQL Data Warehouse-SSMS | Microsoft Docs
+description: Użyj SQL Server Management Studio (SSMS), aby nawiązać połączenie z usługą i Azure SQL Data Warehouse zapytań.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,14 +10,14 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 64ea7c175b733f974eba6c081ee2c98814cbcda2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 67707b64bb6018b322ba980535651c126a526eb7
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873705"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479536"
 ---
-# <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>Łączenie z usługą SQL Data Warehouse przy użyciu programu SQL Server Management Studio (SSMS)
+# <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>Nawiązywanie połączenia z SQL Data Warehouse przy użyciu SQL Server Management Studio (SSMS)
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
@@ -27,18 +27,18 @@ ms.locfileid: "65873705"
 > 
 > 
 
-Użyj programu SQL Server Management Studio (SSMS), aby nawiązać połączenie i wykonywania zapytań względem usługi Azure SQL Data Warehouse. 
+Użyj SQL Server Management Studio (SSMS), aby nawiązać połączenie z usługą i Azure SQL Data Warehouse zapytań. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Aby użyć tego samouczka, potrzebne są następujące elementy:
 
 * Istniejący magazyn danych SQL. Aby go utworzyć, zobacz artykuł [Tworzenie bazy danych w usłudze SQL Data Warehouse][Create a SQL Data Warehouse].
-* SQL Server Management Studio (SSMS) zainstalowane. [Instalacja narzędzia SSMS] [ Install SSMS] za darmo, jeśli nie jeszcze.
+* SQL Server Management Studio (SSMS). Bezpłatnie [Zainstaluj program SSMS][Install SSMS] , jeśli go jeszcze nie masz.
 * W pełni kwalifikowana nazwa serwera SQL. Aby ją znaleźć, zobacz [Nawiązywanie połączenia z usługą SQL Data Warehouse][Connect to SQL Data Warehouse].
 
 ## <a name="1-connect-to-your-sql-data-warehouse"></a>1. Nawiązywanie połączenia z usługą SQL Data Warehouse
 1. Otwórz program SSMS.
-2. Otwórz Eksplorator obiektów. Aby to zrobić, wybierz **pliku** > **Połącz z Eksploratorem obiektów**.
+2. Otwórz Eksplorator obiektów. W tym celu wybierz pozycję **plik** > **Połącz Eksplorator obiektów**.
    
     ![Eksplorator obiektów SQL Server][1]
 3. Wypełnij pola w oknie łączenia z serwerem.
@@ -65,14 +65,14 @@ Teraz, po nawiązaniu połączenia z bazą danych, napiszemy zapytanie.
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Uruchom zapytanie. Aby to zrobić, kliknij przycisk `Execute` lub użyj następującego skrótu: `F5`.
+4. Uruchom zapytanie. Aby to zrobić, kliknij `Execute` lub użyj następującego skrótu:. `F5`
    
-    ![Uruchamianie zapytania][5]
+    ![Uruchom zapytanie][5]
 5. Przejrzyj wyniki zapytania. W tym przykładzie tabela FactInternetSales ma 60398 wierszy.
    
     ![Wyniki zapytania][6]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Teraz, kiedy umiesz nawiązywać połączenia i wykonywać zapytania, spróbuj wykonać [wizualizację danych przy użyciu usługi Power BI][visualizing the data with PowerBI].
 
 Aby skonfigurować środowisko do uwierzytelniania usługi Azure Active Directory, zobacz artykuł [Uwierzytelnianie w usłudze SQL Data Warehouse][Authenticate to SQL Data Warehouse].

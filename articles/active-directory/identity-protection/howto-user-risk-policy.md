@@ -1,119 +1,105 @@
 ---
-title: Sposób konfigurowania zasad ryzyka użytkownika w usłudze Azure Active Directory Identity Protection | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować zasady usługi Azure AD Identity Protection ryzyka użytkownika.
+title: Jak skonfigurować zasady ryzyka dla użytkowników w Azure Active Directory Identity Protection | Microsoft Docs
+description: Dowiedz się, jak skonfigurować zasady ryzyka dla Azure AD Identity Protection użytkownika.
 services: active-directory
-keywords: Usługa Azure active directory identity protection odnajdywania aplikacji w chmurze, zarządzanie aplikacji, zabezpieczenia, ryzyka, poziom ryzyka, luk w zabezpieczeniach, zasady zabezpieczeń
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 942f7e43a549b5aa1a21284949ffc12ef3c8d75f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fc7ea05497d69a7ca833cc783e7a2bc6bf1a8b07
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108931"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335435"
 ---
 # <a name="how-to-configure-the-user-risk-policy"></a>Instrukcje: Konfigurowanie zasad ryzyka użytkowników
 
-Za pomocą ryzyka związanego z użytkownikiem usługi Azure AD wykrywa prawdopodobieństwo, że konto użytkownika zostało naruszone. Jako administrator możesz skonfigurować ryzyka związanego z użytkownikiem zasady dostępu warunkowego, automatycznie odpowiadać na poziom ryzyka określonego użytkownika.
+Przy ryzyku użytkownika usługa Azure AD wykrywa prawdopodobieństwo naruszenia bezpieczeństwa konta użytkownika. Jako administrator możesz skonfigurować zasady dostępu warunkowego dotyczące ryzyka użytkownika, aby automatycznie reagować na określony poziom ryzyka użytkownika.
  
-Ten artykuł zawiera informacje potrzebne do skonfigurowania zasad ryzyka dla użytkownika.
+Ten artykuł zawiera informacje potrzebne do skonfigurowania zasad ryzyka dla użytkowników.
 
+## <a name="what-is-a-user-risk-policy"></a>Co to są zasady ryzyka dla użytkowników?
 
-## <a name="what-is-a-user-risk-policy"></a>Co to jest zasad ryzyka dla użytkownika?
+Usługa Azure AD analizuje każdy zalogowanie użytkownika. Celem analizy jest wykrycie podejrzanych działań, które są związane z logowaniem. W usłudze Azure AD podejrzane działania wykrywane przez system są również znane jako zdarzenia ryzyka. Niektóre zdarzenia ryzyka mogą być wykrywane w czasie rzeczywistym, ale istnieją także zdarzenia wymagające więcej czasu. Na przykład w celu wykrycia niemożliwej podróży do nietypowych lokalizacji system wymaga początkowego okresu szkoleniowego 14 dni, aby poznać jego zwykłe zachowanie. Istnieje kilka opcji rozwiązywania wykrytych zdarzeń o podwyższonym ryzyku. Można na przykład ręcznie rozwiązać poszczególne zdarzenia związane z ryzykiem lub je rozwiązać przy użyciu ryzyka związanego z logowaniem lub zasad dostępu warunkowego do ryzyka użytkownika.
 
-Usługa Azure AD analizuje każdego logowania użytkownika. Cel analizy jest wykrywa podejrzane akcje, które pochodzą wraz z logowania. W usłudze Azure AD podejrzane działania, które system może wykrywać znane są również jako zdarzeń o podwyższonym ryzyku. Podczas gdy pewne ryzyko zdarzeń może zostać wykryte w czasie rzeczywistym, chociaż są również zdarzeń o podwyższonym ryzyku wymagające jeszcze raz. Na przykład aby wykryć niemożliwa podróż do nietypowych lokalizacji, systemu wymaga wstępny okres uczenia wynoszący 14 dni, aby dowiedzieć się więcej na temat regularnych zachowania użytkownika. Dostępnych jest kilka opcji, które można rozpoznać zdarzenia ryzyka wykryte. Na przykład można rozwiązać zdarzenia o podwyższonym ryzyku w poszczególnych ręcznie lub ich rozwiązać za pomocą ryzyka logowania i ryzyka związanego z użytkownikiem zasad dostępu warunkowego.
+Wszystkie zdarzenia ryzyka, które zostały wykryte dla użytkownika i nie zostały rozpoznane, są znane jako aktywne zdarzenia ryzyka. Zdarzenia aktywnego ryzyka, które są skojarzone z użytkownikiem, są nazywane ryzykiem użytkownika. Na podstawie ryzyka związanego z użytkownikiem usługa Azure AD oblicza prawdopodobieństwo naruszenia bezpieczeństwa użytkownika. Prawdopodobieństwo jest nazywane poziomem ryzyka użytkownika.
 
-Wszystkie zdarzenia o podwyższonym ryzyku, które zostały wykryte dla użytkownika i nie można rozwiązać, są znane jako zdarzenia aktywnego ryzyka. Zdarzenia aktywnego ryzyka, które są skojarzone z użytkownikami są nazywane ryzyka związanego z użytkownikiem. Usługi Azure AD, oparte na ryzyko związane z użytkownikiem, oblicza prawdopodobieństwo (niskiej, średniej, wysokiej), że użytkownik został złamany. Prawdopodobieństwo, że jest nazywany poziomie ryzyka użytkownika.
+![Czynniki ryzyka użytkownika](./media/howto-user-risk-policy/1031.png)
 
-![Ryzyka użytkownika](./media/howto-user-risk-policy/1031.png)
+Zasady ryzyka dla użytkowników to zautomatyzowana odpowiedź, którą można skonfigurować dla określonego poziomu ryzyka użytkownika. Korzystając z zasad ryzyka dla użytkowników, można zablokować dostęp do zasobów lub wymagać zmiany hasła w celu przywrócenia stanu konta użytkownika.
 
-Zasady ryzyka użytkownika jest automatycznej odpowiedzi skonfigurowanych dla określonego użytkownika poziom ryzyka. Za pomocą zasad ryzyka użytkownika można zablokować dostęp do zasobów lub wymagać zmiany hasła dostępu do stanu czystego konta użytkownika.
-
-
-## <a name="how-do-i-access-the-user-risk-policy"></a>Jak uzyskać dostęp do zasad ryzyka użytkownika?
+## <a name="how-do-i-access-the-user-risk-policy"></a>Jak mogę uzyskać dostęp do zasad ryzyka dla użytkowników?
    
-Policy ryzyka logowania jest dostępna w **Konfiguruj** sekcji na [strony usługi Azure AD Identity Protection](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy).
+Zasady dotyczące ryzyka związanego z logowaniem znajduje się w sekcji **Konfigurowanie** na [stronie Azure AD Identity Protection](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy).
    
-![Zasady dotyczące ryzyka związanego z użytkownika](./media/howto-user-risk-policy/1014.png)
-
-
+![Zasady dotyczące ryzyka związanego z użytkownikiem](./media/howto-user-risk-policy/1014.png)
 
 ## <a name="policy-settings"></a>Ustawienia zasad
 
-Po skonfigurowaniu zasad ryzyka logowania, należy ustawić:
+Konfigurując zasady dotyczące ryzyka związanego z logowaniem, należy ustawić:
 
-- Użytkownicy i grupy, które zostaną zastosowane zasady:
+- Użytkownicy i grupy, których dotyczą zasady:
 
     ![Użytkownicy i grupy](./media/howto-user-risk-policy/11.png)
 
-- Poziom ryzyka logowania, wyzwalającego zasad:
+- Poziom ryzyka logowania, który wyzwala zasady:
 
     ![Poziom ryzyka użytkownika](./media/howto-user-risk-policy/12.png)
 
-- Typ dostępu, który ma być wymuszane, gdy poziom ryzyka logowania zostaną spełnione:  
+- Typ dostępu, który ma zostać wymuszony po spełnieniu poziomu ryzyka związanego z logowaniem:  
 
     ![Access](./media/howto-user-risk-policy/13.png)
 
 - Stan zasad:
 
-    ![Wymuszanie zasad](./media/howto-user-risk-policy/14.png)
+    ![Wymuś zasady](./media/howto-user-risk-policy/14.png)
 
-W oknie dialogowym konfiguracji zasad zapewnia możliwość szacunkowa ocena wpływu konfigurację.
+W oknie dialogowym Konfiguracja zasad dostępna jest opcja oszacowania wpływu konfiguracji.
 
 ![Szacowany wpływ](./media/howto-user-risk-policy/15.png)
 
 ## <a name="what-you-should-know"></a>Co należy wiedzieć
 
-Zasady zabezpieczeń ryzyka użytkownika można ustawić w celu zablokowania użytkowników podczas logowania się w zależności od poziomu zagrożenia.
+Można ustawić zasady zabezpieczeń ryzyka dla użytkowników, aby blokować użytkownikom logowanie się w zależności od poziomu ryzyka.
 
 ![Blokowanie](./media/howto-user-risk-policy/16.png)
 
+Blokowanie logowania:
 
-Blokowania logowania:
-
-* Zapobiega generowania nowego użytkownika zdarzeń o podwyższonym ryzyku dla użytkownika, którego dotyczy
-* Administratorzy mogą ręcznie korygowania zdarzeń o podwyższonym ryzyku wpływających na tożsamości użytkownika i przywracania go w bezpiecznym stanu
+* Zapobiega generowaniu nowych zdarzeń ryzyka użytkownika dla danego użytkownika
+* Umożliwia administratorom ręczne korygowanie zdarzeń ryzyka mających wpływ na tożsamość użytkownika i przywrócenie go do stanu bezpiecznego
 
 ## <a name="best-practices"></a>Najlepsze praktyki
 
-Wybieranie **wysokiej** próg zmniejsza liczbę razy, zasada zostanie wyzwolony i minimalizuje wpływ na użytkowników.
-Jednakże nie obejmuje **niski** i **średni** użytkowników generujących ryzyko związane z zasad, które mogą nie zapewnić tożsamości lub urządzeń, zostały wcześniej podejrzenie lub znane naruszenia.
+Wybranie **wysokiego** progu zmniejsza liczbę wyzwalanych zasad i minimalizuje wpływ na użytkowników.
+Jednak nie obejmuje **małych** i **średnich** użytkowników oflagowanych z powodu ryzyka z zasad, które mogą nie zabezpieczać tożsamości lub urządzeń, które zostały wcześniej podejrzane lub uznane za zagrożone.
 
-Podczas ustawiania zasad
+Podczas ustawiania zasad,
 
-* Wyklucz użytkowników, którzy mogą wygenerować dużą liczbę fałszywych alarmów (deweloperzy, analityków zabezpieczeń)
-* Wyklucz użytkowników w lokalizacjach, w którym włączenie zasad nie jest możliwe (na przykład brak dostępu do działu pomocy technicznej)
-* Użyj **wysokiej** próg podczas wdrażania zasad początkowej, czy należy zminimalizować wyzwania widoczne dla użytkowników końcowych.
-* Użyj **niski** próg, jeśli Twoja organizacja wymaga zwiększenia bezpieczeństwa. Wybieranie **niski** próg wprowadza dodatkowego użytkownika logowania wyzwania, ale wyższy poziom bezpieczeństwa.
+* Wyklucz użytkowników, którzy mogą generować wiele fałszywych (dla deweloperów, analityków zabezpieczeń)
+* Wykluczanie użytkowników w lokalizacjach lokalnych, w których włączenie zasad nie jest praktyczne (na przykład brak dostępu do pomocy technicznej)
+* Podczas wstępnego wypełniania zasad należy używać **wysokiego** progu lub w przypadku konieczności minimalizowania wyzwań widzianych przez użytkowników końcowych.
+* Jeśli organizacja wymaga większego **poziomu** zabezpieczeń, należy użyć niskiego progu. Wybranie **niskiego** progu powoduje wprowadzenie dodatkowych wyzwań związanych z logowaniem użytkowników, ale zwiększenie bezpieczeństwa.
 
-Zalecana domyślna w przypadku większości organizacji jest skonfigurowanie reguły dla **średni** próg, aby zachować równowagę pomiędzy użyteczność i zabezpieczeń.
+Zalecanym ustawieniem domyślnym w przypadku większości organizacji jest skonfigurowanie reguły dla **średniego** progu w celu zrównoważenia równowagi między użytecznością a bezpieczeństwem.
 
-Omówienie środowiska użytkownika Zobacz:
+Aby zapoznać się z omówieniem środowiska użytkownika powiązanego, zobacz:
 
-* [Naruszenia zabezpieczeń konta odzyskiwania przepływ](flows.md#compromised-account-recovery).  
-* [Naruszone zablokowano konto przepływu](flows.md#compromised-account-blocked).  
+* [Przepływ odzyskiwania z naruszeniem konta](flows.md#compromised-account-recovery).  
+* [Zablokowany przepływ na koncie z naruszeniem zabezpieczeń](flows.md#compromised-account-blocked).  
 
-**Aby otworzyć okno dialogowe związanej z nimi konfiguracji**:
+**Aby otworzyć okno dialogowe powiązana konfiguracja**:
 
-- Na **usługi Azure AD Identity Protection** bloku, w **Konfiguruj** kliknij **zasad ryzyka dla użytkownika**.
+- W bloku **Azure AD Identity Protection** w sekcji **Konfiguracja** kliknij pozycję **zasady ryzyka użytkownika**.
 
-    ![Zasady dotyczące ryzyka związanego z użytkownika](./media/howto-user-risk-policy/1009.png "zasad ryzyka dla użytkownika")
-
-
-
+    ![Zasady ryzyka dla użytkowników](./media/howto-user-risk-policy/1009.png "Zasady ryzyka dla użytkowników")
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać omówienie programu Azure AD Identity Protection, zobacz [Omówienie usługi Azure AD Identity Protection](overview.md).
+Aby zapoznać się z omówieniem Azure AD Identity Protection, zobacz [omówienie Azure AD Identity Protection](overview.md).

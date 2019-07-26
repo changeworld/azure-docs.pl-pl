@@ -1,6 +1,6 @@
 ---
-title: Opisy problemów i rozwiązywanie problemów z CORS serwera Proxy aplikacji w usłudze Azure AD
-description: Zawiera opis mechanizmu CORS w serwera Proxy aplikacji usługi Azure AD oraz sposobach identyfikacji i rozwiązywaniu problemów mechanizmu CORS.
+title: Zrozumienie i rozwiązywanie problemów dotyczących platformy Azure serwer proxy aplikacji usługi Azure AD CORS
+description: Zawiera informacje o funkcji CORS w usłudze Azure serwer proxy aplikacji usługi Azure AD i sposobach identyfikowania i rozwiązywania problemów z mechanizmem CORS.
 services: active-directory
 author: jeevanbisht
 manager: mtillman
@@ -11,110 +11,110 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: afc0bb990f69521efb2557a6a086c0de5126f82c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 265458066a528246cbfa7876bf61b02a0382581b
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440415"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499603"
 ---
-# <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Opisy problemów i rozwiązywanie problemów z usługi Azure Active Directory aplikacji serwera Proxy mechanizmu CORS
+# <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Zrozumienie i rozwiązywanie problemów serwer proxy aplikacji usługi Azure Active Directory CORS
 
-[Współużytkowanie zasobów między źródłami (cors)](https://www.w3.org/TR/cors/) czasami stanowi wyzwanie dla aplikacji i interfejsów API została opublikowania za pośrednictwem usługi Azure Active Directory serwera Proxy aplikacji. W tym artykule omówiono problemy CORS serwera Proxy aplikacji w usłudze Azure AD i ich rozwiązania.
+[Współużytkowanie zasobów między źródłami (CORS)](https://www.w3.org/TR/cors/) może czasami stwarzać wyzwania dla aplikacji i interfejsów API publikowanych za pomocą serwer proxy aplikacji usługi Azure Active Directory. W tym artykule omówiono zagadnienia i rozwiązania CORS serwer proxy aplikacji usługi Azure AD platformy Azure.
 
-Poziom zabezpieczeń przeglądarki zwykle uniemożliwia strony sieci web dzięki czemu wysyłanie żądań AJAX do innej domeny. To ograniczenie jest nazywany *zasadami tego samego źródła*i zapobiega złośliwych witryn odczytywanie poufnych danych z innej lokacji. Jednak czasami możesz chcieć umożliwić innych witryn, wywołania interfejsu API sieci web. CORS to standard W3C, która umożliwia serwer może Poluzować zasady tego samego źródła i zezwolić na niektóre żądania między źródłami, jednocześnie odrzucając inne.
+Zabezpieczenia przeglądarki zazwyczaj uniemożliwiają stronom sieci Web wykonywanie żądań AJAX do innej domeny. To ograniczenie jest nazywane *zasadami tego samego źródła*i uniemożliwia złośliwym lokacjom odczytywanie poufnych danych z innej lokacji. Czasami jednak może być konieczne, aby inne Lokacje wywoływały internetowy interfejs API. CORS to W3C standard, który umożliwia serwerowi złagodzenie zasad tego samego źródła i Zezwalanie na niektóre żądania między źródłami podczas odrzucania innych.
 
-## <a name="understand-and-identify-cors-issues"></a>Zrozumieć i zidentyfikować problemy mechanizmu CORS
+## <a name="understand-and-identify-cors-issues"></a>Zrozumienie i identyfikowanie problemów CORS
 
-Dwa adresy URL mają tego samego źródła, jeśli mają one hostów, porty i schematy identyczne ([RFC 6454](https://tools.ietf.org/html/rfc6454)), takich jak:
+Dwa adresy URL mają te same źródła, jeśli mają identyczne schematy, hosty i porty ([RFC 6454](https://tools.ietf.org/html/rfc6454)), takie jak:
 
 -   http:\//contoso.com/foo.html
 -   http:\//contoso.com/bar.html
 
-Następujące adresy URL są źródła innego niż poprzednie dwa:
+Następujące adresy URL mają różne źródła niż poprzednie dwa:
 
--   http:\//contoso.net — różne domeny
--   http:\//contoso.com:9000/foo.html - innego portu
--   protokół https:\//contoso.com/foo.html - innego schematu
--   http:\//www.contoso.com/foo.html — różne domeny podrzędnej
+-   http:\//contoso.NET — inna domena
+-   http:\//contoso.com:9000/foo.html — inny port
+-   https:\//contoso.com/foo.html — inny schemat
+-   http:\//www.contoso.com/foo.html — inna poddomena
 
-Zasadami jednego źródła, uniemożliwia dostęp do zasobów z innych źródeł, chyba, że używają nagłówki control prawidłowy dostęp. W przypadku nieobecne lub niepoprawne nagłówki CORS żądań cross-origin zakończyć się niepowodzeniem. 
+Zasady tego samego źródła uniemożliwiają aplikacjom uzyskiwanie dostępu do zasobów z innych źródeł, chyba że korzystają z prawidłowych nagłówków kontroli dostępu. Jeśli nagłówki CORS są nieobecne lub nieprawidłowe, żądania między źródłami kończą się niepowodzeniem. 
 
-Mechanizm CORS problemy można zidentyfikować za pomocą narzędzi debugowania w przeglądarce:
+Problemy CORS można zidentyfikować za pomocą narzędzi debugowania przeglądarki:
 
-1. Uruchom przeglądarkę i przejdź do aplikacji sieci web.
-1. Naciśnij klawisz **F12** do konsoli debugowania.
-1. Spróbuj odtworzyć transakcji i zapoznaj się z komunikatem konsoli. Naruszenie zasad CORS generuje błąd konsoli, dotyczące źródła.
+1. Uruchom przeglądarkę i przejdź do aplikacji sieci Web.
+1. Naciśnij klawisz **F12** , aby wyświetlić konsolę debugowania.
+1. Spróbuj odtworzyć transakcję i przejrzyj komunikat konsoli. Naruszenie mechanizmu CORS powoduje błąd konsoli dotyczącej źródła.
 
-Poniższy zrzut ekranu wybierając **wypróbuj** przycisk spowodowane komunikat o błędzie CORS tego protokołu https:\//corswebclient-contoso.msappproxy.net nie można znaleźć w nagłówku Access-Control-Allow-Origin.
+Na poniższym zrzucie ekranu, wybierając przycisk **Wypróbuj ten** komunikat o błędzie, że nie znaleziono protokołu HTTPS\/:/corswebclient-contoso.msappproxy.NET w nagłówku Access-Control-Allow-Origin.
 
-![Problem z mechanizmu CORS](./media/application-proxy-understand-cors-issues/image3.png)
+![Problem CORS](./media/application-proxy-understand-cors-issues/image3.png)
 
-## <a name="cors-challenges-with-application-proxy"></a>Wyzwania dotyczące mechanizmu CORS w usłudze serwera Proxy aplikacji
+## <a name="cors-challenges-with-application-proxy"></a>Wyzwania mechanizmu CORS z serwerem proxy aplikacji
 
-W poniższym przykładzie przedstawiono typowy scenariusz CORS serwera Proxy aplikacji w usłudze Azure AD. Hosty serwerów wewnętrznych **CORSWebService** kontroler internetowego interfejsu API i **CORSWebClient** wywołująca **CORSWebService**. Jest żądaniem AJAX z **CORSWebClient** do **CORSWebService**.
+W poniższym przykładzie przedstawiono typowy scenariusz CORS serwer proxy aplikacji usługi Azure AD platformy Azure. Wewnętrzny serwer obsługuje kontroler internetowego interfejsu API **CORSWebService** oraz **CORSWebClient** , który wywołuje **CORSWebService**. Istnieje żądanie AJAX od **CORSWebClient** do **CORSWebService**.
 
-![Żądanie do tego samego źródła w środowisku lokalnym](./media/application-proxy-understand-cors-issues/image1.png)
+![Lokalne żądanie tego samego źródła](./media/application-proxy-understand-cors-issues/image1.png)
 
-Aplikacja CORSWebClient działa hostowanie jej w środowisku lokalnym, ale kończy się niepowodzeniem, aby załadować albo występuje gdy opublikowane za pośrednictwem serwera Proxy aplikacji usługi Azure AD. Jeśli oddzielnie opublikowane aplikacje CORSWebClient i CORSWebService jako różnych aplikacji za pośrednictwem serwera Proxy aplikacji dwie aplikacje znajdują się w różnych domenach. Żądanie AJAX z CORSWebClient CORSWebService jest żądania między źródłami a zakończy się niepowodzeniem.
+Aplikacja CORSWebClient działa w przypadku hostowania jej w środowisku lokalnym, ale nie może ładować ani wyłączać błędów podczas publikowania za pomocą usługi Azure serwer proxy aplikacji usługi Azure AD. Jeśli aplikacje CORSWebClient i CORSWebService są publikowane osobno jako różne aplikacje za pomocą serwera proxy aplikacji, te dwie aplikacje są hostowane w różnych domenach. Żądanie AJAX od CORSWebClient do CORSWebService jest żądaniem między źródłami i kończy się niepowodzeniem.
 
-![Żądania CORS serwera Proxy aplikacji](./media/application-proxy-understand-cors-issues/image2.png)
+![Żądanie CORS serwera proxy aplikacji](./media/application-proxy-understand-cors-issues/image2.png)
 
-## <a name="solutions-for-application-proxy-cors-issues"></a>Rozwiązania problemów CORS serwera Proxy aplikacji
+## <a name="solutions-for-application-proxy-cors-issues"></a>Rozwiązania dotyczące problemów z serwerem proxy aplikacji
 
-Można naprawić poprzedni problem mechanizmu CORS w jednym z kilku sposobów.
+Poprzedni problem z modelem CORS można rozwiązać na jeden z kilku sposobów.
 
-### <a name="option-1-set-up-a-custom-domain"></a>Opcja 1: Konfigurowanie domeny niestandardowej
+### <a name="option-1-set-up-a-custom-domain"></a>Option 1: Skonfiguruj domenę niestandardową
 
-Użyj serwera Proxy aplikacji usługi Azure AD [domeny niestandardowej](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains) publikować z tego samego źródła, bez konieczności wprowadzać żadnych zmian źródła aplikacji, kodu lub nagłówków. 
+Użyj [domeny niestandardowej](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains) serwer proxy aplikacji usługi Azure AD platformy Azure do publikowania z tego samego źródła, bez konieczności wprowadzania zmian w źródłach aplikacji, kodzie lub nagłówkach. 
 
 ### <a name="option-2-publish-the-parent-directory"></a>Opcja 2: Publikowanie katalogu nadrzędnego
 
-Publikowanie katalogu nadrzędnego obie aplikacje. Rozwiązanie działa to szczególnie dobrze, jeśli masz tylko dwie aplikacje na serwerze sieci web. Zamiast publikowanie oddzielnie każdą aplikację, możesz opublikować wspólnego katalogu nadrzędnego, co skutkuje to samo źródło.
+Opublikuj katalog nadrzędny obu aplikacji. To rozwiązanie działa szczególnie w przypadku, gdy na serwerze sieci Web znajdują się tylko dwie aplikacje. Zamiast publikować poszczególne aplikacje oddzielnie, można opublikować wspólny katalog nadrzędny, co skutkuje tym samym źródłem.
 
-W poniższych przykładach pokazano portal strony serwera Proxy aplikacji usługi Azure AD dla aplikacji CORSWebClient.  Gdy **wewnętrzny adres URL** ustawiono *contoso.com/CORSWebClient*, aplikacja nie może wykonać żądania zakończone powodzeniem, aby *contoso.com/CORSWebService* katalogu, ponieważ są one cross-origin. 
+W poniższych przykładach przedstawiono stronę serwer proxy aplikacji usługi Azure AD platformy Azure dla aplikacji CORSWebClient.  Gdy **wewnętrzny adres URL** jest ustawiony na *contoso.com/CORSWebClient*, aplikacja nie może wykonać pomyślnych żądań do katalogu *contoso.com/CORSWebService* , ponieważ są to między innymi źródłami. 
 
 ![Publikowanie aplikacji indywidualnie](./media/application-proxy-understand-cors-issues/image4.png)
 
-Zamiast tego należy ustawić **wewnętrzny adres URL** do opublikowania katalogu nadrzędnego, który zawiera oba *CORSWebClient* i *CORSWebService* katalogi:
+Zamiast tego należy ustawić **wewnętrzny adres URL** w celu opublikowania katalogu nadrzędnego, który zawiera katalogi *CORSWebClient* i *CORSWebService* :
 
 ![Publikowanie katalogu nadrzędnego](./media/application-proxy-understand-cors-issues/image5.png)
 
-Wynikowy adresy URL aplikacji skutecznie rozwiązać problem CORS:
+W efekcie adresy URL aplikacji skutecznie rozwiązują problem z CORS:
 
 - https:\//corswebclient-contoso.msappproxy.net/CORSWebService
 - https:\//corswebclient-contoso.msappproxy.net/CORSWebClient
 
 ### <a name="option-3-update-http-headers"></a>Opcja 3: Aktualizowanie nagłówków HTTP
 
-Dodawanie niestandardowego nagłówka odpowiedzi HTTP w usłudze sieci web, aby dopasować żądania origin. Dla witryny sieci Web działające w Internet Information Services (IIS) należy użyć Menedżera usług IIS do modyfikowania nagłówka:
+Dodaj niestandardowy nagłówek odpowiedzi HTTP w usłudze sieci Web, aby dopasować żądanie pierwotne. W przypadku witryn sieci Web działających w Internet Information Services (IIS) należy zmodyfikować nagłówek przy użyciu Menedżera usług IIS:
 
-![Dodaj nagłówek niestandardową odpowiedź w Menedżerze usług IIS](./media/application-proxy-understand-cors-issues/image6.png)
+![Dodawanie niestandardowego nagłówka odpowiedzi w Menedżerze usług IIS](./media/application-proxy-understand-cors-issues/image6.png)
 
-Ta modyfikacja nie wymaga żadnych zmian w kodzie. Można jej zweryfikować w śladach programu Fiddler:
+Ta modyfikacja nie wymaga żadnych zmian w kodzie. Można to sprawdzić w śladach programu Fiddler:
 
-**Po dodaniu nagłówka**\
+**Dodawanie nagłówka**\
 HTTP/1.1 200 OK\
-Cache-Control: nie-cache\
-Pragma: nie-cache\
-Content-Type: text/plain; charset = utf-8\
-Wygasa:-1\
-Różnią się: Zaakceptuj Encoding\
-Serwer: Microsoft — usługi IIS/8.5 Microsoft-HTTPAPI/2.0\
-**Access-Control-Allow-Origin: https://corswebclient-contoso.msappproxy.net** \
-X-AspNet-Version: 4.0.30319\
-X obsługiwane przez: ASP.NET\
+Cache-Control: Brak pamięci podręcznej \
+Pragma: Brak pamięci podręcznej \
+Content-Type: text/zwykły; charset = utf-8 \
+Wygasa:-1 \
+Zmienia Accept-Encoding \
+Serwer: Microsoft-IIS/8,5 Microsoft-pliku HTTPAPI/2.0 \
+**Access-Control-Allow-Origin: https\://corswebclient-contoso.msappproxy.NET**\
+X-AspNet-Version: 4.0.30319
+X-zasilane przez: ASP.NET \
 Długość zawartości: 17
 
 ### <a name="option-4-modify-the-app"></a>Opcja 4: Modyfikowanie aplikacji
 
-Możesz zmienić aplikację do obsługi mechanizmu CORS przez dodanie nagłówka Access-Control-Allow-Origin odpowiednimi wartościami. Sposób, aby dodać nagłówek zależy od języka kodu aplikacji. Zmiana kodu jest to najmniej zalecana opcja, ponieważ wymaga większość nakładu pracy.
+Możesz zmienić aplikację, aby obsługiwała mechanizm CORS poprzez dodanie nagłówka Access-Control-Allow-Origin z odpowiednimi wartościami. Sposób dodawania nagłówka zależy od języka kodu aplikacji. Zmiana kodu jest najmniejszą zalecaną opcją, ponieważ wymaga najwięcej wysiłku.
 
-### <a name="option-5-extend-the-lifetime-of-the-access-token"></a>Option 5: Wydłużać jego okresu istnienia tokenu dostępu
+### <a name="option-5-extend-the-lifetime-of-the-access-token"></a>Opcja 5: Zwiększ okres istnienia tokenu dostępu
 
-Niektóre problemy dotyczące mechanizmu CORS nie można rozpoznać, np. gdy aplikacja wykonuje przekierowanie do *login.microsoftonline.com* w celu uwierzytelnienia i wygaśnięcia ważności tokenu dostępu. CORS wywołań, a następnie kończy się niepowodzeniem. Obejście dla tego scenariusza jest wydłużać jego okresu istnienia tokenu dostępu, aby zapobiec wygaśnięciu podczas sesji użytkownika. Aby uzyskać więcej informacji na temat jak to zrobić, zobacz [okresów istnienia tokenu można skonfigurować w usłudze Azure AD](../develop/active-directory-configurable-token-lifetimes.md).
+Nie można rozwiązać niektórych problemów CORS, na przykład gdy aplikacja przekieruje się do *login.microsoftonline.com* w celu uwierzytelnienia, a token dostępu wygasa. Wywołanie CORS nie powiedzie się. Obejście tego scenariusza polega na przekroczeniu okresu istnienia tokenu dostępu, aby zapobiec jego wygaśnięciu podczas sesji użytkownika. Aby uzyskać więcej informacji o tym, jak to zrobić, zobacz [konfigurowalne okresy istnienia tokenu w usłudze Azure AD](../develop/active-directory-configurable-token-lifetimes.md).
 
 ## <a name="see-also"></a>Zobacz także
-- [Samouczek: Dodawanie aplikacji w środowisku lokalnym dostępu zdalnego za pośrednictwem serwera Proxy aplikacji w usłudze Azure Active Directory](application-proxy-add-on-premises-application.md) 
-- [Planowanie wdrożenia serwera Proxy aplikacji usługi Azure AD](application-proxy-deployment-plan.md) 
-- [Dostęp zdalny do aplikacji lokalnych za pośrednictwem serwera Proxy usługi Azure Active Directory aplikacji](application-proxy.md) 
+- [Samouczek: Dodawanie aplikacji lokalnej dla dostępu zdalnego przy użyciu serwera proxy aplikacji w Azure Active Directory](application-proxy-add-on-premises-application.md) 
+- [Planowanie wdrożenia usługi Azure serwer proxy aplikacji usługi Azure AD](application-proxy-deployment-plan.md) 
+- [Dostęp zdalny do aplikacji lokalnych za serwer proxy aplikacji usługi Azure Active Directory](application-proxy.md) 

@@ -1,33 +1,28 @@
 ---
-title: Włączanie diagnostyki w usługach Azure Cloud Services przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
+title: Włączanie diagnostyki na platformie Azure Cloud Services przy użyciu programu PowerShell | Microsoft Docs
 description: Dowiedz się, jak włączyć diagnostykę usług w chmurze przy użyciu programu PowerShell
 services: cloud-services
 documentationcenter: .net
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 66e08754-8639-4022-ae18-4237749ba17d
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/06/2016
-ms.author: jeconnoc
-ms.openlocfilehash: 13a855c5770281e2578523bfc1813b2e03df6651
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: gwallace
+ms.openlocfilehash: 4beed4dd874c23c36e125b5855e2e8380859ef83
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65539243"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359159"
 ---
-# <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>Włączanie diagnostyki w usługach Azure Cloud Services przy użyciu programu PowerShell
-Można zbierać dane diagnostyczne, takie jak dzienniki aplikacji, liczniki wydajności, itp. z usługi w chmurze przy użyciu rozszerzenia diagnostyki platformy Azure. W tym artykule opisano, jak włączyć rozszerzenie diagnostyki platformy Azure dla usługi w chmurze przy użyciu programu PowerShell.  Zobacz [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview) wymagań wstępnych wymagane na potrzeby tego artykułu.
+# <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>Włączanie diagnostyki na platformie Azure Cloud Services przy użyciu programu PowerShell
+Można zbierać dane diagnostyczne, takie jak Dzienniki aplikacji, liczniki wydajności itp., z usługi w chmurze przy użyciu rozszerzenia Diagnostyka Azure. W tym artykule opisano sposób włączania rozszerzenia Diagnostyka Azure dla usługi w chmurze przy użyciu programu PowerShell.  Zapoznaj się z tematem [Instalowanie i konfigurowanie Azure PowerShell](/powershell/azure/overview) wymagań wstępnych dotyczących tego artykułu.
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>Włączanie rozszerzenia diagnostyki w ramach wdrażania usługi Cloud Service
-To podejście jest odpowiednie do ciągłej integracji typu scenariuszy, w którym można włączyć rozszerzenia diagnostyki w ramach wdrażania usługi w chmurze. Podczas tworzenia nowego wdrożenia usługi w chmurze, aby umożliwić rozszerzenie diagnostyki, przekazując *ExtensionConfiguration* parametr [New AzureDeployment](/powershell/module/servicemanagement/azure/new-azuredeployment?view=azuresmps-3.7.0) polecenia cmdlet. *ExtensionConfiguration* Parametr przyjmuje tablicę konfiguracji diagnostycznych, które mogą być tworzone przy użyciu [New AzureServiceDiagnosticsExtensionConfig](/powershell/module/servicemanagement/azure/new-azureservicediagnosticsextensionconfig?view=azuresmps-3.7.0) polecenia cmdlet.
+Takie podejście ma zastosowanie do typu ciągłej integracji, w którym można włączyć rozszerzenie diagnostyki w ramach wdrażania usługi w chmurze. Podczas tworzenia nowego wdrożenia usługi w chmurze można włączyć rozszerzenie diagnostyki, przekazując parametr *ExtensionConfiguration* do polecenia cmdlet [New-AzureDeployment](/powershell/module/servicemanagement/azure/new-azuredeployment?view=azuresmps-3.7.0) . Parametr *ExtensionConfiguration* pobiera tablicę konfiguracji diagnostycznych, które można utworzyć za pomocą polecenia cmdlet [New-AzureServiceDiagnosticsExtensionConfig](/powershell/module/servicemanagement/azure/new-azureservicediagnosticsextensionconfig?view=azuresmps-3.7.0) .
 
-Poniższy przykład pokazuje, jak włączyć diagnostyki usługi w chmurze za pomocą WebRole i workerrole —, posiadające konfiguraci diagnostiky różne.
+Poniższy przykład pokazuje, jak można włączyć diagnostykę dla usługi w chmurze z rolą webrole i rola procesu roboczego, z których każda ma inną konfigurację diagnostyki.
 
 ```powershell
 $service_name = "MyService"
@@ -42,9 +37,9 @@ $workerrole_diagconfig = New-AzureServiceDiagnosticsExtensionConfig -Role "Worke
 New-AzureDeployment -ServiceName $service_name -Slot Production -Package $service_package -Configuration $service_config -ExtensionConfiguration @($webrole_diagconfig,$workerrole_diagconfig)
 ```
 
-Jeśli plik konfiguracji diagnostyki nie określa `StorageAccount` element nazwą konta magazynu, a następnie `New-AzureServiceDiagnosticsExtensionConfig` polecenie cmdlet będzie automatycznie używać tego konta magazynu. Aby to działało konto magazynu musi znajdować się w tej samej subskrypcji co usługa w chmurze są wdrożone.
+Jeśli plik konfiguracji diagnostyki określa `StorageAccount` element z nazwą konta magazynu, `New-AzureServiceDiagnosticsExtensionConfig` polecenie cmdlet automatycznie użyje tego konta magazynu. Aby to działało, konto magazynu musi znajdować się w tej samej subskrypcji co wdrożonej usłudze w chmurze.
 
-Z Azure SDK 2.6 są publikowania plików konfiguracji rozszerzeń, które są generowane przez program MSBuild docelowy będzie zawierać nazwę konta magazynu, na podstawie parametrów konfiguracji diagnostyki, które są określone w pliku konfiguracji usługi (cscfg). Poniższy skrypt pokazuje, jak analizować pliki konfiguracji rozszerzenia z docelowym publikowanych danych wyjściowych i skonfigurować rozszerzenie diagnostyki dla każdej roli, podczas wdrażania usługi w chmurze.
+Z zestawu Azure SDK 2,6 w dalszym ciągu pliki konfiguracji rozszerzenia wygenerowane przez wynikowe dane wyjściowe publikowania programu MSBuild będą obejmować nazwę konta magazynu opartą na parametrze konfiguracji diagnostyki określonym w pliku konfiguracji usługi (cscfg). Poniższy skrypt pokazuje, jak przeanalizować pliki konfiguracji rozszerzenia z docelowego wyjścia publikowania i skonfigurować rozszerzenie diagnostyki dla każdej roli podczas wdrażania usługi w chmurze.
 
 ```powershell
 $service_name = "MyService"
@@ -85,11 +80,11 @@ foreach ($extPath in $diagnosticsExtensions)
 New-AzureDeployment -ServiceName $service_name -Slot Production -Package $service_package -Configuration $service_config -ExtensionConfiguration $diagnosticsConfigurations
 ```
 
-Visual Studio Online korzysta z podobnego podejścia używanie wdrożeń zautomatyzowanych z usług w chmurze za pomocą rozszerzenia diagnostyki. Zobacz [AzureCloudDeployment.ps1 Publikuj](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureCloudPowerShellDeploymentV1/Publish-AzureCloudDeployment.ps1) pełny przykład.
+W usłudze Visual Studio Online jest stosowane podobne podejście do zautomatyzowanych wdrożeń Cloud Services przy użyciu rozszerzenia diagnostyki. Zobacz [Publish-AzureCloudDeployment. ps1](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureCloudPowerShellDeploymentV1/Publish-AzureCloudDeployment.ps1) , aby zapoznać się z kompletnym przykładem.
 
-Jeśli nie `StorageAccount` została określona w konfiguracji diagnostyki, wówczas należy przekazać *StorageAccountName* parametru do polecenia cmdlet. Jeśli *StorageAccountName* parametr jest określony, a następnie polecenie cmdlet zawsze będzie korzystać z konta magazynu, który jest określony w parametrze i nie ten, który jest określony w pliku konfiguracji diagnostyki.
+Jeśli wartość `StorageAccount` nie została określona w konfiguracji diagnostyki, należy przekazać parametr *StorageAccountName* do polecenia cmdlet. Jeśli parametr *StorageAccountName* jest określony, polecenie cmdlet zawsze będzie używać konta magazynu, które jest określone w parametrze, a nie tego, który jest określony w pliku konfiguracji diagnostyki.
 
-Jeśli konto magazynu diagnostyki jest w innej subskrypcji z usługi w chmurze, a następnie musisz przekazać jawnie *StorageAccountName* i *StorageAccountKey* parametry do polecenia cmdlet. *StorageAccountKey* parametr nie jest potrzebny, gdy konto magazynu diagnostyki jest w tej samej subskrypcji, jak polecenie cmdlet automatycznie wykonywać zapytania i ustaw wartość klucza podczas włączania rozszerzenia diagnostyki. Jeśli jednak konto magazynu diagnostyki w innej subskrypcji, to polecenie cmdlet może nie móc automatycznie uzyskać klucz i należy jawnie określić klucz przy użyciu *StorageAccountKey* parametru.
+Jeśli konto magazynu diagnostyki znajduje się w innej subskrypcji usługi w chmurze, należy jawnie przekazać parametry *StorageAccountName* i *StorageAccountKey* do polecenia cmdlet. Parametr *StorageAccountKey* nie jest wymagany, jeśli konto magazynu diagnostyki znajduje się w tej samej subskrypcji, ponieważ polecenie cmdlet może automatycznie wysyłać zapytania i ustawić wartość klucza podczas włączania rozszerzenia diagnostyki. Jeśli jednak konto magazynu diagnostyki znajduje się w innej subskrypcji, polecenie cmdlet może nie być w stanie automatycznie uzyskać klucza i należy jawnie określić klucz za pomocą parametru *StorageAccountKey* .
 
 ```powershell
 $webrole_diagconfig = New-AzureServiceDiagnosticsExtensionConfig -Role "WebRole" -DiagnosticsConfigurationPath $webrole_diagconfigpath -StorageAccountName $diagnosticsstorage_name -StorageAccountKey $diagnosticsstorage_key
@@ -97,7 +92,7 @@ $workerrole_diagconfig = New-AzureServiceDiagnosticsExtensionConfig -Role "Worke
 ```
 
 ## <a name="enable-diagnostics-extension-on-an-existing-cloud-service"></a>Włączanie rozszerzenia diagnostyki w istniejącej usłudze Cloud Service
-Możesz użyć [AzureServiceDiagnosticsExtension zestaw](/powershell/module/servicemanagement/azure/set-azureservicediagnosticsextension?view=azuresmps-3.7.0) polecenia cmdlet, aby włączyć lub zaktualizuj konfigurację diagnostyki w usłudze w chmurze, która jest już uruchomiona.
+Aby włączyć lub zaktualizować konfigurację diagnostyki w usłudze w chmurze, która jest już uruchomiona, można użyć polecenia cmdlet [Set-AzureServiceDiagnosticsExtension](/powershell/module/servicemanagement/azure/set-azureservicediagnosticsextension?view=azuresmps-3.7.0) .
 
 [!INCLUDE [cloud-services-wad-warning](../../includes/cloud-services-wad-warning.md)]
 
@@ -113,20 +108,20 @@ Set-AzureServiceDiagnosticsExtension -DiagnosticsConfiguration @($webrole_diagco
 ```
 
 ## <a name="get-current-diagnostics-extension-configuration"></a>Pobieranie bieżącej konfiguracji rozszerzenia diagnostyki
-Użyj [Get AzureServiceDiagnosticsExtension](/powershell/module/servicemanagement/azure/get-azureservicediagnosticsextension?view=azuresmps-3.7.0) polecenia cmdlet, aby uzyskać bieżącą konfigurację diagnostyki usługi w chmurze.
+Użyj polecenia cmdlet [Get-AzureServiceDiagnosticsExtension](/powershell/module/servicemanagement/azure/get-azureservicediagnosticsextension?view=azuresmps-3.7.0) , aby pobrać bieżącą konfigurację diagnostyki dla usługi w chmurze.
 
 ```powershell
 Get-AzureServiceDiagnosticsExtension -ServiceName "MyService"
 ```
 
 ## <a name="remove-diagnostics-extension"></a>Usuwanie rozszerzenia diagnostyki
-Aby wyłączyć diagnostykę w usłudze w chmurze, można użyć [AzureServiceDiagnosticsExtension Usuń](/powershell/module/servicemanagement/azure/remove-azureservicediagnosticsextension?view=azuresmps-3.7.0) polecenia cmdlet.
+Aby wyłączyć diagnostykę w usłudze w chmurze, można użyć polecenia cmdlet [Remove-AzureServiceDiagnosticsExtension](/powershell/module/servicemanagement/azure/remove-azureservicediagnosticsextension?view=azuresmps-3.7.0) .
 
 ```powershell
 Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService"
 ```
 
-Jeśli włączono rozszerzenie diagnostyki za pomocą *AzureServiceDiagnosticsExtension zestaw* lub *New AzureServiceDiagnosticsExtensionConfig* bez *roli*parametr, możesz usunąć za pomocą rozszerzenia *AzureServiceDiagnosticsExtension Usuń* bez *roli* parametru. Jeśli *roli* podczas włączania rozszerzenia użyto parametru, a następnie go musi też być używane podczas usuwania rozszerzenia.
+Jeśli włączono rozszerzenie diagnostyki przy użyciu polecenia *Set-AzureServiceDiagnosticsExtension* lub *New-AzureServiceDiagnosticsExtensionConfig* bez parametru *role* , można usunąć rozszerzenie za pomocą polecenia  *Remove-AzureServiceDiagnosticsExtension* bez parametru *role* . Jeśli podczas włączania rozszerzenia użyto parametru *role* , należy go również użyć podczas usuwania rozszerzenia.
 
 Aby usunąć rozszerzenie diagnostyki z pojedynczej roli:
 
@@ -135,6 +130,6 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-* Aby uzyskać dodatkowe wskazówki na temat korzystania z diagnostyki platformy Azure i innych technik rozwiązywania problemów, zobacz [Włączanie diagnostyki w usługach Azure Cloud Services i Virtual Machines](cloud-services-dotnet-diagnostics.md).
-* [Schemat usługi Diagnostyka konfiguracji](/azure/azure-monitor/platform/diagnostics-extension-schema-1dot2) opisano różne opcje konfiguracji rozszerzenia diagnostyki xml.
-* Aby dowiedzieć się, jak włączyć rozszerzenie diagnostyki dla maszyn wirtualnych, zobacz [Utwórz maszynę wirtualną Windows z funkcjami monitorowania i diagnostyki przy użyciu szablonu Azure Resource Manager](../virtual-machines/windows/extensions-diagnostics-template.md)
+* Aby uzyskać dodatkowe wskazówki dotyczące korzystania z diagnostyki platformy Azure i innych technik rozwiązywania problemów, zobacz [Włączanie diagnostyki na platformie Azure Cloud Services i Virtual Machines](cloud-services-dotnet-diagnostics.md).
+* [Schemat konfiguracji diagnostyki](/azure/azure-monitor/platform/diagnostics-extension-schema-1dot2) objaśnia różne opcje konfiguracji XML dla rozszerzenia diagnostyki.
+* Aby dowiedzieć się, jak włączyć rozszerzenie diagnostyki dla Virtual Machines, zobacz [Tworzenie maszyny wirtualnej z systemem Windows z funkcją monitorowania i diagnostyki przy użyciu szablonu Azure Resource Manager](../virtual-machines/windows/extensions-diagnostics-template.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90687d0229d3ad74c287bb4aff4885dc26932e40
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
-ms.translationtype: HT
+ms.openlocfilehash: be9e6374d92fbb7bb1c4b5a2a9e154119c5baf87
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227273"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377493"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>Wdrażanie bezpiecznej, zarządzanej na platformie Azure stacji roboczej
 
@@ -28,19 +28,19 @@ Musisz wybrać profil, aby można było wdrożyć rozwiązanie. Można użyć wi
 > [!NOTE]
 > Zastosuj dowolne profile zgodnie z wymaganiami. Możesz przenieść do innego profilu, przypisując go w usłudze Intune.
 
-| Profil | Małe | Rozszerzone | Wysoka | Wyspecjalizowany | Secure | Izolowane |
+| Profil | Małe | Rozszerzone | Wysoka | Wyspecjalizowany | Zabezpieczone | Izolowana |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Użytkownik w usłudze Azure AD | Tak | Yes | Yes | Yes | Yes | Tak |
-| Usługa Intune — zarządzana | Tak | Yes | Yes | Yes | Yes | Tak |
+| Usługa Intune — zarządzana | Tak | Yes | Yes | Yes | Yes | Yes |
 | Urządzenie — zarejestrowano usługę Azure AD | Tak |  |  |  |  | |   |
-| Urządzenie — przyłączone do usługi Azure AD |   | Yes | Yes | Yes | Yes | Yes |
-| Zastosowano linię bazową zabezpieczeń usługi Intune |   | Tak <br> Usprawnion | Yes <br> (HighSecurity) | Tak <br> (NCSC) | Yes <br> Secure |  Nie dotyczy |
+| Urządzenie — przyłączone do usługi Azure AD |   | Tak | Yes | Yes | Yes | Tak |
+| Zastosowano linię bazową zabezpieczeń usługi Intune |   | Tak <br> Usprawnion | Tak <br> (HighSecurity) | Tak <br> (NCSC) | Yes <br> Secure |  Nie dotyczy |
 | Sprzęt spełnia bezpieczne standardy systemu Windows 10 |   | Yes | Yes | Yes | Yes | Tak |
 | Usługa Microsoft Defender ATP została włączona |   | Tak  | Yes | Yes | Yes | Tak |
-| Usuwanie praw administratora |   |   | Tak  | Yes | Yes | Tak |
-| Wdrażanie przy użyciu programu Microsoft autopilotaż |   |   | Yes  | Yes | Yes | Tak |
-| Aplikacje zainstalowane tylko przez usługę Intune |   |   |   | Tak | Yes |Tak |
-| Adresy URL ograniczone do zatwierdzonej listy |   |   |   | Tak | Yes |Yes |
+| Usuwanie praw administratora |   |   | Tak  | Yes | Yes | Yes |
+| Wdrażanie przy użyciu programu Microsoft autopilotaż |   |   | Yes  | Yes | Yes | Yes |
+| Aplikacje zainstalowane tylko przez usługę Intune |   |   |   | Yes | Yes |Tak |
+| Adresy URL ograniczone do zatwierdzonej listy |   |   |   | Yes | Yes |Yes |
 | Zablokowany przez Internet (przychodzący/wychodzący) |   |   |   |  |  |Tak |
 
 ## <a name="license-requirements"></a>Wymagania licencyjne
@@ -134,7 +134,7 @@ Aby skonfigurować dostęp warunkowy z Azure Portal:
        * Dołącz — **Użytkownicy i grupy** — wybierz grupę **Użytkownicy grupy bezpiecznych stacji roboczych** utworzoną wcześniej.
        * Wykluczanie — **Użytkownicy i grupy** — wybierz konta dostępu awaryjnego w organizacji.
      * **Aplikacje w chmurze** — Dołącz **wszystkie aplikacje w chmurze**.
-    * Kontrola dostępu
+    * Kontrole dostępu
       * **Udziel** — wybierz przycisk radiowy **Udziel dostępu** .
         * **Wymagaj uwierzytelniania**wieloskładnikowego.
         * **Wymagaj, aby urządzenie było oznaczone jako zgodne**.
@@ -236,7 +236,7 @@ Aby pomyślnie ukończyć wzmacnianie rozwiązania, Pobierz i wykonaj odpowiedni
 | Wysoki poziom zabezpieczeń  | https://aka.ms/securedworkstationgit | HighSecurityWorkstation-Windows10-(1809).ps1 |
 | Wyspecjalizowany | https://github.com/pelarsen/IntunePowerShellAutomation | DeviceConfiguration_NCSC-Windows10 (1803) SecurityBaseline. ps1 |
 | Specjalna zgodność * | https://aka.ms/securedworkstationgit | DeviceCompliance_NCSC-Windows10 (1803). ps1 |
-| Secure | https://aka.ms/securedworkstationgit | Secure-Workstation-Windows10-(1809)-SecurityBaseline.ps1 |
+| Zabezpieczone | https://aka.ms/securedworkstationgit | Secure-Workstation-Windows10-(1809)-SecurityBaseline.ps1 |
 
 \*Wyspecjalizowana zgodność to skrypt, który wymusza wyspecjalizowaną konfigurację podaną w NCSC Windows10 SecurityBaseline.
 
@@ -245,13 +245,13 @@ Po pomyślnym wykonaniu skryptu można wprowadzać aktualizacje profilów i zasa
 * Tutaj znajdują się informacje o profilach konfiguracji urządzeń w usłudze Intune tworzonych przez skrypty: **Azure Portal** **Microsoft Intune**profile konfiguracjiurządzeń. >  >  > 
 * Tutaj można znaleźć zasady zgodności urządzeń w usłudze Intune utworzone przez skrypty: **Azure Portal** **Microsoft Intune**zasady zgodnościurządzeń. >  >  > 
 
-Aby zapoznać się ze zmianami wprowadzonymi przez skrypty, można wyeksportować profile. W ten sposób można określić dodatkowe zabezpieczenia, które mogą być wymagane, jak opisano w dokumentacji SECCON.
+Aby zapoznać się ze zmianami wprowadzonymi przez skrypty, można wyeksportować profile. W ten sposób można określić dodatkowe zabezpieczenia, które mogą być wymagane, jak opisano w [dokumentacji SECCON](https://docs.microsoft.com/windows/security/threat-protection/windows-security-configuration-framework/windows-security-configuration-framework).
 
 Uruchom skrypt `DeviceConfiguration_Export.ps1` eksportu danych usługi Intune z [repozytorium DeviceConfiguration GiuHub](https://github.com/microsoftgraph/powershell-intune-samples/tree/master/DeviceConfiguration) , aby wyeksportować wszystkie bieżące profile usługi Intune.
 
 ## <a name="additional-configurations-and-hardening-to-consider"></a>Dodatkowe konfiguracje i Ograniczanie funkcjonalności do rozważenia
 
-Postępując zgodnie ze wskazówkami w tym miejscu, wdrożono bezpieczną stację roboczą. Należy jednak również rozważyć dodatkowe kontrole. Na przykład:
+Postępując zgodnie ze wskazówkami w tym miejscu, wdrożono bezpieczną stację roboczą. Należy jednak również rozważyć dodatkowe kontrole. Przykład:
 
 * Ograniczanie dostępu do przeglądarek alternatywnych
 * Zezwalaj na wychodzące HTTP

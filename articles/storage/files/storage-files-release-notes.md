@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 7/12/2019
+ms.date: 7/24/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 5a2ec72f835b720e0c760069b58ef8f092aedcb2
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: de0482f49e919d0cbb500e9ee8b27ccf8287fb99
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875829"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489563"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Informacje o wersji dla agenta Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Instalacje systemów Windows Server są przekształcane w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS). Możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
@@ -25,6 +25,7 @@ Następujące wersje są obsługiwane przez agenta usługi Azure File Sync:
 
 | Rozwoju | Numer wersji agenta | Data wydania | Stan |
 |----|----------------------|--------------|------------------|
+| 2019 lipca zbiorczych aktualizacji — [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 24 lipca 2019 | Obsługiwane — obsługa [lotu](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#automatic-agent-lifecycle-management) |
 | 2019 lipca zbiorczych aktualizacji — [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 12 lipca 2019 | Obsługiwane — obsługa [lotu](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#automatic-agent-lifecycle-management) |
 | Wersji 7 wydanie — [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 19 czerwca 2019 | Obsługiwane |
 | Czerwiec 2019 — pakiet zbiorczy aktualizacji — [KB4489739](https://support.microsoft.com/help/4489739)| 6.3.0.0 | 27 czerwca 2019 | Obsługiwane |
@@ -45,6 +46,14 @@ Następujące wersje są obsługiwane przez agenta usługi Azure File Sync:
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Zasady aktualizacji agenta usługi Azure File Sync
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-7200"></a>7\.2.0.0 wersja agenta
+Poniższe informacje o wersji dotyczą wersji 7.2.0.0 agenta Azure File Sync wydanej 24 lipca 2019. Te informacje są uzupełnieniem informacji o wersji wymienionych dla wersji 7.0.0.0.
+
+Lista problemów rozwiązanych w tej wersji:  
+- Agent synchronizacji magazynu (FileSyncSvc) ulega awarii, jeśli konfiguracja serwera proxy ma wartość null.
+- Punkt końcowy serwera zacznie BCDR (Error 0x80c80257-ECS_E_BCDR_IN_PROGRESS), jeśli wiele punktów końcowych na serwerze ma taką samą nazwę.
+- Ulepszenia niezawodności warstw w chmurze.
 
 ## <a name="agent-version-7100"></a>7\.1.0.0 wersja agenta
 Poniższe informacje o wersji dotyczą wersji 7.1.0.0 agenta Azure File Sync wydanej 12 lipca 2019. Te informacje są uzupełnieniem informacji o wersji wymienionych dla wersji 7.0.0.0.

@@ -1,5 +1,5 @@
 ---
-title: Tworzenie aplikacji jednostronicowej AngularJS służącej do logowania w usłudze Azure Active Directory i wylogowywania się z niej | Microsoft Docs
+title: Kompilowanie AngularJS aplikacji jednostronicowej w celu logowania się i wylogowywania za pomocą usługi Azure AD | Microsoft Docs
 description: Dowiedz się, jak utworzyć aplikację jednostronicową AngularJS, która integruje się z usługą Azure AD w celu logowania oraz wywołuje interfejsy API chronione przez usługę Azure AD przy użyciu protokołu OAuth.
 services: active-directory
 documentationcenter: ''
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a1fdbcd04504181a20f5245b6f2378be5b9d405
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 20c62d379006382d4208e4b111202581bc75454f
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66001215"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68380755"
 ---
 # <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Szybki start: Tworzenie aplikacji jednostronicowej AngularJS służącej do logowania w usłudze Azure Active Directory i wylogowywania się z niej
 
@@ -47,7 +47,7 @@ Aby utworzyć gotową, działającą aplikację, musisz:
 3. Użyć biblioteki ADAL do zabezpieczenia stron w aplikacji jednostronicowej.
 
 > [!NOTE]
-> Jeśli musisz włączyć logowania dla osobistych kont oprócz oraz do kont służbowych, możesz użyć  *[punktu końcowego platformy tożsamości firmy Microsoft](azure-ad-endpoint-comparison.md)*. Aby uzyskać więcej informacji, zobacz [w tym samouczku JavaScript SPA](tutorial-v2-javascript-spa.md) także [w tym artykule](active-directory-v2-limitations.md) wyjaśniających *punktu końcowego platformy tożsamości firmy Microsoft*. 
+> Jeśli musisz włączyć logowania dla kont osobistych oprócz kont służbowych, możesz użyć *[punktu końcowego platformy tożsamości firmy Microsoft](azure-ad-endpoint-comparison.md)* . Aby uzyskać więcej informacji, zobacz [ten samouczek JavaScript Spa](tutorial-v2-javascript-spa.md) i [ten artykuł](active-directory-v2-limitations.md) wyjaśniający *punkt końcowy platformy tożsamości firmy Microsoft*. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -63,15 +63,15 @@ Aby umożliwić aplikacji uwierzytelnianie użytkowników i uzyskiwanie tokenów
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Jeśli zalogowano się w wielu katalogach, należy upewnić się, że wyświetlany jest prawidłowy katalog. Aby to sprawdzić, kliknij swoje konto na pasku u góry strony. Na liście **Katalog** wybierz dzierżawę usługi Azure AD, w której chcesz zarejestrować aplikację.
 1. Kliknij pozycję **Wszystkie usługi** w okienku po lewej stronie, a następnie wybierz pozycję **Azure Active Directory**.
-1. Kliknij przycisk **rejestracje aplikacji**, a następnie wybierz pozycję **nowej rejestracji**.
+1. Kliknij przycisk **rejestracje aplikacji**, a następnie wybierz pozycję **Nowa rejestracja**.
 1. Po wyświetleniu strony **Rejestrowanie aplikacji** wprowadź nazwę aplikacji.
 1. W obszarze **Obsługiwane typy kont** wybierz pozycję **Konta w dowolnym katalogu organizacyjnym i konta osobiste Microsoft**.
-1. Wybierz **Web** platformy w obszarze **identyfikator URI przekierowania** sekcji, a następnie ustaw wartość `https://localhost:44326/` (lokalizacja, do którego usługa Azure AD będzie zwracać tokeny).
-1. Po zakończeniu wybierz pozycję **Rejestruj**. Na stronie **Przegląd** aplikacji zanotuj wartość **Identyfikator aplikacji (klienta)**.
-1. Biblioteka adal.js wykorzystuje niejawny przepływ protokołu OAuth, aby nawiązać połączenie z usługą Azure AD. Należy włączyć niejawny przepływ dla swojej aplikacji. W okienku nawigacji po lewej stronie w zarejestrowanej aplikacji wybierz pozycję **Uwierzytelnianie**.
+1. Wybierz platformę **sieci Web** w sekcji **Identyfikator URI przekierowania** i ustaw wartość `https://localhost:44326/` na (lokalizacja, w której usługa Azure AD będzie zwracać tokeny).
+1. Po zakończeniu wybierz pozycję **Rejestruj**. Na stronie **Przegląd** aplikacji zanotuj wartość **Identyfikator aplikacji (klienta)** .
+1. Biblioteka adal.js wykorzystuje niejawny przepływ protokołu OAuth, aby nawiązać połączenie z usługą Azure AD. Należy włączyć przepływ niejawny dla aplikacji. W okienku nawigacji po lewej stronie w zarejestrowanej aplikacji wybierz pozycję **Uwierzytelnianie**.
 1. Na stronie **Ustawienia zaawansowane** w obszarze **Niejawne udzielenie** zaznacz obydwa pola wyboru: **Tokeny identyfikatorów** i **Tokeny dostępu**. Tokeny identyfikatorów i tokeny dostępu są wymagane, ponieważ ta aplikacja musi zalogować użytkowników i wywołać interfejs API.
 1. Wybierz pozycję **Zapisz**.
-1. Udziel uprawnień w całej dzierżawie dla swojej aplikacji. Przejdź do **uprawnienia do interfejsu API**i wybierz **udzielić zgody administratora** przycisku w obszarze **wyrazić zgody**.
+1. Udziel uprawnień w całej dzierżawie dla swojej aplikacji. Przejdź do pozycji **uprawnienia interfejsu API**i wybierz przycisk **Udziel zgody administratora** w obszarze **Udziel zgody**.
 1. Wybierz pozycję **Tak**, aby potwierdzić.
 
 ## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>Krok 2: Instalowanie biblioteki ADAL i konfigurowanie aplikacji jednostronicowej
@@ -177,7 +177,7 @@ Biblioteka adal.js ułatwia dodanie typowych funkcji tożsamości do aplikacji. 
 
 Gotowy przykład (bez wartości konfiguracji) jest dostępny w repozytorium [GitHub](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Możesz teraz przejść do dodatkowych scenariuszy.
 

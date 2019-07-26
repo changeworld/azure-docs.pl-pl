@@ -1,6 +1,6 @@
 ---
-title: Implementowanie rozproszonej geograficznie rozwiązanie bazy danych Azure SQL | Dokumentacja firmy Microsoft
-description: Dowiedz się, skonfiguruj bazę danych Azure SQL i aplikacji dla trybu failover do zreplikowanej bazy danych oraz testowanie trybu failover.
+title: Implementowanie rozproszone geograficznie rozwiązania usługi Azure SQL Database | Microsoft Docs
+description: Dowiedz się, jak skonfigurować usługę Azure SQL Database i aplikację do pracy w trybie failover w zreplikowanej bazie danych oraz testować tryb failover.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,21 +12,21 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 6022c016b83ffe1362db4d826a5ee4397afd4128
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a5be3efa5544e47f40ab9f0a31f6658b134977e2
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60338993"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444524"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database"></a>Samouczek: Implementowanie rozproszonej geograficznie bazy danych
 
-Konfigurowanie usługi Azure SQL database i aplikacji dla trybu failover do zdalnego regionu i przetestuj plan trybu failover. Omawiane kwestie:
+Skonfiguruj bazę danych i aplikację usługi Azure SQL dla trybu failover w regionie zdalnym i przetestuj plan trybu failover. Omawiane kwestie:
 
 > [!div class="checklist"]
-> - Utwórz [grupy trybu failover](sql-database-auto-failover-group.md)
-> - Uruchamianie aplikacji języka Java do wykonywania zapytań usługi Azure SQL database
-> - Testowanie pracy w trybie failover
+> - Tworzenie [grupy trybu failover](sql-database-auto-failover-group.md)
+> - Uruchamianie aplikacji Java do wykonywania zapytań w bazie danych Azure SQL
+> - Testowe przełączenie w tryb failover
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
@@ -34,34 +34,34 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Moduł programu PowerShell usługi Azure Resource Manager jest nadal obsługiwane przez usługę Azure SQL Database, ale wszystkie przyszłego rozwoju jest Az.Sql modułu. Dla tych poleceń cmdlet, zobacz [elementu AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty dla poleceń w Az module, a w modułach AzureRm są zasadniczo identyczne.
+> Moduł Azure Resource Manager programu PowerShell jest nadal obsługiwany przez Azure SQL Database, ale wszystkie przyszłe Programowanie dla modułu AZ. SQL. W przypadku tych poleceń cmdlet zobacz [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty poleceń polecenia AZ module i w modułach AzureRm są zasadniczo identyczne.
 
-Do ukończenia tego samouczka, upewnij się, że zainstalowano następujące elementy:
+Aby ukończyć ten samouczek, upewnij się, że zainstalowano następujące elementy:
 
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
-- Baza danych Azure SQL Database. Aby utworzyć jedno użycie
+- Pojedyncza baza danych w Azure SQL Database. Aby utworzyć jedno użycie,
   - [Portal](sql-database-single-database-get-started.md)
   - [Interfejs wiersza polecenia](sql-database-cli-samples.md)
   - [Program PowerShell](sql-database-powershell-samples.md)
 
   > [!NOTE]
-  > W tym samouczku użyto *AdventureWorksLT* przykładowej bazy danych.
+  > Samouczek używa przykładowej bazy danych *AdventureWorksLT* .
 
-- Java i Maven, zobacz [kompilacji aplikacji za pomocą programu SQL Server](https://www.microsoft.com/sql-server/developer-get-started/), wyróżnij **Java** i wybierz środowisko, a następnie postępuj zgodnie z instrukcjami.
+- Java i Maven, zobacz [Tworzenie aplikacji przy użyciu SQL Server](https://www.microsoft.com/sql-server/developer-get-started/), wyróżnianie **języka Java** i wybieranie środowiska, a następnie wykonaj kroki opisane poniżej.
 
 > [!IMPORTANT]
-> Pamiętaj skonfigurować reguły zapory do Użyj publicznego adresu IP komputera, na którym wykonujesz kroki opisane w tym samouczku. Bazy danych na poziomie zapory, które zasady są automatycznie replikowane do serwera pomocniczego.
+> Należy pamiętać o skonfigurowaniu reguł zapory do korzystania z publicznego adresu IP komputera, na którym wykonywane są kroki opisane w tym samouczku. Reguły zapory na poziomie bazy danych zostaną automatycznie zreplikowane na serwerze pomocniczym.
 >
-> Aby uzyskać informacje, zobacz [Tworzenie reguły zapory na poziomie bazy danych](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) lub, aby określić adres IP używany dla reguły zapory na poziomie serwera dla komputera adresem [utworzyć zaporę na poziomie serwera](sql-database-server-level-firewall-rule.md).  
+> Aby uzyskać więcej informacji, zobacz [Tworzenie reguły zapory na poziomie bazy danych](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) lub Określanie adresu IP używanego dla reguły zapory na poziomie serwera dla komputera, zobacz [Tworzenie zapory na poziomie serwera](sql-database-server-level-firewall-rule.md).  
 
-## <a name="create-a-failover-group"></a>Utwórz grupę trybu failover
+## <a name="create-a-failover-group"></a>Tworzenie grupy trybu failover
 
-Przy użyciu programu Azure PowerShell utworzyć [grupy trybu failover](sql-database-auto-failover-group.md) między istniejącym serwerze Azure SQL i nowym serwerze Azure SQL w innym regionie. Następnie dodaj przykładową bazę danych do grupy trybu failover.
+Korzystając z Azure PowerShell, Utwórz [grupy trybu failover](sql-database-auto-failover-group.md) między istniejącym serwerem Azure SQL i nowym serwerem Azure SQL w innym regionie. Następnie Dodaj przykładową bazę danych do grupy trybu failover.
 
 > [!IMPORTANT]
 > [!INCLUDE [sample-powershell-install](../../includes/sample-powershell-install-no-ssh.md)]
 
-Aby utworzyć grupy trybu failover, uruchom następujący skrypt:
+Aby utworzyć grupę trybu failover, uruchom następujący skrypt:
 
    ```powershell
     # Set variables for your server and database
@@ -102,29 +102,29 @@ Aby utworzyć grupy trybu failover, uruchom następujący skrypt:
        -FailoverGroupName $myfailovergroupname
    ```
 
-Ustawienia replikacji geograficznej można także zmienić w witrynie Azure portal po wybraniu bazy danych, a następnie **ustawienia** > **Geografickou Replikaci**.
+Ustawienia replikacji geograficznej można także zmienić w Azure Portal, wybierając bazę danych, a następnie **Ustawienia** > **replikacja geograficzna**.
 
 ![Ustawienia replikacji geograficznej](./media/sql-database-implement-geo-distributed-database/geo-replication.png)
 
 ## <a name="run-the-sample-project"></a>Uruchamianie przykładowego projektu
 
-1. W konsoli Utwórz projekt narzędzia Maven za pomocą następującego polecenia:
+1. W konsoli programu Utwórz projekt Maven za pomocą następującego polecenia:
 
    ```bash
    mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=SqlDbSample" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0"
    ```
 
-1. Typ **Y** i naciśnij klawisz **Enter**.
+1. Wpisz **Y** i naciśnij klawisz **Enter**.
 
-1. Zmień katalogi do nowego projektu.
+1. Zmień katalogi na nowy projekt.
 
    ```bash
    cd SqlDbSample
    ```
 
-1. Za pomocą ulubionego edytora, otwórz *pom.xml* pliku w folderze projektu.
+1. Za pomocą ulubionego edytora Otwórz plik *pliku pom. XML* w folderze projektu.
 
-1. Dodaj sterownik JDBC firmy Microsoft dla programu SQL Server zależności przez dodanie poniższego `dependency` sekcji. Zależności należy wkleić w większej `dependencies` sekcji.
+1. Dodaj sterownik JDBC firmy Microsoft dla zależności SQL Server, dodając następującą `dependency` sekcję. Zależność należy wkleić w większej `dependencies` sekcji.
 
    ```xml
    <dependency>
@@ -134,7 +134,7 @@ Ustawienia replikacji geograficznej można także zmienić w witrynie Azure port
    </dependency>
    ```
 
-1. Określ wersję języka Java, dodając `properties` sekcji po `dependencies` sekcji:
+1. Określ wersję języka Java, dodając `properties` ją do `dependencies` sekcji:
 
    ```xml
    <properties>
@@ -143,7 +143,7 @@ Ustawienia replikacji geograficznej można także zmienić w witrynie Azure port
    </properties>
    ```
 
-1. Obsługi plików manifestu, dodając `build` sekcji po `properties` sekcji:
+1. Obsługa plików manifestu przez dodanie `build` sekcji `properties` po sekcji:
 
    ```xml
    <build>
@@ -164,9 +164,9 @@ Ustawienia replikacji geograficznej można także zmienić w witrynie Azure port
    </build>
    ```
 
-1. Zapisz i Zamknij *pom.xml* pliku.
+1. Zapisz i zamknij plik *pliku pom. XML* .
 
-1. Otwórz *App.java* plik znajdujący się w.. \SqlDbSample\src\main\java\com\sqldbsamples i zastąp jego zawartość następującym kodem:
+1. Otwórz plik *App. Java* znajdujący się w.. \SqlDbSample\src\main\java\com\sqldbsamples i Zastąp zawartość następującym kodem:
 
    ```java
    package com.sqldbsamples;
@@ -272,15 +272,15 @@ Ustawienia replikacji geograficznej można także zmienić w witrynie Azure port
    }
    ```
 
-1. Zapisz i Zamknij *App.java* pliku.
+1. Zapisz i zamknij plik *App. Java* .
 
-1. W konsoli poleceń uruchom następujące polecenie:
+1. W konsoli poleceń Uruchom następujące polecenie:
 
    ```bash
    mvn package
    ```
 
-1. Uruchom aplikację, który będzie uruchamiany na godzinę, aż do zatrzymania się ręcznie, zezwolenie na czas, aby uruchomić test trybu failover.
+1. Uruchom aplikację, która będzie działać od około 1 godziny do momentu zatrzymania ręcznie, co pozwoli na przeprowadzenie testu pracy w trybie failover.
 
    ```bash
    mvn -q -e exec:java "-Dexec.mainClass=com.sqldbsamples.App"
@@ -297,9 +297,9 @@ Ustawienia replikacji geograficznej można także zmienić w witrynie Azure port
    ...
    ```
 
-## <a name="test-failover"></a>Testowanie pracy w trybie failover
+## <a name="test-failover"></a>Testowe przełączenie w tryb failover
 
-Uruchom następujące skrypty w celu symulowania przejścia w tryb failover i obserwuj wyniki aplikacji. Zwróć uwagę, jak niektóre wstawia i wybiera zakończy się niepowodzeniem podczas migracji bazy danych.
+Uruchom następujące skrypty, aby zasymulować pracę w trybie failover i obserwować wyniki aplikacji. Zwróć uwagę, jak niektóre operacje INSERT i Select będą kończyć się niepowodzeniem podczas migracji bazy danych.
 
 Możesz również sprawdzić rolę serwera odzyskiwania po awarii podczas testu przy użyciu następującego polecenia:
 
@@ -312,7 +312,7 @@ Możesz również sprawdzić rolę serwera odzyskiwania po awarii podczas testu 
 
 Aby przetestować tryb failover:
 
-1. Rozpocznij ręczne przełączenie grupy trybu failover:
+1. Rozpocznij ręczną pracę awaryjną grupy trybu failover:
 
    ```powershell
    Switch-AzSqlDatabaseFailoverGroup `
@@ -321,7 +321,7 @@ Aby przetestować tryb failover:
       -FailoverGroupName $myfailovergroupname
    ```
 
-1. Przywróć grupę trybu failover na serwer podstawowy:
+1. Przywróć grupę trybu failover z powrotem do serwera podstawowego:
 
    ```powershell
    Switch-AzSqlDatabaseFailoverGroup `
@@ -330,16 +330,16 @@ Aby przetestować tryb failover:
       -FailoverGroupName $myfailovergroupname
    ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku został skonfigurowany, Azure SQL database i aplikacji dla trybu failover do zdalnego regionu i przetestowany plan trybu failover. W tym samouczku omówiono:
+W tym samouczku skonfigurowano usługę Azure SQL Database i aplikację do pracy w trybie failover w regionie zdalnym i przetestowano plan trybu failover. W tym samouczku omówiono:
 
 > [!div class="checklist"]
 > - Tworzenie grupy trybu failover replikacji geograficznej
-> - Uruchamianie aplikacji języka Java do wykonywania zapytań usługi Azure SQL database
-> - Testowanie pracy w trybie failover
+> - Uruchamianie aplikacji Java do wykonywania zapytań w bazie danych Azure SQL
+> - Testowe przełączenie w tryb failover
 
-Przejdź do następnego samouczka, dotyczące migracji przy użyciu usługi DMS.
+Przejdź do następnego samouczka dotyczącego migracji za pomocą usługi DMS.
 
 > [!div class="nextstepaction"]
-> [Migrowanie programu SQL Server do wystąpienia zarządzanego bazy danych Azure SQL przy użyciu usługi DMS](../dms/tutorial-sql-server-to-managed-instance.md)
+> [Migrowanie SQL Server do wystąpienia zarządzanego usługi Azure SQL Database przy użyciu oprogramowania DMS](../dms/tutorial-sql-server-to-managed-instance.md)

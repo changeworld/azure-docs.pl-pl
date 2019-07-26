@@ -1,6 +1,6 @@
 ---
-title: Wspólne atrybuty zabezpieczeń usługi Azure Resource Manager
-description: Lista kontrolna typowych atrybutów zabezpieczeń do oceny usługi Azure Resource Manager
+title: Atrybuty zabezpieczeń dla Azure Resource Manager
+description: Lista kontrolna atrybutów zabezpieczeń do oceny Azure Resource Manager
 services: azure-resource-manager
 author: msmbaldwin
 manager: barbkess
@@ -8,61 +8,61 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a771d4c2ae22b7bf149c13c80fe5286ef52a4545
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e3bfb79c54ff57adfa947f2dd0100f6c05c7af9f
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002256"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444149"
 ---
-# <a name="security-attributes-for-azure-resource-manager"></a>Atrybuty zabezpieczeń usługi Azure Resource Manager
+# <a name="security-attributes-for-azure-resource-manager"></a>Atrybuty zabezpieczeń dla Azure Resource Manager
 
-W tym artykule opisano atrybuty zabezpieczeń wbudowane w usłudze Azure Resource Manager.
+W tym artykule opisano atrybuty zabezpieczeń wbudowane w Azure Resource Manager.
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
-## <a name="preventative"></a>Zapobiegawczych
+## <a name="preventative"></a>Zapobiegawczej
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
-| Szyfrowanie danych magazynowanych:<ul><li>Szyfrowanie po stronie serwera</li><li>Szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez klienta</li><li>Inne funkcje szyfrowania (na przykład po stronie klienta, są zawsze szyfrowane, itd.)</ul>| Tak |  |
-| Szyfrowanie podczas przesyłania:<ul><li>Express route szyfrowania</li><li>W przypadku szyfrowania sieci wirtualnej</li><li>Sieć wirtualna-sieć wirtualna szyfrowania</ul>| Tak | HTTPS/TLS. |
-| Obsługa klucza szyfrowania (CMK BYOK, itp.)| ND | Usługa Azure Resource Manager przechowuje żadnej zawartości klientów tylko danych formantu. |
-| Szyfrowanie na poziomie kolumny (Azure Data Services)| Yes | |
-| Wywołania interfejsu API szyfrowane| Tak | |
+| Szyfrowanie w spoczynku (takie jak szyfrowanie po stronie serwera, szyfrowanie po stronie serwera z kluczami zarządzanymi przez klienta i inne funkcje szyfrowania)| Tak |  |
+| Szyfrowanie podczas przesyłania (takie jak szyfrowanie ExpressRoute, szyfrowanie sieci wirtualnej i szyfrowanie sieci wirtualnej)| Tak | HTTPS/TLS. |
+| Obsługa kluczy szyfrowania (CMK, BYOK itp.)| ND | Azure Resource Manager nie przechowuje zawartości klienta, tylko kontrolują dane. |
+| Szyfrowanie na poziomie kolumny (Data Services platformy Azure)| Tak | |
+| Wywołania interfejsu API są szyfrowane| Tak | |
 
-## <a name="network-segmentation"></a>Segmentacji sieci
+## <a name="network-segmentation"></a>Segmentacja sieci
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
-| Obsługa punktu końcowego usługi| Nie | |
-| Obsługa iniekcji sieci wirtualnej| Yes | |
-| Izolacja sieci i zapory pomocy technicznej| Nie |  |
+| Obsługa punktów końcowych usługi| Nie | |
+| Obsługa iniekcji sieci wirtualnej| Tak | |
+| Izolacja sieci i obsługa zapór| Nie |  |
 | Obsługa tunelowania wymuszonego| Nie |  |
 
 ## <a name="detection"></a>Wykrywanie
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Obsługa (usługi Log analytics, usługi App insights itp.) do monitorowania platformy Azure| Nie | |
+| Pomoc techniczna dotycząca monitorowania platformy Azure (log Analytics, App Insights itp.)| Nie | |
 
 ## <a name="identity-and-access-management"></a>Zarządzanie tożsamościami i dostępem
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Authentication| Tak | [Usługa Azure Active Directory](/azure/active-directory) na podstawie.|
-| Autoryzacja| Yes | |
+| Authentication| Tak | Na podstawie [Azure Active Directory](/azure/active-directory) .|
+| Authorization| Yes | |
 
 
 ## <a name="audit-trail"></a>Dziennik inspekcji
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Rejestrowanie płaszczyzny zarządzania i kontroli i inspekcji| Yes | Dzienniki aktywności udostępniają wszystkie operacje zapisu w magazynie (PUT, POST, DELETE) wykonywanych względem zasobów; zobacz [wyświetlanie dzienników aktywności do inspekcji akcje na zasobach](resource-group-audit.md). |
-| Rejestrowanie płaszczyzny danych i inspekcji| ND | |
+| Rejestrowanie i inspekcja płaszczyzny kontroli i zarządzania| Yes | Dzienniki aktywności uwidaczniają wszystkie operacje zapisu (PUT, POST, DELETE) wykonywane na zasobach; Zobacz [Wyświetlanie dzienników aktywności w celu inspekcji akcji na zasobach](resource-group-audit.md). |
+| Rejestrowanie i inspekcja płaszczyzny danych| ND | |
 
 ## <a name="configuration-management"></a>Zarządzanie konfiguracją
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Obsługa zarządzania konfiguracji (przechowywanie wersji konfiguracji itp.)| Tak |  |
+| Obsługa zarządzania konfiguracją (wersja konfiguracji itp.)| Yes |  |

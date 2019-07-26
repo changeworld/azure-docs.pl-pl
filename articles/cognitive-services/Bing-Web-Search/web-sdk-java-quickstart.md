@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 07/25/2019
 ms.author: aahi
-ms.openlocfilehash: 7209df902f03a7055e142dcbbb7743b6832958b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0d2c1ca439dbbbd79ddabd2ea7a4eb5298d1071a
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60344132"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500967"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>Szybki start: Używanie zestawu SDK wyszukiwania w Internecie Bing dla języka Java
 
@@ -35,9 +35,9 @@ Oto kilka rzeczy, które są potrzebne przed rozpoczęciem tego przewodnika Szyb
 * [Narzędzie Apache Maven](https://maven.apache.org/download.cgi) lub inne narzędzie do automatyzacji kompilacji
 * Klucz subskrypcji
 
-## <a name="create-a-project-and-set-up-your-pom-file"></a>Tworzenie projektu i konfigurowanie pliku POM
+## <a name="create-a-project-and-set-up-your-pom-file"></a>Utwórz projekt i Skonfiguruj plik pliku pom
 
-Utwórz nowy projekt w języku Java przy użyciu narzędzia Maven lub innego narzędzia do automatyzacji kompilacji. Przy założeniu, że używasz narzędzia Maven, Dodaj następujące wiersze do Twojej [modelu obiektu projektu (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) pliku. Zamień wszystkie wystąpienia elementu `mainClass` swoją aplikacją.
+Utwórz nowy projekt w języku Java przy użyciu narzędzia Maven lub innego narzędzia do automatyzacji kompilacji. Przy założeniu, że używasz Maven, Dodaj następujące wiersze do pliku [Project Object Model (pliku POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) . Zamień wszystkie wystąpienia elementu `mainClass` swoją aplikacją.
 
 ```xml
 <build>
@@ -127,7 +127,7 @@ import com.microsoft.azure.cognitiveservices.search.websearch.models.VideoObject
 import com.microsoft.azure.cognitiveservices.search.websearch.models.WebPage;
 ```
 
-Jeśli projekt został utworzony za pomocą narzędzia Maven, ten pakiet powinien być już zadeklarowany. W przeciwnym razie zadeklaruj pakiet teraz. Na przykład:
+Jeśli projekt został utworzony za pomocą narzędzia Maven, ten pakiet powinien być już zadeklarowany. W przeciwnym razie zadeklaruj pakiet teraz. Przykład:
 
 ```java
 package com.bingwebsearch.app
@@ -300,4 +300,4 @@ Pamiętaj, aby po zakończeniu pracy z tym projektem usunąć klucz subskrypcji 
 
 ## <a name="see-also"></a>Zobacz także
 
-* [Dokumentacja zestawu Azure Java SDK](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/websearch)
+* [Dokumentacja zestawu Azure Java SDK](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingwebsearchapi?view=azure-java-stable)
