@@ -1,5 +1,5 @@
 ---
-title: 'Zapis: przeznaczonego do przygotowania danych zestawu SDK języka Python'
+title: 'Zapis: zestaw SDK języka Python przygotowywania danych'
 titleSuffix: Azure Machine Learning service
 description: Więcej informacji na temat zapisywania danych przy użyciu zestawu SDK usługi Azure Machine Learning danych przedprodukcyjnym. Możesz zapisać dane w dowolnym momencie, w ramach przepływu danych i pliki we wszystkich naszych obsługiwanych lokalizacji (lokalnego systemu plików usługi Azure Blob Storage i usługi Azure Data Lake Storage).
 services: machine-learning
@@ -12,20 +12,20 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6206ad1a7356221bf94134e5d293c27d778cc187
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6753be5613b10b64936cddaafbb9859aad837b02
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752871"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358629"
 ---
-# <a name="write-and-configure-data--with-the-azure-machine-learning-data-prep-sdk"></a>Pisanie i konfigurowanie danych przy użyciu usługi Azure Machine Learning Prep zestawu SDK usługi Data
+# <a name="write-and-configure-data--with-the-azure-machine-learning-data-prep-sdk"></a>Zapisywanie i Konfigurowanie danych za pomocą zestawu SDK przygotowywania danych Azure Machine Learning
 
-W tym artykule dowiesz się, zapisywanie danych przy użyciu różnych metod [Azure Machine Learning danych Prep zestawu Python SDK](https://aka.ms/data-prep-sdk) i sposobie konfigurowania tych danych do eksperymentowania z [Azure Machine Learning SDK dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).  Dane wyjściowe mogą być napisane w dowolnym miejscu przepływu danych. Zapisy są dodawane jako kroki, aby wynikowe przepływu danych, a te kroki uruchamiane za każdym razem, gdy przebiegi przepływu danych. Dane są zapisywane do wielu plików partycji umożliwia zapisywanie równoległej.
+W tym artykule przedstawiono różne metody zapisywania danych przy użyciu zestawu SDK języka [python Azure Machine Learning Data](https://aka.ms/data-prep-sdk) preprodukcyjny oraz sposób konfigurowania tych danych na potrzeby eksperymentowania z [zestawem SDK Azure Machine Learning dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).  Dane wyjściowe można napisać w dowolnym momencie w przepływu danych. Operacje zapisu są dodawane jako kroki do wyniku przepływu danych, a te kroki są uruchamiane przy każdym uruchomieniu przepływu danych. Dane są zapisywane do wielu plików partycji umożliwia zapisywanie równoległej.
 
 > [!Important]
-> Jeśli tworzysz nowe rozwiązanie, spróbuj [zestawów danych Learning maszyny Azure](how-to-explore-prepare-data.md) (wersja zapoznawcza), Przekształć swoje dane, dane migawki w celu przechowywania definicji określonej wersji zestawu danych. Zestawy danych to następna wersja przygotowywanie danych zestawu SDK, oferując rozszerzone funkcje do zarządzania zestawami danych w rozwiązań sztucznej Inteligencji.
-> Jeśli używasz `azureml-dataprep` pakietu do utworzenia przepływu danych przy użyciu przekształceń zamiast `azureml-datasets` pakietu, aby utworzyć zestaw danych, nie będzie można później użyć migawki lub numerów wersji zestawów danych.
+> Jeśli tworzysz nowe rozwiązanie, wypróbuj [Azure Machine Learning zestawy](how-to-explore-prepare-data.md) danych (wersja zapoznawcza), aby przekształcić dane, dane migawek i magazynować definicje zestawów danych. Zbiory danych to następna wersja zestawu SDK przygotowywania, oferująca rozszerzone funkcje zarządzania zestawami elementów w rozwiązaniach AI.
+> Jeśli używasz `azureml-dataprep` pakietu do tworzenia przepływu danych z transformacjami zamiast `azureml-datasets` używania pakietu do tworzenia zestawu danych, nie będzie można użyć migawek ani zestawów danych z wersjami w późniejszym czasie.
 
 Ponieważ nie ma ograniczeń ile napisać czynności są w potoku, możesz łatwo dodawać zapisu dodatkowe kroki, aby uzyskać wyniki pośrednie, rozwiązywania problemów lub innych potokach.
 
@@ -37,7 +37,7 @@ Obsługiwane są następujące formaty plików
 -   Pliki rozdzielane (CSV, TSV itp.)
 -   Pliki parquet
 
-Machine Learning danych Prep Python zestawu SDK usługi Azure można napisać danych:
+Za pomocą zestawu SDK języka Python Azure Machine Learning Data preprodukcyjny można zapisywać dane w:
 + lokalny system plików
 + Azure Blob Storage
 + Azure Data Lake Storage
@@ -52,7 +52,7 @@ Dla wygody generowany jest plik wartownik o nazwie sukces po zakończeniu zapisu
 
 ## <a name="example-write-code"></a>Przykładowy kod zapisu
 
-W tym przykładzie najpierw ładowania danych do przepływu danych przy użyciu `auto_read_file()`. Możesz ponownie użyć tych danych w różnych formatach.
+Na potrzeby tego przykładu Zacznij od załadowania danych do przepływu danych `auto_read_file()`przy użyciu polecenia. Możesz ponownie użyć tych danych w różnych formatach.
 
 ```python
 import azureml.dataprep as dprep
@@ -73,10 +73,10 @@ Przykładowe dane wyjściowe:
 
 ### <a name="delimited-file-example"></a>Przykład pliku rozdzielanego
 
-Poniższy kod używa [ `write_to_csv()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow#write-to-csv-directory-path--datadestination--separator--str--------na--str----na---error--str----error------azureml-dataprep-api-dataflow-dataflow) funkcję, aby zapisać dane w rozdzielonym pliku.
+Poniższy kod używa funkcji, [`write_to_csv()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow#write-to-csv-directory-path--datadestination--separator--str--------na--str----na---error--str----error------azureml-dataprep-api-dataflow-dataflow) aby zapisać dane do rozdzielanego pliku.
 
 ```python
-# Create a new data flow using `write_to_csv` 
+# Create a new data flow using `write_to_csv`
 write_t = t.write_to_csv(directory_path=dprep.LocalFileOutput('./test_out/'))
 
 # Run the data flow to begin the write operation.
@@ -101,7 +101,7 @@ W powyższym danych wyjściowych kilka błędów są wyświetlane w kolumnach li
 Dodaj parametry jako część Twojego zapisu wywołania i określenia ciąg wykorzystywany do reprezentowania wartości null.
 
 ```python
-write_t = t.write_to_csv(directory_path=dprep.LocalFileOutput('./test_out/'), 
+write_t = t.write_to_csv(directory_path=dprep.LocalFileOutput('./test_out/'),
                          error='BadData',
                          na='NA')
 write_t.run_local()
@@ -121,11 +121,11 @@ Powyższy kod generuje te dane wyjściowe:
 
 ### <a name="parquet-file-example"></a>Przykład pliku parquet
 
-Podobnie jak `write_to_csv()`, [ `write_to_parquet()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow#write-to-parquet-file-path--typing-union--datadestination--nonetype----none--directory-path--typing-union--datadestination--nonetype----none--single-file--bool---false--error--str----error---row-groups--int---0-----azureml-dataprep-api-dataflow-dataflow) :: gettotalsize() zwróciło nowego przepływu danych przy użyciu zapisu krok Parquet, który jest wykonywany, gdy przebiegi przepływu danych.
+Podobnie jak w przypadku [`write_to_parquet()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow#write-to-parquet-file-path--typing-union--datadestination--nonetype----none--directory-path--typing-union--datadestination--nonetype----none--single-file--bool---false--error--str----error---row-groups--int---0-----azureml-dataprep-api-dataflow-dataflow) ,funkcjazwracanowyprzepływdanychzkrokiemParquetzapisu,któryjestwykonywany,gdyprzepływdanychzostanieuruchomiony.`write_to_csv()`
 
 ```python
 write_parquet_t = t.write_to_parquet(directory_path=dprep.LocalFileOutput('./test_parquet_out/'),
-error='MiscreantData')
+                                     error='MiscreantData')
 ```
 
 Uruchamianie przepływu danych można uruchomić operacji zapisu.
@@ -147,11 +147,11 @@ Powyższy kod generuje te dane wyjściowe:
 |3| 10013.0 | 99999.0 | MiscreantData | NO| NO| |   MiscreantData|    MiscreantData|    MiscreantData|
 |4| 10014.0 | 99999.0 | MiscreantData | NO| NO| ENSO|   59783.0|    5350.0| 500.0|
 
-## <a name="configure-data-for-automated-machine-learning-training"></a>Konfigurowanie danych dla zautomatyzowanych maszyny uczenie
+## <a name="configure-data-for-automated-machine-learning-training"></a>Konfigurowanie danych do automatycznego uczenia usługi Machine Learning
 
-Przekaż plik nowo zapisanych danych do [ `AutoMLConfig` ](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#automlconfig) obiektów w ramach przygotowania do uczenie automatycznych maszyny. 
+Przekaż nowo zapisany plik danych do [`AutoMLConfig`](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#automlconfig) obiektu przygotowywanego do automatycznego uczenia maszynowego. 
 
-Poniższy przykład kodu ilustruje sposób przekonwertować Twojego przepływu danych Pandas dataframe, a następnie podzielić ją na szkolenie i testowanie zestawy danych dla uczenie automatycznych maszyny.
+Poniższy przykład kodu ilustruje sposób konwertowania przepływu danych na ramkę danych Pandas, a następnie podzielenie go na zestawienie szkoleniowe i testowe dla zautomatyzowanych szkoleń dotyczących uczenia maszynowego.
 
 ```Python
 from azureml.train.automl import AutoMLConfig
@@ -180,7 +180,7 @@ automated_ml_config = AutoMLConfig(task = 'regression',
 
 ```
 
-Jeśli nie potrzebujesz żadnych kroków przygotowywania danych pośrednich, takich jak w poprzednim przykładzie, można przekazać swoje przepływu danych bezpośrednio do `AutoMLConfig`.
+Jeśli nie są wymagane żadne pośrednie kroki przygotowywania danych, takie jak w poprzednim przykładzie, można przekazać przepływu danych bezpośrednio do `AutoMLConfig`programu.
 
 ```Python
 automated_ml_config = AutoMLConfig(task = 'regression', 
@@ -192,6 +192,6 @@ automated_ml_config = AutoMLConfig(task = 'regression',
                    )
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-* Zobacz zestaw SDK [Przegląd](https://aka.ms/data-prep-sdk) wzorców projektowych i przykłady użycia 
-* Zobacz uczenia maszynowego automatycznych [samouczek](tutorial-auto-train-models.md) na przykład model regresji
+## <a name="next-steps"></a>Następne kroki
+* Zobacz [Omówienie](https://aka.ms/data-prep-sdk) zestawu SDK dotyczące wzorców projektowych i przykładów użycia 
+* Przykład [samouczka](tutorial-auto-train-models.md) automatycznej uczenia maszynowego dotyczącego modelu regresji

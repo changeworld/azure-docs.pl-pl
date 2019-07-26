@@ -1,138 +1,120 @@
 ---
-title: 'Usługa Azure Backup: Monitorowanie usługi Azure Backup za pomocą usługi Azure Monitor'
-description: Monitorowanie obciążeń usługi Azure Backup i tworzyć niestandardowe alerty przy użyciu usługi Azure Monitor.
-services: backup
+title: 'Azure Backup: Monitoruj Azure Backup z Azure Monitor'
+description: Monitoruj Azure Backup obciążenia i twórz niestandardowe alerty przy użyciu Azure Monitor.
 author: pvrk
 manager: shivamg
-keywords: Usługa log Analytics; Usługa Azure Backup; Alerty; Ustawienia diagnostyczne; Grupy akcji
+keywords: Log Analytics; Azure Backup; Alerty Ustawienia diagnostyczne; Grupy akcji
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: e2d4a235737789f2f5852c00218427613db3d558
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 15b701a9ccc469636875736b6e316c150615aa16
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786311"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465933"
 ---
-# <a name="monitor-at-scale-by-using-azure-monitor"></a>Monitorowanie na dużą skalę za pomocą usługi Azure Monitor
+# <a name="monitor-at-scale-by-using-azure-monitor"></a>Monitorowanie na dużą skalę przy użyciu Azure Monitor
 
-Usługa Azure Backup udostępnia [wbudowane funkcje monitorowania i alertów](backup-azure-monitoring-built-in-monitor.md) w magazynie usługi Recovery Services. Te możliwości są dostępne bez jakiejkolwiek infrastruktury dodatkowego zarządzania. Ale to wbudowana usługa jest ograniczona w następujących scenariuszach:
+Azure Backup udostępnia [wbudowane funkcje monitorowania i alertów](backup-azure-monitoring-built-in-monitor.md) w magazynie Recovery Services. Te możliwości są dostępne bez dodatkowej infrastruktury zarządzania. Jednak ta wbudowana usługa jest ograniczona w następujących scenariuszach:
 
-- Jeśli dane z wielu magazynów usługi Recovery Services można monitorować w subskrypcjach
-- Jeśli kanał powiadomień preferowane jest *nie* wiadomości e-mail
-- Użytkownicy, którzy chcą alerty dla scenariuszy
-- Jeśli chcesz wyświetlić informacje o składnika w środowisku lokalnym, takich jak System Center Data Protection Manager na platformie Azure, która nie była widoczna w portalu [ **zadania tworzenia kopii zapasowej** ](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-recovery-services-vault) lub [  **Alerty kopii zapasowej**](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault)
+- W przypadku monitorowania danych z wielu Recovery Services magazynów między subskrypcjami
+- Jeśli preferowany kanał powiadomień *nie* jest adresem e-mail
+- Jeśli użytkownicy chcą mieć alerty w celu uzyskania większej liczby scenariuszy
+- Jeśli chcesz wyświetlić informacje z składnika lokalnego, takiego jak System Center Data Protection Manager na platformie Azure, które nie są wyświetlane w obszarze [**zadania tworzenia kopii zapasowej**](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-recovery-services-vault) lub [**alerty kopii zapasowych**](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault)
 
-## <a name="using-log-analytics-workspace"></a>Korzystanie z obszaru roboczego usługi Log Analytics
+## <a name="using-log-analytics-workspace"></a>Używanie Log Analytics obszaru roboczego
 
 > [!NOTE]
-> Dane z kopii zapasowych maszyn wirtualnych platformy Azure, agent usługi Kopia zapasowa Azure, System Center Data Protection Manager, kopii zapasowych SQL na maszynach wirtualnych platformy Azure i kopiami zapasowymi udziałów plików platformy Azure jest kierowane do obszaru roboczego usługi Log Analytics, za pomocą ustawień diagnostycznych. 
+> Dane z kopii zapasowych maszyn wirtualnych platformy Azure, agenta Azure Backup, programu System Center Data Protection Manager, kopii zapasowych SQL na maszynach wirtualnych platformy Azure i tworzenia kopii zapasowych Azure Files udostępniania są pompy w obszarze roboczym Log Analytics za pośrednictwem ustawień diagnostycznych. 
 
-Aby monitorowanie na dużą skalę, musisz mieć możliwości dwóch usług platformy Azure. *Ustawienia diagnostyczne* wysyłania danych z wielu zasobów usługi Azure Resource Manager do innego zasobu. *Log Analytics* generuje niestandardowe alerty, których można użyć grup akcji do definiowania innych kanałów powiadomień. 
+Aby monitorować/raportować na dużą skalę, potrzebne są możliwości dwóch usług platformy Azure. *Ustawienia diagnostyczne* umożliwiają wysyłanie danych z wielu zasobów Azure Resource Manager do innego zasobu. *Log Analytics* generuje niestandardowe alerty, w których można używać grup akcji do definiowania innych kanałów powiadomień. 
 
-W poniższych sekcjach opisano, jak używać usługi Log Analytics do monitorowania usługi Azure Backup na dużą skalę.
+W poniższych sekcjach szczegółowo opisano, jak używać Log Analytics do monitorowania Azure Backup w odpowiedniej skali.
 
 ### <a name="configure-diagnostic-settings"></a>Konfigurowanie ustawień diagnostycznych
 
-Zasoby usługi Resource Manager platformy Azure, takich jak magazyn usługi Recovery Services rejestrować informacje o zaplanowane operacje i użytkownik wyzwolił operacje jako dane diagnostyczne. 
+Azure Resource Manager zasoby, takie jak magazyn Recovery Services, rejestruje informacje o operacjach zaplanowanych i operacjach wyzwalanych przez użytkownika jako danych diagnostycznych. 
 
-W sekcji Monitorowanie, wybierz **ustawień diagnostycznych** i określ miejsce docelowe danych diagnostycznych w magazynie usługi Recovery Services.
+W sekcji monitorowanie wybierz pozycję **Ustawienia diagnostyczne** i określ cel dla danych diagnostycznych magazynu Recovery Services.
 
-![Ustawienia diagnostyczne magazynu usługi Recovery Services, przeznaczone dla usługi Log Analytics](media/backup-azure-monitoring-laworkspace/rs-vault-diagnostic-setting.png)
+![Ustawienie diagnostyczne Recovery Services magazynu, określanie wartości docelowej Log Analytics](media/backup-azure-monitoring-laworkspace/rs-vault-diagnostic-setting.png)
 
-Można wskazać obszar roboczy usługi Log Analytics z innej subskrypcji. Aby monitorować magazyny w subskrypcjach w jednym miejscu, należy wybrać tego samego obszaru roboczego analizy dzienników dla wielu magazynów usługi Recovery Services. Aby channel wszystkie informacje dotyczące usługi Azure Backup do obszaru roboczego usługi Log Analytics, wybierz pozycję **AzureBackupReport** do logowania.
-
-> [!IMPORTANT]
-> Po zakończeniu konfiguracji, należy poczekać do wypychania danych początkowych zakończyć całą dobę. Po początkowej, wypychanie danych, wszystkie zdarzenia są przekazywane, zgodnie z opisem w dalszej części tego artykułu w [sekcji częstotliwość](#diagnostic-data-update-frequency).
-
-### <a name="deploy-a-solution-to-the-log-analytics-workspace"></a>Wdrażanie rozwiązania do obszaru roboczego usługi Log Analytics
-
-Po umieszczeniu danych wewnątrz obszaru roboczego usługi Log Analytics [wdrażanie szablonu usługi GitHub](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) do usługi Log Analytics w celu wizualizacji danych. Aby poprawnie zidentyfikować obszaru roboczego, upewnij się, że tworzonemu elementowi nadawana tej samej grupie zasobów, nazwę obszaru roboczego i lokalizacji obszaru roboczego. Następnie zainstaluj ten szablon, w obszarze roboczym.
-
-> [!NOTE]
-> Jeśli nie masz alerty, zadania tworzenia kopii zapasowej lub przywracania zadania w obszarze roboczym usługi Log Analytics, można napotkać kod błędu "BadArgumentError", w portalu. Ten błąd zignorować i kontynuować korzystanie z rozwiązania. Po odpowiednie dane typu rozpoczyna się do obszaru roboczego, wizualizacje będą odzwierciedlać takie same, i nie będzie już wyświetlany błąd.
-
-### <a name="view-azure-backup-data-by-using-log-analytics"></a>Wyświetlanie danych usługi Azure Backup przy użyciu usługi Log Analytics
-
-Po wdrożeniu szablonu rozwiązania do monitorowania usługi Azure Backup będą widoczne w obszarze Podsumowanie obszaru roboczego. Aby przejść do podsumowania, wykonaj jedną z tych ścieżek:
-
-- **Azure Monitor**: W **Insights** zaznacz **więcej** , a następnie wybierz odpowiedni obszar roboczy.
-- **Zaloguj się obszarów roboczych usługi Analytics**: Wybierz odpowiedni obszar roboczy, a następnie w obszarze **ogólne**, wybierz opcję **podsumowanie obszaru roboczego**.
-
-![Na kafelku monitorowania usługi Log Analytics](media/backup-azure-monitoring-laworkspace/la-azurebackup-azuremonitor-tile.png)
-
-Po wybraniu kafelka monitorowania, projektanta szablon zostanie otwarty serii wykresów o podstawowe dane monitorowania z usługi Azure Backup. Oto kilka wykresów, które zostaną wyświetlone:
-
-* Wszystkie zadania tworzenia kopii zapasowej
-
-   ![Log Analytics wykresów zadań tworzenia kopii zapasowej](media/backup-azure-monitoring-laworkspace/la-azurebackup-allbackupjobs.png)
-
-* Przywracanie zadania
-
-   ![Wykres analizy dziennika dla zadania przywracania](media/backup-azure-monitoring-laworkspace/la-azurebackup-restorejobs.png)
-
-* Alerty wbudowane usługi Azure Backup dla zasobów platformy Azure
-
-   ![Wykres analizy dzienników dla wbudowanych alertów usługi Azure Backup dla zasobów platformy Azure](media/backup-azure-monitoring-laworkspace/la-azurebackup-activealerts.png)
-
-* Wbudowane alerty usługi Azure Backup dla zasobów lokalnych
-
-   ![Wykres analizy dzienników dla wbudowanych alertów usługi Azure Backup dla zasobów w środowisku lokalnym](media/backup-azure-monitoring-laworkspace/la-azurebackup-activealerts-onprem.png)
-
-* Aktywne źródła danych
-
-   ![Wykres analizy dzienników dla aktywnych jednostek kopii zapasowej](media/backup-azure-monitoring-laworkspace/la-azurebackup-activedatasources.png)
-
-* Magazyn w chmurze magazyn usługi Recovery Services
-
-   ![Wykres analizy dzienników dla magazynu w chmurze magazynu usługi Recovery Services](media/backup-azure-monitoring-laworkspace/la-azurebackup-cloudstorage-in-gb.png)
-
-Te wykresy są dostarczane z szablonem. Można edytować wykresy lub dodać więcej wykresów, jeśli potrzebujesz.
+Możesz wskazać obszar roboczy Log Analytics z innej subskrypcji. Aby monitorować magazyny między subskrypcjami w jednym miejscu, wybierz ten sam obszar roboczy Log Analytics dla wielu magazynów Recovery Services. Aby obkanałować wszystkie informacje dotyczące Azure Backup do obszaru roboczego Log Analytics, wybierz **AzureBackupReport** jako dziennik.
 
 > [!IMPORTANT]
-> Podczas wdrażania szablonu zasadniczo tworzysz blokadę tylko do odczytu. Aby edytować i zapisać szablon, musisz usunąć blokadę. Można usunąć blokady w **ustawienia** sekcji obszaru roboczego usługi Log Analytics na **blokuje** okienka.
+> Po zakończeniu konfiguracji należy odczekać 24 godziny na zakończenie wypychania danych. Po pomyślnym wypchnięciu danych wszystkie zdarzenia są wypychane zgodnie z opisem w dalszej części tego artykułu, w [sekcji częstotliwość](#diagnostic-data-update-frequency).
 
-### <a name="create-alerts-by-using-log-analytics"></a>Tworzenie alertów za pomocą usługi Log Analytics
-
-W usłudze Azure Monitor możesz utworzyć alerty w obszarze roboczym usługi Log Analytics. W obszarze roboczym, możesz użyć *grup akcji platformy Azure* wybrać mechanizm Twojego preferowanego powiadomień. 
+### <a name="deploy-a-solution-to-the-log-analytics-workspace"></a>Wdróż rozwiązanie w obszarze roboczym Log Analytics
 
 > [!IMPORTANT]
-> Aby uzyskać informacje na koszt tworzenia tego zapytania, zobacz [cennika usługi Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/).
+> Firma Microsoft udostępniła zaktualizowany [szablon](https://azure.microsoft.com/resources/templates/101-backup-la-reporting/) z wielojęzycznym widokiem dla monitorowania i raportowania opartego na programie La, w Azure Backup. Należy pamiętać, że użytkownicy, którzy korzystali z [wcześniejszego rozwiązania](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) , będą nadal widzieć je w swoich obszarach roboczych nawet po wdrożeniu nowego rozwiązania. Jednak stare rozwiązanie może zapewnić niedokładne wyniki ze względu na pewne drobne zmiany schematu. W związku z tym użytkownicy muszą wdrożyć nowy szablon.
 
-Wybierz dowolne wykresy, aby otworzyć **dzienniki** sekcji obszaru roboczego usługi Log Analytics. W **dzienniki** sekcji, edytowanie zapytań i tworzenia alertów na nich.
+Gdy dane są w obszarze roboczym Log Analytics, [Wdróż szablon GitHub](https://azure.microsoft.com/resources/templates/101-backup-la-reporting/) , aby log Analytics do wizualizacji danych. Aby prawidłowo zidentyfikować obszar roboczy, upewnij się, że nadajesz mu tę samą grupę zasobów, nazwę obszaru roboczego i lokalizację obszaru roboczego. Następnie zainstaluj ten szablon w obszarze roboczym.
 
-![Utwórz alert w obszarze roboczym usługi Log Analytics](media/backup-azure-monitoring-laworkspace/la-azurebackup-customalerts.png)
+### <a name="view-azure-backup-data-by-using-log-analytics"></a>Wyświetlanie danych Azure Backup przy użyciu Log Analytics
 
-Po wybraniu **nową regułę alertu**, zostanie otwarta strona tworzenia alertu usługa Azure Monitor, jak pokazano na poniższej ilustracji. W tym miejscu zasobu jest już oznaczony jako obszar roboczy usługi Log Analytics, a podano integrację grup akcji.
+Po wdrożeniu szablonu rozwiązanie do monitorowania i raportowania w Azure Backup będzie widoczne w obszarze Podsumowanie obszaru roboczego. Aby przejść do podsumowania, wykonaj jedną z następujących ścieżek:
 
-![Strona tworzenia alertu usługi Log Analytics](media/backup-azure-monitoring-laworkspace/inkedla-azurebackup-createalert.jpg)
+- **Azure monitor**: W sekcji **szczegółowe informacje** wybierz pozycję **więcej** , a następnie wybierz odpowiedni obszar roboczy.
+- **Log Analytics obszary robocze**: Wybierz odpowiedni obszar roboczy, a następnie w obszarze **Ogólne**wybierz pozycję **Podsumowanie obszaru roboczego**.
+
+![Kafelki monitorowania Log Analytics i raportowania](media/backup-azure-monitoring-laworkspace/la-azurebackup-overview-dashboard.png)
+
+Po wybraniu dowolnego z kafelków przeglądu można wyświetlić dalsze informacje. Oto niektóre z raportów, które zobaczysz:
+
+* Zadania tworzenia kopii zapasowej bez dziennika
+
+   ![Wykresy Log Analytics dla zadań tworzenia kopii zapasowej](media/backup-azure-monitoring-laworkspace/la-azurebackup-backupjobsnonlog.png)
+
+* Alerty z kopii zapasowej zasobów platformy Azure
+
+   ![Log Analytics Graph dla zadań przywracania](media/backup-azure-monitoring-laworkspace/la-azurebackup-alertsazure.png)
+
+Podobnie, klikając inne kafelki, zobaczysz raporty dotyczące zadań przywracania, magazynu w chmurze, elementów kopii zapasowych, alertów z kopii zapasowych zasobów lokalnych i zadań tworzenia kopii zapasowych dziennika.
+ 
+Te wykresy są udostępniane z szablonem. Jeśli zachodzi taka potrzeba, możesz edytować wykresy lub dodać więcej wykresów.
+
+### <a name="create-alerts-by-using-log-analytics"></a>Tworzenie alertów przy użyciu Log Analytics
+
+W Azure Monitor można tworzyć własne alerty w obszarze roboczym Log Analytics. W obszarze roboczym możesz użyć *grup akcji platformy Azure* , aby wybrać preferowany mechanizm powiadamiania. 
+
+> [!IMPORTANT]
+> Aby uzyskać informacje na temat kosztów tworzenia tego zapytania, zobacz [Azure monitor Cennik](https://azure.microsoft.com/pricing/details/monitor/).
+
+Wybierz dowolne wykresy, aby otworzyć sekcję **dzienniki** obszaru roboczego log Analytics. W sekcji **dzienniki** Edytuj zapytania i Utwórz z nich alerty.
+
+![Tworzenie alertu w obszarze roboczym Log Analytics](media/backup-azure-monitoring-laworkspace/la-azurebackup-customalerts.png)
+
+Po wybraniu **nowej reguły alertu**zostanie otwarta strona tworzenie alertu Azure monitor, jak pokazano na poniższej ilustracji. W tym miejscu zasób został już oznaczony jako obszar roboczy Log Analytics, a podano integrację z grupą akcji.
+
+![Strona tworzenia alertu Log Analytics](media/backup-azure-monitoring-laworkspace/inkedla-azurebackup-createalert.jpg)
 
 #### <a name="alert-condition"></a>Warunek alertu
 
-Definiowanie cech alertu jest jego warunku wyzwalania. Wybierz **warunek** automatycznie załadować zapytanie Kusto **dzienniki** stronie, jak pokazano na poniższej ilustracji. W tym miejscu można edytować warunku, zgodnie z potrzebami. Aby uzyskać więcej informacji, zobacz [zapytania Kusto przykładowe](#sample-kusto-queries).
+Definiowanie charakterystyki alertu to jego warunek wyzwalania. Wybierz opcję **warunek** , aby automatycznie załadować zapytanie Kusto na stronie **dzienników** , jak pokazano na poniższej ilustracji. W tym miejscu możesz edytować warunek, aby odpowiadał Twoim potrzebom. Aby uzyskać więcej informacji, zobacz [przykładowe zapytania Kusto](#sample-kusto-queries).
 
-![Definiowanie stanu alertu](media/backup-azure-monitoring-laworkspace/la-azurebackup-alertlogic.png)
+![Konfigurowanie warunku alertu](media/backup-azure-monitoring-laworkspace/la-azurebackup-alertlogic.png)
 
-Jeśli to konieczne, można edytować zapytania Kusto. Wybierz wartość progową, kropka i częstotliwości. Próg określa, kiedy zostanie wygenerowany alert. Okres to okno czasu, w którym jest uruchamiane zapytanie. Na przykład jeśli próg jest większa niż 0, okres wynosi 5 minut, a częstotliwość to 5 minut, następnie reguła wykonuje kwerendę co 5 minut, przeglądając poprzednich 5 minut. Jeśli liczba wyników jest większa niż 0, otrzymasz powiadomienie za pośrednictwem grupy wybranej akcji.
+W razie potrzeby można edytować zapytanie Kusto. Wybierz próg, okres i częstotliwość. Próg określa, kiedy zostanie zgłoszony alert. Okres jest oknem czasu, w którym jest uruchamiane zapytanie. Na przykład jeśli próg jest większy niż 0, okres wynosi 5 minut, a częstotliwość wynosi 5 minut, a następnie reguła uruchamia kwerendę co 5 minut, przeglądając poprzedni 5 minut. Jeśli liczba wyników jest większa od 0, otrzymasz powiadomienie za pomocą wybranej grupy akcji.
 
-#### <a name="alert-action-groups"></a>Grupy akcji alertu
+#### <a name="alert-action-groups"></a>Grupy akcji alertów
 
-Użyj grupy akcji, aby określić kanału powiadomień. Aby wyświetlić powiadomienie o udostępnieniu mechanizmów, w obszarze **grup akcji**, wybierz opcję **Utwórz nowy**.
+Użyj grupy akcji, aby określić kanał powiadomień. Aby wyświetlić dostępne mechanizmy powiadomień, w obszarze **grupy akcji**wybierz pozycję **Utwórz nowy**.
 
-![Powiadomienie o udostępnieniu mechanizmów w oknie "Dodaj grupę akcji"](media/backup-azure-monitoring-laworkspace/LA-AzureBackup-ActionGroup.png)
+![Dostępne mechanizmy powiadamiania w oknie "Dodawanie grupy akcji"](media/backup-azure-monitoring-laworkspace/LA-AzureBackup-ActionGroup.png)
 
-Może spełnić wszystkie alerty i monitorowanie wymagania od usługi Log Analytics samodzielnie, lub można użyć usługi Log Analytics, aby uzupełnić wbudowanych powiadomień.
+Wszystkie wymagania związane z alertami i monitorowaniem można spełnić wyłącznie przed Log Analytics lub użyć Log Analytics, aby uzupełnić wbudowane powiadomienia.
 
-Aby uzyskać więcej informacji, zobacz [tworzenie, wyświetlanie i zarządzanie alerty dzienników przy użyciu usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) i [tworzenie grup akcji w witrynie Azure portal i zarządzanie nimi](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups).
+Aby uzyskać więcej informacji, zobacz [Tworzenie i wyświetlanie alertów dzienników oraz zarządzanie nimi przy użyciu Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) i [Tworzenie grup akcji w Azure Portal oraz zarządzanie nimi](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups).
 
 ### <a name="sample-kusto-queries"></a>Przykładowe zapytania Kusto
 
-Wykresy domyślne umożliwiają zapytania Kusto w przypadku podstawowych scenariuszy, w których możesz tworzyć alerty. Można również zmodyfikować kwerendy w celu uzyskania danych czy chcesz otrzymywać alerty o. Wklej następujące przykładowe zapytania Kusto w **dzienniki** strony, a następnie tworzenie alertów dotyczących zapytania:
+Wykresy domyślne dają Kusto zapytania dotyczące podstawowych scenariuszy, w których można tworzyć alerty. Możesz również zmodyfikować zapytania, aby pobrać dane, które mają być wyzwalane. Wklej następujące przykładowe zapytania Kusto na stronie **dzienniki** , a następnie utwórz alerty dla zapytań:
 
-* Wszystkie zadania tworzenia kopii zapasowej zakończone pomyślnie
+* Wszystkie zadania tworzenia kopii zapasowej zakończone powodzeniem
 
     ````Kusto
     AzureDiagnostics
@@ -142,7 +124,7 @@ Wykresy domyślne umożliwiają zapytania Kusto w przypadku podstawowych scenari
     | where JobStatus_s == "Completed"
     ````
     
-* Wszystkie zadania tworzenia kopii zapasowej nie powiodło się
+* Wszystkie zadania tworzenia kopii zapasowej zakończone niepowodzeniem
 
     ````Kusto
     AzureDiagnostics
@@ -152,7 +134,7 @@ Wykresy domyślne umożliwiają zapytania Kusto w przypadku podstawowych scenari
     | where JobStatus_s == "Failed"
     ````
     
-* Wszystkie zadania tworzenia kopii zapasowej maszyny Wirtualnej platformy Azure, które zostały zakończone pomyślnie
+* Wszystkie pomyślne zadania tworzenia kopii zapasowej maszyny wirtualnej platformy Azure
 
     ````Kusto
     AzureDiagnostics
@@ -175,7 +157,7 @@ Wykresy domyślne umożliwiają zapytania Kusto w przypadku podstawowych scenari
     | project-away Resource
     ````
 
-* Wszystkie zadania zakończone pomyślnie SQL dziennika kopii zapasowej
+* Wszystkie pomyślne zadania tworzenia kopii zapasowej dziennika SQL
 
     ````Kusto
     AzureDiagnostics
@@ -198,7 +180,7 @@ Wykresy domyślne umożliwiają zapytania Kusto w przypadku podstawowych scenari
     | project-away Resource
     ````
 
-* Wszystkie zadania zakończone pomyślnie agenta usługi Kopia zapasowa Azure
+* Wszystkie pomyślne zadania agenta Azure Backup
 
     ````Kusto
     AzureDiagnostics
@@ -223,52 +205,52 @@ Wykresy domyślne umożliwiają zapytania Kusto w przypadku podstawowych scenari
 
 ### <a name="diagnostic-data-update-frequency"></a>Częstotliwość aktualizacji danych diagnostycznych
 
-Dane diagnostyczne z magazynu jest kierowane do obszaru roboczego usługi Log Analytics, za pomocą pewne opóźnienie. Każde zdarzenie dociera do obszaru roboczego usługi Log Analytics *20 do 30 minut* po są wypychane z magazynu usługi Recovery Services. Poniżej przedstawiono więcej informacji o opóźnienie:
+Dane diagnostyczne z magazynu są napompowane do obszaru roboczego Log Analytics z pewnym opóźnieniem. Każde zdarzenie dociera do obszaru roboczego Log Analytics od *20 do 30 minut* po wypchnięciu z magazynu Recovery Services. Poniżej znajdują się dalsze szczegółowe informacje na temat opóźnienia:
 
-- We wszystkich rozwiązaniach usługi kopii zapasowej wbudowane alerty są wypychane zaraz po ich utworzeniu. Dlatego zwykle pojawiają się w obszarze roboczym usługi Log Analytics po 20 do 30 minut.
-- We wszystkich rozwiązaniach ad-hoc zadania tworzenia kopii zapasowej i przywracania zadania są tak szybko, jak są wypychane *Zakończ*.
-- Dla wszystkich rozwiązań z wyjątkiem kopii zapasowej SQL zaplanowanych zadań kopii zapasowej są wypychane tak szybko, jak one *Zakończ*.
-- Do tworzenia kopii zapasowych SQL ponieważ kopie zapasowe dziennika, może wystąpić co 15 minut informacji dla wszystkich zakończonych zaplanowanych zadań kopii zapasowej, w tym dzienniki, jest partii i wypchnięto co 6 godzin.
-- We wszystkich rozwiązaniach inne informacje, takie jak element kopii zapasowej, zasad, punkty odzyskiwania, magazynu i tak dalej jest przypisany co najmniej *raz dziennie.*
-- Zmiany w konfiguracji kopii zapasowej (takie jak zmiana zasad lub edytowanie zasad) wyzwala powiadomienie wypychane wszystkich powiązanych informacji o kopii zapasowej.
+- W przypadku wszystkich rozwiązań alerty wbudowane w usłudze Backup są wypychane po ich utworzeniu. Tak więc zazwyczaj pojawiają się w obszarze roboczym Log Analytics po 20 – 30 minutach.
+- W przypadku wszystkich rozwiązań zadania tworzenia kopii zapasowych ad hoc i zadania przywracania są wypychane zaraz po *zakończeniu*.
+- W przypadku wszystkich rozwiązań z wyjątkiem kopii zapasowej SQL zaplanowane zadania tworzenia kopii zapasowej są wypychane zaraz po *zakończeniu*.
+- W przypadku kopii zapasowej SQL, ponieważ kopie zapasowe dzienników mogą odbywać się co 15 minut, informacje dotyczące wszystkich ukończonych zadań tworzenia kopii zapasowej, w tym dzienników, są przetwarzane wsadowe i wypychane co 6 godzin.
+- W przypadku wszystkich rozwiązań inne informacje, takie jak element kopii zapasowej, zasady, punkty odzyskiwania, magazyn i tak dalej, są wypychane co najmniej *raz dziennie.*
+- Zmiana konfiguracji kopii zapasowej (na przykład zmiana zasad lub zasad edycji) wyzwala wypychanie wszystkich powiązanych informacji o kopii zapasowej.
 
-## <a name="using-the-recovery-services-vaults-activity-logs"></a>Przy użyciu dzienników aktywności w magazynie usługi Recovery Services
+## <a name="using-the-recovery-services-vaults-activity-logs"></a>Korzystanie z dzienników aktywności magazynu Recovery Services
 
 > [!CAUTION]
-> Poniższe kroki dotyczą tylko programu *kopii zapasowych maszyn wirtualnych platformy Azure.* Nie można użyć tych kroków w przypadku rozwiązań takich jak agent usługi Kopia zapasowa Azure, kopii zapasowych SQL w obrębie platformy Azure lub usługi Azure Files.
+> Poniższe kroki dotyczą tylko *kopii zapasowych maszyn wirtualnych platformy Azure.* Nie można użyć tych kroków dla rozwiązań takich jak Agent Azure Backup, kopie zapasowe SQL na platformie Azure lub Azure Files.
 
-Dzienniki aktywności umożliwia również Otrzymuj powiadomienia dla zdarzenia, takie jak pomyślnego utworzenia kopii zapasowych. Aby rozpocząć, wykonaj następujące kroki:
+Dzienników aktywności można także użyć do uzyskania powiadomień o zdarzeniach, takich jak powodzenie wykonywania kopii zapasowej. Aby rozpocząć, wykonaj następujące kroki:
 
-1. Zaloguj się do witryny Azure portal.
-1. Otwórz odpowiedni magazyn usługi Recovery Services. 
-1. W oknie właściwości dla magazynu, należy otworzyć **dziennika aktywności** sekcji.
+1. Zaloguj się do Azure Portal.
+1. Otwórz odpowiedni magazyn Recovery Services. 
+1. W oknie właściwości magazynu Otwórz sekcję **Dziennik aktywności** .
 
-Aby zidentyfikować odpowiedniego dziennika i tworzenia alertów:
+Aby zidentyfikować odpowiedni dziennik i utworzyć alert:
 
-1. Sprawdź, czy trafiła do Ciebie Dzienniki aktywności dla pomyślnie tworzyć kopie zapasowe, stosując filtry pokazano na poniższej ilustracji. Zmiana **Timespan** wartość zgodnie z potrzebami, aby wyświetlić rekordy.
+1. Sprawdź, czy otrzymujesz dzienniki aktywności dla udanych kopii zapasowych, stosując filtry pokazane na poniższej ilustracji. W razie potrzeby zmień wartość **TimeSpan** , aby wyświetlić rekordy.
 
-   ![Filtrowanie, aby znaleźć dzienników aktywności dla kopii zapasowych maszyn wirtualnych platformy Azure](media/backup-azure-monitoring-laworkspace/activitylogs-azurebackup-vmbackups.png)
+   ![Filtrowanie w poszukiwaniu dzienników aktywności dla kopii zapasowych maszyny wirtualnej platformy Azure](media/backup-azure-monitoring-laworkspace/activitylogs-azurebackup-vmbackups.png)
 
-1. Wybierz nazwę działania, aby wyświetlić odpowiednie dane.
-1. Wybierz **Nowa reguła alertu** otworzyć **Utwórz regułę** strony. 
-1. Utwórz alert, wykonując kroki opisane w [tworzenie, wyświetlanie i zarządzanie alertów dziennika aktywności przy użyciu usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log).
+1. Wybierz nazwę operacji, aby wyświetlić odpowiednie szczegóły.
+1. Wybierz pozycję **Nowa reguła alertu** , aby otworzyć stronę **Tworzenie reguły** . 
+1. Utwórz alert, wykonując czynności opisane w temacie [Tworzenie i wyświetlanie alertów dziennika aktywności oraz zarządzanie nimi za pomocą Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log).
 
    ![Nowa reguła alertu](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
 
-W tym miejscu zasób jest samym magazynem usługi Recovery Services. Te same kroki należy powtórzyć dla wszystkich magazynów, w których chcesz otrzymywać powiadomienia za pomocą dzienników aktywności. Warunek nie będzie miał wartość progową, kropką ani częstotliwości, ponieważ ten alert jest oparty na zdarzeniach. Jak najszybciej zostanie wygenerowany dziennik odpowiednie działania, zgłaszany jest alert.
+W tym miejscu zasób jest magazynem Recovery Services. Należy powtórzyć te same kroki dla wszystkich magazynów, w których chcesz otrzymywać powiadomienia za pomocą dzienników aktywności. Warunek nie będzie miał wartości progowej, kropki lub częstotliwości, ponieważ ten alert jest oparty na zdarzeniach. Po wygenerowaniu odpowiedniego dziennika aktywności zostanie zgłoszony alert.
 
-## <a name="using-log-analytics-to-monitor-at-scale"></a>Monitorowanie na dużą skalę za pomocą usługi Log Analytics
+## <a name="using-log-analytics-to-monitor-at-scale"></a>Monitorowanie na dużą skalę przy użyciu Log Analytics
 
-Możesz wyświetlić wszystkie alerty utworzone na podstawie dzienników aktywności i obszarów roboczych usługi Log Analytics w usłudze Azure Monitor. Po prostu otwórz **alerty** w okienku po lewej stronie.
+Można wyświetlić wszystkie alerty utworzone na podstawie dzienników aktywności i obszarów roboczych Log Analytics w Azure Monitor. Po prostu otwórz okienko **alerty** po lewej stronie.
 
-Mimo że można uzyskać powiadomienia za pomocą dzienników aktywności, zdecydowanie zaleca się używanie usługi Log Analytics, a nie dzienników aktywności do monitorowania na dużą skalę. Oto Dlaczego:
+Mimo że można otrzymywać powiadomienia za pośrednictwem dzienników aktywności, zdecydowanie zalecamy używanie Log Analytics, a nie dzienników aktywności do monitorowania w odpowiedniej skali. Oto dlaczego:
 
-- **Ograniczone scenariusze**: Powiadomienia o dziennikach aktywności mają zastosowanie tylko do tworzenia kopii zapasowych maszyn wirtualnych platformy Azure. Powiadomienia można ustawić dla każdego magazynu usługi Recovery Services.
-- **Definicja Dopasuj**: Zaplanowane działania tworzenia kopii zapasowej nie mieści się przy użyciu najnowszej definicji dzienników aktywności. Zamiast tego powoduje wyrównanie z [dzienniki diagnostyczne](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#what-you-can-do-with-diagnostic-logs). Wyrównanie tego powoduje, że niespodziewane skutki danych, które przechodzą przez działanie po zalogowaniu się zmiany kanału.
-- **Problemy z kanałem dziennika aktywności**: W magazynach usługi Recovery Services dzienników aktywności, które są kierowane z usługi Azure Backup postępuj zgodnie z nowego modelu. Niestety ta zmiana ma wpływ na generowanie dzienników aktywności w Azure Government, Azure (Niemcy) i Azure (Chiny) — firmą 21Vianet. Alerty nie są wyzwalane, jeśli użytkownicy tych usług w chmurze tworzyć, konfigurować żadnych alertów, od dzienników aktywności w usłudze Azure Monitor. Ponadto w przypadku wszystkich publicznych regionach platformy Azure, jeśli użytkownik [służy do zbierania dzienników aktywności usługi Recovery Services do obszaru roboczego usługi Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs), dzienniki te nie są wyświetlane.
+- **Ograniczone scenariusze**: Powiadomienia za pomocą dzienników aktywności dotyczą tylko kopii zapasowych maszyn wirtualnych platformy Azure. Powiadomienia muszą zostać skonfigurowane dla każdego magazynu Recovery Services.
+- **Dopasowanie definicji**: Działanie zaplanowanej kopii zapasowej nie jest zgodne z najnowszą definicją dzienników aktywności. Zamiast tego jest on wyrównany do [dzienników diagnostycznych](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#what-you-can-do-with-diagnostic-logs). To wyrównanie powoduje nieoczekiwane skutki, gdy dane przepływają przez kanał dziennika aktywności są zmieniane.
+- **Problemy z kanałem dziennika aktywności**: W Recovery Services magazynach dzienniki aktywności, które są pompy Azure Backup podążają za nowym modelem. Niestety ta zmiana ma wpływ na generowanie dzienników aktywności w Azure Government, na platformie Azure (Niemcy) i na platformie Azure (Chiny). Jeśli użytkownicy tych usług w chmurze tworzą lub konfigurują alerty z dzienników aktywności w Azure Monitor, alerty nie zostaną wyzwolone. Ponadto w przypadku wszystkich regionów publicznych platformy Azure, jeśli użytkownik [zbiera Recovery Services dzienników aktywności w obszarze roboczym log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs), te dzienniki nie będą wyświetlane.
 
-Używanie obszaru roboczego usługi Log Analytics do monitorowania i alertów na dużą skalę dla wszystkich obciążeń, które są chronione przez usługę Azure Backup.
+Użyj Log Analytics obszaru roboczego do monitorowania i generowania alertów na dużą skalę dla wszystkich obciążeń chronionych przez Azure Backup.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby utworzyć zapytań niestandardowych, zobacz [modelu danych usługi Log Analytics](backup-azure-log-analytics-data-model.md).
+Aby utworzyć niestandardowe zapytania, zobacz [log Analytics model danych](backup-azure-log-analytics-data-model.md).

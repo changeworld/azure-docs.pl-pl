@@ -1,163 +1,162 @@
 ---
-title: Model danych do usługi Azure Backup
-description: Ten artykuł zawiera informacje o szczegóły modelu danych usługi Power BI dla raportów usługi Azure Backup.
-services: backup
+title: Model danych dla Azure Backup
+description: W tym artykule omówiono Power BI szczegóły modelu danych dla Azure Backup raportów.
 author: adigan
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/26/2017
 ms.author: adigan
-ms.openlocfilehash: c6160570644da108ba713e8229b38f9587495c92
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 66245a25af000d999ded87c58e3ba225b373b101
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60337582"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465598"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Model danych dla raportów usługi Azure Backup
-W tym artykule opisano model danych usługi Power BI, używany do tworzenia raportów usługi Azure Backup. Przy użyciu tego modelu danych, można filtrować istniejące raporty na podstawie odpowiednich pól i więcej co ważniejsze, tworzyć własne raporty za pomocą tabel i pól w modelu. 
+W tym artykule opisano Power BI model danych używany do tworzenia raportów Azure Backupowych. Korzystając z tego modelu danych, można filtrować istniejące raporty na podstawie odpowiednich pól i co ważniejsze, tworzyć własne raporty przy użyciu tabel i pól w modelu. 
 
-## <a name="creating-new-reports-in-power-bi"></a>Tworzenie nowych raportów w usłudze Power BI
-Usługa Power BI udostępnia funkcje dostosowywania za pomocą którego możesz [tworzenie raportów przy użyciu modelu danych](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/).
+## <a name="creating-new-reports-in-power-bi"></a>Tworzenie nowych raportów w Power BI
+Power BI udostępnia funkcje dostosowywania, za pomocą których można [tworzyć raporty przy użyciu modelu danych](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/).
 
-## <a name="using-azure-backup-data-model"></a>Przy użyciu modelu danych usługi Azure Backup
-Aby tworzyć raporty i dostosowywanie istniejących raportów, można użyć następujących pól, które są udostępniane w ramach modelu danych.
+## <a name="using-azure-backup-data-model"></a>Korzystanie z Azure Backup model danych
+Do tworzenia raportów i dostosowywania istniejących raportów można użyć poniższych pól dostępnych jako część modelu danych.
 
 ### <a name="alert"></a>Alerty
-Ta tabela zawiera podstawowe pól i agregacji za pośrednictwem różnych pól powiązanych alertów.
+Ta tabela zawiera podstawowe pola i agregacje dla różnych pól związanych z alertami.
 
 | Pole | Typ danych | Opis |
 | --- | --- | --- |
-| #AlertsCreatedInPeriod |Liczba całkowita |Liczba alertów utworzone w wybranym okresie |
-| %ActiveAlertsCreatedInPeriod |Wartość procentowa |Odsetek aktywnych alertów w wybranym okresie |
-| %CriticalAlertsCreatedInPeriod |Wartość procentowa |Wartość procentowa alerty krytyczne w wybranym okresie |
+| #AlertsCreatedInPeriod |Liczba całkowita |Liczba alertów utworzonych w wybranym okresie |
+| %ActiveAlertsCreatedInPeriod |Wartość procentowa |Procent aktywnych alertów w wybranym okresie |
+| %CriticalAlertsCreatedInPeriod |Wartość procentowa |Procent alertów krytycznych w wybranym okresie |
 | AlertOccurrenceDate |Date |Data utworzenia alertu |
-| AlertSeverity |Text |Ważność alertu, na przykład, krytyczny |
-| AlertStatus |Text |Stan alertu, na przykład aktywny |
-| AlertType |Text |Typ wygenerowany alert, na przykład kopię zapasową |
-| AlertUniqueId |Text |Unikatowy identyfikator wygenerowany alert |
-| AsOnDateTime |Data/godzina |Ostatni czas odświeżania dla wybranego wiersza |
-| AvgResolutionTimeInMinsForAlertsCreatedInPeriod |Liczba dziesiętna |Średni czas (w minutach), aby usunąć alert dla wybranego okresu |
-| EntityState |Text |Bieżący stan alertu obiektu, na przykład, aktywne, usunięte |
+| AlertSeverity |Text |Ważność alertu, na przykład krytyczne |
+| AlertStatus |Text |Stan alertu na przykład aktywny |
+| AlertType |Text |Typ wygenerowanego alertu, na przykład kopia zapasowa |
+| AlertUniqueId |Text |Unikatowy identyfikator wygenerowanego alertu |
+| AsOnDateTime |Date/Time |Godzina ostatniego odświeżenia wybranego wiersza |
+| AvgResolutionTimeInMinsForAlertsCreatedInPeriod |Liczba dziesiętna |Średni czas (w minutach) rozwiązywania alertu w wybranym okresie |
+| EntityState |Text |Bieżący stan obiektu alertu na przykład aktywny, usunięty |
 
 ### <a name="backup-item"></a>Element kopii zapasowej
-Ta tabela zawiera podstawowe pól i agregacji za pośrednictwem różnych kopii zapasowych pól powiązanych elementów.
+Ta tabela zawiera podstawowe pola i agregacje na różne pola powiązane z elementem kopii zapasowej.
 
 | Pole | Typ danych | Opis |
 | --- | --- | --- |
 | #BackupItems |Liczba całkowita |Liczba elementów kopii zapasowej |
-| #UnprotectedBackupItems |Liczba całkowita |Liczba elementów kopii zapasowej zatrzymanie ochrony lub skonfigurowane dla kopii zapasowych, ale nie uruchomić tworzenie kopii zapasowych|
-| AsOnDateTime |Data/godzina |Ostatni czas odświeżania dla wybranego wiersza |
+| #UnprotectedBackupItems |Liczba całkowita |Liczba elementów kopii zapasowych zatrzymanych na potrzeby ochrony lub skonfigurowanych na potrzeby wykonywania kopii zapasowych, ale nie uruchomiono|
+| AsOnDateTime |Date/Time |Godzina ostatniego odświeżenia wybranego wiersza |
 | BackupItemFriendlyName |Text |Przyjazna nazwa elementu kopii zapasowej |
 | BackupItemId |Text |Identyfikator elementu kopii zapasowej |
 | BackupItemName |Text |Nazwa elementu kopii zapasowej |
-| BackupItemType |Text |Typ elementu kopii zapasowej na przykład maszyna wirtualna FileFolder |
-| EntityState |Text |Bieżący stan obiektu elementu kopii zapasowej, na przykład, aktywne, usunięte |
-| LastBackupDateTime |Data/godzina |Czas ostatniej kopii zapasowej dla wybranego elementu kopii zapasowej |
-| LastBackupState |Text |Stan ostatniej kopii zapasowej dla wybranego elementu kopii zapasowej, na przykład, Powodzenie, Niepowodzenie |
-| LastSuccessfulBackupDateTime |Data/godzina |Czas ostatniego pomyślnego tworzenia kopii zapasowej dla wybranego elementu kopii zapasowej |
-| ProtectionState |Text |Bieżący stan ochrony w element kopii zapasowej, na przykład chronione, ProtectionStopped |
+| BackupItemType |Text |Typ elementu kopii zapasowej na przykład VM, FileFolder |
+| EntityState |Text |Bieżący stan obiektu elementu kopii zapasowej na przykład, aktywny, usunięty |
+| LastBackupDateTime |Date/Time |Godzina ostatniej kopii zapasowej wybranego elementu kopii zapasowej |
+| LastBackupState |Text |Stan ostatniej kopii zapasowej dla wybranego elementu kopii zapasowej, na przykład pomyślne, Niepowodzenie |
+| LastSuccessfulBackupDateTime |Date/Time |Godzina ostatniej pomyślnej kopii zapasowej wybranego elementu kopii zapasowej |
+| ProtectionState |Text |Bieżący stan ochrony elementu kopii zapasowej na przykład chronione, ProtectionStopped |
 
 ### <a name="calendar"></a>Kalendarz
-Ta tabela zawiera szczegółowe informacje dotyczące pól związanych z kalendarza.
+Ta tabela zawiera szczegółowe informacje o polach związanych z kalendarzem.
 
 | Pole | Typ danych | Opis |
 | --- | --- | --- |
 | Date |Date |Data wybrana do filtrowania danych |
 | DateKey |Text |Unikatowy klucz dla każdego elementu daty |
-| DayDiff |Liczba dziesiętna |Różnica w ciągu dnia filtrowania danych, na przykład, 0 oznacza dane w bieżącym dniu, -1 oznacza danych poprzedniego jednego dnia, 0 i -1 wskazuje danych dla bieżącego i poprzedniego dnia  |
-| Miesiąc |Text |Miesiąc roku wybrane do filtrowania danych, rozpoczyna się pierwszego dnia miesiąca i kończy się 31 dni |
-| MonthDate | Date |Data w ciągu miesiąca, kiedy kończy się miesiąca wybrane do filtrowania danych |
-| MonthDiff |Liczba dziesiętna |Różnica w miesiącu, w przypadku filtrowania danych, na przykład, 0 oznacza dane z bieżącego miesiąca, -1 oznacza danych z poprzedniego miesiąca, 0 i -1 wskazuje danych w bieżącym i poprzednim miesiącu. |
-| Tydzień |Text |Tydzień wybrane do filtrowania danych, tydzień zaczyna się od niedzieli, a kończy się w sobotę |
-| WeekDate |Date |Data w tydzień po tygodniu zostaje zakończona, wybrać filtrowanie danych |
-| WeekDiff |Liczba dziesiętna |Różnica w tygodniu do filtrowania danych, na przykład, wartość 0 wskazuje danych w bieżącym tygodniu, -1 oznacza danych z poprzedniego tygodnia, 0 i -1 wskazuje danych dla bieżącego i poprzedniego tygodnia |
-| Rok |Text |Rok kalendarzowy wybrane do filtrowania danych |
-| YearDate |Date |Data w roku, kiedy kończy się roku, wybrać filtrowanie danych |
+| DayDiff |Liczba dziesiętna |Różnica w dniu filtrowania danych na przykład 0 oznacza dane bieżącego dnia,-1 oznacza poprzednie dane z jednego dnia, 0 i-1 oznacza dane dla bieżącego i poprzedniego dnia  |
+| Miesiąc |Text |Miesiąc roku wybranego do filtrowania danych, miesiąc zaczyna się pierwszego dnia i kończą się 31 dniem |
+| MonthDate | Date |Data w miesiącu, w którym następuje zakończenie miesiąca, wybrana do filtrowania danych |
+| MonthDiff |Liczba dziesiętna |Różnica w miesiącu na filtrowanie danych na przykład, 0 oznacza dane bieżącego miesiąca,-1 oznacza dane poprzedniego miesiąca, 0 i-1 oznacza dane dla bieżącego i poprzedniego miesiąca |
+| Tydzień |Text |Tydzień wybrany do filtrowania danych, tydzień zaczyna się w niedzielę i kończący się w sobotę |
+| WeekDate |Date |Data w tygodniu, w którym następuje koniec tygodnia, wybrana do filtrowania danych |
+| WeekDiff |Liczba dziesiętna |Różnica w tygodniu do filtrowania danych na przykład, 0 oznacza dane bieżącego tygodnia,-1 oznacza dane z poprzedniego tygodnia, 0 i-1 oznacza dane dla bieżącego i poprzedniego tygodnia |
+| Rok |Text |Rok kalendarzowy wybrany do filtrowania danych |
+| YearDate |Date |Data w roku, w którym następuje zakończenie roku, wybrana do filtrowania danych |
 
 ### <a name="job"></a>Zadanie
-Ta tabela zawiera podstawowe pól i agregacji za pośrednictwem różnych pól związanych z pracą.
+Ta tabela zawiera podstawowe pola i agregacje dla różnych pól związanych z zadaniami.
 
 | Pole | Typ danych | Opis |
 | --- | --- | --- |
 | #JobsCreatedInPeriod |Liczba całkowita |Liczba zadań utworzonych w wybranym okresie |
-| %FailuresForJobsCreatedInPeriod |Wartość procentowa |Procent ogólnej zadaniami w wybranym okresie |
-| 80thPercentileDataTransferredInMBForBackupJobsCreatedInPeriod |Liczba dziesiętna |80\. wartość percentylu danych przesyłanych w Megabajtach **kopii zapasowej** zadań utworzonych w wybranym okresie |
-| AsOnDateTime |Data/godzina |Ostatni czas odświeżania dla wybranego wiersza |
-| AvgBackupDurationInMinsForJobsCreatedInPeriod |Liczba dziesiętna |Średni czas w minutach, aby **Zakończono tworzenie kopii zapasowej** zadań utworzonych w wybranym okresie |
-| AvgRestoreDurationInMinsForJobsCreatedInPeriod |Liczba dziesiętna |Średni czas w minutach, aby **ukończyć przywracania** zadań utworzonych w wybranym okresie |
-| BackupStorageDestination |Text |Docelowy magazyn kopii zapasowych na przykład chmura dysku  |
-| EntityState |Text |Bieżący stan obiektu zadania, na przykład, aktywne, usunięte |
-| JobFailureCode |Text |Z powodu którego wystąpiło niepowodzenie zadania ciągu kodu błędu |
-| JobOperation |Text |Operacja, dla którego zadanie jest uruchamiane na przykład kopii zapasowej, przywracanie, skonfiguruj w kopii zapasowej |
-| JobStartDate |Date |Data, gdy zadanie rozpoczęcia działania |
-| JobStartTime |Time |Gdy zadanie rozpoczęcia działania |
-| JobStatus |Text |Stan zadania zakończone na przykład, zakończone, nie powiodło się |
-| JobUniqueId |Text |Unikatowy identyfikator zadania |
+| %FailuresForJobsCreatedInPeriod |Wartość procentowa |Procent ogólnych błędów zadań w wybranym okresie |
+| 80thPercentileDataTransferredInMBForBackupJobsCreatedInPeriod |Liczba dziesiętna |wartość percentylu 80th danych transferowanych w MB dla zadań **tworzenia kopii zapasowej** utworzonych w wybranym okresie |
+| AsOnDateTime |Date/Time |Godzina ostatniego odświeżenia wybranego wiersza |
+| AvgBackupDurationInMinsForJobsCreatedInPeriod |Liczba dziesiętna |Średni czas w minutach dla **ukończonych zadań tworzenia kopii zapasowej** utworzonych w wybranym okresie |
+| AvgRestoreDurationInMinsForJobsCreatedInPeriod |Liczba dziesiętna |Średni czas w minutach dla **ukończonych zadań przywracania** utworzonych w wybranym okresie |
+| BackupStorageDestination |Text |Miejsce docelowe magazynu kopii zapasowych na przykład Cloud, Disk  |
+| EntityState |Text |Bieżący stan obiektu zadania na przykład aktywny, usunięty |
+| JobFailureCode |Text |Ciąg kodu błędu z powodu niepowodzenia zadania |
+| JobOperation |Text |Operacja, dla której zadanie jest uruchamiane na przykład kopia zapasowa, przywracanie, konfigurowanie kopii zapasowej |
+| JobStartDate |Date |Data uruchomienia zadania |
+| JobStartTime |Time |Czas uruchomienia zadania |
+| JobStatus |Text |Stan ukończonego zadania, na przykład zakończone, Niepowodzenie |
+| JobUniqueId |Text |Unikatowy identyfikator identyfikujący zadanie |
 
 ### <a name="policy"></a>Zasady
-Ta tabela zawiera podstawowe pól i agregacji za pośrednictwem różnych zasad dotyczących pól.
+Ta tabela zawiera podstawowe pola i agregacje dla różnych pól związanych z zasadami.
 
 | Pole | Typ danych | Opis |
 | --- | --- | --- |
 | #Policies |Liczba całkowita |Liczba zasad tworzenia kopii zapasowych, które istnieją w systemie |
-| #PoliciesInUse |Liczba całkowita |Limit liczby zasad, które są obecnie używane do konfigurowania tworzenia kopii zapasowych |
-| AsOnDateTime |Data/godzina |Ostatni czas odświeżania dla wybranego wiersza |
-| BackupDaysOfTheWeek |Text |Dni tygodnia, gdy zostały zaplanowane kopie zapasowe |
-| BackupFrequency |Text |Częstotliwość, z którym są wykonywane kopie zapasowe na przykład, codziennie, co tydzień |
-| BackupTimes |Text |Data i godzina, kiedy są zaplanowane kopie zapasowe |
-| DailyRetentionDuration |Liczba całkowita |Czas trwania przechowywania całkowitej dni skonfigurowane kopie zapasowe |
-| DailyRetentionTimes |Text |Data i godzina, gdy skonfigurowano przechowywanie codziennego |
-| EntityState |Text |Bieżący stan obiektu zasad, na przykład, aktywne, usunięte |
-| MonthlyRetentionDaysOfTheMonth |Text |Daty, miesiąca, wybrane do przechowywania miesięczne |
-| MonthlyRetentionDaysOfTheWeek |Text |Dni tygodnia wybrane do przechowywania miesięczne |
-| MonthlyRetentionDuration |Liczba dziesiętna |Czas trwania przechowywania całkowitej miesiące w przypadku skonfigurowane kopie zapasowe |
-| MonthlyRetentionFormat |Text |Typ konfiguracji do przechowywania miesięczne na przykład codziennie na podstawie co tydzień w oparciu o tydzień dzień |
-| MonthlyRetentionTimes |Text |Data i godzina, po skonfigurowaniu przechowywanie miesięcznego |
-| MonthlyRetentionWeeksOfTheMonth |Text |Tygodnie miesiąca, gdy jest przechowywanie miesięcznego na przykład skonfigurować pierwszy i ostatni itp. |
-| PolicyName |Text |Nazwy zdefiniowane zasady |
-| PolicyUniqueId |Text |Unikatowy identyfikator zasad |
-| RetentionType |Text |Typ zasady przechowywania na przykład codziennie, co tydzień, co miesiąc, co rok |
-| WeeklyRetentionDaysOfTheWeek |Text |Dni tygodnia wybrane do przechowywania danych co tydzień |
-| WeeklyRetentionDuration |Liczba dziesiętna |Łączny czas przechowywania co tydzień, w ciągu tygodni skonfigurowanych kopii zapasowych |
-| WeeklyRetentionTimes |Text |Data i godzina, jeśli skonfigurowano przechowywanie tygodniowego |
-| YearlyRetentionDaysOfTheMonth |Text |Daty, miesiąca, wybrane do przechowywania roczne |
-| YearlyRetentionDaysOfTheWeek |Text |Dni tygodnia wybrane do przechowywania roczne |
-| YearlyRetentionDuration |Liczba dziesiętna |Czas trwania przechowywania całkowitej lat skonfigurowane kopie zapasowe |
-| YearlyRetentionFormat |Text |Typ konfiguracji do przechowywania roczne na przykład codziennie na podstawie co tydzień w oparciu o tydzień dzień |
-| YearlyRetentionMonthsOfTheYear |Text |Miesiące roku wybrane do przechowywania roczne |
-| YearlyRetentionTimes |Text |Data i godzina, po skonfigurowaniu roczne przechowywanie |
-| YearlyRetentionWeeksOfTheMonth |Text |Tygodnie miesiąca, gdy jest roczne przechowywanie na przykład skonfigurować pierwszy i ostatni itp. |
+| #PoliciesInUse |Liczba całkowita |Liczba zasad, które są obecnie używane do konfigurowania kopii zapasowych |
+| AsOnDateTime |Date/Time |Godzina ostatniego odświeżenia wybranego wiersza |
+| BackupDaysOfTheWeek |Text |Dni tygodnia, w których zaplanowano tworzenie kopii zapasowych |
+| BackupFrequency |Text |Częstotliwość, z jaką kopie zapasowe są uruchamiane na przykład codziennie, co tydzień |
+| Przestoje |Text |Data i godzina zaplanowanego tworzenia kopii zapasowych |
+| DailyRetentionDuration |Liczba całkowita |Łączny czas przechowywania w dniach dla skonfigurowanych kopii zapasowych |
+| DailyRetentionTimes |Text |Data i godzina skonfigurowania codziennego przechowywania |
+| EntityState |Text |Bieżący stan obiektu zasad na przykład aktywny, usunięty |
+| MonthlyRetentionDaysOfTheMonth |Text |Daty w miesiącu wybrane do przechowywania miesięcznie |
+| MonthlyRetentionDaysOfTheWeek |Text |Dni tygodnia wybrane do przechowywania miesięcznie |
+| MonthlyRetentionDuration |Liczba dziesiętna |Łączny czas przechowywania w miesiącach dla skonfigurowanych kopii zapasowych |
+| MonthlyRetentionFormat |Text |Typ konfiguracji do przechowywania miesięcznie na przykład dziennie na podstawie dnia, co tydzień w oparciu o tydzień |
+| MonthlyRetentionTimes |Text |Data i godzina skonfigurowania miesięcznego przechowywania |
+| MonthlyRetentionWeeksOfTheMonth |Text |Tygodnie miesiąca w przypadku skonfigurowania miesięcznego przechowywania na przykład, First, Last itd. |
+| PolicyName |Text |Nazwa zdefiniowanych zasad |
+| PolicyUniqueId |Text |Unikatowy identyfikator identyfikujący zasady |
+| Czas przechowywania |Text |Typ zasad przechowywania na przykład codziennie, co tydzień, co miesiąc, co rok |
+| WeeklyRetentionDaysOfTheWeek |Text |Dni tygodnia wybrane do przechowywania tygodniowego |
+| WeeklyRetentionDuration |Liczba dziesiętna |Łączny czas trwania przechowywania w tygodniach dla skonfigurowanych kopii zapasowych |
+| WeeklyRetentionTimes |Text |Data i godzina skonfigurowania przechowywania tygodniowego |
+| YearlyRetentionDaysOfTheMonth |Text |Daty w miesiącu wybrane do przechowywania rocznego |
+| YearlyRetentionDaysOfTheWeek |Text |Dni tygodnia wybrane do przechowywania rocznego |
+| YearlyRetentionDuration |Liczba dziesiętna |Łączny czas przechowywania w latach dla skonfigurowanych kopii zapasowych |
+| YearlyRetentionFormat |Text |Typ konfiguracji do przechowywania rocznego na przykład dziennie na podstawie dnia, co tydzień w oparciu o tydzień |
+| YearlyRetentionMonthsOfTheYear |Text |Miesiąc roku wybranego do przechowywania rocznego |
+| YearlyRetentionTimes |Text |Data i godzina skonfigurowania okresu przechowywania rocznego |
+| YearlyRetentionWeeksOfTheMonth |Text |Tygodnie miesiąca, w którym jest skonfigurowane okresowe przechowywanie na przykład, First, Last itd. |
 
-### <a name="protected-server"></a>Chroniony serwer
-Ta tabela zawiera podstawowe pól i agregacji za pośrednictwem różnych chronionych polach związanych z serwerem.
+### <a name="protected-server"></a>Serwer chroniony
+Ta tabela zawiera podstawowe pola i agregacje dla różnych chronionych pól związanych z serwerem.
 
 | Pole | Typ danych | Opis |
 | --- | --- | --- |
-| #ProtectedServers |Liczba całkowita |Liczba serwerów chronionych |
-| AsOnDateTime |Data/godzina |Ostatni czas odświeżania dla wybranego wiersza |
-| AzureBackupAgentOSType |Text |Typ systemu operacyjnego agenta usługi Azure Backup |
-| AzureBackupAgentOSVersion |Text |Wersja systemu operacyjnego agenta usługi Azure Backup |
-| AzureBackupAgentUpdateDate |Text |Data aktualizacji agenta usługi Kopia zapasowa agenta |
-| AzureBackupAgentVersion |Text |Numer wersji agenta w wersji kopii zapasowej |
-| BackupManagementType |Text |Typ dostawcy do wykonywania kopii zapasowej na przykład IaaSVM FileFolder |
-| EntityState |Text |Bieżący stan obiektu chronionego serwera, na przykład, aktywne, usunięte |
-| ProtectedServerFriendlyName |Text |Przyjazna nazwa chronionego serwera |
+| #ProtectedServers |Liczba całkowita |Liczba chronionych serwerów |
+| AsOnDateTime |Date/Time |Godzina ostatniego odświeżenia wybranego wiersza |
+| AzureBackupAgentOSType |Text |Typ systemu operacyjnego agenta Azure Backup |
+| AzureBackupAgentOSVersion |Text |Wersja systemu operacyjnego agenta Azure Backup |
+| AzureBackupAgentUpdateDate |Text |Data zaktualizowania agenta kopii zapasowej agenta |
+| AzureBackupAgentVersion |Text |Numer wersji kopii zapasowej agenta |
+| BackupManagementType |Text |Typ dostawcy służący do wykonywania kopii zapasowych na przykład, IaaSVM, FileFolder |
+| EntityState |Text |Bieżący stan obiektu chronionego serwera na przykład aktywny, usunięty |
+| ProtectedServerFriendlyName |Text |Przyjazna nazwa serwera chronionego |
 | ProtectedServerName |Text |Nazwa chronionego serwera |
-| ProtectedServerType |Text |Typ serwera chronionego kopii zapasowej na przykład IaaSVMContainer |
-| ProtectedServerName |Text |Nazwa chronionego serwera, do którego element kopii zapasowej należy |
-| RegisteredContainerId |Text |Identyfikator kontenera zarejestrowany dla kopii zapasowej |
+| ProtectedServerType |Text |Typ chronionego serwera kopii zapasowej na przykład IaaSVMContainer |
+| ProtectedServerName |Text |Nazwa serwera chronionego, do którego należy element kopii zapasowej |
+| RegisteredContainerId |Text |Identyfikator kontenera zarejestrowanego dla kopii zapasowej |
 
 ### <a name="storage"></a>Magazyn
-Ta tabela zawiera podstawowe pól i agregacji za pośrednictwem różnych pól związane z magazynowaniem.
+Ta tabela zawiera podstawowe pola i agregacje dla różnych pól związanych z magazynem.
 
 | Pole | Typ danych | Opis |
 | --- | --- | --- |
-| #ProtectedInstances |Liczba dziesiętna |Liczba chronionych wystąpień służące do obliczania magazynu frontonu w rozliczeń, obliczonej na podstawie wartości najnowsze w zaznaczony czas |
-| AsOnDateTime |Data/godzina |Ostatni czas odświeżania dla wybranego wiersza |
-| CloudStorageInMB |Liczba dziesiętna |Magazyn kopii zapasowych w chmurze używany przez kopie zapasowe, które są obliczane na podstawie najnowszej wartości w wybranym |
-| EntityState |Text |Bieżący stan obiektu, na przykład, aktywne, usunięte |
+| #ProtectedInstances |Liczba dziesiętna |Liczba chronionych wystąpień używanych do obliczenia magazynu frontonu w rozliczeniach obliczona na podstawie wartości najnowszej w wybranym czasie |
+| AsOnDateTime |Date/Time |Godzina ostatniego odświeżenia wybranego wiersza |
+| CloudStorageInMB |Liczba dziesiętna |Magazyn kopii zapasowych w chmurze używany przez kopie zapasowe, obliczony na podstawie najnowszej wartości w wybranym czasie |
+| EntityState |Text |Bieżący stan obiektu na przykład aktywny, usunięty |
 | LastUpdatedDate |Date |Data ostatniej aktualizacji wybranego wiersza |
 
 ### <a name="time"></a>Time
@@ -165,29 +164,29 @@ Ta tabela zawiera szczegółowe informacje o polach związanych z czasem.
 
 | Pole | Typ danych | Opis |
 | --- | --- | --- |
-| Godzina |Time |Godziny dnia, na przykład 1:00:00 PM |
-| HourNumber |Liczba dziesiętna |Liczba godzin w ciągu dnia, na przykład 13,00 |
-| Minuta |Liczba dziesiętna |Minuta |
-| PeriodOfTheDay |Text |Okres okna czasowego w ciągu dnia, na przykład 12-3 AM |
-| Time |Time |Pora dnia na przykład 0:00:01: 00 |
-| TimeKey |Text |Wartość klucza do reprezentowania czasu |
+| Godzina |Time |Godzina dnia na przykład 1:00:00 PM |
+| HourNumber |Liczba dziesiętna |Liczba godzin w dniu na przykład 13,00 |
+| Minuta |Liczba dziesiętna |Minuta godziny |
+| PeriodOfTheDay |Text |Gniazdo okresu w dniu na przykład 12-3 AM |
+| Time |Time |Godzina dnia na przykład 12:00:01 AM |
+| TimeKey |Text |Wartość klucza reprezentująca czas |
 
 ### <a name="vault"></a>Magazyn
-Ta tabela zawiera podstawowe pól i agregacji za pośrednictwem różnych pól powiązanych z magazynu.
+Ta tabela zawiera podstawowe pola i agregacje dla różnych pól związanych z magazynem.
 
 | Pole | Typ danych | Opis |
 | --- | --- | --- |
 | #Vaults |Liczba całkowita |Liczba magazynów |
-| AsOnDateTime |Data/godzina |Ostatni czas odświeżania dla wybranego wiersza |
+| AsOnDateTime |Date/Time |Godzina ostatniego odświeżenia wybranego wiersza |
 | AzureDataCenter |Text |Centrum danych, w którym znajduje się magazyn |
-| EntityState |Text |Bieżący stan obiektu magazynu, na przykład, aktywne, usunięte |
-| StorageReplicationType |Text |Typ replikacji magazynu dla magazynu, na przykład GeoRedundant |
+| EntityState |Text |Bieżący stan obiektu magazynu na przykład aktywny, usunięty |
+| StorageReplicationType |Text |Typ replikacji magazynu dla magazynu na przykład geonadmiarowości |
 | SubscriptionId |Text |Identyfikator subskrypcji klienta wybranego do generowania raportów |
 | VaultName |Text |Nazwa magazynu |
-| VaultTags |Text |Znaczniki skojarzone w magazynie |
+| VaultTags |Text |Tagi skojarzone z magazynem |
 
 ## <a name="next-steps"></a>Kolejne kroki
-Po przejrzeniu modelu danych do tworzenia raportów usługi Azure Backup, zapoznaj się następujące artykuły, aby uzyskać więcej informacji na temat tworzenia i wyświetlania raportów w usłudze Power BI.
+Po przejrzeniu modelu danych do tworzenia raportów Azure Backup należy zapoznać się z następującymi artykułami, aby uzyskać więcej informacji na temat tworzenia i wyświetlania raportów w programie Power BI.
 
-* [Tworzenie raportów w usłudze Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/)
-* [Filtrowanie raportów usługi Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-about-filters-and-highlighting-in-reports/)
+* [Tworzenie raportów w Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/)
+* [Filtrowanie raportów w Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-about-filters-and-highlighting-in-reports/)

@@ -1,35 +1,30 @@
 ---
-title: Komunikacji dla ról w usługach Cloud Services | Dokumentacja firmy Microsoft
-description: Wystąpienia roli w usługach w chmurze może mieć zdefiniowanych punktów końcowych (http, https, tcp, udp) dla nich, które komunikują się z zewnątrz lub od innych wystąpień roli.
+title: Komunikacja dla ról w Cloud Services | Microsoft Docs
+description: Wystąpienia roli w Cloud Services mogą mieć punkty końcowe (http, https, TCP, UDP) zdefiniowane dla nich, które komunikują się z zewnętrznym lub innym wystąpieniem roli.
 services: cloud-services
 documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 7008a083-acbe-4fb8-ae60-b837ef971ca1
+author: georgewallace
+manager: carmonm
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2016
-ms.author: jeconnoc
-ms.openlocfilehash: 4fa3885f9c273cf6aaf9173ebd3fee3d4499be34
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: gwallace
+ms.openlocfilehash: 74ef5567becee27b4af837a6977119d7cf0f3e4b
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808097"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359088"
 ---
-# <a name="enable-communication-for-role-instances-in-azure"></a>Włącz komunikację dla wystąpień ról na platformie azure
-Role usługi w chmurze komunikują się za pośrednictwem połączeń wewnętrznych i zewnętrznych. Połączenia zewnętrzne są nazywane **wejściowych punktów końcowych** podczas połączenia wewnętrzne są nazywane **wewnętrznych punktów końcowych**. W tym temacie opisano sposób modyfikowania [definicji usługi](cloud-services-model-and-package.md#csdef) do tworzenia punktów końcowych.
+# <a name="enable-communication-for-role-instances-in-azure"></a>Włączanie komunikacji dla wystąpień roli na platformie Azure
+Role usługi w chmurze komunikują się za poorednictwem połączeń wewnętrznych i zewnętrznych. Połączenia zewnętrzne są nazywane **wejściowymi punktami końcowymi** , gdy wewnętrzne połączenia są nazywane **wewnętrznymi punktami końcowymi**. W tym temacie opisano sposób modyfikowania [definicji usługi](cloud-services-model-and-package.md#csdef) w celu tworzenia punktów końcowych.
 
 ## <a name="input-endpoint"></a>Wejściowy punkt końcowy
-Wejściowy punkt końcowy jest używany, gdy chcesz uwidocznić port na zewnątrz. Należy określić typ protokół i port punktu końcowego, który następnie stosuje dla obu portów wewnętrznych i zewnętrznych dla punktu końcowego. Jeśli chcesz, można określić inny port wewnętrzny dla punktu końcowego o [localPort](/previous-versions/azure/reference/gg557552(v=azure.100)#inputendpoint) atrybutu.
+Wejściowy punkt końcowy jest używany, gdy chcesz uwidocznić port zewnętrzny. Należy określić typ protokołu i Port punktu końcowego, który ma zastosowanie zarówno do portów zewnętrznych, jak i wewnętrznych dla punktu końcowego. Jeśli chcesz, możesz określić inny port wewnętrzny dla punktu końcowego z atrybutem [localport](/previous-versions/azure/reference/gg557552(v=azure.100)#inputendpoint) .
 
-Wejściowy punkt końcowy, można użyć następujących protokołów: **http, https, tcp, udp**.
+Wejściowy punkt końcowy może używać następujących protokołów: **http, https, TCP, UDP**.
 
-Aby utworzyć wejściowy punkt końcowy, Dodaj **InputEndpoint** element podrzędny do **punktów końcowych** element rola sieci web lub proces roboczy.
+Aby utworzyć wejściowy punkt końcowy, Dodaj element podrzędny **InputEndpoint** do elementu **Endpoints** roli sieć Web lub proces roboczy.
 
 ```xml
 <Endpoints>
@@ -37,12 +32,12 @@ Aby utworzyć wejściowy punkt końcowy, Dodaj **InputEndpoint** element podrzę
 </Endpoints> 
 ```
 
-## <a name="instance-input-endpoint"></a>Wystąpienie wejściowy punkt końcowy
-Wejściowe punkty końcowe wystąpienia są podobne do danych wejściowych punktów końcowych jednak pozwala na mapowanie określonych portów publicznego dla poszczególnych wystąpień pojedynczej roli przy użyciu przekierowania portów w module równoważenia obciążenia. Można określić pojedynczy port publicznego lub zakres portów.
+## <a name="instance-input-endpoint"></a>Wejściowy punkt końcowy wystąpienia
+Wejściowe punkty końcowe wystąpienia są podobne do wejściowych punktów końcowych, ale umożliwiają mapowanie określonych portów publicznych dla poszczególnych wystąpień ról przy użyciu przekazywania portów w usłudze równoważenia obciążenia. Można określić jeden port publiczny lub zakres portów.
 
-Wejściowy punkt końcowy wystąpienia można używać tylko **tcp** lub **udp** jako protokół.
+Wejściowy punkt końcowy wystąpienia może używać tylko protokołu **TCP** lub **UDP** jako protokołu.
 
-Aby utworzyć wystąpienie wejściowy punkt końcowy, Dodaj **InstanceInputEndpoint** element podrzędny do **punktów końcowych** element rola sieci web lub proces roboczy.
+Aby utworzyć wejściowy punkt końcowy wystąpienia, Dodaj element podrzędny **InstanceInputEndpoint** do elementu **Endpoints** roli sieć Web lub proces roboczy.
 
 ```xml
 <Endpoints>
@@ -55,11 +50,11 @@ Aby utworzyć wystąpienie wejściowy punkt końcowy, Dodaj **InstanceInputEndpo
 ```
 
 ## <a name="internal-endpoint"></a>Wewnętrzny punkt końcowy
-Wewnętrznych punktów końcowych są dostępne w komunikacji z wystąpienia do wystąpienia. Numer portu jest opcjonalny, a w przypadku pominięcia port dynamiczny jest przypisany do punktu końcowego. Zakres portów może służyć. Ma limitu pięciu wewnętrznych punktów końcowych w każdej roli.
+Wewnętrzne punkty końcowe są dostępne dla komunikacji między wystąpieniami. Port jest opcjonalny i w przypadku pominięcia jest przypisywany port dynamiczny do punktu końcowego. Można użyć zakresu portów. Istnieje ograniczenie pięciu wewnętrznych punktów końcowych dla każdej roli.
 
-Wewnętrzny punkt końcowy, można użyć następujących protokołów: **http, tcp, udp, wszelkie**.
+Wewnętrzny punkt końcowy może używać następujących protokołów: **http, TCP, UDP, any**.
 
-Aby utworzyć wewnętrzne wejściowy punkt końcowy, Dodaj **InternalEndpoint** element podrzędny do **punktów końcowych** element rola sieci web lub proces roboczy.
+Aby utworzyć wewnętrzny wejściowy punkt końcowy, Dodaj element podrzędny **InternalEndpoint** do elementu **Endpoints** roli sieć Web lub proces roboczy.
 
 ```xml
 <Endpoints>
@@ -78,8 +73,8 @@ Można również użyć zakresu portów.
 ```
 
 
-## <a name="worker-roles-vs-web-roles"></a>Vs ról procesów roboczych. Role sieci Web
-Podczas pracy z ról sieci web i proces roboczy ma jeden niewielkiej różnicy z punktami końcowymi. Rola sieci web musi mieć co najmniej jeden wejściowy punkt końcowy przy użyciu **HTTP** protokołu.
+## <a name="worker-roles-vs-web-roles"></a>Role procesu roboczego a Role sieci Web
+Istnieje jedna drobna różnica z punktami końcowymi podczas pracy z rolami procesów roboczych i sieci Web. Rola sieci Web musi mieć co najmniej jeden wejściowy punkt końcowy przy użyciu protokołu **http** .
 
 ```xml
 <Endpoints>
@@ -88,32 +83,32 @@ Podczas pracy z ról sieci web i proces roboczy ma jeden niewielkiej różnicy z
 </Endpoints>
 ```
 
-## <a name="using-the-net-sdk-to-access-an-endpoint"></a>Dostęp do punktu końcowego przy użyciu zestawu .NET SDK
-Biblioteka zarządzana platformy Azure udostępnia metody dla wystąpień roli do komunikacji w czasie wykonywania. Z poziomu kodu w ramach wystąpienia roli można pobrać informacji o innych wystąpień roli i ich punktami końcowymi, a także informacje o bieżącym wystąpieniu roli.
+## <a name="using-the-net-sdk-to-access-an-endpoint"></a>Używanie zestawu SDK platformy .NET do uzyskiwania dostępu do punktu końcowego
+Biblioteka zarządzana platformy Azure udostępnia metody dla wystąpień ról do komunikowania się w czasie wykonywania. Z kodu działającego w ramach wystąpienia roli można pobrać informacje o istnieniu innych wystąpień roli i ich punktów końcowych, a także informacje o bieżącym wystąpieniu roli.
 
 > [!NOTE]
-> Możesz pobrać wyłącznie informacje o wystąpieniach roli są uruchamiane w usłudze w chmurze i definiują co najmniej jeden punkt końcowy wewnętrznego. Nie można uzyskać danych dotyczących ról wystąpień uruchomionych w innej usłudze.
+> Można pobrać tylko informacje o wystąpieniach ról uruchomionych w usłudze w chmurze, które definiują co najmniej jeden wewnętrzny punkt końcowy. Nie można uzyskać danych o wystąpieniach ról uruchomionych w innej usłudze.
 > 
 > 
 
-Możesz użyć [wystąpień](/previous-versions/azure/reference/ee741904(v=azure.100)) właściwość służąca do pobierania wystąpień roli. Najpierw użyj [CurrentRoleInstance](/previous-versions/azure/reference/ee741907(v=azure.100)) zwraca odwołanie do bieżącego wystąpienia roli, a następnie użyć [roli](/previous-versions/azure/reference/ee741918(v=azure.100)) właściwość zwraca odwołanie do samego roli.
+Można użyć właściwości [Instances](/previous-versions/azure/reference/ee741904(v=azure.100)) , aby pobrać wystąpienia roli. Najpierw użyj [CurrentRoleInstance](/previous-versions/azure/reference/ee741907(v=azure.100)) , aby zwrócić odwołanie do bieżącego wystąpienia roli, a następnie użyj właściwości [role](/previous-versions/azure/reference/ee741918(v=azure.100)) , aby zwrócić odwołanie do samej roli.
 
-Po nawiązaniu połączenia z wystąpieniem roli programowo przy użyciu zestawu .NET SDK, jest stosunkowo łatwo uzyskać dostęp do informacji punktu końcowego. Na przykład po którym już nawiązano środowisku określoną rolę, można uzyskać portu określonego punktu końcowego przy użyciu tego kodu:
+Po nawiązaniu połączenia z wystąpieniem roli programowo przy użyciu zestawu .NET SDK można stosunkowo łatwo uzyskać dostęp do informacji o punkcie końcowym. Na przykład po połączeniu się już z określonym środowiskiem roli można uzyskać port określonego punktu końcowego za pomocą tego kodu:
 
 ```csharp
 int port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["StandardWeb"].IPEndpoint.Port;
 ```
 
-**Wystąpień** właściwość zwraca kolekcję **RoleInstance** obiektów. Ta kolekcja zawsze zawiera bieżącego wystąpienia. Jeśli rola nie definiuje wewnętrzny punkt końcowy, Kolekcja zawiera bieżące wystąpienie, ale nie innych wystąpień. Liczba wystąpień roli w kolekcji zawsze będzie 1 w przypadku, w którym nie wewnętrzny punkt końcowy jest zdefiniowana dla roli. Jeśli rola definiuje wewnętrzny punkt końcowy, jego wystąpienia są wykrywalni w czasie wykonywania, a liczby wystąpień w kolekcji będą odpowiadać liczby wystąpień określone dla roli w pliku konfiguracji usługi.
+Właściwość **Instances** zwraca kolekcję obiektów **RoleInstance** . Ta kolekcja zawsze zawiera bieżące wystąpienie. Jeśli rola nie definiuje wewnętrznego punktu końcowego, kolekcja zawiera bieżące wystąpienie, ale nie inne wystąpienia. Liczba wystąpień roli w kolekcji zawsze będzie wynosić 1 w przypadku, gdy dla roli nie jest zdefiniowany żaden wewnętrzny punkt końcowy. Jeśli rola definiuje wewnętrzny punkt końcowy, jego wystąpienia są wykrywalne w czasie wykonywania, a liczba wystąpień w kolekcji będzie odpowiadać liczbie wystąpień określonych dla roli w pliku konfiguracji usługi.
 
 > [!NOTE]
-> Biblioteka zarządzana platformy Azure nie zapewnia sposób określania kondycji innych wystąpień roli, ale jeśli Twoja usługa musi tę funkcję można zaimplementować w takich oceny kondycji. Możesz użyć [diagnostyki Azure](cloud-services-dotnet-diagnostics.md) można uzyskać informacji o uruchomionych wystąpień roli.
+> Biblioteka zarządzana przez platformę Azure nie zapewnia możliwości określania kondycji innych wystąpień roli, ale można wdrożyć takie oceny kondycji samodzielnie, jeśli usługa wymaga tej funkcji. Za pomocą [Diagnostyka Azure](cloud-services-dotnet-diagnostics.md) można uzyskać informacje o uruchomionych wystąpieniach roli.
 > 
 > 
 
-Aby określić numer portu dla wewnętrznego punktu końcowego dla wystąpienia roli, można użyć [InstanceEndpoints](/previous-versions/azure/reference/ee741917(v=azure.100)) właściwości, aby zwrócić obiekt słownika, która zawiera nazwy punktów końcowych i ich odpowiedni adres IP, adresów i portów. [IPEndpoint](/previous-versions/azure/reference/ee741919(v=azure.100)) właściwość zwraca adres IP i portu dla określonego punktu końcowego. **PublicIPEndpoint** właściwość zwraca port punktu końcowego o zrównoważonym obciążeniu. Części adresu **PublicIPEndpoint** właściwość nie jest używana.
+Aby określić numer portu wewnętrznego punktu końcowego w wystąpieniu roli, można użyć właściwości [InstanceEndpoints](/previous-versions/azure/reference/ee741917(v=azure.100)) , aby zwrócić obiekt słownika zawierający nazwy punktów końcowych i odpowiadające im adresy IP i porty. Właściwość [IPEndPoint](/previous-versions/azure/reference/ee741919(v=azure.100)) zwraca adres IP i port dla określonego punktu końcowego. Właściwość **PublicIPEndpoint** zwraca port dla punktu końcowego ze zrównoważonym obciążeniem. Część adresu IP właściwości **PublicIPEndpoint** nie jest używana.
 
-Oto przykład, który iteruje po wystąpień roli.
+Oto przykład, który iteruje wystąpienia roli.
 
 ```csharp
 foreach (RoleInstance roleInst in RoleEnvironment.CurrentRoleInstance.Role.Instances)
@@ -126,10 +121,10 @@ foreach (RoleInstance roleInst in RoleEnvironment.CurrentRoleInstance.Role.Insta
 }
 ```
 
-Oto przykład roli procesu roboczego, pobiera punktu końcowego uwidocznionego przez definicji usługi, która rozpoczyna się nasłuchiwać w poszukiwaniu połączeń.
+Oto przykład roli procesu roboczego, który pobiera punkt końcowy uwidoczniony za pomocą definicji usługi i zaczyna nasłuchiwanie połączeń.
 
 > [!WARNING]
-> Ten kod będzie działać tylko dla wdrożonej usługi. Podczas pracy w emulatorze obliczeń systemu Azure, usługi elementy konfiguracji, służące do tworzenia punktów końcowych przeniesiony bezpośrednio (**InstanceInputEndpoint** elementy), są ignorowane.
+> Ten kod będzie działał tylko dla wdrożonej usługi. W przypadku uruchamiania w emulatorze obliczeń platformy Azure elementy konfiguracji usługi, które tworzą bezpośrednie punkty końcowe portu (elementy**InstanceInputEndpoint** ), są ignorowane.
 > 
 > 
 
@@ -217,12 +212,12 @@ namespace WorkerRole1
 }
 ```
 
-## <a name="network-traffic-rules-to-control-role-communication"></a>Reguły ruchu sieciowego do kontrolowania komunikacji roli
-Po zdefiniowaniu wewnętrznych punktów końcowych, można dodać reguły ruchu sieciowego (oparte na punktach końcowych, które zostały utworzone) do kontroli, jak wystąpień roli może komunikować się ze sobą. Na poniższym diagramie przedstawiono kilka typowych scenariuszy, do kontrolowania komunikacji roli:
+## <a name="network-traffic-rules-to-control-role-communication"></a>Reguły ruchu sieciowego w celu kontrolowania komunikacji z rolami
+Po zdefiniowaniu wewnętrznych punktów końcowych można dodać reguły ruchu sieciowego (w oparciu o utworzone punkty końcowe), aby kontrolować sposób komunikacji między wystąpieniami ról. Na poniższym diagramie przedstawiono niektóre typowe scenariusze kontrolowania komunikacji między rolami:
 
-![Scenariusze reguł ruchu sieci](./media/cloud-services-enable-communication-role-instances/scenarios.png "scenariusze reguł ruchu w sieci")
+![Scenariusze reguł ruchu sieciowego](./media/cloud-services-enable-communication-role-instances/scenarios.png "Scenariusze reguł ruchu sieciowego")
 
-Poniższy przykład kodu pokazuje definicje ról dla ról pokazano na poprzednim rysunku. Każda definicja roli obejmuje co najmniej jeden wewnętrzny punkt końcowy zdefiniowany:
+Poniższy przykład kodu pokazuje definicje ról dla ról pokazanych na poprzednim diagramie. Każda definicja roli zawiera co najmniej jeden zdefiniowany wewnętrzny punkt końcowy:
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -254,11 +249,11 @@ Poniższy przykład kodu pokazuje definicje ról dla ról pokazano na poprzednim
 ```
 
 > [!NOTE]
-> Ograniczenia komunikacji między rolami może wystąpić z wewnętrznych punktów końcowych zarówno stała i przypisywany portów.
+> Ograniczenie komunikacji między rolami może odbywać się przy użyciu wewnętrznych punktów końcowych zarówno z ustalonych, jak i automatycznie przypisanych portów.
 > 
 > 
 
-Domyślnie po zdefiniowaniu wewnętrzny punkt końcowy komunikacji mogą przepływać z dowolnej roli do wewnętrznego punktu końcowego roli bez żadnych ograniczeń. Aby ograniczyć komunikację, należy dodać **networktrafficrules —** elementu **definicja ServiceDefinition** elementu w pliku definicji usługi.
+Domyślnie po zdefiniowaniu wewnętrznego punktu końcowego komunikacja może przepływać z dowolnej roli do wewnętrznego punktu końcowego roli bez żadnych ograniczeń. Aby ograniczyć komunikację, należy dodać element **NetworkTrafficRules** do elementu ServiceDefinition  w pliku definicji usługi.
 
 ### <a name="scenario-1"></a>Scenariusz 1
 Zezwalaj tylko na ruch sieciowy z **WebRole1** do **WorkerRole1**.
@@ -299,7 +294,7 @@ Zezwala tylko na ruch sieciowy z **WebRole1** do **WorkerRole1** i **WorkerRole2
 ```
 
 ### <a name="scenario-3"></a>Scenariusz 3
-Zezwala tylko na ruch sieciowy z **WebRole1** do **WorkerRole1**, i **WorkerRole1** do **WorkerRole2**.
+Zezwala tylko na ruch sieciowy z **WebRole1** do **WorkerRole1**i **WorkerRole1** do **WorkerRole2**.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -328,7 +323,7 @@ Zezwala tylko na ruch sieciowy z **WebRole1** do **WorkerRole1**, i **WorkerRole
 ```
 
 ### <a name="scenario-4"></a>Scenariusz 4
-Zezwala tylko na ruch sieciowy z **WebRole1** do **WorkerRole1**, **WebRole1** do **WorkerRole2**, i **WorkerRole1**  do **WorkerRole2**.
+Zezwala tylko na ruch sieciowy z **WebRole1** do **WorkerRole1**, **WebRole1** do **WorkerRole2**i **WorkerRole1** do **WorkerRole2**.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -368,8 +363,8 @@ Zezwala tylko na ruch sieciowy z **WebRole1** do **WorkerRole1**, **WebRole1** d
 </ServiceDefinition>
 ```
 
-Odwołanie do schematu XML dla elementów powyżej można znaleźć [tutaj](/previous-versions/azure/reference/gg557551(v=azure.100)).
+Odwołanie do schematu XML dla elementów użytych powyżej można znaleźć [tutaj](/previous-versions/azure/reference/gg557551(v=azure.100)).
 
-## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się więcej o usłudze w chmurze [modelu](cloud-services-model-and-package.md).
+## <a name="next-steps"></a>Następne kroki
+Przeczytaj więcej na temat [modelu](cloud-services-model-and-package.md)usługi w chmurze.
 

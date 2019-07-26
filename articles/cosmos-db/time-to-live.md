@@ -1,86 +1,86 @@
 ---
-title: Wygasanie danych w usłudze Azure Cosmos DB przy użyciu czasu wygaśnięcia
-description: Czas wygaśnięcia Microsoft Azure Cosmos DB zapewnia możliwość wprowadzenia dokumentów automatycznie usuwane z systemu po upływie określonego czasu.
+title: Wygaśnięcie danych w Azure Cosmos DB z czasem wygaśnięcia
+description: Dzięki funkcji TTL Microsoft Azure Cosmos DB zapewnia możliwość automatycznego przeczyszczania dokumentów z systemu po upływie czasu.
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 0b32665b09eb02c337a12ac3cfc2b474fa82711a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 7a29e9446a8c3b703c2ec3140711f44f3c81535f
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447242"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467584"
 ---
-# <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Czas wygaśnięcia (TTL) w usłudze Azure Cosmos DB 
+# <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Czas wygaśnięcia (TTL) w Azure Cosmos DB 
 
-Za pomocą **czas wygaśnięcia** lub czas wygaśnięcia, usługa Azure Cosmos DB zapewnia możliwość automatycznie usunąć elementy z kontenera po upływie pewnego czasu. Domyślnie można ustawić czas na żywo na poziomie kontenera i zastąp wartość na podstawie poszczególnych elementów. Po ustawieniu czas wygaśnięcia w kontenerze, lub na poziomie elementu, usługi Azure Cosmos DB automatycznie usunie te elementy po okresie od czasu ostatniej modyfikacji. Wartość czasu wygaśnięcia skonfigurowano w ciągu kilku sekund. Podczas konfigurowania czasu wygaśnięcia, system automatycznie usunie wygasłych elementów na podstawie wartości TTL bez konieczności używania operacji usuwania, jawnie wydawanego przez aplikację klienta.
+W przypadku **czasu** wygaśnięcia lub czasu wygaśnięcia usługa Azure Cosmos DB zapewnia możliwość automatycznego usuwania elementów z kontenera po upływie określonego czasu. Domyślnie można ustawić czas na żywo na poziomie kontenera i zastąpić wartość dla każdego elementu. Po ustawieniu czasu wygaśnięcia w kontenerze lub na poziomie elementu Azure Cosmos DB automatycznie usunie te elementy po upływie czasu, od momentu ostatniej modyfikacji. Wartość czasu wygaśnięcia jest konfigurowana w sekundach. W przypadku skonfigurowania czasu wygaśnięcia system automatycznie usunie przeterminowane elementy na podstawie wartości czasu wygaśnięcia, bez konieczności operacji usuwania jawnie wydanej przez aplikację kliencką.
 
-## <a name="time-to-live-for-containers-and-items"></a>Czas wygaśnięcia dla kontenerów i elementów
+## <a name="time-to-live-for-containers-and-items"></a>Czas wygaśnięcia kontenerów i elementów
 
-Wartość czasu wygaśnięcia jest ustawiana w ciągu kilku sekund, a zostanie on zinterpretowany jako zmian od czasu ostatniej modyfikacji elementu. Można ustawić czas wygaśnięcia w kontenerze lub elementu w kontenerze:
+Wartość czasu wygaśnięcia jest ustawiana w sekundach i interpretowana jako Delta od momentu ostatniej modyfikacji elementu. Można ustawić czas wygaśnięcia dla kontenera lub elementu w kontenerze:
 
-1. **Czas wygaśnięcia w kontenerze** (można ustawić przy użyciu `DefaultTimeToLive`):
+1. **Czas wygaśnięcia kontenera** (Ustaw za `DefaultTimeToLive`pomocą):
 
-   - Jeśli brak (lub ustawionej na wartość null), elementy nie są automatycznie wygasł.
+   - Jeśli nie ma (lub ma wartość null), elementy nie są automatycznie wygasłe.
 
-   - Jeśli istnieje, a wartość jest równa "-1", jest równa nieskończoność, a elementy nie wygasają domyślnie.
+   - Jeśli jest obecny, a wartość jest równa "-1", jest równe nieskończoność, a elementy domyślnie nie wygasają.
 
-   - Jeśli istnieje, a wartość jest równa niektóre *"n"* — elementy wygasną *"n"* (w sekundach) po ich ostatniej modyfikacji.
+   - Jeśli jest obecny, a wartość jest równa liczbie *"n"* — elementy wygaśnie *"n"* sek. po ich ostatniej modyfikacji.
 
-2. **Czas wygaśnięcia elementu** (można ustawić przy użyciu `ttl`):
+2. **Czas wygaśnięcia elementu** (Ustaw za `ttl`pomocą):
 
-   - Ta właściwość ma zastosowanie tylko wtedy, gdy `DefaultTimeToLive` jest obecny i nie jest ustawiona na wartość null dla kontenera nadrzędnego.
+   - Ta właściwość ma zastosowanie tylko wtedy `DefaultTimeToLive` , gdy jest obecny i nie jest ustawiona na wartość null dla kontenera nadrzędnego.
 
-   - Jeśli jest obecna, zastępuje ona `DefaultTimeToLive` wartość kontenera nadrzędnego.
+   - Jeśli jest obecny, zastępuje `DefaultTimeToLive` wartość kontenera nadrzędnego.
 
 ## <a name="time-to-live-configurations"></a>Czas do konfiguracji na żywo
 
-* Jeśli czas wygaśnięcia jest równa *"n"* w kontenerze, następnie elementy w danym kontenerze wygasną po upływie *n* sekund.  Jeśli istnieją elementy w tym samym kontenerze, które mają czas wprowadzenia na na żywo, ustawioną wartość -1 (wskazującą, że nie wygasną) lub jeśli niektóre elementy przesłonili czas wygaśnięcia ustawienie z różnymi liczbami, te elementy wygasają oparte na ich własnych skonfigurowana wartość czasu wygaśnięcia. 
+* Jeśli wartość czasu wygaśnięcia jest ustawiona na *"n"* w kontenerze, elementy w tym kontenerze wygasną po upływie *n* sekund.  Jeśli istnieją elementy w tym samym kontenerze, które mają własny czas na żywo, ustaw wartość-1 (wskazującą, że nie wygasną) lub jeśli niektóre elementy przesłonili ustawienie czasu wygaśnięcia o innej liczbie, te elementy wygasną na podstawie ich wartości czasu wygaśnięcia. 
 
-* Jeśli czas wygaśnięcia nie jest ustawiona na kontenerze, czas wygaśnięcia elementu w tym kontenerze jest ignorowany. 
+* Jeśli wartość czasu wygaśnięcia nie jest ustawiona w kontenerze, czas wygaśnięcia dla elementu w tym kontenerze nie ma żadnego wpływu. 
 
-* Jeśli czas wygaśnięcia w kontenerze jest ustawiony na wartość -1, element w tym kontenerze, który ma czas na żywo wartość n, wygasną po upływie n sekund, a pozostałe elementy nie wygasną. 
+* Jeśli wartość czasu wygaśnięcia dla kontenera wynosi-1, element w tym kontenerze, który ma wartość czasu wygaśnięcia ustawioną na n, utraci ważność po n sekundach, a pozostałe elementy nie wygasną. 
 
-Usuwanie elementów, w oparciu o czas wygaśnięcia jest bezpłatne. Nie ma żadnych dodatkowych kosztów (czyli nie dodatkowych jednostek żądań są używane) w momencie usunięcia elementu wyniku z upływem czasu wygaśnięcia.
+Usuwanie elementów na podstawie czasu wygaśnięcia jest bezpłatne. Nie ma dodatkowych kosztów (oznacza to, że nie są używane żadne dodatkowe jednostek ru), gdy element zostanie usunięty z powodu wygaśnięcia czasu wygaśnięcia (TTL).
 
 ## <a name="examples"></a>Przykłady
 
-W tej sekcji przedstawiono kilka przykładów przy użyciu innego czasu wygaśnięcia wartości przypisane do kontenera i elementy:
+W tej sekcji przedstawiono kilka przykładów zawierających różne wartości czasu na żywo przypisane do kontenera i elementów:
 
 ### <a name="example-1"></a>Przykład 1
 
-Czas wygaśnięcia w kontenerze jest ustawiona na wartość null (DefaultTimeToLive = null)
+Wartość parametru TTL w kontenerze ma wartość null (DefaultTimeToLive = null)
 
-|Czas wygaśnięcia elementu| Wynik|
+|Czas wygaśnięcia dla elementu| Wynik|
 |---|---|
-|czas wygaśnięcia = null|    Czas wygaśnięcia jest wyłączona. Element nigdy nie wygasa (ustawienie domyślne).|
-|ttl = -1   |Czas wygaśnięcia jest wyłączona. Element nigdy nie wygasa.|
-|ttl = 2000 |Czas wygaśnięcia jest wyłączona. Element nigdy nie wygasa.|
+|TTL = null|    Czas wygaśnięcia jest wyłączony. Element nigdy nie wygaśnie (domyślnie).|
+|czas wygaśnięcia =-1   |Czas wygaśnięcia jest wyłączony. Element nigdy nie wygaśnie.|
+|ttl = 2000 |Czas wygaśnięcia jest wyłączony. Element nigdy nie wygaśnie.|
 
 
 ### <a name="example-2"></a>Przykład 2
 
-Czas wygaśnięcia w kontenerze jest ustawiona na wartość -1 (DefaultTimeToLive = -1)
+Wartość parametru TTL w kontenerze jest ustawiona na-1 (DefaultTimeToLive =-1)
 
-|Czas wygaśnięcia elementu| Wynik|
+|Czas wygaśnięcia dla elementu| Wynik|
 |---|---|
-|czas wygaśnięcia = null |Czas wygaśnięcia jest włączona. Element nigdy nie wygasa (ustawienie domyślne).|
-|ttl = -1   |Czas wygaśnięcia jest włączona. Element nigdy nie wygasa.|
-|ttl = 2000 |Czas wygaśnięcia jest włączona. Element wygaśnie po 2000 sekundach.|
+|TTL = null |Czas wygaśnięcia jest włączony. Element nigdy nie wygaśnie (domyślnie).|
+|czas wygaśnięcia =-1   |Czas wygaśnięcia jest włączony. Element nigdy nie wygaśnie.|
+|ttl = 2000 |Czas wygaśnięcia jest włączony. Element wygaśnie po upływie 2000 sekund.|
 
 
 ### <a name="example-3"></a>Przykład 3
 
-Czas wygaśnięcia w kontenerze jest ustawiony na 1000 (DefaultTimeToLive = 1000)
+Wartość parametru TTL w kontenerze jest ustawiona na 1000 (DefaultTimeToLive = 1000)
 
-|Czas wygaśnięcia elementu| Wynik|
+|Czas wygaśnięcia dla elementu| Wynik|
 |---|---|
-|czas wygaśnięcia = null|    Czas wygaśnięcia jest włączona. Element wygaśnie po 1 000 sekund (ustawienie domyślne).|
-|ttl = -1   |Czas wygaśnięcia jest włączona. Element nigdy nie wygasa.|
-|ttl = 2000 |Czas wygaśnięcia jest włączona. Element wygaśnie po 2000 sekundach.|
+|TTL = null|    Czas wygaśnięcia jest włączony. Element wygaśnie po 1000 sekundach (wartość domyślna).|
+|czas wygaśnięcia =-1   |Czas wygaśnięcia jest włączony. Element nigdy nie wygaśnie.|
+|ttl = 2000 |Czas wygaśnięcia jest włączony. Element wygaśnie po upływie 2000 sekund.|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

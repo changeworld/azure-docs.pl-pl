@@ -1,6 +1,6 @@
 ---
-title: Wysyłanie lub odbieranie zdarzeń za pomocą języka Python — Azure Event Hubs | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera wskazówki dotyczące tworzenia aplikacji w języku Python, która wysyła zdarzenia do usługi Azure Event Hubs.
+title: Wysyłanie i odbieranie zdarzeń przy użyciu języka Python — Azure Event Hubs | Microsoft Docs
+description: Ten artykuł zawiera Przewodnik dotyczący tworzenia aplikacji w języku Python, która wysyła zdarzenia do usługi Azure Event Hubs.
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: femila
@@ -9,18 +9,18 @@ ms.workload: core
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: shvija
-ms.openlocfilehash: 6a8f0ddcfe6de904219059c6e761ead4c004732d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9018df73c85486f5ffc9b16c1dbb70d4d99fcc65
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60461454"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360185"
 ---
-# <a name="send-events-to-or-receive-events-from-event-hubs-using-python"></a>Wysyłanie zdarzeń do lub odbieranie zdarzeń z usługi Event Hubs przy użyciu języka Python
+# <a name="send-events-to-or-receive-events-from-event-hubs-using-python"></a>Wysyłanie zdarzeń do i odbieranie zdarzeń z Event Hubs przy użyciu języka Python
 
 Azure Event Hubs to platforma do pozyskiwania i strumieniowego przesyłania danych, która umożliwia odbieranie i przetwarzanie milionów zdarzeń na sekundę. Usługa Event Hubs pozwala przetwarzać i przechowywać zdarzenia, dane lub dane telemetryczne generowane przez rozproszone oprogramowanie i urządzenia. Dane wysłane do centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania. Aby zapoznać się ze szczegółowym omówieniem usługi Event Hubs, zobacz [Omówienie usługi Event Hubs](event-hubs-about.md) i [Funkcje usługi Event Hubs](event-hubs-features.md).
 
-W tym samouczku opisano sposób tworzenia aplikacji Python do wysyłania zdarzeń do lub odbieranie zdarzeń z Centrum zdarzeń. 
+W tym samouczku opisano sposób tworzenia aplikacji w języku Python w celu wysyłania zdarzeń do zdarzeń z centrum zdarzeń lub ich odbierania. 
 
 > [!NOTE]
 > Ten przewodnik Szybki start możesz pobrać jako przykład z witryny [GitHub](https://github.com/Azure/azure-event-hubs-python/tree/master/examples), zastąpić ciągi `EventHubConnectionString` i `EventHubName` wartościami swojego centrum zdarzeń, a następnie uruchomić go. Alternatywnie możesz utworzyć własne rozwiązanie, wykonując kroki opisane w tym samouczku.
@@ -31,7 +31,7 @@ Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących 
 
 - Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 - Python 3.4 lub nowsze.
-- Użyj [witryny Azure portal](https://portal.azure.com) do utworzenia przestrzeni nazw typu Event Hubs i uzyskania poświadczeń zarządzania wymaganych przez aplikację do komunikacji z Centrum zdarzeń. Aby utworzyć obszar nazw i Centrum zdarzeń, wykonaj procedurę opisaną w [w tym artykule](event-hubs-create.md). Następnie Pobierz wartość klucza dostępu Centrum zdarzeń, postępując zgodnie z instrukcjami opisanymi w artykule: [Pobieranie parametrów połączenia](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Klucz dostępu został użyty w kodzie, napisany w dalszej części tego samouczka. Jest domyślna nazwa klucza: **RootManageSharedAccessKey**.
+- Użyj [Azure Portal](https://portal.azure.com) , aby utworzyć przestrzeń nazw typu Event Hubs i uzyskać poświadczenia zarządzania wymagane przez aplikację do komunikacji z centrum zdarzeń. Aby utworzyć obszar nazw i Centrum zdarzeń, wykonaj procedurę opisaną w [w tym artykule](event-hubs-create.md). Następnie uzyskaj wartość klucz dostępu dla centrum zdarzeń, wykonując instrukcje podane w artykule: [Pobieranie parametrów połączenia](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Klucz dostępu został użyty w kodzie, napisany w dalszej części tego samouczka. Domyślna nazwa klucza: **RootManageSharedAccessKey**.
 
 ## <a name="install-python-package"></a>Zainstaluj pakiet języka Python
 
@@ -47,7 +47,7 @@ pip install azure-eventhub
 
 Następnie utwórz aplikację w języku Python, która wysyła zdarzenia do Centrum zdarzeń:
 
-1. Otwórz ulubionym edytorze języka Python, takich jak [programu Visual Studio Code](https://code.visualstudio.com/)
+1. Otwórz swój ulubiony Edytor Python, taki jak [Visual Studio Code](https://code.visualstudio.com/)
 2. Tworzenie skryptu o nazwie **send.py**. Ten skrypt wysyła 100 zdarzeń do Centrum zdarzeń.
 3. Wklej następujący kod do send.py, zastępując wartości klucza, użytkownika i adres wartościami uzyskanymi z witryny Azure portal w poprzedniej sekcji: 
 
@@ -113,7 +113,7 @@ Gratulacje! Wysłano komunikaty do centrum zdarzeń.
 
 Następnie utwórz aplikację w języku Python, który odbiera zdarzenia z Centrum zdarzeń:
 
-1. Otwórz ulubionym edytorze języka Python, takich jak [programu Visual Studio Code](https://code.visualstudio.com/)
+1. Otwórz swój ulubiony Edytor Python, taki jak [Visual Studio Code](https://code.visualstudio.com/)
 2. Tworzenie skryptu o nazwie **recv.py**.
 3. Wklej następujący kod do recv.py, zastępując wartości klucza, użytkownika i adres wartościami uzyskanymi z witryny Azure portal w poprzedniej sekcji: 
 
@@ -144,7 +144,8 @@ last_sn = -1
 last_offset = "-1"
 client = EventHubClient(ADDRESS, debug=False, username=USER, password=KEY)
 try:
-    receiver = client.add_receiver(CONSUMER_GROUP, PARTITION, prefetch=5000, offset=OFFSET)
+    receiver = client.add_receiver(
+        CONSUMER_GROUP, PARTITION, prefetch=5000, offset=OFFSET)
     client.run()
     start_time = time.time()
     for event_data in receiver.receive(timeout=100):
@@ -172,10 +173,10 @@ Aby uruchomić skrypt, Otwórz okno wiersza polecenia, którego języka Python w
 start python recv.py
 ```
  
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Przeczytaj następujące artykuły:
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)
-- [Funkcje i terminologią dotyczącą usługi Azure Event Hubs](event-hubs-features.md)
+- [Funkcje i terminologia w usłudze Azure Event Hubs](event-hubs-features.md)
 - [Event Hubs — często zadawane pytania](event-hubs-faq.md)
 

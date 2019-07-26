@@ -1,139 +1,138 @@
 ---
-title: Tworzenie kopii zapasowej plików w usłudze Azure Stack maszyn wirtualnych
-description: Usługa Azure Backup umożliwia tworzenie kopii zapasowej i odzyskiwanie plików usługi Azure Stack i aplikacji do środowiska usługi Azure Stack.
-services: backup
+title: Tworzenie kopii zapasowych plików na maszynach wirtualnych Azure Stack
+description: Użyj Azure Backup, aby utworzyć kopię zapasową i odzyskać Azure Stack pliki i aplikacje w środowisku Azure Stack.
 author: adigan
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 6/5/2018
 ms.author: adigan
-ms.openlocfilehash: 67d79f2aa41bab8a14d693098538d22ffeb05a4e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 36e7fceb63e6013ca09e8c2e2db18d6795f61273
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60848762"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465078"
 ---
-# <a name="back-up-files-on-azure-stack"></a>Tworzenie kopii zapasowej plików w usłudze Azure Stack
-Usługi Azure Backup umożliwia ochronę (lub utworzyć kopię zapasową) plików i aplikacji w usłudze Azure Stack. Aby utworzyć kopię zapasową plików i aplikacji, zainstaluj serwer usługi Microsoft Azure Backup jako maszynę wirtualną działającą w usłudze Azure Stack. Można chronić pliki na każdym serwerze usługi Azure Stack w tej samej sieci wirtualnej. Po zainstalowaniu serwera usługi Azure Backup, Dodaj dysków platformy Azure w celu zwiększenia magazynu lokalnego, która jest dostępna dla krótkoterminowej kopii zapasowej danych. Usługa Azure Backup Server używa usługi Azure storage do długoterminowego przechowywania danych.
+# <a name="back-up-files-on-azure-stack"></a>Tworzenie kopii zapasowej plików na Azure Stack
+Za pomocą Azure Backup można chronić pliki i aplikacje (lub tworzyć ich kopie zapasowe) w Azure Stack. Aby utworzyć kopię zapasową plików i aplikacji, należy zainstalować program Microsoft Azure Backup Server jako maszynę wirtualną działającą na Azure Stack. Pliki można chronić na dowolnym serwerze Azure Stack w tej samej sieci wirtualnej. Po zainstalowaniu Azure Backup Server Dodaj dyski platformy Azure w celu zwiększenia magazynu lokalnego dostępnego dla krótkoterminowych danych kopii zapasowej. Azure Backup Server używa usługi Azure Storage do długoterminowego przechowywania.
 
 > [!NOTE]
-> Chociaż usługi Azure Backup Server i System Center Data Protection Manager (DPM) są podobne, program DPM nie jest obsługiwane do użytku z usługą Azure Stack.
+> Mimo że Azure Backup Server i System Center Data Protection Manager (DPM) są podobne, program DPM nie jest obsługiwany do użycia z programem Azure Stack.
 >
 
-Ten artykuł nie obejmuje instalacji usługi Azure Backup Server w środowisku usługi Azure Stack. Aby zainstalować usługi Azure Backup Server w usłudze Azure Stack, zapoznaj się z artykułem [instalowania serwera usługi Azure Backup](backup-mabs-install-azure-stack.md).
+W tym artykule nie omówiono instalacji Azure Backup Server w środowisku Azure Stack. Aby zainstalować Azure Backup Server na Azure Stack, zobacz artykuł [instalowanie Azure Backup Server](backup-mabs-install-azure-stack.md).
 
 
-## <a name="back-up-files-and-folders-in-azure-stack-vms-to-azure"></a>Tworzenie kopii zapasowych plików i folderów na maszynach wirtualnych Azure Stack na platformie Azure
+## <a name="back-up-files-and-folders-in-azure-stack-vms-to-azure"></a>Tworzenie kopii zapasowych plików i folderów w Azure Stack maszynach wirtualnych na platformie Azure
 
-Aby skonfigurować usługi Azure Backup Server, aby chronić pliki na maszynach wirtualnych usługi Azure Stack, otwórz konsolę serwera usługi Azure Backup. Konfigurowanie grup ochrony i ochrony danych na maszynach wirtualnych, użyjemy konsoli.
+Aby skonfigurować Azure Backup Server ochrony plików w Azure Stack maszynach wirtualnych, Otwórz konsolę programu Azure Backup Server. Za pomocą konsoli programu można skonfigurować grupy ochrony i chronić dane na maszynach wirtualnych.
 
-1. Kliknij w konsoli usługi Azure Backup Server **ochrony** i na pasku narzędzi kliknij **New** otworzyć **tworzenia nowej grupy ochrony** kreatora.
+1. W konsoli Azure Backup Server kliknij pozycję **Ochrona** , a następnie na pasku narzędzi kliknij pozycję **Nowy** , aby otworzyć kreatora **tworzenia nowej grupy ochrony** .
 
-   ![Konfigurowanie ochrony w konsoli usługi Azure Backup Server](./media/backup-mabs-files-applications-azure-stack/1-mabs-menu-create-protection-group.png)
+   ![Konfigurowanie ochrony w konsoli Azure Backup Server](./media/backup-mabs-files-applications-azure-stack/1-mabs-menu-create-protection-group.png)
 
-    Może potrwać kilka sekund otworzyć kreatora. Po otwarciu kreatora kliknij przycisk **dalej** celu przechodzenia do **wybierz typ grupy ochrony** ekranu.
+    Otwarcie Kreatora może potrwać kilka sekund. Po otwarciu kreatora kliknij przycisk **dalej** , aby przejść do ekranu **Wybierz typ grupy ochrony** .
 
-   ![Otwiera Kreatora nowej grupy ochrony](./media/backup-mabs-files-applications-azure-stack/2-create-new-protection-group-wiz.png)
+   ![Zostanie otwarty Kreator nowej grupy ochrony](./media/backup-mabs-files-applications-azure-stack/2-create-new-protection-group-wiz.png)
 
-2. Na **wybierz typ grupy ochrony** ekranu, wybierz **serwerów** i kliknij przycisk **dalej**.
+2. Na ekranie **Wybieranie typu grupy ochrony** wybierz pozycję **serwery** , a następnie kliknij przycisk **dalej**.
 
-    ![Otwiera Kreatora nowej grupy ochrony](./media/backup-mabs-files-applications-azure-stack/3-select-protection-group-type.png)
+    ![Zostanie otwarty Kreator nowej grupy ochrony](./media/backup-mabs-files-applications-azure-stack/3-select-protection-group-type.png)
 
-    **Wybierz członków grupy** zostanie otwarty ekran. 
+    Zostanie otwarty ekran **Wybieranie członków grupy** . 
 
-    ![Otwiera Kreatora nowej grupy ochrony](./media/backup-mabs-files-applications-azure-stack/4-opening-screen-choose-servers.png)
+    ![Zostanie otwarty Kreator nowej grupy ochrony](./media/backup-mabs-files-applications-azure-stack/4-opening-screen-choose-servers.png)
 
-3. W **Wybierz członków grupy** ekranu, kliknij przycisk **+** rozwiń listę elementów podrzędnych. Dla wszystkich elementów, które mają być chronione zaznacz pole wyboru. Po wybraniu wszystkich elementów kliknij **dalej**.
+3. Na ekranie **Wybierz członków grupy** kliknij **+** , aby rozwinąć listę podelementów. Dla wszystkich elementów, które mają być chronione, zaznacz pole wyboru. Po wybraniu wszystkich elementów kliknij przycisk **dalej**.
 
-    ![Otwiera Kreatora nowej grupy ochrony](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
+    ![Zostanie otwarty Kreator nowej grupy ochrony](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
 
-    Firma Microsoft zaleca umieszczenie wszystkich danych, które współużytkują zasady ochrony, w grupie ochrony jeden. Aby uzyskać pełne informacje o planowaniu i wdrażaniu grupy ochrony, zobacz artykuł programu System Center DPM [wdrażanie grup ochrony](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801).
+    Firma Microsoft zaleca umieszczenie w jednej grupie ochrony wszystkich danych, które będą współużytkowane z zasadami ochrony. Aby uzyskać pełne informacje o planowaniu i wdrażaniu grup ochrony, zobacz artykuł System Center DPM, [wdrażanie grup ochrony](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801).
 
-4. W **wybierz metodę ochrony danych** ekranu, wpisz nazwę grupy ochrony. Zaznacz pole wyboru **chcę krótkoterminową ochronę za pomocą:** i **chcę uzyskać ochronę online**. Kliknij przycisk **Dalej**.
+4. Na ekranie **Wybierz metodę ochrony danych** wpisz nazwę grupy ochrony. Zaznacz pole wyboru dla **opcji chcę uzyskać krótkoterminową ochronę przy użyciu:** i chcę **chronić w trybie online**. Kliknij przycisk **Dalej**.
 
-    ![Otwiera Kreatora nowej grupy ochrony](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
+    ![Zostanie otwarty Kreator nowej grupy ochrony](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
 
-    Aby wybrać **chcę uzyskać ochronę online**, musisz najpierw wybrać **chcę krótkoterminową ochronę za pomocą:** Dysk. Usługa Azure Backup Server nie ochrona na taśmie, dysk jest tylko opcja w przypadku ochrony krótkoterminowej.
+    Aby wybrać opcję chcę **chronić w trybie online**, musisz najpierw wybrać opcję **Chcę uzyskać krótkoterminową ochronę za pomocą:** 3,5. Azure Backup Server nie chroni na taśmie, więc dysk jest jedynym wyborem dla ochrony krótkoterminowej.
 
-5. W **Określ cele krótkoterminowe** ekranu, czas przechowywania punktów odzyskiwania, zapisane na dysku i kiedy należy zapisywać przyrostowe kopie zapasowe. Kliknij przycisk **Dalej**.
+5. Na ekranie **Określ cele krótkoterminowe** wybierz, jak długo mają być przechowywane punkty odzyskiwania zapisane na dysku, oraz czas zapisywania przyrostowych kopii zapasowych. Kliknij przycisk **Dalej**.
 
     > [!IMPORTANT]
-    > Należy **nie** przechowywanie danych odzyskiwania operacyjnego (kopia zapasowa) na dyskach dołączonych do serwera usługi Azure Backup więcej niż pięć dni.
+    > Danych odzyskiwania operacyjnego (Backup) **nie** należy przechowywać na dyskach dołączonych Azure Backup Server przez więcej niż pięć dni.
     >
 
-    ![Otwiera Kreatora nowej grupy ochrony](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png) 
+    ![Zostanie otwarty Kreator nowej grupy ochrony](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png) 
 
-    Zamiast określać interwał tworzenia przyrostowych kopii zapasowych, aby uruchomienie ekspresowej pełnej kopii zapasowej bezpośrednio przed każdym zaplanowanym punktem odzyskiwania, kliknij przycisk **zaraz przed punktem odzyskiwania**. W przypadku ochrony obciążeń aplikacji, serwer usługi Azure Backup tworzy punkty odzyskiwania na harmonogram częstotliwości synchronizacji, (pod warunkiem aplikacja obsługuje przyrostowe kopie zapasowe). Jeśli aplikacja nie obsługuje przyrostowych kopii zapasowych, serwer usługi Azure Backup uruchamia ekspresową pełną kopię zapasową.
+    Zamiast wybierać interwał przyrostowych kopii zapasowych, aby uruchomić ekspresową pełną kopię zapasową tuż przed każdym zaplanowanym punktem odzyskiwania, kliknij **tuż przed punktem odzyskiwania**. W przypadku ochrony obciążeń aplikacji Azure Backup Server tworzy punkty odzyskiwania zgodnie z harmonogramem częstotliwości synchronizacji (pod warunkiem, że aplikacja obsługuje przyrostowe kopie zapasowe). Jeśli aplikacja nie obsługuje przyrostowych kopii zapasowych, Azure Backup Server uruchamia ekspresową pełną kopię.
 
-    Aby uzyskać **punktów odzyskiwania plików**, określ, kiedy do tworzenia punktów odzyskiwania. Kliknij przycisk **Modyfikuj** można ustawić godziny i dni tygodnia, gdy są tworzone punkty odzyskiwania.
+    Dla **punktów odzyskiwania plików**Określ, kiedy mają być tworzone punkty odzyskiwania. Kliknij przycisk **Modyfikuj** , aby ustawić godziny i dni tygodnia, w których są tworzone punkty odzyskiwania.
 
-6. W **Przejrzyj przydział dysku** ekranu, przejrzyj miejsce w puli magazynu przydzielone danej grupie ochrony.
+6. Na ekranie **Przejrzyj przydział dysku** Przejrzyj miejsce na dysku w puli magazynów przydzielone danej grupie ochrony.
 
-    **Całkowity rozmiar danych** jest rozmiar danych, aby utworzyć kopię zapasową i **miejsca na dysku do zainicjowania obsługi administracyjnej** na serwer usługi Azure Backup jest zalecane miejsce dla grupy ochrony. Usługa Azure Backup Server wybierze idealną wielkość kopii zapasowej na podstawie ustawień. Można jednak edytować opcje wielkości kopii zapasowej w szczegółach alokacji dysku. W przypadku obciążeń wybierz preferowany magazyn, w menu rozwijanym. Edycja zmienia wartości Całkowita ilość miejsca i ilość wolnego miejsca, w okienku dostępny Magazyn dyskowy. Miejsce to ilość miejsca w magazynie, który serwer usługi Azure Backup sugeruje dodać do woluminu, aby kontynuować tworzenie kopii zapasowych sprawnie w przyszłości.
+    **Łączny rozmiar danych** to rozmiar danych, dla których ma zostać utworzona kopia zapasowa, oraz miejsce na dysku, na którym ma **zostać zainicjowana obsługa** Azure Backup Server jest zalecanym miejscem dla grupy ochrony. Azure Backup Server wybiera idealny wolumin kopii zapasowej na podstawie ustawień. Można jednak edytować opcje woluminu kopii zapasowej w szczegółach alokacji dysku. W przypadku obciążeń wybierz preferowany magazyn z menu rozwijanego. Twoje zmiany zmieniają wartości łącznego magazynu i wolnego magazynu w okienku dostępne Disk Storage. Zajęte miejsce to ilość Azure Backup Server magazynów sugerujących dodanie do woluminu, co umożliwia płynne wykonywanie kopii zapasowych w przyszłości.
 
-7. W **wybierz metodę tworzenia repliki**, wybierz, jak chcesz obsługiwać początkową pełną replikację danych. Jeśli zdecydujesz się replikacja przez sieć, Azure zaleca wybierz godzinę poza godzinami szczytu. Dla dużych ilości danych lub nieoptymalnych siecią warto rozważyć replikowanie danych za pomocą nośnika wymiennego.
+7. W obszarze **Wybierz metodę tworzenia repliki**wybierz, jak chcesz obsługiwać początkową pełną replikację danych. Jeśli zdecydujesz się na replikację za pośrednictwem sieci, platforma Azure zaleca wybranie czasu poza godzinami szczytu. W przypadku dużych ilości danych lub mniej niż optymalnych warunków sieciowych należy rozważyć replikowanie danych przy użyciu nośnika wymiennego.
 
-8. W **wybierz opcje sprawdzania spójności**, wybierz sposób automatyzacji sprawdzania spójności. Włącz sprawdzanie spójności uruchomić tylko wtedy, gdy replikacja danych stanie się niespójna lub zgodnie z harmonogramem. Jeśli nie chcesz konfigurować automatycznego sprawdzania spójności, należy uruchomić sprawdzanie ręczne, w dowolnym momencie przez:
-    * W **ochrony** obszarze konsoli serwera usługi Azure Backup, kliknij prawym przyciskiem myszy grupę ochrony i wybierz pozycję **Przeprowadź Sprawdzanie spójności**.
+8. W obszarze **Wybierz opcje sprawdzania spójności**wybierz sposób automatyzacji sprawdzania spójności. Włącz sprawdzanie spójności do uruchomienia tylko wtedy, gdy replikacja danych stała się niespójna lub zgodnie z harmonogramem. Jeśli nie chcesz konfigurować automatycznego sprawdzania spójności, w dowolnym momencie Uruchom sprawdzanie ręczne, wykonując następujące czynności:
+    * W obszarze **Ochrona** w konsoli Azure Backup Server kliknij prawym przyciskiem myszy grupę ochrony i wybierz polecenie **Przeprowadź sprawdzanie spójności**.
 
-9. Jeśli zdecydujesz się utworzyć kopię zapasową na platformie Azure, na **Określ dane chronione w trybie online** strony, upewnij się, obciążenia, aby utworzyć kopię zapasową na platformie Azure są zaznaczone.
+9. Jeśli zdecydujesz się na utworzenie kopii zapasowej na platformie Azure, na stronie **Określ dane ochrony w trybie online** upewnij się, że są zaznaczone obciążenia, dla których chcesz utworzyć kopię zapasową na platformie Azure.
 
-10. W **Określanie harmonogramu tworzenia kopii zapasowych online**, określ, kiedy powinny występować przyrostowe kopie zapasowe na platformie Azure. 
+10. W obszarze **Określ harmonogram kopii zapasowych online**Określ, kiedy mają być wykonywane przyrostowe kopie zapasowe na platformie Azure. 
 
-    Można zaplanować tworzenie kopii zapasowych do uruchamiania na co dzień/tydzień/miesiąc/rok i godzina i Data, w którym powinno być ono uruchomione. Kopie zapasowe mogą być tworzone maksymalnie dwa razy dziennie. Każdym uruchomieniu zadania tworzenia kopii zapasowej, punkt odzyskiwania danych jest tworzony na platformie Azure z kopii kopii zapasowej danych przechowywanych na dysku serwera usługi Azure Backup.
+    Możesz zaplanować uruchamianie kopii zapasowych codziennie na dzień/tydzień/miesiąc/rok oraz godzinę/datę, o której powinny one zostać uruchomione. Kopie zapasowe mogą odbywać się maksymalnie dwa razy dziennie. Za każdym razem, gdy uruchamiane jest zadanie tworzenia kopii zapasowej, punkt odzyskiwania danych jest tworzony na platformie Azure na podstawie kopii kopii zapasowej danych przechowywanych na dysku Azure Backup Server.
 
-11. W **Określ zasady przechowywania danych online**, określ, jak punktów odzyskiwania tworzonych na podstawie kopii zapasowych co dzień/tydzień/miesiąc/rok są przechowywane na platformie Azure.
+11. W obszarze **Określ zasady przechowywania danych online**Określ, w jaki sposób punkty odzyskiwania utworzone na podstawie kopii zapasowych na dzień/tydzień/miesiąc/rok mają być przechowywane na platformie Azure.
 
-12. W **wybierz replikację online**, określ, jak występuje początkowa Pełna replikacja danych. 
+12. W obszarze **Wybierz replikację online**Określ, jak następuje początkowa pełna replikacja danych. 
 
-13. Na **Podsumowanie**, przejrzyj ustawienia. Po kliknięciu **Utwórz grupę**, następuje Replikacja początkowa danych. Podczas replikacji danych zakończeniu na **stan** strony, stan grupy ochrony jest wyświetlany jako **OK**. Zadania tworzenia początkowej kopii zapasowej odbywa się zgodnie z ochrony ustawień grupy.
+13. W obszarze **Podsumowanie**przejrzyj ustawienia. Po kliknięciu przycisku **Utwórz grupę**następuje początkowa replikacja danych. Po zakończeniu replikacji danych na stronie **stan** stan grupy ochrony jest wyświetlany jako **OK**. Początkowe zadanie tworzenia kopii zapasowej odbywa się zgodnie z ustawieniami grupy ochrony.
 
-## <a name="recover-file-data"></a>Odzyskiwanie danych plików
+## <a name="recover-file-data"></a>Odzyskaj dane pliku
 
-Za pomocą konsoli usługi Azure Backup Server do odzyskania danych do maszyny wirtualnej.
+Za pomocą konsoli Azure Backup Server można odzyskiwać dane na maszynę wirtualną.
 
-1. W konsoli usługi Azure Backup Server, na pasku nawigacyjnym kliknij **odzyskiwania** i przeglądanie danych, którą chcesz odzyskać. W okienku wyników wybierz dane.
+1. W konsoli Azure Backup Server na pasku nawigacyjnym kliknij pozycję **odzyskiwanie** i Wyszukaj dane, które chcesz odzyskać. W okienku wyników wybierz dane.
 
-2. W kalendarzu w sekcji punktów odzyskiwania dat wytłuszczonym drukiem wskazują, że dostępnych punktów odzyskiwania. Wybierz datę, aby odzyskać.
+2. W kalendarzu w sekcji punkty odzyskiwania są dostępne daty pogrubione wskazujące punkty odzyskiwania. Wybierz datę do odzyskania.
 
-3. W **element możliwy do odzyskania** okienku, wybierz element, który chcesz odzyskać.
+3. W okienku **element** możliwy do odzyskania wybierz element, który chcesz odzyskać.
 
-4. W **akcje** okienku kliknij **odzyskać** aby otworzyć Kreatora odzyskiwania.
+4. W okienku **Akcje** kliknij polecenie **Odzyskaj** , aby otworzyć Kreatora odzyskiwania.
 
 5. Dane można odzyskać w następujący sposób:
 
-    * **Odzyskaj do oryginalnej lokalizacji** — Jeśli komputer kliencki jest połączony za pośrednictwem sieci VPN, ta opcja nie działa. Zamiast tego należy użyć alternatywnej lokalizacji, a następnie skopiować dane z tej lokalizacji.
-    * **Odzyskiwanie do lokalizacji alternatywnej**
+    * **Odzyskaj do oryginalnej lokalizacji** — Jeśli komputer kliencki jest połączony za pośrednictwem sieci VPN, ta opcja nie działa. Zamiast tego użyj lokalizacji alternatywnej, a następnie skopiuj dane z tej lokalizacji.
+    * **Odzyskaj do lokalizacji alternatywnej**
 
 6. Określ opcje odzyskiwania:
 
-    * Dla **istniejące zachowanie funkcji odzyskiwania wersji**, wybierz opcję **Utwórz kopię**, **Pomiń**, lub **Zastąp**. Zastąpienie jest dostępna tylko w przypadku odzyskiwania do oryginalnej lokalizacji.
-    * Aby uzyskać **Przywróć zabezpieczenia**, wybierz **Zastosuj ustawienia komputera docelowego** lub **Zastosuj ustawienia zabezpieczeń wersji punktu odzyskiwania**.
-    * Dla **przepustowości**, kliknij przycisk **Modyfikuj** umożliwiające ograniczenie przepustowości sieci.
-    * **Powiadomienie** kliknij **Wyślij wiadomość e-mail po zakończeniu odzyskiwania**, i określ adresatów, którzy będą otrzymywać powiadomienia. Kolejne adresy e-mail oddziel przecinkami.
-    * Po dokonaniu wyboru, kliknij przycisk **dalej**
+    * W przypadku **zachowania odzyskiwania istniejącej wersji**wybierz opcję **Utwórz kopię**, **Pomiń**lub Zastąp. Zastępowanie jest dostępne tylko w przypadku odzyskiwania do oryginalnej lokalizacji.
+    * W obszarze **zabezpieczenia przywracania**wybierz opcję **Zastosuj ustawienia komputera docelowego** lub **Zastosuj ustawienia zabezpieczeń wersji punktu odzyskiwania**.
+    * Aby zapewnić **ograniczenie**przepustowości sieci, kliknij przycisk **Modyfikuj** , aby włączyć ograniczanie użycia przepustowości sieci.
+    * **Powiadomienie** Kliknij przycisk **Wyślij wiadomość e-mail po zakończeniu odzyskiwania**i określ adresatów, którzy otrzymają powiadomienie. Oddziel adresy e-mail przecinkami.
+    * Po dokonaniu wyboru kliknij przycisk **dalej** .
 
-7. Przejrzyj ustawienia odzyskiwania, a następnie kliknij przycisk **odzyskać**. 
+7. Przejrzyj ustawienia odzyskiwania i kliknij przycisk **Odzyskaj**. 
 
     > [!Note] 
-    > Gdy zadanie odzyskiwania jest w toku, zostaną anulowane wszystkie zadania synchronizacji dla wybrane elementy odzyskiwania.
+    > Gdy zadanie odzyskiwania jest w toku, wszystkie zadania synchronizacji dla wybranych elementów odzyskiwania są anulowane.
     >
 
-Jeśli używasz nowoczesnego magazynu kopii zapasowych (MB), serwer plików odzyskiwania przez użytkownika końcowego (EUR) nie jest obsługiwane. EUR serwera plików ma zależność na wolumin kopiowania w tle usługi (VSS), która nie korzysta z Modern Backup Storage. Jeśli EUR jest włączona, umożliwia odzyskiwanie danych następujące czynności:
+W przypadku korzystania z programu Nowoczesny magazyn kopii zapasowych (MB) serwer plików (EUR) nie jest obsługiwany. Serwer plików EUR ma zależność od Usługa kopiowania woluminów w tle (VSS), która Nowoczesny magazyn kopii zapasowych nie jest używana. Jeśli jest włączona funkcja EUR, wykonaj następujące kroki, aby odzyskać dane:
 
-1. Przejdź do plików chronionych, kliknij prawym przyciskiem myszy nazwę pliku i wybierz pozycję **właściwości**.
+1. Przejdź do chronionych plików, a następnie kliknij prawym przyciskiem myszy nazwę pliku i wybierz polecenie **Właściwości**.
 
-2. Na **właściwości** menu, kliknij przycisk **poprzednie wersje** i wybierz wersję, którą chcesz odzyskać.
+2. W menu **Właściwości** kliknij pozycję **poprzednie wersje** i wybierz wersję, którą chcesz odzyskać.
 
-## <a name="view-azure-backup-server-with-a-vault"></a>Wyświetlanie usługi Azure Backup Server przy użyciu magazynu
-Aby wyświetlić jednostki usługi Azure Backup Server w witrynie Azure Portal, należy wykonać następujące czynności:
-1. Otwórz magazyn usługi Recovery Services.
-2. Kliknij przycisk infrastruktury kopii zapasowych.
+## <a name="view-azure-backup-server-with-a-vault"></a>Wyświetlanie Azure Backup Server z magazynem
+Aby wyświetlić jednostki Azure Backup Server w witrynie Azure Portal, można wykonać następujące czynności:
+1. Otwórz Recovery Services magazyn.
+2. Kliknij pozycję Infrastruktura kopii zapasowych.
 3. Wyświetl serwery zarządzania kopiami zapasowymi.
 
 ## <a name="see-also"></a>Zobacz także
-Aby uzyskać informacje na temat korzystania z usługi Azure Backup Server do ochrony innych obciążeń, zobacz jeden z następujących artykułów:
-- [Tworzenie kopii zapasowych farmy programu SharePoint](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
-- [Tworzenie kopii zapasowych programu SQL server](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)
+Aby uzyskać informacje na temat używania Azure Backup Server do ochrony innych obciążeń, zobacz jeden z następujących artykułów:
+- [Tworzenie kopii zapasowej farmy programu SharePoint](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
+- [Tworzenie kopii zapasowej programu SQL Server](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)

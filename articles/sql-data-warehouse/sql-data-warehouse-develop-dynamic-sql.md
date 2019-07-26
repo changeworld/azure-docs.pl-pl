@@ -1,8 +1,8 @@
 ---
-title: Za pomocą dynamiczny język SQL w usłudze Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
-description: Porady dotyczące używania dynamiczny język SQL w usłudze Azure SQL Data Warehouse do opracowywania rozwiązań.
+title: Używanie dynamicznego języka SQL w Azure SQL Data Warehouse | Microsoft Docs
+description: Porady dotyczące korzystania z dynamicznego języka SQL w Azure SQL Data Warehouse na potrzeby tworzenia rozwiązań.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,19 +10,19 @@ ms.subservice: query
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 567637cab1c983992b08f65352ab9a92bd448c5a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4454b1d44d0be61dca8571e86c73e09a9527d1eb
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65861825"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479660"
 ---
-# <a name="dynamic-sql-in-sql-data-warehouse"></a>Dynamiczny język SQL w usłudze SQL Data Warehouse
-Porady dotyczące używania dynamiczny język SQL w usłudze Azure SQL Data Warehouse do opracowywania rozwiązań.
+# <a name="dynamic-sql-in-sql-data-warehouse"></a>Dynamiczne SQL w SQL Data Warehouse
+Porady dotyczące korzystania z dynamicznego języka SQL w Azure SQL Data Warehouse na potrzeby tworzenia rozwiązań.
 
-## <a name="dynamic-sql-example"></a>Przykład dynamiczny język SQL
+## <a name="dynamic-sql-example"></a>Dynamiczny przykład SQL
 
-Podczas tworzenia kodu aplikacji dla usługi SQL Data Warehouse, może być konieczne Użyj dynamiczny język sql, aby dostarczać rozwiązania, elastyczna, ogólnego i moduły. Usługa SQL Data Warehouse nie obsługuje typów danych obiektów blob w tym momencie. Nie obsługuje typów danych obiektów blob może być ograniczenie rozmiaru Twoimi ciągami, ponieważ typy danych obiektów blob obejmują typy varchar(max) i nvarchar(max). Jeśli używasz tych typów w kodzie aplikacji do tworzenia dużych ciągów, musisz podział kodu na fragmenty i zamiast tego użyj instrukcji EXEC.
+Podczas tworzenia kodu aplikacji dla SQL Data Warehouse może być konieczne użycie dynamicznego języka SQL w celu zapewnienia elastycznych, ogólnych i modularnych rozwiązań. W tej chwili SQL Data Warehouse nie obsługuje typów danych obiektów BLOB. Nieobsługiwane typy danych obiektów BLOB mogą ograniczać rozmiar ciągów, ponieważ typy danych obiektów BLOB zawierają zarówno typy varchar (max), jak i nvarchar (max). Jeśli w kodzie aplikacji użyto tych typów do kompilowania dużych ciągów, należy podzielić kod na fragmenty i zamiast tego użyć instrukcji EXEC.
 
 Prosty przykład:
 
@@ -34,13 +34,13 @@ DECLARE @sql_fragment1 VARCHAR(8000)=' SELECT name '
 EXEC( @sql_fragment1 + @sql_fragment2 + @sql_fragment3);
 ```
 
-Jeśli ciąg jest krótkim, możesz użyć [sp_executesql](/sql/relational-databases/system-stored-procedures/sp-executesql-transact-sql) w zwykły sposób.
+Jeśli ciąg jest krótki, możesz użyć [sp_executesql](/sql/relational-databases/system-stored-procedures/sp-executesql-transact-sql) jako normalnego.
 
 > [!NOTE]
-> Instrukcje wykonywane jako dynamiczny język SQL będą nadal podlegać wszystkie reguły sprawdzania poprawności TSQL.
+> Instrukcje wykonane jako dynamiczny kod SQL będą nadal podlegać wszystkim regułom walidacji TSQL.
 > 
 > 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej porad programistycznych, zobacz [omówienie programowania w usłudze](sql-data-warehouse-overview-develop.md).
+Aby uzyskać więcej porad programistycznych, zobacz [Omówienie projektowania](sql-data-warehouse-overview-develop.md).
 

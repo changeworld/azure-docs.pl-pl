@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: spelluru
-ms.openlocfilehash: 47fbce7ea26bcb7224fe2624d593d85cd178d610
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 964a472a5c0a6350090f83755747a12e89a1650e
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60420315"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68422919"
 ---
 # <a name="what-is-azure-relay"></a>Co to jest usługa Azure Relay?
 Usługa Azure Relay umożliwia bezpieczne uwidacznianie usług uruchomionych w sieci firmowej do chmury publicznej. Możesz to zrobić bez otwierania portu na zaporze lub wprowadzania niepożądanych zmian w firmowej infrastrukturze sieci. 
@@ -56,7 +56,7 @@ Aby uzyskać szczegółowe informacje o protokole połączenia hybrydowego, zoba
 > Połączenia hybrydowe usługi Azure Relay zastępują starą funkcję połączeń hybrydowych usług BizTalk Services. Funkcja połączeń hybrydowych w usługach BizTalk Services została oparta na funkcji przekaźnika WCF w usłudze Azure Service Bus. Możliwości funkcji połączeń hybrydowych w usłudze Azure Relay uzupełniają już istniejącą funkcję przekaźnika WCF. Te dwie możliwości usług (Przekaźnik WCF oraz Połączenia hybrydowe) istnieją obok siebie w usłudze Azure Relay. Korzystają one ze wspólnej bramy, ale pod innymi względami są to różne implementacje.
 
 ## <a name="wcf-relay"></a>Przekaźnik WCF
-Przekaźnik WCF działa z pełnym programem .NET Framework i technologią WCF. Należy utworzyć połączenie między usługą lokalną i usługą przekaźnika przy użyciu zestawu powiązań „przekaźników” WCF. Powiązania przekaźników są mapowane na nowe elementy powiązania transportu przeznaczone do tworzenia składników kanału WCF, które integrują się w chmurze z usługą Service Bus. Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi WCF Relay](relay-wcf-dotnet-get-started.md).
+Przekaźnik WCF działa z pełnym programem .NET Framework i technologią WCF. Należy utworzyć połączenie między usługą lokalną i usługą przekaźnika przy użyciu zestawu powiązań „przekaźników” WCF. Powiązania przekaźników są mapowane na nowe elementy powiązania transportu przeznaczone do tworzenia składników kanału WCF, które integrują się w chmurze z usługą Service Bus. Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi WCF Relay](service-bus-relay-tutorial.md).
 
 ## <a name="hybrid-connections-vs-wcf-relay"></a>Połączenia hybrydowe i Przekaźnik WCF
 Zarówno połączenia hybrydowe, jak i przekaźniki WCF umożliwiają bezpieczne połączenie z zasobami istniejącymi w sieci firmowej. Użycie jednej lub drugiej zależy od Twoich konkretnych potrzeb zgodnie z opisem w poniższej tabeli:
@@ -82,7 +82,7 @@ Na poniższym diagramie przedstawiono sposób obsługiwania przychodzących żą
 5. Brama przekierowuje żądanie połączenia do odpowiedniej bramy wspomnianej w magazynie bramy. 
 6. Brama wysyła żądanie do klienta nasłuchującego tej bramy, aby utworzyć tymczasowy kanał do węzła bramy, który znajduje się najbliżej klienta wysyłającego. 
 7. Klient nasłuchujący tworzy tymczasowy kanał w bramie znajdującej się najbliżej klienta wysyłającego. Po nawiązaniu połączenia między klientami za pośrednictwem bramy klienci mogą wymieniać między sobą komunikaty. 
-8. Bramy przesyła wszystkie komunikaty z nasłuchującego klienta wysyłania klienta. 
+8. Brama przekazuje wszystkie komunikaty od klienta nasłuchiwania do klienta wysyłającego. 
 9. Brama przesyła dalej komunikaty z klienta wysyłającego do klienta nasłuchującego.  
 
 ## <a name="next-steps"></a>Kolejne kroki

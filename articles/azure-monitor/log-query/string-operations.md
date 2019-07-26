@@ -1,6 +1,6 @@
 ---
-title: Praca z ciągami zapytań dzienników usługi Azure Monitor | Dokumentacja firmy Microsoft
-description: Opisuje sposób edytowania, porównaj, wyszukiwanie i wykonywanie wielu innych operacji na ciągi w zapytaniach dzienników usługi Azure Monitor.
+title: Pracuj z ciągami w zapytaniach dziennika Azure Monitor | Microsoft Docs
+description: Opisuje sposób edytowania, porównywania, wyszukiwania i wykonywania różnych operacji na ciągach w kwerendach dziennika Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,80 +13,84 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 4b2763629a3036551cb3d362e609c72737436f4a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f53d3bd64b4f837fe29baa338cd338158d59d95d
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61424707"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466953"
 ---
-# <a name="work-with-strings-in-azure-monitor-log-queries"></a>Praca z ciągami zapytań dzienników usługi Azure Monitor
+# <a name="work-with-strings-in-azure-monitor-log-queries"></a>Pracuj z ciągami w zapytaniach dziennika Azure Monitor
 
 
 > [!NOTE]
-> Należy wykonać [Rozpoczynanie pracy z usługą Azure Monitor Log Analytics](get-started-portal.md) i [wprowadzenie do usługi Azure Monitor dziennika zapytań](get-started-queries.md) przed ukończenie tego samouczka.
+> Przed ukończeniem tego samouczka należy zakończyć pracę [z Azure Monitor Log Analytics](get-started-portal.md) i [zacząć korzystać z zapytań dzienników Azure monitor](get-started-queries.md) .
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-W tym artykule opisano jak edytowanie, porównaj, wyszukiwanie i wykonywanie wielu innych operacji na ciągi.
+W tym artykule opisano sposób edytowania, porównywania, wyszukiwania i wykonywania różnych operacji na ciągach.
 
-Każdy znak w ciągu ma numer indeksu, zgodnie z jego lokalizacją. Pierwszy znak ma pod indeksem 0, następny znak jest 1, a więc jedno. Funkcje ciągów różnych Użyj numery indeksu, jak pokazano w poniższych sekcjach. Wielu z poniższych przykładów **drukowanie** polecenia dla pokazują manipulowanie ciągami, bez korzystania z określonego źródła danych.
+Każdy znak w ciągu ma numer indeksu, zgodnie z jego lokalizacją. Pierwszy znak jest z indeksem 0, następny znak to 1 i tak. Różne funkcje ciągów używają numerów indeksu, jak pokazano w poniższych sekcjach. W wielu poniższych przykładach użyto polecenia **Print** , aby zademonstrować manipulowanie ciągami bez użycia określonego źródła danych.
 
 
-## <a name="strings-and-escaping-them"></a>Ciągi i ich anulowania zapewnianego element
-Wartości ciągu są ujęte w nawiasy przy użyciu znaków cudzysłowu pojedynczym lub podwójnym. Ukośnik odwrotny (\) służy do znaki ucieczki znak następujący przykład \t dla karty, \n dla nowego wiersza, i \" sam znak cudzysłowu.
+## <a name="strings-and-escaping-them"></a>Ciągi i ucieczki
+Wartości ciągów są opakowane z pojedynczym lub podwójnym cudzysłowem. Ukośnik odwrotny\) (jest używany do ucieczki znaków po nim, takich jak \t dla karty, \n dla wiersza i \" znaku cudzysłowu.
 
 ```Kusto
 print "this is a 'string' literal in double \" quotes"
 ```
 
-Aby zapobiec "\\"z działającym jako znak ucieczki, Dodaj"\@" jako prefiksu parametry:
+```Kusto
+print 'this is a "string" literal in single \' quotes'
+```
+
+Aby zapobiec\\działaniu jako znak ucieczki, Dodaj "\@" jako prefiks do ciągu:
 
 ```Kusto
 print @"C:\backslash\not\escaped\with @ prefix"
 ```
 
 
-## <a name="string-comparisons"></a>Porównywanie ciągów
+## <a name="string-comparisons"></a>Porównania ciągów
 
-Operator       |Opis                         |Case-Sensitive|Przykład (daje `true`)
+Operator       |Opis                         |Z uwzględnieniem wielkości liter|Przykład (yields `true`)
 ---------------|------------------------------------|--------------|-----------------------
 `==`           |Równa się                              |Tak           |`"aBc" == "aBc"`
-`!=`           |Nie równa się                          |Tak           |`"abc" != "ABC"`
+`!=`           |Nierówne                          |Tak           |`"abc" != "ABC"`
 `=~`           |Równa się                              |Nie            |`"abc" =~ "ABC"`
-`!~`           |Nie równa się                          |Nie            |`"aBc" !~ "xyz"`
-`has`          |Po prawej stronie jest cały termin w po lewej stronie |Nie|`"North America" has "america"`
-`!has`         |Po prawej stronie nie jest pełną termin w po lewej stronie       |Nie            |`"North America" !has "amer"` 
-`has_cs`       |Po prawej stronie jest cały termin w po lewej stronie |Tak|`"North America" has_cs "America"`
-`!has_cs`      |Po prawej stronie nie jest pełną termin w po lewej stronie       |Yes            |`"North America" !has_cs "amer"` 
-`hasprefix`    |Po prawej stronie jest określenie prefiksu po lewej stronie         |Nie            |`"North America" hasprefix "ame"`
-`!hasprefix`   |Po prawej stronie nie jest określenie prefiksu po lewej stronie     |Nie            |`"North America" !hasprefix "mer"` 
-`hasprefix_cs`    |Po prawej stronie jest określenie prefiksu po lewej stronie         |Tak            |`"North America" hasprefix_cs "Ame"`
-`!hasprefix_cs`   |Po prawej stronie nie jest określenie prefiksu po lewej stronie     |Tak            |`"North America" !hasprefix_cs "CA"` 
-`hassuffix`    |Po prawej stronie jest sufiksem termin w polu po lewej stronie         |Nie            |`"North America" hassuffix "ica"`
-`!hassuffix`   |Po prawej stronie nie ma sufiks termin w po lewej stronie     |Nie            |`"North America" !hassuffix "americ"`
-`hassuffix_cs`    |Po prawej stronie jest sufiksem termin w polu po lewej stronie         |Tak            |`"North America" hassuffix_cs "ica"`
-`!hassuffix_cs`   |Po prawej stronie nie ma sufiks termin w po lewej stronie     |Tak            |`"North America" !hassuffix_cs "icA"`
-`contains`     |Występuje po prawej stronie podsekwencji po lewej stronie  |Nie            |`"FabriKam" contains "BRik"`
-`!contains`    |Po prawej stronie nie występuje w po lewej stronie           |Nie            |`"Fabrikam" !contains "xyz"`
-`contains_cs`   |Występuje po prawej stronie podsekwencji po lewej stronie  |Tak           |`"FabriKam" contains_cs "Kam"`
-`!contains_cs`  |Po prawej stronie nie występuje w po lewej stronie           |Tak           |`"Fabrikam" !contains_cs "Kam"`
-`startswith`   |Po prawej stronie jest początkowa podsekwencję po lewej stronie|Nie            |`"Fabrikam" startswith "fab"`
-`!startswith`  |Po prawej stronie nie jest początkowa podsekwencję po lewej stronie|Nie        |`"Fabrikam" !startswith "kam"`
-`startswith_cs`   |Po prawej stronie jest początkowa podsekwencję po lewej stronie|Tak            |`"Fabrikam" startswith_cs "Fab"`
-`!startswith_cs`  |Po prawej stronie nie jest początkowa podsekwencję po lewej stronie|Tak        |`"Fabrikam" !startswith_cs "fab"`
-`endswith`     |Po prawej stronie jest podsekwencji zamknięcia po lewej stronie|Nie             |`"Fabrikam" endswith "Kam"`
-`!endswith`    |Po prawej stronie nie jest podsekwencji zamknięcia po lewej stronie|Nie         |`"Fabrikam" !endswith "brik"`
-`endswith_cs`     |Po prawej stronie jest podsekwencji zamknięcia po lewej stronie|Yes             |`"Fabrikam" endswith "Kam"`
-`!endswith_cs`    |Po prawej stronie nie jest podsekwencji zamknięcia po lewej stronie|Tak         |`"Fabrikam" !endswith "brik"`
-`matches regex`|po lewej stronie zawiera dopasowanie po prawej stronie        |Tak           |`"Fabrikam" matches regex "b.*k"`
-`in`           |Równa się do jednego z elementów       |Tak           |`"abc" in ("123", "345", "abc")`
-`!in`          |Nie równa się do dowolnych elementów   |Tak           |`"bca" !in ("123", "345", "abc")`
+`!~`           |Nierówne                          |Nie            |`"aBc" !~ "xyz"`
+`has`          |Po prawej stronie jest całym terminem po lewej stronie |Nie|`"North America" has "america"`
+`!has`         |Po prawej stronie nie ma pełnego terminu po lewej stronie       |Nie            |`"North America" !has "amer"` 
+`has_cs`       |Po prawej stronie jest całym terminem po lewej stronie |Tak|`"North America" has_cs "America"`
+`!has_cs`      |Po prawej stronie nie ma pełnego terminu po lewej stronie       |Tak            |`"North America" !has_cs "amer"` 
+`hasprefix`    |Po prawej stronie jest termin prefiksu po lewej stronie         |Nie            |`"North America" hasprefix "ame"`
+`!hasprefix`   |Po prawej stronie nie jest terminem prefiksu po lewej stronie     |Nie            |`"North America" !hasprefix "mer"` 
+`hasprefix_cs`    |Po prawej stronie jest termin prefiksu po lewej stronie         |Tak            |`"North America" hasprefix_cs "Ame"`
+`!hasprefix_cs`   |Po prawej stronie nie jest terminem prefiksu po lewej stronie     |Tak            |`"North America" !hasprefix_cs "CA"` 
+`hassuffix`    |Po prawej stronie jest sufiks terminu po lewej stronie         |Nie            |`"North America" hassuffix "ica"`
+`!hassuffix`   |Po prawej stronie nie ma sufiksu terminu po lewej stronie     |Nie            |`"North America" !hassuffix "americ"`
+`hassuffix_cs`    |Po prawej stronie jest sufiks terminu po lewej stronie         |Tak            |`"North America" hassuffix_cs "ica"`
+`!hassuffix_cs`   |Po prawej stronie nie ma sufiksu terminu po lewej stronie     |Yes            |`"North America" !hassuffix_cs "icA"`
+`contains`     |Prawa strona występuje jako podsekwencja po lewej stronie  |Nie            |`"FabriKam" contains "BRik"`
+`!contains`    |Prawa strona nie występuje po lewej stronie           |Nie            |`"Fabrikam" !contains "xyz"`
+`contains_cs`   |Prawa strona występuje jako podsekwencja po lewej stronie  |Tak           |`"FabriKam" contains_cs "Kam"`
+`!contains_cs`  |Prawa strona nie występuje po lewej stronie           |Tak           |`"Fabrikam" !contains_cs "Kam"`
+`startswith`   |Po prawej stronie jest początkową podsekwencją lewej strony|Nie            |`"Fabrikam" startswith "fab"`
+`!startswith`  |Po prawej stronie nie jest początkową podsekwencją lewej strony|Nie        |`"Fabrikam" !startswith "kam"`
+`startswith_cs`   |Po prawej stronie jest początkową podsekwencją lewej strony|Yes            |`"Fabrikam" startswith_cs "Fab"`
+`!startswith_cs`  |Po prawej stronie nie jest początkową podsekwencją lewej strony|Tak        |`"Fabrikam" !startswith_cs "fab"`
+`endswith`     |Po prawej stronie jest zamykaną podsekwencją lewej strony|Nie             |`"Fabrikam" endswith "Kam"`
+`!endswith`    |Po prawej stronie nie jest zamykana podsekwencja po lewej stronie|Nie         |`"Fabrikam" !endswith "brik"`
+`endswith_cs`     |Po prawej stronie jest zamykaną podsekwencją lewej strony|Yes             |`"Fabrikam" endswith "Kam"`
+`!endswith_cs`    |Po prawej stronie nie jest zamykana podsekwencja po lewej stronie|Tak         |`"Fabrikam" !endswith "brik"`
+`matches regex`|po lewej stronie zawiera dopasowanie po prawej stronie        |Yes           |`"Fabrikam" matches regex "b.*k"`
+`in`           |Równa się jednemu z elementów       |Tak           |`"abc" in ("123", "345", "abc")`
+`!in`          |Nie równa się żadnym elementom   |Yes           |`"bca" !in ("123", "345", "abc")`
 
 
-## <a name="countof"></a>countof
+## <a name="countof"></a>CountOf
 
-Zlicza wystąpienia podciągu w ciągu. Można dopasować zwykłe ciągi, lub użyj wyrażenia regularnego. Dopasowuje ciąg zwykły nakładają się, podczas gdy nie pasuje do wyrażenia regularnego.
+Zlicza wystąpienia podciągu w ciągu. Można dopasować zwykłe ciągi lub użyć wyrażenia regularnego. Dopasowania w postaci zwykłego ciągu mogą się nakładać, gdy wyrażenia regularne nie są zgodne.
 
 ### <a name="syntax"></a>Składnia
 ```
@@ -94,17 +98,17 @@ countof(text, search [, kind])
 ```
 
 ### <a name="arguments"></a>Argumenty:
-- `text` -Ciągu wejściowego 
-- `search` -Zwykły ciąg lub wyrażenie regularne pasowało wewnątrz tekstu.
-- `kind` - _normalne_ | _wyrażenia regularnego_ (domyślne: normalny).
+- `text`-Ciąg wejściowy 
+- `search`-Zwykłego ciągu lub wyrażenia regularnego do dopasowania wewnątrz tekstu.
+- `kind` - normalne | _wyrażenie regularne_ (domyślnie: Normal).
 
 ### <a name="returns"></a>Zwraca
 
-Liczba przypadków, które można dopasować ciągu wyszukiwania w kontenerze. Zwykły ciąg znaków dopasowania mogą się nakładać podczas, gdy nie jest zgodne z wyrażeniem regularnym.
+Liczba określająca, ile razy można dopasować ciąg wyszukiwania w kontenerze. Dopasowania w postaci zwykłego ciągu mogą się pokrywać, gdy nie są zgodne wyrażenia regularne.
 
 ### <a name="examples"></a>Przykłady
 
-#### <a name="plain-string-matches"></a>Zwykły ciąg znaków dopasowania
+#### <a name="plain-string-matches"></a>Dopasowania zwykłego ciągu
 
 ```Kusto
 print countof("The cat sat on the mat", "at");  //result: 3
@@ -114,7 +118,7 @@ print countof("ababa", "ab", "normal");  //result: 2
 print countof("ababa", "aba");  //result: 2
 ```
 
-#### <a name="regex-matches"></a>Pasuje do wyrażenia regularnego
+#### <a name="regex-matches"></a>Dopasowanie wyrażenia regularnego
 
 ```Kusto
 print countof("The cat sat on the mat", @"\b.at\b", "regex");  //result: 3
@@ -125,7 +129,7 @@ print countof("abcabc", "a.c", "regex");  // result: 2
 
 ## <a name="extract"></a>Wyodrębnij
 
-Pobiera pasuje do wyrażenia regularnego z ciągu. Opcjonalnie również konwertuje wyodrębnione podciąg określonego typu.
+Pobiera dopasowanie wyrażenia regularnego z danego ciągu. Opcjonalnie konwertuje wyodrębniony podciąg określony typ.
 
 ### <a name="syntax"></a>Składnia
 
@@ -135,14 +139,14 @@ extract(regex, captureGroup, text [, typeLiteral])
 
 ### <a name="arguments"></a>Argumenty
 
-- `regex` -Wyrażenie regularne.
-- `captureGroup` -Jest dodatnia stała całkowita wskazująca grupy przechwytywania, aby wyodrębnić. 0 dla całego dopasowania 1 dla wartości dopasowane przez pierwszy "(" nawiasu")" w wyrażeniu regularnym, 2 lub więcej kolejnych nawiasów.
-- `text` -Ciąg do wyszukania.
-- `typeLiteral` — Literał opcjonalnie wpisz (na przykład typeof(long)). Jeśli nie dostarczono, wyodrębnionego ciągu jest konwertowana do tego typu.
+- `regex`-Wyrażenie regularne.
+- `captureGroup`-Dodatnia stała całkowita wskazująca grupę przechwytywania do wyodrębnienia. 0 dla całego dopasowania, 1 dla wartości dopasowanej przez pierwszy znak "(" nawias ")" w wyrażeniu regularnym, 2 lub więcej dla kolejnych nawiasów.
+- `text`-Ciąg do wyszukania.
+- `typeLiteral`-Opcjonalny literał typu (na przykład typeof (Long)). Jeśli jest podany, wyodrębniony podciąg jest konwertowany na ten typ.
 
 ### <a name="returns"></a>Zwraca
-Podciąg dopasowywane captureGroup grupy przechwytywania wskazane, opcjonalnie przekonwertowane na typeLiteral.
-Jeśli nie zostanie odnaleziony odpowiednik lub konwersja typu nie powiedzie się, zwraca wartość null.
+Podciąg dopasowany do wskazanej grupy przechwytywania grupa przechwytywania, opcjonalnie przekonwertowany na typeLiteral.
+Jeśli nie ma dopasowania lub konwersja typu nie powiedzie się, zwraca wartość null.
 
 ### <a name="examples"></a>Przykłady
 
@@ -154,7 +158,7 @@ Heartbeat
 | project ComputerIP, last_octet=extract("([0-9]*$)", 1, ComputerIP) 
 ```
 
-Poniższy przykład wyodrębnia ostatni oktet, rzutuje na *rzeczywistych* wpisz (number), a następnie oblicza wartość dalej IP
+Poniższy przykład wyodrębnia ostatni oktet, rzutuje go do *rzeczywistego* typu (Number) i oblicza następną wartość IP
 ```Kusto
 Heartbeat
 | where ComputerIP != "" 
@@ -164,7 +168,7 @@ Heartbeat
 | project ComputerIP, last_octet, next_ip
 ```
 
-W przykładzie poniżej ciąg *śledzenia* jest wyszukiwana w definicji "Czasu trwania". Dopasowanie jest rzutowany na *rzeczywistych* i pomnożona przez stałą czasu (1 s) *który rzutuje czasu trwania typu timespan*.
+W poniższym przykładzie *śledzenie* ciągów jest wyszukiwane dla definicji "Duration". Dopasowanie jest rzutowane na *prawdziwe* i mnożone przez stałą czasową (1 s) *, która rzutuje czas trwania na typ TimeSpan*.
 ```Kusto
 let Trace="A=12, B=34, Duration=567, ...";
 print Duration = extract("Duration=([0-9.]+)", 1, Trace, typeof(real));  //result: 567
@@ -172,10 +176,10 @@ print Duration_seconds =  extract("Duration=([0-9.]+)", 1, Trace, typeof(real)) 
 ```
 
 
-## <a name="isempty-isnotempty-notempty"></a>IsEmpty isnotempty, notempty
+## <a name="isempty-isnotempty-notempty"></a>IsEmpty, isnotempty, noskłonność
 
-- *IsEmpty* zwraca wartość true, jeśli argument jest ciągiem pustym ani mieć wartości null (Zobacz też *isnull*).
-- *isnotempty* zwraca wartość true, jeśli argument nie jest ciągiem pustym ani wartością null (Zobacz też *isnotnull*). alias: *notempty*.
+- *IsEmpty* zwraca wartość true, jeśli argument jest ciągiem pustym lub wartością null (patrz również *IsNull*).
+- *isnotempty* zwraca wartość true, jeśli argument nie jest ciągiem pustym ani wartością null (Zobacz również *IsNotNull*). alias: noskłonność.
 
 ### <a name="syntax"></a>Składnia
 
@@ -201,7 +205,7 @@ Heartbeat | where isnotempty(ComputerIP) | take 1  // return 1 Heartbeat record 
 
 ## <a name="parseurl"></a>parseurl
 
-Dzieli adresu URL na części (protokół, host, port itp.) i zwraca obiekt słownika zawierający części jako ciągi.
+Dzieli adres URL na jego części (protokół, host, port itp.) i zwraca obiekt słownika zawierający części jako ciągi.
 
 ### <a name="syntax"></a>Składnia
 
@@ -230,9 +234,9 @@ Wynik będzie:
 ```
 
 
-## <a name="replace"></a>Zastąp
+## <a name="replace"></a>stępować
 
-Zamienia wszystkie dopasowania wyrażenia regularnego innego ciągu. 
+Zamienia wszystkie dopasowania wyrażenia regularnego na inny ciąg. 
 
 ### <a name="syntax"></a>Składnia
 
@@ -242,12 +246,12 @@ replace(regex, rewrite, input_text)
 
 ### <a name="arguments"></a>Argumenty
 
-- `regex` -Wyrażenie regularne do dopasowania przez. Może on zawierać grupy przechwytywania w "("nawiasów")".
-- `rewrite` Zastąpienia aparat wyrażeń regularnych dla jakiegokolwiek dopasowania przez dopasowania wyrażenia regularnego. Użyj \0 do odwoływania się do całego dopasowania, \1 dla pierwszej grupy przechwytywania, \2 i tak dalej dla grupy kolejnych przechwytywania.
-- `input_text` -Wejściowy ciąg do przeszukania.
+- `regex`-Wyrażenie regularne, które ma zostać dopasowane przez. Może zawierać grupy przechwytywania w nawiasach klamrowych ().
+- `rewrite`— Wyrażenie regularne zastąpienia dla dowolnego dopasowania wykonanego przez zgodne wyrażenie regularne. Użyj \ 0, aby odwołać się do całego dopasowania, \ 1 dla pierwszej grupy przechwytywania, \ 2 itd. dla kolejnych grup przechwytywania.
+- `input_text`-Ciąg wejściowy do wyszukania.
 
 ### <a name="returns"></a>Zwraca
-Tekst, który po zastąpieniu wszystkie dopasowania wyrażenia regularnego ocen ponownego zapisywania. Dopasowuje się nie nakładały.
+Tekst po zamianie wszystkich odpowiedników wyrażenia regularnego na oceny ponownego zapisu. Dopasowania nie nakładają się.
 
 ### <a name="examples"></a>Przykłady
 
@@ -258,16 +262,16 @@ SecurityEvent
 | extend replaced = replace(@"(\d+) -", @"Activity ID \1: ", Activity) 
 ```
 
-Może mieć następujące wyniki:
+Mogą mieć następujące wyniki:
 
-Działanie                                        |zastąpione
+Działanie                                        |zastąpienie
 ------------------------------------------------|----------------------------------------------------------
-4663 - próbowano uzyskać dostęp do obiektu  |Identyfikator działania 4663: Nastąpiła próba dostępu do obiektu.
+4663 — podjęto próbę uzyskania dostępu do obiektu  |Identyfikator działania 4663: Podjęto próbę uzyskania dostępu do obiektu.
 
 
 ## <a name="split"></a>split
 
-Dzieli ciąg danego zgodnie z określonego ogranicznika i zwraca tablicę wynikowymi podciągami.
+Dzieli dany ciąg zgodnie z określonym ogranicznikiem i zwraca tablicę wynikowych podciągów.
 
 ### <a name="syntax"></a>Składnia
 ```
@@ -276,9 +280,9 @@ split(source, delimiter [, requestedIndex])
 
 ### <a name="arguments"></a>Argumenty:
 
-- `source` -Ciągu do podzielenia określonego ogranicznika.
-- `delimiter` Ogranicznik, który będzie używany w celu podzielić ciąg źródłowy.
-- `requestedIndex` -Opcjonalny indeks zaczynający się od zera. Jeśli nie dostarczono, tablicy zwracanego ciągu będą przechowywane tylko tego elementu (jeśli istnieje).
+- `source`-Ciąg, który ma zostać podzielony według określonego ogranicznika.
+- `delimiter`— Ogranicznik, który będzie używany w celu podzielenia ciągu źródłowego.
+- `requestedIndex`— Opcjonalny indeks oparty na wartości zero. Jeśli jest podany, zwracana tablica ciągów będzie przechowywać tylko ten element (jeśli istnieje).
 
 
 ### <a name="examples"></a>Przykłady
@@ -292,9 +296,9 @@ print split("a__b", "_");           // result: ["a","","b"]
 print split("aabbcc", "bb");        // result: ["aa","cc"]
 ```
 
-## <a name="strcat"></a>strcat —
+## <a name="strcat"></a>strcat
 
-Łączy argumenty typu string (1 – 16 obsługuje argumenty).
+Łączy argumenty ciągu (obsługuje 1-16 argumentów).
 
 ### <a name="syntax"></a>Składnia
 ```
@@ -324,7 +328,7 @@ print strlen("hello")   // result: 5
 
 ## <a name="substring"></a>podciąg
 
-Zwraca podciąg ciągu danego źródła, rozpoczynając od określonego indeksu. Opcjonalnie można określić długość podciągu żądanej.
+Wyodrębnia podciąg z danego ciągu źródłowego, rozpoczynając od określonego indeksu. Opcjonalnie można określić długość żądanego podciągu.
 
 ### <a name="syntax"></a>Składnia
 ```
@@ -333,9 +337,9 @@ substring(source, startingIndex [, length])
 
 ### <a name="arguments"></a>Argumenty:
 
-- `source` -Źródło ciąg podciąg zostaną pobrane z.
-- `startingIndex` -Liczony od zera znaku pozycja początkowa żądanego podciągu.
-- `length` -Opcjonalnym parametrem, który może służyć do określania Żądana długość zwracany ciąg podrzędny.
+- `source`-Ciąg źródłowy, z którego zostanie pobrany podciąg.
+- `startingIndex`— Znak początkowy na podstawie zera dla żądanego podciągu.
+- `length`-Opcjonalny parametr, który może służyć do określania żądanych długości zwracanego podciągu.
 
 ### <a name="examples"></a>Przykłady
 ```Kusto
@@ -346,9 +350,9 @@ print substring("ABCD", 0, 2);  // result: "AB"
 ```
 
 
-## <a name="tolower-toupper"></a>tolower, toupper
+## <a name="tolower-toupper"></a>ToLower, ToUpper
 
-Konwertuje dany ciąg wszystkie małe i wielkie litery.
+Konwertuje dany ciąg na małe lub wielkie litery.
 
 ### <a name="syntax"></a>Składnia
 ```
@@ -364,11 +368,11 @@ print toupper("hello"); // result: "HELLO"
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
-Kontynuuj samouczki zaawansowane:
+## <a name="next-steps"></a>Następne kroki
+Kontynuuj korzystanie z zaawansowanych samouczków:
 * [Funkcje agregacji](aggregations.md)
-* [Zaawansowane agregacji](advanced-aggregations.md)
+* [Agregacje zaawansowane](advanced-aggregations.md)
 * [Wykresy i diagramy](charts.md)
-* [Praca z formatu JSON i struktur danych](json-data-structures.md)
-* [Pisanie zapytań zaawansowanych](advanced-query-writing.md)
-* [Dołącza - krzyżowe analizy](joins.md)
+* [Praca z danymi JSON i strukturami danych](json-data-structures.md)
+* [Zaawansowane zapisywanie zapytań](advanced-query-writing.md)
+* [Sprzężenia — analiza krzyżowa](joins.md)

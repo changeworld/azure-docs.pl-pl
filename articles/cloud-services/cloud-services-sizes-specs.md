@@ -1,54 +1,48 @@
 ---
-title: Maszyny wirtualne o rozmiarach dla usług Azure Cloud services | Dokumentacja firmy Microsoft
-description: Wyświetla listę różnych rozmiarów maszyn wirtualnych (i identyfikatory) dla ról sieć web i proces roboczy usługi platformy Azure w chmurze.
+title: Rozmiary maszyn wirtualnych dla usług Azure Cloud Services | Microsoft Docs
+description: Wyświetla różne rozmiary maszyn wirtualnych (i identyfikatory) dla ról Sieć Web i proces roboczy usługi w chmurze platformy Azure.
 services: cloud-services
 documentationcenter: ''
-author: jpconnock
-manager: jpconnock
-editor: ''
-ms.assetid: 1127c23e-106a-47c1-a2e9-40e6dda640f6
+author: georgewallace
 ms.service: cloud-services
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: tbd
 ms.date: 07/18/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 21fbfe22901de677209b55639cd8871ab408375b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: gwallace
+ms.openlocfilehash: 0df9ee859ae8e341537f5e832d9ff90e9736cb0c
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64719022"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443013"
 ---
-# <a name="sizes-for-cloud-services"></a>Rozmiary usług Cloud Services
-W tym temacie opisano dostępne rozmiary i opcje dla wystąpień ról usługi w chmurze (role sieć web i ról procesów roboczych). Zapewnia również zagadnienia dotyczące wdrażania pod uwagę podczas planowania użycia tych zasobów. Rozmiar każdego ma identyfikator, który można umieścić w swojej [pliku definicji usługi](cloud-services-model-and-package.md#csdef). Ceny dla każdego rozmiaru są dostępne na [cennik usług Cloud Services](https://azure.microsoft.com/pricing/details/cloud-services/) strony.
+# <a name="sizes-for-cloud-services"></a>Rozmiary dla Cloud Services
+W tym temacie opisano dostępne rozmiary i opcje dla wystąpień ról usługi w chmurze (ról sieci Web i procesów roboczych). Zawiera również zagadnienia dotyczące wdrażania, które należy wziąć pod uwagę podczas planowania użycia tych zasobów. Każdy rozmiar ma identyfikator, który został umieszczony w [pliku definicji usługi](cloud-services-model-and-package.md#csdef). Ceny za każdy rozmiar są dostępne na stronie [cennika Cloud Services](https://azure.microsoft.com/pricing/details/cloud-services/) .
 
 > [!NOTE]
-> Aby wyświetlić pokrewne limity platformy Azure, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../azure-subscription-service-limits.md)
+> Aby sprawdzić powiązane limity platformy Azure, zobacz [limity subskrypcji i usług platformy Azure, przydziały i ograniczenia](../azure-subscription-service-limits.md)
 >
 >
 
-## <a name="sizes-for-web-and-worker-role-instances"></a>Rozmiary wystąpień roli sieci web i proces roboczy
+## <a name="sizes-for-web-and-worker-role-instances"></a>Rozmiary dla wystąpień roli sieć Web i proces roboczy
 Na platformie Azure do wyboru jest wiele standardowych rozmiarów maszyn wirtualnych. Uwagi dotyczące niektórych z tych rozmiarów:
 
 * Maszyny wirtualne serii D są zaprojektowane do uruchamiania aplikacji wymagających większej mocy obliczeniowej i wydajności dysków tymczasowych. Maszyny wirtualne serii D zapewniają szybsze procesory, większą ilość pamięci na rdzeń i dyski półprzewodnikowe (SSD) dla dysków tymczasowych. Szczegółowe informacje zawiera ogłoszenie [New D-Series Virtual Machine Sizes](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/) (Nowe rozmiary maszyn wirtualnych serii D) w blogu platformy Azure.
-* Serii Dv3, zalecamy używanie serii Dv2, kontynuacja oryginalnej serii D, funkcje CPU o większych możliwościach. Procesor CPU serii Dv2 jest o około 35% szybszy niż procesor CPU serii D. Seria Dv2 jest oparta na procesorze najnowszej generacji Intel Xeon® E5-2673 v3 (Haswell) z zegarem 2,4 GHz, który dzięki technologii Intel Turbo Boost 2.0 może osiągnąć częstotliwość 3,1 GHz. Konfiguracje pamięci i dysków serii Dv2 są takie same jak w przypadku serii D.
+* Seria Dv3, Seria Dv2, kolejne z serii D, oferuje bardziej wydajny procesor CPU. Procesor CPU serii Dv2 jest o około 35% szybszy niż procesor CPU serii D. Seria Dv2 jest oparta na procesorze najnowszej generacji Intel Xeon® E5-2673 v3 (Haswell) z zegarem 2,4 GHz, który dzięki technologii Intel Turbo Boost 2.0 może osiągnąć częstotliwość 3,1 GHz. Konfiguracje pamięci i dysków serii Dv2 są takie same jak w przypadku serii D.
 * Maszyny wirtualne z serii G oferują największą ilość pamięci i są uruchamiane na hostach z procesorami z rodziny Intel Xeon E5 V3.
-* Maszyny wirtualne serii A, mogą być rozmieszczone na różnych typach sprzętu i procesorach. Rozmiar jest ograniczany w zależności od sprzętu, aby zapewnić spójną wydajność procesora dla uruchomionego wystąpienia niezależnie od sprzętu, który jest wdrożony na. Aby określić sprzęt fizyczny, na którym jest wdrażany dany rozmiar, utwórz zapytanie o sprzęt wirtualny z poziomu maszyny wirtualnej.
+* Maszyny wirtualne z serii A można wdrażać na różnych typach sprzętu i procesorach. Rozmiar jest ograniczany na podstawie sprzętu, aby zaoferować spójną wydajność procesora dla uruchomionego wystąpienia, niezależnie od sprzętu, na którym jest wdrożony. Aby określić sprzęt fizyczny, na którym jest wdrażany dany rozmiar, utwórz zapytanie o sprzęt wirtualny z poziomu maszyny wirtualnej.
 * Rozmiar A0 jest nadmiernie subskrybowany na sprzęcie fizycznym. Tylko w przypadku tego konkretnego rozmiaru inne wdrożenia klienta mogą mieć wpływ na wydajność uruchomionego obciążenia. Wydajność względna jest przedstawiona poniżej jako oczekiwana linia bazowa, podlegająca przybliżonej zmienności w granicach 15 procent.
 
-Rozmiar maszyny wirtualnej ma wpływ na ceny. Rozmiar wpływa również na wydajność przetwarzania oraz pojemność pamięci i magazynu maszyny wirtualnej. Koszty magazynowania są obliczane osobno na podstawie wykorzystanych stron na koncie magazynu. Aby uzyskać więcej informacji, zobacz [— szczegóły cennika usług Cloud](https://azure.microsoft.com/pricing/details/cloud-services/) i [cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
+Rozmiar maszyny wirtualnej ma wpływ na ceny. Rozmiar wpływa również na wydajność przetwarzania oraz pojemność pamięci i magazynu maszyny wirtualnej. Koszty magazynowania są obliczane osobno na podstawie wykorzystanych stron na koncie magazynu. Aby uzyskać szczegółowe informacje, zobacz [Cloud Services szczegóły cennika](https://azure.microsoft.com/pricing/details/cloud-services/) i [Cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
 W podjęciu decyzji o rozmiarze mogą pomóc następujące informacje:
 
-* Rozmiary A8–A11 i serii H są również nazywane *wystąpieniami intensywnie korzystającymi z mocy obliczeniowej*. Sprzęt, na którym działają te rozmiary maszyn wirtualnych, został zaprojektowany i zoptymalizowany pod kątem aplikacji intensywnie korzystających z mocy obliczeniowej i sieci, w tym aplikacji klastrów obliczeń o wysokiej wydajności, modelowania i symulacji. Maszyny wirtualne serii A8–A11 korzystają z procesorów Intel Xeon E5-2670 o częstotliwości 2,6 GHz, a seria H korzysta z procesorów Intel Xeon E5-2667 v3 o częstotliwości 3,2 GHz. Aby uzyskać szczegółowe informacje i uwagi dotyczące korzystania z tych rozmiarów, zobacz [o wysokiej wydajności obliczeń rozmiarów maszyn wirtualnych](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Seria D serii Dv3, zalecamy używanie serii Dv2, serii G są doskonałe do zastosowań wymagających szybszych procesorów CPU, lepszej wydajności dysków lokalnych lub większych ilości pamięci. Oferują one kombinację opcji o dużych możliwościach dla wielu aplikacji klasy korporacyjnej.
-* Niektóre hosty fizyczne w centrach danych platformy Azure mogą nie obsługiwać większych rozmiarów maszyn wirtualnych, takich jak A5–A11. W rezultacie może zostać wyświetlony komunikat o błędzie **nie powiodło się, aby skonfigurować maszynę wirtualną {Nazwa maszyny}** lub **nie można utworzyć maszyny wirtualnej {Nazwa maszyny}** podczas zmiany rozmiaru istniejącej maszyny wirtualnej na nowy rozmiar; Tworzenie nowej maszyny wirtualnej w sieci wirtualnej utworzonej przed 16 kwietnia 2013; lub dodawania nowej maszyny wirtualnej do istniejącej usługi w chmurze. Zobacz [błąd: "Nie można skonfigurować maszynę wirtualną"](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows) na forum pomocy technicznej, uzyskać informacje o obejściach dla poszczególnych scenariuszy wdrażania.
+* Rozmiary A8–A11 i serii H są również nazywane *wystąpieniami intensywnie korzystającymi z mocy obliczeniowej*. Sprzęt, na którym działają te rozmiary maszyn wirtualnych, został zaprojektowany i zoptymalizowany pod kątem aplikacji intensywnie korzystających z mocy obliczeniowej i sieci, w tym aplikacji klastrów obliczeń o wysokiej wydajności, modelowania i symulacji. Maszyny wirtualne serii A8–A11 korzystają z procesorów Intel Xeon E5-2670 o częstotliwości 2,6 GHz, a seria H korzysta z procesorów Intel Xeon E5-2667 v3 o częstotliwości 3,2 GHz. Aby uzyskać szczegółowe informacje i zagadnienia dotyczące korzystania z tych rozmiarów, zobacz [rozmiary maszyn wirtualnych o wysokiej wydajności](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Seria Dv3, Seria Dv2, Seria D serii G, są idealne dla aplikacji wymagających szybszych procesorów CPU, lepszej wydajności dysków lokalnych lub większych potrzeb związanych z pamięcią. Oferują one kombinację opcji o dużych możliwościach dla wielu aplikacji klasy korporacyjnej.
+* Niektóre hosty fizyczne w centrach danych platformy Azure mogą nie obsługiwać większych rozmiarów maszyn wirtualnych, takich jak A5–A11. W efekcie może zostać wyświetlony komunikat o błędzie **nie można skonfigurować maszyny wirtualnej {Name}** lub **nie można utworzyć maszyny wirtualnej {Machine Name}** podczas zmiany rozmiaru istniejącej maszyny wirtualnej na nowy rozmiar; Tworzenie nowej maszyny wirtualnej w sieci wirtualnej utworzonej przed 16 kwietnia 2013; lub dodanie nowej maszyny wirtualnej do istniejącej usługi w chmurze. Zobacz [błąd: "Nie można skonfigurować maszyny wirtualnej"](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows) na forum pomocy technicznej w celu obejścia tego problemu w każdym scenariuszu wdrażania.
 * Subskrypcja może również ograniczać liczbę rdzeni, które można wdrożyć w rodzinach o określonym rozmiarze. Aby zwiększyć limit przydziału, skontaktuj się z pomocą techniczną platformy Azure.
 
 ## <a name="performance-considerations"></a>Zagadnienia dotyczące wydajności
-Utworzyliśmy pojęcie jednostki obliczeniowe platformy Azure (ACU), aby umożliwić porównywanie wydajności obliczeniowej (procesora CPU) dla jednostki SKU usługi Azure lub, aby identyfikować, które jednostka SKU jest najprawdopodobniej spełniają wydajność wymagań.  Jednostka ACU jest obecnie standaryzowana na małej maszynie wirtualnej (Standardowa_A1) jako równa 100, a wszystkie pozostałe jednostki SKU reprezentują w przybliżeniu, o ile szybciej dana jednostka SKU może uruchomić standardowy test porównawczy.
+Utworzyliśmy koncepcję jednostki obliczeniowej platformy Azure (ACU), aby zapewnić porównanie wydajności obliczeniowej (CPU) w jednostkach SKU platformy Azure i ustalić, która jednostka SKU najprawdopodobniej spełnia Twoje wymagania dotyczące wydajności.  Jednostka ACU jest obecnie standaryzowana na małej maszynie wirtualnej (Standardowa_A1) jako równa 100, a wszystkie pozostałe jednostki SKU reprezentują w przybliżeniu, o ile szybciej dana jednostka SKU może uruchomić standardowy test porównawczy.
 
 > [!IMPORTANT]
 > Wartość ACU jest tylko wskazówką. Wyniki dla konkretnego obciążenia mogą się różnić.
@@ -68,7 +62,6 @@ Utworzyliśmy pojęcie jednostki obliczeniowe platformy Azure (ACU), aby umożli
 | [D v2](#dv2-series) |160 - 190* |
 | [D v3](#dv3-series) |160 - 190* |
 | [E v3](#ev3-series) |160 - 190* |
-| [F](#f-series) |210 - 250*|
 | [G](#g-series) |180 - 240* |
 | [H](#h-series) |290 - 300* |
 
@@ -80,10 +73,10 @@ W poniższych tabelach przedstawiono rozmiary maszyn wirtualnych i możliwości,
 * Pojemność magazynu jest podawana w jednostkach GiB (1024^3 bajtów). Podczas porównywania dysków mierzonych w GB (1000^3 bajtów) z dyskami mierzonymi w GiB (1024^3 bajtów) należy pamiętać, że pojemność podawana w GiB może wydawać się mniejsza. Na przykład 1023 GiB = 1098,4 GB.
 * Przepływność dysku mierzona jest jako liczba operacji wejścia/wyjścia na sekundę i MB/s, gdzie 1 MB/s = 10^6 bajtów/s.
 * Dyski danych mogą działać w trybie buforowanym lub niebuforowanym. Dla pracy dysku danych w trybie buforowanym tryb pamięci podręcznej hosta jest ustawiony na wartość **ReadOnly** lub **ReadWrite**. Dla pracy dysku danych bez buforowania tryb pamięci podręcznej hosta jest ustawiony na wartość **None**.
-* Maksymalna przepustowość sieci jest maksymalną zagregowaną przepustowością przydzieloną i przypisaną dla typu maszyny wirtualnej. Maksymalna przepustowość stanowi wskazówkę umożliwiającą wybranie odpowiedniego typu maszyny wirtualnej, który zapewni dostępność odpowiedniej pojemności sieci. Podczas przenoszenia między niski, umiarkowany, wysoki i bardzo duże, w związku z tym zwiększa przepływność. Rzeczywista wydajność sieci będzie zależeć od wielu czynników, takich jak obciążenia sieciowe i obciążenia aplikacji oraz ustawienia sieciowe aplikacji.
+* Maksymalna przepustowość sieci jest maksymalną zagregowaną przepustowością przydzieloną i przypisaną dla typu maszyny wirtualnej. Maksymalna przepustowość stanowi wskazówkę umożliwiającą wybranie odpowiedniego typu maszyny wirtualnej, który zapewni dostępność odpowiedniej pojemności sieci. W przypadku przechodzenia między niską, umiarkowaną i wysoką przepływność zostanie odpowiednio zwiększona. Rzeczywista wydajność sieci będzie zależeć od wielu czynników, takich jak obciążenia sieciowe i obciążenia aplikacji oraz ustawienia sieciowe aplikacji.
 
 ## <a name="a-series"></a>Seria A
-| Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB  | Magazyn tymczasowy: GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
+| Size            | Rdzenie procesora CPU | Pamięć: GiB  | Magazyn tymczasowy: GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | ExtraSmall      | 1         | 0,768        | 20                   | 1 / niska |
 | Małe           | 1         | 1,75         | 225                  | 1 / średnia |
@@ -95,20 +88,20 @@ W poniższych tabelach przedstawiono rozmiary maszyn wirtualnych i możliwości,
 | A7              | 8         | 56           | 2040                 | 4 / wysoka |
 
 ## <a name="a-series---compute-intensive-instances"></a>Seria A — wystąpienia intensywnie korzystające z mocy obliczeniowej
-Aby uzyskać informacje i uwagi dotyczące korzystania z tych rozmiarów, zobacz [o wysokiej wydajności obliczeń rozmiarów maszyn wirtualnych](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Aby uzyskać informacje i zagadnienia dotyczące korzystania z tych rozmiarów, zobacz [rozmiary maszyn wirtualnych o wysokiej wydajności](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-| Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB  | Magazyn tymczasowy: GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
+| Size            | Rdzenie procesora CPU | Pamięć: GiB  | Magazyn tymczasowy: GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | A8*             |8          | 56           | 1817                 | 2 / wysoka |
 | A9*             |16         | 112          | 1817                 | 4 / bardzo wysoka |
 | A10             |8          | 56           | 1817                 | 2 / wysoka |
 | A11             |16         | 112          | 1817                 | 4 / bardzo wysoka |
 
-\*Obsługa technologii RDMA
+\*Obsługa funkcji RDMA
 
 ## <a name="av2-series"></a>Seria Av2
 
-| Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB  | Magazyn tymczasowy (SSD): GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
+| Size            | Rdzenie procesora CPU | Pamięć: GiB  | Magazyn tymczasowy (SSD): GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standardowa_A1_v2  | 1         | 2            | 10                   | 1 / średnia                 |
 | Standardowa_A2_v2  | 2         | 4            | 20                   | 2 / średnia                 |
@@ -120,7 +113,7 @@ Aby uzyskać informacje i uwagi dotyczące korzystania z tych rozmiarów, zobacz
 
 
 ## <a name="d-series"></a>Seria D
-| Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB  | Magazyn tymczasowy (SSD): GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
+| Size            | Rdzenie procesora CPU | Pamięć: GiB  | Magazyn tymczasowy (SSD): GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standardowa_D1     | 1         | 3,5          | 50                   | 1 / średnia |
 | Standardowa_D2     | 2         | 7            | 100                  | 2 / wysoka |
@@ -132,7 +125,7 @@ Aby uzyskać informacje i uwagi dotyczące korzystania z tych rozmiarów, zobacz
 | Standardowa_D14    | 16        | 112          | 800                  | 8 / bardzo wysoka |
 
 ## <a name="dv2-series"></a>Seria Dv2
-| Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB  | Magazyn tymczasowy (SSD): GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
+| Size            | Rdzenie procesora CPU | Pamięć: GiB  | Magazyn tymczasowy (SSD): GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standardowa_D1_v2  | 1         | 3,5          | 50                   | 1 / średnia |
 | Standardowa_D2_v2  | 2         | 7            | 100                  | 2 / wysoka |
@@ -143,11 +136,11 @@ Aby uzyskać informacje i uwagi dotyczące korzystania z tych rozmiarów, zobacz
 | Standardowa_D12_v2 | 4         | 28           | 200                  | 4 / wysoka |
 | Standardowa_D13_v2 | 8         | 56           | 400                  | 8 / wysoka |
 | Standardowa_D14_v2 | 16        | 112          | 800                  | 8 / ekstremalnie wysoka |
-| Maszyna wirtualna Standard_D15_v2 | 20        | 140          | 1000                | 8 / ekstremalnie wysoka |
+| Standard_D15_v2 | 20        | 140          | 1000                | 8 / ekstremalnie wysoka |
 
 ## <a name="dv3-series"></a>Seria Dv3
 
-| Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB   | Magazyn tymczasowy (SSD): GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
+| Size            | Rdzenie procesora CPU | Pamięć: GiB   | Magazyn tymczasowy (SSD): GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
 |---------------- | --------- | ------------- | -------------------- | ---------------------------- |
 | Standardowa_D2_v3  | 2         | 8             | 50                   | 2 / średnia |
 | Standardowa_D4_v3  | 4         | 16            | 100                  | 2 / wysoka |
@@ -158,7 +151,7 @@ Aby uzyskać informacje i uwagi dotyczące korzystania z tych rozmiarów, zobacz
 
 ## <a name="ev3-series"></a>Seria Ev3
 
-| Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB   | Magazyn tymczasowy (SSD): GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
+| Size            | Rdzenie procesora CPU | Pamięć: GiB   | Magazyn tymczasowy (SSD): GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
 |---------------- | --------- | ------------- | -------------------- | ---------------------------- |
 | Standardowa_E2_v3  | 2         | 16            | 50                   | 2 / średnia |
 | Standardowa_E4_v3  | 4         | 32            | 100                  | 2 / wysoka |
@@ -167,33 +160,22 @@ Aby uzyskać informacje i uwagi dotyczące korzystania z tych rozmiarów, zobacz
 | Standardowa_E32_v3 | 32        | 256           | 800                  | 8 / ekstremalnie wysoka |
 | Standardowa_E64_v3 | 64        | 432           | 1600                 | 8 / ekstremalnie wysoka |
 
-## <a name="f-series"></a>Seria F
-
-
-| Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB   | Magazyn tymczasowy (SSD): GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
-|---------------- | --------- | ------------- | -------------------- | ---------------------------- |
-| Standardowa_F1     | 1         | 2             | 16                   | 2 / 750  |
-| Standardowa_F2     | 2         | 4             | 32                   | 2 / 1500 |
-| Standardowa_F4     | 4         | 8             | 64                   | 4 / 3000 |
-| Standardowa_F8     | 8         | 16            | 128                  | 8 / 6000 |
-| Standardowa_F16    | 16        | 32            | 256                  | 8 / 12000|
-
 
 ## <a name="g-series"></a>Seria G
-| Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB  | Magazyn tymczasowy (SSD): GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
+| Size            | Rdzenie procesora CPU | Pamięć: GiB  | Magazyn tymczasowy (SSD): GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standardowa_G1     | 2         | 28           | 384                  |1 / wysoka |
 | Standardowa_G2     | 4         | 56           | 768                  |2 / wysoka |
 | Standardowa_G3     | 8         | 112          | 1536                |4 / bardzo wysoka |
 | Standardowa_G4     | 16        | 224          | 3072                |8 / ekstremalnie wysoka |
-| Maszyna wirtualna Standard_G5     | 32        | 448          | 6144                |8 / ekstremalnie wysoka |
+| Standard_G5     | 32        | 448          | 6144                |8 / ekstremalnie wysoka |
 
 ## <a name="h-series"></a>Seria H
-Maszyny wirtualne serii H platformy Azure to następna generacja maszyn wirtualnych o wysokiej wydajności obliczeniowej, które idealnie sprawdzają się w przypadku najwyższych potrzeb obliczeniowych, na przykład w modelowaniu molekularnym i analizach obliczeniowych dynamiki płynów. Te 8 i 16 rdzeni maszyny wirtualne są zbudowane na technologię procesora Intel Haswell E5-2667 V3, które są w pamięć DDR4 i lokalny magazyn oparty na dyskach SSD.
+Maszyny wirtualne serii H platformy Azure to następna generacja maszyn wirtualnych o wysokiej wydajności obliczeniowej, które idealnie sprawdzają się w przypadku najwyższych potrzeb obliczeniowych, na przykład w modelowaniu molekularnym i analizach obliczeniowych dynamiki płynów. Te 8 i 16 podstawowych maszyn wirtualnych są oparte na technologii procesora Intel Haswell E5-2667 v3, która ma DDR4 pamięć i lokalny magazyn oparty na dyskach SSD.
 
 Seria H oferuje, obok znacznej mocy procesora CPU, różnorodne opcje dla sieci obsługujących technologię RDMA i niskie opóźnienia, korzystając z sieci InfiniBand o przepustowości FDR wraz z kilkoma konfiguracjami pamięci do obsługi obliczeń wymagających znacznego wykorzystania pamięci.
 
-| Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB  | Magazyn tymczasowy (SSD): GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
+| Size            | Rdzenie procesora CPU | Pamięć: GiB  | Magazyn tymczasowy (SSD): GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standardowa_H8     | 8         | 56           | 1000                 | 8 / wysoka |
 | Standardowa_H16    | 16        | 112          | 2000                 | 8 / bardzo wysoka |
@@ -202,12 +184,12 @@ Seria H oferuje, obok znacznej mocy procesora CPU, różnorodne opcje dla sieci 
 | Standardowa_H16r*  | 16        | 112          | 2000                 | 8 / bardzo wysoka |
 | Standardowa_H16mr* | 16        | 224          | 2000                 | 8 / bardzo wysoka |
 
-\*Obsługa technologii RDMA
+\*Obsługa funkcji RDMA
 
-## <a name="configure-sizes-for-cloud-services"></a>Skonfigurować rozmiary usług Cloud Services
-Można określić rozmiar maszyny wirtualnej wystąpienia roli w ramach modelu usług opisanych przez [pliku definicji usługi](cloud-services-model-and-package.md#csdef). Rozmiar roli określa liczbę rdzeni procesora CPU, pojemność pamięci i rozmiar lokalnego systemu plików przydzielony do uruchomionego wystąpienia. Wybierz rozmiar roli, w oparciu o zapotrzebowanie na zasoby aplikacji.
+## <a name="configure-sizes-for-cloud-services"></a>Skonfiguruj rozmiary dla Cloud Services
+Rozmiar maszyny wirtualnej wystąpienia roli można określić jako część modelu usług opisanego przez [plik definicji usługi](cloud-services-model-and-package.md#csdef). Rozmiar roli określa liczbę rdzeni procesora CPU, pojemność pamięci oraz rozmiar lokalnego systemu plików przydzielony do uruchomionego wystąpienia. Wybierz rozmiar roli na podstawie wymagania dotyczącego zasobów aplikacji.
 
-Oto przykład ustawienie rozmiaru roli to maszyna wirtualna Standard_D2 dla wystąpienia roli sieci Web:
+Oto przykład ustawiania rozmiaru roli Standard_D2 dla wystąpienia roli sieci Web:
 
 ```xml
 <WorkerRole name="Worker1" vmsize="Standard_D2">
@@ -217,20 +199,20 @@ Oto przykład ustawienie rozmiaru roli to maszyna wirtualna Standard_D2 dla wyst
 
 ## <a name="changing-the-size-of-an-existing-role"></a>Zmiana rozmiaru istniejącej roli
 
-Jako charakter zmian obciążenia lub nowe rozmiary maszyn wirtualnych, które staną się dostępne można zmienić rozmiar Twojej roli. Aby to zrobić, należy zmienić rozmiar maszyny Wirtualnej w pliku definicji usługi (jak pokazano powyżej), przeprowadź ponowne pakowanie usługi w chmurze i wdrożyć go.
+Ze względu na to, że zmiany obciążeń lub nowe rozmiary maszyn wirtualnych staną się dostępne, można zmienić rozmiar roli. W tym celu należy zmienić rozmiar maszyny wirtualnej w pliku definicji usługi (jak pokazano powyżej), ponownie spakować usługę w chmurze i wdrożyć ją.
 
 >[!TIP]
-> Możesz chcieć użyć różnych rozmiarów maszyn wirtualnych dla roli użytkownika w różnych środowiskach (np.) Przetestuj produkcyjnego programu vs). Jednym ze sposobów pozwala to tworzyć wiele definicji usługi (csdef), pliki w projekcie, następnie utworzyć inną chmurę pakietów usługi na środowisko podczas zautomatyzowanych kompilacji przy użyciu narzędzia CSPack. Aby dowiedzieć się więcej o elementach pakiet usług chmury i jak je utworzyć, zobacz [co to jest chmura usług modelu i jak jest pakiet?](cloud-services-model-and-package.md)
+> Możesz chcieć użyć różnych rozmiarów maszyn wirtualnych dla roli w różnych środowiskach (np. Test a produkcja). Jednym ze sposobów jest utworzenie w projekcie wielu plików definicji usługi (. csdef), a następnie utworzenie różnych pakietów usług w chmurze na środowisko podczas zautomatyzowanej kompilacji za pomocą narzędzia CSPack. Aby dowiedzieć się więcej o elementach pakietu usług w chmurze i sposobach ich tworzenia, zobacz [co to jest model usług Cloud Services i jak go spakować?](cloud-services-model-and-package.md)
 >
 >
 
 ## <a name="get-a-list-of-sizes"></a>Pobierz listę rozmiarów
-Aby uzyskać listę rozmiarów, można użyć programu PowerShell lub interfejsu API REST. Interfejs API REST jest udokumentowany [tutaj](/previous-versions/azure/reference/dn469422(v=azure.100)). Poniższy kod jest polecenia programu PowerShell, który znajduje się lista wszystkich rozmiarów dostępnych dla usług w chmurze. 
+Aby uzyskać listę rozmiarów, można użyć programu PowerShell lub interfejsu API REST. Interfejs API REST jest udokumentowany w [tym miejscu](/previous-versions/azure/reference/dn469422(v=azure.100)). Poniższy kod jest poleceniem programu PowerShell, które wyświetla listę wszystkich rozmiarów dostępnych dla Cloud Services. 
 
 ```powershell
 Get-AzureRoleSize | where SupportedByWebWorkerRoles -eq $true | select InstanceSize, RoleSizeLabel
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Dowiedz się więcej na temat [limitów, przydziałów i ograniczeń usługi i subskrypcji platformy Azure](../azure-subscription-service-limits.md).
-* Dowiedz się więcej [o wysokiej wydajności obliczeń rozmiarów maszyn wirtualnych](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) dla obciążeń HPC.
+* Dowiedz się więcej [o rozmiarach maszyn wirtualnych obliczeniowych o wysokiej wydajności](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) dla obciążeń HPC.

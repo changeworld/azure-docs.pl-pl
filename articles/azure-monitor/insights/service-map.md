@@ -1,5 +1,5 @@
 ---
-title: Na platformie Azure przy użyciu rozwiązania mapy usługi | Dokumentacja firmy Microsoft
+title: Korzystanie z rozwiązania Service Map na platformie Azure | Microsoft Docs
 description: Usługa Service Map jest rozwiązaniem platformy Azure, które automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Ten artykuł zawiera szczegółowe informacje dotyczące wdrażania rozwiązania Service Map w danym środowisku i korzystania z niego w różnych scenariuszach.
 services: azure-monitor
 documentationcenter: ''
@@ -11,136 +11,154 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/28/2018
+ms.date: 07/24/2019
 ms.author: magoedte
-ms.openlocfilehash: 09755922da78a3e856c491c01ce9f34f50063d71
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1f06345995e30f4d7f165230f4292c560c89e2e8
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606508"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489768"
 ---
-# <a name="using-service-map-solution-in-azure"></a>Za pomocą rozwiązania Service Map na platformie Azure
+# <a name="using-service-map-solution-in-azure"></a>Korzystanie z rozwiązania Service Map na platformie Azure
 Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Dzięki usłudze Service Map można wyświetlać serwery w sposób, w jakich się o nich myśli: jako wzajemnie połączone systemy dostarczające usługi. Usługa ta pokazuje połączenia między serwerami i procesami, opóźnienie połączeń przychodzących i wychodzących oraz porty dla każdej architektury połączonej za pomocą protokołu TCP. Nie jest wymagana żadna konfiguracja z wyjątkiem zainstalowania agenta.
 
-W tym artykule opisano szczegóły dotyczące dołączania i przy użyciu mapy usługi. Aby uzyskać informacje dotyczące konfigurowania rozwiązania Service Map i dołączania agentów, zobacz [konfigurowania rozwiązania Service Map rozwiązanie na platformie Azure]( service-map-configure.md).
+W tym artykule opisano szczegóły dotyczące dołączania i korzystania z Service Map. Aby uzyskać informacje o konfigurowaniu wymagań wstępnych dla tego rozwiązania, zobacz temat [włączanie Azure monitor dla maszyn wirtualnych przegląd](vminsights-enable-overview.md#prerequisites). Podsumowując, potrzebne są następujące elementy:
+
+* Obszar roboczy Log Analytics, aby włączyć to rozwiązanie.
+
+* Agent Log Analytics zainstalowany na komputerze z systemem Windows lub Linux skonfigurowany do raportowania tego samego obszaru roboczego, w którym włączono rozwiązanie.
+
+* Agent zależności zainstalowany na komputerze z systemem Windows lub Linux.
 
 >[!NOTE]
->Jeśli masz już wdrożone rozwiązania Service Map, można teraz również wyświetlić map w usłudze Azure Monitor dla maszyn wirtualnych, który zawiera dodatkowe funkcje, aby monitorować wydajność i kondycja maszyny Wirtualnej. Aby dowiedzieć się więcej, zobacz [usługi Azure Monitor dla maszyn wirtualnych — omówienie](../../azure-monitor/insights/vminsights-overview.md).
-
+>Jeśli wdrożono już Service Map, można teraz również przeglądać mapy w Azure Monitor dla maszyn wirtualnych, co obejmuje dodatkowe funkcje monitorowania kondycji i wydajności maszyn wirtualnych. Aby dowiedzieć się więcej, zobacz [Azure monitor dla maszyn wirtualnych Omówienie](../../azure-monitor/insights/vminsights-overview.md). Aby dowiedzieć się więcej o różnicach między rozwiązaniem Service Map i funkcją mapy Azure Monitor dla maszyn wirtualnych, zobacz poniższe [często zadawane pytania](vminsights-faq.md#how-is-azure-monitor-for-vms-map-feature-different-from-service-map).
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="enable-service-map"></a>Włączanie mapy usługi
-1. W witrynie Azure portal kliknij pozycję **+ Utwórz zasób**.
-2. Na pasku wyszukiwania wpisz **rozwiązania Service Map** i naciśnij klawisz **Enter**.
-3. Na stronie wyników wyszukiwania portalu marketplace wybierz **rozwiązania Service Map** z listy.<br><br> ![Wybierz rozwiązanie mapy usługi z wyników wyszukiwania w portalu Azure Marketplace](./media/service-map/marketplace-search-results.png)<br>
-4. Na **rozwiązania Service Map** okienko omówienia, przejrzyj szczegóły rozwiązania, a następnie kliknij przycisk **Utwórz** do rozpoczęcia procesu dołączania do obszaru roboczego usługi Log Analytics.<br><br> ![Dołączanie rozwiązania mapy usługi](./media/service-map/service-map-onboard.png).
-5. W **skonfiguruj rozwiązanie** okienku wybierz istniejącą lub Utwórz nowy obszar roboczy usługi Log Analytics.  Aby uzyskać więcej informacji na temat tworzenia nowego obszaru roboczego, zobacz [Utwórz obszar roboczy usługi Log Analytics w witrynie Azure portal](../../azure-monitor/learn/quick-create-workspace.md). Po podaniu wymaganych informacji, kliknij przycisk **Utwórz**.  
+## <a name="enable-service-map"></a>Włącz Service Map
 
-Podczas weryfikowania informacji i rozwiązanie jest wdrożone, możesz śledzić postęp w sekcji **powiadomienia** z menu. 
+1. Włącz rozwiązanie Service Map z [witryny Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview) lub przy użyciu procesu opisanego w temacie [Dodawanie rozwiązań monitorowania z Galeria rozwiązań](solutions.md).
+1. [Zainstaluj agenta zależności w systemie Windows](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows) lub [Zainstaluj agenta zależności programu](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux) dla systemu Linux na każdym komputerze, na którym chcesz pobrać dane. Agent Dependency Agent może monitorować połączenia do najbliższych sąsiadów, więc nie jest konieczny na każdym komputerze.
 
-Dostęp do rozwiązania Service Map w witrynie Azure portal w obszarze roboczym usługi Log Analytics i wybierz opcję **rozwiązania** z okienka po lewej stronie.<br><br> ![Wybierz opcję rozwiązania w obszarze roboczym](./media/service-map/select-solution-from-workspace.png).<br> Wybierz z listy rozwiązań **ServiceMap(workspaceName)** w rozwiązania Service Map rozwiązania Przegląd kliknij Kafelek podsumowanie mapy usługi.<br><br> ![Kafelek podsumowania rozwiązania Service Map](./media/service-map/service-map-summary-tile.png).
+Dostęp do Service Map w Azure Portal z obszaru roboczego Log Analytics i wybierz **rozwiązania** opcji w okienku po lewej stronie.<br><br> ![Wybierz opcję rozwiązania w obszarze](./media/service-map/select-solution-from-workspace.png)roboczym.<br> Z listy rozwiązań wybierz pozycję **ServiceMap (WorkspaceName)** i na stronie przegląd rozwiązania Service map kliknij kafelek podsumowanie Service map.<br><br> ![Kafelek](./media/service-map/service-map-summary-tile.png)podsumowania Service map.
 
-## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Przypadki użycia: Wprowadź dział IT przetwarza pamiętać zależności
+## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Przypadki użycia: Dokonywać rozpoznawania zależności przez proces IT
 
 ### <a name="discovery"></a>Odnajdywanie
-Usługa Service Map automatycznie tworzy mapę typowych odwołanie zależności między serwerami, procesami i usługami innych firm. Go umożliwia odnalezienie i mapuje wszystkie zależności TCP w celu identyfikowania połączeń Zaskoczenie, zdalne systemów innych firm, których zależysz i zależności do tradycyjnych ciemny obszarów sieci, takich jak usługi Active Directory. Usługa Service Map odnajduje połączenia sieciowe nie powiodło się, które próbujesz zarządzanych systemach, aby ułatwia identyfikowanie potencjalnych błędnej konfiguracji serwera, przerwa w działaniu usługi i problemy z siecią.
+
+Service Map automatycznie kompiluje wspólną mapę referencyjną zależności między serwerami, procesami i usługami innych firm. Odnajduje i mapuje wszystkie zależności TCP, identyfikując niespodziewane połączenia, zdalne systemy innych firm, od których zależą, oraz zależności od tradycyjnych ciemnych obszarów sieci, takich jak Active Directory. Service Map odnajduje nieudane połączenia sieciowe, które mają być podejmowane przez systemy zarządzane, co pomaga identyfikować potencjalną nieprzerwaną konfigurację serwera, awarię usługi i problemy z siecią.
 
 ### <a name="incident-management"></a>Zarządzanie zdarzeniami
-Usługa Service Map, pomaga wyeliminować sytuację wątpliwości podczas określania przyczyn problemów, pokazujący, jak są połączone systemy i wpływu na siebie nawzajem. Oprócz identyfikowania połączenia zakończone niepowodzeniem, pomaga zidentyfikować równoważenia obciążenia nieprawidłowo, Zaskakujące lub nadmierne obciążenie usług krytycznych i nieautoryzowane klientów, takich jak komputery deweloperskie z rozmów na systemy produkcyjne. Przy użyciu przepływów pracy zintegrowane śledzenie zmian, możesz też sprawdzić czy zdarzenia zmiany w komputerze zaplecza lub usługa opisano przyczyny wystąpienia zdarzenia.
 
-### <a name="migration-assurance"></a>Zapewnienie migracji
-Za pomocą rozwiązania Service Map, mogą efektywnie planować, Przyspiesz i sprawdzanie poprawności migracji na platformę Azure, co ułatwia, upewnij się, że nic nie pozostawione nie występują awarie Zaskoczenie. Może odnajdywać wszystkie współzależne systemy, które trzeba migrowane razem, oceny konfiguracji systemu oraz wydajności i ustalić, czy na komputerze z uruchomionym systemem nadal działa jako użytkownicy lub kwalifikuje się do likwidacji zamiast migracji. Po zakończeniu przenoszenia można sprawdzić na obciążenie klienta i tożsamości, aby sprawdzić połączenie systemy testowe i klientów. Jeśli definicje planowania i Zapora podsieci występują problemy, połączenia zakończone niepowodzeniem w społeczności maps rozwiązania Service Map punktu do systemów które wymaga łączności.
+Service Map pomaga wyeliminować wątpliwości izolacji problemu, pokazując, jak systemy są połączone i wpływają na siebie. Oprócz identyfikowania zakończonych niepowodzeniem połączeń pomaga ona identyfikować nieprawidłowo skonfigurowane usługi równoważenia obciążenia, zaskakujące lub nadmierne obciążenie dla krytycznych usług i nieautoryzowanych klientów, takich jak komputery deweloperskie, które mówią z systemami produkcyjnymi. Korzystając ze zintegrowanych przepływów pracy z Change Tracking, można również sprawdzić, czy zdarzenie zmiany na maszynie lub usłudze zaplecza wyjaśnia główną przyczynę zdarzenia.
+
+### <a name="migration-assurance"></a>Gwarancja migracji
+
+Za pomocą Service Map można efektywnie planować, przyspieszać i weryfikować migracje platformy Azure, co pomaga upewnić się, że nic nie zostanie pozostawione i wystąpiło nieoczekiwane przestoje. Można odkryć wszystkie systemy zależne, które muszą zostać zmigrowane razem, ocenić konfigurację i pojemność systemu oraz sprawdzić, czy uruchomiony system nadal obsługuje użytkowników, czy też jest kandydatem do likwidacji, a nie z migracji. Po zakończeniu przenoszenia można sprawdzić obciążenie i tożsamość klienta, aby sprawdzić, czy systemy testowe i klienci nawiązują połączenie. Jeśli w definicjach planowania podsieci i zapory występują problemy, nieudane połączenia w usłudze Service Map Maps wskażą systemy, które wymagają łączności.
 
 ### <a name="business-continuity"></a>Ciągłość działalności biznesowej
-Jeśli używasz usługi Azure Site Recovery i potrzebujesz pomocy definiowanie sekwencji odzyskiwania dla danego środowiska aplikacji, Usługa Service Map może automatycznie dowiesz się, jak systemy opierają się na siebie, aby upewnić się, że plan odzyskiwania jest niezawodne. Wybierając serwera o krytycznym znaczeniu lub grupy, a następnie wyświetlając jego klientów, można zidentyfikować systemów frontonu, które do odzyskania po przywrócona i dostępności serwera. Z drugiej strony sprawdzając krytycznych serwerów zaplecza zależności, można zidentyfikować systemów, które na odzyskanie sprawności zanim zostaną przywrócone z systemami fokus.
+
+Jeśli używasz Azure Site Recovery i potrzebujesz pomocy przy definiowaniu sekwencji odzyskiwania dla środowiska aplikacji, Service Map mogą automatycznie pokazywać, w jaki sposób systemy są zależne od siebie, aby upewnić się, że plan odzyskiwania jest niezawodny. Wybierając serwer lub grupę krytyczną i wyświetlając jej klientów, można zidentyfikować systemy frontonu do odzyskania po przywróceniu i udostępnieniu serwera. Z drugiej strony, przeglądając zależności zaplecza serwerów krytycznych, można zidentyfikować systemy, które mają zostać odzyskane przed przywróceniem systemów fokusu.
 
 ### <a name="patch-management"></a>Zarządzanie poprawkami
-Usługa Service Map zwiększa użytkowania ocena aktualizacji systemu, pokazując, które inne zespoły i serwery są zależne od usługi, dzięki czemu można powiadomić je z wyprzedzeniem przed walce z systemami stosowania poprawek. Mapy usługi zwiększa również zarządzanie poprawkami, pokazując, czy usługi są dostępne i prawidłowo połączona po są poprawkami i ponownego uruchomienia.
 
-## <a name="mapping-overview"></a>Mapowanie — omówienie
-Agenci rozwiązania Service Map zbierać informacje o wszystkich procesów połączenia TCP na serwerze, na którym są one zainstalowane i szczegółowe informacje dotyczące połączeń przychodzących i wychodzących dla każdego procesu.
+Service Map ulepsza korzystanie z oceny aktualizacji systemu, pokazując, które inne zespoły i serwery są zależne od Twojej usługi, dzięki czemu możesz powiadomić je z wyprzedzeniem przed wprowadzeniem poprawek w systemie. Service Map również rozszerza zarządzanie poprawkami, wskazując, czy usługi są dostępne i prawidłowo połączone po zastosowaniu poprawek i ponownym uruchomieniu.
 
-Z listy w okienku po lewej stronie można wybrać maszyny lub grupy, które mają agentów rozwiązania Service Map wizualizacji ich zależności za pośrednictwem określonego przedziału czasu. Zależności maszyny mapuje fokus na określonym komputerze i pokazują wszystkich maszyn, które są bezpośrednie TCP klientów lub serwerów tej maszyny.  Mapowania maszyny grupy Pokaż zestawy serwerów oraz ich zależności.
+## <a name="mapping-overview"></a>Omówienie mapowania
 
-![Omówienie rozwiązania Service Map](media/service-map/service-map-overview.png)
+Service Map Agenci zbierają informacje o wszystkich procesach połączonych z protokołem TCP na serwerze, na którym są zainstalowane, i szczegółowe informacje o połączeniach przychodzących i wychodzących poszczególnych procesów.
 
-Maszyny można rozwijać w mapę, aby pokazać uruchamianie przetwarzania grupy i procesy z aktywnymi połączeniami sieciowymi w wybranym zakresie czasu. Gdy komputer zdalny, z agent rozwiązania Service Map jest rozszerzona, aby wyświetlić szczegóły procesu, wyświetlane są tylko procesy, które komunikują się z maszyną fokus. Po lewej stronie procesy, które łączą się z wskazuje liczbę agentów maszyn frontonu, łączących się z maszyną fokus. Jeśli maszyna fokus jest połączenie z maszyną zaplecza, zawierającej żadni agenci, serwerów zaplecza znajduje się w grupie portu serwera, oraz inne połączenia do tego samego numeru portu.
+Z listy w lewym okienku można wybrać maszyny lub grupy, które mają Service Map agenci do wizualizacji ich zależności w określonym przedziale czasu. Mapowanie zależności maszyn koncentruje się na określonej maszynie i pokazują wszystkie maszyny, które są bezpośrednimi klientami lub serwerami TCP tej maszyny.  Mapy grup maszyn pokazują zestawy serwerów i ich zależności.
 
-Domyślnie mapy usługi maps Pokaż ostatnich 30 minut informacji o zależnościach. Za pomocą kontrolek na czas, w lewym górnym rogu, można tworzyć zapytania mapy dla zakresy czasu historycznych maksymalnie jedną godzinę, aby pokazać, jak zależności będzie wyglądał w przeszłości (na przykład podczas zdarzenia lub przed wystąpieniem zmiany). Rozwiązania Service Map, dane są przechowywane przez 30 dni w płatnych obszarów roboczych oraz przez 7 dni w bezpłatnych obszarów roboczych.
+![Przegląd Service Map](media/service-map/service-map-overview.png)
+
+Maszyny mogą być rozwinięte na mapie, aby pokazać uruchomione grupy procesów i procesy z aktywnymi połączeniami sieciowymi w wybranym zakresie czasu. Gdy komputer zdalny z agentem Service Map jest rozwinięty, aby wyświetlić szczegóły procesu, wyświetlane są tylko te procesy, które komunikują się z maszyną fokusu. Liczba maszyn frontonu bez agentów, które nawiązują połączenie z maszyną fokusową, jest wskazywana po lewej stronie procesów, z którymi się łączą. Jeśli komputer fokusu nawiązać połączenie z maszyną zaplecza, która nie ma agenta, serwer zaplecza zostanie uwzględniony w grupie portów serwera wraz z innymi połączeniami z tym samym numerem portu.
+
+Domyślnie mapowanie Service Map pokazuje ostatnie 30 minut informacji o zależnościach. Korzystając z kontrolek czasowych w lewym górnym rogu, można wykonywać zapytania w usłudze Maps dla historycznych zakresów czasowych (do godziny), aby pokazać, jak zależności były wyszukiwane w przeszłości (na przykład podczas zdarzenia lub przed wystąpieniem zmiany). Service Map dane są przechowywane przez 30 dni w płatnych obszarach roboczych i przez 7 dni w bezpłatnych obszarach roboczych.
 
 ## <a name="status-badges-and-border-coloring"></a>Wskaźniki stanu i kolorowanie obramowania
-W dolnej części każdego serwera, na mapie, może być lista wskaźniki stanu przekazywania stanu informacji o serwerze. Wskaźniki oznacza, że niektóre istotne informacje dotyczące serwera z jednego z integracji rozwiązań. Klikając pozycję wskaźnika przejście bezpośrednio do szczegółowych informacji o stanie w okienku po prawej stronie. Wskaźniki stanu aktualnie dostępne obejmują alerty, pomoc techniczna, zmiany, zabezpieczeń i aktualizacje.
 
-W zależności od ważności wskaźniki stanu komputera węzła obramowania mogą być kolor czerwony (krytyczna), żółty (ostrzeżenie) lub niebieski (informacyjny). Kolor reprezentuje najpoważniejsze stan dowolnego wskaźniki stanu. Szare obramowanie wskazuje węzeł, który ma nie wskaźniki stanu.
+W dolnej części każdego serwera na mapie może być listą znaczków stanu przekazujących informacje o stanie serwera. Wskaźniki wskazują, że istnieją istotne informacje dotyczące serwera z jednej z rozwiązań integracji. Kliknięcie wskaźnika spowoduje przejście bezpośrednio do szczegółów stanu w okienku po prawej stronie. Obecnie dostępne wskaźniki stanu obejmują alerty, personel działu obsługi, zmiany, zabezpieczenia i aktualizacje.
+
+W zależności od ważności znaczków stanu, obramowania węzła maszyny mogą być kolorowe kolor czerwony (krytyczny), żółty (ostrzeżenie) lub niebieski (informacyjny). Kolor reprezentuje najbardziej rygorystyczny stan wszystkich znaczków stanu. Szare obramowanie wskazuje węzeł, który nie ma wskaźników stanu.
 
 ![Wskaźniki stanu](media/service-map/status-badges.png)
 
 ## <a name="process-groups"></a>Grupy procesów
-Grupa procesów łączyć procesy, które są skojarzone z typowych produktu lub usługi do grupy procesów.  Po rozwinięciu węzła maszyny wyświetli autonomiczny procesów wraz z grupy procesów.  Jeśli wszystkie połączenia przychodzące i wychodzące do procesu w ramach grupy procesu nie powiodło się następnie połączenia jest wyświetlany jako grupy całego procesu nie powiodło się.
+
+Grupy procesów łączą procesy, które są skojarzone ze wspólnym produktem lub usługą w grupie procesów.  Po rozwinięciu węzła komputera zostanie wyświetlony proces autonomiczny wraz z grupami procesów.  Jeśli jakiekolwiek połączenia przychodzące i wychodzące do procesu w ramach grupy procesów nie powiodły się, połączenie jest wyświetlane jako nieudane dla całej grupy procesów.
 
 ## <a name="machine-groups"></a>Grupy maszyn
-Grupy maszyn umożliwiają wyświetlanie map skupia się wokół zestaw serwerów, nie tylko jeden można wyświetlić wszystkie elementy członkowskie klastra wielowarstwowej aplikacji lub serwera, w jedną mapę.
 
-Użytkownicy wybierają serwerów, które należą do grupy ze sobą i wybierz nazwę grupy.  Następnie można wyświetlić grupę ze wszystkimi połączenia i procesów ani wyświetlić przy użyciu tylko procesy i połączeń, które bezpośrednio odnoszą się do elementów członkowskich grupy.
+Grupy maszyn umożliwiają wyświetlanie map wyśrodkowanych wokół zestawu serwerów, a nie tylko jednego, dlatego można zobaczyć wszystkie elementy członkowskie wielowarstwowej aplikacji lub klastra serwerów na jednej mapie.
 
-![Grupy maszyn](media/service-map/machine-group.png)
+Użytkownicy wybierają, które serwery należą do grupy, a następnie wybierają nazwę grupy.  Następnie można wyświetlić grupę ze wszystkimi procesami i połączeniami lub wyświetlić tylko te procesy i połączenia, które bezpośrednio odnoszą się do innych elementów członkowskich grupy.
+
+![Grupa maszyn](media/service-map/machine-group.png)
 
 ### <a name="creating-a-machine-group"></a>Tworzenie grupy maszyn
-Aby utworzyć grupę, wybierz maszynie lub maszynach, na liście komputerów, a następnie kliknij pozycję **Dodaj do grupy**.
+
+Aby utworzyć grupę, wybierz maszynę lub maszyny z listy komputery, a następnie kliknij przycisk **Dodaj do grupy**.
 
 ![Utwórz grupę](media/service-map/machine-groups-create.png)
 
-Tam możesz wybrać **Utwórz nową** i nadaj nazwę grupie.
+W tym miejscu możesz wybrać opcję **Utwórz nowy** i nadać grupie nazwę.
 
-![Nazwa grupy](media/service-map/machine-groups-name.png)
+![Grupa nazw](media/service-map/machine-groups-name.png)
 
 >[!NOTE]
 >Grupy maszyn są ograniczone do 10 serwerów.
 
 ### <a name="viewing-a-group"></a>Wyświetlanie grupy
-Po utworzeniu niektóre grupy, można je wyświetlić, wybierając kartę grupy.
 
-![Karty grupy](media/service-map/machine-groups-tab.png)
+Po utworzeniu niektórych grup można je wyświetlić, wybierając kartę grupy.
 
-Następnie wybierz nazwę grupy, aby wyświetlić mapę dla tej grupy na komputerze.
-![Grupy maszyn](media/service-map/machine-group.png) maszyn, które należą do tej grupy są opisane w oficjalnym na mapie.
+![Karta grupy](media/service-map/machine-groups-tab.png)
 
-Rozwijanie grupy spowoduje wyświetlenie listy maszyn, które tworzą grupy maszyn.
+Następnie wybierz nazwę grupy, aby wyświetlić mapę dla tej grupy maszyn.
+![Grupa](media/service-map/machine-group.png) maszyn komputery należące do grupy są pokreślone na białej mapie.
 
-![Grupuj maszyny maszyny](media/service-map/machine-groups-machines.png)
+Rozszerzanie grupy spowoduje wyświetlenie listy maszyn, które tworzą grupę maszyn.
+
+![Maszyny grupy maszyn](media/service-map/machine-groups-machines.png)
 
 ### <a name="filter-by-processes"></a>Filtruj według procesów
-Możliwość przełączania widoku mapy między pokazywaniem wszystkich procesów i połączeń w grupie i tylko te, które bezpośrednio odnoszą się do grupy na komputerze.  Widok domyślny to pokazanie wszystkich procesów.  Aby zmienić widok, klikając ikonę filtru powyżej mapy.
 
-![Grupę filtrów](media/service-map/machine-groups-filter.png)
+Można przełączać widok mapy między pokazywaniem wszystkich procesów i połączeń w grupie i tylko tymi, które bezpośrednio odnoszą się do grupy maszyn.  Widok domyślny to wyświetlanie wszystkich procesów.  Widok można zmienić, klikając ikonę filtru nad mapą.
 
-Gdy **wszystkie procesy** jest zaznaczone, mapy obejmie wszystkich procesów i połączeń na wszystkich komputerach w grupie.
+![Filtruj grupę](media/service-map/machine-groups-filter.png)
 
-![Przetwarza wszystkie grupy maszyn](media/service-map/machine-groups-all.png)
+Po wybraniu **wszystkich procesów** mapa będzie zawierać wszystkie procesy i połączenia na poszczególnych maszynach w grupie.
 
-Jeśli zmienisz widok, aby wyświetlić tylko **procesy połączone z grupami**, mapy, zostanie zawężona tylko procesy i połączeń, które są podłączone bezpośrednio do innych maszyn w grupie, tworząc uproszczony widok.
+![Grupa maszyn — wszystkie procesy](media/service-map/machine-groups-all.png)
 
-![Grupy maszyn filtrowane procesów](media/service-map/machine-groups-filtered.png)
+Jeśli zmienisz widok tak, aby wyświetlał tylko **procesy połączone**z grupą, mapa zostanie zamapowana na tylko te procesy i połączenia, które są połączone bezpośrednio z innymi komputerami w grupie, tworząc uproszczony widok.
+
+![Filtrowane procesy grupy maszyn](media/service-map/machine-groups-filtered.png)
  
 ### <a name="adding-machines-to-a-group"></a>Dodawanie maszyn do grupy
-Aby dodać maszyny do istniejącej grupy, zaznacz pola wyboru obok maszyny, a następnie kliknij przycisk **Dodaj do grupy**.  Następnie wybierz grupę, którą chcesz dodać do tej maszyny.
+
+Aby dodać maszyny do istniejącej grupy, zaznacz pola obok żądanych maszyn, a następnie kliknij przycisk **Dodaj do grupy**.  Następnie wybierz grupę, do której chcesz dodać maszyny.
  
-### <a name="removing-machines-from-a-group"></a>Usuwanie maszyny z grupy
-Na liście grupy rozwiń nazwę grupy, aby wyświetlić listę maszyn w grupie maszyn.  Następnie kliknij przycisk menu wielokropka obok maszyny, aby usunąć, a następnie wybierz **Usuń**.
+### <a name="removing-machines-from-a-group"></a>Usuwanie maszyn z grupy
+
+Na liście grupy rozwiń nazwę grupy, aby wyświetlić listę maszyn w grupie maszyn.  Następnie kliknij menu wielokropka obok komputera, który chcesz usunąć, i wybierz polecenie **Usuń**.
 
 ![Usuń maszynę z grupy](media/service-map/machine-groups-remove.png)
 
-### <a name="removing-or-renaming-a-group"></a>Usuwanie lub zmiana nazwy grupy
+### <a name="removing-or-renaming-a-group"></a>Usuwanie grupy lub zmiana jej nazwy
+
 Kliknij menu wielokropka obok nazwy grupy na liście grup.
 
 ![Menu grupy maszyn](media/service-map/machine-groups-menu.png)
 
 
 ## <a name="role-icons"></a>Ikony ról
-Niektóre procesy pełnią role określonego na maszynach: serwery sieci web, serwery aplikacji, bazy danych i tak dalej. Usługa Service Map oznacza stosowanym procesu i pola, aby ułatwić identyfikację błyskawicznie roli procesu lub odtwarza serwera ikon roli.
+
+Niektóre procesy oferują określone role na maszynach: serwery sieci Web, serwery aplikacji, baza danych i tak dalej. Service Map dodawania adnotacji do pól procesów i maszyn z ikonami ról, aby pomóc w szybkim zidentyfikowaniu roli, jaką odgrywa proces lub serwer.
 
 | Ikona roli | Opis |
 |:--|:--|
@@ -154,304 +172,337 @@ Niektóre procesy pełnią role określonego na maszynach: serwery sieci web, se
 
 
 ## <a name="failed-connections"></a>Połączenia zakończone niepowodzeniem
-Połączenia zakończone niepowodzeniem są wyświetlane w mapach rozwiązania Service Map dla procesów i komputerów, z czerwonym linia przerywana wskazująca, czy system klienta nie może dotrzeć do procesu lub portu. Połączenia zakończone niepowodzeniem są zgłaszane z dowolnego systemu z wdrożonym agent rozwiązania Service Map, w przypadku tego systemu jest próba nawiązania połączenia nie powiodło się. Usługa Service Map mierzy tego procesu przez obserwację gniazda TCP, których nie można ustanowić połączenia. Ten błąd może wynikać z zapory, błędnej konfiguracji klienta, serwera lub usługi zdalnej jest niedostępny.
+
+Nieudane połączenia są wyświetlane w Service Map Maps dla procesów i komputerów, z przerywaną czerwoną linią wskazującą, że system klienta nie dociera do procesu lub portu. Nieudane połączenia są zgłaszane z dowolnego systemu ze wdrożonym agentem Service Map, jeśli ten system jest podłączany do nieudanego połączenia. Service Map mierzy ten proces, obserwując gniazda TCP, które nie mogą nawiązać połączenia. Ten błąd może być spowodowany przez zaporę, błędną konfigurację na kliencie lub serwerze lub usługa zdalna jest niedostępna.
 
 ![Połączenia zakończone niepowodzeniem](media/service-map/failed-connections.png)
 
-Omówienie połączenia zakończone niepowodzeniem mogą pomóc w rozwiązywaniu problemów, sprawdzanie poprawności migracji, analizy zabezpieczeń i architektury ogólny opis. Połączenia zakończone niepowodzeniem są czasami nieszkodliwe, ale często wskazują bezpośrednio do problemu, takie jak środowisko pracy awaryjnej, nagle staje się niedostępny lub dwie warstwy aplikacji nie będzie w stanie komunikować się po migracji do chmury.
+Zrozumienie nieudanych połączeń może pomóc w rozwiązywaniu problemów, weryfikacji migracji, analizie zabezpieczeń i ogólnym zrozumieniu architektury. Nieudane połączenia są czasami nieszkodliwe, ale często wskazują na problem, na przykład nieprzerwane środowisko pracy awaryjnej lub dwie warstwy aplikacji nie mogą komunikować się po migracji do chmury.
 
-## <a name="client-groups"></a>Grup klientów
-Grupy klienta są pola na mapie, które reprezentują komputerów klienckich, które nie mają agenci zależności. Pojedynczą grupę klienta reprezentuje klientów dla poszczególnych proces lub komputera.
+## <a name="client-groups"></a>Grupy klientów
 
-![Grup klientów](media/service-map/client-groups.png)
+Grupy klientów to pola mapy, które reprezentują komputery klienckie bez agentów zależności. Pojedyncza grupa klientów reprezentuje klientów dla danego procesu lub komputera.
 
-Aby wyświetlić adresy IP serwerów z grupy klientów, wybierz grupę. Zawartość grupy są wymienione w **właściwości grupy klientów** okienka.
+![Grupy klientów](media/service-map/client-groups.png)
+
+Aby wyświetlić adresy IP serwerów w grupie klientów, wybierz grupę. Zawartość grupy zostanie wyświetlona w okienku **Właściwości grupy klienta** .
 
 ![Właściwości grupy klientów](media/service-map/client-group-properties.png)
 
-## <a name="server-port-groups"></a>Port serwera grup
-Port serwera grupy są pola, które reprezentują porty serwera na serwerach, które nie mają agenci zależności. Pole zawiera port serwera i liczbę serwerów przy użyciu połączenia do tego portu. Rozwiń pole, aby wyświetlić poszczególne serwery i połączeń. Jeśli istnieje tylko jeden serwer w polu, znajduje się nazwa lub adres IP.
+## <a name="server-port-groups"></a>Grupy portów serwera
 
-![Port serwera grup](media/service-map/server-port-groups.png)
+Grupy portów serwera to pola reprezentujące porty serwera na serwerach, na których nie ma agentów zależności. Pole zawiera port serwera oraz liczbę serwerów z połączeniami z tym portem. Rozwiń pole, aby wyświetlić poszczególne serwery i połączenia. Jeśli w polu znajduje się tylko jeden serwer, zostanie wyświetlona nazwa lub adres IP.
+
+![Grupy portów serwera](media/service-map/server-port-groups.png)
 
 ## <a name="context-menu"></a>Menu kontekstowe
-Klikając przycisk wielokropka (...) w prawym górnym rogu dowolnego serwera Wyświetla menu kontekstowe dla tego serwera.
+
+Kliknięcie wielokropka (...) w prawym górnym rogu dowolnego serwera powoduje wyświetlenie menu kontekstowego dla tego serwera.
 
 ![Połączenia zakończone niepowodzeniem](media/service-map/context-menu.png)
 
 ### <a name="load-server-map"></a>Załaduj mapę serwera
-Klikając **Załaduj mapę serwera** spowoduje przejście do nowej mapy za pomocą wybranego serwera jako nową maszynę fokus.
+
+Kliknięcie przycisku **Załaduj mapę serwera** spowoduje przejście do nowej mapy z wybranym serwerem jako nowy komputer fokusu.
 
 ### <a name="show-self-links"></a>Pokaż linki własne
-Klikając **Pokaż Self-Links** ponownych rysowaniach węzeł serwera, wraz ze wszystkimi linków do samego siebie, będące połączeń TCP, które rozpoczęcia i zakończenia procesów na serwerze. Jeśli linków do samego siebie są wyświetlane zmiany polecenia menu **Ukryj Self-Links**, dzięki czemu można je wyłączyć.
+
+Kliknięcie przycisku **Pokaż własne linki** powoduje odświeżenie węzła serwera, łącznie z dowolnymi łączami, które są POŁĄCZENIAmi TCP, które zaczynają się i kończą w ramach procesów na serwerze. Jeśli pokazywane są własne linki, polecenie menu zmieni się w celu **ukrycia samolinków**, aby można je było wyłączyć.
 
 ## <a name="computer-summary"></a>Podsumowanie komputera
-**Podsumowanie maszyny** okienko zawiera omówienie systemu operacyjnego serwera, liczby współzależność i danych z innych rozwiązań. Dane te obejmują metryki wydajności, bilety działu usług, śledzenia zmian, zabezpieczeń i aktualizacje.
 
-![Okienko Podsumowanie maszyny](media/service-map/machine-summary.png)
+Okienko **Podsumowanie komputera** zawiera omówienie systemu operacyjnego serwera, liczby zależności i danych z innych rozwiązań. Takie dane obejmują metryki wydajności, bilety usług, śledzenie zmian, zabezpieczenia i aktualizacje.
+
+![Okienko podsumowania komputera](media/service-map/machine-summary.png)
 
 ## <a name="computer-and-process-properties"></a>Właściwości komputera i procesu
-Po przejściu mapę mapy usługi, możesz wybrać maszyn i procesy, aby uzyskać dodatkowy kontekst, dotyczące ich właściwości. Maszyn zawierają informacje dotyczące DNS name, IPv4 adresów, Procesora i pamięci pojemności, typ maszyny Wirtualnej, system operacyjny i wersję, ostatnie ponowne uruchomienie czas i identyfikatory ich agentów pakietu OMS i mapy usługi.
 
-![W okienku właściwości maszyny](media/service-map/machine-properties.png)
+Po przejściu do mapy Service Map można wybrać maszyny i procesy, aby uzyskać dodatkowy kontekst dotyczący ich właściwości. Maszyny zawierają informacje dotyczące nazw DNS, adresów IPv4, pojemności procesora i pamięci, typu maszyny wirtualnej, systemu operacyjnego i wersji, czasu ostatniego ponownego uruchomienia oraz identyfikatorów ich agentów usługi OMS i Service Map.
 
-Szczegóły procesu można zbierać z metadanych systemu operacyjnego dotyczące uruchamiania procesów, takich jak nazwa procesu, opis procesu, nazwę użytkownika i domeny (na Windows), nazwę firmy, nazwę produktu, wersja produktu, katalog roboczy, wiersza polecenia i procesu czas rozpoczęcia.
+![Okienko właściwości maszyny](media/service-map/machine-properties.png)
 
-![W okienku właściwości procesu](media/service-map/process-properties.png)
+Można zbierać szczegóły procesu z metadanych systemu operacyjnego dotyczących uruchomionych procesów, w tym nazwy procesu, opisu procesu, nazwy użytkownika i domeny (w systemie Windows), nazwy firmy, nazwy produktu, wersji produktu, katalogu roboczego, wiersza polecenia i procesu Godzina rozpoczęcia.
 
-**Podsumowanie procesu** okienko zawiera dodatkowe informacje o łączności przez proces, w tym jego powiązanych portów, połączenia przychodzące i wychodzące i awarie połączeń.
+![Okienko właściwości procesu](media/service-map/process-properties.png)
 
-![Okienko Podsumowanie procesu](media/service-map/process-summary.png)
+Okienko **Podsumowanie procesu** zawiera dodatkowe informacje na temat łączności procesu, w tym powiązane z nimi porty, połączenia przychodzące i wychodzące oraz połączenia zakończone niepowodzeniem.
 
-## <a name="alerts-integration"></a>Integracja alertów
-Usługa Service Map integruje się z alertów platformy Azure, aby wyświetlić wyzwolone alerty dla wybranego serwera w wybranym zakresie czasu. Serwer wyświetla ikony, jeśli bieżące alerty i **alerty maszyny** okienku są wyświetlane alerty.
+![Okienko podsumowania procesu](media/service-map/process-summary.png)
 
-![W okienku alertów maszyny](media/service-map/machine-alerts.png)
+## <a name="alerts-integration"></a>Integracja z alertami
 
-Aby włączyć mapy usługi do wyświetlania powiązanych alertów, Utwórz regułę alertu, który jest uruchamiany dla określonego komputera. Aby utworzyć odpowiednie alerty:
-- Zawiera klauzulę do grupy według komputera (na przykład **komputera interwał 1 minutę**).
-- Wybierz alert w oparciu metryki pomiaru.
+Service Map integruje się z alertami platformy Azure w celu wyświetlenia wyzwolonych alertów dla wybranego serwera w wybranym zakresie czasu. Serwer wyświetla ikonę, jeśli istnieją bieżące alerty, a okienko **alerty komputera** wyświetla alerty.
 
-## <a name="log-events-integration"></a>Integracja z dziennika zdarzeń
-Usługa Service Map integruje się z przeszukiwania dzienników, aby wyświetlić liczbę wszystkich zdarzeń dziennika dostępne dla wybranego serwera w wybranym zakresie czasu. Możesz kliknąć każdy wiersz na liście liczby zdarzeń, przejdź do wyszukiwania w dzienniku i wyświetlić zdarzenia osobny dziennik.
+![Okienko alerty komputera](media/service-map/machine-alerts.png)
 
-![Okienko dziennika zdarzeń maszyny](media/service-map/log-events.png)
+Aby włączyć Service Map do wyświetlania odpowiednich alertów, Utwórz regułę alertu, która będzie uruchamiana dla określonego komputera. Aby utworzyć odpowiednie alerty:
+- Dołącz klauzulę do grupowania według komputera (na przykład **według interwału komputerowego 1 minuty**).
+- Wybierz opcję alertu na podstawie pomiaru metryki.
 
-## <a name="service-desk-integration"></a>Integracja z pomocy technicznej
-Integracja mapy usługi przy użyciu łącznika zarządzania usługami IT jest automatyczne, gdy oba rozwiązania są włączone i skonfigurowane w obszarze roboczym usługi Log Analytics. Integracja w rozwiązania Service Map jest oznaczona etykietą "Pomoc techniczna". Aby uzyskać więcej informacji, zobacz [centralnie zarządzać elementy robocze ITSM za pomocą łącznika zarządzania usługami IT](https://docs.microsoft.com/azure/log-analytics/log-analytics-itsmc-overview).
+## <a name="log-events-integration"></a>Integracja zdarzeń dziennika
 
-**Maszyny pomoc techniczna** okienku są wyświetlane wszystkie zdarzenia zarządzania usługami IT dla wybranego serwera w wybranym zakresie czasu. Serwer wyświetla ikony, jeśli istnieją bieżących elementów i wyświetlane w okienku pomocy technicznej maszyn.
+Service Map integruje się z funkcją wyszukiwania w dziennikach, aby wyświetlić liczbę wszystkich dostępnych zdarzeń dziennika dla wybranego serwera w wybranym zakresie czasu. Możesz kliknąć dowolny wiersz na liście liczników zdarzeń, aby przeskoczyć do wyszukiwania w dzienniku i zobaczyć poszczególne zdarzenia dziennika.
 
-![W okienku pomocy technicznej maszyny](media/service-map/service-desk.png)
+![Okienko zdarzeń dziennika komputera](media/service-map/log-events.png)
 
-Aby otworzyć element w połączonych rozwiązania ITSM, kliknij przycisk **Wyświetl element roboczy**.
+## <a name="service-desk-integration"></a>Integracja z obsługą techniczną
 
-Aby wyświetlić szczegóły dotyczące elementu podczas wyszukiwania dziennika, kliknij **Pokaż podczas wyszukiwania dziennika**.
-Metryki połączeń są zapisywane w dwóch nowych tabel w usłudze Log Analytics 
+Integracja Service Map z łącznik zarządzania usługami IT jest automatyczna, gdy oba rozwiązania zostały włączone i skonfigurowane w obszarze roboczym Log Analytics. Integracja w Service Map ma etykietę "Service Desk". Aby uzyskać więcej informacji, zobacz [centralne zarządzanie narzędzia ITSM elementami roboczymi przy użyciu Łącznik zarządzania usługami IT](https://docs.microsoft.com/azure/log-analytics/log-analytics-itsmc-overview).
 
-## <a name="change-tracking-integration"></a>Integracja śledzenia zmiany
-Integracja mapy usługi przy użyciu śledzenia zmian jest automatyczne, gdy oba rozwiązania są włączone i skonfigurowane w obszarze roboczym usługi Log Analytics.
+W okienku **usługi Machine Service** jest wyświetlane wszystkie zdarzenia zarządzania usługą IT dla wybranego serwera w wybranym zakresie czasu. Na serwerze zostanie wyświetlona ikona, jeśli istnieją bieżące elementy, a w okienku stanowiska usługi Machine Service znajduje się lista.
 
-**Maszyny Change Tracking** okienko zawiera listę wszystkich zmian, przy czym pierwsze najbardziej aktualne, wraz z linkiem do szczegółów przeszukiwania dzienników, aby uzyskać więcej informacji.
+![Okienko obsługi maszyn](media/service-map/service-desk.png)
 
-![Okienko Change Tracking maszyny](media/service-map/change-tracking.png)
+Aby otworzyć element w połączonym rozwiązaniu narzędzia ITSM, kliknij przycisk **Wyświetl element roboczy**.
 
-Poniższa ilustracja jest szczegółowy widok zdarzenia Zmianakonfiguracji, który może zostać wyświetlony po wybraniu **Pokaż w usłudze Log Analytics**.
+Aby wyświetlić szczegóły elementu w przeszukiwaniu dzienników, kliknij przycisk **Pokaż w przeszukiwaniu dzienników**.
+Metryki połączeń są zapisywane w dwóch nowych tabelach w Log Analytics 
 
-![Zmianakonfiguracji zdarzeń](media/service-map/configuration-change-event-01.png)
+## <a name="change-tracking-integration"></a>Integracja Change Tracking
+
+Integracja Service Map z Change Tracking jest automatyczna, gdy oba rozwiązania zostały włączone i skonfigurowane w obszarze roboczym Log Analytics.
+
+W okienku **Change Tracking komputera** są wyświetlane wszystkie zmiany, z najnowszymi ostatnimi, a także link do przechodzenia do szczegółów w celu przeszukania dziennika w celu uzyskania dodatkowych szczegółów.
+
+![Okienko Change Tracking komputera](media/service-map/change-tracking.png)
+
+Poniższy obraz przedstawia szczegółowy widok zdarzenia Zmianakonfiguracji, które może być widoczne po wybraniu opcji **Pokaż w log Analytics**.
+
+![Zdarzenie Zmianakonfiguracji](media/service-map/configuration-change-event-01.png)
 
 ## <a name="performance-integration"></a>Integracja wydajności
-**Wydajność maszyny** okienko wyświetla standardowych metryk wydajności dla wybranego serwera. Metryki obejmują wykorzystanie procesora CPU, wykorzystanie pamięci, wysłanych i odebranych bajtów sieci i listę najważniejszych procesów sieci bajtów wysłanych i odebranych.
 
-![Okienko wyników maszyny](media/service-map/machine-performance.png)
+W okienku **wydajność komputera** są wyświetlane metryki wydajności standardowe dla wybranego serwera. Metryki obejmują użycie procesora CPU, użycie pamięci, wysłane i odebrane bajty sieciowe oraz listę najważniejszych procesów przez wysłane i odebrane bajty sieciowe.
 
-Aby wyświetlić dane dotyczące wydajności, może być konieczne [odpowiednich liczników wydajności usługi Log Analytics Włącz](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters).  Liczniki, które chcesz włączyć:
+![Okienko wydajności maszyny](media/service-map/machine-performance.png)
+
+Aby wyświetlić dane dotyczące wydajności, może być konieczne [włączenie odpowiednich liczników wydajności log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters).  Liczniki, które chcesz włączyć:
 
 W systemie Windows:
-- Procesor(*)\\czas procesora (%)
-- Pamięć\\% przydzielonych bajtów w użyciu
-- Sieci Adapter(*)\\bajty wysłane/s
-- Sieci Adapter(*)\\bajty odebrane/s
+- Procesor (*)\\czas procesora (%)
+- \\Procent zadeklarowanych bajtów w użyciu
+- Liczba bajtów wysłanych z\\karty sieciowej (*) na sekundę
+- Liczba odebranych bajtów karty\\sieciowej (*)/s
 
 W systemie Linux:
-- Procesor(*)\\czas procesora (%)
-- Memory(*)\\% użycie pamięci
-- Sieci Adapter(*)\\bajty wysłane/s
-- Sieci Adapter(*)\\bajty odebrane/s
+- Procesor (*)\\czas procesora (%)
+- Pamięć (*)\\% zajętej pamięci
+- Liczba bajtów wysłanych z\\karty sieciowej (*) na sekundę
+- Liczba odebranych bajtów karty\\sieciowej (*)/s
 
-Aby uzyskać dane dotyczące wydajności sieci, musisz również włączyć rozwiązania danych o komunikacji sieciowej w wersji 2.0 w obszarze roboczym.
+Aby uzyskać dane dotyczące wydajności sieci, należy również włączyć rozwiązanie Wire Data 2.0 w obszarze roboczym.
  
-## <a name="security-integration"></a>Integracja z zabezpieczeniami
-Mapa usługi integracji z zabezpieczeniami i inspekcją jest automatycznie, gdy oba rozwiązania są włączone i skonfigurowane w obszarze roboczym usługi Log Analytics.
+## <a name="security-integration"></a>Integracja zabezpieczeń
 
-**Zabezpieczenia maszyny** okienko zawiera dane z rozwiązania zabezpieczenia i inspekcja dla wybranego serwera. Okienka Wyświetla podsumowanie oczekujących bezpieczeństwo serwera w wybranym zakresie czasu. Kliknięcie dowolnego awarii problemy dotyczące zabezpieczeń w dół do przeszukiwania dzienników, aby uzyskać szczegółowe informacje o nich.
+Integracja Service Map z Security and Audit jest automatyczna, gdy oba rozwiązania zostały włączone i skonfigurowane w obszarze roboczym Log Analytics.
 
-![Okienko zabezpieczeń komputera](media/service-map/machine-security.png)
+W okienku **zabezpieczenia komputera** są wyświetlane dane z rozwiązania Security and Audit wybranego serwera. W okienku wyświetlane jest podsumowanie wszystkich problemów związanych z zabezpieczeniami serwera w wybranym zakresie czasu. Kliknięcie dowolnego z problemów z zabezpieczeniami umożliwia przechodzenie do dziennika w celu przeszukania szczegółowych informacji o nich.
+
+![Okienko zabezpieczenia komputera](media/service-map/machine-security.png)
 
 ## <a name="updates-integration"></a>Integracja aktualizacji
-Integracja mapy usługi przy użyciu rozwiązania Update Management jest automatyczne, gdy oba rozwiązania są włączone i skonfigurowane w obszarze roboczym usługi Log Analytics.
 
-**Aktualizacji maszyn** okienko wyświetla dane z rozwiązania Update Management dla wybranego serwera. Okienko zawiera podsumowanie dowolnych brakujących aktualizacji na serwerze w wybranym zakresie czasu.
+Integracja Service Map z Update Management jest automatyczna, gdy oba rozwiązania zostały włączone i skonfigurowane w obszarze roboczym Log Analytics.
 
-![Okienko Change Tracking maszyny](media/service-map/machine-updates.png)
+W okienku **aktualizacje komputera** są wyświetlane dane z rozwiązania Update Management wybranego serwera. Okienko zawiera podsumowanie wszystkich brakujących aktualizacji dla serwera w wybranym zakresie czasu.
+
+![Okienko Change Tracking komputera](media/service-map/machine-updates.png)
 
 ## <a name="log-analytics-records"></a>Rekordy usługi Log Analytics
-Mapy usługi komputera i przetwarzanie magazynu danych jest dostępna dla [wyszukiwania](../../azure-monitor/log-query/log-query-overview.md) w usłudze Log Analytics. Dane te można zastosować do scenariuszy obejmujących planowania migracji, analizy wydajności, wykrywanie i rozwiązywanie problemów z wydajnością na żądanie.
 
-Za godzinę dla każdego komputera unikatowy i procesów, oprócz rekordów, które są generowane, gdy proces lub komputer zostaje uruchomiony lub jest uruchomiona do rozwiązania Service Map, generowany jest jeden rekord. Te rekordy mają właściwości podane w poniższych tabelach. Pola i wartości w zdarzeniach ServiceMapComputer_CL są mapowane na pola zasób maszynę w interfejsie API ServiceMap usługi Azure Resource Manager. Pola i wartości w zdarzeniach ServiceMapProcess_CL są mapowane na pola zasobów procesu w interfejsie API ServiceMap usługi Azure Resource Manager. Pole ResourceName_s zgodne pola Nazwa odpowiedniego zasobu usługi Resource Manager. 
+Service Map komputer i dane spisu procesu są dostępne do [wyszukiwania](../../azure-monitor/log-query/log-query-overview.md) w log Analytics. Te dane można zastosować do scenariuszy, które obejmują Planowanie migracji, analizę pojemności, odnajdywanie i rozwiązywanie problemów z wydajnością na żądanie.
+
+Jeden rekord jest generowany na godzinę dla każdego unikatowego komputera i procesu, oprócz rekordów generowanych podczas uruchamiania procesu lub komputera w celu Service Map. Te rekordy mają właściwości w poniższych tabelach. Pola i wartości w zdarzeniach ServiceMapComputer_CL są mapowane na pola zasobu maszyny w interfejsie API usługi ServiceMap Azure Resource Manager. Pola i wartości w zdarzeniach ServiceMapProcess_CL są mapowane na pola zasobu procesu w interfejsie API Azure Resource Manager ServiceMap. Pole ResourceName_s pasuje do pola Name w odpowiednim zasobie Menedżer zasobów. 
 
 >[!NOTE]
->Gdy funkcje mapy usług wzrosną, te pola mogą ulec zmianie.
+>W miarę rozwoju funkcji Service Map te pola mogą ulec zmianie.
 
-Istnieją wewnętrznie generowane właściwości, które służy do identyfikacji procesów unikatowy i komputerów:
+Istnieją wewnętrznie wygenerowane właściwości, których można użyć do identyfikowania unikatowych procesów i komputerów:
 
-- Komputer: Użyj *ResourceId* lub *ResourceName_s* do unikatowej identyfikacji komputera w obszarze roboczym usługi Log Analytics.
-- Proces: Użyj *ResourceId* do unikatowej identyfikacji procesów w obrębie obszaru roboczego usługi Log Analytics. *ResourceName_s* jest unikatowa w obrębie kontekstu komputera, na którym proces działa (MachineResourceName_s) 
+- Komputerem Użyj *ResourceID* lub *ResourceName_s* do unikatowego identyfikowania komputera w obszarze roboczym log Analytics.
+- Proces: Użyj *ResourceID* do unikatowego identyfikowania procesu w obszarze roboczym log Analytics. *ResourceName_s* jest unikatowy w kontekście maszyny, na której jest uruchomiony proces (MachineResourceName_s) 
 
-Ponieważ wiele rekordów może istnieć dla określonego procesu i komputera w określonym okresie, zapytania może zwrócić więcej niż jeden rekord dla tego samego komputera lub procesu. Aby dołączyć tylko najnowsze rekord, należy dodać "| Funkcja deduplikacji ResourceId"zapytania.
+Ponieważ wiele rekordów może istnieć dla określonego procesu i komputera w określonym przedziale czasu, kwerendy mogą zwrócić więcej niż jeden rekord dla tego samego komputera lub procesu. Aby dołączyć tylko najnowszy rekord, Dodaj element "| Identyfikator zasobu deduplikacji "do zapytania.
 
 ### <a name="connections"></a>Połączenia
-Metryki połączeń są zapisywane do nowej tabeli w usłudze Log Analytics — VMConnection. Ta tabela zawiera informacje o połączeniach dla maszyny (przychodzące i wychodzące). Metryki połączeń są również udostępniane za pomocą interfejsów API, które zapewniają środki do uzyskania określona Metryka przedziale czasu.  Połączenia protokołu TCP, wynikające z "*zaakceptować*- ing nasłuchiwania gniazda są dla ruchu przychodzącego, a te utworzone przez *połączyć*- ing do danego adresu IP i portu są ruchu wychodzącego. Kierunek połączenie jest reprezentowane przez właściwość "Direction", który może być ustawiony na **dla ruchu przychodzącego** lub **wychodzących**. 
 
-Rekordów w tych tabelach są generowane na podstawie danych przekazywanych przez agenta zależności. Każdy rekord reprezentuje obserwacji w przedziałach czasu jednej minuty. Właściwość TimeGenerated wskazuje początek przedziału czasu. Każdy rekord zawiera informacje w celu zidentyfikowania odpowiednich jednostek, to znaczy, połączenia lub portu, a także metryki skojarzone z tej jednostki. Obecnie jest zgłaszany tylko aktywność sieciową występujący za pomocą protokołu TCP za pośrednictwem protokołu IPv4.
+Metryki połączeń są zapisywane w nowej tabeli w Log Analytics-VMConnection. Ta tabela zawiera informacje o połączeniach dla komputera (przychodzący i wychodzący). Metryki połączeń są również udostępniane interfejsom API, które udostępniają metodę uzyskiwania określonej metryki w przedziale czasu.  Połączenia TCP wynikające z "*Akceptuję*" w gnieździe nasłuchiwania są przychodzące, podczas gdy są one tworzone przez *połączenie z*danym adresem IP i portem. Kierunek połączenia jest reprezentowany przez Właściwość Direction, która może być ustawiona na wartość **przychodzące** lub wychodzące. 
 
-Aby zarządzać, koszt i złożoność, rekordy połączeń nie przedstawiają poszczególnych fizycznych połączeń sieciowych. Wiele połączeń sieci fizycznej są grupowane w logicznej połączenia, które następnie są odzwierciedlane w odpowiedniej tabeli.  Znaczenie, rejestruje w *VMConnection* tabeli reprezentują logiczne grupowanie, a nie poszczególnych fizycznego połączenia, które są przestrzegane. Połączenie z siecią fizyczną współużytkujące taką samą wartość, dla następujących atrybutów dla interwału danego jednej minuty są agregowane w jednym rekordzie logicznych w *VMConnection*. 
+Rekordy w tych tabelach są generowane na podstawie danych zgłaszanych przez agenta zależności. Każdy rekord reprezentuje obserwację w przedziale czasowym co minutę. Właściwość TimeGenerated wskazuje początek interwału czasu. Każdy rekord zawiera informacje służące do identyfikacji odpowiedniej jednostki, czyli połączenia lub portu, a także metryk skojarzonych z tą jednostką. Obecnie zgłaszane jest tylko działanie sieciowe, które odbywa się przy użyciu protokołu TCP przez IPv4.
+
+Aby zarządzać kosztami i złożonością, rekordy połączeń nie reprezentują poszczególnych fizycznych połączeń sieciowych. Wiele połączeń sieci fizycznych jest zgrupowanych w połączenie logiczne, które jest następnie odzwierciedlone w odpowiedniej tabeli.  Oznacza to, że rekordy w tabeli *VMConnection* reprezentują logiczne grupowanie, a nie poszczególne połączenia fizyczne, które są obserwowane. Fizyczne połączenie sieciowe udostępniające tę samą wartość dla następujących atrybutów podczas danego interwału jednominutowego są agregowane w jednym rekordzie logicznym w *VMConnection*. 
 
 | Właściwość | Opis |
 |:--|:--|
-| `Direction` |Kierunek połączenia, wartość jest *dla ruchu przychodzącego* lub *ruchu wychodzącego* |
+| `Direction` |Kierunek połączenia, wartość jest przychodząca lub *wychodząca* |
 | `Machine` |Nazwa FQDN komputera |
-| `Process` |Tożsamość procesu lub grupy procesów, inicjowanie/akceptować połączenia |
+| `Process` |Tożsamość procesu lub grup procesów, inicjowanie/zaakceptowanie połączenia |
 | `SourceIp` |Adres IP źródła |
 | `DestinationIp` |Adres IP miejsca docelowego |
-| `DestinationPort` |Numer portu docelowego |
-| `Protocol` |Protokół używany dla połączenia.  Wartości *tcp*. |
+| `DestinationPort` |Numer portu miejsca docelowego |
+| `Protocol` |Protokół używany do nawiązywania połączenia.  Wartości to *TCP*. |
 
-Aby uwzględnić wpływ grupowania, informacje o liczbie pogrupowanych połączeń fizycznych znajduje się w następujących właściwości rekordu:
+W celu uwzględnienia wpływu grupowania informacje o liczbie zgrupowanych połączeń fizycznych są dostępne w następujących właściwościach rekordu:
 
 | Właściwość | Opis |
 |:--|:--|
-| `LinksEstablished` |Liczba połączeń sieci fizycznej, które zostały utworzone w przedziale czasu raportowania |
-| `LinksTerminated` |Liczba połączeń sieci fizycznej, które zostały zakończone raportowania przedziale czasu |
-| `LinksFailed` |Liczba połączeń sieci fizycznej, które nie powiodły się w przedziale czasu raportowania. Te informacje są obecnie dostępne tylko dla połączeń wychodzących. |
-| `LinksLive` |Liczba połączeń sieci fizycznej, które były otwarte na końcu raportowania przedział czasu|
+| `LinksEstablished` |Liczba połączeń sieci fizycznych, które zostały nawiązane w przedziale czasu raportowania |
+| `LinksTerminated` |Liczba połączeń sieci fizycznych, które zostały przerwane w przedziale czasu raportowania |
+| `LinksFailed` |Liczba fizycznych połączeń sieciowych zakończonych niepowodzeniem w przedziale czasu raportowania. Te informacje są obecnie dostępne tylko dla połączeń wychodzących. |
+| `LinksLive` |Liczba otwartych połączeń sieciowych w momencie zakończenia przedziału czasu raportowania|
 
 #### <a name="metrics"></a>Metryki
 
-Oprócz metryki liczbę połączeń informacji na temat ilości danych wysłanych i odebranych w danym połączenie logiczne lub portu sieci znajdują się również w następujących właściwości rekordu:
+Oprócz metryk licznik połączeń informacje o ilości danych wysłanych i odebranych w danym połączeniu logicznym lub porcie sieciowym są również zawarte w następujących właściwościach rekordu:
 
 | Właściwość | Opis |
 |:--|:--|
-| `BytesSent` |Całkowita liczba bajtów wysłanych raportowania przedziale czasu |
-| `BytesReceived` |Całkowita liczba bajtów odebranych w przedziale czasu raportowania |
-| `Responses` |Liczba odpowiedzi zaobserwowane w przedziale czasu raportowania. 
-| `ResponseTimeMax` |Największy czas odpowiedzi (w milisekundach) zaobserwowane w przedziale czasu raportowania.  Jeśli brak wartości właściwości jest pusta.|
-| `ResponseTimeMin` |Najmniejszy czas odpowiedzi (w milisekundach) zaobserwowane w przedziale czasu raportowania.  Jeśli brak wartości właściwości jest pusta.|
-| `ResponseTimeSum` |Suma czasów odpowiedzi (w milisekundach) zaobserwowane w przedziale czasu raportowania.  Jeśli brak wartości właściwości jest pusta|
+| `BytesSent` |Łączna liczba bajtów wysłanych w przedziale czasu raportowania |
+| `BytesReceived` |Łączna liczba bajtów odebranych w przedziale czasu raportowania |
+| `Responses` |Liczba odpowiedzi zaobserwowanych w przedziale czasu raportowania. 
+| `ResponseTimeMax` |Największy czas odpowiedzi (w milisekundach) zaobserwowany w przedziale czasu raportowania.  W przypadku braku wartości właściwość jest pusta.|
+| `ResponseTimeMin` |Najmniejszy czas odpowiedzi (w milisekundach) zaobserwowany w przedziale czasu raportowania.  W przypadku braku wartości właściwość jest pusta.|
+| `ResponseTimeSum` |Suma wszystkich czasów odpowiedzi (w milisekundach) zaobserwowanych w przedziale czasu raportowania.  W przypadku braku wartości właściwość jest pusta|
 
-Trzeci typ danych, zgłaszany jest czas odpowiedzi — obiekt wywołujący poświęcić czas oczekiwania na żądanie przesyłane przez połączenie do przetworzenia i przez zdalny punkt końcowy. Czas odpowiedzi, zgłaszane jest oszacowanie czas odpowiedzi true podstawowego protokołu aplikacji. Jest obliczana, przy użyciu algorytmów heurystycznych oparte na obserwacji przepływ danych między źródłowym i docelowym koniec połączenie z siecią fizyczną. Pod względem koncepcyjnym go różni się od czasu ostatniego bajtu żądania pozostawia nadawcy i czas po nadejściu ostatni bajt odpowiedzi powrotu do tego. Te dwa sygnatury czasowe są używane do odróżnić zdarzenia żądań i odpowiedzi dla danego połączenia fizycznych. Różnica między nimi reprezentuje czas odpowiedzi pojedynczego żądania. 
+Zgłaszany trzeci typ danych to czas odpowiedzi — jak długo obiekt wywołujący oczekuje na żądanie wysłane przez połączenie, które ma zostać przetworzone przez zdalny punkt końcowy. Raportowany czas odpowiedzi jest oszacowaniem rzeczywistego czasu odpowiedzi podstawowego protokołu aplikacji. Jest on obliczany przy użyciu algorytmów heurystycznych na podstawie obserwacji przepływu danych między źródłowym i docelowym końcem połączenia sieciowego. Ze pojęciową różnicą jest różnica między czasem, gdy ostatni bajt żądania opuszcza nadawcę, oraz czas, kiedy ostatni bajt odpowiedzi trafia do niego. Te dwa sygnatury czasowe służą do odróżnić zdarzeń żądań i odpowiedzi dla danego połączenia fizycznego. Różnica między nimi reprezentuje czas odpowiedzi pojedynczego żądania. 
 
-W pierwszej wersji tej funkcji nasze algorytm jest przybliżeniem, która może działać z dowolnym stopniu sukcesu w zależności od rzeczywistej aplikacji protokół dla połączenia określonej sieci. Na przykład bieżącego podejścia działa dobrze w przypadku protokołów odpowiedź na żądanie na podstawie takich jak HTTP (S), ale nie pracować jednokierunkowe lub odpowiednich protokołów opartych na kolejki komunikatów.
+W pierwszej wersji tej funkcji nasz algorytm to przybliżenie, które może współdziałać z różnymi poziomami sukcesu w zależności od rzeczywistego protokołu aplikacji używanego dla danego połączenia sieciowego. Na przykład bieżące podejście działa dobrze w przypadku protokołów opartych na odpowiedzi na żądania, takich jak HTTP (S), ale nie działa z protokołami jednokierunkowymi lub opartymi na kolejkach komunikatów.
 
-Oto niektóre ważne punkty, które należy wziąć pod uwagę:
+Oto kilka istotnych kwestii, które należy wziąć pod uwagę:
 
-1. Jeśli proces akceptuje połączenia na ten sam adres IP, ale w wielu interfejsów sieciowych, zostanie zgłoszony oddzielny rekord dla każdego interfejsu. 
-2. Rekordy z symbolami wieloznacznymi IP będzie zawierać żadnych działań. Zostaną one dołączone do reprezentowania fakt, że port na maszynie jest otwarty dla ruchu przychodzącego ruchu sieciowego.
-3. Aby zmniejszyć poziom szczegółowości i ilość danych, rekordów za pomocą adresu IP z symbolami wieloznacznymi zostaną pominięte po pasującego rekordu (w przypadku tego samego procesu, portów i protokołów) przy użyciu określonego adresu IP. Gdy rekord IP symbol wieloznaczny zostanie pominięty, IsWildcardBind właściwości rekordu z określonego adresu IP ustawi na wartość "True" do wskazania, że port jest uwidaczniany przez każdy interfejs raportowania maszyny.
-4. Porty, które są powiązane tylko dla określonego interfejsu mają IsWildcardBind ustawiony na wartość "False".
+1. Jeśli proces akceptuje połączenia o tym samym adresie IP, ale przez wiele interfejsów sieciowych, zostanie zgłoszony oddzielny rekord dla każdego interfejsu. 
+2. Rekordy z symbolem wieloznacznym adresu IP nie będą miały aktywności. Są one dołączone do reprezentowania faktu, że port na komputerze jest otwarty dla ruchu przychodzącego.
+3. Aby zmniejszyć poziom szczegółowości i ilości danych, rekordy z symbolem wieloznacznym adresu IP zostaną pominięte, gdy istnieje pasujący rekord (dla tego samego procesu, portu i protokołu) o określonym adresie IP. W przypadku pominięcia wieloznacznego rekordu adresu IP Właściwość rekordu IsWildcardBind z określonym adresem IP zostanie ustawiona na wartość "true", aby wskazać, że port jest narażony na każdy interfejs maszyny raportowania.
+4. Porty, które są powiązane tylko z określonym interfejsem, mają IsWildcardBind ustawiony na wartość "false".
 
-#### <a name="naming-and-classification"></a>Nazewnictwo i klasyfikacji
-Dla wygody adres IP zdalnego punktu końcowego połączenia znajduje się we właściwości RemoteIp. Dla połączeń przychodzących RemoteIp jest taka sama jak SourceIp, natomiast w przypadku połączeń wychodzących, jest taka sama jak DestinationIp. Właściwość RemoteDnsCanonicalNames reprezentuje zgłoszone przez maszynę dla RemoteIp nazwy kanonicznej DNS. Właściwości RemoteDnsQuestions i RemoteClassification są zarezerwowane do użytku w przyszłości. 
+#### <a name="naming-and-classification"></a>Nazewnictwo i Klasyfikacja
+
+Dla wygody adres IP zdalnego końca połączenia jest zawarty we właściwości RemoteIp. W przypadku połączeń przychodzących RemoteIp jest taka sama jak SourceIp, natomiast w przypadku połączeń wychodzących jest taka sama jak DestinationIp. Właściwość RemoteDnsCanonicalNames reprezentuje nazwy kanoniczne DNS zgłoszone przez komputer dla RemoteIp. Właściwości RemoteDnsQuestions i RemoteClassification są zastrzeżone do użytku w przyszłości. 
 
 #### <a name="geolocation"></a>Geolokalizacja
-*VMConnection* zawiera również informacje o geolokalizacji na drugim końcu każdego wybranego rekordu połączenia w następujących właściwości rekordu: 
+
+*VMConnection* również zawiera informacje o geolokalizacji dla zdalnego końca każdego rekordu połączenia w następujących właściwościach rekordu: 
 
 | Właściwość | Opis |
 |:--|:--|
-| `RemoteCountry` |Nazwa kraju/regionu, hostingu RemoteIp.  Na przykład *Stanów Zjednoczonych* |
-| `RemoteLatitude` |Szerokość geograficzną.  Na przykład *47.68* |
-| `RemoteLongitude` |Długość geograficzna geolokalizacji.  Na przykład *-122.12* |
+| `RemoteCountry` |Nazwa kraju/regionu, w którym znajduje się RemoteIp.  Na przykład *Stany Zjednoczone* |
+| `RemoteLatitude` |Geolokalizacja geograficzna.  Na przykład *47,68* |
+| `RemoteLongitude` |Długość geograficzna geolokalizacji.  Na przykład *-122,12* |
 
 #### <a name="malicious-ip"></a>Złośliwy adres IP
-Dla każdej właściwości RemoteIp w *VMConnection* tabeli jest sprawdzana względem zbiór adresów IP przy użyciu znanych złośliwych działań. Jeśli RemoteIp została zidentyfikowana jako szkodliwe następujące właściwości zostaną wypełnione (są puste, jeśli adres IP nie jest uznawane za złośliwe) w następujących właściwości rekordu:
+
+Każda właściwość RemoteIp w tabeli *VMConnection* jest sprawdzana względem zestawu adresów IP ze znaną złośliwym działaniem. Jeśli RemoteIp zostanie zidentyfikowany jako złośliwe, zostaną wypełnione następujące właściwości (są puste, jeśli adres IP nie jest uważany za złośliwy) w następujących właściwościach rekordu:
 
 | Właściwość | Opis |
 |:--|:--|
 | `MaliciousIp` |Adres RemoteIp |
-| `IndicatorThreadType` |Wskaźnik zagrożenia wykryte jest jednym z następujących wartości *Botnet*, *C2*, *CryptoMining*, *zakres sieci Darknet*, *przed atakami DDos* , *MaliciousUrl*, *złośliwego oprogramowania*, *wyłudzania informacji*, *Proxy*, *potencjalnie niechciane aplikacje*, *Listy do obejrzenia*.   |
-| `Description` |Opis obserwowanych zagrożeń. |
-| `TLPLevel` |Poziom Rack (RECENT sygnalizacji ulicznej Protocol) jest jednym ze zdefiniowanymi wartościami *biały*, *zielony*, *żółtą*, *Red*. |
-| `Confidence` |Wartości są *0 – 100*. |
-| `Severity` |Wartości są *0 – 5*, gdzie *5* jest najpoważniejsze i *0* nie jest poważny wcale. Wartość domyślna to *3*.  |
-| `FirstReportedDateTime` |Po raz pierwszy dostawca zgłosił wskaźnika. |
-| `LastReportedDateTime` |Czas ostatniego wskaźnika widzianego przez Interflow. |
-| `IsActive` |Wskazuje, wskaźniki zostaną dezaktywowane z *True* lub *False* wartość. |
-| `ReportReferenceLink` |Zawiera łącza do raportów związanych z danym możliwość obserwowania. |
-| `AdditionalInformation` |Udostępnia dodatkowe informacje, jeśli ma to zastosowanie, temat obserwowanych zagrożenia. |
+| `IndicatorThreadType` |Wykryty wskaźnik zagrożeń to jedna z następujących wartości: *botnet*, *C2*, *CryptoMining*, *sieci darknet*, *DDoS*, *MaliciousUrl*, *złośliwe oprogramowanie*, *phishing*, *proxy*, *opierająca*,  *Listy do obejrzenia*.   |
+| `Description` |Opis zaobserwowanego zagrożenia. |
+| `TLPLevel` |Poziom protokołu Traffic Light Protocol (TLP) to jedna ze zdefiniowanych wartości: *biały*, *zielony*, *bursztynowy*, *czerwony*. |
+| `Confidence` |Wartości to *0 – 100*. |
+| `Severity` |Wartości to *0 – 5*, gdzie *5* jest największa i *0* nie jest poważny. Wartość domyślna to *3*.  |
+| `FirstReportedDateTime` |Pierwszy raz dostawca zgłosił wskaźnik. |
+| `LastReportedDateTime` |Ostatni czas widziany przez przepływanie wskaźnika. |
+| `IsActive` |Wskazuje, że wskaźniki są dezaktywowane z wartością *true* lub *false* . |
+| `ReportReferenceLink` |Linki do raportów związanych z tym, że jest to zauważalne. |
+| `AdditionalInformation` |Zawiera dodatkowe informacje o zaobserwowanym zagrożeniu, jeśli ma to zastosowanie. |
 
-### <a name="servicemapcomputercl-records"></a>Rekordy ServiceMapComputer_CL
-Rekordy z typem *ServiceMapComputer_CL* zawierają dane spisu dla serwerów z agentami mapy usługi. Te rekordy mają właściwości podane w poniższej tabeli:
+### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL rekordy
+
+Rekordy z typem *ServiceMapComputer_CL* mają dane spisu dla serwerów z agentami Service map. Te rekordy mają właściwości podane w poniższej tabeli:
 
 | Właściwość | Opis |
 |:--|:--|
 | `Type` | *ServiceMapComputer_CL* |
 | `SourceSystem` | *OpsManager* |
-| `ResourceId` | Unikatowy identyfikator dla maszyny w obszarze roboczym |
-| `ResourceName_s` | Unikatowy identyfikator dla maszyny w obszarze roboczym |
+| `ResourceId` | Unikatowy identyfikator maszyny w obszarze roboczym |
+| `ResourceName_s` | Unikatowy identyfikator maszyny w obszarze roboczym |
 | `ComputerName_s` | Nazwa FQDN komputera |
-| `Ipv4Addresses_s` | Lista IPv4 serwera adresów |
-| `Ipv6Addresses_s` | Lista IPv6 serwera adresów |
+| `Ipv4Addresses_s` | Lista adresów IPv4 serwera |
+| `Ipv6Addresses_s` | Lista adresów IPv6 serwera |
 | `DnsNames_s` | Tablica nazw DNS |
-| `OperatingSystemFamily_s` | Windows lub Linux |
+| `OperatingSystemFamily_s` | System Windows lub Linux |
 | `OperatingSystemFullName_s` | Pełna nazwa systemu operacyjnego  |
-| `Bitness_s` | Liczba bitów maszyny (32-bitowy lub 64-bitowy)  |
-| `PhysicalMemory_d` | Pamięci fizycznej w Megabajtach |
+| `Bitness_s` | Liczba bitów maszyny (32-bitowa lub 64-bitowa)  |
+| `PhysicalMemory_d` | Pamięć fizyczna w MB |
 | `Cpus_d` | Liczba procesorów CPU |
-| `CpuSpeed_d` | Szybkość Procesora w MHz|
-| `VirtualizationState_s` | *Nieznany*, *fizycznych*, *wirtualnego*, *funkcji hypervisor* |
-| `VirtualMachineType_s` | *funkcji Hyper-v*, *vmware*i tak dalej |
-| `VirtualMachineNativeMachineId_g` | Identyfikator maszyny Wirtualnej, zgodnie z dokonanym przez jego funkcji hypervisor |
-| `VirtualMachineName_s` | Nazwa maszyny Wirtualnej |
-| `BootTime_t` | W czasie rozruchu |
+| `CpuSpeed_d` | Szybkość procesora CPU (w MHz)|
+| `VirtualizationState_s` | *nieznane*, *fizyczne*, *wirtualne*, *Funkcja hypervisor* |
+| `VirtualMachineType_s` | *HyperV*, *VMware*i tak dalej |
+| `VirtualMachineNativeMachineId_g` | Identyfikator maszyny wirtualnej przypisany przez funkcję hypervisor |
+| `VirtualMachineName_s` | Nazwa maszyny wirtualnej |
+| `BootTime_t` | Czas rozruchu |
 
-### <a name="servicemapprocesscl-type-records"></a>Rejestruje typ ServiceMapProcess_CL
-Rekordy z typem *ServiceMapProcess_CL* mają dane spisu dla procesy połączone z protokołu TCP na serwerach z agentami mapy usługi. Te rekordy mają właściwości podane w poniższej tabeli:
+### <a name="servicemapprocesscl-type-records"></a>ServiceMapProcess_CL typy rekordów
+
+Rekordy z typem *ServiceMapProcess_CL* mają dane spisu dla procesów połączonych z protokołem TCP na serwerach z agentami Service map. Te rekordy mają właściwości podane w poniższej tabeli:
 
 | Właściwość | Opis |
 |:--|:--|
 | `Type` | *ServiceMapProcess_CL* |
 | `SourceSystem` | *OpsManager* |
-| `ResourceId` | Unikatowy identyfikator procesu wewnątrz obszaru roboczego |
-| `ResourceName_s` | Unikatowy identyfikator procesu na maszynie, na którym jest uruchomiony|
+| `ResourceId` | Unikatowy identyfikator procesu w obszarze roboczym |
+| `ResourceName_s` | Unikatowy identyfikator procesu znajdującego się na komputerze, na którym jest uruchomiony|
 | `MachineResourceName_s` | Nazwa zasobu maszyny |
 | `ExecutableName_s` | Nazwa pliku wykonywalnego procesu |
-| `StartTime_t` | Czas rozpoczęcia procesu puli |
-| `FirstPid_d` | Pierwszy identyfikator PID w puli procesów |
+| `StartTime_t` | Godzina rozpoczęcia puli procesów |
+| `FirstPid_d` | Pierwszy Identyfikator PID w puli procesów |
 | `Description_s` | Opis procesu |
 | `CompanyName_s` | Nazwa firmy |
 | `InternalName_s` | Nazwa wewnętrzna |
 | `ProductName_s` | Nazwa produktu |
 | `ProductVersion_s` | Wersja produktu |
 | `FileVersion_s` | Wersja pliku |
-| `CommandLine_s` | W wierszu polecenia |
-| `ExecutablePath _s` | Ścieżka do pliku wykonywalnego |
+| `CommandLine_s` | Wiersz polecenia |
+| `ExecutablePath _s` | Ścieżka do pliku wykonywalnego. |
 | `WorkingDirectory_s` | Katalog roboczy |
-| `UserName` | Konta, w którym proces jest wykonywany |
-| `UserDomain` | Domeny, w którym proces jest wykonywany |
+| `UserName` | Konto, na którym proces jest wykonywany |
+| `UserDomain` | Domena, w której wykonywany jest proces |
 
 ## <a name="sample-log-searches"></a>Przykładowe wyszukiwania dzienników
 
-### <a name="list-all-known-machines"></a>Listę wszystkich znanych maszyn
-ServiceMapComputer_CL | Podsumowanie arg_max(TimeGenerated, *) przez ResourceId
+### <a name="list-all-known-machines"></a>Wyświetl listę wszystkich znanych maszyn
 
-### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>Wyświetl listę wszystkich zarządzanych komputerów pojemność pamięci fizycznej.
-ServiceMapComputer_CL | Podsumowanie arg_max(TimeGenerated, *) przez ResourceId | Projekt PhysicalMemory_d, ComputerName_s
+ServiceMapComputer_CL | podsumowujący arg_max (TimeGenerated, *) według ResourceId
 
-### <a name="list-computer-name-dns-ip-and-os"></a>Nazwa komputera listy, DNS, adresu IP i systemu operacyjnego.
+### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>Wyświetl listę pojemności pamięci fizycznej wszystkich zarządzanych komputerów.
+
+ServiceMapComputer_CL | podsumowujący arg_max (TimeGenerated, *) według ResourceId | Project PhysicalMemory_d, ComputerName_s
+
+### <a name="list-computer-name-dns-ip-and-os"></a>Wyświetl listę nazw komputerów, DNS, IP i systemu operacyjnego.
+
 ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
 
-### <a name="find-all-processes-with-sql-in-the-command-line"></a>Znajdź wszystkie procesy za pomocą "sql" w wierszu polecenia
-ServiceMapProcess_CL | gdzie contains_cs CommandLine_s "sql" | Podsumowanie arg_max(TimeGenerated, *) przez ResourceId
+### <a name="find-all-processes-with-sql-in-the-command-line"></a>Znajdź wszystkie procesy z "SQL" w wierszu polecenia
 
-### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Znajdź maszyny (najnowsze rekordu) według nazwy zasobu
-Szukaj w "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" (ServiceMapComputer_CL) | Podsumowanie arg_max(TimeGenerated, *) przez ResourceId
+ServiceMapProcess_CL | gdzie CommandLine_s contains_cs "SQL" | podsumowujący arg_max (TimeGenerated, *) według ResourceId
 
-### <a name="find-a-machine-most-recent-record-by-ip-address"></a>Znajdź maszyny (najnowsze rekordu) przy użyciu adresu IP
-Szukaj w "10.229.243.232" (ServiceMapComputer_CL) | Podsumowanie arg_max(TimeGenerated, *) przez ResourceId
+### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Znajdź maszynę (najnowszy rekord) według nazwy zasobu
 
-### <a name="list-all-known-processes-on-a-specified-machine"></a>Listę wszystkich znanych procesów na określonym komputerze
-ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId
+search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | podsumowujący arg_max (TimeGenerated, *) według ResourceId
 
-### <a name="list-all-computers-running-sql"></a>Lista wszystkich komputerów z programem SQL
-ServiceMapComputer_CL | gdzie ResourceName_s w ((wyszukiwanie w (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s
+### <a name="find-a-machine-most-recent-record-by-ip-address"></a>Znajdź komputer (najnowszy rekord) według adresu IP
 
-### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Wyświetla listę wszystkich wersji produktu unikatowy programu curl w mojego centrum danych
-ServiceMapProcess_CL | gdzie ExecutableName_s == "zawinięcie" | odrębne ProductVersion_s
+search in (ServiceMapComputer_CL) "10.229.243.232" | podsumowujący arg_max (TimeGenerated, *) według ResourceId
 
-### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Utwórz grupę komputerów wszystkich komputerów z systemem CentOS
-ServiceMapComputer_CL | gdzie contains_cs OperatingSystemFullName_s "CentOS" | odrębne ComputerName_s
+### <a name="list-all-known-processes-on-a-specified-machine"></a>Wyświetl listę wszystkich znanych procesów na określonym komputerze
 
-### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>Podsumowanie połączenia wychodzące z grupy maszyn
+ServiceMapProcess_CL | gdzie MachineResourceName_s = = "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | podsumowujący arg_max (TimeGenerated, *) według ResourceId
+
+### <a name="list-all-computers-running-sql"></a>Wyświetl listę wszystkich komputerów z uruchomionym programem SQL
+
+ServiceMapComputer_CL | gdzie ResourceName_s ((search in (ServiceMapProcess_CL) "\*SQL\*" | DISTINCT MachineResourceName_s)) | DISTINCT ComputerName_s
+
+### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Wyświetl listę wszystkich unikatowych wersji programu zwinięcie w moim centrum danych
+
+ServiceMapProcess_CL | gdzie ExecutableName_s = = "zwinięcie" | różne ProductVersion_s
+
+### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Utwórz grupę komputerów z systemem CentOS
+
+ServiceMapComputer_CL | gdzie OperatingSystemFullName_s contains_cs "CentOS" | różne ComputerName_s
+
+### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>Podsumuj połączenia wychodzące z grupy maszyn
+
 ```
 // the machines of interest
 let machines = datatable(m: string) ["m-82412a7a-6a32-45a9-a8d6-538354224a25"];
@@ -494,21 +545,26 @@ let remoteMachines = remote | summarize by RemoteMachine;
 ```
 
 ## <a name="rest-api"></a>Interfejs API REST
-Wszystkie dane serwera, proces i zależności na mapie usługi są dostępne za pośrednictwem [interfejsu API REST mapy usługi](https://docs.microsoft.com/rest/api/servicemap/).
+
+Wszystkie dane dotyczące serwera, procesu i zależności w Service Map są dostępne za pośrednictwem [interfejsu API REST Service map](https://docs.microsoft.com/rest/api/servicemap/).
 
 ## <a name="diagnostic-and-usage-data"></a>Dane diagnostyczne i dane dotyczące użycia
-Firma Microsoft automatycznie zbiera dane dotyczące użycia i wydajności przez korzystanie z usługi mapy usługi. Firma Microsoft używa tych danych do zapewniania i poprawiania jakości, bezpieczeństwa i integralności usługi mapy usługi. Aby zapewnić dokładne i wydajne funkcje do rozwiązywania problemów, dane obejmują informacje o konfiguracji oprogramowania, takie jak system operacyjny i wersję, adres IP, nazwę DNS i nazwę stacji roboczej. Firma Microsoft gromadzi nazwisk, adresów ani innych informacji kontaktowych.
+
+Firma Microsoft automatycznie zbiera dane dotyczące użycia i wydajności przez korzystanie z usługi mapy usługi. Firma Microsoft używa tych danych do zapewniania i poprawiania jakości, bezpieczeństwa i integralności usługi mapy usługi. Aby zapewnić dokładne i wydajne możliwości rozwiązywania problemów, dane obejmują informacje o konfiguracji oprogramowania, takie jak system operacyjny, wersja, adres IP, nazwa DNS i nazwa stacji roboczej. Firma Microsoft nie zbiera nazw, adresów ani innych informacji kontaktowych.
 
 Aby uzyskać więcej informacji na temat zbierania i wykorzystywania danych, zobacz [Microsoft Online Services Privacy Statement](https://go.microsoft.com/fwlink/?LinkId=512132).
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się więcej o [dziennikach](../../azure-monitor/log-query/log-query-overview.md) w usłudze Log Analytics, aby pobrać dane, które są zbierane przez rozwiązania Service Map.
+
+Dowiedz się więcej o przeszukiwaniu [dzienników](../../azure-monitor/log-query/log-query-overview.md) w log Analytics, aby pobrać dane zbierane przez Service map.
 
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
-Zobacz [Rozwiązywanie problemów z części dokumentu konfigurowania rozwiązania Service Map]( service-map-configure.md#troubleshooting).
+
+Zapoznaj się z [sekcją Rozwiązywanie problemów w artykule konfigurowanie Service map dokumentu]( service-map-configure.md#troubleshooting).
 
 
 ## <a name="feedback"></a>Opinia
-Masz opinię dla nas o rozwiązania Service Map lub tej dokumentacji?  Odwiedź nasze [stronę z opiniami użytkowników](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), gdzie możesz proponować funkcje lub głosować się sugestie istniejących.
+
+Czy masz opinię na temat Service Map lub tej dokumentacji?  Odwiedź naszą [stronę głosową użytkownika](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), na której można zasugerować funkcje lub zapoznaj się z istniejącymi sugestiami.

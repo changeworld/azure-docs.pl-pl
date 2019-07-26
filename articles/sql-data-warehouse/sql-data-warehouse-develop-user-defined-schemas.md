@@ -1,8 +1,8 @@
 ---
-title: Za pomocą schematy definiowane przez użytkownika w usłudze SQL Data Warehouse | Dokumentacja firmy Microsoft
-description: Porady dotyczące związane z opracowywaniem rozwiązań przy użyciu języka T-SQL schematy definiowane przez użytkownika w usłudze Azure SQL Data Warehouse.
+title: Używanie schematów zdefiniowanych przez użytkownika w SQL Data Warehouse | Microsoft Docs
+description: Porady dotyczące korzystania ze schematów zdefiniowanych przez użytkownika w języku T-SQL w Azure SQL Data Warehouse na potrzeby tworzenia rozwiązań.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,49 +10,49 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 7e22dc69a9da1d9b5a8c0ff13f73769b1ed4514a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e0ae00e0fca5ed4c6fba04444e5c50424462d297
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65861713"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479581"
 ---
-# <a name="using-user-defined-schemas-in-sql-data-warehouse"></a>Za pomocą schematy definiowane przez użytkownika w usłudze SQL Data Warehouse
-Porady dotyczące związane z opracowywaniem rozwiązań przy użyciu języka T-SQL schematy definiowane przez użytkownika w usłudze Azure SQL Data Warehouse.
+# <a name="using-user-defined-schemas-in-sql-data-warehouse"></a>Używanie schematów zdefiniowanych przez użytkownika w SQL Data Warehouse
+Porady dotyczące korzystania ze schematów zdefiniowanych przez użytkownika w języku T-SQL w Azure SQL Data Warehouse na potrzeby tworzenia rozwiązań.
 
-## <a name="schemas-for-application-boundaries"></a>Schematów dla granic aplikacji
+## <a name="schemas-for-application-boundaries"></a>Schematy granic aplikacji
 
-Magazyny danych tradycyjnych często używają oddzielnych baz danych do tworzenia granic aplikacji, w oparciu o obciążenie, domeny lub zabezpieczeń. Na przykład tradycyjnego magazynu danych programu SQL Server może obejmować tymczasowej bazy danych, bazy danych magazynu danych i niektóre bazy danych składnicy danych. W tej topologii, każda baza danych działa jako obciążenie i granicy zabezpieczeń w architekturze.
+Tradycyjne magazyny danych często używają osobnych baz danych do tworzenia granic aplikacji na podstawie obciążenia, domeny lub zabezpieczeń. Na przykład tradycyjny magazyn danych SQL Server może obejmować przemieszczanie bazy danych, bazy danych magazynu danych i niektórych baz danych składnicy danych. W tej topologii każda baza danych działa jako granica obciążenia i zabezpieczeń w architekturze.
 
-Z drugiej strony usługa SQL Data Warehouse działa obciążenie magazynu danych w obrębie jednej bazy danych. Sprzężenia krzyżowego bazy danych nie są dozwolone. W związku z tym usługa SQL Data Warehouse oczekuje, że wszystkie tabele używane w magazynie mają być przechowywane w jednej bazie danych.
+Z kolei SQL Data Warehouse uruchamia całe obciążenie magazynu danych w jednej bazie danych. Sprzężenia między bazami danych są niedozwolone. W związku z tym SQL Data Warehouse oczekuje, że wszystkie tabele używane przez magazyn będą przechowywane w jednej bazie danych.
 
 > [!NOTE]
-> Usługa SQL Data Warehouse nie obsługuje zapytania obejmujące wiele baz danych dowolnego rodzaju. W związku z tym implementacje magazynu danych, które korzystają z tego wzorca należy skorygować.
+> SQL Data Warehouse nie obsługuje zapytań między bazami danych dowolnego rodzaju. W związku z tym należy skorygować implementacje magazynu danych korzystające z tego wzorca.
 > 
 > 
 
 ## <a name="recommendations"></a>Zalecenia
-Poniżej przedstawiono zalecenia dotyczące konsolidację obciążeń, zabezpieczeń, domeny i funkcjonalności granice przy użyciu schematów zdefiniowane przez użytkownika
+Są to zalecenia dotyczące konsolidowania obciążeń, zabezpieczeń, domeny i granic funkcjonalnych za pomocą schematów zdefiniowanych przez użytkownika
 
-1. Używać jedna baza danych SQL Data Warehouse do uruchamiania obciążenia magazynu danych
-2. Konsolidacja z istniejącym środowiskiem magazynu danych, aby używać jedna baza danych SQL Data Warehouse
-3. Wykorzystaj **schematy definiowane przez użytkownika** do zapewnienia granicy ustawienie było wcześniej zaimplementowane przy użyciu bazy danych.
+1. Używanie jednej SQL Data Warehouse Database do uruchamiania całego obciążenia magazynu danych
+2. Konsolidowanie istniejącego środowiska magazynu danych w celu korzystania z jednej SQL Data Warehouse bazy danych
+3. Korzystaj ze **schematów zdefiniowanych przez użytkownika** , aby zapewnić granicę zaimplementowaną wcześniej przy użyciu baz danych.
 
-Jeśli schematy definiowane przez użytkownika nie zostały użyte wcześniej, można skorzystać z pustego. Po prostu użyć starej nazwy bazy danych jako podstawy dla swoje schematy definiowane przez użytkownika w bazie danych SQL Data Warehouse.
+Jeśli schematy zdefiniowane przez użytkownika nie były wcześniej używane, masz czyste miejsce. Po prostu Użyj starej nazwy bazy danych jako podstawy dla schematów zdefiniowanych przez użytkownika w bazie danych SQL Data Warehouse.
 
-Jeśli używano już schematów masz kilka opcji:
+Jeśli schematy zostały już użyte, możesz skorzystać z kilku opcji:
 
-1. Usuń nazwy starszej wersji schematu i zacznij od zera
-2. Zachowanie nazwy schematu starszych wstępnie oczekujące nazwy starszej wersji schematu, do nazwy tabeli
-3. Zachowują nazwy starszej wersji schematu, implementując widoków za pośrednictwem tabeli w schemacie dodatkowe ponownie utworzyć starej struktury schematu.
+1. Usuń starsze nazwy schematów i zacznij od nowa
+2. Zachowaj starsze nazwy schematów, przede wszystkim nazwami starszego schematu i nazwą tabeli
+3. Zachowaj starsze nazwy schematów, implementując widoki w tabeli w dodatkowym schemacie, aby ponownie utworzyć starą strukturę schematu.
 
 > [!NOTE]
-> Na pierwszej kontroli opcja 3 może się wydawać najbardziej atrakcyjnymi opcji. Jednak devil jest w szczegółach. Widoki są tylko do odczytu w magazynie danych SQL. Wszelkie zmiany danych lub tabeli, należałoby były wykonywane wbrew tabeli podstawowej. Opcja 3 wprowadza również warstwy widoków do systemu. Warto nadać to rozwagą dodatkowe, jeśli używane są widoki w ramach architektury już.
+> Przy pierwszej inspekcji Opcja 3 może wyglądać jak najbardziej atrakcyjny opcję. Devil jest jednak szczegółowy. Widoki są odczytywane tylko w SQL Data Warehouse. Wszelkie modyfikacje danych lub tabel należy wykonać w odniesieniu do tabeli podstawowej. Opcja 3 wprowadza również warstwę widoków w systemie. Jeśli używasz już widoków w danej architekturze, możesz zadawać to kilka dodatkowych myśli.
 > 
 > 
 
 ### <a name="examples"></a>Przykłady:
-Implementowanie schematy definiowane przez użytkownika na podstawie nazw bazy danych
+Implementowanie schematów zdefiniowanych przez użytkownika na podstawie nazw baz danych
 
 ```sql
 CREATE SCHEMA [stg]; -- stg previously database name for staging database
@@ -70,7 +70,7 @@ CREATE TABLE [edw].[customer] -- create data warehouse tables in the edw schema
 );
 ```
 
-Zachowanie nazwy schematu starszych wstępnie oczekujące je do nazwy tabeli. Schematy na użytek granicę obciążenia.
+Zachowaj starsze nazwy schematów przed zaczekaniem ich na nazwę tabeli. Użyj schematów dla granicy obciążenia.
 
 ```sql
 CREATE SCHEMA [stg]; -- stg defines the staging boundary
@@ -88,7 +88,7 @@ CREATE TABLE [edw].[dim_customer] --pre-pend the old schema name to the table an
 );
 ```
 
-Zachowaj nazw starszej wersji schematu, przy użyciu widoków
+Zachowaj starsze nazwy schematów przy użyciu widoków
 
 ```sql
 CREATE SCHEMA [stg]; -- stg defines the staging boundary
@@ -116,10 +116,10 @@ FROM    [edw].customer
 ```
 
 > [!NOTE]
-> Wszelkie zmiany w schemacie strategii wymaga przeglądu model zabezpieczeń dla bazy danych. W wielu przypadkach można uprościć model zabezpieczeń, przypisywania uprawnień na poziomie schematu. Bardziej szczegółowe uprawnienia są wymagane, można użyć ról bazy danych.
+> Wszelkie zmiany strategii schematu wymagają przeglądu modelu zabezpieczeń bazy danych. W wielu przypadkach może być możliwe uproszczenie modelu zabezpieczeń przez przypisanie uprawnień na poziomie schematu. Jeśli wymagane są bardziej szczegółowe uprawnienia, można użyć ról bazy danych.
 > 
 > 
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej porad programistycznych, zobacz [omówienie programowania w usłudze](sql-data-warehouse-overview-develop.md).
+## <a name="next-steps"></a>Następne kroki
+Aby uzyskać więcej porad programistycznych, zobacz [Omówienie projektowania](sql-data-warehouse-overview-develop.md).
 

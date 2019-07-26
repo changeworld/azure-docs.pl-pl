@@ -1,45 +1,41 @@
 ---
-title: Jak używać usługi Diagnostyka Azure (.NET) z usługami w chmurze | Dokumentacja firmy Microsoft
-description: Przy użyciu diagnostyki Azure do zbierania danych z usług Azure cloud Services, debugowanie, mierzenia wydajności, monitorowania, analizy ruchu sieciowego i inne.
+title: Jak korzystać z diagnostyki Azure (.NET) z Cloud Services | Microsoft Docs
+description: Używanie diagnostyki Azure do zbierania danych z usług Azure Cloud Services na potrzeby debugowania, mierzenia wydajności, monitorowania, analizy ruchu i nie tylko.
 services: cloud-services
 documentationcenter: .net
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 89623a0e-4e78-4b67-a446-7d19a35a44be
+author: georgewallace
+manager: carmonm
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/22/2017
-ms.author: jeconnoc
-ms.openlocfilehash: ba69a5aaffb39c26731ffd209587a8c8223b032a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: 5f2ec77452b90d4270de043955fc0b443f045d5b
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60337395"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359692"
 ---
-# <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Włączając diagnostykę platformy Azure w usługach Azure Cloud Services
-Zobacz [Omówienie diagnostyki Azure](../azure-diagnostics.md) w tle w usłudze Diagnostyka Azure.
+# <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Włączanie Diagnostyka Azure na platformie Azure Cloud Services
+Zobacz [Diagnostyka Azure przegląd](../azure-diagnostics.md) dla tła na Diagnostyka Azure.
 
 ## <a name="how-to-enable-diagnostics-in-a-worker-role"></a>Jak włączyć diagnostykę w roli procesu roboczego
-W tym przewodniku opisano sposób wdrażania roli procesu roboczego platformy Azure, który emituje dane telemetryczne za pomocą klasy Element EventSource platformy .NET. Diagnostyka Azure służy do zbierania danych telemetrycznych i zapisz go na koncie usługi Azure storage. Po utworzeniu roli procesu roboczego programu Visual Studio automatycznie włącza Diagnostyka 1.0 w ramach rozwiązania w zestawy Azure SDK dla platformy .NET 2.4 i starszych wersji. Poniższe instrukcje opisują proces tworzenia roli procesu roboczego, z wyłączeniem Diagnostyka 1.0 z rozwiązania i wdrażanie diagnostyki w wersji 1.2 lub 1.3 do swojej roli procesu roboczego.
+W tym przewodniku opisano sposób implementacji roli procesu roboczego platformy Azure, która emituje dane telemetryczne przy użyciu klasy EventSource programu .NET. Diagnostyka Azure służy do zbierania danych telemetrycznych i przechowywania ich na koncie usługi Azure Storage. Podczas tworzenia roli procesu roboczego program Visual Studio automatycznie włącza diagnostykę 1,0 w ramach rozwiązania w zestawach SDK platformy Azure dla platformy .NET 2,4 i starszych. Poniższe instrukcje opisują proces tworzenia roli procesu roboczego, wyłączania diagnostyki 1,0 z rozwiązania oraz wdrażania diagnostyki 1,2 lub 1,3 do roli procesu roboczego.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
-W tym artykule założono, mieć subskrypcję platformy Azure i przy użyciu programu Visual Studio przy użyciu zestawu SDK platformy Azure. Jeśli nie masz subskrypcji platformy Azure, możesz zarejestrować się w celu [bezpłatnej wersji próbnej][Free Trial]. Upewnij się, że [Instalowanie i konfigurowanie programu Azure PowerShell w wersji 0.8.7 lub nowszej][Install and configure Azure PowerShell version 0.8.7 or later].
+W tym artykule przyjęto założenie, że masz subskrypcję platformy Azure i korzystasz z programu Visual Studio z zestawem Azure SDK. Jeśli nie masz subskrypcji platformy Azure, możesz utworzyć konto [bezpłatnej wersji próbnej][Free Trial]. Make sure to [Install and configure Azure PowerShell version 0.8.7 or later][Install and configure Azure PowerShell version 0.8.7 or later].
 
-### <a name="step-1-create-a-worker-role"></a>Krok 1: Tworzenie roli procesu roboczego
+### <a name="step-1-create-a-worker-role"></a>Krok 1: Utwórz rolę procesu roboczego
 1. Uruchom program **Visual Studio**.
-2. Tworzenie **usługa w chmurze** projekt z **chmury** szablon, który jest przeznaczony dla .NET Framework 4.5.  Nazwij projekt "WadExample", a następnie kliknij przycisk Ok.
-3. Wybierz **roli procesu roboczego** i kliknij przycisk Ok. Projekt zostanie utworzony.
-4. W **Eksploratora rozwiązań**, kliknij dwukrotnie **WorkerRole1** pliku właściwości.
-5. W **konfiguracji** karcie, usuń zaznaczenie **Włącz diagnostykę** wyłączyć Diagnostyka 1.0 (zestaw Azure SDK 2.4 lub starszej).
-6. Skompiluj rozwiązanie, aby sprawdzić, czy żadne błędy.
+2. Utwórz projekt **usługi w chmurze platformy Azure** na podstawie szablonu w **chmurze** , który jest przeznaczony dla .NET Framework 4,5.  Nadaj projektowi nazwę "WadExample" i kliknij przycisk OK.
+3. Wybierz **rolę proces roboczy** , a następnie kliknij przycisk OK. Projekt zostanie utworzony.
+4. W **Eksplorator rozwiązań**kliknij dwukrotnie plik właściwości **WorkerRole1** .
+5. Na karcie **Konfiguracja** Cofnij zaznaczenie pola wyboru **Włącz diagnostykę** , aby wyłączyć diagnostykę 1,0 (zestaw Azure SDK 2,4 lub starszy).
+6. Skompiluj rozwiązanie, aby sprawdzić, czy nie ma żadnych błędów.
 
-### <a name="step-2-instrument-your-code"></a>Krok 2: Instrumentować swój kod
-Zastąp zawartość WorkerRole.cs następującym kodem. Odziedziczone po klasie SampleEventSourceWriter, [EventSource — klasa][EventSource Class], implementuje cztery metody rejestrowania: **SendEnums**, **MessageMethod**, **SetOther** i **HighFreq**. Pierwszy parametr **WriteEvent** Metoda określa identyfikator odpowiednie zdarzenie. Metoda Run implementuje nieskończoną pętlę, która wywołuje każdą z metod rejestrowania zaimplementowanych w **SampleEventSourceWriter** klasy co 10 sekund.
+### <a name="step-2-instrument-your-code"></a>Krok 2: Instrumentacja kodu
+Zastąp zawartość WorkerRole.cs następującym kodem. Klasa SampleEventSourceWriter, dziedziczona z [klasy EventSource][EventSource Class], implementuje cztery metody rejestrowania: **SendEnums**, **MessageMethod**, **setother** i **HighFreq**. Pierwszy parametr metody **metody WriteEvent** definiuje identyfikator dla odpowiedniego zdarzenia. Metoda run implementuje nieskończoną pętlę, która wywołuje każdą metodę rejestrowania zaimplementowaną w klasie **SampleEventSourceWriter** co 10 sekund.
 
 ```csharp
 using Microsoft.WindowsAzure.ServiceRuntime;
@@ -122,30 +118,30 @@ namespace WorkerRole1
 ```
 
 
-### <a name="step-3-deploy-your-worker-role"></a>Krok 3: Wdrażanie swojej roli procesu roboczego
+### <a name="step-3-deploy-your-worker-role"></a>Krok 3: Wdróż rolę procesu roboczego
 
 [!INCLUDE [cloud-services-wad-warning](../../includes/cloud-services-wad-warning.md)]
 
-1. Wdrażanie swojej roli procesu roboczego na platformie Azure z poziomu programu Visual Studio, wybierając **WadExample** projekt w Eksploratorze rozwiązań następnie **Publikuj** z **kompilacji** menu.
+1. Wdróż rolę procesu roboczego na platformie Azure z poziomu programu Visual Studio, wybierając projekt **WadExample** w Eksplorator rozwiązań następnie **Opublikuj** w menu **kompilacja** .
 2. Wybierz subskrypcję.
-3. W **ustawień publikowania platformy Microsoft** okno dialogowe, wybierz opcję **Utwórz nowy...** .
-4. W **tworzenia usługi w chmurze i konto magazynu** okno dialogowe, wprowadź **nazwa** (na przykład "WadExample") i wybierz region lub grupa koligacji.
-5. Ustaw **środowiska** do **przemieszczania**.
-6. Zmodyfikuj inne **ustawienia** jako odpowiednie i kliknij przycisk **Publikuj**.
-7. Po zakończeniu wdrożenia należy sprawdzić w witrynie Azure portal, należącym do usługi w chmurze **systemem** stanu.
+3. W oknie dialogowym **Microsoft Azure ustawień publikowania** wybierz pozycję **Utwórz nowy.** .
+4. W oknie dialogowym **Tworzenie usługi w chmurze i konta magazynu** wprowadź **nazwę** (na przykład "WadExample") i wybierz region lub grupę koligacji.
+5. Ustaw **środowisko** jako **przejściowe**.
+6. Zmodyfikuj odpowiednio inne **Ustawienia** , a następnie kliknij przycisk **Publikuj**.
+7. Po zakończeniu wdrożenia Sprawdź, czy Azure Portal, że usługa w chmurze jest **uruchomiona** .
 
-### <a name="step-4-create-your-diagnostics-configuration-file-and-install-the-extension"></a>Krok 4: Tworzenie pliku konfiguracji diagnostyki i zainstalować rozszerzenie
+### <a name="step-4-create-your-diagnostics-configuration-file-and-install-the-extension"></a>Krok 4: Utwórz plik konfiguracji diagnostyki i zainstaluj rozszerzenie
 1. Pobierz definicję schematu pliku konfiguracji publicznej, wykonując następujące polecenie programu PowerShell:
 
     ```powershell
     (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
     ```
-2. Dodaj plik XML do Twojej **WorkerRole1** projektu, klikając prawym przyciskiem myszy **WorkerRole1** projektu, a następnie wybierz **Dodaj** -> **nowy element...** -> **Elementy Visual C#**  -> **danych** -> **pliku XML**. Nadaj plikowi nazwę "WadExample.xml".
+2. Dodaj plik XML do projektu **WorkerRole1** , klikając prawym przyciskiem myszy projekt **WorkerRole1** i wybierając polecenie **Dodaj** -> **nowy element...** -> **C#**  -> **Plik XML**danychelementówwizualnych -> . Nazwij plik "WadExample. xml".
 
    ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
-3. Skojarz WadConfig.xsd z pliku konfiguracji. Upewnij się, że okno edytora WadExample.xml jest aktywnym oknem. Naciśnij klawisz **F4** otworzyć **właściwości** okna. Kliknij przycisk **schematów** właściwość **właściwości** okna. Kliknij przycisk **...** w **schematów** właściwości. Kliknij przycisk **Dodaj...** przycisk i przejdź do lokalizacji, w której zapisano plik XSD, a następnie wybierz plik WadConfig.xsd. Kliknij przycisk **OK**.
+3. Skojarz plik WadConfig. xsd z plikiem konfiguracji. Upewnij się, że okno edytora WadExample. XML jest oknem aktywnym. Naciśnij klawisz **F4** , aby otworzyć okno **Właściwości** . Kliknij właściwość **schematy** w oknie **Właściwości** . Kliknij przycisk **...** we właściwości **schematy** . Kliknij przycisk **Dodaj...** i przejdź do lokalizacji, w której zapisano plik XSD, a następnie wybierz plik WadConfig. xsd. Kliknij przycisk **OK**.
 
-4. Zastąp zawartość pliku konfiguracji WadExample.xml następujący kod XML, a następnie zapisz plik. Ten plik konfiguracyjny definiuje kilka liczników wydajności do zbierania: jeden dla użycia Procesora CPU i jeden dla użycia pamięci. Konfiguracja definiuje cztery zdarzenia odpowiadającej metody w klasie SampleEventSourceWriter.
+4. Zastąp zawartość pliku konfiguracji WadExample. XML następującym kodem XML i Zapisz plik. Ten plik konfiguracji definiuje kilka liczników wydajności do zebrania: jeden do użycia procesora CPU i jeden do wykorzystania pamięci. Następnie konfiguracja definiuje cztery zdarzenia odpowiadające metodom w klasie SampleEventSourceWriter.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -170,11 +166,11 @@ namespace WorkerRole1
 </PublicConfig>
 ```
 
-### <a name="step-5-install-diagnostics-on-your-worker-role"></a>Krok 5. Zainstaluj diagnostyki na swojej roli procesu roboczego
-Polecenia cmdlet programu PowerShell do zarządzania diagnostyki w roli sieci web lub proces roboczy są: Zestaw AzureServiceDiagnosticsExtension Get AzureServiceDiagnosticsExtension i Remove AzureServiceDiagnosticsExtension.
+### <a name="step-5-install-diagnostics-on-your-worker-role"></a>Krok 5. Instalowanie diagnostyki w roli procesu roboczego
+Polecenia cmdlet programu PowerShell służące do zarządzania diagnostyką w ramach roli sieci Web lub procesu roboczego są następujące: Set-AzureServiceDiagnosticsExtension, get-AzureServiceDiagnosticsExtension i Remove-AzureServiceDiagnosticsExtension.
 
-1. Otwórz program Azure PowerShell.
-2. Uruchom skrypt do zainstalowania diagnostyki na swojej roli procesu roboczego (Zastąp *StorageAccountKey* przy użyciu klucza konta magazynu dla konta usługi storage wadexample i *config_path* ze ścieżką do  *WadExample.xml* plików):
+1. Otwórz Azure PowerShell.
+2. Wykonaj skrypt, aby zainstalować diagnostykę w roli procesu roboczego (Zamień *StorageAccountKey* na klucz konta magazynu dla konta magazynu wadexample i *config_path* ze ścieżką do pliku *wadexample. XML* ):
 
 ```powershell
 $storage_name = "wadexample"
@@ -185,19 +181,19 @@ $storageContext = New-AzureStorageContext -StorageAccountName $storage_name -Sto
 Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Staging -Role WorkerRole1
 ```
 
-### <a name="step-6-look-at-your-telemetry-data"></a>Krok 6: Spójrz na dane telemetryczne
-W programie Visual Studio **Eksploratora serwera**, przejdź do konta magazynu wadexample. Po około pięciu (5) minut działaniu usługi w chmurze, powinien zostać wyświetlony tabele **WADEnumsTable**, **WADHighFreqTable**, **WADMessageTable**, **WADPerformanceCountersTable** i **WADSetOtherTable**. Kliknij dwukrotnie jednej z tabel, aby wyświetlić dane telemetryczne, które zostały zebrane.
+### <a name="step-6-look-at-your-telemetry-data"></a>Krok 6: Przyjrzyj się danych telemetrycznych
+W programie Visual Studio **Eksplorator serwera**przejdź do konta magazynu wadexample. Po uruchomieniu usługi w chmurze około pięciu (5) minut powinna zostać wyświetlona tabela **WADEnumsTable**, **WADHighFreqTable**, **WADMessageTable**, **WADPerformanceCountersTable** i **WADSetOtherTable**. Kliknij dwukrotnie jedną z tabel, aby wyświetlić dane telemetryczne, które zostały zebrane.
 
 ![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
 
 ## <a name="configuration-file-schema"></a>Schemat pliku konfiguracji
-Plik konfiguracji diagnostyki definiuje wartości, które są stosowane do inicjalizacji ustawień diagnostycznych konfiguracji podczas uruchamiania agenta diagnostyki. Zobacz [najnowsze informacje ogólne o schematach](/azure/azure-monitor/platform/diagnostics-extension-schema) uzyskać prawidłowe wartości i przykładów.
+Plik konfiguracji diagnostyki definiuje wartości, które są używane do inicjowania ustawień konfiguracji diagnostyki podczas uruchamiania agenta diagnostyki. Zobacz [najnowsze informacje](/azure/azure-monitor/platform/diagnostics-extension-schema) o schemacie dotyczące prawidłowych wartości i przykładów.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
-Jeśli masz problemy, zobacz [Rozwiązywanie problemów z usługi Azure Diagnostics](../azure-diagnostics-troubleshooting.md) Pomoc dotycząca typowych problemów.
+Jeśli masz problemy, zobacz [Rozwiązywanie problemów Diagnostyka Azure](../azure-diagnostics-troubleshooting.md) , aby uzyskać pomoc dotyczącą typowych problemów.
 
 ## <a name="next-steps"></a>Następne kroki
-[Wyświetlenie listy pokrewne artykuły diagnostyki maszyny wirtualnej platformy Azure](../azure-monitor/platform/diagnostics-extension-overview.md#cloud-services-using-azure-diagnostics) Aby zmienić dane są zbierane, rozwiązywanie problemów, lub Dowiedz się więcej o diagnostyce ogólnie rzecz biorąc.
+Zapoznaj się z [listą artykułów diagnostycznych dotyczących maszyn wirtualnych platformy Azure](../azure-monitor/platform/diagnostics-extension-overview.md#cloud-services-using-azure-diagnostics) , aby zmienić zbierane dane, rozwiązywać problemy lub dowiedzieć się więcej na temat diagnostyki.
 
 [EventSource Class]: https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
 

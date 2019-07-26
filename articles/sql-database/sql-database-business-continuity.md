@@ -13,12 +13,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 06/25/2019
-ms.openlocfilehash: 26b31781ae0056999eb222981b2eea3eb4595041
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 361613c52c00b7a7e468eccbb52bf113b6adb434
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228052"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444508"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Omówienie zagadnień dotyczących ciągłości działalności biznesowej zapewnianej przez usługę Azure SQL Database
 
@@ -58,7 +58,23 @@ Możesz użyć automatycznych kopii zapasowych bazy danych, aby przywrócić baz
 
 Jeśli maksymalny obsługiwany okres przechowywania kopii zapasowej dla operacji przywracania do punktu w czasie (kopie) nie jest wystarczający dla aplikacji, można ją przedłużyć, konfigurując zasady długoterminowego przechowywania (LTR) dla baz danych. Aby uzyskać więcej informacji, zobacz [długoterminowe przechowywanie kopii zapasowych](sql-database-long-term-retention.md).
 
-## <a name="recover-a-database-to-another-azure-region"></a>Odzyskiwanie bazy danych do innego regionu platformy Azure
+## <a name="compare-geo-replication-with-failover-groups"></a>Porównywanie replikacji geograficznej z grupami trybu failover
+
+[Grupy autotrybu failover](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities) upraszczają wdrażanie i użycie [replikacji](sql-database-active-geo-replication.md) geograficznej oraz dodawanie dodatkowych funkcji, zgodnie z opisem w poniższej tabeli:
+
+|                                              | Replikacja geograficzna | Grupy trybu failover  |
+|:---------------------------------------------| :-------------- | :----------------|
+| Automatyczna praca awaryjna                           |     Nie          |      Tak         |
+| Równoczesne przełączanie wielu baz danych  |     Nie          |      Tak         |
+| Zaktualizuj parametry połączenia po przejściu w tryb failover      |     Tak         |      Nie          |
+| Obsługiwane wystąpienie zarządzane                   |     Nie          |      Tak         |
+| Może znajdować się w tym samym regionie co podstawowa             |     Yes         |      Nie          |
+| Wiele replik                            |     Tak         |      Nie          |
+| Obsługuje skalę odczytu                          |     Tak         |      Yes         |
+| &nbsp; | &nbsp; | &nbsp; |
+
+
+## <a name="recover-a-database-to-the-existing-server"></a>Odzyskiwanie bazy danych na istniejący serwer
 
 Sporadycznie centrum danych platformy Azure może mieć awarię. Taka awaria powoduje zakłócenia działania firmy, które mogą trwać tylko kilka minut, ale mogą też trwać wiele godzin.
 
@@ -72,8 +88,8 @@ Różne metody odzyskiwania oferują różne poziomy RPO i RTO. Można wybrać o
 
 | Metoda odzyskiwania | RTO | RPO |
 | --- | --- | --- | 
-| Przywracanie geograficzne z kopii zapasowych replikowanych geograficznie | 12 h | 1 h |
-| Grupy automatycznego trybu failover | 1 h | 5 s |
+| Przywracanie geograficzne z kopii zapasowych replikowanych geograficznie | 12 h | 1 godz. |
+| Grupy automatycznego trybu failover | 1 godz. | 5 s |
 | Ręczna praca awaryjna bazy danych | 30 s | 5 s |
 
 > [!NOTE]

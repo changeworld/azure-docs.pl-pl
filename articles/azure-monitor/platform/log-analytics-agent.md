@@ -11,44 +11,48 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 07/23/2019
 ms.author: magoedte
-ms.openlocfilehash: 583845b2ea63efd42f382c9c150de650f34bafed
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 653355af7dcb0b30c3deb444fcfe4b4ff76e7e77
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514109"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424121"
 ---
-# <a name="collect-log-data-with-the-log-analytics-agent"></a>Zbieranie danych dziennika przy użyciu agenta usługi Log Analytics
+# <a name="collect-log-data-with-the-log-analytics-agent"></a>Zbieranie danych dziennika za pomocą agenta Log Analytics
 
-Agenta usługi Azure Log Analytics, wcześniej nazywana zgodnie z Microsoft Monitoring Agent (MMA) lub usługi OMS Linux agent został opracowany do kompleksowego zarządzania na maszynach lokalnych komputerów monitorowanych przez [System Center Operations Manager ](https://docs.microsoft.com/system-center/scom/)i maszyn wirtualnych w chmurze. Agentów systemów Windows i Linux dołączanie do usługi Azure Monitor i przechowywać zebrane dane dzienników z różnych źródeł w obszaru roboczego usługi Log Analytics, a także wszystkie dzienniki unikatowy lub metryk zgodnie z definicją w rozwiązaniu do monitorowania. 
+Program Azure Log Analytics Agent, wcześniej określany jako Microsoft Monitoring Agent (MMA) lub Agent usługi OMS Linux, został opracowany z myślą o zarządzaniu na maszynach lokalnych, komputerach monitorowanych przez [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/)i Maszyny wirtualne w dowolnej chmurze. Agenci systemów Windows i Linux dołączają do Azure Monitor i przechowują zebrane dane dzienników z różnych źródeł w obszarze roboczym Log Analytics, a także do wszelkich unikatowych dzienników lub metryk zgodnie z definicją w rozwiązaniu monitorowania. 
 
-Ten artykuł zawiera szczegółowe omówienie agenta systemu i wymagania dotyczące sieci i różne metody wdrażania.   
+Ten artykuł zawiera szczegółowe omówienie agenta systemu i wymagania dotyczące sieci i różne metody wdrażania.
 
 ## <a name="overview"></a>Przegląd
 
 ![Log Analytics agent komunikacji diagramu](./media/log-analytics-agent/log-analytics-agent-01.png)
 
-Przed analizowanie i przetwarzanie zebranych danych, należy najpierw zainstalować i łączenia agentów dla wszystkich maszyn, które chcesz wysyłać dane do usługi Azure Monitor. Można zainstalować agentów na maszynach wirtualnych platformy Azure przy użyciu rozszerzenia maszyny Wirtualnej analizy dzienników platformy Azure, Windows i Linux oraz maszyn w środowisku hybrydowym za pomocą Instalatora, wiersza polecenia lub przy użyciu Desired State Configuration (DSC) w usłudze Azure Automation. 
+Przed analizowaniem i działaniem zebranych danych należy najpierw zainstalować agentów i połączyć je ze wszystkimi maszynami, które mają wysyłać dane do usługi Azure Monitor. Można zainstalować agentów na maszynach wirtualnych platformy Azure przy użyciu rozszerzenia maszyny Wirtualnej analizy dzienników platformy Azure, Windows i Linux oraz maszyn w środowisku hybrydowym za pomocą Instalatora, wiersza polecenia lub przy użyciu Desired State Configuration (DSC) w usłudze Azure Automation. 
 
-Agent dla systemu Linux i Windows komunikuje się za pośrednictwem portu TCP 443 wychodzących do usługi Azure Monitor, a jeśli komputer, który nawiązuje połączenie za pośrednictwem zapory lub serwera proxy do komunikacji za pośrednictwem Internetu, zapoznaj się z wymaganiami poniżej, aby zrozumieć konfigurację sieci Wymagane. Jeśli Twoje informatyczne zasady zabezpieczeń nie zezwalają na komputerach w sieci, aby nawiązać połączenie z Internetem, możesz skonfigurować [bramy usługi Log Analytics](gateway.md) , a następnie skonfigurować agenta Aby nawiązać połączenie za pośrednictwem bramy do dzienników usługi Azure Monitor. Agenta można odbierać informacje o konfiguracji i Wyślij dane zbierane w zależności od tego, jakie dane zasad zbierania i monitorowania rozwiązań jest włączona w obszarze roboczym. 
+Agent dla systemów Linux i Windows komunikuje się z usługą Azure Monitor za pośrednictwem portu TCP 443, a jeśli komputer nawiązuje połączenie za pośrednictwem zapory lub serwera proxy w celu komunikowania się za pośrednictwem Internetu, przejrzyj poniższe wymagania, aby poznać konfigurację sieci Wymagane. Jeśli zasady zabezpieczeń IT nie zezwalają komputerom w sieci na łączenie się z Internetem, można skonfigurować [bramę log Analytics](gateway.md) , a następnie skonfigurować agenta do nawiązywania połączeń za pomocą bramy do Azure monitor dzienników. Agent może następnie odbierać informacje o konfiguracji i wysyłać zebrane dane w zależności od tego, jakie reguły zbierania danych i rozwiązania monitorowania, które zostały włączone w obszarze roboczym. 
 
-Monitorowanie komputerów z System Center Operations Manager 2012 R2 lub nowszym, może być wieloadresowych z usługą Azure Monitor, aby zbierać dane i przekazywać je do usługi i nadal być monitorowane przez [programu Operations Manager](../../azure-monitor/platform/om-agents.md). Komputerami z systemem Linux agent nie uwzględniają składnik usługi kondycji, ponieważ nie agenta Windows, a informacje są zbierane i przetwarzane przez serwer zarządzania w jej imieniu. Ponieważ komputery z systemem Linux są monitorowane w inny sposób z programem Operations Manager, nie mają one odbierać konfigurację lub zbieranie danych bezpośrednio i przekazywania przez grupę zarządzania, takich jak jest zarządzany przez agenta systemu Windows. W rezultacie, w tym scenariuszu nie jest obsługiwana za pomocą komputerów z systemem Linux raportowania programu Operations Manager i należy skonfigurować komputer z systemem Linux do [raportu do grupy zarządzania programu Operations Manager](../platform/agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group) obszar roboczy usługi Log Analytics w dwóch kroki.
+Jeśli monitorowany jest komputer z System Center Operations Manager 2012 R2 lub nowszym, może to być wieloadresowy z usługą Azure Monitor do zbierania danych i przekazywania ich do usługi i nadal monitorowany przez [Operations Manager](../../azure-monitor/platform/om-agents.md). W przypadku komputerów z systemem Linux Agent nie zawiera składnika usługi kondycji jako agenta systemu Windows, a informacje są zbierane i przetwarzane przez serwer zarządzania w jego imieniu. Ze względu na to, że komputery z systemem Linux są monitorowane inaczej przy użyciu Operations Manager, nie odbierają one konfiguracji ani nie zbierają danych bezpośrednio i przekazują je za pomocą grupy zarządzania, takiej jak system zarządzany przez agenta systemu Windows. W związku z tym ten scenariusz nie jest obsługiwany w przypadku komputerów z systemem Linux zgłaszanych do Operations Manager i należy skonfigurować komputer z systemem Linux do [raportowania do grupy zarządzania Operations Manager](../platform/agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group) i obszaru roboczego log Analytics w dwóch krokach.
 
 Windows agent może raportować do czterech obszarów roboczych usługi Log Analytics, a agenta systemu Linux obsługuje tylko raporty do jednego obszaru roboczego.  
 
-Agent dla systemu Linux i Windows, który nie jest tylko w przypadku nawiązywania połączenia z usługi Azure Monitor, obsługuje również usługi Azure Automation do obsługi roli procesu roboczego hybrydowego elementu Runbook i innych usług, takich jak [Change Tracking](../../automation/change-tracking.md), [rozwiązania Update Management](../../automation/automation-update-management.md), i [usługi Azure Security Center](../../security-center/security-center-intro.md). Aby uzyskać więcej informacji na temat roli hybrydowego procesu roboczego Runbook zobacz [usługi Azure Automation hybrydowego Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
+Agent dla systemów Linux i Windows nie tylko do łączenia się z Azure Monitor, obsługuje także Azure Automation do hostowania roli hybrydowego procesu roboczego elementu Runbook i innych usług, takich jak [Change Tracking](../../automation/change-tracking.md), [Update Management](../../automation/automation-update-management.md)i [Azure Security Center ](../../security-center/security-center-intro.md). Aby uzyskać więcej informacji na temat roli hybrydowego procesu roboczego Runbook zobacz [usługi Azure Automation hybrydowego Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
 
 ## <a name="supported-windows-operating-systems"></a>Obsługiwane systemy operacyjne Windows
 Windows agent oficjalnie obsługuje następujące wersje systemu operacyjnego Windows:
 
 * Windows Server 2019
-* Windows Server 2008 R2, 2012, 2012 R2, 2016 w wersji 1709 i 1803
-* Windows 7 z dodatkiem SP1 lub nowszy
+* Windows Server 2008 R2, 2012, 2012 R2, 2016, wersja 1709 i 1803
+* Windows 7 z dodatkiem SP1, Windows 8 Enterprise i Pro oraz Windows 10 Enterprise i Pro
+
+>[!NOTE]
+>Agent Log Analytics dla systemu Windows został zaprojektowany z myślą o obsłudze scenariuszy monitorowania serwera, dlatego można uruchomić klienta systemu Windows w celu obsługi obciążeń skonfigurowanych i zoptymalizowanych pod kątem systemu operacyjnego serwera. Agent obsługuje klienta systemu Windows, jednak nasze rozwiązania do monitorowania nie koncentrują się na scenariuszach monitorowania klientów, chyba że określono inaczej.
 
 ## <a name="supported-linux-operating-systems"></a>Obsługiwane systemy operacyjne Linux
-Ta sekcja zawiera szczegółowe informacje o obsługiwanych dystrybucjach systemu Linux.    
+
+Ta sekcja zawiera szczegółowe informacje o obsługiwanych dystrybucjach systemu Linux.
 
 Począwszy od wersji wydana po sierpnia 2018 wprowadzamy następujące zmiany do nasz model pomocy technicznej:  
 
@@ -68,45 +72,47 @@ Począwszy od wersji wydana po sierpnia 2018 wprowadzamy następujące zmiany do
 * Red Hat Enterprise Linux Server 6 — x86/x64 64 i 7 (x 64)
 * Debian GNU/Linux 8 i 9 — x86/x64 64
 * Ubuntu 14.04 LTS — x86/x64 64, 16.04 LTS — x86/x64 64 i 18.04 LTS (x64)
-* SUSE Linux Enterprise Server 12 (x 64) i 15 (x 64)
+* SUSE Linux Enterprise Server 12 (x64) i 15 (x64)
 
 >[!NOTE]
 >OpenSSL 1.1.0 jest obsługiwana tylko na platformach x86_x64 (64-bitowa) i OpenSSL wcześniej niż 1.x nie jest obsługiwane na dowolnej platformie.
 >
 
-### <a name="agent-prerequisites"></a>Wymagania wstępne dotyczące agenta
+### <a name="agent-prerequisites"></a>Wymagania wstępne agenta
 
-W poniższej tabeli wymieniono pakiety wymagane dla obsługiwanych dystrybucjach systemu Linux, które agent zostanie zainstalowany na.
+W poniższej tabeli przedstawiono pakiety wymagane dla obsługiwanych dystrybucje systemu Linux, na których zostanie zainstalowany agent.
 
-|Wymagany pakiet |Opis |Minimalna wersja |
+|Wymagany pakiet |Opis |Wersja minimalna |
 |-----------------|------------|----------------|
-|Glibc |    Biblioteka C GNU | 2.5-12 
-|Openssl    | Biblioteki OpenSSL | 1.0.x lub 1.1.x |
-|Curl | Klient sieci web programu cURL | 7.15.5 |
+|Glibc |    Biblioteka GNU C | 2.5-12 
+|OpenSSL    | Biblioteki OpenSSL | 1.0. x lub 1.1. x |
+|Odsłon | zazwinięcie klienta sieci Web | 7.15.5 |
 |Python-ctypes | | 
-|PAM | Podłączane moduły uwierzytelniania | | 
+|WYGASŁ | Moduły uwierzytelniania podłączane | | 
 
 >[!NOTE]
->Rsyslog lub syslog-ng są wymagane do zbierania komunikaty dziennika systemowego. Demon syslog domyślne w wersji 5 (sysklog) w wersji w systemie Red Hat Enterprise Linux, CentOS i Oracle Linux nie jest obsługiwana dla zbierania zdarzeń dziennika systemu. Do zbierania danych z serwera syslog z tej wersji tych dystrybucji, demona rsyslog powinien być zainstalowany i skonfigurowany tak, aby zastąpić sysklog.
+>Do zbierania komunikatów dziennika systemowego wymagane są rsyslog lub Dziennik systemu. Demon syslog domyślne w wersji 5 (sysklog) w wersji w systemie Red Hat Enterprise Linux, CentOS i Oracle Linux nie jest obsługiwana dla zbierania zdarzeń dziennika systemu. Aby zebrać dane dziennika systemu z tej wersji dystrybucji, demona rsyslog powinna zostać zainstalowana i skonfigurowana do zastępowania sysklog.
 
 ## <a name="tls-12-protocol"></a>Protokół TLS 1.2
-Na ułatwieniu zapewnienia bezpieczeństwa danych przesyłanych do usługi Azure Monitor dzienników, zdecydowanie zachęcamy do konfigurowania agenta do użycia w co najmniej zabezpieczeń TLS (Transport Layer) 1.2. Znaleziono starsze wersje protokołu TLS/Secure Sockets Layer (SSL) są narażone i gdy działają nadal obecnie Zezwalaj wstecznej zgodności, są one **niezalecane**.  Aby uzyskać dodatkowe informacje, przejrzyj [wysyłanie danych przy użyciu protokołu TLS 1.2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
+
+Aby zapewnić bezpieczeństwo danych przesyłanych do dzienników Azure Monitor, zdecydowanie zachęcamy do skonfigurowania agenta do korzystania z co najmniej Transport Layer Security (TLS) 1,2. Znaleziono starsze wersje protokołu TLS/Secure Sockets Layer (SSL) są narażone i gdy działają nadal obecnie Zezwalaj wstecznej zgodności, są one **niezalecane**.  Aby uzyskać dodatkowe informacje, przejrzyj [wysyłanie danych przy użyciu protokołu TLS 1.2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
 
 ## <a name="network-firewall-requirements"></a>Wymagania dotyczące zapory sieciowej
-Poniższe informacje lista serwera proxy i zapory konfiguracji wymaganych informacji dla agenta systemu Linux i Windows, do komunikowania się z dziennikami usługi Azure Monitor.  
+
+W poniższych informacjach znajdują się informacje o konfiguracji serwera proxy i zapory wymagane dla systemu Linux i Windows Agent do komunikowania się z dziennikami Azure Monitor.  
 
 |Zasób agenta|Porty |Kierunek |Obejście inspekcji HTTPS|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Port 443 |Wychodzące|Yes |  
-|*.oms.opinsights.azure.com |Port 443 |Wychodzące|Yes |  
-|*.blob.core.windows.net |Port 443 |Wychodzące|Yes |  
-|*.azure-automation.net |Port 443 |Wychodzące|Tak |  
+|*.ods.opinsights.azure.com |Port 443 |Wychodzące|Tak |  
+|*.oms.opinsights.azure.com |Port 443 |Wychodzące|Tak |  
+|*.blob.core.windows.net |Port 443 |Wychodzące|Tak |  
+|*.azure-automation.net |Port 443 |Wychodzące|Yes |  
 
-Uzyskać zapory wymagane dla platformy Azure Government, zobacz [zarządzania platformy Azure Government](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs). 
+Informacje dotyczące zapory wymagane do Azure Government można znaleźć w temacie [Azure Government Management](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs). 
 
 Jeśli zamierzasz nawiązać połączenie i rejestrować w usłudze Automation można używać elementów runbook w środowisku za pomocą usługi Azure Automation hybrydowego procesu roboczego Runbook, musi mieć dostęp do numeru portu i adresów URL opisanych w [Konfigurowanie sieci pod kątem Hybrydowego procesu roboczego Runbook](../../automation/automation-hybrid-runbook-worker.md#network-planning). 
 
-Agent systemów Windows i Linux obsługuje komunikację za pośrednictwem serwera proxy lub bramy usługi Log Analytics do monitorowania platformy Azure przy użyciu protokołu HTTPS.  Uwierzytelnianie podstawowe i anonimowe (nazwę użytkownika/hasło) są obsługiwane.  Dla agenta programu Windows bezpośrednio z usługą jest połączonych, konfiguracja serwera proxy zostanie określony podczas instalacji lub [po wdrożeniu](agent-manage.md#update-proxy-settings) w Panelu sterowania lub za pomocą programu PowerShell.  
+Agent systemów Windows i Linux obsługuje komunikację za pośrednictwem serwera proxy lub bramy Log Analytics, aby Azure Monitor przy użyciu protokołu HTTPS.  Uwierzytelnianie podstawowe i anonimowe (nazwę użytkownika/hasło) są obsługiwane.  Dla agenta programu Windows bezpośrednio z usługą jest połączonych, konfiguracja serwera proxy zostanie określony podczas instalacji lub [po wdrożeniu](agent-manage.md#update-proxy-settings) w Panelu sterowania lub za pomocą programu PowerShell.  
 
 Dla agenta systemu Linux, serwer proxy został określony podczas instalacji lub [po zakończeniu instalacji](agent-manage.md#update-proxy-settings) , modyfikując plik konfiguracyjny proxy.conf.  Wartość konfiguracji serwera proxy agenta systemu Linux ma następującą składnię:
 
@@ -128,15 +134,16 @@ Na przykład: `https://user01:password@proxy01.contoso.com:30443`
 > [!NOTE]
 > Jeśli takie jak używać znaków specjalnych "\@" swoje hasło, zostanie wyświetlony błąd połączenia serwera proxy, ponieważ wartość jest nieprawidłowo przeanalizowane.  Aby obejść ten problem, należy zakodować hasła w adresie URL, za pomocą narzędzia, takie jak [URLDecode](https://www.urldecoder.org/).  
 
-## <a name="install-and-configure-agent"></a>Instalowanie i Konfigurowanie agenta 
-Łączenie maszyn w środowisku hybrydowym lub subskrypcji platformy Azure bezpośrednio z usługi Azure Monitor dzienniki można osiągnąć przy użyciu różnych metod, w zależności od wymagań. W poniższej tabeli wymieniono każdej metody, aby określić, która sprawdza się najlepiej w danej organizacji.
+## <a name="install-and-configure-agent"></a>Instalowanie i Konfigurowanie agenta
+
+Łączenie maszyn w ramach subskrypcji platformy Azure lub środowiska hybrydowego bezpośrednio z dziennikami Azure Monitor można wykonać przy użyciu różnych metod, w zależności od wymagań. W poniższej tabeli wymieniono każdej metody, aby określić, która sprawdza się najlepiej w danej organizacji.
 
 |Element źródłowy | Metoda | Opis|
 |-------|-------------|-------------|
 |Maszyna wirtualna platformy Azure| -Log Analytics VM rozszerzenie [Windows](../../virtual-machines/extensions/oms-windows.md) lub [Linux](../../virtual-machines/extensions/oms-linux.md) przy użyciu wiersza polecenia platformy Azure lub przy użyciu szablonu usługi Azure Resource Manager<br>- [Ręcznie w witrynie Azure portal](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json). | Rozszerzenie instaluje agenta usługi Log Analytics na maszynach wirtualnych platformy Azure i rejestruje je do istniejącego obszaru roboczego usługi Azure Monitor.|
 | Hybrydowy komputer z systemem Windows|- [Instalacja ręczna](agent-windows.md)<br>- [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [Szablon usługi Resource Manager z usługą Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |Zainstaluj Microsoft Monitoring agent z wiersza polecenia lub przy użyciu zautomatyzowanej metody, takie jak usługi Azure Automation DSC, [System Center Configuration Manager](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications), lub przy użyciu szablonu usługi Azure Resource Manager, jeśli wdrożono firmy Microsoft Usługa Azure Stack w centrum danych.| 
 | Hybrydowy komputer z systemem Linux| [Instalacja ręczna](../../azure-monitor/learn/quick-collect-linux-computer.md)|Zainstaluj agenta dla systemu Linux w serwisie GitHub skrypt otoki podczas wywoływania. | 
-| System Center Operations Manager|[Integrowanie programu Operations Manager z usługą Log Analytics](../../azure-monitor/platform/om-agents.md) | Skonfiguruj integrację między programem Operations Manager i usługi Azure Monitor dzienniki, aby do przodu zebrane dane z komputerów Windows raportujących do grupy zarządzania.|  
+| System Center Operations Manager|[Integrowanie programu Operations Manager z usługą Log Analytics](../../azure-monitor/platform/om-agents.md) | Skonfiguruj integrację między dziennikami Operations Manager i Azure Monitor, aby przekazywać zebrane dane z komputerów z systemem Windows do grupy zarządzania.|  
 
 ## <a name="next-steps"></a>Kolejne kroki
 

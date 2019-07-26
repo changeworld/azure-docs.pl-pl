@@ -1,88 +1,87 @@
 ---
-title: Zarządzanie kopiami zapasowymi przy użyciu kontroli dostępu opartej na rolach na platformie Azure "
-description: Zarządzanie dostępem do operacji zarządzania kopiami zapasowymi w magazynie usługi Recovery Services za pomocą kontroli dostępu opartej na rolach.
-services: backup
+title: Zarządzanie kopiami zapasowymi przy użyciu Access Control opartej na rolach platformy Azure
+description: Access Control oparte na rolach umożliwiają zarządzanie dostępem do operacji zarządzania kopiami zapasowymi w magazynie Recovery Services.
 author: utraghuv
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: utraghuv
-ms.openlocfilehash: 3b4585422a36992241fb4839238b1f6aa46c659f
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 928c08862fdb8a447b6b7afdd7fc12317a201224
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565653"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464972"
 ---
-# <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Kontrola dostępu oparta na rolach umożliwia zarządzanie punktami odzyskiwania usługi Azure Backup
+# <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Zarządzanie Azure Backup punktów odzyskiwania przy użyciu Access Control opartych na rolach
 Kontrola dostępu oparta na rolach (Role-Based Access Control, RBAC) na platformie Azure umożliwia precyzyjne zarządzanie dostępem dla platformy Azure. Przy użyciu kontroli dostępu opartej na rolach można przeprowadzić segregowanie zadań w ramach zespołu i nadać użytkownikom tylko takie uprawnienia dostępu, które są im niezbędne do wykonywania zadań.
 
 > [!IMPORTANT]
-> Udostępnione przez usługę Azure Backup ról są ograniczone do akcji, które mogą być wykonywane w witrynie Azure portal lub za pośrednictwem interfejsu API REST lub polecenia cmdlet programu PowerShell lub interfejsu wiersza polecenia magazyn usługi Recovery Services. Akcje wykonywane w kopii zapasowej agenta klienta w interfejsie użytkownika lub systemu Centrum Azure interfejsu użytkownika programu Data Protection Manager lub interfejsu użytkownika usługi Azure Backup Server znajdą się poza kontrolę nad tych ról.
+> Role udostępniane przez Azure Backup są ograniczone do akcji, które mogą być wykonywane w Azure Portal lub za pośrednictwem interfejsu API REST lub poleceń cmdlet programu PowerShell dla magazynu Recovery Services lub interfejsu wiersza polecenia. Akcje wykonywane w interfejsie użytkownika klienta agenta usługi Azure Backup lub w interfejsie użytkownika programu System Center Data Protection Manager lub Azure Backup Server interfejsie użytkownika nie kontrolują tych ról.
 
-Usługa Azure Backup udostępnia trzy role wbudowane, umożliwiające kontrolowanie operacji zarządzania kopiami zapasowymi. Aby dowiedzieć się więcej, zobacz [Wbudowane role RBAC na platformie Azure](../role-based-access-control/built-in-roles.md).
+Azure Backup udostępnia trzy wbudowane role do kontrolowania operacji zarządzania kopiami zapasowymi. Aby dowiedzieć się więcej, zobacz [Wbudowane role RBAC na platformie Azure](../role-based-access-control/built-in-roles.md).
 
-* [Wykonaj kopię zapasową Współautor](../role-based-access-control/built-in-roles.md#backup-contributor) — ta rola ma wszystkie uprawnienia do tworzenia i obsługi kopii zapasowych z wyjątkiem usuwania magazynu usługi Recovery Services i przyznawania dostępu innym osobom. Wyobraź sobie tej roli jako administratora zarządzania kopiami zapasowymi, która może zajmować się każdej operacji zarządzania kopiami zapasowymi.
-* [Wykonaj kopię zapasową Operator](../role-based-access-control/built-in-roles.md#backup-operator) — ta rola ma uprawnienia do wszystkiego, współautor, z wyjątkiem usuwania kopii zapasowych i zarządzanie zasadami tworzenia kopii zapasowych. Ta rola jest odpowiednikiem współautora, z wyjątkiem nie można wykonać operacji destrukcyjne, takie jak zatrzymywanie tworzenia kopii zapasowych usunąć dane i Usuń rejestrację zasobów lokalnych.
-* [Wykonaj kopię zapasową czytnika](../role-based-access-control/built-in-roles.md#backup-reader) — ta rola ma uprawnienia do wyświetlania wszystkich operacji zarządzania kopiami zapasowymi. Wyobraź sobie tej roli, do monitorowania osoby.
+* [Współautor kopii zapasowych](../role-based-access-control/built-in-roles.md#backup-contributor) — ta rola ma wszystkie uprawnienia do tworzenia kopii zapasowych i zarządzania nimi z wyjątkiem usuwania magazynu Recovery Services i udzielania dostępu innym osobom. Wyobraź sobie tę rolę jako administrator zarządzania kopiami zapasowymi, który może wykonywać każdą operację zarządzania kopiami zapasowymi.
+* [Operator kopii zapasowych](../role-based-access-control/built-in-roles.md#backup-operator) — ta rola ma uprawnienia do wszystkich elementów współautora, z wyjątkiem usuwania kopii zapasowych i zarządzania zasadami tworzenia kopii zapasowych. Ta rola jest równoznaczna z współautorem, z wyjątkiem sytuacji, w której nie może wykonać operacji niszczących, takich jak zatrzymanie wykonywania kopii zapasowej z usuwaniem danych lub usuwanie rejestracji zasobów lokalnych.
+* [Czytnik kopii zapasowych](../role-based-access-control/built-in-roles.md#backup-reader) — ta rola ma uprawnienia do wyświetlania wszystkich operacji zarządzania kopiami zapasowymi. Wyobraź sobie, że ta rola jest osobą odpowiedzialną za monitorowanie.
 
-Jeśli chcesz zdefiniować własne role, aby uzyskać większą kontrolę, zobacz temat jak [Tworzenie niestandardowych ról](../role-based-access-control/custom-roles.md) w RBAC platformy Azure.
+Jeśli chcesz zdefiniować własne role, aby jeszcze bardziej kontrolować, zobacz jak [tworzyć role niestandardowe](../role-based-access-control/custom-roles.md) na platformie Azure RBAC.
 
 
 
-## <a name="mapping-backup-built-in-roles-to-backup-management-actions"></a>Mapowanie kopii zapasowej wbudowane role do akcji zarządzania kopiami zapasowymi
-Poniższa tabela przedstawia akcje z zakresu zarządzania kopii zapasowej i odpowiedniego rolę RBAC minimalnych wymaganych do wykonania tej operacji.
+## <a name="mapping-backup-built-in-roles-to-backup-management-actions"></a>Mapowanie wbudowanych ról kopii zapasowej na akcje zarządzania kopiami zapasowymi
+W poniższej tabeli przedstawiono akcje zarządzania kopiami zapasowymi i odpowiadające im minimalne role RBAC wymagane do wykonania tej operacji.
 
-| Operacja zarządzania | Minimalna rola RBAC wymagane | Wymagany zakres |
+| Operacja zarządzania | Wymagana minimalna rola RBAC | Wymagany zakres |
 | --- | --- | --- |
-| Tworzenie magazynu usługi Recovery Services | Współautor kopii zapasowych | Grupa zasobów zawierająca magazynu |
-| Włącz wykonywanie kopii zapasowej maszyn wirtualnych platformy Azure | Operator kopii zapasowych | Grupa zasobów zawierająca magazynu |
-| | Współautor maszyny wirtualnej | Zasób maszyny Wirtualnej |
-| Na żądanie kopii zapasowej maszyny Wirtualnej | Operator kopii zapasowych | Zasób magazynu odzyskiwania |
-| Przywracanie maszyny Wirtualnej | Operator kopii zapasowych | Magazyn usługi Recovery Services |
-| | Współautor | Grupa zasobów, w którym maszyna wirtualna zostanie wdrożona |
-| | Współautor maszyny wirtualnej | Źródłowa maszyna wirtualna, której kopia zapasowa |
-| Przywracanie kopii zapasowych maszyn wirtualnych z dyskami niezarządzanymi | Operator kopii zapasowych | Zasób magazynu odzyskiwania |
-| | Współautor maszyny wirtualnej | Źródłowa maszyna wirtualna, której kopia zapasowa |
-| | Współautor konta magazynu | Zasób konta magazynu, gdzie dysków do przywrócenia |
-| Przywracanie dysków zarządzanych z kopii zapasowej maszyny Wirtualnej | Operator kopii zapasowych | Zasób magazynu odzyskiwania |
-| | Współautor maszyny wirtualnej | Źródłowa maszyna wirtualna, której kopia zapasowa |
-| | Współautor konta magazynu | Tymczasowe konto magazynu wybrane w ramach przywracania do przechowywania danych z magazynu przed przekonwertowaniem je do usługi managed disks |
-| | Współautor | Grupa zasobów, do którego zostanie przywrócona następująca liczba dysków zarządzanych |
-| Przywrócić pojedyncze pliki z kopii zapasowych maszyn wirtualnych | Operator kopii zapasowych | Zasób magazynu odzyskiwania |
-| | Współautor maszyny wirtualnej | Źródłowa maszyna wirtualna, której kopia zapasowa |
-| Tworzenie zasad kopii zapasowych dla kopii zapasowej maszyny Wirtualnej platformy Azure | Współautor kopii zapasowych | Zasób magazynu odzyskiwania |
-| Modyfikowanie zasad tworzenia kopii zapasowej, kopii zapasowej maszyny Wirtualnej platformy Azure | Współautor kopii zapasowych | Zasób magazynu odzyskiwania |
-| Usuwanie zasad kopii zapasowych kopii zapasowej maszyny Wirtualnej platformy Azure | Współautor kopii zapasowych | Zasób magazynu odzyskiwania |
-| Zatrzymaj kopię zapasową (z opcją zachowania danych lub usunięcie danych) w kopii zapasowej maszyny Wirtualnej | Współautor kopii zapasowych | Zasób magazynu odzyskiwania |
-| Zarejestruj się w środowisku lokalnym systemu Windows Server/klienta/serwera SCDPM lub serwera usługi Azure Backup | Operator kopii zapasowych | Zasób magazynu odzyskiwania |
-| Usuń zarejestrowane lokalnie systemu Windows Server/klienta/serwera SCDPM lub serwera usługi Azure Backup | Współautor kopii zapasowych | Zasób magazynu odzyskiwania |
+| Tworzenie magazynu usługi Recovery Services | Współautor kopii zapasowych | Grupa zasobów zawierająca magazyn |
+| Włącz tworzenie kopii zapasowych maszyn wirtualnych platformy Azure | Operator kopii zapasowych | Grupa zasobów zawierająca magazyn |
+| | Współautor maszyny wirtualnej | Zasób maszyny wirtualnej |
+| Tworzenie kopii zapasowej maszyny wirtualnej na żądanie | Operator kopii zapasowych | Zasób magazynu odzyskiwania |
+| Przywróć maszynę wirtualną | Operator kopii zapasowych | Magazyn usług Recovery Services |
+| | Współautor | Grupa zasobów, w której zostanie wdrożona maszyna wirtualna |
+| | Współautor maszyny wirtualnej | Źródłowa maszyna wirtualna, której kopię zapasową utworzono |
+| Przywróć dyski niezarządzane kopia zapasowa maszyny wirtualnej | Operator kopii zapasowych | Zasób magazynu odzyskiwania |
+| | Współautor maszyny wirtualnej | Źródłowa maszyna wirtualna, której kopię zapasową utworzono |
+| | Współautor konta magazynu | Zasób konta magazynu, w którym mają zostać przywrócone dyski |
+| Przywróć dyski zarządzane z kopii zapasowej maszyny wirtualnej | Operator kopii zapasowych | Zasób magazynu odzyskiwania |
+| | Współautor maszyny wirtualnej | Źródłowa maszyna wirtualna, której kopię zapasową utworzono |
+| | Współautor konta magazynu | Konto magazynu tymczasowego wybrane w ramach przywracania do przechowywania danych z magazynu przed przekonwertowaniem ich na dyski zarządzane |
+| | Współautor | Grupa zasobów, do której zostaną przywrócone dyski zarządzane |
+| Przywróć pojedyncze pliki z kopii zapasowej maszyny wirtualnej | Operator kopii zapasowych | Zasób magazynu odzyskiwania |
+| | Współautor maszyny wirtualnej | Źródłowa maszyna wirtualna, której kopię zapasową utworzono |
+| Tworzenie zasad kopii zapasowych dla kopii zapasowej maszyny wirtualnej platformy Azure | Współautor kopii zapasowych | Zasób magazynu odzyskiwania |
+| Modyfikowanie zasad tworzenia kopii zapasowej maszyny wirtualnej platformy Azure | Współautor kopii zapasowych | Zasób magazynu odzyskiwania |
+| Usuwanie zasad tworzenia kopii zapasowej maszyny wirtualnej platformy Azure | Współautor kopii zapasowych | Zasób magazynu odzyskiwania |
+| Zatrzymaj kopię zapasową (z zachowaniem Zachowaj dane lub Usuń dane) na kopii zapasowej maszyny wirtualnej | Współautor kopii zapasowych | Zasób magazynu odzyskiwania |
+| Rejestrowanie lokalnego systemu Windows Server/Client/SCDPM lub Azure Backup Server | Operator kopii zapasowych | Zasób magazynu odzyskiwania |
+| Usuń zarejestrowane lokalne serwery z systemem Windows/Client/SCDPM lub Azure Backup Server | Współautor kopii zapasowych | Zasób magazynu odzyskiwania |
 
 > [!IMPORTANT]
-> Określ Współautor maszyny Wirtualnej w zakresie zasobów maszyny Wirtualnej, kliknij pozycję Kopia zapasowa jako część ustawień maszyny Wirtualnej zostanie otwarty ekran Włącz kopię zapasową, mimo, że maszyna wirtualna ma już kopię zapasową co wywołanie, aby sprawdzić stan kopii zapasowej działa tylko na poziomie subskrypcji. Aby tego uniknąć, należy albo przejdź do magazynu i otwórz widok elementu kopii zapasowej maszyny wirtualnej lub określ roli współautora maszyny Wirtualnej na poziomie subskrypcji.
+> Jeśli określisz współautor maszyny wirtualnej w zakresie zasobów maszyny wirtualnej i klikniesz pozycję Utwórz kopię zapasową w ramach ustawień maszyny wirtualnej, zostanie otwarty ekran "Włącz kopię zapasową", nawet jeśli maszyna wirtualna została już utworzona jako wywołanie weryfikacji stanu kopii zapasowej działa tylko na poziomie subskrypcji. Aby tego uniknąć, należy przejść do magazynu i otworzyć widok elementu kopii zapasowej maszyny wirtualnej lub określić rolę współautor maszyny wirtualnej na poziomie subskrypcji.
 
-## <a name="minimum-role-requirements-for-the-azure-file-share-backup"></a>Rola minimalne wymagania dotyczące tworzenia kopii zapasowej udziału plików platformy Azure
-Poniższa tabela przedstawia akcje z zakresu zarządzania kopii zapasowej i odpowiednich ról wymaganych do wykonania operacji udziału plików platformy Azure.
+## <a name="minimum-role-requirements-for-the-azure-file-share-backup"></a>Minimalne wymagania roli dla kopii zapasowej udziału plików platformy Azure
+W poniższej tabeli przedstawiono akcje zarządzania kopiami zapasowymi i odpowiadające im role wymagane do wykonania operacji udziału plików platformy Azure.
 
-| Operacja zarządzania | Rolę wymaganą | Zasoby |
+| Operacja zarządzania | Rola jest wymagana | Zasoby |
 | --- | --- | --- |
-| Włącz wykonywanie kopii zapasowej udziałów plików platformy Azure | Współautor kopii zapasowych | Magazyn usługi Recovery Services |
-| | Konto magazynu | Współautor zasobów konta usługi Storage |
-| Na żądanie kopii zapasowej maszyny Wirtualnej | Operator kopii zapasowych | Magazyn usługi Recovery Services |
-| Przywróć udział plików | Operator kopii zapasowych | Magazyn usługi Recovery Services |
-| | Współautor konta magazynu | Zasobów konta magazynu, w którym są obecne przywracania źródłowy i docelowy udziałów plików |
-| Przywracanie pojedynczych plików | Operator kopii zapasowych | Magazyn usługi Recovery Services |
-| | Współautor konta magazynu |   Zasobów konta magazynu, w którym są obecne przywracania źródłowy i docelowy udziałów plików |
-| Zatrzymaj ochronę | Współautor kopii zapasowych | Magazyn usługi Recovery Services |      
-| Wyrejestruj konto magazynu z magazynu |   Współautor kopii zapasowych | Magazyn usługi Recovery Services |
+| Włącz tworzenie kopii zapasowych udziałów plików platformy Azure | Współautor kopii zapasowych | Magazyn usług Recovery Services |
+| | Konto magazynu | Zasób konta magazynu współautora |
+| Tworzenie kopii zapasowej maszyny wirtualnej na żądanie | Operator kopii zapasowych | Magazyn usług Recovery Services |
+| Przywróć udział plików | Operator kopii zapasowych | Magazyn usług Recovery Services |
+| | Współautor konta magazynu | Zasoby konta magazynu, w których znajdują się źródła przywracania i docelowe udziały plików |
+| Przywróć pojedyncze pliki | Operator kopii zapasowych | Magazyn usług Recovery Services |
+| | Współautor konta magazynu |   Zasoby konta magazynu, w których znajdują się źródła przywracania i docelowe udziały plików |
+| Zatrzymaj ochronę | Współautor kopii zapasowych | Magazyn usług Recovery Services |      
+| Wyrejestrowywanie konta magazynu z magazynu |   Współautor kopii zapasowych | Magazyn usług Recovery Services |
 | | Współautor konta magazynu | Zasób konta magazynu|
 
 
-## <a name="next-steps"></a>Kolejne kroki
-* [Kontrola dostępu oparta na rolach](../role-based-access-control/role-assignments-portal.md): Wprowadzenie do funkcji RBAC w witrynie Azure portal.
-* Dowiedz się, jak zarządzanie dostępem przy użyciu:
+## <a name="next-steps"></a>Następne kroki
+* [Access Control oparte na rolach](../role-based-access-control/role-assignments-portal.md): Rozpocznij pracę z RBAC w Azure Portal.
+* Dowiedz się, jak zarządzać dostępem przy użyciu:
   * [Program PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Interfejs wiersza polecenia platformy Azure](../role-based-access-control/role-assignments-cli.md)
   * [REST API](../role-based-access-control/role-assignments-rest.md)
-* [Rozwiązywanie kontroli dostępu opartej na rolach](../role-based-access-control/troubleshooting.md): Pobierz sugestie dotyczące rozwiązywania typowych problemów.
+* [Rozwiązywanie problemów Access Control opartych na rolach](../role-based-access-control/troubleshooting.md): Uzyskaj sugestie dotyczące rozwiązywania typowych problemów.

@@ -1,7 +1,7 @@
 ---
-title: Tworzenie zestawów danych, aby uzyskać dostęp do danych z zestawami danych usługi Azure ml
+title: Tworzenie zestawów danych w celu uzyskania dostępu do dane za pomocą platformy Azure
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak utworzyć zestawy danych z różnych źródeł i zarejestrować zestawy danych z obszarem roboczym
+description: Dowiedz się, jak tworzyć zestawy danych z różnych źródeł i rejestrować zestawy danych za pomocą obszaru roboczego
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,65 +11,63 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/21/2019
-ms.openlocfilehash: a879fa17244977277dab3e2e66c5888a44759764
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 765ec8291ba873c6b200cf330d82e6e2ab53357d
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444028"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423111"
 ---
-# <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Tworzenie i dostęp do zestawów danych (wersja zapoznawcza) w usłudze Azure Machine Learning
+# <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Tworzenie zestawów danych i uzyskiwanie do nich dostępu (wersja zapoznawcza) w Azure Machine Learning
 
-W tym artykule dowiesz się, jak utworzyć zestawy danych usługi Azure Machine Learning (wersja zapoznawcza) i jak uzyskać dostęp do danych lokalnych i zdalnych eksperymentów.
+W tym artykule opisano sposób tworzenia Azure Machine Learning zestawów danych (wersja zapoznawcza) oraz uzyskiwania dostępu do danych z eksperymentów lokalnych lub zdalnych.
 
-Z zarządzanych zestawów danych możesz wykonywać następujące czynności: 
-* **Łatwo uzyskiwać dostęp do danych podczas uczenia modelu** bez ponownego łączenia się z podstawowym sklepów
+Za pomocą Azure Machine Learning zestawów danych można: 
 
-* **Upewnij się, spójności danych i odtwarzaniem** przy użyciu tego samego wskaźnika dla eksperymentów: notesów, ml automatycznych, potoki, interfejs graficzny
+* **Przechowywanie pojedynczej kopii danych w magazynie** , do której odwołują się zestawy danych
 
-* **Udostępnianie danych i współpraca** z innymi użytkownikami
+* **Analizowanie danych** za ich poorednictwem analizy danych 
 
-* **Eksplorowanie danych** & zarządzania cyklem życia migawki danych i wersje
+* **Łatwe uzyskiwanie dostępu do danych podczas uczenia modelu** bez obaw o parametry połączenia lub ścieżki danych
 
-* **Porównywanie danych** szkolenia i produkcji
-
+* **Udostępnianie danych & współpracy** z innymi użytkownikami
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby utworzyć i Praca z zestawami danych, potrzebne są:
+Aby tworzyć zestawy danych i korzystać z nich, potrzebne są:
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
 
-* [Obszaru roboczego usługi Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace)
+* [Obszar roboczy usługi Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace)
 
-* [Azure Machine Learning SDK for język Python jest zainstalowany](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), który zawiera pakiet zestawów danych usługi Azure ml.
+* [Zestaw Azure Machine Learning SDK dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), który obejmuje pakiet usługi Azure DataSets.
 
 > [!Note]
-> Niektóre klasy zestawu danych (wersja zapoznawcza) być zależny od [przygotowania danych usługi Azure ml](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) pakietu (GA). Użytkownicy systemu Linux w ramach tych zajęć są obsługiwane tylko na poniższe dystrybucje:  Red Hat Enterprise Linux, Ubuntu, Fedora i CentOS.
+> Niektóre klasy zestawu danych (wersja zapoznawcza) mają zależności w pakiecie [Azure-](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) preprodukcyjnym (ga). W przypadku użytkowników systemu Linux te klasy są obsługiwane tylko w następujących dystrybucjach:  Red Hat Enterprise Linux, Ubuntu, Fedora i CentOS.
 
 ## <a name="data-formats"></a>Formaty danych
 
-Możesz utworzyć zestaw danych usługi Azure Machine uczenia z następujące dane:
-+ [delimited](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset#from-delimited-files-path--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---encoding--fileencoding-utf8--0---quoting-false--infer-column-types-true--skip-rows-0--skip-mode--skiplinesbehavior-no-rows--0---comment-none--include-path-false--archive-options-none-)
-+ [dane binarne](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-binary-files-path-)
-+ [json](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-json-files-path--encoding--fileencoding-utf8--0---flatten-nested-arrays-false--include-path-false-)
+Zestaw danych Azure Machine Learning można utworzyć przy użyciu następujących formatów:
++ [Lista](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset#from-delimited-files-path--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---encoding--fileencoding-utf8--0---quoting-false--infer-column-types-true--skip-rows-0--skip-mode--skiplinesbehavior-no-rows--0---comment-none--include-path-false--archive-options-none-)
++ [kodu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-json-files-path--encoding--fileencoding-utf8--0---flatten-nested-arrays-false--include-path-false-)
 + [Excel](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-excel-files-path--sheet-name-none--use-column-headers-false--skip-rows-0--include-path-false--infer-column-types-true-)
 + [Parquet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-parquet-files-path--include-path-false-)
-+ [Azure SQL Database](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-sql-query-data-source--query-)
-+ [Usługa Azure Data Lake ogólnego. 1](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-sql-query-data-source--query-)
++ [Ramka datapandas](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-pandas-dataframe-dataframe--path-none--in-memory-false-)
++ [Zapytanie SQL](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-sql-query-data-source--query-)
++ [binarny](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-binary-files-path-)
 
 ## <a name="create-datasets"></a>Tworzenie zestawów danych 
 
-Możesz wchodzić w interakcje z zestawów danych przy użyciu pakietu zestawów danych usługi Azure ml w [zestawu SDK usługi Azure Machine Learning Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) , zwłaszcza [ `Dataset` klasy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py).
+Tworząc zestaw danych, utworzysz odwołanie do lokalizacji źródła danych wraz z kopią jej metadanych. Dane pozostają w istniejącej lokalizacji, więc nie są naliczane żadne dodatkowe koszty związane z magazynem.
 
-### <a name="create-from-local-files"></a>Tworzenie na podstawie plików lokalnych
+### <a name="create-from-local-files"></a>Utwórz z plików lokalnych
 
-Ładowanie plików z komputera lokalnego, podając ścieżkę do pliku lub folderu z [ `auto_read_files()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#auto-read-files-path--include-path-false-) metody z `Dataset` klasy.  Ta metoda wykonuje następujące czynności, bez konieczności określania typu plików lub analizowania argumentów:
+Załaduj pliki z komputera lokalnego, określając ścieżkę pliku lub folderu za pomocą [`auto_read_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#auto-read-files-path--include-path-false-) metody `Dataset` z klasy.  Ta metoda wykonuje następujące czynności bez konieczności określania typu pliku lub argumentów analizy:
 
-* Wnioskowanie i ustawienie ogranicznik.
-* Pomija puste rekordy w górnej części pliku.
-* Wnioskowanie i ustawienie wiersz nagłówka.
-* Wnioskowanie i konwertowanie typów danych kolumny.
+* Wnioskowanie i ustawienie ogranicznika.
+* Pomijanie pustych rekordów w górnej części pliku.
+* Wnioskowanie i ustawienie wiersza nagłówka.
+* Wnioskowanie i konwertowanie typów danych kolumn.
 
 ```Python
 from azureml.core.dataset import Dataset
@@ -77,16 +75,16 @@ from azureml.core.dataset import Dataset
 dataset = Dataset.auto_read_files('./data/crime.csv')
 ```
 
-Można również użyć funkcji specyficznych dla pliku, aby jawnie kontrolować podczas analizowania pliku. 
+Alternatywnie możesz użyć funkcji specyficznych dla plików, aby jawnie kontrolować analizowanie pliku. 
 
 
-### <a name="create-from-azure-datastores"></a>Tworzenie na podstawie magazynów danych platformy Azure
+### <a name="create-from-azure-datastores"></a>Tworzenie z magazynów danych platformy Azure
 
-Aby utworzyć zestawy danych z magazynu danych Azure:
+Aby utworzyć zestawy danych ze [sklepu datastore](how-to-access-data.md):
 
-* Sprawdź `contributor` lub `owner` dostęp do zarejestrowanych magazynu danych platformy Azure.
+* Sprawdź, czy `contributor` masz `owner` lub masz dostęp do zarejestrowanego magazynu danych platformy Azure.
 
-* Importuj [ `Workspace` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) i [ `Datastore` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#definition) i `Dataset` pakiety z zestawu SDK.
+* Utwórz zestaw danych, odwołując się do ścieżki w magazynie danych 
 
 ```Python
 from azureml.core.workspace import Workspace
@@ -97,20 +95,16 @@ datastore_name = 'your datastore name'
 
 # get existing workspace
 workspace = Workspace.from_config()
-```
 
- `get()` Metoda pobiera istniejący magazyn danych w obszarze roboczym.
-
-```
+# retrieve an existing datastore in the workspace by name
 dstore = Datastore.get(workspace, datastore_name)
 ```
 
-Użyj `from_delimited_files()` metodę, aby przeczytać pliki rozdzielane i tworzenie wyrejestrować zestawu danych.
+Użyj metody `from_delimited_files()` , aby odczytać rozdzielone pliki z [odwołania](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py)do danych i utworzyć niezarejestrowany zestaw danych.
 
 ```Python
 # create an in-memory Dataset on your local machine
-datapath = dstore.path('data/src/crime.csv')
-dataset = Dataset.from_delimited_files(datapath)
+dataset = Dataset.from_delimited_files(dstore.path('data/src/crime.csv'))
 
 # returns the first 5 rows of the Dataset as a pandas Dataframe.
 dataset.head(5)
@@ -118,9 +112,9 @@ dataset.head(5)
 
 ## <a name="register-datasets"></a>Rejestrowanie zestawów danych
 
-Aby ukończyć proces tworzenia, zarejestruj zestawów danych przy użyciu obszaru roboczego:
+Aby ukończyć proces tworzenia, zarejestruj zestawy danych w obszarze roboczym:
 
-Użyj [ `register()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-) metody do rejestrowania zestawów danych do obszaru roboczego, dzięki czemu mogą być udostępniane innym osobom i ponownie wykorzystać w odniesieniu do różnych doświadczeń.
+Użyj metody [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-) , aby zarejestrować zestawy danych w obszarze roboczym, aby mogły być współużytkowane z innymi osobami i ponownie używane w różnych eksperymentach.
 
 ```Python
 dataset = dataset.register(workspace = workspace,
@@ -131,23 +125,26 @@ dataset = dataset.register(workspace = workspace,
 ```
 
 >[!NOTE]
-> Jeśli `exist_ok = False` (ustawienie domyślne), i spróbujesz zarejestrować zestaw danych o takiej samej nazwie jak inny, wystąpi błąd. Ustaw `True` zastąpić istniejące.
+> Jeśli `exist_ok = False` (domyślnie) i podjęto próbę zarejestrowania zestawu danych o takiej samej nazwie jak inny, wystąpi błąd. Ustaw, `True` aby zastąpić istniejące.
 
-## <a name="access-data-in-datasets"></a>Dostęp do danych w zestawach danych
+## <a name="access-data-in-datasets"></a>Uzyskiwanie dostępu do danych w zestawach DataSet
 
-Zarejestrowane zestawy danych są dostępne i użyciu lokalnie, zdalnie i w klastrach obliczeniowych, takich jak moc obliczeniowa usługi Azure Machine Learning. Aby ponownie użyć zarejestrowanego zestawu danych między eksperymentów i środowiskach obliczeniowych, użyj następującego kodu, można pobrać według nazwy swojego obszaru roboczego i zarejestrowanego zestawu danych.
+Zarejestrowane zestawy danych są dostępne lokalnie i zdalnie w klastrach obliczeniowych, takich jak Azure Machine Learning COMPUTE. Aby uzyskać dostęp do zarejestrowanego zestawu danych w ramach eksperymentów, użyj poniższego kodu, aby uzyskać obszar roboczy i zarejestrowany zestaw danych według nazwy.
 
 ```Python
 workspace = Workspace.from_config()
 
 # See list of datasets registered in workspace.
-Dataset.list(workspace)
+print(Dataset.list(workspace))
 
 # Get dataset by name
-dataset = workspace.datasets['dataset_crime']
+dataset = Dataset.get(workspace, 'dataset_crime')
+
+# Load data into pandas DataFrame
+dataset.to_pandas_dataframe()
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Eksploruj i przygotować zestawów danych](how-to-explore-prepare-data.md).
-* Przykład przy użyciu zestawów danych, zobacz [przykładowy notesów](https://aka.ms/dataset-tutorial).
+* [Eksplorowanie i przygotowywanie zestawów danych](how-to-explore-prepare-data.md).
+* Przykład korzystania z zestawów danych można znaleźć w przykładowych [notesach](https://aka.ms/dataset-tutorial).

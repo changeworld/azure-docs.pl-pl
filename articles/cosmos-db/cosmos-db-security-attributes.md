@@ -1,6 +1,6 @@
 ---
-title: Atrybuty zabezpieczeń usługi Azure Cosmos DB
-description: Lista kontrolna atrybutów zabezpieczeń do oceny usługi Azure Cosmos DB
+title: Atrybuty zabezpieczeń dla Azure Cosmos DB
+description: Lista kontrolna atrybutów zabezpieczeń do oceny Azure Cosmos DB
 services: cosmos-db
 documentationcenter: ''
 author: msmbaldwin
@@ -9,67 +9,67 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ffeb60f5476a540e3da46a82c240b0dda9aa6be2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50711f8675e1b8aca6b9f90925ea921d22020ddd
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66480466"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442550"
 ---
-# <a name="security-attributes-for-azure-cosmos-db"></a>Atrybuty zabezpieczeń usługi Azure Cosmos DB
+# <a name="security-attributes-for-azure-cosmos-db"></a>Atrybuty zabezpieczeń dla Azure Cosmos DB
 
-W tym artykule opisano typowe atrybuty zabezpieczeń wbudowane w usłudze Azure Cosmos DB.
+W tym artykule opisano atrybuty zabezpieczeń wbudowane w Azure Cosmos DB.
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
-## <a name="preventative"></a>Zapobiegawczych
+## <a name="preventative"></a>Zapobiegawczej
 
 | Atrybut zabezpieczeń | Tak/nie | Uwagi |
 |---|---|--|
-| Szyfrowanie w spoczynku (na przykład szyfrowanie po stronie serwera, szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez klienta i inne funkcje szyfrowania) | Tak | Wszystkie bazy danych Cosmos DB, jak i kopie zapasowe są domyślne szyfrowanie przekazywanego materiału; zobacz [szyfrowanie danych w usłudze Azure Cosmos DB](database-encryption-at-rest.md). Szyfrowanie po stronie serwera za pomocą kluczy zarządzanych przez klienta nie jest obsługiwana. |
-| Szyfrowanie podczas transferu (np. szyfrowanie usługi ExpressRoute w sieci wirtualnej, szyfrowania i szyfrowania sieć wirtualna-sieć wirtualna)| Yes | Wszystkie usługi Azure Cosmos DB dane są szyfrowane, gdy przesyłania. |
-| Obsługa klucza szyfrowania (CMK BYOK, itp.)| Nie |  |
-| Szyfrowanie na poziomie kolumny (usługi danych platformy Azure)| Tak | Tylko w warstwie Premium interfejsu API tabel. Nie wszystkie interfejsy API obsługują tę funkcję. Zobacz [wprowadzenie do usługi Azure Cosmos DB: Interfejs API tabel](table-introduction.md). |
-| Wywołania interfejsu API szyfrowane| Yes | Wszystkie połączenia z usługą Azure Cosmos DB obsługuje protokół HTTPS. Usługa Azure Cosmos DB obsługuje połączenia protokołu TLS 1.2, ale to nie jest jeszcze wymuszane. Jeśli klienci wyłączy niższego poziomu protokołu TLS po ich stronie zapewnienia łączenie z usługą Cosmos DB.  |
+| Szyfrowanie w spoczynku (takie jak szyfrowanie po stronie serwera, szyfrowanie po stronie serwera z kluczami zarządzanymi przez klienta i inne funkcje szyfrowania) | Tak | Wszystkie Cosmos DB bazy danych i kopie zapasowe są domyślnie szyfrowane; Zobacz [szyfrowanie danych w Azure Cosmos DB](database-encryption-at-rest.md). Szyfrowanie po stronie serwera z kluczami zarządzanymi przez klienta nie jest obsługiwane. |
+| Szyfrowanie podczas przesyłania (takie jak szyfrowanie ExpressRoute, szyfrowanie sieci wirtualnej i szyfrowanie sieci wirtualnej)| Tak | Wszystkie dane Azure Cosmos DB są szyfrowane podczas przesyłania. |
+| Obsługa kluczy szyfrowania (CMK, BYOK itp.)| Nie |  |
+| Szyfrowanie na poziomie kolumny (Data Services platformy Azure)| Tak | Tylko w interfejsie API tabel Premium. Nie wszystkie interfejsy API obsługują tę funkcję. Zobacz [wprowadzenie do Azure Cosmos DB: Interfejs API tabel](table-introduction.md). |
+| Wywołania interfejsu API są szyfrowane| Tak | Wszystkie połączenia do Azure Cosmos DB obsługują protokół HTTPS. Azure Cosmos DB obsługuje również połączenia TLS 1,2, ale nie jest to jeszcze wymuszane. Jeśli klienci wyłączają niższy poziom protokołu TLS na swoich końcach, mogą się upewnić, że nawiąże połączenie z Cosmos DB.  |
 
-## <a name="network-segmentation"></a>Segmentacji sieci
+## <a name="network-segmentation"></a>Segmentacja sieci
 
 | Atrybut zabezpieczeń | Tak/nie | Uwagi |
 |---|---|--|
-| Punkt końcowy usługi pomocy technicznej| Tak |  |
-| Obsługa iniekcji sieci wirtualnej| Tak | Z punktu końcowego usługi sieci wirtualnej można skonfigurować konto usługi Azure Cosmos DB, aby zezwolić na dostęp tylko z określonej podsieci sieci wirtualnej (VNet). Dostęp do sieci wirtualnej można także połączyć za pomocą reguł zapory.  Zobacz [dostępu do usługi Azure Cosmos DB z sieciami wirtualnymi](vnet-service-endpoint.md). |
-| Izolacja sieci i Firewalling pomocy technicznej| Tak | Dzięki obsłudze zapory można skonfigurować swoje konto usługi Azure Cosmos, aby zezwolić na dostęp tylko z zatwierdzonych zbiór adresów IP, zakresu adresów IP i/lub usług w chmurze. Zobacz [Konfigurowanie zapory adresów IP w usłudze Azure Cosmos DB](how-to-configure-firewall.md).|
-| Obsługa wymuszonego tunelowania | Yes | Można skonfigurować po stronie klienta w sieci Wirtualnej, w którym znajdują się maszyny wirtualne.   |
+| Obsługa punktów końcowych usługi| Tak |  |
+| Obsługa iniekcji sieci wirtualnej| Tak | Za pomocą punktu końcowego usługi sieci wirtualnej można skonfigurować konto Azure Cosmos DB, aby zezwalać na dostęp tylko z określonej podsieci sieci wirtualnej (VNet). Możesz również połączyć dostęp do sieci wirtualnej przy użyciu reguł zapory.  Zobacz [dostęp Azure Cosmos DB z sieci wirtualnych](VNet-service-endpoint.md). |
+| Izolacja sieci i obsługa zapór| Yes | Dzięki obsłudze zapory można skonfigurować konto usługi Azure Cosmos, aby zezwalać na dostęp tylko z zatwierdzonego zestawu adresów IP, zakresu adresów IP i/lub usług w chmurze. Zobacz [Konfigurowanie zapory IP w Azure Cosmos DB](how-to-configure-firewall.md).|
+| Obsługa tunelowania wymuszonego| Yes | Można skonfigurować po stronie klienta w sieci wirtualnej, w której znajdują się maszyny wirtualne.   |
 
 ## <a name="detection"></a>Wykrywanie
 
 | Atrybut zabezpieczeń | Tak/nie | Uwagi|
 |---|---|--|
-| Obsługa (usługi Log analytics, usługi App insights itp.) do monitorowania platformy Azure| Tak | Wszystkie żądania, które są wysyłane do usługi Azure Cosmos DB są rejestrowane. [Monitorowanie platformy Azure](../azure-monitor/overview.md), metryk usługi Azure, rejestrowanie inspekcji platformy Azure są obsługiwane.  Bazy danych MongoDB możesz zalogować się informacjami dotyczącymi żądania płaszczyzny danych, statystyki czasu wykonywania zapytań, tekst zapytania, żądań. Można też skonfigurować alerty. |
+| Pomoc techniczna dotycząca monitorowania platformy Azure (log Analytics, App Insights itp.)| Yes | Wszystkie żądania wysyłane do Azure Cosmos DB są rejestrowane. [Monitorowanie platformy](../azure-monitor/overview.md)Azure, metryki platformy Azure, rejestrowanie inspekcji platformy Azure jest obsługiwane.  Można rejestrować informacje odpowiadające na żądania płaszczyzny danych, statystyki środowiska uruchomieniowego zapytań, tekst zapytania, żądania MongoDB. Możesz również skonfigurować alerty. |
 
 ## <a name="identity-and-access-management"></a>Zarządzanie tożsamościami i dostępem
 
 | Atrybut zabezpieczeń | Tak/nie | Uwagi|
 |---|---|--|
-| Authentication| Tak | Tak na poziomie konta bazy danych; na poziomie płaszczyzny danych usługi Cosmos DB używa tokenów zasobów oraz dostęp do klucza. |
-| Autoryzacja| Tak | Obsługiwane na konto usługi Azure Cosmos przy użyciu kluczy głównych (podstawowych i pomocniczych) i tokenów zasobów. Można uzyskać odczytu/zapisu lub odczytu tylko dostęp do danych za pomocą kluczy głównych. Tokeny zasobów zezwolić na ograniczony czas dostępu do zasobów, takich jak dokumenty i kontenerów. |
+| Authentication| Tak | Tak na poziomie konta bazy danych; na poziomie płaszczyzny danych Cosmos DB używa tokenów zasobów i dostępu do kluczy. |
+| Authorization| Tak | Obsługiwane na koncie usługi Azure Cosmos z kluczami głównymi (podstawowymi i pomocniczymi) i tokenami zasobów. Możesz uzyskać dostęp do odczytu/zapisu lub tylko do odczytu do danych z kluczami głównymi. Tokeny zasobów umożliwiają ograniczony dostęp do zasobów, takich jak dokumenty i kontenery. |
 
 
 ## <a name="audit-trail"></a>Dziennik inspekcji
 
 | Atrybut zabezpieczeń | Tak/nie | Uwagi|
 |---|---|--|
-| Zarządzania kontrolą/Plan rejestrowania i inspekcji| Tak | Dziennik aktywności platformy Azure dla operacji na poziomie konta takich jak zapory i sieci wirtualne, klucze dostępu i zarządzania tożsamościami i Dostępem. |
-| Rejestrowanie i inspekcja na płaszczyźnie danych | Yes | Diagnostyka, monitorowanie, rejestrowanie dla operacji na poziomie kontenera, takie jak tworzenie kontenerów, aprowizowanie przepływności, indeksowanie, zasad i operacje CRUD na dokumentach. |
+| Rejestrowanie i inspekcja płaszczyzny kontroli i zarządzania| Yes | Dziennik aktywności platformy Azure dla operacji na poziomie konta, takich jak zapory, sieci wirtualnych, dostęp do kluczy i IAM. |
+| Rejestrowanie i inspekcja płaszczyzny danych | Yes | Rejestrowanie diagnostyczne monitorowania dla operacji na poziomie kontenera, takich jak tworzenie kontenerów, obsługa przepływności, zasady indeksowania i operacje CRUD na dokumentach. |
 
 ## <a name="configuration-management"></a>Zarządzanie konfiguracją
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Obsługa zarządzania konfiguracji (przechowywanie wersji konfiguracji itp.)| Nie  | | 
+| Obsługa zarządzania konfiguracją (wersja konfiguracji itp.)| Nie  | | 
 
-## <a name="additional-security-attributes-for-cosmos-db"></a>Atrybuty dodatkowe zabezpieczenia dla usługi Cosmos DB
+## <a name="additional-security-attributes-for-cosmos-db"></a>Dodatkowe atrybuty zabezpieczeń dla Cosmos DB
 
 | Atrybut zabezpieczeń | Tak/nie | Uwagi|
 |---|---|--|
-| Krzyżowe Origin Resource Sharing (CORS) | Tak | Zobacz [skonfigurować Cross-Origin Resource Sharing (CORS)](how-to-configure-cross-origin-resource-sharing.md). |
+| Współużytkowanie zasobów między źródłami (CORS) | Tak | Zobacz [Konfigurowanie udostępniania zasobów między źródłami (CORS)](how-to-configure-cross-origin-resource-sharing.md). |

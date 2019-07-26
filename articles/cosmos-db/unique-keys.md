@@ -1,59 +1,59 @@
 ---
-title: Użyj unikatowe klucze w usłudze Azure Cosmos DB
-description: Dowiedz się, jak za pomocą unikatowych kluczy bazy danych Azure Cosmos
+title: Używanie unikatowych kluczy w Azure Cosmos DB
+description: Dowiedz się, jak używać unikatowych kluczy w bazie danych Azure Cosmos
 author: rimman
 ms.author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: af3c7771ce977cf248c5f1b61ba1c535a10ccd3c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5b8eb4d5334eb198ff6699897c56b516ded069e
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242509"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467563"
 ---
-# <a name="unique-key-constraints-in-azure-cosmos-db"></a>Unikatowe ograniczenia klucza w usłudze Azure Cosmos DB
+# <a name="unique-key-constraints-in-azure-cosmos-db"></a>Ograniczenia unikatowego klucza w Azure Cosmos DB
 
-Unikatowe klucze dodanie warstwy integralności danych do kontenera usługi Azure Cosmos. Możesz utworzyć zasady unikatowych kluczy podczas tworzenia kontenera usługi Azure Cosmos. Z unikatowymi kluczami, należy upewnić się, że co najmniej jednej wartości w ramach partycji logicznej jest unikatowa. Pozwala również zagwarantować unikatowości na [klucza partycji](partition-data.md). 
+Klucze unikatowe umożliwiają dodanie warstwy integralności danych do kontenera usługi Azure Cosmos. Podczas tworzenia kontenera usługi Azure Cosmos można utworzyć unikatowe Zasady kluczy. Przy użyciu unikatowych kluczy upewnij się, że co najmniej jedna wartość w partycji logicznej jest unikatowa. Można również zagwarantować unikatowość dla każdego [klucza partycji](partition-data.md). 
 
-Po utworzeniu kontenera za pomocą zasady unikatowych kluczy, utworzenia nowego lub aktualizację istniejącego elementu skutkuje zduplikowane w ramach partycji logicznej jest blokowana, zgodnie z określonym unikatowe ograniczenie klucza. Klucz partycji, w połączeniu z unikatowego klucza gwarantuje unikatowość elementu w zakresie kontenera.
+Po utworzeniu kontenera z unikatowymi zasadami kluczy, utworzenie nowej lub aktualizacji istniejącego elementu, co spowodowało wystąpienie duplikatu w obrębie partycji logicznej, jest blokowane, zgodnie z ograniczeniami unikatowego klucza. Klucz partycji połączony z unikatowym kluczem gwarantuje unikatowość elementu w zakresie kontenera.
 
-Na przykład, należy wziąć pod uwagę kontenera usługi Azure Cosmos za pomocą adresu e-mail jako unikatowe ograniczenie klucza i `CompanyID` jako klucza partycji. Po skonfigurowaniu przez użytkownika, adres e-mail z unikatowym kluczem, każdy element ma unikatowego adresu e-mail w ramach danego `CompanyID`. Nie można utworzyć dwa elementy, z zduplikowane adresy e-mail oraz z taką samą wartość klucza partycji. 
+Rozważmy na przykład kontener usługi Azure Cosmos z adresem e-mail jako ograniczenie unikatowego klucza i `CompanyID` klucz partycji. W przypadku skonfigurowania adresu e-mail użytkownika przy użyciu unikatowego klucza każdy element ma unikatowy adres e-mail w danym `CompanyID`. Nie można tworzyć dwóch elementów ze zduplikowanymi adresami e-mail i z tą samą wartością klucza partycji. 
 
-Tworzenie elementów przy użyciu tego samego adresu e-mail adres, ale nie sam imię, nazwisko i adres e-mail, należy dodać więcej ścieżek do zasady unikatowych kluczy. Zamiast tworzenia unikatowego klucza na podstawie tylko za pomocą adresu e-mail, możesz również utworzyć unikatowy klucz przy użyciu kombinacji imię, nazwisko i adres e-mail. Ten klucz jest określany jako unikatowego klucza złożonego. W takim przypadku każda unikatowa kombinacja tych trzech wartości w danym `CompanyID` jest dozwolone. 
+Aby utworzyć elementy o tym samym adresie e-mail, ale nie te same imię, nazwisko i adres e-mail, Dodaj więcej ścieżek do unikatowych zasad kluczy. Zamiast tworzyć unikatowe klucze wyłącznie na podstawie adresu e-mail, można również utworzyć unikatowy klucz z kombinacją imię, nazwisko i adres e-mail. Ten klucz jest znany jako złożony klucz unikatowy. W takim przypadku każda unikatowa kombinacja trzech wartości w ramach danego `CompanyID` elementu jest dozwolona. 
 
-Na przykład kontener może zawierać elementy z następującymi wartościami, gdzie każdy element honoruje ograniczenia unique dla klucza.
+Na przykład kontener może zawierać elementy o następujących wartościach, gdzie każdy element honoruje ograniczenie UNIQUE Key.
 
 |CompanyID|Imię|Nazwisko|Adres e-mail|
 |---|---|---|---|
 |Contoso|Gaby|Duperre|gaby@contoso.com |
 |Contoso|Gaby|Duperre|gaby@fabrikam.com|
-|Fabrikam|Gaby|Duperre|gaby@fabrikam.com|
-|Fabrikam|Ivan|Duperre|gaby@fabrikam.com|
+|Firma|Gaby|Duperre|gaby@fabrikam.com|
+|Firma|Ivan|Duperre|gaby@fabrikam.com|
 |Fabrkam|   |Duperre|gaby@fabraikam.com|
 |Fabrkam|   |   |gaby@fabraikam.com|
 
-Jeśli użytkownik podejmie próbę Wstaw element innego za pomocą kombinacji wymienionych w powyższej tabeli, otrzymasz komunikat o błędzie. Błąd wskazuje, czy unikatowe ograniczenie klucza nie został spełniony. Pojawi się jeden `Resource with specified ID or name already exists` lub `Resource with specified ID, name, or unique index already exists` jako zwracany komunikat. 
+W przypadku próby wstawienia innego elementu z kombinacjami wymienionymi w poprzedniej tabeli zostanie wyświetlony komunikat o błędzie. Błąd oznacza, że nie spełniono ograniczenia UNIQUE Key. Otrzymujesz `Resource with specified ID or name already exists` lub `Resource with specified ID, name, or unique index already exists` jako komunikat zwrotny. 
 
-## <a name="define-a-unique-key"></a>Zdefiniuj Unikatowy klucz
+## <a name="define-a-unique-key"></a>Zdefiniuj unikatowy klucz
 
-Unikatowe klucze można zdefiniować tylko wtedy, gdy należy utworzyć kontener usługi Azure Cosmos. Unikatowy klucz, który obejmuje logicznej partycji. W poprzednim przykładzie Jeśli po utworzeniu partycji w kontenerze, na podstawie kodu POCZTOWEGO na końcu zduplikowane elementy w każdej partycji logicznej. Podczas tworzenia unikatowych kluczy, należy wziąć pod uwagę następujące właściwości:
+Klucze unikatowe można definiować tylko podczas tworzenia kontenera usługi Azure Cosmos. Unikatowy klucz jest objęty zakresem partycji logicznej. W poprzednim przykładzie w przypadku partycjonowania kontenera na podstawie kodu POCZTOWego można wykonać zduplikowane elementy w każdej partycji logicznej. Podczas tworzenia unikatowych kluczy należy wziąć pod uwagę następujące właściwości:
 
-* Nie można zaktualizować istniejącego kontenera, aby użyć innego unikatowego klucza. Innymi słowy po utworzeniu kontenera za pomocą zasady unikatowych kluczy zasad nie można zmienić.
+* Nie można zaktualizować istniejącego kontenera, aby użyć innego unikatowego klucza. Innymi słowy po utworzeniu kontenera przy użyciu unikatowych zasad kluczy nie można zmienić zasad.
 
-* Aby określić unikatowy klucz dla istniejącego kontenera, należy utworzyć nowy kontener przy użyciu unikatowych ograniczenie klucza. Aby przenieść dane z istniejącego kontenera do nowego kontenera, należy użyć narzędzia migracji danych. W przypadku kontenerów SQL, użyj [narzędzia migracji danych](import-data.md) do przenoszenia danych. Kontenery bazy danych MongoDB, można użyć [mongoimport.exe lub mongorestore.exe](mongodb-migrate.md) do przenoszenia danych.
+* Aby ustawić unikatowy klucz dla istniejącego kontenera, Utwórz nowy kontener z ograniczeniem Unique Key. Użyj odpowiedniego narzędzia do migracji danych, aby przenieść dane z istniejącego kontenera do nowego kontenera. W przypadku kontenerów SQL Użyj [Narzędzia do migracji danych](import-data.md) , aby przenieść dane. W przypadku kontenerów MongoDB Użyj [mongoimport. exe lub mongorestore. exe](mongodb-migrate.md) , aby przenieść dane.
 
-* Zasady unikatowych kluczy może mieć maksymalnie 16 wartości ścieżek. Na przykład wartości mogą być `/firstName`, `/lastName`, i `/address/zipCode`. Każdej zasady unikatowych kluczy może mieć maksymalnie 10 unikatowych ograniczeń klucza lub kombinacji. Połączone ścieżki dla każdego z ograniczeń unikatowy indeks nie może przekraczać 60 bajtów. W poprzednim przykładzie imię, nazwisko i adres e-mail są ze sobą jedno ograniczenie. To ograniczenie używa 3 poza 16 możliwe ścieżki.
+* Unikatowe Zasady kluczy mogą zawierać maksymalnie 16 wartości ścieżki. Na przykład wartości mogą być `/firstName`, `/lastName`, i `/address/zipCode`. Każda unikatowa zasada klucza może mieć maksymalnie 10 unikatowych ograniczeń klucza lub kombinacji. Ścieżki połączone dla każdego unikatowego ograniczenia indeksu nie mogą przekraczać 60 bajtów. W poprzednim przykładzie pierwsze imię, nazwisko i adres e-mail są jednym ograniczeniem. To ograniczenie powoduje użycie 3 z 16 możliwych ścieżek.
 
-* Jeśli kontener zawiera zasady unikatowych kluczy [jednostek żądań (RU)](request-units.md) opłat, aby tworzyć, aktualizować i usuwać element są nieco większe.
+* Gdy kontener ma unikatowe Zasady kluczy, opłaty za [jednostkę żądania](request-units.md) do tworzenia, aktualizowania i usuwania elementu są nieco wyższe.
 
-* Rozrzedzony unikatowe klucze nie są obsługiwane. Jeśli brakuje niektórych wartości unikatową ścieżkę, są one traktowane jako wartości null, które biorą udział w ograniczenie unikatowości. Z tego powodu może być tylko pojedynczy element z wartością null, aby spełnić tego ograniczenia.
+* Unikatowe klucze rozrzedzone nie są obsługiwane. Jeśli brakuje niektórych unikatowych wartości ścieżki, są one traktowane jako wartości null, które uwzględniają część ograniczenia unikatowości. Z tego powodu może istnieć tylko jeden element z wartością null do spełnienia tego ograniczenia.
 
-* Unikatowe nazwy kluczy uwzględniają wielkość liter. Na przykład, należy wziąć pod uwagę kontenera za pomocą klucza ograniczenia unique równa `/address/zipcode`. Jeśli dane mają pola o nazwie `ZipCode`, usługi Azure Cosmos DB wstawia "null", jako unikatowego klucza, ponieważ `zipcode` nie jest taka sama jak `ZipCode`. Ze względu na to wielkość liter nie można wstawić wszystkie rekordy z kod pocztowy, ponieważ duplikat "null" narusza unikatowe ograniczenie klucza.
+* W unikatowych nazwach kluczy jest rozróżniana wielkość liter. Rozważmy na przykład kontener z ograniczeniem Unique Key ustawionym na `/address/zipcode`. Jeśli dane zawierają pole o nazwie `ZipCode`, Azure Cosmos DB wstawia "null" jako unikatowy klucz, ponieważ `zipcode` nie jest taki sam jak `ZipCode`. Ze względu na to, że nie ma uwzględniania wielkości liter, wszystkie inne rekordy z kod pocztowy nie mogą być wstawiane, ponieważ zduplikowane wartości "null" naruszają ograniczenie UNIQUE Key.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Dowiedz się więcej o [partycjami logicznymi](partition-data.md)
-* Zapoznaj się z [sposób definiowania unikatowe klucze](how-to-define-unique-keys.md) podczas tworzenia kontenera
+* Zapoznaj [się z tematem Definiowanie unikatowych kluczy](how-to-define-unique-keys.md) podczas tworzenia kontenera

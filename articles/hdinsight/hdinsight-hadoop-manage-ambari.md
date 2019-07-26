@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie i zarządzanie nimi w usłudze Azure HDInsight przy użyciu interfejsu użytkownika sieci Web systemu Ambari
-description: Dowiedz się, jak używać narzędzia Ambari do monitorowania i zarządzania klastrami HDInsight opartych na systemie Linux. W tym dokumencie dowiesz się, jak za pomocą interfejsu użytkownika sieci Web Ambari, które zostały dołączone do klastrów HDInsight.
+title: Monitorowanie usługi Azure HDInsight i zarządzanie nią za pomocą interfejsu użytkownika sieci Web Ambari
+description: Dowiedz się, jak używać Ambari do monitorowania klastrów usługi HDInsight opartych na systemie Linux i zarządzania nimi. W tym dokumencie dowiesz się, jak korzystać z interfejsu użytkownika sieci Web Ambari dołączonego do klastrów usługi HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,211 +8,211 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 49e8fbef7af16e109c1e9f1e0d8c9aab1a008e21
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d0641a1c058db59acd5e9a64b10bb57b334f82bd
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257997"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442065"
 ---
-# <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Zarządzanie klastrami HDInsight przy użyciu Interfejsu sieci Web Apache Ambari
+# <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Zarządzanie klastrami usługi HDInsight przy użyciu interfejsu użytkownika sieci Web Apache Ambari
 
 [!INCLUDE [ambari-selector](../../includes/hdinsight-ambari-selector.md)]
 
-Apache Ambari upraszcza zarządzanie i monitorowanie klastra Apache Hadoop, zapewniając łatwy do użycia interfejsu użytkownika sieci web i interfejsu API REST. Ambari znajduje się w klastrach HDInsight i służy do monitorowania klastra i wprowadzania zmian w konfiguracji.
+Apache Ambari upraszcza zarządzanie i monitorowanie klastra Apache Hadoop, zapewniając łatwy do użycia interfejs użytkownika sieci Web i interfejs API REST. Usługa Ambari jest dołączana do klastrów usługi HDInsight i służy do monitorowania klastra i wprowadzania zmian w konfiguracji.
 
 W tym dokumencie dowiesz się, jak używać interfejsu użytkownika sieci Web Ambari z klastrem usługi HDInsight.
 
 ## <a id="whatis"></a>Co to jest Apache Ambari?
 
-[Apache Ambari](https://ambari.apache.org) upraszcza zarządzanie usługi Hadoop, udostępniając łatwy w użyciu interfejsu użytkownika sieci web. Ambari służy do zarządzania i monitorowania klastrów platformy Hadoop. Deweloperzy mogą integrować możliwości swoich aplikacji za pomocą [interfejsów API REST Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
+Platforma [Apache Ambari](https://ambari.apache.org) upraszcza zarządzanie Hadoop, zapewniając łatwy w użyciu interfejs użytkownika sieci Web. Usługi Ambari można użyć do zarządzania klastrami Hadoop i ich monitorowania. Deweloperzy mogą zintegrować te funkcje z aplikacjami za pomocą [interfejsów API REST Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
 ## <a name="connectivity"></a>Łączność
 
-Interfejs użytkownika sieci Web Ambari jest dostępna w klastrze usługi HDInsight w `https://CLUSTERNAME.azurehdinsight.net`, gdzie `CLUSTERNAME` jest nazwą klastra.
+Interfejs użytkownika sieci Web Ambari jest dostępny w klastrze usługi HDInsight `https://CLUSTERNAME.azurehdinsight.net`w lokalizacji `CLUSTERNAME` , gdzie jest nazwą klastra.
 
 > [!IMPORTANT]  
-> Nawiązywanie połączenia z systemu Ambari w HDInsight wymaga protokołu HTTPS. Po wyświetleniu monitu o uwierzytelnienie, użyj nazwy konta administratora i hasło podane podczas tworzenia klastra.
+> Połączenie z usługą Ambari w usłudze HDInsight wymaga protokołu HTTPS. Po wyświetleniu monitu o uwierzytelnienie Użyj nazwy konta administratora i hasła podanego podczas tworzenia klastra.
 
 ## <a name="ssh-tunnel-proxy"></a>Tunel SSH (proxy)
 
-Gdy Ambari klastra jest dostępny bezpośrednio przez Internet, niektóre linki w interfejsie użytkownika sieci Web Ambari, (np. JobTracker) nie są widoczne w Internecie. Aby uzyskać dostęp do tych usług, należy utworzyć tunel SSH. Aby uzyskać więcej informacji, zobacz [użycie tunelowania SSH z HDInsight](hdinsight-linux-ambari-ssh-tunnel.md).
+Mimo że usługa Ambari dla klastra jest dostępna bezpośrednio przez Internet, niektóre linki z internetowego interfejsu użytkownika Ambari (na przykład do JobTracker) nie są dostępne w Internecie. Aby uzyskać dostęp do tych usług, należy utworzyć tunel SSH. Aby uzyskać więcej informacji, zobacz [Używanie tunelowania SSH z usługą HDInsight](hdinsight-linux-ambari-ssh-tunnel.md).
 
-## <a name="ambari-web-ui"></a>Ambari Web UI
+## <a name="ambari-web-ui"></a>Interfejs użytkownika sieci Web Ambari
 
 > [!WARNING]  
-> Nie wszystkie funkcje interfejsu użytkownika sieci Web Ambari, są obsługiwane w HDInsight. Aby uzyskać więcej informacji, zobacz [nieobsługiwane operacje](#unsupported-operations) części tego dokumentu.
+> Nie wszystkie funkcje interfejsu użytkownika sieci Web Ambari są obsługiwane w usłudze HDInsight. Aby uzyskać więcej informacji, zobacz sekcję [nieobsługiwane operacje](#unsupported-operations) w tym dokumencie.
 
-Podczas nawiązywania połączenia Interfejsu sieci Web Ambari, monit uwierzytelniać się na stronie. Użyj użytkownika administratora klastra (ustawienie domyślne Admin) i hasło użyte podczas tworzenia klastra.
+Podczas nawiązywania połączenia z interfejsem użytkownika sieci Web Ambari zostanie wyświetlony monit o uwierzytelnienie na stronie. Użyj użytkownika administrator klastra (administrator domyślny) i hasło użyte podczas tworzenia klastra.
 
-Po otwarciu strony, należy zwrócić uwagę na pasek u góry. Ten pasek zawiera następujące informacje i kontrolki:
+Gdy zostanie otwarta strona, zanotuj pasek u góry. Ten pasek zawiera następujące informacje i kontrolki:
 
-![ambari nav](./media/hdinsight-hadoop-manage-ambari/ambari-nav.png)
+![Ambari — Nawigacja](./media/hdinsight-hadoop-manage-ambari/ambari-nav.png)
 
 |Element |Opis |
 |---|---|
-|Logo systemu Ambari|Zostanie otwarty pulpit nawigacyjny, który może służyć do monitorowania klastra.|
-|Platforma ops # nazwa klastra|Wyświetla liczbę trwające operacje Ambari. Wybieranie nazwy klastra lub **# ops** Wyświetla listę operacji w tle.|
-|alerty (#)|Wyświetla ostrzeżenia lub krytyczny alertów, jeśli istnieje klastra.|
-|Pulpit nawigacyjny|Wyświetla pulpitu nawigacyjnego.|
-|Usługi|Informacje i ustawień konfiguracji dla usług w klastrze.|
-|Hosts|Informacje i ustawień konfiguracji dla węzłów w klastrze.|
-|Alerty|Dziennik informacje, ostrzeżenia i krytyczne alerty.|
-|Jednostka administracyjna|Stos/usług oprogramowania, które są zainstalowane w klastrze, informacje o koncie usługi i zabezpieczeń protokołu Kerberos.|
-|Przycisk administratora|Zarządzanie Ambari, ustawienia użytkownika i Wyloguj.|
+|Logo Ambari|Otwiera pulpit nawigacyjny, który może służyć do monitorowania klastra.|
+|Nazwa klastra # Ops|Wyświetla liczbę trwających operacji Ambari. Wybranie nazwy klastra lub **# Ops** powoduje wyświetlenie listy operacji w tle.|
+|liczba alertów|W przypadku klastra są wyświetlane ostrzeżenia lub alerty krytyczne (jeśli istnieją).|
+|Pulpit nawigacyjny|Wyświetla pulpit nawigacyjny.|
+|Usługi|Informacje i ustawienia konfiguracji usług w klastrze.|
+|Hosty|Ustawienia informacji i konfiguracji dla węzłów w klastrze.|
+|Alerty|Dziennik informacji, ostrzeżeń i alertów krytycznych.|
+|Administrator|Stos/usługi oprogramowania zainstalowane w klastrze, informacje o koncie usługi i zabezpieczenia protokołu Kerberos.|
+|Przycisk administratora|Ambari Management, ustawienia użytkownika i wyloguj się.|
 
 ## <a name="monitoring"></a>Monitorowanie
 
 ### <a name="alerts"></a>Alerty
 
-Poniższa lista zawiera typowe stany alertów, używana przez narzędzia Ambari:
+Poniższa lista zawiera typowe Stany alertów używane przez Ambari:
 
 * **OK**
 * **Ostrzeżenie**
-* **KRYTYCZNE**
+* **NAJISTOTNIEJSZ**
 * **UNKNOWN**
 
-Alerty innych niż **OK** spowodować **alerty (#)** wpis w górnej części strony, aby wyświetlić liczbę alertów. Wybranie tego wpisu wyświetla alerty wraz z ich stanami.
+Alerty inne niż **OK** powodują wyświetlenie liczby alertów w pozycji **# alerty** w górnej części strony. Wybranie tej pozycji spowoduje wyświetlenie alertów i ich stanu.
 
-Alerty są podzielone na kilka domyślnych grup, które mogą być wyświetlane z **alerty** strony.
+Alerty są zorganizowane w kilka domyślnych grup, które mogą być wyświetlane na stronie **alerty** .
 
-![Strona alertów](./media/hdinsight-hadoop-manage-ambari/alerts.png)
+![Strona alerty](./media/hdinsight-hadoop-manage-ambari/alerts.png)
 
-Grupy można zarządzać za pomocą **akcje** menu i wybierając polecenie **Zarządzaj grupami alertu**.
+Grupami można zarządzać za pomocą menu **Akcje** i wybierając pozycję **Zarządzaj grupami alertów**.
 
-![Zarządzanie grupami alertu w oknie dialogowym](./media/hdinsight-hadoop-manage-ambari/manage-alerts.png)
+![okno dialogowe Zarządzanie grupami alertów](./media/hdinsight-hadoop-manage-ambari/manage-alerts.png)
 
-Można również zarządzać metodami alertów i tworzyć powiadomienia o alertach z **akcje** menu, wybierając __Zarządzanie powiadomienia Alert__. Wszelkie bieżące powiadomienia są wyświetlane. Powiadomienia można również utworzyć w tym miejscu. Powiadomienia mogą być wysyłane za pośrednictwem **E-mail** lub **SNMP** po wystąpieniu określonej ważności alertu/kombinacje. Na przykład, możesz wysłać wiadomość e-mail, gdy którykolwiek z alertów w **domyślne YARN** grupy jest ustawiona na **krytyczny**.
+Możesz również zarządzać metodami alertów i tworzyć powiadomienia o alertach z menu **Akcje** , wybierając pozycję __Zarządzaj powiadomieniami o alertach__. Wyświetlane są wszystkie bieżące powiadomienia. W tym miejscu możesz również utworzyć powiadomienia. Powiadomienia mogą być wysyłane za pośrednictwem **poczty e-mail** lub **SNMP** , gdy wystąpią określone kombinacje alertów/ważności. Na przykład możesz wysłać wiadomość e-mail, gdy dowolne z alertów w grupie **domyślnej przędzy** ma wartość **krytyczne**.
 
-![Tworzenie okna dialogowego alertu](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
+![Okno dialogowe tworzenia alertu](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
 
-Na koniec, wybierając __Zarządzanie ustawieniami Alert__ z __akcje__ menu pozwala na ustawienie liczby alertu musi wystąpić przed wysłaniem powiadomienia. To ustawienie umożliwia zapobieganie powiadomienia dotyczące błędów przejściowych.
+Na koniec wybranie opcji __Zarządzaj ustawieniami alertów__ z menu __Akcje__ pozwala określić, ile razy alert musi nastąpić przed wysłaniem powiadomienia. Tego ustawienia można użyć, aby uniemożliwić powiadomienia dotyczące błędów przejściowych.
 
 ### <a name="cluster"></a>Klaster
 
-**Metryki** karty Pulpit nawigacyjny zawiera szereg elementów widget, które ułatwiają monitorowanie stanu klastra na pierwszy rzut oka. Kilka widżetów, takich jak **użycie procesora CPU**, zawierają dodatkowe informacje po kliknięciu.
+Karta **metryki** pulpitu nawigacyjnego zawiera serię elementów widget, które ułatwiają szybkie monitorowanie stanu klastra. Kilka widżetów, takich jak **użycie procesora CPU**, udostępnia dodatkowe informacje po kliknięciu.
 
-![pulpit nawigacyjny z metrykami](./media/hdinsight-hadoop-manage-ambari/metrics.png)
+![Pulpit nawigacyjny z metrykami](./media/hdinsight-hadoop-manage-ambari/metrics.png)
 
-**Map cieplnych** karcie są wyświetlane metryki jako kolorowy map cieplnych, przechodząc od zielonego do czerwonego.
+Na karcie **map cieplnych** są wyświetlane metryki jako kolorowe map cieplnych, które przechodzą z koloru zielonego na czerwony.
 
-![pulpit nawigacyjny z mapy cieplne](./media/hdinsight-hadoop-manage-ambari/heatmap.png)
+![Pulpit nawigacyjny z map cieplnych](./media/hdinsight-hadoop-manage-ambari/heatmap.png)
 
-Aby uzyskać więcej informacji na temat węzłów w klastrze, wybierz **hosty**. Następnie wybierz pozycję określonego węzła, który Cię interesuje.
+Aby uzyskać więcej informacji na temat węzłów w klastrze, wybierz pozycję hosty. Następnie wybierz konkretny wybrany węzeł.
 
-![Szczegóły dotyczące hostów](./media/hdinsight-hadoop-manage-ambari/host-details.png)
+![Szczegóły hosta](./media/hdinsight-hadoop-manage-ambari/host-details.png)
 
 ### <a name="services"></a>Usługi
 
-**Usług** paska bocznego na pulpicie nawigacyjnym zapewnia szybki wgląd w stan usług działających w klastrze. Różne ikony są używane do wskazania stanu lub akcje, które należy podjąć. Na przykład symbol żółty odtwarzanie jest wyświetlany, jeśli usługa musi zostać odzyskany.
+Pasek boczny **usług** na pulpicie nawigacyjnym zapewnia szybki wgląd w informacje o stanie usług uruchomionych w klastrze. Różne ikony są używane do wskazywania stanu lub akcji, które należy wykonać. Na przykład żółty symbol odtwarzania jest wyświetlany, jeśli usługa musi zostać odtworzona.
 
 ![pasek boczny usług](./media/hdinsight-hadoop-manage-ambari/service-bar.png)
 
 > [!NOTE]  
-> Usług wyświetlonej różnią się między typami klastra HDInsight i wersjach. Usługi wyświetlane w tym miejscu mogą być inne niż usługi dla klastra.
+> Wyświetlone usługi różnią się w zależności od typów i wersji klastra HDInsight. Wyświetlone w tym miejscu usługi mogą być inne niż usługi wyświetlane dla danego klastra.
 
-Wybranie usługi zawiera więcej szczegółowych informacji w usłudze.
+Wybranie usługi spowoduje wyświetlenie bardziej szczegółowych informacji na temat usługi.
 
-![Podsumowanie informacji o usłudze](./media/hdinsight-hadoop-manage-ambari/service-details.png)
+![informacje podsumowujące usługi](./media/hdinsight-hadoop-manage-ambari/service-details.png)
 
-#### <a name="quick-links"></a>Szybkie łącza
+#### <a name="quick-links"></a>Szybkie linki
 
-Wyświetlanie niektórych usług **szybkich łączy** widocznego u góry strony. Może to służyć do dostępu do specyficzne dla usługi web UI, takich jak:
+W niektórych usługach w górnej części strony są wyświetlane łącza **szybki** link. Może to służyć do uzyskiwania dostępu do interfejsów użytkownika sieci Web specyficznych dla usługi, takich jak:
 
-* **Historia zadań** -historii zadań MapReduce.
-* **Menedżer zasobów** -interfejsie użytkownika YARN ResourceManager.
-* **NameNode** — Hadoop Distributed pliku System (HDFS) NameNode w interfejsie użytkownika.
-* **Interfejs użytkownika sieci Web programu Oozie** -Oozie interfejsu użytkownika.
+* **Historia zadania** — historia zadań MapReduce.
+* **Menedżer zasobów** — interfejs użytkownika ResourceManager.
+* Interfejs użytkownika NameNode **NameNode** -Hadoop rozproszony system plików (HDFS).
+* **Oozie interfejs użytkownika sieci Web** — interfejs użytkownika Oozie.
 
-Wybierając dowolną z poniższych linków, spowoduje otwarcie nowej karty w przeglądarce, który zawiera informacje na wybranej stronie.
+Wybranie dowolnego z tych linków spowoduje otwarcie nowej karty w przeglądarce, w której zostanie wyświetlona wybrana strona.
 
 > [!NOTE]  
-> Wybieranie **szybkich łączy** wpis dla usług mogą zwracać błąd "nie można odnaleźć serwera". Jeśli wystąpi ten błąd, należy użyć tunelu SSH, korzystając z **szybkich łączy** wpis dla tej usługi. Aby uzyskać informacje, zobacz [użycie tunelowania SSH z HDInsight](hdinsight-linux-ambari-ssh-tunnel.md)
+> Wybranie wpisu **szybkie linki** dla usługi może spowodować zwrócenie błędu "nie można odnaleźć serwera". W przypadku wystąpienia tego błędu należy użyć tunelu SSH podczas korzystania z wpisu **szybkie linki** dla tej usługi. Aby uzyskać więcej informacji, zobacz [Korzystanie z tunelowania SSH z usługą HDInsight](hdinsight-linux-ambari-ssh-tunnel.md)
 
 ## <a name="management"></a>Zarządzanie
 
-### <a name="ambari-users-groups-and-permissions"></a>Ambari użytkowników, grup i uprawnień
+### <a name="ambari-users-groups-and-permissions"></a>Ambari użytkownicy, grupy i uprawnienia
 
-Praca z użytkowników, grupy i uprawnienia są obsługiwane w przypadku korzystania z [przyłączonych do domeny](./domain-joined/apache-domain-joined-introduction.md) klastra HDInsight. Aby uzyskać informacji na temat używania interfejsu użytkownika zarządzania Ambari w klastrze przyłączonych do domeny, zobacz [Zarządzanie klastrami HDInsight przyłączone do domeny](./domain-joined/apache-domain-joined-introduction.md).
+Praca z użytkownikami, grupami i uprawnieniami jest obsługiwana w przypadku korzystania z klastra usługi HDInsight przyłączonego do [domeny](./domain-joined/hdinsight-security-overview.md) . Aby uzyskać informacje na temat korzystania z interfejsu użytkownika zarządzania Ambari w klastrze przyłączonym do domeny, zobacz [Zarządzanie przyłączonymi do domeny klastrami usługi HDInsight](./domain-joined/hdinsight-security-overview.md).
 
 > [!WARNING]  
-> Nie zmieniaj hasła strażnika Ambari (hdinsightwatchdog) w klastrze usługi HDInsight opartych na systemie Linux. Zmienianie hasła przerywa możliwość użyj akcji skryptu, lub wykonywać operacje skalowania na potrzeby klastra.
+> Nie należy zmieniać hasła licznika Ambari (hdinsightwatchdog) w klastrze usługi HDInsight opartym na systemie Linux. Zmiana hasła zrywa możliwość korzystania z akcji skryptu lub wykonywania operacji skalowania w klastrze.
 
-### <a name="hosts"></a>Hosts
+### <a name="hosts"></a>Hosty
 
-**Hosty** strona zawiera listę wszystkich hostów w klastrze. Aby zarządzać hostami, wykonaj następujące kroki.
+Na  stronie hosty są wyświetlane wszystkie hosty w klastrze. Aby zarządzać hostami, wykonaj następujące kroki.
 
-![strony hosty](./media/hdinsight-hadoop-manage-ambari/hosts.png)
+![Strona hosts](./media/hdinsight-hadoop-manage-ambari/hosts.png)
 
 > [!NOTE]  
-> Dodawanie, wycofywanie z eksploatacji i recommissioning hosta nie należy używać z klastrami HDInsight.
+> Dodawanie, likwidowanie i relikwidowanie hosta nie powinno być używane z klastrami usługi HDInsight.
 
-1. Wybierz hosta, który ma być zarządzana.
+1. Wybierz hosta, którym chcesz zarządzać.
 
-2. Użyj **akcje** w menu akcji, którą chcesz wykonać:
+2. Za pomocą menu **Akcje** wybierz akcję, którą chcesz wykonać:
 
     |Element |Opis |
     |---|---|
     |Uruchom wszystkie składniki|Uruchom wszystkie składniki na hoście.|
     |Zatrzymaj wszystkie składniki|Zatrzymaj wszystkie składniki na hoście.|
-    |Uruchom ponownie wszystkie składniki|Uruchamiaj i zatrzymuj wszystkie składniki na hoście.|
-    |Włącz tryb konserwacji|Pomija alertów dla hosta. W tym trybie powinno być włączone, jeśli są wykonywane działania, które generują alerty. Na przykład zatrzymanie i uruchomienie usługi.|
-    |Wyłącz tryb konserwacji|Zwraca hosta do normalnego alertów.|
-    |Stop|Zatrzymuje DataNode lub NodeManagers na hoście.|
-    |Uruchamianie|Uruchamia DataNode lub NodeManagers na hoście.|
-    |Ponowne uruchamianie|Zatrzymuje i uruchamia DataNode lub NodeManagers na hoście.|
-    |Likwidowanie wdrożenia|Usuwa hosta z klastra. **Nie należy używać tej akcji w klastrach HDInsight.**|
-    |Recommission|Dodaje wcześniej zlikwidowana hosta do klastra. **Nie należy używać tej akcji w klastrach HDInsight.**|
+    |Uruchom ponownie wszystkie składniki|Zatrzymaj i uruchom wszystkie składniki na hoście.|
+    |Włącz tryb konserwacji|Pomija alerty dla hosta. Ten tryb należy włączyć, jeśli wykonujesz akcje generujące alerty. Na przykład zatrzymywanie i uruchamianie usługi.|
+    |Wyłącz tryb konserwacji|Zwraca hosta do normalnego alertu.|
+    |Stop|Powoduje zatrzymanie elementu datanode lub NodeManagers na hoście.|
+    |Start|Uruchamia element datanode lub NodeManagers na hoście.|
+    |Ponowne uruchamianie|Kończy i uruchamia węzeł datanode lub NodeManagers na hoście.|
+    |Zlikwidować|Usuwa hosta z klastra. **Nie należy używać tej akcji w klastrach usługi HDInsight.**|
+    |Recommission|Dodaje wcześniej zlikwidowanego hosta do klastra. **Nie należy używać tej akcji w klastrach usługi HDInsight.**|
 
-### <a id="service"></a>Usługi
+### <a id="service"></a>Services
 
-Z **pulpit nawigacyjny** lub **usług** stronie **akcje** przycisk w dolnej części listy usług do zatrzymywania i uruchamiania wszystkich usług.
+Na stronie **pulpit nawigacyjny** lub **usługi** Użyj przycisku **Akcje** znajdującego się u dołu listy usług, aby zatrzymać i uruchomić wszystkie usługi.
 
-![działania usługi](./media/hdinsight-hadoop-manage-ambari/service-actions.png)
+![akcje usługi](./media/hdinsight-hadoop-manage-ambari/service-actions.png)
 
 > [!WARNING]  
-> Gdy **Dodaj usługę** znajduje się w tym menu, nie można stosować nad dodaniem usług do klastra HDInsight. Powinny być dodawane nowe usługi przy użyciu akcji skryptów podczas inicjowania obsługi klastra. Aby uzyskać więcej informacji na temat korzystania z akcji skryptu, zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).
+> Podczas **dodawania usługi** w tym menu nie należy używać go do dodawania usług do klastra usługi HDInsight. Przed zainicjowaniem obsługi klastra należy dodać nowe usługi przy użyciu akcji skryptu. Aby uzyskać więcej informacji o korzystaniu z akcji skryptu, zobacz [Dostosowywanie klastrów usługi HDInsight za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).
 
-Gdy **akcje** przycisku można uruchomić ponownie wszystkie usługi, często chcesz uruchomić, zatrzymać lub ponowne uruchamianie określonej usługi. Do wykonywania akcji względem pojedynczej usługi, należy użyć następujących czynności:
+Po kliknięciu przycisku **Akcje** można uruchomić ponownie wszystkie usługi, często w celu uruchomienia, zatrzymania lub ponownego uruchomienia określonej usługi. Wykonaj następujące kroki, aby wykonać akcje dotyczące poszczególnych usług:
 
-1. Z **pulpit nawigacyjny** lub **usług** stronie, wybierz usługę.
+1. Na stronie **pulpit nawigacyjny** lub **usługi** wybierz usługę.
 
-2. W górnej części **Podsumowanie** kartę, należy użyć **działania usługi** przycisk, a następnie wybierz akcję do wykonania. Spowoduje to ponowne uruchomienie usługi we wszystkich węzłach.
+2. W górnej części karty **Podsumowanie** Użyj przycisku **Akcje usługi** i wybierz akcję do wykonania. Spowoduje to ponowne uruchomienie usługi we wszystkich węzłach.
 
     ![Akcja usługi](./media/hdinsight-hadoop-manage-ambari/individual-service-actions.png)
 
    > [!NOTE]  
-   > Ponowne uruchamianie niektórych usług, po uruchomieniu klastra może generować alerty. Aby uniknąć alertów, można użyć **działania usługi** przycisk, aby włączyć **trybu konserwacji** usługi przed wykonaniem ponownego uruchomienia.
+   > Ponowne uruchamianie niektórych usług, gdy klaster jest uruchomiony, może generować alerty. Aby uniknąć alertów, można użyć przycisku **Akcje usługi** , aby włączyć **tryb konserwacji** dla usługi przed ponownym uruchomieniem.
 
-3. Po wybraniu akcji **# op** na początku zwiększa strony, aby pokazać, że odbywa się z operacji w tle. Jeśli skonfigurowana do wyświetlania, zostanie wyświetlona lista operacji w tle.
+3. Po wybraniu akcji **# op** wpis w górnej części strony zwiększa się, aby pokazać, że występuje operacja w tle. Jeśli jest skonfigurowany do wyświetlania, zostanie wyświetlona lista operacji w tle.
 
    > [!NOTE]  
-   > Jeśli włączono **trybu konserwacji** dla usługi, pamiętaj, aby ją wyłączyć za pomocą **działania usługi** przycisku po zakończeniu operacji.
+   > Jeśli włączono **tryb konserwacji** usługi, pamiętaj, aby wyłączyć go przy użyciu przycisku **Akcje usługi** po zakończeniu operacji.
 
-Aby skonfigurować usługę, użyj następujących kroków:
+Aby skonfigurować usługę, wykonaj następujące czynności:
 
-1. Z **pulpit nawigacyjny** lub **usług** stronie, wybierz usługę.
+1. Na stronie **pulpit nawigacyjny** lub **usługi** wybierz usługę.
 
-2. Wybierz **Configs** kartę. Bieżąca konfiguracja jest wyświetlana. Również zostanie wyświetlona lista powyższych konfiguracjach.
+2. Wybierz **Configs** kartę. Zostanie wyświetlona bieżąca konfiguracja. Zostanie również wyświetlona lista poprzednich konfiguracji.
 
-    ![Konfiguracje](./media/hdinsight-hadoop-manage-ambari/service-configs.png)
+    ![komputerów](./media/hdinsight-hadoop-manage-ambari/service-configs.png)
 
-3. Użyj pola wyświetlane, aby zmodyfikować konfigurację, a następnie wybierz **Zapisz**. Lub wybierz poprzednią konfigurację, a następnie wybierz **Ustaw jako bieżącą** wrócić do poprzednich ustawień.
+3. Użyj wyświetlanych pól, aby zmodyfikować konfigurację, a następnie wybierz pozycję **Zapisz**. Lub wybierz poprzednią konfigurację, a następnie wybierz pozycję **Ustaw jako bieżącą** , aby przywrócić poprzednie ustawienia.
 
 ## <a name="ambari-views"></a>Widoki Ambari
 
-Widoki Ambari umożliwiają deweloperom Podłącz elementy interfejsu użytkownika do przy użyciu interfejsu użytkownika sieci Web Ambari [Apache Ambari widoków Framework](https://cwiki.apache.org/confluence/display/AMBARI/Views). HDInsight udostępnia następujące widoki z typami klastrów usługi Hadoop:
+Widoki Ambari umożliwiają deweloperom podłączenie elementów interfejsu użytkownika do interfejsu użytkownika sieci Web Ambari przy użyciu [struktury widoków Apache Ambari](https://cwiki.apache.org/confluence/display/AMBARI/Views). Usługa HDInsight udostępnia następujące widoki typów klastrów Hadoop:
 
-* Widok programu hive: Hive View umożliwia uruchamianie zapytań Hive bezpośrednio w przeglądarce sieci web. Możesz zapisać zapytania, wyświetlić wyniki, Zapisz wyniki do magazynu klastra lub pobrać wyniki do systemu lokalnego. Aby uzyskać więcej informacji na temat korzystania z widoków programu Hive, zobacz [Użyj Apache Hive widoków z HDInsight](hadoop/apache-hadoop-use-hive-ambari-view.md).
+* Widok Hive: Widok Hive umożliwia uruchamianie zapytań programu Hive bezpośrednio z przeglądarki sieci Web. Możesz zapisywać zapytania, wyświetlać wyniki, zapisywać wyniki w magazynie klastra lub pobierać wyniki do systemu lokalnego. Aby uzyskać więcej informacji na temat korzystania z widoków Hive, zobacz [Korzystanie z widoków Apache Hive w usłudze HDInsight](hadoop/apache-hadoop-use-hive-ambari-view.md).
 
-* Widok aplikacji tez: Widok Tez pozwala lepiej zrozumieć i zadaniami optymalizacji. Można wyświetlić informacje, jak Tez zadania zostały wykonane i jakie zasoby są używane.
+* Widok tez: Widok tez pozwala lepiej zrozumieć i zoptymalizować zadania. Można wyświetlić informacje na temat sposobu wykonywania zadań tez i zasobów, które są używane.
 
 ## <a name="unsupported-operations"></a>Nieobsługiwane operacje
 
-Następujące operacje Ambari nie są obsługiwane w HDInsight:
+Następujące operacje Ambari nie są obsługiwane w usłudze HDInsight:
 
-* __Przenoszenie Usługa modułu zbierającego metryki__. Podczas wyświetlania informacji w usłudze modułu zbierającego metryk jest jedną z akcji, które są dostępne z menu Akcje usługi __modułu zbierającego przenieść metryki__. To jest nieobsługiwane w przypadku HDInsight.
+* __Przeniesienie usługi modułu zbierającego metryki__. Podczas wyświetlania informacji dotyczących usługi modułu zbierającego metryk, jedną z akcji dostępnych w menu Akcje usługi jest __przeniesienie modułu zbierającego metryki__. Ta usługa nie jest obsługiwana w usłudze HDInsight.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak używać [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md) z HDInsight.
+Dowiedz się, jak używać [interfejsu API REST usługi Apache Ambari](hdinsight-hadoop-manage-ambari-rest-api.md) z usługą HDInsight.

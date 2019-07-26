@@ -1,8 +1,8 @@
 ---
-title: Przypisz zmiennych w usłudze Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
-description: Porady dotyczące przypisywania zmiennych języka T-SQL w usłudze Azure SQL Data Warehouse do opracowywania rozwiązań.
+title: Przypisywanie zmiennych w Azure SQL Data Warehouse | Microsoft Docs
+description: Wskazówki dotyczące przypisywania zmiennych T-SQL w Azure SQL Data Warehouse tworzenia rozwiązań.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,27 +10,27 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 62c4273a02e02aff268a96e1b13483088ba33f87
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c943478f3904aac17a572f012f2b2b69ffa2223
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65861681"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479558"
 ---
-# <a name="assigning-variables-in-azure-sql-data-warehouse"></a>Przypisywanie zmiennych w usłudze Azure SQL Data Warehouse
+# <a name="assigning-variables-in-azure-sql-data-warehouse"></a>Przypisywanie zmiennych w Azure SQL Data Warehouse
 
-Porady dotyczące przypisywania zmiennych języka T-SQL w usłudze Azure SQL Data Warehouse do opracowywania rozwiązań.
+Wskazówki dotyczące przypisywania zmiennych T-SQL w Azure SQL Data Warehouse tworzenia rozwiązań.
 
-## <a name="setting-variables-with-declare"></a>Ustawianie zmiennych z DECLARE
+## <a name="setting-variables-with-declare"></a>Ustawianie zmiennych przy użyciu deklaracji DECLARE
 
-Zmienne w usłudze SQL Data Warehouse są ustawiane przy użyciu `DECLARE` instrukcji lub `SET` instrukcji. Inicjowanie zmiennych o DECLARE, jest najbardziej elastyczny sposób ustawić wartość zmiennej w usłudze SQL Data Warehouse.
+Zmienne w SQL Data Warehouse są ustawiane przy `DECLARE` użyciu instrukcji `SET` lub instrukcji. Inicjowanie zmiennych przy użyciu deklaracji jest jednym z najbardziej elastycznych metod ustawiania wartości zmiennej w SQL Data Warehouse.
 
 ```sql
 DECLARE @v  int = 0
 ;
 ```
 
-DECLARE umożliwia również ustawić więcej niż jedną zmienną w czasie. Wybierz lub aktualizacji nie można używać, wykonaj następujące czynności:
+Można również użyć DECLARE, aby ustawić więcej niż jedną zmienną jednocześnie. Nie można użyć opcji SELECT ani UPDATE, aby wykonać następujące czynności:
 
 ```sql
 DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 'Smith')
@@ -38,7 +38,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-Nie można zainicjować i użyć zmiennej w tej samej instrukcji DECLARE. Aby zilustrować ideę, poniższy przykład jest **nie** dozwolona, ponieważ @p1 jest inicjowany i używane w tej samej instrukcji DECLARE. Poniższy przykład powoduje błąd.
+Nie można zainicjować i użyć zmiennej w tej samej instrukcji DECLARE. W celu zilustrowania punktu Poniższy przykład jest **niedozwolony,** ponieważ @p1 jest zainicjowany i używany w tej samej instrukcji DECLARE. Poniższy przykład zawiera błąd.
 
 ```sql
 DECLARE @p1 int = 0
@@ -48,9 +48,9 @@ DECLARE @p1 int = 0
 
 ## <a name="setting-values-with-set"></a>Ustawianie wartości przy użyciu zestawu
 
-ZESTAW to typowe metody do ustawiania zmiennej.
+SET to wspólna metoda ustawiania pojedynczej zmiennej.
 
-Poniższe instrukcje są wszystkie prawidłowe metody, aby ustawić zmienną przy użyciu zestawu:
+Następujące instrukcje są prawidłowymi sposobami ustawiania zmiennej przy użyciu zestawu:
 
 ```sql
 SET     @v = (Select max(database_id) from sys.databases);
@@ -59,12 +59,12 @@ SET     @v = @v+1;
 SET     @v +=1;
 ```
 
-Jednej zmiennej w danym momencie można ustawić tylko przy użyciu zestawu. Jednak złożone operatory są dozwolone.
+Można ustawić tylko jedną zmienną naraz z ZESTAWem. Jednak operatory złożone są dozwolone.
 
 ## <a name="limitations"></a>Ograniczenia
 
-Przypisanie zmiennej nie można użyć aktualizacji.
+Nie można używać aktualizacji do przypisywania zmiennych.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej porad programistycznych, zobacz [omówienie programowania w usłudze](sql-data-warehouse-overview-develop.md).
+Aby uzyskać więcej porad programistycznych, zobacz [Omówienie projektowania](sql-data-warehouse-overview-develop.md).

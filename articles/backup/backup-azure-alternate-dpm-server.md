@@ -1,95 +1,94 @@
 ---
-title: Odzyskiwanie danych z usługi Azure Backup Server
-description: Odzyskaj dane, które użytkownik został objęty ochroną w magazynie usługi Recovery Services z dowolnego serwera usługi Azure Backup zarejestrowanych w tym magazynie.
-services: backup
+title: Odzyskiwanie danych z Azure Backup Server
+description: Odzyskaj dane chronione do magazynu Recovery Services z dowolnego Azure Backup Server zarejestrowanego w tym magazynie.
 author: kasinh
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: kasinh
-ms.openlocfilehash: 770baeeacb5f3808eba05f9e262bcbca75c6baad
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: aaa2efa706822bee85dc867ad35bc312f4c700a1
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705225"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466911"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Odzyskiwanie danych z usługi Azure Backup Server
-Można użyć usługi Azure Backup Server, aby odzyskać dane, które zostały kopii zapasowej w magazynie usługi Recovery Services. Proces może więc jest zintegrowana z konsoli zarządzania usługi Azure Backup Server i jest podobna do przepływu pracy odzyskiwania dla innych składników usługi Azure Backup.
+Za pomocą Azure Backup Server można odzyskać dane, których kopię zapasową utworzono w magazynie Recovery Services. Ten proces jest zintegrowany z konsolą zarządzania Azure Backup Server i jest podobny do przepływu pracy odzyskiwania dla innych składników Azure Backup.
 
 > [!NOTE]
-> Ten artykuł dotyczy [System Center Data Protection Manager 2012 R2 z pakietem zbiorczym aktualizacji 7 lub nowszym](https://support.microsoft.com/en-us/kb/3065246), połączone z [najnowszą wersję agenta usługi Kopia zapasowa Azure](https://aka.ms/azurebackup_agent).
+> Ten artykuł dotyczy programu [System Center Data Protection Manager 2012 R2 z pakietem UR7 lub nowszym](https://support.microsoft.com/en-us/kb/3065246), w połączeniu z [najnowszym agentem Azure Backup](https://aka.ms/azurebackup_agent).
 >
 >
 
-Aby odzyskać dane z usługi Azure Backup Server:
+Aby odzyskać dane z Azure Backup Server:
 
-1. Z **odzyskiwania** karty konsoli zarządzania usługi Azure Backup Server kliknij **"Dodaj zewnętrzny program DPM"** (w lewym górnym rogu ekranu).   
+1. Na karcie **odzyskiwanie** w konsoli zarządzania Azure Backup Server kliknij pozycję **"Dodaj zewnętrzny program DPM"** (w lewym górnym rogu ekranu).   
     ![Dodaj zewnętrzny program DPM](./media/backup-azure-alternate-dpm-server/add-external-dpm.png)
-2. Pobierz nowy **magazynu poświadczeń** z magazynu skojarzonego z **usługi Azure Backup Server** w przypadku, gdy dane są odzyskiwane, wybierz zarejestrowany serwera usługi Azure Backup z listy serwerów kopia zapasowa Azure za pomocą usług Recovery Services magazynu, a następnie podaj **hasło szyfrowania** skojarzone z serwerem, którego dane są odzyskiwane.
+2. Pobierz nowe **poświadczenia magazynu** z magazynu skojarzonego z **Azure Backup Server** , w którym dane są odzyskiwane, wybierz Azure Backup Server z listy serwerów Azure Backup zarejestrowanych w magazynie Recovery Services i Podaj **hasło szyfrowania** skojarzone z serwerem, którego dane są odzyskiwane.
 
-    ![Poświadczenia zewnętrznego programu DPM](./media/backup-azure-alternate-dpm-server/external-dpm-credentials.png)
+    ![Zewnętrzne poświadczenia programu DPM](./media/backup-azure-alternate-dpm-server/external-dpm-credentials.png)
 
    > [!NOTE]
-   > Tylko serwery kopii zapasowej platformy Azure skojarzone z tym samym magazynie rejestracji można odzyskać dane siebie nawzajem.
+   > Tylko Azure Backup serwery skojarzone z tym samym magazynem rejestracji mogą odzyskać dane z innych danych.
    >
    >
 
-    Po pomyślnym dodaniu zewnętrznych usługi Azure Backup Server, można przeglądać dane z serwera zewnętrznego i lokalne usługi Azure Backup Server z **odzyskiwania** kartę.
-3. Przeglądaj listę dostępnych serwerów produkcyjnych chronione przez zewnętrzne usługi Azure Backup Server i wybierz odpowiednie źródło danych.
+    Po pomyślnym dodaniu Azure Backup Server zewnętrznego można przeglądać dane na serwerze zewnętrznym i Azure Backup Server lokalnym na karcie **odzyskiwanie** .
+3. Przeglądaj dostępną listę serwerów produkcyjnych chronionych przez zewnętrzne Azure Backup Server i wybierz odpowiednie źródło danych.
 
-    ![Przeglądaj serwer zewnętrzny program DPM](./media/backup-azure-alternate-dpm-server/browse-external-dpm.png)
-4. Wybierz **w miesiącu i roku** z **punktów odzyskiwania** listę rozwijaną, wybierz wymagane **Data Recovery** punkt odzyskiwania został utworzony, i wybierz **Czas odzyskiwania**.
+    ![Przeglądaj zewnętrzny serwer DPM](./media/backup-azure-alternate-dpm-server/browse-external-dpm.png)
+4. Wybierz **miesiąc i rok** z listy rozwijanej **punkty odzyskiwania** , wybierz wymaganą **datę odzyskiwania** dla momentu utworzenia punktu odzyskiwania, a następnie wybierz **czas odzyskiwania**.
 
-    W dolnym okienku, który może być przeglądany i odzyskać do dowolnego miejsca i zostanie wyświetlona lista plików i folderów.
+    W dolnym okienku zostanie wyświetlona lista plików i folderów, które mogą być przeglądane i odzyskiwane do dowolnej lokalizacji.
 
-    ![Punkty odzyskiwania serwera programu DPM zewnętrzne](./media/backup-azure-alternate-dpm-server/external-dpm-recoverypoint.png)
-5. Kliknij prawym przyciskiem myszy odpowiedni element, a następnie kliknij przycisk **odzyskać**.
+    ![Punkty odzyskiwania zewnętrznego serwera DPM](./media/backup-azure-alternate-dpm-server/external-dpm-recoverypoint.png)
+5. Kliknij prawym przyciskiem myszy odpowiedni element i kliknij polecenie Odzyskaj.
 
-    ![Zewnętrzne odzyskiwania programu DPM](./media/backup-azure-alternate-dpm-server/recover.png)
-6. Przegląd **odzyskać wybór**. Sprawdź dane i czas ich odzyskania kopii zapasowej, a także źródła, z której została utworzona kopia zapasowa. Jeśli zaznaczenie jest nieprawidłowa, kliknij przycisk **anulować** można przejść z powrotem do odzyskiwania kartę, aby wybrać punkt odzyskiwania odpowiednie. Jeśli zaznaczenie jest poprawny, kliknij przycisk **dalej**.
+    ![Zewnętrzne odzyskiwanie programu DPM](./media/backup-azure-alternate-dpm-server/recover.png)
+6. Przejrzyj **zaznaczenie opcji Odzyskaj**. Sprawdź dane i czas odzyskiwania kopii zapasowej, a także źródło, z którego została utworzona kopia zapasowa. Jeśli zaznaczenie jest nieprawidłowe, kliknij przycisk **Anuluj** , aby przejść z powrotem do karty odzyskiwanie, aby wybrać odpowiedni punkt odzyskiwania. Jeśli zaznaczenie jest poprawne, kliknij przycisk **dalej**.
 
-    ![Podsumowanie zewnętrzne odzyskiwania programu DPM](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-summary.png)
-7. Wybierz **odzyskiwanie do lokalizacji alternatywnej**. **Przeglądaj** do poprawnej lokalizacji dla odzyskiwania.
+    ![Podsumowanie zewnętrznego odzyskiwania programu DPM](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-summary.png)
+7. Wybierz opcję **Odzyskaj do lokalizacji alternatywnej**. **Przejdź** do odpowiedniej lokalizacji odzyskiwania.
 
-    ![Zewnętrznej lokalizacji alternatywnej odzyskiwania programu DPM](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-alternate-location.png)
-8. Wybierz opcję związane z **Utwórz kopię**, **Pomiń**, lub **Zastąp**.
+    ![Alternatywna Lokalizacja odzyskiwania programu DPM](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-alternate-location.png)
+8. Wybierz opcję powiązaną z poleceniem **Utwórz kopię**, **Pomiń**lub Zastąp.
 
-   * **Utwórz kopię** — tworzy kopię pliku, w przypadku kolizji nazw.
-   * **Pomiń** — w przypadku kolizji nazw, nie może odzyskać pliku, co pozostawia oryginalnego pliku.
-   * **Zastąp** — w przypadku kolizji nazw, zastępuje istniejącą kopię pliku.
+   * **Utwórz kopię** — tworzy kopię pliku w przypadku kolizji nazw.
+   * **Pomiń** — Jeśli występuje kolizja nazw, program nie odzyska pliku, który opuszcza oryginalny plik.
+   * **Zastąp** — Jeśli występuje kolizja nazw, zastępuje istniejącą kopię pliku.
 
-     Wybierz odpowiednią opcję, aby **Przywróć zabezpieczenia**. Można zastosować ustawienia zabezpieczeń komputera docelowego, gdzie są odzyskiwane dane lub ustawienia zabezpieczeń, które były stosowane do produktu w momencie utworzenia punktu odzyskiwania.
+     Wybierz odpowiednią opcję, aby **przywrócić zabezpieczenia**. Można zastosować ustawienia zabezpieczeń komputera docelowego, na którym dane są odzyskiwane, lub ustawienia zabezpieczeń, które mają zastosowanie do produktu w momencie utworzenia punktu odzyskiwania.
 
-     Określenie czy **powiadomień** jest wysyłana, po pomyślnym zakończeniu odzyskiwania.
+     Określ, czy po pomyślnym zakończeniu odzyskiwania zostanie wysłane **powiadomienie** .
 
-     ![Zewnętrzny program DPM odzyskiwania powiadomienia](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-notifications.png)
-9. **Podsumowanie** ekranu zawiera listę opcji wybranych do tej pory. Po kliknięciu **"Odzyskiwanie"** , dane są odzyskiwane do lokalizacji odpowiednie w środowisku lokalnym.
+     ![Powiadomienia o zewnętrznym odzyskiwaniu programu DPM](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-notifications.png)
+9. Ekran **Podsumowanie** zawiera listę opcji wybranych do tej pory. Po kliknięciu przycisku **Odzyskaj**dane zostaną odzyskane do odpowiedniej lokalizacji lokalnej.
 
     ![Podsumowanie opcji odzyskiwania zewnętrznego programu DPM](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-options-summary.png)
 
    > [!NOTE]
-   > Zadania odzyskiwania mogą być monitorowane w **monitorowanie** kartę usługi Azure Backup Server.
+   > Zadanie odzyskiwania można monitorować na karcie **monitorowanie** Azure Backup Server.
    >
    >
 
     ![Monitorowanie odzyskiwania](./media/backup-azure-alternate-dpm-server/monitoring-recovery.png)
-10. Możesz kliknąć pozycję **wyczyść zewnętrzny program DPM** na **odzyskiwania** kartę serwer DPM, aby usunąć widok zewnętrznego serwera programu DPM.
+10. Możesz kliknąć przycisk **Wyczyść zewnętrzny program DPM** na karcie **odzyskiwanie** serwera programu DPM, aby usunąć widok zewnętrznego serwera DPM.
 
     ![Wyczyść zewnętrzny program DPM](./media/backup-azure-alternate-dpm-server/clear-external-dpm.png)
 
-## <a name="troubleshooting-error-messages"></a>Rozwiązywanie problemów z komunikatów o błędach
+## <a name="troubleshooting-error-messages"></a>Rozwiązywanie problemów dotyczących komunikatów o błędach
 | Nie. | Komunikat o błędzie | Kroki rozwiązywania problemów |
 |:---:|:--- |:--- |
-| 1. |Ten serwer nie jest zarejestrowany w magazynie określonym przez poświadczenia magazynu. |**Przyczyna:** Ten błąd jest wyświetlany, gdy plik poświadczeń magazynu, które są wybrane nie należy do magazynu usługi Recovery Services, skojarzone z usługi Azure Backup Server, na którym jest podejmowana próba odzyskania. <br> **Rozwiązanie:** Pobierz plik poświadczeń magazynu z magazynu usługi Recovery Services, w której jest zarejestrowana serwera usługi Azure Backup. |
-| 2. |Dane możliwe do odzyskania są niedostępne lub wybrany serwer nie jest serwerem DPM. |**Przyczyna:** Istnieją nie inne serwery kopia zapasowa Azure zarejestrowany w magazynie usługi Recovery Services lub serwery nie została jeszcze przesłana metadanych lub wybrany serwer nie jest usługi Azure Backup Server (przy użyciu systemu Windows Server lub klienta Windows). <br> **Rozwiązanie:** Jeśli istnieją inne serwery kopia zapasowa Azure zarejestrowanych w magazynie usługi Recovery Services, upewnij się, że zainstalowano najnowszą wersję agenta usługi Kopia zapasowa Azure. <br>Jeśli istnieją inne serwery kopia zapasowa Azure zarejestrowanych w magazynie usługi Recovery Services, poczekaj na dzień po zakończeniu instalacji, aby rozpocząć proces odzyskiwania. Nocne zadanie przekaże metadane dla wszystkich chronionych kopii zapasowych w chmurze. Dane będą dostępne do odzyskania. |
-| 3. |Żaden inny serwer DPM jest zarejestrowany w tym magazynie. |**Przyczyna:** Nie ma żadnych innych serwerów kopia zapasowa Azure, zarejestrowanych w magazynie, z którego są podejmowane próby odzyskiwania.<br>**Rozwiązanie:** Jeśli istnieją inne serwery kopia zapasowa Azure zarejestrowanych w magazynie usługi Recovery Services, upewnij się, że zainstalowano najnowszą wersję agenta usługi Kopia zapasowa Azure.<br>Jeśli istnieją inne serwery kopia zapasowa Azure zarejestrowanych w magazynie usługi Recovery Services, poczekaj na dzień po zakończeniu instalacji, aby rozpocząć proces odzyskiwania. Nocne zadanie przekazuje metadane dla wszystkich chronionych kopii zapasowych w chmurze. Dane będą dostępne do odzyskania. |
-| 4. |Podane hasło szyfrowania jest niezgodny z hasłem skojarzonym z następującym serwerem:  **\<nazwa serwera >** |**Przyczyna:** Hasło szyfrowania używany przy wysyłaniu szyfrowania danych, dane serwera Azure Backup, który jest odzyskiwany jest niezgodna z podane hasło szyfrowania. Agent nie może odszyfrować danych. Dlatego odzyskiwanie zakończy się niepowodzeniem.<br>**Rozwiązanie:** Podaj dokładnie tego samego hasła szyfrowania skojarzone z usługi Azure Backup Server, którego dane są odzyskiwane. |
+| 1. |Ten serwer nie jest zarejestrowany w magazynie określonym przez poświadczenia magazynu. |**Może** Ten błąd pojawia się, gdy wybrany plik poświadczeń magazynu nie należy do magazynu Recovery Services skojarzonego z Azure Backup Server, na którym podjęto próbę odzyskania. <br> **Tłumaczenia** Pobierz plik poświadczeń magazynu z magazynu Recovery Services, do którego zarejestrowano Azure Backup Server. |
+| 2. |Odzyskiwalne dane nie są dostępne lub wybrany serwer nie jest serwerem DPM. |**Może** Nie ma innych serwerów Azure Backup zarejestrowanych w magazynie Recovery Services lub serwery nie przesłały jeszcze metadanych lub wybrany serwer nie jest Azure Backup Serverem (przy użyciu systemu Windows Server lub klienta systemu Windows). <br> **Tłumaczenia** Jeśli istnieją inne Azure Backup serwery zarejestrowane w magazynie Recovery Services, upewnij się, że jest zainstalowany najnowszy Agent Azure Backup. <br>Jeśli istnieją inne Azure Backup serwery zarejestrowane w magazynie Recovery Services, poczekaj na dzień po zakończeniu instalacji, aby rozpocząć proces odzyskiwania. Nocne zadanie przekaże metadane dla wszystkich chronionych kopii zapasowych do chmury. Dane będą dostępne do odzyskania. |
+| 3. |Żaden inny serwer DPM nie jest zarejestrowany w tym magazynie. |**Może** Nie ma innych serwerów Azure Backup zarejestrowanych w magazynie, z którego jest podejmowana próba odzyskania.<br>**Tłumaczenia** Jeśli istnieją inne Azure Backup serwery zarejestrowane w magazynie Recovery Services, upewnij się, że jest zainstalowany najnowszy Agent Azure Backup.<br>Jeśli istnieją inne Azure Backup serwery zarejestrowane w magazynie Recovery Services, poczekaj na dzień po zakończeniu instalacji, aby rozpocząć proces odzyskiwania. Nocne zadanie przekazuje metadane dla wszystkich chronionych kopii zapasowych do chmury. Dane będą dostępne do odzyskania. |
+| 4. |Podane hasło szyfrowania nie jest zgodne z hasłem skojarzonym z następującym serwerem:  **\<nazwa serwera >** |**Może** Hasło szyfrowania używane w procesie szyfrowania danych z odzyskiwanych danych Azure Backup Server nie jest zgodne z podanym hasłem szyfrowania. Agent nie może odszyfrować danych. W związku z tym odzyskiwanie kończy się niepowodzeniem.<br>**Tłumaczenia** Podaj dokładnie to samo hasło szyfrowania, które jest skojarzone z Azure Backup Server którego dane są odzyskiwane. |
 
 ## <a name="next-steps"></a>Następne kroki
 
-Przeczytaj inne — często zadawane pytania:
+Zapoznaj się z innymi często zadawanymi NZP:
 
-- [Często zadawane pytania dotyczące](backup-azure-vm-backup-faq.md) dotyczące kopii zapasowych maszyn wirtualnych platformy Azure
-- [Często zadawane pytania dotyczące](backup-azure-file-folder-backup-faq.md) dotyczące agenta usługi Azure Backup
+- [Często zadawane pytania](backup-azure-vm-backup-faq.md) dotyczące kopii zapasowych maszyn wirtualnych platformy Azure
+- [Często zadawane pytania](backup-azure-file-folder-backup-faq.md) dotyczące agenta Azure Backup

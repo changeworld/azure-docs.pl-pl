@@ -1,6 +1,6 @@
 ---
-title: Planowanie zadań za pomocą usługi Azure IoT Hub (Node) | Dokumentacja firmy Microsoft
-description: Jak zaplanować zadanie usługi Azure IoT Hub do wywołania metody bezpośredniej na wielu urządzeniach. Przy użyciu zestawów SDK usługi Azure IoT dla środowiska Node.js aplikacji urządzenia symulowanego i app service, aby uruchomić zadanie.
+title: Planowanie zadań przy użyciu usługi Azure IoT Hub (węzeł) | Microsoft Docs
+description: Jak zaplanować zadanie IoT Hub platformy Azure w celu wywołania metody bezpośredniej na wielu urządzeniach. Za pomocą zestawów SDK usługi Azure IoT dla środowiska Node. js można zaimplementować aplikacje symulowanych urządzeń i aplikację usługi, aby uruchomić zadanie.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -9,80 +9,76 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 10/06/2017
-ms.openlocfilehash: af35a84c299544e43988547771ddce75fd71bd90
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a3a07f54d77577085951b2bccfa1213adef5b20d
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67065782"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68403919"
 ---
-# <a name="schedule-and-broadcast-jobs-node"></a>Planowanie i emitowanie zadań (Node)
+# <a name="schedule-and-broadcast-jobs-node"></a>Planowanie i emitowanie zadań (węzeł)
 
 [!INCLUDE [iot-hub-selector-schedule-jobs](../../includes/iot-hub-selector-schedule-jobs.md)]
 
-Usługa Azure IoT Hub to w pełni zarządzana usługa, która umożliwia aplikacji zaplecza utworzyć i śledzić zadania, które planować i aktualizowania milionów urządzeń.  Zadania mogą służyć do następujących czynności:
+Azure IoT Hub to w pełni zarządzana usługa, która umożliwia aplikacji zaplecza tworzenie i śledzenie zadań, które umożliwiają planowanie i aktualizowanie milionów urządzeń.  Zadania mogą służyć do wykonywania następujących czynności:
 
 * Aktualizowanie żądanych właściwości
-* Aktualizacji tagów
+* Aktualizowanie tagów
 * Wywoływanie metod bezpośrednich
 
-Model zadanie opakowuje jedną z następujących czynności i śledzi postęp wykonywania względem zbiór urządzeń, która jest zdefiniowana przez zapytanie w bliźniaczej reprezentacji urządzenia.  Na przykład aby wywołać metodę ponownego uruchomienia na 10 000 urządzeń, określonych przez zapytanie bliźniacza reprezentacja urządzenia i zaplanować w czasie przyszłych zadań można użyć aplikacji zaplecza. Tej aplikacji można śledzić postęp, zgodnie z każdego z tych urządzeń odbierania i wykonać metodę ponownego uruchomienia.
+Koncepcyjnie, zadanie otacza jedną z tych akcji i śledzi postęp wykonywania w odniesieniu do zestawu urządzeń, który jest zdefiniowany przez zapytanie o pojedyncze urządzenie.  Na przykład aplikacja zaplecza może użyć zadania do wywołania metody ponownego rozruchu na urządzeniach 10 000, określonych przez zapytanie o sznurki urządzenia i zaplanowane w przyszłości. Następnie aplikacja może śledzić postęp, ponieważ każdy z tych urządzeń otrzyma i wykona metodę ponownego uruchomienia.
 
-Dowiedz się więcej na temat każdego z tych możliwości w następujących artykułach:
+Dowiedz się więcej o każdej z tych funkcji w następujących artykułach:
 
-* Bliźniacza reprezentacja urządzenia i właściwości: [Wprowadzenie do bliźniaków urządzeń](iot-hub-node-node-twin-getstarted.md) i [samouczka: Jak korzystać z właściwości bliźniaczych reprezentacji urządzeń](tutorial-device-twins.md)
+* Sznurki i właściwości urządzenia: [Wprowadzenie do bliźniaczych reprezentacji urządzeń](iot-hub-node-node-twin-getstarted.md) i [samouczek: Jak korzystać z właściwości sznurka urządzenia](tutorial-device-twins.md)
 
-* Metody bezpośrednie: [Usługi IoT Hub developer guide - metod bezpośrednich](iot-hub-devguide-direct-methods.md) i [samouczek: metody bezpośrednie](quickstart-control-device-node.md)
+* Metody bezpośrednie: [Przewodnik dla deweloperów IoT Hub — bezpośrednie metody](iot-hub-devguide-direct-methods.md) i [Samouczek: metody bezpośrednie](quickstart-control-device-node.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Ten samouczek przedstawia sposób wykonania następujących czynności:
 
-* Tworzenie aplikacji symulowanego urządzenia środowiska Node.js, która ma bezpośrednie metody, która umożliwia **lockDoor**, który można wywoływać za pomocą zaplecza rozwiązania.
+* Utwórz aplikację symulowanego urządzenia w języku Node. js, która ma metodę bezpośrednią, która umożliwia **lockDoor**, która może być wywoływana przez zaplecze rozwiązania.
 
-* Tworzenie aplikacji konsolowej Node.js, która wywołuje **lockDoor** bezpośrednie metody w aplikacji symulowanego urządzenia za pomocą zadania i aktualizacje żądane właściwości przy użyciu zadania urządzeń.
+* Tworzenie aplikacji konsolowej środowiska Node. js, która wywołuje metodę **lockDoor** Direct w aplikacji symulowanego urządzenia przy użyciu zadania i aktualizuje odpowiednie właściwości przy użyciu zadania urządzenia.
 
-Na końcu tego samouczka będziesz mieć dwie aplikacje Node.js:
+Na końcu tego samouczka masz dwie aplikacje Node. js:
 
-* **simDevice.js**, który nawiązuje połączenie z Centrum IoT przy użyciu tożsamości urządzenia i odbiera **lockDoor** bezpośrednie metody.
+* **simDevice. js**, który łączy się z Centrum IoT z tożsamością urządzenia i odbiera metodę Direct **lockDoor** .
 
-* **scheduleJobService.js**, która wywołuje metody bezpośredniej w symulowanej aplikacji urządzenia i aktualizacji bliźniaczej reprezentacji urządzenia żądane właściwości przy użyciu zadania.
+* **scheduleJobService. js**, który wywołuje metodę bezpośrednią w aplikacji symulowanego urządzenia i aktualizuje odpowiednie właściwości sznurka urządzenia przy użyciu zadania.
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
-* Środowisko node.js w wersji 10.0.x lub nowszej [przygotowywanie środowiska projektowego](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) opisano, jak zainstalować środowisko Node.js na potrzeby tego samouczka w systemie Windows lub Linux.
+* Środowisko Node. js w wersji 10.0. x lub nowszej [przygotowanie środowiska programistycznego](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) zawiera opis sposobu instalowania platformy Node. js na potrzeby tego samouczka w systemie Windows lub Linux.
 
-* Aktywne konto platformy Azure. (Jeśli nie masz konta, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut.)
+* Aktywne konto platformy Azure. (Jeśli nie masz konta, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut).
 
 ## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>Pobieranie parametrów połączenia dla centrum IoT
-
-[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
-
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
 ## <a name="create-a-simulated-device-app"></a>Tworzenie aplikacji symulowanego urządzenia
 
-W tej sekcji utworzysz aplikację konsoli środowiska Node.js, która reaguje na metodę bezpośrednią wywołaną przez chmurę, co powoduje wyzwolenie symulowanego **lockDoor** metody.
+W tej sekcji utworzysz aplikację konsolową środowiska Node. js, która reaguje na bezpośrednią metodę wywoływaną przez chmurę, która wyzwala symulowaną metodę **lockDoor** .
 
-1. Utwórz nowy pusty folder o nazwie **simDevice**.  W **simDevice** folderze utwórz plik Package.JSON, uruchamiając następujące polecenie w wierszu polecenia.  Zaakceptuj wszystkie ustawienia domyślne:
+1. Utwórz nowy pusty folder o nazwie **simDevice**.  W folderze **simDevice** Utwórz plik Package. JSON przy użyciu następującego polecenia z poziomu wiersza polecenia.  Zaakceptuj wszystkie ustawienia domyślne:
 
    ```
    npm init
    ```
 
-2. W wierszu polecenia w **simDevice** folder, uruchom następujące polecenie, aby zainstalować **azure-iot-device** pakiet zestawu SDK urządzenia i **azure-iot-device-mqtt** pakietu:
+2. W wierszu polecenia w folderze **simDevice** Uruchom następujące polecenie, aby zainstalować pakiet zestawu SDK urządzenia **Azure-IoT-Device** i pakiet **Azure-IoT-Device-MQTT** :
    
    ```
    npm install azure-iot-device azure-iot-device-mqtt --save
    ```
 
-3. Za pomocą edytora tekstu Utwórz nowy **simDevice.js** w pliku **simDevice** folderu.
+3. Za pomocą edytora tekstów Utwórz nowy plik **simDevice. js** w folderze **simDevice** .
 
-4. Dodaj następujące "Wymagaj" instrukcji na początku **simDevice.js** pliku:
+4. Dodaj następujące instrukcje "Wymagaj" na początku pliku **simDevice. js** :
    
     ```
     'use strict';
@@ -98,7 +94,7 @@ W tej sekcji utworzysz aplikację konsoli środowiska Node.js, która reaguje na
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
 
-6. Dodaj następującą funkcję, aby obsłużyć **lockDoor** metody.
+6. Dodaj następującą funkcję, aby obsłużyć metodę **lockDoor** .
    
     ```
     var onLockDoor = function(request, response) {
@@ -116,7 +112,7 @@ W tej sekcji utworzysz aplikację konsoli środowiska Node.js, która reaguje na
     };
     ```
 
-7. Dodaj następujący kod, aby zarejestrować program obsługi dla **lockDoor** metody.
+7. Dodaj następujący kod, aby zarejestrować procedurę obsługi dla metody **lockDoor** .
 
    ```
    client.open(function(err) {
@@ -129,31 +125,37 @@ W tej sekcji utworzysz aplikację konsoli środowiska Node.js, która reaguje na
    });
    ```
 
-8. Zapisz i Zamknij **simDevice.js** pliku.
+8. Zapisz i zamknij plik **simDevice. js** .
 
 > [!NOTE]
-> Dla uproszczenia ten samouczek nie zawiera opisu wdrożenia żadnych zasad ponawiania. W kodzie produkcyjnym należy wdrożyć zasady ponawiania (np. wycofywanie wykładnicze) zgodnie z sugestią podaną w artykule [obsługi błędów przejściowych](/azure/architecture/best-practices/transient-faults).
+> Dla uproszczenia ten samouczek nie zawiera opisu wdrożenia żadnych zasad ponawiania. W kodzie produkcyjnym należy wdrożyć zasady ponawiania (np. wykładniczy wycofywania), zgodnie z opisem w artykule, [obsłudze błędów przejściowych](/azure/architecture/best-practices/transient-faults).
 >
 
-## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>Planowanie zadań do wywoływania metody bezpośredniej i aktualizowanie właściwości bliźniaczej reprezentacji urządzenia
+## <a name="get-the-iot-hub-connection-string"></a>Pobierz parametry połączenia usługi IoT Hub
 
-W tej sekcji utworzysz aplikację konsoli środowiska Node.js, która inicjuje zdalnej **lockDoor** na urządzeniu przy użyciu metody bezpośredniej i aktualizowania właściwości bliźniaczej reprezentacji urządzenia.
+[!INCLUDE [iot-hub-howto-schedule-jobs-shared-access-policy-text](../../includes/iot-hub-howto-schedule-jobs-shared-access-policy-text.md)]
 
-1. Utwórz nowy pusty folder o nazwie **scheduleJobService**.  W **scheduleJobService** folderze utwórz plik Package.JSON, uruchamiając następujące polecenie w wierszu polecenia.  Zaakceptuj wszystkie ustawienia domyślne:
+[!INCLUDE [iot-hub-include-find-registryrw-connection-string](../../includes/iot-hub-include-find-registryrw-connection-string.md)]
+
+## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>Planowanie zadań związanych z wywoływaniem metody bezpośredniej i aktualizowaniem właściwości sznurka urządzenia
+
+W tej sekcji utworzysz aplikację konsolową środowiska Node. js, która inicjuje zdalne **lockDoor** na urządzeniu przy użyciu metody Direct i aktualizuje właściwości sznurka urządzenia.
+
+1. Utwórz nowy pusty folder o nazwie **scheduleJobService**.  W folderze **scheduleJobService** Utwórz plik Package. JSON przy użyciu następującego polecenia z poziomu wiersza polecenia.  Zaakceptuj wszystkie ustawienia domyślne:
 
     ```
     npm init
     ```
 
-2. W wierszu polecenia w **scheduleJobService** folder, uruchom następujące polecenie, aby zainstalować **azure-iothub** pakiet zestawu SDK urządzenia i **azure-iot-device-mqtt** pakiet:
+2. W wierszu polecenia w folderze **scheduleJobService** Uruchom następujące polecenie, aby zainstalować pakiet zestawu SDK urządzenia **Azure-iothub** i pakiet **Azure-IoT-Device-MQTT** :
    
     ```
     npm install azure-iothub uuid --save
     ```
 
-3. Za pomocą edytora tekstu Utwórz nowy **scheduleJobService.js** w pliku **scheduleJobService** folderu.
+3. Za pomocą edytora tekstów Utwórz nowy plik **scheduleJobService. js** w folderze **scheduleJobService** .
 
-4. Dodaj następujące "Wymagaj" instrukcji na początku **dmpatterns_gscheduleJobServiceetstarted_service.js** pliku:
+4. Dodaj następujące instrukcje "Wymagaj" na początku pliku **dmpatterns_gscheduleJobServiceetstarted_service. js** :
    
     ```
     'use strict';
@@ -172,7 +174,7 @@ W tej sekcji utworzysz aplikację konsoli środowiska Node.js, która inicjuje z
     var jobClient = JobClient.fromConnectionString(connectionString);
     ```
 
-6. Dodaj następującą funkcję, która służy do monitorowania wykonywania zadania:
+6. Dodaj następującą funkcję, która jest używana do monitorowania wykonywania zadania:
    
     ```
     function monitorJob (jobId, callback) {
@@ -192,7 +194,7 @@ W tej sekcji utworzysz aplikację konsoli środowiska Node.js, która inicjuje z
     }
     ```
 
-7. Dodaj następujący kod, aby zaplanować zadanie, które wywołuje metodę urządzenia:
+7. Dodaj następujący kod, aby zaplanować zadanie wywołujące metodę urządzenia:
    
     ```
     var methodParams = {
@@ -223,7 +225,7 @@ W tej sekcji utworzysz aplikację konsoli środowiska Node.js, która inicjuje z
     });
     ```
 
-8. Dodaj następujący kod, aby zaplanować zadanie, które można zaktualizować bliźniaczej reprezentacji urządzenia:
+8. Dodaj następujący kod, aby zaplanować zadanie aktualizowania sznurka urządzenia:
    
     ```
     var twinPatch = {
@@ -259,30 +261,30 @@ W tej sekcji utworzysz aplikację konsoli środowiska Node.js, która inicjuje z
     });
     ```
 
-9. Zapisz i Zamknij **scheduleJobService.js** pliku.
+9. Zapisz i zamknij plik **scheduleJobService. js** .
 
 ## <a name="run-the-applications"></a>Uruchamianie aplikacji
 
 Teraz można uruchomić aplikacje.
 
-1. W wierszu polecenia w **simDevice** folder, uruchom następujące polecenie, aby rozpocząć nasłuchiwanie metody bezpośredniej ponowny rozruch.
+1. W wierszu polecenia w folderze **simDevice** Uruchom następujące polecenie, aby rozpocząć nasłuchiwanie metody bezpośredniego ponownego uruchomienia.
    
     ```
     node simDevice.js
     ```
 
-2. W wierszu polecenia w **scheduleJobService** folder, uruchom następujące polecenie, aby wyzwolić zadania, aby zablokować drzwi biblioteki i zaktualizować bliźniaczej reprezentacji
+2. W wierszu polecenia w folderze **scheduleJobService** Uruchom następujące polecenie, aby wyzwolić zadania w celu zablokowania drzwi i zaktualizowania sznurka
    
     ```
     node scheduleJobService.js
     ```
 
-3. Zostanie wyświetlona odpowiedź urządzenia, do metody bezpośredniej w konsoli.
+3. Odpowiedź urządzenia na metodę bezpośrednią w konsoli programu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku użyto zadania można zaplanować metody bezpośredniej do urządzenia i aktualizację właściwości bliźniaczej reprezentacji urządzenia.
+W tym samouczku użyto zadania do zaplanowania metody bezpośredniej dla urządzenia i aktualizacji właściwości sznurka urządzenia.
 
-Aby kontynuować wprowadzenie do usługi IoT Hub i wzorców zarządzania urządzeniami, takich jak zdalne za pośrednictwem aktualizacji oprogramowania układowego air, zobacz [samouczka: Jak zaktualizować oprogramowanie układowe](tutorial-firmware-update.md).
+Aby nadal zacząć korzystać z wzorców IoT Hub i zarządzania urządzeniami, takich jak Zdalna aktualizacja oprogramowania układowego, [zobacz Samouczek: Jak wykonać aktualizację](tutorial-firmware-update.md)oprogramowania układowego.
 
-Aby kontynuować wprowadzenie do usługi IoT Hub, zobacz [wprowadzenie do usługi Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md).
+Aby kontynuować wprowadzenie do IoT Hub, zobacz [wprowadzenie do Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md).

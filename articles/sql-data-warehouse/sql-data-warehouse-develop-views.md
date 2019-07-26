@@ -1,8 +1,8 @@
 ---
-title: Korzystanie z widoków języka T-SQL w usłudze Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
-description: Porady dotyczące Korzystanie z widoków języka T-SQL w usłudze Azure SQL Data Warehouse związane z opracowywaniem rozwiązań.
+title: Korzystanie z widoków T-SQL w Azure SQL Data Warehouse | Microsoft Docs
+description: Porady dotyczące korzystania z widoków T-SQL w Azure SQL Data Warehouse tworzenia rozwiązań.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,34 +10,34 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: e8d516cfd764f947bd2fe7fc25f6394c313c0d9a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 8a770e66120e69271744942899186ece39b2a3c3
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595495"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479527"
 ---
-# <a name="views-in-azure-sql-data-warehouse"></a>Widoki w usłudze Azure SQL Data Warehouse
-Porady dotyczące Korzystanie z widoków języka T-SQL w usłudze Azure SQL Data Warehouse związane z opracowywaniem rozwiązań. 
+# <a name="views-in-azure-sql-data-warehouse"></a>Widoki w Azure SQL Data Warehouse
+Porady dotyczące korzystania z widoków T-SQL w Azure SQL Data Warehouse tworzenia rozwiązań. 
 
 ## <a name="why-use-views"></a>Dlaczego warto używać widoków?
-Widoki można na wiele różnych sposobów poprawy jakości rozwiązania.  W tym artykule przedstawiono kilka przykładów sposobu wzbogacić swoje rozwiązanie przy użyciu widoków, a także ograniczenia, które należy wziąć pod uwagę.
+Widoki mogą być używane na wiele różnych sposobów ulepszania jakości rozwiązania.  W tym artykule przedstawiono kilka przykładów wzbogacania rozwiązania o widoki, a także ograniczenia, które należy wziąć pod uwagę.
 
 
 > [!IMPORTANT]
-> Zobacz nowej składni zmaterializowany widok w [tworzenie ZMATERIALIZOWANEGO WIDOKU AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest).  Aby uzyskać więcej informacji, zobacz [informacje o wersji](/azure/sql-data-warehouse/release-notes-10-0-10106-0).
+> Zapoznaj się z nową składnią widoku z materiałami w obszarze [Utwórz materiałowy widok jako wybrany](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest).  Aby uzyskać więcej informacji, zobacz [Informacje o wersji](/azure/sql-data-warehouse/release-notes-10-0-10106-0).
 >
 
 
 > [!NOTE]
-> W tym artykule nie omówiono składni, aby utworzyć widok. Aby uzyskać więcej informacji, zobacz [CREATE VIEW](/sql/t-sql/statements/create-view-transact-sql) dokumentacji.
+> Składnia instrukcji CREATE VIEW nie została omówiona w tym artykule. Aby uzyskać więcej informacji, zobacz dokumentację [tworzenia widoku](/sql/t-sql/statements/create-view-transact-sql) .
 > 
 
 ## <a name="architectural-abstraction"></a>Abstrakcja architektury
 
-Typowym wzorcem aplikacji jest ponownie utworzyć tabel za pomocą utworzyć TABLE AS SELECT (CTAS) następuje zmiana nazwy wzorzec jednoczesnym ładowania danych obiektu.
+Typowym wzorcem aplikacji jest ponowne tworzenie tabel przy użyciu CREATE TABLE jako SELECT (CTAS), a następnie zmiany nazwy wzorca obiektu podczas ładowania danych.
 
-Poniższy przykład dodaje nowe rekordy do wymiaru daty. Zwróć uwagę, jak nową tabelę DimDate_New, jest pierwszy tworzone i następnie zmieniona na zastępowanie wersji oryginalnej tabeli.
+Poniższy przykład dodaje nowe rekordy dat do wymiaru daty. Zwróć uwagę, jak nowa tabela, DimDate_New, została najpierw utworzona, a następnie zmieniono jej nazwę, aby zastąpić oryginalną wersję tabeli.
 
 ```sql
 CREATE TABLE dbo.DimDate_New
@@ -57,19 +57,19 @@ RENAME OBJECT DimDate_New TO DimDate;
 
 ```
 
-Jednak takie podejście może spowodować tabel znajdujących się i znika z punktu widzenia użytkownika, a także "Tabela nie istnieje" komunikaty o błędach. Widoki może służyć do udzielania z warstwą prezentacji spójne przy jednoczesnym obiekty źródłowe zostały zmienione. Dzięki możliwości udzielania dostępu do danych za pośrednictwem widoków, użytkownicy nie muszą wgląd w tabelach źródłowych. Ta warstwa zapewnia spójne środowisko użytkownika, mimo że zapewnienie, że magazyn danych w projektantach można rozwijać modelu danych. Możliwości rozwój tabel podstawowych oznacza, że projektanci mogą używać instrukcji CTAS, aby zmaksymalizować wydajność podczas procesu ładowania danych.   
+Jednak takie podejście może spowodować, że tabele pojawiają się i znikają z widoku użytkownika, a także "tabela nie istnieje". Widoki mogą służyć do zapewnienia użytkownikom spójnej warstwy prezentacji podczas zmiany nazwy obiektów bazowych. Zapewniając dostęp do danych za pomocą widoków, użytkownicy nie potrzebują wglądu w tabele źródłowe. Ta warstwa zapewnia spójne środowisko użytkownika, a jednocześnie zapewnia, że projektanci magazynu danych mogą rozwijać model danych. Możliwość rozwijania tabel bazowych oznacza, że projektanci mogą używać CTAS do maksymalizowania wydajności podczas procesu ładowania danych.   
 
 ## <a name="performance-optimization"></a>Optymalizacja wydajności
-Widoki być wykorzystywane w taki sposób, aby wymusić zoptymalizowane pod kątem wydajności sprzężenia między tabelami. Na przykład widoku można zastosować klucza dystrybucji nadmiarowe jako część przyłączany kryteria, aby zminimalizować przenoszenia danych. Kolejną korzyścią wynikającą z widoku można wymusić użytego zapytania lub przyłączany wskazówki. Korzystanie z widoków w ten sposób gwarantuje sprzężeń są zawsze wykonywane w sposób optymalny, unikając konieczności użytkownikom na zapamiętywanie poprawne konstrukcji dla ich sprzężeń.
+Widoków można także użyć do wymuszania przełączeń zoptymalizowanych pod kątem wydajności między tabelami. Na przykład widok może zawierać nadmiarowy klucz dystrybucji jako część kryteriów sprzężenia, aby zminimalizować przenoszenie danych. Inną zaletą widoku może być wymuszenie konkretnej kwerendy lub dołączenia wskazówki. Użycie widoków w ten sposób gwarantuje, że sprzężenia są zawsze wykonywane w optymalny sposób, unikając potrzeb użytkowników do zapamiętania odpowiedniej konstrukcji sprzężeń.
 
 ## <a name="limitations"></a>Ograniczenia
-Widoki w usłudze SQL Data Warehouse są przechowywane jako tylko metadane. W związku z tym nie dostępne są następujące opcje:
+Widoki w SQL Data Warehouse są przechowywane jako metadane. W związku z tym następujące opcje są niedostępne:
 
-* Nie ma żadnej opcji powiązanie schematu
-* Nie można zaktualizować tabel podstawowych za pośrednictwem widoku
-* Nie można utworzyć widoków z użyciem tabele tymczasowe
-* Nie jest obsługiwane dla rozwiń / wskazówki NOEXPAND
-* Istnieją nie widoków indeksowanych w usłudze SQL Data Warehouse
+* Brak opcji powiązania schematu
+* Nie można zaktualizować tabel bazowych w widoku
+* Nie można tworzyć widoków za pośrednictwem tabel tymczasowych
+* Nie ma obsługi wskazówek rozwiń/NOEXPAND
+* Brak widoków indeksowanych w SQL Data Warehouse
 
 ## <a name="next-steps"></a>Następne kroki
 Więcej porad programistycznych znajdziesz w artykule [Omówienie programowania w usłudze SQL Data Warehouse](sql-data-warehouse-overview-develop.md).

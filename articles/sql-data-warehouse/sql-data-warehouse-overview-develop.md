@@ -1,8 +1,8 @@
 ---
-title: Zasoby używane do tworzenia magazynu danych na platformie Azure | Dokumentacja firmy Microsoft
-description: Pojęcia dotyczące programowania, decyzji projektowych, zalecenia i technik kodowania dla usługi SQL Data Warehouse.
+title: Zasoby służące do tworzenia magazynu danych na platformie Azure | Microsoft Docs
+description: Koncepcje dotyczące programowania, decyzje projektowe, zalecenia i techniki kodowania dla SQL Data Warehouse.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,43 +10,43 @@ ms.subservice: development
 ms.date: 08/29/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 613bcb05dab993989a2ae00b71fef95794953ab8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a78d78618a4cd9bf8d2aaebbd0c0da13697549bc
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65850731"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479471"
 ---
-# <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a>Decyzje dotyczące projektu i technik kodowania dla usługi SQL Data Warehouse
-Zapoznaj się za pośrednictwem tych artykuły dotyczące programowania, aby lepiej zrozumieć kluczowych decyzji projektowych, zalecenia i technik kodowania dla usługi SQL Data Warehouse.
+# <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a>Decyzje projektowe i techniki kodowania dla SQL Data Warehouse
+Zapoznaj się z tymi artykułami programistycznymi, aby lepiej zrozumieć najważniejsze decyzje dotyczące projektowania, zalecenia i techniki kodowania dla SQL Data Warehouse.
 
-## <a name="key-design-decisions"></a>Kluczowych decyzji projektowych
-Następujące artykuły, wyróżnij pojęć i decyzje projektowe dotyczące tworzenia magazynu danych rozproszonych przy użyciu SQL Data Warehouse:
+## <a name="key-design-decisions"></a>Najważniejsze decyzje projektowe
+W poniższych artykułach omówiono koncepcje i decyzje projektowe dotyczące tworzenia rozproszonego magazynu danych przy użyciu SQL Data Warehouse:
 
-* [Połączenia][connections]
-* [Współbieżność][concurrency]
-* [Transakcje][transactions]
-* [schematy definiowane przez użytkownika][user-defined schemas]
-* [dystrybucji tabel][table distribution]
-* [indeksy tabel][table indexes]
-* [Partycje tabel][table partitions]
+* [Licznik][connections]
+* [współbieżności][concurrency]
+* [Akcja][transactions]
+* [schematy zdefiniowane przez użytkownika][user-defined schemas]
+* [Dystrybucja tabel][table distribution]
+* [indeksy tabeli][table indexes]
+* [partycje tabeli][table partitions]
 * [CTAS][CTAS]
 * [statystyki][statistics]
 
-## <a name="development-recommendations-and-coding-techniques"></a>Zalecenia dotyczące rozwoju i technik kodowania
-Te artykuły wyróżnienia określonych technik kodowania, wskazówki i zalecenia dotyczące tworzenia usługi SQL Data Warehouse:
+## <a name="development-recommendations-and-coding-techniques"></a>Zalecenia dotyczące programowania i techniki kodowania
+W tych artykułach wyróżniono konkretne techniki kodowania, porady i zalecenia dotyczące tworzenia SQL Data Warehouse:
 
-* [Procedury składowane][stored procedures]
-* [labels][labels]
+* [procedury składowane][stored procedures]
+* [Etykieta][labels]
 * [Widoki][views]
-* [Tabele tymczasowe][temporary tables]
-* [dynamic SQL][dynamic SQL]
-* [tworzenie pętli][looping]
+* [tabele tymczasowe][temporary tables]
+* [dynamiczny SQL][dynamic SQL]
+* [pętli][looping]
 * [Grupuj według opcji][group by options]
-* [Przypisanie zmiennej][variable assignment]
+* [przypisanie zmiennej][variable assignment]
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacje, zobacz [instrukcje SQL Data Warehouse T-SQL](sql-data-warehouse-reference-tsql-statements.md).
+## <a name="next-steps"></a>Następne kroki
+Aby uzyskać więcej informacji, zobacz [SQL Data Warehouse instrukcji języka T-SQL](sql-data-warehouse-reference-tsql-statements.md).
 
 <!--Image references-->
 

@@ -1,114 +1,109 @@
 ---
-title: Logowania środowisk przy użyciu usługi Azure AD Identity Protection | Dokumentacja firmy Microsoft
-description: Zawiera omówienie środowiska użytkownika, gdy Identity Protection zawiera skorygowane lub rozwiązane przez użytkownika lub uwierzytelnianie wieloskładnikowe jest wymagany przez zasady.
+title: Środowisko logowania za pomocą Azure AD Identity Protection | Microsoft Docs
+description: Zawiera przegląd środowiska użytkownika w przypadku, gdy Ochrona tożsamości została ograniczona lub skorygowana przez użytkownika lub gdy zasady wymagają uwierzytelniania wieloskładnikowego.
 services: active-directory
-keywords: Usługa Azure active directory identity protection odnajdywania aplikacji w chmurze, zarządzanie aplikacji, zabezpieczenia, ryzyka, poziom ryzyka, luk w zabezpieczeniach, zasady zabezpieczeń
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: de5bf637-75a7-4104-b6d8-03686372a319
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 449f808e98c4e0db2972071e160f5335153a88f2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1e513027eed44ec7649f41f8786882aed8511bc6
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60295298"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335494"
 ---
-# <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Środowisko logowania za pomocą usługi Azure AD Identity Protection
-Za pomocą usługi Azure Active Directory Identity Protection możesz wykonywać następujące czynności:
+# <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Środowisko logowania za pomocą Azure AD Identity Protection
 
-* Wymagaj od użytkowników rejestracji do uwierzytelniania wieloskładnikowego
-* ryzykowne logowania i użytkowników ze złamanymi zabezpieczeniami
+Za pomocą Azure Active Directory Identity Protection można:
 
-Odpowiedzi systemu na te problemy, ma wpływ na środowisko logowania dla użytkownika, ponieważ bezpośrednio logowania, podając nazwę użytkownika i hasło nie będzie możliwe już. Dodatkowe kroki są wymagane do bezpiecznego Pobierz użytkownika do firmy.
+* Wymagaj, aby użytkownicy rejestrowali się w celu korzystania z uwierzytelniania wieloskładnikowego
+* Obsługa ryzykownych logowań i narażonych użytkowników
 
-Ten artykuł zawiera omówienie środowiska logowania dla użytkownika, dla wszystkich przypadków, które mogą wystąpić.
+Odpowiedź systemu na te problemy ma wpływ na środowisko logowania użytkownika, ponieważ nie będzie już możliwe logowanie się bezpośrednio przez podanie nazwy użytkownika i hasła. Dodatkowe kroki są wymagane, aby użytkownik mógł bezpiecznie zalogować się do firmy.
+
+Ten artykuł zawiera omówienie środowiska logowania użytkownika w przypadku wszystkich przypadków, które mogą wystąpić.
 
 **Multi-Factor Authentication**
 
-* Rejestracja usługi Multi-Factor authentication
+* Rejestracja w usłudze uwierzytelniania wieloskładnikowego
 
-**Zaloguj się na ryzyko**
+**Logowanie na ryzyko**
 
-* Ryzykowne logowania odzyskiwania
-* Ryzykowne logowanie zablokowane
-* Rejestracja usługi Multi-Factor authentication podczas ryzykowne logowania
+* Ryzykowne odzyskiwanie do logowania
+* Ryzykowne logowanie zostało zablokowane
+* Rejestracja w usłudze uwierzytelniania wieloskładnikowego podczas ryzykownego logowania
 
-**Użytkownik na ryzyko**
+**Użytkownik narażony na ryzyko**
 
-* Zagrożone konto odzyskiwania
-* Zagrożone Konto zablokowane
+* Odzyskiwanie naruszonego konta
+* Naruszone konto zostało zablokowane
 
-## <a name="multi-factor-authentication-registration"></a>Rejestracja usługi Multi-Factor authentication
-Najlepsze środowisko użytkownika w obu przypadkach przepływu odzyskiwania konta ze złamanymi zabezpieczeniami oraz ryzykownych przepływu logowania, jest, gdy użytkownik samodzielnie można odzyskać. Jeśli użytkownicy są zarejestrowani do uwierzytelniania wieloskładnikowego, mają numer telefonu skojarzony z ich konta, który może służyć do przekazywania wyzwaniach związanych z zabezpieczeniami. Nie pomocy technicznej lub administratorem zaangażowania jest niezbędny do odzyskania przed naruszeniem konta. W związku z tym ma zdecydowanie zaleca się zachęcić użytkowników zarejestrowany do uwierzytelniania wieloskładnikowego. 
+## <a name="multi-factor-authentication-registration"></a>Rejestracja w usłudze uwierzytelniania wieloskładnikowego
+Najlepszym środowiskiem użytkownika dla obu systemów, złamany przepływ odzyskiwania konta i przepływ ryzykownego logowania jest możliwość samozyskania sprawności. Jeśli użytkownicy są zarejestrowani do uwierzytelniania wieloskładnikowego, mają już przypisany numer telefonu do konta, za pomocą którego można zdać wyzwania w zakresie zabezpieczeń. W celu odzyskania naruszenia zabezpieczeń kont nie jest konieczne zaangażowanie pomocy technicznej ani administratora. Dlatego zdecydowanie zaleca się, aby użytkownicy byli zarejestrowani do uwierzytelniania wieloskładnikowego. 
 
-Administratorzy mogą ustawić zasady, która wymaga od użytkowników skonfigurować swoje konta w dodatkowej weryfikacji zabezpieczeń. Ta zasada umożliwia użytkownikom pominięcie rejestracji uwierzytelniania wieloskładnikowego przez okres do 14 dni. 14-dniowy okres prolongaty nie jest konfigurowany.
+Administratorzy mogą ustawić zasady, które wymagają od użytkowników skonfigurowania ich kont w celu przeprowadzenia dodatkowej weryfikacji zabezpieczeń. Te zasady umożliwiają użytkownikom pomijanie rejestracji w usłudze uwierzytelniania wieloskładnikowego przez maksymalnie 14 dni. Nie można skonfigurować 14-dniowego okresu prolongaty.
 
-**Rejestracja usługi Multi-Factor authentication ma trzy kroki:**
+**Rejestracja w usłudze wieloskładnikowe uwierzytelnianie obejmuje trzy kroki:**
 
-1. W pierwszym kroku użytkownik otrzymuje powiadomienie o konieczności Ustaw konto dla usługi Multi-Factor authentication. 
+1. W pierwszym kroku użytkownik otrzymuje powiadomienie o wymaganiu ustawienia konta do uwierzytelniania wieloskładnikowego. 
    
-    ![Korygowanie](./media/flows/140.png "korygowania")
-2. Aby skonfigurować uwierzytelnianie wieloskładnikowe, należy pozostawić wiedzieć, jak chcesz otrzymywać.
+    ![Korygowanie](./media/flows/140.png "Korygowanie")
+2. Aby skonfigurować uwierzytelnianie wieloskładnikowe, należy poinformować system o tym, jak chcesz się z Tobą skontaktować.
    
-    ![Korygowanie](./media/flows/141.png "korygowania")
-3. System przesyła żądanie do możesz i chcesz odpowiedzieć.
+    ![Korygowanie](./media/flows/141.png "Korygowanie")
+3. System przesyła wyzwanie do Ciebie i musisz odpowiedzieć.
    
-    ![Korygowanie](./media/flows/142.png "korygowania")
+    ![Korygowanie](./media/flows/142.png "Korygowanie")
 
-## <a name="risky-sign-in-recovery"></a>Ryzykowne logowania odzyskiwania
-Gdy administrator skonfigurował zasady ryzyka logowania, których to dotyczy użytkownicy są powiadamiani, gdy użytkownik próbuje zalogować. 
+## <a name="risky-sign-in-recovery"></a>Ryzykowne odzyskiwanie do logowania
+Gdy administrator skonfigurował zasady dotyczące ryzyka związanego z logowaniem, użytkownicy, których to dotyczy, są powiadamiani, gdy spróbują się zalogować. 
 
-**Ryzykowne logowania przepływ ma dwa kroki:** 
+**Przepływ ryzykownej rejestracji ma dwie czynności:** 
 
-1. Użytkownik jest informowany o wykryciu złośliwego coś nietypowego ich logowania, takie jak logowania z nowej lokalizacji, urządzenia lub aplikacji. 
+1. Użytkownik jest informowany o wykryciu nietypowej rejestracji, na przykład w przypadku logowania się z nowej lokalizacji, urządzenia lub aplikacji. 
    
-    ![Korygowanie](./media/flows/120.png "korygowania")
-2. Użytkownik musi potwierdzić swoją tożsamość przy rozwiązywaniu test zabezpieczeń. Jeśli użytkownik jest zarejestrowany do uwierzytelniania wieloskładnikowego, które są im potrzebne do zaokrąglenia przełączył kod zabezpieczeń pod numerem telefonu. Ponieważ jest to po prostu ryzykowne logowania i naruszeniu bezpieczeństwa konta, użytkownik nie ma konieczności zmiany hasła, w tym przepływie. 
+    ![Korygowanie](./media/flows/120.png "Korygowanie")
+2. Użytkownik musi potwierdzić swoją tożsamość, rozwiązując wyzwanie dotyczące zabezpieczeń. Jeśli użytkownik jest zarejestrowany na potrzeby uwierzytelniania wieloskładnikowego, muszą one obsłużyć kod zabezpieczający, aby obsłużyć numer telefonu. Ponieważ jest to tylko ryzykowne logowanie i nie jest to naruszone konto, użytkownik nie będzie musiał zmieniać hasła w tym przepływie. 
    
-    ![Korygowanie](./media/flows/121.png "korygowania")
+    ![Korygowanie](./media/flows/121.png "Korygowanie")
 
-## <a name="risky-sign-in-blocked"></a>Ryzykowne logowanie zablokowane
-Administratorzy mogą też ustawić zasady ryzyka logowania w celu zablokowania użytkowników podczas logowania się w zależności od poziomu zagrożenia. Aby uzyskać odblokowany, użytkownicy końcowi musisz skontaktować się z administratorem lub pomocą techniczną lub użytkownik podejmie próbę logowania z dobrze znanych lokalizacji lub urządzenia. Samodzielnie odzyskiwanie przez rozwiązania usługi Multi-Factor authentication nie jest opcją w tym przypadku.
+## <a name="risky-sign-in-blocked"></a>Ryzykowne logowanie zostało zablokowane
+Administratorzy mogą również ustawić zasady dotyczące ryzyka związanego z logowaniem, aby blokować użytkownikom logowanie się w zależności od poziomu ryzyka. Aby uzyskać odblokowywanie, użytkownicy końcowi muszą skontaktować się z administratorem lub pracownikiem działu pomocy technicznej lub mogą próbować zalogować się ze znajomej lokalizacji lub urządzenia. Samoobsługowe odzyskiwanie przez rozwiązanie uwierzytelniania wieloskładnikowego nie jest opcją w tym przypadku.
 
-![Korygowanie](./media/flows/200.png "korygowania")
+![Korygowanie](./media/flows/200.png "Korygowanie")
 
-## <a name="compromised-account-recovery"></a>Zagrożone konto odzyskiwania
-Po skonfigurowaniu zasad zabezpieczeń ryzyka użytkownika użytkowników, którzy spełniają użytkownika o podwyższonym ryzyku poziom określonym w zasadach (i dlatego są uznawane za naruszenia zabezpieczeń) musi przechodzić przez przepływ odzyskiwania naruszenia zabezpieczeń użytkownika, aby mógł się zalogować. 
+## <a name="compromised-account-recovery"></a>Odzyskiwanie naruszonego konta
+W przypadku skonfigurowania zasad zabezpieczeń dotyczących ryzyka związanego z użytkownikiem, którzy spełniają poziom ryzyka użytkownika określony w zasadach (w związku z czym zakłada się naruszenie zabezpieczeń), przed zalogowaniem się użytkownik musi przejść przez ten proces. 
 
-**Przepływ odzyskiwania naruszenia zabezpieczeń użytkownika ma trzy kroki:**
+**Przepływ odzyskiwania przez użytkownika narusza trzy kroki:**
 
-1. Użytkownik jest informowany, że jego zabezpieczenia konta są zagrożone ze względu na podejrzane działania lub wyciek poświadczeń.
+1. Użytkownik jest informowany, że zabezpieczenia konta są zagrożone ze względu na podejrzane działanie lub nieujawnione poświadczenia.
    
-    ![Korygowanie](./media/flows/101.png "korygowania")
-2. Użytkownik musi potwierdzić swoją tożsamość przy rozwiązywaniu test zabezpieczeń. Jeśli użytkownik jest zarejestrowany do uwierzytelniania Multi-Factor Authentication będą oni mogli samodzielnie odzyskiwać złamaniu. Muszą round spowodowanych kod zabezpieczeń pod numerem telefonu. 
+    ![Korygowanie](./media/flows/101.png "Korygowanie")
+2. Użytkownik musi potwierdzić swoją tożsamość, rozwiązując wyzwanie dotyczące zabezpieczeń. Jeśli użytkownik jest zarejestrowany na potrzeby uwierzytelniania wieloskładnikowego, może to spowodować naruszenie zabezpieczeń. Będą musieli zaokrąglić kod zabezpieczający do numeru telefonu. 
    
-   ![Korygowanie](./media/flows/110.png "korygowania")
-3. Ponadto użytkownik jest zmuszony do zmiany hasła, ponieważ ktoś inny mógł logować się do swojego konta. 
-   To środowisko zrzuty ekranu można znaleźć poniżej.
+   ![Korygowanie](./media/flows/110.png "Korygowanie")
+3. Na koniec użytkownik musi zmienić hasło, ponieważ ktoś inny mógł uzyskać dostęp do swojego konta. 
+   Zrzuty ekranu tego środowiska są poniżej.
    
-   ![Korygowanie](./media/flows/111.png "korygowania")
+   ![Korygowanie](./media/flows/111.png "Korygowanie")
 
-## <a name="compromised-account-blocked"></a>Zagrożone Konto zablokowane
-Aby uzyskać użytkownika, który został zablokowany przez zasady zabezpieczeń ryzyka użytkownika zostało odblokowane, użytkownik musi skontaktować się z administratorem lub pomocy technicznej. Samodzielnie odzyskiwanie przez rozwiązania usługi Multi-Factor authentication nie jest opcją w tym przypadku.
+## <a name="compromised-account-blocked"></a>Naruszone konto zostało zablokowane
+Aby uzyskać użytkownika, który został zablokowany przez zasady zabezpieczeń dotyczące ryzyka użytkownika, należy skontaktować się z administratorem lub pomocą techniczną. Samoobsługowe odzyskiwanie przez rozwiązanie uwierzytelniania wieloskładnikowego nie jest opcją w tym przypadku.
 
-![Korygowanie](./media/flows/104.png "korygowania")
+![Korygowanie](./media/flows/104.png "Korygowanie")
 
 ## <a name="reset-password"></a>Resetowanie hasła
-Po zablokowaniu użytkownicy ze złamanymi zabezpieczeniami Logowanie administratora można wygenerować hasło tymczasowe dla nich. Użytkownicy będą mieć zmiana hasła podczas następnego logowania.
+Jeśli użytkownicy z naruszonymi zabezpieczeniami nie zostaną zarejestrowani, administrator może wygenerować tymczasowe hasło dla nich. Użytkownicy będą musieli zmienić swoje hasło podczas kolejnego logowania.
 
-![Korygowanie](./media/flows/160.png "korygowania")
+![Korygowanie](./media/flows/160.png "Korygowanie")
 
 ## <a name="see-also"></a>Zobacz także
-* [Ochrona tożsamości w usłudze Azure Active Directory](../active-directory-identityprotection.md) 
 
+* [Ochrona tożsamości w usłudze Azure Active Directory](../active-directory-identityprotection.md) 

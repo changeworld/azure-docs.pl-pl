@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/08/2019
+ms.date: 07/04/2019
 ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e1b0ea2f808c982a587392edbe57eb75c532ee2
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 0198e5f5df3d25ef825248ff78db95326dc755c2
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324706"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477054"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Instrukcje: Wyświetlanie listy aplikacji w galerii aplikacji usługi Azure Active Directory
 
@@ -49,6 +49,8 @@ W tym artykule pokazano, jak wyświetlić listę aplikacji w galerii aplikacji u
 - W przypadku logowania jednokrotnego za pomocą hasła upewnij się, że aplikacja obsługuje uwierzytelnianie formularzy, aby można było utworzyć magazynowanie haseł w celu uzyskania obsługi logowania jednokrotnego zgodnie z oczekiwaniami.
 
 - W przypadku automatycznych żądań aprowizacji użytkowników aplikacja powinna być wyświetlana w galerii z włączoną funkcją logowania jednokrotnego przy użyciu protokołu SAML 2.0/WS-karmionego. Możesz poprosić o Logowanie jednokrotne i obsługę administracyjną użytkowników w portalu, jeśli nie zostały one jeszcze wymienione.
+
+- Potrzeba stałego konta do testowania z co najmniej 2 zarejestrowanymi użytkownikami.
 
 >[!NOTE]
 >Pracujemy z dużą liczbą żądań łącznika Standard scim, więc zatrzymamy nowe żądania w naszym portalu. Zaczekaj na żądania aż do dalszej uwagi. Przeprosinami z tym opóźnieniem i ewentualne niedogodności.
@@ -123,7 +125,7 @@ Poniżej znajduje się przepływ aplikacji żądanych przez klienta —
 
 ![Pokazuje przepływ aplikacji żądanych przez klienta](./media/howto-app-gallery-listing/customer-request.png)
 
-## <a name="timelines"></a>Osi czasu
+## <a name="timelines"></a>Osie czasu
 
 Oś czasu procesu tworzenia listy aplikacji SAML 2,0 lub WS-karmione w galerii to 7-10 dni robocze.
 

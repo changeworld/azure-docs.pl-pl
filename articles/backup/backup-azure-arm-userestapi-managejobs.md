@@ -1,29 +1,28 @@
 ---
-title: 'Usługa Azure Backup: Zadania tworzenia kopii zapasowej przy użyciu interfejsu API REST zarządzania'
-description: Zarządzanie kopiami zapasowymi i przywrócić zadania usługi Azure Backup przy użyciu interfejsu API REST
-services: backup
+title: 'Azure Backup: Zarządzanie zadaniami tworzenia kopii zapasowej przy użyciu interfejsu API REST'
+description: Zarządzanie zadaniami tworzenia kopii zapasowej i przywracania Azure Backup przy użyciu interfejsu API REST
 author: pvrk
 manager: shivamg
-keywords: INTERFEJS API REST; Kopia zapasowa maszyny Wirtualnej platformy Azure; Przywracanie maszyny Wirtualnej platformy Azure;
+keywords: INTERFEJS API REST; Kopia zapasowa maszyny wirtualnej platformy Azure; Przywracanie maszyny wirtualnej platformy Azure;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: pullabhk
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: eb8b7dc77d180eb56c2585e93e60a36742f6c84c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d497fc714e0ad5f61873d4c1f95ab35837532646
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60646626"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466772"
 ---
-# <a name="track-backup-and-restore-jobs-using-rest-api"></a>Śledź zadania tworzenia kopii zapasowych i przywracania przy użyciu interfejsu API REST
+# <a name="track-backup-and-restore-jobs-using-rest-api"></a>Śledzenie zadań tworzenia kopii zapasowej i przywracania za pomocą interfejsu API REST
 
-Usługa Azure Backup wyzwala zadania, w których są wykonywane w tle w różnych scenariuszach, takich jak wyzwolenie tworzenia kopii zapasowej, przywracanie operacji wyłączania kopii zapasowej. Te zadania można śledzić przy użyciu ich identyfikatorów.
+Azure Backup usługi wyzwalają zadania uruchamiane w tle w różnych scenariuszach, takich jak wyzwalanie kopii zapasowej, operacje przywracania i wyłączanie tworzenia kopii zapasowych. Te zadania mogą być śledzone przy użyciu ich identyfikatorów.
 
-## <a name="fetch-job-information-from-operations"></a>Pobierz informacje o zadaniu z operacji
+## <a name="fetch-job-information-from-operations"></a>Pobieranie informacji o zadaniu z operacji
 
-Operacja, taka jak wyzwolenie tworzenia kopii zapasowej zawsze zwraca identyfikator zadania. Na przykład: Ostatecznej odpowiedzi [wyzwalanie operacji interfejsu API REST tworzenia kopii zapasowej](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) jest następująca:
+Operacja, taka jak wyzwalanie kopii zapasowej, zawsze zwróci identyfikator zadania. Na przykład: Ostateczną odpowiedzią [operacji interfejsu API Rest tworzenia kopii zapasowej wyzwalacza](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) jest następująca:
 
 ```http
 {
@@ -39,7 +38,7 @@ Operacja, taka jak wyzwolenie tworzenia kopii zapasowej zawsze zwraca identyfika
 }
 ```
 
-Zadanie tworzenia kopii zapasowej maszyny Wirtualnej platformy Azure są identyfikowane przez pole "Identyfikator zadania" i mogą być śledzone, jak wspomniano wcześniej [tutaj](https://docs.microsoft.com/rest/api/backup/jobdetails/) przy użyciu prostego *UZYSKAĆ* żądania.
+Zadanie kopii zapasowej maszyny wirtualnej platformy Azure jest identyfikowane w polu "jobId" i może być śledzone w sposób opisany w [tym miejscu](https://docs.microsoft.com/rest/api/backup/jobdetails/) przy użyciu prostego żądania *Get* .
 
 ## <a name="tracking-the-job"></a>Śledzenie zadania
 
@@ -47,7 +46,7 @@ Zadanie tworzenia kopii zapasowej maszyny Wirtualnej platformy Azure są identyf
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}?api-version=2017-07-01
 ```
 
-`{jobName}` "JobId" został podany powyżej. Odpowiedź jest zawsze 200 OK z polem "status", wskazująca bieżący stan zadania. Gdy będzie "Completed" lub "CompletedWithWarnings" w sekcji "extendedInfo" wykazuje, szczegółowe informacje o zadaniu.
+`{jobName}` Jest to "jobId" wymienione powyżej. Odpowiedź jest zawsze 200 OK z polem "status" wskazującą bieżący stan zadania. Po "zakończeniu" lub "CompletedWithWarnings" w sekcji "extendedInfo" znajduje się więcej informacji o zadaniu.
 
 ### <a name="response"></a>Odpowiedź
 
@@ -57,7 +56,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 #### <a name="example-response"></a>Przykładowa odpowiedź
 
-Raz *UZYSKAĆ* identyfikatora URI jest przesyłany, zwrócił odpowiedź 200 (OK).
+Po przesłaniu *identyfikatora URI* zostanie zwrócona odpowiedź 200 (ok).
 
 ```http
 HTTP/1.1 200 OK

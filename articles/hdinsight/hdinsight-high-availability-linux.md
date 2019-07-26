@@ -1,185 +1,185 @@
 ---
-title: Wysoka dostępność dla platformy Hadoop — Azure HDInsight
-description: Dowiedz się, jak klastry HDInsight poprawy niezawodności i dostępności przy użyciu dodatkowego węzła głównego. Dowiedz się, jak ma to wpływ na usług Hadoop, takich jak Ambari i Hive, oraz jak połączyć osobno do każdego węzła głównego przy użyciu protokołu SSH.
+title: Wysoka dostępność dla usługi Hadoop — Azure HDInsight
+description: Dowiedz się, jak klastry usługi HDInsight zwiększają niezawodność i dostępność przy użyciu dodatkowego węzła głównego. Dowiedz się, w jaki sposób to wpływa na usługi Hadoop, takie jak Ambari i Hive, a także jak łączyć się indywidualnie z każdym węzłem głównym przy użyciu protokołu SSH.
 ms.reviewer: jasonh
 author: hrasheed-msft
-keywords: Wysoka dostępność usługi hadoop
+keywords: Wysoka dostępność usługi Hadoop
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: 6cb72730ef3dbef81e2b2c9bc1c5cfd3bbd88b65
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1828efb410849677e859d341e4e16e4f5d4ca681
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64704925"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405996"
 ---
-# <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Dostępność i niezawodność klastrów Apache Hadoop w HDInsight
+# <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Dostępność i niezawodność klastrów Apache Hadoop w usłudze HDInsight
 
-Klastry HDInsight zapewniają dwa węzły główne, aby zwiększyć dostępność i niezawodność usługi Apache Hadoop i uruchamianie zadań.
+Klastry usługi HDInsight zapewniają dwa węzły główne, aby zwiększyć dostępność i niezawodność usług Apache Hadoop i uruchomionych zadań.
 
-Hadoop osiąga wysoką dostępność i niezawodność przez replikowanie usług i danych w wielu węzłach w klastrze. Jednak standardowymi dystrybucjami platformy hadoop zwykle mają tylko jeden węzeł główny. Ewentualnej awarii jednego węzła głównego może spowodować nieoczekiwane zatrzymanie działania klastra. HDInsight dostarcza dwóch węzłów głównych, aby zwiększyć dostępność i niezawodność usługi Hadoop.
+Usługa Hadoop zapewnia wysoką dostępność i niezawodność dzięki replikacji usług i danych między wieloma węzłami w klastrze. Jednak standardowe dystrybucje usługi Hadoop zazwyczaj mają tylko jeden węzeł główny. Awaria pojedynczego węzła głównego może spowodować, że klaster przestanie działać. Usługa HDInsight oferuje dwie węzłów głównych, aby zwiększyć dostępność i niezawodność usługi Hadoop.
 
 ## <a name="availability-and-reliability-of-nodes"></a>Dostępność i niezawodność węzłów
 
-Węzły w klastrze usługi HDInsight są implementowane za pomocą usługi Azure Virtual Machines. W poniższych sekcjach omówiono typy poszczególnych węzłów, używane z HDInsight. 
+Węzły w klastrze usługi HDInsight są implementowane przy użyciu Virtual Machines platformy Azure. W poniższych sekcjach omówiono typy poszczególnych węzłów używane w usłudze HDInsight. 
 
 > [!NOTE]  
-> Nie wszystkie typy węzłów są używane dla typu klastra. Na przykład typ klastra usługi Hadoop nie ma żadnych węzłów Nimbus. Aby uzyskać więcej informacji na węzłach używane przez typy klastrów HDInsight, zobacz sekcję typy klastrów [opartych na systemie Linux z Tworzenie klastrów usługi Hadoop w HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types) dokumentu.
+> Nie wszystkie typy węzłów są używane dla typu klastra. Na przykład typ klastra usługi Hadoop nie ma żadnych węzłów Nimbus. Aby uzyskać więcej informacji na temat węzłów używanych przez typy klastrów usługi HDInsight, zobacz sekcję typy klastrów w dokumencie [Tworzenie klastrów Hadoop opartych na systemie Linux w usłudze HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types) .
 
 ### <a name="head-nodes"></a>Węzły główne
 
-Aby zapewnić wysoką dostępność usług Hadoop, HDInsight udostępnia dwa węzły główne. Zarówno węzły główne są jednocześnie aktywności i działania w ramach klastra HDInsight. Niektórych usług, takich jak Apache system plików HDFS lub Apache Hadoop YARN, są aktywne, w jednym węźle głównym tylko w danym momencie. Innych usług, takich jak usługi HiveServer2 lub Hive magazynu metadanych są aktywne na obu węzłów głównych w tym samym czasie.
+W celu zapewnienia wysokiej dostępności usług Hadoop Usługa HDInsight udostępnia dwa węzły główne. Oba węzły główne są aktywne i działają w klastrze usługi HDInsight jednocześnie. Niektóre usługi, takie jak Apache HDFS lub Apache Hadoop, są tylko "aktywne" w jednym węźle głównym w danym momencie. Inne usługi, takie jak serwera hiveserver2 lub Hive, są aktywne w obu węzłach głównych w tym samym czasie.
 
-Węzły główne (i innych węzłów w HDInsight) ma wartość numeryczną jako część nazwy hosta węzła. Na przykład `hn0-CLUSTERNAME` lub `hn4-CLUSTERNAME`.
+Węzły główne (i inne węzły w usłudze HDInsight) mają wartość liczbową jako część nazwy hosta węzła. Na przykład `hn0-CLUSTERNAME` lub `hn4-CLUSTERNAME`.
 
 > [!IMPORTANT]  
-> Nie należy kojarzyć wartość liczbową z tego, czy węzeł jest podstawowy lub pomocniczy. Wartość liczbowa tylko jest obecna, aby podać unikatową nazwę dla każdego węzła.
+> Nie należy kojarzyć wartości liczbowej z czy węzłem jest podstawowy czy pomocniczy. Wartość liczbowa jest obecna tylko w celu zapewnienia unikatowej nazwy dla każdego węzła.
 
 ### <a name="nimbus-nodes"></a>Węzły Nimbus
 
-Węzły nimbus są dostępne przy użyciu klastrów Apache Storm. Węzły Nimbus zapewniają funkcje podobne do Hadoop JobTracker, dystrybucja i monitorując przetwarzania w węzłach procesu roboczego. HDInsight obejmuje dwa węzły Nimbus klastrów Storm
+Węzły Nimbus są dostępne w klastrach Apache Storm. Węzły Nimbus zapewniają podobną funkcjonalność do usługi Hadoop JobTracker przez dystrybuowanie i monitorowanie procesów między węzłami procesów roboczych. Usługa HDInsight udostępnia dwa węzły Nimbus dla klastrów burzowych
 
-### <a name="apache-zookeeper-nodes"></a>Apache Zookeeper węzłów
+### <a name="apache-zookeeper-nodes"></a>Węzły Apache dozorcy
 
-[Dozorcy](https://zookeeper.apache.org/) węzły są używane na potrzeby lidera głównego usług na węzły główne. Są one także używane do upewnij się, że usługi, węzły danych (proces roboczy) i bram wiedzą, w których węzłem głównym usługi jest aktywna na. Domyślnie HDInsight udostępnia trzy węzły dozorcy.
+Węzły [dozorcy](https://zookeeper.apache.org/) są używane do wyboru lidera głównych usług w węzłach nadrzędnych. Są one również używane do upewnienia się, że usługi, węzły danych (Worker) i bramy wiedzą, z którym węzłem głównym jest aktywna usługa główna. Domyślnie Usługa HDInsight udostępnia trzy węzły dozorcy.
 
 ### <a name="worker-nodes"></a>Węzły procesu roboczego
 
-Po przesłaniu zadania do klastra, węzłów procesu roboczego wykonaj analiz danych rzeczywistych. W przypadku awarii węzła procesu roboczego zadania, którą on wykonywał jest przesyłany do innego węzła procesu roboczego. Domyślnie HDInsight tworzy cztery węzły procesu roboczego. Możesz zmienić tę wartość do własnych potrzeb, podczas i po utworzeniu klastra.
+Węzły procesu roboczego wykonują rzeczywistą analizę danych, gdy zadanie zostanie przesłane do klastra. Jeśli węzeł procesu roboczego zakończy się niepowodzeniem, zadanie, które było wykonywane, zostanie przesłane do innego węzła procesu roboczego. Domyślnie Usługa HDInsight tworzy cztery węzły procesu roboczego. Tę liczbę można zmienić, aby odpowiadała potrzebom zarówno podczas tworzenia klastra, jak i po nim.
 
 ### <a name="edge-node"></a>Węzeł brzegowy
 
-Węzeł krawędzi aktywnie uczestniczy w analizy danych w klastrze. Jest on używany przez deweloperów i analityków danych, podczas pracy z usługą Hadoop. W węźle brzegowym znajduje się w tej samej sieci wirtualnej platformy Azure, co pozostałe węzły w klastrze i można uzyskać dostęp do innych węzłów. W węźle brzegowym może służyć bez przełączania zasoby krytycznych usług Hadoop lub zadania analizy.
+Węzeł brzegowy nie uczestniczy aktywnie w analizie danych w klastrze. Jest on używany przez deweloperów lub analityków danych podczas pracy z usługą Hadoop. Węzeł brzegowy znajduje się w tym samym Virtual Network platformy Azure co inne węzły w klastrze i może bezpośrednio uzyskiwać dostęp do wszystkich innych węzłów. Węzła brzegowego można używać bez konieczności przechodzenia zasobów do krytycznych usług Hadoop lub zadań analizy.
 
-Obecnie usługi ML w HDInsight jest jedynym typem klastra, który zawiera węzeł krawędzi domyślnie. Usługi ML w HDInsight węzła krawędzi jest używany kod testu R lokalnie w węźle przed przesłaniem jej do klastra na potrzeby przetwarzania rozproszonego.
+Obecnie usługi ML w usłudze HDInsight są jedynym typem klastra, który domyślnie udostępnia węzeł brzegowy. W przypadku usług ML w usłudze HDInsight węzeł brzegowy jest używany do testowania kodu R lokalnie w węźle przed przesłaniem go do klastra w celu przetwarzania rozproszonego.
 
-Aby uzyskać informacji na temat korzystania z węzła krawędzi przy użyciu innych typów klastrów, zobacz [używanie węzłów krawędzi w HDInsight](hdinsight-apps-use-edge-node.md) dokumentu.
+Aby uzyskać informacje na temat korzystania z węzła brzegowego z innymi typami klastrów, zobacz [Używanie węzłów brzegowych w](hdinsight-apps-use-edge-node.md) dokumencie usługi HDInsight.
 
 ## <a name="accessing-the-nodes"></a>Uzyskiwanie dostępu do węzłów
 
-Dostęp do klastra za pośrednictwem Internetu znajduje się za pośrednictwem bramy sieci publicznej. Dostęp jest ograniczony do nawiązywania połączenia z węzłami głównymi i (jeśli istnieje) w węźle brzegowym. Dostęp do usług działających na węzły główne nie odbywa się przez wiele węzłów głównych. Publicznej bramy kieruje żądania do węzła głównego, który jest hostem żądanej usługi. Na przykład jeśli Apache Ambari aktualnie znajduje się w pomocniczym węzłem głównym, brama kieruje żądania przychodzące dla narzędzia Ambari do tego węzła.
+Dostęp do klastra za pośrednictwem Internetu jest udostępniany przez bramę publiczną. Dostęp jest ograniczony do nawiązywania połączenia z węzłami głównymi i (jeśli taki istnieje) węzła brzegowego. Dostęp do usług uruchomionych w węzłach głównych nie jest zastosowany przez posiadanie wielu węzłów głównych. Brama publiczna kieruje żądania do węzła głównego, który hostuje żądaną usługę. Na przykład jeśli Apache Ambari jest obecnie hostowany w pomocniczym węźle głównym, Brama kieruje żądania przychodzące dla Ambari do tego węzła.
 
-Dostęp za pośrednictwem publicznej bramy jest ograniczony do portu 443 (HTTPS), 22 i 23.
+Dostęp za pośrednictwem bramy publicznej jest ograniczony do portów 443 (HTTPS), 22 i 23.
 
-* Port __443__ umożliwia dostęp do systemu Ambari i innymi aplikacjami internetowymi interfejsu użytkownika lub interfejsów API REST w serwisie węzłów głównych.
+* Port __443__ jest używany w celu uzyskania dostępu do Ambari i innych interfejsów API sieci Web, które znajdują się w węzłach głównych.
 
-* Port __22__ umożliwia dostęp z podstawowym węzłem głównym lub węzłem krawędzi za pomocą protokołu SSH.
+* Port __22__ służy do uzyskiwania dostępu do podstawowego węzła głównego lub węzła krawędzi przy użyciu protokołu SSH.
 
-* Port __23__ umożliwia dostęp z pomocniczym węzłem głównym przy użyciu protokołu SSH. Na przykład `ssh username@mycluster-ssh.azurehdinsight.net` nawiązanie połączenia z podstawowym węzłem głównym klastra o nazwie **mycluster**.
+* Port __23__ służy do uzyskiwania dostępu do pomocniczego węzła głównego przy użyciu protokołu SSH. Na przykład program `ssh username@mycluster-ssh.azurehdinsight.net` nawiązuje połączenie z podstawowym węzłem głównym klastra o nazwie "Moja **klaster**".
 
-Aby uzyskać więcej informacji na temat korzystania z protokołu SSH, zobacz [użycia protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) dokumentu.
+Aby uzyskać więcej informacji na temat korzystania z protokołu SSH, zobacz dokument [Używanie protokołu SSH z usługą HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) .
 
-### <a name="internal-fully-qualified-domain-names-fqdn"></a>Wewnętrzne w pełni kwalifikowanych nazw domen (FQDN)
+### <a name="internal-fully-qualified-domain-names-fqdn"></a>Wewnętrzne w pełni kwalifikowane nazwy domen (FQDN)
 
-Węzły w klastrze usługi HDInsight mają, wewnętrzny adres IP i nazwy FQDN, która może zostać oceniony jedynie z klastra. Podczas uzyskiwania dostępu do usług w klastrze przy użyciu wewnętrznego adresu nazwy FQDN lub adres IP, należy użyć narzędzia Ambari Weryfikacja adresu IP lub FQDN, do użycia podczas uzyskiwania dostępu do usługi.
+Węzły w klastrze usługi HDInsight mają wewnętrzny adres IP i nazwę FQDN, do których można uzyskać dostęp tylko z klastra. Podczas uzyskiwania dostępu do usług w klastrze przy użyciu wewnętrznej nazwy FQDN lub adresu IP należy użyć Ambari do sprawdzenia, czy adres IP lub nazwa FQDN mają być używane podczas uzyskiwania dostępu do usługi.
 
-Na przykład usługa Apache Oozie można uruchomić tylko na jednym węzłem głównym i przy użyciu `oozie` polecenie w sesji SSH wymaga adresu URL do usługi. Ten adres URL można pobrać z systemu Ambari za pomocą następującego polecenia:
+Na przykład usługa Apache Oozie może być uruchomiona tylko na jednym węźle głównym i użycie `oozie` polecenia z sesji SSH wymaga adresu URL usługi. Ten adres URL można pobrać z Ambari za pomocą następującego polecenia:
 
     curl -u admin:PASSWORD "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations?type=oozie-site&tag=TOPOLOGY_RESOLVED" | grep oozie.base.url
 
-To polecenie zwróci wartość podobne do następujące polecenie, które zawiera wewnętrzny adres URL za pomocą `oozie` polecenia:
+To polecenie zwraca wartość podobną do poniższego polecenia, która zawiera wewnętrzny adres URL do użycia z `oozie` poleceniem:
 
     "oozie.base.url": "http://hn0-CLUSTERNAME-randomcharacters.cx.internal.cloudapp.net:11000/oozie"
 
-Aby uzyskać więcej informacji na temat pracy z interfejsem API REST Ambari, zobacz [monitorowanie i zarządzanie HDInsight przy użyciu interfejsu API Apache Ambari REST](hdinsight-hadoop-manage-ambari-rest-api.md).
+Aby uzyskać więcej informacji na temat pracy z interfejsem API REST Ambari, zobacz [monitorowanie i zarządzanie usługą HDInsight przy użyciu interfejsu API REST usługi Apache Ambari](hdinsight-hadoop-manage-ambari-rest-api.md).
 
-### <a name="accessing-other-node-types"></a>Uzyskiwanie dostępu do innych typów węzła
+### <a name="accessing-other-node-types"></a>Uzyskiwanie dostępu do innych typów węzłów
 
-Możesz połączyć węzły, które nie są dostępne bezpośrednio przez internet przy użyciu następujących metod:
+Możesz połączyć się z węzłami, które nie są bezpośrednio dostępne przez Internet, korzystając z następujących metod:
 
-* **SSH**: Po nawiązaniu połączenia z węzłem głównym przy użyciu protokołu SSH, możesz następnie używanie protokołu SSH z węzłem głównym, połączyć się z innych węzłów w klastrze. Aby uzyskać więcej informacji, zobacz dokument [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+* PROTOKÓŁ **SSH**: Po nawiązaniu połączenia z węzłem głównym przy użyciu protokołu SSH można nawiązać połączenie z innymi węzłami w klastrze przy użyciu protokołu SSH z węzła głównego. Aby uzyskać więcej informacji, zobacz dokument [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* **SSH tunelu**: Jeśli potrzebujesz dostępu do usługi sieci web hostowanych na jednym z węzłów, które nie są połączone z Internetem, należy użyć tunelu SSH. Aby uzyskać więcej informacji, zobacz [tunelu SSH za pomocą HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) dokumentu.
+* **Tunel SSH**: Jeśli musisz uzyskać dostęp do usługi sieci Web hostowanej na jednym z węzłów, które nie są dostępne w Internecie, musisz użyć tunelu SSH. Aby uzyskać więcej informacji, zobacz artykuł [Używanie tunelu SSH z usługą HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) .
 
-* **Azure Virtual Network**: Jeśli klastra usługi HDInsight jest częścią usługi Azure Virtual Network, dowolnego zasobu na tej samej sieci wirtualnej można uzyskać dostęp do wszystkich węzłów w klastrze. Aby uzyskać więcej informacji, zobacz [rozszerzyć HDInsight przy użyciu usługi Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md) dokumentu.
+* **Virtual Network platformy Azure**: Jeśli klaster usługi HDInsight jest częścią Virtual Network platformy Azure, wszystkie zasoby w tym samym Virtual Network mogą bezpośrednio uzyskać dostęp do wszystkich węzłów w klastrze. Aby uzyskać więcej informacji, zapoznaj się z dokumentem [Planowanie sieci wirtualnej dla usługi HDInsight](hdinsight-plan-virtual-network-deployment.md) .
 
 ## <a name="how-to-check-on-a-service-status"></a>Jak sprawdzić stan usługi
 
-Aby sprawdzić stan usług korzystających z węzłami głównymi, użyj Interfejsu sieci Web Ambari lub interfejs API REST Ambari.
+Aby sprawdzić stan usług uruchomionych w węzłach głównych, użyj interfejsu użytkownika sieci Web Ambari lub interfejsu API REST Ambari.
 
-### <a name="ambari-web-ui"></a>Ambari Web UI
+### <a name="ambari-web-ui"></a>Interfejs użytkownika sieci Web Ambari
 
-Interfejs użytkownika sieci Web Ambari będzie widoczny w `https://CLUSTERNAME.azurehdinsight.net`. Zastąp ciąg **CLUSTERNAME** nazwą klastra. Po wyświetleniu monitu wprowadź poświadczenia użytkownika protokołu HTTP dla klastra. Domyślna nazwa użytkownika protokołu HTTP jest **administratora** , a hasło to hasło wprowadzone podczas tworzenia klastra.
+Interfejs użytkownika sieci Web Ambari jest wyświetlany `https://CLUSTERNAME.azurehdinsight.net`pod adresem. Zastąp ciąg **CLUSTERNAME** nazwą klastra. Jeśli zostanie wyświetlony monit, wprowadź poświadczenia użytkownika HTTP dla klastra. Domyślną nazwą użytkownika HTTP jest **administrator** , a hasło to hasło wprowadzone podczas tworzenia klastra.
 
-Gdy zostanie wyświetlony na stronie narzędzia Ambari, zainstalowanych usług będą wyświetlane w lewej części strony.
+Po nadejściu na stronie Ambari zainstalowane usługi są wyświetlane po lewej stronie.
 
-![Zainstalowanych usług](./media/hdinsight-high-availability-linux/services.png)
+![Zainstalowane usługi](./media/hdinsight-high-availability-linux/services.png)
 
-Istnieje szereg ikony, które mogą być wyświetlane obok usługi w celu wskazania stanu. Wszystkie alerty związane z usługą mogą być wyświetlane za pomocą **alerty** widocznego u góry strony.  Ambari udostępnia kilka wstępnie zdefiniowanych alertów.
+Istnieje szereg ikon, które mogą pojawić się obok usługi, aby wskazać stan. Wszystkie alerty związane z usługą można wyświetlić za pomocą linku **alerty** w górnej części strony.  Ambari oferuje kilka wstępnie zdefiniowanych alertów.
 
-Następujące alerty pomocy, monitorowanie dostępności klastra:
+Następujące alerty ułatwiają monitorowanie dostępności klastra:
 
 | Nazwa alertu                               | Opis                                                                                                                                                                                  |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Monitoruj metryki stan                    | Ten alert wskazuje stan procesu monitora metryk zgodnie z ustaleniami skryptu stan monitora.                                                                                   |
-| Puls agenta systemu Ambari                   | Ten alert jest wyzwalany, jeśli serwer utracił kontaktu z agentem.                                                                                                                        |
-| Proces serwera dozorcy                 | Ten alert na poziomie hosta jest wyzwalany, jeśli proces serwera dozorcy nie może być określone rozpocząć i nasłuchuje w sieci.                                                               |
-| IOCache Metadata Server Status           | Ten alert na poziomie hosta jest wyzwalany, jeśli serwer IOCache metadanych nie może być określone rozpocząć i odpowiadanie na żądania klientów                                                            |
-| JournalNode interfejsu użytkownika sieci Web                       | Ten alert na poziomie hosta jest wyzwalany, gdy interfejs użytkownika sieci Web JournalNode jest nieosiągalny.                                                                                                                 |
-| Spark2 Thrift Server                     | Ten alert na poziomie hosta jest wyzwalany, jeśli nie można ustalić Spark2 Thrift Server, aby rozpocząć.                                                                                                |
-| Proces serwera historii                   | Ten alert na poziomie hosta jest wyzwalany, jeśli proces serwera historii nie może zostać ustanowione, aby rozpocząć i nasłuchuje w sieci.                                                                |
-| Historia serwera internetowego interfejsu użytkownika                    | Ten alert na poziomie hosta jest wyzwalany, gdy interfejs użytkownika sieci Web dla serwera historii jest nieosiągalny.                                                                                                              |
-| Menedżer zasobów interfejsu użytkownika sieci Web                   | Ten alert na poziomie hosta jest wyzwalany, gdy interfejs użytkownika sieci Web Menedżera zasobów jest nieosiągalny.                                                                                                             |
-| Podsumowanie kondycji NodeManager               | Ten poziom usługi alert jest wyzwalany, jeśli istnieją NodeManagers złej kondycji                                                                                                                    |
-| Aplikacja interfejsu użytkownika sieci Web osi czasu                      | Ten alert na poziomie hosta jest wyzwalany, gdy aplikacja osi czasu w serwera internetowego interfejsu użytkownika jest nieosiągalny.                                                                                                         |
-| Podsumowanie kondycji DataNode                  | Ten poziom usługi alert jest wyzwalany, jeśli istnieją DataNodes złej kondycji                                                                                                                       |
-| NameNode interfejsu użytkownika sieci Web                          | Ten alert na poziomie hosta jest wyzwalany, gdy interfejs użytkownika sieci Web NameNode jest nieosiągalny.                                                                                                                    |
-| Proces kontroler pracy awaryjnej dozorcy    | Ten alert na poziomie hosta jest wyzwalany, jeśli proces dozorcy trybu Failover kontrolera nie może zostać potwierdzony, aby rozpocząć i nasłuchuje w sieci.                                                   |
-| Oozie Server Web UI                      | Ten alert na poziomie hosta jest wyzwalany, jeśli serwer programu Oozie interfejs użytkownika sieci Web jest nieosiągalny.                                                                                                                |
-| Stan serwera Oozie                      | Ten alert na poziomie hosta jest wyzwalany, jeśli serwer programu Oozie nie może być określone rozpocząć i odpowiadanie na żądania klientów.                                                                      |
-| Proces magazynu metadanych hive                   | Ten alert na poziomie hosta jest wyzwalany, jeśli proces Hive magazynu metadanych nie może być określone rozpocząć i nasłuchuje w sieci.                                                                 |
-| HiveServer2 Process                      | Ten alert na poziomie hosta jest wyzwalany, jeśli HiveServer nie może być określone rozpocząć i odpowiadanie na żądania klientów.                                                                        |
-| Stan serwera usługi WebHCat                    | Ten alert na poziomie hosta jest wyzwalany, jeśli templeton stanu możliwości zarządzania serwerem nie jest w dobrej kondycji.                                                                                                            |
-| Dostępne serwery procent dozorcy      | Ten alert jest wyzwalany, jeśli liczba szczegółów dozorcy serwery w klastrze jest większy niż skonfigurowany próg krytyczny. Agreguje wyniki kontroli procesu ZooKeeper.     |
-| Spark2 Livy Server                       | Ten alert na poziomie hosta jest wyzwalany, jeśli nie można określić serwera Livy2, aby rozpocząć.                                                                                                        |
-| Spark2 History Server                    | Ten alert na poziomie hosta jest wyzwalany, jeśli nie można określić serwer historii Spark2, aby rozpocząć.                                                                                               |
-| Proces modułu zbierającego metryki                | Ten alert jest wyzwalany, jeśli moduł zbierający metryki nie może zostać potwierdzony, aby rozpocząć i nasłuchuje na skonfigurowanym porcie sekundach równa wartości progowej.                                 |
-| Moduł zbierający metryki - procesu głównego bazy danych HBase | Ten alert jest wyzwalany, jeśli procesy głównej bazy danych HBase metryk modułu zbierającego nie może zostać potwierdzony, aby rozpocząć i nasłuchuje w sieci dla skonfigurowanego progu krytycznego, podana w sekundach. |
-| Monitoruje procent metryk dostępnych       | Ten alert jest wyzwalany, jeśli procent Monitoruj metryki procesy nie są włączone i nasłuchuje w sieci skonfigurowanych ostrzeżenie i progów krytycznych.                             |
-| Procent NodeManagers dostępne           | Ten alert jest wyzwalany, jeśli liczba szczegółów NodeManagers w klastrze jest większa niż skonfigurowany próg krytyczny. Agreguje wyniki NodeManager proces kontroli.        |
-| NodeManager kondycji                       | Ten alert na poziomie hosta sprawdza dostępne ze składnika NodeManager właściwość kondycji węzła.                                                                                              |
-| NodeManager interfejsu użytkownika sieci Web                       | Ten alert na poziomie hosta jest wyzwalany, gdy interfejs użytkownika sieci Web NodeManager jest nieosiągalny.                                                                                                                 |
-| NameNode o wysokiej dostępności kondycji        | Ten alert poziom usług jest wyzwalany, jeśli nie są wykonywane Active NameNode lub NameNode w stanie wstrzymania.                                                                                     |
-| Proces DataNode                         | Ten alert na poziomie hosta jest wyzwalany, jeśli poszczególnych procesów DataNode nie może zostać ustanowione, aby rozpocząć i nasłuchuje w sieci.                                                         |
-| DataNode interfejsu użytkownika sieci Web                          | Ten alert na poziomie hosta jest wyzwalany, gdy interfejs użytkownika sieci Web DataNode jest nieosiągalny.                                                                                                                    |
-| Procent JournalNodes dostępne           | Ten alert jest wyzwalany, jeśli liczba szczegółów JournalNodes w klastrze jest większa niż skonfigurowany próg krytyczny. Agreguje wyniki JournalNode proces kontroli.        |
-| Procent DataNodes dostępne              | Ten alert jest wyzwalany, jeśli liczba szczegółów DataNodes w klastrze jest większa niż skonfigurowany próg krytyczny. Agreguje wyniki DataNode proces kontroli.              |
-| Stan serwera rozwiązania Zeppelin                   | Ten alert na poziomie hosta jest wyzwalany, jeśli serwer Zeppelin nie może być określone rozpocząć i odpowiadanie na żądania klientów.                                                                   |
-| HiveServer2 Interactive Process          | Ten alert na poziomie hosta jest wyzwalany, jeśli HiveServerInteractive nie może być określone rozpocząć i odpowiadanie na żądania klientów.                                                             |
-| Aplikacja funkcji LLAP                         | Ten alert jest wyzwalany, jeśli aplikacja LLAP nie może być określone rozpocząć i odpowiadanie na żądania.                                                                                    |
+| Stan monitora metryki                    | Ten alert wskazuje stan procesu monitorowania metryk zgodnie z opisem w skrypcie stanu monitora.                                                                                   |
+| Puls agenta Ambari                   | Ten alert jest wyzwalany, jeśli serwer utracił kontakt z agentem.                                                                                                                        |
+| Proces serwera dozorcy                 | Ten alert na poziomie hosta jest wyzwalany, jeśli proces serwera dozorcy nie może zostać określony jako nasłuchuje w sieci.                                                               |
+| Stan serwera metadanych IOCache           | Ten alert na poziomie hosta jest wyzwalany, jeśli nie można ustalić serwera metadanych IOCache i odpowiadać na żądania klientów                                                            |
+| Interfejs użytkownika sieci Web JournalNode                       | Ten alert na poziomie hosta jest wyzwalany, jeśli interfejs użytkownika sieci Web JournalNode jest nieosiągalny.                                                                                                                 |
+| Serwer Spark2 Thrift                     | Ten alert na poziomie hosta jest wyzwalany, jeśli nie można określić serwera Spark2 Thrift.                                                                                                |
+| Proces serwera historii                   | Ten alert na poziomie hosta jest wyzwalany, jeśli proces serwera historii nie może zostać ustanowiony i nasłuchuje w sieci.                                                                |
+| Interfejs użytkownika sieci Web serwera historii                    | Ten alert na poziomie hosta jest wyzwalany, jeśli interfejs użytkownika sieci Web serwera historii jest nieosiągalny.                                                                                                              |
+| Interfejs użytkownika sieci Web ResourceManager                   | Ten alert na poziomie hosta jest wyzwalany, jeśli interfejs użytkownika sieci Web ResourceManager jest nieosiągalny.                                                                                                             |
+| Podsumowanie kondycji węzła nodemanager               | Ten alert na poziomie usługi jest wyzwalany w przypadku wystąpienia złej kondycji NodeManagers                                                                                                                    |
+| Interfejs użytkownika sieci Web osi czasu aplikacji                      | Ten alert na poziomie hosta jest wyzwalany, jeśli interfejs użytkownika sieci Web serwera osi czasu aplikacji jest nieosiągalny.                                                                                                         |
+| Podsumowanie kondycji węzła datanode                  | Ten alert na poziomie usługi jest wyzwalany, jeśli istnieją węzły datanodes o złej kondycji                                                                                                                       |
+| Interfejs użytkownika sieci Web NameNode                          | Ten alert na poziomie hosta jest wyzwalany, jeśli interfejs użytkownika sieci Web NameNode jest nieosiągalny.                                                                                                                    |
+| Proces kontrolera trybu failover dozorcy    | Ten alert na poziomie hosta jest wyzwalany, jeśli proces kontrolera trybu failover dozorcy nie może zostać potwierdzony w sieci.                                                   |
+| Interfejs użytkownika sieci Web serwera Oozie                      | Ten alert na poziomie hosta jest wyzwalany, jeśli interfejs użytkownika sieci Web serwera Oozie jest nieosiągalny.                                                                                                                |
+| Stan serwera Oozie                      | Ten alert na poziomie hosta jest wyzwalany w przypadku, gdy serwer Oozie nie może zostać określony jako odpowiadający na żądania klientów.                                                                      |
+| Proces magazynu metadanych Hive                   | Ten alert na poziomie hosta jest wyzwalany, jeśli proces magazynu metadanych Hive nie może zostać określony jako nasłuchuje w sieci.                                                                 |
+| Proces serwera hiveserver2                      | Ten alert na poziomie hosta jest wyzwalany, jeśli nie można ustalić HiveServer i odpowiadać na żądania klientów.                                                                        |
+| Stan serwera WebHCat                    | Ten alert na poziomie hosta jest wyzwalany, jeśli stan serwera Templeton jest nieprawidłowy.                                                                                                            |
+| Dostępne serwery dozorcy      | Ten alert jest wyzwalany, jeśli liczba serwerów dozorcy w klastrze jest większa niż skonfigurowany próg krytyczny. Agreguje wyniki testów procesu dozorcy.     |
+| Spark2 Livy Server                       | Ten alert na poziomie hosta jest wyzwalany, jeśli nie można ustalić serwera Livy2.                                                                                                        |
+| Serwer historii Spark2                    | Ten alert na poziomie hosta jest wyzwalany, jeśli nie można ustalić serwera historii Spark2.                                                                                               |
+| Proces modułów zbierających metryki                | Ten alert jest wyzwalany, jeśli moduł zbierający metryk nie może zostać potwierdzony i nasłuchuje na skonfigurowanym porcie przez liczbę sekund równą wartości progowej.                                 |
+| Moduł zbierający metryk — proces HBase Master | Ten alert jest wyzwalany, jeśli procesy główne HBase modułu zbierającego metryk nie mogą zostać potwierdzone i nasłuchuje w sieci pod kątem skonfigurowanego progu krytycznego, podanego w sekundach. |
+| Dostępne monitory metryk procentowych       | Ten alert jest wyzwalany, jeśli procent procesów monitorów metryk nie jest w sieci i nie nasłuchuje na niej skonfigurowanych progów ostrzegawczych i krytycznych.                             |
+| Procent dostępnych NodeManagers           | Ten alert jest wyzwalany, jeśli liczba w dół NodeManagers w klastrze jest większa niż skonfigurowany próg krytyczny. Agreguje wyniki kontroli procesu Nodemanager.        |
+| Kondycja węzła nodemanager                       | Ten alert na poziomie hosta sprawdza Właściwość kondycji węzła dostępną w składniku Nodemanager.                                                                                              |
+| Interfejs użytkownika sieci Web nodemanager                       | Ten alert na poziomie hosta jest wyzwalany, jeśli interfejs użytkownika sieci Web Nodemanager jest nieosiągalny.                                                                                                                 |
+| Kondycja NameNode wysokiej dostępności        | Ten alert na poziomie usługi jest wyzwalany, jeśli aktywne NameNode lub wstrzymanie NameNode nie jest uruchomione.                                                                                     |
+| Proces datanode                         | Ten alert na poziomie hosta jest wyzwalany, jeśli nie można ustalić poszczególnych procesów elementu datanode do nasłuchiwania w sieci.                                                         |
+| Interfejs użytkownika sieci Web datanode                          | Ten alert na poziomie hosta jest wyzwalany, jeśli interfejs użytkownika sieci Web węzła datanode jest nieosiągalny.                                                                                                                    |
+| Procent dostępnych JournalNodes           | Ten alert jest wyzwalany, jeśli liczba w dół JournalNodes w klastrze jest większa niż skonfigurowany próg krytyczny. Agreguje wyniki testów procesu JournalNode.        |
+| Dostępne węzły datanodes              | Ten alert jest wyzwalany, jeśli liczba węzłów danych w dół w klastrze jest większa niż skonfigurowany próg krytyczny. Agreguje wyniki kontroli procesu elementu datanode.              |
+| Stan serwera Zeppelin                   | Ten alert na poziomie hosta jest wyzwalany w przypadku, gdy serwer Zeppelin nie może zostać określony jako odpowiadający na żądania klientów.                                                                   |
+| Interaktywny proces serwera hiveserver2          | Ten alert na poziomie hosta jest wyzwalany, jeśli nie można ustalić HiveServerInteractive i odpowiadać na żądania klientów.                                                             |
+| Aplikacja LLAP                         | Ten alert jest wyzwalany, jeśli nie można ustalić aplikacji LLAP i odpowiadać na żądania.                                                                                    |
 
-Można wybrać poszczególnych usług, aby wyświetlić więcej informacji na nim.
+Możesz wybrać każdą usługę, aby wyświetlić więcej informacji na jej temat.
 
-Gdy strona usługi zawiera informacje dotyczące stanu i konfiguracji poszczególnych usług, nie zapewnia informacje, na które węzłem usługa jest uruchomiona na. Aby wyświetlić te informacje, należy użyć **hosty** widocznego u góry strony. Ta strona wyświetla hosty w klastrze, w tym dla węzłów głównych.
+Gdy strona usługi zawiera informacje o stanie i konfiguracji każdej usługi, nie zawiera informacji na temat węzła głównego, na którym działa usługa. Aby wyświetlić te informacje, Użyj linku **hosty** w górnej części strony. Na tej stronie są wyświetlane hosty w klastrze, w tym węzły główne.
 
-![listy hostów](./media/hdinsight-high-availability-linux/hosts.png)
+![Lista hostów](./media/hdinsight-high-availability-linux/hosts.png)
 
-Wybierając link dla jednego z węzłów głównych Wyświetla usług i składników działających w tym węźle.
+Wybranie linku dla jednego z węzłów głównych spowoduje wyświetlenie usług i składników uruchomionych w tym węźle.
 
 ![Stan składnika](./media/hdinsight-high-availability-linux/nodeservices.png)
 
-Aby uzyskać więcej informacji na temat korzystania z narzędzia Ambari, zobacz [monitorowanie i zarządzanie nimi przy użyciu interfejsu użytkownika sieci Web Ambari Apache HDInsight](hdinsight-hadoop-manage-ambari.md).
+Aby uzyskać więcej informacji na temat korzystania z programu Ambari, zobacz [monitorowanie i zarządzanie usługą HDInsight przy użyciu interfejsu użytkownika sieci Web Apache Ambari](hdinsight-hadoop-manage-ambari.md).
 
-### <a name="ambari-rest-api"></a>Interfejs API REST systemu Ambari
+### <a name="ambari-rest-api"></a>Interfejs API REST usługi Ambari
 
-Interfejs API REST Ambari, jest dostępna za pośrednictwem Internetu. Publicznej bramy HDInsight obsługuje kierowania żądań do węzła głównego, które obecnie obsługuje interfejs API REST.
+Interfejs API REST Ambari jest dostępny za pośrednictwem Internetu. Brama publiczna usługi HDInsight obsługuje żądania routingu do węzła głównego, który aktualnie obsługuje interfejs API REST.
 
 Aby sprawdzić stan usługi za pomocą interfejsu API REST Ambari, można użyć następującego polecenia:
 
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICENAME?fields=ServiceInfo/state
 
-* Zastąp **hasło** przy użyciu hasła konta użytkownika (administratora) protokołu HTTP.
+* Zastąp **hasło** hasłem konta użytkownika http (Administrator).
 * Zamień ciąg **CLUSTERNAME** na nazwę klastra.
-* Zastąp **SERVICENAME** nazwą usługi, aby sprawdzić stan.
+* Zastąp wartość **ServiceName** nazwą usługi, dla której chcesz sprawdzić stan.
 
-Na przykład, aby sprawdzić stan **HDFS** usługi w klastrze o nazwie **mycluster**, używając hasła **hasła**, należy użyć następującego polecenia:
+Na przykład aby sprawdzić stan usługi **HDFS** w klastrze o nazwie Moje klastry z hasłem **hasła**, użyj następującego polecenia:
 
     curl -u admin:password https://mycluster.azurehdinsight.net/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state
 
-Odpowiedź jest podobna do następujące dane JSON:
+Odpowiedź jest podobna do następującej:
 
     {
       "href" : "http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8080/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state",
@@ -190,82 +190,82 @@ Odpowiedź jest podobna do następujące dane JSON:
       }
     }
 
-Adres URL informuje NAS, że obecnie usługa działa w węźle głównym o nazwie **hn0 CLUSTERNAME**.
+Adres URL informuje nas, że usługa jest obecnie uruchomiona w węźle głównym o nazwie **hn0-ClusterName**.
 
-Stan informuje NAS, że usługa jest obecnie uruchomiona, lub **uruchomiono**.
+Stan informuje nas, że usługa jest obecnie uruchomiona lub **uruchomiona**.
 
-Jeśli nie wiesz, jakie usługi są zainstalowane w klastrze, służy następujące polecenie do pobierania listy:
+Jeśli nie wiesz, jakie usługi są zainstalowane w klastrze, możesz użyć następującego polecenia, aby pobrać listę:
 
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services
 
-Aby uzyskać więcej informacji na temat pracy z interfejsem API REST Ambari, zobacz [monitorowanie i zarządzanie HDInsight przy użyciu interfejsu API Apache Ambari REST](hdinsight-hadoop-manage-ambari-rest-api.md).
+Aby uzyskać więcej informacji na temat pracy z interfejsem API REST Ambari, zobacz [monitorowanie i zarządzanie usługą HDInsight przy użyciu interfejsu API REST usługi Apache Ambari](hdinsight-hadoop-manage-ambari-rest-api.md).
 
 #### <a name="service-components"></a>Składniki usługi
 
-Usługi mogą zawierać składniki, które chcesz sprawdzić stan indywidualnie. Na przykład system plików HDFS zawiera składnik NameNode. Aby wyświetlić informacje dotyczące składnika, polecenie będzie:
+Usługi mogą zawierać składniki, które chcą sprawdzać stan poszczególnych elementów. Na przykład system plików HDFS zawiera składnik NameNode. Aby wyświetlić informacje na temat składnika, polecenie będzie:
 
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICE/components/component
 
-Jeśli nie wiesz, jakie składniki są dostarczane przez usługę, służy następujące polecenie do pobierania listy:
+Jeśli nie wiesz, jakie składniki są udostępniane przez usługę, możesz użyć następującego polecenia, aby pobrać listę:
 
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICE/components/component
 
-## <a name="how-to-access-log-files-on-the-head-nodes"></a>Jak uzyskać dostęp do plików dziennika na węzły główne
+## <a name="how-to-access-log-files-on-the-head-nodes"></a>Jak uzyskać dostęp do plików dziennika w węzłach głównych
 
 ### <a name="ssh"></a>Protokół SSH
 
-Po nawiązaniu połączenia z węzłem głównym za pośrednictwem protokołu SSH, pliki dziennika znajdują się w obszarze **/var/log**. Na przykład **/var/log/hadoop-yarn/yarn** zawierać dzienniki usługi YARN.
+W przypadku połączenia z węzłem głównym za pośrednictwem protokołu SSH pliki dzienników można znaleźć w obszarze **/var/log**. Na przykład **/var/log/Hadoop-Yarn/Yarn** zawiera dzienniki dla przędzy.
 
-Każdy węzeł główny może mieć wpisy dziennika unikatowy, więc należy sprawdzić dzienniki na obu.
+Każdy węzeł główny może mieć unikatowe wpisy dziennika, dlatego należy sprawdzić dzienniki na obu.
 
 ### <a name="sftp"></a>SFTP
 
-Możesz również nawiązać połączenie z węzłem za pomocą protokołu SSH File Transfer Protocol lub Secure File Transfer Protocol (SFTP) i bezpośredniego pobrania plików dziennika.
+Możesz również nawiązać połączenie z węzłem głównym przy użyciu protokół transferu plików SSH lub bezpiecznego protokół transferu plików (SFTP) i pobrać pliki dziennika bezpośrednio.
 
-Podobnie jak przy użyciu klienta SSH, gdy łączenie z klastrem należy podać nazwę konta użytkownika SSH i adres SSH klastra. Na przykład `sftp username@mycluster-ssh.azurehdinsight.net`. Podaj hasło dla konta, po wyświetleniu monitu lub podaj klucza publicznego przy użyciu `-i` parametru.
+Podobnie jak w przypadku korzystania z klienta SSH, podczas nawiązywania połączenia z klastrem należy podać nazwę konta użytkownika SSH i adres SSH klastra. Na przykład `sftp username@mycluster-ssh.azurehdinsight.net`. Podaj hasło do konta po wyświetleniu monitu lub Podaj klucz publiczny przy użyciu `-i` parametru.
 
-Po nawiązaniu połączenia zostanie wyświetlony `sftp>` wiersza. Z wiersza polecenia, można zmienić katalogi, przekazywanie i pobieranie plików. Na przykład poniższe polecenia Zmień katalog na **/var/log/hadoop/hdfs** katalogu, a następnie Pobierz wszystkie pliki w katalogu.
+Po nawiązaniu połączenia zostanie `sftp>` wyświetlony monit. Z tego monitu można zmienić katalogi, przekazać i pobrać pliki. Na przykład następujące polecenia powodują zmianę katalogów do katalogu **/var/log/Hadoop/HDFS** , a następnie pobranie wszystkich plików w katalogu.
 
     cd /var/log/hadoop/hdfs
     get *
 
-Aby uzyskać listę dostępnych poleceń, wpisz `help` na `sftp>` wiersza.
+Aby uzyskać listę dostępnych poleceń, wpisz `help` `sftp>` w wierszu polecenia.
 
 > [!NOTE]  
-> Dostępne są także graficznych interfejsów, które umożliwiają wizualizację systemu plików w przypadku połączenia przy użyciu protokołu SFTP. Na przykład [MobaXTerm](https://mobaxterm.mobatek.net/) pozwala przeglądać systemu plików, przy użyciu interfejsem podobnym do Eksploratora Windows.
+> Istnieją również interfejsy graficzne, które umożliwiają wizualizację systemu plików w przypadku połączenia przy użyciu protokołu SFTP. Na przykład [MobaXTerm](https://mobaxterm.mobatek.net/) umożliwia przeglądanie systemu plików przy użyciu interfejsu podobnego do Eksploratora Windows.
 
 ### <a name="ambari"></a>Ambari
 
 > [!NOTE]  
-> Aby uzyskać dostęp do plików dziennika przy użyciu narzędzia Ambari, należy użyć tunelu SSH. Interfejsy sieci web dla poszczególnych usług nie są widoczne publicznie w Internecie. Aby uzyskać informacje na temat używania tunelu SSH, zobacz [użycie tunelowania SSH](hdinsight-linux-ambari-ssh-tunnel.md) dokumentu.
+> Aby uzyskać dostęp do plików dziennika za pomocą Ambari, należy użyć tunelu SSH. Interfejsy sieci Web dla poszczególnych usług nie są udostępniane publicznie w Internecie. Aby uzyskać informacje na temat korzystania z tunelu SSH, zobacz dokument [Używanie tunelowania SSH](hdinsight-linux-ambari-ssh-tunnel.md) .
 
-Z poziomu interfejsu użytkownika sieci Web Ambari wybierz usługę, którą chcesz wyświetlić dzienniki (na przykład, YARN). Następnie użyj **szybkich łączy** które węzła głównego, aby wyświetlić dzienniki, aby wybrać.
+W interfejsie użytkownika sieci Web Ambari wybierz usługę, dla której chcesz wyświetlić dzienniki (na przykład PRZĘDZę). Następnie użyj opcji **szybkie linki** , aby wybrać węzeł główny, dla którego mają być wyświetlone dzienniki.
 
-![Aby wyświetlić dzienniki przy użyciu szybkich łączy](./media/hdinsight-high-availability-linux/viewlogs.png)
+![Używanie szybkich linków do wyświetlania dzienników](./media/hdinsight-high-availability-linux/viewlogs.png)
 
 ## <a name="how-to-configure-the-node-size"></a>Jak skonfigurować rozmiar węzła
 
-Rozmiar węzła można wybrać tylko podczas tworzenia klastra. Można znaleźć listę dostępnych rozmiarów maszyn wirtualnych różnych HDInsight na [HDInsight stronę z cennikiem](https://azure.microsoft.com/pricing/details/hdinsight/).
+Rozmiar węzła można wybrać tylko podczas tworzenia klastra. Listę różnych rozmiarów maszyn wirtualnych dostępnych dla usługi HDInsight można znaleźć na stronie z cennikiem usługi [HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-Podczas tworzenia klastra, można określić rozmiar węzłów. Poniższe informacje znajdują się wskazówki dotyczące sposobu określania rozmiaru, za pomocą [witryny Azure portal][preview-portal], [modułu Azure PowerShell Az][azure-powershell], i [wiersza polecenia platformy Azure][azure-cli]:
+Podczas tworzenia klastra można określić rozmiar węzłów. Poniższe informacje zawierają wskazówki dotyczące sposobu określania rozmiaru przy użyciu [Azure Portal][preview-portal], [Azure PowerShell module Az][azure-powershell]i [interfejsu wiersza polecenia]platformy Azure Azure[-CLI]:
 
-* **Witryna Azure portal**: Podczas tworzenia klastra, można ustawić rozmiar węzłów, używane przez klaster:
+* **Azure Portal**: Podczas tworzenia klastra można ustawić rozmiar węzłów używanych przez klaster:
 
-    ![Obraz przedstawiający Kreatora tworzenia klastra przy użyciu wybór rozmiaru węzła](./media/hdinsight-high-availability-linux/headnodesize.png)
+    ![Obraz Kreatora tworzenia klastra z wybranym rozmiarem węzła](./media/hdinsight-high-availability-linux/headnodesize.png)
 
-* **Interfejs wiersza polecenia platformy Azure**: Korzystając z [tworzenia usługi hdinsight az](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) polecenia, należy określić rozmiar head, procesu roboczego i węzły dozorcy przy użyciu `--headnode-size`, `--workernode-size`, i `--zookeepernode-size` parametrów.
+* **Interfejs wiersza polecenia platformy Azure**: Korzystając z polecenia [AZ HDInsight Create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) , można ustawić rozmiar węzłów głowy, procesu roboczego i dozorcy przy użyciu `--headnode-size`parametrów, `--workernode-size`i `--zookeepernode-size` .
 
-* **Azure PowerShell**: Korzystając z [New AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) polecenia cmdlet, należy określić rozmiar head, procesu roboczego i węzły dozorcy przy użyciu `-HeadNodeSize`, `-WorkerNodeSize`, i `-ZookeeperNodeSize` parametrów.
+* **Azure PowerShell**: Korzystając z polecenia cmdlet [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) , można ustawić rozmiar węzłów nagłówek, proces roboczy i dozorcy przy użyciu `-HeadNodeSize`parametrów, `-WorkerNodeSize`i `-ZookeeperNodeSize` .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Użyj następujących łączy, aby dowiedzieć się więcej na temat czynności opisane w tym dokumencie.
+Skorzystaj z poniższych linków, aby dowiedzieć się więcej o zagadnieniach wymienionych w tym dokumencie.
 
-* [Dokumentacja programu Apache Ambari REST](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
+* [Dokumentacja REST Ambari Apache](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
 * [Instalowanie i Konfigurowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com//cli/azure/install-azure-cli?view=azure-cli-latest)
-* [Instalowanie i konfigurowanie programu Azure PowerShell module Az](/powershell/azure/overview)
-* [Zarządzanie HDInsight przy użyciu narzędzia Apache Ambari](hdinsight-hadoop-manage-ambari.md)
-* [Obsługa administracyjna klastrów HDInsight opartych na systemie Linux](hdinsight-hadoop-provision-linux-clusters.md)
+* [Zainstaluj i skonfiguruj moduł Azure PowerShell AZ](/powershell/azure/overview)
+* [Zarządzanie usługą HDInsight przy użyciu usługi Apache Ambari](hdinsight-hadoop-manage-ambari.md)
+* [Inicjowanie obsługi klastrów usługi HDInsight opartych na systemie Linux](hdinsight-hadoop-provision-linux-clusters.md)
 
 [preview-portal]: https://portal.azure.com/
 [azure-powershell]: /powershell/azureps-cmdlets-docs

@@ -1,5 +1,5 @@
 ---
-title: 'Routing wymagania — ExpressRoute: Azure | Microsoft Docs'
+title: 'Wymagania dotyczące routingu — ExpressRoute: Azure | Microsoft Docs'
 description: Ta strona zawiera szczegółowe wymagania dotyczące konfigurowania routingu oraz zarządzania nim na potrzeby obwodów usługi ExpressRoute.
 services: expressroute
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 6c475ab0a2e47cf654d1299a4c5638b34fb5e4b6
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 458808f9d2c496ae4c29b05bd8a3531b94ba78c0
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508537"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68422671"
 ---
 # <a name="expressroute-routing-requirements"></a>Wymagania dotyczące routingu w usłudze ExpressRoute
 Aby połączyć się z usługami w chmurze firmy Microsoft przy użyciu usługi ExpressRoute, konieczne będzie skonfigurowanie routingu oraz zarządzanie nim. Niektórzy dostawcy połączenia oferują konfigurowanie routingu oraz zarządzanie nim jako usługą zarządzaną. Skontaktuj się z dostawcą połączenia, aby sprawdzić, czy taka usługa jest oferowana. Jeśli nie, musisz spełnić wymagania opisane poniżej:
@@ -84,7 +84,7 @@ Do konfigurowania sesji protokołu BGP należy użyć posiadanych publicznych ad
 Do prywatnej komunikacji równorzędnej można używać publicznych lub prywatnych adresów IPv4. Zapewniamy kompleksową izolację ruchu, w związku z czym w warunkach prywatnej komunikacji równorzędnej nie ma możliwości, aby adresy się nakładały. Te adresy nie są anonsowane w Internecie. 
 
 ### <a name="microsoft-peering"></a>Komunikacja równorzędna firmy Microsoft
-Ścieżki komunikacji równorzędnej firmy Microsoft umożliwia łączenie z usługami chmurowymi firmy Microsoft. Lista usług obejmuje usługi Office 365 takie jak Exchange Online, SharePoint Online, Skype dla firm i Dynamics 365. Firma Microsoft zapewnia obsługę dwukierunkowej łączności w oparciu o komunikację równorzędną firmy Microsoft. Ruch skierowany do usług w chmurze firmy Microsoft musi uzyskać prawidłowe publiczne adresy IPv4, zanim wejdzie do sieci firmy Microsoft.
+Ścieżki komunikacji równorzędnej firmy Microsoft umożliwia łączenie z usługami chmurowymi firmy Microsoft. Lista usług obejmuje usługi Office 365, takie jak Exchange Online, SharePoint Online, Skype dla firm, Microsoft Teams i Dynamics 365. Firma Microsoft zapewnia obsługę dwukierunkowej łączności w oparciu o komunikację równorzędną firmy Microsoft. Ruch skierowany do usług w chmurze firmy Microsoft musi uzyskać prawidłowe publiczne adresy IPv4, zanim wejdzie do sieci firmy Microsoft.
 
 Zadbaj o to, aby adres IP i numer AS zostały zarejestrowane na Ciebie w jednym z następujących rejestrów:
 
@@ -101,7 +101,7 @@ Jeśli Twoje prefiksy i numer systemu autonomicznego nie są przypisane do Ciebi
 Prywatny numer systemu autonomicznego jest dozwolony dla komunikacji równorzędnej firmy Microsoft, ale będzie również wymagał ręcznej weryfikacji. Ponadto firma Microsoft usuwa prywatne numery AS w ścieżce AS dla odebranych prefiksów. W związku z tym nie można dołączyć prywatnych numerów AS do ścieżki AS, aby [wpłynąć na routing komunikacji równorzędnej firmy Microsoft](expressroute-optimize-routing.md). 
 
 > [!IMPORTANT]
-> Nie anonsuje tego samego publicznego trasy IP do publicznej sieci Internet i za pośrednictwem usługi ExpressRoute. Aby ograniczyć ryzyko niepoprawnej konfiguracji, co powoduje routing asymetryczny, zdecydowanie zalecamy [adresów IP translatora adresów Sieciowych](expressroute-nat.md) anonsowanych do firmy Microsoft ExpressRoute być z zakresu, który nie jest on anonsowany w Internecie w tryb failover. Jeśli to nie jest możliwe uzyskanie, koniecznie upewnij się, że anonsować bardziej konkretny zakres za pośrednictwem usługi ExpressRoute, niż połączenia internetowego. Oprócz publicznego trasę dla translatora adresów Sieciowych, należy można również ogłaszać dłuższe za pośrednictwem usługi ExpressRoute z publicznym adresem IP adresów używanych przez serwery w sieci lokalnej, które komunikują się z punktami końcowymi usługi Office 365, w ramach firmy Microsoft. 
+> Nie anonsuje tego samego publicznego trasy IP do publicznej sieci Internet i za pośrednictwem usługi ExpressRoute. Aby zmniejszyć ryzyko niepoprawnej konfiguracji powodującej Routing asymetryczny, zdecydowanie zalecamy, aby [adresy IP translatora adresów sieciowych](expressroute-nat.md) anonsowane do firmy Microsoft przez ExpressRoute były z zakresu, który nie jest anonsowany w Internecie. Jeśli nie jest to możliwe, należy się upewnić, że anonsuje bardziej konkretny zakres od ExpressRoute niż ten, na którym nadano połączenie internetowe. Oprócz publicznego trasę dla translatora adresów Sieciowych, należy można również ogłaszać dłuższe za pośrednictwem usługi ExpressRoute z publicznym adresem IP adresów używanych przez serwery w sieci lokalnej, które komunikują się z punktami końcowymi usługi Office 365, w ramach firmy Microsoft. 
 > 
 > 
 
@@ -120,7 +120,7 @@ Wymiana routingu będzie odbywać się za pośrednictwem protokołu eBGP. Sesje 
 ## <a name="autonomous-system-numbers"></a>Numery systemu autonomicznego
 Firma Microsoft używa numeru AS 12076 do publicznej i prywatnej komunikacji równorzędnej Azure oraz komunikacji równorzędnej Microsoft. Zarezerwowaliśmy numery AS od 65515 do 65520 do użytku wewnętrznego. Obsługiwane są zarówno 16-, jak i 32-bitowe numery AS.
 
-Nie ma żadnych wymagań związanych z symetrią transferu danych. Ścieżki przekazywania dalej i ścieżki zwracania mogą przechodzić różne pary routerów. Trasy identyczne muszą być anonsowane ze wszystkich stron w wielu parach obwodów należących do Ciebie. Metryki tras nie muszą być identyczne.
+Nie ma żadnych wymagań związanych z symetrią transferu danych. Ścieżki przekazywania dalej i ścieżki zwracania mogą przechodzić różne pary routerów. Trasy identyczne muszą być anonsowane z obu stron w wielu parach obwodów należących do użytkownika. Metryki tras nie muszą być identyczne.
 
 ## <a name="route-aggregation-and-prefix-limits"></a>Agregacja tras i limity prefiksów
 Firma Microsoft obsługuje do 4000 prefiksów anonsowanych nam za pośrednictwem prywatnej komunikacji równorzędnej Azure. Tę liczbę można zwiększyć do 10 000 prefiksów, jeśli zostanie włączony dodatek Premium usługi ExpressRoute. Akceptujemy do 200 prefiksów na sesję protokołu BGP dla publicznej komunikacji równorzędnej Azure i komunikacji równorzędnej Microsoft. 
@@ -135,7 +135,7 @@ Trasy domyślne są dozwolone tylko w sesjach prywatnej komunikacji równorzędn
 
  Aby można było włączyć łączność z innymi usługami i usługami infrastruktury Azure, musi być spełniony jeden z poniższych warunków:
 
-* Publicznej komunikacji równorzędnej Azure jest włączone przekierowywanie ruchu do publicznych punktów końcowych.
+* Publiczna Komunikacja równorzędna Azure jest włączona, aby kierować ruch do publicznych punktów końcowych.
 * Używasz routingu zdefiniowanego przez użytkownika, aby zezwolić na połączenie z Internetem dla każdej podsieci wymagającej takiego połączenia.
 
 > [!NOTE]
@@ -154,7 +154,7 @@ Zapoznaj się ze stroną [ExpressRoute partners and peering locations](expressro
 
 Możesz kupić więcej niż jeden obwód usługi ExpressRoute na region geopolityczny. Wiele ofert połączeń daje znaczące korzyści w zakresie wysokiej dostępności z powodu nadmiarowości geograficznej. W przypadkach, w którym masz wiele obwodów usługi ExpressRoute otrzymasz ten sam zestaw prefiksów anonsowanych z firmy Microsoft dotyczące komunikacji równorzędnej firmy Microsoft i publicznej komunikacji równorzędnej ścieżki. Oznacza to, że będziesz mieć wiele ścieżek ze swojej sieci do firmy Microsoft. Może to teoretycznie spowodować podjęcie nieoptymalnych decyzji w zakresie routingu w ramach sieci. W efekcie połączenia z różnymi usługami mogą nie być optymalne. Wartości społeczności gwarantują, że zostaną podjęte odpowiednie decyzje w kwestii routingu i klienci będą mieli zapewniony [optymalny routing do użytkowników](expressroute-optimize-routing.md).
 
-| **Region platformy Microsoft Azure** | **Regionalne społeczności BGP** | **Magazyn społeczności BGP** | **Społeczności SQL BGP** | **Cosmos DB protokołu BGP społeczności** |
+| **Region platformy Microsoft Azure** | **Regionalna społeczność protokołu BGP** | **Społeczność protokołu BGP magazynu** | **Społeczność protokołu BGP SQL** | **Cosmos DB społeczność protokołu BGP** |
 | --- | --- | --- | --- | --- |
 | **Ameryka Północna** | |
 | Wschodnie stany USA | 12076:51004 | 12076:52004 | 12076:53004 | 12076:54004 |
@@ -196,9 +196,9 @@ Możesz kupić więcej niż jeden obwód usługi ExpressRoute na region geopolit
 | Korea Południowa | 12076:51028 | 12076:52028 | 12076:53028 | 12076:54028 |
 | Korea Środkowa | 12076:51029 | 12076:52029 | 12076:53029 | 12076:54029 |
 | **Republika Południowej Afryki**| |
-| Republika Południowej Afryki (północ) | 12076:51034 | 12076:52034 | 12076:53034 | 12076:54034 |
-| Republika Południowej Afryki (zachód) | 12076:51035 | 12076:52035 | 12076:53035 | 12076:54035 |
-| **ZJEDNOCZONE EMIRATY ARABSKIE**| |
+| Północna Republika Południowej Afryki | 12076:51034 | 12076:52034 | 12076:53034 | 12076:54034 |
+| Zachodnia Republika Południowej Afryki | 12076:51035 | 12076:52035 | 12076:53035 | 12076:54035 |
+| **EMIRATY**| |
 | Północne Zjednoczone Emiraty Arabskie | 12076:51036 | 12076:52036 | 12076:53036 | 12076:54036 |
 | Środkowe Zjednoczone Emiraty Arabskie | 12076:51037 | 12076:52037 | 12076:53037 | 12076:54037 |
 
@@ -210,7 +210,7 @@ Wszystkie trasy anonsowane przez firmę Microsoft zostaną oznaczone odpowiedni�
 > 
 > 
 
-### <a name="service-to-bgp-community-value"></a>Usługi do wartości społeczności BGP
+### <a name="service-to-bgp-community-value"></a>Wartość wspólnotowa usługi BGP
 Oprócz tego firma Microsoft oznaczy również prefiksy w oparciu o usługę, do której się odnoszą. Dotyczy to tylko komunikacji równorzędnej firmy Microsoft. Poniższa tabela zawiera mapowanie usługi do wartości społeczności BGP.
 
 | **Usługa** | **Wartość społeczności BGP** |
@@ -222,7 +222,7 @@ Oprócz tego firma Microsoft oznaczy również prefiksy w oparciu o usługę, do
 | Usługa Azure globalnego usług * | 12076:5050 |
 | Inne usługi online Office 365 | 12076:5100 |
 
-\* Azure Global Services zawiera tylko DevOps platformy Azure, w tym momencie.
+\* Usługi globalne platformy Azure obejmują tylko usługę Azure DevOps.
 
 
 > [!NOTE]

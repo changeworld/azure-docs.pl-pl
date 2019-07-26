@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 05/15/2019
 ms.author: shvija
-ms.openlocfilehash: e1ec6987f1a142e9bf9cd4413cfb4444bde1b7dd
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 66b11ef8e746222074eadab2348f8a2cf9dab39f
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67796997"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479145"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Usługa Event Hubs — często zadawane pytania
 
@@ -24,14 +24,14 @@ ms.locfileid: "67796997"
 ### <a name="what-is-an-event-hubs-namespace"></a>Co to jest obszar nazw usługi Event Hubs?
 Przestrzeń nazw jest kontenerem określania zakresu dla zdarzenia koncentratora/tematów platformy Kafka. Pozwala ona unikatową [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name). Przestrzeń nazw służy jako kontener aplikacji, które mogą znajdować się wiele tematy usługi Event Hub/platformy Kafka. 
 
-### <a name="when-do-i-create-a-new-namespace-vs-use-an-existing-namespace"></a>Podczas tworzenia nowej przestrzeni nazw, a użycie istniejącej przestrzeni nazw?
-Alokacje pojemności ([jednostek przepływności (jednostek przepływności)](#throughput-units)) są naliczane na poziomie przestrzeni nazw. Przestrzeń nazw jest także skojarzone z regionem.
+### <a name="when-do-i-create-a-new-namespace-vs-use-an-existing-namespace"></a>Kiedy należy utworzyć nową przestrzeń nazw zamiast używać istniejącej przestrzeni nazw?
+Alokacje wydajności ([jednostki przepływności (TUs)](#throughput-units)) są rozliczane na poziomie przestrzeni nazw. Przestrzeń nazw jest również skojarzona z regionem.
 
-Można utworzyć nowy obszar nazw, zamiast używania istniejących jeden w jeden z następujących scenariuszy: 
+Możesz chcieć utworzyć nową przestrzeń nazw zamiast używać istniejącej w jednym z następujących scenariuszy: 
 
-- Należy Centrum zdarzeń skojarzone z nowym regionie.
-- Należy Centrum zdarzeń skojarzone z innej subskrypcji.
-- Potrzebujesz Centrum zdarzeń za pomocą alokacji distinct pojemności (czyli pojemności są wymagane dla przestrzeni nazw z Centrum zdarzeń dodano przekracza próg 40 jednostek Przepływności, a nie chcesz przejść do dedykowanych klastrów)  
+- Potrzebujesz centrum zdarzeń skojarzonego z nowym regionem.
+- Potrzebujesz centrum zdarzeń skojarzonego z inną subskrypcją.
+- Potrzebujesz centrum zdarzeń z odrębną alokacją pojemności (to oznacza, że pojemność przestrzeni nazw z dodanym centrum zdarzeń przekroczy próg 40 jednostek PRZEPŁYWNOŚCI i nie chcesz go wyszukać w przypadku dedykowanego klastra)  
 
 ### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>Jaka jest różnica między warstwami standardowa i Event hubs w warstwie podstawowa?
 
@@ -60,46 +60,46 @@ Event Hubs w warstwie standardowa warstwa obsługuje obecnie maksymalny okres pr
 ### <a name="how-do-i-monitor-my-event-hubs"></a>Jak monitorować mojej usługi Event Hubs?
 Usługa Event Hubs emituje wyczerpujący metryki, które zapewniają stan zasobów w celu [usługi Azure Monitor](../azure-monitor/overview.md). Pozwalają one również ocenić ogólną kondycję usługi Event Hubs, nie tylko na poziomie przestrzeni nazw, ale także na poziomie jednostki. Dowiedz się więcej o funkcji monitorowania, które jest oferowana w przypadku [usługi Azure Event Hubs](event-hubs-metrics-azure-monitor.md).
 
-### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Które porty należy otworzyć w zaporze? 
-Następujące protokoły za pomocą usługi Azure Service Bus umożliwia wysyłanie i odbieranie wiadomości:
+### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Jakie porty muszę otworzyć na zaporze? 
+Za pomocą następujących protokołów można Azure Service Bus wysyłać i odbierać komunikaty:
 
 - Advanced Message Queuing Protocol (AMQP)
 - HTTP
 - Apache Kafka
 
-Zobacz poniższą tabelę dla portów wychodzących, które należy otworzyć, aby używać tych protokołów do komunikacji z usługą Azure Event Hubs. 
+Zapoznaj się z poniższą tabelą dla portów wychodzących, które należy otworzyć, aby używać tych protokołów do komunikowania się z usługą Azure Event Hubs. 
 
 | Protocol | Porty | Szczegóły | 
 | -------- | ----- | ------- | 
-| AMQP | 5671 i 5672 | Zobacz [przewodnik dotyczący protokołu AMQP](../service-bus-messaging/service-bus-amqp-protocol-guide.md) | 
+| AMQP | 5671 i 5672 | Zobacz [Przewodnik po protokole AMQP](../service-bus-messaging/service-bus-amqp-protocol-guide.md) | 
 | HTTP, HTTPS | 80, 443 |  |
-| Kafka | 9093 | Zobacz [za pomocą Event Hubs z poziomu aplikacji platformy Kafka](event-hubs-for-kafka-ecosystem-overview.md)
+| Kafka | 9093 | Zobacz [używanie Event Hubs z aplikacji Kafka](event-hubs-for-kafka-ecosystem-overview.md)
 
-### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>Jakie adresy IP należy do listy dozwolonych?
-Aby znaleźć odpowiednie adresy IP w celu białą listę połączeń, wykonaj następujące kroki:
+### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>Jakie adresy IP są potrzebne do dozwolonych?
+Aby znaleźć listę prawidłowych adresów IP dla połączeń, wykonaj następujące kroki:
 
 1. Uruchom następujące polecenie w wierszu polecenia: 
 
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. Zanotuj adres IP zwrócony `Non-authoritative answer`. Tylko punkt, w czasie, które go zmienić jest, jeśli można przywrócić przestrzeni nazw do innego klastra.
+2. Zanotuj adres IP zwrócony w `Non-authoritative answer`. Jedyną momentem, gdy będzie ona zmieniana, jest przywrócenie przestrzeni nazw w innym klastrze.
 
-Jeśli używasz nadmiarowości strefy dla swojego obszaru nazw, należy wykonać kilka dodatkowych kroków: 
+Jeśli używasz nadmiarowości strefy dla przestrzeni nazw, musisz wykonać kilka dodatkowych czynności: 
 
-1. Najpierw uruchom narzędzie nslookup w przestrzeni nazw.
+1. Najpierw uruchom polecenie nslookup w przestrzeni nazw.
 
     ```
     nslookup <yournamespace>.servicebus.windows.net
     ```
-2. Zanotuj nazwę w **nieautorytatywnej odpowiedzi** sekcji, która znajduje się w jednej z następujących formatów: 
+2. Zanotuj nazwę w sekcji Nieautorytatywna **odpowiedź** , która znajduje się w jednym z następujących formatów: 
 
     ```
     <name>-s1.servicebus.windows.net
     <name>-s2.servicebus.windows.net
     <name>-s3.servicebus.windows.net
     ```
-3. Uruchom narzędzie nslookup dla każdego z nich przy użyciu sufiksy s1, s2 i s3 w celu uzyskania adresów IP wszystkich trzech wystąpień w trzech strefach dostępności 
+3. Uruchom polecenie nslookup dla każdego z sufiksów S1, S2 i S3, aby uzyskać adresy IP wszystkich trzech wystąpień uruchomionych w trzech strefach dostępności, 
 
 ## <a name="apache-kafka-integration"></a>Integracja platformy Apache Kafka
 
@@ -115,7 +115,7 @@ Przykład:
 
 bootstrap.Servers=dummynamespace.servicebus.Windows.NET:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule wymagane username = "$ Password="Endpoint=sb://dummynamespace.servicebus.windows.net/ ConnectionString"; SharedAccessKeyName = DummyAccessKeyName; SharedAccessKey = 5dOntTRytoC24opYThisAsit3is2B + OGY1US/fuL3ly = ";
 
-Uwaga: Jeśli sasl.jaas.config nie jest obsługiwaną konfiguracją w preferowanej struktury, można znaleźć konfiguracji, które są używane do ustawiania SASL nazwy użytkownika i hasło i zamiast tego użyj tych. Ustaw nazwę użytkownika $ConnectionString i hasło, aby parametry połączenia usługi Event Hubs.
+Uwaga: Jeśli SASL. jaas. config nie jest obsługiwaną konfiguracją w Twojej strukturze, Znajdź konfiguracje, które są używane do ustawiania nazwy użytkownika i hasła SASL, i Użyj zamiast nich. Ustaw nazwę użytkownika $ConnectionString i hasło, aby parametry połączenia usługi Event Hubs.
 
 ### <a name="what-is-the-messageevent-size-for-kafka-enabled-event-hubs"></a>Jaki jest rozmiar komunikatu lub zdarzenia dla komputerów z obsługą platformy Kafka z usługi Event Hubs?
 Maksymalny rozmiar komunikatu dozwolony dla komputerów z obsługą platformy Kafka z usługi Event Hubs to 1MB.
@@ -185,8 +185,9 @@ Utworzyć dedykowany klaster usługi Event Hubs, przesyłając [żądania pomocy
 ## <a name="best-practices"></a>Najlepsze praktyki
 
 ### <a name="how-many-partitions-do-i-need"></a>Jak wiele partycji jest potrzebne?
+Liczba partycji jest określana podczas tworzenia i musi należeć do zakresu od 2 do 32. Liczby partycji nie można zmieniać, dlatego ustawiając liczbę partycji, trzeba planować długoterminowo. Partycje stanowią mechanizm organizacji danych powiązany z równoległością podrzędną wymaganą w aplikacjach korzystających z tych danych. Liczba partycji w centrum zdarzeń jest bezpośrednio związana z oczekiwaną liczbą jednoczesnych czytników. Aby uzyskać więcej informacji o partycjach, zobacz [partycje](event-hubs-features.md#partitions).
 
-Liczba partycji w Centrum zdarzeń nie można zmodyfikować po zakończeniu instalacji. Mając to na uwadze ważne jest myśleć o partycjach ilu potrzebujesz przed rozpoczęciem pracy. 
+Może być konieczne ustawienie najwyższej możliwej wartości, która jest 32 w momencie tworzenia. Należy pamiętać, że z więcej niż jedną partycją będzie można wysyłać zdarzenia do wielu partycji bez zachowywania kolejności, chyba że skonfigurowano nadawców tylko do jednej partycji z 32, pozostawiając pozostałe 31 partycji. W poprzednim przypadku trzeba będzie odczytywać zdarzenia ze wszystkich partycji 32. W tym drugim przypadku nie ma żadnych oczywistych dodatkowych kosztów poza dodatkową konfiguracją, którą trzeba wykonać na hoście procesora zdarzeń.
 
 Usługa Event Hubs umożliwia czytnik jednej partycji dla każdej grupy odbiorców. W większości przypadków użycia domyślne ustawienie cztery partycje jest wystarczająca. Jeśli chcesz skalować przetwarzanie zdarzeń, warto rozważyć dodatkowe partycje. Nie ma żadnego limitu określonego przepływność na partycję, jednak zagregowanej przepływności w przestrzeni nazw jest ograniczona przez liczbę jednostek przepływności. Podczas zwiększysz liczbę jednostek przepływności w przestrzeni nazw, może okazać się dodatkowe partycje, aby umożliwić współbieżnych czytników do osiągnięcia własnych maksymalną przepustowość.
 
@@ -232,8 +233,8 @@ Aby uzyskać listę wszystkich przydziałów usługi Event Hubs, zobacz [przydzi
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Dlaczego nie mogę utworzyć przestrzeń nazw po usunięciu jej z inną subskrypcję? 
-Jeśli usuniesz przestrzeni nazw z subskrypcji, poczekaj przez 4 godziny przed odtworzenia go o tej samej nazwie w innej subskrypcji. W przeciwnym razie może być wyświetlony następujący komunikat o błędzie: `Namespace already exists`. 
+### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Dlaczego nie mogę utworzyć przestrzeni nazw po usunięciu jej z innej subskrypcji? 
+Po usunięciu przestrzeni nazw z subskrypcji poczekaj 4 godziny, a następnie utwórz ją z tą samą nazwą w innej subskrypcji. W przeciwnym razie może zostać wyświetlony następujący komunikat o błędzie `Namespace already exists`:. 
 
 ### <a name="what-are-some-of-the-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>Co to są wyjątki generowane przez centra zdarzeń i ich sugerowane akcje?
 

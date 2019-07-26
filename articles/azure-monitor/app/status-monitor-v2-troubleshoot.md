@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: c61d54fc49ddd0a8a9ac5063c1a2a3edea66a899
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e34beba32eace370664893225dd85b6f4b79c886
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326225"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424099"
 ---
 # <a name="troubleshooting-status-monitor-v2"></a>Rozwiązywanie problemów monitor stanu v2
 
@@ -78,11 +78,13 @@ Po uruchomieniu polecenia Enable wykonaj następujące czynności:
 
 ### <a name="iis-nested-applications"></a>Aplikacje zagnieżdżone usług IIS
 
-Nie instrumentuje zagnieżdżonych aplikacji w usługach IIS w wersji [1,0. teraz](https://github.com/microsoft/ApplicationInsights-Home/issues/369)śledzimy ten problem.
+Nie instrumentuje zagnieżdżonych aplikacji w usługach IIS w wersji 1,0.
+Teraz śledzimy [ten problem.](https://github.com/microsoft/ApplicationInsights-Home/issues/369)
 
 ### <a name="advanced-sdk-configuration-isnt-available"></a>Zaawansowana konfiguracja zestawu SDK jest niedostępna.
 
-Konfiguracja zestawu SDK nie jest dostępna dla użytkownika końcowego w wersji 1,0. [tutaj](https://github.com/microsoft/ApplicationInsights-Home/issues/375)śledzimy ten problem.
+Konfiguracja zestawu SDK nie jest dostępna dla użytkownika końcowego w wersji 1,0.
+Teraz śledzimy [ten problem.](https://github.com/microsoft/ApplicationInsights-Home/issues/375)
 
     
     
@@ -116,7 +118,7 @@ Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az
 ```
 
 #### <a name="determine-the-current-version-of-the-status-monitor-v2-module"></a>Określ bieżącą wersję modułu monitor stanu v2
-Uruchom polecenie `Get-ApplicationInsightsMonitoringStatus` , aby wyświetlić następujące informacje dotyczące modułu:
+Uruchom polecenie `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` , aby wyświetlić następujące informacje dotyczące modułu:
    - Wersja modułu programu PowerShell
    - Wersja zestawu SDK Application Insights
    - Ścieżki plików modułu programu PowerShell
@@ -158,7 +160,7 @@ Zapoznaj się z dokumentacją [interfejsu API](status-monitor-v2-api-get-status.
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Przejrzyj [odwołanie do interfejsu API](status-monitor-v2-overview.md#powershell-api-reference) , aby dowiedzieć się więcej na temat parametrów, które mogły zostać pominięte.
 - Jeśli wystąpi problem, którego nie ma na liście, możesz skontaktować się z nami w serwisie [GitHub](https://github.com/Microsoft/ApplicationInsights-Home/issues).

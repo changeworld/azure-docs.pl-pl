@@ -1,52 +1,46 @@
 ---
-title: Usługa Azure Active Directory Identity Protection — często zadawane pytania | Dokumentacja firmy Microsoft
-description: Często zadawane pytania dotyczące usługi Azure AD Identity Protection
+title: Azure Active Directory Identity Protection często zadawane pytania | Microsoft Docs
+description: Często zadawane pytania dotyczące Azure AD Identity Protection
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: 14f7fc83-f4bb-41bf-b6f1-a9bb97717c34
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/03/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bea455371938ccc4d512bdb7ffddd72eb9508da
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cc02b8b5dccbec106e90430fc1714253df6ad847
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60454513"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334018"
 ---
-# <a name="azure-active-directory-identity-protection-faq"></a>Usługa Azure Active Directory Identity Protection — często zadawane pytania
+# <a name="azure-active-directory-identity-protection-faq"></a>Azure Active Directory Identity Protection często zadawane pytania
 
-Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Active Directory (Azure AD) Identity Protection. Aby uzyskać więcej informacji, zobacz [usługi Azure Active Directory Identity Protection](../active-directory-identityprotection.md). 
+Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Identity Protection w Azure Active Directory (Azure AD). Aby uzyskać więcej informacji, zobacz [Azure Active Directory Identity Protection](../active-directory-identityprotection.md). 
 
+## <a name="why-do-some-risk-events-have-closed-system-status"></a>Dlaczego niektóre zdarzenia dotyczące ryzyka mają stan "zamknięte (system)"?
 
-## <a name="why-do-some-risk-events-have-closed-system-status"></a>Dlaczego niektóre zdarzenia o podwyższonym ryzyku ma stan "Zamknięte (system)"
-
-**Odp.:** Te zdarzenia o podwyższonym ryzyku zostały wykryte przez ochronę tożsamości i później zamknięta, ponieważ zdarzenia zostały przestaje być uważany za ryzykowne. Te zdarzenia są wliczane poziom ryzyka użytkownika. 
-
----
-
-## <a name="do-i-need-to-be-a-global-admin-to-use-identity-protection-in-the-azure-portal"></a>Czy muszę być administratorem globalnym, aby korzystać z funkcji ochrony tożsamości w witrynie Azure portal?
-**Odp.:** Nie. Może być Czytelnik zabezpieczeń, administratora zabezpieczeń lub administrator globalny, do korzystania z ochrony tożsamości.
+**Odp.:** Te zdarzenia ryzyka zostały wykryte przez ochronę tożsamości i później zamknięte, ponieważ zdarzenia nie były już uznawane za ryzykowne. Te zdarzenia nie są wliczane do poziomu ryzyka użytkownika. 
 
 ---
 
-## <a name="how-do-i-get-identity-protection"></a>Jak uzyskać Identity Protection?
-
-**Odp.:** Zobacz [wprowadzenie do usługi Azure Active Directory — wersja Premium](../fundamentals/active-directory-get-started-premium.md) odpowiedzi na to pytanie.
+## <a name="do-i-need-to-be-a-global-admin-to-use-identity-protection-in-the-azure-portal"></a>Czy muszę być administratorem globalnym, aby używać ochrony tożsamości w Azure Portal?
+**Odp.:** Nie. Możesz być Czytelnikem zabezpieczeń, administratorem zabezpieczeń lub administratorem globalnym, aby używać ochrony tożsamości.
 
 ---
 
-## <a name="how-can-i-sort-users-in-users-flagged-for-risk"></a>Jak można sortować użytkowników "Użytkownicy oflagowani w związku z ryzykiem"?
+## <a name="how-do-i-get-identity-protection"></a>Jak mogę uzyskać ochrony tożsamości?
 
-**Odp.:** Pobieranie użytkowników oflagowanych raport dotyczący narażonych, klikając **Pobierz** w górnej części **użytkownicy oflagowani w związku z ryzykiem** strony. Następnie można sortować pobrane dane oparte na dostępnych pól, w tym ostatnia zaktualizowana (UTC).
+**Odp.:** Aby odpowiedzieć na to pytanie, zobacz [wprowadzenie do Azure Active Directory — wersja Premium](../fundamentals/active-directory-get-started-premium.md) .
+
+---
+
+## <a name="how-can-i-sort-users-in-users-flagged-for-risk"></a>Jak sortować użytkowników w "przypadku użytkowników oflagowanych pod kątem ryzyka"?
+
+**Odp.:** Pobierz raport Użytkownicy oflagowani dla ryzyka, klikając pozycję **Pobierz** w górnej części strony **Użytkownicy oflagowani w celu uzyskania ryzyka** . Pobrane dane można następnie sortować na podstawie dostępnych pól, w tym ostatniej aktualizacji (UTC).
 
 ---

@@ -1,6 +1,6 @@
 ---
-title: Sprawdź użycie zasobów usługi platformy Azure przy użyciu interfejsu API REST | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak za pomocą interfejsów API REST platformy Azure Sprawdź użycie zasobów usługi platformy Azure.
+title: Przeglądanie użycia zasobów usługi platformy Azure przy użyciu interfejsu API REST | Microsoft Docs
+description: Dowiedz się, jak używać interfejsów API REST platformy Azure do przeglądania użycia zasobów usługi platformy Azure.
 services: billing
 documentationcenter: na
 author: lleonard-msft
@@ -12,26 +12,26 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2018
-ms.author: erikre
-ms.openlocfilehash: d3db4166810da981ff0117536d8550a6b2203924
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: banders
+ms.openlocfilehash: 47e19fae26d6e3bc465799980c587d7bb7ed5e92
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370989"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443061"
 ---
-# <a name="review-azure-resource-usage-using-the-rest-api"></a>Sprawdź użycie zasobów platformy Azure przy użyciu interfejsu API REST
+# <a name="review-azure-resource-usage-using-the-rest-api"></a>Przeglądanie użycia zasobów platformy Azure przy użyciu interfejsu API REST
 
-Pomoc platformy Azure interfejsów API usługi Cost Management możesz przejrzeć i zarządzać nimi zużycie zasobów platformy Azure.
+Azure Cost Management interfejsy API ułatwiają przeglądanie i zarządzanie użyciem zasobów platformy Azure.
 
-W tym artykule dowiesz się, jak utworzyć dzienny raport, który wygeneruje dokument z wartości rozdzielanych przecinkami godzinowe informacje o użyciu, a następnie użyj filtrów, aby dostosować raport, dzięki czemu można tworzyć zapytania użytkowania maszyn wirtualnych, baz danych i oznaczony zasoby w grupie zasobów platformy Azure.
+W tym artykule dowiesz się, jak utworzyć raport dzienny, który wygeneruje dokument z wartościami rozdzielanymi przecinkami o informacje o godzinie użycia, a następnie jak używać filtrów do dostosowywania raportu, aby można było wysyłać zapytania dotyczące użycia maszyn wirtualnych, baz danych i otagowanych zasoby w grupie zasobów platformy Azure.
 
 >[!NOTE]
-> Interfejs API zarządzania kosztami jest aktualnie w prywatnej wersji zapoznawczej.
+> Interfejs API Cost Management jest obecnie w prywatnej wersji zapoznawczej.
 
-## <a name="create-a-basic-cost-management-report"></a>Utwórz raport zarządzania kosztu podstawowego
+## <a name="create-a-basic-cost-management-report"></a>Tworzenie raportu o podstawowym zarządzaniu kosztami
 
-Użyj `reports` operacji w interfejsie API zarządzania kosztami do definiowania sposobu generowania raportowanie kosztów i której będą publikowane raporty.
+`reports` Użyj operacji w interfejsie API Cost Management, aby określić sposób generowania raportowania kosztów i miejsce, w którym będą publikowane raporty.
 
 ```http
 https://management.azure.com/subscriptions/{subscriptionGuid}/providers/Microsoft.CostManagement/reports/{reportName}?api-version=2018-09-01-preview
@@ -39,16 +39,16 @@ Content-Type: application/json
 Authorization: Bearer
 ```
 
-`{subscriptionGuid}` Parametr jest wymagany i może zawierać Identyfikatora subskrypcji, który może zostać odczytany przy użyciu poświadczeń podanych we token interfejsu API. W `{reportName}`
+`{subscriptionGuid}` Parametr jest wymagany i powinien zawierać identyfikator subskrypcji, który można odczytać przy użyciu poświadczeń podanych w tokenie interfejsu API. Polu`{reportName}`
 
 Wymagane są następujące nagłówki: 
 
 |Nagłówek żądania|Opis|  
 |--------------------|-----------------|  
-|*Content-Type:*| Wymagany. Ustaw `application/json`. |  
-|*Authorization:*| Wymagany. Ustawić prawidłową `Bearer` tokenu. |
+|*Content-Type:*| Wymagane. Ustaw wartość `application/json`. |  
+|*Authorization:*| Wymagana. Ustaw prawidłowy `Bearer` token. |
 
-Skonfiguruj parametry raportu w treści żądania HTTP. W poniższym przykładzie ustawiono raportu do wygenerowania każdego dnia, gdy aktywny, jest plikiem CSV zapisywane w kontenerze obiektów blob usługi Azure Storage i co godzinę zawiera informacje o kosztach dla wszystkich zasobów w grupie zasobów `westus`.
+Skonfiguruj parametry raportu w treści żądania HTTP. W poniższym przykładzie raport jest ustawiany do generowania każdego dnia, gdy jest aktywny, jest plikiem CSV zapisanym w kontenerze obiektów BLOB usługi Azure Storage i zawiera godzinowe informacje o kosztach dla wszystkich zasobów w `westus`grupie zasobów.
 
 ```json
 {
@@ -93,11 +93,11 @@ Dla zasobu
 
 ## <a name="filtering-reports"></a>Filtrowanie raportów
 
-`filter` i `dimensions` części treści żądania podczas tworzenia raportu pozwalają skupić się w kosztów dla określonych typów zasobów. Treść żądania w poprzednim pokazuje sposób filtrowania przez wszystkie zasoby w regionie. 
+Sekcja `filter` i`dimensions` treści żądania podczas tworzenia raportu umożliwia skoncentrowanie się na kosztach dla określonych typów zasobów. W poprzedniej treści żądania pokazano, jak filtrować według wszystkich zasobów w regionie. 
 
-### <a name="get-all-compute-usage"></a>Pobierz wszystkie wykorzystanie mocy obliczeniowej
+### <a name="get-all-compute-usage"></a>Pobierz wszystkie użycie obliczeniowe
 
-Użyj `ResourceType` wymiaru, aby zgłosić kosztów maszyn wirtualnych platformy Azure w ramach subskrypcji we wszystkich regionach.
+Za pomocą `ResourceType` wymiaru można raportować koszty maszyn wirtualnych platformy Azure w ramach subskrypcji we wszystkich regionach.
 
 ```json
 "filter": {
@@ -112,9 +112,9 @@ Użyj `ResourceType` wymiaru, aby zgłosić kosztów maszyn wirtualnych platform
 }
 ```
 
-### <a name="get-all-database-usage"></a>Pobierz wszystkie bazy danych użycia
+### <a name="get-all-database-usage"></a>Pobierz wszystkie użycie bazy danych
 
-Użyj `ResourceType` wymiaru raportu kosztów usługi Azure SQL Database w ramach subskrypcji we wszystkich regionach.
+Za pomocą `ResourceType` wymiaru można raportować koszty Azure SQL Database w ramach subskrypcji we wszystkich regionach.
 
 ```json
 "filter": {
@@ -128,9 +128,9 @@ Użyj `ResourceType` wymiaru raportu kosztów usługi Azure SQL Database w ramac
 }
 ```
 
-### <a name="report-on-specific-instances"></a>Raport na temat konkretnych wystąpień
+### <a name="report-on-specific-instances"></a>Raport dotyczący określonych wystąpień
 
-`Resource` Wymiar pozwala raportu kosztów określonych zasobów.
+`Resource` Wymiar umożliwia raportowanie kosztów określonych zasobów.
 
 ```json
 "filter": {
@@ -144,9 +144,9 @@ Użyj `ResourceType` wymiaru raportu kosztów usługi Azure SQL Database w ramac
 }
 ```
 
-### <a name="changing-timeframes"></a>Zmiana harmonogramów
+### <a name="changing-timeframes"></a>Zmienianie przedziałów czasu
 
-Ustaw `timeframe` definicji `Custom` można ustawić przedział czasowy poza tygodnia do dnia i miesiąca do wbudowanych opcji daty.
+`timeframe` Ustaw`Custom` definicję, aby ustawić limit czasu poza tydzień na datę i miesiąc, aby wyświetlić opcje wbudowane.
 
 ```json
 "timeframe": "Custom",
@@ -156,5 +156,5 @@ Ustaw `timeframe` definicji `Custom` można ustawić przedział czasowy poza tyg
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - [Wprowadzenie do interfejsu API REST platformy Azure](https://docs.microsoft.com/rest/api/azure/)   

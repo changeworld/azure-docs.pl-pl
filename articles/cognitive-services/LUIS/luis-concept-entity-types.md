@@ -1,7 +1,7 @@
 ---
 title: Typy jednostek
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: 'Jednostki wyodrębnianie danych z wypowiedź. Typy jednostek zapewniają przewidywalne wyodrębniania danych. Istnieją dwa typy jednostek: przedstawiono maszyny i przedstawiono maszyny. Warto wiedzieć, jakiego typu jednostki, w przypadku korzystania z wypowiedzi.'
+description: 'Jednostki wyodrębniają dane z wypowiedź. Typy jednostek umożliwiają przewidywalną wyodrębnianie danych. Istnieją dwa typy jednostek: Uczenie maszynowe i niekomputerowe. Ważne jest, aby wiedzieć, który typ jednostki jest używany w wyrażenia długości.'
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,36 +9,36 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: 628a96c4e912341226d67a7ed8f241194e7b7825
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a5a3ba8c25107317e7c47ee358f9a6ebe7d4556f
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080041"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479113"
 ---
-# <a name="entity-types-and-their-purposes-in-luis"></a>Typy jednostek i ich celów w usługi LUIS
+# <a name="entity-types-and-their-purposes-in-luis"></a>Typy jednostek i ich cele w LUIS
 
-Jednostki wyodrębnianie danych z wypowiedź. Typy jednostek zapewniają przewidywalne wyodrębniania danych. Istnieją dwa typy jednostek: przedstawiono maszyny i przedstawiono maszyny. Warto wiedzieć, jakiego typu jednostki, w przypadku korzystania z wypowiedzi. 
+Jednostki wyodrębniają dane z wypowiedź. Typy jednostek umożliwiają przewidywalną wyodrębnianie danych. Istnieją dwa typy jednostek: Uczenie maszynowe i niekomputerowe. Ważne jest, aby wiedzieć, który typ jednostki jest używany w wyrażenia długości. 
 
 ## <a name="entity-compared-to-intent"></a>Jednostki w porównaniu do intencji
 
-Jednostka reprezentuje wyraz lub frazę w polu wypowiedź, który ma zostać wyodrębniony. Wypowiedź może zawierać wiele jednostek lub brak wcale. Aplikacja kliencka może wymagać jednostki do wykonywania swoich zadań lub służyć jako przewodnik kilka opcji do zaprezentowania użytkownikowi. 
+Jednostka reprezentuje wyraz lub frazę w polu wypowiedź, który ma zostać wyodrębniony. Wypowiedź może zawierać wiele jednostek lub brak wcale. Aplikacja kliencka może potrzebować jednostki do wykonania zadania lub użycia jej jako przewodnika po kilku opcjach, które mają być widoczne dla użytkownika. 
 
-Jednostki:
+Jednostka:
 
-* Reprezentuje klasę, łącznie z kolekcji podobnych obiektów (miejsc, rzeczy, osoby, zdarzenia lub pojęcia). 
-* W tym artykule opisano informacje istotne dla intencji
+* Reprezentuje klasę zawierającą kolekcję podobnych obiektów (miejsc, rzeczy, osób, zdarzeń lub koncepcji). 
+* Opisuje informacje istotne dla zamiaru
 
 
-Na przykład aplikacji wyszukiwania wiadomości mogą obejmować jednostki, takie jak "tematu", "źródło", "słowo kluczowe" i "publikowania daty" będące kluczowych danych do wyszukiwania wiadomości. W aplikacji rezerwacji podróży, "Lokalizacja", "Data", "linii lotniczych" "podróży class" i "bilety" są informacje o kluczu dla rezerwacji lotu (dotyczy na intencje "Zarezerwuj lotów").
+Na przykład aplikacji wyszukiwania wiadomości mogą obejmować jednostki, takie jak "tematu", "źródło", "słowo kluczowe" i "publikowania daty" będące kluczowych danych do wyszukiwania wiadomości. W aplikacji do księgowania podróży "lokalizacja", "Data", "linie lotnicze", "Klasa podróży" i "bilety" są kluczowymi informacjami dotyczącymi rezerwacji lotów (dotyczy to zamiaru "Lot" książki ").
 
 Natomiast zamiar reprezentuje prognozowania całego wypowiedź. 
 
-## <a name="entities-help-with-data-extraction-only"></a>Jednostki Pomoc dotycząca tylko wyodrębnianie danych
+## <a name="entities-help-with-data-extraction-only"></a>Jednostki pomocy dotyczące tylko wyodrębniania danych
 
-Etykiety lub znak jednostki na potrzeby it tylko wyodrębniania jednostki nie ułatwić intencji prognozy.
+Etykiety i oznaczania jednostek do celów wyodrębniania jednostek nie ułatwiają przewidywania intencji.
 
 ## <a name="entities-represent-data"></a>Jednostki reprezentujące dane
 
@@ -51,11 +51,11 @@ Jednostki są dane, które chcesz ściągnąć z wypowiedź. Może to być nazwy
 
 ## <a name="entities-are-optional-but-highly-recommended"></a>Jednostki są opcjonalne, ale zdecydowanie zalecane
 
-Mimo że intencjami wymagane, jednostki są opcjonalne. Nie trzeba tworzyć jednostki, co pojęcie w swojej aplikacji, ale tylko wymagane dla aplikacji klienckiej i podjąć działania. 
+Mimo że intencjami wymagane, jednostki są opcjonalne. Nie trzeba tworzyć jednostek dla każdej koncepcji w aplikacji, ale tylko dla tych, które są wymagane do podjęcia działania przez aplikację kliencką. 
 
 Swoje wypowiedzi nie ma szczegółów, czego potrzebuje bota, aby kontynuować, nie muszą je dodać. Jak dojrzewa aplikacji, możesz je dodać później. 
 
-Jeśli nie masz pewności, jak skorzystać z informacji, dodaj kilka typowych ze wstępnie utworzonych jednostek takich jak [datetimeV2](luis-reference-prebuilt-datetimev2.md), [porządkowe](luis-reference-prebuilt-ordinal.md), [e-mail](luis-reference-prebuilt-email.md), i [numer telefonu ](luis-reference-prebuilt-phonenumber.md).
+Jeśli nie masz pewności, jak korzystać z tych informacji, Dodaj kilka typowych wstępnie utworzonych jednostek, takich jak [datetimeV2](luis-reference-prebuilt-datetimev2.md), [porządkowa](luis-reference-prebuilt-ordinal.md), [adres e-mail](luis-reference-prebuilt-email.md)i [numer telefonu](luis-reference-prebuilt-phonenumber.md).
 
 ## <a name="label-for-word-meaning"></a>Etykieta znaczenie słowa
 
@@ -72,226 +72,150 @@ Jeśli chce się jednostkę zdarzeń, aby znaleźć wszystkie dane zdarzeń, ety
 
 ## <a name="entities-are-shared-across-intents"></a>Jednostki są współdzielone przez intencji
 
-Jednostki są współużytkowane przez intencji. Nie należą one do dowolnego pojedynczego celem. Intencje i podmioty można skojarzyć semantycznie, ale nie jest wyłączne relacji.
+Jednostki są współużytkowane przez intencji. Nie należą one do dowolnego pojedynczego celem. Intencje i jednostki mogą być semantycznie skojarzone, ale nie jest to relacja wyłączna.
 
-W polu wypowiedź "Zarezerwuj mnie biletu do Paryża", "Paryż" jest jednostką, odnoszące się do lokalizacji. Dzięki rozpoznawaniu jednostek, które są wymienione w wypowiedź użytkownika, usługi LUIS pomaga wybierz konkretne akcje podejmowane w celu spełnienia żądania użytkownika aplikacji klienckiej.
+W wypowiedź "książka ode mnie bilet do Paryż", "Paryż" jest jednostką odwołującą się do lokalizacji. Uznając jednostki, które są wymienione w wypowiedź użytkownika, LUIS pomaga aplikacji klienckiej wybrać określone akcje, które należy wykonać w celu spełnienia żądania użytkownika.
 
-## <a name="mark-entities-in-none-intent"></a>Oznaczanie jednostek, żadna intencji
+## <a name="mark-entities-in-none-intent"></a>Oznacz jednostki w opcji Brak
 
-Wszystkie opcje, w tym **Brak** zostały oznaczone celem jednostki, gdy jest to możliwe. Dzięki temu usługi LUIS, Dowiedz się więcej o których jednostek wypowiedzi i jakie słowa wokół jednostki. 
+Wszystkie intencje, łącznie z intencją **none** , powinny mieć oznaczone jednostki, jeśli jest to możliwe. Dzięki temu usługi LUIS, Dowiedz się więcej o których jednostek wypowiedzi i jakie słowa wokół jednostki. 
 
 ## <a name="entity-status-for-predictions"></a>Stan jednostki dla prognoz
 
-Portal usługi LUIS informuje, kiedy jednostki w przykładzie wypowiedź jest różni się od jednostki oznaczone lub jest zbyt Zamknij do innej jednostki i w związku z tym jasne. Jest to wskazywane przez czerwoną linią wypowiedź przykładu. 
+Portal LUIS informuje o tym, kiedy jednostka w przykładowym wypowiedź różni się od oznaczonej jednostki lub jest zbyt blisko innej jednostki i dlatego jest niejasne. Jest to wskazane czerwonym podkreśleniem w przykładzie wypowiedź. 
 
-Aby uzyskać więcej informacji, zobacz [prognozy stan jednostki](luis-how-to-add-example-utterances.md#entity-status-predictions). 
+Aby uzyskać więcej informacji, zobacz [przewidywania stanu jednostki](luis-how-to-add-example-utterances.md#entity-status-predictions). 
 
 ## <a name="types-of-entities"></a>Typy jednostek
 
-Usługa LUIS oferuje wiele typów jednostek. Wybierz jednostki, na podstawie sposobu mają zostać wyodrębnione dane i jak powinny być reprezentowane po wyodrębnieniu go.
+LUIS oferuje wiele typów jednostek. Wybierz jednostkę na podstawie sposobu wyodrębniania danych i sposobu ich reprezentowania po wyodrębnieniu.
 
-Jednostki można wyodrębnić z uczenia maszynowego, umożliwiający LUIS kontynuować zapoznawanie się jak jednostka jest wyświetlana w polu wypowiedź. Jednostki można wyodrębnić bez uczenia maszynowego, dopasowania tekstu do dokładnego dopasowania lub wyrażenie regularne. Jednostki we wzorcach można wyodrębnić z implementacją mieszane. 
+Jednostki można wyodrębnić przy użyciu uczenia maszynowego, co umożliwia LUISom kontynuowanie uczenia się, jak jednostka pojawia się w wypowiedź. Jednostki można wyodrębnić bez uczenia maszynowego, dopasowując dokładnego tekstu lub wyrażenia regularnego. Jednostki w wzorcach można wyodrębnić przy użyciu implementacji mieszanej. 
 
-Gdy jednostki są wyodrębniane, dane jednostki można reprezentowane jako pojedyncza jednostka informacji lub w połączeniu z innymi jednostkami w celu utworzenia jednostki informacji używanych przez aplikację klienta.
+Po wyodrębnieniu jednostki dane jednostki mogą być reprezentowane jako jedna jednostka informacji lub połączone z innymi jednostkami w celu utworzenia jednostki informacji, które mogą być używane przez aplikację kliencką.
 
-|Przedstawiono maszyny|Można oznaczyć|Samouczek|Przykład<br>Odpowiedź|Typ jednostki|Przeznaczenie|
+|Komputer — informacje|Można oznaczyć|Samouczek|Przykład<br>Odpowiedź|Typ jednostki|Cel|
 |--|--|--|--|--|--|
-|✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**Composite**](#composite-entity)|Grupowanie jednostki, niezależnie od tego typu jednostki.|
-|||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**Lista**](#list-entity)|Lista elementów i ich synonimy wyodrębnione z tekstem dokładnie zgodne.|
-|Mieszane||[✔](luis-tutorial-pattern.md)|[✔](luis-concept-data-extraction.md#patternany-entity-data)|[**Pattern.any**](#patternany-entity)|Jednostka, w których koniec jednostki trudno jest określić.|
-|||[✔](luis-tutorial-prebuilt-intents-entities.md)|[✔](luis-concept-data-extraction.md#prebuilt-entity-data)|[**Prebuilt**](#prebuilt-entity)|Przeprowadzono już uczenie do wyodrębniania różnych rodzajów danych.|
-|||[✔](luis-quickstart-intents-regex-entity.md)|[✔](luis-concept-data-extraction.md#regular-expression-entity-data)|[**Regular Expression**](#regular-expression-entity)|Używa wyrażeń regularnych w celu dopasowania tekstu.|
-|✔|✔|[✔](luis-quickstart-primary-and-secondary-data.md)|[✔](luis-concept-data-extraction.md#simple-entity-data)|[**Simple**](#simple-entity)|Zawiera pojedynczy pojęciem wyrazu lub frazy.|
+|✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**Złożone**](#composite-entity)|Grupowanie jednostek, niezależnie od typu jednostki.|
+|||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**Staw**](#list-entity)|Lista elementów i ich synonimy wyodrębnione z dokładnym dopasowaniem do tekstu.|
+|Mieszany||[✔](luis-tutorial-pattern.md)|[✔](luis-concept-data-extraction.md#patternany-entity-data)|[**Wzorzec. any**](#patternany-entity)|Obiekt, na którym koniec jednostki jest trudny do określenia.|
+|||[✔](luis-tutorial-prebuilt-intents-entities.md)|[✔](luis-concept-data-extraction.md#prebuilt-entity-data)|[**Prebuilt**](#prebuilt-entity)|Już przeprowadzono szkolenia w celu wyodrębnienia różnych rodzajów danych.|
+|||[✔](luis-quickstart-intents-regex-entity.md)|[✔](luis-concept-data-extraction.md#regular-expression-entity-data)|[**Wyrażenie regularne**](#regular-expression-entity)|Dopasowuje tekst za pomocą wyrażenia regularnego.|
+|✔|✔|[✔](luis-quickstart-primary-and-secondary-data.md)|[✔](luis-concept-data-extraction.md#simple-entity-data)|[**Ułatwia**](#simple-entity)|Zawiera pojedyncze koncepcje w wyrazie lub frazie.|
 
-Tylko jednostki maszyny do opanowania konieczne oznaczone w wypowiedzi przykładu. Maszyny do opanowania jednostek działają najlepiej, jeśli testowany za pośrednictwem [kwerendy punktu końcowego](luis-concept-test.md#endpoint-testing) i [przeglądania punktu końcowego wypowiedzi](luis-how-to-review-endoint-utt.md). 
+W przykładzie wyrażenia długości należy oznaczyć tylko jednostki, które są związane z maszyną. Jednostki poznanie maszyn działają najlepiej w przypadku przetestowania za pośrednictwem [zapytań punktu końcowego](luis-concept-test.md#endpoint-testing) i [przeglądania punktu końcowego wyrażenia długości](luis-how-to-review-endoint-utt.md). 
 
-Jednostki pattern.any muszą być oznaczone w [wzorzec](luis-how-to-model-intent-pattern.md) przykłady szablonów, nie przykłady intencji użytkownika. 
+Wzorzec. wszystkie jednostki muszą być oznaczone jako przykłady szablonu [wzorca](luis-how-to-model-intent-pattern.md) , a nie przykłady użytkownika. 
 
-Mieszane jednostki używają kombinacji metod wykrywania jednostki.
+Jednostki mieszane używają kombinacji metod wykrywania jednostek.
 
-## <a name="machine-learned-entities-use-context"></a>Maszyny do opanowania jednostek używać kontekstu
+## <a name="machine-learned-entities-use-context"></a>Jednostki, na które nauczyne maszyny, używają kontekstu
 
-Dowiedz się, że maszyna do opanowania jednostek z kontekstu w wypowiedź. Dzięki temu odmiany położenia w przykładzie wypowiedzi znaczące. 
+Jednostki poznanie maszyn są zgodne z kontekstem w wypowiedź. Sprawia to, że zmiany położenia w przykładzie wyrażenia długości są istotne. 
 
-## <a name="non-machine-learned-entities-dont-use-context"></a>Jednostki — przedstawiono maszyny nie należy używać kontekstu
+## <a name="non-machine-learned-entities-dont-use-context"></a>Niezgodne z maszyną jednostki nie używają kontekstu
 
-Następująca innych niż maszyna przedstawiono jednostki nie uwzględnia kontekstu wypowiedź podczas dopasowywania jednostki: 
+Następujące jednostki, które nie są obsługiwane przez maszynę, nie przyjmują wypowiedź kontekstu podczas dopasowywania jednostek: 
 
 * [Wstępnie utworzonych jednostek](#prebuilt-entity)
-* [Wyrażenie regularne jednostek](#regular-expression-entity)
+* [Jednostki wyrażenia regularnego](#regular-expression-entity)
 * [Lista jednostek](#list-entity) 
 
-Te jednostki, które nie wymagają etykietowania lub uczenia modelu. Gdy dodasz lub konfigurować jednostkę, są wyodrębniane jednostki. Jego wadą jest to, czy te jednostki mogą być overmatched, gdzie czy kontekst została wzięta pod uwagę, dopasowanie może nie wprowadzono. 
+Te jednostki nie wymagają etykietowania ani uczenia modelu. Po dodaniu lub skonfigurowaniu jednostki zostaną wyodrębnione jednostki. Kompromisem jest to, że te jednostki mogą być niezgodne, gdzie w przypadku uwzględnienia kontekstu nie zostały wprowadzone. 
 
-Dzieje się przy użyciu listy jednostek na nowe modele często. Tworzenie i testowanie modelu z jednostką listy, ale po opublikowaniu modelu i odbierać zapytań z punktu końcowego uznasz, że model jest overmatching z powodu braku kontekstu. 
+Dzieje się tak w przypadku, gdy często są używane jednostki listy dla nowych modeli. Tworzysz i testujesz model przy użyciu jednostki listy, ale po opublikowaniu modelu i otrzymaniu zapytań od punktu końcowego należy pamiętać, że model jest dopasowany ze względu na brak kontekstu. 
 
-Jeśli chcesz dopasować słów i fraz i uwzględnia kontekstu, masz dwie opcje. Pierwszy jest używać prostych jednostki, z listy fraz. Lista fraz nie będą używane do dopasowania, ale zamiast tego pomoże sygnału stosunkowo podobne słowa (Lista wymienne). Jeśli dokładne dopasowanie, zamiast listy fraz odmiany, użyj obiektami listy z określoną rolą, opisane poniżej.
+Jeśli chcesz dopasować wyrazy lub frazy i wziąć pod uwagę kontekst, masz dwie opcje. Pierwszym jest użycie prostej jednostki sparowanej z listą fraz. Lista fraz nie zostanie użyta do dopasowania, ale zamiast tego pomaga sygnalizować podobne słowa (lista zamienna). Jeśli musisz mieć dokładne dopasowanie zamiast odmian listy fraz, użyj jednostki listy z rolą, która została opisana poniżej.
 
-### <a name="context-with-non-machine-learned-entities"></a>Kontekst z jednostkami przedstawiono maszyny
+### <a name="context-with-non-machine-learned-entities"></a>Kontekst z jednostkami niezgodnymi z maszyną
 
-Chcąc kontekstu wypowiedź mają znaczenie dla jednostek nauczony-machine, należy używać [role](luis-concept-roles.md).
+Jeśli chcesz, aby kontekst wypowiedź dla jednostek niezgodnych z maszyną, należy użyć [ról](luis-concept-roles.md).
 
-Istnienie przedstawiono maszyny jednostki, takie jak [ze wstępnie utworzonych jednostek](#prebuilt-entity), [wyrażenia regularnego](#regular-expression-entity) jednostek lub [listy](#list-entity) jednostek, które jest zgodny poza wystąpienia, należy wziąć pod uwagę Tworzenie jednej jednostki przy użyciu dwóch ról. Jedną rolę będzie przechwytywać, czego szukasz, a jedna rola zostanie przechwycony, co nie potrzebujesz. Obie wersje będą musieli oznaczone etykietą w przykładzie wypowiedzi.  
+Jeśli masz niezależną od komputera jednostkę, taką jak [wstępnie skompilowane](#prebuilt-entity)jednostki, jednostki [wyrażenia regularnego](#regular-expression-entity) lub jednostki [listy](#list-entity) , które są zgodne spoza wystąpienia, należy rozważyć utworzenie jednej jednostki z dwiema rolami. Jedna z ról będzie przechwycić to, czego szukasz, a jedna z nich będzie przechwycić to, czego szukasz. Obie wersje muszą mieć etykietę na przykład wyrażenia długości.  
 
 ## <a name="composite-entity"></a>Złożone jednostki
 
-Jednostka złożonego składa się z innych jednostek, takich jak wstępnie utworzonych jednostek prosty, wyrażeń regularnych i jednostek listy. Osobne jednostki tworzą całej jednostki. 
-
-Ta jednostka jest bardzo dopasowania, gdy dane:
-
-* Są ze sobą powiązane. 
-* Są ze sobą powiązane w kontekście wypowiedzi.
-* Używać różnych typów jednostek.
-* Muszą być grupowane i przetwarzane przez aplikację klienta jako jednostka danych.
-* Mają różne wypowiedzi użytkowników, które wymagają usługi machine learning.
-
-![Złożone jednostki](./media/luis-concept-entities/composite-entity.png)
-
-[Samouczek](luis-tutorial-composite-entity.md)<br>
-[Przykładowa odpowiedź JSON dla jednostki](luis-concept-data-extraction.md#composite-entity-data)<br>
+[Jednostka złożona](reference-entity-composite.md) składa się z innych jednostek, takich jak wstępnie zbudowane jednostki, proste, wyrażenie regularne i jednostki listy. Osobne jednostki tworzą całej jednostki. 
 
 ## <a name="list-entity"></a>Jednostka listy
 
-Lista jednostek reprezentują zbiór powiązanych słów, wraz z ich synonimy stały, zamknięte. Usługa LUIS nie wykrywa dodatkowe wartości dla jednostek z listy. Użyj **zaleca się** funkcji, aby zobaczyć sugestie dotyczące nowych słów na podstawie bieżącej listy. Jeśli istnieje więcej niż jednej jednostki listy z taką samą wartość, każdy obiekt jest zwracany w kwerendy punktu końcowego. 
-
-Jednostka jest bardzo dopasowania, gdy dane tekstowe:
-
-* Są znanego zestawu.
-* Nie zmieniają się często. Jeśli potrzebujesz często zmieniać listy lub ma na liście, aby rozwinąć własnym jednostki prostej wzmocnione z listą frazy jest lepszym rozwiązaniem. 
-* Zestaw nie przekracza maksymalnych [granic](luis-boundaries.md) usługi LUIS dla tego typu jednostki.
-* Tekst w wypowiedzi to dokładne dopasowanie synonimu lub nazwy kanonicznej. Usługa LUIS nie korzysta z listy poza dokładnymi dopasowaniami tekstu. Dopasowywania rozmytego, ignorowanie, analiza słowotwórcza, liczba mnoga i inne różnice nie są rozpoznawane za pomocą jednostki listy. Aby zarządzać wariacjami, rozważ użycie [wzorca](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) z opcjonalną składnią tekstu.
-
-![Lista jednostek](./media/luis-concept-entities/list-entity.png)
-
-[Samouczek](luis-quickstart-intent-and-list-entity.md)<br>
-[Przykładowa odpowiedź JSON dla jednostki](luis-concept-data-extraction.md#list-entity-data)
+[Jednostki listy](reference-entity-list.md) reprezentują stały, zamknięty zestaw powiązanych słów wraz z ich synonimami. Usługa LUIS nie wykrywa dodatkowe wartości dla jednostek z listy. Użyj **zaleca się** funkcji, aby zobaczyć sugestie dotyczące nowych słów na podstawie bieżącej listy. Jeśli istnieje więcej niż jednej jednostki listy z taką samą wartość, każdy obiekt jest zwracany w kwerendy punktu końcowego. 
 
 ## <a name="patternany-entity"></a>Jednostka Pattern.any
 
-Pattern.any jest symbolem zastępczym o zmiennej długości, używana tylko w wypowiedź szablonu wzorca w do oznaczania, gdzie jednostka rozpoczyna się i kończy.  
-
-Jednostka jest bardzo dopasowania, gdy:
-
-* Koniec jednostki łatwo pomylić z pozostały tekst wypowiedź. 
-[Samouczek](luis-tutorial-pattern.md)<br>
-[Przykładowa odpowiedź JSON dla jednostki](luis-concept-data-extraction.md#patternany-entity-data)
-
-**Przykład**  
-Biorąc pod uwagę aplikację kliencką, która wyszukuje dla książek na podstawie tytułu, pattern.any wyodrębnia pełną tytuł. Wypowiedź szablonu, za pomocą pattern.any, jest to wyszukiwanie książki `Was {BookTitle} written by an American this year[?]`. 
-
-W poniższej tabeli każdy wiersz zawiera dwie wersje wypowiedź. Najważniejsze wypowiedź jak LUIS początkowo widoczne wypowiedź, których nie jest jasne, z tytułu rozpoczyna się i kończy. Wypowiedź dolnej to, jak usługa LUIS wiedzieli na wzorcu są używane do wyodrębnienia tytułu. 
-
-|Wypowiedź|
-|--|
-|Ataki typu Man kto Mistook His żoną Hat i innych kontrolne Clinical napisał American tego roku?<br><br>Został **Man kto Mistook His żoną Hat i innych kontrolne Clinical** napisane przez amerykański tego roku?|
-|Była połowa uśpione w Pajamas żab napisane przez amerykański tego roku?<br><br>Został **połowa uśpione w Pajamas żab** napisane przez amerykański tego roku?|
-|Został określonego smutek z Tort Tarta: Nowe, napisane przez amerykański tego roku?<br><br>Został **określonego smutek z Tort Tarta: Powieść** napisane przez amerykański tego roku?|
-|To, że Wocket w mojej Pocket! napisane przez amerykański tego roku?<br><br>Został **w mojej Pocket jest Wocket!** napisane przez amerykański tego roku?|
-||
+[Wzorzec. any](reference-entity-pattern-any.md) jest symbolem zastępczym o zmiennej długości używanym tylko w szablonie wzorca wypowiedź, aby oznaczyć, gdzie rozpoczyna się i kończą.  
 
 ## <a name="prebuilt-entity"></a>Wstępnie utworzone jednostki
 
-Wstępnie utworzone jednostki są wbudowanych typów, które reprezentują typowe pojęcia, takie jak wiadomości e-mail, adres URL i numer telefonu. Wstępnie utworzone jednostki nazwy są zarezerwowane. [Wszystkie wstępnie utworzonych jednostek](luis-prebuilt-entities.md) dodawane do aplikacji są zwracane w zapytaniu prediction punktu końcowego, jeśli występują w wypowiedź. 
+Wstępnie skompilowane jednostki są wbudowanymi typami, które reprezentują typowe pojęcia, takie jak adres e-mail, adres URL i numer telefonu. Wstępnie utworzone jednostki nazwy są zarezerwowane. [Wszystkie wstępnie skompilowane jednostki](luis-prebuilt-entities.md) , które są dodawane do aplikacji są zwracane w zapytaniu prognozowania punktu końcowego, jeśli znajdują się w wypowiedź. 
 
-Jednostka jest bardzo dopasowania, gdy:
+Jednostka jest dobrym dopasowaniem w przypadku:
 
-* Dane są zgodne typowy przypadek użycia, obsługiwane przez wstępnie utworzone jednostki dla Twojej kulturze języka. 
+* Dane są zgodne ze wspólnym przypadkiem użycia obsługiwanym przez wstępnie utworzone jednostki dla kultury językowej. 
 
-Wstępnie utworzone jednostki mogą być dodawane lub usuwane w dowolnym momencie.
+Wstępnie utworzone jednostki można dodawać i usuwać w dowolnym momencie.
 
 ![Liczba wstępnie utworzone jednostki](./media/luis-concept-entities/number-entity.png)
 
 [Samouczek](luis-tutorial-prebuilt-intents-entities.md)<br>
 [Przykładowa odpowiedź JSON dla jednostki](luis-concept-data-extraction.md#prebuilt-entity-data)
 
-Niektóre z tych wstępnie utworzonych jednostek są zdefiniowane w typu open-source [aparatów rozpoznawania tekstu](https://github.com/Microsoft/Recognizers-Text) projektu. Jeśli z określoną kulturę lub jednostki nie jest obecnie obsługiwane, przyczyniają się do projektu. 
+Niektóre z tych wstępnie skompilowanych jednostek są zdefiniowane w projekcie typu "Open Source [" — tekst](https://github.com/Microsoft/Recognizers-Text) . Jeśli z określoną kulturę lub jednostki nie jest obecnie obsługiwane, przyczyniają się do projektu. 
 
-### <a name="troubleshooting-prebuilt-entities"></a>Rozwiązywanie problemów ze wstępnie utworzonych jednostek
+### <a name="troubleshooting-prebuilt-entities"></a>Rozwiązywanie problemów z prekompilowanymi jednostkami
 
-W portalu usługi LUIS Jeśli wstępnie utworzone jednostki zostanie oznaczony zamiast swojej jednostki niestandardowej, masz kilka opcji sposobu rozwiązać ten problem.
+Jeśli wstępnie utworzona jednostka jest oznaczona jako niestandardowa, w portalu LUIS masz kilka możliwości rozwiązania tego problemu.
 
-Wstępnie utworzonych jednostek dodana do aplikacji będzie _zawsze_ zostać zwrócone, nawet wtedy, gdy wypowiedź należy wyodrębnić jednostki niestandardowe, ten sam tekst. 
+Wstępnie skompilowane jednostki dodane do aplikacji _zawsze_ będą zwracane, nawet jeśli wypowiedź powinna wyodrębnić jednostki niestandardowe dla tego samego tekstu. 
 
-#### <a name="change-tagged-entity-in-example-utterance"></a>Zmień jednostki oznakowanych w przykładzie wypowiedź
+#### <a name="change-tagged-entity-in-example-utterance"></a>Zmień otagowaną jednostkę w przykład wypowiedź
 
-Jeśli wstępnie utworzone jednostki jest ten sam tekst lub tokenów jako jednostkę niestandardową, zaznacz tekst w polu wypowiedź przykład i zmienić wypowiedź oznakowane. 
+Jeśli wstępnie skonstruowany obiekt jest tym samym tekstem lub tokenem co jednostka niestandardowa, zaznacz tekst w przykładzie wypowiedź i Zmień oznakowaną wypowiedź. 
 
-Jeśli wstępnie utworzone jednostki jest oznaczane więcej tekstu lub tokeny od swojej jednostki niestandardowej, masz kilka opcji, jak rozwiązać ten problem:
+Jeśli wstępnie utworzona jednostka jest oznaczona za pomocą więcej tekstu lub tokenów niż jednostka niestandardowa, istnieje kilka opcji rozwiązania tego problemu:
 
-* [Usuń wypowiedź przykład](#remove-example-utterance-to-fix-tagging) — metoda
-* [Usuwanie wstępnie utworzone jednostki](#remove-prebuilt-entity-to-fix-tagging) — metoda
+* [Usuwanie przykładowej metody wypowiedź](#remove-example-utterance-to-fix-tagging)
+* [Usuń](#remove-prebuilt-entity-to-fix-tagging) prekompilowaną metodę Entity
 
-#### <a name="remove-example-utterance-to-fix-tagging"></a>Usuń wypowiedź przykładu, aby naprawić znakowanie 
+#### <a name="remove-example-utterance-to-fix-tagging"></a>Usuń przykład wypowiedź, aby naprawić znakowanie 
 
-Twój pierwszy wybór jest usunięcie wypowiedź przykładu. 
+Pierwszy wybór polega na usunięciu przykładu wypowiedź. 
 
-1. Usuń wypowiedź przykładu.
-1. Ponowne szkolenie aplikacji. 
-1. Dodaj ponownie tylko słowo lub frazę jednostki, która jest oznaczona jako wstępnie utworzone jednostki, jako wypowiedź kompletny przykład. Wyraz lub frazę, będą nadal mieć wstępnie utworzone jednostki oznaczone. 
-1. Wybierz jednostkę w wypowiedź przykład **intencji** strony i zmianę do swojej jednostki niestandardowej i uczenie się ponownie. Powinno to zapobiec oznaczenie tego tekstu do dokładnego dopasowania jako wstępnie utworzone jednostki w wypowiedzi przykład korzystających z tego tekstu usługi LUIS. 
-1. Cały, oryginalnym wypowiedź przykład ponownie dodać do intencji. Jednostki niestandardowej, powinna w dalszym ciągu można oznaczyć zamiast wstępnie utworzone jednostki. Jeśli nie jest oznaczona jednostki niestandardowej, należy dodać więcej przykładów ten tekst w wypowiedzi.
+1. Usuń przykład wypowiedź.
+1. Przeszkol ponownie aplikację. 
+1. Dodaj tylko wyraz lub frazę, która jest obiektem, który jest oznaczony jako wstępnie zbudowaną jednostkę, jako kompletny przykład wypowiedź. Słowo lub fraza nadal będzie mieć utworzoną wstępnie utworzoną jednostkę. 
+1. Wybierz jednostkę w przykładowej wypowiedź na stronie **cel** i przejdź do jednostki niestandardowej i ponownie nauczenie. Powinno to uniemożliwić LUIS od oznaczania tego dokładnego tekstu jako wstępnie skompilowanej jednostki w dowolnym przykładzie wyrażenia długości, który używa tego tekstu. 
+1. Dodaj cały oryginalny przykład wypowiedź z powrotem do zamiaru. Jednostka niestandardowa powinna nadal być oznaczona zamiast wstępnie skompilowanej jednostki. Jeśli jednostka niestandardowa nie jest oznaczona, należy dodać więcej przykładów tego tekstu w wyrażenia długości.
 
-#### <a name="remove-prebuilt-entity-to-fix-tagging"></a>Usuwanie wstępnie utworzone jednostki, aby naprawić znakowanie
+#### <a name="remove-prebuilt-entity-to-fix-tagging"></a>Usuń prekompilowaną jednostkę, aby naprawić znakowanie
 
-1. Wstępnie utworzone jednostki można usunąć z aplikacji. 
-1. Na **intencji** strony, oznacz jednostki niestandardowej w wypowiedź przykładu.
+1. Usuń prekompilowaną jednostkę z aplikacji. 
+1. Na stronie **cel** Oznacz jednostkę niestandardową w przykładzie wypowiedź.
 1. Przeszkol aplikację.
-1. Dodawanie wstępnie utworzone jednostki do aplikacji i uczenie aplikacji. Ta poprawka przyjęto założenie, że wstępnie utworzone jednostki nie należały do obiektu złożonego.
+1. Dodaj wstępnie utworzoną jednostkę z powrotem do aplikacji i nauczenie aplikacji. Ta poprawka zakłada, że wstępnie utworzona jednostka nie jest częścią jednostki złożonej.
 
 ## <a name="regular-expression-entity"></a>Jednostka wyrażenia regularnego 
 
-Wyrażenie regularne jest najlepsze dla tekstowe wypowiedź raw. On ignoruje wielkość liter i ignoruje wariant kultury.  Dopasowywanie wyrażeń regularnych są stosowane po sprawdzania pisowni zmiany na poziomie znak, a nie na poziomie tokenu. Jeśli wyrażenie regularne jest zbyt złożone, np. przy użyciu wielu nawiasie, nie możesz dodać wyrażenie do modelu. Używa części, ale nie wszystkie [wyrażenie regularne .NET](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) biblioteki. 
+[Jednostka wyrażenia regularnego](reference-entity-regular-expression.md) wyodrębnia jednostkę na podstawie podania wzorca wyrażenia regularnego.
 
-Jednostka jest bardzo dopasowania, gdy:
+## <a name="simple-entity"></a>Prosta jednostka
 
-* Dane są spójnie sformatowanych przy użyciu dowolnych wariantów, który również jest zgodny.
-* Wyrażenie regularne nie potrzebuje więcej niż 2 poziomów zagnieżdżenia. 
-
-![Jednostka wyrażenia regularnego](./media/luis-concept-entities/regex-entity.png)
-
-[Samouczek](luis-quickstart-intents-regex-entity.md)<br>
-[Przykładowa odpowiedź JSON dla jednostki](luis-concept-data-extraction.md#regular-expression-entity-data)<br>
-
-Wyrażenia regularne może odpowiadać więcej niż oczekujesz, że do dopasowania. Na przykład jest liczbowe word dopasowywania, takich jak `one` i `two`. Są to na przykład poniższe wyrażenie regularne, która jest zgodna z liczbą `one` oraz inne liczby:
-
-```javascript
-(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*
-``` 
-
-To wyrażenie wyrażenia regularnego dopasowuje również wszystkie wyrazy, które kończą się te liczby, takich jak `phone`. Aby rozwiązać problemy, takie jak ta, upewnij się, że pasuje do wyrażenia regularnego bierze pod uwagę granicy słowa. Wyrażenie regularne, aby użyć granicy słowa w tym przykładzie jest używany w następujących wyrażeń regularnych:
-
-```javascript
-\b(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*\b
-```
-
-## <a name="simple-entity"></a>Prosta jednostka 
-
-Proste jednostka jest jednostce ogólnej, opisujący pojedynczego pojęcia i udostępnionej z kontekstu maszyny do opanowania. Ponieważ proste jednostki są zwykle nazwy, takie jak nazwy firm, nazwy produktów lub innych kategoriach nazwy, Dodaj [listy fraz](luis-concept-feature.md) podczas korzystania z jednostki prostej do poprawienia sygnał nazwy używane. 
-
-Jednostka jest bardzo dopasowania, gdy:
-
-* Dane nie są spójnie sformatowanych, ale wskazują ten sam efekt. 
-
-![proste jednostki](./media/luis-concept-entities/simple-entity.png)
-
-[Samouczek](luis-quickstart-primary-and-secondary-data.md)<br/>
-[Przykładowa odpowiedź dla jednostki](luis-concept-data-extraction.md#simple-entity-data)<br/>
-
+A [jednostki prostej](reference-entity-simple.md) jest wartością maszyny do opanowania. Można go wyrazu lub frazy.
 ## <a name="entity-limits"></a>Limity jednostek
 
 Przegląd [limity](luis-boundaries.md#model-boundaries) Aby dowiedzieć się, ile poszczególnych typów obiektu można dodać do modelu.
 
 ## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>Jeśli potrzebujesz więcej niż maksymalna liczba jednostek 
 
-Może być konieczne korzystanie z jednostek złożonego w połączeniu z rolami jednostki.
+Może być konieczne użycie jednostek złożonych w połączeniu z rolami jednostek.
 
 Composite jednostek reprezentują części całości. Na przykład jednostka złożone o nazwie PlaneTicketOrder niewykluczone jednostki podrzędne linii lotniczych, miejsce docelowe, DepartureCity, DepartureDate i PlaneTicketClass.
 
-Usługa LUIS także listy Typ jednostki obsługiwanej przez nie przedstawiono maszyny, ale pozwala aplikacją usługi LUIS określić stałą listy wartości. Zobacz [granice LUIS](luis-boundaries.md) odwołania, aby zapoznać się ograniczenia typu listy jednostek. 
+LUIS udostępnia również typ jednostki listy, która nie jest poznania maszynowego, ale umożliwia aplikacji LUIS określenie ustalonej listy wartości. Zobacz [granice LUIS](luis-boundaries.md) odwołania, aby zapoznać się ograniczenia typu listy jednostek. 
 
-Jeśli zostały uznane za te jednostki i nadal potrzebujesz więcej niż limit, skontaktuj się z działem pomocy technicznej. Aby to zrobić, należy zebrać szczegółowe informacje o systemie, przejdź do [LUIS](luis-reference-regions.md#luis-website) witryny sieci Web, a następnie wybierz **pomocy technicznej**. Jeśli Twoja subskrypcja platformy Azure obejmują usługi pomocy technicznej, skontaktuj się z [technicznej platformy Azure](https://azure.microsoft.com/support/options/). 
+Jeśli te jednostki są rozpatrywane i nadal wymagają więcej niż limit, skontaktuj się z pomocą techniczną. Aby to zrobić, należy zebrać szczegółowe informacje o systemie, przejdź do [LUIS](luis-reference-regions.md#luis-website) witryny sieci Web, a następnie wybierz **pomocy technicznej**. Jeśli Twoja subskrypcja platformy Azure obejmują usługi pomocy technicznej, skontaktuj się z [technicznej platformy Azure](https://azure.microsoft.com/support/options/). 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Pojęcia dotyczące dobrze [wypowiedzi](luis-concept-utterance.md). 
 

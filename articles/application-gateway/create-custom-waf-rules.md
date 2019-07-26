@@ -1,33 +1,33 @@
 ---
-title: Tworzenie i używanie niestandardowych reguł w wersji 2 zapory aplikacji sieci Web (WAF) platformy Azure
-description: Ten artykuł zawiera informacje na temat tworzenia reguł niestandardowych v2 zapory aplikacji sieci Web (WAF) w usłudze Azure Application Gateway.
+title: Tworzenie niestandardowych reguł zapory aplikacji sieci Web (WAF) v2 i korzystanie z nich
+description: Ten artykuł zawiera informacje dotyczące sposobu tworzenia niestandardowych reguł zapory aplikacji sieci Web (WAF) v2 na platformie Azure Application Gateway.
 services: application-gateway
 ms.topic: article
 author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: 86ddb0b608cd17814cbcbb902f0b2905fe61094a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: dcfdec0a746406296616456f6e6b8c0eabddf4b5
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164670"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478586"
 ---
-# <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>Tworzenie i używanie niestandardowych reguł w wersji 2 zapory aplikacji sieci Web
+# <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>Tworzenie i używanie reguł niestandardowych zapory aplikacji sieci Web w wersji 2
 
-Azure Brama sieci Web aplikacji zapory aplikacji (WAF) w wersji 2 zapewnia ochronę aplikacji sieci web. Ta ochrona jest dostarczany przez Otwórz sieci Web aplikacji Security Project (OWASP) podstawowych reguł Ustaw (CRS). W niektórych przypadkach może być konieczne utworzenie własne reguły niestandardowe do konkretnych potrzeb. Aby uzyskać więcej informacji na temat niestandardowych reguł zapory aplikacji sieci Web, zobacz [Omówienie reguł zapory aplikacji sieci web niestandardowego](custom-waf-rules-overview.md).
+Usługa Azure Application Gateway Web Application Firewall (WAF) v2 zapewnia ochronę aplikacji sieci Web. Ta ochrona jest zapewniana przez zestaw reguł programu Open Web Application Security (OWASP) Core (KSR). W niektórych przypadkach może być konieczne utworzenie własnych reguł niestandardowych w celu spełnienia określonych wymagań. Aby uzyskać więcej informacji na temat reguł niestandardowych WAF, zobacz [niestandardowe reguły zapory aplikacji internetowych — Omówienie](custom-waf-rules-overview.md).
 
-W tym artykule dowiesz się, Oto kilka przykładowych reguł niestandardowych, które można tworzyć i za pomocą zapory aplikacji internetowych w wersji 2. Informacje na temat wdrażania zapory aplikacji sieci Web przy użyciu reguły niestandardowej przy użyciu programu Azure PowerShell, zobacz [niestandardowe reguły Konfigurowanie zapory aplikacji sieci Web przy użyciu programu Azure PowerShell](configure-waf-custom-rules.md).
+W tym artykule przedstawiono kilka przykładowych reguł niestandardowych, które można tworzyć i korzystać z WAF w wersji 2. Aby dowiedzieć się, jak wdrożyć WAF z regułą niestandardową przy użyciu Azure PowerShell, zobacz [Konfigurowanie niestandardowych reguł zapory aplikacji sieci Web przy użyciu Azure PowerShell](configure-waf-custom-rules.md).
 
 >[!NOTE]
-> Jeśli Twoja brama application gateway nie korzysta z warstwy zapory aplikacji sieci Web, opcja uaktualnienia bramy aplikacji do warstwy zapory aplikacji sieci Web pojawi się w okienku po prawej stronie.
+> Jeśli Brama aplikacji nie korzysta z warstwy WAF, opcja uaktualnienia bramy aplikacji do warstwy WAF zostanie wyświetlona w okienku po prawej stronie.
 
-![Włączanie zapory aplikacji sieci Web][fig1]
+![Włącz WAF][fig1]
 
 ## <a name="example-1"></a>Przykład 1
 
-Wiesz, że istnieje bot, o nazwie *evilbot* chcesz uniemożliwiaj przeszukiwania witryny sieci Web. W tym przypadku będzie blokować agenta użytkownika *evilbot* w nagłówku żądania.
+Wiadomo, że istnieje bot o nazwie *evilbot* , która ma być blokowana z przeszukiwania witryny sieci Web. W takim przypadku należy zablokować *Evilbot* agenta użytkownika w nagłówkach żądania.
 
 Logika: p
 
@@ -51,7 +51,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-A Oto odpowiednie dane JSON:
+A oto odpowiedni kod JSON:
 
 ```json
   {
@@ -75,11 +75,11 @@ A Oto odpowiednie dane JSON:
   }
 ```
 
-Aby wyświetlić zapory aplikacji sieci Web wdrażane za pomocą tej reguły niestandardowej, zobacz [skonfigurować niestandardową regułę zapory aplikacji sieci Web przy użyciu programu Azure PowerShell](configure-waf-custom-rules.md).
+Aby wyświetlić WAF wdrożone przy użyciu tej reguły niestandardowej, zobacz [Konfigurowanie niestandardowej reguły zapory aplikacji sieci Web przy użyciu Azure PowerShell](configure-waf-custom-rules.md).
 
 ### <a name="example-1a"></a>Przykład 1a
 
-Można osiągnąć ten sam efekt przy użyciu wyrażenia regularnego:
+Tę samą czynność można wykonać przy użyciu wyrażenia regularnego:
 
 ```azurepowershell
 $variable = New-AzApplicationGatewayFirewallMatchVariable `
@@ -127,9 +127,9 @@ I odpowiedni kod JSON:
 
 ## <a name="example-2"></a>Przykład 2
 
-Chcesz zablokować wszystkie żądania z adresów IP w 198.168.5.4/24 zakresu.
+Chcesz zablokować wszystkie żądania z adresów IP z zakresu 198.168.5.4/24.
 
-W tym przykładzie będzie blokować cały ruch, który pochodzi z zakresu adresów IP. Nazwa reguły jest *MojaReguła1* i priorytet jest ustawiony na 100.
+W tym przykładzie zablokujesz cały ruch pochodzący z zakresu adresów IP. Nazwa reguły to *myrule1* , a priorytet jest ustawiony na 100.
 
 Logika: p
 
@@ -151,7 +151,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-Oto odpowiednie dane JSON:
+Oto odpowiedni kod JSON:
 
 ```json
   {
@@ -175,13 +175,13 @@ Oto odpowiednie dane JSON:
   }
 ```
 
-Odpowiednia reguła CRS: `SecRule REMOTE_ADDR "@ipMatch 192.168.5.4/24" "id:7001,deny"`
+Odpowiadająca reguła KSR:`SecRule REMOTE_ADDR "@ipMatch 192.168.5.4/24" "id:7001,deny"`
 
 ## <a name="example-3"></a>Przykład 3
 
-Na przykład chcesz zablokować User-Agent *evilbot*i ruch w 192.168.5.4/24 zakresu. W tym celu można utworzyć dwa oddzielne dopasowania warunki i umieścić je w tę samą regułę. Dzięki temu zarówno *evilbot* w nagłówku User-Agent **i** 192.168.5.4/24 zakres adresów IP są zablokowane.
+Na potrzeby tego przykładu chcesz zablokować *Evilbot*użytkownika-agenta i ruch z zakresu 192.168.5.4/24. Aby to osiągnąć, można utworzyć dwa oddzielne warunki dopasowania i umieścić je w jednej regule. Dzięki temu zarówno *evilbot* w nagłówku użytkownika, **jak i** adresy IP z zakresu 192.168.5.4/24 są blokowane.
 
-Logika: p **i** funkcji pytania i odpowiedzi
+Logika: p **i** q
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -212,7 +212,7 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
    -Action Block
 ```
 
-Oto odpowiednie dane JSON:
+Oto odpowiedni kod JSON:
 
 ```json
 { 
@@ -251,9 +251,9 @@ Oto odpowiednie dane JSON:
 
 ## <a name="example-4"></a>Przykład 4
 
-Na przykład chcesz zablokować, jeśli żądanie jest spoza zakresu adresów IP *192.168.5.4/24*, lub nie jest ciąg agenta użytkownika *chrome* (czyli użytkownik nie jest za pomocą przeglądarki Chrome). Ponieważ ta Logika używa **lub**, dwa warunki są w oddzielnych reguł, jak pokazano w poniższym przykładzie. *MojaReguła1* i *MojaReguła2* oba muszą być zgodne w celu blokowania ruchu.
+Na potrzeby tego przykładu chcesz zablokować, jeśli żądanie jest spoza zakresu adresów IP *192.168.5.4/24*, lub ciąg agenta użytkownika nie jest wykończeniowy (  oznacza to, że użytkownik nie korzysta z przeglądarki Chrome). Ponieważ ta logika korzysta z **lub**, dwa warunki są w osobnych regułach, jak pokazano w poniższym przykładzie. *myrule1* i *myrule2* muszą być zgodne, aby blokować ruch.
 
-Logika: **nie** (p **i** funkcji pytania i odpowiedzi) = **nie** p **lub nie** funkcji pytania i odpowiedzi.
+Logic: **not** (p **i** q) = **not** p **lub not** q.
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -338,7 +338,7 @@ I odpowiedni kod JSON:
 
 ## <a name="example-5"></a>Przykład 5
 
-Chcesz zablokować SQLI niestandardowych. Ponieważ przez logikę używaną w tym miejscu jest **lub**, i wszystkie wartości są w *RequestUri*, wszystkie z *MatchValues* może być na liście rozdzielanej przecinkami.
+Chcesz zablokować niestandardowe SQLI. Ponieważ używana logika to **lub**, a wszystkie wartości znajdują się w *RequestUri*, wszystkie *MatchValues* mogą znajdować się na liście rozdzielanej przecinkami.
 
 Logika: p **lub** q **lub** r
 
@@ -359,7 +359,7 @@ $rule1 = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-Odpowiednie JSON:
+Odpowiedni kod JSON:
 
 ```json
   {
@@ -385,7 +385,7 @@ Odpowiednie JSON:
   }
 ```
 
-Alternatywne programu Azure PowerShell:
+Azure PowerShell alternatywny:
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -436,7 +436,7 @@ $rule3 = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-Odpowiednie JSON:
+Odpowiedni kod JSON:
 
 ```json
   {
@@ -493,16 +493,8 @@ Odpowiednie JSON:
   }
 ```
 
-Odpowiednia reguła zapory ModSecurity:
+## <a name="next-steps"></a>Następne kroki
 
-`SecRule REQUEST_URI "@contains 1-1" "id:7001,deny"`
-
-`SecRule REQUEST_URI "@contains --" "id:7001,deny"`
-
-`SecRule REQUEST_URI "@contains drop tables" "id:7001,deny"`
-
-## <a name="next-steps"></a>Kolejne kroki
-
-Po utworzeniu niestandardowymi regułami umieszczonymi możesz dowiedzieć się, jak wyświetlić dzienniki zapory aplikacji sieci Web. Aby uzyskać więcej informacji, zobacz [diagnostyki usługi Application Gateway](application-gateway-diagnostics.md#diagnostic-logging).
+Po utworzeniu niestandardowych reguł można dowiedzieć się, jak wyświetlić dzienniki WAF. Aby uzyskać więcej informacji, zobacz [Application Gateway Diagnostics](application-gateway-diagnostics.md#diagnostic-logging).
 
 [fig1]: ./media/application-gateway-customize-waf-rules-portal/1.png

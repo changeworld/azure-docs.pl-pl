@@ -1,8 +1,8 @@
 ---
-title: Opcje w usłudze Azure SQL Data Warehouse przy użyciu grupy | Dokumentacja firmy Microsoft
-description: Wskazówki dotyczące implementowania grupy przez opcje w usłudze Azure SQL Data Warehouse związane z opracowywaniem rozwiązań.
+title: Używanie opcji Grupuj według w Azure SQL Data Warehouse | Microsoft Docs
+description: Porady dotyczące implementowania opcji Grupuj według w Azure SQL Data Warehouse na potrzeby tworzenia rozwiązań.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,30 +10,30 @@ ms.subservice: query
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: b158048929d3db8672d76027666331448a91a0a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2f6614f32c31338c9cf4f00307c475db4e02f553
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65861801"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479635"
 ---
-# <a name="group-by-options-in-sql-data-warehouse"></a>Grupuj według opcji w usłudze SQL Data Warehouse
-Wskazówki dotyczące implementowania grupy przez opcje w usłudze Azure SQL Data Warehouse związane z opracowywaniem rozwiązań.
+# <a name="group-by-options-in-sql-data-warehouse"></a>Grupuj według opcji w SQL Data Warehouse
+Porady dotyczące implementowania opcji Grupuj według w Azure SQL Data Warehouse na potrzeby tworzenia rozwiązań.
 
-## <a name="what-does-group-by-do"></a>Do czego służy GROUP BY?
+## <a name="what-does-group-by-do"></a>Co robi Grupuj według?
 
-[GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql) klauzuli języka T-SQL agreguje dane podsumowania zestawu wierszy. GROUP BY zawiera niektóre opcje, które nie obsługuje usługi SQL Data Warehouse. Te opcje mają rozwiązania problemu.
+Klauzula [Group by](/sql/t-sql/queries/select-group-by-transact-sql) T-SQL agreguje dane do zestawu podsumowującego wierszy. Grupuj według zawiera kilka opcji, które nie są obsługiwane przez SQL Data Warehouse. Te opcje mają obejścia.
 
 Te opcje są
 
-* Klauzula GROUP BY ZBIORCZEGO
-* GROUPING SETS
-* Klauzula GROUP BY modułu
+* Grupuj według z pakietem zbiorczym
+* ZESTAWY GRUPUJĄCE
+* Grupuj według modułu
 
-## <a name="rollup-and-grouping-sets-options"></a>Ustawia opcje ROLLUP i grouping
-Jest to najprostsza opcja, UNION ALL zamiast tego użyć do wykonania w pakiecie zbiorczym zamiast polegać na jawne składni. Wynikiem jest dokładnie taka sama
+## <a name="rollup-and-grouping-sets-options"></a>Opcje zestawu zbiorczego i grupowania
+Najprostszą opcją jest użycie UNION ALL zamiast, aby wykonać pakiet zbiorczy, zamiast polegać na jawnej składni. Wynik jest dokładnie taki sam
 
-Poniższy przykład za pomocą instrukcji GROUP BY z opcją ZBIORCZY:
+W poniższym przykładzie użyto instrukcji GROUP BY z opcją ROLLUP:
 ```sql
 SELECT [SalesTerritoryCountry]
 ,      [SalesTerritoryRegion]
@@ -47,13 +47,13 @@ GROUP BY ROLLUP (
 ;
 ```
 
-Za pomocą ZBIORCZEGO, poprzedni przykład żąda następujących agregacji:
+Przy użyciu pakietu zbiorczego poprzedni przykład żąda następujących agregacji:
 
-* Krajów i regionów
-* Kraj
+* Kraj i region
+* Country
 * Suma końcowa
 
-Aby zastąpić pakiet ZBIORCZY i zwracają takie same wyniki, można użyć UNION ALL i jawnie określić wymaganych agregacji:
+Aby zastąpić pakiet zbiorczy i zwrócić te same wyniki, można użyć klauzuli UNION ALL i jawnie określić wymagane agregacje:
 
 ```sql
 SELECT [SalesTerritoryCountry]
@@ -80,14 +80,14 @@ FROM  dbo.factInternetSales s
 JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritoryKey;
 ```
 
-Aby zastąpić GROUPING SETS, zasada przykład dotyczy. Musisz utworzyć UNION ALL sekcjach poziomów agregacji, które mają być wyświetlane.
+Aby zastąpić zestawy grupowania, stosowana jest zasada przykładowa. Wystarczy utworzyć tylko sekcje UNION dla poziomów agregacji, które mają być wyświetlane.
 
 ## <a name="cube-options"></a>Opcje modułu
-Istnieje możliwość utworzenia grupy przez przy użyciu modułu przy użyciu podejścia UNION ALL. Problem polega na tym, że kod może szybko stać się skomplikowane i niewygodna. Aby rozwiązać ten problem, możesz użyć tego bardziej zaawansowane metody.
+Istnieje możliwość utworzenia grupy za pomocą modułu przy użyciu podejścia UNION ALL. Problem polega na tym, że kod może szybko stać się skomplikowany i nieporęczny. Aby rozwiązać ten problem, można użyć bardziej zaawansowanego podejścia.
 
-Użyjemy w powyższym przykładzie.
+Użyjmy powyższego przykładu.
 
-Pierwszym krokiem jest określenie "modułu" definiujący na wszystkich poziomach agregacji, które chcemy utworzyć. Należy wziąć pod uwagę CROSS JOIN tych dwóch tabel pochodnych. Spowoduje to wygenerowanie wszystkie poziomy dla nas. Pozostała część kodu jest naprawdę formatowania.
+Pierwszym krokiem jest zdefiniowanie elementu "Cube", który definiuje wszystkie poziomy agregacji, które chcemy utworzyć. Ważne jest zanotowanie SPRZĘŻENIa KRZYŻowego dwóch tabel pochodnych. Spowoduje to wygenerowanie wszystkich poziomów dla nas. Pozostała część kodu jest naprawdę dla formatowania.
 
 ```sql
 CREATE TABLE #Cube
@@ -118,9 +118,9 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-Poniżej przedstawiono wyniki instrukcji CTAS:
+Poniżej przedstawiono wyniki CTAS:
 
-![Grupuj według modułów](media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png)
+![Grupuj według modułu](media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png)
 
 Drugim krokiem jest określenie tabeli docelowej do przechowywania wyników pośrednich:
 
@@ -145,7 +145,7 @@ WITH
 ;
 ```
 
-Trzeci krok dotyczy pętli naszych modułu kolumn, przeprowadzania agregacji. Zapytania będą uruchamiane raz dla każdego wiersza w tabeli tymczasowej #Cube i zapisać wyniki w tabeli tymczasowej #Results
+Trzeci krok polega na zapętleniu względem naszego modułu kolumn wykonujących agregację. Zapytanie zostanie uruchomione raz dla każdego wiersza w #Cube tabeli tymczasowej i będzie przechowywane wyniki w tabeli #Results tymczasowych
 
 ```sql
 SET @nbr =(SELECT MAX(Seq) FROM #Cube);
@@ -169,7 +169,7 @@ BEGIN
 END
 ```
 
-Ponadto może zwrócić wyniki, po prostu zapoznając się z tabeli tymczasowej #Results
+Na koniec można zwrócić wyniki, po prostu odczytując z tabeli tymczasowej #Results
 
 ```sql
 SELECT *
@@ -178,8 +178,8 @@ ORDER BY 1,2,3
 ;
 ```
 
-Podzielenie kod na sekcje i generowania konstrukcję pętli, kod staje się bardziej w zarządzaniu i łatwego w utrzymaniu.
+Dzieląc kod na sekcje i generując konstrukcję zapętlenia, kod jest łatwiejsze do zarządzania i łatwość utrzymania.
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej porad programistycznych, zobacz [omówienie programowania w usłudze](sql-data-warehouse-overview-develop.md).
+## <a name="next-steps"></a>Następne kroki
+Aby uzyskać więcej porad programistycznych, zobacz [Omówienie projektowania](sql-data-warehouse-overview-develop.md).
 

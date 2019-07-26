@@ -1,10 +1,10 @@
 ---
-title: Kończenie przeglądu dostępu grup lub aplikacji — Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zakończyć Przegląd dostępu członków grupy lub dostęp do aplikacji w przeglądów dostępu w usłudze Azure Active Directory.
+title: Wykonaj przegląd dostępu do grup lub aplikacji — Azure Active Directory | Microsoft Docs
+description: Dowiedz się, jak wykonać przegląd dostępu członków grupy lub dostępu do aplikacji w Azure Active Directory przeglądy dostępu.
 services: active-directory
 documentationcenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -12,83 +12,83 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/22/2019
-ms.author: rolyon
+ms.date: 07/23/2019
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec3909ffbb624284f999360140b7454098643062
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97c405032368ffd06f5808bc4518302d2f6d66b9
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66473370"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489141"
 ---
-# <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Kończenie przeglądu dostępu grup lub przeglądów dostępu dla aplikacji w usłudze Azure AD
+# <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Dokończ przegląd dostępu grup lub aplikacji w przeglądach dostępu usługi Azure AD
 
-Jako administrator możesz [tworzenie przeglądu dostępu grup lub aplikacji](create-access-review.md) i recenzentów [przeprowadzenie przeglądu dostępu](perform-access-review.md). W tym artykule opisano, jak wyświetlić wyniki przeglądu dostępu i Zastosuj wyniki.
+Jako administrator [utworzysz przegląd dostępu do grup lub aplikacji](create-access-review.md) , a recenzenci przeprowadzili [Przegląd dostępu](perform-access-review.md). W tym artykule opisano, jak wyświetlić wyniki przeglądu dostępu i zastosować wyniki.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Usługa Azure AD — warstwa Premium P2
-- Administrator globalny, administrator użytkowników, administrator zabezpieczeń lub czytelnika zabezpieczeń
+- Administrator globalny, administrator użytkowników, administrator zabezpieczeń lub czytelnik zabezpieczeń
 
-Aby uzyskać więcej informacji, zobacz [użytkowników, którzy muszą mieć licencje?](access-reviews-overview.md#which-users-must-have-licenses).
+Aby uzyskać więcej informacji, zobacz, [którzy użytkownicy muszą mieć licencje?](access-reviews-overview.md#which-users-must-have-licenses).
 
-## <a name="view-an-access-review"></a>Wyświetl przeglądu dostępu
+## <a name="view-an-access-review"></a>Wyświetl przegląd dostępu
 
-Postęp można śledzić, jak recenzenci wykonać ich przeglądów.
+Postęp można śledzić, ponieważ recenzenci ukończyją swoje przeglądy.
 
-1. Zaloguj się w witrynie Azure portal i Otwórz [strony zarządzania tożsamościami oraz](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
+1. Zaloguj się do Azure Portal i Otwórz [stronę zarządzania tożsamościami](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
 
-1. W menu po lewej stronie kliknij **przeglądów dostępu**.
+1. W menu po lewej stronie kliknij pozycję **przeglądy dostępu**.
 
-1. Na liście kliknij przycisk przeglądu dostępu.
+1. Na liście kliknij przegląd dostępu.
 
-    Aby wyświetlić szereg dostępu recenzje, przejdź do przeglądu dostępu, i znajdziesz kolejnych wystąpień w przeglądach zaplanowane.
+    Aby wyświetlić serie przeglądów dostępu, przejdź do przeglądu dostępu, a w zaplanowanych przeglądach znajdziesz nadchodzące wystąpienia.
 
-    Na **Przegląd** stronie wyświetlany jest postęp. Nie prawa dostępu są zmieniane w katalogu, do momentu ukończenia przeglądu.
+    Na stronie **Przegląd** można zobaczyć postęp. Żadne prawa dostępu nie są zmieniane w katalogu, dopóki nie zostanie ukończona Recenzja.
 
-    ![Przeglądy dostępu w toku](./media/complete-access-review/overview-progress.png)
+    ![Postęp przeglądów dostępu](./media/complete-access-review/overview-progress.png)
 
-1. Jeśli chcesz zatrzymać przeglądu dostępu przed osiągnęła ona planowanej dacie zakończenia, kliknij pozycję **zatrzymać** przycisku.
+1. Jeśli chcesz zatrzymać przegląd dostępu przed osiągnięciem zaplanowanej daty zakończenia, kliknij przycisk **Zatrzymaj** .
 
-    Gdy zatrzymania przeglądu, osób dokonujących przeglądu nie będą już mogli udzielać odpowiedzi. Nie można ponownie uruchomić przeglądu, po jej zatrzymaniu.
+    Po zatrzymaniu przeglądu recenzenci nie będą już mogli udzielić odpowiedzi. Po zatrzymaniu nie można ponownie uruchomić recenzji.
 
-1. Jeśli interesuje Cię już przeglądu dostępu, możesz go usunąć, klikając **Usuń** przycisku.
+1. Jeśli nie interesuje Cię przegląd dostępu, możesz go usunąć, klikając przycisk **Usuń** .
 
 ## <a name="apply-the-changes"></a>Zastosuj zmiany
 
-Jeśli **automatycznie Zastosuj wyniki do zasobu** został włączony i na podstawie dokonanego wyboru w **ustawienia działań po zakończeniu**, automatycznie — Zastosuj będzie wykonywany po Data zakończenia przeglądu lub jeśli ręcznie zatrzymaj Przegląd.
+Jeśli **Funkcja automatycznego zastosowania do zasobu** została włączona i w oparciu o wybrane opcje w **ustawieniach ukończenia**, funkcja automatycznego zastosowania zostanie wykonana po dacie zakończenia przeglądu lub po ręcznym zatrzymaniu przeglądu.
 
-Jeśli **automatycznie Zastosuj wyniki do zasobu** nie został włączony dla przeglądu, kliknij przycisk **Zastosuj** ręcznie zastosować zmiany. Jeśli w przeglądzie, nastąpiła odmowa dostępu użytkownika, po kliknięciu **Zastosuj**, usługi Azure AD spowoduje usunięcie ich przypisania członkostwa lub aplikacji.
+Jeśli **Funkcja autoapply** nie została włączona na potrzeby przeglądu, kliknij przycisk **Zastosuj** , aby ręcznie zastosować zmiany. Jeśli w przeglądzie odmówiono dostępu użytkownikowi, po kliknięciu przycisku **Zastosuj**usługa Azure AD usunie przynależność lub przypisanie aplikacji.
 
 ![Zastosuj zmiany przeglądu dostępu](./media/complete-access-review/apply-changes.png)
 
-Stan przeglądu ulegnie zmianie z **Ukończono** za pośrednictwem pośrednich stanów, takie jak **stosowanie** a na koniec do stanu **zastosowano wynik**. Należy się spodziewać się zablokowani użytkownicy ewentualnej usuwany z przypisania grupy członkostwa lub aplikacji w ciągu kilku minut.
+Stan przeglądu zostanie zmieniony z ukończonej przez  Stany pośrednie, takie jak **stosowanie** i zakończenie do stanu **wyniku**. Należy się spodziewać, że w ciągu kilku minut będzie widocznych odrzuconych użytkowników (jeśli istnieją) z członkostwa w grupie lub przypisywania aplikacji.
 
-Automatycznie skonfigurowany, zastosowanie przeglądu lub wybierając **Zastosuj** nie ma wpływu na grupy, który pochodzi z katalogu lokalnego lub grupy dynamicznej. Jeśli chcesz zmienić grupę, która pochodzi w środowisku lokalnym, Pobierz wyniki i stosowanie tych zmian na reprezentację w postaci grupy, w tym katalogu.
+Skonfigurowany autorecenzja lub **wybór nie ma** wpływu na grupę, która pochodzi z katalogu lokalnego lub grupy dynamicznej. Jeśli chcesz zmienić grupę, która pochodzi z lokalizacji lokalnej, Pobierz wyniki i Zastosuj te zmiany do reprezentacji grupy w tym katalogu.
 
 ## <a name="retrieve-the-results"></a>Pobieranie wyników
 
-Aby wyświetlić wyniki do przeglądu dostępu jednorazowe, kliknij przycisk **wyniki** strony. Aby wyświetlić tylko dostępu użytkownika, w polu wyszukiwania, wpisz nazwę wyświetlaną lub główną nazwę użytkownika, do których dostęp został zrecenzowany.
+Aby wyświetlić wyniki przeglądu dostępu jednorazowego, kliknij stronę **wyniki** . Aby wyświetlić tylko dostęp użytkownika, w polu wyszukiwania wpisz nazwę wyświetlaną lub nazwę główną użytkownika użytkownika, którego dostęp został sprawdzony.
 
-![Pobieranie wyników przeglądu dostępu](./media/complete-access-review/retrieve-results.png)
+![Pobierz wyniki przeglądu dostępu](./media/complete-access-review/retrieve-results.png)
 
-Aby wyświetlić postęp przeglądu dostępu aktywny, która ma charakter cykliczny, wybierz polecenie **wyniki** strony.
+Aby wyświetlić postęp aktywnego przeglądu dostępu, który jest cykliczny, kliknij stronę **wyniki** .
 
-Aby wyświetlić wyniki ukończonemu wystąpieniu przeglądu dostępu, który ma charakter cykliczny, kliknij przycisk **przeglądać historię**, a następnie wybierz konkretne wystąpienie z listy wystąpień przeglądów dostępu ukończone, oparte na wystąpienie rozpoczęcia i Data zakończenia. Wyniki tego wystąpienia można uzyskać z **wyniki** strony.
+Aby wyświetlić wyniki ukończonego wystąpienia przeglądu dostępu, który jest cykliczny, kliknij pozycję **Przejrzyj historię**, a następnie wybierz określone wystąpienie z listy zakończonych wystąpień przeglądu dostępu na podstawie daty rozpoczęcia i zakończenia wystąpienia. Wyniki tego wystąpienia można uzyskać ze strony **wyników** .
 
-Aby pobrać wyniki przeglądu dostępu, kliknij pozycję **Pobierz** przycisku. Wynikowy plik CSV można wyświetlać w programie Excel lub w innych programach, które otwierają UTF-8 zakodowane pliki CSV.
+Aby pobrać wszystkie wyniki przeglądu dostępu, kliknij przycisk **Pobierz** . Otrzymany plik CSV można wyświetlić w programie Excel lub w innych programach, które otwierają pliki CSV kodowane w formacie UTF-8.
 
 ## <a name="remove-users-from-an-access-review"></a>Usuwanie użytkowników z przeglądu dostępu
 
  Domyślnie usunięty użytkownik pozostaje usunięty w usłudze Azure AD przez 30 dni i w tym okresie administrator może przywrócić go w razie potrzeby.  Po 30 dniach użytkownik jest trwale usuwany.  Ponadto przy użyciu portalu usługi Azure Active Directory administrator globalny może jawnie [trwale usunąć niedawno usuniętego użytkownika](../fundamentals/active-directory-users-restore.md) przed upłynięciem tego okresu.  Gdy użytkownik zostanie trwale usunięty, nowe dane dotyczące tego użytkownika będą usuwane z aktywnych przeglądów dostępu.  Informacje inspekcji dotyczące usuniętych użytkowników pozostają w dzienniku inspekcji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Zarządzanie dostępem użytkowników za pomocą przeglądów dostępu w usłudze Azure AD](manage-user-access-with-access-reviews.md)
 - [Zarządzanie dostępem gości za pomocą przeglądów dostępu w usłudze Azure AD](manage-guest-access-with-access-reviews.md)
-- [Tworzenie przeglądu dostępu grup lub aplikacji](create-access-review.md)
+- [Tworzenie przeglądu dostępu do grup lub aplikacji](create-access-review.md)
 - [Tworzenie przeglądu dostępu użytkowników ról administracyjnych usługi Azure AD](../privileged-identity-management/pim-how-to-start-security-review.md)

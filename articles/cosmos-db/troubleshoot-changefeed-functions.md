@@ -1,26 +1,26 @@
 ---
-title: Diagnozowanie i rozwiązywanie problemów podczas korzystania z wyzwalacza Azure Cosmos DB w programie Azure Functions
-description: Typowe problemy, obejścia i kroki diagnostyczne podczas korzystania z wyzwalacza Azure Cosmos DB z Azure Functions
+title: Diagnozowanie i rozwiązywanie problemów podczas korzystania z wyzwalacza Azure Functions dla Cosmos DB
+description: Typowe problemy, obejścia i kroki diagnostyczne podczas korzystania z wyzwalacza Azure Functions dla Cosmos DB
 author: ealsur
 ms.service: cosmos-db
-ms.date: 05/23/2019
+ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 9c728a735e56e461e49dd3f594186c9c0192a3f0
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
-ms.translationtype: HT
+ms.openlocfilehash: b90986e449df7e81f97f9ef86ce3cf69621c76d6
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250012"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335750"
 ---
-# <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-trigger-in-azure-functions"></a>Diagnozowanie i rozwiązywanie problemów podczas korzystania z wyzwalacza Azure Cosmos DB w programie Azure Functions
+# <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Diagnozowanie i rozwiązywanie problemów podczas korzystania z wyzwalacza Azure Functions dla Cosmos DB
 
-W tym artykule opisano typowe problemy, obejścia i kroki diagnostyczne, podczas korzystania z [wyzwalacza Azure Cosmos DB](change-feed-functions.md) z Azure Functions.
+W tym artykule opisano typowe problemy, obejścia i kroki diagnostyczne, gdy [do Cosmos DB jest używany wyzwalacz Azure Functions](change-feed-functions.md).
 
 ## <a name="dependencies"></a>Zależności
 
-Wyzwalacz Azure Cosmos DB i powiązania są zależne od pakietów rozszerzeń przez podstawowy Azure Functions środowiska uruchomieniowego. Należy zawsze aktualizować te pakiety, ponieważ mogą one zawierać poprawki i nowe funkcje, które mogą rozwiązać ewentualne potencjalne problemy, które mogą wystąpić:
+Wyzwalacz Azure Functions i powiązania dla Cosmos DB są zależne od pakietów rozszerzeń przez podstawowy Azure Functions środowiska uruchomieniowego. Należy zawsze aktualizować te pakiety, ponieważ mogą one zawierać poprawki i nowe funkcje, które mogą rozwiązać ewentualne potencjalne problemy, które mogą wystąpić:
 
 * W przypadku Azure Functions v2, zobacz [Microsoft. Azure. WebJobs. Extensions. CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB).
 * Aby uzyskać Azure Functions V1, zobacz [Microsoft. Azure. WebJobs. Extensions. DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB).
@@ -29,7 +29,7 @@ Ten artykuł będzie zawsze odnosił się do Azure Functions v2, gdy środowisko
 
 ## <a name="consume-the-azure-cosmos-db-sdk-independently"></a>Korzystaj z zestawu SDK Azure Cosmos DB niezależnie
 
-Kluczową funkcją pakietu rozszerzenia jest zapewnienie obsługi wyzwalacza Azure Cosmos DB i powiązań. Zawiera również [zestaw Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet-core.md), który jest przydatny, jeśli chcesz korzystać z Azure Cosmos DB programowo bez użycia wyzwalacza i powiązań.
+Kluczową funkcją pakietu rozszerzenia jest zapewnienie obsługi wyzwalacza Azure Functions i powiązań dla Cosmos DB. Zawiera również [zestaw Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet-core.md), który jest przydatny, jeśli chcesz korzystać z Azure Cosmos DB programowo bez użycia wyzwalacza i powiązań.
 
 Jeśli chcesz użyć zestawu SDK Azure Cosmos DB, upewnij się, że nie dodajesz do projektu innego odwołania do pakietu NuGet. Zamiast tego **pozwól, aby odwołanie do zestawu SDK było rozpoznawane za pomocą pakietu rozszerzenia Azure Functions "** . Korzystanie z zestawu SDK Azure Cosmos DB niezależnie od wyzwalacza i powiązań
 
@@ -81,7 +81,7 @@ Jeśli w miejscu docelowym brakuje niektórych zmian, może to oznaczać, że wy
 W tym scenariuszu najlepszym sposobem działania jest dodanie `try/catch blocks` w kodzie i wewnątrz pętli, które mogą przetwarzać zmiany, wykrycie wszelkich błędów dla określonego podzestawu elementów i ich odpowiednie obsłużenie (wysłanie ich do innego magazynu Analiza lub Ponów próbę). 
 
 > [!NOTE]
-> Domyślnie wyzwalacz Azure Cosmos DB nie będzie ponawiać próby wykonania partii zmian, jeśli wystąpił nieobsługiwany wyjątek podczas wykonywania kodu. Oznacza to, że powodem, że zmiany nie dotarły do lokalizacji docelowej, jest to, że nie można ich przetworzyć.
+> Wyzwalacz Azure Functions dla Cosmos DB domyślnie nie będzie próbować partii zmian, jeśli wystąpił nieobsługiwany wyjątek podczas wykonywania kodu. Oznacza to, że powodem, że zmiany nie dotarły do lokalizacji docelowej, jest to, że nie można ich przetworzyć.
 
 Jeśli okaże się, że niektóre zmiany nie zostały odebrane w ogóle przez wyzwalacz, najbardziej typowym scenariuszem jest **uruchomienie innej funkcji platformy Azure**. Może to być inna funkcja platformy Azure wdrożona na platformie Azure lub funkcja platformy Azure działająca lokalnie na komputerze dewelopera, który ma **dokładnie taką samą konfigurację** (te same kontenery monitorowane i dzierżawy), a ta funkcja platformy Azure służy do kradzieży podzbioru zmian, które oczekuje, że funkcja platformy Azure będzie przetwarzać.
 
@@ -95,7 +95,7 @@ Ten błąd występuje, jeśli projekt Azure Functions (lub dowolny projekt, do k
 
 Aby obejść tę sytuację, Usuń ręczne odwołanie do narzędzia NuGet, które zostało dodane i pozwól, aby Azure Cosmos DB odwołanie do zestawu SDK przez pakiet rozszerzenia Cosmos DB Azure Functions.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Włącz monitorowanie dla Azure Functions](../azure-functions/functions-monitoring.md)
 * [Rozwiązywanie problemów z Azure Cosmos DB .NET SDK](./troubleshoot-dot-net-sdk.md)

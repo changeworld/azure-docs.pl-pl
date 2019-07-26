@@ -1,8 +1,8 @@
 ---
-title: 'Szybki start: Tworzenie i wysyłanie zapytań usługi Azure SQL Data Warehouse — Azure portal | Dokumentacja firmy Microsoft'
-description: Tworzenie i wysyłanie zapytań hurtowni danych przy użyciu usługi Azure SQL Data Warehouse w witrynie Azure portal.
+title: 'Szybki start: Tworzenie i wykonywanie zapytań Azure SQL Data Warehouse-Azure Portal | Microsoft Docs'
+description: Utwórz i zbadaj magazyn danych za pomocą Azure SQL Data Warehouse w Azure Portal.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
@@ -11,16 +11,16 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: sqlfreshmay19
-ms.openlocfilehash: 9072caf29be0ebf47207266b7313e989034c3a18
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 2864acca443e3135ea0023070da95accf97fe2e9
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428044"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479432"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Szybki start: Tworzenie magazynu danych Azure SQL Data Warehouse w witrynie Azure Portal i wykonywanie zapytania skierowanego do niego
 
-Szybkie tworzenie i wykonywanie zapytań usługi Azure SQL data warehouse przy użyciu witryny Azure portal.
+Szybkie tworzenie i wykonywanie zapytań względem usługi Azure SQL Data Warehouse przy użyciu Azure Portal.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
@@ -67,22 +67,22 @@ Wykonaj następujące kroki, aby utworzyć magazyn danych SQL Data Warehouse zaw
     | **Nazwa serwera** | Dowolna nazwa unikatowa w skali globalnej | Prawidłowe nazwy serwera opisano w artykule [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Reguły i ograniczenia nazewnictwa). |
     | **Identyfikator logowania administratora serwera** | Dowolna prawidłowa nazwa | Prawidłowe nazwy identyfikatorów logowania opisano w artykule [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) (Identyfikatory baz danych).|
     | **Hasło** | Dowolne prawidłowe hasło | Hasło musi mieć co najmniej osiem znaków i musi zawierać znaki z trzech z następujących kategorii: wielkie litery, małe litery, cyfry i znaki inne niż alfanumeryczne. |
-    | **Lokalizacja** | Dowolna prawidłowa lokalizacja | Aby uzyskać informacje na temat regionów, zobacz temat [Regiony platformy Azure](https://azure.microsoft.com/regions/). |
+    | **Location** | Dowolna prawidłowa lokalizacja | Aby uzyskać informacje na temat regionów, zobacz temat [Regiony platformy Azure](https://azure.microsoft.com/regions/). |
     ||||
 
     ![tworzenie serwera bazy danych](media/load-data-from-azure-blob-storage-using-polybase/create-database-server.png)
 
-5. Kliknij pozycję **Wybierz**.
+5. Kliknij przycisk **wybierz**.
 
-6. Kliknij przycisk **poziom wydajności** Aby określić konfigurację wydajności magazynu danych.
+6. Kliknij pozycję **poziom wydajności** , aby określić konfigurację wydajności hurtowni danych.
 
-7. Na potrzeby tego samouczka wybierz **Gen2**. Suwak, domyślnie jest ustawiony na **DW1000c**. Spróbuj przesunąć go w górę i w dół, aby zobaczyć, jak działa. 
+7. Na potrzeby tego samouczka wybierz pozycję **Gen2**. Domyślnie suwak jest ustawiony na **DW1000c**. Spróbuj przesunąć go w górę i w dół, aby zobaczyć, jak działa. 
 
     ![konfigurowanie wydajności](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
-8. Kliknij przycisk **Zastosuj**.
+8. Kliknij przycisk **zastosować**.
 
-9. Teraz, że ukończono formularza SQL Data Warehouse, kliknij przycisk **Utwórz** do udostępniania bazy danych. Aprowizacja zajmuje kilka minut.
+9. Po ukończeniu formularza SQL Data Warehouse kliknij przycisk **Utwórz** , aby zainicjować obsługę administracyjną bazy danych. Aprowizacja zajmuje kilka minut.
 
     ![kliknięcie przycisku utwórz](media/load-data-from-azure-blob-storage-using-polybase/click-create.png)
 
@@ -92,14 +92,14 @@ Wykonaj następujące kroki, aby utworzyć magazyn danych SQL Data Warehouse zaw
 
 ## <a name="create-a-server-level-firewall-rule"></a>Tworzenie reguły zapory na poziomie serwera
 
-Usługa SQL Data Warehouse tworzy zaporę na poziomie serwera. Ta Zapora uniemożliwia zewnętrznym aplikacjom i narzędziom łączenie się z serwerem i wszelkimi bazami danych na serwerze. Aby umożliwić łączność, możesz dodać reguły zezwalające na połączenia dla konkretnych adresów IP. Wykonaj następujące kroki, aby utworzyć [regułę zapory na poziomie serwera](../sql-database/sql-database-firewall-configure.md) dla Twojego adresu IP klienta.
+Usługa SQL Data Warehouse tworzy zaporę na poziomie serwera. Ta zapora uniemożliwia zewnętrznym aplikacjom i narzędziom łączenie się z serwerem lub dowolnymi bazami danych na serwerze. Aby umożliwić łączność, możesz dodać reguły zezwalające na połączenia dla konkretnych adresów IP. Wykonaj następujące kroki, aby utworzyć [regułę zapory na poziomie serwera](../sql-database/sql-database-firewall-configure.md) dla Twojego adresu IP klienta.
 
 > [!NOTE]
 > Usługa SQL Data Warehouse komunikuje się przez port 1433. Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący na porcie 1433 może być blokowany przez zaporę sieciową. Jeśli nastąpi taka sytuacja, nie będzie można nawiązać połączenia z serwerem usługi Azure SQL Database, chyba że dział IT otworzy port 1433.
 
-1. Po zakończeniu wdrożenia wybierz **wszystkich usług** z menu po lewej stronie. Wybierz **baz danych**, wybierz ikonę gwiazdki obok **magazyny danych SQL** dodać magazyny danych SQL do ulubionych.
-1. Wybierz **magazyny danych SQL** z menu po lewej stronie, a następnie kliknij przycisk **mySampleDatabase** na **magazyny danych SQL** strony. Zostanie otwarta strona przeglądu bazy danych zawierająca w pełni kwalifikowaną nazwę serwera (takich jak **mynewserver-20180430.database.windows.net**) i opcje dalszej konfiguracji.
-1. Skopiuj tę w pełni kwalifikowaną nazwę serwera do użycia nawiązać połączenie z serwerem i jego baz danych, w tym i innych samouczkach szybkiego startu. Aby otworzyć ustawienia serwera, kliknij nazwę serwera.
+1. Po zakończeniu wdrożenia wybierz pozycję **wszystkie usługi** w menu po lewej stronie. Wybierz pozycję **bazy danych**, a następnie wybierz pozycję gwiazda obok pozycji **SQL Data Warehouse** , aby dodać magazyny danych SQL do ulubionych.
+1. Wybierz pozycję **SQL Data Warehouses** w menu po lewej stronie, a następnie kliknij pozycję **MySampleDatabase** (usługa **SQL Data Warehouse** ). Zostanie otwarta strona przeglądu bazy danych zawierająca w pełni kwalifikowaną nazwę serwera (na przykład **mynewserver-20180430.Database.Windows.NET**) i opcje dalszej konfiguracji.
+1. Skopiuj tę w pełni kwalifikowaną nazwę serwera do użycia w celu nawiązania połączenia z serwerem i jego bazami danych w tym i innym przewodniku Szybki Start. Aby otworzyć ustawienia serwera, kliknij nazwę serwera.
 
    ![znajdowanie nazwy serwera](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)
 
@@ -113,7 +113,7 @@ Usługa SQL Data Warehouse tworzy zaporę na poziomie serwera. Ta Zapora uniemo�
 
 1. Aby dodać bieżący adres IP do nowej reguły zapory, kliknij pozycję **Dodaj adres IP klienta** na pasku narzędzi. Reguła zapory może otworzyć port 1433 dla pojedynczego adresu IP lub zakresu adresów IP.
 
-1. Kliknij pozycję **Zapisz**. Dla bieżącego adresu IP zostanie utworzona reguła zapory na poziomie serwera otwierająca port 1433 na serwerze logicznym.
+1. Kliknij polecenie **Zapisz**. Dla bieżącego adresu IP zostanie utworzona reguła zapory na poziomie serwera otwierająca port 1433 na serwerze logicznym.
 
 1. Kliknij przycisk **OK**, a następnie zamknij stronę **Ustawienia zapory**.
 
@@ -127,7 +127,7 @@ Teraz możesz łączyć się z serwerem SQL i jego magazynami danych przy użyci
 Uzyskaj w pełni kwalifikowaną nazwę serwera dla swojego serwera SQL w witrynie Azure Portal. Nazwa ta będzie używana później przy nawiązywaniu połączenia z serwerem.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
-2. Wybierz **magazyny danych SQL** z menu po lewej stronie, a następnie kliknij pozycję Magazyn danych na **magazyny danych SQL** strony.
+2. Wybierz pozycję **SQL Data Warehouses** w menu po lewej stronie, a następnie kliknij swój magazyn danych w witrynie usługi **SQL Data Warehouse** .
 3. W okienku **Essentials** na stronie bazy danych w witrynie Azure Portal zlokalizuj i skopiuj **nazwę serwera**. W tym przykładzie w pełni kwalifikowana nazwa to mynewserver-20180430.database.windows.net.
 
     ![informacje o połączeniu](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)
@@ -143,9 +143,9 @@ W tej sekcji używany jest program [SQL Server Management Studio](/sql/ssms/down
    | Ustawienie | Sugerowana wartość | Opis |
    | :------ | :-------------- | :---------- |
    | Typ serwera | Aparat bazy danych | Ta wartość jest wymagana |
-   | Nazwa serwera | W pełni kwalifikowana nazwa serwera | Oto przykład: **mynewserver-20180430.database.windows.net**. |
-   | Authentication | Uwierzytelnianie programu SQL Server | Uwierzytelnianie SQL to jedyny typ uwierzytelniania skonfigurowany w tym samouczku. |
-   | Login | Konto administratora serwera | Konto określone podczas tworzenia serwera. |
+   | Nazwa serwera | W pełni kwalifikowana nazwa serwera | Oto przykład: **mynewserver-20180430.Database.Windows.NET**. |
+   | Authentication | Uwierzytelnianie serwera SQL | Uwierzytelnianie SQL to jedyny typ uwierzytelniania skonfigurowany w tym samouczku. |
+   | Zaloguj | Konto administratora serwera | Konto określone podczas tworzenia serwera. |
    | Hasło | Hasło konta administratora serwera | Hasło określone podczas tworzenia serwera. |
    ||||
 
@@ -183,9 +183,9 @@ Usługa SQL Data Warehouse używa T-SQL jako języka zapytań. Aby otworzyć okn
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Opłaty będą naliczane za jednostki magazynu danych i dane przechowywane w magazynie danych. Opłaty za te zasoby obliczeniowe i magazynowe są naliczane osobno.
+Opłaty są naliczane za jednostki magazynu danych i dane przechowywane w magazynie danych. Opłaty za te zasoby obliczeniowe i magazynowe są naliczane osobno.
 
-- Jeśli chcesz przechowywać dane w magazynie, możesz wstrzymać obliczenia, gdy nie korzystasz z magazynu danych. Po wstrzymaniu obliczeń, są naliczane tylko za magazyn danych. Obliczenia możesz wstrzymać w każdym przypadku, gdy wszystko będzie gotowe do pracy z danymi.
+- Jeśli chcesz przechowywać dane w magazynie, możesz wstrzymać obliczenia, gdy nie korzystasz z magazynu danych. Przez wstrzymywanie obliczeń opłata jest naliczana tylko za magazyn danych. Obliczenia można wznowić za każdym razem, gdy wszystko będzie gotowe do pracy z danymi.
 - Aby uniknąć opłat w przyszłości, możesz usunąć magazyn danych.
 
 Wykonaj następujące kroki, aby wyczyścić zasoby, które nie są już potrzebne.
@@ -194,17 +194,17 @@ Wykonaj następujące kroki, aby wyczyścić zasoby, które nie są już potrzeb
 
     ![Oczyszczanie zasobów](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. Aby wstrzymać obliczenia, kliknij przycisk **Wstrzymaj**. Jeśli magazyn danych jest wstrzymany, zobaczysz **Wznów** przycisku. Aby wznowić obliczenia, kliknij przycisk **wznowić**.
+2. Aby wstrzymać obliczenia, kliknij przycisk **Wstrzymaj**. Gdy magazyn danych jest wstrzymany, zobaczysz przycisk **Wznów** . Aby wznowić obliczenia, kliknij przycisk **Wznów**.
 
-3. Aby usunąć magazyn danych, więc nie są naliczane opłaty za obliczenia oraz magazynowanie, kliknij przycisk **Usuń**.
+3. Aby usunąć magazyn danych, aby nie naliczać opłat za zasoby obliczeniowe i magazynowanie, kliknij przycisk **Usuń**.
 
-4. Aby usunąć utworzony serwer SQL, kliknij **mynewserver-20180430.database.windows.net** w poprzednim obrazie, a następnie kliknij przycisk **Usuń**. Należy zachować ostrożność podczas usuwania, ponieważ usunięcie serwera spowoduje również usunięcie wszystkich baz danych przypisanych do tego serwera.
+4. Aby usunąć utworzony serwer SQL, kliknij pozycję **mynewserver-20180430.Database.Windows.NET** na poprzednim obrazie, a następnie kliknij pozycję **Usuń**. Należy zachować ostrożność podczas usuwania, ponieważ usunięcie serwera spowoduje również usunięcie wszystkich baz danych przypisanych do tego serwera.
 
 5. Aby usunąć grupę zasobów, kliknij pozycję **myResourceGroup**, a następnie kliknij pozycję **Usuń grupę zasobów**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz został utworzony magazyn danych, utworzyć regułę zapory na nawiązanie połączenia z magazynem danych i uruchomiono kilka zapytań. Aby dowiedzieć się więcej na temat usługi Azure SQL Data Warehouse, przejdź do samouczka na temat ładowania danych.
+Utworzono magazyn danych, utworzono regułę zapory, połączono z magazynem danych i uruchomiono kilka zapytań. Aby dowiedzieć się więcej na temat usługi Azure SQL Data Warehouse, przejdź do samouczka na temat ładowania danych.
 
 > [!div class="nextstepaction"]
 > [Ładowanie danych do magazynu danych SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md)

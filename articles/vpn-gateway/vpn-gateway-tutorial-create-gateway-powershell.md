@@ -2,18 +2,18 @@
 title: Tworzenie bramy sieci VPN na platformie Azure i zarządzanie nią przy użyciu programu PowerShell | Microsoft Docs
 description: Samouczek — tworzenie bramy sieci VPN i zarządzanie nią przy użyciu modułu Azure PowerShell
 services: vpn-gateway
-author: yushwang
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 02/11/2019
-ms.author: yushwang
+ms.date: 07/23/2019
+ms.author: cherylmc
 ms.custom: mvc
-ms.openlocfilehash: 790a8b74f437fe8fd7b8660c2ac9d208328b487f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d1c90e61890ee98dc5371faed872d03409aaf31f
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60457670"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489543"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Samouczek: Tworzenie bramy sieci VPN i zarządzanie nią przy użyciu programu PowerShell
 
@@ -37,6 +37,25 @@ Poniższy diagram przedstawia sieć wirtualną oraz bramę sieci VPN utworzoną 
 
 ## <a name="common-network-parameter-values"></a>Częste wartości parametrów sieciowych
 
+Poniżej znajdują się wartości parametrów używane w tym samouczku. W przykładach zmienne są tłumaczone na następujące:
+
+```
+#$RG1         = The name of the resource group
+#$VNet1       = The name of the virtual network
+#$Location1   = The location region
+#$FESubnet1   = The name of the first subnet
+#$BESubnet1   = The name of the second subnet
+#$VNet1Prefix = The address range for the virtual network
+#$FEPrefix1   = Addresses for the first subnet
+#$BEPrefix1   = Addresses for the second subnet
+#$GwPrefix1   = Addresses for the GatewaySubnet
+#$VNet1ASN    = ASN for the virtual network
+#$DNS1        = The IP address of the DNS server you want to use for name resolution
+#$Gw1         = The name of the virtual network gateway
+#$GwIP1       = The public IP address for the virtual network gateway
+#$GwIPConf1   = The name of the IP configuration
+```
+
 Zmień poniższe wartości na podstawie konfiguracji środowiska i sieci, a następnie skopiuj je i wklej, aby ustawić zmienne na potrzeby tego samouczka. Jeśli upłynie limit czasu sesji usługi Cloud Shell lub konieczne jest użycie innego okna programu PowerShell, skopiuj i wklej zmienne do nowej sesji i kontynuuj pracę z tym samouczkiem.
 
 ```azurepowershell-interactive
@@ -45,7 +64,6 @@ $VNet1       = "VNet1"
 $Location1   = "East US"
 $FESubnet1   = "FrontEnd"
 $BESubnet1   = "Backend"
-$GwSubnet1   = "GatewaySubnet"
 $VNet1Prefix = "10.1.0.0/16"
 $FEPrefix1   = "10.1.0.0/24"
 $BEPrefix1   = "10.1.1.0/24"
@@ -67,12 +85,12 @@ New-AzResourceGroup -ResourceGroupName $RG1 -Location $Location1
 
 ## <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
-Brama sieci VPN na platformie Azure zapewnia łączność między lokalizacjami oraz funkcjonalność serwera VPN P2S w sieci wirtualnej. Dodaj bramę sieci VPN do istniejącej sieci wirtualnej lub utwórz nową sieć wirtualną i bramę. W tym przykładzie tworzona jest nowa sieć wirtualna z trzema podsieciami: frontonu, zaplecza i bramy za pomocą poleceń [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) oraz [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork):
+Brama sieci VPN na platformie Azure zapewnia łączność między lokalizacjami oraz funkcjonalność serwera VPN P2S w sieci wirtualnej. Dodaj bramę sieci VPN do istniejącej sieci wirtualnej lub utwórz nową sieć wirtualną i bramę. Należy zauważyć, że w przykładzie określono nazwę podsieci bramy. Należy zawsze określić nazwę podsieci bramy jako "GatewaySubnet", aby działała prawidłowo. W tym przykładzie tworzona jest nowa sieć wirtualna z trzema podsieciami: frontonu, zaplecza i bramy za pomocą poleceń [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) oraz [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork):
 
 ```azurepowershell-interactive
 $fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubnet1 -AddressPrefix $FEPrefix1
 $besub1 = New-AzVirtualNetworkSubnetConfig -Name $BESubnet1 -AddressPrefix $BEPrefix1
-$gwsub1 = New-AzVirtualNetworkSubnetConfig -Name $GWSubnet1 -AddressPrefix $GwPrefix1
+$gwsub1 = New-AzVirtualNetworkSubnetConfig -Name GatewaySubnet -AddressPrefix $GwPrefix1
 $vnet   = New-AzVirtualNetwork `
             -Name $VNet1 `
             -ResourceGroupName $RG1 `
@@ -151,7 +169,7 @@ Aby uzyskać więcej informacji, zobacz temat [Resetowanie bramy VPN Gateway](vp
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli przechodzisz do [następnego samouczka](vpn-gateway-tutorial-vpnconnection-powershell.md), zachowaj te zasoby, ponieważ stanowią one wymaganie wstępne.
+Jeśli przejdziesz do [następnego samouczka](vpn-gateway-tutorial-vpnconnection-powershell.md), chcesz zachować te zasoby, ponieważ są one wymagane.
 
 Jeśli jednak brama jest częścią wdrożenia prototypowego lub służącego do weryfikacji koncepcji, możesz usunąć grupę zasobów, bramę sieci VPN i wszystkie powiązane zasoby za pomocą polecenia [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup).
 
@@ -159,7 +177,7 @@ Jeśli jednak brama jest częścią wdrożenia prototypowego lub służącego do
 Remove-AzResourceGroup -Name $RG1
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje dotyczące podstawowych zadań tworzenia bramy sieci VPN i zarządzania nią, takie jak:
 

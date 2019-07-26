@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: d24988dfd5cbaf20e92c5afbbc39dc0c78e3ef6a
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: 076c3318a68a50e6bd1b4f9f2a4a4b9a034533c6
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314856"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68346573"
 ---
 # <a name="azure-data-factory-mapping-data-flows-column-patterns"></a>Wzorce kolumn przepływów danych mapowania usługi Azure Data Factory
 
@@ -39,4 +39,4 @@ Aby kompilować wzorce na podstawie kolumn, można dopasować nazwę kolumny, ty
 ![położenie kolumny](media/data-flow/position.png "Położenie kolumny")
 
 ## <a name="next-steps"></a>Następne kroki
-Dowiedz się więcej o [języku wyrażeń](http://aka.ms/dataflowexpressions) przepływu danych mapowania ADF na potrzeby transformacji danych
+Dowiedz się więcej o [języku wyrażeń](https://aka.ms/dataflowexpressions) przepływu danych mapowania ADF na potrzeby transformacji danych

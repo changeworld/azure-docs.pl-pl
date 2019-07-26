@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 75ff3bdf7a0900c32feb7090e0c24af748080a76
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a85ced787529db7e6d607665d81632ab1c450dfe
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323487"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466972"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Uruchamianie zadań przygotowania i zwolnienia zadań w węzłach obliczeniowych wsadowych
 
@@ -73,6 +73,8 @@ Gdy zadanie zostanie oznaczone jako ukończone, zadanie Zwolnij zadanie jest wyk
 
 > [!NOTE]
 > Podczas usuwania zadania jest również wykonywane zadanie zwolnienia zadania. Jeśli jednak zadanie zostało już zakończone, zadanie zlecenia nie jest uruchamiane po raz drugi, jeśli zadanie zostanie później usunięte.
+
+Zadania wydania zadań mogą działać przez maksymalnie 15 minut, zanim zostaną zakończone przez usługę Batch. Aby uzyskać więcej informacji, zobacz [dokumentację interfejsu API REST](https://docs.microsoft.com/rest/api/batchservice/job/add#jobreleasetask).
 > 
 > 
 
@@ -184,7 +186,7 @@ Zrzut ekranu poniżej przedstawia **blok zadania przygotowania** w Azure Portal 
 
 ![Właściwości przygotowania zadania w Azure Portal][1]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 ### <a name="application-packages"></a>Pakiety aplikacji
 Oprócz zadania przygotowania zadania można także użyć funkcji [pakietów aplikacji](batch-application-packages.md) usługi Batch do przygotowania węzłów obliczeniowych do wykonywania zadań. Ta funkcja jest szczególnie przydatna w przypadku wdrażania aplikacji, które nie wymagają uruchamiania Instalatora, aplikacji zawierających wiele plików (100 +) lub aplikacji wymagających ścisłej kontroli wersji.
 

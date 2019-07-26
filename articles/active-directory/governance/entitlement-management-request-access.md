@@ -1,10 +1,10 @@
 ---
-title: Żądanie dostępu do pakietu dostępu w usłudze Azure AD uprawnienie management (wersja zapoznawcza) — usługi Azure Active Directory
-description: Dowiedz się, jak korzystać z portalu Moje dostęp na żądanie dostępu do pakietu dostępu w usłudze Azure Active Directory Zarządzanie uprawnieniami (wersja zapoznawcza).
+title: Zażądaj dostępu do pakietu dostępu w usłudze Azure AD uprawnień do zarządzania (wersja zapoznawcza) — Azure Active Directory
+description: Dowiedz się, jak za pomocą portalu dostępu uzyskiwać żądania dostępu do pakietu dostępu w Azure Active Directory Zarządzanie prawami (wersja zapoznawcza).
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: mamtakumar
 ms.service: active-directory
 ms.workload: identity
@@ -13,88 +13,88 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 04/19/2019
-ms.author: rolyon
+ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39a50240b4360c5b4adcd6020c2b80b0f06315f7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 578f78d1853194cad000aa2e54b40d1ac5003544
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64541558"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489044"
 ---
-# <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Żądanie dostępu do pakietu dostępu w zarządzanie uprawnieniami w usłudze Azure AD (wersja zapoznawcza)
+# <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Zażądaj dostępu do pakietu dostępu w usłudze Azure AD uprawnień do zarządzania (wersja zapoznawcza)
 
 > [!IMPORTANT]
-> Zarządzanie uprawnieniami w usłudze Azure Active Directory (Azure AD) jest obecnie w publicznej wersji zapoznawczej.
+> Zarządzanie prawami w usłudze Azure Active Directory (Azure AD) jest obecnie dostępne w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
 > Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="sign-in-to-the-my-access-portal"></a>Zaloguj się do portalu Moje dostępu
+## <a name="sign-in-to-the-my-access-portal"></a>Logowanie się do portalu My Access
 
-Pierwszym krokiem jest zalogować się do portalu Moje dostępu, których może zażądać dostępu do pakietu dostępu.
+Pierwszym krokiem jest zalogowanie się w portalu do mojego dostępu, w którym można zażądać dostępu do pakietu dostępu.
 
-**Rola wymagań wstępnych:** Obiekt żądający
+**Rola wymagana wstępnie:** Żądający
 
-1. Wyszukaj wiadomości e-mail lub wiadomości z Menedżer projektu lub business, którą pracujesz. Wiadomość e-mail powinna zawierać łącze do pakietu dostępu, który jest potrzebny dostęp do. Łącze rozpoczyna się od:
+1. Poszukaj wiadomości e-mail lub wiadomości z programu Project lub Business Manager, z którym pracujesz. Wiadomość e-mail powinna zawierać link do pakietu dostępu, do którego będzie potrzebny dostęp. Link rozpocznie się z:
 
     `https://myaccess.microsoft.com`
 
 1. Otwórz link.
 
-1. Zaloguj się do portalu Moje dostępu.
+1. Zaloguj się do portalu My Access.
 
-    Upewnij się, że używasz konta organizacyjnego. Jeśli nie wiesz, możesz skontaktować się z Menedżer projektu lub business.
+    Upewnij się, że korzystasz z konta organizacyjnego. Jeśli nie masz pewności, skontaktuj się z projektem lub menedżerem biznesowym.
 
-## <a name="request-an-access-package"></a>Żądanie dostępu do pakietu
+## <a name="request-an-access-package"></a>Żądaj pakietu dostępu
 
-Po znalezieniu pakiet dostępu w portalu Moje dostępu, możesz przesłać żądanie.
+Po znalezieniu pakietu dostępu w portalu dostępu można przesłać żądanie.
 
-**Rola wymagań wstępnych:** Obiekt żądający
+**Rola wymagana wstępnie:** Żądający
 
 1. Kliknij znacznik wyboru, aby wybrać pakiet dostępu.
 
-    ![Moje portalu dostępu — dostęp do pakietów](./media/entitlement-management-shared/my-access-access-packages.png)
+    ![Portal dostępu — dostęp — pakiety](./media/entitlement-management-shared/my-access-access-packages.png)
 
-1. Kliknij przycisk **żądania dostępu** aby otworzyć okienko żądania dostępu.
+1. Kliknij pozycję Zażądaj **dostępu** , aby otworzyć okienko żądania dostępu.
 
-1. Jeśli **uzasadnienie biznesowe** zostanie wyświetlone okno, wpisz uzasadnienie konieczności uzyskiwania dostępu.
+1. Jeśli zostanie wyświetlone pole **uzasadnienie biznesowe** , wpisz uzasadnienie dostępu.
 
-1. Jeśli **żądanie dla określonego okresu?** jest włączony, wybierz opcję **tak** lub **nie**.
+1. Jeśli jest włączone **żądanie dla określonego okresu?** , wybierz opcję **tak** lub **nie**.
 
-1. W razie potrzeby określ daty rozpoczęcia i Data zakończenia.
+1. W razie potrzeby określ datę początkową i datę końcową.
 
-    ![Moje portalu dostępu — żądanie dostępu](./media/entitlement-management-shared/my-access-request-access.png)
+    ![Portal dostępu — żądanie dostępu](./media/entitlement-management-shared/my-access-request-access.png)
 
-1. Po zakończeniu kliknij przycisk **przesyłania** Aby przesłać żądanie.
+1. Po zakończeniu kliknij pozycję **Prześlij** , aby przesłać żądanie.
 
-1. Kliknij przycisk **Historia żądań** umożliwia wyświetlenie listy wykonanych żądań i stanów.
+1. Kliknij pozycję **historia żądań** , aby wyświetlić listę żądań i stan.
 
-    Jeśli pakiet dostępu wymaga zatwierdzenia, żądanie jest obecnie w stanie oczekuje na zatwierdzenie.
+    Jeśli pakiet dostępu wymaga zatwierdzenia, żądanie jest teraz w stanie oczekiwania na zatwierdzenie.
 
-## <a name="cancel-a-request"></a>Anulowanie żądania
+## <a name="cancel-a-request"></a>Anuluj żądanie
 
-Prześlij żądanie dostępu, jeśli żądanie nadal znajduje się w **oczekujące na zatwierdzenie** stanu, można anulować żądania.
+W przypadku przesyłania żądania dostępu, gdy żądanie jest nadal w stanie **oczekiwania** na zatwierdzenie, można anulować żądanie.
 
-**Rola wymagań wstępnych:** Obiekt żądający
+**Rola wymagana wstępnie:** Żądający
 
-1. W portalu Moje dostępu po lewej stronie, kliknij przycisk **Historia żądań** umożliwia wyświetlenie listy wykonanych żądań i stanów.
+1. W portalu mój dostęp po lewej stronie kliknij pozycję **historia żądań** , aby wyświetlić listę żądań i stan.
 
-1. Kliknij przycisk **widoku** link do żądania, aby anulować.
+1. Kliknij link **Wyświetl** dla żądania, które chcesz anulować.
 
-1. Jeśli żądanie nadal znajduje się w **oczekujące na zatwierdzenie** stanu, możesz kliknąć pozycję **żądanie anulowania** można anulować żądania.
+1. Jeśli żądanie jest nadal w stanie **oczekiwania** na zatwierdzenie, możesz kliknąć przycisk **Anuluj żądanie** , aby anulować żądanie.
 
-    ![Moje portalu dostępu — żądanie anulowania](./media/entitlement-management-request-access/my-access-cancel-request.png)
+    ![Portal dostępu — Anuluj żądanie](./media/entitlement-management-request-access/my-access-cancel-request.png)
 
-1. Kliknij przycisk **Historia żądań** aby upewnić się, żądanie zostało anulowane.
+1. Kliknij pozycję **historia żądań** , aby potwierdzić, że żądanie zostało anulowane.
 
 ## <a name="select-a-policy"></a>Wybieranie zasad
 
-Jeśli zażądano dostępu do pakietu dostępu, który ma wiele zasad, które są stosowane, może być proszony o wybranie zasad. Na przykład dostęp do Menedżera pakietów może skonfigurować pakiet dostępu przy użyciu dwóch zasad na dwie grupy pracowników wewnętrznych. Pierwszy zasad może zezwolić na dostęp przez 60 dni i wymagają zatwierdzenia. Drugie zasady mogą zezwolić na dostęp do 2 dni i nie wymagają zatwierdzenia. Jeśli napotkasz ten scenariusz, należy wybrać zasad które chcesz użyć.
+Jeśli żądasz dostępu do pakietu dostępu z wieloma zasadami, które mają zastosowanie, może zostać wyświetlony monit o wybranie zasad. Na przykład Menedżer pakietów dostępu może skonfigurować pakiet dostępu z dwiema zasadami dla dwóch grup pracowników wewnętrznych. Pierwsze zasady mogą zezwalać na dostęp przez 60 dni i wymagać zatwierdzenia. Drugie zasady mogą zezwalać na dostęp przez 2 dni i nie wymagać zatwierdzania. Jeśli wystąpi ten scenariusz, należy wybrać zasady, które mają być używane.
 
-**Rola wymagań wstępnych:** Obiekt żądający
+**Rola wymagana wstępnie:** Żądający
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Zatwierdź lub Odrzuć żądania dostępu](entitlement-management-request-approve.md)
-- [Żądanie procesu i powiadomień e-mail](entitlement-management-process.md)
+- [Zatwierdzanie lub odrzucanie żądań dostępu](entitlement-management-request-approve.md)
+- [Proces żądania i powiadomienia e-mail](entitlement-management-process.md)
