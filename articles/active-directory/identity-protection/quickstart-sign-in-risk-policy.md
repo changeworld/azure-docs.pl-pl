@@ -1,128 +1,92 @@
 ---
-title: Przewodnik Szybki Start — blokuje dostęp po wykryciu zagrożenia sesji przy użyciu usługi Azure Active Directory Identity Protection | Dokumentacja firmy Microsoft
-description: W tym przewodniku Szybki Start dowiesz się, jak można skonfigurować usługi Azure Active Directory (Azure AD) Identity Protection ryzyka logowania zasady dostępu warunkowego do blokowania operacji logowania w oparciu o ryzyko sesji.
+title: Szybki Start — Blokuj dostęp w przypadku wykrycia ryzyka sesji z Azure Active Directory Identity Protection | Microsoft Docs
+description: W tym przewodniku szybki start dowiesz się, jak skonfigurować zasady dostępu warunkowego dla ochrony tożsamości w usłudze Azure Active Directory (Azure AD) w celu blokowania logowania na podstawie ryzyka związanego z sesją.
 services: active-directory
-keywords: ochronę tożsamości i dostępu warunkowego do aplikacji, dostęp warunkowy w usłudze Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: article
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.workload: identity
+ms.topic: quickstart
 ms.date: 09/13/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c04d1a01c0ffd69e70dfa3b88b4f3c7f4b3576d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bb1e29735a860f5dc3b6ce8996af9fcd4962871
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108804"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335306"
 ---
-# <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>Szybki start: Zablokuj dostęp po wykryciu zagrożenia sesji przy użyciu usługi Azure Active Directory Identity Protection  
+# <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>Szybki start: Blokuj dostęp w przypadku wykrycia ryzyka sesji z Azure Active Directory Identity Protection  
 
-Aby zachować ochronę środowiska, można zablokować podejrzanych użytkowników z logowaniem. Usługa Azure Active Directory (Azure AD) Identity Protection analizuje każdy logowania i oblicza prawdopodobieństwo, że logowanie próba nie było wykonywane przez prawowitym właścicielem konta użytkownika. Prawdopodobieństwo (niskiej, średniej, wysokiej) jest wskazywany w postaci obliczonej wartości o nazwie poziom ryzyka logowania. Ustawiając warunek ryzyka logowania, można skonfigurować ryzyka logowania zasady dostępu warunkowego, aby odpowiedzieć na poziomach określonych ryzyka logowania. 
+Aby zachować ochronę środowiska, można zablokować podejrzanych użytkowników przed zalogowaniem się. Usługa Azure Active Directory (Azure AD) Identity Protection analizuje poszczególne logowania i oblicza prawdopodobieństwo, że próba logowania nie została wykonana przez uprawnionego właściciela konta użytkownika. Prawdopodobieństwo (niski, średni, wysoki) jest wskazywane w postaci wartości obliczanej o nazwie poziom ryzyka logowania. Ustawiając warunek ryzyka związanego z logowaniem, można skonfigurować zasady dostępu warunkowego dotyczącego ryzyka związanego z logowaniem w celu reagowania na określone poziomy ryzyka związanego z logowaniem. 
 
-Ten przewodnik Szybki Start przedstawia sposób konfigurowania ryzyka logowania zasady dostępu warunkowego, które blokuje logowania w przypadku średniej lub i powyżej ryzyka logowania poziomu został wykryty. 
+W tym przewodniku szybki start przedstawiono sposób konfigurowania zasad dostępu warunkowego dotyczącego ryzyka związanego z logowaniem, które blokują logowanie w przypadku wykrycia średniego i wyższego poziomu ryzyka związanego z logowaniem. 
 
-![Tworzenie zasad](./media/quickstart-sign-in-risk-policy/1004.png)
-
+![Utwórz zasady](./media/quickstart-sign-in-risk-policy/1004.png)
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-
-
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
 Do ukończenia scenariusza z tego samouczka są potrzebne następujące elementy:
 
-- **Dostęp do wersji Azure AD Premium P2** -Azure AD Identity Protection to funkcja usługi Azure AD Premium P2. 
-
-- **Ochrona tożsamości** — scenariusz, w tym przewodniku Szybki Start wymaga włączenia ochrony tożsamości. Jeśli nie wiesz, jak włączyć usługę Identity Protection, zobacz [włączania usługi Azure Active Directory Identity Protection](../identity-protection/enable.md).
-
-- **Przeglądarka tor** — [przeglądarki Tor](https://www.torproject.org/projects/torbrowser.html.en) zaprojektowano w celu zachowania prywatności w trybie online. Identity Protection wykrywa logowania w przeglądarce sieci Tor jako **logowania z anonimowych adresów IP**, który ma poziom średniego ryzyka. Aby uzyskać więcej informacji, zobacz [Zdarzenia o podwyższonym ryzyku w usłudze Azure Active Directory](../reports-monitoring/concept-risk-events.md).  
-
-- **Konto testowe o nazwie Alain Charon** — Jeśli nie wiesz, jak tworzyć konta testowego, zobacz [dodać nowego użytkownika](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
-
+- **Dostęp do Azure AD — wersja Premium P2 Edition** — Azure AD Identity Protection jest funkcją Azure AD — wersja Premium P2. 
+- **Ochrona tożsamości** — scenariusz w tym przewodniku Szybki Start wymaga włączenia ochrony tożsamości. Jeśli nie wiesz, jak włączyć ochronę tożsamości, zobacz [włączanie Azure Active Directory Identity Protection](../identity-protection/enable.md).
+- **Przeglądarka sieci Tor** — [przeglądarka tor](https://www.torproject.org/projects/torbrowser.html.en) została zaprojektowana tak, aby pomóc zachować prywatność w trybie online. Ochrona tożsamości wykrywa logowanie z przeglądarki tor jako **logowania z anonimowych adresów IP**, które mają poziom ryzyka średniego. Aby uzyskać więcej informacji, zobacz [Zdarzenia o podwyższonym ryzyku w usłudze Azure Active Directory](../reports-monitoring/concept-risk-events.md).  
+- **Konto testowe o nazwie Alain Charon** — Jeśli nie wiesz, jak utworzyć konto testowe, zobacz [Dodawanie nowego użytkownika](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
 ## <a name="test-your-sign-in"></a>Testowanie logowania 
 
-Celem tego kroku jest, aby upewnić się, że Twoje konto testu mają dostęp do dzierżawy za pomocą przeglądarki sieci Tor.
+Celem tego kroku jest upewnienie się, że konto testowe może uzyskać dostęp do dzierżawy przy użyciu przeglądarki sieci Tor.
 
-**Aby przetestować logowanie:**
+**Aby przetestować Logowanie:**
 
-1. Zaloguj się do Twojej [witryny Azure portal](https://portal.azure.com) jako **Alain Charon**.
-
+1. Zaloguj się do [Azure Portal](https://portal.azure.com) jako **Alain Charon**.
 2. Wyloguj się. 
 
+## <a name="create-your-conditional-access-policy"></a>Tworzenie zasad dostępu warunkowego 
 
-## <a name="create-your-conditional-access-policy"></a>Utwórz zasady dostępu warunkowego 
+Scenariusz w tym przewodniku szybki start używa logowania z przeglądarki Tor w celu wygenerowania wykrytych logowań **z poziomu zdarzenia anonimowych adresów IP** . Poziomem ryzyka tego zdarzenia jest średnie. Aby odpowiedzieć na to zdarzenie związane z ryzykiem, należy ustawić wartość średni warunek ryzyka logowania. 
 
-Scenariusz, w tym przewodniku Szybki Start używa logowania za pomocą przeglądarki Tor do generowania wykryte **logowania z anonimowych adresów IP** zdarzenie o podwyższonym ryzyku. Poziom ryzyka dotyczący tego zdarzenia o podwyższonym ryzyku to średni. Aby odpowiedzieć na to zdarzenie o podwyższonym ryzyku, należy ustawić warunkiem ryzyka logowania średniej. 
+W tej sekcji przedstawiono sposób tworzenia wymaganych zasad dostępu warunkowego dotyczącego ryzyka związanego z logowaniem. W zasadach ustaw następujące ustawienia:
 
-W tej sekcji przedstawiono sposób tworzenia wymaganych ryzyko logowania zasady dostępu warunkowego. Ustaw w zasadach:
-
-|Ustawienie |Wartość|
+|Ustawienie |Value|
 |---     | --- |
 | Użytkownicy  | Alain Charon  |
-| Warunki | Ryzyko logowania, średnie i wyższe |
-| Kontrolki | Blokuj dostęp |
- 
+| Warunki | Ryzyko związane z logowaniem, średnie i powyżej |
+| Formanty | Blokuj dostęp |
 
-![Tworzenie zasad](./media/quickstart-sign-in-risk-policy/201.png)
-
- 
-
+![Utwórz zasady](./media/quickstart-sign-in-risk-policy/201.png)
 
 **Aby skonfigurować zasady dostępu warunkowego:**
 
-1. Zaloguj się do Twojej [witryny Azure portal](https://portal.azure.com) jako administrator globalny.
-
-2. Przejdź do [strony usługi Azure AD Identity Protection](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/Overview).
- 
-3. Na **usługi Azure AD Identity Protection** strony w **Konfiguruj** , kliknij przycisk **zasad ryzyka logowania**.
- 
-4. Na stronie zasad w **przypisania** kliknij **użytkowników**.
-
-5. Na **użytkowników** kliknij **wybranym użytkownikom**.
-
-6. Na **wybranym użytkownikom** wybierz **Alain Charon**, a następnie kliknij przycisk **wybierz**.
-
-7. Na **użytkowników** kliknij **gotowe**. 
-
-8. Na stronie zasad w **przypisania** kliknij **warunki**.
-
-9. Na **warunki** kliknij **ryzyka logowania**.
-
-10. Na **ryzyka logowania** wybierz opcję **średni i nowsze wersje**, a następnie kliknij przycisk **wybierz**. 
-
-11. Na **warunki** kliknij **gotowe**.
-
-12. Na stronie zasad w **kontrolki** kliknij **dostępu**.
-
-13. Na **dostępu** kliknij **zezwolić na dostęp**, wybierz opcję **Wymagaj uwierzytelniania wieloskładnikowego**, a następnie kliknij przycisk **wybierz**.
-
-14. Na stronie zasad kliknij **Zapisz**.  
-
+1. Zaloguj się do [Azure Portal](https://portal.azure.com) jako Administrator globalny.
+2. Przejdź do [strony Azure AD Identity Protection](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/Overview).
+3. Na stronie **Azure AD Identity Protection** w sekcji **Konfiguracja** kliknij pozycję **zasady dotyczące ryzyka związanego**z logowaniem.
+4. Na stronie zasady w sekcji **przypisania** kliknij pozycję **Użytkownicy**.
+5. Na stronie **Użytkownicy** kliknij pozycję **Wybierz użytkowników**.
+6. Na stronie **Wybieranie użytkowników** wybierz pozycję **Alain Charon**, a następnie kliknij pozycję **Wybierz**.
+7. Na stronie **Użytkownicy** kliknij przycisk **gotowe**. 
+8. Na stronie zasady w sekcji **przypisania** kliknij pozycję **warunki**.
+9. Na stronie **warunki** kliknij pozycję **ryzyko związane**z logowaniem.
+10. Na stronie **ryzyko związane** z logowaniem wybierz pozycję **średni i powyżej**, a następnie kliknij pozycję **Wybierz**. 
+11. Na stronie **warunki** kliknij przycisk **gotowe**.
+12. Na stronie zasady w sekcji kontrolki  kliknij pozycję **dostęp**.
+13. Na stronie **dostęp** kliknij pozycję **Zezwalaj na dostęp**, wybierz pozycję **Wymagaj uwierzytelniania**wieloskładnikowego, a następnie kliknij pozycję **Wybierz**.
+14. Na stronie zasady kliknij przycisk **Zapisz**.  
 
 ## <a name="test-your-conditional-access-policy"></a>Testowanie zasad dostępu warunkowego
 
-Aby sprawdzić zasady, spróbuj zalogować się do swojej [witryny Azure portal](https://portal.azure.com) jako **Alan Charon** za pomocą przeglądarki sieci Tor. Próba logowania powinien być blokowany przez zasady dostępu warunkowego.
+Aby przetestować zasady, spróbuj zalogować się do [Azure Portal](https://portal.azure.com) jako **Artur Charon** przy użyciu przeglądarki sieci Tor. Próba logowania powinna być blokowana przez zasady dostępu warunkowego.
 
 ![Uwierzytelnianie wieloskładnikowe](./media/quickstart-sign-in-risk-policy/203.png)
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie jest już potrzebny, Usuń użytkownika testowego, w przeglądarce sieci Tor i wyłączyć ryzyka logowania zasady dostępu warunkowego:
+Gdy nie jest już potrzebne, Usuń użytkownika testowego, przeglądarkę sieci Tor i wyłącz zasady dostępu warunkowego dotyczącego ryzyka związanego z logowaniem:
 
-- Jeśli nie wiesz, jak usunąć użytkownika usługi Azure AD, zobacz [jak dodać lub usunąć użytkowników](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
-
-- Aby uzyskać instrukcje, aby usunąć przeglądarki Tor, zobacz [odinstalowywanie](https://tb-manual.torproject.org/uninstalling/).
-
-
+- Jeśli nie wiesz, jak usunąć użytkownika usługi Azure AD, zobacz [jak dodawać i usuwać użytkowników](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
+- Aby uzyskać instrukcje dotyczące usuwania przeglądarki tor, zobacz [Odinstalowywanie](https://tb-manual.torproject.org/uninstalling/).

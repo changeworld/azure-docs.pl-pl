@@ -1,5 +1,5 @@
 ---
-title: Błąd obsługi najlepszych rozwiązań dla klientów biblioteki uwierzytelniania Azure Active Directory (ADAL)
+title: Błąd obsługi najlepszych rozwiązań dla klientów biblioteki uwierzytelniania usługi Azure AD (ADAL)
 description: Zapewnia wskazówki dotyczące obsługi błędów i najlepsze rozwiązania dla aplikacji klienckich ADAL.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1d478bbb2f8645703299c8fe37c2117f492c3f8
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 0e3ef8e32c3472f7a3861250f1845ce2e60ac868
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324825"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68380999"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Błąd obsługi najlepszych rozwiązań dla klientów biblioteki uwierzytelniania Azure Active Directory (ADAL)
 
@@ -52,7 +52,7 @@ Istnieje zestaw błędów generowanych przez system operacyjny, co może wymaga�
 
 Zasadniczo istnieją dwa przypadki błędów AcquireTokenSilent:
 
-| Spraw | Opis |
+| Przypadek | Opis |
 |------|-------------|
 | **Przypadek 1**: Błąd jest rozpoznawany przy użyciu logowania interaktywnego | W przypadku błędów spowodowanych brakiem prawidłowych tokenów wymagane jest żądanie interaktywne. W każdym przypadku wyszukiwanie w pamięci podręcznej i nieprawidłowy/wygasły token odświeżania wymagają wywołania AcquireToken do rozwiązania.<br><br>W takich przypadkach użytkownik końcowy musi zostać poproszony o zalogowanie się. Aplikacja może natychmiast wykonać żądanie interaktywne, po interakcji z użytkownikiem końcowym (np. naciśnięciem przycisku logowania) lub nowszym. Wybór zależy od żądanego zachowania aplikacji.<br><br>Zapoznaj się z kodem w poniższej sekcji w tym konkretnym przypadku i błędami, które je Diagnozuj.|
 | **Przypadek 2**: Błąd nie jest rozpoznawany przy użyciu logowania interaktywnego | W przypadku błędów sieci i przejściowych/tymczasowych lub innych awarii wykonywanie interakcyjnego żądania AcquireToken nie rozwiąże problemu. Niezbędne interakcyjne komunikaty logowania mogą również frustrować użytkowników końcowych. Biblioteka ADAL automatycznie próbuje wykonać pojedynczej próby dla większości błędów w przypadku błędów AcquireTokenSilent.<br><br>Aplikacja kliencka może również próbować ponowić próbę w pewnym momencie, ale gdy i jak to zrobić, zależy od zachowania aplikacji i odpowiedniego środowiska użytkownika końcowego. Na przykład aplikacja może wykonać AcquireTokenSilentą ponowną próbę po kilku minutach lub w odpowiedzi na pewną akcję użytkownika końcowego. Natychmiastowe ponowienie próby spowoduje ograniczenie ograniczenia aplikacji i nie powinno być podejmowane próby.<br><br>Kolejna próba nie powiedzie się z powodu tego samego błędu nie oznacza, że klient powinien wykonać interaktywne żądanie przy użyciu AcquireToken, ponieważ nie rozwiąże błędu.<br><br>Zapoznaj się z kodem w poniższej sekcji w tym konkretnym przypadku i błędami, które je Diagnozuj. |

@@ -1,6 +1,6 @@
 ---
-title: Przegląd platformy Azure w przedsiębiorstwach rejestrowania danych za pomocą interfejsu API REST rozliczeń | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać interfejsów API REST platformy Azure do przeglądania informacji dotyczących rozliczeń rejestracji enterprise.
+title: Przeglądanie danych rozliczeniowych rejestracji w przedsiębiorstwie platformy Azure za pomocą interfejsu API REST | Microsoft Docs
+description: Dowiedz się, jak używać interfejsów API REST platformy Azure do przeglądania informacji rozliczeniowych dotyczących rejestracji przedsiębiorstwa.
 services: billing
 documentationcenter: na
 author: lleonard-msft
@@ -13,23 +13,23 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
-ms.author: erikre
-ms.openlocfilehash: 9a0b536426ab024d5af7b257e44a2d5e20f14def
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: banders
+ms.openlocfilehash: 25d9b48696dc2a83ea0ba77c1be2c7aad7627fff
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371040"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443147"
 ---
-# <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>Przegląd rozliczeń rejestracji enterprise za pomocą interfejsów API REST
+# <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>Przegląd rozliczeń rejestracji przedsiębiorstwa przy użyciu interfejsów API REST
 
-Pomoc platformy Azure interfejsy API raportowania usługi Przejrzyj i zarządzania kosztami platformy Azure.
+Interfejsy API usługi Azure Reporting ułatwiają przeglądanie kosztów platformy Azure i zarządzanie nimi.
 
-W tym artykule dowiesz się pobrać informacji dotyczących rozliczeń związanych z konta rozliczeniowego, działu lub kont rejestracji enterprise agreement (EA) z przy użyciu interfejsów API REST platformy Azure. 
+Ten artykuł zawiera informacje dotyczące pobierania informacji rozliczeniowych skojarzonych z kontami rejestracji kont, działu lub umowy Enterprise Agreement (EA) przy użyciu interfejsów API REST platformy Azure. 
 
-## <a name="individual-account-billing"></a>Karta indywidualne konto
+## <a name="individual-account-billing"></a>Rozliczanie poszczególnych kont
 
-Aby uzyskać szczegóły użycia dla kont w dziale:
+Aby uzyskać szczegółowe informacje dotyczące użycia kont w dziale:
 
 ```http
 GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/usageDetails?api-version=2018-06-30
@@ -37,21 +37,21 @@ Content-Type: application/json
 Authorization: Bearer
 ```
 
-`{billingAccountId}` Parametr jest wymagany i może zawierać identyfikator dla tego konta.
+`{billingAccountId}` Parametr jest wymagany i powinien zawierać identyfikator konta.
 
 Wymagane są następujące nagłówki: 
 
 |Nagłówek żądania|Opis|  
 |--------------------|-----------------|  
-|*Content-Type:*|Wymagany. Ustaw `application/json`.|  
-|*Authorization:*|Wymagany. Ustawić prawidłową `Bearer` [klucz interfejsu API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
+|*Content-Type:*|Wymagany. Ustaw wartość `application/json`.|  
+|*Authorization:*|Wymagana. Ustaw prawidłowy `Bearer` [klucz interfejsu API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
 
-Ten przykład przedstawia synchroniczne wywołanie, które zwraca szczegółowe informacje dla bieżącego cyklu rozliczeniowego. Ze względu na wydajność synchroniczne wywołania zwrócić informacji dla ostatniego miesiąca.  Można również wywołać [API asynchronicznie](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) zwrócić danych przez 36 miesięcy.
+Ten przykład pokazuje synchroniczne wywołanie zwracające szczegóły bieżącego cyklu rozliczeniowego. Ze względu na wydajność wywołania synchroniczne zwracają informacje z ostatniego miesiąca.  Możesz również wywołać [interfejs API asynchronicznie](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) , aby zwrócić dane przez 36 miesięcy.
 
 
 ## <a name="response"></a>Odpowiedź  
 
-Zwróciła kod stanu 200 (OK) pomyślnej odpowiedzi, która zawiera listę szczegółowych kosztów dla konta.
+Kod stanu 200 (OK) jest zwracany dla pomyślnej odpowiedzi, która zawiera listę szczegółowych kosztów konta.
 
 ```json
 {
@@ -78,11 +78,11 @@ Zwróciła kod stanu 200 (OK) pomyślnej odpowiedzi, która zawiera listę szcze
 }
 ```  
 
-W tym przykładzie jest skracana; zobacz [uzyskać szczegóły użycia dla konta rozliczeniowego](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslist) pełny opis każdego pola odpowiedzi oraz obsługi błędów.
+Ten przykład jest skrócony; Zobacz [pobieranie szczegółów użycia konta rozliczeniowego](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslist) , aby uzyskać pełny opis każdego pola odpowiedzi i obsługi błędów.
 
-## <a name="department-billing"></a>Dział rozliczeń 
+## <a name="department-billing"></a>Rozliczenia działu 
 
-Pobierz szczegóły użycia agregowane dla wszystkich kont w dziale. 
+Pobierz szczegóły użycia zagregowane dla wszystkich kont w dziale. 
 
 ```http
 GET https://management.azure.com/providers/Microsoft.Billing/departments/{departmentId}/providers/Microsoft.Consumption/usageDetails?api-version=2018-06-30
@@ -90,20 +90,20 @@ Content-Type: application/json
 Authorization: Bearer
 ```
 
-`{departmentId}` Parametr jest wymagany i może zawierać identyfikator dla działu, w ramach konta rejestracji.
+`{departmentId}` Parametr jest wymagany i powinien zawierać identyfikator działu na koncie rejestracji.
 
 Wymagane są następujące nagłówki: 
 
 |Nagłówek żądania|Opis|  
 |--------------------|-----------------|  
-|*Content-Type:*|Wymagany. Ustaw `application/json`.|  
-|*Authorization:*|Wymagany. Ustawić prawidłową `Bearer` [klucz interfejsu API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
+|*Content-Type:*|Wymagany. Ustaw wartość `application/json`.|  
+|*Authorization:*|Wymagany. Ustaw prawidłowy `Bearer` [klucz interfejsu API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
 
-Ten przykład przedstawia synchroniczne wywołanie, które zwraca szczegółowe informacje dla bieżącego cyklu rozliczeniowego. Ze względu na wydajność synchroniczne wywołania zwrócić informacji dla ostatniego miesiąca.  Można również wywołać [API asynchronicznie](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) zwrócić danych przez 36 miesięcy.
+Ten przykład pokazuje synchroniczne wywołanie zwracające szczegóły bieżącego cyklu rozliczeniowego. Ze względu na wydajność wywołania synchroniczne zwracają informacje z ostatniego miesiąca.  Możesz również wywołać [interfejs API asynchronicznie](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) , aby zwrócić dane przez 36 miesięcy.
 
 ### <a name="response"></a>Odpowiedź  
 
-Zwróciła kod stanu 200 (OK) pomyślnej odpowiedzi, która zawiera listę informacje szczegółowe dotyczące użycia i kosztów dla danego rozliczeń Identyfikatora okres i faktury dla działu.
+Kod stanu 200 (OK) jest zwracany dla pomyślnej odpowiedzi, który zawiera listę szczegółowych informacji dotyczących użycia i kosztów dla danego okresu rozliczeniowego i identyfikatora faktury dla działu.
 
 
 Poniższy przykład przedstawia dane wyjściowe interfejsu API REST dla działu `1234`.
@@ -134,7 +134,7 @@ Poniższy przykład przedstawia dane wyjściowe interfejsu API REST dla działu 
 }
 ```  
 
-W tym przykładzie jest skracana; zobacz [uzyskać szczegóły użycia dla działu](/rest/api/consumption/usagedetails/list#departmentusagedetailslist) pełny opis każdego pola odpowiedzi oraz obsługi błędów.
+Ten przykład jest skrócony; Zobacz [Uzyskiwanie szczegółowych informacji o użyciu dla działu](/rest/api/consumption/usagedetails/list#departmentusagedetailslist) , aby uzyskać pełny opis każdego pola odpowiedzi i obsługi błędów.
 
 ## <a name="enrollment-account-billing"></a>Rozliczanie konta rejestracji
 
@@ -146,22 +146,22 @@ Content-Type: application/json
 Authorization: Bearer
 ```
 
-`{enrollmentAccountId}` Parametr jest wymagany i może zawierać identyfikator konta rejestracji.
+`{enrollmentAccountId}` Parametr jest wymagany i powinien zawierać identyfikator konta rejestracji.
 
 Wymagane są następujące nagłówki: 
 
 |Nagłówek żądania|Opis|  
 |--------------------|-----------------|  
-|*Content-Type:*|Wymagany. Ustaw `application/json`.|  
-|*Authorization:*|Wymagany. Ustawić prawidłową `Bearer` [klucz interfejsu API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
+|*Content-Type:*|Wymagana. Ustaw wartość `application/json`.|  
+|*Authorization:*|Wymagany. Ustaw prawidłowy `Bearer` [klucz interfejsu API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
 
-Ten przykład przedstawia synchroniczne wywołanie, które zwraca szczegółowe informacje dla bieżącego cyklu rozliczeniowego. Ze względu na wydajność synchroniczne wywołania zwrócić informacji dla ostatniego miesiąca.  Można również wywołać [API asynchronicznie](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) zwrócić danych przez 36 miesięcy.
+Ten przykład pokazuje synchroniczne wywołanie zwracające szczegóły bieżącego cyklu rozliczeniowego. Ze względu na wydajność wywołania synchroniczne zwracają informacje z ostatniego miesiąca.  Możesz również wywołać [interfejs API asynchronicznie](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) , aby zwrócić dane przez 36 miesięcy.
 
 ### <a name="response"></a>Odpowiedź  
 
-Zwróciła kod stanu 200 (OK) pomyślnej odpowiedzi, która zawiera listę informacje szczegółowe dotyczące użycia i kosztów dla danego rozliczeń Identyfikatora okres i faktury dla działu.
+Kod stanu 200 (OK) jest zwracany dla pomyślnej odpowiedzi, który zawiera listę szczegółowych informacji dotyczących użycia i kosztów dla danego okresu rozliczeniowego i identyfikatora faktury dla działu.
 
-Poniższy przykład przedstawia dane wyjściowe interfejs API REST rejestracji enterprise `1234`.
+Poniższy przykład przedstawia dane wyjściowe interfejsu API REST na potrzeby rejestracji `1234`w przedsiębiorstwie.
 
 ```json
 {
@@ -187,9 +187,9 @@ Poniższy przykład przedstawia dane wyjściowe interfejs API REST rejestracji e
 }
 ``` 
 
-W tym przykładzie jest skracana; zobacz [uzyskać szczegóły użycia konta rejestracji](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist) pełny opis każdego pola odpowiedzi oraz obsługi błędów.
+Ten przykład jest skrócony; Zobacz [pobieranie szczegółów użycia konta rejestracji](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist) , aby uzyskać pełny opis każdego pola odpowiedzi i obsługi błędów.
 
 ## <a name="next-steps"></a>Kolejne kroki 
-- Przegląd [Przegląd raportowania dla przedsiębiorstw.](https://docs.microsoft.com/azure/billing/billing-enterprise-api)
-- Badanie [przedsiębiorstwa, interfejs API REST rozliczeń](https://docs.microsoft.com/rest/api/billing/)   
+- Przegląd [raportowania Enterprise Reporting](https://docs.microsoft.com/azure/billing/billing-enterprise-api)
+- Badanie [interfejsu API REST](https://docs.microsoft.com/rest/api/billing/) rozliczeń w przedsiębiorstwie   
 - [Wprowadzenie do interfejsu API REST platformy Azure](https://docs.microsoft.com/rest/api/azure/)   

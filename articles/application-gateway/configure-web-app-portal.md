@@ -1,87 +1,105 @@
 ---
-title: Zarządzanie ruchem w aplikacjach wielodostępnych takich jak usługi App service web apps za pomocą usługi Azure Application Gateway — Portal
-description: Ten artykuł zawiera wskazówki dotyczące sposobu konfigurowania sieci web Azure aplikacji usługi App service jako elementów członkowskich w puli zaplecza w istniejącej lub nowej bramie aplikacji.
+title: Zarządzanie ruchem do aplikacji wielodostępnych, takich jak aplikacje sieci Web usługi App Service za pomocą usługi Azure Application Gateway — Portal
+description: Ten artykuł zawiera wskazówki dotyczące sposobu konfigurowania aplikacji sieci Web usługi Azure App Service jako członków w puli zaplecza na istniejącej lub nowej bramie aplikacji.
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
 ms.date: 3/11/2019
 ms.author: absha
-ms.openlocfilehash: 4dae04c14f9132c54dcc0575ccb2841a4742a626
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dee4859c57172a703517848510a31b70ff1f24cd
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60831217"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68370417"
 ---
-# <a name="configure-app-service-with-application-gateway"></a>Konfigurowanie usługi App Service z usługą Application Gateway
+# <a name="configure-app-service-with-application-gateway"></a>Konfigurowanie App Service przy użyciu Application Gateway
 
-Bramy Application gateway umożliwia aplikacji sieci Web usługi Azure App service lub inne usługi wielodostępnej jako składowej puli zaplecza. 
+Ponieważ usługa App Service jest usługą z wieloma dzierżawami zamiast wdrożenia dedykowanego, używa nagłówka hosta w żądaniu przychodzącym, aby rozwiązać żądanie do poprawnego punktu końcowego usługi App Service. Zwykle nazwa DNS aplikacji, która z kolei jest nazwą DNS skojarzoną z frontonem usługi App Service, różni się od nazwy domeny usługi aplikacji zaplecza. W związku z tym nagłówek hosta w oryginalnym żądaniu odebranym przez bramę aplikacji nie jest taki sam jak nazwa hosta usługi wewnętrznej bazy danych. Z tego względu, jeśli nagłówek hosta w żądaniu z bramy Application Gateway do zaplecza nie zostanie zmieniony na nazwę hosta usługi wewnętrznej bazy danych, nadmiarowe punkty końcowe z wieloma dzierżawcami nie będą mogły rozpoznać żądania do prawidłowego punktu końcowego.
+
+Application Gateway udostępnia przełącznik `Pick host name from backend address` , który zastępuje nagłówek hosta w żądaniu nazwą hosta zaplecza, gdy żądanie jest kierowane z Application Gateway do zaplecza. Ta funkcja umożliwia obsługę zaplecza z wieloma dzierżawami, takich jak usługa Azure App Service i API Management. 
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 >
-> - Tworzenie puli wewnętrznej bazy danych i dodać usługi App Service do niego
-> - Utwórz ustawienia protokołu HTTP i niestandardowe sondy z przełącznikami "Wybierz nazwy hosta" włączone
+> - Tworzenie puli zaplecza i dodawanie do niej App Service
+> - Tworzenie ustawień HTTP i sondy niestandardowej z włączonymi przełącznikami "Wybierz nazwę hosta"
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Usługa Application gateway: Jeśli nie masz istniejącej bramy aplikacji, zobacz temat jak [Tworzenie bramy aplikacji](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
-- Usługa App service: Jeśli nie masz istniejącej usługi App service, zobacz [dokumentacja usługi App service](https://docs.microsoft.com/azure/app-service/).
+- Brama aplikacji: Jeśli nie masz istniejącej bramy aplikacji, zobacz jak [utworzyć bramę aplikacji](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
+- Usługa App Service: Jeśli nie masz istniejącej usługi App Service, zobacz [dokumentację usługi App Service](https://docs.microsoft.com/azure/app-service/).
 
-## <a name="add-app-service-as-backend-pool"></a>Dodaj usługi App service jako pula zaplecza
+## <a name="add-app-service-as-backend-pool"></a>Dodawanie usługi App Service jako puli zaplecza
 
-1. W witrynie Azure portal Otwórz widok konfiguracji usługi application gateway.
+1. W Azure Portal Otwórz widok konfiguracji bramy aplikacji.
 
-2. W obszarze **pule zaplecza**, kliknij pozycję **Dodaj** Aby utworzyć nową pulę zaplecza.
+2. W obszarze **Pule zaplecza**kliknij pozycję **Dodaj** , aby utworzyć nową pulę zaplecza.
 
-3. Podaj nazwę odpowiedniej do puli zaplecza. 
+3. Podaj odpowiednią nazwę puli zaplecza. 
 
-4. W obszarze **cele**, kliknij listę rozwijaną i wybierz polecenie **App Services** jako opcję.
+4. W obszarze **obiekty docelowe**kliknij listę rozwijaną, a następnie wybierz **App Services** jako opcję.
 
-5. Poniżej listy rozwijanej **cele** listy rozwijanej będą wyświetlane, które będzie zawierać listę usług aplikacji. Z tej listy rozwijanej wybierz usługi App Service, aby dodać jako składową puli zaplecza, a następnie kliknij przycisk Dodaj.
+5. Zostanie wyświetlona lista  rozwijana bezpośrednio poniżej listy rozwijanej targets, która będzie zawierać listę App Services. Z tej listy rozwijanej wybierz App Service, które chcesz dodać jako element członkowski puli zaplecza, a następnie kliknij przycisk Dodaj.
 
-   ![Usługi aplikacji wewnętrznej bazy danych](./media/configure-web-app-portal/backendpool.png)
+   ![Zaplecze usługi App Service](./media/configure-web-app-portal/backendpool.png)
+   
+   > [!NOTE]
+   > Na liście rozwijanej będą wypełniane tylko te usługi aplikacji, które znajdują się w tej samej subskrypcji co Application Gateway. Jeśli chcesz użyć usługi App Service, która znajduje się w innej subskrypcji niż ta, w której jest Application Gateway, a następnie wybierz pozycję **App Services** na liście rozwijanej **cele** , zaznacz opcję **adres IP lub nazwa hosta** , a następnie wprowadź Nazwa hosta (przykład. azurewebsites.net) usługi App Service.
 
-## <a name="create-http-settings-for-app-service"></a>Utwórz ustawienia protokołu HTTP dla usługi App service
+## <a name="create-http-settings-for-app-service"></a>Tworzenie ustawień protokołu HTTP dla usługi App Service
 
-1. W obszarze **ustawienia HTTP**, kliknij przycisk **Dodaj** Aby utworzyć nowe ustawienie protokołu HTTP.
+1. W obszarze **Ustawienia protokołu HTTP**kliknij przycisk **Dodaj** , aby utworzyć nowe ustawienie protokołu HTTP.
 
-2. Wprowadź nazwę dla ustawienia protokołu HTTP i można włączyć lub wyłączyć koligacja na podstawie plików Cookie zgodnie z wymaganiami.
+2. Wprowadź nazwę ustawienia protokołu HTTP i możesz włączyć lub wyłączyć koligację opartą na plikach cookie zgodnie z wymaganiami.
 
-3. Wybierz protokół HTTP lub HTTPS, zgodnie z danego przypadku użycia. 
+3. Wybierz protokół jako HTTP lub HTTPS zgodnie z przypadkiem użycia. 
 
-4. Pole wyboru dla **użycia dla usługi App Service** i spowoduje włączenie **Utwórz sondę z nazwą hosta pobranie z adresów zaplecza** i **pobrania nazwy hosta z adresu zaplecza** opcje. Ta opcja spowoduje również automatycznie Utwórz sondę z przełącznikiem, który został włączony i skojarzyć ją z tym ustawieniem protokołu HTTP.
+   > [!NOTE]
+   > W przypadku wybrania protokołu HTTPS nie ma potrzeby przekazywania żadnych certyfikatów uwierzytelniania lub zaufanego certyfikatu głównego, aby dozwolonych zaplecza usługi App Service, ponieważ usługa App Service jest zaufaną usługą platformy Azure.
 
-5. Kliknij przycisk **OK** Aby utworzyć ustawienie protokołu HTTP.
+4. Zaznacz pole wyboru dla **App Service** . Należy zauważyć, że `Create a probe with pick host name from backend address` przełączniki `Pick host name from backend address` i zostaną automatycznie włączone.`Pick host name from backend address` spowoduje zastąpienie nagłówka hosta w żądaniu nazwą hosta zaplecza, gdy żądanie zostanie przekazane z Application Gateway do zaplecza.  
+
+   `Create a probe with pick host name from backend address`spowoduje automatyczne utworzenie sondy kondycji i skojarzenie jej z tym ustawieniem protokołu HTTP. Nie trzeba tworzyć żadnej innej sondy kondycji dla tego ustawienia protokołu HTTP. Możesz sprawdzić, czy nowa sonda o nazwie <HTTP Setting name> <Unique GUID> została dodana na liście sond kondycji i czy ma już przełącznik `Pick host name from backend http settings enabled`.
+
+   Jeśli masz już co najmniej jedno ustawienie http, które jest używane dla usługi App Service, a jeśli te ustawienia protokołu HTTP używają tego samego protokołu, który jest używany w trakcie tworzenia, a następnie zamiast `Create a probe with pick host name from backend address` przełącznika, otrzymasz listę rozwijaną, aby wybrać jeden z nich. sondy niestandardowe. Wynika to z faktu, że istnieje już ustawienie protokołu HTTP z usługą App Service, dlatego również istnieje sonda kondycji, która ma `Pick host name from backend http settings enabled` przełącznik. Wybierz niestandardową sondę z listy rozwijanej.
+
+5. Kliknij przycisk **OK** , aby utworzyć ustawienie http.
 
    ![HTTP-setting1](./media/configure-web-app-portal/http-setting1.png)
 
    ![HTTP-setting2](./media/configure-web-app-portal/http-setting2.png)
 
-## <a name="create-rule-to-tie-the-listener-backend-pool-and-http-setting"></a>Tworzenie reguły, aby powiązać puli zaplecza, odbiornik i ustawienie protokołu HTTP
 
-1. W obszarze **reguły**, kliknij przycisk **podstawowe** Aby utworzyć nową regułę podstawowe.
 
-2. Podaj odpowiednią nazwę, a następnie wybierz odbiornik, który będzie akceptować żądań przychodzących dla usługi App service.
+## <a name="create-rule-to-tie-the-listener-backend-pool-and-http-setting"></a>Utwórz regułę, aby powiązać odbiornik, pulę zaplecza i ustawienie HTTP
 
-3. W **puli zaplecza** listy rozwijanej wybierz pulę zaplecza, utworzonego powyżej.
+1. W obszarze **reguły**kliknij pozycję **podstawowa** , aby utworzyć nową regułę podstawową.
 
-4. W **ustawienie protokołu HTTP** listy rozwijanej wybierz pozycję HTTP, ustawienie utworzonego powyżej.
+2. Podaj odpowiednią nazwę i wybierz odbiornik, który będzie akceptować przychodzące żądania dla usługi App Service.
 
-5. Kliknij przycisk **OK** Aby zapisać tę regułę.
+3. Z listy rozwijanej **Pula zaplecza** Wybierz utworzoną powyżej pulę zaplecza.
+
+4. Na liście rozwijanej **Ustawienia http** wybierz utworzone powyżej ustawienie protokołu HTTP.
+
+5. Kliknij przycisk **OK** , aby zapisać tę regułę.
 
    ![Reguła](./media/configure-web-app-portal/rule.png)
 
-## <a name="restrict-access"></a>Ograniczanie dostępu
+## <a name="additional-configuration-in-case-of-redirection-to-app-services-relative-path"></a>Dodatkowa konfiguracja w przypadku przekierowania do ścieżki względnej usługi App Service
 
-Aplikacje sieci web wdrażane w tych przykładach używania publicznych adresów IP, które są dostępne bezpośrednio z Internetu. Ułatwia to Rozwiązywanie problemów podczas nauki obsługi nowych funkcji i podjęcie próby nowe obiekty. Ale jeśli zamierzasz wdrożyć funkcję w środowisku produkcyjnym, należy dodać więcej ograniczeń.
+Gdy usługa App Service wysyła odpowiedź przekierowania do klienta w celu przekierowania do ścieżki względnej (na przykład przekierowanie z contoso.azurewebsites.net/path1 do contoso.azurewebsites.net/path2), używa tej samej nazwy hosta w nagłówku lokalizacji swojej odpowiedzi jako jeden w żądaniu odebranym od bramy aplikacji. Klient wyśle żądanie bezpośrednio do contoso.azurewebsites.net/path2 zamiast przechodzenia przez bramę Application Gateway (contoso.com/path2). Pomijanie bramy aplikacji nie jest pożądane.
 
-Jednym ze sposobów, możesz ograniczyć dostęp do aplikacji sieci web jest użycie [ograniczenia adresów IP statycznych w usłudze Azure App Service](../app-service/app-service-ip-restrictions.md). Na przykład aplikacja sieci web można ograniczyć tak, aby tylko odbiera ruch z bramy aplikacji. Użyj funkcji ograniczeń adresów IP usługi aplikacji, aby wyświetlić listę adresów VIP bramy aplikacji jako adres tylko z dostępem.
+Jeśli w Twoim przypadku użycia, istnieją scenariusze, w których usługa App Service będzie musiała wysłać odpowiedź przekierowania do klienta, wykonaj [dodatkowe kroki w celu ponownego zapisania nagłówka lokalizacji](https://docs.microsoft.com/azure/application-gateway/troubleshoot-app-service-redirection-app-service-url#sample-configuration).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="restrict-access"></a>Ogranicz dostęp
 
-Aby dowiedzieć się więcej na temat usługi App service i innych Obsługa wielu dzierżaw z usługą application gateway, zobacz [obsługi wielu dzierżawców z usługą application gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-app-overview).
+Aplikacje sieci Web wdrożone w tych przykładach używają publicznych adresów IP, do których można uzyskać dostęp bezpośrednio z Internetu. Ułatwia to rozwiązywanie problemów podczas uczenia się o nowej funkcji i podejmowanie nowych zadań. Ale jeśli zamierzasz wdrożyć funkcję w środowisku produkcyjnym, musisz dodać więcej ograniczeń.
 
-W przypadku, gdy odpowiedź z usługi App service jest przekierowanie do adresu URL usługi App service, zobacz instrukcje [Rozwiązywanie problemów z przekierowania do wystawienia adres URL usługi App service](https://docs.microsoft.com/azure/application-gateway/troubleshoot-app-service-redirection-app-service-url).
+Jednym ze sposobów ograniczenia dostępu do aplikacji sieci Web jest użycie [Azure App Service ograniczeń statycznych adresów IP](../app-service/app-service-ip-restrictions.md). Można na przykład ograniczyć aplikację sieci Web tak, aby tylko odbierał ruch z bramy aplikacji. Użyj funkcji ograniczenia adresów IP usługi App Service, aby wyświetlić listę adresów VIP bramy aplikacji jako jedyny adres z dostępem.
+
+## <a name="next-steps"></a>Następne kroki
+
+Aby dowiedzieć się więcej na temat usługi App Service i innej obsługi wielu dzierżawców za pomocą usługi Application Gateway, zobacz [Obsługa wielu dzierżawców w usłudze Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-app-overview).

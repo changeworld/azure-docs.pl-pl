@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
-ms.openlocfilehash: c2bff5749ab833efcb252d3fafb5d38cfbc8691e
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 37f1a0d9c70afc0a3a86ac76b682ee7b2adb253d
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310278"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335792"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager często zadawane pytania
 
@@ -438,7 +438,7 @@ Ustawienia monitorowania Traffic Manager są na poziomie profilu. Jeśli koniecz
 Traffic Manager pozwala określić niestandardowe nagłówki w testach kondycji HTTP (S), które są inicjowane dla punktów końcowych. Jeśli chcesz określić niestandardowy nagłówek, możesz to zrobić na poziomie profilu (odpowiednie dla wszystkich punktów końcowych) lub określić na poziomie punktu końcowego. Jeśli nagłówek jest zdefiniowany na obu poziomach, to jeden z nich zostanie przesłonięty poziomu profilu.
 Jeden typowy przypadek użycia dla tego Określa nagłówki hosta, aby żądania Traffic Manager mogły być prawidłowo kierowane do punktu końcowego hostowanego w środowisku wielodostępnym. Innym przypadkiem użycia jest zidentyfikowanie Traffic Manager żądań z dzienników żądań HTTP (S) punktu końcowego
 
-## <a name="what-host-header-do-endpoint-health-checks-use"></a>Z jakiego nagłówka hosta korzystają Sprawdzanie kondycji punktów końcowych?
+### <a name="what-host-header-do-endpoint-health-checks-use"></a>Z jakiego nagłówka hosta korzystają Sprawdzanie kondycji punktów końcowych?
 
 Jeśli nie podano niestandardowego ustawienia nagłówka hosta, nagłówek hosta używany przez Traffic Manager jest nazwą DNS docelowego punktu końcowego skonfigurowanego w profilu, jeśli jest dostępny.
 
@@ -502,7 +502,7 @@ W poniższej tabeli opisano zachowanie Traffic Manager Sprawdzanie kondycji dla 
 | CheckingEndpoints. Co najmniej jeden punkt końcowy profilu podrzędnego to "CheckingEndpoint". Żadne punkty końcowe nie są w trybie online ani nie zostały obniżone. |Tak samo jak powyżej. | |
 | Nieaktywne. Wszystkie punkty końcowe profilu podrzędnego są wyłączone lub zatrzymane albo ten profil nie ma punktów końcowych. |Zatrzymano | |
 
-## <a name="next-steps"></a>Następne kroki:
+## <a name="next-steps"></a>Kolejne kroki:
 
 - Dowiedz się więcej na temat Traffic Manager [monitorowania punktów końcowych i automatycznego przełączania do trybu failover](../traffic-manager/traffic-manager-monitoring.md).
 - Dowiedz się więcej o [metodach routingu ruchu](../traffic-manager/traffic-manager-routing-methods.md)Traffic Manager.

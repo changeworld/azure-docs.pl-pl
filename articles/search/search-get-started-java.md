@@ -1,6 +1,6 @@
 ---
-title: 'Szybki Start języka Java: Tworzenie, obciążenia i zapytań indeksy przy użyciu usługi Azure Search REST API — usługi Azure Search'
-description: Wyjaśnia, jak utworzyć indeks, Załaduj dane i uruchamianie zapytań przy użyciu języka Java i interfejsów API REST usługi Azure Search.
+title: 'Szybki start: Tworzenie indeksu Azure Search w języku Java'
+description: Wyjaśnia, jak utworzyć indeks, załadować dane i uruchamiać zapytania przy użyciu języka Java i interfejsów API REST Azure Search.
 services: search
 author: jj09
 manager: jlembicz
@@ -8,15 +8,15 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/26/2018
 ms.author: jjed
-ms.custom: seodec2018
-ms.openlocfilehash: 83f41f248d99ce55daef40e168e5f7b175e08107
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.custom: seodec2018, seo-java-july2019
+ms.openlocfilehash: 7172cd01ca881ec3027854444107b0744b65feb3
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450102"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489788"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-java"></a>Szybki start: Tworzenie indeksu usługi Azure Search w języku Java
+# <a name="quickstart-create-an-azure-search-index-in-java"></a>Szybki start: Tworzenie indeksu Azure Search w języku Java
 > [!div class="op_single_selector"]
 > * [Portal](search-get-started-portal.md)
 > * [.NET](search-howto-dotnet-sdk.md)
@@ -36,7 +36,7 @@ Do utworzenia i przetestowania przedstawionego przykładu użyto następującego
 ## <a name="about-the-data"></a>Informacje o danych
 Ta przykładowa aplikacja korzysta z danych agencji [United States Geological Services (USGS)](https://geonames.usgs.gov/domestic/download_data.htm) zawężonych do stanu Rhode Island w celu zmniejszenia rozmiaru zestawu danych. Użyjemy tych danych do utworzenia aplikacji wyszukiwania, która zwraca punkty orientacyjne, takie jak szpitale i szkoły, jak również formy geologiczne, takie jak strumienie, jeziora i szczyty.
 
-W tej aplikacji **SearchServlet.java** program tworzy i ładuje indeks używając [indeksatora](https://msdn.microsoft.com/library/azure/dn798918.aspx) konstrukcji, zawężony zestaw danych agencji usgs jest Pobierany z usługi Azure SQL Database. Wstępnie zdefiniowane poświadczenia oraz informacje o połączeniu ze źródłem danych w trybie online są zawarte w kodzie programu. W zakresie dostępu do danych nie jest konieczna dalsza konfiguracja.
+W tej aplikacji program **SearchServlet. Java** kompiluje i ładuje indeks przy użyciu konstrukcji [indeksatora](https://msdn.microsoft.com/library/azure/dn798918.aspx) , pobierając przefiltrowany zestaw danych agencji USGS z Azure SQL Database. Wstępnie zdefiniowane poświadczenia oraz informacje o połączeniu ze źródłem danych w trybie online są zawarte w kodzie programu. W zakresie dostępu do danych nie jest konieczna dalsza konfiguracja.
 
 > [!NOTE]
 > Zastosowaliśmy filtr dla tego zestawu danych, aby nie przekroczyć limitu 10 000 dokumentów obowiązującego w warstwie cenowej Bezpłatna. Jeśli korzystasz z warstwy Standardowa, to ograniczenie nie obowiązuje i możesz zmodyfikować ten kod tak, aby móc używać większego zestawu danych. Aby uzyskać szczegółowe informacje o pojemności dla każdej warstwy cenowej, zobacz [Limits and constraints](search-limits-quotas-capacity.md) (Limity i ograniczenia).
@@ -46,25 +46,25 @@ W tej aplikacji **SearchServlet.java** program tworzy i ładuje indeks używają
 ## <a name="about-the-program-files"></a>Informacje o plikach programu
 Na poniższej liście opisano pliki, które mają zastosowanie w tym przykładzie.
 
-* Search.JSP: Udostępnia interfejs użytkownika
-* SearchServlet.java: Udostępnia metody (podobnie do kontrolera MVC)
+* Wyszukaj. jsp: Udostępnia interfejs użytkownika
+* SearchServlet.java: Zapewnia metody (podobnie jak w przypadku kontrolera w MVC)
 * SearchServiceClient.java: Obsługuje żądania HTTP
 * SearchServiceHelper.java: Klasa pomocnika, która udostępnia metody statyczne
-* Document.java: Udostępnia model danych
-* config.Properties: Ustawia adres URL usługi wyszukiwania i `api-key`
-* pom.xml: Zależność narzędzia Maven
+* Dokument. Java: Zapewnia model danych
+* config. Properties: Ustawia adres URL usługi wyszukiwania i`api-key`
+* pom.xml: Zależność Maven
 
 <a id="sub-2"></a>
 
-## <a name="find-the-service-name-and-api-key-of-your-azure-search-service"></a>Znajdź nazwę usługi i `api-key` z usługi Azure Search
-Wszystkie wywołania interfejsu API REST do usługi Azure Search wymagają podania adresu URL usługi i `api-key`. 
+## <a name="find-the-service-name-and-api-key-of-your-azure-search-service"></a>Znajdź nazwę usługi i `api-key` usługi Azure Search
+Wszystkie wywołania interfejsu API REST do Azure Search wymagają podania adresu URL usługi i `api-key`. 
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Na pasku przechodzenia kliknij pozycję **Usługa wyszukiwania**, aby wyświetlić listę wszystkich usług Azure Search aprowizowanych dla subskrypcji.
 3. Wybierz usługę, której chcesz użyć.
 4. Na pulpicie nawigacyjnym usługi zobaczysz kafelki z istotnymi informacjami, jak również ikonę klucza, służącą do uzyskiwania dostępu do kluczy administratora.
    
-      ![][3]
+      ![Zrzut ekranu przedstawiający sposób uzyskiwania dostępu do kluczy administratora z poziomu pulpitu nawigacyjnego usługi][3]
 5. Skopiuj adres URL usługi i klucz administratora. Będą Ci potrzebne później podczas dodawania ich do pliku **config.properties**.
 
 ## <a name="download-the-sample-files"></a>Pobieranie plików przykładowych
@@ -77,30 +77,30 @@ Wszystkie kolejne modyfikacje plików i instrukcje uruchamiania będą wykonywan
 ## <a name="import-project"></a>Importowanie projektu
 1. W środowisku Eclipse wybierz pozycję **Plik** > **Importuj** > **Ogólne** > **Istniejące projekty do obszaru roboczego**.
    
-    ![][4]
+    ![Zrzut ekranu przedstawiający sposób importowania istniejącego projektu][4]
 2. W obszarze **Wybierz katalog główny** przejdź do folderu zawierającego pliki przykładowe. Wybierz folder, który zawiera folder .project. Projekt powinien zostać wyświetlony na liście **Projekty** jako wybrany element.
    
-    ![][12]
+    ![Zrzut ekranu przedstawiający listę projektów w oknie Importuj projekty][12]
 3. Kliknij przycisk **Zakończ**.
 4. W obszarze **Eksplorator projektów** możesz wyświetlać i edytować pliki. Jeśli nie jest on jeszcze otwarty, kliknij pozycję **Okna** > **Pokaż widok** > **Eksplorator projektów** lub użyj skrótu, aby go otworzyć.
 
-## <a name="configure-the-service-url-and-api-key"></a>Skonfiguruj adres URL usługi i `api-key`
-1. W **Eksplorator projektów**, kliknij dwukrotnie **config.properties** Aby edytować ustawienia konfiguracji, zawierający nazwę serwera i `api-key`.
-2. Skorzystaj z procedury opisanej w tym artykule, gdzie znaleźć adres URL usługi i `api-key` w [witryny Azure portal](https://portal.azure.com), aby uzyskać wartości, należy wpisać w **config.properties**.
-3. W **config.properties**, Zamień "Klucz interfejsu API" `api-key` dla Twojej usługi. Następnie, nazwa usługi (pierwszy składnik adresu URL https://servicename.search.windows.net) zastępuje "Nazwa usługi" w tym samym pliku.
+## <a name="configure-the-service-url-and-api-key"></a>Skonfiguruj adres URL usługi i`api-key`
+1. W **Eksploratorze projektu**kliknij dwukrotnie **plik config. Properties** , aby edytować ustawienia konfiguracji zawierające nazwę serwera i `api-key`.
+2. Zapoznaj się z krokami opisanymi w tym artykule, w którym znaleziono adres `api-key` URL usługi i w [Azure Portal](https://portal.azure.com), aby uzyskać wartości, które zostaną wprowadzone do **pliku config. Properties**.
+3. W **pliku config. Properties**Zamień "klucz interfejsu API" `api-key` na dla usługi. Następnie nazwa usługi (pierwszy składnik adresu URL https://servicename.search.windows.net) zastępuje "nazwę usługi" w tym samym pliku.
    
-    ![][5]
+    ![Zrzut ekranu przedstawiający sposób zamiany klucza interfejsu API][5]
 
 ## <a name="configure-the-project-build-and-runtime-environments"></a>Konfigurowanie środowisk projektowania i kompilacji oraz środowisk uruchomieniowych
 1. W środowisku Eclipse, w Eksploratorze projektów kliknij prawym przyciskiem myszy pozycję Projekt > **Właściwości** > **Aspekty projektu**.
 2. Wybierz pozycje: **Dynamiczny moduł WWW**, **Java** i **JavaScript**.
    
-    ![][6]
-3. Kliknij przycisk **Zastosuj**.
+    ![Zrzut ekranu przedstawiający sposób wybierania aspektów projektu dla projektu][6]
+3. Kliknij przycisk **zastosować**.
 4. Wybierz pozycję **Okna** > **Preferencje** > **Serwer** > **Środowiska wykonawcze** > **Dodaj...** .
 5. Rozwiń pozycję Apache i wybierz wersję serwera Apache Tomcat, która została wcześniej zainstalowana. W naszym systemie zainstalowano wersję 8.
    
-    ![][7]
+    ![Zrzut ekranu przedstawiający miejsce w oknie środowisko uruchomieniowe możesz wybrać wersję platformy Apache Tomcat][7]
 6. Na następnej stronie podaj katalog instalacyjny serwera Tomcat. Na komputerze z systemem Windows najprawdopodobniej będzie to katalog C:\Program Files\Apache Software Foundation\Tomcat *wersja*.
 7. Kliknij przycisk **Zakończ**.
 8. Wybierz pozycję **Okna** > **Preferencje** > **Java** > **Zainstalowane środowiska JRE** > **Dodaj**.
@@ -110,17 +110,17 @@ Wszystkie kolejne modyfikacje plików i instrukcje uruchamiania będą wykonywan
 12. Przejdź do katalogu **Program Files** > **Java** i wybierz zestaw JDK, który został wcześniej zainstalowany. Należy wybrać zestaw JDK jako środowisko JRE.
 13. W obszarze Zainstalowane środowiska JRE wybierz pozycję **JDK**. Twoje ustawienia powinny być podobne do tych na poniższym zrzucie ekranu.
     
-    ![][9]
+    ![Zrzut ekranu przedstawiający sposób wybierania JDK jako zainstalowanego środowiska JRE][9]
 14. Opcjonalnie można wybrać pozycję **Okna** > **Przeglądarka WWW** > **Internet Explorer**, aby otworzyć aplikację w oknie zewnętrznej przeglądarki. Używanie zewnętrznej przeglądarki zapewnia lepsze środowisko aplikacji internetowej.
     
-    ![][8]
+    ![Zrzut ekranu przedstawiający sposób wybierania programu Internet Explorer jako zewnętrznego okna przeglądania][8]
 
 Zadania konfiguracji zostały zakończone. W dalszej części skompilujesz i uruchomisz projekt.
 
 ## <a name="build-the-project"></a>Kompilowanie projektu
 1. W obszarze Eksplorator projektów kliknij prawym przyciskiem myszy nazwę projektu i wybierz polecenie **Wykonaj jako** > **Kompilacja Maven...** , aby skonfigurować projekt.
    
-    ![][10]
+    ![Zrzut ekranu przedstawiający sposób wybierania Maven kompilacja w oknie Eksplorator projektu][10]
 2. W obszarze Edycja konfiguracji, w polu Cele wpisz „czysta instalacja”, a następnie kliknij pozycję **Wykonaj**.
 
 Komunikaty o stanie zostaną wyświetlone w oknie konsoli. Powinien zostać wyświetlony komunikat BUDOWANIE POWIODŁO SIĘ wskazujący, że kompilowanie projektu zakończyło się bez błędów.
@@ -147,7 +147,7 @@ Zestaw danych agencji USGS zawiera rekordy, które odnoszą się do stanu Rhode 
 
 Wprowadzenie terminu wyszukiwania zaangażuje do pracy wyszukiwarkę. Spróbuj wprowadzić nazwę regionalną. „Roger Williams” był pierwszym gubernatorem stanu Rhode Island. Liczne parki, budynki i szkoły są nazwane jego imieniem.
 
-![][11]
+![Zrzut ekranu przedstawiający sposób wyszukiwania danych agencji USGS][11]
 
 Możesz też wprowadzić jeden z poniższych terminów:
 

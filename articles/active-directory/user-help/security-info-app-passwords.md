@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie haseł aplikacji z poziomu stronę informacji zabezpieczających (wersja zapoznawcza) — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Konfigurowanie automatycznego generowania haseł (hasła) za pomocą dowolnej aplikacji niekorzystających z przeglądarki lub dowolną aplikację, która nie obsługuje weryfikację two-Factor Authentication w Twojej organizacji. To hasło aplikacji jest oddzielony od normalnych hasła i można skonfigurować na stronie informacje zabezpieczeń.
+title: Skonfiguruj hasła aplikacji na stronie informacje zabezpieczające (wersja zapoznawcza) — Azure Active Directory | Microsoft Docs
+description: Skonfiguruj automatycznie generowane hasła (hasła aplikacji), które mają być używane z dowolną aplikacją nieobsługującą przeglądarki, lub dowolną aplikację, która nie obsługuje weryfikacji dwuskładnikowej w organizacji. To hasło aplikacji jest oddzielone od normalnego hasła i można je skonfigurować ze strony z informacjami o zabezpieczeniach.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,74 +12,79 @@ ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55dfab0c60e77b86157a005db34c37917a5e08d2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d599607da6653d088f53490ea4d4b5f7f6d0f236
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60475116"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382930"
 ---
-# <a name="manage-app-passwords-from-your-security-info-preview-page"></a>Zarządzanie hasłami aplikacji z Twojego stronę informacji zabezpieczających (wersja zapoznawcza)
-Niektóre aplikacje, takie jak Outlook 2010, nie obsługują weryfikacji dwuetapowej. To Brak obsługi oznacza, że w przypadku używania weryfikacji dwuetapowej w Twojej organizacji nie będzie działać aplikacji. Aby obejść ten problem, można utworzyć hasło wygenerowane automatycznie za pomocą każdej aplikacji niekorzystających z przeglądarki, niezależnie od normalnych hasła.
+# <a name="manage-app-passwords-from-your-security-info-preview-page"></a>Zarządzanie hasłami aplikacji na stronie z informacjami o zabezpieczeniach (wersja zapoznawcza)
+
+Niektóre aplikacje, takie jak Outlook 2010, nie obsługują weryfikacji dwuetapowej. Brak pomocy technicznej oznacza, że jeśli korzystasz z weryfikacji dwuetapowej w organizacji, aplikacja nie będzie działała. Aby obejść ten problem, możesz utworzyć automatycznie generowane hasło, które będzie używane z każdą aplikacją nie korzystającą z przeglądarki, niezależnie od normalnego hasła.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Important]
->Administrator może nie pozwalają na stosowanie haseł aplikacji. Jeśli nie widzisz **haseł aplikacji** jako opcja, nie są dostępne w Twojej organizacji.
+>Administrator może nie zezwalać na korzystanie z haseł aplikacji. Jeśli nie widzisz **haseł aplikacji** jako opcji, nie są one dostępne w Twojej organizacji.
 
-Korzystanie z haseł aplikacji, to należy pamiętać:
+W przypadku korzystania z haseł aplikacji ważne jest, aby pamiętać:
 
-- Hasła aplikacji są generowane automatycznie i tylko raz wprowadzone na aplikację.
+- Hasła aplikacji są generowane automatycznie i wprowadzane tylko raz dla każdej aplikacji.
 
-- Istnieje limit 40 haseł na użytkownika. Jeśli spróbujesz utworzyć po osiągnięciu tego limitu, zostanie wyświetlony monit można usunąć istniejącego hasła przed uzyskaniem dostępu do utworzenia nowego.
+- Dla każdego użytkownika istnieje limit 40 haseł. Jeśli spróbujesz utworzyć jeden po tym limicie, zostanie wyświetlony monit o usunięcie istniejącego hasła przed utworzeniem nowego.
 
-- Używanie jednego hasła aplikacji, na każdym urządzeniu, a nie na aplikację. Na przykład utworzyć jednego hasła dla wszystkich aplikacji na komputerze przenośnym i następnie inne jednego hasła dla wszystkich aplikacji na pulpicie.
+- Użyj jednego hasła aplikacji na urządzenie, a nie na aplikację. Na przykład utwórz jedno hasło dla wszystkich aplikacji na laptopie, a następnie inne pojedyncze hasło dla wszystkich aplikacji na pulpicie.
 
     >[!Note]
-    >Klienci pakietu Office 2013 (w tym programu Outlook) obsługuje nowe protokoły uwierzytelniania i może być używany z weryfikacji dwuetapowej. Ta obsługa oznacza, że po włączeniu weryfikacji dwuetapowej już nie ma hasła aplikacji dla klientów pakietu Office 2013. Aby uzyskać więcej informacji, zobacz [sposobu działania nowoczesnego uwierzytelniania dla aplikacji klienckich pakietu Office 2013 i Office 2016](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517) artykułu.
+    >Klienci korzystający z pakietu Office 2013 (w tym Outlook) obsługują nowe protokoły uwierzytelniania i mogą być używani do weryfikacji dwuetapowej. Ta pomoc techniczna oznacza, że po włączeniu weryfikacji dwuetapowej nie będą już potrzebne hasła aplikacji dla klientów pakietu Office 2013. Aby uzyskać więcej informacji, zobacz artykuł [jak nowoczesne uwierzytelnianie działa dla pakietów office 2013 i office 2016 Client Apps](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517) .
 
-## <a name="create-new-app-passwords"></a>Tworzenie nowych haseł aplikacji
-Jeśli używasz weryfikacji dwuetapowej za pomocą konta służbowego lub szkolnego, a administrator wyłączył środowisko informacje zabezpieczeń, można tworzyć i usuwać przy użyciu haseł aplikacji **zabezpieczające** strony.
+## <a name="create-new-app-passwords"></a>Utwórz nowe hasła aplikacji
+
+Jeśli korzystasz z weryfikacji dwuetapowej przy użyciu konta służbowego, a administrator włączył informacje zabezpieczające, możesz tworzyć i usuwać hasła aplikacji przy użyciu strony **informacje zabezpieczające** .
 
 >[!Note]
->Jeśli administrator nie zostało włączone środowisko informacje zabezpieczeń, należy wykonać instrukcje i informacje zawarte w [Zarządzanie hasła aplikacji na potrzeby weryfikacji dwuetapowej](multi-factor-authentication-end-user-app-passwords.md) sekcji.
+>Jeśli administrator nie włączył środowiska informacje zabezpieczające, należy postępować zgodnie z instrukcjami i informacjami w sekcji [Zarządzanie hasłami aplikacji na potrzeby weryfikacji](multi-factor-authentication-end-user-app-passwords.md) dwuetapowej.
 
 ### <a name="to-create-a-new-app-password"></a>Aby utworzyć nowe hasło aplikacji
-1. Zaloguj się do swojego konta firmowego lub szkolnego, a następnie przejdź do swojej https://myprofile.microsoft.com/ strony.
 
-    ![Strona Moje profilu, pokazujący wyróżnione łączy informacje zabezpieczeń](media/security-info/securityinfo-myprofile-page.png)
+1. Zaloguj się do swojego konta służbowego, a następnie przejdź do https://myprofile.microsoft.com/ strony.
 
-2. Wybierz **zabezpieczające** z lewego okienka nawigacji lub linku w **zabezpieczające** zablokować, a następnie wybierz **Dodaj metodę** z **informacje zabezpieczające**  strony.
+    ![Strona mój profil zawierająca wyróżnione linki do informacji zabezpieczających](media/security-info/securityinfo-myprofile-page.png)
 
-    ![Strona informacji zabezpieczających przy użyciu opcji Dodaj wyróżnione w — metoda](media/security-info/securityinfo-myprofile-addmethod-page.png)
+2. W okienku nawigacji po lewej stronie wybierz pozycję **informacje zabezpieczające** lub link w bloku **informacje zabezpieczające** , a następnie wybierz pozycję **Dodaj metodę** ze strony **informacje zabezpieczające** .
 
-3. Na **Dodaj metodę** wybierz opcję **hasła aplikacji** z listy rozwijanej, a następnie wybierz **Dodaj**.
+    ![Strona z informacjami o zabezpieczeniach z wyróżnioną opcją dodawania metody](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-    ![Dodaj pole metody przy użyciu hasła aplikacji wybrane](media/security-info/securityinfo-myprofile-addpassword.png)
+3. Na stronie **Dodawanie metody** wybierz z listy rozwijanej pozycję **hasło aplikacji** , a następnie wybierz pozycję **Dodaj**.
 
-4. Wpisz nazwę aplikacji, która wymaga hasła aplikacji, a następnie wybierz **dalej**.
+    ![Pole dodawania metody z wybranym hasłem aplikacji](media/security-info/securityinfo-myprofile-addpassword.png)
 
-    ![Strona hasła aplikacji, z nazwą aplikacji](media/security-info/securityinfo-myprofile-password-appname.png)
+4. Wpisz nazwę aplikacji, która wymaga hasła aplikacji, a następnie wybierz przycisk **dalej**.
 
-5. Skopiuj tekst z **hasło** , wkleić hasło w obszarze hasła aplikacji (w tym przykładzie program Outlook 2010), a następnie wybierz **gotowe**.
+    ![Strona hasła aplikacji z nazwą aplikacji](media/security-info/securityinfo-myprofile-password-appname.png)
 
-    ![Strona hasła aplikacji, z nazwą aplikacji](media/security-info/securityinfo-myprofile-password-copytext.png)
-    
-    Hasło zostanie dodany, a następnie możesz pomyślnie zalogować się do aplikacji w przyszłości.
+5. Skopiuj tekst z pola **hasło** , wklej je w obszarze hasło aplikacji (w tym przykładzie w programie Outlook 2010), a następnie wybierz pozycję **gotowe**.
 
-## <a name="delete-your-app-passwords"></a>Usuwanie hasła aplikacji
-Jeśli nie są już potrzebne do korzystania z aplikacji, który wymaga hasła aplikacji, należy usunąć hasło skojarzonej aplikacji. Usuwanie hasła aplikacji zwolni jeden chętnych hasła — aplikacja dostępna do użytku w przyszłości.
+    ![Strona hasła aplikacji z nazwą aplikacji](media/security-info/securityinfo-myprofile-password-copytext.png)
+
+    Hasło jest dodawane i można pomyślnie zalogować się do aplikacji.
+
+## <a name="delete-your-app-passwords"></a>Usuwanie haseł aplikacji
+
+Jeśli nie musisz już korzystać z aplikacji, która wymaga hasła aplikacji, możesz usunąć skojarzone hasło aplikacji. Usunięcie hasła aplikacji zwolni jedną z dostępnych miejsc hasła aplikacji do użycia w przyszłości.
 
 >[!Important]
->Hasła aplikacji zostanie usunięty przez pomyłkę, czy można go cofnąć. Musisz utworzyć nowe hasło aplikacji i wprowadź go ponownie w aplikacji, wykonaj czynności w [utworzyć nowe hasła](#create-new-app-passwords) dalszej części tego artykułu.
+>W przypadku usunięcia hasła aplikacji przez pomyłkę nie ma możliwości jego cofnięcia. Należy utworzyć nowe hasło aplikacji i wprowadzić je ponownie w aplikacji, wykonując kroki opisane w sekcji [Tworzenie nowych haseł aplikacji](#create-new-app-passwords) w tym artykule.
 
 ### <a name="to-delete-an-app-password"></a>Aby usunąć hasło aplikacji
 
-1. Na **zabezpieczające** wybierz opcję **Usuń** łącze obok **hasła aplikacji** opcji dla określonej aplikacji.
+1. Na stronie **informacje zabezpieczające** wybierz łącze **Usuń** obok opcji **hasło aplikacji** dla określonej aplikacji.
 
-    ![Łącze, aby usunąć metodę haseł aplikacji z informacje zabezpieczające](media/security-info/securityinfo-myprofile-password-appdelete.png)
+    ![Link umożliwiający usunięcie metody hasła aplikacji z informacji zabezpieczających](media/security-info/securityinfo-myprofile-password-appdelete.png)
 
-2. Wybierz **tak** z okno dialogowe potwierdzenia, aby usunąć **hasła aplikacji**. Po hasła aplikacji zostanie usunięty, zostanie on usunięty z informacjom zabezpieczającym i znika ono z **zabezpieczające** strony.
+2. Wybierz opcję **tak** w polu potwierdzenia, aby usunąć **hasło aplikacji**. Po usunięciu hasła aplikacji zostanie ono usunięte z informacji zabezpieczających i zniknie ze strony z **informacjami o zabezpieczeniach** .
 
 ## <a name="for-more-information"></a>Więcej informacji
-- Aby uzyskać więcej informacji na temat **zabezpieczające** stronę i ustawić go tak, zobacz [Przegląd informacji zabezpieczeń](user-help-security-info-overview.md)
+
+- Aby uzyskać więcej informacji na temat strony **informacje zabezpieczające** i sposobu jej konfiguracji, zobacz [informacje zabezpieczające — Omówienie](user-help-security-info-overview.md)

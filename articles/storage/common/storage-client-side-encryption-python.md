@@ -1,6 +1,6 @@
 ---
-title: Szyfrowanie po stronie klienta za pomocą języka Python dla usługi Microsoft Azure Storage | Dokumentacja firmy Microsoft
-description: Biblioteki klienta usługi Azure Storage dla języka Python obsługuje szyfrowanie po stronie klienta dla zapewnienia maksymalnego poziomu bezpieczeństwa dla aplikacji usługi Azure Storage.
+title: Szyfrowanie po stronie klienta przy użyciu języka Python dla Microsoft Azure Storage | Microsoft Docs
+description: Biblioteka klienta usługi Azure Storage dla języka Python obsługuje szyfrowanie po stronie klienta w celu zapewnienia maksymalnego poziomu zabezpieczeń aplikacji usługi Azure Storage.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,76 +10,76 @@ ms.date: 05/11/2017
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d04c1e137a190b01554106c041853aa2fd6786d7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cd8ba51b960703fa25371d874ed2bb50e7df2fde
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65146912"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360039"
 ---
-# <a name="client-side-encryption-with-python-for-microsoft-azure-storage"></a>Szyfrowanie po stronie klienta za pomocą języka Python dla usługi Microsoft Azure Storage
+# <a name="client-side-encryption-with-python-for-microsoft-azure-storage"></a>Szyfrowanie po stronie klienta przy użyciu języka Python dla Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## <a name="overview"></a>Omówienie
-[Biblioteki klienta usługi Azure Storage dla języka Python](https://pypi.python.org/pypi/azure-storage) obsługuje szyfrowanie danych w aplikacjach klienckich przed przekazaniem do usługi Azure Storage oraz odszyfrowywanie danych pobraniem do klienta.
+[Biblioteka klienta usługi Azure Storage dla języka Python](https://pypi.python.org/pypi/azure-storage) obsługuje szyfrowanie danych w aplikacjach klienckich przed przekazaniem ich do usługi Azure Storage i odszyfrowywanie danych podczas pobierania ich do klienta.
 
 > [!NOTE]
-> Biblioteki Azure Storage dla środowiska Python jest dostępna w wersji zapoznawczej.
+> Biblioteka języka Python usługi Azure Storage jest w wersji zapoznawczej.
 > 
 > 
 
-## <a name="encryption-and-decryption-via-the-envelope-technique"></a>Szyfrowanie i odszyfrowywanie za pomocą techniki obwiedni
-Procesy szyfrowania i odszyfrowywania wykonaj technika koperty.
+## <a name="encryption-and-decryption-via-the-envelope-technique"></a>Szyfrowanie i odszyfrowywanie za pomocą techniki Envelope
+Procesy szyfrowania i odszyfrowywania są zgodne z techniką formy.
 
-### <a name="encryption-via-the-envelope-technique"></a>Szyfrowanie za pomocą techniki obwiedni
-Szyfrowanie za pomocą techniki koperty działa w następujący sposób:
+### <a name="encryption-via-the-envelope-technique"></a>Szyfrowanie za pośrednictwem techniki Envelope
+Szyfrowanie za pomocą techniki Envelope działa w następujący sposób:
 
-1. Biblioteka klienta usługi Azure storage generuje klucz szyfrowania zawartości (CEK), czyli jeden jednorazowej Użyj klucza symetrycznego.
+1. Biblioteka klienta usługi Azure Storage generuje klucz szyfrowania zawartości (CEK), który jest jednorazowym użyciem klucza symetrycznego.
 2. Dane użytkownika są szyfrowane przy użyciu tego CEK.
-3. CEK jest następnie opakowywany (zaszyfrowane) przy użyciu klucza szyfrowania klucza (KEK). Klucza KEK jest identyfikowany przez identyfikator klucza i może być asymetryczną parę kluczy lub klucz symetryczny odbywa się lokalnie.
-   Sama biblioteka klienta magazynu nigdy nie ma dostępu do klucza KEK. Biblioteka wywołuje algorytmu zawijanie kluczy, który jest dostarczany przez klucza KEK. Użytkownicy mogą wybierać niestandardowych dostawców dla klucza zawijania/rozpakowanie w razie potrzeby.
-4. Zaszyfrowane dane są następnie przekazywane do usługi Azure Storage. Opakowana klucz wraz z metadanymi pewne dodatkowe szyfrowanie jest przechowywane w postaci metadanych (na obiekcie blob) albo interpolowane z zaszyfrowanych danych (wiadomości w kolejce i jednostki z tabeli).
+3. CEK jest następnie opakowany (zaszyfrowany) przy użyciu klucza szyfrowania klucza (KEK). KEK jest identyfikowany przez identyfikator klucza i może być parę kluczy asymetrycznych lub kluczem symetrycznym, który jest zarządzany lokalnie.
+   Sama Biblioteka klienta magazynu nigdy nie ma dostępu do KEK. Biblioteka wywołuje algorytm zawijania kluczy dostarczany przez KEK. Użytkownicy mogą zdecydować się na użycie niestandardowych dostawców do zawijania kluczy/rozpakowywania w razie potrzeby.
+4. Zaszyfrowane dane są następnie przekazywane do usługi Azure Storage. Opakowany klucz wraz z dodatkowymi metadanymi szyfrowania jest przechowywany jako metadane (na obiekcie BLOB) lub interpolowany z zaszyfrowanymi danymi (kolejkowanie komunikatów i obiekty tabeli).
 
-### <a name="decryption-via-the-envelope-technique"></a>Odszyfrowywanie za pomocą techniki obwiedni
-Odszyfrowywanie za pomocą techniki koperty działa w następujący sposób:
+### <a name="decryption-via-the-envelope-technique"></a>Odszyfrowywanie za pomocą techniki Envelope
+Odszyfrowywanie za pomocą techniki Envelope działa w następujący sposób:
 
-1. Biblioteka klienta zakłada, że użytkownik jest zarządzany lokalnie klucz szyfrowania klucza (KEK). Użytkownik nie musi wiedzieć, określony klucz, który został użyty do szyfrowania. Zamiast tego klucza rozpoznawania nazw, który jest rozpoznawany jako różne identyfikatorach klucza kluczy, można skonfigurować i używane.
-2. Biblioteka klienta pobierze zaszyfrowanych danych wraz z materiału szyfrowania, który jest przechowywany w usłudze.
-3. Klucz opakowana szyfrowania zawartości (CEK) jest nieopakowanych (odszyfrowany) przy użyciu klucza szyfrowania klucza (KEK). W tym miejscu ponownie, Biblioteka klienta nie ma dostępu do klucza KEK. Po prostu wywołuje niestandardowego dostawcy odszyfrowania algorytmu.
-4. Klucz szyfrowania zawartości (CEK) jest następnie używany do odszyfrowywania danych zaszyfrowanych użytkownika.
+1. W bibliotece klienta założono, że użytkownik zarządza kluczem szyfrowania kluczy (KEK) lokalnie. Użytkownik nie musi znać określonego klucza, który był używany do szyfrowania. Zamiast tego program rozpoznawania kluczy, który rozwiązuje różne identyfikatory kluczy do kluczy, można skonfigurować i użyć.
+2. Biblioteka klienta pobiera zaszyfrowane dane wraz z dowolnym materiałem szyfrowania, który jest przechowywany w usłudze.
+3. Klucz szyfrowania zawartości opakowanej (CEK) jest następnie odpakowany (odszyfrowany) przy użyciu klucza szyfrowania klucza (KEK). W tym miejscu Biblioteka kliencka nie ma dostępu do KEK. Po prostu wywołuje algorytm unotoką niestandardowego dostawcy.
+4. Klucz szyfrowania zawartości (CEK) jest następnie używany do odszyfrowywania zaszyfrowanych danych użytkownika.
 
 ## <a name="encryption-mechanism"></a>Mechanizm szyfrowania
-Korzysta z biblioteki klienta usługi storage [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) w celu zaszyfrowania danych użytkownika. W szczególności [Cipher Block Chaining (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) trybu przy użyciu standardu AES. Każdy usługi działa nieco inaczej, omówimy każdy z nich w tym miejscu.
+Biblioteka klienta magazynu używa [algorytmu AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) w celu szyfrowania danych użytkownika. W przypadku trybu [szyfrowania bloku blokowego (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) z algorytmem AES. Każda usługa działa nieco inaczej, więc omawiamy każdą z nich w tym miejscu.
 
 ### <a name="blobs"></a>Obiekty blob
-Biblioteka klienta obsługuje obecnie szyfrowanie tylko całe obiektów blob. Ściślej mówiąc, szyfrowanie jest obsługiwane, gdy użytkownicy używają **tworzenie*** metody. Pliki do pobrania, zarówno pełne i pobrania zakresu są obsługiwane i równoległe przekazywanie i pobieranie jest dostępna.
+Biblioteka klienta obsługuje obecnie szyfrowanie tylko całych obiektów BLOB. Szyfrowanie jest obsługiwane, gdy użytkownicy korzystają z metod **Create***. W przypadku plików do pobrania obsługiwane są zarówno pobieranie w całości, jak i zakres, a ponadto dostępne są przetwarzanie równoległe przekazywania i pobierania.
 
-Podczas szyfrowania biblioteki klienta wygeneruje losowy inicjowania wektora (IV) 16-bajtowy, wraz z kluczem szyfrowania zawartości (CEK), 32-bitowej i wykonać koperty szyfrowanie danych obiektów blob, korzystając z tych informacji. Opakowana CEK i niektóre metadane dodatkowego szyfrowania są następnie zapisywane jako metadane, wraz z zaszyfrowanego obiektu blob w usłudze obiektu blob.
+Podczas szyfrowania Biblioteka klienta generuje losowy wektor inicjacji (IV) z 16 bajtów wraz z losowym kluczem szyfrowania zawartości (CEK) wynoszącym 32 bajtów i przeprowadź szyfrowanie koperty danych obiektów BLOB przy użyciu tych informacji. Opakowany CEK i niektóre dodatkowe metadane szyfrowania są następnie przechowywane jako metadane obiektów BLOB wraz z zaszyfrowanego obiektu BLOB w usłudze.
 
 > [!WARNING]
-> W przypadku edytowania lub przekazywanie metadane obiektu blob, należy upewnić się, że te metadane są zachowywane. Jeśli załadujesz nowymi metadanymi bez takich metadanych, CEK zawinięty, IV i inne metadane zostaną utracone, a zawartość obiektu blob nigdy nie być możliwe do pobierania.
+> Jeśli edytujesz lub przekazujesz własne metadane dla obiektu BLOB, musisz upewnić się, że metadane są zachowywane. W przypadku przekazania nowych metadanych bez tych metadanych zawinięte CEK, IV i inne metadane zostaną utracone i nie będzie można ponownie pobrać zawartości obiektu BLOB.
 > 
 > 
 
-Pobieranie obiektu blob zaszyfrowanego polega na pobraniu zawartości całego obiektu blob przy użyciu **uzyskać*** wygodne metody. Opakowana CEK jest nieopakowanych i używany razem z IV (przechowywanych jako metadane obiektu blob w tym przypadku), aby zwrócić odszyfrowane dane do użytkowników.
+Pobieranie zaszyfrowanego obiektu BLOB polega na pobieraniu zawartości całego obiektu BLOB przy użyciu metod **Get*** wygodnych. Opakowany CEK jest rozpakowany i używany razem z IV (przechowywane jako metadane obiektu BLOB w tym przypadku) w celu zwrócenia odszyfrowanych danych do użytkowników.
 
-Pobranie dowolnego zakresu (**uzyskać*** przekazanej metody z parametrami zakres) w obiekcie blob zaszyfrowanego obejmuje, dostosowując zakres dostarczone przez użytkowników w celu uzyskania niewielką ilość dodatkowych danych, który może służyć do pomyślnie odszyfrowywanie żądany zakres.
+Pobieranie dowolnego zakresu (metody**Get*** z parametrami zakresu przekazane) w zaszyfrowanym obiekcie blob obejmuje dostosowanie zakresu zapewnianego przez użytkowników w celu uzyskania niewielkiej ilości dodatkowych danych, których można użyć do pomyślnego odszyfrowania żądanego zakresu .
 
-Blokowe obiekty BLOB i stronicowe obiekty BLOB tylko może być zaszyfrowany/odszyfrować za pomocą tego schematu. Obecnie nie jest obsługiwane w przypadku encrypting uzupełnialnych obiektów blob.
+Blokowe obiekty blob i stronicowe obiekty blob mogą być szyfrowane/odszyfrowywane przy użyciu tego schematu. Obecnie nie jest obsługiwane szyfrowanie dołączanych obiektów BLOB.
 
 ### <a name="queues"></a>Kolejki
-Ponieważ kolejka komunikatów może być dowolnym formacie, Biblioteka klienta definiuje niestandardowego formatu, który zawiera wektor inicjowania (IV) i klucza zaszyfrowanego szyfrowania zawartości (CEK) w treści wiadomości.
+Ponieważ komunikaty kolejki mogą mieć dowolny format, Biblioteka klienta definiuje format niestandardowy, który zawiera wektor inicjujący (IV) i zaszyfrowany klucz szyfrowania zawartości (CEK) w tekście komunikatu.
 
-Podczas szyfrowania biblioteki klienckiej generuje losowe IV 16-bajtowy wraz z losowe CEK 32-bitowej i wykonuje szyfrowanie koperty tekst komunikatu kolejki, korzystając z tych informacji. Opakowana CEK i niektóre metadane dodatkowego szyfrowania jest następnie dodawana do komunikatu w kolejce zaszyfrowane. Ten komunikat zmodyfikowany (pokazana poniżej) są przechowywane w usłudze.
+Podczas szyfrowania Biblioteka klienta generuje losową część IV 16 bajtów wraz z losową CEKą 32 bajtów i wykonuje szyfrowanie koperty tekstu komunikatu w kolejce przy użyciu tych informacji. Opakowany CEK i dodatkowe metadane szyfrowania są następnie dodawane do komunikatu zaszyfrowanej kolejki. Ten zmodyfikowany komunikat (przedstawiony poniżej) jest przechowywany w usłudze.
 
 ```
 <MessageText>{"EncryptedMessageContents":"6kOu8Rq1C3+M1QO4alKLmWthWXSmHV3mEfxBAgP9QGTU++MKn2uPq3t2UjF1DO6w","EncryptionData":{…}}</MessageText>
 ```
 
-Podczas odszyfrowywania opakowaną klucza jest wyodrębniony z komunikatu w kolejce i nieopakowanych. IV jest również wyodrębniony z komunikatu w kolejce i używany wraz z kluczem odkodowany do odszyfrowania danych komunikatu kolejki. Należy pamiętać, że metadane szyfrowania małe (w bajtach 500), dlatego podczas jego wliczają się do limitu 64KB dla komunikatu w kolejce, wpływ powinny być łatwe w zarządzaniu.
+Podczas odszyfrowywania, opakowany klucz jest wyodrębniany z komunikatu kolejki i nieopakowany. IV jest również wyodrębniany z komunikatu kolejki i używany razem z nieopakowanym kluczem do odszyfrowania danych komunikatu w kolejce. Należy pamiętać, że metadane szyfrowania są małe (poniżej 500 bajtów), więc w miarę jak licznik KB dla komunikatu kolejki, wpływ powinien być zarządzany.
 
 ### <a name="tables"></a>Tabele
-Biblioteka klienta obsługuje szyfrowanie właściwości obiektu do wstawiania i zamienianie operacji.
+Biblioteka klienta obsługuje szyfrowanie właściwości jednostki dla operacji wstawiania i zamiany.
 
 > [!NOTE]
 > Scalanie nie jest obecnie obsługiwane. Ponieważ podzbiór właściwości może być zaszyfrowany wcześniej przy użyciu innego klucza, po prostu scalanie nowych właściwości i aktualizowanie metadanych spowoduje utratę danych. Scalanie albo wymaga wywołań usługi dodatkowe odczytać wstępnie istniejącej jednostki usługi lub przy użyciu nowego klucza dla właściwości, które nie są odpowiednie dla ze względu na wydajność.
@@ -88,70 +88,70 @@ Biblioteka klienta obsługuje szyfrowanie właściwości obiektu do wstawiania i
 
 Szyfrowanie danych tabeli działa w następujący sposób:
 
-1. Użytkownicy określić właściwości, które mają być szyfrowane.
-2. Biblioteka klienta generuje losowe inicjowania wektora (IV) 16-bajtowy wraz z kluczem szyfrowania zawartości (CEK) 32-bitowej dla każdej jednostki i wykonuje szyfrowanie koperty na poszczególnych właściwości w celu zaszyfrowania przez wyprowadzanie nowy IV dla właściwości. Zaszyfrowane właściwości jest przechowywana jako dane binarne.
-3. Opakowana CEK i niektóre metadane dodatkowego szyfrowania są następnie zapisywane jako dwa dodatkowe właściwości zastrzeżonych. Pierwsze zastrzeżone właściwości (\_ClientEncryptionMetadata1) jest właściwością ciągu, która przechowuje informacje dotyczące IV, wersji i klucz opakowana. Drugi zastrzeżone właściwości (\_ClientEncryptionMetadata2) jest binarny właściwość, która przechowuje informacje dotyczące właściwości, które są szyfrowane. Informacje przedstawione w tej drugiej właściwości (\_ClientEncryptionMetadata2) jest zaszyfrowany.
-4. Ze względu na te dodatkowe właściwości zastrzeżonych wymagana na potrzeby szyfrowania użytkownicy mogą teraz mieć tylko 250 właściwości niestandardowych zamiast 252. Całkowity rozmiar jednostki musi być mniejszy niż 1MB.
+1. Użytkownicy określają właściwości, które mają być szyfrowane.
+2. Biblioteka klienta generuje losowy wektor inicjacji (IV) z 16 bajtów wraz z losowym kluczem szyfrowania zawartości (CEK) wynoszącym 32 bajtów dla każdej jednostki i wykonuje szyfrowanie kopert dla poszczególnych właściwości, aby były szyfrowane przez wygenerowanie nowej wartości IV na właściwość. Zaszyfrowana właściwość jest przechowywana jako dane binarne.
+3. Opakowany CEK i niektóre dodatkowe metadane szyfrowania są następnie przechowywane jako dwie dodatkowe zastrzeżone właściwości. Pierwsza zastrzeżona Właściwość (\_ClientEncryptionMetadata1) jest właściwością ciągu, która zawiera informacje o IV, wersji i kluczu opakowanym. Druga Właściwość zastrzeżona (\_ClientEncryptionMetadata2) jest właściwością binarną, która zawiera informacje o zaszyfrowanych właściwościach. Informacje zawarte w tej drugiej właściwości (\_ClientEncryptionMetadata2) są zaszyfrowane.
+4. Ze względu na te dodatkowe właściwości zastrzeżone wymagane do szyfrowania, użytkownicy mogą teraz mieć tylko 250 właściwości niestandardowe zamiast 252. Łączny rozmiar jednostki musi być mniejszy niż 1 MB.
 
-   Należy zauważyć, że tylko ciąg właściwości mogą być szyfrowane. Inne typy właściwości mają być szyfrowane, musi zostać przekonwertowana na ciągi. Zaszyfrowane ciągi są przechowywane w usłudze jako właściwości binarnych i są konwertowane do ciągi (nieprzetworzone ciągi, nie EntityProperties z typem EdmType.STRING) po odszyfrowywania.
+   Należy pamiętać, że tylko właściwości ciągu mogą być szyfrowane. Jeśli inne typy właściwości mają być szyfrowane, muszą być konwertowane na ciągi. Zaszyfrowane ciągi są przechowywane w usłudze jako właściwości binarne i są konwertowane z powrotem do ciągów (nieprzetworzone ciągi, nie EntityProperties z typem obiektu EdmType. STRING) Po odszyfrowaniu.
 
-   W przypadku tabel, oprócz zasad szyfrowania użytkownicy muszą określić właściwości, które mają być szyfrowane. To jest możliwe dzięki przechowywaniu tych właściwości w obiektach TableEntity z wartością typu EdmType.STRING i szyfrowania ma wartość true lub ustawienie encryption_resolver_function obiektu tableservice. Mechanizm rozpoznawania szyfrowania jest funkcją, która przyjmuje klucza partycji, klucz wiersza i nazwę właściwości i zwraca wartość boolean wskazującą, czy mają być szyfrowane tej właściwości. Podczas szyfrowania biblioteki klienckiej użyje tych informacji do określania, czy właściwości mają być szyfrowane podczas zapisu w sieci. Delegat udostępnia także możliwości logiki wokół jak zaszyfrowane właściwości. (Na przykład, jeśli X, następnie szyfrować właściwość A; w przeciwnym razie szyfrowanie właściwości, A i B.) Należy pamiętać, że nie jest konieczne może przekazać tę informację podczas odczytywania lub podczas badania jednostki.
+   W przypadku tabel, oprócz zasad szyfrowania użytkownicy muszą określić właściwości, które mają być szyfrowane. Można to zrobić przez zapisanie tych właściwości w klasy tableentity obiektów z typem ustawionym na obiektu EdmType. STRING i szyfrowaniem ustawionym na wartość true lub ustawieniem encryption_resolver_function na obiekcie tableservice. Program rozpoznawania szyfrowania jest funkcją, która przyjmuje klucz partycji, klucz wiersza i nazwę właściwości i zwraca wartość logiczną wskazującą, czy ta właściwość powinna być szyfrowana. Podczas szyfrowania biblioteki klienckiej użyje tych informacji do określania, czy właściwości mają być szyfrowane podczas zapisu w sieci. Delegat udostępnia także możliwości logiki wokół jak zaszyfrowane właściwości. (Na przykład, jeśli X, następnie szyfrować właściwość A; w przeciwnym razie szyfrowanie właściwości, A i B.) Należy pamiętać, że nie trzeba podawać tych informacji podczas odczytywania lub wysyłania zapytań do jednostek.
 
-### <a name="batch-operations"></a>Operacji wsadowych
-Zasady szyfrowania ma zastosowanie do wszystkich wierszy w partii. Biblioteki klienta wewnętrznie wygeneruje nowy IV losowych i losowe CEK poszczególnych wierszy w partii. Użytkowników można również szyfrowania różnych właściwości dla każdej operacji w zadaniu wsadowym, definiując to zachowanie w szyfrowania programu rozpoznawania nazw.
-Jeśli usługi batch zostało utworzone jako menedżera kontekstowego za pośrednictwem metody batch() tableservice, zasady szyfrowania tableservice zostaną automatycznie zastosowane do danego wsadu. Partii jest jawnie tworzony przez wywołanie konstruktora, zasady szyfrowania należy przekazać jako parametru i lewej w niezmienionej postaci okres istnienia zadania wsadowego.
-Należy pamiętać, że jednostki są szyfrowane, ponieważ są one wstawiane do usługi batch za pomocą zasad szyfrowania usługi batch (jednostki nie są szyfrowane w czasie zatwierdzania usługi batch za pomocą zasad szyfrowania tableservice).
+### <a name="batch-operations"></a>Operacje wsadowe
+Jedna zasada szyfrowania ma zastosowanie do wszystkich wierszy w partii. Biblioteka kliencka będzie wewnętrznie generować nowe losowe CEK IV i losowe na wiersz w partii. Użytkownicy mogą również zaszyfrować różne właściwości dla każdej operacji w partii przez zdefiniowanie tego zachowania w programie rozpoznawania nazw.
+Jeśli partia jest tworzona jako Menedżer kontekstu za pomocą metody tableservice Batch (), zasady szyfrowania tableservice zostaną automatycznie zastosowane do zadania wsadowego. Jeśli partia jest tworzona jawnie przez wywołanie konstruktora, zasady szyfrowania muszą zostać przesłane jako parametr i pozostawione niemodyfikowane przez okres istnienia partii.
+Należy pamiętać, że jednostki są szyfrowane w miarę ich wstawiania do partii przy użyciu zasad szyfrowania partii (jednostki nie są szyfrowane w chwili zatwierdzania partii przy użyciu zasad szyfrowania tableservice).
 
 ### <a name="queries"></a>Zapytania
 > [!NOTE]
-> Ponieważ obiekty są szyfrowane, nie można uruchomić zapytania, które filtrują na właściwością szyfrowaną.  Przy próbie wyniki będą nieprawidłowe, ponieważ usługa może podjąć próbę porównać dane zaszyfrowane przy użyciu nieszyfrowanego danych.
+> Ponieważ jednostki są zaszyfrowane, nie można uruchamiać zapytań, które filtrują zaszyfrowaną właściwość.  Jeśli spróbujesz, wyniki będą nieprawidłowe, ponieważ usługa próbuje porównać zaszyfrowane dane z niezaszyfrowanymi danymi.
 > 
 > 
-> Aby wykonać operacje zapytań, należy określić klucza programu rozpoznawania nazw, który jest w stanie rozpoznać wszystkich kluczy w zestawie wyników. Biblioteka klienta będzie sygnalizować błąd, jeśli nie można rozpoznać jednostki zawarte w wyniku zapytania do dostawcy. Dla dowolnego zapytania, który wykonuje projekcje po stronie serwera biblioteki klienckiej spowoduje dodanie właściwości metadanych szyfrowania specjalne (\_ClientEncryptionMetadata1 i \_ClientEncryptionMetadata2), aby domyślnie zaznaczonych kolumnach.
+> Aby wykonać operacje zapytania, należy określić program rozpoznawania kluczy, który może rozpoznać wszystkie klucze w zestawie wyników. Jeśli nie można rozpoznać jednostki zawartej w wyniku zapytania jako dostawcy, Biblioteka klienta zgłosi błąd. Dla każdego zapytania, które wykonuje projekcje po stronie serwera, Biblioteka klienta doda do wybranych kolumn specjalne właściwości specjalnych\_metadanych ( \_ClientEncryptionMetadata1 i ClientEncryptionMetadata2).
 > 
 > [!IMPORTANT]
-> Należy pamiętać o te ważne punkty, gdy za pomocą szyfrowania po stronie klienta:
+> Należy pamiętać o tych ważnych kwestiach podczas korzystania z szyfrowania po stronie klienta:
 > 
-> * Podczas odczytywania ze zmiennej czy zapisujemy do obiektu blob zaszyfrowanego, użyj całego obiektu blob przekazywania oraz poleceń pobierania obiektów blob zakresu/całości. Należy unikać zapisywanie obiektu blob zaszyfrowanego przy użyciu protokołu operacje, takie jak umieścić blok, umieść zablokowanych, strony zapisu lub wyczyść stron. w przeciwnym razie może uszkodzić zaszyfrowany obiekt blob i ułatwiają nie można go odczytać.
-> * W przypadku tabel istnieje ograniczenie podobne. Uważaj nie aktualizować właściwości zaszyfrowane bez aktualizowania metadanych szyfrowania.
-> * Jeśli ustawisz metadane w obiekcie blob zaszyfrowanego może zastąpić metadane związane z szyfrowaniem, wymaganego do odszyfrowywania, ponieważ ustawienie metadanych nie jest dodatek. Dotyczy to również migawki Unikaj określania metadanych podczas tworzenia migawki obiektu blob zaszyfrowany. Jeśli należy ustawić metadane, należy wywołać **get_blob_metadata** metodą najpierw uzyskać bieżące metadane szyfrowania i uniknąć współbieżne operacje podczas ustawiania metadanych.
-> * Włącz **require_encryption** flagi na obiekt usługi dla użytkowników, którzy powinien działać wyłącznie z zaszyfrowanych danych. Aby uzyskać więcej informacji, zobacz poniżej.
+> * Podczas odczytywania lub zapisywania do zaszyfrowanego obiektu BLOB używaj pełnych poleceń przekazywania obiektów blob oraz poleceń pobierania zakresu/całego obiektu BLOB. Unikaj zapisywania do zaszyfrowanego obiektu BLOB przy użyciu operacji protokołu, takich jak Put Block, Put Block list, Write Pages lub Clear Pages; w przeciwnym razie może dojść do uszkodzenia zaszyfrowanego obiektu BLOB i uniemożliwić jego odczytanie.
+> * W przypadku tabel istnieje podobne ograniczenie. Należy zachować ostrożność, aby nie aktualizować zaszyfrowanych właściwości bez aktualizowania metadanych szyfrowania.
+> * Jeśli ustawisz metadane dla zaszyfrowanego obiektu BLOB, możesz zastąpić metadane związane z szyfrowaniem wymagane do odszyfrowania, ponieważ metadane ustawień nie są addytywne. Dotyczy to również migawek; należy unikać określania metadanych podczas tworzenia migawki zaszyfrowanego obiektu BLOB. Jeśli metadane muszą być ustawione, należy najpierw wywołać metodę **get_blob_metadata** , aby pobrać bieżące metadane szyfrowania i uniknąć jednoczesnego zapisu podczas ustawiania metadanych.
+> * Włącz flagę **require_encryption** w obiekcie usługi dla użytkowników, którzy powinni korzystać tylko z zaszyfrowanych danych. Aby uzyskać więcej informacji, zobacz poniżej.
 
-Biblioteka klienta magazynu oczekuje, że podana KEK oraz rozpoznawania klucza implementacji interfejsu. [Usługa Azure Key Vault](https://azure.microsoft.com/services/key-vault/) pomoc techniczna dotycząca zarządzania KEK języka Python jest w stanie oczekiwania i zostanie zintegrowana z tej biblioteki, po zakończeniu.
+Biblioteka klienta magazynu oczekuje podanej KEK i rozpoznawania kluczy, aby zaimplementować następujący interfejs. Obsługa [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) dla zarządzania KEK języka Python jest w stanie oczekiwania i zostanie zintegrowana z tą biblioteką po zakończeniu.
 
-## <a name="client-api--interface"></a>Interfejs API klienta / interfejs
-Po utworzeniu obiektu usługi storage (tj. blockblobservice), użytkownik może przypisać wartości do pola, które stanowią zasady szyfrowania: key_encryption_key, key_resolver_function i require_encryption. Użytkownicy mogą podać tylko KEK tylko program rozpoznawania nazw, lub obu. key_encryption_key jest podstawowego typu klucza, który jest identyfikowany za pomocą identyfikatora klucza i zapewniający logikę zawijania/rozpakowanie. key_resolver_function jest używany do rozpoznawania klucza podczas odszyfrowywania. Zwraca prawidłową KEK, biorąc pod uwagę identyfikatora klucza. Zapewnia to użytkownikom wybór między wiele kluczy, które są zarządzane w wielu lokalizacjach.
+## <a name="client-api--interface"></a>API/interfejs klienta
+Po utworzeniu obiektu usługi magazynu (tj. blockblobservice) użytkownik może przypisać wartości do pól, które stanowią zasady szyfrowania: key_encryption_key, key_resolver_function i require_encryption. Użytkownicy mogą udostępniać tylko KEK, tylko program rozpoznawania nazw lub oba te elementy. key_encryption_key to podstawowy typ klucza, który jest identyfikowany przy użyciu identyfikatora klucza i który udostępnia logikę zawijania/rozpakowywania. key_resolver_function jest używany do rozpoznawania klucza podczas procesu odszyfrowywania. Zwraca prawidłowy KEK podanym identyfikatorem klucza. Dzięki temu użytkownicy mogą wybierać między wieloma kluczami, które są zarządzane w wielu lokalizacjach.
 
-Klucza KEK należy zaimplementować następujące metody umożliwiające pomyślnie szyfrowania danych:
+Aby pomyślnie zaszyfrować dane, KEK musi implementować następujące metody:
 
-* wrap_key(cek): Opakowuje określony CEK (w bajtach), korzystając z algorytmu wybrany przez użytkownika. Zwraca klucz opakowana.
-* get_key_wrap_algorithm(): Zwraca algorytm stosowanego do opakowywania kluczy.
-* get_kid(): Zwraca identyfikator klucza ciągu dla tego klucza KEK.
-  Klucza KEK należy zaimplementować następujące metody umożliwiające pomyślnie odszyfrować danych:
-* unwrap_key (cek, algorytm): Zwraca nieopakowane formularza CEK określony, przy użyciu algorytmu określony ciąg.
-* get_kid(): Zwraca ciąg identyfikatora klucza dla tego klucza KEK.
+* wrap_key(cek): Zawija określony CEK (bajty) przy użyciu algorytmu wybranego przez użytkownika. Zwraca opakowany klucz.
+* get_key_wrap_algorithm(): Zwraca algorytm używany do zawijania kluczy.
+* get_kid(): Zwraca identyfikator klucza ciągu dla tego KEK.
+  Aby można było pomyślnie odszyfrować dane, KEK musi implementować następujące metody:
+* unwrap_key (CEK, algorytm): Zwraca nieopakowaną postać określonego CEK przy użyciu algorytmu określonego przez ciąg.
+* get_kid(): Zwraca identyfikator klucza ciągu dla tego KEK.
 
-Program rozpoznawania nazw kluczy co najmniej musi implementować metodę zwracającą, biorąc pod uwagę identyfikator klucza, odpowiedniego klucza KEK implementującej interfejs powyżej. Jest tylko ta metoda ma być przypisane do właściwości key_resolver_function obiektu usługi.
+Program rozpoznawania kluczy musi mieć co najmniej implementację metody, która w danym identyfikatorze klucza zwraca odpowiedni KEK implementujący interfejs powyżej. Tylko ta metoda ma być przypisana do właściwości key_resolver_function obiektu usługi.
 
-* Dla celów szyfrowania jest on używany zawsze i Brak klucza spowoduje wystąpienie błędu.
-* Do odszyfrowywania:
+* W przypadku szyfrowania klucz jest używany zawsze, a brak klucza spowoduje wystąpienie błędu.
+* W przypadku odszyfrowywania:
 
-  * Mechanizm rozpoznawania klucza jest wywoływana, jeśli określony, aby pobrać klucz. Jeśli program rozpoznawania nazw jest określony, ale nie ma mapowania dla identyfikatora klucza, zostanie zgłoszony błąd.
-  * Jeśli program rozpoznawania nazw nie jest określony, ale klucz jest określony, klucz jest używany, jeśli pasuje do identyfikatora wymaganego identyfikatora klucza. Jeśli identyfikator nie jest zgodny, zostanie zgłoszony błąd.
+  * Program rozpoznawania kluczy jest wywoływany, jeśli jest określony w celu pobrania klucza. Jeśli jest określony mechanizm rozwiązywania konfliktów, ale nie ma mapowania dla identyfikatora klucza, zostanie zgłoszony błąd.
+  * Jeśli nie określono mechanizmu rozwiązywania konfliktów, ale określono klucz, zostanie użyty klucz, jeśli jego identyfikator pasuje do wymaganego identyfikatora klucza. Jeśli identyfikator nie jest zgodny, zostanie zgłoszony błąd.
 
-    Przykłady szyfrowania w azure.storage.samples pokazują bardziej szczegółowe scenariusz end-to-end dla obiektów blob, kolejek i tabel.
-      Przykładowe implementacje KEK i rozpoznawania nazw kluczy są udostępniane w przykładowych plików oraz KeyWrapper KeyResolver odpowiednio.
+    Przykłady szyfrowania na platformie Azure. Storage. przykłady przedstawiają bardziej szczegółowy scenariusz kompleksowego dla obiektów blob, kolejek i tabel.
+      Przykładowe implementacje programu KEK i rozpoznawania kluczy są dostępne w przykładowych plikach jako otoka klucza i rozwiązanie.
 
 ### <a name="requireencryption-mode"></a>Tryb RequireEncryption
-Użytkownicy mogą włączyć opcjonalnie tryb działania, w której muszą być szyfrowane wszystkie przekazywanie i pobieranie. W tym trybie próby przekazania danych bez zasady szyfrowania lub pobrać dane, które nie są szyfrowane w usłudze zakończy się niepowodzeniem na komputerze klienckim. **Require_encryption** flagi na obiekt usługi kontroluje to zachowanie.
+Użytkownicy mogą opcjonalnie włączyć tryb operacji, w której wszystkie operacje przekazywania i pobierania muszą być szyfrowane. W tym trybie program próbuje przekazać dane bez zasad szyfrowania lub pobrać dane, które nie są zaszyfrowane w usłudze, zakończą się niepowodzeniem na kliencie. Flaga **require_encryption** w obiekcie usługi steruje tym zachowaniem.
 
-### <a name="blob-service-encryption"></a>Szyfrowanie usługi obiektów blob
-Nastavit szyfrowania zasad pól obiektu blockblobservice. Cała reszta będzie obsługiwany przez bibliotekę klienta wewnętrznie.
+### <a name="blob-service-encryption"></a>Szyfrowanie Blob service
+Ustaw pola zasad szyfrowania w obiekcie blockblobservice. Wszystkie inne elementy będą obsługiwane przez bibliotekę kliencką wewnętrznie.
 
 ```python
 # Create the KEK used for encryption.
 # KeyWrapper is the provided sample implementation, but the user may use their own object as long as it implements the interface above.
-kek = KeyWrapper('local:key1') # Key identifier
+kek = KeyWrapper('local:key1')  # Key identifier
 
 # Create the key resolver used for decryption.
 # KeyResolver is the provided sample implementation, but the user may use whatever implementation they choose so long as the function set on the service object behaves appropriately.
@@ -163,19 +163,20 @@ my_block_blob_service.key_encryption_key = kek
 my_block_blob_service.key_resolver_funcion = key_resolver.resolve_key
 
 # Upload the encrypted contents to the blob.
-my_block_blob_service.create_blob_from_stream(container_name, blob_name, stream)
+my_block_blob_service.create_blob_from_stream(
+    container_name, blob_name, stream)
 
 # Download and decrypt the encrypted contents from the blob.
 blob = my_block_blob_service.get_blob_to_bytes(container_name, blob_name)
 ```
 
-### <a name="queue-service-encryption"></a>Szyfrowanie usługi kolejki
-Ustawić szyfrowania zasad pól queueservice obiektu. Cała reszta będzie obsługiwany przez bibliotekę klienta wewnętrznie.
+### <a name="queue-service-encryption"></a>Szyfrowanie usługa kolejki
+Ustaw pola zasad szyfrowania w obiekcie QueueService. Wszystkie inne elementy będą obsługiwane przez bibliotekę kliencką wewnętrznie.
 
 ```python
 # Create the KEK used for encryption.
 # KeyWrapper is the provided sample implementation, but the user may use their own object as long as it implements the interface above.
-kek = KeyWrapper('local:key1') # Key identifier
+kek = KeyWrapper('local:key1')  # Key identifier
 
 # Create the key resolver used for decryption.
 # KeyResolver is the provided sample implementation, but the user may use whatever implementation they choose so long as the function set on the service object behaves appropriately.
@@ -193,15 +194,15 @@ my_queue_service.put_message(queue_name, content)
 retrieved_message_list = my_queue_service.get_messages(queue_name)
 ```
 
-### <a name="table-service-encryption"></a>Szyfrowanie usługi tabeli
-Oprócz tworzenia zasady szyfrowania i ustawienie opcji żądania, należy określić **encryption_resolver_function** na **tableservice**, lub ustaw atrybut Szyfruj w EntityProperty.
+### <a name="table-service-encryption"></a>Szyfrowanie Table service
+Oprócz tworzenia zasad szyfrowania i ustawiania ich dla opcji żądania należy określić wartość **encryption_resolver_function** w **tableservice**lub ustawić atrybut Szyfruj na EntityProperty.
 
-### <a name="using-the-resolver"></a>Przy użyciu rozpoznawania nazw
+### <a name="using-the-resolver"></a>Korzystanie z programu rozpoznawania nazw
 
 ```python
 # Create the KEK used for encryption.
 # KeyWrapper is the provided sample implementation, but the user may use their own object as long as it implements the interface above.
-kek = KeyWrapper('local:key1') # Key identifier
+kek = KeyWrapper('local:key1')  # Key identifier
 
 # Create the key resolver used for decryption.
 # KeyResolver is the provided sample implementation, but the user may use whatever implementation they choose so long as the function set on the service object behaves appropriately.
@@ -209,10 +210,13 @@ key_resolver = KeyResolver()
 key_resolver.put_key(kek)
 
 # Define the encryption resolver_function.
+
+
 def my_encryption_resolver(pk, rk, property_name):
     if property_name == 'foo':
         return True
     return False
+
 
 # Set the KEK and key resolver on the service object.
 my_table_service.key_encryption_key = kek
@@ -224,19 +228,20 @@ my_table_service.insert_entity(table_name, entity)
 
 # Retrieve Entity
 # Note: No need to specify an encryption resolver for retrieve, but it is harmless to leave the property set.
-my_table_service.get_entity(table_name, entity['PartitionKey'], entity['RowKey'])
+my_table_service.get_entity(
+    table_name, entity['PartitionKey'], entity['RowKey'])
 ```
 
-### <a name="using-attributes"></a>Przy użyciu atrybutów
-Jak wspomniano powyżej, może być oznaczony właściwością szyfrowania dzięki przechowywaniu go w obiekcie EntityProperty i ustawienie pola Szyfruj.
+### <a name="using-attributes"></a>Używanie atrybutów
+Jak wspomniano powyżej, właściwość może być oznaczona do szyfrowania przez zapisanie jej w obiekcie EntityProperty i ustawienie pola Szyfruj.
 
 ```python
 encrypted_property_1 = EntityProperty(EdmType.STRING, value, encrypt=True)
 ```
 
-## <a name="encryption-and-performance"></a>Szyfrowanie i wydajności
-Należy pamiętać, że szyfrowanie usługi magazynu danych spowoduje zmniejszenie wydajności. Klucz zawartości i IV musi zostać wygenerowany samej zawartości, które muszą być szyfrowane i musi być sformatowany i przekazać dodatkowe metadane. Ten narzut różnią się zależnie od ilości danych, są szyfrowane. Firma Microsoft zaleca, aby klienci zawsze testują wydajności podczas tworzenia.
+## <a name="encryption-and-performance"></a>Szyfrowanie i wydajność
+Należy pamiętać, że szyfrowanie danych magazynu skutkuje dodatkowym obciążeniem wydajności. Należy wygenerować klucz zawartości i IV, zawartość musi być szyfrowana, a dodatkowe metadane muszą być sformatowane i przekazane. To obciążenie będzie się różnić w zależności od ilości szyfrowanych danych. Zalecamy, aby klienci zawsze testować swoje aplikacje pod kątem wydajności podczas opracowywania.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Pobierz [biblioteki klienta usługi Azure Storage dla języka Java PyPi pakietu](https://pypi.python.org/pypi/azure-storage)
-* Pobierz [biblioteki klienta usługi Azure Storage dla języka Python źródła kodu z repozytorium GitHub](https://github.com/Azure/azure-storage-python)
+* Pobierz [bibliotekę klienta usługi Azure Storage dla pakietu Java PyPi](https://pypi.python.org/pypi/azure-storage)
+* Pobierz [bibliotekę klienta usługi Azure Storage dla kodu źródłowego języka Python z witryny GitHub](https://github.com/Azure/azure-storage-python)

@@ -1,6 +1,6 @@
 ---
 title: Omówienie portalu Moje aplikacje — Azure Active Directory | Microsoft Docs
-description: Ogólne omówienie oraz linki do szczegółowych informacji na temat portalu Moje aplikacje i jej funkcji.
+description: Ogólne omówienie i linki do dodatkowych informacji na temat portalu My Apps i jego funkcji.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,30 +13,30 @@ ms.date: 05/08/2019
 ms.author: lizross
 ms.custom: user-help
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8948040ac338a855c55e2ff44536c900adea7f6
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: a8827119d591ee1e3f12d0e8d8dcfc7ab88ce987
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65470710"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383059"
 ---
 # <a name="what-is-the-my-apps-portal"></a>Co to jest portal Moje aplikacje?
 
-Za pomocą swojego konta firmowego lub szkolnego oparta na sieci web **Moje aplikacje** portalu, aby wyświetlić i uruchomić wiele organizacji aplikacji w chmurze, aby zaktualizować niektóre z Twoich informacji profilu i konta, aby wyświetlić swoje **grup** informacji i wykonywać **przeglądów dostępu** dla aplikacji i grup. Jeśli nie masz dostępu do **Moje aplikacje** portal, należy skontaktować się z pomocą techniczną o uprawnienia.
+Możesz użyć swojego konta służbowego z portalem **Moje aplikacje** oparte na sieci Web, aby wyświetlać i uruchamiać wiele aplikacji opartych na chmurze w organizacji, aktualizować niektóre informacje o profilu i koncie, wyświetlać informacje o **grupach** i wykonywać  **przeglądy dostępu** do aplikacji i grup. Jeśli nie masz dostępu do portalu **Moje aplikacje** , skontaktuj się z pomocą techniczną, aby uzyskać odpowiednie uprawnienia.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->Ta zawartość jest przeznaczona dla użytkowników. Jeśli jesteś administratorem, możesz znaleźć więcej informacji na temat sposobu konfigurowania i zarządzania nimi aplikacji opartych na chmurze w [dokumentacja dotycząca zarządzania aplikacji](https://docs.microsoft.com/azure/active-directory/manage-apps).
+>Ta zawartość jest przeznaczona dla użytkowników. Jeśli jesteś administratorem, możesz znaleźć więcej informacji na temat sposobu konfigurowania i zarządzania aplikacjami opartymi na chmurze w [dokumentacji zarządzania aplikacjami](https://docs.microsoft.com/azure/active-directory/manage-apps).
 
 ## <a name="my-apps-portal-articles"></a>Artykuły portalu Moje aplikacje
 
-Aby uzyskać szczegółowe informacje i instrukcje dotyczące co to jest dostępne z **Moje aplikacje** portalu, zobacz następujące artykuły:
+Aby uzyskać szczegółowe informacje i instrukcje dotyczące tego, co jest dostępne w portalu **Moje aplikacje** , zobacz następujące artykuły:
 
 |Artykuł |Opis |
 |------|------------|
-|[Uzyskiwanie dostępu do portalu Moje aplikacje i korzystanie z niego](my-apps-portal-end-user-access.md)|Instrukcje dotyczące sposobu uzyskania dostępu i użycia **Moje aplikacje** portalu sieci web do wyświetlania i uruchamiania oparte na chmurze aplikacje organizacji, oparty na urządzeniu.|
-|[Aktualizowanie informacji o profilu i koncie](my-apps-portal-end-user-update-profile.md)|Instrukcje dotyczące sposobu zaktualizować swoje informacje osobiste, który pojawia się na **profilu** strony **Moje aplikacje** portalu.|
-|[Zaktualizuj swoje informacje grup](my-apps-portal-end-user-groups.md)|Instrukcje dotyczące sposobu wyświetlania i zarządzania związane z grupami w **grup** strony **Moje aplikacje** portalu.|
-|[Wykonywanie własnych przeglądów dostępu](my-apps-portal-end-user-access-reviews.md)|Instrukcje dotyczące sposobu wyświetlania i wykonywania **przeglądów dostępu** Aby udzielić lub odmówić dostępu użytkownika lub grupy do aplikacji w organizacji na **przeglądów dostępu** strony **Moje aplikacje** Portal.|
-|[Rozwiązywanie problemów z portalu Moje aplikacje](my-apps-portal-end-user-troubleshoot.md)|Przejrzyj sugestie dotyczące rozwiązywania problemów dotyczące problemów z **Moje aplikacje** portalu, aby uzyskać pomoc skontaktuj się z pomocą techniczną.|
+| [Uzyskiwanie dostępu do portalu Moje aplikacje i korzystanie z niego](my-apps-portal-end-user-access.md) | Instrukcje dotyczące uzyskiwania dostępu do portalu sieci Web **Moje aplikacje** i korzystania z nich w celu wyświetlania i uruchamiania aplikacji opartych na chmurze w organizacji, opartych na urządzeniu. |
+| [Aktualizowanie informacji o profilu i koncie](my-apps-portal-end-user-update-profile.md) |Instrukcje dotyczące aktualizowania danych osobowych, które są wyświetlane na stronie **profil** portalu **Moje aplikacje** . |
+| [Aktualizowanie informacji o grupach](my-apps-portal-end-user-groups.md)|Instrukcje dotyczące wyświetlania informacji dotyczących grup i zarządzania nimi na stronie **grupy** portalu **Moje aplikacje** . |
+| [Wykonywanie własnych przeglądów dostępu](my-apps-portal-end-user-access-reviews.md) |Instrukcje dotyczące wyświetlania i przeprowadzania **przeglądów dostępu** w celu zezwalania na dostęp użytkownika lub grupy do aplikacji organizacji na stronie **przeglądy dostępu** w portalu **Moje aplikacje** oraz odmowy dostępu do nich. |
+| [Rozwiązywanie problemów z portalem My Apps](my-apps-portal-end-user-troubleshoot.md) |Przed skontaktowaniem się z pomocą techniczną w celu uzyskania pomocy Przejrzyj kilka sugestii dotyczących rozwiązywania problemów z portalem **Moje aplikacje** . |

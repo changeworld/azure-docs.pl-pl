@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Tworzenie potoku ciągłej integracji/ciągłego wdrażania dla języka Java za pomocą usługi Azure DevOps Projects'
+title: 'Szybki start: Tworzenie potoku ciągłej integracji/ciągłego wdrażania dla środowiska Java — Azure DevOps Projects'
 description: Usługa DevOps Projects ułatwia rozpoczęcie pracy na platformie Azure. Umożliwia uruchomienie aplikacji w wybranej usłudze platformy Azure w kilku prostych krokach.
 ms.prod: devops
 ms.technology: devops-cicd
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: mlearned
-ms.custom: mvc
+ms.custom: mvc, seo-java-july2019
 monikerRange: vsts
-ms.openlocfilehash: 38be92a006ae6dbb7a550d2d91d886df820fb883
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 87090e205f4aa3e6b2886e6384921ddd46ea717d
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60554921"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489513"
 ---
 # <a name="create-a-cicd-pipeline-for-java-with-azure-devops-projects"></a>Tworzenie potoku ciągłej integracji/ciągłego wdrażania dla języka Java za pomocą usługi Azure DevOps Projects
 

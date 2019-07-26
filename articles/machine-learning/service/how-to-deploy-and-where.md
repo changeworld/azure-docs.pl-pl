@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 796118999041b2bef2d51657901e9e399578e97c
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 6b9ebb2f7ef46fd2900d036f178201863ecbc8d4
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68327031"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358824"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Wdrażaj modele za pomocą usługi Azure Machine Learning
 
@@ -140,7 +140,7 @@ Poniższy przykład zwróci ścieżkę do pojedynczego pliku o nazwie `sklearn_m
 
 ```python
 model_path = Model.get_model_path('sklearn_mnist')
-``` 
+```
 
 #### <a name="optional-automatic-swagger-schema-generation"></a>Obowiązkowe Automatyczne generowanie schematu struktury Swagger
 
@@ -190,6 +190,7 @@ from azureml.core.model import Model
 from inference_schema.schema_decorators import input_schema, output_schema
 from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
 
+
 def init():
     global model
     # note here "sklearn_regression_model.pkl" is the name of the model registered under
@@ -198,8 +199,10 @@ def init():
     # deserialize the model file back into a sklearn model
     model = joblib.load(model_path)
 
-input_sample = np.array([[10,9,8,7,6,5,4,3,2,1]])
+
+input_sample = np.array([[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]])
 output_sample = np.array([3726.995])
+
 
 @input_schema('data', NumpyParameterType(input_sample))
 @output_schema(NumpyParameterType(output_sample))
@@ -230,19 +233,27 @@ from inference_schema.schema_decorators import input_schema, output_schema
 from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
 from inference_schema.parameter_types.pandas_parameter_type import PandasParameterType
 
+
 def init():
     global model
-    model_path = Model.get_model_path('model_name')   # replace model_name with your actual model name, if needed
+    # replace model_name with your actual model name, if needed
+    model_path = Model.get_model_path('model_name')
     # deserialize the model file back into a sklearn model
     model = joblib.load(model_path)
 
-input_sample = pd.DataFrame(data=[{
-              "input_name_1": 5.1,         # This is a decimal type sample. Use the data type that reflects this column in your data
-              "input_name_2": "value2",    # This is a string type sample. Use the data type that reflects this column in your data
-              "input_name_3": 3            # This is a integer type sample. Use the data type that reflects this column in your data
-            }])
 
-output_sample = np.array([0])              # This is a integer type sample. Use the data type that reflects the expected result
+input_sample = pd.DataFrame(data=[{
+    # This is a decimal type sample. Use the data type that reflects this column in your data
+    "input_name_1": 5.1,
+    # This is a string type sample. Use the data type that reflects this column in your data
+    "input_name_2": "value2",
+    # This is a integer type sample. Use the data type that reflects this column in your data
+    "input_name_3": 3
+}])
+
+# This is a integer type sample. Use the data type that reflects the expected result
+output_sample = np.array([0])
+
 
 @input_schema('data', PandasParameterType(input_sample))
 @output_schema(NumpyParameterType(output_sample))
@@ -268,7 +279,7 @@ Więcej przykładowych skryptów można znaleźć w następujących przykładach
 Konfiguracja wnioskowania opisuje, jak skonfigurować model do tworzenia prognoz. W poniższym przykładzie pokazano, jak utworzyć konfigurację wnioskowania. Ta konfiguracja określa środowisko uruchomieniowe, skrypt wpisu oraz (opcjonalnie) plik środowiska Conda:
 
 ```python
-inference_config = InferenceConfig(runtime= "python",
+inference_config = InferenceConfig(runtime="python",
                                    entry_script="x/y/score.py",
                                    conda_file="env/myenv.yml")
 ```
@@ -279,32 +290,9 @@ Aby uzyskać informacje na temat używania niestandardowego obrazu platformy Doc
 
 ### <a name="cli-example-of-inferenceconfig"></a>Przykład interfejsu wiersza polecenia InferenceConfig
 
-Następujący dokument JSON to Przykładowa konfiguracja wnioskowania do użycia z interfejsem wiersza polecenia usługi Machine Learning:
+[!INCLUDE [inferenceconfig](../../../includes/machine-learning-service-inference-config.md)]
 
-```JSON
-{
-   "entryScript": "x/y/score.py",
-   "runtime": "python",
-   "condaFile": "env/myenv.yml",
-   "sourceDirectory":"C:/abc",
-}
-```
-
-Następujące jednostki są prawidłowe w tym pliku:
-
-* __entryScript__: Ścieżka do pliku lokalnego, który zawiera kod do uruchomienia dla obrazu.
-* __środowisko uruchomieniowe__: Które środowisko uruchomieniowe ma być używane na potrzeby obrazu. Bieżące obsługiwane środowiska uruchomieniowe to "Spark-pr" i "Python".
-* __condaFile__ (opcjonalnie): Ścieżka do pliku lokalnego zawierającego definicję środowiska Conda do użycia w obrazie.
-* __extraDockerFileSteps__ (opcjonalnie): Ścieżka do pliku lokalnego zawierającego dodatkowe kroki platformy Docker do uruchomienia podczas konfigurowania obrazu.
-* __sourceDirectory__ (opcjonalnie): Ścieżka do folderów zawierających wszystkie pliki do utworzenia obrazu.
-* __enableGpu__ (opcjonalnie): Określa, czy włączyć obsługę procesora GPU w obrazie. Obraz procesora GPU musi być używany w odniesieniu do usług Microsoft Azure, takich jak Azure Container Instances, Azure Machine Learning COMPUTE, Azure Virtual Machines i Azure Kubernetes Service. Wartością domyślną jest false.
-* __baseImage__ (opcjonalnie): Obraz niestandardowy, który będzie używany jako obraz podstawowy. Jeśli obraz podstawowy nie zostanie określony, zostanie użyty obraz podstawowy na podstawie danego parametru środowiska uruchomieniowego.
-* __baseImageRegistry__ (opcjonalnie): Rejestr obrazu zawierający obraz podstawowy.
-* __cudaVersion__ (opcjonalnie): Wersja CUDA do zainstalowania dla obrazów wymagających obsługi procesora GPU. Obraz procesora GPU musi być używany w odniesieniu do usług Microsoft Azure, takich jak Azure Container Instances, Azure Machine Learning COMPUTE, Azure Virtual Machines i Azure Kubernetes Service. Obsługiwane są wersje 9,0, 9,1 i 10,0. Jeśli ustawiono wartość "enable_gpu", wartością domyślną jest "9,1".
-
-Te jednostki mapują do parametrów klasy [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) .
-
-Thee następujące polecenie pokazuje, jak wdrożyć model przy użyciu interfejsu wiersza polecenia:
+Następujące polecenie pokazuje, jak wdrożyć model przy użyciu interfejsu wiersza polecenia:
 
 ```azurecli-interactive
 az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
@@ -312,7 +300,6 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 
 W tym przykładzie konfiguracja zawiera następujące elementy:
 
-* Katalog zawierający zasoby, które są konieczne do wnioskowania
 * Że ten model wymaga języka Python
 * [Skrypt wejścia](#script), który jest używany do obsługi żądań sieci Web wysyłanych do wdrożonej usługi
 * Plik Conda, który opisuje pakiety języka Python, które są konieczne do wnioskowania
@@ -366,21 +353,7 @@ Aby wdrożyć lokalnie, należy **zainstalować platformę Docker** na komputerz
   az ml model deploy -m mymodel:1 -ic inferenceconfig.json -dc deploymentconfig.json
   ```
 
-    Wpisy w `deploymentconfig.json` dokumencie są mapowane na parametry [LocalWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservicedeploymentconfiguration?view=azure-ml-py). W poniższej tabeli opisano mapowanie między jednostkami w dokumencie JSON a parametrami metody:
-
-    | Jednostka JSON | Parametr metody | Opis |
-    | ----- | ----- | ----- |
-    | `computeType` | Nie dotyczy | Docelowy zasób obliczeniowy. W przypadku wartości lokalnych wartość musi być `local`równa. |
-    | `port` | `port` | Port lokalny, na którym ma zostać ujawniony punkt końcowy HTTP usługi. |
-
-    Poniższy kod JSON jest przykładową konfiguracją wdrożenia do użycia z interfejsem wiersza polecenia:
-
-    ```json
-    {
-        "computeType": "local",
-        "port": 32267
-    }
-    ```
+    [!INCLUDE [deploymentconfig](../../../includes/machine-learning-service-local-deploy-config.md)]
 
 ### <a id="aci"></a>Azure Container Instances (DEVTEST)
 
@@ -407,38 +380,7 @@ Aby sprawdzić dostępność limitu przydziału i regionu dla ACI, zobacz artyku
     az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
     ```
 
-    Wpisy w `deploymentconfig.json` dokumencie są mapowane na parametry [AciWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration?view=azure-ml-py). W poniższej tabeli opisano mapowanie między jednostkami w dokumencie JSON a parametrami metody:
-
-    | Jednostka JSON | Parametr metody | Opis |
-    | ----- | ----- | ----- |
-    | `computeType` | Nie dotyczy | Docelowy zasób obliczeniowy. Dla ACI wartość musi być `ACI`. |
-    | `containerResourceRequirements` | Nie dotyczy | Zawiera elementy konfiguracji dla procesora CPU i pamięci przydzieloną dla kontenera. |
-    | &emsp;&emsp;`cpu` | `cpu_cores` | Liczba rdzeni procesora CPU do przydzielenia dla tej usługi sieci Web. Wartości domyślne`0.1` |
-    | &emsp;&emsp;`memoryInGB` | `memory_gb` | Ilość pamięci (w GB) do przydzielenia dla tej usługi sieci Web. Wartooć`0.5` |
-    | `location` | `location` | Region świadczenia usługi Azure, w którym ma zostać wdrożona ta usługa sieci Web. Jeśli nie zostanie określona, zostanie użyta Lokalizacja obszaru roboczego. Więcej informacji na temat dostępnych regionów można znaleźć tutaj: [Regiony ACI](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=container-instances) |
-    | `authEnabled` | `auth_enabled` | Określa, czy włączyć uwierzytelnianie dla tej usługi sieci Web. Wartość domyślna to false |
-    | `sslEnabled` | `ssl_enabled` | Określa, czy włączyć protokół SSL dla tej usługi sieci Web. Wartością domyślną jest false. |
-    | `appInsightsEnabled` | `enable_app_insights` | Określa, czy włączyć AppInsights dla tej usługi sieci Web. Wartość domyślna to false |
-    | `sslCertificate` | `ssl_cert_pem_file` | Plik certyfikatu wymagany w przypadku włączenia protokołu SSL |
-    | `sslKey` | `ssl_key_pem_file` | Plik klucza wymagany w przypadku włączenia protokołu SSL |
-    | `cname` | `ssl_cname` | Rekord CNAME dla jeśli jest włączony protokół SSL |
-    | `dnsNameLabel` | `dns_name_label` | Etykieta nazwy DNS dla punktu końcowego oceniania. Jeśli nie zostanie określona, zostanie wygenerowana unikatowa etykieta nazwy DNS dla punktu końcowego oceniania. |
-
-    Poniższy kod JSON jest przykładową konfiguracją wdrożenia do użycia z interfejsem wiersza polecenia:
-
-    ```json
-    {
-        "computeType": "aci",
-        "containerResourceRequirements":
-        {
-            "cpu": 0.5,
-            "memoryInGB": 1.0
-        },
-        "authEnabled": true,
-        "sslEnabled": false,
-        "appInsightsEnabled": false
-    }
-    ```
+    [!INCLUDE [deploymentconfig](../../../includes/machine-learning-service-aci-deploy-config.md)]
 
 + **Używanie VS Code**
 
@@ -476,65 +418,7 @@ Jeśli masz już dołączony klaster AKS, możesz go wdrożyć. Jeśli nie utwor
   az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
   ```
 
-    Wpisy w `deploymentconfig.json` dokumencie są mapowane na parametry [AksWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py). W poniższej tabeli opisano mapowanie między jednostkami w dokumencie JSON a parametrami metody:
-
-    | Jednostka JSON | Parametr metody | Opis |
-    | ----- | ----- | ----- |
-    | `computeType` | Nie dotyczy | Docelowy zasób obliczeniowy. Dla AKS wartość musi być `aks`. |
-    | `autoScaler` | Nie dotyczy | Zawiera elementy konfiguracji skalowania automatycznego. Zobacz tabelę skalowania automatycznego. |
-    | &emsp;&emsp;`autoscaleEnabled` | `autoscale_enabled` | Określa, czy włączyć automatyczne skalowanie dla usługi sieci Web. `numReplicas` Jeśli = ;wprzeciwnym razie ,`False`. `0` `True` |
-    | &emsp;&emsp;`minReplicas` | `autoscale_min_replicas` | Minimalna liczba kontenerów, które mają być używane podczas automatycznego skalowania tej usługi sieci Web. Wartość domyślna `1`. |
-    | &emsp;&emsp;`maxReplicas` | `autoscale_max_replicas` | Maksymalna liczba kontenerów, które mają być używane podczas automatycznego skalowania tej usługi sieci Web. Wartość domyślna `10`. |
-    | &emsp;&emsp;`refreshPeriodInSeconds` | `autoscale_refresh_seconds` | Jak często automatyczne skalowanie próbuje skalować tę usługę sieci Web. Wartość domyślna `1`. |
-    | &emsp;&emsp;`targetUtilization` | `autoscale_target_utilization` | Użycie docelowe (w procentach z 100), które ma być podejmowane przez Autoskalowanie dla tej usługi sieci Web. Wartość domyślna `70`. |
-    | `dataCollection` | Nie dotyczy | Zawiera elementy konfiguracji do zbierania danych. |
-    | &emsp;&emsp;`storageEnabled` | `collect_model_data` | Określa, czy włączyć zbieranie danych modelu dla usługi sieci Web. Wartość domyślna `False`. |
-    | `authEnabled` | `auth_enabled` | Określa, czy włączyć uwierzytelnianie dla usługi sieci Web. Wartość domyślna `True`. |
-    | `containerResourceRequirements` | Nie dotyczy | Zawiera elementy konfiguracji dla procesora CPU i pamięci przydzieloną dla kontenera. |
-    | &emsp;&emsp;`cpu` | `cpu_cores` | Liczba rdzeni procesora CPU do przydzielenia dla tej usługi sieci Web. Wartości domyślne`0.1` |
-    | &emsp;&emsp;`memoryInGB` | `memory_gb` | Ilość pamięci (w GB) do przydzielenia dla tej usługi sieci Web. Wartooć`0.5` |
-    | `appInsightsEnabled` | `enable_app_insights` | Określa, czy należy włączyć rejestrowanie Application Insights dla usługi sieci Web. Wartość domyślna `False`. |
-    | `scoringTimeoutMs` | `scoring_timeout_ms` | Limit czasu wymuszania dla wywołań oceniania do usługi sieci Web. Wartość domyślna `60000`. |
-    | `maxConcurrentRequestsPerContainer` | `replica_max_concurrent_requests` | Maksymalna liczba współbieżnych żądań na węzeł dla tej usługi sieci Web. Wartość domyślna `1`. |
-    | `maxQueueWaitMs` | `max_request_wait_time` | Maksymalny czas pozostawania żądania w kolejce Thee (w milisekundach) przed zwróceniem błędu 503. Wartość domyślna `500`. |
-    | `numReplicas` | `num_replicas` | Liczba kontenerów do przydzielenia dla tej usługi sieci Web. Brak wartości domyślnej. Jeśli ten parametr nie jest ustawiony, automatyczne skalowanie jest domyślnie włączone. |
-    | `keys` | Nie dotyczy | Zawiera elementy konfiguracji dla kluczy. |
-    | &emsp;&emsp;`primaryKey` | `primary_key` | Podstawowy klucz uwierzytelniania, który ma być używany dla tej usługi sieci Web |
-    | &emsp;&emsp;`secondaryKey` | `secondary_key` | Pomocniczy klucz uwierzytelniania, który będzie używany przez tę usługę sieci Web |
-    | `gpuCores` | `gpu_cores` | Liczba rdzeni procesora GPU do przydzielenia dla tej usługi sieci Web. Wartość domyślna to 1. |
-    | `livenessProbeRequirements` | Nie dotyczy | Zawiera elementy konfiguracji dla wymagań sondowania na żywo. |
-    | &emsp;&emsp;`periodSeconds` | `period_seconds` | Jak często (w sekundach) przeprowadzenia sondy na żywo. Wartość domyślna to 10 sekund. Wartość minimalna to 1. |
-    | &emsp;&emsp;`initialDelaySeconds` | `initial_delay_seconds` | Liczba sekund od momentu rozpoczęcia sondowania na żywo przez kontener. Wartość domyślna to 310 |
-    | &emsp;&emsp;`timeoutSeconds` | `timeout_seconds` | Liczba sekund, po upływie których limit czasu sondy jest aktywny. Wartość domyślna to 2 sekundy. Wartość minimalna to 1 |
-    | &emsp;&emsp;`successThreshold` | `success_threshold` | Minimalna liczba kolejnych sukcesów sondy na żywo, które mają być uznawane za pomyślne po zakończonym niepowodzeniem. Wartość domyślna to 1. Wartość minimalna to 1. |
-    | &emsp;&emsp;`failureThreshold` | `failure_threshold` | Gdy zostanie uruchomiony pod i sonda na żywo, Kubernetes spróbuje failureThreshold razy przed pokazaniem. Wartość domyślna to 3. Wartość minimalna to 1. |
-    | `namespace` | `namespace` | Przestrzeń nazw Kubernetes, w której wdrażana jest usługa WebService. Do 63 małych cyfr alfanumerycznych ("od-a", "0"-"9") i łączników ("-"). Pierwszy i ostatni znak nie mogą być łącznikami. |
-
-    Poniższy kod JSON jest przykładową konfiguracją wdrożenia do użycia z interfejsem wiersza polecenia:
-
-    ```json
-    {
-        "computeType": "aks",
-        "autoScaler":
-        {
-            "autoscaleEnabled": true,
-            "minReplicas": 1,
-            "maxReplicas": 3,
-            "refreshPeriodInSeconds": 1,
-            "targetUtilization": 70
-        },
-        "dataCollection":
-        {
-            "storageEnabled": true
-        },
-        "authEnabled": true,
-        "containerResourceRequirements":
-        {
-            "cpu": 0.5,
-            "memoryInGB": 1.0
-        }
-    }
-    ```
+    [!INCLUDE [deploymentconfig](../../../includes/machine-learning-service-aks-deploy-config.md)]
 
 + **Używanie VS Code**
 
@@ -566,12 +450,12 @@ prov_config = AksCompute.provisioning_configuration()
 
 aks_name = 'myaks'
 # Create the cluster
-aks_target = ComputeTarget.create(workspace = ws,
-                                    name = aks_name,
-                                    provisioning_configuration = prov_config)
+aks_target = ComputeTarget.create(workspace=ws,
+                                  name=aks_name,
+                                  provisioning_configuration=prov_config)
 
 # Wait for the create process to complete
-aks_target.wait_for_completion(show_output = True)
+aks_target.wait_for_completion(show_output=True)
 ```
 
 Aby uzyskać więcej informacji na temat tworzenia klastra AKS poza zestawem SDK Azure Machine Learning, zobacz następujące artykuły:
@@ -609,8 +493,8 @@ cluster_name = 'mycluster'
 # attach_config = AksCompute.attach_configuration(resource_group = resource_group,
 #                                         cluster_name = cluster_name,
 #                                         cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST)
-attach_config = AksCompute.attach_configuration(resource_group = resource_group,
-                                         cluster_name = cluster_name)
+attach_config = AksCompute.attach_configuration(resource_group=resource_group,
+                                                cluster_name=cluster_name)
 aks_target = ComputeTarget.attach(ws, 'mycompute', attach_config)
 ```
 
@@ -629,19 +513,20 @@ Oto przykład sposobu wywoływania usługi w języku Python:
 import requests
 import json
 
-headers = {'Content-Type':'application/json'}
+headers = {'Content-Type': 'application/json'}
 
 if service.auth_enabled:
     headers['Authorization'] = 'Bearer '+service.get_keys()[0]
 
 print(headers)
-    
+
 test_sample = json.dumps({'data': [
-    [1,2,3,4,5,6,7,8,9,10], 
-    [10,9,8,7,6,5,4,3,2,1]
+    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
 ]})
 
-response = requests.post(service.scoring_uri, data=test_sample, headers=headers)
+response = requests.post(
+    service.scoring_uri, data=test_sample, headers=headers)
 print(response.status_code)
 print(response.elapsed)
 print(response.json())
@@ -668,18 +553,18 @@ from azureml.core.webservice import Webservice
 from azureml.core.model import Model
 
 # register new model
-new_model = Model.register(model_path = "outputs/sklearn_mnist_model.pkl",
-                       model_name = "sklearn_mnist",
-                       tags = {"key": "0.1"},
-                       description = "test",
-                       workspace = ws)
+new_model = Model.register(model_path="outputs/sklearn_mnist_model.pkl",
+                           model_name="sklearn_mnist",
+                           tags={"key": "0.1"},
+                           description="test",
+                           workspace=ws)
 
 service_name = 'myservice'
 # Retrieve existing service
-service = Webservice(name = service_name, workspace = ws)
+service = Webservice(name=service_name, workspace=ws)
 
 # Update to new model(s)
-service.update(models = [new_model])
+service.update(models=[new_model])
 print(service.state)
 print(service.get_logs())
 ```
@@ -718,7 +603,7 @@ Aby usunąć zarejestrowanego modelu, użyj `model.delete()`.
 
 Aby uzyskać więcej informacji, zobacz dokumentację referencyjną usługi [WebService. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--)i [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Jak wdrożyć model przy użyciu niestandardowego obrazu platformy Docker](how-to-deploy-custom-docker-image.md)
 * [Rozwiązywanie problemów z wdrażaniem](how-to-troubleshoot-deployment.md)
 * [Zabezpieczania usług sieci web Azure Machine Learning przy użyciu protokołu SSL](how-to-secure-web-service.md)

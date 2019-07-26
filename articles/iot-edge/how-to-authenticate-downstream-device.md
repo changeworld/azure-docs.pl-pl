@@ -1,6 +1,6 @@
 ---
-title: Uwierzytelnianie urządzeń podrzędne — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
-description: Jak uwierzytelnić podrzędnego urządzeń lub urządzeń typu liść do usługi IoT Hub i kierowanie ich połączenie za pośrednictwem urządzenia bramy usługi Azure IoT Edge.
+title: Uwierzytelnianie urządzeń podrzędnych — Azure IoT Edge | Microsoft Docs
+description: Jak uwierzytelniać urządzenia podrzędne lub urządzenia typu liść w celu IoT Hub i kierować ich połączenia za poorednictwem urządzeń bram Azure IoT Edge Gateway.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,97 +9,97 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 5785b0260474bd0eb861236a0bd78066475baacd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4d6c7665d281ff7c27fd8b61537804b6803b3b43
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67082393"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360171"
 ---
-# <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Uwierzytelnienia podrzędnym urządzenia do usługi Azure IoT Hub
+# <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Uwierzytelnianie urządzenia podrzędnego w usłudze Azure IoT Hub
 
-W scenariuszu przezroczystej bramy podrzędnym urządzenia (czasami nazywany urządzenia liścia lub podrzędnej) muszą tożsamości w usłudze IoT Hub, podobnie jak inne urządzenia. W tym artykule przedstawiono opcje dla uwierzytelniania podrzędnym urządzenia do usługi IoT Hub, a następnie pokazuje sposób deklarowania połączenia bramy.
+W przypadku niejawnego scenariusza bramy urządzenia podrzędne (nazywane czasami urządzeniami typu liść lub urządzeniami podrzędnymi) potrzebują tożsamości w IoT Hub jak każde inne urządzenie. W tym artykule opisano opcje uwierzytelniania urządzenia podrzędnego w IoT Hub, a następnie pokazano, jak zadeklarować połączenie bramy.
 
-Istnieją trzy ogólne kroki, aby skonfigurować połączenie pomyślne przezroczystej bramy. W tym artykule opisano drugi krok:
+Należy wykonać trzy ogólne kroki, aby skonfigurować pomyślne, przezroczyste połączenie bramy. W tym artykule omówiono drugi krok:
 
-1. Urządzenie bramy musi być w stanie bezpieczne łączenie się z urządzeniami podrzędnego otrzymywać informacje z urządzeń podrzędne i kierowanie komunikatów w postaci do odpowiedniego miejsca docelowego. Aby uzyskać więcej informacji, zobacz [Konfigurowanie urządzenia usługi IoT Edge, aby pełnić rolę przezroczystej bramy](how-to-create-transparent-gateway.md).
-2. **Podrzędne urządzenie musi mieć tożsamości urządzenia, aby można było uwierzytelnianie za pomocą usługi IoT Hub i wiedzieć, aby komunikować się za pośrednictwem urządzenia bramy.**
-3. Podrzędne urządzenie musi mieć możliwość nawiązania bezpiecznego połączenia urządzenia bramy. Aby uzyskać więcej informacji, zobacz [połączyć podrzędny urządzenie bramy usługi Azure IoT Edge](how-to-connect-downstream-device.md).
+1. Urządzenie bramy musi być w stanie bezpiecznie łączyć się z urządzeniami podrzędnymi, odbierać komunikaty z urządzeń podrzędnych i kierować komunikaty do odpowiednich miejsc docelowych. Aby uzyskać więcej informacji, zobacz [Konfigurowanie urządzenia IoT Edge do działania jako nieprzezroczyste bramy](how-to-create-transparent-gateway.md).
+2. **Urządzenie podrzędne musi mieć tożsamość urządzenia, aby można było uwierzytelnić się przy użyciu IoT Hub i wiedzieć o komunikacji za pomocą swojego urządzenia bramy.**
+3. Urządzenie podrzędne musi mieć możliwość bezpiecznego łączenia się z urządzeniem bramy. Aby uzyskać więcej informacji, zobacz [połączyć podrzędny urządzenie bramy usługi Azure IoT Edge](how-to-connect-downstream-device.md).
 
-Podrzędne urządzeń mogą uwierzytelniać za pomocą usługi IoT Hub przy użyciu jednej z trzech metod: klucze symetryczne (czasami określane jako klucze dostępu współdzielonego), certyfikaty X.509 z podpisem własnym lub certyfikatu X.509 urzędu certyfikacji podpisanego certyfikaty. Kroki uwierzytelniania są podobne do kroków można skonfigurować wszystkie urządzenia bez IoT-Edge z usługą IoT Hub przy użyciu niewielkie różnice, aby zadeklarować relacji bramy.
+Urządzenia podrzędne mogą uwierzytelniać się za pomocą IoT Hub przy użyciu jednej z trzech metod: klucze symetryczne (czasami określane jako klucze dostępu współdzielonego), certyfikaty z podpisem własnym X. 509 lub certyfikaty z certyfikatem X. 509 (CA). Kroki uwierzytelniania są podobne do kroków użytych w celu skonfigurowania dowolnego urządzenia niezwiązanego z usługą IoT-Edge z IoT Hub z małymi różnicami w celu zadeklarować relacji bramy.
 
-Kroki opisane w tym artykule Pokaż urządzenia ręcznego inicjowania obsługi administracyjnej, nie automatycznego inicjowania obsługi administracyjnej za pomocą usługi Azure IoT Hub Device Provisioning Service. 
+W krokach przedstawionych w tym artykule przedstawiono Ręczne inicjowanie obsługi urządzeń, a nie automatyczne Inicjowanie obsługi przy użyciu IoT Hub Device Provisioning Service platformy Azure. 
 
-## <a name="symmetric-key-authentication"></a>Uwierzytelnianie za pomocą klucza symetrycznego
+## <a name="symmetric-key-authentication"></a>Uwierzytelnianie klucza symetrycznego
 
-Uwierzytelnianie za pomocą klucza symetrycznego lub uwierzytelniania klucza dostępu współdzielonego, jest najprostszym sposobem uwierzytelniania za pomocą usługi IoT Hub. Przy użyciu uwierzytelniania klucza symetrycznego powiązanego z Identyfikatorem urządzenia IoT w usłudze IoT Hub jest kluczem base64. Dodasz tego klucza w aplikacji IoT, aby urządzenie przedstawić go podczas łączenia z usługą IoT Hub. 
+Uwierzytelnianie przy użyciu klucza symetrycznego lub uwierzytelnianie klucza dostępu współdzielonego jest najprostszym sposobem na uwierzytelnianie za pomocą IoT Hub. W przypadku uwierzytelniania przy użyciu klucza symetrycznego klucz Base64 jest skojarzony z IDENTYFIKATORem urządzenia IoT w IoT Hub. Ten klucz jest dołączany do aplikacji IoT, aby urządzenie mógł je przedstawić podczas łączenia się z IoT Hub. 
 
 ### <a name="create-the-device-identity"></a>Tworzenie tożsamości urządzenia 
 
-Dodaj nowe urządzenie IoT w usłudze IoT hub przy użyciu witryny Azure portal, interfejsu wiersza polecenia platformy Azure lub rozszerzenia IoT dla programu Visual Studio Code. Należy pamiętać, że podrzędne urządzenia muszą zostać zidentyfikowany w usłudze IoT Hub jako regularne urządzenia IoT, nie dotyczy urządzeń usługi IoT Edge. 
+Dodaj nowe urządzenie IoT w centrum IoT Hub przy użyciu Azure Portal, interfejsu wiersza polecenia platformy Azure lub rozszerzenia IoT dla Visual Studio Code. Należy pamiętać, że urządzenia podrzędne muszą być identyfikowane w IoT Hub jako zwykłe urządzenie IoT, a nie IoT Edge urządzeń. 
 
-Kiedy tworzysz nową tożsamość urządzenia, należy podać następujące informacje: 
+Podczas tworzenia nowej tożsamości urządzenia podaj następujące informacje: 
 
 * Utwórz identyfikator urządzenia.
 
 * Wybierz **klucz symetryczny** jako typ uwierzytelniania. 
 
-* Opcjonalnie można wybrać **Ustaw urządzenia nadrzędnego** i wybierz urządzenie bramy usługi IoT Edge, które to podrzędne urządzenie połączy się za pośrednictwem. Ten krok jest opcjonalny w przypadku uwierzytelniania za pomocą klucza symetrycznego, ale jest zalecane, ponieważ ustawienie umożliwia urządzeniu nadrzędnego [możliwości w trybie offline](offline-capabilities.md) podrzędnym urządzenia. Zawsze możesz zaktualizować szczegóły dotyczące danego urządzenia, aby dodać lub zmienić element nadrzędny później. 
+* Opcjonalnie wybierz **ustawienie urządzenie nadrzędne** i wybierz urządzenie bramy IoT Edge, za pomocą którego będzie nawiązywane połączenie. Ten krok jest opcjonalny w przypadku uwierzytelniania przy użyciu klucza symetrycznego, ale jest zalecane, ponieważ ustawienie urządzenia nadrzędnego umożliwia korzystanie z [funkcji offline](offline-capabilities.md) dla urządzenia podrzędnego. Możesz zawsze aktualizować szczegóły urządzenia, aby później dodać lub zmienić element nadrzędny. 
 
-   ![Utwórz identyfikator urządzenia za pomocą symetrycznego klucza uwierzytelniania w portalu](./media/how-to-authenticate-downstream-device/symmetric-key-portal.png)
+   ![Tworzenie identyfikatora urządzenia z uwierzytelnianiem przy użyciu klucza symetrycznego w portalu](./media/how-to-authenticate-downstream-device/symmetric-key-portal.png)
 
-Możesz użyć [rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure](https://github.com/Azure/azure-iot-cli-extension) można ukończyć tej samej operacji. Poniższy przykład tworzy nowe urządzenie IoT przy użyciu uwierzytelniania za pomocą klucza symetrycznego i przypisuje urządzenia nadrzędnego: 
+Aby ukończyć tę samą operację, można użyć [rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure](https://github.com/Azure/azure-iot-cli-extension) . Poniższy przykład tworzy nowe urządzenie IoT z uwierzytelnianiem przy użyciu klucza symetrycznego i przypisuje urządzenie nadrzędne: 
 
 ```cli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID}
 ```
 
-Aby uzyskać więcej informacji na temat polecenia wiersza polecenia platformy Azure dla tworzenia urządzenia i zarządzanie elementami nadrzędnymi i podrzędnymi, zobacz zawartość informacyjna dotycząca [az iot hub — tożsamość urządzenia](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) poleceń.
+Aby uzyskać więcej informacji na temat poleceń interfejsu wiersza polecenia platformy Azure służących do tworzenia i zarządzania urządzeniami nadrzędnymi/podrzędnymi, zobacz zawartość referencyjną polecenia [AZ IoT Hub Device-Identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) .
 
-### <a name="connect-to-iot-hub-through-a-gateway"></a>Połącz się z IoT Hub przy użyciu bramy
+### <a name="connect-to-iot-hub-through-a-gateway"></a>Nawiązywanie połączenia z IoT Hub za pomocą bramy
 
-Ten sam proces jest używany do uwierzytelniania regularne IoT urządzeń w usłudze IoT Hub przy użyciu kluczy symetrycznych dotyczą również urządzeń podrzędnego. Jedyna różnica polega na tym, że musisz dodać wskaźnik do urządzenia bramy, aby skierować połączenie lub w przypadku scenariuszy w trybie offline, aby obsługiwać uwierzytelnianie w imieniu usługi IoT Hub. 
+Ten sam proces służy do uwierzytelniania zwykłych urządzeń IoT w celu IoT Hub z użyciem kluczy symetrycznych również ma zastosowanie do urządzeń podrzędnych. Jedyną różnicą jest to, że należy dodać wskaźnik do urządzenia bramy, aby skierować połączenie, lub w scenariuszach w trybie offline, aby obsłużyć uwierzytelnianie w imieniu IoT Hub. 
 
-Uwierzytelnianie klucza symetrycznego jest żadne dodatkowe kroki, które należy wykonać na urządzeniu, aby mogła uwierzytelnić za pomocą usługi IoT Hub. Nadal potrzebujesz certyfikaty w miejscu, aby Twoje podrzędne urządzenie może połączyć się jego urządzenie bramy zgodnie z opisem w [połączyć podrzędny urządzenie bramy usługi Azure IoT Edge](how-to-connect-downstream-device.md).
+W przypadku uwierzytelniania przy użyciu klucza symetrycznego nie ma dodatkowych kroków, które należy wykonać na urządzeniu, aby można było uwierzytelnić się w usłudze IoT Hub. Nadal są wymagane certyfikaty, aby urządzenie podrzędne mogły połączyć się ze swoim urządzeniem bramy, zgodnie z opisem w temacie [łączenie urządzenia podrzędnego z bramą Azure IoT Edge](how-to-connect-downstream-device.md).
 
-Po utworzeniu tożsamości urządzeń IoT w portalu, możesz pobrać swoje klucze podstawowy lub pomocniczy. Jeden z tych kluczy musi być uwzględniony w parametrach połączenia, które obejmują w dowolnej aplikacji, która komunikuje się z usługą IoT Hub. W przypadku uwierzytelniania klucza symetrycznego IoT Hub udostępnia parametry połączenia w pełni ukształtowane w szczegółowych informacji o urządzeniu dla Twojej wygody. Musisz dodać dodatkowe informacje o urządzeniu bramy do parametrów połączenia. 
+Po utworzeniu tożsamości urządzenia IoT w portalu można pobrać jej klucze podstawowe lub pomocnicze. Jeden z tych kluczy musi być uwzględniony w parametrach połączenia, które znajdują się w dowolnej aplikacji, która komunikuje się z IoT Hub. W przypadku uwierzytelniania przy użyciu klucza symetrycznego IoT Hub zapewnia w pełni uformowane parametry połączenia w szczegółach urządzenia dla wygody użytkownika. Należy dodać dodatkowe informacje o urządzeniu bramy do parametrów połączenia. 
 
-Następujące składniki są wymagane parametry połączenia klucza symetrycznego dla podrzędnego urządzeń: 
+Parametry połączenia klucza symetrycznego dla urządzeń podrzędnych muszą mieć następujące składniki: 
 
-* Usługa IoT hub, która łączy się z urządzeniem: `Hostname={iothub name}.azure-devices.net`
-* Zarejestrowane w Centrum identyfikator urządzenia: `DeviceID={device ID}`
-* Podstawowy lub pomocniczy klucza: `SharedAccessKey={key}`
-* Urządzenie bramy, które urządzenie nawiązuje połączenie za pośrednictwem. Podaj **hostname** wartości z pliku config.yaml urządzenia bramy usługi IoT Edge: `GatewayHostName={gateway hostname}`
+* Centrum IoT, z którym łączy się urządzenie:`Hostname={iothub name}.azure-devices.net`
+* Identyfikator urządzenia zarejestrowany w centrum:`DeviceID={device ID}`
+* Klucz podstawowy lub pomocniczy:`SharedAccessKey={key}`
+* Urządzenie bramy, za pomocą którego urządzenie nawiązuje połączenie. Podaj wartość **hostname** IoT Edge z pliku config. YAML urządzenia bramy:`GatewayHostName={gateway hostname}`
 
-Wszystko ze sobą pełne parametry połączenia wyglądają następująco:
+Wszystkie razem, kompletne parametry połączenia wyglądają następująco:
 
 ``` 
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz;GatewayHostName=myGatewayDevice
 ```
 
-Jeśli można ustanowić relacji nadrzędny/podrzędny, dla tego urządzenia podrzędnego, można uprościć parametry połączenia, wywołując bramy bezpośrednio jako host połączenia. Na przykład: 
+Jeśli została ustanowiona relacja nadrzędny/podrzędny dla tego urządzenia podrzędnego, można uprościć parametry połączenia przez wywołanie bramy bezpośrednio jako hosta połączenia. Przykład: 
 
 ```
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz
 ```
 
-## <a name="x509-authentication"></a>Uwierzytelniania X.509 
+## <a name="x509-authentication"></a>Uwierzytelnianie X. 509 
 
-Istnieją dwa sposoby uwierzytelniania urządzeń IoT za pomocą certyfikatów X.509. Niezależnie od tego wybierzesz uwierzytelnianie, instrukcje Podłącz urządzenie do Centrum IoT Hub są takie same. Wybierz z podpisem własnym albo podpisanych przez urząd certyfikacji certyfikatów do uwierzytelniania, a następnie Dowiedz się, jak połączyć się z Centrum IoT Hub w dalszym ciągu. 
+Istnieją dwa sposoby uwierzytelniania urządzenia IoT przy użyciu certyfikatów X. 509. W zależności od sposobu uwierzytelniania należy wykonać kroki, aby połączyć urządzenie z IoT Hub są takie same. Wybierz certyfikaty z podpisem własnym lub certyfikat podpisany przez urząd certyfikacji na potrzeby uwierzytelniania, a następnie przejdź do programu, aby dowiedzieć się, jak nawiązać połączenie z usługą IoT Hub. 
 
-Aby uzyskać więcej informacji o używaniu uwierzytelniania X.509 w Centrum IoT Hub zobacz następujące artykuły: 
-* [Uwierzytelnianie urządzeń przy użyciu certyfikatów X.509 urzędu certyfikacji](../iot-hub/iot-hub-x509ca-overview.md)
-* [Pojęć związanych z certyfikatów X.509 urzędu certyfikacji w branży IoT](../iot-hub/iot-hub-x509ca-concept.md)
+Aby uzyskać więcej informacji na temat sposobu używania uwierzytelniania X. 509 przez IoT Hub, zobacz następujące artykuły: 
+* [Uwierzytelnianie urządzenia za pomocą certyfikatów X. 509 urzędu certyfikacji](../iot-hub/iot-hub-x509ca-overview.md)
+* [Omówienie pojęć związanych z certyfikatami urzędu certyfikacji X. 509 w branży IoT](../iot-hub/iot-hub-x509ca-concept.md)
 
-### <a name="create-the-device-identity-with-x509-self-signed-certificates"></a>Tworzenie tożsamości urządzenia za pomocą certyfikatów X.509 z podpisem własnym
+### <a name="create-the-device-identity-with-x509-self-signed-certificates"></a>Tworzenie tożsamości urządzenia przy użyciu certyfikatów z podpisem własnym X. 509
 
-Do uwierzytelniania podpisem własnym X.509, czasami nazywane uwierzytelnianie odciskiem palca musisz utworzyć nowe certyfikaty do umieszczenia na urządzeniu IoT. Te certyfikaty muszą odcisku palca w nich udostępnianymi przez usługę IoT Hub do uwierzytelniania. 
+W przypadku uwierzytelniania z podpisem własnym X. 509, czasami określanego jako Uwierzytelnianie odciskiem palca, należy utworzyć nowe certyfikaty do umieszczenia na urządzeniu IoT. Te certyfikaty mają odcisk palca, które udostępniają IoT Hub na potrzeby uwierzytelniania. 
 
-Najprostszym sposobem przetestowania tego scenariusza jest użycie na tym samym komputerze, który został użyty do utworzenia certyfikatów w [Konfigurowanie urządzenia usługi IoT Edge, aby pełnić rolę przezroczystej bramy](how-to-create-transparent-gateway.md). Maszyny powinny już być skonfigurowana za pomocą właściwych narzędzi, certyfikat głównego urzędu certyfikacji i certyfikat pośredniego urzędu certyfikacji do tworzenia certyfikatów urządzeń IoT. Można skopiować końcowej certyfikatów i kluczy prywatnych za pośrednictwem urządzenie podrzędne później. Czynności opisane w artykule na temat bramy możesz skonfigurować openssl na maszynie, a następnie sklonować repozytorium usługi IoT Edge, aby skryptów tworzenia certyfikatu dostępu. Następnie dokonywane katalog roboczy, który nazywamy  **\<WRKDIR >** do przechowywania certyfikatów. Certyfikaty domyślne są przeznaczone do celów tworzenia i testowania, więc tylko ostatnich 30 dni. Należy utworzyć certyfikat głównego urzędu certyfikacji i pośredniego certyfikatu. 
+Najprostszym sposobem na przetestowanie tego scenariusza jest użycie tego samego komputera, który został użyty do utworzenia certyfikatów w programie [Skonfiguruj urządzenie IoT Edge jako](how-to-create-transparent-gateway.md)niejawną bramę. Ten komputer powinien być już skonfigurowany przy użyciu odpowiedniego narzędzia, certyfikatu głównego urzędu certyfikacji i certyfikatu pośredniego urzędu certyfikacji w celu utworzenia certyfikatów urządzeń IoT. Możesz później skopiować certyfikaty końcowe i ich klucze prywatne do urządzenia podrzędnego. Postępując zgodnie z instrukcjami w artykule dotyczącym bramy, skonfigurujesz OpenSSL na maszynie, a następnie Sklonowano repozytorium IoT Edge, aby uzyskać dostęp do skryptów tworzenia certyfikatów. Następnie został utworzony katalog roboczy, który wywoła  **\<WRKDIR >** do przechowywania certyfikatów. Domyślne certyfikaty są przeznaczone do programowania i testowania, więc tylko ostatnie 30 dni. Należy utworzyć certyfikat głównego urzędu certyfikacji i certyfikat pośredni. 
 
-1. Przejdź do katalogu roboczego w powłoki bash lub w oknie programu PowerShell. 
+1. Przejdź do katalogu roboczego w oknie bash lub PowerShell. 
 
-2. Utwórz dwa certyfikaty (podstawowe i pomocnicze) dla podrzędnego urządzenia. Podaj nazwę urządzenia, a następnie etykiety podstawowy lub pomocniczy. Te informacje są używane nazwy plików, aby śledzić certyfikaty dla wielu urządzeń. 
+2. Utwórz dwa certyfikaty (podstawowe i pomocnicze) dla urządzenia podrzędnego. Podaj nazwę urządzenia, a następnie główną lub pomocniczą etykietę. Te informacje służą do nazwy plików, dzięki czemu można śledzić certyfikaty dla wielu urządzeń. 
 
    ```PowerShell
    New-CACertsDevice "<device name>-primary"
@@ -111,21 +111,21 @@ Najprostszym sposobem przetestowania tego scenariusza jest użycie na tym samym 
    ./certGen.sh create_device_certificate "<device name>-secondary"
    ```
 
-3. Pobierz odcisk palca SHA1 (nazywane odcisku palca w interfejsie usługi IoT Hub) z każdego certyfikatu, który jest ciągiem 40 znaków szesnastkowych. Użyj następującego polecenia biblioteki openssl, aby wyświetlić certyfikat i znaleźć odcisk palca:
+3. Pobierz odcisk palca SHA1 (nazywany odciskiem palca w interfejsie IoT Hub) z każdego certyfikatu, który jest 40m ciągiem znaków w formacie szesnastkowym. Użyj następującego polecenia OpenSSL, aby wyświetlić certyfikat i znaleźć odcisk palca:
 
    ```PowerShell/bash
    openssl x509 -in <WORKDIR>/certs/iot-device-<device name>-primary.cert.pem -text -fingerprint | sed 's/[:]//g'
    ```
 
-4. Przejdź do Centrum IoT hub w witrynie Azure portal i Utwórz nową tożsamość urządzenia IoT z następującymi wartościami: 
+4. Przejdź do centrum IoT Hub w Azure Portal i Utwórz nową tożsamość urządzenia IoT o następujących wartościach: 
 
-   * Wybierz **X.509 z podpisem własnym** jako typ uwierzytelniania.
-   * Wklej ciągów szesnastkowych, które został skopiowany z głównego i dodatkowego certyfikatu na urządzeniu.
-   * Wybierz **Ustaw urządzenia nadrzędnego** i wybierz urządzenie bramy, które to podrzędne urządzenie połączy się za pośrednictwem usługi IoT Edge. Urządzenie nadrzędne jest wymagany do uwierzytelniania X.509 podrzędnym urządzenia. 
+   * Wybierz pozycję **X. 509 z podpisem własnym** jako typ uwierzytelniania.
+   * Wklej ciągi szesnastkowe skopiowane z podstawowych i pomocniczych certyfikatów urządzenia.
+   * Wybierz pozycję **Ustaw urządzenie nadrzędne** i wybierz urządzenie bramy IoT Edge, za pomocą którego będzie nawiązywane połączenie. Urządzenie nadrzędne jest wymagane do uwierzytelniania X. 509 urządzenia podrzędnego. 
 
-   ![Utwórz identyfikator urządzenia za pomocą uwierzytelniania podpisem własnym X.509 w portalu](./media/how-to-authenticate-downstream-device/x509-self-signed-portal.png)
+   ![Tworzenie identyfikatora urządzenia z uwierzytelnianiem z podpisem własnym X. 509 w portalu](./media/how-to-authenticate-downstream-device/x509-self-signed-portal.png)
 
-5. Skopiuj następujące pliki do dowolnego katalogu na urządzeniu z systemem podrzędne:
+5. Skopiuj następujące pliki do dowolnego katalogu na urządzeniu podrzędnym:
 
    * `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
    * `<WRKDIR>\certs\iot-device-<device name>*.cert.pem`
@@ -133,28 +133,28 @@ Najprostszym sposobem przetestowania tego scenariusza jest użycie na tym samym 
    * `<WRKDIR>\certs\iot-device-<device name>*-full-chain.cert.pem`
    * `<WRKDIR>\private\iot-device-<device name>*.key.pem`
 
-   Będziesz odwoływać się do tych plików w aplikacjach urządzenia liścia, łączących się z Centrum IoT Hub. Można użyć usługi takiej jak [usługi Azure Key Vault](https://docs.microsoft.com/azure/key-vault) lub funkcji, takich jak [protoco bezpiecznego kopiowania](https://www.ssh.com/ssh/scp/) umożliwiającego przeniesienie plików certyfikatów.
+   Te pliki będą odwoływać się do tych plików w aplikacjach urządzeń typu liść, które łączą się z IoT Hub. Aby przenieść pliki certyfikatów, można użyć usługi, takiej jak [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) , lub funkcji, takiej jak [Secure Copy protoco](https://www.ssh.com/ssh/scp/) .
 
-Możesz użyć [rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure](https://github.com/Azure/azure-iot-cli-extension) można ukończyć operacji tworzenia tego samego urządzenia. Poniższy przykład tworzy nowego urządzenia IoT z podpisem własnym uwierzytelnianiem X.509 i przypisuje urządzenia nadrzędnego: 
+Możesz użyć [rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure](https://github.com/Azure/azure-iot-cli-extension) , aby ukończyć tę samą operację tworzenia urządzenia. Poniższy przykład tworzy nowe urządzenie IoT z uwierzytelnianiem z podpisem własnym X. 509 i przypisuje urządzenie nadrzędne: 
 
 ```cli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_thumbprint --ptp {primary thumbprint} --stp {secondary thumbprint}
 ```
 
-Aby uzyskać więcej informacji na temat polecenia wiersza polecenia platformy Azure dla tworzenia urządzenia, generowania certyfikatów i zarządzanie nadrzędnymi i podrzędnymi, zobacz zawartość informacyjna dotycząca [az iot hub — tożsamość urządzenia](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) poleceń.
+Aby uzyskać więcej informacji na temat poleceń interfejsu wiersza polecenia platformy Azure na potrzeby tworzenia urządzeń, generowania certyfikatów i zarządzania nadrzędnego i podrzędnego, zobacz zawartość referencyjną polecenia [AZ IoT Hub Device-Identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) .
 
-### <a name="create-the-device-identity-with-x509-ca-signed-certificates"></a>Utwórz urządzenie tożsamość za pomocą X.509 urzędu certyfikacji podpisanego certyfikaty
+### <a name="create-the-device-identity-with-x509-ca-signed-certificates"></a>Tworzenie tożsamości urządzenia przy użyciu certyfikatów X. 509 urzędu certyfikacji
 
-Certyfikat X.509 urzędu certyfikacji uwierzytelniania podpisem konieczne jest certyfikat głównego urzędu certyfikacji, rejestrowany w Centrum IoT, używanego do podpisywania certyfikatów dla urządzenia IoT. Dowolne urządzenie, używa certyfikatu, który był problemy według certyfikat głównego urzędu certyfikacji lub dowolnego z jego certyfikaty pośrednie będzie możliwe do uwierzytelniania. 
+W przypadku uwierzytelniania podpisanego za pomocą certyfikatu X. 509 urząd certyfikacji wymagany jest certyfikat głównego urzędu certyfikacji zarejestrowany w IoT Hub używany do podpisywania certyfikatów dla urządzenia IoT. Uwierzytelnianie będzie możliwe przy użyciu dowolnego urządzenia korzystającego z certyfikatu z certyfikatem głównego urzędu certyfikacji lub dowolnego z jego certyfikatów pośrednich. 
 
-W tej sekcji jest zgodnie z instrukcjami podanymi w artykule usługi IoT Hub [konfigurowania zabezpieczeń X.509 w usłudze Azure IoT hub](../iot-hub/iot-hub-security-x509-get-started.md). Wykonaj kroki opisane w tej sekcji, aby dowiedzieć się wartości, które będą służy do ustawiania podrzędnym urządzenia, które nawiązuje połączenie za pośrednictwem bramy. 
+Ta sekcja jest oparta na instrukcji przedstawionych w IoT Hub artykule [Konfigurowanie zabezpieczeń X. 509 w usłudze Azure IoT Hub](../iot-hub/iot-hub-security-x509-get-started.md). Postępuj zgodnie z instrukcjami w tej sekcji, aby dowiedzieć się, które wartości należy użyć do skonfigurowania urządzenia podrzędnego, które nawiązuje połączenie za pomocą bramy. 
 
-Najprostszym sposobem przetestowania tego scenariusza jest użycie na tym samym komputerze, który został użyty do utworzenia certyfikatów w [Konfigurowanie urządzenia usługi IoT Edge, aby pełnić rolę przezroczystej bramy](how-to-create-transparent-gateway.md). Maszyny powinny już być skonfigurowana za pomocą właściwych narzędzi, certyfikat głównego urzędu certyfikacji i certyfikat pośredniego urzędu certyfikacji do tworzenia certyfikatów urządzeń IoT. Można skopiować końcowej certyfikatów i kluczy prywatnych za pośrednictwem urządzenie podrzędne później. Czynności opisane w artykule na temat bramy możesz skonfigurować openssl na maszynie, a następnie sklonować repozytorium usługi IoT Edge, aby skryptów tworzenia certyfikatu dostępu. Następnie dokonywane katalog roboczy, który nazywamy  **\<WRKDIR >** do przechowywania certyfikatów. Certyfikaty domyślne są przeznaczone do celów tworzenia i testowania, więc tylko ostatnich 30 dni. Należy utworzyć certyfikat głównego urzędu certyfikacji i pośredniego certyfikatu. 
+Najprostszym sposobem na przetestowanie tego scenariusza jest użycie tego samego komputera, który został użyty do utworzenia certyfikatów w programie [Konfigurowanie urządzenia IoT Edge jako niejawnej bramy](how-to-create-transparent-gateway.md). Ten komputer powinien być już skonfigurowany przy użyciu odpowiedniego narzędzia, certyfikatu głównego urzędu certyfikacji i certyfikatu pośredniego urzędu certyfikacji w celu utworzenia certyfikatów urządzeń IoT. Możesz później skopiować certyfikaty końcowe i ich klucze prywatne do urządzenia podrzędnego. Postępując zgodnie z instrukcjami w artykule dotyczącym bramy, skonfigurujesz OpenSSL na maszynie, a następnie Sklonowano repozytorium IoT Edge, aby uzyskać dostęp do skryptów tworzenia certyfikatów. Następnie został utworzony katalog roboczy, który wywoła  **\<WRKDIR >** do przechowywania certyfikatów. Domyślne certyfikaty są przeznaczone do programowania i testowania, więc tylko ostatnie 30 dni. Należy utworzyć certyfikat głównego urzędu certyfikacji i certyfikat pośredni. 
 
-1. Postępuj zgodnie z instrukcjami w [rejestrowanie certyfikatów X.509 urzędu certyfikacji do usługi IoT hub](../iot-hub/iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub) części *konfigurowania zabezpieczeń X.509 w usłudze Azure IoT hub*. W tej sekcji należy wykonać następujące czynności: 
+1. Postępuj zgodnie z instrukcjami znajdującymi się w sekcji [Rejestrowanie certyfikatów urzędu certyfikacji x. 509 w usłudze IoT Hub](../iot-hub/iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub) tematu *Konfigurowanie zabezpieczeń X. 509 w usłudze Azure IoT Hub*. W tej sekcji wykonaj następujące czynności: 
 
-   1. Przekaż certyfikat głównego urzędu certyfikacji. Jeśli używasz certyfikatów, które zostały utworzone w artykule przezroczystej bramy, Przekaż  **\<WRKDIR > /certs/azure-iot-test-only.root.ca.cert.pem** jako plik certyfikatu głównego. 
-   2. Sprawdź, czy jesteś właścicielem tego certyfikatu głównego urzędu certyfikacji. Możesz sprawdzić posiadania za pomocą narzędzi certyfikatu w \<WRKDIR >. 
+   1. Przekaż certyfikat głównego urzędu certyfikacji. Jeśli używasz certyfikatów utworzonych w przezroczystym artykule bramy, Przekaż  **\<WRKDIR >/certs/Azure-IoT-test-Only.root.ca.CERT.pem** jako plik certyfikatu głównego. 
+   2. Sprawdź, czy jesteś własnym certyfikatem głównego urzędu certyfikacji. Można zweryfikować posiadanie narzędzi certyfikatów w \<WRKDIR >. 
 
       ```powershell
       New-CACertsVerificationCert "<verification code from Azure portal>"
@@ -164,12 +164,12 @@ Najprostszym sposobem przetestowania tego scenariusza jest użycie na tym samym 
       ./certGen.sh create_verification_certificate <verification code from Azure portal>"
       ```
 
-2. Postępuj zgodnie z instrukcjami w [tworzenie urządzenia X.509 dla usługi IoT hub](../iot-hub/iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub) części *konfigurowania zabezpieczeń X.509 w usłudze Azure IoT hub*. W tej sekcji należy wykonać następujące czynności: 
+2. Postępuj zgodnie z instrukcjami podanymi w sekcji [Tworzenie urządzenia x. 509 dla Centrum IoT](../iot-hub/iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub) *w temacie Konfigurowanie zabezpieczeń X. 509 w usłudze Azure IoT Hub*. W tej sekcji wykonaj następujące czynności: 
 
-   1. Dodaj nowe urządzenie. Podaj nazwę małe **identyfikator urządzenia**i wybierz typ uwierzytelniania **podpisany urzędu certyfikacji X.509**. 
-   2. Ustaw urządzenia nadrzędnego. Dla urządzeń z podrzędnym, wybierz **Ustaw urządzenia nadrzędnego** i wybierz urządzenie bramy, które będzie dostarczać połączenie do usługi IoT Hub usługi IoT Edge. 
+   1. Dodaj nowe urządzenie. Podaj nazwę z małymi literami dla **identyfikatora urządzenia**, a następnie wybierz pozycję typ uwierzytelniania **X. 509 podpisany przez urząd certyfikacji**. 
+   2. Ustaw urządzenie nadrzędne. W przypadku urządzeń podrzędnych wybierz opcję **Ustaw urządzenie nadrzędne** i wybierz urządzenie bramy IoT Edge, które zapewni połączenie IoT Hub. 
 
-3. Tworzenie łańcucha certyfikatów podrzędnego urządzenia. Użyj tego samego certyfikatu głównego urzędu certyfikacji, który został przekazany do usługi IoT Hub, aby ten łańcuch. Użyj tego samego Identyfikatora urządzenia małe litery, który na Twoją tożsamość urządzenia w portalu.
+3. Utwórz łańcuch certyfikatów dla urządzenia podrzędnego. Użyj tego samego certyfikatu głównego urzędu certyfikacji, który został przekazany do IoT Hub, aby utworzyć ten łańcuch. Użyj tego samego identyfikatora urządzenia małymi literami, który został przekazany do tożsamości urządzenia w portalu.
 
    ```powershell
    New-CACertsDevice "<device id>"
@@ -179,7 +179,7 @@ Najprostszym sposobem przetestowania tego scenariusza jest użycie na tym samym 
    ./certGen.sh create_device_certificate "<device id>"
    ```
 
-4. Skopiuj następujące pliki do dowolnego katalogu na urządzeniu z systemem podrzędne: 
+4. Skopiuj następujące pliki do dowolnego katalogu na urządzeniu podrzędnym: 
 
    * `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
    * `<WRKDIR>\certs\iot-device-<device id>*.cert.pem`
@@ -187,33 +187,33 @@ Najprostszym sposobem przetestowania tego scenariusza jest użycie na tym samym 
    * `<WRKDIR>\certs\iot-device-<device id>*-full-chain.cert.pem`
    * `<WRKDIR>\private\iot-device-<device id>*.key.pem`
 
-   Będziesz odwoływać się do tych plików w aplikacjach urządzenia liścia, łączących się z Centrum IoT Hub. Można użyć usługi takiej jak [usługi Azure Key Vault](https://docs.microsoft.com/azure/key-vault) lub funkcji, takich jak [protoco bezpiecznego kopiowania](https://www.ssh.com/ssh/scp/) umożliwiającego przeniesienie plików certyfikatów.
+   Te pliki będą odwoływać się do tych plików w aplikacjach urządzeń typu liść, które łączą się z IoT Hub. Aby przenieść pliki certyfikatów, można użyć usługi, takiej jak [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) , lub funkcji, takiej jak [Secure Copy protoco](https://www.ssh.com/ssh/scp/) .
 
-Możesz użyć [rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure](https://github.com/Azure/azure-iot-cli-extension) można ukończyć operacji tworzenia tego samego urządzenia. Poniższy przykład tworzy nowe urządzenie IoT przy użyciu podpisanego uwierzytelniania X.509 urzędu certyfikacji i przypisuje urządzenia nadrzędnego: 
+Możesz użyć [rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure](https://github.com/Azure/azure-iot-cli-extension) , aby ukończyć tę samą operację tworzenia urządzenia. Poniższy przykład tworzy nowe urządzenie IoT przy użyciu podpisanego uwierzytelniania urzędu certyfikacji X. 509 i przypisuje urządzenie nadrzędne: 
 
 ```cli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_ca
 ```
 
-Aby uzyskać więcej informacji na temat polecenia wiersza polecenia platformy Azure dla tworzenia urządzenia i zarządzanie elementami nadrzędnymi i podrzędnymi, zobacz zawartość informacyjna dotycząca [az iot hub — tożsamość urządzenia](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) poleceń.
+Aby uzyskać więcej informacji na temat poleceń interfejsu wiersza polecenia platformy Azure służących do tworzenia i zarządzania urządzeniami nadrzędnymi/podrzędnymi, zobacz zawartość referencyjną polecenia [AZ IoT Hub Device-Identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) .
 
 
-### <a name="connect-to-iot-hub-through-a-gateway"></a>Połącz się z IoT Hub przy użyciu bramy
+### <a name="connect-to-iot-hub-through-a-gateway"></a>Nawiązywanie połączenia z IoT Hub za pomocą bramy
 
-Każdy zestaw SDK Azure IoT, które w sposób nieco różniący obsługuje uwierzytelnianie X.509. Jednak ten sam proces jest używany do uwierzytelniania regularne IoT urządzeń do usługi IoT Hub za pomocą certyfikatów X.509 dotyczą również urządzeń podrzędnego. Jedyna różnica polega na tym, że musisz dodać wskaźnik do urządzenia bramy, aby skierować połączenie lub w przypadku scenariuszy w trybie offline, aby obsługiwać uwierzytelnianie w imieniu usługi IoT Hub. Ogólnie rzecz biorąc, można wykonać te same czynności uwierzytelniania X.509 dla wszystkich urządzeń usługi IoT Hub, a następnie po prostu zastąpić wartość **Hostname** w parametrach połączenia, jako nazwę hosta urządzenie bramy. 
+Każdy zestaw Azure IoT SDK obsługuje uwierzytelnianie X. 509 nieco inaczej. Jednak ten sam proces służy do uwierzytelniania zwykłych urządzeń IoT w celu IoT Hub z certyfikatami X. 509 również dotyczy urządzeń podrzędnych. Jedyną różnicą jest to, że należy dodać wskaźnik do urządzenia bramy, aby skierować połączenie, lub w scenariuszach w trybie offline, aby obsłużyć uwierzytelnianie w imieniu IoT Hub. Ogólnie rzecz biorąc, można wykonać te same czynności uwierzytelniania X. 509 dla wszystkich urządzeń IoT Hub, a następnie po prostu zastąpić wartość **nazwy hosta** w parametrach połączenia jako nazwę hosta urządzenia bramy. 
 
-W poniższych sekcjach przedstawiono kilka przykładów dla różnych języków z zestawem SDK. 
+W poniższych sekcjach przedstawiono kilka przykładów dla różnych języków zestawu SDK. 
 
 >[!IMPORTANT]
->Poniższe przykłady pokazują, jak IoT Hub SDKs używają certyfikatów do uwierzytelniania urządzeń. W przypadku wdrożenia produkcyjnego należy przechowywać wszystkich wpisów tajnych, takich jak prywatny lub klucze sygnatur dostępu Współdzielonego w module bezpieczny sprzęt (HSM). 
+>W poniższych przykładach pokazano, jak zestawy SDK IoT Hub używają certyfikatów do uwierzytelniania urządzeń. W przypadku wdrożenia produkcyjnego należy przechowywać wszystkie klucze tajne, takie jak klucze prywatne lub SAS, w bezpiecznym module sprzętowym (HSM). 
 
 #### <a name="net"></a>.NET
 
-Na przykład C# program uwierzytelniania do usługi IoT Hub za pomocą certyfikatów X.509, zobacz [konfigurowania zabezpieczeń X.509 w usłudze Azure IoT hub](../iot-hub/iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates). Niektóre z kluczowych wierszy w tej próbce znajdują się tutaj do zademonstrowania procesu uwierzytelniania.
+Przykład C# programu uwierzytelniającego do IoT Hub za pomocą certyfikatów X. 509, zobacz [Konfigurowanie zabezpieczeń x. 509 w usłudze Azure IoT Hub](../iot-hub/iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates). Niektóre z najważniejszych wierszy tego przykładu są zawarte w tym miejscu, aby zademonstrować proces uwierzytelniania.
 
-Podczas deklarowania nazwę hosta wystąpienia DeviceClient, użyj nazwy hosta usługi IoT Edge urządzenia bramy. Nazwa hosta można znaleźć w pliku config.yaml urządzenia bramy. 
+Podczas deklarowania nazwy hosta dla wystąpienia usługi DeviceClient należy użyć nazwy hosta urządzenia bramy IoT Edge. Nazwę hosta można znaleźć w pliku config. YAML urządzenia bramy. 
 
-Jeśli używasz Certyfikaty testowe, dostarczone przez repozytorium git usługi IoT Edge jest kluczem do certyfikatów **1234**.
+W przypadku korzystania z certyfikatów testowych dostarczonych przez repozytorium IoT Edge git klucz certyfikatów to **1234**.
 
 ```csharp
 try
@@ -242,9 +242,9 @@ catch (Exception ex)
 
 #### <a name="c"></a>C
 
-Na przykład C program uwierzytelniania do usługi IoT Hub za pomocą certyfikatów X.509, zobacz C IoT SDK [iotedge_downstream_device_sample](https://github.com/Azure/azure-iot-sdk-c/tree/x509_edge_bugbash/iothub_client/samples/iotedge_downstream_device_sample) próbki. Niektóre z kluczowych wierszy w tej próbce znajdują się tutaj do zademonstrowania procesu uwierzytelniania.
+Przykład programu C uwierzytelniającego do IoT Hub za pomocą certyfikatów X. 509, zobacz przykład [iotedge_downstream_device_sample](https://github.com/Azure/azure-iot-sdk-c/tree/x509_edge_bugbash/iothub_client/samples/iotedge_downstream_device_sample) zestawu SDK C IoT. Niektóre z najważniejszych wierszy tego przykładu są zawarte w tym miejscu, aby zademonstrować proces uwierzytelniania.
 
-Definiując parametry połączenia dla podrzędnego urządzenia, użyj nazwy hosta usługi IoT Edge urządzenia bramy **HostName** parametru. Nazwa hosta można znaleźć w pliku config.yaml urządzenia bramy. 
+Podczas definiowania parametrów połączenia dla urządzenia podrzędnego Użyj nazwy hosta IoT Edge urządzenia bramy dla parametru **hostname** . Nazwę hosta można znaleźć w pliku config. YAML urządzenia bramy. 
 
 ```C
 // If your downstream device uses X.509 authentication (self signed or X.509 CA) then
@@ -290,11 +290,11 @@ int main(void)
 
 #### <a name="nodejs"></a>Node.js
 
-Na przykład Node.js program uwierzytelniania do usługi IoT Hub za pomocą certyfikatów X.509, zobacz Node.js IoT SDK [simple_sample_device_x509.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device_x509.js) próbki. Niektóre z kluczowych wierszy w tej próbce znajdują się tutaj do zademonstrowania procesu uwierzytelniania.
+Przykład programu Node. js uwierzytelniającego do IoT Hub za pomocą certyfikatów X. 509, zobacz przykład [simple_sample_device_x509. js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device_x509.js) zestawu SDK środowiska Node. js. Niektóre z najważniejszych wierszy tego przykładu są zawarte w tym miejscu, aby zademonstrować proces uwierzytelniania.
 
-Definiując parametry połączenia dla podrzędnego urządzenia, użyj nazwy hosta usługi IoT Edge urządzenia bramy **HostName** parametru. Nazwa hosta można znaleźć w pliku config.yaml urządzenia bramy. 
+Podczas definiowania parametrów połączenia dla urządzenia podrzędnego Użyj nazwy hosta IoT Edge urządzenia bramy dla parametru **hostname** . Nazwę hosta można znaleźć w pliku config. YAML urządzenia bramy. 
 
-Jeśli używasz Certyfikaty testowe, dostarczone przez repozytorium git usługi IoT Edge jest kluczem do certyfikatów **1234**.
+W przypadku korzystania z certyfikatów testowych dostarczonych przez repozytorium IoT Edge git klucz certyfikatów to **1234**.
 
 ```node
 // String containing Hostname and Device Id in the following format:
@@ -319,9 +319,9 @@ client.setOptions(options);
 
 #### <a name="python"></a>Python
 
-Przykład programu w języku Python uwierzytelniania do usługi IoT Hub za pomocą certyfikatów X.509, zobacz Java IoT SDK [iothub_client_sample_x509.py](https://github.com/Azure/azure-iot-sdk-python/blob/master/device/samples/iothub_client_sample_x509.py) próbki. Niektóre z kluczowych wierszy w tej próbce znajdują się tutaj do zademonstrowania procesu uwierzytelniania.
+Przykład programu w języku Python uwierzytelniającego do IoT Hub za pomocą certyfikatów X. 509, zobacz przykład [iothub_client_sample_x509. PR](https://github.com/Azure/azure-iot-sdk-python/blob/master/device/samples/iothub_client_sample_x509.py) zestawu SDK usługi Java IoT. Niektóre z najważniejszych wierszy tego przykładu są zawarte w tym miejscu, aby zademonstrować proces uwierzytelniania.
 
-Definiując parametry połączenia dla podrzędnego urządzenia, użyj nazwy hosta usługi IoT Edge urządzenia bramy **HostName** parametru. Nazwa hosta można znaleźć w pliku config.yaml urządzenia bramy. 
+Podczas definiowania parametrów połączenia dla urządzenia podrzędnego Użyj nazwy hosta IoT Edge urządzenia bramy dla parametru **hostname** . Nazwę hosta można znaleźć w pliku config. YAML urządzenia bramy. 
 
 ```python
 # String containing Hostname, Device Id in the format:
@@ -350,6 +350,7 @@ X509_PRIVATEKEY = (
     "-----END RSA PRIVATE KEY-----"
 )
 
+
 def iothub_client_init():
     # prepare iothub client
     client = IoTHubClient(CONNECTION_STRING, PROTOCOL)
@@ -363,9 +364,9 @@ def iothub_client_init():
 
 #### <a name="java"></a>Java
 
-Przykład programu w języku Java uwierzytelniania do usługi IoT Hub za pomocą certyfikatów X.509, zobacz Java IoT SDK [SendEventX509.java](https://github.com/Azure/azure-iot-sdk-python/blob/master/device/samples/iothub_client_sample_x509.py) próbki. Niektóre z kluczowych wierszy w tej próbce znajdują się tutaj do zademonstrowania procesu uwierzytelniania.
+Przykład programu Java uwierzytelniającego do IoT Hub za pomocą certyfikatów X. 509, zobacz przykład [SendEventX509. Java](https://github.com/Azure/azure-iot-sdk-python/blob/master/device/samples/iothub_client_sample_x509.py) zestawu SDK usługi Java IoT. Niektóre z najważniejszych wierszy tego przykładu są zawarte w tym miejscu, aby zademonstrować proces uwierzytelniania.
 
-Definiując parametry połączenia dla podrzędnego urządzenia, użyj nazwy hosta usługi IoT Edge urządzenia bramy **HostName** parametru. Nazwa hosta można znaleźć w pliku config.yaml urządzenia bramy. 
+Podczas definiowania parametrów połączenia dla urządzenia podrzędnego Użyj nazwy hosta IoT Edge urządzenia bramy dla parametru **hostname** . Nazwę hosta można znaleźć w pliku config. YAML urządzenia bramy. 
 
 ```java
 //PEM encoded representation of the public key certificate
@@ -396,4 +397,4 @@ DeviceClient client = new DeviceClient(connectionString, protocol, publicKeyCert
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Wykonując w tym artykule, powinny mieć urządzenia usługi IoT Edge działa jako przezroczystej bramy i podrzędne urządzenie zarejestrowane w usłudze IoT hub. Następnie należy skonfigurować podrzędne urządzenia, aby ufać urządzenia bramy i wysyłanie komunikatów do niego. Aby uzyskać więcej informacji, zobacz [połączyć podrzędny urządzenie bramy usługi Azure IoT Edge](how-to-connect-downstream-device.md).
+Wykonanie tego artykułu powinno spowodować, że urządzenie IoT Edge działa jako niewidoczna brama i urządzenie podrzędne zarejestrowane w usłudze IoT Hub. Następnie należy skonfigurować urządzenia podrzędne, aby ufać urządzeniu bramy i wysyłać do niego komunikaty. Aby uzyskać więcej informacji, zobacz [połączyć podrzędny urządzenie bramy usługi Azure IoT Edge](how-to-connect-downstream-device.md).

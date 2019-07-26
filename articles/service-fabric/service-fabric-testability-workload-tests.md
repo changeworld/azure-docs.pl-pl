@@ -1,6 +1,6 @@
 ---
-title: Symulowanie błędów w aplikacjach usługi Azure Service Fabric | Dokumentacja firmy Microsoft
-description: Jak zabezpieczyć usługi przed awariami łagodne i nieprawidłowego.
+title: Symulowanie błędów w aplikacjach Service Fabric platformy Azure | Microsoft Docs
+description: Jak zabezpieczyć usługi przed błędami i niepowodzeniem.
 services: service-fabric
 documentationcenter: .net
 author: anmolah
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: ceb6ad1a6a1182d78c473b8b0387c365eb660065
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bbb89b66231c949627c7ffbf99ebe9b5dd379ca2
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60865276"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348718"
 ---
 # <a name="simulate-failures-during-service-workloads"></a>Symulowanie błędów w trakcie obciążenia usługi
-Scenariusze testowania w usłudze Azure Service Fabric umożliwia deweloperom nie martw się o obsłudze poszczególne błędy. Istnieją scenariusze, jednak gdy jawne z przeplotem obciążenia klienta i błędy mogą być wymagane. Z przeplotem obciążenia klienta i błędy gwarantuje, że usługa wykonuje rzeczywistą operację niektóre akcje, gdy awaria. Określony poziom formant, który udostępnia możliwości testowania, mogą to być momentach dokładne wykonywania obciążenia. Ten indukowana usterek w różnych stanach w aplikacji można znaleźć błędy i poprawić jakość.
+Scenariusze testowania na platformie Azure Service Fabric umożliwiają deweloperom nie martwić się o poszczególnymi usterkami. Istnieją jednak scenariusze, w których może być konieczne jawne odchodzenie między obciążeniem klienta i niepowodzeń. Odłączanie obciążenia i błędów klienta zapewnia, że usługa rzeczywiście wykonuje pewne działania w przypadku wystąpienia awarii. Uwzględniając poziom kontroli, który zapewnia możliwości testowania, mogą one być precyzyjnymi punktami wykonywania obciążenia. Takie zapełnienie błędów w różnych stanach aplikacji może znaleźć błędy i poprawić jakość.
 
-## <a name="sample-custom-scenario"></a>Przykładowy scenariusz niestandardowe
-Ten test przedstawiono scenariusz, w którym przeplatają obciążeń biznesowych za pomocą [błędy łagodne i nieprawidłowego](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions). Błędy powinny zostać wywołane w środku operacji usługi lub obliczeniowych w celu uzyskania najlepszych wyników.
+## <a name="sample-custom-scenario"></a>Przykładowy scenariusz niestandardowy
+Ten test przedstawia scenariusz, który przeplotuje obciążenie biznesowe z użyciem [łagodnych i niepowodzeń](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions). Błędy powinny być wywołane w trakcie operacji usługi lub obliczeń w celu uzyskania najlepszych wyników.
 
-Przejdźmy przykładowej usługi, który udostępnia cztery obciążeń: A, B, C i D. Każda zestawowi przepływów pracy i może być obliczeń, magazynu lub mieszane. Dla uproszczenia będzie abstrakcji obciążeń w naszym przykładzie. Są różne błędy, wykonywane na w tym przykładzie:
+Zapoznaj się z przykładem usługi, która udostępnia cztery obciążenia: A, B, C i D. Każdy odnosi się do zestawu przepływów pracy i może być obliczeniowy, magazynem lub mieszanym. Ze względu na prostotę rozwiążemy obciążenia w naszym przykładzie. Różne błędy wykonywane w tym przykładzie są następujące:
 
-* RestartNode: Błąd nieprawidłowego do symulacji ponownego uruchomienia komputera.
-* RestartDeployedCodePackage: Błąd nieprawidłowego Aby zasymulować proces hosta usługi kończy się niepowodzeniem.
-* RemoveReplica: Łagodne błędów do symulacji usunięcia replik.
-* MovePrimary: Łagodne błędów, aby zasymulować repliki przenosi wyzwalane przez moduł równoważenia obciążenia usługi Service Fabric.
+* RestartNode: Nieprolongaty błąd w celu symulowania ponownego uruchomienia komputera.
+* RestartDeployedCodePackage: Nieprolongaty błąd w celu symulowania awarii procesu hosta usługi.
+* RemoveReplica: Łagodna awaria symulowania usuwania repliki.
+* Operację moveprimary Łagodna awaria symulowania przenoszenia replik wyzwalana przez Service Fabric moduł równoważenia obciążenia.
 
 ```csharp
 // Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.
@@ -116,7 +116,7 @@ class Test
             // Run the selected random fault.
             await RunFaultAsync(applicationName, fault, replicaSelector, fabricClient);
             // Validate the health and stability of the service.
-            await fabricClient.ServiceManager.ValidateServiceAsync(serviceName, maxServiceStabilizationTime);
+            await fabricClient.TestManager.ValidateServiceAsync(serviceName, maxServiceStabilizationTime);
 
             // Wait for the workload to finish successfully.
             await workloadTask;
@@ -128,16 +128,16 @@ class Test
         switch (fault)
         {
             case ServiceFabricFaults.RestartNode:
-                await client.ClusterManager.RestartNodeAsync(selector, CompletionMode.Verify);
+                await client.FaultManager.RestartNodeAsync(selector, CompletionMode.Verify);
                 break;
             case ServiceFabricFaults.RestartCodePackage:
-                await client.ApplicationManager.RestartDeployedCodePackageAsync(applicationName, selector, CompletionMode.Verify);
+                await client.FaultManager.RestartDeployedCodePackageAsync(applicationName, selector, CompletionMode.Verify);
                 break;
             case ServiceFabricFaults.RemoveReplica:
-                await client.ServiceManager.RemoveReplicaAsync(selector, CompletionMode.Verify, false);
+                await client.FaultManager.RemoveReplicaAsync(selector, CompletionMode.Verify, false);
                 break;
             case ServiceFabricFaults.MovePrimary:
-                await client.ServiceManager.MovePrimaryAsync(selector.PartitionSelector);
+                await client.FaultManager.MovePrimaryAsync(selector.PartitionSelector);
                 break;
         }
     }

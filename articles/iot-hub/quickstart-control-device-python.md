@@ -10,14 +10,14 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: 9c9b892f7d1f992210a18f2290bb199d12aeaf49
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: fe0c16962eef38ac26490eb7928d1705ef63a217
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330505"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68355029"
 ---
-# <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Szybki start: Kontrolowanie urządzenia podłączone do usługi IoT hub (Python)
+# <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Szybki start: Sterowanie urządzeniem podłączonym do centrum IoT Hub (Python)
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
@@ -35,23 +35,23 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Dwie przykładowe aplikacje uruchamiane w tym przewodniku Szybki start zostały napisane w języku Python. Obecnie usługa Microsoft Azure IoT SDKs dla języka Python obsługuje tylko określonych wersji języka Python dla każdej platformy. Aby dowiedzieć się więcej, zobacz [Readme zestawu SDK języka Python](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues).
+Dwie przykładowe aplikacje uruchamiane w tym przewodniku Szybki start zostały napisane w języku Python. Obecnie usługi Microsoft Azure IoT SDK dla języka Python obsługują tylko określone wersje języka Python dla każdej platformy. Aby dowiedzieć się więcej, zobacz [plik Readme zestawu SDK języka Python](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues).
 
-Ten przewodnik Szybki Start założono, że używasz komputera deweloperskiego z systemem Windows. Dla systemów Windows, tylko [Python 3.6.x](https://www.python.org/downloads/release/python-368/) jest obsługiwana. Wybrany instalator języka Python powinien być oparty na architekturze systemu, którego używasz. Jeśli system architektury procesora CPU jest 32-bitowych, a następnie Instalator pobierania x86; z architekturą 64-bitowy Pobierz Instalator x86-64. Dodatkowo należy upewnić się, że [programu Microsoft Visual C++ pakiet redystrybucyjny programu Visual Studio 2015, 2017 i 2019](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) dla architektury (x86 lub x64) jest zainstalowany.
+W tym przewodniku szybki start założono, że używasz komputera deweloperskiego z systemem Windows. W przypadku systemów Windows obsługiwane jest tylko środowisko [Python 3.6. x](https://www.python.org/downloads/release/python-368/) . Wybrany instalator języka Python powinien być oparty na architekturze systemu, którego używasz. Jeśli architektura procesora systemu jest 32 bit, Pobierz instalatora x86; w przypadku architektury 64-bitowej należy pobrać Instalatora x86-64. Ponadto upewnij się, że dla architektury (x86 lub x64) jest zainstalowany pakiet redystrybucyjny [firmy Microsoft C++ dla programu Visual Studio 2015, 2017 i 2019](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) .
 
-Możesz pobrać języka Python dla innych platform z [Python.org](https://www.python.org/downloads/).
+Możesz pobrać Język Python dla innych platform z [Python.org](https://www.python.org/downloads/).
 
 Możesz sprawdzić bieżącą wersję języka Python na komputerze deweloperskim przy użyciu jednego z następujących poleceń:
 
 ```python
-python --version
+python - -version
 ```
 
 ```python
-python3 --version
+python3 - -version
 ```
 
-Uruchom następujące polecenie, aby dodać rozszerzenia usługi Microsoft Azure IoT dla interfejsu wiersza polecenia platformy Azure do swojego wystąpienia usługi Cloud Shell. Rozszerzenia IOT dodaje określone polecenia usługi IoT Hub, IoT Edge i usługi aprowizacji urządzeń IoT (DPS) do wiersza polecenia platformy Azure.
+Uruchom następujące polecenie, aby dodać rozszerzenie IoT Microsoft Azure dla interfejsu wiersza polecenia platformy Azure do wystąpienia Cloud Shell. Rozszerzenie IOT dodaje do interfejsu wiersza polecenia platformy Azure IoT Hub, IoT Edge i usługi IoT Device Provisioning Service (DPS).
 
 ```azurecli-interactive
 az extension add --name azure-cli-iot-ext
@@ -71,7 +71,7 @@ Jeśli ukończono poprzedni przewodnik [Szybki start: wysyłanie danych telemetr
 
 Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw zarejestrować w centrum IoT. W tym przewodniku Szybki start opisano rejestrowanie urządzenia symulowanego przy użyciu usługi Azure Cloud Shell.
 
-1. Uruchom następujące polecenie w usłudze Azure Cloud Shell do tworzenia tożsamości urządzenia.
+1. Uruchom następujące polecenie w Azure Cloud Shell, aby utworzyć tożsamość urządzenia.
 
     **YourIoTHubName**: zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT Hub.
 
@@ -172,7 +172,7 @@ Aplikacja zaplecza łączy się z punktem końcowym po stronie usługi w usłudz
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start wywołano metodę bezpośrednią na urządzeniu z aplikacji zaplecza oraz odpowiedziano na wywołanie metody bezpośredniej w aplikacji urządzenia symulowanego.
 

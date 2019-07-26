@@ -1,146 +1,146 @@
 ---
-title: Mapowanie przepływu danych wydajności i dostosowywania przewodnik dotyczący usługi Azure Data Factory | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat kluczowych czynników wpływających na wydajność przepływów danych w usłudze Azure Data Factory, korzystając z przepływów danych mapowania.
+title: Mapowanie wydajności przepływu danych i przewodnik dostrajania w Azure Data Factory | Microsoft Docs
+description: Zapoznaj się z najważniejszymi czynnikami wpływającymi na wydajność przepływów danych w Azure Data Factory w przypadku korzystania z mapowania przepływów danych.
 author: kromerm
 ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: 1ee266d7d9846a357dce613817affdb0cde5bfdc
-ms.sourcegitcommit: e6cb7ca206a125c05acfd431b5a64391a8dcc6b3
+ms.openlocfilehash: 090c229c5e97ede8eb7a397ce8f4d13d8735a346
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67569024"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404612"
 ---
-# <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapowanie wydajności przepływów danych i dostosowywania przewodnik
+# <a name="mapping-data-flows-performance-and-tuning-guide"></a>Przewodnik dotyczący wydajności i dostrajania przepływu danych
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Platformy Azure Data Factory mapowanie przepływu danych udostępniają interfejs niekorzystające z kodu przeglądarki do projektowania, wdrażania i Organizuj Przekształcanie danych w dużej skali.
+Azure Data Factory mapowanie przepływów danych udostępnia interfejs przeglądarki bez kodu, który umożliwia projektowanie, wdrażanie i organizowanie transformacji danych na dużą skalę.
 
 > [!NOTE]
-> Jeśli nie jesteś zaznajomiony z usługi ADF mapowanie przepływu danych ogólnie rzecz biorąc, zobacz [omówienie przepływów danych](concepts-data-flow-overview.md) przed przeczytaniem tego artykułu.
+> Jeśli przed zapisaniem tego artykułu nie znasz ogólnie przepływów danych dotyczących mapowania ADF, zobacz [Omówienie przepływów danych](concepts-data-flow-overview.md) .
 >
 
 > [!NOTE]
-> Podczas projektowania i testowania przepływów danych z poziomu interfejsu użytkownika usługi ADF, upewnij się włączyć przełącznik debugowanie dzięki czemu możliwe jest wykonanie przepływów danych w czasie rzeczywistym bez konieczności oczekiwania na klastrze do rozgrzewki.
+> Podczas projektowania i testowania przepływów danych z poziomu interfejsu użytkownika usługi ADF należy włączyć przełącznik debugowania, aby można było wykonywać przepływy danych w czasie rzeczywistym bez czekania na rozgrzewanie klastra.
 >
 
-![Debugowanie przycisk](media/data-flow/debugb1.png "debugowania")
+![Przycisk Debuguj](media/data-flow/debugb1.png "Debuguj")
 
 ## <a name="monitor-data-flow-performance"></a>Monitorowanie wydajności przepływu danych
 
-Podczas projektowania usługi danych mapowania przepływy w przeglądarce, możesz test jednostkowy Każde przekształcenie poszczególnych, klikając kartę Podgląd danych, w dolnym okienku ustawienia dla każdego transformacji. Następnym krokiem, jakie należy podjąć jest testowanie usługi danych przepływ end-to-end w Projektancie potoku. Dodaj działanie wykonania przepływu danych i użyj przycisku debugowania do testowania wydajności przepływu danych. W dolnym okienku w oknie potok będzie widoczna ikona eyeglass w obszarze "Akcje":
+Podczas projektowania przepływów danych mapowania w przeglądarce można testować poszczególne pojedyncze przekształcenia, klikając kartę Podgląd danych w dolnym okienku ustawienia dla każdej transformacji. Następnym krokiem, który należy wykonać, jest przetestowanie kompleksowego przepływu danych w projektancie potoku. Dodaj działanie wykonaj przepływ danych i użyj przycisku Debuguj, aby przetestować wydajność przepływu danych. W dolnym okienku okna potoku zobaczysz ikonę Eyeglass w obszarze "akcje":
 
-![Monitor przepływu danych](media/data-flow/mon002.png "Monitor 2 przepływ danych")
+![Monitor przepływu danych](media/data-flow/mon002.png "Monitor przepływu danych 2")
 
-Klikając tę ikonę, zostanie wyświetlona plan wykonywania i profil wydajności kolejnych przepływu danych. Te informacje można użyć do oszacowania wydajności przepływu danych z różnych wielkości źródeł danych. Należy pamiętać, że można założyć 1 minuta czasu konfiguracji wykonywania zadania dla klastra, w obliczeniach ogólnej wydajności i korzystania z domyślnego środowiska Azure Integration Runtime może być konieczne dodanie 5 minut czasu klastra w górę pokrętła także.
+Kliknięcie tej ikony spowoduje wyświetlenie planu wykonania i kolejnego profilu wydajności przepływu danych. Korzystając z tych informacji, można oszacować wydajność przepływu danych w odniesieniu do różnych źródeł danych. Należy pamiętać, że można przystąpić do 1 minuty czasu konfigurowania wykonywania zadań klastra w ogólnym obliczaniu wydajności i w przypadku korzystania z Azure Integration Runtime domyślnego, konieczne może być również dodanie 5 minut czasu.
 
-![Monitorowanie przepływu danych](media/data-flow/mon003.png "Monitor 3 przepływ danych")
+![Monitorowanie przepływu danych](media/data-flow/mon003.png "Monitor przepływu danych 3")
 
-## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Optymalizacja dla usługi Azure SQL Database i Azure SQL Data Warehouse
+## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Optymalizacja pod kątem Azure SQL Database i Azure SQL Data Warehouse
 
-![Źródło część](media/data-flow/sourcepart3.png "część źródła")
+![Część źródłowa](media/data-flow/sourcepart3.png "Część źródłowa")
 
 ### <a name="partition-your-source-data"></a>Partycjonowanie danych źródłowych
 
-* Przejdź do "Optymalizuj" i wybierz pozycję "Źródło". Ustaw kolumnę określonej tabeli lub typu w zapytaniu.
-* Jeśli została wybrana opcja "kolumnę", następnie wybierz kolumny partycji.
-* Ponadto można ustawić maksymalną liczbę połączeń do bazy danych SQL Azure. Możesz spróbować wyższe ustawienie do uzyskania równoległych połączeń z bazą danych. Jednak czasami może spowodować szybsze działanie z ograniczoną liczbę połączeń.
-* Źródło tabel bazy danych nie trzeba być dzielony na partycje.
-* Ustawianie zapytania w swoją transformację źródłowego, który pasuje do schematu partycjonowania tabeli bazy danych umożliwi aparatu bazy danych źródła, wykorzystywać eliminacji partycji.
-* Jeśli źródło nie jest partycjonowany, ADF będą nadal używać partycjonowania w środowisku przekształcania platformy Spark na podstawie klucza wybranej podczas przekształcania źródła danych.
+* Przejdź do pozycji "Optymalizuj" i wybierz pozycję "Źródło". Ustaw konkretną kolumnę tabeli lub typ w zapytaniu.
+* W przypadku wybrania opcji "kolumna" wybierz kolumnę partycji.
+* Ponadto ustaw maksymalną liczbę połączeń z bazą danych Azure SQL. Możesz wypróbować wyższe ustawienie, aby uzyskać równoległe połączenia z bazą danych. Jednak niektóre przypadki mogą spowodować szybszą wydajność dzięki ograniczonej liczbie połączeń.
+* Tabele źródłowej bazy danych nie muszą być partycjonowane.
+* Ustawienie zapytania w transformacji źródłowej zgodnej ze schematem partycjonowania tabeli bazy danych zezwoli na użycie przez aparat źródłowej bazy danych operacji eliminacji partycji.
+* Jeśli źródło nie jest już podzielone na partycje, moduł ADF nadal będzie używać partycjonowania danych w środowisku transformacji Spark na podstawie klucza wybieranego w transformacji źródłowej.
 
-### <a name="set-batch-size-and-query-on-source"></a>Ustaw rozmiar partii i zapytania w źródle
+### <a name="set-batch-size-and-query-on-source"></a>Ustawianie rozmiaru partii i zapytania dla źródła
 
-![Źródło](media/data-flow/source4.png "źródła")
+![Źródło](media/data-flow/source4.png "Źródło")
 
-* Ustawianie rozmiaru partii zleca usługi ADF, aby przechowywać dane w zestawach w pamięci, a nie wiersz po wierszu. Jest to ustawienie opcjonalne i może zostać wykorzystać zasoby w węzłach obliczeniowych, jeśli nie są one prawidłowo wielkości.
-* Ustawianie zapytania umożliwia filtrowanie wierszy po prawej stronie w miejscu źródłowym przed nawet przychodzących dla przepływu danych do przetwarzania, co ułatwia szybsze pozyskiwania danych początkowych.
-* Jeśli używasz zapytania, można dodać wskazówki zapytania opcjonalne dla Twojej bazy danych SQL Azure, czyli READ UNCOMMITTED
+* Ustawienie rozmiaru wsadu spowoduje, że funkcja ADF będzie przechowywać dane w zestawach w pamięci zamiast wierszy po wierszu. Jest to ustawienie opcjonalne i w węzłach obliczeniowych można wylogować się z zasobów, jeśli ich rozmiar nie jest prawidłowy.
+* Ustawienie zapytania może umożliwiać filtrowanie wierszy bezpośrednio w źródle, zanim będą nawet docierać do przepływu danych do przetworzenia, co może spowodować szybsze pozyskiwanie danych.
+* Jeśli używasz zapytania, możesz dodać opcjonalne wskazówki dotyczące zapytań dla bazy danych SQL Azure, tj. odczytu niezatwierdzonego
 
-### <a name="set-isolation-level-on-source-transformation-settings-for-sql-datasets"></a>Ustaw poziom izolacji ustawieniami przekształcania źródła dla zestawów danych SQL
+### <a name="set-isolation-level-on-source-transformation-settings-for-sql-datasets"></a>Ustaw poziom izolacji dla ustawień transformacji źródła dla zestawów danych SQL
 
-* Odczyt nieprzekazany zapewnia szybsze wyniki zapytania na przekształcenie źródła
+* Odczytanie niezatwierdzone zapewni szybsze wyniki zapytania dotyczące transformacji źródłowej
 
-![Poziom izolacji](media/data-flow/isolationlevel.png "poziom izolacji")
+![Poziom izolacji](media/data-flow/isolationlevel.png "Poziom izolacji")
 
-### <a name="set-sink-batch-size"></a>Ustaw rozmiar partii ujścia
+### <a name="set-sink-batch-size"></a>Ustaw rozmiar wsadu ujścia
 
-![Obiekt sink](media/data-flow/sink4.png "ujście")
+![Obiekt sink](media/data-flow/sink4.png "Obiekt sink")
 
-* Aby uniknąć przetwarzania wiersz po wierszu przepływów danych, należy ustawić "rozmiar partii" w ustawieniach obiektu sink dla bazy danych SQL Azure. Informuje, że usługi ADF, aby proces bazy danych zapisuje w partiach, w zależności od rozmiaru, pod warunkiem.
+* Aby uniknąć przetwarzania wierszy na wierszach przepływów danych, ustaw wartość "rozmiar wsadu" w ustawieniach ujścia usługi Azure SQL DB. Spowoduje to wyświetlenie podajnika APD w celu przetwarzania zapisów w bazie danych w partiach na podstawie podanego rozmiaru.
 
-### <a name="set-partitioning-options-on-your-sink"></a>Ustaw opcje obiektu sink partycjonowanie
+### <a name="set-partitioning-options-on-your-sink"></a>Ustawianie opcji partycjonowania w Twoim zbiorniku
 
-* Nawet jeśli nie masz dane podzielone na partycje w tabelach bazy danych SQL Azure docelowego, przejdź na kartę Optymalizuj i ustawić partycjonowania.
-* Bardzo często po prostu informuje usługi ADF, aby używa działanie okrężne partycjonowania w klastrach platformy Spark wykonanie powoduje szybsze ładowanie zamiast wymuszania wielokrotnego wszystkich połączeń z jednego węzła/partycji danych.
+* Nawet jeśli nie masz partycjonowanych danych w docelowych tabelach usługi Azure SQL DB, przejdź do karty Optymalizacja i ustaw partycjonowanie.
+* Bardzo często mówiąc, po prostu, gdy funkcja ADF używa partycjonowania okrężnego w klastrach wykonywania platformy Spark, może znacznie przyspieszyć ładowanie danych zamiast wymuszać wszystkie połączenia z jednego węzła/partycji.
 
-### <a name="increase-size-of-your-compute-engine-in-azure-integration-runtime"></a>Zwiększ rozmiar Twojej aparatu obliczeniowego w Azure Integration Runtime
+### <a name="increase-size-of-your-compute-engine-in-azure-integration-runtime"></a>Zwiększ rozmiar aparatu obliczeniowego w Azure Integration Runtime
 
-![Nowe środowisko IR](media/data-flow/ir-new.png "nowe środowisko IR")
+![Nowy IR](media/data-flow/ir-new.png "Nowy IR")
 
-* Zwiększ liczbę rdzeni, które spowoduje zwiększenie liczby węzłów i udostępnić więcej mocy obliczeniowej w celu wykonywania zapytań i zapisu do bazy danych SQL Azure.
-* Wypróbuj "Obliczenia zoptymalizowane pod kątem" i "Zoptymalizowanego pod kątem pamięci" opcje do zastosowania większej ilości zasobów do węzłów obliczeniowych.
+* Zwiększ liczbę rdzeni, aby zwiększyć liczbę węzłów i zapewnić większą moc obliczeniową do wykonywania zapytań i zapisywania do bazy danych Azure SQL.
+* Wypróbuj opcje "obliczenia zoptymalizowane" i "zoptymalizowane pod kątem pamięci", aby zastosować więcej zasobów do węzłów obliczeniowych.
 
-### <a name="unit-test-and-performance-test-with-debug"></a>Testów jednostkowych i testów wydajności za pomocą debugowania
+### <a name="unit-test-and-performance-test-with-debug"></a>Test jednostkowy i test wydajności z debugowaniem
 
-* Po jednostki testowania przepływu danych, ustaw "Debug przepływ danych" na wartość ON.
-* W Projektancie przepływu danych karta Podgląd danych na przekształceń do wyświetlania wyników logiki przekształcania.
-* Test jednostkowy dane przepływy przy użyciu projektanta potoku, umieszczając działanie z przepływu danych w projekcie potoku kanwy i testowanie za pomocą przycisku "Debugowanie".
-* Testowanie w trybie debugowania będą działać względem środowisku na żywo klastrowym przygotowaniu bez konieczności oczekiwania na telefoniczny pokrętła klaster just in time.
+* Podczas testowania jednostkowego przepływy danych ustaw przycisk "Debugowanie przepływu danych" na wartość włączone.
+* W Projektancie przepływu danych Użyj karty Podgląd danych na przekształceń, aby wyświetlić wyniki logiki transformacji.
+* Testowanie jednostkowe przepływów danych z projektanta potoku przez umieszczenie na kanwie projektu potoku działania dotyczącego przepływu danych i użycie przycisku "Debuguj" do przetestowania.
+* Testowanie w trybie debugowania będzie działać w rozgrzanym środowisku klastra bez konieczności oczekiwania na odczekanie klastra just in Time.
 
-### <a name="disable-indexes-on-write"></a>Wyłącz indeksy podczas zapisu
-* Użyj ADF potoku przechowywane procedury działania przed działaniem usługi przepływ danych, które wyłączają indeksów w tabelach docelowych, które są zapisywane z magazynem ujścia.
-* Po działania przepływu danych Dodaj kolejne działanie przechowywanej, która umożliwiała te indeksy.
+### <a name="disable-indexes-on-write"></a>Wyłącz indeksy przy zapisie
+* Użyj działania procedury składowanej w potoku ADF przed działaniem przepływu danych, które powoduje wyłączenie indeksów w tabelach docelowych, które są zapisywane na podstawie ujścia.
+* Po działaniu przepływu danych Dodaj kolejne przechowywane działanie procedury, które włączyło te indeksy.
 
-### <a name="increase-the-size-of-your-azure-sql-db"></a>Zwiększ rozmiar bazy danych SQL Azure
-* Zaplanuj zmiany rozmiaru źródła i ujścia Azure SQL DB zanim przebieg, który ogranicza potoku, aby zwiększyć przepływność i minimalizowanie ograniczania platformy Azure, gdy liczba jednostek DTU.
-* Po zakończeniu wykonywanie potoku można zmienić rozmiar bazy danych do ich normalna szybkość wykonywania.
+### <a name="increase-the-size-of-your-azure-sql-db"></a>Zwiększanie rozmiaru bazy danych SQL Azure
+* Zaplanuj zmianę rozmiarów źródła i ujścia usługi Azure SQL DB przed uruchomieniem potoku, aby zwiększyć przepływność i zminimalizować ograniczenie przepustowości platformy Azure po osiągnięciu limitów jednostek DTU.
+* Po zakończeniu wykonywania potoku można zmienić rozmiar baz danych z powrotem na ich normalną szybkość uruchamiania.
 
-## <a name="optimizing-for-azure-sql-data-warehouse"></a>Optymalizacja dla usługi Azure SQL Data Warehouse
+## <a name="optimizing-for-azure-sql-data-warehouse"></a>Optymalizacja pod kątem Azure SQL Data Warehouse
 
-### <a name="use-staging-to-load-data-in-bulk-via-polybase"></a>Ładowanie danych zbiorczo za pomocą programu Polybase za pomocą przemieszczania
+### <a name="use-staging-to-load-data-in-bulk-via-polybase"></a>Ładowanie danych luzem przy użyciu funkcji przemieszczania za pośrednictwem bazy
 
-* Aby uniknąć przetwarzania wiersz po wierszu przepływów danych, należy ustawić opcję "Staging" w ustawieniach obiektu Sink tak, aby ADF dzięki technologii Polybase, aby uniknąć wstawia wiersz po wierszu do magazynu danych. Wydać polecenie usługi ADF, aby przy użyciu technologii Polybase, aby dane mogą być ładowane w trybie zbiorczym.
-* Podczas wykonywania Twoje działanie przepływu danych w potoku, za pomocą przemieszczania jest włączona, będzie konieczne wybranie lokalizacji magazynu obiektów Blob, dane tymczasowe do ładowania zbiorczego.
+* Aby zapobiec przetwarzaniu przepływów danych przez wiersz po wierszu, ustaw opcję "przemieszczanie" w ustawieniach ujścia, aby można było użyć wieloskładnikowego, aby uniknąć wstawiania wierszy w wierszu do DW. Spowoduje to, że funkcja ADF będzie używać bazy danych, aby można było ładować dane zbiorczo.
+* Gdy wykonujesz działanie przepływu danych z potoku, z włączonym przemieszczaniem wstępnym, musisz wybrać lokalizację magazynu obiektów BLOB dla danych przemieszczania na potrzeby ładowania zbiorczego.
 
-### <a name="increase-the-size-of-your-azure-sql-dw"></a>Zwiększ rozmiar usługi SQL data Warehouse platformy Azure
+### <a name="increase-the-size-of-your-azure-sql-dw"></a>Zwiększanie rozmiaru magazynu danych SQL Azure
 
-* Zaplanuj zmiany rozmiaru źródła i ujścia Azure SQL data Warehouse, przed uruchomieniem potoku, aby zwiększyć przepływność i minimalizowanie ograniczania platformy Azure, po osiągnięciu limitów jednostek DWU.
+* Zaplanuj zmianę rozmiarów źródła i ujścia usługi Azure SQL DW przed uruchomieniem potoku, aby zwiększyć przepływność i zminimalizować ograniczenie przepustowości platformy Azure po osiągnięciu limitów jednostek dwu.
 
-* Po zakończeniu wykonywanie potoku można zmienić rozmiar bazy danych do ich normalna szybkość wykonywania.
+* Po zakończeniu wykonywania potoku można zmienić rozmiar baz danych z powrotem na ich normalną szybkość uruchamiania.
 
-## <a name="optimize-for-files"></a>Optymalizacja pod kątem plików
+## <a name="optimize-for-files"></a>Optymalizuj dla plików
 
-* Można kontrolować, jak wiele partycji, używających usługi ADF. Na każde Przekształcenie źródła i ujścia, a także każde przekształcenie poszczególnych można ustawić schematu partycjonowania. W przypadku plików mniejszych może się okazać, wybierając "Jednej partycji" może czasami pracować, lepsze i szybsze niż pytaniem platformy Spark w celu podzielenia małych plików.
-* Jeśli nie masz wystarczająco dużo informacji o źródle danych, możesz "Działanie okrężne" partycjonowanie i ustaw liczbę partycji.
-* Eksplorowanie danych, okazać, że są kolumn, które mogą być klawiszy skrótu dobre za pomocą skrótu partycjonowanie opcji.
+* Możesz kontrolować liczbę partycji, które będą używane przez ADF. Dla każdego źródła & transformacji, a także poszczególnych transformacji pojedynczych, można ustawić schemat partycjonowania. W przypadku mniejszych plików można wybrać opcję "pojedyncza partycja" może czasami pracować lepiej i szybciej niż w przypadku, gdy platforma Spark ma dzielić małe pliki.
+* Jeśli nie masz wystarczającej ilości informacji na temat danych źródłowych, możesz wybrać partycjonowanie "Round Robin" i ustawić liczbę partycji.
+* W przypadku eksplorowania danych i znajdowania kolumn, które mogą być dobrymi kluczami skrótów, użyj opcji partycjonowania skrótów.
 
 ### <a name="file-naming-options"></a>Opcje nazewnictwa plików
 
-* Domyślny rodzaj pisanie przekształcone dane w usłudze ADF mapowanie przepływu danych jest do zapisu do zestawu danych, który zawiera obiekt Blob lub połączonej usługi Azure Data Lake Store. Należy ustawić ten zestaw danych, aby wskazywał folder lub kontenera, wskazanego pliku.
-* Użycie przepływów danych, Azure Spark usługi Databricks na wykonanie, co oznacza, że dane wyjściowe zostanie ona podzielona przez wiele plików, na podstawie albo domyślne Spark partycjonowania lub partycjonowanie schemat, które zostały wybrane.
-* Bardzo często operacji w przepływu danych w usłudze ADF jest wybrać opcję "Dane wyjściowe do pojedynczego pliku", tak aby wszystkie pliki części danych wyjściowych są scalane w pojedynczym wyjściowym plik.
-* Ta operacja wymaga jednak, że dane wyjściowe zmniejsza się do jednej partycji na pojedynczym węźle klastra.
-* Miej to na uwadze podczas wybierania to popularne rozwiązanie. Można uruchomić wykorzystać zasoby węzła klastra, w przypadku łączenia wielu plików źródłowych duże w pojedynczym wyjściowym pliku partycji.
-* Aby uniknąć wyczerpaniem zasobów obliczeniowych, w węźle, zachowaj domyślne lub jawnego schematu partycjonowania w usłudze ADF, który optymalizuje wydajność, a następnie dodaj kolejne działania kopiowania w potoku, który łączy wszystkie części pliki z folderu danych wyjściowych do pojedynczego nowe plik. Zasadniczo ta technika oddziela akcji transformacji z scalanie plików i osiąga ten sam wynik jako ustawienie "dane wyjściowe do pojedynczego pliku".
+* Domyślnym charakterem zapisu przekształconych danych w przepływie danych w ramach mapowania ADF jest zapis do zestawu danych, który ma połączoną usługę obiektu BLOB lub ADLS. Należy ustawić ten zestaw danych, aby wskazywał do folderu lub kontenera, a nie plik o nazwie.
+* Przepływy danych używają Azure Databricks Spark do wykonania, co oznacza, że dane wyjściowe zostaną podzielone na wiele plików na podstawie domyślnego partycjonowania platformy Spark lub schematu partycjonowania, który został jawnie wybrany.
+* Bardzo powszechną operacją w przepływie danych ADF jest wybranie opcji "wyjście do pojedynczego pliku", aby wszystkie pliki składników wyjściowych zostały scalone w jednym pliku wyjściowym.
+* Jednak ta operacja wymaga, aby dane wyjściowe były ograniczone do pojedynczej partycji w pojedynczym węźle klastra.
+* Należy pamiętać o tym podczas wybierania tej popularnej opcji. Zasoby węzłów klastra można uruchamiać w przypadku łączenia wielu dużych plików źródłowych w jedną partycję pliku wyjściowego.
+* Aby uniknąć wyczerpania zasobów węzłów obliczeniowych, można zachować domyślny lub jawny schemat partycjonowania w podajniku APD, który optymalizuje wydajność, a następnie dodać kolejne działanie kopiowania w potoku, które scala wszystkie pliki części z folderu wyjściowego z nowym pojedynczym rozszerzeniem. Zasadniczo ta technika oddziela akcję transformacji od scalania plików i osiąga ten sam wynik, co ustawienie "dane wyjściowe do pojedynczego pliku".
 
-### <a name="looping-through-file-lists"></a>Zapętlenie przez listy plików
+### <a name="looping-through-file-lists"></a>Zapętlenie za poorednictwem list plików
 
-W większości przypadków przepływu danych w usłudze ADF wykona lepiej z potokiem, który umożliwia przekształcenie źródła przepływu danych do iteracji przez wiele plików. Innymi słowy zaleca się używać symboli wieloznacznych lub listy plików w źródle danych przepływu, aby przejść przez listę dużych plików za pomocą instrukcji ForEach w potoku, wywołanie wykonania przepływu danych w każdej iteracji. Proces przepływu danych będą wykonywane szybciej, umożliwiając tworzenie pętli do wewnątrz przepływu danych.
+W większości wystąpień przepływy danych w podajniku APD będą wykonywane lepiej z potoku, który umożliwia przekształcanie źródła przepływu danych w celu iteracji wielu plików. Innymi słowy, preferowane jest używanie symboli wieloznacznych lub list plików wewnątrz źródła w przepływie danych niż w przypadku iteracji na dużej liście plików przy użyciu instrukcji ForEach w potoku, wywołując przepływ danych do wykonania dla każdej iteracji. Proces przepływu danych będzie wykonywany szybciej, umożliwiając zapętlenie w przepływie danych.
 
-Na przykład jeśli mam listę plików danych z lipca 2019 I chcesz przetworzyć w folderze w usłudze Blob Storage, będzie wydajniej wywołać jeden raz działania wykonywania przepływu danych z potokiem i użyć symbolu wieloznacznego w źródle, jak to :
+Na przykład jeśli mam listę plików danych z lipca 2019, które chcą przetworzyć w folderze w Blob Storage, bardziej wydajnym sposobem jest wywołanie działania Execute Flow przepływ danych z potoku i użycie symbolu wieloznacznego w źródle, takiego jak ten :
 
 ```DateFiles/*_201907*.txt```
 
-To będą działać lepiej niż wyszukiwania względem Store obiektów Blob w potoku, która następnie wykonuje iterację we wszystkich dopasowanych plików przy użyciu działania wykonywania przepływu danych wewnątrz pętli ForEach.
+Wykonanie tej czynności będzie lepszym rozwiązaniem niż wyszukiwanie magazynu obiektów BLOB w potoku, który następnie iteruje we wszystkich dopasowanych plikach za pomocą działania instrukcji EXECUTE Flow przepływu danych wewnątrz.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zobacz inne przepływ danych artykuły związane z wydajnością:
+Zapoznaj się z innymi artykułami dotyczącymi przepływu danych związanymi z wydajnością:
 
-- [Zakładka Optymalizuj przepływ danych](concepts-data-flow-optimize-tab.md)
+- [Karta Optymalizacja przepływu danych](concepts-data-flow-optimize-tab.md)
 - [Działanie przepływu danych](control-flow-execute-data-flow-activity.md)
 - [Monitorowanie wydajności przepływu danych](concepts-data-flow-monitoring.md)

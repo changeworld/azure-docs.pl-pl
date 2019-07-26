@@ -1,5 +1,5 @@
 ---
-title: Publikowanie aplikacji w oddzielnych sieciach i miejsc w serwera Proxy aplikacji usługi Azure AD za pomocą grupy łączników | Dokumentacja firmy Microsoft
+title: Publikowanie aplikacji w oddzielnych sieciach przy użyciu grup łączników serwera proxy aplikacja usługi Azure AD | Microsoft Docs
 description: Opisano, jak utworzyć i zarządzać grupami łączników serwera Proxy aplikacji usługi Azure AD.
 services: active-directory
 author: msmimart
@@ -14,12 +14,12 @@ ms.date: 11/08/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 574ce6def407f302439f6c53356fe69259240b2e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: dae4eea3e08818d43482c995595cc9fbc3f91910
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702482"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381488"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Publikuj aplikacje w oddzielnych sieciach i miejsc za pomocą grupy łączników
 
@@ -44,7 +44,7 @@ Użyj tych kroków można utworzyć dowolną liczbę grup łącznika.
 1. Wybierz **usługi Azure Active Directory** > **aplikacje dla przedsiębiorstw** > **serwera proxy aplikacji**.
 1. Wybierz **Nowa grupa łączników**. Zostanie wyświetlony blok Nowa grupa łączników.
 
-   ![Pokazuje ekran, aby wybrać Nowa grupa łączników](./media/application-proxy-connector-groups/new-group.png)
+   ![Wyświetla ekran, aby wybrać nową grupę łączników](./media/application-proxy-connector-groups/new-group.png)
 
 1. Nadaj nazwę nowej grupy łączników, a następnie użyj menu rozwijanego, aby wybrać, które łączniki należą do tej grupy.
 1. Wybierz pozycję **Zapisz**.
@@ -77,11 +77,11 @@ W przypadku aplikacji z zainstalowanym IaaS, aby uzyskać dostęp do chmury grup
 
 Należy podjąć, na przykład, że organizacja, która ma kilka maszyny wirtualne podłączone do ich własnych IaaS hostowanych w sieci wirtualnej. Aby pracownicy mogli używać tych aplikacji, tych sieci prywatnych są połączone z siecią firmową za pomocą sieci VPN typu lokacja lokacja. Zapewnia to dobre środowisko dla pracowników, którzy są w środowisku lokalnym. Jednak może nie być idealne w przypadku pracowników zdalnych, ponieważ wymaga dodatkowych lokalnej infrastruktury do rozsyłania dostępu, jak pokazano na poniższym diagramie:
 
-![Diagram ilustrujący z siecią z infrastrukturą IaaS usługi Azure AD](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
+![Diagram przedstawiający sieć usługi Azure AD IaaS](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
   
 Za pomocą grup łączników serwera Proxy aplikacji usługi Azure AD należy włączyć wspólne usługi bezpieczny dostęp do wszystkich aplikacji bez konieczności tworzenia dodatkowe zależności w sieci firmowej:
 
-![Dostawców chmury wielu IaaS usługi Azure AD](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
+![Usługa Azure AD IaaS wielu dostawców chmury](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
 
 ### <a name="multi-forest--different-connector-groups-for-each-forest"></a>Grupy łączników różne dla każdego lasu z obejmującego wiele lasów
 
@@ -108,7 +108,7 @@ Przykłady, które można zaimplementować: następujące grupy łączników.
 
 Jeśli nie używasz grupy łączników, konfigurację będzie wyglądać następująco:
 
-![Przykład usługi Azure AD nie grupy łączników](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
+![Przykładowa usługa Azure AD nie ma grup łączników](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
 
 Ta konfiguracja jest wystarczająca dla małych wdrożeń i testy. Może ona również działać dobrze w przypadku, jeśli organizacja dysponuje siecią płaską topologii.
 
@@ -116,7 +116,7 @@ Ta konfiguracja jest wystarczająca dla małych wdrożeń i testy. Może ona ró
 
 Ta konfiguracja jest unowocześnienia domyślna, w którym znajduje się określoną aplikację działającą w sieci izolowanej, takich jak sieć wirtualna IaaS:
 
-![Grupy łączników nie przykład usługi Azure AD i sieci izolowanej](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
+![Przykładowa usługa Azure AD nie ma grup łączników i sieci izolowanej](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
 
 ### <a name="recommended-configuration--several-specific-groups-and-a-default-group-for-idle"></a>Zalecana konfiguracja — kilku określonych grup i grupę domyślną bezczynności (%)
 
@@ -124,7 +124,7 @@ Zalecana konfiguracja w przypadku dużych i złożonych organizacji jest domyśl
 
 W poniższym przykładzie firma ma dwoma centrami danych, A i B, za pomocą dwa łączniki, które obsługują każdej lokacji. Każda lokacja ma różne aplikacje, które w nich uruchamiane.
 
-![Przykład firmy w 2 centrach danych i łączników 2](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
+![Przykład firmy z 2 centrami danych i 2 łącznikami](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
 
 ## <a name="next-steps"></a>Następne kroki
 

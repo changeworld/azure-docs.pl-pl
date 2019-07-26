@@ -1,80 +1,101 @@
 ---
-title: Integracje partnerów pulpitu wirtualnego Windows - Azure
-description: Dowiedz się więcej o partnerach Windows pulpitu wirtualnego, a następnie uzyskać dostęp do dokumentacji dotyczące sposobu integracji z nimi.
+title: Integracja z partnerem pulpitu wirtualnego systemu Windows — Azure
+description: Dowiedz się więcej na temat partnerów i dostępu do dokumentacji pulpitu wirtualnego systemu Windows na temat sposobu integrowania z nimi.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: eb433b8781a72943c059754d0b3acff00a603506
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 6fe2e63138ce9e0f4e8980e4f37330228ac2bdb6
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67811312"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68369445"
 ---
-# <a name="windows-virtual-desktop-partner-integrations"></a>Integracje partnerów Windows pulpitu wirtualnego
+# <a name="windows-virtual-desktop-partner-integrations"></a>Integracja z partnerem pulpitu wirtualnego systemu Windows
 
-W tym artykule wymieniono partnerów Windows pulpit wirtualny w kolejności alfabetycznej.
+Ten artykuł zawiera listę partnerów pulpitu wirtualnego systemu Windows w kolejności alfabetycznej.
 
-## <a name="active-cypher"></a>Aktywne szyfrowania
+## <a name="active-cypher"></a>Aktywne szyfr
 
-Active szyfrowania to dostawca usługi będące wartością dodaną Windows pulpitu wirtualnego, który zapewnia IT za pomocą technologii szyfrowania, aby ułatwić ochronę przed utratą danych i naruszeń w przedsiębiorstwie. Szyfrowanie innowacyjnych technologii Active Cypher obsługuje ogólnej strategii ochrony pliku, do uruchomienia pulpitu wirtualnego Windows na platformie Azure.
+![Aktywne logo szyfr](./media/partners/active-cypher.png)
 
-W przypadku użycia za pomocą Windows pulpitu wirtualnego, Active Cypher zapewnia dodatkowe funkcje, aby umożliwić ułatwień dostępu i przenoszenia danych użytkowników jednocześnie ochronę przed utratą danych przypadkowego. Za pomocą Active Cypher istniejących zasad zabezpieczeń grupy i uprawnienia w usłudze Azure Information Protection mogą być wykorzystywane do szyfrowania plików użytkownika podczas korzystania z pulpitu wirtualnego Windows.
+Active szyfr to dostawca usług dodanego pulpitu wirtualnego systemu Windows, który umożliwia ochronę przedsiębiorstwa przed naruszeniami i utratą danych. W przypadku korzystania z usługi Active szyfr innowacyjne technologie szyfrowania obsługują ogólną strategię ochrony plików do uruchamiania pulpitu wirtualnego systemu Windows na platformie Azure.
 
-[Przejdź do witryny sieci Web partnera.](https://activecypher.com/)
+Gdy jest używany z pulpitem wirtualnym systemu Windows, usługa Active szyfr zapewnia dodatkowe możliwości umożliwiające dostęp i mobilność danych użytkowników, zapobiegając nieumyślnemu utracie danych. W przypadku korzystania z usługi Active szyfr istniejące zasady zabezpieczeń grupy i uprawnienia w Azure Information Protection mogą być używane do szyfrowania plików użytkownika przy użyciu pulpitu wirtualnego systemu Windows.
+
+- [Zobacz Krótki opis wspólnego rozwiązania.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oNLu)
+- [Przejdź do witryny sieci Web partnera.](https://activecypher.com/)
 
 ## <a name="cloudjumper"></a>CloudJumper
 
-CloudJumper jest dostawcę usługi będące wartością dodaną Windows pulpitu wirtualnego, który zapewnia dostawcom rozwiązań oraz IT przedsiębiorstwa za pomocą oprogramowania całościowo aprowizować i zarządzać środowiskami pulpitu wirtualnego Windows. Przy użyciu oprogramowania CloudJumper, dział IT może zarządzać każdej warstwie wdrożenia wirtualnego pulpitu Windows. Zautomatyzowany dostarczania aplikacji i obciążeń, zapewnienie, że użytkownicy mogą szybko uzyskać dostęp do ich pulpitu w dowolnym miejscu na dowolnym urządzeniu.
+![Logo CloudJumper](./media/partners/cloudjumper.png)
 
-Firmy CloudJumper oprogramowania, pakietu roboczego Cloud Management Suite rozszerza wartość Windows pulpitu wirtualnego, upraszczając wdrażanie i bieżących zadań administracyjnych na platformie Azure. Z jedną taflę szkła, dział IT może aprowizować, zarządzanie i optymalizowanie infrastruktury dla obszarów roboczych użytkownika. Firmy CloudJumper proste wyzwalania aparat skryptu integruje się z platformy usługi IT, aby zautomatyzować zadania związane z inicjowania obsługi administracyjnej Windows pulpitu wirtualnego. Ponadto CloudJumper interfejsy API umożliwiają dalszego rozszerzania i integracji z innymi systemami przedsiębiorstw, takich jak usługi ServiceNow i kontrolera zarządzania płytą GŁÓWNĄ gotowe.
+CloudJumper to dostawca usług dodanej przez pulpit wirtualny systemu Windows, który służy do udostępniania dostawców rozwiązań i korporacyjnej IT w ramach oprogramowania do całościowego aprowizacji środowisk pulpitu wirtualnego systemu Windows i zarządzania nimi. Dzięki oprogramowaniu CloudJumper można zarządzać każdą warstwą wdrożenia pulpitu wirtualnego systemu Windows. Dostarczanie obciążeń i aplikacji jest zautomatyzowane, dzięki czemu użytkownicy mogą szybko uzyskiwać dostęp do swoich pulpitów w dowolnym miejscu na dowolnym urządzeniu.
 
-[Przejdź do witryny sieci Web partnera.](https://cloudjumper.com/wvd/)
+Oprogramowanie CloudJumper, pakiet zarządzania obszarem roboczym w chmurze rozszerza wartość pulpitu wirtualnego systemu Windows, upraszczając wdrażanie i bieżące zadania administracyjne na platformie Azure. W jednym z okien szklanych może ona udostępniać i optymalizować infrastrukturę dla obszarów roboczych użytkowników oraz zarządzać nią. Aparat wyzwalania skryptu prostego CloudJumper integruje się z platformami usługi IT w celu zautomatyzowania zadań związanych z aprowizacji pulpitu wirtualnego systemu Windows. Ponadto interfejsy API CloudJumper umożliwiają dalsze rozszerzanie i integrację z innymi systemami przedsiębiorstwa, takimi jak usługi ServiceNow i BMC Ready.
 
-## <a name="lakeside-software"></a>Lakeside Software
+- [Zobacz Krótki opis wspólnego rozwiązania.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mg)
+- [Przejdź do witryny sieci Web partnera.](https://cloudjumper.com/wvd/)
 
-Oprogramowanie Lakeside jest dostawcę usługi będące wartością dodaną Windows pulpitu wirtualnego, który zapewnia zespołom IT za pomocą oprogramowania do monitorowania wydajności i oceny gotowości do migracji do platformy Azure obciążenia użytkownika. Z tego oprogramowania, zyski IT lepszy wgląd w zużycia użycia i zasobów aplikacji w celu uproszczenia procesu migracji. Oprogramowanie Lakeside służy do zbierania danych na każdy obszar roboczy, aby utworzyć jest kompleksowy raport na środowisk użytkowników, umożliwiające szybkie rozwiązywanie problemów i optymalizacji zasobów.
+## <a name="lakeside-software"></a>Lakeside oprogramowanie
 
-Oprogramowanie Lakeside środowisko cyfrowe rozwiązania, SysTrack, monitorowania może pomóc zapewnić doskonałe środowisko użytkownika, śledzenie wydajności oraz identyfikowaniu idealnych obciążeń na potrzeby migracji. SysTrack działa rozszerzenie wartość Windows pulpitu wirtualnego przy użyciu ocen doboru wielkości i ciągłego monitorowania środowiska użytkownika.
+![Logo oprogramowania Lakeside](./media/partners/lakeside.png)
 
-[Przejdź do witryny sieci Web partnera.](https://www.lakesidesoftware.com/assessments/wvd)
+Lakeside Software to dostawca usług dodanego pulpitu wirtualnego systemu Windows, który służy do wyposażania zespołów IT w oprogramowanie do monitorowania wydajności i oceniania gotowości do migracji na platformę Azure. Dzięki temu oprogramowaniu można wyraźniejszy wgląd w użycie aplikacji i zużycie zasobów w celu usprawnienia procesu migracji. Lakeside oprogramowanie zbiera dane w każdym obszarze roboczym w celu utworzenia kompleksowego raportu dotyczącego środowisk użytkowników, umożliwiając szybkie rozwiązywanie problemów i optymalizację zasobów.
 
-## <a name="liquidware"></a>Liquidware
+Rozwiązanie do monitorowania rozwiązań cyfrowych Lakeside oprogramowania, SysTrack, może pomóc zapewnić doskonałe środowisko użytkownika, śledząc wydajność i identyfikując idealne obciążenia do migracji. SysTrack działa, aby zwiększyć wartość pulpitu wirtualnego systemu Windows za pomocą ocen właściwych rozmiarów i ciągłego monitorowania środowisk użytkowników.
 
-Liquidware jest dostawcy usługi będące wartością dodaną pulpitu wirtualnego Windows, które dostarcza oprogramowanie, które zarządza i optymalizuje wdrażania wirtualnego pulpitu Windows. Pakiet Liquidware Essentials zapewnia dostarczanie aplikacji za pośrednictwem warstw, zarządzanie środowiskiem użytkownika i widoczność środowisko użytkownika kluczy i Diagnostyka. Za pomocą rozwiązania do oceny gotowości do migracji i analizowanie danych metryk użycia Liquidware zapewnia bezproblemowe pulpitów wirtualnych dla użytkowników końcowych.
+- [Zobacz Krótki opis wspólnego rozwiązania.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8Q)
+- [Przejdź do witryny sieci Web partnera.](https://www.lakesidesoftware.com/assessments/wvd)
 
-Podstawy Liquidware rozszerza wartość Windows pulpitu wirtualnego, efektywnie zbiorów profilów użytkowników i zbieranie danych klucza użytkownika uprościć migrację środowisk użytkownika na platformie Azure. Ponadto Liquidware Essentials upraszcza zarządzanie obrazami przez ujednolicenie profile użytkowników i aplikacje warstwowe zależny od praw można skonfigurować ustawienia zarządzania.
+## <a name="liquidware"></a>Cieczer
 
-[Przejdź do witryny sieci Web partnera.](https://www.liquidware.com/solutions/solutions-platform/microsoft)
+![Logo oprogramowania Liquid](./media/partners/liquidware.png)
+
+Liquider to dostawca usług dodanego pulpitu wirtualnego systemu Windows, który dostarcza oprogramowanie, które zarządza i optymalizuje wdrożenie pulpitu wirtualnego systemu Windows. Pakiet programu liquider Essentials zapewnia dostarczanie aplikacji za pomocą warstw, zarządzania środowiskiem użytkownika i kluczowych funkcji diagnostyki. Dzięki rozwiązaniom do oceny gotowości do migracji i analizie metryk użycia, środowisko płynne zapewnia bezproblemową obsługę pulpitu wirtualnego dla użytkowników końcowych.
+
+Program liquider Essentials rozszerza wartość pulpitu wirtualnego systemu Windows przez wydajne Zbieranie profilów użytkowników i gromadzenie kluczowych danych użytkownika w celu usprawnienia migracji środowisk użytkownika na platformę Azure. Dodatkowo program liquider upraszcza zarządzanie obrazami przez ujednolicenie profilów użytkowników i aplikacji warstwowych na podstawie konfigurowalnych ustawień zarządzania prawami.
+
+- [Zobacz Krótki opis wspólnego rozwiązania.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1)
+- [Przejdź do witryny sieci Web partnera.](https://www.liquidware.com/solutions/solutions-platform/microsoft)
 
 ## <a name="nerdio"></a>Nerdio
 
-Nerdio to platforma automatyzacji IT na platformie Azure, która ułatwia wdrażanie i zarządzanie nimi Windows pulpitu wirtualnego. Nerdio zapewnia wiedzy i technologii w celu wdrażania, cen, pakietu, zarządzanie i optymalizacji wdrożeń platformy Azure dla klientów — z pulpitem wirtualnym Windows frontonu i w środku.
+![Logo Nerdio](./media/partners/nerdio.png)
 
-Nerdio rozszerza wartość Windows pulpitu wirtualnego, co ułatwia aprowizowania zasobów platformy Azure i uprościć wdrażanie. Za pomocą Nerdio dla platformy Azure, dział IT może automatycznie wdrażać i zarządzać kompletne środowisko platformy Azure, tym pulpitu wirtualnego Windows, w obszarze dwie godziny.
+Nerdio to platforma automatyzacji IT platformy Azure, która ułatwia wdrażanie pulpitu wirtualnego systemu Windows i zarządzanie nim. Usługa Nerdio udostępnia wiedzę i technologie służące do wdrażania, cenowego, pakowania, zarządzania i optymalizowania wdrożeń platformy Azure dla klientów — z przodu i do centrum usług pulpitu wirtualnego systemu Windows.
 
-[Przejdź do witryny sieci Web partnera.](https://getnerdio.com/academy/windows-virtual-desktop-explained-for-msps/)
+Nerdio rozszerza wartość pulpitu wirtualnego systemu Windows, co ułatwia Inicjowanie obsługi zasobów platformy Azure i usprawnienie wdrażania. Program Nerdio for Azure umożliwia automatyczne wdrażanie i zarządzanie kompletnym środowiskiem platformy Azure, w tym pulpitem wirtualnym systemu Windows, w ciągu dwóch godzin.
+
+- [Zobacz Krótki opis wspólnego rozwiązania.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh)
+- [Przejdź do witryny sieci Web partnera.](https://getnerdio.com/academy/windows-virtual-desktop-explained-for-msps/)
 
 ## <a name="thinprint"></a>ThinPrint
 
-ThinPrint jest dostawcę usługi będące wartością dodaną Windows pulpitu wirtualnego, który oferuje proste i bezpieczne chmury drukowanie z pulpitu wirtualnego Windows. Za pomocą usług i oprogramowania istniejącej infrastruktury drukowania może posłużyć do drukowanie dokumentów z poziomu chmury. ThinPrint umożliwia połączenie lokalnego i drukarek sieciowych, co ułatwia użytkownikom na drukowanie w biurze lub pracuje zdalnie.
+![Logo ThinPrint](./media/partners/thinprint.png)
 
-Firmy ThinPrint ezeep stanowi ona rozszerzenie rozwiązania wartość Windows pulpitu wirtualnego, należy włączyć połączenie z istniejącą infrastrukturą drukowania przedsiębiorstwa. ezeep zapewnia użytkownikom kontrolę nad drukowanie w przedsiębiorstwie niezależnie od tego, gdzie się znajdują. Za pomocą ezeep, użytkownicy można wypełnić tę przerwę, między pulpitem wirtualnym Windows i sprzętem drukowania.
+ThinPrint to dostawca usług dodanego pulpitu wirtualnego systemu Windows, który zapewnia proste i bezpieczne drukowanie w chmurze z pulpitu wirtualnego systemu Windows. Dzięki usługom i oprogramowaniu istniejąca infrastruktura drukowania może być używana do drukowania dokumentów z chmury. Usługa ThinPrint umożliwia nawiązywanie połączeń zarówno z drukarkami lokalnymi, jak i sieciowymi, dzięki czemu użytkownicy mogą drukować w biurze lub zdalnie pracować.
 
-[Przejdź do witryny sieci Web partnera.](http://www.ezeep.com/wvd-printing)
+Rozwiązanie ezeep ThinPrint rozszerza wartość pulpitu wirtualnego systemu Windows, umożliwiając połączenie z istniejącą infrastrukturą drukowania w przedsiębiorstwie. ezeep zapewnia użytkownikom kontrolę nad drukowaniem w przedsiębiorstwie niezależnie od tego, gdzie się znajdują. Korzystając z ezeep, użytkownicy mogą mostkować przerwy między pulpitem wirtualnym i sprzętem drukowania systemu Windows.
+
+- [Zobacz Krótki opis wspólnego rozwiązania.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oYas)
+- [Przejdź do witryny sieci Web partnera.](http://www.ezeep.com/wvd-printing)
 
 ## <a name="workspot"></a>Workspot
 
-Workspot jest dostawcę usługi będące wartością dodaną Windows pulpitu wirtualnego, który udostępnia przedsiębiorstwom o wysokiej wydajności pulpity i stacje robocze na platformie Azure. Za pomocą Workspot, aprowizacji infrastruktury jest zautomatyzowane, co oznacza, że użytkownicy mają dostęp do ich środowiska pulpitu wirtualnego Windows z dowolnego miejsca na świecie dzięki wysokiej dostępności.
+![Logo Workspot](./media/partners/workspot.png)
 
-Workspot rozszerza wartość Windows pulpitu wirtualnego, upraszczając proces aprowizowania infrastruktury pulpitu w chmurze. Za pomocą Workspot zasoby można łatwo skalować w górę i w dół do potrzeb różnych użytkowników i wykorzystuje przypadków. Workspot można zoptymalizować wdrożenia o wysokiej wydajności procesora GPU stacji roboczych niezbędne CAD i inżynierów użytkowników, a także aplikacji Windows i pulpitów nawigacyjnych systemu Windows 10 dla wszystkich użytkowników biznesowych.
+Workspot to dostawca usług dodanej przez pulpit wirtualny systemu Windows, który służy do wyposażania przedsiębiorstw na komputery stacjonarne i stacje robocze o wysokiej wydajności na platformie Azure. W przypadku usługi Workspot obsługa infrastruktury jest zautomatyzowana, co oznacza, że użytkownicy mogą uzyskiwać dostęp do środowiska pulpitu wirtualnego systemu Windows z dowolnego miejsca na całym świecie i wysoką dostępność.
 
-[Przejdź do witryny sieci Web partnera.](https://www.workspot.com/wvd)
+Workspot rozszerza wartość pulpitu wirtualnego systemu Windows przez uproszczenie procesu aprowizacji infrastruktury pulpitu chmurowego. Dzięki Workspot zasoby można łatwo skalować w górę i w dół, aby zaspokoić potrzeby różnych użytkowników i przypadków użycia. Workspot może zoptymalizować wdrożenia dla stacji roboczych GPU o wysokiej wydajności niezbędnej dla programów CAD i inżynierów, a także aplikacji systemu Windows i komputerów stacjonarnych z systemem Windows 10 dla wszystkich użytkowników firmowych.
+
+- [Zobacz Krótki opis wspólnego rozwiązania.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8P)
+- [Przejdź do witryny sieci Web partnera.](https://www.workspot.com/wvd)
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Dowiedz się więcej na temat pulpitu wirtualnego Windows](overview.md)
-- [Tworzenie dzierżawy w usłudze Windows Virtual Desktop](tenant-setup-azure-active-directory.md)
+- [Dowiedz się więcej na temat pulpitu wirtualnego systemu Windows.](overview.md)
+- [Utwórz dzierżawcę na pulpicie wirtualnym systemu Windows.](tenant-setup-azure-active-directory.md)

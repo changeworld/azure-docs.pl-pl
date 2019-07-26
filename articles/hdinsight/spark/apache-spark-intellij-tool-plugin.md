@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: a2b6cdf9fbdb27372b089a29c1a3c5d0f1c629c9
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 32f5ff2ebc9d938b1936d7f2929af83d552a543d
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442104"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489865"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Samouczek: Tworzenie aplikacji Apache Spark dla klastra usługi HDInsight za pomocą Azure Toolkit for IntelliJ
 
@@ -171,7 +171,7 @@ Użytkownik może [zalogować się do subskrypcji platformy Azure](#sign-in-to-y
 
 ### <a name="link-a-cluster"></a>Łączenie klastra
 
-Można połączyć klaster usługi HDInsight przy użyciu nazwy użytkownika zarządzanego przez Apache Ambari. Podobnie w przypadku klastra usługi HDInsight przyłączonego do domeny można łączyć się za pomocą domeny i nazwy użytkownika, takich jak user1@contoso.com. Ponadto można połączyć klaster usługi usługi Livy.
+Można połączyć klaster usługi HDInsight przy użyciu nazwy użytkownika zarządzanego przez Apache Ambari. Podobnie w przypadku klastra usługi HDInsight przyłączonego do domeny można łączyć się za pomocą domeny i nazwy użytkownika, takich jak `user1@contoso.com`. Ponadto można połączyć klaster usługi usługi Livy.
 
 1. Na pasku menu Przejdź do **widoku** > **Narzędzia** > **Eksplorator platformy Microsoft Azure**.
 
@@ -183,7 +183,7 @@ Można połączyć klaster usługi HDInsight przy użyciu nazwy użytkownika zar
 
     * **Klaster usługi HDInsight**  
   
-        |Właściwość |Wartość |
+        |Właściwość |Value |
         |----|----|
         |Typ zasobu linku|Z listy rozwijanej wybierz pozycję **klaster usługi HDInsight** .|
         |Nazwa/adres URL klastra| Wprowadź nazwę klastra.|
@@ -195,7 +195,7 @@ Można połączyć klaster usługi HDInsight przy użyciu nazwy użytkownika zar
 
     * **Usługa usługi Livy**  
   
-        |Właściwość |Value |
+        |Właściwość |Wartość |
         |----|----|
         |Typ zasobu linku|Z listy rozwijanej wybierz pozycję **Usługa usługi Livy** .|
         |Punkt końcowy usługi Livy| Wprowadź punkt końcowy usługi Livy|

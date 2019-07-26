@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów z konfiguracjami delegowanie ograniczone protokołu Kerberos dla serwera Proxy aplikacji | Dokumentacja firmy Microsoft
+title: Rozwiązywanie problemów dotyczących konfiguracji ograniczonego delegowania protokołu Kerberos dla serwera proxy aplikacji | Microsoft Docs
 description: Rozwiązywanie problemów z konfiguracji ograniczonego delegowania protokołu Kerberos dla serwera Proxy aplikacji
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 04/23/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c758b473dcdf36456bcc3569c18849488ad14983
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 3ca50cfb8697fdbb8c71054c5a6b4d5e23792eb5
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702653"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381526"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Rozwiązywanie problemów z konfiguracjami delegowanie ograniczone protokołu Kerberos dla serwera Proxy aplikacji
 
@@ -46,7 +46,7 @@ Z tego powodu zaleca się upewnić, że zostały spełnione wszystkie wymagania 
 
 - Nie jest niczym niezwykłym serwerem członkowskim domeny otworzyć okno dialogowe z bezpiecznego kanału z określonego kontrolera domeny (DC). Następnie serwer może przenieść do innego okna dialogowego w danym momencie. Dlatego hosty łącznika nie są ograniczone do komunikacji z lokacją lokalną tylko określone kontrolery domeny.
 - Scenariusze międzydomenowe polegają na odwołań, które kierują hostem łącznika do kontrolerów domeny, które mogą być spoza obwodu sieci lokalnej. W takich przypadkach jest równie ważne również przesyłać dane wartości do kontrolerów domeny, które reprezentują w innych domenach. W przeciwnym razie delegowanie nie powiedzie się.
-- Jeśli to możliwe, unikaj wprowadzania żadnych aktywnych urządzeń lub Identyfikatory adresów IP między hostami łącznika i kontrolery domeny. Urządzenia te są czasami zbyt bez wprowadzania niepożądanych i zakłóca core ruch RPC.
+- Jeśli to możliwe, unikaj wprowadzania żadnych aktywnych urządzeń lub Identyfikatory adresów IP między hostami łącznika i kontrolery domeny. Te urządzenia są czasami zbyt inwazyjne i zakłócają podstawowy ruch RPC.
 
 Test delegowania w prostych scenariuszy. Więcej zmiennych, które można wprowadzić, tym bardziej Niewykluczone, że będą konkurować o. Aby zaoszczędzić czas, Ogranicz testowanie do pojedynczego łącznika. Po ten problem został rozwiązany, należy dodać dodatkowe łączniki.
 
@@ -60,7 +60,7 @@ Co zawiera problem ograniczonego delegowania protokołu Kerberos? Istnieje kilka
 
 ![Przykład: Autoryzacja nie powiodła się ze względu na Brak uprawnień](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic2.png)
 
-Oba te obrazy Pokaż tego samego objaw: Błąd logowania jednokrotnego. Odmowa dostępu użytkownika do aplikacji.
+Oba te obrazy przedstawiają ten sam objaw: Błąd logowania jednokrotnego. Odmowa dostępu użytkownika do aplikacji.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
@@ -129,7 +129,7 @@ Użytkownik biletu protokołu Kerberos, dostarczone przez łącznik. Na tym etap
 
      *Łącznik serwera Proxy aplikacji usługi AAD firmy Microsoft nie może uwierzytelnić użytkownika, ponieważ serwer zaplecza odpowiada prób uwierzytelnienia Kerberos z powodu błędu HTTP 401.*
 
-      ![Pokazuje HTTTP 401, jest zabronione błąd](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic8.png)
+      ![Pokazuje HTTTP 401 — Błąd zabroniony](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic8.png)
 
    - Sprawdź aplikacji usług IIS. Upewnij się, że pulę skonfigurowaną aplikację i nazwy SPN są skonfigurowane do używania tego samego konta w usłudze Azure AD. Przejdź w usługach IIS, jak pokazano na poniższej ilustracji:
 
@@ -137,7 +137,7 @@ Użytkownik biletu protokołu Kerberos, dostarczone przez łącznik. Na tym etap
 
       Po określeniu tożsamości, upewnij się, że to konto jest skonfigurowane przy użyciu tej nazwy SPN. Może to być na przykład `setspn –q http/spn.wacketywack.com`. Wprowadź następujący tekst w wierszu polecenia:
 
-      ![Pokazuje okno polecenia SetSPN](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic10.png)
+      ![Pokazuje okno poleceń SetSPN](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic10.png)
 
    - Sprawdź nazwę SPN, zdefiniowane w odniesieniu do ustawień aplikacji w portalu. Upewnij się, że tej samej nazwy SPN skonfigurowane w odniesieniu do obiektu docelowego konta usługi Azure AD jest używany przez puli aplikacji.
 
@@ -165,8 +165,8 @@ Jeśli nadal nie możesz postępu, pomocy technicznej firmy Microsoft mogą pom�
 
 ## <a name="other-scenarios"></a>Inne scenariusze
 
-- Serwer Proxy aplikacji usługi Azure żąda biletu protokołu Kerberos przed wysłaniem jej żądania do aplikacji. Ta metoda uwierzytelniania nie, takich jak aplikacje innych firm. Te aplikacje oczekiwać bardziej konwencjonalne negocjacji została wykonana. Pierwsze żądanie jest anonimowe, co pozwala aplikacji na odpowiedź z typami uwierzytelniania, obsługuje on za pośrednictwem 401.
-- Uwierzytelniania z wieloma przeskokami są często używane w scenariuszach gdzie warstwy aplikacji, za pomocą zaplecza i frontonu, gdy oba wymagają uwierzytelniania, takiego jak SQL Server Reporting Services. Aby skonfigurować scenariusza z wieloma przeskokami, zobacz artykuł pomocy technicznej [Kerberos ograniczone delegowanie może wymagać przejścia protokołu w scenariuszach z wieloma przeskokami](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul).
+- Serwer Proxy aplikacji usługi Azure żąda biletu protokołu Kerberos przed wysłaniem jej żądania do aplikacji. Niektóre aplikacje innych firm nie są podobne do tej metody uwierzytelniania. Te aplikacje oczekiwać bardziej konwencjonalne negocjacji została wykonana. Pierwsze żądanie jest anonimowe, co pozwala aplikacji na odpowiedź z typami uwierzytelniania, obsługuje on za pośrednictwem 401.
+- Uwierzytelniania z wieloma przeskokami są często używane w scenariuszach gdzie warstwy aplikacji, za pomocą zaplecza i frontonu, gdy oba wymagają uwierzytelniania, takiego jak SQL Server Reporting Services. Aby skonfigurować scenariusz wielodostępny, zobacz artykuł pomocy technicznej [ograniczone delegowanie protokołu Kerberos może wymagać przejścia do protokołu w scenariuszach z](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul)przeskokiem.
 
 ## <a name="next-steps"></a>Następne kroki
 

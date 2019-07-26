@@ -1,5 +1,5 @@
 ---
-title: Nie można uzyskać dostępu tego błędu aplikacji firmowych, korzystając z aplikacji serwera Proxy aplikacji | Dokumentacja firmy Microsoft
+title: Nie można uzyskać dostępu do tego błędu aplikacji firmowej przy użyciu aplikacji serwera proxy aplikacji | Microsoft Docs "
 description: Jak rozwiązać typowe problemy dotyczące dostępu do aplikacji serwera Proxy aplikacji usługi Azure AD.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 734aeac1f4f2850d73dcdc9f9cc6ceac45708884
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 6e54b54f592082ad998e1f5dfbdcb5ed30e6dc4a
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807727"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381400"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>"Nie może uzyskiwać dostęp do tej aplikacji firmowej" błąd, podczas korzystania z aplikacji serwera Proxy aplikacji
 
@@ -31,9 +31,9 @@ Ten artykuł pomaga w rozwiązywaniu typowych problemów dotyczących błędów 
 
 Gdy zostanie wyświetlony ten błąd, należy znaleźć kod stanu na stronę błędu. Ten kod jest prawdopodobnie jednym z poniższych kodów stanu:
 
-- **Limit czasu bramy**: Usługa serwera Proxy aplikacji nie ma dostępu do łącznika. Ten błąd zazwyczaj wskazuje na problem z przypisaniem łącznika, łącznik, lub sieci reguł wokół łącznika.
-- **Bad Gateway**: Łącznik nie może uzyskać dostępu do aplikacji zaplecza. Ten błąd może wskazywać na błędną konfiguracją aplikacji.
-- **Dostęp zabroniony**: Użytkownik nie ma uprawnień dostępu do aplikacji. Ten błąd może wystąpić, gdy użytkownik nie jest przypisany do aplikacji w usłudze Azure Active Directory lub jeśli do wewnętrznej bazy danych użytkownika nie ma uprawnień dostępu do aplikacji.
+- **Limit czasu bramy**: Usługa serwera proxy aplikacji nie może nawiązać połączenia z łącznikiem. Ten błąd zazwyczaj wskazuje na problem z przypisaniem łącznika, łącznik, lub sieci reguł wokół łącznika.
+- **Zła Brama**: Łącznik nie może nawiązać połączenia z aplikacją zaplecza. Ten błąd może wskazywać na błędną konfiguracją aplikacji.
+- **Zabronione**: Użytkownik nie ma uprawnień dostępu do aplikacji. Ten błąd może wystąpić, gdy użytkownik nie jest przypisany do aplikacji w usłudze Azure Active Directory lub jeśli do wewnętrznej bazy danych użytkownika nie ma uprawnień dostępu do aplikacji.
 
 Aby znaleźć kod, spójrz na tekst w lewym dolnym rogu komunikat o błędzie dla pola "Kod stanu:". Zobacz wszystkie dodatkowe porady w dolnej części strony.
 
@@ -64,24 +64,24 @@ Jeśli upewnij się, że użytkownik jest przypisany do aplikacji na platformie 
 
 ## <a name="check-the-applications-internal-url"></a>Sprawdź wewnętrzny adres URL aplikacji
 
-Pierwszym krokiem szybki, sprawdź i rozwiązać wewnętrzny adres URL, otwierając aplikację za pomocą **aplikacje dla przedsiębiorstw**, a następnie wybierając pozycję **serwera Proxy aplikacji** menu. Sprawdź, czy wewnętrzny adres URL jest używana z siecią lokalną, aby uzyskać dostęp do aplikacji.
+Pierwszym krokiem szybki, sprawdź i rozwiązać wewnętrzny adres URL, otwierając aplikację za pomocą **aplikacje dla przedsiębiorstw**, a następnie wybierając pozycję **serwera Proxy aplikacji** menu. Upewnij się, że wewnętrzny adres URL jest używany w sieci lokalnej w celu uzyskania dostępu do aplikacji.
 
 ## <a name="check-the-application-is-assigned-to-a-working-connector-group"></a>Sprawdź, czy aplikacja jest przypisany do działającego grupy łączników
 
 Do weryfikowania aplikacji jest przypisany do pracy grupy łączników:
 
 1. Otwórz aplikację w portalu, przechodząc do **usługi Azure Active Directory**, klikając na **aplikacje dla przedsiębiorstw**, następnie **wszystkich aplikacji.** Otwórz aplikację, a następnie wybierz **serwera Proxy aplikacji** menu po lewej stronie.
-1. Przyjrzyj się pole grupy łączników. W przypadku Brak aktywnych łączników w grupie, jest wyświetlane ostrzeżenie. Jeśli nie widzisz żadnych ostrzeżeń, przejdź do Sprawdź wszystkie wymagane porty są dozwolone.
+1. Przyjrzyj się pole grupy łączników. W przypadku Brak aktywnych łączników w grupie, jest wyświetlane ostrzeżenie. Jeśli nie widzisz żadnych ostrzeżeń, przejdź do, aby sprawdzić, czy wszystkie wymagane porty są dozwolone.
 1. Jeśli Nieprawidłowa grupa łączników jest wyświetlany, wybierz za pomocą listy rozwijanej właściwej grupy, a upewnij się, że nie są już wyświetlane ostrzeżenia. Jeśli wyświetlana jest zamierzony grupy łączników, kliknij przycisk z komunikatem ostrzegawczym, aby otworzyć stronę za pomocą funkcji zarządzania łącznika.
 1. W tym miejscu istnieje kilka sposobów, aby przejść do szczegółów dalszych:
 
-   - Łącznik usługi active przenieść do grupy: Jeśli masz aktywny łącznik, powinny należeć do tej grupy, która ma linii wzroku do docelowej aplikacji zaplecza, można przenieść łącznika w przypisanej grupie. Aby to zrobić, kliknij przycisk łącznika. W polu "Grupa łączników" Użyj listy rozwijanej wybierz poprawną grupę, a następnie kliknij przycisk Zapisz.
-   - Pobierz nowy łącznik dla tej grupy: Na tej stronie można uzyskać link do [pobrać nowy łącznik](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Łącznik można zainstalować na komputerze przy użyciu bezpośredniego linii wzroku do aplikacji zaplecza. Zazwyczaj łącznik jest zainstalowany na tym samym serwerze co aplikacja. Umożliwia pobieranie łącznika link Pobierz łącznik na komputerze docelowym. Następnie kliknij łącznik, a następnie użyć listy rozwijanej "łącznik grupy", aby upewnij się, że należy on do odpowiedniej grupy.
-   - Badanie nieaktywne łącznika: Jeśli łącznik jest wyświetlana jako nieaktywny, nie może uzyskać dostęp do usługi. Ten błąd jest zwykle z powodu niektóre porty wymagane blokowane. Aby rozwiązać ten problem, przejdź do Sprawdź wszystkie wymagane porty są dozwolone.
+   - Przenieś aktywny Łącznik do grupy: Jeśli masz aktywny łącznik, który powinien należeć do tej grupy i ma linię wglądu w docelową aplikację zaplecza, możesz przenieść Łącznik do przypisanej grupy. Aby to zrobić, kliknij przycisk łącznika. W polu "Grupa łączników" Użyj listy rozwijanej wybierz poprawną grupę, a następnie kliknij przycisk Zapisz.
+   - Pobierz nowy łącznik dla tej grupy: Na tej stronie można pobrać link umożliwiający [pobranie nowego łącznika](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Łącznik można zainstalować na komputerze przy użyciu bezpośredniego linii wzroku do aplikacji zaplecza. Zwykle łącznik jest instalowany na tym samym serwerze co aplikacja. Umożliwia pobieranie łącznika link Pobierz łącznik na komputerze docelowym. Następnie kliknij łącznik, a następnie użyć listy rozwijanej "łącznik grupy", aby upewnij się, że należy on do odpowiedniej grupy.
+   - Zbadaj nieaktywny łącznik: Jeśli łącznik jest wyświetlany jako nieaktywny, nie można nawiązać połączenia z usługą. Ten błąd jest zwykle z powodu niektóre porty wymagane blokowane. Aby rozwiązać ten problem, należy przejść do, aby sprawdzić, czy wszystkie wymagane porty są dozwolone.
 
 Po zakończeniu korzystania z następujące kroki, aby upewnić się, że aplikacja została przypisana do grupy z pracy łączniki, przetestuj aplikację ponownie. Jeśli nadal nie działa, przejdź do następnej sekcji.
 
-## <a name="check-all-required-ports-are-open"></a>Sprawdź wszystkie wymagane porty są otwarte
+## <a name="check-all-required-ports-are-open"></a>Sprawdź, czy wszystkie wymagane porty są otwarte
 
 Aby sprawdzić, czy wszystkie wymagane porty są otwarte, zobacz dokumentację na otwieranie portów. Jeśli wszystkie wymagane porty są otwarte, przejdź do następnej sekcji.
 

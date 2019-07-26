@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: normesta
-ms.openlocfilehash: 4a8c69dc06b2de08016ae282413402061cdb89d1
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: fc2d7e4f611e1eee9c369ef26aa7bf66feb7c888
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314404"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385683"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Znane problemy związane z usługi Azure Data Lake Storage Gen2
 
@@ -54,20 +54,9 @@ Jeśli zarejestrujesz się w publicznej wersji zapoznawczej dostępu wieloprotok
 
 W tej sekcji opisano problemy i ograniczenia dotyczące używania interfejsów API obiektów blob i interfejsów API Data Lake Storage Gen2 do działania na tych samych danych.
 
-Te interfejsy API REST obiektów BLOB nie są obsługiwane:
-
-* [Umieść obiekt BLOB (strona)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-* [Umieść stronę](https://docs.microsoft.com/rest/api/storageservices/put-page)
-* [Pobierz zakresy stron](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
-* [Obiekt BLOB kopiowania przyrostowego](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
-* [Umieść stronę na podstawie adresu URL](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
-* [Put obiekt BLOB (append)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-* [Dołącz blok](https://docs.microsoft.com/rest/api/storageservices/append-block)
-* [Dołącz blok z adresu URL](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
-
 * Nie można używać zarówno interfejsów API obiektów blob, jak i Data Lake Storage interfejsów API do zapisu w tym samym wystąpieniu pliku.
 
-* W przypadku zapisywania do pliku przy użyciu Data Lake Storage Gen2 interfejsów API, bloki tego pliku nie będą widoczne dla wywołań interfejsu API [pobierania listy zablokowanych](https://docs.microsoft.comrest/api/storageservices/get-block-list) .
+* W przypadku zapisywania do pliku przy użyciu Data Lake Storage Gen2 interfejsów API, bloki tego pliku nie będą widoczne dla wywołań interfejsu API [pobierania listy zablokowanych](https://docs.microsoft.com/rest/api/storageservices/get-block-list) .
 
 * Plik można zastąpić za pomocą interfejsów API Data Lake Storage Gen2 lub interfejsów API obiektów BLOB. Nie wpłynie to na właściwości pliku.
 
@@ -78,6 +67,17 @@ Te interfejsy API REST obiektów BLOB nie są obsługiwane:
 * Jeśli używasz interfejsu API [usuwania obiektów BLOB](https://docs.microsoft.com/rest/api/storageservices/delete-blob) do usuwania katalogu, ten katalog zostanie usunięty tylko wtedy, gdy jest pusty.
 
   Oznacza to, że nie można używać usługi Blob API Delete katalogów rekursywnie.
+
+Te interfejsy API REST obiektów BLOB nie są obsługiwane:
+
+* [Umieść obiekt BLOB (strona)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [Umieść stronę](https://docs.microsoft.com/rest/api/storageservices/put-page)
+* [Pobierz zakresy stron](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
+* [Obiekt BLOB kopiowania przyrostowego](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
+* [Umieść stronę na podstawie adresu URL](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
+* [Put obiekt BLOB (append)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [Dołącz blok](https://docs.microsoft.com/rest/api/storageservices/append-block)
+* [Dołącz blok z adresu URL](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
 
 ## <a name="issues-with-unmanaged-virtual-machine-vm-disks"></a>Problemy z niezarządzanymi dyskami maszyn wirtualnych
 
@@ -94,12 +94,13 @@ W poniższej tabeli wymieniono wszystkie inne funkcje i narzędzia, które nie s
 | **Narzędzie AzCopy** | Obsługa specyficzna dla wersji <br><br>Użyj tylko najnowszej wersji AzCopy ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Wcześniejsze wersje AzCopy, takie jak AzCopy v 8.1, nie są obsługiwane.|
 | **Zasady zarządzania cyklem życia usługi Azure Blob Storage** | Obsługiwane tylko wtedy, gdy zarejestrujesz się w dostępie do usługi [Data Lake Storage](data-lake-storage-multi-protocol-access.md) w wersji zapoznawczej. Warstwy dostępu chłodna i archiwalna są obsługiwane tylko w wersji zapoznawczej. Usuwanie migawek obiektów BLOB nie jest jeszcze obsługiwane. |
 | **Azure Content Delivery Network (CDN)** | Jeszcze nieobsługiwane|
-| **Usługa Azure Search** |Jeszcze nieobsługiwane|
+| **Usługa Azure Search** |Obsługiwane tylko wtedy, gdy zarejestrujesz się w dostępie do usługi [Data Lake Storage](data-lake-storage-multi-protocol-access.md) w wersji zapoznawczej.|
 | **Azure Storage Explorer** | Obsługa specyficzna dla wersji <br><br>Używaj tylko wersji `1.6.0` lub nowszej. <br>Wersja `1.6.0` jest dostępna bezpłatnie do [pobrania](https://azure.microsoft.com/features/storage-explorer/).|
 | **Listy ACL kontenera obiektów BLOB** |Jeszcze nieobsługiwane|
 | **Blobfuse** |Jeszcze nieobsługiwane|
 | **Niestandardowe domeny** |Jeszcze nieobsługiwane|
 | **Eksplorator systemu plików** | Ograniczona pomoc techniczna |
+| **Rejestrowanie diagnostyczne** |Obsługiwane tylko wtedy, gdy zarejestrujesz się w dostępie do usługi [Data Lake Storage](data-lake-storage-multi-protocol-access.md) w wersji zapoznawczej.|
 | **Niezmienny magazyn** |Jeszcze nieobsługiwane <br><br>Niezmienny magazyn umożliwia przechowywanie danych w [robaku (zapis jeden raz, odczyt wielu)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) .|
 | **Warstwy na poziomie obiektów** |Warstwy chłodna i archiwalna są obsługiwane tylko wtedy, gdy zarejestrujesz się w dostępie do usługi [Data Lake Storage](data-lake-storage-multi-protocol-access.md) Preview. <br><br> Wszystkie inne warstwy dostępu nie są jeszcze obsługiwane.|
 | **Obsługa programu PowerShell i interfejsu wiersza polecenia** | Ograniczona funkcjonalność <br><br>Obsługiwane są operacje zarządzania, takie jak tworzenie konta. Operacje płaszczyzny danych, takie jak przekazywanie i pobieranie plików, są w publicznej wersji zapoznawczej w ramach [dostępu do wieloprotokołowego Data Lake Storage](data-lake-storage-multi-protocol-access.md). Praca z katalogami i ustawianie list kontroli dostępu (ACL) nie jest jeszcze obsługiwana. |

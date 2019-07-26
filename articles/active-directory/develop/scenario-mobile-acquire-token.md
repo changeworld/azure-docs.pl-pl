@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c1ac880aa8274cc9a4ea554de84dcb46476236f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: d49717355cab5441d26608fa12333bd1b8b73d44
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320908"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68413541"
 ---
 # <a name="mobile-app-that-calls-web-apis---get-a-token"></a>Aplikacja mobilna, która wywołuje interfejsy API sieci Web — uzyskiwanie tokenu
 
@@ -144,8 +144,10 @@ applicationContext.acquireTokenSilent(with: parameters) { (result, error) in
 
 #### <a name="xamarin"></a>Xamarin
 
+Poniższy przykład pokazuje minimalny kod, aby interaktywnie uzyskać token do odczytywania profilu użytkownika przy użyciu Microsoft Graph.
+
 ```CSharp
-string[] scopes = new string["https://graph.microsoft.com/.default"];
+string[] scopes = new string[] {"user.read"};
 var app = PublicClientApplicationBuilder.Create(clientId).Build();
 var accounts = await app.GetAccountsAsync();
 AuthenticationResult result;
@@ -154,12 +156,48 @@ try
  result = await app.AcquireTokenSilent(scopes, accounts.FirstOrDefault())
              .ExecuteAsync();
 }
-catch(MsalUiRequiredException e)
+catch(MsalUiRequiredException)
 {
  result = await app.AcquireTokenInteractive(scopes)
              .ExecuteAsync();
 }
 ```
+
+### <a name="mandatory-parameters"></a>Parametry obowiązkowe
+
+`AcquireTokenInteractive`ma tylko jeden obowiązkowy parametr ``scopes``, który zawiera Wyliczenie ciągów definiujących zakresy, dla których wymagany jest token. Jeśli token jest przeznaczony dla Microsoft Graph, wymagane zakresy można znaleźć w dokumentacji interfejsu API dla każdego interfejsu API programu Microsoft Graph w sekcji o nazwie "uprawnienia". Na przykład aby [wyświetlić listę kontaktów użytkownika](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_contacts), należy użyć zakresu "User. Read", "Contacts. Read". Zobacz również [Microsoft Graph informacje](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)o uprawnieniach.
+
+Jeśli nie określono go podczas kompilowania aplikacji, w systemie Android należy również określić działanie nadrzędne (przy użyciu `.WithParentActivityOrWindow`, patrz poniżej), aby token odwracał do tego działania nadrzędnego po interakcji. Jeśli nie zostanie on określony, zostanie zgłoszony wyjątek podczas wywoływania `.ExecuteAsync()`.
+
+### <a name="specific-optional-parameters"></a>Określone parametry opcjonalne
+
+#### <a name="withprompt"></a>WithPrompt
+
+`WithPrompt()`służy do kontrolowania interakcji z użytkownikiem przez określenie monitu
+
+<img src="https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png" width="25%" />
+
+Klasa definiuje następujące stałe:
+
+- ``SelectAccount``: wymusi, aby usługa STS zaprezentować okno dialogowe wyboru konta zawierające konta, dla których użytkownik ma sesję. Ta opcja jest przydatna, gdy deweloperzy aplikacji chcą zezwolić użytkownikom na wybór różnych tożsamości. Ta opcja umożliwia MSAL wysyłanie ``prompt=select_account`` do dostawcy tożsamości. Ta opcja jest domyślna i jest dobrym zadaniem do zapewnienia najlepszego możliwego środowiska na podstawie dostępnych informacji (konta, obecności sesji użytkownika itd.). ...). Nie zmieniaj go, chyba że masz dobry powód do tego celu.
+- ``Consent``: umożliwia deweloperowi aplikacji wymuszenie monitowania użytkownika o zgodę, nawet jeśli zgoda została udzielona wcześniej. W takim przypadku MSAL wysyła `prompt=consent` do dostawcy tożsamości. Ta opcja może być używana w niektórych aplikacjach ukierunkowanych na zabezpieczenia, w których organizacja organizacji wymaga, aby użytkownik przedstawił okno dialogowe zgody za każdym razem, gdy aplikacja jest używana.
+- ``ForceLogin``: umożliwia deweloperowi aplikacji wyświetlenie monitu o podanie poświadczeń przez usługę, nawet jeśli ten monit nie jest wymagany. Ta opcja może być przydatna, jeśli uzyskanie tokenu kończy się niepowodzeniem, aby pozwolić użytkownikowi na ponowne logowanie. W takim przypadku MSAL wysyła `prompt=login` do dostawcy tożsamości. Z tego względu zaobserwowano, że został on użyty w niektórych aplikacjach ukierunkowanych na zabezpieczenia, w których administrator organizacji wymaga, aby użytkownik zalogował się ponownie w każdym momencie, gdy uzyskuje dostęp do określonych części aplikacji.
+- ``Never``(tylko w przypadku programu .NET 4,5 i WinRT) nie monituje użytkownika, ale zamiast tego spróbuje użyć pliku cookie przechowywanego w ukrytym osadzonym widoku sieci Web (patrz poniżej: Widoki sieci Web w programie MSAL.NET). Użycie tej opcji może zakończyć się niepowodzeniem, a `AcquireTokenInteractive` w takim przypadku zostanie zgłoszony wyjątek w celu powiadomienia o konieczności interakcji z interfejsem użytkownika i należy użyć innego `Prompt` parametru.
+- ``NoPrompt``: Nie wyśle żadnego monitu do dostawcy tożsamości. Ta opcja jest przydatna tylko w przypadku Azure AD B2C edytowania zasad profilu (zobacz [szczegóły B2C](https://aka.ms/msal-net-b2c-specificities)).
+
+#### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
+
+Ten modyfikator jest używany w zaawansowanym scenariuszu, w którym użytkownik powinien wstępnie wyrazić zgodę na kilka zasobów z góry (i nie chce używać powyższej zgody, która zwykle jest używana z MSAL.NET/Microsoft Identity platform v 2.0). Aby uzyskać szczegółowe informacje [, zobacz How to: czy użytkownik ma zgodę na dostęp do kilku zasobów](scenario-desktop-production.md#how-to-have--the-user-consent-upfront-for-several-resources).
+
+```CSharp
+var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
+                     .WithExtraScopeToConsent(scopesForVendorApi)
+                     .ExecuteAsync();
+```
+
+#### <a name="other-optional-parameters"></a>Inne parametry opcjonalne
+
+Dowiedz się więcej o wszystkich innych opcjonalnych `AcquireTokenInteractive` parametrach z dokumentacji referencyjnej dla [AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods)
 
 ### <a name="via-the-protocol"></a>Za pośrednictwem protokołu
 
@@ -167,7 +205,7 @@ Nie zalecamy użycia protokołu bezpośrednio. Jeśli to zrobisz, aplikacja nie 
 
 W przypadku korzystania z protokołu do uzyskiwania tokenów dla aplikacji mobilnych należy wykonać dwa żądania: uzyskaj kod autoryzacji i wymieniaj go z tokenem.
 
-#### <a name="get-authorization-code"></a>Pobierz kod autoryzacji
+#### <a name="get-authorization-code"></a>Uzyskaj kod autoryzacji
 
 ```Text
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?

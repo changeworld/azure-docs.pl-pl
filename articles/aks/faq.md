@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: mlearned
-ms.openlocfilehash: 554eba87efc56e2dadb3fb2d0cb78cd8b7ea7237
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 7aff0fe47d1586b63157d5df7882fc338637f714
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302722"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381961"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Często zadawane pytania dotyczące usługi Azure Kubernetes Service (AKS)
 
@@ -140,6 +140,50 @@ Za `az aks update-credentials` pomocą polecenia można przenieść klaster AKS 
 ## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>Czy mogę przenieść klaster między subskrypcjami?
 
 Przenoszenie klastrów między subskrypcjami nie jest obecnie obsługiwane.
+
+## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>Czy mogę przenieść klastry AKS z bieżącej subskrypcji platformy Azure do innej? 
+
+Przeniesienie klastra AKS i skojarzonych z nim zasobów między subskrypcjami platformy Azure nie jest obsługiwane.
+
+## <a name="why-is-my-cluster-delete-taking-so-long"></a>Dlaczego mój klaster usuwanie trwa długo? 
+
+Większość klastrów jest usuwana na żądanie użytkownika; w niektórych przypadkach, zwłaszcza w przypadku, gdy klienci korzystają z własnej grupy zasobów lub że usuwanie zadań RG może zająć trochę czasu lub niepowodzeniem. Jeśli wystąpi problem z usuwaniem, należy sprawdzić, czy nie masz blokad w RG, że wszystkie zasoby spoza RG są nieskojarzone z RG itp.
+
+## <a name="if-i-have-pod--deployments-in-state-nodelost-or-unknown-can-i-still-upgrade-my-cluster"></a>Jeśli mam element/wdrożenia w stanie "NodeLost" lub "nieznany" Czy mogę uaktualnić klaster?
+
+Można, ale AKS nie jest to zalecane. Uaktualnienia powinny być wykonywane, gdy stan klastra jest znany i w dobrej kondycji.
+
+## <a name="if-i-have-a-cluster-with-one-or-more-nodes-in-an-unhealthy-state-or-shut-down-can-i-perform-an-upgrade"></a>Czy w przypadku klastra z co najmniej jednym węzłem w stanie złej kondycji można przeprowadzić uaktualnienie?
+
+Nie, Usuń/Usuń wszystkie węzły w stanie awarii lub w inny sposób usunięte z klastra przed uaktualnieniem.
+
+## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Klaster został usunięty, ale zapoznaj się z błędem`[Errno 11001] getaddrinfo failed` 
+
+Najczęściej jest to spowodowane tym, że użytkownicy, którzy mają co najmniej jedną sieciową grupę zabezpieczeń (sieciowych grup zabezpieczeń), są nadal używani i skojarzeni z klastrem.  Usuń je i spróbuj ponownie wykonać operację usuwania.
+
+## <a name="i-ran-an-upgrade-but-now-my-pods-are-in-crash-loops-and-readiness-probes-fail"></a>Uruchomiono uaktualnianie, ale teraz moje zasobniki są w pętli awarii, a sondy gotowości nie powiodły się?
+
+Upewnij się, że nazwa główna usługi nie wygasła.  Zobacz: [AKS nazwy głównej usługi](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) i [AKS zaktualizuj poświadczenia](https://docs.microsoft.com/azure/aks/update-credentials).
+
+## <a name="my-cluster-was-working-but-suddenly-can-not-provision-loadbalancers-mount-pvcs-etc"></a>Mój klaster działał, ale nagle nie może zainicjować obsługi LoadBalancers, instalacji obwodów PVC itp.? 
+
+Upewnij się, że nazwa główna usługi nie wygasła.  Zobacz: [AKS nazwy głównej usługi](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) i [AKS zaktualizuj poświadczenia](https://docs.microsoft.com/azure/aks/update-credentials).
+
+## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>Czy można używać interfejsów API zestawu skalowania maszyn wirtualnych do skalowania ręcznie?
+
+Nie, operacje skalowania przy użyciu interfejsów API zestawu skalowania maszyn wirtualnych nie są obsługiwane. Użyj interfejsów API AKS (`az aks scale`).
+
+## <a name="can-i-use-virtual-machine-scale-sets-to-manually-scale-to-0-nodes"></a>Czy można używać zestawów skalowania maszyn wirtualnych do ręcznego skalowania do 0 węzłów?
+
+Nie, operacje skalowania przy użyciu interfejsów API zestawu skalowania maszyn wirtualnych nie są obsługiwane.
+
+## <a name="can-i-stop-or-de-allocate-all-my-vms"></a>Czy mogę zatrzymać lub cofnąć przydzielenie wszystkich moich maszyn wirtualnych?
+
+Chociaż AKS ma mechanizmy odporności, aby wytrzymać takie konfiguracje i odzyskania z niego, nie jest to zalecana konfiguracja.
+
+## <a name="can-i-use-custom-vm-extensions"></a>Czy mogę używać niestandardowych rozszerzeń maszyn wirtualnych?
+
+Żaden AKS nie jest usługą zarządzaną i manipulowanie zasobami IaaS nie jest obsługiwane. Aby zainstalować składniki niestandardowe itd. Skorzystaj z interfejsów API i mechanizmów Kubernetes. Na przykład aby zainstalować wymagane składniki, Skorzystaj z DaemonSets.
 
 <!-- LINKS - internal -->
 

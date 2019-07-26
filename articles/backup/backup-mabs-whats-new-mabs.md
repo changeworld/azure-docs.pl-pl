@@ -1,19 +1,18 @@
 ---
 title: Co nowego w programie Microsoft Azure Backup Server
 description: Serwer Microsoft Azure Backup zapewnia ulepszone możliwości tworzenia kopii zapasowych w celu ochrony maszyn wirtualnych, plików i folderów, obciążeń i nie tylko. Dowiedz się, jak zainstalować program lub uaktualnić go do wersji Azure Backup Server v3.
-services: backup
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: adigan
-ms.openlocfilehash: a858ac84ec9181cef4703c8fe236b9a3513af9f5
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 131f5ae31649bd1973a3048b8b52a451f27522b4
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234728"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465001"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>Co nowego w programie Microsoft Azure Backup Server
 
@@ -57,7 +56,7 @@ Więcej informacji na temat kroków instalacji/uaktualniania dla programu serwer
 >
 > SERWERA usługi MAB ma ten sam kod podstawowy co System Center Data Protection Manager. SERWERA usługi MAB V3 jest równoważne Data Protection Manager 1807.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się, jak przygotować serwer lub rozpocząć ochronę obciążeń:
 - [Znane problemy w programie serwera usługi MAB v3](backup-mabs-release-notes-v3.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2018
 ms.author: shvija
-ms.openlocfilehash: 88fdaec9e19c082a6fe981dc4d9a0e015335f1e2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f86dc92b4df45119930970acfe9e173f32f894fb
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60202977"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356052"
 ---
 # <a name="how-to-use-azure-event-hubs-from-a-python-application"></a>Jak używać usługi Azure Event Hubs z poziomu aplikacji Python
 Azure Event Hubs to platforma do pozyskiwania i strumieniowego przesyłania danych, która umożliwia odbieranie i przetwarzanie milionów zdarzeń na sekundę. Usługa Event Hubs pozwala przetwarzać i przechowywać zdarzenia, dane lub dane telemetryczne generowane przez rozproszone oprogramowanie i urządzenia. Dane wysłane do centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania. Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi Event Hubs](event-hubs-what-is-event-hubs.md). 
@@ -29,10 +29,10 @@ Ten artykuł zawiera linki do artykułów, które pokazują, jak wykonać nastę
 
 - [Wysyłanie zdarzeń do Centrum zdarzeń](#send-events-to-event-hubs)
 - [Odbieranie zdarzeń z Centrum zdarzeń](#receive-events-from-event-hubs)
-- Odczyt przechwytywane dane zdarzeń z usługi Azure storage. 
+- Odczytaj przechwycone dane zdarzeń z usługi Azure Storage. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-- Tworzenie Centrum zdarzeń, wykonując jedną z tych przewodników Szybki Start: [Witryna Azure portal](event-hubs-create.md), [wiersza polecenia platformy Azure](event-hubs-quickstart-cli.md), [programu Azure PowerShell](event-hubs-quickstart-powershell.md), [szablonu usługi Azure Resource Manager](event-hubs-resource-manager-namespace-event-hub.md). 
+- Utwórz centrum zdarzeń, wykonując następujące czynności: [Azure Portal](event-hubs-create.md), szablon [interfejsu wiersza polecenia platformy Azure](event-hubs-quickstart-cli.md), [Azure PowerShell](event-hubs-quickstart-powershell.md), [Azure Resource Manager](event-hubs-resource-manager-namespace-event-hub.md). 
 - Python 3.4 lub nowszy zainstalowany na tym komputerze.
 
 ## <a name="install-python-package"></a>Zainstaluj pakiet języka Python
@@ -94,7 +94,8 @@ Poniższy kod przedstawia sposób odbierać zdarzenia z Centrum zdarzeń z aplik
 client = EventHubClient(ADDRESS, debug=False, username=USER, password=KEY)
 
 # Add a receiver to the client
-receiver = client.add_receiver(CONSUMER_GROUP, PARTITION, prefetch=5000, offset=OFFSET)
+receiver = client.add_receiver(
+    CONSUMER_GROUP, PARTITION, prefetch=5000, offset=OFFSET)
 
 # Run the Event Hubs client
 client.run()
@@ -112,7 +113,7 @@ client.stop()
 Aby uzyskać kompletny samouczek na temat sposobu odbieranie zdarzeń z Centrum zdarzeń z aplikacji napisanych w języku Python, zobacz [w tym artykule](event-hubs-python-get-started-receive.md)
 
 ## <a name="read-capture-event-data-from-azure-storage"></a>Odczyt przechwytywania zdarzeń danych z usługi Azure Storage
-Poniższy kod przedstawia sposób odczytywania dane przechwycone zdarzenia, które są przechowywane w **usługi Azure blob storage** z poziomu aplikacji Python: Włącz **przechwytywania** funkcji dla Centrum zdarzeń, wykonując instrukcje z: [Włączanie przechwytywania usługi Event Hubs przy użyciu witryny Azure portal](event-hubs-capture-enable-through-portal.md). Następnie wyślij niektóre zdarzenia do Centrum zdarzeń przed sprawdzeniem kodu. 
+Poniższy kod pokazuje, jak odczytywać przechwycone dane zdarzeń przechowywane w **magazynie obiektów blob platformy Azure** z aplikacji języka Python: Włącz funkcję **przechwytywania** dla centrum zdarzeń, wykonując następujące instrukcje: [Włącz przechwytywanie Event Hubs przy użyciu Azure Portal](event-hubs-capture-enable-through-portal.md). Następnie wyślij niektóre zdarzenia do Centrum zdarzeń przed sprawdzeniem kodu. 
 
 ```python
 import os
@@ -156,7 +157,6 @@ def startProcessing(accountName, key, container):
             os.remove(cleanName)
         block_blob_service.delete_blob(container, blob.name)
 startProcessing('YOUR STORAGE ACCOUNT NAME', 'YOUR KEY', 'capture')
-
 ```
 
 Aby uzyskać kompletny samouczek dotyczący sposobu odczytywania przechwyconych danych usługi Event Hubs w usłudze Azure blob storage z poziomu aplikacji napisanych w języku Python, zobacz [w tym artykule](event-hubs-capture-python.md)

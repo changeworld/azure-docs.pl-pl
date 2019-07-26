@@ -1,87 +1,72 @@
 ---
-title: Powiadomienia usługi Azure Active Directory Identity Protection | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak powiadomienia obsługi działań mających na badania.
+title: Powiadomienia Azure Active Directory Identity Protection | Microsoft Docs
+description: Dowiedz się, jak powiadomienia obsługują Twoje działania dochodzeniowe.
 services: active-directory
-keywords: Usługa Azure active directory identity protection odnajdywania aplikacji w chmurze, zarządzanie aplikacji, zabezpieczenia, ryzyka, poziom ryzyka, luk w zabezpieczeniach, zasady zabezpieczeń
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: 65ca79b9-4da1-4d5b-bebd-eda776cc32c7
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0065ec03695ee977133ae2ec43aafba7d5bfff78
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3dcc7d2d03b3c4a3f4c8c772f38aa3785080d986
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65784337"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335353"
 ---
-# <a name="azure-active-directory-identity-protection-notifications"></a>Powiadomienia usługi Azure Active Directory Identity Protection
+# <a name="azure-active-directory-identity-protection-notifications"></a>Powiadomienia Azure Active Directory Identity Protection
 
-Usługa Azure AD Identity Protection wysyła dwa rodzaje automatyczne powiadomienie o wiadomości e-mail, aby ułatwić zarządzanie użytkownikiem i ryzyko zdarzeń o podwyższonym ryzyku:
+Azure AD Identity Protection wysyła dwa typy zautomatyzowanych wiadomości e-mail z powiadomieniami, które ułatwiają zarządzanie ryzykiem użytkownika i zdarzeniami ryzyka:
 
-- Narażeni użytkownicy wykryto wiadomości e-mail
-- Cotygodniowe podsumowanie wiadomości e-mail.
+- Użytkownicy z wykrytymi zagrożeniami wiadomości e-mail
+- Tygodniowy adres e-mail w postaci skróconej
 
-Ten artykuł zawiera omówienie zarówno wiadomości e-mail z powiadomieniem.
+Ten artykuł zawiera omówienie obu wiadomości e-mail z powiadomieniami.
 
+## <a name="users-at-risk-detected-email"></a>Użytkownicy z wykrytymi zagrożeniami wiadomości e-mail
 
-## <a name="users-at-risk-detected-email"></a>Narażeni użytkownicy wykryto wiadomości e-mail
+W odpowiedzi na wykryte konto zagrożone Azure AD Identity Protection generuje alert e-mail z **użytkownikami narażonymi na ryzyko wykryte** jako temat. Wiadomość e-mail zawiera link do raportu **[Użytkownicy oflagowani w związku z ryzykiem](../reports-monitoring/concept-user-at-risk.md)** . Najlepszym rozwiązaniem jest natychmiastowe badanie narażonych użytkowników.
 
-W odpowiedzi na wykryte konta na ryzyko, Azure AD Identity Protection generuje alerty w wiadomościach e-mail z **wykryto narażonych użytkowników** jako podmiotu. Wiadomość e-mail zawiera link do **[użytkownicy oflagowani w związku z ryzykiem](../reports-monitoring/concept-user-at-risk.md)** raportu. Najlepszym rozwiązaniem należy natychmiast Zbadaj narażeni użytkownicy.
+Konfiguracja tego alertu umożliwia określenie poziomu ryzyka użytkownika, który ma zostać wygenerowany przez alert. Wiadomość e-mail zostanie wygenerowana, gdy poziom ryzyka użytkownika osiągnie określone elementy. jednak nie otrzymasz nowych użytkowników na ryzyko wykrycia alertów e-mail dla tego użytkownika po przejściu na ten poziom ryzyka użytkownika. Jeśli na przykład ustawisz zasady, aby otrzymywać alerty na średnim ryzyku użytkownika, a użytkownik Jan przejdzie do średniego ryzyka, otrzymasz wiadomość e-mail z informacją o ryzyku wykrytym przez Jan. Jednak nie otrzymasz alertu drugiego użytkownika w przypadku wykrycia ryzyka, jeśli Jan następnie przejdzie do wysokiego ryzyka lub ma dodatkowe zdarzenia związane z ryzykiem.
 
-Konfiguracja dla tego alertu można określić, na jakim poziomie ryzyka użytkownika wygenerowanie alertu. Wiadomość e-mail zostanie wygenerowany, gdy osiągnie poziom ryzyka użytkownika, co określono; jednak nie otrzymasz nowych użytkowników wykryto ryzyko alertów e-mail dla tego użytkownika po przeniesieniu ich do tego poziomu ryzyka użytkownika. Na przykład jeśli ustawiono zasady w celu otrzymywania alertów dotyczących ryzyka związanego z użytkownikiem w średnich i John przenosi średniego ryzyka użytkowników, zostaną odebrane użytkowników wiadomości e-mail o podwyższonym ryzyku wykrywane Jan. Jednak nie otrzymasz drugi użytkowników wykryto ryzyko alert Jeśli Jan następnie przejdzie do wysokiego ryzyka lub ma zdarzenia o podwyższonym ryzyku w dodatkowych.
-
-![Narażeni użytkownicy wykryto wiadomości e-mail](./media/notifications/01.png)
-
+![Użytkownicy z wykrytymi zagrożeniami wiadomości e-mail](./media/notifications/01.png)
 
 ### <a name="configuration"></a>Konfigurowanie
 
 Jako administrator możesz ustawić:
 
-- **Poziom ryzyka użytkownika wyzwalającego Generowanie tę wiadomość e-mail** — Domyślnie poziom ryzyka jest równa "Wysoka" ryzyka.
-- **Adresaci wiadomości e-mail** — domyślnie adresatów zawierają wszystkich administratorów globalnych. Administratorzy globalni można również dodać inne Administratorzy globalni, Administratorzy zabezpieczeń, czytelnicy zabezpieczeń jako adresatów.  
+- **Poziom ryzyka użytkownika wyzwalający generowanie tej wiadomości e-mail** — domyślnie poziom ryzyka jest ustawiany na "wysoki".
+- Adresaci **tej wiadomości e-mail** — domyślnie odbiorcy obejmują wszystkich administratorów globalnych. Administratorzy globalni mogą również dodawać innych administratorów globalnych, administratorów zabezpieczeń, czytelników zabezpieczeń jako odbiorców.  
 
+Aby otworzyć okno dialogowe pokrewne, kliknij pozycję **alerty** w sekcji **Ustawienia** na stronie **Ochrona tożsamości** .
 
-Aby otworzyć okno dialogowe powiązane, kliknij przycisk **alerty** w **ustawienia** części **Identity Protection** strony.
+![Użytkownicy z wykrytymi zagrożeniami wiadomości e-mail](./media/notifications/05.png)
 
-![Narażeni użytkownicy wykryto wiadomości e-mail](./media/notifications/05.png)
+## <a name="weekly-digest-email"></a>Tygodniowy adres e-mail w postaci skróconej
 
-
-## <a name="weekly-digest-email"></a>Cotygodniowe podsumowanie wiadomości e-mail.
-
-Co tydzień wiadomość e-mail z podsumowaniem zawiera podsumowanie nowych zdarzeń o podwyższonym ryzyku.  
-Zawiera ona:
+Cotygodniowa wiadomość e-mail dotycząca skróconego podsumowania zawiera podsumowanie nowych zdarzeń o podwyższonym ryzyku.  
+Obejmuje:
 
 - Narażeni użytkownicy
-
 - Podejrzane działania
+- Wykryte luki w zabezpieczeniach
+- Linki do pokrewnych raportów w usłudze Identity Protection
 
-- Wykryto luk w zabezpieczeniach
-
-- Linki do powiązanych raportów w Identity Protection
-
-    ![Korygowanie](./media/notifications/400.png "korygowania")
+    ![Korygowanie](./media/notifications/400.png "Korygowanie")
 
 ### <a name="configuration"></a>Konfigurowanie
 
-Jako administrator możesz przełączyć wysyła cotygodniowe wiadomość e-mail z podsumowaniem.
+Jako administrator możesz wyłączyć wysyłanie Cotygodniowych wiadomości e-mail z podsumowaniem.
 
-![Ryzyka użytkownika](./media/notifications/62.png "ryzyka użytkownika")
+![Czynniki ryzyka użytkownika](./media/notifications/62.png "Czynniki ryzyka użytkownika")
 
-Aby otworzyć okno dialogowe powiązane, kliknij przycisk **cotygodniowe podsumowanie** w **ustawienia** części **Identity Protection** strony.
+Aby otworzyć okno dialogowe pokrewne, kliknij pozycję **cotygodniowe podsumowanie** w sekcji **Ustawienia** na stronie **Ochrona tożsamości** .
 
-![Narażeni użytkownicy wykryto wiadomości e-mail](./media/notifications/04.png)
-
+![Użytkownicy z wykrytymi zagrożeniami wiadomości e-mail](./media/notifications/04.png)
 
 ## <a name="see-also"></a>Zobacz także
 

@@ -1,6 +1,6 @@
 ---
-title: 'Współdziałanie w funkcjach łączność z zaplecza platformy Azure: Szczegóły konfiguracji | Dokumentacja firmy Microsoft'
-description: W tym artykule opisano szczegóły konfiguracji dla konfiguracji testu, które służy do analizowania współdziałanie usługi ExpressRoute, sieci VPN typu lokacja lokacja i wirtualnych sieci równorzędnych na platformie Azure.
+title: 'Współdziałanie w ramach funkcji łączności zaplecza platformy Azure: Szczegóły konfiguracji | Microsoft Docs'
+description: W tym artykule opisano szczegółowo konfigurację testu, którego można użyć do analizowania współdziałania między ExpressRoute, sieci VPN typu lokacja-lokacja i komunikacji równorzędnej sieci wirtualnych na platformie Azure.
 documentationcenter: na
 services: networking
 author: rambk
@@ -10,48 +10,48 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 2ceb4aeac55bd555a41c29bd41b00c771490e5f9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9c4a57111566248d3537cab0d9d85c0c3be874a1
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60425758"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335930"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Współdziałanie w funkcjach łączność z zaplecza platformy Azure: Szczegóły konfiguracji testu
+# <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Współdziałanie w ramach funkcji łączności zaplecza platformy Azure: Szczegóły konfiguracji testu
 
-W tym artykule opisano szczegóły konfiguracji [Testuj ustawienia][Setup]. Ustawienia testu pomaga analizować jak usługi platformy Azure networking współdziałać na poziomie poziom płaszczyzna kontroli i płaszczyzny danych.
+W tym artykule opisano szczegóły konfiguracji [testu][Setup]. Konfiguracja testu pomaga analizować sposób współdziałania usług sieciowych platformy Azure na poziomie płaszczyzny kontroli i poziomie płaszczyzny danych.
 
-## <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>Typu gwiazda połączenie między sieciami przy użyciu komunikacji równorzędnej sieci wirtualnych
+## <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>Łączność z siecią wirtualną przy użyciu komunikacji równorzędnej sieci wirtualnej
 
-Na poniższej ilustracji przedstawiono szczegóły dotyczące komunikacji równorzędnej sieci wirtualnej platformy Azure szprychy sieci wirtualnej (VNet). Aby dowiedzieć się, jak skonfigurować komunikację równorzędną między dwiema sieciami wirtualnymi, zobacz [zarządzania wirtualną siecią równorzędną][VNet-Config]. Jeśli chcesz, aby szprychy sieci wirtualnej, aby użyć bram, które są połączone z piastą, wybierz **Użyj bram zdalnych**.
+Na poniższej ilustracji przedstawiono szczegóły dotyczące komunikacji równorzędnej platformy Azure Virtual Network sieci wirtualnej szprychy (VNet). Aby dowiedzieć się, jak skonfigurować komunikację równorzędną między dwoma sieci wirtualnych, zobacz [Zarządzanie wirtualnymi sieciami równorzędnymi][VNet-Config]. Jeśli sieć wirtualna szprych ma używać bram, które są połączone z siecią wirtualną koncentratora, wybierz opcję **Użyj bram zdalnych**.
 
 [![1]][1]
 
-Na poniższej ilustracji przedstawiono szczegóły dotyczące komunikacji równorzędnej sieci wirtualnej z sieci wirtualnej serwera centralnego. Szprychy wirtualnymi za pomocą bram sieci wirtualnej koncentratora, zaznacz **Użyj bram zdalnych**.
+Na poniższej ilustracji przedstawiono szczegółowe informacje o komunikacji równorzędnej sieci wirtualnej centrum. Jeśli chcesz, aby Sieć wirtualna z koncentratorem mogła korzystać z bram centrum, wybierz opcję **Zezwalaj na tranzyt bramy**.
 
 [![2]][2]
 
-## <a name="branch-vnet-connectivity-by-using-a-site-to-site-vpn"></a>Połączenie między sieciami gałęzi przy użyciu sieci VPN lokacja lokacja
+## <a name="branch-vnet-connectivity-by-using-a-site-to-site-vpn"></a>Łączność między sieciami wirtualnymi przy użyciu połączenia VPN typu lokacja-lokacja
 
-Konfigurowanie połączenia sieci VPN lokacja lokacja między Centrum i gałąź sieci wirtualnych za pomocą bram sieci VPN w usłudze Azure VPN Gateway. Domyślnie, użyj wartości numer (ASN) prywatnej systemu autonomicznego bram sieci VPN i bramy usługi Azure ExpressRoute **65515**. Możesz zmienić wartość numer ASN w bramie sieci VPN. W konfiguracji testu została zmieniona wartość numeru ASN gałęzi bramy sieci VPN sieci wirtualnej **65516** do obsługi eBGP routingu między Centrum i sieciami wirtualnymi w oddziale firmy.
+Skonfiguruj połączenie sieci VPN typu lokacja-lokacja między węzłem i sieci wirtualnych rozgałęzienia przy użyciu bram sieci VPN w usłudze Azure VPN Gateway. Domyślnie bramy sieci VPN i bramy usługi Azure ExpressRoute używają wartości prywatnego numeru systemu autonomicznego (ASN) **65515**. Wartość ASN można zmienić w VPN Gateway. W konfiguracji testowej wartość ASN bramy sieci VPN gałęzi VNet jest zmieniana na **65516** , aby umożliwić obsługę routingu eBGP między węzłem a gałęzią sieci wirtualnych.
 
 
 [![3]][3]
 
 
-## <a name="on-premises-location-1-connectivity-by-using-expressroute-and-a-site-to-site-vpn"></a>Lokalizacja 1 połączeniami lokalnymi przy użyciu usługi ExpressRoute i sieci VPN lokacja lokacja
+## <a name="on-premises-location-1-connectivity-by-using-expressroute-and-a-site-to-site-vpn"></a>Lokalna Lokalizacja 1 łączność przy użyciu ExpressRoute i sieci VPN typu lokacja-lokacja
 
-### <a name="expressroute-1-configuration-details"></a>Szczegóły konfiguracji usługi ExpressRoute 1
+### <a name="expressroute-1-configuration-details"></a>Szczegóły konfiguracji ExpressRoute 1
 
-Na poniższej ilustracji przedstawiono konfiguracji obwodu usługi ExpressRoute 1 regionu Azure kierunku routery graniczne (CE) klienta 1 lokalizacji lokalnej:
+Na poniższej ilustracji przedstawiono konfigurację obwodu usługi Azure region 1 ExpressRoute w kierunku lokalizacji lokalnej 1 routera brzegowej klienta (CE):
 
 [![4]][4]
 
-Na poniższej ilustracji przedstawiono konfigurację połączenia między obwodu usługi ExpressRoute 1 a piastą:
+Na poniższej ilustracji przedstawiono konfigurację połączenia między obwodem ExpressRoute 1 i siecią wirtualną koncentratora:
 
 [![5]][5]
 
-Na poniższej liście przedstawiono podstawowa konfiguracja routera CE dla połączenia prywatnej komunikacji równorzędnej usługi ExpressRoute. (Cisco ASR1000 routery są używane jako routery CE w ustawieniach testu). Jeśli skonfigurowano obwodów ExpressRoute i sieci VPN typu lokacja lokacja w sposób równoległy, połączyć sieć lokalną na platformę Azure, Azure priorytetem obwód usługi ExpressRoute domyślnie. Aby uniknąć routingu asymetrycznego, sieć lokalną również nadać priorytet połączenia usługi ExpressRoute za pośrednictwem połączenia sieci VPN lokacja lokacja. Następująca konfiguracja ustanawia priorytetyzacji przy użyciu protokołu BGP **preferencji lokalnej** atrybutu:
+Poniższa lista zawiera podstawową konfigurację routera CE na potrzeby łączności prywatnej komunikacji równorzędnej ExpressRoute. (Routery Cisco ASR1000 są używane jako routery CE w konfiguracji testów). Gdy obwody sieci VPN typu lokacja-lokacja i obwodów ExpressRoute są skonfigurowane równolegle w celu połączenia sieci lokalnej z platformą Azure, platforma Azure domyślnie ustala priorytet obwodu usługi ExpressRoute. Aby uniknąć asymetrycznego routingu, Sieć lokalna powinna również określać priorytet łączności ExpressRoute przez połączenie sieci VPN typu lokacja-lokacja. Następująca konfiguracja ustala priorytetyzację przy użyciu atrybutu **Local-preferencja** BGP:
 
     interface TenGigabitEthernet0/0/0.300
      description Customer 30 private peering to Azure
@@ -91,9 +91,9 @@ Na poniższej liście przedstawiono podstawowa konfiguracja routera CE dla poł�
     ip prefix-list Cust30_to_Private seq 10 permit 10.2.30.0/25
     !
 
-### <a name="site-to-site-vpn-configuration-details"></a>Szczegóły konfiguracji sieci VPN typu lokacja lokacja
+### <a name="site-to-site-vpn-configuration-details"></a>Szczegóły konfiguracji sieci VPN typu lokacja-lokacja
 
-Na poniższej liście przedstawiono podstawowej konfiguracji routera CE połączenie sieci VPN typu lokacja lokacja:
+Na poniższej liście przedstawiono konfigurację podstawowego routera CE dla połączeń sieci VPN typu lokacja-lokacja:
 
     crypto ikev2 proposal Cust30-azure-proposal
      encryption aes-cbc-256 aes-cbc-128 3des
@@ -148,69 +148,69 @@ Na poniższej liście przedstawiono podstawowej konfiguracji routera CE połącz
     !
     ip route vrf 30 10.10.30.254 255.255.255.255 Tunnel30
 
-## <a name="on-premises-location-2-connectivity-by-using-expressroute"></a>Lokalizacji 2 połączeniami lokalnymi przy użyciu usługi ExpressRoute
+## <a name="on-premises-location-2-connectivity-by-using-expressroute"></a>Lokalna lokalizacja 2 łączność przy użyciu ExpressRoute
 
-Drugi obwód usługi ExpressRoute, się bliżej do lokalnej lokalizacji 2, łączy się sieci wirtualnej serwera centralnego z lokalnej lokalizacji 2. Na poniższej ilustracji przedstawiono drugi konfiguracji usługi ExpressRoute:
+Drugi obwód ExpressRoute w bliżej lokalizacji lokalnej 2 łączy lokalizację lokalną 2 z centralną siecią wirtualną. Na poniższej ilustracji przedstawiono drugą konfigurację ExpressRoute:
 
 [![6]][6]
 
-Na poniższej ilustracji przedstawiono konfigurację połączenia między drugim obwodu usługi ExpressRoute i sieci wirtualnej serwera centralnego:
+Na poniższej ilustracji przedstawiono konfigurację połączenia między drugim obwodem usługi ExpressRoute i siecią wirtualną piasty:
 
 [![7]][7]
 
-ExpressRoute 1 łączy zarówno w sieci wirtualnej serwera centralnego, jak i lokalnej lokalizacji 1 zdalna sieć wirtualna w innym regionie platformy Azure:
+ExpressRoute 1 nawiązuje połączenie z siecią wirtualną sieci wirtualnej i lokalizacji lokalnej 1 ze zdalną siecią wirtualną w innym regionie świadczenia usługi Azure:
 
 [![8]][8]
 
-## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>Usługi ExpressRoute i lokacja lokacja połączenia sieci VPN w tandem
+## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>ExpressRoute i połączenie sieci VPN typu lokacja-lokacja wspólnie
 
-###  <a name="site-to-site-vpn-over-expressroute"></a>Site-to-site VPN za pośrednictwem usługi ExpressRoute
+###  <a name="site-to-site-vpn-over-expressroute"></a>Sieć VPN typu lokacja-lokacja za pośrednictwem ExpressRoute
 
-Sieć VPN lokacja lokacja można skonfigurować przy użyciu usługi ExpressRoute komunikacji równorzędnej firmy Microsoft do prywatnie wymiany danych między siecią lokalną i sieciami wirtualnymi platformy Azure. W przypadku tej konfiguracji można wymiany danych z poufność, autentyczności i integralności. Wymiana danych jest także powtarzaniu. Aby uzyskać więcej informacji na temat konfigurowania sieci VPN lokacja lokacja protokołu IPsec w trybie tunelowania za pomocą komunikacji równorzędnej firmy Microsoft usługi ExpressRoute, zobacz [Site-to-site VPN za pośrednictwem komunikacji równorzędnej firmy Microsoft usługi ExpressRoute][S2S-Over-ExR]. 
+Sieć VPN typu lokacja-lokacja można skonfigurować za pomocą komunikacji równorzędnej firmy Microsoft, aby prywatnie wymieniać dane między siecią lokalną i usługą Azure sieci wirtualnych. Za pomocą tej konfiguracji można wymieniać dane z poufnością, autentycznością i integralnością. Wymiana danych to również ochrona przed odtwarzaniem. Aby uzyskać więcej informacji o sposobie konfigurowania sieci VPN typu lokacja-lokacja w trybie tunelowania przy użyciu ExpressRoute komunikacji równorzędnej firmy Microsoft, zobacz [sieci VPN typu lokacja-lokacja za pośrednictwem usługi ExpressRoute Microsoft peering][S2S-Over-ExR]. 
 
-Głównym ograniczeniem konfigurowania sieci VPN lokacja lokacja, który korzysta z komunikacji równorzędnej firmy Microsoft jest przepływność. Przepływność za pośrednictwem tunelu IPsec jest ograniczona przez pojemność bramy sieci VPN. Przepływność bramy sieci VPN jest mniejszy niż przepływności usługi ExpressRoute. W tym scenariuszu przy użyciu tunelu IPsec, wysoce bezpieczna ruchu i za pomocą prywatnej komunikacji równorzędnej dla innego ruchu pomaga zoptymalizować wykorzystanie przepustowości usługi ExpressRoute.
+Podstawowe ograniczenie konfiguracji sieci VPN typu lokacja-lokacja, która używa komunikacji równorzędnej firmy Microsoft, to przepływność. Przepływność przez tunel IPsec jest ograniczona przez pojemność bramy sieci VPN. Przepływność bramy sieci VPN jest mniejsza niż ExpressRoute przepływność. W tym scenariuszu użycie tunelu IPsec w przypadku wysoce bezpiecznego ruchu i użycie prywatnej komunikacji równorzędnej dla całego ruchu pomaga zoptymalizować wykorzystanie przepustowości ExpressRoute.
 
-### <a name="site-to-site-vpn-as-a-secure-failover-path-for-expressroute"></a>Site-to-site VPN jako bezpieczna ścieżka trybu failover dla usługi ExpressRoute
+### <a name="site-to-site-vpn-as-a-secure-failover-path-for-expressroute"></a>Sieć VPN typu lokacja-lokacja jako bezpieczna ścieżka trybu failover dla usługi ExpressRoute
 
-Usługa ExpressRoute służy jako parę nadmiarowych obwodu, aby zapewnić wysoką dostępność. Magazynu geograficznie nadmiarowego połączenia usługi ExpressRoute można skonfigurować w różnych regionach platformy Azure. Również jak pokazano w naszej konfiguracji testu, w obrębie regionu Azure, można użyć sieci VPN lokacja lokacja można utworzyć ścieżki pracy awaryjnej dla usługi połączenia usługi ExpressRoute. Gdy te same prefiksy są anonsowane za pośrednictwem usługi ExpressRoute oraz sieci VPN lokacja lokacja, Azure priorytetem usługi ExpressRoute. Aby uniknąć asymetryczne routingu usługi ExpressRoute i sieci VPN typu lokacja lokacja, lokalne konfiguracji sieci, należy również gospodarzami przy użyciu połączenia usługi ExpressRoute używa połączenie sieci VPN typu lokacja lokacja.
+ExpressRoute służy jako para nadmiarowego obwodu w celu zapewnienia wysokiej dostępności. W różnych regionach świadczenia usługi Azure można skonfigurować ExpressRoute Geograficznie nadmiarowy. Ponadto, jak pokazano w naszej konfiguracji testowej w regionie świadczenia usługi Azure, można użyć sieci VPN typu lokacja-lokacja, aby utworzyć ścieżkę trybu failover dla łączności ExpressRoute. Gdy te same prefiksy są anonsowane zarówno w ExpressRoute, jak i w sieci VPN typu lokacja-lokacja, platforma Azure ma priorytet ExpressRoute. Aby uniknąć asymetrycznego routingu między ExpressRoute i siecią VPN typu lokacja-lokacja, konfiguracja sieci lokalnej powinna również natłokować przy użyciu połączenia ExpressRoute przed użyciem połączenia sieci VPN typu lokacja-lokacja.
 
-Aby uzyskać więcej informacji o sposobie konfigurowania współistniejących połączeń usługi ExpressRoute i sieci VPN lokacja lokacja, zobacz [usługi ExpressRoute i współistnienia lokacja lokacja][ExR-S2S-CoEx].
+Aby uzyskać więcej informacji o konfigurowaniu współistniejących połączeń dla ExpressRoute i sieci VPN typu lokacja-lokacja, zobacz Współistnienie [ExpressRoute i lokacja-][ExR-S2S-CoEx]lokacja.
 
-## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>Rozszerzanie zaplecza łączność sieci wirtualne będące szprychami i biur
+## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>Zwiększanie łączności zaplecza z sieci wirtualnych i lokalizacjami gałęzi
 
-### <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>Typu gwiazda połączenie między sieciami przy użyciu komunikacji równorzędnej sieci wirtualnych
+### <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>Łączność z siecią wirtualną przy użyciu komunikacji równorzędnej sieci wirtualnej
 
-Gwiazda architektury sieci wirtualnej jest powszechnie używana. Piasta to sieć wirtualną na platformie Azure, która działa jako centralny punkt łączności między Twoje sieci wirtualne będące szprychami i siecią lokalną. Szprychy są sieciami wirtualnymi równorzędnymi z piastą, oraz tych, które można użyć do izolowania obciążeń. Ruch przepływa między lokalnym centrum danych a piastą za pośrednictwem połączenia usługi ExpressRoute lub sieci VPN. Aby uzyskać więcej informacji na temat architektury, zobacz [zaimplementować topologii sieci piasty i szprych na platformie Azure][Hub-n-Spoke].
+Architektura sieci wirtualnej typu Hub i szprych jest szeroko używana. Centrum to sieć wirtualna na platformie Azure, która działa jako centralny punkt łączności między satelitami sieci wirtualnych i sieci lokalnej. Szprychy są sieci wirtualnych tego elementu równorzędnego z koncentratorem i którego można użyć do izolowania obciążeń. Przepływy ruchu między lokalnym centrum danych a centrum za pośrednictwem połączenia ExpressRoute lub sieci VPN. Aby uzyskać więcej informacji o architekturze, zobacz [implementowanie topologii sieci Hub i gwiazdy na platformie Azure][Hub-n-Spoke].
 
-W sieci wirtualnej komunikacji równorzędnej w regionie sieci wirtualne będące szprychami można użyć bramy sieci wirtualnej koncentratora (bramy sieci VPN i ExpressRoute) do komunikowania się z sieciami zdalnymi.
+W przypadku komunikacji równorzędnej sieci wirtualnych w obrębie regionu szprycha sieci wirtualnych może używać bram sieci wirtualnej Hub (zarówno bramy VPN, jak i ExpressRoute) do komunikowania się z sieciami zdalnymi.
 
-### <a name="branch-vnet-connectivity-by-using-site-to-site-vpn"></a>Połączenie między sieciami gałęzi przy użyciu sieci VPN typu lokacja lokacja
+### <a name="branch-vnet-connectivity-by-using-site-to-site-vpn"></a>Łączność między sieciami wirtualnymi przy użyciu połączenia VPN typu lokacja-lokacja
 
-Możesz chcieć gałęzi sieci wirtualne, które znajdują się w różnych regionach i sieciami lokalnymi do komunikowania się ze sobą za pośrednictwem sieci wirtualnej serwera centralnego. Natywne rozwiązanie platformy Azure dla tej konfiguracji jest połączenie sieci VPN typu lokacja lokacja przy użyciu sieci VPN. Alternatywą jest na potrzeby routingu w piaście wirtualnego urządzenia sieciowego (WUS).
+Możesz potrzebować oddziału sieci wirtualnych, które znajdują się w różnych regionach, i sieci lokalnych, aby komunikować się ze sobą za pośrednictwem sieci wirtualnej centrum. Natywne rozwiązanie platformy Azure dla tej konfiguracji to połączenie sieci VPN typu lokacja-lokacja przy użyciu sieci VPN. Alternatywą jest użycie wirtualnego urządzenia sieciowego (urządzenie WUS) do routingu w centrum.
 
-Aby uzyskać więcej informacji, zobacz [co to jest usługa VPN Gateway?] [ VPN] i [wdrożenia o wysokiej dostępności urządzeń WUS][Deploy-NVA].
+Aby uzyskać więcej informacji, zobacz [co to jest VPN Gateway?][VPN] and [Deploy a highly available NVA][Deploy-NVA].
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej o [analizy płaszczyznę sterowania] [ Control-Analysis] konfiguracji testu i widoki różnych sieci wirtualnych lub sieci VLAN w topologii.
+Dowiedz się więcej na temat [analizy płaszczyzny kontroli][Control-Analysis] konfiguracji testów oraz widoków różnych sieci wirtualnych lub sieci VLAN w topologii.
 
-Dowiedz się więcej o [analizy na płaszczyźnie danych] [ Data-Analysis] konfiguracji testu i widokami funkcji monitorowania sieci platformy Azure.
+Dowiedz się więcej na temat [analizy płaszczyzny danych][Data-Analysis] w widokach testów i funkcji monitorowania sieci platformy Azure.
 
-Zobacz [ExpressRoute — często zadawane pytania] [ ExR-FAQ] do:
--   Dowiedz się, jak wiele obwodów usługi ExpressRoute, możesz nawiązać połączenie bramy usługi ExpressRoute.
--   Dowiedz się, ile bram usługi ExpressRoute, można połączyć z obwodem usługi ExpressRoute.
--   Poznaj inne limity skalowania usługi expressroute.
+Zobacz [często zadawane pytania dotyczące ExpressRoute][ExR-FAQ] :
+-   Dowiedz się, ile obwodów usługi ExpressRoute można połączyć z bramą ExpressRoute.
+-   Dowiedz się, ile bram ExpressRoute można połączyć z obwodem ExpressRoute.
+-   Dowiedz się więcej na temat innych limitów skalowania ExpressRoute.
 
 
 <!--Image References-->
-[1]: ./media/backend-interoperability/SpokeVNet_peering.png "ramię sieci wirtualne sieci równorzędne"
-[2]: ./media/backend-interoperability/HubVNet-peering.png "Centrum sieci wirtualne sieci równorzędne"
-[3]: ./media/backend-interoperability/BranchVNet-VPNGW.png "konfiguracji bramy sieci VPN sieci wirtualnej gałęzi"
-[4]: ./media/backend-interoperability/ExR1.png "konfiguracji usługi ExpressRoute 1"
-[5]: ./media/backend-interoperability/ExR1-Hub-Connection.png "konfiguracji połączenia ExpressRoute 1 w z koncentratorem bramy sieci wirtualnej ExR"
-[6]: ./media/backend-interoperability/ExR2.png "konfiguracji usługi ExpressRoute 2"
-[7]: ./media/backend-interoperability/ExR2-Hub-Connection.png "konfiguracji połączenia usługi ExpressRoute 2 do bramy sieci wirtualnej ExR koncentratora"
-[8]: ./media/backend-interoperability/ExR2-Remote-Connection.png "konfiguracji połączenia usługi ExpressRoute 2 do bramy sieci wirtualnej ExR zdalnego"
+[1]: ./media/backend-interoperability/SpokeVNet_peering.png  "Komunikacja równorzędna sieci" wirtualnej szprychy
+[2]: ./media/backend-interoperability/HubVNet-peering.png  "Komunikacja równorzędna sieci" wirtualnej koncentratora
+[3]: ./media/backend-interoperability/BranchVNet-VPNGW.png  "Konfiguracja VPN Gateway sieci wirtualnej gałęzi"
+[4]: ./media/backend-interoperability/ExR1.png  "Konfiguracja ExpressRoute 1"
+[5]: ./media/backend-interoperability/ExR1-Hub-Connection.png  "Konfiguracja połączenia ExpressRoute 1 z bramą ExR sieci wirtualnej koncentratora"
+[6]: ./media/backend-interoperability/ExR2.png  "Konfiguracja ExpressRoute 2"
+[7]: ./media/backend-interoperability/ExR2-Hub-Connection.png  "Konfiguracja połączenia ExpressRoute 2 z bramą ExR sieci wirtualnej koncentratora"
+[8]: ./media/backend-interoperability/ExR2-Remote-Connection.png  "Konfiguracja połączenia ExpressRoute 2 do zdalnej bramy ExR sieci wirtualnej"
 
 <!--Link References-->
 [Setup]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-preface

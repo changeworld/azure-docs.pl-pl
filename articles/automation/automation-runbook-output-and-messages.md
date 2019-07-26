@@ -1,6 +1,6 @@
 ---
-title: Runbook Output and Messages w usłudze Azure Automation
-description: Opisuje sposób tworzenia i pobrać dane wyjściowe i błędów komunikaty z elementów runbook w usłudze Azure Automation.
+title: Dane wyjściowe i komunikaty elementu Runbook w Azure Automation
+description: Desribes sposób tworzenia i pobierania komunikatów wyjściowych i błędów z elementów Runbook w programie Azure Automation.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,29 +9,29 @@ ms.author: robreed
 ms.date: 12/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 27dd9888d83e01ea522b2532fc1d65284f2fe8d1
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: c129391c0830e0194c32a041853482f92340bbb9
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476919"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405788"
 ---
-# <a name="runbook-output-and-messages-in-azure-automation"></a>Dane wyjściowe elementu Runbook i komunikatów w usłudze Azure Automation
-Większość elementów runbook automatyzacji Azure obejmuje jakąś formę danych wyjściowych. Te dane wyjściowe mogą być komunikat o błędzie do użytkownika lub obiekt złożony czy zamierzasz korzystać z innego elementu runbook. Program Windows PowerShell udostępnia [wiele strumieni](/powershell/module/microsoft.powershell.core/about/about_redirection) do wysyłania danych wyjściowych w skrypcie lub przepływu pracy. Usługa Azure Automation działa z każdym z tych strumieni inaczej. Należy stosować najlepsze rozwiązania w zakresie używania każdego podczas tworzenia elementu runbook.
+# <a name="runbook-output-and-messages-in-azure-automation"></a>Dane wyjściowe i komunikaty elementu Runbook w Azure Automation
+Większość elementów Runbook Azure Automation ma pewną formę danych wyjściowych. Ten wynik może być komunikatem o błędzie dla użytkownika lub obiektu złożonego, który ma być używany z innym elementem Runbook. Program Windows PowerShell udostępnia [wiele strumieni](/powershell/module/microsoft.powershell.core/about/about_redirection) do wysyłania danych wyjściowych ze skryptu lub przepływu pracy. Azure Automation działa z każdym z tych strumieni inaczej. W przypadku tworzenia elementu Runbook należy stosować najlepsze rozwiązania.
 
-Poniższa tabela zawiera krótki opis każdego strumienia i ich zachowania w witrynie Azure portal w przypadku opublikowanych elementów runbook i kiedy [testowania elementu runbook](automation-testing-runbook.md). W kolejnych sekcjach znajdują się dalsze szczegółowe informacje na temat każdego strumienia.
+W poniższej tabeli przedstawiono krótki opis każdego ze strumieni i ich zachowanie w Azure Portal dla opublikowanych elementów Runbook i podczas [testowania elementu Runbook](automation-testing-runbook.md). Więcej szczegółowych informacji o każdym strumieniu znajduje się w kolejnych sekcjach.
 
 | Stream | Opis | Opublikowane | Test |
 |:--- |:--- |:--- |:--- |
 | Dane wyjściowe |Obiekty, które mają być używane przez inne elementy runbook. |Zapisywany w historii zadania. |Wyświetlane w okienku danych wyjściowych testu. |
 | Ostrzeżenie |Komunikat ostrzegawczy przeznaczony dla użytkownika. |Zapisywany w historii zadania. |Wyświetlane w okienku danych wyjściowych testu. |
 | Błąd |Przeznaczony dla użytkownika komunikat o błędzie. W przeciwieństwie do wyjątku element runbook jest kontynuowane po komunikat o błędzie domyślnie. |Zapisywany w historii zadania. |Wyświetlane w okienku danych wyjściowych testu. |
-| Pełny |Komunikaty, które podają informacje ogólne lub debugowania. |Zapisywany w historii zadań tylko wtedy, gdy dla elementu runbook jest włączone rejestrowanie pełne. |Wyświetlane w okienku danych wyjściowych testu tylko wtedy, gdy $VerbosePreference ustawiono Kontynuuj w elemencie runbook. |
-| Postęp |Rekordy generowane automatycznie przed i po każdym działaniu elementu runbook. Element runbook nie należy próbować utworzyć swoich własnych rekordów postępu, ponieważ są one przeznaczone dla użytkownika interaktywnego. |Zapisywany w historii zadań tylko wtedy, gdy dla elementu runbook jest włączone rejestrowanie postępu. |Nie są wyświetlane w okienku danych wyjściowych testu. |
-| Debugowanie |Komunikaty przeznaczone dla użytkownika interaktywnego. Nie można używać w elementach runbook. |Nie jest zapisywany w historii zadań. |Nie jest zapisywany do okienka danych wyjściowych testu. |
+| Pełny |Komunikaty, które zawierają ogólne lub debugowane informacje. |Zapisywany w historii zadań tylko wtedy, gdy dla elementu runbook jest włączone rejestrowanie pełne. |Wyświetlane w okienku danych wyjściowych testu tylko wtedy, gdy $VerbosePreference jest ustawiony do kontynuowania w elemencie Runbook. |
+| Postęp |Rekordy generowane automatycznie przed i po każdym działaniu elementu runbook. Element Runbook nie powinien próbować tworzyć własnych rekordów postępu, ponieważ są one przeznaczone dla użytkownika interaktywnego. |Zapisywany w historii zadań tylko wtedy, gdy dla elementu runbook jest włączone rejestrowanie postępu. |Nie są wyświetlane w okienku danych wyjściowych testu. |
+| Debugowanie |Komunikaty przeznaczone dla użytkownika interaktywnego. Nie należy używać w elementach Runbook. |Nie jest zapisywany w historii zadań. |Nie jest zapisywany do okienka danych wyjściowych testu. |
 
 ## <a name="output-stream"></a>Strumień wyjściowy
-Strumień wyjściowy jest przeznaczony dla danych wyjściowych obiektów, które są tworzone przez skrypt lub przepływu pracy, gdy działa poprawnie. W usłudze Azure Automation ten strumień jest używany głównie dla obiektów, które mają być używane przez [nadrzędne elementy runbook, które wywołań bieżącego elementu runbook](automation-child-runbooks.md). Gdy użytkownik [element runbook zostanie wywołany](automation-child-runbooks.md#invoking-a-child-runbook-using-inline-execution) nadrzędnego elementu runbook, zwraca dane ze strumienia wyjściowego do nadrzędnego. Dane ze strumienia wyjściowego należy używać tylko do przekazywania ogólnych informacji do użytkownika, jeśli wiesz, że element runbook nigdy nie jest wywoływana przez inny element runbook. Najlepszym rozwiązaniem jest jednak należy zwykle użyć [pełne Stream](#verbose-stream) do przekazywania ogólnych informacji do użytkownika.
+Strumień wyjściowy jest przeznaczony do wyprowadzania obiektów, które są tworzone przez skrypt lub przepływ pracy, gdy działa poprawnie. W Azure Automation ten strumień jest używany głównie dla obiektów, które mają być używane przez [nadrzędne elementy Runbook, które wywołują bieżący element Runbook](automation-child-runbooks.md). Gdy użytkownik [element runbook zostanie wywołany](automation-child-runbooks.md#invoking-a-child-runbook-using-inline-execution) nadrzędnego elementu runbook, zwraca dane ze strumienia wyjściowego do nadrzędnego. Strumienia danych wyjściowych należy używać tylko do przekazywania informacji ogólnych z powrotem do użytkownika, jeśli wiadomo, że element Runbook nigdy nie jest wywoływany przez inny element Runbook. Najlepszym rozwiązaniem jest jednak należy zwykle użyć [pełne Stream](#verbose-stream) do przekazywania ogólnych informacji do użytkownika.
 
 Możesz zapisać dane do strumienia wyjściowego przy użyciu [Write-Output](https://technet.microsoft.com/library/hh849921.aspx) lub umieszczając obiekt w osobnym wierszu w elemencie runbook.
 
@@ -42,9 +42,9 @@ $object
 ```
 
 ### <a name="output-from-a-function"></a>Dane wyjściowe funkcji
-Podczas zapisywania do strumienia wyjściowego w funkcji, która znajduje się w elemencie runbook, dane wyjściowe są przekazywane do elementu runbook. Jeśli element runbook przypisuje te dane wyjściowe do zmiennej, następnie go nie jest zapisywany do strumienia wyjściowego. Zapisywanie do wszelkich innych strumieni w funkcji zapisuje do odpowiedniego strumienia elementu runbook.
+Gdy zapisujesz do strumienia danych wyjściowych w funkcji, która jest dołączona do elementu Runbook, dane wyjściowe są przekazywane z powrotem do elementu Runbook. Jeśli element runbook przypisuje te dane wyjściowe do zmiennej, następnie go nie jest zapisywany do strumienia wyjściowego. Zapisywanie do innych strumieni z wewnątrz funkcji zapisuje do odpowiedniego strumienia dla elementu Runbook.
 
-Należy wziąć pod uwagę następujący przykładowy element runbook:
+Rozważmy następujący przykładowy element Runbook:
 
 ```powershell
 Workflow Test-Runbook
@@ -76,12 +76,12 @@ Verbose outside of function
 Verbose inside of function
 ```
 
-Po opublikowaniu elementu runbook i przed jej rozpoczęciem, należy również włączyć pełne rejestrowanie, ustawienia elementu runbook, aby uzyskać pełne strumień wyjściowy.
+Po opublikowaniu elementu Runbook i przed jego rozpoczęciem należy również włączyć pełne rejestrowanie w ustawieniach elementu Runbook, aby uzyskać pełne dane wyjściowe strumienia.
 
-### <a name="declaring-output-data-type"></a>Deklarujący typ danych wyjściowych
-Przepływ pracy można określić typu danych jego danych wyjściowych za pomocą [atrybutu OutputType](https://technet.microsoft.com/library/hh847785.aspx). Ten atrybut jest ignorowany podczas wykonywania, ale stanowi wskazówkę twórcy elementu runbook w czasie projektowania oczekiwane dane wyjściowe elementu runbook. Jak zestaw narzędzi dla elementów runbook w dalszym ciągu rozwijany, w ważność wzrasta znaczenie deklarowanie typów danych wyjściowych w czasie projektowania. W rezultacie jest najlepszym rozwiązaniem jest to dołączenie tej deklaracji w wszelkie elementy runbook, którą tworzysz.
+### <a name="declaring-output-data-type"></a>Deklarowanie typu danych wyjściowych
+Przepływ pracy można określić typu danych jego danych wyjściowych za pomocą [atrybutu OutputType](https://technet.microsoft.com/library/hh847785.aspx). Ten atrybut jest ignorowany podczas wykonywania, ale stanowi wskazówkę twórcy elementu runbook w czasie projektowania oczekiwane dane wyjściowe elementu runbook. Ponieważ zestaw narzędzi dla elementów Runbook jest w dalszym ciągu rozwijany, znaczenie deklarowania typów danych wyjściowych w czasie projektowania zwiększy ważność. W związku z tym najlepszym rozwiązaniem jest dołączenie tej deklaracji do utworzonych elementów Runbook.
 
-Oto lista przykład typów danych wyjściowych:
+Oto lista przykładowych typów danych wyjściowych:
 
 * System.String
 * System.Int32
@@ -100,29 +100,29 @@ Workflow Test-Runbook
 }
  ```
 
-Aby zadeklarować typ danych wyjściowych w elementach runbook graficzny lub graficzny przepływ pracy programu PowerShell, można wybrać **danych wejściowych i wyjściowych** opcji menu i wpisz nazwę typu danych wyjściowych. Zalecane jest, że używasz Pełna nazwa klasy .NET, aby ułatwić jego identyfikację podczas odwoływania się do nadrzędnego elementu runbook. Udostępnia właściwości tej klasy do magistrali danych w elemencie runbook i zapewnia dużą elastyczność podczas korzystania z nich logikę warunkową, rejestrowanie i odwoływanie się do wartości innych działań w elemencie runbook.<br> ![Opcji elementu Runbook w danych wejściowych i wyjściowych](media/automation-runbook-output-and-messages/runbook-menu-input-and-output-option.png)
+Aby zadeklarować typ danych wyjściowych w graficznym lub graficznym elemencie Runbook przepływu pracy programu PowerShell, możesz wybrać opcję menu **dane wejściowe i wyjściowe** i wpisać w polu Nazwa typu danych wyjściowych. Zaleca się używanie pełnej nazwy klasy .NET, aby ułatwić jej identyfikację podczas odwoływania się do niej z nadrzędnego elementu Runbook. Dzięki temu wszystkie właściwości tej klasy zostaną dodane do magistrali danych w elemencie Runbook i zapewniają znacznie elastyczność podczas korzystania z nich do logiki warunkowej, rejestrowania i odwoływania się jako wartości dla innych działań w elemencie Runbook.<br> ![Opcja danych wejściowych i wyjściowych elementu Runbook](media/automation-runbook-output-and-messages/runbook-menu-input-and-output-option.png)
 
-W poniższym przykładzie masz dwie graficznych elementów runbook, aby zademonstrować tę funkcję. Jeśli zastosujesz model projektowania modułowej elementu runbook, masz jednego elementu runbook, który służy jako *szablonu elementu Runbook uwierzytelniania* zrządzania uwierzytelnianiem za pomocą platformy Azure przy użyciu konta Uruchom jako. Nasze drugiego elementu runbook, który normalnie wykona podstawowe zasady logiczne do zautomatyzowania danego scenariusza, w tym przypadku zamierza wykonać *szablonu elementu Runbook uwierzytelniania* i wyświetlić wyniki, aby Twoje **testu** Okienko danych wyjściowych. W normalnych warunkach trzeba ten element runbook czymś wobec zasobu, wykorzystując dane wyjściowe z podrzędnego elementu runbook.
+W poniższym przykładzie masz dwa graficzne elementy Runbook, aby przedstawić tę funkcję. Jeśli zastosujesz model projektu modularnego elementu Runbook, masz jeden element Runbook, który służy jako *szablon elementu Runbook uwierzytelniania* Zarządzanie uwierzytelnianiem na platformie Azure przy użyciu konta Uruchom jako. Nasz drugi element Runbook, który zwykle wykonuje podstawową logikę w celu zautomatyzowania danego scenariusza, w tym przypadku będzie wykonywać *szablon elementu Runbook uwierzytelniania* i wyświetlać wyniki w okienku danych wyjściowych **testu** . W normalnych warunkach ten element Runbook będzie miał zawartość dla zasobu wykorzystującego dane wyjściowe z podrzędnego elementu Runbook.
 
-Poniżej przedstawiono podstawowe logiki **AuthenticateTo Azure** elementu runbook.<br> ![Przykładowy szablon elementu Runbook do uwierzytelniania](media/automation-runbook-output-and-messages/runbook-authentication-template.png).  
+Oto podstawowa logika elementu Runbook **AuthenticateTo-Azure** .<br> ![Przykład](media/automation-runbook-output-and-messages/runbook-authentication-template.png)uwierzytelniania szablonu elementu Runbook.  
 
-Zawiera typ danych wyjściowych *Microsoft.Azure.Commands.Profile.Models.PSAzureContext*, która zwraca uwierzytelniania właściwości profilu.<br> ![Przykład typu dane wyjściowe elementu Runbook](media/automation-runbook-output-and-messages/runbook-input-and-output-add-blade.png) 
+Zawiera typ danych wyjściowych *Microsoft. Azure. Commands. profile. models. PSAzureContext*, który zwraca właściwości profilu uwierzytelniania.<br> ![Przykład typu danych wyjściowych elementu Runbook](media/automation-runbook-output-and-messages/runbook-input-and-output-add-blade.png) 
 
-Chociaż ten element runbook jest bardzo proste, ma jeden element konfiguracji do wyróżnienia tutaj. Ostatnie działanie wykonuje **Write-Output** polecenia cmdlet i zapisuje dane profilu ze zmienną $_, za pomocą wyrażenia programu PowerShell dla **Inputobject** parametr, który jest wymagany dla tego polecenia cmdlet.  
+Mimo że ten element Runbook jest przesunięty do przodu, istnieje jeden element konfiguracji do wywołania w tym miejscu. Ostatnie działanie wykonuje polecenie cmdlet **Write-Output** i zapisuje dane profilu do zmiennej $ _ przy użyciu wyrażenia programu PowerShell dla parametru inputobject,  który jest wymagany dla tego polecenia cmdlet.  
 
-Dla drugiego elementu runbook w tym przykładzie, o nazwie *ChildOutputType testu*, wystarczy dwóch działań.<br> ![Przykład podrzędnego dane wyjściowe elementu Runbook typu](media/automation-runbook-output-and-messages/runbook-display-authentication-results-example.png) 
+Dla drugiego elementu Runbook w tym przykładzie o nazwie *test-ChildOutputType*wystarczy dwa działania.<br> ![Przykład elementu Runbook podrzędnego typu wyjściowego](media/automation-runbook-output-and-messages/runbook-display-authentication-results-example.png) 
 
-Pierwszego wywołania działania **AuthenticateTo Azure** działa element runbook i drugiego działania **Write-Verbose** polecenia cmdlet z **źródła danych** z  **Wyjście działania** i wartości dla **ścieżka pola** jest **Context.Subscription.SubscriptionName**, który jest określanie kontekstu danych wyjściowych  **AuthenticateTo Azure** elementu runbook.<br> ![Polecenie cmdlet Write-Verbose parametr źródła danych](media/automation-runbook-output-and-messages/runbook-write-verbose-parameters-config.png)    
+Pierwsze działanie wywołuje element Runbook **AuthenticateTo-Azure** , a drugie działanie uruchamia polecenie cmdlet **Write-verbose** ze **źródłem danych** **wyjścia działania** , a wartością **ścieżki pola** jest  **Context. Subscription. Subscriptionname**, określający dane wyjściowe kontekstu z elementu Runbook **AuthenticateTo-Azure** .<br> ![Zapisz — pełne źródło danych parametru polecenia cmdlet](media/automation-runbook-output-and-messages/runbook-write-verbose-parameters-config.png)    
 
-Dane wyjściowe to nazwę subskrypcji.<br> ![Wyniki elementu Runbook ChildOutputType testu](media/automation-runbook-output-and-messages/runbook-test-childoutputtype-results.png)
+Wynikowe dane wyjściowe to nazwa subskrypcji.<br> ![Wyniki elementu Runbook test-ChildOutputType](media/automation-runbook-output-and-messages/runbook-test-childoutputtype-results.png)
 
-Pamiętać o zachowaniu kontrolki typ danych wyjściowych. Podczas wpisywania wartości w polu Typ danych wyjściowych w bloku właściwości danych wejściowych i wyjściowych masz kliknij poza kontrolą po wpisaniu, aby swój wpis zostały rozpoznane przez formant.  
+Jedna Uwaga dotycząca zachowania kontrolki typu danych wyjściowych. Gdy wpiszesz wartość w polu Typ danych wyjściowych w bloku właściwości danych wejściowych i wyjściowych, musisz klikać poza formantem po jego wpisaniu, aby wpis został rozpoznany przez formant.  
 
 ## <a name="message-streams"></a>Strumienie komunikatów
-W przeciwieństwie do strumienia wyjściowego strumienie komunikatów są przeznaczone do przekazywania informacji do użytkownika. Istnieje wiele strumieni komunikatów dla różnych rodzajów informacji, a każda odbywa się inaczej przez usługę Azure Automation.
+W przeciwieństwie do strumienia wyjściowego strumienie komunikatów są przeznaczone do przekazywania informacji do użytkownika. Istnieje wiele strumieni komunikatów dla różnych rodzajów informacji, a każda z nich jest obsługiwana inaczej przez Azure Automation.
 
 ### <a name="warning-and-error-streams"></a>Strumienie ostrzeżeń i błędów
-Strumienie ostrzeżeń i błędów są przeznaczone do rejestrowania problemów występujących w elemencie runbook. Są one zapisywane w historii zadań elementu runbook jest wykonywany, gdy znajdują się w okienku danych wyjściowych testu w witrynie Azure portal podczas testowania elementu runbook. Domyślnie element runbook kontynuuje wykonywanie po ostrzeżeniu lub błędzie. Można określić, że element runbook ma zostać zawieszony w ostrzeżenia lub błędu, ustawiając [zmiennej preferencji](#preference-variables) w elemencie runbook przed utworzeniem komunikatu. Na przykład, aby spowodować zawieszenie elementu runbook w błąd jako wyjątek w ten sposób, należy ustawić **$ErrorActionPreference** do zatrzymania.
+Strumienie ostrzeżeń i błędów są przeznaczone do rejestrowania problemów występujących w elemencie runbook. Są one zapisywane w historii zadań, gdy element Runbook jest wykonywany i znajduje się w okienku danych wyjściowych testu w Azure Portal podczas testowania elementu Runbook. Domyślnie element runbook kontynuuje wykonywanie po ostrzeżeniu lub błędzie. Można określić, że element runbook ma zostać zawieszony w ostrzeżenia lub błędu, ustawiając [zmiennej preferencji](#preference-variables) w elemencie runbook przed utworzeniem komunikatu. Na przykład, aby element Runbook mógł wstrzymać działanie w przypadku błędu, ponieważ spowodowałoby to wyjątek, ustaw **$ErrorActionPreference** na zatrzymany.
 
 Utwórz ostrzeżenia lub błędu komunikat przy użyciu [Write-Warning](https://technet.microsoft.com/library/hh849931.aspx) lub [Write-Error](https://technet.microsoft.com/library/hh849962.aspx) polecenia cmdlet. Działania mogą także zapisywać do tych strumieni.
 
@@ -135,9 +135,9 @@ Write-Error –Message "This is an error message that will stop the runbook beca
 ```
 
 ### <a name="verbose-stream"></a>Strumień pełny
-Strumień komunikatów pełnych jest ogólne informacje o działaniu elementu runbook. Ponieważ [Stream debugowania](#debug-stream) nie jest dostępna w elemencie runbook, pełne komunikaty wyjściowe powinny być używane do informacji o debugowaniu. Domyślnie komunikaty pełne z opublikowanych elementów runbook nie są przechowywane w historii zadań. Aby zapisywać komunikaty pełne, skonfiguruj opublikowane elementy runbook w celu rejestrowania rekordów pełnych na karcie Konfiguracja elementu runbook w witrynie Azure portal. W większości przypadków należy zachować domyślne ustawienie bez rejestrowania rekordów pełnych dla elementu runbook ze względu na wydajność. Włącz tę opcję tylko rozwiązania lub debugowania elementu runbook.
+Strumień komunikatów pełnych jest ogólne informacje o działaniu elementu runbook. Ponieważ [strumień debugowania](#debug-stream) nie jest dostępny w elemencie Runbook, dla informacji debugowania należy używać pełnych komunikatów. Domyślnie pełne komunikaty z opublikowanych elementów Runbook nie są przechowywane w historii zadań. Aby przechowywać pełne komunikaty, skonfiguruj opublikowane elementy Runbook do rejestrowania pełnych rekordów na karcie Konfiguracja elementu Runbook w Azure Portal. W większości przypadków należy zachować domyślne ustawienie bez rejestrowania rekordów pełnych dla elementu runbook ze względu na wydajność. Włącz tę opcję tylko rozwiązania lub debugowania elementu runbook.
 
-Gdy [testowania elementu runbook](automation-testing-runbook.md), komunikaty pełne nie są wyświetlane nawet wtedy, jeśli element runbook jest skonfigurowany do rejestrowania rekordów pełnych. Aby wyświetlić komunikaty pełne podczas [testowania elementu runbook](automation-testing-runbook.md), należy ustawić dla zmiennej $VerbosePreference Kontynuuj. Za pomocą ta zmienna jest ustawiona komunikaty pełne są wyświetlane w okienku danych wyjściowych testu w witrynie Azure Portal.
+Podczas [testowania elementu Runbook](automation-testing-runbook.md)komunikaty pełne nie są wyświetlane, nawet jeśli element Runbook jest skonfigurowany do rejestrowania pełnych rekordów. Aby wyświetlić pełne komunikaty podczas [testowania elementu Runbook](automation-testing-runbook.md), należy ustawić zmienną $VerbosePreference, aby kontynuować. W przypadku tego zestawu zmiennych w okienku danych wyjściowych testu w Azure Portal są wyświetlane pełne komunikaty.
 
 Tworzenie przy użyciu komunikat trybu informacji pełnej [Write-Verbose](https://technet.microsoft.com/library/hh849951.aspx) polecenia cmdlet.
 
@@ -151,14 +151,14 @@ Write-Verbose –Message "This is a verbose message."
 Strumień debugowania jest przeznaczony do użytku użytkowników interakcyjnych i nie należy używać w elementach runbook.
 
 ## <a name="progress-records"></a>Rekordy postępu
-Jeśli skonfigurujesz elementu runbook do rejestrowania postępu rejestruje (na karcie Konfiguracja elementu runbook w portalu Azure), a następnie rekord zostanie zapisany w historii zadań przed i po każdym uruchomieniem działania. W większości przypadków należy zachować domyślne ustawienie bez rejestrowania rekordów postępu dla elementu runbook w celu zmaksymalizowania wydajności. Włącz tę opcję tylko rozwiązania lub debugowania elementu runbook. Podczas testowania elementu runbook, komunikaty o postępie nie są wyświetlane, nawet jeśli element runbook jest skonfigurowany do rejestrowania rekordów postępu.
+Jeśli element Runbook zostanie skonfigurowany do rejestrowania rekordów postępu (na karcie Konfiguracja elementu Runbook w Azure Portal), rekord zostanie zapisany w historii zadań przed uruchomieniem każdego działania. W większości przypadków należy zachować domyślne ustawienie bez rejestrowania rekordów postępu dla elementu runbook w celu zmaksymalizowania wydajności. Włącz tę opcję tylko rozwiązania lub debugowania elementu runbook. Podczas testowania elementu runbook, komunikaty o postępie nie są wyświetlane, nawet jeśli element runbook jest skonfigurowany do rejestrowania rekordów postępu.
 
-[Write-Progress](https://technet.microsoft.com/library/hh849902.aspx) polecenia cmdlet jest nieprawidłowy w elemencie runbook, ponieważ to polecenie cmdlet jest przeznaczone dla użytkownika interaktywnego.
+Polecenie cmdlet [Write-Progress](https://technet.microsoft.com/library/hh849902.aspx) nie jest prawidłowe w elemencie Runbook, ponieważ to polecenie cmdlet jest przeznaczone do użycia z użytkownikiem interakcyjnym.
 
 ## <a name="preference-variables"></a>Zmienne preferencji
-Używa programu Windows PowerShell [zmienne preferencji](https://technet.microsoft.com/library/hh847796.aspx) ustalenie, jak reagować na dane wysyłane do różnych strumieni wyjściowych. Te zmienne możesz ustawić w elemencie runbook do kontrolowania sposobu odpowiedzi na dane przesyłane do różnych strumieni.
+Używa programu Windows PowerShell [zmienne preferencji](https://technet.microsoft.com/library/hh847796.aspx) ustalenie, jak reagować na dane wysyłane do różnych strumieni wyjściowych. Można ustawić te zmienne w elemencie Runbook, aby kontrolować, jak reagują na dane wysyłane do różnych strumieni.
 
-Poniższa tabela zawiera listę zmiennych preferencji, które mogą być używane w elementach runbook oraz ich prawidłowe i domyślne wartości. Poniższa tabela zawiera tylko wartości, które są prawidłowe w elemencie runbook. Dodatkowe wartości są prawidłowe dla zmiennych preferencji, gdy jest używana w programie Windows PowerShell poza usługi Azure Automation.
+Poniższa tabela zawiera listę zmiennych preferencji, które mogą być używane w elementach runbook oraz ich prawidłowe i domyślne wartości. Ta tabela zawiera tylko wartości, które są prawidłowe w elemencie Runbook. Dodatkowe wartości są prawidłowe dla zmiennych preferencji używanych w programie Windows PowerShell poza Azure Automation.
 
 | Zmienna | Wartość domyślna | Prawidłowe wartości |
 |:--- |:--- |:--- |
@@ -171,68 +171,68 @@ W poniższej tabeli wymieniono zachowanie dla wartości zmiennych preferencji, k
 | Wartość | Zachowanie |
 |:--- |:--- |
 | Kontynuuj |Rejestruje komunikat i kontynuuje wykonywanie elementu runbook. |
-| SilentlyContinue |Kontynuuje wykonywanie elementu runbook bez rejestrowania komunikatu. Wartość ta powoduje zignorowanie komunikatu. |
+| SilentlyContinue |Kontynuuje wykonywanie elementu runbook bez rejestrowania komunikatu. Ta wartość ma wpływ na ignorowanie komunikatu. |
 | Stop |Rejestruje komunikat i zawiesza element runbook. |
 
-## <a name="runbook-output"></a>Trwa pobieranie elementu runbook dane wyjściowe i komunikaty
+## <a name="runbook-output"></a>Pobieranie danych wyjściowych i komunikatów elementu Runbook
 ### <a name="azure-portal"></a>Azure Portal
-Szczegóły zadania elementu runbook można wyświetlić w witrynie Azure portal, na karcie zadania elementu runbook. Podsumowanie zadania przedstawia parametry wejściowe i [Stream dane wyjściowe](#output-stream) oraz ogólne informacje o zadaniu wraz z wygenerowanymi wyjątkami, jakby one miejsce. Historia zawiera komunikaty z [Stream dane wyjściowe](#output-stream) i [strumienie ostrzeżeń i błędów](#warning-and-error-streams) , jak również [pełne Stream](#verbose-stream) i [rekordów postępu](#progress-records) Jeśli element runbook jest skonfigurowany do dziennika, pełne i rekordy postępu.
+Szczegóły zadania elementu Runbook można wyświetlić w Azure Portal z poziomu karty zadania elementu Runbook. W podsumowaniu zadania są wyświetlane parametry wejściowe i [strumień danych wyjściowych](#output-stream) , a także ogólne informacje o zadaniu i ewentualne wyjątki, jeśli wystąpią. Historia obejmuje komunikaty ze [strumienia wyjściowego](#output-stream) oraz strumienie [ostrzeżeń i błędów](#warning-and-error-streams) , a także pełne rekordy [strumieni](#verbose-stream) i [postępu](#progress-records) , jeśli element Runbook jest skonfigurowany pod kątem rejestrowania rekordów pełnych i informacji o postępie.
 
 ### <a name="windows-powershell"></a>Windows PowerShell
-W programie Windows PowerShell można pobrać dane wyjściowe i komunikaty elementu runbook, w którym używana jest [Get AzureAutomationJobOutput](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjoboutput) polecenia cmdlet. To polecenie cmdlet wymaga Identyfikatora zadania i ma parametr o nazwie Stream, w którym należy określić strumień do zwrócenia. Można określić **wszelkie** aby spowodować zwrócenie wszystkich strumieni zadania.
+W programie Windows PowerShell można pobrać dane wyjściowe i komunikaty z elementu Runbook za pomocą polecenia cmdlet [Get-AzureAutomationJobOutput](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjoboutput) . To polecenie cmdlet wymaga identyfikatora zadania i ma parametr o nazwie Stream, w którym można określić strumień, który ma zostać zwrócony. Można określić **wszelkie** aby spowodować zwrócenie wszystkich strumieni zadania.
 
 Poniższy przykład rozpoczyna się przykładowego elementu runbook, a następnie czeka na jego zakończenie. Po zakończeniu jego strumień wyjściowy jest zbierany z zadania.
 
 ```powershell
-$job = Start-AzureRmAutomationRunbook -ResourceGroupName "ResourceGroup01" `
+$job = Start-AzAutomationRunbook -ResourceGroupName "ResourceGroup01" `
   –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook"
 
 $doLoop = $true
 While ($doLoop) {
-  $job = Get-AzureRmAutomationJob -ResourceGroupName "ResourceGroup01" `
+  $job = Get-AzAutomationJob -ResourceGroupName "ResourceGroup01" `
     –AutomationAccountName "MyAutomationAccount" -Id $job.JobId
   $status = $job.Status
   $doLoop = (($status -ne "Completed") -and ($status -ne "Failed") -and ($status -ne "Suspended") -and ($status -ne "Stopped"))
 }
 
-Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
+Get-AzAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
   –AutomationAccountName "MyAutomationAccount" -Id $job.JobId –Stream Output
 
-# For more detailed job output, pipe the output of Get-AzureRmAutomationJobOutput to Get-AzureRmAutomationJobOutputRecord
-Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
-  –AutomationAccountName "MyAutomationAccount" -Id $job.JobId –Stream Any | Get-AzureRmAutomationJobOutputRecord
+# For more detailed job output, pipe the output of Get-AzAutomationJobOutput to Get-AzAutomationJobOutputRecord
+Get-AzAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
+  –AutomationAccountName "MyAutomationAccount" -Id $job.JobId –Stream Any | Get-AzAutomationJobOutputRecord
 ``` 
 
 ### <a name="graphical-authoring"></a>Tworzenie graficzne
-Graficzne elementy runbook bardzo rejestrowania jest dostępna w formie śledzenie na poziomie działania. Istnieją dwa poziomy śledzenia: Podstawowe i szczegółowe. W śledzenia, można zobaczyć godzina rozpoczęcia i zakończenia każdego działania w elemencie runbook, a także informacji związanych z dowolnego powtórzeń działania. Przykładami są: liczba prób i godzina rozpoczęcia działania. W szczegółowe śledzenie otrzymasz podstawowe śledzenie plus dane wejściowe i dane wyjściowe dla każdego działania. Obecnie rekordów śledzenia są zapisywane z użyciem strumień pełny, więc należy włączyć pełne rejestrowanie, po włączeniu śledzenia. Dla graficznych elementów runbook z włączonym śledzeniem nie ma potrzeby kątem rejestrowania rekordów postępu. Podstawowe śledzenie służy do tego samego celu i jest bardziej szczegółowy.
+W przypadku graficznych elementów Runbook dodatkowe rejestrowanie jest dostępne w formie śledzenia na poziomie działania. Istnieją dwa poziomy śledzenia: Podstawowa i szczegółowa. W przypadku śledzenia podstawowego można zobaczyć godzinę rozpoczęcia i zakończenia każdego działania w elemencie Runbook oraz informacje związane z ponownymi próbami działania. Oto kilka przykładów, liczba prób i czas rozpoczęcia działania. W ramach szczegółowego śledzenia uzyskasz podstawowe śledzenie oraz dane wejściowe i wyjściowe dla każdego działania. Obecnie rekordy śledzenia są zapisywane przy użyciu pełnego strumienia, więc musisz włączyć pełne rejestrowanie po włączeniu śledzenia. W przypadku graficznych elementów Runbook z włączonym śledzeniem nie ma potrzeby rejestrowania rekordów postępu. Śledzenie podstawowe służy tym samym przeznaczeniu i ma więcej informacji.
 
-![Zadanie tworzenia graficznego strumieni widoku](media/automation-runbook-output-and-messages/job-streams-view-blade.png)
+![Widok strumieni zadania tworzenia graficznego](media/automation-runbook-output-and-messages/job-streams-view-blade.png)
 
-Z poprzednim zrzucie ekranu widać, gdy włączone jest pełne, rejestrowania i śledzenia dla graficznych elementów runbook, znacznie więcej informacji o dostępnych w widoku strumieni zadań w środowisku produkcyjnym. Te dodatkowe informacje mogą być niezbędne do rozwiązywania problemów produkcyjnych przy użyciu elementu runbook, a w związku z tym należy tylko włączyć je w tym celu, a nie ogólną praktyką. Rekordy śledzenia może być szczególnie wiele. Z włączonym śledzeniem graficzny element runbook, możesz uzyskać dwóch do czterech rekordy na działanie w zależności od tego, czy skonfigurowano śledzenie podstawowy lub szczegółowy. Jeśli nie potrzebujesz tych informacji do śledzenia postępu dla elementów runbook w celu rozwiązywania problemów, możesz chcieć zachować śledzenie wyłączone.
+Z poprzedniego zrzutu ekranu można zobaczyć, że po włączeniu pełnego rejestrowania i śledzenia graficznych elementów Runbook w widoku strumienie zadań produkcyjnych jest dostępna znacznie więcej informacji. Te dodatkowe informacje mogą być niezbędne do rozwiązywania problemów produkcyjnych z elementem Runbook, dlatego należy je włączyć tylko do tego celu, a nie jako ogólne rozwiązanie. Rekordy śledzenia mogą być szczególnie liczne. Przy użyciu graficznego śledzenia elementów Runbook można uzyskać dwa do czterech rekordów na działanie w zależności od tego, czy skonfigurowano podstawowe lub szczegółowe śledzenie. Jeśli nie potrzebujesz tych informacji do śledzenia postępu elementu Runbook w celu rozwiązywania problemów, możesz chcieć wyłączyć śledzenie.
 
-**Aby włączyć śledzenie poziom aktywności, wykonaj następujące czynności:**
+**Aby włączyć śledzenie na poziomie działania, wykonaj następujące czynności:**
 
 1. W witrynie Azure Portal otwórz konto usługi Automation.
-2. W obszarze **automatyzacji procesów**, wybierz opcję **elementów Runbook** aby otworzyć listę elementów runbook.
-3. Na stronie elementy Runbook kliknij, aby wybrać graficznego elementu runbook z listy elementów runbook.
-4. W obszarze **ustawienia**, kliknij przycisk **rejestrowanie i śledzenie**.
-5. Rejestrowanie i śledzenie stronie w obszarze rejestrowania rekordów pełnych, wybierz polecenie **na** Włącz pełne rejestrowanie i w obszarze działania na poziomie śledzenia, zmień poziom śledzenia **podstawowe** lub **szczegółowe** zależnie od poziomu śledzenia potrzebujesz.<br>
+2. W obszarze **Automatyzacja procesów**wybierz pozycję **elementy Runbook** , aby otworzyć listę elementów Runbook.
+3. Na stronie elementy Runbook kliknij, aby wybrać graficzny element Runbook z listy elementów Runbook.
+4. W obszarze **Ustawienia**kliknij pozycję **Rejestrowanie i śledzenie**.
+5. Na stronie Rejestrowanie i śledzenie w obszarze Rejestruj pełne **Rekordy kliknij pozycję** Włącz, aby włączyć pełne rejestrowanie i w obszarze Śledzenie na poziomie działania, Zmień poziom śledzenia na **podstawowy** lub **szczegółowy** w zależności od wymaganego poziomu śledzenia.<br>
    
-   ![Graficzny tworzenie, rejestrowanie i śledzenie strony](media/automation-runbook-output-and-messages/logging-and-tracing-settings-blade.png)
+   ![Strona śledzenie i rejestrowanie tworzenia graficznego](media/automation-runbook-output-and-messages/logging-and-tracing-settings-blade.png)
 
-### <a name="microsoft-azure-monitor-logs"></a>Dzienniki systemu Microsoft Azure Monitor
-Automatyzacja może wysyłać elementu runbook strumieni zadań i stanu zadania do obszaru roboczego usługi Log Analytics. Przy użyciu dzienników usługi Azure Monitor możesz,
+### <a name="microsoft-azure-monitor-logs"></a>Dzienniki monitora Microsoft Azure
+Automatyzacja może wysyłać strumienie zadań elementu Runbook i zadań do obszaru roboczego Log Analytics. Korzystając z dzienników Azure Monitor, możesz
 
-* Uzyskaj wgląd w automatyzacji zadań 
-* Wyzwalacza poczty e-mail lub alertu opartego na stan zadania elementu runbook (na przykład nie powiodło się lub zawieszone) 
-* Pisanie zapytań zaawansowanych między strumienie zadania 
-* Korelowanie zadań w ramach kont usługi Automation 
-* Wizualizowanie historii zadań wraz z upływem czasu    
+* Uzyskiwanie szczegółowych informacji na temat zadań automatyzacji 
+* Wyzwalanie wiadomości e-mail lub alertu na podstawie stanu zadania elementu Runbook (na przykład Niepowodzenie lub wstrzymane) 
+* Zapisuj zaawansowane zapytania w strumieniach zadań 
+* Skorelowanie zadań na kontach usługi Automation 
+* Wizualizuj historię zadań w czasie    
 
-Aby uzyskać więcej informacji na temat konfigurowania integracji przy użyciu dzienników usługi Azure Monitor, można gromadzić, korelować i działają na dane zadania, zobacz [przekazywania strumienie zadania i stan zadania z usługi Automation do usługi Azure Monitor dzienników](automation-manage-send-joblogs-log-analytics.md).
+Aby uzyskać więcej informacji na temat konfigurowania integracji z dziennikami Azure Monitor w celu zbierania, skorelowania i wykonywania zadań związanych z danymi, zobacz [przekazywanie stanu zadań i strumieni zadań z automatyzacji do dzienników Azure monitor](automation-manage-send-joblogs-log-analytics.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Aby dowiedzieć się więcej o wykonywaniu elementów Runbook, sposobie monitorowania zadań elementów Runbook i innych szczegółach technicznych, zobacz [Track a runbook job](automation-runbook-execution.md) (Śledzenie zadania elementu Runbook)
-* Aby zrozumieć sposób projektowania i używania podrzędnych elementów runbook, zobacz [podrzędnych elementów runbook w usłudze Azure Automation](automation-child-runbooks.md)
+* Aby dowiedzieć się, jak projektować i używać podrzędnych elementów Runbook, zobacz [podrzędne elementy Runbook w Azure Automation](automation-child-runbooks.md)
 
 

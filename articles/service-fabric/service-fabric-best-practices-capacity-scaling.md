@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: fe0af4ca7b6860fff19f4df3165a975c42b54a03
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: d4daa7ae9c7e58c1949dfbe4427a154c389100d4
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277774"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348377"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Planowanie i skalowanie pojemności dla Service Fabric platformy Azure
 
@@ -92,7 +92,7 @@ Skalowanie w poziomie można przeprowadzić [ręcznie](https://docs.microsoft.co
 
 Skalowanie klastra Service Fabric przez zwiększenie liczby wystąpień określonego zestawu skalowania maszyn wirtualnych. Można programowo skalować w poziomie przy użyciu `AzureClient` i identyfikatora żądanego zestawu skalowania w celu zwiększenia pojemności.
 
-```c#
+```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
 var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
@@ -110,7 +110,7 @@ Aby ręcznie skalować w poziomie, zaktualizuj pojemność we właściwości SKU
 
 ### <a name="scaling-in"></a>Skalowanie w
 
-Skalowanie w górę wymaga większego nacisku niż skalowanie w górę. Na przykład:
+Skalowanie w górę wymaga większego nacisku niż skalowanie w górę. Przykład:
 
 * Usługi systemowe Service Fabric uruchamiane w podstawowym typie węzła w klastrze. Nigdy nie zamykaj ani nie Skaluj w dół liczby wystąpień tego typu węzła, aby mieć mniej wystąpień niż to, co gwarantuje warstwa niezawodności. 
 * W przypadku usługi stanowej potrzebna jest pewna liczba węzłów, które są zawsze do utrzymania dostępności i zachowania stanu usługi. Wymagana jest co najmniej liczba węzłów równa liczbie docelowych zestawu replik partycji lub usługi.
@@ -132,9 +132,9 @@ Aby ręcznie skalować, zaktualizuj pojemność we właściwości SKU żądanego
 }
 ```
 
-Aby można było programowo skalować w poziomie, należy przygotować węzeł do zamknięcia. Znajdź węzeł, który ma zostać usunięty (węzeł najwyższego wystąpienia). Na przykład:
+Aby można było programowo skalować w poziomie, należy przygotować węzeł do zamknięcia. Znajdź węzeł, który ma zostać usunięty (węzeł najwyższego wystąpienia). Przykład:
 
-```c#
+```csharp
 using (var client = new FabricClient())
 {
     var mostRecentLiveNode = (await client.QueryManager.GetNodeListAsync())
@@ -151,7 +151,7 @@ using (var client = new FabricClient())
 
 Dezaktywuj i Usuń węzeł przy użyciu tego samego `FabricClient` wystąpienia (`client` w tym przypadku) i wystąpienia węzła (`instanceIdString` w tym przypadku), które zostało użyte w poprzednim kodzie:
 
-```c#
+```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
 
 // Remove the node from the Service Fabric cluster
@@ -233,7 +233,7 @@ Inny zasób znajduje się w `nodeTypes` obszarze [zasobów Microsoft. servicefab
 ]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Tworzenie klastra na maszynach wirtualnych lub komputerach z systemem Windows Server: [Service Fabric tworzenia klastra dla systemu Windows Server](service-fabric-cluster-creation-for-windows-server.md).
 * Tworzenie klastra na maszynach wirtualnych lub komputerach z systemem Linux: [Utwórz klaster systemu Linux](service-fabric-cluster-creation-via-portal.md).

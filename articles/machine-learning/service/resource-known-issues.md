@@ -1,5 +1,5 @@
 ---
-title: Znane problemy i rozwiązywanie problemów
+title: Znane problemy & Rozwiązywanie problemów
 titleSuffix: Azure Machine Learning service
 description: Pobierz listę znanych problemów, obejścia problemu i rozwiązywanie problemów dotyczących usługi Azure Machine Learning.
 services: machine-learning
@@ -11,39 +11,39 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 80bb7af0f7ed20336ab08d4f3ca9639057b9c67f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 206a8d9ba45dcb948dfffff86bab17b58a33e464
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65149754"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358617"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Znane problemy i rozwiązywania problemów z usługi Azure Machine Learning
 
 Ten artykuł ułatwia znajdowanie i poprawić błędy lub błędów napotkanych podczas korzystania z usługi Azure Machine Learning.
 
-## <a name="visual-interface-issues"></a>Kwestie dotyczące interfejsu Visual
+## <a name="visual-interface-issues"></a>Problemy z interfejsem wizualnym
 
-Interfejs graficzny dla problemów z usługami uczenia maszynowego.
+Interfejs wizualizacji problemów z usługą Machine Learning.
 
-### <a name="long-compute-preparation-time"></a>Długi czas przygotowywania obliczeń.
+### <a name="long-compute-preparation-time"></a>Długi czas przygotowania obliczeń
 
-Utwórz nowe obliczenie lub być wywoływany przez opuścić obliczeń wymaga czasu, może być kilka minut, a nawet dłużej. Zespół pracuje się do optymalizacji.
+Utwórz nowe obliczenia lub Evoke, opuszczając czas obliczeń, może być kilka minut, a nawet dłużej. Zespół pracuje nad optymalizacją.
 
 
-### <a name="cannot-run-an-experiment-only-contains-dataset"></a>Nie można przebieg eksperymentu zawiera tylko zestaw danych 
+### <a name="cannot-run-an-experiment-only-contains-dataset"></a>Nie można uruchomić eksperymentu zawiera tylko zestaw danych 
 
-Możesz chcieć uruchomić eksperyment zawiera tylko zestaw danych w celu wizualizacji zestawu danych. Jednak nie ma powinny być uruchamiane już dziś eksperymentu zestaw danych zawiera tylko. Czy firma Microsoft aktywnie naprawienie tego problemu.
+Możesz chcieć uruchomić eksperyment zawierający tylko zestaw danych, aby wizualizować zestaw danych. Nie jest jednak możliwe uruchamianie eksperymentu tylko zawiera zestaw danych. Aktywnie Naprawiamy ten problem.
  
-Przed poprawki może nawiązać zestawu danych każdy moduł przekształcania danych (Select Columns in Dataset, edytować metadane itp podziału danych) i uruchomienie eksperymentu. Następnie możesz utworzyć wizualizację zestawu danych. 
+Przed usunięciem można połączyć zestaw danych z dowolnym modułem przekształcania danych (Wybierz kolumny w zestawie danych, edytować metadane, podzielić dane itp.) i uruchomić eksperyment. Następnie można wizualizować zestaw danych. 
 
-Poniżej ilustracji przedstawiono, jak: ![visulize danych](./media/resource-known-issues/aml-visualize-data.png)
+Na poniższej ilustracji przedstawiono sposób ![: visulize — dane](./media/resource-known-issues/aml-visualize-data.png)
 
 ## <a name="sdk-installation-issues"></a>Problemy z instalacją zestawu SDK
 
 **Komunikat o błędzie: Nie można odinstalować "PyYAML"**
 
-Środowisko Azure Machine Learning zestawu SDK dla języka Python: PyYAML jest projektem zainstalowanych distutils. W związku z tym firma Microsoft nie można dokładnie określić pliki, które należą do niej w przypadku częściowej dezinstalacji. Aby kontynuować instalację zestawu SDK podczas ignorowanie tego błędu, należy użyć:
+Zestaw Azure Machine Learning SDK dla języka Python: PyYAML jest zainstalowaną distutils projektem. W związku z tym nie można dokładnie określić, które pliki należą do niej, jeśli istnieje częściowe odinstalowanie. Aby kontynuować instalację zestawu SDK podczas ignorowanie tego błędu, należy użyć:
 
 ```Python
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
@@ -57,9 +57,9 @@ Brak rzadkich prawdopodobieństwo, że niektórych użytkowników, którzy utwor
 
 Obraz tworzenia niepowodzenia podczas wdrażania usługi sieci web. Obejście polega na dodawanie "pynacl == 1.2.1" jako zależność pip Conda pliku konfiguracji obrazu.
 
-## <a name="deployment-failure"></a>Wdrożenie zakończyło się niepowodzeniem
+## <a name="deployment-failure"></a>Niepowodzenie wdrożenia
 
-Jeśli zauważysz `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`, zmiana jednostki SKU dla maszyn wirtualnych używanych we wdrożeniu na taki, który ma więcej pamięci.
+Jeśli obserwujesz `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`, Zmień jednostkę SKU dla maszyn wirtualnych używanych we wdrożeniu na taką, która ma więcej pamięci.
 
 ## <a name="fpgas"></a>Układów FPGA
 
@@ -67,11 +67,11 @@ Nie można wdrażać modele na układów FPGA dopiero po przeprowadzeniu mają w
 
 ## <a name="automated-machine-learning"></a>Zautomatyzowane uczenie maszynowe
 
-Uczenie maszynowe zautomatyzowany przepływ tensor aktualnie nie obsługuje wersji przepływu tensor 1.13. Zainstalowanie tej wersji spowoduje, że zależności pakietów przestanie działać. Pracujemy nad rozwiązaniem tego problemu w przyszłej wersji. 
+Automatyczne Uczenie maszynowe w przepływie dwuosiowym obecnie nie obsługuje przepływu dwuosiowego w wersji 1,13. Zainstalowanie tej wersji spowoduje, że zależności pakietu przestaną działać. Pracujemy nad rozwiązaniem tego problemu w przyszłej wersji. 
 
 ### <a name="experiment-charts"></a>Wykresy eksperymentu
 
-Wykresy klasyfikacji binarnej (precision-recall, ROC, Uzyskaj krzywej itp.) objętego automatycznych iteracjami eksperymentów uczenia Maszynowego są nie corectly renderowania w interfejsie użytkownika od 4/12. Powierzchni wykresu są obecnie dostępne wyniki odwrotność przedstawiający, gdzie lepiej zachowującego modeli są wyświetlane z niższym wyników. To rozwiązanie wymaga zbadania.
+Binarne wykresy klasyfikacji (precyzja-odwoływanie, ROC, krzywa zysku itp.) pokazana w zautomatyzowanych iteracjach eksperymentów z badaniami nie są w pełni stosowane w interfejsie użytkownika od 4/12. Wykresy wykresów są obecnie wyświetlane z wynikami odwrotnymi, gdzie lepsze są modele z niższymi wynikami. Zbadano rozwiązanie.
 
 ## <a name="databricks"></a>Databricks
 
@@ -79,52 +79,60 @@ Problemy z usługi Databricks i Azure Machine Learning.
 
 ### <a name="failure-when-installing-packages"></a>Błąd podczas instalowania pakietów
 
-Azure Machine Learning SDK nie można zainstalować w usłudze Azure Databricks podczas instalowania dodatkowych pakietów. Niektóre pakiety, takich jak `psutil`, mogą powodować konflikty. Aby uniknąć błędów instalacji, należy zainstalować pakiety zamrażanie wersji biblioteki. Ten problem jest związany, Databricks, a nie zestaw SDK usługi Azure Machine Learning. Ten problem z innymi bibliotekami, może wystąpić zbyt. Przykład:
+Azure Machine Learning Instalacja zestawu SDK kończy się niepowodzeniem na Azure Databricks po zainstalowaniu większej liczby pakietów. Niektóre pakiety, takich jak `psutil`, mogą powodować konflikty. Aby uniknąć błędów instalacji, należy zainstalować pakiety przez zamarzanie wersji biblioteki. Ten problem jest związany z kostkami, a nie z zestawem SDK usługi Azure Machine Learning Service. Ten problem może również wystąpić z innymi bibliotekami. Przykład:
 
 ```python
 psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
 ```
 
-Alternatywnie można użyć skryptów init, jeśli możesz zachować problemów z instalacją biblioteki języka Python. To podejście nie jest oficjalnie obsługiwany. Aby uzyskać więcej informacji, zobacz [skrypty należące do klastra init](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).
+Alternatywnie można użyć skryptów init w przypadku, gdy występują problemy z instalacją w języku Python. Takie podejście nie jest oficjalnie obsługiwane. Aby uzyskać więcej informacji, zobacz [skrypty init z zakresem klastra](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).
 
-### <a name="cancel-an-automated-machine-learning-run"></a>Anuluj maszynie automatycznych uczenia przebiegu
+### <a name="cancel-an-automated-machine-learning-run"></a>Anuluj automatyczny przebieg uczenia maszynowego
 
-Korzystając z automatycznych usługi machine learning możliwości w usłudze Azure Databricks, Anuluj uruchomienie i uruchom nowy eksperyment, uruchamianie, ponowne uruchomienie klastra usługi Azure Databricks.
+W przypadku korzystania z funkcji automatycznego uczenia maszynowego na Azure Databricks w celu anulowania przebiegu i uruchomienia nowego eksperymentu Uruchom ponownie klaster Azure Databricks.
 
-### <a name="10-iterations-for-automated-machine-learning"></a>> 10 iteracji dla zautomatyzowanych machine learning
+### <a name="10-iterations-for-automated-machine-learning"></a>> 10 iteracji dla automatycznej uczenia maszynowego
 
-Automatyczne maszynie uczenia ustawienia, jeśli masz więcej niż 10 iteracji, ustaw `show_output` do `False` momentu przesłania przebiegu.
+W obszarze zautomatyzowane ustawienia uczenia maszynowego, jeśli masz więcej niż 10 iteracji, `show_output` Ustaw `False` wartość podczas przesyłania przebiegu.
 
-### <a name="widget-for-the-azure-machine-learning-sdkautomated-machine-learning"></a>Element widget do uczenia maszynowego Azure Machine Learning SDK/automatyczne
+### <a name="widget-for-the-azure-machine-learning-sdkautomated-machine-learning"></a>Element widget dla Azure Machine Learning SDK/automatycznej uczenia maszynowego
 
-Element widget zestawu SDK usługi Azure Machine Learning nie jest obsługiwane w notesu usługi Databricks, ponieważ notesów nie można przeanalizować elementy widget HTML. Widżet można wyświetlić w portalu przy użyciu kodu w języku Python w komórce notesu usługi Azure Databricks:
+Element widget zestawu Azure Machine Learning SDK nie jest obsługiwany w notesie datacegły, ponieważ notesy nie mogą analizować widżetów HTML. Widżet można wyświetlić w portalu przy użyciu tego kodu w języku Python w komórce notesu Azure Databricks:
 
 ```
 displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
 ```
 
-### <a name="import-error-no-module-named-pandascoreindexes"></a>Błąd importowania: Nie modułu o nazwie "pandas.core.indexes"
+### <a name="import-error-no-module-named-pandascoreindexes"></a>Błąd importowania: Brak modułu o nazwie "Pandas. Core. Indexs"
 
-Jeśli zostanie wyświetlony ten błąd zastosowania zautomatyzowany usługi machine learning:
+Jeśli ten błąd wystąpi podczas korzystania z automatycznej uczenia maszynowego:
 
-1. Uruchom następujące polecenie, aby zainstalować dwa pakiety w klastrze usługi Azure Databricks: 
+1. Uruchom to polecenie, aby zainstalować dwa pakiety w klastrze Azure Databricks: 
 
    ```
    scikit-learn==0.19.1
    pandas==0.22.0
    ```
 
-1. Odłączyć, a następnie ponownie dołączyć klastra do Notatnika. 
+1. Odłącz i ponownie Dołącz klaster do notesu. 
 
-Jeśli to nie rozwiąże problemu, spróbuj ponownie uruchomić klaster.
+Jeśli te kroki nie rozwiążą problemu, spróbuj ponownie uruchomić klaster.
+
+### <a name="failtosendfeather"></a>FailToSendFeather
+
+`FailToSendFeather` Jeśli wystąpi błąd podczas odczytywania danych w klastrze Azure Databricks, zapoznaj się z następującymi rozwiązaniami:
+
+* Uaktualnij `azureml-sdk[automl_databricks]` pakiet do najnowszej wersji.
+* Dodaj `azure-dataprep` wersję 1.1.8 lub nowszą.
+* Dodaj `pyarrow` wersję 0,11 lub nowszą.
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Jeśli przejdziesz bezpośrednio, aby wyświetlić obszar roboczy z Udostępnij link z zestawu SDK lub w portalu, nie można wyświetlić strony z normalnej Przegląd informacji o subskrypcji w rozszerzeniu. Ponadto nie można przełączyć się do innego obszaru roboczego. Jeśli potrzebujesz wyświetlić inny obszar roboczy, obejście polega na przejść bezpośrednio do [witryny Azure portal](https://portal.azure.com) i wyszukaj nazwę obszaru roboczego.
+Jeśli przejdziesz bezpośrednio, aby wyświetlić obszar roboczy z Udostępnij link z zestawu SDK lub w portalu, nie można wyświetlić strony z normalnej Przegląd informacji o subskrypcji w rozszerzeniu. Ponadto nie można przełączyć się do innego obszaru roboczego. Jeśli zachodzi potrzeba wyświetlenia innego obszaru roboczego, obejście to przejście bezpośrednio do [Azure Portal](https://portal.azure.com) i wyszukanie nazwy obszaru roboczego.
 
 ## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
 
-Czasami może być przydatne Jeśli podasz informacje diagnostyczne podczas pytania o pomoc. Aby wyświetlić niektóre dzienniki, odwiedź stronę [witryny Azure portal](https://portal.azure.com) i przejdź do swojego obszaru roboczego i wybierz **obszar roboczy > eksperymentu > Uruchom > dzienniki**.
+Czasami może być przydatne Jeśli podasz informacje diagnostyczne podczas pytania o pomoc. Aby wyświetlić niektóre dzienniki, odwiedź stronę [Azure Portal](https://portal.azure.com) i przejdź do obszaru roboczego, a następnie wybierz pozycję **obszar roboczy > eksperymentuj > Uruchom > dzienników**.
 
 ## <a name="resource-quotas"></a>Limity przydziałów zasobów
 
@@ -132,7 +140,7 @@ Dowiedz się więcej o [limity przydziałów zasobów](how-to-manage-quotas.md) 
 
 ## <a name="authentication-errors"></a>Błędy uwierzytelniania
 
-Jeśli operacja zarządzania w celu obliczeń z zadania zdalne, zostanie wyświetlony jeden z następujących błędów:
+W przypadku wykonywania operacji zarządzania na obiekcie docelowym obliczeń z zadania zdalnego zostanie wyświetlony jeden z następujących błędów:
 
 ```json
 {"code":"Unauthorized","statusCode":401,"message":"Unauthorized","details":[{"code":"InvalidOrExpiredToken","message":"The request token was either invalid or expired. Please try again with a valid token."}]}
@@ -142,4 +150,4 @@ Jeśli operacja zarządzania w celu obliczeń z zadania zdalne, zostanie wyświe
 {"error":{"code":"AuthenticationFailed","message":"Authentication failed."}}
 ```
 
-Na przykład zostanie wyświetlony błąd, jeśli zostanie podjęta próba Utwórz lub Dołącz obliczeniowego elementu docelowego z potoku uczenia Maszynowego, który jest przesyłany w celu wykonania zdalnego.
+Na przykład, jeśli spróbujesz utworzyć lub dołączyć obiekt docelowy obliczeń z potoku, który został przesłany do wykonania zdalnego, zostanie wyświetlony komunikat o błędzie.

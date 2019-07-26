@@ -1,6 +1,6 @@
 ---
-title: Rozpoczynanie pracy z usługą Azure IoT Hub tożsamości i moduł bliźniaczą reprezentację modułu (C) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć moduł tożsamości i zaktualizować bliźniaczą reprezentację modułu przy użyciu zestawów SDK usługi IoT dla języka C.
+title: Rozpoczynanie pracy z usługą Azure IoT Hub i sznurem modułowym (C) Microsoft Docs
+description: Informacje o tworzeniu tożsamości modułu i aktualizacji sznurka modułu przy użyciu zestawów SDK IoT dla języka C.
 author: chrissie926
 ms.service: iot-hub
 services: iot-hub
@@ -8,40 +8,48 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 06/25/2018
 ms.author: menchi
-ms.openlocfilehash: 2642d956d94a0a685d6586be1a7b0446e94f1042
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8de2e238383ad3319ab43e6ff06b631af48c8a72
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61327430"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68402589"
 ---
-# <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-c-backend-and-c-device"></a>Rozpoczynanie pracy z usługą IoT Hub tożsamości i moduł bliźniaczą reprezentację modułu przy użyciu języka C w wewnętrznej bazie danych i języka c
+# <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-c-backend-and-c-device"></a>Wprowadzenie do IoT Hub tożsamości modułu i sznurka modułu przy użyciu zaplecza C i urządzenia C
 
 > [!NOTE]
 > [Tożsamości modułów i bliźniacze reprezentacje modułów](iot-hub-devguide-module-twins.md) są podobne do tożsamości urządzenia i bliźniaczej reprezentacji urządzenia usługi Azure IoT Hub, ale zapewniają większy stopień szczegółowości. Tożsamość urządzenia i bliźniacza reprezentacja urządzenia usługi Azure IoT Hub umożliwiają aplikacji zaplecza skonfigurowanie urządzenia i zapewniają widoczność warunków urządzenia, natomiast tożsamość modułu i bliźniacza reprezentacja modułu zapewniają te możliwości dla poszczególnych składników urządzenia. Na odpowiednich urządzeniach z wieloma składnikami, takich jak urządzenia oparte na systemie operacyjnym lub urządzenia z oprogramowaniem układowym, pozwala to na zastosowanie odrębnej konfiguracji i odrębnych warunków dla każdego składnika.
 
-Na końcu tego samouczka będziesz mieć dwie C aplikacje:
+Na końcu tego samouczka będziesz mieć dwie aplikacje C:
 
 * **CreateIdentities**, która tworzy tożsamość urządzenia, tożsamość modułu oraz skojarzony klucz zabezpieczeń na potrzeby łączenia klientów modułu i urządzenia.
 
 * **UpdateModuleTwinReportedProperties**, która wysyła zaktualizowane zgłoszone właściwości bliźniaczej reprezentacji modułu do Twojego centrum IoT Hub.
 
 > [!NOTE]
-> Aby uzyskać informacji na temat Azure IoT SDKs można użyć, aby tworzyć aplikacje zarówno do uruchamiania na urządzeniach i w zapleczu rozwiązania, zobacz [Azure IoT SDKs](iot-hub-devguide-sdks.md).
+> Aby uzyskać informacje na temat zestawów SDK usługi Azure IoT, których można użyć do kompilowania aplikacji do uruchamiania na urządzeniach oraz zaplecze rozwiązania, zobacz [zestawy SDK usługi Azure IoT](iot-hub-devguide-sdks.md).
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
-* Aktywne konto platformy Azure. (Jeśli nie masz konta, możesz utworzyć [bezpłatnego konta platformy Azure](https://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut.)
-* An IoT Hub.
-* Najnowsze [zestawu SDK C usługi IoT Azure](https://github.com/Azure/azure-iot-sdk-c).
+* Aktywne konto platformy Azure. (Jeśli nie masz konta, możesz utworzyć [bezpłatne konto platformy Azure](https://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut).
 
-Centrum IoT zostało już utworzone i masz nazwę hosta oraz parametry połączenia usługi IoT Hub potrzebne do ukończenia pozostałej części tego samouczka.
+* Najnowszy [zestaw SDK języka C dla usługi Azure IoT](https://github.com/Azure/azure-iot-sdk-c).
 
-## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>Tworzenie tożsamości urządzenia i tożsamości modułu w usłudze IoT Hub
+## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 
-W tej sekcji utworzysz aplikację C, która tworzy tożsamość urządzenia i tożsamości modułu w rejestrze tożsamości w usłudze IoT hub. Urządzenie lub moduł nie mogą łączyć się z centrum IoT Hub, jeśli nie mają odpowiedniego wpisu w rejestrze tożsamości. Aby uzyskać więcej informacji, zobacz **rejestr tożsamości** części [usługi IoT Hub — przewodnik dewelopera](iot-hub-devguide-identity-registry.md). Uruchomienie tej aplikacji konsolowej powoduje wygenerowanie unikatowego identyfikatora i klucza zarówno dla urządzenia, jak i modułu. Urządzenie i moduł korzystają z tych wartości w celu identyfikowania się podczas wysyłania komunikatów urządzenie-chmura do usługi IoT Hub. W identyfikatorach jest uwzględniana wielkość liter.
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-Dodaj następujący kod do pliku C:
+## <a name="get-the-iot-hub-connection-string"></a>Pobierz parametry połączenia usługi IoT Hub
+
+[!INCLUDE [iot-hub-howto-module-twin-shared-access-policy-text](../../includes/iot-hub-howto-module-twin-shared-access-policy-text.md)]
+
+[!INCLUDE [iot-hub-include-find-registryrw-connection-string](../../includes/iot-hub-include-find-registryrw-connection-string.md)]
+
+## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>Utwórz tożsamość urządzenia i tożsamość modułu w IoT Hub
+
+W tej sekcji utworzysz aplikację C, która tworzy tożsamość urządzenia i tożsamość modułu w rejestrze tożsamości w centrum IoT. Urządzenie lub moduł nie mogą łączyć się z centrum IoT Hub, jeśli nie mają odpowiedniego wpisu w rejestrze tożsamości. Więcej informacji znajduje się w sekcji **Rejestr tożsamości** przewodnika dla [deweloperów IoT Hub](iot-hub-devguide-identity-registry.md). Uruchomienie tej aplikacji konsolowej powoduje wygenerowanie unikatowego identyfikatora i klucza zarówno dla urządzenia, jak i modułu. Urządzenie i moduł korzystają z tych wartości w celu identyfikowania się podczas wysyłania komunikatów urządzenie-chmura do usługi IoT Hub. W identyfikatorach jest uwzględniana wielkość liter.
+
+Dodaj następujący kod do pliku języka C:
 
 ```C
 #include <stdio.h>
@@ -167,20 +175,20 @@ int main(void)
 }
 ```
 
-Ta aplikacja tworzy tożsamość urządzenia o identyfikatorze **myFirstDevice** i tożsamości modułu o identyfikatorze **myFirstModule** obszarze urządzenie **myFirstDevice**. (Jeśli ten identyfikator modułu już istnieje w rejestrze tożsamości, kod po prostu pobiera informacje o istniejącym module). Aplikacja następnie wyświetla klucz podstawowy dla tej tożsamości. Tego klucza używa się w symulowanej aplikacji modułu, aby nawiązać połączenie z centrum IoT.
+Ta aplikacja tworzy tożsamość urządzenia o IDENTYFIKATORze **myFirstDevice** oraz tożsamość modułu o identyfikatorze **myFirstModule** w obszarze Device **myFirstDevice**. (Jeśli ten identyfikator modułu już istnieje w rejestrze tożsamości, kod po prostu pobiera informacje o istniejącym module). Aplikacja następnie wyświetla klucz podstawowy dla tej tożsamości. Tego klucza używa się w symulowanej aplikacji modułu, aby nawiązać połączenie z centrum IoT.
 
 > [!NOTE]
-> Rejestr tożsamości usługi IoT Hub przechowuje tożsamości urządzenia i modułu tylko po to, aby umożliwić bezpieczny dostęp do centrum IoT. W rejestrze tożsamości są przechowywane identyfikatory urządzeń i klucze służące jako poświadczenia zabezpieczeń. W rejestrze tożsamości są także przechowywane flagi włączenia/wyłączenia dla każdego urządzenia, za pomocą których można wyłączyć dostęp do danego urządzenia. Jeśli aplikacja wymaga przechowywania innych metadanych dla określonego urządzenia, powinna korzystać z magazynu określonego dla aplikacji. Nie istnieje flaga włączenia/wyłączenia tożsamości modułów. Aby uzyskać więcej informacji, zobacz [usługi IoT Hub — przewodnik dewelopera](iot-hub-devguide-identity-registry.md).
+> Rejestr tożsamości usługi IoT Hub przechowuje tożsamości urządzenia i modułu tylko po to, aby umożliwić bezpieczny dostęp do centrum IoT. W rejestrze tożsamości są przechowywane identyfikatory urządzeń i klucze służące jako poświadczenia zabezpieczeń. W rejestrze tożsamości są także przechowywane flagi włączenia/wyłączenia dla każdego urządzenia, za pomocą których można wyłączyć dostęp do danego urządzenia. Jeśli aplikacja wymaga przechowywania innych metadanych dla określonego urządzenia, powinna korzystać z magazynu określonego dla aplikacji. Nie istnieje flaga włączenia/wyłączenia tożsamości modułów. Aby uzyskać więcej informacji, zobacz [przewodnik dewelopera IoT Hub](iot-hub-devguide-identity-registry.md).
 
-## <a name="update-the-module-twin-using-c-device-sdk"></a>Zaktualizować bliźniaczą reprezentację modułu za pomocą języka C zestawu SDK
+## <a name="update-the-module-twin-using-c-device-sdk"></a>Aktualizowanie sznurka modułu za pomocą zestawu SDK urządzenia C
 
-W tej sekcji utworzysz aplikację C na Twoje symulowane urządzenia, która aktualizuje bliźniaczą reprezentację modułu zgłoszonych właściwości.
+W tej sekcji utworzysz aplikację C na symulowanym urządzeniu, która aktualizuje raportowane właściwości w module.
 
-1. **Pobierz parametry połączenia modułu** — teraz, jeśli zalogujesz się do [witryny Azure portal](https://portal.azure.com). Przejdź do centrum IoT Hub i kliknij pozycję Urządzenia IoT. Znajdź myFirstDevice, otwórz go i zobaczyć myFirstModule został pomyślnie utworzony. Skopiuj parametry połączenia modułu. Będą potrzebne w następnym kroku.
+1. **Pobierz parametry połączenia modułu** — teraz, jeśli zalogujesz się do [Azure Portal](https://portal.azure.com). Przejdź do centrum IoT Hub i kliknij pozycję Urządzenia IoT. Znajdź myFirstDevice, otwórz go i zobaczysz, że myFirstModule został pomyślnie utworzony. Skopiuj parametry połączenia modułu. Będą potrzebne w następnym kroku.
 
     ![Szczegóły modułu w witrynie Azure Portal](./media/iot-hub-c-c-module-twin-getstarted/module-detail.png)
 
-2. **Tworzenie aplikacji UpdateModuleTwinReportedProperties** Dodaj następujący kod `using` instrukcji na górze **Program.cs** pliku:
+2. **Tworzenie aplikacji UpdateModuleTwinReportedProperties** Dodaj następujące `using` instrukcje w górnej części pliku **program.cs** :
 
     ```C
     #include <stdio.h>
@@ -236,11 +244,11 @@ W tej sekcji utworzysz aplikację C na Twoje symulowane urządzenia, która aktu
     }
     ```
 
-Ten przykładowy kod przedstawia sposób pobierania bliźniaczej reprezentacji modułu i aktualizowania zgłoszonych właściwości. 
+Ten przykładowy kod pokazuje, jak pobrać sznurek modułu i zaktualizować raportowane właściwości. 
 
-## <a name="get-updates-on-the-device-side"></a>Otrzymuj aktualizacje po stronie urządzenia
+## <a name="get-updates-on-the-device-side"></a>Pobierz aktualizacje po stronie urządzenia
 
-Oprócz powyższego kodu, można dodać poniżej blok kodu umożliwia pobranie aktualizacji bliźniaczej reprezentacji komunikat na urządzeniu.
+Oprócz powyższego kodu, można dodać poniższy blok kodu, aby uzyskać komunikat o aktualizacji z przędzą na urządzeniu.
 
 ```C
 #include <stdio.h>
@@ -376,4 +384,4 @@ int main(void)
 Aby kontynuować wprowadzenie do usługi IoT Hub i zapoznać się z innymi scenariuszami IoT, zobacz:
 
 * [Wprowadzenie do zarządzania urządzeniami](iot-hub-node-node-device-management-get-started.md)
-* [Wprowadzenie do usługi IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Wprowadzenie do IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)

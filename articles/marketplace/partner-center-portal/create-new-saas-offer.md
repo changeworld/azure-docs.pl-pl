@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: cea763416f36abd80b1d22b4414cc2454bc30c66
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: a21f037b9f24749895ec6d3b7aff6626936437d3
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868723"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385308"
 ---
 # <a name="create-a-new-saas-offer"></a>Utwórz nową ofertę SaaS
 
@@ -114,12 +114,15 @@ Promuj swoją firmę firmie Microsoft, tworząc listę Marketplace. Wybranie do 
 - **Jak chcesz, aby potencjalni klienci mogli korzystać z tej oferty z licytacją?**
 
 ##### <a name="get-it-now-free"></a>Pobierz teraz (bezpłatnie)
-Wystaw swoją ofertę bezpłatnie klientom, podając prawidłowy adres URL (począwszy od protokołu HTTP lub https), w którym użytkownicy mogą uzyskać dostęp do Twojej aplikacji.  Na przykład: `https://contoso.com/saas-app`
+Wystaw swoją ofertę bezpłatnie klientom, podając prawidłowy adres URL (począwszy od *protokołu HTTP* lub *https*), w którym użytkownicy mogą uzyskać dostęp do Twojej aplikacji.  Na przykład: `https://contoso.com/saas-app`
 
 ##### <a name="free-trial-listing"></a>Bezpłatna wersja próbna (lista)
-Utwórz listę ofert dla klientów z linkiem do bezpłatnej wersji próbnej, podając prawidłowy adres URL (począwszy od protokołu HTTP lub https), w którym użytkownicy mogą uzyskać dostęp do Twojej aplikacji.  Na przykład: `https://contoso.com/trial/saas-app`. Oferta z listą bezpłatnych wersji próbnych jest tworzona, zarządzana i konfigurowana przez usługę i nie ma subskrypcji zarządzanych przez firmę Microsoft.
+Utwórz listę ofert klientom z linkiem do bezpłatnej wersji próbnej, podając prawidłowy adres URL (począwszy od *protokołu HTTP* lub *https*), w którym można uzyskać próbkę uwierzytelniania za pomocą [jednego kliknięcia przy użyciu Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials).  Na przykład: `https://contoso.com/trial/saas-app`. Oferta z listą bezpłatnych wersji próbnych jest tworzona, zarządzana i konfigurowana przez usługę i nie ma subskrypcji zarządzanych przez firmę Microsoft.
 
-##### <a name="contact-me"></a>Kontakt ze mną
+> [!NOTE]
+> Tokeny wysyłane przez aplikację za pomocą linku do wersji próbnej mogą być używane tylko w celu uzyskania informacji o użytkowniku za pomocą usługi Azure AD w celu zautomatyzowania tworzenia kont w aplikacji. Konta Microsoft (MSA) nie są obsługiwane na potrzeby uwierzytelniania przy użyciu tego tokenu.
+
+##### <a name="contact-me"></a>Skontaktuj się ze mną
 Zbierz informacje kontaktowe klienta, łącząc system zarządzania relacjami z klientami (CRM). Klient zostanie poproszony o zgodę na udostępnienie swoich informacji. Te szczegóły klienta, wraz z nazwą oferty, IDENTYFIKATORem i źródłem witryny Marketplace, gdzie znalazły ofertę, zostaną wysłane do skonfigurowanego systemu CRM. Aby uzyskać więcej informacji o konfigurowaniu programu CRM, zobacz [łączenie z usługą Zarządzanie potencjalnymi klientami](#connect-lead-management). 
 
 ## <a name="example-marketplace-offer-listing"></a>Przykładowa lista ofert w witrynie Marketplace
@@ -259,7 +262,7 @@ Karta **Podgląd** umożliwia zdefiniowanie ograniczonej liczby odbiorców w **w
 
 - **Zdefiniuj odbiorcę w wersji zapoznawczej: Dodaj pojedynczą wiadomość e-mail dotyczącą konta usługi AAD/MSA w każdym wierszu wraz z opcjonalnym opisem.**
 
-Dodaj do dziesięciu (10) adresy e-mail ręcznie lub dwadzieścia (20) w przypadku przekazywania pliku CSV dla istniejących kont Microsoft (MSA) lub Azure Active Directory (AAD), aby pomóc w weryfikacji oferty przed opublikowaniem na żywo. Dodając te konta, można zdefiniować odbiorców, którzy będą mogli uzyskać dostęp do wersji zapoznawczej do oferty przed opublikowaniem jej w portalu Marketplace. Jeśli Twoja oferta jest już aktywna, możesz nadal zdefiniować odbiorcę w wersji zapoznawczej do testowania wszelkich zmian lub aktualizacji oferty.
+Dodaj do dziesięciu (10) adresy e-mail ręcznie lub dwadzieścia (20) w przypadku przekazywania pliku CSV dla istniejących kont Microsoft (MSA) lub kont Azure Active Directory, aby pomóc w weryfikacji oferty przed opublikowaniem na żywo. Dodając te konta, można zdefiniować odbiorców, którzy będą mogli uzyskać dostęp do wersji zapoznawczej do oferty przed opublikowaniem jej w portalu Marketplace. Jeśli Twoja oferta jest już aktywna, możesz nadal zdefiniować odbiorcę w wersji zapoznawczej do testowania wszelkich zmian lub aktualizacji oferty.
 
 > [!NOTE]
 > Odbiorcy wersji zapoznawczej różnią się od odbiorców prywatnych. Odbiorca wersji zapoznawczej uzyskuje dostęp do oferty _przed_ opublikowaniem jej na żywo w portalu Marketplace. Możesz również utworzyć plan i udostępnić go tylko dla odbiorców prywatnych. Na karcie **Lista planowania** możesz zdefiniować odbiorców prywatnych z tym pole wyboru to **jest plan prywatny** . Następnie można zdefiniować odbiorców prywatnych do 20 000 klientów korzystających z identyfikatorów dzierżaw platformy Azure.

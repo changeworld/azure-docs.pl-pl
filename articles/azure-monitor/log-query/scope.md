@@ -1,83 +1,96 @@
 ---
-title: Zaloguj się zakres zapytania w usłudze Azure Monitor Log Analytics | Dokumentacja firmy Microsoft
-description: W tym artykule opisano zakres zakresu i czasu dla zapytania dzienników w usłudze Azure Monitor Log Analytics.
+title: Zakres zapytania dziennika w Azure Monitor Log Analytics | Microsoft Docs
+description: Opisuje zakres i zakres czasu dla zapytania dziennika w Azure Monitor Log Analytics.
 services: log-analytics
 author: bwren
 manager: carmonm
 ms.service: log-analytics
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 06/25/2019
 ms.author: bwren
-ms.openlocfilehash: a948b80f6524339f0908a2fb19c4a83d70b3b140
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: e67dcb1236fd5ef113835dfe99de444fc2594481
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67297198"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405758"
 ---
-# <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Zapytanie zakresu i czasu zakresu dziennika w usłudze Azure Monitor Log Analytics
-Po uruchomieniu [zapytanie dziennika](log-query-overview.md) w [usługi Log Analytics w witrynie Azure portal](get-started-portal.md), zestaw danych oceniany przez zapytanie zależy od zakresu i przedziału czasu, który wybierzesz. W tym artykule opisano zakres zakresu i czasu i jak można ustawić każdy w zależności od wymagań. Omówiono także zachowanie różnego rodzaju zakresów.
+# <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Zakres i zakres czasu zapytania dziennika w Azure Monitor Log Analytics
+Po uruchomieniu [zapytania dziennika](log-query-overview.md) w [log Analytics w Azure Portal](get-started-portal.md), zestaw danych ocenianych przez zapytanie zależy od zakresu i wybranego zakresu czasu. W tym artykule opisano zakres i zakres czasu oraz sposób, w jaki można ustawić każdą z nich w zależności od wymagań. Opisano w nim również zachowanie różnych typów zakresów.
 
 
-## <a name="query-scope"></a>Zakres kwerendy
-Zakres zapytania definiuje rekordów, które są oceniane przez zapytanie. Zwykle będzie to obejmowało wszystkie rekordy w jeden obszar roboczy usługi Log Analytics lub aplikacji usługa Application Insights. Usługi log Analytics umożliwia także ustawić zakresu dla określonego monitorowanych zasobów platformy Azure. Dzięki temu właściciela zasobu skoncentrować się tylko na ich danych nawet wtedy, gdy ten zasób zapisuje do wielu obszarów roboczych.
+## <a name="query-scope"></a>Zakres zapytania
+Zakres zapytania definiuje rekordy, które są oceniane przez zapytanie. Zwykle obejmuje to wszystkie rekordy w pojedynczym obszarze roboczym Log Analytics lub Application Insights aplikacji. Log Analytics umożliwia również ustawienie zakresu dla określonego monitorowanego zasobu platformy Azure. Dzięki temu Właściciel zasobu może skupić się tylko na danych, nawet jeśli ten zasób zostanie zapisywany w wielu obszarach roboczych.
 
-Zakres jest zawsze wyświetlany u góry po lewej części okna usługi Log Analytics. Ikona wskazuje, czy zakres jest obszarem roboczym usługi Log Analytics lub aplikacji usługa Application Insights. Brak ikony wskazuje inny zasób platformy Azure.
+Zakres jest zawsze wyświetlany w lewym górnym rogu okna Log Analytics. Ikona wskazuje, czy zakres jest obszarem roboczym Log Analytics czy Application Insights aplikacją. Żadna ikona nie wskazuje innego zasobu platformy Azure.
 
 ![Scope](media/scope/scope.png)
 
-Zakres jest określany przez metodę używasz można uruchomić usługi Log Analytics, a w niektórych przypadkach można zmienić zakres, klikając ją. W poniższej tabeli wymieniono różne rodzaje zakres używany i różnych szczegółów dla każdego.
+Zakres jest określany przez metodę, która jest używana do uruchamiania Log Analytics, a w niektórych przypadkach można zmienić zakres, klikając go. W poniższej tabeli wymieniono różne typy używanych zakresów i różne szczegóły dotyczące każdego z nich.
 
-| Zakres kwerendy | Rekordy w zakresie | Jak wybrać | Zmiana zakresu |
+| Zakres zapytania | Rekordy w zakresie | Jak wybrać | Zmienianie zakresu |
 |:---|:---|:---|:---|
-| Obszar roboczy usługi log Analytics | Wszystkie rekordy w obszarze roboczym usługi Log Analytics. | Wybierz **dzienniki** z **usługi Azure Monitor** menu lub **obszarów roboczych usługi Log Analytics** menu.  | Można zmienić zakres do jakichkolwiek innych typów zasobów. |
-| Application Insights aplikacji | Wszystkie rekordy w aplikacji usługi Application Insights. | Wybierz **Analytics** z **Przegląd** strony usługi Application Insights. | Można zmienić tylko zakres do innej aplikacji w usłudze Application Insights. |
-| Grupa zasobów | Rekordy utworzone przez wszystkie zasoby w grupie zasobów. Może zawierać dane z wielu obszarów roboczych usługi Log Analytics. | Wybierz **dzienniki** z menu grupy zasobów. | Nie można zmienić zakres.|
-| Subskrypcja | Rekordy utworzone przez wszystkie zasoby w subskrypcji. Może zawierać dane z wielu obszarów roboczych usługi Log Analytics. | Wybierz **dzienniki** menu subskrypcji.   | Nie można zmienić zakres. |
-| Inne zasoby platformy Azure | Rekordy zasobu. Może zawierać dane z wielu obszarów roboczych usługi Log Analytics.  | Wybierz **dzienniki** z menu zasobów.<br>LUB<br>Wybierz **dzienniki** z **usługi Azure Monitor** menu, a następnie wybierz nowy zakres. | Można zmienić tylko zakres na ten sam typ zasobu. |
+| Obszar roboczy usługi Log Analytics | Wszystkie rekordy w obszarze roboczym Log Analytics. | Wybierz pozycję **dzienniki** z menu **Azure monitor** lub z menu **log Analytics obszary robocze** .  | Można zmienić zakres na dowolny inny typ zasobu. |
+| Aplikacja Application Insights | Wszystkie rekordy w aplikacji Application Insights. | Wybierz pozycję **Analiza** na stronie **Przegląd** Application Insights. | Można zmieniać zakres tylko do innej aplikacji Application Insights. |
+| Resource group | Rekordy utworzone przez wszystkie zasoby w grupie zasobów. Może zawierać dane z wielu obszarów roboczych Log Analytics. | Wybierz pozycję **dzienniki** z menu Grupa zasobów. | Nie można zmienić zakresu.|
+| Subscription | Rekordy utworzone przez wszystkie zasoby w subskrypcji. Może zawierać dane z wielu obszarów roboczych Log Analytics. | Z menu subskrypcja wybierz pozycję **dzienniki** .   | Nie można zmienić zakresu. |
+| Inne zasoby platformy Azure | Rekordy utworzone przez zasób. Może zawierać dane z wielu obszarów roboczych Log Analytics.  | Wybierz pozycję **dzienniki** z menu zasób.<br>LUB<br>Wybierz pozycję **dzienniki** z menu **Azure monitor** a następnie wybierz nowy zakres. | Można zmienić tylko zakres na ten sam typ zasobu. |
 
-### <a name="limitations-when-scoped-to-a-resource"></a>Ograniczenia w przypadku zakresu do zasobu
+### <a name="limitations-when-scoped-to-a-resource"></a>Ograniczenia dotyczące zakresu zasobów
 
-Zakres kwerendy jest obszarem roboczym usługi Log Analytics lub aplikacji usługa Application Insights, wszystkie opcje w portalu i wszystkie polecenia zapytania są dostępne. Gdy jednak ograniczone do zasobu, następujące opcje w portalu nie są dostępne, ponieważ są one skojarzone z jednego obszaru roboczego lub aplikacji:
+Gdy zakres zapytania jest obszarem roboczym Log Analytics lub aplikacją Application Insights, dostępne są wszystkie opcje w portalu i wszystkie polecenia zapytań. W przypadku określania zakresu zasobu następujące opcje w portalu nie są dostępne, ponieważ są skojarzone z pojedynczym obszarem roboczym lub aplikacją:
 
 - Zapisanie
 - Eksplorator zapytań
 - Nowa reguła alertu
 
-W zapytaniu, gdy ograniczone do zasobu, ponieważ zakres kwerendy już będą obejmować żadnych obszarów roboczych, wraz z danymi dotyczącymi tego zasobu lub zestaw zasobów, nie można użyć następujących poleceń:
+Nie można użyć następujących poleceń w zapytaniu w zakresie zasobu, ponieważ zakres zapytania obejmuje już wszystkie obszary robocze zawierające dane dla tego zasobu lub zestawu zasobów:
 
-- [Aplikacja](app-expression.md)
-- [Obszar roboczy](workspace-expression.md)
+- [aplikacje](app-expression.md)
+- [obszary](workspace-expression.md)
  
 
+## <a name="query-limits"></a>Limity zapytań
+Aby zasób platformy Azure mógł zapisywać dane w wielu obszarach roboczych Log Analytics, mogą istnieć wymagania biznesowe. Obszar roboczy nie musi znajdować się w tym samym regionie co zasób, a pojedynczy obszar roboczy może zbierać dane z zasobów w różnych regionach.  
 
-## <a name="time-range"></a>Przedział czasu
-Zakres czasu określa zestaw rekordów, które są oceniane pod kątem zapytań, w zależności od momentu utworzenia rekordu. To jest definiowany przez standardowe właściwości każdego rekordu w obszarze roboczym lub aplikacji, jak to określono w poniższej tabeli.
+Ustawienie zakresu dla zasobu lub zestawu zasobów jest szczególnie zaawansowaną funkcją Log Analytics, ponieważ umożliwia automatyczne konsolidowanie danych rozproszonych w jednym zapytaniu. Jeśli dane wymagają pobrania z obszarów roboczych w wielu regionach platformy Azure, może to znacząco wpłynąć na wydajność.
 
-| Lokalizacja | Właściwość |
+Log Analytics pomaga chronić przed nadmiernym obciążeniem z zapytań, które rozciągają się na obszary robocze w wielu regionach, wydając ostrzeżenie lub błąd w przypadku korzystania z określonej liczby regionów. Zapytanie zostanie wyświetlone, jeśli zakres obejmuje obszary robocze w 5 lub więcej regionów. nadal będzie działać, ale jego ukończenie może zająć dużo czasu.
+
+![Ostrzeżenie dotyczące zapytania](media/scope/query-warning.png)
+
+Jeśli zakres obejmuje obszary robocze w 20 lub więcej regionach, uruchomienie zapytania będzie blokowane. W takim przypadku zostanie wyświetlony monit o zmniejszenie liczby regionów obszaru roboczego i próba ponownego uruchomienia zapytania. Na liście rozwijanej będą wyświetlane wszystkie regiony w zakresie zapytania i należy zmniejszyć liczbę regionów przed próbą ponownego uruchomienia zapytania.
+
+![Zapytanie nie powiodło się](media/scope/query-failed.png)
+
+
+## <a name="time-range"></a>Zakres czasu
+Zakres czasu określa zestaw rekordów, które są oceniane dla zapytania w oparciu o czas utworzenia rekordu. Jest to zdefiniowane przez standardową właściwość dla każdego rekordu w obszarze roboczym lub aplikacji, zgodnie z opisem w poniższej tabeli.
+
+| Location | Właściwość |
 |:---|:---|
-| Obszar roboczy usługi log Analytics          | TimeGenerated |
-| Application Insights aplikacji | timestamp     |
+| Obszar roboczy usługi Log Analytics          | TimeGenerated |
+| Aplikacja Application Insights | timestamp     |
 
-Ustaw zakres czasu, wybierając z selektora czasu, w górnej części okna usługi Log Analytics.  Można wybrać okres wstępnie zdefiniowanych lub wybierz **niestandardowe** do określenia z określonego zakresu czasu.
+Ustaw zakres czasu, wybierając go z selektora czas u góry okna Log Analytics.  Możesz wybrać wstępnie zdefiniowany okres lub wybrać opcję **niestandardowe** , aby określić konkretny zakres czasu.
 
-![Selektor godziny](media/scope/time-picker.png)
+![Wybór godziny](media/scope/time-picker.png)
 
-Jeśli ustawisz filtr w zapytaniu, który używa właściwości (czas standardowy), jak pokazano w powyższej tabeli, selektor czasu zmieni się na **Ustaw w zapytaniu**, a selektor czasu jest wyłączony. W takim przypadku najlepiej jest umieścić filtru w górnej części zapytania, tak aby dalszego przetwarzania tylko potrzebne do pracy z przefiltrowane rekordy.
+Jeśli ustawisz filtr w zapytaniu, które używa właściwości czasu standardowego, jak pokazano w powyższej tabeli, selektor czasu zostanie zmieniony na **Ustaw w kwerendzie**, a selektor czasu jest wyłączony. W takim przypadku najlepiej jest umieścić filtr w górnej części zapytania, tak aby każde kolejne przetwarzanie działało tylko z filtrowanymi rekordami.
 
-![Zapytania filtrowanego](media/scope/query-filtered.png)
+![Filtrowane zapytanie](media/scope/query-filtered.png)
 
-Jeśli używasz [obszaru roboczego](workspace-expression.md) lub [aplikacji](app-expression.md) polecenia do pobierania danych z innego obszaru roboczego lub aplikacji, selektor czasu może zachowywać się inaczej. Jeśli zakres jest obszarem roboczym usługi Log Analytics i korzystać z **aplikacji**, lub jeśli zakres jest aplikacja usługi Application Insights i używasz **obszaru roboczego**, a następnie usługi Log Analytics mogą nie rozumieć, że właściwość jest używana w Filtr należy określić filtr czasu.
+Jeśli używasz [obszaru roboczego](workspace-expression.md) lub [aplikacji](app-expression.md) do pobierania danych z innego obszaru roboczego lub aplikacji, selektor czasu może zachowywać się inaczej. Jeśli zakres jest obszarem roboczym Log Analytics i używasz **aplikacji**lub jeśli zakres jest aplikacją Application Insights i używasz **obszaru roboczego**, log Analytics może nie rozumieć, że właściwość użyta w filtrze powinna określać filtr czasu.
 
-W poniższym przykładzie ustawiono zakres, do obszaru roboczego usługi Log Analytics.  Zapytanie używa **obszaru roboczego** do pobierania danych z innym obszarem roboczym usługi Log Analytics. Selektor godziny zmieni się na **Ustaw w zapytaniu** ponieważ widzi on filtr, który używa oczekiwanej **TimeGenerated** właściwości.
+W poniższym przykładzie zakres jest ustawiany na obszar roboczy Log Analytics.  Zapytanie używa **obszaru roboczego** do pobierania danych z innego obszaru roboczego log Analytics. Selektor godziny zmienia się **w celu ustawienia w zapytaniu** , ponieważ widzi filtr, który używa oczekiwanej właściwości **TimeGenerated** .
 
-![Wykonywać zapytania za pomocą obszaru roboczego](media/scope/query-workspace.png)
+![Zapytanie z obszarem roboczym](media/scope/query-workspace.png)
 
-Jeśli zapytanie używa **aplikacji** do pobierania danych z aplikacji usługi Application Insights do usługi Log Analytics nie rozpoznaje **sygnatura czasowa** właściwości w filtrze i selektor czasu pozostaje bez zmian. W takim przypadku zarówno filtry są stosowane. W przykładzie, tylko rekordy utworzone w ciągu ostatnich 24 godzin są uwzględnione w zapytaniu, nawet, jeśli Określa on 7 dni w **gdzie** klauzuli.
+Jeśli zapytanie używa **aplikacji** do pobierania danych z aplikacji Application Insights, log Analytics nie rozpoznaje właściwości **timestamp** w filtrze, a selektor czasu pozostaje niezmieniony. W takim przypadku stosowane są oba filtry. W tym przykładzie tylko rekordy utworzone w ciągu ostatnich 24 godzin są zawarte w zapytaniu, mimo że określa 7 dni w klauzuli **WHERE** .
 
-![Wykonywać zapytania za pomocą aplikacji](media/scope/query-app.png)
+![Zapytanie z aplikacją](media/scope/query-app.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Przeprowadzenie [samouczek na temat korzystania z usługi Log Analytics w witrynie Azure portal](get-started-portal.md).
-- Przeprowadzenie [samouczek na temat pisania zapytań](get-started-queries.md).
+- Zapoznaj się z [samouczkiem dotyczącym korzystania z log Analytics w Azure Portal](get-started-portal.md).
+- Zapoznaj się z [samouczkiem dotyczącym pisania zapytań](get-started-queries.md).

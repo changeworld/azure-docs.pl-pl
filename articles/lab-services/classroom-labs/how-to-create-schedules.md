@@ -1,6 +1,6 @@
 ---
-title: Tworzenie harmonogramu laboratorium na potrzeby zajęć w usłudze Azure Lab Services | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć harmonogramy dla laboratorium na potrzeby zajęć w usłudze Azure Lab Services, dzięki czemu maszyny wirtualne w laboratorium, uruchom i zamknij o określonej godzinie.
+title: Tworzenie harmonogramu dla laboratoriów zajęć w Azure Lab Services | Microsoft Docs
+description: Dowiedz się, jak tworzyć harmonogramy dla laboratoriów stacjonarnych w Azure Lab Services tak, aby maszyny wirtualne w laboratoriach były uruchamiane i zamykane w określonym czasie.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -13,81 +13,81 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 34bc8263053cd4a701c16ee1832cf1b27340a345
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f607ba68563aa92797f45cf77db0575ae6802fee
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60696038"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385600"
 ---
-# <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Tworzenie i zarządzanie nimi harmonogramy dla laboratorium na potrzeby zajęć w usłudze Azure Lab Services 
-Harmonogramy umożliwiają konfigurowanie laboratorium na potrzeby zajęć w taki sposób, że maszyny wirtualne w laboratorium automatycznie uruchom i zamknij o określonej godzinie. Można zdefiniować jednorazowe harmonogramu lub Harmonogram cykliczny. Poniższe procedury stanowią kroki, aby tworzyć i zarządzać nimi harmonogramy dla laboratorium na potrzeby zajęć: 
+# <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Twórz harmonogramy dla laboratoriów stacjonarnych w Azure Lab Services i zarządzaj nimi 
+Harmonogramy umożliwiają skonfigurowanie laboratorium klasy w taki sposób, aby maszyny wirtualne w laboratorium były automatycznie uruchamiane i zamykane w określonym czasie. Można zdefiniować harmonogram jednorazowy lub cykliczny. Poniższe procedury umożliwiają tworzenie harmonogramów dla laboratorium zajęć i zarządzanie nimi: 
 
 > [!IMPORTANT]
-> Planowana godzina uruchomione maszyny wirtualne nie wliczają [przydziału przydzielony do użytkownika](how-to-configure-student-usage.md#set-quotas-per-user). Limit przydziału jest czas poza godzinami harmonogramu, które student spędza na maszynach wirtualnych. 
+> Zaplanowany czas działania maszyn wirtualnych nie jest uwzględniany w stosunku do [przydziału przydzielonego dla użytkownika](how-to-configure-student-usage.md#set-quotas-for-users). Limit przydziału jest przeznaczony dla czasu poza godzinami harmonogramu, które student spędza na maszynach wirtualnych. 
 
 ## <a name="add-a-schedule-once"></a>Dodaj harmonogram (raz)
 
-1. Przełącz się do **harmonogramy** strony i wybierz **harmonogramu Dodaj** na pasku narzędzi. 
+1. Przejdź do strony **harmonogramy** , a następnie wybierz pozycję **Dodaj harmonogram** na pasku narzędzi. 
 
-    ![Dodaj przycisk harmonogramu na stronie harmonogramów](../media/how-to-create-schedules/add-schedule-button.png)
-2. Na **harmonogramu Dodaj** strony, upewnij się, że **raz** wybrano opcję u góry. Jeśli nie, wybierz **raz**. 
-3. Aby uzyskać **zaplanować daty (wymagane)** wprowadź datę lub wybierz ikonę kalendarza, aby wybrać datę. 
-4. Aby uzyskać **czas rozpoczęcia**, wybierz czas, kiedy zechcesz, maszyny wirtualne, które ma zostać uruchomiony. Czas rozpoczęcia jest wymagany, jeśli nie ustawiono czas przestoju. Wybierz **Usuń zdarzenie początkowe** Jeśli chcesz określić tylko godzina zatrzymania. Jeśli **czas rozpoczęcia** jest wyłączona, wybierz **Dodaj zdarzenie rozpoczęcia** obok listy rozwijanej, aby go włączyć. 
-5. Aby uzyskać **czas zakończenia**, wybierz czas, kiedy zechcesz, maszyny wirtualne na zamykanie. Czas przestoju jest wymagany, jeśli nie ustawiono czasu rozpoczęcia. Wybierz **zdarzenie stop usuwania** Jeśli chcesz określić tylko godziny rozpoczęcia. Jeśli **czas zakończenia** jest wyłączona, wybierz **zdarzenia zatrzymania Dodaj** obok listy rozwijanej, aby go włączyć.
-6. Aby uzyskać **strefy czasowej (wymagane)** , wybierz strefę czasową uruchomienia i zatrzymania razy określono. 
-7. Aby uzyskać **uwagi**, wprowadź opis lub notatki dla harmonogramu. 
+    ![Przycisk dodawania harmonogramu na stronie harmonogramów](../media/how-to-create-schedules/add-schedule-button.png)
+2. Na stronie **Dodawanie harmonogramu** upewnij się, że w górnej części zaznaczone **jest pole wyboru** . Jeśli tak nie jest, wybierz **jeden raz**. 
+3. W polu **Data planu (wymagane)** wprowadź datę lub wybierz ikonę kalendarza, aby wybrać datę. 
+4. W polu **czas rozpoczęcia**wybierz godzinę rozpoczęcia uruchamiania maszyn wirtualnych. Czas rozpoczęcia jest wymagany, jeśli czas zatrzymania nie jest ustawiony. Wybierz pozycję **Usuń zdarzenie uruchomienia** , jeśli chcesz określić tylko czas zatrzymania. Jeśli **czas rozpoczęcia** jest wyłączony, wybierz pozycję **Dodaj zdarzenie uruchomienia** obok listy rozwijanej, aby ją włączyć. 
+5. W polu **czas zatrzymania**wybierz czas zamykania maszyn wirtualnych. Czas zatrzymania jest wymagany, jeśli nie ustawiono czasu rozpoczęcia. Wybierz pozycję **Usuń zdarzenie zatrzymania** , jeśli chcesz określić tylko godzinę rozpoczęcia. Jeśli **czas zatrzymania** jest wyłączony, zaznacz pole wyboru **Dodaj zdarzenie zatrzymania** obok listy rozwijanej, aby je włączyć.
+6. Dla **strefy czasowej (wymagane)** wybierz strefę czasową dla określonych godzin rozpoczęcia i zakończenia. 
+7. W polu **uwagi**wprowadź dowolny opis lub uwagi dotyczące harmonogramu. 
 8. Wybierz pozycję **Zapisz**. 
 
-    ![Jednorazowa harmonogramu](../media/how-to-create-schedules/add-schedule-page.png)
+    ![Harmonogram jednorazowej](../media/how-to-create-schedules/add-schedule-page.png)
 
-## <a name="add-a-recurring-schedule-weekly"></a>Dodaj powtarzającego się harmonogramu (co tydzień)
+## <a name="add-a-recurring-schedule-weekly"></a>Dodawanie harmonogramu cyklicznego (co tydzień)
 
-1. Przełącz się do **harmonogramy** strony i wybierz **harmonogramu Dodaj** na pasku narzędzi. 
+1. Przejdź do strony **harmonogramy** , a następnie wybierz pozycję **Dodaj harmonogram** na pasku narzędzi. 
 
-    ![Dodaj przycisk harmonogramu na stronie harmonogramów](../media/how-to-create-schedules/add-schedule-button.png)
-2. Na **harmonogramu Dodaj** strony, przełącz się do **tygodniowy** u góry. 
-3. Aby uzyskać **zaplanować dni (wymagane)** , wybierz dni, w których ma harmonogram, aby zastosować zmiany. W poniższym przykładzie wybrano od poniedziałku do piątku. 
-4. Dla **z** wprowadź **zaplanować Data rozpoczęcia** lub wybierz datę, wybierając **kalendarza** przycisku. To pole jest wymagane. 
-5. Aby uzyskać **Data zakończenia harmonogramu**wprowadź lub wybierz datę zakończenia, w którym maszyny wirtualne mają być zamknięty. 
-6. Aby uzyskać **czas rozpoczęcia**, wybierz godzinę maszyn wirtualnych ma zostać uruchomiony. Czas rozpoczęcia jest wymagany, jeśli nie ustawiono czas przestoju. Wybierz **Usuń zdarzenie początkowe** Jeśli chcesz określić tylko godzina zatrzymania. Jeśli **czas rozpoczęcia** jest wyłączona, wybierz **Dodaj zdarzenie rozpoczęcia** obok listy rozwijanej, aby go włączyć. 
-7. Aby uzyskać **czas zakończenia**, wybierz godzinę maszyn wirtualnych można zamknąć. Czas przestoju jest wymagany, jeśli nie ustawiono czasu rozpoczęcia. Wybierz **zdarzenie stop usuwania** Jeśli chcesz określić tylko godziny rozpoczęcia. Jeśli **czas zakończenia** jest wyłączona, wybierz **zdarzenia zatrzymania Dodaj** obok listy rozwijanej, aby go włączyć.
-8. Aby uzyskać **strefy czasowej (wymagane)** , wybierz strefę czasową uruchomienia i zatrzymania razy określono.  
-9. Aby uzyskać **uwagi**, wprowadź opis lub notatki dla harmonogramu. 
+    ![Przycisk dodawania harmonogramu na stronie harmonogramów](../media/how-to-create-schedules/add-schedule-button.png)
+2. Na stronie **Dodawanie harmonogramu** przejdź na pierwszy **tydzień** . 
+3. W polu **dni harmonogramu (wymagane)** wybierz dni, w których ma obowiązywać harmonogram. W poniższym przykładzie wybrano poniedziałek-piątek. 
+4. W polu **od** wprowadź **datę rozpoczęcia harmonogramu** lub wybierz datę, wybierając przycisk **Kalendarz** . To pole jest wymagane. 
+5. W polu **Data zakończenia harmonogramu**wprowadź lub wybierz datę końcową, w której mają zostać zamknięte maszyny wirtualne. 
+6. W polu **czas rozpoczęcia**wybierz godzinę, o której mają zostać uruchomione maszyny wirtualne. Czas rozpoczęcia jest wymagany, jeśli czas zatrzymania nie jest ustawiony. Wybierz pozycję **Usuń zdarzenie uruchomienia** , jeśli chcesz określić tylko czas zatrzymania. Jeśli **czas rozpoczęcia** jest wyłączony, wybierz pozycję **Dodaj zdarzenie uruchomienia** obok listy rozwijanej, aby ją włączyć. 
+7. W polu **czas zatrzymania**wybierz godzinę, o której maszyny wirtualne mają być zamykane. Czas zatrzymania jest wymagany, jeśli nie ustawiono czasu rozpoczęcia. Wybierz pozycję **Usuń zdarzenie zatrzymania** , jeśli chcesz określić tylko godzinę rozpoczęcia. Jeśli **czas zatrzymania** jest wyłączony, zaznacz pole wyboru **Dodaj zdarzenie zatrzymania** obok listy rozwijanej, aby je włączyć.
+8. Dla **strefy czasowej (wymagane)** wybierz strefę czasową dla określonych godzin rozpoczęcia i zakończenia.  
+9. W polu **uwagi**wprowadź dowolny opis lub uwagi dotyczące harmonogramu. 
 10. Wybierz pozycję **Zapisz**. 
 
     ![Harmonogram tygodniowy](../media/how-to-create-schedules/add-schedule-page-weekly.png)
 
 ## <a name="view-schedules-in-calendar"></a>Wyświetl harmonogramy w kalendarzu
-Możesz zobaczyć zaplanowane daty i godziny, wyróżnione w widoku kalendarza, jak pokazano na poniższej ilustracji:
+W widoku kalendarza można zobaczyć zaplanowane daty i godziny, jak pokazano na poniższej ilustracji:
 
 ![Harmonogramy w widoku kalendarza](../media/how-to-create-schedules/schedules-in-calendar.png)
 
-Wybierz **już dziś** przycisk w prawym górnym rogu, aby przełączyć się do bieżącej daty w kalendarzu. Wybierz **Strzałka w lewo** Aby przełączyć się do poprzedniego tygodnia i **strzałkę w prawo** Aby przełączyć się do następnego tygodnia w kalendarzu. 
+Wybierz przycisk **dzisiaj** w prawym górnym rogu, aby przełączyć się na bieżącą datę w kalendarzu. Wybierz **strzałkę w lewo** , aby przełączyć się do poprzedniego tygodnia i **strzałki w prawo** , aby przejść do następnego tygodnia w kalendarzu. 
 
-## <a name="edit-a-schedule"></a>Edytuj harmonogram
-Po dwukrotnym kliknięciu zgodnie z harmonogramem wyróżnione w kalendarzu lub wybierz pozycję **ołówka** przycisk na pasku narzędzi, zostanie wyświetlony **Edycja harmonogramu** strony. Trwa aktualizowanie ustawień na tej stronie jest taka sama jak aktualizowanie ustawień w **harmonogramu Dodaj** stronie zgodnie z opisem w [Dodaj Harmonogram cykliczny](#add-a-recurring-schedule-weekly) sekcji. 
+## <a name="edit-a-schedule"></a>Edytowanie harmonogramu
+Po dwukrotnym kliknięciu wyróżnionego harmonogramu w kalendarzu lub wybraniu przycisku **ołówka** na pasku narzędzi zostanie wyświetlona strona **Edytowanie harmonogramu** . Aktualizowanie ustawień na tej stronie jest takie samo jak ustawienia aktualizacji na stronie **Dodawanie harmonogramu** , zgodnie z opisem w sekcji [Dodawanie harmonogramu cyklicznego](#add-a-recurring-schedule-weekly) . 
 
 ![Edytuj stronę harmonogramu](../media/how-to-create-schedules/edit-schedule-page.png)
 
 ## <a name="delete-a-schedule"></a>Usuwanie harmonogramu
 
-1. Aby usunąć harmonogram, wybierz Kosz może (Usuń) przycisk na pasku narzędzi, jak pokazano na poniższej ilustracji:
+1. Aby usunąć harmonogram, wybierz przycisk kosza na śmieci (Usuń) na pasku narzędzi, jak pokazano na poniższej ilustracji:
 
-    ![Usuwanie przycisku na pasku narzędzi](../media/how-to-create-schedules/delete-schedule-button.png)
+    ![Przycisk Usuń na pasku narzędzi](../media/how-to-create-schedules/delete-schedule-button.png)
 
-    Użyj przycisku usuwania jakichkolwiek zaplanowanej daty i godziny w kalendarzu i wybierz **Usuń**. 
-2. Na **usuwanie harmonogramów** wybierz opcję **tak**.
+    Możesz użyć przycisku Usuń dla każdej zaplanowanej daty i godziny w kalendarzu, a następnie wybrać pozycję **Usuń**. 
+2. Na stronie **usuwanie harmonogramów** wybierz pozycję **tak**.
 
-    ![Harmonogramy potwierdzenie usunięcia](../media/how-to-create-schedules/delete-schedules-confirmation.png)
-
-
+    ![Potwierdzenie usunięcia harmonogramów](../media/how-to-create-schedules/delete-schedules-confirmation.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+
+
+## <a name="next-steps"></a>Następne kroki
 Zobacz następujące artykuły:
 
 - [As an admin, create and manage lab accounts (Tworzenie kont laboratoriów i zarządzanie nimi jako administrator)](how-to-manage-lab-accounts.md)
 - [As a lab owner, create and manage labs (Tworzenie laboratoriów i zarządzanie nimi jako właściciel laboratorium)](how-to-manage-classroom-labs.md)
 - [As a lab owner, configure and control usage of a lab (Konfigurowanie i kontrolowanie użycia laboratorium jako właściciel laboratorium)](how-to-configure-student-usage.md)
-- [Jako użytkownik laboratorium dostęp do laboratoriów na potrzeby zajęć](how-to-use-classroom-lab.md)
+- [Jako użytkownik laboratorium Uzyskuj dostęp do laboratoriów zajęć](how-to-use-classroom-lab.md)

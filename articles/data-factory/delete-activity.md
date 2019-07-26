@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.openlocfilehash: 606cab09debf760d1b101390b2a19a1a090bb4c3
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
-ms.translationtype: HT
+ms.openlocfilehash: e749138cd28f7bd8faf10ca1087a73f323533a25
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234562"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335668"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Usuń działanie w Azure Data Factory
 
@@ -86,7 +86,7 @@ Poniżej przedstawiono kilka zaleceń dotyczących używania działania usuwania
 | maxConcurrentConnections | Liczba połączeń do równoczesnego połączenia z magazynem magazynów w celu usunięcia folderów lub plików.   |  Nie. Wartość domyślna to `1`. |
 | enablelogging | Wskazuje, czy konieczne jest zapisanie nazw folderów lub plików, które zostały usunięte. W przypadku wartości true należy dodatkowo podać konto magazynu, aby zapisać plik dziennika, aby można było śledzić zachowania działania usuwania, odczytując plik dziennika. | Nie |
 | logStorageSettings | Dotyczy tylko gdy EnableLogging = true.<br/><br/>Grupa właściwości magazynu, które można określić w miejscu, w którym chcesz zapisać plik dziennika zawierający nazwy folderów lub plików, które zostały usunięte przez działanie usuwania. | Nie |
-| linkedServiceName | Dotyczy tylko gdy EnableLogging = true.<br/><br/>Połączona usługa [Azure Storage](connector-azure-blob-storage.md#linked-service-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties)lub [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) do przechowywania pliku dziennika zawierającego nazwy folderów lub plików, które zostały usunięte przez działanie usuwania. | Nie |
+| linkedServiceName | Dotyczy tylko gdy EnableLogging = true.<br/><br/>Połączona usługa [Azure Storage](connector-azure-blob-storage.md#linked-service-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties)lub [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) do przechowywania pliku dziennika zawierającego nazwy folderów lub plików, które zostały usunięte przez działanie usuwania. Należy pamiętać, że musi być skonfigurowany przy użyciu tego samego typu Integration Runtime z tego, który jest używany przez działanie Delete do usuwania plików. | Nie |
 | path | Dotyczy tylko gdy EnableLogging = true.<br/><br/>Ścieżka zapisu pliku dziennika na koncie magazynu. Jeśli nie podasz ścieżki, usługa utworzy dla Ciebie kontener. | Nie |
 
 ## <a name="monitoring"></a>Monitorowanie
@@ -572,7 +572,7 @@ Możesz również pobrać szablon, aby przenieść pliki z tego [miejsca](soluti
 
 -   W przypadku korzystania z filtru atrybutu pliku: modifiedDatetimeStart i modifiedDatetimeEnd aby wybrać pliki do usunięcia, upewnij się, że ustawiono "fileName": "*" w zestawie danych.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się więcej o przenoszeniu plików w Azure Data Factory.
 

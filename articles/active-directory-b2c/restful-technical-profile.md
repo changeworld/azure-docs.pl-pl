@@ -1,6 +1,6 @@
 ---
-title: Zdefiniuj RESTful profilu technicznego w zasadach niestandardowych w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: W przypadku zasad niestandardowych w usłudze Azure Active Directory B2C, należy zdefiniować RESTful profilu technicznego.
+title: Zdefiniuj profil techniczny RESTful w zasadach niestandardowych w Azure Active Directory B2C | Microsoft Docs
+description: Zdefiniuj profil techniczny RESTful w zasadach niestandardowych w Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,34 +10,34 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 21a2ea861df96a057db0ec13eacd0906ed51fff1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f535bc7d67198b3fe06326260bc1910b6afd36f2
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512739"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68346776"
 ---
-# <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj RESTful profilu technicznego w zasadach niestandardowych usługi Azure Active Directory B2C
+# <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj profil techniczny RESTful w zasadach niestandardowych Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Usługa Azure Active Directory (Azure AD) B2C zapewnia obsługę usługi RESTful. Usługa Azure AD B2C wysyła dane do usługi RESTful w danych wejściowych oświadczeń kolekcji i odbiera dane z powrotem w kolekcji oświadczeń danych wyjściowych. Dzięki integracji z usługą RESTful można wykonywać następujące czynności:
+Usługa Azure Active Directory (Azure AD) B2C zapewnia pomoc techniczną dla własnej usługi RESTful. Azure AD B2C wysyła dane do usługi RESTful w kolekcji oświadczeń wejściowych i odbiera dane z powrotem w kolekcji oświadczeń wyjściowych. Dzięki integracji z usługą RESTful można:
 
-- **Sprawdza poprawność danych wejściowych użytkownika** -źle sformułowane chroni dane przed utrwaleniem do usługi Azure AD B2C. Jeśli wartość przez użytkownika nie jest prawidłowy, usługi RESTful zwraca komunikat o błędzie z monitem użytkownika o podanie wpis. Na przykład można sprawdzić, czy adres e-mail, dostarczone przez użytkownika istnieje w bazie danych klienta.
-- **Zastąp oświadczeń wejściowych** — umożliwia ponownego formatowania wartości w danych wejściowych oświadczeń. Na przykład jeśli użytkownik wprowadzi nazwę pierwszego wszystkie małe lub wielkie litery, możesz sformatować nazwy tylko pierwszą literą wielką literą.
-- **Wzbogacanie danych użytkownika** — pozwala na dalsze zintegrować z aplikacji firmowych line-of-business. Na przykład usługi RESTful może odbierać adres e-mail użytkownika, wykonywania zapytań klienta w bazie danych i zwracać numer lojalności użytkownika do usługi Azure AD B2C. Zwracany oświadczeń może być przechowywany, ocenione w następnych krokach aranżacji lub zawarte w tokenie dostępu.
-- **Uruchom niestandardową logikę biznesową** — umożliwia wysyłanie powiadomień wypychanych, aktualizacji baz danych firmowych, uruchamiany jest proces migracji użytkowników, zarządzanie uprawnieniami, inspekcji bazy danych i wykonywania innych akcji.
+- **Sprawdzanie poprawności danych wejściowych użytkownika** — uniemożliwia utrwalanie nieprawidłowych danych w Azure AD B2C. Jeśli wartość użytkownika jest nieprawidłowa, usługa RESTful zwraca komunikat o błędzie, który nakazuje użytkownikowi dostarczenie wpisu. Na przykład możesz sprawdzić, czy w bazie danych klienta istnieje adres e-mail podany przez użytkownika.
+- **Zastąp oświadczenia wejściowe** — umożliwia ponowne formatowanie wartości w oświadczeniach wejściowych. Na przykład, jeśli użytkownik wprowadzi imię i nazwisko we wszystkich małych i wielkich literach, można sformatować nazwę tylko przy użyciu pierwszej litery.
+- **Wzbogacanie danych użytkownika** — umożliwia dalsze integrację z firmowymi aplikacjami biznesowymi. Na przykład usługa RESTful może otrzymać adres e-mail użytkownika, wysłać zapytanie do bazy danych klienta i zwrócić numer lojalnościowy użytkownika w celu Azure AD B2C. Oświadczenia zwrotne mogą być przechowywane, oceniane w następnych krokach aranżacji lub zawarte w tokenie dostępu.
+- **Uruchamianie niestandardowej logiki biznesowej** — umożliwia wysyłanie powiadomień wypychanych, aktualizowanie firmowych baz danych, uruchamianie procesu migracji użytkowników, zarządzanie uprawnieniami, inspekcję baz danych i wykonywanie innych akcji.
 
-Zasady mogą wysyłać oświadczenia wejściowego do interfejsu API REST. Interfejs API REST może również zwracać oświadczeń danych wyjściowych, które można użyć później w zasadach lub może ona zgłosić komunikat o błędzie. Integracja z usług RESTful można zaprojektować w następujący sposób:
+Zasady mogą wysyłać oświadczenia wejściowe do interfejsu API REST. Interfejs API REST może również zwracać oświadczenia wyjściowe, których można użyć w dalszej części zasad, lub może zgłosić komunikat o błędzie. Integrację z usługami RESTful można zaprojektować w następujący sposób:
 
-- **Profil techniczny weryfikacji** -profilu technicznego weryfikacji wywołań usługi RESTful. Profil techniczny weryfikacji sprawdza poprawność danych wprowadzonych przez użytkownika przed kontynuacją podróży użytkownika. Z profilu technicznego sprawdzania poprawności komunikat o błędzie jest wyświetlana na stronie samodzielnie i zwracany w danych wyjściowych oświadczeń.
-- **Wymiana oświadczeń** -wywołanie usługi RESTful za pomocą kroku aranżacji. W tym scenariuszu istnieje bez interfejsu użytkownika, do renderowania komunikatu o błędzie. Jeśli Twój interfejs API REST zwraca błąd, użytkownik jest przekierowany z powrotem do aplikacji jednostki uzależnionej z komunikatem o błędzie.
+- **Sprawdzanie poprawności profilu technicznego** — Walidacja profilu technicznego wywołuje usługę RESTful. Profil techniczny weryfikacji weryfikuje dane dostarczone przez użytkownika przed kontynuowaniem podróży użytkownika. W profilu technicznym walidacji komunikat o błędzie jest wyświetlany na stronie z własnym poproszonym i zwracany w oświadczeniach danych wyjściowych.
+- **Wymiana oświadczeń** — wywołanie usługi RESTful jest nawiązywane przez krok aranżacji. W tym scenariuszu nie ma interfejsu użytkownika do renderowania komunikatu o błędzie. Jeśli interfejs API REST zwróci błąd, użytkownik zostanie przekierowany z powrotem do aplikacji jednostki uzależnionej z komunikatem o błędzie.
 
 ## <a name="protocol"></a>Protocol
 
-**Nazwa** atrybutu **protokołu** element musi być równa `Proprietary`. **Obsługi** atrybutu musi zawierać w pełni kwalifikowaną nazwę zestawu obsługi protokołu, który jest używany przez usługę Azure AD B2C: `Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`.
+Atrybut **name** elementu **Protocol** musi być ustawiony na `Proprietary`. Atrybut **programu obsługi** musi zawierać w pełni kwalifikowaną nazwę zestawu programu obsługi protokołu, który jest używany przez Azure AD B2C: `Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`.
 
-Poniższy przykład przedstawia RESTful profilu technicznego:
+W poniższym przykładzie przedstawiono profil techniczny RESTful:
 
 ```XML
 <TechnicalProfile Id="REST-UserMembershipValidator">
@@ -46,9 +46,9 @@ Poniższy przykład przedstawia RESTful profilu technicznego:
   ...    
 ```
 
-## <a name="input-claims"></a>Oświadczeń wejściowych
+## <a name="input-claims"></a>Oświadczenia wejściowe
 
-**InputClaims** element zawiera listę oświadczenia do wysłania do interfejsu API REST. Można również mapować nazwę Twojego oświadczenie z nazwą zdefiniowaną w interfejsie API REST. Poniższy przykład przedstawia mapowanie między zasad i interfejsu API REST. **GivenName** oświadczenia są wysyłane do interfejsu API REST jako **firstName**, podczas gdy **nazwisko** jest wysyłany jako **lastName**. **E-mail** oświadczeń jest ustawiona, ponieważ jest.
+Element **InputClaims** zawiera listę oświadczeń do wysłania do interfejsu API REST. Możesz również zmapować nazwę swojego zgłoszenia na nazwę zdefiniowaną w interfejsie API REST. Poniższy przykład pokazuje mapowanie między zasadami i interfejsem API REST. **Dana** wartość tego żądania jest wysyłana do interfejsu API REST jako **FirstName**, a **nazwisko** jest wysyłane jako **LastName**. To ustawienie jest **ustawione na wartość** .
 
 ```XML
 <InputClaims>
@@ -58,21 +58,21 @@ Poniższy przykład przedstawia RESTful profilu technicznego:
 </InputClaims>
 ```
 
-**InputClaimsTransformations** element może zawierać zbiór **InputClaimsTransformation** elementy, które są używane do modyfikowania danych wejściowych oświadczeń lub wygenerować nowe przed wysłaniem do interfejsu API REST.
+Element **InputClaimsTransformations** może zawierać kolekcję elementów **InputClaimsTransformation** , które są używane do modyfikowania oświadczeń wejściowych lub generować nowe przed wysłaniem do interfejsu API REST.
 
-## <a name="output-claims"></a>Oświadczeń danych wyjściowych
+## <a name="output-claims"></a>Oświadczenia wyjściowe
 
-**OutputClaims** element zawiera listę oświadczeń zwracane przez interfejs API REST. Może być konieczne mapowania nazwy oświadczenia, zdefiniowane w zasadach do nazwy zdefiniowane w interfejsie API REST. Możesz również uwzględnić oświadczenia, które nie są zwracane przez interfejs API REST dostawcy tożsamości, tak długo, jak można ustawić `DefaultValue` atrybutu.
+Element **OutputClaims** zawiera listę oświadczeń zwracanych przez interfejs API REST. Może być konieczne zamapowanie nazwy żądania zdefiniowanego w zasadach na nazwę zdefiniowaną w interfejsie API REST. Można również uwzględnić oświadczenia, które nie są zwracane przez dostawcę tożsamości interfejsu API REST, o ile atrybut ten `DefaultValue` jest ustawiony.
 
-**OutputClaimsTransformations** element może zawierać zbiór **OutputClaimsTransformation** elementy, które są używane do modyfikowania oświadczeń danych wyjściowych lub wygenerować nowe.
+Element **OutputClaimsTransformations** może zawierać kolekcję elementów **OutputClaimsTransformation** , które są używane do modyfikowania oświadczeń wyjściowych lub generowania nowych.
 
-Poniższy przykład przedstawia oświadczenia zwrócone przez interfejs API REST:
+Poniższy przykład przedstawia zgłoszenie zwrócone przez interfejs API REST:
 
-- **MembershipId** oświadczenia, który jest zamapowany **loyaltyNumber** Nazwa oświadczenia.
+- **MembershipId** , która jest mapowana na nazwę żądania **loyaltyNumber** .
 
-Profil techniczny zwraca również wartość oświadczenia, które nie są zwracane przez dostawcę tożsamości: 
+Profil techniczny zwraca również oświadczenia, które nie są zwracane przez dostawcę tożsamości: 
 
-- **LoyaltyNumberIsNew** oświadczenia, który ma wartość domyślna równa `true`.
+- **LoyaltyNumberIsNew** , które ma wartość domyślną ustawioną na `true`.
 
 ```xml
 <OutputClaims>
@@ -86,14 +86,14 @@ Profil techniczny zwraca również wartość oświadczenia, które nie są zwrac
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
 | ServiceUrl | Tak | Adres URL punktu końcowego interfejsu API REST. | 
-| AuthenticationType | Yes | Typ uwierzytelniania jest wykonywane przez dostawcę oświadczeń typu RESTful. Możliwe wartości: `None`, `Basic`, lub `ClientCertificate`. `None` Wartość wskazuje, że interfejs API REST jest anonimowy. `Basic` Wartość wskazuje, że interfejs API REST jest zabezpieczony za pomocą podstawowego uwierzytelniania protokołu HTTP. Weryfikowane tylko użytkowników, w tym usługi Azure AD B2C, mogą uzyskiwać dostęp do interfejsu API. `ClientCertificate` (Zalecane) wartość wskazuje, że interfejs API REST ogranicza dostęp przy użyciu uwierzytelniania certyfikatu klienta. Tylko w przypadku usług, które mają odpowiednie certyfikaty, takich jak usługi Azure AD B2C może uzyskać dostęp do usługi. | 
-| SendClaimsIn | Nie | Określa, jak oświadczeń wejściowych są wysyłane do dostawcy oświadczeń typu RESTful. Możliwe wartości: `Body` (ustawienie domyślne), `Form`, `Header`, lub `QueryString`. `Body` Wartość oświadczeń przychodzących, który będzie wysyłany w treści żądania w formacie JSON. `Form` Wartość oświadczeń przychodzących, który będzie wysyłany w treści żądania w handlowe "i" "&" rozdzielonych format wartości klucza. `Header` Wartość oświadczeń przychodzących, który będzie wysyłany w nagłówku żądania. `QueryString` Wartość oświadczeń przychodzących, który będzie wysyłany w ciągu zapytania żądania. | 
-| ClaimsFormat | Nie | Określa format dla oświadczeń danych wyjściowych. Możliwe wartości: `Body` (ustawienie domyślne), `Form`, `Header`, lub `QueryString`. `Body` Wartość oświadczeń danych wyjściowych, który będzie wysyłany w treści żądania w formacie JSON. `Form` Wartość oświadczeń wychodzących, który będzie wysyłany w treści żądania w handlowe "i" "&" rozdzielonych format wartości klucza. `Header` Wartość oświadczeń danych wyjściowych, który będzie wysyłany w nagłówku żądania. `QueryString` Wartość oświadczeń danych wyjściowych, który będzie wysyłany w ciągu zapytania żądania. | 
-| Element DebugMode | Nie | Uruchamia profil techniczny w trybie debugowania. W trybie debugowania interfejs API REST może zwrócić więcej informacji. Zobacz sekcję zwracanie komunikatu błędu. | 
+| AuthenticationType | Yes | Typ uwierzytelniania wykonywanego przez dostawcę oświadczeń RESTful. Możliwe wartości: `None`, `Basic`, lub `ClientCertificate`. `None` Wartość wskazuje, że interfejs API REST nie jest anonimowy. `Basic` Wartość oznacza, że interfejs API REST jest zabezpieczony za pomocą uwierzytelniania podstawowego protokołu HTTP. Tylko zweryfikowani użytkownicy, w tym Azure AD B2C, mogą uzyskiwać dostęp do interfejsu API. Wartość `ClientCertificate` (zalecane) wskazuje, że interfejs API REST ogranicza dostęp przy użyciu uwierzytelniania certyfikatu klienta. Tylko usługi, które mają odpowiednie certyfikaty, takie jak Azure AD B2C, mogą uzyskać dostęp do usługi. | 
+| SendClaimsIn | Nie | Określa sposób, w jaki oświadczenia wejściowe są wysyłane do dostawcy oświadczeń RESTful. Możliwe wartości: `Body` (wartość domyślna) `Form`, `Header`, lub `QueryString`. `Body` Wartość jest wartością wejściową, która jest wysyłana w treści żądania w formacie JSON. `Form` Wartość jest wartością wejściową, która jest wysyłana w treści żądania w formacie wartości klucza "&". `Header` Wartość jest wartością wejściową, która jest wysyłana w nagłówku żądania. `QueryString` Wartość jest wartością wejściową, która jest wysyłana w ciągu zapytania żądania. | 
+| ClaimsFormat | Nie | Określa format oświadczeń wyjściowych. Możliwe wartości: `Body` (wartość domyślna) `Form`, `Header`, lub `QueryString`. `Body` Wartość jest wynikiem zgłoszenia, który jest wysyłany w treści żądania w formacie JSON. `Form` Wartość jest wynikiem zgłoszenia, który jest wysyłany w treści żądania w formacie wartości klucza "&". `Header` Wartość jest wynikiem zgłoszenia, który jest wysyłany w nagłówku żądania. `QueryString` Wartość jest wynikiem zgłoszenia wysyłanego w ciągu zapytania żądania. | 
+| Debugujmode | Nie | Uruchamia profil techniczny w trybie debugowania. W trybie debugowania interfejs API REST może zwrócić więcej informacji. Zobacz sekcję zwracającą komunikat o błędzie. | 
 
 ## <a name="cryptographic-keys"></a>Klucze kryptograficzne
 
-Jeśli ustawiono typ uwierzytelniania `None`, **CryptographicKeys** element nie jest używany.
+Jeśli typ uwierzytelniania jest ustawiony na `None`, element **CryptographicKeys** nie jest używany.
 
 ```XML
 <TechnicalProfile Id="REST-API-SignUp">
@@ -107,14 +107,14 @@ Jeśli ustawiono typ uwierzytelniania `None`, **CryptographicKeys** element nie 
 </TechnicalProfile>
 ```
 
-Jeśli ustawiono typ uwierzytelniania `Basic`, **CryptographicKeys** element zawiera następujące atrybuty:
+Jeśli typ uwierzytelniania jest ustawiony na `Basic`, element **CryptographicKeys** zawiera następujące atrybuty:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| BasicAuthenticationUsername | Tak | Nazwa użytkownika, który jest używany do uwierzytelniania. | 
-| BasicAuthenticationPassword | Tak | Hasło, które służy do uwierzytelniania. |
+| BasicAuthenticationUsername | Yes | Nazwa użytkownika, która jest używana do uwierzytelniania. | 
+| BasicAuthenticationPassword | Tak | Hasło, które jest używane do uwierzytelniania. |
 
-Poniższy przykład przedstawia profilu technicznego z uwierzytelnianiem podstawowym:
+Poniższy przykład przedstawia profil techniczny z uwierzytelnianiem podstawowym:
 
 ```XML
 <TechnicalProfile Id="REST-API-SignUp">
@@ -132,11 +132,11 @@ Poniższy przykład przedstawia profilu technicznego z uwierzytelnianiem podstaw
 </TechnicalProfile>
 ```
 
-Jeśli ustawiono typ uwierzytelniania `ClientCertificate`, **CryptographicKeys** element zawiera następujący atrybut:
+Jeśli typ uwierzytelniania jest ustawiony na `ClientCertificate`, element **CryptographicKeys** zawiera następujący atrybut:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| ClientCertificate | Tak | X509 certyfikat (zestawu kluczy RSA) ma być używany do uwierzytelniania. | 
+| Kolekcja | Tak | Certyfikat x509 (zestaw kluczy RSA) do uwierzytelniania. | 
 
 ```XML
 <TechnicalProfile Id="REST-API-SignUp">
@@ -153,21 +153,21 @@ Jeśli ustawiono typ uwierzytelniania `ClientCertificate`, **CryptographicKeys**
 </TechnicalProfile>
 ```
 
-## <a name="returning-error-message"></a>Zwraca komunikat o błędzie
+## <a name="returning-error-message"></a>Zwracany komunikat o błędzie
 
-Interfejs API REST może być konieczne zwrócić komunikat o błędzie, takie jak "nie znaleziono użytkownika w systemie CRM". Błąd występuje, interfejs API REST powinien zwrócić komunikat o błędzie HTTP 409 (konflikt kod stanu odpowiedzi) z następującymi atrybutami:
+Interfejs API REST może wymagać zwrócenia komunikatu o błędzie, takiego jak "nie znaleziono użytkownika w systemie CRM". W przypadku wystąpienia błędu interfejs API REST powinien zwrócić komunikat o błędzie HTTP 409 (kod stanu odpowiedzi konfliktu) z następującymi atrybutami:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| version | Tak | 1.0.0 | 
+| version | Yes | 1.0.0 | 
 | status | Tak | 409 | 
-| code | Nie | Kod błędu z dostawcy typu RESTful punktu końcowego, który jest wyświetlany, gdy `DebugMode` jest włączona. | 
-| requestId | Nie | Identyfikator żądania od dostawcy punktem końcowym RESTful, które jest wyświetlane, gdy `DebugMode` jest włączona. | 
-| userMessage | Tak | Komunikat o błędzie, który jest wyświetlany użytkownikowi. | 
-| developerMessage | Nie | Szczegółowy opis problemu i jak rozwiązać problem, który jest wyświetlany, gdy `DebugMode` jest włączona. | 
-| moreInfo | Nie | Identyfikator URI, który wskazuje, aby uzyskać dodatkowe informacje, które jest wyświetlane, gdy `DebugMode` jest włączona. | 
+| code | Nie | Kod błędu od dostawcy punktu końcowego RESTful, który jest wyświetlany, gdy `DebugMode` jest włączony. | 
+| requestId | Nie | Identyfikator żądania od dostawcy punktu końcowego RESTful, który jest wyświetlany, gdy `DebugMode` jest włączony. | 
+| userMessage | Yes | Komunikat o błędzie, który jest widoczny dla użytkownika. | 
+| developerMessage | Nie | Pełny opis problemu i sposób jego naprawy, który jest wyświetlany, gdy `DebugMode` jest włączony. | 
+| moreInfo | Nie | Identyfikator URI wskazujący na dodatkowe informacje, które są wyświetlane, `DebugMode` gdy jest włączone. | 
 
-Interfejs API REST, która zwraca sformatowany komunikat o błędzie w formacie JSON można znaleźć w poniższym przykładzie:
+Poniższy przykład przedstawia interfejs API REST, który zwraca komunikat o błędzie sformatowany w formacie JSON:
 
 ```JSON
 {
@@ -181,9 +181,9 @@ Interfejs API REST, która zwraca sformatowany komunikat o błędzie w formacie 
 }
 ```
 
-Klasa C#, która zwraca komunikat o błędzie można znaleźć w poniższym przykładzie:
+Poniższy przykład pokazuje C# klasę, która zwraca komunikat o błędzie:
 
-```C#
+```csharp
 public class ResponseContent
 {
   public string version { get; set; }
@@ -197,10 +197,10 @@ public class ResponseContent
 ```
 
 ## <a name="examples"></a>Przykłady:
-- [Integracja interfejsu API REST wymianą oświadczeń podróży użytkownika usługi Azure AD B2C jako sprawdzanie poprawności danych wejściowych użytkownika](active-directory-b2c-custom-rest-api-netfw.md) 
-- [Zabezpieczanie usługi RESTful za pomocą podstawowego uwierzytelniania protokołu HTTP](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
+- [Integruj wymianę oświadczeń interfejsu API REST w trakcie Azure AD B2C użytkownika w trakcie sprawdzania poprawności danych wejściowych użytkownika](active-directory-b2c-custom-rest-api-netfw.md) 
+- [Zabezpieczanie usług RESTful za pomocą uwierzytelniania podstawowego protokołu HTTP](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
 - [Zabezpieczanie usługi RESTful przy użyciu certyfikatów klienta](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
-- [Wskazówki: Integracja interfejsu API REST wymianą oświadczeń podróży użytkownika usługi Azure AD B2C jako sprawdzanie poprawności danych wejściowych użytkownika](active-directory-b2c-rest-api-validation-custom.md)
+- [Instruktaż Integruj wymianę oświadczeń interfejsu API REST w Azure AD B2C przeniesieniu użytkownika na dane wejściowe użytkownika](active-directory-b2c-rest-api-validation-custom.md)
 
  
 

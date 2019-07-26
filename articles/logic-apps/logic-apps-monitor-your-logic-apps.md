@@ -10,16 +10,16 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: 851943ad967a79a6800a899b31d0cf9f90a6889b
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 840124a35ed4389699757e011aaf5d05a9400836
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312252"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385526"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Monitorowanie stanu, Konfigurowanie rejestrowania diagnostyki i włączanie alertów dla Azure Logic Apps
 
-Po [utworzeniu i uruchomieniu aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)można sprawdzić historię jej uruchamiania, historię wyzwalania, stan i wydajność. Aby monitorować zdarzenia w czasie rzeczywistym i bogatsze debugowanie, skonfiguruj [Rejestrowanie diagnostyki](#azure-diagnostics) dla aplikacji logiki. Dzięki temu można znajdować [i wyświetlać zdarzenia](#find-events), takie jak zdarzenia wyzwalania, zdarzenia uruchamiania i zdarzenia akcji. Możesz również używać tych [danych diagnostycznych z innymi usługami](#extend-diagnostic-data), takimi jak Azure Storage i Azure Event Hubs. 
+Po [utworzeniu i uruchomieniu aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md) możesz sprawdzać jej historię uruchamiania, historię wyzwalania, stan i wydajność. Aby monitorować zdarzenia w czasie rzeczywistym i bogatsze debugowanie, skonfiguruj [Rejestrowanie diagnostyki](#azure-diagnostics) dla aplikacji logiki. W ten sposób możesz [znajdować i wyświetlać zdarzenia](#find-events), takie jak zdarzenia wyzwalacza, zdarzenia uruchamiania i zdarzenia akcji. Ponadto tych [danych diagnostycznych możesz używać z innymi usługami](#extend-diagnostic-data), takimi jak Azure Storage i Azure Event Hubs. 
 
 Aby otrzymywać powiadomienia o błędach lub innych możliwych problemach, skonfiguruj [alerty](#add-azure-alerts). Na przykład można utworzyć alert, który wykrywa "gdy więcej niż pięć przebiegów zakończy się niepowodzeniem w ciągu godziny". Można również skonfigurować monitorowanie, śledzenie i rejestrowanie programowo przy użyciu [Diagnostyka Azure ustawień i właściwości zdarzeń](#diagnostic-event-properties).
 
@@ -35,7 +35,7 @@ Aby otrzymywać powiadomienia o błędach lub innych możliwych problemach, skon
 
 2. Wybierz aplikację logiki, a następnie wybierz pozycję **Przegląd**.
 
-   Azure Portal pokazuje historię uruchamiania i historię wyzwalania dla aplikacji logiki. Na przykład:
+   Azure Portal pokazuje historię uruchamiania i historię wyzwalania dla aplikacji logiki. Przykład:
 
    ![Historia uruchamiania aplikacji logiki i historii wyzwalacza](media/logic-apps-monitor-your-logic-apps/overview.png)
 
@@ -291,8 +291,8 @@ Na przykład `ActionCompleted` zdarzenie `clientTrackingId` ma właściwości i 
   }
   ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-* [Tworzenie szablonów dla wdrażania aplikacji logiki i zarządzania wydaniami](../logic-apps/logic-apps-create-deploy-template.md)
+* [Automatyzowanie wdrożenia aplikacji logiki](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 * [Scenariusze B2B z Pakiet integracyjny dla przedsiębiorstw](../logic-apps/logic-apps-enterprise-integration-overview.md)
 * [Monitorowanie komunikatów B2B](../logic-apps/logic-apps-monitor-b2b-message.md)

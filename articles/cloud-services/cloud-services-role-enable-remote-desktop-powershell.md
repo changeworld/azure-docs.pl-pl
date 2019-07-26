@@ -1,64 +1,58 @@
 ---
-title: Włączanie funkcji Podłączanie pulpitu zdalnego dla roli w usługach Azure Cloud Services przy użyciu programu PowerShell
-description: Konfigurowanie aplikacji usługi w chmurze platformy azure przy użyciu programu PowerShell, aby zezwolić na połączenia pulpitu zdalnego
+title: Włączanie Podłączanie pulpitu zdalnego roli na platformie Azure Cloud Services przy użyciu programu PowerShell
+description: Jak skonfigurować aplikację usługi w chmurze platformy Azure przy użyciu programu PowerShell, aby zezwolić na połączenia pulpitu zdalnego
 services: cloud-services
 documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: bf2f70a4-20dc-4302-a91a-38cd7a2baa62
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 43ccc8e53c30219630ad10ee66a4db38656818e6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: b466cb866889edcdc2bd02373a5567a7b53ae18d
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60525398"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358988"
 ---
-# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-powershell"></a>Włączanie funkcji Podłączanie pulpitu zdalnego dla roli w usługach Azure Cloud Services przy użyciu programu PowerShell
+# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-powershell"></a>Włączanie Podłączanie pulpitu zdalnego roli na platformie Azure Cloud Services przy użyciu programu PowerShell
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
 > * [Program PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
-> * [Program Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
+> * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
-Pulpit zdalny zapewnia dostęp do pulpitu roli działających na platformie Azure. Podłączanie pulpitu zdalnego umożliwia rozwiązywanie problemów i diagnozowanie problemów z aplikacją, gdy jest on uruchomiony.
+Pulpit zdalny umożliwia dostęp do pulpitu roli działającej na platformie Azure. Połączenia Pulpit zdalny można użyć do rozwiązywania problemów i diagnozowania problemów z aplikacją, gdy jest ona uruchomiona.
 
-W tym artykule opisano, jak można włączyć pulpitu zdalnego na role usługi w chmurze przy użyciu programu PowerShell. Zobacz [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview) wymagań wstępnych wymagane na potrzeby tego artykułu. Rozszerzenie usług pulpitu zdalnego korzysta z programu PowerShell, dzięki czemu można włączyć pulpitu zdalnego, po wdrożeniu aplikacji.
+W tym artykule opisano sposób włączania pulpitu zdalnego w rolach usługi w chmurze przy użyciu programu PowerShell. Zapoznaj się z tematem [Instalowanie i konfigurowanie Azure PowerShell](/powershell/azure/overview) wymagań wstępnych dotyczących tego artykułu. Program PowerShell używa rozszerzenia Pulpit zdalny, aby można było włączyć Pulpit zdalny po wdrożeniu aplikacji.
 
-## <a name="configure-remote-desktop-from-powershell"></a>Konfigurowanie pulpitu zdalnego za pomocą programu PowerShell
-[AzureServiceRemoteDesktopExtension zestaw](/powershell/module/servicemanagement/azure/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) polecenie cmdlet pozwala na włączenie pulpitu zdalnego dla określonych ról lub wszystkie role wdrażania usługi w chmurze. Polecenie cmdlet pozwala określić nazwę użytkownika i hasło dla użytkownika pulpitu zdalnego za pośrednictwem *poświadczeń* parametr, który akceptuje obiekt PSCredential.
+## <a name="configure-remote-desktop-from-powershell"></a>Konfigurowanie Pulpit zdalny przy użyciu programu PowerShell
+Polecenie cmdlet [Set-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) umożliwia włączenie pulpit zdalny w określonych rolach lub wszystkich rolach wdrożenia usługi w chmurze. Polecenie cmdlet pozwala określić nazwę użytkownika i hasło dla użytkownika pulpitu zdalnego za pomocą parametru *Credential* , który akceptuje obiekt PSCredential.
 
-Jeśli używasz programu PowerShell interaktywnie, łatwo można ustawić obiektu PSCredential, wywołując [Get-Credentials](https://technet.microsoft.com/library/hh849815.aspx) polecenia cmdlet.
+Jeśli używasz programu PowerShell interaktywnie, możesz łatwo ustawić obiekt PSCredential, wywołując polecenie cmdlet [Get-Credentials](https://technet.microsoft.com/library/hh849815.aspx) .
 
 ```powershell
 $remoteusercredentials = Get-Credential
 ```
 
-To polecenie wyświetla okno dialogowe, dzięki czemu możesz wprowadzić nazwę użytkownika i hasło użytkownika zdalnego w bezpieczny sposób.
+To polecenie wyświetla okno dialogowe, w którym można bezpiecznie wprowadzić nazwę użytkownika i hasło dla użytkownika zdalnego.
 
-Ponieważ Środowisko PowerShell pomaga w scenariuszach automatyzacji, możesz również skonfigurować **PSCredential** obiekt w taki sposób, który nie wymaga interakcji z użytkownikiem. Najpierw musisz skonfigurować bezpieczne hasło. Zaczynać się określenie hasła w postaci zwykłego tekstu przekonwertuj go na bezpieczny ciąg, w którym używana jest [ConvertTo-SecureString](https://technet.microsoft.com/library/hh849818.aspx). Następnie należy przekonwertować to bezpieczny ciąg do usługi za pomocą zaszyfrowanego ciągu standardowego [ConvertFrom-SecureString](https://technet.microsoft.com/library/hh849814.aspx). Teraz można zapisać tego zaszyfrowanego ciągu standardowego pliku za pomocą [zestaw zawartości](https://technet.microsoft.com/library/ee176959.aspx).
+Ponieważ program PowerShell ułatwia scenariusze automatyzacji, można także skonfigurować obiekt **PSCredential** w sposób, który nie wymaga interakcji z użytkownikiem. Najpierw należy skonfigurować bezpieczne hasło. Zacznij od określenia hasła w postaci zwykłego tekstu, konwertując go na bezpieczny ciąg za pomocą [ConvertTo-SecureString](https://technet.microsoft.com/library/hh849818.aspx). Następnie należy przekonwertować ten bezpieczny ciąg na zaszyfrowany ciąg standardowy przy użyciu [ConvertFrom-SecureString](https://technet.microsoft.com/library/hh849814.aspx). Teraz można zapisać ten szyfrowany ciąg standardowy do pliku przy użyciu polecenia [Set-Content](https://technet.microsoft.com/library/ee176959.aspx).
 
-Można także utworzyć plik bezpieczne hasło, dzięki czemu nie trzeba wpisać hasło każdym razem, gdy. Ponadto plik bezpieczne hasło jest lepsze niż zwykły plik tekstowy. Następujące polecenie programu PowerShell umożliwia utworzenie pliku bezpieczne hasło:
+Możesz również utworzyć bezpieczny plik hasła, aby nie trzeba było wpisywać hasła za każdym razem. Ponadto bezpieczny plik hasła jest lepszy niż zwykły plik tekstowy. Użyj następującego programu PowerShell, aby utworzyć bezpieczny plik hasła:
 
 ```powershell
 ConvertTo-SecureString -String "Password123" -AsPlainText -Force | ConvertFrom-SecureString | Set-Content "password.txt"
 ```
 
 > [!IMPORTANT]
-> Przy ustawianiu hasła, upewnij się, że spełniasz [wymagania co do złożoności](https://technet.microsoft.com/library/cc786468.aspx).
+> Podczas ustawiania hasła upewnij się, że spełniasz [wymagania dotyczące złożoności](https://technet.microsoft.com/library/cc786468.aspx).
 
-Aby utworzyć obiekt poświadczeń z pliku bezpieczne hasło, należy przeczytać zawartość pliku i przekonwertować z powrotem na bezpieczny ciąg, w którym używana jest [ConvertTo-SecureString](https://technet.microsoft.com/library/hh849818.aspx).
+Aby utworzyć obiekt Credential z bezpiecznego hasła, należy odczytać zawartość pliku i przekonwertować ją z powrotem na bezpieczny ciąg za pomocą [ConvertTo-SecureString](https://technet.microsoft.com/library/hh849818.aspx).
 
-[AzureServiceRemoteDesktopExtension zestaw](/powershell/module/servicemanagement/azure/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) akceptuje także polecenia cmdlet *wygaśnięcia* parametr, który określa **daty/godziny** w którym wygaśnięciem ważności konta użytkownika. Na przykład można ustawić konto wygaśnie za kilka dni od bieżącej daty i godziny.
+Polecenie cmdlet [Set-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) akceptuje również parametr *wygaśnięcia* , który określa **datę i godzinę** wygaśnięcia konta użytkownika. Można na przykład ustawić, że konto wygaśnie kilka dni od bieżącej daty i godziny.
 
-W tym przykładzie programu PowerShell pokazuje, jak ustawić rozszerzenie usług pulpitu zdalnego w usłudze w chmurze:
+Ten przykład programu PowerShell pokazuje, jak ustawić rozszerzenie Pulpit zdalny w usłudze w chmurze:
 
 ```powershell
 $servicename = "cloudservice"
@@ -68,41 +62,41 @@ $expiry = $(Get-Date).AddDays(1)
 $credential = New-Object System.Management.Automation.PSCredential $username,$securepassword
 Set-AzureServiceRemoteDesktopExtension -ServiceName $servicename -Credential $credential -Expiration $expiry
 ```
-Można również opcjonalnie określić miejsce wdrożenia i role, które chcesz włączyć pulpitu zdalnego na. Jeśli nie określono parametrów, polecenie cmdlet włącza Pulpit zdalny dla wszystkich ról w **produkcji** miejsce wdrożenia.
+Opcjonalnie można również określić miejsce wdrożenia i role, dla których chcesz włączyć pulpit zdalny. Jeśli te parametry nie zostaną określone, polecenie cmdlet włącza pulpit zdalny na wszystkich rolach w **produkcyjnym** miejscu wdrożenia.
 
-Rozszerzenie usług pulpitu zdalnego jest powiązane z wdrożeniem. Jeśli tworzysz nowe wdrożenie usługi, należy włączyć pulpitu zdalnego w tym wdrożeniu. Jeśli chcesz zawsze włączonym pulpitem zdalnym, następnie należy rozważyć integrowanie skryptów środowiska PowerShell wdrażanie przepływu pracy.
+Rozszerzenie Pulpit zdalny jest skojarzone ze wdrożeniem. Jeśli tworzysz nowe wdrożenie dla usługi, musisz włączyć pulpit zdalny dla tego wdrożenia. Jeśli chcesz, aby pulpit zdalny był włączony, należy rozważyć integrację skryptów programu PowerShell z przepływem pracy wdrożenia.
 
-## <a name="remote-desktop-into-a-role-instance"></a>Za pomocą pulpitu zdalnego wystąpienia roli
+## <a name="remote-desktop-into-a-role-instance"></a>Pulpit zdalny do wystąpienia roli
 
-[Get-AzureRemoteDesktopFile](/powershell/module/servicemanagement/azure/get-azureremotedesktopfile?view=azuresmps-3.7.0) polecenie cmdlet jest używany do zdalnego pulpitu w wystąpieniu określonych ról usługi w chmurze. Możesz użyć *LocalPath* lokalnie plik parametru, aby pobrać protokołu RDP. Możesz też *Uruchom* parametru, aby bezpośrednio Uruchom okno dialogowe Podłączanie pulpitu zdalnego, aby dostęp do wystąpienia roli usługi w chmurze.
+Polecenie cmdlet [Get-AzureRemoteDesktopFile](/powershell/module/servicemanagement/azure/get-azureremotedesktopfile?view=azuresmps-3.7.0) jest używane do zdalnego pulpitu w określonym wystąpieniu roli usługi w chmurze. Aby pobrać plik RDP lokalnie, można użyć parametru *LocalPath* . Można też użyć parametru *uruchamiania* , aby bezpośrednio uruchomić okno dialogowe Podłączanie pulpitu zdalnego, aby uzyskać dostęp do wystąpienia roli usługi w chmurze.
 
 ```powershell
 Get-AzureRemoteDesktopFile -ServiceName $servicename -Name "WorkerRole1_IN_0" -Launch
 ```
 
-## <a name="check-if-remote-desktop-extension-is-enabled-on-a-service"></a>Sprawdź, czy rozszerzenie usług pulpitu zdalnego jest włączony w usłudze
+## <a name="check-if-remote-desktop-extension-is-enabled-on-a-service"></a>Sprawdź, czy w usłudze jest włączone rozszerzenie Pulpit zdalny
 
-[Get AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure/get-azureremotedesktopfile?view=azuresmps-3.7.0) polecenie cmdlet wyświetla, Pulpit zdalny jest włączone lub wyłączone w ramach wdrożenia usługi. Polecenie cmdlet zwraca nazwę użytkownika dla użytkownika pulpitu zdalnego i role, które włączono rozszerzenie usług pulpitu zdalnego. Domyślnie taka sytuacja wystąpi dla miejsca wdrożenia, a użytkownik może użyć miejsca przejściowego.
+Polecenie cmdlet [Get-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure/get-azureremotedesktopfile?view=azuresmps-3.7.0) wyświetla, że pulpit zdalny jest włączony lub wyłączony w ramach wdrożenia usługi. Polecenie cmdlet zwraca nazwę użytkownika pulpitu zdalnego i role, dla których włączono rozszerzenie pulpitu zdalnego. Domyślnie dzieje się to w miejscu wdrożenia i można wybrać zamiast niego użycie miejsca przejściowego.
 
 ```powershell
 Get-AzureServiceRemoteDesktopExtension -ServiceName $servicename
 ```
 
-## <a name="remove-remote-desktop-extension-from-a-service"></a>Usuń rozszerzenie usług pulpitu zdalnego z poziomu usługi
+## <a name="remove-remote-desktop-extension-from-a-service"></a>Usuwanie rozszerzenia Pulpit zdalny z usługi
 
-Jeśli została już włączona rozszerzenia pulpitu zdalnego we wdrożeniu, a następnie konieczne zaktualizowanie ustawień pulpitu zdalnego, należy najpierw usunąć rozszerzenie. I włącz ją ponownie z nowymi ustawieniami. Na przykład, jeśli chcesz ustawić nowe hasło dla konta użytkownika zdalnego lub konto wygasło. W ten sposób jest wymagany na istniejące wdrożenia, które mają włączeniu rozszerzenia usług pulpitu zdalnego. W przypadku nowych wdrożeń można po prostu zastosować rozszerzenia bezpośrednio.
+Jeśli włączono już rozszerzenie pulpitu zdalnego we wdrożeniu i musisz zaktualizować ustawienia pulpitu zdalnego, najpierw Usuń rozszerzenie. I włącz ją ponownie przy użyciu nowych ustawień. Na przykład jeśli chcesz ustawić nowe hasło dla konta użytkownika zdalnego lub konto wygasło. Jest to wymagane w przypadku istniejących wdrożeń z włączonym rozszerzeniem pulpitu zdalnego. W przypadku nowych wdrożeń można po prostu bezpośrednio zastosować rozszerzenie.
 
-Aby usunąć rozszerzenie usług pulpitu zdalnego z wdrożeniem, można użyć [AzureServiceRemoteDesktopExtension Usuń](/powershell/module/servicemanagement/azure/remove-azureserviceremotedesktopextension?view=azuresmps-3.7.0) polecenia cmdlet. Można również opcjonalnie określić miejsce wdrożenia i ról, z którego chcesz usunąć rozszerzenie usług pulpitu zdalnego.
+Aby usunąć rozszerzenie pulpitu zdalnego z wdrożenia, można użyć polecenia cmdlet [Remove-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure/remove-azureserviceremotedesktopextension?view=azuresmps-3.7.0) . Opcjonalnie możesz również określić miejsce wdrożenia i rolę, z której chcesz usunąć rozszerzenie pulpitu zdalnego.
 
 ```powershell
 Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallConfiguration
 ```
 
 > [!NOTE]
-> Aby całkowicie usunąć konfigurację rozszerzenia, należy wywołać *Usuń* polecenia cmdlet z **UninstallConfiguration** parametru.
+> Aby całkowicie usunąć konfigurację rozszerzenia, należy wywołać polecenie cmdlet *Remove* z parametrem **UninstallConfiguration** .
 >
-> **UninstallConfiguration** parametru odinstalowuje żadnej konfiguracji rozszerzenia, która jest stosowana do usługi. Każdej konfiguracji rozszerzenia jest skojarzona z konfiguracją usługi. Wywoływanie *Usuń* polecenia cmdlet bez **UninstallConfiguration** powoduje usunięcie <mark>wdrożenia</mark> z konfiguracji rozszerzenia, więc powodując rzeczywiste usunięcie rozszerzenie. Jednak konfiguracja rozszerzenia pozostaje skojarzona z usługą.
+> Parametr **UninstallConfiguration** Odinstalowuje wszystkie konfiguracje rozszerzeń, które są stosowane do usługi. Każda konfiguracja rozszerzenia jest skojarzona z konfiguracją usługi. Wywołanie polecenia cmdlet *Remove* bez **UninstallConfiguration** powoduje skojarzenie <mark>wdrożenia</mark> z konfiguracją rozszerzenia, co skutecznie usuwa rozszerzenie. Jednak konfiguracja rozszerzenia pozostaje skojarzona z usługą.
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-[Jak skonfigurować usługi w chmurze](cloud-services-how-to-configure-portal.md)
+[Jak skonfigurować Cloud Services](cloud-services-how-to-configure-portal.md)

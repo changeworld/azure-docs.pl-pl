@@ -1,6 +1,6 @@
 ---
-title: Skonfiguruj informacje o zabezpieczeniach (wersja zapoznawcza) na użycie tych pytań zabezpieczających — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Jak skonfigurować swoje informacje zabezpieczające, aby zweryfikować swoją tożsamość przy użyciu wstępnie zdefiniowane pytania zabezpieczające.
+title: Skonfiguruj informacje zabezpieczające (wersja zapoznawcza), aby korzystać z pytań zabezpieczających — Azure Active Directory | Microsoft Docs
+description: Jak skonfigurować informacje zabezpieczające, aby zweryfikować Twoją tożsamość przy użyciu wstępnie zdefiniowanych pytań zabezpieczających.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,81 +12,87 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e5d1546c658631911f25c43e94275f00c7a5140
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f1c375b64d93662ec50923078549c4f2153fba0a
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60474643"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382814"
 ---
-# <a name="set-up-security-info-preview-to-use-security-questions"></a>Skonfiguruj informacje o zabezpieczeniach (wersja zapoznawcza) na użycie tych pytań zabezpieczających
-Można wykonaj następujące kroki, aby dodać metodę resetowania hasła. Po skonfigurowaniu to po raz pierwszy, można powrócić do **zabezpieczające** strony Dodawanie, aktualizowanie lub usuwanie informacji zabezpieczających.
+# <a name="set-up-security-info-preview-to-use-security-questions"></a>Skonfiguruj informacje zabezpieczające (wersja zapoznawcza), aby korzystać z pytań zabezpieczających
 
-Po skonfigurowaniu metody resetowania hasła, należy również skonfigurować metodę weryfikacji two-Factor Authentication, za pomocą [aplikacji authenticator](security-info-setup-auth-app.md), [wiadomości tekstowych](security-info-setup-text-msg.md), lub [połączeń telefonicznych](security-info-setup-phone-number.md).
+Poniższe kroki umożliwiają dodanie metody resetowania hasła. Po wybraniu tej opcji po raz pierwszy możesz wrócić do strony **informacje zabezpieczające** , aby dodać, zaktualizować lub usunąć informacje o zabezpieczeniach.
+
+Po skonfigurowaniu metody resetowania hasła należy również skonfigurować metodę weryfikacji dwuskładnikowej przy użyciu [aplikacji uwierzytelniającej](security-info-setup-auth-app.md), [wiadomości tekstowych](security-info-setup-text-msg.md)lub [połączenia telefonicznego](security-info-setup-phone-number.md).
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
-## <a name="set-up-your-security-questions-from-the-security-info-page"></a>Skonfiguruj pytania zabezpieczające na stronie informacje zabezpieczeń
-W zależności od ustawień organizacji można wybrać i Odpowiedz na kilka pytań zabezpieczeń jako jeden z metody zabezpieczeń informacji. Administrator konfiguruje liczbę pytań zabezpieczeń, które należy wybrać i odpowiedzi.
+## <a name="set-up-your-security-questions-from-the-security-info-page"></a>Konfigurowanie pytań zabezpieczających na stronie informacje zabezpieczające
 
-Jeśli używasz pytań zabezpieczających, firma Microsoft zaleca używanie ich razem z innej metody. Pytania zabezpieczeń może być mniej bezpieczne niż inne metody, ponieważ niektóre osoby mogą znać odpowiedzi na pytania.
+W zależności od ustawień organizacji może być możliwe wybranie i odpowiedzenie kilku pytań zabezpieczających jako jednej z metod informacji zabezpieczających. Administrator konfiguruje liczbę pytań zabezpieczających, które są wymagane do wyboru i odpowiedzi.
+
+Jeśli używasz pytań zabezpieczających, zalecamy ich użycie w połączeniu z inną metodą. Pytania zabezpieczające mogą być mniej bezpieczne niż inne metody, ponieważ niektóre osoby mogą znać odpowiedzi na pytania.
 
 > [!Note]
-> Pytania zabezpieczające są przechowywane przez użytkowników i bezpiecznie w obiekcie użytkownika w katalogu, a tylko można uzyskać przez użytkownika podczas rejestracji. Nie ma możliwości dla administratora odczytać lub zmodyfikować swoje pytania lub odpowiedzi.
-> 
-> Jeśli nie widzisz opcji pytania zabezpieczeń, jest to możliwe, że Twoja organizacja nie zezwala na użycie tych pytań zabezpieczających podczas weryfikacji. Jeśli jest to możliwe, należy wybrać inną metodę, lub skontaktuj się z administratorem, aby uzyskać dalszą pomoc.
-> 
-> Konto administratora nie są dozwolone na użycie tych pytań zabezpieczających jako metody resetowania hasła. Jeśli zalogowano Cię jako administratora konta poziomu nie zobaczą te opcje.
+> Pytania zabezpieczające są przechowywane prywatnie i bezpiecznie w obiekcie użytkownika w katalogu i mogą być przez Ciebie odbierane tylko przez użytkownika podczas rejestracji. Administrator nie ma możliwości odczytywania lub modyfikowania pytań lub odpowiedzi.
+>
+> Jeśli nie widzisz opcji pytania zabezpieczające, być może Twoja organizacja nie zezwala na używanie pytań zabezpieczających do weryfikacji. W takim przypadku należy wybrać inną metodę lub skontaktować się z administratorem w celu uzyskania dodatkowej pomocy.
+>
+> Konta administratorów nie mogą używać pytań zabezpieczających jako metody resetowania hasła. Jeśli użytkownik jest zalogowany jako konto na poziomie administratora, te opcje nie będą wyświetlane.
 
 ### <a name="to-set-up-your-security-questions"></a>Aby skonfigurować pytania zabezpieczające
 
-1. Zaloguj się do swojego konta firmowego lub szkolnego, a następnie przejdź do swojej https://myprofile.microsoft.com/ strony.
+1. Zaloguj się do swojego konta służbowego, a następnie przejdź do https://myprofile.microsoft.com/ strony.
 
-    ![Strona Moje profilu, pokazujący wyróżnione łączy informacje zabezpieczeń](media/security-info/securityinfo-myprofile-page.png)
+    ![Strona mój profil zawierająca wyróżnione linki do informacji zabezpieczających](media/security-info/securityinfo-myprofile-page.png)
 
-2. Wybierz **zabezpieczające** z lewego okienka nawigacji lub linku w **zabezpieczające** zablokować, a następnie wybierz **Dodaj metodę** z **informacje zabezpieczające**  strony.
+2. W okienku nawigacji po lewej stronie wybierz pozycję **informacje zabezpieczające** lub link w bloku **informacje zabezpieczające** , a następnie wybierz pozycję **Dodaj metodę** ze strony **informacje zabezpieczające** .
 
-    ![Strona informacji zabezpieczających przy użyciu opcji Dodaj wyróżnione w — metoda](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![Strona z informacjami o zabezpieczeniach z wyróżnioną opcją dodawania metody](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. Na **Dodaj metodę** wybierz opcję **pytania zabezpieczające** z listy rozwijanej, a następnie wybierz **Dodaj**.
+3. Na stronie **Dodawanie metody** wybierz z listy rozwijanej pozycję **pytania zabezpieczające** , a następnie wybierz pozycję **Dodaj**.
 
-    ![Dodaj pole Metoda, za pomocą pytań zabezpieczających wybrane](media/security-info/securityinfo-myprofile-addquestions.png)
+    ![Dodaj pole metody z wybranymi pytaniami zabezpieczeń](media/security-info/securityinfo-myprofile-addquestions.png)
 
-4. Na **pytania zabezpieczające** stronie, wybierz i odpowiedzi na pytania zabezpieczające, a następnie wybierz **Zapisz**.
+4. Na stronie **pytania zabezpieczające** wybierz i Odpowiedz na pytania zabezpieczające, a następnie wybierz pozycję **Zapisz**.
 
-    ![Dodaj numer telefonu, a następnie wybierz połączeń telefonicznych](media/security-info/securityinfo-myprofile-securityquestions.png)
+    ![Dodawanie numeru telefonu i Wybieranie połączeń telefonicznych](media/security-info/securityinfo-myprofile-securityquestions.png)
 
-    Twoje informacje zabezpieczające są aktualizowane i można użyć pytania zabezpieczające, aby zweryfikować swoją tożsamość w przypadku korzystania z resetowania hasła.
+    Twoje informacje zabezpieczające zostaną zaktualizowane i możesz użyć pytań zabezpieczających, aby zweryfikować swoją tożsamość w przypadku korzystania z funkcji resetowania haseł.
 
-## <a name="delete-security-questions-from-your-security-info-methods"></a>Usuń pytania zabezpieczające z metody informacje zabezpieczeń
-Jeśli nie chcesz już użycie tych pytań zabezpieczających jako metody informacje zabezpieczeń, można usunąć go z **zabezpieczające** strony.
+## <a name="delete-security-questions-from-your-security-info-methods"></a>Usuń pytania zabezpieczające z metod informacji zabezpieczających
+
+Jeśli nie chcesz już korzystać z pytania zabezpieczającego jako metody informacji zabezpieczających, możesz je usunąć ze strony **Informacje o zabezpieczeniach** .
 
 >[!Important]
->Jeśli usuniesz pytania zabezpieczające przez pomyłkę, nie ma możliwości jej cofnąć. Musisz ponownie, Dodaj metodę czynności opisane w [skonfiguruj pytania zabezpieczające](#set-up-your-security-questions-from-the-security-info-page) dalszej części tego artykułu.
+>Jeśli usuniesz pytania zabezpieczające przez pomyłkę, nie ma możliwości jego cofnięcia. Musisz ponownie dodać metodę, wykonując czynności opisane w sekcji [Konfigurowanie pytań zabezpieczających](#set-up-your-security-questions-from-the-security-info-page) w tym artykule.
 
 ### <a name="to-delete-your-security-questions"></a>Aby usunąć pytania zabezpieczające
 
-1. Na **zabezpieczające** wybierz opcję **Usuń** łącze obok **pytania zabezpieczające** opcji.
+1. Na stronie **informacje zabezpieczające** wybierz łącze **Usuń** obok opcji **pytania zabezpieczające** .
 
-    ![Łącze, aby usunąć metodę telefonu z informacje zabezpieczające](media/security-info/securityinfo-myprofile-questionsdelete.png)
+    ![Link umożliwiający usunięcie metody telefonu z informacji zabezpieczających](media/security-info/securityinfo-myprofile-questionsdelete.png)
 
-2. Wybierz **tak** z okno dialogowe potwierdzenia, aby usunąć swoje **pytania zabezpieczające**. Po pytania zabezpieczające są usuwane, metoda jest usuwany z informacjom zabezpieczającym i znika ono z **zabezpieczające** strony.
+2. Wybierz opcję **tak** w polu potwierdzenia, aby usunąć **pytania zabezpieczające**. Po usunięciu pytań zabezpieczających Metoda zostanie usunięta z informacji zabezpieczających i zniknie ze strony z **informacjami o zabezpieczeniach** .
 
-## <a name="additional-security-info-methods"></a>Dodatkowe informacje o metody zabezpieczeń
-Masz dodatkowe opcje jak kontakty organizacji możesz zweryfikować swoją tożsamość, oparte na tym, co możesz próby wykonania. Dostępne są następujące opcje:
+## <a name="additional-security-info-methods"></a>Dodatkowe metody informacji zabezpieczających
 
-- **Aplikacja Authenticator.** Pobierz i użyj aplikacji authenticator, aby uzyskać powiadomienie o zatwierdzeniu lub kod generowany losowo zatwierdzenia do resetowania dwuetapowej weryfikacji lub hasło. Aby uzyskać szczegółowe instrukcje dotyczące sposobu konfigurowania i używania aplikacji Microsoft Authenticator, zobacz [ustawić informacje zabezpieczające, aby użyć aplikacji authenticator](security-info-setup-auth-app.md).
+Dostępne są dodatkowe opcje dotyczące sposobu, w jaki Twoja organizacja kontaktuje się z Twoją tożsamością, w oparciu o to, co you're próbę wykonania. Dostępne są następujące opcje:
 
-- **Tekst urządzenia przenośnego.** Wprowadź numer urządzenia przenośnego, a następnie otrzymaj wiadomość SMS, kod służący do celów weryfikacji dwuetapowej lub hasło resetowania. Aby uzyskać szczegółowe instrukcje na temat zweryfikować swoją tożsamość za pomocą wiadomości SMS (SMS), zobacz [ustawiane informacje zabezpieczające, aby używać wiadomości tekstowych (SMS)](security-info-setup-text-msg.md).
+- **Aplikacja uwierzytelniania.** Pobierz aplikację Authenticator i użyj jej do uzyskania powiadomienia o zatwierdzeniu lub losowo wygenerowanego kodu zatwierdzenia na potrzeby weryfikacji dwuetapowej lub resetowania hasła. Instrukcje krok po kroku dotyczące konfigurowania i używania aplikacji Microsoft Authenticator można znaleźć w temacie [set up Security Info to use the Authenticator App](security-info-setup-auth-app.md).
 
-- **Rozmowy telefoniczne pracy lub urządzenia przenośnego.** Wprowadź numer urządzenia przenośnego, a następnie uzyskać połączenie telefoniczne resetowania dwuetapowej weryfikacji lub hasło. Aby uzyskać szczegółowe instrukcje na temat zweryfikować swoją tożsamość za pomocą numeru telefonu, zobacz [ustawiane informacje zabezpieczające, aby używać połączeń telefonicznych](security-info-setup-phone-number.md).
+- **Tekst urządzenia przenośnego.** Wprowadź numer urządzenia przenośnego i uzyskaj tekst kodu, który będzie używany do weryfikacji dwuetapowej lub resetowania hasła. Aby uzyskać instrukcje krok po kroku dotyczące weryfikowania tożsamości za pomocą wiadomości tekstowych (SMS), zobacz [Konfigurowanie informacji zabezpieczających do używania wiadomości](security-info-setup-text-msg.md)SMS.
 
-- **Adres e-mail.** Wprowadź swój firmowy lub szkolny adres e-mail, aby otrzymywać wiadomość e-mail do resetowania hasła. Ta opcja jest dostępna na potrzeby weryfikacji dwuetapowej. Aby uzyskać szczegółowe instrukcje dotyczące sposobu konfigurowania swój adres e-mail, zobacz [ustawić informacje zabezpieczające, aby użyć adresu e-mail](security-info-setup-email.md).
-   
+- **Urządzenie przenośne lub połączenie telefoniczne.** Wprowadź numer urządzenia przenośnego i otrzymaj połączenie telefoniczne w celu weryfikacji dwuetapowej lub resetowania hasła. Aby uzyskać instrukcje krok po kroku dotyczące weryfikowania tożsamości przy użyciu numeru telefonu, zobacz [Konfigurowanie informacji zabezpieczających do korzystania z połączeń telefonicznych](security-info-setup-phone-number.md).
+
+- **Klucz zabezpieczeń.** Zarejestruj klucz zabezpieczeń zgodny z firmą Microsoft i użyj go wraz z numerem PIN w celu weryfikacji dwuetapowej lub resetowania hasła. Instrukcje krok po kroku dotyczące weryfikowania tożsamości przy użyciu klucza zabezpieczeń znajdują się w temacie [set up Security Info to use a Security Key](security-info-setup-security-key.md).
+
+- **Adres e-mail.** Wprowadź służbowy adres e-mail, aby uzyskać wiadomość e-mail na potrzeby resetowania hasła. Ta opcja jest niedostępna w przypadku weryfikacji dwuetapowej. Aby uzyskać instrukcje krok po kroku dotyczące konfigurowania poczty e-mail, zobacz [Konfigurowanie informacji zabezpieczających do używania poczty e-mail](security-info-setup-email.md).
+
     >[!Note]
-    >Jeśli brakuje niektórych z tych opcji, prawdopodobnie najbardziej Twoja organizacja nie zezwala na jednej z tych metod. Jeśli jest to możliwe, należy wybrać metodę dostępne lub skontaktuj się z administratorem, aby uzyskać dalszą pomoc.
+    >Jeśli brakuje niektórych z tych opcji, prawdopodobnie organizacja nie zezwala na te metody. W takim przypadku należy wybrać dostępną metodę lub skontaktować się z administratorem w celu uzyskania pomocy.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Zagubione lub zapomniane hasło możesz zresetować w [portalu resetowania hasła](https://passwordreset.microsoftonline.com/) lub wykonując kroki przedstawione w artykule [Resetowanie hasła służbowego](user-help-reset-password.md).
 

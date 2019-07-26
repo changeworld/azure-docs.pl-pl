@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: a0cd2952633293bfa1d29bf3a399c67bf092d288
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: ad30bd4f77c5f4314956e39f26a30b72d72a208a
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68318322"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68361160"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Przygotuj plik VHD lub VHDX systemu Windows do przekazania do platformy Azure
 
@@ -33,7 +33,7 @@ Aby uzyskać informacje o zasadach pomocy technicznej dla maszyn wirtualnych pla
 > [!NOTE]
 > Instrukcje zawarte w tym artykule dotyczą:
 >1. 64-bitowa wersja systemu Windows Server 2008 R2 i nowszych systemów operacyjnych Windows Server. Aby uzyskać informacje o uruchamianiu 32-bitowego systemu operacyjnego na platformie Azure, zobacz [obsługa 32-bitowych systemów operacyjnych na maszynach wirtualnych platformy Azure](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines).
->2. Jeśli do migracji obciążenia, takiego jak Azure Site Recovery lub Azure Migrate, zostanie użyte dowolne narzędzie do odzyskiwania po awarii, proces ten nadal wymaga wykonania i nastąpi w systemie operacyjnym gościa w celu przygotowania obrazu przed migracją.
+>2. Jeśli do migracji obciążenia, takiego jak Azure Site Recovery lub Azure Migrate, zostanie użyte dowolne narzędzie do odzyskiwania po awarii, ten proces jest nadal wymagany, a następnie następuje w systemie operacyjnym gościa w celu przygotowania obrazu przed migracją.
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-and-to-vhd"></a>Konwertowanie dysku wirtualnego na stały rozmiar i na dysk VHD
 
@@ -347,7 +347,7 @@ Upewnij się, że maszyna wirtualna jest w dobrej kondycji, bezpieczna i RDP:
 
    - Operatorzy kopii zapasowych
 
-   - Widzieć
+   - Wszyscy
 
    - Użytkownicy
 

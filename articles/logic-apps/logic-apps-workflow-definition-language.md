@@ -1,6 +1,6 @@
 ---
-title: Odwołanie do schematu dla język definicji przepływów pracy — Azure Logic Apps
-description: Przewodnik dla schematu język definicji przepływów pracy w usłudze Azure Logic Apps
+title: Dokumentacja schematu dotycząca języka definicji przepływu pracy — Azure Logic Apps
+description: Przewodnik referencyjny dotyczący schematu języka definicji przepływu pracy w Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,22 +9,22 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 05/13/2019
-ms.openlocfilehash: 3b0ad33ea6348f24079b3c88f972437244c0bc93
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c84791cb30622350b3e6d6356abd4580636c4ddf
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596762"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385348"
 ---
-# <a name="schema-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Odwołanie do schematu dla język definicji przepływów pracy w usłudze Azure Logic Apps
+# <a name="schema-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Dokumentacja schematu dotycząca języka definicji przepływu pracy w Azure Logic Apps
 
-Po utworzeniu aplikacji logiki w [usługi Azure Logic Apps](../logic-apps/logic-apps-overview.md), aplikacja logiki ma podstawową definicję przepływu pracy, opisujący rzeczywiste logikę, która jest uruchamiany w aplikacji logiki. Korzysta z tej definicji przepływu pracy [JSON](https://www.json.org/) i następuje struktury, którego poprawność jest sprawdzana przez schemat języka definicji przepływu pracy. Ta dokumentacja zawiera omówienie tej struktury i jak schemat definiuje atrybuty w definicji przepływu pracy.
+Podczas tworzenia aplikacji logiki w [Azure Logic Apps](../logic-apps/logic-apps-overview.md)aplikacja logiki ma podstawową definicję przepływu pracy opisującą rzeczywistą logikę, która jest uruchamiana w aplikacji logiki. Ta definicja przepływu pracy używa [kodu JSON](https://www.json.org/) i jest zgodna ze strukturą zweryfikowaną przez schemat języka definicji przepływu pracy. Ta dokumentacja zawiera przegląd dotyczący tej struktury oraz sposób definiowania atrybutów przez schemat w definicji przepływu pracy.
 
 ## <a name="workflow-definition-structure"></a>Struktura definicji przepływu pracy
 
-Definicja przepływu pracy, który jest zawsze zawiera wyzwalacz dla wystąpienia aplikacji logiki, a także co najmniej jednej akcji, które są uruchamiane po aktywowaniu wyzwalacza.
+Definicja przepływu pracy zawsze zawiera wyzwalacz do tworzenia wystąpienia aplikacji logiki oraz co najmniej jedną akcję, która jest uruchamiana po uruchomieniu wyzwalacza.
 
-Poniżej przedstawiono ogólną strukturę dla definicji przepływu pracy:
+Poniżej przedstawiono strukturę wysokiego poziomu dla definicji przepływu pracy:
 
 ```json
 "definition": {
@@ -40,87 +40,59 @@ Poniżej przedstawiono ogólną strukturę dla definicji przepływu pracy:
 
 | Atrybut | Wymagane | Opis |
 |-----------|----------|-------------|
-| `definition` | Yes | Element początkowy dla swojej definicji przepływu pracy |
-| `$schema` | Tylko wtedy, gdy zewnętrznie odwołujące się do definicji przepływu pracy | Lokalizacja pliku schematu JSON, który opisuje wersję język definicji przepływów pracy, który można znaleźć tutaj: <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
-| `actions` | Nie | Definicje dla co najmniej jedną akcję do wykonania w czasie wykonywania przepływu pracy. Aby uzyskać więcej informacji, zobacz [wyzwalacze i akcje](#triggers-actions). <p><p>Maksymalną liczbę akcji: 250 |
-| `contentVersion` | Nie | Numer wersji dla definicji przepływu pracy, czyli "1.0.0.0" domyślnie. Aby ułatwić identyfikowanie i Potwierdź poprawną definicję, wdrażając przepływu pracy, należy określić wartość do użycia. |
-| `outputs` | Nie | Definicje danych wyjściowych, które zwracają z przebiegu przepływu pracy. Aby uzyskać więcej informacji, zobacz [dane wyjściowe](#outputs). <p><p>Maksymalna dane wyjściowe: 10 |
-| `parameters` | Nie | Definicje dla jednego lub więcej parametrów, które przekazują dane do Twojego przepływu pracy. Aby uzyskać więcej informacji, zobacz [parametry](#parameters). <p><p>Maksymalna parametry: 50 |
-| `staticResults` | Nie | Definicje dla co najmniej jeden statyczny wyniki zwracane przez akcje jako makiety dane wyjściowe, gdy wyniki statycznej są włączone na tych akcji. W każdej definicji akcji `runtimeConfiguration.staticResult.name` atrybut odwołuje się do odpowiedniej definicji wewnątrz `staticResults`. Aby uzyskać więcej informacji, zobacz [wyniki statycznej](#static-results). |
-| `triggers` | Nie | Definicje dla co najmniej jeden wyzwalacze, które wystąpienia przepływu pracy. Można zdefiniować więcej niż jeden wyzwalacz, ale tylko za pomocą języka definicji przepływu pracy, nie wizualnie za pomocą projektanta aplikacji logiki. Aby uzyskać więcej informacji, zobacz [wyzwalacze i akcje](#triggers-actions). <p><p>Maksymalna wyzwalaczy: 10 |
+| `definition` | Tak | Element początkowy definicji przepływu pracy |
+| `$schema` | Tylko wtedy, gdy zewnętrznie odwołuje się do definicji przepływu pracy | Lokalizacja pliku schematu JSON opisującego wersję języka definicji przepływu pracy, którą można znaleźć tutaj: <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
+| `actions` | Nie | Definicje jednej lub więcej akcji do wykonania w czasie wykonywania przepływu pracy. Aby uzyskać więcej informacji, zobacz [wyzwalacze i akcje](#triggers-actions). <p><p>Maksymalna liczba akcji: 250 |
+| `contentVersion` | Nie | Numer wersji dla definicji przepływu pracy, który domyślnie jest "1.0.0.0". Aby ułatwić identyfikację i potwierdzenie prawidłowej definicji podczas wdrażania przepływu pracy, określ wartość, która ma zostać użyta. |
+| `outputs` | Nie | Definicje danych wyjściowych do zwrócenia z przebiegu przepływu pracy. Aby uzyskać więcej informacji, zobacz dane [wyjściowe](#outputs). <p><p>Maksymalna liczba danych wyjściowych: 10 |
+| `parameters` | Nie | Definicje dla co najmniej jednego parametru, który przekazuje wartości do użycia w czasie wykonywania aplikacji logiki. Aby uzyskać więcej informacji, zobacz [Parametry](#parameters). <p><p>Maksymalna liczba parametrów: 50 |
+| `staticResults` | Nie | Definicje dla co najmniej jednego wyniku statycznego zwracanego przez akcje jako elementy wyjściowe makiety, gdy w tych akcjach są włączone statyczne wyniki. W każdej definicji `runtimeConfiguration.staticResult.name` akcji atrybut odwołuje się do odpowiedniej definicji wewnątrz `staticResults`. Aby uzyskać więcej informacji, zobacz [wyniki statyczne](#static-results). |
+| `triggers` | Nie | Definicje dla co najmniej jednego wyzwalacza, który tworzy wystąpienie przepływu pracy. Można zdefiniować więcej niż jeden wyzwalacz, ale tylko w języku definicji przepływu pracy, a nie wizualnie za pomocą projektanta Logic Apps. Aby uzyskać więcej informacji, zobacz [wyzwalacze i akcje](#triggers-actions). <p><p>Maksymalna liczba wyzwalaczy: 10 |
 ||||
 
 <a name="triggers-actions"></a>
 
 ## <a name="triggers-and-actions"></a>Wyzwalacze i akcje
 
-W definicji przepływu pracy `triggers` i `actions` sekcje definiują wywołania, które występują podczas wykonywania Twój przepływ pracy. Informacje o składni i dowiedzieć się więcej o tych sekcji, zobacz [wyzwalaczy przepływu pracy i działań](../logic-apps/logic-apps-workflow-actions-triggers.md).
-
-<a name="outputs"></a>
-
-## <a name="outputs"></a>Dane wyjściowe
-
-W `outputs` sekcji, definiują dane, które może zwracać przepływu pracy, po zakończeniu uruchamiania. Na przykład aby śledzić stan określonego lub wartości z poszczególnymi uruchomieniami, określić czy dane wyjściowe przepływu pracy zwraca dane.
-
-> [!NOTE]
-> Podczas odpowiadania na żądania przychodzące z interfejsu API REST usługi, nie używaj `outputs`. Zamiast tego należy użyć `Response` typ akcji. Aby uzyskać więcej informacji, zobacz [wyzwalaczy przepływu pracy i działań](../logic-apps/logic-apps-workflow-actions-triggers.md).
-
-Poniżej przedstawiono ogólną strukturę definicji danych wyjściowych dla:
-
-```json
-"outputs": {
-  "<key-name>": {
-    "type": "<key-type>",
-    "value": "<key-value>"
-  }
-}
-```
-
-| Atrybut | Wymagane | Typ | Opis |
-|-----------|----------|------|-------------|
-| <*key-name*> | Tak | String | Nazwa klucza dla produktu wyjściowego zwracają wartość |
-| <*key-type*> | Tak | int, float, string, securestring, bool, array, obiekt JSON | Typ dla wartości zwracanej w danych wyjściowych |
-| <*key-value*> | Tak | Taki sam jak <*key-type*> | Wartość zwracana w danych wyjściowych |
-|||||
-
-Aby uzyskać dane wyjściowe z przebiegu przepływu pracy, Przejrzyj historię uruchamiania aplikacji logiki i szczegółowe informacje w witrynie Azure portal lub [interfejsu API REST przepływu pracy](https://docs.microsoft.com/rest/api/logic/workflows). Można również przekazać dane wyjściowe z systemami zewnętrznymi, na przykład usługa Power BI, dzięki czemu można tworzyć pulpity nawigacyjne.
+W definicji `triggers` przepływu pracy sekcje i `actions` definiują wywołania, które są wykonywane podczas wykonywania przepływu pracy. Aby poznać składnię i więcej informacji o tych sekcjach, zobacz [wyzwalacze i akcje przepływu pracy](../logic-apps/logic-apps-workflow-actions-triggers.md).
 
 <a name="parameters"></a>
 
 ## <a name="parameters"></a>Parametry
 
-W `parameters` sekcji, określ wszystkie parametry przepływu pracy, które swojej definicji przepływu pracy używa we wdrożeniu akceptuje dane wejściowe. Deklaracji parametru i wartości parametrów są wymagane podczas wdrażania. Przed za pomocą tych parametrów w innych częściach przepływu pracy, upewnij się, że zadeklarować wszystkie parametry w tych sekcjach. 
+Cykl życia wdrożenia ma zwykle różne środowiska do projektowania, testowania, przemieszczania i produkcji. W przypadku wdrażania aplikacji logiki w różnych środowiskach można chcieć używać różnych wartości, takich jak parametry połączenia, na podstawie Twoich potrzeb. Możesz też mieć wartości, które mają być ponownie używane w całej aplikacji logiki bez zakodowana, lub które często się zmieniają. W `parameters` sekcji definicji przepływu pracy można definiować lub edytować parametry wartości, które są używane przez aplikację logiki w czasie wykonywania. Należy najpierw zdefiniować te parametry, aby można było odwoływać się do tych parametrów w innym miejscu definicji przepływu pracy.
 
-Poniżej przedstawiono ogólną strukturę dla definicji parametru:
+Oto ogólna struktura definicji parametru:
 
 ```json
 "parameters": {
-  "<parameter-name>": {
-    "type": "<parameter-type>",
-    "defaultValue": "<default-parameter-value>",
-    "allowedValues": [ <array-with-permitted-parameter-values> ],
-    "metadata": {
-      "key": {
-        "name": "<key-value>"
+   "<parameter-name>": {
+      "type": "<parameter-type>",
+      "defaultValue": <default-parameter-value>,
+      "allowedValues": [ <array-with-permitted-parameter-values> ],
+      "metadata": {
+         "description": "<parameter-description>"
       }
-    }
-  }
+   }
 },
 ```
 
 | Atrybut | Wymagane | Typ | Opis |
 |-----------|----------|------|-------------|
-| <*parameter-type*> | Yes | int, float, string, securestring, bool, array, obiekt JSON, secureobject <p><p>**Uwaga**: W przypadku wszystkich haseł, kluczy i wpisów tajnych, użyj `securestring` i `secureobject` typów, ponieważ `GET` operacji nie zwraca tych typów. Aby uzyskać więcej informacji na temat zabezpieczania parametrów, zobacz [zabezpieczanie aplikacji logiki](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters) | Typ parametru |
-| <*default-parameter-values*> | Yes | Takie same jak `type` | Domyślna wartość parametru, jeśli wartość nie zostanie określona, gdy tworzy wystąpienie przepływu pracy |
-| <*array-with-permitted-parameter-values*> | Nie | Array | Tablica wartości akceptujące parametr |
-| `metadata` | Nie | Obiekt JSON | Inne szczegóły parametrów, na przykład nazwę lub czytelny opis dla aplikacji logiki lub przepływie lub danych czasu projektowania, używane przez program Visual Studio lub innych narzędzi |
+| <*Nazwa parametru*> | Tak | String | Nazwa parametru, który ma zostać zdefiniowany |
+| <*Typ parametru*> | Yes | int, float, String, bool, Array, Object, SecureString, secureobject <p><p>**Uwaga**: Dla wszystkich haseł, kluczy i wpisów tajnych Użyj `securestring` typów lub `secureobject` , ponieważ `GET` operacja nie zwraca tych typów. Aby uzyskać więcej informacji na temat zabezpieczania parametrów, zapoznaj się z zaleceniami dotyczącymi [zabezpieczeń i parametrami wejściowymi](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | Typ parametru |
+| <*wartość domyślna parametru-value*> | Tak | Tak samo jak`type` | Wartość domyślna parametru, która ma być używana, jeśli żadna wartość nie zostanie określona podczas tworzenia wystąpienia przepływu pracy. Ten `defaultValue` atrybut jest wymagany, aby projektant aplikacji logiki mógł poprawnie pokazać parametr, ale można określić wartość pustą. |
+| <*array-with-permitted-parameter-values*> | Nie | Array | Tablica z wartościami, które parametr może zaakceptować |
+| <*parametr-Description*> | Nie | Obiekt JSON | Wszystkie inne szczegóły parametrów, takie jak opis parametru |
 ||||
+
+Następnie Utwórz [szablon Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) dla definicji przepływu pracy, zdefiniuj parametry szablonu, które akceptują wartości, które mają być używane podczas wdrażania, Zastąp wartości stałe wartościami z odwołaniami do parametrów definicji szablonu lub przepływu pracy jako odpowiednie i przechowywanie wartości do użycia we wdrożeniu w osobnym [pliku parametrów](../azure-resource-manager/resource-group-template-deploy.md#parameter-files). Dzięki temu można łatwiej zmieniać te wartości za pomocą pliku parametrów bez konieczności aktualizacji i ponownego wdrażania aplikacji logiki. Aby uzyskać informacje poufne lub zabezpieczone, takie jak nazwy użytkowników, hasła i wpisy tajne, można przechowywać te wartości w Azure Key Vault i mieć plik parametrów pobiera te wartości z magazynu kluczy. Aby uzyskać więcej informacji i przykłady dotyczące definiowania parametrów na poziomach definicji szablonu i przepływu pracy, [Zobacz Omówienie: Automatyzowanie wdrażania aplikacji logiki za pomocą szablonów](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)Azure Resource Manager.
 
 <a name="static-results"></a>
 
-## <a name="static-results"></a>Wyniki statycznej
+## <a name="static-results"></a>Wyniki statyczne
 
-W `staticResults` atrybutu, definiowania akcji pozorny `outputs` i `status` akcji zwracane po danej akcji statyczny wynik jest włączone. W definicji działania `runtimeConfiguration.staticResult.name` atrybut odwołuje się Nazwa definicji statyczny wynik wewnątrz `staticResults`. Dowiedz się, jak [testowanie aplikacji logiki za pomocą danych testowych, konfigurując wyniki statycznej](../logic-apps/test-logic-apps-mock-data-static-results.md).
+W atrybucie Zdefiniuj makietę `outputs` akcji i `status` akcję zwracaną, gdy ustawienie wyniku statycznego akcji jest włączone. `staticResults` W definicji `runtimeConfiguration.staticResult.name` akcji atrybut odwołuje się do nazwy definicji wyniku statycznego wewnątrz `staticResults`. Dowiedz się, w jaki sposób można [testować aplikacje logiki przy użyciu danych makiety przez skonfigurowanie wyników statycznych](../logic-apps/test-logic-apps-mock-data-static-results.md).
 
 ```json
 "definition": {
@@ -145,14 +117,14 @@ W `staticResults` atrybutu, definiowania akcji pozorny `outputs` i `status` akcj
 
 | Atrybut | Wymagane | Typ | Opis |
 |-----------|----------|------|-------------|
-| <*static-result-definition-name*> | Tak | String | Nazwa definicji statyczny wynik, który definicji działania może odwoływać się za pośrednictwem `runtimeConfiguration.staticResult` obiektu. Aby uzyskać więcej informacji, zobacz [ustawień konfiguracji środowiska uruchomieniowego](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>Można użyć unikatową nazwę, która ma. Domyślnie ta unikatowa nazwa jest dołączany wraz z liczbą, która jest zwiększany, gdy jest to konieczne. |
-| <*output-attributes-and-values-returned*> | Yes | Różna | Wymagania dotyczące tych atrybutów różnią się zależnie od różnych warunków. Na przykład, gdy `status` jest `Succeeded`, `outputs` atrybut zawiera atrybuty i wartości zwracane jako makiety danych wyjściowych przez akcję. Jeśli `status` jest `Failed`, `outputs` atrybut zawiera `errors` atrybut, który jest tablicą z co najmniej jeden błąd `message` obiektów, które mają informacje o błędzie. |
-| <*header-values*> | Nie | JSON | Wszystkie wartości nagłówka zwrócony przez akcję |
-| <*status-code-returned*> | Tak | String | Kod stanu zwrócony przez akcję |
-| <*action-status*> | Tak | String | Stan akcji, na przykład `Succeeded` lub `Failed` |
+| <*static-result-definition-name*> | Tak | String | Nazwa statycznej definicji wyniku, którą definicja akcji może odwoływać się za pomocą `runtimeConfiguration.staticResult` obiektu. Aby uzyskać więcej informacji, zobacz [Ustawienia konfiguracji środowiska uruchomieniowego](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>Możesz użyć dowolnej unikatowej nazwy. Domyślnie ta unikatowa nazwa jest dołączana do liczby, która jest zwiększana w miarę potrzeb. |
+| <*output-attributes-and-values-returned*> | Tak | Różna | Wymagania dotyczące tych atrybutów różnią się w zależności od różnych warunków. Na przykład, gdy `status` ma `Succeeded`, `outputs` atrybut zawiera atrybuty i wartości zwracane jako dane wyjściowe makiety przez akcję. `status` Jeśli jest `Failed` `message` , atrybut zawiera atrybut, który jest tablicą z co najmniej jednym obiektem błędu, który zawiera informacje o błędzie. `errors` `outputs` |
+| <*header-values*> | Nie | JSON | Wszystkie wartości nagłówka zwrócone przez akcję |
+| <*Stan — zwrócony kod*> | Tak | String | Kod stanu zwracany przez akcję |
+| <*action-status*> | Tak | Ciąg | Stan akcji, na przykład `Succeeded` lub`Failed` |
 |||||
 
-Na przykład w tej definicji akcji HTTP `runtimeConfiguration.staticResult.name` atrybutu odwołania `HTTP0` wewnątrz `staticResults` atrybutu, gdzie są zdefiniowane makiety danych wyjściowych akcji. `runtimeConfiguration.staticResult.staticResultOptions` Atrybut określa, że ustawienie statyczny wynik jest `Enabled` akcji HTTP.
+Na przykład w tej definicji akcji http odwołuje `runtimeConfiguration.staticResult.name` `HTTP0` `staticResults` się do atrybutu, w którym są zdefiniowane dane wyjściowe makiety dla akcji. Ten `runtimeConfiguration.staticResult.staticResultOptions` atrybut określa, że ustawienie wynik statyczny `Enabled` jest w akcji http.
 
 ```json
 "actions": {
@@ -173,7 +145,7 @@ Na przykład w tej definicji akcji HTTP `runtimeConfiguration.staticResult.name`
 },
 ```
 
-Akcja HTTP zwraca dane wyjściowe w `HTTP0` definicji wewnątrz `staticResults`. W tym przykładzie kodu stanu makiety dane wyjściowe są `OK`. Dla wartości nagłówka makiety dane wyjściowe są `"Content-Type": "application/JSON"`. Stan akcji makiety dane wyjściowe są `Succeeded`.
+Akcja http zwraca dane wyjściowe w `HTTP0` definicji wewnątrz. `staticResults` W tym przykładzie dla kodu stanu dane wyjściowe makiety są `OK`. W przypadku wartości nagłówka dane wyjściowe makiety `"Content-Type": "application/JSON"`są. Dla stanu akcji, dane wyjściowe makiety są `Succeeded`.
 
 ```json
 "definition": {
@@ -201,7 +173,7 @@ Akcja HTTP zwraca dane wyjściowe w `HTTP0` definicji wewnątrz `staticResults`.
 
 ## <a name="expressions"></a>Wyrażenia
 
-Za pomocą formatu JSON może mieć wartości literału, które istnieją w czasie projektowania, na przykład:
+Za pomocą formatu JSON można mieć wartości literałów, które istnieją w czasie projektowania, na przykład:
 
 ```json
 "customerName": "Sophia Owen",
@@ -209,64 +181,64 @@ Za pomocą formatu JSON może mieć wartości literału, które istnieją w czas
 "rainbowColorsCount": 7
 ```
 
-Również może mieć wartości, które nie istnieją do czasu wykonywania. Do reprezentowania tych wartości, można użyć *wyrażenia*, które są oceniane w czasie wykonywania. Wyrażenie jest sekwencji, który może zawierać jeden lub więcej [funkcje](#functions), [operatory](#operators), zmiennych, jawne wartości lub stałe. W definicji przepływu pracy, można użyć wyrażenia dowolnym miejscu w wartości ciągu JSON przez dodanie przedrostka wyrażenia ze znakiem w (\@). Podczas obliczania wyrażenia, która reprezentuje wartość JSON, treści wyrażenia jest wyodrębniany, usuwając \@ znaków i zawsze skutkuje inną wartość JSON.
+Można także mieć wartości, które nie istnieją do czasu uruchomienia. Aby przedstawić te wartości, można użyć *wyrażeń*, które są oceniane w czasie wykonywania. Wyrażenie jest sekwencją, która może zawierać jedną lub więcej [funkcji](#functions), [operatorów](#operators), zmiennych, wartości jawnych lub stałych. W definicji przepływu pracy można użyć wyrażenia w dowolnym miejscu w wartości ciągu JSON przez dodanie prefiksu wyrażenia do znaku (\@). Podczas oceniania wyrażenia, które reprezentuje wartość JSON, treść wyrażenia jest wyodrębniana przez usunięcie \@ znaku i zawsze daje w wyniku inną wartość JSON.
 
-Na przykład uprzednio zdefiniowany `customerName` właściwości, można pobrać wartości właściwości, za pomocą [parameters()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) działać w wyrażeniach, a następnie przypisać tę wartość do `accountName` właściwości:
+Na przykład dla właściwości poprzednio zdefiniowanej `customerName` można uzyskać wartość właściwości przy użyciu funkcji [Parameters ()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) w wyrażeniu i przypisać `accountName` tę wartość do właściwości:
 
 ```json
 "customerName": "Sophia Owen",
 "accountName": "@parameters('customerName')"
 ```
 
-*Interpolacja ciągów* również pozwala używać wielu wyrażeń wewnątrz ciągów, które zostaną opakowane przy \@ znaków i nawiasy klamrowe ({}). Poniżej przedstawiono składnię:
+*Interpolacja ciągów* umożliwia także używanie wielu wyrażeń wewnątrz ciągów, które są opakowane \@ znakami i nawiasami klamrowymi ({}). Oto składnia:
 
 ```json
 @{ "<expression1>", "<expression2>" }
 ```
 
-Wynik to zawsze ciąg wprowadzania tej możliwości podobne do `concat()` funkcji, na przykład: 
+Wynik jest zawsze ciągiem, dzięki czemu ta funkcja jest podobna do `concat()` funkcji, na przykład: 
 
 ```json
 "customerName": "First name: @{parameters('firstName')} Last name: @{parameters('lastName')}"
 ```
 
-Jeśli masz ciąg literału, który rozpoczyna się od \@ znak, prefiks \@ znak z inną \@ znak jako znak ucieczki: \@\@
+Jeśli masz ciąg literału, który rozpoczyna \@ się od znaku, \@ poprzedź znak innym \@ znakiem jako znak ucieczki:\@\@
 
-Poniższe przykłady pokazują, jak są obliczane wyrażenia:
+W poniższych przykładach pokazano, jak są oceniane wyrażenia:
 
 | Wartość JSON | Wynik |
 |------------|--------|
-| "Sophia Owen" | Zwrócenie następujących znaków: 'Sophia Owen' |
-| "tablica [1]" | Zwraca następujące znaki: "array [1]" |
-| "\@\@" | Zwraca te znaki jako ciąg jednego znaku: "\@" |
-| " \@" | Zwracają te znaki jako ciąg dwóch znaków: " \@" |
+| "Sophia Owen" | Zwróć następujące znaki: 'Sophia Owen' |
+| "Array [1]" | Zwróć następujące znaki: "Array [1]" |
+| "\@\@" | Zwróć te znaki jako ciąg jednoznakowy: "\@" |
+| " \@" | Zwróć te znaki jako ciąg dwubajtowy: " \@" |
 |||
 
-W poniższych przykładach Załóżmy, że należy zdefiniować "myBirthMonth" równa się "Stycznia" i "myAge" równą liczbie 42:
+Na potrzeby tych przykładów Załóżmy, że definiuje się wartość "myBirthMonth" równą "Styczeń" i "myAge" równą liczbie 42:
 
 ```json
 "myBirthMonth": "January",
 "myAge": 42
 ```
 
-Poniższe przykłady pokazują, jak są obliczane następujących wyrażeń:
+W poniższych przykładach pokazano, jak są oceniane następujące wyrażenia:
 
 | Wyrażenie JSON | Wynik |
 |-----------------|--------|
-| "\@parameters('myBirthMonth')" | Zwraca następujący ciąg: "Stycznia" |
-| "\@{parameters('myBirthMonth')}" | Zwraca następujący ciąg: "Stycznia" |
-| "\@parameters('myAge')" | Zwróć tę liczbę: 42 |
-| "\@{parameters('myAge')}" | Zwróć tę liczbę jako ciąg: "42" |
-| "Mój wiek to \@{parameters('myAge')}" | Zwraca następujący ciąg: "Mój wiek to 42" |
-| "\@concat ("Mój wiek to", string(parameters('myAge')))" | Zwraca następujący ciąg: "Mój wiek to 42" |
-| "Mój wiek to \@ \@{parameters('myAge')}" | Zwróć tego ciągu, który zawiera wyrażenie: "Mój wiek to \@{parameters('myAge')}" |
+| "\@parametry (" myBirthMonth ")" | Zwróć ten ciąg: Stycznia |
+| "\@{Parameters (myBirthMonth ')}" | Zwróć ten ciąg: Stycznia |
+| "\@parametry (" myAge ")" | Zwróć tę liczbę: 42 |
+| "\@{Parameters (myAge ')}" | Zwróć tę liczbę jako ciąg: "42" |
+| "Mój wiek to \@{Parameters (" myAge ")}" | Zwróć ten ciąg: "Mój wiek to 42" |
+| "\@concat (" Mój wiek to ", String (parametry (" myAge ")))" | Zwróć ten ciąg: "Mój wiek to 42" |
+| "Mój wiek to \@ \@{Parameters (" myAge ")}" | Zwróć ten ciąg, który zawiera wyrażenie: "Mój wiek to \@{Parameters (" myAge ")}" |
 |||
 
-Podczas pracy wizualnie w Projektancie aplikacji logiki, możesz utworzyć wyrażenia przez Konstruktor wyrażeń na przykład:
+Gdy pracujesz wizualnie w projektancie Logic Apps, możesz tworzyć wyrażenia za pomocą Konstruktora wyrażeń, na przykład:
 
-![Projektant aplikacji logiki > Konstruktor wyrażeń](./media/logic-apps-workflow-definition-language/expression-builder.png)
+![Konstruktor Logic Apps projektanta > Expression](./media/logic-apps-workflow-definition-language/expression-builder.png)
 
-Gdy wszystko będzie gotowe, znajduje się wyrażenie dla odpowiednich właściwości w definicji przepływu pracy, na przykład, `searchQuery` właściwości w tym miejscu:
+Gdy wszystko będzie gotowe, zostanie wyświetlone wyrażenie dla odpowiedniej właściwości w definicji przepływu pracy, na przykład w tej `searchQuery` właściwości:
 
 ```json
 "Search_tweets": {
@@ -286,27 +258,56 @@ Gdy wszystko będzie gotowe, znajduje się wyrażenie dla odpowiednich właściw
 },
 ```
 
+<a name="outputs"></a>
+
+## <a name="outputs"></a>outputs
+
+`outputs` W sekcji Zdefiniuj dane, które mogą być zwracane przez przepływ pracy po zakończeniu działania. Na przykład w celu śledzenia określonego stanu lub wartości z każdego przebiegu, należy określić, że dane wyjściowe przepływu pracy będą zwracane z tych danych.
+
+> [!NOTE]
+> Podczas odpowiadania na żądania przychodzące z interfejsu API REST usługi nie należy używać `outputs`. Zamiast tego należy użyć `Response` typu akcji. Aby uzyskać więcej informacji, zobacz [wyzwalacze i akcje przepływu pracy](../logic-apps/logic-apps-workflow-actions-triggers.md).
+
+Oto ogólna struktura definicji danych wyjściowych:
+
+```json
+"outputs": {
+  "<key-name>": {
+    "type": "<key-type>",
+    "value": "<key-value>"
+  }
+}
+```
+
+| Atrybut | Wymagane | Typ | Opis |
+|-----------|----------|------|-------------|
+| <*Nazwa klucza*> | Tak | String | Nazwa klucza dla wyjściowej wartości zwracanej |
+| <*Typ klucza*> | Tak | int, float, string, securestring, bool, array, obiekt JSON | Typ wyjściowej wartości zwracanej |
+| <*key-value*> | Tak | Taki sam jak <*key-type*> | Zwracana wartość wyjściowa |
+|||||
+
+Aby uzyskać dane wyjściowe z przebiegu przepływu pracy, przejrzyj historię uruchamiania aplikacji logiki oraz szczegóły w Azure Portal lub Użyj [interfejsu API REST przepływu pracy](https://docs.microsoft.com/rest/api/logic/workflows). Możesz również przekazać dane wyjściowe do systemów zewnętrznych, na przykład Power BI, aby można było tworzyć pulpity nawigacyjne.
+
 <a name="operators"></a>
 
 ## <a name="operators"></a>Operatory
 
-W [wyrażeń](#expressions) i [funkcje](#functions), operatory wykonywania określonych zadań, takich jak odwołanie do właściwości lub wartość w tablicy.
+W [wyrażeniach](#expressions) i [funkcjach](#functions)operatory wykonują określone zadania, takie jak odwołanie do właściwości lub wartości w tablicy.
 
 | Operator | Zadanie |
 |----------|------|
-| ' | Aby użyć literału ciągu jako dane wejściowe lub w wyrażeniach i funkcje, opakowywanie ciąg tylko pojedynczy cudzysłów, na przykład `'<myString>'`. Nie należy używać podwójnego cudzysłowu (""), które powodują konflikt z formatowaniem JSON wokół całe wyrażenie. Na przykład: <p>**Tak**: length('Hello') </br>**Nie**: length("Hello") <p>Jeśli przekazujesz, tablic lub liczby, nie trzeba zawijanie znaków interpunkcyjnych. Na przykład: <p>**Tak**: długość ([1, 2, 3]) </br>**Nie**: długość ("[1, 2, 3]") |
-| [] | Aby odwołać się do wartości w określonym położeniu (indeks) w tablicy, Użyj nawiasów kwadratowych. Na przykład, aby uzyskać drugi element w tablicy: <p>`myArray[1]` |
-| . | Aby odwoływać się do właściwości w obiekcie, użyj operatora kropki. Na przykład, aby uzyskać `name` właściwość `customer` obiekt JSON: <p>`"@parameters('customer').name"` |
-| ? | Odwoływanie się do wartości null właściwości w obiekcie bez błędów środowiska uruchomieniowego, użyj operatora znaku zapytania. Na przykład do obsługi o wartości null dane wyjściowe z wyzwalaczem, możesz użyć tego wyrażenia: <p>`@coalesce(trigger().outputs?.body?.<someProperty>, '<property-default-value>')` |
+| ' | Aby użyć literału ciągu jako dane wejściowe lub w wyrażeniach i funkcjach, zawiń ciąg tylko w pojedynczym cudzysłowie, `'<myString>'`na przykład. Nie należy używać podwójnych cudzysłowów (""), które powodują konflikt z formatowaniem JSON wokół całego wyrażenia. Na przykład: <p>**Tak**: length ("Hello") </br>**Nie**: Długość ("Witaj") <p>W przypadku przekazywania tablic lub cyfr nie jest wymagane Zawijanie znaków. Na przykład: <p>**Tak**: Długość ([1, 2, 3]) </br>**Nie**: Długość ("[1, 2, 3]") |
+| [] | Aby odwołać się do wartości w określonej pozycji (indeks) w tablicy, użyj nawiasów kwadratowych. Na przykład, aby uzyskać drugi element w tablicy: <p>`myArray[1]` |
+| . | Aby odwołać się do właściwości w obiekcie, użyj operatora kropki. Na przykład, aby uzyskać `name` Właściwość `customer` dla obiektu JSON: <p>`"@parameters('customer').name"` |
+| ? | Aby odwołać się do właściwości o wartości null w obiekcie bez błędu środowiska uruchomieniowego, użyj operatora znaku zapytania. Aby na przykład obsłużyć dane wyjściowe o wartości null z wyzwalacza, można użyć tego wyrażenia: <p>`@coalesce(trigger().outputs?.body?.<someProperty>, '<property-default-value>')` |
 |||
 
 <a name="functions"></a>
 
 ## <a name="functions"></a>Funkcje
 
-Niektóre wyrażenia, Uzyskaj ich wartości z akcji środowiska uruchomieniowego, które jeszcze nie istnieje podczas uruchamiania swojej definicji przepływu pracy. Aby odwołać się i pracować z tych wartości w wyrażeniach, można użyć [ *funkcje* ](../logic-apps/workflow-definition-language-functions-reference.md) zapewniająca język definicji przepływów pracy.
+Niektóre wyrażenia pobierają wartości z akcji środowiska uruchomieniowego, które mogą jeszcze nie istnieć podczas uruchamiania definicji przepływu pracy. Aby odwołać się do tych wartości lub używać ich w wyrażeniach, można użyć [*funkcji*](../logic-apps/workflow-definition-language-functions-reference.md) dostępnych w języku definicji przepływu pracy.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o [język definicji przepływów pracy akcji i wyzwalaczy](../logic-apps/logic-apps-workflow-actions-triggers.md)
-* Dowiedz się więcej o programowe tworzenie i zarządzanie aplikacjami logiki za pomocą [interfejsu API REST przepływu pracy](https://docs.microsoft.com/rest/api/logic/workflows)
+* Informacje o [akcjach i wyzwalaczach języka definicji przepływu pracy](../logic-apps/logic-apps-workflow-actions-triggers.md)
+* Informacje na temat programistycznego tworzenia aplikacji logiki i zarządzania nimi za pomocą [interfejsu API REST przepływu pracy](https://docs.microsoft.com/rest/api/logic/workflows)

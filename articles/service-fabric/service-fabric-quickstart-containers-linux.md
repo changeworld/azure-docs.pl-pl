@@ -12,15 +12,15 @@ ms.devlang: python
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/30/2019
+ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 5d0c8b458f11076ea87d74eae3eecd72fb37eb40
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 979c94e0c577c2a7dbcb11434ac5544e4dd1df64
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621523"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385143"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Szybki start: Wdrażanie kontenerów systemu Linux w usłudze Service Fabric
 
@@ -179,7 +179,7 @@ Użyj skryptu odinstalowywania (uninstall.sh) udostępnionego w szablonie, aby u
 
 Najprostszym sposobem na usunięcie klastra i wszystkich wykorzystywanych przez niego zasobów jest usunięcie grupy zasobów.
 
-Logowanie do platformy Azure i wybierz identyfikator subskrypcji, z którą chcesz usunąć klaster. Identyfikator subskrypcji można znaleźć po zalogowaniu się w witrynie Azure Portal. Usuń grupę zasobów i wszystkie zasoby klastra, korzystając z polecenia [az group delete](/cli/azure/group?view=azure-cli-latest).
+Zaloguj się do platformy Azure i wybierz identyfikator subskrypcji, z którym chcesz usunąć klaster. Identyfikator subskrypcji można znaleźć po zalogowaniu się w witrynie Azure Portal. Usuń grupę zasobów i wszystkie zasoby klastra, korzystając z polecenia [az group delete](/cli/azure/group?view=azure-cli-latest).
 
 ```azurecli
 az login

@@ -1,5 +1,5 @@
 ---
-title: Korzystanie z logowania jednokrotnego opartego na hasłach (SSO) w panelu dostępu | Microsoft Docs
+title: Logowanie jednokrotne oparte na hasłach (SSO) w panelu dostępu | Microsoft Docs
 description: W tym artykule omówiono obszary problemów, które zapewniają wskazówki dotyczące rozwiązywania problemów związanych z logowaniem do aplikacji w galerii usługi Azure AD skonfigurowanych do logowania jednokrotnego hasła.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c020f3ab3ea7ed96b72d0490b717225d44c4fac1
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
-ms.translationtype: HT
+ms.openlocfilehash: 9ca192c28757df189e531aee0ba2d8da288ba7e6
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277739"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381239"
 ---
 # <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>Problemy z logowaniem do aplikacji w galerii usługi Azure AD skonfigurowanej do logowania jednokrotnego hasła
 

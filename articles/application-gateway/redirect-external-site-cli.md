@@ -1,6 +1,6 @@
 ---
-title: Tworzenie bramy aplikacji za pomocą przekierowywanie ruchu zewnętrznego — interfejs wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć bramę aplikacji, który przekierowuje ruch w wewnętrznej sieci web do odpowiedniej puli przy użyciu wiersza polecenia platformy Azure.
+title: Tworzenie bramy aplikacji z przekierowaniem ruchu zewnętrznego — interfejs wiersza polecenia platformy Azure | Microsoft Docs
+description: Dowiedz się, jak utworzyć bramę aplikacji, która przekierowuje wewnętrzny ruch internetowy do odpowiedniej puli przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: application-gateway
 author: vhorne
 manager: jpconnock
@@ -12,22 +12,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/24/2018
 ms.author: victorh
-ms.openlocfilehash: 1ddbc84004622c2a5fa9dc08d4396e1f300474f2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e1fb25a9d5bfe6538d081169d163d7b280733cc1
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66133864"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382014"
 ---
-# <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Tworzenie bramy aplikacji za pomocą zewnętrznego przekierowania przy użyciu wiersza polecenia platformy Azure
+# <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Tworzenie bramy aplikacji z przekierowaniami zewnętrznymi przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Można użyć wiersza polecenia platformy Azure, aby skonfigurować [przekierowywanie ruchu w sieci web](multiple-site-overview.md) po utworzeniu [bramy application gateway](overview.md). W tym samouczku skonfigurujesz odbiornik i regułę, która przekierowuje ruch w sieci web, która pojawi się na bramę aplikacji do zewnętrznej witryny.
+Przy użyciu interfejsu wiersza polecenia platformy Azure można skonfigurować [przekierowywanie ruchu internetowego](multiple-site-overview.md) podczas tworzenia [bramy aplikacji](overview.md). W tym samouczku skonfigurujesz odbiornik i regułę, która przekierowuje ruch internetowy, który dociera do bramy aplikacji do lokacji zewnętrznej.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Konfigurowanie sieci
-> * Utwórz regułę odbiornik i Przekierowanie
+> * Tworzenie reguły odbiornika i przekierowywania
 > * Tworzenie bramy aplikacji
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -91,9 +91,9 @@ Tworzenie bramy aplikacji może potrwać kilka minut. Po utworzeniu bramy aplika
 - *appGatewayFrontendIP* — przypisuje adres *myAGPublicIPAddress* do odbiornika *appGatewayHttpListener*.
 - *rule1* — domyślna reguła routingu skojarzona z odbiornikiem *appGatewayHttpListener*.
 
-### <a name="add-the-redirection-configuration"></a>Dodaj konfigurację przekierowania
+### <a name="add-the-redirection-configuration"></a>Dodawanie konfiguracji przekierowania
 
-Dodaj konfigurację przekierowania, który wysyła ruch sieciowy z *www.consoto.org* do odbiornika dla *www.contoso.com* do bramy aplikacji przy użyciu [az network application-gateway Tworzenie konfiguracji przekierowania](/cli/azure/network/application-gateway/redirect-config).
+Dodaj konfigurację przekierowania, która wysyła ruch *z\.consoto.org www* do odbiornika dla *sieci\.Web contoso.com* do bramy aplikacji za pomocą polecenia [AZ Network Application-Gateway redirect-config Create ](/cli/azure/network/application-gateway/redirect-config).
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -104,9 +104,9 @@ az network application-gateway redirect-config create \
   --target-url "https://bing.com"
 ```
 
-### <a name="add-a-listener-and-routing-rule"></a>Dodaj odbiornik i regułę routingu
+### <a name="add-a-listener-and-routing-rule"></a>Dodawanie odbiornika i reguły routingu
 
-Odbiornik jest wymagany do włączenia application gateway odpowiednio kierować ruchem. Utwórz odbiornik za pomocą [tworzenie az sieci application-gateway http-listener](/cli/azure/network/application-gateway) przy użyciu portu frontonu utworzonych za pomocą [tworzenie az sieci application-gateway frontend-port](/cli/azure/network/application-gateway). Wymagana jest reguła dla odbiornika wiedzieć, dokąd wysyłać ruch przychodzący. Utwórz podstawową regułę o nazwie *redirectRule* przy użyciu [Tworzenie reguły bramy aplikacji sieciowej az](/cli/azure/network/application-gateway).
+Odbiornik jest wymagany, aby umożliwić bramie aplikacji odpowiednie kierowanie ruchu sieciowego. Utwórz odbiornik za pomocą polecenia [AZ Network Application-Gateway HTTP-Listener Create](/cli/azure/network/application-gateway) z portem frontonu utworzonym za pomocą polecenia [AZ Network Application-Gateway fronton-port Create](/cli/azure/network/application-gateway). Dla odbiornika należy określić, gdzie ma być wysyłany ruch przychodzący. Utwórz podstawową regułę o nazwie *redirectRule* przy użyciu polecenia [AZ Network Application-Gateway Rule Create](/cli/azure/network/application-gateway).
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \
@@ -133,12 +133,12 @@ az network application-gateway rule create \
 
 Aby uzyskać publiczny adres IP bramy aplikacji, możesz użyć polecenia [az network public-ip show](/cli/azure/network/public-ip). Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki.
 
-Powinien zostać wyświetlony *bing.com* są wyświetlane w przeglądarce.
+W przeglądarce powinny być widoczne *Bing.com* .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > * Konfigurowanie sieci
-> * Utwórz regułę odbiornik i Przekierowanie
+> * Tworzenie reguły odbiornika i przekierowywania
 > * Tworzenie bramy aplikacji

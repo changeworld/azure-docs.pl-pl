@@ -1,6 +1,6 @@
 ---
-title: Uzyskaj pomoc dotyczącą portalu Moje aplikacje — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Uzyskaj pomoc dotyczącą logowanie się i wykonywanie typowych zadań w portalu Moje aplikacje.
+title: Uzyskaj pomoc dotyczącą portalu My Apps — Azure Active Directory | Microsoft Docs
+description: Uzyskaj pomoc dotyczącą logowania do programu i wykonywania typowych zadań w portalu My Apps.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,73 +13,83 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6e87ae0a8adf28176d9a97cbf1b78943179884a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 11a7376720661e13a03be65df4ee180e0bca20c3
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60475031"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383064"
 ---
-# <a name="troubleshoot-problems-with-the-my-apps-portal"></a>Rozwiązywanie problemów z portalu Moje aplikacje
-Jeśli masz problemy z logowaniem do lub korzystanie z **Moje aplikacje** portalu, wypróbuj te wskazówki dotyczące rozwiązywania problemów, zanim można skontaktuj się z pomocą techniczną lub administratorem, aby uzyskać pomoc.
+# <a name="troubleshoot-problems-with-the-my-apps-portal"></a>Rozwiązywanie problemów z portalem My Apps
 
-## <a name="im-having-trouble-installing-the-my-apps-secure-sign-in-extension"></a>Mam problemy z zainstalowaniem Moje zabezpieczenia aplikacji logowania rozszerzenia
-Jeśli występują problemy z instalacją Moje zabezpieczenia aplikacji logowania rozszerzenia:
+Jeśli występują problemy z zalogowaniem się do lub przy użyciu portalu **Moje aplikacje** , wypróbuj te wskazówki dotyczące rozwiązywania problemów przed skontaktowaniem się z pomocą techniczną lub administratorem w celu uzyskania pomocy.
+
+## <a name="im-having-trouble-installing-the-my-apps-secure-sign-in-extension"></a>Mam problem z zainstalowaniem rozszerzenia moje aplikacje bezpieczne logowanie
+
+Jeśli masz problemy z instalowaniem rozszerzenia moje aplikacje bezpieczne logowanie:
 
 - Upewnij się, że używasz obsługiwanej przeglądarki, w tym:
 
-    - **Microsoft Edge.** Uruchomiony w systemie Windows 10 Anniversary Edition lub nowszym.
-    - **Google Chrome.** Systemem Windows 7 lub nowszy i w systemie Mac OS X lub później.
-    - **Mozilla Firefox 26.0 lub nowszej.** Uruchomione na Windows XP z dodatkiem SP2 lub nowszym i Mac OS X 10.6 lub później.
-    - **Internet Explorer 11.** W systemie Windows 7 lub nowszy (ograniczona obsługa).
+    - **Microsoft Edge.** Działa w systemie Windows 10 w wersji rocznicowej lub nowszej.
+
+    - **Google Chrome.** Uruchomiona w systemie Windows 7 lub nowszym oraz na Mac OS X lub nowszych.
+
+    - **Mozilla Firefox 26,0 lub nowsza.** Uruchomiona w systemie Windows XP z dodatkiem SP2 lub nowszym oraz na Mac OS X 10,6 lub nowszym.
+
+    - **Internet Explorer 11.** Uruchomiona w systemie Windows 7 lub nowszym (ograniczona obsługa).
 
 - Upewnij się, że ustawienia rozszerzenia przeglądarki są włączone.
 
-- Spróbuj ponownie uruchomić przeglądarkę i zaloguj się do **Moje aplikacje** portal ponownie.
+- Spróbuj ponownie uruchomić przeglądarkę i zalogować się do portalu **Moje aplikacje** .
 
-- Spróbuj wyczyszczenie plików cookie w przeglądarce, a następnie uruchom ponownie i zaloguj się do **Moje aplikacje** portal ponownie.
+- Spróbuj wyczyścić pliki cookie w przeglądarce, a następnie ponownie uruchom i zaloguj się do portalu **My Apps** .
 
-## <a name="i-cant-sign-in-to-the-my-apps-portal"></a>Nie można zalogować się do **Moje aplikacje** portalu
-Jeśli występują problemy z logowaniem do **Moje aplikacje** portalu, możesz spróbować następujące czynności:
+## <a name="i-cant-sign-in-to-the-my-apps-portal"></a>Nie mogę zalogować się do portalu **My Apps**
 
-- Upewnij się, że używasz właściwego adresu URL. Należy go https://myapps.microsoft.com lub dostosowanej strony dla całej organizacji, takich jak https://myapps.microsoft.com/contoso.com.
+Jeśli masz problemy z zalogowaniem się do portalu **Moje aplikacje** , możesz spróbować wykonać następujące czynności:
 
-- Upewnij się, hasła jest prawidłowa i nie wygasło. Aby uzyskać więcej informacji, zobacz [Resetowanie hasła służbowego](active-directory-passwords-update-your-own-password.md).
+- Upewnij się, że używasz odpowiedniego adresu URL. Powinna być https://myapps.microsoft.com lub dostosowana Strona dla organizacji, https://myapps.microsoft.com/contoso.com na przykład.
 
-- Upewnij się, że Twoje informacje weryfikacji jest aktualne i dokładne. Aby uzyskać więcej informacji, zobacz [co usługi Azure Multi-Factor Authentication oznacza dla mnie?](multi-factor-authentication-end-user.md) lub [zmiana Twoje informacje i metody informacji zabezpieczeń](security-info-add-update-methods-overview.md).
+- Upewnij się, że hasło jest poprawne i nie wygasło. Aby uzyskać więcej informacji, zobacz [Resetowanie hasła](active-directory-passwords-update-your-own-password.md)służbowego.
 
-- Dodaj **Moja aplikacja** portal adres URL do **właściwości internetowe > Zabezpieczenia > Zaufane witryny** ustawienie.
+- Upewnij się, że informacje weryfikacyjne są aktualne i dokładne. Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure MFA Authentication?](multi-factor-authentication-end-user.md) lub [Zmień metody i informacje zabezpieczające](security-info-add-update-methods-overview.md).
 
-- Wyczyść pamięć podręczną przeglądarki i spróbuj zalogować się ponownie.
+- Dodaj adres URL portalu **aplikacji** do **Właściwości internetowych > Zabezpieczenia > ustawienie zaufanych witryn** .
 
-## <a name="my-password-isnt-working"></a>Hasła nie działa
-Jeśli nie pamiętasz hasła nigdy nie otrzyma jeden z Twojej organizacji, z zablokowanym dostępem do konta lub chcesz zmienić hasło, zobacz [pamiętam mojego hasła usługi Azure AD](active-directory-passwords-update-your-own-password.md).
+- Wyczyść pamięć podręczną przeglądarki, a następnie spróbuj ponownie się zalogować.
 
-## <a name="i-want-to-be-able-to-reset-my-own-password"></a>Chcę można było zresetować własnego hasła
-Można zresetować własnego hasła, administrator musi włączyć funkcję dla Twojej organizacji, a następnie należy zaktualizować i sprawdź, metody wymaganej weryfikacji. Aby uzyskać więcej informacji o sposobie aktualizowania metody weryfikacji, zobacz [rejestrowanie na potrzeby samoobsługowego resetowania haseł](active-directory-passwords-reset-register.md).
+## <a name="my-password-isnt-working"></a>Moje hasło nie działa
 
-## <a name="im-getting-an-access-denied-message-when-i-start-an-app"></a>Otrzymuję komunikat Odmowa dostępu podczas uruchamiania aplikacji
-Jeśli otrzymujesz **odmowa dostępu** komunikat po uruchomieniu aplikacji na podstawie **Moja aplikacja** portalu, możesz spróbować następujące czynności:
+Jeśli nie pamiętasz hasła, nigdy nie zostało ono odebrane z Twojej organizacji, są blokowane z Twojego konta lub chcesz zmienić hasło, zobacz [Pomoc, nie pamiętam hasła usługi Azure AD](active-directory-passwords-update-your-own-password.md).
 
-- Upewnij się, że zainstalowano [Moje zabezpieczenia aplikacji logowania rozszerzenia](my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension) i że używasz [obsługiwanej przeglądarki](my-apps-portal-end-user-access.md#supported-browsers).
+## <a name="i-want-to-be-able-to-reset-my-own-password"></a>Chcę mieć możliwość zresetowania własnego hasła
 
-- Upewnij się, że używasz właściwego adresu URL dla aplikacji, a adres URL znajduje się na swoje **właściwości internetowe > zabezpieczeń > Zaufane witryny** listy.
+Aby móc zresetować własne hasło, administrator musi najpierw włączyć funkcję dla swojej organizacji, a następnie zaktualizować i zweryfikować wymagane metody weryfikacji. Aby uzyskać więcej informacji o sposobach aktualizowania metod weryfikacji, zobacz [Rejestrowanie do](active-directory-passwords-reset-register.md)samoobsługowego resetowania hasła.
 
-- Upewnij się, hasła jest prawidłowa i nie wygasło. Aby uzyskać więcej informacji, zobacz [Resetowanie hasła służbowego](active-directory-passwords-update-your-own-password.md).
+## <a name="im-getting-an-access-denied-message-when-i-start-an-app"></a>Otrzymuję komunikat o odmowie dostępu podczas uruchamiania aplikacji
 
-- Upewnij się, że Twoje informacje weryfikacji jest aktualne i dokładne. Aby uzyskać więcej informacji, zobacz [co usługi Azure Multi-Factor Authentication oznacza dla mnie?](multi-factor-authentication-end-user.md) lub [zmiana Twoje informacje i metody informacji zabezpieczeń](security-info-add-update-methods-overview.md).
+Jeśli otrzymujesz komunikat **odmowy dostępu** po uruchomieniu aplikacji z portalu **My App** , możesz spróbować wykonać następujące czynności:
 
-- Wyczyść pamięć podręczną przeglądarki i spróbuj zalogować się ponownie.
+- Upewnij się, że zainstalowano [rozszerzenie moje aplikacje bezpieczne logowanie](my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension) i że używasz [obsługiwanej przeglądarki](my-apps-portal-end-user-access.md#supported-browsers).
 
-Jeśli po wykonaniu tych czynności nadal nie masz dostępu do aplikacji, możesz skontaktować się Twojej organizacji pomocy technicznej Aby uzyskać pomoc.
+- Upewnij się, że używasz odpowiedniego adresu URL dla aplikacji oraz że adres URL znajduje się na liście **Właściwości internetowych > zabezpieczenia > listy zaufanych witryn** .
+
+- Upewnij się, że hasło jest poprawne i nie wygasło. Aby uzyskać więcej informacji, zobacz [Resetowanie hasła](active-directory-passwords-update-your-own-password.md)służbowego.
+
+- Upewnij się, że informacje weryfikacyjne są aktualne i dokładne. Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure MFA Authentication?](multi-factor-authentication-end-user.md) lub [Zmień metody i informacje zabezpieczające](security-info-add-update-methods-overview.md).
+
+- Wyczyść pamięć podręczną przeglądarki, a następnie spróbuj ponownie się zalogować.
+
+Jeśli po wykonaniu tych czynności nadal nie możesz uzyskać dostępu do aplikacji, musisz skontaktować się z działem pomocy technicznej Twojej organizacji w celu uzyskania pomocy.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Po zalogowaniu się do **Moje aplikacje** portalu, możesz także zaktualizować swój profil i informacje o koncie, informacje o grupie i dostępu, przejrzyj informacje (Jeśli masz uprawnienia).
 
-- [Dostęp i korzystać z aplikacji w portalu Moje aplikacje](my-apps-portal-end-user-access.md).
+Po zalogowaniu się do portalu **Moje aplikacje** możesz także zaktualizować informacje o profilu i koncie, informacje o grupie oraz informacje o przeglądaniu dostępu (Jeśli masz uprawnienia).
 
-- [Zmiana informacji o Twoim profilu](my-apps-portal-end-user-update-profile.md).
+- [Dostęp do aplikacji i korzystanie z nich w portalu My Apps](my-apps-portal-end-user-access.md).
 
-- [Wyświetl i zaktualizuj swoje informacje związane z grupami](my-apps-portal-end-user-groups.md).
+- [Zmień informacje o profilu](my-apps-portal-end-user-update-profile.md).
 
-- [Wykonywać własne przeglądów dostępu](my-apps-portal-end-user-access-reviews.md).
+- [Wyświetlanie i aktualizowanie informacji dotyczących grup](my-apps-portal-end-user-groups.md).
+
+- [Wykonaj własne przeglądy dostępu](my-apps-portal-end-user-access-reviews.md).

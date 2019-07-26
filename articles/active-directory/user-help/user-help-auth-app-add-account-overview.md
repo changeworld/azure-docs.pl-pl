@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34455cac61dd3b1f1251d4bc2003bd8b029de031
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d16699729e62953cb2369f39ecfe759aab663caf
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60474046"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382653"
 ---
 # <a name="overview-about-adding-accounts-to-the-microsoft-authenticator-app"></a>Omówienie dodawania kont do aplikacji Microsoft Authenticator
 
@@ -25,7 +25,7 @@ Aplikacja Microsoft Authenticator pomaga w logowaniu się do kont, jeśli używa
 
 > [!Important]
 > Aplikacja Microsoft Authenticator współdziała z dowolną aplikacją używającą weryfikacji dwuetapowej i dowolnym kontem obsługującym standardy TOTP (Time-based One-time Password).
-> 
+>
 > Ta zawartość jest przeznaczona dla użytkowników. Jeśli jesteś administratorem, więcej informacji na temat konfigurowania i zarządzania środowiskiem usługi Azure Active Directory (Azure AD) możesz znaleźć w [dokumentacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
 
 Aplikacji Microsoft Authenticator można używać na wiele sposobów, na przykład:
@@ -35,22 +35,19 @@ Aplikacji Microsoft Authenticator można używać na wiele sposobów, na przykł
 - Udostępnienie możliwości logowania się bez wymagania hasła, ale za to przy użyciu nazwy użytkownika i jego twarzy, odcisku palca lub numeru PIN dostarczanych przez urządzenie przenośne.
 
 ## <a name="what-account-types-can-i-add"></a>Jakie typy kont można dodać
+
 Weryfikację dwuskładnikową możesz włączyć dla wielu kont, których używasz każdego dnia, w tym:
 
-|Typ konta|Opis|
-|------------|-----------|
-|Konta służbowe|Konto służbowe udostępnione Ci przez organizację, na przykład alain@contoso.com.|
-|Konta osobiste|Konta Microsoft i inne niż Microsoft otwarte osobiście przez użytkownika, takie jak konta Outlook.com, Xbox LIVE, Google, Facebook i inne.|
+| Typ konta | Opis |
+| ------------ | ----------- |
+| Konta służbowe | Konto służbowe udostępnione Ci przez organizację, na przykład alain@contoso.com. |
+| Konta osobiste | Konta Microsoft i inne niż Microsoft otwarte osobiście przez użytkownika, takie jak konta Outlook.com, Xbox LIVE, Google, Facebook i inne. |
 
 ## <a name="in-this-section"></a>W tej sekcji
 
-|Artykuł |Opis |
-|------|------------|
-|[Dodawanie konta służbowego](user-help-auth-app-add-work-school-account.md)|Opis sposobu dodawania konta służbowego do aplikacji Microsoft Authenticator na potrzeby weryfikacji dwuskładnikowej.|
-|[Dodawanie osobistego konta Microsoft](user-help-auth-app-add-personal-ms-account.md)|W tym artykule opisano sposób dodawania kont osobistych Microsoft na potrzeby weryfikacji dwuskładnikowej i logowania za pomocą telefonu (nazywanego również logowaniem bez hasła).|
-|[Dodawanie konta innego niż Microsoft](user-help-auth-app-add-non-ms-account.md)|Opis sposobu dodawania kont osobistych innych niż Microsoft na potrzeby weryfikacji dwuskładnikowej.|
-|[Ręczne dodawanie konta](user-help-auth-app-add-account-manual.md)|Opis sposobu ręcznego dodawania konta do aplikacji Microsoft Authenticator, jeśli aparat nie może przechwycić kodu QR.|
-
-
-
-
+| Artykuł |Opis |
+| ------|------------|
+| [Dodawanie konta służbowego](user-help-auth-app-add-work-school-account.md) | Opis sposobu dodawania konta służbowego do aplikacji Microsoft Authenticator na potrzeby weryfikacji dwuskładnikowej. |
+| [Dodawanie osobistego konta Microsoft](user-help-auth-app-add-personal-ms-account.md) | W tym artykule opisano sposób dodawania kont osobistych Microsoft na potrzeby weryfikacji dwuskładnikowej i logowania za pomocą telefonu (nazywanego również logowaniem bez hasła). |
+| [Dodawanie konta innego niż Microsoft](user-help-auth-app-add-non-ms-account.md) | Opis sposobu dodawania kont osobistych innych niż Microsoft na potrzeby weryfikacji dwuskładnikowej. |
+| [Ręczne dodawanie konta](user-help-auth-app-add-account-manual.md) | Opis sposobu ręcznego dodawania konta do aplikacji Microsoft Authenticator, jeśli aparat nie może przechwycić kodu QR. |

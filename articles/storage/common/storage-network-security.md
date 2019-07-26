@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 398b2236caa77e4aef5b471079407a5edeeeee2d
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: cc0ba80f7aef53568e048b8285800982c818b004
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326931"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334596"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurowanie zapór usługi Azure Storage i sieci wirtualnych
 
@@ -23,8 +23,6 @@ Usługa Azure Storage oferuje model zabezpieczeń warstwowych. Ten model umożli
 Aplikacja, która uzyskuje dostęp do konta magazynu, gdy zasady sieci wymaga prawidłowego autoryzacji w żądaniu. Autoryzacja jest obsługiwana przy użyciu poświadczeń usługi Azure Active Directory (Azure AD) dla obiektów blob i kolejek z prawidłowym kluczem dostępu do konta lub z tokenem SAS.
 
 > [!IMPORTANT]
-> Azure File Sync nie obsługuje jeszcze zapór i sieci wirtualnych. Jeśli używasz Azure File Sync na koncie magazynu i włączysz te usługi, Azure File Sync nie będą synchronizowane.
->
 > Włączenie reguły zapory dla konta magazynu domyślnie blokuje żądań przychodzących danych, chyba, że żądania pochodzą z usługi, która działa w ramach usługi Azure Virtual Network (VNet). Żądania, które są blokowane obejmują z innymi usługami platformy Azure w witrynie Azure portal, rejestrowania i metryk usług i tak dalej.
 >
 > Możesz udzielić dostępu do usług platformy Azure, które działają z w ramach sieci wirtualnej, umożliwiając podsieci wystąpienia usługi. Włącz ograniczonej liczbie scenariuszy za pomocą [wyjątki](#exceptions) mechanizm opisane w poniższej sekcji. Aby uzyskać dostęp do witryny Azure portal, należałoby znajdować się na komputerze w ramach zaufanej (IP lub sieci wirtualnej) ustawiony.

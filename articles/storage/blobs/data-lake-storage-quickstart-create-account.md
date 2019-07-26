@@ -1,24 +1,23 @@
 ---
 title: Tworzenie konta magazynu usługi Azure Data Lake Storage 2. generacji | Microsoft Docs
-description: Szybka nauka tworzenia nowego konta magazynu z uprawnieniami do Data Lake Storage Gen2 przy użyciu witryny Azure portal, programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure.
+description: Szybka nauka tworzenia nowego konta magazynu z dostępem do Data Lake Storage Gen2 przy użyciu Azure Portal, Azure PowerShell lub interfejsu wiersza polecenia platformy Azure.
 services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: quickstart
-ms.date: 12/06/2018
+ms.topic: article
+ms.date: 07/19/2019
 ms.author: normesta
-ms.reviewer: jamesbak
-ms.openlocfilehash: 18132ac4c218c766efdc9a9afae2cc3508c4f732
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 297ab5971fdf60ce260808cb4864621ec1188b5e
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939421"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360778"
 ---
-# <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>Szybki start: Tworzenie konta usługi Azure Data Lake Storage 2. generacji
+# <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>Tworzenie konta usługi Azure Data Lake Storage 2. generacji
 
-Azure Data Lake magazynu Gen2 [obsługuje hierarchicznej przestrzeni nazw](data-lake-storage-introduction.md) zapewniającą natywny, na podstawie katalogu dostosowane do pracy z pliku System (HDFS, Hadoop Distributed) system plików. Dostęp do danych usługi Data Lake Storage 2. generacji z systemu plików HDFS można uzyskiwać za pośrednictwem [sterownika ABFS](data-lake-storage-abfs-driver.md).
+Azure Data Lake Storage Gen2 [obsługuje hierarchiczną przestrzeń nazw](data-lake-storage-introduction.md) , która zapewnia natywny system plików oparty na katalogu, dostosowany do pracy z rozproszony system plików HADOOP (HDFS). Dostęp do danych usługi Data Lake Storage 2. generacji z systemu plików HDFS można uzyskiwać za pośrednictwem [sterownika ABFS](data-lake-storage-abfs-driver.md).
 
 W tym przewodniku Szybki start przedstawiono sposób tworzenia konta przy użyciu [witryny Azure Portal](https://portal.azure.com/) lub [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) albo za pośrednictwem [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure?view=azure-cli-latest).
 
@@ -30,7 +29,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 |-----------|--------------|
 |Portal     | Brak         |
 |PowerShell | Dla tego przewodnika Szybki start jest wymagany moduł PowerShell Az.Storage w wersji **0.7** lub nowszej. Aby określić bieżącą wersję, uruchom polecenie `Get-Module -ListAvailable Az.Storage`. Jeśli po uruchomieniu tego polecenia nie zostaną wyświetlone wyniki lub wyświetlona zostanie wersja inna niż **0.7**, należy uaktualnić moduł programu Powershell. Zobacz sekcję [Uaktualnianie modułu PowerShell](#upgrade-your-powershell-module) w tym przewodniku.
-|Interfejs wiersza polecenia        | Można zalogować się do platformy Azure i uruchamiać polecenia wiersza polecenia platformy Azure w jeden z dwóch sposobów: <ul><li>Polecenia interfejsu wiersza polecenia platformy Azure możesz uruchamiać z poziomu witryny Azure Portal w usłudze Azure Cloud Shell </li><li>Możesz zainstalować interfejs wiersza polecenia i uruchamiać jego polecenia lokalnie</li></ul>|
+|Interfejs wiersza polecenia        | Możesz zalogować się do platformy Azure i uruchamiać polecenia interfejsu wiersza poleceń platformy Azure na jeden z dwóch sposobów: <ul><li>Polecenia interfejsu wiersza polecenia platformy Azure możesz uruchamiać z poziomu witryny Azure Portal w usłudze Azure Cloud Shell </li><li>Możesz zainstalować interfejs wiersza polecenia i uruchamiać jego polecenia lokalnie</li></ul>|
 
 Podczas pracy w wierszu polecenia masz opcję uruchamiania powłoki chmury platformy Azure lub instalowania interfejsu wiersza polecenia lokalnie.
 
@@ -53,7 +52,7 @@ Interfejs wiersza polecenia platformy Azure możesz również zainstalować i u�
 Przed utworzeniem konta musisz najpierw utworzyć grupę zasobów, która działa jako kontener logiczny tworzonych kont magazynu lub innych zasobów platformy Azure. Jeśli chcesz oczyścić zasoby utworzone w tym przewodniku Szybki start, możesz po prostu usunąć grupę zasobów. Usunięcie grupy zasobów powoduje również usunięcie skojarzonego konta magazynu i wszystkich innych zasobów skojarzonych z tą grupą zasobów. Aby uzyskać więcej informacji dotyczących grup zasobów, zobacz [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
 
 > [!NOTE]
-> Aby korzystać z zalet funkcji usługi Data Lake Storage 2. generacji, należy tworzyć nowe konta magazynu jako typ **StorageV2 (ogólnego przeznaczenia w wersji 2)**.  
+> Aby korzystać z zalet funkcji usługi Data Lake Storage 2. generacji, należy tworzyć nowe konta magazynu jako typ **StorageV2 (ogólnego przeznaczenia w wersji 2)** .  
 
 Aby uzyskać więcej informacji dotyczących kont magazynu, zobacz temat [Azure Storage account overview](../common/storage-account-overview.md) (Omówienie konta usługi Azure Storage).
 
@@ -77,7 +76,7 @@ Aby utworzyć grupę zasobów w witrynie Azure Portal, wykonaj następujące kro
 5. Wybierz lokalizację grupy zasobów.
 6. Kliknij przycisk **Utwórz**.  
 
-   ![Zrzut ekranu przedstawiający tworzenie grupy zasobów w witrynie Azure portal](./media/data-lake-storage-quickstart-create-account/create-resource-group.png)
+   ![Zrzut ekranu przedstawiający tworzenie grupy zasobów w Azure Portal](./media/data-lake-storage-quickstart-create-account/create-resource-group.png)
 
 ### <a name="create-a-general-purpose-v2-storage-account"></a>Tworzenie konta magazynu ogólnego przeznaczenia w wersji 2
 
@@ -97,7 +96,7 @@ Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 w witrynie Azure
 9. W sekcji **Data Lake Storage Gen2** ustaw pole **Hierarchiczna przestrzeń nazw** na **Włączono**.
 10. Kliknij pozycję **Przeglądanie + tworzenie**, aby utworzyć konto magazynu.
 
-    ![Zrzut ekranu przedstawiający tworzenie konta magazynu w witrynie Azure portal](./media/data-lake-storage-quickstart-create-account/azure-data-lake-storage-account-create-advanced.png)
+    ![Zrzut ekranu przedstawiający tworzenie konta magazynu w Azure Portal](./media/data-lake-storage-quickstart-create-account/azure-data-lake-storage-account-create-advanced.png)
 
 Konto magazynu zostało utworzone za pośrednictwem portalu.
 
@@ -106,14 +105,14 @@ Konto magazynu zostało utworzone za pośrednictwem portalu.
 Aby usunąć grupę zasobów za pomocą witryny Azure Portal:
 
 1. W witrynie Azure Portal rozwiń menu po lewej stronie, aby otworzyć menu usług, a następnie wybierz pozycję **Grupy zasobów**, aby wyświetlić listę grup zasobów.
-2. Znajdź grupę zasobów do usunięcia, a następnie kliknij prawym przyciskiem myszy przycisk **Więcej** (**...** ) po prawej stronie listy.
+2. Znajdź grupę zasobów do usunięcia, a następnie kliknij prawym przyciskiem myszy przycisk **Więcej** ( **...** ) po prawej stronie listy.
 3. Wybierz pozycję **Usuń grupę zasobów** i potwierdź.
 
 ## <a name="create-an-account-using-powershell"></a>Tworzenie konta przy użyciu programu PowerShell
 
 Najpierw zainstaluj najnowszą wersję modułu [PowerShellGet](https://docs.microsoft.com/powershell/gallery/installing-psget).
 
-Następnie uaktualniania modułu programu powershell, zaloguj się do subskrypcji platformy Azure, Utwórz grupę zasobów i następnie utworzyć konto magazynu.
+Następnie Uaktualnij moduł programu PowerShell, zaloguj się do subskrypcji platformy Azure, Utwórz grupę zasobów, a następnie utwórz konto magazynu.
 
 ### <a name="upgrade-your-powershell-module"></a>Uaktualnianie modułu PowerShell
 
@@ -177,9 +176,9 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 ## <a name="create-an-account-using-azure-cli"></a>Tworzenie konta przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Aby uruchomić usługę Azure Cloud Shell, zaloguj się do [witryny Azure portal](https://portal.azure.com).
+Aby rozpocząć Azure Cloud Shell, zaloguj się do [Azure Portal](https://portal.azure.com).
 
-Jeśli chcesz zarejestrować się w lokalnej instalacji interfejsu wiersza polecenia, uruchom polecenie logowania:
+Jeśli chcesz zalogować się do lokalnej instalacji interfejsu wiersza polecenia, uruchom polecenie logowania:
 
 ```cli
 az login
@@ -226,7 +225,7 @@ Aby usunąć grupę zasobów i skojarzone z nią zasoby, w tym nowe konto magazy
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start utworzono konto magazynu z funkcjami usługi Data Lake Storage Gen2. Aby dowiedzieć się, jak przekazywać i pobierać obiekty blob z konta magazynu i do niego, zobacz następujący temat.
 

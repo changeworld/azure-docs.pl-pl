@@ -10,12 +10,12 @@ ms.reviewer: LADocs
 ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: d57a65bd7c9e5eefdf35b53b210585001be8a2a8
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
-ms.translationtype: HT
+ms.openlocfilehash: ec01f738ee4943659de1b49ab8d52218e6a8fb79
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876779"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385465"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Scenariusz: Obsługa wyjątków i rejestrowanie błędów dla aplikacji logiki
 
@@ -485,4 +485,4 @@ Kod źródłowy aplikacji interfejsu API zarządzania wyjątkami Logic Apps jest
 
 * [Zobacz więcej przykładów i scenariuszy dotyczących aplikacji logiki](../logic-apps/logic-apps-examples-and-scenarios.md)
 * [Informacje o monitorowaniu aplikacji logiki](../logic-apps/logic-apps-monitor-your-logic-apps.md)
-* [Tworzenie zautomatyzowanych szablonów wdrażania dla usługi Logic Apps](../logic-apps/logic-apps-create-deploy-template.md)
+* [Automatyzowanie wdrożenia aplikacji logiki](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)

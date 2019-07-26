@@ -1,7 +1,7 @@
 ---
-title: Przesunięcie danych monitoring (wersja zapoznawcza)
+title: Monitorowanie dryfowania danych (wersja zapoznawcza)
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak monitorować usługę Azure Machine Learning dla danych odejściem od tego stanu.
+description: Dowiedz się, jak usługa Azure Machine Learning może monitorować na potrzeby dryfowania danych.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,55 +10,55 @@ ms.reviewer: jmartens
 author: cody-dkdc
 ms.author: copeters
 ms.date: 06/20/2019
-ms.openlocfilehash: a03e3124647869e7148f271810bb523986a851c6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 13f73718fabd711e9c71a56ac4537b2ebef8a411
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442383"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371089"
 ---
-# <a name="what-is-data-drift-monitoring-preview"></a>Co to jest data odstępstw monitorowania (wersja zapoznawcza)?
+# <a name="what-is-data-drift-monitoring-preview"></a>Co to jest monitorowanie dryfowania danych (wersja zapoznawcza)?
 
-Przesunięcie danych jest zmiana rozkład danych. W kontekście uczenia maszynowego wytrenowane modele uczenia maszynowego mogą występować prognozowania pogorszenie wydajności z powodu odejściem od tego stanu. Monitorowanie odchylenie między dane szkoleniowe i danych używane na potrzeby wykonywania prognoz może pomóc w wykryć problemy z wydajnością.
+Dryfowanie danych to zmiana dystrybucji danych. W kontekście uczenia maszynowego, przeszkolone modele uczenia maszynowego mogą powodować spadek wydajności przewidywania z powodu dryfu. Monitorowanie dryfu między danymi szkoleń i danymi używanymi do tworzenia prognoz może pomóc w wykrywaniu problemów z wydajnością.
 
-Modele uczenia maszynowego są tylko tak dobrze, jak dane używane do trenowania je. Wdrażanie modeli do środowiska produkcyjnego bez monitorowania jej wydajności może prowadzić do wykryte i niekorzystny wpływ na środowisko. Przy użyciu danych monitorowania odejściem od tego stanu, można wykryć i dostosowanie się do danych odejściem od tego stanu. 
+Modele uczenia maszynowego są tak dobre, jak dane używane do uczenia się. Wdrażanie modeli w środowisku produkcyjnym bez monitorowania jego wydajności może prowadzić do wykrycia i niekorzystnego wpływu. Przy użyciu monitorowania dryfowania danych można wykrywać i dostosowywać do dryfowania danych. 
 
-## <a name="when-to-monitor-for-data-drift"></a>Kiedy do monitorowania dryfu danych?
+## <a name="when-to-monitor-for-data-drift"></a>Kiedy należy monitorować pod kątem dryfowania danych?
 
-Metryki, które możemy monitorować obejmują:
+Możliwe do monitorowania metryki obejmują:
 
-+ Wielkość dryfu (współczynnik odejściem od tego stanu)
-+ Przyczyna dryfu (dryfu materiałów przekazywanych przez funkcję)
-+ Metryki odległości (Wasserstein energii, itp.)
++ Wielkość dryfu (współczynnik dryfu)
++ Przyczyna dryfowania (dostęp z dryfem przez funkcję)
++ Metryki odległości (Wasserstein, energia itp.)
 
-Z tego monitorowania, alertów lub akcji można skonfigurować pod kątem po odejściem od tego stanu są wykrywane i analityk danych można zbadać przyczynę problemu. 
+W przypadku takiego monitorowania można skonfigurować alerty lub akcje, gdy zostanie wykryte dryfowanie, a analityk danych może zbadać główną przyczynę problemu. 
 
-Jeśli uważasz, że dane wejściowe dla modelu wdrożonej mogą ulec zmianie, należy rozważyć użycie wykrywanie dryfu danych.
+Jeśli uważasz, że dane wejściowe dla wdrożonego modelu mogą ulec zmianie, należy rozważyć zastosowanie wykrywania dryfowania danych.
 
-## <a name="how-data-drift-is-monitored-in-azure-machine-learning-service"></a>Jak dryfu danych jest monitorowany w usłudze Azure Machine Learning
+## <a name="how-data-drift-is-monitored-in-azure-machine-learning-service"></a>Jak jest monitorowane przedryfowanie danych w usłudze Azure Machine Learning
 
-Za pomocą **usługi Azure Machine Learning**, dryfu danych odbywa się za pośrednictwem zestawów danych lub wdrożeń. Aby monitorować dryfu danych, według planu bazowego zestawu danych — zwykle szkolenia zestawu danych dla modelu — jest określona. Drugi zestaw danych — zwykle modelu danych wejściowych zebrane z wdrożenia — są testowane w odniesieniu do bazowego zestawu danych. Oba zestawy danych są [profilowane](how-to-explore-prepare-data.md#explore-with-summary-statistics) i wprowadzania danych odstępstw usługi monitorowania. Model uczenia maszynowego jest uczony w celu wykrywania różnic między dwoma zestawami danych. Model wydajności jest konwertowana na współczynnik dryfu, czyli miary wielkości odchylenie między dwoma zestawami danych. Za pomocą [modelowania współdziałania](machine-learning-interpretability-explainability.md) są obliczane funkcje, które przyczyniły się do współczynnik odejściem od tego stanu. Z profilu zestaw danych jest śledzona informacje statystyczne na temat każdej funkcji. 
+Przy użyciu **usługi Azure Machine Learning**, dryfowanie danych jest monitorowane za pośrednictwem zestawów danych lub wdrożeń. Aby monitorować do dryfowania danych, bazowy zestaw danych — zwykle jest to zestaw danych szkoleniowych dla modelu — jest określony. Drugi zestaw danych — zwykle dane wejściowe modelu zebrane z wdrożenia — są testowane względem bazowego zestawu danych. Oba zestawy danych są [profilowane i są](how-to-explore-prepare-data.md#explore-with-summary-statistics) danymi wejściowymi do usługi monitorowania dryfowania danych. Model uczenia maszynowego jest szkolony w celu wykrywania różnic między dwoma zestawami danych. Wydajność modelu jest konwertowana na współczynnik dryfu, który mierzy wielkość dryfu między dwoma zestawami danych. Przy użyciu [interpretacji modelu](machine-learning-interpretability-explainability.md) funkcje, które przyczyniają się do współczynnika dryfu, są obliczane. W profilu zestawu danych są śledzone informacje statystyczne dotyczące każdej funkcji. 
 
-## <a name="data-drift-metric-output"></a>Dane odstępstw metryki danych wyjściowych
+## <a name="data-drift-metric-output"></a>Dane wyjściowe metryki dotyczącej dryfowania danych
 
-Istnieje wiele sposobów, aby wyświetlić metryki odejściem od tego stanu:
+Istnieje wiele sposobów wyświetlania metryk dryfu:
 
-* Za pomocą widżetu Jupyter.
-* Użyj `get_metrics()` funkcji na dowolnym `datadriftRun` obiektu.
-* Wyświetlać metryki w witrynie Azure portal w modelu
+* Użyj widżetu [Jupyter.](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) `RunDetails`
+* Użyj funkcji dla dowolnego `datadriftRun` obiektu. `get_metrics()`
+* Wyświetlanie metryk w Azure Portal w modelu
 
-Następujące metryki są zapisywane w każdej iteracji wykonywania zadania dryfu danych:
+Następujące metryki są zapisywane w każdej iteracji przebiegu dla zadania dryfowania danych:
 
 |Metryka|Opis|
 --|--|
-wasserstein_distance|Odległość statystyczne zdefiniowane dla jednowymiarowa dystrybucji wartości liczbowych.|
-energy_distance|Odległość statystyczne zdefiniowane dla jednowymiarowa dystrybucji wartości liczbowych.|
-datadrift_coefficient|Formalnie Matthews współczynnik korelacji, liczba rzeczywista z zakresu od -1 do 1. W kontekście dryfu 0 oznacza nie dryfu i wartość 1 oznacza maksymalną odejściem od tego stanu.|
-datadrift_contribution|Funkcja ważność przyczyniające się do funkcji.|
+wasserstein_distance|Odległość statystyczna zdefiniowana dla jednowymiarowej dystrybucji liczbowej.|
+energy_distance|Odległość statystyczna zdefiniowana dla jednowymiarowej dystrybucji liczbowej.|
+datadrift_coefficient|Współczynnik korelacji formalnie Matthews — liczba rzeczywista z zakresu od-1 do 1. W kontekście dryfu wartość 0 oznacza brak dryfu i 1 oznacza maksymalne dryfowanie.|
+datadrift_contribution|Znaczenie funkcji dotyczącej dryfu.|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z przykładami i Dowiedz się, jak monitorować dryfu danych:
+Zobacz przykłady i Dowiedz się, jak monitorować przedryfowanie danych:
 
-+ [Dowiedz się, jak monitorować dane odejściem od tego stanu w modelach wdrożone za pośrednictwem usługi Azure Kubernetes Service (AKS)](how-to-monitor-data-drift.md)
-+ Wypróbuj [przykłady notesu programu Jupyter](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/data-drift/)
++ [Dowiedz się, jak monitorować dryf danych dla modeli wdrożonych za pomocą usługi Azure Kubernetes Service (AKS)](how-to-monitor-data-drift.md)
++ Wypróbuj [Jupyter Notebook przykłady](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/data-drift/)

@@ -1,41 +1,41 @@
 ---
-title: Certyfikatami wymaganymi dla zaplecza umieszczania na białej liście w usłudze Azure Application Gateway
-description: Ten artykuł zawiera przykłady sposobu certyfikat SSL można przekonwertować certyfikatu uwierzytelniania i zaufany certyfikat główny, które są wymagane dla wystąpień zaplecza umieszczania na białej liście w usłudze Azure Application Gateway
+title: Certyfikaty wymagane do zalisty dozwolonych się z usługą Azure Application Gateway
+description: W tym artykule przedstawiono przykłady sposobu konwertowania certyfikatu SSL na certyfikat uwierzytelniania i zaufany certyfikat główny wymagany dla wystąpień zaplecza listy dozwolonych na platformie Azure Application Gateway
 services: application-gateway
-author: abshamsft
+author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 3/14/2019
+ms.date: 07/23/2019
 ms.author: absha
-ms.openlocfilehash: 72ee9123ad959c0c7240d4f7a906adc1a4dd1a93
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d808548ef91ed416f27b0dbb3e3e93d79ade30c
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60831728"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382042"
 ---
-# <a name="create-certificates-for-whitelisting-backend-with-azure-application-gateway"></a>Tworzenie certyfikatów umieszczania na białej liście zaplecza za pomocą usługi Azure Application Gateway
+# <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Tworzenie certyfikatów w celu zezwalania na zaplecze przy użyciu usługi Azure Application Gateway
 
-Aby wykonać kompleksowej usługi SSL, usługa application gateway wymaga wystąpieniami zaplecza, do listy dozwolonych, przekazując uwierzytelniania/zaufanych certyfikatów głównych. W przypadku jednostek SKU w wersji 1 do umieszczenia certyfikatów na liście dozwolonych wymagane są certyfikaty uwierzytelniania, natomiast w przypadku jednostek SKU w wersji 2 wymagane są zaufane certyfikaty główne
+Aby wykonać kompleksową obsługę protokołu SSL, Application Gateway wymaga, aby wystąpienia zaplecza były dozwolone przez przekazywanie certyfikatów głównych uwierzytelniania/zaufanych. W przypadku jednostki SKU V1 wymagane są certyfikaty uwierzytelniania, ale dla zaufanych certyfikatów głównych jednostki SKU v2 wymagane jest zezwolenie na certyfikaty.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 >
-> - Eksportowanie certyfikatu uwierzytelniania z certyfikatu wewnętrznej bazy danych (w przypadku jednostek SKU v1)
-> - Eksportowanie certyfikatu zaufanego głównego z certyfikatu wewnętrznej bazy danych (w przypadku jednostek SKU v2)
+> - Eksportowanie certyfikatu uwierzytelniania z certyfikatu wewnętrznej bazy danych (dla jednostki SKU v1)
+> - Eksportowanie zaufanego certyfikatu głównego z certyfikatu zaplecza (dla jednostki SKU v2)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Możesz wymagać od istniejącego certyfikatu wewnętrznej bazy danych do wygenerowania certyfikatów uwierzytelniania lub zaufanych certyfikatów głównych wymaganych do umieszczania na białej liście wewnętrznej bazy danych wystąpień z usługą application gateway. Certyfikatu z wewnętrznej bazy danych może być taka sama jak certyfikat protokołu SSL lub innej w celu zwiększenia poziomu bezpieczeństwa. Usługa Application gateway nie zapewnia żadnych mechanizm do tworzenia lub zakup certyfikatu SSL. Do celów testowych można utworzyć certyfikatu z podpisem własnym, ale nie należy go używać w przypadku obciążeń produkcyjnych. 
+Istniejący certyfikat zaplecza jest wymagany do wygenerowania certyfikatów uwierzytelniania lub zaufanych certyfikatów głównych wymaganych do zezwalania na wystąpienia zaplecza z Application Gateway. Certyfikat zaplecza może być taki sam jak certyfikat SSL lub inny w celu zwiększenia bezpieczeństwa. Application Gateway nie udostępnia żadnego mechanizmu do tworzenia lub zakupu certyfikatu SSL. Do celów testowych można utworzyć certyfikat z podpisem własnym, ale nie należy go używać do obciążeń produkcyjnych. 
 
-## <a name="export-authentication-certificate-for-v1-sku"></a>Eksportowanie certyfikatu uwierzytelniania (w przypadku jednostek SKU v1)
+## <a name="export-authentication-certificate-for-v1-sku"></a>Eksportowanie certyfikatu uwierzytelniania (dla jednostki SKU v1)
 
-Certyfikat uwierzytelniania jest wymagane do listy dozwolonych wystąpień wewnętrznej bazy danych w wersji 1 z bramy aplikacji jednostki SKU. Certyfikat uwierzytelniania jest certyfikat x.509 szyfrowany algorytmem klucz publiczny certyfikatów serwera zaplecza w Base-64 (. Format CER). W tym przykładzie firma Microsoft używanie certyfikatu protokołu SSL dla certyfikatu wewnętrznej bazy danych i wyeksportować jego klucz publiczny ma być używany jako certyfikacji uwierzytelniania. Ponadto w tym przykładzie użyjemy narzędzia Windows Menedżer certyfikatów można wyeksportować wymaganych certyfikatów. Można użyć innego narzędzia zgodnie z Twojej wygody.
+Certyfikat uwierzytelniania jest wymagany, aby zezwalać na wystąpienia zaplecza w jednostkach SKU Application Gateway v1. Certyfikat uwierzytelniania to klucz publiczny certyfikatów serwera zaplecza w Base-64 zakodowany X. 509 (. CER). W tym przykładzie użyjesz certyfikatu SSL dla certyfikatu zaplecza i wyeksportusz jego klucz publiczny, aby można było go używać jako certyfikatu uwierzytelniania. Ponadto w tym przykładzie za pomocą narzędzia Menedżer certyfikatów systemu Windows można wyeksportować wymagane certyfikaty. Możesz wybrać inne narzędzie, które jest wygodne.
 
-Od certyfikatu protokołu SSL należy wyeksportować plik cer klucza publicznego (nie klucz prywatny). Następujące kroki pomocy, możesz wyeksportować cer certyfikat x.509 szyfrowany algorytmem Base-64 pliku (. Format CER) dla certyfikatu:
+W certyfikacie SSL wyeksportuj plik. cer klucza publicznego (nie klucz prywatny). Poniższe kroki ułatwiają wyeksportowanie pliku CER w formacie X. 509 z kodowaniem Base-64 (. Format CER) dla certyfikatu:
 
-1. Aby uzyskać plik cer z certyfikatu, otwórz okno **Zarządzaj certyfikatami użytkowników**. Znajdź certyfikat, zwykle znajduje się w "Certyfikaty - bieżący użytkownik\osobisty\certyfikat", a następnie kliknij prawym przyciskiem myszy. Kliknij pozycję **Wszystkie zadania**, a następnie kliknij pozycję **Eksportuj**. Spowoduje to otwarcie **Kreatora eksportu certyfikatów**. Jeśli nie możesz znaleźć certyfikat w obszarze bieżący użytkownik\osobisty\certyfikat, być może przypadkowo otwarto "Certyfikatów — lokalny komputer", a nie "Certyfikaty — bieżący użytkownik"). Jeśli chcesz otworzyć Menedżera certyfikatów w bieżącym zakresie użytkownika przy użyciu programu PowerShell, możesz wpisać *certmgr* w oknie konsoli.
+1. Aby uzyskać plik cer z certyfikatu, otwórz okno **Zarządzaj certyfikatami użytkowników**. Znajdź certyfikat, zazwyczaj w "Certificates-Current User\Personal\Certificates" i kliknij prawym przyciskiem myszy. Kliknij pozycję **Wszystkie zadania**, a następnie kliknij pozycję **Eksportuj**. Spowoduje to otwarcie **Kreatora eksportu certyfikatów**. Jeśli nie możesz znaleźć certyfikatu w ramach bieżącego User\Personal\Certificates, być może przypadkowo otwarto "certyfikaty — komputer lokalny", a nie "Certyfikaty — bieżący użytkownik"). Jeśli chcesz otworzyć Menedżera certyfikatów w bieżącym zakresie użytkownika przy użyciu programu PowerShell, wpisz *certmgr* w oknie konsoli.
 
    ![Eksportowanie](./media/certificates-for-backend-authentication/export.png)
 
@@ -45,64 +45,64 @@ Od certyfikatu protokołu SSL należy wyeksportować plik cer klucza publicznego
 
 3. Wybierz pozycję **Nie eksportuj klucza prywatnego**, a następnie kliknij pozycję **Dalej**.
 
-   ![Nie eksportuj klucza prywatnego](./media/certificates-for-backend-authentication/notprivatekey.png)
+   ![Nie Eksportuj klucza prywatnego](./media/certificates-for-backend-authentication/notprivatekey.png)
 
 4. Na stronie **Format pliku eksportu** wybierz pozycję **Certyfikat X.509 szyfrowany algorytmem Base-64 (.CER)** , a następnie kliknij pozycję **Dalej**.
 
-   ![Kodowanie Base-64](./media/certificates-for-backend-authentication/base64.png)
+   ![Base-64 — zakodowana](./media/certificates-for-backend-authentication/base64.png)
 
-5. Aby uzyskać **Eksport pliku**, **Przeglądaj** do lokalizacji, do którego chcesz wyeksportować certyfikat. Do pola **Nazwa pliku** wprowadź nazwę pliku certyfikatu. Następnie kliknij przycisk **Dalej**.
+5. W polu **plik do**wyeksportowania **Przejdź** do lokalizacji, do której chcesz wyeksportować certyfikat. Do pola **Nazwa pliku** wprowadź nazwę pliku certyfikatu. Następnie kliknij przycisk **Dalej**.
 
-   ![Browse](./media/certificates-for-backend-authentication/browse.png)
+   ![Przeglądaj](./media/certificates-for-backend-authentication/browse.png)
 
 6. Kliknij przycisk **Zakończ**, aby wyeksportować certyfikat.
 
    ![Zakończ](./media/certificates-for-backend-authentication/finish.png)
 
-7. Twój certyfikat jest został pomyślnie wyeksportowany.
+7. Certyfikat został pomyślnie wyeksportowany.
 
    ![Powodzenie](./media/certificates-for-backend-authentication/success.png)
 
-   Wyeksportowany certyfikat wygląda podobnie do poniższego:
+   Wyeksportowany certyfikat wygląda podobnie do tego:
 
-   ![Wyeksportowane](./media/certificates-for-backend-authentication/exported.png)
+   ![Wyeksportowano](./media/certificates-for-backend-authentication/exported.png)
 
-8. Jeśli otworzysz wyeksportowany certyfikat za pomocą Notatnika, zostanie wyświetlony podobny do tego przykładu. Sekcja w kolorze niebieskim zawiera informacje, które zostanie przekazany do usługi application gateway. Jeśli Otwórz swój certyfikat przy użyciu programu Notepad, a nie wygląda podobnie do poniższego, zwykle oznacza, że nie wyeksportowano go przy użyciu Base-64 certyfikat x.509 szyfrowany algorytmem (. Format CER). Ponadto jeśli chcesz użyć w innym edytorze tekstu, Dowiedz się, że niektóre edytory może prowadzić do niezamierzonych formatowania w tle. To jest utworzenie problemy podczas przekazywania tekst z tego certyfikatu do platformy Azure.
+8. Jeśli otworzysz wyeksportowany certyfikat przy użyciu Notatnika, zobaczysz coś podobnego do tego przykładu. Sekcja w kolorze niebieskim zawiera informacje przekazane do bramy Application Gateway. Jeśli otworzysz certyfikat przy użyciu programu Notepad i nie jest on podobny do tego, zazwyczaj oznacza to, że nie został on wyeksportowany przy użyciu Base-64 szyfrowanego X. 509 (. CER). Ponadto, jeśli chcesz użyć innego edytora tekstów, należy zrozumieć, że niektóre edytory mogą wprowadzić niezamierzone formatowanie w tle. Może to spowodować problemy podczas przekazywania tekstu z tego certyfikatu do platformy Azure.
 
-   ![Otwórz w Notatniku](./media/certificates-for-backend-authentication/format.png)
+   ![Otwórz za pomocą Notatnika](./media/certificates-for-backend-authentication/format.png)
 
-## <a name="export-trusted-root-certificate-for-v2-sku"></a>Wyeksportuj certyfikat zaufany główny urząd certyfikacji (dla jednostki SKU w wersji 2)
+## <a name="export-trusted-root-certificate-for-v2-sku"></a>Eksportuj zaufany certyfikat główny (dla jednostki SKU v2)
 
-Zaufany certyfikat główny jest wymagany do listy dozwolonych wystąpień wewnętrznej bazy danych w usłudze application gateway v2 jednostki SKU. Certyfikat główny, to certyfikat x.509 szyfrowany algorytmem Base-64 (. Certyfikat główny na format CER) z certyfikatów serwera zaplecza. W tym przykładzie firma Microsoft używanie certyfikatu protokołu SSL dla certyfikatu wewnętrznej bazy danych, eksportowania klucza publicznego i wyeksportuj certyfikat główny zaufany urząd certyfikacji z klucza publicznego w formacie zakodowane w formacie base64, aby pobrać certyfikat zaufany główny urząd certyfikacji. 
+Zaufany certyfikat główny jest wymagany do zezwalania na wystąpienia zaplecza w jednostce SKU Application Gateway v2. Certyfikat główny to podstawowy-64 zakodowany X. 509 (. CER) format certyfikatu głównego z certyfikatów serwera wewnętrznej bazy danych. W tym przykładzie użyjesz certyfikatu SSL dla certyfikatu zaplecza i wyeksportusz jego klucz publiczny. Następnie należy wyeksportować certyfikat główny zaufanego urzędu certyfikacji z klucza publicznego w formacie kodowanym algorytmem Base64, aby uzyskać zaufany certyfikat główny. 
 
-Poniższe kroki pomogą Ci wyeksportować plik cer dla certyfikatu:
+Poniższe kroki ułatwiają wyeksportowanie pliku CER dla certyfikatu:
 
-1. Wykonaj kroki opisane w sekcji 1-9 **eksportu certyfikatu uwierzytelniania z certyfikatu wewnętrznej bazy danych (w przypadku jednostek SKU v1)** powyżej, aby wyeksportować klucza publicznego z certyfikatu z wewnętrznej bazy danych.
+1. Aby wyeksportować klucz publiczny z certyfikatu zaplecza, należy wykonać kroki 1-9 wymienione w sekcji **Eksportowanie certyfikatu uwierzytelniania z certyfikatu wewnętrznej bazy danych (dla jednostki SKU v1)** .
 
-2. Po został wyeksportowany klucz publiczny, otwórz plik.
+2. Po wyeksportowaniu klucza publicznego Otwórz plik.
 
-   ![Certyfikat Otwórz autoryzacji](./media/certificates-for-backend-authentication/openAuthcert.png)
+   ![Otwórz certyfikat autoryzacji](./media/certificates-for-backend-authentication/openAuthcert.png)
 
-   ![o certyfikacie](./media/certificates-for-backend-authentication/general.png)
+   ![Informacje o certyfikacie](./media/certificates-for-backend-authentication/general.png)
 
-3. Przenieś do ścieżki certyfikacji widokami urzędu certyfikacji.
+3. Przejdź do widoku Ścieżka certyfikacji, aby wyświetlić urząd certyfikacji.
 
    ![Szczegóły certyfikatu](./media/certificates-for-backend-authentication/certdetails.png)
 
-4. Wybierz certyfikat główny, a następnie kliknij przycisk na **Wyświetl certyfikat**.
+4. Wybierz certyfikat główny, a następnie kliknij pozycję **Wyświetl certyfikat**.
 
-   ![Ścieżka certyfikatu](./media/certificates-for-backend-authentication/rootcert.png)
+   ![ścieżka certyfikatu](./media/certificates-for-backend-authentication/rootcert.png)
 
-   Można wyświetlać szczegóły certyfikatu głównego.
+   Powinny pojawić się szczegóły certyfikatu głównego.
 
-   ![informacje o certyfikatu](./media/certificates-for-backend-authentication/rootcertdetails.png)
+   ![Informacje o certyfikatach](./media/certificates-for-backend-authentication/rootcertdetails.png)
 
-5. Przenieś do **szczegóły** wyświetlić, a następnie kliknij przycisk **Kopiuj do pliku...**
+5. Przejdź do widoku **szczegóły** , a następnie kliknij pozycję **Kopiuj do pliku...**
 
-   ![Kopia certyfikatu głównego](./media/certificates-for-backend-authentication/rootcertcopytofile.png)
+   ![Kopiuj certyfikat główny](./media/certificates-for-backend-authentication/rootcertcopytofile.png)
 
-6. W tym momencie zostały wyodrębnione szczegóły certyfikatu głównego z certyfikatu z wewnętrznej bazy danych. Zostanie wyświetlony **Kreatora eksportu certyfikatów**. Teraz Użyj kroki 2 – 9, opisanego w sekcji **eksportu certyfikatu uwierzytelniania z certyfikatu wewnętrznej bazy danych (w przypadku jednostek SKU v1)** powyżej można wyeksportować zaufanych głównych certyfikatów w Base-64 certyfikat x.509 szyfrowany algorytmem (. Format CER).
+6. W tym momencie wyodrębnisz szczegóły certyfikatu głównego z certyfikatu zaplecza. Zostanie wyświetlony **Kreator eksportu certyfikatów**. Teraz wykonaj kroki 2-9 wymienione w sekcji **Eksportowanie certyfikatu uwierzytelniania z certyfikatu zaplecza (dla jednostki SKU v1)** powyżej, aby wyeksportować zaufany certyfikat główny w formacie X. 509 Base-64. CER).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz masz uwierzytelniania, certyfikat/zaufany certyfikat x.509 szyfrowany algorytmem certyfikatu głównego w Base-64 (. Format CER). Możesz dodać to do usługi application gateway do listy dozwolonych serwerów wewnętrznej bazy danych dla typu end to end szyfrowania SSL. Zobacz [jak skonfigurować kompleksowe szyfrowanie SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
+Teraz masz certyfikat uwierzytelniania/zaufany certyfikat główny w Base-64 zakodowany X. 509 (. CER). Można dodać go do bramy aplikacji, aby umożliwić serwerom zaplecza kompleksowe szyfrowanie SSL. Zobacz [jak skonfigurować kompleksowe szyfrowanie SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).

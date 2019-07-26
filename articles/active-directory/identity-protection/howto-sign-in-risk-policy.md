@@ -1,127 +1,105 @@
 ---
-title: Jak skonfigurować zasady ryzyka logowania w usłudze Azure Active Directory Identity Protection | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować zasady ryzyka logowania usługi Azure AD Identity Protection.
+title: Jak skonfigurować zasady dotyczące ryzyka związanego z logowaniem w Azure Active Directory Identity Protection | Microsoft Docs
+description: Dowiedz się, jak skonfigurować zasady dotyczące ryzyka związanego z logowaniem Azure AD Identity Protection.
 services: active-directory
-keywords: Usługa Azure active directory identity protection odnajdywania aplikacji w chmurze, zarządzanie aplikacji, zabezpieczenia, ryzyka, poziom ryzyka, luk w zabezpieczeniach, zasady zabezpieczeń
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe9e0a4d481ef7b802c50fdc347872e389fa8ef7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0645e01c8ad9c620b77abd9af6cf7fe7c26ab4ea
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60294672"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335414"
 ---
 # <a name="how-to-configure-the-sign-in-risk-policy"></a>Instrukcje: Konfigurowanie zasad ryzyka logowania
 
-Usługa Azure Active Directory wykrywa [typy zdarzeń ryzyka](../reports-monitoring/concept-risk-events.md#risk-event-types) w czasie rzeczywistym, jak i offline. Każdego zdarzenia o podwyższonym ryzyku, która została wykryta podczas logowania użytkownika przyczynia się do logiczne koncepcji o nazwie ryzykowne logowania. Ryzykowne logowanie jest wskaźnikiem próby logowania, które nie mogły zostać wykonane przez prawowitym właścicielem konta użytkownika.
+Azure Active Directory wykrywa [typy zdarzeń ryzyka](../reports-monitoring/concept-risk-events.md#risk-event-types) w czasie rzeczywistym i w trybie offline. Każde zdarzenie ryzyka wykryte w przypadku logowania użytkownika przyczynia się do logicznej koncepcji zwanej ryzykownym logowaniem. Ryzykowne logowanie jest wskaźnikiem próby logowania, które mogły nie zostać wykonane przez uprawnionego właściciela konta użytkownika.
 
+## <a name="what-is-the-sign-in-risk-policy"></a>Jakie są zasady dotyczące ryzyka związanego z logowaniem?
 
-## <a name="what-is-the-sign-in-risk-policy"></a>Co to są zasady ryzyka logowania?
+Usługa Azure AD analizuje każdy zalogowanie użytkownika. Celem analizy jest wykrycie podejrzanych działań, które są związane z logowaniem. Na przykład czy logowanie odbywa się przy użyciu anonimowego adresu IP lub czy logowanie zostało zainicjowane z nieznanej lokalizacji? W usłudze Azure AD podejrzane działania wykrywane przez system są również znane jako zdarzenia ryzyka. W oparciu o zdarzenia ryzyka wykryte podczas logowania usługa Azure AD oblicza wartość. Wartość reprezentuje prawdopodobieństwo (niski, średni, wysoki), że logowanie nie jest wykonywane przez uprawnionego użytkownika. Prawdopodobieństwo jest nazywane **poziomem ryzyka logowania**.
 
-Usługa Azure AD analizuje każdego logowania użytkownika. Cel analizy jest wykrywa podejrzane akcje, które pochodzą wraz z logowania. Na przykład jest logowanie wykonywane przy użyciu anonimowego adresu IP lub jest logowanie inicjowane z nieznanej lokalizacji? W usłudze Azure AD podejrzane działania, które system może wykrywać znane są również jako zdarzeń o podwyższonym ryzyku. Oparte na zdarzenia o podwyższonym ryzyku, które zostały wykryte podczas logowania, usługi Azure AD pozwala obliczyć wartości. Wartość reprezentuje prawdopodobieństwo (niskiej, średniej, wysokiej), czy identyfikator logowania nie jest wykonywane przez wiarygodnego użytkownika. Prawdopodobieństwo, że jest wywoływana **poziom ryzyka logowania**.
-
-Zasady ryzyka logowania to automatyczną odpowiedź, które można skonfigurować na poziomie określonej ryzyka logowania. W odpowiedzi możesz zablokować dostęp do zasobów lub wymagają, przekazując żądanie uwierzytelniania wieloskładnikowego (MFA) do uzyskania dostępu.
-
+Zasady dotyczące ryzyka związanego z logowaniem to zautomatyzowana odpowiedź, którą można skonfigurować dla określonego poziomu ryzyka związanego z logowaniem. W odpowiedzi można zablokować dostęp do zasobów lub wymagać przekazywania wyzwania uwierzytelniania wieloskładnikowego (MFA) w celu uzyskania dostępu.
    
-## <a name="how-do-i-access-the-sign-in-risk-policy"></a>Jak uzyskać dostęp do zasad ryzyka logowania?
+## <a name="how-do-i-access-the-sign-in-risk-policy"></a>Jak mogę uzyskać dostęp do zasad dotyczących ryzyka związanego z logowaniem?
    
-Policy ryzyka logowania jest dostępna w **Konfiguruj** sekcji na [strony usługi Azure AD Identity Protection](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy).
+Zasady dotyczące ryzyka związanego z logowaniem znajduje się w sekcji **Konfigurowanie** na [stronie Azure AD Identity Protection](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy).
    
-![Zasady ryzyka logowania](./media/howto-sign-in-risk-policy/1014.png "zasad ryzyka logowania")
-
+![Zasady dotyczące ryzyka związanego z logowaniem](./media/howto-sign-in-risk-policy/1014.png "Zasady dotyczące ryzyka związanego z logowaniem")
 
 ## <a name="policy-settings"></a>Ustawienia zasad
 
-Po skonfigurowaniu zasad ryzyka logowania, należy ustawić:
+Konfigurując zasady dotyczące ryzyka związanego z logowaniem, należy ustawić:
 
-- Użytkownicy i grupy, które zostaną zastosowane zasady:
+- Użytkownicy i grupy, których dotyczą zasady:
 
     ![Użytkownicy i grupy](./media/howto-sign-in-risk-policy/11.png)
 
-- Poziom ryzyka logowania, wyzwalającego zasad:
+- Poziom ryzyka logowania, który wyzwala zasady:
 
     ![Poziom ryzyka logowania](./media/howto-sign-in-risk-policy/12.png)
 
-- Typ dostępu, który ma być wymuszane, gdy poziom ryzyka logowania zostaną spełnione:  
+- Typ dostępu, który ma zostać wymuszony po spełnieniu poziomu ryzyka związanego z logowaniem:  
 
     ![Access](./media/howto-sign-in-risk-policy/13.png)
 
 - Stan zasad:
 
-    ![Wymuszanie zasad](./media/howto-sign-in-risk-policy/14.png)
+    ![Wymuś zasady](./media/howto-sign-in-risk-policy/14.png)
 
-
-W oknie dialogowym konfiguracji zasad zapewnia możliwość szacunkowa ocena wpływu ponownej konfiguracji.
+W oknie dialogowym Konfiguracja zasad dostępna jest opcja oszacowania wpływu ponownej konfiguracji.
 
 ![Szacowany wpływ](./media/howto-sign-in-risk-policy/15.png)
 
 ## <a name="what-you-should-know"></a>Co należy wiedzieć
 
-Można skonfigurować zasady zabezpieczeń ryzyka logowania, które wymagają usługi MFA:
+Aby wymagać uwierzytelniania wieloskładnikowego, można skonfigurować zasady zabezpieczeń dotyczące ryzyka logowania:
 
 ![Wymaganie usługi MFA](./media/howto-sign-in-risk-policy/16.png)
 
-Jednak ze względu na bezpieczeństwo, to ustawienie działa tylko dla użytkowników, które zostały już zarejestrowane dla usługi MFA. Ochronę tożsamości blokuje użytkowników za pomocą wymaganie uwierzytelniania Wieloskładnikowego, jeśli ich nie są zarejestrowani do uwierzytelniania Wieloskładnikowego jeszcze.
+Ze względów bezpieczeństwa to ustawienie działa tylko w przypadku użytkowników, którzy zostali już zarejestrowani na potrzeby uwierzytelniania wieloskładnikowego. Funkcja Identity Protection blokuje użytkownikom wymóg uwierzytelniania MFA, jeśli nie są jeszcze zarejestrowani dla usługi MFA.
 
-Jeśli chcesz pozyskać usługę MFA dla ryzykownych logowań, należy:
+Aby wymagać uwierzytelniania wieloskładnikowego w przypadku ryzykownych logowań, należy:
 
-1. Włącz [zasady rejestracji uwierzytelniania wieloskładnikowego](howto-mfa-policy.md) dla użytkowników, których to dotyczy.
+1. Włącz [zasady rejestracji uwierzytelniania](howto-mfa-policy.md) wieloskładnikowego dla użytkowników, których to dotyczy.
+2. Zażądaj zalogowanych użytkowników do logowania się do sesji nieryzykownej w celu przeprowadzenia rejestracji usługi MFA.
 
-2. Wymaga odpowiednich użytkowników, aby logowanie się — ryzykowne sesji w celu przeprowadzenia rejestracji usługi MFA.
+Wykonanie tych kroków gwarantuje, że uwierzytelnianie wieloskładnikowe jest wymagane w przypadku ryzykownego logowania.
 
-Wykonanie tych kroków gwarantuje, że to uwierzytelnianie wieloskładnikowe jest wymagany do ryzykowne logowania.
+Zasady dotyczące ryzyka związanego z logowaniem:
 
-Zasady ryzyka logowania to:
+- Stosowane do całego ruchu przeglądarki i logowania przy użyciu nowoczesnego uwierzytelniania.
+- Nie dotyczy aplikacji korzystających ze starszych protokołów zabezpieczeń poprzez wyłączenie punktu końcowego WS-Trust w dostawcy tożsamości federacyjnym, na przykład ADFS.
 
-- Stosowane do całego ruchu w przeglądarce i logowania korzystające z nowoczesnego uwierzytelniania.
+Aby zapoznać się z omówieniem środowiska użytkownika powiązanego, zobacz:
 
-- Nie są stosowane do aplikacji przy użyciu starszych protokołów zabezpieczeń przez wyłączenie punktu końcowego protokołu WS-Trust u dostawcy tożsamości federacyjnych, takich jak usługi AD FS.
-
-
-Omówienie środowiska użytkownika Zobacz:
-
-* [Ryzykowne logowania odzyskiwania](flows.md#risky-sign-in-recovery)
-* [Ryzykowne logowanie zablokowane](flows.md#risky-sign-in-blocked)  
-* [Środowisko logowania za pomocą usługi Azure AD Identity Protection](flows.md)  
+* [Ryzykowne odzyskiwanie do logowania](flows.md#risky-sign-in-recovery)
+* [Ryzykowne logowanie zostało zablokowane](flows.md#risky-sign-in-blocked)  
+* [Środowisko logowania za pomocą Azure AD Identity Protection](flows.md)  
 
 ## <a name="best-practices"></a>Najlepsze praktyki
 
-Wybieranie **wysokiej** próg zmniejsza liczbę razy, zasada zostanie wyzwolony i minimalizuje wpływ na użytkowników.  
+Wybranie **wysokiego** progu zmniejsza liczbę wyzwalanych zasad i minimalizuje wpływ na użytkowników.  
 
-Jednakże nie obejmuje **niski** i **średni** logowania oznaczonych flagą ryzyka z zasad, które nie mogą blokować atakujący korzystający z wykorzystanie tożsamości ze złamanymi zabezpieczeniami.
+Nie obejmuje to jednak **małych** i **średnich** logowań oflagowanych ze względu na ryzyko z zasad, które mogą nie blokować wykorzystywania przez osobę atakującą tożsamości.
 
-Podczas ustawiania zasad
+Podczas ustawiania zasad,
 
-- Wyklucz użytkowników, którzy nie obsługują / nie może mieć uwierzytelnianie wieloskładnikowe
+- Wyklucz użytkowników, którzy nie mogą korzystać z uwierzytelniania wieloskładnikowego
+- Wykluczanie użytkowników w lokalizacjach lokalnych, w których włączenie zasad nie jest praktyczne (na przykład brak dostępu do pomocy technicznej)
+- Wyklucz użytkowników, którzy mogą generować wiele fałszywie fałszywych (deweloperów, analityków zabezpieczeń)
+- Użyj **wysokiego** progu podczas wstępnego wdrożenia zasad lub jeśli musisz zminimalizować wyzwania występujące dla użytkowników końcowych.
+- Jeśli organizacja wymaga większego **poziomu** zabezpieczeń, należy użyć niskiego progu. Wybranie **niskiego** progu powoduje wprowadzenie dodatkowych wyzwań związanych z logowaniem użytkowników, ale zwiększenie bezpieczeństwa.
 
-- Wyklucz użytkowników w lokalizacjach, w którym włączenie zasad nie jest możliwe (na przykład brak dostępu do działu pomocy technicznej)
+Zalecanym ustawieniem domyślnym w przypadku większości organizacji jest skonfigurowanie reguły dla **średniego** progu w celu zrównoważenia równowagi między użytecznością a bezpieczeństwem.
 
-- Wyklucz użytkowników, którzy mogą generować wiele fałszywych alarmów (deweloperzy, analityków zabezpieczeń)
+## <a name="next-steps"></a>Następne kroki
 
-- Użyj **wysokiej** próg podczas zasady początkowe wdrożenie, czy należy zminimalizować wyzwania widoczne dla użytkowników końcowych.
-
-- Użyj **niski** próg, jeśli Twoja organizacja wymaga zwiększenia bezpieczeństwa. Wybieranie **niski** próg wprowadza dodatkowego użytkownika logowania wyzwania, ale wyższy poziom bezpieczeństwa.
-
-Zalecana domyślna w przypadku większości organizacji jest skonfigurowanie reguły dla **średni** próg, aby zachować równowagę pomiędzy użyteczność i zabezpieczeń.
-
-
-
-
-
-
-## <a name="next-steps"></a>Kolejne kroki
-
-Aby uzyskać omówienie programu Azure AD Identity Protection, zobacz [Omówienie usługi Azure AD Identity Protection](overview.md).
+Aby zapoznać się z omówieniem Azure AD Identity Protection, zobacz [omówienie Azure AD Identity Protection](overview.md).
