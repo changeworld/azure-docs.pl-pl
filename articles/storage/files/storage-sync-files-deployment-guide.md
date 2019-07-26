@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9c05f3cf9a4c6fc916f1c9578de7aee6d0190ee5
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
-ms.translationtype: HT
+ms.openlocfilehash: 6a41830dcb7f681713db7a7802ab430581dc844f
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68327146"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371144"
 ---
 # <a name="deploy-azure-file-sync"></a>Wdrażanie usługi Azure File Sync
 Użyj Azure File Sync, aby scentralizować udziały plików w organizacji w Azure Files, utrzymując elastyczność, wydajność i zgodność lokalnego serwera plików. Azure File Sync przekształca system Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego protokołu, który jest dostępny w systemie Windows Server, aby uzyskać dostęp do danych lokalnie, w tym SMB, NFS i FTPS. Na całym świecie możesz mieć dowolną liczbę pamięci podręcznych.
@@ -357,18 +357,19 @@ if ($cloudTieringDesired) {
 
 ---
 
-## <a name="configure-firewall-and-vnet-settings"></a>Konfigurowanie ustawień zapory i sieci wirtualnej
+## <a name="configure-firewall-and-virtual-network-settings"></a>Konfigurowanie ustawień zapory i sieci wirtualnej
 
 ### <a name="portal"></a>Portal
 Jeśli chcesz skonfigurować usługę Azure File Sync do pracy z ustawieniami zapory i sieci wirtualnej, wykonaj następujące czynności:
 
 1. W Azure Portal przejdź do konta magazynu, które chcesz zabezpieczyć.
-1. Wybierz przycisk **zapory i sieci wirtualne** w menu Lefthand.
+1. Wybierz przycisk **zapory i sieci wirtualne** w menu po lewej stronie.
 1. Wybierz opcję **wybrane sieci** w obszarze **Zezwalaj na dostęp z**.
 1. Upewnij się, że serwery IP lub Sieć wirtualna są wymienione w odpowiedniej sekcji.
 1. Upewnij się, że jest zaznaczone pole wyboru **Zezwalaj zaufanym usługom firmy Microsoft na dostęp do tego konta magazynu** .
 1. Wybierz pozycję **Zapisz** , aby zapisać ustawienia.
 
+![Konfigurowanie ustawień zapory i sieci wirtualnej do pracy z usługą Azure File Sync](media/storage-sync-files-deployment-guide/firewall-and-vnet.png)
 
 ## <a name="onboarding-with-azure-file-sync"></a>Dołączanie za pomocą Azure File Sync
 Zalecane kroki do dołączenia na Azure File Sync w pierwszej kolejności bez przestojów podczas zachowywania pełnej wierności plików i listy kontroli dostępu (ACL) są następujące:

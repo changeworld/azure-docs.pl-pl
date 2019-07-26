@@ -1,6 +1,6 @@
 ---
-title: Dostęp i korzystać z aplikacji w portalu Moje aplikacje — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak uzyskać dostęp do portalu Moje aplikacje.
+title: Dostęp do aplikacji i korzystanie z nich w portalu Moje aplikacje — Azure Active Directory | Microsoft Docs
+description: Dowiedz się, jak uzyskać dostęp do portalu My Apps.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,144 +13,153 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eaed7357221f5b766bfb8b9e1a9031c08854ac9a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 901067e198616dba390e0e1162ec26a0b11768f1
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60477286"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383141"
 ---
-# <a name="access-and-use-apps-on-the-my-apps-portal"></a>Dostępu i użycia aplikacji w portalu Moje aplikacje
-Za pomocą swojego konta firmowego lub szkolnego oparta na sieci web **Moje aplikacje** portalu, aby wyświetlić i uruchomić wiele organizacji aplikacji w chmurze, aby zaktualizować niektóre z Twoich informacji profilu i konta, aby wyświetlić swoje **grup** informacji i wykonywać **przeglądów dostępu** dla aplikacji i grup. Jeśli nie masz dostępu do **Moje aplikacje** portal, należy skontaktować się z pomocą techniczną o uprawnienia.
+# <a name="access-and-use-apps-on-the-my-apps-portal"></a>Dostęp do aplikacji i korzystanie z nich w portalu My Apps
+
+Możesz użyć swojego konta służbowego z portalem **Moje aplikacje** oparte na sieci Web, aby wyświetlać i uruchamiać wiele aplikacji opartych na chmurze w organizacji, aktualizować niektóre informacje o profilu i koncie, wyświetlać informacje o **grupach** i wykonywać  **przeglądy dostępu** do aplikacji i grup. Jeśli nie masz dostępu do portalu **Moje aplikacje** , musisz skontaktować się z pomocą techniczną, aby uzyskać odpowiednie uprawnienia.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->Ta zawartość jest przeznaczona dla użytkowników. Jeśli jesteś administratorem, możesz znaleźć więcej informacji na temat sposobu konfigurowania i zarządzania nimi aplikacji opartych na chmurze w [dokumentacja dotycząca zarządzania aplikacji](https://docs.microsoft.com/azure/active-directory/manage-apps).
+>Ta zawartość jest przeznaczona dla użytkowników. Jeśli jesteś administratorem, możesz znaleźć więcej informacji na temat sposobu konfigurowania i zarządzania aplikacjami opartymi na chmurze w [dokumentacji zarządzania aplikacjami](https://docs.microsoft.com/azure/active-directory/manage-apps).
 
 ## <a name="supported-browsers"></a>Obsługiwane przeglądarki
-Aby przejść do **Moje aplikacje** portalu pochodzących z dowolnych z następujących przeglądarek sieci web:
+
+Możesz przejść do portalu **My Apps** z dowolnej z następujących przeglądarek sieci Web:
 
 - Google Chrome
 
-- Mozilla Firefox, wersja 26.0 lub nowsza
+- Mozilla Firefox, wersja 26,0 lub nowsza
 
 - Microsoft Edge
 
-- Internet Explorer w wersji 11 (ograniczona obsługa)
+- Internet Explorer, wersja 11 (ograniczona obsługa)
 
-## <a name="download-and-install-the-my-apps-secure-sign-in-extension"></a>Pobierz i zainstaluj Moje zabezpieczenia aplikacji logowania rozszerzenia
-Pobierz i zainstaluj rozszerzenie Secure Moje aplikacje logowania, jeśli zostanie wyświetlony monit. To rozszerzenie ułatwia Uruchom dowolną z aplikacji w chmurze w organizacji, które wymagają użycia jednej procesu logowania. Jeśli Twoja organizacja ma już ukierunkowane na logowanie jednokrotne, rozszerzenie jest instalowana automatycznie i można pominąć tę sekcję.
+## <a name="download-and-install-the-my-apps-secure-sign-in-extension"></a>Pobierz i zainstaluj rozszerzenie moje aplikacje bezpieczne logowanie
 
-To rozszerzenie umożliwia: 
+Po wyświetleniu monitu Pobierz i zainstaluj rozszerzenie moje aplikacje bezpieczne logowanie. To rozszerzenie ułatwia rozpoczęcie pracy z aplikacjami w chmurze w organizacji, które wymagają użycia procesu logowania jednokrotnego. Jeśli Twoja organizacja ma już skonfigurowane Logowanie jednokrotne, rozszerzenie jest instalowane automatycznie i można pominąć tę sekcję.
+
+To rozszerzenie ułatwia:
 
 - Zaloguj się bezpośrednio do aplikacji ze strony logowania.
 
-- Uruchom wszystkie aplikacje przy użyciu **szybkie wyszukiwanie** funkcji.
+- Uruchom dowolne aplikacje przy użyciu funkcji **szybkiego wyszukiwania** .
 
-- Zobacz ostatnie aplikacje używane w **ostatnio używane** sekcji.
+- Zobacz ostatnie aplikacje używane w **ostatnio używanych** sekcjach.
 
-- Używanie adresów URL, wewnętrznej firmy podczas pracy zdalnej z [serwera Proxy aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started).
+- Użyj wewnętrznych adresów URL firmy podczas zdalnego korzystania z [serwera proxy aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started).
 
 ### <a name="to-download-and-install-the-extension"></a>Aby pobrać i zainstalować rozszerzenie
-Pobierz i zainstaluj rozszerzenie, opartych na przeglądarce, z którego korzystasz:
 
-- **Google Chrome.** W przeglądarce Chrome Web Store, przejdź do [Moje zabezpieczenia aplikacji logowania rozszerzenia](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl) funkcji, a następnie wybierz **dodać do Chrome**.
+Pobierz i zainstaluj rozszerzenie na podstawie używanej przeglądarki:
 
-- **Mozilla Firefox** z **dodatki Firefox** strony, przejdź do [Moje zabezpieczenia aplikacji logowania rozszerzenia](https://addons.mozilla.org/firefox/addon/access-panel-extension/) funkcji, a następnie wybierz **dodać do przeglądarki Firefox**.
+- **Google Chrome.** W sklepie internetowym dla programu Chrome przejdź do funkcji [Moje aplikacje bezpieczne logowanie](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl) , a następnie wybierz pozycję **Dodaj do przeglądarki Chrome**.
 
-- **Microsoft Edge** z Microsoft Store, aby przejść do [Moje zabezpieczenia aplikacji logowania rozszerzenia](https://www.microsoft.com/p/my-apps-secure-sign-in-extension/9pc9sckkzk84?rtc=1&activetab=pivot%3Aoverviewtab) funkcji, a następnie wybierz **uzyskać**.
+- **Mozilla Firefox** Na stronie **Dodatki** dla programu Firefox przejdź do funkcji [Moje aplikacje bezpieczne logowanie](https://addons.mozilla.org/firefox/addon/access-panel-extension/) , a następnie wybierz pozycję **Dodaj do przeglądarki Firefox**.
 
-Po prawej stronie zostanie dodana ikona usługi **adres** paska, umożliwiając logowania i dostosować rozszerzenia.
+- **Microsoft Edge** W Microsoft Store przejdź do funkcji [Moje aplikacje bezpieczne logowanie](https://www.microsoft.com/p/my-apps-secure-sign-in-extension/9pc9sckkzk84?rtc=1&activetab=pivot%3Aoverviewtab) , a następnie wybierz pozycję **Pobierz**.
 
-#### <a name="to-change-your-my-apps-portal-using-the-extension"></a>Aby zmienić portalu Moje aplikacje przy użyciu rozszerzenia
-Można wybrać, jak wiele aplikacji, aby wyświetlić **ostatnio używane** sekcji i zdecyduj, czy Twoja organizacja wewnętrzne adresy URL do przekierowania.
+Ikona jest dodawana po prawej stronie paska **adresu** , co pozwala na logowanie i dostosowanie rozszerzenia.
 
-1. Wybierz nową **Moje zabezpieczenia aplikacji logowania rozszerzenia** ikonę ![ikonę rozszerzenia](media/my-apps-portal/my-apps-portal-extension-icon.png) po prawej stronie Twojego **adres** paska, a następnie wybierz pozycję **logowanie w celu pobieraniawprowadzenie**.
+#### <a name="to-change-your-my-apps-portal-using-the-extension"></a>Aby zmienić portal My Apps przy użyciu rozszerzenia
+Możesz wybrać liczbę aplikacji, które mają być wyświetlane w **ostatnio używanej** sekcji, i zdecydować, czy zezwolić wewnętrznym adresom URL organizacji na przekierowywanie.
 
-2. Kliknij prawym przyciskiem myszy **ustawienia** ikonę ![ikonę ustawienia](media/my-apps-portal/my-apps-portal-extension-settings-icon.png), a następnie wybierz pozycję **ustawienia**.
+1. Zaznacz ikonę ![   nowerozszerzeniemojeaplikacjebezpiecznelogowanieikonarozszerzenia,poprawejstroniepaskaadresu,anastępniewybierzpozycjęZalogujsię](media/my-apps-portal/my-apps-portal-extension-icon.png) , **Aby rozpocząć**.
 
-3. W **ustawienia** polu, wybierz liczbę ostatnio używane aplikacje, które mają być wyświetlane w portalu i czy umożliwia organizacji przez wewnętrzne adresy URL do przekierowania, więc można ich używać zdalnie.
+2. Kliknij prawym przyciskiem myszy ikonę ![](media/my-apps-portal/my-apps-portal-extension-settings-icon.png) **Ustawienia ikona Ustawienia** , a następnie wybierz pozycję **Ustawienia**.
 
-    ![Strona ustawień rozszerzenia, pokazujący dostępne dostosowania](media/my-apps-portal/my-apps-portal-extension-settings-page.png)
+3. W polu **Ustawienia** wybierz liczbę najnowszych aplikacji, które mają być widoczne w portalu, i zdecyduj, czy wewnętrzne adresy URL organizacji mają być przekierowywane, aby można było z nich korzystać zdalnie.
 
-## <a name="access-and-use-the-my-apps-portal-by-device"></a>Dostępu i użycia portalu Moje aplikacje przez urządzenie
-Można uzyskać dostęp i korzystać z portalu Moje aplikacje na komputerze z przeglądarki zarządzane przez usługę Intune lub z systemem iOS lub Android urządzenia przenośnego.
+    ![Strona ustawień rozszerzenia, pokazując dostępne dostosowania](media/my-apps-portal/my-apps-portal-extension-settings-page.png)
 
-![Strona aplikacji w portalu Moje aplikacje](media/my-apps-portal/my-apps-portal-apps-page.png)
+## <a name="access-and-use-the-my-apps-portal-by-device"></a>Dostęp do portalu Moje aplikacje i korzystanie z niego według urządzenia
+Możesz uzyskiwać dostęp do portalu Moje aplikacje i korzystać z niego na swoim komputerze, z poziomu przeglądarki zarządzanej przez usługę Intune lub z urządzenia przenośnego z systemem iOS lub Android.
 
-### <a name="access-and-use-the-my-apps-portal-on-your-computer"></a>Dostępu i użycia portalu Moje aplikacje na komputerze
-Jeśli masz uprawnienia, aby uzyskać dostęp do aplikacji w chmurze w organizacji, możesz uzyskać do nich za pośrednictwem **Moje aplikacje** portalu.
+![Strona aplikacje w portalu Moje aplikacje](media/my-apps-portal/my-apps-portal-apps-page.png)
 
-1.  Zaloguj się do swojego konta firmowego lub szkolnego.
+### <a name="access-and-use-the-my-apps-portal-on-your-computer"></a>Dostęp do portalu Moje aplikacje i korzystanie z niego na komputerze
+Jeśli masz uprawnienia do uzyskiwania dostępu do aplikacji opartych na chmurze w organizacji i korzystania z nich, możesz uzyskać do nich dostęp za pośrednictwem portalu **My Apps** .
 
-2.  Otwórz przeglądarkę internetową i przejdź do https://myapps.microsoft.com, albo użyj linku udostępnioną przez Twoją organizację. Na przykład możesz mogą być kierowane do dostosowanej strony dla całej organizacji, takich jak https://myapps.microsoft.com/contoso.com.
+1. Zaloguj się do konta służbowego.
 
-    **Aplikacje** zostanie wyświetlona strona, przedstawiający wszystkie aplikacje oparte na chmurze własnością Twojej organizacji i dostępna do użycia.
+2. Otwórz przeglądarkę internetową i przejdź do https://myapps.microsoft.com lub Użyj linku dostarczonego przez organizację. Na przykład może nastąpić przekierowanie do dostosowanej strony organizacji, https://myapps.microsoft.com/contoso.com na przykład.
 
-3. Z **aplikacje** stronie, wybierz aplikację, chcesz, aby rozpocząć korzystanie z.
-    
-    Nowa strona zostanie otwarta dla aplikacji, w którym można logowania (w razie potrzeby) lub rozpocząć korzystanie z aplikacji.
+    Zostanie wyświetlona strona **aplikacje** przedstawiająca wszystkie aplikacje oparte na chmurze należące do organizacji i dostępne do użycia.
 
-### <a name="access-and-use-the-my-apps-portal-on-an-intune-managed-browser"></a>Dostępu i użycia portalu Moje aplikacje w przeglądarce, zarządzane przez usługę Intune
-Wyświetl i korzystanie z aplikacji w organizacji z usługi Intune Managed Browser na urządzeniach z systemem Android i iOS.
+3. Na stronie **aplikacje** wybierz aplikację, której chcesz używać.
 
-1. Na swoim urządzeniu przenośnym, Pobierz i zainstaluj aplikację Intune Managed Browser ze [Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) i [Google Play Store](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser).
+    Zostanie otwarta nowa strona dla aplikacji, w której możesz zalogować się (w razie potrzeby) lub zacząć korzystać z aplikacji.
 
-2. Otwórz aplikację Intune Managed Browser, przejdź do https://myapps.microsoft.com, albo użyj linku udostępnioną przez Twoją organizację. Na przykład możesz mogą być kierowane do dostosowanej strony dla całej organizacji, takich jak https://myapps.microsoft.com/contoso.com.
+### <a name="access-and-use-the-my-apps-portal-on-an-intune-managed-browser"></a>Dostęp do portalu My Apps i korzystanie z niego w programie Intune Managed Browser
 
-    **Aplikacje** zostanie wyświetlona strona, przedstawiający wszystkie aplikacje oparte na chmurze własnością Twojej organizacji i dostępna do użycia.
+Wyświetlaj aplikacje organizacji i używaj ich z Intune Managed Browser na urządzeniach z systemem iOS lub Android.
 
-3. Z **aplikacje** stronie, wybierz aplikację, chcesz, aby rozpocząć korzystanie z.
-    
-    Nowa strona zostanie otwarta dla aplikacji, w którym można logowania (w razie potrzeby) lub rozpocząć korzystanie z aplikacji.
+1. Na urządzeniu przenośnym Pobierz i zainstaluj aplikację Intune Managed Browser ze [sklepu Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) i [sklep Google Play](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser).
 
-### <a name="access-and-use-the-my-apps-portal-on-an-ios-device"></a>Dostępu i użycia portalu Moje aplikacje na urządzeniu z systemem iOS
-Wyświetlanie i używanie **Moje aplikacje** portalu z urządzenia iPhone lub iPad, z systemem iOS w wersji 7 lub nowszy. Można także zainstalować [Moje aplikacje z aplikacji mobilnej](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8) uzyskiwania dostępu do aplikacji w organizacji na urządzeniach z systemem iOS. 
+2. Otwórz aplikację Intune Managed Browser, przejdź do https://myapps.microsoft.com lub Użyj linku dostarczonego przez organizację. Na przykład może nastąpić przekierowanie do dostosowanej strony organizacji, https://myapps.microsoft.com/contoso.com na przykład.
 
-1. Na swoim urządzeniu przenośnym Uruchom aplikację przeglądarki sieci web, takich jak Safari.
+    Zostanie wyświetlona strona **aplikacje** przedstawiająca wszystkie aplikacje oparte na chmurze należące do organizacji i dostępne do użycia.
 
-2. Przejdź do https://myapps.microsoft.com, albo użyj linku udostępnioną przez Twoją organizację. Na przykład możesz mogą być kierowane do dostosowanej strony dla całej organizacji, takich jak https://myapps.microsoft.com/contoso.com.
+3. Na stronie **aplikacje** wybierz aplikację, której chcesz używać.
 
-    **Aplikacje** zostanie wyświetlona strona, przedstawiający wszystkie aplikacje oparte na chmurze własnością Twojej organizacji i dostępna do użycia.
+    Zostanie otwarta nowa strona dla aplikacji, w której możesz zalogować się (w razie potrzeby) lub zacząć korzystać z aplikacji.
 
-3. Z **aplikacje** stronie, wybierz aplikację, chcesz, aby rozpocząć korzystanie z.
-    
-    Nowa strona zostanie otwarta dla aplikacji, w którym można logowania (w razie potrzeby) lub rozpocząć korzystanie z aplikacji.
+### <a name="access-and-use-the-my-apps-portal-on-an-ios-device"></a>Dostęp do portalu Moje aplikacje i korzystanie z niego na urządzeniu z systemem iOS
 
-### <a name="access-and-use-the-my-apps-portal-on-an-android-device"></a>Dostępu i użycia portalu Moje aplikacje na urządzeniu z systemem Android
-Wyświetlanie i używanie **Moje aplikacje** portalu na urządzeniu z systemem Android.
+Wyświetl Portal **Moje aplikacje** i korzystaj z niego z urządzenia iPhone lub iPad z systemem iOS w wersji 7 lub nowszej. Możesz także zainstalować [aplikację mobilną moje aplikacje](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8) , aby uzyskiwać dostęp do aplikacji organizacji na urządzeniach z systemem iOS. 
 
-1. Na swoim urządzeniu przenośnym Uruchom aplikację przeglądarki sieci web, np. Google Chrome.
+1. Na urządzeniu przenośnym Uruchom aplikację przeglądarki sieci Web, taką jak Safari.
 
-2. Przejdź do https://myapps.microsoft.com, albo użyj linku udostępnioną przez Twoją organizację. Na przykład możesz mogą być kierowane do dostosowanej strony dla całej organizacji, takich jak https://myapps.microsoft.com/contoso.com.
+2. Przejdź do https://myapps.microsoft.com lub Użyj linku dostarczonego przez organizację. Na przykład może nastąpić przekierowanie do dostosowanej strony organizacji, https://myapps.microsoft.com/contoso.com na przykład.
 
-    **Aplikacje** zostanie wyświetlona strona, przedstawiający wszystkie aplikacje oparte na chmurze własnością Twojej organizacji i dostępna do użycia.
+    Zostanie wyświetlona strona **aplikacje** przedstawiająca wszystkie aplikacje oparte na chmurze należące do organizacji i dostępne do użycia.
 
-3. Z **aplikacje** stronie, wybierz aplikację, chcesz, aby rozpocząć korzystanie z.
-    
-    Nowa strona zostanie otwarta dla aplikacji, w którym można logowania (w razie potrzeby) lub rozpocząć korzystanie z aplikacji.
+3. Na stronie **aplikacje** wybierz aplikację, której chcesz używać.
 
-## <a name="add-a-new-app-to-the-my-apps-portal"></a>Dodaj nową aplikację do portalu Moje aplikacje
-Jeśli administrator przyznał Ci uprawnienia, możesz dodać nową aplikację, aby **aplikacje** strony.
+    Zostanie otwarta nowa strona dla aplikacji, w której możesz zalogować się (w razie potrzeby) lub zacząć korzystać z aplikacji.
 
-1. Z **aplikacje** wybierz opcję **Dodaj aplikację**.
+### <a name="access-and-use-the-my-apps-portal-on-an-android-device"></a>Dostęp do portalu Moje aplikacje i korzystanie z niego na urządzeniu z systemem Android
 
-    **Dodaj aplikacje** zostanie wyświetlona strona.
+Wyświetl Portal **Moje aplikacje** i korzystaj z niego na urządzeniu z systemem Android.
 
-    ![Dodaj stronę aplikacji w portalu Moje aplikacje](media/my-apps-portal/my-apps-portal-add-apps-page.png)
+1. Na urządzeniu przenośnym Uruchom aplikację przeglądarki sieci Web, np. Google Chrome.
 
-2. Wybierz aplikację, aby dodać z podanej listy, a następnie wybierz **Dodaj**.
+2. Przejdź do https://myapps.microsoft.com lub Użyj linku dostarczonego przez organizację. Na przykład może nastąpić przekierowanie do dostosowanej strony organizacji, https://myapps.microsoft.com/contoso.com na przykład.
 
-3. Aplikacja zostanie dodany do listy na **aplikacje** strony.
+    Zostanie wyświetlona strona **aplikacje** przedstawiająca wszystkie aplikacje oparte na chmurze należące do organizacji i dostępne do użycia.
 
-    Niektóre aplikacje mogą wymagać zgody administratora, przed dodaniem. W takiej sytuacji aplikacja nie została dodana do **aplikacje** strony, aż administrator zatwierdzi go.
+3. Na stronie **aplikacje** wybierz aplikację, której chcesz używać.
+
+    Zostanie otwarta nowa strona dla aplikacji, w której możesz zalogować się (w razie potrzeby) lub zacząć korzystać z aplikacji.
+
+## <a name="add-a-new-app-to-the-my-apps-portal"></a>Dodawanie nowej aplikacji do portalu My Apps
+
+Jeśli administrator udzielił Ci uprawnień, możesz dodać nową aplikację do strony **aplikacje** .
+
+1. Na stronie **aplikacje** wybierz pozycję **Dodaj aplikację**.
+
+    Zostanie wyświetlona strona **Dodawanie aplikacji** .
+
+    ![Strona Dodawanie aplikacji w portalu Moje aplikacje](media/my-apps-portal/my-apps-portal-add-apps-page.png)
+
+2. Wybierz aplikację, którą chcesz dodać z podanej listy, a następnie wybierz pozycję **Dodaj**.
+
+3. Aplikacja zostanie dodana do listy na stronie **aplikacje** .
+
+    Niektóre aplikacje mogą wymagać zatwierdzenia przez administratora przed dodaniem. W takiej sytuacji aplikacja nie została dodana do strony **aplikacje** do momentu zatwierdzenia jej przez administratora.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Po uzyskaniu do **aplikacje** strony, można wykonać następujące czynności:
 
-- [Zmiana informacji o Twoim profilu](my-apps-portal-end-user-update-profile.md).
+Po przejściu do strony **aplikacje** możesz:
 
-- [Wyświetl i zaktualizuj swoje informacje związane z grupami](my-apps-portal-end-user-groups.md).
+- [Zmienianie informacji o profilu](my-apps-portal-end-user-update-profile.md)
 
-- [Wykonywać własne przeglądów dostępu](my-apps-portal-end-user-access-reviews.md).
+- [Wyświetlanie i aktualizowanie informacji związanych z grupami](my-apps-portal-end-user-groups.md)
+
+- [Wykonywanie własnych przeglądów dostępu](my-apps-portal-end-user-access-reviews.md)

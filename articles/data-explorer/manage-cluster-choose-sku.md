@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/14/2019
-ms.openlocfilehash: 0239111ca56dfe431a00eee83c79eedccc66c927
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
-ms.translationtype: HT
+ms.openlocfilehash: b0cf6eab86b0b932e44b6824305c23df01f35808
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226150"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383819"
 ---
 # <a name="select-the-correct-vm-sku-for-your-azure-data-explorer-cluster"></a>Wybierz poprawną jednostkę SKU maszyny wirtualnej dla klastra usługi Azure Eksplorator danych 
 
@@ -39,11 +39,11 @@ Usługa Azure Eksplorator danych oferuje dwa typy klastrów:
 
 Podczas tworzenia klastra usługi Azure Eksplorator danych wybierz optymalną  jednostkę SKU maszyny wirtualnej dla planowanego obciążenia. Usługa Azure Eksplorator danych ma dwie rodziny jednostek SKU, z których można wybrać:
 
-* **D_V2**: Jednostka SKU w wersji **D** jest zoptymalizowana pod kątem obliczeń i udostępniana w dwóch wersjach.
+* **D_V2**: Jednostka SKU w wersji D jest zoptymalizowana pod kątem obliczeń i udostępniana w dwóch wersjach.
     * Sama maszyna wirtualna
     * Maszyna wirtualna z dyskami magazynu Premium Storage
 
-* **LS**: Jednostka SKU **L** jest zoptymalizowana pod kątem magazynu. Ma znacznie większy rozmiar SSD niż podobna jednostka SKU **D** .
+* **LS**: Jednostka SKU L jest zoptymalizowana pod kątem magazynu. Ma znacznie większy rozmiar SSD niż podobna jednostka SKU **D** .
 
 Poniższa tabela zawiera podstawowe różnice między dostępnymi typami jednostek SKU:
  
@@ -72,13 +72,13 @@ W poniższej tabeli przedstawiono specyfikacje techniczne dla maszyn wirtualnych
 |D12_v2| Optymalizacja pod kątem obliczeń | 150 GB   | 4 | 28 GB | 0 | 2 | 16
 |D13_v2| Optymalizacja pod kątem obliczeń | 307 GB   | 8 | 56 GB | 0 | 2 | 1000
 |D14_v2| Optymalizacja pod kątem obliczeń | 614 GB   | 16| 112 GB | 0 | 2 | 1000
-|DS13_v2 + 1 TB PS| Zoptymalizowane pod kątem magazynu | 1 TB | 8 | 56 GB | 1 | 2 | 1000
-|DS13_v2 + 2 TB PS| Zoptymalizowane pod kątem magazynu | 2 TB | 8 | 56 GB | 2 | 2 | 1000
-|DS14_v2 + NADMIAROWE PS| Zoptymalizowane pod kątem magazynu | 3 TB | 16 | 112 GB | 2 | 2 | 1000
-|DS14_v2 + 4 TB PS| Zoptymalizowane pod kątem magazynu | 4 TB | 16 | 112 GB | 4 | 2 | 1000
-|L4s_v1| Zoptymalizowane pod kątem magazynu | 650 GB | 4 | 32 GB | 0 | 2 | 16
-|L8s_v1| Zoptymalizowane pod kątem magazynu | 1,3 TB | 8 | 64 GB | 0 | 2 | 1000
-|L16s_1| Zoptymalizowane pod kątem magazynu | 2,6 TB | 16| 128 GB | 0 | 2 | 1000
+|DS13_v2 + 1 TB PS| zoptymalizowane pod kątem magazynu | 1 TB | 8 | 56 GB | 1 | 2 | 1000
+|DS13_v2 + 2 TB PS| zoptymalizowane pod kątem magazynu | 2 TB | 8 | 56 GB | 2 | 2 | 1000
+|DS14_v2 + NADMIAROWE PS| zoptymalizowane pod kątem magazynu | 3 TB | 16 | 112 GB | 2 | 2 | 1000
+|DS14_v2 + 4 TB PS| zoptymalizowane pod kątem magazynu | 4 TB | 16 | 112 GB | 4 | 2 | 1000
+|L4s_v1| zoptymalizowane pod kątem magazynu | 650 GB | 4 | 32 GB | 0 | 2 | 16
+|L8s_v1| zoptymalizowane pod kątem magazynu | 1,3 TB | 8 | 64 GB | 0 | 2 | 1000
+|L16s_1| zoptymalizowane pod kątem magazynu | 2,6 TB | 16| 128 GB | 0 | 2 | 1000
 
 * Wyświetlanie listy zaktualizowanych jednostek SKU maszyn wirtualnych na region przy użyciu [interfejsu API](/dotnet/api/microsoft.azure.management.kusto.clustersoperationsextensions.listskus?view=azure-dotnet)usługi Azure Eksplorator danych ListSkus. 
 * Dowiedz się więcej o różnych jednostkach [SKU obliczeniowych](/azure/virtual-machines/windows/sizes-compute). 

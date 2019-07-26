@@ -1,63 +1,59 @@
 ---
-title: Zainstaluj program .NET w ramach ról usług Azure Cloud Services | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak ręcznie zainstalować program .NET Framework na role usługi w chmurze w sieci web i proces roboczy
+title: Instalowanie platformy .NET na rolach usługi Azure Cloud Services | Microsoft Docs
+description: W tym artykule opisano sposób ręcznej instalacji .NET Framework w roli sieć Web i proces roboczy usługi w chmurze
 services: cloud-services
 documentationcenter: .net
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 8d1243dc-879c-4d1f-9ed0-eecd1f6a6653
+author: georgewallace
+manager: carmonm
 ms.service: cloud-services
 ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/22/2018
-ms.author: jeconnoc
-ms.openlocfilehash: bc861b6730e8bf9db6ba2ab005496914f7b9ed89
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: gwallace
+ms.openlocfilehash: 25151f154b9806646406639df3efd7616e53f6bf
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64699677"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359638"
 ---
-# <a name="install-net-on-azure-cloud-services-roles"></a>Zainstaluj program .NET w ramach ról usług Azure Cloud Services
-W tym artykule opisano sposób instalowania wersji programu .NET Framework, które nie pochodzą z systemu operacyjnego gościa platformy Azure. Aby skonfigurować role usługi w chmurze w sieci web i proces roboczy, można użyć platformy .NET w systemie operacyjnym gościa.
+# <a name="install-net-on-azure-cloud-services-roles"></a>Zainstaluj platformę .NET na rolach usługi Azure Cloud Services
+W tym artykule opisano sposób instalowania wersji .NET Framework, które nie są dostępne w systemie operacyjnym gościa platformy Azure. Możesz użyć platformy .NET w systemie operacyjnym gościa, aby skonfigurować role sieci Web i proces roboczy usługi w chmurze.
 
-Na przykład można zainstalować .NET 4.6.2 rodziny systemów operacyjnych gościa 4, która nie pochodzi z dowolnej wersji programu .NET 4.6. (5 z rodziny systemów operacyjnych gościa jest dostarczany z .NET 4.6). Aby uzyskać najnowsze informacje o wersjach systemu operacyjnego gościa platformy Azure, zobacz [informacje o nowych wersjach systemu operacyjnego gościa Azure](cloud-services-guestos-update-matrix.md). 
+Na przykład można zainstalować platformę .NET 4.6.2 w rodzinie systemu operacyjnego gościa 4, która nie jest dostępna w żadnej wersji programu .NET 4,6. (Rodzina systemów operacyjnych gościa 5 jest dostarczana z platformą .NET 4,6). Aby uzyskać najnowsze informacje na temat wydań systemu operacyjnego gościa platformy Azure, zobacz informacje o [wersji systemu operacyjnego gościa platformy Azure](cloud-services-guestos-update-matrix.md). 
 
 >[!IMPORTANT]
->Zestaw Azure SDK 2.9 zawiera ograniczenia dotyczące wdrażania .NET 4.6 rodziny systemów operacyjnych gościa, 4 lub wersji wcześniejszych. Poprawka dla ograniczenia jest dostępna w [Microsoft Docs](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9) lokacji.
+>Zestaw Azure SDK 2,9 zawiera ograniczenie wdrożenia programu .NET 4,6 w rodzinie systemów operacyjnych gościa 4 lub starszej. Poprawka jest dostępna w witrynie [Microsoft docs](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9) .
 
-Aby zainstalować program .NET w roli sieci web i proces roboczy, obejmują Instalator sieci web platformy .NET w ramach projektu usługi w chmurze. Uruchom Instalatora jako część zadania uruchamiania roli. 
+Aby zainstalować platformę .NET w rolach sieci Web i procesu roboczego, Dołącz Instalatora sieci Web .NET w ramach projektu usługi w chmurze. Uruchom Instalatora w ramach zadań uruchamiania roli. 
 
-## <a name="add-the-net-installer-to-your-project"></a>Dodaj Instalatora .NET do projektu
-Aby pobrać Instalator internetowy programu .NET Framework, należy wybrać wersję, która ma zostać zainstalowany:
+## <a name="add-the-net-installer-to-your-project"></a>Dodawanie Instalatora platformy .NET do projektu
+Aby pobrać Instalatora sieci Web dla .NET Framework, wybierz wersję, którą chcesz zainstalować:
 
-* [Instalator sieci web 4.8 platformy .NET](https://dotnet.microsoft.com/download/thank-you/net48)
-* [Instalator sieci web platformy .NET 4.7.2](https://go.microsoft.com/fwlink/?LinkId=863262)
-* [Instalator sieci web platformy .NET 4.6.2](https://www.microsoft.com/download/details.aspx?id=53345)
+* [Instalator sieci Web programu .NET 4,8](https://dotnet.microsoft.com/download/thank-you/net48)
+* [Instalator sieci Web platformy .NET 4.7.2](https://go.microsoft.com/fwlink/?LinkId=863262)
+* [Instalator sieci Web platformy .NET 4.6.2](https://www.microsoft.com/download/details.aspx?id=53345)
 
-Aby dodać Instalatora dla *web* roli:
-  1. W **Eksploratora rozwiązań**w obszarze **role** w projekt usługi w chmurze, kliknij prawym przyciskiem myszy swoje *web* rolę i wybierz pozycję **Dodaj**  >  **Nowy Folder**. Utwórz folder o nazwie **bin**.
-  2. Kliknij prawym przyciskiem myszy bin folder, a następnie wybierz pozycję **Dodaj** > **istniejący element**. Wybierz Instalatora .NET i dodaj go do folderu bin.
+Aby dodać Instalatora dla roli *sieci Web* :
+  1. W **Eksplorator rozwiązań**, w obszarze **role** w projekcie usługi w chmurze, kliknij prawym przyciskiem myszy rolę *sieci Web* i wybierz polecenie **Dodaj** > **Nowy folder**. Utwórz folder o nazwie **bin**.
+  2. Kliknij prawym przyciskiem myszy folder bin i wybierz polecenie **Dodaj** > **istniejący element**. Wybierz Instalatora .NET i dodaj go do folderu bin.
   
-Aby dodać Instalatora dla *procesu roboczego* roli:
-* Kliknij prawym przyciskiem myszy użytkownika *procesu roboczego* rolę i wybierz pozycję **Dodaj** > **istniejący element**. Wybierz Instalatora .NET i dodaj go do roli. 
+Aby dodać Instalatora dla roli *proces roboczy* :
+* Kliknij prawym przyciskiem myszy rolę *procesu roboczego* i wybierz pozycję **Dodaj** > **istniejący element**. Wybierz Instalatora .NET i dodaj go do roli. 
 
-Gdy pliki zostaną dodane w ten sposób do folderu zawartości rola, są automatycznie dodawane do pakietu usługi w chmurze. Pliki są następnie wdrażane na spójne lokalizacji na maszynie wirtualnej. Powtórz ten proces dla każdej roli sieci web i proces roboczy w usłudze w chmurze, więc, że wszystkie role mają kopię Instalatora.
+Gdy pliki są dodawane w ten sposób do folderu zawartości roli, są one automatycznie dodawane do pakietu usługi w chmurze. Pliki są następnie wdrażane do spójnej lokalizacji na maszynie wirtualnej. Powtórz ten proces dla każdej roli sieci Web i procesu roboczego w usłudze w chmurze, aby wszystkie role miały kopię Instalatora.
 
 > [!NOTE]
-> Należy zainstalować .NET 4.6.2 na rola usługi w chmurze, nawet wtedy, gdy aplikacja jest przeznaczony dla .NET 4.6. System operacyjny gościa zawiera baza wiedzy [aktualizacji 3098779](https://support.microsoft.com/kb/3098779) i [aktualizacji 3097997](https://support.microsoft.com/kb/3097997). Po uruchomieniu aplikacji .NET, jeśli .NET 4.6 jest zainstalowany na podstawie aktualizacje bazy wiedzy Knowledge Base, mogą wystąpić problemy. Aby uniknąć tych problemów, należy zainstalować .NET 4.6.2, a nie w wersji 4.6. Aby uzyskać więcej informacji, zobacz [artykuł bazy wiedzy 3118750](https://support.microsoft.com/kb/3118750) i [4340191](https://support.microsoft.com/kb/4340191).
+> Należy zainstalować platformę .NET 4.6.2 w roli usługi w chmurze, nawet jeśli aplikacja jest przeznaczona dla platformy .NET 4,6. System operacyjny gościa zawiera aktualizację bazy wiedzy [3098779](https://support.microsoft.com/kb/3098779) i [aktualizację 3097997](https://support.microsoft.com/kb/3097997). Problemy mogą wystąpić podczas uruchamiania aplikacji .NET, jeśli program .NET 4,6 jest zainstalowany na podstawie aktualizacji bazy wiedzy. Aby uniknąć tych problemów, należy zainstalować platformę .NET 4.6.2 zamiast wersji 4,6. Aby uzyskać więcej informacji, zobacz [artykuł w bazie wiedzy 3118750](https://support.microsoft.com/kb/3118750) i [4340191](https://support.microsoft.com/kb/4340191).
 > 
 > 
 
-![Rola zawartości z plikami Instalatora][1]
+![Zawartość roli z plikami Instalatora][1]
 
-## <a name="define-startup-tasks-for-your-roles"></a>Zdefiniuj zadania uruchamiania dla swoich ról
-Zadania uruchamiania służy do wykonywania operacji przed rozpoczęciem roli. Instalowanie programu .NET Framework jako część zadania uruchamiania gwarantuje, czy framework jest zainstalowany, przed uruchomieniem jakiegokolwiek kodu aplikacji. Aby uzyskać więcej informacji na temat uruchamiania zadań, zobacz [uruchomienia zadania uruchamiania na platformie Azure](cloud-services-startup-tasks.md). 
+## <a name="define-startup-tasks-for-your-roles"></a>Definiowanie zadań uruchamiania dla ról
+Zadania uruchamiania umożliwiają wykonywanie operacji przed rozpoczęciem roli. Zainstalowanie .NET Framework w ramach zadania uruchamiania zapewnia, że struktura jest zainstalowana przed uruchomieniem kodu aplikacji. Aby uzyskać więcej informacji na temat zadań uruchamiania, zobacz [Uruchamianie zadań uruchamiania na platformie Azure](cloud-services-startup-tasks.md). 
 
-1. Dodaj następującą zawartość do pliku ServiceDefinition.csdef w obszarze **WebRole** lub **workerrole —** węzła dla wszystkich ról:
+1. Dodaj następującą zawartość do pliku ServiceDefinition. csdef w węźle webrole  lub **rola procesu roboczego** dla wszystkich ról:
    
     ```xml
     <LocalResources>
@@ -77,19 +73,19 @@ Zadania uruchamiania służy do wykonywania operacji przed rozpoczęciem roli. I
     </Startup>
     ```
    
-    Tej konfiguracji uruchamia polecenie konsoli `install.cmd` z uprawnieniami administratora, aby zainstalować program .NET Framework. Tworzy również konfigurację **LocalStorage** elementu o nazwie **NETFXInstall**. Skrypt uruchamiania ustawia folderu tymczasowego do używania tego zasobu magazynu lokalnego. 
+    Poprzednia konfiguracja uruchamia polecenie `install.cmd` konsoli z uprawnieniami administratora w celu zainstalowania .NET Framework. Konfiguracja tworzy również element **LOCALSTORAGE** o nazwie **NETFXInstall**. Skrypt uruchamiania ustawia folder tymczasowy do korzystania z tego zasobu magazynu lokalnego. 
     
     > [!IMPORTANT]
-    > W celu zapewnienia prawidłowego zainstalowania Framework, należy ustawić co najmniej 1024 MB rozmiar tego zasobu.
+    > Aby zapewnić poprawną instalację platformy, należy ustawić rozmiar tego zasobu na co najmniej 1 024 MB.
     
-    Aby uzyskać więcej informacji na temat uruchamiania zadań, zobacz [zadania uruchamiania typowych usług Azure Cloud Services](cloud-services-startup-tasks-common.md).
+    Aby uzyskać więcej informacji na temat zadań uruchamiania, zobacz [typowe zadania uruchamiania Cloud Services platformy Azure](cloud-services-startup-tasks-common.md).
 
-2. Utwórz plik o nazwie **install.cmd** i Dodaj poniższy skrypt instalacji do pliku.
+2. Utwórz plik o nazwie **install. cmd** i Dodaj do pliku następujący skrypt instalacyjny.
 
-   Skrypt sprawdza, czy określonej wersji programu .NET Framework jest już zainstalowana na maszynie wykonując zapytanie w rejestrze. Jeśli nie zainstalowano programu .NET w wersji, Instalator sieci web platformy .NET jest otwarty. Aby ułatwić rozwiązywanie problemów, skrypt loguje wszelką aktywność do pliku startuptasklog-(bieżąca data i godzina) .txt, która jest przechowywana w **InstallLogs** magazynu lokalnego.
+   Skrypt sprawdza, czy określona wersja .NET Framework jest już zainstalowana na maszynie przez przeszukiwanie rejestru. Jeśli wersja platformy .NET nie jest zainstalowana, zostanie otwarty Instalator sieci Web platformy .NET. Aby pomóc w rozwiązywaniu wszelkich problemów, skrypt rejestruje wszystkie działania w pliku startuptasklog — (bieżąca data i godzina). txt, który jest przechowywany w magazynie lokalnym **InstallLogs** .
    
    > [!IMPORTANT]
-   > Użyj edytora tekstów podstawowy przykład w Notatniku Windows, aby utworzyć plik install.cmd. Jeśli używasz programu Visual Studio Utwórz plik tekstowy i zmień rozszerzenie na .cmd plik nadal może zawierać znacznik kolejności bajtów UTF-8. Ten znacznik może spowodować błąd, gdy jest uruchamiany w pierwszy wiersz skryptu. Aby uniknąć tego błędu, należy utworzyć pierwszy wiersz skryptu rem — instrukcja, który można było pominąć, stosując przetwarzanie kolejności bajtów. 
+   > Użyj podstawowego edytora tekstu, takiego jak Notatnik systemu Windows, aby utworzyć plik Install. cmd. Jeśli używasz programu Visual Studio do utworzenia pliku tekstowego i zmienisz rozszerzenie na cmd, plik może nadal zawierać znacznik kolejności bajtów UTF-8. Ten znacznik może spowodować błąd podczas uruchamiania pierwszego wiersza skryptu. Aby uniknąć tego błędu, Utwórz pierwszy wiersz skryptu instrukcja REM, która może zostać pominięta przez przetwarzanie kolejności bajtów. 
    > 
    >
    
@@ -201,17 +197,17 @@ Zadania uruchamiania służy do wykonywania operacji przed rozpoczęciem roli. I
    EXIT /B 0
    ```
 
-3. Dodaj plik install.cmd do każdej roli przy użyciu **Dodaj** > **istniejący element** w **Eksploratora rozwiązań** zgodnie z opisem we wcześniejszej części tego tematu. 
+3. Dodaj plik Install. cmd do każdej roli za pomocą polecenia **Dodaj** > **istniejący element** w **Eksplorator rozwiązań** zgodnie z opisem we wcześniejszej części tego tematu. 
 
-    Po ukończeniu tego kroku wszystkie role powinny mieć plik Instalatora .NET i plik install.cmd.
+    Po zakończeniu tego kroku wszystkie role powinny mieć plik Instalatora .NET i plik Install. cmd.
 
-   ![Zawartość roli przy użyciu wszystkich plików][2]
+   ![Zawartość roli ze wszystkimi plikami][2]
 
-## <a name="configure-diagnostics-to-transfer-startup-logs-to-blob-storage"></a>Konfigurowanie diagnostyki dzienników uruchamiania transferu do magazynu obiektów Blob
-Aby ułatwić rozwiązywanie problemów z instalacją, można skonfigurować usługi Azure Diagnostics, aby przenieść wszystkie pliki dziennika generowane przez skrypt uruchamiania lub Instalatora .NET w usłudze Azure Blob storage. Za pomocą tego podejścia, możesz wyświetlić dzienniki przez pobranie plików dziennika z magazynu obiektów Blob, niż musieć go pulpitu zdalnego do roli.
+## <a name="configure-diagnostics-to-transfer-startup-logs-to-blob-storage"></a>Konfigurowanie diagnostyki do transferowania dzienników uruchamiania do magazynu obiektów BLOB
+Aby uprościć Rozwiązywanie problemów z instalacją, można skonfigurować Diagnostyka Azure do transferu plików dziennika wygenerowanych przez skrypt uruchamiania lub Instalatora .NET do usługi Azure Blob Storage. Korzystając z tej metody, można wyświetlić dzienniki, pobierając pliki dziennika z magazynu obiektów blob, a nie przyłączając pulpitu zdalnego do roli.
 
 
-Aby skonfigurować diagnostykę, otwórz plik diagnostics.wadcfgx i dodaj następującą zawartość w obszarze **katalogi** węzła: 
+Aby skonfigurować diagnostykę, Otwórz plik Diagnostics. wadcfgx i Dodaj następującą zawartość w węźle **katalogi** : 
 
 ```xml 
 <DataSources>
@@ -221,15 +217,15 @@ Aby skonfigurować diagnostykę, otwórz plik diagnostics.wadcfgx i dodaj nastę
 </DataSources>
 ```
 
-Poniższy kod XML konfiguruje diagnostyki do transferu plików w katalogu dzienników w **NETFXInstall** zasobów do konta magazynu diagnostyki w **netfx instalacji** kontenera obiektów blob.
+Ten plik XML konfiguruje diagnostykę do transferu plików w katalogu dziennika w zasobie **NETFXInstall** do konta magazynu diagnostyki w kontenerze obiektów BLOB **NetFx-Install** .
 
 ## <a name="deploy-your-cloud-service"></a>Wdrażanie usługi w chmurze
-Podczas wdrażania usługi w chmurze, jeśli jeszcze nie zainstalowano zadania uruchamiania zainstalować program .NET Framework. Role usługi w chmurze znajdują się w *zajęty* stan podczas instalowania programu framework. Jeśli instalacja framework wymaga ponownego uruchomienia, ról usługi również może zostać ponownie uruchomiony. 
+Podczas wdrażania usługi w chmurze zadania uruchamiania instalują .NET Framework, jeśli nie zostały jeszcze zainstalowane. Twoje role usługi w chmurze są w  stanie zajętym podczas instalowania platformy. Jeśli instalacja struktury wymaga ponownego uruchomienia, role usługi mogą być również ponownie uruchomione. 
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
-* [Instalowanie programu .NET Framework][Installing the .NET Framework]
-* [Określanie, które wersje programu .NET Framework są zainstalowane.][How to: Determine Which .NET Framework Versions Are Installed]
-* [Rozwiązywanie problemów z instalacją .NET Framework][Troubleshooting .NET Framework Installations]
+* [Instalowanie .NET Framework][Installing the .NET Framework]
+* [Ustal, które wersje .NET Framework są zainstalowane][How to: Determine Which .NET Framework Versions Are Installed]
+* [Rozwiązywanie problemów z instalacjami .NET Framework][Troubleshooting .NET Framework Installations]
 
 [How to: Determine Which .NET Framework Versions Are Installed]: /dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed
 [Installing the .NET Framework]: /dotnet/framework/install/guide-for-developers

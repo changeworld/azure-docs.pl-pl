@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie replikacji dla maszyn wirtualnych z włączoną obsługą usługi Azure Disk Encryption w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób konfigurowania replikacji z obsługą usługi Azure Disk Encryption maszyn wirtualnych między regionami platformy Azure do innego za pomocą usługi Site Recovery.
+title: Skonfiguruj replikację dla maszyn wirtualnych z włączoną funkcją Azure Disk Encryption w Azure Site Recovery | Microsoft Docs
+description: W tym artykule opisano sposób konfigurowania replikacji dla maszyn wirtualnych z włączoną funkcją Azure Disk Encryption z jednego regionu świadczenia usługi Azure do innego przy użyciu Site Recovery.
 services: site-recovery
 author: asgang
 manager: rochakm
@@ -8,157 +8,153 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: b2e9bf7fbe7d5940b517d97dcc15d21c30835001
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b000610b5cba6f768a629ad797500a57597f2569
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449217"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335698"
 ---
-# <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Replikowanie maszyn wirtualnych z obsługą usługi Azure Disk Encryption do innego regionu platformy Azure
+# <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Replikowanie maszyn wirtualnych z obsługą Azure Disk Encryption w innym regionie platformy Azure
 
-W tym artykule opisano sposób replikowania maszyn wirtualnych z włączoną funkcją szyfrowania dysków Azure między regionami platformy Azure do innego.
-
->[!NOTE]
->Usługa Azure Site Recovery aktualnie obsługuje tylko maszyny wirtualne platformy Azure z systemem Windows OS, które są [włączonego szyfrowania w usłudze Azure Active Directory (Azure AD)](https://aka.ms/ade-aad-app).
-
-## <a id="required-user-permissions"></a> Uprawnienia użytkownika wymagane
-Usługa Site Recovery wymaga od użytkownika musi mieć uprawnienia do tworzenia magazynu kluczy w docelowym regionie i kopiowanie kluczy do regionu.
-
-Aby włączyć replikację włączone szyfrowanie dysków maszyn wirtualnych w witrynie Azure portal, użytkownik wymaga następujących uprawnień:
-
-- Uprawnienia usługi Key vault
-    - List
-    - Przycisk Utwórz
-    - Get
-
--   Uprawnienia klucza tajnego usługi Key vault
-    - List
-    - Przycisk Utwórz
-    - Get
-
-- Uprawnienia klucza magazynu kluczy (wymagane tylko wtedy, gdy klucz szyfrowania używany przez maszyny wirtualne do szyfrowania kluczy szyfrowania dysków)
-    - List
-    - Get
-    - Przycisk Utwórz
-    - Szyfrowanie
-    - Odszyfrowywanie
-
-Aby zarządzać uprawnieniami, przejdź do zasobu magazynu kluczy w portalu. Dodaj wymagane uprawnienia dla użytkownika. Poniższy przykład pokazuje, jak włączyć uprawnienia do magazynu kluczy *ContosoWeb2Keyvault*, która znajduje się w regionie źródłowym.
-
-1. Przejdź do **Home** > **Keyvaults** > **ContosoWeb2KeyVault > zasady dostępu**.
-
-   ![Okno uprawnień usługi Key vault](./media/azure-to-azure-how-to-enable-replication-ade-vms/key-vault-permission-1.png)
-
-2. Widać, że nie istnieją żadne uprawnienia użytkownika. Wybierz **Dodaj nowe**. Wprowadź informacje o użytkowniku i uprawnienia.
-
-   ![uprawnienia usługi keyvault](./media/azure-to-azure-how-to-enable-replication-ade-vms/key-vault-permission-2.png)
-
-Użytkownik, który jest włączenie odzyskiwania po awarii (DR) nie ma uprawnień, aby skopiować kluczy, administratora zabezpieczeń, który ma odpowiednie uprawnienia służy poniższy skrypt do skopiowania szyfrowania, wpisy tajne i klucze w regionie docelowym.
-
-Rozwiązywanie problemów z uprawnieniami, znaleźć [klucza magazynu problemów związanych z uprawnieniami](#trusted-root-certificates-error-code-151066) w dalszej części tego artykułu.
+W tym artykule opisano, jak replikować maszyny wirtualne z obsługą Azure Disk Encryption z jednego regionu platformy Azure do innego.
 
 >[!NOTE]
->Aby włączyć replikację włączone szyfrowanie dysków maszyn wirtualnych z poziomu portalu, możesz potrzebujesz co najmniej "List" uprawnień do magazynów kluczy, wpisów tajnych i kluczy.
+>Azure Site Recovery obecnie obsługuje tylko maszyny wirtualne platformy Azure z systemem operacyjnym Windows i obsługujące [szyfrowanie za pomocą Azure Active Directory (Azure AD)](https://aka.ms/ade-aad-app).
 
-## <a name="copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script"></a>Kopiowanie kluczy szyfrowania dysków w regionie odzyskiwania po awarii przy użyciu skryptu programu PowerShell
+## <a id="required-user-permissions"></a>Wymagane uprawnienia użytkownika
+Site Recovery wymaga, aby użytkownik miał uprawnienia do tworzenia magazynu kluczy w regionie docelowym i kopiowania kluczy do regionu.
 
-1. [Otwórz kod skryptu raw "CopyKeys"](https://aka.ms/ade-asr-copy-keys-code).
-2. Skopiuj skrypt do pliku i nadaj mu nazwę **keys.ps1 kopiowania**.
-3. Otwórz aplikację programu Windows PowerShell i przejdź do folderu, w którym został zapisany plik.
-4. Wykonaj kopię keys.ps1.
-5. Podaj poświadczenia platformy Azure, aby zalogować się.
-6. Wybierz **subskrypcji platformy Azure** maszyn wirtualnych.
-7. Poczekaj, aż grup zasobów, aby załadować, a następnie wybierz **grupy zasobów** maszyn wirtualnych.
-8. Wybierz maszyny wirtualne z wyświetlonej listy. Tylko maszyny wirtualne, które aktywowano na potrzeby szyfrowania dysków znajdują się na liście.
-9. Wybierz **lokalizacja docelowa**.
+Aby włączyć replikację maszyn wirtualnych z włączoną funkcją szyfrowania dysku z Azure Portal, użytkownik musi mieć następujące uprawnienia:
 
-    - **Magazyny kluczy szyfrowania dysku**
-    - **Magazyny kluczy szyfrowania**
+- Uprawnienia magazynu kluczy
+    - List, Create i Get
+    
+- Uprawnienia klucza tajnego magazynu kluczy
+    - Operacje zarządzania wpisami tajnymi
+        - Pobierz, Wyświetl i ustaw
+    
+- Uprawnienia klucza magazynu kluczy (wymagane tylko wtedy, gdy maszyny wirtualne używają klucza szyfrowania klucza do szyfrowania kluczy szyfrowania dysku)
+    - Operacje zarządzania kluczami
+        - Pobierz, Wyświetl i Utwórz
+    - Operacje kryptograficzne
+        - Odszyfruj i Szyfruj
 
-   Domyślnie usługa Site Recovery tworzy nowy magazyn kluczy w regionie docelowym. Nazwa magazynu ma sufiks "asr", który jest oparty na kluczy szyfrowania dysków maszyny Wirtualnej źródłowego. Jeśli magazyn kluczy jest już utworzony przez usługę Site Recovery, zostanie on użyty ponownie. Wybierz inny magazyn kluczy z listy, jeśli to konieczne.
+Aby zarządzać uprawnieniami, przejdź do zasobu magazynu kluczy w portalu. Dodaj wymagane uprawnienia dla użytkownika. Poniższy przykład pokazuje, jak włączyć uprawnienia do magazynu kluczy *ContosoWeb2Keyvault*, który znajduje się w regionie źródłowym.
+
+1. Przejdź do **głównych** > **magazynów** > kluczy**ContosoWeb2KeyVault > zasad dostępu**.
+
+   ![Okno uprawnień magazynu kluczy](./media/azure-to-azure-how-to-enable-replication-ade-vms/key-vault-permission-1.png)
+
+2. Możesz zobaczyć, że nie ma żadnych uprawnień użytkownika. Wybierz pozycję **Dodaj nowy**. Wprowadź informacje o użytkowniku i uprawnieniach.
+
+   ![Uprawnienia magazynu kluczy](./media/azure-to-azure-how-to-enable-replication-ade-vms/key-vault-permission-2.png)
+
+Jeśli użytkownik, który włączył odzyskiwanie po awarii (DR) nie ma uprawnień do kopiowania kluczy, administrator zabezpieczeń, który ma odpowiednie uprawnienia, może użyć następującego skryptu w celu skopiowania kluczy tajnych szyfrowania i klucza do regionu docelowego.
+
+Rozwiązywanie problemów z uprawnieniami można znaleźć [w dalszej](#trusted-root-certificates-error-code-151066) części tego artykułu.
+
+>[!NOTE]
+>Aby włączyć replikację maszyn wirtualnych z włączoną funkcją szyfrowania dysków z portalu, musisz mieć co najmniej uprawnienia "list" dotyczące magazynów kluczy, wpisów tajnych i kluczy.
+
+## <a name="copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script"></a>Kopiowanie kluczy szyfrowania dysku do regionu DR przy użyciu skryptu programu PowerShell
+
+1. [Otwórz kod skryptu RAW "CopyKeys"](https://aka.ms/ade-asr-copy-keys-code).
+2. Skopiuj skrypt do pliku i nadaj mu nazwę **copy-Keys. ps1**.
+3. Otwórz aplikację Windows PowerShell i przejdź do folderu, w którym zapisano plik.
+4. Wykonaj Copy-Keys. ps1.
+5. Podaj poświadczenia platformy Azure, aby się zalogować.
+6. Wybierz **subskrypcję platformy Azure** dla maszyn wirtualnych.
+7. Zaczekaj na załadowanie grup zasobów, a następnie wybierz **grupę zasobów** maszyn wirtualnych.
+8. Wybierz Maszyny wirtualne z wyświetlonej listy. Na liście znajdują się tylko maszyny wirtualne, na których włączono szyfrowanie dysków.
+9. Wybierz **lokalizację**docelową.
+
+    - **Magazyny kluczy szyfrowania dysków**
+    - **Magazyny kluczy szyfrowania kluczy**
+
+   Domyślnie Site Recovery tworzy nowy magazyn kluczy w regionie docelowym. Nazwa magazynu ma sufiks "ASR" oparty na kluczach szyfrowania źródłowych dysków maszyny wirtualnej. Jeśli magazyn kluczy już istnieje, który został utworzony przez Site Recovery, jest ponownie używany. W razie potrzeby wybierz inny magazyn kluczy z listy.
 
 ## <a name="enable-replication"></a>Włączanie replikacji
 
-Na przykład Azure region podstawowy jest Azja Wschodnia, a w regionie pomocniczym jest Azja południowo-wschodnia.
+W tym przykładzie głównym regionem świadczenia usługi Azure jest Azja Wschodnia, a region pomocniczy to południowo Azja Wschodnia.
 
-1. W magazynie, wybierz **+ Replikuj**.
-2. Należy zauważyć następujące pola.
-    - **Źródło**: Punkt początkowy maszyn wirtualnych, czyli w tym przypadku **Azure**.
-    - **Lokalizacja źródłowa**: Region platformy Azure, które chcesz chronić maszyny wirtualne. W tym przykładzie lokalizacja źródłowa jest "Azja Wschodnia".
-    - **Model wdrażania**: Model wdrażania platformy Azure maszyna źródłowa.
-    - **Źródło subskrypcji**: Subskrypcja, do której należą źródłowych maszyn wirtualnych. Może to być dowolnej subskrypcji, która znajduje się w tej samej dzierżawie usługi Azure Active Directory jako magazynu usługi recovery services.
-    - **Grupa zasobów**: Grupa zasobów, do której należą źródłowych maszyn wirtualnych. Wszystkie maszyny wirtualne w wybranej grupy zasobów są wyświetlane do ochrony w następnym kroku.
+1. W magazynie wybierz pozycję **+ Replikuj**.
+2. Zwróć uwagę na następujące pola.
+    - **Źródło**: Punkt pochodzenia maszyn wirtualnych, który w tym przypadku jest **platformą Azure**.
+    - **Lokalizacja źródłowa**: Region świadczenia usługi Azure, w którym chcesz chronić maszyny wirtualne. W tym przykładzie lokalizacja źródłowa to "Azja Wschodnia".
+    - **Model wdrażania**: Model wdrażania platformy Azure dla maszyn źródłowych.
+    - **Subskrypcja źródłowa**: Subskrypcja, do której należą źródłowe maszyny wirtualne. Może to być dowolna subskrypcja, która znajduje się w tej samej dzierżawie Azure Active Directory, co magazyn usługi Recovery Services.
+    - **Grupa zasobów**: Grupa zasobów, do której należą źródłowe maszyny wirtualne. W następnym kroku zostaną wyświetlone wszystkie maszyny wirtualne w wybranej grupie zasobów do ochrony.
 
-3. W **maszyn wirtualnych** > **wybierz maszyny wirtualne**, wybierz każdej maszyny Wirtualnej, którą chcesz replikować. Możesz wybrać tylko te maszyny, dla których można włączyć replikację. Następnie wybierz przycisk **OK**.
+3. W obszarze **Virtual Machines** > **Wybierz pozycję Maszyny wirtualne**zaznacz każdą maszynę wirtualną, którą chcesz zreplikować. Możesz wybrać tylko te maszyny, dla których można włączyć replikację. Następnie wybierz przycisk **OK**.
 
-4. W **ustawienia**, można skonfigurować następujące ustawienia lokacji docelowej.
+4. W obszarze **Ustawienia**można skonfigurować następujące ustawienia lokacji docelowej.
 
-    - **Lokalizacja docelowa**: Lokalizacja, w którym będą replikowane dane źródłowe maszyny wirtualnej. Usługa Site Recovery zawiera listę regionów udało się na podstawie lokalizacji wybranej maszyny. Zalecamy użycie tej samej lokalizacji co lokalizacja magazynu usługi Recovery Services.
-    - **Subskrypcja docelowa**: Subskrypcja docelowa, który służy do odzyskiwania po awarii. Domyślnie subskrypcja docelowa jest taka sama jak subskrypcja źródłowa.
-    - **Docelowa grupa zasobów**: Grupa zasobów, w którym wszystkie replikowane maszyny wirtualne należą. Domyślnie usługa Site Recovery tworzy nową grupę zasobów w regionie docelowym. Nazwa pobiera sufiks "asr". Jeśli grupa zasobów już istnieje która została utworzona przez usługę Azure Site Recovery, zostanie on użyty ponownie. Możesz również dostosować, jak pokazano w poniższej sekcji. Lokalizacja docelowa grupa zasobów może być dowolnego regionu systemu Azure, z wyjątkiem regionu hostujące źródłowych maszyn wirtualnych.
-    - **Docelowa sieć wirtualna**: Domyślnie usługa Site Recovery tworzy nową sieć wirtualną w regionie docelowym. Nazwa pobiera sufiks "asr". Ma mapowane na sieci źródłowej i używane do wszelkich przyszłych ochrony. [Dowiedz się więcej](site-recovery-network-mapping-azure-to-azure.md) o mapowaniu sieci.
-    - **Docelowe konta magazynu (Jeśli źródło maszyny Wirtualnej nie korzysta z dysków zarządzanych)** : Domyślnie usługa Site Recovery tworzy nowe konto magazynu docelowego przez naśladując konfigurację magazynu źródłowej maszyny Wirtualnej. Jeśli konto magazynu już istnieje, zostanie on użyty ponownie.
-    - **Dyski zarządzane repliki (jeśli źródłowa maszyna wirtualna używa dysków zarządzanych)** : Usługa Site Recovery tworzy nowe dyski zarządzane repliki w regionie docelowym w celu zdublowania dysków zarządzanych źródłowej maszyny Wirtualnej ten sam typ magazynu (standardowa lub premium) jako dysków zarządzanych źródłowej maszyny Wirtualnej.
-    - **Konta magazynu pamięci podręcznej**: Usługa Site Recovery wymaga konta dodatkowego magazynu o nazwie *magazynu w pamięci podręcznej* w regionie źródłowym. Wszystkie zmiany na źródłowe maszyny wirtualne są śledzone i wysyłane do konta magazynu pamięci podręcznej. Następnie są replikowane do lokalizacji docelowej.
-    - **Zestaw dostępności**: Domyślnie usługa Site Recovery tworzy nowy zestaw dostępności w regionie docelowym. Nazwa ma sufiks "asr". Jeśli zestaw dostępności, który został utworzony przez usługę Site Recovery, już istnieje, zostanie on użyty ponownie.
-    - **Magazyny kluczy szyfrowania dysków**: Domyślnie usługa Site Recovery tworzy nowy magazyn kluczy w regionie docelowym. Ma sufiks "asr", który jest oparty na kluczy szyfrowania dysków maszyny Wirtualnej źródłowego. Jeśli magazyn kluczy, który został utworzony przez usługę Azure Site Recovery, już istnieje, zostanie on użyty ponownie.
-    - **Magazyny kluczy szyfrowania kluczy**: Domyślnie usługa Site Recovery tworzy nowy magazyn kluczy w regionie docelowym. Nazwa ma sufiks "asr", który jest oparty na kluczach szyfrowania maszyny Wirtualnej źródłowego. Jeśli magazyn kluczy utworzonych przez usługę Azure Site Recovery jest już istnieje, zostanie on użyty ponownie.
-    - **Zasady replikacji**: Definiuje ustawienia dla historii przechowywania punktów odzyskiwania i częstotliwość migawek spójności aplikacji. Domyślnie usługa Site Recovery tworzy nowe zasady replikacji z ustawieniami domyślnymi z *24 godziny* przechowywania punktu odzyskiwania i *60 minut* częstotliwości migawki dotyczącej spójności aplikacji.
+    - **Lokalizacja docelowa**: Lokalizacja, w której zostaną zreplikowane dane źródłowej maszyny wirtualnej. Site Recovery zawiera listę odpowiednich regionów docelowych na podstawie lokalizacji wybranej maszyny. Zalecamy używanie tej samej lokalizacji co lokalizacja magazynu Recovery Services.
+    - **Subskrypcja docelowa**: Subskrypcja docelowa, która jest używana na potrzeby odzyskiwania po awarii. Domyślnie subskrypcja docelowa jest taka sama jak w przypadku subskrypcji źródłowej.
+    - **Docelowa grupa zasobów**: Grupa zasobów, do której należą wszystkie zreplikowane maszyny wirtualne. Domyślnie Site Recovery tworzy nową grupę zasobów w regionie docelowym. Nazwa pobiera sufiks "ASR". Jeśli grupa zasobów już istnieje, która została utworzona przez Azure Site Recovery, zostanie ponownie użyta. Możesz również wybrać opcję dostosowywania, jak pokazano w poniższej sekcji. Lokalizacją docelowej grupy zasobów może być dowolny region świadczenia usługi Azure, z wyjątkiem regionu, w którym są hostowane źródłowe maszyny wirtualne.
+    - **Docelowa sieć wirtualna**: Domyślnie Site Recovery tworzy nową sieć wirtualną w regionie docelowym. Nazwa pobiera sufiks "ASR". Jest on mapowany do sieci źródłowej i używany do ochrony w przyszłości. [Dowiedz się więcej](site-recovery-network-mapping-azure-to-azure.md) na temat mapowania sieci.
+    - **Docelowe konta magazynu (jeśli źródłowa maszyna wirtualna nie używa dysków zarządzanych)** : Domyślnie Site Recovery tworzy nowe docelowe konto magazynu przez naśladując źródłową konfigurację magazynu maszyn wirtualnych. Jeśli konto magazynu już istnieje, jest ponownie używane.
+    - **Dyski zarządzane repliki (jeśli źródłowa maszyna wirtualna korzysta z dysków zarządzanych)** : Site Recovery tworzy nowe dyski zarządzane repliki w regionie docelowym, aby dublować dyski zarządzane źródłowej maszyny wirtualnej tego samego typu magazynu (w warstwie Standardowa lub Premium) jako dyski zarządzane źródłowej maszyny wirtualnej.
+    - **Konta magazynu pamięci podręcznej**: Site Recovery potrzebuje dodatkowego konta magazynu o nazwie *Magazyn pamięci* podręcznej w regionie źródłowym. Wszystkie zmiany na źródłowych maszynach wirtualnych są śledzone i wysyłane do konta magazynu pamięci podręcznej. Są one następnie replikowane do lokalizacji docelowej.
+    - **Zestaw dostępności**: Domyślnie Site Recovery tworzy nowy zestaw dostępności w regionie docelowym. Nazwa ma sufiks "ASR". Jeśli zestaw dostępności, który został utworzony przez Site Recovery już istnieje, jest ponownie używany.
+    - **Magazyny kluczy szyfrowania dysków**: Domyślnie Site Recovery tworzy nowy magazyn kluczy w regionie docelowym. Ma sufiks "ASR" oparty na kluczach szyfrowania źródłowych dysków maszyny wirtualnej. Jeśli magazyn kluczy utworzony przez Azure Site Recovery już istnieje, jest ponownie używany.
+    - **Magazyny kluczy szyfrowania kluczy**: Domyślnie Site Recovery tworzy nowy magazyn kluczy w regionie docelowym. Nazwa ma sufiks "ASR" oparty na kluczach szyfrowania źródłowych maszyn wirtualnych. Jeśli magazyn kluczy utworzony przez Azure Site Recovery już istnieje, jest ponownie używany.
+    - **Zasady replikacji**: Definiuje ustawienia dla historii przechowywania punktów odzyskiwania i częstotliwości migawek spójnych na poziomie aplikacji. Domyślnie program Site Recovery tworzy nowe zasady replikacji z domyślnymi ustawieniami *24 godzin* w przypadku przechowywania punktów odzyskiwania i *60 minut* w przypadku częstotliwości migawek spójnych na poziomie aplikacji.
 
-## <a name="customize-target-resources"></a>Dostosuj zasoby docelowe
+## <a name="customize-target-resources"></a>Dostosowywanie zasobów docelowych
 
-Wykonaj następujące kroki, aby zmodyfikować domyślne ustawienia regionu docelowego Site Recovery.
+Wykonaj następujące kroki, aby zmodyfikować domyślne ustawienia obiektu docelowego Site Recovery.
 
-1. Wybierz **Dostosuj** obok "Subskrypcji docelowej" Aby zmodyfikować domyślne subskrypcji docelowej. Wybierz subskrypcję z listy subskrypcji, które są dostępne w dzierżawie usługi Azure AD.
+1. Wybierz pozycję **Dostosuj** obok pozycji "subskrypcja docelowa", aby zmodyfikować domyślną subskrypcję docelową. Wybierz subskrypcję z listy subskrypcji dostępnych w dzierżawie usługi Azure AD.
 
-2. Wybierz **Dostosuj** obok pozycji "grupy zasobów, sieci, magazynu i zestawach dostępności" Aby zmodyfikować następujące ustawienia domyślne:
-    - Aby uzyskać **docelowa grupa zasobów**, wybierz grupę zasobów z listy grup zasobów w lokalizacji docelowej subskrypcji.
-    - Aby uzyskać **docelowa sieć wirtualna**, wybierz sieć, z listy sieci wirtualnych w lokalizacji docelowej.
-    - Aby uzyskać **zestawu dostępności**, możesz dodać ustawienia zestawu dostępności maszyny wirtualnej, jeśli są one częścią zestaw dostępności w regionie źródłowym.
-    - Aby uzyskać **kont magazynu docelowego**, wybierz konto do użycia.
+2. Wybierz pozycję **Dostosuj** obok pozycji "Grupa zasobów, Sieć, magazyn i zestawy dostępności", aby zmodyfikować następujące ustawienia domyślne:
+    - Dla **docelowej grupy zasobów**wybierz grupę zasobów z listy grup zasobów w lokalizacji docelowej subskrypcji.
+    - W polu docelowa **Sieć wirtualna**wybierz sieć z listy sieci wirtualnych w lokalizacji docelowej.
+    - W przypadku **zestawu dostępności**można dodać ustawienia zestawu dostępności do maszyny wirtualnej, jeśli są one częścią zestawu dostępności w regionie źródłowym.
+    - W przypadku **docelowych kont magazynu**wybierz konto, które ma być używane.
 
-2. Wybierz **Dostosuj** obok "Ustawienia szyfrowania" Aby zmodyfikować następujące ustawienia domyślne:
-   - Aby uzyskać **magazynu kluczy szyfrowania dysku docelowego**, wybierz magazyn kluczy szyfrowania dysków docelowych z listy magazynów kluczy w lokalizacji docelowej subskrypcji.
-   - Aby uzyskać **magazynu kluczy szyfrowania klucza docelowego**, wybierz docelowy magazyn kluczy szyfrowania z listy magazynów kluczy w lokalizacji docelowej subskrypcji.
+2. Wybierz pozycję **Dostosuj** obok pozycji "ustawienia szyfrowania", aby zmodyfikować następujące ustawienia domyślne:
+   - W przypadku **magazynu kluczy szyfrowania dysku docelowego**wybierz magazyn klucza szyfrowania dysku docelowego z listy magazynów kluczy w lokalizacji docelowej subskrypcji.
+   - W przypadku **magazynu kluczy szyfrowania klucza docelowego**Wybierz docelowy Magazyn kluczy szyfrowania z listy magazynów kluczy w lokalizacji docelowej subskrypcji.
 
-3. Wybierz **Utwórz zasób docelowy** > **włączania replikacji**.
-4. Po włączeniu replikacji maszyn wirtualnych można sprawdzić stan kondycji maszyn wirtualnych w ramach **zreplikowane elementy**.
+3. Wybierz pozycję **Utwórz zasób** > docelowy**Włącz replikację**.
+4. Po włączeniu maszyn wirtualnych na potrzeby replikacji można sprawdzić stan kondycji maszyn wirtualnych w obszarze **zreplikowane elementy**.
 
 >[!NOTE]
->Podczas replikacji początkowej stanu może potrwać pewien czas, aby odświeżyć, bez jawnego postępu. Kliknij przycisk **Odśwież** uzyskać najnowszy stan.
+>Podczas replikacji początkowej stan może zająć trochę czasu, bez pozornego postępu. Kliknij przycisk **Odśwież** , aby pobrać najnowszy stan.
 
-## <a name="update-target-vm-encryption-settings"></a>Aktualizowanie ustawień szyfrowania maszyn wirtualnych docelowej
-W następujących scenariuszach będzie wymagane do aktualizacji ustawień szyfrowania docelowej maszyny Wirtualnej:
-  - Możesz włączyć replikacji usługi Site Recovery na maszynie Wirtualnej. Później włączone jest szyfrowanie dysków na źródłowej maszynie Wirtualnej.
-  - Możesz włączyć replikacji usługi Site Recovery na maszynie Wirtualnej. Później należy zmienić klucz szyfrowania dysku lub klucz szyfrowania klucza na źródłowej maszynie Wirtualnej.
+## <a name="update-target-vm-encryption-settings"></a>Zaktualizuj ustawienia szyfrowania docelowej maszyny wirtualnej
+W następujących scenariuszach wymagane jest zaktualizowanie ustawień szyfrowania docelowej maszyny wirtualnej:
+  - Włączono Site Recovery replikację na maszynie wirtualnej. Później można było włączyć szyfrowanie dysków na źródłowej maszynie wirtualnej.
+  - Włączono Site Recovery replikację na maszynie wirtualnej. Później zmieniono klucz szyfrowania dysku lub klucz szyfrowania klucza na źródłowej maszynie wirtualnej.
 
-Możesz użyć [skrypt](#copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script) kopiowanie kluczy szyfrowania w regionie docelowym, a następnie zaktualizować ustawienia szyfrowania docelowego w **magazyn usługi Recovery services** > *zreplikowany element*  >  **Właściwości** > **obliczenia i sieć**.
+Możesz użyć [skryptu](#copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script) , aby skopiować klucze szyfrowania do regionu docelowego, a następnie zaktualizować docelowe ustawienia szyfrowania w obszarze**Właściwości**  >  *zreplikowanego elementu* >  **magazynu** > usług Recovery Services **Obliczenia i sieć**.
 
-![Okno dialogowe Ustawienia ADE aktualizacji](./media/azure-to-azure-how-to-enable-replication-ade-vms/update-ade-settings.png)
+![Okno dialogowe Aktualizowanie ustawień ADE](./media/azure-to-azure-how-to-enable-replication-ade-vms/update-ade-settings.png)
 
-## <a id="trusted-root-certificates-error-code-151066"></a>Rozwiązywanie problemów uprawnień usługi key vault podczas replikacji maszyny Wirtualnej platformy Azure do platformy Azure
+## <a id="trusted-root-certificates-error-code-151066"></a>Rozwiązywanie problemów z uprawnieniami magazynu kluczy podczas replikacji maszyny wirtualnej platformy Azure na platformę Azure
 
-Usługa Azure Site Recovery wymaga uprawnień do co najmniej odczytu w regionie źródła Key vault i uprawnienia do zapisu w magazynie kluczy regionu docelowego do odczytu wpisu tajnego i skopiuj go do magazynu kluczy w regionie docelowym. 
+Azure Site Recovery wymaga co najmniej uprawnienia do odczytu w magazynie kluczy w regionie źródłowym i uprawnienia do zapisu w magazynie kluczy w regionie docelowym w celu odczytu wpisu tajnego i skopiowania go do magazynu kluczy w regionie docelowym. 
 
-**Przyczyny 1:** Nie przyznano uprawnienia "GET" **źródłowy region Key vault** do odczytu klucze. </br>
-**Jak naprawić:** Niezależnie od tego, czy jesteś administratorem subskrypcji lub nie ważne jest, czy masz uprawnienie get w magazynie kluczy.
+**Przyczyna 1:** Nie masz uprawnienia "GET" w **magazynie kluczy obszaru źródłowego** , aby odczytać klucze. </br>
+**Jak naprawić:** Bez względu na to, czy jesteś administratorem subskrypcji, czy nie, ważne jest, aby uzyskać uprawnienia do magazynu kluczy.
 
-1. Przejdź do źródła region Key vault, czyli w tym przykładzie "ContososourceKeyvault" > **zasady dostępu** 
-2. W obszarze **Wybierz podmiot zabezpieczeń** Dodaj swoją nazwę użytkownika, na przykład: "dradmin@contoso.com"
-3. W obszarze **uprawnienia klucza** wybierz polecenie Pobierz 
-4. W obszarze **uprawnienia klucza tajnego** wybierz polecenie Pobierz 
-5. Zapisać zasady dostępu
+1. Przejdź do magazynu kluczy źródłowych regionów, w tym przykładzie jest to "ContososourceKeyvault" > **zasad dostępu** 
+2. W obszarze **Wybierz podmiot zabezpieczeń** Dodaj nazwę użytkownika na przykład:dradmin@contoso.com""
+3. W obszarze **uprawnienia klucza** wybierz pozycję Pobierz. 
+4. W obszarze **uprawnienia klucza tajnego** wybierz pozycję Pobierz 
+5. Zapisz zasady dostępu
 
-**Przyczyny 2:** Nie masz wymaganych uprawnień na **docelowy region Key vault** do zapisu kluczy. </br>
+**Przyczyna 2:** Nie masz wymaganego uprawnienia do **magazynu kluczy w regionie docelowym** , aby zapisać klucze. </br>
 
-*Na przykład*: Próby replikacji maszyny Wirtualnej, który ma usługi key vault *ContososourceKeyvault* w regionie źródłowym.
-Masz wszystkie uprawnienia w magazynie kluczy regionu źródłowego. Jednak podczas ochrony, wybierz jest już utworzony magazyn kluczy ContosotargetKeyvault, która nie ma uprawnień. Występuje błąd.
+*Na przykład*: Podjęto próbę replikacji maszyny wirtualnej, która ma *ContososourceKeyvault* magazynu kluczy w regionie źródłowym.
+Masz wszystkie uprawnienia do magazynu kluczy w regionie źródłowym. Ale w trakcie ochrony wybierasz już utworzony ContosotargetKeyvault magazynu kluczy, który nie ma uprawnień. Wystąpił błąd.
 
-Uprawnienia wymagane na [docelowej Key vault](#required-user-permissions)
+Wymagane uprawnienie w [magazynie kluczy docelowych](#required-user-permissions)
 
-**Jak naprawić:** Przejdź do **Home** > **Keyvaults** > **ContosotargetKeyvault** > **zasady dostępu** i dodaj odpowiednie uprawnienia.
+**Jak naprawić:** Przejdź do pozycji **Główne** > **magazyny** > kluczy**ContosotargetKeyvault** > **zasady dostępu** i Dodaj odpowiednie uprawnienia.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Dowiedz się więcej](site-recovery-test-failover-to-azure.md) o uruchamianiu testowy tryb failover.
+[Dowiedz się więcej](site-recovery-test-failover-to-azure.md) o uruchamianiu testowej pracy w trybie failover.

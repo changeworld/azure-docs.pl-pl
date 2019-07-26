@@ -1,6 +1,6 @@
 ---
-title: Uwierzytelnianie za pomocą zarządzanych tożsamości — usłudze Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Aby uwierzytelniać się bez logowania, można utworzyć tożsamości zarządzanej (dawniej nazywanych tożsamości usługi zarządzanej lub MSI), dzięki czemu Twoja aplikacja logiki ma dostęp do innych zasobów usługi Azure Active Directory (Azure AD) dzierżawy bez poświadczeń ani kluczy tajnych
+title: Uwierzytelnianie za pomocą tożsamości zarządzanych — Azure Logic Apps | Microsoft Docs
+description: Aby uwierzytelnić się bez logowania, możesz utworzyć zarządzaną tożsamość (nazywaną wcześniej tożsamość usługi zarządzanej lub MSI), aby Twoja aplikacja logiki mogła uzyskiwać dostęp do zasobów w innych dzierżawach Azure Active Directory (Azure AD) bez poświadczeń lub wpisów tajnych
 author: kevinlam1
 ms.author: klam
 ms.reviewer: estfan, LADocs
@@ -9,66 +9,66 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 03/29/2019
-ms.openlocfilehash: 65fe89bf775a649d5654ce739d8d18e05d3048ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b157db5032bd62ab443209f201b4ceded6e44cb5
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65416117"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385569"
 ---
-# <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Uwierzytelnianie i dostęp do zasobów z zarządzanych tożsamości w usłudze Azure Logic Apps
+# <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Uwierzytelnianie i dostęp do zasobów za pomocą tożsamości zarządzanych w Azure Logic Apps
 
-Dostęp do zasobów w innych dzierżaw usługi Azure Active Directory (Azure AD) oraz uwierzytelnianie tożsamości bez logowania, Twoja aplikacja logiki może używać [tożsamości zarządzanej](../active-directory/managed-identities-azure-resources/overview.md) (wcześniej znana pod nazwą tożsamości usługi zarządzanej MSI), zamiast poświadczenia lub kluczy tajnych. Platforma Azure zarządza tą tożsamością dla Ciebie i pomaga zabezpieczyć swoje poświadczenia, ponieważ nie trzeba podać lub obracanie kluczy tajnych. W tym artykule przedstawiono sposób konfigurowania i korzystania z tożsamości zarządzanej przypisana przez system dla twojej aplikacji logiki. Aby uzyskać więcej informacji o zarządzanych tożsamości, zobacz [co to jest zarządzanych tożsamości dla zasobów platformy Azure?](../active-directory/managed-identities-azure-resources/overview.md)
+Aby uzyskać dostęp do zasobów w innych dzierżawach usługi Azure Active Directory (Azure AD) i uwierzytelnić swoją tożsamość bez logowania, aplikacja logiki może używać [tożsamości zarządzanej](../active-directory/managed-identities-azure-resources/overview.md) (znanej wcześniej jako tożsamość usługi ZARZĄDZANEJ lub MSI), a nie poświadczeń lub wpisów tajnych. Platforma Azure zarządza tą tożsamością i pomaga zabezpieczyć Twoje poświadczenia, ponieważ nie trzeba podawać ani obrócić wpisów tajnych. W tym artykule pokazano, jak można skonfigurować i użyć zarządzanej tożsamości przypisanej do systemu dla aplikacji logiki. Aby uzyskać więcej informacji o tożsamościach zarządzanych, zobacz [co to są tożsamości zarządzane dla zasobów platformy Azure?](../active-directory/managed-identities-azure-resources/overview.md)
 
 > [!NOTE]
-> Twoja aplikacja logiki za pomocą tożsamości zarządzanych tylko łączników, które obsługują zarządzanych tożsamości. Obecnie tylko łącznik protokołu HTTP obsługuje zarządzanych tożsamości.
+> Aplikacja logiki może używać zarządzanych tożsamości tylko z łącznikami obsługującymi zarządzane tożsamości. Obecnie tylko łącznik protokołu HTTP obsługuje tożsamości zarządzane.
 >
-> Można obecnie maksymalnie 10 przepływów pracy aplikacji logiki przy użyciu przypisany systemowo udało tożsamości w ramach każdej subskrypcji platformy Azure.
+> Obecnie można korzystać z maksymalnie 10 przepływów pracy aplikacji logiki z tożsamościami zarządzanymi przez system w każdej subskrypcji platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcji platformy Azure, lub jeśli nie masz subskrypcji, <a href="https://azure.microsoft.com/free/" target="_blank">Załóż bezpłatne konto platformy Azure</a>.
+* Subskrypcja platformy Azure lub jeśli nie masz subskrypcji, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się, aby skorzystać z bezpłatnego konta platformy Azure</a>.
 
-* Tożsamości zarządzanej aplikacji logiki, w której chcesz użyć, przypisany systemowo. Jeśli nie masz aplikacji logiki, zobacz [Tworzenie pierwszego przepływu pracy aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Aplikacja logiki, w której ma zostać użyta tożsamość zarządzana przypisana przez system. Jeśli nie masz aplikacji logiki, zobacz [Tworzenie pierwszego przepływu pracy aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 <a name="enable-identity"></a>
 
-## <a name="enable-managed-identity"></a>Włączanie tożsamości zarządzanej
+## <a name="enable-managed-identity"></a>Włącz tożsamość zarządzaną
 
-Przypisana przez system tożsamości zarządzanej nie trzeba ręcznie utworzyć tej tożsamości. Aby skonfigurować przypisany systemowo tożsamości zarządzanej aplikacji logiki, można użyć następujących sposobów: 
+W przypadku tożsamości zarządzanych przypisanych do systemu nie trzeba ręcznie tworzyć tej tożsamości. Aby skonfigurować tożsamość zarządzaną przez system dla aplikacji logiki, można użyć następujących metod: 
 
 * [Azure Portal](#azure-portal) 
-* [Szablony usługi Azure Resource Manager](#template) 
+* [Szablony Azure Resource Manager](#template) 
 * [Azure PowerShell](../active-directory/managed-identities-azure-resources/howto-assign-access-powershell.md) 
 
 <a name="azure-portal"></a>
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Aby włączyć przypisany systemowo tożsamości zarządzanej aplikacji logiki w witrynie Azure portal, należy włączyć funkcję **przypisanej w systemie** ustawienie w ustawieniach tożsamości aplikacji logiki.
+Aby włączyć zarządzaną przez system tożsamość dla aplikacji logiki za pomocą Azure Portal, Włącz ustawienie **przypisane do systemu** w ustawieniach tożsamości aplikacji logiki.
 
-1. W [witryny Azure portal](https://portal.azure.com), Otwórz aplikację logiki w Projektancie aplikacji logiki.
+1. W [Azure Portal](https://portal.azure.com)Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
-1. W menu aplikacji logiki w ramach **ustawienia**, wybierz opcję **tożsamości**. 
+1. W menu aplikacji logiki w obszarze **Ustawienia**wybierz pozycję **tożsamość**. 
 
-1. W obszarze **przypisanej w systemie** > **stan**, wybierz **na**. Następnie wybierz **Zapisz** > **tak**.
+1. W obszarze**stan** **przypisane** > do systemu wybierz pozycję **włączone**. Następnie wybierz pozycję **Zapisz** > **tak**.
 
    ![Włącz ustawienie tożsamości zarządzanej](./media/create-managed-service-identity/turn-on-managed-service-identity.png)
 
-   Twoja aplikacja logiki ma teraz przypisany systemowo tożsamości zarządzanej zarejestrowane w usłudze Azure Active Directory:
+   Twoja aplikacja logiki ma teraz tożsamość zarządzaną przypisaną przez system w Azure Active Directory:
 
-   ![Identyfikatory GUID dla Identyfikatora obiektu](./media/create-managed-service-identity/object-id.png)
+   ![Identyfikatory GUID dla identyfikatora obiektu](./media/create-managed-service-identity/object-id.png)
 
-   | Właściwość | Wartość | Opis | 
+   | Właściwość | Value | Opis | 
    |----------|-------|-------------| 
-   | **Identyfikator obiektu:** | <*identity-resource-ID*> | Unikatowy identyfikator globalny (GUID), reprezentujący przypisany systemu tożsamości zarządzanej dla aplikacji logiki w dzierżawie usługi Azure AD | 
+   | **Identyfikator obiektu** | <*Identyfikator zasobu tożsamości*> | Unikatowy identyfikator globalny (GUID) reprezentujący tożsamość zarządzaną przez system dla aplikacji logiki w dzierżawie usługi Azure AD | 
    ||| 
 
 <a name="template"></a>
 
 ### <a name="azure-resource-manager-template"></a>Szablon usługi Azure Resource Manager
 
-Jeśli chcesz zautomatyzować tworzenie i wdrażanie zasobów platformy Azure, takich jak logic apps, można użyć [szablonów usługi Azure Resource Manager](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md). Aby utworzyć przypisany systemowo tożsamości zarządzanej aplikacji logiki za pomocą szablonu, należy dodać `"identity"` elementu i `"type"` właściwości definicji przepływu pracy aplikacji logiki w szablonie wdrożenia: 
+Aby zautomatyzować tworzenie i wdrażanie zasobów platformy Azure, takich jak Logic Apps, możesz użyć [szablonów Azure Resource Manager](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md). Aby utworzyć tożsamość zarządzaną przypisaną przez system dla aplikacji logiki za pomocą szablonu, Dodaj `"identity"` element i `"type"` właściwość do definicji przepływu pracy aplikacji logiki w szablonie wdrożenia: 
 
 ```json
 "identity": {
@@ -101,7 +101,7 @@ Na przykład:
 }
 ```
 
-Gdy platforma Azure utworzy aplikację logiki, ta aplikacja logiki definicji przepływu pracy zawiera te dodatkowe właściwości:
+Podczas tworzenia aplikacji logiki przez platformę Azure definicja przepływu pracy aplikacji logiki obejmuje następujące dodatkowe właściwości:
 
 ```json
 "identity": {
@@ -111,92 +111,92 @@ Gdy platforma Azure utworzy aplikację logiki, ta aplikacja logiki definicji prz
 }
 ```
 
-| Właściwość | Wartość | Opis | 
+| Właściwość | Value | Opis | 
 |----------|-------|-------------|
-| **principalId** | <*principal-ID*> | Unikatowy identyfikator globalny (GUID), reprezentujący aplikację logiki w dzierżawie usługi Azure AD, a czasami jest wyświetlany jako "Identyfikator obiektu" lub `objectID` | 
-| **Identyfikator dzierżawy** | <*Azure-AD-tenant-ID*> | Globalnie unikatowy identyfikator (GUID) reprezentujący dzierżawy usługi Azure AD, w której aplikacja logiki jest teraz członkiem. W dzierżawie usługi Azure AD jednostki usługi ma taką samą nazwę jak wystąpienie aplikacji logiki. | 
+| **principalId** | <*Identyfikator podmiotu zabezpieczeń*> | Unikatowy identyfikator globalny (GUID) reprezentujący aplikację logiki w dzierżawie usługi Azure AD i czasami pojawia się jako "Identyfikator obiektu" lub`objectID` | 
+| **tenantId** | <*Azure-AD-dzierżawca-ID*> | Unikatowy identyfikator globalny (GUID) reprezentujący dzierżawę usługi Azure AD, w której aplikacja logiki jest teraz członkiem. W ramach dzierżawy usługi Azure AD główna nazwa ma taką samą nazwę jak wystąpienie aplikacji logiki. | 
 ||| 
 
 <a name="access-other-resources"></a>
 
-## <a name="access-resources-with-managed-identity"></a>Uzyskaj dostęp do zasobów za pomocą tożsamości zarządzanych
+## <a name="access-resources-with-managed-identity"></a>Dostęp do zasobów przy użyciu tożsamości zarządzanej
 
-Po utworzeniu przypisany systemowo tożsamości zarządzanej aplikacji logiki możesz [zapewniają dostęp do tej tożsamości do innych zasobów platformy Azure](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md). Można następnie użyć tej tożsamości do uwierzytelniania, podobnie jak każdy inny [nazwy głównej usługi](../active-directory/develop/app-objects-and-service-principals.md). 
+Po utworzeniu zarządzanej tożsamości przypisanej przez system dla aplikacji logiki możesz [nadać tej tożsamości dostęp do innych zasobów platformy Azure](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md). Tej tożsamości można następnie użyć do uwierzytelniania, podobnie jak każda inna jednostka [usługi](../active-directory/develop/app-objects-and-service-principals.md). 
 
 > [!NOTE]
-> Przypisany systemowo tożsamość zarządzaną i zasobów, w którym ma zostać przypisany dostęp musi mieć tej samej subskrypcji platformy Azure.
+> Zarówno tożsamość zarządzana przez system, jak i zasób, do którego chcesz przypisać dostęp, muszą mieć tę samą subskrypcję platformy Azure.
 
 ### <a name="assign-access-to-managed-identity"></a>Przypisywanie dostępu do tożsamości zarządzanej
 
-Aby udzielić dostępu do innego zasobu platformy Azure dla aplikacji logiki przypisany systemowo tożsamości zarządzanej, wykonaj następujące kroki:
+Aby udzielić dostępu do innego zasobu platformy Azure dla tożsamości zarządzanej przypisanej do systemu przez aplikację logiki, wykonaj następujące kroki:
 
-1. W witrynie Azure portal przejdź do zasobu platformy Azure której chcesz przypisać dostęp dla Twojej tożsamości zarządzanej. 
+1. W Azure Portal przejdź do zasobu platformy Azure, do którego chcesz przypisać dostęp do tożsamości zarządzanej. 
 
-1. Wybierz z menu zasobu **kontrola dostępu (IAM)** . Na pasku narzędzi wybierz **Dodaj** > **Dodaj przypisanie roli**.
+1. Z menu zasób wybierz pozycję **Kontrola dostępu (IAM)** . Na pasku narzędzi wybierz pozycję **Dodaj** > **Dodaj przypisanie roli**.
 
    ![Dodaj przypisanie roli](./media/create-managed-service-identity/add-permissions-logic-app.png)
 
-1. W obszarze **Dodaj przypisanie roli**, wybierz opcję **roli** chcesz, aby dla tożsamości. 
+1. W obszarze **Dodaj przypisanie roli**wybierz żądaną **rolę** dla tożsamości. 
 
-1. W **Przypisz dostęp do** wybierz **użytkownika, grupy lub jednostki usługi Azure AD**, jeśli jeszcze nie wybrano.
+1. W polu **Przypisz dostęp do** wybierz pozycję **użytkownik, Grupa lub nazwa główna usługi Azure AD**, jeśli nie została jeszcze wybrana.
 
-1. W **wybierz** pola, rozpoczynając od pierwszego znaku w nazwie aplikacji logiki, wprowadź nazwę aplikacji logiki. Gdy pojawi się Twoja aplikacja logiki, wybierz aplikację logiki.
+1. W polu **Wybierz** , rozpoczynając od pierwszego znaku w nazwie aplikacji logiki, wprowadź nazwę aplikacji logiki. Gdy zostanie wyświetlona aplikacja logiki, wybierz aplikację logiki.
 
-   ![Wybieranie aplikacji logiki za pomocą tożsamości zarządzanych](./media/create-managed-service-identity/add-permissions-select-logic-app.png)
+   ![Wybierz aplikację logiki z tożsamością zarządzaną](./media/create-managed-service-identity/add-permissions-select-logic-app.png)
 
 1. Gdy wszystko będzie gotowe, wybierz pozycję **Zapisz**.
 
-### <a name="authenticate-with-managed-identity-in-logic-app"></a>Uwierzytelnianie za pomocą tożsamości zarządzanej w aplikacji logiki
+### <a name="authenticate-with-managed-identity-in-logic-app"></a>Uwierzytelnianie przy użyciu tożsamości zarządzanej w aplikacji logiki
 
-Po skonfigurowaniu aplikacji logiki przy użyciu systemu przypisane tożsamości zarządzanej i przypisany dostęp do zasobu, który ma dla tej tożsamości, można teraz używać tej tożsamości do uwierzytelniania. Na przykład można użyć akcji HTTP, więc aplikacja logiki może Wyślij żądanie HTTP, lub zadzwoń do tego zasobu. 
+Po skonfigurowaniu aplikacji logiki za pomocą zarządzanej tożsamości przypisanej do systemu i przypisaniu dostępu do żądanego zasobu dla tej tożsamości możesz teraz użyć tej tożsamości do uwierzytelniania. Na przykład możesz użyć akcji HTTP, aby aplikacja logiki mogła wysłać żądanie HTTP lub wywołać do tego zasobu. 
 
-1. W aplikacji logiki, Dodaj **HTTP** akcji.
+1. W aplikacji logiki Dodaj akcję **http** .
 
-1. Podaj odpowiednie szczegóły dla tej akcji, takich jak żądania **metoda** i **URI** lokalizacji zasobu ma zostać wywołana.
+1. Podaj niezbędne szczegóły dotyczące tej akcji, takie jak **Metoda** żądania i lokalizacja **URI** dla zasobu, który chcesz wywołać.
 
-   Załóżmy, że używasz uwierzytelniania usługi Azure Active Directory (Azure AD) przy użyciu [jedną z tych usług platformy Azure, które obsługują usługę Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). 
-   W **URI** wprowadź adres URL punktu końcowego dla tej usługi platformy Azure. 
-   Dlatego jeśli używasz usługi Azure Resource Manager, wprowadź wartość w **URI** właściwości:
+   Załóżmy na przykład, że używasz uwierzytelniania usługi Azure Active Directory (Azure AD) z [jedną z tych usług platformy Azure, które obsługują usługę Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). 
+   W polu **Identyfikator URI** wprowadź adres URL punktu końcowego dla tej usługi platformy Azure. 
+   Tak więc, jeśli używasz Azure Resource Manager, wprowadź tę wartość we właściwości **URI** :
 
    `https://management.azure.com/subscriptions/<Azure-subscription-ID>?api-version=2016-06-01`
 
-1. W akcji HTTP wybierz **Pokaż opcje zaawansowane**.
+1. W akcji HTTP wybierz pozycję **Pokaż opcje zaawansowane**.
 
-1. Z **uwierzytelniania** listy wybierz **tożsamości zarządzanej**. Po wybraniu tego uwierzytelnienia **odbiorców** właściwość pojawia się z wartością domyślną identyfikator zasobu:
+1. Z listy **uwierzytelnianie** wybierz pozycję **zarządzana tożsamość**. Po wybraniu tego uwierzytelniania Właściwość **odbiorców** zostanie wyświetlona z domyślną wartością identyfikatora zasobu:
 
-   ![Wybierz pozycję "Tożsamości zarządzanej"](./media/create-managed-service-identity/select-managed-service-identity.png)
+   ![Wybierz pozycję "tożsamość zarządzana"](./media/create-managed-service-identity/select-managed-service-identity.png)
 
    > [!IMPORTANT]
    > 
-   > W **odbiorców** właściwości wartość Identyfikatora zasobu musi dokładnie odpowiadać oczekiwaniom usługi Azure AD, wraz ze wszystkimi wymagane końcowych ukośników. 
-   > Te wartości Identyfikator zasobu można znaleźć w tym [Tabela zawierająca opis usługi Azure usług, które obsługują usługę Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). 
-   > Na przykład jeśli używasz Identyfikatora zasobu Menedżera zasobów platformy Azure, upewnij się, że identyfikator URI ma znaku ukośnika na końcu.
+   > We właściwości **odbiorców** wartość identyfikatora zasobu musi być dokładnie zgodna z oczekiwaniami usługi Azure AD, w tym wszystkich wymaganych końcowych ukośników. 
+   > Te wartości identyfikatorów zasobów można znaleźć w tej [tabeli opisującej usługi platformy Azure, które obsługują usługę Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). 
+   > Jeśli na przykład używasz identyfikatora zasobu usługi Azure zasobów Manager, upewnij się, że identyfikator URI ma końcowy ukośnik.
 
-1. Kontynuuj Kompilowanie aplikacji logiki w żądany sposób.
+1. Kontynuuj tworzenie aplikacji logiki w odpowiedni sposób.
 
 <a name="remove-identity"></a>
 
-## <a name="remove-managed-identity"></a>Usuń tożsamość zarządzaną
+## <a name="remove-managed-identity"></a>Usuwanie tożsamości zarządzanej
 
-Aby wyłączyć przypisany systemowo tożsamości zarządzanej na aplikację logiki, możesz postępuj zgodnie z instrukcjami podobny do sposobu skonfigurowania tożsamości za pośrednictwem witryny Azure portal, szablony wdrażania usługi Azure Resource Manager lub programu Azure PowerShell.
+Aby wyłączyć tożsamość zarządzaną przypisaną przez system w aplikacji logiki, można wykonać kroki podobne do konfiguracji tożsamości za pomocą Azure Portal, Azure Resource Manager szablonów wdrożenia lub Azure PowerShell.
 
-Po usunięciu aplikacji logiki platformy Azure automatycznie usuwa tożsamości przypisanych przez system aplikację logiki z usługi Azure AD.
+Usunięcie aplikacji logiki spowoduje automatyczne usunięcie tożsamości przypisanej do systemu przez aplikację logiki z usługi Azure AD.
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Aby usunąć przypisany systemowo tożsamości zarządzanej aplikacji logiki w witrynie Azure portal, należy wyłączyć opcję **przypisanej w systemie** ustawienie w ustawieniach tożsamości aplikacji logiki.
+Aby usunąć tożsamość zarządzaną przez system dla aplikacji logiki za pomocą Azure Portal, wyłącz ustawienie **przypisany system** w ustawieniach tożsamości aplikacji logiki.
 
-1. W [witryny Azure portal](https://portal.azure.com), Otwórz aplikację logiki w Projektancie aplikacji logiki.
+1. W [Azure Portal](https://portal.azure.com)Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
-1. W menu aplikacji logiki w ramach **ustawienia**, wybierz opcję **tożsamości**. 
+1. W menu aplikacji logiki w obszarze **Ustawienia**wybierz pozycję **tożsamość**. 
 
-1. W obszarze **przypisanej w systemie** > **stan**, wybierz **poza**. Następnie wybierz **Zapisz** > **tak**.
+1. W obszarze**stan** **przypisane** > do systemu wybierz pozycję **wyłączone**. Następnie wybierz pozycję **Zapisz** > **tak**.
 
    ![Wyłącz ustawienie tożsamości zarządzanej](./media/create-managed-service-identity/turn-off-managed-service-identity.png)
 
 ### <a name="deployment-template"></a>Szablon wdrożenia
 
-Jeśli utworzono aplikację logiki przypisany systemowo tożsamości zarządzanej przy użyciu szablonu wdrożenia usługi Azure Resource Manager, należy ustawić `"identity"` elementu `"type"` właściwość `"None"`. Ta akcja spowoduje również usunięcie Identyfikatora podmiotu zabezpieczeń z usługi Azure AD.
+W przypadku utworzenia tożsamości zarządzanej przypisanej przez system do aplikacji logiki przy użyciu szablonu wdrożenia Azure Resource Manager należy ustawić `"identity"` `"type"` właściwość elementu na `"None"`. Ta akcja spowoduje również usunięcie identyfikatora podmiotu zabezpieczeń z usługi Azure AD.
 
 ```json
 "identity": {

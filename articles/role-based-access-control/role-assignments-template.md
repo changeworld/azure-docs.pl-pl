@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie dostępem do zasobów platformy Azure przy użyciu szablonów RBAC i usługi Azure Resource Manager | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zarządzać dostępem do zasobów platformy Azure dla użytkowników, grup i aplikacji przy użyciu kontroli dostępu opartej na rolach (RBAC) i szablonów usługi Azure Resource Manager.
+title: Zarządzanie dostępem do zasobów platformy Azure przy użyciu szablonów RBAC i Azure Resource Manager | Microsoft Docs
+description: Dowiedz się, jak zarządzać dostępem do zasobów platformy Azure dla użytkowników, grup i aplikacji przy użyciu kontroli dostępu opartej na rolach (RBAC) i szablonów Azure Resource Manager.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,31 +10,30 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/02/2019
+ms.date: 07/19/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 537ee35e96a41cd02605319e244d39c6567c3bf1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e6511ff84c251577a5ff483f892387ab7d3d4d41
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60344606"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360448"
 ---
-# <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>Zarządzanie dostępem do zasobów platformy Azure przy użyciu szablonów RBAC i usługi Azure Resource Manager
+# <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>Zarządzanie dostępem do zasobów platformy Azure przy użyciu szablonów RBAC i Azure Resource Manager
 
-[Kontrola dostępu oparta na rolach (RBAC, Role Based Access Control)](overview.md) to sposób zarządzania dostępem do zasobów platformy Azure. Oprócz używania programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure, możesz zarządzać dostępem do zasobów platformy Azure przy użyciu funkcji RBAC i [szablonów usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md). Szablony mogą być przydatne, jeśli zajdzie potrzeba wdrożenia zasobów spójnego i wielokrotnego. W tym artykule opisano, jak możesz zarządzać dostępem przy użyciu RBAC i szablony.
+[Kontrola dostępu oparta na rolach (RBAC, Role Based Access Control)](overview.md) to sposób zarządzania dostępem do zasobów platformy Azure. Oprócz używania Azure PowerShell lub interfejsu wiersza polecenia platformy Azure można zarządzać dostępem do zasobów platformy Azure przy użyciu szablonów RBAC i [Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md). Szablony mogą być przydatne, jeśli trzeba spójnie i wielokrotnie wdrażać zasoby. W tym artykule opisano sposób zarządzania dostępem przy użyciu RBAC i szablonów.
 
-## <a name="example-template-to-create-a-role-assignment"></a>Przykładowy szablon, można utworzyć przypisania roli
+## <a name="assign-role-to-resource-group-or-subscription"></a>Przypisywanie roli do grupy zasobów lub subskrypcji
 
-Aby udzielić dostępu za pomocą kontroli dostępu opartej na rolach, tworzy się przypisanie roli. Przedstawia następujący szablon:
-- Jak przypisać rolę do użytkownika, grupy lub aplikacji w zakresie grupy zasobów
-- Sposób określania właściciela, współautora i czytelnika ról jako parametr
+Aby udzielić dostępu za pomocą kontroli dostępu opartej na rolach, tworzy się przypisanie roli. Poniższy szablon demonstruje:
+- Jak przypisać rolę do użytkownika, grupy lub aplikacji w ramach grupy zasobów lub zakresu subskrypcji
+- Jak określić role właściciela, współautora i czytnika jako parametr
 
 Aby użyć szablonu, należy określić następujące dane wejściowe:
-- Nazwa grupy zasobów
-- Unikatowy identyfikator użytkownika, grupy lub aplikacji, aby przypisać rolę
-- Przypisywanie roli
-- Unikatowy identyfikator, który będzie używany do przypisania roli
+- Unikatowy identyfikator użytkownika, grupy lub aplikacji, do której ma zostać przypisana rola
+- Rola do przypisania
+- Unikatowy identyfikator, który będzie używany do przypisania roli, lub można użyć identyfikatora domyślnego
 
 ```json
 {
@@ -60,6 +59,7 @@ Aby użyć szablonu, należy określić następujące dane wejściowe:
     },
     "roleNameGuid": {
       "type": "string",
+      "defaultValue": "[newGuid()]",
       "metadata": {
         "description": "A new GUID used to identify the role assignment"
       }
@@ -68,69 +68,149 @@ Aby użyć szablonu, należy określić następujące dane wejściowe:
   "variables": {
     "Owner": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635')]",
     "Contributor": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
-    "Reader": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]",
-    "scope": "[resourceGroup().id]"
+    "Reader": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]"
   },
   "resources": [
     {
       "type": "Microsoft.Authorization/roleAssignments",
-      "apiVersion": "2017-05-01",
+      "apiVersion": "2018-09-01-preview",
       "name": "[parameters('roleNameGuid')]",
       "properties": {
         "roleDefinitionId": "[variables(parameters('builtInRoleType'))]",
-        "principalId": "[parameters('principalId')]",
-        "scope": "[variables('scope')]"
+        "principalId": "[parameters('principalId')]"
       }
     }
   ]
 }
 ```
 
-Poniżej przedstawiono przykład czytnik przypisania roli do użytkownika po wdrożeniu szablonu.
+Poniżej przedstawiono przykład przypisania roli czytnika do użytkownika dla grupy zasobów po wdrożeniu szablonu.
 
 ![Przypisanie roli przy użyciu szablonu](./media/role-assignments-template/role-assignment-template.png)
 
-## <a name="deploy-template-using-azure-powershell"></a>Wdrażanie szablonu przy użyciu programu Azure PowerShell
+Zakres przypisania roli jest określany na podstawie poziomu wdrożenia. W tym artykule przedstawiono zarówno polecenie wdrożenia grupy zasobów, jak i poziomu subskrypcji.
+
+## <a name="assign-role-to-resource"></a>Przypisywanie roli do zasobu
+
+Jeśli konieczne jest utworzenie przypisania roli na poziomie zasobu, format przypisania roli jest inny. Podaj przestrzeń nazw dostawcy zasobów i typ zasobu zasobu, do którego ma zostać przypisana rola. Należy również podać nazwę zasobu w nazwie przypisania roli.
+
+W polu Typ i nazwa przypisania roli Użyj następującego formatu:
+
+```json
+"type": "{resource-provider-namespace}/{resource-type}/providers/roleAssignments",
+"name": "{resource-name}/Microsoft.Authorization/{role-assign-GUID}"
+```
+
+Poniższy szablon wdraża konto magazynu i przypisuje do niego rolę. Należy wdrożyć je za pomocą poleceń grupy zasobów.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "principalId": {
+      "type": "string",
+      "metadata": {
+        "description": "The principal to assign the role to"
+      }
+    },
+    "builtInRoleType": {
+      "type": "string",
+      "allowedValues": [
+        "Owner",
+        "Contributor",
+        "Reader"
+      ],
+      "metadata": {
+        "description": "Built-in role to assign"
+      }
+    },
+    "roleNameGuid": {
+      "type": "string",
+      "defaultValue": "[newGuid()]",
+      "metadata": {
+        "description": "A new GUID used to identify the role assignment"
+      }
+    },
+    "location": {
+        "type": "string",
+        "defaultValue": "[resourceGroup().location]"
+    }
+  },
+  "variables": {
+    "Owner": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635')]",
+    "Contributor": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
+    "Reader": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]",
+    "storageName": "[concat('storage', uniqueString(resourceGroup().id))]"
+  },
+  "resources": [
+    {
+      "apiVersion": "2019-04-01",
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[variables('storageName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+          "name": "Standard_LRS"
+      },
+      "kind": "Storage",
+      "properties": {}
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/providers/roleAssignments",
+      "apiVersion": "2018-09-01-preview",
+      "name": "[concat(variables('storageName'), '/Microsoft.Authorization/', parameters('roleNameGuid'))]",
+      "dependsOn": [
+          "[variables('storageName')]"
+      ],
+      "properties": {
+        "roleDefinitionId": "[variables(parameters('builtInRoleType'))]",
+        "principalId": "[parameters('principalId')]"
+      }
+    }
+  ]
+}
+```
+
+Poniżej przedstawiono przykład przypisania roli współautor do użytkownika dla konta magazynu po wdrożeniu szablonu.
+
+![Przypisanie roli przy użyciu szablonu](./media/role-assignments-template/role-assignment-template-resource.png)
+
+## <a name="deploy-template-using-azure-powershell"></a>Wdróż szablon przy użyciu Azure PowerShell
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-Aby wdrożyć poprzedni szablon przy użyciu programu Azure PowerShell, wykonaj następujące kroki.
+Aby wdrożyć poprzedni szablon do grupy zasobów lub subskrypcji przy użyciu Azure PowerShell, wykonaj następujące kroki.
 
-1. Utwórz nowy plik o nazwie rbac rg.json i skopiuj poprzedni szablon.
+1. Utwórz nowy plik o nazwie RBAC-RG. JSON i skopiuj poprzedni szablon.
 
 1. Zaloguj się do programu [Azure PowerShell](/powershell/azure/authenticate-azureps).
 
-1. Uzyskaj Unikatowy identyfikator użytkownika, grupy lub aplikacji. Na przykład, można użyć [Get AzADUser](/powershell/module/az.resources/get-azaduser) polecenie, aby wyświetlić listę użytkowników usługi Azure AD.
+1. Uzyskaj unikatowy identyfikator użytkownika, grupy lub aplikacji. Na przykład możesz użyć polecenia [Get-AzADUser](/powershell/module/az.resources/get-azaduser) , aby wyświetlić listę użytkowników usługi Azure AD.
 
     ```azurepowershell
-    Get-AzADUser
+    $userid = (Get-AzADUser -DisplayName "{name}").id
     ```
 
-1. Narzędzie identyfikator GUID można wygenerować unikatowy identyfikator, który będzie używany do przypisania roli. Identyfikator ma następujący format: `11111111-1111-1111-1111-111111111111`
+1. Szablon generuje wartość domyślną identyfikatora GUID, który jest używany do identyfikowania przypisania roli. Jeśli musisz określić konkretny identyfikator GUID, przekaż tę wartość w parametrze roleNameGuid. Identyfikator ma format:`11111111-1111-1111-1111-111111111111`
 
-1. Utwórz grupę zasobów w przykładzie.
+Aby przypisać rolę na poziomie zasobu lub grupy zasobów, wykonaj następujące kroki:
+
+1. Utwórz przykładową grupę zasobów.
 
     ```azurepowershell
     New-AzResourceGroup -Name ExampleGroup -Location "Central US"
     ```
 
-1. Użyj [New AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) polecenie, aby rozpocząć wdrażanie.
+1. Użyj polecenia [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) , aby rozpocząć wdrażanie.
 
     ```azurepowershell
-    New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json
+    New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json -principalId $userid -builtInRoleType Reader
     ```
 
-    Prośba do określania wymaganych parametrów. Poniżej przedstawiono przykładowe dane wyjściowe.
+    Poniżej przedstawiono przykład danych wyjściowych.
 
     ```Output
-    PS /home/user> New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json
-    
-    cmdlet New-AzResourceGroupDeployment at command pipeline position 1
-    Supply values for the following parameters:
-    (Type !? for Help.)
-    principalId: 22222222-2222-2222-2222-222222222222
-    builtInRoleType: Reader
-    roleNameGuid: 11111111-1111-1111-1111-111111111111
+    PS /home/user> New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json -principalId $userid -builtInRoleType Reader
     
     DeploymentName          : rbac-rg
     ResourceGroupName       : ExampleGroup
@@ -149,45 +229,49 @@ Aby wdrożyć poprzedni szablon przy użyciu programu Azure PowerShell, wykonaj 
     DeploymentDebugLogLevel :
     ```
 
-## <a name="deploy-template-using-the-azure-cli"></a>Wdrażanie szablonu przy użyciu wiersza polecenia platformy Azure
+Aby przypisać rolę na poziomie subskrypcji, użyj polecenia [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) i określ lokalizację wdrożenia.
 
-Aby wdrożyć poprzedni szablon przy użyciu wiersza polecenia platformy Azure, wykonaj następujące kroki.
+```azurepowershell
+New-AzDeployment -Location centralus -TemplateFile rbac-rg.json -principalId $userid -builtInRoleType Reader
+```
 
-1. Utwórz nowy plik o nazwie rbac rg.json i skopiuj poprzedni szablon.
+Ma podobne dane wyjściowe do polecenia wdrożenia dla grup zasobów.
 
-1. Zaloguj się do [wiersza polecenia platformy Azure](/cli/azure/authenticate-azure-cli).
+## <a name="deploy-template-using-the-azure-cli"></a>Wdrażanie szablonu przy użyciu interfejsu wiersza polecenia platformy Azure
 
-1. Uzyskaj Unikatowy identyfikator użytkownika, grupy lub aplikacji. Na przykład, można użyć [listy użytkowników usługi ad az](/cli/azure/ad/user#az-ad-user-list) polecenie, aby wyświetlić listę użytkowników usługi Azure AD.
+Aby wdrożyć poprzedni szablon przy użyciu interfejsu wiersza polecenia platformy Azure w grupie zasobów lub subskrypcji, wykonaj następujące kroki.
+
+1. Utwórz nowy plik o nazwie RBAC-RG. JSON i skopiuj poprzedni szablon.
+
+1. Zaloguj się do [interfejsu wiersza polecenia platformy Azure](/cli/azure/authenticate-azure-cli).
+
+1. Uzyskaj unikatowy identyfikator użytkownika, grupy lub aplikacji. Na przykład możesz użyć polecenia [AZ AD User show](/cli/azure/ad/user#az-ad-user-show) , aby wyświetlić użytkownika usługi Azure AD.
 
     ```azurecli
-    az ad user list
+    userid=$(az ad user show --upn-or-object-id "{email}" --query objectId --output tsv)
     ```
 
-1. Narzędzie identyfikator GUID można wygenerować unikatowy identyfikator, który będzie używany do przypisania roli. Identyfikator ma następujący format: `11111111-1111-1111-1111-111111111111`
+1. Szablon generuje wartość domyślną identyfikatora GUID, który jest używany do identyfikowania przypisania roli. Jeśli musisz określić konkretny identyfikator GUID, przekaż tę wartość w parametrze roleNameGuid. Identyfikator ma format:`11111111-1111-1111-1111-111111111111`
 
-1. Utwórz grupę zasobów w przykładzie.
+Aby przypisać rolę na poziomie zasobu lub grupy zasobów, wykonaj następujące kroki:
+
+1. Utwórz przykładową grupę zasobów.
 
     ```azurecli
     az group create --name ExampleGroup --location "Central US"
     ```
 
-1. Użyj [Utwórz wdrożenie grupy az](/cli/azure/group/deployment#az-group-deployment-create) polecenie, aby rozpocząć wdrażanie.
+1. Użyj polecenia [AZ Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create) , aby rozpocząć wdrażanie.
 
     ```azurecli
-    az group deployment create --resource-group ExampleGroup --template-file rbac-rg.json
+    az group deployment create --resource-group ExampleGroup --template-file rbac-rg.json --parameters principalId=$userid builtInRoleType=Reader
     ```
 
-    Prośba do określania wymaganych parametrów. Poniżej przedstawiono przykładowe dane wyjściowe.
+    Poniżej przedstawiono przykład danych wyjściowych.
 
     ```Output
-    C:\Azure\Templates>az group deployment create --resource-group ExampleGroup --template-file rbac-rg.json
-    Please provide string value for 'principalId' (? for help): 22222222-2222-2222-2222-222222222222
-    Please provide string value for 'builtInRoleType' (? for help):
-     [1] Owner
-     [2] Contributor
-     [3] Reader
-    Please enter a choice [1]: 3
-    Please provide string value for 'roleNameGuid' (? for help): 11111111-1111-1111-1111-111111111111
+    C:\Azure\Templates>az group deployment create --resource-group ExampleGroup --template-file rbac-rg.json --parameters principalId=$userid builtInRoleType=Reader
+    
     {
       "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ExampleGroup/providers/Microsoft.Resources/deployments/rbac-rg",
       "name": "rbac-rg",
@@ -248,8 +332,16 @@ Aby wdrożyć poprzedni szablon przy użyciu wiersza polecenia platformy Azure, 
       "resourceGroup": "ExampleGroup"
     }
     ```
-    
-## <a name="next-steps"></a>Kolejne kroki
+
+Aby przypisać rolę na poziomie subskrypcji, użyj polecenia [AZ Deployment Create](/cli/azure/deployment#az-deployment-create) i określ lokalizację wdrożenia.
+
+```azurecli
+az deployment create --location centralus --template-file rbac-rg.json --parameters principalId=$userid builtInRoleType=Reader
+```
+
+Ma podobne dane wyjściowe do polecenia wdrożenia dla grup zasobów.
+
+## <a name="next-steps"></a>Następne kroki
 
 - [Szybki start: Tworzenie i wdrażanie szablonów usługi Azure Resource Manager przy użyciu witryny Azure Portal](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
 - [Understand the structure and syntax of Azure Resource Manager Templates (Omówienie struktury i składni szablonów usługi Azure Resource Manager)](../azure-resource-manager/resource-group-authoring-templates.md)

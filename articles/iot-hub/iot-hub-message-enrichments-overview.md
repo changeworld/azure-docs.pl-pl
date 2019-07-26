@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: b815ba80ac0860a4248b27e4013da4a8a9d12e18
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 8e24489ad2909879b035a08316e66788034e99bc
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321294"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377201"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Wzbogacanie komunikatów dla komunikatów IoT Hub między urządzeniami a chmurą (wersja zapoznawcza)
 
@@ -41,6 +41,8 @@ Może to być dowolny z następujących przykładów:
 
    > [!NOTE]
    > W tej chwili tylko $iothubname, $twin. Tags, $twin. Properties. pożądaną i $twin. Properties. raportowane są obsługiwane zmienne do wzbogacania komunikatów.
+
+Wzbogacanie komunikatów są dodawane jako właściwości aplikacji do komunikatów wysyłanych do wybranych punktów końcowych.  
 
 ## <a name="applying-enrichments"></a>Stosowanie wzbogacania
 

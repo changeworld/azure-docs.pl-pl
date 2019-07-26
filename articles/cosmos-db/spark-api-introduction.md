@@ -1,93 +1,155 @@
 ---
-title: Wprowadzenie do wbudowaną analizę operacyjną w usłudze Azure Cosmos DB z platformą Apache Spark
-description: Dowiedz się, jak użyć wbudowanej obsługi dla platformy Apache Spark w usłudze Azure Cosmos DB w celu uruchomienia, operacyjne analizę i sztuczną Inteligencję
+title: Wprowadzenie do wbudowanej analizy operacyjnej w Azure Cosmos DB z Apache Spark
+description: Dowiedz się, jak korzystać z wbudowanej obsługi Apache Spark w Azure Cosmos DB do uruchamiania analiz operacyjnych i AI
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 05/23/2019
 author: rimman
 ms.author: rimman
-ms.openlocfilehash: b392f7fd6438b25a741aecb86a72f142d785f0e3
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 245df0632765c4000bdf5da3e428187d2b068866
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237884"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68402114"
 ---
-# <a name="built-in-operational-analytics-in-azure-cosmos-db-with-apache-spark-preview"></a>Wbudowana analiza operacyjna w usłudze Azure Cosmos DB z platformą Apache Spark (wersja zapoznawcza) 
+# <a name="built-in-operational-analytics-in-azure-cosmos-db-with-apache-spark-preview"></a>Wbudowana analiza operacyjna w Azure Cosmos DB z Apache Spark (wersja zapoznawcza) 
 
-Wbudowana obsługa platformy Apache Spark w usłudze Azure Cosmos DB umożliwia uruchamianie analizy z platformy Apache Spark względem danych przechowywanych na koncie usługi Azure Cosmos. Zapewnia macierzystą obsługę platformy Apache Spark zadań do wykonania bezpośrednio w globalnie rozproszonych baz danych Cosmos. Te możliwości analitykom danych, inżynierami danych i deweloperom można użyć usługi Azure Cosmos DB jako elastyczne, skalowalne i wydajne platformę danych, aby uruchomić zarówno **OLTP i OLAP/HTAP** obciążeń. 
+Wbudowana obsługa Apache Spark w programie Azure Cosmos DB umożliwia uruchamianie analiz z Apache Spark w odniesieniu do danych przechowywanych na koncie usługi Azure Cosmos. Zapewnia ona natywną obsługę zadań Apache Spark do wykonania bezpośrednio w ramach dystrybuowanych globalnie baz danych Cosmos. Dzięki tym funkcjom, programistom, inżynierom danych i analitykom danych mogą używać Azure Cosmos DB jako elastycznej, skalowalnej i wydajnej platformy danych do uruchamiania obciążeń **OLTP i OLAP/HTAP** . 
 
-Platforma Spark obliczeniowej, są automatycznie dostępne we wszystkich regionach platformy Azure skojarzony z Twoim kontem usługi Azure Cosmos. Zadania Spark używają wielu wzorców możliwości usługi Azure Cosmos DB i można ich zapisać lub zapytanie względem lokalnej repliki w każdym regionie. 
+Obliczenia platformy Spark są automatycznie dostępne we wszystkich regionach świadczenia usługi Azure skojarzonych z Twoim kontem usługi Azure Cosmos. Zadania platformy Spark wykorzystują możliwości wielu wzorców Azure Cosmos DB i mogą pisać i wysyłać zapytania względem lokalnych replik w każdym regionie. 
 
 > [!NOTE]
-> Wbudowana obsługa platformy Apache Spark w usłudze Azure Cosmos DB jest obecnie w ograniczonej wersji zapoznawczej. Aby utworzyć konto wersji zapoznawczej, przejdź do [strony (wersja zapoznawcza) — bezpłatnie](https://portal.azure.com/?feature.customportal=false#create/Microsoft.DocumentDB). 
+> Wbudowana obsługa Apache Spark w Azure Cosmos DB jest obecnie w ograniczonej wersji zapoznawczej. Aby utworzyć konto w wersji zapoznawczej, przejdź do [strony rejestracji na stronie wersji](https://portal.azure.com/?feature.customportal=false#create/Microsoft.DocumentDB)zapoznawczej. 
 
-Obsługa platformy Apache Spark w usłudze Azure Cosmos DB zapewnia następujące korzyści:
+Obsługa Apache Spark w programie Azure Cosmos DB oferuje następujące korzyści:
 
-* Możesz uzyskać najkrótszy czas do wglądu dla użytkowników geograficznie rozproszonych i danych.
+* Możesz uzyskać najszybszy czas, aby uzyskać wgląd w informacje dotyczące użytkowników i danych rozproszonych geograficznie.
 
-* Można uprościć architektury rozwiązania i małe [całkowity koszt użytkowania](total-cost-ownership.md) (TCO). System będzie mieć najmniejszej liczby składników przetwarzania danych i pozwala uniknąć wszelkich przenoszenia zbędnych danych między nimi.
+* Możesz uprościć architekturę rozwiązania i obniżyć [całkowity koszt posiadania](total-cost-ownership.md) (TCO). System będzie miał mniejszą liczbę składników przetwarzania danych i pozwala uniknąć niepotrzebnego przenoszenia danych między nimi.
 
-* Tworzy [zabezpieczeń](secure-access-to-data.md), [zgodności](compliance.md)i inspekcji granicy, która obejmuje wszystkie dane objęte zarządzaniem.
+* Tworzy granicę [zabezpieczeń](secure-access-to-data.md), [zgodności](compliance.md)i inspekcji, która obejmuje wszystkie dane objęte zarządzaniem.
 
-* Udostępnia "zawsze włączona" lub [o wysokiej dostępności](high-availability.md) analytics przez użytkownika końcowego, która jest wspierana przez rygorystyczne umowy SLA.
+* Zapewnia analizę "Always On" lub " [wysoką dostępność](high-availability.md) " dla użytkowników końcowych, które są obsługiwane przez rygorystyczne umowy SLA.
 
-![Obsługa platformy Apache Spark w usłudze Azure Cosmos DB wizualizacji](./media/spark-api-introduction/spark-api-visualization.png)
+![Obsługa Apache Spark w wizualizacji Azure Cosmos DB](./media/spark-api-introduction/spark-api-visualization.png)
  
-Korzystając z pomocy technicznej platformy Apache Spark w usłudze Azure Cosmos DB, można je tworzyć i wdrażać rozwiązania, takie jak sztuczna Inteligencja i głębokiego uczenia modeli analizy predykcyjnej, zalecenia, IoT, aplikacja customer 360, wykrywanie oszustw, tonacji tekstu, analiza strumienia kliknięć. Te rozwiązania pracować bezpośrednio w odniesieniu do danych usługi Azure Cosmos DB.
+Korzystając z Apache Spark pomocy technicznej w Azure Cosmos DB, możesz tworzyć i wdrażać rozwiązania takie jak modele AI i głębokiego uczenia, Analiza predykcyjna, zalecenia, IoT, klient 360, wykrywanie oszustw, tonacji tekstu, analiza strumienia kliknięć. Te rozwiązania działają bezpośrednio w odniesieniu do danych Azure Cosmos DB.
 
-Można skonfigurować usługi batch i przesyłania strumieniowego zadań ETL w usłudze Azure Cosmos DB, bez konieczności wychodzenia poza usługa bazy danych lub dodanie dodatkowych usług obliczeniowych. Środowisko obliczeniowe można elastycznie skalować, gdy trzeba wykonywać zadania ETL i przeskalujesz ją ponownie w dół po zakończeniu zadania.
+Można skonfigurować zadanie usługi Batch i przesyłania strumieniowego w usłudze Azure Cosmos DB, bez konieczności przechodzenia poza usługę bazy danych lub dodawania dodatkowych usług obliczeniowych. Można elastycznie skalować środowisko obliczeniowe, gdy trzeba wykonać zadanie ETL i skalować je ponownie po zakończeniu zadania.
 
-Obsługa platformy Apache Spark w usłudze Azure Cosmos DB oferuje wbudowaną obsługę usługi Machine Learning w środowisk uruchomieniowych platformy Apache Spark. Środowiska uruchomieniowego obejmują Biblioteka MLLib platformy Spark, Microsoft Machine Learning dla platformy Spark, Azure Machine Learning i Cognitive Services. Z tymi funkcjami analitykami danych, inżynierami danych i analityków danych można tworzyć i zoperacjonalizować modele uczenia maszynowego bezpośrednio z poziomu usługi Azure Cosmos DB w zaledwie ułamku czasie i przy niskich kosztach.
+Obsługa Apache Spark w programie Azure Cosmos DB oferuje wbudowaną obsługę Machine Learning w środowisku uruchomieniowym Apache Spark. Środowisko uruchomieniowe obejmuje platformę Spark MLLib, Machine Learning firmy Microsoft dla platformy Spark, Azure Machine Learning i Cognitive Services. Dzięki tym funkcjom analityków danych, inżynierowie danych i analitycy danych mogą tworzyć i operacjonalizować modele uczenia maszynowego bezpośrednio w ramach Azure Cosmos DB, w części czasu i przy niskich kosztach.
 
 
 ## <a name="key-benefits"></a>Najważniejsze korzyści
 
-### <a name="globally-distributed-low-latency-operational-analytics-and-ai"></a>Analiza operacyjna globalnie rozproszona o niskich opóźnieniach i sztucznej Inteligencji
+### <a name="globally-distributed-low-latency-operational-analytics-and-ai"></a>Globalnie dystrybuowane, analiza operacyjna o małym opóźnieniu i AI
 
-Przy użyciu platformy Apache Spark w globalnie rozproszonej bazy danych Azure Cosmos możesz teraz uzyskać wszystkie skrócić czas do wglądu w całym świecie. Usługa Azure Cosmos DB umożliwia **analiza operacyjna globalnie rozproszona o niskich opóźnieniach** skali elastycznej przy użyciu trzech technik klucza:
+Dzięki Apache Spark w globalnie rozproszonej bazie danych Azure Cosmos można teraz szybko uzyskać wgląd w dane na całym świecie. Azure Cosmos DB oferuje **globalnie dystrybuowane i małe opóźnienia analizy operacyjnej** w elastycznej skali przy użyciu trzech kluczowych technik:
 
-* Ponieważ bazy danych Azure Cosmos jest globalnie dystrybuowana, wszystkie dane są pozyskiwane lokalnie gdzie znajdują się producentów danych (na przykład użytkowników). Zapytania są obsługiwane dla lokalnej repliki najbliżej producenci i konsumenci danych niezależnie od tego, gdzie znajdują się na całym świecie. 
+* Ponieważ baza danych usługi Azure Cosmos jest dystrybuowana globalnie, wszystkie dane są pozyskiwane lokalnie, w której znajdują się producenci danych (na przykład użytkowników). Zapytania są obsługiwane dla replik lokalnych znajdujących się najbliżej zarówno producentów, jak i konsumentów danych, niezależnie od tego, gdzie znajdują się na świecie. 
 
-* Wszystkie zapytania analityczne są wykonywane bezpośrednio na indeksowane dane przechowywane w partycji danych bez konieczności przenoszenia wszelkich zbędnych danych. 
+* Wszystkie zapytania analityczne są wykonywane bezpośrednio na indeksowanych danych przechowywanych wewnątrz partycji danych, bez konieczności przenoszenia danych. 
 
-* Ponieważ platforma Spark jest wspólnie przechowywane w usłudze Azure Cosmos DB, mniej tłumaczenia pośrednich oraz danych miejsce, skutkuje lepszą wydajność i skalowalność.
+* Ze względu na to, że platforma Spark jest w Azure Cosmos DB, przeprowadzona jest mniejsza liczba przeliczeń pośrednich i ruchów danych, co zapewnia lepszą wydajność i skalowalność.
 
-### <a name="unified-serverless-experience-for-apache-spark"></a>Ujednolicone środowisko bezserwerowe dla platformy Apache Spark
+### <a name="unified-serverless-experience-for-apache-spark"></a>Ujednolicone środowisko pracy bezserwerowej dla Apache Spark
 
-Jako wielomodelowa baza danych usługi Azure Cosmos DB teraz rozwija swoją obsługę interfejsów API OSS na, zapewniając **ujednolicone środowisko bezserwerowe dla platformy Apache Spark** za pomocą pary klucz wartość, dokumentów, wykres, modele danych rodziny kolumn. Różne modele danych są obsługiwane przy użyciu bazy danych MongoDB, Cassandra, Gremlin, Etcd i interfejsy API SQL — działających na tych samych danych. 
+Jako wielomodelowa baza danych, Azure Cosmos DB teraz rozszerza jej obsługę interfejsów API OSS przez zapewnienie ujednoliconego **środowiska bezserwerowego dla Apache Spark** za pomocą modeli danych typu klucz-wartość, dokument, Graf i rodzina kolumn. Różne modele danych są obsługiwane za pomocą interfejsów API MongoDB, Cassandra, Gremlin, Etcd i SQL — wszystkich działających na tych samych danych bazowych. 
 
-Dzięki obsłudze platformy Apache Spark w usłudze Azure Cosmos DB natywnie można obsługuje aplikacje napisane w języku Scala, Python, Java i korzystać z kilku bibliotek ściśle zintegrowanych dla programu SQL. Biblioteki te obejmują ([Spark SQL](https://spark.apache.org/sql/)), usługi machine learning (Spark [MLlib](https://spark.apache.org/mllib/)), przetwarzanie strumienia ([Spark Structured Streaming](https://spark.apache.org/streaming/)) i przetwarzanie wykresów (Spark [GraphFrames]( https://docs.databricks.com/spark/latest/graph-analysis/graphframes/user-guide-python.html)). Te narzędzia ułatwiają Wykorzystaj platformę Apache Spark dla różnych przypadków użycia. Nie masz do czynienia z zarządzaniem Spark lub klastrów platformy Spark. Można użyć znanej interfejsy API systemu Apache Spark i **notesów programu Jupyter** analizy i interfejsu API SQL lub dowolne OSS API NoSQL, takie jak Cassandra dla przetwarzania transakcyjnego na tych samych danych, w tym samym czasie.
+Dzięki obsłudze Apache Spark w Azure Cosmos DB można natywnie obsługiwać aplikacje Scala, Python, Java i korzystać z kilku ściśle zintegrowanych bibliotek dla języka SQL. Te biblioteki obejmują ([Spark SQL](https://spark.apache.org/sql/)), Machine Learning (Spark [MLlib](https://spark.apache.org/mllib/)), przetwarzanie strumieni (strumień[strukturalny Spark](https://spark.apache.org/streaming/)) i przetwarzanie grafu (Spark [GraphFrames]( https://docs.databricks.com/spark/latest/graph-analysis/graphframes/user-guide-python.html)). Te narzędzia ułatwiają używanie Apache Spark do różnych przypadków użycia. Nie musisz obsługiwać zarządzania klastrami Spark i Spark. Możesz użyć znanych interfejsów API Apache Spark i **notesów Jupyter** na potrzeby analiz i interfejsu API SQL lub dowolnego interfejsu API usługi OSS NoSQL, takiego jak Cassandra do przetwarzania transakcyjnego na tych samych danych źródłowych w tym samym czasie.
 
 ### <a name="no-schema-or-index-management"></a>Bez zarządzania schematami lub indeksami
 
-W przeciwieństwie do tradycyjnych analitycznych baz danych za pomocą usługi Azure Cosmos DB, inżynierami danych i analitykom danych nie są już potrzebne do czynienia z kłopotliwe schematu i zarządzania indeksami. Aparat bazy danych w usłudze Azure Cosmos DB nie wymaga żadnych jawnych zarządzaniem schematami lub indeksami i może automatycznie indeksować wszystkie dane, które pozyskuje go do obsługi zapytań platformy Apache Spark szybko. 
+W przeciwieństwie do tradycyjnych analitycznych baz danych, w przypadku Azure Cosmos DB, inżynierów danych i analityków danych nie trzeba już rozwiązywać żadnych nieskomplikowanych zarządzania schematami i indeksami. Aparat bazy danych w Azure Cosmos DB nie wymaga żadnego jawnego zarządzania schematem lub indeksem i może automatycznie indeksować wszystkie dane, które pozyskają, aby szybko obsłużyć Apache Sparke zapytania. 
 
-### <a name="consistency-choices"></a>Opcji spójności
+### <a name="consistency-choices"></a>Opcje spójności
 
-Ponieważ w partycji danych bazy danych Azure Cosmos wykonywane są zadania platformy Apache Spark, otrzyma zapytania [pięć dobrze zdefiniowanych opcji spójności](consistency-levels.md). Te modele spójności zapewniają elastyczność wyboru ścisłej spójności w celu zapewnienia najbardziej dokładne wyniki algorytmów uczenia bez narażania oczekiwania i wysokiej dostępności maszyny. 
+Ponieważ Apache Spark zadania są wykonywane w partycjach danych bazy danych Azure Cosmos, w kwerendach zostaną wyświetlone [pięć dobrze zdefiniowanych opcji spójności](consistency-levels.md). Te modele spójności zapewniają elastyczność pozwalającą wybrać ścisłą spójność, aby zapewnić najbardziej precyzyjne wyniki dla algorytmów uczenia maszynowego bez wpływu na opóźnienia i wysoką dostępność. 
 
 ### <a name="comprehensive-slas"></a>Kompleksowe umowy SLA
 
-Zadania platformy Apache Spark odniesie korzyści Azure Cosmos DB, takie jak branży kompleksowe [umowy SLA](https://azure.microsoft.com/support/legal/sla/documentdb/v1_1/) (99,999) bez żadnych związanym z zarządzaniem osobne klastry platformy Apache Spark... Tych umów SLA obejmować przepustowość, opóźnienie w 99. percentylu, spójności i wysokiej dostępności. 
+Apache Spark zadania będą mieć Azure Cosmos DB korzyści, takie jak wiodące w branży kompleksowe [umowy SLA](https://azure.microsoft.com/support/legal/sla/documentdb/v1_1/) (99,999), bez jakichkolwiek nakładów związanych z zarządzaniem oddzielnymi klastrami Apache Spark. Te umowy SLA obejmują przepływność, opóźnienie w 99 percentylu, spójności i wysokiej dostępności. 
 
-### <a name="mixed-workloads"></a>Mieszane obciążenia
+### <a name="mixed-workloads"></a>Obciążenia mieszane
 
-Integracja programu Apache Spark do usługi Azure Cosmos DB mostków separacji transakcyjne i analityczne, które jest jedną z najważniejszych klientów słabe punkty podczas tworzenia aplikacji natywnych dla chmury w skali globalnej. 
+Integracja Apache Spark do Azure Cosmos DB mostkuje rozdzielenia transakcyjnego i analitycznego, który był jednym z głównych punktów sprzedaży, podczas tworzenia aplikacji natywnych dla chmury w skali globalnej. 
 
-## <a name="built-in-jupyter-notebooks-support"></a>Wbudowaną obsługą notesów Jupyter
+## <a name="scenarios-for-azure-cosmos-db-spark-support"></a>Scenariusze obsługi Azure Cosmos DB Spark
 
-Usługa Azure Cosmos DB obsługuje wbudowanych notesów programu Jupyter dla wszystkich interfejsów API, takie jak Cassandra, MongoDB, SQL, Gremlin i tabeli. Notesy Jupyter notebook uruchamiane w ramach konta usługi Cosmos Azure i mogą poprawić funkcjonalność z perspektywy dewelopera. Notes wbudowaną obsługę wszystkich interfejsów API usługi Azure Cosmos DB i modeli danych, pozwala uruchamiać interakcyjne zapytania. Można również wykonać modeli uczenia maszynowego i analizy danych przechowywanych w bazach danych usługi Azure Cosmos. Za pomocą środowisko notesu programu Jupyter, można analizować przechowywanych danych, tworzenie i szkolenie modeli uczenia maszynowego i wykonać wnioskowania na danych w witrynie Azure portal, jak pokazano na poniższej ilustracji:
+### <a name="retail-and-consumer-goods"></a>Sprzedaż detaliczna i towary konsumenckie
 
-![Obsługa notesów programu Jupyter w usłudze Azure Cosmos DB](./media/spark-api-introduction/jupyter-notebooks-portal.png)
+Możesz użyć obsługi platformy Spark w Azure Cosmos DB, aby dostarczyć rekomendacje i oferty w czasie rzeczywistym. Możesz pomóc klientom w znalezieniu elementów, których potrzebują, z personalizacją w czasie rzeczywistym i zaleceniami dotyczącymi produktów.
 
-## <a name="next-steps"></a>Kolejne kroki
+* Możesz użyć wbudowanej obsługi Machine Learning dostarczonej przez środowisko uruchomieniowe Apache Spark, aby wygenerować zalecenia w czasie rzeczywistym w ramach katalogów produktów.
 
-* Aby dowiedzieć się więcej na temat zalet usługi Azure Cosmos DB, zobacz [Przegląd](introduction.md) artykułu.
-* [Rozpoczynanie pracy z interfejsem MongoDB usługi Azure Cosmos DB](mongodb-introduction.md)
-* [Rozpoczynanie pracy z interfejsem API rozwiązania Cassandra usługi Azure Cosmos DB](cassandra-introduction.md)
-* [Rozpoczynanie pracy z interfejsem API programu Gremlin usługi Azure Cosmos DB](graph-introduction.md)
-* [Rozpoczynanie pracy z interfejsem API tabeli usługi Azure Cosmos DB](table-introduction.md)
+* Możesz kliknąć pozycję dane przesyłane strumieniowo, kupić dane i dane klientów, aby zapewnić zamierzone zalecenia dotyczące wartości okresu istnienia.
+
+* Korzystając z funkcji globalnej dystrybucji Azure Cosmos DB, duże ilości danych produktu, które są rozmieszczone w różnych regionach, można analizować w milisekundach.
+
+* Możesz szybko uzyskać wgląd w szczegółowe informacje dla użytkowników i danych rozproszonych geograficznie. Możesz poprawić szybkość konwersji dla promocji, udostępniając odpowiednią reklamę odpowiednim użytkownikom w odpowiednim czasie.
+
+* Możesz wykorzystać wbudowaną funkcję przetwarzania strumieniowego Spark do wzbogacania danych na żywo, łącząc ją ze statycznymi danymi klienta. Dzięki temu możesz dostarczać bardziej spersonalizowanych i strategicznych reklam w czasie rzeczywistym i w kontekście działania wykonywanego przez klientów.
+
+Na poniższej ilustracji przedstawiono sposób, w jaki Azure Cosmos DB obsługa platformy Spark służy do optymalizowania cen i promocji:
+
+![Azure Cosmos DB obsługa platformy Spark w celu zoptymalizowania cen i promocji](./media/spark-api-introduction/optimize-pricing-and-promotions.png)
+
+
+Na poniższej ilustracji przedstawiono, jak Azure Cosmos DB obsługa platformy Spark jest używana w aparacie rekomendacji w czasie rzeczywistym:
+
+![Azure Cosmos DB obsługa platformy Spark w aparacie rekomendacji w czasie rzeczywistym](./media/spark-api-introduction/real-time-recommendation-engine.png)
+
+### <a name="manufacturing-and-iot"></a>Produkcja i IoT
+
+Wbudowana platforma analityczna Azure Cosmos DB umożliwia włączenie analizy danych IoT w czasie rzeczywistym z milionów urządzeń na skalę globalną. Możesz tworzyć nowoczesne innowacje, takie jak przewidywanie wzorców pogodowych, analizy predykcyjnej i optymalizacji zużycia energii.
+
+* Za pomocą Azure Cosmos DB można pogodzić dane, takie jak metryki zasobów w czasie rzeczywistym i czynniki pogodowe, a następnie zastosować inteligentne analizy siatki w celu zoptymalizowania wydajności podłączonych urządzeń w polu. Inteligentna analiza siatki jest kluczem do kontrolowania kosztów operacyjnych, zwiększania niezawodności sieci i dostarczania spersonalizowanych usług energetycznych do klientów.
+
+Na poniższej ilustracji przedstawiono, w jaki sposób obsługa platformy Spark w Azure Cosmos DB jest używana do odczytywania metryk z urządzeń IoT i stosowania inteligentnej analizy siatki:
+
+![Azure Cosmos DB obsługa platformy Spark w celu odczytywania metryk z urządzeń IoT](./media/spark-api-introduction/read-metrics-from-iot-devices.png)
+
+
+### <a name="predictive-maintenance"></a>Konserwacja predykcyjna
+
+* Utrzymywanie zasobów takich jak kompresory, które są używane w małych zbiorach wiertniczych na platformach głębokiej wody, jest złożonym Endeavor. Te zasoby znajdują się na całym świecie i generują petabajtów danych. Za pomocą Azure Cosmos DB można utworzyć kompleksowy Potok danych predykcyjnych, który korzysta z przesyłania strumieniowego Spark, aby przetwarzać duże ilości danych telemetrycznych czujnika, części zasobów magazynu i mapowania czujników.
+
+* Możesz tworzyć i wdrażać modele uczenia maszynowego w celu przewidywania niepowodzeń zasobów przed ich wystąpieniem i wystawiać zlecenia służbowe do konserwacji przed wystąpieniem awarii.
+
+Na poniższej ilustracji przedstawiono, w jaki sposób obsługa platformy Spark Azure Cosmos DB jest używana do tworzenia systemu konserwacji predykcyjnej:
+
+![Azure Cosmos DB obsługi platformy Spark w celu utworzenia systemu konserwacji predykcyjnej](./media/spark-api-introduction/predictive-maintenance-system.png)
+
+Na poniższej ilustracji przedstawiono, w jaki sposób obsługa platformy Spark Azure Cosmos DB jest używana do kompilowania systemu diagnostycznego w czasie rzeczywistym:
+
+![Azure Cosmos DB obsługi platformy Spark w celu utworzenia systemu diagnostycznego w czasie rzeczywistym](./media/spark-api-introduction/real-time-vehicle-diagnostic-system.png)
+
+### <a name="gaming"></a>Gry
+
+* Dzięki wbudowanej obsłudze platformy Spark Azure Cosmos DB umożliwia łatwe tworzenie, skalowanie i wdrażanie zaawansowanych modeli analizy i uczenia maszynowego w ciągu kilku minut w celu utworzenia najlepszej możliwego środowiska gier.
+
+* Możesz analizować dane dotyczące odtwarzacza, zakupu i zachowania, aby utworzyć odpowiednie spersonalizowane oferty, aby osiągnąć wysoką szybkość konwersji.
+
+* Za pomocą usługi Spark Machine Learning można analizować i uzyskiwać wgląd w dane telemetryczne gier. Można diagnozować i zapobiegać spowolnieniom czasów ładowania i problemów w grach.
+
+Na poniższej ilustracji przedstawiono, w jaki sposób obsługa platformy Spark w Azure Cosmos DB jest używana w analizie gier:
+
+![Obsługa platformy Spark Azure Cosmos DB w analizie gier](./media/spark-api-introduction/gaming-analytics.png)
+
+## <a name="built-in-jupyter-notebooks-support"></a>Obsługa wbudowanych notesów Jupyter
+
+Azure Cosmos DB obsługuje wbudowane notesy Jupyter dla wszystkich interfejsów API, takich jak Cassandra, MongoDB, SQL, Gremlin i Table. Notesy Jupyter są uruchamiane na kontach usługi Azure Cosmos i rozszerzają środowisko deweloperskie. Wbudowana obsługa notesów dla wszystkich Azure Cosmos DB interfejsów API i modeli danych pozwala interaktywnie uruchamiać zapytania. Możesz również wykonywać modele uczenia maszynowego i analizować dane przechowywane w bazach danych usługi Azure Cosmos. Korzystając ze środowiska notesu Jupyter, można analizować przechowywane dane, tworzyć i uczenie modeli uczenia maszynowego oraz wykonywać inferencing na danych w Azure Portal, jak pokazano na poniższej ilustracji:
+
+![Obsługa notesów Jupyter w Azure Cosmos DB](./media/spark-api-introduction/jupyter-notebooks-portal.png)
+
+## <a name="next-steps"></a>Następne kroki
+
+* Aby dowiedzieć się więcej o zaletach Azure Cosmos DB, zobacz artykuł z [omówieniem](introduction.md) .
+* [Wprowadzenie do interfejsu API Azure Cosmos DB MongoDB](mongodb-introduction.md)
+* [Rozpocznij pracę z Azure Cosmos DB interfejs API Cassandra](cassandra-introduction.md)
+* [Wprowadzenie do interfejsu API Azure Cosmos DB Gremlin](graph-introduction.md)
+* [Rozpocznij pracę z Azure Cosmos DB interfejs API tabel](table-introduction.md)
 
 
 

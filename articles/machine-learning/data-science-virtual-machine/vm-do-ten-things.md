@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: f30c241feced3031d9ed9791c27c6bb1e1e99efb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e1e59b9a34d075002e8129fe1588c95e207f8273
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60366274"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359030"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Dziesięć rzeczy, które można wykonać na Windows maszyny wirtualnej analizy danych
 
@@ -106,7 +106,7 @@ Po użytkownik operacjonalizować model w usłudze Azure Machine Learning, usłu
 Poniżej przedstawiono fragment kodu opracowany w języku Python notesu programu Jupyter, tworzący prosty model przy użyciu biblioteki SciKit-learn.
 
 ```python
-#IRIS classification
+# IRIS classification
 from sklearn import datasets
 from sklearn import svm
 clf = svm.SVC()
@@ -120,10 +120,12 @@ Metoda użyta do wdrożenia Twoich modeli języka python do usługi Azure Machin
 ```python
 from azureml import services
 @services.publish(workspaceid, auth_token)
-@services.types(sep_l = float, sep_w = float, pet_l=float, pet_w=float)
-@services.returns(int) #0, or 1, or 2
+@services.types(sep_l=float, sep_w=float, pet_l=float, pet_w=float)
+@services.returns(int)  # 0, or 1, or 2
 def predictIris(sep_l, sep_w, pet_l, pet_w):
     inputArray = [sep_l, sep_w, pet_l, pet_w]
+
+
 return clf.predict(inputArray)
 ```
 
@@ -265,9 +267,9 @@ Aby pobrać kod z repozytorium GitHub, należy użyć ```git clone``` polecenia.
 
     git clone https://github.com/Azure/DataScienceVM.git
 
-W programie Visual Studio możesz tworzyć tej samej operacji klonowania. Poniższy zrzut ekranu pokazuje, jak dostęp do narzędzia Git i GitHub w programie Visual Studio.
+W programie Visual Studio możesz tworzyć tej samej operacji klonowania. Poniższy zrzut ekranu pokazuje, jak uzyskać dostęp do narzędzi git i GitHub w programie Visual Studio.
 
-![Zrzut ekranu programu Visual Studio z połączeniem usługi GitHub, wyświetlane](./media/vm-do-ten-things/VSGit.PNG)
+![Zrzut ekranu programu Visual Studio z wyświetlonym połączeniem GitHub](./media/vm-do-ten-things/VSGit.PNG)
 
 Można znaleźć więcej informacji na temat korzystania z narzędzia Git do pracy z repozytorium GitHub z kilku dostępnych zasobów w witrynie github.com. [Cheat-sheet](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) jest odwołaniem przydatne.
 
@@ -286,7 +288,7 @@ Obiektów blob platformy Azure to niezawodne i ekonomiczne przechowywanie w chmu
 
 ![Zrzut ekranu przedstawiający Eksplorator usługi Azure Storage uzyskiwania dostępu do konta magazynu](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
 
-**Przenoszenie danych z maszyny Wirtualnej do obiektów Blob platformy Azure: AzCopy**
+**Przenoszenie danych z maszyny wirtualnej do obiektu blob platformy Azure: AzCopy**
 
 Do przenoszenia danych między lokalnymi plikami i usługi blob storage, narzędzia AzCopy można użyć w wiersza polecenia lub programu PowerShell:
 
@@ -311,20 +313,20 @@ Po uruchomieniu polecenia narzędzia AzCopy do kopiowania do obiektu blob platfo
 
 ![Zrzut ekranu przedstawiający konto magazynu, wyświetlanie przekazanego pliku CSV](./media/vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
 
-**Przenoszenie danych z maszyny Wirtualnej do obiektów Blob platformy Azure: Azure Storage Explorer**
+**Przenoszenie danych z maszyny wirtualnej do obiektu blob platformy Azure: Azure Storage Explorer**
 
 Możesz również przekazać dane z pliku lokalnego na maszynie wirtualnej za pomocą Eksploratora usługi Azure Storage:
 
 * Aby przekazać dane do kontenera, wybierz kontener docelowy, a następnie kliknij przycisk **przekazywanie** przycisku.![ Zrzut ekranu przedstawiający przycisk Przekaż w Eksploratorze usługi Azure Storage](./media/vm-do-ten-things/storage-accounts.png)
 * Kliknij pozycję **...**  po prawej stronie **pliki** wybierz jednego lub wielu plików do przekazania z systemu plików, a następnie kliknij przycisk **przekazywanie** Rozpocznij przekazywanie plików.![ Zrzut ekranu przedstawiający okno dialogowe przekazywania plików](./media/vm-do-ten-things/upload-files-to-blob.png)
 
-**Odczytywanie danych z obiektów Blob platformy Azure: Moduł czytnika uczenia maszynowego**
+**Odczytaj dane z obiektu blob platformy Azure: Moduł czytnika Machine Learning**
 
 W usłudze Azure Machine Learning Studio, można użyć **modułu importu danych** można odczytać danych z obiektu blob.
 
 ![Zrzut ekranu przedstawiający modułu importu danych w usłudze Machine Learning Studio](./media/vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
 
-**Odczytywanie danych z obiektów Blob platformy Azure: Python ODBC**
+**Odczytaj dane z obiektu blob platformy Azure: Środowisko Python ODBC**
 
 Możesz użyć **BlobService** biblioteki do odczytywania danych bezpośrednio z obiektu blob w programie Jupyter Notebook lub Python.
 
@@ -389,7 +391,7 @@ Usługi Azure Data Lake Storage to ogromne repozytorium dla obciążeń analizy 
 
 ![Zrzut ekranu przedstawiający narzędzi Data Lake Tools w programie Visual Studio](./media/vm-do-ten-things/Azure_Data_Lake_PlugIn_v2.PNG)
 
-**Przenoszenie danych z maszyny Wirtualnej do usługi Data Lake: Usługa Azure Data Lake Explorer**
+**Przenieś dane z maszyny wirtualnej do Data Lake: Eksplorator Azure Data Lake**
 
 Możesz użyć **usługi Azure Data Lake Explorer** do przekazania danych z plików lokalnych na maszynie wirtualnej do magazynu usługi Data Lake.
 
@@ -397,7 +399,7 @@ Możesz użyć **usługi Azure Data Lake Explorer** do przekazania danych z plik
 
 Możesz również tworzyć potoku danych do obsługi operacji usługi przenoszenia danych do i z usługi Azure Data Lake za pomocą [Factory(ADF) danych platformy Azure](https://azure.microsoft.com/services/data-factory/). Zapoznaj się z tym [artykułu](https://azure.microsoft.com/blog/creating-big-data-pipelines-using-azure-data-lake-and-azure-data-factory/) przeprowadzenie Cię przez kroki do utworzenia danych potoków.
 
-**Odczyt danych z magazynu obiektów Blob Azure do usługi Data Lake: U-SQL**
+**Odczytaj dane z obiektu blob platformy Azure do Data Lake: U-SQL**
 
 Jeśli dane znajdują się w usłudze Azure Blob storage, mogą bezpośrednio odczytywać dane z usługi Azure storage blob zapytania U-SQL. Przed redagowania zapytania U-SQL, upewnij się, że konto usługi blob storage jest połączone z usługi Azure Data Lake. Przejdź do **witryny Azure portal**, Znajdź pulpit nawigacyjny usługi Azure Data Lake Analytics, kliknij przycisk **Dodaj źródło danych**, wybierz typ magazynu **usługi Azure Storage** i dołączyć konta usługi Azure Storage Nazwa i klucz. Następnie możesz się odwoływać się do danych przechowywanych na koncie magazynu.
 
@@ -453,7 +455,7 @@ Po przesłaniu zapytania do serwera jest wyświetlany diagram przedstawiający s
 
 ![Zrzut ekranu przedstawiający okno dialogowe Stan zadania](./media/vm-do-ten-things/USQL_Job_Status.PNG)
 
-**Wykonywanie zapytań dotyczących danych w usłudze Data Lake: U-SQL**
+**Dane zapytania w Data Lake: U-SQL**
 
 Po zestawu danych, pobieranym do usługi Azure Data Lake, można użyć [języka U-SQL](../../data-lake-analytics/data-lake-analytics-u-sql-get-started.md) do tworzenia zapytań i eksplorowania danych. Język U-SQL jest podobny do języka T-SQL, ale łączy niektóre funkcje za pomocą języka C#, aby użytkownicy mogą zapisywać niestandardowe moduły, funkcje zdefiniowane przez użytkownika i itp. Skrypty można użyć w poprzednim kroku.
 
@@ -495,7 +497,7 @@ Usługa Azure HDInsight to zarządzana usługa Apache Hadoop, Spark, HBase i Sto
 * Przekazywanie danych za pomocą IPython Notebook. Najpierw zaimportuj wymagane pakiety, podłącz poświadczeń, Utwórz bazę danych na koncie magazynu, a następnie ładowania danych w klastrach HDI.
 
 ```python
-#Import required Packages
+# Import required Packages
 import pyodbc
 import time as time
 import json
@@ -510,12 +512,12 @@ from azure.storage.blob import BlobService
 warnings.filterwarnings("ignore", category=UserWarning, module='urllib2')
 
 
-#Create the connection to Hive using ODBC
-SERVER_NAME='xxx.azurehdinsight.net'
-DATABASE_NAME='nyctaxidb'
-USERID='xxx'
-PASSWORD='xxxx'
-DB_DRIVER='Microsoft Hive ODBC Driver'
+# Create the connection to Hive using ODBC
+SERVER_NAME = 'xxx.azurehdinsight.net'
+DATABASE_NAME = 'nyctaxidb'
+USERID = 'xxx'
+PASSWORD = 'xxxx'
+DB_DRIVER = 'Microsoft Hive ODBC Driver'
 driver = 'DRIVER={' + DB_DRIVER + '}'
 server = 'Host=' + SERVER_NAME + ';Port=443'
 database = 'Schema=' + DATABASE_NAME
@@ -523,12 +525,13 @@ hiveserv = 'HiveServerType=2'
 auth = 'AuthMech=6'
 uid = 'UID=' + USERID
 pwd = 'PWD=' + PASSWORD
-CONNECTION_STRING = ';'.join([driver,server,database,hiveserv,auth,uid,pwd])
+CONNECTION_STRING = ';'.join(
+    [driver, server, database, hiveserv, auth, uid, pwd])
 connection = pyodbc.connect(CONNECTION_STRING, autocommit=True)
-cursor=connection.cursor()
+cursor = connection.cursor()
 
 
-#Create Hive database and tables
+# Create Hive database and tables
 queryString = "create database if not exists nyctaxidb;"
 cursor.execute(queryString)
 
@@ -576,11 +579,13 @@ queryString = """
 cursor.execute(queryString)
 
 
-#Upload data from blob storage to HDI cluster
-for i in range(1,13):
-    queryString = "LOAD DATA INPATH 'wasb:///nyctaxitripraw2/trip_data_%d.csv' INTO TABLE nyctaxidb2.trip PARTITION (month=%d);"%(i,i)
+# Upload data from blob storage to HDI cluster
+for i in range(1, 13):
+    queryString = "LOAD DATA INPATH 'wasb:///nyctaxitripraw2/trip_data_%d.csv' INTO TABLE nyctaxidb2.trip PARTITION (month=%d);" % (
+        i, i)
     cursor.execute(queryString)
-    queryString = "LOAD DATA INPATH 'wasb:///nyctaxifareraw2/trip_fare_%d.csv' INTO TABLE nyctaxidb2.fare PARTITION (month=%d);"%(i,i)  
+    queryString = "LOAD DATA INPATH 'wasb:///nyctaxifareraw2/trip_fare_%d.csv' INTO TABLE nyctaxidb2.fare PARTITION (month=%d);" % (
+        i, i)
     cursor.execute(queryString)
 ```
 
@@ -592,7 +597,7 @@ for i in range(1,13):
 
 Po załadowaniu danych do klastra usługi HDI możesz sprawdzić swoje dane w Eksploratorze usługi Azure Storage. I masz nyctaxidb bazy danych, utworzonych w klaster usługi HDI.
 
-**Eksploracja danych: Zapytania programu hive w języku Python**
+**Eksploracja danych: Zapytania programu Hive w języku Python**
 
 Ponieważ dane znajdują się w klastrze usługi Hadoop, można użyć pakietu moduł pyodbc połączyć się z klastrów Hadoop i zapytania bazy danych przy użyciu technologii Hive eksploracji i inżynieria funkcji. Można wyświetlić istniejące tabele, utworzonego w kroku wymagań wstępnych.
 
@@ -600,7 +605,7 @@ Ponieważ dane znajdują się w klastrze usługi Hadoop, można użyć pakietu m
 queryString = """
     show tables in nyctaxidb2;
     """
-pd.read_sql(queryString,connection)
+pd.read_sql(queryString, connection)
 ```
 
 ![Wyświetlanie istniejących tabel](./media/vm-do-ten-things/Python_View_Existing_Tables_Hive_v3.PNG)
@@ -633,7 +638,7 @@ queryString = """
     )tc
     GROUP BY tipped;
     """
-results = pd.read_sql(queryString,connection)
+results = pd.read_sql(queryString, connection)
 
 results.columns = ['tipped', 'trip_count']
 df = results.copy()
@@ -661,7 +666,7 @@ queryString = """
                         and dropoff_longitude between -90 and -30
                         and dropoff_latitude between 30 and 90;
             """
-results = pd.read_sql(queryString,connection)
+results = pd.read_sql(queryString, connection)
 results.head(5)
 ```
 
@@ -669,9 +674,9 @@ results.head(5)
 
 ```python
 results.columns = ['pickup_longitude', 'pickup_latitude', 'dropoff_longitude',
-                    'dropoff_latitude', 'trip_distance', 'trip_time_in_secs', 'direct_distance']
-df = results.loc[results['trip_distance']<=100] #remove outliers
-df = df.loc[df['direct_distance']<=100] #remove outliers
+                   'dropoff_latitude', 'trip_distance', 'trip_time_in_secs', 'direct_distance']
+df = results.loc[results['trip_distance'] <= 100]  # remove outliers
+df = df.loc[df['direct_distance'] <= 100]  # remove outliers
 plt.scatter(df['direct_distance'], df['trip_distance'])
 ```
 
@@ -717,7 +722,7 @@ stored as textfile;
 cursor.execute(queryString)
 ```
 
-Teraz wstawić zawartość sprzężenia do powyższej tabeli wewnętrznej
+Teraz Wstaw zawartość sprzężenia do poprzedniej tabeli wewnętrznej
 
 ```python
 queryString = """
@@ -812,7 +817,7 @@ queryString = """
     select * from nyctaxi_downsampled_dataset limit 10;
     """
 cursor.execute(queryString)
-pd.read_sql(queryString,connection)
+pd.read_sql(queryString, connection)
 ```
 
 ![Pierwsze wiersze danych z tabeli](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)

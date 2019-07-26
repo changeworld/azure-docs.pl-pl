@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 7410240b0d8e6a63d39c90ead2875f315d995de0
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
-ms.translationtype: MT
+ms.openlocfilehash: ba00842200d8a896fa1ffaccad8826d1c3173462
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443791"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68488804"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Samouczek: Uruchamianie czytnika immersyjnego (Node.js)
 
@@ -122,7 +122,7 @@ router.get('/subdomain', function (req, res) {
 });
 ```
 
-Punkt końcowy interfejsu API **getimmersivereadertoken** powinien być zabezpieczony za pomocą uwierzytelniania (na przykład [OAuth](https://oauth.net/2/)), aby uniemożliwić nieautoryzowanym użytkownikom uzyskanie tokenów do użycia z usługą czytnika danych immersyjny i rozliczeniami. Ta praca wykracza poza zakres tego samouczka.
+Punkt końcowy interfejsu API **getimmersivereadertoken** powinien być zabezpieczony za pomocą uwierzytelniania (na przykład [OAuth](https://oauth.net/2/)), aby uniemożliwić nieautoryzowanym użytkownikom uzyskanie tokenów, które mają być używane z usługą czytnika danych immersyjny i rozliczeniami. Ta praca wykracza poza zakres tego samouczka.
 
 ## <a name="launch-the-immersive-reader-with-sample-content"></a>Uruchom czytnik immersyjny z przykładową zawartością
 
@@ -262,7 +262,7 @@ Możesz dołączyć zawartość matematyczną w czytniku immersyjny przy użyciu
 
 2. Przejdź do strony _http://localhost:3000_ . Gdy uruchamiasz czytnik immersyjny i przewijasz do dołu, zobaczysz formułę matematyczną.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Poznaj [zestaw SDK czytnika immersyjny](https://github.com/Microsoft/immersive-reader-sdk) i [Kompendium zestawu SDK czytnika immersyjny](./reference.md)
 * Wyświetl przykłady kodu w witrynie [GitHub](https://github.com/microsoft/immersive-reader-sdk/samples/advanced-csharp)

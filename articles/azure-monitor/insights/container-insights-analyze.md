@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/12/2019
+ms.date: 07/22/2019
 ms.author: magoedte
-ms.openlocfilehash: dc55e4999a09c45463ae75b05d610b290f5ff526
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: bbfc8cc61571de8b76ef1f7f0216501ef6d2cdee
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248318"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377472"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Zrozumienie wydajności klastra AKS przy użyciu usługi Azure Monitor dla kontenerów 
 Dzięki usłudze Azure Monitor dla kontenerów umożliwia wykresy wydajności oraz stan kondycji monitorowania obciążenia klastry usługi Azure Kubernetes Service (AKS) z dwóch perspektyw bezpośrednio z klastra usługi AKS lub we wszystkich klastrach usługi AKS w ramach subskrypcji platformy Azure Monitor. Wyświetlanie usługi Azure Container Instances (ACI) możliwe jest również w przypadku monitorowania określonych klastra AKS.
@@ -38,9 +38,11 @@ Główne różnice monitorujące klaster systemu Windows Server z Azure Monitor 
 - W wersji zapoznawczej obsługiwane są maksymalnie 30 kontenerów systemu Windows Server. To ograniczenie nie dotyczy kontenerów systemu Linux.  
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
+
 Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
 
-## <a name="multi-cluster-view-from-azure-monitor"></a>Wyświetlanie wielu klastrów z usługi Azure Monitor 
+## <a name="multi-cluster-view-from-azure-monitor"></a>Wyświetlanie wielu klastrów z usługi Azure Monitor
+
 Zaznacz, aby wyświetlić stan kondycji wszystkich klastrach usługi AKS wdrożonych **Monitor** w okienku po lewej stronie w witrynie Azure portal.  W obszarze **Insights** zaznacz **kontenery**.  
 
 ![Przykład pulpitu nawigacyjnego wielu klastrów w usłudze Azure Monitor](./media/container-insights-analyze/azmon-containers-multiview.png)
@@ -89,6 +91,7 @@ Poniższa tabela zawiera podział obliczeń kontrolowanie stanów kondycji monit
 Z listy klastrów, możesz przejść do szczegółów do **klastra** strony, klikając nazwę klastra, do **węzłów** stronie wydajności, klikając zbiór węzłów w **węzłów** kolumny dla tego konkretnego klastra lub testowania odzyskiwania po awarii w dół do **kontrolerów** stronie wydajności, klikając zbiorcze z **zasobników użytkownika** lub **zasobników System**kolumny.   
 
 ## <a name="view-performance-directly-from-an-aks-cluster"></a>Wyświetl wydajność bezpośrednio z klastra usługi AKS
+
 Dostęp do usługi Azure Monitor na kontenerów jest dostępne bezpośrednio z klastra usługi AKS, wybierając **Insights** z okienka po lewej stronie. Wyświetlanie informacji na temat klastra usługi AKS jest podzielony na cztery perspektywy:
 
 - Klaster
@@ -112,6 +115,7 @@ Możesz użyć klawiszy strzałek w lewo/w prawo, aby przechodzić przez każdy 
 Azure Monitor for Containers obsługują również [Eksploratora metryk](../platform/metrics-getting-started.md)Azure monitor, w którym można tworzyć własne wykresy wykresów, skorelować i badać trendy oraz przypinać do pulpitów nawigacyjnych. W Eksploratorze metryk można również użyć kryteriów ustawionych do wizualizacji metryk jako podstawy [reguły alertu opartej](../platform/alerts-metric.md)na metrykach.  
 
 ## <a name="view-container-metrics-in-metrics-explorer"></a>Wyświetlanie metryk kontenera w Eksploratorze metryk
+
 W Eksploratorze metryk można wyświetlić zagregowane metryki dotyczące węzła i użycia z Azure Monitor dla kontenerów. W poniższej tabeli zestawiono szczegółowe informacje ułatwiające zrozumienie sposobu używania wykresów metryk do wizualizacji metryk kontenera.
 
 |Przestrzeń nazw | Metryka |
@@ -273,20 +277,36 @@ Ikony w polu Stan wskazują online stany zasobników, zgodnie z opisem w poniżs
 | ![Ikona stanu zakończone](./media/container-insights-analyze/containers-terminated-icon.png) | Pomyślnie zatrzymano lub nie można zatrzymać|  
 | ![Ikona stanu nie powiodło się](./media/container-insights-analyze/containers-failed-icon.png) | Stan niepowodzenia |  
 
-## <a name="disk-capacity-workbook"></a>Skoroszyt pojemności dysku
+## <a name="workbooks"></a>Skoroszyty
+
 Skoroszyty łączą tekst, [kwerendy dzienników](../log-query/query-language.md), [metryki](../platform/data-platform-metrics.md)i parametry w rozbudowanych raportach interaktywnych. Skoroszyty są edytowane przez innych członków zespołu, którzy mają dostęp do tych samych zasobów platformy Azure.
 
-Azure Monitor dla kontenerów zawiera skoroszyt, aby rozpocząć pracę, **pojemność dysku**.  Ten skoroszyt przedstawia interaktywne wykresy użycia dysku dla każdego dysku prezentowanego w węźle w kontenerze przez następujące perspektywy:
+Azure Monitor kontenerów zawiera cztery skoroszyty umożliwiające rozpoczęcie pracy:
 
-- Użycie dysku% dla wszystkich dysków
-- Wolne miejsce na dysku dla wszystkich dysków
-- Tabela pokazująca dla każdego dysku węzła, jego zajęte miejsce (%), Trend wykorzystanego miejsca (%), wolne miejsce na dysku (GiB) i trend wolnego miejsca na dysku (GiB). Gdy w tabeli zostanie wybrany wiersz, procent zajętego miejsca i wolnego miejsca na dysku (GiB) pokazano poniżej 
+- **Pojemność dysku**: Przedstawia wykresy interaktywnego użycia dysku dla każdego dysku prezentowanego w węźle w kontenerze przez następujące perspektywy:
 
-Możesz uzyskać dostęp do tego skoroszytu, wybierając pozycję **pojemność dysku** z listy rozwijanej **Wyświetl skoroszyty** .  
+    - Użycie dysku% dla wszystkich dysków
+    - Wolne miejsce na dysku dla wszystkich dysków
+    - Siatka wyświetlana dla każdego dysku węzła, jego zajętego miejsca (%), trendu zajętego miejsca (%), wolnego miejsca na dysku (GiB) i trend wolnego miejsca na dysku (GiB). Gdy w tabeli zostanie wybrany wiersz, procent zajętego miejsca i wolnego miejsca na dysku (GiB) pokazano poniżej 
+
+- **We/wy dysku**: Przedstawia wykresy interaktywnego wykorzystania dysku dla każdego dysku prezentowanego w węźle w kontenerze przez następujące perspektywy:
+
+    - We/wy dysku podsumowano na wszystkich dyskach przez odczyt bajtów/s, liczba bajtów/s oraz trendy odczytu i zapisu/s 
+    - Osiem wykresów wydajności przedstawiających kluczowe wskaźniki wydajności, które pomagają mierzyć i identyfikować wąskie gardła dyskowych operacji we/wy.
+
+- **Kubelet**: Obejmuje dwie siatki pokazujące statystyki operacyjne węzła klucza:
+
+    - Przegląd według siatki węzła podsumowuje całkowitą operację, łączną liczbę błędów i operacji zakończonych powodzeniem według procentu i trendu dla każdego węzła.
+    - Przegląd według typu operacji podsumowuje dla każdej operacji łączną operację, łączną liczbę błędów i operacji zakończonych powodzeniem według procentu i trendu.
+
+- **Sieć**: Przedstawia wykresy interaktywnego wykorzystania sieci dla każdego węzła karty sieciowej i siatkę prezentującą kluczowe wskaźniki wydajności, aby pomóc w mierzeniu wydajności kart sieciowych.  
+
+Możesz uzyskać dostęp do tych skoroszytów, wybierając je z listy rozwijanej **Wyświetl skoroszyty** .  
 
 ![Lista rozwijana Wyświetl skoroszyty](./media/container-insights-analyze/view-workbooks-dropdown-list.png)
 
-
 ## <a name="next-steps"></a>Następne kroki
+
 - Zapoznaj się z tematem [tworzenie alertów dotyczących wydajności za pomocą Azure monitor dla kontenerów](container-insights-alerts.md) , aby dowiedzieć się, jak tworzyć alerty dotyczące wysokiego użycia procesora i pamięci w celu obsługi procesów i procedur operacyjnych DevOps. 
+
 - Wyświetl [przykłady zapytań dotyczących dzienników](container-insights-log-search.md#search-logs-to-analyze-data) , aby zobaczyć wstępnie zdefiniowane zapytania i przykłady do oszacowania lub dostosowania do tworzenia alertów, wizualizacji lub analizowania klastrów.

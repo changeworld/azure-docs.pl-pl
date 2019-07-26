@@ -1,13 +1,13 @@
 ---
-title: Wskazówki dotyczące ograniczanie ryzyka związanego z wykonywaniem spekulatywnym na platformie Azure | Dokumentacja firmy Microsoft
-description: Wskazówki dotyczące ograniczanie ryzyka związanego z wykonywaniem spekulatywnym kanału po stronie luk w zabezpieczeniach na platformie Azure.
+title: Wskazówki dotyczące eliminowania spekulacyjnego wykonywania na platformie Azure | Microsoft Docs
+description: Wskazówki dotyczące łagodzenia słabych luk w kanale bocznym na platformie Azure.
 services: cloud-services
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
-keywords: krokami zaradczymi dla luki, meltdown, specter
+keywords: Spectre, Meltdown, Specter
 ms.service: cloud-services
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/21/2018
 ms.author: cynthn
-ms.openlocfilehash: 3382907cf3267bc5a326daca2131829e82e76371
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e669b3923a2019b071ae9abe2b78db299a24f572
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60613634"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360674"
 ---
-# <a name="guidance-for-mitigating-speculative-execution-side-channel-vulnerabilities-in-azure"></a>Wskazówki dotyczące ograniczanie ryzyka związanego z wykonywaniem spekulatywnym kanału po stronie luk w zabezpieczeniach na platformie Azure
+# <a name="guidance-for-mitigating-speculative-execution-side-channel-vulnerabilities-in-azure"></a>Wskazówki dotyczące eliminowania luk w zabezpieczeniach z kanału bocznego w systemie Azure
 
 [!INCLUDE [virtual-machines-common-mitigate-se](../../includes/virtual-machines-common-mitigate-se.md)]

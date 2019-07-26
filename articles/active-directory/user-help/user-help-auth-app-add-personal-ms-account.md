@@ -1,6 +1,6 @@
 ---
-title: Dodawanie osobistych kont Microsoft do aplikacji Microsoft Authenticator — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Jak dodać osobistych kont Microsoft, takich jak Outlook.com lub Xbox LIVE w aplikacji Microsoft Authenticator dla weryfikacji two-Factor Authentication.
+title: Dodaj osobiste konta Microsoft do aplikacji Microsoft Authenticator Azure Active Directory | Microsoft Docs
+description: Jak dodać osobiste konta Microsoft, takie jak Outlook.com lub Xbox LIVE do aplikacji Microsoft Authenticator na potrzeby weryfikacji dwuskładnikowej.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,62 +12,64 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcb49048fa9200b8970f37a4f187ca995d208cc2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 502407bbf1cdb47fc8105ed0220babcd9f292faa
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60474096"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382697"
 ---
 # <a name="add-your-personal-microsoft-accounts"></a>Dodawanie osobistych kont Microsoft
-Dodaj osobistych kont Microsoft, takich jak Outlook.com, i Xbox LIVE w aplikacji Microsoft Authenticator dla procesu standardowa two-Factor Authentication weryfikacji i metodę logowania bez hasła telefonu.
 
-- **Metoda standardowa weryfikacji two-Factor Authentication.** Wpisz nazwę użytkownika i hasło na urządzeniu, w przypadku logowania się do, a następnie wybierz czy aplikację Microsoft Authenticator wyśle powiadomienie, lub jeśli chcesz skopiować kod weryfikacyjny skojarzone z **kont** ekranu Aplikacja Microsoft Authenticator.
+Dodaj osobiste konta Microsoft, takie jak Outlook.com i Xbox LIVE do aplikacji Microsoft Authenticator dla standardowego procesu weryfikacji dwuskładnikowej i metody logowania za pomocą telefonu bezhasło.
 
-- **Bez hasła metodę logowania.** Wpisz swoją nazwę użytkownika na urządzeniu, w przypadku logowania się do osobistego konta Microsoft, a następnie używania urządzenia przenośnego, aby sprawdzić, czy chodzi o Ciebie przy użyciu linii papilarnych, powierzchni lub numeru PIN. W przypadku tej metody nie musisz wprowadzać hasła.
+- **Standardowa metoda weryfikacji dwuskładnikowej.** Wpisz nazwę użytkownika i hasło do urządzenia, którego używasz do logowania, a następnie wybierz, czy aplikacja Microsoft Authenticator będzie wysyłać powiadomienie, czy wolisz skopiować skojarzony kod weryfikacyjny z ekranu **konta** w firmie Microsoft. Aplikacja uwierzytelniania.
+
+- **Metoda logowania bezhasłem.** Wpisz nazwę użytkownika na urządzeniu, na którym logujesz się do konto Microsoft osobistego, a następnie użyj urządzenia przenośnego, aby sprawdzić, czy używasz odcisku palca, kroju lub numeru PIN. W przypadku tej metody nie musisz wprowadzać hasła.
 
 >[!Important]
->Przed dodaniem konta należy pobrać i zainstalować aplikację Microsoft Authenticator. Jeśli użytkownik jeszcze nie, wykonaj kroki opisane w [pobrać i zainstalować aplikację](user-help-auth-app-download-install.md) artykułu.
+>Aby można było dodać konto, należy pobrać i zainstalować aplikację Microsoft Authenticator. Jeśli jeszcze tego nie zrobiono, wykonaj kroki opisane w artykule [pobieranie i instalowanie aplikacji](user-help-auth-app-download-install.md) .
 
-## <a name="add-your-personal-microsoft-account"></a>Dodaj osobiste konto Microsoft
-Możesz dodać Twojego osobistego konta Microsoft, włączając weryfikacji two-Factor Authentication, a następnie, dodając je do aplikacji.
+## <a name="add-your-personal-microsoft-account"></a>Dodaj osobistą konto Microsoft
+
+Możesz dodać własne konto Microsoft, najpierw włączając weryfikację dwuetapową, a następnie dodając konto do aplikacji.
 
 >[!Note]
->Jeśli zamierzasz używać tylko logowanie za pomocą telefonu bez hasła dla Twojego osobistego konta Microsoft, nie trzeba włączyć weryfikację two-Factor Authentication. Jako dodatkowego zabezpieczenia konta, zalecamy włączenie weryfikacji two-Factor Authentication.
+>Jeśli zamierzasz korzystać tylko z logowania jednokrotnego dla osobistego konto Microsoft, nie musisz włączać weryfikacji dwuskładnikowej. Jednak w przypadku dodatkowych zabezpieczeń konta zalecamy włączenie weryfikacji dwuetapowej.
 
-### <a name="turn-on-two-factor-verification"></a>Włącz weryfikację two-Factor Authentication
+### <a name="turn-on-two-factor-verification"></a>Włącz weryfikację dwuskładnikową
 
-1. Na komputerze, przejdź do swojej [podstawy zabezpieczeń](https://account.microsoft.com/security) strony i zaloguj się przy użyciu osobistego konta Microsoft. Na przykład alain@outlook.com.
+1. Na komputerze przejdź do strony [podstawy zabezpieczeń](https://account.microsoft.com/security) i zaloguj się przy użyciu konto Microsoft osobistych. Na przykład alain@outlook.com.
 
-2. W dolnej części **podstawy zabezpieczeń** wybierz **więcej opcji zabezpieczeń** łącza.
+2. W dolnej części strony **podstawowe informacje** o zabezpieczeniach wybierz łącze **więcej opcji zabezpieczeń** .
 
     ![Strona podstawy zabezpieczeń z wyróżnionym linkiem "więcej opcji zabezpieczeń"](./media/user-help-auth-app-add-personal-ms-account/more-security-options-link.png)
 
-3. Przejdź do **weryfikacji dwuetapowej** sekcji, a następnie wybierz opcję włączyć funkcję **na**. Można również wyłączyć ją tutaj, jeśli nie chcesz jej używać z konta osobistego.
+3. Przejdź do sekcji **weryfikacja** dwuetapowa i wybierz włączenie **tej funkcji.** Możesz również ją wyłączyć, jeśli nie chcesz już używać jej z kontem osobistym.
 
-### <a name="add-your-microsoft-account-to-the-app"></a>Dodaj konto Microsoft do aplikacji
+### <a name="add-your-microsoft-account-to-the-app"></a>Dodawanie konto Microsoft do aplikacji
 
-1. Otwórz aplikację Microsoft Authenticator na swoim urządzeniu przenośnym.
+1. Otwórz aplikację Microsoft Authenticator na urządzeniu przenośnym.
 
-2. Wybierz **Dodaj konto** z **dostosowywanie i kontroli** ikonę w prawym górnym rogu.
+2. Wybierz pozycję **Dodaj konto** z ikony **Dostosowywanie i kontrola** w prawym górnym rogu.
 
-    ![Strona konta, z wyróżnioną ikoną Dostosuj i kontrola](./media/user-help-auth-app-add-personal-ms-account/customize-and-control-icon.png)
+    ![Strona kont z wyróżnioną ikoną Dostosowywanie i kontrolkę](./media/user-help-auth-app-add-personal-ms-account/customize-and-control-icon.png)
 
-3. W **Dodaj konto** wybierz **konto osobiste**.
+3. Na stronie **Dodawanie konta** wybierz pozycję **konto osobiste**.
 
-4. Zaloguj się do konta osobistego, przy użyciu adresu e-mail odpowiednie (takie jak alain@outlook.com), a następnie wybierz **dalej**.
+4. Zaloguj się do swojego konta osobistego przy użyciu odpowiedniego adresu e-mail (np alain@outlook.com.), a następnie wybierz przycisk **dalej**.
 
     >[!Note]
-    >Jeśli nie masz osobiste konto Microsoft, możesz ją utworzyć w tym miejscu.
+    >Jeśli nie masz konto Microsoft osobistych, możesz utworzyć je tutaj.
 
-5. Wprowadź hasło, a następnie wybierz **Zaloguj**.
+5. Wprowadź hasło, a następnie wybierz pozycję **Zaloguj się**.
 
-    Twojego osobistego konta zostanie dodany do aplikacji Microsoft Authenticator.
+    Twoje konto osobiste zostanie dodane do aplikacji Microsoft Authenticator.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Po dodaniu konta do aplikacji, można zalogować się przy użyciu aplikacji Authenticator na urządzeniu. Aby uzyskać więcej informacji, zobacz [Zaloguj się przy użyciu aplikacji](user-help-auth-app-sign-in.md).
+- Po dodaniu kont do aplikacji możesz zalogować się przy użyciu aplikacji uwierzytelniania na urządzeniu. Aby uzyskać więcej informacji, zobacz [Logowanie przy użyciu aplikacji](user-help-auth-app-sign-in.md).
 
-- Jeśli występują problemy z przejściem Twój kod weryfikacyjny dla Twojego osobistego konta Microsoft, zobacz **Rozwiązywanie problemów z kodem weryfikacji** części [zabezpieczające dla konta Microsoft i weryfikacja kody](https://support.microsoft.com/en-us/help/12428/microsoft-account-security-info-verification-codes) artykułu.
+- Jeśli masz problemy z uzyskaniem kodu weryfikacyjnego dla konto Microsoft osobistych, zobacz sekcję Rozwiązywanie problemów z **kodem weryfikacyjnym** w artykule [konto Microsoft informacje zabezpieczające & kody weryfikacyjne](https://support.microsoft.com/en-us/help/12428/microsoft-account-security-info-verification-codes) .
 
-- Dla urządzeń z systemem iOS można również wykonać kopię zapasową poświadczeń konta usługi i powiązane ustawienia aplikacji, takie jak kolejność Twoje konta z chmurą. Aby uzyskać więcej informacji, zobacz [tworzenia kopii zapasowych i odzyskiwanie przy użyciu aplikacji Microsoft Authenticator](user-help-auth-app-backup-recovery.md).
+- W przypadku urządzeń z systemem iOS można również utworzyć kopię zapasową poświadczeń konta i powiązanych ustawień aplikacji, takich jak kolejność kont, w chmurze. Aby uzyskać więcej informacji, zobacz [Tworzenie kopii zapasowych i odzyskiwanie danych za pomocą aplikacji Microsoft Authenticator](user-help-auth-app-backup-recovery.md).

@@ -10,28 +10,25 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/06/2019
+ms.date: 07/18/2019
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: db79f2b1d3857aac2f71d2e18a3949f068b746eb
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: dd2fb0c9ef157e3706ca3d902f7feebaf4c2f279
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67990072"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478907"
 ---
-# <a name="languages---officially-supported-by-application-insights-team"></a>Języki — oficjalnie obsługiwane przez zespół Application Insights
+# <a name="supported-languages"></a>Obsługiwane języki
 
 * [C#|VB (.NET)](../../azure-monitor/app/asp-net.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
-* [Strony sieci Web w języku JavaScript](../../azure-monitor/app/javascript.md)
+* [JavaScript](../../azure-monitor/app/javascript.md)
 * [Node.JS](../../azure-monitor/app/nodejs.md)
 
-## <a name="community-sdks"></a>Zestawy SDK społeczności
+## <a name="supported-platforms-and-frameworks"></a>Obsługiwane platformy i struktury
 
-Istnieje kilka zestawów SDK dla społeczności platformy Application Insights Azure, z których wiele zostało utworzonych pierwotnie przez firmę Microsoft. Zestawy SDK Wspólnoty nie są oficjalnie obsługiwane przez firmę Microsoft. Nie możemy zapewnić wsparcia dla żadnego zestawu SDK, który nie znajduje się na liście oficjalnie obsługiwanych. Te zestawy SDK są uważane za eksperymentalne i nie są zalecane do użycia w środowisku produkcyjnym.
-
-## <a name="platforms-and-frameworks"></a>Platformy i struktury
 ### <a name="instrumentation-for-already-deployed-applications-codeless-agent-based"></a>Instrumentacja dla już wdrożonych aplikacji (bez kodu, oparta na agentach)
 * [Maszyny wirtualne platformy Azure i zestawy skalowania maszyn wirtualnych platformy Azure](../../azure-monitor/app/azure-vm-vmss-apps.md)
 * [Usługa Azure App Service](../../azure-monitor/app/azure-web-apps.md)
@@ -59,3 +56,7 @@ Istnieje kilka zestawów SDK dla społeczności platformy Application Insights A
 ## <a name="export-and-data-analysis"></a>Eksportowanie i analiza danych
 * [Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)
 * [Stream Analytics](../../azure-monitor/app/export-power-bi.md)
+
+## <a name="unsupported-community-sdks"></a>Nieobsługiwane zestawy SDK społeczności
+
+Istnieje wiele zestawów SDK dla społeczności Application Insights. Zestawy SDK Wspólnoty nie są oficjalnie obsługiwane/utrzymywane przez firmę Microsoft. Nie możemy zapewnić wsparcia dla żadnego zestawu SDK, który nie znajduje się na liście oficjalnie obsługiwanych. 

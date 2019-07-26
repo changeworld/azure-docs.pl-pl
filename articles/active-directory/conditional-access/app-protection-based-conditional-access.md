@@ -1,6 +1,6 @@
 ---
-title: Wymagaj zasad ochrony aplikacji w celu uzyskania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wymagać zasad ochrony aplikacji w celu uzyskania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego w usłudze Azure Active Directory.
+title: Wymagaj zasad ochrony aplikacji dla dostępu do aplikacji w chmurze z dostępem warunkowym w Azure Active Directory | Microsoft Docs
+description: Dowiedz się, jak wymagać zasad ochrony aplikacji dla dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego w Azure Active Directory.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,357 +11,360 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e2e43f13352c56f947f5e560049ab0acf871599
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 3e8b7cc1f3a8431986ffbaac604ec5863236f112
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509475"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68357105"
 ---
-# <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>Wymagaj zasad ochrony aplikacji w celu uzyskania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego (wersja zapoznawcza)
+# <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>Wymagaj zasad ochrony aplikacji dla dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego (wersja zapoznawcza)
 
-Pracownicy używają urządzeń przenośnych zarówno osobistych i służbowych. Upewnij się, że Twoi pracownicy mogą być produktywność, ma zapobiegać utracie danych. Przy użyciu dostępu warunkowego usługi Azure Active Directory (Azure AD) można chronić dane firmy przez ograniczenie dostępu do aplikacji w chmurze. Najpierw użyj aplikacji klienckich za pomocą zasad ochrony aplikacji.
+Pracownicy używają urządzeń przenośnych zarówno do zadań osobistych, jak i służbowych. Zapewniając, że pracownicy mogą pracować wydajnie, możesz również zapobiec utracie danych. Za pomocą dostępu warunkowego usługi Azure Active Directory (Azure AD) możesz chronić dane firmowe, ograniczając dostęp do aplikacji w chmurze. Najpierw użyj aplikacji klienckich z zasadami ochrony aplikacji.
 
-W tym artykule opisano sposób konfigurowania zasad dostępu warunkowego, które mogą wymagać zasad ochrony aplikacji przed uzyskaniem dostępu do danych.
+W tym artykule wyjaśniono, jak skonfigurować zasady dostępu warunkowego, które mogą wymagać zasad ochrony aplikacji przed udzieleniem dostępu do danych.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
-Za pomocą [dostępu warunkowego usługi Azure AD](overview.md), można dostosować sposób autoryzowani użytkownicy mogą dostęp do zasobów. Na przykład można ograniczyć dostęp do aplikacji w chmurze do zaufanych urządzeń.
+Za pomocą [dostępu warunkowego usługi Azure AD](overview.md)możesz dostosować sposób, w jaki autoryzowani użytkownicy mogą uzyskiwać dostęp do zasobów. Można na przykład ograniczyć dostęp do aplikacji w chmurze do zaufanych urządzeń.
 
-Możesz użyć [zasady ochrony aplikacji usługi Intune](https://docs.microsoft.com/intune/app-protection-policy) w celu ochrony danych firmy. Zasady ochrony aplikacji usługi Intune nie wymagają rozwiązania do zarządzania (urządzeniami przenośnymi MDM) urządzenia przenośnego. Możesz chronić swoje dane firmowe z lub bez rejestracji urządzeń w rozwiązaniu do zarządzania urządzeniami.
+[Zasady ochrony aplikacji usługi Intune](https://docs.microsoft.com/intune/app-protection-policy) mogą pomóc w ochronie danych firmy. Zasady ochrony aplikacji usługi Intune nie wymagają rozwiązania do zarządzania urządzeniami przenośnymi (MDM). Dane firmy można chronić za pomocą lub bez rejestracji urządzeń w rozwiązaniu do zarządzania urządzeniami.
 
-Usługa Azure Active Directory dostępu warunkowego ogranicza dostęp do aplikacji w chmurze dla aplikacji klienckich, które usługa Intune zgłosił do usługi Azure AD jako otrzymywanie zasad ochrony aplikacji. Na przykład można ograniczyć dostęp do usługi Exchange Online do aplikacji Outlook, która zawiera zasady ochrony aplikacji usługi Intune.
+Azure Active Directory dostęp warunkowy ogranicza dostęp do aplikacji w chmurze do aplikacji klienckich, które usługa Intune zgłosiła w usłudze Azure AD jako otrzymywanie zasad ochrony aplikacji. Można na przykład ograniczyć dostęp do usługi Exchange Online do aplikacji Outlook, która ma zasady ochrony aplikacji w usłudze Intune.
 
-W terminologii dostępu warunkowego, te aplikacje klienckie są znane jako chroniony za pomocą zasad *zasad ochrony aplikacji*.  
+W terminologii dostępu warunkowego te aplikacje klienckie są znane jako zasady chronione przy użyciu *zasad ochrony aplikacji*.  
 
 ![Dostęp warunkowy](./media/app-protection-based-conditional-access/05.png)
 
-Aby uzyskać listę aplikacji chronionej przez zasady klienta, zobacz [wymaganie dotyczące zasad ochrony aplikacji](technical-reference.md#approved-client-app-requirement).
+Aby uzyskać listę aplikacji klienckich chronionych przez zasady, zobacz [wymagania dotyczące zasad ochrony aplikacji](technical-reference.md#approved-client-app-requirement).
 
-Można połączyć app protection na podstawie zasad dostępu warunkowego przy użyciu zasad usługi, takie jak [zasady dostępu warunkowego opartego na urządzeniach](require-managed-devices.md). W ten sposób można zapewnić większą elastyczność w sposobie ochrony danych dla urządzeń osobistych i firmowych.
+Zasady dostępu warunkowego opartego na ochronie aplikacji można łączyć z innymi zasadami, takimi jak [zasady dostępu warunkowego oparte na urządzeniach](require-managed-devices.md). W ten sposób można zapewnić elastyczność w zakresie ochrony danych zarówno na urządzeniach osobistych, jak i firmowych.
 
-## <a name="benefits-of-app-protection-based-conditional-access-requirement"></a>Zalety wymagania dostępu warunkowego na podstawie ochrony aplikacji
+> [!NOTE]
+> Zasady ochrony aplikacji dostępu warunkowego nie mogą być stosowane do użytkowników B2B, ponieważ zapraszana organizacja nie ma wglądu w organizację domową użytkownika B2B.
 
-Podobnie jak zgodności, który jest zgłaszany przez usługę Intune dla systemów iOS i Android zarządzanego urządzenia usługi Intune, po zastosowaniu raporty do usługi Azure AD, jeśli zasady ochrony aplikacji. Dostęp warunkowy służy tych zasad kontroli dostępu. Te nowe zasady dostępu warunkowego, zasady ochrony aplikacji, zwiększa bezpieczeństwo. Chroni przed błędy administratora, takich jak:
+## <a name="benefits-of-app-protection-based-conditional-access-requirement"></a>Zalety wymagania dostępu warunkowego opartego na ochronie aplikacji
+
+Podobnie jak w przypadku zgodności raportowanej przez usługę Intune dla systemów iOS i Android w przypadku urządzenia zarządzanego, usługa Intune teraz raportuje usługę Azure AD w przypadku zastosowania zasad ochrony aplikacji. Dostęp warunkowy może używać tych zasad jako kontroli dostępu. Te nowe zasady dostępu warunkowego, zasady ochrony aplikacji, zwiększają bezpieczeństwo. Chroni przed błędami administratora, takimi jak:
 
 - Użytkownicy, którzy nie mają licencji usługi Intune.
-- Użytkownicy, którzy nie może odbierać zasady ochrony aplikacji usługi Intune.
-- Usługa Intune aplikacji zasad ochrony aplikacji, które nie są skonfigurowane do otrzymywania zasad.
+- Użytkownicy, którzy nie mogą otrzymywać zasad ochrony aplikacji usługi Intune.
+- Aplikacje zasad ochrony aplikacji usługi Intune, które nie są skonfigurowane do odbierania zasad.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 W tym artykule założono, że znasz:
 
-- [Wymaganie dotyczące zasad ochrony aplikacji](technical-reference.md#app-protection-policy-requirement) techniczne.
-- [Zatwierdzone klienta aplikacji wymaganie](technical-reference.md#approved-client-app-requirement) techniczne.
-- Podstawowe pojęcia związane z [dostępu warunkowego w usłudze Azure Active Directory](overview.md).
-- Jak [konfigurowania zasad dostępu warunkowego](app-based-mfa.md).
+- Informacje techniczne [dotyczące wymagań zasad ochrony aplikacji](technical-reference.md#app-protection-policy-requirement) .
+- Informacje techniczne [dotyczące zatwierdzonej aplikacji klienckiej](technical-reference.md#approved-client-app-requirement) .
+- Podstawowe pojęcia związane z [dostępem warunkowym w Azure Active Directory](overview.md).
+- Jak [skonfigurować zasady dostępu warunkowego](app-based-mfa.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby utworzyć zasady dostępu warunkowego na podstawie ochrony aplikacji, musisz mieć:
+Aby utworzyć zasady dostępu warunkowego opartego na ochronie aplikacji, należy:
 
-- Mieć pakietu Enterprise Mobility + Security lub subskrypcję usługi Azure Active Directory premium + usługi Intune.
-- Upewnij się, że użytkownicy są licencjonowane na potrzeby rozwiązania Enterprise Mobility + Security lub usługi Azure AD i Intune.
-- Upewnij się, że aplikacja kliencka jest skonfigurowany w usłudze Intune, aby otrzymać zasady ochrony aplikacji.
-- Upewnij się, że użytkownicy są skonfigurowani w usłudze Intune, aby otrzymać zasady ochrony aplikacji usługi Intune.
+- Posiadanie Enterprise Mobility + Security lub subskrypcji Azure Active Directory Premium i usługi Intune.
+- Upewnij się, że użytkownicy mają licencję na Enterprise Mobility + Security lub usługę Azure AD + Intune.
+- Upewnij się, że aplikacja kliencka jest skonfigurowana w usłudze Intune w celu odbierania zasad ochrony aplikacji.
+- Upewnij się, że użytkownicy są skonfigurowani w usłudze Intune w celu otrzymywania zasad ochrony aplikacji usługi Intune.
 
-## <a name="app-protection-based-policy-for-exchange-online"></a>Zasady ochrony na podstawie aplikacji dla usługi Exchange Online
+## <a name="app-protection-based-policy-for-exchange-online"></a>Zasady oparte na ochronie aplikacji dla usługi Exchange Online
 
-Ten scenariusz składa się z ochrony na podstawie zasad dostępu warunkowego aplikacji do uzyskiwania dostępu do usługi Exchange Online.
+Ten scenariusz składa się z zasad dostępu warunkowego opartego na ochronie aplikacji dla dostępu do usługi Exchange Online.
 
-### <a name="scenario-playbook"></a>Podręcznik dotyczący scenariusza
+### <a name="scenario-playbook"></a>Element PlayBook scenariusza
 
-W tym scenariuszu założono, że użytkownik:
+W tym scenariuszu przyjęto założenie, że użytkownik:
 
-- Konfiguruje poczty e-mail przy użyciu aplikacji natywnego programu pocztowego w systemie iOS lub Android, aby nawiązać połączenie z programem Exchange.
-- Otrzymuje wiadomość e-mail, która wskazuje, że dostęp jest dostępne tylko przy użyciu aplikacji Outlook.
+- Konfiguruje pocztą e-mail za pomocą natywnej aplikacji poczty w systemach iOS i Android w celu nawiązania połączenia z programem Exchange.
+- Odbiera wiadomość e-mail wskazującą, że dostęp jest dostępny tylko przy użyciu aplikacji Outlook.
 - Pobiera aplikację za pomocą linku.
 - Otwiera aplikację Outlook i loguje się przy użyciu poświadczeń usługi Azure AD.
-- Jest monit o zainstalowanie albo **aplikacji Microsoft Authenticator** lub **Portal firmy usługi Intune** aby kontynuować.
+- Zostanie wyświetlony monit o zainstalowanie **aplikacji Microsoft Authenticator** lub **Intune — portal firmy** w celu kontynuowania.
 - Instaluje aplikację i zwraca do aplikacji Outlook, aby kontynuować.
-- Jest monitowany o zarejestrowanie urządzenia.
-- Może odbierać zasady ochrony aplikacji usługi Intune.
-- Dostęp do poczty e-mail.
+- Zostanie wyświetlony monit o zarejestrowanie urządzenia.
+- Może otrzymać zasady ochrony aplikacji usługi Intune.
+- Może uzyskać dostęp do poczty e-mail.
 
-Żadne zasady ochrony aplikacji usługi Intune musi być w aplikacji dostęp do danych firmowych. Zasady może monitować użytkownika o ponowne uruchomienie aplikacji lub użyj dodatkowego kodu PIN. Jest to tak, jeśli zasady są skonfigurowane dla aplikacji i platformy.
+Aby uzyskać dostęp do danych firmowych, wszystkie zasady ochrony aplikacji usługi Intune muszą znajdować się w aplikacji. Zasady mogą monitować użytkownika o ponowne uruchomienie aplikacji lub użycie dodatkowego numeru PIN. Dotyczy to sytuacji, gdy zasady są skonfigurowane dla aplikacji i platformy.
 
 ### <a name="configuration"></a>Konfigurowanie
 
 **Krok 1. Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online**
 
-Dla zasad dostępu warunkowego w tym kroku należy skonfigurować następujące składniki:
+W przypadku zasad dostępu warunkowego w tym kroku skonfiguruj następujące składniki:
 
 ![Dostęp warunkowy](./media/app-protection-based-conditional-access/01.png)
 
-1. Wprowadź nazwę swoich zasad dostępu warunkowego.
-1. W obszarze **przypisania**w **użytkowników i grup**, wybierz co najmniej jednego użytkownika lub grupy dla każdej zasady dostępu warunkowego.
-1. W **aplikacje w chmurze**, wybierz opcję **Office 365 Exchange Online**.
+1. Wprowadź nazwę zasad dostępu warunkowego.
+1. W obszarze **przypisania**, w obszarze **Użytkownicy i grupy**wybierz co najmniej jednego użytkownika lub grupę dla każdej zasady dostępu warunkowego.
+1. W obszarze **aplikacje w chmurze**wybierz pozycję **Office 365 Exchange Online**.
 
    ![Dostęp warunkowy](./media/app-protection-based-conditional-access/07.png)
 
-1. W **warunki**, skonfiguruj **platform urządzeń** i **aplikacje klienckie (wersja zapoznawcza)** :
-   1. W **platform urządzeń**, wybierz opcję **Android** i **iOS**.
+1. W obszarze **warunki**Skonfiguruj **platformy urządzeń** i **aplikacje klienckie (wersja zapoznawcza)** :
+   1. W obszarze **platformy urządzeń**wybierz pozycję **Android** i **iOS**.
 
       ![Dostęp warunkowy](./media/app-protection-based-conditional-access/03.png)
 
-   1. W **aplikacje klienckie (wersja zapoznawcza)** , wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **Nowocześni Klienci uwierzytelniania**.
+   1. W obszarze **aplikacje klienckie (wersja zapoznawcza)** wybierz pozycję **aplikacje mobilne i klienci stacjonarni** oraz **nowoczesne komputery klienckie uwierzytelniania**.
 
       ![Dostęp warunkowy](./media/app-protection-based-conditional-access/91.png)
 
-1. W obszarze **kontrole dostępu**, wybierz opcję **wymagają zasad ochrony aplikacji (wersja zapoznawcza)** .
+1. W obszarze **kontroli dostępu**wybierz pozycję **Wymagaj zasad ochrony aplikacji (wersja zapoznawcza)** .
 
    ![Dostęp warunkowy](./media/app-protection-based-conditional-access/05.png)
 
-**Krok 2. Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online za pomocą programu ActiveSync (EAS)**
+**Krok 2. Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online z programem ActiveSync (EAS)**
 
-Dla zasad dostępu warunkowego w tym kroku należy skonfigurować następujące składniki:
+W przypadku zasad dostępu warunkowego w tym kroku skonfiguruj następujące składniki:
 
 ![Dostęp warunkowy](./media/app-protection-based-conditional-access/06.png)
 
-1. Wprowadź nazwę swoich zasad dostępu warunkowego.
-1. W obszarze **przypisania**w **użytkowników i grup**, wybierz co najmniej jednego użytkownika lub grupy dla każdej zasady dostępu warunkowego.
-1. W **aplikacje w chmurze**, wybierz opcję **Office 365 Exchange Online**.
+1. Wprowadź nazwę zasad dostępu warunkowego.
+1. W obszarze **przypisania**, w obszarze **Użytkownicy i grupy**wybierz co najmniej jednego użytkownika lub grupę dla każdej zasady dostępu warunkowego.
+1. W obszarze **aplikacje w chmurze**wybierz pozycję **Office 365 Exchange Online**.
 
    ![Dostęp warunkowy](./media/app-protection-based-conditional-access/07.png)
 
-1. W **warunki**, skonfiguruj **aplikacje klienckie (wersja zapoznawcza)** . 
+1. W obszarze **warunki**Skonfiguruj **aplikacje klienckie (wersja zapoznawcza)** . 
 
-   1. W **aplikacje klienckie (wersja zapoznawcza)** , wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **klienci programu Exchange ActiveSync**.
+   1. W obszarze **aplikacje klienckie (wersja zapoznawcza)** wybierz pozycję **aplikacje mobilne i klienci stacjonarni** oraz **klienci programu Exchange ActiveSync**.
 
       ![Dostęp warunkowy](./media/app-protection-based-conditional-access/92.png)
 
-   1. W obszarze **kontrole dostępu**, wybierz opcję **wymagają zasad ochrony aplikacji (wersja zapoznawcza)** .
+   1. W obszarze **kontroli dostępu**wybierz pozycję **Wymagaj zasad ochrony aplikacji (wersja zapoznawcza)** .
 
       ![Dostęp warunkowy](./media/app-protection-based-conditional-access/05.png)
 
-**Krok 3. Konfigurowanie zasad ochrony aplikacji usługi Intune dla systemów iOS i aplikacji klienckich dla systemu Android**
+**Krok 3. Konfigurowanie zasad ochrony aplikacji usługi Intune dla aplikacji klienckich dla systemów iOS i Android**
 
 ![Dostęp warunkowy](./media/app-protection-based-conditional-access/09.png)
 
-Aby uzyskać więcej informacji, zobacz [ochrona aplikacji i danych w usłudze Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune).
+Aby uzyskać więcej informacji, zobacz [Ochrona aplikacji i danych za pomocą Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune).
 
-## <a name="app-protection-based-or-compliant-device-policy-for-exchange-online"></a>Zasady ochrony lub być zgodne urządzenie aplikacji dla usługi Exchange Online
+## <a name="app-protection-based-or-compliant-device-policy-for-exchange-online"></a>Zasady dotyczące ochrony aplikacji lub zgodnego urządzenia dla usługi Exchange Online
 
-Ten scenariusz składa się z aplikacji ochrony lub być zgodne urządzenia z systemem zasad dostępu warunkowego dostępu do usługi Exchange Online.
+Ten scenariusz składa się z zasad dostępu warunkowego opartego na ochronie aplikacji lub zgodności urządzeń na potrzeby dostępu do usługi Exchange Online.
 
-### <a name="scenario-playbook"></a>Podręcznik dotyczący scenariusza
+### <a name="scenario-playbook"></a>Element PlayBook scenariusza
 
-W tym scenariuszu założono, że:
+W tym scenariuszu przyjęto założenie, że:
  
-- Użytkownik jest już zarejestrowany, z lub bez nich urządzeń firmowych.
-- Użytkownicy, którzy nie są zarejestrowane i zarejestrowane w usłudze Azure AD za pomocą aplikacji pakietu chronione aplikacji trzeba zarejestrować urządzenie, aby uzyskać dostęp do zasobów.
-- Zarejestrowani użytkownicy, którzy korzystają z chronionych aplikacji nie trzeba ponownie zarejestrować urządzenie.
-- Użytkownik może odbierać zasady ochrony aplikacji usługi Intune w przeciwnym razie zarejestrowane.
-- Użytkownik mogą uzyskiwać dostęp do poczty e-mail przy użyciu programu Outlook i zasady ochrony aplikacji usługi Intune w przeciwnym razie zarejestrowane.
-- Użytkownik ma dostęp poczty e-mail przy użyciu programu Outlook, jeśli urządzenie jest zarejestrowane.
+- Użytkownik jest już zarejestrowany, z lub bez urządzeń firmowych.
+- Użytkownicy, którzy nie są zarejestrowani i zarejestrowani w usłudze Azure AD przy użyciu aplikacji chronionej przez aplikację, muszą zarejestrować urządzenie w celu uzyskania dostępu do zasobów.
+- Zarejestrowani użytkownicy korzystający z aplikacji chronionej przez aplikację nie muszą ponownie rejestrować urządzenia.
+- Użytkownik może otrzymać zasady ochrony aplikacji usługi Intune, jeśli nie zostały zarejestrowane.
+- Użytkownik może uzyskać dostęp do poczty e-mail przy użyciu programu Outlook i zasad ochrony aplikacji usługi Intune, jeśli nie zostały zarejestrowane.
+- Użytkownik może uzyskać dostęp do poczty e-mail w programie Outlook, jeśli urządzenie jest zarejestrowane.
 
 ### <a name="configuration"></a>Konfigurowanie
 
 **Krok 1. Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online**
 
-Dla zasad dostępu warunkowego w tym kroku należy skonfigurować następujące składniki:
+W przypadku zasad dostępu warunkowego w tym kroku skonfiguruj następujące składniki:
 
 ![Dostęp warunkowy](./media/app-protection-based-conditional-access/62.png)
 
-1. Wprowadź nazwę swoich zasad dostępu warunkowego.
-1. W obszarze **przypisania**w **użytkowników i grup**, wybierz co najmniej jednego użytkownika lub grupy dla każdej zasady dostępu warunkowego.
-1. W **aplikacje w chmurze**, wybierz opcję **Office 365 Exchange Online**. 
+1. Wprowadź nazwę zasad dostępu warunkowego.
+1. W obszarze **przypisania**, w obszarze **Użytkownicy i grupy**wybierz co najmniej jednego użytkownika lub grupę dla każdej zasady dostępu warunkowego.
+1. W obszarze **aplikacje w chmurze**wybierz pozycję **Office 365 Exchange Online**. 
 
    ![Dostęp warunkowy](./media/app-protection-based-conditional-access/07.png)
 
-1. W **warunki**, skonfiguruj **platform urządzeń** i **aplikacje klienckie (wersja zapoznawcza)** . 
+1. W obszarze **warunki**Skonfiguruj **platformy urządzeń** i **aplikacje klienckie (wersja zapoznawcza)** . 
  
-   1. W **platform urządzeń**, wybierz opcję **Android** i **iOS**.
+   1. W obszarze **platformy urządzeń**wybierz pozycję **Android** i **iOS**.
 
       ![Dostęp warunkowy](./media/app-protection-based-conditional-access/03.png)
 
-   1. W **aplikacje klienckie (wersja zapoznawcza)** , wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **Nowocześni Klienci uwierzytelniania**.
+   1. W obszarze **aplikacje klienckie (wersja zapoznawcza)** wybierz pozycję **aplikacje mobilne i klienci stacjonarni** oraz **nowoczesne komputery klienckie uwierzytelniania**.
 
       ![Dostęp warunkowy](./media/app-protection-based-conditional-access/91.png)
 
-5. W obszarze **kontrole dostępu**, wybierz następujące opcje:
+5. W obszarze **kontroli dostępu**wybierz następujące opcje:
    - **Wymagaj, aby urządzenie było oznaczone jako zgodne**
-   - **Wymagane zasady ochrony aplikacji (wersja zapoznawcza)**
+   - **Wymagaj zasad ochrony aplikacji (wersja zapoznawcza)**
    - **Wymagaj jednej z wybranych kontrolek**   
  
       ![Dostęp warunkowy](./media/app-protection-based-conditional-access/11.png)
 
 **Krok 2. Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online przy użyciu programu ActiveSync**
 
-Dla zasad dostępu warunkowego w tym kroku należy skonfigurować następujące składniki:
+W przypadku zasad dostępu warunkowego w tym kroku skonfiguruj następujące składniki:
 
 ![Dostęp warunkowy](./media/app-protection-based-conditional-access/06.png)
 
-1. Wprowadź nazwę swoich zasad dostępu warunkowego.
-1. W obszarze **przypisania**w **użytkowników i grup**, wybierz co najmniej jednego użytkownika lub grupy dla każdej zasady dostępu warunkowego.
-1. W **aplikacje w chmurze**, wybierz opcję **Office 365 Exchange Online**. 
+1. Wprowadź nazwę zasad dostępu warunkowego.
+1. W obszarze **przypisania**, w obszarze **Użytkownicy i grupy**wybierz co najmniej jednego użytkownika lub grupę dla każdej zasady dostępu warunkowego.
+1. W obszarze **aplikacje w chmurze**wybierz pozycję **Office 365 Exchange Online**. 
 
    ![Dostęp warunkowy](./media/app-protection-based-conditional-access/07.png)
 
-1. W **warunki**, skonfiguruj **aplikacje klienckie (wersja zapoznawcza)** . 
+1. W obszarze **warunki**Skonfiguruj **aplikacje klienckie (wersja zapoznawcza)** . 
 
-   W **aplikacje klienckie (wersja zapoznawcza)** , wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **klienci programu Exchange ActiveSync**.
+   W obszarze **aplikacje klienckie (wersja zapoznawcza)** wybierz pozycję **aplikacje mobilne i klienci stacjonarni** oraz **klienci programu Exchange ActiveSync**.
 
    ![Dostęp warunkowy](./media/app-protection-based-conditional-access/92.png)
 
-1. W obszarze **kontrole dostępu**, wybierz następujące opcje:
+1. W obszarze **kontroli dostępu**wybierz następujące opcje:
    - **Wymagaj, aby urządzenie było oznaczone jako zgodne**
-   - **Wymagane zasady ochrony aplikacji (wersja zapoznawcza)**
+   - **Wymagaj zasad ochrony aplikacji (wersja zapoznawcza)**
    - **Wymagaj jednej z wybranych kontrolek**
 
       ![Dostęp warunkowy](./media/app-protection-based-conditional-access/11.png)
 
-**Krok 3. Konfigurowanie zasad ochrony aplikacji usługi Intune dla systemów iOS i aplikacji klienckich dla systemu Android**
+**Krok 3. Konfigurowanie zasad ochrony aplikacji usługi Intune dla aplikacji klienckich dla systemów iOS i Android**
 
 ![Dostęp warunkowy](./media/app-protection-based-conditional-access/09.png)
 
-Aby uzyskać więcej informacji, zobacz [ochrona aplikacji i danych w usłudze Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune).
+Aby uzyskać więcej informacji, zobacz [Ochrona aplikacji i danych za pomocą Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune).
 
-## <a name="app-protection-based-and-compliant-device-policy-for-exchange-online"></a>Zasady ochrony i zgodnego urządzenia aplikacji dla usługi Exchange Online
+## <a name="app-protection-based-and-compliant-device-policy-for-exchange-online"></a>Zasady dotyczące ochrony aplikacji i zgodnego urządzenia dla usługi Exchange Online
 
-Ten scenariusz składa się na podstawie ochrony aplikacji i zgodne urządzenia zasady dostępu warunkowego na dostęp do usługi Exchange Online.
+Ten scenariusz składa się z zasad dostępu warunkowego opartego na aplikacji i zgodności urządzeń w celu uzyskania dostępu do usługi Exchange Online.
 
-### <a name="scenario-playbook"></a>Podręcznik dotyczący scenariusza
+### <a name="scenario-playbook"></a>Element PlayBook scenariusza
 
-W tym scenariuszu założono, że użytkownik:
+W tym scenariuszu przyjęto założenie, że użytkownik:
  
-- Konfiguruje poczty e-mail przy użyciu aplikacji natywnego programu pocztowego w systemie iOS lub Android, aby nawiązać połączenie z programem Exchange.
-- Otrzymuje wiadomość e-mail, który oznacza, że dostępu wymaga zarejestrowania swojego urządzenia.
-- Pliki do pobrania aplikacji Portal firmy usługi Intune oraz loguje się do portalu.
-- Sprawdza, czy wiadomości e-mail i zostanie poproszony o korzystali z aplikacji Outlook.
-- Pobieranie aplikacji Outlook.
-- Zostanie otwarty w aplikacji Outlook i wprowadza poświadczenia używane w rejestracji.
-- Może odbierać zasady ochrony aplikacji usługi Intune.
-- Dostęp do poczty e-mail przy użyciu programu Outlook i zasady ochrony aplikacji usługi Intune.
+- Konfiguruje pocztą e-mail za pomocą natywnej aplikacji poczty w systemach iOS i Android w celu nawiązania połączenia z programem Exchange.
+- Odbiera wiadomość e-mail z informacją, że dostęp wymaga zarejestrowania urządzenia.
+- Pobiera Intune — Portal firmy i loguje się do portalu.
+- Sprawdza pocztę i prosi o korzystanie z aplikacji Outlook.
+- Pobiera aplikację Outlook.
+- Otwiera aplikację Outlook i wprowadza poświadczenia używane podczas rejestracji.
+- Może otrzymać zasady ochrony aplikacji usługi Intune.
+- Może uzyskać dostęp do poczty e-mail przy użyciu programu Outlook i zasad ochrony aplikacji usługi Intune.
 
-Żadne zasady ochrony aplikacji usługi Intune zostaną aktywowane przed uzyskaniem dostępu do danych firmowych. Zasady może monitować użytkownika o ponowne uruchomienie aplikacji lub użyj dodatkowego kodu PIN. Jest to tak, jeśli zasady są skonfigurowane dla aplikacji i platformy.
+Wszystkie zasady ochrony aplikacji usługi Intune są aktywowane przed udzieleniem dostępu do danych firmowych. Zasady mogą monitować użytkownika o ponowne uruchomienie aplikacji lub użycie dodatkowego numeru PIN. Dotyczy to sytuacji, gdy zasady są skonfigurowane dla aplikacji i platformy.
 
 ### <a name="configuration"></a>Konfigurowanie
 
 **Krok 1. Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online**
 
-Dla zasad dostępu warunkowego w tym kroku należy skonfigurować następujące składniki:
+W przypadku zasad dostępu warunkowego w tym kroku skonfiguruj następujące składniki:
 
 ![Dostęp warunkowy](./media/app-protection-based-conditional-access/01.png)
 
-1. Wprowadź nazwę swoich zasad dostępu warunkowego.
-1. W obszarze **przypisania**w **użytkowników i grup**, wybierz co najmniej jednego użytkownika lub grupy dla każdej zasady dostępu warunkowego.
-1. W **aplikacje w chmurze**, wybierz opcję **Office 365 Exchange Online**. 
+1. Wprowadź nazwę zasad dostępu warunkowego.
+1. W obszarze **przypisania**, w obszarze **Użytkownicy i grupy**wybierz co najmniej jednego użytkownika lub grupę dla każdej zasady dostępu warunkowego.
+1. W obszarze **aplikacje w chmurze**wybierz pozycję **Office 365 Exchange Online**. 
 
    ![Dostęp warunkowy](./media/app-protection-based-conditional-access/07.png)
 
-1. W **warunki**, skonfiguruj **platform urządzeń** i **aplikacje klienckie (wersja zapoznawcza)** . 
-   1. W **platform urządzeń**, wybierz opcję **Android** i **iOS**.
+1. W obszarze **warunki**Skonfiguruj **platformy urządzeń** i **aplikacje klienckie (wersja zapoznawcza)** . 
+   1. W obszarze **platformy urządzeń**wybierz pozycję **Android** i **iOS**.
 
       ![Dostęp warunkowy](./media/app-protection-based-conditional-access/03.png)
 
-   1. W **aplikacje klienckie (wersja zapoznawcza)** , wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **Nowocześni Klienci uwierzytelniania**.
+   1. W obszarze **aplikacje klienckie (wersja zapoznawcza)** wybierz pozycję **aplikacje mobilne i klienci stacjonarni** oraz **nowoczesne komputery klienckie uwierzytelniania**.
 
       ![Dostęp warunkowy](./media/app-protection-based-conditional-access/91.png)
 
-1. W obszarze **kontrole dostępu**, wybierz następujące opcje:
+1. W obszarze **kontroli dostępu**wybierz następujące opcje:
    - **Wymagaj, aby urządzenie było oznaczone jako zgodne**
-   - **Wymagane zasady ochrony aplikacji (wersja zapoznawcza)**
-   - **Wymagaj wszystkich wybranych kontrolek**   
+   - **Wymagaj zasad ochrony aplikacji (wersja zapoznawcza)**
+   - **Wymagaj wszystkich zaznaczonych kontrolek**   
  
       ![Dostęp warunkowy](./media/app-protection-based-conditional-access/13.png)
 
 **Krok 2. Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online przy użyciu programu ActiveSync**
 
-Dla zasad dostępu warunkowego w tym kroku należy skonfigurować następujące składniki:
+W przypadku zasad dostępu warunkowego w tym kroku skonfiguruj następujące składniki:
 
 ![Dostęp warunkowy](./media/app-protection-based-conditional-access/06.png)
 
-1. Wprowadź nazwę swoich zasad dostępu warunkowego.
-1. W obszarze **przypisania**w **użytkowników i grup**, wybierz co najmniej jednego użytkownika lub grupy dla każdej zasady dostępu warunkowego.
-1. W **aplikacje w chmurze**, wybierz opcję **Office 365 Exchange Online**. 
+1. Wprowadź nazwę zasad dostępu warunkowego.
+1. W obszarze **przypisania**, w obszarze **Użytkownicy i grupy**wybierz co najmniej jednego użytkownika lub grupę dla każdej zasady dostępu warunkowego.
+1. W obszarze **aplikacje w chmurze**wybierz pozycję **Office 365 Exchange Online**. 
 
    ![Dostęp warunkowy](./media/app-protection-based-conditional-access/07.png)
 
-1. W **warunki**, skonfiguruj **aplikacje klienckie (wersja zapoznawcza)** . 
+1. W obszarze **warunki**Skonfiguruj **aplikacje klienckie (wersja zapoznawcza)** . 
 
-   W **aplikacje klienckie (wersja zapoznawcza)** , wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **klienci programu Exchange ActiveSync**.
+   W obszarze **aplikacje klienckie (wersja zapoznawcza)** wybierz pozycję **aplikacje mobilne i klienci stacjonarni** oraz **klienci programu Exchange ActiveSync**.
 
    ![Dostęp warunkowy](./media/app-protection-based-conditional-access/92.png)
 
-1. W obszarze **kontrole dostępu**, wybierz następujące opcje:
+1. W obszarze **kontroli dostępu**wybierz następujące opcje:
    - **Wymagaj, aby urządzenie było oznaczone jako zgodne**
-   - **Wymagane zasady ochrony aplikacji (wersja zapoznawcza)**
-   - **Wymagaj wszystkich wybranych kontrolek**   
+   - **Wymagaj zasad ochrony aplikacji (wersja zapoznawcza)**
+   - **Wymagaj wszystkich zaznaczonych kontrolek**   
  
       ![Dostęp warunkowy](./media/app-protection-based-conditional-access/13.png)
 
-**Krok 3. Konfigurowanie zasad ochrony aplikacji usługi Intune dla systemów iOS i aplikacji klienckich dla systemu Android**
+**Krok 3. Konfigurowanie zasad ochrony aplikacji usługi Intune dla aplikacji klienckich dla systemów iOS i Android**
 
 ![Dostęp warunkowy](./media/app-protection-based-conditional-access/09.png)
 
-Aby uzyskać więcej informacji, zobacz [ochrona aplikacji i danych w usłudze Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune).
+Aby uzyskać więcej informacji, zobacz [Ochrona aplikacji i danych za pomocą Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune).
 
-## <a name="app-protection-based-or-app-based-policy-for-exchange-online-and-sharepoint-online"></a>Zasady ochrony lub aplikacji aplikacji dla usługi Exchange Online i SharePoint Online
+## <a name="app-protection-based-or-app-based-policy-for-exchange-online-and-sharepoint-online"></a>Zasady ochrony aplikacji lub oparte na aplikacji dla usługi Exchange Online i SharePoint Online
 
-Ten scenariusz składa się z zasad ochrony lub zatwierdzonych aplikacji aplikacji do uzyskiwania dostępu do usługi Exchange Online i SharePoint Online.
+Ten scenariusz składa się z zasad dotyczących ochrony aplikacji lub aplikacji zatwierdzonych w celu uzyskania dostępu do usługi Exchange Online i SharePoint Online.
 
-### <a name="scenario-playbook"></a>Podręcznik dotyczący scenariusza
+### <a name="scenario-playbook"></a>Element PlayBook scenariusza
 
-W tym scenariuszu założono, że użytkownik:
+W tym scenariuszu przyjęto założenie, że użytkownik:
 
-- Konfiguruje aplikacje klienckie, które są na liście aplikacji, które obsługują wymagania zasad ochrony aplikacji lub wymagania zatwierdzonych aplikacji.  
-- Korzysta z aplikacji klienckich, które spełnia wymagania zasad ochrony aplikacji i może odbierać zasady ochrony aplikacji usługi Intune.
-- Korzysta z aplikacji klienckich, które spełnia wymagania zasad zatwierdzonych aplikacji, który obsługuje zasad ochrony aplikacji usługi Intune.
-- Otwiera aplikację dostępu do poczty e-mail lub dokumenty.
+- Konfiguruje aplikacje klienckie, które znajdują się na liście aplikacji, które obsługują wymagania zasad ochrony aplikacji lub wymagania dotyczące zatwierdzonych aplikacji.  
+- Program korzysta z aplikacji klienckich, które spełniają wymagania zasad ochrony aplikacji i mogą otrzymywać zasady ochrony aplikacji usługi Intune.
+- Program korzysta z aplikacji klienckich, które spełniają wymagania zasad zatwierdzonych aplikacji, które obsługują zasady ochrony aplikacji usługi Intune.
+- Otwiera aplikację w celu uzyskania dostępu do poczty e-mail lub dokumentów.
 - Otwiera aplikację Outlook i loguje się przy użyciu poświadczeń usługi Azure AD.
-- Jest monit o zainstalowanie Microsoft Authenticator do użytku z systemem iOS albo Portal firmy usługi Intune do użycia dla systemu Android, jeśli są one jeszcze zainstalowane.
-- Instalacje aplikacji i może zwrócić się do aplikacji Outlook, aby kontynuować.
-- Jest monitowany o zarejestrowanie urządzenia.
-- Może odbierać zasady ochrony aplikacji usługi Intune.
-- Dostęp do poczty e-mail przy użyciu programu Outlook i zasady ochrony aplikacji usługi Intune.
-- Dostęp do witryny i dokumenty z aplikacją w taki sposób, nie na wymaganie zasad ochrony aplikacji, ale na liście wymagań zatwierdzonej aplikacji.
+- Zostanie wyświetlony monit o zainstalowanie Microsoft Authenticator dla systemu iOS lub Intune — Portal firmy do użycia w systemie Android, jeśli nie są one jeszcze zainstalowane.
+- Instaluje aplikację i może powrócić do aplikacji Outlook, aby kontynuować.
+- Zostanie wyświetlony monit o zarejestrowanie urządzenia.
+- Może otrzymać zasady ochrony aplikacji usługi Intune.
+- Może uzyskać dostęp do poczty e-mail przy użyciu programu Outlook i zasad ochrony aplikacji usługi Intune.
+- Może uzyskiwać dostęp do witryn i dokumentów z aplikacją, która nie znajduje się w wymaganiu zasad ochrony aplikacji, ale wymienionej w wymaganej aplikacji.
 
-Przed uzyskaniem dostępu do danych firmowych, żadne zasady ochrony aplikacji usługi Intune są wymagane. Zasady może monitować użytkownika o ponowne uruchomienie aplikacji lub użyj dodatkowego kodu PIN. Jest to tak, jeśli zasady są skonfigurowane dla aplikacji i platformy.
+Przed uzyskaniem dostępu do danych firmowych wymagane są wszystkie zasady ochrony aplikacji usługi Intune. Zasady mogą monitować użytkownika o ponowne uruchomienie aplikacji lub użycie dodatkowego numeru PIN. Dotyczy to sytuacji, gdy zasady są skonfigurowane dla aplikacji i platformy.
 
 **Uwagi**
 
-- W tym scenariuszu można użyć, jeśli chcesz obsługiwać zarówno ochrony jak i oparty na aplikacji zasad dostępu warunkowego.
-- W tym *lub* zasad i aplikacji z wymaganiami zasady ochrony aplikacji są obliczane dla dostępu przed wymagane aplikacje zatwierdzone klienta.
+- Tego scenariusza można użyć, jeśli chcesz obsługiwać zasady dostępu warunkowego opartego na ochronie aplikacji i aplikacji.
+- W ramach tego *lub* zasad aplikacje z wymaganiem zasad ochrony aplikacji są oceniane pod kątem dostępu najpierw przed wymaganiem zatwierdzonych aplikacji klienckich.
 
 ### <a name="configuration"></a>Konfigurowanie
 
 **Krok 1. Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online**
 
-Dla zasad dostępu warunkowego w tym kroku należy skonfigurować następujące składniki:
+W przypadku zasad dostępu warunkowego w tym kroku skonfiguruj następujące składniki:
 
 ![Dostęp warunkowy](./media/app-protection-based-conditional-access/62.png)
 
-1. Wprowadź nazwę swoich zasad dostępu warunkowego.
-1. W obszarze **przypisania**w **użytkowników i grup**, wybierz co najmniej jednego użytkownika lub grupy dla każdej zasady dostępu warunkowego.
-1. W **aplikacje w chmurze**, wybierz opcję **Office 365 Exchange Online**. 
+1. Wprowadź nazwę zasad dostępu warunkowego.
+1. W obszarze **przypisania**, w obszarze **Użytkownicy i grupy**wybierz co najmniej jednego użytkownika lub grupę dla każdej zasady dostępu warunkowego.
+1. W obszarze **aplikacje w chmurze**wybierz pozycję **Office 365 Exchange Online**. 
 
    ![Dostęp warunkowy](./media/app-protection-based-conditional-access/02.png)
 
-1. W **warunki**, skonfiguruj **platform urządzeń** i **aplikacje klienckie (wersja zapoznawcza)** . 
-   1. W **platform urządzeń**, wybierz opcję **Android** i **iOS**.
+1. W obszarze **warunki**Skonfiguruj **platformy urządzeń** i **aplikacje klienckie (wersja zapoznawcza)** . 
+   1. W obszarze **platformy urządzeń**wybierz pozycję **Android** i **iOS**.
 
       ![Dostęp warunkowy](./media/app-protection-based-conditional-access/03.png)
 
-   1. W **aplikacje klienckie (wersja zapoznawcza)** , wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **Nowocześni Klienci uwierzytelniania**.
+   1. W obszarze **aplikacje klienckie (wersja zapoznawcza)** wybierz pozycję **aplikacje mobilne i klienci stacjonarni** oraz **nowoczesne komputery klienckie uwierzytelniania**.
 
       ![Dostęp warunkowy](./media/app-protection-based-conditional-access/91.png)
 
-1. W obszarze **kontrole dostępu**, wybierz następujące opcje:
+1. W obszarze **kontroli dostępu**wybierz następujące opcje:
    - **Wymagaj zatwierdzonej aplikacji klienckiej**
-   - **Wymagane zasady ochrony aplikacji (wersja zapoznawcza)**
+   - **Wymagaj zasad ochrony aplikacji (wersja zapoznawcza)**
    - **Wymagaj jednej z wybranych kontrolek**
  
       ![Dostęp warunkowy](./media/app-protection-based-conditional-access/12.png)
 
-**Krok 2. Konfigurowanie zasad ochrony aplikacji usługi Intune dla systemów iOS i aplikacji klienckich dla systemu Android**
+**Krok 2. Konfigurowanie zasad ochrony aplikacji usługi Intune dla aplikacji klienckich dla systemów iOS i Android**
 
 ![Dostęp warunkowy](./media/app-protection-based-conditional-access/09.png)
 
-Aby uzyskać więcej informacji, zobacz [ochrona aplikacji i danych w usłudze Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune).
+Aby uzyskać więcej informacji, zobacz [Ochrona aplikacji i danych za pomocą Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu usługi Azure Active Directory dostępu warunkowego](app-based-mfa.md).
-- Jeśli wszystko będzie gotowe do skonfigurowania zasad dostępu warunkowego dla danego środowiska, zobacz [najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](best-practices.md).
+- Jeśli chcesz dowiedzieć się, jak skonfigurować zasady dostępu warunkowego, zobacz [Wymagaj uwierzytelniania wieloskładnikowego dla określonych aplikacji, Azure Active Directory dostępu warunkowego](app-based-mfa.md).
+- Aby skonfigurować zasady dostępu warunkowego dla środowiska, zobacz [najlepsze rozwiązania dotyczące dostępu warunkowego w Azure Active Directory](best-practices.md).

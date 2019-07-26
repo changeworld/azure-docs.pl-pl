@@ -1,192 +1,185 @@
 ---
-title: Jak zaktualizować usługę w chmurze | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zaktualizować usług w chmurze na platformie Azure. Dowiedz się, jak aktualizacji w usłudze w chmurze przechodzi do zapewnienia dostępności.
+title: Jak zaktualizować usługę w chmurze | Microsoft Docs
+description: Dowiedz się, jak zaktualizować usługi w chmurze na platformie Azure. Dowiedz się, jak działa aktualizacja usługi w chmurze w celu zapewnienia dostępności.
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: c6a8b5e6-5c99-454c-9911-5c7ae8d1af63
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: jeconnoc
-ms.openlocfilehash: ff4dd571911719e4f2ec27952785432960a56d42
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: 10d919b21e05195e8a7b6b351a742a4f9a57ee2b
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60653917"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360708"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Jak zaktualizować usługę w chmurze
 
-Aktualizowanie usługi w chmurze, łącznie z jej ról i gościa systemu operacyjnego, jest procesem trzech etapów. Najpierw należy przekazać pliki binarne i pliki konfiguracji dla nowej usługi w chmurze lub wersję systemu operacyjnego. Następnie platforma Azure rezerwuje zasobów obliczeniowych i sieci dla usługi w chmurze na podstawie wymagań nowej wersji usługi w chmurze. Ponadto platforma Azure przeprowadza uaktualnienie stopniowe przyrostowo aktualizacji do nowej wersji systemu operacyjnego, gościa dzierżawy przy jednoczesnym zachowaniu dostępności usługi. W tym artykule omówiono szczegóły ten ostatni krok — uaktualnienia stopniowego.
+Proces aktualizowania usługi w chmurze, w tym jej ról i systemu operacyjnego gościa, to trzy czynności. Najpierw musi zostać przekazany plik binarny i pliki konfiguracyjne nowej usługi w chmurze lub wersji systemu operacyjnego. Następnie platforma Azure rezerwuje zasoby obliczeniowe i sieciowe dla usługi w chmurze na podstawie wymagań nowej wersji usługi w chmurze. Na koniec platforma Azure przeprowadza uaktualnienie stopniowe, aby stopniowo aktualizować dzierżawcę do nowej wersji lub systemu operacyjnego gościa, zachowując jednocześnie dostępność. W tym artykule omówiono szczegóły tego ostatniego kroku — uaktualnienie stopniowe.
 
-## <a name="update-an-azure-service"></a>Aktualizacja usługi platformy Azure
-Azure organizuje wystąpień roli w logiczne grupy o nazwie domen uaktualnienia (UD). Domen uaktualnienia (UD) to logiczne zestawy wystąpień roli, które zostały zaktualizowane w grupie.  Aktualizacje platformy Azure w chmurze usługi UD jednego naraz, dzięki czemu wystąpień w innych domenach uaktualniania można nadal obsługiwać ruch.
+## <a name="update-an-azure-service"></a>Aktualizowanie usługi platformy Azure
+Platforma Azure organizuje wystąpienia roli w logiczne grupy o nazwie domeny uaktualnienia (UD). Domeny uaktualnienia (UD) to logiczne zestawy wystąpień ról, które są aktualizowane jako Grupa.  Platforma Azure aktualizuje jedną UD usługi w chmurze, dzięki czemu wystąpienia w innym miejscu mogą nadal obsługiwać ruch.
 
-Domyślna liczba domen uaktualnienia wynosi 5. Można określić różną liczbę domen uaktualnienia, umieszczając atrybut upgradeDomainCount w pliku definicji usługi (csdef). Aby uzyskać więcej informacji na temat atrybutów upgradeDomainCount zobacz [webrole — schemat](/previous-versions/azure/reference/gg557553(v=azure.100)) lub [workerrole — schemat](/previous-versions/azure/reference/gg557552(v=azure.100)).
+Domyślna liczba domen uaktualnienia to 5. Możesz określić inną liczbę domen uaktualnienia, dołączając atrybut upgradeDomainCount w pliku definicji usługi (. csdef). Aby uzyskać więcej informacji o atrybucie upgradeDomainCount, zobacz Schemat [roli webrole](/previous-versions/azure/reference/gg557553(v=azure.100)) lub [schemat rola procesu roboczego](/previous-versions/azure/reference/gg557552(v=azure.100)).
 
-Po wykonaniu aktualizacji w miejscu z jednego lub większej liczby ról w usłudze Azure aktualizuje zestawy wystąpień roli, zgodnie z domeną uaktualnienia, do której należą. Aktualizacje platformy Azure, wszystkich wystąpień w danej domenie uaktualnienia — zatrzymywanie, aktualizuje je, wskazanie ich z powrotem w trybie online — następnie przechodzi do następnej domeny. Przez zatrzymanie wystąpienia, uruchomione w bieżącej domenie uaktualnienia, Azure zapewnia, że nastąpi aktualizacja przy najniższe możliwe wpływie na uruchomioną usługę. Aby uzyskać więcej informacji, zobacz [jak aktualizacja będzie kontynuowana](#howanupgradeproceeds) w dalszej części tego artykułu.
+W przypadku wykonywania aktualizacji w miejscu co najmniej jednej roli w usłudze platforma Azure aktualizuje zestawy wystąpień ról zgodnie z domeną uaktualnienia, do której należą. Platforma Azure aktualizuje wszystkie wystąpienia w danej domenie uaktualnienia — je zatrzymują, aktualizując je, a następnie przełączając je do następnej domeny. Zatrzymując tylko wystąpienia uruchomione w bieżącej domenie uaktualnienia, platforma Azure sprawdza, czy aktualizacja ma najmniejszy możliwy wpływ na uruchomioną usługę. Aby uzyskać więcej informacji, zobacz [jak działa aktualizacja](#howanupgradeproceeds) w dalszej części tego artykułu.
 
 > [!NOTE]
-> Podczas gdy warunki **aktualizacji** i **uaktualnienia** ma nieco inne znaczenie w kontekście platformy Azure, używane zamiennie dla procesów i opisy funkcji w tym dokumencie.
+> Terminy **aktualizacji** i **uaktualniania** mają nieco inne znaczenie w kontekście platformy Azure, ale mogą być używane zamiennie w zakresie procesów i opisów funkcji w tym dokumencie.
 >
 >
 
-Usługi, należy zdefiniować co najmniej dwóch wystąpień roli dla tej roli, należy zaktualizować w miejscu bez przestojów. Jeśli usługa składa się tylko jedno wystąpienie jedną rolę, usługi będzie niedostępna do momentu zakończenia aktualizację w miejscu.
+Usługa musi definiować co najmniej dwa wystąpienia roli dla tej roli, aby można je było aktualizować w miejscu bez przestoju. Jeśli usługa składa się tylko z jednego wystąpienia jednej roli, usługa będzie niedostępna do momentu zakończenia aktualizacji w miejscu.
 
-W tym temacie omówiono następujące informacje na temat aktualizacji platformy Azure:
+W tym temacie omówiono następujące informacje dotyczące aktualizacji platformy Azure:
 
 * [Dozwolone zmiany usługi podczas aktualizacji](#AllowedChanges)
-* [Jak przechodzi uaktualnienie](#howanupgradeproceeds)
+* [Jak jest przeprowadzane uaktualnienie](#howanupgradeproceeds)
 * [Wycofywanie aktualizacji](#RollbackofanUpdate)
-* [Inicjowanie wielu operacji mutujące na ciągłego wdrażania](#multiplemutatingoperations)
+* [Inicjowanie wielu operacji mutacji na trwającym wdrożeniu](#multiplemutatingoperations)
 * [Dystrybucja ról w domenach uaktualnienia](#distributiondfroles)
 
 <a name="AllowedChanges"></a>
 
 ## <a name="allowed-service-changes-during-an-update"></a>Dozwolone zmiany usługi podczas aktualizacji
-W poniższej tabeli przedstawiono dozwolone zmian z usługą podczas aktualizacji:
+W poniższej tabeli przedstawiono dozwolone zmiany usługi w trakcie aktualizacji:
 
-| Zmiany są dozwolone do hostingu, usług i ról | Aktualizacja "w miejscu" | Przygotowane (wymiany wirtualnych adresów IP) | Usunięcie i ponowne wdrażanie |
+| Zmiany dozwolone w hostingu, usługach i rolach | Aktualizacja w miejscu | Przemieszczanie (wymiana adresów VIP) | Usuń i ponownie Wdróż |
 | --- | --- | --- | --- |
 | Wersja systemu operacyjnego |Tak |Yes |Tak |
 | Poziom zaufania platformy .NET |Tak |Yes |Tak |
-| Rozmiar maszyny wirtualnej<sup>1</sup> |Tak<sup>2</sup> |Tak |Tak |
+| Rozmiar maszyny wirtualnej<sup>1</sup> |Tak<sup>2</sup> |Yes |Tak |
 | Ustawienia magazynu lokalnego |Zwiększ tylko<sup>2</sup> |Yes |Tak |
 | Dodawanie lub usuwanie ról w usłudze |Tak |Yes |Yes |
-| Liczba wystąpień określonej roli |Yes |Yes |Yes |
-| Liczba lub typ punktów końcowych usługi |Tak<sup>2</sup> |Nie |Tak |
-| Nazwy i wartości ustawień konfiguracji |Tak |Yes |Yes |
-| Wartości (ale nie nadaje) ustawień konfiguracji |Tak |Yes |Yes |
-| Dodaj nowe certyfikaty |Yes |Yes |Tak |
-| Zmienianie istniejących certyfikatów |Tak |Yes |Tak |
-| Wdrażanie nowego kodu |Tak |Yes |Yes |
+| Liczba wystąpień określonej roli |Yes |Yes |Tak |
+| Liczba lub typ punktów końcowych dla usługi |Tak<sup>2</sup> |Nie |Yes |
+| Nazwy i wartości ustawień konfiguracji |Yes |Yes |Tak |
+| Wartości (ale nie nazwy) ustawień konfiguracji |Tak |Yes |Yes |
+| Dodaj nowe certyfikaty |Tak |Yes |Tak |
+| Zmień istniejące certyfikaty |Tak |Yes |Tak |
+| Wdróż nowy kod |Tak |Yes |Tak |
 
-<sup>1</sup> ograniczony do podzbioru dostępnych dla usługi w chmurze rozmiarów zmiany rozmiaru.
+<sup>1</sup> zmiana rozmiaru ograniczona do podzbioru rozmiarów dostępnych dla usługi w chmurze.
 
-<sup>2</sup> wymaga zestawu SDK platformy Azure w wersji 1.5 lub nowszej wersji.
+<sup>2</sup> wymaga zestawu Azure SDK w wersji 1,5 lub nowszej.
 
 > [!WARNING]
 > Zmiana rozmiaru maszyny wirtualnej spowoduje zniszczenie danych lokalnych.
 >
 >
 
-Następujące elementy nie są obsługiwane podczas aktualizacji:
+Następujące elementy nie są obsługiwane w trakcie aktualizacji:
 
 * Zmiana nazwy roli. Usuń, a następnie dodaj rolę z nową nazwą.
 * Zmiana liczby domen uaktualnienia.
 * Zmniejszenie rozmiaru zasobów lokalnych.
 
-Jeśli wykonujesz inne aktualizacje definicji usługi, takie jak zmniejszyć rozmiar zasobu lokalnego zamiast tego należy wykonać aktualizację wymiany adresu VIP. Aby uzyskać więcej informacji, zobacz [Swap Deployment](/previous-versions/azure/reference/ee460814(v=azure.100)).
+Jeśli wprowadzasz inne aktualizacje definicji usługi, takie jak zmniejszenie rozmiaru zasobu lokalnego, zamiast tego należy wykonać aktualizację zamiany adresu VIP. Aby uzyskać więcej informacji, zobacz [swap Deployment](/previous-versions/azure/reference/ee460814(v=azure.100)).
 
 <a name="howanupgradeproceeds"></a>
 
-## <a name="how-an-upgrade-proceeds"></a>Jak przechodzi uaktualnienie
-Aby zdecydować, czy chcesz zaktualizować wszystkie role w usłudze lub pojedynczej roli w ramach usługi. W obu przypadkach wszystkich wystąpień każdej roli, która jest uaktualniana i należą do pierwszej domeny uaktualnienia są zatrzymane, uaktualnienia i powrócić do trybu online. Gdy są one wróci do trybu online, wystąpienia w drugiej domenie uaktualnienia są zatrzymane, uaktualnienia i powrócić do trybu online. Usługa w chmurze może mieć co najwyżej jedno uaktualnienie aktywne w danym momencie. Uaktualnienie jest zawsze przeprowadzane w najnowszej wersji usługi w chmurze.
+## <a name="how-an-upgrade-proceeds"></a>Jak jest przeprowadzane uaktualnienie
+Możesz zdecydować, czy chcesz zaktualizować wszystkie role usługi lub pojedynczą rolę w usłudze. W obu przypadkach wszystkie wystąpienia każdej roli, która jest uaktualniana i należą do pierwszej domeny uaktualnienia, są zatrzymane, uaktualnione i przywrócone do trybu online. Po powrocie do trybu online wystąpienia w drugiej domenie uaktualnienia zostaną zatrzymane, uaktualnione i przywrócone do trybu online. Usługa w chmurze może mieć co najwyżej jedno uaktualnienie aktywne w danym momencie. Uaktualnienie jest zawsze wykonywane względem najnowszej wersji usługi w chmurze.
 
-Na poniższym diagramie przedstawiono, jak uaktualnienie będzie kontynuowane w przypadku uaktualniania wszystkich ról w usłudze:
+Na poniższym diagramie przedstawiono, w jaki sposób uaktualnienie jest wykonywane, jeśli uaktualniane są wszystkie role w usłudze:
 
-![Uaktualnij usługę](media/cloud-services-update-azure-service/IC345879.png "Uaktualnij usługę")
+![Usługa uaktualnienia](media/cloud-services-update-azure-service/IC345879.png "Usługa uaktualnienia")
 
-Ten diagram dalej ilustruje, jak aktualizacja będzie kontynuowana, jeśli przeprowadzasz uaktualnienie pojedynczej roli:
+Ten następny diagram ilustruje, w jaki sposób aktualizacja jest przeprowadzana, Jeśli uaktualniana jest tylko jedna rola:
 
-![Uaktualnienie roli](media/cloud-services-update-azure-service/IC345880.png "uaktualnienie roli")  
+![Uaktualnij rolę](media/cloud-services-update-azure-service/IC345880.png "Uaktualnij rolę")  
 
-Podczas aktualizacji automatycznych w kontroler sieci szkieletowej platformy Azure są okresowo ocenia kondycję usługi w chmurze do określania, kiedy jest bezpieczne zapoznać się z następnym UD. Ocena kondycji jest wykonywane na podstawie poszczególnych ról i uwzględnia tylko wystąpienia w najnowszej wersji (tj. wystąpienia z domenami aktualizacji, które mają już dodawanym). Sprawdza, czy minimalna liczba wystąpień roli, dla każdej z ról zostały osiągnięte zadowalające stan końcowy.
+Podczas automatycznej aktualizacji kontroler sieci szkieletowej platformy Azure okresowo szacuje kondycję usługi w chmurze, aby określić, kiedy jest bezpiecznie, aby przeprowadzić kolejne UD. Ta ocena kondycji jest przeprowadzana na poszczególnych rolach i uwzględnia tylko wystąpienia w najnowszej wersji (tj. wystąpienia z tej pory, które zostały już przetworzone). Sprawdza, czy minimalna liczba wystąpień roli dla każdej roli osiągnęła zadowalający stan terminalu.
 
-### <a name="role-instance-start-timeout"></a>Limit czasu uruchamiania wystąpienie roli
-Kontroler sieci szkieletowej będzie czekać każdego wystąpienia roli, aby osiągnąć stan uruchomiona na 30 minut. Jeżeli upłynie limit czasu, Kontroler sieci szkieletowej będą nadal zalet do następnego wystąpienia roli.
+### <a name="role-instance-start-timeout"></a>Limit czasu uruchamiania wystąpienia roli
+Kontroler sieci szkieletowej czeka 30 minut, aż każde wystąpienie roli osiągnie stan uruchomienia. W przypadku upływu limitu czasu, Kontroler sieci szkieletowej będzie kontynuował pracę z następnym wystąpieniem roli.
 
-### <a name="impact-to-drive-data-during-cloud-service-upgrades"></a>Uaktualnia wpływu na dysku danych w usłudze w chmurze
+### <a name="impact-to-drive-data-during-cloud-service-upgrades"></a>Wpływ na dane na dysku podczas uaktualniania usług w chmurze
 
-Podczas uaktualniania usługi z pojedynczego wystąpienia do wielu wystąpień usługi będzie ulec awarii podczas uaktualniania odbywa się ze względu na sposób usług Azure uaktualnienia. Umowa dotycząca poziomu na gwarantujące dostępność usługi usługa ma zastosowanie tylko do usług, które są wdrażane przy użyciu więcej niż jedno wystąpienie. Na poniższej liście opisano wpływ scenariusza uaktualniania każda usługa danych na każdym dysku:
+Podczas uaktualniania usługi z jednego wystąpienia do wielu wystąpień usługa zostanie przełączona w tryb, gdy uaktualnienie zostanie przeprowadzone ze względu na sposób uaktualniania usług platformy Azure. Umowa dotycząca poziomu usług, która gwarantuje dostępność usługi, ma zastosowanie tylko do usług wdrożonych z więcej niż jednym wystąpieniem. Na poniższej liście opisano, w jaki sposób dane na poszczególnych dyskach mają wpływ na każdy scenariusz uaktualniania usługi platformy Azure:
 
-|Scenariusz|Dysku c.|Dysku D|Dysku E|
+|Scenariusz|Dysk C|Stacja D|Stacja E|
 |--------|-------|-------|-------|
-|Ponowne uruchomienie maszyny Wirtualnej|Zachowane|Zachowane|Zachowane|
-|Ponowne uruchomienie komputera w portalu|Zachowane|Zachowane|Zniszczone|
-|Portal odtworzenia z obrazu|Zachowane|Zniszczone|Zniszczone|
-|Uaktualnienie w miejscu|Zachowane|Zachowane|Zniszczone|
-|Węzeł migracji|Zniszczone|Zniszczone|Zniszczone|
+|Ponowne uruchomienie maszyny wirtualnej|Naruszon|Naruszon|Naruszon|
+|Ponowny rozruch portalu|Naruszon|Naruszon|Zniszcz|
+|Odobrazowanie portalu|Naruszon|Zniszcz|Zniszcz|
+|Uaktualnianie w miejscu|Naruszon|Naruszon|Zniszcz|
+|Migracja węzłów|Zniszcz|Zniszcz|Zniszcz|
 
-Należy pamiętać, że na powyższej liście dysku E: reprezentuje rolę w katalogu głównym dysku, a nie powinny być ustalone. Zamiast tego należy użyć **RoleRoot %** zmiennej środowiskowej, aby reprezentować dysku.
+Należy pamiętać, że na powyższej liście dysk E: reprezentuje dysk główny roli i nie powinien być zakodowany na stałe. Zamiast tego należy użyć zmiennej środowiskowej **% RoleRoot%** do reprezentowania dysku.
 
-Aby zminimalizować przestoje podczas uaktualniania pojedynczego wystąpienia usługi, wdrażanie nowej usługi w wielu wystąpieniach na serwerze i wykonać wymiany wirtualnych adresów IP.
+Aby zminimalizować czas przestoju podczas uaktualniania usługi pojedynczego wystąpienia, należy wdrożyć nową usługę wiele wystąpień na serwerze tymczasowym i przeprowadzić zamianę adresu VIP.
 
 <a name="RollbackofanUpdate"></a>
 
 ## <a name="rollback-of-an-update"></a>Wycofywanie aktualizacji
-Platforma Azure zapewnia elastyczność w zakresie zarządzania usługi podczas aktualizacji, umożliwiając inicjowanie dodatkowych operacji w usłudze po zaakceptowaniu żądania aktualizacji początkowej przez kontroler sieci szkieletowej platformy Azure. Wycofywania można wykonać tylko w przypadku aktualizacji (zmiana konfiguracji) lub Trwa uaktualnianie **w toku** stanu wdrożenia. Aktualizacja lub uaktualnienia jest uważany za w toku, tak długo, jak istnieje co najmniej jedno wystąpienie usługi, który nie został jeszcze zaktualizowany do nowej wersji. Aby sprawdzić, czy jest dozwolone wycofywania, sprawdź wartość flagi RollbackAllowed, zwracany przez [Rozpoczynanie wdrażania](/previous-versions/azure/reference/ee460804(v=azure.100)) i [pobrać właściwości usługi w chmurze](/previous-versions/azure/reference/ee460806(v=azure.100)) operacji jest ustawiona na wartość true.
+Platforma Azure zapewnia elastyczność zarządzania usługami w trakcie aktualizacji, umożliwiając zainicjowanie dodatkowych operacji w ramach usługi po zaakceptowaniu pierwotnego żądania aktualizacji przez kontroler sieci szkieletowej platformy Azure. Wycofywanie można wykonać tylko wtedy, gdy aktualizacja (zmiana konfiguracji) lub uaktualnienie jest w stanie **w toku** wdrożenia. Aktualizacja lub uaktualnienie jest uznawane za w toku, o ile istnieje co najmniej jedno wystąpienie usługi, które nie zostało jeszcze zaktualizowane do nowej wersji. Aby sprawdzić, czy jest dozwolone wycofywanie, sprawdź wartość flagi RollbackAllowed zwróconej przez polecenie [Pobierz wdrożenie](/previous-versions/azure/reference/ee460804(v=azure.100)) i [Pobierz właściwości usługi w chmurze](/previous-versions/azure/reference/ee460806(v=azure.100)) , która jest ustawiona na wartość true.
 
 > [!NOTE]
-> Tylko warto wywołanie wycofywania na **w miejscu** aktualizacji lub uaktualnienia, ponieważ obejmują uaktualnień wymiany adresu VIP, zastępując cały jedno uruchomione wystąpienie usługi z inną.
+> Zaleca się wywołaj funkcję wycofywania na potrzeby aktualizacji lub uaktualnienia **w miejscu** , ponieważ uaktualnienia wymiany wirtualnych adresów VIP obejmują wymianę jednego całego działającego wystąpienia usługi z inną.
 >
 >
 
-Wycofanie aktualizacja w toku ma następujące skutki wdrożenia:
+Wycofanie aktualizacji w toku ma następujące skutki dla wdrożenia:
 
-* Wszystkie wystąpienia roli, które miały jeszcze nie zostały zaktualizowane lub uaktualnione do nowej wersji nie są zaktualizowane lub uaktualnione, ponieważ te wystąpienia działają już wersji docelowej usługi.
-* Wszystkie wystąpienia roli, które miały już zaktualizowane lub uaktualnione do nowej wersji pakietu z (\*cspkg) pliku lub konfiguracji usługi (\*cscfg) pliku (lub oba pliki) są przywracane przed uaktualnieniem wersje tych plików.
+* Wszystkie wystąpienia roli, które nie zostały jeszcze zaktualizowane lub uaktualnione do nowej wersji, nie są aktualizowane ani uaktualniane, ponieważ te wystąpienia mają już uruchomioną wersję docelową usługi.
+* Wszystkie wystąpienia roli, które zostały już zaktualizowane lub uaktualnione do nowej wersji pliku pakietu usługi (\*. cspkg) lub pliku\*konfiguracji usługi (. cscfg), są przywracane do wersji sprzed uaktualnienia tych plików.
 
-To funkcjonalnie są dostarczane przez następujące funkcje:
+Ta funkcja jest zapewniana przez następujące funkcje:
 
-* [Wycofywanie aktualizacji lub uaktualnienia](/previous-versions/azure/reference/hh403977(v=azure.100)) operacji, która może być wywoływana po aktualizacji konfiguracji (wyzwalane przez wywołanie metody [zmiana konfiguracji wdrożenia](/previous-versions/azure/reference/ee460809(v=azure.100))) lub uaktualnienia (wyzwalane przez wywołanie metody [ Uaktualnianie wdrożenia](/previous-versions/azure/reference/ee460793(v=azure.100))) tak długo, jak istnieje co najmniej jedno wystąpienie usługi, który nie został jeszcze zaktualizowany do nowej wersji.
-* Element zablokowany i RollbackAllowed element, które są zwracane jako część treści odpowiedzi [Rozpoczynanie wdrażania](/previous-versions/azure/reference/ee460804(v=azure.100)) i [pobrać właściwości usługi w chmurze](/previous-versions/azure/reference/ee460806(v=azure.100)) operacje:
+* Operacja [wycofania aktualizacji lub uaktualnienia](/previous-versions/azure/reference/hh403977(v=azure.100)) , która może zostać wywołana na aktualizacji konfiguracji (wyzwolona przez wywołanie [konfiguracji zmiany wdrożenia](/previous-versions/azure/reference/ee460809(v=azure.100))) lub uaktualnienie (wyzwolone przez wywołanie [wdrożenia uaktualnienia](/previous-versions/azure/reference/ee460793(v=azure.100))) o ile istnieje co najmniej jeden wystąpienie w usłudze, które nie zostało jeszcze zaktualizowane do nowej wersji.
+* Element zablokowany i element RollbackAllowed, które są zwracane jako część treści odpowiedzi operacji [Get Deployment](/previous-versions/azure/reference/ee460804(v=azure.100)) i [Get Cloud Service Properties](/previous-versions/azure/reference/ee460806(v=azure.100)) :
 
-  1. Element zablokowany umożliwia wykrywanie mutujące operacji może być wywoływany w danym wdrożeniu.
-  2. RollbackAllowed element pozwala wykryć, kiedy [Wycofywanie aktualizacji lub uaktualnienia](/previous-versions/azure/reference/hh403977(v=azure.100)) operacji może być wywoływana dla danego wdrożenia.
+  1. Zablokowany element pozwala wykryć, kiedy można wywołać operację mutacji w danym wdrożeniu.
+  2. Element RollbackAllowed umożliwia wykrycie, kiedy operacja [wycofywania aktualizacji lub uaktualnienia](/previous-versions/azure/reference/hh403977(v=azure.100)) może zostać wywołana dla danego wdrożenia.
 
-  Aby można było wykonać wycofanie, jest konieczne Sprawdź elementy RollbackAllowed i zablokowany. Wystarczające, aby upewnić się, że RollbackAllowed jest ustawiona na wartość true. Te elementy są zwracane tylko, jeśli te metody są wywoływane przy użyciu nagłówka żądania ustawiona na "x-ms-version: 2011-10-01 "lub nowszej. Aby uzyskać więcej informacji o nagłówkach przechowywania wersji, zobacz [przechowywanie wersji usługi zarządzania](/previous-versions/azure/gg592580(v=azure.100)).
+  Aby można było wykonać wycofywanie, nie trzeba sprawdzać zarówno elementów zablokowanych, jak i RollbackAllowed. Wystarczy potwierdzić, że RollbackAllowed ma wartość true. Te elementy są zwracane tylko wtedy, gdy te metody są wywoływane przy użyciu nagłówka żądania ustawionego na wartość "x-MS-Version: 2011-10-01 lub nowsza wersja. Aby uzyskać więcej informacji na temat nagłówków wersji, zobacz [przechowywanie wersji usługi Service Management](/previous-versions/azure/gg592580(v=azure.100)).
 
-Istnieje kilka sytuacji, gdy Wycofywanie aktualizacji lub uaktualnienie nie jest obsługiwane, są w następujący sposób:
+Istnieją sytuacje, w których wycofanie aktualizacji lub uaktualnienia nie jest obsługiwane, są następujące:
 
-* Zmniejszenie zasobów lokalnych — Jeśli aktualizacja zwiększa zasobów lokalnych roli platformy Azure nie zezwala na wycofywanie.
-* Ograniczenia limitu przydziału — Jeśli operacja skalowania w dół możesz już zainstalowano aktualizację ma wystarczający przydział usługi compute do ukończenia operacji wycofywania. Każda subskrypcja platformy Azure ma limit przydziału skojarzonych z nim określająca maksymalną liczbę rdzeni, które mogą być używane przez wszystkich hostowanych usług, które należą do tej subskrypcji. Jeśli przeprowadzania wycofywania danej aktualizacji umieścić swoją subskrypcję za pośrednictwem przydziału, a następnie wycofanie nie zostaną włączone.
-* Sytuacja wyścigu — Jeśli ukończono aktualizowanie początkowego, wycofanie nie jest możliwe.
+* Zmniejszenie zasobów lokalnych — Jeśli aktualizacja spowoduje zwiększenie zasobów lokalnych dla roli, platforma Azure nie zezwala na wycofywanie.
+* Ograniczenia przydziałów — Jeśli aktualizacja była operacją skalowania w dół, nie ma już wystarczającego limitu przydziału obliczeń, aby ukończyć operację wycofywania. Z każdą subskrypcją platformy Azure jest skojarzony przydział, który określa maksymalną liczbę rdzeni, które mogą być używane przez wszystkie usługi hostowane należące do tej subskrypcji. Jeśli wykonanie wycofania danej aktualizacji spowodowałoby przekroczenie limitu przydziału, wówczas wycofanie nie zostanie włączone.
+* Sytuacja wyścigu — jeśli początkowa aktualizacja została ukończona, wycofywanie nie jest możliwe.
 
-Jest przykładem podczas wycofywania aktualizacji mogą być przydatne, jeśli używasz [uaktualniania wdrożenia](/previous-versions/azure/reference/ee460793(v=azure.100)) operacji w trybie ręcznej, aby kontrolować szybkość, z jaką usługa hostowana główna uaktualnienia w miejscu do subskrypcji platformy Azure jest wdrażana.
+Przykładem sytuacji, w której wycofywanie aktualizacji może być przydatne w przypadku korzystania z operacji [uaktualniania wdrożenia](/previous-versions/azure/reference/ee460793(v=azure.100)) w trybie ręcznym w celu kontrolowania szybkości, z jaką zostanie wdrożone główne uaktualnienie w miejscu do usługi hostowanej na platformie Azure.
 
-W miarę wprowadzania aktualizacji uaktualnienia należy wywołać [uaktualniania wdrożenia](/previous-versions/azure/reference/ee460793(v=azure.100)) w trybie ręcznej i zacząć Skontroluj domeny uaktualnienia. Jeśli w pewnym momencie podczas monitorowania uaktualnienia, należy zaznaczyć kilka wystąpień roli w pierwszym domen uaktualnienia, które badania mają przestanie odpowiadać, można wywołać [Wycofywanie aktualizacji lub uaktualnienia](/previous-versions/azure/reference/hh403977(v=azure.100)) operację wdrożenia, co spowoduje, że niezmienione wystąpień, które nie miały jeszcze uaktualnione i wystąpień wycofywania, co ma został uaktualniony do poprzedniego pakietu usługi i konfiguracji.
+Podczas [wdrażania wdrożenia](/previous-versions/azure/reference/ee460793(v=azure.100)) uaktualnienia należy wykonać w trybie ręcznym i rozpocząć sprawdzanie domen uaktualnienia. Jeśli w pewnym momencie jest monitorowane uaktualnienie, należy zauważyć, że niektóre wystąpienia roli w pierwszej badanej domenie uaktualnienia przestają odpowiadać, można wywołać operację [wycofywania aktualizacji lub uaktualnienia](/previous-versions/azure/reference/hh403977(v=azure.100)) do wdrożenia, co pozostawi nienaruszone wystąpienia, które nie zostały jeszcze uaktualnione i wycofać wystąpienia, które zostały uaktualnione do poprzedniego pakietu usługi i konfiguracji.
 
 <a name="multiplemutatingoperations"></a>
 
-## <a name="initiating-multiple-mutating-operations-on-an-ongoing-deployment"></a>Inicjowanie wielu operacji mutujące na ciągłego wdrażania
-W niektórych przypadkach można zainicjować wiele jednoczesnych operacji mutujące na ciągłego wdrażania. Na przykład, możesz wykonać aktualizacji usługi i podczas tej aktualizacji jest wdrażane w usłudze, chcesz wprowadzić pewne zmiany, np. przeprowadzić aktualizację ponownie, należy zastosować inną aktualizację, lub nawet usunąć wdrożenie. Przypadek, w której może to być konieczne jest, czy uaktualnienie usługi zawiera pracowały kodu, co powoduje, że wystąpienie roli uaktualnionego wielokrotnie awarię. W tym przypadku Kontroler sieci szkieletowej platformy Azure nie będzie postęp stosowania, uaktualnić, ponieważ wystarczającej liczby wystąpień w uaktualnionym domeny są w dobrej kondycji. Ten stan jest nazywany *została zablokowana wdrożenia*. Wdrożenie może odklej Wycofywanie aktualizacji lub zastosowanie nowej aktualizacji w górnej części niepowodzenie jednego.
+## <a name="initiating-multiple-mutating-operations-on-an-ongoing-deployment"></a>Inicjowanie wielu operacji mutacji na trwającym wdrożeniu
+W niektórych przypadkach może być konieczne zainicjowanie wielu jednoczesnych operacji mutacji na trwającym wdrożeniu. Na przykład możesz wykonać aktualizację usługi i, podczas gdy ta aktualizacja jest wdrażana w ramach usługi, trzeba wprowadzić pewne zmiany, np. w celu wycofania aktualizacji, zastosowania innej aktualizacji lub nawet usunięcia wdrożenia. Przypadek, w którym może być to konieczne, ma zastosowanie w przypadku, gdy uaktualnienie usługi zawiera kod debugowany, który powoduje powtarzanie awarii wystąpienia roli uaktualnionej. W takim przypadku Kontroler sieci szkieletowej platformy Azure nie będzie mógł postępować zgodnie z uaktualnieniem, ponieważ niewystarczająca liczba wystąpień w uaktualnionej domenie jest w dobrej kondycji. Ten stan jest określany jako *zablokowane wdrożenie*. Możesz odwrócić wdrożenie, wycofując aktualizację lub stosując nową aktualizację zamiast jednego z nich.
 
-Po otrzymaniu początkowe żądanie aktualizacji lub uaktualnienia usługi przez kontroler sieci szkieletowej platformy Azure, można uruchomić kolejne operacje mutujące. Oznacza to, że nie trzeba czekać na zakończenie przed rozpoczęciem inna operacja mutujące początkowej operacji.
+Po odebraniu wstępnego żądania zaktualizowania lub uaktualnienia usługi przez kontroler sieci szkieletowej platformy Azure można rozpocząć kolejne mutacje operacji. Oznacza to, że nie musisz czekać na ukończenie początkowej operacji przed rozpoczęciem kolejnej operacji mutacji.
 
-Inicjowanie drugą operację aktualizacji, gdy trwa Pierwsza aktualizacja będzie wykonywać podobne do operacji wycofywania. W przypadku drugiej aktualizacji w trybie automatycznym, pierwsza domena uaktualnienia zostaną uaktualnione natychmiast, prawdopodobnie prowadzących do wystąpienia z wielu domen uaktualnienia, jest w trybie offline, w tym samym punkcie w czasie.
+Zainicjowanie drugiej operacji aktualizacji, gdy pierwsza aktualizacja jest w toku, będzie działać podobnie jak operacja wycofywania. Jeśli druga aktualizacja działa w trybie automatycznym, pierwsza domena uaktualnienia zostanie uaktualniona natychmiast, prawdopodobnie prowadząc do wystąpienia z wielu domen uaktualnienia w tym samym punkcie w czasie.
 
-Operacje mutujące są następujące: [Zmiana konfiguracji wdrożenia](/previous-versions/azure/reference/ee460809(v=azure.100)), [uaktualnić wdrożenie](/previous-versions/azure/reference/ee460793(v=azure.100)), [stan wdrożenia aktualizacji](/previous-versions/azure/reference/ee460808(v=azure.100)), [Drożenie](/previous-versions/azure/reference/ee460815(v=azure.100)), i [wycofywania Aktualizacji lub uaktualnienia](/previous-versions/azure/reference/hh403977(v=azure.100)).
+Operacje mutacji są następujące: [Zmień konfigurację wdrożenia](/previous-versions/azure/reference/ee460809(v=azure.100)), [Uaktualnij wdrożenie](/previous-versions/azure/reference/ee460793(v=azure.100)), [stan wdrożenia aktualizacji](/previous-versions/azure/reference/ee460808(v=azure.100)), [Usuń wdrożenie](/previous-versions/azure/reference/ee460815(v=azure.100))i [Wycofaj aktualizację lub uaktualnienie](/previous-versions/azure/reference/hh403977(v=azure.100)).
 
-Dwie operacje [Rozpoczynanie wdrażania](/previous-versions/azure/reference/ee460804(v=azure.100)) i [pobrać właściwości usługi w chmurze](/previous-versions/azure/reference/ee460806(v=azure.100)), zwracają Flaga zablokowany, która może być sprawdzane w celu określenia, czy mutujące operacji może być wywoływany w danym wdrożeniu.
+Dwie operacje, [Uzyskiwanie wdrożenia](/previous-versions/azure/reference/ee460804(v=azure.100)) i [pobieranie właściwości usługi w chmurze](/previous-versions/azure/reference/ee460806(v=azure.100))zwracają zablokowaną flagę, która może zostać zbadana w celu ustalenia, czy można wywołać operację mutacji w danym wdrożeniu.
 
-Aby można było wywołać wersji tych metod, która zwraca flagę zablokowany, musisz ustawić nagłówek żądania "x-ms-version: 2011-10-01 "lub nowszej. Aby uzyskać więcej informacji o nagłówkach przechowywania wersji, zobacz [przechowywanie wersji usługi zarządzania](/previous-versions/azure/gg592580(v=azure.100)).
+Aby wywołać wersję tych metod, która zwraca flagę zablokowaną, należy ustawić nagłówek żądania na wartość "x-MS-Version: 2011-10-01 "lub nowszy. Aby uzyskać więcej informacji na temat nagłówków wersji, zobacz [przechowywanie wersji usługi Service Management](/previous-versions/azure/gg592580(v=azure.100)).
 
 <a name="distributiondfroles"></a>
 
 ## <a name="distribution-of-roles-across-upgrade-domains"></a>Dystrybucja ról w domenach uaktualnienia
-Platforma Azure rozdzieli wystąpień roli równomiernie między określona liczba domen uaktualnienia, które można skonfigurować jako część pliku definicji (csdef) usługi. Maksymalna liczba domen uaktualnienia to 20, a wartość domyślna to 5. Aby uzyskać więcej informacji na temat sposobu modyfikowania pliku definicji usługi, zobacz [schematem definicji usługi platformy Azure (csdef pliku)](cloud-services-model-and-package.md#csdef).
+Na platformie Azure wystąpienia roli są dystrybuowane równomiernie przez określoną liczbę domen uaktualnienia, które można skonfigurować w ramach pliku definicji usługi (. csdef). Maksymalna liczba domen uaktualnienia to 20, a wartość domyślna to 5. Aby uzyskać więcej informacji na temat modyfikowania pliku definicji usługi, zobacz [schemat definicji usługi platformy Azure (plik csdef)](cloud-services-model-and-package.md#csdef).
 
-Na przykład jeśli Twoja rola ma dziesięciu wystąpień, domyślnie każda domena uaktualnienia zawiera dwa wystąpienia. Jeśli Twoja rola ma 14 wystąpień, czterech domenach uaktualnienia zawiera trzy wystąpienia, a piąta domeny zawiera dwa.
+Na przykład jeśli rola ma dziesięć wystąpień, domyślnie Każda domena uaktualnienia zawiera dwa wystąpienia. Jeśli Twoja rola ma 14 wystąpień, cztery domeny uaktualnienia zawierają trzy wystąpienia, a piąta domena zawiera dwa.
 
-Domeny uaktualnień są oznaczone symbolem liczony od zera indeks: pierwsza domena uaktualnienia ma identyfikator równy 0, a drugą domenę uaktualnienia ma identyfikator równy 1 i tak dalej.
+Domeny uaktualnień są identyfikowane za pomocą indeksu od zera: pierwsza domena uaktualnienia ma identyfikator 0, a druga domena uaktualnienia ma identyfikator 1 i tak dalej.
 
-Na poniższym diagramie przedstawiono, sposób dystrybucji usługi niż zawiera dwie role, gdy usługa definiuje dwie domeny uaktualnienia. Usługa jest uruchomiona, osiem wystąpienia roli sieć web i dziewięć wystąpień roli procesu roboczego.
+Na poniższym diagramie przedstawiono sposób, w jaki usługa programu, która zawiera dwie role, jest dystrybuowana, gdy usługa definiuje dwie domeny uaktualnienia. Usługa działa w ośmiu wystąpieniach roli sieci Web i dziewięciu wystąpieniach roli proces roboczy.
 
-![Rozkład domen uaktualnienia](media/cloud-services-update-azure-service/IC345533.png "dystrybucji domen uaktualnienia")
+![Dystrybucja domen uaktualnienia](media/cloud-services-update-azure-service/IC345533.png "Dystrybucja domen uaktualnienia")
 
 > [!NOTE]
-> Należy pamiętać, że Azure kontroluje sposób wystąpienia są przydzielane w domenach uaktualnienia. Nie jest możliwe do określenia, których wystąpienia są przydzielane do domeny, które.
+> Należy zauważyć, że platforma Azure kontroluje sposób przydzielenia wystąpień między domenami uaktualniania. Nie można określić, które wystąpienia są przyłączone do tej domeny.
 >
 >
 
-## <a name="next-steps"></a>Kolejne kroki
-[Jak zarządzać usługami Cloud Services](cloud-services-how-to-manage-portal.md)  
-[Jak monitorować usługi Cloud Services](cloud-services-how-to-monitor.md)  
-[Jak skonfigurować usługi w chmurze](cloud-services-how-to-configure-portal.md)  
+## <a name="next-steps"></a>Następne kroki
+[Jak zarządzać Cloud Services](cloud-services-how-to-manage-portal.md)  
+[Jak monitorować Cloud Services](cloud-services-how-to-monitor.md)  
+[Jak skonfigurować Cloud Services](cloud-services-how-to-configure-portal.md)  

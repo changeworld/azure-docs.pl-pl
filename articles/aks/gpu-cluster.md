@@ -1,6 +1,6 @@
 ---
-title: Użyj procesorach GPU znajdujących się w usłudze Azure Kubernetes Service (AKS)
-description: Dowiedz się, jak używać procesorów GPU na potrzeby obliczenia o wysokiej wydajności lub obciążeń intensywnie korzystających z grafiki na platformie Azure Kubernetes Service (AKS)
+title: Korzystanie z procesorów GPU w usłudze Azure Kubernetes Service (AKS)
+description: Dowiedz się, jak korzystać z procesorów GPU w przypadku obliczeń o wysokiej wydajności lub obciążeń intensywnie wykorzystujących grafikę w usłudze Azure Kubernetes Service (AKS)
 services: container-service
 author: zr-msft
 manager: jeconnoc
@@ -8,39 +8,39 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: zarhoads
-ms.openlocfilehash: c92762b53b0f5b50ea08f2f78998a3ccecbed990
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4eef31a050072c0413421a5490b35b765cb9557d
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061056"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381836"
 ---
-# <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Użycie procesorów GPU w przypadku obciążeń intensywnie korzystających z obliczeń w usłudze Azure Kubernetes Service (AKS)
+# <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Korzystanie z procesorów GPU na potrzeby obciążeń intensywnie korzystających z obliczeń w usłudze Azure Kubernetes Service (AKS)
 
-Graficzny graficznych (GPU) są często używane dla obciążeń intensywnie korzystających z obliczeń, takich jak obciążenia grafiki i wizualizacji. AKS obsługuje tworzenie pul węzłów z włączonymi procesorami GPU do uruchamiania tych obciążeń intensywnie korzystających z obliczeń w usłudze Kubernetes. Aby uzyskać więcej informacji na temat maszyny wirtualne obsługujące procesor GPU dostępności, zobacz [rozmiarów maszyn wirtualnych na platformie Azure zoptymalizowane pod kątem procesora GPU][gpu-skus]. W przypadku węzłów AKS zalecamy minimalny rozmiar *maszyna wirtualna Standard_NC6*.
+Jednostki procesora graficznego (GPU) są często używane do obciążeń intensywnie korzystających z mocy obliczeniowej, takich jak obciążenia grafiki i wizualizacji. AKS obsługuje tworzenie pul węzłów z obsługą procesora GPU w celu uruchamiania tych obciążeń intensywnie korzystających z obliczeń w Kubernetes. Aby uzyskać więcej informacji na temat dostępnych maszyn wirtualnych z obsługą procesora GPU, zobacz [rozmiary maszyn wirtualnych zoptymalizowane według procesora GPU na platformie Azure][gpu-skus]. W przypadku węzłów AKS zalecamy minimalny rozmiar *Standard_NC6*.
 
 > [!NOTE]
-> Maszyny wirtualne z włączonymi procesorami GPU zawierają wyspecjalizowanym sprzęcie, który podlega wyższą dostępność ceny i regionu. Aby uzyskać więcej informacji, zobacz [ceny] [ azure-pricing] narzędzia i [dostępność w poszczególnych regionach][azure-availability].
+> Maszyny wirtualne z obsługą procesora GPU zawierają wyspecjalizowany sprzęt, który podlega wyższej cenie i dostępności regionów. Aby uzyskać więcej informacji, zobacz [Cennik][azure-pricing] tool and [region availability][azure-availability].
 
-Obecnie używane są pule węzłów z włączonymi procesorami GPU jest dostępna tylko dla pule węzłów systemu Linux.
+Obecnie użycie pul węzłów z obsługą procesora GPU jest dostępne tylko dla pul węzłów systemu Linux.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W tym artykule założono, że masz istniejący klaster AKS z węzłami, które obsługują procesorów GPU. Klastra usługi AKS musi działać Kubernetes, 1,10 lub nowszej. Jeśli potrzebujesz klastra AKS, która spełnia te wymagania, zobacz ten artykuł, aby w pierwszej sekcji [Tworzenie klastra AKS](#create-an-aks-cluster).
+W tym artykule założono, że masz istniejący klaster AKS z węzłami obsługującymi procesory GPU. Klaster AKS musi mieć uruchomioną Kubernetes 1,10 lub nowszą. Jeśli potrzebujesz klastra AKS, który spełnia te wymagania, zapoznaj się z pierwszą sekcją tego artykułu, aby [utworzyć klaster AKS](#create-an-aks-cluster).
 
-Możesz również muszą wiersza polecenia platformy Azure w wersji 2.0.64 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie przeprowadzenie instalacji lub uaktualnienia, zobacz  [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
+Konieczne jest również zainstalowanie i skonfigurowanie interfejsu wiersza polecenia platformy Azure w wersji 2.0.64 lub nowszej. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne jest zainstalowanie lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
 ## <a name="create-an-aks-cluster"></a>Tworzenie klastra AKS
 
-Jeśli potrzebujesz klastra AKS, który spełnia minimalne wymagania (węzeł z włączonymi procesorami GPU i Kubernetes wersji 1,10 lub nowszej), wykonaj następujące czynności. Jeśli masz już klaster AKS, która spełnia te wymagania [od razu przejść do następnej sekcji](#confirm-that-gpus-are-schedulable).
+Jeśli potrzebujesz klastra AKS, który spełnia minimalne wymagania (węzeł z obsługą procesora GPU i Kubernetes w wersji 1,10 lub nowszej), wykonaj następujące czynności. Jeśli masz już klaster AKS, który spełnia te wymagania, [Przejdź do następnej sekcji](#confirm-that-gpus-are-schedulable).
 
-Najpierw utwórz grupę zasobów dla klastra przy użyciu [Tworzenie grupy az] [ az-group-create] polecenia. Poniższy przykład tworzy nazwę grupy zasobów *myResourceGroup* w *eastus* regionu:
+Najpierw utwórz grupę zasobów dla klastra za pomocą polecenia [AZ Group Create][az-group-create] . Poniższy przykład umożliwia utworzenie grupy *zasobów nazwa zasobu* w regionie *wschodniego* :
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Teraz Utwórz klaster usługi AKS przy użyciu [tworzenie az aks] [ az-aks-create] polecenia. Poniższy przykład tworzy klaster z jednym węzłem o rozmiarze `Standard_NC6`:
+Teraz Utwórz klaster AKS za pomocą polecenia [AZ AKS Create][az-aks-create] . Poniższy przykład tworzy klaster z jednym węzłem o rozmiarze `Standard_NC6`:
 
 ```azurecli-interactive
 az aks create \
@@ -50,7 +50,7 @@ az aks create \
     --node-count 1
 ```
 
-Uzyskiwanie poświadczeń dla klastra usługi AKS przy użyciu [az aks get-credentials] [ az-aks-get-credentials] polecenia:
+Pobierz poświadczenia dla klastra AKS za pomocą polecenia [AZ AKS Get-Credentials][az-aks-get-credentials] :
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -58,15 +58,15 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 ## <a name="install-nvidia-drivers"></a>Zainstaluj sterowniki nVidia
 
-Przed użyciem procesorów GPU w węzłach, należy wdrożyć DaemonSet dla wtyczki urządzenia firmy NVIDIA. Ta DaemonSet uruchamia zasobnik w każdym węźle, aby zapewnić wymagane sterowniki dla procesorów GPU.
+Aby można było korzystać z procesorów GPU w węzłach, należy wdrożyć elementu daemonset dla wtyczki urządzenia NVIDIA. Ten elementu daemonset uruchamia w każdym węźle, aby udostępnić wymagane sterowniki dla procesorów GPU.
 
-Najpierw należy utworzyć za pomocą nazw [kubectl tworzenie przestrzeni nazw] [ kubectl-create] polecenia, takie jak *zasoby procesora gpu*:
+Najpierw utwórz przestrzeń nazw za pomocą polecenia [polecenia kubectl Create Namespace][kubectl-create] , takiego jak *zasoby procesora GPU*:
 
 ```console
 kubectl create namespace gpu-resources
 ```
 
-Utwórz plik o nazwie *nvidia — urządzenie wtyczka ds.yaml* i wklej następujące manifest YAML. Tego manifestu jest dostarczana jako część [NVIDIA urządzenia wtyczki dla projektu Kubernetes][nvidia-github].
+Utwórz plik o nazwie *NVIDIA-Device-plugin-ds. YAML* i wklej następujący manifest YAML. Ten manifest jest dostarczany jako część [wtyczki urządzenia NVIDIA dla projektu Kubernetes][nvidia-github].
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -111,7 +111,7 @@ spec:
             path: /var/lib/kubelet/device-plugins
 ```
 
-Teraz za pomocą [zastosować kubectl] [ kubectl-apply] polecenie, aby utworzyć element DaemonSet i upewnij się, wtyczka urządzenia nVidia został utworzony pomyślnie, jak pokazano w następujących przykładowych danych wyjściowych:
+Teraz użyj polecenia [polecenia kubectl Apply][kubectl-apply] , aby utworzyć elementu daemonset i upewnić się, że wtyczka urządzenia NVIDIA została utworzona pomyślnie, jak pokazano w poniższym przykładzie danych wyjściowych:
 
 ```console
 $ kubectl apply -f nvidia-device-plugin-ds.yaml
@@ -119,9 +119,9 @@ $ kubectl apply -f nvidia-device-plugin-ds.yaml
 daemonset "nvidia-device-plugin" created
 ```
 
-## <a name="confirm-that-gpus-are-schedulable"></a>Upewnij się, że procesorów GPU są ustalonych w harmonogramie
+## <a name="confirm-that-gpus-are-schedulable"></a>Upewnij się, że procesory GPU są harmonogramie
 
-Przy użyciu klastra usługi AKS utworzone Potwierdź ustalonych w harmonogramie w usłudze Kubernetes procesorów GPU. Najpierw Wyświetl listę węzłów w klastrze za pomocą [kubectl get-węzły] [ kubectl-get] polecenia:
+Po utworzeniu klastra AKS upewnij się, że procesory GPU są harmonogramie w Kubernetes. Najpierw należy wyświetlić listę węzłów w klastrze za pomocą polecenia [polecenia kubectl Get nodes][kubectl-get] :
 
 ```console
 $ kubectl get nodes
@@ -130,9 +130,9 @@ NAME                       STATUS   ROLES   AGE   VERSION
 aks-nodepool1-28993262-0   Ready    agent   13m   v1.12.7
 ```
 
-Teraz za pomocą [kubectl opisują węzła] [ kubectl-describe] polecenie, aby potwierdzić, czy ustalonych w harmonogramie procesorów GPU. W obszarze *pojemności* sekcji procesora GPU pomysłem jest wystawienie jako `nvidia.com/gpu:  1`.
+Teraz użyj polecenia [polecenia kubectl opis węzła][kubectl-describe] , aby upewnić się, że procesory GPU są harmonogramie. W sekcji *pojemność* procesor GPU powinien zostać wystawiony `nvidia.com/gpu:  1`jako.
 
-Poniższego, skróconego przykładu pokazuje, że procesora GPU jest dostępny w węźle, nazwane *aks-nodepool1-18821093-0*:
+Następujący wąski przykład pokazuje, że procesor GPU jest dostępny w węźle o nazwie *AKS-nodepool1-18821093-0*:
 
 ```console
 $ kubectl describe node aks-nodepool1-28993262-0
@@ -182,14 +182,14 @@ Non-terminated Pods:         (9 in total)
 [...]
 ```
 
-## <a name="run-a-gpu-enabled-workload"></a>Uruchamianie obciążenia obsługujące procesor GPU
+## <a name="run-a-gpu-enabled-workload"></a>Uruchamianie obciążenia z obsługą procesora GPU
 
-Aby wyświetlić procesora GPU w akcji, należy zaplanować obciążenia obsługujące procesor GPU z żądaniem odpowiedni zasób. W tym przykładzie uruchommy [Tensorflow](https://www.tensorflow.org/versions/r1.1/get_started/mnist/beginners) zadania względem [zestawu danych mnist ręcznie ZAPISANYCH](http://yann.lecun.com/exdb/mnist/).
+Aby zobaczyć, jak działa procesor GPU, Zaplanuj obciążenie procesora GPU odpowiednimi żądaniami zasobów. W tym przykładzie uruchomimy zadanie [Tensorflow](https://www.tensorflow.org/) z [zestawem danych mnist ręcznie](http://yann.lecun.com/exdb/mnist/).
 
-Utwórz plik o nazwie *przykłady tf-mnist ręcznie zapisanych demo.yaml* i wklej następujące manifest YAML. Następujące manifest zadania obejmuje limit zasobów `nvidia.com/gpu: 1`:
+Utwórz plik o nazwie *Samples-TF-mnist ręcznie-demonstracyjn. YAML* i wklej następujący manifest YAML. Następujący manifest zadania zawiera limit `nvidia.com/gpu: 1`zasobów:
 
 > [!NOTE]
-> Jeśli zostanie wyświetlony błąd niezgodności wersji podczas wywoływania do sterowników, takie jak wersja sterownika CUDA jest niewystarczająca dla wersji środowiska uruchomieniowego CUDA, zapoznaj się z wykresu zgodności macierzy sterownika nVidia — [https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
+> Jeśli wystąpi błąd niezgodności wersji podczas wywoływania sterowników, na przykład wersja sterownika CUDA jest niewystarczająca dla wersji środowiska uruchomieniowego CUDA, zapoznaj się z wykresem zgodności macierzy sterowników nVidia —[https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
 
 ```yaml
 apiVersion: batch/v1
@@ -215,15 +215,15 @@ spec:
       restartPolicy: OnFailure
 ```
 
-Użyj [zastosować kubectl] [ kubectl-apply] polecenie, aby uruchomić zadanie. To polecenie analizuje plik manifestu i tworzy zdefiniowane obiekty usługi Kubernetes:
+Użyj polecenia [polecenia kubectl Apply][kubectl-apply] , aby uruchomić zadanie. To polecenie analizuje plik manifestu i tworzy zdefiniowane obiekty Kubernetes:
 
 ```console
 kubectl apply -f samples-tf-mnist-demo.yaml
 ```
 
-## <a name="view-the-status-and-output-of-the-gpu-enabled-workload"></a>Wyświetl stan i dane wyjściowe obciążenia obsługujące procesor GPU
+## <a name="view-the-status-and-output-of-the-gpu-enabled-workload"></a>Wyświetlanie stanu i danych wyjściowych obciążenia z obsługą procesora GPU
 
-Monitoruj postęp zadania za pomocą polecenia [kubectl get-zadania] [ kubectl-get] polecenia `--watch` argumentu. Może potrwać kilka minut do ściągnięcia pierwsze obraz i przetworzyć zestawu danych. Gdy *uzupełnienia* kolumna pokazuje *1/1*, zadanie zostało zakończone pomyślnie. Zakończ `kubetctl --watch` polecenia *Ctrl-C*:
+Monitoruj postęp zadania za pomocą polecenia [polecenia kubectl Pobierz zadania][kubectl-get] z `--watch` argumentem. Pierwsze pobranie obrazu i przetworzenie zestawu danych może potrwać kilka minut. Gdy kolumna *ukończenia* zawiera *1/1*, zadanie zostało pomyślnie zakończone. Wyjdź z polecenia CTRL *-C:* `kubetctl --watch`
 
 ```console
 $ kubectl get jobs samples-tf-mnist-demo --watch
@@ -234,7 +234,7 @@ samples-tf-mnist-demo   0/1           3m29s      3m29s
 samples-tf-mnist-demo   1/1   3m10s   3m36s
 ```
 
-Aby wyświetlić dane wyjściowe z włączonymi procesorami GPU obciążenia, należy najpierw uzyskać nazwę zasobnik za pomocą [kubectl get pods-] [ kubectl-get] polecenia:
+Aby wyszukać dane wyjściowe obciążenia z obsługą procesora GPU, należy najpierw pobrać nazwę pod z [polecenia kubectl Get][kubectl-get] — polecenie:
 
 ```console
 $ kubectl get pods --selector app=samples-tf-mnist-demo
@@ -243,7 +243,7 @@ NAME                          READY   STATUS      RESTARTS   AGE
 samples-tf-mnist-demo-mtd44   0/1     Completed   0          4m39s
 ```
 
-Teraz za pomocą [Dzienniki narzędzia kubectl] [ kubectl-logs] polecenie, aby wyświetlić dzienniki zasobników. Następujące przykładowe dzienniki pod upewnij się, że odpowiednie urządzenie GPU został odnaleziony, `Tesla K80`. Podaj nazwę własnego zasobnika:
+Teraz Użyj [dzienników polecenia kubectl][kubectl-logs] , aby wyświetlić dzienniki pod. W poniższym przykładzie dzienników można potwierdzić, że odpowiednie urządzenie GPU zostało wykryte, `Tesla K80`. Podaj nazwę własnego:
 
 ```console
 $ kubectl logs samples-tf-mnist-demo-smnr6
@@ -322,17 +322,17 @@ Adding run metadata for 499
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Aby usunąć skojarzone obiekty usługi Kubernetes, utworzone w tym artykule, należy użyć [kubectl Usuń zadanie] [ kubectl delete] polecenia w następujący sposób:
+Aby usunąć skojarzone obiekty Kubernetes utworzone w tym artykule, użyj polecenia [Usuń zadanie polecenia kubectl][kubectl delete] w następujący sposób:
 
 ```console
 kubectl delete jobs samples-tf-mnist-demo
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uruchamiać zadania Apache Spark, zobacz [zadania uruchamiania Apache Spark w usłudze AKS][aks-spark].
+Aby uruchomić zadania Apache Spark, zobacz [uruchamianie Apache Spark zadań w AKS][aks-spark].
 
-Aby uzyskać więcej informacji na temat obciążeń machine learning (uczenie Maszynowe) na platformie Kubernetes, zobacz [Kubeflow Labs][kubeflow-labs].
+Aby uzyskać więcej informacji na temat uruchamiania obciążeń uczenia maszynowego (ML) w witrynie Kubernetes, zobacz [Kubeflow Labs][kubeflow-labs].
 
 <!-- LINKS - external -->
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply

@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą usługi Insights adaptacyjne | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i adaptacyjne szczegółowe informacje.
+title: 'Samouczek: Azure Active Directory integrację z usługą adaptacyjnego wglądu w dane | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i adaptacyjne szczegółowe informacje.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -9,251 +9,205 @@ ms.reviewer: barbkess
 ms.assetid: 13af9d00-116a-41b8-8ca0-4870b31e224c
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
+ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/17/2019
+ms.date: 07/19/2019
 ms.author: jeedes
-ms.openlocfilehash: c217663c5752907e0b3d6372d4522f6aba982b3d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 599b0c8f45f91f9ecff210264a813e302f18059e
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107406"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68488952"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-adaptive-insights"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą usługi Insights adaptacyjne
+# <a name="tutorial-integrate-adaptive-insights-with-azure-active-directory"></a>Samouczek: Integruj adaptacyjne szczegółowe dane za pomocą Azure Active Directory
 
-W tym samouczku dowiesz się, jak zintegrować adaptacyjne szczegółowych informacji z usługi Azure Active Directory (Azure AD).
-Integrowanie adaptacyjne szczegółowych informacji z usługi Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować adaptacyjne szczegółowe informacje z Azure Active Directory (Azure AD). Gdy integrujesz szczegółowe informacje z usługą Azure AD, możesz:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do adaptacyjnego szczegółowych informacji.
-* Użytkownikom można automatycznie zalogowany do adaptacyjnego Insights (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Kontrolka w usłudze Azure AD, która ma dostęp do szczegółowych informacji.
+* Umożliwia użytkownikom automatyczne logowanie się w celu adaptacyjnego wglądu w szczegółowe dane przy użyciu kont usługi Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do konfigurowania integracji z usługą Azure AD za pomocą usługi Insights adaptacyjne, potrzebne są następujące elementy:
+Aby rozpocząć, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* Adaptacyjne Insights pojedynczego logowania jednokrotnego włączonych subskrypcji
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
+* Subskrypcja z włączoną funkcją adaptacyjnego wglądu w szczegółowe dane.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
+W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Funkcje adaptacyjnego sterowania Insights obsługuje **tożsamości** jednokrotne logowanie inicjowane przez
+* Adaptacyjne wglądy w dane obsługują zainicjowane przez **dostawcy tożsamości** Logowanie jednokrotne
 
-## <a name="adding-adaptive-insights-from-the-gallery"></a>Dodawanie adaptacyjne szczegółowych informacji z galerii
+## <a name="adding-adaptive-insights-from-the-gallery"></a>Dodawanie adaptacyjnych szczegółowych informacji z galerii
 
-Aby skonfigurować integrację adaptacyjne wglądu w szczegółowe dane w usłudze Azure AD, należy dodać adaptacyjne szczegółowych informacji z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację adaptacyjnego wglądu w usługę Azure AD, musisz dodać adaptacyjne szczegółowe informacje z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać funkcje adaptacyjnego sterowania szczegółowych informacji z galerii, wykonaj następujące czynności:**
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
+1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
+1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **adaptacyjne szczegółowe** dane w polu wyszukiwania.
+1. Wybierz pozycję **adaptacyjne szczegółowe** dane z panelu wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
-
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
-
-2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
-
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
-
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
-
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
-
-4. W polu wyszukiwania wpisz **adaptacyjne szczegółowych informacji**, wybierz opcję **Insights funkcje adaptacyjnego sterowania** z panelu wynik następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
-
-     ![Funkcje adaptacyjnego sterowania szczegółowe informacje na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji, konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą Insights adaptacyjne w oparciu o nazwie użytkownika testowego **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w adaptacyjne szczegółowych informacji musi zostać ustanowione.
+Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD z adaptacyjnym wglądem przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w oknie adaptacyjne szczegółowe dane.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą adaptacyjne Insights, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD przy użyciu adaptacyjnego wglądu, wykonaj następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie adaptacyjne szczegółowych informacji logowania jednokrotnego](#configure-adaptive-insights-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego adaptacyjne Insights](#create-adaptive-insights-test-user)**  — aby odpowiednikiem Britta Simon w adaptacyjne szczegółowe informacje, połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj adaptacyjne logowanie](#configure-adaptive-insights-sso)** jednokrotne w celu skonfigurowania ustawień logowania jednokrotnego na stronie aplikacji.
+3. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
+4. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
+5. **[Utwórz użytkownika testowego adaptacyjnego wglądu w szczegółowe](#create-adaptive-insights-test-user)** dane, aby uzyskać odpowiedniki B. Simon w adaptacyjnych wglądach, które są połączone z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Przetestuj logowanie](#test-sso)** jednokrotne — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
-W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
+Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-Aby skonfigurować usługi Azure AD logowanie jednokrotne za pomocą usługi Insights adaptacyjne, wykonaj następujące czynności:
+1. W [Azure Portal](https://portal.azure.com/)na stronie z integracją propoznawczej aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie**jednokrotne.
+1. Na stronie **Wybierz metodę logowania** jednokrotnego wybierz pozycję **SAML**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **Insights adaptacyjne** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+   ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
-
-2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
-
-    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
-
-3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
-
-    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
-
-4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** wykonaj następujące kroki:
-
-    ![Funkcje adaptacyjnego sterowania Insights domena i adresy URL pojedynczy informacje logowania jednokrotnego](common/idp-intiated.png)
+1. W sekcji **Podstawowa konfiguracja** języka SAML wykonaj następujące czynności:
 
     a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
     > [!NOTE]
-    > Funkcje adaptacyjnego sterowania usługi insights można uzyskać wartości adresu URL odpowiedzi i identyfikator jednostki **ustawień logowania jednokrotnego SAML** strony.
+    > Możesz uzyskać informacje o identyfikatorze (identyfikator jednostki) i adresie URL odpowiedzi ze strony **ustawień protokołu SAML SSO** usługi adaptacyjnej.
 
-5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+4. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **certyfikat (base64)** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
     ![Link pobierania certyfikatu](common/certificatebase64.png)
 
-6. Na **Konfigurowanie adaptacyjne usługi Insights** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+6. W sekcji **Konfigurowanie** usługi adaptacyjnej Insights skopiuj odpowiednie adresy URL na podstawie wymagań.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-    a. Adres URL logowania
+### <a name="configure-adaptive-insights-sso"></a>Konfigurowanie rejestracji jednokrotnej usługi adaptacyjnej Insights
 
-    b. Identyfikator usługi Azure AD
+1. W innym oknie przeglądarki sieci Web Zaloguj się do witryny firmy z możliwością adaptacyjnej usługi Insights jako administrator.
 
-    c. Adres URL wylogowywania
-
-### <a name="configure-adaptive-insights-single-sign-on"></a>Konfigurowanie adaptacyjne szczegółowych informacji logowania jednokrotnego
-
-1. W oknie przeglądarki internetowej innej zarejestrować się do witryny firmy adaptacyjne szczegółowych informacji jako administrator.
-
-2. Przejdź do **administratora**.
+2. Przejdź do sekcji **Administration** (Administracja).
 
     ![Administrator](./media/adaptivesuite-tutorial/ic805644.png "Administrator")
 
-3. W **użytkownikami i rolami** kliknij **Zarządzanie ustawieniami logowania jednokrotnego SAML**.
+3. W sekcji **Użytkownicy i role** kliknij pozycję **Ustawienia logowania**jednokrotnego dla protokołu SAML.
 
     ![Zarządzanie ustawieniami logowania jednokrotnego SAML](./media/adaptivesuite-tutorial/ic805645.png "Zarządzanie ustawieniami logowania jednokrotnego SAML")
 
-4. Na **ustawień logowania jednokrotnego SAML** strony, wykonaj następujące czynności:
+4. Na stronie **Ustawienia rejestracji** jednokrotnej protokołu SAML wykonaj następujące czynności:
 
-    ![Ustawienia logowania jednokrotnego SAML](./media/adaptivesuite-tutorial/ic805646.png "ustawień logowania jednokrotnego SAML")
+    ![Ustawienia logowania jednokrotnego SAML](./media/adaptivesuite-tutorial/ic805646.png "Ustawienia logowania jednokrotnego SAML")
 
-    a. W **nazwę dostawcy tożsamości** polu tekstowym wpisz nazwę dla danej konfiguracji.
+    a. W polu tekstowym **Nazwa dostawcy tożsamości** wpisz nazwę konfiguracji.
 
-    b. Wklej **usługi Azure Ad identyfikator** wartość kopiowana z witryny Azure portal do **dostawcy tożsamości identyfikator jednostki** pola tekstowego.
+    b. Wklej wartość **identyfikatora usługi Azure AD** skopiowaną z Azure Portal do pola tekstowego **Identyfikator jednostki dostawcy tożsamości** .
 
-    c. Wklej **adres URL logowania** wartość kopiowana z witryny Azure portal do **dostawcy tożsamości adres URL logowania jednokrotnego** pola tekstowego.
+    c. Wklej wartość **adresu URL logowania** skopiowaną z Azure Portal do pola tekstowego **adres URL logowania jednokrotnego dostawcy tożsamości** .
 
-    d. Wklej **adres URL wylogowania** wartość kopiowana z witryny Azure portal do **adres URL wylogowania niestandardowe** pola tekstowego.
+    d. Wklej wartość **adresu URL wylogowywania** skopiowaną z Azure Portal do pola tekstowego **adres URL wylogowywania niestandardowego** .
 
-    e. Aby przekazać certyfikat pobrany, kliknij przycisk **Choose file**.
+    e. Aby przekazać pobrany certyfikat, kliknij pozycję **Wybierz plik**.
 
-    f. Wybierz następujące polecenie, aby uzyskać:
+    f. Wybierz następujące polecenie, aby:
 
-     * **Identyfikator użytkownika SAML**, wybierz opcję **nazwy użytkownika adaptacyjne Insights**.
+     * **Identyfikator użytkownika SAML**, wybierz **nazwę użytkownika adaptacyjnego wglądu w dane użytkownika**.
 
-     * **Lokalizacja identyfikator użytkownika SAML**, wybierz opcję **identyfikatora użytkownika w NameID podmiotu**.
+     * **Lokalizacja identyfikatora użytkownika SAML**, wybierz pozycję **Identyfikator użytkownika w NameID tematu**.
 
-     * **Format identyfikatora SAML NameID**, wybierz opcję **adres E-mail**.
+     * **Format SAML NameID**, wybierz opcję **adres e-mail**.
 
-     * **Włącz SAML**, wybierz opcję **Zezwalaj logowania jednokrotnego SAML i bezpośrednie logowanie adaptacyjne Insights**.
+     * **Włącz protokół SAML**, wybierz opcję **Zezwalaj na logowanie za pomocą rejestracji jednokrotnej i bezpośredniego adaptacyjnego wglądu w szczegółowe**dane.
 
-    g. Kopiuj **adaptacyjne adres URL logowania jednokrotnego szczegółowych informacji** i Wklej do **identyfikator jednostki** i **adres URL odpowiedzi** pola tekstowe w **adaptacyjne domena szczegółowych informacji i adresy URL** sekcji w witrynie Azure portal.
+    g. Skopiuj **adres URL rejestracji** jednokrotnej usługi adaptacyjnej Insights i wklej do pól **identyfikatora (identyfikator jednostki)** i **adres URL odpowiedzi** w sekcji podstawowe informacje o **konfiguracji SAML** w Azure Portal.
 
-    h. Kliknij pozycję **Zapisz**.
+    h. Kliknij polecenie **Zapisz**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
+W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
-1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
-
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
-
-    ![Przycisk Nowy użytkownik](common/new-user.png)
-
-3. We właściwościach użytkownika wykonaj następujące kroki.
-
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
-
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
-  
-    b. W **nazwa_użytkownika** typ pola "brittasimon@yourcompanydomain.extension. Na przykład BrittaSimon@contoso.com.
-
-    c. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
-
-    d. Kliknij pozycję **Utwórz**.
+1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. Wybierz **nowego użytkownika** w górnej części ekranu.
+1. We właściwościach **użytkownika** wykonaj następujące kroki:
+   1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
+   1. W polu **Nazwa użytkownika** wprowadź wartość username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
+   1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do adaptacyjnego szczegółowych informacji.
+W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure, przyznając dostęp do szczegółowych informacji.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **Insights adaptacyjne**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Na liście Aplikacje wybierz pozycję **adaptacyjne szczegółowe**dane.
+1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
 
-2. Na liście aplikacji wybierz **Insights adaptacyjne**.
+1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
-    ![Link adaptacyjne szczegółowe informacje na liście aplikacji](common/all-applications.png)
+    ![Link Dodaj użytkownika](common/add-assign-user.png)
 
-3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+### <a name="create-adaptive-insights-test-user"></a>Utwórz użytkownika testowego adaptacyjnego wglądu w szczegółowe dane
 
-4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
-
-    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
-
-5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
-
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
-
-7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
-
-### <a name="create-adaptive-insights-test-user"></a>Tworzenie użytkownika testowego adaptacyjne szczegółowych informacji
-
-Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do adaptacyjnego szczegółowe informacje, musi być obsługiwana w adaptacyjne szczegółowe informacje. W przypadku adaptacyjne Insights aprowizacji to zadanie ręczne.
+Aby umożliwić użytkownikom usługi Azure AD logowanie się w celu uzyskania adaptacyjnego wglądu, muszą one być obsługiwane w ramach adaptacyjnego wglądu w szczegółowe dane. W przypadku adaptacyjnych szczegółowych informacji Inicjowanie obsługi jest zadaniem ręcznym.
 
 **Aby skonfigurować aprowizację użytkowników, wykonaj następujące czynności:**
 
-1. Zaloguj się do Twojej **Insights adaptacyjne** witryny firmy jako administrator.
+1. Zaloguj się do swojej  witryny usługi adaptacyjnej Insights jako administrator.
 
-2. Przejdź do **administratora**.
+2. Przejdź do sekcji **Administration** (Administracja).
 
    ![Administrator](./media/adaptivesuite-tutorial/IC805644.png "Administrator")
 
-3. W **użytkownikami i rolami** kliknij **Dodaj użytkownika**.
+3. W sekcji **Użytkownicy i role** kliknij pozycję **Użytkownicy**.
 
    ![Dodawanie użytkownika](./media/adaptivesuite-tutorial/IC805648.png "Dodawanie użytkownika")
 
-4. W **nowego użytkownika** sekcji, wykonaj następujące czynności:
+4. W sekcji **nowy użytkownik** wykonaj następujące czynności:
 
-   ![Prześlij](./media/adaptivesuite-tutorial/IC805649.png "przesyłania")
+   ![Prześlij](./media/adaptivesuite-tutorial/IC805649.png "Prześlij")
 
-   a. Typ **nazwa**, **logowania**, **wiadomości E-mail**, **hasło** z prawidłowym użytkownikiem usługi Azure Active Directory chcesz aprowizować do powiązane pola tekstowe.
+   a. Wpisz **nazwę**, nazwa **użytkownika**, **adres e-mail**i **hasło** prawidłowego użytkownika Azure Active Directory, który chcesz udostępnić do powiązanych pól tekstowych.
 
-   b. Wybierz **roli**.
+   b. Wybierz **rolę**.
 
    c. Kliknij przycisk **Submit** (Prześlij).
 
 > [!NOTE]
-> Można użyć jakichkolwiek innych adaptacyjne szczegółowych informacji użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez adaptacyjne wgląd do aprowizacji kont użytkowników usługi AAD.
+> Za pomocą dowolnych innych narzędzi do tworzenia kont użytkowników lub interfejsów API udostępnianych przez adaptacyjne informacje można udostępniać konta użytkowników usługi AAD.
 
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
+### <a name="test-sso"></a>Testuj Logowanie jednokrotne 
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka adaptacyjne wgląd w panelu dostępu, powinny być automatycznie zarejestrowaniu w usłudze adaptacyjne szczegółowych danych, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka adaptacyjnego wglądu w panelu dostępu należy automatycznie zalogować się do szczegółowych informacji, dla których skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+

@@ -1,19 +1,18 @@
 ---
 title: Używanie Azure Backup Server do tworzenia kopii zapasowych obciążeń na platformie Azure
 description: Użyj Azure Backup Server do ochrony lub tworzenia kopii zapasowych obciążeń do Azure Portal.
-services: backup
 author: kasinh
 manager: vvithal
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: kasinh
-ms.openlocfilehash: 12ec1ce4a774178be621d7d8626ead7f1b106189
-ms.sourcegitcommit: 20bb149fe74459e59b648361235324b0674fe55b
+ms.openlocfilehash: bf0e964c46088947fa50d1eadbcc12b78978251f
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68298526"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466378"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalowanie i uaktualnianie Azure Backup Server
 > [!div class="op_single_selector"]
@@ -51,11 +50,11 @@ Jeśli nie chcesz uruchamiać serwera podstawowego na platformie Azure, możesz 
 
 | System operacyjny | Platforma | SKU |
 |:--- | --- |:--- |
-| Windows Server 2019 |64-bitowa |Standard, Datacenter, Essentials (serwera usługi MAB v3 i nowsze) |
-| Windows Server 2016 i najnowsze dodatki Service Pack |64-bitowa |Standard, Datacenter, Essentials (serwera usługi MAB v2 i nowsze) |
-| Windows Server 2012 R2 i najnowsze dodatki Service Pack |64-bitowa |Standard, Datacenter, Foundation |
+| Windows Server 2019 |64-bitowy |Standard, Datacenter, Essentials (serwera usługi MAB v3 i nowsze) |
+| Windows Server 2016 i najnowsze dodatki Service Pack |64-bitowy |Standard, Datacenter, Essentials (serwera usługi MAB v2 i nowsze) |
+| Windows Server 2012 R2 i najnowsze dodatki Service Pack |64-bitowy |Standard, Datacenter, Foundation |
 | Windows Storage Server 2012 R2 i najnowsze dodatki Service Pack |64-bitowa |Standard, Workgroup |
-| Windows Storage Server 2012 i najnowsze dodatki Service Pack |64-bitowa |Standard, Workgroup |
+| Windows Storage Server 2012 i najnowsze dodatki Service Pack |64-bitowy |Standard, Workgroup |
 
 Magazyn programu DPM można deduplikowany przy użyciu funkcji deduplikacji systemu Windows Server. Dowiedz się więcej na temat tego [, jak program DPM i Deduplikacja](https://technet.microsoft.com/library/dn891438.aspx) współpracują ze sobą w przypadku wdrożenia na maszynach wirtualnych funkcji Hyper
 
@@ -276,11 +275,11 @@ Po uzyskaniu informacji o stanie łączności z platformą Azure i subskrypcji p
 
 | Stan łączności | Subskrypcja platformy Azure | Tworzenie kopii zapasowej na platformie Azure | Utwórz kopię zapasową na dysku | Przywróć z platformy Azure | Przywracanie z dysku |
 | --- | --- | --- | --- | --- | --- |
-| Połączono |Aktywne |Występować |Występować |Występować |Występować |
-| Połączono |Wygaśnięcie |Zatrzymano |Zatrzymano |Występować |Występować |
+| Połączono |Aktywne |Dopuszczeni |Dopuszczeni |Dopuszczeni |Dopuszczeni |
+| Połączono |Wygaśnięcie |Zatrzymano |Zatrzymano |Dopuszczeni |Dopuszczeni |
 | Połączono |Anulowanie aprowizacji |Zatrzymano |Zatrzymano |Zatrzymane i usunięte punkty odzyskiwania platformy Azure |Zatrzymano |
-| Utracono łączność > 15 dni |Aktywne |Zatrzymano |Zatrzymano |Występować |Występować |
-| Utracono łączność > 15 dni |Wygaśnięcie |Zatrzymano |Zatrzymano |Występować |Występować |
+| Utracono łączność > 15 dni |Aktywne |Zatrzymano |Zatrzymano |Dopuszczeni |Dopuszczeni |
+| Utracono łączność > 15 dni |Wygaśnięcie |Zatrzymano |Zatrzymano |Dopuszczeni |Dopuszczeni |
 | Utracono łączność > 15 dni |Anulowanie aprowizacji |Zatrzymano |Zatrzymano |Zatrzymane i usunięte punkty odzyskiwania platformy Azure |Zatrzymano |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Odzyskiwanie po utracie łączności
@@ -297,7 +296,7 @@ Po przywróceniu łączności z platformą Azure do maszyny Azure Backup Server 
 ### <a name="handling-subscription-states"></a>Obsługa stanów subskrypcji
 Istnieje możliwość podjęcia subskrypcji platformy Azure ze stanu wygasłego  lub *anulowania* aprowizacji do stanu *aktywnego* . Jednak ma to pewne konsekwencje dla zachowania produktu, gdy stan nie jest *aktywny*:
 
-* Cofnięcie aprowizacji subskrypcji powoduje utratę funkcjonalności przez okres anulowania aprowizacji. W przypadku włączania *aktywności*funkcja tworzenia kopii zapasowej/przywracania jest przywracana. Dane kopii zapasowej na dysku lokalnym można również pobrać, jeśli były utrzymywane w wystarczająco dużym okresie przechowywania. Jednak dane kopii zapasowej na platformie Azure są irretrievably utracone po przejściu subskrypcji w stan *anulowania* aprowizacji.
+* Cofnięcie *aprowizacji subskrypcji powoduje* utratę funkcjonalności przez okres anulowania aprowizacji. W przypadku włączania *aktywności*funkcja tworzenia kopii zapasowej/przywracania jest przywracana. Dane kopii zapasowej na dysku lokalnym można również pobrać, jeśli były utrzymywane w wystarczająco dużym okresie przechowywania. Jednak dane kopii zapasowej na platformie Azure są irretrievably utracone po przejściu subskrypcji w stan *anulowania* aprowizacji.
 * *Wygasła* subskrypcja powoduje utratę funkcjonalności, dopóki nie zostanie ponownie *uaktywniona* . Wszystkie kopie zapasowe zaplanowane na okres *ważności* subskrypcji nie zostaną uruchomione.
 
 ## <a name="upgrade-mabs"></a>SERWERA usługi MAB uaktualnienia
@@ -339,7 +338,7 @@ Wykonaj następujące kroki, aby uaktualnić program serwera usługi MAB:
 Jeśli w trakcie fazy instalacji (lub tworzenia kopii zapasowej lub przywracania) wystąpi błąd programu Microsoft Azure Backup Server, zapoznaj się z tym [dokumentem kodów błędów](https://support.microsoft.com/kb/3041338) , aby uzyskać więcej informacji.
 Możesz również odwoływać się do [Azure Backup powiązanych często zadawanych pytań](backup-azure-backup-faq.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Możesz uzyskać szczegółowe informacje na temat [przygotowywania środowiska programu DPM](https://technet.microsoft.com/library/hh758176.aspx) w witrynie Microsoft TechNet. Zawiera również informacje o obsługiwanych konfiguracjach, w których Azure Backup Server można wdrożyć i użyć. Do wykonywania różnych operacji można użyć szeregu [poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/dataprotectionmanager/?view=systemcenter-ps-2016) .
 
 Te artykuły umożliwiają dokładniejsze zrozumienie ochrony obciążeń przy użyciu serwera Microsoft Azure Backup.

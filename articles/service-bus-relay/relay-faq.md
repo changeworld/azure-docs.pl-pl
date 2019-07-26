@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
-ms.openlocfilehash: f9f182a459f9a38c96bdf923998d1cdfee8fc3ac
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 207f73bbf9a92d26be1791fc11ce81fe68252705
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277961"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68422955"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay często zadawane pytania
 
@@ -36,7 +36,7 @@ Ten artykuł zawiera odpowiedzi na kilka często zadawanych pytań dotyczących 
 [Przestrzeń nazw](relay-create-namespace-portal.md) jest kontenerem zakresu, którego można użyć do adresowania zasobów przekaźnika w aplikacji. Należy utworzyć przestrzeń nazw, aby użyć przekaźnika. Jest to jeden z pierwszych kroków w temacie Wprowadzenie.
 
 ### <a name="what-happened-to-service-bus-relay-service"></a>Co się stało z Service Bus Relay usługą?
-Wcześniej nazwana usługa Service Bus Relay jest teraz nazywana [WCF Relay](relay-wcf-dotnet-get-started.md). Można nadal używać tej usługi w zwykły sposób. Funkcja Połączenia hybrydowe to zaktualizowana wersja usługi, która została przesadzona z usługi Azure BizTalk Services. WCF Relay i Połączenia hybrydowe są nadal obsługiwane.
+Wcześniej nazwana usługa Service Bus Relay jest teraz nazywana [WCF Relay](service-bus-relay-tutorial.md). Można nadal używać tej usługi w zwykły sposób. Funkcja Połączenia hybrydowe to zaktualizowana wersja usługi, która została przesadzona z usługi Azure BizTalk Services. WCF Relay i Połączenia hybrydowe są nadal obsługiwane.
 
 ## <a name="pricing"></a>Cennik
 Ta sekcja zawiera odpowiedzi na kilka często zadawanych pytań dotyczących struktury cenowej przekaźnika. Zobaczysz również [często zadawane pytania dotyczące pomocy technicznej platformy Azure](https://azure.microsoft.com/support/faq/) dotyczące ogólnych informacji o cenach platformy Azure. Aby uzyskać pełne informacje na temat cennika usługi Relay, zobacz [szczegóły cennika Service Bus][Pricing overview].
@@ -80,7 +80,7 @@ Wysyłanie komunikatu do przekaźnika Service Bus jest traktowane jako "pełny p
 Przekaźniki otwierane przy użyciu powiązania WCF **netTCPRelay** traktują komunikaty, które nie są pojedynczymi komunikatami, ale jako strumień danych przepływających przez system. W przypadku korzystania z tego powiązania tylko nadawca i odbiornik mają wgląd w ramki poszczególnych wysłanych i odebranych komunikatów. W przypadku przekaźników korzystających z powiązania **netTCPRelay** wszystkie dane są traktowane jako strumień służący do obliczania komunikatów rozliczanych. W takim przypadku Service Bus oblicza łączną ilość danych wysłanych lub odebranych za pośrednictwem poszczególnych przekaźników w oparciu o 5 minut. Następnie dzieli ten łączną ilość danych o 64 KB, aby określić liczbę płatnych komunikatów dla tego przekaźnika w tym okresie.
 
 ## <a name="quotas"></a>Przydziały
-| Nazwa przydziału | Scope |  Uwagi | Value |
+| Nazwa limitu przydziału | Scope |  Uwagi | Value |
 | --- | --- | --- | --- |
 | Współbieżne detektory w przekaźniku |Jednostka |Kolejne żądania dla dodatkowych połączeń są odrzucane i występuje wyjątek przez wywoływany kod. |25 |
 | Współbieżne połączenia przekaźnikowe na wszystkie punkty końcowe przekaźnika w przestrzeni nazw usługi |Przestrzeń nazw |- |5,000 |
@@ -133,7 +133,7 @@ Sygnatury dostępu współdzielonego (SAS) są mechanizmem uwierzytelniania opar
 ### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Czy można dozwolonych punkty końcowe przekaźnika?
 Tak. Klient usługi Relay nawiązuje połączenia z usługą Azure Relay przy użyciu w pełni kwalifikowanych nazw domen. Klienci mogą dodać wpis dla `*.servicebus.windows.net` zapory, które obsługują listy dozwolonych DNS.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Tworzenie przestrzeni nazw](relay-create-namespace-portal.md)
 * [Wprowadzenie do programu .NET](relay-hybrid-connections-dotnet-get-started.md)
 * [Wprowadzenie do programu Node](relay-hybrid-connections-node-get-started.md)

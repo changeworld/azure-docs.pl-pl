@@ -1,6 +1,6 @@
 ---
-title: Dokumentacja pliku host.JSON dla usługi Azure Functions 2.x
-description: Dokumentacja pliku host.json usługi Azure Functions ze środowiskiem uruchomieniowym w wersji 2.
+title: Dokumentacja pliku host. JSON dla Azure Functions 2. x
+description: Dokumentacja referencyjna dotycząca pliku Azure Functions hosta. JSON z użyciem środowiska uruchomieniowego v2.
 services: functions
 author: ggailey777
 manager: jeconnoc
@@ -10,31 +10,31 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 89c4723e83979f89721677146810abdf99fb5d11
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: ecb2059e529347b7eff72bf6af74b82558a4c251
+ms.sourcegitcommit: 83a89c45253b0d432ce8dcd70084c18e9930b1fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67310480"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371699"
 ---
-# <a name="hostjson-reference-for-azure-functions-2x"></a>Dokumentacja pliku host.JSON dla usługi Azure Functions 2.x  
+# <a name="hostjson-reference-for-azure-functions-2x"></a>Dokumentacja pliku host. JSON dla Azure Functions 2. x  
 
-> [!div class="op_single_selector" title1="Wybierz wersję środowiska uruchomieniowego usługi Azure Functions, którego używasz: "]
+> [!div class="op_single_selector" title1="Wybierz wersję środowiska uruchomieniowego Azure Functions, którego używasz: "]
 > * [Wersja 1](functions-host-json-v1.md)
 > * [Wersja 2](functions-host-json.md)
 
-*Host.json* plik metadanych zawiera opcje konfiguracji globalne, które wpływają na wszystkie funkcje dla aplikacji funkcji. Ten artykuł zawiera listę ustawień, które są dostępne dla środowiska uruchomieniowego w wersji 2.  
+Plik metadanych *hosta. JSON* zawiera globalne opcje konfiguracji, które mają wpływ na wszystkie funkcje aplikacji funkcji. W tym artykule wymieniono ustawienia, które są dostępne dla środowiska uruchomieniowego w wersji 2.  
 
 > [!NOTE]
-> Ten artykuł jest przeznaczony dla usługi Azure Functions 2.x.  Odwołanie host.json w funkcjach 1.x, zobacz [dokumentacja pliku host.JSON dla usługi Azure Functions 1.x](functions-host-json-v1.md).
+> Ten artykuł jest przeznaczony dla Azure Functions 2. x.  Odwołanie host.json w funkcjach 1.x, zobacz [dokumentacja pliku host.JSON dla usługi Azure Functions 1.x](functions-host-json-v1.md).
 
-Inne opcje konfiguracji aplikacji funkcji odbywa się w Twojej [ustawienia aplikacji](functions-app-settings.md).
+Inne opcje konfiguracji aplikacji funkcji są zarządzane w [ustawieniach aplikacji](functions-app-settings.md).
 
-Niektóre ustawienia host.json są używane tylko podczas uruchamiania lokalnego w [local.settings.json](functions-run-local.md#local-settings-file) pliku.
+Niektóre ustawienia pliku host. JSON są używane tylko w przypadku uruchamiania lokalnego w pliku [Local. Settings. JSON](functions-run-local.md#local-settings-file) .
 
-## <a name="sample-hostjson-file"></a>Przykładowy plik host.json
+## <a name="sample-hostjson-file"></a>Przykładowy plik host. JSON
 
-Poniższy przykład *host.json* pliki mają wszystkie możliwe opcje określone.
+W poniższych przykładowych plikach *hosta. JSON* dostępne są wszystkie możliwe opcje.
 
 ```json
 {
@@ -98,7 +98,7 @@ W poniższych sekcjach tego artykułu opisano każdą właściwość najwyższeg
 
 To ustawienie jest elementem podrzędnym [rejestrowania](#logging).
 
-Formanty [próbkowania funkcji w usłudze Application Insights](./functions-monitoring.md#configure-sampling).
+Kontroluje [funkcję próbkowania w Application Insights](./functions-monitoring.md#configure-sampling).
 
 ```json
 {
@@ -112,32 +112,32 @@ Formanty [próbkowania funkcji w usłudze Application Insights](./functions-moni
 ```
 
 > [!NOTE]
-> Próbkowanie dziennika może spowodować pewne wykonania nie są wyświetlani w bloku monitor usługi Application Insights.
+> Próbkowanie dziennika może spowodować, że niektóre wykonania nie są wyświetlane w bloku monitora Application Insights.
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
-|isEnabled|true|Włącza lub wyłącza próbkowania.| 
-|maxTelemetryItemsPerSecond|5|Rozpoczyna się progu, na które próbkowania.| 
+|isEnabled|true|Włącza lub wyłącza próbkowanie.| 
+|maxTelemetryItemsPerSecond|5|Próg, w którym rozpoczyna się próbkowanie.| 
 
-## <a name="cosmosdb"></a>bazy danych cosmos DB
+## <a name="cosmosdb"></a>cosmosDb
 
-Ustawienia konfiguracji można znaleźć w [Cosmos DB, wyzwalaczy i powiązań](functions-bindings-cosmosdb-v2.md#host-json).
+Ustawienie konfiguracji można znaleźć w [Cosmos DB wyzwalacze i powiązania](functions-bindings-cosmosdb-v2.md#host-json).
 
 ## <a name="durabletask"></a>durableTask
 
-Ustawienia konfiguracji można znaleźć w [powiązania trwałe funkcje](durable/durable-functions-bindings.md#host-json).
+Ustawienie konfiguracji można znaleźć w obszarze [powiązania dla Durable Functions](durable/durable-functions-bindings.md#host-json).
 
 ## <a name="eventhub"></a>eventHub
 
-Ustawienia konfiguracji można znaleźć w [Centrum zdarzeń wyzwalaczy i powiązań](functions-bindings-event-hubs.md#host-json). 
+Ustawienia konfiguracji można znaleźć w temacie [wyzwalacze i powiązania centrum zdarzeń](functions-bindings-event-hubs.md#host-json). 
 
-## <a name="extensions"></a>Rozszerzenia
+## <a name="extensions"></a>rozszerzenia
 
-Właściwość, która zwraca obiekt, który zawiera wszystkie ustawienia specyficzne dla powiązania, takich jak [http](#http) i [eventHub](#eventhub).
+Właściwość zwracająca obiekt, który zawiera wszystkie ustawienia specyficzne dla powiązania, takie jak [http](#http) i [eventHub](#eventhub).
 
 ## <a name="functions"></a>— funkcje
 
-Lista funkcji, które uruchamia hosta zadania. Pusta tablica oznacza, że uruchamianie wszystkich funkcji. Przeznaczony do użytku tylko wtedy, gdy [uruchamiane lokalnie](functions-run-local.md). W aplikacji funkcji na platformie Azure, należy zamiast tego wykonaj czynności opisane w [jak wyłączyć funkcje w usłudze Azure Functions](disable-function.md) wyłączenie określonych funkcji, a nie przy użyciu tego ustawienia.
+Lista funkcji uruchomionych przez hosta zadań. Pusta tablica oznacza uruchamianie wszystkich funkcji. Przeznaczone do użytku tylko w przypadku [uruchamiania lokalnego](functions-run-local.md). W aplikacjach funkcji na platformie Azure zamiast tego należy wykonać kroki opisane w temacie [Jak wyłączyć funkcje w Azure Functions](disable-function.md) , aby wyłączyć określone funkcje zamiast używać tego ustawienia.
 
 ```json
 {
@@ -147,7 +147,7 @@ Lista funkcji, które uruchamia hosta zadania. Pusta tablica oznacza, że urucha
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-Wskazuje wartość limitu czasu dla wszystkich funkcji. Bez użycia serwera planu zużycie prawidłowy zakres to od 1 sekundy do 10 minut, a wartość domyślna to 5 minut. W przypadku dedykowanego planu usługi App Service nie ma limitu całkowitej, a wartość domyślna to 30 minut. Wartość `-1` wskazuje niepowiązane wykonywania.
+Wskazuje czas trwania dla wszystkich funkcji. W planie zużycia bezserwerowego prawidłowy zakres to od 1 sekundy do 10 minut, a wartość domyślna to 5 minut. W planie App Service nie ma żadnego całkowitego limitu i domyślnie zależy od wersji środowiska uruchomieniowego. W wersji 2. x domyślna wartość planu App Service to 30 minut. W wersji 1. x ma *wartość null*, co oznacza brak limitu czasu. Nie można ustawić jako nieskończonej. Jeśli nie ustawimy tej wartości jawnie, będzie ona przyjmować wartość domyślną 30 minut.
 
 ```json
 {
@@ -157,7 +157,7 @@ Wskazuje wartość limitu czasu dla wszystkich funkcji. Bez użycia serwera plan
 
 ## <a name="healthmonitor"></a>healthMonitor
 
-Ustawienia konfiguracji dla [monitor kondycji hosta](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Host-Health-Monitor).
+Ustawienia konfiguracji dla [monitora kondycji hosta](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Host-Health-Monitor).
 
 ```
 {
@@ -173,21 +173,21 @@ Ustawienia konfiguracji dla [monitor kondycji hosta](https://github.com/Azure/az
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
-|enabled|true|Określa, czy ta funkcja jest włączona. | 
-|healthCheckInterval|10 sekund|Sprawdza, czy odstęp czasu między kondycji tle okresowe. | 
-|healthCheckWindow|2 minuty|Przesuwającego się okna czasowego używane w połączeniu z `healthCheckThreshold` ustawienie.| 
-|healthCheckThreshold|6|Maksymalna liczba prób kontrola kondycji może zakończyć się niepowodzeniem przed odtwarzanie hosta jest inicjowana.| 
-|counterThreshold|0.80|Próg, w którym licznik wydajności będą uznawane za złej kondycji.| 
+|enabled|true|Określa, czy funkcja jest włączona. | 
+|healthCheckInterval|10 sekund|Przedział czasu między okresowymi kontrolami kondycji w tle. | 
+|healthCheckWindow|2 minuty|Przedział czasu, który jest używany w połączeniu `healthCheckThreshold` z ustawieniem.| 
+|healthCheckThreshold|6|Maksymalna liczba przypadków, w których Sprawdzenie kondycji może zakończyć się niepowodzeniem przed zainicjowaniem odtwarzania hosta.| 
+|counterThreshold|0,80|Próg, w którym licznik wydajności będzie traktowany jako w złej kondycji.| 
 
 ## <a name="http"></a>http
 
-Ustawienia konfiguracji można znaleźć w [http wyzwalaczy i powiązań](functions-bindings-http-webhook.md).
+Ustawienia konfiguracji można znaleźć w tematach [wyzwalacze i powiązania HTTP](functions-bindings-http-webhook.md).
 
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
-## <a name="logging"></a>Rejestrowanie
+## <a name="logging"></a>rejestrować
 
-Kontroluje zachowania rejestrowania aplikacji funkcji, łącznie z usługi Application Insights.
+Steruje zachowaniem rejestrowania aplikacji funkcji, w tym Application Insights.
 
 ```json
 "logging": {
@@ -207,14 +207,14 @@ Kontroluje zachowania rejestrowania aplikacji funkcji, łącznie z usługi Appli
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------|
-|fileLoggingMode|debugOnly|Określa, jaki poziom rejestrowania w pliku jest włączone.  Dostępne są opcje `never`, `always`, `debugOnly`. |
-|logLevel|Nie dotyczy|Obiekt, który definiuje kategoria dziennika filtrowania dla funkcji w aplikacji. W wersji 2.x następuje układ platformy ASP.NET Core w celu filtrowania kategorii dziennika. Dzięki temu można filtrować rejestrowania dla określonych funkcji. Aby uzyskać więcej informacji, zobacz [filtrowanie dziennika](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) w dokumentacji platformy ASP.NET Core. |
+|fileLoggingMode|debugOnly|Określa, jaki poziom rejestrowania plików jest włączony.  Dostępne opcje `never`to `always`, `debugOnly`,. |
+|logLevel|Nie dotyczy|Obiekt, który definiuje filtrowanie kategorii dzienników dla funkcji w aplikacji. Wersja 2. x jest zgodna z układem ASP.NET Core dla filtrowania kategorii dzienników. Pozwala to na filtrowanie rejestrowania dla określonych funkcji. Aby uzyskać więcej informacji, zobacz [filtrowanie dzienników](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) w dokumentacji ASP.NET Core. |
 |console|Nie dotyczy| [console](#console) ustawień rejestrowania. |
-|applicationInsights|Nie dotyczy| [ApplicationInsights](#applicationinsights) ustawienie. |
+|applicationInsights|Nie dotyczy| Ustawienie [applicationInsights](#applicationinsights) . |
 
 ## <a name="console"></a>console
 
-To ustawienie jest elementem podrzędnym [rejestrowania](#logging). Kontroluje konsoli rejestrowania nie w trybie debugowania.
+To ustawienie jest elementem podrzędnym [rejestrowania](#logging). Kontroluje Rejestrowanie konsoli, gdy nie jest w trybie debugowania.
 
 ```json
 {
@@ -232,21 +232,21 @@ To ustawienie jest elementem podrzędnym [rejestrowania](#logging). Kontroluje k
 |---------|---------|---------| 
 |isEnabled|false|Włącza lub wyłącza rejestrowanie konsoli.| 
 
-## <a name="queues"></a>kolejki
+## <a name="queues"></a>tworzone
 
-Ustawienia konfiguracji można znaleźć w [magazynu kolejki wyzwalaczy i powiązań](functions-bindings-storage-queue.md#host-json).  
+Ustawienia konfiguracji można znaleźć w temacie [wyzwalacze i powiązania kolejki magazynu](functions-bindings-storage-queue.md#host-json).  
 
 ## <a name="sendgrid"></a>sendGrid
 
-Ustawienia konfiguracji można znaleźć w [SendGrid wyzwalaczy i powiązań](functions-bindings-sendgrid.md#host-json).
+Ustawienie konfiguracji można znaleźć w [SendGrid wyzwalaczach i powiązaniach](functions-bindings-sendgrid.md#host-json).
 
 ## <a name="servicebus"></a>serviceBus
 
-Ustawienia konfiguracji można znaleźć w [usługi Service Bus wyzwalaczy i powiązań](functions-bindings-service-bus.md#host-json).
+Ustawienie konfiguracji można znaleźć w [Service Bus wyzwalacze i powiązania](functions-bindings-service-bus.md#host-json).
 
-## <a name="singleton"></a>pojedyncze
+## <a name="singleton"></a>pojedynczego
 
-Ustawienia konfiguracji dla pojedynczego wystąpienia zachowanie blokad. Aby uzyskać więcej informacji, zobacz [problem w usłudze GitHub o obsłudze pojedyncze](https://github.com/Azure/azure-webjobs-sdk-script/issues/912).
+Ustawienia konfiguracji dla zachowania pojedynczej blokady. Aby uzyskać więcej informacji, zobacz [temat problem z usługą GitHub dotyczący pojedynczej pomocy technicznej](https://github.com/Azure/azure-webjobs-sdk-script/issues/912).
 
 ```json
 {
@@ -262,19 +262,19 @@ Ustawienia konfiguracji dla pojedynczego wystąpienia zachowanie blokad. Aby uzy
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
-|lockPeriod|00:00:15|Okres blokady poziomu funkcji są pobierane dla. Blokady automatycznego odnawiania.| 
-|listenerLockPeriod|00:01:00|Odbiornik blokady są pobierane dla okresu.| 
-|listenerLockRecoveryPollingInterval|00:01:00|Przedział czasu, używane do odzyskania blokady odbiornika, jeśli nie można pobrać blokady odbiornika przy uruchamianiu.| 
-|lockAcquisitionTimeout|00:01:00|Maksymalna ilość czasu, środowisko uruchomieniowe podejmie próbę uzyskania blokady.| 
-|lockAcquisitionPollingInterval|Nie dotyczy|Interwał między próbami pozyskiwania blokady.| 
+|lockPeriod|00:00:15|Okres, w którym są wykonywane blokady poziomu funkcji. Blokady autorenew.| 
+|listenerLockPeriod|00:01:00|Okres, w którym są wykonywane blokady odbiornika.| 
+|listenerLockRecoveryPollingInterval|00:01:00|Przedział czasu używany do odzyskiwania blokady odbiornika, jeśli nie można uzyskać blokady odbiornika podczas uruchamiania.| 
+|lockAcquisitionTimeout|00:01:00|Maksymalny czas, przez jaki środowisko uruchomieniowe podejmie próbę uzyskania blokady.| 
+|lockAcquisitionPollingInterval|Nie dotyczy|Interwał między kolejnymi próbami przejęcia blokady.| 
 
 ## <a name="version"></a>version
 
-Ciąg wersji `"version": "2.0"` jest wymagana dla aplikacji funkcji, który jest przeznaczony dla środowiska uruchomieniowego w wersji 2.
+Ciąg `"version": "2.0"` wersji jest wymagany dla aplikacji funkcji, która jest przeznaczona dla środowiska uruchomieniowego v2.
 
 ## <a name="watchdirectories"></a>watchDirectories
 
-Zbiór [udostępnionych katalogów kodu](functions-reference-csharp.md#watched-directories) powinny być monitorowane zmian.  Zapewnia, że po zmianie kodu w tych katalogach zmiany są wykrywane przez funkcje.
+Zestaw [udostępnionych katalogów kodu](functions-reference-csharp.md#watched-directories) , które powinny być monitorowane pod kątem zmian.  Zapewnia, że gdy kod w tych katalogach zostanie zmieniony, zmiany są pobierane przez funkcje.
 
 ```json
 {
@@ -284,7 +284,7 @@ Zbiór [udostępnionych katalogów kodu](functions-reference-csharp.md#watched-d
 
 ## <a name="manageddependency"></a>managedDependency
 
-Zależność zarządzanych jest funkcja w wersji zapoznawczej, która jest obecnie obsługiwane tylko za pomocą programu PowerShell oparta na funkcjach. Dzięki temu zależności, które mają być automatycznie zarządzane przez usługę. Gdy właściwość włączone ma wartość true, [requirements.psd1](functions-reference-powershell.md#dependency-management) plik zostanie przetworzony. Zależności zostanie zaktualizowany, gdy są zwalniane, wszystkie wersje pomocnicze.
+Zależność zarządzana to funkcja w wersji zapoznawczej, która jest obecnie obsługiwana tylko w przypadku funkcji opartych na programie PowerShell. Umożliwia automatyczne zarządzanie zależnościami przez usługę. Gdy właściwość enabled ma wartość true, plik Requirements [. psd1](functions-reference-powershell.md#dependency-management) zostanie przetworzony. Zależności zostaną zaktualizowane, gdy zostaną wydane jakiekolwiek wersje pomocnicze.
 
 ```json
 {
@@ -294,10 +294,10 @@ Zależność zarządzanych jest funkcja w wersji zapoznawczej, która jest obecn
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się, jak można zaktualizować pliku host.json](functions-reference.md#fileupdate)
+> [Informacje o aktualizowaniu pliku host. JSON](functions-reference.md#fileupdate)
 
 > [!div class="nextstepaction"]
-> [Wyświetlane ustawienia globalne w zmiennych środowiskowych](functions-app-settings.md)
+> [Zobacz ustawienia globalne w zmiennych środowiskowych](functions-app-settings.md)

@@ -1,6 +1,6 @@
 ---
-title: Samouczek dotyczący architektury REST przy użyciu usługi Azure Relay | Dokumentacja firmy Microsoft
-description: Tworzenie prostej aplikacji hosta usługi Azure Service Bus Relay, która uwidacznia interfejs REST.
+title: Samouczek REST z użyciem Azure Relay | Microsoft Docs
+description: Utwórz prostą aplikację hosta przekaźnika Azure Service Bus, która uwidacznia Interfejs REST.
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 4ed45e1ed18ad630831772997b1fc150882731bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e988724f842ff12cd599eba95c31006fe208fad
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62123403"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68422891"
 ---
-# <a name="azure-wcf-relay-rest-tutorial"></a>Samouczek dotyczący usługi Azure WCF Relay REST
-W tym samouczku opisano, jak utworzyć prostą aplikację hosta przekaźnika usługi Azure, która uwidacznia interfejs REST. Interfejs REST umożliwia klientowi sieci Web, takiemu jak przeglądarka sieci Web, uzyskiwanie dostępu do interfejsów API usługi Service Bus za pomocą żądań HTTP.
+# <a name="azure-wcf-relay-rest-tutorial"></a>Samouczek REST usługi Azure WCF Relay
+W tym samouczku opisano sposób tworzenia prostej aplikacji hosta Azure Relay, która uwidacznia Interfejs REST. Interfejs REST umożliwia klientowi sieci Web, takiemu jak przeglądarka sieci Web, uzyskiwanie dostępu do interfejsów API usługi Service Bus za pomocą żądań HTTP.
 
-W tym samouczku użyto usługi Windows Communication Foundation (WCF) modelu programowania interfejsu REST do utworzenia usługi REST w usłudze Azure Relay. Aby uzyskać więcej informacji, zobacz [Model programowania interfejsu REST usługi WCF](/dotnet/framework/wcf/feature-details/wcf-web-http-programming-model) oraz [Projektowanie i implementowanie usług](/dotnet/framework/wcf/designing-and-implementing-services) w dokumentacji usługi WCF.
+W tym samouczku jest używany model programowania REST programu Windows Communication Foundation (WCF) do konstruowania usługi REST na Azure Relay. Aby uzyskać więcej informacji, zobacz [Model programowania interfejsu REST usługi WCF](/dotnet/framework/wcf/feature-details/wcf-web-http-programming-model) oraz [Projektowanie i implementowanie usług](/dotnet/framework/wcf/designing-and-implementing-services) w dokumentacji usługi WCF.
 
 W tym samouczku wykonasz następujące kroki:
 
 > [!div class="checklist"]
-> * Tworzenie przestrzeni nazw usługi Relay.
-> * Definiowanie kontraktu usługi WCF opartego na protokole REST
-> * Implementowanie kontraktu opartego na protokole REST programu WCF
-> * Hostowanie i uruchamianie usługi WCF opartego na protokole REST
+> * Utwórz przestrzeń nazw przekaźnika.
+> * Definiowanie kontraktu usługi WCF opartego na interfejsie REST
+> * Implementowanie kontraktu WCF opartego na protokole REST
+> * Hostowanie i uruchamianie usługi WCF opartej na protokole REST
 > * Uruchamianie i testowanie usługi
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -43,17 +43,17 @@ Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących 
 - [Program Visual Studio 2015 lub nowszy](https://www.visualstudio.com). W przykładach znajdujących się w tym samouczku używany jest program Visual Studio 2017.
 - Zestaw Azure SDK dla platformy .NET. Zainstaluj go ze [strony pobierania zestawu SDK](https://azure.microsoft.com/downloads/).
 
-## <a name="create-a-relay-namespace"></a>Tworzenie przestrzeni nazw usługi Relay
+## <a name="create-a-relay-namespace"></a>Tworzenie przestrzeni nazw przekaźnika
 
 Aby rozpocząć korzystanie z funkcji przekazywania na platformie Azure, należy najpierw utworzyć przestrzeń nazw usługi. Przestrzeń nazw zapewnia kontener określania zakresu na potrzeby adresowania zasobów platformy Azure w aplikacji. Postępuj zgodnie z [instrukcjami podanymi w tym miejscu](relay-create-namespace-portal.md), aby utworzyć przestrzeń nazw przekazywania.
 
-## <a name="define-a-rest-based-wcf-service-contract-to-use-with-azure-relay"></a>Definiowanie kontraktu usługi WCF opartego na protokole REST za pomocą usługi Azure Relay
+## <a name="define-a-rest-based-wcf-service-contract-to-use-with-azure-relay"></a>Definiowanie kontraktu usługi WCF opartego na interfejsie REST do użycia z usługą Azure Relay
 
-Podczas tworzenia usługi WCF opartego na interfejsie REST należy zdefiniować kontrakt. Kontrakt określa operacje obsługiwane przez hosta. Operacja usługi może być rozumiana jako metoda usługi sieci Web. Kontrakty są tworzone przez definiowanie interfejsu C++, C# lub Visual Basic. Każda metoda w interfejsie odpowiada określonej operacji usługi. W odniesieniu do każdego interfejsu należy zastosować atrybut [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute), a w odniesieniu do każdej operacji należy zastosować atrybut [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute). Jeśli metoda w interfejsie z atrybutem [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) nie ma atrybutu [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute), nie jest uwidaczniana. Kod używany do wykonywania tych zadań podano w przykładzie zamieszczonym na końcu procedury.
+Podczas tworzenia usługi w stylu REST WCF należy zdefiniować kontrakt. Kontrakt określa operacje obsługiwane przez hosta. Operacja usługi może być rozumiana jako metoda usługi sieci Web. Kontrakty są tworzone przez definiowanie interfejsu C++, C# lub Visual Basic. Każda metoda w interfejsie odpowiada określonej operacji usługi. W odniesieniu do każdego interfejsu należy zastosować atrybut [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute), a w odniesieniu do każdej operacji należy zastosować atrybut [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute). Jeśli metoda w interfejsie z atrybutem [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) nie ma atrybutu [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute), nie jest uwidaczniana. Kod używany do wykonywania tych zadań podano w przykładzie zamieszczonym na końcu procedury.
 
-Główną różnicą między kontraktu usługi WCF i kontraktu opartego na interfejsie REST jest dodanie właściwości do [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute): [WebGetAttribute](/dotnet/api/system.servicemodel.web.webgetattribute). Ta właściwość umożliwia mapowanie metody w interfejsie na metodę po drugiej stronie interfejsu. W tym przykładzie użyto [WebGetAttribute](/dotnet/api/system.servicemodel.web.webgetattribute) atrybutu, aby powiązać metodę z metodą GET protokołu HTTP. Dzięki temu usługa Service Bus może dokładnie pobierać i interpretować polecenia wysyłane do interfejsu.
+Główną różnicą między kontraktem programu WCF a kontraktem w stylu REST jest dodanie właściwości do [atrybutu OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute): [WebGetAttribute](/dotnet/api/system.servicemodel.web.webgetattribute). Ta właściwość umożliwia mapowanie metody w interfejsie na metodę po drugiej stronie interfejsu. Ten przykład używa atrybutu [WebGetAttribute](/dotnet/api/system.servicemodel.web.webgetattribute) do łączenia metody z HTTP GET. Dzięki temu Service Bus dokładne pobieranie i interpretowanie poleceń wysyłanych do interfejsu.
 
-### <a name="to-create-a-contract-with-an-interface"></a>Aby utworzyć kontrakt przy użyciu interfejsu
+### <a name="to-create-a-contract-with-an-interface"></a>Aby utworzyć kontrakt z interfejsem
 
 1. Otwórz program Visual Studio jako administrator, klikając prawym przyciskiem myszy ikonę programu w menu **Start**, a następnie klikając polecenie **Uruchom jako administrator**.
 2. Utwórz nowy projekt aplikacji konsoli. Kliknij menu **Plik** i wybierz pozycję **Nowy**, a następnie wybierz pozycję **Projekt**. W oknie dialogowym **Nowy projekt** kliknij pozycję **Visual C#** , wybierz szablon **Aplikacja konsolowa** i nadaj mu nazwę **ImageListener**. Użyj domyślnej **lokalizacji**. Kliknij przycisk **OK**, aby utworzyć projekt.
@@ -73,7 +73,7 @@ Główną różnicą między kontraktu usługi WCF i kontraktu opartego na inter
     using System.IO;
     ```
    
-    [System.ServiceModel](/dotnet/api/system.servicemodel) jest przestrzenią nazw umożliwiającą programowy dostęp do podstawowych funkcji usługi WCF. Przekaźnik WCF używa wielu obiektów i atrybutów usługi WCF do definiowania kontraktów usług. Ta przestrzeń nazw są używane w większości aplikacji przekaźnika. Podobnie [System.ServiceModel.Channels](/dotnet/api/system.servicemodel.channels) pomaga zdefiniować kanał będący obiektem służącym do komunikacji przy użyciu usługi Azure Relay i przeglądarki sieci web klienta. Wreszcie przestrzeń nazw [System.ServiceModel.Web](/dotnet/api/system.servicemodel.web) zawiera typy umożliwiające tworzenie aplikacji sieci Web.
+    [System.ServiceModel](/dotnet/api/system.servicemodel) jest przestrzenią nazw umożliwiającą programowy dostęp do podstawowych funkcji usługi WCF. WCF Relay używa wielu obiektów i atrybutów WCF do definiowania kontraktów usługi. Ta przestrzeń nazw jest używana w większości aplikacji do przekazywania. Podobnie [System. ServiceModel. Channels](/dotnet/api/system.servicemodel.channels) ułatwia zdefiniowanie kanału, który jest obiektem, za pomocą którego komunikuje się za pomocą Azure Relay i przeglądarki sieci Web klienta. Wreszcie przestrzeń nazw [System.ServiceModel.Web](/dotnet/api/system.servicemodel.web) zawiera typy umożliwiające tworzenie aplikacji sieci Web.
 7. Zmień nazwę przestrzeni nazw `ImageListener` na **Microsoft.ServiceBus.Samples**.
    
     ```csharp
@@ -108,18 +108,18 @@ Główną różnicą między kontraktu usługi WCF i kontraktu opartego na inter
     }
     ```
     
-    Wykonując tak umożliwia usługi przekazywania żądań HTTP GET trasy do `GetImage`i translację wartości zwracanych metody `GetImage` na odpowiedzi metody GETRESPONSE protokołu HTTP. W dalszej części tego samouczka użyjesz przeglądarki sieci Web, aby uzyskać dostęp do tej metody i wyświetlić obraz w przeglądarce.
+    Dzięki temu usługa przekazywania może kierować żądania HTTP GET do `GetImage`i przetłumaczać `GetImage` wartości zwracane do odpowiedzi HTTP GetResponse. W dalszej części tego samouczka użyjesz przeglądarki sieci Web, aby uzyskać dostęp do tej metody i wyświetlić obraz w przeglądarce.
 11. Bezpośrednio po definicji `IImageContract` zadeklaruj kanał dziedziczący z interfejsów `IImageContract` i `IClientChannel`.
     
     ```csharp
     public interface IImageChannel : IImageContract, IClientChannel { }
     ```
     
-    Kanał jest obiektem usługi WCF, za pomocą którego usługa i klient przekazują do siebie informacje. Później należy utworzyć kanał w aplikacji hosta. Usługa Azure Relay następnie użyje tego kanału do przekazywania żądań HTTP GET z przeglądarki, aby Twoje **GetImage** implementacji. Przekaźnik używa również kanał do wykonania **GetImage** zwracają wartość i przekształca ją na wartość metody GETRESPONSE protokołu HTTP w przeglądarce klienta.
+    Kanał jest obiektem usługi WCF, za pomocą którego usługa i klient przekazują do siebie informacje. Później utworzysz kanał w aplikacji hosta. Azure Relay następnie używa tego kanału do przekazywania żądań HTTP GET z przeglądarki do implementacji metody **GetImage** . Przekaźnik korzysta również z kanału, aby pobrać wartość  zwracaną GetImage i przetłumaczyć ją na http GetResponse dla przeglądarki klienta.
 12. W menu **Kompiluj** kliknij pozycję **Kompiluj rozwiązanie**, aby potwierdzić dokładność pracy wykonanej do tej pory.
 
 ### <a name="example"></a>Przykład
-Poniższy kod przedstawia podstawowy interfejs definiujący kontrakt przekaźnika WCF.
+Poniższy kod przedstawia podstawowy interfejs, który definiuje kontrakt WCF Relay.
 
 ```csharp
 using System;
@@ -153,9 +153,9 @@ namespace Microsoft.ServiceBus.Samples
 ```
 
 ## <a name="implement-the-rest-based-wcf-service-contract"></a>Implementowanie kontraktu usługi WCF opartego na protokole REST
-Tworzenie przekaźnika WCF opartego na interfejsie REST usługi wymaga, należy najpierw utworzyć kontrakt definiowany przy użyciu interfejsu. Następnym krokiem jest zaimplementowanie interfejsu. Jest to związane z utworzeniem klasy o nazwie **ImageService** implementującej interfejs **IImageContract** zdefiniowany przez użytkownika. Po zaimplementowaniu kontraktu należy skonfigurować interfejs przy użyciu pliku App.config. Plik konfiguracji zawiera niezbędne informacje o aplikacji, takie jak nazwa usługi, Nazwa kontraktu i typ protokołu używanego do komunikacji z usługą przekazywania. Kod używany do wykonywania tych zadań podano w przykładzie zamieszczonym po procedurze.
+Tworzenie usługi WCF Relay w stylu REST wymaga najpierw utworzenia kontraktu, który jest definiowany przy użyciu interfejsu. Następnym krokiem jest zaimplementowanie interfejsu. Jest to związane z utworzeniem klasy o nazwie **ImageService** implementującej interfejs **IImageContract** zdefiniowany przez użytkownika. Po zaimplementowaniu kontraktu należy skonfigurować interfejs przy użyciu pliku App.config. Plik konfiguracji zawiera niezbędne informacje dotyczące aplikacji, takie jak nazwa usługi, nazwa kontraktu i typ protokołu, który jest używany do komunikacji z usługą przekaźnika. Kod używany do wykonywania tych zadań podano w przykładzie zamieszczonym po procedurze.
 
-Podobnie jak w poprzednich krokach jest bardzo mała różnica między implementacją kontraktu opartego na interfejsie REST i kontraktu usługi WCF Relay.
+Zgodnie z poprzednimi krokami istnieje bardzo mała różnica między implementacją kontraktu w stylu REST i kontraktem WCF Relay.
 
 ### <a name="to-implement-a-rest-style-service-bus-contract"></a>Aby zaimplementować kontrakt usługi Service Bus oparty na interfejsie REST
 1. Utwórz nową klasę o nazwie **ImageService** bezpośrednio po definicji interfejsu **IImageContract**. Klasa **ImageService** implementuje interfejs **IImageContract**.
@@ -175,12 +175,12 @@ Podobnie jak w poprzednich krokach jest bardzo mała różnica między implement
     }
     ```
    
-    Jak wspomniano wcześniej, ta przestrzeń nazw nie jest tradycyjną przestrzenią nazw. Zamiast tego jest częścią architektury usługi WCF, która identyfikuje kontrakt. Aby uzyskać więcej informacji, zobacz [nazwy kontraktów danych](https://msdn.microsoft.com/library/ms731045.aspx) artykułu w dokumentacji platformy WCF.
+    Jak wspomniano wcześniej, ta przestrzeń nazw nie jest tradycyjną przestrzenią nazw. Zamiast tego jest częścią architektury usługi WCF, która identyfikuje kontrakt. Aby uzyskać więcej informacji, zobacz artykuł [nazwy kontraktów danych](https://msdn.microsoft.com/library/ms731045.aspx) w dokumentacji usługi WCF.
 3. Dodaj obraz jpg do projektu.  
    
     Jest to obraz, który usługa wyświetla w przeglądarce będącej odbiorcą. Kliknij prawym przyciskiem myszy projekt i kliknij polecenie **Dodaj**. Następnie kliknij pozycję **Istniejący element**. Użyj okna dialogowego **Dodawanie istniejącego elementu**, aby przejść do odpowiedniego pliku jpg, a następnie kliknij przycisk **Dodaj**.
    
-    Podczas dodawania pliku upewnij się, że pozycja **Wszystkie pliki** jest zaznaczona na liście rozwijanej obok pola **Nazwa pliku:** . W pozostałej części tego samouczka przyjęto założenie, że nazwa obrazu to „image.jpg”. Inny plik należy zmienić nazwę obrazu, lub zmień swój kod w celu kompensacji.
+    Podczas dodawania pliku upewnij się, że pozycja **Wszystkie pliki** jest zaznaczona na liście rozwijanej obok pola **Nazwa pliku:** . W pozostałej części tego samouczka przyjęto założenie, że nazwa obrazu to „image.jpg”. Jeśli masz inny plik, musisz zmienić jego nazwę lub zmienić swój kod, aby zrekompensować.
 4. Aby upewnić się, że uruchomiona usługa może odnaleźć plik obrazu, w **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy plik obrazu, a następnie kliknij pozycję **Właściwości**. W okienku **Właściwości** ustaw opcję **Kopiuj do katalogu wyjściowego** na wartość **Kopiuj, jeśli nowszy**.
 5. Dodaj do projektu odwołanie do zestawu **System.Drawing.dll** oraz następujące skojarzone instrukcje `using`.  
    
@@ -226,7 +226,7 @@ Podobnie jak w poprzednich krokach jest bardzo mała różnica między implement
 ### <a name="to-define-the-configuration-for-running-the-web-service-on-service-bus"></a>Aby zdefiniować konfigurację uruchamiania usługi sieci Web w usłudze Service Bus
 1. W **Eksploratorze rozwiązań** kliknij dwukrotnie plik **App.config**, aby otworzyć go w edytorze programu Visual Studio.
    
-    **App.config** plik zawiera nazwę usługi, punkt końcowy (czyli lokalizację usługi Azure Relay udostępnia klientom i hostom komunikować się ze sobą) i powiązanie (typ protokołu używanego do komunikacji). Główną różnicą jest to, że skonfigurowanego punktu końcowego usługi odwołuje się do [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) powiązania.
+    Plik **App. config** zawiera nazwę usługi, punkt końcowy (czyli lokalizację Azure Relay uwidacznia się klientom i hostom, aby komunikować się ze sobą), oraz powiązanie (typ protokołu używanego do komunikacji). Główną różnicą jest to, że skonfigurowany punkt końcowy usługi odwołuje się do powiązania [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) .
 2. Element XML `<system.serviceModel>` jest elementem usługi WCF definiującym co najmniej jedną usługę. Tutaj został użyty do zdefiniowania nazwy usługi i punktu końcowego. W dolnej części elementu `<system.serviceModel>` (ale nadal w elemencie `<system.serviceModel>`) dodaj element `<bindings>` mający następującą zawartość. Definiuje ona powiązania używane w aplikacji. Można zdefiniować wiele powiązań, ale w tym samouczku definiowane jest tylko jedno.
    
     ```xml
@@ -240,7 +240,7 @@ Podobnie jak w poprzednich krokach jest bardzo mała różnica między implement
     </bindings>
     ```
    
-    Powyższy kod definiuje przekaźnika WCF [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) powiązania z **relayClientAuthenticationType** równa **Brak**. To ustawienie wskazuje, że punkt końcowy korzystający z tego powiązania nie wymaga poświadczeń klienta.
+    Poprzedni kod definiuje WCF Relay powiązanie [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) z relayClientAuthenticationTypeem  ustawionym na **none**. To ustawienie wskazuje, że punkt końcowy korzystający z tego powiązania nie wymaga poświadczeń klienta.
 3. Po elemencie `<bindings>` dodaj element `<services>`. Podobnie jak w przypadku powiązań, w pojedynczym pliku konfiguracji można zdefiniować wiele usług. Jednak w tym samouczku definiowana jest tylko jedna.
    
     ```xml
@@ -259,7 +259,7 @@ Podobnie jak w poprzednich krokach jest bardzo mała różnica między implement
     ```
    
     W tym kroku konfigurowana jest usługa korzystająca z wcześniej zdefiniowanego domyślnego powiązania **webHttpRelayBinding**. Używana jest również domyślna wartość **sbTokenProvider**, która jest definiowana w następnym kroku.
-4. Po `<services>` elementu, Utwórz `<behaviors>` elementu o następującej zawartości, zastępując "element SAS_KEY" *sygnatura dostępu współdzielonego* klucza (SAS), uzyskaną wcześniej [witrynyAzureportal] [Azure portal].
+4. Po elemencie Utwórz element o następującej zawartości, zastępując "SAS_KEY" kluczem *sygnatury dostępu* współdzielonego (SAS) uzyskanym wcześniej w [Azure Portal.][Azure portal] `<behaviors>` `<services>`
    
     ```xml
     <behaviors>
@@ -446,11 +446,11 @@ Poniższy kod przedstawia plik App.config skojarzony z usługą.
 </configuration>
 ```
 
-## <a name="host-the-rest-based-wcf-service-to-use-azure-relay"></a>Hostowanie usługi WCF opartego na interfejsie REST do użycia usługi Azure Relay
-W tym kroku opisano sposób uruchamiania usługi sieci web za pomocą aplikacji konsolowej przy użyciu przekaźnika WCF. Pełny kod napisany w tym kroku podano w przykładzie poniżej procedury.
+## <a name="host-the-rest-based-wcf-service-to-use-azure-relay"></a>Hostowanie usługi WCF opartej na protokole REST w celu używania Azure Relay
+W tym kroku opisano sposób uruchamiania usługi sieci Web przy użyciu aplikacji konsolowej z WCF Relay. Pełny kod napisany w tym kroku podano w przykładzie poniżej procedury.
 
 ### <a name="to-create-a-base-address-for-the-service"></a>Aby utworzyć podstawowy adres usługi
-1. W `Main()` deklaracji funkcji, Utwórz zmienną do przechowywania przestrzeni nazw projektu. Upewnij się zastąpić `yourNamespace` nazwą przestrzeni nazw usługi Relay, który został wcześniej utworzony.
+1. W deklaracji `Main()` funkcji Utwórz zmienną do przechowywania przestrzeni nazw projektu. Pamiętaj, aby zamienić `yourNamespace` na nazwę przestrzeni nazw przekaźnika, która została wcześniej utworzona.
    
     ```csharp
     string serviceNamespace = "yourNamespace";
@@ -574,10 +574,10 @@ Po utworzeniu rozwiązania należy wykonać następujące polecenie, aby uruchom
 2. Skopiuj i wklej adres z wiersza polecenia do przeglądarki, aby wyświetlić obraz.
 3. Po zakończeniu naciśnij klawisz **Enter** w oknie wiersza polecenia, aby zamknąć aplikację.
 
-## <a name="next-steps"></a>Kolejne kroki
-Teraz, gdy masz utworzoną aplikację, która używa usługi Azure Relay, zobacz następujące artykuły, aby dowiedzieć się więcej:
+## <a name="next-steps"></a>Następne kroki
+Teraz, gdy masz wbudowaną aplikację, która korzysta z usługi Azure Relay, zobacz następujące artykuły, aby dowiedzieć się więcej:
 
 * [Omówienie usługi Azure Relay](relay-what-is-it.md)
-* [Jak używać usługi przekaźnika WCF przy użyciu platformy .NET](relay-wcf-dotnet-get-started.md)
+* [Jak używać usługi przekaźnika WCF z platformą .NET](service-bus-relay-tutorial.md)
 
 [Azure portal]: https://portal.azure.com

@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.author: danlep
-ms.openlocfilehash: 9cd2965e64806dded0e5c688b70d07dfcd763f46
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
-ms.translationtype: HT
+ms.openlocfilehash: d2132f060076aefe6ae0eccb6d5300c78c96ece5
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68309744"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356548"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Zaufanie do zawartości w usłudze Azure Container Registry
 
@@ -174,7 +174,7 @@ Jak określono w danych wyjściowych polecenia `docker push` podczas wypychania 
 ~/.docker/trust/private
 ```
 
-Utwórz kopię zapasową klucza głównego i klucza repozytorium, kompresując jest w archiwum i przechowując je bezpiecznie w trybie offline (na przykład na urządzeniu magazynującym USB). Na przykład w powłoce Bash:
+Tworzenie kopii zapasowych kluczy głównych i repozytoriów przez ich kompresowanie w archiwum i przechowywanie ich w bezpiecznej lokalizacji. Na przykład w powłoce Bash:
 
 ```bash
 umask 077; tar -zcvf docker_private_keys_backup.tar.gz ~/.docker/trust/private; umask 022
@@ -193,9 +193,11 @@ Aby wyłączyć zaufanie do zawartości dla rejestru, przejdź do rejestru w wit
 
 ![Wyłączanie zaufania do zawartości dla rejestru w witrynie Azure Portal][content-trust-03-portal]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać dodatkowe informacje na temat zaufania zawartości, zobacz [zaufanie zawartości w programie Docker][docker-content-trust] . Mimo iż w tym artykule poruszono kilka kluczowych kwestii, zaufanie do zawartości to obszerny temat i omówiono go dogłębniej w dokumentacji platformy Docker.
+* Aby uzyskać dodatkowe informacje na temat zaufania zawartości, zobacz [zaufanie zawartości w programie Docker][docker-content-trust] . Mimo iż w tym artykule poruszono kilka kluczowych kwestii, zaufanie do zawartości to obszerny temat i omówiono go dogłębniej w dokumentacji platformy Docker.
+
+* Zapoznaj się z dokumentacją [Azure Pipelines](/azure/devops/pipelines/build/content-trust) , aby zapoznać się z przykładem używania zaufania zawartości podczas kompilowania i wypychania obrazu platformy Docker.
 
 <!-- IMAGES> -->
 [content-trust-01-portal]: ./media/container-registry-content-trust/content-trust-01-portal.png
