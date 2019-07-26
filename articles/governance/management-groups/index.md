@@ -7,12 +7,12 @@ ms.service: governance
 ms.date: 04/22/2019
 ms.author: rithorn
 ms.topic: overview
-ms.openlocfilehash: 1958a829df2643bd218d4e8d7f6dd563b5b395e8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 6ca8351e7294c5a9cdd9f594eb4524d04a27b5c1
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237166"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516986"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organizowanie zasobów przy użyciu grup zarządzania platformy Azure
 
@@ -98,7 +98,7 @@ Na poniższym wykresie przedstawiono listę ról i obsługiwane akcje na grupach
 |Czytelnik                      |        |        |        |        |               |               | X     |
 |Czytelnik grupy zarządzania*                  |        |        |        |        |               |               | X     |
 |Współautor zasad zasobów |        |        |        |        |               | X             |       |
-|Administrator dostępu użytkowników   |        |        |        |        | X             |               |       |
+|Administrator dostępu użytkowników   |        |        |        |        | X             | X             |       |
 
 *: Role Współautor grupy zarządzania i Czytelnik grupy zarządzania zezwalają użytkownikom na wykonywanie tych akcji tylko dla zakresu grupy zarządzania.  
 **: Przypisania ról w głównej grupie zarządzania nie są wymagane, aby przenieść subskrypcję lub grupę zarządzania do tej grupy lub z niej.  Aby uzyskać szczegółowe informacje o przenoszeniu elementów w hierarchii, zobacz [Zarządzanie zasobami przy użyciu grup zarządzania](manage.md).

@@ -6,7 +6,7 @@ metadata:
   description: 'Dowiedz się, jak za pomocą interfejsu API rozpoznawania twarzy wykrywać i identyfikować twarze na obrazach oraz zwracać informacje o twarzy. W samouczkach wyjaśniono, jak tworzyć aplikacje korzystające z interfejsu API.'
   services: cognitive-services
   author: PatrickFarley
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: face-api
   ms.tgt_pltfrm: na

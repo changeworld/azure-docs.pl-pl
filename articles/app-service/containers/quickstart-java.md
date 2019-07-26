@@ -1,5 +1,5 @@
 ---
-title: Tworzenie aplikacji internetowej Java w systemie Linux — Azure App Service
+title: Tworzenie aplikacji sieci Web Java w systemie Linux — Azure App Service
 description: W ramach tego podręcznika Szybki start wdrożysz swoją pierwszą aplikację Hello world w języku Java w usłudze Azure App Service w systemie Linux w ciągu kilku minut.
 keywords: Azure, App Service, Web App, Linux, Java, Maven, szybki start
 services: app-service\web
@@ -15,13 +15,13 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.author: msangapu
-ms.custom: mvc
-ms.openlocfilehash: 30689e05a2567646ff541818dc68a90c13da7a56
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.custom: mvc, seo-java-july2019
+ms.openlocfilehash: f42cb361bbef028aa2e9afec87972a907c048a1b
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297254"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68514070"
 ---
 # <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>Szybki start: tworzenie aplikacji w języku Java w usłudze App Service w systemie Linux
 
@@ -150,7 +150,7 @@ az group delete --name <your resource group name; for example: helloworld-155840
 
 Wykonanie tego polecenia może potrwać około minutę.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Samouczek: Aplikacja Java Enterprise z PostgreSQL](tutorial-java-enterprise-postgresql-app.md)

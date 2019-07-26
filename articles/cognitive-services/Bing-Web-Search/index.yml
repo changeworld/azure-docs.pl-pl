@@ -7,7 +7,7 @@ metadata:
   description: 'Dowiedz się, jak za pomocą interfejsu API wyszukiwania w Internecie Bing wyszukiwać strony internetowe, obrazy, wideo, wiadomości i inne elementy w Internecie.'
   services: cognitive-services
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-web-search
   ms.tgt_pltfrm: na

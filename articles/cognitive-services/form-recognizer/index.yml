@@ -6,7 +6,7 @@ metadata:
   description: 'Dowiedz się, jak za pomocą rozpoznawania formularzy inteligentnie wyodrębniać dane klucz-wartość z dokumentów formularzy.'
   services: cognitive-services
   author: PatrickFarley
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: forms-recognizer
   ms.tgt_pltfrm: na

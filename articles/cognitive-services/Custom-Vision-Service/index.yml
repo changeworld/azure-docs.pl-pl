@@ -6,7 +6,7 @@ metadata:
   description: 'Dowiedz się, jak tworzyć, wdrażać i ulepszać klasyfikacje obrazów niestandardowych. W samouczkach wyjaśniono, jak tworzyć aplikacje korzystające z interfejsu API.'
   services: cognitive-services
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: custom-vision
   ms.tgt_pltfrm: na

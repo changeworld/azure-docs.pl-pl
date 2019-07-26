@@ -6,7 +6,7 @@ metadata:
   title: 'Language Understanding (LUIS) — samouczki, przewodniki Szybki start, dokumentacja interfejsu API'
   description: 'Dowiedz się, jak używać usługi Language Understanding, aby umożliwić aplikacji rozpoznawanie poleceń wydawanych naturalnymi słowami.'
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.tgt_pltfrm: na
   ms.devlang: na

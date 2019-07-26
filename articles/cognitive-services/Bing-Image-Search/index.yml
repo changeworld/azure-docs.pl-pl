@@ -7,7 +7,7 @@ metadata:
   description: 'Dowiedz się, jak używać interfejsu API wyszukiwania obrazów Bing do przeszukiwania Internetu pod kątem obrazów.'
   services: cognitive-services
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-image-search
   ms.tgt_pltfrm: na

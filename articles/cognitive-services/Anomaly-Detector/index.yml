@@ -6,7 +6,7 @@ metadata:
   description: 'Interfejs API narzędzia do wykrywania anomalii umożliwia monitorowanie danych w czasie i wykrywanie anomalii za pomocą uczenia maszynowego. Uzyskaj wgląd w dane niezależnie od ilości, branży czy scenariusza.'
   services: cognitive-services
   author: aahill
-  manager: cgronlun
+  manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
   ms.tgt_pltfrm: na

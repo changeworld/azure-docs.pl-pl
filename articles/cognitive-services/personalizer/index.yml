@@ -6,7 +6,7 @@ metadata:
   title: 'Personalizacja — samouczki, przewodniki Szybki start i dokumentacja interfejsu API'
   description: 'Dowiedz się, jak za pomocą usługi Personalizacja umożliwić aplikacji wybranie najlepszego środowiska dla użytkowników na podstawie ich zachowania w czasie rzeczywistym.'
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.tgt_pltfrm: na
   ms.devlang: na

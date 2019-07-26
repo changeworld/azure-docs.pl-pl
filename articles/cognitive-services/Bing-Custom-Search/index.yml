@@ -6,7 +6,7 @@ metadata:
   description: 'Dowiedz się, jak utworzyć środowisko wyszukiwania niestandardowego za pomocą portalu i interfejsu API wyszukiwania niestandardowego Bing'
   services: cognitive-services
   author: v-deken
-  manager: cgronlun
+  manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
   ms.tgt_pltfrm: na

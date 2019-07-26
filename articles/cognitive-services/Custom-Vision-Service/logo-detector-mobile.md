@@ -4,22 +4,22 @@ titlesuffix: Azure Cognitive Services
 description: W tym samouczku zostanie przedstawiona przykładowa aplikacja, która używa usługi Azure Custom Vision jako części scenariusza wykrywania logo. Dowiedz się, jak usługa Custom Vision wraz z innymi składnikami jest używana do dostarczenia całościowej aplikacji.
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: b4b10591069b71a4e70769f5bdcd6149768c5007
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: ab3dc89b90636c90564803c6a91350a75c3181cd
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604021"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68517091"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Samouczek: rozpoznawanie logo usług platformy Azure na obrazach z kamery
 
-W tym samouczku poznasz przykładową aplikację, która używa usługi Azure Custom Vision jako części większego scenariusza. Aplikacja sztucznej inteligencji aprowizacji wizualnej, aplikacja Xamarin.Forms dla platform mobilnych, analizuje obrazy logo usług platformy Azure z kamery, a następnie wdraża rzeczywiste usługi na koncie użytkownika platformy Azure. Tutaj dowiesz się, jak używa ona usługi Custom Vision we współpracy z innymi składnikami w celu dostarczenia przydatnej całościowej aplikacji. Scenariusz całej aplikacji można uruchomić samodzielnie lub można wykonać tylko część Custom Vision instalacji i Poznaj, jak aplikacja używa go.
+W tym samouczku poznasz przykładową aplikację, która używa usługi Azure Custom Vision jako części większego scenariusza. Aplikacja sztucznej inteligencji aprowizacji wizualnej, aplikacja Xamarin.Forms dla platform mobilnych, analizuje obrazy logo usług platformy Azure z kamery, a następnie wdraża rzeczywiste usługi na koncie użytkownika platformy Azure. Tutaj dowiesz się, jak używa ona usługi Custom Vision we współpracy z innymi składnikami w celu dostarczenia przydatnej całościowej aplikacji. Możesz samodzielnie uruchomić cały scenariusz aplikacji lub wykonać tylko Custom Vision część instalacji i zbadać, w jaki sposób aplikacja korzysta z niej.
 
 Ten samouczek przedstawia sposób wykonania następujących czynności:
 
@@ -32,7 +32,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [Program Visual Studio 2017 lub nowszego](https://www.visualstudio.com/downloads/)
+- [Program Visual Studio 2017 lub nowszy](https://www.visualstudio.com/downloads/)
 - Obciążenia na platformie Xamarin dla programu Visual Studio (zobacz [Instalacja platformy Xamarin](https://docs.microsoft.com/xamarin/cross-platform/get-started/installation/windows))
 - Emulator systemu iOS lub Android dla programu Visual Studio
 - [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) (opcjonalnie)
@@ -51,7 +51,7 @@ Zaloguj się do [witryny internetowej usługi Custom Vision](https://customvisio
 
 Następnie wytrenuj algorytm wykrywania logo, przekazując obrazy logo usług platformy Azure i tagując je ręcznie. Repozytorium AIVisualProvision zawiera zbiór obrazów do szkolenia, którego można użyć. W witrynie internetowej naciśnij przycisk **Add images (Dodaj obrazy)** znajdujący się na karcie **Training Images (Obrazy treningowe)** . Następnie przejdź do folderu **Documents/Images/Training_DataSet** repozytorium. Konieczne będzie ręczne tagowanie logo na każdym obrazie, jeśli więc tylko testujesz ten projekt, możesz chcieć przekazać tylko podzbiór obrazów. Przekaż co najmniej 15 wystąpień każdego tagu, który ma być używany.
 
-Po przekazaniu obrazów treningowych wybierz pierwszy z nich na ekranie. Zostanie wyświetlone okno znakowania. Narysuj pola i przypisz tagi do każdego logo na każdym obrazie. 
+Po przekazaniu obrazów treningowych wybierz pierwszy z nich na ekranie. Zostanie wyświetlone okno tagowania. Narysuj pola i przypisz tagi do każdego logo na każdym obrazie. 
 
 ![Tagowanie logo w witrynie internetowej usługi Custom Vision](media/azure-logo-tutorial/tag-logos.png)
 
@@ -63,13 +63,13 @@ Po otagowaniu obrazu przejdź w prawo, aby otagować następny. Po zakończeniu 
 
 ## <a name="train-the-object-detector"></a>Szkolenie detektora obiektów
 
-W okienku po lewej stronie ustaw przełącznik **Tags (Tagi)** w pozycji **Tagged (Otagowane)** , aby wyświetlić swoje obrazy. Następnie kliknij zielony przycisk w górnej części strony, aby wytrenować model. Algorytm będzie uczenie się rozpoznawać tych samych tagów w nowych obrazów. Przetestuje to również model na niektórych Twoich istniejących obrazach w celu wygenerowania ocen dokładności.
+W okienku po lewej stronie ustaw przełącznik **Tags (Tagi)** w pozycji **Tagged (Otagowane)** , aby wyświetlić swoje obrazy. Następnie kliknij zielony przycisk w górnej części strony, aby wytrenować model. Algorytm będzie szkolić, aby rozpoznać te same Tagi w nowych obrazach. Przetestuje to również model na niektórych Twoich istniejących obrazach w celu wygenerowania ocen dokładności.
 
 ![Witryna internetowa usługi Custom Vision na karcie Training Images (Obrazy szkoleniowe). Na tym zrzucie ekranu oznaczono przycisk Train (Trenuj)](media/azure-logo-tutorial/train-model.png)
 
 ## <a name="get-the-prediction-url"></a>Pobieranie adresu URL prognozy
 
-Po wytrenowaniu modelu można już zintegrować go z Twoją aplikacją. Musisz Pobierz adres URL punktu końcowego (adresu modelu wysyła kwerendy do aplikacji) i klucz prognozowania, (na przykład aby udzielić dostępu aplikacji do prognozowania żądań). Na karcie **Performance (Wydajność)** naciśnij przycisk **Prediction URL (Adres URL przewidywania)** u góry strony.
+Po wytrenowaniu modelu można już zintegrować go z Twoją aplikacją. Musisz uzyskać adres URL punktu końcowego (adres modelu, do którego aplikacja będzie wysyłać zapytania) oraz klucz prognozowania (aby udzielić aplikacji dostępu do żądań prognozowania). Na karcie **Performance (Wydajność)** naciśnij przycisk **Prediction URL (Adres URL przewidywania)** u góry strony.
 
 ![Witryna internetowa usługi Custom Vision przedstawiająca okno interfejsu API przewidywania, które wyświetla adres URL i klucz interfejsu API](media/azure-logo-tutorial/cusvis-endpoint.png)
 
@@ -95,7 +95,7 @@ Część samouczka dotycząca usługi Custom Vision jest zakończona. Jeśli chc
 
 Zasubskrybuj usługę Computer Vision, aby uzyskać klucz i adres URL punktu końcowego. Aby uzyskać pomoc dotyczącą tego kroku, zobacz [Jak uzyskać klucze subskrypcji](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtosubscribe).
 
-![Usługa przetwarzania obrazów w witrynie Azure portal, za pomocą menu szybkiego startu wybrane. Link do kluczy i adres URL punktu końcowego interfejsu API są zaznaczone](media/azure-logo-tutorial/comvis-keys.png)
+![Usługa przetwarzanie obrazów w Azure Portal z wybranym menu szybkiego startu. Link do kluczy i adres URL punktu końcowego interfejsu API są zaznaczone](media/azure-logo-tutorial/comvis-keys.png)
 
 Następnie otwórz plik *Source\VisualProvision\AppSettings.cs* i wpisz poprawne wartości do zmiennych `ComputerVisionEndpoint` i `ComputerVisionKey`.
 
@@ -177,7 +177,7 @@ Jeśli wykonasz już wszystkie kroki w tym scenariuszu i użyjesz aplikacji do w
 
 Jeśli planujesz utworzenie własnego projektu wykrywania obiektu za pomocą usługi Custom Vision, możesz chcieć usunąć projekt wykrywania logo utworzony w ramach tego samouczka. Bezpłatna wersja próbna usługi Custom Vision dopuszcza tylko dwa projekty. Aby usunąć projekt wykrywania logo w [witrynie internetowej usługi Custom Vision](https://customvision.ai), otwórz pozycję **Projects (Projekty)** , a następnie wybierz ikonę kosza na śmieci w obszarze **My New Project (Mój nowy projekt)** .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku została skonfigurowana i przebadana w pełni funkcjonalna aplikacja platformy Xamarin.Forms, która używa usługi Custom Vision do wykrywania logo na zdjęciach z aparatu urządzenia przenośnego. Następnie poznaj najlepsze rozwiązania dotyczące budowania modelu usługi Custom Vision, dzięki czemu podczas tworzenia własnych aplikacji możesz zapewnić ich wydajność i dokładność.
 

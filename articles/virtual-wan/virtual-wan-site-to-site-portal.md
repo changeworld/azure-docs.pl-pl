@@ -5,17 +5,17 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 04/23/2019
+ms.date: 07/25/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: e8e251aa5031a8eadd2d567bff2830449c7decc3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e9be7ef5c4f37c66f7cbf2c6226936438b367108
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64689511"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68515166"
 ---
-# <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Samouczek: Utwórz połączenie lokacja-lokacja przy użyciu Azure wirtualnego WAN
+# <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Samouczek: Tworzenie połączenia typu lokacja-lokacja przy użyciu wirtualnej sieci WAN platformy Azure
 
 W tym samouczku pokazano, w jaki sposób przy użyciu usługi Azure Virtual WAN utworzyć połączenie z zasobami na platformie Azure za pośrednictwem połączenia sieci VPN protokołu IPsec/IKE (IKEv1 i IKEv2). Ten typ połączenia wymaga lokalnego urządzenia sieci VPN z przypisanym publicznym adresem IP dostępnym z zewnątrz. Aby uzyskać więcej informacji na temat usługi Virtual WAN, zobacz [Omówienie usługi Virtual WAN](virtual-wan-about.md).
 
@@ -32,7 +32,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Tworzenie lokacji
 > * Tworzenie koncentratora
 > * Łączenie koncentratora z lokacją
-> * Tworzenie sieci wirtualnej zgodny, (Jeśli nie masz jeszcze jeden)
+> * Utwórz zgodną sieć wirtualną (jeśli jeszcze jej nie masz)
 > * Łączenie sieci wirtualnej z koncentratorem
 > * Pobieranie i stosowanie konfiguracji urządzenia sieci VPN
 > * Wyświetlanie wirtualnej sieci WAN
@@ -57,13 +57,18 @@ Możesz utworzyć dowolną liczbę lokacji, tak aby odpowiadała liczbie lokaliz
 2. Na stronie **Lokacje sieci VPN** kliknij pozycję **+Utwórz lokację**.
 3. Na stronie **Tworzenie lokacji** wypełnij następujące pola:
 
-   * **Nazwa** — nazwę, za pomocą którego do odwoływania się do witryny w środowisku lokalnym.
-   * **Publiczny adres IP** — publiczny adres IP urządzenia sieci VPN, który znajduje się w lokacji lokalnej.
+   * **Nazwa** — nazwa, przez którą chcesz odwołać się do lokacji lokalnej.
+   * **Publiczny adres IP** — publiczny adres IP urządzenia sieci VPN znajdującego się w lokacji lokalnej.
    * **Prywatna przestrzeń adresowa** — to przestrzeń adresowa IP znajdująca się w lokacji lokalnej. Ruch do tej przestrzeni adresowej jest kierowany do lokacji lokalnej.
    * **Subskrypcja** — sprawdź, czy wybrano właściwą subskrypcję.
    * **Grupa zasobów** — grupa zasobów, której chcesz używać.
-   * **Lokalizacja**
-4. Kliknij pozycję **Pokaż zaawansowane**, aby wyświetlić dodatkowe ustawienia. Możesz wybrać **BGP** można włączyć protokołu BGP, która spowoduje włączenie funkcji protokołu BGP dla wszystkich połączeń, utworzone w tej witrynie na platformie Azure. Możesz też wprowadzić **Informacje o urządzeniu** (pola opcjonalne). To może pomóc lepiej zrozumieć środowiska można dodać możliwości optymalizacji dodatkowe w przyszłości lub ułatwiających rozwiązywanie problemów z zespołu platformy Azure.
+   * **Location**
+4. Kliknij pozycję **Pokaż zaawansowane**, aby wyświetlić dodatkowe ustawienia. 
+
+   Możesz wybrać protokół **BGP** , aby włączyć protokół BGP, co spowoduje włączenie funkcji BGP dla wszystkich połączeń utworzonych dla tej witryny na platformie Azure. Konfigurowanie protokołu BGP w wirtualnej sieci WAN jest równoznaczne z skonfigurowaniem protokołu BGP na bramie sieci VPN platformy Azure. Adres lokalnego elementu równorzędnego protokołu BGP *nie może* być taki sam jak publiczny adres IP sieci VPN do urządzenia lub przestrzeni adresowej sieci wirtualnej witryny sieci VPN. Użyj innego adresu IP na urządzeniu sieci VPN dla adresu IP elementu równorzędnego protokołu BGP. Może to być adres przypisany do interfejsu sprzężenia zwrotnego na urządzeniu. Jednak *nie może* to być adresowanie APIPA (169,254. *x*. *x*). Ten adres należy określić w odpowiedniej bramie sieci lokalnej reprezentującej daną lokalizację. Wymagania wstępne dotyczące protokołu BGP zawiera temat [Informacje o protokole BGP z platformą Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md).
+
+   Możesz też wprowadzić **Informacje o urządzeniu** (pola opcjonalne). Dzięki temu zespół platformy Azure może lepiej zrozumieć swoje środowisko w celu dodania do niego dodatkowych możliwości optymalizacji lub ułatwienia rozwiązywania problemów.
+   
 5. Kliknij pozycję **Potwierdź**.
 6. Po kliknięciu pozycji **Potwierdź** wyświetl stan na stronie lokacji sieci VPN. Stan lokacji zmieni się z **Aprowizowanie** na **Aprowizowano**.
 
@@ -83,7 +88,7 @@ Zasadniczo koncentratory powinny być skojarzone z lokacjami znajdującymi się 
 
 ## <a name="vnet"></a>5. Tworzenie sieci wirtualnej
 
-Jeśli nie masz jeszcze sieci wirtualnej, można szybko utworzyć ją przy użyciu programu PowerShell lub witryny Azure portal. Jeśli masz już sieć wirtualną, sprawdź, czy spełnia ona wymagane kryteria i nie ma bramy sieci wirtualnej.
+Jeśli nie masz jeszcze sieci wirtualnej, możesz ją szybko utworzyć przy użyciu programu PowerShell lub Azure Portal. Jeśli masz już sieć wirtualną, sprawdź, czy spełnia ona wymagane kryteria i nie ma bramy sieci wirtualnej.
 
 [!INCLUDE [Create a virtual network](../../includes/virtual-wan-tutorial-vnet-include.md)]
 
@@ -101,7 +106,7 @@ W tym kroku zostanie utworzone połączenie równorzędne pomiędzy koncentrator
     * **Sieć wirtualna** — wybierz sieć wirtualną, którą chcesz połączyć z tym koncentratorem. Sieć wirtualna nie może mieć istniejącej bramy sieci wirtualnej.
 4. Kliknij przycisk **OK**, aby utworzyć połączenie równorzędne.
 
-## <a name="device"></a>7. Pobieranie konfiguracji sieci VPN
+## <a name="device"></a>7. Pobierz konfigurację sieci VPN
 
 Skorzystaj z konfiguracji urządzenia sieci VPN, aby skonfigurować swoje lokalne urządzenie sieci VPN.
 
@@ -115,7 +120,7 @@ Skorzystaj z konfiguracji urządzenia sieci VPN, aby skonfigurować swoje lokaln
 Plik konfiguracji urządzenia zawiera ustawienia używane podczas konfigurowania lokalnego urządzenia sieci VPN. Podczas przeglądania tego pliku należy zwrócić uwagę na następujące informacje:
 
 * **vpnSiteConfiguration —** ta sekcja zawiera szczegółowe informacje o urządzeniu skonfigurowanym jako lokacja połączona z wirtualną sieci WAN. Zawiera nazwę i publiczny adres IP urządzenia w oddziale.
-* **vpnSiteConnections -** ta sekcja zawiera informacje o następujących ustawień:
+* **vpnSiteConnections —** Ta sekcja zawiera informacje o następujących ustawieniach:
 
     * **Przestrzeń adresowa** sieci wirtualnej koncentratora<br>Przykład:
  
@@ -127,7 +132,7 @@ Plik konfiguracji urządzenia zawiera ustawienia używane podczas konfigurowania
          ```
         "ConnectedSubnets":["10.2.0.0/16","10.30.0.0/16"]
          ```
-    * **Adresy IP** bramy vpngateway koncentratora wirtualnego. Ponieważ każde połączenie bramy vpngateway składa się z dwóch tuneli w konfiguracji aktywne aktywne, zobaczysz oba adresy IP wymienione w tym pliku. W tym przykładzie są to wartości „Instance0” i „Instance1” dla każdej lokacji.<br>Przykład:
+    * **Adresy IP** bramy vpngateway koncentratora wirtualnego. Ponieważ każde połączenie bramy vpngateway składa się z dwóch tuneli w konfiguracji Active-Active, zobaczysz oba adresy IP wymienione w tym pliku. W tym przykładzie są to wartości „Instance0” i „Instance1” dla każdej lokacji.<br>Przykład:
 
         ``` 
         "Instance0":"104.45.18.186"
@@ -270,13 +275,13 @@ Utwórz połączenie, aby monitorować komunikację pomiędzy maszyną wirtualn�
 
 ## <a name="cleanup"></a>11. Oczyszczanie zasobów
 
-Jeśli te zasoby nie są już potrzebne, możesz użyć [AzResourceGroup Usuń](/powershell/module/az.resources/remove-azresourcegroup) Aby usunąć grupę zasobów i wszystkie zawarte w niej zasoby. Zastąp wartość „myResourceGroup” nazwą grupy zasobów, a następnie uruchom następujące polecenie programu PowerShell:
+Jeśli te zasoby nie są już potrzebne, możesz usunąć grupę zasobów i wszystkie zawarte w niej zasoby, używając polecenie [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) . Zastąp wartość „myResourceGroup” nazwą grupy zasobów, a następnie uruchom następujące polecenie programu PowerShell:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
